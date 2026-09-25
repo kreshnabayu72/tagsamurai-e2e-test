@@ -1,0 +1,33 @@
+{
+  "name": "tagsamurai-e2e-test",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "spectra run",
+    "test:web": "spectra run -t web",
+    "test:mobile": "spectra run -t mobile",
+    "test:android": "spectra run -t android",
+    "test:ios": "spectra run -t ios",
+    "spectra": "spectra",
+    "doctor": "spectra doctor",
+    "watch": "spectra watch",
+    "type-check": "tsc -b",
+    "sync-types": "spectra sync-types",
+    "postinstall": "spectra sync-types"
+  },
+  "devDependencies": {
+    "@testspectra/cli": "^1.2.7",
+    "@testspectra/matchers": "^1.2.7",
+    "@testspectra/plugin-demo": "^1.2.7",
+    "@types/node": "^20.14.0",
+    "@wdio/cli": "^9.2.8",
+    "@wdio/local-runner": "^9.2.8",
+    "@wdio/spec-reporter": "^9.2.8",
+    "@wdio/devtools-service": "^8.46.0",
+    "@wdio/globals": "^9.2.8",
+    "@wdio/mocha-framework": "^9.2.8",
+    "webdriverio": "^9.2.8",
+    "typescript": "^5.4.5"
+  }
+}

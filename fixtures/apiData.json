@@ -1,0 +1,24 @@
+{
+  "mockPosts": [
+    {
+      "id": 1,
+      "title": "Mocked Post 1 - TestSpectra Matchers",
+      "body": "First mocked post body for verifying GET API interception in TestSpectra."
+    },
+    {
+      "id": 2,
+      "title": "Mocked Post 2 - Cross-Platform Automation",
+      "body": "Second mocked post body for verifying collection and item assertions."
+    }
+  ],
+  "mockNewPost": {
+    "title": "TestSpectra Automated Post",
+    "body": "End-to-End API mock verification with browser.intercept command."
+  },
+  "mockPostResponse": {
+    "id": 101,
+    "title": "TestSpectra Automated Post",
+    "body": "End-to-End API mock verification with browser.intercept command.",
+    "userId": 1
+  }
+}

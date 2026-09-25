@@ -1,0 +1,7 @@
+{
+  "defaultEmail": "admin@testspectra.dev",
+  "defaultToken": "JWT_abc123xyz",
+  "pageTitle": "TestSpectra — Matchers API Reference",
+  "welcomeText": "Welcome to TestSpectra",
+  "dashboardHref": "/dashboard"
+}

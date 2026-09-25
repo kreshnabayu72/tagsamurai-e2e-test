@@ -1,0 +1,13 @@
+allowBuilds:
+  chromedriver: true
+  edgedriver: true
+  geckodriver: true
+minimumReleaseAgeExclude:
+  - '@testspectra/cli-darwin-arm64@1.2.7'
+  - '@testspectra/cli-win32-x64@1.2.7'
+  - '@testspectra/cli@1.2.7'
+  - '@testspectra/matchers@1.2.7'
+  - '@testspectra/plugin-demo@1.2.7'
+  - '@testspectra/react@1.2.7'
+  - '@testspectra/reporter@1.2.7'
+  - '@testspectra/skills@1.2.7'
