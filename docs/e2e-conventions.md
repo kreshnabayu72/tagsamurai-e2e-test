@@ -36,21 +36,31 @@ Kolom `Automation` di TC granular tidak cukup untuk menyeleksi, karena hampir se
 
 Setiap TC granular yang tidak diotomasi dicatat alasannya di `docs/coverage/<Suite>.md` (bagian 8).
 
-## 3. Efisiensi: Menggabung dan Tidak Mengulang
+## 3. Efisiensi: Pengelompokan Spec `[KEPUTUSAN 2026-09-28]`
 
-Framework memaksa **satu `it()` per file spec**. Karena itu satu spec = satu skenario kohesif.
+Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spec, jadi satu spec = satu alur yang bisa dijalankan sekali jalan. Soft assertion (assert gagal tidak menghentikan spec) dan report per langkah tersedia (dikonfirmasi tim, belum saya uji sendiri).
 
-**Boleh digabung jadi satu spec (dan `sourceTc` berisi banyak id):**
-- TC dengan precondition, role, dan layar yang sama, hanya beda langkah lanjutan (contoh: loading, empty state, error, retry di layar list).
-- Validasi field yang hanya beda input: satu spec, data diambil dari fixture berupa array, dan `it()` mengulang lewat loop.
-- Matriks role yang alurnya sama: satu spec per aksi, dengan role sebagai parameter Step (bukan satu spec per role).
+**Prinsip pengelompokan:**
+1. **Satu spec = satu atau beberapa sesi form/modal berurutan pada permukaan yang sama.** Semua yang bisa dilakukan dalam satu sesi digabung, diurutkan supaya tidak perlu membuka form dari awal lagi.
+2. **Screening (tanpa aksi) selalu di awal spec**, sebelum aksi lanjutan.
+3. **Urutan di dalam sesi:** screening, lalu validasi yang diblokir (tidak membuat data), lalu aksi yang berhasil, lalu verifikasi di list.
+4. **Variasi dari topik yang sama berurutan** (contoh: pilihan akses modul GS, FAMS, lalu entity lain).
+5. **Kasus menutup form di akhir spec.** Menutup dalam keadaan dirty memakai form yang sudah dirty dari validasi, jadi tidak butuh buka tambahan. Menutup dalam keadaan bersih butuh form baru, jadi menjadi buka ulang terakhir. Jumlah minimal buka form sama dengan jumlah kejadian yang menutup form.
+6. **Tiap validasi diakhiri submit yang diblokir** dan pengecekan tidak ada data tercipta. Satu submit valid di akhir bila memang perlu membuat data.
+7. **Pakai fitur yang menghemat**, contohnya checkbox "Stay on this form after submitting" supaya beberapa create terjadi dalam satu sesi modal tanpa membuka ulang.
+8. **Nilai batas atau nilai khusus** ditempel ke create yang assert-nya tidak bentrok. Satu nilai khusus per field per user, supaya penyebab kegagalan jelas.
+9. **TC yang isinya terbelah lintas spec** (contoh: sisi Client dan sisi Principal) dicatat di `## Notes` kedua spec.
 
-**Tidak boleh digabung:**
-- TC beda role atau beda akun login, kecuali ada Step khusus untuk ganti akun.
-- TC yang hasilnya saling bergantung. Setiap spec harus bisa jalan sendiri dan dalam urutan apa pun, karena suite bisa `parallel: true`.
-- Gabungan yang melebihi sekitar 12 langkah. Pecah supaya kegagalan mudah dilacak.
+**Pisahkan spec hanya jika ada pemisah nyata:**
+- Beda akun, role, atau entity (butuh login atau konteks lain).
+- Bergantung pada hardware atau simulasi yang berisiko (contoh: scan RFID), supaya kegagalannya tidak menutupi hasil spec lain.
+- Spec yang membuat data dan butuh cleanup dipisah dari spec yang tidak membuat data, supaya kegagalan keras di spec pembuat data tidak menutupi hasil spec lain. Soft assertion tidak menolong untuk kegagalan keras (elemen tidak ketemu, modal tidak terbuka).
 
-**Trade-off yang harus disadari:** spec gabungan berhenti di assert pertama yang gagal, sehingga assert sesudahnya tidak dijalankan. Untuk validasi yang benar-benar independen, loop yang mencatat semua kegagalan lebih baik daripada satu rangkaian assert berurutan.
+**Tidak boleh:**
+- Menggabung TC beda akun atau role kecuali ada Step khusus ganti akun.
+- Spec yang bergantung pada data atau hasil spec lain. Setiap spec bisa jalan sendiri karena suite bisa `parallel: true`, dan urutan antar spec tidak dijamin (belum diverifikasi apakah runner mengikuti nomor folder). Jadi "screening di awal" dipenuhi dengan menaruhnya sebagai langkah pertama di dalam spec.
+
+**Batas ukuran spec** bukan jumlah langkah, tetapi apakah bagian sesudahnya masih bermakna kalau bagian sebelumnya gagal keras. Beri subjudul (`### Screening`, `### Validation`, dan seterusnya) di dalam `## Test Steps` dan sebut id TC-nya di Notes atau di langkah, supaya report per langkah bisa dipetakan ke TC.
 
 **Alur sekali jalan:** login, buka layar, dan seed data dilakukan sekali di hook. Isi `it()` hanya berisi aksi dan assert yang benar-benar diuji.
 
@@ -156,6 +166,7 @@ Catatan cakupan per suite di `docs/coverage/<Suite>.md`: tabel TC granular ke sp
 
 ## 9. Aturan Kode
 
+- **Label tombol mengikuti `foundation/process/prd-process/prd-conventions.md` §24.1, bukan disalin dari TC.** Form Create: `[Submit]` dan `[Clear Field]`. Form Edit: `[Save]` dan `[Clear Field]`. Modal Create dan Edit tidak punya `[Cancel]`, dan ditutup lewat `✕` di header atau `Esc`. `[Cancel]` hanya ada di dialog konfirmasi (contoh: unsaved changes, Delete, Deactivate), inline Cancel pending email change, dan modal Setup Column.
 - Semua selector hanya di Page Object. Tidak ada `Spectra.get(...)` inline di `web.test.ts`.
 - Selector diutamakan `~aria-label`, lalu `#testid`. Kalau elemen belum punya, minta dev FE menambahkannya. Jangan pakai xpath atau nth-child.
 - Semua teks yang diassert diambil dari fixture atau konstanta resource, bukan diketik ulang di banyak spec.

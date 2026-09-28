@@ -19,7 +19,7 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
 
 1. **Baca TC sumber** sampai tabel Data Uji Pre-setup dan Data Uji Dinamis, bukan hanya baris TC-nya.
 2. **Seleksi** sesuai bagian 2 konvensi. Buat daftar TC yang masuk dan yang tidak, beserta alasannya.
-3. **Kelompokkan** TC yang boleh digabung (bagian 3 konvensi): satu kelompok = satu spec. Catat data mana yang harus dibuat sendiri per spec (bagian 5).
+3. **Kelompokkan** sesuai prinsip bagian 3 konvensi: satu spec = satu atau beberapa sesi form/modal berurutan pada permukaan yang sama, screening di awal, validasi yang diblokir sebelum aksi sukses, kasus menutup form di akhir, variasi topik yang sama berurutan. Pisahkan hanya jika beda akun/entity, bergantung hardware, atau pembuat data perlu dipisah dari yang tidak. Catat data mana yang harus dibuat sendiri per spec (bagian 5) dan berapa kali form dibuka.
 4. **Tampilkan rencana ke user dan tunggu persetujuan** sebelum menulis file. Rencana berisi tabel:
    `spec (id + judul)` | `sourceTc` | `role/precondition` | `data` | `hook/step yang dibutuhkan` | `TC yang tidak diotomasi + alasan`.
 5. Setelah disetujui, buat di `specs/<ModulBesar>/<SubModul>/` (PascalCase, contoh `specs/GlobalSettings/User/`):
@@ -30,6 +30,8 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
    - `# <title>` sama dengan `title`.
    - `## Prerequisites`: role, data pre-setup, dan hook yang dipakai.
    - `## Test Steps`: langkah bernomor, konkret, satu aksi per baris. Jangan menulis `@step:<nama>` di tahap ini: `spectra lint` mewajibkan setiap `@step` punya panggilan `Step.<nama>()` di script, sehingga spec tanpa script akan gagal lint. Tulis langkah berulang sebagai teks biasa. `@step` ditambahkan oleh skill `tagsamurai-e2e-generate-script` saat Step-nya dibuat.
+   - Label tombol dan cara menutup form mengikuti bagian 9 konvensi (`[Submit]` untuk Create, `[Save]` untuk Edit, `[Clear Field]`, `✕`/`Esc`, tidak ada `[Cancel]` pada modal). Cek ke `prd-conventions.md` §24.1, jangan menyalin dari TC karena TC bisa salah.
+   - Spec panjang diberi subjudul `###` di dalam `## Test Steps`.
    - Nilai data mengacu ke fixture (`Fixture.<berkas>.<kunci>`), bukan ditulis mentah.
    - Expected result ditulis sebagai langkah `Verify ...` yang bisa langsung menjadi assertion.
 8. Jalankan `spectra lint --strict specs/<Suite>` dan perbaiki sampai bersih.

@@ -25,6 +25,7 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - Isi spec sesuai TC sumbernya (role, precondition, langkah, expected result). Bandingkan per TC yang digabung. Langkah atau expected result yang hilang, ditambah, atau berubah makna adalah temuan.
 - `priority` sesuai mapping bagian 8 konvensi (tertinggi dari TC sumber).
 - `caseType` mengikuti aturan spec gabungan bagian 8 konvensi (jenis alur utama yang dominan). Jangan menandai temuan hanya karena TC sumber campuran jenisnya.
+- Label tombol dan cara menutup form sesuai bagian 9 konvensi (Create `[Submit]`, Edit `[Save]`, `[Clear Field]`, `✕`/`Esc`, tanpa `[Cancel]` pada modal). Cocokkan ke `prd-conventions.md` §24.1, bukan hanya ke TC.
 - `coverage.web` tidak dinilai terhadap `status`. Kolom itu hanya jenis pengujian, progres dibaca dari `status`.
 
 **C. Spec → script**
@@ -36,9 +37,12 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 **D. Efisiensi dan independensi**
 - Spec tidak bergantung pada data atau hasil spec lain (cari nama data yang dibuat di spec lain).
 - Login dan seed dilakukan di hook, bukan diulang di tiap `it()`.
-- Tidak ada dua spec dengan alur dan assert yang sama (duplikasi), dan tidak ada permutasi yang seharusnya digabung jadi loop atau parameter Step.
-- Spec gabungan tidak melebihi ~12 langkah dan tidak mencampur role berbeda tanpa Step ganti akun.
+- Jumlah buka form/modal per spec tidak lebih dari jumlah kejadian yang menutup form. Tandai spec yang membuka form ulang tanpa alasan.
+- Screening ada di awal spec. Validasi yang diblokir ada sebelum aksi sukses. Kasus menutup form ada di akhir.
+- Tidak ada dua spec dengan alur dan assert yang sama, dan tidak ada spec yang seharusnya digabung (permukaan yang sama, bisa satu sesi) tetapi terpisah.
+- Spec tidak mencampur role atau entity berbeda tanpa Step ganti akun.
 - Setup yang dibutuhkan satu spec tidak ditaruh di `global-hooks`.
+- Spec yang membuat data punya cleanup, dan spec tanpa pembuatan data tidak menumpang data spec lain.
 
 **E. Data**
 - Tidak ada password, token, atau kredensial di spec, fixture, atau script.
