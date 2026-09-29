@@ -61,9 +61,11 @@ Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spe
 9. **Nilai batas atau nilai khusus** ditempel ke create yang assert-nya tidak bentrok. Satu nilai khusus per field per user, supaya penyebab kegagalan jelas.
 10. **TC yang isinya terbelah lintas spec** (contoh: sisi Client dan sisi Principal) dicatat di `## Notes` kedua spec.
 11. **Select All lalu Bulk Delete masuk ke spec Delete, di akhir spec `[KEPUTUSAN 2026-09-29]`.** Aksi ini menghapus semua user di environment kecuali Default User dan akun yang login, termasuk user seeding milik spec lain. Karena itu spec Delete wajib berjalan sesudah spec lain selesai dan tidak paralel dengannya. Runner belum terbukti mengikuti nomor folder, jadi cara memisahkannya (suite atau tahap run sendiri) diputuskan di tahap script.
+12. **Blokir karena kondisi data dipisah menjadi spec sendiri per topik `[KEPUTUSAN 2026-09-29]`.** Kasus yang ditolak sistem karena kondisi data target (contoh: TAG sudah dipasang user lain, Resend masih dalam cooldown, Reset Authenticator pada user yang belum enrolled, kuota atau batas seleksi tercapai) butuh data prasyarat khusus yang berbeda dari alur normal, sehingga tidak digabung dengan alur normal. Yang tetap digabung dengan alur normal adalah validasi field (wajib, format, panjang, duplikat) dan blokir berbasis identitas atau role (Default User, akun sendiri, target Total Control), karena tidak butuh data khusus. Aksi yang tidak punya blokir data tidak perlu spec blokir: `USER-LOGIC-05` menetapkan Deactivate, Remove Access, dan Delete selalu warn lalu proceed.
 
 **Pisahkan spec hanya jika ada pemisah nyata:**
 - Topik aksi berbeda dengan kondisi data yang bervariasi (prinsip 1).
+- Kasus blokir karena kondisi data (prinsip 12).
 - Beda akun, role, atau entity (butuh login atau konteks lain). Pengecualian: Role Matrix (bagian 3a).
 - Bergantung pada hardware atau simulasi yang berisiko (contoh: scan RFID), supaya kegagalannya tidak menutupi hasil spec lain.
 - Spec yang membuat data dan butuh cleanup dipisah dari spec yang tidak membuat data, supaya kegagalan keras di spec pembuat data tidak menutupi hasil spec lain. Soft assertion tidak menolong untuk kegagalan keras (elemen tidak ketemu, modal tidak terbuka).
@@ -85,6 +87,7 @@ Kasus izin per role dipisah menjadi spec **positif** dan spec **negatif** untuk 
 - Kasus yang bukan soal "aksi ditolak" (sidebar tersembunyi, direct URL 403, landing state, target yang terlindungi seperti Default User dan Self) dikelompokkan sebagai spec negatif tersendiri per topik.
 - Kombinasi role × aksi hanya boleh ditulis kalau ada TC granular sumbernya. Kombinasi yang belum punya TC dilaporkan ke QA sebagai usulan TC baru, bukan dikarang di spec.
 - Cara skrip menjalankan banyak role (perulangan di dalam satu `it()` atau beberapa kali run dengan akun berbeda) diputuskan di tahap script.
+- **Susunan spec Role Matrix `[KEPUTUSAN 2026-09-29]`:** dipilih varian A, yaitu satu spec per aksi dengan positif dan negatif terpisah, karena lebih partikular. Varian B (satu spec positif dan satu spec negatif yang disusun per role, spec 021 dan 022) tidak dipakai, tetapi filenya dibiarkan untuk sementara.
 
 ## 4. Setup dan Teardown
 

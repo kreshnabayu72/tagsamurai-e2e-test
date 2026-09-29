@@ -9,7 +9,6 @@ sourceTc:
   - TC-GS-USER-395
   - TC-GS-USER-585
   - TC-GS-USER-586
-  - TC-GS-USER-49
 coverage:
   web: automated
 ---
@@ -24,7 +23,6 @@ Role yang diuji dan target masing-masing:
 
 | Role | Akun | Target Edit | Target Remove Access |
 |---|---|---|---|
-| Total Control | `totalControl2_automated_qaTeam1` | "Rio Pratama" | "Eka Wijaya" |
 | Manage user and role (Full CRUD) | `manageUserRoleFull_automated_qaTeam1` | "Rian Pratama" | "Ella Wijaya" |
 | Manage user and role (hanya Update) | `manageUserRoleUpdateOnly_automated_qaTeam1` | "Rico Pratama" | "Elsa Wijaya" |
 
@@ -50,7 +48,7 @@ Lakukan langkah 1–9 untuk setiap role pada tabel "Role yang diuji", dengan tar
 ## Notes
 
 - Ini spec positif Edit dan Remove Access dari Role Matrix (`docs/e2e-conventions.md` bagian 3a). Remove Access digerbang izin Update karena titik masuknya adalah Modal Edit (`user.md` §4.8, §9.2 [F-USER-03]). Pasangan negatifnya adalah `TC-GS-USER-E2E-016-role-negatif-edit-toggle-resend`.
-- Role Total Control mengulang sebagian alur `TC-GS-USER-E2E-009` (TC-GS-USER-49). Tumpang tindih ini disengaja.
+- Role Total Control tidak diuji di sini karena Remove Access oleh Total Control sudah dicek di `TC-GS-USER-E2E-009` (TC-GS-USER-49).
 - Cara skrip menjalankan banyak role diputuskan di tahap script.
-- Lapisan frontend mencakup TC ini dengan payload izin yang di-mock (TC-GS-USER-FE-019, 025, 106). TC-GS-USER-09 dan 49 berprioritas P0, jadi tumpang tindih disengaja (`docs/e2e-conventions.md` bagian 2).
+- Lapisan frontend mencakup TC ini dengan payload izin yang di-mock (TC-GS-USER-FE-019, 025). TC-GS-USER-09 berprioritas P0, jadi tumpang tindih disengaja (`docs/e2e-conventions.md` bagian 2).
 - Target Edit harus dikembalikan ke Position "Staff" dan target Remove Access harus di-seed ulang setelah run.

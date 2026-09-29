@@ -5,7 +5,6 @@ priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
-  - TC-GS-USER-33
   - TC-GS-USER-396
   - TC-GS-USER-586
 coverage:
@@ -22,7 +21,6 @@ Role yang diuji dan target masing-masing:
 
 | Role | Akun | Target |
 |---|---|---|
-| Total Control | `totalControl2_automated_qaTeam1` | "Dedi Kusuma" |
 | Manage user and role (Full CRUD) | `manageUserRoleFull_automated_qaTeam1` | "Dodi Kusuma" |
 | Manage user and role (hanya Delete) | `manageUserRoleDeleteOnly_automated_qaTeam1` | "Dani Kusuma" |
 
@@ -42,7 +40,7 @@ Lakukan langkah 1–5 untuk setiap role pada tabel "Role yang diuji", dengan tar
 ## Notes
 
 - Ini spec positif Delete dari Role Matrix (`docs/e2e-conventions.md` bagian 3a). Pasangan negatifnya adalah `TC-GS-USER-E2E-017-role-negatif-delete`.
-- Role Total Control mengulang sebagian alur `TC-GS-USER-E2E-005` (TC-GS-USER-33). Tumpang tindih ini disengaja.
+- Role Total Control tidak diuji di sini karena Delete oleh Total Control sudah dicek di `TC-GS-USER-E2E-005` (TC-GS-USER-33).
 - Cara skrip menjalankan banyak role diputuskan di tahap script.
-- Lapisan frontend mencakup TC ini dengan payload izin yang di-mock (TC-GS-USER-FE-026, 074). TC-GS-USER-33 berprioritas P0, jadi tumpang tindih disengaja (`docs/e2e-conventions.md` bagian 2).
+- Lapisan frontend mencakup TC ini dengan payload izin yang di-mock (TC-GS-USER-FE-026).
 - Setiap target dihapus oleh spec ini sendiri, sehingga harus di-seed ulang sebelum setiap run.

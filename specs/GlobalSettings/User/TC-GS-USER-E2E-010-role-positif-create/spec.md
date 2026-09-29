@@ -5,8 +5,6 @@ priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
-  - TC-GS-USER-07
-  - TC-GS-USER-13
   - TC-GS-USER-394
   - TC-GS-USER-586
 coverage:
@@ -23,7 +21,6 @@ Role yang diuji:
 
 | Role | Akun | Keterangan |
 |---|---|---|
-| Total Control | `totalControl2_automated_qaTeam1` | Total Control biasa, bukan Default User |
 | Manage user and role (Full CRUD) | `manageUserRoleFull_automated_qaTeam1` | Bukan Total Control |
 | Manage user and role (hanya Create) | `manageUserRoleCreateOnly_automated_qaTeam1` | Read baseline dan Create, tanpa Update dan Delete |
 
@@ -47,7 +44,7 @@ Lakukan langkah 1–7 untuk setiap role pada tabel "Role yang diuji".
 ## Notes
 
 - Ini spec positif Create dari Role Matrix (`docs/e2e-conventions.md` bagian 3a). Pasangan negatifnya adalah `TC-GS-USER-E2E-015-role-negatif-create`.
-- Role Total Control mengulang alur yang sudah ada di `TC-GS-USER-E2E-002` (TC-GS-USER-13). Tumpang tindih ini disengaja, karena Role Matrix membandingkan semua role pada langkah yang sama.
+- Role Total Control tidak diuji di sini karena Create oleh Total Control sudah dicek di `TC-GS-USER-E2E-002` (TC-GS-USER-13). TC-GS-USER-07 (semua kontrol tampil untuk Total Control) dicek di `TC-GS-USER-E2E-014`.
 - Cara skrip menjalankan banyak role (perulangan di dalam satu `it()` atau beberapa kali run) diputuskan di tahap script.
-- Lapisan frontend mencakup TC ini dengan payload izin yang di-mock (TC-GS-USER-FE-017, 024). TC-GS-USER-07 dan 13 berprioritas P0, jadi tumpang tindih disengaja (`docs/e2e-conventions.md` bagian 2).
+- Lapisan frontend mencakup TC ini dengan payload izin yang di-mock (TC-GS-USER-FE-024). TC-GS-USER-394 dan 586 belum punya padanan frontend.
 - Semua user yang dibuat harus dihapus saat cleanup oleh akun yang berhak menghapus, walaupun spec gagal di tengah.

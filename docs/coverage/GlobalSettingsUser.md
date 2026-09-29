@@ -16,19 +16,23 @@ Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada scrip
 | TC-GS-USER-E2E-007 | Search, Filter, Sort, Pagination, Download — semua yang benar-benar memukul backend dan mempengaruhi baris/urutan data nyata | TC-GS-USER-358, 359, 360, 361, 362, 554, 555, 556, 557, 357, 127, 197, 198, 199, 200, 201, 202, 207, 208, 364, 128, 218, 219, 220, 221, 222, 223, 224, 225, 227, 228, 229, 230, 210, 211, 212, 216, 132, 131, 490, 491, 492, 493, 494, 496, 497 |
 | TC-GS-USER-E2E-008 | Toggle Active single dan bulk pada berbagai kondisi data | TC-GS-USER-44, 45, 42, 435, 41, 447, 43, 446, 46, 480, 443, 47, 445, 444, 449 |
 | TC-GS-USER-E2E-009 | Remove Access lewat Modal Edit pada berbagai kondisi data | TC-GS-USER-52, 51, 49, 352, 425, 351, 387, 50 |
-| TC-GS-USER-E2E-010 | Role Matrix positif Create (Total Control, Full CRUD, Create-only) | TC-GS-USER-07, 13, 394, 586 |
-| TC-GS-USER-E2E-011 | Role Matrix positif Edit dan Remove Access (Total Control, Full CRUD, Update-only) | TC-GS-USER-09, 395, 585, 586, 49 |
-| TC-GS-USER-E2E-012 | Role Matrix positif Toggle Active (Total Control, Full CRUD, Update-only) | TC-GS-USER-41, 584, 586 |
-| TC-GS-USER-E2E-013 | Role Matrix positif Delete (Total Control, Full CRUD, Delete-only) | TC-GS-USER-33, 396, 586 |
-| TC-GS-USER-E2E-014 | Role Matrix positif target Total Control (Total Control, Default User) | TC-GS-USER-79, 82 |
+| TC-GS-USER-E2E-010 | Role Matrix positif Create (Full CRUD, Create-only) | TC-GS-USER-394, 586 |
+| TC-GS-USER-E2E-011 | Role Matrix positif Edit dan Remove Access (Full CRUD, Update-only) | TC-GS-USER-09, 395, 585, 586 |
+| TC-GS-USER-E2E-012 | Role Matrix positif Toggle Active (Full CRUD, Update-only) | TC-GS-USER-584, 586 |
+| TC-GS-USER-E2E-013 | Role Matrix positif Delete (Full CRUD, Delete-only) | TC-GS-USER-396, 586 |
+| TC-GS-USER-E2E-014 | Role Matrix positif kontrol dan target Total Control (Total Control, Default User) | TC-GS-USER-07, 79, 82 |
 | TC-GS-USER-E2E-015 | Role Matrix negatif Create (Read Only, Update-only, Delete-only) | TC-GS-USER-08, 582, 583 |
 | TC-GS-USER-E2E-016 | Role Matrix negatif Edit, Toggle Active, Resend (Read Only, Create-only, Delete-only) | TC-GS-USER-08, 85, 581, 583 |
 | TC-GS-USER-E2E-017 | Role Matrix negatif Delete (Read Only, Create-only, Update-only) | TC-GS-USER-08, 85, 581, 582 |
 | TC-GS-USER-E2E-018 | Role Matrix negatif target terlindungi Default User dan akun sendiri (Total Control, Default User) | TC-GS-USER-80, 81, 83, 86 |
 | TC-GS-USER-E2E-019 | Role Matrix negatif Full CRUD ke target Total Control | TC-GS-USER-339, 84 |
 | TC-GS-USER-E2E-020 | Role Matrix negatif akses halaman (Read Only, No Role) | TC-GS-USER-486, 10, 12, 11 |
+| TC-GS-USER-E2E-021 | **Varian B (tidak dipakai, file dibiarkan)**: Role Matrix positif gabungan per role — Full CRUD, Total Control, Default User, Create-only, Update-only, Delete-only. Alternatif untuk 010–014 | TC-GS-USER-09, 586, 07, 79, 82, 394, 395, 585, 584, 396 |
+| TC-GS-USER-E2E-022 | **Varian B (tidak dipakai, file dibiarkan)**: Role Matrix negatif gabungan per role — Read Only, Create-only, Update-only, Delete-only, Full CRUD, Total Control, Default User, No Role. Alternatif untuk 015–020 | TC-GS-USER-486, 08, 85, 581, 582, 583, 339, 84, 80, 81, 83, 86, 10, 12, 11 |
 
 TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
+
+**Role Matrix (2026-09-29):** dipilih varian A (spec 010–020, satu spec per aksi, positif dan negatif terpisah) karena lebih partikular. Varian B (spec 021 dan 022, disusun per role) tidak dipakai tetapi filenya dibiarkan untuk sementara. Keduanya mencakup TC yang sama, dan tabel "Lapisan per TC" di bawah menyebut varian A.
 
 ## TC yang tidak dijadikan spec
 
@@ -50,7 +54,7 @@ FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC gr
 
 | TC | Prioritas | FE | E2E | Catatan |
 |---|---|---|---|---|
-| 13 | P0 | FE-027 | E2E-002, E2E-010 |  |
+| 13 | P0 | FE-027 | E2E-002 |  |
 | 14 | P1 | FE-028 | E2E-001 |  |
 | 15 | P1 | FE-029 | E2E-001, E2E-003 |  |
 | 16 | P0 | FE-030 | E2E-001 |  |
@@ -97,7 +101,7 @@ FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC gr
 
 | TC | Prioritas | FE | E2E | Catatan |
 |---|---|---|---|---|
-| 33 | P0 | FE-074 | E2E-005, E2E-013 |  |
+| 33 | P0 | FE-074 | E2E-005 |  |
 | 353 | P2 | — | E2E-005 |  |
 | 453 | P1 | FE-086 | E2E-005 |  |
 | 433 | P2 | FE-075 | E2E-005 |  |
@@ -110,7 +114,7 @@ FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC gr
 | 434 | P2 | FE-080 | E2E-005 |  |
 | 39 | P2 | FE-082 | — |  |
 | 40 | P2 | FE-083 | — |  |
-| 41 | P0 | FE-087 | E2E-008, E2E-012 |  |
+| 41 | P0 | FE-087 | E2E-008 |  |
 | 435 | P2 | FE-088 | E2E-008 |  |
 | 42 | P0 | FE-089 | E2E-008 |  |
 | 43 | P1 | FE-090 | E2E-008 |  |
@@ -131,7 +135,7 @@ FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC gr
 | 459 | P1 | FE-099 | — |  |
 | 48 | P2 | FE-104 | — |  |
 | 398 | P2 | FE-105 | — |  |
-| 49 | P0 | FE-106 | E2E-009, E2E-011 |  |
+| 49 | P0 | FE-106 | E2E-009 |  |
 | 50 | P1 | FE-107 | E2E-009 | Dikoreksi 2026-09-29 (minimal 1 Access), dicakup bersama TC-387 |
 | 51 | P2 | FE-108 | E2E-009 | Sudah diputuskan tunggal (`GAP-248`): diblokir inline "Access must not be empty" |
 | 52 | P1 | FE-109 | E2E-009 |  |
@@ -205,7 +209,7 @@ Tidak ada TC P0 di section ini (tertinggi P1). FE di sini memakai pola represent
 
 | TC | Prioritas | FE | E2E | Catatan |
 |---|---|---|---|---|
-| 07 | P0 | FE-017 | E2E-010 |  |
+| 07 | P0 | FE-017 | E2E-014 |  |
 | 08 | P0 | FE-018 | E2E-015, E2E-016, E2E-017 |  |
 | 09 | P0 | FE-019 | E2E-011 |  |
 | 10 | P0 | FE-020 | E2E-020 |  |
