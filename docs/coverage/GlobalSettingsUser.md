@@ -1,6 +1,6 @@
 # Coverage E2E — Global Settings > User
 
-Sumber: `global-settings/user/TestCases/tc-user.md`. Cakupan saat ini: section 3a (Create, 42 TC, 35 tercakup di 4 spec, 7 dicakup TC frontend, sisi Distributor dan Partner pada TC-15 belum ada) dan section 3c–3e (Delete, Bulk, Toggle Active, Remove Access, 33 TC, 32 tercakup di 2 spec, 1 dicatat sebagai gap PRD).
+Sumber: `global-settings/user/TestCases/tc-user.md`. Cakupan saat ini: section 3a (Create, 42 TC, 35 tercakup di 4 spec, 7 dicakup TC frontend, sisi Distributor dan Partner pada TC-15 belum ada), section 3c–3e (Delete, Bulk, Toggle Active, Remove Access, 33 TC, 32 tercakup di 2 spec, 1 dicatat sebagai gap PRD), dan section 5a (Search/Filter/Sort/Pagination/Download, 44 TC tercakup di 1 spec dari 104 TC section 5a — sisanya Setup Column dan state retention, sudah dicakup TC frontend).
 Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada script.
 
 ## TC granular → spec e2e
@@ -13,6 +13,7 @@ Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada scrip
 | TC-GS-USER-E2E-004 | Scan & Pair TAG | TC-GS-USER-475 |
 | TC-GS-USER-E2E-005 | Delete, Select All, Bulk Delete/Deactivate/Activate, Toggle Active, dan Remove Access — semua Role Total Control, entity Client, digabung karena akun/entity/role sama | TC-GS-USER-36, 44, 52, 37, 45, 258, 38, 434, 433, 33, 353, 453, 34, 35, 42, 435, 41, 447, 43, 446, 46, 480, 443, 47, 445, 444, 449, 49, 352, 425, 351, 387, 50 |
 | TC-GS-USER-E2E-006 | Deactivate memaksa logout sesi target (dua sesi browser, dua akun) | TC-GS-USER-481 |
+| TC-GS-USER-E2E-007 | Search, Filter, Sort, Pagination, Download — semua yang benar-benar memukul backend dan mempengaruhi baris/urutan data nyata | TC-GS-USER-358, 359, 360, 361, 362, 554, 555, 556, 557, 357, 127, 197, 198, 199, 200, 201, 202, 207, 208, 364, 128, 218, 219, 220, 221, 222, 223, 224, 225, 227, 228, 229, 230, 210, 211, 212, 216, 132, 131, 490, 491, 492, 493, 494, 496, 497 |
 
 TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
 
@@ -25,6 +26,11 @@ TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
 | TC-GS-USER-39, 40, 451, 452, 48, 53 | Error, race, atau perubahan izin di tengah aksi yang hanya bisa dipicu mock (TC-GS-USER-FE-082, 083, 084, 085, 104, 110) |
 | TC-GS-USER-448, 458, 459, 398 | Copy dan state UI murni tanpa efek backend (TC-GS-USER-FE-102, 098, 099, 105) |
 | TC-GS-USER-51 | Expected result TC sendiri ambigu ("diblokir ATAU diizinkan"), PRD belum menegaskan salah satu. Dicatat sebagai `GAP-245` di `prd-gap-registry.md`, bukan ditulis spec dengan menebak |
+| Setup Column (129, 130, 259–307 dan sejenisnya, ~40 TC) | Murni state/rendering kolom di client (kolom apa yang tampil, urutan, pin), tidak bergantung baris data nyata. Sudah dicakup TC frontend lewat pola representative |
+| Retensi state kombinasi (213, 214, 215, 217) | Soal apakah nilai di kotak Search/indikator Sort/checkbox tetap terlihat di UI, bukan soal kebenaran baris data. Sudah dicakup TC frontend |
+| Chip rendering/overflow, badge severity/urutan, z-index popover, ekstensi nama file (203, 204, 205, 256, 460, 466, 133, dan sejenisnya) | Murni tampilan, tidak bergantung data nyata. Sudah dicakup TC frontend |
+| TC-GS-USER-363 | Download gagal server error, hanya bisa dipicu mock. Tanggung jawab TC frontend |
+| TC-GS-USER-129, 130, 202, 466 | Tidak ditemukan rujukan sama sekali di `tc-user-frontend.md` (dicek langsung, bukan tebakan dari kolom Automation). 202 tercakup tidak langsung lewat langkah 55 spec 007 (filter Access "Global Settings"); 129, 130, 466 murni state/rendering. Dilaporkan ke QA sebagai kemungkinan gap TC frontend, bukan gap e2e |
 
 ## Lapisan per TC (section 3a)
 
@@ -126,6 +132,62 @@ FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC gr
 | 481 | P1 | — | E2E-006 |  |
 
 Semua TC P0 di section ini (33, 36, 37, 41, 42, 44, 45, 49) punya dua lapisan (FE dan E2E), jadi tidak ada P0 satu lapisan di 3c–3e.
+
+## Lapisan per TC (section 5a)
+
+Tidak ada TC P0 di section ini (tertinggi P1). FE di sini memakai pola representative — satu FE TC bisa mewakili beberapa TC granular yang mekanismenya sama; kolom FE menampilkan id itu untuk semuanya.
+
+| TC | Prioritas | FE | E2E | Catatan |
+|---|---|---|---|---|
+| 358 | P1 | — | E2E-007 |  |
+| 359 | P1 | — | E2E-007 |  |
+| 360 | P1 | — | E2E-007 |  |
+| 361 | P1 | — | E2E-007 |  |
+| 362 | P2 | — | E2E-007 |  |
+| 554 | P2 | — | E2E-007 |  |
+| 555 | P2 | — | E2E-007 |  |
+| 556 | P2 | — | E2E-007 |  |
+| 557 | P2 | — | E2E-007 |  |
+| 357 | P2 | — | E2E-007 |  |
+| 127 | P1 | FE-210 | E2E-007 | Overlap sengaja, lihat aturan hibrida |
+| 197 | P1 | FE-210 | E2E-007 |  |
+| 198 | P1 | FE-210 | E2E-007 |  |
+| 199 | P1 | FE-210 | E2E-007 |  |
+| 200 | P1 | FE-211 | E2E-007 |  |
+| 201 | P1 | FE-210 | E2E-007 |  |
+| 202 | P1 | — | — | Tidak ada FE, tercakup tidak langsung lewat E2E-007 langkah 55 |
+| 207 | P2 | FE-210 | E2E-007 |  |
+| 208 | P2 | FE-211 | E2E-007 |  |
+| 364 | P1 | — | E2E-007 |  |
+| 128 | P2 | FE-220 | E2E-007 |  |
+| 218 | P2 | FE-220 | E2E-007 |  |
+| 219 | P2 | FE-220 | E2E-007 |  |
+| 220 | P2 | FE-220 | E2E-007 |  |
+| 221 | P2 | FE-220 | E2E-007 |  |
+| 222 | P2 | FE-220 | E2E-007 |  |
+| 223 | P2 | FE-220 | E2E-007 |  |
+| 224 | P2 | FE-220 | E2E-007 |  |
+| 225 | P2 | FE-220 | E2E-007 |  |
+| 227 | P2 | FE-220 | E2E-007 |  |
+| 228 | P2 | FE-220 | E2E-007 |  |
+| 229 | P2 | FE-220 | E2E-007 |  |
+| 230 | P3 | FE-220 | E2E-007 |  |
+| 132 | P2 | FE-231 | E2E-007 |  |
+| 131 | P1 | FE-230 | E2E-007 |  |
+| 490 | P2 | FE-268 | E2E-007 |  |
+| 491 | P2 | FE-269 | E2E-007 |  |
+| 492 | P2 | FE-270 | E2E-007 |  |
+| 493 | P2 | FE-271 | E2E-007 |  |
+| 494 | P2 | FE-272 | — | Duplikat TC-496 (`GAP-161` Closed), dicakup lewat TC-496 |
+| 496 | P1 | FE-272 | E2E-007 |  |
+| 497 | P2 | FE-273 | E2E-007 |  |
+| 210 | P2 | FE-216 | E2E-007 |  |
+| 211 | P2 | FE-216 | E2E-007 |  |
+| 212 | P2 | FE-218 | E2E-007 |  |
+| 216 | P2 | FE-217 | E2E-007 |  |
+| 129 | P1 | — | — | Tidak ada FE, murni state UI. Dilaporkan sebagai kemungkinan gap TC frontend |
+| 130 | P2 | — | — | Sama seperti TC-129 |
+| 466 | P2 | — | — | Tidak ada FE, murni rendering. Dilaporkan sebagai kemungkinan gap TC frontend |
 
 ## Temuan untuk QA (sumber TC, bukan spec)
 
