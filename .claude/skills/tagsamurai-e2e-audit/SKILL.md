@@ -30,9 +30,11 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - `caseType` mengikuti aturan spec gabungan bagian 8 konvensi (jenis alur utama yang dominan). Jangan menandai temuan hanya karena TC sumber campuran jenisnya.
 - Label tombol dan cara menutup form sesuai bagian 9 konvensi (Create `[Submit]`, Edit `[Save]`, `[Clear Field]`, `✕`/`Esc`, tanpa `[Cancel]` pada modal). Cocokkan ke `prd-conventions.md` §24.1, bukan hanya ke TC.
 - `coverage.web` tidak dinilai terhadap `status`. Kolom itu hanya jenis pengujian, progres dibaca dari `status`.
+- Bahasa spec Indonesia (bagian 7 konvensi): narasi Indonesia, teks UI persis seperti di aplikasi, langkah asersi diawali `Verifikasi`. Spec berbahasa Inggris adalah temuan.
+- Spec Role Matrix (bagian 3a): dipisah positif dan negatif, ada tabel "Role yang diuji", dan tiap kombinasi role × aksi punya TC granular sumber. Kombinasi tanpa TC sumber adalah temuan.
 
 **C. Spec → script**
-- Tiap langkah `Verify ...` di spec.md punya assertion di `web.test.ts`, dan urutannya sama.
+- Tiap langkah `Verifikasi ...` di spec.md punya assertion di `web.test.ts`, dan urutannya sama.
 - Script tidak berisi aksi atau assertion yang tidak ada di spec.md.
 - `it()` title = `title`. `@step` = `Step.*` (linter sudah memeriksa, konfirmasi hasilnya).
 - Assertion tidak dangkal: bukan hanya cek elemen ada padahal expected result menyebut isi, badge, atau toast tertentu.
@@ -42,8 +44,9 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - Login dan seed dilakukan di hook, bukan diulang di tiap `it()`.
 - Jumlah buka form/modal per spec tidak lebih dari jumlah kejadian yang menutup form. Tandai spec yang membuka form ulang tanpa alasan.
 - Screening ada di awal spec. Validasi yang diblokir ada sebelum aksi sukses. Kasus menutup form ada di akhir.
-- Tidak ada dua spec dengan alur dan assert yang sama, dan tidak ada spec yang seharusnya digabung (permukaan yang sama, bisa satu sesi) tetapi terpisah.
-- Spec tidak mencampur role atau entity berbeda tanpa Step ganti akun.
+- Tidak ada dua spec dengan alur dan assert yang sama, dan tidak ada spec yang seharusnya digabung (topik sama, bisa satu alur) tetapi terpisah. Sebaliknya, topik aksi berbeda dengan kondisi data bervariasi (Delete, Toggle Active, Remove Access) yang tergabung dalam satu spec adalah temuan.
+- Aksi yang menghapus data ada di akhir spec. Spec yang memakai Select All lalu Bulk Delete tidak berjalan paralel dan tidak mendahului spec lain.
+- Spec tidak mencampur role atau entity berbeda tanpa Step ganti akun, kecuali spec Role Matrix.
 - Setup yang dibutuhkan satu spec tidak ditaruh di `global-hooks`.
 - Spec yang membuat data punya cleanup, dan spec tanpa pembuatan data tidak menumpang data spec lain.
 

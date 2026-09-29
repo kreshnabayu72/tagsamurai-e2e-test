@@ -50,7 +50,7 @@ Setiap TC granular yang tidak diotomasi dicatat alasannya di `docs/coverage/<Sui
 Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spec, jadi satu spec = satu alur yang bisa dijalankan sekali jalan. Soft assertion (assert gagal tidak menghentikan spec) dan report per langkah tersedia (dikonfirmasi tim, belum saya uji sendiri).
 
 **Prinsip pengelompokan:**
-1. **Satu spec = satu alur yang bisa dijalankan berurutan tanpa henti.** Kriterianya bukan permukaan yang sama, tapi apakah kasusnya bisa lanjut dalam alur yang sama: akun, role, dan entity sama, tidak butuh hardware, dan tidak mencampur pembuat data dengan bukan pembuat data. Kalau semua itu terpenuhi, gabung walau surface-nya berbeda (contoh: dialog konfirmasi di List, toggle di Detail, dan Modal Edit bisa satu spec). Pisah hanya kalau beda akun/entity/role, bergantung hardware, atau pembuat data vs non-pembuat data perlu dipisah.
+1. **Satu spec = satu topik aksi yang bisa dijalankan berurutan tanpa henti `[KEPUTUSAN 2026-09-29]`.** Digabung kalau topiknya sama, akun/role/entity sama, tidak butuh hardware, dan tidak mencampur pembuat data dengan bukan pembuat data. Permukaan yang berbeda tidak menghalangi penggabungan. **Topik aksi yang berbeda dan masing-masing butuh kondisi data yang bervariasi dipisah walau akunnya sama**: Delete, Toggle Active, dan Remove Access adalah tiga spec. Topik yang berbagi dataset yang sama tetap satu spec (contoh: Search, Filter, Sort, Pagination, dan Download di List).
 2. **Screening (tanpa aksi) selalu di awal spec**, sebelum aksi lanjutan.
 3. **Urutan di dalam sesi:** screening, lalu validasi yang diblokir (tidak membuat data), lalu aksi yang berhasil, lalu verifikasi di list.
 4. **Variasi dari topik yang sama berurutan** (contoh: pilihan akses modul GS, FAMS, lalu entity lain).
@@ -60,19 +60,31 @@ Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spe
 8. **Pakai fitur yang menghemat**, contohnya checkbox "Stay on this form after submitting" supaya beberapa create terjadi dalam satu sesi modal tanpa membuka ulang.
 9. **Nilai batas atau nilai khusus** ditempel ke create yang assert-nya tidak bentrok. Satu nilai khusus per field per user, supaya penyebab kegagalan jelas.
 10. **TC yang isinya terbelah lintas spec** (contoh: sisi Client dan sisi Principal) dicatat di `## Notes` kedua spec.
+11. **Select All lalu Bulk Delete masuk ke spec Delete, di akhir spec `[KEPUTUSAN 2026-09-29]`.** Aksi ini menghapus semua user di environment kecuali Default User dan akun yang login, termasuk user seeding milik spec lain. Karena itu spec Delete wajib berjalan sesudah spec lain selesai dan tidak paralel dengannya. Runner belum terbukti mengikuti nomor folder, jadi cara memisahkannya (suite atau tahap run sendiri) diputuskan di tahap script.
 
 **Pisahkan spec hanya jika ada pemisah nyata:**
-- Beda akun, role, atau entity (butuh login atau konteks lain).
+- Topik aksi berbeda dengan kondisi data yang bervariasi (prinsip 1).
+- Beda akun, role, atau entity (butuh login atau konteks lain). Pengecualian: Role Matrix (bagian 3a).
 - Bergantung pada hardware atau simulasi yang berisiko (contoh: scan RFID), supaya kegagalannya tidak menutupi hasil spec lain.
 - Spec yang membuat data dan butuh cleanup dipisah dari spec yang tidak membuat data, supaya kegagalan keras di spec pembuat data tidak menutupi hasil spec lain. Soft assertion tidak menolong untuk kegagalan keras (elemen tidak ketemu, modal tidak terbuka).
 
 **Tidak boleh:**
-- Menggabung TC beda akun atau role kecuali ada Step khusus ganti akun.
+- Menggabung TC beda akun atau role kecuali (a) ada Step khusus ganti akun, atau (b) spec Role Matrix (bagian 3a) yang langkahnya identik untuk semua role.
 - Spec yang bergantung pada data atau hasil spec lain. Setiap spec bisa jalan sendiri karena suite bisa `parallel: true`, dan urutan antar spec tidak dijamin (belum diverifikasi apakah runner mengikuti nomor folder). Jadi "screening di awal" dipenuhi dengan menaruhnya sebagai langkah pertama di dalam spec.
 
 **Batas ukuran spec** bukan jumlah langkah, tetapi apakah bagian sesudahnya masih bermakna kalau bagian sebelumnya gagal keras. Beri subjudul (`### Screening`, `### Validation`, dan seterusnya) di dalam `## Test Steps` dan sebut id TC-nya di Notes atau di langkah, supaya report per langkah bisa dipetakan ke TC.
 
 **Alur sekali jalan:** login, buka layar, dan seed data dilakukan sekali di hook. Isi `it()` hanya berisi aksi dan assert yang benar-benar diuji.
+
+## 3a. Role Matrix `[KEPUTUSAN 2026-09-29]`
+
+Kasus izin per role dipisah menjadi spec **positif** dan spec **negatif** untuk tiap aksi. Satu spec dijalankan untuk banyak role, karena langkahnya identik dan hanya akun login yang berbeda. Daftar role dan akunnya ditulis di `## Prerequisites` sebagai tabel "Role yang diuji", dan langkah spec berbunyi "lakukan langkah berikut untuk setiap role pada tabel".
+
+- **Spec positif:** aksi berhasil. Role yang diuji adalah Total Control dan role spesifik yang berhak atas aksi itu.
+- **Spec negatif:** aksi tidak tersedia (Hidden atau Disabled, atau ditolak 403). Role yang diuji adalah Read Only dan role yang tidak berhak atas aksi itu.
+- Kasus yang bukan soal "aksi ditolak" (sidebar tersembunyi, direct URL 403, landing state, target yang terlindungi seperti Default User dan Self) dikelompokkan sebagai spec negatif tersendiri per topik.
+- Kombinasi role × aksi hanya boleh ditulis kalau ada TC granular sumbernya. Kombinasi yang belum punya TC dilaporkan ke QA sebagai usulan TC baru, bukan dikarang di spec.
+- Cara skrip menjalankan banyak role (perulangan di dalam satu `it()` atau beberapa kali run dengan akun berbeda) diputuskan di tahap script.
 
 ## 4. Setup dan Teardown
 
@@ -119,6 +131,7 @@ contoh: TC-GS-USER-E2E-001-create-user-happy-path
 - `NNN` urut sendiri per modul, 3 digit, tidak pernah di-renumber. Lewat 999 cukup jadi 4 digit.
 - Nomor e2e **tidak** harus sama dengan nomor TC granular, karena satu spec bisa menggabungkan beberapa TC. Hubungannya dicatat di `sourceTc`.
 - Nama folder TC = `id` di frontmatter.
+- **Bahasa spec `[KEPUTUSAN 2026-09-29]`:** `title`, heading, `## Prerequisites`, `## Test Steps`, dan `## Notes` ditulis dalam bahasa Indonesia. Teks yang tampil di aplikasi (label tombol, teks toast, tooltip, pesan error, judul dialog) ditulis persis seperti di aplikasi dan tidak diterjemahkan. Langkah asersi diawali kata `Verifikasi`. Slug pada `id` tetap bahasa Inggris supaya id tidak berubah. Spec lama yang masih berbahasa Inggris diterjemahkan sekali jalan setelah skema spec final.
 
 **Suite bersarang `specs/<ModulBesar>/<SubModul>/` (mengikuti struktur yang sudah ada di repo). Linter menerimanya dan pesan linter sendiri menyebut suite disusun lewat "directory hierarchy". Belum diuji lewat `spectra run`:**
 

@@ -23,7 +23,7 @@ Aturan lengkap ada di `docs/e2e-conventions.md`. Skill framework yang wajib dipa
    4. Hook suite (`before`: login aktor sekali per suite dan seed data lewat API kalau perlu; `afterEach`/`after`: bersihkan data yang dibuat).
    5. `web.test.ts`: satu `it()`, judul sama dengan `title` di spec.md, satu assert atau aksi per langkah di spec.md, urutannya sama.
 4. Data yang harus unik dibuat dengan suffix acak atau timestamp. Data tidak boleh diwariskan dari spec lain.
-5. Setiap langkah `Verify ...` di spec.md menjadi minimal satu assertion. Tidak boleh ada langkah spec yang tidak punya padanan di script.
+5. Setiap langkah `Verifikasi ...` di spec.md menjadi minimal satu assertion. Tidak boleh ada langkah spec yang tidak punya padanan di script.
 6. Jalankan `spectra sync-types` kalau menambah Page Object, Step, atau Fixture, lalu `pnpm type-check` dan `spectra lint --strict <path>`.
 7. Kalau lint dan type-check bersih, dan environment untuk menjalankan tersedia dan disetujui user, jalankan `spectra run "<path web.test.ts>" -t web`. Kalau berhasil, ubah `status` spec jadi `automated`. Kalau tidak bisa dijalankan, biarkan `ready-for-automation` dan laporkan alasannya.
 8. Laporkan: file yang dibuat, hasil lint/type-check/run, dan selector atau data yang masih kurang.

@@ -1,6 +1,6 @@
 # Coverage E2E — Global Settings > User
 
-Sumber: `global-settings/user/TestCases/tc-user.md`. Cakupan saat ini: section 3a (Create, 42 TC, 35 tercakup di 4 spec, 7 dicakup TC frontend, sisi Distributor dan Partner pada TC-15 belum ada), section 3c–3e (Delete, Bulk, Toggle Active, Remove Access, 33 TC, 32 tercakup di 2 spec, 1 dicatat sebagai gap PRD), dan section 5a (Search/Filter/Sort/Pagination/Download, 44 TC tercakup di 1 spec dari 104 TC section 5a — sisanya Setup Column dan state retention, sudah dicakup TC frontend).
+Sumber: `global-settings/user/TestCases/tc-user.md`. Cakupan saat ini: section 3a (Create, 42 TC, 35 tercakup di 4 spec, 7 dicakup TC frontend, sisi Distributor dan Partner pada TC-15 belum ada), section 3c–3e (Delete, Bulk, Toggle Active, Remove Access, 45 TC, 35 tercakup di 4 spec: Delete, Toggle Active, Remove Access, dan force-logout; 10 TC dicakup TC frontend), section 5a (Search/Filter/Sort/Pagination/Download, 44 TC tercakup di 1 spec dari 104 TC section 5a — sisanya Setup Column dan state retention, sudah dicakup TC frontend), dan Role Matrix section 2 + 3k (19 TC ditambah 6 TC baru 581–586, tercakup di 11 spec: 5 positif, 6 negatif).
 Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada script.
 
 ## TC granular → spec e2e
@@ -11,9 +11,22 @@ Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada scrip
 | TC-GS-USER-E2E-002 | Create sukses: 3 user dalam 1 sesi modal dengan Stay | TC-GS-USER-13, 20, 469, 471, 473, 191, 440, 341, 489, 468, 470, 472, 474, 476, 420 (batas 120), 65, 346, 21 |
 | TC-GS-USER-E2E-003 | Entity Principal | TC-GS-USER-15 (bagian Principal), 467 |
 | TC-GS-USER-E2E-004 | Scan & Pair TAG | TC-GS-USER-475 |
-| TC-GS-USER-E2E-005 | Delete, Select All, Bulk Delete/Deactivate/Activate, Toggle Active, dan Remove Access — semua Role Total Control, entity Client, digabung karena akun/entity/role sama | TC-GS-USER-36, 44, 52, 37, 45, 258, 38, 434, 433, 33, 353, 453, 34, 35, 42, 435, 41, 447, 43, 446, 46, 480, 443, 47, 445, 444, 449, 49, 352, 425, 351, 387, 50 |
+| TC-GS-USER-E2E-005 | Delete user: guard, Delete single, lalu Select All dan Bulk Delete di akhir (harus dijalankan terakhir dan tidak paralel) | TC-GS-USER-36, 37, 433, 33, 353, 453, 34, 35, 258, 38, 434 |
 | TC-GS-USER-E2E-006 | Deactivate memaksa logout sesi target (dua sesi browser, dua akun) | TC-GS-USER-481 |
 | TC-GS-USER-E2E-007 | Search, Filter, Sort, Pagination, Download — semua yang benar-benar memukul backend dan mempengaruhi baris/urutan data nyata | TC-GS-USER-358, 359, 360, 361, 362, 554, 555, 556, 557, 357, 127, 197, 198, 199, 200, 201, 202, 207, 208, 364, 128, 218, 219, 220, 221, 222, 223, 224, 225, 227, 228, 229, 230, 210, 211, 212, 216, 132, 131, 490, 491, 492, 493, 494, 496, 497 |
+| TC-GS-USER-E2E-008 | Toggle Active single dan bulk pada berbagai kondisi data | TC-GS-USER-44, 45, 42, 435, 41, 447, 43, 446, 46, 480, 443, 47, 445, 444, 449 |
+| TC-GS-USER-E2E-009 | Remove Access lewat Modal Edit pada berbagai kondisi data | TC-GS-USER-52, 51, 49, 352, 425, 351, 387, 50 |
+| TC-GS-USER-E2E-010 | Role Matrix positif Create (Total Control, Full CRUD, Create-only) | TC-GS-USER-07, 13, 394, 586 |
+| TC-GS-USER-E2E-011 | Role Matrix positif Edit dan Remove Access (Total Control, Full CRUD, Update-only) | TC-GS-USER-09, 395, 585, 586, 49 |
+| TC-GS-USER-E2E-012 | Role Matrix positif Toggle Active (Total Control, Full CRUD, Update-only) | TC-GS-USER-41, 584, 586 |
+| TC-GS-USER-E2E-013 | Role Matrix positif Delete (Total Control, Full CRUD, Delete-only) | TC-GS-USER-33, 396, 586 |
+| TC-GS-USER-E2E-014 | Role Matrix positif target Total Control (Total Control, Default User) | TC-GS-USER-79, 82 |
+| TC-GS-USER-E2E-015 | Role Matrix negatif Create (Read Only, Update-only, Delete-only) | TC-GS-USER-08, 582, 583 |
+| TC-GS-USER-E2E-016 | Role Matrix negatif Edit, Toggle Active, Resend (Read Only, Create-only, Delete-only) | TC-GS-USER-08, 85, 581, 583 |
+| TC-GS-USER-E2E-017 | Role Matrix negatif Delete (Read Only, Create-only, Update-only) | TC-GS-USER-08, 85, 581, 582 |
+| TC-GS-USER-E2E-018 | Role Matrix negatif target terlindungi Default User dan akun sendiri (Total Control, Default User) | TC-GS-USER-80, 81, 83, 86 |
+| TC-GS-USER-E2E-019 | Role Matrix negatif Full CRUD ke target Total Control | TC-GS-USER-339, 84 |
+| TC-GS-USER-E2E-020 | Role Matrix negatif akses halaman (Read Only, No Role) | TC-GS-USER-486, 10, 12, 11 |
 
 TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
 
@@ -25,7 +38,6 @@ TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
 | TC-GS-USER-15 (bagian Distributor dan Partner) | Hanya entity Principal yang dicakup spec 003. Belum ada TC lain untuk Distributor dan Partner |
 | TC-GS-USER-39, 40, 451, 452, 48, 53 | Error, race, atau perubahan izin di tengah aksi yang hanya bisa dipicu mock (TC-GS-USER-FE-082, 083, 084, 085, 104, 110) |
 | TC-GS-USER-448, 458, 459, 398 | Copy dan state UI murni tanpa efek backend (TC-GS-USER-FE-102, 098, 099, 105) |
-| TC-GS-USER-51 | Expected result TC sendiri ambigu ("diblokir ATAU diizinkan"), PRD belum menegaskan salah satu. Dicatat sebagai `GAP-245` di `prd-gap-registry.md`, bukan ditulis spec dengan menebak |
 | Setup Column (129, 130, 259–307 dan sejenisnya, ~40 TC) | Murni state/rendering kolom di client (kolom apa yang tampil, urutan, pin), tidak bergantung baris data nyata. Sudah dicakup TC frontend lewat pola representative |
 | Retensi state kombinasi (213, 214, 215, 217) | Soal apakah nilai di kotak Search/indikator Sort/checkbox tetap terlihat di UI, bukan soal kebenaran baris data. Sudah dicakup TC frontend |
 | Chip rendering/overflow, badge severity/urutan, z-index popover, ekstensi nama file (203, 204, 205, 256, 460, 466, 133, dan sejenisnya) | Murni tampilan, tidak bergantung data nyata. Sudah dicakup TC frontend |
@@ -38,7 +50,7 @@ FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC gr
 
 | TC | Prioritas | FE | E2E | Catatan |
 |---|---|---|---|---|
-| 13 | P0 | FE-027 | E2E-002 |  |
+| 13 | P0 | FE-027 | E2E-002, E2E-010 |  |
 | 14 | P1 | FE-028 | E2E-001 |  |
 | 15 | P1 | FE-029 | E2E-001, E2E-003 |  |
 | 16 | P0 | FE-030 | E2E-001 |  |
@@ -85,7 +97,7 @@ FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC gr
 
 | TC | Prioritas | FE | E2E | Catatan |
 |---|---|---|---|---|
-| 33 | P0 | FE-074 | E2E-005 |  |
+| 33 | P0 | FE-074 | E2E-005, E2E-013 |  |
 | 353 | P2 | — | E2E-005 |  |
 | 453 | P1 | FE-086 | E2E-005 |  |
 | 433 | P2 | FE-075 | E2E-005 |  |
@@ -98,37 +110,37 @@ FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC gr
 | 434 | P2 | FE-080 | E2E-005 |  |
 | 39 | P2 | FE-082 | — |  |
 | 40 | P2 | FE-083 | — |  |
-| 41 | P0 | FE-087 | E2E-005 |  |
-| 435 | P2 | FE-088 | E2E-005 |  |
-| 42 | P0 | FE-089 | E2E-005 |  |
-| 43 | P1 | FE-090 | E2E-005 |  |
-| 44 | P0 | FE-091 | E2E-005 |  |
-| 45 | P0 | FE-092 | E2E-005 |  |
-| 46 | P2 | FE-093 | E2E-005 |  |
-| 47 | P1 | FE-094 | E2E-005 |  |
-| 443 | P2 | FE-095 | E2E-005 |  |
-| 444 | P1 | FE-096 | E2E-005 |  |
-| 445 | P2 | FE-097 | E2E-005 |  |
-| 446 | P1 | FE-100 | E2E-005 |  |
-| 447 | P2 | FE-101 | E2E-005 |  |
+| 41 | P0 | FE-087 | E2E-008, E2E-012 |  |
+| 435 | P2 | FE-088 | E2E-008 |  |
+| 42 | P0 | FE-089 | E2E-008 |  |
+| 43 | P1 | FE-090 | E2E-008 |  |
+| 44 | P0 | FE-091 | E2E-008 |  |
+| 45 | P0 | FE-092 | E2E-008 |  |
+| 46 | P2 | FE-093 | E2E-008 |  |
+| 47 | P1 | FE-094 | E2E-008 |  |
+| 443 | P2 | FE-095 | E2E-008 |  |
+| 444 | P1 | FE-096 | E2E-008 |  |
+| 445 | P2 | FE-097 | E2E-008 |  |
+| 446 | P1 | FE-100 | E2E-008 |  |
+| 447 | P2 | FE-101 | E2E-008 |  |
 | 448 | P2 | FE-102 | — |  |
-| 449 | P1 | FE-103 | E2E-005 |  |
+| 449 | P1 | FE-103 | E2E-008 |  |
 | 451 | P1 | FE-084 | — |  |
 | 452 | P1 | FE-085 | — |  |
 | 458 | P1 | FE-098 | — |  |
 | 459 | P1 | FE-099 | — |  |
 | 48 | P2 | FE-104 | — |  |
 | 398 | P2 | FE-105 | — |  |
-| 49 | P0 | FE-106 | E2E-005 |  |
-| 50 | P1 | FE-107 | E2E-005 |  |
-| 51 | P2 | FE-108 | — | Dicatat sebagai `GAP-245`, tidak dijadikan spec |
-| 52 | P1 | FE-109 | E2E-005 |  |
+| 49 | P0 | FE-106 | E2E-009, E2E-011 |  |
+| 50 | P1 | FE-107 | E2E-009 | Dikoreksi 2026-09-29 (minimal 1 Access), dicakup bersama TC-387 |
+| 51 | P2 | FE-108 | E2E-009 | Sudah diputuskan tunggal (`GAP-248`): diblokir inline "Access must not be empty" |
+| 52 | P1 | FE-109 | E2E-009 |  |
 | 53 | P2 | FE-110 | — |  |
-| 351 | P1 | FE-111 | E2E-005 |  |
-| 352 | P2 | FE-112 | E2E-005 |  |
-| 387 | P1 | FE-113 | E2E-005 |  |
-| 425 | P2 | FE-114 | E2E-005 |  |
-| 480 | P1 | — | E2E-005 |  |
+| 351 | P1 | FE-111 | E2E-009 |  |
+| 352 | P2 | FE-112 | E2E-009 |  |
+| 387 | P1 | FE-113 | E2E-009 |  |
+| 425 | P2 | FE-114 | E2E-009 |  |
+| 480 | P1 | — | E2E-008 |  |
 | 481 | P1 | — | E2E-006 |  |
 
 Semua TC P0 di section ini (33, 36, 37, 41, 42, 44, 45, 49) punya dua lapisan (FE dan E2E), jadi tidak ada P0 satu lapisan di 3c–3e.
@@ -189,6 +201,38 @@ Tidak ada TC P0 di section ini (tertinggi P1). FE di sini memakai pola represent
 | 130 | P2 | — | — | Sama seperti TC-129 |
 | 466 | P2 | — | — | Tidak ada FE, murni rendering. Dilaporkan sebagai kemungkinan gap TC frontend |
 
+## Lapisan per TC (section 2 dan 3k)
+
+| TC | Prioritas | FE | E2E | Catatan |
+|---|---|---|---|---|
+| 07 | P0 | FE-017 | E2E-010 |  |
+| 08 | P0 | FE-018 | E2E-015, E2E-016, E2E-017 |  |
+| 09 | P0 | FE-019 | E2E-011 |  |
+| 10 | P0 | FE-020 | E2E-020 |  |
+| 486 | P1 | — | E2E-020 | Tidak ada FE, E2E satu-satunya lapisan (bukan P0) |
+| 11 | P0 | FE-021 | E2E-020 |  |
+| 12 | P1 | FE-022 | E2E-020 |  |
+| 339 | P1 | FE-023 | E2E-019 |  |
+| 394 | P1 | FE-024 | E2E-010 |  |
+| 395 | P1 | FE-025 | E2E-011 |  |
+| 396 | P1 | FE-026 | E2E-013 |  |
+| 79 | P0 | FE-153 | E2E-014 |  |
+| 80 | P0 | FE-154 | E2E-018 |  |
+| 81 | P0 | FE-155 | E2E-018 |  |
+| 82 | P1 | FE-156 | E2E-014 |  |
+| 83 | P1 | FE-157 | E2E-018 |  |
+| 84 | P1 | FE-158 | E2E-019 |  |
+| 85 | P0 | FE-159 | E2E-016, E2E-017 |  |
+| 86 | P1 | FE-160 | E2E-018 |  |
+| 581 | P1 | — | E2E-016, E2E-017 | TC baru 2026-09-29, belum ada padanan FE |
+| 582 | P1 | — | E2E-015, E2E-017 | TC baru 2026-09-29, belum ada padanan FE |
+| 583 | P1 | — | E2E-015, E2E-016 | TC baru 2026-09-29, belum ada padanan FE |
+| 584 | P1 | — | E2E-012 | TC baru 2026-09-29, belum ada padanan FE |
+| 585 | P1 | — | E2E-011 | TC baru 2026-09-29, belum ada padanan FE |
+| 586 | P1 | — | E2E-010, E2E-011, E2E-012, E2E-013 | TC baru 2026-09-29, belum ada padanan FE |
+
+Semua TC P0 di section ini punya dua lapisan (FE dan E2E), jadi tidak ada P0 satu lapisan. Role Matrix dipisah positif dan negatif per aksi, satu spec untuk banyak role (`docs/e2e-conventions.md` bagian 3a).
+
 ## Temuan untuk QA (sumber TC, bukan spec)
 
 1. **Nama field tidak konsisten (sudah diperbaiki di `tc-user.md` 2026-09-26).** TC-GS-USER-13 dan 14 menyebut "Full Name", sedangkan TC-16, 192, dan 420 memakai First Name dan Last Name. PRD `user.md` baris 411 menetapkan form Create memakai First/Last Name\* (maks 120), dan "Full Name" hanya untuk tampilan tabel dan header Detail. Spec mengikuti PRD. `tc-user.md` TC-13, TC-14, dan TC-254 sudah disesuaikan.
@@ -204,3 +248,7 @@ Tidak ada TC P0 di section ini (tertinggi P1). FE di sini memakai pola represent
 11. **Label tombol dan penutupan modal di TC tidak selaras dengan konvensi platform (sudah diperbaiki di `tc-user.md` 2026-09-28).** `prd-conventions.md` §24.1: Create wajib `[Submit]` dan `[Clear Field]`, Edit wajib `[Save]` dan `[Clear Field]`, modal Create dan Edit tidak punya `[Cancel]` dan ditutup lewat `✕` atau `Esc`. TC memakai `[Save]` dan `[Cancel]` pada modal Create. 29 TC Create, 8 TC penutupan modal, TC-14, dan 3 TC Edit yang memakai `[Submit]` sudah diperbaiki. TC-66 diperjelas berlaku di modal Create dan modal Edit (`[Submit]` atau `[Save]`), dikonfirmasi user.
 12. **Pengelompokan spec diubah dari 14 spec menjadi 4 spec (2026-09-28).** Prinsip baru ada di `docs/e2e-conventions.md` bagian 3: satu spec = satu atau beberapa sesi modal berurutan, screening di awal, validasi sebelum aksi sukses, kasus menutup form di akhir. Id spec di-renumber karena masih `draft` dan belum di-commit.
 13. **Error Custom Field wajib saat submit kosong tidak tercakup di TC-GS-USER-16 dan TC-GS-USER-25 (sudah diperbaiki di `tc-user.md` 2026-09-28).** Custom Field wajib divalidasi seperti field wajib lain: copy `"[Field] must not be empty"` muncul setelah Submit (pola global `prd-conventions.md` baris 207 dan 846). Ini bukan gap PRD, sehingga tidak dicatat di `prd-gap-registry.md`. TC-16 sekarang punya precondition Custom Field `Blood Type` (required) dan error ke-6 `"Blood Type must not be empty"`, dan TC-25 menyebut teks error yang sama. Spec 001 langkah 11 dan 17 memverifikasinya.
+14. **TC-GS-USER-50 dikoreksi (2026-09-29).** Precondition dan Expected menyebut Access menjadi kosong, bertentangan dengan minimal 1 Access. Sekarang memakai user `[Global Settings, FAMS]` dan hasil `[FAMS]`, dicakup spec 009 bersama TC-387.
+15. **Role Matrix: kombinasi role parsial belum ada TC, ditambahkan 6 TC baru (2026-09-29).** TC-GS-USER-581 sampai 586 ditambahkan ke `tc-user.md` section 2, berdasarkan tabel gerbang UI `user.md` §4.8. Nama akun aktor baru (Create-only, Update-only, Delete-only) di tabel Data Uji Pre-setup adalah usulan dan boleh disesuaikan tim FE.
+16. **Gap TC-51 diselesaikan sesi lain.** Entri gap yang saya buat bernomor `GAP-245` dinomori ulang menjadi `GAP-248`, dan TC-51 sudah diputuskan tunggal. Spec 009 memakainya.
+17. **Pemecahan spec 005 (2026-09-29).** Spec 005 lama (Delete, Bulk, Toggle Active, Remove Access) dipecah menjadi 005 Delete, 008 Toggle Active, dan 009 Remove Access, karena topik aksinya berbeda dan kondisi datanya bervariasi. Spec role lama 008–016 diganti oleh 010–020 (Role Matrix positif dan negatif).
