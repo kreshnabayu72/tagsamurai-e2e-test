@@ -19,20 +19,29 @@ tc-[modul].md (TC granular, dikelola QA)
 
 Sumber kebenaran tetap `tc-[modul].md`. Spec e2e adalah turunan. Perubahan isi TC dilakukan di `tc-[modul].md` dulu, baru disinkronkan ke spec.
 
-## 2. Seleksi TC yang Diotomasi `[REKOMENDASI]`
+## 2. Seleksi TC yang Diotomasi: Aturan Hibrida `[KEPUTUSAN 2026-09-28]`
 
-Kolom `Automation` di TC granular tidak cukup untuk menyeleksi, karena hampir semua TC bernilai `Automatable` (di `tc-user.md`: 537 dari 540). Pakai kriteria berikut:
+Ada tiga lapisan: **BE** (API murni, `tc-[modul]-backend.md`), **FE** (API di-mock, `tc-[modul]-frontend.md`, ditulis dan dijalankan tim FE), dan **E2E** (semua nyata). Dokumen BE dan FE tetap terpisah seperti sekarang. E2E adalah lapisan tipis. Pertanyaan penentu untuk setiap TC: **apakah e2e menambah informasi yang tidak didapat dari lapisan lain?** Bukan "apakah lapisan lain sudah mencakupnya".
+
+**Kelayakan teknis bukan kriteria seleksi `[KEPUTUSAN 2026-09-28]`:** kita menulis spec untuk apa yang seharusnya diuji, dan sengaja mendorong tim FE mengusahakan agar TC itu bisa dijalankan otomatis (dua sesi browser, simulasi hardware, akun entity khusus, mailbox uji, dan sebagainya). Semua kebutuhan (data, akun, kondisi environment, dan kemampuan teknis yang diminta) ditulis di `## Prerequisites`, yang menjadi sumber resmi bagi tim FE. `## Notes` hanya penjelasan tambahan dan tidak boleh menjadi satu-satunya tempat sebuah kebutuhan tercatat. Kalau akhirnya tidak bisa, spec ditandai `coverage.web: unsupported`, bukan dihapus. Tim FE yang menyiapkan environment-nya.
+
+Kolom `Automation` di TC granular tidak cukup untuk menyeleksi, karena hampir semua TC bernilai `Automatable` (di `tc-user.md`: 537 dari 540).
 
 **Masuk e2e:**
-- Alur bisnis utama end-to-end: create, edit, delete, toggle status, akses per role, dan alur lintas layar.
-- Prioritas P0 dan P1. P2 hanya kalau murah digabung ke spec yang sudah ada.
-- Hasil deterministik dan bisa diverifikasi dari browser.
+1. TC P0 dan alur bisnis kritis, walau lapisan lain sudah mencakupnya (overlap disengaja untuk alur yang paling berisiko).
+2. TC yang efeknya harus dibuktikan dengan backend dan data nyata: cascade, persistensi, integritas satu record, data lintas layar atau modul.
+3. Kasus murah: menambah sekitar 2 langkah di alur yang sudah ada (contoh: jalur Cancel sebelum Confirm, guard tombol disabled).
 
-**Tidak masuk e2e (sudah dicakup layer lain atau bukan area browser):**
-- State UI yang cukup diuji dengan API di-mock. Itu wilayah `tc-[modul]-frontend.md`.
-- Validasi kontrak API atau response schema. Itu wilayah `tc-[modul]-backend.md`.
-- Isi email yang terkirim, dan kolom `Automation = Manual`.
-- Permutasi granular yang hanya variasi data dan tidak menambah alur baru (digabung, lihat bagian 3).
+**Tidak masuk e2e:**
+- Error, race, atau perubahan izin di tengah aksi yang hanya bisa dipicu lewat mock: 500, 403 di tengah dialog, partial failure, 404 karena dihapus admin lain. Kalau harus di-stub, itu tes FE.
+- Copy dan state UI murni yang tidak butuh data nyata.
+- Validasi kontrak API murni dan logika server yang tidak terjangkau UI (itu wilayah BE).
+- Permukaan yang memang tidak bisa ditentukan hasilnya (contoh: konten pihak ketiga di luar kendali). Kata "Manual" atau ketidakpastian teknis di TC bukan alasan mengeluarkan TC.
+- Permutasi data yang tidak menambah alur baru (digabung, lihat bagian 3).
+
+**Data destruktif di environment automation:** environment yang dipakai run e2e adalah environment yang disiapkan dan diisolasi tim FE khusus untuk automation, bukan environment yang dipakai tester manual bersamaan. Karena itu, aksi Delete, Deactivate, atau Activate massal lewat Select All boleh dikonfirmasi sungguhan atas seluruh hasil Select All, termasuk saat kondisinya sengaja dibuat campur (banyak user, tersebar lintas halaman, status berbeda-beda) untuk menguji perilaku Select All itu sendiri (contoh: total `{N}`, exclude Default User dan Self, toggle ke Unselect All). Data yang dipakai tetap harus seeding milik automation, dicatat di Prerequisites.
+
+**Pencatatan lapisan:** `docs/coverage/<Suite>.md` punya tabel "Lapisan per TC" dengan kolom FE (id TC FE dari tabel pemetaan di `tc-[modul]-frontend.md`) dan E2E (id spec). Kolom BE belum bisa diisi per TC granular, karena `tc-[modul]-backend.md` disusun dari kontrak API dan tidak merujuk id TC granular; BE dicatat pada tingkat endpoint. TC P0 yang hanya dicakup satu lapisan ditandai. Alasan "tidak diotomasi" wajib menyebut id TC FE yang mencakupnya, atau alasan lain yang spesifik.
 
 Setiap TC granular yang tidak diotomasi dicatat alasannya di `docs/coverage/<Suite>.md` (bagian 8).
 
@@ -41,15 +50,16 @@ Setiap TC granular yang tidak diotomasi dicatat alasannya di `docs/coverage/<Sui
 Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spec, jadi satu spec = satu alur yang bisa dijalankan sekali jalan. Soft assertion (assert gagal tidak menghentikan spec) dan report per langkah tersedia (dikonfirmasi tim, belum saya uji sendiri).
 
 **Prinsip pengelompokan:**
-1. **Satu spec = satu atau beberapa sesi form/modal berurutan pada permukaan yang sama.** Semua yang bisa dilakukan dalam satu sesi digabung, diurutkan supaya tidak perlu membuka form dari awal lagi.
+1. **Satu spec = satu alur yang bisa dijalankan berurutan tanpa henti.** Kriterianya bukan permukaan yang sama, tapi apakah kasusnya bisa lanjut dalam alur yang sama: akun, role, dan entity sama, tidak butuh hardware, dan tidak mencampur pembuat data dengan bukan pembuat data. Kalau semua itu terpenuhi, gabung walau surface-nya berbeda (contoh: dialog konfirmasi di List, toggle di Detail, dan Modal Edit bisa satu spec). Pisah hanya kalau beda akun/entity/role, bergantung hardware, atau pembuat data vs non-pembuat data perlu dipisah.
 2. **Screening (tanpa aksi) selalu di awal spec**, sebelum aksi lanjutan.
 3. **Urutan di dalam sesi:** screening, lalu validasi yang diblokir (tidak membuat data), lalu aksi yang berhasil, lalu verifikasi di list.
 4. **Variasi dari topik yang sama berurutan** (contoh: pilihan akses modul GS, FAMS, lalu entity lain).
-5. **Kasus menutup form di akhir spec.** Menutup dalam keadaan dirty memakai form yang sudah dirty dari validasi, jadi tidak butuh buka tambahan. Menutup dalam keadaan bersih butuh form baru, jadi menjadi buka ulang terakhir. Jumlah minimal buka form sama dengan jumlah kejadian yang menutup form.
-6. **Tiap validasi diakhiri submit yang diblokir** dan pengecekan tidak ada data tercipta. Satu submit valid di akhir bila memang perlu membuat data.
-7. **Pakai fitur yang menghemat**, contohnya checkbox "Stay on this form after submitting" supaya beberapa create terjadi dalam satu sesi modal tanpa membuka ulang.
-8. **Nilai batas atau nilai khusus** ditempel ke create yang assert-nya tidak bentrok. Satu nilai khusus per field per user, supaya penyebab kegagalan jelas.
-9. **TC yang isinya terbelah lintas spec** (contoh: sisi Client dan sisi Principal) dicatat di `## Notes` kedua spec.
+5. **Aksi yang menghabisi atau merusak data (Delete, Bulk Delete, cascade purge, dan sejenisnya) selalu ditaruh paling akhir**, kalau spec yang sama masih punya kasus lain yang butuh baris itu tetap ada. Data yang sudah dihapus tidak bisa dipakai kasus setelahnya, jadi aksi itu ditunda sampai semua kasus lain selesai, walau sumbernya (TC granular) menyebutkannya lebih awal. Bonusnya, aksi ini di ujung sering sekaligus jadi cleanup untuk data seeding lain di spec yang sama.
+6. **Kasus menutup form di akhir spec.** Menutup dalam keadaan dirty memakai form yang sudah dirty dari validasi, jadi tidak butuh buka tambahan. Menutup dalam keadaan bersih butuh form baru, jadi menjadi buka ulang terakhir. Jumlah minimal buka form sama dengan jumlah kejadian yang menutup form.
+7. **Tiap validasi diakhiri submit yang diblokir** dan pengecekan tidak ada data tercipta. Satu submit valid di akhir bila memang perlu membuat data.
+8. **Pakai fitur yang menghemat**, contohnya checkbox "Stay on this form after submitting" supaya beberapa create terjadi dalam satu sesi modal tanpa membuka ulang.
+9. **Nilai batas atau nilai khusus** ditempel ke create yang assert-nya tidak bentrok. Satu nilai khusus per field per user, supaya penyebab kegagalan jelas.
+10. **TC yang isinya terbelah lintas spec** (contoh: sisi Client dan sisi Principal) dicatat di `## Notes` kedua spec.
 
 **Pisahkan spec hanya jika ada pemisah nyata:**
 - Beda akun, role, atau entity (butuh login atau konteks lain).

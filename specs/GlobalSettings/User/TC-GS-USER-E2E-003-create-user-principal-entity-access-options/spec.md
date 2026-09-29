@@ -16,7 +16,9 @@ coverage:
 ## Prerequisites
 
 - Login as Role: Total Control, entity is Principal
+- An account with Role Total Control exists in the Principal entity
 - A Division exists in master data of the Principal entity
+- Email for the new user is unique per run
 
 ## Test Steps
 

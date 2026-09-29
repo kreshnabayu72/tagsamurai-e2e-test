@@ -18,6 +18,8 @@ coverage:
 - Column TAG is visible via Setup Column
 - TAG "RFID-00321" is registered for this client and is not paired to any user
 - Division "Finance" exists in master data
+- The test environment can simulate an RFID scan, because a browser cannot perform a hardware scan
+- TAG "RFID-00321" is unpaired at the start of every run, and cleanup unpairs it again
 
 ## Test Steps
 
@@ -33,7 +35,6 @@ coverage:
 
 ## Notes
 
-- The TAG scan is a hardware RFID scan, which a browser cannot perform. The script needs a way to simulate the scan. Feasibility is not confirmed yet.
-- The TAG must be unpaired at the start of every run. Cleanup must unpair the TAG, otherwise the next run fails.
+- The TAG scan is a hardware RFID scan, which a browser cannot perform. The scan simulation is requested from the FE team in Prerequisites.
 - TC-GS-USER-343, 344, and 345 (scan validation failures) are covered by the frontend test cases (TC-GS-USER-FE-047, 048, 049).
 - The user is deleted in cleanup.

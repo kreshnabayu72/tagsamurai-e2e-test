@@ -18,6 +18,9 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 **A. Traceability (arah TC granular → spec)**
 - Ekstrak semua id TC di `tc-[modul].md`. Untuk tiap id: apakah muncul di `sourceTc` spec mana pun, atau tercatat di `docs/coverage/<Suite>.md` beserta alasan tidak diotomasi?
 - TC granular berprioritas P0/P1 yang tidak muncul di keduanya adalah temuan.
+- TC berprioritas P0 yang hanya dicakup satu lapisan (hanya FE, atau hanya e2e) adalah temuan.
+- Alasan "tidak diotomasi karena dicakup lapisan lain" harus menyebut id TC FE yang benar-benar ada di pemetaan `tc-[modul]-frontend.md`. Alasan yang hanya berbunyi "sudah ada FE" tanpa id adalah temuan.
+- TC yang dikeluarkan hanya karena punya padanan FE, padahal efeknya butuh backend dan data nyata (aturan hibrida poin 2), adalah temuan.
 - Cek Changelog `tc-[modul].md` sebelum menyimpulkan ada id yang hilang (id yang sudah dihapus resmi bukan temuan).
 
 **B. Traceability (arah spec → TC granular)**
@@ -47,6 +50,7 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 **E. Data**
 - Tidak ada password, token, atau kredensial di spec, fixture, atau script.
 - Data yang harus unik memakai suffix dinamis. Data yang dibuat spec dibersihkan di hook.
+- Setiap data, akun, kondisi environment, dan kemampuan teknis yang dipakai langkah spec tercantum di `## Prerequisites`, bukan hanya di `## Notes`.
 - Data pre-setup mengacu ke fixture yang cocok dengan tabel Data Uji Pre-setup di TC sumber.
 
 **F. Kode**

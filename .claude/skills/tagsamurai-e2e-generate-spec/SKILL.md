@@ -18,7 +18,7 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
 ## Langkah
 
 1. **Baca TC sumber** sampai tabel Data Uji Pre-setup dan Data Uji Dinamis, bukan hanya baris TC-nya.
-2. **Seleksi** sesuai bagian 2 konvensi. Buat daftar TC yang masuk dan yang tidak, beserta alasannya.
+2. **Seleksi** dengan aturan hibrida bagian 2 konvensi. Pertanyaan penentu: apakah e2e menambah informasi yang tidak didapat dari lapisan FE atau BE? Cek pemetaan TC FE di `tc-[modul]-frontend.md`. Buat daftar TC yang masuk dan yang tidak, beserta alasannya (sebut id TC FE bila alasannya dicakup lapisan lain). Kelayakan teknis dan label "Manual" bukan alasan mengeluarkan TC: tulis semua kebutuhan (data, akun, kondisi environment, kemampuan teknis) di `## Prerequisites` sebagai sumber resmi bagi tim FE. `## Notes` hanya penjelasan tambahan.
 3. **Kelompokkan** sesuai prinsip bagian 3 konvensi: satu spec = satu atau beberapa sesi form/modal berurutan pada permukaan yang sama, screening di awal, validasi yang diblokir sebelum aksi sukses, kasus menutup form di akhir, variasi topik yang sama berurutan. Pisahkan hanya jika beda akun/entity, bergantung hardware, atau pembuat data perlu dipisah dari yang tidak. Catat data mana yang harus dibuat sendiri per spec (bagian 5) dan berapa kali form dibuka.
 4. **Tampilkan rencana ke user dan tunggu persetujuan** sebelum menulis file. Rencana berisi tabel:
    `spec (id + judul)` | `sourceTc` | `role/precondition` | `data` | `hook/step yang dibutuhkan` | `TC yang tidak diotomasi + alasan`.
@@ -35,7 +35,7 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
    - Nilai data mengacu ke fixture (`Fixture.<berkas>.<kunci>`), bukan ditulis mentah.
    - Expected result ditulis sebagai langkah `Verify ...` yang bisa langsung menjadi assertion.
 8. Jalankan `spectra lint --strict specs/<Suite>` dan perbaiki sampai bersih.
-9. Update `docs/coverage/<Suite>.md` (TC granular → spec, atau → alasan tidak diotomasi).
+9. Update `docs/coverage/<Suite>.md`: pemetaan TC granular ke spec, alasan TC yang tidak diotomasi, dan tabel "Lapisan per TC" (FE, E2E).
 10. Laporkan ke user: daftar spec, TC yang dilewati, dan hal yang butuh keputusan. Jangan lanjut membuat `web.test.ts`, itu skill `tagsamurai-e2e-generate-script`.
 
 ## Larangan
