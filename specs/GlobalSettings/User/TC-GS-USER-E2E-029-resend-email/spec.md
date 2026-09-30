@@ -11,6 +11,7 @@ sourceTc:
   - TC-GS-USER-54
   - TC-GS-USER-57
   - TC-GS-USER-438
+  - TC-GS-USER-442
 coverage:
   web: automated
 ---
@@ -62,9 +63,17 @@ coverage:
 18. Verifikasi toast "Success, activation email has been sent." muncul
 19. Verifikasi Activation Email diterima di mailbox kedua user
 
+### Log kirim ulang email
+
+20. Buka Changelog "Fajar Nugroho" dan verifikasi ada baris Action "Resend Activation Email" dengan Field, Old Value, dan New Value semuanya "—" dan Modified By admin yang login
+21. Buka System Log akun aktor dan Global Settings > Activity Log, lalu verifikasi kedua surface mencatat baris yang sama
+22. Buka Changelog "Kiki Amelia" dan verifikasi ada baris Action "Resend Confirmation Email" dengan Field, Old Value, dan New Value semuanya "—"
+23. Buka Changelog "Gita Permata" dan "Hadi Susanto" dan verifikasi masing-masing punya satu baris "Resend Activation Email" dari kirim massal
+
 ## Notes
 
 - Screening (langkah 1 sampai 7) ditaruh di awal karena tidak mengubah data. Tombol yang tersembunyi diuji sebelum kirim, supaya kondisi user belum berubah.
 - Kirim ulang dalam masa cooldown 60 detik dicakup `TC-GS-USER-E2E-030-resend-cooldown`.
 - Kegagalan server pada Resend (`TC-GS-USER-58`) dicakup spec hanya-FE (`Mode: mock`) yang dibuat kemudian.
 - Nama row action mengikuti PRD `user.md` bagian 4.2 ("Resend Activation Email" dan "Resend Confirmation Email").
+- TC-GS-USER-442: Resend dicatat di tiga surface dengan Field, Old Value, New Value "—" karena hanya token yang berubah. Kirim massal menghasilkan satu entri per user yang diproses.

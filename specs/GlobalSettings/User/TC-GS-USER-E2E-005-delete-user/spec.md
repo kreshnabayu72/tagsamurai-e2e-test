@@ -16,6 +16,11 @@ sourceTc:
   - TC-GS-USER-258
   - TC-GS-USER-38
   - TC-GS-USER-434
+  - TC-GS-USER-145
+  - TC-GS-USER-406
+  - TC-GS-USER-164
+  - TC-GS-USER-168
+  - TC-GS-USER-367
 coverage:
   web: automated
 ---
@@ -33,6 +38,9 @@ coverage:
 - User "Wulan Setiawan" ada dan punya foto profil kustom (bukan avatar default)
 - User "Gilang Pratama", "Hesti Wulandari", dan "Ivan Setiadi" ada, semuanya Active tanpa borrowed asset dan tanpa pending approval
 - Semua user di atas adalah Login User hasil seeding automation
+- User "Wulan Setiawan" punya satu foto aktif dan dua foto historis di Recycle Bin File Manager (total tiga foto)
+- "Doni Pratama" terlibat di Fixed Asset sebagai peminjam (Borrow), assignee (Assignment), dan approver (Approvals, minimal satu riwayat)
+- Email "Budi Santoso" diketahui dan belum pernah dipakai user lain
 
 ## Test Steps
 
@@ -83,6 +91,21 @@ coverage:
 34. Verifikasi toast "Success, user has been deleted." muncul
 35. Verifikasi seluruh baris yang tadi terpilih tidak lagi muncul di User List, kecuali Default User dan akun yang login
 
+### Verifikasi log, File Manager, dan FAMS setelah Delete
+
+36. Buka Changelog dari toolbar User List dan filter ke "Budi Santoso"
+37. Verifikasi riwayat "Budi Santoso" tetap terlihat walau barisnya sudah tidak ada di User List, termasuk baris Action "Delete", Field "Name", Old Value "Budi Santoso", New Value "—", dan Modified By admin yang login
+38. Buka Global Settings > Activity Log dan verifikasi entri Delete untuk "Wulan Setiawan" melampirkan detail photosDeletedCount = 3 (satu foto aktif dan dua foto historis)
+39. Buka File Manager dan Recycle Bin, lalu verifikasi ketiga foto "Wulan Setiawan" tidak ada di keduanya (sudah hard-delete, tidak menunggu auto-purge 30 hari)
+40. Buka Fixed Asset > Borrow, tab Borrowed (By Borrower), dan cari "Doni Pratama"
+41. Verifikasi nama "Doni Pratama" tetap tampil
+42. Buka Fixed Asset > Assignment dan verifikasi nama "Doni Pratama" tetap tampil di kolom Assignee / Custodian
+43. Buka Fixed Asset > Approvals, tab History, dan verifikasi nama "Doni Pratama" tetap tampil sebagai approver
+44. Klik `[+ User]` dan buat user baru "Budi Pengganti" dengan email yang sama dengan email "Budi Santoso" sebelum dihapus
+45. Verifikasi Create berhasil tanpa error email duplikat
+46. Buka Changelog dan Activity Log "Budi Santoso" lama, lalu verifikasi email lama tetap tercatat dan tidak bentrok dengan "Budi Pengganti"
+47. Hapus "Budi Pengganti" lewat row action `Delete` dan konfirmasi dialog
+
 ## Notes
 
 - Delete user dipisah dari Toggle Active dan Remove Access karena topiknya berbeda dan kondisi datanya bervariasi (`docs/e2e-conventions.md` bagian 3, prinsip 1).
@@ -92,3 +115,4 @@ coverage:
 - TC-GS-USER-33, 353, dan 453 memakai satu user ("Budi Santoso") karena user tanpa foto dan tanpa keterikatan data cukup untuk ketiganya.
 - Bila spec gagal sebelum langkah 27, Select All dan Bulk Delete tidak berjalan, sehingga user seeding yang tersisa harus dibersihkan satu per satu.
 - TC-GS-USER-39, 40, 451, dan 452 (error, race, atau perubahan izin di tengah aksi yang hanya bisa dipicu mock) tidak dicakup di sini dan menjadi tanggung jawab lapisan frontend (TC-GS-USER-FE-082, 083, 084, 085).
+- Langkah verifikasi setelah Delete ditaruh sesudah Select All karena tidak butuh baris yang masih ada: Changelog, Activity Log, File Manager, dan Fixed Asset menyimpan snapshot user yang sudah terhapus (TC-GS-USER-145, 164, 168). Pembuatan "Budi Pengganti" (TC-GS-USER-367) dihapus lagi di langkah terakhir supaya tidak meninggalkan data.

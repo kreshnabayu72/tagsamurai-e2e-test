@@ -14,6 +14,7 @@ sourceTc:
   - TC-GS-USER-351
   - TC-GS-USER-387
   - TC-GS-USER-50
+  - TC-GS-USER-147
 coverage:
   web: automated
 ---
@@ -70,6 +71,12 @@ coverage:
 29. Buka Global Settings > Role & Permission, Tab Total Control
 30. Verifikasi "Rendi Saputra" tidak lagi muncul di Tab Total Control
 
+### Verifikasi log Remove Access
+
+31. Buka Changelog "Eka Wijaya"
+32. Verifikasi ada baris Action "Remove Access", Field "App Access", Old Value "FAMS", New Value "—", dan Modified By admin yang login
+33. Buka Changelog Role & Permission dan verifikasi entri terkait pencabutan Access "Eka Wijaya" tercatat juga, tidak ada entri yatim di salah satu sisi
+
 ## Notes
 
 - Remove Access dipisah dari Delete dan Toggle Active karena topiknya berbeda dan kondisi datanya bervariasi (`docs/e2e-conventions.md` bagian 3, prinsip 1).
@@ -79,3 +86,4 @@ coverage:
 - TC-GS-USER-387 dan TC-GS-USER-50 menjelaskan peringatan khusus Global Settings yang sama dan diverifikasi bersama pada langkah 23–30. TC-GS-USER-50 dikoreksi pada 2026-09-29 karena user yang hanya punya Access `[Global Settings]` tidak bisa kehilangan Global Settings (minimal 1 Access, `TC-GS-USER-51`), jadi user "Rendi Saputra" memakai `[Global Settings, FAMS]`.
 - TC-GS-USER-53 (error server yang hanya bisa dipicu mock) tidak dicakup di sini dan menjadi tanggung jawab lapisan frontend (TC-GS-USER-FE-110).
 - Spec ini mengubah data user seeding secara permanen (Access berkurang, `access_level` dicabut), jadi user harus di-seed ulang sebelum run berikutnya.
+- TC-GS-USER-147: Remove Access dicatat di Changelog User dan di Changelog Role & Permission (cross-reference).

@@ -15,6 +15,8 @@ sourceTc:
   - TC-GS-USER-541
   - TC-GS-USER-372
   - TC-GS-USER-77
+  - TC-GS-USER-407
+  - TC-GS-USER-163
 coverage:
   web: automated
 ---
@@ -76,6 +78,12 @@ coverage:
 27. Verifikasi toast "Success, photo has been removed." muncul dan avatar kembali ke inisial nama
 28. Verifikasi di Recycle Bin File Manager, foto "Mira Foto" tercatat dihapus oleh admin yang login (bukan "System")
 
+### Log foto dan deleter di Recycle Bin
+
+29. Buka Changelog "Lala Foto"
+30. Verifikasi ada baris Action "Edit", Field "Photo", Old Value "—", New Value "—", dan Modified By admin yang login, walau foto benar-benar berubah
+31. Buka Recycle Bin File Manager dan verifikasi foto lama "Lala Foto" dari langkah 6 sampai 16 berstatus soft-delete dengan deleter "System" (Auto-Transition), bukan hapus manual admin
+
 ## Notes
 
 - Hapus foto ditaruh paling akhir supaya foto yang dipakai kasus lain tetap ada.
@@ -83,3 +91,4 @@ coverage:
 - Pemilihan foto di Modal Edit bersifat staged: tidak ada request sampai `[Save]`, dan baru saat itu foto lama di-soft-delete otomatis.
 - `TC-GS-USER-75` dan `76` sudah diselaraskan ke PRD (`prd-conventions.md` bagian File Upload): format difilter di file picker tanpa pesan error, dan ukuran melebihi 1 MB di-resize otomatis tanpa pesan error.
 - Tampilan overlay hover (`TC-GS-USER-370`, `537`, `540`), perilaku staged Create (`538`, `539`, `543`), dan kegagalan server (`576`, `450`) dicakup spec hanya-FE (`Mode: mock`) yang dibuat kemudian.
+- TC-GS-USER-407: Photo adalah field non-teks, sehingga Old Value dan New Value tetap "—" (`prd-conventions.md` bagian 8.1). TC-GS-USER-163: deleter "System" menandakan soft-delete otomatis dari Auto-Transition.

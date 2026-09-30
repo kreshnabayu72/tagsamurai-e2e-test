@@ -9,15 +9,15 @@ Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada scrip
 
 | Spec | Isi | TC sumber |
 |---|---|---|
-| TC-GS-USER-E2E-001 | Screening, validasi, dan menutup modal (2 sesi modal, tidak membuat data) | TC-GS-USER-14, 15 (bagian Client), 25, 457, 16, 17, 19, 192, 420 (121 karakter), 18, 340, 347, 482, 431, 22, 487 |
-| TC-GS-USER-E2E-002 | Create sukses: 3 user dalam 1 sesi modal dengan Stay | TC-GS-USER-13, 20, 469, 471, 473, 191, 440, 341, 489, 468, 470, 472, 474, 476, 420 (batas 120), 65, 346, 21 |
+| TC-GS-USER-E2E-001 | Screening, validasi, dan menutup modal (2 sesi modal, tidak membuat data) | TC-GS-USER-14, 15 (bagian Client), 25, 457, 16, 17, 19, 192, 420 (121 karakter), 18, 340, 347, 482, 431, 22, 487, 169 |
+| TC-GS-USER-E2E-002 | Create sukses: 3 user dalam 1 sesi modal dengan Stay | TC-GS-USER-13, 20, 469, 471, 473, 191, 440, 341, 489, 468, 470, 472, 474, 476, 420 (batas 120), 65, 346, 21, 143, 405 |
 | TC-GS-USER-E2E-003 | Entity Principal | TC-GS-USER-15 (bagian Principal), 467 |
 | TC-GS-USER-E2E-004 | Scan & Pair TAG | TC-GS-USER-475 |
-| TC-GS-USER-E2E-005 | Delete user: guard, Delete single, lalu Select All dan Bulk Delete di akhir (harus dijalankan terakhir dan tidak paralel) | TC-GS-USER-36, 37, 433, 33, 353, 453, 34, 35, 258, 38, 434 |
-| TC-GS-USER-E2E-006 | Deactivate memaksa logout sesi target (dua sesi browser, dua akun) | TC-GS-USER-481 |
+| TC-GS-USER-E2E-005 | Delete user: guard, Delete single, lalu Select All dan Bulk Delete di akhir (harus dijalankan terakhir dan tidak paralel) | TC-GS-USER-36, 37, 433, 33, 353, 453, 34, 35, 258, 38, 434, 145, 406, 164, 168, 367 |
+| TC-GS-USER-E2E-006 | Deactivate memaksa logout sesi target (dua sesi browser, dua akun) | TC-GS-USER-481, 251 |
 | TC-GS-USER-E2E-007 | Search, Filter, Sort, Pagination, Download — semua yang benar-benar memukul backend dan mempengaruhi baris/urutan data nyata | TC-GS-USER-358, 359, 360, 361, 362, 554, 555, 556, 557, 357, 127, 197, 198, 199, 200, 201, 202, 207, 208, 364, 128, 218, 219, 220, 221, 222, 223, 224, 225, 227, 228, 229, 230, 210, 211, 212, 216, 132, 131, 490, 491, 492, 493, 494, 496, 497 |
-| TC-GS-USER-E2E-008 | Toggle Active single dan bulk pada berbagai kondisi data | TC-GS-USER-44, 45, 42, 435, 41, 447, 43, 446, 46, 480, 91, 443, 47, 445, 444, 449 |
-| TC-GS-USER-E2E-009 | Remove Access lewat Modal Edit pada berbagai kondisi data | TC-GS-USER-52, 51, 31, 49, 352, 425, 351, 387, 50 |
+| TC-GS-USER-E2E-008 | Toggle Active single dan bulk pada berbagai kondisi data | TC-GS-USER-44, 45, 42, 435, 41, 447, 43, 446, 46, 480, 91, 443, 47, 445, 444, 449, 146, 408 |
+| TC-GS-USER-E2E-009 | Remove Access lewat Modal Edit pada berbagai kondisi data | TC-GS-USER-52, 51, 31, 49, 352, 425, 351, 387, 50, 147 |
 | TC-GS-USER-E2E-010 | Role Matrix positif Create (Full CRUD, Create-only) | TC-GS-USER-394, 586 |
 | TC-GS-USER-E2E-011 | Role Matrix positif Edit dan Remove Access (Full CRUD, Update-only) | TC-GS-USER-09, 395, 585, 586 |
 | TC-GS-USER-E2E-012 | Role Matrix positif Toggle Active (Full CRUD, Update-only) | TC-GS-USER-584, 586 |
@@ -32,26 +32,58 @@ Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada scrip
 | TC-GS-USER-E2E-021 | **Varian B (tidak dipakai, file dibiarkan)**: Role Matrix positif gabungan per role — Full CRUD, Total Control, Default User, Create-only, Update-only, Delete-only. Alternatif untuk 010–014 | TC-GS-USER-09, 586, 07, 79, 82, 394, 395, 585, 584, 396 |
 | TC-GS-USER-E2E-022 | **Varian B (tidak dipakai, file dibiarkan)**: Role Matrix negatif gabungan per role — Read Only, Create-only, Update-only, Delete-only, Full CRUD, Total Control, Default User, No Role. Alternatif untuk 015–020 | TC-GS-USER-486, 08, 85, 581, 582, 583, 339, 84, 80, 81, 83, 86, 10, 12, 11 |
 | TC-GS-USER-E2E-023 | Validasi form Edit dan menutup modal Edit (pasangan Edit dari 001) | TC-GS-USER-254, 30, 422, 424, 464, 348, 432, 423, 488 |
-| TC-GS-USER-E2E-024 | Edit user berhasil dan pencatatan Changelog | TC-GS-USER-195, 26, 196, 495 |
-| TC-GS-USER-E2E-025 | Ubah email user dan alur Pending Email Change (butuh mailbox uji) | TC-GS-USER-403, 350, 27, 404, 349, 479, 421, 430, 477 |
+| TC-GS-USER-E2E-024 | Edit user berhasil dan pencatatan Changelog | TC-GS-USER-195, 26, 196, 495, 144, 409 |
+| TC-GS-USER-E2E-025 | Ubah email user dan alur Pending Email Change (butuh mailbox uji) | TC-GS-USER-403, 350, 27, 404, 349, 479, 421, 430, 477, 391, 174 |
 | TC-GS-USER-E2E-026 | Edit Access untuk produk yang subscription-nya tidak aktif (blokir data) | TC-GS-USER-389, 478 |
 | TC-GS-USER-E2E-027 | Edit info dasar Default User (ruang lingkup dibatasi sampai `GAP-274` diputuskan) | TC-GS-USER-29 (sebagian: langkah 1 sampai 2) |
-| TC-GS-USER-E2E-028 | Token konfirmasi perubahan email kedaluwarsa (butuh pemicu waktu) | TC-GS-USER-28 |
-| TC-GS-USER-E2E-029 | Kirim ulang email aktivasi dan konfirmasi (single, bulk, screening tombol tersembunyi) | TC-GS-USER-56, 439, 95, 54, 57, 438 |
+| TC-GS-USER-E2E-028 | Token konfirmasi perubahan email kedaluwarsa (butuh pemicu waktu) | TC-GS-USER-28, 174 |
+| TC-GS-USER-E2E-029 | Kirim ulang email aktivasi dan konfirmasi (single, bulk, screening tombol tersembunyi) | TC-GS-USER-56, 439, 95, 54, 57, 438, 442 |
 | TC-GS-USER-E2E-030 | Kirim ulang diblokir selama cooldown 60 detik (blokir data) | TC-GS-USER-55, 463 |
-| TC-GS-USER-E2E-031 | Pasang, ganti, dan lepas TAG RFID (butuh simulasi scan) | TC-GS-USER-59, 64, 437, 436, 63 |
+| TC-GS-USER-E2E-031 | Pasang, ganti, dan lepas TAG RFID (butuh simulasi scan) | TC-GS-USER-59, 64, 437, 436, 63, 148 |
 | TC-GS-USER-E2E-032 | Validasi Scan TAG untuk TAG tidak valid, Detail dan modal Create (blokir data) | TC-GS-USER-60, 62, 61, 343, 344, 345 |
 | TC-GS-USER-E2E-033 | Create, Edit, Delete identik di semua tier plan dan Scan TAG hanya Growth ke atas (lima entity) | TC-GS-USER-397, 342 |
 | TC-GS-USER-E2E-034 | Buat dan ubah Temporary User dengan tanggal expiry | TC-GS-USER-66, 336, 68 |
-| TC-GS-USER-E2E-035 | Temporary User nonaktif otomatis saat expiry (berbasis waktu) | TC-GS-USER-67 |
+| TC-GS-USER-E2E-035 | Temporary User nonaktif otomatis saat expiry (berbasis waktu) | TC-GS-USER-67, (perbaikan: Auto-Deactivate di Changelog dan Activity Log, bukan System Log) |
 | TC-GS-USER-E2E-036 | Reaktivasi Temporary User expired dan Bulk Activate yang melewatinya (blokir data) | TC-GS-USER-89, 333, 335, 90, 354, 332, 334, 337 |
 | TC-GS-USER-E2E-037 | Reset Authenticator user lain, akun sendiri, dan Default User (dua sesi login) | TC-GS-USER-71, 72, 94, 69 |
 | TC-GS-USER-E2E-038 | Reset Authenticator tidak tersedia untuk user belum enrolled (blokir data) | TC-GS-USER-70 |
-| TC-GS-USER-E2E-039 | Kelola foto profil dari User Detail dan Modal Edit | TC-GS-USER-75, 76, 74, 371, 78, 542, 373, 541, 372, 77 |
+| TC-GS-USER-E2E-039 | Kelola foto profil dari User Detail dan Modal Edit | TC-GS-USER-75, 76, 74, 371, 78, 542, 373, 541, 372, 77, 407, 163 |
 | TC-GS-USER-E2E-040 | Pembuatan user diblokir saat Master Data Count Limit tercapai (jalan terakhir dan sendirian) | TC-GS-USER-255, 23, 87, 402 |
 | TC-GS-USER-E2E-041 | Data master dihapus atau di-rename saat form terbuka (dua sesi login) | TC-GS-USER-88, 461, 462 |
 | TC-GS-USER-E2E-042 | Dua admin mengubah user yang sama bersamaan (dua sesi login) | TC-GS-USER-441, 401, 399, 400 |
 | TC-GS-USER-E2E-043 | Custom Field Phone tersimpan gabungan dan terbaca kembali di Edit | TC-GS-USER-514 |
+| TC-GS-USER-E2E-044 | Perubahan master data Position tercermin di dropdown form User | TC-GS-USER-166, 415, 416 |
+| TC-GS-USER-E2E-045 | Siklus Custom Field User (buat, deactivate, reactivate, ganti tipe, hapus) tercermin di form dan detail | TC-GS-USER-414, 167, 411, 413, 412 |
+| TC-GS-USER-E2E-046 | Status Active Global tercermin di Settings User Admin Console (dua aplikasi) | TC-GS-USER-170 |
+| TC-GS-USER-E2E-047 | User yang dinonaktifkan hilang dari pilihan transaksi baru di Fixed Asset | TC-GS-USER-388, 579, 580 |
+| TC-GS-USER-E2E-048 | User hasil Import tampil dan bisa di-Edit sama seperti user manual | TC-GS-USER-417, 418 |
+| TC-GS-USER-E2E-049 | Status user menjadi Activated setelah user mengaktifkan akunnya (mailbox uji) | TC-GS-USER-419 |
+| TC-GS-USER-E2E-050 | Konfirmasi ganti email membatalkan token Reset Password lama (mailbox uji) | TC-GS-USER-544, 174 |
+| TC-GS-USER-E2E-051 | User entity lain tidak bocor ke User List (banyak entity) | TC-GS-USER-171, 392 |
+| TC-GS-USER-E2E-052 | Seleksi bulk dibatasi Bulk Action Checkbox Limit (jalan sendirian) | TC-GS-USER-410, 393 |
+| TC-GS-USER-E2E-053 | Assign, Check Out, Check In, Unassign Handheld tercatat di log user | TC-GS-USER-390 |
+| TC-GS-USER-E2E-054 | Tab Role: tampilan, edit CRUD inline, dan sinkron dua arah dengan Role & Permission | TC-GS-USER-96, 578, 454, 355, 98, 165 |
+| TC-GS-USER-E2E-055 | Auto-Revert Total Control dari Tab Role: batal dulu, lalu lanjut (jalan sendirian) | TC-GS-USER-483, 455, 575 |
+| TC-GS-USER-E2E-056 | Target menerima notifikasi saat Total Control atau Read Only dicabut otomatis | TC-GS-USER-252, 253 |
+| TC-GS-USER-E2E-057 | Tab Role tidak bisa diedit aktor Read Only atau capability holder pada target Total Control | TC-GS-USER-498, 499 |
+| TC-GS-USER-E2E-058 | Modal Changelog User > Role: kolom, Action, Filter, Search, Download, Setup Column, sinkron | TC-GS-USER-568, 569, 570, 571, 572, 573, 574 |
+| TC-GS-USER-E2E-059 | Tab Responsibilities menyesuaikan sub-tab dengan entity dan subscription (banyak entity) | TC-GS-USER-100, 101, 484, 104, 380 |
+| TC-GS-USER-E2E-060 | Kolom, urutan, dan toolbar tiap sub-tab Responsibilities | TC-GS-USER-550, 551, 552, 553, 103, 546, 105, 106, 107, 381 |
+| TC-GS-USER-E2E-061 | Empty state per sub-tab Responsibilities dan pencarian tanpa kecocokan | TC-GS-USER-102, 547, 548, 549 |
+| TC-GS-USER-E2E-062 | Tab Non-Login User di Detail Login User (reverse-lookup) | TC-GS-USER-108, 109, 560, 561, 562, 565 |
+| TC-GS-USER-E2E-063 | Filter, Search, sort, Download, Setup Column di Tab Non-Login User | TC-GS-USER-563, 564, 566, 567 |
+| TC-GS-USER-E2E-064 | Ubah Custom Field langsung di User Detail dengan inline-edit | TC-GS-USER-374, 375, 376, 377, 378, 379, 120, 119 |
+| TC-GS-USER-E2E-065 | Inline-edit Custom Field tidak tersedia untuk aktor Read Only dan capability holder | TC-GS-USER-500, 501 |
+| TC-GS-USER-E2E-066 | Custom Field dinonaktifkan admin lain saat inline-edit terbuka (dua sesi, jalan sendirian) | TC-GS-USER-121 |
+| TC-GS-USER-E2E-067 | Tab Changelog dan modal Changelog identik, System Log mencatat aksi yang dilakukan user | TC-GS-USER-110, 111 |
+| TC-GS-USER-E2E-068 | Tab User Log: kolom, format Device / Browser, sort IP Address berbasis string | TC-GS-USER-112, 356 |
+| TC-GS-USER-E2E-069 | Activity Log level Global Settings menampilkan aksi semua user | TC-GS-USER-116 |
+| TC-GS-USER-E2E-070 | Product Selector: opsi produk dan navigasi ke Detail User produk lain | TC-GS-USER-117, 118, 485, 545 |
+| TC-GS-USER-E2E-071 | Opsi Product Selector yang tidak boleh dibaca aktor hilang dari daftar | TC-GS-USER-456 |
+| TC-GS-USER-E2E-072 | Badge User Type dan status Authenticator | TC-GS-USER-122, 123, 124, 426, 125 |
+| TC-GS-USER-E2E-073 | Header dan General Information User Detail, termasuk tampilan Custom Fields | TC-GS-USER-382, 383, 384, 385, 386, 536 |
+| TC-GS-USER-E2E-074 | Toggle Active dan menu Header Disabled untuk target yang dilindungi | TC-GS-USER-502, 503, 504 |
+| TC-GS-USER-E2E-075 | Inline-edit Custom Field gagal karena error server (`Mode: mock`) | TC-GS-USER-577 |
 
 TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
 
@@ -294,3 +326,15 @@ Semua TC P0 di section ini punya dua lapisan (FE dan E2E), jadi tidak ada P0 sat
 24. **TC-GS-USER-75 dan 76 diselaraskan ke PRD (2026-09-30).** `prd-conventions.md` bagian File Upload (Photo): format difilter di file picker tanpa pesan error, ukuran melebihi 1 MB di-resize otomatis tanpa pesan error. TC lama mengharapkan inline error keduanya. Diperbaiki di `tc-user.md` (Tipe 76 dan 75 menjadi Positive).
 25. **Gap baru dari pencocokan PRD (2026-09-30).** `GAP-277`: aturan dan copy error tanggal Temporary Until lampau (PRD "≥ hari ini" tanpa copy error; copy hanya di API). `GAP-278`: copy Dialog Blok Master Data Count Limit untuk User tidak didefinisikan (Position punya). Spec 034 dan 040 menyesuaikan.
 26. **TC-GS-USER-91 dicakup spec 008.** Skenarionya sama dengan TC-480 (Deactivate single dengan approval in-flight).
+27. **Audit Log diselaraskan ke PRD §8 (2026-09-30).** TC-67 (Auto-Deactivate hanya di Changelog dan Activity Log, bukan System Log), TC-143 (judul salah: Create ada di System Log aktor, bukan User Log), TC-144 dan TC-146 (baris System Log lengkap dan Field `Status (Global)`) diperbaiki di `tc-user.md`. Spec 035 diperbaiki sesuai.
+28. **Section 6, 8, 9, 11 (bagian A) ditambahkan sebagai langkah di spec yang sudah ada (2026-09-30).** Pengecekan log dan efek lintas modul yang menempel pada aksi yang sama tidak dibuat spec baru: 143/405 (002), 144/409 (024), 145/406/164/168/367 (005), 146/408 (008), 147 (009), 391/174 (025 dan 028), 442 (029), 148 (031), 407/163 (039), 251 (006), 169 (001).
+29. **Section 6–11 selesai diproses (2026-09-30).** Hanya-BE: TC-173 (hash token di database) dan TC-176 (penegakan limit server-side lewat API langsung, `TC-GS-USER-BE-117`). Section 7 (API Contract) tidak punya TC granular dan Section 10 hanya tabel silang. TC-165, 252, 253 ditunda ke Tab Role lalu selesai di spec 054 dan 056. `TC-GS-USER-175` tidak pernah ditulis (bukan gap).
+30. **GAP-274 sampai GAP-278 sudah ditutup PRD owner (2026-09-30) dan spec disesuaikan.** Access Default User derived dan terkunci (spec 027 memverifikasi checkbox Access Disabled), link konfirmasi yang tidak live menghasilkan 410 (spec 025, 028, 050), toast Edit ubah email memakai toast standar (spec 025), batas Temporary Until adalah besok (spec 034, 036), dan Dialog Blok "Limit Reached" (spec 040). `tc-user.md` digabung dengan versi remote: TC-23, 27, 28, 29, 66, 333 mengikuti keputusan PRD, dengan koreksi Auto-Deactivate (TC-67), foto (TC-75, 76), dan Audit Log (TC-143, 144, 146) dari sesi ini.
+31. **GAP-279 (baru): teks badge Pending Email tidak konsisten di dalam `user.md`.** [F-USER-03] versi baru menulis badge "Pending Email Change", sedangkan §3, §4.1, §4.2, dan API menulis "Pending Email Confirmation". TC-27 dan 28 serta spec 025, 028, 050 memakai "Pending Email Confirmation" sampai PRD owner memutuskan.
+32. **Section 4b, 4c, 4d, 4g diproses menjadi spec 054–066 (2026-09-30).** Tab Role (054–058), Responsibilities (059–061), Non-Login User (062–063), dan inline-edit Custom Field (064–066). Selaras PRD kecuali dua temuan: `GAP-281` (empty state Tab Role tidak didefinisikan dan bertentangan dengan 6 baris tetap, sehingga TC-99 tidak masuk spec) dan PRD `user.md` §4.1 menyebut tabel Tab Role "sortable" sedangkan §4.2a menyebut tanpa sort (spec 054 mengikuti §4.2a dan TC-355).
+33. **Antrean `Mode: mock` bertambah dari Section 4:** TC-577 (Save custom field gagal server), TC-536 (tampilan Phone), dan Section 4a (382–386, 502–504) serta 4e, 4f, 4h yang belum dibahas. Teks TC-121 menyebut `404 field_not_found` yang tidak ada di `user.md`; spec 066 hanya memverifikasi perilaku FE.
+34. **GAP-282 (baru): empty state Tab Responsibilities Principal dengan nol approval ambigu.** `user.md` §7 punya baris empty global dan empty Pending Approvals yang sama-sama berlaku untuk entity dengan satu sub-tab. Bagian Principal TC-548 dikeluarkan dari spec 061 sampai PRD owner memutuskan.
+35. **Section 4a, 4e, 4f, 4h diproses menjadi spec 067–075 (2026-09-30).** TC-113 ditambahkan sebagai langkah di spec 050, TC-115 di spec 037, dan TC-114 dicatat di sourceTc spec 035 (baris Changelog-nya sudah diverifikasi di sana). Spec 075 adalah spec hanya-FE pertama (`Mode: mock`).
+36. **`TC-GS-USER-117` dikoreksi ke PRD §4.1 (Changelog `tc-user.md` 2026-09-30 (9)).** Expected lama menyebut data di halaman yang sama ter-update, sedangkan PRD tegas klik opsi Product Selector adalah navigasi penuh ke Detail User produk tujuan.
+37. **GAP-283 (baru): warna badge User Type (selain Non Login) tidak didefinisikan di PRD.** TC-122, 123, 124, 426 menyebut warna; spec 072 hanya memverifikasi teks badge.
+38. **Contoh IP TC-356 tidak membedakan sort string dan numerik.** `10.0.0.1` dan `192.168.1.5` berurutan sama pada kedua cara. Spec 068 memakai `9.1.1.1` dan `10.0.0.1`. Contoh di `tc-user.md` belum diubah.

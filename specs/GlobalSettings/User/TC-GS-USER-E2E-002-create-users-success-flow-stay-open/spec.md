@@ -23,6 +23,8 @@ sourceTc:
   - TC-GS-USER-65
   - TC-GS-USER-346
   - TC-GS-USER-21
+  - TC-GS-USER-143
+  - TC-GS-USER-405
 coverage:
   web: automated
 ---
@@ -84,6 +86,15 @@ coverage:
 30. Verify User 3 shows Temporary User Yes and Temporary Until as the selected date, not "—"
 31. Open the User Detail of User 3 and verify it shows "Temporary until [date]" with the selected date
 
+### Audit log of User 1
+
+32. Open the Changelog of User 1
+33. Verify a row with Action "Create", Field "Name", Old Value "—", New Value "Budi Santoso", and Modified By the logged in admin
+34. Open the System Log of the logged in admin (User Detail of the admin, Tab System Log)
+35. Verify a row Create, Object User, Name "Budi Santoso", Field "Name", Old Value "—", New Value "Budi Santoso"
+36. Open Global Settings > Activity Log and verify the same Create row exists with Modified By the logged in admin
+37. Open the User Log of the logged in admin and verify it contains only login and session events, with no Create entry
+
 ## Notes
 
 - One spec covers one modal session. "Stay on this form after submitting" stays checked for Users 1 and 2 so the modal is opened only once, and it is unchecked for User 3 so the last submit closes the modal.
@@ -93,3 +104,4 @@ coverage:
 - TC-GS-USER-13 also expects the invitation email to be sent. Email delivery is outside the browser, so this spec does not assert it. It also expects no in-app notification for other users, which needs a second user session and is not covered here.
 - The double-click in step 8 is timing sensitive. The script must delay the Create response deterministically.
 - All 3 users must be deleted in cleanup, even if the spec fails midway.
+- TC-GS-USER-143 and 405: Create appears in the Changelog, the actor System Log, and the Activity Log (full parity, user.md section 8.6), but not in the User Log.

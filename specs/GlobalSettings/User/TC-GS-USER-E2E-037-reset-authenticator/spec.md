@@ -9,6 +9,7 @@ sourceTc:
   - TC-GS-USER-72
   - TC-GS-USER-94
   - TC-GS-USER-69
+  - TC-GS-USER-115
 coverage:
   web: automated
 ---
@@ -52,6 +53,8 @@ coverage:
 15. Klik `[Reset]`
 16. Verifikasi toast "Success, authenticator has been reset for Rina Wijaya." muncul
 17. Verifikasi status Authenticator "Rina Wijaya" berubah menjadi "Not enrolled yet"
+18. Buka Changelog "Rina Wijaya"
+19. Verifikasi ada baris Action "Reset Authenticator", Field "Authenticator Enrollment", Old "Enrolled", New "Not Enrolled", dan Modified By admin yang login
 
 ## Notes
 

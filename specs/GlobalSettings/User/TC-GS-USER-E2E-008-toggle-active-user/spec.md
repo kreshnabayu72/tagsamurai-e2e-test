@@ -21,6 +21,8 @@ sourceTc:
   - TC-GS-USER-445
   - TC-GS-USER-444
   - TC-GS-USER-449
+  - TC-GS-USER-146
+  - TC-GS-USER-408
 coverage:
   web: automated
 ---
@@ -92,6 +94,14 @@ coverage:
 42. Klik `[Deactivate]` pada dialog
 43. Verifikasi toast "Success, user has been deactivated." muncul
 
+### Verifikasi log Toggle Active
+
+44. Buka Changelog "Siti Rahmawati"
+45. Verifikasi ada baris Action "Deactivate", Field "Status (FAMS)", Old Value "Active", New Value "Inactive" (dari langkah 3)
+46. Verifikasi ada baris Action "Deactivate", Field "Status (Global)", Old Value "Active", New Value "Inactive" dan baris Action "Activate", Field "Status (Global)", Old Value "Inactive", New Value "Active" (dari langkah 10 dan 17)
+47. Buka System Log akun aktor dan Global Settings > Activity Log
+48. Verifikasi kedua surface mencatat baris yang sama dengan aktor dan timestamp yang konsisten dengan Changelog
+
 ## Notes
 
 - Toggle Active dipisah dari Delete dan Remove Access karena topiknya berbeda dan kondisi datanya bervariasi (`docs/e2e-conventions.md` bagian 3, prinsip 1).
@@ -99,3 +109,4 @@ coverage:
 - Langkah 40 memakai "Umar Fauzi" dan bukan "Yanti Kusuma" untuk sisi approval TC-GS-USER-449, karena "Yanti Kusuma" sudah Inactive sejak langkah 22–25.
 - TC-GS-USER-48, 448, 458, 459, dan 398 (error server yang hanya bisa dipicu mock, serta perilaku tampilan bulk bar) tidak dicakup di sini dan menjadi tanggung jawab lapisan frontend (TC-GS-USER-FE-104, 102, 098, 099, 105).
 - Spec ini tidak menghapus data. User seeding yang berubah status dibersihkan atau di-seed ulang sebelum run berikutnya.
+- TC-GS-USER-146 dan 408: Status Global dan Status per-produk dicatat sebagai baris berbeda ("Status (Global)" dan "Status (FAMS)"), dan ketiganya muncul di Changelog, System Log aktor, dan Activity Log (`user.md` bagian 8.3 dan 8.6).

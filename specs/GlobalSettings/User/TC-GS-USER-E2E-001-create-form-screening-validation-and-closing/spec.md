@@ -21,6 +21,7 @@ sourceTc:
   - TC-GS-USER-431
   - TC-GS-USER-22
   - TC-GS-USER-487
+  - TC-GS-USER-169
 coverage:
   web: automated
 ---
@@ -35,6 +36,7 @@ coverage:
 - Custom Field "Blood Type" is defined as required
 - User "Doni Pratama" already exists and its email is known
 - Employee ID "EMP-001" is already used by another user in this entity
+- A Non-Login User exists and its email is known
 
 ## Test Steps
 
@@ -85,6 +87,13 @@ coverage:
 37. Click `✕` without filling any field
 38. Verify the modal closes immediately and the unsaved changes dialog does not appear
 
+### Email shared with a Non-Login User
+
+39. Click `[+ User]` again and fill every required field with valid values
+40. Replace Email with the email of the existing Non-Login User
+41. Verify inline error "Email already exists" appears immediately while typing, then click `[Submit]` and verify submit is blocked and the data is not saved
+42. Click `✕` and click `[Leave]` on the dialog
+
 ## Notes
 
 - One spec covers two modal sessions. Steps 3 to 34 run in the first session, which ends with `[Leave]`. Steps 36 to 38 run in a second session, because the clean-close case needs a freshly opened modal.
@@ -94,3 +103,4 @@ coverage:
 - The close action is `✕` in the header. `Esc` also closes the modal. The Create modal has no `[Cancel]` button (prd-conventions.md section 24.1). `[Cancel]` exists only on the unsaved changes dialog.
 - The emoji rule follows prd-conventions.md "Karakter yang Diizinkan (Name Fields)": only emoji is blocked, symbols are allowed.
 - No data is created by this spec, so it needs no cleanup.
+- TC-GS-USER-169: the email uniqueness constraint covers Login and Non-Login Users in one table, so steps for this case run in a third modal session at the end.

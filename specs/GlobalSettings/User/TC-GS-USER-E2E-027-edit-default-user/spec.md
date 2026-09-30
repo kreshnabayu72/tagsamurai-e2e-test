@@ -1,6 +1,6 @@
 ---
 id: TC-GS-USER-E2E-027-edit-default-user
-title: Edit info dasar Default User oleh Total Control
+title: Edit info dasar Default User oleh Total Control dengan Access terkunci
 priority: High
 caseType: Positive
 status: draft
@@ -10,7 +10,7 @@ coverage:
   web: automated
 ---
 
-# Edit info dasar Default User oleh Total Control
+# Edit info dasar Default User oleh Total Control dengan Access terkunci
 
 ## Prerequisites
 
@@ -23,14 +23,16 @@ coverage:
 1. Klik row action `Edit` pada baris Default User
 2. Verifikasi modal Edit terbuka normal, tidak Disabled dan tidak Hidden
 3. Ubah Position dan Division menjadi "Manager" dan "Operations"
-4. Klik `[Save]`
-5. Verifikasi toast "Success, user has been updated." muncul dan baris Default User menampilkan Position "Manager" dan Division "Operations"
-6. Klik `Edit` pada baris Default User lagi, kembalikan Position dan Division ke nilai awal, lalu klik `[Save]`
-7. Verifikasi toast "Success, user has been updated." muncul dan baris Default User kembali ke Position dan Division awal
+4. Verifikasi checkbox Access Disabled dengan semua produk entitas tercentang
+5. Hover checkbox Access yang Disabled dan verifikasi tooltip "Default User cannot be modified."
+6. Klik `[Save]`
+7. Verifikasi toast "Success, user has been updated." muncul dan baris Default User menampilkan Position "Manager" dan Division "Operations"
+8. Klik `Edit` pada baris Default User lagi, kembalikan Position dan Division ke nilai awal, lalu klik `[Save]`
+9. Verifikasi toast "Success, user has been updated." muncul dan baris Default User kembali ke Position dan Division awal
 
 ## Notes
 
-- Ruang lingkup spec ini sengaja dibatasi ke info dasar sampai `GAP-274` diputuskan. `TC-GS-USER-29` langkah 3 dan 4 (tambah dan hapus produk di Access Default User) tidak ditulis di sini karena perilaku Access Default User berbeda antara PRD/API (menambah boleh, menghapus ditolak `403`) dan konfirmasi UIUX (Access otomatis semua modul dan tidak bisa diedit).
-- Setelah `GAP-274` diputuskan, langkah Access ditambahkan. Bila keputusannya checkbox Access disabled, langkahnya berupa `Verifikasi checkbox Access disabled`.
+- Access Default User bersifat derived: otomatis mencakup seluruh produk entitas termasuk yang ditambahkan kemudian, dan tidak bisa diedit (`GAP-274` sudah ditutup, PRD `USER-LOGIC-02` dan bagian 4.8).
+- Percobaan mengubah `access[]` Default User lewat API langsung ditolak `403`, dan itu dicakup lapisan BE, bukan spec ini.
 - `access_level` Default User (Total Control) tidak diedit dari sini dan terkunci permanen di modul Role & Permission (`USER-LOGIC-02`).
-- Langkah 6 mengembalikan data awal, jadi spec tidak meninggalkan perubahan.
+- Langkah 8 mengembalikan data awal, jadi spec tidak meninggalkan perubahan.

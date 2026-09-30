@@ -28,27 +28,31 @@ coverage:
 2. Centang "Set as Temporary User" dan isi Temporary Until dengan tanggal kemarin
 3. Klik `[Submit]`
 4. Verifikasi inline error "Please select a future date." muncul dan user tidak dibuat
+5. Ganti Temporary Until dengan tanggal hari ini lalu klik `[Submit]`
+6. Verifikasi inline error "Please select a future date." muncul lagi dan user tidak dibuat
 
 ### Buat Temporary User
 
-5. Ganti Temporary Until dengan tanggal 7 hari dari hari ini lalu klik `[Submit]`
-6. Verifikasi user "Bambang Sementara" tercipta dan badge "Temporary" tampil pada barisnya
-7. Buka Changelog user "Bambang Sementara"
-8. Verifikasi ada baris dengan Action "Set Temporary User", Field "Temporary Until", Old "—", New tanggal 7 hari itu, dan Modified By admin yang membuat
+7. Ganti Temporary Until dengan tanggal besok (batas terkecil yang valid) lalu klik `[Submit]`
+8. Verifikasi user "Bambang Sementara" tercipta dan badge "Temporary" tampil pada barisnya
+9. Buka Changelog user "Bambang Sementara"
+10. Verifikasi ada baris dengan Action "Set Temporary User", Field "Temporary Until", Old "—", New tanggal besok itu, dan Modified By admin yang membuat
 
 ### Validasi tanggal di modal Edit
 
-9. Klik row action `Edit` pada "Bambang Sementara"
-10. Ganti Temporary Until dengan tanggal kemarin lalu klik `[Save]`
-11. Verifikasi inline error "Please select a future date." muncul dan data tidak berubah
+11. Klik row action `Edit` pada "Bambang Sementara"
+12. Ganti Temporary Until dengan tanggal kemarin lalu klik `[Save]`
+13. Verifikasi inline error "Please select a future date." muncul dan data tidak berubah
+14. Ganti Temporary Until dengan tanggal hari ini lalu klik `[Save]`
+15. Verifikasi inline error "Please select a future date." muncul dan data tidak berubah
 
 ### Perpanjang expiry
 
-12. Ganti Temporary Until dengan tanggal 30 hari dari hari ini lalu klik `[Save]`
-13. Verifikasi toast "Success, user has been updated." muncul
-14. Verifikasi kolom Temporary Until pada "Bambang Sementara" menampilkan tanggal baru dan user tetap Active (tidak ada auto-deactivate prematur)
+16. Ganti Temporary Until dengan tanggal 30 hari dari hari ini lalu klik `[Save]`
+17. Verifikasi toast "Success, user has been updated." muncul
+18. Verifikasi kolom Temporary Until pada "Bambang Sementara" menampilkan tanggal baru dan user tetap Active (tidak ada auto-deactivate prematur)
 
 ## Notes
 
-- Pesan "Please select a future date." ada di API (`user-crud.yaml`, `activePeriodUntilPast`), tetapi PRD `user.md` bagian 6 hanya mendefinisikan pesan wajib diisi dan batas tanggal "≥ hari ini". Ketidaksinkronan ini dicatat sebagai `GAP-277`. Spec memakai tanggal kemarin, yang jelas di masa lalu menurut kedua aturan.
+- Batas Temporary Until adalah besok atau lebih (PRD `user.md` bagian 6 dan [F-USER-09], `GAP-277` sudah ditutup): kemarin dan hari ini ditolak dengan "Please select a future date.", besok diterima.
 - Nonaktif otomatis saat expiry dicakup `TC-GS-USER-E2E-035-temporary-auto-deactivate`, dan reaktivasi user Temporary yang sudah expired dicakup `TC-GS-USER-E2E-036-reaktivasi-temporary-expired`.

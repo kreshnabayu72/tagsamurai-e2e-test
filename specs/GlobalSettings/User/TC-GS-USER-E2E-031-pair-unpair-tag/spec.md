@@ -10,6 +10,7 @@ sourceTc:
   - TC-GS-USER-437
   - TC-GS-USER-436
   - TC-GS-USER-63
+  - TC-GS-USER-148
 coverage:
   web: automated
 ---
@@ -54,6 +55,12 @@ coverage:
 18. Verifikasi toast "Success, TAG has been unpaired." muncul
 19. Verifikasi badge kembali "Unverified" dan hanya tombol `Scan TAG` yang tampil (tanpa `Unpair`)
 
+### Log pairing TAG
+
+20. Buka Changelog "Oscar Ramadhan"
+21. Verifikasi ada baris Action "Pair TAG", Field "TAG", Old Value "—", New Value kode TAG A
+22. Verifikasi ada baris Action "Unpair TAG", Field "TAG", Old Value kode TAG B, New Value "—"
+
 ## Notes
 
 - Spec ini butuh simulasi scan hardware. Dipisah dari spec lain supaya kegagalan hardware tidak menutupi hasil spec lain.
@@ -61,3 +68,4 @@ coverage:
 - Pair di modal Create dicakup `TC-GS-USER-E2E-004-create-user-scan-pair-tag`.
 - Validasi TAG yang ditolak dicakup `TC-GS-USER-E2E-032-validasi-scan-tag`.
 - Perubahan TAG dari Modal Edit bersifat staged sampai `[Save]`, sedangkan dari User Detail instan dengan toast sendiri.
+- TC-GS-USER-148: pair dan unpair TAG dicatat dengan Field "TAG" (`user.md` bagian 8.3).

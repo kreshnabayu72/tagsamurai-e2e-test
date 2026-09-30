@@ -44,7 +44,7 @@ coverage:
 
 6. Klik toggle Active ON pada "Dewi Kedaluwarsa" lagi lalu pilih opsi "Extend period"
 7. Isi tanggal kemarin lalu klik `[Reactivate]`
-8. Verifikasi inline error tanggal wajib di masa depan muncul, dialog tetap terbuka, dan "Dewi Kedaluwarsa" tetap Inactive
+8. Verifikasi inline error "Please select a future date." muncul, dialog tetap terbuka, dan "Dewi Kedaluwarsa" tetap Inactive, lalu ulangi dengan tanggal hari ini dan verifikasi hasil yang sama
 9. Klik `[Cancel]`
 
 ### Tiga titik masuk

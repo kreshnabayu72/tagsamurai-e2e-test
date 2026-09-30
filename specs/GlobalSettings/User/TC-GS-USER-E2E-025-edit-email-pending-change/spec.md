@@ -14,6 +14,8 @@ sourceTc:
   - TC-GS-USER-421
   - TC-GS-USER-430
   - TC-GS-USER-477
+  - TC-GS-USER-391
+  - TC-GS-USER-174
 coverage:
   web: automated
 ---
@@ -51,7 +53,7 @@ coverage:
 ### Ubah email user Activated
 
 8. Klik `Edit` pada baris "Lina Marlina", ganti Email dengan alamat baru pertama, lalu klik `[Save]`
-9. Verifikasi toast "Confirmation email sent to new address." muncul
+9. Verifikasi toast "Success, user has been updated." muncul (toast Edit standar)
 10. Verifikasi badge "Pending Email Confirmation" muncul pada baris "Lina Marlina" dan kolom Email masih menampilkan alamat awal
 11. Buka Confirmation Email di alamat baru pertama
 12. Verifikasi subject "Confirm your new email address"
@@ -61,7 +63,7 @@ coverage:
 
 14. Klik `Edit` pada "Lina Marlina", ganti Email dengan alamat baru kedua, lalu klik `[Save]`
 15. Buka link konfirmasi lama (dari email di alamat baru pertama)
-16. Verifikasi link lama membuka halaman 404 (tidak valid)
+16. Verifikasi link lama menghasilkan respons 410 dengan pesan "This confirmation link has expired or was already used."
 17. Verifikasi badge "Pending Email Confirmation" masih ada dan hanya link dari alamat baru kedua yang berlaku
 
 ### Menutup modal saat Pending Email Change
@@ -81,8 +83,14 @@ coverage:
 27. Klik `[Cancel]` inline lagi, lalu klik `[Cancel Change]`
 28. Verifikasi toast "Success, pending email change has been canceled." muncul, dialog tertutup, modal Edit tetap terbuka, label dan tombol `[Cancel]` inline hilang, dan field Email kembali normal
 29. Buka link konfirmasi dari email di alamat baru kedua
-30. Verifikasi link membuka halaman 404 token tidak valid (bukan 500 dan bukan konfirmasi sukses)
+30. Verifikasi link menghasilkan respons 410 dengan pesan "This confirmation link has expired or was already used." (bukan 500 dan bukan konfirmasi sukses)
 31. Verifikasi Changelog, System Log, dan Activity Log masing-masing mencatat "Cancel Email Change" dengan Modified By admin yang login
+
+### Changelog perubahan email
+
+32. Buka Changelog "Eka Prasetyo"
+33. Verifikasi ada baris Action "Email Updated", Field "Email", Old Value alamat awal, New Value alamat baru, dan Modified By admin yang login, dan bukan "Pending Email Change"
+34. Buka Changelog "Lina Marlina" dan verifikasi ada baris Action "Pending Email Change" untuk perubahan email pertama
 
 ## Notes
 
@@ -91,5 +99,6 @@ coverage:
 - Kedaluwarsa token (`TC-GS-USER-28`) butuh pemicu waktu dan dicakup `TC-GS-USER-E2E-028-email-token-kedaluwarsa`.
 - Kegagalan server saat membatalkan Pending Email Change (`TC-GS-USER-559`) dicakup spec hanya-FE (`Mode: mock`) yang dibuat kemudian.
 - Teks badge di baris adalah "Pending Email Confirmation" dan label di bawah field Email pada modal Edit adalah "Pending email change to [new email]", keduanya sesuai PRD (`user.md` bagian 4.1 dan 4.2). `tc-user.md` sudah diselaraskan pada 2026-09-30.
-- Toast di langkah 9 mengikuti `TC-GS-USER-27`. PRD hanya mendefinisikan toast Edit standar "Success, user has been updated." dan tidak menyebut toast khusus untuk perubahan email, sehingga dicatat sebagai `GAP-276`. Langkah 9 disesuaikan bila PRD diputuskan.
+- Perubahan email user Activated memakai toast Edit standar "Success, user has been updated." (PRD `user.md` bagian 7 dan [F-USER-03], `GAP-276` sudah ditutup). Link konfirmasi yang tidak lagi live (diganti, dibatalkan, kedaluwarsa, sudah dipakai) menghasilkan 410, dan 404 hanya untuk token yang tidak dikenal (`GAP-275` sudah ditutup).
 - Klik link di email dan pembacaan mailbox butuh kemampuan teknis dari tim FE (dicatat di Prerequisites).
+- TC-GS-USER-391: email user Pending Activation langsung diperbarui dan dicatat sebagai "Email Updated", sedangkan user Activated memakai "Pending Email Change". TC-GS-USER-174 (link lama menghasilkan 410, bukan error 500) dicakup pada langkah 16 dan 30 untuk token yang sudah diganti dan yang dibatalkan.

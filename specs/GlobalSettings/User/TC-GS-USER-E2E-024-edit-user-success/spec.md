@@ -9,6 +9,8 @@ sourceTc:
   - TC-GS-USER-26
   - TC-GS-USER-196
   - TC-GS-USER-495
+  - TC-GS-USER-144
+  - TC-GS-USER-409
 coverage:
   web: automated
 ---
@@ -22,6 +24,7 @@ coverage:
 - Position "Supervisor" dan "Manager" ada di master data
 - Division "Operations" ada di master data
 - Spec ini mengubah nama user "Budi Santoso" menjadi "Budi Kusuma", jadi datanya dibuat ulang oleh seeding sebelum run berikutnya
+- Entity berlisensi SAMS dan "Budi Santoso" awalnya punya Access ["Global Settings"] saja
 
 ## Test Steps
 
@@ -60,9 +63,17 @@ coverage:
 22. Verifikasi masing-masing field punya tepat satu entri, tidak ada entri ganda untuk perubahan yang sama
 23. Verifikasi field yang tidak diubah (Name, Email, Employee ID, Access, Toggle Active) tidak menghasilkan entri, dan tidak ada entri nyasar ke user lain
 
+### Log Edit dan Access tambahan
+
+24. Buka System Log akun aktor (User Detail akun aktor, Tab System Log)
+25. Verifikasi ada baris Action "Edit", Object "User", Name "Budi Santoso", Field "Position", Old Value "Staff", New Value "Supervisor"
+26. Klik `Edit` pada "Budi Kusuma", centang Access tambahan "SAMS", lalu klik `[Save]`
+27. Buka Changelog "Budi Kusuma" dan verifikasi ada baris Action "Add Access", Field "App Access", Old Value "—", New Value "SAMS", dan Modified By admin yang login
+
 ## Notes
 
 - `TC-GS-USER-195` sengaja di awal karena tidak mengubah data dan hasilnya (tidak ada entri) dibandingkan dengan jumlah entri sebelum langkah 3.
 - Tombol `[Save]` dalam state loading dan disabled selama request (`TC-GS-USER-194`) butuh respons yang ditunda, sehingga dicakup spec hanya-FE (`Mode: mock`) yang dibuat kemudian.
 - Kegagalan server pada Edit (`TC-GS-USER-32`) juga dicakup spec hanya-FE.
 - Sumber TC menulis Changelog Edit sebagai satu baris per field (PRD bagian 8), dengan snapshot Old dan New yang tidak berubah retroaktif.
+- TC-GS-USER-409: Add Access dipicu dari checkbox Access di Modal Edit, dengan Action "Add Access" berbeda dari "Remove Access".
