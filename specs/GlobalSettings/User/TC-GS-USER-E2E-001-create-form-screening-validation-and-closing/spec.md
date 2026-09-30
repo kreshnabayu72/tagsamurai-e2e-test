@@ -63,12 +63,12 @@ coverage:
 18. Fill "Blood Type", then type "Budi 😊" into First Name and Last Name and verify the emoji never enters the fields and no error appears
 19. Type "Budi-O'Neil" into First Name and Last Name and verify the symbols are accepted and remain in both fields
 20. Restore valid values for First Name and Last Name
-21. For each of First Name, Last Name, and Employee ID, enter 121 characters while the other fields stay valid, click `[Submit]`, and verify inline error "Max. 120 characters" appears on that field and submit is blocked
+21. For each of First Name, Last Name, and Employee ID, enter 121 characters while the other fields stay valid, verify inline error "Max. 120 characters" appears immediately while typing, then click `[Submit]` and verify submit is blocked
 22. Restore values of at most 120 characters
-23. Replace Email with the existing email of "Doni Pratama" and click `[Submit]`
-24. Verify inline error "Email already exists" appears and the data is not saved
-25. Replace Email with a unique valid email, enter Employee ID "EMP-001", and click `[Submit]`
-26. Verify inline error "Employee ID already exists" appears and the data is not saved
+23. Replace Email with the existing email of "Doni Pratama"
+24. Verify inline error "Email already exists" appears immediately while typing (debounce about 500 ms), then click `[Submit]` and verify submit is blocked and the data is not saved
+25. Replace Email with a unique valid email and enter Employee ID "EMP-001"
+26. Verify inline error "Employee ID already exists" appears immediately while typing (debounce about 500 ms), then click `[Submit]` and verify submit is blocked and the data is not saved
 27. Click `[Clear Field]` and verify every field, including Custom Field "Blood Type", is emptied and the modal stays open
 28. Click `[Submit]` on the empty form to raise validation errors and verify red borders and inline errors appear
 29. Click `[Clear Field]` and verify every field is emptied, red borders and inline errors are gone, and the modal stays open

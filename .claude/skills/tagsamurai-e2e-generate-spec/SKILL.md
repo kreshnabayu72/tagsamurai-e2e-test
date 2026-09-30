@@ -9,7 +9,7 @@ Aturan lengkap ada di `docs/e2e-conventions.md`. Baca dokumen itu dulu, lalu iku
 
 ## Input yang wajib ada
 
-1. Path `tc-[modul].md` (TC granular) dan kalau ada `tc-[modul]-frontend.md`.
+1. Path `tc-[modul].md` (TC granular) dan kalau ada `tc-[modul]-backend.md` (untuk mengenali TC hanya-BE).
 2. Kode prefix modul dari `foundation/tc-prefix-registry.md` (contoh `GS` + `USER`).
 3. Cakupan yang diminta (seluruh submodul, satu section, atau daftar TC).
 
@@ -18,10 +18,10 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
 ## Langkah
 
 1. **Baca TC sumber** sampai tabel Data Uji Pre-setup dan Data Uji Dinamis, bukan hanya baris TC-nya.
-2. **Seleksi** dengan aturan hibrida bagian 2 konvensi. Pertanyaan penentu: apakah e2e menambah informasi yang tidak didapat dari lapisan FE atau BE? Cek pemetaan TC FE di `tc-[modul]-frontend.md`. Buat daftar TC yang masuk dan yang tidak, beserta alasannya (sebut id TC FE bila alasannya dicakup lapisan lain). Kelayakan teknis dan label "Manual" bukan alasan mengeluarkan TC: tulis semua kebutuhan (data, akun, kondisi environment, kemampuan teknis) di `## Prerequisites` sebagai sumber resmi bagi tim FE. `## Notes` hanya penjelasan tambahan.
+2. **Seleksi** dengan bagian 2 konvensi: semua TC masuk spec kecuali yang hanya-BE. Kasus hanya-FE (tampilan murni, tooltip, Setup Column, hover, keystroke, kegagalan server) tetap masuk sebagai spec dengan `Mode: mock` di `## Prerequisites`; kasus yang memukul backend nyata masuk sebagai spec FE+BE. Hambatan teknis dan label "Manual" bukan alasan mengeluarkan TC: tulis semua kebutuhan (data, akun, waktu, kuota, race, pemicu kegagalan, kemampuan teknis) di `## Prerequisites` sebagai sumber resmi bagi tim FE. `## Notes` hanya penjelasan tambahan. Buat daftar TC yang masuk dan yang hanya-BE.
 3. **Kelompokkan** sesuai prinsip bagian 3 konvensi: satu spec = satu topik aksi yang bisa dijalankan berurutan, screening di awal, validasi yang diblokir sebelum aksi sukses, aksi yang menghapus data di akhir, kasus menutup form di akhir, variasi topik yang sama berurutan. Pisahkan topik aksi berbeda yang butuh kondisi data bervariasi (Delete, Toggle Active, Remove Access), beda entity, bergantung hardware, atau pembuat data yang perlu dipisah dari yang tidak. Kasus blokir karena kondisi data target (bukan validasi field dan bukan blokir identitas atau role) dijadikan spec sendiri per topik (prinsip 12). Kasus izin per role mengikuti bagian 3a (Role Matrix): spec positif dan negatif per aksi, satu spec untuk banyak role. Catat data mana yang harus dibuat sendiri per spec (bagian 5) dan berapa kali form dibuka.
 4. **Tampilkan rencana ke user dan tunggu persetujuan** sebelum menulis file. Rencana berisi tabel:
-   `spec (id + judul)` | `sourceTc` | `role/precondition` | `data` | `hook/step yang dibutuhkan` | `TC yang tidak diotomasi + alasan`.
+   `spec (id + judul)` | `sourceTc` | `role/precondition` | `data` | `hook/step yang dibutuhkan` | `mode (FE+BE / mock)` | `TC hanya-BE`.
 5. Setelah disetujui, buat di `specs/<ModulBesar>/<SubModul>/` (PascalCase, contoh `specs/GlobalSettings/User/`):
    - `suite.md` hanya jika belum ada (`id: suite-<kebab>`, `parallel: true` hanya jika semua spec independen). Kalau sudah ada, pakai apa adanya.
    - `TC-<ModulBesar>-<SubModul>-E2E-<NNN>-<slug>/spec.md`, dengan `NNN` melanjutkan nomor terakhir di suite itu.
@@ -36,7 +36,7 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
    - Nilai data mengacu ke fixture (`Fixture.<berkas>.<kunci>`), bukan ditulis mentah.
    - Expected result ditulis sebagai langkah `Verifikasi ...` yang bisa langsung menjadi assertion.
 8. Jalankan `spectra lint --strict specs/<Suite>` dan perbaiki sampai bersih.
-9. Update `docs/coverage/<Suite>.md`: pemetaan TC granular ke spec, alasan TC yang tidak diotomasi, dan tabel "Lapisan per TC" (FE, E2E).
+9. Update `docs/coverage/<Suite>.md`: pemetaan TC granular ke spec, alasan TC hanya-BE, dan tabel "Lapisan per TC" (Spec, Mode).
 10. Laporkan ke user: daftar spec, TC yang dilewati, dan hal yang butuh keputusan. Jangan lanjut membuat `web.test.ts`, itu skill `tagsamurai-e2e-generate-script`.
 
 ## Larangan

@@ -19,31 +19,39 @@ tc-[modul].md (TC granular, dikelola QA)
 
 Sumber kebenaran tetap `tc-[modul].md`. Spec e2e adalah turunan. Perubahan isi TC dilakukan di `tc-[modul].md` dulu, baru disinkronkan ke spec.
 
-## 2. Seleksi TC yang Diotomasi: Aturan Hibrida `[KEPUTUSAN 2026-09-28]`
+## 2. Seleksi TC: Dokumen E2E Merangkap TC FE `[KEPUTUSAN 2026-09-30]`
 
-Ada tiga lapisan: **BE** (API murni, `tc-[modul]-backend.md`), **FE** (API di-mock, `tc-[modul]-frontend.md`, ditulis dan dijalankan tim FE), dan **E2E** (semua nyata). Dokumen BE dan FE tetap terpisah seperti sekarang. E2E adalah lapisan tipis. Pertanyaan penentu untuk setiap TC: **apakah e2e menambah informasi yang tidak didapat dari lapisan lain?** Bukan "apakah lapisan lain sudah mencakupnya".
+Dokumen TC per submodul ada tiga: **TC ori** (`tc-[modul].md`, sumber semua TC), **TC BE** (`tc-[modul]-backend.md`, kasus hanya-BE), dan **TC E2E** (kumpulan `spec.md` di repo ini). Spec e2e sekarang merangkap dokumen TC FE: `tc-[modul]-frontend.md` tidak dibuat lagi untuk modul yang mengikuti pola ini, dan integration test FE (API di-mock, di repo FE) memakai `spec.md` sebagai acuannya. Pembersihan dokumen `tc-[modul]-frontend.md` yang sudah ada dilakukan terpisah dan tidak dikerjakan bersama pekerjaan spec.
+
+**Satu-satunya TC yang tidak masuk spec adalah TC hanya-BE** (validasi kontrak API dan logika server yang tidak terjangkau UI). Semua TC lain masuk spec, termasuk tampilan murni, tooltip, Setup Column, hover, keystroke, dan kegagalan server (500, timeout).
+
+Spec dibagi menurut **mode eksekusi**, karena persiapannya berbeda:
+- **Spec FE+BE:** dijalankan TestSpectra terhadap backend nyata, dengan data seeding di backend.
+- **Spec hanya-FE:** dijalankan tim FE sebagai integration test dengan API di-mock (kasus 500, timeout, payload izin, tampilan murni). Ditandai dengan baris `Mode: mock` di `## Prerequisites`. Kebutuhan mock (respons apa yang dipaksa, di endpoint mana) ditulis di Prerequisites juga.
+
+Spec hanya-FE dikelompokkan per layar atau topik UI (contoh: "Setup Column", "Tooltip dan disabled state", "Foto profil: hover dan staged", "Custom Field: input"), bukan satu spec per TC dan bukan satu spec raksasa.
 
 **Kelayakan teknis bukan kriteria seleksi `[KEPUTUSAN 2026-09-28]`:** kita menulis spec untuk apa yang seharusnya diuji, dan sengaja mendorong tim FE mengusahakan agar TC itu bisa dijalankan otomatis (dua sesi browser, simulasi hardware, akun entity khusus, mailbox uji, dan sebagainya). Semua kebutuhan (data, akun, kondisi environment, dan kemampuan teknis yang diminta) ditulis di `## Prerequisites`, yang menjadi sumber resmi bagi tim FE. `## Notes` hanya penjelasan tambahan dan tidak boleh menjadi satu-satunya tempat sebuah kebutuhan tercatat. Kalau akhirnya tidak bisa, spec ditandai `coverage.web: unsupported`, bukan dihapus. Tim FE yang menyiapkan environment-nya.
 
 Kolom `Automation` di TC granular tidak cukup untuk menyeleksi, karena hampir semua TC bernilai `Automatable` (di `tc-user.md`: 537 dari 540).
 
-**Masuk e2e:**
-1. TC P0 dan alur bisnis kritis, walau lapisan lain sudah mencakupnya (overlap disengaja untuk alur yang paling berisiko).
-2. TC yang efeknya harus dibuktikan dengan backend dan data nyata: cascade, persistensi, integritas satu record, data lintas layar atau modul.
-3. Kasus murah: menambah sekitar 2 langkah di alur yang sudah ada (contoh: jalur Cancel sebelum Confirm, guard tombol disabled).
+**Masuk spec (semua kecuali hanya-BE):**
+1. TC yang efeknya harus dibuktikan dengan backend dan data nyata: cascade, persistensi, integritas satu record, data lintas layar atau modul (spec FE+BE).
+2. TC yang perilakunya di browser: tampilan, tooltip, state disabled, hover, keystroke, Setup Column, retensi state (spec hanya-FE, atau langkah tambahan di spec FE+BE bila murah).
+3. Kegagalan server (500, timeout), race, dan perubahan izin di tengah aksi, termasuk yang butuh pemicu khusus. Kalau dipicu lewat mock, masuk spec hanya-FE (`Mode: mock`). Kalau bisa dipicu di backend nyata, masuk spec FE+BE.
+4. Kasus murah: menambah sekitar 2 langkah di alur yang sudah ada (contoh: jalur Cancel sebelum Confirm, guard tombol disabled).
 
-**Tidak masuk e2e:**
-- Error, race, atau perubahan izin di tengah aksi yang hanya bisa dipicu lewat mock: 500, 403 di tengah dialog, partial failure, 404 karena dihapus admin lain. Kalau harus di-stub, itu tes FE.
-- Copy dan state UI murni yang tidak butuh data nyata.
+**Tidak masuk spec:**
 - Validasi kontrak API murni dan logika server yang tidak terjangkau UI (itu wilayah BE).
-- Permukaan yang memang tidak bisa ditentukan hasilnya (contoh: konten pihak ketiga di luar kendali). Kata "Manual" atau ketidakpastian teknis di TC bukan alasan mengeluarkan TC.
-- Permutasi data yang tidak menambah alur baru (digabung, lihat bagian 3).
+- Permutasi data yang tidak menambah alur baru (digabung, lihat bagian 3). Ini penggabungan, bukan pengecualian: id TC-nya tetap dicatat di `sourceTc`.
+
+**Hambatan teknis bukan alasan mengeluarkan TC:** data, akun, waktu, kuota, race, kegagalan server, hardware, atau konfigurasi khusus tidak pernah menjadi alasan. Kebutuhannya ditulis di `## Prerequisites` dan tim FE yang menyiapkan environment. Kata "Manual" atau ketidakpastian teknis di TC juga bukan alasan.
 
 **Data destruktif di environment automation:** environment yang dipakai run e2e adalah environment yang disiapkan dan diisolasi tim FE khusus untuk automation, bukan environment yang dipakai tester manual bersamaan. Karena itu, aksi Delete, Deactivate, atau Activate massal lewat Select All boleh dikonfirmasi sungguhan atas seluruh hasil Select All, termasuk saat kondisinya sengaja dibuat campur (banyak user, tersebar lintas halaman, status berbeda-beda) untuk menguji perilaku Select All itu sendiri (contoh: total `{N}`, exclude Default User dan Self, toggle ke Unselect All). Data yang dipakai tetap harus seeding milik automation, dicatat di Prerequisites.
 
-**Pencatatan lapisan:** `docs/coverage/<Suite>.md` punya tabel "Lapisan per TC" dengan kolom FE (id TC FE dari tabel pemetaan di `tc-[modul]-frontend.md`) dan E2E (id spec). Kolom BE belum bisa diisi per TC granular, karena `tc-[modul]-backend.md` disusun dari kontrak API dan tidak merujuk id TC granular; BE dicatat pada tingkat endpoint. TC P0 yang hanya dicakup satu lapisan ditandai. Alasan "tidak diotomasi" wajib menyebut id TC FE yang mencakupnya, atau alasan lain yang spesifik.
+**Pencatatan lapisan:** `docs/coverage/<Suite>.md` punya tabel "Lapisan per TC" dengan kolom Spec (id spec) dan Mode (`FE+BE` atau `mock`). Kolom BE belum bisa diisi per TC granular, karena `tc-[modul]-backend.md` disusun dari kontrak API dan tidak merujuk id TC granular; BE dicatat pada tingkat endpoint. Kolom id TC FE lama (`FE-xxx`) dipertahankan sementara sebagai referensi selama `tc-[modul]-frontend.md` belum dibersihkan.
 
-Setiap TC granular yang tidak diotomasi dicatat alasannya di `docs/coverage/<Suite>.md` (bagian 8).
+Setiap TC granular yang tidak masuk spec (hanya-BE) dicatat alasannya di `docs/coverage/<Suite>.md` (bagian 8).
 
 ## 3. Efisiensi: Pengelompokan Spec `[KEPUTUSAN 2026-09-28]`
 
@@ -118,7 +126,7 @@ TC granular punya dua tabel data: **Pre-setup** (data tetap di environment, misa
 ## 6. Real Backend vs Mock
 
 - Alur normal (happy path, validasi, permission) memakai backend asli `[REKOMENDASI]`.
-- `Spectra.intercept()` hanya untuk kondisi yang tidak bisa dipicu dengan aman: error 500, timeout, dan response lambat. Skenario seperti ini biasanya sudah ada juga di `tc-[modul]-frontend.md`, jadi pastikan e2e memang menambah nilai.
+- `Spectra.intercept()` untuk kondisi yang tidak bisa dipicu dengan aman di backend nyata: error 500, timeout, dan response lambat. Kasus seperti ini tetap ditulis sebagai spec, dengan `Mode: mock` dan kebutuhan mock-nya di Prerequisites.
 - Target environment untuk e2e (staging, lokal, atau lainnya) belum ditentukan. Sementara `spectra.config.ts` masih menunjuk ke demo app bawaan.
 
 ## 7. Penamaan dan Struktur
