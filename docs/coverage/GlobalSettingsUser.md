@@ -84,6 +84,58 @@ Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada scrip
 | TC-GS-USER-E2E-073 | Header dan General Information User Detail, termasuk tampilan Custom Fields | TC-GS-USER-382, 383, 384, 385, 386, 536 |
 | TC-GS-USER-E2E-074 | Toggle Active dan menu Header Disabled untuk target yang dilindungi | TC-GS-USER-502, 503, 504 |
 | TC-GS-USER-E2E-075 | Inline-edit Custom Field gagal karena error server (`Mode: mock`) | TC-GS-USER-577 |
+| TC-GS-USER-E2E-076 | Tombol Save modal Edit loading dan tidak bisa diklik ganda (`Mode: mock`) | TC-GS-USER-194 |
+| TC-GS-USER-E2E-077 | Batalkan perubahan email gagal server (`Mode: mock`) | TC-GS-USER-559 |
+| TC-GS-USER-E2E-078 | Hapus foto profil dari Avatar gagal server (`Mode: mock`) | TC-GS-USER-576 |
+| TC-GS-USER-E2E-079 | Ganti foto profil gagal server, foto lama tidak berubah (`Mode: mock`) | TC-GS-USER-450 |
+| TC-GS-USER-E2E-080 | Download User List gagal server (`Mode: mock`) | TC-GS-USER-363 |
+| TC-GS-USER-E2E-081 | Delete user yang sudah dihapus admin lain saat dialog terbuka (dua sesi) | TC-GS-USER-451 |
+| TC-GS-USER-E2E-082 | Delete ditolak saat role aktor dicabut ketika dialog terbuka (dua sesi) | TC-GS-USER-452 |
+| TC-GS-USER-E2E-083 | Create menolak emoji yang lolos guard FE lewat manipulasi DOM | TC-GS-USER-193 |
+| TC-GS-USER-E2E-084 | Edit menolak emoji yang lolos guard FE lewat manipulasi DOM | TC-GS-USER-465 |
+| TC-GS-USER-E2E-085 | Dialog bulk Activate/Deactivate: satu user, daftar panjang, aksi disembunyikan | TC-GS-USER-458, 459, 448, 398 |
+| TC-GS-USER-E2E-086 | Overlay hover Avatar di User Detail dan modal Edit (`Mode: mock`) | TC-GS-USER-370, 540 |
+| TC-GS-USER-E2E-087 | Foto di modal Create hanya staged sampai Submit (`Mode: mock`) | TC-GS-USER-537, 538, 539 |
+| TC-GS-USER-E2E-088 | Perubahan foto di modal Edit dibuang saat modal ditutup (`Mode: mock`) | TC-GS-USER-543 |
+| TC-GS-USER-E2E-089 | Setup Column User List: overlay, popup modal, Live Preview (`Mode: mock`) | TC-GS-USER-259, 260, 129, 133 |
+| TC-GS-USER-E2E-090 | Setup Column User List: sembunyikan dan munculkan kolom (`Mode: mock`) | TC-GS-USER-261–274 |
+| TC-GS-USER-E2E-091 | Setup Column User List: urutan kolom (`Mode: mock`) | TC-GS-USER-276–289, 130 |
+| TC-GS-USER-E2E-092 | Setup Column User List: pin dan unpin (`Mode: mock`) | TC-GS-USER-291–304 |
+| TC-GS-USER-E2E-093 | Setup Column User List: Reset to Default dan Cancel (`Mode: mock`) | TC-GS-USER-306, 307 |
+| TC-GS-USER-E2E-094 | Siklus interaksi search box toolbar User List (`Mode: mock`) | TC-GS-USER-126 |
+| TC-GS-USER-E2E-095 | Tampilan kolom Name dan Access (`Mode: mock`) | TC-GS-USER-177, 466, 460 |
+| TC-GS-USER-E2E-096 | Filter Access: isi opsi, pencarian, OR, chip | TC-GS-USER-203, 204, 205, 256 |
+| TC-GS-USER-E2E-097 | Search, Filter, Sort, seleksi baris tidak saling mereset | TC-GS-USER-213, 214, 215, 217 |
+| TC-GS-USER-E2E-098 | Search parsial, case-insensitive, Filter Division dengan Active | TC-GS-USER-140, 141, 142 |
+| TC-GS-USER-E2E-099 | Badge Pending Activation dan Pending Email Confirmation mutually exclusive | TC-GS-USER-338 |
+| TC-GS-USER-E2E-100 | Download User List mengikuti kolom yang terlihat | TC-GS-USER-494 |
+| TC-GS-USER-E2E-101 | Sub-tab Login User dan Non-Login User menyimpan state sendiri | TC-GS-USER-134, 135 |
+| TC-GS-USER-E2E-102 | Setup Column tab log berbeda dari User List (`Mode: mock`) | TC-GS-USER-136 |
+| TC-GS-USER-E2E-103 | Search, Filter, Download di tiga tab log User Detail | TC-GS-USER-137, 138, 139 |
+| TC-GS-USER-E2E-104 | Guided Tooltip User List: auto-trigger, replay, navigasi, keluar tanpa selesai | TC-GS-USER-185–190 |
+| TC-GS-USER-E2E-105 | Aksesibilitas keyboard: kontrol, tooltip, dialog (`Mode: mock`) | TC-GS-USER-182, 183, 184 |
+| TC-GS-USER-E2E-106 | Input Custom Field di modal Create | TC-GS-USER-505–513 |
+| TC-GS-USER-E2E-107 | Input Custom Field di modal Edit | TC-GS-USER-527–535 |
+| TC-GS-USER-E2E-108 | Placeholder Custom Field bawaan dan kustom (`Mode: mock`) | TC-GS-USER-515–526 |
+| TC-GS-USER-E2E-109 | Modal Changelog User List: struktur, kolom, Search | TC-GS-USER-232, 233, 250, 558 |
+| TC-GS-USER-E2E-110 | Modal Changelog User List: Filter | TC-GS-USER-234–241, 257, 558 |
+| TC-GS-USER-E2E-111 | Modal Changelog User List: sort tiga keadaan | TC-GS-USER-242–246 |
+| TC-GS-USER-E2E-112 | Modal Changelog User List: Download | TC-GS-USER-249 |
+| TC-GS-USER-E2E-113 | Modal Changelog User List: hover truncate (`Mode: mock`) | TC-GS-USER-247 |
+| TC-GS-USER-E2E-114 | Setup Column modal Changelog: overlay, popup, sembunyikan kolom (`Mode: mock`) | TC-GS-USER-248, 308–315 |
+| TC-GS-USER-E2E-115 | Setup Column modal Changelog: urutan dan pin (`Mode: mock`) | TC-GS-USER-316–329 |
+| TC-GS-USER-E2E-116 | Setup Column modal Changelog: Reset to Default dan Cancel (`Mode: mock`) | TC-GS-USER-330, 331 |
+| TC-GS-USER-E2E-117 | Tampilan awal User List | TC-GS-USER-1, 2 |
+| TC-GS-USER-E2E-118 | Baris Default User dan akun sendiri di User List | TC-GS-USER-5, 6 |
+| TC-GS-USER-E2E-119 | User List: loading, hasil kosong, gagal memuat (`Mode: mock`) | TC-GS-USER-3 |
+| TC-GS-USER-E2E-120 | Create user gagal server (`Mode: mock`) | TC-GS-USER-24 |
+| TC-GS-USER-E2E-121 | Edit user gagal server (`Mode: mock`) | TC-GS-USER-32 |
+| TC-GS-USER-E2E-122 | Delete satu user gagal server (`Mode: mock`) | TC-GS-USER-40 |
+| TC-GS-USER-E2E-123 | Bulk Delete sebagian gagal (`Mode: mock`) | TC-GS-USER-39 |
+| TC-GS-USER-E2E-124 | Toggle Active gagal server (`Mode: mock`) | TC-GS-USER-48 |
+| TC-GS-USER-E2E-125 | Remove Access gagal server (`Mode: mock`) | TC-GS-USER-53 |
+| TC-GS-USER-E2E-126 | Resend email gagal server (`Mode: mock`) | TC-GS-USER-58 |
+| TC-GS-USER-E2E-127 | Reset Authenticator gagal server (`Mode: mock`) | TC-GS-USER-73 |
 
 TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
 
@@ -338,3 +390,7 @@ Semua TC P0 di section ini punya dua lapisan (FE dan E2E), jadi tidak ada P0 sat
 36. **`TC-GS-USER-117` dikoreksi ke PRD §4.1 (Changelog `tc-user.md` 2026-09-30 (9)).** Expected lama menyebut data di halaman yang sama ter-update, sedangkan PRD tegas klik opsi Product Selector adalah navigasi penuh ke Detail User produk tujuan.
 37. **GAP-283 (baru): warna badge User Type (selain Non Login) tidak didefinisikan di PRD.** TC-122, 123, 124, 426 menyebut warna; spec 072 hanya memverifikasi teks badge.
 38. **Contoh IP TC-356 tidak membedakan sort string dan numerik.** `10.0.0.1` dan `192.168.1.5` berurutan sama pada kedua cara. Spec 068 memakai `9.1.1.1` dan `10.0.0.1`. Contoh di `tc-user.md` belum diubah.
+39. **Antrean `Mode: mock` dan sisa Section 1, 3, 5 diproses menjadi spec 076–116 (2026-09-30).** Kegagalan server (077–080), latensi (076), dua sesi (081, 082), bypass DOM (083, 084), dialog bulk (085), foto (086–088), Setup Column User List (089–093), tampilan dan perilaku List (094–101), tab log (102, 103), Guided Tooltip dan A11y (104, 105), input Custom Field (106–108), dan Modal Changelog List (109–116). Per-kolom Setup Column dan Modal Changelog digabung per aksi karena perilakunya identik untuk semua kolom.
+40. **`TC-GS-USER-465` dikoreksi ke PRD §7 (Changelog `tc-user.md` 2026-09-30 (10)).** Toast `"Failed to update user."` diganti `"Error, failed to update user."`.
+41. **GAP-284 (baru): placeholder search box User List tidak didefinisikan di PRD.** TC-126 mengharapkan `"Search name or email..."`; spec 094 tidak memverifikasi teks placeholder.
+42. **Sisa belum ada spec (2026-09-30):** TC-GS-USER-99 (ditahan `GAP-281`), TC-GS-USER-173 dan 176 (hanya BE), dan bagian Distributor dan Partner dari TC-15 (belum ada TC). Semua TC lain sudah tercatat di sourceTc salah satu spec (dicek dengan skrip terhadap 546 TC).

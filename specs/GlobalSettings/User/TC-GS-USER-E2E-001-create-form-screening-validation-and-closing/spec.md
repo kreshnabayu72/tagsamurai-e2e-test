@@ -1,6 +1,6 @@
 ---
 id: TC-GS-USER-E2E-001-create-form-screening-validation-and-closing
-title: Create form screening, validation, and closing behavior
+title: Screening form Create, validasi, dan perilaku penutupan modal
 priority: Critical
 caseType: Negative
 status: draft
@@ -26,81 +26,81 @@ coverage:
   web: automated
 ---
 
-# Create form screening, validation, and closing behavior
+# Screening form Create, validasi, dan perilaku penutupan modal
 
 ## Prerequisites
 
-- Login as Role: Total Control, entity is Client
-- Position "Intern" exists in master data and no user uses it
-- Division "Finance" exists in master data
-- Custom Field "Blood Type" is defined as required
-- User "Doni Pratama" already exists and its email is known
-- Employee ID "EMP-001" is already used by another user in this entity
-- A Non-Login User exists and its email is known
+- Login sebagai Role: Total Control, entity Client
+- Position "Intern" ada di master data dan belum dipakai user mana pun
+- Division "Finance" ada di master data
+- Custom Field "Blood Type" didefinisikan sebagai Required
+- User "Doni Pratama" sudah ada dan emailnya diketahui
+- Employee ID "EMP-001" sudah dipakai user lain di entity ini
+- Ada satu Non-Login User dan emailnya diketahui
 
 ## Test Steps
 
 ### Screening
 
-1. Open the Filter Panel on the User List, open the Position dropdown, and verify "Intern" is not listed
-2. Close the Filter Panel
-3. Click `[+ User]` to open the Create modal
-4. Verify the form shows Photo (optional), First Name, Last Name, Email, Position (optional), Division, Employee ID (optional), Access checkbox group, User TAG (optional), Set as Temporary User, and Custom Field "Blood Type"
-5. Verify First Name, Last Name, Email, Division, and Access are marked required
-6. Verify the footer shows the checkbox "Stay on this form after submitting", `[Clear Field]`, and `[Submit]`, and that no `[Cancel]` button exists
-7. Verify the Access options list every product licensed for the Client plus "Global Settings"
-8. Open the Position dropdown in the modal and verify "Intern" is listed
-9. Check `[x] Set as Temporary User`, verify the Temporary Until field appears, then uncheck it
+1. Buka Filter Panel di User List, buka dropdown Position, lalu verifikasi "Intern" tidak ada dalam daftar
+2. Tutup Filter Panel
+3. Klik `[+ User]` untuk membuka modal Create
+4. Verifikasi form menampilkan Photo (opsional), First Name, Last Name, Email, Position (opsional), Division, Employee ID (opsional), grup checkbox Access, User TAG (opsional), Set as Temporary User, dan Custom Field "Blood Type"
+5. Verifikasi First Name, Last Name, Email, Division, dan Access ditandai wajib diisi
+6. Verifikasi footer menampilkan checkbox "Stay on this form after submitting", `[Clear Field]`, dan `[Submit]`, serta tidak ada tombol `[Cancel]`
+7. Verifikasi opsi Access memuat setiap produk yang dilisensikan untuk Client ditambah "Global Settings"
+8. Buka dropdown Position di modal dan verifikasi "Intern" ada dalam daftar
+9. Centang `[x] Set as Temporary User`, verifikasi field Temporary Until muncul, lalu hapus centang
 
-### Validation
+### Validasi
 
-10. Click `[Submit]` without filling anything
-11. Verify submit is blocked and inline errors appear: "First Name must not be empty", "Last Name must not be empty", "Email must not be empty", "Division must not be empty", "Access must not be empty", and "Blood Type must not be empty" for the required Custom Field
-12. Fill First Name, Last Name, Division "Finance", Email "budi.santoso@@invalid", and select Access "Global Settings"
-13. Click `[Submit]` and verify inline error "Invalid email format" appears and the form is not submitted
-14. Replace Email with a unique valid email and uncheck every Access option
-15. Click `[Submit]` and verify inline error "Access must not be empty" appears and the form is not submitted
-16. Select Access "Global Settings" so every field is valid except Custom Field "Blood Type", which stays empty
-17. Click `[Submit]` and verify inline error "Blood Type must not be empty" appears as the only error and the form is not submitted
-18. Fill "Blood Type", then type "Budi 😊" into First Name and Last Name and verify the emoji never enters the fields and no error appears
-19. Type "Budi-O'Neil" into First Name and Last Name and verify the symbols are accepted and remain in both fields
-20. Restore valid values for First Name and Last Name
-21. For each of First Name, Last Name, and Employee ID, enter 121 characters while the other fields stay valid, verify inline error "Max. 120 characters" appears immediately while typing, then click `[Submit]` and verify submit is blocked
-22. Restore values of at most 120 characters
-23. Replace Email with the existing email of "Doni Pratama"
-24. Verify inline error "Email already exists" appears immediately while typing (debounce about 500 ms), then click `[Submit]` and verify submit is blocked and the data is not saved
-25. Replace Email with a unique valid email and enter Employee ID "EMP-001"
-26. Verify inline error "Employee ID already exists" appears immediately while typing (debounce about 500 ms), then click `[Submit]` and verify submit is blocked and the data is not saved
-27. Click `[Clear Field]` and verify every field, including Custom Field "Blood Type", is emptied and the modal stays open
-28. Click `[Submit]` on the empty form to raise validation errors and verify red borders and inline errors appear
-29. Click `[Clear Field]` and verify every field is emptied, red borders and inline errors are gone, and the modal stays open
+10. Klik `[Submit]` tanpa mengisi apa pun
+11. Verifikasi submit diblokir dan error inline muncul: "First Name must not be empty", "Last Name must not be empty", "Email must not be empty", "Division must not be empty", "Access must not be empty", dan "Blood Type must not be empty" untuk Custom Field Required
+12. Isi First Name, Last Name, Division "Finance", Email "budi.santoso@@invalid", dan pilih Access "Global Settings"
+13. Klik `[Submit]` dan verifikasi error inline "Invalid email format" muncul serta form tidak terkirim
+14. Ganti Email dengan email valid yang unik lalu hapus centang semua opsi Access
+15. Klik `[Submit]` dan verifikasi error inline "Access must not be empty" muncul serta form tidak terkirim
+16. Pilih Access "Global Settings" sehingga semua field valid kecuali Custom Field "Blood Type" yang tetap kosong
+17. Klik `[Submit]` dan verifikasi error inline "Blood Type must not be empty" muncul sebagai satu-satunya error serta form tidak terkirim
+18. Isi "Blood Type", lalu ketik "Budi 😊" ke First Name dan Last Name, dan verifikasi emoji tidak pernah masuk ke field serta tidak ada error yang muncul
+19. Ketik "Budi-O'Neil" ke First Name dan Last Name dan verifikasi simbol diterima dan tetap ada di kedua field
+20. Kembalikan nilai valid untuk First Name dan Last Name
+21. Untuk masing-masing First Name, Last Name, dan Employee ID, masukkan 121 karakter sementara field lain tetap valid, verifikasi error inline "Max. 120 characters" langsung muncul saat mengetik, lalu klik `[Submit]` dan verifikasi submit diblokir
+22. Kembalikan nilai maksimal 120 karakter
+23. Ganti Email dengan email milik "Doni Pratama" yang sudah ada
+24. Verifikasi error inline "Email already exists" langsung muncul saat mengetik (debounce sekitar 500 ms), lalu klik `[Submit]` dan verifikasi submit diblokir serta data tidak tersimpan
+25. Ganti Email dengan email valid yang unik dan masukkan Employee ID "EMP-001"
+26. Verifikasi error inline "Employee ID already exists" langsung muncul saat mengetik (debounce sekitar 500 ms), lalu klik `[Submit]` dan verifikasi submit diblokir serta data tidak tersimpan
+27. Klik `[Clear Field]` dan verifikasi semua field, termasuk Custom Field "Blood Type", dikosongkan dan modal tetap terbuka
+28. Klik `[Submit]` pada form kosong untuk memunculkan error validasi dan verifikasi border merah serta error inline muncul
+29. Klik `[Clear Field]` dan verifikasi semua field dikosongkan, border merah dan error inline hilang, dan modal tetap terbuka
 
-### Closing
+### Penutupan modal
 
-30. Fill First Name with a value
-31. Click `✕`
-32. Verify dialog "You have unsaved changes. Are you sure you want to leave?" appears with `[Leave]` and `[Cancel]`
-33. Click `[Cancel]` on the dialog and verify the dialog closes, the modal stays open, and First Name still holds the value
-34. Click `✕` again and click `[Leave]` on the dialog
-35. Verify the modal closes and no new user was created in the User List by any submit above
-36. Click `[+ User]` again and verify all fields are empty, meaning no draft was saved
-37. Click `✕` without filling any field
-38. Verify the modal closes immediately and the unsaved changes dialog does not appear
+30. Isi First Name dengan sebuah nilai
+31. Klik `✕`
+32. Verifikasi dialog "You have unsaved changes. Are you sure you want to leave?" muncul dengan `[Leave]` dan `[Cancel]`
+33. Klik `[Cancel]` pada dialog dan verifikasi dialog tertutup, modal tetap terbuka, dan First Name masih berisi nilainya
+34. Klik `✕` lagi lalu klik `[Leave]` pada dialog
+35. Verifikasi modal tertutup dan tidak ada user baru di User List dari submit mana pun di atas
+36. Klik `[+ User]` lagi dan verifikasi semua field kosong, artinya tidak ada draft yang tersimpan
+37. Klik `✕` tanpa mengisi field apa pun
+38. Verifikasi modal langsung tertutup dan dialog unsaved changes tidak muncul
 
-### Email shared with a Non-Login User
+### Email yang sama dengan Non-Login User
 
-39. Click `[+ User]` again and fill every required field with valid values
-40. Replace Email with the email of the existing Non-Login User
-41. Verify inline error "Email already exists" appears immediately while typing, then click `[Submit]` and verify submit is blocked and the data is not saved
-42. Click `✕` and click `[Leave]` on the dialog
+39. Klik `[+ User]` lagi dan isi semua field wajib dengan nilai valid
+40. Ganti Email dengan email Non-Login User yang sudah ada
+41. Verifikasi error inline "Email already exists" langsung muncul saat mengetik, lalu klik `[Submit]` dan verifikasi submit diblokir serta data tidak tersimpan
+42. Klik `✕` lalu klik `[Leave]` pada dialog
 
 ## Notes
 
-- One spec covers two modal sessions. Steps 3 to 34 run in the first session, which ends with `[Leave]`. Steps 36 to 38 run in a second session, because the clean-close case needs a freshly opened modal.
-- TC-GS-USER-15 is split across two specs. The Client half is covered here and the Principal half is covered in TC-GS-USER-E2E-003.
-- TC-GS-USER-420 is split across two specs. The 121 character rejection is covered here and the exact 120 character acceptance is covered in TC-GS-USER-E2E-002.
-- A required Custom Field is validated like the other required fields, so its error also appears on an empty submit (step 11) and is verified alone in step 17. The copy follows the global pattern "[Field] must not be empty" shown after Submit (prd-conventions.md, error message conventions), and TC-GS-USER-16 and TC-GS-USER-25 state it explicitly.
-- The close action is `✕` in the header. `Esc` also closes the modal. The Create modal has no `[Cancel]` button (prd-conventions.md section 24.1). `[Cancel]` exists only on the unsaved changes dialog.
-- The emoji rule follows prd-conventions.md "Karakter yang Diizinkan (Name Fields)": only emoji is blocked, symbols are allowed.
-- No data is created by this spec, so it needs no cleanup.
-- TC-GS-USER-169: the email uniqueness constraint covers Login and Non-Login Users in one table, so steps for this case run in a third modal session at the end.
+- Satu spec mencakup dua sesi modal. Langkah 3 sampai 34 berjalan di sesi pertama yang diakhiri dengan `[Leave]`. Langkah 36 sampai 38 berjalan di sesi kedua, karena kasus penutupan tanpa perubahan butuh modal yang baru dibuka.
+- TC-GS-USER-15 terbagi di dua spec. Bagian Client dicakup di sini dan bagian Principal dicakup di TC-GS-USER-E2E-003.
+- TC-GS-USER-420 terbagi di dua spec. Penolakan 121 karakter dicakup di sini dan penerimaan tepat 120 karakter dicakup di TC-GS-USER-E2E-002.
+- Custom Field Required divalidasi seperti field wajib lain, sehingga errornya juga muncul saat submit kosong (langkah 11) dan diverifikasi sendirian di langkah 17. Teksnya mengikuti pola global "[Field] must not be empty" yang muncul setelah Submit (prd-conventions.md, konvensi pesan error), dan TC-GS-USER-16 serta TC-GS-USER-25 menyebutnya secara eksplisit.
+- Aksi menutup adalah `✕` di header. `Esc` juga menutup modal. Modal Create tidak punya tombol `[Cancel]` (prd-conventions.md bagian 24.1). `[Cancel]` hanya ada di dialog unsaved changes.
+- Aturan emoji mengikuti prd-conventions.md "Karakter yang Diizinkan (Name Fields)": hanya emoji yang diblokir, simbol diizinkan.
+- Spec ini tidak membuat data, sehingga tidak butuh pembersihan.
+- TC-GS-USER-169: batasan keunikan email mencakup Login dan Non-Login User dalam satu tabel, sehingga langkah untuk kasus ini berjalan di sesi modal ketiga di akhir.

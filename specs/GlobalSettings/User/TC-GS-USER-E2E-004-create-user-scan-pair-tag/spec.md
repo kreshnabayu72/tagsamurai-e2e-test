@@ -1,6 +1,6 @@
 ---
 id: TC-GS-USER-E2E-004-create-user-scan-pair-tag
-title: Create user with Scan and Pair TAG shows a verified TAG in the list
+title: Buat user dengan Scan dan Pair TAG menampilkan TAG terverifikasi di list
 priority: High
 caseType: Positive
 status: draft
@@ -10,31 +10,31 @@ coverage:
   web: automated
 ---
 
-# Create user with Scan and Pair TAG shows a verified TAG in the list
+# Buat user dengan Scan dan Pair TAG menampilkan TAG terverifikasi di list
 
 ## Prerequisites
 
-- Login as Role: Total Control
-- Column TAG is visible via Setup Column
-- TAG "RFID-00321" is registered for this client and is not paired to any user
-- Division "Finance" exists in master data
-- The test environment can simulate an RFID scan, because a browser cannot perform a hardware scan
-- TAG "RFID-00321" is unpaired at the start of every run, and cleanup unpairs it again
+- Login sebagai Role: Total Control
+- Kolom TAG terlihat lewat Setup Column
+- TAG "RFID-00321" terdaftar untuk client ini dan belum dipasangkan ke user mana pun
+- Division "Finance" ada di master data
+- Lingkungan uji dapat menyimulasikan scan RFID, karena browser tidak bisa melakukan scan perangkat keras
+- TAG "RFID-00321" dalam keadaan belum dipasangkan di awal setiap run, dan pembersihan melepas pasangannya lagi
 
 ## Test Steps
 
-1. Click `[+ User]` to open the Create modal
-2. Fill First Name "Taufik", Last Name "Hidayat", unique Email, and Division "Finance"
-3. Select Access "Global Settings" only
-4. Scan and pair TAG "RFID-00321"
-5. Verify the pairing success toast appears
-6. Click `[Submit]`
-7. Verify the new user row appears in the User List
-8. Verify the TAG column shows "RFID-00321"
-9. Verify the TAG shows a green "Verified" badge
+1. Klik `[+ User]` untuk membuka modal Create
+2. Isi First Name "Taufik", Last Name "Hidayat", Email unik, dan Division "Finance"
+3. Pilih Access "Global Settings" saja
+4. Scan dan pasangkan TAG "RFID-00321"
+5. Verifikasi toast sukses pairing muncul
+6. Klik `[Submit]`
+7. Verifikasi baris user baru muncul di User List
+8. Verifikasi kolom TAG menampilkan "RFID-00321"
+9. Verifikasi TAG menampilkan badge hijau "Verified"
 
 ## Notes
 
-- The TAG scan is a hardware RFID scan, which a browser cannot perform. The scan simulation is requested from the FE team in Prerequisites.
-- TC-GS-USER-343, 344, and 345 (scan validation failures) are covered by the frontend test cases (TC-GS-USER-FE-047, 048, 049).
-- The user is deleted in cleanup.
+- Scan TAG adalah scan RFID perangkat keras yang tidak bisa dilakukan browser. Kebutuhan simulasi scan diminta dari tim FE di Prerequisites.
+- Kegagalan validasi scan TAG (TC-GS-USER-343, 344, dan 345) dicakup `TC-GS-USER-E2E-032-validasi-scan-tag`.
+- User dihapus saat pembersihan.

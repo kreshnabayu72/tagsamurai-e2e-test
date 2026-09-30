@@ -1,6 +1,6 @@
 ---
 id: TC-GS-USER-E2E-002-create-users-success-flow-stay-open
-title: Create users successfully with different access, optional fields, and temporary user in one session
+title: Buat user dengan Access berbeda, field opsional, dan Temporary User dalam satu sesi modal
 priority: Critical
 caseType: Positive
 status: draft
@@ -29,79 +29,79 @@ coverage:
   web: automated
 ---
 
-# Create users successfully with different access, optional fields, and temporary user in one session
+# Buat user dengan Access berbeda, field opsional, dan Temporary User dalam satu sesi modal
 
 ## Prerequisites
 
-- Login as Role: Total Control, entity is Client
-- Client is licensed for Fixed Asset (FAMS)
-- Position "Staff" and Division "Finance" exist in master data
-- Custom Field "Blood Type" is defined as required, so every create fills it
-- Photo file smaller than 1MB is available
-- Columns Toggle Active, Position, Division, Employee ID, Access, Temporary User, Temporary Until, and TAG are visible via Setup Column
-- The Create request of the first user is delayed, and its first attempt is made to fail with a server error
+- Login sebagai Role: Total Control, entity Client
+- Client berlisensi Fixed Asset (FAMS)
+- Position "Staff" dan Division "Finance" ada di master data
+- Custom Field "Blood Type" didefinisikan sebagai Required, sehingga setiap Create mengisinya
+- Berkas foto berukuran di bawah 1MB tersedia
+- Kolom Toggle Active, Position, Division, Employee ID, Access, Temporary User, Temporary Until, dan TAG terlihat lewat Setup Column
+- Permintaan Create untuk user pertama ditunda, dan percobaan pertamanya dibuat gagal dengan error server
 
 ## Test Steps
 
-### User 1: all fields filled, Global Settings access
+### User 1: semua field terisi, Access Global Settings
 
-1. Click `[+ User]` to open the Create modal
-2. Check "Stay on this form after submitting"
-3. Fill First Name "Budi", Last Name "Santoso", unique Email, Position "Staff", Division "Finance", unique Employee ID, and "Blood Type"
-4. Upload a photo smaller than 1MB and select Access "Global Settings" only
-5. Click `[Submit]` while the Create request fails with a server error
-6. Verify `[Submit]` shows a loading spinner and is disabled while the request is pending, then becomes enabled again after the failure
-7. Verify the modal stays open with the filled values
-8. Double-click `[Submit]` in quick succession while the Create request succeeds
-9. Verify `[Submit]` shows a loading spinner and is disabled while the request is pending
-10. Verify success toast "User created successfully." appears and the modal stays open with an empty form
+1. Klik `[+ User]` untuk membuka modal Create
+2. Centang "Stay on this form after submitting"
+3. Isi First Name "Budi", Last Name "Santoso", Email unik, Position "Staff", Division "Finance", Employee ID unik, dan "Blood Type"
+4. Unggah foto berukuran di bawah 1MB dan pilih Access "Global Settings" saja
+5. Klik `[Submit]` saat permintaan Create gagal dengan error server
+6. Verifikasi `[Submit]` menampilkan spinner loading dan Disabled selama permintaan berjalan, lalu aktif kembali setelah gagal
+7. Verifikasi modal tetap terbuka dengan nilai yang sudah diisi
+8. Klik dua kali `[Submit]` dengan cepat saat permintaan Create berhasil
+9. Verifikasi `[Submit]` menampilkan spinner loading dan Disabled selama permintaan berjalan
+10. Verifikasi toast sukses "User created successfully." muncul dan modal tetap terbuka dengan form kosong
 
-### User 2: FAMS access, required fields only, 120 character names
+### User 2: Access FAMS, hanya field wajib, nama 120 karakter
 
-11. Fill First Name with exactly 120 characters, Last Name with exactly 120 characters, unique Email, Division "Finance", and "Blood Type"
-12. Leave Position, Employee ID, photo, Set as Temporary User, and User TAG untouched
-13. Select Access "FAMS" only
-14. Click `[Submit]`
-15. Verify success toast "User created successfully." appears and the modal stays open with an empty form
+11. Isi First Name tepat 120 karakter, Last Name tepat 120 karakter, Email unik, Division "Finance", dan "Blood Type"
+12. Biarkan Position, Employee ID, foto, Set as Temporary User, dan User TAG tidak tersentuh
+13. Pilih Access "FAMS" saja
+14. Klik `[Submit]`
+15. Verifikasi toast sukses "User created successfully." muncul dan modal tetap terbuka dengan form kosong
 
-### User 3: temporary user, closes the modal
+### User 3: Temporary User, menutup modal
 
-16. Fill unique First Name, Last Name, and Email, Division "Finance", and "Blood Type"
-17. Select Access "Global Settings" only
-18. Check `[x] Set as Temporary User` and leave Temporary Until empty
-19. Click `[Submit]` and verify inline error "Temporary Until must not be empty" appears and the form is not submitted
-20. Select Temporary Until as today + 7 days
-21. Uncheck "Stay on this form after submitting"
-22. Click `[Submit]`
-23. Verify success toast "User created successfully." appears and the modal closes
+16. Isi First Name, Last Name, dan Email yang unik, Division "Finance", dan "Blood Type"
+17. Pilih Access "Global Settings" saja
+18. Centang `[x] Set as Temporary User` dan biarkan Temporary Until kosong
+19. Klik `[Submit]` dan verifikasi error inline "Temporary Until must not be empty" muncul serta form tidak terkirim
+20. Pilih Temporary Until hari ini + 7 hari
+21. Hapus centang "Stay on this form after submitting"
+22. Klik `[Submit]`
+23. Verifikasi toast sukses "User created successfully." muncul dan modal tertutup
 
-### Verification in the User List
+### Verifikasi di User List
 
-24. Verify the User List contains exactly 1 row for User 1
-25. Verify User 1 shows badge "Pending Activation", Toggle Active [Global] ON, role User Basic, and exactly 1 dark Access badge "Global Settings"
-26. Verify User 1 shows Position "Staff", Division "Finance", Employee ID as input, Temporary User No, Temporary Until "—", TAG "—", and the uploaded photo thumbnail instead of the initials avatar
-27. Verify User 2 shows exactly 1 dark Access badge "Fixed Asset", not "FAMS", and Toggle Active [Global] ON
-28. Verify User 2 shows Position "—", Employee ID "—", TAG "—", Temporary User No, Temporary Until "—", and the default initials avatar
-29. Open the User Detail of User 2, open Tab Role, and verify the FAMS role is "User Basic"
-30. Verify User 3 shows Temporary User Yes and Temporary Until as the selected date, not "—"
-31. Open the User Detail of User 3 and verify it shows "Temporary until [date]" with the selected date
+24. Verifikasi User List memuat tepat 1 baris untuk User 1
+25. Verifikasi User 1 menampilkan badge "Pending Activation", Toggle Active [Global] ON, role User Basic, dan tepat 1 badge Access dark "Global Settings"
+26. Verifikasi User 1 menampilkan Position "Staff", Division "Finance", Employee ID sesuai input, Temporary User No, Temporary Until "—", TAG "—", dan thumbnail foto yang diunggah, bukan avatar inisial
+27. Verifikasi User 2 menampilkan tepat 1 badge Access dark "Fixed Asset", bukan "FAMS", dan Toggle Active [Global] ON
+28. Verifikasi User 2 menampilkan Position "—", Employee ID "—", TAG "—", Temporary User No, Temporary Until "—", dan avatar inisial default
+29. Buka User Detail User 2, buka Tab Role, dan verifikasi role FAMS adalah "User Basic"
+30. Verifikasi User 3 menampilkan Temporary User Yes dan Temporary Until berupa tanggal yang dipilih, bukan "—"
+31. Buka User Detail User 3 dan verifikasi tampil "Temporary until [date]" dengan tanggal yang dipilih
 
-### Audit log of User 1
+### Audit log User 1
 
-32. Open the Changelog of User 1
-33. Verify a row with Action "Create", Field "Name", Old Value "—", New Value "Budi Santoso", and Modified By the logged in admin
-34. Open the System Log of the logged in admin (User Detail of the admin, Tab System Log)
-35. Verify a row Create, Object User, Name "Budi Santoso", Field "Name", Old Value "—", New Value "Budi Santoso"
-36. Open Global Settings > Activity Log and verify the same Create row exists with Modified By the logged in admin
-37. Open the User Log of the logged in admin and verify it contains only login and session events, with no Create entry
+32. Buka Changelog User 1
+33. Verifikasi ada baris dengan Action "Create", Field "Name", Old Value "—", New Value "Budi Santoso", dan Modified By admin yang login
+34. Buka System Log admin yang login (User Detail admin, Tab System Log)
+35. Verifikasi ada baris Create, Object User, Name "Budi Santoso", Field "Name", Old Value "—", New Value "Budi Santoso"
+36. Buka Global Settings > Activity Log dan verifikasi baris Create yang sama ada dengan Modified By admin yang login
+37. Buka User Log admin yang login dan verifikasi hanya memuat event login dan sesi, tanpa entri Create
 
 ## Notes
 
-- One spec covers one modal session. "Stay on this form after submitting" stays checked for Users 1 and 2 so the modal is opened only once, and it is unchecked for User 3 so the last submit closes the modal.
-- The script must not assume the Stay checkbox keeps its state after the modal is closed.
-- The server error in step 5 cannot be triggered safely against the real backend, so the script simulates it. The interception must only affect the first user and must be cleared afterward.
-- TC-GS-USER-420 is split across two specs. The exact 120 character acceptance is covered here and the 121 character rejection is covered in TC-GS-USER-E2E-001.
-- TC-GS-USER-13 also expects the invitation email to be sent. Email delivery is outside the browser, so this spec does not assert it. It also expects no in-app notification for other users, which needs a second user session and is not covered here.
-- The double-click in step 8 is timing sensitive. The script must delay the Create response deterministically.
-- All 3 users must be deleted in cleanup, even if the spec fails midway.
-- TC-GS-USER-143 and 405: Create appears in the Changelog, the actor System Log, and the Activity Log (full parity, user.md section 8.6), but not in the User Log.
+- Satu spec mencakup satu sesi modal. "Stay on this form after submitting" tetap tercentang untuk User 1 dan 2 supaya modal hanya dibuka sekali, dan dihapus centangnya untuk User 3 supaya submit terakhir menutup modal.
+- Script tidak boleh mengasumsikan checkbox Stay mempertahankan statusnya setelah modal ditutup.
+- Error server di langkah 5 tidak bisa dipicu dengan aman di backend nyata, jadi script menyimulasikannya. Intersepsi hanya boleh memengaruhi user pertama dan harus dilepas sesudahnya. Kasus kegagalan Create dicakup juga di `TC-GS-USER-E2E-120-create-gagal-server` (`Mode: mock`).
+- TC-GS-USER-420 terbagi di dua spec. Penerimaan tepat 120 karakter dicakup di sini dan penolakan 121 karakter dicakup di TC-GS-USER-E2E-001.
+- TC-GS-USER-13 juga mengharapkan email undangan terkirim. Pengiriman email berada di luar browser, jadi spec ini tidak mengujinya. TC itu juga mengharapkan tidak ada notifikasi in-app untuk user lain, yang butuh sesi user kedua dan tidak dicakup di sini.
+- Klik ganda di langkah 8 sensitif terhadap waktu. Script harus menunda respons Create secara deterministik.
+- Ketiga user harus dihapus saat pembersihan, meski spec gagal di tengah jalan.
+- TC-GS-USER-143 dan 405: Create tercatat di Changelog, System Log aktor, dan Activity Log (parity penuh, user.md bagian 8.6), tetapi tidak di User Log.

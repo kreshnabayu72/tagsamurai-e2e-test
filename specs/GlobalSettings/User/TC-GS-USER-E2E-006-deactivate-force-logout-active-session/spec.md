@@ -1,6 +1,6 @@
 ---
 id: TC-GS-USER-E2E-006-deactivate-force-logout-active-session
-title: Deactivating a user force-logs-out their active session in real time
+title: Menonaktifkan user memaksa logout sesi aktifnya secara real time
 priority: High
 caseType: Negative
 status: draft
@@ -11,33 +11,33 @@ coverage:
   web: automated
 ---
 
-# Deactivating a user force-logs-out their active session in real time
+# Menonaktifkan user memaksa logout sesi aktifnya secara real time
 
 ## Prerequisites
 
-- Login as Role: Total Control, entity is Client, in browser session A
-- User "Rina Wijaya" is logged in and active in a separate browser session B, on any page of any licensed product
-- The FE team requests a second, independently controllable browser session for this spec, since it needs two concurrent logged-in accounts
-- In session B, the notification list of "Rina Wijaya" is captured before step 1 and again right after step 4
+- Login sebagai Role: Total Control, entity Client, di sesi browser A
+- User "Rina Wijaya" sedang login dan aktif di sesi browser B yang terpisah, di halaman mana pun dari produk berlisensi mana pun
+- Tim FE menyediakan sesi browser kedua yang bisa dikendalikan sendiri untuk spec ini, karena butuh dua akun yang login bersamaan
+- Di sesi B, daftar notifikasi "Rina Wijaya" dicatat sebelum langkah 1 dan sekali lagi tepat setelah langkah 4
 
 ## Test Steps
 
-1. In session A, click Toggle Active [Global] on the row of "Rina Wijaya" to turn it OFF
-2. Click `[Deactivate]` on the dialog
-3. Verify success toast "Success, user has been deactivated." appears in session A
-4. In session B, verify a real-time message appears telling the user their session has been ended
-5. In session B, perform any request or navigate to any page
-6. Verify the request in session B returns 401 and the session is treated as invalid
-7. In session B, attempt to log in again as "Rina Wijaya"
-8. Verify a login-block dialog appears, consistent with the user being deactivated
+1. Di sesi A, klik Toggle Active [Global] pada baris "Rina Wijaya" untuk mematikannya (OFF)
+2. Klik `[Deactivate]` pada dialog
+3. Verifikasi toast sukses "Success, user has been deactivated." muncul di sesi A
+4. Di sesi B, verifikasi pesan real time muncul yang memberi tahu user bahwa sesinya telah diakhiri
+5. Di sesi B, lakukan permintaan apa pun atau pindah ke halaman mana pun
+6. Verifikasi permintaan di sesi B mengembalikan 401 dan sesi dianggap tidak valid
+7. Di sesi B, coba login lagi sebagai "Rina Wijaya"
+8. Verifikasi dialog blokir login muncul, sesuai dengan user yang sudah dinonaktifkan
 
-### No separate notification
+### Tidak ada notifikasi terpisah
 
-9. In session B, compare the notification list captured right after step 4 with the one captured before step 1
-10. Verify no new notification entry exists for "Rina Wijaya" from this deactivation, and the only feedback she received is the real-time session-ended message and the login-block dialog "Account Deactivated"
+9. Di sesi B, bandingkan daftar notifikasi yang dicatat tepat setelah langkah 4 dengan yang dicatat sebelum langkah 1
+10. Verifikasi tidak ada entri notifikasi baru untuk "Rina Wijaya" dari penonaktifan ini, dan satu-satunya umpan balik yang ia terima adalah pesan sesi berakhir secara real time serta dialog blokir login "Account Deactivated"
 
 ## Notes
 
-- This spec needs two browser sessions with two different accounts, which is why it is kept separate from TC-GS-USER-E2E-005, following `docs/e2e-conventions.md` section 3 (split for a different account).
-- "Rina Wijaya" is Active with no other dependency before this spec runs, and is left Inactive afterward. No further cleanup is required, since no data is created.
-- TC-GS-USER-251: Deactivate must not create a separate in-app notification. The session-ended message and the login-block dialog already cover it.
+- Spec ini butuh dua sesi browser dengan dua akun berbeda, itulah sebabnya dipisah dari TC-GS-USER-E2E-005, mengikuti `docs/e2e-conventions.md` bagian 3 (dipisah untuk akun berbeda).
+- "Rina Wijaya" berstatus Active tanpa dependensi lain sebelum spec ini berjalan, dan dibiarkan Inactive sesudahnya. Tidak ada pembersihan lanjutan karena tidak ada data yang dibuat.
+- TC-GS-USER-251: Deactivate tidak boleh membuat notifikasi in-app tersendiri. Pesan sesi berakhir dan dialog blokir login sudah mencakupnya.

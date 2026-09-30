@@ -1,6 +1,6 @@
 ---
 id: TC-GS-USER-E2E-003-create-user-principal-entity-access-options
-title: Create user in Principal entity limits Access options to Admin Console
+title: Buat user di entity Principal membatasi opsi Access ke Admin Console
 priority: High
 caseType: Positive
 status: draft
@@ -11,29 +11,29 @@ coverage:
   web: automated
 ---
 
-# Create user in Principal entity limits Access options to Admin Console
+# Buat user di entity Principal membatasi opsi Access ke Admin Console
 
 ## Prerequisites
 
-- Login as Role: Total Control, entity is Principal
-- An account with Role Total Control exists in the Principal entity
-- A Division exists in master data of the Principal entity
-- Email for the new user is unique per run
+- Login sebagai Role: Total Control, entity Principal
+- Akun dengan Role Total Control ada di entity Principal
+- Sebuah Division ada di master data entity Principal
+- Email user baru unik per run
 
 ## Test Steps
 
-1. Click `[+ User]` to open the Create modal
-2. Verify the Access options list only "Admin Console" and "Global Settings"
-3. Verify the Client products "FAMS", "SAMS", and "SIEM" are not listed
-4. Fill First Name "Rendy", Last Name "Kurniawan", unique Email, and an existing Division
-5. Select Access "Admin Console" only
-6. Click `[Submit]`
-7. Verify success toast "User created successfully." appears
-8. Verify the new user row appears in the User List
-9. Verify the Access column shows exactly 1 dark badge with the text "Admin Console"
-10. Verify the role of the new user is User Basic
+1. Klik `[+ User]` untuk membuka modal Create
+2. Verifikasi opsi Access hanya memuat "Admin Console" dan "Global Settings"
+3. Verifikasi produk Client "FAMS", "SAMS", dan "SIEM" tidak ada dalam daftar
+4. Isi First Name "Rendy", Last Name "Kurniawan", Email unik, dan Division yang sudah ada
+5. Pilih Access "Admin Console" saja
+6. Klik `[Submit]`
+7. Verifikasi toast sukses "User created successfully." muncul
+8. Verifikasi baris user baru muncul di User List
+9. Verifikasi kolom Access menampilkan tepat 1 badge dark dengan teks "Admin Console"
+10. Verifikasi role user baru adalah User Basic
 
 ## Notes
 
-- TC-GS-USER-15 is split across two specs. The Client half is covered in TC-GS-USER-E2E-001 and the Principal half is covered here. Only entity Principal is used. Distributor and Partner are not covered.
-- The user is deleted in cleanup.
+- TC-GS-USER-15 terbagi di dua spec. Bagian Client dicakup di TC-GS-USER-E2E-001 dan bagian Principal dicakup di sini. Hanya entity Principal yang dipakai. Distributor dan Partner belum dicakup.
+- User dihapus saat pembersihan.
