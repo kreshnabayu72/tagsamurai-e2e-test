@@ -45,5 +45,5 @@ coverage:
 ## Notes
 
 - Sumber `user.md` bagian 4.1. Badge User Type diturunkan dari `access_level` dan jumlah role aktif.
-- TC sumber menyebut warna badge (`Total Control` success, `Admin` danger, `Basic` primary, `Read Only` warning), tetapi PRD hanya menetapkan warna `Non Login` (dark). Spec ini memverifikasi teks badge saja. Lihat `GAP-283`.
+- TC sumber menyebut warna badge (`Total Control` success, `Admin` danger, `Basic` primary, `Read Only` warning), tetapi PRD hanya menetapkan warna `Non Login` (dark). Spec ini memverifikasi teks badge saja. Lihat `GAP-294`.
 - `Non Login` ditambahkan dari PRD `user.md` bagian 4.1 sebagai pelengkap lima nilai badge.

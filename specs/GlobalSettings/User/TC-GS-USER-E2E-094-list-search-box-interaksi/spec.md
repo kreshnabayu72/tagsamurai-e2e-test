@@ -37,5 +37,5 @@ coverage:
 
 ## Notes
 
-- Sumber `user.md` bagian 4.4 (pencarian) dan 9.1a. Teks placeholder search bar di TC sumber (`"Search name or email..."`) tidak didefinisikan di PRD, jadi tidak diverifikasi di spec ini. Lihat `GAP-284`.
+- Sumber `user.md` bagian 4.4 (pencarian) dan 9.1a. Teks placeholder search bar di TC sumber (`"Search name or email..."`) tidak didefinisikan di PRD, jadi tidak diverifikasi di spec ini. Lihat `GAP-295`.
 - Pencarian parsial, case-insensitive, dan filter kombinasi dicakup `TC-GS-USER-E2E-098-list-search-parsial-dan-filter-kombinasi`.
