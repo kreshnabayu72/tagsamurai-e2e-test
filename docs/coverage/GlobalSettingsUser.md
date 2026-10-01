@@ -157,6 +157,28 @@ Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada scrip
 | TC-GS-USER-E2E-146 | Tab Responsibilities entity Distributor | TC-GS-USER-605 |
 | TC-GS-USER-E2E-147 | Tab Responsibilities entity Partner | TC-GS-USER-606 |
 | TC-GS-USER-E2E-148 | Isolasi scope entity Partner | TC-GS-USER-607 |
+| TC-GS-USER-E2E-149 | Pair TAG gagal di Detail (`Mode: mock`) | TC-GS-USER-608 |
+| TC-GS-USER-E2E-150 | Unpair TAG gagal di Detail (`Mode: mock`) | TC-GS-USER-609 |
+| TC-GS-USER-E2E-151 | Custom Field Dropdown stale di Create dan Edit | TC-GS-USER-610 |
+| TC-GS-USER-E2E-152 | Client suspended atau expired memblokir aksi tulis (`Mode: mock`) | TC-GS-USER-611 |
+| TC-GS-USER-E2E-153 | Pagination opsi page size | TC-GS-USER-612 |
+| TC-GS-USER-E2E-154 | Pagination input nomor halaman | TC-GS-USER-613 |
+| TC-GS-USER-E2E-155 | Empty state Modal Changelog List-level | TC-GS-USER-614 |
+| TC-GS-USER-E2E-156 | Empty state Tab Changelog Detail | TC-GS-USER-615 |
+| TC-GS-USER-E2E-157 | Empty state Tab System Log | TC-GS-USER-616 |
+| TC-GS-USER-E2E-158 | Tab Role toggle Active per role | TC-GS-USER-617 |
+| TC-GS-USER-E2E-159 | User Log tanpa Reset Authenticator | TC-GS-USER-618 |
+| TC-GS-USER-E2E-160 | Remove Access multi-produk | TC-GS-USER-619, 620 |
+| TC-GS-USER-E2E-161 | Bulk Delete campuran dialog gabungan | TC-GS-USER-621 |
+| TC-GS-USER-E2E-162 | Popup Access di kolom List | TC-GS-USER-622 |
+| TC-GS-USER-E2E-163 | Navigasi ke User Detail | TC-GS-USER-623 |
+| TC-GS-USER-E2E-164 | Klik area baris tanpa aksi | TC-GS-USER-624 |
+| TC-GS-USER-E2E-165 | Checkbox header halaman aktif | TC-GS-USER-625 |
+| TC-GS-USER-E2E-166 | Modified By hover nama lengkap | TC-GS-USER-626 |
+| TC-GS-USER-E2E-167 | Pindah tab state tidak reset | TC-GS-USER-627 |
+| TC-GS-USER-E2E-168 | My Profile banner Pending Email Change | TC-GS-USER-628 |
+| TC-GS-USER-E2E-169 | Pool Assign prasyarat Global Settings | TC-GS-USER-629 |
+| TC-GS-USER-E2E-170 | Admin override hapus foto di File Manager | TC-GS-USER-630 |
 
 TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
 
@@ -388,6 +410,29 @@ Tidak ada TC P0 di section ini (tertinggi P1). FE di sini memakai pola represent
 | 605 | P1 | — | E2E-146 | TC baru 2026-10-01, belum ada padanan FE |
 | 606 | P1 | — | E2E-147 | TC baru 2026-10-01, belum ada padanan FE |
 | 607 | P1 | — | E2E-148 | TC baru 2026-10-01, belum ada padanan FE |
+| 608 | P2 | — | E2E-149 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 609 | P2 | — | E2E-150 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 610 | P1 | — | E2E-151 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 611 | P1 | — | E2E-152 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 612 | P2 | — | E2E-153 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 613 | P2 | — | E2E-154 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 614 | P2 | — | E2E-155 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 615 | P2 | — | E2E-156 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 616 | P2 | — | E2E-157 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 617 | P1 | — | E2E-158 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 618 | P2 | — | E2E-159 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 619 | P1 | — | E2E-160 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 620 | P1 | — | E2E-160 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 621 | P1 | — | E2E-161 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 622 | P2 | — | E2E-162 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 623 | P2 | — | E2E-163 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 624 | P2 | — | E2E-164 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 625 | P2 | — | E2E-165 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 626 | P2 | — | E2E-166 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 627 | P2 | — | E2E-167 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 628 | P2 | — | E2E-168 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 629 | P1 | — | E2E-169 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
+| 630 | P2 | — | E2E-170 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
 
 Semua TC P0 di section ini punya dua lapisan (FE dan E2E), jadi tidak ada P0 satu lapisan. Role Matrix dipisah positif dan negatif per aksi, satu spec untuk banyak role (`docs/e2e-conventions.md` bagian 3a).
 
@@ -438,3 +483,4 @@ Semua TC P0 di section ini punya dua lapisan (FE dan E2E), jadi tidak ada P0 sat
 42. **Sisa belum ada spec (2026-09-30):** TC-GS-USER-99 (ditahan `GAP-281`), TC-GS-USER-173 dan 176 (hanya BE), dan bagian Distributor dan Partner dari TC-15 (belum ada TC). Semua TC lain sudah tercatat di sourceTc salah satu spec (dicek dengan skrip terhadap 546 TC).
 43. **Aktor role dan variasi target diperluas (2026-10-01).** Ditambah TC-587 sampai 600 dan spec 128–141: eksekusi aktor Update-saja untuk Edit profil penuh, ubah Email, Resend x2, Pair/Unpair, Reset Authenticator, dan Bulk, serta variasi target (Default User, akun sendiri, Read Only, Total Control, sesama pemegang role). **GAP-296**: gate hak Update untuk edit inline Custom Field, foto Avatar, dan CRUD Tab Role tidak ada di PRD §4.8, jadi TC eksekusinya belum ditulis. **GAP-297**: tooltip hak parsial vs target Total Control/Read Only ambigu (tier atau generik); spec 142 dan 143 tidak memverifikasi teks tooltip.
 44. **Entity Distributor dan Partner dilengkapi (2026-10-01).** TC-603 sampai 607 dan spec 144–148 (opsi Access Create, Tab Responsibilities, entity-scope Partner). **GAP-300**: entity-scope Principal terhadap Distributor downstream tidak didefinisikan di PRD §2.1, jadi tidak ditulis. Empty state Distributor dan Partner tertahan GAP-282.
+45. **Audit Full modul User, putaran 1 (2026-10-01).** TC-608 sampai 630 dan spec 149–170 menutup celah dari pembacaan ulang `user.md`: Pair/Unpair gagal, Custom Field Dropdown stale, D1 client suspended, pagination, empty state log, toggle Active Tab Role, Remove Access multi-produk, Bulk Delete campuran, interaksi List, dan tiga arah lintas modul. Koreksi: TC-595 dan spec 136 memakai tooltip Default User sesuai §2.5. Gap PRD baru: GAP-301 sampai 304. Sisa audit (Edge API, sweep pilar, inventaris error-handling) belum dikerjakan.

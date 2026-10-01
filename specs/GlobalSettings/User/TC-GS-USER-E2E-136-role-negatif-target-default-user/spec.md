@@ -32,7 +32,7 @@ Spec ini memakai satu role. Kredensial akun diambil lewat `Spectra.env`, tidak d
 4. Verifikasi row action `Edit` tetap Enabled
 5. Buka Modal Edit Default User dan verifikasi info dasar bisa diedit, sementara semua checkbox Access tercentang dan Disabled dengan tooltip "Default User cannot be modified."
 6. Klik `✕` untuk menutup modal
-7. Buka User Detail Default User dan verifikasi tombol `Reset Authenticator` Disabled dengan tooltip "You don't have permission to edit"
+7. Buka User Detail Default User dan verifikasi tombol `Reset Authenticator` Disabled dengan tooltip "Default User cannot be modified."
 
 ## Notes
 

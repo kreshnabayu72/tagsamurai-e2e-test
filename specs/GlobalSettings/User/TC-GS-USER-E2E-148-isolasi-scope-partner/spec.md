@@ -2,7 +2,7 @@
 id: TC-GS-USER-E2E-148-isolasi-scope-partner
 title: User List Partner hanya menampilkan staff Partner sendiri
 priority: High
-caseType: Security
+caseType: Negative
 status: draft
 sourceTc:
   - TC-GS-USER-607
