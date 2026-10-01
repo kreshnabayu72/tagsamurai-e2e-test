@@ -35,5 +35,5 @@ coverage:
 
 ## Notes
 
-- TC-GS-USER-15 terbagi di dua spec. Bagian Client dicakup di TC-GS-USER-E2E-001 dan bagian Principal dicakup di sini. Hanya entity Principal yang dipakai. Distributor dan Partner belum dicakup.
+- TC-GS-USER-15 terbagi di dua spec. Bagian Client dicakup di TC-GS-USER-E2E-001 dan bagian Principal dicakup di sini. Hanya entity Principal yang dipakai di sini. Distributor dan Partner ada di `TC-GS-USER-E2E-144` dan `145`.
 - User dihapus saat pembersihan.

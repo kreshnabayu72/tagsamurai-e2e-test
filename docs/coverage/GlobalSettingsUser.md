@@ -136,6 +136,27 @@ Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada scrip
 | TC-GS-USER-E2E-125 | Remove Access gagal server (`Mode: mock`) | TC-GS-USER-53 |
 | TC-GS-USER-E2E-126 | Resend email gagal server (`Mode: mock`) | TC-GS-USER-58 |
 | TC-GS-USER-E2E-127 | Reset Authenticator gagal server (`Mode: mock`) | TC-GS-USER-73 |
+| TC-GS-USER-E2E-128 | Role Matrix positif Edit profil penuh (Update-saja) | TC-GS-USER-587 |
+| TC-GS-USER-E2E-129 | Role Matrix positif ubah Email (Update-saja) | TC-GS-USER-588 |
+| TC-GS-USER-E2E-130 | Role Matrix positif Resend Activation Email (Update-saja) | TC-GS-USER-589 |
+| TC-GS-USER-E2E-131 | Role Matrix positif Resend Confirmation Email (Update-saja) | TC-GS-USER-590 |
+| TC-GS-USER-E2E-132 | Role Matrix positif Pair dan Unpair TAG (Update-saja) | TC-GS-USER-591 |
+| TC-GS-USER-E2E-133 | Role Matrix positif Reset Authenticator (Update-saja) | TC-GS-USER-592 |
+| TC-GS-USER-E2E-134 | Role Matrix positif Bulk Activate dan Deactivate (Update-saja) | TC-GS-USER-593 |
+| TC-GS-USER-E2E-135 | Role Matrix positif Bulk Resend Activation Email (Update-saja) | TC-GS-USER-594 |
+| TC-GS-USER-E2E-136 | Role Matrix negatif target Default User (Update-saja) | TC-GS-USER-595 |
+| TC-GS-USER-E2E-137 | Role Matrix negatif target akun sendiri (Update-saja) | TC-GS-USER-596 |
+| TC-GS-USER-E2E-138 | Role Matrix negatif target Read Only (Update-saja) | TC-GS-USER-597 |
+| TC-GS-USER-E2E-139 | Role Matrix negatif target Total Control, enam aksi (Update-saja) | TC-GS-USER-598 |
+| TC-GS-USER-E2E-140 | Role Matrix positif target sesama pemegang role (Update-saja) | TC-GS-USER-599 |
+| TC-GS-USER-E2E-141 | Role Matrix positif Total Control dan Default User ke target Read Only | TC-GS-USER-600 |
+| TC-GS-USER-E2E-142 | Role Matrix negatif target Total Control (Delete-saja) | TC-GS-USER-601 |
+| TC-GS-USER-E2E-143 | Role Matrix negatif target Total Control (Create-saja) | TC-GS-USER-602 |
+| TC-GS-USER-E2E-144 | Create user entity Distributor, opsi Access | TC-GS-USER-603 |
+| TC-GS-USER-E2E-145 | Create user entity Partner, opsi Access | TC-GS-USER-604 |
+| TC-GS-USER-E2E-146 | Tab Responsibilities entity Distributor | TC-GS-USER-605 |
+| TC-GS-USER-E2E-147 | Tab Responsibilities entity Partner | TC-GS-USER-606 |
+| TC-GS-USER-E2E-148 | Isolasi scope entity Partner | TC-GS-USER-607 |
 
 TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
 
@@ -346,6 +367,27 @@ Tidak ada TC P0 di section ini (tertinggi P1). FE di sini memakai pola represent
 | 584 | P1 | — | E2E-012 | TC baru 2026-09-29, belum ada padanan FE |
 | 585 | P1 | — | E2E-011 | TC baru 2026-09-29, belum ada padanan FE |
 | 586 | P1 | — | E2E-010, E2E-011, E2E-012, E2E-013 | TC baru 2026-09-29, belum ada padanan FE |
+| 587 | P1 | — | E2E-128 | TC baru 2026-10-01, belum ada padanan FE |
+| 588 | P1 | — | E2E-129 | TC baru 2026-10-01, belum ada padanan FE |
+| 589 | P1 | — | E2E-130 | TC baru 2026-10-01, belum ada padanan FE |
+| 590 | P1 | — | E2E-131 | TC baru 2026-10-01, belum ada padanan FE |
+| 591 | P1 | — | E2E-132 | TC baru 2026-10-01, belum ada padanan FE |
+| 592 | P1 | — | E2E-133 | TC baru 2026-10-01, belum ada padanan FE |
+| 593 | P1 | — | E2E-134 | TC baru 2026-10-01, belum ada padanan FE |
+| 594 | P1 | — | E2E-135 | TC baru 2026-10-01, belum ada padanan FE |
+| 595 | P1 | — | E2E-136 | TC baru 2026-10-01, belum ada padanan FE |
+| 596 | P1 | — | E2E-137 | TC baru 2026-10-01, belum ada padanan FE |
+| 597 | P1 | — | E2E-138 | TC baru 2026-10-01, belum ada padanan FE |
+| 598 | P1 | — | E2E-139 | TC baru 2026-10-01, belum ada padanan FE |
+| 599 | P1 | — | E2E-140 | TC baru 2026-10-01, belum ada padanan FE |
+| 600 | P1 | — | E2E-141 | TC baru 2026-10-01, belum ada padanan FE |
+| 601 | P1 | — | E2E-142 | TC baru 2026-10-01, belum ada padanan FE |
+| 602 | P1 | — | E2E-143 | TC baru 2026-10-01, belum ada padanan FE |
+| 603 | P1 | — | E2E-144 | TC baru 2026-10-01, belum ada padanan FE |
+| 604 | P1 | — | E2E-145 | TC baru 2026-10-01, belum ada padanan FE |
+| 605 | P1 | — | E2E-146 | TC baru 2026-10-01, belum ada padanan FE |
+| 606 | P1 | — | E2E-147 | TC baru 2026-10-01, belum ada padanan FE |
+| 607 | P1 | — | E2E-148 | TC baru 2026-10-01, belum ada padanan FE |
 
 Semua TC P0 di section ini punya dua lapisan (FE dan E2E), jadi tidak ada P0 satu lapisan. Role Matrix dipisah positif dan negatif per aksi, satu spec untuk banyak role (`docs/e2e-conventions.md` bagian 3a).
 
@@ -394,3 +436,5 @@ Semua TC P0 di section ini punya dua lapisan (FE dan E2E), jadi tidak ada P0 sat
 40. **`TC-GS-USER-465` dikoreksi ke PRD §7 (Changelog `tc-user.md` 2026-09-30 (10)).** Toast `"Failed to update user."` diganti `"Error, failed to update user."`.
 41. **GAP-295 (baru): placeholder search box User List tidak didefinisikan di PRD.** TC-126 mengharapkan `"Search name or email..."`; spec 094 tidak memverifikasi teks placeholder.
 42. **Sisa belum ada spec (2026-09-30):** TC-GS-USER-99 (ditahan `GAP-281`), TC-GS-USER-173 dan 176 (hanya BE), dan bagian Distributor dan Partner dari TC-15 (belum ada TC). Semua TC lain sudah tercatat di sourceTc salah satu spec (dicek dengan skrip terhadap 546 TC).
+43. **Aktor role dan variasi target diperluas (2026-10-01).** Ditambah TC-587 sampai 600 dan spec 128–141: eksekusi aktor Update-saja untuk Edit profil penuh, ubah Email, Resend x2, Pair/Unpair, Reset Authenticator, dan Bulk, serta variasi target (Default User, akun sendiri, Read Only, Total Control, sesama pemegang role). **GAP-296**: gate hak Update untuk edit inline Custom Field, foto Avatar, dan CRUD Tab Role tidak ada di PRD §4.8, jadi TC eksekusinya belum ditulis. **GAP-297**: tooltip hak parsial vs target Total Control/Read Only ambigu (tier atau generik); spec 142 dan 143 tidak memverifikasi teks tooltip.
+44. **Entity Distributor dan Partner dilengkapi (2026-10-01).** TC-603 sampai 607 dan spec 144–148 (opsi Access Create, Tab Responsibilities, entity-scope Partner). **GAP-300**: entity-scope Principal terhadap Distributor downstream tidak didefinisikan di PRD §2.1, jadi tidak ditulis. Empty state Distributor dan Partner tertahan GAP-282.

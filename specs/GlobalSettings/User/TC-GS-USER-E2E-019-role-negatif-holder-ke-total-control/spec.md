@@ -43,7 +43,7 @@ Lakukan langkah 1–7 untuk setiap role pada tabel "Role yang diuji".
 
 - Ini spec negatif capability holder terhadap target Total Control dari Role Matrix (`docs/e2e-conventions.md` bagian 3a), sesuai `USER-LOGIC-03`. Pasangan positifnya adalah `TC-GS-USER-E2E-014-role-positif-target-total-control`.
 - Baris target tidak pernah Hidden karena "Manage user and role" adalah Global Role dengan cakupan seluruh entity (`user.md` §9.11). Hanya aksi tulis yang Disabled.
-- Kombinasi capability holder parsial (hanya Create, Update, atau Delete) terhadap target Total Control tidak punya TC sumber, sehingga hanya role Full CRUD yang diuji di sini.
+- Capability holder parsial hanya-Update terhadap target Total Control diuji di `TC-GS-USER-E2E-139` (TC-GS-USER-598). Hak Delete-saja dan Create-saja diuji di `TC-GS-USER-E2E-142` dan `143`; spec ini hanya menguji Full CRUD.
 - Cara skrip menjalankan banyak role diputuskan di tahap script.
 - Lapisan frontend mencakup TC ini dengan payload izin yang di-mock (TC-GS-USER-FE-023, 158).
 - Spec ini tidak membuat atau mengubah data, jadi tidak butuh cleanup.
