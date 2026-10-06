@@ -206,3 +206,151 @@ Frasa "bila terdeteksi sbg abandoned" membuat pencatatan ini terasa opsional, pa
 - Status seluruh spec `draft`; belum ada `.test.ts`.
 - `npx spectra lint --strict specs/auth2/LoginPassword` → `✓ 20 specs and 1 suites verified. 0 lint errors found.`
 - Scan residue CJK dan full-width pada 20 spec plus dua dokumen pendukung: `0 baris`.
+
+
+---
+
+# Gap & Temuan — Auth > Login with OTP
+
+Sumber: generate spec `specs/Auth/LoginOtp/` (27 spec, 183 TC aktif). Tanggal generate: 2026-10-06.
+
+Dokumen ini mencatat seluruh temuan, perbedaan langkah/prekondisi, dan celah cakupan yang diidentifikasi selama proses **audit silang antara PRD `auth/login-otp/PRD/login-otp.md` dan Test Case `auth/login-otp/TestCases/tc-login-otp.md`**.
+
+---
+
+## GAP-OTP-E2E-001 — Nilai threshold IP Rate Limit belum ditetapkan secara kuantitatif
+
+**Status:** terbuka, bawaan PRD  
+**Tipe:** `[TODO Engineering]`  
+**Dampak:** tinggi untuk penentuan batas ekspektasi assert otomasi non-mock  
+
+PRD `login-otp.md` §9.2 dan `auth-foundation.md` §3.2 menandai threshold IP rate limiting sebagai `[TODO Engineering]`. Di sisi lain, `TC-AUTH-OTP-33`, `TC-AUTH-OTP-34`, `TC-AUTH-OTP-63`, dan `TC-AUTH-OTP-85` menguji perilaku penolakan saat rate limit tercapai (status `429` dan alert inline "Too many requests. Please try again later."), namun jumlah request spesifik per time-window tidak disebutkan di dokumen TC maupun PRD.
+
+**Yang dilakukan di spec:**  
+`TC-AUTH-OTP-E2E-008` menjalankan pengujian menggunakan skenario mock/threshold trigger yang memicu status 429 dan memverifikasi perilaku UI:
+1. Alert inline tampil di atas button [Request OTP].
+2. Penggantian alamat email pada IP yang sama tetap terblokir.
+3. Nilai 6 digit di kotak verifikasi tidak dikosongkan (NC-10).
+4. Penolakan tercatat di Activity Log Session dengan Note `IP rate limit exceeded`.
+
+**Yang perlu diputuskan tim Engineering:**  
+Menetapkan angka batas request per window (misal: 10 request per 60 detik per IP) agar skenario uji otomasi end-to-end tanpa mock dapat melakukan perulangan request dengan hitungan batas yang pasti.
+
+---
+
+## GAP-OTP-E2E-002 — Ketiadaan Skenario Attestation Token Negatif / Kedaluwarsa pada TC Mobile
+
+**Status:** terbuka  
+**Tipe:** kelengkapan skenario uji / precondition  
+**Dampak:** sedang, memengaruhi cakupan pengujian aplikasi mobile  
+
+PRD `login-otp.md` §4.6 dan §9.2 menetapkan bahwa aplikasi mobile tidak merender widget Google reCAPTCHA v2, melainkan menggunakan mekanisme native device attestation (Google Play Integrity API) untuk memvalidasi keaslian perangkat klien sebelum OTP dikirimkan.
+
+File TC hanya menyediakan satu pengujian attestation pada `TC-AUTH-OTP-180` yang menguji skenario positif (token attestation valid). Skenario negatif belum tercakup di file TC:
+1. Perangkat gagal verifikasi integritas (device rooted / uncertified).
+2. Attestation token kadaluwarsa atau null.
+3. Pesan kesalahan yang ditampilkan antarmuka mobile saat attestation gagal (apakah alert modal, toast, atau penolakan server).
+
+**Yang dilakukan di spec:**  
+`TC-AUTH-OTP-E2E-002` mencakup alur tampilan mobile tanpa reCAPTCHA, keypad numerik otomatis, dan permintaan OTP dengan attestation token valid. Ketiadaan skenario negatif dicatat di sini sebagai rekomendasi penambahan TC ke suite mobile.
+
+---
+
+## GAP-OTP-E2E-003 — Inkonsistensi Microcopy Error Caption Checkbox Agreement Antar Modul Auth
+
+**Status:** terbuka  
+**Tipe:** inkonsistensi copy antar dokumen PRD & TC  
+**Dampak:** rendah hingga sedang, memengaruhi validasi string pesan kesalahan  
+
+Terdapat perbedaan teks pesan kesalahan inline saat pengguna mengklik tombol [Continue ➔] pada layar Confirm to Continue tanpa mencentang checkbox privasi:
+
+- **Modul Login with Password (`login-password.md` §4.5 & `auth-foundation.md` §11.1):**  
+  Menggunakan copy: `"Please agree to the Privacy Policy to continue"`
+- **Modul Login with OTP (`login-otp.md` §4.2, §6 V-12, §9.9 FLD-06 serta `TC-AUTH-OTP-102`):**  
+  Menggunakan copy: `"You need to agree to the Privacy Policy to continue"`
+
+Keduanya merujuk pada layar dan komponen yang sama ("Confirm to Continue" / Agreement Gate).
+
+**Yang dipakai di spec:**  
+Spec `TC-AUTH-OTP-E2E-021` mengadopsi copy resmi dari PRD Login with OTP dan `TC-AUTH-OTP-102`, yaitu `"You need to agree to the Privacy Policy to continue"`.
+
+**Yang perlu diselaraskan:**  
+Pemilik modul UX/UI perlu menyamakan copy pesan error checkbox di seluruh alur autentikasi (`login-password`, `login-otp`, dan `session-management`) agar konsisten menggunakan satu varian kalimat.
+
+---
+
+## GAP-OTP-E2E-004 — Divergensi Kebijakan Pencatatan Log pada Token Kedaluwarsa / Abandoned Layar Agreement
+
+**Status:** terselesaikan via keputusan PRD Login OTP  
+**Tipe:** divergensi arsitektur logging antar-fitur  
+**Dampak:** tinggi untuk ketepatan assertion log  
+
+Pada modul Login with Password (`login-password.md` §9.8 dan §11.4), jika layar Confirm to Continue ditinggalkan atau token pra-autentikasi kedaluwarsa secara natural, sistem mencatat entri `Failed` dengan Note `Consent not given` (GAP-LP-E2E-009).
+
+Sebaliknya, pada modul Login with OTP:
+- PRD `login-otp.md` §9.8 (Tabel Pencatatan baris Confirm Agreement tidak dikonfirmasi):
+  > *"Confirm Agreement tidak dikonfirmasi (token expired atau layar ditinggalkan; tidak dicatat) ... Sync | Tidak dicatat"*
+- Changelog `tc-login-otp.md` entri 2026-10-06 (GAP-393):
+  > *"token kedaluwarsa atau layar ditinggalkan tidak dicatat (TC `TC-AUTH-OTP-109`, `TC-AUTH-OTP-111`). NC-12 digantikan keputusan ini."*
+- `TC-AUTH-OTP-107` Expected Result (e):
+  > *"Tidak ada baris baru untuk percobaan ini di kedua surface log"*
+
+Artinya, pada Login with OTP, penolakan dan penulisan Note `Consent not given` **hanya terjadi jika tombol [Continue ➔] diklik secara aktif oleh pengguna tanpa mencentang checkbox** (`TC-AUTH-OTP-102` & `TC-AUTH-OTP-126`). Bila pengguna hanya mendiamkan layar hingga token 10 menit habis atau menutup tab, tidak ada entri log yang ditulis.
+
+**Yang dilakukan di spec:**  
+Spec `TC-AUTH-OTP-E2E-021` mengadopsi aturan terbaru PRD Login with OTP: memverifikasi bahwa penutupan layar atau kadaluwarsa token tidak menambah baris baru di kedua surface log, dan `Consent not given` hanya dicatat pada klik eksplisit tanpa centang.
+
+---
+
+## GAP-OTP-E2E-005 — Pembuktian Transaksi Database Atomik (EC-46) Membutuhkan Integration Test / Fault Injection
+
+**Status:** terbuka, batas lapisan E2E UI  
+**Tipe:** arsitektur backend non-UI observable  
+**Dampak:** rendah untuk spec E2E, krusial untuk backend integration  
+
+PRD `login-otp.md` §9.6 (Action Resilience) dan §9.4.2 EC-46 mensyaratkan bahwa konsumsi kode OTP dan pencatatan audit log harus berada dalam satu transaksi database atomik (jika penulisan log gagal, konsumsi kode di-rollback sehingga pengguna tidak kehilangan hak verifikasi).
+
+Kondisi kegagalan parsial di mana penulisan log gagal secara internal di database tidak dapat disimulasikan dari blackbox UI browser tanpa injeksi kegagalan pada level koneksi database.
+
+**Yang dilakukan di spec:**  
+Aspek konkurensi dan integritas konsumsi atomik diuji di level browser melalui uji balapan tab paralel di `TC-AUTH-OTP-E2E-027` dan verifikasi simetris 1:1 di `TC-AUTH-OTP-E2E-011`. Uji kegagalan transaksi DB parsial diserahkan ke suite uji backend terpisah (`tc-login-otp-backend.md`).
+
+---
+
+## GAP-OTP-E2E-006 — Kebutuhan Test Harness Khusus Otomasi E2E
+
+**Status:** terbuka, dicatat di Prerequisites tiap spec  
+**Tipe:** kesiapan environment uji otomasi  
+**Dampak:** memblokir eksekusi test runner jika harness belum tersedia  
+
+Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masing-masing spec untuk panduan implementasi tim pengembang otomasi:
+
+| Kebutuhan Harness | Deskripsi & Kegunaan | Spec yang Membutuhkan |
+|---|---|---|
+| **Mail-catcher API** | Menangkap kode OTP 6-digit dan mengukur SLA latensi pengiriman email (≤ 2 menit) | 001, 006, 010, 011, 012, 014, 015, 016, 020, 022 |
+| **Server Clock Mock / Time-Travel** | Memanipulasi sisa waktu token (OTP 5 menit, preAuthToken 10 menit, Resend cooldown 10 menit) tanpa harus menunggu delay riil | 012, 015, 018, 021 |
+| **TOTP Authenticator Generator** | Memasok kode faktor kedua time-based 6-digit untuk pengujian handoff MFA | 022 |
+| **Data Seed State Akun** | Menyiapkan profil user: FIRST (login pertama), IDLE (>30 hari), POLICY (kebijakan privasi baru), NEWDEV (device baru), POLNEW, PENDING, INACTIVE, Suspended Client, Expired Client | 005, 011, 020, 021, 022, 024 |
+| **Network Mock Interceptor** | Intercept endpoint HTTP untuk simulasi error 500, network drop/timeout, respons 429, dan payload tampering | 007, 008, 013, 026, 027 |
+| **Multi-tab Context** | Pengujian tab paralel untuk mendeteksi race condition dan invalidasi lintas tab | 023, 027 |
+
+---
+
+## GAP-OTP-E2E-007 — Target Environment E2E Masih Mengarah ke Demo App
+
+**Status:** terbuka  
+**Tipe:** konfigurasi environment  
+**Dampak:** memblokir eksekusi runner TestSpectra  
+
+Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/Auth/LoginOtp/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
+
+---
+
+## Kepatuhan Suite Login OTP
+
+- **Cakupan TC:** 100% (183 dari 183 TC granular aktif dari `TC-AUTH-OTP-01` sampai `TC-AUTH-OTP-183` terpetakan secara lengkap tanpa satu pun yang terlewat).
+- **Duplikasi TC:** 0 (setiap `TC-AUTH-OTP-NN` hanya muncul tepat di satu spec).
+- **Pembagian Platform:** 26 spec web, 1 spec mobile (`TC-AUTH-OTP-E2E-002`).
+- **Verifikasi Lint:** `npx spectra lint --strict specs/Auth/LoginOtp` → `✓ 27 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
+- **Karakter Non-Kanonikal:** 0 karakter CJK atau full-width punctuation residue.
+- **Status Spec:** Seluruh spec berstatus `draft` dengan struktur langkah uji bernomor lengkap, siap untuk fase pembuatan script otomasi (`tagsamurai-e2e-generate-script`).
