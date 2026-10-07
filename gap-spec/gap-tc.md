@@ -342,28 +342,30 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 
 # Gap & Temuan — Auth > MFA (Multi-Factor Authentication)
 
-Sumber: generate spec `specs/Auth/Mfa/` (30 spec, 205 TC aktif). Tanggal generate: 2026-10-07.
+Sumber: generate spec `specs/Auth/Mfa/` (36 spec, 207 TC aktif). Tanggal pembaruan: 2026-10-07.
 
-Dokumen ini mencatat seluruh temuan, perbedaan langkah/prekondisi, dan celah cakupan yang diidentifikasi selama proses **audit silang antara PRD `auth/mfa/PRD/mfa.md` dan Test Case `auth/mfa/TestCases/tc-mfa.md`**.
+Dokumen ini mencatat seluruh temuan, perbedaan langkah/prekondisi, dan celah cakupan yang diidentifikasi selama proses **audit silang antara PRD `auth/mfa/PRD/mfa.md`, Test Case `auth/mfa/TestCases/tc-mfa.md`, dan OpenAPI/LLD contract**.
 
 ---
 
-## GAP-MFA-E2E-001 — Nilai threshold IP Rate Limit belum ditetapkan secara kuantitatif di PRD
+## GAP-MFA-E2E-001 — Nilai threshold IP Rate Limit telah ditetapkan di OpenAPI / LLD
 
-**Status:** terbuka, bawaan PRD  
-**Tipe:** `[TODO Engineering]`  
+**Status:** terselesaikan via kontrak OpenAPI & LLD (2026-10-07)  
+**Tipe:** `[TODO Engineering]` (resolved)  
 **Dampak:** tinggi untuk penentuan batas ekspektasi assert otomasi non-mock  
 
-PRD `mfa.md` §9.2 dan `auth-foundation.md` §3.2 menandai batas IP rate limit sebagai `[TODO Engineering]`. Di sisi lain, `TC-AUTH-MFA-204` dan `TC-AUTH-MFA-205` menguji kondisi rate limit (status 429 dan caption "Too many requests. Please try again later.") dengan asumsi "threshold diturunkan di lingkungan uji". Angka eksak request per time-window (misal: 10 request per 60 detik per IP) belum didefinisikan secara resmi di dokumen PRD maupun TC.
+Sebelumnya PRD `mfa.md` §9.2 dan `auth-foundation.md` §3.2 menandai batas IP rate limit sebagai `[TODO Engineering]`. Di sisi lain, `TC-AUTH-MFA-204` dan `TC-AUTH-MFA-205` menguji kondisi rate limit (status 429 dan caption "Too many requests. Please try again later.").
+
+Tim Engineering melalui commit `ac9e778` pada `openapi.yaml` dan LLD (`low-level-design.md`) telah menetapkan ambang batas resmi arsitektur autentikasi:
+- **Ambang batas:** 20 request per menit per alamat IP (`20 req/min/IP`).
+- **Tipe window:** Fixed 1-minute tumbling window.
+- **Cakupan:** Seluruh endpoint autentikasi (§3.2 auth foundation).
 
 **Yang dilakukan di spec:**  
-Spec `TC-AUTH-MFA-E2E-030` mencakup skenario rate limit dengan `Mode: mock` (injeksi respons 429) dan memverifikasi perilaku UI:
+Spec `TC-AUTH-MFA-E2E-035` mencakup skenario rate limit dengan `Mode: mock` (injeksi respons 429) serta mencatat baseline rate limit non-mock 20 req/min per IP, memverifikasi perilaku UI:
 1. Caption inline error "Too many requests. Please try again later." tampil di bawah kotak digit atau di form Choose Verification Method.
 2. Nilai kotak digit dipertahankan (tidak dikosongkan).
 3. Penolakan rate limit tidak menghasilkan entri baru di Activity Log Session maupun User Log.
-
-**Yang perlu diputuskan tim Engineering:**  
-Menetapkan angka batas request per window secara kuantitatif agar pengujian end-to-end terintegrasi tanpa mock dapat mengulang request dengan hitungan batas pasti.
 
 ---
 
@@ -450,14 +452,52 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 
 ---
 
+## GAP-MFA-E2E-007 — Target Environment E2E Masih Mengarah ke Demo App
+
+**Status:** terbuka  
+**Tipe:** konfigurasi environment  
+**Dampak:** memblokir eksekusi runner TestSpectra  
+
+Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/Auth/Mfa/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
+
+---
+
+## GAP-MFA-E2E-008 — Pemisahan Uji Kompleksitas Tinggi dari Spec Screening dan Dekomposisi Modular (30 → 36 Specs)
+
+**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-07)  
+**Tipe:** arsitektur test case & isolasi eksekusi otomasi  
+**Dampak:** tinggi terhadap stabilitas otomasi Playwright dan kecepatan diagnosis kegagalan  
+
+Pada draf awal generasi spec E2E (30 spec), ditemukan pola *cramming* atau penggabungan beberapa pengujian teknis tingkat tinggi ke dalam satu spec screening visual atau spec fungsional biasa:
+1. **Decoding QR Code Canvas di Spec Screening (`TC-AUTH-MFA-109` di Spec 004):** Pengujian inspeksi visual Step 1-3 form enrollment digabung dengan decoding gambar/canvas QR code untuk memvalidasi URI `otpauth://totp/` dan parameter RFC 6238 (SHA1, 30s period, secret string). Ini memaksa spec screening visual bergantung pada library decoder eksternal (`jsQR`).
+2. **Polling Mail-Catcher di Spec Screening OTP (`TC-AUTH-MFA-62` di Spec 002):** Spec screening tata letak kotak SegmentedInput dan navigasi Backspace digabung dengan request polling kotak masuk email mail-catcher, memperlambat eksekusi screening visual.
+3. **Mock Hardware Biometrik di Spec Layout Mobile (`TC-AUTH-MFA-54` di Spec 005):** Pengujian tata letak keypad numerik responsif Android dicampur dengan instrumentasi sensor biometrik (fingerprint / face unlock) pada faktor-1.
+4. **Verifikasi Admin GS di Skenario User Biasa (`TC-AUTH-MFA-178` di Spec 026):** Skenario penundaan pencatatan log Success ke faktor-2 menuntut login sebagai Total Control Global Settings di tengah-tengah alur device fingerprinting user browser biasa.
+5. **Mega-Specs Heterogen (Spec 028, 029, 030):** Menggabungkan race condition multi-tab/device, flood IP rate limit 429, fault injection 5xx, screen reader ARIA Live, direct API tampering, fallback lost-device, dan paritas tier langganan ke dalam spec yang terlalu padat (16–18 TC per file).
+
+*Catatan: Rincian analisis dampak dan dekomposisi per spec didokumentasikan secara lengkap pada [gap-spec.md](./gap-spec.md).*
+
+**Solusi & Keputusan yang Diterapkan di Spec (30 → 36 Specs Terisolasi):**  
+- `TC-109` (QR URI decode) dipindahkan ke spec khusus **`TC-AUTH-MFA-E2E-032`** (*Verifikasi Kriptografis Isi QR Code & Secret Key*).
+- `TC-62` (cek mail-catcher) dipindahkan dari Spec 002 ke **`TC-AUTH-MFA-E2E-016`** (*Verifikasi OTP Auto-Submit & Paste*).
+- `TC-54` (biometric hardware) dipisahkan menjadi spec khusus **`TC-AUTH-MFA-E2E-036`** (*Mobile Biometric Re-Login Trigger*).
+- `TC-178` (delayed success logging) dipindahkan dari Spec 026 ke **`TC-AUTH-MFA-E2E-028`** (*Audit Log Status Mutasi*).
+- Uji balapan multi-tab/device dikonsolidasikan ke **`TC-AUTH-MFA-E2E-033`** (*Konkurensi & Double-Submit Guards*).
+- Uji API token tampering & purpose isolation dikonsolidasikan ke **`TC-AUTH-MFA-E2E-034`** (*Defense-in-Depth Token Tampering*).
+- Uji flood 429 dan 5xx server fault injection diisolasi di **`TC-AUTH-MFA-E2E-035`** (*Rate Limiting & Resilience*).
+- Uji recovery user dan admin reset dipisahkan di **`TC-AUTH-MFA-E2E-030`**, sementara paritas subscription & dialog session management diisolasi di **`TC-AUTH-MFA-E2E-031`**.
+
+---
+
 ## Kepatuhan Suite MFA
 
-- **Cakupan TC:** 100% (205 dari 205 TC granular aktif dari `TC-AUTH-MFA-01` sampai `TC-AUTH-MFA-205` terpetakan secara lengkap tanpa satu pun yang terlewat).
+- **Cakupan TC:** 100% (207 dari 207 TC granular aktif dari `TC-AUTH-MFA-01` sampai `TC-AUTH-MFA-207` terpetakan secara lengkap tanpa satu pun yang terlewat).
 - **Duplikasi TC:** 0 (setiap `TC-AUTH-MFA-NN` hanya muncul tepat di satu spec).
 - **Pembagian Platform:** 34 spec web, 2 spec mobile (`TC-AUTH-MFA-E2E-005` layout responsif & `TC-AUTH-MFA-E2E-036` biometric re-login).
 - **Verifikasi Lint:** `npx spectra lint --strict specs/Auth/Mfa` → `✓ 36 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
 - **Karakter Non-Kanonikal:** 0 karakter CJK atau full-width punctuation residue.
 - **Status Spec:** Seluruh 36 spec berstatus `draft` dengan isolasi tanggung jawab tinggi (UI screening, cryptography, race condition, rate limiting, dan audit log terpisah), siap untuk fase pembuatan script otomasi (`tagsamurai-e2e-generate-script`).
+
 
 
 ---

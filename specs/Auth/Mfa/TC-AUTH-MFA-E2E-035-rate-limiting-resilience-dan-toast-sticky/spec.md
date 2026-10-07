@@ -66,3 +66,4 @@ coverage:
 
 - Sesuai PRD §7, toast error T-01 `"Error, failed to log in."` bersifat sticky dan wajib ditutup manual oleh pengguna.
 - Nilai kotak digit tidak di-clear saat terjadi error 5xx atau rate limit 429.
+- Batas IP Rate Limit resmi sistem (sesuai kontrak OpenAPI/LLD arsitektur autentikasi §3.2) adalah 20 request per menit per alamat IP pada fixed 1-minute tumbling window.
