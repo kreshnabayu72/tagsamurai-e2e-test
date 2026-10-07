@@ -354,3 +354,166 @@ Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan U
 - **Verifikasi Lint:** `npx spectra lint --strict specs/Auth/LoginOtp` → `✓ 27 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
 - **Karakter Non-Kanonikal:** 0 karakter CJK atau full-width punctuation residue.
 - **Status Spec:** Seluruh spec berstatus `draft` dengan struktur langkah uji bernomor lengkap, siap untuk fase pembuatan script otomasi (`tagsamurai-e2e-generate-script`).
+
+
+---
+
+# Gap & Temuan — Auth > MFA (Multi-Factor Authentication)
+
+Sumber: generate spec `specs/Auth/Mfa/` (30 spec, 205 TC aktif). Tanggal generate: 2026-10-07.
+
+Dokumen ini mencatat seluruh temuan, perbedaan langkah/prekondisi, dan celah cakupan yang diidentifikasi selama proses **audit silang antara PRD `auth/mfa/PRD/mfa.md` dan Test Case `auth/mfa/TestCases/tc-mfa.md`**.
+
+---
+
+## GAP-MFA-E2E-001 — Nilai threshold IP Rate Limit belum ditetapkan secara kuantitatif di PRD
+
+**Status:** terbuka, bawaan PRD  
+**Tipe:** `[TODO Engineering]`  
+**Dampak:** tinggi untuk penentuan batas ekspektasi assert otomasi non-mock  
+
+PRD `mfa.md` §9.2 dan `auth-foundation.md` §3.2 menandai batas IP rate limit sebagai `[TODO Engineering]`. Di sisi lain, `TC-AUTH-MFA-204` dan `TC-AUTH-MFA-205` menguji kondisi rate limit (status 429 dan caption "Too many requests. Please try again later.") dengan asumsi "threshold diturunkan di lingkungan uji". Angka eksak request per time-window (misal: 10 request per 60 detik per IP) belum didefinisikan secara resmi di dokumen PRD maupun TC.
+
+**Yang dilakukan di spec:**  
+Spec `TC-AUTH-MFA-E2E-030` mencakup skenario rate limit dengan `Mode: mock` (injeksi respons 429) dan memverifikasi perilaku UI:
+1. Caption inline error "Too many requests. Please try again later." tampil di bawah kotak digit atau di form Choose Verification Method.
+2. Nilai kotak digit dipertahankan (tidak dikosongkan).
+3. Penolakan rate limit tidak menghasilkan entri baru di Activity Log Session maupun User Log.
+
+**Yang perlu diputuskan tim Engineering:**  
+Menetapkan angka batas request per window secara kuantitatif agar pengujian end-to-end terintegrasi tanpa mock dapat mengulang request dengan hitungan batas pasti.
+
+---
+
+## GAP-MFA-E2E-002 — Inkonsistensi Copy Header / Subtitle S-AUTHMFA-02 (OTP Verification)
+
+**Status:** terselesaikan via konsensus NC-11  
+**Tipe:** inkonsistensi copy antar seksi PRD  
+**Dampak:** rendah hingga sedang, memengaruhi assertion teks UI  
+
+Pada PRD wireframe `mfa.md` §4.2 Halaman 2 tertulis:  
+> Subtitle: `"We sent a 6-digit code to user@company.com"`
+
+Namun, pada `auth-foundation.md` §4.2, LLD MFA, dan keputusan konfirmasi NC-11 (2026-10-06):  
+> Subtitle resmi yang disepakati adalah `"We sent a code to {email}"` (tanpa frase "6-digit" dan email tidak di-mask).
+
+File `tc-mfa.md` (TC-04 dan TC-56) sudah menerapkan versi NC-11, namun wireframe PRD §4.2 belum diperbarui.
+
+**Yang dipakai di spec:**  
+Spec `TC-AUTH-MFA-E2E-002` mengadopsi copy resmi NC-11: `"We sent a code to {email}"`.
+
+---
+
+## GAP-MFA-E2E-003 — UI Feedback Penolakan Resend Sebelum Cooldown 60 Detik Berakhir
+
+**Status:** terbuka  
+**Tipe:** perbedaan UI guard vs Backend enforcement  
+**Dampak:** rendah  
+
+PRD `mfa.md` §9.2 F-AUTHMFA-04 menyatakan bahwa server menegakkan cooldown 1 menit: request resend yang masuk sebelum cooldown berakhir ditolak tanpa email dan tanpa menambah hitungan, serta UI tetap pada state cooldown tanpa toast atau caption baru.
+
+Di `TC-AUTH-MFA-85`, pengujian ini menggunakan client HTTP / direct API call. Di level browser murni, tombol `[Resend code]` berada dalam kondisi `Disabled` dengan hitung mundur di dalam label tombol, sehingga interaksi klik pengguna secara fisik dicegah oleh UI.
+
+**Yang dilakukan di spec:**  
+`TC-AUTH-MFA-E2E-018` memverifikasi pencegahan di level UI (tombol disabled dengan countdown `Resend code in Ns`), sementara penolakan server jika request diterobos via API dicakup pada spec defense-in-depth `TC-AUTH-MFA-E2E-030`.
+
+---
+
+## GAP-MFA-E2E-004 — Penanganan Attestation Token pada Mobile App MFA
+
+**Status:** terbuka  
+**Tipe:** kelengkapan skenario mobile  
+**Dampak:** sedang untuk tim pengembang mobile  
+
+Pada modul Login with OTP (`login-otp.md` §4.6), mobile app menggunakan Google Play Integrity API untuk device attestation sebagai pengganti reCAPTCHA web. Pada PRD `mfa.md` §4.6, Mobile Layout hanya menyebut layout kartu, keypad numerik otomatis, dan penskalaan QR code enrollment. Belum ada spesifikasi apakah pengiriman OTP faktor-2 di mobile membutuhkan token Play Integrity baru atau murni bergantung pada validitas sesi pre-auth.
+
+**Yang dilakukan di spec:**  
+Spec `TC-AUTH-MFA-E2E-005` memverifikasi keypad numerik dan scaling layout mobile sesuai spesifikasi UI PRD §4.6. Rekomendasi disampaikan ke tim mobile untuk mengklarifikasi apakah Play Integrity token dibutuhkan saat pengiriman OTP faktor-2 di mobile.
+
+---
+
+## GAP-MFA-E2E-005 — Divergensi Penanganan Toast Sukses Antara Alur Login Biasa vs Enrollment Authenticator
+
+**Status:** terselesaikan via PRD §7 (T-02)  
+**Tipe:** perlakuan khusus notifikasi feedback  
+**Dampak:** sedang  
+
+PRD `mfa.md` §4.2 dan §7 (T-02) menetapkan bahwa setelah verifikasi enrollment berhasil, user langsung dialihkan ke Portal — Product Hub, dan toast sukses `"Success, authenticator app has been added."` tampil di pojok layar saat mendarat di Portal.
+
+Sebaliknya, pada alur verifikasi faktor-2 biasa (OTP dan Authenticator yang sudah enroll), tidak ada toast sukses yang dimunculkan (sukses = redirect langsung ke Portal). Hal ini merupakan perlakuan khusus untuk mengonfirmasi aktivasi faktor baru kepada pengguna.
+
+**Yang dilakukan di spec:**  
+Spec `TC-AUTH-MFA-E2E-021` memverifikasi munculnya toast `"Success, authenticator app has been added."` saat mendarat di Portal pasca-enrollment, sedangkan spec verifikasi OTP (`016`) dan TOTP (`019`) memverifikasi redirect langsung tanpa toast sukses.
+
+---
+
+## GAP-MFA-E2E-006 — Kebutuhan Test Harness Khusus Otomasi E2E MFA
+
+**Status:** terbuka, dicatat di Prerequisites tiap spec  
+**Tipe:** kesiapan environment uji otomasi  
+**Dampak:** memblokir eksekusi test runner jika harness belum tersedia  
+
+Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masing-masing spec untuk panduan implementasi tim pengembang otomasi:
+
+| Kebutuhan Harness | Deskripsi & Kegunaan | Spec yang Membutuhkan |
+|---|---|---|
+| **Mail-catcher API** | Menangkap email kode OTP faktor-2, mengukur SLA pengiriman, dan membaca email alert unusual login | 008, 010, 011, 012, 014, 016, 018, 023, 027, 028, 030, 033, 034, 035 |
+| **TOTP Authenticator Helper (RFC 6238)** | Memasok kode faktor kedua time-based 6-digit (SHA-1, periode 30 detik) serta simulasi drift window ±1 step | 003, 019, 020, 021, 022, 023, 024, 028, 030, 032, 033 |
+| **Server Clock Mock / Time-Travel** | Memanipulasi sisa waktu token (TTL pre-auth 10 menit, OTP expired >5 menit, tumbling window 90 hari, dan decay pasangan negara 180 hari) | 012, 013, 017, 018, 024 |
+| **Geo-IP Location & IP Injector** | Mensimulasikan login dari IP Jakarta, Surabaya (>100 km), Batam, dan Singapura (beda negara) serta kegagalan geo-IP (fail-open) | 007, 010, 011, 012, 013, 014, 027 |
+| **QR Code Image / Canvas Decoder (`jsQR`)** | Ekstraksi dan decoding gambar/canvas QR Code untuk memeriksa parameter RFC 6238 `otpauth://totp/` | 032 |
+| **Data Seed State Akun** | Menyiapkan profil user: FIRST, NEWDEV, NEWDEVE, IDLE, FAR, XC, XCT, MOB, AGR, PLAT2, Suspended/Expired Client, Distributor, Partner, Principal | 001, 007, 008, 009, 010, 011, 012, 013, 014, 015, 023, 025, 026, 030, 031, 036 |
+| **Network Mock Interceptor** | Intercept endpoint HTTP untuk simulasi error 500, timeout, respons 429, dan payload tampering | 014, 018, 027, 034, 035 |
+| **Multi-tab Context & Multi-device** | Pengujian tab paralel untuk mendeteksi race condition, verifikasi bersamaan, dan pembatalan sesi lintas tab/device | 025, 031, 033 |
+
+---
+
+## GAP-MFA-E2E-007 — Target Environment E2E Masih Mengarah ke Demo App
+
+**Status:** terbuka  
+**Tipe:** konfigurasi environment  
+**Dampak:** memblokir eksekusi runner TestSpectra  
+
+Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/Auth/Mfa/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
+
+---
+
+## GAP-MFA-E2E-008 — Pemisahan Uji Kompleksitas Tinggi dari Spec Screening dan Dekomposisi Modular (30 → 36 Specs)
+
+**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-07)  
+**Tipe:** arsitektur test case & isolasi eksekusi otomasi  
+**Dampak:** tinggi terhadap stabilitas otomasi Playwright dan kecepatan diagnosis kegagalan  
+
+Pada draf awal generasi spec E2E (30 spec), ditemukan pola *cramming* atau penggabungan beberapa pengujian teknis tingkat tinggi ke dalam satu spec screening visual atau spec fungsional biasa:
+1. **Decoding QR Code Canvas di Spec Screening (`TC-AUTH-MFA-109` di Spec 004):** Pengujian inspeksi visual Step 1-3 form enrollment digabung dengan decoding gambar/canvas QR code untuk memvalidasi URI `otpauth://totp/` dan parameter RFC 6238 (SHA1, 30s period, secret string). Ini memaksa spec screening visual bergantung pada library decoder eksternal (`jsQR`).
+2. **Polling Mail-Catcher di Spec Screening OTP (`TC-AUTH-MFA-62` di Spec 002):** Spec screening tata letak kotak SegmentedInput dan navigasi Backspace digabung dengan request polling kotak masuk email mail-catcher, memperlambat eksekusi screening visual.
+3. **Mock Hardware Biometrik di Spec Layout Mobile (`TC-AUTH-MFA-54` di Spec 005):** Pengujian tata letak keypad numerik responsif Android dicampur dengan instrumentasi sensor biometrik (fingerprint / face unlock) pada faktor-1.
+4. **Verifikasi Admin GS di Skenario User Biasa (`TC-AUTH-MFA-178` di Spec 026):** Skenario penundaan pencatatan log Success ke faktor-2 menuntut login sebagai Total Control Global Settings di tengah-tengah alur device fingerprinting user browser biasa.
+5. **Mega-Specs Heterogen (Spec 028, 029, 030):** Menggabungkan race condition multi-tab/device, flood IP rate limit 429, fault injection 5xx, screen reader ARIA Live, direct API tampering, fallback lost-device, dan paritas tier langganan ke dalam spec yang terlalu padat (16–18 TC per file).
+
+**Dampak Buruk Jika Tidak Dipecah:**
+- **Flakiness tinggi:** Kegagalan library decoding QR atau polling email akan menggagalkan seluruh assertion layout screening tombol/input, menyamarkan apakah bug ada pada CSS/DOM atau pada backend format.
+- **Fixture berlebih:** Mengharuskan setiap runner menyiapkan konteks multi-tab, proxy hop, dan mail-catcher bahkan untuk pengetesan form sederhana.
+- **Diagnosis sulit:** CI/CD reporting gagal menunjukkan akar penyebab secara presisi.
+
+**Solusi & Keputusan yang Diterapkan di Spec:**  
+Dilakukan dekomposisi modular menjadi **36 spec terisolasi**:
+- `TC-109` (QR URI decode) dipindahkan ke spec khusus **`TC-AUTH-MFA-E2E-032`** (*Verifikasi Kriptografis Isi QR Code & Secret Key*).
+- `TC-62` (cek mail-catcher) dipindahkan dari Spec 002 ke **`TC-AUTH-MFA-E2E-016`** (*Verifikasi OTP Auto-Submit & Paste*).
+- `TC-54` (biometric hardware) dipisahkan menjadi spec khusus **`TC-AUTH-MFA-E2E-036`** (*Mobile Biometric Re-Login Trigger*).
+- `TC-178` (delayed success logging) dipindahkan dari Spec 026 ke **`TC-AUTH-MFA-E2E-028`** (*Audit Log Status Mutasi*).
+- Uji balapan multi-tab/device dikonsolidasikan ke **`TC-AUTH-MFA-E2E-033`** (*Konkurensi & Double-Submit Guards*).
+- Uji API token tampering dikonsolidasikan ke **`TC-AUTH-MFA-E2E-034`** (*Defense-in-Depth Token Tampering*).
+- Uji flood 429 dan 5xx server fault injection diisolasi di **`TC-AUTH-MFA-E2E-035`** (*Rate Limiting & Resilience*).
+- Uji recovery user dan admin reset dipisahkan di **`TC-AUTH-MFA-E2E-030`**, sementara paritas subscription & dialog session management diisolasi di **`TC-AUTH-MFA-E2E-031`**.
+
+---
+
+## Kepatuhan Suite MFA
+
+- **Cakupan TC:** 100% (205 dari 205 TC granular aktif dari `TC-AUTH-MFA-01` sampai `TC-AUTH-MFA-205` terpetakan secara lengkap tanpa satu pun yang terlewat).
+- **Duplikasi TC:** 0 (setiap `TC-AUTH-MFA-NN` hanya muncul tepat di satu spec).
+- **Pembagian Platform:** 34 spec web, 2 spec mobile (`TC-AUTH-MFA-E2E-005` layout responsif & `TC-AUTH-MFA-E2E-036` biometric re-login).
+- **Verifikasi Lint:** `npx spectra lint --strict specs/Auth/Mfa` → `✓ 36 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
+- **Karakter Non-Kanonikal:** 0 karakter CJK atau full-width punctuation residue.
+- **Status Spec:** Seluruh 36 spec berstatus `draft` dengan isolasi tanggung jawab tinggi (UI screening, cryptography, race condition, rate limiting, dan audit log terpisah), siap untuk fase pembuatan script otomasi (`tagsamurai-e2e-generate-script`).
