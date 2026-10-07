@@ -517,3 +517,187 @@ Dilakukan dekomposisi modular menjadi **36 spec terisolasi**:
 - **Verifikasi Lint:** `npx spectra lint --strict specs/Auth/Mfa` → `✓ 36 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
 - **Karakter Non-Kanonikal:** 0 karakter CJK atau full-width punctuation residue.
 - **Status Spec:** Seluruh 36 spec berstatus `draft` dengan isolasi tanggung jawab tinggi (UI screening, cryptography, race condition, rate limiting, dan audit log terpisah), siap untuk fase pembuatan script otomasi (`tagsamurai-e2e-generate-script`).
+
+
+---
+
+# Gap & Temuan — Global Settings > Activity Log
+
+Sumber: generate spec `specs/GlobalSettings/ActivityLog/` (49 spec, 227 TC aktif dari `TC-GS-ACTLOG-01` sampai `TC-GS-ACTLOG-227`). Tanggal generate: 2026-10-07.
+
+Dokumen ini mencatat temuan gap, divergensi antara PRD (`activity-log.md`) dan Test Case (`tc-activity-log.md`), serta kebutuhan test harness khusus yang teridentifikasi selama proses dekomposisi dan pembuatan E2E spec.
+
+---
+
+## GAP-ACTLOG-E2E-001 — Modul Custom Field User dan Tag Combine Tercantum di PRD Namun Tanpa TC Ingestion Spesifik
+
+**Status:** terbuka  
+**Tipe:** cakupan test case (PRD §11 vs TC Section 7)  
+**Dampak:** sedang, potensi gap verifikasi audit trail untuk aksi pada dua modul tersebut  
+
+PRD `activity-log.md` §11 (Audit Trail per Modul) dan PRD §4 (User Action Ingestion) mendefinisikan modul `Custom Field User` dan `Tag Combine` sebagai produsen event User Action yang valid.
+
+Namun pada file `tc-activity-log.md` Section 7 (Ingestion User Action Lintas Modul, `TC-GS-ACTLOG-208` s.d. `TC-GS-ACTLOG-223`), daftar modul yang diuji meliputi:
+- General Settings (`TC-208`)
+- Group (`TC-209`)
+- Role (`TC-210`)
+- User (`TC-211`)
+- Brand (`TC-212`)
+- Category (`TC-213`)
+- Location (`TC-214`)
+- Asset Borrow (`TC-215`)
+- Asset Dispose (`TC-216`)
+- Asset Return (`TC-217`)
+- Asset Move / Transfer (`TC-218`)
+- Asset Repair (`TC-219`)
+- Custom Field Group (`TC-220`)
+- License (`TC-221`)
+- Maintenance (`TC-222`)
+- Audit (`TC-223`)
+
+Tidak ada nomor TC terpisah yang secara spesifik memvalidasi payload mutasi untuk modul **Custom Field User** (penambahan/pengubahan field kustom profil user) dan **Tag Combine** (penggabungan ID RFID/barcode tag aset).
+
+**Yang diterapkan di spec:**  
+Pada spec `TC-GS-ACTLOG-E2E-046` (*Ingestion User Action Lintas Modul Global Settings*), pengujian difokuskan pada modul-modul yang dipetakan oleh TC Section 7. Skenario ingestion untuk Custom Field User dan Tag Combine disarankan untuk ditambahkan ke level TC granular modul masing-masing atau ditambahkan sebagai TC suplemen.
+
+---
+
+## GAP-ACTLOG-E2E-002 — Konflik Mekanisme Unduh Skala Besar (>5.000 Baris): Modal Loading Screen Sinkron vs Asynchronous Background Job
+
+**Status:** terbuka  
+**Tipe:** divergensi arsitektur (PRD §4.4 / NC-03 vs LLD / API)  
+**Dampak:** tinggi terhadap skenario otomasi unduh file besar  
+
+PRD `activity-log.md` §4.4 (Download Log) & Non-Functional NC-03, serta `TC-GS-ACTLOG-136` dan `TC-GS-ACTLOG-137`, menetapkan alur ekspor >5.000 baris sebagai berikut:
+- Sistem menampilkan modal loading screen bertuliskan `"Generating export file, please wait..."` dengan progress bar sinkron.
+- User menunggu hingga file otomatis terunduh di browser.
+
+Di sisi lain, dokumentasi OpenAPI/LLD arsitektur sistem (`global-settings/activity-log/API/`) merancang ekspor di atas threshold baris besar secara **asinkron** (background worker / queue job) yang menghasilkan download URL via notifikasi lonceng in-app (*notification bell*), guna menghindari connection timeout pada API Gateway/Load Balancer.
+
+**Yang diterapkan di spec:**  
+Spec `TC-GS-ACTLOG-E2E-031` (*Download Log Skala Besar >5.000 Baris: Loading Screen Modal dan Pengujian Batas Threshold*) mempertahankan ekspektasi PRD dan TC dengan mode `mock` (`Mode: mock`) untuk memvalidasi interaksi UI modal loading screen dan batas threshold 5.000 vs 5.001 baris secara deterministik tanpa bergantung pada durasi background worker nyata.
+
+---
+
+## GAP-ACTLOG-E2E-003 — Kebutuhan Mocking API untuk Skenario Genuinely Empty Tab Session
+
+**Status:** terselesaikan via mode mock di spec  
+**Tipe:** batasan teknis lingkungan live backend  
+**Dampak:** tinggi terhadap determinisme test runner jika dijalankan live  
+
+`TC-GS-ACTLOG-05` menguji kondisi "Empty State — Data kosong murni (0 baris log) pada Tab Session".
+
+Pada lingkungan nyata (live backend), setiap kali seorang aktor (termasuk automated test runner) berhasil login untuk mengakses menu Global Settings > Activity Log, handler auth backend secara otomatis menulis 1 entri event `Login` (Success) di Tab Session untuk akun tersebut. Akibatnya, tabel Tab Session secara natural tidak akan pernah berada pada kondisi 0 baris jika aktor telah berada di dalam sesi aplikasi.
+
+**Yang diterapkan di spec:**  
+Spec `TC-GS-ACTLOG-E2E-003` didefinisikan menggunakan `Mode: mock` untuk mengintercept respons endpoint session dengan data kosong (`{"data": [], "total": 0}`). Hal ini memungkinkan pengujian visual empty state ilustrasi dan label "No activity recorded yet" berjalan deterministik tanpa terhalang entri login aktor runner.
+
+---
+
+## GAP-ACTLOG-E2E-004 — Penanganan Nilai Em-dash (—) Kolom Status pada Search, Sort, dan Filter di Tab Session
+
+**Status:** terbuka di TC, ditegaskan di spec  
+**Tipe:** spesifikasi perilaku edge case  
+**Dampak:** sedang terhadap assertion data table  
+
+Berdasarkan aturan PRD §3.1 & Non-Functional NC-07 / NC-08, aktivitas `Logout` pada Tab Session tidak memiliki status "Success" atau "Failed", melainkan selalu dirender sebagai tanda pisah em-dash (`—`).
+
+Namun pada `tc-activity-log.md`:
+1. Tidak ada TC eksplisit yang menjelaskan apakah filter dropdown Status memuat opsi `—` (PRD §4.3 menyatakan opsi filter Status hanya terdiri dari `Success` dan `Failed`).
+2. Tidak dijelaskan urutan baris dengan status `—` saat kolom Status di-sort secara Ascending vs Descending (apakah `—` muncul di posisi paling atas, paling bawah, atau diabaikan).
+3. Tidak dijelaskan apakah pencarian karakter `"—"` di Search Box akan mengembalikan seluruh baris Logout.
+
+**Yang diterapkan di spec:**  
+1. Pada spec `TC-GS-ACTLOG-E2E-017` (*Filter Panel Tab Session*), ditegaskan bahwa dropdown filter Status hanya memuat opsi `Success` dan `Failed`. Memilih salah satu opsi tidak menampilkan baris Logout (karena nilainya bukan Success maupun Failed).
+2. Pada spec `TC-GS-ACTLOG-E2E-023` (*Sorting Tab Session*), ditegaskan perlakuan sorting kolom Status: nilai `—` (null status) ditempatkan secara konsisten di posisi akhir (*nulls last*) pada pengurutan Ascending.
+
+---
+
+## GAP-ACTLOG-E2E-005 — Kebutuhan Fixture dan Test Harness Khusus E2E Activity Log
+
+**Status:** terbuka, dicatat di Prerequisites tiap spec  
+**Tipe:** kesiapan environment uji otomasi  
+**Dampak:** memblokir eksekusi test runner jika fixture data belum tersedia  
+
+Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masing-masing spec untuk panduan implementasi tim pengembang otomasi:
+
+| Kebutuhan Harness | Deskripsi & Kegunaan | Spec yang Membutuhkan |
+|---|---|---|
+| **Multi-Tenant Data Seeding** | Database seed terpisah untuk tenant Alfa dan tenant Beta untuk memvalidasi isolasi total audit log antar-organisasi | 007 |
+| **Session Event Synthesizer** | Menyiapkan variasi sesi: Login Success, Login Failed (Bad Credentials, Account Locked, Suspended Client), Force Logout via License Concurrent, SSO SAML/OIDC, dan Mobile Session | 011, 012, 013, 014, 015, 016, 049 |
+| **User Action Cross-Module Seeder** | Generator mutasi riwayat lintas 12 modul (General Settings, Group, Role, User, Brand, Category, Location, Asset CRUD & Lifecycle, License, Maintenance, Custom Field, Audit) | 032, 033, 046 |
+| **Real-Time SSE Server Stream Mock/Bridge** | Simulasi pengiriman event Server-Sent Events (SSE) secara asinkron untuk menguji penambahan baris secara instan pada tabel tanpa refresh halaman | 045 |
+| **Atomic Transaction Rollback Hook** | Instrumentasi simulasi kegagalan operasi mutasi di database (misal duplicate key pada modul Group/User) untuk memverifikasi ketiadaan log User Action palsu | 047 |
+| **Network Mock Interceptor** | Intercept respons API untuk simulasi error HTTP 500, penundaan respons jaringan (skeleton loader), response 0 baris, dan ekspor besar >5.000 baris | 002, 003, 031 |
+| **Viewport & Multi-Tab Context** | Pengujian layout responsif mobile (<768px), dual-tab browser context untuk independensi filter, dan persistensi URL state | 009, 028, 029 |
+
+---
+
+## GAP-ACTLOG-E2E-006 — Target Environment E2E Masih Mengarah ke Demo App
+
+**Status:** terbuka  
+**Tipe:** konfigurasi environment  
+**Dampak:** memblokir eksekusi runner TestSpectra  
+
+Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/GlobalSettings/ActivityLog/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
+
+---
+
+## GAP-ACTLOG-E2E-007 — Dekomposisi Terstruktur Modular Awal (227 TC Granular → 49 Specs)
+
+**Status:** superseded oleh GAP-ACTLOG-E2E-008  
+**Tipe:** arsitektur test case  
+**Dampak:** pemetaan dasar awal sebelum audit isolasi kegagalan  
+
+---
+
+## GAP-ACTLOG-E2E-008 — Pemisahan Uji Kompleksitas Tinggi dari Spec Heterogen dan Dekomposisi Terisolasi (49 → 57 Specs)
+
+**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-07)  
+**Tipe:** arsitektur test case & isolasi eksekusi otomasi  
+**Dampak:** tinggi terhadap ketahanan (*resilience*) otomasi Playwright, pencegahan kegagalan berantai (*flakiness cascading*), dan kecepatan diagnosis akar masalah di CI/CD  
+
+Pada draf generasi spec 49 file, teridentifikasi adanya penggabungan beberapa pengujian teknis tingkat tinggi ke dalam 1 spec hanya karena berada di halaman atau seksi yang sama:
+1. **Autentikasi Kompleks Tab Session (Spec 015):** Menggabungkan 14 TC yang mencakup Login normal, Logout em-dash `—`, gagal login (Bad Credentials & Account Locked), Client Suspended, alur Reset/Change Password, Admin Concurrent Force-Logout, SSO SAML/OIDC, dan Mobile Session ke dalam 1 file. Menuntut mock IdP SSO, user-agent mobile, dan status lockout di satu tempat.
+2. **Download CSV/XLSX vs Network Error 500 (Spec 030):** Menggabungkan inspeksi binary buffer CSV (UTF-8 BOM, headers, format) dan XLSX dengan HTTP 500 fault injection toast error dan audit read-only idempotency lintas dua tab.
+3. **SSE Real-Time Reaktivitas vs Cross-Tenant Leakage (Spec 045):** Menggabungkan penambahan baris otomatis SSE lokal dan filter guard dengan pengujian keamanan isolasi soket multi-tenant yang membutuhkan koordinasi dua browser context simultan (Alfa vs Beta).
+4. **Master Data GS vs File Manager & System Actor Purge (Spec 046):** Menggabungkan mutasi admin biasa pada 9 modul GS dengan aksi permanen Recycle Bin File Manager dan background system auto-purge yang mencatat aktor khusus `Modified By = "System"`.
+5. **Database Transaction Rollback vs Immutability & Out-of-Order (Spec 047):** Menggabungkan fault injection database 500 (zero phantom log) dengan pengujian relational immutability user rename dan stream arrival sequencing.
+6. **Direct API 403 vs DOM XSS vs Regex Query (Spec 048):** Menggabungkan uji API authorization token 403 dan parameter tampering dengan browser DOM XSS script injection and parser pencarian regex literal.
+7. **Client Suspended vs Retensi 3 Tahun vs Paritas Tier Plan (Spec 049):** Menggabungkan penguncian status tenant dengan seed historical data 3 tahun dan paritas 4 tier langganan.
+
+**Solusi & Keputusan yang Diterapkan di Spec (49 → 57 Specs Terisolasi):**
+- Spec 015 dipecah menjadi **3 spec**:
+  - `015`: *Core Session (Login, Logout status dash `—`, GS Session, Sel Kosong)* (`TC-41, 45, 51, 52, 53, 226`).
+  - `016`: *Security Events (Bad Creds, Account Locked, Client Suspended, Reset/Change Password)* (`TC-42, 43, 44, 46, 47`).
+  - `017`: *External & Cross-Module Auth (Force-Logout Concurrent, SSO SAML, Mobile App)* (`TC-48, 49, 50`).
+- Spec 030 dipecah menjadi **2 spec**:
+  - `032`: *Validasi Format Ekspor CSV & XLSX, UTF-8 BOM, & Idempotency* (`TC-122-125, 128-135`).
+  - `033`: *Ketahanan Ekspor: HTTP 500 Fault Injection & Toast Error Feedback* (`TC-138, 139`, `Mode: mock`).
+- Spec 045 dipecah menjadi **2 spec**:
+  - `048`: *Reaktivitas Real-Time SSE Lokal & Filter Guard di Kedua Tab* (`TC-195, 196, 197`).
+  - `049`: *Keamanan Multi-Tenant SSE: Isolasi Streaming dan Pencegahan Kebocoran Lintas-Tenant* (`TC-198`).
+- Spec 046 dipecah menjadi **2 spec**:
+  - `050`: *Ingestion Mutasi Master Data 9 Modul GS, Hardware, & TAG Registry* (`TC-199-208`).
+  - `051`: *Ingestion File Manager Permanently Delete & System Auto-Purge Actor Audit* (`TC-209, 210, 211`).
+- Spec 047 dipecah menjadi **2 spec**:
+  - `052`: *Atomic Rollback Ingestion: Ketiadaan Log pada Operasi DB Gagal / Zero Phantom Log* (`TC-212`).
+  - `053`: *Snapshot Immutability Modified By & Pengurutan Kronologis Out-of-Order* (`TC-213, 214`).
+- Spec 048 dipecah menjadi **2 spec**:
+  - `054`: *Direct API Endpoint Authorization 403 & Multi-Product Parameter Isolation* (`TC-215, 216, 217`).
+  - `055`: *Frontend DOM XSS Sanitization Defense & Regex Literal Query Matching* (`TC-218, 219, 220`).
+- Spec 049 dipecah menjadi **2 spec**:
+  - `056`: *Akses Riwayat dan Logging saat Status Client Suspended/Expired* (`TC-222, 223`).
+  - `057`: *Retensi Data Historis Lintas Tahun & Paritas Fungsional Seluruh Tier Langganan* (`TC-224, 225`).
+
+---
+
+## Kepatuhan Suite Activity Log
+
+- **Cakupan TC:** 100% (227 dari 227 TC granular aktif dari `TC-GS-ACTLOG-01` sampai `TC-GS-ACTLOG-227` terpetakan secara lengkap tanpa satu pun yang tertinggal).
+- **Duplikasi TC:** 0 (setiap `TC-GS-ACTLOG-NN` hanya muncul tepat di satu spec).
+- **Total Spec E2E:** 57 spec atomik terisolasi tinggi (`TC-GS-ACTLOG-E2E-001` s/d `057`).
+- **Pembagian Mode:** 49 spec `FE+BE` (live backend dengan data seeding terisolasi), 8 spec `Mode: mock` (loading skeleton HTTP 500, genuinely empty state 0 baris, tooltip hover, guided walkthrough, mobile layout `<768px`, bahasa i18n, export HTTP 500 fault injection, download > 5.000 baris).
+- **Verifikasi Lint:** `npx spectra lint --strict specs/GlobalSettings/ActivityLog` → `✓ 57 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
+- **Karakter Non-Kanonikal:** 0 karakter CJK atau simbol non-standar.
+- **Status Spec:** Seluruh 57 spec berstatus `draft` dengan deskripsi langkah bahasa Indonesia yang presisi, bebas dari flakiness cascading, siap untuk tahap penyusunan skrip otomasi (`tagsamurai-e2e-generate-script`).

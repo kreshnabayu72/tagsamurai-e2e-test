@@ -1,39 +1,41 @@
 ---
 id: TC-GS-ACTLOG-E2E-006-hover-tooltip-toolbar-dan-teks-terpotong
-title: "Hover tooltip pada icon table tools dan teks lengkap untuk nama yang terpotong"
+title: "Hover Tooltip pada Table Tools dan Nama Lengkap User serta Modified By"
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
-  - TC-GS-ACTLOG-18
-  - TC-GS-ACTLOG-19
+  - TC-GS-ACTLOG-12
+  - TC-GS-ACTLOG-13
+  - TC-GS-ACTLOG-14
 coverage:
   web: automated
 ---
 
-# Hover tooltip pada icon table tools dan teks lengkap untuk nama yang terpotong
+# Hover Tooltip pada Table Tools dan Nama Lengkap User serta Modified By
 
 ## Prerequisites
 
 Mode: mock
-- Login sebagai Role: Total Control
-- Terdapat entri dengan User bernama panjang pada Tab Session dan Modified By bernama panjang pada Tab User Action
+- Login sebagai Role: Total Control Global Settings
+- Terdapat entri Session dengan user 'John Doe' dan entri User Action dengan admin 'Hendra Pratama'
 
 ## Test Steps
 
-### Tab Session
-1. Buka Tab Session
-2. Arahkan kursor ke icon Search pada toolbar dan verifikasi tooltip "Search" muncul
-3. Arahkan kursor ke icon Filter pada toolbar dan verifikasi tooltip "Filter" muncul
-4. Arahkan kursor ke icon Download pada toolbar dan verifikasi tooltip "Download" muncul
-5. Arahkan kursor ke header kolom Actions (⋯) dan verifikasi tooltip "Setup column" muncul
-6. Arahkan kursor ke nama user yang terpotong pada kolom User
-7. Verifikasi tooltip menampilkan nama lengkap user secara utuh tanpa terpotong
-### Tab User Action
-8. Klik tab "User Action"
-9. Arahkan kursor ke nama admin yang terpotong pada kolom Modified By
-10. Verifikasi tooltip menampilkan nama lengkap admin secara utuh tanpa terpotong
+### Tooltip Toolbar & Column Visibility
+1. Buka Tab Session, arahkan kursor ke icon Search, verifikasi tooltip 'Search' muncul.
+2. Arahkan kursor ke icon Filter, verifikasi tooltip 'Filter' muncul.
+3. Arahkan kursor ke icon Download, verifikasi tooltip 'Download' muncul.
+4. Arahkan kursor ke header kolom Actions (⋯), verifikasi tooltip 'Column Visibility' muncul.
+5. Buka Tab User Action dan lakukan verifikasi tooltip pada keempat kontrol yang sama.
+### Hover Tooltip Nama Lengkap
+6. Pada Tab Session, amati sel kolom User untuk baris pengguna 'John Doe'.
+7. Verifikasi teks yang tampil adalah nama ringkas 'John D'.
+8. Arahkan kursor (hover) ke teks 'John D', verifikasi tooltip menampilkan nama lengkap 'John Doe'.
+9. Pada Tab User Action, amati sel kolom Modified By untuk baris admin 'Hendra Pratama'.
+10. Verifikasi teks yang tampil adalah nama ringkas 'Hendra P'.
+11. Arahkan kursor (hover) ke teks 'Hendra P', verifikasi tooltip menampilkan nama lengkap 'Hendra Pratama'.
 
 ## Notes
 
-- Tooltip nama terpotong memastikan keterbacaan penuh identitas aktor tanpa merusak kerapian layout tabel.
+- Tampilan nama ringkas menghemat ruang kolom tabel sambil mempertahankan aksesibilitas nama lengkap via tooltip.

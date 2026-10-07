@@ -1,31 +1,38 @@
 ---
 id: TC-GS-ACTLOG-E2E-003-empty-state-genuinely-kosong
-title: "Tampilan empty state genuinely kosong saat entitas baru belum memiliki riwayat aktivitas"
+title: "Tampilan Empty State Genuinely Kosong pada Tab Session dan User Action"
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
-  - TC-GS-ACTLOG-06
-  - TC-GS-ACTLOG-07
+  - TC-GS-ACTLOG-05
 coverage:
   web: automated
 ---
 
-# Tampilan empty state genuinely kosong saat entitas baru belum memiliki riwayat aktivitas
+# Tampilan Empty State Genuinely Kosong pada Tab Session dan User Action
 
 ## Prerequisites
 
-- Login sebagai Role: Total Control
-- Entitas client baru yang baru diaktifkan dan belum pernah ada aktivitas login atau mutasi data di modul Global Settings manapun
+Mode: mock
+- Login sebagai Role: Total Control Global Settings
+- Intercept respons endpoint daftar log mengembalikan 0 baris data (karena aktor yang login live otomatis mencatat baris sesi)
 
 ## Test Steps
 
-1. Buka menu `Global Settings > Activity Log` pada entitas baru
-2. Verifikasi Tab Session aktif secara default
-3. Verifikasi area tabel Tab Session menampilkan ilustrasi empty state dan teks "No activity yet"
-4. Klik tab "User Action"
-5. Verifikasi area tabel Tab User Action menampilkan ilustrasi empty state dan teks "No activity yet"
+### Empty State Tab Session
+1. Intercept endpoint daftar log Tab Session untuk mengembalikan 0 baris data.
+2. Buka Global Settings > Activity Log > Session.
+3. Verifikasi area tabel menampilkan ilustrasi empty state dengan Title 'No activity yet'.
+4. Verifikasi Description menampilkan teks 'Activities will appear here as actions are performed.'.
+5. Verifikasi tidak ada tombol aksi atau CTA di dalam empty state.
+### Empty State Tab User Action
+6. Intercept endpoint daftar log Tab User Action untuk mengembalikan 0 baris data.
+7. Klik tab 'User Action'.
+8. Verifikasi area tabel menampilkan ilustrasi empty state dengan Title 'No activity yet'.
+9. Verifikasi Description menampilkan teks 'Activities will appear here as actions are performed.'.
+10. Verifikasi tidak ada tombol aksi yang ditampilkan.
 
 ## Notes
 
-- Empty state genuinely kosong dibedakan dari no-result state yang disebabkan oleh filter atau keyword pencarian.
+- Kondisi genuinely empty diisolasi menggunakan mock karena di backend nyata setiap login otomatis menulis baris Session.

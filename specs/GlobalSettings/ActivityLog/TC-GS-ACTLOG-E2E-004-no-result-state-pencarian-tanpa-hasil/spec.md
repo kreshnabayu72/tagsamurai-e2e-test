@@ -1,33 +1,41 @@
 ---
 id: TC-GS-ACTLOG-E2E-004-no-result-state-pencarian-tanpa-hasil
-title: "Tampilan no-result state saat pencarian atau penyaringan tidak menghasilkan data"
+title: "Tampilan No-Result State Akibat Pencarian dan Filter Tanpa Hasil serta Pemulihan Data"
 priority: High
-caseType: Positive
+caseType: Edge
 status: draft
 sourceTc:
-  - TC-GS-ACTLOG-08
-  - TC-GS-ACTLOG-09
+  - TC-GS-ACTLOG-06
+  - TC-GS-ACTLOG-07
+  - TC-GS-ACTLOG-108
 coverage:
   web: automated
 ---
 
-# Tampilan no-result state saat pencarian atau penyaringan tidak menghasilkan data
+# Tampilan No-Result State Akibat Pencarian dan Filter Tanpa Hasil serta Pemulihan Data
 
 ## Prerequisites
 
-- Login sebagai Role: Total Control
-- Terdapat data riwayat aktivitas pada Tab Session dan Tab User Action
+- Login sebagai Role: Total Control Global Settings
+- Terdapat data log aktivitas Session dan User Action
 
 ## Test Steps
 
-1. Buka Tab Session
-2. Masukkan keyword "zzznotfound" pada kotak Search Toolbar lalu tekan Enter
-3. Verifikasi tabel menampilkan judul "No results found" dan subtitle "Try adjusting your search or filter."
-4. Kosongkan kotak Search lalu tekan Enter untuk memulihkan tampilan data
-5. Klik tab "User Action"
-6. Masukkan keyword "zzznotfound" pada kotak Search Toolbar lalu tekan Enter
-7. Verifikasi tabel menampilkan judul "No results found" dan subtitle "Try adjusting your search or filter."
+### No-Result State via Search
+1. Buka Tab Session, klik icon Search, ketik kata kunci non-existent 'zzznotfound', lalu tekan Enter.
+2. Verifikasi area tabel menampilkan ilustrasi No-Result dengan Title 'No results found' dan Description 'Try adjusting your search or filter.'.
+3. Klik tab 'User Action', ketik kata kunci 'zzznotfound' di kotak Search lalu tekan Enter.
+4. Verifikasi Tab User Action menampilkan ilustrasi 'No results found' dengan Description 'Try adjusting your search or filter.'.
+### No-Result State via Filter
+5. Kosongkan kotak Search di Tab Session, buka Filter Panel, pilih rentang tanggal masa lalu yang tidak memiliki data (misal 1 Jan 2020), lalu klik [Apply].
+6. Verifikasi area tabel Tab Session menampilkan ilustrasi 'No results found'.
+7. Terapkan filter tanggal yang sama pada Tab User Action, verifikasi ilustrasi 'No results found' muncul.
+### Pemulihan Data (Recovery)
+8. Pada Tab Session dengan kondisi filter dan search menghasilkan 0 baris (misal Search 'Budi' dan Filter User 'John Doe'), kosongkan kata kunci pencarian lalu tekan Enter.
+9. Verifikasi tabel Tab Session pulih menampilkan baris milik 'John Doe' sesuai filter yang tersisa.
+10. Pada Tab User Action (Search 'Acme' dan Filter Action 'Create'), kosongkan pencarian lalu tekan Enter.
+11. Verifikasi tabel Tab User Action pulih menampilkan baris Action 'Create'.
 
 ## Notes
 
-- Tampilan no-result state memuat subtitle pemulihan untuk memandu user menghapus kriteria pencarian.
+- No-result state memberikan petunjuk jelas bagi pengguna untuk menyesuaikan kembali filter atau kata kunci pencarian.
