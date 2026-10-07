@@ -102,11 +102,11 @@ Pada draf generasi spec 49 file, teridentifikasi adanya penggabungan beberapa pe
 
 # Global Settings > Division
 
-Sumber: generate spec `specs/GlobalSettings/Division/` (76 spec, 296 TC aktif dari `TC-GS-DIV-1` sampai `TC-GS-DIV-296`). Tanggal generate: 2026-10-07.
+Sumber: generate spec `specs/GlobalSettings/Division/` (89 spec, 296 TC aktif dari `TC-GS-DIV-1` sampai `TC-GS-DIV-296`). Tanggal generate: 2026-10-07.
 
 ## GAP-DIV-E2E-007 — Restrukturisasi Dekomposisi Terisolasi (64 → 76 Specs) untuk Ketahanan Runner Otomasi
 
-**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-07)  
+**Status:** superseded oleh GAP-DIV-E2E-008  
 **Tipe:** arsitektur test case & isolasi kegagalan runner  
 **Dampak:** tinggi terhadap reliabilitas eksekusi Playwright dan isolasi pelaporan kegagalan  
 
@@ -135,3 +135,59 @@ Pada telaah awal rancangan dekomposisi 64 file, teridentifikasi adanya penggabun
 - Alur mobile dibagi menjadi:
   - `075`: *Screening Layout Mobile Android, Bottom Sheets, dan Gating* (`TC-281` s/d `284`)
   - `076`: *Eksekusi CRUD Mobile Android via Bottom Sheet* (`TC-285`, `286`)
+
+---
+
+## GAP-DIV-E2E-008 — Pemisahan Uji Kompleksitas Tinggi, Dekomposisi Modular Bertahap, dan Eliminasi Spec Marathon (76 → 89 Specs)
+
+**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-07)  
+**Tipe:** arsitektur test case, eliminasi kegagalan berantai (*flakiness cascading*), & pengurangan beban langkah (*step-budget optimization*)  
+**Dampak:** sangat tinggi terhadap stabilitas otomasi Playwright, pencegahan runner timeout, isolasi fixture/state per domain, dan kecepatan diagnosis kegagalan di CI/CD  
+
+Pada telaah lanjutan draf 76 file spec E2E, teridentifikasi sejumlah spec dengan jumlah langkah pengujian berlebih (mulai dari 34 langkah hingga puncaknya 103 langkah) serta pemadatan skenario (*cramming*) dengan prasyarat heterogen (multi-login persona, multi-fase modal, pencampuran batasan sistem dengan interaksi visual, dan pencampuran alur form konsumen dengan import staging). Dilakukan audit restrukturisasi secara bertahap:
+
+### 1. Dekomposisi Bulk Action Bar & Selection Limit (Spec 038 → 3 Specs)
+Spec `038` awal memuat 34 langkah uji yang mencampuradukkan screening visual bar, kalkulasi dinamis counter baris, checkbox header multi-page, dan penegakan batas kuota sistem (`Selection Limit = 5`). Dipecah menjadi:
+- **`TC-GS-DIV-E2E-042`**: *Screening Bulk Action Bar & Real-time Counter* (`TC-125`, `126`) [10 steps] — Kemunculan bar saat $\ge 1$ baris checked, urutan elemen tombol/teks/icon close, kalkulasi realtime counter, dan dismiss via `(✕)`.
+- **`TC-GS-DIV-E2E-043`**: *Checkbox Header, Status Indeterminate, & Seleksi Lintas Halaman Select All* (`TC-127`, `128`) [14 steps] — Checkbox header memilih 10 baris halaman aktif, toggle unselect, status `[-]` indeterminate, tombol `Select All (32 records)`, persistensi seleksi di halaman 2, dan toggle `Unselect All`.
+- **`TC-GS-DIV-E2E-044`**: *Penegakan Batas Kuota Selection Limit & Toast Capping* (`TC-129`, `130`) [10 steps] — Prasyarat khusus `Selection Limit = 5`: penonaktifan checkbox baris ke-6 + tooltip `You've reached the maximum selection of 5 rows.`, serta capping parsial `Select All` ke 5 baris pertama dengan persistent toast error warning.
+
+### 2. Dekomposisi Paket Prioritas 1: Eliminasi Spec Monolitik (>50 Steps & Multi-Aktor)
+- **Guided Tooltip Walkthrough (Spec `006`, 52 steps → 2 Specs):**
+  - **`TC-GS-DIV-E2E-006`**: *Walkthrough Auto-Launch, 3-Step Content, Navigasi Tombol, Overlay Dismiss, & Replay [?]* (`TC-10`, `11`, `12`, `13`, `14`) [33 steps] — Alur visual tur, first-visit trigger, tombol Next/Back/Done, overlay dismiss, flag `seen`, dan replay tur via tombol `[?]`.
+  - **`TC-GS-DIV-E2E-007`**: *Walkthrough Keyboard Controls, Viewport Interruption, & Capability Gating* (`TC-15`, `16`, `17`) [19 steps] — Navigasi keyboard (Esc, Enter, panah), resize/pindah halaman membatalkan flag `seen`, dan pelompataan Step 1 (+ Division) untuk peran tanpa hak akses Create.
+- **Role Matrix Visibilitas Tab & Kontrol Akses (Spec `007`, 75 steps, 7 persona → 2 Specs):**
+  - **`TC-GS-DIV-E2E-008`**: *Role Matrix: Baseline Access & Read-Only Scoping* (`TC-18`, `19`, `23`, `24`) [42 steps] — Tab tersembunyi bagi aktor tanpa capability, mode baca murni Read-Only (tools aktif, aksi/checkbox tersembunyi), peran Read-Only Access Level, dan Total Control baseline.
+  - **`TC-GS-DIV-E2E-009`**: *Role Matrix: Isolasi Hak Tulis Granular (Create-Only, Update-Only, Delete-Only)* (`TC-20`, `21`, `22`) [33 steps] — Isolasi kontrol aksi tulis: Create-Only hanya melihat `[+ Division]`, Update-Only hanya melihat row action `Edit`, Delete-Only hanya melihat row action `Delete`, checkbox baris, dan Bulk Action Bar.
+- **Filter Changelog Lanjutan & Logika Disjungsi (Spec `059`, 58 steps → 2 Specs):**
+  - **`TC-GS-DIV-E2E-065`**: *Kotak Pencarian Dropdown Filter & Logika Disjungsi OR Multi-Opsi* (`TC-204`, `205`, `292`, `293`) [31 steps] — In-dropdown search box pada Action, Field, Division Name, Modified By, dan evaluasi disjungsi OR saat multi-opsi dipilih.
+  - **`TC-GS-DIV-E2E-066`**: *Siklus Hapus Chip via X/Uncheck, Overflow Chip, Loading Skeleton, & Snapshot Master Terhapus* (`TC-231`, `232`, `233`, `294`, `295`) [27 steps] — Hapus chip via icon X di form vs uncheck di dropdown, overflow chip tersembunyi, dropdown loading state, dan retensi snapshot riwayat divisi terhapus.
+- **Changelog Setup Column 7 Kolom & Modal Lifecycle (Spec `062`, 103 steps → 4 Specs):**
+  - **`TC-GS-DIV-E2E-069`**: *Modal Changelog UI Behavior, Pagination 10/25/50/100, Dismiss X/Backdrop, & Format Tanggal General Settings* (`TC-209`, `210`, `211`, `212`) [18 steps] — Header tanpa sort icon, pagination 10/25/50/100, dismiss via X dan backdrop, serta format tanggal/waktu entitas.
+  - **`TC-GS-DIV-E2E-070`**: *Setup Column Fase 1: Overlay 7 Kolom, Toggle Hide/Unhide, & Guard Kolom Terakhir* (`TC-213`, `215`, `220`) [26 steps] — Overlay 7 kolom, toggle sembunyikan/tampilkan per kolom, dan guard disabled checkbox + tooltip saat tersisa 1 kolom.
+  - **`TC-GS-DIV-E2E-071`**: *Setup Column Fase 2: Modal Dialog, Drag-and-Drop Reorder 7 Kolom, & Freeze Pinning Kolom* (`TC-214`, `216`, `217`) [43 steps] — Screening modal dialog, DnD reorder 7 kolom ke posisi baru, dan sticky freeze pin saat tabel di-scroll horizontal.
+  - **`TC-GS-DIV-E2E-072`**: *Setup Column Fase 3: Reset to Default, Pembatalan Cancel/X, Penyimpanan Browser Storage, & Independensi Tabel Utama* (`TC-218`, `219`, `234`) [14 steps] — Tombol Reset to Default, pembatalan draft perubahan, penyimpanan per user di browser, dan independensi dari preferensi kolom tabel utama.
+
+### 3. Dekomposisi Paket Prioritas 2: Peningkatan Kerapian Modular, Simetri Form, & Isolasi Sub-Sistem
+- **Create Modal Clear Field vs Unsaved Changes Guard:**
+  - **`TC-GS-DIV-E2E-021`**: *Interaksi Form Create: Pengosongan Input Form via Tombol Clear Field Tanpa Menutup Modal* (`TC-64`) [9 steps] — Menguji `[Clear Field]` murni mengosongkan form tanpa menutup modal dan tanpa dialog peringatan.
+  - **`TC-GS-DIV-E2E-022`**: *Proteksi Perubahan Belum Disimpan (D-05): Dialog Unsaved Changes pada Icon [✕] & Esc, Serta Blokir Klik Backdrop* (`TC-68`, `69`, `70`, `71`) [29 steps] — Dialog D-05 saat dirty state pada icon close dan Esc, aksi Cancel vs Leave, form clean tanpa dialog, dan pencegahan dismiss klik backdrop.
+- **Edit Modal Validasi Name Format vs Uniqueness & Self-Exclusion:**
+  - **`TC-GS-DIV-E2E-029`**: *Validasi Field Name pada Edit: Wajib Diisi, Spasi Saja, Trim Spasi, Batas 120/121 Karakter, dan Blokir Emoji* (`TC-83` s/d `88`) [22 steps] — Format inline error: empty, whitespace-only, auto-trim, batas boundary 120/121 karakter, dan blokir emoji.
+  - **`TC-GS-DIV-E2E-030`**: *Validasi Keunikan Name pada Edit: Debounce Duplikat, Re-Cek Submit, Pengecualian Nilai Sendiri (Self-Exclusion), dan Toleransi Case Rename* (`TC-89` s/d `92`) [21 steps] — Debounce 500ms duplikat record lain, race submit atomik, pengetikan ulang nama sendiri tanpa error duplicate (self-exclusion), dan rename beda huruf besar-kecil pada diri sendiri.
+- **Tabel Utama Search Toolbar Mechanics vs Scoping & Substring:**
+  - **`TC-GS-DIV-E2E-051`**: *Pencarian Tabel Utama: Perilaku Toolbar Search, Ekspansi, Auto-Focus, Icon Clear X, Panah Kembali, dan Eksekusi Enter* (`TC-141`, `142`, `143`) [20 steps] — Ekspansi search bar, kursor auto-focus, tombol clear (✕) teks tanpa reset tabel, panah kembali (←) collapse dan reset langsung, serta eksekusi submit Enter tanpa debounce.
+  - **`TC-GS-DIV-E2E-052`**: *Pencarian Tabel Utama: Pencocokan Substring Name & Code, Case-Insensitive, Empty State, dan Scoping Kolom Tersembunyi* (`TC-144` s/d `148`) [21 steps] — Pencocokan partial substring Name & Code, case-insensitivity, empty state no results found, dan pengecualian kolom yang di-hide dari pencarian.
+- **Tabel Utama Filter Panel vs Active Chips & Search Coexistence:**
+  - **`TC-GS-DIV-E2E-053`**: *Filter Panel Tabel Utama: Screening Panel, Date Range Picker, Kepatuhan Format Tanggal DD/MM/YY, dan Reset Clear Field* (`TC-149` s/d `152`) [18 steps] — Toggle panel filter, date range picker Last Updated format General Settings, dan tombol `[Clear Field]`.
+  - **`TC-GS-DIV-E2E-054`**: *Filter Tabel Utama: Chip Filter Aktif, Badge Counter Toolbar, dan Koeksistensi Search-Filter* (`TC-153` s/d `157`) [24 steps] — Kemunculan chip filter aktif, hapus chip lewat (✕), badge counter pada toolbar, irisan AND search + filter, dan independensi pembersihan.
+- **User Form Stale Auto-Clear vs Import Parity & Missing Divisions:**
+  - **`TC-GS-DIV-E2E-079`**: *Penanganan Form User & Non-Login User pada Divisi yang Dihapus Pihak Lain: Error Field dan Auto-Clear Dropdown* (`TC-254`, `255`) [10 steps] — Form Create User & Non-Login User saat divisi terpilih dihapus admin lain sebelum submit menampilkan error field dan auto-clear tanpa mereset form.
+  - **`TC-GS-DIV-E2E-080`**: *Parity Operasional Import Division dan Alur [Create Missing Divisions]: Mutasi, Pencatatan Changelog, Batas Limit, dan Penolakan Duplicate* (`TC-256`, `257`, `289`, `290`) [18 steps] — Parity edit/delete divisi hasil import, penolakan Create Missing Divisions saat Master Data Count Limit tercapai, dan penolakan race duplicate.
+
+### 4. Hasil & Metrik Arsitektural Akhir
+- **Total Specs:** **89 spec atomik terisolasi penuh** (`TC-GS-DIV-E2E-001` s/d `TC-GS-DIV-E2E-089`).
+- **Cakupan Granular:** **100% (296/296 TC terpetakan tepat satu kali)**.
+- **Beban Langkah Uji:** Seluruh spec marathon berhasil dieliminasi; langkah uji terpanjang terpangkas dari **103 steps** menjadi maksimal **45 steps**.
+- **Integritas Linting:** `npx spectra lint --strict specs/GlobalSettings/Division` terverifikasi **0 lint errors**.
+
