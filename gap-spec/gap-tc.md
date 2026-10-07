@@ -2,7 +2,7 @@
 
 Sumber: generate spec `specs/auth2/LoginPassword/` (20 spec, 74 TC aktif). Tanggal generate: 2026-10-05.
 
-Dokumen ini hanya berisi temuan yang muncul **selama proses generate spec** pada level Test Case granular, PRD, dan environment/harness. Ini bukan hasil audit PRD/TC menyeluruh, dan bukan pemrosesan gap registry. Temuan dari sumber lain yang sudah tercatat di `foundation/prd-gap-registry.md` tidak diulang di sini kecuali yang merujuk langsung ke spec yang baru dibuat.
+Dokumen ini hanya berisi temuan yang muncul **selama proses generate spec** pada level Test Case granular, PRD, dan dependensi test harness yang memerlukan perbaikan/klarifikasi pada dokumen sumber. Ini bukan hasil audit PRD/TC menyeluruh, dan bukan pemrosesan gap registry. Konfigurasi runtime runner (seperti URL target environment di spectra.config.ts) diselesaikan langsung di level spec sehingga tidak dicatat sebagai gap TC, sedangkan isu arsitektur pemisahan uji kompleksitas tinggi didokumentasikan di [gap-spec.md](./gap-spec.md).
 
 > **Catatan Dokumentasi:** Isu arsitektur mengenai pemisahan uji kompleksitas tinggi dan restrukturisasi dekomposisi spec modular didokumentasikan secara terpisah di [gap-spec.md](./gap-spec.md).
 
@@ -94,19 +94,7 @@ PRD `login-password.md` §9.2 masih menandai threshold IP rate limiting sebagai 
 
 ---
 
-## GAP-LP-E2E-005 — Target environment e2e belum diarahkan
-
-**Status:** terbuka, di luar cakupan dokumen Auth
-**Tipe:** kekosongan environment
-**Dampak:** memblokir eksekusi, bukan pembuatan spec
-
-`tagsamurai-e2e-test/spectra.config.ts` masih menunjuk demo app bawaan TestSpectra. PRD `login-password.md` tidak menetapkan target environment e2e.
-
-**Dampak:** semua 20 spec di suite ini belum bisa dijalankan sampai `spectra.config.ts` diarahkan ke environment yang benar. Ini dicatat di `Prerequisites` spec 002 dan tidak menjadi alasan mengeluarkan TC.
-
----
-
-## GAP-LP-E2E-006 — Kebutuhan environment belum tersedia untuk enabled spec
+## GAP-LP-E2E-005 — Kebutuhan environment belum tersedia untuk enabled spec
 
 **Status:** terbuka, sudah dicatat di Prerequisites tiap spec
 **Tipe:** kekosongan environment
@@ -132,7 +120,7 @@ Sesuai `docs/e2e-conventions.md` bagian 2, tidak satu pun dari kebutuhan ini dip
 
 ---
 
-## GAP-LP-E2E-007 — `tc-login-password-frontend.md` stale, tiga TC automatizable belum masuk
+## GAP-LP-E2E-006 — `tc-login-password-frontend.md` stale, tiga TC automatizable belum masuk
 
 **Status:** terbuka
 **Tipe:** dokumen turunan tidak sinkron dengan file TC utama
@@ -159,7 +147,7 @@ Header file FE masih menuliskan cakupan sampai `TC-AUTH-LP-91`, padahal `93` mas
 
 ---
 
-## GAP-LP-E2E-008 — `TC-AUTH-LP-FE-10` salah soal status tombol Continue
+## GAP-LP-E2E-007 — `TC-AUTH-LP-FE-10` salah soal status tombol Continue
 
 **Status:** terbuka
 **Tipe:** inkonsistensi file TC FE vs PRD vs file TC utama
@@ -179,7 +167,7 @@ PRD `login-password.md` §4.5 menuliskan tombol footer secara eksplisit:
 
 ---
 
-## GAP-LP-E2E-009 — Post condition `TC-AUTH-LP-26` lebih lemah dari PRD
+## GAP-LP-E2E-008 — Post condition `TC-AUTH-LP-26` lebih lemah dari PRD
 
 **Status:** terbuka
 **Tipe:** inkonsistensi file TC utama vs PRD
@@ -204,7 +192,7 @@ Frasa "bila terdeteksi sbg abandoned" membuat pencatatan ini terasa opsional, pa
 - Audit silang terhadap `tc-login-password-frontend.md` menemukan 8 ketidaksesuaian expected-result, semuanya sudah dikoreksi di spec. Lihat bagian "Hasil audit silang terhadap `tc-login-password-frontend.md`" di `docs/coverage/AuthLoginPassword.md`.
 - Dua gap tertutup lewat keputusan, bukan lewat koreksi dokumen sumber:
   - `GAP-LP-E2E-001` copy layar Confirm to Continue. Spec memakai copy PRD. Sumbernya masih perlu diseragamkan oleh pemilik dokumen.
-  - `GAP-LP-E2E-007` cakupan `tc-login-password-frontend.md`. Spec memakai `tc-login-password.md` sebagai source of truth, sesuai `docs/e2e-conventions.md` bagian 2.
+  - `GAP-LP-E2E-006` cakupan `tc-login-password-frontend.md`. Spec memakai `tc-login-password.md` sebagai source of truth, sesuai `docs/e2e-conventions.md` bagian 2.
 - Status seluruh spec `draft`; belum ada `.test.ts`.
 - `npx spectra lint --strict specs/auth2/LoginPassword` → `✓ 20 specs and 1 suites verified. 0 lint errors found.`
 - Scan residue CJK dan full-width pada 20 spec plus dua dokumen pendukung: `0 baris`.
@@ -242,19 +230,21 @@ Menetapkan angka batas request per window (misal: 10 request per 60 detik per IP
 
 ## GAP-OTP-E2E-002 — Ketiadaan Skenario Attestation Token Negatif / Kedaluwarsa pada TC Mobile
 
-**Status:** terbuka  
+**Status:** terselesaikan via pembaruan PRD & TC (commit `8b9d5eb`, 2026-10-07)  
 **Tipe:** kelengkapan skenario uji / precondition  
-**Dampak:** sedang, memengaruhi cakupan pengujian aplikasi mobile  
+**Dampak:** terselesaikan penuh  
 
 PRD `login-otp.md` §4.6 dan §9.2 menetapkan bahwa aplikasi mobile tidak merender widget Google reCAPTCHA v2, melainkan menggunakan mekanisme native device attestation (Google Play Integrity API) untuk memvalidasi keaslian perangkat klien sebelum OTP dikirimkan.
 
-File TC hanya menyediakan satu pengujian attestation pada `TC-AUTH-OTP-180` yang menguji skenario positif (token attestation valid). Skenario negatif belum tercakup di file TC:
-1. Perangkat gagal verifikasi integritas (device rooted / uncertified).
-2. Attestation token kadaluwarsa atau null.
-3. Pesan kesalahan yang ditampilkan antarmuka mobile saat attestation gagal (apakah alert modal, toast, atau penolakan server).
+Pada pembaruan PRD mutakhir (commit `8b9d5eb` penutupan GAP-410/412):
+1. PRD §9.2 [F-AUTHOTP-09] dan §9.4.2 EC-51–EC-53 secara eksplisit menetapkan aturan kegagalan attestation:
+   - Request OTP dengan attestation kosong/invalid ditolak HTTP 422 (sebagai captcha kosong), toast `"Error, failed to log in."`, dan dicatat di log: Failed / `Captcha not completed` (§9.8).
+   - Resend dengan attestation invalid memunculkan toast `"Error, failed to send the code."`, kode lama tetap valid, dan tidak dicatat di log.
+   - Verify OTP tidak mensyaratkan reCAPTCHA maupun attestation token (platform mengikuti sesi Request OTP).
+2. Kasus uji granular baru `TC-AUTH-OTP-185` ditambahkan ke `tc-login-otp.md` untuk menguji skenario tersebut.
 
 **Yang dilakukan di spec:**  
-`TC-AUTH-OTP-E2E-002` mencakup alur tampilan mobile tanpa reCAPTCHA, keypad numerik otomatis, dan permintaan OTP dengan attestation token valid. Ketiadaan skenario negatif dicatat di sini sebagai rekomendasi penambahan TC ke suite mobile.
+`TC-AUTH-OTP-E2E-002` telah diperbarui mencakup `TC-AUTH-OTP-185` serta aturan EC-51, EC-52, dan EC-53 secara menyeluruh. Celah ini resmi ditutup.
 
 ---
 
@@ -287,7 +277,7 @@ Pemilik modul UX/UI perlu menyamakan copy pesan error checkbox di seluruh alur a
 **Tipe:** divergensi arsitektur logging antar-fitur  
 **Dampak:** tinggi untuk ketepatan assertion log  
 
-Pada modul Login with Password (`login-password.md` §9.8 dan §11.4), jika layar Confirm to Continue ditinggalkan atau token pra-autentikasi kedaluwarsa secara natural, sistem mencatat entri `Failed` dengan Note `Consent not given` (GAP-LP-E2E-009).
+Pada modul Login with Password (`login-password.md` §9.8 dan §11.4), jika layar Confirm to Continue ditinggalkan atau token pra-autentikasi kedaluwarsa secara natural, sistem mencatat entri `Failed` dengan Note `Consent not given` (GAP-LP-E2E-008).
 
 Sebaliknya, pada modul Login with OTP:
 - PRD `login-otp.md` §9.8 (Tabel Pencatatan baris Confirm Agreement tidak dikonfirmasi):
@@ -338,19 +328,9 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 
 ---
 
-## GAP-OTP-E2E-007 — Target Environment E2E Masih Mengarah ke Demo App
-
-**Status:** terbuka  
-**Tipe:** konfigurasi environment  
-**Dampak:** memblokir eksekusi runner TestSpectra  
-
-Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/Auth/LoginOtp/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
-
----
-
 ## Kepatuhan Suite Login OTP
 
-- **Cakupan TC:** 100% (183 dari 183 TC granular aktif dari `TC-AUTH-OTP-01` sampai `TC-AUTH-OTP-183` terpetakan secara lengkap tanpa satu pun yang terlewat).
+- **Cakupan TC:** 100% (185 dari 185 TC granular aktif dari `TC-AUTH-OTP-01` sampai `TC-AUTH-OTP-185` terpetakan secara lengkap tanpa satu pun yang terlewat).
 - **Duplikasi TC:** 0 (setiap `TC-AUTH-OTP-NN` hanya muncul tepat di satu spec).
 - **Pembagian Platform:** 26 spec web, 1 spec mobile (`TC-AUTH-OTP-E2E-002`).
 - **Verifikasi Lint:** `npx spectra lint --strict specs/Auth/LoginOtp` → `✓ 27 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
@@ -467,22 +447,6 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 | **Data Seed State Akun** | Menyiapkan profil user: FIRST, NEWDEV, NEWDEVE, IDLE, FAR, XC, XCT, MOB, AGR, PLAT2, Suspended/Expired Client, Distributor, Partner, Principal | 001, 007, 008, 009, 010, 011, 012, 013, 014, 015, 023, 025, 026, 030, 031, 036 |
 | **Network Mock Interceptor** | Intercept endpoint HTTP untuk simulasi error 500, timeout, respons 429, dan payload tampering | 014, 018, 027, 034, 035 |
 | **Multi-tab Context & Multi-device** | Pengujian tab paralel untuk mendeteksi race condition, verifikasi bersamaan, dan pembatalan sesi lintas tab/device | 025, 031, 033 |
-
----
-
-## GAP-MFA-E2E-007 — Target Environment E2E Masih Mengarah ke Demo App
-
-**Status:** terbuka  
-**Tipe:** konfigurasi environment  
-**Dampak:** memblokir eksekusi runner TestSpectra  
-
-Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/Auth/Mfa/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
-
----
-
-## GAP-MFA-E2E-008 — Pemisahan Uji Kompleksitas Tinggi dari Spec Screening dan Dekomposisi Modular (30 → 36 Specs)
-
-> **Catatan Pemisahan Spec:** Isu arsitektur dekomposisi spec dan pemisahan uji kompleksitas tinggi ini telah dipisahkan ke [gap-spec.md](./gap-spec.md#gap-mfa-e2e-008--pemisahan-uji-kompleksitas-tinggi-dari-spec-screening-dan-dekomposisi-modular-30--36-specs).
 
 ---
 
@@ -610,28 +574,6 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 
 ---
 
-## GAP-ACTLOG-E2E-006 — Target Environment E2E Masih Mengarah ke Demo App
-
-**Status:** terbuka  
-**Tipe:** konfigurasi environment  
-**Dampak:** memblokir eksekusi runner TestSpectra  
-
-Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/GlobalSettings/ActivityLog/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
-
----
-
-## GAP-ACTLOG-E2E-007 — Dekomposisi Terstruktur Modular Awal (227 TC Granular → 49 Specs)
-
-> **Catatan Pemisahan Spec:** Isu dekomposisi awal ini telah dipisahkan ke [gap-spec.md](./gap-spec.md#gap-actlog-e2e-007--dekomposisi-terstruktur-modular-awal-227-tc-granular--49-specs).
-
----
-
-## GAP-ACTLOG-E2E-008 — Pemisahan Uji Kompleksitas Tinggi dari Spec Heterogen dan Dekomposisi Terisolasi (49 → 57 Specs)
-
-> **Catatan Pemisahan Spec:** Isu arsitektur dekomposisi spec dan pemisahan uji kompleksitas tinggi ini telah dipisahkan ke [gap-spec.md](./gap-spec.md#gap-actlog-e2e-008--pemisahan-uji-kompleksitas-tinggi-dari-spec-heterogen-dan-dekomposisi-terisolasi-49--57-specs).
-
----
-
 ## Kepatuhan Suite Activity Log
 
 - **Cakupan TC:** 100% (227 dari 227 TC granular aktif dari `TC-GS-ACTLOG-01` sampai `TC-GS-ACTLOG-227` terpetakan secara lengkap tanpa satu pun yang tertinggal).
@@ -728,22 +670,6 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 | **Multi-Tab Context & Multi-Actor Context** | Pengujian dual browser tab untuk mendeteksi race condition (last-write-wins, duplicate create collision, rebutan slot limit, dan idempotent delete) | 072, 073 |
 | **Network Mock Interceptor** | Intercept respons API untuk simulasi error HTTP 500, penundaan respons jaringan (skeleton loader 3 detik), respons empty state, dan ekspor gagal | 003, 023, 032, 037, 044, 053, 061 |
 | **Viewport Emulator** | Emulasi resolusi mobile Android (<768px) untuk memvalidasi tata letak card list, ketiadaan checkbox, dan bottom sheets | 075, 076 |
-
----
-
-## GAP-DIV-E2E-006 — Target Environment E2E Masih Mengarah ke Demo App
-
-**Status:** terbuka  
-**Tipe:** konfigurasi environment  
-**Dampak:** memblokir eksekusi runner TestSpectra  
-
-Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/GlobalSettings/Division/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
-
----
-
-## GAP-DIV-E2E-007 — Restrukturisasi Dekomposisi Terisolasi (64 → 76 Specs) untuk Ketahanan Runner Otomasi
-
-> **Catatan Pemisahan Spec:** Isu arsitektur dekomposisi spec dan restrukturisasi terisolasi ini telah dipisahkan ke [gap-spec.md](./gap-spec.md#gap-div-e2e-007--restrukturisasi-dekomposisi-terisolasi-64--76-specs-untuk-ketahanan-runner-otomasi).
 
 ---
 

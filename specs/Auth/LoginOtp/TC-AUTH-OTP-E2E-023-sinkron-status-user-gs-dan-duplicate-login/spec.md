@@ -50,20 +50,28 @@ coverage:
 12. Masukkan alamat email baru `emailnew@qwertysystem.net`
 13. Verifikasi request diterima dan kode OTP dikirimkan ke alamat email baru
 
-### Deteksi percobaan login ganda dan integrasi Session Management
+### Deteksi percobaan login ganda dan integrasi Session Management (EC-50, TC-175, TC-176)
 
 14. Login sebagai `concurrent@qwertysystem.net` di Peramban A hingga masuk ke Product Hub
-15. Di Peramban B, buka Request OTP dan selesaikan verifikasi kode OTP untuk `concurrent@qwertysystem.net`
-16. Verifikasi sistem menerapkan kebijakan Session Management (misalnya memperbarui sesi aktif atau menampilkan peringatan sesi bersamaan sesuai konfigurasi tenant)
-17. Pada Peramban A, lakukan navigasi atau aksi data
-18. Verifikasi respons sistem mencerminkan status sesi yang diperbarui
+15. Di Peramban B, buka Request OTP dan masukkan kode OTP 6 digit yang valid untuk `concurrent@qwertysystem.net`
+16. Verifikasi sistem menampilkan dialog "Duplicate Login Attempt" sebelum sesi baru dibuat (karena sesi aktif sudah ada pada platform yang sama)
+17. Di sesi admin Total Control: buka `Global Settings > Activity Log > Session`
+18. Verifikasi TIDAK ADA entri log baru yang ditulis saat dialog Duplicate Login Attempt ditampilkan (sesuai PRD §9.8)
+19. Pada Peramban B, klik tombol [Cancel] pada dialog Duplicate Login Attempt
+20. Verifikasi dialog tertutup, tidak ada sesi baru yang dibuat, dan tetap TIDAK ADA entri log baru yang ditulis
+21. Buka kembali alur verifikasi kode di Peramban B hingga dialog "Duplicate Login Attempt" muncul kembali
+22. Pada Peramban B, klik tombol [Confirm] pada dialog Duplicate Login Attempt
+23. Verifikasi sesi aktif di Peramban A seketika berakhir (terputus) saat melakukan aksi berikutnya
+24. Verifikasi Peramban B berhasil membuat sesi baru dan dialihkan ke Product Hub
+25. Di sesi admin Total Control: periksa `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail (Concurrent Tester) > User Log`
+26. Verifikasi tercatat tepat SATU entri baru dengan Activity "Login", Status "Success", dan Method/Note "Login with OTP"
 
 ### Pencabutan sesi seketika saat akun dinonaktifkan oleh Admin (Real-time termination)
 
-19. Pada sesi login aktif milik `concurrent@qwertysystem.net`, buka halaman modul di dalam portal
-20. Melalui akun admin Total Control di tab lain, matikan Toggle Active user tersebut menjadi OFF
-21. Pada browser user aktif, lakukan aksi klik atau refresh halaman
-22. Verifikasi sesi user seketika dicabut (terminated), token dinyatakan invalid, dan user diarahkan kembali ke halaman login
+27. Pada sesi login aktif milik `concurrent@qwertysystem.net`, buka halaman modul di dalam portal
+28. Melalui akun admin Total Control di tab lain, matikan Toggle Active user tersebut menjadi OFF
+29. Pada browser user aktif, lakukan aksi klik atau refresh halaman
+30. Verifikasi sesi user seketika dicabut (terminated), token dinyatakan invalid, dan user diarahkan kembali ke halaman login
 
 ## Notes
 

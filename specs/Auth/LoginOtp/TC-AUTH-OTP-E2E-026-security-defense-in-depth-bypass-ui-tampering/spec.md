@@ -71,7 +71,14 @@ coverage:
 21. Saat berada di layar Verify OTP atau layar Confirm to Continue (sebelum Product Hub terbuka), kirim request HTTP GET ke endpoint data internal (contoh: `/api/v1/users` atau `/api/v1/assets`)
 22. Verifikasi seluruh endpoint internal menolak request dengan status `401 Unauthorized` dan tidak ada data aplikasi yang bocor sebelum sesi penuh diterbitkan
 
+### Perilaku Atribut entry=edit_email Informatif Tanpa Verifikasi Riwayat (EC-54, TC-178)
+
+23. Setelah kuota resend untuk suatu email habis pada sesi tertentu, kirim langsung HTTP POST ke endpoint Request OTP dengan menyertakan atribut `entry` = `edit_email` tanpa melalui alur UI Edit Email
+24. Verifikasi backend menerima permintaan apa adanya (karena atribut `entry` bersifat informatif dan server tidak memverifikasi riwayat Edit Email di client sesuai PRD EC-54)
+25. Verifikasi email OTP baru berhasil dikirimkan, kuota resend ter-reset (memulai sesi resend baru), dan IP rate limit tetap berlaku
+
 ## Notes
 
 - TAG Samurai menerapkan prinsip *Defense-in-Depth* (Pertahanan Berlapis): validasi UI selalu didukung oleh pemeriksaan server-side yang ketat pada setiap transisi gerbang autentikasi.
 - Seluruh token transisional (CAPTCHA token, OTP session, agreement token, MFA pre-auth) dilindungi oleh tanda tangan kriptografis, time-to-live terbatas, dan pencegahan replay.
+- Sesuai PRD §9.2 F-AUTHOTP-07 dan EC-54, atribut `entry` bersifat informatif dan tidak diverifikasi oleh backend terhadap riwayat alur pengguna; jika `entry=edit_email` dikirim langsung, server menerimanya apa adanya dan memulai sesi resend baru dengan IP rate limit tetap aktif sebagai pelindung anti-spam.
