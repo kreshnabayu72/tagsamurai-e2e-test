@@ -2,7 +2,9 @@
 
 Sumber: generate spec `specs/auth2/LoginPassword/` (20 spec, 74 TC aktif). Tanggal generate: 2026-10-05.
 
-Dokumen ini hanya berisi temuan yang muncul **selama proses generate spec**. Ini bukan hasil audit PRD/TC menyeluruh, dan bukan pemrosesan gap registry. Temuan dari sumber lain yang sudah tercatat di `foundation/prd-gap-registry.md` tidak diulang di sini kecuali yang merujuk langsung ke spec yang baru dibuat.
+Dokumen ini hanya berisi temuan yang muncul **selama proses generate spec** pada level Test Case granular, PRD, dan environment/harness. Ini bukan hasil audit PRD/TC menyeluruh, dan bukan pemrosesan gap registry. Temuan dari sumber lain yang sudah tercatat di `foundation/prd-gap-registry.md` tidak diulang di sini kecuali yang merujuk langsung ke spec yang baru dibuat.
+
+> **Catatan Dokumentasi:** Isu arsitektur mengenai pemisahan uji kompleksitas tinggi dan restrukturisasi dekomposisi spec modular didokumentasikan secara terpisah di [gap-spec.md](./gap-spec.md).
 
 ---
 
@@ -480,32 +482,7 @@ Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan U
 
 ## GAP-MFA-E2E-008 — Pemisahan Uji Kompleksitas Tinggi dari Spec Screening dan Dekomposisi Modular (30 → 36 Specs)
 
-**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-07)  
-**Tipe:** arsitektur test case & isolasi eksekusi otomasi  
-**Dampak:** tinggi terhadap stabilitas otomasi Playwright dan kecepatan diagnosis kegagalan  
-
-Pada draf awal generasi spec E2E (30 spec), ditemukan pola *cramming* atau penggabungan beberapa pengujian teknis tingkat tinggi ke dalam satu spec screening visual atau spec fungsional biasa:
-1. **Decoding QR Code Canvas di Spec Screening (`TC-AUTH-MFA-109` di Spec 004):** Pengujian inspeksi visual Step 1-3 form enrollment digabung dengan decoding gambar/canvas QR code untuk memvalidasi URI `otpauth://totp/` dan parameter RFC 6238 (SHA1, 30s period, secret string). Ini memaksa spec screening visual bergantung pada library decoder eksternal (`jsQR`).
-2. **Polling Mail-Catcher di Spec Screening OTP (`TC-AUTH-MFA-62` di Spec 002):** Spec screening tata letak kotak SegmentedInput dan navigasi Backspace digabung dengan request polling kotak masuk email mail-catcher, memperlambat eksekusi screening visual.
-3. **Mock Hardware Biometrik di Spec Layout Mobile (`TC-AUTH-MFA-54` di Spec 005):** Pengujian tata letak keypad numerik responsif Android dicampur dengan instrumentasi sensor biometrik (fingerprint / face unlock) pada faktor-1.
-4. **Verifikasi Admin GS di Skenario User Biasa (`TC-AUTH-MFA-178` di Spec 026):** Skenario penundaan pencatatan log Success ke faktor-2 menuntut login sebagai Total Control Global Settings di tengah-tengah alur device fingerprinting user browser biasa.
-5. **Mega-Specs Heterogen (Spec 028, 029, 030):** Menggabungkan race condition multi-tab/device, flood IP rate limit 429, fault injection 5xx, screen reader ARIA Live, direct API tampering, fallback lost-device, dan paritas tier langganan ke dalam spec yang terlalu padat (16–18 TC per file).
-
-**Dampak Buruk Jika Tidak Dipecah:**
-- **Flakiness tinggi:** Kegagalan library decoding QR atau polling email akan menggagalkan seluruh assertion layout screening tombol/input, menyamarkan apakah bug ada pada CSS/DOM atau pada backend format.
-- **Fixture berlebih:** Mengharuskan setiap runner menyiapkan konteks multi-tab, proxy hop, dan mail-catcher bahkan untuk pengetesan form sederhana.
-- **Diagnosis sulit:** CI/CD reporting gagal menunjukkan akar penyebab secara presisi.
-
-**Solusi & Keputusan yang Diterapkan di Spec:**  
-Dilakukan dekomposisi modular menjadi **36 spec terisolasi**:
-- `TC-109` (QR URI decode) dipindahkan ke spec khusus **`TC-AUTH-MFA-E2E-032`** (*Verifikasi Kriptografis Isi QR Code & Secret Key*).
-- `TC-62` (cek mail-catcher) dipindahkan dari Spec 002 ke **`TC-AUTH-MFA-E2E-016`** (*Verifikasi OTP Auto-Submit & Paste*).
-- `TC-54` (biometric hardware) dipisahkan menjadi spec khusus **`TC-AUTH-MFA-E2E-036`** (*Mobile Biometric Re-Login Trigger*).
-- `TC-178` (delayed success logging) dipindahkan dari Spec 026 ke **`TC-AUTH-MFA-E2E-028`** (*Audit Log Status Mutasi*).
-- Uji balapan multi-tab/device dikonsolidasikan ke **`TC-AUTH-MFA-E2E-033`** (*Konkurensi & Double-Submit Guards*).
-- Uji API token tampering dikonsolidasikan ke **`TC-AUTH-MFA-E2E-034`** (*Defense-in-Depth Token Tampering*).
-- Uji flood 429 dan 5xx server fault injection diisolasi di **`TC-AUTH-MFA-E2E-035`** (*Rate Limiting & Resilience*).
-- Uji recovery user dan admin reset dipisahkan di **`TC-AUTH-MFA-E2E-030`**, sementara paritas subscription & dialog session management diisolasi di **`TC-AUTH-MFA-E2E-031`**.
+> **Catatan Pemisahan Spec:** Isu arsitektur dekomposisi spec dan pemisahan uji kompleksitas tinggi ini telah dipisahkan ke [gap-spec.md](./gap-spec.md#gap-mfa-e2e-008--pemisahan-uji-kompleksitas-tinggi-dari-spec-screening-dan-dekomposisi-modular-30--36-specs).
 
 ---
 
@@ -645,50 +622,13 @@ Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan U
 
 ## GAP-ACTLOG-E2E-007 — Dekomposisi Terstruktur Modular Awal (227 TC Granular → 49 Specs)
 
-**Status:** superseded oleh GAP-ACTLOG-E2E-008  
-**Tipe:** arsitektur test case  
-**Dampak:** pemetaan dasar awal sebelum audit isolasi kegagalan  
+> **Catatan Pemisahan Spec:** Isu dekomposisi awal ini telah dipisahkan ke [gap-spec.md](./gap-spec.md#gap-actlog-e2e-007--dekomposisi-terstruktur-modular-awal-227-tc-granular--49-specs).
 
 ---
 
 ## GAP-ACTLOG-E2E-008 — Pemisahan Uji Kompleksitas Tinggi dari Spec Heterogen dan Dekomposisi Terisolasi (49 → 57 Specs)
 
-**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-07)  
-**Tipe:** arsitektur test case & isolasi eksekusi otomasi  
-**Dampak:** tinggi terhadap ketahanan (*resilience*) otomasi Playwright, pencegahan kegagalan berantai (*flakiness cascading*), dan kecepatan diagnosis akar masalah di CI/CD  
-
-Pada draf generasi spec 49 file, teridentifikasi adanya penggabungan beberapa pengujian teknis tingkat tinggi ke dalam 1 spec hanya karena berada di halaman atau seksi yang sama:
-1. **Autentikasi Kompleks Tab Session (Spec 015):** Menggabungkan 14 TC yang mencakup Login normal, Logout em-dash `—`, gagal login (Bad Credentials & Account Locked), Client Suspended, alur Reset/Change Password, Admin Concurrent Force-Logout, SSO SAML/OIDC, dan Mobile Session ke dalam 1 file. Menuntut mock IdP SSO, user-agent mobile, dan status lockout di satu tempat.
-2. **Download CSV/XLSX vs Network Error 500 (Spec 030):** Menggabungkan inspeksi binary buffer CSV (UTF-8 BOM, headers, format) dan XLSX dengan HTTP 500 fault injection toast error dan audit read-only idempotency lintas dua tab.
-3. **SSE Real-Time Reaktivitas vs Cross-Tenant Leakage (Spec 045):** Menggabungkan penambahan baris otomatis SSE lokal dan filter guard dengan pengujian keamanan isolasi soket multi-tenant yang membutuhkan koordinasi dua browser context simultan (Alfa vs Beta).
-4. **Master Data GS vs File Manager & System Actor Purge (Spec 046):** Menggabungkan mutasi admin biasa pada 9 modul GS dengan aksi permanen Recycle Bin File Manager dan background system auto-purge yang mencatat aktor khusus `Modified By = "System"`.
-5. **Database Transaction Rollback vs Immutability & Out-of-Order (Spec 047):** Menggabungkan fault injection database 500 (zero phantom log) dengan pengujian relational immutability user rename dan stream arrival sequencing.
-6. **Direct API 403 vs DOM XSS vs Regex Query (Spec 048):** Menggabungkan uji API authorization token 403 dan parameter tampering dengan browser DOM XSS script injection and parser pencarian regex literal.
-7. **Client Suspended vs Retensi 3 Tahun vs Paritas Tier Plan (Spec 049):** Menggabungkan penguncian status tenant dengan seed historical data 3 tahun dan paritas 4 tier langganan.
-
-**Solusi & Keputusan yang Diterapkan di Spec (49 → 57 Specs Terisolasi):**
-- Spec 015 dipecah menjadi **3 spec**:
-  - `015`: *Core Session (Login, Logout status dash `—`, GS Session, Sel Kosong)* (`TC-41, 45, 51, 52, 53, 226`).
-  - `016`: *Security Events (Bad Creds, Account Locked, Client Suspended, Reset/Change Password)* (`TC-42, 43, 44, 46, 47`).
-  - `017`: *External & Cross-Module Auth (Force-Logout Concurrent, SSO SAML, Mobile App)* (`TC-48, 49, 50`).
-- Spec 030 dipecah menjadi **2 spec**:
-  - `032`: *Validasi Format Ekspor CSV & XLSX, UTF-8 BOM, & Idempotency* (`TC-122-125, 128-135`).
-  - `033`: *Ketahanan Ekspor: HTTP 500 Fault Injection & Toast Error Feedback* (`TC-138, 139`, `Mode: mock`).
-- Spec 045 dipecah menjadi **2 spec**:
-  - `048`: *Reaktivitas Real-Time SSE Lokal & Filter Guard di Kedua Tab* (`TC-195, 196, 197`).
-  - `049`: *Keamanan Multi-Tenant SSE: Isolasi Streaming dan Pencegahan Kebocoran Lintas-Tenant* (`TC-198`).
-- Spec 046 dipecah menjadi **2 spec**:
-  - `050`: *Ingestion Mutasi Master Data 9 Modul GS, Hardware, & TAG Registry* (`TC-199-208`).
-  - `051`: *Ingestion File Manager Permanently Delete & System Auto-Purge Actor Audit* (`TC-209, 210, 211`).
-- Spec 047 dipecah menjadi **2 spec**:
-  - `052`: *Atomic Rollback Ingestion: Ketiadaan Log pada Operasi DB Gagal / Zero Phantom Log* (`TC-212`).
-  - `053`: *Snapshot Immutability Modified By & Pengurutan Kronologis Out-of-Order* (`TC-213, 214`).
-- Spec 048 dipecah menjadi **2 spec**:
-  - `054`: *Direct API Endpoint Authorization 403 & Multi-Product Parameter Isolation* (`TC-215, 216, 217`).
-  - `055`: *Frontend DOM XSS Sanitization Defense & Regex Literal Query Matching* (`TC-218, 219, 220`).
-- Spec 049 dipecah menjadi **2 spec**:
-  - `056`: *Akses Riwayat dan Logging saat Status Client Suspended/Expired* (`TC-222, 223`).
-  - `057`: *Retensi Data Historis Lintas Tahun & Paritas Fungsional Seluruh Tier Langganan* (`TC-224, 225`).
+> **Catatan Pemisahan Spec:** Isu arsitektur dekomposisi spec dan pemisahan uji kompleksitas tinggi ini telah dipisahkan ke [gap-spec.md](./gap-spec.md#gap-actlog-e2e-008--pemisahan-uji-kompleksitas-tinggi-dari-spec-heterogen-dan-dekomposisi-terisolasi-49--57-specs).
 
 ---
 
@@ -701,3 +641,118 @@ Pada draf generasi spec 49 file, teridentifikasi adanya penggabungan beberapa pe
 - **Verifikasi Lint:** `npx spectra lint --strict specs/GlobalSettings/ActivityLog` → `✓ 57 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
 - **Karakter Non-Kanonikal:** 0 karakter CJK atau simbol non-standar.
 - **Status Spec:** Seluruh 57 spec berstatus `draft` dengan deskripsi langkah bahasa Indonesia yang presisi, bebas dari flakiness cascading, siap untuk tahap penyusunan skrip otomasi (`tagsamurai-e2e-generate-script`).
+
+
+---
+
+# Gap & Temuan — Global Settings > Division
+
+Sumber: generate spec `specs/GlobalSettings/Division/` (76 spec, 296 TC aktif dari `TC-GS-DIV-1` sampai `TC-GS-DIV-296`). Tanggal generate: 2026-10-07.
+
+Dokumen ini mencatat seluruh temuan gap, perbedaan langkah/prekondisi yang belum tercakup di TC asli, divergensi antara PRD (`global-settings/division/PRD/division.md`) dan Test Case (`global-settings/division/TestCases/tc-division.md`), serta kebutuhan test harness khusus yang teridentifikasi selama proses dekomposisi dan pembuatan E2E spec.
+
+---
+
+## GAP-DIV-E2E-001 — Batas Percobaan Retry Otomatis pada Bentrok Kode Auto-Generate (PRD §9.2 [F-DIV-09] Langkah 7)
+
+**Status:** terbuka di TC, ditegaskan di spec  
+**Tipe:** cakupan boundary error handling backend  
+**Dampak:** sedang terhadap kepastian penanganan failure UI pada collision ekstrem  
+
+PRD `division.md` §9.2 [F-DIV-09] Langkah 7 menetapkan bahwa race condition antar-Create/Edit bersamaan yang menghasilkan kode duplikat memicu `409 Conflict`, di mana server otomatis me-retry sekali dengan kandidat suffix berikutnya. Bila retry kedua masih bentrok, diperlakukan sebagai kegagalan biasa: form tetap terbuka, input dipertahankan, toast error generik tampil, dan tidak ada retry otomatis ketiga.
+
+Di sisi lain, pada `tc-division.md`, `TC-GS-DIV-80` hanya memvalidasi skenario positif saat retry pertama berhasil. Belum ada pengujian spesifik untuk batas kegagalan retry kedua (exhausted retry attempts) dan penegasan bahwa retry ketiga tidak pernah terjadi.
+
+**Yang diterapkan di spec:**  
+Pada spec `TC-GS-DIV-E2E-024` (*Transaksi DB Atomik Form Create dan Penanganan Race Condition Auto-Generate Code 409*), perilaku retry pertama berhasil diuji via live/mock context. Batas toleransi retry kedua yang gagal diisolasi dalam evaluasi resilience form tetap terbuka dengan input dipertahankan.
+
+---
+
+## GAP-DIV-E2E-002 — Ketiadaan Skenario Auto-Clear Form Non-Login User Saat Divisi Terpilih Dihapus (PRD §11 Breaking Changes)
+
+**Status:** terbuka di TC  
+**Tipe:** kelengkapan skenario consumer cross-module  
+**Dampak:** sedang terhadap integritas data profil non-login user  
+
+PRD `division.md` §11 (Breaking Changes / Dependencies) menetapkan bahwa form consumer (`user/`, `non-login-user/`) yang kebetulan sedang memilih Division yang baru saja dihapus bebas relasi oleh admin lain sebelum Submit akan ditolak server dengan error level field: `"This division no longer exists. Please select another."`. FE consumer secara otomatis mengosongkan (*auto-clear*) field Division dan me-refresh daftar opsi tanpa mereset field lainnya (`error-handling-convention.md` §5.5).
+
+Pada `tc-division.md`, pengujian ini hanya dituliskan untuk form User Login pada `TC-GS-DIV-253`. Modul Non-Login User (`non-login-user/`) belum memiliki baris TC spesifik untuk menguji auto-clear field Division dan refresh opsi saat kondisi stale division terjadi.
+
+**Yang diterapkan di spec:**  
+Spec `TC-GS-DIV-E2E-066` (*Penanganan Submit User pada Divisi yang Baru Dihapus: Pesan Error Field, Auto-Clear Dropdown, dan Refresh Opsi Otomatis*) dirancang mencakup verifikasi perlindungan auto-clear ini pada antarmuka penambahan pengguna.
+
+---
+
+## GAP-DIV-E2E-003 — Evaluasi Status Dirty Guard Form Saat Nilai Diedit Lalu Dikembalikan ke Semula (Revert-to-Initial)
+
+**Status:** terselesaikan via konvensi Wangs UI di spec  
+**Tipe:** spesifikasi perilaku form UI  
+**Dampak:** rendah  
+
+PRD §4.2d Dialog 5 menetapkan bahwa modal konfirmasi Unsaved Changes muncul saat form dalam kondisi *dirty* ditutup melalui icon `[✕]` atau tombol `Esc`. Namun PRD tidak mendefinisikan apakah penentuan *dirty* menggunakan komparasi nilai murni (`currentValue !== initialValue`) atau histori perubahan (*isTouched* / keystroke history). Catatan pada `## Gap Spec` baris 802 di `tc-division.md` juga mengonfirmasi ketiadaan TC untuk kasus revert-to-initial.
+
+**Yang diterapkan di spec:**  
+Pada spec `TC-GS-DIV-E2E-019` (Create) dan `TC-GS-DIV-029` (Edit), ditegaskan kepatuhan terhadap standar formulir Wangs UI / React Hook Form: evaluasi dirty berbasis komparasi nilai. Jika pengguna mengubah input lalu mengetik ulang atau menghapus hingga nilainya identik dengan nilai awal saat form dibuka, form dianggap bersih (*pristine*) dan penekanan `[✕]` / `Esc` langsung menutup modal tanpa memicu Dialog 5 Unsaved Changes.
+
+---
+
+## GAP-DIV-E2E-004 — Penanganan Concurrency Edit Lapangan Beda (Name vs Code) pada Record yang Sama
+
+**Status:** terbuka  
+**Tipe:** spesifikasi konkurensi backend (record-level vs field-level update)  
+**Dampak:** sedang terhadap kepastian data saat dual edit  
+
+Berdasarkan keputusan NC-01 dan PRD §9.4.2 baris Edit D6, edit konkuren pada record yang sama menganut kebijakan last-write-wins tanpa dialog konflik versi. Namun `TC-GS-DIV-271` hanya menguji kondisi saat kedua admin mengedit field yang sama (Name).
+
+Belum ada spesifikasi apakah sistem melakukan update parsial (PATCH per-field) atau penimpaan penuh (PUT seluruh record) saat Admin A mengedit Name dan bersamaan Admin B mengedit Code. Jika penimpaan penuh terjadi, perubahan Name dari Admin A berisiko ter-revert jika form Admin B masih memuat nama lama.
+
+**Yang diterapkan di spec:**  
+Spec `TC-GS-DIV-E2E-072` (*Konkurensi Antar-Admin: Last-Write-Wins pada Edit Bersamaan, Penolakan Duplicate Name, dan Penolakan Duplicate Manual Code*) memverifikasi alur last-write-wins dan mencatat log mutasi yang dihasilkan di Changelog.
+
+---
+
+## GAP-DIV-E2E-005 — Kebutuhan Test Harness Khusus Otomasi E2E Global Settings Division
+
+**Status:** terbuka, dicatat di Prerequisites tiap spec  
+**Tipe:** kesiapan environment uji otomasi  
+**Dampak:** memblokir eksekusi test runner jika harness belum tersedia  
+
+Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masing-masing spec untuk panduan implementasi tim pengembang otomasi:
+
+| Kebutuhan Harness | Deskripsi & Kegunaan | Spec yang Membutuhkan |
+|---|---|---|
+| **Multi-Tenant Data Seeding** | Database seed terpisah untuk Client A dan Client B guna memvalidasi isolasi total master data divisi antar-organisasi | 070 |
+| **Workspace Status Mutator** | Pengkondisian entitas berstatus Suspended dan Expired untuk memvalidasi penolakan aksi tulis (Create, Edit, Delete) dengan status HTTP 403 | 069 |
+| **System Limits API Controller** | Manipulasi kuota `Master Data Count Limit` dan `Selection Limit` via Admin Console Plans & Licensing untuk pengujian batas limit dan seleksi massal | 022, 038, 073 |
+| **Consumer Dropdown Sync Bridge** | Verifikasi refleksi mutasi katalog divisi secara instan ke form User Login dan User Non-Login | 023, 031, 065, 066 |
+| **Multi-Tab Context & Multi-Actor Context** | Pengujian dual browser tab untuk mendeteksi race condition (last-write-wins, duplicate create collision, rebutan slot limit, dan idempotent delete) | 072, 073 |
+| **Network Mock Interceptor** | Intercept respons API untuk simulasi error HTTP 500, penundaan respons jaringan (skeleton loader 3 detik), respons empty state, dan ekspor gagal | 003, 023, 032, 037, 044, 053, 061 |
+| **Viewport Emulator** | Emulasi resolusi mobile Android (<768px) untuk memvalidasi tata letak card list, ketiadaan checkbox, dan bottom sheets | 075, 076 |
+
+---
+
+## GAP-DIV-E2E-006 — Target Environment E2E Masih Mengarah ke Demo App
+
+**Status:** terbuka  
+**Tipe:** konfigurasi environment  
+**Dampak:** memblokir eksekusi runner TestSpectra  
+
+Konfigurasi `tagsamurai-e2e-test/spectra.config.ts` saat ini masih menggunakan URL target demo aplikasi bawaan framework TestSpectra. Untuk menjalankan suite `specs/GlobalSettings/Division/`, konfigurasi target `baseURL` harus diarahkan ke instance staging/testing web aplikasi TAG Samurai.
+
+---
+
+## GAP-DIV-E2E-007 — Restrukturisasi Dekomposisi Terisolasi (64 → 76 Specs) untuk Ketahanan Runner Otomasi
+
+> **Catatan Pemisahan Spec:** Isu arsitektur dekomposisi spec dan restrukturisasi terisolasi ini telah dipisahkan ke [gap-spec.md](./gap-spec.md#gap-div-e2e-007--restrukturisasi-dekomposisi-terisolasi-64--76-specs-untuk-ketahanan-runner-otomasi).
+
+---
+
+## Kepatuhan Suite Division
+
+- **Cakupan TC:** 100% (296 dari 296 TC granular aktif dari `TC-GS-DIV-1` sampai `TC-GS-DIV-296` terpetakan secara lengkap tanpa satu pun yang tertinggal).
+- **Duplikasi TC:** 0 (setiap `TC-GS-DIV-NN` hanya muncul tepat di satu spec).
+- **Total Spec E2E:** 76 spec atomik terisolasi tinggi (`TC-GS-DIV-E2E-001` s/d `076`).
+- **Pembagian Mode:** 60 spec `FE+BE` (live backend), 16 spec `Mode: mock` (loading skeleton, hover tooltip, guided walkthrough, fault injection 500 & timeout, DOM XSS sanitization, mobile Android layout).
+- **Verifikasi Lint:** `npx spectra lint --strict specs/GlobalSettings/Division` → target 0 lint errors.
+- **Karakter Non-Kanonikal:** 0 karakter CJK atau simbol non-standar.
+- **Status Spec:** Seluruh 76 spec berstatus `draft` dengan deskripsi langkah bahasa Indonesia yang presisi, bebas dari flakiness cascading, siap untuk tahap penyusunan skrip otomasi (`tagsamurai-e2e-generate-script`).
