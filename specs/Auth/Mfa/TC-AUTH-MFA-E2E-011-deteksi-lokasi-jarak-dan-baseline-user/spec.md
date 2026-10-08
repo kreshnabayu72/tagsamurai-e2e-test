@@ -7,6 +7,7 @@ status: draft
 sourceTc:
   - TC-AUTH-MFA-33
   - TC-AUTH-MFA-51
+  - TC-AUTH-MFA-208
 coverage:
   web: automated
 ---
@@ -14,9 +15,10 @@ coverage:
 
 ## Prerequisites
 
-- Browser uji A (device dikenali).
+- Browser uji A (device dikenali), browser uji B, dan browser uji C (ID device belum dikenali).
 - User `Bagas Firmansyah` (`bagasfirmansyah@qwertysystem.net`) profil FAR (login terakhir Jakarta ID, login saat ini dari IP Surabaya ID, jarak >100 km, negara sama).
 - User `Dewi Wijaya` (`dewiwijaya@qwertysystem.net`) profil TWODEV (memiliki dua trusted device: browser uji A login 1 hari lalu dari Jakarta, browser uji B login 20 hari lalu dari Surabaya).
+- User `Maria Ulfa` (`mariaulfa@qwertysystem.net`) profil NOLOC (tanpa catatan lokasi login terakhir di platform).
 - IP uji geo-IP Jakarta dan Surabaya aktif.
 - Mail-catcher lingkungan uji aktif.
 
@@ -42,7 +44,18 @@ coverage:
 11. Verifikasi sistem membandingkan lokasi login saat ini (Surabaya) dengan catatan login terakhir user di platform (Jakarta, 1 hari lalu), BUKAN dengan login terakhir device B
 12. Verifikasi jarak Jakarta ke Surabaya >100 km sehingga MFA terpicu dan email alert terkirim
 
+### User tanpa catatan lokasi login terakhir: kriteria >100 km dilewati, device baru tetap memicu MFA (TC-208)
+
+13. Gunakan akun `mariaulfa@qwertysystem.net` yang belum memiliki catatan lokasi login terakhir (profil NOLOC)
+14. Pada browser uji A (device dikenali), konfigurasikan IP uji Surabaya (ID) lalu lakukan login dengan kredensial valid
+15. Verifikasi kriteria jarak >100 km dilewati karena belum ada catatan lokasi terdahulu, halaman MFA tidak muncul, dan browser langsung mendarat di Portal — Product Hub
+16. Verifikasi lokasi Surabaya (ID) kini tersimpan sebagai catatan lokasi login terakhir
+17. Logout dari Portal, lalu buka browser uji C (ID device belum dikenali) dengan IP Surabaya yang sama
+18. Lakukan login dengan `mariaulfa@qwertysystem.net`
+19. Verifikasi kriteria device baru tetap dievaluasi: halaman `Auth > MFA > Choose Verification Method` tampil dan email alert login baru terkirim ke kotak masuk
+
 ## Notes
 
 - Sesuai `AUTHMFA-LOGIC-02c` dan keputusan NC-01, baseline lokasi dan negara adalah satu catatan login terakhir per user + platform, bukan per trusted device.
 - Formula jarak yang digunakan adalah Haversine great-circle distance.
+- Sesuai PRD §9.2 F-AUTHMFA-02 dan `AUTHMFA-LOGIC-02c`, kriteria jarak >100 km dilewati bila user belum memiliki catatan lokasi login terakhir, namun kriteria login pertama/device baru tetap aktif dievaluasi.

@@ -1,6 +1,6 @@
 # Coverage Ledger — Auth > MFA (Multi-Factor Authentication)
 
-Dokumen ini melacak keterlacakan (traceability) antara **207 Test Cases granular** pada [`auth/mfa/TestCases/tc-mfa.md`](../../auth/mfa/TestCases/tc-mfa.md) dengan **36 File Spesifikasi E2E TestSpectra** yang telah direstrukturisasi secara modular dan terisolasi.
+Dokumen ini melacak keterlacakan (traceability) antara **210 Test Cases granular** pada [`auth/mfa/TestCases/tc-mfa.md`](../../auth/mfa/TestCases/tc-mfa.md) dengan **36 File Spesifikasi E2E TestSpectra** yang telah direstrukturisasi secara modular dan terisolasi.
 
 ---
 
@@ -8,9 +8,9 @@ Dokumen ini melacak keterlacakan (traceability) antara **207 Test Cases granular
 
 | Indikator | Nilai | Keterangan |
 | :--- | :---: | :--- |
-| **Total Test Case Granular Sumber** | **207** | `TC-AUTH-MFA-01` s/d `TC-AUTH-MFA-207` |
+| **Total Test Case Granular Sumber** | **210** | `TC-AUTH-MFA-01` s/d `TC-AUTH-MFA-210` |
 | **Total Spec E2E TestSpectra** | **36** | Tersimpan di `tagsamurai-e2e-test/specs/Auth/Mfa/` |
-| **Granular TC Terpetakan** | **207 / 207** | **100.0% Coverage** |
+| **Granular TC Terpetakan** | **210 / 210** | **100.0% Coverage** |
 | **Duplikasi Pemetaan** | **0** | Setiap granular TC dipetakan tepat satu kali ke 1 spec |
 | **TC Tanpa Pemetaan (Uncovered)** | **0** | Tidak ada celah cakupan |
 | **Status Validasi TestSpectra** | **Lolos Linter Strict** | `npx spectra lint --strict specs/Auth/Mfa` (0 error) |
@@ -59,10 +59,10 @@ Arsitektur 36 spec ini dirancang untuk memaksimalkan **stabilitas eksekusi otoma
 | 008 | `TC-AUTH-MFA-E2E-008-pemicu-mfa-login-pertama` | 3 | TC-AUTH-MFA-24, TC-AUTH-MFA-25, TC-AUTH-MFA-149 | Web |
 | 009 | `TC-AUTH-MFA-E2E-009-pemicu-mfa-idle-dan-independensi-platform` | 4 | TC-AUTH-MFA-26, TC-AUTH-MFA-27, TC-AUTH-MFA-28, TC-AUTH-MFA-29 | Web |
 | 010 | `TC-AUTH-MFA-E2E-010-deteksi-device-baru-dan-reset-storage` | 4 | TC-AUTH-MFA-30, TC-AUTH-MFA-31, TC-AUTH-MFA-32, TC-AUTH-MFA-50 | Web |
-| 011 | `TC-AUTH-MFA-E2E-011-deteksi-lokasi-jarak-dan-baseline-user` | 2 | TC-AUTH-MFA-33, TC-AUTH-MFA-51 | Web |
+| 011 | `TC-AUTH-MFA-E2E-011-deteksi-lokasi-jarak-dan-baseline-user` | 3 | TC-AUTH-MFA-33, TC-AUTH-MFA-51, TC-AUTH-MFA-208 | Web |
 | 012 | `TC-AUTH-MFA-E2E-012-deteksi-beda-negara-dan-tumbling-window` | 6 | TC-AUTH-MFA-35, TC-AUTH-MFA-36, TC-AUTH-MFA-37, TC-AUTH-MFA-38, TC-AUTH-MFA-39, TC-AUTH-MFA-40 | Web |
 | 013 | `TC-AUTH-MFA-E2E-013-decay-pasangan-negara-dan-single-step-refresh` | 4 | TC-AUTH-MFA-41, TC-AUTH-MFA-42, TC-AUTH-MFA-43, TC-AUTH-MFA-44 | Web |
-| 014 | `TC-AUTH-MFA-E2E-014-fail-open-geo-ip-dan-kombinasi-alert` | 3 | TC-AUTH-MFA-45, TC-AUTH-MFA-46, TC-AUTH-MFA-52 | Web |
+| 014 | `TC-AUTH-MFA-E2E-014-fail-open-geo-ip-dan-kombinasi-alert` | 4 | TC-AUTH-MFA-45, TC-AUTH-MFA-46, TC-AUTH-MFA-52, TC-AUTH-MFA-209 | Web |
 | 015 | `TC-AUTH-MFA-E2E-015-sekuensialitas-agreement-gate-dan-mfa` | 3 | TC-AUTH-MFA-47, TC-AUTH-MFA-48, TC-AUTH-MFA-49 | Web |
 | 016 | `TC-AUTH-MFA-E2E-016-verifikasi-otp-auto-submit-dan-paste` | 6 | TC-AUTH-MFA-62, TC-AUTH-MFA-66, TC-AUTH-MFA-68, TC-AUTH-MFA-69, TC-AUTH-MFA-88, TC-AUTH-MFA-89 | Web |
 | 017 | `TC-AUTH-MFA-E2E-017-validasi-input-otp-error-dan-expiry` | 7 | TC-AUTH-MFA-70, TC-AUTH-MFA-71, TC-AUTH-MFA-72, TC-AUTH-MFA-73, TC-AUTH-MFA-74, TC-AUTH-MFA-76, TC-AUTH-MFA-86 | Web |
@@ -82,7 +82,7 @@ Arsitektur 36 spec ini dirancang untuk memaksimalkan **stabilitas eksekusi otoma
 | 031 | `TC-AUTH-MFA-E2E-031-session-management-dan-paritas-subscription-plan` | 9 | TC-AUTH-MFA-179, TC-AUTH-MFA-180, TC-AUTH-MFA-181, TC-AUTH-MFA-182, TC-AUTH-MFA-183, TC-AUTH-MFA-184, TC-AUTH-MFA-185, TC-AUTH-MFA-186, TC-AUTH-MFA-187 | Web |
 | 032 | `TC-AUTH-MFA-E2E-032-verifikasi-isi-qr-code-dan-secret-key` | 4 | TC-AUTH-MFA-109, TC-AUTH-MFA-117, TC-AUTH-MFA-120, TC-AUTH-MFA-123 | Web |
 | 033 | `TC-AUTH-MFA-E2E-033-konkurensi-multi-tab-dan-guard-double-submit` | 7 | TC-AUTH-MFA-118, TC-AUTH-MFA-119, TC-AUTH-MFA-137, TC-AUTH-MFA-191, TC-AUTH-MFA-194, TC-AUTH-MFA-195, TC-AUTH-MFA-196 | Web |
-| 034 | `TC-AUTH-MFA-E2E-034-security-defense-token-tampering` | 4 | TC-AUTH-MFA-188, TC-AUTH-MFA-189, TC-AUTH-MFA-190, TC-AUTH-MFA-206 | Web |
+| 034 | `TC-AUTH-MFA-E2E-034-security-defense-token-tampering` | 5 | TC-AUTH-MFA-188, TC-AUTH-MFA-189, TC-AUTH-MFA-190, TC-AUTH-MFA-206, TC-AUTH-MFA-210 | Web |
 | 035 | `TC-AUTH-MFA-E2E-035-rate-limiting-resilience-dan-toast-sticky` | 13 | TC-AUTH-MFA-12, TC-AUTH-MFA-83, TC-AUTH-MFA-84, TC-AUTH-MFA-192, TC-AUTH-MFA-193, TC-AUTH-MFA-197, TC-AUTH-MFA-198, TC-AUTH-MFA-199, TC-AUTH-MFA-201, TC-AUTH-MFA-202, TC-AUTH-MFA-203, TC-AUTH-MFA-204, TC-AUTH-MFA-205 | Web |
 | 036 | `TC-AUTH-MFA-E2E-036-mobile-biometric-relogin-trigger` | 1 | TC-AUTH-MFA-54 | Mobile Native |
 
@@ -90,7 +90,8 @@ Arsitektur 36 spec ini dirancang untuk memaksimalkan **stabilitas eksekusi otoma
 
 ## 4. Verifikasi Integritas Data
 
-- **Total Granular TCs:** 207
-- **Unique Granular TCs:** 207
+- **Total Granular TCs:** 210
+- **Unique Granular TCs:** 210
 - **Missing TCs:** Tidak ada
 - **Duplikasi:** Tidak ada
+

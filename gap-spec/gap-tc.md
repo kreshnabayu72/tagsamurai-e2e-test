@@ -342,7 +342,7 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 
 # Gap & Temuan — Auth > MFA (Multi-Factor Authentication)
 
-Sumber: generate spec `specs/Auth/Mfa/` (36 spec, 207 TC aktif). Tanggal pembaruan: 2026-10-07.
+Sumber: generate spec `specs/Auth/Mfa/` (36 spec, 210 TC aktif). Tanggal pembaruan: 2026-10-08.
 
 Dokumen ini mencatat seluruh temuan, perbedaan langkah/prekondisi, dan celah cakupan yang diidentifikasi selama proses **audit silang antara PRD `auth/mfa/PRD/mfa.md`, Test Case `auth/mfa/TestCases/tc-mfa.md`, dan OpenAPI/LLD contract**.
 
@@ -489,14 +489,41 @@ Pada draf awal generasi spec E2E (30 spec), ditemukan pola *cramming* atau pengg
 
 ---
 
+## GAP-MFA-E2E-009 — Urutan Evaluasi Sekuensial: Agreement Gate Consent Sebelum Pemicu MFA (Resolusi GAP-451)
+
+**Status:** terselesaikan via sinkronisasi PRD & TC (2026-10-07)  
+**Tipe:** urutan alur antarmuka & kepatuhan consent  
+**Dampak:** tinggi terhadap langkah navigasi skenario first login dan idle  
+
+Sesuai `AUTHMFA-LOGIC-01b` dan `auth-foundation.md` §11.1 ("Urutan vs MFA"), saat user baru (profil FIRST) atau user idle ≥30 hari (profil IDLE) memiliki pending consent dokumen Terms & Conditions atau Privacy Policy, layar persetujuan `Confirm to Continue` **selalu dievaluasi dan diselesaikan terlebih dahulu** sebelum tantangan MFA (`Choose Verification Method`) dimunculkan. Hal ini mencegah efek samping penerbitan token MFA untuk user yang berujung menolak consent. 
+
+**Penerapan di Spec:**  
+Telah diisolasi dan diverifikasi secara khusus pada spec `TC-AUTH-MFA-E2E-015` (*Sekuensialitas Agreement Gate Sebelum Evaluasi MFA*), di mana pembatalan pada Agreement Gate langsung mengembalikan browser ke `/login` tanpa menyentuh alur MFA sama sekali.
+
+---
+
+## GAP-MFA-E2E-010 — Transaksi Atomik Sesi/Trust vs Best-Effort Audit Logging (Resolusi GAP-447)
+
+**Status:** terselesaikan via arsitektur PRD & LLD (2026-10-07)  
+**Tipe:** jaminan konsistensi transaksi database  
+**Dampak:** sedang terhadap pola verifikasi audit trail  
+
+Sesuai pembaruan PRD `AUTHMFA-LOGIC-04a`, `04b`, dan LLD, pembuatan sesi login final dan refresh data trusted device/lokasi dijamin berjalan **atomik dalam satu transaksi database**. Sebaliknya, penulisan audit trail ke *Global Settings > Activity Log > Session* dan *User Log* dijalankan secara *best-effort* dengan retry di luar transaksi. Keterlambatan atau kegagalan penulisan audit log tidak membatalkan atau merusak status sesi login pengguna. Catatan login final dicatat paling banyak sekali (*at most once*).
+
+**Penerapan di Spec:**  
+Diverifikasi pada spec `TC-AUTH-MFA-E2E-028` (*Audit Log Mutasi Status Sukses dan Gagal*), memastikan pengujian tidak mengasumsikan kegagalan penulisan log memicu rollback sesi login pengguna.
+
+---
+
 ## Kepatuhan Suite MFA
 
-- **Cakupan TC:** 100% (207 dari 207 TC granular aktif dari `TC-AUTH-MFA-01` sampai `TC-AUTH-MFA-207` terpetakan secara lengkap tanpa satu pun yang terlewat).
+- **Cakupan TC:** 100% (210 dari 210 TC granular aktif dari `TC-AUTH-MFA-01` sampai `TC-AUTH-MFA-210` terpetakan secara lengkap tanpa satu pun yang terlewat).
 - **Duplikasi TC:** 0 (setiap `TC-AUTH-MFA-NN` hanya muncul tepat di satu spec).
 - **Pembagian Platform:** 34 spec web, 2 spec mobile (`TC-AUTH-MFA-E2E-005` layout responsif & `TC-AUTH-MFA-E2E-036` biometric re-login).
 - **Verifikasi Lint:** `npx spectra lint --strict specs/Auth/Mfa` → `✓ 36 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
 - **Karakter Non-Kanonikal:** 0 karakter CJK atau full-width punctuation residue.
 - **Status Spec:** Seluruh 36 spec berstatus `draft` dengan isolasi tanggung jawab tinggi (UI screening, cryptography, race condition, rate limiting, dan audit log terpisah), siap untuk fase pembuatan script otomasi (`tagsamurai-e2e-generate-script`).
+
 
 
 

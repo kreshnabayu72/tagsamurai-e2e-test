@@ -74,6 +74,6 @@ coverage:
 
 ## Notes
 
-- Sesuai `AUTHMFA-LOGIC-04a` dan PRD §9.8, login final via MFA dicatat dengan Note yang mencerminkan faktor pertama.
+- Sesuai `AUTHMFA-LOGIC-04a`, `04b`, dan PRD §9.8, login final via MFA dicatat dengan Note yang mencerminkan faktor pertama paling banyak sekali; pembuatan sesi dan trust bersifat atomik sementara penulisan audit log dilakukan best-effort dengan retry di luar transaksi.
 - Sesuai PRD §9.8 V-18 dan V-19, percobaan salah ke-5 pada OTP/TOTP tetap dicatat Failed sebelum sesi di-invalidate, sedangkan kegagalan enrollment tidak pernah dicatat.
 - Faktor-1 tidak mencatat status Success jika MFA terpicu; pencatatan Success ditunda hingga faktor-2 selesai.
