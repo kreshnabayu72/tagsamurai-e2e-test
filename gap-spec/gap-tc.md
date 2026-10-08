@@ -202,7 +202,7 @@ Frasa "bila terdeteksi sbg abandoned" membuat pencatatan ini terasa opsional, pa
 
 # Gap & Temuan — Auth > Login with OTP
 
-Sumber: generate spec `specs/Auth/LoginOtp/` (27 spec, 183 TC aktif). Tanggal generate: 2026-10-06.
+Sumber: generate spec `specs/Auth/LoginOtp/` (27 spec, 189 TC aktif). Tanggal pembaruan: 2026-10-08.
 
 Dokumen ini mencatat seluruh temuan, perbedaan langkah/prekondisi, dan celah cakupan yang diidentifikasi selama proses **audit silang antara PRD `auth/login-otp/PRD/login-otp.md` dan Test Case `auth/login-otp/TestCases/tc-login-otp.md`**.
 
@@ -294,15 +294,15 @@ Spec `TC-AUTH-OTP-E2E-021` mengadopsi aturan terbaru PRD Login with OTP: memveri
 
 ---
 
-## GAP-OTP-E2E-005 — Pembuktian Transaksi Database Atomik (EC-46) Membutuhkan Integration Test / Fault Injection
+## GAP-OTP-E2E-005 — Arsitektur Pencatatan Log Best-Effort di Luar Transaksi Auth (Resolusi GAP-447)
 
-**Status:** terbuka, batas lapisan E2E UI  
-**Tipe:** arsitektur backend non-UI observable  
-**Dampak:** rendah untuk spec E2E, krusial untuk backend integration  
+**Status:** terselesaikan via arsitektur PRD GAP-447 (commit `deb339d` / `a7a183c`, 2026-10-07)  
+**Tipe:** arsitektur logging & konsistensi transaksi auth  
+**Dampak:** terselesaikan penuh, selaras dengan LLD dan modul login-password  
 
-PRD `login-otp.md` §9.6 (Action Resilience) dan §9.4.2 EC-46 mensyaratkan bahwa konsumsi kode OTP dan pencatatan audit log harus berada dalam satu transaksi database atomik (jika penulisan log gagal, konsumsi kode di-rollback sehingga pengguna tidak kehilangan hak verifikasi).
+Sesuai penutupan `GAP-447` pada PRD `login-otp.md` mutakhir (F-AUTHOTP-11, EC-46, §9.6, §9.7, §10, §11), penulisan audit log ke *Global Settings > Activity Log > Session* dan *User Log* ditetapkan secara **best-effort dengan retry di luar transaksi keputusan auth**. Hal ini menyelaraskan Login with OTP dengan arsitektur `login-password.md` dan LLD backend: kegagalan parsial saat menuliskan audit log tidak membatalkan atau merollback keputusan autentikasi / konsumsi kode OTP pengguna.
 
-Kondisi kegagalan parsial di mana penulisan log gagal secara internal di database tidak dapat disimulasikan dari blackbox UI browser tanpa injeksi kegagalan pada level koneksi database.
+Pengujian skenario backend internal kegagalan penulisan log dicakup di `tc-login-otp-backend.md` (`TC-AUTH-OTP-BE-060`, `TC-AUTH-OTP-BE-126`), sementara spec UI E2E menguji aliran fungsional observable tanpa asumsi rollback saat kegagalan log internal terjadi.
 
 **Yang dilakukan di spec:**  
 Aspek konkurensi dan integritas konsumsi atomik diuji di level browser melalui uji balapan tab paralel di `TC-AUTH-OTP-E2E-027` dan verifikasi simetris 1:1 di `TC-AUTH-OTP-E2E-011`. Uji kegagalan transaksi DB parsial diserahkan ke suite uji backend terpisah (`tc-login-otp-backend.md`).
@@ -330,7 +330,7 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 
 ## Kepatuhan Suite Login OTP
 
-- **Cakupan TC:** 100% (185 dari 185 TC granular aktif dari `TC-AUTH-OTP-01` sampai `TC-AUTH-OTP-185` terpetakan secara lengkap tanpa satu pun yang terlewat).
+- **Cakupan TC:** 100% (189 dari 189 TC granular aktif dari `TC-AUTH-OTP-01` sampai `TC-AUTH-OTP-189` terpetakan secara lengkap tanpa satu pun yang terlewat).
 - **Duplikasi TC:** 0 (setiap `TC-AUTH-OTP-NN` hanya muncul tepat di satu spec).
 - **Pembagian Platform:** 26 spec web, 1 spec mobile (`TC-AUTH-OTP-E2E-002`).
 - **Verifikasi Lint:** `npx spectra lint --strict specs/Auth/LoginOtp` → `✓ 27 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`

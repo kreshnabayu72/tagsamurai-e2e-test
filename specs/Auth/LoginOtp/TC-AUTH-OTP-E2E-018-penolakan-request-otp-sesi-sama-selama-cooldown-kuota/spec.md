@@ -14,6 +14,7 @@ sourceTc:
   - TC-AUTH-OTP-169
   - TC-AUTH-OTP-170
   - TC-AUTH-OTP-182
+  - TC-AUTH-OTP-189
 coverage:
   web: automated
 ---
@@ -26,7 +27,9 @@ coverage:
 - User `Teguh Wulandari` (`teguhwulandari@qwertysystem.net`) profil BASE.
 - User `Laras Puspita` (`laraspuspita@qwertysystem.net`) profil BASE.
 - User `Irfan Damayanti` (`irfandamayanti@qwertysystem.net`) profil BASE.
+- User `Hana Kusumawati` (`hanakusumawati@qwertysystem.net`) profil BASE.
 - Akun Total Control Global Settings aktif untuk membaca log.
+- Mail-catcher aktif.
 
 ## Test Steps
 
@@ -60,7 +63,20 @@ coverage:
 17. Verifikasi request diterima dan kode baru berhasil dikirimkan
 18. Verifikasi counter server-side melanjutkan tracking sesi yang benar
 
+### Variasi kapitalisasi dan spasi email tidak membobol cooldown sesi (EC-56, TC-189)
+
+19. Buka halaman Request OTP, masukkan `hanakusumawati@qwertysystem.net`, centang reCAPTCHA, lalu klik [Request OTP]
+20. Verifikasi halaman Verify OTP tampil
+21. Klik tautan [Back to Login with Password]
+22. Pada halaman Login with Password, ketik email dengan spasi luar dan huruf kapital campuran: `" HanaKusumawati@QwertySystem.net "`
+23. Klik tautan [Log in with OTP] sehingga teks email tersebut terbawa ke Request OTP
+24. Centang widget reCAPTCHA dan klik button [Request OTP] dalam kurun 60 detik (saat cooldown awal 60 detik masih berjalan)
+25. Verifikasi sistem menormalkan email (trim spasi dan lowercase) ke akun yang sama sehingga tidak menampilkan "Email format is incorrect" maupun "Email is not registered yet"
+26. Verifikasi request ditolak dengan alert inline di atas button [Request OTP]: "Too many requests. Please try again later."
+27. Verifikasi tidak ada email OTP baru yang dikirimkan ke mail-catcher
+
 ## Notes
 
-- Sesuai keputusan NC-03, sesi email-request melekat di sisi server per kombinasi email dan klien. Menutup tab, menghapus storage browser, atau berpindah ke halaman login password tidak mereset masa cooldown maupun kuota pengiriman.
+- Sesuai keputusan NC-03 dan EC-56: sesi email-request melekat di sisi server per kombinasi email (setelah normalisasi trim + lowercase) dan klien.
+- Menutup tab, menghapus storage browser, berpindah ke login password, atau memvariasikan huruf kapital dan spasi luar tidak mereset masa cooldown maupun kuota pengiriman.
 - Penolakan di layar Request OTP menampilkan alert inline di atas tombol submit dengan teks `Too many requests. Please try again later.`

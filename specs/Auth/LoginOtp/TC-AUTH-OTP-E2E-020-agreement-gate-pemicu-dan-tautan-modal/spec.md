@@ -11,6 +11,7 @@ sourceTc:
   - TC-AUTH-OTP-99
   - TC-AUTH-OTP-104
   - TC-AUTH-OTP-142
+  - TC-AUTH-OTP-188
 coverage:
   web: automated
 ---
@@ -23,6 +24,8 @@ coverage:
 - User `Nur Wibowo` (`nurwibowo@qwertysystem.net`) profil FIRST (login pertama kali di platform web).
 - User `Idle Tester` (`idletester@qwertysystem.net`) profil IDLE (terakhir login > 30 hari lalu).
 - User `Policy Tester` (`policytester@qwertysystem.net`) profil POLICY (ada versi Privacy Policy baru dari Principal).
+- User `Hari Wibisono` (`hariwibisono@qwertysystem.net`) profil POLICY (untuk uji resolusi versi Privacy Policy gagal).
+- Akun admin Total Control untuk verifikasi audit trail/user log.
 - Mail-catcher aktif.
 
 ## Test Steps
@@ -66,7 +69,22 @@ coverage:
 23. Logout dari sistem, lalu login ulang menggunakan metode `Auth > Login with Password` untuk user yang sama
 24. Verifikasi setelah submit password benar, layar Confirm to Continue TIDAK muncul kembali karena persetujuan telah tersimpan permanen di level profil akun
 
+### Penolakan saat versi Privacy Policy aktif tidak dapat ditentukan (TC-188)
+
+25. Simulasikan kondisi lingkungan di mana versi aktif Privacy Policy tidak ter-resolve atau tidak dapat ditentukan oleh sistem backend
+26. Buka Request OTP untuk `hariwibisono@qwertysystem.net` (profil POLICY)
+27. Selesaikan reCAPTCHA dan klik [Request OTP]
+28. Masukkan 6 digit kode OTP yang benar dari email pada kotak digit
+29. Verifikasi sistem menolak proses verifikasi dan menampilkan toast error: "Error, failed to log in."
+30. Verifikasi layar "Confirm to Continue" TIDAK tampil dan sesi aktif tidak dibuat
+31. Verifikasi 6 digit OTP tetap dipertahankan pada kotak digit
+32. Verifikasi pada Activity Log > Session dan User Log tidak ada entri log baru yang dicatat untuk percobaan ini
+33. Pulihkan kembali resolusi versi Privacy Policy aktif di backend
+34. Submit ulang kode OTP yang sama yang masih berada di kotak digit (masih dalam masa berlaku)
+35. Verifikasi sistem kini memproses verifikasi dan menampilkan layar "Confirm to Continue"
+
 ## Notes
 
 - Layar "Confirm to Continue" (Agreement Gate) adalah gerbang persetujuan legal yang dipicu oleh 3 kondisi wajib: (1) Login pertama di web, (2) User idle / tidak login > 30 hari, (3) Principal mempublikasikan versi kebijakan privasi yang lebih tinggi dari versi yang pernah disetujui.
 - Status persetujuan bersifat cross-auth: sekali disetujui via OTP, user tidak akan ditanya lagi saat login via Password, dan sebaliknya.
+- Jika versi Privacy Policy aktif tidak dapat ditentukan atau belum terpublikasi (TC-188), proses verifikasi OTP diblokir dengan pesan umum "Error, failed to log in.", digit OTP dipertahankan, dan tidak ada entri audit trail yang dicatat.

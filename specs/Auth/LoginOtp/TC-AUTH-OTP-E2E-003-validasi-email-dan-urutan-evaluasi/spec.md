@@ -15,6 +15,8 @@ sourceTc:
   - TC-AUTH-OTP-18
   - TC-AUTH-OTP-167
   - TC-AUTH-OTP-168
+  - TC-AUTH-OTP-186
+  - TC-AUTH-OTP-187
 coverage:
   web: automated
 ---
@@ -27,7 +29,10 @@ coverage:
 - User `Rina Permata` (`rinapermata@qwertysystem.co`) terdaftar dan aktif (TLD 2 karakter).
 - User `Hendra Fitriani` dengan email tepat 120 karakter (`hendrafitrianixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@qwertysystem.net`) terdaftar dan aktif.
 - User `Maya Susanti` (`mayasusanti@qwertysystem.net`) terdaftar dan aktif.
+- User `Wawan Setiadi` (`wawansetiadi+otp@qwertysystem.net`) profil BASE (terdaftar dengan plus-addressing).
+- User `Gita Permatasari` (`gitapermatasari@qwertysystem.net`) profil BASE.
 - Widget reCAPTCHA v2 siap diselesaikan atau di-bypass token untuk pengujian validasi input form.
+- Mail-catcher aktif.
 
 ## Test Steps
 
@@ -78,7 +83,19 @@ coverage:
 31. Verifikasi sistem melakukan trim spasi di sisi client/server secara mulus tanpa menampilkan error format
 32. Verifikasi toast sukses muncul dan halaman Verify OTP menampilkan subtitle "Enter the 6-digit code sent to: mayasusanti@qwertysystem.net" dalam keadaan bersih dari spasi
 
+### Dukungan plus-addressing dan case-insensitivity email (EC-55, EC-56, TC-186, TC-187)
+
+33. Buka kembali halaman Request OTP di browser
+34. Masukkan alamat email dengan sub-addressing tanda tambah: `wawansetiadi+otp@qwertysystem.net`
+35. Selesaikan reCAPTCHA dan klik [Request OTP]
+36. Verifikasi tidak ada caption error "Email format is incorrect", toast sukses muncul, dan kode 6 digit diterima di mail-catcher untuk `wawansetiadi+otp@qwertysystem.net`
+37. Buka kembali halaman Request OTP dalam sesi baru
+38. Masukkan email dengan kombinasi huruf kapital dan kecil: `GitaPermatasari@QwertySystem.net`
+39. Selesaikan reCAPTCHA dan klik [Request OTP]
+40. Verifikasi sistem memperlakukan email secara case-insensitive: caption "Email is not registered yet" tidak muncul, browser berpindah ke Verify OTP, dan email OTP masuk ke inbox `gitapermatasari@qwertysystem.net`
+
 ## Notes
 
 - Urutan evaluasi field Email mengikuti hirarki: (1) Cek kekosongan string -> "Email must not be empty", (2) Cek regex format -> "Email format is incorrect", (3) Cek batas 120 karakter -> "Max. 120 characters" (sesuai NC-07).
 - Karakter ke-121 tidak diblokir dari input agar pengguna menyadari kelebihan karakter melalui caption bantuan.
+- Sesuai `auth-foundation.md` §4.0a dan PRD §9.9 FLD-01: email mendukung plus-addressing (`user+tag@domain.com`) dan dievaluasi secara case-insensitive dengan normalisasi lowercase otomatis di backend.
