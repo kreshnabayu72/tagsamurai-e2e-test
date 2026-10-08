@@ -85,6 +85,8 @@ Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spe
     Setup Column, Bulk Action Bar, dan Search/Filter/Sort tetap satu spec selama dataset dan harness-nya sama; pecah hanya kalau melewati batas kelas di atas atau bagian sesudahnya tidak lagi bermakna bila bagian sebelumnya gagal keras (batas ukuran di bawah).
     **Pengecualian:** TC yang konteksnya bergantung pada state berat yang baru dibangun langkah sebelumnya di spec asal (contoh: lock tahap 1 jam, handoff MFA) boleh tetap di sana; catat alasannya di `## Notes`.
     **Smell, bukan kriteria:** spec melewati sekitar 35 langkah atau memuat lebih dari satu kelas harness wajib ditinjau ulang sebelum rencana diajukan.
+    **Alasan wajib di Notes:** spec yang tetap melewati sekitar 35 langkah menulis alasan pertahanannya di `## Notes` (contoh: semua blok satu kelas harness dan berdiri sendiri, kegagalan satu blok tidak membuat blok lain kehilangan makna). Tanpa alasan, spec dianggap kurang dipecah. Alasan tidak boleh dikarang; kalau tidak ada, pecah atau rampingkan.
+    **Halaman yang sama dipakai berulang `[KEPUTUSAN 2026-10-08]`:** kasus yang hanya mengetik atau mengamati tanpa submit (checklist policy, batas panjang, validasi inline) memakai satu pembukaan link dengan field dikosongkan di antara kasus, bukan seed user dan buka link per TC. Pembukaan ulang hanya bila ada alasan state (token terpakai, submit sukses, atau precondition TC memang berbeda dan memengaruhi hasil). Ini turunan prinsip 6 dan 8.
 
 **Pisahkan spec hanya jika ada pemisah nyata:**
 - Topik aksi berbeda dengan kondisi data yang bervariasi (prinsip 1).
@@ -160,7 +162,7 @@ contoh: TC-GS-USER-E2E-001-create-user-happy-path
 - `NNN` urut sendiri per modul, 3 digit, tidak pernah di-renumber. Lewat 999 cukup jadi 4 digit.
 - Nomor e2e **tidak** harus sama dengan nomor TC granular, karena satu spec bisa menggabungkan beberapa TC. Hubungannya dicatat di `sourceTc`.
 - Nama folder TC = `id` di frontmatter.
-- **Bahasa spec `[KEPUTUSAN 2026-09-29]`:** `title`, heading, `## Prerequisites`, `## Test Steps`, dan `## Notes` ditulis dalam bahasa Indonesia. Teks yang tampil di aplikasi (label tombol, teks toast, tooltip, pesan error, judul dialog) ditulis persis seperti di aplikasi dan tidak diterjemahkan. Langkah asersi diawali kata `Verifikasi`. Slug pada `id` tetap bahasa Inggris supaya id tidak berubah. Spec lama yang masih berbahasa Inggris diterjemahkan sekali jalan setelah skema spec final.
+- **Bahasa spec `[KEPUTUSAN 2026-09-29]`:** `title`, heading, `## Prerequisites`, `## Test Steps`, dan `## Notes` ditulis dalam bahasa Indonesia. Teks yang tampil di aplikasi (label tombol, teks toast, tooltip, pesan error, judul dialog) ditulis persis seperti di aplikasi dan tidak diterjemahkan. Langkah asersi diawali kata `Verifikasi`. Slug pada `id` dan nama folder spec ditulis dalam bahasa Indonesia, kebab-case tanpa aksen (contoh `TC-AUTH-ACT-E2E-004-checklist-kebijakan-password`); istilah teknis yang baku (OTP, reCAPTCHA, token, rate-limit) boleh tetap. Spec Auth > Account Activation sudah di-rename massal ke aturan ini (2026-10-08, nomor NNN tidak berubah); suite lain mengikuti saat disentuh berikutnya. Spec lama yang masih berbahasa Inggris diterjemahkan sekali jalan setelah skema spec final.
 
 **Suite bersarang `specs/<ModulBesar>/<SubModul>/` (mengikuti struktur yang sudah ada di repo). Linter menerimanya dan pesan linter sendiri menyebut suite disusun lewat "directory hierarchy". Belum diuji lewat `spectra run`:**
 
