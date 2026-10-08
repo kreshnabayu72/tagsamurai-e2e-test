@@ -28,8 +28,8 @@ coverage:
 1. Amati tampilan halaman Email Sent! dari atas ke bawah
 2. Verifikasi logo TAG Samurai tampil di bagian tengah atas
 3. Verifikasi title halaman adalah "Email Sent!"
-4. Verifikasi subtitle halaman berbunyi: "We've sent a link to budisantoso@qwertysystem.net to reset your password. Please check your inbox and follow the instructions."
-5. Verifikasi bagian Resend memuat teks pengantar "Didn't receive the email? "
+4. Verifikasi subtitle halaman berbunyi: "We've sent a password reset link to budisantoso@qwertysystem.net. Please check your inbox and follow the instructions."
+5. Verifikasi bagian Resend memuat teks pengantar "Didn't receive the email? Check your spam folder."
 6. Verifikasi tombol [Resend email] tampil dalam keadaan disabled dengan label teks countdown "Resend in 1:00"
 7. Verifikasi tombol [Back to Login] tampil dengan styling secondary / outline di bagian bawah
 

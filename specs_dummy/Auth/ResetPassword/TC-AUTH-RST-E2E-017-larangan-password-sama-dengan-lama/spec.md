@@ -25,11 +25,11 @@ coverage:
 
 1. Buka halaman Setup New Password untuk user Budi Santoso
 2. Masukkan password yang sedang aktif saat ini "QaReset!2026" pada field Password
-3. Verifikasi seluruh 5 butir checklist Password Policy tercentang hijau
+3. Verifikasi seluruh 6 butir checklist Password Policy tercentang (ikon centang hitam)
 4. Masukkan kembali "QaReset!2026" pada field Confirm Password
 5. Klik tombol [Reset Password]
 6. Verifikasi server menolak pembaruan password
-7. Verifikasi pesan penolakan "New password must be different from current password" tampil di layar
+7. Verifikasi pesan penolakan "Password must be different from your old password" tampil di layar
 8. Verifikasi password akun di database TIDAK berubah (tetap `QaReset!2026`)
 9. Verifikasi token reset di database TIDAK dikonsumsi (masih berstatus `active`)
 
@@ -46,5 +46,5 @@ coverage:
 
 ## Notes
 
-- Sesuai PRD §6 V-AUTHRST-08, §9.4.2 baris 27, dan keputusan NC-03, submit password yang sama dengan password lama ditolak server dengan pesan error spesifik dan dicatat pada audit log sebagai Failed dengan Note `"Password does not meet requirements"`.
+- Sesuai PRD §6 V-AUTHRST-08, §9.4.2 baris 29, dan keputusan NC-03, submit password yang sama dengan password lama ditolak server dengan pesan error spesifik dan dicatat pada audit log sebagai Failed dengan Note `"Password does not meet requirements"`.
 - Token reset tetap dapat digunakan kembali untuk memasukkan password baru yang berbeda (`TC-AUTH-RST-76`).

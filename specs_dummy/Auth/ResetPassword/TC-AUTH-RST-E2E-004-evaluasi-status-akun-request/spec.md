@@ -53,7 +53,7 @@ coverage:
 13. Buka halaman Reset Password sebagai guest
 14. Masukkan email "tonokurniawan@qwertysystem.net" pada field Email
 15. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
-16. Verifikasi Alert Danger tampil di atas tombol [Reset Password] dengan teks "Your account is inactive. Please contact your administrator."
+16. Verifikasi Alert Danger tampil di atas tombol [Reset Password] dengan teks "Your account is inactive"
 17. Verifikasi tombol [Reset Password] tetap enabled dan input email dipertahankan
 18. Buka Activity Log > Session dan User Log menggunakan sesi admin
 19. Verifikasi tercatat entri baru dengan Activity "Reset Password", Status "Failed", dan Note "Account is inactive"

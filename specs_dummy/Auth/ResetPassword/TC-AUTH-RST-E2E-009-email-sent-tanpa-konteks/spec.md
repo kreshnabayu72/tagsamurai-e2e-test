@@ -23,7 +23,7 @@ coverage:
 
 1. Buka tab browser baru lalu akses langsung URL `/email-sent` tanpa melalui alur submit form Request Reset
 2. Verifikasi halaman merender layout Email Sent!
-3. Verifikasi teks subtitle menggunakan fallback generik: "We've sent a link to your email to reset your password. Please check your inbox and follow the instructions." (kata "your email" menggantikan alamat email spesifik)
+3. Verifikasi teks subtitle menggunakan fallback generik: "We've sent a password reset link to your email. Please check your inbox and follow the instructions." (kata "your email" menggantikan alamat email spesifik)
 4. Verifikasi seluruh section Resend ("Didn't receive the email?" dan tombol [Resend email]) disembunyikan dari layar
 5. Verifikasi timer countdown tidak dipulihkan
 6. Verifikasi tampil link navigasi "Back to Reset Password" atau tombol kembali yang mengarahkan ke form Request

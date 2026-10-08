@@ -12,6 +12,7 @@ sourceTc:
   - TC-AUTH-RST-110
   - TC-AUTH-RST-116
   - TC-AUTH-RST-117
+  - TC-AUTH-RST-143
 coverage:
   web: automated
 ---
@@ -73,7 +74,16 @@ coverage:
 27. Lakukan satu kali salah password pada akun yang baru dipulihkan
 28. Verifikasi counter mulai menghitung kembali dari 1 (kesalahan pertama normal tanpa langsung terkunci)
 
+### Request reset langsung setelah Submit sukses diproses tanpa cooldown (RSTPWD-LOGIC-04i)
+
+29. Lakukan alur Reset Password penuh hingga sukses untuk `budisantoso@qwertysystem.net` (Request -> Setup New Password -> submit password baru -> Password Reset Successful)
+30. Dalam 60 detik setelah submit sukses, buka halaman Login lalu klik [Forgot password?], masukkan "budisantoso@qwertysystem.net", selesaikan reCAPTCHA, lalu klik [Reset Password]
+31. Verifikasi request langsung diproses (bukan no-op cooldown): browser menuju halaman Email Sent! tanpa toast dan email reset baru diterima di mail-catcher
+32. Buka tautan dari email baru tersebut
+33. Verifikasi tautan membuka Setup New Password, membuktikan token baru terbit (cooldown 60 detik dihapus dan counter per email dimulai dari 1 pada jendela baru)
+
 ## Notes
 
-- Sesuai PRD §9.2 F-AUTHRST-04, §9.7 baris 3, `RSTPWD-LOGIC-02a/b/c`, dan keputusan NC-16, submit reset password yang sukses membersihkan seluruh tingkatan lock progression akun (15m, 1h, requires-reset, permanen), counter kegagalan login, serta counter percobaan reset per email dalam satu transaksi atomik.
+- Sesuai PRD §9.2 F-AUTHRST-04, §9.7 baris 4, `RSTPWD-LOGIC-02a/b/c`, dan keputusan NC-16, submit reset password yang sukses membersihkan seluruh tingkatan lock progression akun (15m, 1h, requires-reset, permanen), counter kegagalan login, serta counter percobaan reset per email dalam satu transaksi atomik.
+- Sesuai `RSTPWD-LOGIC-04i` dan PRD §9.4.2 Request Reset D8 serta §9.7 baris 3, Submit New Password sukses juga menghapus cooldown 60 detik dan me-reset counter per email (jendela baru), sehingga Request berikutnya untuk email yang sama langsung diproses (TC-AUTH-RST-143).
 - Tautan [Reset password] pada alert status Requires Reset di Login mengarahkan langsung ke halaman Reset Password dengan prefilled email (`TC-AUTH-RST-116`).

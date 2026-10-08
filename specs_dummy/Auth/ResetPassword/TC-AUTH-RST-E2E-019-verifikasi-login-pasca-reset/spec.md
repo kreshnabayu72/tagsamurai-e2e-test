@@ -52,4 +52,4 @@ coverage:
 
 ## Notes
 
-- Sesuai PRD §9.2 F-AUTHRST-04 langkah 4, §9.7 baris 3, `AUTHSES-LOGIC-07`, dan keputusan NC-02, submit password baru yang sukses secara otomatis meng-invalidate seluruh sesi aktif user di semua perangkat demi mencegah penyalahgunaan akun yang telah diambil alih kembali oleh pemilik aslinya.
+- Sesuai PRD §9.2 F-AUTHRST-04 langkah 4, §9.7 baris 4, `AUTHSES-LOGIC-07`, dan keputusan NC-02, submit password baru yang sukses secara otomatis meng-invalidate seluruh sesi aktif user di semua perangkat demi mencegah penyalahgunaan akun yang telah diambil alih kembali oleh pemilik aslinya. Refresh token biometric (mobile) ikut di-revoke dalam langkah yang sama (§9.4.2 D13, `session-management.md` §3.14).

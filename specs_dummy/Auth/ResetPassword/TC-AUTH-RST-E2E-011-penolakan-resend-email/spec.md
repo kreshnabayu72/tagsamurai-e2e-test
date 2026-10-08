@@ -60,5 +60,5 @@ coverage:
 
 ## Notes
 
-- Sesuai keputusan NC-06 dan PRD §9.4.2 baris 15-18, sistem menjaga respons UI tetap seragam (toast sukses) pada skenario akun Inactive, Deleted, maupun limit per email untuk mencegah peretas mengetahui kondisi akun melalui tombol Resend.
+- Sesuai keputusan NC-06 dan PRD §9.4.2 baris 16-19, sistem menjaga respons UI tetap seragam (toast sukses) pada skenario akun Inactive, Deleted, maupun limit per email untuk mencegah peretas mengetahui kondisi akun melalui tombol Resend.
 - Event kegagalan internal dicatat secara presisi pada audit log (Failed / "Account is inactive" atau Failed / "Too many reset attempts").
