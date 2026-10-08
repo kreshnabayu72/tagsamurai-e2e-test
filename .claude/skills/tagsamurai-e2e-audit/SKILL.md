@@ -60,6 +60,13 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - Tidak ada `sleep` atau jeda tetap, komentar di kode, import manual, atau `describe`/`test`.
 - Struktur: suite di `specs/<ModulBesar>/<SubModul>/`, nama folder TC = id, penamaan entitas berprefix modul, tidak ada file di luar folder standar.
 
+**G. Sapuan pola (wajib sebelum laporan final)**
+- Setiap temuan yang bersumber dari satu TC atau satu spec dijadikan pola (frasa, struktur, atau jenis kesalahan), lalu dicari di seluruh `tc-[modul].md` dan seluruh spec suite dengan grep. Contoh: expected perilaku FE pada TC yang langkahnya request langsung ke server ditemukan di TC-132, maka cari juga di TC lain yang memakai frasa "langsung ke server" atau "fixture BE".
+- Tiap kemunculan pola dilaporkan sebagai baris temuan sendiri (atau digabung dalam satu baris dengan daftar lengkap ID-nya), bukan hanya instance yang pertama ketemu. Kolom `Bukti` memuat perintah grep dan jumlah kemunculannya.
+- Perbaikan yang diusulkan wajib mencakup semua kemunculan pola; temuan yang hanya menyebut satu instance padahal polanya muncul lebih dari satu dianggap belum selesai.
+- Putaran audit ulang (setelah perbaikan) mengulang sapuan ini untuk pola yang sudah ditemukan dan menjalankan lagi `scripts/check-suite.py`; audit tidak dinyatakan selesai sebelum kedua hal itu bersih atau dicatat sebagai keputusan.
+- Hasil sapuan yang tidak menemukan kemunculan lain ditulis eksplisit ("pola X: 1 kemunculan, sudah disapu") supaya jelas bahwa sapuan dilakukan.
+
 ## Format laporan
 
 1. Ringkasan: jumlah TC granular, jumlah spec, TC diotomasi / dilewati / belum tercakup, hasil lint dan type-check.
