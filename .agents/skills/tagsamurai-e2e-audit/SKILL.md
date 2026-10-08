@@ -62,7 +62,10 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 ## Format laporan
 
 1. Ringkasan: jumlah TC granular, jumlah spec, TC diotomasi / dilewati / belum tercakup, hasil lint dan type-check.
-2. Tabel temuan, diurutkan dari yang paling berat: `No` | `Kategori (A-F)` | `Spec/TC` | `Temuan` | `Bukti (file:baris)` | `Saran`.
-3. Bagian "Perlu keputusan" untuk hal yang tidak bisa disimpulkan dari file (contoh: TC sumber ambigu, atau selector belum ada di app).
+2. Tabel temuan, diurutkan dari yang paling berat: `No` | `Kategori (A-F)` | `Spec/TC` | `Temuan` | `Bukti (file:baris)` | `Penyebab (1/2)` | `Rekomendasi` | `Diubah di`.
+   - `Rekomendasi`: perubahan konkret yang menutup temuan (apa yang ditulis, dipindah, atau dihapus), bukan sekadar "perbaiki".
+   - `Diubah di`: file yang harus diedit, salah satu atau lebih dari `spec` (spec.md suite), `TC` (`tc-[modul].md`), `PRD` (PRD modul), `konvensi` (`docs/e2e-conventions.md`), `skill generator` (`tagsamurai-e2e-generate-spec`), `coverage` (`docs/coverage/<Suite>.md`). Temuan penyebab (2) tidak boleh hanya `spec`. Temuan penyebab (1) yang berulang di beberapa spec juga mencantumkan `skill generator` supaya tidak terulang.
+3. Bagian "Perlu keputusan" untuk hal yang tidak bisa disimpulkan dari file (contoh: TC sumber ambigu, atau selector belum ada di app). Tiap butir memuat opsi beserta rekomendasi pilihan dan alasannya.
+4. Bagian "Rekomendasi urutan perbaikan": kelompokkan temuan per file tujuan (`TC`/`PRD`/`konvensi` dulu karena sumber, lalu `skill generator`, lalu `spec`/`coverage`), dan sebut workflow yang dipakai (contoh `audit-testcase` untuk TC, `e2e-generate-spec` untuk spec).
 
 Bedakan dua jenis penyebab pada tiap temuan: (1) kesalahan hasil generate, atau (2) kekurangan di TC sumber atau konvensi. Untuk jenis (2) arahkan ke perbaikan sumber, jangan ke spec.

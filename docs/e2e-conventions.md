@@ -73,7 +73,7 @@ Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spe
 
 13. **Kelas harness yang berbeda dipisah, walau layar dan topiknya sama `[KEPUTUSAN 2026-10-08]`.** Asal: `gap-spec/gap-spec.md` (MFA, ActivityLog, Division, LoginPassword, Role, ResetPassword), pola yang sama berulang di 6 modul. Spec screening atau fungsional biasa tidak boleh memuat TC dari kelas berikut; tiap kelas jadi spec sendiri:
     - **a. Defense-in-depth:** injeksi SQL/XSS, direct API tampering atau 403, manipulasi token, bypass server-side (token dibuang dari payload).
-    - **b. Fault injection / resilience:** HTTP 5xx, timeout, outage penyedia (reCAPTCHA, IdP), rollback DB. `Mode: mock`.
+    - **b. Fault injection / resilience:** HTTP 5xx, timeout, outage penyedia (reCAPTCHA, IdP), rollback DB. `Mode: mock` bila seluruh API di-mock; intercept parsial di atas backend nyata atau asersi state backend → `FE+BE` dengan intercept (bagian 6); kegagalan sisi server atau penyedia yang tidak bisa di-intercept tetap `FE+BE`.
     - **c. Multi-konteks:** multi-tab atau device, race antar-sesi, dua tenant, dua admin, flood rate-limit (429).
     - **d. Harness eksternal:** polling mail-catcher, decode QR, hardware biometrik, SSO IdP, time-travel atau TTL, background job.
     - **e. Volume data khusus:** kuota Selection Limit, data ≥ N record, retensi lintas tahun (perluasan prinsip 12).
@@ -134,7 +134,8 @@ TC granular punya dua tabel data: **Pre-setup** (data tetap di environment, misa
 
 - **Data Pre-setup** dirujuk lewat fixture `fixtures/<modul>.json`. Isinya identitas data, bukan rahasia.
 - **Password dan token tidak boleh masuk fixture atau spec** (semua file di git). Simpan di environment variable lewat `executionConfig.environmentVariables` dan akses lewat `Spectra.env.NAMA`. `[REKOMENDASI]`, perlu keputusan tim tentang cara distribusinya.
-- **Data Dinamis harus unik per run.** Nilai yang harus unik (email, employee ID) dibuat dengan suffix acak atau timestamp. Kalau tidak, run kedua gagal karena data sudah ada.
+- **Penamaan env var `[KEPUTUSAN 2026-10-08]`:** password akun aktor dipakai lintas suite dan tidak berprefix modul: `<APP>_<ROLE>_PASSWORD` (contoh `GS_TC_PASSWORD` untuk Total Control Global Settings, `AC_TC_PASSWORD` untuk Total Control Admin Console). Password uji yang dipasang ke user dinamis berprefix kode modul: `<MODUL>_PASSWORD`, varian nilai lain diberi akhiran (`_ALT`, `_72`, `_SPECIAL`), contoh `ACT_PASSWORD_72`. Input uji kebijakan yang submit-nya diblokir boleh literal. Setiap nama baru didaftarkan di `executionConfig.environmentVariables` (`spectra.config.ts`, nilai dari `process.env`) dan di `.env.example`. Nilai diisi di `.env` lokal (di-ignore git) atau secret CI, lalu di-export sebelum run (contoh `set -a; . ./.env; set +a`); runner tidak terbukti membaca `.env` sendiri.
+- **Data Dinamis harus unik per run.** Nilai yang harus unik (email, employee ID) dibuat dengan suffix acak atau timestamp. Kalau tidak, run kedua gagal karena data sudah ada. Suffix memuat nomor spec juga, `+{runId}-<NNN>` (contoh `budiaditya+{runId}-009@qwertysystem.net`) `[KEPUTUSAN 2026-10-08]`, supaya dua spec yang men-seed nama yang sama dari TC sumber tidak bentrok dalam satu run.
 - **Lifecycle lintas TC dipecah.** Di TC granular ada data yang "dibuat di TC-A, diedit di TC-B, dihapus di TC-C". Di e2e setiap spec membuat datanya sendiri (lewat API di `before` atau `beforeEach`) dan tidak menumpang hasil spec lain.
 - Data prasyarat sebisa mungkin dibuat lewat API, bukan lewat UI, supaya cepat dan tidak ikut gagal saat UI yang bukan fokus berubah.
 - Data yang dibuat spec dibersihkan di `afterEach` atau `after`, dan tulis pembersihan sehingga tidak berasumsi setup berhasil penuh (aturan cascade hook).
@@ -143,6 +144,7 @@ TC granular punya dua tabel data: **Pre-setup** (data tetap di environment, misa
 
 - Alur normal (happy path, validasi, permission) memakai backend asli `[REKOMENDASI]`.
 - `Spectra.intercept()` untuk kondisi yang tidak bisa dipicu dengan aman di backend nyata: error 500, timeout, dan response lambat. Kasus seperti ini tetap ditulis sebagai spec, dengan `Mode: mock` dan kebutuhan mock-nya di Prerequisites.
+- `Mode: mock` hanya untuk spec yang seluruh API-nya di-mock (dijalankan tim FE sebagai integration test, tanpa backend nyata) `[KEPUTUSAN 2026-10-08]`. Spec yang memaksa sebagian respons lewat `Spectra.intercept()` di atas backend nyata, atau yang mengasersi state backend (status token, status user, data di layar lain), ditandai `FE+BE` dengan kebutuhan intercept tetap ditulis di Prerequisites. Intercept hanya untuk respons HTTP yang bisa di-intercept di browser. Kegagalan di sisi server atau penyedia eksternal (flood rate-limit 429, email provider mati atau bounce, jam server digeser) tetap `FE+BE`. Pemicunya ditulis sebagai langkah eksplisit, kemampuan teknisnya tercantum di Prerequisites, dan pemulihan state (provider, jam, counter rate-limit) dilakukan di hook `after` yang tetap jalan walau spec gagal di tengah.
 - Target environment untuk e2e (staging, lokal, atau lainnya) belum ditentukan. Sementara `spectra.config.ts` masih menunjuk ke demo app bawaan.
 
 ## 7. Penamaan dan Struktur
