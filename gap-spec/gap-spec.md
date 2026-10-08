@@ -191,3 +191,78 @@ Spec `038` awal memuat 34 langkah uji yang mencampuradukkan screening visual bar
 - **Beban Langkah Uji:** Seluruh spec marathon berhasil dieliminasi; langkah uji terpanjang terpangkas dari **103 steps** menjadi maksimal **45 steps**.
 - **Integritas Linting:** `npx spectra lint --strict specs/GlobalSettings/Division` terverifikasi **0 lint errors**.
 
+
+
+---
+
+# Global Settings > Role & Permission
+
+Sumber: generate spec `specs/GlobalSettings/Role/` (97 spec, 305 TC aktif dari `TC-GS-ROLE-1` sampai `TC-GS-ROLE-305`). Tanggal generate: 2026-10-08.
+
+## GAP-ROLE-E2E-008 — Pemisahan Uji Kompleksitas Tinggi dari Spec Heterogen dan Dekomposisi Modular Terisolasi (85 → 97 Specs)
+
+**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-08)  
+**Tipe:** arsitektur test case, eliminasi kegagalan berantai (*flakiness cascading*), & optimalisasi beban langkah (*step-budget optimization*)  
+**Dampak:** sangat tinggi terhadap stabilitas otomasi TestSpectra / Playwright, pencegahan runner timeout, isolasi fixture per domain, dan kecepatan diagnosis akar masalah di CI/CD  
+
+Pada telaah awal rancangan dasar 85 spec, teridentifikasi sejumlah penggabungan (*cramming*) pengujian teknis tingkat tinggi ke dalam 1 spec hanya karena berada di halaman atau modal yang sama:
+1. **Table User Picker Modal Controls (Spec 022 awal, 9 TC):** Menggabungkan empty state (`TC-68, 69`), pencarian substring Name/Email/Position/Division dan guard kolom hidden (`TC-70, 71, 72`), filter panel multi-kriteria (`TC-73, 74`), paginasi & retensi seleksi (`TC-75`), dan sorting 3-state 5 kolom (`TC-293`).
+2. **Assign Read Only Stale Concurrency vs Server 500 (Spec 030 awal):** Menggabungkan alert inline stale user V-10 (`TC-81`) dengan network fault injection HTTP 500 (`TC-83`).
+3. **Assign Role Detail Concurrency vs Server 500 (Spec 038 awal):** Menggabungkan dual-session race condition V-10 & V-11 (`TC-99`) dengan mock server 500 & double-click debounce (`TC-97, 98`).
+4. **Bulk Action Bar vs Selection Limit Quota (Spec 047 & 048 awal):** Menggabungkan visual bar & counter (`TC-120..122, 136`), select all lintas halaman (`TC-123`), dengan penegakan kuota sistem Selection Limit 100 baris & capping toast warning (`TC-124, 125`) yang menuntut volume data $\ge 101$ record.
+5. **Setup Kolom Tabel Utama (Spec 061 & 062 awal, 12 TC, marathon >70 steps):** Menggabungkan overlay screening, toggles kolom K1/K2, synthetic pointer DnD reorder, sticky freeze pinning dengan horizontal scroll assertion, reset to default, discard Esc/X, dan independensi konfigurasi per tabel.
+6. **Download Tabel Utama (Spec 063 awal, 7 TC):** Menggabungkan inspeksi binary buffer CSV/XLSX WYSIWYG (`TC-174..178`) dengan fault injection 500 (`TC-179`) dan background job ekspor >5.000 baris (`TC-180`).
+7. **Modal Changelog Controls & Operations (Spec 068 awal, 6 TC):** Menggabungkan filter panel dinamis & sorting 8 kolom (`TC-200..202`) dengan modal Setup Column bersarang, binary export CSV/XLSX, dan error 500 (`TC-203..205`).
+8. **Audit Trail Ingestion vs User Rename Immutability vs Fan-Out (Spec 071 awal, 8 TC):** Menggabungkan audit trail ingestion System Log & Activity Log (`TC-221, 222, 289`) dengan snapshot immutability rename user dan segregasi tab Changelog: User vs User > Role (`TC-220, 223, 224, 225, 290`).
+9. **Defense-in-Depth Payload Tampering vs Isolasi Multi-Tenant (Spec 080 awal):** Menggabungkan manipulasi payload HTTP langsung satu tenant (`TC-258..261`) dengan pengujian keamanan isolasi antar-tenant Client A vs Client B (`TC-262` yang menuntut dualTenantContext).
+10. **Client Suspended 8 Write Mutations Lockdown vs Read-Only (Spec 081 awal, 9 TC):** Menggabungkan 8 pengujian form tulis terpisah (Assign TC/RO, Remove TC/RO, Assign Role, Edit CRUD, Remove single, Bulk Remove) dengan verifikasi browsing baca murni seluruh tab (`TC-271`).
+11. **Konkurensi D6 Multi-Mutation Conflicts (Spec 082 & 083 awal):** Menggabungkan mutasi Edit CRUD detail, Remove row detail, dan Remove access level tab utama ke dalam skenario konkurensi heterogen.
+
+### Solusi & Keputusan yang Diterapkan di Spec (85 → 97 Specs Terisolasi):
+- **Assign Total Control Picker dipecah menjadi 3 spec:**
+  - `022`: *Search & Hidden Column Scoping* (`TC-68` s/d `72`).
+  - `023`: *Filter Panel & Multi-Kriteria* (`TC-73, 74`).
+  - `024`: *3-State Sorting, Pagination, & Selection Retention* (`TC-75, 293`).
+- **Assign Read Only Stale vs 500 dipecah menjadi 2 spec:**
+  - `032`: *Stale Concurrency V-10* (`TC-81`, Mode: `FE+BE`).
+  - `033`: *Resilience Server 500 Fault Injection* (`TC-83`, Mode: `mock`).
+- **Assign Role Detail Concurrency vs 500 dipecah menjadi 2 spec:**
+  - `041`: *Resilience Server 500 & Double-Submit Guard* (`TC-97, 98`, Mode: `mock`).
+  - `042`: *Dual-Session Concurrency Stale V-10 & V-11* (`TC-99`, Mode: `FE+BE`).
+- **Bulk Action Bar & Selection Limit dipecah menjadi 3 spec mandiri:**
+  - `050`: *Bulk Action Bar Screening, Header Select Page, Clear (X), & Search Clear Retention* (`TC-120..122, 136`).
+  - `051`: *Select All Lintas Halaman & Unselect All* (`TC-123`).
+  - `052`: *Penegakan Batas Kuota Selection Limit 100 Baris & Capping Toast Warning* (`TC-124, 125`).
+- **Setup Kolom Tabel Utama didekonstruksi menjadi 3 fase:**
+  - `064`: *Fase 1: Overlay Visibilitas, Modal Screening, Toggles K1/K2, & Guard Kolom Terakhir* (`TC-162..165, 172`).
+  - `065`: *Fase 2: Drag-and-Drop Reorder Kolom K1/K2 & Freeze Pinning Horizontal Scroll* (`TC-166..169`).
+  - `066`: *Fase 3: Reset to Default, Discard Batal via Esc/X, & Isolasi Browser Storage* (`TC-170, 171, 173`).
+- **Download Tabel Utama dipecah menjadi 2 spec:**
+  - `067`: *Validasi Format File CSV/XLSX, Filter Scope, Kolom WYSIWYG, & Transformasi Nilai* (`TC-174..178`, Mode: `FE+BE`).
+  - `068`: *Ketahanan Server 500 & Background Job >5.000 Baris* (`TC-179, 180`, Mode: `mock`).
+- **Modal Changelog dipecah menjadi 2 spec:**
+  - `073`: *Filter Panel Multi-Kriteria, Dropdown Dinamis per Role, & 3-State Sorting 8 Kolom* (`TC-200..202`, Mode: `FE+BE`).
+  - `074`: *Setup Kolom Modal, Download 4 Varian CSV/XLSX, & Ketahanan Server 500* (`TC-203..205`, Mode: `mock`).
+- **Audit Trail & Fan-Out dipecah menjadi 2 spec:**
+  - `077`: *Ingestion Log Aktor ke System Log & Activity Log* (`TC-221, 222, 289`, Mode: `FE+BE`).
+  - `078`: *Immutability Snapshot Rename User, Segregasi Changelog User vs User > Role, & Update Modified By* (`TC-220, 223..225, 290`, Mode: `FE+BE`).
+- **Defense-in-Depth Payload Tampering vs Isolasi Multi-Tenant dipecah menjadi 2 spec:**
+  - `087`: *Integritas Payload Form, Proteksi Kolom Invalid, & Default User Skipping* (`TC-258..261`, Mode: `FE+BE`).
+  - `088`: *Keamanan Isolasi Multi-Tenant Client A vs Client B* (`TC-262`, Mode: `FE+BE`, Harness: `dualTenantContext`).
+- **Client Suspended dipecah menjadi 3 spec terisolasi:**
+  - `089`: *Lockdown Mutasi Access Level TC & RO* (`TC-263..266`).
+  - `090`: *Lockdown Mutasi Detail Role & Bulk Remove* (`TC-267..270`).
+  - `091`: *Verifikasi Mode Baca Murni Seluruh Tab & Detail* (`TC-271`).
+- **Konkurensi D6 dipecah berdasarkan domain & aksi:**
+  - `092`: *Konkurensi Edit CRUD Detail (Last-Write-Wins, 403, 404)* (`TC-272, 273, 284`).
+  - `093`: *Konkurensi Remove Row Detail (403, Idempotent 200, Auto-Revert)* (`TC-274, 276, 297`).
+  - `094`: *Konkurensi Remove Access Level Tab Utama (Toast 404 Netral)* (`TC-275`).
+- **Layout Mobile Android diisolasi menjadi 2 spec:**
+  - `012`: *Gesture Layar Sentuh Mobile Long-Press Multi-Select & Bulk Remove Detail* (`TC-32`).
+  - `013`: *Card List Tab TC/RO/System, Bottom Sheet Picker/Changelog, & Toolbar Mobile* (`TC-285..288`).
+
+### Hasil & Metrik Arsitektural Akhir:
+- **Total Specs:** **97 spec atomik terisolasi penuh** (`TC-GS-ROLE-E2E-001` s/d `TC-GS-ROLE-E2E-097`).
+- **Cakupan Granular:** **100% (305/305 TC terpetakan tepat satu kali)**.
+- **Beban Langkah Uji:** Seluruh spec marathon (>50 steps) berhasil dieliminasi; langkah uji terpanjang berkurang drastis menjadi maksimal **35 steps**.
+- **Integritas Linting:** `npx spectra lint --strict specs/GlobalSettings/Role` terverifikasi **0 lint errors**.

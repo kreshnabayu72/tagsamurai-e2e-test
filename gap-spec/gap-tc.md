@@ -749,3 +749,105 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 - **Verifikasi Lint:** `npx spectra lint --strict specs/GlobalSettings/Division` → target 0 lint errors.
 - **Karakter Non-Kanonikal:** 0 karakter CJK atau simbol non-standar.
 - **Status Spec:** Seluruh 76 spec berstatus `draft` dengan deskripsi langkah bahasa Indonesia yang presisi, bebas dari flakiness cascading, siap untuk tahap penyusunan skrip otomasi (`tagsamurai-e2e-generate-script`).
+
+
+---
+
+# Gap & Temuan — Global Settings > Role & Permission
+
+Sumber: generate spec `specs/GlobalSettings/Role/` (85 spec, 305 TC aktif dari `TC-GS-ROLE-1` sampai `TC-GS-ROLE-305`). Tanggal generate: 2026-10-08.
+
+Dokumen ini mencatat seluruh temuan gap, perbedaan langkah/prekondisi yang belum tercakup di TC asli, divergensi antara PRD (`global-settings/role/PRD/role.md`) dan Test Case (`global-settings/role/TestCases/tc-role.md`), serta kebutuhan test harness khusus yang teridentifikasi selama proses dekomposisi dan pembuatan E2E spec.
+
+---
+
+## GAP-ROLE-E2E-001 — Ketiadaan Skenario Validasi Stale Concurrency pada Konfirmasi Auto-Revert Dialog 2 (PRD §9.4.2 D6 vs TC Section 3e)
+
+**Status:** terbuka di TC, dicakup via evaluasi resilience di spec  
+**Tipe:** cakupan konkurensi antar-admin  
+**Dampak:** sedang terhadap ketahanan alur konfirmasi auto-revert  
+
+PRD `role.md` §9.4.2 baris Edit D6 dan §4.4 Dialog D-02 menetapkan bahwa jika seorang admin membuka Dialog D-02 konfirmasi auto-revert (karena uncheck sel CRUD pada user berstatus Total Control/Read Only), namun sebelum tombol `[Continue]` diklik, admin lain telah mencabut access level target tersebut di Tab Total Control/Read Only, mutasi server mengembalikan respons error/netral HTTP 403 atau 404 (status TC/RO target berubah sejak render).
+
+Di `tc-role.md`, skenario bentrok D6 hanya diuji pada klik Edit CRUD langsung tanpa dialog (`TC-GS-ROLE-273`), belum ada pengujian konkurensi di tengah terbukanya Dialog D-02 Auto-Revert.
+
+**Yang diterapkan di spec:**  
+Pada spec `TC-GS-ROLE-E2E-040` (*Edit CRUD Detail Auto-Revert User Total Control*), ditambahkan evaluasi ketahanan saat status target bermutasi sebelum `[Continue]` ditekan.
+
+---
+
+## GAP-ROLE-E2E-002 — Retensi Seleksi Multi-Select pada Table User Picker Saat Pergantian Search dan Filter (PRD §4.1.5 vs `prd-conventions.md` §8)
+
+**Status:** terbuka di TC, ditegaskan di spec  
+**Tipe:** spesifikasi perilaku state antarmuka modal picker  
+**Dampak:** rendah hingga sedang terhadap pengalaman pengguna memilih multi-user  
+
+`prd-conventions.md` §8 dan §37.2 menetapkan bahwa seleksi centang pada modal picker berbasis tabel harus dipertahankan (*selection persistence*) saat pengguna mengubah kata kunci pencarian atau mengubah filter sebelum tombol aksi submit `[Assign]` diklik.
+
+Pada `tc-role.md`, pengujian seleksi picker (`TC-GS-ROLE-55`, `56`, `57`, `75`) hanya menguji seleksi aktif per halaman dan lintas halaman via pagination, tanpa pengujian eksplisit retensi ID terpilih saat query pencarian di-clear atau diubah.
+
+**Yang diterapkan di spec:**  
+Pada spec `TC-GS-ROLE-E2E-021` (*Assign Total Control: Interaksi Modal Picker, Seleksi Multi-User, dan Aksesibilitas*), ditegaskan bahwa centangan user tetap terpilih dan diakumulasikan ke payload submit saat input pencarian diubah.
+
+---
+
+## GAP-ROLE-E2E-003 — Kebutuhan Mocking / Instrumentasi Khusus Pengujian Unduh Skala Besar >5.000 Baris (PRD §5 / NC-03 vs Live Environment)
+
+**Status:** terselesaikan via `Mode: mock` di spec  
+**Tipe:** batasan teknis lingkungan automation  
+**Dampak:** tinggi terhadap determinisme pengujian ekspor data  
+
+PRD `role.md` §5 dan NC-03 menetapkan batas threshold ekspor: jika jumlah record > 5.000 baris, sistem menampilkan modal loading screen bertuliskan `"Generating export file, please wait..."` dengan progress bar sinkron, sementara di bawah 5.000 baris file langsung terunduh seketika.
+
+Pada lingkungan live automation, data seed katalog user tenant uji coba biasanya tidak mencapai 5.001 baris, sehingga pengujian ambang batas ini tidak dapat dipicu secara alami tanpa manipulasi data masif.
+
+**Yang diterapkan di spec:**  
+Spec `TC-GS-ROLE-E2E-063` (*Download Tab Utama: Format CSV/XLSX, Cakupan Baris dan Kolom WYSIWYG, Serta Ketahanan Server 500*) menggunakan `Mode: mock` untuk mengintercept respons total baris dan mensimulasikan modal progress bar sinkron >5.000 baris secara deterministik.
+
+---
+
+## GAP-ROLE-E2E-004 — Ketiadaan Skenario Auto-Revert Multi-Admin Realtime pada Tab Read Only via Server-Sent Events (PRD §9.2 [F-ROLE-06] & §9.7)
+
+**Status:** terbuka di TC  
+**Tipe:** kelengkapan sinkronisasi real-time antar-sesi  
+**Dampak:** sedang terhadap assertion multi-tab  
+
+PRD `role.md` §9.2 [F-ROLE-06] dan §9.7 menetapkan bahwa saat auto-revert terjadi di halaman Detail, user tersebut seketika hilang dari Tab Total Control maupun Tab Read Only tanpa refresh manual di sesi admin lain.
+
+Di `tc-role.md`, pengujian realtime SSE multi-admin (`TC-GS-ROLE-277`) hanya memvalidasi penghilangan user dari Tab Total Control. Belum ada baris TC terpisah yang memvalidasi efek SSE instan penghilangan user dari Tab Read Only saat uncheck Read di Detail memicu auto-revert RO.
+
+**Yang diterapkan di spec:**  
+Spec `TC-GS-ROLE-E2E-084` (*Konkurensi Antar-Admin: Sinkronisasi SSE Realtime Auto-Revert Lintas Tab dan Batas Proteksi Default User*) dirancang untuk memverifikasi refleksi instan ini pada kedua tab (Total Control dan Read Only).
+
+---
+
+## GAP-ROLE-E2E-005 — Kebutuhan Test Harness Khusus Otomasi E2E Global Settings Role & Permission
+
+**Status:** terbuka, dicatat di Prerequisites tiap spec  
+**Tipe:** kesiapan environment uji otomasi  
+**Dampak:** memblokir eksekusi test runner jika harness belum tersedia  
+
+Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masing-masing spec untuk panduan implementasi tim pengembang otomasi:
+
+| Kebutuhan Harness | Deskripsi & Kegunaan | Spec yang Membutuhkan |
+|---|---|---|
+| **Multi-Tenant Data Seeding** | Database seed terpisah untuk Client A dan Client B guna memvalidasi isolasi total peran dan pengguna antar-organisasi | 080 |
+| **Workspace Status Mutator** | Pengkondisian entitas berstatus Suspended dan Expired untuk memvalidasi penolakan aksi tulis (Assign, Edit, Remove) dengan status HTTP 403 | 081 |
+| **Multi-Session / Multi-Actor Context** | Pengujian dengan berbagai persona login: Total Control, Read Only, Manage user and role (Read, C/R/D tanpa U, Update), dan peran lain | 013, 014, 015, 016, 019, 037, 039, 044, 049, 078, 079, 082, 083, 084, 085 |
+| **Dual Browser Context / Concurrency** | Dua sesi browser simultan untuk menguji race condition (last-write-wins, bentrok assign concurrent, 404 neutral remove stale) | 082, 083, 084, 085 |
+| **Real-Time SSE Server Stream Bridge** | Simulasi aliran event SSE untuk memverifikasi penghilangan instan baris user auto-revert di tab admin lain tanpa refresh | 084 |
+| **In-App Notification Inbox API** | Pemeriksaan kotak masuk notifikasi in-app penerima mutasi hak akses (Remove TC, Remove RO, Auto-Revert) | 076 |
+| **Network Mock Interceptor** | Intercept respons API untuk simulasi error HTTP 500, penundaan respons (skeleton loader), response empty state, dan ekspor besar >5.000 baris | 006, 009, 010, 011, 012, 027, 030, 034, 038, 042, 046, 053, 061, 062, 063, 066, 068 |
+| **Touch Gesture Emulator** | Emulasi resolusi mobile Android (<768px) dan gesture long-press untuk memicu multi-select mode dan bulk remove bar | 012 |
+
+---
+
+## Kepatuhan Suite Role & Permission
+
+- **Cakupan TC:** 100% (305 dari 305 TC granular aktif dari `TC-GS-ROLE-1` sampai `TC-GS-ROLE-305` terpetakan secara lengkap tanpa satu pun yang tertinggal).
+- **Duplikasi TC:** 0 (setiap `TC-GS-ROLE-NN` hanya muncul tepat di satu spec).
+- **Total Spec E2E:** 85 spec atomik terisolasi tinggi (`TC-GS-ROLE-E2E-001` s/d `085`).
+- **Pembagian Mode:** 66 spec `FE+BE` (live backend), 19 spec `Mode: mock` (loading skeleton, hover tooltip, guided walkthrough, fault injection 500 & timeout, export >5.000 baris, setup column drag/pin, mobile Android layout & long-press).
+- **Verifikasi Lint:** `npx spectra lint --strict specs/GlobalSettings/Role` → target 0 lint errors.
+- **Karakter Non-Kanonikal:** 0 karakter CJK atau simbol non-standar.
+- **Status Spec:** Seluruh 85 spec berstatus `draft` dengan deskripsi langkah bahasa Indonesia yang presisi, bebas dari flakiness cascading, siap untuk tahap penyusunan skrip otomasi (`tagsamurai-e2e-generate-script`).
