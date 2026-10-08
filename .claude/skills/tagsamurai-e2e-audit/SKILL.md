@@ -7,7 +7,7 @@ description: Audit hasil generate e2e TAG Samurai untuk satu suite: traceability
 
 Skill ini hanya **melaporkan**. Jangan mengubah file apa pun, termasuk spec, script, dan TC granular. Tampilkan temuan ke user dan tunggu instruksi. Jangan langsung memperbaiki walau temuannya jelas.
 
-Rujukan aturan: `docs/e2e-conventions.md`. Skill ini melengkapi `spectra lint`, yang hanya memeriksa format. Jalankan `spectra lint --strict specs/<Suite>` dan `pnpm type-check` dulu, lalu periksa hal-hal yang tidak dicakup linter.
+Rujukan aturan: `docs/e2e-conventions.md`. Skill ini melengkapi `spectra lint`, yang hanya memeriksa format. Jalankan `python scripts/check-suite.py specs/<Suite> <path tc-[modul].md> docs/coverage/<Suite>.md` lebih dulu (cakupan, duplikat sourceTc, id folder, Mode, spec di atas 35 langkah tanpa alasan, jumlah TC di coverage, asersi absence tanpa anchor) dan jalankan `python scripts/sync-skills.py --check`; lalu Jalankan `spectra lint --strict specs/<Suite>` dan `pnpm type-check` dulu, lalu periksa hal-hal yang tidak dicakup linter.
 
 ## Input
 
@@ -29,6 +29,7 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - Label tombol dan cara menutup form sesuai bagian 9 konvensi (Create `[Submit]`, Edit `[Save]`, `[Clear Field]`, `✕`/`Esc`, tanpa `[Cancel]` pada modal). Cocokkan ke `prd-conventions.md` §24.1, bukan hanya ke TC.
 - `coverage.web` tidak dinilai terhadap `status`. Kolom itu hanya jenis pengujian, progres dibaca dari `status`.
 - Bahasa spec Indonesia (bagian 7 konvensi): narasi Indonesia, teks UI persis seperti di aplikasi, langkah asersi diawali `Verifikasi`. Spec berbahasa Inggris adalah temuan.
+- Aturan asersi bagian 8b konvensi: request langsung ke server tidak mengasersi perilaku FE; asersi absence punya anchor positif yang terhubung ke pemicu; batas waktu dihitung dari waktu terbit artefak; rate limit menyebut endpoint dan payload flood; state sementara diasersi sebelum langkah yang mengubahnya. Pelanggaran yang bersumber dari expected TC dilaporkan sebagai jenis (2), diarahkan ke perbaikan TC.
 - Spec Role Matrix (bagian 3a): dipisah positif dan negatif, ada tabel "Role yang diuji", dan tiap kombinasi role × aksi punya TC granular sumber. Kombinasi tanpa TC sumber adalah temuan.
 
 **C. Spec → script**
@@ -62,7 +63,10 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 ## Format laporan
 
 1. Ringkasan: jumlah TC granular, jumlah spec, TC diotomasi / dilewati / belum tercakup, hasil lint dan type-check.
-2. Tabel temuan, diurutkan dari yang paling berat: `No` | `Kategori (A-F)` | `Spec/TC` | `Temuan` | `Bukti (file:baris)` | `Saran`.
-3. Bagian "Perlu keputusan" untuk hal yang tidak bisa disimpulkan dari file (contoh: TC sumber ambigu, atau selector belum ada di app).
+2. Tabel temuan, diurutkan dari yang paling berat: `No` | `Kategori (A-F)` | `Spec/TC` | `Temuan` | `Bukti (file:baris)` | `Penyebab (1/2)` | `Rekomendasi` | `Diubah di`.
+   - `Rekomendasi`: perubahan konkret yang menutup temuan (apa yang ditulis, dipindah, atau dihapus), bukan sekadar "perbaiki".
+   - `Diubah di`: file yang harus diedit, salah satu atau lebih dari `spec` (spec.md suite), `TC` (`tc-[modul].md`), `PRD` (PRD modul), `konvensi` (`docs/e2e-conventions.md`), `skill generator` (`tagsamurai-e2e-generate-spec`), `coverage` (`docs/coverage/<Suite>.md`). Temuan penyebab (2) tidak boleh hanya `spec`. Temuan penyebab (1) yang berulang di beberapa spec juga mencantumkan `skill generator` supaya tidak terulang.
+3. Bagian "Perlu keputusan" untuk hal yang tidak bisa disimpulkan dari file (contoh: TC sumber ambigu, atau selector belum ada di app). Tiap butir memuat opsi beserta rekomendasi pilihan dan alasannya.
+4. Bagian "Rekomendasi urutan perbaikan": kelompokkan temuan per file tujuan (`TC`/`PRD`/`konvensi` dulu karena sumber, lalu `skill generator`, lalu `spec`/`coverage`), dan sebut workflow yang dipakai (contoh `audit-testcase` untuk TC, `e2e-generate-spec` untuk spec).
 
 Bedakan dua jenis penyebab pada tiap temuan: (1) kesalahan hasil generate, atau (2) kekurangan di TC sumber atau konvensi. Untuk jenis (2) arahkan ke perbaikan sumber, jangan ke spec.

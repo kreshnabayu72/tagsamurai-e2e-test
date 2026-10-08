@@ -41,9 +41,10 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
    - Asersi "tidak ada pencatatan/log" (kelas g) hanya ditulis di spec absence. Bila TC fungsional sumber memuatnya, pindahkan ke spec absence dan catat pembagian TC di `## Notes` kedua spec (prinsip 10).
    - Spec yang mengubah state global (jam server, konfigurasi provider, counter rate-limit) atau membuat entitas wajib menulis pemulihan atau cleanup-nya di `## Prerequisites` (hook `after`).
    - Expected result ditulis sebagai langkah `Verifikasi ...` yang bisa langsung menjadi assertion.
+   - Aturan asersi bagian 8b konvensi: request langsung ke server hanya diasersi respons server dan state data (jangan salin expected perilaku FE dari TC; catat sebagai temuan TC); asersi absence didahului anchor positif yang terhubung ke pemicu; batas waktu dihitung dari waktu terbit artefak yang dibaca API seeding; rate limit menyebut endpoint dan payload flood yang tidak mengonsumsi state; state sementara (fokus, tooltip, Loading) diasersi sebelum langkah yang mengubahnya; login akun aktor utama di hook `before`.
    - Tiap langkah `Verifikasi` ditaruh langsung setelah aksi yang dicek (petakan lewat awalan "Langkah N:" di expected TC), bukan dikumpulkan di akhir TC, supaya state perantara terasersi tepat waktu. Rujukan "Langkah N" di spec memakai nomor langkah spec yang kontinu, bukan nomor lokal TC sumber.
    - TC yang precondition-nya "Tanpa login" dan muncul setelah langkah yang login dimulai dengan langkah eksplisit membuka konteks bersih (jendela privat baru atau logout). Jangan memakai ulang jendela atau sesi TC sebelumnya.
-8. Jalankan `spectra lint --strict specs/<Suite>` dan perbaiki sampai bersih.
+8. Jalankan `spectra lint --strict specs/<Suite>` dan `python scripts/check-suite.py specs/<Suite> <path tc-[modul].md> docs/coverage/<Suite>.md`; perbaiki semua [FINDING] sampai bersih dan baca tiap [REVIEW].
 9. Update `docs/coverage/<Suite>.md`: pemetaan TC granular ke spec, alasan TC hanya-BE, dan tabel "Lapisan per TC" (Spec, Mode).
 10. Laporkan ke user: daftar spec, TC yang dilewati, dan hal yang butuh keputusan. Jangan lanjut membuat `web.test.ts`, itu skill `tagsamurai-e2e-generate-script`.
 

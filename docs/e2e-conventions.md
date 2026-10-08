@@ -218,6 +218,20 @@ Catatan cakupan per suite di `docs/coverage/<Suite>.md`: tabel TC granular ke sp
 
 `spectra lint` menganggap `@step:<nama>` di spec.md tanpa `Step.<nama>()` di script sebagai error (`missing-step-call`), termasuk saat script belum ada. Karena itu spec berstatus `draft` ditulis tanpa `@step`, dan `@step` baru ditambahkan bersamaan dengan pembuatan Step dan script.
 
+## 8b. Aturan Penulisan Langkah dan Asersi
+
+Berasal dari audit Account Activation (2026-10-08). Ditulis sebagai aturan supaya generate berikutnya tidak mengulang temuan yang sama.
+
+1. **Request langsung ke server `[KEPUTUSAN 2026-10-08]`.** Langkah yang mengirim request lewat klien HTTP atau fixture BE tidak melewati browser. Asersinya hanya respons server (status) dan state data (diperiksa lewat fixture BE). Pengalihan halaman, toast, atau tampilan tidak diasersi di spec itu; perilaku FE untuk respons yang sama diasersi di spec jalur form. Kalau TC sumber mengharapkan perilaku FE pada request langsung, jangan disalin: catat sebagai temuan TC untuk QA.
+2. **Asersi absence punya anchor positif `[KEPUTUSAN 2026-10-08]`.** Verifikasi "tidak ada entri/pencatatan/log" didahului langkah `Verifikasi` yang membuktikan sesuatu yang seharusnya ada di surface yang sama sudah tampil (entri milik modul lain, pesan penolakan, jumlah awal yang dicatat), dan surface-nya disebut satu per satu. Anchor harus terhubung ke pemicu; pemicu yang tidak menyentuh entitas anchor memakai surface agregat (jumlah total sebelum dan sesudah).
+3. **Boundary waktu dan time-travel `[KEPUTUSAN 2026-10-08]`.** Acuan waktu (T0) dibaca dari waktu terbit artefak (token, entri) lewat API seeding, bukan diperkirakan dari waktu hook atau waktu nyata saat langkah dijalankan. Jam server diset absolut ke `T0 + durasi`. Margin terhadap batas kurang dari 5 menit ditulis di Prerequisites beserta caranya dihitung.
+4. **Rate limit `[KEPUTUSAN 2026-10-08]`.** Sebut endpoint yang dihitung, bahwa counter dipisah per endpoint bila begitu di sumber, dan payload flood yang tidak mengonsumsi state (misalnya body yang ditolak validasi) supaya verifikasi akhir tetap bermakna. Counter direset sebelum tiap blok.
+5. **Asersi state sementara tepat waktu `[KEPUTUSAN 2026-10-08]`.** Fokus, tooltip, hover, Loading, dan state serupa diasersi sebelum langkah berikutnya yang mengubah state itu. Urutan langkah spec mengikuti urutan state, bukan urutan penulisan expected di TC.
+6. **Login akun aktor `[USULAN 2026-10-08]`.** Login akun aktor utama dilakukan di hook `before`. Langkah login di dalam `it()` hanya untuk `Ganti akun` eksplisit saat spec memakai lebih dari satu akun atau konteks (bagian 3, Tidak boleh).
+7. **Alasan di atas sekitar 35 langkah** dan **halaman yang dipakai berulang**: lihat prinsip 13 bagian 3.
+
+Pemeriksaan mekanis butir di atas dan traceability dilakukan `python scripts/check-suite.py <suite> <tc.md> <coverage.md>` (C1-C9). Salinan skill `.claude/skills` dan `.agents/skills` dijaga sama dengan `python scripts/sync-skills.py --check`.
+
 ## 9. Aturan Kode
 
 - **Label tombol mengikuti `foundation/process/prd-process/prd-conventions.md` §24.1, bukan disalin dari TC.** Form Create: `[Submit]` dan `[Clear Field]`. Form Edit: `[Save]` dan `[Clear Field]`. Modal Create dan Edit tidak punya `[Cancel]`, dan ditutup lewat `✕` di header atau `Esc`. `[Cancel]` hanya ada di dialog konfirmasi (contoh: unsaved changes, Delete, Deactivate), inline Cancel pending email change, dan modal Setup Column.
