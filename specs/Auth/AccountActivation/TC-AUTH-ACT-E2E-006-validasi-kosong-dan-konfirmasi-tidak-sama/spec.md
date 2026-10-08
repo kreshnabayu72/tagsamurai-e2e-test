@@ -158,4 +158,5 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `auth/account-activation/TestCases/tc-account-activation.md`.
+- Spec ini 58 langkah, di atas smell sekitar 35 langkah (prinsip 13). Dipertahankan karena seluruh blok satu topik dan satu kelas (validasi field kosong dan Confirm Password di Set Password, tanpa harness lain), dan tiap blok membuka link user sendiri dengan data sendiri sehingga blok berikutnya tidak bergantung pada hasil blok sebelumnya. Memecah spec hanya menambah seeding, hook, dan cleanup tanpa menambah isolasi.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.

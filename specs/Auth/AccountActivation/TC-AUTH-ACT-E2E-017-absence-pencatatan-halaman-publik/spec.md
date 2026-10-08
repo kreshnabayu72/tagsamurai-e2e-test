@@ -109,6 +109,6 @@ coverage:
 
 - Mode: FE+BE. Sumber: `auth/account-activation/TestCases/tc-account-activation.md`.
 - Kelas harness g (asersi absence), pemicu dari halaman publik aktivasi. Absence untuk pemicu admin (pembuatan user, Resend, penolakan login) ada di E2E-029; dipisah supaya pemicu publik dan pemicu admin tidak bergantian dalam satu spec.
-- TC terbelah lintas spec (prinsip 10): asersi absence TC-AUTH-ACT-01 (Post Condition b) dan TC-AUTH-ACT-74 (Post Condition) diuji di spec ini; bagian fungsionalnya ada di E2E-001 (TC-01) dan E2E-009 (TC-74). `sourceTc` tidak mencantumkan keduanya supaya tiap TC tetap terpetakan ke satu spec utama di `docs/coverage`.
+- TC terbelah lintas spec (prinsip 10): asersi absence TC-AUTH-ACT-01 (Post Condition b) dan TC-AUTH-ACT-74 (Post Condition) diuji di spec ini; bagian fungsionalnya ada di E2E-001 (TC-01) dan E2E-032 (TC-74). `sourceTc` tidak mencantumkan keduanya supaya tiap TC tetap terpetakan ke satu spec utama di `docs/coverage`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec ini 46 langkah, di atas smell sekitar 35 langkah (prinsip 13). Dipertahankan karena tiap blok TC berdiri sendiri (soft assertion, user terpisah per blok), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan seluruh spec satu kelas harness (g).

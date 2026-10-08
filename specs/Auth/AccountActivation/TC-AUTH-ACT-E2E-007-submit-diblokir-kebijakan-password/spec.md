@@ -128,4 +128,5 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `auth/account-activation/TestCases/tc-account-activation.md`.
+- Spec ini 48 langkah, di atas smell sekitar 35 langkah (prinsip 13). Dipertahankan karena delapan blok adalah variasi satu aksi (klik Set Password dengan password yang melanggar satu aturan policy) di satu kelas, dan tiap blok membuka link user sendiri sehingga blok berikutnya tidak bergantung pada hasil blok sebelumnya. Pada tahap script, pola ini cocok ditulis berbasis tabel data.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.

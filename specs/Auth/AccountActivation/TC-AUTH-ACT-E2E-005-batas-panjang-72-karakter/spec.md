@@ -28,17 +28,9 @@ coverage:
 - TC-AUTH-ACT-32: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
 - TC-AUTH-ACT-32: User `Ayu Kartika` (`ayukartika+{runId}-005@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
 - TC-AUTH-ACT-32 data: Password: `Aa1!` diikuti 68 karakter `x` (total 72 karakter), lalu `Aa1!` diikuti 69 karakter `x` (total 73 karakter)
-- TC-AUTH-ACT-33: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-33: User `Teguh Prasetyo` (`teguhprasetyo+{runId}-005@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
 - TC-AUTH-ACT-33 data: Password: `Aa1!` diikuti 68 karakter `x` (total 72 karakter)
-- TC-AUTH-ACT-34: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-34: User `Laras Permana` (`laraspermana+{runId}-005@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
 - TC-AUTH-ACT-34 data: Password: `Aa1!` diikuti 76 karakter `x` (total 80 karakter)
-- TC-AUTH-ACT-35: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-35: User `Ilham Purnama` (`ilhampurnama+{runId}-005@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
 - TC-AUTH-ACT-35 data: Password: `Aa1!` diikuti 69 karakter `x` (total 73 karakter) lalu dikurangi 1 karakter
-- TC-AUTH-ACT-36: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-36: User `Wulan Wardana` (`wulanwardana+{runId}-005@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
 - TC-AUTH-ACT-36 data: Password: `Aa1!` diikuti 68 karakter `x` (total 72 karakter); Confirm Password: `Aa1!` diikuti 68 karakter `x` (total 72 karakter), lalu `Aa1!` diikuti 69 karakter `x` (total 73 karakter)
 - TC-AUTH-ACT-37: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
 - TC-AUTH-ACT-37: User `Darma Setiawan` (`darmasetiawan+{runId}-005@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
@@ -46,6 +38,7 @@ coverage:
 - TC-AUTH-ACT-135: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
 - TC-AUTH-ACT-135: User `Rendra Pradana` (`rendrapradana+{runId}-005@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
 - TC-AUTH-ACT-135 data: Password: `Aa1!` diikuti 68 karakter `x` (total 72 karakter); Confirm Password: `Bb2@` diikuti 69 karakter `x` (total 73 karakter, berbeda dari Password)
+- Halaman dipakai berulang: TC-AUTH-ACT-33, 34, 35, 36 memakai halaman Set Password yang sama dengan TC-AUTH-ACT-32 (satu user, satu pembukaan link); field dikosongkan di antara kasus karena kasus-kasus ini hanya mengetik dan mengamati tanpa submit.
 
 ## Test Steps
 
@@ -60,14 +53,14 @@ coverage:
 
 ### TC-AUTH-ACT-33: Tepat 72 karakter di Password tidak menampilkan error "Max. 72 characters"
 
-7. Buka link aktivasi user `Teguh Prasetyo` di browser → halaman `Auth > Account Activation > Set Password` tampil
+7. Kosongkan field Password dan Confirm Password sehingga kembali ke state awal
 8. Ketik `Aa1!` diikuti 68 karakter `x` (total 72 karakter) di field Password
 9. Verifikasi Pesan "Max. 72 characters" tidak muncul
 10. Verifikasi "Minimum 8 characters" hitam (primary) + ✓; "One uppercase (A-Z)" hitam (primary) + ✓; "One lowercase (a-z)" hitam (primary) + ✓; "One number (0-9)" hitam (primary) + ✓; "One special character" hitam (primary) + ✓; "Password cannot contain spaces" hitam (primary) + ✓
 
 ### TC-AUTH-ACT-34: Paste 80 karakter ke Password tersimpan penuh di field dan menampilkan error "Max. 72 characters"
 
-11. Buka link aktivasi user `Laras Permana` di browser → halaman `Auth > Account Activation > Set Password` tampil
+11. Kosongkan field Password dan Confirm Password sehingga kembali ke state awal
 12. Paste teks 80 karakter (`Aa1!` diikuti 76 karakter `x`) ke field Password
 13. Verifikasi Pesan "Max. 72 characters" muncul real-time
 14. Klik ikon toggle di field Password untuk melihat isi field
@@ -75,7 +68,7 @@ coverage:
 
 ### TC-AUTH-ACT-35: Error "Max. 72 characters" hilang real-time saat panjang kembali 72 karakter atau kurang
 
-16. Buka link aktivasi user `Ilham Purnama` di browser → halaman `Auth > Account Activation > Set Password` tampil
+16. Kosongkan field Password dan Confirm Password sehingga kembali ke state awal
 17. Ketik `Aa1!` diikuti 69 karakter `x` (total 73 karakter) di field Password
 18. Verifikasi Pesan "Max. 72 characters" tampil
 19. Hapus satu karakter sehingga total 72 karakter
@@ -85,7 +78,7 @@ coverage:
 
 ### TC-AUTH-ACT-36: Mengetik lebih dari 72 karakter di Confirm Password menampilkan error "Max. 72 characters" secara real-time
 
-23. Buka link aktivasi user `Wulan Wardana` di browser → halaman `Auth > Account Activation > Set Password` tampil
+23. Kosongkan field Password dan Confirm Password sehingga kembali ke state awal
 24. Ketik `Aa1!` diikuti 68 karakter `x` (total 72 karakter) di field Password
 25. Ketik `Aa1!` diikuti 68 karakter `x` (total 72 karakter) di field Confirm Password
 26. Verifikasi Tidak ada pesan "Max. 72 characters" pada field Confirm Password (tepat 72 karakter)
@@ -116,5 +109,6 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `auth/account-activation/TestCases/tc-account-activation.md`.
-- Spec ini 43 langkah, di atas smell sekitar 35 langkah (prinsip 13). Dipertahankan karena seluruh blok satu topik dan satu kelas (batas 72 karakter di Password dan Confirm Password, tanpa mail-catcher atau harness lain), tiap blok memakai user sendiri dan berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. TC-AUTH-ACT-135 digabung ke sini (bukan spec baru) karena menguji batas 72 karakter yang sama, hanya pada field Confirm Password dengan nilai berbeda dari Password.
+- Spec ini 43 langkah, di atas smell sekitar 35 langkah (prinsip 13). Dipertahankan karena seluruh blok satu topik dan satu kelas (batas 72 karakter di Password dan Confirm Password, tanpa mail-catcher atau harness lain), tiap blok berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. TC-AUTH-ACT-135 digabung ke sini (bukan spec baru) karena menguji batas 72 karakter yang sama, hanya pada field Confirm Password dengan nilai berbeda dari Password.
+- TC-AUTH-ACT-37 dan TC-AUTH-ACT-135 tetap membuka link sendiri karena klik button "Set Password" meninggalkan state error submit yang dapat memengaruhi kasus sesudahnya.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.

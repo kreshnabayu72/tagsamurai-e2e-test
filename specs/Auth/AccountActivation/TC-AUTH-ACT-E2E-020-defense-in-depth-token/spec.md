@@ -52,42 +52,38 @@ coverage:
 9. Buka link aktivasi user `Dimas Pratama`
 10. Verifikasi Halaman `Auth > Account Activation > Invalid Link` varian Expired tampil; form Set Password tidak dirender
 11. Kirim request Set Password langsung ke server dengan token yang sama, Password dan Confirm Password `Spectra.env.ACT_PASSWORD`
-12. Verifikasi Server menolak 409; FE mengarahkan ke Invalid Link varian Expired; password tidak berubah
+12. Verifikasi Server menolak 409 (request langsung tidak melewati FE sehingga tidak ada pengalihan halaman); password dan token tidak berubah (diperiksa lewat fixture BE)
 13. Verifikasi Status user `Dimas Pratama` tetap Activated; token tidak berubah
 
 ### TC-AUTH-ACT-130: Kredensial user sudah memiliki password walau token masih Active: submit ditolak dan password tidak ditimpa
 
 14. Kirim request Set Password langsung ke server dengan token user `Eka Wulandari`, Password dan Confirm Password `Spectra.env.ACT_PASSWORD`
 15. Verifikasi Server menolak 409
-16. Periksa halaman yang tampil di browser yang mengirim request
-17. Verifikasi FE mengarahkan ke `Auth > Account Activation > Invalid Link` varian Expired
-18. Verifikasi Password yang sudah ada tidak berubah
-19. Verifikasi Token tidak berubah menjadi Consumed oleh request ini
+16. Verifikasi Password yang sudah ada tidak berubah (kredensial diperiksa lewat fixture BE)
+17. Verifikasi Token tidak berubah menjadi Consumed oleh request ini
 
 ### TC-AUTH-ACT-131: Submit dengan token yang tidak dikenal dijawab 404 dan diarahkan ke halaman Invalid Link
 
-20. Kirim request Set Password langsung ke server dengan token `tokenacaktidakdikenal123`, Password dan Confirm Password `Spectra.env.ACT_PASSWORD`
-21. Verifikasi Server menjawab 404 (bukan 409)
-22. Periksa halaman yang tampil
-23. Verifikasi FE mengarahkan ke `Auth > Account Activation > Invalid Link` varian Expired
-24. Verifikasi Tidak ada data yang berubah
+18. Kirim request Set Password langsung ke server dengan token `tokenacaktidakdikenal123`, Password dan Confirm Password `Spectra.env.ACT_PASSWORD`
+19. Verifikasi Server menjawab 404 (bukan 409)
+20. Verifikasi Tidak ada data yang berubah
 
 ### TC-AUTH-ACT-132: Submit dengan body tanpa token atau salah bentuk ditolak 400 dan ditampilkan sebagai S-20
 
-25. Kirim request Set Password langsung ke server tanpa field token, dengan Password dan Confirm Password `Spectra.env.ACT_PASSWORD`
-26. Verifikasi Request ditolak server dengan 400
-27. Kirim request kedua dengan body bukan JSON yang valid
-28. Verifikasi Request kedua ditolak server dengan 400
-29. Verifikasi Tidak ada data yang berubah
+21. Kirim request Set Password langsung ke server tanpa field token, dengan Password dan Confirm Password `Spectra.env.ACT_PASSWORD`
+22. Verifikasi Request ditolak server dengan 400
+23. Kirim request kedua dengan body bukan JSON yang valid
+24. Verifikasi Request kedua ditolak server dengan 400
+25. Verifikasi Tidak ada data yang berubah
 
 ### TC-AUTH-ACT-113: Token milik user A tidak dapat mengaktifkan user B
 
-30. Buka jendela privat (tanpa sesi), buka link aktivasi user `Nina Permana` (token A), lakukan Set Password dengan `Spectra.env.ACT_PASSWORD`
-31. Pindah ke browser admin: login sbg Role: Total Control (Global Settings), buka `Global Settings > User > Login User` dan cari user `Nina Permana` dan user `Galih Purnama`
-32. Verifikasi Hanya user `Nina Permana` yang tidak lagi berbadge Pending Activation; user `Galih Purnama` tetap berbadge Pending Activation
-33. Pindah kembali ke jendela privat dan buka link aktivasi user `Galih Purnama` (token B)
-34. Verifikasi `Auth > Account Activation > Set Password` tampil dengan Subtitle "Set a password to log in for galihpurnama+{runId}-020@qwertysystem.net." (token B tetap valid)
-35. Verifikasi Hanya user `Nina Permana` Activated; user `Galih Purnama` tetap Pending Activation dan token B Active
+26. Buka jendela privat (tanpa sesi), buka link aktivasi user `Nina Permana` (token A), lakukan Set Password dengan `Spectra.env.ACT_PASSWORD`
+27. Pindah ke browser admin: login sbg Role: Total Control (Global Settings), buka `Global Settings > User > Login User` dan cari user `Nina Permana` dan user `Galih Purnama`
+28. Verifikasi Hanya user `Nina Permana` yang tidak lagi berbadge Pending Activation; user `Galih Purnama` tetap berbadge Pending Activation
+29. Pindah kembali ke jendela privat dan buka link aktivasi user `Galih Purnama` (token B)
+30. Verifikasi `Auth > Account Activation > Set Password` tampil dengan Subtitle "Set a password to log in for galihpurnama+{runId}-020@qwertysystem.net." (token B tetap valid)
+31. Verifikasi Hanya user `Nina Permana` Activated; user `Galih Purnama` tetap Pending Activation dan token B Active
 
 ## Notes
 
@@ -95,5 +91,5 @@ coverage:
 - Kelas harness a (defense-in-depth: injeksi, request langsung, state dipaksa lewat fixture BE). TC-AUTH-ACT-129 dan 130 berasal dari E2E-015 (dihapus); TC-AUTH-ACT-131 dan 132 berasal dari E2E-019.
 - TC-AUTH-ACT-113 mengaktifkan user (mengubah data), jadi ditaruh paling akhir. Browser admin di TC ini hanya dipakai untuk mengecek data (badge user), bukan untuk menguji race, sehingga TC tetap di kelas harness a.
 - Tampilan state S-20 untuk respons 400 di form tidak diasersi di TC-AUTH-ACT-132 (request langsung tidak melewati form); tampilan itu diuji di spec 019 (TC-AUTH-ACT-118).
-- Spec ini 35 langkah, di batas smell sekitar 35; tetap satu kelas harness.
+- Asersi pengalihan FE ke Invalid Link untuk request langsung (TC-AUTH-ACT-129, 130, 131) tidak dipakai: klien HTTP tidak memiliki FE, sehingga yang diasersi hanya respons server dan state data. TC sumber sudah disesuaikan 2026-10-08. Tampilan Invalid Link untuk token tidak dikenal diuji di spec 012 (TC-AUTH-ACT-79); untuk token yang sudah tidak berlaku diuji di spec 013 dan 014.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.

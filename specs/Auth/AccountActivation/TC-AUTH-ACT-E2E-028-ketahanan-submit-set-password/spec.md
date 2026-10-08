@@ -94,4 +94,5 @@ coverage:
 - Mode: FE+BE (intercept parsial). Sumber: `auth/account-activation/TestCases/tc-account-activation.md`.
 - Kelas harness b (fault injection), endpoint submit Set Password (`POST`). Dipisah dari E2E-018 (Validate Link). TC-AUTH-ACT-64 berasal dari E2E-009 karena butuh intercept.
 - Browser admin di TC-AUTH-ACT-67 hanya dipakai untuk mengecek data (badge user), bukan untuk menguji race, sehingga TC tetap di kelas harness b.
+- Spec ini 43 langkah, di atas smell sekitar 35 langkah (prinsip 13). Dipertahankan karena kelima blok memakai harness yang sama (intercept pada `POST .../set-password`), dan tiap blok memakai user sendiri sehingga blok berikutnya tidak bergantung pada hasil blok sebelumnya. Blok TC-AUTH-ACT-67 memakai browser admin hanya untuk membaca data; bila di lapangan terbukti menggagalkan blok lain, blok itu yang dipindah ke spec sendiri.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.

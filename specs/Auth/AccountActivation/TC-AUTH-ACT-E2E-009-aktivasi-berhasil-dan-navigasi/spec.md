@@ -1,6 +1,6 @@
 ---
 id: TC-AUTH-ACT-E2E-009-aktivasi-berhasil-dan-navigasi
-title: "Aktivasi Berhasil, Halaman Activation Success, dan Navigasi"
+title: "Aktivasi Berhasil dengan Password Valid dan Nilai Batas"
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,16 +9,11 @@ sourceTc:
   - TC-AUTH-ACT-65
   - TC-AUTH-ACT-70
   - TC-AUTH-ACT-71
-  - TC-AUTH-ACT-73
-  - TC-AUTH-ACT-74
-  - TC-AUTH-ACT-75
-  - TC-AUTH-ACT-76
-  - TC-AUTH-ACT-77
 coverage:
   web: automated
 ---
 
-# Aktivasi Berhasil, Halaman Activation Success, dan Navigasi
+# Aktivasi Berhasil dengan Password Valid dan Nilai Batas
 
 ## Prerequisites
 
@@ -38,21 +33,6 @@ coverage:
 - TC-AUTH-ACT-71: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
 - TC-AUTH-ACT-71: User `Reza Rahmawati` (`rezarahmawati+{runId}-009@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
 - TC-AUTH-ACT-71 data: Password dan Confirm Password: nilai `Spectra.env.ACT_PASSWORD_SPECIAL` (memuat karakter spesial `!@?&` dan memenuhi seluruh Password Policy)
-- TC-AUTH-ACT-73: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-73: User `Teguh Puspita` (`teguhpuspita+{runId}-009@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
-- TC-AUTH-ACT-73 data: Password dan Confirm Password: nilai `Spectra.env.ACT_PASSWORD`
-- TC-AUTH-ACT-74: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-74: User `Laras Hidayat` (`larashidayat+{runId}-009@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
-- TC-AUTH-ACT-74 data: Password dan Confirm Password: nilai `Spectra.env.ACT_PASSWORD`
-- TC-AUTH-ACT-75: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-75: User `Ilham Ramadhan` (`ilhamramadhan+{runId}-009@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
-- TC-AUTH-ACT-75 data: Password dan Confirm Password: nilai `Spectra.env.ACT_PASSWORD`
-- TC-AUTH-ACT-76: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-76: User `Wulan Mulyadi` (`wulanmulyadi+{runId}-009@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
-- TC-AUTH-ACT-76 data: Password dan Confirm Password: nilai `Spectra.env.ACT_PASSWORD`
-- TC-AUTH-ACT-77: Tanpa login (halaman publik, tidak ada sesi aktif di browser)
-- TC-AUTH-ACT-77: User `Darma Wulandari` (`darmawulandari+{runId}-009@qwertysystem.net`) berstatus Pending Activation dengan token aktivasi Active (di-seed lewat API di hook `before`, setara Global Settings > User > Create User; link aktivasi dari respons seeding)
-- TC-AUTH-ACT-77 data: Password dan Confirm Password: nilai `Spectra.env.ACT_PASSWORD`
 
 ## Test Steps
 
@@ -67,7 +47,7 @@ coverage:
 7. Ganti akun: buka jendela privat baru, login sebagai akun aktor Total Control (Global Settings) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` dengan password `Spectra.env.GS_TC_PASSWORD` dan selesaikan reCAPTCHA, lalu buka `Global Settings > User`
 8. Verifikasi badge Pending Activation user `Wahyu Maharani` hilang di `Global Settings > User`
 9. Ganti akun: logout dari akun aktor, buka `Auth > Login`, lalu login dengan email `wahyumaharani+{runId}-009@qwertysystem.net` dan password nilai `Spectra.env.ACT_PASSWORD`, selesaikan reCAPTCHA, lalu klik [Log in]
-10. Verifikasi user `Wahyu Maharani` tidak lagi ditolak karena belum aktivasi
+10. Verifikasi Pesan "Your account has not been activated" tidak tampil dan halaman `Auth > Login > Login with Password` ditinggalkan (user diarahkan ke Confirm Agreement, MFA, atau Portal — Product Hub sesuai konfigurasi akun)
 
 ### TC-AUTH-ACT-65: Klik ganda cepat pada Set Password hanya memproses satu request
 
@@ -97,65 +77,10 @@ coverage:
 28. Verifikasi `Auth > Account Activation > Activation Success` tampil dengan Title "Account Activated", Body "Your account is now active. You can log in with your new password.", dan CTA "Go to Login"
 29. Verifikasi Status user `Reza Rahmawati` Activated dan token Consumed
 
-### TC-AUTH-ACT-73: Screening halaman Activation Success
-
-30. Buka jendela privat baru (tanpa sesi login)
-31. Buka link aktivasi user `Teguh Puspita` di browser → halaman `Auth > Account Activation > Set Password` tampil
-32. Ketik nilai `Spectra.env.ACT_PASSWORD` di field Password dan field Confirm Password
-33. Klik button "Set Password"
-34. Susuri halaman Activation Success dari atas ke bawah tanpa klik apa pun
-35. Verifikasi **Header**: Card (Elevated) single-column di tengah layar; ilustrasi sukses (success illustration) di atas
-36. Verifikasi **Body**: Title "Account Activated"; Body "Your account is now active. You can log in with your new password."
-37. Verifikasi **Footer**: CTA "Go to Login" enabled di dalam EmptyState; tidak ada aksi lain di halaman
-38. Verifikasi Status user `Teguh Puspita` Activated dan token Consumed
-
-### TC-AUTH-ACT-74: Klik Go to Login pada halaman sukses menuju Login with Password
-
-39. Buka jendela privat baru (tanpa sesi login)
-40. Buka link aktivasi user `Laras Hidayat` di browser → halaman `Auth > Account Activation > Set Password` tampil
-41. Ketik nilai `Spectra.env.ACT_PASSWORD` di field Password dan field Confirm Password
-42. Klik button "Set Password"
-43. Klik CTA "Go to Login"
-44. Verifikasi halaman Login with Password tampil
-45. Verifikasi Tidak ada pemeriksaan atau pesan terkait sesi lain pada transisi
-46. Verifikasi Status user `Laras Hidayat` Activated dan token Consumed
-
-### TC-AUTH-ACT-75: Reload halaman Activation Success mengarahkan ke halaman Login
-
-47. Buka jendela privat baru (tanpa sesi login)
-48. Buka link aktivasi user `Ilham Ramadhan` di browser → halaman `Auth > Account Activation > Set Password` tampil
-49. Ketik nilai `Spectra.env.ACT_PASSWORD` di field Password dan field Confirm Password
-50. Klik button "Set Password"
-51. Reload halaman Activation Success (F5)
-52. Verifikasi Halaman Login tampil; halaman Activation Success tidak tampil kembali
-53. Verifikasi Status user `Ilham Ramadhan` Activated dan token Consumed
-
-### TC-AUTH-ACT-76: Tombol Back browser tidak membuka kembali halaman Activation Success
-
-54. Buka jendela privat baru (tanpa sesi login)
-55. Buka link aktivasi user `Wulan Mulyadi` di browser → halaman `Auth > Account Activation > Set Password` tampil
-56. Ketik nilai `Spectra.env.ACT_PASSWORD` di field Password dan field Confirm Password
-57. Klik button "Set Password"
-58. Klik CTA "Go to Login" → halaman Login with Password tampil
-59. Tekan tombol Back browser
-60. Verifikasi Halaman Login tampil; halaman Activation Success tidak tampil kembali
-61. Verifikasi Status user `Wulan Mulyadi` Activated dan token Consumed
-
-### TC-AUTH-ACT-77: Akses langsung ke URL halaman Activation Success mengarahkan ke halaman Login
-
-62. Buka jendela privat baru (tanpa sesi login)
-63. Buka link aktivasi user `Darma Wulandari` di browser → halaman `Auth > Account Activation > Set Password` tampil
-64. Ketik nilai `Spectra.env.ACT_PASSWORD` di field Password dan field Confirm Password
-65. Klik button "Set Password"
-66. Salin URL halaman Activation Success dari address bar
-67. Tempel URL tersebut di tab baru dan buka
-68. Verifikasi Halaman Login tampil di tab baru; halaman Activation Success tidak tampil
-69. Verifikasi Status user `Darma Wulandari` Activated dan token Consumed
-
 ## Notes
 
 - Mode: FE+BE. Sumber: `auth/account-activation/TestCases/tc-account-activation.md`.
 - Nilai batas (72 karakter, karakter spesial) ditempel ke aktivasi user terpisah supaya penyebab kegagalan jelas.
+- Halaman Activation Success dan navigasi sesudahnya (TC-AUTH-ACT-73 sampai 77) dipisah ke `TC-AUTH-ACT-E2E-032-halaman-activation-success-dan-navigasi` supaya spec ini fokus ke proses aktivasi.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - TC-AUTH-ACT-64 (respons submit ditahan 5 detik) diuji di spec `TC-AUTH-ACT-E2E-028-ketahanan-submit-set-password` karena butuh `Spectra.intercept` (kelas b, FE+BE dengan intercept parsial).
-- TC-AUTH-ACT-74 terbagi lintas spec: asersi "tidak ada pencatatan dari Auth" (Post Condition) diuji di spec `TC-AUTH-ACT-E2E-017-absence-pencatatan-halaman-publik` (kelas g, prinsip 10).
