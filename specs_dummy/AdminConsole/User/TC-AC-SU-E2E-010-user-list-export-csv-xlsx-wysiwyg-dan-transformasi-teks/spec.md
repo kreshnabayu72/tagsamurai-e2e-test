@@ -9,7 +9,6 @@ sourceTc:
   - TC-AC-SU-277
   - TC-AC-SU-278
   - TC-AC-SU-279
-  - TC-AC-SU-280
 coverage:
   web: automated
 ---
@@ -18,29 +17,30 @@ coverage:
 
 ## Prerequisites
 
-- Login sebagai Role: Principal Total Control
-- Terdapat data pengguna terfilter dan setidaknya 1 kolom di-hide via Setup Column
+- Login sebagai Role: Total Control
+- Tabel User List memiliki data pengguna dengan ragam status, dan filter aktif diterapkan
 
 ## Test Steps
 
-### Export CSV & XLSX dengan Scope Saringan Aktif
+### Buka Menu Download & Pilih Format
+1. Buka halaman `Settings > User`
+2. Terapkan filter divisi `"Finance"` sehingga hanya menampilkan sebagian data
+3. Klik tombol `[Download]` pada toolbar
+4. Verifikasi muncul popover pilihan format: `"Download as CSV"` dan `"Download as XLSX"`
 
-1. Buka halaman User List, terapkan kata kunci pencarian dan filter tertentu
-2. Sembunyikan 1 kolom (contoh: Employee ID) via Setup Column
-3. Klik tombol `[Download]` di toolbar lalu pilih opsi `CSV`
-4. Verifikasi file terunduh dengan nama `Users.csv`
-5. Buka file `Users.csv`, verifikasi isi file hanya memuat baris data yang cocok dengan kriteria filter aktif (bukan seluruh database)
-6. Verifikasi file export mengikuti prinsip WYSIWYG (kolom yang disembunyikan tidak ikut diekspor)
-7. Klik tombol `[Download]` lalu pilih opsi `XLSX`
-8. Verifikasi file terunduh dengan nama `Users.xlsx`
+### Validasi Ekspor CSV (WYSIWYG & Transformasi Teks)
+5. Klik opsi `"Download as CSV"`
+6. Verifikasi file terunduh dengan nama default `"Users.csv"`
+7. Periksa header dan isi file CSV
+8. Verifikasi kolom yang diekspor identik dengan kolom yang sedang visible di tabel (prinsip WYSIWYG)
+9. Verifikasi baris yang diekspor hanya data yang memenuhi saringan divisi Finance
+10. Verifikasi transformasi representasi teks: switch Active diekspor sebagai `"Active"` atau `"Inactive"` (bukan boolean true/false); badge Role diekspor sebagai label teks (contoh: `"Total Control"` atau angka peran); placeholder kosong diekspor sebagai tanda strip `"—"`
 
-### Transformasi Representasi Teks dan Error Handling
-
-1. Periksa isi file export: verifikasi nilai switch Active tertransformasi menjadi teks `"Active"` / `"Inactive"`, badge status menjadi teks polos, boolean Temporary User menjadi `"Yes"` / `"No"`, dan sel kosong menjadi placeholder eksplisit `"—"`
-2. Konfigurasikan mock error pada endpoint download backend
-3. Klik tombol `[Download]`
-4. Verifikasi toast error muncul: `"Error, failed to download User."`
+### Validasi Ekspor XLSX
+11. Klik tombol `[Download]` kembali dan pilih `"Download as XLSX"`
+12. Verifikasi file terunduh dengan format spreadsheet `"Users.xlsx"`
+13. Verifikasi struktur sheet dan format kolom konsisten dengan versi CSV
 
 ## Notes
 
-- Fitur download mengekspor representasi data yang tampak di layar.
+- Ekspor mencerminkan tampilan tabel yang sedang aktif (kolom visible & baris terfilter).

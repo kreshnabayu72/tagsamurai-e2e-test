@@ -16,28 +16,30 @@ coverage:
 
 ## Prerequisites
 
-- Login sebagai Role: Principal Total Control
-- Format tanggal General Settings terkonfigurasi (contoh: `DD/MM/YYYY`)
-- Terdapat data pengguna dengan variasi tanggal Last Updated dan Temporary Until
+- Login sebagai Role: Total Control
+- Pengaturan General Settings entitas memiliki format tanggal `DD/MM/YYYY`
+- Data pengguna memiliki rentang tanggal Last Updated dan Temporary Until yang bervariasi
 
 ## Test Steps
 
 ### Filter Rentang Tanggal Last Updated
+1. Buka halaman `Settings > User` dan buka Filter Panel
+2. Pada field `Last Updated`, buka date range picker
+3. Pilih tanggal awal (Start Date) dan tanggal akhir (End Date) yang mencakup 7 hari terakhir
+4. Klik tombol `[Apply]`
+5. Verifikasi hanya pengguna yang diperbarui dalam rentang tanggal tersebut yang ditampilkan di tabel
 
-1. Buka Filter Panel di halaman User List
-2. Pilih rentang tanggal pada date-range picker field `Last Updated` (Start Date dan End Date)
-3. Klik `[Apply]`
-4. Verifikasi tabel hanya menampilkan pengguna yang memiliki tanggal modifikasi terakhir di dalam rentang tanggal terpilih
+### Filter Rentang Tanggal Temporary Until
+6. Buka kembali Filter Panel
+7. Pada field `Temporary Until`, tentukan rentang tanggal masa aktif temporary user
+8. Klik tombol `[Apply]`
+9. Verifikasi hanya pengguna Temporary User dengan tanggal kedaluwarsa di dalam rentang yang tampil di tabel
 
-### Filter Rentang Tanggal Temporary Until dan Kepatuhan Format
-
-1. Buka kembali Filter Panel
-2. Pilih rentang tanggal pada field `Temporary Until`
-3. Klik `[Apply]`
-4. Verifikasi tabel hanya menampilkan pengguna Temporary User dengan batas tanggal di dalam rentang tersebut
-5. Amati teks tanggal yang tampil pada kolom tabel dan di dalam input Filter Panel
-6. Verifikasi seluruh string tanggal terformat presisi mengikuti format General Settings (`DD/MM/YYYY`)
+### Verifikasi Kepatuhan Format Tanggal General Settings
+10. Amati representasi teks tanggal pada kolom `Last Updated` di tabel
+11. Verifikasi format tampilan tanggal mengikuti pola yang dikonfigurasi di General Settings (contoh: `DD/MM/YYYY HH:mm`)
+12. Amati representasi tanggal pada date picker Filter Panel dan verifikasi format konsisten lintas seluruh permukaan
 
 ## Notes
 
-- Format tanggal mengikuti konfigurasi terpusat di General Settings.
+- Filter rentang tanggal bersifat inklusif (mencakup start date dan end date).

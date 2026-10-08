@@ -1,9 +1,9 @@
 ---
-name: Admin Console User
 id: suite-admin-console-user
-description: E2E test cases derived from tc-settings-user.md for Admin Console > Settings > User
-executionOrder: 1.2
+name: AdminConsoleUser
+description: End-to-end test suite for Admin Console Settings User submodule covering 53 atomic specs
+executionOrder: 1.0
 parallel: true
 ---
 
-# Suite: Admin Console User
+# Suite: AdminConsoleUser

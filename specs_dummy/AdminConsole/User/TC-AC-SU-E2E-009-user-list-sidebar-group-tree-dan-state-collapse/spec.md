@@ -1,7 +1,7 @@
 ---
 id: TC-AC-SU-E2E-009-user-list-sidebar-group-tree-dan-state-collapse
 title: "Navigasi Sidebar Group tree hirarki, filtering user per group, dan persistensi state collapse"
-priority: Critical
+priority: High
 caseType: Positive
 status: draft
 sourceTc:
@@ -15,28 +15,31 @@ coverage:
 
 ## Prerequisites
 
-- Login sebagai Role: Principal Total Control
-- Terdapat hierarki Group (Parent Group dan Child Group) dengan penugasan user
+- Login sebagai Role: Total Control
+- Entitas memiliki pohon group berjenjang (contoh: Region A -> Branch 1 -> Sub-branch 1) dengan anggota pengguna di masing-masing node
 
 ## Test Steps
 
-### Navigasi dan Filtering via Sidebar Group
+### Navigasi Sidebar Group & Filtering Hierarkis
+1. Buka halaman `Settings > User`
+2. Amati Sidebar Group di sisi kanan halaman
+3. Klik node root `"Region A"` pada pohon group
+4. Verifikasi tabel User List otomatis tersaring hanya menampilkan pengguna yang berada di Region A serta seluruh descendant-nya (Branch 1 dan Sub-branch 1)
+5. Klik node child `"Branch 1"`
+6. Verifikasi tabel User List menyempitkan saringan hanya ke pengguna di Branch 1 dan Sub-branch 1
+7. Klik opsi `"All Groups"` di puncak sidebar
+8. Verifikasi seluruh pengguna entitas kembali tampil di tabel
 
-1. Buka halaman User List
-2. Verifikasi Sidebar Group tampil di sisi kiri dengan struktur hirarki tree group
-3. Klik salah satu node Parent Group
-4. Verifikasi tabel User List otomatis tersaring menampilkan seluruh pengguna yang berada di dalam group tersebut beserta seluruh descendant group-nya
-
-### Toggle Collapse Sidebar dan Persistensi State
-
-1. Klik tombol toggle collapse pada Sidebar Group
-2. Verifikasi Sidebar Group tertutup dan area tabel User List melebar menjadi full-width
-3. Muat ulang halaman browser (F5)
-4. Verifikasi state Sidebar Group tetap tertutup (collapsed)
-5. Buka menu lain di aplikasi lalu kembali ke `Settings > User`
-6. Verifikasi state Sidebar Group tetap dipertahankan sesuai preferensi tersimpan di localStorage
-7. Klik tombol toggle untuk membuka kembali Sidebar Group, verifikasi sidebar terbuka normal
+### Persistensi State Collapse Sidebar
+9. Klik tombol toggle collapse pada header Sidebar Group untuk menutup sidebar
+10. Verifikasi sidebar tertutup (collapsed) dan tabel User List melebar memenuhi layar (full-width)
+11. Lakukan refresh browser (F5)
+12. Verifikasi setelah reload halaman selesai, sidebar tetap dalam keadaan collapsed
+13. Navigasi ke menu lain (misal: `Settings > Group`), lalu kembali ke `Settings > User`
+14. Verifikasi state collapsed tetap dipulihkan dari localStorage
+15. Buka kembali sidebar (state Open), tutup tab browser, dan buka kembali URL di tab baru
+16. Verifikasi preferensi Open tersimpan dan sidebar langsung terbuka
 
 ## Notes
 
-- State collapse sidebar disimpan per-user per-halaman.
+- State collapse sidebar disimpan per-user per-halaman di localStorage.
