@@ -1,0 +1,89 @@
+---
+id: TC-AUTH-RST-E2E-002-validasi-field-email-request
+title: "Validasi field Email pada halaman Request Reset: wajib diisi, format, batas karakter, dan payload injeksi"
+priority: Critical
+caseType: Negative
+status: draft
+sourceTc:
+  - TC-AUTH-RST-13
+  - TC-AUTH-RST-15
+  - TC-AUTH-RST-16
+  - TC-AUTH-RST-17
+  - TC-AUTH-RST-18
+  - TC-AUTH-RST-119
+  - TC-AUTH-RST-128
+coverage:
+  web: automated
+---
+
+# Validasi field Email pada halaman Request Reset: wajib diisi, format, batas karakter, dan payload injeksi
+
+## Prerequisites
+
+- User belum login (guest); browser web berada di halaman `/reset-password`.
+- Environment uji terisolasi khusus pengujian otomatis.
+- Widget Google reCAPTCHA v2 diselesaikan otomatis melalui test bypass token.
+- User `budisantoso@qwertysystem.net` berstatus aktif dan terdaftar di database.
+
+## Test Steps
+
+### Validasi field Email wajib diisi
+
+1. Buka halaman Reset Password di browser web
+2. Kosongkan field Email
+3. Selesaikan verifikasi reCAPTCHA
+4. Klik tombol [Reset Password]
+5. Verifikasi caption inline "Email must not be empty" tampil tepat di bawah field Email
+6. Verifikasi browser tetap berada di halaman Reset Password dan tidak ada email atau token yang diterbitkan
+
+### Validasi format Email dan batas domain
+
+7. Masukkan `budisantoso` (tanpa karakter `@`) pada field Email
+8. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+9. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email
+10. Ganti isi field Email dengan `budisantoso@` (tanpa domain)
+11. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+12. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email
+13. Ganti isi field Email dengan `budisantoso@qwertysystem` (tanpa titik ekstensi domain)
+14. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+15. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email
+16. Ganti isi field Email dengan `budisantoso@qwertysystem.c` (hanya satu karakter TLD setelah titik)
+17. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+18. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email
+19. Ganti isi field Email dengan `budisantoso+alias@qwertysystem.net` (mengandung karakter `+`)
+20. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+21. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email sesuai regex sistem
+
+### Validasi batas panjang karakter Email (120 vs 121 karakter)
+
+22. Masukkan email dengan total 120 karakter (103 karakter huruf `a` diikuti `@qwertysystem.net`)
+23. Verifikasi caption "Max. 120 characters" tidak tampil saat mengetik 120 karakter
+24. Tambahkan 1 karakter huruf sehingga total panjang email menjadi 121 karakter
+25. Verifikasi caption inline "Max. 120 characters" langsung muncul secara real-time saat karakter ke-121 diketik
+26. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+27. Verifikasi tombol [Reset Password] diblokir dan caption "Max. 120 characters" tetap bertahan
+
+### Sanitasi spasi awal dan akhir (Trim)
+
+28. Bersihkan field Email lalu masukkan `  budisantoso@qwertysystem.net  ` (dengan spasi di awal dan di akhir)
+29. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+30. Verifikasi request diproses berhasil menuju halaman Email Sent!
+31. Verifikasi teks pada halaman Email Sent! menampilkan "budisantoso@qwertysystem.net" tanpa karakter spasi di awal atau akhir
+
+### Proteksi keamanan payload injeksi dan penegakan server
+
+32. Buka kembali halaman Reset Password
+33. Masukkan payload injeksi SQL `' OR '1'='1` pada field Email
+34. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+35. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email
+36. Verifikasi tidak ada kebocoran error SQL atau pesan 500 dari server
+37. Masukkan payload injeksi XSS `<script>alert("xss")</script>` pada field Email
+38. Selesaikan verifikasi reCAPTCHA lalu klik tombol [Reset Password]
+39. Verifikasi caption inline "Email format is incorrect" tampil dan tidak ada dialog script yang dieksekusi
+40. Simulasikan pengiriman request bypass UI dengan email tidak valid langsung ke backend
+41. Verifikasi server menolak request dengan status HTTP 400 atau 422 dan tidak menerbitkan token reset
+
+## Notes
+
+- Sesuai PRD §6 V-AUTHRST-01, V-AUTHRST-02, V-AUTHRST-03, dan §9.9 FLD-AUTHRST-01, batas maksimal field email adalah 120 karakter dan format ditolak jika memiliki TLD kurang dari 2 karakter atau menggunakan tanda plus (`+`).
+- Trim spasi awal dan akhir dilakukan sebelum pencarian akun dilakukan di database (`TC-AUTH-RST-13`).
