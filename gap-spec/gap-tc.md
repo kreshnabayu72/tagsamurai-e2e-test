@@ -1036,3 +1036,144 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 - **Karakter Non-Kanonikal:** 0 karakter CJK atau simbol non-standar.
 - **Status Spec:** Seluruh 64 spec dirancang berstatus `draft` dengan deskripsi langkah bahasa Indonesia yang presisi, bebas dari flakiness cascading, siap untuk tahap penyusunan skrip otomasi (`tagsamurai-e2e-generate-script`).
 - **Validasi Lint:** 0 lint errors (`npx spectra lint --strict specs_dummy/AdminConsole/SettingsGroup` PASS).
+
+---
+
+# Gap & Temuan — Admin Console > Settings > User
+
+Sumber: generate spec `specs_dummy/AdminConsole/User/` (44 spec, 260 TC aktif / 226 TC granular layak E2E UI). Tanggal generate: 2026-10-08.
+
+Dokumen ini berisi temuan hasil cross-check antara `admin-console/settings-user/TestCases/tc-settings-user.md` dengan `admin-console/settings-user/PRD/settings-user.md` selama proses perancangan spec E2E.
+
+---
+
+## GAP-ACSU-E2E-001 — Ketiadaan Skenario Search & Filter di dalam Pop-up Picker Select Group (PRD §4.2c vs TC Kat. I)
+
+**Status:** terbuka  
+**Tipe:** gap langkah pengujian fungsionalitas UI  
+**Dampak:** rendah-sedang  
+
+PRD `settings-user.md` §4.2c secara eksplisit menyertakan kontrol `[🔍 Search groups...]` di dalam popup sekunder Select Group (tree picker), dan menetapkan aturan: *"Filters node yang sudah tampil (termasuk node Disabled — tetap muncul di hasil search, cuma tidak bisa dipilih); node hidden karena scope tidak pernah muncul di hasil search"*.
+
+Pada file Test Case `tc-settings-user.md` Kategori I (Assign Group Role, `TC-AC-SU-86` s/d `101`, `250`, `251`, `256`, `257`, `259`):
+- Seluruh baris TC berfokus pada pembukaan tree dan pemilihan node (`TC-87`), node disabled already-assigned (`TC-90`/`256`), proteksi duplikasi (`TC-93`), Save replace (`TC-96`/`257`), no-op (`TC-250`), dan dialog blok 0 group (`TC-259`).
+- **Tidak ada baris TC** yang memverifikasi interaksi pengetikan kata kunci pada kontrol pencarian tree di dalam pop-up Select Group maupun perilaku filter terhadap visibilitas node disabled.
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SU-E2E-029` (*Popup Assign Group Role: hierarki tree Select Group, scope restriction already-assigned disabled, dan proteksi duplikat*) menyertakan langkah pengujian pengetikan query search pada tree picker Select Group dan verifikasi hasil saringan.
+
+**Yang perlu diputuskan:**  
+Menambahkan baris TC suplemen untuk pencarian tree pada Kategori I di `tc-settings-user.md`.
+
+---
+
+## GAP-ACSU-E2E-002 — Ketiadaan Pengujian Tombol `[Cancel]` pada Pop-up Sekunder Select Group (PRD §4.2c vs TC Kat. I)
+
+**Status:** terbuka  
+**Tipe:** gap jalur pembatalan dialog  
+**Dampak:** rendah  
+
+PRD `settings-user.md` §4.2c pada tabel komponen popup Select Group mendefinisikan tombol `[Cancel]` (Text, Contrast per `prd-conventions.md` §24.1a): *"Returns to Assign Group Role popup without adding"*.
+
+Pada file Test Case `tc-settings-user.md`:
+- `TC-AC-SU-99` dan `TC-AC-SU-251` menguji pembatalan pada pop-up *primer* Assign Group Role (via `[✕]`, `Esc`, dan dialog Unsaved Changes).
+- **Tidak ada baris TC** yang menguji jalur pembatalan pada pop-up *sekunder* Select Group (menekan `[Cancel]` atau icon `[✕]` untuk kembali ke popup primer Assign Group Role tanpa menambah group terpilih ke tabel).
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SU-E2E-029` menyertakan langkah verifikasi penekanan `[Cancel]` pada pop-up Select Group untuk memastikan kontrol kembali ke modal Assign Group Role tanpa menambah baris tabel.
+
+**Yang perlu diputuskan:**  
+Menambahkan baris TC pengujian jalur Cancel pada pop-up Select Group di `tc-settings-user.md`.
+
+---
+
+## GAP-ACSU-E2E-003 — Invariant Exact Match Hirarki Tree Select Group: Parent Checkbox Independen dari Children (PRD §4.2c / §15.5 vs TC-87)
+
+**Status:** terbuka  
+**Tipe:** ambiguitas perilaku interaksi tree checkbox  
+**Dampak:** sedang  
+
+PRD `settings-user.md` §4.2c secara tegas menetapkan aturan: *"Selecting sebuah node → selects node itu saja (bukan child-nya) — penugasan Peran Grup bersifat exact match per node (`prd-conventions.md` §15.5)... mencentang atau menghapus centang parent tidak mengubah child, dan sebaliknya."*
+
+Pada file Test Case `tc-settings-user.md`:
+- `TC-AC-SU-87` hanya menyebutkan langkah generic *"Centang 1 node"* dan *"Klik [Select]"*.
+- Belum ada langkah eksplisit yang memverifikasi bahwa mencentang parent group (misal `Region A`) tidak mencentang sub-group/child di bawahnya (`Branch 1`, `Branch 2`), untuk membuktikan prinsip exact match di sisi UI tree picker.
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SU-E2E-029` memverifikasi independensi pemilihan node parent terhadap child node.
+
+**Yang perlu diputuskan:**  
+Memperjelas langkah uji `TC-AC-SU-87` di `tc-settings-user.md` dengan skenario multi-level node.
+
+---
+
+## GAP-ACSU-E2E-004 — Diskrepansi Jumlah Kolom Setup Column Tab Responsibilities: PRD 4 Kolom vs TC-253 Klaim 5 Kolom (PRD §4.2d vs TC-253)
+
+**Status:** terbuka  
+**Tipe:** inkonsistensi internal file TC terhadap PRD  
+**Dampak:** rendah  
+
+PRD `settings-user.md` §4.2d pasca konsolidasi (Changelog 2026-09-21 (4)) menetapkan bahwa Tab Responsibilities (Pending Approvals) terdiri atas **4 kolom data kanonikal**:
+1. `Transaction ID`
+2. `Transaction`
+3. `Requester`
+4. `Submission Date`
+(Kolom `Subject` tidak lagi berdiri sendiri). `TC-AC-SU-117` sudah selaras dengan PRD.
+
+Namun pada `TC-AC-SU-253`, sel Expected Result masih mencantumkan sisa teks usang:
+`"5 kolom data Visible dan Hideable; kolom terakhir tidak bisa di-uncheck; Pin/Unpin berfungsi; default sort Date Oldest First..."`
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SU-E2E-034` (*Detail User Tab Responsibilities: tabel Pending Approvals, default sort, badge count, Setup Column, dan export CSV*) menggunakan spesifikasi kanonikal PRD yaitu 4 kolom data.
+
+**Yang perlu diputuskan:**  
+Mengoreksi teks Expected Result `TC-AC-SU-253` di `tc-settings-user.md` dari 5 kolom menjadi 4 kolom data.
+
+---
+
+## GAP-ACSU-E2E-005 — Ketiadaan Skenario Verifikasi Transisi Reaktif Status Entitas Suspended Real-Time Tanpa Reload (PRD §4.3 & §9.2)
+
+**Status:** terbuka  
+**Tipe:** gap cakupan event real-time  
+**Dampak:** sedang  
+
+PRD `settings-user.md` §4.3 (Banner States) menegaskan: *"Entity Suspended banner muncul instan saat status berubah dan hilang otomatis saat entitas di-unsuspend, tanpa reload manual."*
+
+Pada `tc-settings-user.md`:
+- Kategori C (`TC-AC-SU-40`) dan Kategori O (`TC-AC-SU-159`) menguji kondisi statis (precondition entitas suspended → tombol/switch disabled).
+- Tidak ada langkah uji yang memverifikasi transisi dinamis (saat admin sedang berada di layar User List, lalu status entitas disuspend dari backend/SSE, UI secara otomatis mengunci seluruh kontrol tanpa admin me-refresh browser).
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SU-E2E-041` (*Isolasi data antar entitas Distributor dan mode blanket lock read-only pada entitas suspended*) mencatat kebutuhan event listener status suspensi di Prerequisites.
+
+---
+
+## GAP-ACSU-E2E-006 — Kebutuhan Test Harness Khusus Otomasi E2E Admin Console Settings User
+
+**Status:** terbuka, dicatat di Prerequisites tiap spec  
+**Tipe:** kesiapan environment uji otomasi  
+**Dampak:** memblokir eksekusi test runner jika harness belum tersedia  
+
+Kebutuhan dependensi otomasi telah dirinci pada `## Prerequisites` masing-masing spec untuk panduan implementasi tim pengembang otomasi:
+
+| Kebutuhan Harness | Deskripsi & Kegunaan | Spec yang Membutuhkan |
+|---|---|---|
+| **Multi-Entity Context Seeding** | Akun entitas Principal, Distributor, Partner, dan Client untuk validasi isolasi entitas dan Entity Gate | 001, 039, 040, 041 |
+| **Workspace Status Mutator** | Pengkondisian entitas berstatus Suspended untuk memvalidasi kebijakan blanket read-only | 001, 015, 041 |
+| **Multi-Actor Persona Switcher** | Akun login Total Control, Read Only, Manage user and role, dan Group Manager | 015, 026, 028, 032, 039, 040 |
+| **Dual Browser Context / Concurrency** | Dua sesi browser simultan untuk race condition (Aktor A Deactivate vs Aktor B Assign Role, dan Deactivate vs Edit Role Auto-Revert) | 042 |
+| **Large Dataset Generator** | Dataset user >1000 baris untuk memvalidasi Selection Limit (live-block baris 1001 dan auto-cap Select All) | 018 |
+| **Mailbox / Email Catcher & Cooldown Timer** | Penangkapan aktivasi & konfirmasi email, verifikasi template email, dan simulasi waktu cooldown 60s | 020, 021, 022 |
+| **Network Mock Interceptor** | Intercept respons API untuk simulasi error HTTP 500, konflik 409, dan penundaan respons | 002, 019, 023, 031 |
+
+---
+
+## Kepatuhan Suite Admin Console Settings User
+
+- **Cakupan TC:** 100% (226 dari 226 TC granular layak FE terpetakan secara lengkap; 29 TC murni backend dikecualikan dengan alasan terdokumentasi; 11 TC superseded/dicabut tercatat).
+- **Duplikasi TC:** 0 (setiap `TC-AC-SU-NN` hanya muncul tepat di satu spec).
+- **Total Spec E2E:** 53 spec atomik terisolasi tinggi (`TC-AC-SU-E2E-001` s/d `053`), dipisahkan per harness concern (docs/e2e-conventions.md §13).
+- **Pembagian Mode:** 48 spec `FE+BE` (live backend), 5 spec `Mode: mock` (002 empty/error load 500, 011 export error 500, 022 resiliensi switch 5xx/409, 027 resiliensi resend email 5xx, 031 autosave CRUD rollback 500, 037 resiliensi popup assign role 5xx/409).
+- **Target Folder:** `specs_dummy/AdminConsole/User/` sesuai instruksi pengguna.
+- **Karakter Non-Kanonikal:** 0 karakter CJK atau simbol non-standar.
+- **Status Spec:** Seluruh 53 spec dirancang berstatus `draft` dengan deskripsi langkah bahasa Indonesia yang presisi, bebas dari flakiness cascading, dan lolos validasi `spectra lint --strict` dengan 0 kesalahan.

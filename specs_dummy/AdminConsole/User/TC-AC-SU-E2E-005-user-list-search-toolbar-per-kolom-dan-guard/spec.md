@@ -1,7 +1,7 @@
 ---
 id: TC-AC-SU-E2E-005-user-list-search-toolbar-per-kolom-dan-guard
 title: "Pencarian toolbar User List per kolom teks dan guard kolom non-searchable"
-priority: Critical
+priority: High
 caseType: Positive
 status: draft
 sourceTc:
@@ -20,25 +20,31 @@ coverage:
 
 ## Prerequisites
 
-- Login sebagai Role: Principal Total Control
-- Terdapat dataset pengguna dengan variasi Name, Email, Position, Division, Role, dan Modified By
+- Login sebagai Role: Total Control
+- Terdapat pengguna dengan variasi data unik pada kolom Full Name, Email, Position, Division, Role, dan Modified By
 
 ## Test Steps
 
-### Pencarian Berdasarkan Kolom Teks
-
-1. Ketik sebagian nama pengguna (contoh: `"Alexander"`) di kotak Search toolbar lalu tekan Enter, verifikasi tabel hanya menampilkan pengguna dengan Name yang cocok
-2. Ketik sebagian alamat email (contoh: `"@example.com"`) di kotak Search lalu tekan Enter, verifikasi tabel menyaring pengguna berdasarkan kolom Email
-3. Ketik nama jabatan (contoh: `"Manager"`) di kotak Search lalu tekan Enter, verifikasi tabel menyaring pengguna berdasarkan kolom Position
-4. Ketik nama divisi (contoh: `"Finance"`) di kotak Search lalu tekan Enter, verifikasi tabel menyaring pengguna berdasarkan kolom Division
-5. Ketik nama role atau badge (contoh: `"Total Control"`) di kotak Search lalu tekan Enter, verifikasi tabel menyaring pengguna berdasarkan kolom Role
-6. Ketik nama admin pengubah (contoh: `"Super Admin"`) di kotak Search lalu tekan Enter, verifikasi tabel menyaring pengguna berdasarkan kolom Modified By
+### Pencarian Per Kolom Teks
+1. Buka halaman `Settings > User`
+2. Ketik sebagian nama pengguna unik pada kotak Search toolbar (contoh: `"Robert"`)
+3. Verifikasi hanya baris pengguna dengan nama yang cocok yang tampil di tabel
+4. Hapus input Search dan ketik sebagian alamat email unik (contoh: `"@wangs.id"`)
+5. Verifikasi hanya pengguna dengan domain email tersebut yang tampil di tabel
+6. Hapus input Search dan ketik sebagian nama Position (contoh: `"Manager"`)
+7. Verifikasi pengguna dengan jabatan Manager tampil di tabel
+8. Hapus input Search dan ketik sebagian nama Division (contoh: `"Operations"`)
+9. Verifikasi pengguna dari divisi Operations tampil di tabel
+10. Hapus input Search dan ketik nama role atau badge (contoh: `"Total Control"`)
+11. Verifikasi pengguna pemegang badge Total Control tampil di tabel
+12. Hapus input Search dan ketik nama admin pengubah pada kolom Modified By (contoh: `"Admin Super"`)
+13. Verifikasi pengguna yang dimodifikasi oleh admin tersebut tampil di tabel
 
 ### Guard Kolom Non-Searchable
-
-1. Ketik kata kunci representasi switch status seperti `"true"`, `"false"`, atau string foto di kotak Search
-2. Verifikasi pencarian TIDAK menghasilkan pencocokan berdasarkan status switch Active atau file foto avatar (memenuhi aturan Global Table Rules)
+14. Ketik nilai status boolean switch Active (misal: `"true"` atau `"active"`) ke kotak Search
+15. Verifikasi hasil pencarian tidak mencocokkan status switch melainkan hanya teks nama/email jika ada
+16. Verifikasi kotak pencarian toolbar tidak mencari file gambar atau avatar foto pengguna
 
 ## Notes
 
-- Pencarian toolbar mencakup seluruh atribut teks utama dan mengabaikan atribut non-teks.
+- Toolbar Search mengevaluasi seluruh kolom teks visible dan menolak evaluasi kolom biner/switch.

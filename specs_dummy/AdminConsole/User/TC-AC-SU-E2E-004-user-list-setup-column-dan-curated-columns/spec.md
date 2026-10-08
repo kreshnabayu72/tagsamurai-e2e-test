@@ -14,33 +14,36 @@ coverage:
 
 ## Prerequisites
 
-- Login sebagai Role: Principal Total Control
-- Terdapat data pengguna dengan status Activation Status, Temporary User, Temporary Until, dan TAG
+- Login sebagai Role: Total Control
+- Terdapat data pengguna dengan status variatif: Activation Status (Activated, Pending Activation, Pending Email Confirmation), Temporary User (Yes/No), Temporary Until, dan paired TAG
 
 ## Test Steps
 
-### Screening Default Hidden Kolom Curated
+### Toggle Visibilitas Kolom Curated
+1. Buka halaman `Admin Console > Settings > User`
+2. Verifikasi 4 kolom curated berikut dalam keadaan default Hidden: `Activation Status`, `Temporary User`, `Temporary Until`, dan `TAG`
+3. Klik tombol `Column Visibility (⋯)` pada toolbar
+4. Centang keempat kolom curated: `Activation Status`, `Temporary User`, `Temporary Until`, dan `TAG`
+5. Verifikasi keempat kolom tersebut kini muncul di tabel User List
 
-1. Buka halaman User List
-2. Verifikasi 4 kolom curated (`Activation Status`, `Temporary User`, `Temporary Until`, `TAG`) berstatus default Hidden pada tabel utama
+### Format Render Badge & Tanggal Kolom Curated
+6. Amati render kolom `Activation Status`
+7. Verifikasi kolom menampilkan badge: severity success untuk `"Activated"`, warning untuk `"Pending Activation"` dan `"Pending Email Confirmation"` (bukan teks polos)
+8. Amati render kolom `Temporary User`
+9. Verifikasi kolom menampilkan badge `Yes` atau `No`
+10. Amati render kolom `Temporary Until`
+11. Verifikasi kolom menampilkan tanggal berformat standar platform, atau placeholder `—` jika bukan temporary user
+12. Amati render kolom `TAG`
+13. Verifikasi menampilkan kode TAG yang ter-pair atau placeholder `—` jika belum ada TAG yang dipasangkan
 
-### Aktivasi Visibilitas via Setup Column
-
-1. Klik header kolom `⋯` lalu pilih `Column Visibility` / buka modal Setup Column
-2. Centang checkbox untuk menampilkan kolom `Activation Status`, `Temporary User`, `Temporary Until`, dan `TAG`
-3. Terapkan pengaturan Setup Column
-4. Verifikasi keempat kolom kini tampil pada tabel User List
-
-### Verifikasi Render Badge dan Sorting Kolom Curated
-
-1. Amati render kolom `Activation Status`: verifikasi tampil sebagai Badge dengan warna severity sesuai state (`Activated` = success hijau, `Pending Activation` / `Pending Email Confirmation` = warning kuning)
-2. Amati render kolom `Temporary User`: verifikasi tampil sebagai Badge `Yes` atau `No`
-3. Amati render kolom `Temporary Until`: verifikasi menampilkan format tanggal terformat
-4. Amati render kolom `TAG`: verifikasi menampilkan kode TAG atau `—` jika belum dipasangkan
-5. Klik header kolom `Activation Status`, verifikasi data terurut secara alfabetis berdasarkan label badge
-6. Klik header kolom `Temporary Until`, verifikasi data terurut berdasarkan tanggal (Newest / Oldest First)
-7. Buka kembali Setup Column dan nonaktifkan keempat kolom tersebut, verifikasi tabel kembali ke tampilan awal tanpa kehilangan data
+### Sorting Kolom Curated & Re-hide
+14. Klik header kolom `Activation Status` dan verifikasi pengurutan Alphabetical berdasarkan label badge
+15. Klik header kolom `Temporary User` dan verifikasi pengurutan Alphabetical
+16. Klik header kolom `Temporary Until` dan verifikasi pengurutan tanggal Newest/Oldest First
+17. Klik header kolom `TAG` dan verifikasi pengurutan kode Alphabetical dengan data kosong selalu di posisi akhir
+18. Buka kembali `Column Visibility (⋯)` dan uncheck keempat kolom curated
+19. Verifikasi kolom curated kembali tersembunyi tanpa mengubah data pengguna di backend
 
 ## Notes
 
-- Fitur Setup Column memungkinkan admin menyesuaikan visibilitas kolom operasional tambahan.
+- Seluruh 16 kolom data User List bersifat hideable dengan batasan minimal 1 kolom tetap aktif.
