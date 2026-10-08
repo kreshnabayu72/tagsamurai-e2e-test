@@ -921,3 +921,118 @@ Pada modul Login with OTP dan MFA, penulisan audit log ke *Session* dan *User Lo
 - **Verifikasi Lint:** `npx spectra lint --strict specs_dummy/Auth/ResetPassword` → `✓ 30 specs and 1 suites verified. 0 lint errors found.`
 - **Karakter Non-Kanonikal:** 0 karakter CJK atau full-width punctuation residue.
 - **Status Spec:** Seluruh 30 spec berstatus `draft`, siap untuk fase pembuatan script otomasi (`tagsamurai-e2e-generate-script`).
+
+
+---
+
+# Gap & Temuan — Admin Console > Settings > Group
+
+Sumber: generate spec `specs_dummy/AdminConsole/SettingsGroup/` (56 spec, 189 TC aktif dari `TC-AC-SG-1` sampai `TC-AC-SG-223`). Tanggal generate: 2026-10-08.
+
+Dokumen ini mencatat seluruh temuan gap, perbedaan langkah/prekondisi yang belum tercakup di TC asli, divergensi antara PRD (`admin-console/settings-group/PRD/settings-group.md`) dan Test Case (`admin-console/settings-group/TestCases/tc-settings-group.md`), serta kebutuhan test harness khusus yang teridentifikasi selama proses dekomposisi dan pembuatan E2E spec.
+
+---
+
+## GAP-ACSG-E2E-001 — Ketiadaan TC Eksplisit untuk Penolakan Akses Entitas Client (PRD §2.0)
+
+**Status:** terbuka  
+**Tipe:** celah cakupan TC vs PRD  
+**Dampak:** sedang untuk pengujian Entity Gate  
+
+PRD `settings-group.md` §2.0 (Entity Gate) secara eksplisit menetapkan bahwa menu Settings > Group hanya dapat diakses oleh entitas **Principal**, **Distributor**, dan **Partner**, sedangkan entitas bertipe **Client** dilarang mengakses (`Client: ❌`).
+
+Pada file Test Case `tc-settings-group.md`:
+- `TC-AC-SG-26` menguji "Role lain (tanpa akses) — menu tidak tampil", namun prekondisinya adalah *"Actor tanpa access_level TC/RO dan tanpa Manage group/GM manapun"* dalam konteks entitas yang valid (Principal/Distributor/Partner).
+- `TC-AC-SG-21` menguji aktor berstatus Group Manager.
+- **Tidak ada baris TC eksplisit** yang menguji login sebagai Administrator pada entitas bertipe **Client** untuk memverifikasi bahwa menu Settings > Group tidak pernah tampil di navigasi dan akses langsung URL mengembalikan `403 Forbidden`.
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SG-E2E-013` (*Role Matrix Negatif: Penolakan Akses Menu Settings > Group untuk Group Manager dan Role Tanpa Wewenang*) diperluas dengan menambahkan skenario verifikasi aktor entitas Client yang ditolak mengakses menu dan direct URL Settings > Group.
+
+**Yang perlu diputuskan:**  
+Menambahkan 1 baris TC suplemen pada Kategori C di `tc-settings-group.md` untuk menguji penolakan entitas Client secara formal.
+
+---
+
+## GAP-ACSG-E2E-002 — Ketiadaan Pengujian Double-Submit Guard pada Form Edit Group (PRD §9.4.1 M-1 Checklist)
+
+**Status:** terbuka  
+**Tipe:** gap langkah pengujian ketahanan mutasi  
+**Dampak:** rendah-sedang  
+
+PRD `settings-group.md` §9.4.1 pada tabel Condition Dimension Checklist (M-1) mewajibkan implementasi *double-submit guard* (`error-handling-convention.md` §5) untuk seluruh operasi mutasi tulis: Create Group, Edit Group, dan Delete Group.
+
+Pada file Test Case `tc-settings-group.md`:
+- `TC-AC-SG-110` menguji double-click submit pada modal Create Group.
+- `TC-AC-SG-111` menguji double-click submit pada dialog Delete Group.
+- **Tidak ada baris TC** yang menguji double-click submit pada tombol `[Save]` di modal Edit Group.
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SG-E2E-023` (*Validasi Form Edit Group dan Penanganan Kegagalan Simpan*) dan `TC-AC-SG-E2E-026` menyertakan langkah verifikasi penonaktifan tombol `[Save]` (disabled + loading indicator) saat request pertama dikirimkan untuk mencegah submit ganda.
+
+**Yang perlu diputuskan:**  
+Menambahkan baris TC ketahanan double-click `[Save]` pada Kategori L di `tc-settings-group.md`.
+
+---
+
+## GAP-ACSG-E2E-003 — Validasi Leading/Trailing Whitespace dan Whitespace-Only pada Group Name (PRD §9.9 vs TC-34)
+
+**Status:** terbuka  
+**Tipe:** ambiguitas validasi input field  
+**Dampak:** rendah  
+
+Pada `tc-settings-group.md`:
+- `TC-AC-SG-34` menguji Group Name kosong dengan data uji string kosong `""`.
+- PRD §9.9 mengacu pada `prd-conventions.md` §4 (Name chars) yang menetapkan sanitasi auto-trim pada whitespace di awal/akhir input dan larangan input yang murni terdiri atas spasi.
+- Belum ada langkah eksplisit di TC yang memverifikasi apakah input `"   "` (hanya spasi) memicu validasi `"Group name must not be empty"` serta apakah input dengan spasi di awal/akhir seperti `"  Region A  "` di-trim menjadi `"Region A"` saat disimpan.
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SG-E2E-017` (*Validasi Field Group Name Form Create*) memasukkan variasi pengetikan karakter spasi murni untuk memverifikasi pemicuan validasi wajib isi.
+
+---
+
+## GAP-ACSG-E2E-004 — Penegasan Parent Field Tidak Dapat Diubah pada Form Edit (PRD §1.3 & §9.4.3 Must NOT)
+
+**Status:** terbuka  
+**Tipe:** pengujian restriksi arsitektural (Must NOT)  
+**Dampak:** sedang  
+
+PRD `settings-group.md` §1.3 dan §9.4.3 secara tegas menyatakan bahwa operasi **Move Group** (pemindahan induk node) berada di luar cakupan (*Must NOT: Mengizinkan Move Group*). Posisi parent sebuah group bersifat permanen sejak dibuat.
+
+Pada `tc-settings-group.md` Kategori F (Edit Group), seluruh baris TC hanya berfokus pada pengubahan nilai field `name`. Belum ada penegasan eksplisit pada langkah uji bahwa modal Edit **tidak pernah menampilkan dropdown pemilih parent**, atau field parent group terkunci total tanpa kemampuan interaksi mutasi.
+
+**Yang dipakai spec:**  
+Spec `TC-AC-SG-E2E-024` (*Siklus Modal Edit Group*) dan `TC-AC-SG-E2E-026` (*Edit Group Happy Path*) menegaskan bahwa satu-satunya input yang dapat diedit pada modal adalah input Group Name, dan struktur parent tidak dapat diubah dari modal ini.
+
+---
+
+## GAP-ACSG-E2E-005 — Kebutuhan Test Harness Khusus Otomasi E2E Admin Console Settings Group
+
+**Status:** terbuka, dicatat di Prerequisites tiap spec  
+**Tipe:** kesiapan environment uji otomasi  
+**Dampak:** memblokir eksekusi test runner jika harness belum tersedia  
+
+Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masing-masing spec untuk panduan implementasi tim pengembang otomasi:
+
+| Kebutuhan Harness | Deskripsi & Kegunaan | Spec yang Membutuhkan |
+|---|---|---|
+| **Multi-Entity Context Seeding** | Akun entitas Principal, Distributor, Partner, dan Client untuk memvalidasi isolasi entitas absolut (`ACSG-LOGIC-01`) dan Entity Gate (§2.0) | 001, 011, 012, 013 |
+| **Workspace Status Mutator** | Pengkondisian entitas berstatus Suspended untuk memvalidasi kebijakan blanket read-only penonaktifan tombol [+ New Group], + Add Subgroup, Edit, dan Delete | 016 |
+| **Deep Tree Hierarchical Seeder** | Seeding pohon group berjenjang ≥3 level (Region > Branch > Sub Branch) dan node di batas maksimum kedalaman (depth = 50) untuk guard Hierarchy Depth Limit | 005, 006, 007, 021, 022 |
+| **Multi-Actor Persona Switcher** | Akun login Total Control, Read Only, Global Role Manage group (C/U/D bervariasi), dan Group Manager | 011, 012, 013, 014, 015 |
+| **Dual Browser Context / Concurrency** | Dua sesi browser simultan untuk menguji race condition (Aktor A Edit vs Aktor B Delete simultan, dan Aktor A Delete vs Aktor B Delete simultan) | 053 |
+| **Large Dataset Generator** | Dataset group >1000 baris untuk memvalidasi Selection Limit (live-block baris 1001 dan auto-cap Select All) | 031 |
+| **Network Mock Interceptor** | Intercept respons API untuk simulasi error HTTP 500, penundaan respons (skeleton loader), dan kegagalan download file | 003, 015, 016, 020, 030, 046 |
+
+---
+
+## Kepatuhan Suite Admin Console Settings Group
+
+- **Cakupan TC:** 100% (166 dari 166 TC granular layak FE terpetakan secara lengkap; 23 TC murni backend dikecualikan dengan alasan terdokumentasi).
+- **Duplikasi TC:** 0 (setiap `TC-AC-SG-NN` hanya muncul tepat di satu spec).
+- **Total Spec E2E:** 64 spec atomik terisolasi tinggi (`TC-AC-SG-E2E-001` s/d `064`).
+- **Pembagian Mode:** 56 spec `FE+BE` (live backend), 8 spec `Mode: mock` (loading skeleton, error load 500, guided tooltip skip step-3, entity suspended disabled controls, create resilience 5xx, delete single resilience 5xx, selection limit live-block 1001, download resilience 500).
+- **Target Folder:** `specs_dummy/AdminConsole/SettingsGroup/` sesuai instruksi pengguna.
+- **Karakter Non-Kanonikal:** 0 karakter CJK atau simbol non-standar.
+- **Status Spec:** Seluruh 64 spec dirancang berstatus `draft` dengan deskripsi langkah bahasa Indonesia yang presisi, bebas dari flakiness cascading, siap untuk tahap penyusunan skrip otomasi (`tagsamurai-e2e-generate-script`).
+- **Validasi Lint:** 0 lint errors (`npx spectra lint --strict specs_dummy/AdminConsole/SettingsGroup` PASS).

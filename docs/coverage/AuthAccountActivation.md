@@ -1,87 +1,183 @@
 # Coverage E2E — Auth > Account Activation
 
-Sumber: `auth/account-activation/TestCases/tc-account-activation.md` (134 TC aktif, diperbarui 2026-10-07, tanpa celah nomor). Suite: `specs_dummy/Auth/AccountActivation/`. Status semua spec: `draft`, belum ada script.
+Sumber: `auth/account-activation/TestCases/tc-account-activation.md` (134 TC, `TC-AUTH-ACT-01`–`134`). Suite: `specs/Auth/AccountActivation/`. Status semua spec: `draft`, belum ada script.
 
-**Verifikasi lint:** `npx spectra lint --strict specs_dummy/Auth/AccountActivation` → `✓ 28 specs and 1 suites verified. 0 lint errors found.`
-
-**Aturan seleksi:** sesuai `docs/e2e-conventions.md` bagian 2, spec e2e merangkap TC FE. Semua 134 TC FE masuk spec (tidak ada hanya-BE di namespace FE; TC hanya-BE ada di `tc-account-activation-backend.md` dan tidak dipetakan ke spec ini, lihat bagian 8). Spec yang butuh kondisi terpicu (intercept untuk error/timeout/rate limit, fixture waktu, fixture status/kredensial, mailbox, dua sesi browser) mencatat kebutuhannya di `Prerequisites`. Hambatan teknis, termasuk label "Manual Only" di TC, tidak menjadi alasan mengeluarkan TC.
-
-**Nomor folder.** Prefix `TC-AUTH-ACT-E2E-` berasal dari `AUTH` + `ACT` (Account Activation). Nomor adalah urutan spec (`001`–`028`), bukan nomor TC sumber. Setelah regenerasi 2026-10-08 dari TC canonical 134, penomoran dilakukan ulang dari nol: **spec lama (21 spec, TC 94) tidak dipetakan ke id baru** dan tidak ada pemetaan id TC legacy ke id TC granular yang baru. Spec lama di `specs/Auth/AccountActivation/` dibiarkan apa adanya dan sudah basi (sumbernya TC 94); kanonisasi ke `specs/` beserta promosi `status` dijadwalkan terpisah setelah review.
-
-**Verifikasi duplikasi:** 134 TC granular terreferensi tepat 1 spec, 0 duplikasi, 0 tidak terpetakan (dicek dengan skrip: `sourceTc` tiap spec dibaca, id `TC-AUTH-ACT-01`–`134` harus muncul tepat 1×). Nama folder setiap spec sama persis dengan `id` di frontmatter `spec.md` (dicek skrip yang sama; lolos).
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 130 TC masuk spec, 4 TC hanya-BE. Setiap TC terpetakan tepat ke satu spec. Asersi absence pencatatan dari TC-01 dan TC-74 diuji di spec 017, dari TC-11 dan TC-98 di spec 029 (dicatat di `## Notes` spec 001, 009, 010, 023, 017, dan 029). Spec 015 dihapus; TC-129 dan TC-130 pindah ke spec 020 (kelas defense-in-depth).
 
 ## TC granular → spec e2e
 
-| Spec | Isi | TC sumber | Platform |
-|---|---|---|---|
-| TC-AUTH-ACT-E2E-001 | Screening link entry: Set Password tampil, judul/subtitle tombol, token di URL | 1, 7, 8, 10 | web |
-| TC-AUTH-ACT-E2E-002 | Validasi link saat dibuka: loading, error state [Try Again], token tidak dikenal/kosong/429 rate limit | 2–6, 133 | web |
-| TC-AUTH-ACT-E2E-003 | Trigger Activation Email dari Global Settings > User: hasilkan token, kirim email, kegagalan kirim | 11, 13–16 | web |
-| TC-AUTH-ACT-E2E-004 | Trigger Activation Email dari Admin Console | 12 | web |
-| TC-AUTH-ACT-E2E-005 | Kegagalan kirim email dan pemulihan via Resend | 17, 18 | web |
-| TC-AUTH-ACT-E2E-006 | Password Policy & checklist real-time (per baris aturan, per keystroke) | 22–29 | web |
-| TC-AUTH-ACT-E2E-007 | Toggle show/hide independen per field + ikon dan tooltip sesuai state | 19–21 | web |
-| TC-AUTH-ACT-E2E-008 | Boundary panjang 72/73/80 karakter dan karakter khusus pada checklist | 30–36 | web |
-| TC-AUTH-ACT-E2E-009 | Validasi submit: field kosong, urutan evaluasi, Confirm tidak sama | 38–44, 53–56 | web |
-| TC-AUTH-ACT-E2E-010 | Submit diblokir client karena policy + ketiadaan CAPTCHA | 37, 45–52, 57 | web |
-| TC-AUTH-ACT-E2E-011 | Guard halaman Set Password (tanpa dialog Unsaved Changes) dan accessibility | 58–62 | web |
-| TC-AUTH-ACT-E2E-012 | Happy path aktivasi, boundary password valid, loading, klik ganda | 63–65, 70, 71 | web |
-| TC-AUTH-ACT-E2E-013 | Kegagalan server Set Password (5xx, timeout, 429) dan retry sukses | 66–69, 134 | web |
-| TC-AUTH-ACT-E2E-014 | Activation Success, CTA Go to Login, guard akses halaman sukses | 73–78 | web |
-| TC-AUTH-ACT-E2E-015 | Invalid Link: token tidak dikenal/kosong/terpotong dan varian Used | 9, 79–84 | web |
-| TC-AUTH-ACT-E2E-016 | Boundary masa berlaku token: 23j59 valid, 25 jam expired | 86, 87 | web |
-| TC-AUTH-ACT-E2E-017 | Link milik user yang dihapus (saat dibuka dan saat form terbuka) | 88, 125 | web |
-| TC-AUTH-ACT-E2E-018 | Pengaruh toggle Active OFF terhadap link dan aktivasi | 72, 89, 126 | web |
-| TC-AUTH-ACT-E2E-019 | Zero-logging lintas aksi di 4 surface log | 90–97 | web |
-| TC-AUTH-ACT-E2E-020 | Cross-module: gate login, refleksi status Activated, siklus toggle | 98, 106–109 | web |
-| TC-AUTH-ACT-E2E-021 | Resend dari Global Settings > User: invalidasi, status, masa berlaku token baru | 85, 99, 102–105 | web |
-| TC-AUTH-ACT-E2E-022 | Resend dari Admin Console dan Bulk Resend | 100, 101 | web |
-| TC-AUTH-ACT-E2E-023 | Kondisi Client (Suspended/Expired) dan plan (Starter/Enterprise) | 110–112 | web |
-| TC-AUTH-ACT-E2E-024 | Token scope dan injeksi token (SQL/skrip) | 113, 119, 120 | web |
-| TC-AUTH-ACT-E2E-025 | Enforcement server: request langsung password/Confirm tidak valid → 422 | 114–116, 128 | web |
-| TC-AUTH-ACT-E2E-026 | Tampilan respons 422 dengan field, 400 tanpa field, 400 tanpa token | 117, 118, 132 | web |
-| TC-AUTH-ACT-E2E-027 | Race dua tab, submit kedua, dan submit token tidak dikenal → 404 | 121, 122, 127, 131 | web |
-| TC-AUTH-ACT-E2E-028 | Perubahan state saat form terbuka (Resend, expired, status, password ada) | 123, 124, 129, 130 | web |
+| Spec | Judul | TC sumber |
+|---|---|---|r
+| TC-AUTH-ACT-E2E-001-screening-set-passwod-valid-link | Screening Halaman Set Password dari Link Aktivasi Valid | 01, 07, 08 |
+| TC-AUTH-ACT-E2E-002-active-session-in-browser | Link Aktivasi dan Go to Login saat Browser Memiliki Sesi Login Aktif | 10, 78 |
+| TC-AUTH-ACT-E2E-003-toggle-show-hide-a11y | Toggle Show/Hide Password dan Aksesibilitas Form Set Password | 19, 20, 21, 60, 61, 62 |
+| TC-AUTH-ACT-E2E-004-password-policy-checklist | Checklist Password Policy Real-time | 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 |
+| TC-AUTH-ACT-E2E-005-max-length-72 | Batas Panjang 72 Karakter pada Password dan Confirm Password | 32, 33, 34, 35, 36, 37 |
+| TC-AUTH-ACT-E2E-006-empty-and-mismatch-validation | Validasi Field Kosong dan Confirm Password Tidak Sama | 38, 39, 40, 41, 42, 43, 44, 53, 54, 55, 56 |
+| TC-AUTH-ACT-E2E-007-policy-blocked-submit | Submit Diblokir saat Password Tidak Memenuhi Policy | 45, 46, 47, 48, 49, 50, 51, 52 |
+| TC-AUTH-ACT-E2E-008-no-captcha-no-unsaved-dialog | Halaman Set Password Tanpa CAPTCHA dan Tanpa Dialog Unsaved Changes | 57, 58, 59 |
+| TC-AUTH-ACT-E2E-009-activation-success-and-navigation | Aktivasi Berhasil, Halaman Activation Success, dan Navigasi | 63, 65, 70, 71, 73, 74, 75, 76, 77 |
+| TC-AUTH-ACT-E2E-010-status-reflection-and-login | Refleksi Status Activated dan Login Setelah Aktivasi | 98, 106, 107, 108 |
+| TC-AUTH-ACT-E2E-011-active-toggle-off | Aktivasi pada User dengan Toggle Active OFF | 72, 89, 109, 126 |
+| TC-AUTH-ACT-E2E-012-invalid-link-unknown-token | Halaman Invalid Link untuk Token Tidak Dikenal atau Salah Bentuk | 09, 79, 80, 81, 82 |
+| TC-AUTH-ACT-E2E-013-invalid-link-used | Halaman Invalid Link Varian Used untuk Token yang Sudah Dipakai | 83, 84, 127 |
+| TC-AUTH-ACT-E2E-014-invalid-link-deleted-user | Link Aktivasi Milik User yang Dihapus | 88, 125 |
+| TC-AUTH-ACT-E2E-016-entity-and-plan-dimensions | Aktivasi pada Client Suspended, Expired, dan Berbagai Plan | 110, 111, 112 |
+| TC-AUTH-ACT-E2E-017-zero-logging-absence | Tidak Ada Pencatatan oleh Auth Account Activation dari Halaman Publik | 90, 91, 92, 93, 94, 95 |
+| TC-AUTH-ACT-E2E-018-resilience-validate-and-submit | Ketahanan Validate Link terhadap Error Server dan Timeout | 02, 03, 04, 05, 06 |
+| TC-AUTH-ACT-E2E-019-server-response-422-400-404 | Tampilan Set Password untuk Respons Server 422 dan 400 | 117, 118 |
+| TC-AUTH-ACT-E2E-020-defense-in-depth-token | Cakupan Token, Pola Injeksi, dan Request Langsung ke Server | 119, 120, 129, 130, 131, 132, 113 |
+| TC-AUTH-ACT-E2E-021-multi-tab-same-token | Submit dari Dua Tab dan Resend saat Form Terbuka | 121, 122, 123 |
+| TC-AUTH-ACT-E2E-022-rate-limit-429 | Penolakan IP Rate Limit 429 pada Validate Link dan Set Password | 133, 134 |
+| TC-AUTH-ACT-E2E-023-email-trigger-global-settings | Activation Email dari Pembuatan User di Global Settings | 11, 13, 14, 15, 16 |
+| TC-AUTH-ACT-E2E-024-email-send-failure-and-resend | Kegagalan Pengiriman Activation Email dan Pemulihan lewat Resend | 17, 18 |
+| TC-AUTH-ACT-E2E-025-email-trigger-admin-console | Activation Email dari Admin Console dan Resend | 12, 100 |
+| TC-AUTH-ACT-E2E-026-resend-invalidation | Resend Activation Email Menggantikan Link Lama: Single dan Bulk Resend | 85, 99, 101 |
+| TC-AUTH-ACT-E2E-027-token-ttl-time-travel | Masa Berlaku Token 24 Jam | 86, 87, 105, 124 |
+| TC-AUTH-ACT-E2E-028-resilience-set-password-submit | Ketahanan Submit Set Password terhadap Error Server dan Timeout | 64, 66, 67, 68, 69 |
+| TC-AUTH-ACT-E2E-029-zero-logging-absence-admin-triggers | Tidak Ada Pencatatan oleh Auth Account Activation dari Aksi Admin dan Login | 96, 97 |
+| TC-AUTH-ACT-E2E-030-resend-repeat-status-email-change | Resend Berulang, Status Setelah Resend, dan Perubahan Email User Pending Activation | 102, 103, 104 |
 
 ## Lapisan per TC
 
 | TC | Spec | Mode |
 |---|---|---|
-| 1, 7, 8, 10 | TC-AUTH-ACT-E2E-001 | FE+BE |
-| 2–6, 133 | TC-AUTH-ACT-E2E-002 | mock |
-| 11, 13–16 | TC-AUTH-ACT-E2E-003 | FE+BE |
-| 12 | TC-AUTH-ACT-E2E-004 | FE+BE |
-| 17, 18 | TC-AUTH-ACT-E2E-005 | FE+BE |
-| 22–29 | TC-AUTH-ACT-E2E-006 | FE+BE |
-| 19–21 | TC-AUTH-ACT-E2E-007 | FE+BE |
-| 30–36 | TC-AUTH-ACT-E2E-008 | FE+BE |
-| 38–44, 53–56 | TC-AUTH-ACT-E2E-009 | FE+BE |
-| 37, 45–52, 57 | TC-AUTH-ACT-E2E-010 | FE+BE |
-| 58–62 | TC-AUTH-ACT-E2E-011 | FE+BE |
-| 63–65, 70, 71 | TC-AUTH-ACT-E2E-012 | mock |
-| 66–69, 134 | TC-AUTH-ACT-E2E-013 | mock |
-| 73–78 | TC-AUTH-ACT-E2E-014 | FE+BE |
-| 9, 79–84 | TC-AUTH-ACT-E2E-015 | FE+BE |
-| 86, 87 | TC-AUTH-ACT-E2E-016 | mock |
-| 88, 125 | TC-AUTH-ACT-E2E-017 | FE+BE |
-| 72, 89, 126 | TC-AUTH-ACT-E2E-018 | FE+BE |
-| 90–97 | TC-AUTH-ACT-E2E-019 | FE+BE |
-| 98, 106–109 | TC-AUTH-ACT-E2E-020 | FE+BE |
-| 85, 99, 102–105 | TC-AUTH-ACT-E2E-021 | FE+BE |
-| 100, 101 | TC-AUTH-ACT-E2E-022 | FE+BE |
-| 110–112 | TC-AUTH-ACT-E2E-023 | FE+BE |
-| 113, 119, 120 | TC-AUTH-ACT-E2E-024 | FE+BE |
-| 114–116, 128 | TC-AUTH-ACT-E2E-025 | FE+BE |
-| 117, 118, 132 | TC-AUTH-ACT-E2E-026 | mock |
-| 121, 122, 127, 131 | TC-AUTH-ACT-E2E-027 | FE+BE |
-| 123, 124, 129, 130 | TC-AUTH-ACT-E2E-028 | mock |
+| TC-AUTH-ACT-01 | TC-AUTH-ACT-E2E-001 | FE+BE |
+| TC-AUTH-ACT-07 | TC-AUTH-ACT-E2E-001 | FE+BE |
+| TC-AUTH-ACT-08 | TC-AUTH-ACT-E2E-001 | FE+BE |
+| TC-AUTH-ACT-10 | TC-AUTH-ACT-E2E-002 | FE+BE |
+| TC-AUTH-ACT-78 | TC-AUTH-ACT-E2E-002 | FE+BE |
+| TC-AUTH-ACT-19 | TC-AUTH-ACT-E2E-003 | FE+BE |
+| TC-AUTH-ACT-20 | TC-AUTH-ACT-E2E-003 | FE+BE |
+| TC-AUTH-ACT-21 | TC-AUTH-ACT-E2E-003 | FE+BE |
+| TC-AUTH-ACT-60 | TC-AUTH-ACT-E2E-003 | FE+BE |
+| TC-AUTH-ACT-61 | TC-AUTH-ACT-E2E-003 | FE+BE |
+| TC-AUTH-ACT-62 | TC-AUTH-ACT-E2E-003 | FE+BE |
+| TC-AUTH-ACT-22 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-23 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-24 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-25 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-26 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-27 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-28 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-29 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-30 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-31 | TC-AUTH-ACT-E2E-004 | FE+BE |
+| TC-AUTH-ACT-32 | TC-AUTH-ACT-E2E-005 | FE+BE |
+| TC-AUTH-ACT-33 | TC-AUTH-ACT-E2E-005 | FE+BE |
+| TC-AUTH-ACT-34 | TC-AUTH-ACT-E2E-005 | FE+BE |
+| TC-AUTH-ACT-35 | TC-AUTH-ACT-E2E-005 | FE+BE |
+| TC-AUTH-ACT-36 | TC-AUTH-ACT-E2E-005 | FE+BE |
+| TC-AUTH-ACT-37 | TC-AUTH-ACT-E2E-005 | FE+BE |
+| TC-AUTH-ACT-38 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-39 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-40 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-41 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-42 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-43 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-44 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-53 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-54 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-55 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-56 | TC-AUTH-ACT-E2E-006 | FE+BE |
+| TC-AUTH-ACT-45 | TC-AUTH-ACT-E2E-007 | FE+BE |
+| TC-AUTH-ACT-46 | TC-AUTH-ACT-E2E-007 | FE+BE |
+| TC-AUTH-ACT-47 | TC-AUTH-ACT-E2E-007 | FE+BE |
+| TC-AUTH-ACT-48 | TC-AUTH-ACT-E2E-007 | FE+BE |
+| TC-AUTH-ACT-49 | TC-AUTH-ACT-E2E-007 | FE+BE |
+| TC-AUTH-ACT-50 | TC-AUTH-ACT-E2E-007 | FE+BE |
+| TC-AUTH-ACT-51 | TC-AUTH-ACT-E2E-007 | FE+BE |
+| TC-AUTH-ACT-52 | TC-AUTH-ACT-E2E-007 | FE+BE |
+| TC-AUTH-ACT-57 | TC-AUTH-ACT-E2E-008 | FE+BE |
+| TC-AUTH-ACT-58 | TC-AUTH-ACT-E2E-008 | FE+BE |
+| TC-AUTH-ACT-59 | TC-AUTH-ACT-E2E-008 | FE+BE |
+| TC-AUTH-ACT-63 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-64 | TC-AUTH-ACT-E2E-028 | FE+BE |
+| TC-AUTH-ACT-65 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-70 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-71 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-73 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-74 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-75 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-76 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-77 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-98 | TC-AUTH-ACT-E2E-010 | FE+BE |
+| TC-AUTH-ACT-106 | TC-AUTH-ACT-E2E-010 | FE+BE |
+| TC-AUTH-ACT-107 | TC-AUTH-ACT-E2E-010 | FE+BE |
+| TC-AUTH-ACT-108 | TC-AUTH-ACT-E2E-010 | FE+BE |
+| TC-AUTH-ACT-72 | TC-AUTH-ACT-E2E-011 | FE+BE |
+| TC-AUTH-ACT-89 | TC-AUTH-ACT-E2E-011 | FE+BE |
+| TC-AUTH-ACT-109 | TC-AUTH-ACT-E2E-011 | FE+BE |
+| TC-AUTH-ACT-126 | TC-AUTH-ACT-E2E-011 | FE+BE |
+| TC-AUTH-ACT-09 | TC-AUTH-ACT-E2E-012 | FE+BE |
+| TC-AUTH-ACT-79 | TC-AUTH-ACT-E2E-012 | FE+BE |
+| TC-AUTH-ACT-80 | TC-AUTH-ACT-E2E-012 | FE+BE |
+| TC-AUTH-ACT-81 | TC-AUTH-ACT-E2E-012 | FE+BE |
+| TC-AUTH-ACT-82 | TC-AUTH-ACT-E2E-012 | FE+BE |
+| TC-AUTH-ACT-83 | TC-AUTH-ACT-E2E-013 | FE+BE |
+| TC-AUTH-ACT-84 | TC-AUTH-ACT-E2E-013 | FE+BE |
+| TC-AUTH-ACT-127 | TC-AUTH-ACT-E2E-013 | FE+BE |
+| TC-AUTH-ACT-88 | TC-AUTH-ACT-E2E-014 | FE+BE |
+| TC-AUTH-ACT-125 | TC-AUTH-ACT-E2E-014 | FE+BE |
+| TC-AUTH-ACT-129 | TC-AUTH-ACT-E2E-020 | FE+BE |
+| TC-AUTH-ACT-130 | TC-AUTH-ACT-E2E-020 | FE+BE |
+| TC-AUTH-ACT-110 | TC-AUTH-ACT-E2E-016 | FE+BE |
+| TC-AUTH-ACT-111 | TC-AUTH-ACT-E2E-016 | FE+BE |
+| TC-AUTH-ACT-112 | TC-AUTH-ACT-E2E-016 | FE+BE |
+| TC-AUTH-ACT-90 | TC-AUTH-ACT-E2E-017 | FE+BE |
+| TC-AUTH-ACT-91 | TC-AUTH-ACT-E2E-017 | FE+BE |
+| TC-AUTH-ACT-92 | TC-AUTH-ACT-E2E-017 | FE+BE |
+| TC-AUTH-ACT-93 | TC-AUTH-ACT-E2E-017 | FE+BE |
+| TC-AUTH-ACT-94 | TC-AUTH-ACT-E2E-017 | FE+BE |
+| TC-AUTH-ACT-95 | TC-AUTH-ACT-E2E-017 | FE+BE |
+| TC-AUTH-ACT-96 | TC-AUTH-ACT-E2E-029 | FE+BE |
+| TC-AUTH-ACT-97 | TC-AUTH-ACT-E2E-029 | FE+BE |
+| TC-AUTH-ACT-02 | TC-AUTH-ACT-E2E-018 | FE+BE |
+| TC-AUTH-ACT-03 | TC-AUTH-ACT-E2E-018 | FE+BE |
+| TC-AUTH-ACT-04 | TC-AUTH-ACT-E2E-018 | FE+BE |
+| TC-AUTH-ACT-05 | TC-AUTH-ACT-E2E-018 | FE+BE |
+| TC-AUTH-ACT-06 | TC-AUTH-ACT-E2E-018 | FE+BE |
+| TC-AUTH-ACT-66 | TC-AUTH-ACT-E2E-028 | FE+BE |
+| TC-AUTH-ACT-67 | TC-AUTH-ACT-E2E-028 | FE+BE |
+| TC-AUTH-ACT-68 | TC-AUTH-ACT-E2E-028 | FE+BE |
+| TC-AUTH-ACT-69 | TC-AUTH-ACT-E2E-028 | FE+BE |
+| TC-AUTH-ACT-117 | TC-AUTH-ACT-E2E-019 | FE+BE |
+| TC-AUTH-ACT-118 | TC-AUTH-ACT-E2E-019 | FE+BE |
+| TC-AUTH-ACT-131 | TC-AUTH-ACT-E2E-020 | FE+BE |
+| TC-AUTH-ACT-132 | TC-AUTH-ACT-E2E-020 | FE+BE |
+| TC-AUTH-ACT-113 | TC-AUTH-ACT-E2E-020 | FE+BE |
+| TC-AUTH-ACT-119 | TC-AUTH-ACT-E2E-020 | FE+BE |
+| TC-AUTH-ACT-120 | TC-AUTH-ACT-E2E-020 | FE+BE |
+| TC-AUTH-ACT-121 | TC-AUTH-ACT-E2E-021 | FE+BE |
+| TC-AUTH-ACT-122 | TC-AUTH-ACT-E2E-021 | FE+BE |
+| TC-AUTH-ACT-133 | TC-AUTH-ACT-E2E-022 | FE+BE |
+| TC-AUTH-ACT-134 | TC-AUTH-ACT-E2E-022 | FE+BE |
+| TC-AUTH-ACT-11 | TC-AUTH-ACT-E2E-023 | FE+BE |
+| TC-AUTH-ACT-13 | TC-AUTH-ACT-E2E-023 | FE+BE |
+| TC-AUTH-ACT-14 | TC-AUTH-ACT-E2E-023 | FE+BE |
+| TC-AUTH-ACT-15 | TC-AUTH-ACT-E2E-023 | FE+BE |
+| TC-AUTH-ACT-16 | TC-AUTH-ACT-E2E-023 | FE+BE |
+| TC-AUTH-ACT-17 | TC-AUTH-ACT-E2E-024 | FE+BE |
+| TC-AUTH-ACT-18 | TC-AUTH-ACT-E2E-024 | FE+BE |
+| TC-AUTH-ACT-12 | TC-AUTH-ACT-E2E-025 | FE+BE |
+| TC-AUTH-ACT-100 | TC-AUTH-ACT-E2E-025 | FE+BE |
+| TC-AUTH-ACT-85 | TC-AUTH-ACT-E2E-026 | FE+BE |
+| TC-AUTH-ACT-99 | TC-AUTH-ACT-E2E-026 | FE+BE |
+| TC-AUTH-ACT-101 | TC-AUTH-ACT-E2E-026 | FE+BE |
+| TC-AUTH-ACT-102 | TC-AUTH-ACT-E2E-030 | FE+BE |
+| TC-AUTH-ACT-103 | TC-AUTH-ACT-E2E-030 | FE+BE |
+| TC-AUTH-ACT-104 | TC-AUTH-ACT-E2E-030 | FE+BE |
+| TC-AUTH-ACT-123 | TC-AUTH-ACT-E2E-021 | FE+BE |
+| TC-AUTH-ACT-86 | TC-AUTH-ACT-E2E-027 | FE+BE |
+| TC-AUTH-ACT-87 | TC-AUTH-ACT-E2E-027 | FE+BE |
+| TC-AUTH-ACT-105 | TC-AUTH-ACT-E2E-027 | FE+BE |
+| TC-AUTH-ACT-124 | TC-AUTH-ACT-E2E-027 | FE+BE |
 
-Kolom Mode mengikuti penanda `Mode: mock` di `Prerequisites` spec (intercept respons, fixture waktu/kecepatan, atau fixture BE); sisanya `FE+BE`. Kolom BE dicatat pada tingkat endpoint karena `tc-account-activation-backend.md` tidak merujuk id TC granular.
+## TC hanya-BE (tidak masuk spec)
 
-## Catatan regenerasi 2026-10-08
-
-Regenerasi menggantikan seluruh 21 spec lama (dibuat dari TC 94) dengan 28 spec baru (dari TC 134). Pengelompokan disusun ulang mengikuti `docs/e2e-conventions.md`: satu spec = satu sesi dengan topik/dataset/kebutuhan teknis yang sama, aksi destruktif (aktivasi sukses, pengonsumsian token) di akhir spec. Tidak ada pemetaan 1:1 dari spec lama ke spec baru, sehingga tabel pemetaan split tidak dipertahankan; lacak perubahan lewat git history file `specs_dummy/Auth/AccountActivation/` dan tabel TC granular → spec di atas.
-
-## TC belum dipetakan
-
-Tidak ada TC FE yang belum dipetakan: 134/134 masuk spec (verifikasi otomatis). TC hanya-BE berada di `auth/account-activation/TestCases/tc-account-activation-backend.md` dan sengaja tidak dipetakan ke spec e2e web; endpoint-nya dicatat pada tingkat suite di `tc-account-activation-backend.md`.
+| TC | Alasan |
+|---|---|
+| TC-AUTH-ACT-114 | Request langsung ke server dengan password kurang dari 8 karakter ditolak server: request langsung ke server, asersinya kontrak validasi server; dicakup `tc-account-activation-backend.md`. |
+| TC-AUTH-ACT-115 | Request langsung ke server dengan password 73 karakter ditolak server: request langsung ke server, asersinya kontrak validasi server; dicakup `tc-account-activation-backend.md`. |
+| TC-AUTH-ACT-116 | Request langsung ke server dengan password berisi spasi ditolak server tanpa di-trim: request langsung ke server, asersinya kontrak validasi server; dicakup `tc-account-activation-backend.md`. |
+| TC-AUTH-ACT-128 | Request langsung ke server dengan Confirm Password berbeda ditolak server: request langsung ke server, asersinya kontrak validasi server; dicakup `tc-account-activation-backend.md`. |

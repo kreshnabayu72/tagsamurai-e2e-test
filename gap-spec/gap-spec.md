@@ -351,3 +351,52 @@ Pada rangkaian 27 spec `ResetPassword` (`specs_dummy`), teridentifikasi penggabu
 - **Cakupan Granular:** **144/145 TC terpetakan tepat satu kali** (tidak ada duplikasi `sourceTc`; TC-140 satu-satunya eksklusi disengaja Mobile). Sebelum restrukturisasi 140 TC tercakup → **+4 TC** tertutup.
 - **Beban Langkah Uji:** Puncak spec marathon turun dari **41 steps (E2E-002)** menjadi maksimal **37 steps** (E2E-021, keluarga resilience yang dipertahankan); E2E-002 41 → 31, E2E-003 26 → 18, E2E-016 35 → 31.
 - **Integritas Linting:** `npx spectra lint --strict specs_dummy/Auth/ResetPassword` terverifikasi **0 lint errors** (30 specs and 1 suites verified).
+
+
+---
+
+# Admin Console > Settings > Group
+
+Sumber: generate spec `specs_dummy/AdminConsole/SettingsGroup/` (64 spec, 189 TC aktif dari `TC-AC-SG-1` sampai `TC-AC-SG-223`). Tanggal generate: 2026-10-08.
+
+## GAP-ACSG-E2E-006 — Pemisahan Uji Kompleksitas Tinggi dari Spec Heterogen dan Dekomposisi Terisolasi (56 → 64 Specs)
+
+**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-08)  
+**Tipe:** arsitektur test case & isolasi eksekusi otomasi  
+**Dampak:** tinggi terhadap stabilitas otomasi Playwright, pencegahan kegagalan berantai (*flakiness cascading*), dan kecepatan diagnosis akar masalah di CI/CD  
+
+Pada draf awal generasi spec 56 file, teridentifikasi adanya pola *cramming* di mana beberapa concern teknis tingkat tinggi digabungkan ke dalam 1 spec hanya karena berada di halaman atau dialog yang sama:
+1. **Data Seed vs Genuinely Empty State 0 Group (Spec 002):** Menggabungkan verifikasi akun entitas baru yang auto-seed 1 group default (`TC-2`) dengan pengujian entitas kosong 0 group (`TC-184`, `"No group yet"`). Menggabungkan keduanya memaksa pembersihan paksa group seed di tengah alur atau membutuhkan multi-tenant fixture heterogen.
+2. **Double-Click Submit Debounce vs HTTP 500 Server Error (Spec 020):** Menggabungkan pengujian UI debounce timing tombol (`TC-110`) dengan network fault injection 500 dan retensi nilai form (`TC-40`).
+3. **Database Cascade Subtree & User Unassign vs HTTP 500 Fault Injection (Spec 030):** Menggabungkan logika relasional database cascade terberat (`TC-60, 61, 62, 63`) dengan simulasi backend down pada dialog konfirmasi delete (`TC-153`).
+4. **Manual Checklist 1000 Baris vs Server Select All Auto-Cap (Spec 031):** Menggabungkan iterasi DOM 1000 checkbox berulang (`TC-151`) dengan logika Server Select All kuota limit (`TC-152`).
+5. **Download Binary Format vs HTTP 500 Error (Spec 046):** Menggabungkan streaming unduh CSV/XLSX (`TC-97`) dengan mock interceptor 500 toast error (`TC-98`).
+6. **Drag-and-Drop HTML5 vs LocalStorage F5 Persistensi Tabel Utama (Spec 048):** Menggabungkan interaksi pointer drag reorder & sticky freeze scroll (`TC-207, 208`) dengan context reload browser F5, reset default, dan cancel discard (`TC-209, 210, 211, 212`).
+7. **Drag-and-Drop HTML5 vs LocalStorage F5 Persistensi Modal Changelog (Spec 052):** Pola yang sama pada Setup Column Modal Changelog (`TC-216, 217` vs `TC-218, 219, 220`).
+8. **Dua Skenario Race Condition Konkuren Simultan (Spec 053):** Menggabungkan race cross-action Edit vs Delete (`TC-149`) dan race same-action Delete vs Delete (`TC-150`) dalam satu file multi-sesi.
+
+**Solusi & Keputusan yang Diterapkan di Spec (56 → 64 Specs Terisolasi):**
+- Spec 002 dipecah menjadi **2 spec**:
+  - `002`: *Inisialisasi Data Seed Entitas Baru dan Empty State Filter/Search* (`TC-2, TC-4`).
+  - `003`: *Tampilan Empty State Genuinely-Kosong (0 Group Level 1)* (`TC-184`).
+- Spec 020 dipecah menjadi **2 spec**:
+  - `021`: *Penanganan Kegagalan Submit Form Create Level 1 (Server Error 5xx / Timeout)* (`TC-40`, `Mode: mock`).
+  - `022`: *Perlindungan Double-Click Submit Form Create Level 1* (`TC-110`).
+- Spec 030 dipecah menjadi **2 spec**:
+  - `032`: *Eksekusi Delete Single Sukses: Cascade Subtree dan Pelepasan Penugasan User* (`TC-60, 61, 62, 63`).
+  - `033`: *Delete Single: Ketahanan Kegagalan Server (5xx/Timeout) dan Retensi Record* (`TC-153`, `Mode: mock`).
+- Spec 031 dipecah menjadi **2 spec**:
+  - `034`: *Selection Limit: Live-Block Seleksi Manual pada Baris ke-1001* (`TC-151`, `Mode: mock`).
+  - `035`: *Selection Limit: Auto-Cap Server Select All pada Dataset > 1000 Baris* (`TC-152`).
+- Spec 046 dipecah menjadi **2 spec**:
+  - `050`: *Ekspor Data Tabel Utama ke Format CSV dan XLSX* (`TC-97`).
+  - `051`: *Ketahanan Ekspor: Penanganan Server Error HTTP 500 & Toast Error* (`TC-98`, `Mode: mock`).
+- Spec 048 dipecah menjadi **2 spec**:
+  - `053`: *Setup Column Tabel Utama: Interaksi Drag-and-Drop Reorder dan Freeze Pin Scroll* (`TC-207, 208`).
+  - `054`: *Setup Column Tabel Utama: Persistensi LocalStorage (Reload F5), Reset Default, dan Cancel Discard* (`TC-209, 210, 211, 212`).
+- Spec 052 dipecah menjadi **2 spec**:
+  - `058`: *Setup Column Modal Changelog: Interaksi Drag-and-Drop Reorder dan Freeze Pin Scroll* (`TC-216, 217`).
+  - `059`: *Setup Column Modal Changelog: Persistensi LocalStorage (Reload F5), Reset Default, dan Cancel Discard* (`TC-218, 219, 220`).
+- Spec 053 dipecah menjadi **2 spec**:
+  - `060`: *Konkurensi 2-Aktor: Cross-Action Race Edit vs Delete Simultan* (`TC-149`).
+  - `061`: *Konkurensi 2-Aktor: Same-Action Race Delete vs Delete Simultan* (`TC-150`).
