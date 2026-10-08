@@ -65,4 +65,4 @@ coverage:
 
 ## Notes
 
-- Sesuai PRD §9.4.2 baris 7, 28, 29 dan §9.4.3 Must NOT 7 & 8, sistem memiliki guard pencegahan klik ganda di front-end dan perlindungan konkurensi di backend melalui token locking untuk mencegah duplikasi reset maupun pemrosesan ganda.
+- Sesuai PRD §9.4.2 baris 7 dan 31 serta §9.4.3 Must NOT 7 & 8, sistem memiliki guard pencegahan klik ganda di front-end dan perlindungan konkurensi di backend melalui token locking untuk mencegah duplikasi reset maupun pemrosesan ganda.

@@ -309,6 +309,49 @@ Pada telaah awal rancangan dasar 85 spec, teridentifikasi sejumlah penggabungan 
 - **Beban Langkah Uji:** Seluruh spec marathon (>50 steps) berhasil dieliminasi; langkah uji terpanjang berkurang drastis menjadi maksimal **35 steps**.
 - **Integritas Linting:** `npx spectra lint --strict specs/GlobalSettings/Role` terverifikasi **0 lint errors**.
 
+---
+
+# Auth > Reset Password
+
+Sumber: generate spec `specs_dummy/Auth/ResetPassword/` (sebelumnya 27 spec, 140 TC aktif terpetakan; setelah dekomposisi + penutupan gap coverage **30 spec**, 144 TC aktif dari `TC-AUTH-RST-01` sampai `TC-AUTH-RST-145`; TC-140 eksklusi disengaja). Tanggal generate: 2026-10-08; dekomposisi & penutupan gap: 2026-10-08.
+
+## GAP-RST-E2E-001 — Pemisahan Uji Kompleksitas Tinggi dari Spec Heterogen dan Dekomposisi Modular (27 → 30 Specs)
+
+**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-08)  
+**Tipe:** arsitektur test case & isolasi eksekusi otomasi  
+**Dampak:** tinggi terhadap stabilitas otomasi TestSpectra / Playwright, pencegahan kegagalan berantai (*flakiness cascading*), dan kecepatan diagnosis kegagalan di CI/CD
+
+Pada rangkaian 27 spec `ResetPassword` (`specs_dummy`), teridentifikasi penggabungan beberapa pengujian teknis tingkat tinggi ke dalam 1 spec hanya karena berada di halaman (screen) yang sama:
+
+1. **Injeksi SQL/XSS & Enforcement Server di Spec Validasi Field Email (E2E-002, 41 steps):** Uji keamanan payload `' OR '1'='1` dan `<script>alert("xss")</script>` serta penolakan server terhadap email tidak valid (direct API) dicampur dengan validasi fungsional wajib diisi/format/trim/batas 120–121 karakter — concern keamanan tergabung dengan validasi form.
+2. **Outage Penyedia & Defense-in-Depth di Spec Gate reCAPTCHA (E2E-003, 26 steps):** Simulasi outage layanan reCAPTCHA (fault injection) dan penegakan server terhadap request tanpa token / ber-token palsu (direct API) dicampur dengan ciri evaluasi gate biasa (submit tanpa checklist, token expired, email+captcha kosong sekaligus).
+3. **Enforcement Policy Submit di Spec Validasi Form Setup (E2E-016, 35 steps):** Penegakan Password Policy oleh server terhadap payload tidak valid via direct API `/confirm` dicampur dengan validasi client form Setup New Password.
+4. **Gap data coverage:** TC `138, 139, 141, 142` (Boundary / Automatable) tidak tercakup spec mana pun — TC-141 bahkan bertanda `Automatable` (lihat `gap-tc.md` GAP-RST-E2E-001).
+
+**Solusi & Keputusan yang Diterapkan di Spec (27 → 30 Specs Terisolasi):**
+
+| Spec hasil | Isi | TC sumber | Dipecah dari |
+|---|---|---|---|
+| **E2E-028** | Defense-in-Depth payload injeksi SQL & XSS field Email + penegakan server email tidak valid | 119, 128 | E2E-002 |
+| **E2E-029** | Defense-in-Depth & resilience token reCAPTCHA (outage penyedia, tanpa token, token palsu) | 21, 120, 121 | E2E-003 |
+| **E2E-030** | Penegakan Password Policy oleh server pada submit Setup New Password (direct API) | 122, 124 | E2E-016 |
+
+**Penutupan gap coverage (rekonstruksi ke keluarga asalnya, bukan spec baru):**
+- **E2E-006** += `TC-AUTH-RST-142` (request di dalam cooldown tetap menambah counter per IP → Request ke-21 ditolak) & `TC-AUTH-RST-138` (pemulihan sliding window per IP saat Request tertua melewati 1 jam).
+- **E2E-007** += `TC-AUTH-RST-139` (akun Inactive dicek lebih dulu daripada cooldown 60 detik).
+- **E2E-023** += `TC-AUTH-RST-141` (token milik email lama yang belum ter-invalidate callback tetap ditolak 404 varian Expired + tepat 1 log).
+
+**Keputusan yang DITAHAN (dengan alasan):**
+- **E2E-005, E2E-013, E2E-020, E2E-021, E2E-022, E2E-024, E2E-025** dibiarkan utuh karena seluruh isinya masih satu concern keluarga (penerbitan email & template; screening 404 varian Expired; pembersihan lock/counter per email akibat submit sukses termasuk cooldown RSTPWD-LOGIC-04i; resilience server incl. atomicity DB; concurrency multi-tab; matrix log sukses-gagal; dan verifikasi kondisi yang tidak dicatat) walaupun memuat harness berat (mail-catcher, time-travel, fault injection DB, multi-tab).
+- **E2E-006** dan **E2E-007** utuh sebagai keluarga pembatasan laju (IP vs per-email); keempat TC 138/139/141/142 yang sebelumnya tidak tercakup justru direkonstruksi ke keluarga yang sesuai, bukan dipisah ulang.
+- **TC-140** (pencabutan refresh token biometric oleh reset sukses) tereksekusi eksklusi dari suite: `Manual Only` dan menuntut harness aplikasi native Android dengan perangkat/fixture biometric — di luar jangkauan suite web TestSpectra (didokumentasikan di `gap-tc.md` GAP-RST-E2E-001).
+
+**Hasil & Metrik Arsitektural Akhir:**
+- **Total Specs:** **30 spec atomik** (`TC-AUTH-RST-E2E-001` s/d `TC-AUTH-RST-E2E-030`).
+- **Cakupan Granular:** **144/145 TC terpetakan tepat satu kali** (tidak ada duplikasi `sourceTc`; TC-140 satu-satunya eksklusi disengaja Mobile). Sebelum restrukturisasi 140 TC tercakup → **+4 TC** tertutup.
+- **Beban Langkah Uji:** Puncak spec marathon turun dari **41 steps (E2E-002)** menjadi maksimal **37 steps** (E2E-021, keluarga resilience yang dipertahankan); E2E-002 41 → 31, E2E-003 26 → 18, E2E-016 35 → 31.
+- **Integritas Linting:** `npx spectra lint --strict specs_dummy/Auth/ResetPassword` terverifikasi **0 lint errors** (30 specs and 1 suites verified).
+
 
 ---
 

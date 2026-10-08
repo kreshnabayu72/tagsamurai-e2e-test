@@ -71,9 +71,25 @@ Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spe
 11. **Select All lalu Bulk Delete masuk ke spec Delete, di akhir spec `[KEPUTUSAN 2026-09-29]`.** Aksi ini menghapus semua user di environment kecuali Default User dan akun yang login, termasuk user seeding milik spec lain. Karena itu spec Delete wajib berjalan sesudah spec lain selesai dan tidak paralel dengannya. Runner belum terbukti mengikuti nomor folder, jadi cara memisahkannya (suite atau tahap run sendiri) diputuskan di tahap script.
 12. **Blokir karena kondisi data dipisah menjadi spec sendiri per topik `[KEPUTUSAN 2026-09-29]`.** Kasus yang ditolak sistem karena kondisi data target (contoh: TAG sudah dipasang user lain, Resend masih dalam cooldown, Reset Authenticator pada user yang belum enrolled, kuota atau batas seleksi tercapai) butuh data prasyarat khusus yang berbeda dari alur normal, sehingga tidak digabung dengan alur normal. Yang tetap digabung dengan alur normal adalah validasi field (wajib, format, panjang, duplikat) dan blokir berbasis identitas atau role (Default User, akun sendiri, target Total Control), karena tidak butuh data khusus. Aksi yang tidak punya blokir data tidak perlu spec blokir: `USER-LOGIC-05` menetapkan Deactivate, Remove Access, dan Delete selalu warn lalu proceed.
 
+13. **Kelas harness yang berbeda dipisah, walau layar dan topiknya sama `[KEPUTUSAN 2026-10-08]`.** Asal: `gap-spec/gap-spec.md` (MFA, ActivityLog, Division, LoginPassword, Role, ResetPassword), pola yang sama berulang di 6 modul. Spec screening atau fungsional biasa tidak boleh memuat TC dari kelas berikut; tiap kelas jadi spec sendiri:
+    - **a. Defense-in-depth:** injeksi SQL/XSS, direct API tampering atau 403, manipulasi token, bypass server-side (token dibuang dari payload).
+    - **b. Fault injection / resilience:** HTTP 5xx, timeout, outage penyedia (reCAPTCHA, IdP), rollback DB. `Mode: mock`.
+    - **c. Multi-konteks:** multi-tab atau device, race antar-sesi, dua tenant, dua admin, flood rate-limit (429).
+    - **d. Harness eksternal:** polling mail-catcher, decode QR, hardware biometrik, SSO IdP, time-travel atau TTL, background job.
+    - **e. Volume data khusus:** kuota Selection Limit, data ≥ N record, retensi lintas tahun (perluasan prinsip 12).
+    - **f. Binary buffer:** isi file CSV/XLSX (BOM, header, format) dipisah dari kegagalan ekspor.
+    - **g. Asersi absence** ("baris log TIDAK muncul") dipisah dari asersi pencatatan (Status/Note spesifik).
+    - **h. State tenant:** write-lockdown (Client Suspended, Expired) dipisah dari verifikasi baca murni.
+
+    **Cara menggabung antar-aksi:** kelas ringan (a tanpa harness eksternal, b) cukup satu spec per kelas per modul, misalnya satu spec "Resilience" untuk Create, Edit, Delete, dan Export, selama tidak melewati batas smell. Tidak perlu satu spec per aksi, karena tiap spec menambah login, hook, dan cleanup. Kelas berat (c, d, e) satu spec per jenis harness: mail-catcher tidak digabung dengan multi-tab, dan multi-tab tidak digabung dengan dua tenant.
+    Setup Column, Bulk Action Bar, dan Search/Filter/Sort tetap satu spec selama dataset dan harness-nya sama; pecah hanya kalau melewati batas kelas di atas atau bagian sesudahnya tidak lagi bermakna bila bagian sebelumnya gagal keras (batas ukuran di bawah).
+    **Pengecualian:** TC yang konteksnya bergantung pada state berat yang baru dibangun langkah sebelumnya di spec asal (contoh: lock tahap 1 jam, handoff MFA) boleh tetap di sana; catat alasannya di `## Notes`.
+    **Smell, bukan kriteria:** spec melewati sekitar 35 langkah atau memuat lebih dari satu kelas harness wajib ditinjau ulang sebelum rencana diajukan.
+
 **Pisahkan spec hanya jika ada pemisah nyata:**
 - Topik aksi berbeda dengan kondisi data yang bervariasi (prinsip 1).
 - Kasus blokir karena kondisi data (prinsip 12).
+- Kelas harness berbeda (prinsip 13).
 - Beda akun, role, atau entity (butuh login atau konteks lain). Pengecualian: Role Matrix (bagian 3a).
 - Bergantung pada hardware atau simulasi yang berisiko (contoh: scan RFID), supaya kegagalannya tidak menutupi hasil spec lain.
 - Spec yang membuat data dan butuh cleanup dipisah dari spec yang tidak membuat data, supaya kegagalan keras di spec pembuat data tidak menutupi hasil spec lain. Soft assertion tidak menolong untuk kegagalan keras (elemen tidak ketemu, modal tidak terbuka).

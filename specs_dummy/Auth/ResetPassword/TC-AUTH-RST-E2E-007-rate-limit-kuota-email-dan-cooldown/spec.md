@@ -11,6 +11,7 @@ sourceTc:
   - TC-AUTH-RST-32
   - TC-AUTH-RST-34
   - TC-AUTH-RST-38
+  - TC-AUTH-RST-139
 coverage:
   web: automated
 ---
@@ -25,7 +26,7 @@ coverage:
   - `dewilestari@qwertysystem.net` (riwayat 0 request).
   - `fajarnugroho@qwertysystem.net` (fixture disetel memiliki 4 atau 5 request dalam 24 jam terakhir).
   - `sitirahmawati@qwertysystem.net` (tanpa riwayat request).
-  - `tonokurniawan@qwertysystem.net` (akun Inactive dengan riwayat melebihi kuota).
+  - `tonokurniawan@qwertysystem.net` (fixture dapat diubah status aktif/inaktif dan riwayat request).
 - Admin pemantau log `superAdminGlobalSettings_automated_qaTeam1@qwertysystem.net` dapat melihat Activity Log Session dan User Log.
 
 ## Test Steps
@@ -76,7 +77,19 @@ coverage:
 27. Kirimkan request reset baru untuk Fajar Nugroho
 28. Verifikasi request berhasil diproses, email reset terkirim, dan token aktif baru diterbitkan
 
+### Precedence pengecekan status akun terhadap cooldown (TC-139)
+
+29. Setel ulang akun `tonokurniawan@qwertysystem.net` berstatus Active dengan Request reset berhasil kurang dari 60 detik lalu sehingga cooldown 60 detik masih berjalan (fixture BE)
+30. Melalui sesi admin, nonaktifkan akun Tono (ubah status menjadi Inactive, fixture BE)
+31. Buka halaman Reset Password, masukkan "tonokurniawan@qwertysystem.net", selesaikan reCAPTCHA, lalu klik [Reset Password] (Request berada di dalam cooldown)
+32. Verifikasi caption inline "Your account is inactive" tampil di bawah field Email dan browser tetap di halaman Reset Password (bukan Email Sent!)
+33. Verifikasi tidak ada email reset baru di mail-catcher dan tercatat entri log baru dengan Status Failed dan Note "Account is inactive"
+34. Pada kondisi yang sama (akun Inactive, cooldown belum lewat), picu kembali Resend untuk email yang sama
+35. Verifikasi toast sukses tampil tanpa token/email baru serta tercatat entri log Failed / "Account is inactive", membuktikan pengecekan status akun mendahului cooldown
+
 ## Notes
 
 - Sesuai PRD §9.2 F-AUTHRST-06, `RSTPWD-LOGIC-04b`, dan `RSTPWD-LOGIC-04c`, saat batas 5 request per 24 jam terlampaui, sistem menyamarkan respons di UI agar identik dengan alur sukses untuk mencegah enumerasi batas akun, namun mencatat status Failed dengan Note "Too many reset attempts".
 - Sesuai keputusan NC-01, request di dalam cooldown 60 detik merupakan no-op yang tidak menerbitkan token baru, tidak mengirim email baru, dan tidak menambah counter.
+- Sesuai PRD §9.4.2 baris 38 (`TC-AUTH-RST-139`), pengecekan status akun (Inactive) dilakukan lebih dulu daripada cooldown: akun Inactive tetap ditolak dengan caption dan log "Account is inactive" meskipun berada di dalam cooldown.
+- Tambahan `TC-AUTH-RST-139` menutup gap coverage yang sebelumnya belum tercakup spec (GAP-RST-E2E-001).

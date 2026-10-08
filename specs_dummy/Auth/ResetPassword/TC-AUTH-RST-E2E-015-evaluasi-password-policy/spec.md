@@ -26,31 +26,31 @@ coverage:
 
 1. Buka halaman Setup New Password
 2. Ketik huruf besar "A" pada field Password
-3. Verifikasi item "At least 1 uppercase letter (A-Z)" seketika berubah warna hijau dengan ikon centang
+3. Verifikasi item "One uppercase (A-Z)" seketika tercentang (ikon centang hitam)
 4. Verifikasi 4 butir lainnya tetap berwarna abu-abu
 5. Tambahkan huruf kecil "b" (menjadi "Ab")
-6. Verifikasi item "At least 1 lowercase letter (a-z)" berubah hijau dengan ikon centang
+6. Verifikasi item "One lowercase (a-z)" tercentang dengan ikon centang hitam
 7. Tambahkan angka "1" (menjadi "Ab1")
-8. Verifikasi item "At least 1 number (0-9)" berubah hijau dengan ikon centang
+8. Verifikasi item "One number (0-9)" tercentang dengan ikon centang hitam
 9. Tambahkan karakter simbol "!" (menjadi "Ab1!")
-10. Verifikasi item "At least 1 special character (!@?&)" berubah hijau dengan ikon centang
+10. Verifikasi item "One special character" tercentang dengan ikon centang hitam
 11. Verifikasi item "Minimum 8 characters" masih berwarna abu-abu karena panjang baru 4 karakter
 12. Tambahkan karakter "cde" sehingga panjang menjadi 7 karakter ("Ab1!cde")
 13. Verifikasi item "Minimum 8 characters" tetap berwarna abu-abu
 14. Tambahkan karakter ke-8 "f" sehingga menjadi "Ab1!cdef"
-15. Verifikasi seluruh 5 butir checklist Password Policy kini berwarna hijau dan tercentang penuh
+15. Verifikasi seluruh 6 butir checklist Password Policy kini tercentang penuh (ikon centang hitam, teks hitam tegas)
 
 ### Larangan karakter spasi di dalam password
 
 16. Hapus karakter terakhir lalu sisipkan spasi di tengah: "Ab1! cdef"
 17. Verifikasi sistem mendeteksi keberadaan spasi
-18. Verifikasi indikator aturan spasi menunjukkan pelanggaran (item checklist terkait atau caption penolakan spasi aktif)
-19. Hapus spasi tersebut sehingga checklist kembali valid
+18. Verifikasi item "Password cannot contain spaces" menjadi belum terpenuhi (lingkaran kosong abu-abu) sementara item lain tetap tercentang
+19. Hapus spasi tersebut sehingga seluruh 6 butir checklist kembali terpenuhi
 
 ### Batas panjang karakter (8 s/d 72 karakter)
 
 20. Kosongkan field Password lalu ketik 72 karakter yang memenuhi seluruh kombinasi aturan (huruf besar, huruf kecil, angka, simbol)
-21. Verifikasi seluruh checklist tercentang hijau dan caption "Max. 72 characters" tidak tampil
+21. Verifikasi seluruh checklist tercentang penuh dan caption "Max. 72 characters" tidak tampil
 22. Ketik 1 karakter tambahan sehingga total panjang password menjadi 73 karakter
 23. Verifikasi caption inline "Max. 72 characters" langsung muncul secara real-time tepat di bawah field Password
 24. Hapus karakter ke-73 tersebut sehingga kembali ke 72 karakter
@@ -59,9 +59,9 @@ coverage:
 ### Pengujian himpunan karakter spesial ASCII yang didukung
 
 26. Masukkan password dasar "Aa1" diikuti karakter spesial ASCII yang berbeda:
-    - Simbol `@`: `Aa1@bcde` -> verifikasi centang spesial karakter hijau
-    - Simbol `?`: `Aa1?bcde` -> verifikasi centang spesial karakter hijau
-    - Simbol `&`: `Aa1&bcde` -> verifikasi centang spesial karakter hijau
+    - Simbol `@`: `Aa1@bcde` -> verifikasi item "One special character" tercentang
+    - Simbol `?`: `Aa1?bcde` -> verifikasi item "One special character" tercentang
+    - Simbol `&`: `Aa1&bcde` -> verifikasi item "One special character" tercentang
     - Simbol `#`, `$`, `%`, `*`, `_`, `-`: verifikasi semua karakter ASCII non-alfanumerik printable diterima sebagai karakter spesial yang valid
 
 ## Notes

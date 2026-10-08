@@ -1,21 +1,18 @@
 ---
 id: TC-AUTH-RST-E2E-003-recaptcha-gate-request
-title: "Evaluasi Google reCAPTCHA v2 pada halaman Request Reset: submit tanpa captcha, token expired, dan layanan tidak terjangkau"
+title: "Evaluasi Google reCAPTCHA v2 pada halaman Request Reset: submit tanpa captcha dan token expired"
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-AUTH-RST-19
   - TC-AUTH-RST-20
-  - TC-AUTH-RST-21
   - TC-AUTH-RST-22
-  - TC-AUTH-RST-120
-  - TC-AUTH-RST-121
 coverage:
   web: automated
 ---
 
-# Evaluasi Google reCAPTCHA v2 pada halaman Request Reset: submit tanpa captcha, token expired, dan layanan tidak terjangkau
+# Evaluasi Google reCAPTCHA v2 pada halaman Request Reset: submit tanpa captcha dan token expired
 
 ## Prerequisites
 
@@ -49,24 +46,12 @@ coverage:
 14. Selesaikan verifikasi reCAPTCHA
 15. Simulasikan token reCAPTCHA kedaluwarsa (expired session pada widget captcha)
 16. Klik tombol [Reset Password]
-17. Verifikasi caption error "reCAPTCHA verification expired. Please check the box again." tampil di bawah widget reCAPTCHA
+17. Verifikasi caption error "Please verify that you are not a robot" tampil di bawah widget reCAPTCHA
 18. Verifikasi tombol [Reset Password] tidak mengirimkan payload token kedaluwarsa ke server
-
-### Kegagalan layanan reCAPTCHA provider (Outage)
-
-19. Intercept permintaan verifikasi reCAPTCHA dengan kegagalan koneksi atau error 5xx dari server reCAPTCHA
-20. Klik tombol [Reset Password]
-21. Verifikasi toast error atau caption penolakan "Verification service is unavailable. Please try again later." tampil di layar
-22. Verifikasi form tidak mengirimkan request reset ke endpoint internal TAG Samurai
-
-### Penegakan keamanan server (Defense-in-Depth)
-
-23. Kirimkan HTTP request langsung ke endpoint `/request` tanpa parameter token reCAPTCHA dan tanpa header mobile client
-24. Verifikasi server mendeteksi request berasal dari web client dan menolak request dengan status HTTP 400
-25. Kirimkan HTTP request langsung ke endpoint `/request` dengan token reCAPTCHA palsu atau invalid
-26. Verifikasi server menolak request dengan status HTTP 400 atau 422 dan tidak ada token reset atau email yang diterbitkan
 
 ## Notes
 
 - Sesuai keputusan NC-15, saat field Email dan reCAPTCHA sama-sama kosong/belum diselesaikan, kedua caption error ditampilkan bersamaan pada field masing-masing.
 - Sesuai PRD §9.4.2 baris 6 dan §9.4.3 Must NOT 3, client web wajib menyertakan token reCAPTCHA yang valid; request tanpa captcha akan ditolak tegas oleh server.
+- Token reCAPTCHA invalid/expired memakai caption yang sama dengan kosong (`Please verify that you are not a robot`, PRD §9.2 [F-AUTHRST-01] langkah 2).
+- Uji kegagalan layanan reCAPTCHA provider (D12, `T-AUTHRST-02`) dan penegakan server terhadap token reCAPTCHA (`TC-AUTH-RST-21`, `TC-AUTH-RST-120`, `TC-AUTH-RST-121`) dipisahkan ke spec `TC-AUTH-RST-E2E-029` (dekomposisi GAP-RST-E2E-001).

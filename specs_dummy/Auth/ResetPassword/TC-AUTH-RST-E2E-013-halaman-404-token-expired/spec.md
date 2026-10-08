@@ -67,4 +67,4 @@ coverage:
 ## Notes
 
 - Sesuai keputusan NC-04, pembukaan tautan reset saat akun nonaktif atau dihapus meng-invalidate token, menampilkan Halaman 404 varian Expired ("Reset Link Expired"), dan mencatat entri log Failed dengan Note "Reset link expired".
-- Sesuai PRD §4.2 Halaman 5 dan §9.4.2 baris 21-23, masa berlaku token reset adalah tepat 24 jam sejak waktu pembuatan.
+- Sesuai PRD §4.2 Halaman 5 dan §9.4.2 baris 23, masa berlaku token reset adalah tepat 24 jam sejak waktu pembuatan.

@@ -12,6 +12,7 @@ sourceTc:
   - TC-AUTH-RST-90
   - TC-AUTH-RST-91
   - TC-AUTH-RST-92
+  - TC-AUTH-RST-144
 coverage:
   web: automated
 ---
@@ -32,11 +33,11 @@ coverage:
 2. Selesaikan reCAPTCHA
 3. Simulasikan intercept respons server HTTP 500 Internal Server Error untuk endpoint `/request`
 4. Klik tombol [Reset Password]
-5. Verifikasi toast error "Something went wrong. Please try again later." tampil di layar
+5. Verifikasi toast error "Error, failed to send reset link." tampil di layar
 6. Verifikasi nilai field Email dipertahankan dan tombol [Reset Password] kembali enabled
 7. Simulasikan intercept network timeout untuk endpoint `/request`
 8. Klik tombol [Reset Password]
-9. Verifikasi toast error koneksi "Connection timeout. Please check your internet connection and try again." tampil dan form tetap dapat dikirim ulang
+9. Verifikasi toast error koneksi "Connection problem. Please try again." tampil dan form tetap dapat dikirim ulang
 
 ### Kegagalan server 500 pada aksi Resend email
 
@@ -61,11 +62,11 @@ coverage:
 22. Pada halaman Setup New Password, masukkan password baru yang valid pada kedua field
 23. Simulasikan intercept respons HTTP 500 untuk endpoint `/confirm`
 24. Klik tombol [Reset Password]
-25. Verifikasi toast error sistem tampil di layar
+25. Verifikasi toast error "Error, failed to reset password." tampil di layar
 26. Verifikasi isian field password dipertahankan dan token di database TIDAK dikonsumsi (tetap `active`)
 27. Simulasikan intercept network timeout untuk endpoint `/confirm`
 28. Klik tombol [Reset Password]
-29. Verifikasi toast error koneksi tampil, tombol enabled kembali, dan token tetap aman tidak hangus
+29. Verifikasi toast error koneksi "Connection problem. Please try again." tampil, tombol enabled kembali, dan token tetap aman tidak hangus
 
 ### Integritas atomik saat kegagalan di tengah transaksi Submit
 
@@ -73,7 +74,16 @@ coverage:
 31. Verifikasi seluruh transaksi dibatalkan (rollback)
 32. Verifikasi tidak ada perubahan parsial yang tersisa di database (password lama tetap aktif dan token tidak hangus)
 
+### Kegagalan enqueue email setelah token tersimpan (best-effort, TC-AUTH-RST-144)
+
+33. Siapkan failure injection pada layanan enqueue/pengiriman email oleh tim BE sehingga pengiriman email reset gagal setelah token tersimpan di database
+34. Lakukan Request Reset untuk `budisantoso@qwertysystem.net` (isi email, selesaikan reCAPTCHA, klik [Reset Password])
+35. Verifikasi halaman Email Sent! tetap tampil tanpa toast error (identik dengan request yang emailnya terkirim)
+36. Verifikasi token reset tetap tersimpan berstatus `active` di database dan entri log Success `Password reset requested` tetap tercatat
+37. Setelah cooldown selesai, klik [Resend email] lalu verifikasi toast sukses "Success, email has been sent to budisantoso@qwertysystem.net." tetap tampil tanpa toast error
+
 ## Notes
 
-- Sesuai PRD §4.1 S-AUTHRST-08, §9.6 Action Resilience, dan FI-AUTHRST-10, kegagalan teknis (5xx atau timeout) tidak boleh merugikan pengguna: form mempertahankan input data, tombol kembali enabled untuk retry, dan token reset tidak dikonsumsi.
+- Sesuai PRD §4.1 S-AUTHRST-08, §9.6 Action Resilience, dan FI-AUTHRST-10, kegagalan teknis (5xx atau timeout) tidak boleh merugikan pengguna: form mempertahankan input data, tombol kembali enabled untuk retry, dan token reset tidak dikonsumsi. Toast failed Request/Submit 5xx mengikuti `T-AUTHRST-02`/`T-AUTHRST-03` (§7); timeout/network mengikuti C-2 §2 (`"Connection problem. Please try again."`).
+- Sesuai PRD §9.6 dan §9.4.2 baris 13 & 20 serta §9.4.3 Must NOT 9, kegagalan enqueue/pengiriman email setelah commit bersifat best-effort: token tidak di-rollback, UI tetap menampilkan halaman Email Sent! (Request) atau toast sukses (Resend), tanpa toast error (TC-AUTH-RST-144, skenario 33-37 memerlukan failure injection dari tim BE).
 - Pada validasi tautan token, kegagalan 5xx menampilkan ErrorState dengan tombol [Try Again], bukan Halaman 404, untuk membedakan antara gangguan server sementara dengan tautan yang tidak sah.

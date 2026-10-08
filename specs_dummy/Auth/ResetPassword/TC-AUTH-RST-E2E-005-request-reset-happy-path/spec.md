@@ -9,6 +9,7 @@ sourceTc:
   - TC-AUTH-RST-14
   - TC-AUTH-RST-28
   - TC-AUTH-RST-118
+  - TC-AUTH-RST-145
 coverage:
   web: automated
 ---
@@ -38,14 +39,14 @@ coverage:
 7. Tunggu respons sukses dari server
 8. Verifikasi browser secara otomatis berpindah ke halaman Email Sent! (`/email-sent`)
 9. Verifikasi title halaman adalah "Email Sent!"
-10. Verifikasi subtitle halaman memuat alamat email yang dituju: "We've sent a link to budisantoso@qwertysystem.net to reset your password."
+10. Verifikasi subtitle halaman memuat alamat email yang dituju: "We've sent a password reset link to budisantoso@qwertysystem.net. Please check your inbox and follow the instructions."
 11. Verifikasi di database terbit sebuah record token reset baru dengan `status = 'active'`, masa berlaku 24 jam (`expires_at = created_at + 24 hours`), dan terikat ke user Budi Santoso
 
 ### Verifikasi pengiriman email dan struktur tautan reset
 
 12. Buka layanan mail-catcher pengujian
 13. Verifikasi terdapat email masuk baru yang ditujukan ke `budisantoso@qwertysystem.net`
-14. Verifikasi email memuat button `[Confirm Email]` dan tautan teks fallback dengan parameter token unik
+14. Verifikasi isi email sesuai template Password Reset (TC-AUTH-RST-145): subject "Reset your TAG Samurai password", sapaan "Hi Budi Santoso,", button `[Confirm Email]`, catatan "This link is valid for 24 hours and can only be used once.", tautan teks fallback mentah, dan penutup "— TAG Samurai"
 15. Klik tautan reset dari email tersebut pada tab browser baru
 16. Verifikasi tautan membuka halaman Setup New Password (`/setup-new-password?token=...`)
 
@@ -59,5 +60,5 @@ coverage:
 
 ## Notes
 
-- Sesuai PRD §9.2 F-AUTHRST-01/02 dan `tc-reset-password-tambahan-2.md`, alur happy path Request menerbitkan token kriptografis berdurasi 24 jam, mengirim email reset tanpa toast sukses di halaman Request, dan langsung mengarahkan pengguna ke halaman Email Sent!.
+- Sesuai PRD §9.2 F-AUTHRST-01/02 dan `tc-reset-password.md` (TC-AUTH-RST-12, TC-AUTH-RST-118, TC-AUTH-RST-145), alur happy path Request menerbitkan token kriptografis berdurasi 24 jam, mengirim email reset tanpa toast sukses di halaman Request, dan langsung mengarahkan pengguna ke halaman Email Sent!.
 - Sesuai keputusan NC-13, pencarian email di database bersifat case-insensitive, namun pesan di UI Email Sent! mempertahankan casing yang diketik pengguna setelah trim.

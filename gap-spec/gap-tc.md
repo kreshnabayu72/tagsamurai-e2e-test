@@ -869,6 +869,62 @@ Seluruh kebutuhan dependensi otomasi telah dicatat pada `## Prerequisites` masin
 
 ---
 
+# Gap & Temuan — Auth > Reset Password
+
+Sumber: generate spec `specs_dummy/Auth/ResetPassword/` (27 spec, 140 TC aktif terpetakan → setelah dekomposisi dan penutupan gap coverage **30 spec, 144 TC aktif**). Tanggal generate: 2026-10-08.
+
+Dokumen ini mencatat temuan level Test Case granular yang muncul selama audit cakupan traceability suite `ResetPassword` di `specs_dummy` (bukan audit PRD/TC menyeluruh). Isu arsitektur pemisahan uji kompleksitas tinggi terdokumentasi di [gap-spec.md](./gap-spec.md) GAP-RST-E2E-001.
+
+---
+
+## GAP-RST-E2E-001 — Empat TC granular tidak tercakup spec (coverage gap) — tertutup 2026-10-08
+
+**Status:** terselesaikan (TC di-cover ke spec keluarga, 2026-10-08)  
+**Tipe:** coverage gap granular TC → data/fixture user di spec  
+**Dampak:** pada awalnya sedang untuk `TC-AUTH-RST-141` (Automatable terlewat), kini tertutup
+
+Audit traceability seluruh `sourceTc` terhadap `tc-reset-password.md` menemukan 4 TC tidak terpetakan ke spec mana pun:
+
+| TC | Sifat | Isi |
+|---|---|---|
+| `TC-AUTH-RST-138` | Manual Only / Boundary | Jendela sliding window per IP: Request tertua keluar begitu melewati 1 jam sehingga Request berikutnya tidak ditolak 429 |
+| `TC-AUTH-RST-139` | Manual Only / Negatif | Akun Inactive di dalam cooldown 60 detik: pengecekan status akun mendahului cooldown |
+| `TC-AUTH-RST-141` | **Automatable** / Negative | Token milik email lama yang belum ter-invalidate callback ditolak 404 varian Expired + tepat 1 log Failed "Reset link expired" |
+| `TC-AUTH-RST-142` | Manual Only / Boundary | Request di dalam cooldown tetap menambah counter per IP sehingga Request ke-21 ditolak 429 |
+
+Khusus `TC-AUTH-RST-141` bertanda `Automatable`, sehingga pengeluarannya melanggar `docs/e2e-conventions.md` bagian 2 (label `Manual Only` / `Automatable` bukan alasan mengeluarkan TC). Tiga lainnya menguji aturan yang berbeda dari skenario 429/kuota yang sudah tercakup di spec 006/007.
+
+**Yang diterapkan di spec:**
+- `TC-AUTH-RST-138` & `TC-AUTH-RST-142` → spec `TC-AUTH-RST-E2E-006` (keluarga IP Rate Limiting).
+- `TC-AUTH-RST-139` → spec `TC-AUTH-RST-E2E-007` (keluarga rate limit per email & cooldown).
+- `TC-AUTH-RST-141` → spec `TC-AUTH-RST-E2E-023` (keluarga perubahan state user di tengah alur).
+- `TC-AUTH-RST-140` (pencabutan refresh token biometric oleh reset sukses) → **eksklusi disengaja**: `Manual Only` dan menuntut harness aplikasi native Android dengan perangkat/fixture biometric, di luar jangkauan suite web TestSpectra. Keputusan ini dicatat sebagai eksklusi domain, bukan dikeluarkan karena alasan `Manual Only`.
+
+---
+
+## GAP-RST-E2E-002 — Pengingat: log Reset Password tetap ATOMIS (berbeda dari OTP/MFA best-effort) — BUKAN gap
+
+**Status:** bukan gap (perilaku yang disengaja)  
+**Tipe:** konsistensi arsitektur logging antar-modul auth  
+**Dampak:** bila terlewat, otomasi bisa salah meniru pola *best-effort*
+
+Pada modul Login with OTP dan MFA, penulisan audit log ke *Session* dan *User Log* berlangsung *best-effort* dengan retry di luar transaksi keputusan auth (resolusi GAP-447). **Reset Password justru sebaliknya**: PRD `reset-password.md` §9.8 dan `TC-AUTH-RST-103` (NC-19) menetapkan penulisan log di kedua surface berlangsung **atomik** dalam transaksi yang sama dengan keputusan reset — kegagalan penulisan log membatalkan seluruh aksi.
+
+**Yang dilakukan di spec:** perilaku atomik dipertahankan dan tidak "disejajarkan" dengan pola best-effort. Spec `TC-AUTH-RST-E2E-024` memverifikasi atomicity (fault-injection DB rollback, langkah atomicity), dan `TC-AUTH-RST-E2E-025` memverifikasi kondisi yang tidak dicatat. Ini adalah perbedaan arsitektur antar-modul yang disengaja dan mutlak dijaga di otomasi.
+
+---
+
+## Kepatuhan Suite Reset Password
+
+- **Cakupan TC:** 144 dari 145 TC granular aktif (`TC-AUTH-RST-01` s/d `TC-AUTH-RST-145`) terpetakan; TC-140 satu-satunya yang tereksekusi eksklusi (harness mobile biometric, lihat GAP-RST-E2E-001).
+- **Duplikasi TC:** 0 (setiap `TC-AUTH-RST-NN` hanya muncul tepat di satu `sourceTc` spec).
+- **Verifikasi Lint:** `npx spectra lint --strict specs_dummy/Auth/ResetPassword` → `✓ 30 specs and 1 suites verified. 0 lint errors found.`
+- **Karakter Non-Kanonikal:** 0 karakter CJK atau full-width punctuation residue.
+- **Status Spec:** Seluruh 30 spec berstatus `draft`, siap untuk fase pembuatan script otomasi (`tagsamurai-e2e-generate-script`).
+
+
+---
+
 # Gap & Temuan — Admin Console > Settings > Group
 
 Sumber: generate spec `specs_dummy/AdminConsole/SettingsGroup/` (56 spec, 189 TC aktif dari `TC-AC-SG-1` sampai `TC-AC-SG-223`). Tanggal generate: 2026-10-08.

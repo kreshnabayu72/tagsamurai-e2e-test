@@ -28,7 +28,7 @@ coverage:
 1. Buka tautan reset valid di browser web
 2. Verifikasi halaman Setup New Password berhasil dirender
 3. Verifikasi title halaman adalah "Setup New Password"
-4. Verifikasi subtitle memuat alamat email "Please enter a new password for budisantoso@qwertysystem.net"
+4. Verifikasi subtitle memuat alamat email "Set a new password to log in for budisantoso@qwertysystem.net."
 
 ### Pembukaan berulang kali (Idempotent GET /validate)
 

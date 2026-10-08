@@ -13,8 +13,6 @@ sourceTc:
   - TC-AUTH-RST-76
   - TC-AUTH-RST-77
   - TC-AUTH-RST-78
-  - TC-AUTH-RST-122
-  - TC-AUTH-RST-124
 coverage:
   web: automated
 ---
@@ -57,7 +55,7 @@ coverage:
 16. Masukkan "QaBaru!2027" pada field Password
 17. Masukkan "QaBeda!2028" pada field Confirm Password
 18. Klik tombol [Reset Password]
-19. Verifikasi caption inline "Password and Confirm Password must match" tampil di bawah field Confirm Password
+19. Verifikasi caption inline "Passwords do not match" tampil di bawah field Confirm Password
 20. Verifikasi submit diblokir di sisi client
 
 ### Penolakan server terhadap pelanggaran policy dan retensi token
@@ -80,15 +78,9 @@ coverage:
 30. Klik tombol [Reset Password]
 31. Verifikasi server tidak melakukan trim spasi dan menolak password karena mengandung karakter spasi yang dilarang
 
-### Penegakan aturan oleh server (Defense-in-Depth)
-
-32. Kirimkan HTTP request langsung ke endpoint `/confirm` dengan Confirm Password kosong atau tidak cocok
-33. Verifikasi server menolak request dengan status HTTP 400 atau 422
-34. Kirimkan HTTP request langsung dengan password yang melanggar policy
-35. Verifikasi server menegakkan Password Policy secara independen dari validasi browser
-
 ## Notes
 
 - Sesuai keputusan NC-15, saat kedua field password kosong, kedua caption error ditampilkan bersamaan pada field masing-masing.
 - Sesuai PRD §9.4.3 Must NOT 5, kegagalan submit akibat validasi policy tidak boleh mengonsumsi token reset.
 - Sesuai PRD §6 V-AUTHRST-04 s/d V-AUTHRST-07, konfirmasi password harus identik dan password tidak boleh mengandung spasi pada posisi mana pun.
+- Uji penegakan aturan oleh server terhadap payload tidak valid (`TC-AUTH-RST-122`, `TC-AUTH-RST-124`) dipisahkan ke spec `TC-AUTH-RST-E2E-030` (dekomposisi GAP-RST-E2E-001).

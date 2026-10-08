@@ -28,16 +28,17 @@ coverage:
 1. Amati form Setup New Password dari atas ke bawah
 2. Verifikasi logo TAG Samurai tampil di bagian tengah atas
 3. Verifikasi title halaman adalah "Setup New Password"
-4. Verifikasi subtitle halaman adalah "Please enter a new password for budisantoso@qwertysystem.net"
-5. Verifikasi field Password tampil dengan label "Password", placeholder "Enter your password", dan karakter dalam keadaan masked (tersembunyi)
-6. Verifikasi field Confirm Password tampil dengan label "Confirm Password", placeholder "Confirm your password", dan karakter dalam keadaan masked
+4. Verifikasi subtitle halaman adalah "Set a new password to log in for budisantoso@qwertysystem.net."
+5. Verifikasi field Password tampil dengan label "New Password", placeholder "Enter new password", dan karakter dalam keadaan masked (tersembunyi)
+6. Verifikasi field Confirm Password tampil dengan label "Confirm Password", placeholder "Confirm new password", dan karakter dalam keadaan masked
 7. Verifikasi kedua field memiliki ikon toggle intip (eye icon) di sisi kanan
-8. Verifikasi bagian checklist Password Policy menampilkan 5 butir persyaratan dengan warna netral abu-abu (belum terpenuhi):
+8. Verifikasi bagian checklist Password Policy menampilkan 6 butir persyaratan dengan warna netral abu-abu (belum terpenuhi):
    - "Minimum 8 characters"
-   - "At least 1 uppercase letter (A-Z)"
-   - "At least 1 lowercase letter (a-z)"
-   - "At least 1 number (0-9)"
-   - "At least 1 special character (!@?&)"
+   - "One uppercase (A-Z)"
+   - "One lowercase (a-z)"
+   - "One number (0-9)"
+   - "One special character"
+   - "Password cannot contain spaces"
 9. Verifikasi tombol [Reset Password] tampil dengan styling solid primary dan dalam keadaan enabled
 
 ### Aksesibilitas keyboard dan urutan Tab
