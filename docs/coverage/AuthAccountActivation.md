@@ -2,7 +2,7 @@
 
 Sumber: `auth/account-activation/TestCases/tc-account-activation.md` (139 TC, `TC-AUTH-ACT-01`–`139`). Suite: `specs/Auth/AccountActivation/`. Status semua spec: `draft`, belum ada script.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 135 TC masuk spec, 4 TC hanya-BE. TC-135 s/d 139 ditambahkan setelah commit awal: 135, 136, 137 digabung ke spec 005, 022, 027; 138 dan 139 di spec baru 031. Setiap TC terpetakan tepat ke satu spec. Asersi absence pencatatan dari TC-01 dan TC-74 diuji di spec 017, dari TC-11 dan TC-98 di spec 029 (dicatat di `## Notes` spec 001, 009, 010, 023, 017, dan 029). Spec 015 dihapus; TC-129 dan TC-130 pindah ke spec 020 (kelas defense-in-depth).
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 135 TC masuk spec, 4 TC hanya-BE. TC-135 s/d 139 ditambahkan setelah commit awal: 135, 136, 137 digabung ke spec 005, 022, 027; 138 dan 139 di spec baru 031. Setiap TC terpetakan tepat ke satu spec. Asersi absence pencatatan dari TC-01 dan TC-74 diuji di spec 017, dari TC-11 dan TC-98 di spec 029 (dicatat di `## Notes` spec 001, 009, 010, 023, 017, dan 029). Spec 009 dipecah (TC-73 s/d 77 pindah ke spec 032). Spec 015 dihapus; TC-129 dan TC-130 pindah ke spec 020 (kelas defense-in-depth).
 
 ## TC granular → spec e2e
 
@@ -16,7 +16,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 135 TC masuk spec, 4 TC hanya
 | TC-AUTH-ACT-E2E-006-validasi-kosong-dan-konfirmasi-tidak-sama | Validasi Field Kosong dan Confirm Password Tidak Sama | 38, 39, 40, 41, 42, 43, 44, 53, 54, 55, 56 |
 | TC-AUTH-ACT-E2E-007-submit-diblokir-kebijakan-password | Submit Diblokir saat Password Tidak Memenuhi Policy | 45, 46, 47, 48, 49, 50, 51, 52 |
 | TC-AUTH-ACT-E2E-008-tanpa-captcha-tanpa-dialog-unsaved | Halaman Set Password Tanpa CAPTCHA dan Tanpa Dialog Unsaved Changes | 57, 58, 59 |
-| TC-AUTH-ACT-E2E-009-aktivasi-berhasil-dan-navigasi | Aktivasi Berhasil, Halaman Activation Success, dan Navigasi | 63, 65, 70, 71, 73, 74, 75, 76, 77 |
+| TC-AUTH-ACT-E2E-009-aktivasi-berhasil-dan-navigasi | Aktivasi Berhasil dengan Password Valid dan Nilai Batas | 63, 65, 70, 71 |
 | TC-AUTH-ACT-E2E-010-refleksi-status-dan-login | Refleksi Status Activated dan Login Setelah Aktivasi | 98, 106, 107, 108 |
 | TC-AUTH-ACT-E2E-011-toggle-active-off | Aktivasi pada User dengan Toggle Active OFF | 72, 89, 109, 126 |
 | TC-AUTH-ACT-E2E-012-link-tidak-valid-token-tidak-dikenal | Halaman Invalid Link untuk Token Tidak Dikenal atau Salah Bentuk | 09, 79, 80, 81, 82 |
@@ -37,6 +37,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 135 TC masuk spec, 4 TC hanya
 | TC-AUTH-ACT-E2E-028-ketahanan-submit-set-password | Ketahanan Submit Set Password terhadap Error Server dan Timeout | 64, 66, 67, 68, 69 |
 | TC-AUTH-ACT-E2E-029-absence-pencatatan-aksi-admin | Tidak Ada Pencatatan oleh Auth Account Activation dari Aksi Admin dan Login | 96, 97 |
 | TC-AUTH-ACT-E2E-030-resend-berulang-status-ubah-email | Resend Berulang, Status Setelah Resend, dan Perubahan Email User Pending Activation | 102, 103, 104 |
+| TC-AUTH-ACT-E2E-032-halaman-activation-success-dan-navigasi | Halaman Activation Success dan Navigasi Sesudah Aktivasi | 73, 74, 75, 76, 77 |
 | TC-AUTH-ACT-E2E-031-pemicu-email-distributor-partner | Activation Email dari Pembuatan Distributor dan Partner di Admin Console | 138, 139 |
 
 ## Lapisan per TC
@@ -98,11 +99,11 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 135 TC masuk spec, 4 TC hanya
 | TC-AUTH-ACT-65 | TC-AUTH-ACT-E2E-009 | FE+BE |
 | TC-AUTH-ACT-70 | TC-AUTH-ACT-E2E-009 | FE+BE |
 | TC-AUTH-ACT-71 | TC-AUTH-ACT-E2E-009 | FE+BE |
-| TC-AUTH-ACT-73 | TC-AUTH-ACT-E2E-009 | FE+BE |
-| TC-AUTH-ACT-74 | TC-AUTH-ACT-E2E-009 | FE+BE |
-| TC-AUTH-ACT-75 | TC-AUTH-ACT-E2E-009 | FE+BE |
-| TC-AUTH-ACT-76 | TC-AUTH-ACT-E2E-009 | FE+BE |
-| TC-AUTH-ACT-77 | TC-AUTH-ACT-E2E-009 | FE+BE |
+| TC-AUTH-ACT-73 | TC-AUTH-ACT-E2E-032 | FE+BE |
+| TC-AUTH-ACT-74 | TC-AUTH-ACT-E2E-032 | FE+BE |
+| TC-AUTH-ACT-75 | TC-AUTH-ACT-E2E-032 | FE+BE |
+| TC-AUTH-ACT-76 | TC-AUTH-ACT-E2E-032 | FE+BE |
+| TC-AUTH-ACT-77 | TC-AUTH-ACT-E2E-032 | FE+BE |
 | TC-AUTH-ACT-98 | TC-AUTH-ACT-E2E-010 | FE+BE |
 | TC-AUTH-ACT-106 | TC-AUTH-ACT-E2E-010 | FE+BE |
 | TC-AUTH-ACT-107 | TC-AUTH-ACT-E2E-010 | FE+BE |
