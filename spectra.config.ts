@@ -51,7 +51,16 @@ export default defineConfig({
     fastResponseTime: "200",
     normalResponseTime: "1000",
     monitoredDomains: [],
-    environmentVariables: { DEMO_API_MODE: "sandbox" },
+    // Secrets come from the runner's environment (see .env.example); never commit values.
+    environmentVariables: {
+      DEMO_API_MODE: "sandbox",
+      GS_TC_PASSWORD: process.env.GS_TC_PASSWORD ?? "",
+      AC_TC_PASSWORD: process.env.AC_TC_PASSWORD ?? "",
+      ACT_PASSWORD: process.env.ACT_PASSWORD ?? "",
+      ACT_PASSWORD_ALT: process.env.ACT_PASSWORD_ALT ?? "",
+      ACT_PASSWORD_72: process.env.ACT_PASSWORD_72 ?? "",
+      ACT_PASSWORD_SPECIAL: process.env.ACT_PASSWORD_SPECIAL ?? "",
+    },
     // Demo plugin: registers Spectra.findComponent() / Spectra.findButton() commands.
     plugins: ["@testspectra/plugin-demo"],
   },
