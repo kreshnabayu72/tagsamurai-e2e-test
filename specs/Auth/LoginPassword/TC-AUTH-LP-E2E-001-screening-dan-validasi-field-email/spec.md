@@ -15,10 +15,8 @@ sourceTc:
   - TC-AUTH-LP-14
   - TC-AUTH-LP-15
   - TC-AUTH-LP-16
-  - TC-AUTH-LP-17
   - TC-AUTH-LP-27
-  - TC-AUTH-LP-144
-  - TC-AUTH-LP-145
+  - TC-AUTH-LP-156
 coverage:
   web: automated
 ---
@@ -82,34 +80,25 @@ coverage:
 34. Ganti isi field Email dengan `budisantoso@qwertysystem.n` (karakter TLD setelah titik kurang dari 2)
 35. Selesaikan reCAPTCHA lalu klik tombol [Log in]
 36. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email
+
+### Plus-addressing diterima dan login diproses
+
 37. Ganti isi field Email dengan `budisantoso+qa@qwertysystem.net` (mengandung karakter `+`)
-38. Selesaikan reCAPTCHA lalu klik tombol [Log in]
-39. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email sesuai regex sistem
+38. Verifikasi caption inline "Email format is incorrect" tidak tampil (plus-addressing diterima sistem)
+39. Selesaikan reCAPTCHA lalu klik tombol [Log in]
+40. Verifikasi login berhasil dan browser menuju Portal — Product Hub (plus-addressing diproses seperti email biasa)
+41. Logout dan buka kembali halaman Login with Password
 
-### Validasi batas panjang karakter Email
+### Kapitalisasi email bersifat case-insensitive
 
-40. Masukkan email dengan total 120 karakter (103 karakter `a` diikuti `@qwertysystem.net`) yang belum terdaftar
-41. Selesaikan reCAPTCHA lalu klik tombol [Log in]
-42. Verifikasi caption "Max. 120 characters" tidak tampil
-43. Verifikasi caption inline "Email is not registered yet" tampil di bawah field Email, membuktikan 120 karakter lolos validasi panjang
-44. Ketik 1 karakter tambahan pada field Email sehingga panjangnya menjadi 121 karakter
-45. Verifikasi caption inline "Max. 120 characters" langsung muncul saat mengetik sebelum tombol [Log in] diklik
-46. Selesaikan reCAPTCHA lalu klik tombol [Log in]
-47. Verifikasi tombol [Log in] diblokir dan caption "Max. 120 characters" tetap bertahan di bawah field Email
-
-### Keamanan validasi format (SQL Injection dan XSS)
-
-48. Ganti isi field Email dengan string injeksi SQL `' OR 1=1 --`
-49. Selesaikan reCAPTCHA lalu klik tombol [Log in]
-50. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email
-51. Verifikasi tidak ada error server 500 atau kebocoran data database
-52. Ganti isi field Email dengan string script `<script>alert(1)</script>`
-53. Selesaikan reCAPTCHA lalu klik tombol [Log in]
-54. Verifikasi caption inline "Email format is incorrect" tampil di bawah field Email
-55. Verifikasi teks ditampilkan sebagai teks murni tanpa ada dialog alert atau eksekusi script
+42. Masukkan email `BudiSantoso@QwertySystem.net` (kapitalisasi campuran) pada field Email
+43. Masukkan password `Spectra.env.AUTH_PASSWORD` pada field Password
+44. Selesaikan reCAPTCHA lalu klik tombol [Log in]
+45. Verifikasi caption inline "Email is not registered yet" tidak tampil
+46. Verifikasi login berhasil dan browser menuju Portal — Product Hub dengan sesi milik `budisantoso@qwertysystem.net`
+47. Logout dan buka kembali halaman Login with Password
 
 ## Notes
 
-- Spec ini menggabungkan seluruh screening struktur login form dan validasi format, batasan karakter, serta sanitasi keamanan pada input Email.
-- Sesuai PRD §9.9 dan LLD §2, regex validasi email menolak karakter `+` sebagai format tidak valid (`NC-16`).
-- Batas maksimal 120 karakter memicu pesan "Max. 120 characters" secara langsung saat pengetikan melebihi kuota (`NC-08`).
+- Spec ini mencakup screening struktur login form serta validasi format dan normalisasi (plus-addressing, case-insensitive) pada input Email; uji keamanan injeksi SQL/XSS dipecah ke E2E-024 dan uji batas panjang karakter (120/121, format menang atas panjang) dipecah ke E2E-029 (lihat `gap-spec/gap-spec.md` GAP-LP-E2E-009).
+- Sesuai PRD `V-AUTHLP-02` dan `auth-foundation.md` §4.0a, karakter `+` (plus-addressing) diterima sebagai format email valid dan login diproses ke akun yang sama; kapitalisasi email bersifat case-insensitive (`TC-AUTH-LP-27`, `TC-AUTH-LP-156`).

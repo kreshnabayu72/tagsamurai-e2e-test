@@ -185,6 +185,20 @@ Frasa "bila terdeteksi sbg abandoned" membuat pencatatan ini terasa opsional, pa
 
 ---
 
+## GAP-LP-E2E-009 — User `wahyuhidayat` dipakai di langkah tampering token tanpa tercantum di Prerequisites
+
+**Status:** terselesaikan (diperbaiki saat migrasi ke E2E-027, 2026-10-08)  
+**Tipe:** kelengkapan fixture data user di spec  
+**Dampak:** rendah, memblokir eksekusi langkah tampering token jika fixture tidak tersedia
+
+Pada suite baru (`specs/Auth/LoginPassword/`), spec `TC-AUTH-LP-E2E-011` langkah 29 (skenario `TC-AUTH-LP-143` — token pra-autentikasi dimodifikasi) mengarahkan login dengan user `wahyuhidayat@qwertysystem.net`, tetapi user tersebut tidak tercantum pada `## Prerequisites` — daftar prereq hanya mencantumkan `tonokurniawan`, `hadigunawan`, `sitirahmawati`, `ninamarlina`, `ikapertiwi`, `jonoiskandar`, `sriwahyuni`, `rahmathidayat`.
+
+**Yang diterapkan:** saat dekomposisi E2E-011, skenario TC-143 dipindah ke spec `TC-AUTH-LP-E2E-027` (*Lifecycle & idempotensi token persetujuan pre-auth*) dan user `wahyuhidayat@qwertysystem.net` ditambahkan ke daftar Prerequisites sebagai akun subjek untuk token yang dimodifikasi.
+
+> Rujukan arsitektural dekomposisi yang melahirkan E2E-027 dan E2E-028 (TC-90 ikut dipindah dari E2E-011) terdokumentasi di [gap-spec.md](./gap-spec.md) GAP-LP-E2E-009.
+
+---
+
 ## Kepatuhan
 
 - Tidak ada TC aktif yang dikeluarkan dari spec. 74 dari 74 tercakup, tanpa duplikasi `sourceTc`.

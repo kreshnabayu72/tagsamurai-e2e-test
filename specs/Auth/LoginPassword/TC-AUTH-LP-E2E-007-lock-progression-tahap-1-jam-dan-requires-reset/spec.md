@@ -53,7 +53,7 @@ coverage:
 
 14. Aktifkan intersepsi jaringan pada browser
 15. Kirim request HTTP POST login secara langsung dengan kredensial benar `QaLogin#2026` saat lock 1 jam masih aktif
-16. Verifikasi backend mengembalikan status penolakan 423 Locked / error lock
+16. Verifikasi backend merespons HTTP 200 dengan `outcome: locked` dan `error_code: LOCKED_1H` (penolakan lock tidak menggunakan status 4xx; `openapi.yaml` `/auth/login`)
 17. Buka URL Portal — Product Hub secara manual dan verifikasi browser ditolak kembali ke halaman Login
 
 ### Kegagalan ke-7 dan ke-8 (Window 3)

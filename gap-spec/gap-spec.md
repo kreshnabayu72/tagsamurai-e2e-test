@@ -191,3 +191,47 @@ Spec `038` awal memuat 34 langkah uji yang mencampuradukkan screening visual bar
 - **Beban Langkah Uji:** Seluruh spec marathon berhasil dieliminasi; langkah uji terpanjang terpangkas dari **103 steps** menjadi maksimal **45 steps**.
 - **Integritas Linting:** `npx spectra lint --strict specs/GlobalSettings/Division` terverifikasi **0 lint errors**.
 
+---
+
+# Auth > Login with Password
+
+Sumber: generate spec `specs/Auth/LoginPassword/` (sebelumnya 23 spec, 161 TC aktif terpetakan; setelah dekomposisi **29 spec**, 161 TC aktif dari `TC-AUTH-LP-01` sampai `TC-AUTH-LP-163`). Tanggal generate: 2026-10-06, diperbarui terhadap PRD/TC 2026-10-07; dekomposisi: 2026-10-08.
+
+## GAP-LP-E2E-009 — Pemisahan Uji Kompleksitas Tinggi dari Spec Heterogen dan Dekomposisi Modular (23 → 29 Specs)
+
+**Status:** terselesaikan via restrukturisasi arsitektur spec E2E (2026-10-08)  
+**Tipe:** arsitektur test case & isolasi eksekusi otomasi  
+**Dampak:** tinggi terhadap stabilitas otomasi Playwright, pencegahan kegagalan berantai (*flakiness cascading*), dan kecepatan diagnosis kegagalan di CI/CD
+
+Pada rangkaian 23 spec `LoginPassword`, teridentifikasi penggabungan beberapa pengujian teknis tingkat tinggi ke dalam 1 spec hanya karena berada di halaman (screen) yang sama:
+
+1. **Injeksi SQL/XSS di Spec Screening Validasi Email (E2E-001, 69 steps):** Uji keamanan payload `' OR 1=1 --` dan `<script>alert(1)</script>` dicampur dengan screening elemen, urutan Tab, validasi format/blur, plus-addressing, case-insensitive, dan boundary 120/121 karakter — concern keamanan tergabung dengan inspeksi visual.
+2. **Bypass Server-side & Outage Penyedia di Spec Gate reCAPTCHA (E2E-003):** Skenario token reCAPTCHA dibuang dari payload (Defense-in-Depth) dan simulasi outage penyedia reCAPTCHA (fault injection 503) dicampur dengan ciri evaluasi gate biasa (submit tanpa token, token expired, urutan evaluasi Password kosong mendahului).
+3. **Alur Reset Password Lintas Modul vs Semantik Reset Counter (E2E-009, 49 steps — terpanjang):** Pemulihan via modul Reset Password (token email + modul eksternal) digabung dengan semantik reset counter harian oleh login sukses yang memerlukan time-travel dan 4 user fixture tambahan.
+4. **Mega-Spec Konfirmasi Agreement (E2E-011, 41 steps):** Validasi checkbox dan pemulihan dicampur dengan stale document 409 (publikasi versi policy via Admin Console), lifecycle token pre-auth (TTL 10 menit + time-travel), tampering token (intercept), double-click guard, dan reuse token — 6 personae + 2 akun principal + TTL mocking dalam satu file.
+5. **Verifikasi Absence Log Digabung dengan Pencatatan Kegagalan (E2E-017):** Asersi "baris log TIDAK muncul" (email kosong, format salah, belum terdaftar, lock aktif, navigasi, policy berubah, rate limit) dicampur dengan asersi pencatatan kegagalan (Status/Note spesifik), dua konsep verifikasi yang berlawanan arah; TC-90 (meninggalkan layar Confirm to Continue) bahkan menetap di spec E2E-011 padahal isinya verifikasi absence log.
+6. **Data-gap fixture:** E2E-011 mengarahkan langkah tampering token ke user `wahyuhidayat@qwertysystem.net` (TC-143) yang tidak tercantum pada `## Prerequisites` — diperbaiki saat migrasi ke E2E-027 (lihat `gap-tc.md` GAP-LP-E2E-009).
+
+**Solusi & Keputusan yang Diterapkan di Spec (23 → 28 Specs Terisolasi):**
+
+| Spec hasil | Isi | TC sumber | Dipecah dari |
+|---|---|---|---|
+| **E2E-024** | Defense-in-Depth injeksi SQL & XSS field Email | 144, 145 | E2E-001 |
+| **E2E-025** | Defense-in-Depth & resilience token reCAPTCHA (bypass server-side, outage penyedia) | 100, 139 | E2E-003 |
+| **E2E-026** | Pemulihan lock counter oleh login sukses tanpa Reset Password (kosong/tanpa captcha tak dihitung, login sukses reset, password benar → Agreement, pasca tahap 1 jam time-travel) | 66, 67, 68, 152, 163 | E2E-009 |
+| **E2E-027** | Lifecycle & idempotensi token persetujuan pre-auth (stale doc 409, expired vs sebelum TTL, tampering, double-click, single-use) | 87, 88, 89, 143, 148, 149 | E2E-011 |
+| **E2E-028** | Verifikasi kondisi yang TIDAK dicatat di kedua surface log (termasuk meninggalkan layar Confirm to Continue) | 90, 117, 118, 119, 120, 121, 122, 123 | E2E-011 + E2E-017 |
+| **E2E-029** | Batas panjang karakter Email (120 lolos, 121 ditolak tanpa blokir input, format menang atas panjang) | 17, 161 | E2E-001 |
+
+Inspirasi pola isolasi: spec rate limit (E2E-015), resilience log (E2E-018), dan concurrency multi-tab (E2E-020) yang sejak awal sudah terisolasi satu-concern.
+
+**Keputusan yang DITAHAN (dengan alasan):**
+- **E2E-014, E2E-016, E2E-019, E2E-021, E2E-023** dibiarkan utuh karena seluruh isinya masih satu concern keluarga (resilience server; kolom/derivasi audit; sinkronisasi status; perilaku mobile; persetujuan lintas modul) walaupun memuat harness berat.
+- **TC-140 (E2E-007)** dan **TC-142 (E2E-012)** dipertahankan di spec asalnya: keduanya adalah uji defense-in-depth yang konteksnya bergantung pada state lock tahap 1 jam / handoff MFA yang baru saja dibangun pada langkah sebelumnya; memindahkannya ke spec defense generik akan memaksa setup ulang state berat (lock progression / MFA handoff) dan menaikkan total waktu eksekusi.
+
+**Hasil & Metrik Arsitektural Akhir:**
+- **Total Specs:** **29 spec atomik** (`TC-AUTH-LP-E2E-001` s/d `TC-AUTH-LP-E2E-029`).
+- **Cakupan Granular:** **161/161 TC terpetakan tepat satu kali** (tidak ada duplikat; TC-21/22 tetap di luar spec atas keputusan review terpisah).
+- **Beban Langkah Uji:** Puncak spec marathon turun dari **69 steps (E2E-001)** dan **49 steps (E2E-009)** menjadi maksimal **47 steps**; E2E-001 69 → 47, E2E-003 28 → 19, E2E-009 49 → 18, E2E-011 41 → 15, E2E-017 35 → 20.
+- **Integritas Linting:** `npx spectra lint --strict specs/Auth/LoginPassword` terverifikasi **0 lint errors** (29 specs and 1 suites verified).
+

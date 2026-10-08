@@ -16,6 +16,7 @@ sourceTc:
   - TC-AUTH-LP-135
   - TC-AUTH-LP-136
   - TC-AUTH-LP-137
+  - TC-AUTH-LP-162
 coverage:
   web: automated
 ---
@@ -28,6 +29,7 @@ coverage:
   - Sesi 1: User yang melakukan login di form Login with Password.
   - Sesi 2: Administrator dengan role Total Control (Global Settings) yang memantau surface `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log`.
 - User subjek: `budisantoso@qwertysystem.net` (nama Budi Santoso, Employee ID `EMP-1021`, Position `Finance Manager`, Division `Finance`), `suryadharma@qwertysystem.net` (dengan Agreement), `taufanaditya@qwertysystem.net` (dengan MFA), `winarsih@qwertysystem.net` (tanpa atribut organisasi).
+- Fixture BE untuk mengirim request login tanpa header User-Agent.
 
 ## Test Steps
 
@@ -91,6 +93,12 @@ coverage:
 31. Pada Sesi 2: Ubah Time Zone di General Settings menjadi `(UTC+08:00)`, simpan
 32. Verifikasi jam pada baris log yang sama bergeser maju tepat 1 jam
 33. Kembalikan seluruh pengaturan General Settings ke default
+
+### Nilai Device / Browser saat header User-Agent kosong
+
+34. Pada Sesi 1: Kirim request login `winarsih@qwertysystem.net` dengan password `QaLogin#2026` tanpa header User-Agent (fixture BE)
+35. Pada Sesi 2: Muat ulang `Global Settings > Activity Log > Session`
+36. Verifikasi kolom Device / Browser pada baris terbaru untuk "Winarsih K" menampilkan nilai "—" (bukan teks format "[Browser] on [OS]" dan bukan sel kosong)
 
 ## Notes
 
