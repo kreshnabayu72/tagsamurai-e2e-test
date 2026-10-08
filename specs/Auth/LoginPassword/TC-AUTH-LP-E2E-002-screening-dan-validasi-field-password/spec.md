@@ -8,8 +8,6 @@ sourceTc:
   - TC-AUTH-LP-03
   - TC-AUTH-LP-19
   - TC-AUTH-LP-20
-  - TC-AUTH-LP-21
-  - TC-AUTH-LP-22
   - TC-AUTH-LP-23
 coverage:
   web: automated
@@ -20,7 +18,6 @@ coverage:
 ## Prerequisites
 
 - User belum login (guest); browser web diarahkan ke URL `/login`.
-- User `tikawulandari@qwertysystem.net` aktif dengan password yang memiliki spasi di awal dan akhir (` Spasi#2026 `).
 - User `budisantoso@qwertysystem.net` aktif dengan password `QaLogin#2026`.
 - User `jokosusilo@qwertysystem.net` aktif dengan hitungan gagal 0.
 - Password rahasia diambil dari environment variable dan fixture.
@@ -57,30 +54,18 @@ coverage:
 20. Verifikasi Alert Danger "Incorrect email or password" tampil tepat di atas tombol [Log in]
 21. Verifikasi field Password dikosongkan secara otomatis setelah penolakan kredensial
 
-### Penanganan spasi pada Password
-
-22. Masukkan email `tikawulandari@qwertysystem.net` pada field Email
-23. Masukkan password tanpa spasi `Spasi#2026` pada field Password
-24. Selesaikan reCAPTCHA
-25. Klik tombol [Log in]
-26. Verifikasi Alert Danger "Incorrect email or password" tampil di atas tombol [Log in] membuktikan spasi tidak otomatis diabaikan
-27. Masukkan kembali email `tikawulandari@qwertysystem.net`
-28. Masukkan password asli yang memuat spasi di awal dan akhir ` Spasi#2026 `
-29. Selesaikan reCAPTCHA
-30. Klik tombol [Log in]
-31. Verifikasi login berhasil dan browser berpindah ke Portal — Product Hub
-
 ### Penanganan karakter khusus pada Password
 
-32. Buka kembali halaman Login with Password dalam keadaan logout
-33. Masukkan email `jokosusilo@qwertysystem.net` pada field Email
-34. Masukkan kombinasi karakter khusus yang salah `x'"<>&%$#@!` pada field Password
-35. Selesaikan reCAPTCHA
-36. Klik tombol [Log in]
-37. Verifikasi Alert Danger "Incorrect email or password" tampil di atas tombol [Log in]
-38. Verifikasi sistem tidak menghasilkan error 500 atau unhandled exception saat menerima karakter kutip dan simbol
+22. Buka kembali halaman Login with Password dalam keadaan logout
+23. Masukkan email `jokosusilo@qwertysystem.net` pada field Email
+24. Masukkan kombinasi karakter khusus yang salah `x'"<>&%$#@!` pada field Password
+25. Selesaikan reCAPTCHA
+26. Klik tombol [Log in]
+27. Verifikasi Alert Danger "Incorrect email or password" tampil di atas tombol [Log in]
+28. Verifikasi sistem tidak menghasilkan error 500 atau unhandled exception saat menerima karakter kutip dan simbol
 
 ## Notes
 
 - Karakter spasi pada field Password tidak boleh di-trim oleh FE maupun BE; spasi diperlakukan sebagai bagian utuh dari kredensial password.
 - Password salah selalu menghasilkan Alert Danger "Incorrect email or password" di atas tombol [Log in] sesuai NC-05.
+- Pengujian verifikasi spasi password (`TC-AUTH-LP-21`, `TC-AUTH-LP-22`) berstatus Manual Only karena fixture password berspasi hanya dapat diset langsung oleh tim BE; tidak dicakup spec automation ini.

@@ -10,6 +10,8 @@ sourceTc:
   - TC-AUTH-LP-73
   - TC-AUTH-LP-74
   - TC-AUTH-LP-142
+  - TC-AUTH-LP-155
+  - TC-AUTH-LP-158
 coverage:
   web: automated
 ---
@@ -22,6 +24,8 @@ coverage:
 - User `watihandayani@qwertysystem.net` aktif; browser yang digunakan merupakan perangkat baru (fingerprint belum tersimpan).
 - User `bayunugroho@qwertysystem.net` aktif; simulasi IP / koordinat lokasi berjarak >100 km dari login terakhir.
 - User `citradewi@qwertysystem.net` aktif; simulasi IP / geo-location dari negara berbeda dari login terakhir.
+- User `gilangramadhan@qwertysystem.net` aktif; bukan login pertama dan tidak idle; login terakhir dari lokasi A; koneksi uji dari lokasi B berjarak >100 km; geo-IP service dimatikan (failure injection).
+- User `bagaspermana@qwertysystem.net` aktif; bukan login pertama dan tidak idle; login terakhir dari negara A; pasangan negara A–B sudah trusted untuk user ini (fixture modul MFA); koneksi uji dari negara B berjarak <100 km dari lokasi login terakhir.
 - Akses ke mock mailbox atau service inspeksi email untuk verifikasi alert login tak biasa.
 
 ## Test Steps
@@ -56,13 +60,31 @@ coverage:
 17. Selesaikan reCAPTCHA lalu klik tombol [Log in]
 18. Verifikasi browser dialihkan ke halaman MFA
 
+### Geo-IP service tidak tersedia: trigger lokasi dilewati (fail-open)
+
+19. Buka kembali halaman Login with Password dengan koneksi dari lokasi B yang berjarak >100 km dari login terakhir, sementara geo-IP service dimatikan (failure injection)
+20. Masukkan email `gilangramadhan@qwertysystem.net` dan password `QaLogin#2026`
+21. Selesaikan reCAPTCHA lalu klik tombol [Log in]
+22. Verifikasi browser menuju Portal — Product Hub tanpa halaman MFA
+23. Verifikasi tidak ada error atau toast gagal
+
+### Pasangan negara trusted tidak memicu MFA
+
+24. Buka kembali halaman Login with Password dengan koneksi dari negara B (pasangan negara A–B sudah trusted untuk user ini lewat fixture modul MFA), berjarak <100 km dari lokasi login terakhir
+25. Masukkan email `bagaspermana@qwertysystem.net` dan password `QaLogin#2026`
+26. Selesaikan reCAPTCHA lalu klik tombol [Log in]
+27. Verifikasi browser menuju Portal — Product Hub tanpa halaman MFA
+28. Buka kotak masuk email `bagaspermana@qwertysystem.net`
+29. Verifikasi tidak ada email alert login tak biasa yang dikirimkan
+
 ### Sesi penuh diblokir sebelum verifikasi MFA tuntas (Security)
 
-19. Saat browser berada di halaman MFA untuk `watihandayani@qwertysystem.net`, buka tab baru atau ganti URL langsung ke Portal — Product Hub
-20. Tekan Enter
-21. Verifikasi sistem menolak akses ke Portal dan mengembalikan browser ke halaman Login karena tahapan MFA belum diselesaikan
+30. Saat browser berada di halaman MFA untuk `watihandayani@qwertysystem.net`, buka tab baru atau ganti URL langsung ke Portal — Product Hub
+31. Tekan Enter
+32. Verifikasi sistem menolak akses ke Portal dan mengembalikan browser ke halaman Login karena tahapan MFA belum diselesaikan
 
 ## Notes
 
 - Modul Login with Password hanya bertanggung jawab sampai handoff ke MFA (URL redirection) beserta pre-auth token; proses verifikasi OTP / Authenticator diuji di modul MFA.
-- Tiga pemicu MFA pada akun terpercaya: device baru, jarak >100 km, dan negara berbeda (`auth-foundation.md` §5).
+- Pemicu MFA pada akun terpercaya dipisah antara trigger jarak (>100 km) dan trigger negara berbeda; pasangan negara yang sudah trusted bolak-balik tidak memicu MFA (PRD F-AUTHLP-06, §9.4.2, `auth-foundation.md` §5).
+- Bila geo-IP service tidak tersedia, trigger lokasi dilewati (fail-open): login lanjut tanpa MFA tanpa error (`TC-AUTH-LP-155`, PRD §9.2 F-AUTHLP-06, §9.4.2).

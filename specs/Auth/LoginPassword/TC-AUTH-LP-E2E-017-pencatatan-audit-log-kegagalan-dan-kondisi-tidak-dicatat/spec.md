@@ -1,6 +1,6 @@
 ---
 id: TC-AUTH-LP-E2E-017-pencatatan-audit-log-kegagalan-dan-kondisi-tidak-dicatat
-title: Pencatatan kegagalan login dan verifikasi kondisi yang tidak dicatat di kedua surface log
+title: Pencatatan kegagalan login di kedua surface log
 priority: Critical
 caseType: Negative
 status: draft
@@ -15,18 +15,11 @@ sourceTc:
   - TC-AUTH-LP-112
   - TC-AUTH-LP-113
   - TC-AUTH-LP-114
-  - TC-AUTH-LP-117
-  - TC-AUTH-LP-118
-  - TC-AUTH-LP-119
-  - TC-AUTH-LP-120
-  - TC-AUTH-LP-121
-  - TC-AUTH-LP-122
-  - TC-AUTH-LP-123
 coverage:
   web: automated
 ---
 
-# Pencatatan kegagalan login dan verifikasi kondisi yang tidak dicatat di kedua surface log
+# Pencatatan kegagalan login di kedua surface log
 
 ## Prerequisites
 
@@ -34,7 +27,6 @@ coverage:
   - Sesi 1: Form Login with Password untuk submit skenario uji.
   - Sesi 2: Administrator Total Control (Global Settings) yang memantau `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log`.
 - User subjek terdaftar: `jokosusilo@qwertysystem.net`, `dewilestari@qwertysystem.net` (Pending), `agussetiawan@qwertysystem.net` (Inactive), `joniwidodo@qwertysystem.net` (gagal 1), `nuraini@qwertysystem.net` (lock 15m), `okapratama@qwertysystem.net` (lock 1h), `pritasari@qwertysystem.net` (requires reset), `qoriramadhan@qwertysystem.net` (permanent), `ratnadewi@qwertysystem.net` (consent not given).
-- Email belum terdaftar: `tidakada@qwertysystem.net`.
 
 ## Test Steps
 
@@ -61,26 +53,7 @@ coverage:
 19. Pada Sesi 1: Login menggunakan `ratnadewi@qwertysystem.net` sampai layar Confirm to Continue tampil, lalu klik [Continue ➔] tanpa mencentang checkbox
 20. Pada Sesi 2: Verifikasi tercatat 1 baris baru: Status `Failed`, Note `Consent not given`
 
-### Verifikasi kondisi yang TIDAK dicatat pada surface log mana pun
-
-21. Pada Sesi 2: Catat jumlah baris log pada Activity Log > Session dan User Log
-22. Pada Sesi 1: Kosongkan field Email, isi password, selesaikan reCAPTCHA, lalu klik [Log in]
-23. Pada Sesi 2: Muat ulang kedua surface dan verifikasi tidak ada baris log baru bertambah (email kosong tidak punya subjek user)
-24. Pada Sesi 1: Masukkan email dengan format salah `jokosusilo@qwertysystem`, selesaikan reCAPTCHA, lalu klik [Log in]
-25. Pada Sesi 2: Verifikasi tidak ada baris log baru bertambah
-26. Pada Sesi 1: Masukkan email belum terdaftar `tidakada@qwertysystem.net`, selesaikan reCAPTCHA, lalu klik [Log in]
-27. Pada Sesi 2: Verifikasi tidak ada baris log baru bertambah
-28. Pada Sesi 1: Pada akun `nuraini@qwertysystem.net` yang sedang terkunci 15 menit, kirimkan submit tambahan selama lock aktif
-29. Pada Sesi 2: Verifikasi tidak ada baris log baru bertambah untuk percobaan selama masa lock aktif
-30. Pada Sesi 1: Klik link navigasi [Log in with OTP] dan [Reset here]
-31. Pada Sesi 2: Verifikasi aksi navigasi tidak menghasilkan baris log
-32. Pada Sesi 1: Lakukan penolakan confirm agreement akibat versi Privacy Policy berubah di tengah jalan
-33. Pada Sesi 2: Verifikasi reload layar akibat perubahan versi policy tidak menghasilkan baris log
-34. Pada Sesi 1: Kirim submit yang melampaui batas rate limit IP 20 request/menit
-35. Pada Sesi 2: Verifikasi penolakan IP rate limit tidak menghasilkan baris log pada kedua surface
-
 ## Notes
 
-- Sesuai PRD §9.8, hanya attempt dengan subjek user valid dan resolved yang dicatat (TC-AUTH-LP-117 s/d 119).
-- Percobaan selama akun terkunci tidak menambah baris log agar tidak mencemari audit trail (`AUTHLP-LOGIC-02k`).
 - Aksi klik [Continue ➔] tanpa centang dicatat sebagai `Failed` dengan Note `Consent not given` (`NC-13`, TC-AUTH-LP-114).
+- Verifikasi kondisi yang TIDAK dicatat pada kedua surface log (termasuk kondisi lock aktif, navigasi, perubahan versi policy, dan rate limit) dipecah ke spec tersendiri E2E-028 (lihat `gap-spec/gap-spec.md` GAP-LP-E2E-009).
