@@ -1,7 +1,9 @@
 allowBuilds:
   chromedriver: true
   edgedriver: true
+  esbuild: set this to true or false
   geckodriver: true
+  msw: set this to true or false
 minimumReleaseAgeExclude:
   - '@testspectra/cli-darwin-arm64@1.2.7 || 1.2.9'
   - '@testspectra/cli-win32-x64@1.2.7 || 1.2.9'

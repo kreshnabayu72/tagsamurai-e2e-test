@@ -43,9 +43,10 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
    - Expected result ditulis sebagai langkah `Verifikasi ...` yang bisa langsung menjadi assertion.
    - Tiap langkah `Verifikasi` ditaruh langsung setelah aksi yang dicek (petakan lewat awalan "Langkah N:" di expected TC), bukan dikumpulkan di akhir TC, supaya state perantara terasersi tepat waktu. Rujukan "Langkah N" di spec memakai nomor langkah spec yang kontinu, bukan nomor lokal TC sumber.
    - TC yang precondition-nya "Tanpa login" dan muncul setelah langkah yang login dimulai dengan langkah eksplisit membuka konteks bersih (jendela privat baru atau logout). Jangan memakai ulang jendela atau sesi TC sebelumnya.
-8. Jalankan `spectra lint --strict specs/<Suite>` dan perbaiki sampai bersih.
-9. Update `docs/coverage/<Suite>.md`: pemetaan TC granular ke spec, alasan TC hanya-BE, dan tabel "Lapisan per TC" (Spec, Mode).
-10. Laporkan ke user: daftar spec, TC yang dilewati, dan hal yang butuh keputusan. Jangan lanjut membuat `web.test.ts`, itu skill `tagsamurai-e2e-generate-script`.
+8. **Swa-periksa** tiap spec terhadap `docs/e2e-conventions.md` bagian 10 (S-01 sampai S-15) sebelum lint. Audit memakai daftar yang sama dan id yang sama, jadi butir yang lolos di sini tidak menjadi temuan di audit. Periksa khususnya: tiap butir Expected punya `Verifikasi` (S-01), langkah TC dependensi disalin dan bukan dirujuk (S-04), login aktor pertama di hook (S-07), form dirty ditutup lewat `✕` lalu `[Leave]` (S-08), state antar-TC dibersihkan (S-09), `## Prerequisites` sama dengan langkah (S-11), tidak ada endpoint atau akun karangan (S-13), dan `## Notes` memuat langkah penghubung, penyimpangan urutan, pembagian TC lintas spec, serta "Temuan untuk QA" (S-03, S-05, S-15).
+9. Jalankan `spectra lint --strict specs/<Suite>` dan perbaiki sampai bersih.
+10. Update `docs/coverage/<Suite>.md`: pemetaan TC granular ke spec, alasan TC hanya-BE, dan tabel "Lapisan per TC" (Spec, Mode).
+11. Laporkan ke user: daftar spec, TC yang dilewati, temuan TC sumber (ambigu, kontradiktif, precondition kurang; S-15), dan hal yang butuh keputusan. Jangan lanjut membuat `web.test.ts`, itu skill `tagsamurai-e2e-generate-script`.
 
 ## Larangan
 

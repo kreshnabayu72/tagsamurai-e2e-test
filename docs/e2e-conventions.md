@@ -63,7 +63,7 @@ Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spe
 3. **Urutan di dalam sesi:** screening, lalu validasi yang diblokir (tidak membuat data), lalu aksi yang berhasil, lalu verifikasi di list.
 4. **Variasi dari topik yang sama berurutan** (contoh: pilihan akses modul GS, FAMS, lalu entity lain).
 5. **Aksi yang menghabisi atau merusak data (Delete, Bulk Delete, cascade purge, dan sejenisnya) selalu ditaruh paling akhir**, kalau spec yang sama masih punya kasus lain yang butuh baris itu tetap ada. Data yang sudah dihapus tidak bisa dipakai kasus setelahnya, jadi aksi itu ditunda sampai semua kasus lain selesai, walau sumbernya (TC granular) menyebutkannya lebih awal. Bonusnya, aksi ini di ujung sering sekaligus jadi cleanup untuk data seeding lain di spec yang sama.
-6. **Kasus menutup form di akhir spec.** Menutup dalam keadaan dirty memakai form yang sudah dirty dari validasi, jadi tidak butuh buka tambahan. Menutup dalam keadaan bersih butuh form baru, jadi menjadi buka ulang terakhir. Jumlah minimal buka form sama dengan jumlah kejadian yang menutup form.
+6. **Kasus menutup form di akhir spec.** Menutup dalam keadaan dirty memakai form yang sudah dirty dari validasi, jadi tidak butuh buka tambahan. Menutup dalam keadaan bersih butuh form baru, jadi menjadi buka ulang terakhir. Form yang sudah diisi lalu dikosongkan lewat `[Clear Field]` tidak dihitung bersih untuk keperluan isolasi: kasus menutup bersih memakai form baru. Ini hanya soal isolasi state; dialog `Unsaved Changes` mengikuti PRD (form Create yang kosong tidak dirty, jadi menutupnya tidak memunculkan dialog). Pengecualian: kasus yang memang menguji pengosongan atau revert itu sendiri (contoh: kembali ke nilai tersimpan) boleh melanjutkan form yang sama. Jumlah minimal buka form sama dengan jumlah kejadian yang menutup form.
 7. **Tiap validasi diakhiri submit yang diblokir** dan pengecekan tidak ada data tercipta. Satu submit valid di akhir bila memang perlu membuat data.
 8. **Pakai fitur yang menghemat**, contohnya checkbox "Stay on this form after submitting" supaya beberapa create terjadi dalam satu sesi modal tanpa membuka ulang.
 9. **Nilai batas atau nilai khusus** ditempel ke create yang assert-nya tidak bentrok. Satu nilai khusus per field per user, supaya penyebab kegagalan jelas.
@@ -73,12 +73,12 @@ Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spe
 
 13. **Kelas harness yang berbeda dipisah, walau layar dan topiknya sama `[KEPUTUSAN 2026-10-08]`.** Asal: `gap-spec/gap-spec.md` (MFA, ActivityLog, Division, LoginPassword, Role, ResetPassword), pola yang sama berulang di 6 modul. Spec screening atau fungsional biasa tidak boleh memuat TC dari kelas berikut; tiap kelas jadi spec sendiri:
     - **a. Defense-in-depth:** injeksi SQL/XSS, direct API tampering atau 403, manipulasi token, bypass server-side (token dibuang dari payload).
-    - **b. Fault injection / resilience:** HTTP 5xx, timeout, outage penyedia (reCAPTCHA, IdP), rollback DB. `Mode: mock` bila seluruh API di-mock; intercept parsial di atas backend nyata atau asersi state backend → `FE+BE` dengan intercept (bagian 6); kegagalan sisi server atau penyedia yang tidak bisa di-intercept tetap `FE+BE`.
+    - **b. Fault injection / resilience:** HTTP 5xx, timeout, outage penyedia (reCAPTCHA, IdP), rollback DB. Menahan respons hanya untuk mengamati state UI (loading, saving, spinner) bukan kelas b dan boleh berada di spec fungsional; yang masuk kelas b adalah kegagalan atau timeout yang dipaksakan. `Mode: mock` bila seluruh API di-mock; intercept parsial di atas backend nyata atau asersi state backend → `FE+BE` dengan intercept (bagian 6); kegagalan sisi server atau penyedia yang tidak bisa di-intercept tetap `FE+BE`.
     - **c. Multi-konteks:** multi-tab atau device, race antar-sesi, dua tenant, dua admin, flood rate-limit (429).
     - **d. Harness eksternal:** polling mail-catcher, decode QR, hardware biometrik, SSO IdP, time-travel atau TTL, background job.
     - **e. Volume data khusus:** kuota Selection Limit, data ≥ N record, retensi lintas tahun (perluasan prinsip 12).
     - **f. Binary buffer:** isi file CSV/XLSX (BOM, header, format) dipisah dari kegagalan ekspor.
-    - **g. Asersi absence** ("baris log TIDAK muncul") dipisah dari asersi pencatatan (Status/Note spesifik).
+    - **g. Asersi absence** ("baris log TIDAK muncul") dipisah dari asersi pencatatan (Status/Note spesifik). Pengecekan isolasi log per aktor ("entri aktor A tidak muncul di System Log aktor B") adalah asersi kepemilikan log, bukan kelas g, dan boleh berada di spec pencatatan. Asersi jumlah ("tepat 1 entri Delete per brand") bukan absence dan boleh berada di spec fungsional.
     - **h. State tenant:** write-lockdown (Client Suspended, Expired) dipisah dari verifikasi baca murni.
 
     **Cara menggabung antar-aksi:** kelas ringan (a tanpa harness eksternal, b) cukup satu spec per kelas per modul, misalnya satu spec "Resilience" untuk Create, Edit, Delete, dan Export, selama tidak melewati batas smell. Tidak perlu satu spec per aksi, karena tiap spec menambah login, hook, dan cleanup. Kelas berat (c, d, e) satu spec per jenis harness: mail-catcher tidak digabung dengan multi-tab, dan multi-tab tidak digabung dengan dua tenant.
@@ -90,7 +90,7 @@ Prioritas utama adalah efisiensi run. Framework memaksa satu `it()` per file spe
 - Topik aksi berbeda dengan kondisi data yang bervariasi (prinsip 1).
 - Kasus blokir karena kondisi data (prinsip 12).
 - Kelas harness berbeda (prinsip 13).
-- Beda akun, role, atau entity (butuh login atau konteks lain). Pengecualian: Role Matrix (bagian 3a).
+- Beda akun, role, atau entity (butuh login atau konteks lain), kecuali (a) spec Role Matrix (bagian 3a), atau (b) ada Step ganti akun eksplisit dan bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal. Kasus (b) tidak perlu dipisah, tetapi tidak boleh dipakai bila spec melewati batas ukuran atau mencampur kelas harness.
 - Bergantung pada hardware atau simulasi yang berisiko (contoh: scan RFID), supaya kegagalannya tidak menutupi hasil spec lain.
 - Spec yang membuat data dan butuh cleanup dipisah dari spec yang tidak membuat data, supaya kegagalan keras di spec pembuat data tidak menutupi hasil spec lain. Soft assertion tidak menolong untuk kegagalan keras (elemen tidak ketemu, modal tidak terbuka).
 
@@ -109,6 +109,7 @@ Kasus izin per role dipisah menjadi spec **positif** dan spec **negatif** untuk 
 - **Spec positif:** aksi berhasil. Role yang diuji adalah Total Control dan role spesifik yang berhak atas aksi itu.
 - **Spec negatif:** aksi tidak tersedia (Hidden atau Disabled, atau ditolak 403). Role yang diuji adalah Read Only dan role yang tidak berhak atas aksi itu.
 - Kasus yang bukan soal "aksi ditolak" (sidebar tersembunyi, direct URL 403, landing state, target yang terlindungi seperti Default User dan Self) dikelompokkan sebagai spec negatif tersendiri per topik.
+- **Matriks visibilitas per role** (satu daftar elemen, banyak role, hasil berbeda per role) adalah spec Role Matrix sendiri dan boleh memuat kedua polaritas (tampil dan Hidden/Disabled). Beri title tanpa kata "Positif" atau "Negatif" (contoh: "Role Matrix: Visibilitas Elemen Tab Brand per Role"); `caseType` mengikuti bagian 8.
 - Kombinasi role × aksi hanya boleh ditulis kalau ada TC granular sumbernya. Kombinasi yang belum punya TC dilaporkan ke QA sebagai usulan TC baru, bukan dikarang di spec.
 - Cara skrip menjalankan banyak role (perulangan di dalam satu `it()` atau beberapa kali run dengan akun berbeda) diputuskan di tahap script.
 - **Susunan spec Role Matrix `[KEPUTUSAN 2026-09-29]`:** dipilih varian A, yaitu satu spec per aksi dengan positif dan negatif terpisah, karena lebih partikular. Varian B (satu spec positif dan satu spec negatif yang disusun per role, spec 021 dan 022) tidak dipakai, tetapi filenya dibiarkan untuk sementara.
@@ -120,7 +121,7 @@ Aturan hook TestSpectra `[VERIFIED]`: `global-hooks/*` hanya jalan saat batch ru
 | Kebutuhan | Tempat |
 |---|---|
 | Health check environment | `global-hooks/before` |
-| Login akun aktor sekali per suite (lewat `seedSession` atau API) | `specs/<Suite>/hooks/before` |
+| Login akun aktor sekali per suite (lewat `seedSession` atau API). Suite yang spec-nya memakai akun berbeda: login akun aktor pertama spec di hook `before` spec itu (akun dibaca dari `## Prerequisites`), dan hook `after` mengembalikan sesi ke akun default suite. Langkah login di `## Test Steps` hanya untuk ganti akun di tengah spec | `specs/<Suite>/hooks/before` |
 | Reset state ringan (tutup dialog, kembali ke layar awal) | `specs/<Suite>/hooks/beforeEach` |
 | Hapus data yang dibuat spec | `specs/<Suite>/hooks/afterEach` atau `after` |
 | Alur bisnis berulang (buka menu, isi form) | `support/steps/<nama>/` |
@@ -218,9 +219,32 @@ Catatan cakupan per suite di `docs/coverage/<Suite>.md`: tabel TC granular ke sp
 
 ## 9. Aturan Kode
 
-- **Label tombol mengikuti `foundation/process/prd-process/prd-conventions.md` §24.1, bukan disalin dari TC.** Form Create: `[Submit]` dan `[Clear Field]`. Form Edit: `[Save]` dan `[Clear Field]`. Modal Create dan Edit tidak punya `[Cancel]`, dan ditutup lewat `✕` di header atau `Esc`. `[Cancel]` hanya ada di dialog konfirmasi (contoh: unsaved changes, Delete, Deactivate), inline Cancel pending email change, dan modal Setup Column.
+- **Label tombol mengikuti `foundation/process/prd-process/prd-conventions.md` §24.1, bukan disalin dari TC.** Form Create: `[Submit]` dan `[Clear Field]`. Form Edit: `[Save]` dan `[Clear Field]`. Modal Create dan Edit tidak punya `[Cancel]`, dan ditutup lewat `✕` di header atau `Esc`. `[Cancel]` hanya ada di dialog konfirmasi (contoh: unsaved changes, Delete, Deactivate) dan inline Cancel pending email change. Modal Setup Column tidak punya `[Cancel]` (footer `[Reset to Default]` dan `[Save]`); dibatalkan lewat `✕` atau `Esc`.
 - Semua selector hanya di Page Object. Tidak ada `Spectra.get(...)` inline di `web.test.ts`.
 - Selector diutamakan `~aria-label`, lalu `#testid`. Kalau elemen belum punya, minta dev FE menambahkannya. Jangan pakai xpath atau nth-child.
 - Semua teks yang diassert diambil dari fixture atau konstanta resource, bukan diketik ulang di banyak spec.
 - Tidak ada komentar di kode (aturan proyek).
 - `spectra lint --strict <path>` harus bersih sebelum spec dianggap selesai.
+
+## 10. Checklist Kualitas Spec `[KEPUTUSAN 2026-10-09]`
+
+Satu daftar aturan untuk dua pemakai: skill `tagsamurai-e2e-generate-spec` memeriksa tiap butir sebelum `spectra lint` (swa-periksa), dan skill `tagsamurai-e2e-audit` memakai butir yang sama dengan id yang sama pada kategori B, D, dan E. Audit tidak boleh menandai hal yang tidak ada di daftar ini atau di bagian lain konvensi. Kolom Tingkat adalah tingkat awal; skill audit memuat definisi tingkat.
+
+| Id | Aturan | Tingkat |
+|---|---|---|
+| S-01 | Setiap butir Expected Result (a, b, c…) punya langkah `Verifikasi`. Expected bermajemuk (dua klausa atau lebih dalam satu butir) dipecah satu `Verifikasi` per klausa. Butir yang hilang adalah Berat. | Berat |
+| S-02 | Teks UI (toast, dialog, placeholder, error), label tombol, dan nilai yang diketik sama persis dengan TC. Asersi tidak ditambah atau diubah maknanya tanpa dasar kolom Expected Result atau Post Condition TC. | Sedang |
+| S-03 | Langkah penghubung (tutup modal atau menu, reset sort, bersihkan filter atau seleksi, pulihkan viewport) boleh, ditulis sebagai aksi tanpa awalan `Verifikasi`, dan dicatat satu butir di `## Notes`. Asersi tambahan yang tidak ada di TC tidak boleh, kecuali dicatat di `## Notes` beserta alasannya. | Ringan |
+| S-04 | Langkah TC dependensi disalin utuh ke spec (atau dijalankan lewat seeding API). Dilarang menulis "mengikuti TC-xxx" sebagai pengganti langkah. Urutan aksi mengikuti TC (contoh: dialog dibuka dulu, baru pihak lain menghapus, baru konfirmasi). | Sedang |
+| S-05 | Asersi "tidak ada pencatatan/log" hanya di spec absence (kelas g); spec fungsional mencatat rujukan di `## Notes`. Perubahan urutan TC di dalam spec dicatat alasannya di `## Notes`. | Sedang |
+| S-06 | Spec tidak menumpang data atau hasil spec lain; seeding di `before`, cleanup di `after`. Target aksi tulis atau hapus memakai data milik spec, bukan data Pre-setup bersama. Bila terpaksa mengubah Pre-setup, pulihkan dan catat efeknya (contoh: Last Updated) di Prerequisites. | Sedang |
+| S-07 | Login akun aktor pertama di hook (bagian 4); langkah login di `## Test Steps` hanya untuk ganti akun, dan ganti akun punya langkah eksplisit. Spec yang selesai di akun lain memulihkan sesi ke akun default di `after`. | Ringan |
+| S-08 | Menutup form dirty ditulis deterministik: `✕`, verifikasi dialog `Unsaved Changes`, klik `[Leave]`. Reload hanya bila dialog `beforeunload` ditangani dan kemampuannya tertulis di Prerequisites. Tidak ada langkah bersyarat ("bila dialog tampil"). | Sedang |
+| S-09 | State dari TC sebelumnya dalam satu spec dibersihkan sebelum TC berikutnya mengandalkannya (`Unselect All`, kosongkan filter atau Search). Pemulihan state yang diubah spec ditulis sebagai aksi tanpa `Verifikasi`, dengan hook `after` sebagai cadangan. | Sedang |
+| S-10 | Urutan dalam spec mengikuti bagian 3: screening di awal, validasi diblokir sebelum aksi sukses, aksi menghapus data di akhir, jumlah buka form tidak lebih dari jumlah kejadian menutup (prinsip 6), tanpa navigasi berulang yang tidak diuji. | Ringan |
+| S-11 | `## Prerequisites` memuat semua kebutuhan: akun (email dan env var), data Pre-setup dan Dinamis, nilai field wajib lain bila bagian dari objek uji, kemampuan teknis, state global beserta pemulihannya, dan `Mode`. Isinya sama dengan yang dipakai langkah (tidak ada data yang tidak dipakai, tidak ada yang kurang). Notes bukan satu-satunya tempat sebuah kebutuhan. | Sedang |
+| S-12 | Data Dinamis bersuffix per run (pengecualian: Population D-01, 12 brand `Apex Tools` … `Linear Dynamics`, bernama literal karena asersi urutan A-Z dan jumlah; di-seed idempotent, yaitu dilewati bila sudah ada, dan cleanup hanya menghapus yang dibuat spec itu; spec yang menghapus atau mengubah brand memakai brand milik sendiri bersuffix; suite berjalan serial); nama hasil rename atau perubahan ditulis (seeding dan cleanup deterministik); password dan token hanya lewat env; fixture yang belum ada ditandai di Prerequisites. | Sedang |
+| S-13 | Tidak mengarang endpoint, akun, atau mekanisme yang tidak ada di TC, PRD, atau LLD (contoh: endpoint untuk persistensi UI yang PRD sebut `localStorage`). Kebutuhan mock hanya untuk endpoint yang tercantum di sumber. | Sedang |
+| S-14 | Asersi yang bergantung posisi atau keadaan memuat langkah menuju keadaannya (pindah ke halaman terakhir sebelum "di akhir", placeholder dicek saat input kosong, kolom di-hide sebelum dicek hilang). | Sedang |
+| S-15 | Bila TC sumber ambigu, kontradiktif, atau kurang precondition, spec tetap mengikuti TC dan masalahnya dicatat di `## Notes` (butir "Temuan untuk QA") serta di laporan akhir generate. Menambal diam-diam tanpa catatan adalah temuan. | Sedang |
+

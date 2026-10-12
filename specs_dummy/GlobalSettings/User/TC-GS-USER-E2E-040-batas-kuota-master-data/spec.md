@@ -33,13 +33,13 @@ coverage:
 3. Isi user "Final Allowed User" dengan semua field wajib lengkap lalu klik `[Submit]`
 4. Verifikasi toast "User created successfully." muncul, baris masuk tabel di latar belakang, dan form ter-reset sementara popup tetap terbuka
 5. Isi user "Exceed Limit User" dengan semua field wajib lengkap lalu klik `[Submit]`
-6. Verifikasi Dialog Blok muncul di dalam popup yang masih terbuka dengan judul "Limit Reached", isi "You've reached the user limit for this workspace.", dan tombol tunggal `[OK]`, dan "Exceed Limit User" tidak tersimpan
+6. Verifikasi Dialog Blok muncul di dalam popup yang masih terbuka dengan judul "Limit Reached", isi "You've reached the platform limit of {limit} users. Contact support if you need a higher limit.", dan tombol tunggal `[OK]`, dan "Exceed Limit User" tidak tersimpan
 7. Klik `[OK]` lalu klik `✕` untuk menutup modal
 
 ### Klik [+ User] saat sudah di batas
 
 8. Klik `[+ User]`
-9. Verifikasi tombol `[+ User]` tetap aktif (tidak Disabled) dan Dialog Blok "Limit Reached" dengan isi "You've reached the user limit for this workspace." muncul, bukan toast
+9. Verifikasi tombol `[+ User]` tetap aktif (tidak Disabled) dan Dialog Blok "Limit Reached" dengan isi "You've reached the platform limit of {limit} users. Contact support if you need a higher limit." muncul, bukan toast
 10. Verifikasi modal Create tidak terbuka
 11. Klik `[OK]`
 
