@@ -7,7 +7,7 @@ description: Audit hasil generate e2e TAG Samurai untuk satu suite: traceability
 
 Skill ini hanya **melaporkan**. Jangan mengubah file apa pun, termasuk spec, script, dan TC granular. Tampilkan temuan ke user dan tunggu instruksi. Jangan langsung memperbaiki walau temuannya jelas.
 
-Rujukan aturan: `docs/e2e-conventions.md`. Skill ini melengkapi `spectra lint`, yang hanya memeriksa format. Jalankan `spectra lint --strict specs/<Suite>` dan `pnpm type-check` dulu, lalu periksa hal-hal yang tidak dicakup linter.
+Rujukan aturan: `docs/e2e-conventions.md`. Skill ini melengkapi `spectra lint`, yang hanya memeriksa format. Jalankan `python scripts/check-suite.py specs/<Suite> <path tc-[modul].md> docs/coverage/<Suite>.md` lebih dulu (cakupan, duplikat sourceTc, id folder, Mode, spec di atas 35 langkah tanpa alasan, jumlah TC di coverage, asersi absence tanpa anchor) dan jalankan `python scripts/sync-skills.py --check`; lalu Jalankan `spectra lint --strict specs/<Suite>` dan `pnpm type-check` dulu, lalu periksa hal-hal yang tidak dicakup linter.
 
 ## Aturan umum
 
@@ -39,6 +39,7 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - Label tombol dan cara menutup form sesuai bagian 9 konvensi (Create `[Submit]`, Edit `[Save]`, `[Clear Field]`, `✕`/`Esc`, tanpa `[Cancel]` pada modal). Cocokkan ke `prd-conventions.md` §24.1, bukan hanya ke TC.
 - `coverage.web` tidak dinilai terhadap `status`. Kolom itu hanya jenis pengujian, progres dibaca dari `status`.
 - Bahasa spec Indonesia (bagian 7 konvensi): narasi Indonesia, teks UI persis seperti di aplikasi, langkah asersi diawali `Verifikasi`. Spec berbahasa Inggris adalah temuan.
+- Aturan asersi bagian 8b konvensi: request langsung ke server tidak mengasersi perilaku FE; asersi absence punya anchor positif yang terhubung ke pemicu; batas waktu dihitung dari waktu terbit artefak; rate limit menyebut endpoint dan payload flood; state sementara diasersi sebelum langkah yang mengubahnya. Pelanggaran yang bersumber dari expected TC dilaporkan sebagai jenis (2), diarahkan ke perbaikan TC.
 - Spec Role Matrix (bagian 3a): dipisah positif dan negatif, ada tabel "Role yang diuji", dan tiap kombinasi role × aksi punya TC granular sumber. Kombinasi tanpa TC sumber adalah temuan.
 
 **C. Spec → script**
@@ -68,6 +69,13 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - Tidak ada selector mentah di `web.test.ts`. Tidak ada xpath atau nth-child di Page Object.
 - Tidak ada `sleep` atau jeda tetap, komentar di kode, import manual, atau `describe`/`test`.
 - Struktur: suite di `specs/<ModulBesar>/<SubModul>/`, nama folder TC = id, penamaan entitas berprefix modul, tidak ada file di luar folder standar.
+
+**G. Sapuan pola (wajib sebelum laporan final)**
+- Setiap temuan yang bersumber dari satu TC atau satu spec dijadikan pola (frasa, struktur, atau jenis kesalahan), lalu dicari di seluruh `tc-[modul].md` dan seluruh spec suite dengan grep. Contoh: expected perilaku FE pada TC yang langkahnya request langsung ke server ditemukan di TC-132, maka cari juga di TC lain yang memakai frasa "langsung ke server" atau "fixture BE".
+- Tiap kemunculan pola dilaporkan sebagai baris temuan sendiri (atau digabung dalam satu baris dengan daftar lengkap ID-nya), bukan hanya instance yang pertama ketemu. Kolom `Bukti` memuat perintah grep dan jumlah kemunculannya.
+- Perbaikan yang diusulkan wajib mencakup semua kemunculan pola; temuan yang hanya menyebut satu instance padahal polanya muncul lebih dari satu dianggap belum selesai.
+- Putaran audit ulang (setelah perbaikan) mengulang sapuan ini untuk pola yang sudah ditemukan dan menjalankan lagi `scripts/check-suite.py`; audit tidak dinyatakan selesai sebelum kedua hal itu bersih atau dicatat sebagai keputusan.
+- Hasil sapuan yang tidak menemukan kemunculan lain ditulis eksplisit ("pola X: 1 kemunculan, sudah disapu") supaya jelas bahwa sapuan dilakukan.
 
 ## Format laporan
 

@@ -1,486 +1,1161 @@
 # Coverage E2E — Global Settings > User
 
-Sumber: `global-settings/user/TestCases/tc-user.md`. Cakupan saat ini: section 3a (Create, 42 TC, 35 tercakup di 4 spec, 7 dicakup TC frontend, sisi Distributor dan Partner pada TC-15 belum ada), section 3c–3e (Delete, Bulk, Toggle Active, Remove Access, 45 TC, 35 tercakup di 4 spec: Delete, Toggle Active, Remove Access, dan force-logout; 10 TC dicakup TC frontend), section 5a (Search/Filter/Sort/Pagination/Download, 44 TC tercakup di 1 spec dari 104 TC section 5a — sisanya Setup Column dan state retention, sudah dicakup TC frontend), dan Role Matrix section 2 + 3k (19 TC ditambah 6 TC baru 581–586, tercakup di 11 spec: 5 positif, 6 negatif).
-Suite: `specs/GlobalSettings/User/`. Status semua spec: `draft`, belum ada script.
+Sumber: `global-settings/user/TestCases/tc-user.md` (Total 1052 TC aktif, TC ID `TC-GS-USER-1` s.d. `TC-GS-USER-1054`; ID 956 dan 957 unallocated secara permanen).
+Suite: `specs_dummy/GlobalSettings/User/`. Status semua spec: `draft`.
+Total spec: **74 spec**.
 
-**Aturan seleksi (2026-09-30):** spec e2e merangkap TC FE. Semua TC masuk spec kecuali hanya-BE. Spec hanya-FE ditandai `Mode: mock`. Kalimat "sudah dicakup TC frontend" di paragraf cakupan berikut adalah keadaan sebelum perubahan ini dan sekarang berarti antrean spec hanya-FE.
+## Ringkasan Cakupan
+
+Semua 1052 TC granular masuk ke dalam spec E2E (0 TC hanya-BE). Tidak ada TC yang dikeluarkan karena setiap skenario berasal dari interaksi UI, dialog, workflow form, atau tabel.
+
+| Kategori | Jumlah TC | Spec E2E |
+|---|---|---|
+| 1. Initial State & Table List Flow | 43 | TC-GS-USER-E2E-001 s.d. 008 |
+| 2. Role & Capability Access Flow | 59 | TC-GS-USER-E2E-009 s.d. 018 |
+| 3. Core CRUD Operations Flow | 361 | TC-GS-USER-E2E-019 s.d. 045 |
+| 4. Table Rules, Setup Column & Changelog Flow | 462 | TC-GS-USER-E2E-046 s.d. 061 |
+| 5. Pencatatan Audit Log & Multi-Surface Sync | 73 | TC-GS-USER-E2E-062 s.d. 065 |
+| 7. Cross-Module Sync & Foundation Cascading | 23 | TC-GS-USER-E2E-066 s.d. 069 |
+| 8. Security & Defense-in-Depth | 15 | TC-GS-USER-E2E-070 s.d. 071 |
+| 9. Edge Case Matrix & Concurrency Sisa | 16 | TC-GS-USER-E2E-072 s.d. 074 |
+| **Total** | **1052** | **74 Spec** |
 
 ## TC granular → spec e2e
 
-| Spec | Isi | TC sumber |
-|---|---|---|
-| TC-GS-USER-E2E-001 | Screening, validasi, dan menutup modal (2 sesi modal, tidak membuat data) | TC-GS-USER-14, 15 (bagian Client), 25, 457, 16, 17, 19, 192, 420 (121 karakter), 18, 340, 347, 482, 431, 22, 487, 169 |
-| TC-GS-USER-E2E-002 | Create sukses: 3 user dalam 1 sesi modal dengan Stay | TC-GS-USER-13, 20, 469, 471, 473, 191, 440, 341, 489, 468, 470, 472, 474, 476, 420 (batas 120), 65, 346, 21, 143, 405 |
-| TC-GS-USER-E2E-003 | Entity Principal | TC-GS-USER-15 (bagian Principal), 467 |
-| TC-GS-USER-E2E-004 | Scan & Pair TAG | TC-GS-USER-475 |
-| TC-GS-USER-E2E-005 | Delete user: guard, Delete single, lalu Select All dan Bulk Delete di akhir (harus dijalankan terakhir dan tidak paralel) | TC-GS-USER-36, 37, 433, 33, 353, 453, 34, 35, 258, 38, 434, 145, 406, 164, 168, 367 |
-| TC-GS-USER-E2E-006 | Deactivate memaksa logout sesi target (dua sesi browser, dua akun) | TC-GS-USER-481, 251 |
-| TC-GS-USER-E2E-007 | Search, Filter, Sort, Pagination, Download — semua yang benar-benar memukul backend dan mempengaruhi baris/urutan data nyata | TC-GS-USER-358, 359, 360, 361, 362, 554, 555, 556, 557, 357, 127, 197, 198, 199, 200, 201, 202, 207, 208, 364, 128, 218, 219, 220, 221, 222, 223, 224, 225, 227, 228, 229, 230, 210, 211, 212, 216, 132, 131, 490, 491, 492, 493, 494, 496, 497 |
-| TC-GS-USER-E2E-008 | Toggle Active single dan bulk pada berbagai kondisi data | TC-GS-USER-44, 45, 42, 435, 41, 447, 43, 446, 46, 480, 91, 443, 47, 445, 444, 449, 146, 408 |
-| TC-GS-USER-E2E-009 | Remove Access lewat Modal Edit pada berbagai kondisi data | TC-GS-USER-52, 51, 31, 49, 352, 425, 351, 387, 50, 147 |
-| TC-GS-USER-E2E-010 | Role Matrix positif Create (Full CRUD, Create-only) | TC-GS-USER-394, 586 |
-| TC-GS-USER-E2E-011 | Role Matrix positif Edit dan Remove Access (Full CRUD, Update-only) | TC-GS-USER-09, 395, 585, 586 |
-| TC-GS-USER-E2E-012 | Role Matrix positif Toggle Active (Full CRUD, Update-only) | TC-GS-USER-584, 586 |
-| TC-GS-USER-E2E-013 | Role Matrix positif Delete (Full CRUD, Delete-only) | TC-GS-USER-396, 586 |
-| TC-GS-USER-E2E-014 | Role Matrix positif kontrol dan target Total Control (Total Control, Default User) | TC-GS-USER-07, 79, 82 |
-| TC-GS-USER-E2E-015 | Role Matrix negatif Create (Read Only, Update-only, Delete-only) | TC-GS-USER-08, 582, 583 |
-| TC-GS-USER-E2E-016 | Role Matrix negatif Edit, Toggle Active, Resend (Read Only, Create-only, Delete-only) | TC-GS-USER-08, 85, 581, 583 |
-| TC-GS-USER-E2E-017 | Role Matrix negatif Delete (Read Only, Create-only, Update-only) | TC-GS-USER-08, 85, 581, 582 |
-| TC-GS-USER-E2E-018 | Role Matrix negatif target terlindungi Default User dan akun sendiri (Total Control, Default User) | TC-GS-USER-80, 81, 83, 86 |
-| TC-GS-USER-E2E-019 | Role Matrix negatif Full CRUD ke target Total Control | TC-GS-USER-339, 84 |
-| TC-GS-USER-E2E-020 | Role Matrix negatif akses halaman (Read Only, No Role) | TC-GS-USER-486, 10, 12, 11 |
-| TC-GS-USER-E2E-021 | **Varian B (tidak dipakai, file dibiarkan)**: Role Matrix positif gabungan per role — Full CRUD, Total Control, Default User, Create-only, Update-only, Delete-only. Alternatif untuk 010–014 | TC-GS-USER-09, 586, 07, 79, 82, 394, 395, 585, 584, 396 |
-| TC-GS-USER-E2E-022 | **Varian B (tidak dipakai, file dibiarkan)**: Role Matrix negatif gabungan per role — Read Only, Create-only, Update-only, Delete-only, Full CRUD, Total Control, Default User, No Role. Alternatif untuk 015–020 | TC-GS-USER-486, 08, 85, 581, 582, 583, 339, 84, 80, 81, 83, 86, 10, 12, 11 |
-| TC-GS-USER-E2E-023 | Validasi form Edit dan menutup modal Edit (pasangan Edit dari 001) | TC-GS-USER-254, 30, 422, 424, 464, 348, 432, 423, 488 |
-| TC-GS-USER-E2E-024 | Edit user berhasil dan pencatatan Changelog | TC-GS-USER-195, 26, 196, 495, 144, 409 |
-| TC-GS-USER-E2E-025 | Ubah email user dan alur Pending Email Change (butuh mailbox uji) | TC-GS-USER-403, 350, 27, 404, 349, 479, 421, 430, 477, 391, 174 |
-| TC-GS-USER-E2E-026 | Edit Access untuk produk yang subscription-nya tidak aktif (blokir data) | TC-GS-USER-389, 478 |
-| TC-GS-USER-E2E-027 | Edit info dasar Default User (ruang lingkup dibatasi sampai `GAP-274` diputuskan) | TC-GS-USER-29 (sebagian: langkah 1 sampai 2) |
-| TC-GS-USER-E2E-028 | Token konfirmasi perubahan email kedaluwarsa (butuh pemicu waktu) | TC-GS-USER-28, 174 |
-| TC-GS-USER-E2E-029 | Kirim ulang email aktivasi dan konfirmasi (single, bulk, screening tombol tersembunyi) | TC-GS-USER-56, 439, 95, 54, 57, 438, 442 |
-| TC-GS-USER-E2E-030 | Kirim ulang diblokir selama cooldown 60 detik (blokir data) | TC-GS-USER-55, 463 |
-| TC-GS-USER-E2E-031 | Pasang, ganti, dan lepas TAG RFID (butuh simulasi scan) | TC-GS-USER-59, 64, 437, 436, 63, 148 |
-| TC-GS-USER-E2E-032 | Validasi Scan TAG untuk TAG tidak valid, Detail dan modal Create (blokir data) | TC-GS-USER-60, 62, 61, 343, 344, 345 |
-| TC-GS-USER-E2E-033 | Create, Edit, Delete identik di semua tier plan dan Scan TAG hanya Growth ke atas (lima entity) | TC-GS-USER-397, 342 |
-| TC-GS-USER-E2E-034 | Buat dan ubah Temporary User dengan tanggal expiry | TC-GS-USER-66, 336, 68 |
-| TC-GS-USER-E2E-035 | Temporary User nonaktif otomatis saat expiry (berbasis waktu) | TC-GS-USER-67, (perbaikan: Auto-Deactivate di Changelog dan Activity Log, bukan System Log) |
-| TC-GS-USER-E2E-036 | Reaktivasi Temporary User expired dan Bulk Activate yang melewatinya (blokir data) | TC-GS-USER-89, 333, 335, 90, 354, 332, 334, 337 |
-| TC-GS-USER-E2E-037 | Reset Authenticator user lain, akun sendiri, dan Default User (dua sesi login) | TC-GS-USER-71, 72, 94, 69 |
-| TC-GS-USER-E2E-038 | Reset Authenticator tidak tersedia untuk user belum enrolled (blokir data) | TC-GS-USER-70 |
-| TC-GS-USER-E2E-039 | Kelola foto profil dari User Detail dan Modal Edit | TC-GS-USER-75, 76, 74, 371, 78, 542, 373, 541, 372, 77, 407, 163 |
-| TC-GS-USER-E2E-040 | Pembuatan user diblokir saat Master Data Count Limit tercapai (jalan terakhir dan sendirian) | TC-GS-USER-255, 23, 87, 402 |
-| TC-GS-USER-E2E-041 | Data master dihapus atau di-rename saat form terbuka (dua sesi login) | TC-GS-USER-88, 461, 462 |
-| TC-GS-USER-E2E-042 | Dua admin mengubah user yang sama bersamaan (dua sesi login) | TC-GS-USER-441, 401, 399, 400 |
-| TC-GS-USER-E2E-043 | Custom Field Phone tersimpan gabungan dan terbaca kembali di Edit | TC-GS-USER-514 |
-| TC-GS-USER-E2E-044 | Perubahan master data Position tercermin di dropdown form User | TC-GS-USER-166, 415, 416 |
-| TC-GS-USER-E2E-045 | Siklus Custom Field User (buat, deactivate, reactivate, ganti tipe, hapus) tercermin di form dan detail | TC-GS-USER-414, 167, 411, 413, 412 |
-| TC-GS-USER-E2E-046 | Status Active Global tercermin di Settings User Admin Console (dua aplikasi) | TC-GS-USER-170 |
-| TC-GS-USER-E2E-047 | User yang dinonaktifkan hilang dari pilihan transaksi baru di Fixed Asset | TC-GS-USER-388, 579, 580 |
-| TC-GS-USER-E2E-048 | User hasil Import tampil dan bisa di-Edit sama seperti user manual | TC-GS-USER-417, 418 |
-| TC-GS-USER-E2E-049 | Status user menjadi Activated setelah user mengaktifkan akunnya (mailbox uji) | TC-GS-USER-419 |
-| TC-GS-USER-E2E-050 | Konfirmasi ganti email membatalkan token Reset Password lama (mailbox uji) | TC-GS-USER-544, 174 |
-| TC-GS-USER-E2E-051 | User entity lain tidak bocor ke User List (banyak entity) | TC-GS-USER-171, 392 |
-| TC-GS-USER-E2E-052 | Seleksi bulk dibatasi Bulk Action Checkbox Limit (jalan sendirian) | TC-GS-USER-410, 393 |
-| TC-GS-USER-E2E-053 | Assign, Check Out, Check In, Unassign Handheld tercatat di log user | TC-GS-USER-390 |
-| TC-GS-USER-E2E-054 | Tab Role: tampilan, edit CRUD inline, dan sinkron dua arah dengan Role & Permission | TC-GS-USER-96, 578, 454, 355, 98, 165 |
-| TC-GS-USER-E2E-055 | Auto-Revert Total Control dari Tab Role: batal dulu, lalu lanjut (jalan sendirian) | TC-GS-USER-483, 455, 575 |
-| TC-GS-USER-E2E-056 | Target menerima notifikasi saat Total Control atau Read Only dicabut otomatis | TC-GS-USER-252, 253 |
-| TC-GS-USER-E2E-057 | Tab Role tidak bisa diedit aktor Read Only atau capability holder pada target Total Control | TC-GS-USER-498, 499 |
-| TC-GS-USER-E2E-058 | Modal Changelog User > Role: kolom, Action, Filter, Search, Download, Setup Column, sinkron | TC-GS-USER-568, 569, 570, 571, 572, 573, 574 |
-| TC-GS-USER-E2E-059 | Tab Responsibilities menyesuaikan sub-tab dengan entity dan subscription (banyak entity) | TC-GS-USER-100, 101, 484, 104, 380 |
-| TC-GS-USER-E2E-060 | Kolom, urutan, dan toolbar tiap sub-tab Responsibilities | TC-GS-USER-550, 551, 552, 553, 103, 546, 105, 106, 107, 381 |
-| TC-GS-USER-E2E-061 | Empty state per sub-tab Responsibilities dan pencarian tanpa kecocokan | TC-GS-USER-102, 547, 548, 549 |
-| TC-GS-USER-E2E-062 | Tab Non-Login User di Detail Login User (reverse-lookup) | TC-GS-USER-108, 109, 560, 561, 562, 565 |
-| TC-GS-USER-E2E-063 | Filter, Search, sort, Download, Setup Column di Tab Non-Login User | TC-GS-USER-563, 564, 566, 567 |
-| TC-GS-USER-E2E-064 | Ubah Custom Field langsung di User Detail dengan inline-edit | TC-GS-USER-374, 375, 376, 377, 378, 379, 120, 119 |
-| TC-GS-USER-E2E-065 | Inline-edit Custom Field tidak tersedia untuk aktor Read Only dan capability holder | TC-GS-USER-500, 501 |
-| TC-GS-USER-E2E-066 | Custom Field dinonaktifkan admin lain saat inline-edit terbuka (dua sesi, jalan sendirian) | TC-GS-USER-121 |
-| TC-GS-USER-E2E-067 | Tab Changelog dan modal Changelog identik, System Log mencatat aksi yang dilakukan user | TC-GS-USER-110, 111 |
-| TC-GS-USER-E2E-068 | Tab User Log: kolom, format Device / Browser, sort IP Address berbasis string | TC-GS-USER-112, 356 |
-| TC-GS-USER-E2E-069 | Activity Log level Global Settings menampilkan aksi semua user | TC-GS-USER-116 |
-| TC-GS-USER-E2E-070 | Product Selector: opsi produk dan navigasi ke Detail User produk lain | TC-GS-USER-117, 118, 485, 545 |
-| TC-GS-USER-E2E-071 | Opsi Product Selector yang tidak boleh dibaca aktor hilang dari daftar | TC-GS-USER-456 |
-| TC-GS-USER-E2E-072 | Badge User Type dan status Authenticator | TC-GS-USER-122, 123, 124, 426, 125 |
-| TC-GS-USER-E2E-073 | Header dan General Information User Detail, termasuk tampilan Custom Fields | TC-GS-USER-382, 383, 384, 385, 386, 536 |
-| TC-GS-USER-E2E-074 | Toggle Active dan menu Header Disabled untuk target yang dilindungi | TC-GS-USER-502, 503, 504 |
-| TC-GS-USER-E2E-075 | Inline-edit Custom Field gagal karena error server (`Mode: mock`) | TC-GS-USER-577 |
-| TC-GS-USER-E2E-076 | Tombol Save modal Edit loading dan tidak bisa diklik ganda (`Mode: mock`) | TC-GS-USER-194 |
-| TC-GS-USER-E2E-077 | Batalkan perubahan email gagal server (`Mode: mock`) | TC-GS-USER-559 |
-| TC-GS-USER-E2E-078 | Hapus foto profil dari Avatar gagal server (`Mode: mock`) | TC-GS-USER-576 |
-| TC-GS-USER-E2E-079 | Ganti foto profil gagal server, foto lama tidak berubah (`Mode: mock`) | TC-GS-USER-450 |
-| TC-GS-USER-E2E-080 | Download User List gagal server (`Mode: mock`) | TC-GS-USER-363 |
-| TC-GS-USER-E2E-081 | Delete user yang sudah dihapus admin lain saat dialog terbuka (dua sesi) | TC-GS-USER-451 |
-| TC-GS-USER-E2E-082 | Delete ditolak saat role aktor dicabut ketika dialog terbuka (dua sesi) | TC-GS-USER-452 |
-| TC-GS-USER-E2E-083 | Create menolak emoji yang lolos guard FE lewat manipulasi DOM | TC-GS-USER-193 |
-| TC-GS-USER-E2E-084 | Edit menolak emoji yang lolos guard FE lewat manipulasi DOM | TC-GS-USER-465 |
-| TC-GS-USER-E2E-085 | Dialog bulk Activate/Deactivate: satu user, daftar panjang, aksi disembunyikan | TC-GS-USER-458, 459, 448, 398 |
-| TC-GS-USER-E2E-086 | Overlay hover Avatar di User Detail dan modal Edit (`Mode: mock`) | TC-GS-USER-370, 540 |
-| TC-GS-USER-E2E-087 | Foto di modal Create hanya staged sampai Submit (`Mode: mock`) | TC-GS-USER-537, 538, 539 |
-| TC-GS-USER-E2E-088 | Perubahan foto di modal Edit dibuang saat modal ditutup (`Mode: mock`) | TC-GS-USER-543 |
-| TC-GS-USER-E2E-089 | Setup Column User List: overlay, popup modal, Live Preview (`Mode: mock`) | TC-GS-USER-259, 260, 129, 133 |
-| TC-GS-USER-E2E-090 | Setup Column User List: sembunyikan dan munculkan kolom (`Mode: mock`) | TC-GS-USER-261–274 |
-| TC-GS-USER-E2E-091 | Setup Column User List: urutan kolom (`Mode: mock`) | TC-GS-USER-276–289, 130 |
-| TC-GS-USER-E2E-092 | Setup Column User List: pin dan unpin (`Mode: mock`) | TC-GS-USER-291–304 |
-| TC-GS-USER-E2E-093 | Setup Column User List: Reset to Default dan Cancel (`Mode: mock`) | TC-GS-USER-306, 307 |
-| TC-GS-USER-E2E-094 | Siklus interaksi search box toolbar User List (`Mode: mock`) | TC-GS-USER-126 |
-| TC-GS-USER-E2E-095 | Tampilan kolom Name dan Access (`Mode: mock`) | TC-GS-USER-177, 466, 460 |
-| TC-GS-USER-E2E-096 | Filter Access: isi opsi, pencarian, OR, chip | TC-GS-USER-203, 204, 205, 256 |
-| TC-GS-USER-E2E-097 | Search, Filter, Sort, seleksi baris tidak saling mereset | TC-GS-USER-213, 214, 215, 217 |
-| TC-GS-USER-E2E-098 | Search parsial, case-insensitive, Filter Division dengan Active | TC-GS-USER-140, 141, 142 |
-| TC-GS-USER-E2E-099 | Badge Pending Activation dan Pending Email Confirmation mutually exclusive | TC-GS-USER-338 |
-| TC-GS-USER-E2E-100 | Download User List mengikuti kolom yang terlihat | TC-GS-USER-494 |
-| TC-GS-USER-E2E-101 | Sub-tab Login User dan Non-Login User menyimpan state sendiri | TC-GS-USER-134, 135 |
-| TC-GS-USER-E2E-102 | Setup Column tab log berbeda dari User List (`Mode: mock`) | TC-GS-USER-136 |
-| TC-GS-USER-E2E-103 | Search, Filter, Download di tiga tab log User Detail | TC-GS-USER-137, 138, 139 |
-| TC-GS-USER-E2E-104 | Guided Tooltip User List: auto-trigger, replay, navigasi, keluar tanpa selesai | TC-GS-USER-185–190 |
-| TC-GS-USER-E2E-105 | Aksesibilitas keyboard: kontrol, tooltip, dialog (`Mode: mock`) | TC-GS-USER-182, 183, 184 |
-| TC-GS-USER-E2E-106 | Input Custom Field di modal Create | TC-GS-USER-505–513 |
-| TC-GS-USER-E2E-107 | Input Custom Field di modal Edit | TC-GS-USER-527–535 |
-| TC-GS-USER-E2E-108 | Placeholder Custom Field bawaan dan kustom (`Mode: mock`) | TC-GS-USER-515–526 |
-| TC-GS-USER-E2E-109 | Modal Changelog User List: struktur, kolom, Search | TC-GS-USER-232, 233, 250, 558 |
-| TC-GS-USER-E2E-110 | Modal Changelog User List: Filter | TC-GS-USER-234–241, 257, 558 |
-| TC-GS-USER-E2E-111 | Modal Changelog User List: sort tiga keadaan | TC-GS-USER-242–246 |
-| TC-GS-USER-E2E-112 | Modal Changelog User List: Download | TC-GS-USER-249 |
-| TC-GS-USER-E2E-113 | Modal Changelog User List: hover truncate (`Mode: mock`) | TC-GS-USER-247 |
-| TC-GS-USER-E2E-114 | Setup Column modal Changelog: overlay, popup, sembunyikan kolom (`Mode: mock`) | TC-GS-USER-248, 308–315 |
-| TC-GS-USER-E2E-115 | Setup Column modal Changelog: urutan dan pin (`Mode: mock`) | TC-GS-USER-316–329 |
-| TC-GS-USER-E2E-116 | Setup Column modal Changelog: Reset to Default dan Cancel (`Mode: mock`) | TC-GS-USER-330, 331 |
-| TC-GS-USER-E2E-117 | Tampilan awal User List | TC-GS-USER-1, 2 |
-| TC-GS-USER-E2E-118 | Baris Default User dan akun sendiri di User List | TC-GS-USER-5, 6 |
-| TC-GS-USER-E2E-119 | User List: loading, hasil kosong, gagal memuat (`Mode: mock`) | TC-GS-USER-3 |
-| TC-GS-USER-E2E-120 | Create user gagal server (`Mode: mock`) | TC-GS-USER-24 |
-| TC-GS-USER-E2E-121 | Edit user gagal server (`Mode: mock`) | TC-GS-USER-32 |
-| TC-GS-USER-E2E-122 | Delete satu user gagal server (`Mode: mock`) | TC-GS-USER-40 |
-| TC-GS-USER-E2E-123 | Bulk Delete sebagian gagal (`Mode: mock`) | TC-GS-USER-39 |
-| TC-GS-USER-E2E-124 | Toggle Active gagal server (`Mode: mock`) | TC-GS-USER-48 |
-| TC-GS-USER-E2E-125 | Remove Access gagal server (`Mode: mock`) | TC-GS-USER-53 |
-| TC-GS-USER-E2E-126 | Resend email gagal server (`Mode: mock`) | TC-GS-USER-58 |
-| TC-GS-USER-E2E-127 | Reset Authenticator gagal server (`Mode: mock`) | TC-GS-USER-73 |
-| TC-GS-USER-E2E-128 | Role Matrix positif Edit profil penuh (Update-saja) | TC-GS-USER-587 |
-| TC-GS-USER-E2E-129 | Role Matrix positif ubah Email (Update-saja) | TC-GS-USER-588 |
-| TC-GS-USER-E2E-130 | Role Matrix positif Resend Activation Email (Update-saja) | TC-GS-USER-589 |
-| TC-GS-USER-E2E-131 | Role Matrix positif Resend Confirmation Email (Update-saja) | TC-GS-USER-590 |
-| TC-GS-USER-E2E-132 | Role Matrix positif Pair dan Unpair TAG (Update-saja) | TC-GS-USER-591 |
-| TC-GS-USER-E2E-133 | Role Matrix positif Reset Authenticator (Update-saja) | TC-GS-USER-592 |
-| TC-GS-USER-E2E-134 | Role Matrix positif Bulk Activate dan Deactivate (Update-saja) | TC-GS-USER-593 |
-| TC-GS-USER-E2E-135 | Role Matrix positif Bulk Resend Activation Email (Update-saja) | TC-GS-USER-594 |
-| TC-GS-USER-E2E-136 | Role Matrix negatif target Default User (Update-saja) | TC-GS-USER-595 |
-| TC-GS-USER-E2E-137 | Role Matrix negatif target akun sendiri (Update-saja) | TC-GS-USER-596 |
-| TC-GS-USER-E2E-138 | Role Matrix negatif target Read Only (Update-saja) | TC-GS-USER-597 |
-| TC-GS-USER-E2E-139 | Role Matrix negatif target Total Control, enam aksi (Update-saja) | TC-GS-USER-598 |
-| TC-GS-USER-E2E-140 | Role Matrix positif target sesama pemegang role (Update-saja) | TC-GS-USER-599 |
-| TC-GS-USER-E2E-141 | Role Matrix positif Total Control dan Default User ke target Read Only | TC-GS-USER-600 |
-| TC-GS-USER-E2E-142 | Role Matrix negatif target Total Control (Delete-saja) | TC-GS-USER-601 |
-| TC-GS-USER-E2E-143 | Role Matrix negatif target Total Control (Create-saja) | TC-GS-USER-602 |
-| TC-GS-USER-E2E-144 | Create user entity Distributor, opsi Access | TC-GS-USER-603 |
-| TC-GS-USER-E2E-145 | Create user entity Partner, opsi Access | TC-GS-USER-604 |
-| TC-GS-USER-E2E-146 | Tab Responsibilities entity Distributor | TC-GS-USER-605 |
-| TC-GS-USER-E2E-147 | Tab Responsibilities entity Partner | TC-GS-USER-606 |
-| TC-GS-USER-E2E-148 | Isolasi scope entity Partner | TC-GS-USER-607 |
-| TC-GS-USER-E2E-149 | Pair TAG gagal di Detail (`Mode: mock`) | TC-GS-USER-608 |
-| TC-GS-USER-E2E-150 | Unpair TAG gagal di Detail (`Mode: mock`) | TC-GS-USER-609 |
-| TC-GS-USER-E2E-151 | Custom Field Dropdown stale di Create dan Edit | TC-GS-USER-610 |
-| TC-GS-USER-E2E-152 | Client suspended atau expired memblokir aksi tulis (`Mode: mock`) | TC-GS-USER-611 |
-| TC-GS-USER-E2E-153 | Pagination opsi page size | TC-GS-USER-612 |
-| TC-GS-USER-E2E-154 | Pagination input nomor halaman | TC-GS-USER-613 |
-| TC-GS-USER-E2E-155 | Empty state Modal Changelog List-level | TC-GS-USER-614 |
-| TC-GS-USER-E2E-156 | Empty state Tab Changelog Detail | TC-GS-USER-615 |
-| TC-GS-USER-E2E-157 | Empty state Tab System Log | TC-GS-USER-616 |
-| TC-GS-USER-E2E-158 | Tab Role toggle Active per role | TC-GS-USER-617 |
-| TC-GS-USER-E2E-159 | User Log tanpa Reset Authenticator | TC-GS-USER-618 |
-| TC-GS-USER-E2E-160 | Remove Access multi-produk | TC-GS-USER-619, 620 |
-| TC-GS-USER-E2E-161 | Bulk Delete campuran dialog gabungan | TC-GS-USER-621 |
-| TC-GS-USER-E2E-162 | Popup Access di kolom List | TC-GS-USER-622 |
-| TC-GS-USER-E2E-163 | Navigasi ke User Detail | TC-GS-USER-623 |
-| TC-GS-USER-E2E-164 | Klik area baris tanpa aksi | TC-GS-USER-624 |
-| TC-GS-USER-E2E-165 | Checkbox header halaman aktif | TC-GS-USER-625 |
-| TC-GS-USER-E2E-166 | Modified By hover nama lengkap | TC-GS-USER-626 |
-| TC-GS-USER-E2E-167 | Pindah tab state tidak reset | TC-GS-USER-627 |
-| TC-GS-USER-E2E-168 | My Profile banner Pending Email Change | TC-GS-USER-628 |
-| TC-GS-USER-E2E-169 | Pool Assign prasyarat Global Settings | TC-GS-USER-629 |
-| TC-GS-USER-E2E-170 | Admin override hapus foto di File Manager | TC-GS-USER-630 |
+| Spec | Judul | Jumlah TC | TC Sumber | Mode |
+|---|---|:---:|---|:---:|
+| TC-GS-USER-E2E-001-screening-tabel-user-list-layout-dan-default-sort | Screening tabel User List layout, breadcrumb, Table Tools, dan default sort Name A-Z | 6 | TC-GS-USER-1 s.d. TC-GS-USER-25 (6 TC) | FE+BE |
+| TC-GS-USER-E2E-002-navigasi-subtab-dan-pembaruan-breadcrumb | Navigasi sub-tab dan pembaruan breadcrumb antar tab User List, Position, Division, Custom Field | 4 | TC-GS-USER-3, TC-GS-USER-4, TC-GS-USER-5, TC-GS-USER-6 | FE+BE |
+| TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | Data rendering kolom Name, Avatar, badge status, format tanggal, dan popup Access | 10 | TC-GS-USER-12 s.d. TC-GS-USER-22 (10 TC) | FE+BE |
+| TC-GS-USER-E2E-004-screening-row-action-overlay-dan-toggle-status | Screening overlay row action menu (⋯) dan visual toggle Active | 4 | TC-GS-USER-24, TC-GS-USER-26, TC-GS-USER-27, TC-GS-USER-28 | FE+BE |
+| TC-GS-USER-E2E-005-empty-state-genuinely-dan-no-results-search | Empty state entitas baru tanpa user dan no results state hasil pencarian | 2 | TC-GS-USER-9, TC-GS-USER-10 | FE+BE |
+| TC-GS-USER-E2E-006-resilience-loading-state-dan-error-load-retry | Resilience: Loading skeleton dan penanganan error load via Try Again | 4 | TC-GS-USER-8, TC-GS-USER-23, TC-GS-USER-994, TC-GS-USER-995 | mock |
+| TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | Guided Tooltip walkthrough 5 step, kontrol navigasi, a11y keyboard, dan replay | 12 | TC-GS-USER-29 s.d. TC-GS-USER-40 (12 TC) | FE+BE |
+| TC-GS-USER-E2E-008-screening-default-user-seed-state | Screening state awal Default User seed di User List | 1 | TC-GS-USER-1043 | FE+BE |
+| TC-GS-USER-E2E-009-role-matrix-visibilitas-menu-dan-direct-url | Role Matrix: Visibilitas menu sidebar User dan penolakan Direct URL tanpa izin | 6 | TC-GS-USER-41 s.d. TC-GS-USER-46 (6 TC) | FE+BE |
+| TC-GS-USER-E2E-010-role-matrix-read-only-ui-restrictions | Role Matrix: Pembatasan kontrol UI halaman User List untuk aktor Read Only | 3 | TC-GS-USER-47, TC-GS-USER-48, TC-GS-USER-66 | FE+BE |
+| TC-GS-USER-E2E-011-role-matrix-positif-total-control-actions | Role Matrix Positif: Total Control mengelola baris user Normal, sesama TC, dan RO | 3 | TC-GS-USER-49, TC-GS-USER-52, TC-GS-USER-53 | FE+BE |
+| TC-GS-USER-E2E-012-role-matrix-positif-full-crud-holder-actions | Role Matrix Positif: Capability holder Full CRUD mengelola user Normal dan sesama holder | 3 | TC-GS-USER-54, TC-GS-USER-55, TC-GS-USER-59 | FE+BE |
+| TC-GS-USER-E2E-013-role-matrix-positif-default-user-actions | Role Matrix Positif: Default User mengelola user Normal dan target tier | 3 | TC-GS-USER-60, TC-GS-USER-61, TC-GS-USER-62 | FE+BE |
+| TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | Role Matrix Positif: Scoped capability holders (Create-Only, Update-Only, Delete-Only) | 9 | TC-GS-USER-63 s.d. TC-GS-USER-87 (9 TC) | FE+BE |
+| TC-GS-USER-E2E-015-role-matrix-negatif-proteksi-default-user-dan-self | Role Matrix Negatif: Proteksi terhadap baris Default User dan akun sendiri (Self-Protection) | 6 | TC-GS-USER-50 s.d. TC-GS-USER-1030 (6 TC) | FE+BE |
+| TC-GS-USER-E2E-016-role-matrix-negatif-full-crud-ke-target-total-control | Role Matrix Negatif: Capability holder Full CRUD dilarang mengubah target Total Control | 2 | TC-GS-USER-58, TC-GS-USER-979 | FE+BE |
+| TC-GS-USER-E2E-017-role-matrix-negatif-aksi-tulis-oleh-read-only | Role Matrix Negatif: Penolakan seluruh aksi mutasi data oleh aktor Read Only | 4 | TC-GS-USER-68, TC-GS-USER-69, TC-GS-USER-70, TC-GS-USER-71 | FE+BE |
+| TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | Role Matrix Negatif: Pengamanan tombol dan tab di halaman Detail untuk target khusus | 21 | TC-GS-USER-74 s.d. TC-GS-USER-1047 (21 TC) | FE+BE |
+| TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | Create User: Screening modal Create, kontrol form, validasi format, dan batas input | 29 | TC-GS-USER-88 s.d. TC-GS-USER-116 (29 TC) | FE+BE |
+| TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | Create User: Validasi duplikat email dan employee ID serta guard double submit | 11 | TC-GS-USER-118 s.d. TC-GS-USER-1033 (11 TC) | FE+BE |
+| TC-GS-USER-E2E-021-create-user-penutupan-form-dan-unsaved-changes | Create User: Penutupan modal via Esc, ikon close, klik backdrop, dan unsaved changes | 4 | TC-GS-USER-125, TC-GS-USER-126, TC-GS-USER-127, TC-GS-USER-1005 | FE+BE |
+| TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | Create User: Happy path pembuatan single user dan multiple user via Stay on form | 13 | TC-GS-USER-117 s.d. TC-GS-USER-1008 (13 TC) | FE+BE |
+| TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | Create User: Variasi input custom field, tanggal temporary, dan pembatasan fitur plan | 22 | TC-GS-USER-139 s.d. TC-GS-USER-1040 (22 TC) | FE+BE |
+| TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | Edit User: Screening modal Edit, pemuatan data awal, dan validasi field | 18 | TC-GS-USER-160 s.d. TC-GS-USER-1007 (18 TC) | FE+BE |
+| TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | Edit User: Validasi duplikat email dan employee ID serta guard double save | 8 | TC-GS-USER-177 s.d. TC-GS-USER-184 (8 TC) | FE+BE |
+| TC-GS-USER-E2E-026-edit-user-penutupan-form-dan-unsaved-changes | Edit User: Penutupan modal via Esc, ikon close, unsaved changes, dan no-op save | 6 | TC-GS-USER-185 s.d. TC-GS-USER-190 (6 TC) | FE+BE |
+| TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | Edit User: Happy path update informasi profil, posisi, divisi, dan verifikasi list | 12 | TC-GS-USER-191 s.d. TC-GS-USER-1010 (12 TC) | FE+BE |
+| TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | Edit User: Alur perubahan email, status Pending Email Change, resend, dan pembatalan | 20 | TC-GS-USER-201 s.d. TC-GS-USER-220 (20 TC) | FE+BE |
+| TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | Edit User: Penambahan/pencabutan Access produk dan modifikasi nilai custom fields | 20 | TC-GS-USER-221 s.d. TC-GS-USER-240 (20 TC) | FE+BE |
+| TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | Status Flow: Single Toggle Active dialog konfirmasi Deactivate dan aktivasi langsung | 11 | TC-GS-USER-241 s.d. TC-GS-USER-1011 (11 TC) | FE+BE |
+| TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | Status Flow: Siklus hidup Temporary User, tanggal kedaluwarsa, dan auto-deactivate | 14 | TC-GS-USER-251 s.d. TC-GS-USER-1039 (14 TC) | FE+BE |
+| TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | Delete Single: Screening dialog konfirmasi Delete, proteksi guard, dan pembatalan | 9 | TC-GS-USER-261 s.d. TC-GS-USER-1015 (9 TC) | FE+BE |
+| TC-GS-USER-E2E-033-delete-single-happy-path-penghapusan-user | Delete Single: Happy path penghapusan user tunggal dan verifikasi pembersihan list | 5 | TC-GS-USER-269 s.d. TC-GS-USER-273 (5 TC) | FE+BE |
+| TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | Bulk Action Bar: Protokol seleksi checkbox header, baris, dan retensi filter | 12 | TC-GS-USER-274 s.d. TC-GS-USER-285 (12 TC) | FE+BE |
+| TC-GS-USER-E2E-035-selection-limit-bulk-checkbox-guard | Bulk Action Bar: Pengamanan batas seleksi maksimum (Selection Limit) | 5 | TC-GS-USER-286 s.d. TC-GS-USER-290 (5 TC) | FE+BE |
+| TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | Bulk Actions: Eksekusi Bulk Activate dan Bulk Deactivate dengan penanganan baris skip | 22 | TC-GS-USER-291 s.d. TC-GS-USER-1050 (22 TC) | FE+BE |
+| TC-GS-USER-E2E-037-bulk-delete-dialog-dan-eksekusi-seleksi-campuran | Bulk Delete: Dialog konfirmasi, cancel path, skip item terproteksi, dan eksekusi | 3 | TC-GS-USER-1028, TC-GS-USER-1037, TC-GS-USER-1038 | FE+BE |
+| TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | Resend Email: Kirim ulang email aktivasi dan konfirmasi single/bulk serta cooldown 60 detik | 9 | TC-GS-USER-305 s.d. TC-GS-USER-1046 (9 TC) | FE+BE |
+| TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | TAG Management: Pasang (Pair) dan lepas (Unpair) TAG RFID dari User Detail | 12 | TC-GS-USER-313 s.d. TC-GS-USER-324 (12 TC) | FE+BE |
+| TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | Reset Authenticator: Reset MFA dari User Detail, dialog konfirmasi, dan guard status | 10 | TC-GS-USER-325 s.d. TC-GS-USER-334 (10 TC) | FE+BE |
+| TC-GS-USER-E2E-041-photo-management-user-detail-flow | Photo Management: Upload, preview, dan hapus foto profil avatar dari User Detail | 11 | TC-GS-USER-335 s.d. TC-GS-USER-1041 (11 TC) | FE+BE |
+| TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | Custom Field: Inline-edit field kustom langsung di User Detail | 12 | TC-GS-USER-344 s.d. TC-GS-USER-355 (12 TC) | FE+BE |
+| TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | User Detail: Screening layout header, breadcrumb navigasi, dan default tab switcher | 16 | TC-GS-USER-356 s.d. TC-GS-USER-1054 (16 TC) | FE+BE |
+| TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | User Detail: Navigasi Product Selector dan sinkronisasi hak akses per produk | 13 | TC-GS-USER-371 s.d. TC-GS-USER-1020 (13 TC) | FE+BE |
+| TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | User Detail: Layout dan navigasi tab Responsibilities, Non-Login User, dan Log surfaces | 34 | TC-GS-USER-381 s.d. TC-GS-USER-1051 (34 TC) | FE+BE |
+| TC-GS-USER-E2E-046-user-list-toolbar-search-flow | User List: Toolbar Search interaksi, debounce, exact match, dan clear | 11 | TC-GS-USER-413 s.d. TC-GS-USER-1034 (11 TC) | FE+BE |
+| TC-GS-USER-E2E-047-user-list-filter-panel-flow | User List: Filter panel multi-select, rentang tanggal, apply, dan clear filter | 12 | TC-GS-USER-423 s.d. TC-GS-USER-434 (12 TC) | FE+BE |
+| TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | User List: Pengurutan 3-state pada seluruh kolom tabel utama | 8 | TC-GS-USER-435 s.d. TC-GS-USER-442 (8 TC) | FE+BE |
+| TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | User List: Setup Column overlay visibilitas kolom default dan curated | 8 | TC-GS-USER-443 s.d. TC-GS-USER-450 (8 TC) | FE+BE |
+| TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | User List: Setup Column modal pengaturan urutan, pin kolom, reset to default, dan cancel | 25 | TC-GS-USER-451 s.d. TC-GS-USER-475 (25 TC) | FE+BE |
+| TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | User List: Download data tabel format CSV dan XLSX sesuai kolom terlihat dan filter | 11 | TC-GS-USER-476 s.d. TC-GS-USER-486 (11 TC) | FE+BE |
+| TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | Modal Changelog User List: Screening struktur modal, kolom, pencarian, dan filter | 55 | TC-GS-USER-487 s.d. TC-GS-USER-1053 (55 TC) | FE+BE |
+| TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | Modal Changelog User List: Pengurutan, download, dan setup kolom di dalam modal | 50 | TC-GS-USER-541 s.d. TC-GS-USER-590 (50 TC) | FE+BE |
+| TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | Detail User: Table rules tab System Log (Search, Filter, Sort, Pagination, Download, Setup Column) | 40 | TC-GS-USER-591 s.d. TC-GS-USER-630 (40 TC) | FE+BE |
+| TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | Detail User: Table rules tab User Log (Search, Filter, Sort, Pagination, Download, Setup Column) | 40 | TC-GS-USER-631 s.d. TC-GS-USER-670 (40 TC) | FE+BE |
+| TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | Detail User: Table rules tab Non-Login User (Search, Filter, Sort, Pagination, Download, Setup Column) | 45 | TC-GS-USER-671 s.d. TC-GS-USER-715 (45 TC) | FE+BE |
+| TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | Responsibilities: Table rules sub-tab Borrowed Assets (Search, Filter, Sort, Setup Column) | 39 | TC-GS-USER-716 s.d. TC-GS-USER-754 (39 TC) | FE+BE |
+| TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | Responsibilities: Table rules sub-tab Assigned Assets (Search, Filter, Sort, Setup Column) | 37 | TC-GS-USER-755 s.d. TC-GS-USER-791 (37 TC) | FE+BE |
+| TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | Responsibilities: Table rules sub-tab Pending Approvals (Search, Filter, Sort, Setup Column) | 38 | TC-GS-USER-792 s.d. TC-GS-USER-829 (38 TC) | FE+BE |
+| TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | Responsibilities: Table rules sub-tab Pending Tasks (Search, Filter, Sort, Setup Column) | 41 | TC-GS-USER-830 s.d. TC-GS-USER-870 (41 TC) | FE+BE |
+| TC-GS-USER-E2E-061-detail-tab-role-static-display-dan-permissions | Detail User: Tampilan statis tab Role, matriks permission, dan non-sortable columns | 2 | TC-GS-USER-871, TC-GS-USER-872 | FE+BE |
+| TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | Audit Log: Pencatatan mutasi user (Create, Edit, Status, Delete) pada Changelog | 27 | TC-GS-USER-873 s.d. TC-GS-USER-899 (27 TC) | FE+BE |
+| TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | Audit Log: Pencatatan mutasi role (Assign, Remove, Auto-Revert) pada Changelog User > Role | 19 | TC-GS-USER-900 s.d. TC-GS-USER-1052 (19 TC) | FE+BE |
+| TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | Audit Log: Pencatatan aktivitas aktor pada Tab System Log dan Activity Log level Global | 19 | TC-GS-USER-917 s.d. TC-GS-USER-935 (19 TC) | FE+BE |
+| TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | Audit Log: Pencatatan riwayat sesi login, IP address, dan perangkat pada Tab User Log | 8 | TC-GS-USER-936 s.d. TC-GS-USER-943 (8 TC) | FE+BE |
+| TC-GS-USER-E2E-066-cross-module-sync-master-data-position-dan-division | Cross-Module Sync: Refleksi perubahan master data Position dan Division ke dropdown User | 6 | TC-GS-USER-944 s.d. TC-GS-USER-949 (6 TC) | FE+BE |
+| TC-GS-USER-E2E-067-cross-module-sync-custom-field-user-lifecycle | Cross-Module Sync: Siklus hidup Custom Field User (Create, Deactivate, Delete) ke form dan Detail | 6 | TC-GS-USER-950 s.d. TC-GS-USER-955 (6 TC) | FE+BE |
+| TC-GS-USER-E2E-068-cross-module-sync-produk-fams-dan-admin-console | Cross-Module Sync: Integrasi user ke Fixed Asset, Admin Console, My Profile, dan File Manager | 7 | TC-GS-USER-958 s.d. TC-GS-USER-964 (7 TC) | FE+BE |
+| TC-GS-USER-E2E-069-cross-module-format-tanggal-general-settings | Cross-Module Sync: Penerapan format tanggal General Settings dan pembatalan token Auth | 4 | TC-GS-USER-965, TC-GS-USER-966, TC-GS-USER-967, TC-GS-USER-968 | FE+BE |
+| TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | Security: Defense-in-depth penolakan request direct API tampering tanpa wewenang (403) | 11 | TC-GS-USER-969 s.d. TC-GS-USER-975 (11 TC) | FE+BE |
+| TC-GS-USER-E2E-071-security-defense-in-depth-xss-dan-sql-sanitasi | Security: Sanitasi script XSS dan keyword SQL injection pada form dan pencarian | 3 | TC-GS-USER-980, TC-GS-USER-981, TC-GS-USER-982 | FE+BE |
+| TC-GS-USER-E2E-072-state-tenant-write-lockdown-suspended-expired | State Tenant: Write-lockdown kontrol tulis saat Client berstatus Suspended atau Expired | 7 | TC-GS-USER-984 s.d. TC-GS-USER-1026 (7 TC) | FE+BE |
+| TC-GS-USER-E2E-073-multi-konteks-konkurensi-dua-admin-dan-limit | Multi-Konteks: Konkurensi dua admin toggle user bersamaan dan batas Master Data Limit | 3 | TC-GS-USER-985, TC-GS-USER-986, TC-GS-USER-987 | FE+BE |
+| TC-GS-USER-E2E-074-siklus-aktivasi-akun-auth-dan-subtab-isolasi | Lifecycle Auth: Pembaruan status aktivasi akun, kedaluwarsa link, dan isolasi sub-tab | 6 | TC-GS-USER-988 s.d. TC-GS-USER-993 (6 TC) | FE+BE |
 
-TC-15 dan TC-420 terbelah di dua spec (dicatat di `## Notes` kedua spec).
+## TC yang Dilewati (Hanya-BE)
 
-**Role Matrix (2026-09-29):** dipilih varian A (spec 010–020, satu spec per aksi, positif dan negatif terpisah) karena lebih partikular. Varian B (spec 021 dan 022, disusun per role) tidak dipakai tetapi filenya dibiarkan untuk sementara. Keduanya mencakup TC yang sama, dan tabel "Lapisan per TC" di bawah menyebut varian A.
+Tidak ada. Seluruh 1052 TC granular di `tc-user.md` memiliki representasi pengujian pada layer UI/Frontend sehingga seluruhnya dipetakan ke dalam spec E2E.
 
-## TC yang belum punya spec (antrean)
+## Lapisan per TC
 
-**Perubahan aturan 2026-09-30:** dokumen e2e merangkap TC FE (`docs/e2e-conventions.md` bagian 2). Satu-satunya TC yang tidak masuk spec adalah TC hanya-BE. Baris di bawah dulu berstatus "tidak dijadikan spec karena sudah dicakup TC frontend"; sekarang semuanya masuk antrean spec. Kolom FE pada tabel "Lapisan per TC" di bawah dipertahankan sementara sebagai referensi.
-
-| TC | Status | Rencana spec |
-|---|---|---|
-| TC-GS-USER-24, 193 | Antrean | Spec hanya-FE (mock): Create gagal 500 dan fallback emoji lewat DOM injection. TC-23 sudah di spec 040, TC-342 di spec 033, TC-343, 344, 345 di spec 032 |
-| TC-GS-USER-15 (bagian Distributor dan Partner) | Belum ada TC | Hanya entity Principal yang dicakup spec 003 |
-| TC-GS-USER-39, 40, 451, 452, 48, 53 | Antrean | Spec hanya-FE (mock): error, race, dan perubahan izin di tengah aksi |
-| TC-GS-USER-448, 458, 459, 398 | Antrean | Spec hanya-FE: copy dan state UI |
-| Setup Column (129, 130, 259–307 dan sejenisnya, ~40 TC) | Antrean | Spec hanya-FE per layar: Setup Column |
-| Retensi state kombinasi (213, 214, 215, 217) | Antrean | Spec hanya-FE: retensi state |
-| Chip rendering/overflow, badge severity/urutan, z-index popover, ekstensi nama file (203, 204, 205, 256, 460, 466, 133, dan sejenisnya) | Antrean | Spec hanya-FE: tampilan |
-| TC-GS-USER-363 | Antrean | Spec hanya-FE (mock): Download gagal server error |
-| TC-GS-USER-129, 130, 202, 466 | Antrean | Spec hanya-FE. Sebelumnya tidak ada rujukan di `tc-user-frontend.md`; dengan aturan baru gap itu selesai karena spec menjadi acuannya |
-| TC-GS-USER-58, 73, 576, 450 | Antrean | Spec hanya-FE (mock): kegagalan server pada Resend, Reset Authenticator, hapus foto, ganti foto |
-| Langkah 5–7 spec 002 (Create gagal server error) | Dipertahankan | Sudah di spec 002, tandai `Mode: mock` saat script dibuat |
-
-## Lapisan per TC (section 3a)
-
-FE dari tabel pemetaan `tc-user-frontend.md`. BE tidak dapat dipetakan per TC granular (`tc-user-backend.md` tidak merujuk id TC granular).
-
-| TC | Prioritas | FE | E2E | Catatan |
-|---|---|---|---|---|
-| 13 | P0 | FE-027 | E2E-002 |  |
-| 14 | P1 | FE-028 | E2E-001 |  |
-| 15 | P1 | FE-029 | E2E-001, E2E-003 |  |
-| 16 | P0 | FE-030 | E2E-001 |  |
-| 17 | P1 | FE-031 | E2E-001 |  |
-| 18 | P0 | FE-032 | E2E-001 |  |
-| 19 | P1 | FE-033 | E2E-001 |  |
-| 20 | P1 | — | E2E-002 |  |
-| 341 | P1 | FE-045 | E2E-002 |  |
-| 489 | P0 | — | E2E-002 | P0 hanya satu lapisan |
-| 467 | P1 | — | E2E-003 |  |
-| 65 | P1 | FE-132 | E2E-002 |  |
-| 468 | P2 | — | E2E-002 |  |
-| 469 | P1 | — | E2E-002 |  |
-| 470 | P2 | — | E2E-002 |  |
-| 471 | P1 | — | E2E-002 |  |
-| 472 | P2 | — | E2E-002 |  |
-| 473 | P1 | — | E2E-002 |  |
-| 474 | P2 | — | E2E-002 |  |
-| 475 | P1 | — | E2E-004 |  |
-| 476 | P2 | — | E2E-002 |  |
-| 21 | P2 | FE-034 | E2E-002 |  |
-| 22 | P2 | FE-035 | E2E-001 |  |
-| 431 | P2 | FE-036 | E2E-001 |  |
-| 487 | P2 | — | E2E-001 |  |
-| 23 | P2 | FE-037 | — |  |
-| 24 | P2 | FE-038 | — |  |
-| 25 | P1 | FE-039 | E2E-001 |  |
-| 191 | P2 | FE-040 | E2E-002 |  |
-| 440 | P1 | FE-041 | E2E-002 |  |
-| 192 | P2 | FE-042 | E2E-001 |  |
-| 193 | P2 | FE-043 | — |  |
-| 340 | P1 | FE-044 | E2E-001 |  |
-| 342 | P1 | FE-046 | — |  |
-| 343 | P1 | FE-047 | — |  |
-| 344 | P1 | FE-048 | — |  |
-| 345 | P1 | FE-049 | — |  |
-| 346 | P1 | FE-050 | E2E-002 |  |
-| 347 | P1 | FE-051 | E2E-001 |  |
-| 482 | P1 | — | E2E-001 |  |
-| 420 | P2 | FE-052 | E2E-001, E2E-002 |  |
-| 457 | P1 | FE-053 | E2E-001 |  |
-
-## Lapisan per TC (section 3c–3e)
-
-| TC | Prioritas | FE | E2E | Catatan |
-|---|---|---|---|---|
-| 33 | P0 | FE-074 | E2E-005 |  |
-| 353 | P2 | — | E2E-005 |  |
-| 453 | P1 | FE-086 | E2E-005 |  |
-| 433 | P2 | FE-075 | E2E-005 |  |
-| 34 | P1 | FE-076 | E2E-005 |  |
-| 35 | P1 | — | E2E-005 |  |
-| 36 | P0 | FE-077 | E2E-005 |  |
-| 37 | P0 | FE-078 | E2E-005 |  |
-| 258 | P1 | FE-081 | E2E-005 |  |
-| 38 | P1 | FE-079 | E2E-005 |  |
-| 434 | P2 | FE-080 | E2E-005 |  |
-| 39 | P2 | FE-082 | — |  |
-| 40 | P2 | FE-083 | — |  |
-| 41 | P0 | FE-087 | E2E-008 |  |
-| 435 | P2 | FE-088 | E2E-008 |  |
-| 42 | P0 | FE-089 | E2E-008 |  |
-| 43 | P1 | FE-090 | E2E-008 |  |
-| 44 | P0 | FE-091 | E2E-008 |  |
-| 45 | P0 | FE-092 | E2E-008 |  |
-| 46 | P2 | FE-093 | E2E-008 |  |
-| 47 | P1 | FE-094 | E2E-008 |  |
-| 443 | P2 | FE-095 | E2E-008 |  |
-| 444 | P1 | FE-096 | E2E-008 |  |
-| 445 | P2 | FE-097 | E2E-008 |  |
-| 446 | P1 | FE-100 | E2E-008 |  |
-| 447 | P2 | FE-101 | E2E-008 |  |
-| 448 | P2 | FE-102 | — |  |
-| 449 | P1 | FE-103 | E2E-008 |  |
-| 451 | P1 | FE-084 | — |  |
-| 452 | P1 | FE-085 | — |  |
-| 458 | P1 | FE-098 | — |  |
-| 459 | P1 | FE-099 | — |  |
-| 48 | P2 | FE-104 | — |  |
-| 398 | P2 | FE-105 | — |  |
-| 31 | P2 | - | E2E-009 | Skenario identik dengan TC-51 (Edit hapus semua Access diblokir, minimal 1), dicakup lewat TC-51. Duplikasi di tabel TC sumber dibiarkan |
-| 49 | P0 | FE-106 | E2E-009 |  |
-| 50 | P1 | FE-107 | E2E-009 | Dikoreksi 2026-09-29 (minimal 1 Access), dicakup bersama TC-387 |
-| 51 | P2 | FE-108 | E2E-009 | Sudah diputuskan tunggal (`GAP-248`): diblokir inline "Access must not be empty" |
-| 52 | P1 | FE-109 | E2E-009 |  |
-| 53 | P2 | FE-110 | — |  |
-| 351 | P1 | FE-111 | E2E-009 |  |
-| 352 | P2 | FE-112 | E2E-009 |  |
-| 387 | P1 | FE-113 | E2E-009 |  |
-| 425 | P2 | FE-114 | E2E-009 |  |
-| 480 | P1 | — | E2E-008 |  |
-| 481 | P1 | — | E2E-006 |  |
-
-Semua TC P0 di section ini (33, 36, 37, 41, 42, 44, 45, 49) punya dua lapisan (FE dan E2E), jadi tidak ada P0 satu lapisan di 3c–3e.
-
-## Lapisan per TC (section 5a)
-
-Tidak ada TC P0 di section ini (tertinggi P1). FE di sini memakai pola representative — satu FE TC bisa mewakili beberapa TC granular yang mekanismenya sama; kolom FE menampilkan id itu untuk semuanya.
-
-| TC | Prioritas | FE | E2E | Catatan |
-|---|---|---|---|---|
-| 358 | P1 | — | E2E-007 |  |
-| 359 | P1 | — | E2E-007 |  |
-| 360 | P1 | — | E2E-007 |  |
-| 361 | P1 | — | E2E-007 |  |
-| 362 | P2 | — | E2E-007 |  |
-| 554 | P2 | — | E2E-007 |  |
-| 555 | P2 | — | E2E-007 |  |
-| 556 | P2 | — | E2E-007 |  |
-| 557 | P2 | — | E2E-007 |  |
-| 357 | P2 | — | E2E-007 |  |
-| 127 | P1 | FE-210 | E2E-007 | Overlap sengaja, lihat aturan hibrida |
-| 197 | P1 | FE-210 | E2E-007 |  |
-| 198 | P1 | FE-210 | E2E-007 |  |
-| 199 | P1 | FE-210 | E2E-007 |  |
-| 200 | P1 | FE-211 | E2E-007 |  |
-| 201 | P1 | FE-210 | E2E-007 |  |
-| 202 | P1 | — | — | Tidak ada FE, tercakup tidak langsung lewat E2E-007 langkah 55 |
-| 207 | P2 | FE-210 | E2E-007 |  |
-| 208 | P2 | FE-211 | E2E-007 |  |
-| 364 | P1 | — | E2E-007 |  |
-| 128 | P2 | FE-220 | E2E-007 |  |
-| 218 | P2 | FE-220 | E2E-007 |  |
-| 219 | P2 | FE-220 | E2E-007 |  |
-| 220 | P2 | FE-220 | E2E-007 |  |
-| 221 | P2 | FE-220 | E2E-007 |  |
-| 222 | P2 | FE-220 | E2E-007 |  |
-| 223 | P2 | FE-220 | E2E-007 |  |
-| 224 | P2 | FE-220 | E2E-007 |  |
-| 225 | P2 | FE-220 | E2E-007 |  |
-| 227 | P2 | FE-220 | E2E-007 |  |
-| 228 | P2 | FE-220 | E2E-007 |  |
-| 229 | P2 | FE-220 | E2E-007 |  |
-| 230 | P3 | FE-220 | E2E-007 |  |
-| 132 | P2 | FE-231 | E2E-007 |  |
-| 131 | P1 | FE-230 | E2E-007 |  |
-| 490 | P2 | FE-268 | E2E-007 |  |
-| 491 | P2 | FE-269 | E2E-007 |  |
-| 492 | P2 | FE-270 | E2E-007 |  |
-| 493 | P2 | FE-271 | E2E-007 |  |
-| 494 | P2 | FE-272 | — | Duplikat TC-496 (`GAP-161` Closed), dicakup lewat TC-496 |
-| 496 | P1 | FE-272 | E2E-007 |  |
-| 497 | P2 | FE-273 | E2E-007 |  |
-| 210 | P2 | FE-216 | E2E-007 |  |
-| 211 | P2 | FE-216 | E2E-007 |  |
-| 212 | P2 | FE-218 | E2E-007 |  |
-| 216 | P2 | FE-217 | E2E-007 |  |
-| 129 | P1 | — | — | Tidak ada FE, murni state UI. Dilaporkan sebagai kemungkinan gap TC frontend |
-| 130 | P2 | — | — | Sama seperti TC-129 |
-| 466 | P2 | — | — | Tidak ada FE, murni rendering. Dilaporkan sebagai kemungkinan gap TC frontend |
-
-## Lapisan per TC (section 2 dan 3k)
-
-| TC | Prioritas | FE | E2E | Catatan |
-|---|---|---|---|---|
-| 07 | P0 | FE-017 | E2E-014 |  |
-| 08 | P0 | FE-018 | E2E-015, E2E-016, E2E-017 |  |
-| 09 | P0 | FE-019 | E2E-011 |  |
-| 10 | P0 | FE-020 | E2E-020 |  |
-| 486 | P1 | — | E2E-020 | Tidak ada FE, E2E satu-satunya lapisan (bukan P0) |
-| 11 | P0 | FE-021 | E2E-020 |  |
-| 12 | P1 | FE-022 | E2E-020 |  |
-| 339 | P1 | FE-023 | E2E-019 |  |
-| 394 | P1 | FE-024 | E2E-010 |  |
-| 395 | P1 | FE-025 | E2E-011 |  |
-| 396 | P1 | FE-026 | E2E-013 |  |
-| 79 | P0 | FE-153 | E2E-014 |  |
-| 80 | P0 | FE-154 | E2E-018 |  |
-| 81 | P0 | FE-155 | E2E-018 |  |
-| 82 | P1 | FE-156 | E2E-014 |  |
-| 83 | P1 | FE-157 | E2E-018 |  |
-| 84 | P1 | FE-158 | E2E-019 |  |
-| 85 | P0 | FE-159 | E2E-016, E2E-017 |  |
-| 86 | P1 | FE-160 | E2E-018 |  |
-| 581 | P1 | — | E2E-016, E2E-017 | TC baru 2026-09-29, belum ada padanan FE |
-| 582 | P1 | — | E2E-015, E2E-017 | TC baru 2026-09-29, belum ada padanan FE |
-| 583 | P1 | — | E2E-015, E2E-016 | TC baru 2026-09-29, belum ada padanan FE |
-| 584 | P1 | — | E2E-012 | TC baru 2026-09-29, belum ada padanan FE |
-| 585 | P1 | — | E2E-011 | TC baru 2026-09-29, belum ada padanan FE |
-| 586 | P1 | — | E2E-010, E2E-011, E2E-012, E2E-013 | TC baru 2026-09-29, belum ada padanan FE |
-| 587 | P1 | — | E2E-128 | TC baru 2026-10-01, belum ada padanan FE |
-| 588 | P1 | — | E2E-129 | TC baru 2026-10-01, belum ada padanan FE |
-| 589 | P1 | — | E2E-130 | TC baru 2026-10-01, belum ada padanan FE |
-| 590 | P1 | — | E2E-131 | TC baru 2026-10-01, belum ada padanan FE |
-| 591 | P1 | — | E2E-132 | TC baru 2026-10-01, belum ada padanan FE |
-| 592 | P1 | — | E2E-133 | TC baru 2026-10-01, belum ada padanan FE |
-| 593 | P1 | — | E2E-134 | TC baru 2026-10-01, belum ada padanan FE |
-| 594 | P1 | — | E2E-135 | TC baru 2026-10-01, belum ada padanan FE |
-| 595 | P1 | — | E2E-136 | TC baru 2026-10-01, belum ada padanan FE |
-| 596 | P1 | — | E2E-137 | TC baru 2026-10-01, belum ada padanan FE |
-| 597 | P1 | — | E2E-138 | TC baru 2026-10-01, belum ada padanan FE |
-| 598 | P1 | — | E2E-139 | TC baru 2026-10-01, belum ada padanan FE |
-| 599 | P1 | — | E2E-140 | TC baru 2026-10-01, belum ada padanan FE |
-| 600 | P1 | — | E2E-141 | TC baru 2026-10-01, belum ada padanan FE |
-| 601 | P1 | — | E2E-142 | TC baru 2026-10-01, belum ada padanan FE |
-| 602 | P1 | — | E2E-143 | TC baru 2026-10-01, belum ada padanan FE |
-| 603 | P1 | — | E2E-144 | TC baru 2026-10-01, belum ada padanan FE |
-| 604 | P1 | — | E2E-145 | TC baru 2026-10-01, belum ada padanan FE |
-| 605 | P1 | — | E2E-146 | TC baru 2026-10-01, belum ada padanan FE |
-| 606 | P1 | — | E2E-147 | TC baru 2026-10-01, belum ada padanan FE |
-| 607 | P1 | — | E2E-148 | TC baru 2026-10-01, belum ada padanan FE |
-| 608 | P2 | — | E2E-149 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 609 | P2 | — | E2E-150 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 610 | P1 | — | E2E-151 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 611 | P1 | — | E2E-152 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 612 | P2 | — | E2E-153 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 613 | P2 | — | E2E-154 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 614 | P2 | — | E2E-155 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 615 | P2 | — | E2E-156 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 616 | P2 | — | E2E-157 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 617 | P1 | — | E2E-158 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 618 | P2 | — | E2E-159 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 619 | P1 | — | E2E-160 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 620 | P1 | — | E2E-160 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 621 | P1 | — | E2E-161 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 622 | P2 | — | E2E-162 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 623 | P2 | — | E2E-163 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 624 | P2 | — | E2E-164 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 625 | P2 | — | E2E-165 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 626 | P2 | — | E2E-166 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 627 | P2 | — | E2E-167 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 628 | P2 | — | E2E-168 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 629 | P1 | — | E2E-169 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-| 630 | P2 | — | E2E-170 | TC baru 2026-10-01 (audit Full), belum ada padanan FE |
-
-Semua TC P0 di section ini punya dua lapisan (FE dan E2E), jadi tidak ada P0 satu lapisan. Role Matrix dipisah positif dan negatif per aksi, satu spec untuk banyak role (`docs/e2e-conventions.md` bagian 3a).
-
-## Temuan untuk QA (sumber TC, bukan spec)
-
-1. **Nama field tidak konsisten (sudah diperbaiki di `tc-user.md` 2026-09-26).** TC-GS-USER-13 dan 14 menyebut "Full Name", sedangkan TC-16, 192, dan 420 memakai First Name dan Last Name. PRD `user.md` baris 411 menetapkan form Create memakai First/Last Name\* (maks 120), dan "Full Name" hanya untuk tampilan tabel dan header Detail. Spec mengikuti PRD. `tc-user.md` TC-13, TC-14, dan TC-254 sudah disesuaikan.
-2. **Division wajib (sudah diperbaiki di `tc-user.md` 2026-09-26).** PRD `user.md` baris 411 dan 853 menetapkan Division wajib dengan error "Division must not be empty". TC-14 tidak menandai Division dengan `*`. Spec memperlakukan Division wajib. TC-14 sekarang menandai Division, First Name, Last Name, Email, dan Access sebagai wajib.
-3. **Data pre-setup belum tercatat (masih terbuka).** Custom Field `Blood Type` (TC-25) dan user dengan Employee ID `EMP-001` (TC-340) dipakai sebagai precondition, tetapi tidak ada di tabel Data Uji Pre-setup `tc-user.md`. Perlu dipastikan datanya ada di environment QA.
-4. **(Masih terbuka.) TC-18 mencakup duplikasi lintas Login dan Non-Login User**, tetapi datanya hanya user Login ("Doni Pratama"). Varian duplikat terhadap Non-Login User belum punya data uji, dan spec 001 hanya menguji sisi Login.
-5. **Teks toast.** TC-13 dan TC-489 menyebut "User created successfully.". Spec memakai teks ini.
-6. **TC-GS-USER-196 dan 418 memakai "Full Name" gabungan pada Edit dan Changelog (sudah diperbaiki di `tc-user.md` 2026-09-26).** PRD `user.md` baris 989: di Edit, First Name dan Last Name adalah field terpisah, dan Changelog mencatat 1 baris per field yang berubah. Kedua TC sekarang memakai Last Name dengan Changelog `Field=Last Name, Old, New`. Tidak memengaruhi spec e2e section Create.
-7. **Label checkbox Create tidak konsisten (sudah diperbaiki di `tc-user.md` 2026-09-26).** TC-GS-USER-21 memakai "Create another" di langkah dan "Stay on this form after submitting" di Expected, dan TC-GS-USER-255 memakai "after creating". Label kanonik "Stay on this form after submitting" (`foundation/functions/toast-copy.md` dan PRD `user.md` baris 411). TC-21 dan TC-255 sudah diseragamkan, dan TC-21 kini menyebut toast "User created successfully." pada save pertama.
-8. **TC-GS-USER-91 terpecah jadi dua baris tabel (sudah diperbaiki di `tc-user.md` 2026-09-26).** Ada line break nyata di dalam sel Expected, sehingga hanya 5 dari 15 kolom terbaca. Diganti literal `\n` mengikuti PRD `user.md` baris 1161. Setelah perbaikan, semua baris TC di `tc-user.md` berjumlah 15 kolom.
-9. **TC-GS-USER-192 menyebut "emoji atau simbol tidak diizinkan", padahal konvensi platform hanya memblok emoji (sudah diperbaiki di `tc-user.md` 2026-09-26).** `foundation/process/prd-process/prd-conventions.md` bagian "Karakter yang Diizinkan (Name Fields)" menetapkan pendekatan blocklist: hanya emoji yang diblok di input, semua karakter cetak lain (termasuk simbol) diizinkan. Ini bukan gap PRD, sehingga tidak dicatat di `prd-gap-registry.md`. TC-192 diperbaiki: hanya emoji diblok, ditambah langkah dan data `Budi-O'Neil` yang harus tetap bisa diketik. Spec 001 langkah 19 memverifikasinya.
-10. **TC-GS-USER-467 dan 475 kini diotomasi (spec 003 dan 004).** Spec 004 butuh scan RFID hardware yang tidak bisa dilakukan browser, dan spec 003 butuh akun Total Control di entity Principal. Kebutuhan teknis keduanya dicatat sebagai permintaan ke tim FE (bukan hambatan seleksi).
-11. **Label tombol dan penutupan modal di TC tidak selaras dengan konvensi platform (sudah diperbaiki di `tc-user.md` 2026-09-28).** `prd-conventions.md` §24.1: Create wajib `[Submit]` dan `[Clear Field]`, Edit wajib `[Save]` dan `[Clear Field]`, modal Create dan Edit tidak punya `[Cancel]` dan ditutup lewat `✕` atau `Esc`. TC memakai `[Save]` dan `[Cancel]` pada modal Create. 29 TC Create, 8 TC penutupan modal, TC-14, dan 3 TC Edit yang memakai `[Submit]` sudah diperbaiki. TC-66 diperjelas berlaku di modal Create dan modal Edit (`[Submit]` atau `[Save]`), dikonfirmasi user.
-12. **Pengelompokan spec diubah dari 14 spec menjadi 4 spec (2026-09-28).** Prinsip baru ada di `docs/e2e-conventions.md` bagian 3: satu spec = satu atau beberapa sesi modal berurutan, screening di awal, validasi sebelum aksi sukses, kasus menutup form di akhir. Id spec di-renumber karena masih `draft` dan belum di-commit.
-13. **Error Custom Field wajib saat submit kosong tidak tercakup di TC-GS-USER-16 dan TC-GS-USER-25 (sudah diperbaiki di `tc-user.md` 2026-09-28).** Custom Field wajib divalidasi seperti field wajib lain: copy `"[Field] must not be empty"` muncul setelah Submit (pola global `prd-conventions.md` baris 207 dan 846). Ini bukan gap PRD, sehingga tidak dicatat di `prd-gap-registry.md`. TC-16 sekarang punya precondition Custom Field `Blood Type` (required) dan error ke-6 `"Blood Type must not be empty"`, dan TC-25 menyebut teks error yang sama. Spec 001 langkah 11 dan 17 memverifikasinya.
-14. **TC-GS-USER-50 dikoreksi (2026-09-29).** Precondition dan Expected menyebut Access menjadi kosong, bertentangan dengan minimal 1 Access. Sekarang memakai user `[Global Settings, FAMS]` dan hasil `[FAMS]`, dicakup spec 009 bersama TC-387.
-15. **Role Matrix: kombinasi role parsial belum ada TC, ditambahkan 6 TC baru (2026-09-29).** TC-GS-USER-581 sampai 586 ditambahkan ke `tc-user.md` section 2, berdasarkan tabel gerbang UI `user.md` §4.8. Nama akun aktor baru (Create-only, Update-only, Delete-only) di tabel Data Uji Pre-setup adalah usulan dan boleh disesuaikan tim FE.
-16. **Gap TC-51 diselesaikan sesi lain.** Entri gap yang saya buat bernomor `GAP-245` dinomori ulang menjadi `GAP-248`, dan TC-51 sudah diputuskan tunggal. Spec 009 memakainya.
-17. **Pemecahan spec 005 (2026-09-29).** Spec 005 lama (Delete, Bulk, Toggle Active, Remove Access) dipecah menjadi 005 Delete, 008 Toggle Active, dan 009 Remove Access, karena topik aksinya berbeda dan kondisi datanya bervariasi. Spec role lama 008–016 diganti oleh 010–020 (Role Matrix positif dan negatif).
-
-18. **TC-GS-USER-28 direvisi mengikuti PRD (2026-09-30).** Expected lama (badge hilang, email kembali) tidak ada di PRD; PRD menyatakan pending berakhir hanya lewat konfirmasi atau Cancel admin. TC-28 ditulis ulang di `tc-user.md` dan sekarang konsisten dengan TC-56. Perbedaan kode respons link kedaluwarsa (PRD 404 vs API 410) dilaporkan sebagai `GAP-275`.
-19. **Badge dan label Pending Email Change diselaraskan ke PRD (2026-09-30).** Badge di baris adalah "Pending Email Confirmation" (TC-27, 28 sebelumnya menulis "Pending Email Change"), label di modal Edit adalah "Pending email change to [new email]" (TC-421, 479 sebelumnya "Pending Email Change: [new email]"). Diperbaiki di `tc-user.md`.
-20. **Access Default User (2026-09-30).** UIUX menyatakan Default User otomatis punya semua modul dan Access-nya tidak bisa diedit, berbeda dengan PRD/API dan TC-29. Dilaporkan sebagai `GAP-274`. Spec 027 hanya menguji info dasar sampai keputusan.
-21. **Toast perubahan email (2026-09-30).** TC-27 memakai toast `"Confirmation email sent to new address."` yang tidak ada di PRD (hanya toast Edit standar). Dilaporkan sebagai `GAP-276`. Spec 025 mengikuti TC sampai diputuskan.
-22. **Timing validasi Edit dan Create diselaraskan ke PRD (2026-09-30).** PRD `user.md` bagian 6: error duplikat Email, duplikat Employee ID, dan batas 120 karakter muncul langsung saat mengetik, bukan setelah submit. Spec 023 dan 001 diperbaiki. Error kewajiban field tetap setelah submit.
-23. **TC-GS-USER-23 diselaraskan ke PRD (2026-09-30).** Sebelumnya menyebut "limit lisensi" dan hasil ambigu (`[+ User]` disabled ATAU Submit diblokir). PRD tidak punya user cap per tier dan menetapkan Dialog Blok saat klik `[+ User]` pada Master Data Count Limit. TC-23 sekarang identik dengan TC-87 dan dipertahankan sebagai pasangannya, duplikasi diputuskan QA.
-24. **TC-GS-USER-75 dan 76 diselaraskan ke PRD (2026-09-30).** `prd-conventions.md` bagian File Upload (Photo): format difilter di file picker tanpa pesan error, ukuran melebihi 1 MB di-resize otomatis tanpa pesan error. TC lama mengharapkan inline error keduanya. Diperbaiki di `tc-user.md` (Tipe 76 dan 75 menjadi Positive).
-25. **Gap baru dari pencocokan PRD (2026-09-30).** `GAP-277`: aturan dan copy error tanggal Temporary Until lampau (PRD "≥ hari ini" tanpa copy error; copy hanya di API). `GAP-278`: copy Dialog Blok Master Data Count Limit untuk User tidak didefinisikan (Position punya). Spec 034 dan 040 menyesuaikan.
-26. **TC-GS-USER-91 dicakup spec 008.** Skenarionya sama dengan TC-480 (Deactivate single dengan approval in-flight).
-27. **Audit Log diselaraskan ke PRD §8 (2026-09-30).** TC-67 (Auto-Deactivate hanya di Changelog dan Activity Log, bukan System Log), TC-143 (judul salah: Create ada di System Log aktor, bukan User Log), TC-144 dan TC-146 (baris System Log lengkap dan Field `Status (Global)`) diperbaiki di `tc-user.md`. Spec 035 diperbaiki sesuai.
-28. **Section 6, 8, 9, 11 (bagian A) ditambahkan sebagai langkah di spec yang sudah ada (2026-09-30).** Pengecekan log dan efek lintas modul yang menempel pada aksi yang sama tidak dibuat spec baru: 143/405 (002), 144/409 (024), 145/406/164/168/367 (005), 146/408 (008), 147 (009), 391/174 (025 dan 028), 442 (029), 148 (031), 407/163 (039), 251 (006), 169 (001).
-29. **Section 6–11 selesai diproses (2026-09-30).** Hanya-BE: TC-173 (hash token di database) dan TC-176 (penegakan limit server-side lewat API langsung, `TC-GS-USER-BE-117`). Section 7 (API Contract) tidak punya TC granular dan Section 10 hanya tabel silang. TC-165, 252, 253 ditunda ke Tab Role lalu selesai di spec 054 dan 056. `TC-GS-USER-175` tidak pernah ditulis (bukan gap).
-30. **GAP-274 sampai GAP-278 sudah ditutup PRD owner (2026-09-30) dan spec disesuaikan.** Access Default User derived dan terkunci (spec 027 memverifikasi checkbox Access Disabled), link konfirmasi yang tidak live menghasilkan 410 (spec 025, 028, 050), toast Edit ubah email memakai toast standar (spec 025), batas Temporary Until adalah besok (spec 034, 036), dan Dialog Blok "Limit Reached" (spec 040). `tc-user.md` digabung dengan versi remote: TC-23, 27, 28, 29, 66, 333 mengikuti keputusan PRD, dengan koreksi Auto-Deactivate (TC-67), foto (TC-75, 76), dan Audit Log (TC-143, 144, 146) dari sesi ini.
-31. **GAP-279 (baru): teks badge Pending Email tidak konsisten di dalam `user.md`.** [F-USER-03] versi baru menulis badge "Pending Email Change", sedangkan §3, §4.1, §4.2, dan API menulis "Pending Email Confirmation". TC-27 dan 28 serta spec 025, 028, 050 memakai "Pending Email Confirmation" sampai PRD owner memutuskan.
-32. **Section 4b, 4c, 4d, 4g diproses menjadi spec 054–066 (2026-09-30).** Tab Role (054–058), Responsibilities (059–061), Non-Login User (062–063), dan inline-edit Custom Field (064–066). Selaras PRD kecuali dua temuan: `GAP-281` (empty state Tab Role tidak didefinisikan dan bertentangan dengan 6 baris tetap, sehingga TC-99 tidak masuk spec) dan PRD `user.md` §4.1 menyebut tabel Tab Role "sortable" sedangkan §4.2a menyebut tanpa sort (spec 054 mengikuti §4.2a dan TC-355).
-33. **Antrean `Mode: mock` bertambah dari Section 4:** TC-577 (Save custom field gagal server), TC-536 (tampilan Phone), dan Section 4a (382–386, 502–504) serta 4e, 4f, 4h yang belum dibahas. Teks TC-121 menyebut `404 field_not_found` yang tidak ada di `user.md`; spec 066 hanya memverifikasi perilaku FE.
-34. **GAP-282 (baru): empty state Tab Responsibilities Principal dengan nol approval ambigu.** `user.md` §7 punya baris empty global dan empty Pending Approvals yang sama-sama berlaku untuk entity dengan satu sub-tab. Bagian Principal TC-548 dikeluarkan dari spec 061 sampai PRD owner memutuskan.
-35. **Section 4a, 4e, 4f, 4h diproses menjadi spec 067–075 (2026-09-30).** TC-113 ditambahkan sebagai langkah di spec 050, TC-115 di spec 037, dan TC-114 dicatat di sourceTc spec 035 (baris Changelog-nya sudah diverifikasi di sana). Spec 075 adalah spec hanya-FE pertama (`Mode: mock`).
-36. **`TC-GS-USER-117` dikoreksi ke PRD §4.1 (Changelog `tc-user.md` 2026-09-30 (9)).** Expected lama menyebut data di halaman yang sama ter-update, sedangkan PRD tegas klik opsi Product Selector adalah navigasi penuh ke Detail User produk tujuan.
-37. **GAP-294 (baru): warna badge User Type (selain Non Login) tidak didefinisikan di PRD.** TC-122, 123, 124, 426 menyebut warna; spec 072 hanya memverifikasi teks badge.
-38. **Contoh IP TC-356 tidak membedakan sort string dan numerik.** `10.0.0.1` dan `192.168.1.5` berurutan sama pada kedua cara. Spec 068 memakai `9.1.1.1` dan `10.0.0.1`. Contoh di `tc-user.md` belum diubah.
-39. **Antrean `Mode: mock` dan sisa Section 1, 3, 5 diproses menjadi spec 076–116 (2026-09-30).** Kegagalan server (077–080), latensi (076), dua sesi (081, 082), bypass DOM (083, 084), dialog bulk (085), foto (086–088), Setup Column User List (089–093), tampilan dan perilaku List (094–101), tab log (102, 103), Guided Tooltip dan A11y (104, 105), input Custom Field (106–108), dan Modal Changelog List (109–116). Per-kolom Setup Column dan Modal Changelog digabung per aksi karena perilakunya identik untuk semua kolom.
-40. **`TC-GS-USER-465` dikoreksi ke PRD §7 (Changelog `tc-user.md` 2026-09-30 (10)).** Toast `"Failed to update user."` diganti `"Error, failed to update user."`.
-41. **GAP-295 (baru): placeholder search box User List tidak didefinisikan di PRD.** TC-126 mengharapkan `"Search name or email..."`; spec 094 tidak memverifikasi teks placeholder.
-42. **Sisa belum ada spec (2026-09-30):** TC-GS-USER-99 (ditahan `GAP-281`), TC-GS-USER-173 dan 176 (hanya BE), dan bagian Distributor dan Partner dari TC-15 (belum ada TC). Semua TC lain sudah tercatat di sourceTc salah satu spec (dicek dengan skrip terhadap 546 TC).
-43. **Aktor role dan variasi target diperluas (2026-10-01).** Ditambah TC-587 sampai 600 dan spec 128–141: eksekusi aktor Update-saja untuk Edit profil penuh, ubah Email, Resend x2, Pair/Unpair, Reset Authenticator, dan Bulk, serta variasi target (Default User, akun sendiri, Read Only, Total Control, sesama pemegang role). **GAP-296**: gate hak Update untuk edit inline Custom Field, foto Avatar, dan CRUD Tab Role tidak ada di PRD §4.8, jadi TC eksekusinya belum ditulis. **GAP-297**: tooltip hak parsial vs target Total Control/Read Only ambigu (tier atau generik); spec 142 dan 143 tidak memverifikasi teks tooltip.
-44. **Entity Distributor dan Partner dilengkapi (2026-10-01).** TC-603 sampai 607 dan spec 144–148 (opsi Access Create, Tab Responsibilities, entity-scope Partner). **GAP-300**: entity-scope Principal terhadap Distributor downstream tidak didefinisikan di PRD §2.1, jadi tidak ditulis. Empty state Distributor dan Partner tertahan GAP-282.
-45. **Audit Full modul User, putaran 1 (2026-10-01).** TC-608 sampai 630 dan spec 149–170 menutup celah dari pembacaan ulang `user.md`: Pair/Unpair gagal, Custom Field Dropdown stale, D1 client suspended, pagination, empty state log, toggle Active Tab Role, Remove Access multi-produk, Bulk Delete campuran, interaksi List, dan tiga arah lintas modul. Koreksi: TC-595 dan spec 136 memakai tooltip Default User sesuai §2.5. Gap PRD baru: GAP-301 sampai 304. Sisa audit (Edge API, sweep pilar, inventaris error-handling) belum dikerjakan.
+| TC ID | Spec E2E | Mode |
+|---|---|:---:|
+| TC-GS-USER-1 | TC-GS-USER-E2E-001-screening-tabel-user-list-layout-dan-default-sort | FE+BE |
+| TC-GS-USER-2 | TC-GS-USER-E2E-001-screening-tabel-user-list-layout-dan-default-sort | FE+BE |
+| TC-GS-USER-3 | TC-GS-USER-E2E-002-navigasi-subtab-dan-pembaruan-breadcrumb | FE+BE |
+| TC-GS-USER-4 | TC-GS-USER-E2E-002-navigasi-subtab-dan-pembaruan-breadcrumb | FE+BE |
+| TC-GS-USER-5 | TC-GS-USER-E2E-002-navigasi-subtab-dan-pembaruan-breadcrumb | FE+BE |
+| TC-GS-USER-6 | TC-GS-USER-E2E-002-navigasi-subtab-dan-pembaruan-breadcrumb | FE+BE |
+| TC-GS-USER-7 | TC-GS-USER-E2E-001-screening-tabel-user-list-layout-dan-default-sort | FE+BE |
+| TC-GS-USER-8 | TC-GS-USER-E2E-006-resilience-loading-state-dan-error-load-retry | mock |
+| TC-GS-USER-9 | TC-GS-USER-E2E-005-empty-state-genuinely-dan-no-results-search | FE+BE |
+| TC-GS-USER-10 | TC-GS-USER-E2E-005-empty-state-genuinely-dan-no-results-search | FE+BE |
+| TC-GS-USER-11 | TC-GS-USER-E2E-001-screening-tabel-user-list-layout-dan-default-sort | FE+BE |
+| TC-GS-USER-12 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-13 | TC-GS-USER-E2E-001-screening-tabel-user-list-layout-dan-default-sort | FE+BE |
+| TC-GS-USER-14 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-15 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-16 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-17 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-18 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-19 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-20 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-21 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-22 | TC-GS-USER-E2E-003-data-rendering-kolom-avatar-badge-dan-access | FE+BE |
+| TC-GS-USER-23 | TC-GS-USER-E2E-006-resilience-loading-state-dan-error-load-retry | mock |
+| TC-GS-USER-24 | TC-GS-USER-E2E-004-screening-row-action-overlay-dan-toggle-status | FE+BE |
+| TC-GS-USER-25 | TC-GS-USER-E2E-001-screening-tabel-user-list-layout-dan-default-sort | FE+BE |
+| TC-GS-USER-26 | TC-GS-USER-E2E-004-screening-row-action-overlay-dan-toggle-status | FE+BE |
+| TC-GS-USER-27 | TC-GS-USER-E2E-004-screening-row-action-overlay-dan-toggle-status | FE+BE |
+| TC-GS-USER-28 | TC-GS-USER-E2E-004-screening-row-action-overlay-dan-toggle-status | FE+BE |
+| TC-GS-USER-29 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-30 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-31 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-32 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-33 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-34 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-35 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-36 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-37 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-38 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-39 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-40 | TC-GS-USER-E2E-007-guided-tooltip-walkthrough-dan-interaksi | FE+BE |
+| TC-GS-USER-41 | TC-GS-USER-E2E-009-role-matrix-visibilitas-menu-dan-direct-url | FE+BE |
+| TC-GS-USER-42 | TC-GS-USER-E2E-009-role-matrix-visibilitas-menu-dan-direct-url | FE+BE |
+| TC-GS-USER-43 | TC-GS-USER-E2E-009-role-matrix-visibilitas-menu-dan-direct-url | FE+BE |
+| TC-GS-USER-44 | TC-GS-USER-E2E-009-role-matrix-visibilitas-menu-dan-direct-url | FE+BE |
+| TC-GS-USER-45 | TC-GS-USER-E2E-009-role-matrix-visibilitas-menu-dan-direct-url | FE+BE |
+| TC-GS-USER-46 | TC-GS-USER-E2E-009-role-matrix-visibilitas-menu-dan-direct-url | FE+BE |
+| TC-GS-USER-47 | TC-GS-USER-E2E-010-role-matrix-read-only-ui-restrictions | FE+BE |
+| TC-GS-USER-48 | TC-GS-USER-E2E-010-role-matrix-read-only-ui-restrictions | FE+BE |
+| TC-GS-USER-49 | TC-GS-USER-E2E-011-role-matrix-positif-total-control-actions | FE+BE |
+| TC-GS-USER-50 | TC-GS-USER-E2E-015-role-matrix-negatif-proteksi-default-user-dan-self | FE+BE |
+| TC-GS-USER-51 | TC-GS-USER-E2E-015-role-matrix-negatif-proteksi-default-user-dan-self | FE+BE |
+| TC-GS-USER-52 | TC-GS-USER-E2E-011-role-matrix-positif-total-control-actions | FE+BE |
+| TC-GS-USER-53 | TC-GS-USER-E2E-011-role-matrix-positif-total-control-actions | FE+BE |
+| TC-GS-USER-54 | TC-GS-USER-E2E-012-role-matrix-positif-full-crud-holder-actions | FE+BE |
+| TC-GS-USER-55 | TC-GS-USER-E2E-012-role-matrix-positif-full-crud-holder-actions | FE+BE |
+| TC-GS-USER-56 | TC-GS-USER-E2E-015-role-matrix-negatif-proteksi-default-user-dan-self | FE+BE |
+| TC-GS-USER-57 | TC-GS-USER-E2E-015-role-matrix-negatif-proteksi-default-user-dan-self | FE+BE |
+| TC-GS-USER-58 | TC-GS-USER-E2E-016-role-matrix-negatif-full-crud-ke-target-total-control | FE+BE |
+| TC-GS-USER-59 | TC-GS-USER-E2E-012-role-matrix-positif-full-crud-holder-actions | FE+BE |
+| TC-GS-USER-60 | TC-GS-USER-E2E-013-role-matrix-positif-default-user-actions | FE+BE |
+| TC-GS-USER-61 | TC-GS-USER-E2E-013-role-matrix-positif-default-user-actions | FE+BE |
+| TC-GS-USER-62 | TC-GS-USER-E2E-013-role-matrix-positif-default-user-actions | FE+BE |
+| TC-GS-USER-63 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-64 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-65 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-66 | TC-GS-USER-E2E-010-role-matrix-read-only-ui-restrictions | FE+BE |
+| TC-GS-USER-67 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-68 | TC-GS-USER-E2E-017-role-matrix-negatif-aksi-tulis-oleh-read-only | FE+BE |
+| TC-GS-USER-69 | TC-GS-USER-E2E-017-role-matrix-negatif-aksi-tulis-oleh-read-only | FE+BE |
+| TC-GS-USER-70 | TC-GS-USER-E2E-017-role-matrix-negatif-aksi-tulis-oleh-read-only | FE+BE |
+| TC-GS-USER-71 | TC-GS-USER-E2E-017-role-matrix-negatif-aksi-tulis-oleh-read-only | FE+BE |
+| TC-GS-USER-72 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-73 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-74 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-75 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-76 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-77 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-78 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-79 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-80 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-81 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-82 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-83 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-84 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-85 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-86 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-87 | TC-GS-USER-E2E-014-role-matrix-positif-scoped-holders-actions | FE+BE |
+| TC-GS-USER-88 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-89 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-90 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-91 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-92 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-93 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-94 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-95 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-96 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-97 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-98 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-99 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-100 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-101 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-102 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-103 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-104 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-105 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-106 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-107 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-108 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-109 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-110 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-111 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-112 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-113 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-114 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-115 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-116 | TC-GS-USER-E2E-019-create-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-117 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-118 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-119 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-120 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-121 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-122 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-123 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-124 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-125 | TC-GS-USER-E2E-021-create-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-126 | TC-GS-USER-E2E-021-create-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-127 | TC-GS-USER-E2E-021-create-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-128 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-129 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-130 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-131 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-132 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-133 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-134 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-135 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-136 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-137 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-138 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-139 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-140 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-141 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-142 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-143 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-144 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-145 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-146 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-147 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-148 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-149 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-150 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-151 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-152 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-153 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-154 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-155 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-156 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-157 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-158 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-159 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-160 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-161 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-162 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-163 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-164 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-165 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-166 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-167 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-168 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-169 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-170 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-171 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-172 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-173 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-174 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-175 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-176 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-177 | TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | FE+BE |
+| TC-GS-USER-178 | TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | FE+BE |
+| TC-GS-USER-179 | TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | FE+BE |
+| TC-GS-USER-180 | TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | FE+BE |
+| TC-GS-USER-181 | TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | FE+BE |
+| TC-GS-USER-182 | TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | FE+BE |
+| TC-GS-USER-183 | TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | FE+BE |
+| TC-GS-USER-184 | TC-GS-USER-E2E-025-edit-user-validasi-duplikat-dan-guard-double-save | FE+BE |
+| TC-GS-USER-185 | TC-GS-USER-E2E-026-edit-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-186 | TC-GS-USER-E2E-026-edit-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-187 | TC-GS-USER-E2E-026-edit-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-188 | TC-GS-USER-E2E-026-edit-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-189 | TC-GS-USER-E2E-026-edit-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-190 | TC-GS-USER-E2E-026-edit-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-191 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-192 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-193 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-194 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-195 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-196 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-197 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-198 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-199 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-200 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-201 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-202 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-203 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-204 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-205 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-206 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-207 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-208 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-209 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-210 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-211 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-212 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-213 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-214 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-215 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-216 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-217 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-218 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-219 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-220 | TC-GS-USER-E2E-028-edit-user-pending-email-change-flow | FE+BE |
+| TC-GS-USER-221 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-222 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-223 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-224 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-225 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-226 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-227 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-228 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-229 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-230 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-231 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-232 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-233 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-234 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-235 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-236 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-237 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-238 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-239 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-240 | TC-GS-USER-E2E-029-edit-user-access-produk-dan-custom-fields | FE+BE |
+| TC-GS-USER-241 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-242 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-243 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-244 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-245 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-246 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-247 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-248 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-249 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-250 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-251 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-252 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-253 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-254 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-255 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-256 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-257 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-258 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-259 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-260 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-261 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-262 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-263 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-264 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-265 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-266 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-267 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-268 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-269 | TC-GS-USER-E2E-033-delete-single-happy-path-penghapusan-user | FE+BE |
+| TC-GS-USER-270 | TC-GS-USER-E2E-033-delete-single-happy-path-penghapusan-user | FE+BE |
+| TC-GS-USER-271 | TC-GS-USER-E2E-033-delete-single-happy-path-penghapusan-user | FE+BE |
+| TC-GS-USER-272 | TC-GS-USER-E2E-033-delete-single-happy-path-penghapusan-user | FE+BE |
+| TC-GS-USER-273 | TC-GS-USER-E2E-033-delete-single-happy-path-penghapusan-user | FE+BE |
+| TC-GS-USER-274 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-275 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-276 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-277 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-278 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-279 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-280 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-281 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-282 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-283 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-284 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-285 | TC-GS-USER-E2E-034-bulk-action-bar-protokol-seleksi-dan-retensi | FE+BE |
+| TC-GS-USER-286 | TC-GS-USER-E2E-035-selection-limit-bulk-checkbox-guard | FE+BE |
+| TC-GS-USER-287 | TC-GS-USER-E2E-035-selection-limit-bulk-checkbox-guard | FE+BE |
+| TC-GS-USER-288 | TC-GS-USER-E2E-035-selection-limit-bulk-checkbox-guard | FE+BE |
+| TC-GS-USER-289 | TC-GS-USER-E2E-035-selection-limit-bulk-checkbox-guard | FE+BE |
+| TC-GS-USER-290 | TC-GS-USER-E2E-035-selection-limit-bulk-checkbox-guard | FE+BE |
+| TC-GS-USER-291 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-292 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-293 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-294 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-295 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-296 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-297 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-298 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-299 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-300 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-301 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-302 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-303 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-304 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-305 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-306 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-307 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-308 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-309 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-310 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-311 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-312 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-313 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-314 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-315 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-316 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-317 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-318 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-319 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-320 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-321 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-322 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-323 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-324 | TC-GS-USER-E2E-039-tag-pair-dan-unpair-rfid-flow | FE+BE |
+| TC-GS-USER-325 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-326 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-327 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-328 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-329 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-330 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-331 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-332 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-333 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-334 | TC-GS-USER-E2E-040-reset-authenticator-mfa-flow | FE+BE |
+| TC-GS-USER-335 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-336 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-337 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-338 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-339 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-340 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-341 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-342 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-343 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-344 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-345 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-346 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-347 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-348 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-349 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-350 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-351 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-352 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-353 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-354 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-355 | TC-GS-USER-E2E-042-inline-edit-custom-field-detail-flow | FE+BE |
+| TC-GS-USER-356 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-357 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-358 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-359 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-360 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-361 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-362 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-363 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-364 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-365 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-366 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-367 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-368 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-369 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-370 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |
+| TC-GS-USER-371 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-372 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-373 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-374 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-375 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-376 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-377 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-378 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-379 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-380 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-381 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-382 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-383 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-384 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-385 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-386 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-387 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-388 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-389 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-390 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-391 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-392 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-393 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-394 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-395 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-396 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-397 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-398 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-399 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-400 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-401 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-402 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-403 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-404 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-405 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-406 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-407 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-408 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-409 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-410 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-411 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-412 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-413 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-414 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-415 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-416 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-417 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-418 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-419 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-420 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-421 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-422 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-423 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-424 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-425 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-426 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-427 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-428 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-429 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-430 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-431 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-432 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-433 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-434 | TC-GS-USER-E2E-047-user-list-filter-panel-flow | FE+BE |
+| TC-GS-USER-435 | TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | FE+BE |
+| TC-GS-USER-436 | TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | FE+BE |
+| TC-GS-USER-437 | TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | FE+BE |
+| TC-GS-USER-438 | TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | FE+BE |
+| TC-GS-USER-439 | TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | FE+BE |
+| TC-GS-USER-440 | TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | FE+BE |
+| TC-GS-USER-441 | TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | FE+BE |
+| TC-GS-USER-442 | TC-GS-USER-E2E-048-user-list-sort-kolom-tabel-utama | FE+BE |
+| TC-GS-USER-443 | TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | FE+BE |
+| TC-GS-USER-444 | TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | FE+BE |
+| TC-GS-USER-445 | TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | FE+BE |
+| TC-GS-USER-446 | TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | FE+BE |
+| TC-GS-USER-447 | TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | FE+BE |
+| TC-GS-USER-448 | TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | FE+BE |
+| TC-GS-USER-449 | TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | FE+BE |
+| TC-GS-USER-450 | TC-GS-USER-E2E-049-user-list-setup-column-overlay-visibilitas | FE+BE |
+| TC-GS-USER-451 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-452 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-453 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-454 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-455 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-456 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-457 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-458 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-459 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-460 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-461 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-462 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-463 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-464 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-465 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-466 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-467 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-468 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-469 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-470 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-471 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-472 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-473 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-474 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-475 | TC-GS-USER-E2E-050-user-list-setup-column-modal-reorder-dan-pin | FE+BE |
+| TC-GS-USER-476 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-477 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-478 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-479 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-480 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-481 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-482 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-483 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-484 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-485 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-486 | TC-GS-USER-E2E-051-user-list-download-csv-dan-xlsx-flow | FE+BE |
+| TC-GS-USER-487 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-488 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-489 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-490 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-491 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-492 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-493 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-494 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-495 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-496 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-497 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-498 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-499 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-500 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-501 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-502 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-503 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-504 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-505 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-506 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-507 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-508 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-509 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-510 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-511 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-512 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-513 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-514 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-515 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-516 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-517 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-518 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-519 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-520 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-521 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-522 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-523 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-524 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-525 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-526 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-527 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-528 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-529 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-530 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-531 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-532 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-533 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-534 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-535 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-536 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-537 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-538 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-539 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-540 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-541 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-542 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-543 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-544 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-545 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-546 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-547 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-548 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-549 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-550 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-551 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-552 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-553 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-554 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-555 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-556 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-557 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-558 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-559 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-560 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-561 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-562 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-563 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-564 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-565 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-566 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-567 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-568 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-569 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-570 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-571 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-572 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-573 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-574 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-575 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-576 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-577 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-578 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-579 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-580 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-581 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-582 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-583 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-584 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-585 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-586 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-587 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-588 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-589 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-590 | TC-GS-USER-E2E-053-modal-changelog-user-list-download-dan-setup-column | FE+BE |
+| TC-GS-USER-591 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-592 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-593 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-594 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-595 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-596 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-597 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-598 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-599 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-600 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-601 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-602 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-603 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-604 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-605 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-606 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-607 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-608 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-609 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-610 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-611 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-612 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-613 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-614 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-615 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-616 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-617 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-618 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-619 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-620 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-621 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-622 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-623 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-624 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-625 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-626 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-627 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-628 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-629 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-630 | TC-GS-USER-E2E-054-detail-tab-system-log-table-rules | FE+BE |
+| TC-GS-USER-631 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-632 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-633 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-634 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-635 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-636 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-637 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-638 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-639 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-640 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-641 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-642 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-643 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-644 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-645 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-646 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-647 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-648 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-649 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-650 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-651 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-652 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-653 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-654 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-655 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-656 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-657 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-658 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-659 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-660 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-661 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-662 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-663 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-664 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-665 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-666 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-667 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-668 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-669 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-670 | TC-GS-USER-E2E-055-detail-tab-user-log-table-rules | FE+BE |
+| TC-GS-USER-671 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-672 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-673 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-674 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-675 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-676 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-677 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-678 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-679 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-680 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-681 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-682 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-683 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-684 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-685 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-686 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-687 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-688 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-689 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-690 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-691 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-692 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-693 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-694 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-695 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-696 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-697 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-698 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-699 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-700 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-701 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-702 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-703 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-704 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-705 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-706 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-707 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-708 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-709 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-710 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-711 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-712 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-713 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-714 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-715 | TC-GS-USER-E2E-056-detail-tab-non-login-user-table-rules | FE+BE |
+| TC-GS-USER-716 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-717 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-718 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-719 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-720 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-721 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-722 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-723 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-724 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-725 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-726 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-727 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-728 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-729 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-730 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-731 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-732 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-733 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-734 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-735 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-736 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-737 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-738 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-739 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-740 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-741 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-742 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-743 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-744 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-745 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-746 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-747 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-748 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-749 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-750 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-751 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-752 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-753 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-754 | TC-GS-USER-E2E-057-responsibilities-subtab-borrowed-assets-rules | FE+BE |
+| TC-GS-USER-755 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-756 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-757 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-758 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-759 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-760 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-761 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-762 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-763 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-764 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-765 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-766 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-767 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-768 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-769 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-770 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-771 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-772 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-773 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-774 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-775 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-776 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-777 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-778 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-779 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-780 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-781 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-782 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-783 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-784 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-785 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-786 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-787 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-788 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-789 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-790 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-791 | TC-GS-USER-E2E-058-responsibilities-subtab-assigned-assets-rules | FE+BE |
+| TC-GS-USER-792 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-793 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-794 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-795 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-796 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-797 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-798 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-799 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-800 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-801 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-802 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-803 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-804 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-805 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-806 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-807 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-808 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-809 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-810 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-811 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-812 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-813 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-814 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-815 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-816 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-817 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-818 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-819 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-820 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-821 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-822 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-823 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-824 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-825 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-826 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-827 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-828 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-829 | TC-GS-USER-E2E-059-responsibilities-subtab-pending-approvals-rules | FE+BE |
+| TC-GS-USER-830 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-831 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-832 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-833 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-834 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-835 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-836 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-837 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-838 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-839 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-840 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-841 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-842 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-843 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-844 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-845 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-846 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-847 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-848 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-849 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-850 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-851 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-852 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-853 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-854 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-855 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-856 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-857 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-858 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-859 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-860 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-861 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-862 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-863 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-864 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-865 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-866 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-867 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-868 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-869 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-870 | TC-GS-USER-E2E-060-responsibilities-subtab-pending-tasks-rules | FE+BE |
+| TC-GS-USER-871 | TC-GS-USER-E2E-061-detail-tab-role-static-display-dan-permissions | FE+BE |
+| TC-GS-USER-872 | TC-GS-USER-E2E-061-detail-tab-role-static-display-dan-permissions | FE+BE |
+| TC-GS-USER-873 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-874 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-875 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-876 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-877 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-878 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-879 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-880 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-881 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-882 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-883 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-884 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-885 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-886 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-887 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-888 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-889 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-890 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-891 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-892 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-893 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-894 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-895 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-896 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-897 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-898 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-899 | TC-GS-USER-E2E-062-audit-log-changelog-mutasi-user-crud | FE+BE |
+| TC-GS-USER-900 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-901 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-902 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-903 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-904 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-905 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-906 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-907 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-908 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-909 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-910 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-911 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-912 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-913 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-914 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-915 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-916 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-917 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-918 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-919 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-920 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-921 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-922 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-923 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-924 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-925 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-926 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-927 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-928 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-929 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-930 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-931 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-932 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-933 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-934 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-935 | TC-GS-USER-E2E-064-audit-log-system-log-dan-activity-log-sync | FE+BE |
+| TC-GS-USER-936 | TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | FE+BE |
+| TC-GS-USER-937 | TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | FE+BE |
+| TC-GS-USER-938 | TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | FE+BE |
+| TC-GS-USER-939 | TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | FE+BE |
+| TC-GS-USER-940 | TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | FE+BE |
+| TC-GS-USER-941 | TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | FE+BE |
+| TC-GS-USER-942 | TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | FE+BE |
+| TC-GS-USER-943 | TC-GS-USER-E2E-065-audit-log-user-log-sesi-dan-auth-tracking | FE+BE |
+| TC-GS-USER-944 | TC-GS-USER-E2E-066-cross-module-sync-master-data-position-dan-division | FE+BE |
+| TC-GS-USER-945 | TC-GS-USER-E2E-066-cross-module-sync-master-data-position-dan-division | FE+BE |
+| TC-GS-USER-946 | TC-GS-USER-E2E-066-cross-module-sync-master-data-position-dan-division | FE+BE |
+| TC-GS-USER-947 | TC-GS-USER-E2E-066-cross-module-sync-master-data-position-dan-division | FE+BE |
+| TC-GS-USER-948 | TC-GS-USER-E2E-066-cross-module-sync-master-data-position-dan-division | FE+BE |
+| TC-GS-USER-949 | TC-GS-USER-E2E-066-cross-module-sync-master-data-position-dan-division | FE+BE |
+| TC-GS-USER-950 | TC-GS-USER-E2E-067-cross-module-sync-custom-field-user-lifecycle | FE+BE |
+| TC-GS-USER-951 | TC-GS-USER-E2E-067-cross-module-sync-custom-field-user-lifecycle | FE+BE |
+| TC-GS-USER-952 | TC-GS-USER-E2E-067-cross-module-sync-custom-field-user-lifecycle | FE+BE |
+| TC-GS-USER-953 | TC-GS-USER-E2E-067-cross-module-sync-custom-field-user-lifecycle | FE+BE |
+| TC-GS-USER-954 | TC-GS-USER-E2E-067-cross-module-sync-custom-field-user-lifecycle | FE+BE |
+| TC-GS-USER-955 | TC-GS-USER-E2E-067-cross-module-sync-custom-field-user-lifecycle | FE+BE |
+| TC-GS-USER-958 | TC-GS-USER-E2E-068-cross-module-sync-produk-fams-dan-admin-console | FE+BE |
+| TC-GS-USER-959 | TC-GS-USER-E2E-068-cross-module-sync-produk-fams-dan-admin-console | FE+BE |
+| TC-GS-USER-960 | TC-GS-USER-E2E-068-cross-module-sync-produk-fams-dan-admin-console | FE+BE |
+| TC-GS-USER-961 | TC-GS-USER-E2E-068-cross-module-sync-produk-fams-dan-admin-console | FE+BE |
+| TC-GS-USER-962 | TC-GS-USER-E2E-068-cross-module-sync-produk-fams-dan-admin-console | FE+BE |
+| TC-GS-USER-963 | TC-GS-USER-E2E-068-cross-module-sync-produk-fams-dan-admin-console | FE+BE |
+| TC-GS-USER-964 | TC-GS-USER-E2E-068-cross-module-sync-produk-fams-dan-admin-console | FE+BE |
+| TC-GS-USER-965 | TC-GS-USER-E2E-069-cross-module-format-tanggal-general-settings | FE+BE |
+| TC-GS-USER-966 | TC-GS-USER-E2E-069-cross-module-format-tanggal-general-settings | FE+BE |
+| TC-GS-USER-967 | TC-GS-USER-E2E-069-cross-module-format-tanggal-general-settings | FE+BE |
+| TC-GS-USER-968 | TC-GS-USER-E2E-069-cross-module-format-tanggal-general-settings | FE+BE |
+| TC-GS-USER-969 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-970 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-971 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-972 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-973 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-974 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-975 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-976 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-977 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-978 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-979 | TC-GS-USER-E2E-016-role-matrix-negatif-full-crud-ke-target-total-control | FE+BE |
+| TC-GS-USER-980 | TC-GS-USER-E2E-071-security-defense-in-depth-xss-dan-sql-sanitasi | FE+BE |
+| TC-GS-USER-981 | TC-GS-USER-E2E-071-security-defense-in-depth-xss-dan-sql-sanitasi | FE+BE |
+| TC-GS-USER-982 | TC-GS-USER-E2E-071-security-defense-in-depth-xss-dan-sql-sanitasi | FE+BE |
+| TC-GS-USER-983 | TC-GS-USER-E2E-070-security-defense-in-depth-direct-api-tampering | FE+BE |
+| TC-GS-USER-984 | TC-GS-USER-E2E-072-state-tenant-write-lockdown-suspended-expired | FE+BE |
+| TC-GS-USER-985 | TC-GS-USER-E2E-073-multi-konteks-konkurensi-dua-admin-dan-limit | FE+BE |
+| TC-GS-USER-986 | TC-GS-USER-E2E-073-multi-konteks-konkurensi-dua-admin-dan-limit | FE+BE |
+| TC-GS-USER-987 | TC-GS-USER-E2E-073-multi-konteks-konkurensi-dua-admin-dan-limit | FE+BE |
+| TC-GS-USER-988 | TC-GS-USER-E2E-074-siklus-aktivasi-akun-auth-dan-subtab-isolasi | FE+BE |
+| TC-GS-USER-989 | TC-GS-USER-E2E-074-siklus-aktivasi-akun-auth-dan-subtab-isolasi | FE+BE |
+| TC-GS-USER-990 | TC-GS-USER-E2E-074-siklus-aktivasi-akun-auth-dan-subtab-isolasi | FE+BE |
+| TC-GS-USER-991 | TC-GS-USER-E2E-074-siklus-aktivasi-akun-auth-dan-subtab-isolasi | FE+BE |
+| TC-GS-USER-992 | TC-GS-USER-E2E-074-siklus-aktivasi-akun-auth-dan-subtab-isolasi | FE+BE |
+| TC-GS-USER-993 | TC-GS-USER-E2E-074-siklus-aktivasi-akun-auth-dan-subtab-isolasi | FE+BE |
+| TC-GS-USER-994 | TC-GS-USER-E2E-006-resilience-loading-state-dan-error-load-retry | mock |
+| TC-GS-USER-995 | TC-GS-USER-E2E-006-resilience-loading-state-dan-error-load-retry | mock |
+| TC-GS-USER-996 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-997 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-998 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-999 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-1000 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-1001 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-1002 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-1003 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-1004 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-1005 | TC-GS-USER-E2E-021-create-user-penutupan-form-dan-unsaved-changes | FE+BE |
+| TC-GS-USER-1006 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-1007 | TC-GS-USER-E2E-024-edit-user-screening-form-dan-validasi-field | FE+BE |
+| TC-GS-USER-1008 | TC-GS-USER-E2E-022-create-user-happy-path-single-dan-stay-on-form | FE+BE |
+| TC-GS-USER-1009 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-1010 | TC-GS-USER-E2E-027-edit-user-happy-path-update-profil | FE+BE |
+| TC-GS-USER-1011 | TC-GS-USER-E2E-030-status-flow-single-toggle-active-dan-konfirmasi | FE+BE |
+| TC-GS-USER-1012 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-1013 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-1014 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-1015 | TC-GS-USER-E2E-032-delete-single-screening-dialog-dan-proteksi | FE+BE |
+| TC-GS-USER-1016 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-1017 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-1018 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-1019 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-1020 | TC-GS-USER-E2E-044-user-detail-product-selector-navigasi | FE+BE |
+| TC-GS-USER-1021 | TC-GS-USER-E2E-072-state-tenant-write-lockdown-suspended-expired | FE+BE |
+| TC-GS-USER-1022 | TC-GS-USER-E2E-072-state-tenant-write-lockdown-suspended-expired | FE+BE |
+| TC-GS-USER-1023 | TC-GS-USER-E2E-072-state-tenant-write-lockdown-suspended-expired | FE+BE |
+| TC-GS-USER-1024 | TC-GS-USER-E2E-072-state-tenant-write-lockdown-suspended-expired | FE+BE |
+| TC-GS-USER-1025 | TC-GS-USER-E2E-072-state-tenant-write-lockdown-suspended-expired | FE+BE |
+| TC-GS-USER-1026 | TC-GS-USER-E2E-072-state-tenant-write-lockdown-suspended-expired | FE+BE |
+| TC-GS-USER-1027 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-1028 | TC-GS-USER-E2E-037-bulk-delete-dialog-dan-eksekusi-seleksi-campuran | FE+BE |
+| TC-GS-USER-1029 | TC-GS-USER-E2E-015-role-matrix-negatif-proteksi-default-user-dan-self | FE+BE |
+| TC-GS-USER-1030 | TC-GS-USER-E2E-015-role-matrix-negatif-proteksi-default-user-dan-self | FE+BE |
+| TC-GS-USER-1031 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-1032 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-1033 | TC-GS-USER-E2E-020-create-user-validasi-duplikat-dan-guard-double-submit | FE+BE |
+| TC-GS-USER-1034 | TC-GS-USER-E2E-046-user-list-toolbar-search-flow | FE+BE |
+| TC-GS-USER-1035 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-1036 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-1037 | TC-GS-USER-E2E-037-bulk-delete-dialog-dan-eksekusi-seleksi-campuran | FE+BE |
+| TC-GS-USER-1038 | TC-GS-USER-E2E-037-bulk-delete-dialog-dan-eksekusi-seleksi-campuran | FE+BE |
+| TC-GS-USER-1039 | TC-GS-USER-E2E-031-status-flow-temporary-user-dan-expiry-lifecycle | FE+BE |
+| TC-GS-USER-1040 | TC-GS-USER-E2E-023-create-user-variasi-custom-field-dan-plan-gating | FE+BE |
+| TC-GS-USER-1041 | TC-GS-USER-E2E-041-photo-management-user-detail-flow | FE+BE |
+| TC-GS-USER-1042 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-1043 | TC-GS-USER-E2E-008-screening-default-user-seed-state | FE+BE |
+| TC-GS-USER-1044 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-1045 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-1046 | TC-GS-USER-E2E-038-resend-activation-dan-confirmation-email-flow | FE+BE |
+| TC-GS-USER-1047 | TC-GS-USER-E2E-018-role-matrix-negatif-detail-dan-tab-controls-target-khusus | FE+BE |
+| TC-GS-USER-1048 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-1049 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-1050 | TC-GS-USER-E2E-036-bulk-activate-dan-bulk-deactivate-flow | FE+BE |
+| TC-GS-USER-1051 | TC-GS-USER-E2E-045-user-detail-tab-responsibilities-dan-log-layout | FE+BE |
+| TC-GS-USER-1052 | TC-GS-USER-E2E-063-audit-log-changelog-user-role-dan-auto-revert | FE+BE |
+| TC-GS-USER-1053 | TC-GS-USER-E2E-052-modal-changelog-user-list-struktur-dan-filter | FE+BE |
+| TC-GS-USER-1054 | TC-GS-USER-E2E-043-user-detail-header-dan-tab-switcher-layout | FE+BE |

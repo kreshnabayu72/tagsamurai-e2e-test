@@ -16,26 +16,26 @@ coverage:
 ## Prerequisites
 
 - Mode: mock
-- Login sebagai Role: Principal Total Control
-- Simulasi mock network failure 500 pada endpoint GET users
-- Simulasi mock respons kosong pada pencarian filter
+- Mode: mock
+- Login sebagai Role: Total Control
+- Mock endpoint `POST /v2/iam/products/admin_console/users/list` untuk simulasi kegagalan server dan hasil kosong
 
 ## Test Steps
 
-### Simulasi Network Failure 500 dan Pemulihan
-
-1. Konfigurasikan mock network agar endpoint `GET /ac/users` mengembalikan status error `500 Internal Server Error`
-2. Buka sidebar menu `Admin Console > Settings > User`
-3. Verifikasi tabel tidak memuat data dan menampilkan ilustrasi error dengan teks `"Unable to load this data."` serta tombol `[Try Again]`
-4. Hapus kondisi intercept mock failure agar endpoint mengembalikan data sukses
+### Simulasi Error Fetch 500 & Pemulihan
+1. Intercept request `POST /v2/iam/products/admin_console/users/list` dan kembalikan response HTTP 500 Internal Server Error
+2. Buka menu navigasi `Admin Console > Settings > User`
+3. Verifikasi tabel User List menampilkan error state dengan pesan literal `"Unable to load this data."` beserta tombol `[Try Again]`
+4. Hapus mock error dan kembalikan response sukses 200 dengan data pengguna valid
 5. Klik tombol `[Try Again]`
-6. Verifikasi skeleton loading muncul sesaat dan tabel User List berhasil dimuat dengan data lengkap
+6. Verifikasi indikator loading muncul dan tabel berhasil memuat daftar data pengguna secara normal
 
-### Empty State Hasil Filter / Search
-
-1. Masukkan kata kunci pencarian acak yang tidak cocok dengan data apa pun (contoh: `"xyznotfound999"`) pada kotak Search lalu tekan Enter
-2. Verifikasi tabel menampilkan empty state dengan judul `"No results found"` dan subtitle `"Try adjusting your search or filter."`
+### Empty State Filter & Pencarian
+7. Ketik kata kunci acak pada Search input yang tidak cocok dengan data pengguna manapun (misal: `"xyznonexistentquery999"`)
+8. Tekan Enter untuk menerapkan pencarian
+9. Verifikasi tabel menampilkan empty state dengan judul literal `"No results found"` dan subjudul `"Try adjusting your search or filter."`
+10. Kosongkan kembali Search input dan verifikasi seluruh baris data pengguna kembali tampil di tabel
 
 ## Notes
 
-- Uji ketahanan UI terhadap kegagalan jaringan dan verifikasi kejelasan pesan empty state bagi pengguna.
+- Menguji ketahanan UI saat terjadi gangguan backend dan kejelasan pesan feedback saat query pencarian tidak menghasilkan data.
