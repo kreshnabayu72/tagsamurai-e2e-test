@@ -1,0 +1,148 @@
+---
+id: TC-AUTH-MFA-E2E-039-paritas-plan-subscription
+title: "Paritas MFA pada Plan Starter, Growth, Professional, dan Enterprise"
+priority: Medium
+caseType: Positive
+status: draft
+sourceTc:
+  - TC-AUTH-MFA-181
+  - TC-AUTH-MFA-182
+  - TC-AUTH-MFA-183
+  - TC-AUTH-MFA-184
+coverage:
+  web: automated
+---
+
+# Paritas MFA pada Plan Starter, Growth, Professional, dan Enterprise
+
+## Prerequisites
+
+- Mode: FE+BE.
+- Client uji milik automation per plan (Tabel Data Uji Pre-setup #23; fixture belum ada, disiapkan tim FE), semuanya berstatus aktif. Tiap Client punya akun aktor Total Control (Global Settings) sendiri (`{namaCompany}` = nama company Client itu). Tabel "Plan yang diuji" mencatat Client, akun aktor, dan user seeding per plan; keempat TC ditulis berurutan di `## Test Steps`:
+
+  | Plan | TC | Client | Akun aktor Total Control (Global Settings) | Env var password aktor | User seeding |
+  |---|---|---|---|---|---|
+  | Starter | TC-AUTH-MFA-181 | Client Starter | `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` milik Client Starter | `Spectra.env.GS_PLANSTARTER_TC_PASSWORD` | `Maya Santoso` (`mayasantoso+{runId}-039@qwertysystem.net`) |
+  | Growth | TC-AUTH-MFA-182 | Client Growth | `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` milik Client Growth | `Spectra.env.GS_PLANGROWTH_TC_PASSWORD` | `Hendra Santoso` (`hendrasantoso+{runId}-039@qwertysystem.net`) |
+  | Professional | TC-AUTH-MFA-183 | Client Professional | `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` milik Client Professional | `Spectra.env.GS_PLANPRO_TC_PASSWORD` | `Lina Santoso` (`linasantoso+{runId}-039@qwertysystem.net`) |
+  | Enterprise | TC-AUTH-MFA-184 | Client Enterprise | `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` milik Client Enterprise | `Spectra.env.GS_PLANENT_TC_PASSWORD` | `Teguh Santoso` (`teguhsantoso+{runId}-039@qwertysystem.net`) |
+
+- Seeding (hook `before`, lewat API oleh akun aktor Total Control (Global Settings) tiap Client pada tabel di atas): empat user profil NEWDEVE (Tabel Data Uji Pre-setup #5: Activated, Active ON, seperti BASE tetapi ID device browser uji B belum ada di daftar trusted device, Authenticator sudah terdaftar; secret-nya dimuat ke aplikasi authenticator uji), password `Spectra.env.MFA_PASSWORD`, email bersuffix per run seperti kolom "User seeding", masing-masing pada Client planya.
+- Hook `after`: hapus keempat user. Hook ini tetap jalan walau spec gagal di tengah dan tidak berasumsi seeding berhasil penuh.
+- Akun yang dipakai: tanpa login (halaman publik; tidak ada sesi aktif di browser) untuk semua TC. Tiap TC dimulai di jendela privat baru (browser uji B, ID device belum dikenali).
+- Environment variable: `GS_PLANSTARTER_TC_PASSWORD`, `GS_PLANGROWTH_TC_PASSWORD`, `GS_PLANPRO_TC_PASSWORD`, `GS_PLANENT_TC_PASSWORD`, `MFA_PASSWORD`. Password tidak ditulis di spec atau fixture.
+- Kemampuan teknis: aplikasi authenticator uji (TOTP: SHA-1, 6 digit, periode 30 detik); reCAPTCHA mode uji di environment; seeding state BE per user: tanpa ID device browser uji B di daftar trusted device dan Authenticator terdaftar dengan secret yang dikenal aplikasi authenticator uji, mekanisme seeding (endpoint/skrip uji) disediakan tim FE/BE karena tidak didefinisikan di TC, PRD, atau LLD.
+
+## Test Steps
+
+### TC-AUTH-MFA-181: MFA berlaku identik pada plan Starter tanpa gating
+
+1. Buka jendela privat baru (tanpa sesi login)
+2. Buka halaman `Auth > Login with Password` di browser → halaman Login with Password tampil
+3. Ketik `mayasantoso+{runId}-039@qwertysystem.net` pada field Email
+4. Ketik `Spectra.env.MFA_PASSWORD` pada field Password
+5. Centang widget reCAPTCHA "I'm not a robot"
+6. Klik button [Log in] → halaman `Auth > MFA > Choose Verification Method` tampil
+7. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Title "Choose verification method"
+8. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Subtitle "Select how you'd like to verify your identity"
+9. Verifikasi Halaman Choose Verification Method identik dengan plan lain: opsi "OTP via email" dengan deskripsi "We'll send a 6-digit code to your email"
+10. Verifikasi Halaman Choose Verification Method identik dengan plan lain: opsi "Authenticator app" dengan deskripsi "Use code from Google or Microsoft Authenticator"
+11. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Button [Login]
+12. Verifikasi Tidak ada upsell, batas, atau opsi menonaktifkan MFA pada halaman Choose Verification Method
+13. Pilih opsi "Authenticator app" pada halaman Choose Verification Method
+14. Klik button [Login] → halaman `Auth > MFA > Authenticator Verification` tampil
+15. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Title "Enter authenticator code"
+16. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Subtitle "Enter the 6-digit code generated by your authenticator app"
+17. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Button [Login]
+18. Verifikasi Tidak ada upsell, batas, atau opsi menonaktifkan MFA pada halaman Authenticator Verification
+19. Ketik 6 digit kode TOTP valid dari aplikasi authenticator uji untuk `mayasantoso+{runId}-039@qwertysystem.net` pada kotak digit lalu klik [Login]
+20. Verifikasi Browser dialihkan ke Portal — Product Hub
+21. Verifikasi Sesi web aktif untuk `Maya Santoso`
+
+### TC-AUTH-MFA-182: MFA berlaku identik pada plan Growth tanpa gating
+
+22. Tutup jendela user uji dari TC sebelumnya dan hapus sesi login browser terkait (ID device dan jendela sesi akun aktor tetap), lalu buka jendela privat baru (tanpa sesi login)
+23. Buka halaman `Auth > Login with Password` di browser → halaman Login with Password tampil
+24. Ketik `hendrasantoso+{runId}-039@qwertysystem.net` pada field Email
+25. Ketik `Spectra.env.MFA_PASSWORD` pada field Password
+26. Centang widget reCAPTCHA "I'm not a robot"
+27. Klik button [Log in] → halaman `Auth > MFA > Choose Verification Method` tampil
+28. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Title "Choose verification method"
+29. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Subtitle "Select how you'd like to verify your identity"
+30. Verifikasi Halaman Choose Verification Method identik dengan plan lain: opsi "OTP via email" dengan deskripsi "We'll send a 6-digit code to your email"
+31. Verifikasi Halaman Choose Verification Method identik dengan plan lain: opsi "Authenticator app" dengan deskripsi "Use code from Google or Microsoft Authenticator"
+32. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Button [Login]
+33. Verifikasi Tidak ada upsell, batas, atau opsi menonaktifkan MFA pada halaman Choose Verification Method
+34. Pilih opsi "Authenticator app" pada halaman Choose Verification Method
+35. Klik button [Login] → halaman `Auth > MFA > Authenticator Verification` tampil
+36. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Title "Enter authenticator code"
+37. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Subtitle "Enter the 6-digit code generated by your authenticator app"
+38. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Button [Login]
+39. Verifikasi Tidak ada upsell, batas, atau opsi menonaktifkan MFA pada halaman Authenticator Verification
+40. Ketik 6 digit kode TOTP valid dari aplikasi authenticator uji untuk `hendrasantoso+{runId}-039@qwertysystem.net` pada kotak digit lalu klik [Login]
+41. Verifikasi Browser dialihkan ke Portal — Product Hub
+42. Verifikasi Sesi web aktif untuk `Hendra Santoso`
+
+### TC-AUTH-MFA-183: MFA berlaku identik pada plan Professional tanpa gating
+
+43. Tutup jendela user uji dari TC sebelumnya dan hapus sesi login browser terkait (ID device dan jendela sesi akun aktor tetap), lalu buka jendela privat baru (tanpa sesi login)
+44. Buka halaman `Auth > Login with Password` di browser → halaman Login with Password tampil
+45. Ketik `linasantoso+{runId}-039@qwertysystem.net` pada field Email
+46. Ketik `Spectra.env.MFA_PASSWORD` pada field Password
+47. Centang widget reCAPTCHA "I'm not a robot"
+48. Klik button [Log in] → halaman `Auth > MFA > Choose Verification Method` tampil
+49. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Title "Choose verification method"
+50. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Subtitle "Select how you'd like to verify your identity"
+51. Verifikasi Halaman Choose Verification Method identik dengan plan lain: opsi "OTP via email" dengan deskripsi "We'll send a 6-digit code to your email"
+52. Verifikasi Halaman Choose Verification Method identik dengan plan lain: opsi "Authenticator app" dengan deskripsi "Use code from Google or Microsoft Authenticator"
+53. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Button [Login]
+54. Verifikasi Tidak ada upsell, batas, atau opsi menonaktifkan MFA pada halaman Choose Verification Method
+55. Pilih opsi "Authenticator app" pada halaman Choose Verification Method
+56. Klik button [Login] → halaman `Auth > MFA > Authenticator Verification` tampil
+57. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Title "Enter authenticator code"
+58. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Subtitle "Enter the 6-digit code generated by your authenticator app"
+59. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Button [Login]
+60. Verifikasi Tidak ada upsell, batas, atau opsi menonaktifkan MFA pada halaman Authenticator Verification
+61. Ketik 6 digit kode TOTP valid dari aplikasi authenticator uji untuk `linasantoso+{runId}-039@qwertysystem.net` pada kotak digit lalu klik [Login]
+62. Verifikasi Browser dialihkan ke Portal — Product Hub
+63. Verifikasi Sesi web aktif untuk `Lina Santoso`
+
+### TC-AUTH-MFA-184: MFA berlaku identik pada plan Enterprise tanpa gating
+
+64. Tutup jendela user uji dari TC sebelumnya dan hapus sesi login browser terkait (ID device dan jendela sesi akun aktor tetap), lalu buka jendela privat baru (tanpa sesi login)
+65. Buka halaman `Auth > Login with Password` di browser → halaman Login with Password tampil
+66. Ketik `teguhsantoso+{runId}-039@qwertysystem.net` pada field Email
+67. Ketik `Spectra.env.MFA_PASSWORD` pada field Password
+68. Centang widget reCAPTCHA "I'm not a robot"
+69. Klik button [Log in] → halaman `Auth > MFA > Choose Verification Method` tampil
+70. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Title "Choose verification method"
+71. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Subtitle "Select how you'd like to verify your identity"
+72. Verifikasi Halaman Choose Verification Method identik dengan plan lain: opsi "OTP via email" dengan deskripsi "We'll send a 6-digit code to your email"
+73. Verifikasi Halaman Choose Verification Method identik dengan plan lain: opsi "Authenticator app" dengan deskripsi "Use code from Google or Microsoft Authenticator"
+74. Verifikasi Halaman Choose Verification Method identik dengan plan lain: Button [Login]
+75. Verifikasi Tidak ada upsell, batas, atau opsi menonaktifkan MFA pada halaman Choose Verification Method
+76. Pilih opsi "Authenticator app" pada halaman Choose Verification Method
+77. Klik button [Login] → halaman `Auth > MFA > Authenticator Verification` tampil
+78. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Title "Enter authenticator code"
+79. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Subtitle "Enter the 6-digit code generated by your authenticator app"
+80. Verifikasi Halaman Authenticator Verification identik dengan plan lain: Button [Login]
+81. Verifikasi Tidak ada upsell, batas, atau opsi menonaktifkan MFA pada halaman Authenticator Verification
+82. Ketik 6 digit kode TOTP valid dari aplikasi authenticator uji untuk `teguhsantoso+{runId}-039@qwertysystem.net` pada kotak digit lalu klik [Login]
+83. Verifikasi Browser dialihkan ke Portal — Product Hub
+84. Verifikasi Sesi web aktif untuk `Teguh Santoso`
+
+## Notes
+
+- Sumber: `auth/mfa/TestCases/tc-mfa.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
+- Langkah pembuka tiap TC sesudah TC pertama menutup jendela user uji dari TC sebelumnya dan menghapus sesi login browser terkait (ID device dan jendela sesi akun aktor tetap) sebelum jendela baru dibuka; itu langkah penghubung tanpa `Verifikasi` (S-03, S-09).
+- Paritas plan: langkah dan asersi keempat TC identik; hanya user dan Client (plan) yang berbeda. Spec ini bukan Role Matrix karena tidak ada perbedaan akun login atau hasil antar plan; tabel "Plan yang diuji" di Prerequisites hanya mencatat Client, akun aktor, dan user per plan.
+- Urutan mengikuti TC sumber. Tiap TC memakai Client dan user sendiri, jadi urutan antar TC tidak saling bergantung.
+- Langkah penghubung tanpa awalan `Verifikasi` (S-03): buka jendela privat baru di awal tiap TC (langkah 1, 22, 43, 64).
+- Expected butir a ditulis sebagai satu `Verifikasi` per klausa (S-01): Title, Subtitle, tiap opsi beserta deskripsinya, Button [Login], dan daftar elemen yang sama-sama tidak ada (upsell, batas, opsi menonaktifkan MFA) sebagai satu `Verifikasi` per halaman.
+- Spec melewati ±35 langkah karena keempat TC identik per plan dan independen (Client dan user sendiri); langkah prefix login faktor-1 tidak dihitung, jadi spec tidak dipecah.
+- Temuan untuk QA:
+  - Seluruh TC di spec ini menulis "password valid `Nama User`" pada Langkah Uji; spec memakai `Spectra.env.MFA_PASSWORD` sebagai password valid user seeding.
+  - Expected butir a ("identik dengan plan lain (opsi, copy, dan CTA sama; tidak ada upsell, batas, atau opsi menonaktifkan MFA)") tidak merinci elemen yang dibandingkan; spec mengonkretkannya dengan copy dari TC-AUTH-MFA-01 untuk Choose Verification Method dan dari PRD `auth/mfa/PRD/mfa.md §4.2` (Halaman 3) untuk Authenticator Verification.
+  - Post Condition "Satu sesi web aktif untuk `<user>`" (TC-AUTH-MFA-181 sampai 184) sama dengan klausa sesi pada Expected butir b (langkah 21, 42, 63, 84), jadi tidak ada asersi tambahan dari Post Condition.
+  - TC-AUTH-MFA-181 sampai 184 Precondition d hanya menyebut plan Client; akun aktor tiap Client dan mekanisme membuat Client per plan tidak ada di Pre-setup TC (#23 hanya menyebut Client per plan). Spec menambah akun aktor dan env var password per Client di Prerequisites.
+  - Mekanisme seeding state BE per user (profil NEWDEVE: trusted device, Authenticator dengan secret dikenal) belum ada di Pre-setup TC (#20/#21).

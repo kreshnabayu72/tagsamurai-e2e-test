@@ -1,59 +1,241 @@
 # Coverage E2E — Auth > Login with Password
 
-Sumber: `auth/login-password/TestCases/tc-login-password.md` (163 TC aktif per 2026-10-08). Suite: `specs/Auth/LoginPassword/`. Status semua spec: `draft`, belum ada script.
+Sumber: `auth/login-password/TestCases/tc-login-password.md` (163 TC, `TC-AUTH-LP-01`–`163`, hash SHA-256 `6a8da5772ff049b8…`). Suite: `specs/Auth/LoginPassword/`. Status semua spec: `draft`, belum ada script.
 
-**Verifikasi lint:** `npx spectra lint --strict specs/Auth/LoginPassword` → `✓ 29 specs and 1 suites verified. 0 lint errors found.`
+**Verifikasi lint:** `spectra lint --strict specs/Auth/LoginPassword` → `✓ 53 specs and 1 suites verified. 0 lint errors found.`
 
-**Aturan seleksi:** sesuai `docs/e2e-conventions.md` bagian 2, spec e2e merangkap TC FE. Semua TC masuk spec kecuali hanya-BE. Spec yang butuh kondisi terpicu (created via API, intercept, atau viewport mobile) ditandai `Mode: mock`. Hambatan teknis dicatat di `Prerequisites`, bukan menjadi alasan mengeluarkan TC.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 163 TC masuk spec, 0 TC hanya-BE (`tc-login-password-backend.md` tidak merujuk id TC granular). Setiap TC terpetakan ke satu spec; dua TC punya bagian di dua spec karena asersi absence pencatatan dipindah ke spec absence (S-05): TC-161 (spec 002 dan 042) dan TC-157 (spec 028 dan 043); asersi jumlah/state TC-114 dan TC-116 berada di spec 038 dan TC-153 di spec 041 (konvensi §3 baris 90). Prefix `TC-AUTH-LP-E2E-` berasal dari `AUTH` + `LP` di `foundation/tc-prefix-registry.md`; nomor adalah urutan spec, bukan nomor TC sumber.
 
-**Nomor folder:** Prefix `TC-AUTH-LP-E2E-` berasal dari `AUTH` + `LP` di `foundation/tc-prefix-registry.md`. Nomor adalah urutan spec, bukan nomor TC sumber.
+Spec lama generasi sebelumnya ada di `specs_dummy/Auth/LoginPassword/` dan tidak dipakai.
 
 ## TC granular → spec e2e
 
-| Spec | Isi | TC sumber | Platform |
-|---|---|---|---|
-| TC-AUTH-LP-E2E-001 | Screening halaman login, placeholder, urutan fokus keyboard Tab, validasi field Email (kosong, tanpa @, <2 TLD, tanpa domain, blur trigger, 2 TLD, plus-addressing diterima & login diproses, kapitalisasi email case-insensitive) | 01, 02, 04, 10, 11, 12, 13, 14, 15, 16, 27, 156 | web |
-| TC-AUTH-LP-E2E-002 | Screening toggle intip password (show/hide), validasi Password kosong (caption inline), case sensitivity, karakter khusus diperlakukan kredensial salah biasa | 03, 19, 20, 23 | web |
-| TC-AUTH-LP-E2E-003 | Google reCAPTCHA v2 gate web: submit tanpa token captcha, token captcha expired, urutan evaluasi Password kosong mendahului reCAPTCHA | 24, 25, 26 | web (`Mode: mock`) |
-| TC-AUTH-LP-E2E-004 | Evaluasi status akun dan email belum terdaftar: email tidak terdaftar (inline), akun Pending Activation (alert danger), akun Inactive / Toggle Global OFF (alert danger), password salah pada akun pending/inactive tidak menambah lock counter, password kosong & captcha dievaluasi sebelum status akun, pembedaan caption email tak terdaftar vs alert kredensial salah | 28, 31, 32, 33, 34, 35, 36, 37 | web |
-| TC-AUTH-LP-E2E-005 | Login berhasil happy path langsung menuju Portal Product Hub: email dengan spasi ditrim, sesi penuh dibuat, direct URL ke login saat sudah login dialihkan ke Portal, perilaku konsisten lintas entitas plan (Starter, Growth, Professional, Enterprise, Custom) | 09, 18, 69, 76 | web |
-| TC-AUTH-LP-E2E-006 | Lock progression tahap 15 menit: salah kredensial 1 dan 2 tanpa lock, salah ke-3 memicu lock 15 menit, submit saat lock 15m aktif tetap ditolak (password salah/benar), caption {time} format & timezone General Settings tanpa countdown, evaluasi lock mendahului password kosong & captcha, submit tepat pada waktu lock berakhir | 29, 30, 38, 39, 40, 41, 42, 43, 138, 151 | web |
-| TC-AUTH-LP-E2E-007 | Lock progression tahap 1 jam dan Requires Reset: salah ke-4 dan ke-5 tanpa lock, salah ke-6 memicu lock 1 jam, submit saat lock 1 jam aktif, salah ke-7 dan ke-8 tanpa lock, salah ke-9 memicu status Requires Reset dengan link [Reset password], submit password benar saat Requires Reset ditolak, bypass submit saat lock aktif ditolak server (defense in depth) | 44, 45, 46, 47, 48, 49, 50, 51, 52, 140 | web |
-| TC-AUTH-LP-E2E-008 | Lock progression lintas hari dan eskalasi 7 hari berturut-turut menjadi Permanent: hari berganti mereset hitungan lock 15m & 1h, lock aktif melewati tengah malam tetap berlaku, status Requires Reset tidak reset karena ganti hari, rantai 7 hari putus jika 1 hari absen lock 1h, salah pertama di hari ke-8 langsung lock Permanent, submit saat Permanent ditolak & link [Reset password] | 53, 54, 55, 56, 57, 58, 59, 60 | web |
-| TC-AUTH-LP-E2E-009 | Pemulihan lock via Reset Password: Reset Password berhasil melepaskan Requires Reset & Permanent serta mereset counter harian & rantai hari; counter harian kembali ke 0 sehingga salah ke-3 hanya lock 15 menit; rantai hari antar-hari dikosongkan | 61, 62, 63 | web |
-| TC-AUTH-LP-E2E-010 | Layar Confirm to Continue (Agreement Gate): screening header/body/footer/Content Box/checkbox/Tab order, checkbox tidak dirender di form login, 3 kondisi pemicu (login pertama, idle >30 hari, versi policy lebih baru), idle ≥30 hari: Agreement dievaluasi lebih dulu lalu handoff MFA tanpa email alert, versi policy tak ter-resolve → login ditolak fail-closed dengan toast tanpa log, tidak tampil bila tanpa pemicu, link baca dokumen penuh buka tab baru, sesi penuh tidak dibuat sebelum konfirmasi agreement | 07, 08, 77, 78, 79, 80, 81, 91, 141, 154, 157 | web |
-| TC-AUTH-LP-E2E-011 | Interaksi dan konfirmasi Agreement: klik Continue tanpa centang (caption error), centang lalu Continue sukses ke Portal, pemulihan (caption hilang saat centang), login berikutnya tidak memicu lagi, handoff gabungan Agreement → MFA | 82, 83, 84, 85, 86 | web |
-| TC-AUTH-LP-E2E-012 | Handoff ke layar MFA: login dari device belum dikenal dialihkan ke MFA & kirim email alert, login lokasi >100 km dialihkan ke MFA, login negara berbeda dialihkan ke MFA, geo-IP service down → trigger lokasi dilewati fail-open tanpa MFA, pasangan negara trusted tidak memicu MFA, sesi penuh tidak dibuat sebelum MFA tuntas | 71, 72, 73, 74, 142, 155, 158 | web |
-| TC-AUTH-LP-E2E-013 | Navigasi dan email prefill: link [Log in with OTP] dan [Reset here] membawa email yang diketik (termasuk format belum valid), email tidak tersimpan setelah tab ditutup (sessionStorage lifecycle), kembali dari Login with OTP via Edit email mengisi field Email | 05, 93, 94, 95, 96 | web |
-| TC-AUTH-LP-E2E-014 | Resilience & UI state: spinner loading & input disabled saat submit, kesalahan server 500 saat login (toast error & preserve email/password), timeout jaringan saat submit login (toast error), kesalahan server 500 saat confirm agreement (toast error), alert hilang saat buka layar lain atau saat submit berikutnya menghasilkan caption inline | 92, 97, 98, 99, 102, 103 | web (`Mode: mock`) |
-| TC-AUTH-LP-E2E-015 | Rate limit IP: submit ke-21 dalam 1 menit dari IP yang sama ditolak dengan alert danger "Too many requests. Please try again later.", pembatasan berakhir otomatis setelah jendela 1 menit lewat, submit saat lock aktif tetap dihitung ke kuota IP rate limit | 101, 104 | web |
-| TC-AUTH-LP-E2E-016 | Pencatatan mutasi sukses di 2 surface (Activity Log Session & User Log): verifikasi kolom lengkap (Date, User, EmpID, Pos, Div, Activity, Status, Note "Login with password", IP, Device/Browser), login dengan agreement dicatat sekali di titik akhir, login dialihkan ke MFA belum dicatat sukses di langkah password, nilai kosong tampil '—', snapshot data user tidak berubah jika master user diedit, Device/Browser tampil '—' saat header User-Agent kosong, hover tooltip nama lengkap user, format tanggal/jam & timezone mengikuti General Settings | 115, 116, 124, 125, 126, 127, 128, 129, 135, 136, 137, 162 | web |
-| TC-AUTH-LP-E2E-017 | Pencatatan kegagalan di 2 surface: password kosong (Failed, Empty password), captcha belum diselesaikan (Failed, Captcha not completed), akun pending (Failed, Account is not activated), akun inactive (Failed, Account is inactive), password salah ke-1 (Failed, Incorrect password), lock 15m (Failed, Locked 15 minutes), lock 1h (Failed, Locked 1 hour), Requires Reset (Failed, Locked requires reset), Permanent (Failed, Account locked), Continue tanpa centang (Failed, Consent not given) | 105, 106, 107, 108, 109, 110, 111, 112, 113, 114 | web |
-| TC-AUTH-LP-E2E-018 | Ketahanan sistem logging: kegagalan sementara penulisan log tidak menggagalkan login dan entri muncul setelah layanan log pulih; seluruh retry penulisan log gagal tidak menggagalkan login (login tetap sukses) dan entri tidak ditulis | 130, 153 | web (`Mode: mock`) |
-| TC-AUTH-LP-E2E-019 | Sinkronisasi realtime dari Global Settings > User: user dimatikan Toggle Global langsung ditolak saat login (inactive), user dinyalakan kembali langsung bisa login, user dihapus diperlakukan sebagai email belum terdaftar, akun baru diaktivasi di modul Account Activation dapat langsung login menuju Confirm to Continue | 131, 132, 133, 134 | web |
-| TC-AUTH-LP-E2E-020 | Concurrency submit: akumulasi hitungan gagal konsisten lintas 2 tab browser, 3 submit password salah bersamaan dari 3 tab menghasilkan tepat 1 lock 15m, klik ganda [Log in] cepat dengan password salah dihitung 1 kali | 146, 147, 150 | web |
-| TC-AUTH-LP-E2E-021 | Mobile native app: layout login mobile tanpa reCAPTCHA widget, login sukses langsung ke Portal tanpa langkah captcha, token Play Integrity kosong/invalid ditolak server dengan toast error dan dicatat `Captcha not completed` | 06, 70, 75 | **mobile** (`Mode: mock`) |
-| TC-AUTH-LP-E2E-022 | Independensi lock antar-platform: user terkunci di web tetap bisa login di mobile app; user terkunci di mobile app tetap bisa login di web | 64, 65 | **web + mobile** |
-| TC-AUTH-LP-E2E-023 | Konsumsi persetujuan Privacy Policy lintas modul: persetujuan via Login with Password berlaku di Login with OTP (Confirm to Continue tidak muncul lagi) dan di Biometric Re-login Android | 159, 160 | **web + mobile** |
-| TC-AUTH-LP-E2E-024 | Defense-in-Depth injeksi field Email: string SQL injection `' OR 1=1 --` dan script `<script>alert(1)</script>` ditolak sebagai format email tidak valid, tanpa error server 500 / kebocoran data, teks dirender murni tanpa eksekusi script | 144, 145 | web |
-| TC-AUTH-LP-E2E-025 | Defense-in-Depth & resilience token reCAPTCHA: bypass submit tanpa token reCAPTCHA (token dibuang dari payload) ditolak server tanpa sesi dibuat; outage server penyedia reCAPTCHA → toast "Error, failed to log in." dan login gagal | 100, 139 | web (`Mode: mock`) |
-| TC-AUTH-LP-E2E-026 | Pemulihan lock counter tanpa Reset Password: submit password kosong / tanpa captcha tidak menambah hitungan gagal; login sukses mereset hitungan gagal hari itu; password benar berujung Agreement gate mereset hitungan gagal; password benar setelah tahap 1 jam lewat mereset data lock harian tanpa mengubah hitungan hari berturut-turut | 66, 67, 68, 152, 163 | web |
-| TC-AUTH-LP-E2E-027 | Lifecycle & idempotensi token persetujuan pre-auth: versi policy berubah saat layar terbuka (409 reload versi baru, checkbox unchecked), token expired (redirect login tanpa pesan) vs submit sebelum expired, token dimodifikasi ditolak server, double-click guard, reuse token pre-auth dicegah (single-use) | 87, 88, 89, 143, 148, 149 | web |
-| TC-AUTH-LP-E2E-028 | Verifikasi kondisi yang TIDAK dicatat di 2 surface: email kosong, format salah, email belum terdaftar, submit saat lock aktif, navigasi keluar, penolakan versi policy berubah, IP rate limit, serta meninggalkan layar Confirm to Continue tanpa Continue (tidak ada Note Consent not given / Login with password) | 90, 117, 118, 119, 120, 121, 122, 123 | web |
-| TC-AUTH-LP-E2E-029 | Batas panjang karakter Email: 120 karakter lolos validasi panjang (caption "Email is not registered yet"), 121 karakter memicu caption "Max. 120 characters" langsung tanpa memblokir input dan ditolak server; format email salah menang atas batas panjang saat blur/submit, tanpa entri log baru | 17, 161 | web |
+| Spec | Judul | TC sumber | Platform | Mode |
+|---|---|---|---|---|
+| TC-AUTH-LP-E2E-001-screening-login-page-web | Screening Halaman Login with Password (Web) | 01, 02, 03, 04 | web | mock |
+| TC-AUTH-LP-E2E-002-email-validation-blocked | Validasi Field Email: Submit Diblokir dan Batas Format serta Panjang | 10, 11, 12, 13, 14, 15, 16, 17, 161 | web | FE+BE |
+| TC-AUTH-LP-E2E-003-email-accepted-login-success | Email Diterima dan Login Berhasil: Spasi, Plus-Addressing, dan Kapitalisasi Campuran | 18, 27, 156 | web | FE+BE |
+| TC-AUTH-LP-E2E-004-password-validation | Validasi Field Password: Kosong, Beda Huruf Besar-Kecil, Karakter Khusus, dan Spasi | 19, 20, 21, 22, 23 | web | FE+BE |
+| TC-AUTH-LP-E2E-005-recaptcha-gate-web | Gate Google reCAPTCHA v2 pada Login Web | 24, 25, 26 | web | FE+BE |
+| TC-AUTH-LP-E2E-006-account-status-and-unregistered-email | Penolakan Email Belum Terdaftar dan Pembedaan Pesan Kredensial Salah | 28, 37, 103 | web | FE+BE |
+| TC-AUTH-LP-E2E-007-login-success-no-gate | Login Berhasil Tanpa Gate Agreement dan MFA Menuju Portal | 09, 69, 81 | web | FE+BE |
+| TC-AUTH-LP-E2E-008-login-plan-parity | Login Identik pada Entitas dengan Plan Starter, Growth, Professional, Enterprise, dan Custom | 76 | web | FE+BE |
+| TC-AUTH-LP-E2E-009-lock-15m-progression | Progresi Lock 15 Menit pada Kegagalan Password | 29, 30, 38, 39, 40, 41 | web | FE+BE |
+| TC-AUTH-LP-E2E-010-lock-15m-evaluation-order | Urutan Evaluasi Lock 15 Menit terhadap Password Kosong dan reCAPTCHA | 42, 43 | web | FE+BE |
+| TC-AUTH-LP-E2E-011-lock-15m-expiry-and-1h-stage | Lock 15 Menit Berakhir dan Masuk Tahap Lock 1 Jam | 44, 45, 46, 47, 151 | web | FE+BE |
+| TC-AUTH-LP-E2E-012-lock-1h-expiry-requires-reset | Lock 1 Jam Berakhir dan Status Requires Reset | 48, 49, 50, 51, 52 | web | FE+BE |
+| TC-AUTH-LP-E2E-013-lock-day-rollover | Pergantian Hari pada Hitungan Gagal dan Lock | 53, 54, 55, 56, 57 | web | FE+BE |
+| TC-AUTH-LP-E2E-014-lock-permanent-escalation | Eskalasi Lock Permanent setelah 7 Hari Berturut-turut | 58, 59, 60 | web | FE+BE |
+| TC-AUTH-LP-E2E-015-lock-recovery-reset-password | Pemulihan Lock lewat Reset Password | 61, 62, 63 | web | FE+BE |
+| TC-AUTH-LP-E2E-016-failed-counter-rules | Aturan Hitungan Gagal: Percobaan yang Tidak Dihitung | 66, 67 | web | FE+BE |
+| TC-AUTH-LP-E2E-017-lock-platform-independence | Lock Login di Web Tidak Mengunci Login di Aplikasi Mobile | 64 | mobile | FE+BE |
+| TC-AUTH-LP-E2E-018-mobile-login-screening-and-success | Screening Layar Login Mobile Tanpa reCAPTCHA dan Login Berhasil | 06, 70 | mobile | FE+BE |
+| TC-AUTH-LP-E2E-019-mobile-play-integrity-invalid | Login Mobile dengan Token Play Integrity Kosong atau Invalid Ditolak | 75 | mobile | FE+BE |
+| TC-AUTH-LP-E2E-020-agreement-screening | Screening Layar Confirm to Continue dan Checkbox Agreement | 07, 08, 77, 91 | web | FE+BE |
+| TC-AUTH-LP-E2E-021-agreement-trigger-conditions | Kondisi Pemicu Layar Confirm to Continue | 78, 79, 80 | web | FE+BE |
+| TC-AUTH-LP-E2E-022-agreement-confirm-flow | Interaksi dan Konfirmasi pada Layar Confirm to Continue | 82, 83, 102 | web | FE+BE |
+| TC-AUTH-LP-E2E-023-mfa-handoff-device-and-idle | Handoff ke MFA karena Device Baru dan Idle Lebih dari 30 Hari | 71, 72, 154 | web | FE+BE |
+| TC-AUTH-LP-E2E-024-mfa-handoff-location-country | Handoff ke MFA karena Lokasi Berjarak Lebih dari 100 km atau Negara Berbeda | 73, 74, 158 | web | FE+BE |
+| TC-AUTH-LP-E2E-025-agreement-token-ttl | Masa Berlaku Token Pra-Autentikasi pada Layar Confirm to Continue | 88, 89 | web | FE+BE |
+| TC-AUTH-LP-E2E-026-agreement-policy-version-change | Versi Privacy Policy Berubah Saat Layar Confirm to Continue Terbuka | 87 | web | FE+BE |
+| TC-AUTH-LP-E2E-027-resilience-submit-intercept | Ketahanan Submit Login dan Konfirmasi Agreement: Loading, Error Server, dan Timeout | 92, 97, 98, 99 | web | FE+BE |
+| TC-AUTH-LP-E2E-028-resilience-provider-failure-injection | Ketahanan Login terhadap Kegagalan Penyedia: reCAPTCHA, Geo-IP, dan Versi Privacy Policy | 100, 155, 157 | web | FE+BE |
+| TC-AUTH-LP-E2E-029-defense-in-depth-login-request | Defense-in-Depth Request Login: Token reCAPTCHA Dihapus, Bypass Lock, SQL Injection, dan XSS | 139, 140, 144, 145 | web | FE+BE |
+| TC-AUTH-LP-E2E-030-defense-in-depth-preauth-session | Defense-in-Depth Sesi dan Token Pra-Autentikasi: Akses Portal Langsung, Token Dimodifikasi, dan Token Dipakai Ulang | 141, 142, 143, 149 | web | FE+BE |
+| TC-AUTH-LP-E2E-031-navigation-links-and-email-carry | Navigasi ke Login with OTP dan Reset Password serta Pembawaan Email | 05, 93, 94, 95, 96 | web | FE+BE |
+| TC-AUTH-LP-E2E-032-double-submit | Klik Ganda pada Continue dan Log in Hanya Diproses Satu Kali | 148, 150 | web | FE+BE |
+| TC-AUTH-LP-E2E-033-concurrency-multitab | Konsistensi Hitungan Gagal Lintas Tab dan Submit Password Salah Bersamaan | 146, 147 | web | FE+BE |
+| TC-AUTH-LP-E2E-034-rate-limit-ip | Penolakan IP Rate Limit 20 Request per Menit pada Login | 101, 104 | web | FE+BE |
+| TC-AUTH-LP-E2E-035-log-failed-attempts-basic | Pencatatan Log Login Gagal: Password Kosong, reCAPTCHA, Status Akun, dan Password Salah | 105, 106, 107, 108, 109 | web | FE+BE |
+| TC-AUTH-LP-E2E-036-log-lock-stages | Pencatatan Log Tahap Lock 15 Menit, 1 Jam, dan Requires Reset | 110, 111, 112 | web | FE+BE |
+| TC-AUTH-LP-E2E-037-log-lock-permanent | Pencatatan Log Lock Permanent pada Kegagalan Pertama di Hari ke-8 | 113 | web | FE+BE |
+| TC-AUTH-LP-E2E-038-log-success-and-consent | Pencatatan Log Consent Tidak Diberikan dan Login Berhasil | 114, 115, 116 | web | FE+BE |
+| TC-AUTH-LP-E2E-039-log-entry-columns | Kolom Entri Login pada Activity Log Session dan User Log | 125, 126, 127, 128, 129, 162 | web | FE+BE |
+| TC-AUTH-LP-E2E-040-log-format-general-settings | Format Tanggal, Jam, dan Zona Waktu Mengikuti General Settings | 135, 136, 137, 138 | web | FE+BE |
+| TC-AUTH-LP-E2E-041-resilience-log-write-failure | Ketahanan Login terhadap Kegagalan Layanan Penulisan Log | 130, 153 | web | FE+BE |
+| TC-AUTH-LP-E2E-042-absence-input-rejections | Tidak Ada Pencatatan Log untuk Penolakan Input pada Login with Password | 117, 118, 119, 121, 161 | web | FE+BE |
+| TC-AUTH-LP-E2E-043-absence-state-based | Tidak Ada Pencatatan Log pada Kondisi Lock, MFA Tertunda, Agreement Ditinggalkan, dan Policy Tak Ter-resolve | 90, 120, 124, 157 | web | FE+BE |
+| TC-AUTH-LP-E2E-044-absence-policy-version-change | Tidak Ada Pencatatan Log saat Konfirmasi Agreement Ditolak karena Versi Privacy Policy Berubah | 122 | web | FE+BE |
+| TC-AUTH-LP-E2E-045-absence-ip-rate-limit | Tidak Ada Pencatatan Log untuk Penolakan IP Rate Limit | 123 | web | FE+BE |
+| TC-AUTH-LP-E2E-046-cross-module-user-status-sync | Sinkron Status User dari Global Settings ke Login with Password | 131, 132, 133, 134 | web | FE+BE |
+| TC-AUTH-LP-E2E-047-consent-shared-with-login-otp | Persetujuan Privacy Policy dari Login with Password Berlaku pada Login with OTP | 159 | web | FE+BE |
+| TC-AUTH-LP-E2E-048-consent-shared-with-biometric-relogin | Persetujuan Privacy Policy dari Login with Password Berlaku pada Biometric Re-login | 160 | mobile | FE+BE |
+| TC-AUTH-LP-E2E-049-account-status-pending-inactive | Penolakan Login Akun Pending Activation dan Akun Inactive | 31, 32, 33, 34, 35, 36 | web | FE+BE |
+| TC-AUTH-LP-E2E-050-failed-counter-reset-on-correct-password | Aturan Hitungan Gagal: Diatur Ulang saat Password Benar | 68, 152 | web | FE+BE |
+| TC-AUTH-LP-E2E-051-agreement-confirm-and-mfa-handoff | Konfirmasi Agreement ke Portal, Login Berikutnya, dan Handoff ke MFA | 84, 85, 86 | web | FE+BE |
+| TC-AUTH-LP-E2E-052-lock-daily-reset-keeps-consecutive-days | Password Benar Mengatur Ulang Data Lock Harian Tanpa Mengubah Hitungan Hari Berturut-turut | 163 | web | FE+BE |
+| TC-AUTH-LP-E2E-055-lock-platform-independence-web | Lock Login di Aplikasi Mobile Tidak Mengunci Login di Web | 65 | web | FE+BE |
 
-Total: **161 dari 163 TC aktif tercakup spec e2e; 2 TC di luar spec (lihat bagian berikutnya).**
-(26 spec Web, 1 spec Mobile, 2 spec Cross-Platform Web+Mobile).
+## Lapisan per TC
 
-## TC sumber yang tidak masuk spec
+| TC | Spec | Mode |
+|---|---|---|
+| TC-AUTH-LP-01 | TC-AUTH-LP-E2E-001 | mock |
+| TC-AUTH-LP-02 | TC-AUTH-LP-E2E-001 | mock |
+| TC-AUTH-LP-03 | TC-AUTH-LP-E2E-001 | mock |
+| TC-AUTH-LP-04 | TC-AUTH-LP-E2E-001 | mock |
+| TC-AUTH-LP-05 | TC-AUTH-LP-E2E-031 | FE+BE |
+| TC-AUTH-LP-06 | TC-AUTH-LP-E2E-018 | FE+BE |
+| TC-AUTH-LP-07 | TC-AUTH-LP-E2E-020 | FE+BE |
+| TC-AUTH-LP-08 | TC-AUTH-LP-E2E-020 | FE+BE |
+| TC-AUTH-LP-09 | TC-AUTH-LP-E2E-007 | FE+BE |
+| TC-AUTH-LP-10 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-11 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-12 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-13 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-14 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-15 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-16 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-17 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-18 | TC-AUTH-LP-E2E-003 | FE+BE |
+| TC-AUTH-LP-19 | TC-AUTH-LP-E2E-004 | FE+BE |
+| TC-AUTH-LP-20 | TC-AUTH-LP-E2E-004 | FE+BE |
+| TC-AUTH-LP-21 | TC-AUTH-LP-E2E-004 | FE+BE |
+| TC-AUTH-LP-22 | TC-AUTH-LP-E2E-004 | FE+BE |
+| TC-AUTH-LP-23 | TC-AUTH-LP-E2E-004 | FE+BE |
+| TC-AUTH-LP-24 | TC-AUTH-LP-E2E-005 | FE+BE |
+| TC-AUTH-LP-25 | TC-AUTH-LP-E2E-005 | FE+BE |
+| TC-AUTH-LP-26 | TC-AUTH-LP-E2E-005 | FE+BE |
+| TC-AUTH-LP-27 | TC-AUTH-LP-E2E-003 | FE+BE |
+| TC-AUTH-LP-28 | TC-AUTH-LP-E2E-006 | FE+BE |
+| TC-AUTH-LP-29 | TC-AUTH-LP-E2E-009 | FE+BE |
+| TC-AUTH-LP-30 | TC-AUTH-LP-E2E-009 | FE+BE |
+| TC-AUTH-LP-31 | TC-AUTH-LP-E2E-049 | FE+BE |
+| TC-AUTH-LP-32 | TC-AUTH-LP-E2E-049 | FE+BE |
+| TC-AUTH-LP-33 | TC-AUTH-LP-E2E-049 | FE+BE |
+| TC-AUTH-LP-34 | TC-AUTH-LP-E2E-049 | FE+BE |
+| TC-AUTH-LP-35 | TC-AUTH-LP-E2E-049 | FE+BE |
+| TC-AUTH-LP-36 | TC-AUTH-LP-E2E-049 | FE+BE |
+| TC-AUTH-LP-37 | TC-AUTH-LP-E2E-006 | FE+BE |
+| TC-AUTH-LP-38 | TC-AUTH-LP-E2E-009 | FE+BE |
+| TC-AUTH-LP-39 | TC-AUTH-LP-E2E-009 | FE+BE |
+| TC-AUTH-LP-40 | TC-AUTH-LP-E2E-009 | FE+BE |
+| TC-AUTH-LP-41 | TC-AUTH-LP-E2E-009 | FE+BE |
+| TC-AUTH-LP-42 | TC-AUTH-LP-E2E-010 | FE+BE |
+| TC-AUTH-LP-43 | TC-AUTH-LP-E2E-010 | FE+BE |
+| TC-AUTH-LP-44 | TC-AUTH-LP-E2E-011 | FE+BE |
+| TC-AUTH-LP-45 | TC-AUTH-LP-E2E-011 | FE+BE |
+| TC-AUTH-LP-46 | TC-AUTH-LP-E2E-011 | FE+BE |
+| TC-AUTH-LP-47 | TC-AUTH-LP-E2E-011 | FE+BE |
+| TC-AUTH-LP-48 | TC-AUTH-LP-E2E-012 | FE+BE |
+| TC-AUTH-LP-49 | TC-AUTH-LP-E2E-012 | FE+BE |
+| TC-AUTH-LP-50 | TC-AUTH-LP-E2E-012 | FE+BE |
+| TC-AUTH-LP-51 | TC-AUTH-LP-E2E-012 | FE+BE |
+| TC-AUTH-LP-52 | TC-AUTH-LP-E2E-012 | FE+BE |
+| TC-AUTH-LP-53 | TC-AUTH-LP-E2E-013 | FE+BE |
+| TC-AUTH-LP-54 | TC-AUTH-LP-E2E-013 | FE+BE |
+| TC-AUTH-LP-55 | TC-AUTH-LP-E2E-013 | FE+BE |
+| TC-AUTH-LP-56 | TC-AUTH-LP-E2E-013 | FE+BE |
+| TC-AUTH-LP-57 | TC-AUTH-LP-E2E-013 | FE+BE |
+| TC-AUTH-LP-58 | TC-AUTH-LP-E2E-014 | FE+BE |
+| TC-AUTH-LP-59 | TC-AUTH-LP-E2E-014 | FE+BE |
+| TC-AUTH-LP-60 | TC-AUTH-LP-E2E-014 | FE+BE |
+| TC-AUTH-LP-61 | TC-AUTH-LP-E2E-015 | FE+BE |
+| TC-AUTH-LP-62 | TC-AUTH-LP-E2E-015 | FE+BE |
+| TC-AUTH-LP-63 | TC-AUTH-LP-E2E-015 | FE+BE |
+| TC-AUTH-LP-64 | TC-AUTH-LP-E2E-017 | FE+BE |
+| TC-AUTH-LP-65 | TC-AUTH-LP-E2E-055 | FE+BE |
+| TC-AUTH-LP-66 | TC-AUTH-LP-E2E-016 | FE+BE |
+| TC-AUTH-LP-67 | TC-AUTH-LP-E2E-016 | FE+BE |
+| TC-AUTH-LP-68 | TC-AUTH-LP-E2E-050 | FE+BE |
+| TC-AUTH-LP-69 | TC-AUTH-LP-E2E-007 | FE+BE |
+| TC-AUTH-LP-70 | TC-AUTH-LP-E2E-018 | FE+BE |
+| TC-AUTH-LP-71 | TC-AUTH-LP-E2E-023 | FE+BE |
+| TC-AUTH-LP-72 | TC-AUTH-LP-E2E-023 | FE+BE |
+| TC-AUTH-LP-73 | TC-AUTH-LP-E2E-024 | FE+BE |
+| TC-AUTH-LP-74 | TC-AUTH-LP-E2E-024 | FE+BE |
+| TC-AUTH-LP-75 | TC-AUTH-LP-E2E-019 | FE+BE |
+| TC-AUTH-LP-76 | TC-AUTH-LP-E2E-008 | FE+BE |
+| TC-AUTH-LP-77 | TC-AUTH-LP-E2E-020 | FE+BE |
+| TC-AUTH-LP-78 | TC-AUTH-LP-E2E-021 | FE+BE |
+| TC-AUTH-LP-79 | TC-AUTH-LP-E2E-021 | FE+BE |
+| TC-AUTH-LP-80 | TC-AUTH-LP-E2E-021 | FE+BE |
+| TC-AUTH-LP-81 | TC-AUTH-LP-E2E-007 | FE+BE |
+| TC-AUTH-LP-82 | TC-AUTH-LP-E2E-022 | FE+BE |
+| TC-AUTH-LP-83 | TC-AUTH-LP-E2E-022 | FE+BE |
+| TC-AUTH-LP-84 | TC-AUTH-LP-E2E-051 | FE+BE |
+| TC-AUTH-LP-85 | TC-AUTH-LP-E2E-051 | FE+BE |
+| TC-AUTH-LP-86 | TC-AUTH-LP-E2E-051 | FE+BE |
+| TC-AUTH-LP-87 | TC-AUTH-LP-E2E-026 | FE+BE |
+| TC-AUTH-LP-88 | TC-AUTH-LP-E2E-025 | FE+BE |
+| TC-AUTH-LP-89 | TC-AUTH-LP-E2E-025 | FE+BE |
+| TC-AUTH-LP-90 | TC-AUTH-LP-E2E-043 | FE+BE |
+| TC-AUTH-LP-91 | TC-AUTH-LP-E2E-020 | FE+BE |
+| TC-AUTH-LP-92 | TC-AUTH-LP-E2E-027 | FE+BE |
+| TC-AUTH-LP-93 | TC-AUTH-LP-E2E-031 | FE+BE |
+| TC-AUTH-LP-94 | TC-AUTH-LP-E2E-031 | FE+BE |
+| TC-AUTH-LP-95 | TC-AUTH-LP-E2E-031 | FE+BE |
+| TC-AUTH-LP-96 | TC-AUTH-LP-E2E-031 | FE+BE |
+| TC-AUTH-LP-97 | TC-AUTH-LP-E2E-027 | FE+BE |
+| TC-AUTH-LP-98 | TC-AUTH-LP-E2E-027 | FE+BE |
+| TC-AUTH-LP-99 | TC-AUTH-LP-E2E-027 | FE+BE |
+| TC-AUTH-LP-100 | TC-AUTH-LP-E2E-028 | FE+BE |
+| TC-AUTH-LP-101 | TC-AUTH-LP-E2E-034 | FE+BE |
+| TC-AUTH-LP-102 | TC-AUTH-LP-E2E-022 | FE+BE |
+| TC-AUTH-LP-103 | TC-AUTH-LP-E2E-006 | FE+BE |
+| TC-AUTH-LP-104 | TC-AUTH-LP-E2E-034 | FE+BE |
+| TC-AUTH-LP-105 | TC-AUTH-LP-E2E-035 | FE+BE |
+| TC-AUTH-LP-106 | TC-AUTH-LP-E2E-035 | FE+BE |
+| TC-AUTH-LP-107 | TC-AUTH-LP-E2E-035 | FE+BE |
+| TC-AUTH-LP-108 | TC-AUTH-LP-E2E-035 | FE+BE |
+| TC-AUTH-LP-109 | TC-AUTH-LP-E2E-035 | FE+BE |
+| TC-AUTH-LP-110 | TC-AUTH-LP-E2E-036 | FE+BE |
+| TC-AUTH-LP-111 | TC-AUTH-LP-E2E-036 | FE+BE |
+| TC-AUTH-LP-112 | TC-AUTH-LP-E2E-036 | FE+BE |
+| TC-AUTH-LP-113 | TC-AUTH-LP-E2E-037 | FE+BE |
+| TC-AUTH-LP-114 | TC-AUTH-LP-E2E-038 | FE+BE |
+| TC-AUTH-LP-115 | TC-AUTH-LP-E2E-038 | FE+BE |
+| TC-AUTH-LP-116 | TC-AUTH-LP-E2E-038 | FE+BE |
+| TC-AUTH-LP-117 | TC-AUTH-LP-E2E-042 | FE+BE |
+| TC-AUTH-LP-118 | TC-AUTH-LP-E2E-042 | FE+BE |
+| TC-AUTH-LP-119 | TC-AUTH-LP-E2E-042 | FE+BE |
+| TC-AUTH-LP-120 | TC-AUTH-LP-E2E-043 | FE+BE |
+| TC-AUTH-LP-121 | TC-AUTH-LP-E2E-042 | FE+BE |
+| TC-AUTH-LP-122 | TC-AUTH-LP-E2E-044 | FE+BE |
+| TC-AUTH-LP-123 | TC-AUTH-LP-E2E-045 | FE+BE |
+| TC-AUTH-LP-124 | TC-AUTH-LP-E2E-043 | FE+BE |
+| TC-AUTH-LP-125 | TC-AUTH-LP-E2E-039 | FE+BE |
+| TC-AUTH-LP-126 | TC-AUTH-LP-E2E-039 | FE+BE |
+| TC-AUTH-LP-127 | TC-AUTH-LP-E2E-039 | FE+BE |
+| TC-AUTH-LP-128 | TC-AUTH-LP-E2E-039 | FE+BE |
+| TC-AUTH-LP-129 | TC-AUTH-LP-E2E-039 | FE+BE |
+| TC-AUTH-LP-130 | TC-AUTH-LP-E2E-041 | FE+BE |
+| TC-AUTH-LP-131 | TC-AUTH-LP-E2E-046 | FE+BE |
+| TC-AUTH-LP-132 | TC-AUTH-LP-E2E-046 | FE+BE |
+| TC-AUTH-LP-133 | TC-AUTH-LP-E2E-046 | FE+BE |
+| TC-AUTH-LP-134 | TC-AUTH-LP-E2E-046 | FE+BE |
+| TC-AUTH-LP-135 | TC-AUTH-LP-E2E-040 | FE+BE |
+| TC-AUTH-LP-136 | TC-AUTH-LP-E2E-040 | FE+BE |
+| TC-AUTH-LP-137 | TC-AUTH-LP-E2E-040 | FE+BE |
+| TC-AUTH-LP-138 | TC-AUTH-LP-E2E-040 | FE+BE |
+| TC-AUTH-LP-139 | TC-AUTH-LP-E2E-029 | FE+BE |
+| TC-AUTH-LP-140 | TC-AUTH-LP-E2E-029 | FE+BE |
+| TC-AUTH-LP-141 | TC-AUTH-LP-E2E-030 | FE+BE |
+| TC-AUTH-LP-142 | TC-AUTH-LP-E2E-030 | FE+BE |
+| TC-AUTH-LP-143 | TC-AUTH-LP-E2E-030 | FE+BE |
+| TC-AUTH-LP-144 | TC-AUTH-LP-E2E-029 | FE+BE |
+| TC-AUTH-LP-145 | TC-AUTH-LP-E2E-029 | FE+BE |
+| TC-AUTH-LP-146 | TC-AUTH-LP-E2E-033 | FE+BE |
+| TC-AUTH-LP-147 | TC-AUTH-LP-E2E-033 | FE+BE |
+| TC-AUTH-LP-148 | TC-AUTH-LP-E2E-032 | FE+BE |
+| TC-AUTH-LP-149 | TC-AUTH-LP-E2E-030 | FE+BE |
+| TC-AUTH-LP-150 | TC-AUTH-LP-E2E-032 | FE+BE |
+| TC-AUTH-LP-151 | TC-AUTH-LP-E2E-011 | FE+BE |
+| TC-AUTH-LP-152 | TC-AUTH-LP-E2E-050 | FE+BE |
+| TC-AUTH-LP-153 | TC-AUTH-LP-E2E-041 | FE+BE |
+| TC-AUTH-LP-154 | TC-AUTH-LP-E2E-023 | FE+BE |
+| TC-AUTH-LP-155 | TC-AUTH-LP-E2E-028 | FE+BE |
+| TC-AUTH-LP-156 | TC-AUTH-LP-E2E-003 | FE+BE |
+| TC-AUTH-LP-157 | TC-AUTH-LP-E2E-028 | FE+BE |
+| TC-AUTH-LP-157 | TC-AUTH-LP-E2E-043 | FE+BE |
+| TC-AUTH-LP-158 | TC-AUTH-LP-E2E-024 | FE+BE |
+| TC-AUTH-LP-159 | TC-AUTH-LP-E2E-047 | FE+BE |
+| TC-AUTH-LP-160 | TC-AUTH-LP-E2E-048 | FE+BE |
+| TC-AUTH-LP-161 | TC-AUTH-LP-E2E-002 | FE+BE |
+| TC-AUTH-LP-161 | TC-AUTH-LP-E2E-042 | FE+BE |
+| TC-AUTH-LP-162 | TC-AUTH-LP-E2E-039 | FE+BE |
+| TC-AUTH-LP-163 | TC-AUTH-LP-E2E-052 | FE+BE |
 
-- `TC-AUTH-LP-21` dan `TC-AUTH-LP-22` (Manual Only): fixture password berspasi di awal/akhir hanya dapat diset langsung oleh tim BE dan tidak dapat dijalankan di environment automation; keduanya dikeluarkan dari E2E-002 atas keputusan review (2026-10-08). Langkah manual terdokumentasi penuh di `tc-login-password.md`.
+## TC hanya-BE
 
-Seluruh sisa 161 TC granular memiliki manifestasi UI, aliran navigasi, validasi klien/server, atau pencatatan audit log yang diuji dalam rangkaian spec ini. Kontrak endpoint API murni dicakup terpisah pada repositori backend.
-
-## Verifikasi silang
-
-- Tidak ada `sourceTc` yang muncul di dua spec (seluruh 161 ID unik terpetakan 1-to-1).
-- Linting TestSpectra: `npx spectra lint --strict specs/Auth/LoginPassword` lulus 100% (29 specs and 1 suites verified, 0 lint errors found).
-- Dekomposisi spec kompleksitas tinggi (23 → 29 spec) terdokumentasi di `gap-spec/gap-spec.md` GAP-LP-E2E-009.
-- Format penamaan direktori dan frontmatter YAML telah divalidasi linter.
+Tidak ada.
