@@ -35,7 +35,7 @@ coverage:
 6. Klik `[Publish]`
 7. Lepas intercept body Publish
 8. Verifikasi server menolak dengan status 422
-9. Verifikasi error inline "Privacy Policy content must not be empty" tampil di bawah editor
+9. Verifikasi error inline "Privacy policy content must not be empty" tampil di bawah editor
 10. Verifikasi Dialog Publish Confirm tertutup
 11. Verifikasi Modal tetap di state Edit
 12. Verifikasi konten editor dipertahankan
@@ -48,7 +48,7 @@ coverage:
 16. Atur intercept agar body permintaan Publish diganti dengan `<script>alert(1)</script>`
 17. Klik `[Publish]`
 18. Lepas intercept body Publish
-19. Verifikasi error inline "Privacy Policy content must not be empty" tampil di bawah editor
+19. Verifikasi error inline "Privacy policy content must not be empty" tampil di bawah editor
 20. Verifikasi tidak ada toast yang tampil
 21. Verifikasi Dialog Publish Confirm tertutup
 22. Verifikasi Modal tetap di state Edit
@@ -62,7 +62,7 @@ coverage:
 27. Klik `[Publish]`
 28. Lepas intercept body Publish
 29. Verifikasi server menolak dengan status 422
-30. Verifikasi error inline "Privacy Policy content must not be empty" tampil di bawah editor
+30. Verifikasi error inline "Privacy policy content must not be empty" tampil di bawah editor
 31. Verifikasi Dialog Publish Confirm tertutup
 32. Verifikasi Modal tetap di state Edit
 33. Verifikasi konten editor dipertahankan

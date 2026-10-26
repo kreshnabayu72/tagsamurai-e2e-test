@@ -32,13 +32,13 @@ coverage:
 2. Tunggu konten editor termuat
 3. Klik `[Clear Field]`
 4. Klik `[Publish New Version]`
-5. Verifikasi error inline "Privacy Policy content must not be empty" tampil di bawah editor
+5. Verifikasi error inline "Privacy policy content must not be empty" tampil di bawah editor
 6. Verifikasi Dialog Publish Confirm tidak terbuka
 7. Ketik "Replacement text." pada editor
 8. Verifikasi error inline hilang begitu isi editor berubah
 9. Klik `[Clear Field]`
 10. Klik `[Publish New Version]`
-11. Verifikasi error inline "Privacy Policy content must not be empty" muncul lagi
+11. Verifikasi error inline "Privacy policy content must not be empty" muncul lagi
 12. Verifikasi Dialog Publish Confirm tidak terbuka
 13. Klik `[Clear Field]`
 14. Verifikasi error inline hilang setelah `[Clear Field]`
