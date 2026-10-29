@@ -9,6 +9,7 @@ sourceTc:
   - TC-GS-BRAND-294
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Download Accordion Device SKU List pada Instance Principal: Isi dan Nama File

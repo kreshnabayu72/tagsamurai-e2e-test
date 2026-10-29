@@ -11,6 +11,7 @@ sourceTc:
   - TC-GS-BRAND-249
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Resilience Export: Kegagalan Download Brand, Changelog, dan Accordion Detail

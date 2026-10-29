@@ -12,6 +12,7 @@ sourceTc:
   - TC-GS-BRAND-259
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Brand Detail: Device SKU List pada Instance Principal dan Distributor

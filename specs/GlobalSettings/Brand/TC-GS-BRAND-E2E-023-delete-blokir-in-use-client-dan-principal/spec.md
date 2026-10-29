@@ -12,6 +12,7 @@ sourceTc:
   - TC-GS-BRAND-101
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Delete Brand Diblokir karena In-Use pada Client dan Principal
