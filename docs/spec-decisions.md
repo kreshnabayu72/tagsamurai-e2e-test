@@ -144,3 +144,21 @@ Aturan:
 - **Karena:** konvensi PRD §4 dan TC-048 menetapkan emoji diblokir di level input. Spec yang meminta pesan error bertentangan dengan keduanya.
 - **Keputusan:** langkah dipenuhi bila emoji tidak masuk ke field dan nama yang tersimpan tidak mengandung emoji. Skrip memverifikasi isi field setelah mengetik emoji, bukan pesan error.
 - **Diterapkan di:** skrip 068.
+
+## D-017 Password kosong ditolak di browser sebelum cek lock (2026-10-29)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-010` TC-AUTH-LP-42 ([Log in] dengan Password kosong saat akun terkunci 15 menit menampilkan Alert lock).
+- **Spec meminta:** lock dievaluasi lebih dulu daripada Password kosong.
+- **Kenyataannya:** browser menolak Password kosong sebelum request apa pun; hanya server yang tahu status lock.
+- **Karena:** memenuhi urutan spec butuh perubahan di frontend dan backend (iam memeriksa lock sebelum validasi `required`). Backend mengikuti kontraknya, dan perubahan backend hanya atas perintah pemilik.
+- **Keputusan:** langkah dipenuhi oleh pesan "Password must not be empty" tanpa request login. Alert lock diverifikasi pada percobaan dengan Password terisi.
+- **Diterapkan di:** skrip 010.
+
+## D-018 Setelah 409 karena versi kebijakan berubah, user kembali ke Login (2026-10-29)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-026` TC-AUTH-LP-87 (setelah Privacy Policy berubah, Confirm to Continue dimuat ulang dan Continue berhasil).
+- **Spec meminta:** Confirm dimuat ulang dengan versi baru, lalu Continue berhasil.
+- **Kenyataannya:** kontrak backend (openapi, Bruno, unit test) memakai habis token pra-autentikasi pada `409` dan mengembalikan user ke Login (BT-47).
+- **Karena:** backend mengikuti kontraknya; perubahan backend hanya atas perintah pemilik.
+- **Keputusan:** setelah `409`, aplikasi kembali ke halaman Login; user login ulang lalu menyetujui versi baru. Aplikasi disesuaikan, dan skrip memverifikasi alur itu.
+- **Diterapkan di:** aplikasi (alur 409 di Confirm to Continue) dan skrip 026.
