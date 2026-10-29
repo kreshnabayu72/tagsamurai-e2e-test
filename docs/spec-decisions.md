@@ -71,3 +71,30 @@ Aturan:
 - **Karena:** spec usang terhadap TC doc; aplikasi belum memakai Time Zone General Settings; PRD hanya menggambarkan susunan info bar; BE di-mock.
 - **Keputusan:** copy di spec mengikuti TC doc (huruf kecil `privacy policy`); aplikasi memformat tanggal di Time Zone General Settings dan browser e2e berjalan di UTC; info bar diasersi per bagian; asersi entri Activity Log (006 langkah 17 dan 20 sampai 26) ditandai `@real-api`.
 - **Perubahan app yang menyertai:** tanggal tabel dan formatter memakai `timezone` dari `generalSettings`; klik menu sidebar menghapus state query tabel (search, sort, filter, paginasi) dan me-remount halaman (prd-conventions, "re-klik menu tetap reset"); edit kebijakan yang kotor menahan Browser Back dan navigasi (menutup Publish Confirm atau menanyakan Unsaved Changes); seed tanggal memakai UTC.
+
+## D-010 Set Password tanpa token dijawab 405, bukan 400 (2026-10-29)
+
+- **Spec / langkah:** `TC-AUTH-ACT-E2E-020` TC-AUTH-ACT-132 langkah 21–22.
+- **Spec meminta:** request Set Password tanpa token dijawab `400`.
+- **Kenyataannya:** token adalah segmen path (`POST /v2/iam/auth/activation/{token}/set-password`). Request tanpa token menjadi `/activation//set-password`, dan router menjawab `405 Method Not Allowed`, status yang tercantum di kontrak operasi ini.
+- **Karena:** kontrak tidak punya field body untuk dikosongkan; 405 berasal dari routing, sesuai kontrak.
+- **Keputusan:** langkah 21–22 mengharapkan `405`. Backend tidak diubah.
+- **Diterapkan di:** skrip 020.
+
+## D-011 Request OTP dari dua tab hanya mengirim satu kode (2026-10-29)
+
+- **Spec / langkah:** `TC-AUTH-OTP-E2E-046` TC-AUTH-OTP-173.
+- **Spec meminta:** Request OTP untuk satu email dari dua tab menghasilkan dua mail OTP.
+- **Kenyataannya:** request kedua jatuh dalam cooldown 60 detik dari request pertama (TC-AUTH-OTP-90), jadi server menolaknya dan hanya satu kode terkirim.
+- **Karena:** cooldown memang mencegah kode ganda; dua tab tidak mengirim serentak.
+- **Keputusan:** satu mail OTP; request kedua tertolak cooldown (UI menampilkan pesan cooldown) dan tidak ada mail kedua.
+- **Diterapkan di:** skrip 046.
+
+## D-012 Link reset dan konfirmasi email dari mail dibuka lewat route penerus di app (2026-10-29)
+
+- **Spec / langkah:** spec `Auth/ResetPassword` yang membuka link reset dari mail; konfirmasi ganti email.
+- **Spec meminta:** link di mail membuka halaman Setup New Password (dan halaman konfirmasi email).
+- **Kenyataannya:** iam membangun `RESET_PASSWORD_URL` + `?token=` (default `/reset-password?token=`) dan `FRONTEND_BASE_URL` + `/confirm-email?token=`, sedangkan route app adalah `/auth/reset-password/setup/:token` dan belum ada route konfirmasi email.
+- **Karena:** bentuk link backend dan route app tidak selaras (issue iam #103).
+- **Keputusan:** app menambah route `/reset-password?token=` dan `/confirm-email?token=` yang meneruskan ke halaman yang ada. Backend tidak menunggu diubah; issue iam #103 tetap terbuka untuk penyelarasan.
+- **Diterapkan di:** route app tagsamurai.
