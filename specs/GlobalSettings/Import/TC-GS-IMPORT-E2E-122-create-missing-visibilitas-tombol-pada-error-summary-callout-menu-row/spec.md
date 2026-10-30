@@ -67,67 +67,72 @@ Draft pada langkah 9-10 dipakai ulang karena TC-GS-IMPORT-349 dan 734 memakai be
 
 ### TC-GS-IMPORT-344: Create Missing tidak tersedia di Bulk Action Bar
 
-23. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
-24. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
-25. Centang kotak pada baris #1
-26. Verifikasi Bulk Action Bar menampilkan "1 Row selected"
-27. Klik `[Bulk Action ▾]`
-28. Verifikasi overlay hanya berisi `[Delete]`
-29. Verifikasi overlay tidak memuat `[Create Missing Divisions]` maupun `[Create Missing Positions]`
-30. Tutup overlay, hapus centang baris #1, lalu reset draft User Login Client C lewat fixture reset
+23. Muat ulang halaman Import > User Login
+24. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+25. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
+26. Centang kotak pada baris #1
+27. Verifikasi Bulk Action Bar menampilkan "1 Row selected"
+28. Klik `[Bulk Action ▾]`
+29. Verifikasi overlay hanya berisi `[Delete]`
+30. Verifikasi overlay tidak memuat `[Create Missing Divisions]` maupun `[Create Missing Positions]`
+31. Tutup overlay, hapus centang baris #1, lalu reset draft User Login Client C lewat fixture reset
 
 ### TC-GS-IMPORT-924: Create Missing Options hanya pada baris pesan dan baris error Dropdown tidak ditemukan, berdampingan dengan Create Missing Divisions
 
-31. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-mixed.csv`
-32. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
-33. Verifikasi Error Summary Callout memuat tiga baris pesan berurutan: "First Name: Max. 120 characters" (badge "1 row"), "Division not found" (badge "1 row"), dan "Shift: Invalid option" (badge "2 rows")
-34. Verifikasi baris pesan "First Name: Max. 120 characters" hanya memuat `[View Data]` dan `[Delete All Rows]`
-35. Verifikasi baris pesan "Division not found" memuat `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Divisions]`
-36. Verifikasi baris pesan "Shift: Invalid option" memuat `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Options]`
-37. Klik `⋯` pada baris #1
-38. Verifikasi menu `⋯` baris #1 memuat `Duplicate`, `Edit`, dan `Remove`
-39. Verifikasi menu `⋯` baris #1 tidak memuat tombol Create Missing
-40. Tutup menu `⋯`
-41. Klik `⋯` pada baris #2
-42. Verifikasi menu `⋯` baris #2 memuat `Duplicate`, `Edit`, `[Create Missing Options]`, dan `Remove` dalam urutan tersebut
-43. Tutup menu `⋯`
-44. Klik `⋯` pada baris #3
-45. Verifikasi menu `⋯` baris #3 memuat `Duplicate`, `Edit`, `[Create Missing Divisions]`, `[Create Missing Options]`, dan `Remove` dalam urutan tersebut
-46. Tutup menu `⋯`, lalu reset draft User Login Client C lewat fixture reset
+32. Muat ulang halaman Import > User Login
+33. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-mixed.csv`
+34. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
+35. Verifikasi Error Summary Callout memuat tiga baris pesan berurutan: "First Name: Max. 120 characters" (badge "1 row"), "Division not found" (badge "1 row"), dan "Shift: Invalid option" (badge "2 rows")
+36. Verifikasi baris pesan "First Name: Max. 120 characters" hanya memuat `[View Data]` dan `[Delete All Rows]`
+37. Verifikasi baris pesan "Division not found" memuat `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Divisions]`
+38. Verifikasi baris pesan "Shift: Invalid option" memuat `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Options]`
+39. Klik `⋯` pada baris #1
+40. Verifikasi menu `⋯` baris #1 memuat `Duplicate`, `Edit`, dan `Remove`
+41. Verifikasi menu `⋯` baris #1 tidak memuat tombol Create Missing
+42. Tutup menu `⋯`
+43. Klik `⋯` pada baris #2
+44. Verifikasi menu `⋯` baris #2 memuat `Duplicate`, `Edit`, `[Create Missing Options]`, dan `Remove` dalam urutan tersebut
+45. Tutup menu `⋯`
+46. Klik `⋯` pada baris #3
+47. Verifikasi menu `⋯` baris #3 memuat `Duplicate`, `Edit`, `[Create Missing Divisions]`, `[Create Missing Options]`, dan `Remove` dalam urutan tersebut
+48. Tutup menu `⋯`, lalu reset draft User Login Client C lewat fixture reset
 
 ### TC-GS-IMPORT-925: Custom Field Shift dinonaktifkan: kolom tampil seperti field Active tanpa Create Missing Options, tombol kembali bila diaktifkan lagi
 
-47. Total Control Client C: klik [Upload File] di toolbar dan pilih berkas `user-login-shift-lembur.csv`
-48. Total Control Client C: biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
-49. Admin kedua Client C (sesi API): nonaktifkan Custom Field `Shift` hingga tersimpan
-50. Total Control Client C: muat ulang halaman Import > User Login
-51. Verifikasi kolom Shift tampil tanpa lencana
-52. Verifikasi Banner Custom Field Deactivated tampil
-53. Verifikasi baris #1 dan #2 tetap `error` karena nilai `Lembur` bukan opsi
-54. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "2 rows"
-55. Verifikasi baris pesan "Shift: Invalid option" tanpa tombol `[Create Missing Options]`
-56. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 1, Errors 2
-57. Klik `⋯` pada baris #1
-58. Verifikasi menu `⋯` baris #1 memuat `Duplicate`, `Edit`, dan `Remove`
-59. Verifikasi menu `⋯` baris #1 tidak memuat `[Create Missing Options]`
-60. Tutup menu `⋯`
-61. Admin kedua Client C (sesi API): aktifkan kembali Custom Field `Shift` hingga tersimpan
-62. Total Control Client C: muat ulang halaman Import > User Login
-63. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "2 rows"
-64. Verifikasi baris pesan "Shift: Invalid option" memuat tombol `[Create Missing Options]`
-65. Verifikasi Banner Custom Field tidak tampil
-66. Klik `⋯` pada baris #1
-67. Verifikasi menu `⋯` baris #1 memuat `[Create Missing Options]`
-68. Tutup menu `⋯`, lalu reset draft User Login Client C lewat fixture reset
+49. Muat ulang halaman Import > User Login
+50. Total Control Client C: klik [Upload File] di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+51. Total Control Client C: biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
+52. Total Control Client C: Tunggu aksi selesai (Modal Column Mapping tertutup)
+53. Admin kedua Client C (sesi API): nonaktifkan Custom Field `Shift` hingga tersimpan
+54. Total Control Client C: muat ulang halaman Import > User Login
+55. Verifikasi kolom Shift tampil tanpa lencana
+56. Verifikasi Banner Custom Field Deactivated tampil
+57. Verifikasi baris #1 dan #2 tetap `error` karena nilai `Lembur` bukan opsi
+58. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "2 rows"
+59. Verifikasi baris pesan "Shift: Invalid option" tanpa tombol `[Create Missing Options]`
+60. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 1, Errors 2
+61. Klik `⋯` pada baris #1
+62. Verifikasi menu `⋯` baris #1 memuat `Duplicate`, `Edit`, dan `Remove`
+63. Verifikasi menu `⋯` baris #1 tidak memuat `[Create Missing Options]`
+64. Tutup menu `⋯`
+65. Admin kedua Client C (sesi API): aktifkan kembali Custom Field `Shift` hingga tersimpan
+66. Total Control Client C: muat ulang halaman Import > User Login
+67. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "2 rows"
+68. Verifikasi baris pesan "Shift: Invalid option" memuat tombol `[Create Missing Options]`
+69. Verifikasi Banner Custom Field tidak tampil
+70. Klik `⋯` pada baris #1
+71. Verifikasi menu `⋯` baris #1 memuat `[Create Missing Options]`
+72. Tutup menu `⋯`, lalu reset draft User Login Client C lewat fixture reset
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Subjudul `###` memetakan langkah ke id TC.
 - Urutan: Tab Brand, lalu Tab User Login dengan TC-GS-IMPORT-349 dan 734 berbagi satu draft, TC-GS-IMPORT-344, 924, dan TC-GS-IMPORT-925 terakhir karena mengubah status Custom Field (state global).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 8 (memilih sub-tab), 7, 22, 30, 46, 68 (reset draft, S-09), 19, 22, 30, 40, 43, 46, 60, 68 (menutup menu atau overlay), 25 dan 30 (centang dan hapus centang), 49 dan 61 (pemicu Admin kedua).
-- Verifikasi pembanding pada absence menu `⋯` (langkah 18, 39, 59): menu berisi `Duplicate`, `Edit`, `Remove` diverifikasi lebih dulu sebagai anchor positif (butir 2 bagian 8b); pada langkah 59 daftar pembanding ini tidak ada di Expected TC dan ditambahkan hanya sebagai anchor. Absence setelah muat ulang (langkah 65) didahului langkah 63 dan 64 pada halaman yang sama.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 8 (memilih sub-tab), 7, 22, 31, 48, 72 (reset draft, S-09), 23, 32, 49, 54, 66 (muat ulang halaman Import > User Login; langkah 23, 32, dan 49 memuat ulang halaman setelah reset fixture sebelum [Upload File]), 19, 22, 31, 42, 45, 48, 64, 72 (menutup menu atau overlay), 26 dan 31 (centang dan hapus centang), 53 dan 65 (pemicu Admin kedua). Langkah 52 (Tunggu aksi selesai: menunggu aksi tanpa `Verifikasi` selesai sebelum Admin kedua menonaktifkan Custom Field `Shift` lewat sesi API; penanda Modal Column Mapping tertutup).
+- Verifikasi pembanding pada absence menu `⋯` (langkah 18, 40, 63): menu berisi `Duplicate`, `Edit`, `Remove` diverifikasi lebih dulu sebagai anchor positif (butir 2 bagian 8b); pada langkah 63 daftar pembanding ini tidak ada di Expected TC dan ditambahkan hanya sebagai anchor. Absence setelah muat ulang (langkah 69) didahului langkah 67 dan 68 pada halaman yang sama.
 - P-2: Admin kedua Client C hanya memicu penonaktifan dan pengaktifan Custom Field `Shift` lewat sesi API pada TC-GS-IMPORT-925; semua asersi ada di sesi Total Control Client C.
-- Spec melewati sekitar 35 langkah (68 langkah): enam blok satu kelas (fungsional, observasi tombol), tiap blok berdiri sendiri dengan draft dan reset sendiri; kegagalan satu blok tidak menghilangkan makna blok lain. TC-GS-IMPORT-349 dan 734 berbagi satu upload.
+- Spec melewati sekitar 35 langkah (72 langkah): enam blok satu kelas (fungsional, observasi tombol), tiap blok berdiri sendiri dengan draft dan reset sendiri; kegagalan satu blok tidak menghilangkan makna blok lain. TC-GS-IMPORT-349 dan 734 berbagi satu upload.
+- Setelah tiap reset draft lewat fixture pada Tab User Login (langkah 22, 31, 48), halaman dimuat ulang (langkah 23, 32, 49) sebelum [Upload File] agar UI tidak basi dan tidak memunculkan dialog Append lebih dulu.
 - Pembagian TC lintas spec: aksi Create Missing sebenarnya ada di spec 123 sampai 130; visibilitas peran Read Only dan Create ada di spec 131 dan 132.
 - Temuan untuk QA:
   - TC-GS-IMPORT-925: Expected a berbunyi "kolom Shift tampil tanpa lencana dengan Banner Custom Field Deactivated"; spec memecahnya menjadi dua `Verifikasi` (kolom tanpa lencana, Banner tampil) karena kalimat ambigu tentang hubungan keduanya.

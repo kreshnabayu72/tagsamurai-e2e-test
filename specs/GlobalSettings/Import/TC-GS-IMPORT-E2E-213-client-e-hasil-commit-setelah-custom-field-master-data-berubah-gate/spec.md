@@ -126,17 +126,19 @@ coverage:
 68. Verifikasi Staging Table hanya memuat Row # 1 berstatus `error`
 69. Verifikasi Error Summary Callout memuat `Division not found` dengan badge "1 row"
 70. Buka halaman User > User List > Login User
-71. Verifikasi daftar Login User memuat 2 user baru: Citra Wulandari dan Dedi Kurniawan
-72. Verifikasi Budi Santosa tidak ada di daftar Login User
-73. Pulihkan: buat ulang Division `Gudang`, hapus 2 user hasil commit dari Client E, buang draft User Login lewat skrip reset
+71. Atur Rows per page 100
+72. Verifikasi daftar Login User memuat 2 user baru: Citra Wulandari dan Dedi Kurniawan
+73. Verifikasi Budi Santosa tidak ada di daftar Login User
+74. Pulihkan: buat ulang Division `Gudang`, hapus 2 user hasil commit dari Client E, buang draft User Login lewat skrip reset
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Panjang spec: 73 langkah, di atas 35 langkah. Alasan: enam blok commit berpola sama (seed draft, pemicu perubahan lewat sesi API, commit, tunggu worker, baca Banner dan Staging Table, baca daftar master data) pada satu client dan satu akun; tiap blok berdiri sendiri dan dipulihkan eksplisit (langkah 11, 26, 38, 50, 62, 73), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok baca-log tidak ada; langkah tunggu worker (7, 14, 30, 42, 54, 66) adalah polling.
+- Panjang spec: 74 langkah, di atas 35 langkah. Alasan: enam blok commit berpola sama (seed draft, pemicu perubahan lewat sesi API, commit, tunggu worker, baca Banner dan Staging Table, baca daftar master data) pada satu client dan satu akun; tiap blok berdiri sendiri dan dipulihkan eksplisit (langkah 11, 26, 38, 50, 62, 74), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok baca-log tidak ada; langkah tunggu worker (7, 14, 30, 42, 54, 66) adalah polling.
 - P-2: Admin kedua hanya memicu perubahan Custom Field dan master data lewat sesi API; hasil diasersi hanya di sesi admin pertama.
-- Langkah pemulihan (11, 26, 38, 50, 62, 73) adalah aksi tanpa `Verifikasi` (S-09); hook `after` adalah cadangan.
+- Langkah pemulihan (11, 26, 38, 50, 62, 74) adalah aksi tanpa `Verifikasi` (S-09); hook `after` adalah cadangan.
+- Langkah 35, 47, 59, dan 71 (Atur Rows per page 100) adalah langkah penghubung tanpa `Verifikasi` supaya daftar Login User memuat seluruh baris yang diasersi pada satu halaman (S-14); langkah 71 menjadi penghubung bagi asersi "tidak ada" Budi Santosa di langkah 73.
 - Urutan 549, 551, 520, 803, 944, 550 menempatkan TC yang memutasi Division (TC-550) paling akhir; nomor TC di sourceTc tetap (S-05).
 - Temuan untuk QA:
   - TC-GS-IMPORT-550 Expected c menyebut user baru "Citra Wulandari dan Dedi Kurniawan; Budi Santosa tidak ada", sedangkan D-62 (user-login-ref.csv) hanya mendefinisikan Division, Position, dan Access tanpa nama; nama pada Expected tidak cocok dengan berkas D-45 (Bambang Hartono, Citra Wulandari, Doni Kurniawan). Berkas data uji TC harus mendefinisikan nama user D-62. Spec mengasersi persis rumusan TC.

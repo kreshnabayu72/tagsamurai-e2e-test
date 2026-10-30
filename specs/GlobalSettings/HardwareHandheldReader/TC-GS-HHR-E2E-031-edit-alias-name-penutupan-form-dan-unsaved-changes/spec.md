@@ -22,8 +22,8 @@ coverage:
 - Suite serial (`parallel: false`): spec dijalankan pada Client A yang datanya dipakai spec lain; spec tidak menyimpan perubahan apa pun.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader (Client A); spec tidak mengulang pembukaan layar.
 - Akun aktor: Total Control (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup, Client A, plan Growth). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
-- Data Dinamis: Seed Reader A (DD-01 sampai DD-10; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), format tanggal default Client A `dd/MM/yy` 24-hour. Spec memakai DD-01 (Serial Number `SN-HHR-00101`, Alias Name `—`) dan DD-02 (`Gudang Reader - 1`, Serial Number `SN-HHR-00102`, Alias Name `Reader Gudang 02`). Nilai uji yang diketik namun tidak pernah disimpan: `Reader Dock 01` dan `Reader Gudang 03`. Seed Reader A bernama literal tanpa suffix karena Device Name bawaan ditentukan sistem (HHR-LOGIC-02g) dan DD-01 dan DD-06 sama-sama bernama `Zebra RFID Reader - 1`; baris diidentifikasi lewat Serial Number.
-- Cleanup: Seed Reader A tidak diubah spec ini; fixture backend memulihkannya ke kondisi awal sebelum spec (hook `before`) dan sesudah spec (hook `after`). Mekanisme pemulihan disediakan tim FE/BE (lihat Temuan untuk QA).
+- Data Dinamis (Seed Reader A, dipulihkan fixture backend): Seed Reader A (DD-01 sampai DD-10; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), format tanggal default Client A `dd/MM/yy` 24-hour. Spec memakai DD-01 (Serial Number `SN-HHR-00101`, Alias Name `—`) dan DD-02 (`Gudang Reader - 1`, Serial Number `SN-HHR-00102`, Alias Name `Reader Gudang 02`). Nilai uji yang diketik namun tidak pernah disimpan: `Reader Dock 01` dan `Reader Gudang 03`. Seed Reader A bernama literal tanpa suffix (pengecualian S-12 Population Seed Reader A HHR) karena Device Name bawaan ditentukan sistem (HHR-LOGIC-02g) dan DD-01 dan DD-06 sama-sama bernama `Zebra RFID Reader - 1`; baris diidentifikasi lewat Serial Number.
+- Cleanup: Seed Reader A tidak diubah spec ini; fixture backend memulihkannya ke kondisi awal sebelum spec (hook `before`) dan sesudah spec (hook `after`). Pemulihan dijamin fixture backend yang disediakan tim FE/BE.
 - Guided Tooltip: hook suite `before` men-set flag `guided_tooltip_seen_gs-handheld-reader` true untuk akun aktor spec ini dan hook `after` memulihkannya (lihat `suite.md`).
 - Kemampuan teknis: input keyboard (`Esc`); klik pada area backdrop di luar dialog.
 - State global: tidak ada yang diubah selain flag Guided Tooltip (dikelola hook suite).
@@ -51,7 +51,7 @@ coverage:
 ### TC-GS-HHR-116: Esc lalu Leave menutup tanpa menyimpan
 
 13. Tekan `Esc`
-14. Verifikasi dialog `Unsaved Changes` muncul
+14. Verifikasi dialog `Unsaved Changes` muncul dengan body "You have unsaved changes. Are you sure you want to leave?" dan tombol `[Cancel]` `[Leave]`
 15. Klik `[Leave]`
 16. Verifikasi Dialog Edit Alias Name tertutup
 17. Verifikasi tidak ada toast
@@ -79,12 +79,11 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: 115, 119, 116, 117, 118. Urutan menyimpang dari urutan TC sumber dan mengikuti kondisi form: TC-GS-HHR-115, 119, dan 116 memakai satu pembukaan form dirty (`Reader Dock 01`); TC-GS-HHR-117 dan 118 menutup dalam keadaan bersih sehingga memakai form baru masing-masing dan ditaruh terakhir (prinsip 6). TC-GS-HHR-118 menguji pengembalian nilai itu sendiri, sehingga memakai form sendiri.
 - Jumlah pembukaan dialog Edit Alias Name: 3 (langkah 1, 19, 23); jumlah kejadian menutup: 3 (langkah 13 sampai 15, langkah 20, langkah 26). Langkah 5 (`[Cancel]`) hanya menutup dialog `Unsaved Changes`.
-- Langkah 13 sampai 15 pada TC-GS-HHR-116 menambahkan `Verifikasi` dialog `Unsaved Changes` (langkah 14) agar penutupan form dirty deterministik (S-08).
 - Langkah 2, 24, dan 25 adalah aksi pengisian (tanpa `Verifikasi`) yang membuat form dirty atau mengembalikannya.
 - Seluruh penutupan memakai `[✕]`, `Esc`, atau `[Leave]` (tanpa `[Cancel]` pada dialog Edit; `[Cancel]` hanya pada dialog `Unsaved Changes`).
+- Pengecualian S-12 Population Seed Reader A HHR berlaku untuk Seed Reader A (nama literal tanpa suffix `{runId}`); pemulihannya dijamin fixture backend dan dinyatakan di `suite.md`.
+- Spec 029, 030, dan 031 menguji dialog Edit Alias Name pada dataset Seed Reader A yang sama dan sengaja dipisah: gabungannya 163 langkah (61, 74, dan 28), jauh di atas sekitar 35 langkah, dan tiap spec membuka dialog sendiri sehingga kegagalan keras satu spec tidak menghilangkan makna spec lain.
 - Pembagian TC lintas spec: TC-GS-HHR-103, 109 sampai 114, dan 462 ada di spec 029; TC-GS-HHR-104 sampai 108, 120, 123, dan 124 ada di spec 030.
 - Temuan untuk QA:
-  - TC-GS-HHR-116 Expected a menyebut dialog Edit Alias Name tertutup tanpa menyebut dialog `Unsaved Changes` muncul setelah `Esc`; spec menambahkan `Verifikasi` dialog tersebut berdasarkan Expected TC-GS-HHR-115 (S-08).
   - TC-GS-HHR-119 tidak menyebut cara mengisi `Alias Name`; spec memakai nilai `Reader Dock 01` seperti TC-GS-HHR-115 dan 116 (form dirty yang sama).
-  - Mekanisme pemulihan Seed Reader A oleh fixture backend ("Reset antar TC" pada Catatan TC) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE.
   - Tidak ada Post Condition pada TC sumber spec ini.

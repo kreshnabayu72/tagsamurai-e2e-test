@@ -65,7 +65,7 @@ coverage:
 - Langkah 2 sampai 21a diulang untuk dua status (Suspended, Expired); parameter hanya status Client di tabel. Ekspansi: 21 langkah x 2 = 42 langkah. Untuk Suspended, langkah 2 hanya memastikan status awal.
 - Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 2 dan 3 (pemicu perubahan status dan muat ulang), langkah 12 (keluar dari halaman Activate dengan staging berisi lewat sidebar `TAG` lalu `[Leave]`; `[Leave]` pada dialog `Unsaved Changes` tidak diasersi terpisah), langkah 13 dan 20 (Search untuk menemukan baris target), langkah 15 dan 21a (`(←)`; 21a mengosongkan Search di akhir tiap iterasi), pemulihan status pada langkah 22.
 - Langkah 14 (`No results found`) adalah anchor positif untuk absence hasil Search (8b butir 2) dan membuktikan tag stok tidak teraktivasi; langkah 21 membuktikan Delete tidak mengubah data.
-- Alasan spec melewati sekitar 35 langkah (23 nominal, 42 ekspansi): satu TC satu kelas (h) dengan dua status Client yang menjalankan blok identik; blok Expired tidak bermakna bila status tidak dipulihkan, tetapi keduanya satu topik (aksi tulis ditolak) dan berbagi satu dataset.
+- Alasan spec melewati sekitar 35 langkah (23 nominal, 44 ekspansi): satu TC satu kelas (h) dengan dua status Client yang menjalankan blok identik; blok Expired tidak bermakna bila status tidak dipulihkan, tetapi keduanya satu topik (aksi tulis ditolak) dan berbagi satu dataset.
 - Temuan untuk QA:
   - TC-319 judul dan Expected mencakup Expired tetapi Precondition dan Data Uji hanya Client Susp berstatus Suspended; pelaku perubahan status ke Expired tidak ada di Pre-setup TC.
   - TC-319 langkah 2 ("Hapus tag Available lewat menu baris") tidak menyebut tag yang dihapus; spec memakai `356938035643001` dari Precondition.

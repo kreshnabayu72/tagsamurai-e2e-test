@@ -43,18 +43,19 @@ coverage:
 12. Pilih Duplicate
 13. Ubah Brand Name salinan menjadi `Lenovo Group {runId}-066`
 14. Klik `[Save]` dan tangkap permintaan Save beserta id sesi edit
-15. Kirim ulang permintaan Save yang sama (id sesi edit sama) langsung ke server dengan token akun Total Control Client A
-16. Verifikasi respons permintaan kedua berupa penolakan 409 Conflict
-17. Muat ulang halaman Import > Brand
-18. Verifikasi draft tetap 13 baris dengan tepat satu baris `Lenovo Group {runId}-066`
-19. Verifikasi footer `[Import (13)]`
-20. Pulihkan draft Client A ke D-01 (hapus baris `Lenovo Group {runId}-066`)
+15. Tunggu aksi selesai (permintaan mendapat respons)
+16. Kirim ulang permintaan Save yang sama (id sesi edit sama) langsung ke server dengan token akun Total Control Client A
+17. Verifikasi respons permintaan kedua berupa penolakan 409 Conflict
+18. Muat ulang halaman Import > Brand
+19. Verifikasi draft tetap 13 baris dengan tepat satu baris `Lenovo Group {runId}-066`
+20. Verifikasi footer `[Import (13)]`
+21. Pulihkan draft Client A ke D-01 (hapus baris `Lenovo Group {runId}-066`)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: defense-in-depth (kelas a, prinsip 13a); TC-GS-IMPORT-677 menyuntikkan nilai ke DOM, TC-GS-IMPORT-667 mengirim ulang permintaan langsung ke server (hanya status respons dan state data diasersi).
 - Urutan blok: TC-GS-IMPORT-677 lebih dulu karena tidak mengubah draft; TC-GS-IMPORT-667 menambah satu baris sehingga di akhir.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8 (`[Cancel]` lalu `[Discard]`), langkah 9 dan 17 (muat ulang), langkah 20 (pemulihan draft).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8 (`[Cancel]` lalu `[Discard]`), langkah 9 dan 18 (muat ulang), langkah 21 (pemulihan draft). Langkah 15 (Tunggu aksi selesai: permintaan Save mendapat respons) memisahkan klik `[Save]` langkah 14 dari permintaan Save ulang langkah 16 yang dikirim langsung ke server (bagian 8b butir 8, K-16).
 - Sesi edit TC-GS-IMPORT-677 ditutup di langkah 8 sebelum muat ulang (S-08, S-09): nilai 121 karakter yang tidak tersimpan dibuang lewat dialog Discard Changes sehingga muat ulang tidak berjalan dengan sesi edit dirty dan tidak membutuhkan penanganan dialog `beforeunload`.
 - Langkah 7 (absence toast sukses) memakai border `danger` dan pesan error langkah 5 dan 6 sebagai anchor.
 - Temuan untuk QA:

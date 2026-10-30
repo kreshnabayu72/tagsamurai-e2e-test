@@ -54,21 +54,23 @@ coverage:
 16. Buka halaman 2
 17. Catat urutan Brand Name menurut `Row #` pada halaman 2
 18. Klik `[Import (111)]`
-19. Tunggu commit selesai: muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-20. Baca urutan pembuatan 111 record Brand hasil commit melalui kueri fixture (daftar nama Brand terurut menurut waktu pembuatan menaik)
-21. Verifikasi urutan pembuatan 111 record identik dengan urutan `Row #` yang dicatat pada langkah 15 dan langkah 17
-22. Verifikasi record `Brand Urut 106` sampai `Brand Urut 110` (hasil Append) dibuat setelah `Brand Urut 105`
-23. Verifikasi record `Brand Urut Salinan` dibuat pada urutan yang sama dengan posisi `Row #` barisnya yang dicatat pada langkah 15 (Row #4)
-24. Verifikasi batas batch pertama 100 baris dan kedua 11 baris tidak mengubah urutan pembuatan
+19. Tunggu aksi selesai (permintaan mendapat respons)
+20. Tunggu commit selesai: muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+21. Baca urutan pembuatan 111 record Brand hasil commit melalui kueri fixture (daftar nama Brand terurut menurut waktu pembuatan menaik)
+22. Verifikasi urutan pembuatan 111 record identik dengan urutan `Row #` yang dicatat pada langkah 15 dan langkah 17
+23. Verifikasi record `Brand Urut 106` sampai `Brand Urut 110` (hasil Append) dibuat setelah `Brand Urut 105`
+24. Verifikasi record `Brand Urut Salinan` dibuat pada urutan yang sama dengan posisi `Row #` barisnya yang dicatat pada langkah 15 (Row #4)
+25. Verifikasi batas batch pertama 100 baris dan kedua 11 baris tidak mengubah urutan pembuatan
 
 ## Notes
 
 - Mode: FE+BE dengan pemantau jaringan. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: volume data (e), seed dua draft besar (250 dan 111 baris) lewat skrip fixture; volume menjadi bagian objek uji karena batas batch 100 baris diuji pada urutan pemrosesan.
-- Spec 24 langkah sehingga tidak melewati sekitar 35 langkah.
+- Spec 25 langkah sehingga tidak melewati sekitar 35 langkah.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok: TC-364 lebih dulu, TC-368 kemudian; masing-masing mereset Client E sendiri.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 12), pemasangan pemantau (langkah 3), pembukaan halaman dan Sub-Tab, pengaturan Rows per page (langkah 14), pencatatan urutan (langkah 15, 17), polling job (langkah 8, 19), dan pembacaan kueri fixture (langkah 20).
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 12), pemasangan pemantau (langkah 3), pembukaan halaman dan Sub-Tab, pengaturan Rows per page (langkah 14), pencatatan urutan (langkah 15, 17), "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (111)]` dan sebelum polling (langkah 19; K-16 dan bagian 8b butir 8), polling job (langkah 8, 20), dan pembacaan kueri fixture (langkah 21).
 - Langkah 5 sampai 7 diasersi segera setelah klik ganda dan sebelum commit selesai (butir 5 dan 11 bagian 8b); langkah 7 (tidak ada dialog) didahului langkah 6 (tombol Disabled) sebagai anchor positif yang terhubung ke pemicu.
 - Temuan untuk QA:
+  - Penanda selesai untuk klik `[Import (111)]` (langkah 19) tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.
   - TC-GS-IMPORT-364 menyebut klik dua kali beruntun dalam waktu kurang dari 100 milidetik tanpa menyebut cara mengaturnya pada automation; spec mengandalkan kemampuan klik berurutan cepat oleh tim FE.
   - TC-GS-IMPORT-368 Expected c menyebut posisi `Brand Urut Salinan` sebagai "Row #4" mengacu pada catatan Langkah 2; spec memakai catatan langkah 15.
   - Post Condition TC-GS-IMPORT-364 dan TC-GS-IMPORT-368 (draft dihapus, N record Brand tersimpan) tidak punya langkah observasi tersendiri selain Expected dan tidak diasersi tambahan (S-01); Post Condition b TC-GS-IMPORT-364 dikonfirmasi oleh Expected b.

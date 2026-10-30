@@ -65,37 +65,40 @@ Untuk setiap baris No 1 sampai 5 tabel "Karakter terlarang" (langkah 1 sampai 10
 11. Buka Sub-Tab Division
 12. Klik `⋯` pada baris #2, pilih `Edit`
 13. Ganti isi sel Code baris #2 dengan `FIN@1` (diketik biasa)
-14. Verifikasi sel Code berborder `danger` dengan pesan "Code contains invalid characters" saat itu juga
-15. Klik `[Save]`
-16. Verifikasi `[Save]` diblokir: sel Code berborder `danger` dengan pesan "Code contains invalid characters"
-17. Verifikasi Error Summary Callout memuat baris pesan "Code contains invalid characters" dengan badge "1 row"
-18. Verifikasi footer tetap `[Cancel]` dan `[Save]`
-19. Klik `[Cancel]`
-20. Klik `[Discard]` pada dialog Discard Changes
+14. Verifikasi sel Code baris #2 menampilkan `FIN@1`
+15. Verifikasi sel Code berborder `danger` saat itu juga
+16. Verifikasi sel Code menampilkan pesan "Code contains invalid characters" saat itu juga
+17. Klik `[Save]`
+18. Verifikasi `[Save]` diblokir: sel Code berborder `danger` dengan pesan "Code contains invalid characters"
+19. Verifikasi Error Summary Callout memuat baris pesan "Code contains invalid characters" dengan badge "1 row"
+20. Verifikasi footer tetap `[Cancel]` dan `[Save]`
+21. Klik `[Cancel]`
+22. Klik `[Discard]` pada dialog Discard Changes
 
 ### TC-GS-IMPORT-675: Format Email, Overtime Hours, Emergency Phone
 
-Untuk setiap baris tabel "Format tidak valid" (langkah 21 sampai 29 diulang tiga kali):
+Untuk setiap baris tabel "Format tidak valid" (langkah 23 sampai 31 diulang tiga kali):
 
-21. Buka Sub-Tab User Login
-22. Klik `⋯` pada baris #1, pilih `Edit`
-23. Ganti isi sel field sesuai kolom Field dengan Nilai
-24. Klik `[Save]`
-25. Verifikasi `[Save]` diblokir tanpa toast sukses
-26. Verifikasi sel field berborder `danger` dengan Pesan sel
-27. Verifikasi Error Summary Callout memuat Baris Callout dengan badge "1 row"
-28. Verifikasi footer tetap `[Cancel]` dan `[Save]`
-29. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog Discard Changes
+23. Buka Sub-Tab User Login
+24. Klik `⋯` pada baris #1, pilih `Edit`
+25. Ganti isi sel field sesuai kolom Field dengan Nilai
+26. Klik `[Save]`
+27. Verifikasi `[Save]` diblokir tanpa toast sukses
+28. Verifikasi sel field berborder `danger` dengan Pesan sel
+29. Verifikasi Error Summary Callout memuat Baris Callout dengan badge "1 row"
+30. Verifikasi footer tetap `[Cancel]` dan `[Save]`
+31. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog Discard Changes
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fungsional (injeksi DOM hanya cara memasukkan nilai ke input, bukan tampering ke server).
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Langkah 1 sampai 10 diulang lima kali, langkah 21 sampai 29 diulang tiga kali (parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat). Dengan ekspansi spec berisi sekitar 87 langkah. Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (Save diblokir), tiap blok membuka dan menutup sesi sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Langkah penghubung (tanpa `Verifikasi`): `[Cancel]` lalu `[Discard]` (langkah 9, 10, 19, 20, 29) membuang perubahan karena sesi berisi perubahan sehingga dialog Discard Changes pasti tampil.
+- Langkah 1 sampai 10 diulang lima kali, langkah 23 sampai 31 diulang tiga kali (parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat). Dengan ekspansi spec berisi 89 langkah (10 × 5 + 12 + 9 × 3). Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (Save diblokir), tiap blok membuka dan menutup sesi sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung (tanpa `Verifikasi`): `[Cancel]` lalu `[Discard]` (langkah 9, 10, 21, 22, 31) membuang perubahan karena sesi berisi perubahan sehingga dialog Discard Changes pasti tampil.
 - Pembagian TC lintas spec: TC-GS-IMPORT-212 sampai 214, 671, 673, 674, dan 842 (Save diblokir) ada di spec 094.
 - Temuan untuk QA:
   - TC-GS-IMPORT-672 Expected a membedakan varian 1 sampai 5 (hanya nilai tampil) dan varian 6 (pesan live); spec mengikuti pembagian itu dan tidak mengasersi pesan sebelum `[Save]` pada varian 1 sampai 5.
+  - TC-GS-IMPORT-672 Expected a: klausa "menampilkan nilai varian" tidak tegas apakah berlaku juga untuk varian 6; spec menafsirkannya berlaku untuk semua varian dan mengasersi nilai `FIN@1` pada langkah 14 sebelum border dan pesan live. Tafsir ini menunggu konfirmasi QA; TC-672 Expected a perlu dipecah per varian (1 sampai 5: nilai; 6: nilai dan pesan live).
   - TC-GS-IMPORT-672 Expected b menyebut baris Callout "yang sama" dengan pesan sel, sedangkan pada TC-GS-IMPORT-671 baris Callout memakai awalan nama field; spec menulis pesan persis seperti TC.
   - Injeksi value langsung ke DOM bergantung pada kemampuan runner; disediakan tim FE.
   - Post Condition kedua TC kosong; tidak ada yang diasersi.

@@ -58,31 +58,33 @@ coverage:
 20. Pilih berkas `division-6.csv` di file picker
 21. Ubah dropdown Code menjadi "No Column"
 22. Perhatikan modal
-23. Verifikasi tidak ada Error Banner untuk Code
-24. Klik `[Confirm Mapping]`
-25. Verifikasi modal tertutup
-26. Perhatikan Staging Table
-27. Verifikasi Staging Table menampilkan 6 baris berstatus `pending`
-28. Verifikasi sel Code tiap baris berisi `—`
+23. Verifikasi dropdown Code menampilkan "No Column"
+24. Verifikasi tidak ada Error Banner untuk Code
+25. Klik `[Confirm Mapping]`
+26. Verifikasi modal tertutup
+27. Perhatikan Staging Table
+28. Verifikasi Staging Table menampilkan 6 baris berstatus `pending`
+29. Verifikasi sel Code tiap baris berisi `—`
 
 ### TC-GS-IMPORT-59: Kolom berkas yang tidak dipetakan diabaikan
 
-29. Klik Sub-Tab Brand
-30. Klik `[Upload File]`
-31. Pilih berkas `brand-extra-col.csv` di file picker
-32. Klik `[Confirm Mapping]` tanpa memetakan kolom `Catatan`
-33. Verifikasi modal tertutup
-34. Perhatikan Staging Table
-35. Verifikasi Staging Table menampilkan 3 baris Nikon, Ricoh, Xerox dengan kolom `Brand Name`
-36. Verifikasi Staging Table tanpa kolom `Catatan`
+30. Klik Sub-Tab Brand
+31. Klik `[Upload File]`
+32. Pilih berkas `brand-extra-col.csv` di file picker
+33. Klik `[Confirm Mapping]` tanpa memetakan kolom `Catatan`
+34. Verifikasi modal tertutup
+35. Perhatikan Staging Table
+36. Verifikasi Staging Table menampilkan 3 baris Nikon, Ricoh, Xerox dengan kolom `Brand Name`
+37. Verifikasi Staging Table tanpa kolom `Catatan`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
-- Spec berisi 36 langkah, hanya sedikit di atas 35 langkah. Alasan: tiga TC (56, 57, 59) berstruktur sama dalam satu kelas (guard pra-Confirm Mapping) dan memakai Sub-Tab berbeda sehingga tidak saling memengaruhi; satu TC yang gagal tidak membuat TC lain kehilangan makna.
+- Spec berisi 37 langkah, hanya sedikit di atas 35 langkah. Alasan: tiga TC (56, 57, 59) berstruktur sama dalam satu kelas (guard pra-Confirm Mapping) dan memakai Sub-Tab berbeda sehingga tidak saling memengaruhi; satu TC yang gagal tidak membuat TC lain kehilangan makna.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 56 (diblokir, tidak membuat data), lalu 57 dan 59 (membuat draft pada Sub-Tab berbeda sehingga tidak saling memengaruhi); sesuai prinsip validasi diblokir sebelum aksi berhasil.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 18, 29 (pindah Sub-Tab), langkah 5, 9, 15, 22, 26, 34 (mengamati sesuai Langkah Uji TC), langkah 13 dan 14 (tutup modal dengan `[Cancel]` lalu `[Leave]`, sesuai Langkah Uji TC-GS-IMPORT-56).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 18, 29 (pindah Sub-Tab), langkah 5, 9, 15, 22, 27, 35 (mengamati sesuai Langkah Uji TC), langkah 13 dan 14 (tutup modal dengan `[Cancel]` lalu `[Leave]`, sesuai Langkah Uji TC-GS-IMPORT-56).
+- Langkah 23 (`Verifikasi` dropdown Code menampilkan "No Column") adalah asersi tambahan di luar Expected TC: anchor positif pada modal yang sama untuk absence "tidak ada Error Banner untuk Code" di langkah 24 (8b butir 2, S-03).
 - Temuan untuk QA:
   - Skrip reset draft Client C tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE (S-13). Berkas fixture literal tanpa suffix `{runId}`; keunikan dijaga lewat reset draft.
   - Post Condition TC-GS-IMPORT-57 dan 59 tidak ada; draft yang tercipta dibuang oleh hook `after`.

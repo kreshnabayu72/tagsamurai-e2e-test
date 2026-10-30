@@ -20,7 +20,7 @@ coverage:
 
 - Mode: FE+BE (backend nyata; reader dan koneksi Bluetooth tersimulasi).
 - Akun aktor: Total Control Client A Sari Dewi `totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`. Tidak ada ganti akun.
-- Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok, S-12): stok resmi Admin Console Client A: RFID Object TAG `E2801160600002054D8A1001` (DD-S4) dan `E2801160600002054D8A1003` (DD-S6) Available, `E2801160600002054D8A1002` (DD-S5) Damaged/Missing; GPS DD-S1 s.d. DD-S3 (bagian precondition TC, tidak dipakai langkah).
+- Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok, S-12): stok resmi Admin Console Client A: RFID Object TAG `E2801160600002054D8A1001` (DD-S4) dan `E2801160600002054D8A1003` (DD-S6) Available, `E2801160600002054D8A1002` (DD-S5) Damaged/Missing; DD-S5 dan DD-S6 dipakai sebagai precondition TC, tidak diasersi; GPS DD-S1 s.d. DD-S3 (bagian precondition TC, tidak dipakai langkah).
 - Tabel "Teknologi sesi" untuk TC-GS-TAG-178 (pilihan overlay `Select TAG Type` dan pesan saat reader belum tersambung):
 
   | Teknologi | Pilihan overlay | Pesan |

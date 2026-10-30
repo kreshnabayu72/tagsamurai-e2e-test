@@ -54,7 +54,7 @@ coverage:
 12. Verifikasi total log menjadi `M0 + 1`
 13. Verifikasi baris pertama (Date terbaru): TAG Type `RFID`, Found `1`, Not Found `3`, Not Found Action `Marked as Damaged/Missing`
 14. Tutup modal lewat `✕`, buka Global Settings > Activity Log, tab User Action, filter Action `Audit TAG`
-15. Verifikasi total entri menjadi `A0 + 1`
+15. Verifikasi total entri bertambah tepat 1 menjadi `A0 + 1` (satu entri per operasi, bagian 8.1 PRD)
 16. Verifikasi entri teratas (Date terbaru): Name `RFID`, Field `Status`, Old Value `—`, New Value `Verified 1, Not Scanned 3, Mark all as Damaged/Missing: Yes`
 17. Untuk setiap baris tabel "Tag Update TAG Condition TC-265", lakukan langkah 18 sampai 21
 18. Filter Action `Update TAG Condition`, ketik Search Code tag, tekan Enter

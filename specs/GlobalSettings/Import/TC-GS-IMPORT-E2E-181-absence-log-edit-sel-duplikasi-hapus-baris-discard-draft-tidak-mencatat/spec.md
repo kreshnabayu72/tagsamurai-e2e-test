@@ -32,82 +32,93 @@ coverage:
 
 1. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) lewat skrip fixture
 2. Buka Changelog Import (icon `[Changelog]` di header halaman) dan catat angka total pada teks Pagination sebagai baseline Changelog
-3. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total pada teks Pagination sebagai baseline System Log
-4. Buka Activity Log (Global Settings > Activity Log) pada tab User Action dan catat angka total pada teks Pagination sebagai baseline Activity Log
-5. Buka halaman Import > Brand
-6. Buka row action Edit pada baris #1
-7. Ubah Brand Name menjadi `Acme Corp 2`
-8. Klik `[Save]`
-9. Verifikasi sel Brand Name baris #1 menampilkan `Acme Corp 2`
-10. Verifikasi toast sukses "Success, row has been updated." tampil
-11. Buka Changelog Import dan baca angka total pada teks Pagination
-12. Verifikasi total Changelog Import sama dengan baseline langkah 2
-13. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total pada teks Pagination
-14. Verifikasi total System Log sama dengan baseline langkah 3
-15. Buka Activity Log pada tab User Action dan baca angka total pada teks Pagination
-16. Verifikasi total Activity Log sama dengan baseline langkah 4
+3. Tutup modal Changelog Import
+4. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total pada teks Pagination sebagai baseline System Log
+5. Buka Activity Log (Global Settings > Activity Log) pada tab User Action dan catat angka total pada teks Pagination sebagai baseline Activity Log
+6. Buka halaman Import > Brand
+7. Buka row action Edit pada baris #1
+8. Ubah Brand Name menjadi `Acme Corp 2`
+9. Klik `[Save]`
+10. Verifikasi sel Brand Name baris #1 menampilkan `Acme Corp 2`
+11. Verifikasi toast sukses "Success, row has been updated." tampil
+12. Buka Changelog Import dan baca angka total pada teks Pagination
+13. Verifikasi total Changelog Import sama dengan baseline langkah 2
+14. Tutup modal Changelog Import
+15. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total pada teks Pagination
+16. Verifikasi total System Log sama dengan baseline langkah 4
+17. Buka Activity Log pada tab User Action dan baca angka total pada teks Pagination
+18. Verifikasi total Activity Log sama dengan baseline langkah 5
 
 ### TC-GS-IMPORT-429: Duplikasi baris
 
-17. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) lewat skrip fixture
-18. Buka Changelog Import dan catat angka total pada teks Pagination sebagai baseline Changelog
-19. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total sebagai baseline System Log
-20. Buka Activity Log pada tab User Action dan catat angka total sebagai baseline Activity Log
-21. Buka halaman Import > Brand
-22. Buka row action Duplicate pada baris #2
-23. Ubah Brand Name baris salinan menjadi `Lenovo 2`
-24. Klik `[Save]`
-25. Verifikasi toast sukses "Success, row has been added." tampil
-26. Verifikasi kartu Total Rows menampilkan 13
-27. Buka Changelog Import dan baca angka total pada teks Pagination
-28. Verifikasi total Changelog Import sama dengan baseline langkah 18
-29. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
-30. Verifikasi total System Log sama dengan baseline langkah 19
-31. Buka Activity Log pada tab User Action dan baca angka total
-32. Verifikasi total Activity Log sama dengan baseline langkah 20
+19. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) lewat skrip fixture
+20. Buka halaman Import > Brand
+21. Buka Changelog Import dan catat angka total pada teks Pagination sebagai baseline Changelog
+22. Tutup modal Changelog Import
+23. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total sebagai baseline System Log
+24. Buka Activity Log pada tab User Action dan catat angka total sebagai baseline Activity Log
+25. Buka halaman Import > Brand
+26. Buka row action Duplicate pada baris #2
+27. Ubah Brand Name baris salinan menjadi `Lenovo 2`
+28. Klik `[Save]`
+29. Verifikasi toast sukses "Success, row has been added." tampil
+30. Verifikasi kartu Total Rows menampilkan 13
+31. Buka Changelog Import dan baca angka total pada teks Pagination
+32. Verifikasi total Changelog Import sama dengan baseline langkah 21
+33. Tutup modal Changelog Import
+34. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
+35. Verifikasi total System Log sama dengan baseline langkah 23
+36. Buka Activity Log pada tab User Action dan baca angka total
+37. Verifikasi total Activity Log sama dengan baseline langkah 24
 
 ### TC-GS-IMPORT-430: Penghapusan baris
 
-33. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) lewat skrip fixture
-34. Buka Changelog Import dan catat angka total pada teks Pagination sebagai baseline Changelog
-35. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total sebagai baseline System Log
-36. Buka Activity Log pada tab User Action dan catat angka total sebagai baseline Activity Log
-37. Buka halaman Import > Brand
-38. Buka row action Remove pada baris #3
-39. Klik `[Delete]` pada dialog Delete Row
-40. Verifikasi toast sukses "Success, row has been deleted." tampil
-41. Verifikasi kartu Total Rows menampilkan 11
-42. Buka Changelog Import dan baca angka total pada teks Pagination
-43. Verifikasi total Changelog Import sama dengan baseline langkah 34
-44. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
-45. Verifikasi total System Log sama dengan baseline langkah 35
-46. Buka Activity Log pada tab User Action dan baca angka total
-47. Verifikasi total Activity Log sama dengan baseline langkah 36
+38. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) lewat skrip fixture
+39. Buka halaman Import > Brand
+40. Buka Changelog Import dan catat angka total pada teks Pagination sebagai baseline Changelog
+41. Tutup modal Changelog Import
+42. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total sebagai baseline System Log
+43. Buka Activity Log pada tab User Action dan catat angka total sebagai baseline Activity Log
+44. Buka halaman Import > Brand
+45. Buka row action Remove pada baris #3
+46. Klik `[Delete]` pada dialog Delete Row
+47. Verifikasi toast sukses "Success, row has been deleted." tampil
+48. Verifikasi kartu Total Rows menampilkan 11
+49. Buka Changelog Import dan baca angka total pada teks Pagination
+50. Verifikasi total Changelog Import sama dengan baseline langkah 40
+51. Tutup modal Changelog Import
+52. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
+53. Verifikasi total System Log sama dengan baseline langkah 42
+54. Buka Activity Log pada tab User Action dan baca angka total
+55. Verifikasi total Activity Log sama dengan baseline langkah 43
 
 ### TC-GS-IMPORT-431: Discard Draft
 
-48. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-49. Buka Changelog Import dan catat angka total pada teks Pagination sebagai baseline Changelog
-50. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total sebagai baseline System Log
-51. Buka Activity Log pada tab User Action dan catat angka total sebagai baseline Activity Log
-52. Buka halaman Import > Brand
-53. Klik `[Discard]` pada Unsaved Banner
-54. Klik `[Discard Draft]` pada dialog Discard Draft
-55. Verifikasi toast sukses "Success, draft has been discarded." tampil
-56. Verifikasi Dropzone menggantikan Staging Table
-57. Buka Changelog Import dan baca angka total pada teks Pagination
-58. Verifikasi total Changelog Import sama dengan baseline langkah 49
-59. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
-60. Verifikasi total System Log sama dengan baseline langkah 50
-61. Buka Activity Log pada tab User Action dan baca angka total
-62. Verifikasi total Activity Log sama dengan baseline langkah 51
+56. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
+57. Buka halaman Import > Brand
+58. Buka Changelog Import dan catat angka total pada teks Pagination sebagai baseline Changelog
+59. Tutup modal Changelog Import
+60. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total sebagai baseline System Log
+61. Buka Activity Log pada tab User Action dan catat angka total sebagai baseline Activity Log
+62. Buka halaman Import > Brand
+63. Klik `[Discard]` pada Unsaved Banner
+64. Klik `[Discard Draft]` pada dialog Discard Draft
+65. Verifikasi toast sukses "Success, draft has been discarded." tampil
+66. Verifikasi Dropzone menggantikan Staging Table
+67. Buka Changelog Import dan baca angka total pada teks Pagination
+68. Verifikasi total Changelog Import sama dengan baseline langkah 58
+69. Tutup modal Changelog Import
+70. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
+71. Verifikasi total System Log sama dengan baseline langkah 60
+72. Buka Activity Log pada tab User Action dan baca angka total
+73. Verifikasi total Activity Log sama dengan baseline langkah 61
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: asersi absence (g); setiap TC memuat aksi nyata (Edit, Duplicate, Remove, Discard Draft) dengan baseline tiga surface sendiri, sehingga memenuhi S-05. Hook umur draft D-76 hanya pemicu (P-5a).
-- Alasan melewati sekitar 35 langkah (62 langkah nominal): empat blok homogen satu kelas (absence log) yang berdiri sendiri dengan pemulihan draft di awal tiap blok. Sebagian besar langkah adalah blok baca-log berpola (buka surface, catat atau baca total, `Verifikasi` sama dengan baseline; enam langkah baca per TC) yang tidak dihitung sebagai smell (bagian 3 konvensi). Urutan TC-428, 429, 430, 431: Discard Draft paling akhir karena menghapus draft.
+- Alasan melewati sekitar 35 langkah (73 langkah nominal): empat blok homogen satu kelas (absence log) yang berdiri sendiri dengan pemulihan draft di awal tiap blok. Sebagian besar langkah adalah blok baca-log berpola (buka surface, catat atau baca total, `Verifikasi` sama dengan baseline; enam langkah baca per TC) yang tidak dihitung sebagai smell (bagian 3 konvensi). Urutan TC-428, 429, 430, 431: Discard Draft paling akhir karena menghapus draft.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): pemulihan draft (langkah 1, 17, 33, 48), pembukaan surface dan pencatatan baseline (langkah 2 sampai 4, 18 sampai 20, 34 sampai 36, 49 sampai 51), pembacaan total (langkah 11, 13, 15 dan padanannya), serta pembukaan Import > Brand dan row action. Asersi absence (kesamaan total) didahului toast sukses atas aksi (langkah 10, 25, 40, 55) sebagai anchor positif yang terhubung ke pemicu (butir 2 bagian 8b).
+- Langkah penghubung (tanpa `Verifikasi`): pemulihan draft (langkah 1, 19, 38, 56), pembukaan surface dan pencatatan baseline (langkah 2 sampai 5, 21 sampai 24, 40 sampai 43, 58 sampai 61), penutupan modal Changelog Import sebelum surface berikutnya (langkah 3, 14, 22, 33, 41, 51, 59, 69), pembukaan halaman Import > Brand sebelum Changelog Import yang datang sesudah Activity Log (langkah 20, 39, 57), pembacaan total (langkah 12, 15, 17 dan padanannya), serta pembukaan Import > Brand dan row action. Asersi absence (kesamaan total) didahului toast sukses atas aksi (langkah 11, 30, 47, 65) sebagai anchor positif yang terhubung ke pemicu (butir 2 bagian 8b).
 - Temuan untuk QA:
   - TC-GS-IMPORT-428 sampai 431 mengasersi absence pada tiga surface tanpa menyebut cara memuat ulang total Pagination (muat ulang halaman atau buka ulang modal); spec membuka ulang tiap surface.
   - TC-GS-IMPORT-428 sampai 431 tidak menyebut apakah baseline System Log dan Activity Log dapat berubah oleh aksi lain di run yang sama; asersi kesamaan total hanya lolos bila tidak ada aksi lain pada akun Sari Dewi di antara baseline dan pembacaan akhir (suite serial).

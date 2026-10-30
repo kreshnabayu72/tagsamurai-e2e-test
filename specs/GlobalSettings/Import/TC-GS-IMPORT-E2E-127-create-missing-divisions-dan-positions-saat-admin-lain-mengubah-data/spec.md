@@ -41,105 +41,112 @@ coverage:
 2. Pilih berkas `user-login-store-supervisor-1.csv` di file picker
 3. Biarkan seluruh dropdown File Column pada nilai auto-match
 4. Klik [Confirm Mapping]
-5. Admin kedua Client C (sesi API): buat Position `Store Supervisor` hingga tersimpan
-6. Total Control Client C (halaman Import belum dimuat ulang): klik `[Create Missing Positions]` pada baris pesan "Position not found" di Error Summary Callout
-7. Verifikasi toast error "Error, failed to create position."
-8. Verifikasi UI membaca ulang Staging Table dan baris #1 berstatus `pending` tanpa muat ulang manual
-9. Verifikasi Error Summary Callout tidak tampil
-10. Buka Global Settings > User > Position
-11. Verifikasi daftar Position memuat tepat satu `Store Supervisor` (6 baris pada tabel)
+5. Tunggu aksi selesai (Modal Column Mapping tertutup)
+6. Admin kedua Client C (sesi API): buat Position `Store Supervisor` hingga tersimpan
+7. Total Control Client C (halaman Import belum dimuat ulang): klik `[Create Missing Positions]` pada baris pesan "Position not found" di Error Summary Callout
+8. Verifikasi toast error "Error, failed to create position."
+9. Verifikasi UI membaca ulang Staging Table dan baris #1 berstatus `pending` tanpa muat ulang manual
+10. Verifikasi Error Summary Callout tidak tampil
+11. Buka Global Settings > User > Position
+12. Verifikasi daftar Position memuat tepat satu `Store Supervisor` (6 baris pada tabel)
 
 ### TC-GS-IMPORT-337: Nama dibuat pihak lain tepat sebelum klik ditolak, baris tetap pulih
 
-12. Hapus Position `Store Supervisor` lewat API dan reset draft Tab User Login Client C ke tanpa draft
-13. Buka Global Settings > User > Division
-14. Klik icon `[Changelog]`
-15. Klik icon Filter
-16. Pilih Action `Create` pada dropdown Action
-17. Klik `[Apply]`
-18. Catat angka total pada teks Pagination (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state)
-19. Buka Import > User Login
-20. Klik [Upload File] di toolbar
-21. Pilih berkas `user-login-logistik-4.csv` di file picker
-22. Biarkan seluruh dropdown File Column pada nilai auto-match
-23. Klik [Confirm Mapping]
-24. Admin kedua Client C (sesi API): buat Division `Logistik` hingga tersimpan
-25. Total Control Client C (halaman Import belum dimuat ulang): klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
-26. Verifikasi toast error "Error, failed to create division."
-27. Verifikasi UI membaca ulang Staging Table dan keempat baris berstatus `pending` tanpa muat ulang manual
-28. Verifikasi Error Summary Callout tidak tampil
-29. Buka Global Settings > User > Division
-30. Klik icon `[Changelog]`
-31. Klik icon Filter
-32. Pilih Action `Create` pada dropdown Action
-33. Klik `[Apply]`
-34. Baca angka total pada teks Pagination (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state)
-35. Verifikasi total pada Pagination Changelog Division dengan Filter Action `Create` bertambah tepat 1 dibanding langkah 18
-36. Verifikasi entri teratas Changelog Division memuat Division Name `Logistik` dan Modified By `Oki S`
+13. Hapus Position `Store Supervisor` lewat API dan reset draft Tab User Login Client C ke tanpa draft
+14. Buka Global Settings > User > Division
+15. Klik icon `[Changelog]`
+16. Klik icon Filter
+17. Pilih Action `Create` pada dropdown Action
+18. Klik `[Apply]`
+19. Catat angka total pada teks Pagination (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state)
+20. Tutup modal Changelog Division
+21. Buka Import > User Login
+22. Klik [Upload File] di toolbar
+23. Pilih berkas `user-login-logistik-4.csv` di file picker
+24. Biarkan seluruh dropdown File Column pada nilai auto-match
+25. Klik [Confirm Mapping]
+26. Tunggu aksi selesai (Modal Column Mapping tertutup)
+27. Admin kedua Client C (sesi API): buat Division `Logistik` hingga tersimpan
+28. Total Control Client C (halaman Import belum dimuat ulang): klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
+29. Verifikasi toast error "Error, failed to create division."
+30. Verifikasi UI membaca ulang Staging Table dan keempat baris berstatus `pending` tanpa muat ulang manual
+31. Verifikasi Error Summary Callout tidak tampil
+32. Buka Global Settings > User > Division
+33. Klik icon `[Changelog]`
+34. Klik icon Filter
+35. Pilih Action `Create` pada dropdown Action
+36. Klik `[Apply]`
+37. Baca angka total pada teks Pagination (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state)
+38. Verifikasi total pada Pagination Changelog Division dengan Filter Action `Create` bertambah tepat 1 dibanding langkah 19
+39. Verifikasi entri teratas Changelog Division memuat Division Name `Logistik` dan Modified By `Oki S`
+40. Tutup modal Changelog Division
 
 ### TC-GS-IMPORT-735: Position dibuat pihak lain membuat baris pulih ke pending pada pembacaan berikutnya
 
-37. Hapus Division `Logistik` lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-38. Klik [Upload File] di toolbar dan pilih berkas `user-login-store-supervisor-1.csv`
-39. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
-40. Verifikasi baris #1 berstatus `error`
-41. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "1 row"
-42. Admin kedua Client C (sesi API): buat Position `Store Supervisor` hingga tersimpan
-43. Total Control Client C: muat ulang halaman Import > User Login
-44. Verifikasi baris #1 berstatus `pending`
-45. Verifikasi Staging Metric Cards: Total Rows 1, Ready to Import 1, Errors 0
-46. Verifikasi Error Summary Callout tidak tampil
-47. Buka Global Settings > User > Position
-48. Verifikasi daftar Position memuat tepat satu `Store Supervisor` (6 baris pada tabel)
+41. Hapus Division `Logistik` lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
+42. Klik [Upload File] di toolbar dan pilih berkas `user-login-store-supervisor-1.csv`
+43. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
+44. Verifikasi baris #1 berstatus `error`
+45. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "1 row"
+46. Admin kedua Client C (sesi API): buat Position `Store Supervisor` hingga tersimpan
+47. Total Control Client C: muat ulang halaman Import > User Login
+48. Verifikasi baris #1 berstatus `pending`
+49. Verifikasi Staging Metric Cards: Total Rows 1, Ready to Import 1, Errors 0
+50. Verifikasi Error Summary Callout tidak tampil
+51. Buka Global Settings > User > Position
+52. Verifikasi daftar Position memuat tepat satu `Store Supervisor` (6 baris pada tabel)
 
 ### TC-GS-IMPORT-855: Create Missing Divisions per-baris pada baris yang dihapus admin lain menjadi no-op
 
-49. Hapus Position `Store Supervisor` lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-50. Unggah berkas `user-login-logistik-2.csv`, klik [Confirm Mapping], dan buka menu `⋯` baris #1 (jangan muat ulang halaman setelahnya)
-51. Admin kedua Client C (sesi API): hapus baris #1 hingga tersimpan
-52. Total Control Client C: pilih [Create Missing Divisions] pada menu baris #1
-53. Verifikasi tidak ada dialog tampil
-54. Verifikasi tidak ada toast tampil
-55. Verifikasi UI di-refresh dan draft menampilkan 1 baris `error` dengan Division `Logistik`
-56. Buka Global Settings > User > Division
-57. Verifikasi daftar Division memuat `Engineering` sebagai pembanding
-58. Verifikasi daftar Division tidak memuat `Logistik`
+53. Hapus Position `Store Supervisor` lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
+54. Unggah berkas `user-login-logistik-2.csv`, klik [Confirm Mapping], dan buka menu `⋯` baris #1 (jangan muat ulang halaman setelahnya)
+55. Tunggu aksi selesai (Modal Column Mapping tertutup)
+56. Admin kedua Client C (sesi API): hapus baris #1 hingga tersimpan
+57. Total Control Client C: pilih [Create Missing Divisions] pada menu baris #1
+58. Verifikasi tidak ada dialog tampil
+59. Verifikasi tidak ada toast tampil
+60. Verifikasi UI di-refresh dan draft menampilkan 1 baris `error` dengan Division `Logistik`
+61. Buka Global Settings > User > Division
+62. Verifikasi daftar Division memuat `Engineering` sebagai pembanding
+63. Verifikasi daftar Division tidak memuat `Logistik`
 
 ### TC-GS-IMPORT-858: Bulk Create Missing dari halaman basi setelah baris kategori dihapus admin lain menjadi no-op
 
-59. Reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-60. Klik [Upload File] dan pilih berkas `user-login-logistik-plus-5.csv`
-61. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
-62. Admin kedua Client C (sesi API): hapus baris #1 sampai #4 (keempatnya Division `Logistik`) hingga tersimpan
-63. Total Control Client C (halaman belum dimuat ulang): klik [Create Missing Divisions] pada kategori "Division not found" di Error Summary Callout
-64. Verifikasi tidak ada dialog tampil
-65. Verifikasi tidak ada toast tampil
-66. Verifikasi Staging Table menampilkan 1 baris `pending` (Division `Engineering`)
-67. Verifikasi Error Summary Callout tidak tampil
-68. Buka Global Settings > User > Division
-69. Verifikasi daftar Division memuat `Engineering` sebagai pembanding
-70. Verifikasi daftar Division tidak memuat `Logistik`
+64. Reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
+65. Klik [Upload File] dan pilih berkas `user-login-logistik-plus-5.csv`
+66. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
+67. Tunggu aksi selesai (Modal Column Mapping tertutup)
+68. Admin kedua Client C (sesi API): hapus baris #1 sampai #4 (keempatnya Division `Logistik`) hingga tersimpan
+69. Total Control Client C (halaman belum dimuat ulang): klik [Create Missing Divisions] pada kategori "Division not found" di Error Summary Callout
+70. Verifikasi tidak ada dialog tampil
+71. Verifikasi tidak ada toast tampil
+72. Verifikasi Staging Table menampilkan 1 baris `pending` (Division `Engineering`)
+73. Verifikasi Error Summary Callout tidak tampil
+74. Buka Global Settings > User > Division
+75. Verifikasi daftar Division memuat `Engineering` sebagai pembanding
+76. Verifikasi daftar Division tidak memuat `Logistik`
 
 ### TC-GS-IMPORT-875: Bulk Create Missing dari halaman basi, nama yang baris sumbernya dihapus dilewati
 
-71. Reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-72. Unggah `user-login-logistik-pengadaan-4.csv` dan klik [Confirm Mapping]
-73. Admin kedua Client C (sesi API): hapus baris #1 dan #2 (Division `Logistik`) hingga tersimpan
-74. Total Control Client C (halaman belum dimuat ulang): klik [Create Missing Divisions] pada kategori "Division not found" di Error Summary Callout
-75. Verifikasi toast sukses "Success, division has been created. Some items were skipped."
-76. Verifikasi draft menampilkan 2 baris `pending` (Division `Pengadaan`)
-77. Verifikasi Error Summary Callout tidak tampil
-78. Buka Global Settings > User > Division
-79. Verifikasi daftar Division memuat `Pengadaan`
-80. Verifikasi daftar Division tidak memuat `Logistik`
+77. Reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
+78. Unggah `user-login-logistik-pengadaan-4.csv` dan klik [Confirm Mapping]
+79. Tunggu aksi selesai (Modal Column Mapping tertutup)
+80. Admin kedua Client C (sesi API): hapus baris #1 dan #2 (Division `Logistik`) hingga tersimpan
+81. Total Control Client C (halaman belum dimuat ulang): klik [Create Missing Divisions] pada kategori "Division not found" di Error Summary Callout
+82. Verifikasi toast sukses "Success, division has been created. Some items were skipped."
+83. Verifikasi draft menampilkan 2 baris `pending` (Division `Pengadaan`)
+84. Verifikasi Error Summary Callout tidak tampil
+85. Buka Global Settings > User > Division
+86. Verifikasi daftar Division memuat `Pengadaan`
+87. Verifikasi daftar Division tidak memuat `Logistik`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md` (TC-GS-IMPORT-335, 337, 735, 855, 858, 875).
 - P-2: Admin kedua Client C hanya memicu perubahan state (membuat Position atau Division, menghapus baris draft) lewat sesi API; seluruh asersi di sesi Total Control Client C. TC-GS-IMPORT-337 membaca Changelog Division di sesi Total Control untuk entri yang dibuat Admin kedua.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan TC sumber (335, 337, 735, 855, 858, 875) dipertahankan.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 12, 37, 49, 59, dan 71 (hapus master data buatan Admin kedua dan reset draft sebagai precondition TC berikutnya, Kontrak Fixture R1 dan R2); langkah 13 sampai 19 membuka Division dan Changelog serta mencatat baseline di TC-GS-IMPORT-337; langkah 56, 68, dan 78 membuka daftar Division. Langkah 57 dan 69 adalah `Verifikasi` data pembanding sebagai anchor asersi absence `Logistik` (8b butir 2).
-- Spec berisi 80 langkah, di atas sekitar 35 langkah. Alasan: enam blok berstatus Edge dengan pola sama (unggah, Admin kedua mengubah data lebih dulu, aksi dari halaman basi, verifikasi), tiap blok berdiri sendiri dengan draft dan master data yang di-reset di langkah pembuka, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok baca Changelog (langkah 13 sampai 18 dan 29 sampai 36) adalah blok baca-log berpola dan tidak dihitung ke estimasi.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 13, 41, 53, 64, dan 77 (hapus master data buatan Admin kedua dan reset draft sebagai precondition TC berikutnya, Kontrak Fixture R1 dan R2); langkah 14 sampai 19 membuka Division dan Changelog serta mencatat baseline di TC-GS-IMPORT-337; langkah 20 dan 40 menutup modal Changelog Division sebelum pindah ke Import atau ke blok berikutnya (S-09); langkah 61, 74, dan 85 membuka daftar Division. Langkah 62 dan 75 adalah `Verifikasi` data pembanding sebagai anchor asersi absence `Logistik` (8b butir 2). Langkah 5, 26, 55, 67, 79 (Tunggu aksi selesai: menunggu aksi tanpa `Verifikasi` selesai sebelum Admin kedua mengubah data lewat sesi API; penanda Modal Column Mapping tertutup).
+- Spec berisi 87 langkah, di atas sekitar 35 langkah. Alasan: enam blok berstatus Edge dengan pola sama (unggah, Admin kedua mengubah data lebih dulu, aksi dari halaman basi, verifikasi), tiap blok berdiri sendiri dengan draft dan master data yang di-reset di langkah pembuka, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok baca Changelog (langkah 14 sampai 19 dan 32 sampai 39) adalah blok baca-log berpola dan tidak dihitung ke estimasi.
 - Pembagian TC lintas spec: pola Create Missing per-baris dan bulk tanpa konflik ada di spec 123 dan 124; kegagalan sebagian dan kategori Callout baru di spec 125; konflik kunci sesi di spec 126.
 - Temuan untuk QA:
   - TC-GS-IMPORT-335, 337, dan 735 menulis Admin kedua membuat Position atau Division lewat UI (`[+ Position]` atau `[+ Division]`, isi nama, `[Submit]`); spec memakai sesi API sesuai P-2 karena hasil di sesi itu tidak diasersi.

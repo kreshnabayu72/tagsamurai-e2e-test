@@ -33,21 +33,23 @@ coverage:
 2. Catat jumlah email pada mail-catcher untuk masing-masing dari 8 alamat (`rizky.pratama`, `sinta.maharani`, `doni.kurniawan`, `eka.putri`, `fajar.hidayat`, `gita.savitri`, `hendra.gunawan`, `indah.permata` @example.com) sebagai baseline
 3. Buka Global Settings > Import, pilih Sub-Tab User Login
 4. Klik `[Import (8)]`
-5. Tunggu commit selesai: muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-6. Verifikasi Dropzone tampil
-7. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil
-8. Baca seluruh email pada mail-catcher untuk 8 alamat itu (polling)
-9. Verifikasi jumlah email baru pada mail-catcher bertambah tepat 8 dari baseline langkah 2 (masing-masing alamat bertambah tepat 1)
-10. Verifikasi seluruh email baru memiliki Subject "Activate your TAG Samurai account"
-11. Verifikasi email baru terkirim satu per alamat ke `rizky.pratama@example.com`, `sinta.maharani@example.com`, `doni.kurniawan@example.com`, `eka.putri@example.com`, `fajar.hidayat@example.com`, `gita.savitri@example.com`, `hendra.gunawan@example.com`, dan `indah.permata@example.com`
+5. Tunggu aksi selesai (permintaan mendapat respons)
+6. Tunggu commit selesai: muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+7. Verifikasi Dropzone tampil
+8. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil
+9. Baca seluruh email pada mail-catcher untuk 8 alamat itu (polling)
+10. Verifikasi jumlah email baru pada mail-catcher bertambah tepat 8 dari baseline langkah 2 (masing-masing alamat bertambah tepat 1)
+11. Verifikasi seluruh email baru memiliki Subject "Activate your TAG Samurai account"
+12. Verifikasi email baru terkirim satu per alamat ke `rizky.pratama@example.com`, `sinta.maharani@example.com`, `doni.kurniawan@example.com`, `eka.putri@example.com`, `fajar.hidayat@example.com`, `gita.savitri@example.com`, `hendra.gunawan@example.com`, dan `indah.permata@example.com`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah email aktivasi per baris yang dibaca lewat mail-catcher setelah commit (spec TC tunggal untuk harness mail-catcher).
-- Spec singkat (11 langkah) sehingga tidak melewati sekitar 35 langkah.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1), pencatatan baseline (langkah 2), pembukaan halaman dan Sub-Tab (langkah 3), polling job (langkah 5), dan pembacaan mail-catcher (langkah 8). Langkah 6 dan 7 menjadi anchor positif (commit selesai) sebelum asersi email.
+- Spec singkat (12 langkah) sehingga tidak melewati sekitar 35 langkah.
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1), pencatatan baseline (langkah 2), pembukaan halaman dan Sub-Tab (langkah 3), "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (8)]` dan sebelum polling (langkah 5; K-16 dan bagian 8b butir 8), polling job (langkah 6), dan pembacaan mail-catcher (langkah 9). Langkah 7 dan 8 menjadi anchor positif (commit selesai) sebelum asersi email.
 - Asersi email memakai baseline jumlah per alamat (S-12) dan tidak memakai anchor baris seed.
 - Temuan untuk QA:
+  - Penanda selesai untuk klik `[Import (8)]` (langkah 5) tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.
   - TC-GS-IMPORT-737 memakai mail-catcher yang tidak didefinisikan di Tabel Pre-setup maupun Data Dinamis; kebutuhan lingkungan ini ditulis di Prerequisites dan disediakan tim FE/BE.
   - TC-GS-IMPORT-737 menyatakan "mail-catcher kosong sebelum TC"; spec memakai baseline jumlah email per alamat sebagai pengganti pengosongan agar tidak bergantung pada pengosongan global.
   - Post Condition TC-GS-IMPORT-737 (8 record User Login baru berstatus `Pending Activation` di User > User List > Login User Client E; draft dihapus) tidak punya langkah observasi di TC dan tidak diasersi (S-01); penghapusan 8 User Login dikerjakan hook `after`.

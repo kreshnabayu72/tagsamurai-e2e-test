@@ -18,7 +18,8 @@ Hook `before` suite menyetel flag `guided_tooltip_seen_gs-tag-registry` dan `gui
 
 ## State global yang dipulihkan hook `after`
 
-- Plan tier Client (Free, Growth, Professional, Enterprise) dan status Client (Active, Suspended, Expired).
+- Plan tier Client (Free, Growth, Professional, Enterprise), status Client (Active, Suspended, Expired), dan opsi mandiri (BYO) Client A serta Client Quota.
+- Ukuran halaman tabel registri (Rows per page) dikembalikan ke 10 oleh spec yang mengubahnya (002, 046, 050-053, 056-061, 081, 083, 098 dan lainnya yang menulis langkah Rows per page).
 - General Settings: format tanggal/waktu dan timezone.
 - Admin Console: Communication Endpoint (Domain dan IP Address Info Box GPS), kuota/alokasi TAG Stock, katalog (Brand, Device Name, SKU), Selection Limit dan Master Data Count Limit.
 - Capability role/akun (Manage TAG, Manage asset & TAG) yang dicabut atau diubah untuk spec Role Matrix dan konflik.
@@ -34,7 +35,7 @@ Mekanisme dan endpoint tidak didefinisikan di TC, PRD, maupun LLD yang dibaca ta
 - Simulasi reader RFID/NFC/BLE (scan, putus, timeout, Handheld Reader `Zebra RFD40 (SN-2201)`) untuk spec kelas hardware (D-4, Q-1).
 - Entri manual GPS dan unggah berkas CSV/XLSX/pdf uji.
 - Intercept jaringan (500, timeout) di atas backend nyata.
-- Sesi API admin kedua (Admin B) sebagai pemicu: pair/unpair/dispose/replace/retire dari FAMS, approve/reject di Approvals, ubah kuota, katalog, Communication Endpoint, plan, status Client, capability, format tanggal, dan timezone di Admin Console dan General Settings (P-2, Q-5).
+- Sesi API admin kedua (Admin B) sebagai pemicu: pair/unpair/dispose/replace/retire dari FAMS, approve/reject di Approvals, ubah kuota, katalog, Communication Endpoint, plan, status Client, capability, format tanggal, dan timezone di Admin Console dan General Settings  (Q-5).
 - Pembaca berkas unduhan CSV/XLSX; penanganan dialog `beforeunload`.
 - Android emulator atau perangkat untuk spec mobile (015).
 - Klien HTTP untuk request langsung ke server (spec 014) dan dua konteks browser atau sesi API.
@@ -52,7 +53,7 @@ Belum terdaftar dan perlu didaftarkan pemilik repositori di `spectra.config.ts` 
 
 ## Sesi API aktor
 
-Spec yang memakai pelaku kedua lewat sesi API (login API dengan password, token tidak dihitung sebagai sesi web sehingga sesi UI tidak diusir) merujuk bagian ini dengan satu baris di `## Prerequisites`. Kemampuan itu disediakan tim BE/FE. Spec yang memakainya: 013, 027, 032, 033, 034, 036, 039, 044, 052, 053, 056, 057, 058, 059, 060, 061, 063, 064, 065.
+Spec yang memakai pelaku kedua lewat sesi API (login API dengan password, token tidak dihitung sebagai sesi web sehingga sesi UI tidak diusir) merujuk bagian ini dengan satu baris di `## Prerequisites`. Kemampuan itu disediakan tim BE/FE. Spec yang memakainya: 012, 013, 018, 027, 032, 033, 034, 036, 039, 044, 052, 053, 056, 057, 058, 059, 060, 061, 063, 064, 065, 087, 096.
 
 ## Spec yang menyimpan konfigurasi kolom
 

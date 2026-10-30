@@ -26,6 +26,7 @@ coverage:
 - Kemampuan teknis yang disediakan tim FE/BE (lingkungan non-produksi, NC-08):
   - Fixture timestamp kunci: mengatur penanda waktu kunci Sesi TC menjadi tepat 10 atau 9 menit sebelum waktu server saat ini (acuan waktu server dibaca lewat API seeding).
   - Fixture jam server: dimajukan 6 atau 9 menit, atau diatur absolut menjadi tepat 10 menit sejak mutasi `[Dismiss]` (T0 = waktu server saat `[Dismiss]` diproses, dibaca lewat API seeding). Hanya jam server yang diatur karena TTL kunci dihitung murni di server dan tidak diamati lewat countdown UI; jam dipulihkan ke waktu nyata lewat langkah eksplisit sesudah TC-GS-IMPORT-252 dan 821.
+- Margin jam (8b.3): T0 dibaca lewat fixture dan usia kunci hanya bertambah oleh waktu nyata (arah aman ke kedaluwarsa). Titik tepat 10 menit (langkah 3 dan 46) bernilai kedaluwarsa, margin 0 menit ke arah kedaluwarsa dan tidak terganggu waktu nyata. Titik 9 menit (langkah 12 dan 39): margin 60 detik terhadap TTL 10 menit (10 menit dikurangi 9 menit), sehingga dialog pada langkah 13 sampai 15 dan langkah 40 sampai 42 harus muncul dalam 60 detik sejak langkah 12 atau 39. Titik 6 menit (langkah 24, 26, 37): margin 4 menit (10 menit dikurangi 6 menit) tiap titik; 12 menit sejak awal sesi pada langkah 26 melewati TTL hanya bila hitungan tidak diatur ulang oleh mutasi `[Dismiss]`.
 - Layar awal: hook `beforeEach` suite membuka Global Settings > Import > Brand untuk kedua sesi. Guided Tooltip: flag `guided_tooltip_seen_gs-import` untuk kedua akun diatur hook suite `before` dan dipulihkan hook `after`; lihat `suite.md`.
 - Pemulihan: sesi edit ditutup dengan `[Cancel]`; draft dipulihkan antar TC.
 
@@ -100,6 +101,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (kelas d, prinsip 13d; objek uji TTL kunci 10 menit sebagai batas waktu); Sesi Admin kedua menjadi objek asersi.
 - Spec memuat 52 langkah, di atas smell 35 langkah. Alasan: semua blok satu kelas harness (fixture timestamp dan jam server pada TTL kunci) dengan pola identik, tiap blok berdiri sendiri dengan draft yang dipulihkan, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 9, 19, 33, 52 (menutup sesi edit dan memulihkan jam serta draft), langkah 20 (menyiapkan draft D-09 dan memuat ulang), langkah 21, 34 (pindah ke halaman 2).
+- Konteks kedua beraksi: belum ada id pengecualian untuk Sesi Admin kedua yang beraksi (Edit) dan diasersi di spec kelas d (TC-GS-IMPORT-250, 251, 252, 821); `P-2` hanya untuk konteks yang bukan objek asersi dan `P-6` hanya untuk pengamat read-only tanpa interaksi. Spec tidak dipecah (satu kelas harness, blok berdiri sendiri); usulan aturan baru menunggu batch konvensi.
 - Langkah 8, 51 (absence dialog) memakai baris #2 yang menjadi input (langkah 6 dan 49) sebagai anchor positif.
 - Temuan untuk QA:
   - Nilai waktu uji 6 menit (TC-GS-IMPORT-252 dan 821) dan 9 menit (TC-GS-IMPORT-821) ditandai `PRD?` pada dump TC (tidak tertulis di PRD); nilai itu pilihan TC sendiri, aturan PRD hanya TTL 10 menit.

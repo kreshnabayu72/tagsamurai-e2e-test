@@ -255,7 +255,6 @@ coverage:
   - TC-GS-HHR-300 sampai 305: Langkah Uji menyebut "kolom pertama", "kolom terakhir", atau "satu kolom" tanpa nama kolom; spec memakai kolom pertama/terakhir menurut urutan default tiap surface, dan kolom kedua untuk "satu kolom" pada TC-GS-HHR-303 dan 304 (supaya tidak berimpit dengan kolom pertama pada TC-GS-HHR-300), serta mempertahankan kolom pertama sebagai kolom tersisa pada TC-GS-HHR-305.
   - TC-GS-HHR-302: TC tidak menyebut syarat tabel sekunder dapat digulir horizontal pada 5 sampai 7 kolom; spec mengandalkan lebar viewport (kemampuan kontrol viewport di Prerequisites).
   - TC-GS-HHR-304: judul menyebut "X atau Esc" tetapi Langkah Uji hanya menutup dengan `[✕]`; spec mengikuti Langkah Uji (penutupan lewat `Esc` pada tabel Daftar Reader ada di TC-GS-HHR-287, spec 055).
-  - TC-GS-HHR-301: Expected menyebut "bertahan setelah F5" tetapi Langkah Uji tidak memuat refresh; spec menambah muat ulang halaman (TC-GS-HHR-300 sudah memuatnya). Muat ulang halaman menutup surface, sehingga surface dibuka kembali.
   - TC-GS-HHR-292 sampai 305: cara membuka surface pada TC-GS-HHR-300 sampai 305 dirujuk ke "TC screening masing-masing"; spec menyalin cara buka ke tabel Data uji surface (S-04).
   - Mekanisme menghapus preferensi kolom di browser dan membaca posisi kolom tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE.
   - Post Condition semua TC di spec ini `-`; tidak ada yang diasersi.

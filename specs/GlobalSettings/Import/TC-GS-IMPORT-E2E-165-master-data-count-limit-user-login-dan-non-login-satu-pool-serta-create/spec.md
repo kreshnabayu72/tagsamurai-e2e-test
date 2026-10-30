@@ -79,41 +79,45 @@ coverage:
 34. Reset Client Limit lewat skrip fixture: Master Data Count Limit User 1000 dengan 999 User tersimpan (sisa 1 slot); seed draft User Login 2 baris `pending` dari `user-login-cap-2.csv`
 35. Buka Global Settings > Import, pilih Sub-Tab User Login
 36. Klik `[Import (2)]`
-37. Tunggu commit selesai: muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-38. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
-39. Verifikasi Staging Table menampilkan 1 baris berstatus `error` yaitu `Qori Ramadhan`
-40. Verifikasi kolom # baris itu bernilai 1
-41. Verifikasi Error Summary Callout memuat "You've reached the platform limit of 1000 users. Contact support if you need a higher limit." dengan badge "1 row"
-42. Buka halaman Global Settings > User > User List > Login User
-43. Ketik Search `Putu Aditya`, tekan Enter
-44. Verifikasi Search `Putu Aditya` menampilkan baris bernama persis `Putu Aditya`
-45. Ganti isi kotak search dengan `Qori Ramadhan`, tekan Enter
-46. Verifikasi Search `Qori Ramadhan` tidak menampilkan baris bernama persis `Qori Ramadhan`
+37. Tunggu aksi selesai (permintaan mendapat respons)
+38. Tunggu commit selesai: muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+39. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
+40. Verifikasi Staging Table menampilkan 1 baris berstatus `error` yaitu `Qori Ramadhan`
+41. Verifikasi kolom # baris itu bernilai 1
+42. Verifikasi Error Summary Callout memuat "You've reached the platform limit of 1000 users. Contact support if you need a higher limit." dengan badge "1 row"
+43. Buka halaman Global Settings > User > User List > Login User
+44. Ketik Search `Putu Aditya`, tekan Enter
+45. Verifikasi Search `Putu Aditya` menampilkan baris bernama persis `Putu Aditya`
+46. Ganti isi kotak search dengan `Qori Ramadhan`, tekan Enter
+47. Verifikasi Search `Qori Ramadhan` tidak menampilkan baris bernama persis `Qori Ramadhan`
 
 ### TC-GS-IMPORT-409: User Login dan User Non Login satu pool
 
-47. Reset Client Limit lewat skrip fixture: Master Data Count Limit User 1000 dengan 999 user (Login dan Non Login, termasuk `rina.admin.limit@example.com`) tersimpan (sisa 1 slot); seed draft User Login 1 baris `pending` (`user-login-pool-1.csv`) dan draft User Non Login 1 baris `pending` (`user-non-login-pool-1.csv`)
-48. Buka Global Settings > Import, pilih Sub-Tab User Login
-49. Klik `[Import (1)]` di Tab User Login
-50. Tunggu commit selesai: muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-51. Verifikasi Dropzone tampil di Tab User Login
-52. Buka halaman Global Settings > User > User List > Login User
-53. Ketik Search `Putu Aditya`, tekan Enter
-54. Verifikasi Search `Putu Aditya` menampilkan baris bernama `Putu Aditya` (user ke-1000)
-55. Buka halaman Global Settings > Import, pilih Sub-Tab User Non Login
-56. Klik `[Import (1)]` di Tab User Non Login
-57. Tunggu commit selesai: muat ulang halaman Import > User Non Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-58. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
-59. Verifikasi Staging Table Tab User Non Login menampilkan 1 baris berstatus `error` yaitu Qori Ramadhan
-60. Verifikasi Error Summary Callout memuat "You've reached the platform limit of 1000 users. Contact support if you need a higher limit." dengan badge "1 row"
+48. Reset Client Limit lewat skrip fixture: Master Data Count Limit User 1000 dengan 999 user (Login dan Non Login, termasuk `rina.admin.limit@example.com`) tersimpan (sisa 1 slot); seed draft User Login 1 baris `pending` (`user-login-pool-1.csv`) dan draft User Non Login 1 baris `pending` (`user-non-login-pool-1.csv`)
+49. Buka Global Settings > Import, pilih Sub-Tab User Login
+50. Klik `[Import (1)]` di Tab User Login
+51. Tunggu aksi selesai (permintaan mendapat respons)
+52. Tunggu commit selesai: muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+53. Verifikasi Dropzone tampil di Tab User Login
+54. Buka halaman Global Settings > User > User List > Login User
+55. Ketik Search `Putu Aditya`, tekan Enter
+56. Verifikasi Search `Putu Aditya` menampilkan baris bernama `Putu Aditya` (user ke-1000)
+57. Buka halaman Global Settings > Import, pilih Sub-Tab User Non Login
+58. Klik `[Import (1)]` di Tab User Non Login
+59. Tunggu aksi selesai (permintaan mendapat respons)
+60. Tunggu commit selesai: muat ulang halaman Import > User Non Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+61. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
+62. Verifikasi Staging Table Tab User Non Login menampilkan 1 baris berstatus `error` yaitu Qori Ramadhan
+63. Verifikasi Error Summary Callout memuat "You've reached the platform limit of 1000 users. Contact support if you need a higher limit." dengan badge "1 row"
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: volume data (e); objek uji adalah batas Master Data Count Limit pada Create Missing dan commit User, dengan seed 999 record per katalog sebagai volume.
-- Alasan melewati sekitar 35 langkah (60 langkah nominal): empat blok homogen (batas kuota di slot terakhir per katalog), semua satu kelas dan berdiri sendiri dengan reset Client Limit di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok Create Missing (TC-332, 719) mendahului blok commit (TC-408, 409).
+- Alasan melewati sekitar 35 langkah (63 langkah nominal): empat blok homogen (batas kuota di slot terakhir per katalog), semua satu kelas dan berdiri sendiri dengan reset Client Limit di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok Create Missing (TC-332, 719) mendahului blok commit (TC-408, 409).
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 19, 34, 47), pembukaan halaman dan Sub-Tab, polling job (langkah 37, 50, 57), dan Search atomik (butir 9 bagian 8b). Pencarian yang menampilkan baris (langkah 16, 31, 44, 54) menjadi anchor positif sebelum asersi absence berikutnya (langkah 18, 33, 46).
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 19, 34, 48), pembukaan halaman dan Sub-Tab, "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (N)]` dan sebelum polling (langkah 37, 51, 59; K-16 dan bagian 8b butir 8), polling job (langkah 38, 52, 60), dan Search atomik (butir 9 bagian 8b). Pencarian yang menampilkan baris (langkah 16, 31, 45, 56) menjadi anchor positif sebelum asersi absence berikutnya (langkah 18, 33, 47).
 - Temuan untuk QA:
+  - Penanda selesai untuk klik `[Import (N)]` (langkah 37, 51, 59) tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.
   - TC-GS-IMPORT-332, 408, 409, 719 memakai nama literal (`Pengadaan`, `Store Supervisor`, `Putu Aditya`, dan seterusnya) tanpa suffix per run karena asersi Search mencocokkan nama persis; spec menjaga isolasi lewat reset seed dan cleanup di `after`.
   - TC-GS-IMPORT-332 dan 719 menulis langkah pencarian "Hapus isi Search, ketik ..." tanpa menyebut Enter pada langkah hapus; spec memakai "ganti isi kotak search" yang atomik.
   - TC-GS-IMPORT-409 menyebut `rina.admin.limit@example.com` sebagai User Login aktif Client Limit yang termasuk dalam 999 user (Pre-setup Client Limit); spec memakainya sebagai Represented By tanpa mengubahnya.

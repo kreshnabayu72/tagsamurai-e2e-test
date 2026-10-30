@@ -28,9 +28,9 @@ coverage:
 - Akun aktor (login sekali di hook `before`): Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup), password `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
 - Layar awal: hook `beforeEach` membuka Global Settings > Import > Brand untuk Client A.
 - Guided Tooltip: hook suite `before` men-set flag `guided_tooltip_seen_gs-import` true untuk akun aktor spec ini, lihat `suite.md`.
-- Data Dinamis: draft dasar Client A D-01 (Draft Brand 12 baris `pending` dari `brand-12.csv`: #1 `Acme Corp`, #2 `Lenovo`, #3 `Zebra Technologies`, #4 `Honeywell`, #5 `Dell`, #6 `HP Inc`, #7 `Canon`, #8 `Epson`, #9 `Brother`, #10 `Logitech`, #11 `Cisco`, #12 `Asus`), dipulihkan ke kondisi Population oleh hook `beforeEach` sesuai Kontrak Fixture R2; nama literal karena asersi bergantung pada isi D-01 (pengecualian S-12). Tidak ada sel yang diubah nilainya oleh spec ini; semua sesi edit ditutup tanpa perubahan.
+- Data Dinamis: draft dasar Client A D-01 (Draft Brand 12 baris `pending` dari `brand-12.csv`: #1 `Acme Corp`, #2 `Lenovo`, #3 `Zebra Technologies`, #4 `Honeywell`, #5 `Dell`, #6 `HP Inc`, #7 `Canon`, #8 `Epson`, #9 `Brother`, #10 `Logitech`, #11 `Cisco`, #12 `Asus`), dipulihkan ke kondisi Population oleh hook `beforeEach` sesuai Kontrak Fixture R2; nama literal karena asersi bergantung pada isi D-01 (pengecualian S-12). Tidak ada sel yang diubah nilainya oleh spec ini; semua sesi edit ditutup oleh spec: sesi tanpa perubahan lewat `[Cancel]` tanpa dialog, sesi Duplicate (draft dirty) lewat `[Cancel]` dan `[Discard]` pada dialog Discard Changes.
 - Kemampuan teknis: hover untuk tooltip, klik Breadcrumb, tombol paginator, skrip pemulihan draft D-01 (disediakan tim FE/BE).
-- State global: tidak ada yang diubah selain flag Guided Tooltip (dipulihkan hook suite `after`). Sesi edit Duplicate terakhir (langkah 76) tidak ditutup oleh spec; hook `afterEach` memulihkan draft D-01 dan melepas kunci sesi (disediakan tim FE/BE).
+- State global: tidak ada yang diubah selain flag Guided Tooltip (dipulihkan hook suite `after`). Sesi edit Duplicate terakhir (langkah 76) ditutup oleh spec pada langkah 88 sampai 90.
 - Cleanup (hook `after`, tidak berasumsi setup berhasil penuh): draft Brand Client A dipulihkan ke D-01 dan kunci sesi edit dilepas lewat skrip pemulihan.
 
 ## Test Steps
@@ -137,7 +137,7 @@ coverage:
 74. Verifikasi halaman aktif tetap halaman 1
 75. Klik `[Cancel]`
 
-### TC-GS-IMPORT-192 dan TC-GS-IMPORT-664 varian 1: Duplicate (sesi terakhir, tidak ditutup spec)
+### TC-GS-IMPORT-192 dan TC-GS-IMPORT-664 varian 1: Duplicate (sesi terakhir)
 
 76. Klik `⋯` pada baris #2 `Lenovo`, pilih `Duplicate`
 77. Verifikasi baris salinan muncul tepat di bawah baris #2 dalam mode penyuntingan
@@ -151,17 +151,20 @@ coverage:
 85. Verifikasi tooltip pada Rows per page: "Finish or cancel the current edit first."
 86. Klik tombol halaman 2 pada paginator
 87. Verifikasi halaman aktif tetap halaman 1
+88. Klik `[Cancel]`
+89. Verifikasi dialog Discard Changes dengan Title "Discard Changes", Body "Your changes will not be saved.", serta tombol `[Keep Editing]` dan `[Discard]`
+90. Klik `[Discard]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fungsional.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Penyimpangan urutan dari TC: TC-664 dipecah per varian dan ditempel pada sesi edit TC lain yang sudah dibuka (varian 2 pada TC-193, varian 1 pada TC-192) supaya tidak membuka sesi Duplicate dan Edit this page dua kali; varian 3 (Edit baris #4) berdiri sendiri. Sesi Duplicate dijalankan paling akhir karena penutupan sesi Duplicate tanpa perubahan tidak dispesifikasi TC dan dikerjakan hook `afterEach` (prinsip 5 bagian 3).
-- Langkah penghubung (tanpa `Verifikasi`): `[Cancel]` pada langkah 7, 11, 20, 28, 36, 44, 51, 67, 75 menutup sesi edit tanpa perubahan (tanpa dialog, sesuai Expected TC-196 dan TC-203) agar TC berikutnya dimulai dari tampilan normal; langkah 45 menjalankan langkah 1 TC-197.
-- Spec berisi 87 langkah. Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (Edit Mode), tiap blok membuka dan menutup sesi sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Penyimpangan urutan dari TC: TC-664 dipecah per varian dan ditempel pada sesi edit TC lain yang sudah dibuka (varian 2 pada TC-193, varian 1 pada TC-192) supaya tidak membuka sesi Duplicate dan Edit this page dua kali; varian 3 (Edit baris #4) berdiri sendiri. Sesi Duplicate dijalankan paling akhir; spec menutupnya sendiri pada langkah 88 sampai 90 (`[Cancel]`, dialog Discard Changes, `[Discard]`) mengikuti PRD, karena sesi Duplicate berisi baris salinan sehingga dirty.
+- Langkah penghubung (tanpa `Verifikasi`): `[Cancel]` pada langkah 7, 11, 20, 28, 36, 44, 51, 67, 75 menutup sesi edit tanpa perubahan (tanpa dialog, sesuai Expected TC-196 dan TC-203) agar TC berikutnya dimulai dari tampilan normal; langkah 88 (`[Cancel]`) dan 90 (`[Discard]`) menutup sesi Duplicate yang dirty (K-19c), dengan `Verifikasi` dialog pada langkah 89; langkah 45 menjalankan langkah 1 TC-197.
+- Spec berisi 90 langkah. Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (Edit Mode), tiap blok membuka dan menutup sesi sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: TC-GS-IMPORT-201, 202, dan 235 (Edit Mode: Error Callout, Upload File, keyboard) ada di spec 091; TC-GS-IMPORT-204 di spec 097.
 - Temuan untuk QA:
-  - TC-GS-IMPORT-192 dan TC-GS-IMPORT-664 varian 1 (Duplicate) tidak menyebut cara mengakhiri sesi Duplicate tanpa perubahan (apakah `[Cancel]` memunculkan dialog Discard Changes); spec tidak menutup sesi itu dan menyerahkannya ke hook `afterEach` (pemulihan draft dan pelepasan kunci disediakan tim FE/BE).
+  - TC-GS-IMPORT-192 dan TC-GS-IMPORT-664 varian 1 (Duplicate) tidak menyebut dialog Discard Changes saat sesi Duplicate ditutup dengan `[Cancel]`; spec mengikuti PRD (butir 3 sesi edit dirty: Title "Discard Changes", Body "Your changes will not be saved.", tombol `[Keep Editing]` dan `[Discard]`).
   - TC-GS-IMPORT-199 Expected b menyebut "Setelah klik Breadcrumb tetap `Import > Brand`" padahal Langkah 4 mengklik Sub-Tab Measurement, bukan Breadcrumb; spec mengasersi Breadcrumb tetap `Import > Brand` setelah klik Sub-Tab (langkah 33 sampai 34).
   - TC-GS-IMPORT-197 Expected b menyebut tiga elemen Hidden (kolom Checkbox, kolom Actions, Bulk Action Bar); dipecah menjadi langkah 48, 49, 50 (S-01).
   - Post Condition semua TC di spec ini kosong atau tidak ada observasi; tidak diasersi (S-01).

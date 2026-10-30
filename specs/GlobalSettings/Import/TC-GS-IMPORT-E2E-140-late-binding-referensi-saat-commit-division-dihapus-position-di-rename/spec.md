@@ -35,7 +35,7 @@ coverage:
 
 ### TC-GS-IMPORT-322: Baris yang gagal FK saat commit tetap menampilkan opsi AI Reference Suggestion
 
-1. Reset Client E ke tanpa draft Tab User Login (D-47), pastikan Division `Gudang` dan `Engineering` ada dan mock AI mode normal (D-40, D-42), lalu buka Import > User Login
+1. Reset Client E ke tanpa draft Tab User Login (D-47), pastikan Division `Gudang` dan `Engineering` ada dan mock AI mode normal (D-40, D-42), lalu muat ulang halaman Import > User Login
 2. Klik [Upload File] di toolbar dan pilih berkas user-login-gudang-engineering.csv
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi Staging Table menampilkan 2 baris `pending`
@@ -54,7 +54,7 @@ coverage:
 ### TC-GS-IMPORT-388: Division dihapus setelah staging, baris User gagal uji ulang FK saat commit tanpa memblokir baris lain
 
 16. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris D-54 (user-login-commit-8.csv, Division `Gudang` pada baris #5, #6, dan #7) lewat fixture; Division `Gudang` tidak dipakai user maupun Position manapun
-17. Buka Import > User Login dan tunggu Staging Table termuat
+17. Muat ulang halaman Import > User Login dan tunggu Staging Table termuat
 18. Verifikasi footer menampilkan `[Import (8)]` Enabled
 19. Hapus Division `Gudang` Client E lewat sesi API Admin kedua Client E hingga tersimpan
 20. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
@@ -139,7 +139,7 @@ coverage:
 
 ### TC-GS-IMPORT-752: Position yang hanya ada di draft Tab Position tidak diakui sebagai referensi sah pada Tab User Login sampai di-commit
 
-87. Reset Client E ke tanpa draft (D-47), siapkan draft Position 1 baris dari position-ref-1.csv (Sales Executive) dan draft User Login 1 baris dari user-login-ref-pos-1.csv (Kevin Anggara, Division `Engineering`, Position `Sales Executive`) lewat fixture, lalu buka Import > User Login
+87. Reset Client E ke tanpa draft (D-47), siapkan draft Position 1 baris dari position-ref-1.csv (Sales Executive) dan draft User Login 1 baris dari user-login-ref-pos-1.csv (Kevin Anggara, Division `Engineering`, Position `Sales Executive`) lewat fixture, lalu muat ulang halaman Import > User Login
 88. Verifikasi baris Kevin Anggara berstatus `error`
 89. Verifikasi Error Summary Callout memuat "Position not found"
 90. Verifikasi Error Summary Callout menampilkan badge "1 row"
@@ -165,6 +165,7 @@ coverage:
 - Anchor positif untuk absence: halaman Login User atau Non-Login User memuat daftar user baru (verifikasi nama) sebelum verifikasi user tertentu tidak ada.
 - Spec melewati sekitar 35 langkah. Alasan: tujuh blok TC homogen (satu objek uji, late-binding saat commit di Client E) yang berdiri sendiri dan masing-masing mereset Client E; kegagalan satu blok tidak membuat blok lain kehilangan makna, dan langkah prefix berulang (upload, tunggu commit, pindah halaman) mendominasi jumlah langkah.
 - Pola halaman basi (late-binding saat commit, TC-GS-IMPORT-388..391): halaman Import dimuat dan Staging Table dibaca sebelum pemicu, lalu `[Import (N)]` diklik pada halaman yang sama tanpa dimuat ulang, dengan N dari sebelum pemicu. Referensi, duplikat, dan opsi dievaluasi ulang saat commit selain saat pembacaan Staging Table (PRD `import.md` baris 994, 1164, 1195). `Verifikasi` footer `[Import (N)]` sebelum pemicu adalah `Verifikasi` tambahan di luar Expected TC yang membuktikan draft sudah dibaca pada halaman itu.
+- Muat ulang sesudah reset fixture: langkah 1, 17, dan 87 memakai "Muat ulang halaman Import > User Login" karena reset membuang atau mengganti draft sementara halaman Import yang sama masih terbuka dari langkah atau hook sebelumnya (`suite.md`); halaman dimuat segar sebelum pemicu Admin kedua dan tidak dimuat ulang sesudahnya (TC-GS-IMPORT-388 sampai 391).
 - Temuan untuk QA:
   - TC-GS-IMPORT-322: berada di section 3j (AI Reference) padahal skenarionya commit dengan late-binding FK pada Client E; sebaiknya dipindah ke section late-binding (3m). Expected b menyatakan Total Rows 1 dan Errors 1 sementara baris kedua (Citra Wulandari) sudah terkomit; spec mengikuti TC.
   - TC-GS-IMPORT-322: Post Condition a (User Login `citra.wulandari@example.com` tersimpan dan draft berisi 1 baris `error`) tidak punya langkah observasi di TC; tidak diasersi.

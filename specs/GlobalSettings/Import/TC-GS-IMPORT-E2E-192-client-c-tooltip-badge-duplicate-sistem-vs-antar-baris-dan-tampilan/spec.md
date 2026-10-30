@@ -32,33 +32,35 @@ coverage:
 
 1. Klik `[Upload File]` dan pilih berkas `brand-tooltip.csv`
 2. Klik `[Confirm Mapping]`
-3. Hover badge `duplicate` baris 1 (`Samsung`)
-4. Verifikasi tooltip "Brand name already exists. This row will be skipped automatically."
-5. Hover badge `duplicate` baris 2 (`Pioneer` pertama)
-6. Verifikasi tooltip "This row duplicates another row in this draft. It will be skipped automatically."
+3. Tunggu aksi selesai (Modal Column Mapping tertutup)
+4. Hover badge `duplicate` baris 1 (`Samsung`)
+5. Verifikasi tooltip "Brand name already exists. This row will be skipped automatically."
+6. Hover badge `duplicate` baris 2 (`Pioneer` pertama)
+7. Verifikasi tooltip "This row duplicates another row in this draft. It will be skipped automatically."
 
 ### Tampilan nilai Tab User Login (TC-GS-IMPORT-769)
 
-7. Pindah ke Sub-Tab User Login
-8. Klik `[Upload File]` dan pilih berkas `user-login-display.csv`
-9. Klik `[Confirm Mapping]`
-10. Verifikasi header: Checkbox, #, First Name, Last Name, Email, Division, Position, Employee ID, Access, Active Period, diikuti Emergency Phone, Join Date, Overtime Hours, Shift, Shift Notes, dan Tax ID, lalu Status dan Actions
-11. Verifikasi Row # 1: sel Tax ID tampil `—`
-12. Verifikasi Row # 1: Access tampil `Global Settings;Fixed Asset` dengan pemisah `;`
-13. Verifikasi Row # 1: Emergency Phone tampil `+62 81234567890` (satu spasi antara kode negara dan nomor)
-14. Verifikasi Row # 1: Join Date tampil tanggal 30 hari sebelum hari uji persis seperti isi berkas dalam bentuk `YYYY-MM-DD`
-15. Verifikasi Row # 1: Active Period tampil tanggal besok dalam bentuk `YYYY-MM-DD`
-16. Verifikasi Row # 2: sel Position, Employee ID, Active Period, Emergency Phone, Join Date, Overtime Hours, Shift, Shift Notes, dan Tax ID menampilkan `—`
-17. Verifikasi kedua baris berstatus `pending`
+8. Pindah ke Sub-Tab User Login
+9. Klik `[Upload File]` dan pilih berkas `user-login-display.csv`
+10. Klik `[Confirm Mapping]`
+11. Verifikasi header: Checkbox, #, First Name, Last Name, Email, Division, Position, Employee ID, Access, Active Period, diikuti Emergency Phone, Join Date, Overtime Hours, Shift, Shift Notes, dan Tax ID, lalu Status dan Actions
+12. Verifikasi Row # 1: sel Tax ID tampil `—`
+13. Verifikasi Row # 1: Access tampil `Global Settings;Fixed Asset` dengan pemisah `;`
+14. Verifikasi Row # 1: Emergency Phone tampil `+62 81234567890` (satu spasi antara kode negara dan nomor)
+15. Verifikasi Row # 1: Join Date tampil tanggal 30 hari sebelum hari uji persis seperti isi berkas dalam bentuk `YYYY-MM-DD`
+16. Verifikasi Row # 1: Active Period tampil tanggal besok dalam bentuk `YYYY-MM-DD`
+17. Verifikasi Row # 2: sel Position, Employee ID, Active Period, Emergency Phone, Join Date, Overtime Hours, Shift, Shift Notes, dan Tax ID menampilkan `—`
+18. Verifikasi kedua baris berstatus `pending`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec pembuat data (upload UI) tanpa commit; draft dibuang di hook `after`.
-- Pindah Sub-Tab pada langkah 7 adalah langkah penghubung (S-03).
+- Langkah 3 (Tunggu aksi selesai sesudah `[Confirm Mapping]`) dan langkah 8 (pindah Sub-Tab) adalah langkah penghubung (S-03).
 - Temuan untuk QA:
   - TC-GS-IMPORT-769 Data Uji menulis Email `gita.permata.disp@example.com` dan `hadi.pranoto.disp@example.com` tanpa suffix per run; spec memakai suffix per run bila hook mengizinkan, dan asersi tidak memuat teks Email.
   - TC-GS-IMPORT-769 Expected a menyebut Tax ID sebagai kolom Custom Field Active tetapi berkas tidak memuat kolomnya; spec mengikuti TC (kolom tampil `—`).
   - TC-GS-IMPORT-476 dan 769 tidak memuat Post Condition.
+  - Penanda selesai untuk langkah 3 (`[Confirm Mapping]`) tidak disebut di TC-GS-IMPORT-476; langkah "Tunggu aksi selesai" memakai "Modal Column Mapping tertutup" sampai QA menetapkan penanda lain.
   - TC tidak menyebut password per akun; tiap akun memakai env `<APP>_<ROLE>_PASSWORD` yang tercantum di Prerequisites (satu env hanya satu akun, S-11); env yang belum terdaftar didaftarkan di `spectra.config.ts` dan `.env.example` pada tahap script.

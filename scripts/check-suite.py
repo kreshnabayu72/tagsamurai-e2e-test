@@ -13,6 +13,15 @@ Memeriksa satu suite terhadap TC granular sumbernya:
   C8 [REVIEW]  tc-[modul].md lebih baru dari spec terbaru (generate mungkin basi)
   C9 [REVIEW]  asersi absence ("tidak ada entri/pencatatan") tanpa langkah anchor positif dalam blok yang sama
   C10 [FINDING] priority spec != prioritas tertinggi TC sumber (mapping konvensi bagian 8: P0 Critical, P1 High, P2 Medium, P3 Low)
+  C11 [FINDING] butir pertama Prerequisites bukan baris `- Mode:` (R-01)
+  C12 [FINDING] langkah aksi (bukan Verifikasi) memuat tanda "→ … tampil" (R-02)
+  C13 [FINDING] "Kosongkan Search" tanpa aksi (Enter, lewat, ←, ✕) pada Search tabel (R-16, bagian 8b butir 9)
+  C14 [FINDING] langkah "Tunggu N menit/jam/hari" atau "Tunggu" di atas 30 detik, di luar idiom "batas tunggu" (R-10)
+  C15 [FINDING] Prerequisites/Notes memuat rujukan proses atau narasi pemecahan (rencana, brief, orkestrator, dipecah/dipindah dari) (R-17)
+  C16 [FINDING] Prerequisites memuat "latar tabel" atau "dilakukan di hook suite" (R-09)
+  C17 [FINDING] Spectra.env.<NAMA> dipakai di Test Steps tetapi nama itu tidak ada di Prerequisites (R-07)
+  C18 [FINDING] rujukan "langkah N" melewati jumlah langkah spec (R-04)
+  C19 [REVIEW]  "Verifikasi hanya N toast" tanpa "Tunggu toast lama hilang" sebelumnya di blok yang sama (R-12)
 
 Pemakaian:
     python scripts/check-suite.py specs/Auth/AccountActivation ../auth/account-activation/TestCases/tc-account-activation.md docs/coverage/AuthAccountActivation.md
@@ -44,7 +53,7 @@ def source_tc(fm):
     block = fm.split("sourceTc:", 1)
     if len(block) < 2:
         return []
-    block = re.split(r"\n\w+:", block[1], 1)[0]
+    block = re.split(r"\n\w+:", block[1], maxsplit=1)[0]
     return re.findall(r"TC-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*-\d+", block)
 
 
@@ -65,13 +74,74 @@ def tc_priorities(tc_text):
     return result
 
 
+def heading_split(text, title):
+    return re.split(rf"(?m)^## {title}[ \t]*$", text, maxsplit=1)
+
+
 def steps_and_notes(text):
     body = text.split("---", 2)[-1]
-    steps = body.split("## Test Steps", 1)[-1]
+    steps = heading_split(body, "Test Steps")[-1]
     notes = ""
-    if "## Notes" in steps:
-        steps, notes = steps.split("## Notes", 1)
+    parts = heading_split(steps, "Notes")
+    if len(parts) > 1:
+        steps, notes = parts
     return steps, notes
+
+
+def prerequisites(text):
+    body = text.split("---", 2)[-1]
+    parts = heading_split(body, "Prerequisites")
+    if len(parts) < 2:
+        return ""
+    return heading_split(parts[1], "Test Steps")[0]
+
+
+ARROW = re.compile(r"→[^\n]*\btampil")
+CLEAR_SEARCH = re.compile(r"(?i)\bkosongkan search\b")
+CLEAR_ACTION = re.compile(r"(?i)enter|lewat|\(←\)|←|✕|dropdown")
+LONG_WAIT = re.compile(r"(?i)(?<!batas )\btunggu (?:\d+ (?:menit|jam|hari)\b|(?:3[1-9]|[4-9]\d|\d{3,}) detik)")
+PROCESS_WORDS = re.compile(r"(?i)dipecah dari|dipindah(?:kan)? dari|\borkestrator\b|\bbrief\b|\brencana\b")
+PRE_WORDS = re.compile(r"(?i)latar tabel|dilakukan di hook suite")
+STEP_REF = re.compile(r"(?i)\blangkah (\d+)(?:\s*(?:sampai|s\.d\.|hingga|-|–)\s*(\d+))?")
+ONLY_TOAST = re.compile(r"(?i)Verifikasi hanya (?:satu|\d+) toast")
+OLD_TOAST_GONE = re.compile(r"(?i)toast (?:lama|sebelumnya) hilang")
+
+
+def style_checks(folder, text, out):
+    pre = prerequisites(text)
+    steps, notes = steps_and_notes(text)
+    lines = [l for l in steps.split("\n") if re.match(r"^\d+\. ", l)]
+    items = [l for l in pre.split("\n") if l.startswith("- ")]
+    if items and not items[0].startswith("- Mode:"):
+        out("FINDING", "C11", f"{folder}: butir pertama Prerequisites bukan «- Mode:» («{items[0][:60]}»)")
+    for l in lines:
+        num = l.split(".", 1)[0]
+        is_assert = re.match(r"^\d+\.\s+Verifikasi", l)
+        if not is_assert and ARROW.search(l):
+            out("FINDING", "C12", f"{folder}: langkah {num} memuat «→ … tampil» di langkah aksi")
+        if CLEAR_SEARCH.search(l) and not CLEAR_ACTION.search(l):
+            out("FINDING", "C13", f"{folder}: langkah {num} «Kosongkan Search» tanpa aksi")
+        if LONG_WAIT.search(l):
+            out("FINDING", "C14", f"{folder}: langkah {num} «{LONG_WAIT.search(l).group(0)}»; atur jam, bukan menunggu")
+    for name, part in (("Prerequisites", pre), ("Notes", notes)):
+        for m in PROCESS_WORDS.finditer(part):
+            out("FINDING", "C15", f"{folder}: {name} memuat «{m.group(0)}»")
+    for m in PRE_WORDS.finditer(pre):
+        out("FINDING", "C16", f"{folder}: Prerequisites memuat «{m.group(0)}»")
+    used = set(re.findall(r"Spectra\.env\.(\w+)", steps))
+    listed = set(re.findall(r"\b([A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+)\b", pre))
+    for name in sorted(used - listed):
+        out("FINDING", "C17", f"{folder}: Spectra.env.{name} dipakai di Test Steps tetapi tidak ada di Prerequisites")
+    n = len(lines)
+    for m in STEP_REF.finditer(pre + "\n" + steps + "\n" + notes):
+        hi = int(m.group(2) or m.group(1))
+        if hi > n:
+            out("FINDING", "C18", f"{folder}: rujukan «{m.group(0)}» melewati {n} langkah")
+    for blk in re.split(r"(?m)^(?=### )", steps):
+        blines = [l for l in blk.split("\n") if re.match(r"^\d+\. ", l)]
+        for i, l in enumerate(blines):
+            if ONLY_TOAST.search(l) and not any(OLD_TOAST_GONE.search(x) for x in blines[:i]):
+                out("REVIEW", "C19", f"{folder}: langkah {l.split('.', 1)[0]} hitungan toast tanpa «Tunggu toast lama hilang» sebelumnya")
 
 
 def main():
@@ -82,11 +152,13 @@ def main():
     tc_path = Path(sys.argv[2])
     cov_path = Path(sys.argv[3]) if len(sys.argv) > 3 else None
     findings = 0
+    per_code = {}
 
     def out(level, code, msg):
         nonlocal findings
         if level == "FINDING":
             findings += 1
+        per_code[code] = per_code.get(code, 0) + 1
         print(f"[{level}] {code} {msg}")
 
     tc_text = read(tc_path)
@@ -123,6 +195,7 @@ def main():
             out("FINDING", "C5", f"{folder}: tidak ada baris «- Mode:» di Prerequisites")
         if n > LIMIT and not re.search(r"di atas smell|35 langkah", notes):
             out("FINDING", "C6", f"{folder}: {n} langkah (> {LIMIT}) tanpa alasan di Notes")
+        style_checks(folder, text, out)
         for blk in re.split(r"(?m)^(?=### )", steps):
             lines = [l for l in blk.split("\n") if re.match(r"^\d+\. ", l)]
             for i, l in enumerate(lines):
@@ -165,6 +238,8 @@ def main():
         out("REVIEW", "C8", f"{tc_path.name} lebih baru dari spec terbaru; periksa apakah ada TC/baris yang berubah setelah generate")
 
     print(f"\n{len(specs)} spec, {len(tc_ids)} TC, {len(owner)} TC tercakup, {findings} temuan")
+    if per_code:
+        print("per kode: " + ", ".join(f"{c} {n}" for c, n in sorted(per_code.items(), key=lambda x: int(x[0][1:]))))
     return 1 if findings else 0
 
 

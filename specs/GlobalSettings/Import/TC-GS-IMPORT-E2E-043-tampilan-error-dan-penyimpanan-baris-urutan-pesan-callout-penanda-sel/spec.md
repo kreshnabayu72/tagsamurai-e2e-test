@@ -71,7 +71,7 @@ coverage:
 
 25. Ganti akun: logout dari Total Control Client C
 26. Login sebagai Total Control Client A dengan `Spectra.env.GS_TC_PASSWORD`
-27. Siapkan draft Brand D-09 pada Client A (13 baris, baris #13 `error`) dan muat ulang halaman Import > Brand
+27. Siapkan draft Brand D-09 pada Client A (13 baris, baris #13 `error`) lewat skrip fixture, lalu buka menu Import dari sidebar dan muat ulang halaman Import > Brand
 28. Klik halaman 2 pada Pagination Staging Table
 29. Perhatikan sel Brand Name baris #13 pada Staging Table
 30. Verifikasi sel Brand Name baris #13 berborder merah
@@ -108,7 +108,7 @@ coverage:
 - P-2: Admin kedua Client C hanya memicu perubahan flag Required `Tax ID` lewat sesi API (langkah 16), bukan objek uji; tidak ada sesi UI kedua dan tidak ada asersi di sesi Admin kedua. Pemulihan flag ditulis sebagai langkah eksplisit (langkah 24, S-09); hook `after` sebagai cadangan.
 - Urutan TC: 170 dan 872 (Client C), lalu ganti akun ke Client A untuk 172 dan 566 (langkah 25 dan 26). Bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal.
 - Alasan di atas sekitar 35 langkah (52 langkah): satu topik (tampilan error Staging Table dan penyimpanan baris) dengan dua client; tiap blok memakai draft sendiri yang dibuang atau dipulihkan; kegagalan satu blok tidak menghilangkan makna blok lain.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (pindah Sub-Tab), langkah 7, 18, 29, 37, 42, 50 (mengamati sesuai Langkah Uji TC), langkah 12, 24, 27, 33, 52 (reset/seed/pemulihan, S-09), langkah 25 dan 26 (ganti akun), langkah 49 (navigasi ke Custom Field), langkah 16 (pemicu P-2), langkah 15 (menunggu aksi selesai sebelum Admin kedua mengubah flag Required).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (pindah Sub-Tab), langkah 7, 18, 29, 37, 42, 50 (mengamati sesuai Langkah Uji TC), langkah 12, 24, 27, 33, 52 (reset/seed/pemulihan, S-09; langkah 27 juga membuka menu Import dari sidebar sebelum muat ulang karena halaman sesudah ganti akun belum berada di Import), langkah 25 dan 26 (ganti akun), langkah 49 (navigasi ke Custom Field), langkah 16 (pemicu P-2), langkah 15 (menunggu aksi selesai sebelum Admin kedua mengubah flag Required).
 - Pembagian TC: TC-GS-IMPORT-172 bergantung pada draft D-09 (hasil TC-GS-IMPORT-74 di spec 018); spec ini menyiapkan D-09 sendiri lewat skrip fixture dan tidak menumpang hasil spec lain (S-06). TC-GS-IMPORT-566 bergantung pada draft D-05 (hasil TC-GS-IMPORT-5 di spec 012); spec ini menyiapkan D-05 lewat skrip fixture.
 - Temuan untuk QA:
   - TC-GS-IMPORT-872 memakai "fixture permintaan" untuk menjadikan `Tax ID` Required tanpa mendefinisikan mekanismenya di TC, PRD, atau LLD; disediakan tim FE/BE tanpa endpoint karangan (S-13). Password akun Admin kedua Client C tidak ada di TC; env `GS_CLIENTC_TC2_PASSWORD` baru.

@@ -93,7 +93,7 @@ coverage:
 
 32. Klik `Clear Field`
 33. Pilih `Status` = Available dan Reserved
-34. Buka dropdown `Status`, uncheck `Reserved`
+34. Buka dropdown `Status`, hapus centang `Reserved`
 35. Verifikasi chip `Reserved` hilang dari field
 36. Verifikasi chip `Available` tetap
 

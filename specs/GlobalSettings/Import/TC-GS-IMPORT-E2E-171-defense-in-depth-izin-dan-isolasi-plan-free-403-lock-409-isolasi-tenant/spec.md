@@ -55,78 +55,80 @@ coverage:
 10. Pulihkan draft dasar Client A D-01 dan reset Client B ke tanpa draft Tab Brand lewat skrip fixture
 11. Kirim permintaan baca Staging Table Brand langsung ke server dengan token akun Total Control Client A dan ambil pengenal baris Row # 1
 12. Kirim permintaan baca Staging Table Brand langsung ke server dengan token akun Total Control Client B
-13. Verifikasi respons permintaan baca Client B tidak memuat baris atau angka dari draft Client A
-14. Kirim permintaan Remove langsung ke server dengan token akun Total Control Client B untuk pengenal baris Row # 1 milik draft Client A
-15. Verifikasi server menolak permintaan dengan 404 Not Found
-16. Muat ulang halaman Import > Brand pada sesi Total Control Client A
-17. Verifikasi draft Client A masih 12 baris (kartu Total Rows 12)
-18. Verifikasi Row # 1 `Acme Corp`
+13. Verifikasi server menjawab permintaan baca Client B dengan status 200 OK
+14. Verifikasi respons permintaan baca Client A (langkah 11) memuat 12 baris
+15. Verifikasi respons permintaan baca Client B tidak memuat baris atau angka dari draft Client A
+16. Kirim permintaan Remove langsung ke server dengan token akun Total Control Client B untuk pengenal baris Row # 1 milik draft Client A
+17. Verifikasi server menolak permintaan dengan 404 Not Found
+18. Muat ulang halaman Import > Brand pada sesi Total Control Client A
+19. Verifikasi draft Client A masih 12 baris (kartu Total Rows 12)
+20. Verifikasi Row # 1 `Acme Corp`
 
 ### TC-GS-IMPORT-538: Import data (Read Only) dapat membaca tetapi permintaan tulis ditolak 403
 
-19. Pulihkan draft dasar Client A D-01 lewat skrip fixture
-20. Ganti akun: logout, lalu login sebagai Import data (Read Only) Client A (Tono Hartono)
-21. Buka Global Settings > Import, pilih Sub-Tab Brand
-22. Verifikasi Staging Table menampilkan draft 12 baris
-23. Verifikasi Staging Metric Cards Total Rows 12
-24. Klik `[Changelog]`
-25. Verifikasi modal `Changelog: Import` terbuka
-26. Tutup modal Changelog
-27. Ambil pengenal baris Row # 1 dari respons pembacaan Staging Table
-28. Kirim permintaan Remove langsung ke server dengan token akun Import data (Read Only) untuk pengenal baris itu
-29. Verifikasi server menolak permintaan dengan 403 Forbidden
-30. Muat ulang halaman Import > Brand
-31. Verifikasi draft masih 12 baris (kartu Total Rows 12)
-32. Verifikasi Row # 1 `Acme Corp`
+21. Pulihkan draft dasar Client A D-01 lewat skrip fixture
+22. Ganti akun: logout, lalu login sebagai Import data (Read Only) Client A (Tono Hartono)
+23. Buka Global Settings > Import, pilih Sub-Tab Brand
+24. Verifikasi Staging Table menampilkan draft 12 baris
+25. Verifikasi Staging Metric Cards Total Rows 12
+26. Klik `[Changelog]`
+27. Verifikasi modal `Changelog: Import` terbuka
+28. Tutup modal Changelog
+29. Ambil pengenal baris Row # 1 dari respons pembacaan Staging Table
+30. Kirim permintaan Remove langsung ke server dengan token akun Import data (Read Only) untuk pengenal baris itu
+31. Verifikasi server menolak permintaan dengan 403 Forbidden
+32. Muat ulang halaman Import > Brand
+33. Verifikasi draft masih 12 baris (kartu Total Rows 12)
+34. Verifikasi Row # 1 `Acme Corp`
 
 ### TC-GS-IMPORT-931: Create Missing Options oleh Import data (Read Only) ditolak 403
 
-33. Seed draft User Login Client C `user-login-shift-lembur.csv` (D-79) atas nama Total Control Client C lewat skrip fixture
-34. Ganti akun: logout, lalu login sebagai Import data (Read Only) Client C (Hari Wibowo)
-35. Kirim permintaan Create Missing Options untuk kategori "Shift: Invalid option" langsung ke server dengan token akun Import data (Read Only) Client C
-36. Verifikasi server menolak permintaan dengan 403 Forbidden
-37. Buka menu Import dari sidebar dengan akun yang sama
-38. Klik Sub-Tab User Login
-39. Verifikasi baris #1 dan #2 tetap berstatus `error`
-40. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 1, Errors 2
+35. Seed draft User Login Client C `user-login-shift-lembur.csv` (D-79) atas nama Total Control Client C lewat skrip fixture
+36. Ganti akun: logout, lalu login sebagai Import data (Read Only) Client C (Hari Wibowo)
+37. Kirim permintaan Create Missing Options untuk kategori "Shift: Invalid option" langsung ke server dengan token akun Import data (Read Only) Client C
+38. Verifikasi server menolak permintaan dengan 403 Forbidden
+39. Buka menu Import dari sidebar dengan akun yang sama
+40. Klik Sub-Tab User Login
+41. Verifikasi baris #1 dan #2 tetap berstatus `error`
+42. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 1, Errors 2
 
 ### TC-GS-IMPORT-810: Permintaan tulis tanpa sesi yang valid ditolak 401
 
-41. Ganti akun: logout, lalu login sebagai Total Control Client B (Bayu Santoso)
-42. Reset Client B ke tanpa draft Tab Brand lewat skrip fixture
-43. Buka Global Settings > Import, pilih Sub-Tab Brand
-44. Kirim permintaan Confirm Mapping langsung ke server tanpa token sesi
-45. Verifikasi server menolak permintaan dengan 401 Unauthorized
-46. Kirim permintaan Confirm Mapping langsung ke server dengan token sesi yang sudah kedaluwarsa
+43. Ganti akun: logout, lalu login sebagai Total Control Client B (Bayu Santoso)
+44. Reset Client B ke tanpa draft Tab Brand lewat skrip fixture
+45. Buka Global Settings > Import, pilih Sub-Tab Brand
+46. Kirim permintaan Confirm Mapping langsung ke server tanpa token sesi
 47. Verifikasi server menolak permintaan dengan 401 Unauthorized
-48. Muat ulang halaman Import > Brand
-49. Verifikasi Dropzone tampil
-50. Verifikasi Unsaved Banner tidak tampil
+48. Kirim permintaan Confirm Mapping langsung ke server dengan token sesi yang sudah kedaluwarsa
+49. Verifikasi server menolak permintaan dengan 401 Unauthorized
+50. Muat ulang halaman Import > Brand
+51. Verifikasi Dropzone tampil
+52. Verifikasi Unsaved Banner tidak tampil
 
 ### TC-GS-IMPORT-530: Aksi tulis pada plan Free ditolak server
 
-51. Ganti akun: logout, lalu login sebagai Total Control Client Free (Dewi Lestari)
-52. Reset Client Free ke tanpa draft Tab Brand (plan Free) lewat skrip fixture
-53. Kirim permintaan Confirm Mapping langsung ke server dengan token akun Total Control Client Free
-54. Verifikasi server menolak permintaan dengan 403 Forbidden
-55. Kirim permintaan baca Staging Table Brand langsung ke server dengan token akun Total Control Client Free
+53. Ganti akun: logout, lalu login sebagai Total Control Client Free (Dewi Lestari)
+54. Reset Client Free ke tanpa draft Tab Brand (plan Free) lewat skrip fixture
+55. Kirim permintaan Confirm Mapping langsung ke server dengan token akun Total Control Client Free
 56. Verifikasi server menolak permintaan dengan 403 Forbidden
-57. Naikkan plan Client Free ke Growth lewat fixture Admin Console
-58. Buka Global Settings > Import, pilih Sub-Tab Brand
-59. Verifikasi Dropzone tampil
-60. Verifikasi Unsaved Banner tidak tampil
-61. Kembalikan plan Client Free ke Free lewat fixture Admin Console
+57. Kirim permintaan baca Staging Table Brand langsung ke server dengan token akun Total Control Client Free
+58. Verifikasi server menolak permintaan dengan 403 Forbidden
+59. Naikkan plan Client Free ke Growth lewat fixture Admin Console
+60. Buka Global Settings > Import, pilih Sub-Tab Brand
+61. Verifikasi Dropzone tampil
+62. Verifikasi Unsaved Banner tidak tampil
+63. Kembalikan plan Client Free ke Free lewat fixture Admin Console
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: defense-in-depth (a) dengan request langsung ke server sebagai objek uji. Admin kedua hanya memicu kunci lewat sesi API (P-2); fixture Admin Console hanya memicu perubahan plan.
-- Alasan melewati sekitar 35 langkah (61 langkah nominal): enam blok homogen (request langsung ke server dengan akun berbeda), semua satu kelas dan berdiri sendiri; urutan blok dikelompokkan per akun dengan langkah ganti akun eksplisit (langkah 20, 34, 41, 51) sehingga bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal. Blok plan Free (TC-530) diletakkan terakhir karena mengubah plan.
+- Alasan melewati sekitar 35 langkah (63 langkah nominal): enam blok homogen (request langsung ke server dengan akun berbeda), semua satu kelas dan berdiri sendiri; urutan blok dikelompokkan per akun dengan langkah ganti akun eksplisit (langkah 22, 36, 43, 53) sehingga bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal. Blok plan Free (TC-530) diletakkan terakhir karena mengubah plan.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): pemulihan draft dan reset (langkah 1, 10, 19, 33, 42, 52), pengambilan pengenal baris (langkah 3, 11, 27), pembukaan halaman dan Sub-Tab, pembatalan sesi edit (langkah 9), perubahan plan (langkah 57 dan 61), tutup modal (langkah 26), ganti akun. Asersi absence Unsaved Banner (langkah 50, 60) didahului Verifikasi Dropzone tampil sebagai anchor positif pada halaman yang sama.
+- Langkah penghubung (tanpa `Verifikasi`): pemulihan draft dan reset (langkah 1, 10, 21, 35, 44, 54), pengambilan pengenal baris (langkah 3, 11, 29), pembukaan halaman dan Sub-Tab, pembatalan sesi edit (langkah 9), perubahan plan (langkah 59 dan 63), tutup modal (langkah 28), ganti akun. Asersi absence Unsaved Banner (langkah 52, 62) didahului Verifikasi Dropzone tampil sebagai anchor positif pada halaman yang sama; asersi absence isi respons Client B (langkah 15) didahului Verifikasi status 200 OK dan respons Client A memuat 12 baris (langkah 13 dan 14) sebagai pembuktian permintaan berhasil.
 - Asersi pada request langsung hanya respons server dan state data (butir 1 bagian 8b); langkah muat ulang dan pembacaan UI sesudahnya mengamati state data (jumlah baris dan isi Row # 1), bukan perilaku FE atas respons.
 - Temuan untuk QA:
   - TC-GS-IMPORT-531 langkah 1 memulai sesi edit lewat UI (`⋯` > Edit) atas nama Admin kedua Client A; spec memakai sesi API (P-2) karena hasil di sesi itu tidak diasersi.
   - TC-GS-IMPORT-530 dan TC-GS-IMPORT-810 tidak menyebut isi payload permintaan Confirm Mapping langsung (pengenal berkas sementara); payload disediakan klien HTTP tim FE.
   - TC-GS-IMPORT-538 Expected a dan b mengasersi UI (Staging Table, modal Changelog) di samping respons 403; kedua asersi presence dipertahankan karena merupakan Expected TC (bukan salinan perilaku FE atas request langsung).
   - TC-GS-IMPORT-931 menyebut draft disiapkan "oleh Total Control Client C" tanpa menyebut mekanismenya; spec men-seed lewat skrip fixture.
-  - Post Condition TC-GS-IMPORT-530 (plan dikembalikan), TC-GS-IMPORT-531 (sesi edit dibatalkan), dan TC-GS-IMPORT-931 (tidak ada opsi dibuat; draft tidak berubah) dikerjakan langkah 61, 9, dan hook `after`; Post Condition TC-GS-IMPORT-931 dikonfirmasi oleh Expected b.
+  - Post Condition TC-GS-IMPORT-530 (plan dikembalikan), TC-GS-IMPORT-531 (sesi edit dibatalkan), dan TC-GS-IMPORT-931 (tidak ada opsi dibuat; draft tidak berubah) dikerjakan langkah 63, 9, dan hook `after`; Post Condition TC-GS-IMPORT-931 dikonfirmasi oleh Expected b.

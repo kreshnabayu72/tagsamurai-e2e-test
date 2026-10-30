@@ -73,50 +73,54 @@ coverage:
 26. Verifikasi Modal Column Mapping tertutup
 27. Verifikasi Staging Metric Cards tetap Total Rows 12
 28. Verifikasi Pagination tetap `Showing 1 - 10 of 12 items`
-29. Verifikasi tidak ada baris Nikon
+29. Klik halaman 2 pada Pagination
+30. Verifikasi halaman 2 hanya menampilkan `Row #` 11 dan 12
+31. Verifikasi tidak ada baris Nikon
+32. Klik halaman 1 pada Pagination
 
 ### TC-GS-IMPORT-73: Append Records menambahkan baris ke akhir Staging Table dan melanjutkan Row #
 
-30. Klik `[Upload File]`
-31. Pilih berkas `brand-6.csv` di file picker
-32. Klik `[Append Records]` pada dialog Append to Draft
-33. Perhatikan Modal Column Mapping
-34. Verifikasi Modal Column Mapping terbuka
-35. Klik `[Confirm Mapping]`
-36. Verifikasi modal tertutup
-37. Verifikasi muncul toast sukses "Success, row has been added."
-38. Perhatikan Staging Metric Cards dan Footer
-39. Verifikasi Staging Metric Cards: Total Rows 18, Ready to Import 18
-40. Verifikasi Footer `[Import (18)]`
-41. Klik halaman 2 pada Pagination
-42. Verifikasi halaman 2 menampilkan `Row #` 11 sampai 18
-43. Verifikasi enam baris baru (Nikon sampai Sharp) berada di akhir pada `Row #` 13-18
+33. Klik `[Upload File]`
+34. Pilih berkas `brand-6.csv` di file picker
+35. Klik `[Append Records]` pada dialog Append to Draft
+36. Perhatikan Modal Column Mapping
+37. Verifikasi Modal Column Mapping terbuka
+38. Klik `[Confirm Mapping]`
+39. Verifikasi modal tertutup
+40. Verifikasi muncul toast sukses "Success, row has been added."
+41. Perhatikan Staging Metric Cards dan Footer
+42. Verifikasi Staging Metric Cards: Total Rows 18, Ready to Import 18
+43. Verifikasi Footer `[Import (18)]`
+44. Klik halaman 2 pada Pagination
+45. Verifikasi halaman 2 menampilkan `Row #` 11 sampai 18
+46. Verifikasi enam baris baru (Nikon sampai Sharp) berada di akhir pada `Row #` 13-18
 
 ### TC-GS-IMPORT-74: Append berkas Brand dengan satu nama lebih dari 120 karakter membentuk baris error
 
-44. Pulihkan draft Brand Client A ke D-01 (12 baris `pending`) dan atur mock AI mode normal D-40; muat ulang halaman Import > Brand
-45. Klik `[Upload File]`
-46. Pilih berkas `brand-overlength.csv` di file picker
-47. Klik `[Append Records]` pada dialog Append to Draft
-48. Klik `[Confirm Mapping]`
-49. Verifikasi modal tertutup
-50. Perhatikan Staging Table, Error Summary Callout, dan Staging Metric Cards
-51. Verifikasi Error Summary Callout tampil: "Brand Name: Max. 120 characters" dengan badge "1 row"
-52. Verifikasi Staging Metric Cards: Total Rows 13, Ready to Import 12, Errors 1
-53. Verifikasi Pagination `Showing 1 - 10 of 13 items`
-54. Klik halaman 2 pada Pagination
-55. Perhatikan baris `Row #` 13
-56. Verifikasi baris baru `Row #` 13 masuk Staging Table berstatus `error`
-57. Verifikasi sel Brand Name baris `Row #` 13 menampilkan badge inline "AI suggestion: 'Samsung Electronics Indonesia'?"
-58. Verifikasi badge memuat `[Accept]` dan `[Dismiss]`
+47. Pulihkan draft Brand Client A ke D-01 (12 baris `pending`) dan atur mock AI mode normal D-40; muat ulang halaman Import > Brand
+48. Klik `[Upload File]`
+49. Pilih berkas `brand-overlength.csv` di file picker
+50. Klik `[Append Records]` pada dialog Append to Draft
+51. Klik `[Confirm Mapping]`
+52. Verifikasi modal tertutup
+53. Perhatikan Staging Table, Error Summary Callout, dan Staging Metric Cards
+54. Verifikasi Error Summary Callout tampil: "Brand Name: Max. 120 characters" dengan badge "1 row"
+55. Verifikasi Staging Metric Cards: Total Rows 13, Ready to Import 12, Errors 1
+56. Verifikasi Pagination `Showing 1 - 10 of 13 items`
+57. Klik halaman 2 pada Pagination
+58. Perhatikan baris `Row #` 13
+59. Verifikasi baris baru `Row #` 13 masuk Staging Table berstatus `error`
+60. Verifikasi sel Brand Name baris `Row #` 13 menampilkan badge inline "AI suggestion: 'Samsung Electronics Indonesia'?"
+61. Verifikasi badge memuat `[Accept]` dan `[Dismiss]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Urutan TC: 71 (Admin kedua), lalu ganti akun ke Total Control untuk 72, 68, 73, 74. TC-GS-IMPORT-73 dan 74 menambah baris ke draft sehingga ditaruh paling akhir; draft dipulihkan ke D-01 sebelum TC-GS-IMPORT-74 (langkah 44, S-09).
-- Alasan di atas sekitar 35 langkah (58 langkah): satu topik (Append ke draft yang sudah ada) pada satu draft Client A; blok pada akun lain (Admin kedua, TC-GS-IMPORT-71) di awal dengan langkah ganti akun eksplisit; tiap blok berdiri sendiri.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 3, 14, 25, 33, 38, 50, 55 (mengamati sesuai Langkah Uji TC), langkah 7 (menutup dialog dengan `[Cancel]`), langkah 8 sampai 10 (ganti akun dan buka menu), langkah 44 (pemulihan draft dan mock), langkah 41 dan 54 (pindah halaman Pagination).
+- Urutan TC: 71 (Admin kedua), lalu ganti akun ke Total Control untuk 72, 68, 73, 74. TC-GS-IMPORT-73 dan 74 menambah baris ke draft sehingga ditaruh paling akhir; draft dipulihkan ke D-01 sebelum TC-GS-IMPORT-74 (langkah 47, S-09).
+- Alasan di atas sekitar 35 langkah (61 langkah): satu topik (Append ke draft yang sudah ada) pada satu draft Client A; blok pada akun lain (Admin kedua, TC-GS-IMPORT-71) di awal dengan langkah ganti akun eksplisit; tiap blok berdiri sendiri.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 3, 14, 25, 36, 41, 53, 58 (mengamati sesuai Langkah Uji TC), langkah 7 (menutup dialog dengan `[Cancel]`), langkah 8 sampai 10 (ganti akun dan buka menu), langkah 47 (pemulihan draft dan mock lewat skrip fixture sinkron, tanpa penanda tunggu), langkah 29, 32, 44, 57 (pindah halaman Pagination).
+- Langkah 29 sampai 32 membawa pengecekan absence `Nikon` ke halaman 2 karena draft 12 baris tampil 10 baris per halaman; langkah 30 (`Verifikasi` halaman 2 hanya memuat `Row #` 11 dan 12) adalah asersi tambahan di luar Expected TC dan menjadi anchor positif untuk absence di langkah 31 (S-03, S-14). Langkah 32 mengembalikan Pagination ke halaman 1.
 - Pembagian TC: asersi AI pada TC-GS-IMPORT-74 hanya memverifikasi badge AI muncul pada baris error; perilaku Accept/Dismiss diuji di spec AI.
 - Temuan untuk QA:
   - TC-GS-IMPORT-71 memakai Admin kedua Client A untuk screening dialog Append; TC tidak menyebut password/env akun, `GS_TC2_PASSWORD` baru.

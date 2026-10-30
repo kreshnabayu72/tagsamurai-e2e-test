@@ -69,38 +69,39 @@ coverage:
 32. Verifikasi `356938035643002` berstatus `Available` di registri
 33. Pulihkan stok resmi dan registri Client A ke kondisi awal lewat fixture BE
 
-### TC-GS-TAG-169: Commit Activate memperbarui Last Scanned dan Last Scanned In
+### TC-GS-TAG-169: Commit Activate memperbarui Last Scanned dan Last Scanned In, tidak untuk Waiting for Approval
 
 34. Klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, lalu klik [Continue] pada popup `Ready to Activate a TAG`
 35. Isi Template Device Name `Queclink GV300`, Brand `Queclink`
-36. Tambahkan lewat entri manual (ketik di input lalu klik [Add]) `356938035643001` dan `356938035643201`
-37. Catat waktu entri `T169` (waktu browser tepat sesudah [Add] terakhir)
-38. Majukan jam server dan jam browser bersama sebesar 5 menit
-39. Klik [Submit], klik [Submit] pada dialog, lalu tutup dialog informasi "Your activation is pending review."
-40. Tunggu aksi selesai (dialog tertutup, tombol aktif kembali)
-41. Pulihkan jam server dan jam browser ke waktu semula
-42. Klik item sidebar `TAG`, lalu klik Tab All
-43. Buka overlay Column Visibility, klik `Setup Column`, centang `Last Scanned In`, lalu klik [Save]
-44. Ketik Search `356938035643001`, tekan Enter
-45. Verifikasi Last Scanned `356938035643001` sama dengan `T169` (toleransi satu menit, format `dd/MM/yy HH:mm`), bukan waktu Submit
-46. Verifikasi badge Last Scanned In `356938035643001` bernilai `Global Settings`
-47. Hover badge Last Scanned In `356938035643001`
-48. Verifikasi tooltip "Global Settings > TAG > Activate TAG"
-49. Ganti isi kotak search dengan `356938035643201`, tekan Enter
-50. Verifikasi Last Scanned `356938035643201` bernilai `—`
-51. Verifikasi Last Scanned In `356938035643201` bernilai `—`
-52. Hapus preferensi kolom di browser (kemampuan disediakan tim FE)
-53. Pulihkan stok resmi, registri Client A, dan unit Client B ke kondisi awal lewat fixture BE
+36. Tambahkan lewat entri manual (ketik di input lalu klik [Add]) `356938035643001`
+37. Catat waktu entri `T169` (waktu browser tepat sesudah [Add] baris `356938035643001`)
+38. Tambahkan lewat entri manual (ketik di input lalu klik [Add]) `356938035643201`
+39. Majukan jam server dan jam browser bersama sebesar 5 menit
+40. Klik [Submit], klik [Submit] pada dialog, lalu tutup dialog informasi "Your activation is pending review."
+41. Tunggu aksi selesai (dialog tertutup, tombol aktif kembali)
+42. Pulihkan jam server dan jam browser ke waktu semula
+43. Klik item sidebar `TAG`, lalu klik Tab All
+44. Buka overlay Column Visibility, klik `Setup Column`, centang `Last Scanned In`, lalu klik [Save]
+45. Ketik Search `356938035643001`, tekan Enter
+46. Verifikasi Last Scanned `356938035643001` sama dengan `T169` (toleransi satu menit, format `dd/MM/yy HH:mm`), bukan waktu Submit
+47. Verifikasi badge Last Scanned In `356938035643001` bernilai `Global Settings`
+48. Hover badge Last Scanned In `356938035643001`
+49. Verifikasi tooltip "Global Settings > TAG > Activate TAG"
+50. Ganti isi kotak search dengan `356938035643201`, tekan Enter
+51. Verifikasi Last Scanned `356938035643201` bernilai `—`
+52. Verifikasi Last Scanned In `356938035643201` bernilai `—`
+53. Hapus preferensi kolom di browser (kemampuan disediakan tim FE)
+54. Pulihkan stok resmi, registri Client A, dan unit Client B ke kondisi awal lewat fixture BE
 
 ## Notes
 
-- Mode: FE+BE. Spec melewati sekitar 35 langkah (53 langkah). Alasan: seluruh blok satu topik aksi (Submit dan commit Activate) atas dataset stok yang sama, berdiri sendiri karena stok dan registri dipulihkan antar blok (langkah 24, 33, 53) dan staging dibuang (langkah 9); kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 9, 10, 19, 24, 25, 30, 33, 34, 37, 38, 40, 41, 42, 43, 44, 49, 52, 53 (membuka sesi, membuang staging, pindah ke registri, pemulihan, pengaturan jam, Setup Column untuk menampilkan `Last Scanned In` dan memulihkannya, Search untuk menemukan baris target, mencatat nilai, menunggu aksi selesai sebelum jam dipulihkan).
-- Langkah tambahan (S-03): langkah 28 (toast sukses) adalah anchor positif untuk asersi absence dialog pada langkah 29 (butir 2 dan 11 bagian 8b); Expected TC-GS-TAG-101 tidak memuat toast, teks toast diambil dari Expected TC-GS-TAG-99. Langkah 43 dan 52 memenuhi precondition d TC-GS-TAG-169 (kolom `Last Scanned In` default Hidden, TC-GS-TAG-11) dan memulihkan preferensi kolom.
+- Mode: FE+BE. Spec melewati sekitar 35 langkah (54 langkah). Alasan: seluruh blok satu topik aksi (Submit dan commit Activate) atas dataset stok yang sama, berdiri sendiri karena stok dan registri dipulihkan antar blok (langkah 24, 33, 54) dan staging dibuang (langkah 9); kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 9, 10, 19, 24, 25, 30, 33, 34, 37, 39, 41, 42, 43, 45, 50, 53, 54 (membuka sesi, membuang staging, pindah ke registri, pemulihan, pengaturan jam, Setup Column untuk menampilkan `Last Scanned In` dan memulihkannya, Search untuk menemukan baris target, mencatat nilai, menunggu aksi selesai sebelum jam dipulihkan).
+- Langkah tambahan (S-03): langkah 28 (toast sukses) adalah anchor positif untuk asersi absence dialog pada langkah 29 (butir 2 dan 11 bagian 8b); Expected TC-GS-TAG-101 tidak memuat toast, teks toast diambil dari Expected TC-GS-TAG-99. Langkah 44 adalah langkah 9 TC-GS-TAG-169 (Setup Column menampilkan `Last Scanned In`, default Hidden, TC-GS-TAG-11); langkah 53 memulihkan preferensi kolom.
 - Urutan: blok Cancel (TC-GS-TAG-98) di awal, lalu commit sukses (TC-GS-TAG-99, 101, 169).
 - Pembagian TC lintas spec: TC-GS-TAG-100 dan 167 (kolisi dan auto-switch) berada di spec kolisi (032); TC-GS-TAG-170 dan 171 (Last Scanned pada Audit) berada di spec Audit Submit (042). TC-GS-TAG-110 (info kuota header, RFID dengan reader tersimulasi, kelas hardware d) berada di spec sesi scan (025) agar kegagalan simulator tidak menggagalkan spec Submit GPS ini. Event Log dan Activity Log Activate tidak dibaca di spec ini.
 - Temuan untuk QA:
   - TC-GS-TAG-98: Skenario menyebut dialog "memuat hanya baris non-Error", tetapi Langkah Uji tidak menambah baris Error; spec mengikuti Langkah Uji.
-  - TC-GS-TAG-169 (Q-6): "Tunggu minimal 1 menit" tidak menentukan menunggu nyata atau mengatur jam; spec mengatur jam server dan jam browser bersama (5 menit). VAL "1 menit" diturunkan dari Tabel Data Uji, bukan dari PRD (Q-13).
-  - Dialog informasi "Your activation is pending review." (TC-GS-TAG-169, langkah 39): judul dan tombol penutupnya tidak ditulis di TC.
+  - TC-GS-TAG-169 (Q-6): "Tunggu minimal 1 menit" tidak menentukan menunggu nyata atau mengatur jam; spec mengatur jam server dan jam browser bersama (5 menit). Nilai "1 menit" berasal dari langkah 6 TC (Q-13).
+  - Dialog informasi "Your activation is pending review." (TC-GS-TAG-169, langkah 40): judul dan tombol penutupnya tidak ditulis di TC.
   - Post Condition tanpa langkah observasi tidak diasersi: TC-GS-TAG-99 butir c (Event Log dan Activity Log satu sesi Activate GPS) dan butir d (unit stok In Use dan unit baru di Admin Console TAG Stock); TC-GS-TAG-101 butir b (unit stok In Use).

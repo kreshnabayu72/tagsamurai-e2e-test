@@ -24,7 +24,7 @@ coverage:
 - Environment variable: `GS_TC_PASSWORD`.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader dengan Search dan Filter kosong dan konfigurasi kolom default.
 - Client A: plan Growth, format tanggal default General Settings `dd/MM/yy` 24-hour Asia/Jakarta (tidak diubah spec ini). Asersi tanggal mengikuti format ini; jam server dan jam browser tidak diatur karena data tanggal berasal dari seeding tetap.
-- Data Dinamis Seed Reader A (10 reader DD-01 sampai DD-10), dibuat lewat fixture backend sebelum eksekusi (`Fixture.hardwareHandheldReader.seedReaderA`) dan dipulihkan antar TC oleh fixture backend. Nama dan tanggal literal tanpa suffix `{runId}` karena asersi sel bergantung pada nilai tetap (lihat Temuan untuk QA). Baris dikenali lewat Serial Number karena DD-01 dan DD-06 sama-sama bernama `Zebra RFID Reader - 1`. Nilai yang diasersi:
+- Data Dinamis Seed Reader A (10 reader DD-01 sampai DD-10), dibuat lewat fixture backend sebelum eksekusi (`Fixture.hardwareHandheldReader.seedReaderA`, fixture baru) dan dipulihkan antar TC oleh fixture backend. Nama dan tanggal literal tanpa suffix `{runId}` karena asersi sel bergantung pada nilai tetap (lihat Temuan untuk QA). Baris dikenali lewat Serial Number karena DD-01 dan DD-06 sama-sama bernama `Zebra RFID Reader - 1`. Nilai yang diasersi:
 
 | ID | Serial Number | Range Type | Reader Power | Alias Name | SKU | Last Scanned | Last Scanned In | Last User | Status |
 |---|---|---|---|---|---|---|---|---|---|
@@ -34,7 +34,7 @@ coverage:
 | DD-07 | SN-HHR-00108 | Long Range | 30 dBm | — | — | — | — | — | Available |
 
 - Precondition TC-GS-HHR-314 (langkah 22): Alias Name DD-02 diubah menjadi `Gudang, "Utama"` lewat fixture backend; mekanisme fixture disediakan tim FE/BE (tidak didefinisikan di TC, PRD, atau LLD). Alias Name DD-02 dipulihkan ke `Reader Gudang 02` oleh fixture backend di hook `after`.
-- Data tambahan untuk TC-GS-HHR-183, 338, dan 454 (dipindah dari spec 036 dan 062):
+- Data tambahan untuk TC-GS-HHR-183, 338, dan 454:
   - Seed Usage Event DD-01 UE-01 sampai UE-06 (`Fixture.hardwareHandheldReader.seedUsageDd01`): enam baris Tab Usage DD-01 (`SN-HHR-00101`), sebagian dengan `Transaction ID` kosong; pemulihan oleh fixture backend.
   - Seed Changelog Client A CL-01 sampai CL-09 (`Fixture.hardwareHandheldReader.seedChangelogClientA`): DD-03 (`Zebra Mobile Reader - 1`, `SN-HHR-00103`) memiliki 3 entri Changelog (CL-06, CL-07, CL-08); Modal Changelog memuat baris dengan nilai kosong. Pemulihan oleh fixture backend.
 - Kemampuan teknis: menangkap berkas unduhan browser ke direktori bersih per unduhan supaya nama berkas yang sama (`Handheld-Reader-List.xlsx`, `Handheld-Reader-List.csv`) tidak tertimpa atau diberi akhiran `(1)`; membaca isi berkas CSV (byte mentah untuk BOM dan pemisah, serta sel) dan XLSX (nilai dan tipe sel, termasuk sel angka vs teks). Berkas unduhan dihapus di hook `after`.
@@ -137,17 +137,15 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`, section 4a-6. Kelas binary buffer (prinsip 13f): isi berkas dipisah dari Download biasa (spec 057) dan kegagalan ekspor (spec 028).
-- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC di spec: 312, 314 (daftar utama), lalu 183, 195, 338, 454 yang dipindah dari spec 036, 043, dan 062 (keputusan user 2026-10-30); tiap TC dipindah seluruhnya karena klausa fungsional (nama berkas, tanpa toast sukses, Overlay Column Visibility) dan klausa isi berkas berada dalam satu TC yang sama.
+- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC di spec: 312, 314 (daftar utama), lalu 183, 195, 338, 454 (Tab Usage, Overlay Column Visibility, Modal Changelog, Tab Changelog). Tiap TC berada utuh di spec ini karena klausa fungsional (nama berkas, nama kolom, jumlah baris, tanpa toast sukses, Overlay Column Visibility) dan klausa isi berkas (nilai sel, BOM, tipe sel) berada dalam satu TC yang sama. Nama berkas, nama kolom, dan jumlah baris adalah asersi fungsional (konvensi bagian 3 prinsip 13f); asersi serupa untuk Daftar Reader ada di spec 057, sedangkan nilai sel, BOM, dan tipe sel hanya di spec ini.
 - Langkah penghubung (aksi tanpa `Verifikasi`): menutup overlay dengan `Esc`; mengaktifkan kolom `Last Scanned In` dan `Last User` serta memulihkannya; membuka isi berkas unduhan; membuka dan menutup Popup Detail, Modal Changelog, dan Overlay (langkah 30, 42, 43, 47, 52, 63, 64, 65, 72); memuat ulang halaman sesudah fixture mengubah Alias Name DD-02 (langkah 23).
 - Spec memuat 72 langkah (di atas sekitar 35 langkah). Alasan: satu kelas (isi berkas unduhan, prinsip 13f), satu akun, hanya membaca data (satu-satunya perubahan state adalah Alias Name DD-02 oleh fixture dan kolom yang dipulihkan); tiap blok TC membuka dan menutup popup atau modal sendiri dari layar daftar, sehingga kegagalan satu blok tidak menghilangkan makna blok lain.
 - Asersi "tidak ada toast sukses" (TC-GS-HHR-183, 338, 454) diletakkan segera sesudah pemicu pilihan format dan sebelum asersi berkas terunduh yang menjadi anchor positifnya; absence kolom `Checkbox` (langkah 51) didahului langkah 50 (header memuat kolom lain).
-- Pembagian TC lintas spec: Download biasa (TC-GS-HHR-306 sampai 311, 313) di spec 057; kegagalan Download (TC-GS-HHR-315) di spec 028; Download lebih dari 5.000 baris (TC-GS-HHR-316) di spec 059; TC-GS-HHR-469 (hover nama pengguna, semula satu blok dengan 338) tetap di spec 062.
+- Pembagian TC lintas spec: Download biasa (TC-GS-HHR-306 sampai 311, 313) di spec 057; kegagalan Download (TC-GS-HHR-315) di spec 028; Download lebih dari 5.000 baris (TC-GS-HHR-316) di spec 059; TC-GS-HHR-469 (hover nama pengguna) ada di spec 062.
 - Temuan untuk QA:
-  - TC-GS-HHR-312: Langkah Uji hanya mengaktifkan kolom `Last Scanned In`, tetapi Expected g memeriksa `Last User`, yang tersembunyi secara bawaan dan tidak ikut ter-export bila disembunyikan (TC-GS-HHR-308); spec juga mengaktifkan `Last User`.
-  - TC-GS-HHR-312: Expected d ("`SKU` kosong ditulis `-`") tidak dapat diasersi pada baris DD-01, DD-02, dan DD-04 (ketiganya memiliki SKU pada Seed Reader A). Spec mengasersi sel `SKU` kosong pada DD-07 (`SN-HHR-00108`, Jalur B tanpa SKU) dan menambahkan baris itu ke Langkah Uji.
   - TC-GS-HHR-312: Expected a ("warna badge tidak ikut") tidak punya cara pengamatan sendiri pada berkas; spec mengasersi sel berisi teks label saja.
   - TC-GS-HHR-312 dan 314: TC tidak menyebut cara menangkap berkas unduhan dan membaca isinya (tipe sel angka, byte BOM, pemisah); kemampuan tersebut disediakan tim FE (Prerequisites).
   - TC-GS-HHR-314: precondition d mengubah Alias Name DD-02 lewat fixture tanpa menyebut mekanismenya; perubahan itu dapat menambah entri Changelog dan mengubah Seed Reader A. Spec tidak mengasersi Changelog.
   - TC-GS-HHR-314: Expected tidak menyebut baris header dan nama kolom `Alias Name`; spec membaca sel berdasarkan baris Serial Number `SN-HHR-00102`.
-  - TC-GS-HHR-183, 195, 338, dan 454: dipindah dari spec 036, 043, dan 062; temuan TC masing-masing (nilai kosong `-` tidak menyebut kolom pada 338; letak unduhan tidak disebut) mengikuti catatan di atas. Mekanisme membaca berkas unduhan disediakan tim FE.
+  - TC-GS-HHR-183, 195, 338, dan 454: temuan TC masing-masing (nilai kosong `-` tidak menyebut kolom pada 338; letak unduhan tidak disebut) mengikuti catatan di atas. Mekanisme membaca berkas unduhan disediakan tim FE.
   - Post Condition semua TC di spec ini `-`; tidak ada yang diasersi.

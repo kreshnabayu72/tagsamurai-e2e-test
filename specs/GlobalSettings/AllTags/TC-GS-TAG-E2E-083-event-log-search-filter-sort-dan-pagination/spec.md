@@ -26,7 +26,7 @@ coverage:
 - Kolom tabel Event Log dibaca dengan nilai yang berbeda pada kolom yang disort/dicari/difilter: `Activity` (`Activate`, `Delete`), `PIC` (`Budi S`, `Siti A`), `Success` (22, 10, 5, 4, 3, 1, 0), `Not Found Action` (`Marked as Damaged/Missing`, `Kept previous status`, `—`) sehingga asersi memakai sedikitnya dua nilai distinct (S-11).
 - Asumsi tanggal: tanggal sistem lingkungan run lebih besar dari 16/09/26; rentang Filter Date seed `07/08/26` sampai `16/09/26` (Tab Activate TAG) dan `08/08/26` sampai `16/09/26` (Tab Audit TAG) berlaku.
 - Kemampuan teknis: memilih rentang tanggal pada date range picker Filter Panel Event Log.
-- State global yang diubah: tidak ada (Search, Filter, dan Sort modal Event Log tidak dipertahankan antar pembukaan modal); Rows per page modal diubah pada langkah 45 dan dipulihkan pada langkah 48.
+- State global yang diubah: tidak ada (Search, Filter, dan Sort modal Event Log tidak dipertahankan antar pembukaan modal); Rows per page modal diubah pada langkah 39 dan dipulihkan pada langkah 48.
 
 ## Test Steps
 
@@ -76,13 +76,13 @@ coverage:
 
 37. Klik tab `Activate TAG`, klik Filter, pilih Date `07/08/26` sampai `16/09/26`, klik `[Apply]`, lalu tutup Filter Panel dengan klik Filter
 38. Verifikasi urutan awal `Date` descending: baris pertama `E-01`, baris kedua `E-02`
-39. Klik header `Date` sekali
-40. Verifikasi `Date` ascending (Oldest First): baris pertama `E-13` (07/08/26 09:00), baris kedua `E-12` (08/08/26 09:00)
-41. Klik header `Success` dua kali
-42. Verifikasi `Success` descending dari nilai terbesar: baris pertama Success `22` (`E-01`), baris kedua Success `10` (`E-02`)
-43. Klik header `PIC` sekali
-44. Verifikasi `PIC` berurutan berdasarkan nama lengkap A-Z: baris PIC `Budi S` (`E-01`, `E-03`, `E-05`, `E-14`) berada sebelum baris PIC `Siti A`
-45. Ubah Rows per page menjadi 25 (seluruh 14 baris tampil pada satu halaman)
+39. Ubah Rows per page menjadi 25 (seluruh 14 baris tampil pada satu halaman)
+40. Klik header `Date` sekali
+41. Verifikasi `Date` ascending (Oldest First): baris pertama `E-13` (07/08/26 09:00), baris kedua `E-12` (08/08/26 09:00)
+42. Klik header `Success` dua kali
+43. Verifikasi `Success` descending dari nilai terbesar: baris pertama Success `22` (`E-01`), baris kedua Success `10` (`E-02`)
+44. Klik header `PIC` sekali
+45. Verifikasi `PIC` berurutan berdasarkan nama lengkap A-Z: baris PIC `Budi S` (`E-01`, `E-03`, `E-05`, `E-14`) berada sebelum baris PIC `Siti A`
 46. Klik header `Activity` sekali
 47. Verifikasi `Activity` alfabetis: baris Activity `Activate` berada sebelum baris Activity `Delete`
 48. Ubah Rows per page kembali menjadi 10
@@ -104,7 +104,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md`. Subjudul `###` memetakan langkah ke id TC granular. Spec hanya membaca data.
 - Urutan TC dalam spec sama dengan sumber (253, 254, 255, 256). Setiap blok mengosongkan Search dan menghapus chip sebelum blok berikutnya (S-09).
 - Alasan spec di atas sekitar 35 langkah (57 langkah): empat TC memakai dataset Seed Event Log yang sama dan modal Event Log yang sama (prinsip 1 bagian 3, topik satu dataset), seluruhnya read-only dan satu kelas harness; pemisahan menambah login, pembukaan modal, dan penerapan Filter Date berulang. Tidak ada langkah berulang dengan ekspansi.
-- Langkah penghubung (tanpa `Verifikasi`, tidak ada di TC): langkah 2, 16, 37, 49 (Filter Date membatasi tabel pada populasi Seed Event Log karena Event Log menumpuk, S-12), langkah 3 (membuka input Search; placeholder diasersi tepat saat kotak masih kosong, S-14), langkah 15, 21 (mengosongkan Search), langkah 27 (rentang Date ikut dalam Apply pertama), langkah 31 (menghapus chip), langkah 36 (menutup panel), langkah 45 dan 48 (Rows per page 25 supaya 10 baris `Activate` dan 4 baris `Delete` tampil pada satu halaman dan urutan `Activity` teramati, lalu dipulihkan ke 10), langkah 52 (menutup dan membuka kembali modal sehingga sort kembali ke default, lalu menerapkan ulang Filter Date sebelum membaca pagination).
+- Langkah penghubung (tanpa `Verifikasi`, tidak ada di TC): langkah 2, 16, 37, 49 (Filter Date membatasi tabel pada populasi Seed Event Log karena Event Log menumpuk, S-12), langkah 3 (membuka input Search; placeholder diasersi tepat saat kotak masih kosong, S-14), langkah 15, 21 (mengosongkan Search), langkah 27 (rentang Date ikut dalam Apply pertama), langkah 31 (menghapus chip), langkah 36 (menutup panel), langkah 48 (memulihkan Rows per page ke 10 sebelum Tab Audit TAG; Rows per page 25 pada langkah 39 adalah langkah TC-GS-TAG-255), langkah 52 (menutup dan membuka kembali modal sehingga sort kembali ke default, lalu menerapkan ulang Filter Date sebelum membaca pagination).
 - Langkah 6, 8, 10, 12, 20, 28, 30 adalah asersi universal ("hanya baris ...") dan memakai baris-baris yang disebut sebagai pembanding positif; baris `No results found` pada langkah 14 dan 18 adalah anchor positif absence hasil Search.
 - Expected e TC-253 menyatakan tab Activate TAG memakai `16/09/26`; pencarian Date dibuktikan lewat empty state `No results found`.
 - Temuan untuk QA:
@@ -113,5 +113,4 @@ coverage:
   - TC-254 Expected a ("opsi `PIC` hanya admin yang tercatat"): opsi dibangun dari riwayat yang terus bertambah (admin lain dari spec lain ikut tercatat), sehingga klausa "hanya" tidak dapat diasersi utuh; spec mengasersi bahwa `Budi S` dan `Siti A` ada pada opsi.
   - TC-255 Expected d ("`PIC` berdasarkan nama lengkap A-Z, bukan format tampilan `Budi S`") tidak dapat dibedakan dari urutan format tampilan pada data seed (`Budi S` mendahului `Siti A` pada kedua cara); TC perlu data PIC yang membedakan nama lengkap dan singkatan.
   - TC-255 Expected f tidak menyebut posisi baris Not Found Action `—` (A-02); spec tidak mengasersi posisinya.
-  - TC-255 Expected e (urutan `Activity`) tidak dapat diasersi pada halaman 1 berukuran 10: Filter Date `07/08/26` sampai `16/09/26` memuat 10 baris `Activate` dan 4 baris `Delete`, sehingga ascending hanya menampilkan `Activate`. Spec menaikkan Rows per page menjadi 25 (langkah 45); TC perlu menyebut ukuran halaman atau cara menjangkau baris `Delete`.
   - TC-256 Expected menyebut "halaman 2 memuat sisa baris" tanpa teks footer halaman 2; spec mengasersi 4 baris sisa saja.

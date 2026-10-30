@@ -113,7 +113,7 @@ coverage:
 
 ### TC-GS-IMPORT-671: Batas panjang live pada tiap field
 
-Untuk setiap baris tabel "Batas panjang live" (langkah 40 sampai 54 diulang sembilan kali, urutan No 1 sampai 9):
+Untuk setiap baris tabel "Batas panjang live" (langkah 40 sampai 52 diulang sembilan kali, urutan No 1 sampai 9):
 
 40. Buka Sub-Tab sesuai kolom Sub-Tab
 41. Klik `⋯` pada baris sesuai kolom Baris, pilih `Edit`
@@ -157,11 +157,12 @@ Untuk setiap baris tabel "Field wajib dikosongkan" (langkah 53 sampai 60 diulang
 71. Klik `[OK]`
 72. Verifikasi dialog tertutup
 73. Pulihkan jam server ke waktu nyata (aksi tanpa `Verifikasi`)
-74. Muat ulang halaman Import > Brand
-75. Verifikasi baris #1 menampilkan `Lenovo`
-76. Verifikasi tidak ada baris `Lenovo Baru`, `Acme Corp`, maupun `Acme Corporation`
-77. Verifikasi kartu Total Rows menampilkan 11
-78. Verifikasi Pagination "Showing 1 - 10 of 11 items"
+74. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog Discard Changes
+75. Muat ulang halaman Import > Brand
+76. Verifikasi baris #1 menampilkan `Lenovo`
+77. Verifikasi tidak ada baris `Lenovo Baru`, `Acme Corp`, maupun `Acme Corporation`
+78. Verifikasi kartu Total Rows menampilkan 11
+79. Verifikasi Pagination "Showing 1 - 10 of 11 items"
 
 ## Notes
 
@@ -170,7 +171,8 @@ Untuk setiap baris tabel "Field wajib dikosongkan" (langkah 53 sampai 60 diulang
 - Penyimpangan urutan dari TC: TC-673 dan TC-212 sampai 214 mendahului blok Sub-Tab lain; TC-842 dijalankan paling akhir karena menghapus baris dan memajukan jam server (prinsip 5 bagian 3). Jam server dipulihkan pada langkah 73 (sesudah Save ditolak dan sebelum pemuatan ulang) sebagai langkah aksi tanpa `Verifikasi` (S-09); hook `after` hanya cadangan.
 - P-2: langkah 61, 65, 66, dan 73 adalah pemicu atau pemulihan (jam server, permintaan Remove langsung, pengenal baris); asersi respons server (langkah 67) hanya status sukses. Perilaku FE atas Save diasersi pada langkah 69 sampai 72.
 - Langkah penghubung (tanpa `Verifikasi`): langkah 8, 16 sampai 17, 32, 39, 51 sampai 52, dan 60 (`[Cancel]` lalu `[Discard]`) membuang perubahan karena sesi edit berisi perubahan sehingga dialog Discard Changes pasti tampil.
-- Spec berisi sekitar 230 langkah dengan ekspansi (langkah 40 sampai 52 dikali 9 dan langkah 53 sampai 60 dikali 9 ditambah 40 langkah lain). Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (Save diblokir all-or-nothing), parameter tiap iterasi ada di tabel Prerequisites tanpa langkah bersyarat, tiap blok berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung sebelum muat ulang: langkah 74 (`[Cancel]` lalu `[Discard]`) menutup sesi edit yang masih berisi perubahan (langkah 62 sampai 64) sebelum langkah 75 memuat ulang halaman, karena dialog `[OK]` pada langkah 71 tidak menutup sesi (S-08, S-09, K-19c).
+- Spec berisi sekitar 247 langkah dengan ekspansi (langkah 40 sampai 52 dikali 9 dan langkah 53 sampai 60 dikali 9 ditambah 58 langkah lain). Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (Save diblokir all-or-nothing), parameter tiap iterasi ada di tabel Prerequisites tanpa langkah bersyarat, tiap blok berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: TC-GS-IMPORT-672 dan 675 (karakter terlarang dan format) ada di spec 095; TC-GS-IMPORT-871 dan 869 (kunci sesi) ada di spec lain.
 - Temuan untuk QA:
   - TC-GS-IMPORT-673 langkah 3 (121 karakter `A` diikuti emoji 😀) belum menyebut injeksi value langsung ke DOM, sedangkan TC-GS-IMPORT-672 memakainya karena filter input FE memblok karakter di luar whitelist; spec menulis langkah 34 dengan injeksi agar kedua aturan sama-sama dilanggar dan presedensi pesan teruji.

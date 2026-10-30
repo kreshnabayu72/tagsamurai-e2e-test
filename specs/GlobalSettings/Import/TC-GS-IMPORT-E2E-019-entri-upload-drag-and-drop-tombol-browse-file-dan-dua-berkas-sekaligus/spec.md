@@ -55,14 +55,17 @@ coverage:
 17. Klik `[Confirm Mapping]`
 18. Perhatikan Staging Table
 19. Verifikasi draft berisi 12 baris (Total Rows 12)
-20. Verifikasi Staging Table tanpa baris Nikon
+20. Klik halaman 2 pada Pagination
+21. Verifikasi halaman 2 hanya menampilkan `Row #` 11 dan 12
+22. Verifikasi Staging Table tanpa baris Nikon
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 69, 70, 563. TC-GS-IMPORT-563 membuat draft sehingga ditaruh terakhir; TC-GS-IMPORT-69 dan 70 menutup modal bersih sehingga Dropzone tetap tampil untuk TC berikutnya.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 2, 7, 10, 14, 18 (mengamati sesuai Langkah Uji TC) dan langkah 5 dan 12 (menutup modal bersih dengan `[Cancel]`; TC tidak menyebut cara menutup modal; tidak ada dialog karena mapping tidak diubah).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 2, 7, 10, 14, 18 (mengamati sesuai Langkah Uji TC) dan langkah 5 dan 12 (menutup modal bersih dengan `[Cancel]`; TC tidak menyebut cara menutup modal; tidak ada dialog karena mapping tidak diubah), serta langkah 20 (pindah ke halaman 2 Pagination).
+- Langkah 20 sampai 22 memeriksa absence `Nikon` pada halaman 2 karena draft 12 baris tampil 10 baris per halaman dan baris `Nikon` berada di `Row #` 13 atau sesudahnya bila berkas kedua ikut diproses; langkah 21 (`Verifikasi` halaman 2 hanya memuat `Row #` 11 dan 12) adalah asersi tambahan di luar Expected TC dan menjadi anchor positif untuk absence di langkah 22 (S-03, S-14).
 - Temuan untuk QA:
   - TC-GS-IMPORT-69 dan 70 tidak menyebut cara menutup Modal Column Mapping sesudah asersi; spec menutup lewat `[Cancel]` sebagai langkah penghubung.
   - Skrip reset draft Client C tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE (S-13).

@@ -51,10 +51,10 @@ coverage:
 9. Centang `Meter` dan `Liter`
 10. Ketik Search `Pack`, tekan Enter
 11. Centang `Pack`
-12. Klik `(←)` pada kotak Search
-13. Verifikasi counter `3 units selected`
-14. Uncheck `Pack`
-15. Verifikasi counter `2 units selected`
+12. Verifikasi counter `3 units selected`
+13. Uncheck `Pack`
+14. Verifikasi counter `2 units selected`
+15. Klik `(←)` pada kotak Search
 16. Klik `[✕]` pada bar
 17. Verifikasi seleksi kosong
 18. Verifikasi Bulk Action Bar hilang
@@ -120,7 +120,7 @@ coverage:
 60. Verifikasi counter `2 units selected`
 61. Buka Filter, isi Last Updated 01 Jan 2020 sampai hari ini, klik [Apply]
 62. Verifikasi counter `2 units selected`
-63. Buka Filter, klik [Clear Field], klik [Apply]
+63. Klik [Clear Field], klik [Apply]
 64. Verifikasi counter `2 units selected`
 65. Klik header Unit Name hingga kembali netral
 66. Verifikasi `Box` dan `Dozen` tetap tercentang
@@ -132,9 +132,10 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Jumlah langkah: 67.
 - Urutan TC dalam spec: 109, 110, 111, 274, 276, 277, 275, 279 (urutan sumber 109, 110, 111, 274, 275, 276, 277, 279). TC-276 melanjutkan seleksi 100% dari TC-274 (langkah 1 dan 2 TC-276 "centang 1 baris, klik Select All" sudah dipenuhi langkah 26 dan 27); TC-277 membuat ulang kondisi 100% (langkah 37) sebelum uncheck. TC-275 (Search) ditaruh sesudahnya karena membutuhkan state tabel bersih dari seleksi.
 - Spec ini sekitar 67 langkah (di atas batas 35 langkah); alasan pertahanan: seluruh TC satu kelas dan satu dataset (Bulk Action Bar pada tabel baseline 20 unit) dan tidak ada aksi yang mengubah atau menghapus data. Blok diawali pembersihan seleksi, kecuali satu rantai: TC-276 melanjutkan TC-274 (langkah 32 memakai seleksi 100% dari langkah 27), sehingga kegagalan TC-274 membuat TC-276 kehilangan makna; blok lain berdiri sendiri. Delapan TC dipetakan ke satu spec karena kondisi data identik.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 7 (menutup overlay `Bulk Action`), 8, 42, 48, 67 (membersihkan seleksi, S-09), langkah 10 dan 12 (Search `Pack` membawa baris `Pack` ke halaman 1 untuk dicentang, lalu `(←)` mengosongkannya; S-14), 49 dan 56 (mengosongkan Search lewat `(←)`), langkah 65 (reset Sort ke netral), dan langkah 63 (membersihkan Filter yang merupakan bagian langkah 5 TC-279). Langkah 51 sampai 66 menyertai Verifikasi "tetap tercentang" hanya pada saat baris `Box` dan `Dozen` tampil di halaman aktif (langkah 53, 58, 66); sesudah sort descending kedua baris berada di halaman lain sehingga hanya counter yang diasersi (langkah 60, 62, 64).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 7 (menutup overlay `Bulk Action`), 8, 42, 48, 67 (membersihkan seleksi, S-09), langkah 10 dan 15 (Search `Pack` membawa baris `Pack` ke halaman 1 untuk dicentang dan di-uncheck, lalu `(←)` mengosongkannya; S-14), 49 dan 56 (mengosongkan Search lewat `(←)`), langkah 65 (reset Sort ke netral), dan langkah 63 (membersihkan Filter yang merupakan bagian langkah 5 TC-279). Langkah 51 sampai 66 menyertai Verifikasi "tetap tercentang" hanya pada saat baris `Box` dan `Dozen` tampil di halaman aktif (langkah 53, 58, 66); sesudah sort descending kedua baris berada di halaman lain sehingga hanya counter yang diasersi (langkah 60, 62, 64).
 - TC-GS-UOM-275: pada baseline 20 unit, Search `kilo` menghasilkan satu baris (M = 1, `Kilogram`); Expected TC menyebut `1 unit selected` bila M = 1 dan tombol `Select All (M records)` berubah menjadi `Unselect All`. Langkah 44 adalah `Verifikasi` pembanding (bagian 8b butir 2) bahwa baris `Kilogram` (M = 1) tampil sebagai hasil Search, bukan dari Expected TC; langkah 46 dan 47 mengasersi kondisi setelah baris dicentang.
 - TC-GS-UOM-279 butir a ("counter tetap setelah tiap langkah") dipecah per langkah: 52, 55, 57, 60, 62, 64.
 - Temuan untuk QA:
   - TC-GS-UOM-275 memakai Search `kilo` (data uji TC) yang pada baseline 20 unit hanya cocok dengan `Kilogram`, sehingga skenario "centang seluruh M baris satu per satu" tidak menguji beberapa baris; perlu data uji dengan M lebih dari 1 bila QA ingin kasus beberapa baris. Teks tombol pada M = 1 ditulis `Select All (1 record)` mengikuti bentuk tunggal di prd-conventions §8; Expected TC-GS-UOM-275 tidak menyebut bentuk tunggal itu.
   - TC-GS-UOM-279 langkah 5 menyebut Filter Last Updated "01 Jan 2020 sampai hari ini" tanpa format tanggal; spec mengikuti Format Tanggal General Settings default environment.
+  - Panel Filter sesudah `[Apply]`: langkah 63 tidak membuka ulang panel karena spec mengasumsikan panel tetap terbuka sesudah `[Apply]` pada langkah 61. Asumsi kerja ini belum diamati di aplikasi: prd-conventions §9.8 hanya menyebut penutupan panel lewat klik luar panel atau klik ulang icon Filter dan tidak menyatakan keadaan panel sesudah `[Apply]`. Spec 037, 038, 039, dan 045 memakai asumsi yang sama. Bila aplikasi menutup panel sesudah `[Apply]`, langkah 63 perlu diawali `Klik Filter`.

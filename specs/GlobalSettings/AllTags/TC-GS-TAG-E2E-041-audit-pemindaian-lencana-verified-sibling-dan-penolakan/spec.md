@@ -29,9 +29,9 @@ coverage:
   | AU2 (DD-32) | `E2801160600002054D8A5002` | RFID Object | Damaged/Missing |
   | AU3 (DD-33) | `E2801160600002054D8A5003` | RFID Object | Retired |
   | AU4 (DD-34) | `E2801160600002054D8A5004` | RFID Object | Available |
-  | AU5 (DD-35) | `E2801160600002054D8A5005` | RFID Object | Reserved |
+  | AU5 (DD-35) | `E2801160600002054D8A5005` | RFID Object | Reserved (dipakai sebagai precondition TC, tidak diasersi) |
   | AU6 (DD-36) | `E2801160600002054D8A5006` | RFID Object | Paired |
-  | AU7 (DD-37) | `E2801160600002054D8A5007` | RFID Object | To be Returned |
+  | AU7 (DD-37) | `E2801160600002054D8A5007` | RFID Object | To be Returned (dipakai sebagai precondition TC, tidak diasersi) |
   | AUN (DD-38) | `04A224B2C15E95` | NFC | Available (combined dengan AU1) |
 
 - Data uji: `E2801160600002054D8A3003` (DD-N9; RFID belum diaktivasi), `E2801160600002054D8A` (DD-N10; EPC 20 karakter, format salah).

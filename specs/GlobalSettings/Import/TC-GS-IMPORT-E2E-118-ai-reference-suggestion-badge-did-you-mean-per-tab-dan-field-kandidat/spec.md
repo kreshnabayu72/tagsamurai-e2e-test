@@ -58,7 +58,7 @@ coverage:
 
 #### TC-GS-IMPORT-308: badge pada sel Position tidak ditemukan
 
-10. Reset draft Client C Tab User Login lewat skrip reset
+10. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 11. Klik [Upload File] di toolbar dan pilih berkas `user-login-pos-develper.csv`
 12. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 13. Verifikasi baris #1 berstatus `error`
@@ -70,7 +70,7 @@ coverage:
 
 #### TC-GS-IMPORT-313: tiga kandidat memenuhi ambang, badge hanya peringkat 1
 
-19. Reset draft Client C Tab User Login lewat skrip reset
+19. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 20. Klik [Upload File] di toolbar
 21. Pilih berkas `user-login-div-gudg.csv` di file picker
 22. Biarkan seluruh dropdown File Column pada nilai auto-match
@@ -83,7 +83,7 @@ coverage:
 #### TC-GS-IMPORT-314: kandidat berkemiripan seri diurutkan ascending tidak peka huruf besar-kecil
 
 28. Reset draft Client C Tab User Login lewat skrip reset
-29. Buat Division `alpha team` dan `Beta Team` di Client C lewat sesi API hingga tersimpan (D-43)
+29. Buat Division `alpha team` dan `Beta Team` di Client C lewat sesi API hingga tersimpan (D-43), lalu muat ulang halaman Import > User Login
 30. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-alpa.csv`
 31. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 32. Perhatikan sel Division baris #1
@@ -92,7 +92,7 @@ coverage:
 
 #### TC-GS-IMPORT-315: tanpa kandidat berkemiripan 0,8 atau lebih, tanpa badge
 
-35. Reset draft Client C Tab User Login lewat skrip reset
+35. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 36. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-xyz.csv`
 37. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 38. Verifikasi baris #1 berstatus `error`
@@ -102,7 +102,7 @@ coverage:
 
 #### TC-GS-IMPORT-317: tanpa kandidat memadai, Create Missing tersedia di Callout dan menu row action
 
-42. Reset draft Client C Tab User Login lewat skrip reset
+42. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 43. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-logistik.csv`
 44. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 45. Perhatikan sel Division baris #1 dan Error Summary Callout
@@ -114,7 +114,7 @@ coverage:
 
 #### TC-GS-IMPORT-710: kemiripan tepat 0,8 ditampilkan sebagai saran
 
-51. Reset draft Client C Tab User Login lewat skrip reset
+51. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 52. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudn.csv`
 53. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 54. Verifikasi baris #1 berstatus `error`
@@ -137,7 +137,7 @@ coverage:
 
 #### TC-GS-IMPORT-310: badge pada sel Position tidak ditemukan
 
-66. Reset draft Client C Tab User Non Login lewat skrip reset
+66. Reset draft Client C Tab User Non Login lewat skrip reset, lalu muat ulang halaman Import > User Non Login
 67. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-pos-supervsor.csv`
 68. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 69. Verifikasi baris #1 berstatus `error`
@@ -162,7 +162,7 @@ coverage:
 
 #### TC-GS-IMPORT-825: kandidat berskor 0,79 di bawah ambang, tanpa badge, Create Missing tersedia
 
-83. Reset draft Client C Tab User Login lewat skrip reset
+83. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 84. Atur mock layanan AI ke mode kandidat berskor (D-71)
 85. Klik [Upload File] di toolbar
 86. Pilih berkas `user-login-div-gudx.csv` di file picker
@@ -179,7 +179,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`, TC-GS-IMPORT-307 sampai 310, 313 sampai 315, 317, 710, 711, 825.
 - Urutan TC sumber diubah: TC 311 dan 312 (Accept dan Dismiss) ada di spec 119; di spec ini pengelompokan menurut Tab dan mode mock (mode normal lebih dulu, mode tunda 3 detik dan D-71 sesudahnya) supaya mode mock diubah seminimal mungkin (S-10).
 - Spec berisi 93 langkah, di atas sekitar 35 langkah. Alasan: sebelas TC, tiap TC berdiri sendiri dengan draft barunya dan memverifikasi satu kondisi badge; seluruhnya satu kelas (AI Reference Suggestion, mock deterministik) dan kegagalan satu TC tidak membuat TC lain kehilangan makna.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 57, 75 (pindah Tab), 10, 19, 28, 35, 42, 51, 66, 83 (reset draft), 29 (seed D-43), 50 (tutup menu), 76 dan 84 (atur mode mock), 79 (jeda nyata 4 detik sesuai TC), 93 (pulihkan mock).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 57, 75 (pindah Tab), 10, 19, 28, 35, 42, 51, 66, 83 (reset draft; sesudah reset pada 10, 19, 35, 42, 51, 66, 83 halaman Import Tab itu dimuat ulang, sedangkan pemuatan ulang sesudah reset 28 dilakukan di langkah 29), 29 (seed D-43 lalu muat ulang halaman Import > User Login), 50 (tutup menu), 76 dan 84 (atur mode mock), 79 (jeda nyata 4 detik sesuai TC), 93 (pulihkan mock).
 - Create Missing hanya diamati ketersediaannya pada TC 317 dan 825 (tidak dijalankan); perilaku Create Missing ada di spec 122 sampai 130.
 - Pembagian TC lintas spec: TC-GS-IMPORT-311, 312, 706 sampai 709 ada di spec 119; TC-GS-IMPORT-318, 320, 716, 826, 827 di spec 120; TC-GS-IMPORT-319, 713 sampai 715, 853, 933 di spec 121.
 - Temuan untuk QA:

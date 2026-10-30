@@ -23,7 +23,7 @@ coverage:
   - Akun Admin Console Client A untuk Admin Console > TAG Stock (TC-GS-TAG-187 dan 347): tidak ada di Pre-setup TC; akun dan kredensial disediakan tim FE (S-13).
 - Layar awal: hook `beforeEach` membuka Admin Console > Approvals > TAG Stock Tab Active (akun pertama spec).
 - Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30; kartu RFID – Object TAG). Target hapus: DD-03 `04A224B2C15E80` (Waiting for Approval, subject Activation Collision pending di Approvals > TAG Stock Tab Active), DD-30 `E28011606000020F00000016` (Official dari unit stok resmi In Use; precondition TC-GS-TAG-187, tidak diasersi selain Expected), DD-12 `E2801160600002054D8A0012` (Self-Purchased dengan unit stok di TAG Stock). Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4); fixture BE memulihkan kondisi awal sebelum spec.
-- Kemampuan teknis (disediakan tim FE/BE): seed dan reset idempotent Seed Registri A, unit stok resmi, subject Activation Collision DD-03, dan sedikitnya satu subject lain di Approvals > TAG Stock Tab Active sebagai pembanding (dipakai pada langkah 24, tidak diasersi selain keberadaannya); pembacaan penanda event Delete selesai diproses (Eventual). Langkah dan selektor Approvals dan Admin Console TAG Stock tidak didefinisikan di TC, PRD, atau LLD (Q-9).
+- Kemampuan teknis (disediakan tim FE/BE): seed dan reset idempotent Seed Registri A, unit stok resmi, subject Activation Collision DD-03, dan sedikitnya satu subject lain di Approvals > TAG Stock Tab Active sebagai pembanding (precondition TC-GS-TAG-145; dipakai pada langkah 25); pembacaan penanda event Delete selesai diproses (Eventual). Langkah dan selektor Approvals dan Admin Console TAG Stock tidak didefinisikan di TC, PRD, atau LLD (Q-9).
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan Seed Registri A, unit stok, dan subject Approvals lewat fixture BE; kembalikan Rows per page ke 10; sesi dikembalikan ke Total Control Client A.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data di atas dan sesi akun.
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate`, lihat `suite.md`.
@@ -52,35 +52,36 @@ coverage:
 ### TC-GS-TAG-347: Delete tag Self-Purchased, unit stok terhapus
 
 14. Catat nilai kartu RFID – Object TAG
-15. Buka menu baris DD-12, lalu klik `Delete`
-16. Klik `Delete` pada dialog
-17. Tunggu event Delete diproses (Eventual)
-18. Verifikasi kartu RFID – Object TAG terpakai berkurang 1 dari nilai yang dicatat
+15. Ubah Rows per page menjadi 50 (seluruh baris tab ini tampil pada satu halaman)
+16. Buka menu baris DD-12, lalu klik `Delete`
+17. Klik `Delete` pada dialog
+18. Tunggu event Delete diproses (Eventual)
+19. Verifikasi kartu RFID – Object TAG terpakai berkurang 1 dari nilai yang dicatat
 
 ### TC-GS-TAG-187 dan TC-GS-TAG-347: unit stok di Admin Console TAG Stock
 
-19. Ganti akun ke akun Admin Console Client A, buka Admin Console > TAG Stock, ketik Search `E28011606000020F00000016`, tekan Enter
-20. Verifikasi unit stok DD-30 berstatus `Available`
-21. Ganti isi kotak search dengan `E2801160600002054D8A0012`, tekan Enter
-22. Verifikasi pencarian menampilkan `No results found` (unit tag DD-12 tidak ada lagi di TAG Stock)
+20. Ganti akun ke akun Admin Console Client A, buka Admin Console > TAG Stock, ketik Search `E28011606000020F00000016`, tekan Enter
+21. Verifikasi unit stok DD-30 berstatus `Available`
+22. Ganti isi kotak search dengan `E2801160600002054D8A0012`, tekan Enter
+23. Verifikasi pencarian menampilkan `No results found` (unit tag DD-12 tidak ada lagi di TAG Stock)
 
 ### TC-GS-TAG-145: subject di Approvals sesudah Delete
 
-23. Ganti akun ke Principal approver, buka Admin Console > Approvals > TAG Stock Tab Active
-24. Verifikasi Tab Active memuat sedikitnya satu subject selain DD-03
-25. Verifikasi Tab Active tidak memuat subject DD-03
-26. Klik Tab History
-27. Verifikasi subject DD-03 tercatat di Tab History dengan Approval `Canceled` dan Approver `—`
+24. Ganti akun ke Principal approver, buka Admin Console > Approvals > TAG Stock Tab Active
+25. Verifikasi Tab Active memuat sedikitnya satu subject selain DD-03
+26. Verifikasi Tab Active tidak memuat subject DD-03
+27. Klik Tab History
+28. Verifikasi subject DD-03 tercatat di Tab History dengan Approval `Canceled` dan Approver `—`
 
 ## Notes
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
-- Spec ini 27 langkah, di bawah ambang sekitar 35. Tiga TC satu topik aksi (Delete tag dan efeknya di Approvals dan Admin Console TAG Stock) dengan satu dataset Seed Registri A dan tiga baris target berbeda; bagian sesudah tiap ganti akun tetap bermakna walau bagian sebelumnya gagal.
+- Spec ini 28 langkah, di bawah ambang sekitar 35. Tiga TC satu topik aksi (Delete tag dan efeknya di Approvals dan Admin Console TAG Stock) dengan satu dataset Seed Registri A dan tiga baris target berbeda; bagian sesudah tiap ganti akun tetap bermakna walau bagian sebelumnya gagal.
 - Pemisahan: TC-GS-TAG-144 dan 371 (efek di Fixed Asset > TAG > To Be Returned, akun Admin FAMS, fixture aset terakhir dan pemulihan Seed Registri A penuh) ada di spec 098; blok FAMS itu mandiri dengan Prerequisites sendiri.
-- Langkah ganti akun eksplisit: 2, 19, 23.
-- Perubahan urutan (S-05 butir terakhir): urutan TC sumber (145, 187, 347) tetap pada blok penghapusan (langkah 1 sampai 18), tetapi verifikasi di Admin Console TAG Stock (TC-GS-TAG-187 dan 347, langkah 19 sampai 22) dan Approvals (TC-GS-TAG-145, langkah 23 sampai 27) dikelompokkan sesudah ketiga Delete supaya ganti akun hanya tiga kali. Principal approver membuka Tab Active lebih dulu (langkah 1) karena subject harus terlihat sebelum DD-03 dihapus.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 2 (bagian mencatat kartu NFC), 8, dan 14 (mencatat baseline kartu), 7, 12, dan 17 (menunggu event Delete diproses, bukan asersi), 2, 19, dan 23 (ganti akun dan navigasi), 26 (membuka Tab History), 9 (mengubah Rows per page menjadi 50 supaya DD-30 dan DD-12 di halaman 3 dan 2 Tab All tampil; dikembalikan ke 10 di hook `after`).
-- Asersi tambahan di luar Expected TC (S-03): langkah 1 (keadaan awal: subject DD-03 tampil sebelum dihapus; precondition TC-GS-TAG-145); langkah 24 (pembanding: sedikitnya satu subject lain di Tab Active sebagai anchor positif sebelum absence langkah 25, bagian 8b butir 2); langkah 5 memakai toast `Success, TAG has been deleted.` yang ditetapkan TC-GS-TAG-142 sebagai teks toast Delete tag.
+- Langkah ganti akun eksplisit: 2, 20, 24.
+- Perubahan urutan (S-05 butir terakhir): urutan TC sumber (145, 187, 347) tetap pada blok penghapusan (langkah 1 sampai 19), tetapi verifikasi di Admin Console TAG Stock (TC-GS-TAG-187 dan 347, langkah 20 sampai 23) dan Approvals (TC-GS-TAG-145, langkah 24 sampai 28) dikelompokkan sesudah ketiga Delete supaya ganti akun hanya tiga kali. Pengamatan kartu RFID – Object TAG (langkah 5 TC-GS-TAG-187 dan 347) dipindah ke sebelum Admin Console, yaitu langkah 13 dan 19. Principal approver membuka Tab Active lebih dulu (langkah 1) karena subject harus terlihat sebelum DD-03 dihapus.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 2 (bagian mencatat kartu NFC), 8, dan 14 (mencatat baseline kartu), 7, 12, dan 18 (menunggu event Delete diproses, bukan asersi), 2, 20, dan 24 (ganti akun dan navigasi), 27 (membuka Tab History). Rows per page 50 pada langkah 9 dan 15 adalah langkah TC-GS-TAG-187 dan 347 (dikembalikan ke 10 di hook `after`).
+- Asersi tambahan di luar Expected TC (S-03): langkah 1 (keadaan awal: subject DD-03 tampil sebelum dihapus; precondition TC-GS-TAG-145); langkah 5 memakai toast `Success, TAG has been deleted.` yang ditetapkan TC-GS-TAG-142 sebagai teks toast Delete tag.
 - Rujukan: TC-GS-TAG-142 dan 143 (Delete sukses per status dan kuota kartu) ada di spec 050; TC-GS-TAG-144 dan 371 ada di spec 098.
 - Temuan untuk QA:
   - Q-9: langkah dan selektor di Approvals dan Admin Console TAG Stock tidak didefinisikan; verifikasi di modul konsumen hanya sejauh Expected TC.
@@ -89,4 +90,3 @@ coverage:
   - TC-GS-TAG-187 tidak punya Expected toast; TC-GS-TAG-145 Expected a menyebut "Toast sukses" tanpa teks (spec memakai `Success, TAG has been deleted.` dari TC-GS-TAG-142).
   - Post Condition TC-GS-TAG-145 butir a, b, dan c identik dengan Expected a dan b.
   - Q-4: identifier tetap; fixture BE memulihkan Seed Registri A sebelum spec.
-  - TC-GS-TAG-145 tidak menyebut subject lain di Tab Active Approvals > TAG Stock; subject pembanding pada langkah 24 disediakan tim FE lewat fixture BE (S-15).

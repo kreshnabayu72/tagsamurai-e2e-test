@@ -75,19 +75,18 @@ coverage:
 27. Klik [Apply]
 28. Verifikasi hasil memuat baris Action `Create`
 29. Verifikasi hasil memuat baris Action `Edit`
-30. Klik Filter
-31. Pilih Field `Symbol`
-32. Klik [Apply]
-33. Verifikasi hasil memuat baris Action `Edit`, Field `Symbol`, Unit Name `Gallon {runId}-048`
-34. Verifikasi setiap baris yang tampil memiliki Action `Edit` dan Field `Symbol`
+30. Pilih Field `Symbol`
+31. Klik [Apply]
+32. Verifikasi hasil memuat baris Action `Edit`, Field `Symbol`, Unit Name `Gallon {runId}-048`
+33. Verifikasi setiap baris yang tampil memiliki Action `Edit` dan Field `Symbol`
 
 ### TC-GS-UOM-182: Filter Date Changelog menyaring berdasarkan rentang
 
-35. Klik Filter, kosongkan field Action dan field Field
-36. Pilih Date hari uji (tanggal awal dan akhir rentang sama dengan hari uji)
-37. Klik [Apply]
-38. Verifikasi sedikitnya satu baris tampil di tabel Changelog
-39. Verifikasi setiap baris yang tampil bertanggal hari uji pada kolom Date
+34. Kosongkan field Action dan field Field
+35. Pilih Date hari uji (tanggal awal dan akhir rentang sama dengan hari uji)
+36. Klik [Apply]
+37. Verifikasi sedikitnya satu baris tampil di tabel Changelog
+38. Verifikasi setiap baris yang tampil bertanggal hari uji pada kolom Date
 
 ## Notes
 
@@ -95,10 +94,11 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Modal Changelog dan Filter Panel dibuka sekali (langkah 1 dan 2). TC-GS-UOM-178 butir b (field multi-select searchable) diasersi pada pembukaan dropdown TC-GS-UOM-180 (langkah 10, 14, 18, 22), supaya tiap dropdown dibuka sekali; TC-GS-UOM-178 butir a ada di langkah 4 sampai 7. TC-GS-UOM-178 dan 180 tetap punya `Verifikasi` sendiri-sendiri.
 - Urutan TC sumber dipertahankan kecuali TC-GS-UOM-179 (placeholder Date, pengamatan tanpa aksi) setelah TC-GS-UOM-178 sebagai screening Filter Panel.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 12, 16, 20, 25 (menutup dropdown), langkah 30 (membuka kembali Filter Panel sesudah [Apply]), dan langkah 35 (mengosongkan filter TC-GS-UOM-181 sebelum TC-GS-UOM-182).
-- Langkah 28 sampai 29 mengasersi OR (keduanya tampil). Langkah 33 adalah pembanding positif bagi langkah 34 (asersi universal AND). Langkah 38 adalah pembanding positif bagi langkah 39.
-- Spec ini di atas batas 35 langkah (39): seluruhnya satu kelas (filter Changelog) pada satu modal Changelog yang dibuka sekali dan satu dataset entri; memecahnya hanya menambah pembukaan modal dan seeding yang sama.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 12, 16, 20, 25 (menutup dropdown), dan langkah 34 (mengosongkan filter TC-GS-UOM-181 sebelum TC-GS-UOM-182).
+- Langkah 28 sampai 29 mengasersi OR (keduanya tampil). Langkah 32 adalah pembanding positif bagi langkah 33 (asersi universal AND). Langkah 37 adalah pembanding positif bagi langkah 38.
+- Spec ini di atas batas 35 langkah (38): seluruhnya satu kelas (filter Changelog) pada satu modal Changelog yang dibuka sekali dan satu dataset entri; memecahnya hanya menambah pembukaan modal dan seeding yang sama.
 - Temuan untuk QA:
   - TC-GS-UOM-180 Expected a menyatakan opsi Unit Name dan Modified By "hanya" berisi nilai yang muncul di Changelog. Untuk Unit Name tidak ada nilai pembanding negatif yang deterministik, sehingga spec hanya mengasersi kehadiran `Centimeter` dan `Gallon {runId}-048`; untuk Modified By mengasersi kehadiran `Sari D` dan ketidakhadiran `Maya P` (Read Only tidak pernah memutasi). Opsi Field dan Action diasersi persis.
   - TC-GS-UOM-182: kata "hanya entri hari ini" diasersi sebagai semua baris yang tampil bertanggal hari uji; tidak ada jaminan di TC bahwa Changelog Client A berisi entri bertanggal selain hari uji, sehingga pengecualian entri non-hari-ini tidak teruji.
   - TC-GS-UOM-181 tidak menyebut tombol atau cara "Clear Filter"; spec mengosongkan field lalu [Apply].
+  - Panel Filter sesudah `[Apply]`: langkah 30 dan 34 tidak membuka ulang panel karena spec mengasumsikan panel tetap terbuka sesudah `[Apply]` (langkah 27 dan 31). TC-GS-UOM-181 langkah 2 ("Tambah Field `Symbol`, Apply") mengisyaratkan hal yang sama. Asumsi kerja ini belum diamati di aplikasi: prd-conventions §9.8 hanya menyebut penutupan panel lewat klik luar panel atau klik ulang icon Filter dan tidak menyatakan keadaan panel sesudah `[Apply]`. Spec 037, 038, 039, dan 045 memakai asumsi yang sama. Bila aplikasi menutup panel sesudah `[Apply]`, langkah 30 dan 34 perlu diawali `Klik Filter`.

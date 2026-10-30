@@ -25,10 +25,10 @@ coverage:
 | Sesi | Peran | Nama user | Email | Env var password |
 |---|---|---|---|---|
 | A | Total Control (Client A) | Sari Dewi | `totalControl_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_TC_PASSWORD` |
-| B (UI) | Admin kedua, Total Control (Client A) | Disediakan tim FE | Email akun ini tidak tertulis di Pre-setup TC (lihat Temuan untuk QA); disediakan tim FE | `Spectra.env.GS_TC2_PASSWORD` |
-| B (API) | Admin kedua yang sama, hanya memicu perubahan state | Disediakan tim FE | Sesi API akun yang sama | Sesi API |
+| B (UI) | Admin B, Total Control (Client A) | Nadia Pratama | `totalControlSecond_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_TC2_PASSWORD` |
+| B (API) | Admin B yang sama, hanya memicu perubahan state | Nadia Pratama | Sesi API akun yang sama | Sesi API |
 
-- Login Sesi A dilakukan di hook `before`; Sesi B (UI) dibuka dengan langkah ganti akun eksplisit (langkah 1) hanya untuk TC-GS-HHR-427 dan TC-GS-HHR-452 karena hasil di sesi B diasersi (tanpa dialog konflik). Untuk TC-GS-HHR-428, TC-GS-HHR-430, dan TC-GS-HHR-431 Admin B memakai sesi API karena hanya memicu perubahan state (P-2 konvensi bagian 3); langkah pemicunya ditulis "hingga ... tersimpan". Hook `after` menutup Sesi B dan mengembalikan sesi ke akun default suite (Sesi A).
+- Login Sesi A dilakukan di hook `before`; Sesi B (UI) dibuka dengan langkah ganti akun eksplisit (langkah 1) hanya untuk TC-GS-HHR-427 dan TC-GS-HHR-452 karena hasil di sesi B diasersi (tanpa dialog konflik). Untuk TC-GS-HHR-428, TC-GS-HHR-430, dan TC-GS-HHR-431 Admin B memakai sesi API karena hanya memicu perubahan state; langkah pemicunya ditulis "hingga ... tersimpan". Hook `after` menutup Sesi B dan mengembalikan sesi ke akun default suite (Sesi A).
 - Data (Client A, plan Growth, Seed Reader A dari fixture BE): DD-01 (`Zebra RFID Reader - 1`, Available, Long Range, `Reader Power` 30 dBm, `Alias Name` `—`), DD-02 (`Gudang Reader - 1`, Available). Data Dinamis: Alias Name `Dock A-{runId}-073`, `Dock B-{runId}-073`.
 - Kemampuan teknis (disediakan tim FE/BE): konteks browser kedua untuk Sesi B (UI); sesi API Admin B untuk Mark as Damaged, Mark as Missing, dan Delete (endpoint tidak didefinisikan di TC, PRD, atau LLD dan tidak ditulis di spec ini); pemulihan Seed Reader A ke keadaan Tabel Data Uji Dinamis TC antar blok (fixture BE; Catatan TC: tabel dipulihkan antar TC).
 - Baseline: jumlah entri Changelog Handheld Reader, System Log aktor (Sari Dewi), dan Activity Log dicatat sesudah aksi Admin B dan sebelum aksi Sesi A (TC-GS-HHR-430, TC-GS-HHR-431), karena aksi Admin B sendiri menambah entri (S-12).
@@ -114,7 +114,6 @@ coverage:
 - Spec melewati sekitar 35 langkah. Alasan: seluruh blok satu kelas harness (multi-konteks dua admin) dan berdiri sendiri; tiap blok memulihkan data dan tidak bergantung pada hasil blok lain.
 - Perilaku Admin B yang sama (TC-GS-HHR-430, TC-GS-HHR-431) dibaca di Sesi A saja; Sesi UI kedua hanya dipakai pada TC-GS-HHR-427 dan TC-GS-HHR-452 karena hasil di sesi B diasersi.
 - Temuan untuk QA:
-  - TC-GS-HHR-427, 428, 430, 431, dan 452 menyebut "Admin kedua (Total Control Client A)" tanpa akun di Tabel Pre-setup TC; spec memakai akun kedua yang disediakan tim FE (env var `GS_TC2_PASSWORD` sudah terdaftar di `.env.example`).
   - TC-GS-HHR-427 dan TC-GS-HHR-452 mengharapkan "tanpa dialog konflik" pada Save sesi kedua; TC tidak menyebut apakah Save sesi pertama diverifikasi di sesi A, sehingga spec mengasersi hasil Save sesi A hanya lewat nilai pada baris DD-01 (butir tambahan yang dicatat sebagai asersi pendukung).
   - TC-GS-HHR-430 dan TC-GS-HHR-431 menyatakan "Tidak ada efek tambahan" dan membandingkan jumlah entri "dengan sebelum aksi"; karena aksi Admin B sendiri menambah entri, baseline spec dicatat sesudah aksi Admin B dan sebelum klik sesi A.
   - TC-GS-HHR-428 menyebut Save tanpa menyebut nilai `Alias Name` yang valid; spec memakai `Dock A-{runId}-073`.

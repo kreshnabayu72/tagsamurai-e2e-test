@@ -33,7 +33,7 @@ coverage:
 | DD-10 | `Gudang Reader - 4` | `SN-HHR-00205` | Waiting for Approval |
 
 - Data Dinamis: tidak ada.
-- Kemampuan teknis: hover; fokus keyboard (Tab, Enter, ArrowDown, Esc); pembacaan state disabled checkbox; pemeriksa kontras otomatis (aturan color-contrast WCAG 2.1 AA, misalnya axe atau setara) yang dapat dijalankan pada halaman, popup, dan dialog (TC-GS-HHR-464).
+- Kemampuan teknis: hover; fokus keyboard (Tab, Enter, ArrowDown, Esc); pembacaan state disabled checkbox; pemeriksa kontras otomatis `axe-core` dengan aturan `color-contrast` (WCAG 2.1 AA) yang dapat dijalankan pada halaman, popup, dan dialog (TC-GS-HHR-464).
 - State global: tidak ada yang diubah selain flag Guided Tooltip (dipulihkan hook suite `after`).
 
 ## Test Steps
@@ -46,7 +46,7 @@ coverage:
 4. Verifikasi Zona Header: ikon `[?]` tepat di kanan Breadcrumb
 5. Verifikasi Zona Header: License Counter Cards `Short Range` dan `Long Range` tampil
 6. Verifikasi Zona Header: Table Tools `Search | Filter | Download | Changelog | Event Log | + Activate Reader` tampil
-7. Verifikasi Zona Body: kolom tampil default `Checkbox (unsortable) | Device Name (sortable) | Alias Name (sortable) | Serial Number (sortable) | SKU (sortable) | Range Type (sortable) | Reader Power (sortable) | Source (sortable) | Last Scanned (sortable) | Status (sortable) | Column Visibility (⋯) (unsortable)`
+7. Verifikasi Zona Body: kolom tampil default `Checkbox (unsortable) | Device Name (sortable) | Alias Name (sortable) | Serial Number (sortable) | SKU (sortable) | Range Type (sortable) | Reader Power (sortable) | Source (sortable) | Last Scanned (sortable) | Status (sortable) | Actions (⋯) (unsortable)`
 8. Verifikasi Zona Body: kolom `Brand`, `Model/Type`, `Last Scanned In`, `Last User`, dan `Activated At` tidak tampil
 9. Verifikasi Zona Body: kolom `Checkbox` tampil sebagai kolom pertama dengan checkbox header dan satu checkbox per baris
 10. Verifikasi Zona Body: checkbox baris `Chainway C72 - 1` (DD-05) dan `Gudang Reader - 4` (DD-10) disabled
@@ -72,25 +72,27 @@ coverage:
 24. Tekan `Tab` hingga fokus berada pada ikon `(⋯)` baris `Zebra RFID Reader - 1` (`SN-HHR-00101`, DD-01)
 25. Tekan `Enter`
 26. Verifikasi `Enter` pada ikon `(⋯)` membuka Overlay row action DD-01
-27. Tekan `ArrowDown` hingga fokus berada pada opsi `Detail`
-28. Verifikasi `ArrowDown` memindahkan fokus antar opsi overlay menurut urutan opsi Overlay row action (PRD §4.2d)
-29. Tekan `Enter`
-30. Verifikasi `Enter` pada opsi `Detail` membuka Popup `Handheld Reader Detail` DD-01
-31. Tekan `Esc`
-32. Verifikasi `Esc` menutup Popup Detail
+27. Tekan `ArrowDown` hingga fokus berada pada opsi `Detail` (fokus awal overlay tidak diasumsikan), lalu tekan `ArrowDown` satu kali per opsi sampai opsi terakhir dan catat urutan fokus
+28. Verifikasi `ArrowDown` memindahkan fokus antar opsi Overlay row action DD-01 (status `Available`, `Long Range`) berurutan: `Detail`, `Edit Alias Name`, `Edit Reader Power`, `Mark as Damaged`, `Mark as Missing`, `Delete`
+29. Tekan `ArrowUp` hingga fokus kembali berada pada opsi `Detail`
+30. Verifikasi `ArrowUp` memindahkan fokus ke opsi sebelumnya pada tiap penekanan
+31. Tekan `Enter`
+32. Verifikasi `Enter` pada opsi `Detail` membuka Popup `Handheld Reader Detail` DD-01
+33. Tekan `Esc`
+34. Verifikasi `Esc` menutup Popup Detail
 
 ### TC-GS-HHR-464: Kontras teks halaman Handheld Reader memenuhi WCAG 2.1 AA 4.5:1
 
-33. Jalankan pemeriksaan kontras otomatis (aturan color-contrast WCAG 2.1 AA) pada halaman
-34. Verifikasi halaman tidak memiliki teks dengan rasio kontras di bawah 4.5:1
-35. Klik Device Name `Zebra RFID Reader - 1` (`SN-HHR-00101`, DD-01) untuk membuka Popup Detail
-36. Jalankan pemeriksaan kontras otomatis yang sama pada Popup Detail DD-01
-37. Verifikasi Popup Detail tidak memiliki teks dengan rasio kontras di bawah 4.5:1
-38. Tutup Popup Detail dengan `Esc`
-39. Klik `(⋯)` baris `Gudang Reader - 1` (`SN-HHR-00102`, DD-02), lalu klik `Edit Alias Name`
-40. Jalankan pemeriksaan kontras otomatis yang sama pada Dialog Edit Alias Name DD-02
-41. Verifikasi Dialog Edit Alias Name tidak memiliki teks dengan rasio kontras di bawah 4.5:1
-42. Tutup Dialog Edit Alias Name dengan klik `✕` di header
+35. Jalankan pemeriksa kontras otomatis `axe-core` dengan aturan `color-contrast` (WCAG 2.1 AA) pada halaman
+36. Verifikasi halaman tidak memiliki teks dengan rasio kontras di bawah 4.5:1
+37. Klik Device Name `Zebra RFID Reader - 1` (`SN-HHR-00101`, DD-01) untuk membuka Popup Detail
+38. Jalankan pemeriksaan kontras yang sama pada Popup Detail DD-01
+39. Verifikasi Popup Detail tidak memiliki teks dengan rasio kontras di bawah 4.5:1
+40. Tutup Popup Detail dengan `✕`
+41. Klik `(⋯)` baris `Gudang Reader - 1` (`SN-HHR-00102`, DD-02), lalu klik `Edit Alias Name`
+42. Jalankan pemeriksaan kontras yang sama pada Dialog Edit Alias Name DD-02
+43. Verifikasi Dialog Edit Alias Name tidak memiliki teks dengan rasio kontras di bawah 4.5:1
+44. Tutup Dialog Edit Alias Name dengan klik `✕` di header
 
 ## Notes
 
@@ -98,12 +100,6 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: 1, 2, 463, 464. TC-GS-HHR-1 dan 2 ditaruh paling awal karena menguji keadaan awal tabel (urutan default tanpa sort) sebelum langkah apa pun yang mengubah state; TC-GS-HHR-464 membuka Popup Detail dan Dialog Edit Alias Name sebagai kejadian terakhir. Dialog Edit Alias Name dibuka satu kali dan ditutup satu kali tanpa mengubah isi (form bersih, tidak memunculkan `Unsaved Changes`).
 - Pembukaan Global Settings > Hardware > Handheld Reader dilakukan hook `beforeEach`; langkah "Buka Global Settings > Hardware > Handheld Reader" pada TC-GS-HHR-1, 2, dan 464 tidak diulang.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 15 (memindahkan kursor), langkah 35 (membuka Popup Detail lewat klik Device Name sebagai cara membuka popup pada TC-GS-HHR-464 karena TC tidak menyebut caranya), langkah 38 (menutup Popup Detail), langkah 39 (membuka Dialog Edit Alias Name lewat row action) dan langkah 42 (menutup dialog).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 15 (memindahkan kursor), langkah 37 (membuka Popup Detail lewat klik Device Name), langkah 40 (menutup Popup Detail dengan `✕`), langkah 41 (membuka Dialog Edit Alias Name lewat row action) dan langkah 44 (menutup dialog).
 - Verifikasi tooltip checkbox DD-05 dan DD-10 (langkah 11 sampai 14) memetakan Expected b.iii TC-GS-HHR-1; TC hanya menyebut tooltip tanpa langkah hover, sehingga langkah hover (langkah 11 dan 13) ditulis sebagai aksi pemicu tooltip.
-- Spec melewati sekitar 35 langkah (42 langkah). Seluruhnya satu kelas (screening baca halaman utama Handheld Reader tanpa aksi yang mengubah data), tiap blok TC berdiri sendiri dan kegagalan satu blok tidak menghilangkan makna blok lain; pemeriksa kontras (TC-GS-HHR-464) berada paling akhir dan tidak dipakai blok lain.
-- Temuan untuk QA:
-  - TC-GS-HHR-1 Expected b.i menamai kolom terakhir `Column Visibility (⋯)`, sedangkan TC-GS-HHR-5 dan 8 menamainya `Actions (⋯)` dan TC-GS-HHR-277 menyebut tooltip header `Column Visibility`. Spec mengikuti penamaan masing-masing TC.
-  - TC-GS-HHR-463 Expected b merujuk urutan opsi pada PRD §4.2d tanpa menuliskan urutan opsinya di TC; spec mengasersi bahwa fokus berpindah antar opsi menurut urutan PRD tanpa mengarang daftar opsi.
-  - TC-GS-HHR-463 tidak menyebut apakah fokus awal Overlay row action sudah berada pada opsi `Detail`; spec menekan `ArrowDown` hingga `Detail` fokus.
-  - TC-GS-HHR-464 tidak menyebut alat pemeriksa kontras; kemampuan teknis ditulis di Prerequisites (axe atau setara) dan dilengkapi tim FE.
-  - TC-GS-HHR-464 tidak menyebut cara membuka Popup Detail DD-01 dan Dialog Edit Alias Name DD-02; spec memakai klik Device Name dan row action `Edit Alias Name`.
+- Spec melewati sekitar 35 langkah (44 langkah). Seluruhnya satu kelas (screening baca halaman utama Handheld Reader tanpa aksi yang mengubah data), tiap blok TC berdiri sendiri dan kegagalan satu blok tidak menghilangkan makna blok lain; pemeriksa kontras (TC-GS-HHR-464) berada paling akhir dan tidak dipakai blok lain.

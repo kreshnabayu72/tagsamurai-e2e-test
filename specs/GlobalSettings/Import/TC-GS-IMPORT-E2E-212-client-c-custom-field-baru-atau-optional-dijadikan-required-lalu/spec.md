@@ -47,38 +47,41 @@ coverage:
 ### Required dikembalikan Optional (TC-GS-IMPORT-938)
 
 11. Total Control Client C: unggah `user-login-taxid-empty-2.csv` dan klik `[Confirm Mapping]` (kolom `Tax ID` terpetakan, sel kosong)
-12. Admin kedua Client C (sesi API) menjadikan Custom Field `Tax ID` Required hingga tersimpan
-13. Total Control Client C: tekan `F5` pada halaman Import
-14. Verifikasi kedua baris berstatus `error`
-15. Verifikasi Staging Metric Cards: Ready to Import 0, Errors 2
-16. Admin kedua Client C (sesi API) menjadikan Custom Field `Tax ID` kembali Optional hingga tersimpan
-17. Total Control Client C: tekan `F5` pada halaman Import > User Login
-18. Verifikasi kedua baris berstatus `pending` tanpa border `danger`
-19. Verifikasi Staging Metric Cards: Total Rows 2, Ready to Import 2, Errors 0
-20. Verifikasi Error Summary Callout tidak tampil
-21. Pulihkan: buang draft User Login Client C lewat skrip reset
+12. Total Control Client C: Tunggu aksi selesai (permintaan mendapat respons)
+13. Admin kedua Client C (sesi API) menjadikan Custom Field `Tax ID` Required hingga tersimpan
+14. Total Control Client C: tekan `F5` pada halaman Import
+15. Verifikasi kedua baris berstatus `error`
+16. Verifikasi Staging Metric Cards: Ready to Import 0, Errors 2
+17. Admin kedua Client C (sesi API) menjadikan Custom Field `Tax ID` kembali Optional hingga tersimpan
+18. Total Control Client C: tekan `F5` pada halaman Import > User Login
+19. Verifikasi kedua baris berstatus `pending` tanpa border `danger`
+20. Verifikasi Staging Metric Cards: Total Rows 2, Ready to Import 2, Errors 0
+21. Verifikasi Error Summary Callout tidak tampil
+22. Pulihkan: buang draft User Login Client C lewat skrip reset
 
 ### Custom Field baru Required (TC-GS-IMPORT-936)
 
-22. Seed draft D-20 lewat skrip seed, lalu muat ulang halaman Import > User Login
-23. Admin kedua Client C (sesi API) membuat Custom Field `Cost Center` (Data Type Text, Required, Active) di Custom Field User hingga tersimpan
-24. Total Control Client C: tekan `F5` pada halaman Import > User Login
-25. Verifikasi kolom `Cost Center` tampil
-26. Verifikasi seluruh 8 baris berstatus `error` dengan sel `Cost Center` kosong berborder `danger`
-27. Verifikasi Staging Metric Cards: Total Rows 8, Ready to Import 0, Errors 8
-28. Verifikasi Error Summary Callout memuat `Cost center must not be empty` dengan badge "8 rows"
-29. Pulihkan: Admin kedua menghapus Custom Field `Cost Center`, buang draft User Login Client C lewat skrip reset
+23. Seed draft D-20 lewat skrip seed, lalu muat ulang halaman Import > User Login
+24. Admin kedua Client C (sesi API) membuat Custom Field `Cost Center` (Data Type Text, Required, Active) di Custom Field User hingga tersimpan
+25. Total Control Client C: tekan `F5` pada halaman Import > User Login
+26. Verifikasi kolom `Cost Center` tampil
+27. Verifikasi seluruh 8 baris berstatus `error` dengan sel `Cost Center` kosong berborder `danger`
+28. Verifikasi Staging Metric Cards: Total Rows 8, Ready to Import 0, Errors 8
+29. Verifikasi Error Summary Callout memuat `Cost center must not be empty` dengan badge "8 rows"
+30. Pulihkan: Admin kedua menghapus Custom Field `Cost Center`, buang draft User Login Client C lewat skrip reset
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Panjang spec: 29 langkah, di atas 35 langkah.
+- Panjang spec: 30 langkah, di atas 35 langkah.
 - P-2: Admin kedua hanya memicu perubahan Custom Field lewat sesi API; hasil diasersi hanya di sesi admin pertama.
-- Langkah 10, 21, dan 29 adalah langkah pemulihan tanpa `Verifikasi` (S-09); hook `after` adalah cadangan. Langkah 22 menyiapkan draft D-20 (penghubung, S-03).
+- Langkah 10, 22, dan 30 adalah langkah pemulihan tanpa `Verifikasi` (S-09); hook `after` adalah cadangan. Langkah 23 menyiapkan draft D-20 (penghubung, S-03).
+- Langkah 12 adalah "Tunggu aksi selesai" (langkah penghubung tanpa `Verifikasi`, bagian 8b butir 8) sebelum Admin kedua mengubah flag Required lewat sesi API.
 - Urutan 937, 938, 936 mengubah urutan nomor TC; alasannya: TC-GS-IMPORT-936 membuat Custom Field baru dan memakai draft seed berbeda (D-20), sehingga diletakkan paling akhir (S-05).
 - Temuan untuk QA:
   - TC-GS-IMPORT-937 dan 938 Data Uji menulis berkas dari D-45 (Email tanpa suffix per run); spec memakai suffix per run.
   - TC-GS-IMPORT-936 Post Condition ("Custom Field `Cost Center` dihapus dari Client C dan draft Client C dipulihkan") tidak punya langkah observasi di TC; ditulis sebagai langkah pemulihan, tanpa asersi.
   - Pemakaian "lewat fixture permintaan" untuk Admin kedua (TC-GS-IMPORT-937, 938) tidak merinci mekanismenya; spec memakai sesi API Admin kedua (kemampuan disediakan tim FE/BE).
   - TC tidak menyebut password per akun; tiap akun memakai env `<APP>_<ROLE>_PASSWORD` yang tercantum di Prerequisites (satu env hanya satu akun, S-11); env yang belum terdaftar didaftarkan di `spectra.config.ts` dan `.env.example` pada tahap script.
+  - Penanda selesai untuk langkah 11 (`[Confirm Mapping]`) tidak disebut di TC, PRD, atau spec ini; langkah "Tunggu aksi selesai" (langkah 12) memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.

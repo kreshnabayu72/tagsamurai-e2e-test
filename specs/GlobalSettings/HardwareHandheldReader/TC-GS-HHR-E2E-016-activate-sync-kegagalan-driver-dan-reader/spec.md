@@ -49,7 +49,7 @@ coverage:
 6. Atur simulator: dua reader USB tersambung bersamaan
 7. Klik `[Sync]`
 8. Verifikasi banner inline dekat `[Sync]`: `Connect only one reader at a time.`
-9. Verifikasi `Serial Number` tetap kosong
+9. Verifikasi `Serial Number` tidak tampil (belum ada hasil Sync)
 10. Verifikasi `[Submit]` disabled
 11. Verifikasi `[Sync]` tetap dapat diklik
 12. Klik `[✕]` di header popup Activate
@@ -65,7 +65,7 @@ coverage:
 19. Atur simulator: driver lokal reader belum terpasang
 20. Klik `[Sync]`
 21. Verifikasi banner inline di Popup Activate dekat `[Sync]`: `USB driver not detected. Please install the reader driver software.`
-22. Verifikasi `Serial Number` tetap kosong
+22. Verifikasi `Serial Number` tidak tampil (belum ada hasil Sync)
 23. Verifikasi `[Submit]` disabled
 24. Verifikasi popup tetap terbuka
 
@@ -83,7 +83,7 @@ coverage:
 31. Klik `[Sync]`
 32. Cabut kabel USB saat spinner tampil
 33. Verifikasi muncul toast error: "Error, failed to read serial number. Reconnect the cable and click Sync again."
-34. Verifikasi `Serial Number` tetap kosong
+34. Verifikasi `Serial Number` tidak tampil (belum ada hasil Sync)
 35. Verifikasi `[Sync]` aktif kembali
 
 ### TC-GS-HHR-58: Tombol Sync menampilkan spinner saat membaca nomor seri
@@ -116,7 +116,6 @@ coverage:
 - Langkah 33 (toast) diasersi sebelum langkah 34 dan 35 karena toast bersifat sementara; langkah 38 (spinner) diasersi sebelum tahanan dilepas (butir 5 bagian 8b).
 - Temuan untuk QA:
   - Mekanisme simulasi reader USB (driver tidak terpasang, reader mati, kabel dicabut, dua reader, penahanan pembacaan) tidak didefinisikan di TC, PRD, atau LLD; spec mencatat kebutuhan di Prerequisites tanpa mengarang endpoint atau perintah simulator.
-  - TC-GS-HHR-59, TC-GS-HHR-60, TC-GS-HHR-61, dan TC-GS-HHR-62 menulis "`Serial Number` tetap kosong" sedangkan NC-15 dan TC-GS-HHR-465 menyatakan field `Serial Number` tidak tampil sebelum Sync berhasil; spec mengikuti kata TC (langkah 9, 22, 34) dan QA diminta memastikan apakah maksudnya kosong atau tidak tampil.
   - TC-GS-HHR-62 Expected c ("Tidak ada baris baru di Popup Event Log Activate") tidak menyebut kondisi baseline; spec memakai jumlah total baris sebelum Sync pertama (langkah 2). TC-GS-HHR-59, TC-GS-HHR-60, TC-GS-HHR-61, dan TC-GS-HHR-465 tidak punya Expected tentang Event Log, sehingga pencatatan Event Log untuk kegagalan itu tidak diasersi.
   - TC-GS-HHR-61 tidak menyebut kondisi "pembacaan ditahan" pada simulator agar spinner teramati saat kabel dicabut; kebutuhan itu ditulis di Prerequisites.
   - TC-GS-HHR-465 langkah 4 ("Cabut kabel USB lalu klik `[Sync]` lagi") memakai Sync pertama yang berhasil sebagai prasyarat; spec memakai hasil Sync berhasil dari blok TC-GS-HHR-58 sebagai prasyarat itu (langkah 37 sampai 41), bukan Sync terpisah.

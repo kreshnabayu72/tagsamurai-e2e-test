@@ -22,7 +22,7 @@ coverage:
 - Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30). Baris yang dipakai: DD-15 `E28011606000020F00000001` (disetel To be Returned dengan Return Group `Gudang Pusat` lewat fixture BE sebelum tiap TC), DD-02 (Available). Aset `Not Paired Yet` di FAMS untuk TC-GS-TAG-367 (Return Group DD-15 dalam scope Group user FAMS). Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4); fixture BE memulihkan kondisi awal sebelum spec dan sebelum tiap TC.
 - Sesi API aktor (kemampuan dinyatakan di `suite.md`): akun FAMS menjalankan `Receive Manually` dan `Pair TAG`.
 - Kemampuan teknis (disediakan tim FE/BE): sesi API FAMS untuk `Receive Manually` (dengan Note) dan `Pair TAG` dengan pemindaian tag (simulasi reader; D-4); penanda event selesai diproses (Eventual/SSE); pembacaan relasi aset dan user sebuah tag; seed dan reset idempotent Seed Registri A dan keadaan To be Returned DD-15.
-- Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan DD-15 dan aset FAMS yang dibuat lewat fixture BE.
+- Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan DD-15 dan aset FAMS yang dibuat lewat fixture BE, dan kembalikan Rows per page ke 10.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data registri dan sesi akun.
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate`, lihat `suite.md`.
 
@@ -31,38 +31,42 @@ coverage:
 ### TC-GS-TAG-366: Receive Manually menjadi Damaged/Missing
 
 1. Atur DD-15 menjadi To be Returned (Return Group `Gudang Pusat`) lewat fixture BE, muat ulang halaman
-2. Verifikasi DD-15 berstatus `To be Returned`
-3. Jalankan `Receive Manually` pada tag DD-15 di FAMS tab To Be Returned lewat sesi API, isi Note `Tag patah saat diterima`, lalu konfirmasi
-4. Verifikasi status DD-15 `Damaged/Missing` (badge danger) di Tab All tanpa muat ulang
-5. Klik Tab Not Paired
-6. Verifikasi baris DD-15 tampil di Tab Not Paired
-7. Verifikasi DD-15 tidak tertaut ke aset maupun user
-8. Buka menu baris DD-15, lalu klik `TAG Log`
-9. Verifikasi entri `TAG Marked Damaged/Missing by [pelaku penerima di FAMS]` dengan `Previous Status: To be Returned` dan `Note: Tag patah saat diterima`
-10. Verifikasi tidak ada entri `TAG Received by ...` maupun `Unpaired`
-11. Tutup popup TAG Log
+2. Ubah Rows per page menjadi 50 (seluruh baris tab ini tampil pada satu halaman)
+3. Verifikasi DD-15 berstatus `To be Returned`
+4. Jalankan `Receive Manually` pada tag DD-15 di FAMS tab To Be Returned lewat sesi API, isi Note `Tag patah saat diterima`, lalu konfirmasi
+5. Verifikasi status DD-15 `Damaged/Missing` (badge danger) di Tab All tanpa muat ulang
+6. Klik Tab Not Paired
+7. Ubah Rows per page menjadi 50 (seluruh baris tab ini tampil pada satu halaman)
+8. Verifikasi baris DD-15 tampil di Tab Not Paired
+9. Verifikasi DD-15 tidak tertaut ke aset maupun user
+10. Buka menu baris DD-15, lalu klik `TAG Log`
+11. Verifikasi entri `TAG Marked Damaged/Missing by [pelaku penerima di FAMS]` dengan `Previous Status: To be Returned` dan `Note: Tag patah saat diterima`
+12. Verifikasi tidak ada entri `TAG Received by ...` maupun `Unpaired`
+13. Tutup popup TAG Log
 
 ### TC-GS-TAG-367: Pair TAG di FAMS dengan tag To be Returned
 
-12. Atur DD-15 menjadi To be Returned (Return Group `Gudang Pusat`) dan sediakan aset `Not Paired Yet` di FAMS lewat fixture BE, muat ulang halaman, lalu klik Tab All
-13. Verifikasi DD-15 berstatus `To be Returned`
-14. Jalankan `Pair TAG` pada aset `Not Paired Yet` di FAMS lewat sesi API, pindai tag DD-15, lalu Submit
-15. Verifikasi status DD-15 `Paired` (badge info) di Tab All tanpa muat ulang
-16. Klik Tab Paired
-17. Verifikasi baris DD-15 tampil di Tab Paired
-18. Buka menu baris DD-15, lalu klik `TAG Log`
-19. Verifikasi entri `TAG Paired by [pelaku user yang melakukan pair]` dengan `Type: Asset`, `Asset`, `Asset Code`, `Module`, dan `Previous Status: To be Returned`
-20. Verifikasi tidak ada entri `TAG Received by ...`
-21. Tutup popup TAG Log
-22. Klik Tab Not Paired
-23. Verifikasi DD-02 tampil di Tab Not Paired
-24. Verifikasi baris DD-15 tidak ada di Tab Not Paired
+14. Atur DD-15 menjadi To be Returned (Return Group `Gudang Pusat`) dan sediakan aset `Not Paired Yet` di FAMS lewat fixture BE, muat ulang halaman, lalu klik Tab All
+15. Ubah Rows per page menjadi 50 (seluruh baris tab ini tampil pada satu halaman)
+16. Verifikasi DD-15 berstatus `To be Returned`
+17. Jalankan `Pair TAG` pada aset `Not Paired Yet` di FAMS lewat sesi API, pindai tag DD-15, lalu Submit
+18. Verifikasi status DD-15 `Paired` (badge info) di Tab All tanpa muat ulang
+19. Klik Tab Paired
+20. Verifikasi baris DD-15 tampil di Tab Paired
+21. Buka menu baris DD-15, lalu klik `TAG Log`
+22. Verifikasi entri `TAG Paired by [pelaku user yang melakukan pair]` dengan `Type: Asset`, `Asset`, `Asset Code`, `Module`, dan `Previous Status: To be Returned`
+23. Verifikasi tidak ada entri `TAG Received by ...`
+24. Tutup popup TAG Log
+25. Klik Tab Not Paired
+26. Ubah Rows per page menjadi 50 (seluruh baris tab ini tampil pada satu halaman)
+27. Verifikasi DD-02 tampil di Tab Not Paired
+28. Verifikasi baris DD-15 tidak ada di Tab Not Paired
 
 ## Notes
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 12 (memulihkan DD-15 ke To be Returned), 5, 16, dan 22 (pindah tab), 11 dan 21 (menutup popup TAG Log).
-- Asersi tambahan di luar Expected TC (S-03): langkah 2 dan 13 (keadaan awal `To be Returned` agar "berubah dari" bermakna); langkah 23 (data pembanding sebagai anchor absence, bagian 8b butir 2).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 14 (memulihkan DD-15 ke To be Returned), 6, 19, dan 25 (pindah tab), 13 dan 24 (menutup popup TAG Log), 7 dan 26 (mengubah Rows per page menjadi 50 setelah pindah tab supaya DD-15 di halaman 2 tampil; ukuran halaman tidak diasumsikan terbawa antar tab). Rows per page 50 pada langkah 2 dan 15 adalah langkah TC sumber; ukuran halaman dikembalikan ke 10 di hook `after`.
+- Asersi tambahan di luar Expected TC (S-03): langkah 3 dan 16 (keadaan awal `To be Returned` agar "berubah dari" bermakna); langkah 27 (data pembanding sebagai anchor absence, bagian 8b butir 2).
 - Temuan untuk QA:
   - Q-9: langkah dan selektor FAMS (`Receive Manually`, `Pair TAG`) tidak didefinisikan; verifikasi di modul konsumen hanya sejauh Expected TC.
   - Q-15: `[pelaku penerima di FAMS]` dan `[pelaku user yang melakukan pair]` pada TAG Log tidak diberi nilai dan format penulisan nama; akun FAMS "pemegang Update di tab To Be Returned" tidak diberi email di TC (Pre-setup TC memuat Admin FAMS dan Manage asset & TAG (Update) FAMS).

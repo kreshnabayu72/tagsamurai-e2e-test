@@ -63,63 +63,65 @@ coverage:
 20. Verifikasi Error Summary Callout tidak tampil
 21. Verifikasi Staging Metric Cards: Total Rows 10 (Active), Ready to Import 10, Errors 0 (Disabled), Duplicates 0 (Disabled)
 22. Buang draft User Login Client C (reset ke tanpa draft, Kontrak Fixture R1)
+23. Muat ulang halaman Import > User Login
 
 ### TC-GS-IMPORT-619: Sel XLSX non-Text dibaca sebagai teks tampilannya dan sheet lain diabaikan
 
-23. Klik `[Upload File]`
-24. Pilih berkas `user-login-xlsx.xlsx` di file picker
-25. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
-26. Verifikasi modal tertutup
-27. Verifikasi muncul toast "Success, row has been added."
-28. Perhatikan baris pada Staging Table dan Error Summary Callout
-29. Verifikasi Staging Table menampilkan 1 baris berstatus `pending`
-30. Verifikasi sel Employee ID menampilkan `42`
-31. Verifikasi sel Overtime Hours menampilkan `1.50`
-32. Verifikasi sel Active Period menampilkan tanggal 30 hari setelah hari uji (zona waktu Client C) dalam format YYYY-MM-DD
-33. Verifikasi sel Join Date menampilkan 15 Maret tahun lalu (tahun hari uji dikurangi 1) dalam format YYYY-MM-DD
-34. Verifikasi Error Summary Callout tidak tampil
-35. Verifikasi Staging Metric Cards: Total Rows 1 (Active), Ready to Import 1, Errors 0 (Disabled), Duplicates 0 (Disabled)
-36. Buang draft User Login Client C (reset ke tanpa draft, Kontrak Fixture R1)
+24. Klik `[Upload File]`
+25. Pilih berkas `user-login-xlsx.xlsx` di file picker
+26. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
+27. Verifikasi modal tertutup
+28. Verifikasi muncul toast "Success, row has been added."
+29. Perhatikan baris pada Staging Table dan Error Summary Callout
+30. Verifikasi Staging Table menampilkan 1 baris berstatus `pending`
+31. Verifikasi sel Employee ID menampilkan `42`
+32. Verifikasi sel Overtime Hours menampilkan `1.50`
+33. Verifikasi sel Active Period menampilkan tanggal 30 hari setelah hari uji (zona waktu Client C) dalam format YYYY-MM-DD
+34. Verifikasi sel Join Date menampilkan 15 Maret tahun lalu (tahun hari uji dikurangi 1) dalam format YYYY-MM-DD
+35. Verifikasi Error Summary Callout tidak tampil
+36. Verifikasi Staging Metric Cards: Total Rows 1 (Active), Ready to Import 1, Errors 0 (Disabled), Duplicates 0 (Disabled)
+37. Buang draft User Login Client C (reset ke tanpa draft, Kontrak Fixture R1)
+38. Muat ulang halaman Import > User Login
 
 ### TC-GS-IMPORT-620: Nilai Access dinormalisasi
 
-37. Klik `[Upload File]`
-38. Pilih berkas `user-login-access-norm.csv` di file picker
-39. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
-40. Verifikasi modal tertutup
-41. Verifikasi muncul toast "Success, row has been added."
-42. Verifikasi tidak ada Error Banner pada Modal Column Mapping
-43. Perhatikan Staging Table, Error Summary Callout, dan Staging Metric Cards
-44. Verifikasi Staging Table menampilkan 3 baris berstatus `pending`
-45. Verifikasi Error Summary Callout tidak tampil
-46. Verifikasi Staging Metric Cards: Total Rows 3 (Active), Ready to Import 3, Errors 0 (Disabled), Duplicates 0 (Disabled)
-47. Verifikasi sel Access Row # 1 menampilkan `Global Settings;Fixed Asset`
-48. Verifikasi sel Access Row # 2 menampilkan `Global Settings;Fixed Asset`
-49. Verifikasi sel Access Row # 3 menampilkan `Fixed Asset`
+39. Klik `[Upload File]`
+40. Pilih berkas `user-login-access-norm.csv` di file picker
+41. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
+42. Verifikasi modal tertutup
+43. Verifikasi muncul toast "Success, row has been added."
+44. Verifikasi tidak ada Error Banner pada Modal Column Mapping
+45. Perhatikan Staging Table, Error Summary Callout, dan Staging Metric Cards
+46. Verifikasi Staging Table menampilkan 3 baris berstatus `pending`
+47. Verifikasi Error Summary Callout tidak tampil
+48. Verifikasi Staging Metric Cards: Total Rows 3 (Active), Ready to Import 3, Errors 0 (Disabled), Duplicates 0 (Disabled)
+49. Verifikasi sel Access Row # 1 menampilkan `Global Settings;Fixed Asset`
+50. Verifikasi sel Access Row # 2 menampilkan `Global Settings;Fixed Asset`
+51. Verifikasi sel Access Row # 3 menampilkan `Fixed Asset`
 
 ### TC-GS-IMPORT-128: Kolom Access pada berkas User Non Login tidak masuk Target Attribute dan nilainya tidak divalidasi
 
-50. Klik Sub-Tab User Non Login
-51. Klik `[Upload File]`
-52. Pilih berkas `user-non-login-with-access.csv` di file picker
-53. Perhatikan daftar Target Attribute pada Modal Column Mapping
-54. Verifikasi daftar Target Attribute memuat atribut `First Name` dan `Represented By`
-55. Verifikasi daftar Target Attribute tidak memuat atribut Access
-56. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
-57. Verifikasi modal tertutup
-58. Verifikasi muncul toast "Success, row has been added."
-59. Verifikasi Staging Table menampilkan 2 baris berstatus `pending`
-60. Verifikasi Staging Table tanpa kolom Access
-61. Verifikasi Error Summary Callout tidak tampil
+52. Klik Sub-Tab User Non Login
+53. Klik `[Upload File]`
+54. Pilih berkas `user-non-login-with-access.csv` di file picker
+55. Perhatikan daftar Target Attribute pada Modal Column Mapping
+56. Verifikasi daftar Target Attribute memuat atribut `First Name` dan `Represented By`
+57. Verifikasi daftar Target Attribute tidak memuat atribut Access
+58. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
+59. Verifikasi modal tertutup
+60. Verifikasi muncul toast "Success, row has been added."
+61. Verifikasi Staging Table menampilkan 2 baris berstatus `pending`
+62. Verifikasi Staging Table tanpa kolom Access
+63. Verifikasi Error Summary Callout tidak tampil
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Urutan TC: 565 (Brand), 618, 619, 620 (User Login), 128 (User Non Login). Urutan menyimpang dari urutan angka TC supaya blok pada Sub-Tab yang sama berurutan dan draft dibuang sebelum blok berikutnya (langkah 10, 22, 36); draft TC-GS-IMPORT-620 dan 128 dibuang hook `after`.
-- Alasan di atas sekitar 35 langkah (61 langkah): satu topik (berkas diterima dengan nilai sel yang dinormalisasi atau di sisi valid batas) pada satu client; tiap blok membuat draft sendiri dan berdiri sendiri; kegagalan satu blok tidak menghilangkan makna blok lain.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6, 18, 28, 43, 53 (mengamati sesuai Langkah Uji TC), langkah 10, 22, 36 (reset draft), langkah 11 dan 50 (pindah Sub-Tab).
-- Langkah 54 (`Verifikasi` daftar Target Attribute memuat atribut `First Name` dan `Represented By`) adalah asersi tambahan di luar Expected TC: anchor positif untuk absence atribut Access pada langkah 55 (8b butir 2, S-03).
+- Urutan TC: 565 (Brand), 618, 619, 620 (User Login), 128 (User Non Login). Urutan menyimpang dari urutan angka TC supaya blok pada Sub-Tab yang sama berurutan dan draft dibuang sebelum blok berikutnya (langkah 10, 22, 37); draft TC-GS-IMPORT-620 dan 128 dibuang hook `after`.
+- Alasan di atas sekitar 35 langkah (63 langkah): satu topik (berkas diterima dengan nilai sel yang dinormalisasi atau di sisi valid batas) pada satu client; tiap blok membuat draft sendiri dan berdiri sendiri; kegagalan satu blok tidak menghilangkan makna blok lain.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6, 18, 29, 45, 55 (mengamati sesuai Langkah Uji TC), langkah 10, 22, 37 (reset draft), langkah 11 dan 52 (pindah Sub-Tab), langkah 23 dan 38 (muat ulang halaman Import > User Login sesudah reset, supaya Upload File berjalan pada keadaan tanpa draft).
+- Langkah 56 (`Verifikasi` daftar Target Attribute memuat atribut `First Name` dan `Represented By`) adalah asersi tambahan di luar Expected TC: anchor positif untuk absence atribut Access pada langkah 57 (8b butir 2, S-03).
 - Temuan untuk QA:
   - TC-GS-IMPORT-620 dan TC-GS-IMPORT-128 tidak menyebut Row # tempat nilai diamati selain Row # 1 sampai 3 (620); spec mengikuti Expected.
   - Tanggal relatif hari uji (TC-GS-IMPORT-619) bergantung zona waktu Client C; dekat tengah malam nilai dapat berbeda antar run. Berkas disiapkan tim FE/BE per run.

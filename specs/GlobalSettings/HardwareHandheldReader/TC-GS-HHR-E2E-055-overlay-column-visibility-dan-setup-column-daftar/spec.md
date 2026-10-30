@@ -29,11 +29,11 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE (backend nyata). Preferensi kolom (visibilitas, urutan, pin) tersimpan per tabel di browser dan menjadi permanen setelah `[Save]` (kecuali Overlay Column Visibility yang langsung berlaku); tabel dimuat dari backend nyata.
-- Akun aktor hook `before`: Total Control (Sari Dewi), Client A, `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup 1). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Langkah 194 dan 195 (TC-GS-HHR-291) logout lalu login kembali dengan akun dan password yang sama pada browser yang sama. Password tidak ditulis di spec atau fixture.
+- Akun aktor hook `before`: Total Control (Sari Dewi), Client A, `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup 1). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Langkah 192 dan 193 (TC-GS-HHR-291) logout lalu login kembali dengan akun dan password yang sama pada browser yang sama. Password tidak ditulis di spec atau fixture.
 - Environment variable: `GS_TC_PASSWORD`.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader dengan konfigurasi kolom tabel Daftar Reader pada default.
 - Client A: plan Growth, format tanggal default General Settings `dd/MM/yy` 24-hour (tidak diubah spec ini).
-- Data Dinamis Seed Reader A (10 reader DD-01 sampai DD-10), dibuat lewat fixture backend sebelum eksekusi (`Fixture.hardwareHandheldReader.seedReaderA`) dan dipulihkan antar TC oleh fixture backend; dipakai sebagai precondition TC, tidak diasersi (asersi spec ini hanya menyangkut kolom, bukan isi baris). Spec tidak mengubah data reader.
+- Data Dinamis Seed Reader A (10 reader DD-01 sampai DD-10), dibuat lewat fixture backend sebelum eksekusi (`Fixture.hardwareHandheldReader.seedReaderA`, fixture baru) dan dipulihkan antar TC oleh fixture backend; dipakai sebagai precondition TC, tidak diasersi (asersi spec ini hanya menyangkut kolom, bukan isi baris). Spec tidak mengubah data reader.
 - Data uji kolom Hideable (default tampil; urutan default pada tabel):
 
 | Urutan default | Kolom |
@@ -52,7 +52,7 @@ coverage:
 - Perulangan per kolom: langkah 27 sampai 40 (9 kolom Hideable), 41 sampai 53 (5 kolom Curated), 54 sampai 66 (9 kolom Hideable), 70 sampai 76 (5 kolom Curated), 79 sampai 95 (9 kolom Hideable), dan 99 sampai 112 (5 kolom Curated); `<Kolom>` dan `<Urutan>` diambil dari baris tabel data uji di atas.
 - Kemampuan teknis: kontrol ukuran viewport sehingga tabel dapat digulir horizontal; menyeret (drag and drop) baris kolom pada Popup Setup Column dan Overlay Column Visibility; mengarahkan kursor ke ikon Pin dan checkbox disabled untuk membaca tooltip; menekan `Esc`; membaca urutan dan posisi kolom tabel (kolom data pertama, posisi saat tabel digulir); membaca dan menghapus preferensi kolom tabel di penyimpanan browser.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-handheld-reader`: diatur hook suite (lihat `suite.md`, bagian Hook suite); spec ini tidak mengatur flag sendiri.
-- State yang diubah dan dipulihkan: konfigurasi kolom tabel Daftar Reader dikembalikan ke default (9 kolom Hideable tampil berurutan, kolom Curated tersembunyi, tanpa pin) lewat langkah pemulihan eksplisit di akhir blok yang mengubahnya (langkah 203 dan 204 untuk blok terakhir); hook `after` sebagai cadangan (`[Reset to Default]` lalu `[Save]`, atau penghapusan preferensi kolom tabel Daftar Reader di browser).
+- State yang diubah dan dipulihkan: konfigurasi kolom tabel Daftar Reader dikembalikan ke default (9 kolom Hideable tampil berurutan, kolom Curated tersembunyi, tanpa pin) lewat langkah pemulihan eksplisit di akhir blok yang mengubahnya (langkah 201 dan 202 untuk blok terakhir); hook `after` sebagai cadangan (`[Reset to Default]` lalu `[Save]`, atau penghapusan preferensi kolom tabel Daftar Reader di browser).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -200,13 +200,13 @@ coverage:
 115. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
 116. Klik item `Setup Column...` di bagian bawah overlay
 117. Klik ikon Pin kolom `Device Name`, `Alias Name`, dan `Serial Number` (tiga kolom di-pin)
-118. Arahkan kursor ke ikon Pin kolom `SKU`
-119. Verifikasi tooltip ikon Pin kolom `SKU` `Maximum 3 columns can be pinned at once. Unpin another column first.`
-120. Verifikasi ikon Pin kolom lain (di luar tiga kolom yang di-pin) disabled
+118. Verifikasi ikon Pin seluruh 11 kolom lain (di luar tiga kolom yang di-pin, termasuk lima kolom Curated yang belum dicentang) disabled
+119. Arahkan kursor ke ikon Pin kolom `SKU`
+120. Verifikasi tooltip ikon Pin kolom `SKU` `Maximum 3 columns can be pinned at once. Unpin another column first.`
 121. Klik ikon Pin kolom `SKU`
 122. Verifikasi kolom `SKU` tidak membeku (tidak ter-pin)
 123. Klik ikon Pin kolom `Alias Name` (Unpin)
-124. Verifikasi ikon Pin kolom lain (di luar dua kolom yang masih di-pin) aktif kembali
+124. Verifikasi ikon Pin seluruh kolom yang belum di-pin (di luar dua kolom yang masih di-pin) aktif kembali
 125. Klik `[✕]` (tutup popup tanpa Save)
 
 ### TC-GS-HHR-286: Reset to Default mengembalikan seluruh konfigurasi ke default setelah Save
@@ -259,70 +259,62 @@ coverage:
 162. Klik item `Setup Column...` di bagian bawah overlay
 163. Verifikasi daftar Setup Column memuat 14 baris kolom data
 164. Verifikasi daftar Setup Column tidak memuat baris `Actions`
-165. Klik `[✕]` (tutup popup)
-166. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
-167. Centang kelima kolom Curated (`Brand`, `Model/Type`, `Last Scanned In`, `Last User`, `Activated At`) pada Overlay Column Visibility
-168. Tekan `Esc` (tutup overlay)
-169. Gulir tabel secara horizontal ke tepi kanan
-170. Verifikasi kolom Actions `(⋯)` tetap terlihat di tepi kanan tabel saat digulir horizontal
-171. Gulir tabel secara horizontal kembali ke tepi kiri
-172. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
-173. Klik item `Setup Column...` di bagian bawah overlay
-174. Klik `[Reset to Default]` (pemulihan konfigurasi kolom)
-175. Klik `[Save]`
+165. Centang kelima kolom Curated (`Brand`, `Model/Type`, `Last Scanned In`, `Last User`, `Activated At`) pada Popup Setup Column
+166. Klik `[Save]`
+167. Gulir tabel secara horizontal ke tepi kanan
+168. Verifikasi kolom Actions `(⋯)` tetap terlihat di tepi kanan tabel saat digulir horizontal
+169. Gulir tabel secara horizontal kembali ke tepi kiri
+170. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
+171. Klik item `Setup Column...` di bagian bawah overlay
+172. Klik `[Reset to Default]` (pemulihan konfigurasi kolom)
+173. Klik `[Save]`
 
 ### TC-GS-HHR-290: Perubahan di Overlay Column Visibility langsung diterapkan tanpa Save
 
-176. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
-177. Lepas centang kolom `Alias Name` pada Overlay Column Visibility
-178. Verifikasi kolom `Alias Name` langsung hilang dari tabel
-179. Seret kolom `Status` ke posisi pertama pada Overlay Column Visibility
-180. Verifikasi kolom `Status` menjadi kolom data pertama pada tabel
-181. Verifikasi overlay tidak memiliki tombol `[Save]`
-182. Muat ulang halaman (F5)
-183. Verifikasi tabel Daftar Reader tampil kembali (pembanding sebelum asersi absence)
-184. Verifikasi kolom `Alias Name` tetap hilang dari tabel
-185. Verifikasi kolom `Status` tetap menjadi kolom data pertama pada tabel
-186. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
-187. Klik item `Setup Column...` di bagian bawah overlay
-188. Klik `[Reset to Default]` (pemulihan konfigurasi kolom)
-189. Klik `[Save]`
+174. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
+175. Lepas centang kolom `Alias Name` pada Overlay Column Visibility
+176. Verifikasi kolom `Alias Name` langsung hilang dari tabel
+177. Seret kolom `Status` ke posisi pertama pada Overlay Column Visibility
+178. Verifikasi kolom `Status` menjadi kolom data pertama pada tabel
+179. Verifikasi overlay tidak memiliki tombol `[Save]`
+180. Muat ulang halaman (F5)
+181. Verifikasi tabel Daftar Reader tampil kembali (pembanding sebelum asersi absence)
+182. Verifikasi kolom `Alias Name` tetap hilang dari tabel
+183. Verifikasi kolom `Status` tetap menjadi kolom data pertama pada tabel
+184. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
+185. Klik item `Setup Column...` di bagian bawah overlay
+186. Klik `[Reset to Default]` (pemulihan konfigurasi kolom)
+187. Klik `[Save]`
 
 ### TC-GS-HHR-291: Konfigurasi kolom tersimpan per tabel di browser dan independen antar tabel
 
-190. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
-191. Klik item `Setup Column...` di bagian bawah overlay
-192. Sembunyikan kolom `Status`
-193. Klik `[Save]`
-194. Logout
-195. Login kembali sebagai akun yang sama (`totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`) pada browser yang sama
-196. Buka Global Settings > Hardware > Handheld Reader
-197. Verifikasi tabel Daftar Reader tidak menampilkan kolom `Status`
-198. Klik ikon Changelog
-199. Verifikasi Modal Changelog menampilkan 7 kolom: `Date`, `Action`, `Device Name`, `Field`, `Old Value`, `New Value`, `Modified By`
-200. Tutup Modal Changelog
-201. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
-202. Klik item `Setup Column...` di bagian bawah overlay
-203. Klik `[Reset to Default]` (pemulihan konfigurasi kolom)
-204. Klik `[Save]`
+188. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
+189. Klik item `Setup Column...` di bagian bawah overlay
+190. Sembunyikan kolom `Status`
+191. Klik `[Save]`
+192. Logout
+193. Login kembali sebagai akun yang sama (`totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`) pada browser yang sama
+194. Buka Global Settings > Hardware > Handheld Reader
+195. Verifikasi tabel Daftar Reader tidak menampilkan kolom `Status`
+196. Klik ikon Changelog
+197. Verifikasi Modal Changelog menampilkan 7 kolom: `Date`, `Action`, `Device Name`, `Field`, `Old Value`, `New Value`, `Modified By`
+198. Tutup Modal Changelog
+199. Klik header kolom Actions `(⋯)` pada tabel Daftar Reader
+200. Klik item `Setup Column...` di bagian bawah overlay
+201. Klik `[Reset to Default]` (pemulihan konfigurasi kolom)
+202. Klik `[Save]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`, section 4a-4.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber (277 sampai 291) dipertahankan; dua TC screening (277, 278) di awal sebelum aksi yang mengubah konfigurasi kolom.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 21 sampai 26 (pengamatan preview real-time pada blok TC-GS-HHR-278: hilangkan centang `Status`, centang kembali, tutup popup tanpa Save); penutupan popup tanpa Save pada akhir blok TC-GS-HHR-285 dan 288; `[Reset to Default]` lalu `[Save]` pada akhir blok TC-GS-HHR-282, 284, 289, 290, dan 291 (pemulihan konfigurasi kolom); `Esc` yang menutup overlay; menggulir tabel kembali ke tepi kiri pada blok TC-GS-HHR-283, 284, dan 289; penutupan Modal Changelog pada blok TC-GS-HHR-291. Pembukaan popup pada langkah 75 dan 76 (akhir tiap iterasi TC-GS-HHR-282) membuka popup untuk iterasi berikutnya, dan pada iterasi terakhir untuk langkah pemulihan; pola yang sama dipakai pada langkah 111 dan 112 (TC-GS-HHR-284).
+- Langkah penghubung (aksi tanpa `Verifikasi`): penutupan popup tanpa Save pada akhir blok TC-GS-HHR-285 dan 288; `[Reset to Default]` lalu `[Save]` pada akhir blok TC-GS-HHR-282, 284, 289, 290, dan 291 (pemulihan konfigurasi kolom); menggulir tabel kembali ke tepi kiri pada blok TC-GS-HHR-283, 284, dan 289; penutupan Modal Changelog pada blok TC-GS-HHR-291. Verifikasi 14 baris kolom data pada Popup Setup Column (TC-GS-HHR-289) adalah anchor positif untuk asersi absence baris `Actions` (bagian 8b butir 2), bukan klausa Expected TC. Pembukaan popup pada langkah 75 dan 76 (akhir tiap iterasi TC-GS-HHR-282) membuka popup untuk iterasi berikutnya, dan pada iterasi terakhir untuk langkah pemulihan; pola yang sama dipakai pada langkah 111 dan 112 (TC-GS-HHR-284).
 - Popup Setup Column menutup sendiri setelah `[Save]` dan `[✕]`, sehingga tiap blok dan tiap iterasi membuka popup lewat header Actions `(⋯)` dan `Setup Column...`; langkah pembuka itu merupakan prefix berulang. Pada TC-GS-HHR-282 dan 284 langkah "Centang kelima kolom Curated" dikerjakan sekali pada popup yang sama dengan iterasi pertama, sesuai langkah TC sumber.
 - Langkah yang diulang per baris tabel Prerequisites (idiom "Untuk setiap baris tabel"): langkah 27 sampai 40 (9 iterasi), 41 sampai 53 (5), 54 sampai 66 (9), 70 sampai 76 (5), 79 sampai 95 (9), dan 99 sampai 112 (5). Tiap `Verifikasi` yang diulang tetap satu per klausa.
-- Spec memuat 204 langkah nominal (sekitar 692 langkah dengan ekspansi blok ulang; di atas smell sekitar 35 langkah). Alasan: seluruhnya satu kelas harness (fungsional, popup dan overlay Setup Column daftar reader yang sama), satu akun, satu dataset, tanpa aksi yang mengubah data reader; tiap blok TC memulihkan konfigurasi kolom ke default sebelum blok berikutnya (hook `after` sebagai cadangan), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Pengulangan per kolom mengikuti Data Uji TC (Hideable dan Curated per kolom).
+- Spec memuat 202 langkah nominal (sekitar 690 langkah dengan ekspansi blok ulang; di atas smell sekitar 35 langkah). Alasan: seluruhnya satu kelas harness (fungsional, popup dan overlay Setup Column daftar reader yang sama), satu akun, satu dataset, tanpa aksi yang mengubah data reader; tiap blok TC memulihkan konfigurasi kolom ke default sebelum blok berikutnya (hook `after` sebagai cadangan), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Pengulangan per kolom mengikuti Data Uji TC (Hideable dan Curated per kolom).
 - Pembagian TC lintas spec: Setup Column tabel sekunder (TC-GS-HHR-292 sampai 305) ada di spec 056; Download terhadap kolom tersembunyi (TC-GS-HHR-308, 309) di spec 057 dan TC-GS-HHR-312 di spec 058; Pagination (TC-GS-HHR-317 sampai 325) di spec 060; Sort dan Filter di spec 052 dan 053; TC-GS-HHR-32 (Step 3 Guided Tooltip dilewati bila `Device Name` disembunyikan lewat Setup Column) di spec 007.
 - Temuan untuk QA:
-  - TC-GS-HHR-277: Expected a.i (tooltip header kolom Actions saat hover) tidak punya langkah hover di Langkah Uji; spec menambah langkah hover sebelum klik untuk mengamatinya.
-  - TC-GS-HHR-278: Expected b.ii ("Tabel di balik popup merefleksikan state sementara secara real-time") tidak punya perubahan state di Langkah Uji; spec menambah langkah penghubung (hilangkan centang `Status`, amati, centang kembali, tutup tanpa Save).
-  - TC-GS-HHR-282 dan 283: Expected menyebut "bertahan setelah F5" tetapi Langkah Uji tidak memuat refresh; spec menambah langkah muat ulang halaman. TC-GS-HHR-284 tidak menyebut F5 pada Expected, sehingga tidak ditambahkan.
   - TC-GS-HHR-281: untuk kolom `Device Name` (sudah pertama pada urutan default) menyeret ke posisi paling atas tidak mengubah urutan; asersi "menjadi kolom data pertama" lolos tetapi tidak membuktikan reorder.
   - TC-GS-HHR-283 dan 284: TC tidak menyebut syarat tabel dapat digulir horizontal pada 9 kolom default (TC-GS-HHR-283); spec mengandalkan lebar viewport dan nilai panjang pada DD-09 (kemampuan kontrol viewport di Prerequisites).
-  - TC-GS-HHR-285: Expected a ("Ikon Pin kolom lain disabled") tidak menyebut apakah kolom Curated tersembunyi ikut dihitung; spec mengasersi pada seluruh baris di luar kolom yang di-pin.
-  - TC-GS-HHR-289: cara "Tampilkan semua kolom curated" tidak disebut; spec memakai Overlay Column Visibility (berlaku langsung tanpa Save) lalu memulihkannya lewat `[Reset to Default]` dan `[Save]`.
-  - TC-GS-HHR-291: Langkah Uji nomor 4 menyebut logout lalu login kembali sebagai akun yang sama pada browser yang sama; spec menuliskannya sebagai langkah ganti sesi eksplisit tanpa mengganti akun. Expected b menyebut "7 kolom" tanpa daftar nama; spec memakai daftar kolom dari TC-GS-HHR-292.
   - Mekanisme membaca posisi kolom, menghapus preferensi kolom di browser, dan menggulir tabel tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE.
   - Post Condition semua TC di spec ini `-`; tidak ada yang diasersi.

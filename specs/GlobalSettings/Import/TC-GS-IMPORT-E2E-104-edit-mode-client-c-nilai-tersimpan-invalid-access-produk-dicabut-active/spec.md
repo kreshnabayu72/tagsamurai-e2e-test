@@ -51,87 +51,100 @@ coverage:
 
 ### TC-GS-IMPORT-906: Select dan MultiSelect lewat keyboard
 
-12. Buang draft User Login Client C lewat skrip reset; buat draft D-88 (unggah `user-login-access-fa.csv`, `[Confirm Mapping]`); cabut produk `Fixed Asset` dari organisasi Client C lewat fixture Admin Console; buka Import > User Login, lalu muat ulang halaman
-13. Klik `⋯` pada baris #1, pilih `Edit`
-14. Pindahkan fokus ke sel Access baris #1 dengan Tab
-15. Verifikasi nama aksesibel sel Access mengumumkan nilai terpilih beserta status Invalid pada chip `Fixed Asset`
-16. Tekan Arrow Down untuk menyorot pilihan dan Enter untuk memilih
-17. Verifikasi pilihan yang disorot terpilih sebagai chip
-18. Verifikasi tidak ada toast (`[Save]` tidak terpicu)
-19. Tekan Esc
-20. Verifikasi panel pilihan tertutup
-21. Verifikasi sesi edit tetap aktif
-22. Pindahkan fokus dengan Tab ke tombol hapus chip `Fixed Asset` dan tekan Enter
-23. Verifikasi chip Invalid `Fixed Asset` terhapus
-24. Verifikasi footer tetap `[Cancel]` dan `[Save]`
-25. Verifikasi tidak ada toast
-26. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog Discard Changes
+12. Buang draft User Login Client C lewat skrip reset; muat ulang halaman Import > User Login
+13. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-access-fa.csv`
+14. Klik `[Confirm Mapping]`
+15. Tunggu aksi selesai (Modal Column Mapping tertutup)
+16. Cabut produk `Fixed Asset` dari organisasi Client C lewat fixture Admin Console
+17. Muat ulang halaman Import > User Login
+18. Klik `⋯` pada baris #1, pilih `Edit`
+19. Pindahkan fokus ke sel Access baris #1 dengan Tab
+20. Verifikasi nama aksesibel sel Access mengumumkan nilai terpilih beserta status Invalid pada chip `Fixed Asset`
+21. Tekan Arrow Down untuk menyorot pilihan dan Enter untuk memilih
+22. Verifikasi pilihan yang disorot terpilih sebagai chip
+23. Verifikasi tidak ada toast (`[Save]` tidak terpicu)
+24. Tekan Esc
+25. Verifikasi panel pilihan tertutup
+26. Verifikasi sesi edit tetap aktif
+27. Pindahkan fokus dengan Tab ke tombol hapus chip `Fixed Asset` dan tekan Enter
+28. Verifikasi chip Invalid `Fixed Asset` terhapus
+29. Verifikasi footer tetap `[Cancel]` dan `[Save]`
+30. Verifikasi tidak ada toast
+31. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog Discard Changes
 
 ### TC-GS-IMPORT-894: Access tersimpan di luar produk organisasi memblokir Save sampai chip dihapus
 
-27. Muat ulang halaman Import > User Login
-28. Verifikasi baris #1 berstatus `error`
-29. Verifikasi Error Summary Callout memuat "Access must only contain the following values: Global Settings" dengan badge "1 row"
-30. Klik `⋯` pada baris #1, pilih `Edit`
-31. Verifikasi chip `Global Settings` tampil normal
-32. Verifikasi chip `Fixed Asset` tampil berstatus Invalid (ikon dan teks deskriptif) dan tidak dihapus diam-diam
-33. Klik `[Save]` tanpa mengubah sel Access
-34. Verifikasi `[Save]` diblokir tanpa toast sukses
-35. Verifikasi sel Access berborder `danger` dengan pesan "Access must only contain the following values: Global Settings"
-36. Verifikasi footer tetap `[Cancel]` dan `[Save]`
-37. Hapus chip `Fixed Asset` dengan tombol hapus pada chip
-38. Verifikasi chip `Fixed Asset` hilang dan hanya `Global Settings` tersisa
-39. Klik `[Save]`
-40. Verifikasi muncul toast sukses: "Success, row has been updated."
-41. Verifikasi baris #1 berstatus `pending`
-42. Verifikasi baris #1 Access `Global Settings`
-43. Pulihkan produk `Fixed Asset` ke organisasi Client C lewat fixture Admin Console; buang draft User Login Client C
+32. Muat ulang halaman Import > User Login
+33. Verifikasi baris #1 berstatus `error`
+34. Verifikasi Error Summary Callout memuat "Access must only contain the following values: Global Settings" dengan badge "1 row"
+35. Klik `⋯` pada baris #1, pilih `Edit`
+36. Verifikasi chip `Global Settings` tampil normal
+37. Verifikasi chip `Fixed Asset` tampil berstatus Invalid (ikon dan teks deskriptif) dan tidak dihapus diam-diam
+38. Klik `[Save]` tanpa mengubah sel Access
+39. Verifikasi `[Save]` diblokir tanpa toast sukses
+40. Verifikasi sel Access berborder `danger` dengan pesan "Access must only contain the following values: Global Settings"
+41. Verifikasi footer tetap `[Cancel]` dan `[Save]`
+42. Hapus chip `Fixed Asset` dengan tombol hapus pada chip
+43. Verifikasi chip `Fixed Asset` hilang dan hanya `Global Settings` tersisa
+44. Klik `[Save]`
+45. Verifikasi muncul toast sukses: "Success, row has been updated."
+46. Verifikasi baris #1 berstatus `pending`
+47. Verifikasi baris #1 Access `Global Settings`
+48. Pulihkan produk `Fixed Asset` ke organisasi Client C lewat fixture Admin Console; buang draft User Login Client C
 
 ### TC-GS-IMPORT-896: Active Period lampau tampil Invalid
 
-44. Buat draft D-89 (unggah `user-login-active-period.csv`, `[Confirm Mapping]`); mundurkan Active Period baris #1 ke kemarin lewat fixture Active Period baris staging; buka Import > User Login, lalu muat ulang halaman
-45. Verifikasi baris #1 berstatus `error`
-46. Verifikasi Error Summary Callout memuat "Active Period: Please select a future date." dengan badge "1 row"
-47. Klik `⋯` pada baris #1, pilih `Edit`
-48. Verifikasi DatePicker Active Period menampilkan tanggal lampau tersimpan sebagai nilai berstatus Invalid (ikon dan teks deskriptif) dan tidak dikosongkan
-49. Klik `[Save]` tanpa mengubah sel Active Period
-50. Verifikasi `[Save]` diblokir tanpa toast sukses
-51. Verifikasi sel Active Period berborder `danger` dengan pesan "Please select a future date."
-52. Verifikasi footer tetap `[Cancel]` dan `[Save]`
-53. Pilih tanggal besok pada DatePicker
-54. Klik `[Save]`
-55. Verifikasi muncul toast sukses: "Success, row has been updated."
-56. Verifikasi baris #1 berstatus `pending`
-57. Verifikasi baris #1 Active Period tanggal besok
-58. Buang draft User Login Client C lewat skrip reset
+49. Muat ulang halaman Import > User Login
+50. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-active-period.csv`
+51. Klik `[Confirm Mapping]`
+52. Tunggu aksi selesai (Modal Column Mapping tertutup)
+53. Mundurkan Active Period baris #1 ke kemarin lewat fixture Active Period baris staging
+54. Muat ulang halaman Import > User Login
+55. Verifikasi baris #1 berstatus `error`
+56. Verifikasi Error Summary Callout memuat "Active Period: Please select a future date." dengan badge "1 row"
+57. Klik `⋯` pada baris #1, pilih `Edit`
+58. Verifikasi DatePicker Active Period menampilkan tanggal lampau tersimpan sebagai nilai berstatus Invalid (ikon dan teks deskriptif) dan tidak dikosongkan
+59. Klik `[Save]` tanpa mengubah sel Active Period
+60. Verifikasi `[Save]` diblokir tanpa toast sukses
+61. Verifikasi sel Active Period berborder `danger` dengan pesan "Please select a future date."
+62. Verifikasi footer tetap `[Cancel]` dan `[Save]`
+63. Pilih tanggal besok pada DatePicker
+64. Klik `[Save]`
+65. Verifikasi muncul toast sukses: "Success, row has been updated."
+66. Verifikasi baris #1 berstatus `pending`
+67. Verifikasi baris #1 Active Period tanggal besok
+68. Buang draft User Login Client C lewat skrip reset
+69. Muat ulang halaman Import > User Login
 
 ### TC-GS-IMPORT-904: Opsi Shift ditambahkan admin lain saat sesi edit berjalan
 
-59. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-shift-lembur.csv`
-60. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-61. Klik `⋯` pada baris #3, pilih `Edit`
-62. Klik sel Shift baris #3
-63. Verifikasi daftar pilihan memuat `Pagi`, `Siang`, dan `Malam` tanpa `Lembur`
-64. Admin kedua Client C menambahkan opsi `Lembur` ke Custom Field `Shift` lewat sesi API hingga tersimpan
-65. Ketik `Lembur` pada sel Shift baris #3, lalu pilih `Use "Lembur"` (sesi edit belum ditutup)
-66. Klik `[Save]`
-67. Verifikasi `[Save]` tidak diblokir dan muncul toast sukses: "Success, row has been updated."
-68. Verifikasi baris #3 berstatus `pending`
-69. Verifikasi baris #3 Shift `Lembur`
-70. Muat ulang halaman Import > User Login
-71. Verifikasi baris #1 dan #2 (Shift `Lembur`) berstatus `pending`
-72. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 3, Errors 0
+70. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+71. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
+72. Klik `⋯` pada baris #3, pilih `Edit`
+73. Klik sel Shift baris #3
+74. Verifikasi daftar pilihan memuat `Pagi`, `Siang`, dan `Malam` tanpa `Lembur`
+75. Admin kedua Client C menambahkan opsi `Lembur` ke Custom Field `Shift` lewat sesi API hingga tersimpan
+76. Ketik `Lembur` pada sel Shift baris #3, lalu pilih `Use "Lembur"` (sesi edit belum ditutup)
+77. Klik `[Save]`
+78. Verifikasi `[Save]` tidak diblokir dan muncul toast sukses: "Success, row has been updated."
+79. Verifikasi baris #3 berstatus `pending`
+80. Verifikasi baris #3 Shift `Lembur`
+81. Muat ulang halaman Import > User Login
+82. Verifikasi baris #1 dan #2 (Shift `Lembur`) berstatus `pending`
+83. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 3, Errors 0
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fungsional; Admin kedua hanya pemicu (P-2, sesi API); fixture Admin Console dan fixture Active Period hanya penyiap state (P-2).
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Penyimpangan urutan dari TC: TC-905 dan TC-906 (tanpa menyimpan) mendahului TC-894 dan TC-896 yang menyimpan; TC-904 paling akhir karena mengubah opsi Custom Field Client C.
-- Langkah penghubung (tanpa `Verifikasi`): langkah 10 (membuka Value Setting Shift untuk mengamati bahwa tidak ada opsi dibuat), 12, 43, 44, 58 menyiapkan atau memulihkan state (Kontrak Fixture R1 dan R2).
-- Spec berisi 72 langkah. Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (nilai tersimpan Invalid pada Edit Mode Client C), tiap blok membuat draft dan memulihkan state sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung (tanpa `Verifikasi`): langkah 10 (membuka Value Setting Shift untuk mengamati bahwa tidak ada opsi dibuat), langkah 12, 16, 17, 48, 49, 53, 54, 68, 69 menyiapkan atau memulihkan state atau memuat ulang halaman (Kontrak Fixture R1 dan R2; skrip fixture sinkron, `suite.md`).
+- Langkah penghubung "Tunggu aksi selesai" (aksi tanpa `Verifikasi`): langkah 15 dan 52 menunggu `[Confirm Mapping]` selesai (Modal Column Mapping tertutup) sebelum fixture Admin Console atau fixture Active Period baris staging pada langkah 16 dan 53.
+- Spec berisi 83 langkah. Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (nilai tersimpan Invalid pada Edit Mode Client C), tiap blok membuat draft dan memulihkan state sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: TC-GS-IMPORT-205, 659, 665, 835, 899, dan 907 ada di spec 103.
 - Temuan untuk QA:
   - TC-GS-IMPORT-905 Expected b menyebut "tidak ada opsi dibuat" tanpa langkah observasi; spec mengamatinya dengan membuka Value Setting Shift sesudah `[Cancel]` (langkah 10 dan 11), tambahan yang dicatat di sini.
-  - TC-GS-IMPORT-906 Expected d ("nama aksesibel memuat teks Invalid") diasersi sebelum chip dihapus (langkah 15) karena setelah penghapusan chip itu tidak ada lagi; urutan Expected TC tidak diikuti.
+  - TC-GS-IMPORT-906 Expected d ("nama aksesibel memuat teks Invalid") diasersi sebelum chip dihapus (langkah 20) karena setelah penghapusan chip itu tidak ada lagi; urutan Expected TC tidak diikuti.
+  - Penanda "Tunggu aksi selesai (Modal Column Mapping tertutup)" pada langkah 15 dan 52 tidak ada di TC-GS-IMPORT-906 maupun TC-GS-IMPORT-896; spec menambahkannya sebagai langkah penghubung agar fixture berjalan sesudah `[Confirm Mapping]` selesai.
   - TC-GS-IMPORT-894 dan 906 bergantung pada fixture Admin Console untuk mencabut produk `Fixed Asset`; TC-GS-IMPORT-896 bergantung pada fixture Active Period baris staging. Mekanisme tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE (S-13).
-  - Post Condition semua TC ("Draft Client C dihapus", "Produk dipulihkan", "Opsi dihapus dari Custom Field") adalah pemulihan oleh fixture dan dikerjakan langkah 43, 58 dan hook `after`; tidak diasersi (S-01).
+  - Post Condition semua TC ("Draft Client C dihapus", "Produk dipulihkan", "Opsi dihapus dari Custom Field") adalah pemulihan oleh fixture dan dikerjakan langkah 48, 68 dan hook `after`; tidak diasersi (S-01).

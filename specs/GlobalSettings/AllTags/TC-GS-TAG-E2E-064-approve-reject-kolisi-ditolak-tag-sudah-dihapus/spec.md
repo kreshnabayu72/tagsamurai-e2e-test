@@ -48,7 +48,7 @@ coverage:
 
 - Mode: FE+BE. Kelas d (event/background). Spec memuat satu TC.
 - Langkah 3 (penghapusan DD-03 lewat sesi API Total Control Client A dengan konsumen event ditahan) hanyalah pemicu state; objek asersi adalah dialog dan Tab History di Approvals.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 2 (membuka Detail Approval dengan radio Approve terpilih sebagai precondition TC), 10 (melepas tahan konsumen event).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 2 (membuka Detail Approval dengan radio Approve terpilih sebagai precondition TC).
 - Asersi tambahan di luar Expected TC (S-03): tidak ada.
 - Temuan untuk QA:
   - Judul/skenario TC menyebut "Approve/Reject", tetapi langkah TC hanya menjalankan Approve (radio Approve terpilih); varian Reject tidak punya langkah di TC.

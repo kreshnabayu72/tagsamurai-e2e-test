@@ -95,7 +95,7 @@ coverage:
 
 ### TC-GS-IMPORT-866: Batas 5 detik per permintaan saran, dua sel keduanya bersaran
 
-36. Reset draft Client C pada Tab Brand lewat skrip reset (mock tetap mode tunda 3 detik)
+36. Reset draft Client C pada Tab Brand lewat skrip reset (mock tetap mode tunda 3 detik), lalu muat ulang halaman Import > Brand
 37. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long-2.csv`
 38. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 39. Verifikasi modal Confirm Mapping tertutup
@@ -103,18 +103,18 @@ coverage:
 41. Tunggu sampai badge saran tampil (batas tunggu 15 detik)
 42. Verifikasi sel Brand Name baris #1 menampilkan badge "AI suggestion: 'Samsung Electronics Indonesia'?" disertai `[Accept]` dan `[Dismiss]`
 43. Verifikasi sel Brand Name baris #2 menampilkan badge "AI suggestion: 'Lenovo Technology Indonesia'?" disertai `[Accept]` dan `[Dismiss]`
-44. Verifikasi kedua sel mendapat saran karena batas 5 detik dihitung per permintaan dan permintaan per sel diajukan bersamaan (disimpulkan dari langkah 42 dan 43; tidak teramati terpisah)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan TC diubah dari urutan ID menjadi 299, 300, 698, 699, 703, 866 supaya mode mock AI hanya berubah tiga kali (kosong, normal, tunda 3 detik); tidak ada TC yang bergantung pada TC lain.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 8, 16, 23, 30, dan 36 (atur mode mock, reset draft Client C, pindah Tab). Reset draft memenuhi Kontrak Fixture R1 sebelum tiap TC; langkah 33 dan 41 adalah jeda tunggu.
-- Spec melewati sekitar 35 langkah (44 langkah). Alasan: keenam blok berdiri sendiri, memakai satu kelas harness (mock AI Field Shortening) dan satu akun; kegagalan satu blok tidak membuat blok lain kehilangan makna, dan tiap blok punya draft serta Tab sendiri.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 8, 16, 23, 30, dan 36 (atur mode mock, reset draft Client C, pindah Tab). Reset draft memenuhi Kontrak Fixture R1 sebelum tiap TC; langkah 33 dan 41 adalah jeda tunggu. Langkah 36 juga memuat ulang halaman Import > Brand sesudah reset karena halaman masih menampilkan draft blok sebelumnya.
+- Butir Expected c TC 866 ("permintaan per sel diajukan bersamaan") tidak punya langkah `Verifikasi` sendiri: hasil teramatinya adalah badge pada kedua sel (langkah 42 dan 43); sebab batas 5 detik per permintaan tidak teramati terpisah dan dicatat di Temuan untuk QA.
+- Spec melewati sekitar 35 langkah (43 langkah). Alasan: keenam blok berdiri sendiri, memakai satu kelas harness (mock AI Field Shortening) dan satu akun; kegagalan satu blok tidak membuat blok lain kehilangan makna, dan tiap blok punya draft serta Tab sendiri.
 - Mock AI mode kosong dan tunda 3 detik adalah kondisi UI yang diamati (tidak ada saran; saran terlambat), bukan kegagalan yang dipaksa pada API (kelas b); intercept tidak dipakai.
 - Pembagian TC lintas spec: TC-GS-IMPORT-299 dan 300 melengkapi asersi badge pada spec 115 (badge tampil); kasus Accept dan Dismiss ada di spec 117.
 - Temuan untuk QA:
   - TC 698 menulis Employee ID sebagai `EMP-` diikuti angka berulang 121 karakter; TC tidak memberi pola ulang yang pasti, spec memakai nilai dari TC apa adanya (121 karakter).
   - Skrip reset draft Client C (Kontrak Fixture R1) tidak didefinisikan di TC; disediakan tim FE/BE.
-  - TC 866 Expected c ("permintaan per sel diajukan bersamaan") tidak punya cara observasi terpisah; hanya disimpulkan dari badge kedua sel (langkah 44).
+  - TC 866 Expected c ("permintaan per sel diajukan bersamaan") tidak punya cara observasi terpisah; hanya teramati lewat badge kedua sel (langkah 42 dan 43); alasan batas 5 detik per permintaan tidak diasersi.
   - Post Condition TC 299, 300, 698, 699, 703 ("Draft ... berisi 1 baris `error`") dan TC 866 ("mock dikembalikan ke mode normal") tidak punya langkah observasi di TC; tidak diasersi (S-01).

@@ -39,10 +39,10 @@ Role yang diuji (Tabel Data Uji Pre-setup #1 s.d. #7, Client A):
 |---|---|---|---|---|---|
 | 1 | TC-GS-HHR-36 | Total Control | Sari Dewi | `totalControl_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_TC_PASSWORD` |
 | 2 | TC-GS-HHR-34, TC-GS-HHR-37, TC-GS-HHR-204 | Read Only | Maya Putri | `readOnly_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_RO_PASSWORD` |
-| 3 | TC-GS-HHR-34, TC-GS-HHR-38, TC-GS-HHR-205 | Manage hardware (Read) | Tono Hartono | `manageHardwareRead_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_READ_PASSWORD` |
-| 4 | TC-GS-HHR-39, TC-GS-HHR-206 | Manage hardware (Create) | Rina Lestari | `manageHardwareCreate_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_CREATE_PASSWORD` |
-| 5 | TC-GS-HHR-40, TC-GS-HHR-201, TC-GS-HHR-203 | Manage hardware (Update) | Agus Wijaya | `manageHardwareUpdate_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_UPDATE_PASSWORD` |
-| 6 | TC-GS-HHR-41, TC-GS-HHR-202 | Manage hardware (Delete) | Dewi Anggraini | `manageHardwareDelete_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_DELETE_PASSWORD` |
+| 3 | TC-GS-HHR-34, TC-GS-HHR-38, TC-GS-HHR-205 | Manage hardware (Read) | Tono Hartono | `manageHardwareRead_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_HW_READ_PASSWORD` |
+| 4 | TC-GS-HHR-39, TC-GS-HHR-206 | Manage hardware (Create) | Rina Lestari | `manageHardwareCreate_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_HW_CREATE_PASSWORD` |
+| 5 | TC-GS-HHR-40, TC-GS-HHR-201, TC-GS-HHR-203 | Manage hardware (Update) | Agus Wijaya | `manageHardwareUpdate_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_HW_UPDATE_PASSWORD` |
+| 6 | TC-GS-HHR-41, TC-GS-HHR-202 | Manage hardware (Delete) | Dewi Anggraini | `manageHardwareDelete_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_HW_DELETE_PASSWORD` |
 | 7 | TC-GS-HHR-33 | Tanpa Capability | Hendra Gunawan | `noCapability_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_NOCAP_PASSWORD` |
 
 - Login Total Control (blok 1) dilakukan di hook `before`; blok berikutnya memakai langkah ganti akun eksplisit (logout lalu login). Karena spec berakhir di akun Tanpa Capability, hook `after` mengembalikan sesi ke akun default suite (Total Control, `GS_TC_PASSWORD`). Password hanya lewat env, tidak ditulis di spec atau fixture.
@@ -80,10 +80,10 @@ Role yang diuji (Tabel Data Uji Pre-setup #1 s.d. #7, Client A):
 22. Verifikasi Overlay row action DD-05 hanya berisi `Detail`
 23. Tutup Overlay row action dengan Esc
 24. Klik ikon Changelog
-25. Verifikasi Modal Changelog tampil dan memuat entri
+25. Verifikasi Modal Changelog tampil
 26. Tutup Modal Changelog
 27. Klik ikon Event Log
-28. Verifikasi popup Event Log tampil dan memuat baris
+28. Verifikasi popup Event Log tampil
 29. Tutup popup Event Log
 30. Klik `Gudang Reader - 1`
 31. Verifikasi Popup Detail tampil dengan tab `Usage` dan `Changelog`
@@ -174,51 +174,53 @@ Role yang diuji (Tabel Data Uji Pre-setup #1 s.d. #7, Client A):
 107. Klik ikon `×` pada Bulk Action Bar untuk membersihkan seleksi
 108. Centang checkbox baris DD-01
 109. Centang checkbox baris DD-03
-110. Verifikasi Bulk Action Bar tampil dengan teks `2 Readers selected`, tombol `Select All (8 records)`, dan ikon `×`
-111. Verifikasi tombol `Bulk Action` tidak tampil
-112. Klik ikon `×` pada Bulk Action Bar untuk membersihkan seleksi
+110. Verifikasi Bulk Action Bar menampilkan teks `2 Readers selected`
+111. Verifikasi Bulk Action Bar menampilkan tombol `Select All (8 records)`
+112. Verifikasi Bulk Action Bar menampilkan ikon `×`
+113. Verifikasi tombol `Bulk Action` tidak tampil
+114. Klik ikon `×` pada Bulk Action Bar untuk membersihkan seleksi
 
 ### Blok 6 - Manage hardware (Delete): TC-GS-HHR-41, TC-GS-HHR-202
 
-113. Logout, lalu login sebagai Dewi Anggraini (Manage hardware level Delete)
-114. Buka Global Settings > Hardware > Handheld Reader
-115. Verifikasi tombol `[+ Activate Reader]` Hidden
-116. Klik `⋯` pada baris DD-01 (`Zebra RFID Reader - 1`)
-117. Verifikasi Overlay row action DD-01 berisi `Detail` dan `Delete`
-118. Tutup Overlay row action dengan Esc
-119. Klik `⋯` pada baris DD-03 (`Zebra Mobile Reader - 1`)
-120. Verifikasi Overlay row action DD-03 berisi `Detail` dan `Delete`
-121. Tutup Overlay row action dengan Esc
-122. Klik `⋯` pada baris DD-05 (`Chainway C72 - 1`)
-123. Verifikasi Overlay row action DD-05 berisi `Detail` dan `Cancel Request`
-124. Tutup Overlay row action dengan Esc
-125. Centang checkbox baris DD-01
-126. Centang checkbox baris DD-07
-127. Klik tombol `Bulk Action`
-128. Verifikasi opsi `Delete` tampil
-129. Verifikasi opsi `Mark as Damaged` dan `Mark as Missing` tidak ada
-130. Tutup daftar opsi Bulk Action dengan Esc
-131. Klik ikon `×` pada Bulk Action Bar untuk membersihkan seleksi
+115. Logout, lalu login sebagai Dewi Anggraini (Manage hardware level Delete)
+116. Buka Global Settings > Hardware > Handheld Reader
+117. Verifikasi tombol `[+ Activate Reader]` Hidden
+118. Klik `⋯` pada baris DD-01 (`Zebra RFID Reader - 1`)
+119. Verifikasi Overlay row action DD-01 berisi `Detail` dan `Delete`
+120. Tutup Overlay row action dengan Esc
+121. Klik `⋯` pada baris DD-03 (`Zebra Mobile Reader - 1`)
+122. Verifikasi Overlay row action DD-03 berisi `Detail` dan `Delete`
+123. Tutup Overlay row action dengan Esc
+124. Klik `⋯` pada baris DD-05 (`Chainway C72 - 1`)
+125. Verifikasi Overlay row action DD-05 berisi `Detail` dan `Cancel Request`
+126. Tutup Overlay row action dengan Esc
+127. Centang checkbox baris DD-01
+128. Centang checkbox baris DD-07
+129. Klik tombol `Bulk Action`
+130. Verifikasi opsi `Delete` tampil
+131. Verifikasi opsi `Mark as Damaged` dan `Mark as Missing` tidak ada
+132. Tutup daftar opsi Bulk Action dengan Esc
+133. Klik ikon `×` pada Bulk Action Bar untuk membersihkan seleksi
 
 ### Blok 7 - Tanpa Capability: TC-GS-HHR-33
 
-132. Logout, lalu login sebagai Hendra Gunawan (Tanpa Capability)
-133. Buka halaman utama Global Settings
-134. Buka sidebar Global Settings
-135. Verifikasi sidebar Global Settings tampil dengan sedikitnya satu item menu
-136. Verifikasi item `Handheld Reader` tidak tampil di sidebar (menu Hardware)
+134. Logout, lalu login sebagai Hendra Gunawan (Tanpa Capability)
+135. Buka halaman utama Global Settings
+136. Buka sidebar Global Settings
+137. Verifikasi sidebar Global Settings tampil dengan sedikitnya satu item menu
+138. Verifikasi item `Handheld Reader` tidak tampil di sidebar (menu Hardware)
 
 ## Notes
 
 - Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md` (section 2 Role & Capability Access Flow dan section 3k Bulk). Kelas harness: Role Matrix (bagian 3a), `caseType` Negative mengikuti alur dominan (sebagian besar TC menguji elemen Hidden atau tidak tersedia).
 - Subjudul `###` memetakan langkah ke blok role dan id TC granular. TC-GS-HHR-34 muncul di blok 2 (Read Only) dan blok 3 (Manage hardware Read) karena judul TC menyebut keduanya.
-- Spec melewati sekitar 35 langkah (136 langkah nominal, tanpa perulangan). Semua langkah satu kelas harness (Role Matrix, hanya baca, tanpa aksi mutasi dan tanpa data yang dibuat); tiap blok role berdiri sendiri dengan login ulang di awal blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok ditulis per role karena elemen yang diasersi berbeda per role (bagian 3a, `[KEPUTUSAN 2026-10-21]`).
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC sumber): menutup Overlay row action, daftar Bulk Action, Modal Changelog, popup Event Log, dan Popup Detail (langkah 4, 10, 20, 23, 26, 29, 32, 59, 62, 80, 83, 94, 97, 100, 106, 118, 121, 124, 130); membersihkan seleksi lewat `×` (langkah 107, 112, 131, S-09); logout lalu login ke role berikutnya (langkah 11, 50, 75, 89, 113, 132); membuka halaman utama Global Settings dan halaman Handheld Reader; klik kedua `Download` pada langkah 38.
+- Spec melewati sekitar 35 langkah (138 langkah nominal, tanpa perulangan). Semua langkah satu kelas harness (Role Matrix, hanya baca, tanpa aksi mutasi dan tanpa data yang dibuat); tiap blok role berdiri sendiri dengan login ulang di awal blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok ditulis per role karena elemen yang diasersi berbeda per role (bagian 3a, `[KEPUTUSAN 2026-10-21]`).
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC sumber): menutup Overlay row action, daftar Bulk Action, Modal Changelog, popup Event Log, dan Popup Detail (langkah 4, 10, 20, 23, 26, 29, 32, 59, 62, 80, 83, 94, 97, 100, 106, 120, 123, 126, 132); membersihkan seleksi lewat `×` (langkah 107, 114, 133, S-09); logout lalu login ke role berikutnya (langkah 11, 50, 75, 89, 115, 134); membuka halaman utama Global Settings dan halaman Handheld Reader; klik kedua `Download` pada langkah 38.
 - Asersi Hidden dan "tidak ada" memakai anchor permukaan: elemen lain pada toolbar atau Overlay yang sama sudah tampil (Overlay row action hanya `Detail` didahului Overlay yang terbuka; opsi Bulk Action yang tidak ada didahului opsi lain yang tampil; kolom `Checkbox` tidak tampil didahului header `Device Name` pada halaman yang sudah termuat), bagian 8b butir 2 dan 11.
 - Temuan untuk QA:
   - TC-GS-HHR-34 berjudul "Read Only dan pemegang capability Manage hardware level Read", tetapi Precondition hanya Login Read Only; spec menjalankannya untuk kedua role (blok 2 dan blok 3).
   - TC-GS-HHR-33 tidak menyebut item menu yang pasti tampil pada sidebar akun Tanpa Capability; anchor absence memakai pembanding generik "sedikitnya satu item menu" pada sidebar.
   - TC-GS-HHR-36 sampai TC-GS-HHR-41 tidak menyebut halaman tempat baris DD-01, DD-03, DD-05, dan DD-07 berada; spec mengasumsikan halaman 1 pada urutan default (10 baris).
-  - TC-GS-HHR-37 butir d ("tidak ada tooltip izin karena elemen mutasi Hidden") tidak punya cara pengamatan langsung; spec menulis satu `Verifikasi` yang menyimpulkan dari elemen mutasi yang Hidden. TC-GS-HHR-37 butir c ("tampil dan berfungsi") tidak merinci "berfungsi" untuk Download; spec memakai berkas CSV dan XLSX terunduh.
+  - TC-GS-HHR-37 butir d ("tidak ada tooltip izin karena elemen mutasi Hidden") tidak punya cara pengamatan langsung; spec menulis satu `Verifikasi` yang menyimpulkan dari elemen mutasi yang Hidden. TC-GS-HHR-37 butir c ("tampil dan berfungsi") tidak merinci "berfungsi" untuk Download; spec mengasersi Modal Changelog, popup Event Log, Popup Detail, dan License Counter Cards "tampil" dan memakai berkas CSV dan XLSX terunduh untuk Download.
   - Seed Reader A dipakai sebagai target buka Overlay (S-06): spec tidak menjalankan aksi mutasi sehingga tidak ada perubahan yang perlu dipulihkan; Seed Reader A disiapkan fixture BE (disediakan tim FE).
   - TC-GS-HHR-203 menyebut `Select All (8 records)`: jumlah 8 mengikuti Seed Reader A; bila fixture memuat jumlah reader lain, angka itu berubah.

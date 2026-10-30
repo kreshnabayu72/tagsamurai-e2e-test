@@ -38,7 +38,7 @@ coverage:
 ### TC-GS-IMPORT-306: Accept dan Dismiss Disabled selama committing
 
 1. Reset Client E (D-47) ke tanpa draft; pastikan mock AI mode normal
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
 4. Klik `[Upload File]` di toolbar dan pilih berkas `brand-ai-commit.csv`
 5. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
@@ -72,7 +72,7 @@ coverage:
 ### TC-GS-IMPORT-728: Create Missing Positions per-baris dan bulk Disabled selama committing
 
 29. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
-30. Pilih Sub-Tab User Login
+30. Muat ulang halaman Import > User Login
 31. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
 32. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-store-supervisor.csv`
 33. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
@@ -90,27 +90,29 @@ coverage:
 ### TC-GS-IMPORT-745: Accept dan Create Missing Divisions pada Tab User Login Disabled dengan tooltip
 
 44. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit; seed draft User Login `user-login-gudng-3.csv` (2 `pending`, baris #1 `error` dengan Division `Gudng`) lewat skrip fixture; pastikan mock AI mode normal
-45. Buka Global Settings > Import, pilih Sub-Tab User Login
+45. Muat ulang halaman Import > User Login
 46. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 47. Klik `[Import (2)]`
-48. Muat ulang halaman Import > User Login
-49. Hover `[Accept]` pada badge saran Division baris #1
-50. Verifikasi `[Accept]` pada badge saran tetap tampil dan Disabled
-51. Verifikasi tooltip pada `[Accept]` "Can't do this while an import is in progress."
-52. Hover `[Create Missing Divisions]` pada Error Summary Callout
-53. Verifikasi `[Create Missing Divisions]` pada Error Summary Callout tetap tampil dan Disabled
-54. Verifikasi tooltip pada `[Create Missing Divisions]` Error Summary Callout "Can't do this while an import is in progress."
-55. Buka menu `⋯` baris #1
-56. Hover `[Create Missing Divisions]` pada menu
-57. Verifikasi `[Create Missing Divisions]` pada menu `⋯` baris #1 tetap tampil dan Disabled
-58. Verifikasi tooltip pada `[Create Missing Divisions]` menu `⋯` "Can't do this while an import is in progress."
+48. Tunggu aksi selesai (permintaan mendapat respons)
+49. Muat ulang halaman Import > User Login
+50. Hover `[Accept]` pada badge saran Division baris #1
+51. Verifikasi `[Accept]` pada badge saran tetap tampil dan Disabled
+52. Verifikasi tooltip pada `[Accept]` "Can't do this while an import is in progress."
+53. Hover `[Create Missing Divisions]` pada Error Summary Callout
+54. Verifikasi `[Create Missing Divisions]` pada Error Summary Callout tetap tampil dan Disabled
+55. Verifikasi tooltip pada `[Create Missing Divisions]` Error Summary Callout "Can't do this while an import is in progress."
+56. Buka menu `⋯` baris #1
+57. Hover `[Create Missing Divisions]` pada menu
+58. Verifikasi `[Create Missing Divisions]` pada menu `⋯` baris #1 tetap tampil dan Disabled
+59. Verifikasi tooltip pada `[Create Missing Divisions]` menu `⋯` "Can't do this while an import is in progress."
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah state `committing` yang dibentuk kontrol worker D-47. Mock AI normal hanya pemicu badge saran (P-2).
-- Alasan melewati sekitar 35 langkah (58 langkah nominal): empat blok homogen (tombol Disabled dengan tooltip selama `committing`), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Alasan melewati sekitar 35 langkah (59 langkah nominal): empat blok homogen (tombol Disabled dengan tooltip selama `committing`), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 14, 29, 44), aktivasi kontrol worker (langkah 3, 16, 31, 46), pembukaan halaman dan Sub-Tab, menutup menu `⋯` (langkah 25, 40), dan muat ulang (langkah 48). Tooltip diasersi sebelum langkah berikutnya yang mengubah state hover (butir 5 bagian 8b).
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 14, 29, 44), aktivasi kontrol worker (langkah 3, 16, 31, 46), pembukaan halaman dan Sub-Tab, "Muat ulang halaman Import > <Sub-Tab>" sesudah reset (langkah 2, 30, 45; reset membuang atau mengganti draft sementara halaman Import dari blok atau hook sebelumnya masih terbuka, `suite.md`), menutup menu `⋯` (langkah 25, 40), langkah 48 (Tunggu aksi selesai: permintaan mendapat respons, memisahkan klik `[Import (2)]` dari muat ulang), dan muat ulang (langkah 49). Tooltip diasersi sebelum langkah berikutnya yang mengubah state hover (butir 5 bagian 8b).
+- Penanda selesai untuk langkah 48 tidak disebut di TC atau PRD; "permintaan mendapat respons" dipakai sampai QA menetapkan penanda yang teramati.
 - Pembagian TC lintas spec: TC-GS-IMPORT-745 dan TC-GS-IMPORT-918 (Create Missing Options saat `committing`) berpola sama; TC-GS-IMPORT-918 ada di spec 145.
 - Temuan untuk QA:
   - TC-GS-IMPORT-306, 339, 728, 745 tidak merujuk kontrol worker D-47 pada kolom D-ref walau butuh worker dijeda; TC-GS-IMPORT-306, 339, 728 menyebut D-47 hanya di Precondition e.

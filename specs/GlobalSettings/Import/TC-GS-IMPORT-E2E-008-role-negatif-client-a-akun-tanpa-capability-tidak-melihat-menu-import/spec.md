@@ -49,7 +49,7 @@ coverage:
 
 ### TC-GS-IMPORT-595 dan TC-GS-IMPORT-596: Read Only dan Import data (Read Only) tidak dapat memulai sesi edit
 
-Untuk setiap baris tabel "Role yang diuji" (langkah 9 sampai 38; Read Only Client A untuk TC-GS-IMPORT-595, lalu Import data (Read Only) Client A untuk TC-GS-IMPORT-596):
+Untuk setiap baris tabel "Role yang diuji" (langkah 9 sampai 33; Read Only Client A untuk TC-GS-IMPORT-595, lalu Import data (Read Only) Client A untuk TC-GS-IMPORT-596):
 
 9. Ganti akun: logout dari akun sebelumnya, login sebagai role pada baris tabel dengan env var passwordnya
 10. Buka menu Import dari sidebar

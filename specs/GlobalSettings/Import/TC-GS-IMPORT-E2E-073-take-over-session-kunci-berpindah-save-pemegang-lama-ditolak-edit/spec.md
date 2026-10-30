@@ -41,34 +41,36 @@ coverage:
 11. [Sesi TC] Verifikasi toast "Success, row has been updated."
 12. [Sesi TC] Verifikasi baris #1 menampilkan `Acme Corporation` berstatus `pending`
 13. Pulihkan draft D-01
+14. [Sesi TC] Muat ulang halaman Import > Brand
+15. [Sesi Admin kedua] Muat ulang halaman Import > Brand
 
 ### TC-GS-IMPORT-868 (baris L1077): Take Over Session
 
-14. [Sesi TC] Klik `⋯` pada baris #1
-15. [Sesi TC] Pilih Edit
-16. [Sesi TC] Ubah Brand Name baris #1 menjadi `Acme Corporation`
-17. [Sesi Admin kedua] Klik `⋯` pada baris #2
-18. [Sesi Admin kedua] Pilih Edit
-19. [Sesi Admin kedua] Verifikasi dialog Title "Draft Is Being Edited" dengan Body "Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved." dan tombol `[Cancel]` dan `[Take Over Session]`
-20. [Sesi Admin kedua] Klik `[Take Over Session]`
-21. [Sesi Admin kedua] Verifikasi dialog tertutup
-22. [Sesi Admin kedua] Verifikasi sesi edit belum terbuka untuk Admin kedua
-23. [Sesi Admin kedua] Klik `⋯` pada baris #2
-24. [Sesi Admin kedua] Pilih Edit
-25. [Sesi Admin kedua] Verifikasi baris #2 menjadi input aktif
-26. [Sesi Admin kedua] Verifikasi footer menampilkan `[Cancel]` dan `[Save]`
-27. [Sesi TC] Klik `[Save]`
-28. [Sesi TC] Verifikasi dialog Title "Edit Session Taken Over" dengan Body "Another admin took over this edit session. Your unsaved changes were not saved." dan tombol `[OK]` saja
-29. [Sesi TC] Klik `[OK]` pada dialog
-30. [Sesi TC] Muat ulang halaman Import > Brand
-31. [Sesi TC] Verifikasi baris #1 menampilkan `Acme Corp` (perubahan Total Control tidak tersimpan)
-32. [Sesi Admin kedua] Klik `[Cancel]` pada footer; pulihkan draft D-01
+16. [Sesi TC] Klik `⋯` pada baris #1
+17. [Sesi TC] Pilih Edit
+18. [Sesi TC] Ubah Brand Name baris #1 menjadi `Acme Corporation`
+19. [Sesi Admin kedua] Klik `⋯` pada baris #2
+20. [Sesi Admin kedua] Pilih Edit
+21. [Sesi Admin kedua] Verifikasi dialog Title "Draft Is Being Edited" dengan Body "Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved." dan tombol `[Cancel]` dan `[Take Over Session]`
+22. [Sesi Admin kedua] Klik `[Take Over Session]`
+23. [Sesi Admin kedua] Verifikasi dialog tertutup
+24. [Sesi Admin kedua] Verifikasi sesi edit belum terbuka untuk Admin kedua
+25. [Sesi Admin kedua] Klik `⋯` pada baris #2
+26. [Sesi Admin kedua] Pilih Edit
+27. [Sesi Admin kedua] Verifikasi baris #2 menjadi input aktif
+28. [Sesi Admin kedua] Verifikasi footer menampilkan `[Cancel]` dan `[Save]`
+29. [Sesi TC] Klik `[Save]`
+30. [Sesi TC] Verifikasi dialog Title "Edit Session Taken Over" dengan Body "Another admin took over this edit session. Your unsaved changes were not saved." dan tombol `[OK]` saja
+31. [Sesi TC] Klik `[OK]` pada dialog
+32. [Sesi TC] Muat ulang halaman Import > Brand
+33. [Sesi TC] Verifikasi baris #1 menampilkan `Acme Corp` (perubahan Total Control tidak tersimpan)
+34. [Sesi Admin kedua] Klik `[Cancel]` pada footer; pulihkan draft D-01
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: multi-konteks (kelas c, prinsip 13c); kedua sesi UI menjadi objek asersi.
 - Urutan TC dibalik terhadap nomor TC: blok TC-GS-IMPORT-870@L1079 lebih dulu karena tidak mengubah kunci; TC-GS-IMPORT-868@L1077 memindahkan kunci sehingga di akhir.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 13 dan 32 (pemulihan draft dan penutupan sesi edit), langkah 30 (muat ulang).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 13 dan 34 (pemulihan draft dan penutupan sesi edit), langkah 14 dan 15 (muat ulang halaman kedua sesi sesudah draft dipulihkan), langkah 32 (muat ulang).
 - Pembagian TC lintas spec: nomor TC-GS-IMPORT-868, 869, 870, dan 871 masing-masing dipakai dua baris dengan isi berbeda. Spec ini memuat 868@L1077 dan 870@L1079; 868@L738 ada di spec 049, 871@L1080 di spec 072, dan 869@L1078 di spec 077.
 - Temuan untuk QA:
   - ID ganda TC-GS-IMPORT-868 (L738 dan L1077), 869 (L937 dan L1078), 870 (L1020 dan L1079), 871 (L938 dan L1080) dengan isi berbeda; `sourceTc` dan `check-suite.py` tidak dapat membedakannya. Usulan: QA memberi nomor baru pada empat baris di L1077-L1080.

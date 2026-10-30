@@ -27,7 +27,7 @@ coverage:
   - Kontrol worker commit D-47 mode 2 (dijeda di dalam batch pertama sesudah uji ulang late-binding dan sebelum batch selesai) dan pelepasan jeda (TC-581).
   - Hook umur draft D-76 varian 1 (>=24 jam; `created_at` dimundurkan 25 jam) agar Unsaved Banner dan `[Discard]` tampil.
   - Skrip fixture reset Client E (D-47: hapus draft, lanjutkan worker, hapus Brand hasil commit, reset hasil commit terakhir dan penanda Banner Hasil Commit) dan seeding draft.
-  - Jeda nyata: TC-736 mengamati area toast selama 10 detik (di bawah batas ±30 detik); TC-581 menunggu job selesai lewat polling "muat ulang setiap 5 detik" (bukan menunggu jam).
+  - Jeda nyata: TC-736 mengamati area toast selama 10 detik sebagai satu pengamatan kontinu (di bawah batas ±30 detik; kemampuan pengamatan kontinu disediakan tim FE); TC-581 menunggu job selesai lewat polling "muat ulang setiap 5 detik" (bukan menunggu jam).
 - Data Dinamis (milik spec ini; hasil commit dihapus oleh reset):
   - D-56 `brand-250-impor.csv`: `Brand Impor 001` (#1) sampai `Brand Impor 250` (#250), semua valid dan unik.
   - D-57 `brand-250-mixed.csv`: 248 `pending` (`Brand Impor nnn`), baris #5 `error` (Brand Name 121 karakter, nilai sumber Brand pertama tabel D-41, badge saran AI), baris #20 `duplicate` (`Samsung`); batch pertama = baris #1-#4, #6-#19, #21-#102.
@@ -43,41 +43,41 @@ coverage:
 3. Verifikasi Unsaved Banner tampil
 4. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 5. Klik `[Import (250)]`
-6. Verifikasi `[Import (250)]` Disabled
-7. Amati area toast selama 10 detik (jeda nyata)
-8. Verifikasi tidak ada toast apa pun pada area toast (tidak ada toast "Preparing…")
-9. Muat ulang halaman Import > Brand
-10. Hover `[Import (250)]`
-11. Verifikasi `[Import (250)]` tampil dan Disabled dengan tooltip "Can't do this while an import is in progress." (TC-736 b)
-12. Klik `[Import (250)]`
-13. Verifikasi tidak ada dialog yang terbuka
-14. Verifikasi tidak ada toast yang tampil
-15. Hover `[Discard]` pada Unsaved Banner
-16. Verifikasi `[Discard]` tetap tampil dan Disabled
-17. Verifikasi tooltip pada `[Discard]` "Can't discard while an import is in progress."
-18. Hover `[Upload File]`
-19. Verifikasi `[Upload File]` tetap tampil dan Disabled
-20. Verifikasi tooltip pada `[Upload File]` "Can't do this while an import is in progress."
-21. Atur Rows per page 100
-22. Buka halaman 3
-23. Buka menu `⋯` baris #230
-24. Hover Duplicate
-25. Verifikasi row action Duplicate tetap tampil dan Disabled
-26. Verifikasi tooltip pada Duplicate "Can't do this while an import is in progress."
-27. Hover Edit pada menu yang sama
-28. Verifikasi row action Edit tetap tampil dan Disabled
-29. Verifikasi tooltip pada Edit "Can't do this while an import is in progress."
-30. Tutup menu `⋯` baris #230
-31. Hover toggle "Edit this page"
-32. Verifikasi toggle "Edit this page" tetap tampil dan Disabled
-33. Verifikasi tooltip pada toggle "Edit this page" "Can't do this while an import is in progress."
+6. Verifikasi tidak ada toast apa pun pada area toast selama 10 detik sejak klik `[Import (250)]` (pengamatan kontinu, jeda nyata; tidak ada toast "Preparing…")
+7. Verifikasi `[Import (250)]` Disabled
+8. Muat ulang halaman Import > Brand
+9. Hover `[Import (250)]`
+10. Verifikasi `[Import (250)]` tampil dan Disabled dengan tooltip "Can't do this while an import is in progress." (TC-736 b)
+11. Klik `[Import (250)]`
+12. Verifikasi tidak ada dialog yang terbuka
+13. Verifikasi tidak ada toast yang tampil
+14. Hover `[Discard]` pada Unsaved Banner
+15. Verifikasi `[Discard]` tetap tampil dan Disabled
+16. Verifikasi tooltip pada `[Discard]` "Can't discard while an import is in progress."
+17. Hover `[Upload File]`
+18. Verifikasi `[Upload File]` tetap tampil dan Disabled
+19. Verifikasi tooltip pada `[Upload File]` "Can't do this while an import is in progress."
+20. Atur Rows per page 100
+21. Buka halaman 3
+22. Buka menu `⋯` baris #230
+23. Hover Duplicate
+24. Verifikasi row action Duplicate tetap tampil dan Disabled
+25. Verifikasi tooltip pada Duplicate "Can't do this while an import is in progress."
+26. Hover Edit pada menu yang sama
+27. Verifikasi row action Edit tetap tampil dan Disabled
+28. Verifikasi tooltip pada Edit "Can't do this while an import is in progress."
+29. Tutup menu `⋯` baris #230
+30. Hover toggle "Edit this page"
+31. Verifikasi toggle "Edit this page" tetap tampil dan Disabled
+32. Verifikasi tooltip pada toggle "Edit this page" "Can't do this while an import is in progress."
 
 ### TC-GS-IMPORT-375: Kartu Errors, View Data, chip filter, Sub-Tab, Download Template, dan Changelog tetap berfungsi
 
-34. Reset Client E (D-47) dan seed draft Brand D-57 (250 baris: 248 `pending`, 1 `error` baris #5, 1 `duplicate` baris #20) lewat skrip fixture
-35. Buka Global Settings > Import, pilih Sub-Tab Brand
-36. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
-37. Klik `[Import (248)]`
+33. Reset Client E (D-47) dan seed draft Brand D-57 (250 baris: 248 `pending`, 1 `error` baris #5, 1 `duplicate` baris #20) lewat skrip fixture
+34. Buka Global Settings > Import, pilih Sub-Tab Brand
+35. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
+36. Klik `[Import (248)]`
+37. Tunggu aksi selesai (permintaan mendapat respons)
 38. Muat ulang halaman Import > Brand
 39. Verifikasi sedikitnya satu baris tampil pada Staging Table
 40. Klik kartu Errors
@@ -106,26 +106,28 @@ coverage:
 60. Buka Global Settings > Import, pilih Sub-Tab Brand
 61. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 62. Klik `[Import (247)]`
-63. Muat ulang halaman Import > Brand
-64. Verifikasi kartu Duplicates menampilkan 3
-65. Verifikasi baris #10, #11, dan #12 berstatus `duplicate` tampil di Staging Table
-66. Lepaskan worker lewat kontrol worker
-67. Tunggu commit selesai: muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-68. Verifikasi Dropzone tampil
-69. Verifikasi ketiga baris `duplicate` tidak lagi ada di Staging Table dan tidak disisipkan kembali
+63. Tunggu aksi selesai (permintaan mendapat respons)
+64. Muat ulang halaman Import > Brand
+65. Atur Rows per page 100
+66. Verifikasi kartu Duplicates menampilkan 3
+67. Verifikasi baris #10, #11, dan #12 berstatus `duplicate` tampil di Staging Table
+68. Lepaskan worker lewat kontrol worker
+69. Tunggu commit selesai: muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+70. Verifikasi Dropzone tampil
+71. Verifikasi ketiga baris `duplicate` tidak lagi ada di Staging Table dan tidak disisipkan kembali
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah state `committing` yang dibentuk kontrol worker D-47.
-- Alasan melewati sekitar 35 langkah (69 langkah nominal): tiga blok homogen (satu sesi committing yang dibagi empat TC, satu sesi committing dengan draft campuran, satu commit sampai selesai), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok.
-- Pembagian TC lintas blok: TC-GS-IMPORT-736, 373, 374, dan 387 diamati pada satu job `committing` yang dibentuk satu kali (langkah 1 sampai 5) karena keempatnya hanya mengamati state yang sama dan job yang sudah `committing` tidak dapat dimulai ulang tanpa reset. Draft D-56 diberi umur >=24 jam (D-76 varian 1) agar `[Discard]` pada Unsaved Banner tampil untuk TC-373; TC-374, 387, dan 736 tidak bergantung pada banner. Langkah 6 sampai 8 (TC-736 a) dilakukan segera setelah klik `[Import (250)]` sebelum muat ulang, sesuai butir 5 dan 11 bagian 8b (state sementara diasersi sebelum langkah yang mengubahnya). Urutan langkah TC-736, 387, 373, 374 mengikuti urutan state halaman, bukan nomor TC.
-- TC-GS-IMPORT-387 hanya mengasersi bahwa klik pada tombol Disabled tidak membuka dialog dan tidak menampilkan toast; tooltip `[Import (250)]` diasersi pada langkah 11 (TC-736 b) dan tidak diasersi ulang pada TC-387 a karena nilainya sama.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 34, 59), aktivasi dan pelepasan kontrol worker (langkah 4, 36, 61, 66), pembukaan halaman dan Sub-Tab, hover, pengaturan Rows per page (langkah 21), pindah halaman (langkah 22), menutup menu `⋯` (langkah 30), menutup modal Changelog (langkah 58), dan polling job (langkah 67) yang menunggu job latar belakang dan bukan jam. Langkah 3 dan 39 adalah `Verifikasi` tambahan di luar Expected TC yang menjadi anchor positif (Unsaved Banner tampil pada draft berumur >=24 jam; ada baris sebelum filter), sebelum asersi absence atau asersi universal.
-- Langkah 8, 14, 55 adalah asersi absence toast; masing-masing didahului anchor positif yang terhubung ke pemicu (langkah 6 `[Import (250)]` Disabled setelah klik; langkah 13 absence dialog didahului langkah 11 yang membuktikan tombol tampil; langkah 54 berkas terunduh).
+- Alasan melewati sekitar 35 langkah (71 langkah nominal): tiga blok homogen (satu sesi committing yang dibagi empat TC, satu sesi committing dengan draft campuran, satu commit sampai selesai), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok.
+- Pembagian TC lintas blok: TC-GS-IMPORT-736, 373, 374, dan 387 diamati pada satu job `committing` yang dibentuk satu kali (langkah 1 sampai 5) karena keempatnya hanya mengamati state yang sama dan job yang sudah `committing` tidak dapat dimulai ulang tanpa reset. Draft D-56 diberi umur >=24 jam (D-76 varian 1) agar `[Discard]` pada Unsaved Banner tampil untuk TC-373; TC-374, 387, dan 736 tidak bergantung pada banner. Langkah 6 (TC-736 a) dilakukan segera setelah klik `[Import (250)]`, sebelum `Verifikasi` artefak langkah 7 dan sebelum muat ulang, sesuai butir 5 dan 11 bagian 8b (state sementara diasersi sebelum langkah yang mengubahnya). Urutan langkah TC-736, 387, 373, 374 mengikuti urutan state halaman, bukan nomor TC.
+- TC-GS-IMPORT-387 hanya mengasersi bahwa klik pada tombol Disabled tidak membuka dialog dan tidak menampilkan toast; tooltip `[Import (250)]` diasersi pada langkah 10 (TC-736 b) dan tidak diasersi ulang pada TC-387 a karena nilainya sama.
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 33, 59), aktivasi dan pelepasan kontrol worker (langkah 4, 35, 61, 68), pembukaan halaman dan Sub-Tab, hover, pengaturan Rows per page (langkah 20 dan 65; langkah 65 menampilkan baris #10 sampai #12 pada satu halaman), pindah halaman (langkah 21), menutup menu `⋯` (langkah 29), menutup modal Changelog (langkah 58), langkah 37 dan 63 (Tunggu aksi selesai: permintaan mendapat respons, memisahkan klik `[Import (248)]` dan `[Import (247)]` dari muat ulang), dan polling job (langkah 69) yang menunggu job latar belakang dan bukan jam. Langkah 3 dan 38 adalah `Verifikasi` tambahan di luar Expected TC yang menjadi anchor positif (Unsaved Banner tampil pada draft berumur >=24 jam; ada baris sebelum filter), sebelum asersi absence atau asersi universal.
+- Langkah 6, 13, 55 adalah asersi absence toast; langkah 6 ditulis segera sesudah pemicu klik `[Import (250)]` dan sebelum `Verifikasi` artefak langkah 7 (`[Import (250)]` Disabled) sesuai butir 11 bagian 8b, sehingga anchor positif menyusul; langkah 12 (absence dialog) didahului langkah 10 yang membuktikan tombol tampil; langkah 54 berkas terunduh mendahului langkah 55.
 - Temuan untuk QA:
   - TC-GS-IMPORT-373, 374, 375, 387, 581, 736 tidak merujuk kontrol worker D-47 pada kolom D-ref walau butuh worker dijeda.
-  - TC-GS-IMPORT-736 bertanda "Preparing" tanpa PRD; asersi absence toast hanya selama 10 detik (Langkah TC) dan tidak mencakup toast yang muncul sesudahnya.
+  - TC-GS-IMPORT-736 bertanda "Preparing" tanpa PRD; asersi absence toast hanya selama 10 detik (Langkah TC, satu pengamatan kontinu pada langkah 6) dan tidak mencakup toast yang muncul sesudahnya.
   - TC-GS-IMPORT-581 mendefinisikan berkas `brand-250-mutual.csv` secara inline tanpa entri D-xx pada Tabel Data Dinamis; spec mengikuti Data Uji TC.
   - TC-GS-IMPORT-581 Post Condition b ("247 record Brand baru tersimpan") tidak punya langkah observasi dan tidak diasersi (S-01); hook `after` menghapus Brand hasil commit.
   - Post Condition TC-GS-IMPORT-373, 374, 375, 387, 736 ("job Brand Client E berstatus committing dengan worker dijeda; draft tetap 250 baris") tidak punya langkah observasi tersendiri dan tidak diasersi.
-  - TC-GS-IMPORT-375 Expected b menyebut chip "Showing rows with: Brand Name: Max. 120 characters" dengan `[×]`; spec memecahnya menjadi chip tampil (langkah 44) dan tabel hanya baris #5 (langkah 45).
+  - TC-GS-IMPORT-375 Expected b menyebut chip "Showing rows with: Brand Name: Max. 120 characters" dengan `[×]`; spec memecahnya menjadi chip tampil (langkah 43) dan tabel hanya baris #5 (langkah 44).

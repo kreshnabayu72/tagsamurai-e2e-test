@@ -82,7 +82,7 @@ coverage:
 
 ### TC-GS-UOM-56: Tombol Submit masuk state proses dan klik ganda hanya membuat satu record
 
-23. Pasang intercept yang menahan respons Create selama 2 detik
+23. Tunggu toast lama hilang otomatis, lalu pasang intercept yang menahan respons Create selama 2 detik
 24. Isi Unit Name `Quart {runId}-021` dan Symbol `qt`
 25. Arahkan kursor ke [Submit] tanpa mengklik
 26. Verifikasi [Submit] menampilkan state hover yang berbeda dari state default
@@ -137,7 +137,7 @@ coverage:
 - Urutan TC dalam spec: 41, 42, 45, 50, 53, 56, 340 (satu sesi modal dengan Stay tercentang, prinsip 8 konvensi), lalu 55 (Stay dilepas sehingga Submit menutup form, sekaligus kejadian menutup form), lalu verifikasi tabel. Urutan menyimpang dari urutan TC sumber (41, 42, 45, 50, 53, 55, 56, 340) demi satu sesi modal; hanya satu kali [+ Unit] dibuka.
 - Asersi "tampil di tabel" milik TC-GS-UOM-41, 42, 53, 56, 340, dan 55 ditaruh sesudah form ditutup (langkah 47 sampai 59) karena tabel berada di belakang modal selama Stay tercentang; toast dicek langsung sesudah Submit. TC-GS-UOM-45 dan 50 tidak punya Expected Result tampil di tabel.
 - Langkah 59 (urutan Unit Name): Search `{runId}-021` memunculkan unit milik spec; `Barrel` mendahului `Hectare` pada urutan default A-Z. Urutan default tabel diasumsikan A-Z menurut Unit Name (TC-GS-UOM-55 Expected Result c).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 2 dan 39 (mengatur mode Stay, bukan asersi TC), langkah 23 dan 33 (memasang dan melepas intercept), langkah 34 dan 38 ("Tunggu toast lama hilang otomatis" sebelum menghitung toast), langkah 45 (mengamati toast 6 detik), serta langkah 47, 49, 52, 54, 56, 58, dan 60 (Search agar baris milik spec tampil di halaman aktif pada tabel 10 per halaman, lalu menutup Search).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 2 dan 39 (mengatur mode Stay, bukan asersi TC), langkah 23 (menunggu toast lama hilang dan memasang intercept) dan 33 (melepas intercept), langkah 34 dan 38 ("Tunggu toast lama hilang otomatis" sebelum menghitung toast), langkah 45 (mengamati toast 6 detik), serta langkah 47, 49, 52, 54, 56, 58, dan 60 (Search agar baris milik spec tampil di halaman aktif pada tabel 10 per halaman, lalu menutup Search).
 - Nama dan Symbol memakai nilai TC dengan suffix `{runId}-021`; Symbol tidak bersuffix karena tidak unik (TC-GS-UOM-53).
 - Spec memuat sekitar 60 langkah (melewati batas 35 langkah). Alasan: semua blok berada di satu kelas harness (Create sukses), satu akun, dan satu sesi modal; tiap Create memakai nama sendiri sehingga kegagalan satu Create tidak menghilangkan makna Create lain; memecah hanya menambah login, hook, dan pembukaan form.
 - Parameter waktu: 2 detik (TC-GS-UOM-56) adalah parameter tahan respons Data Uji, bukan klaim PRD; 4 detik toast mengikuti `foundation/functions/toast-copy.md` Aturan Terkunci #12 (Success 4 detik).

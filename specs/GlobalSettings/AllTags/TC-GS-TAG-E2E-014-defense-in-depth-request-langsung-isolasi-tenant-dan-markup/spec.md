@@ -36,9 +36,9 @@ Akun yang diuji (Tabel Data Uji Pre-setup):
 | TC-325, TC-326 | Total Control, Sari Dewi | A | `totalControl_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_TC_PASSWORD` | UI |
 
 - `GS_TAG_READ_PASSWORD` dan `GS_FAMS_ASSETTAG_READ_PASSWORD` belum terdaftar di `.env.example` dan `spectra.config.ts` (dicatat di `suite.md` bagian Kredensial).
-- Data Pre-setup (hanya dibaca kecuali yang tertulis): Seed Registri A (DD-01 `E2801160600002054D8A0001`, DD-02 `E2801160600002054D8A0002` Available sebagai target request ditolak); stok resmi Client A DD-S1 (GPS `356938035643001`); IMEI `356938035643201` (DD-N4) In Use di Client B dengan Device Name `Rahasia-B` (TC-325); IMEI `356938035643101` (DD-N1) tidak ada di stok (TC-326); opsi mandiri Client A aktif; katalog Client A memuat Device Name `Queclink GV300`. Data di-seed ulang idempotent oleh hook `before`; tag yang diaktivasi TC-325 dan TC-326 dikembalikan ke kondisi awal oleh reset seed pada hook `after` (Q-4; mekanisme disediakan tim FE/BE).
+- Data Pre-setup (hanya dibaca kecuali yang tertulis): Seed Registri A (DD-01 `E2801160600002054D8A0001`, DD-02 `E2801160600002054D8A0002` Available sebagai target request ditolak); stok resmi Client A DD-S1 (GPS `356938035643001`); IMEI `356938035643201` (DD-N4) In Use di Client B dengan Device Name `Rahasia-B` (TC-325); IMEI `356938035643101` (DD-N1) tidak ada di stok dan tidak In Use di client mana pun sehingga langsung Activated; tidak ada baris Waiting for Approval sehingga dialog informasi "Your activation is pending review." (D-08) tidak muncul (TC-326); opsi mandiri Client A aktif; katalog Client A memuat Device Name `Queclink GV300`. Data di-seed ulang idempotent oleh hook `before`; tag yang diaktivasi TC-325 dan TC-326 dikembalikan ke kondisi awal oleh reset seed pada hook `after` (Q-4; mekanisme disediakan tim FE/BE).
 - Baseline log (S-12): jumlah entri Event Log (kedua tab) dan Activity Log Client A dibaca lewat kemampuan baca disediakan tim FE/BE, dicatat sebelum request pertama tiap blok TC-34, TC-323, dan TC-374 (langkah 1, 7, 18).
-- Kemampuan teknis: klien HTTP dan sesi API per role (di atas); deteksi dialog JavaScript (`alert`) pada halaman untuk TC-326; kontrol penutup dialog informasi "Your activation is pending review." (TC-325 dan TC-326); Template Self-Purchased tidak mensyaratkan pembaca berkas.
+- Kemampuan teknis: klien HTTP dan sesi API per role (di atas); deteksi dialog JavaScript (`alert`) pada halaman untuk TC-326; kontrol penutup dialog informasi "Your activation is pending review." (TC-325); Template Self-Purchased tidak mensyaratkan pembaca berkas.
 - Layar awal: Global Settings > TAG Tab All dibuka di hook `beforeEach` untuk akun hook; setelah ganti akun, halaman dibuka lewat langkah.
 - Guided Tooltip: flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate` disetel true untuk akun UI oleh hook suite `before` dan dipulihkan di `after` (pernyataan hook di `suite.md`); spec ini tidak mengubahnya.
 - Selektor: overlay Select TAG Type, Template Self-Purchased, input entri manual GPS, tabel staging, dan popup TAG Log belum punya ID/aria-label di sumber; diselesaikan tim FE di tahap script.
@@ -128,18 +128,17 @@ Akun yang diuji (Tabel Data Uji Pre-setup):
 60. Verifikasi tabel staging menampilkan Brand sebagai teks literal `<img src=x onerror=alert(1)>`
 61. Verifikasi tidak ada dialog `alert` yang muncul
 62. Klik `Submit`, klik `Submit` pada dialog `Submit Activation`
-63. Tutup dialog informasi "Your activation is pending review." (kontrol penutup disediakan tim FE)
-64. Tunggu aksi selesai
-65. Klik item sidebar `TAG`, klik Tab All
-66. Ketik Search `356938035643101`, tekan Enter
-67. Verifikasi badge Brand baris `356938035643101` menampilkan teks literal
-68. Arahkan kursor ke badge Brand baris `356938035643101`
-69. Verifikasi tooltip menampilkan `<img src=x onerror=alert(1)>` sebagai teks literal
-70. Verifikasi tidak ada dialog `alert` yang muncul di registri
-71. Buka menu baris `356938035643101`, klik `TAG Log`
-72. Verifikasi TAG Log menampilkan nilai sebagai teks literal
-73. Verifikasi tidak ada dialog `alert` yang muncul di TAG Log
-74. Tutup popup, klik `(←)` pada kotak Search
+63. Tunggu aksi selesai
+64. Klik item sidebar `TAG`, klik Tab All
+65. Ketik Search `356938035643101`, tekan Enter
+66. Verifikasi badge Brand baris `356938035643101` menampilkan teks literal
+67. Arahkan kursor ke badge Brand baris `356938035643101`
+68. Verifikasi tooltip menampilkan `<img src=x onerror=alert(1)>` sebagai teks literal
+69. Verifikasi tidak ada dialog `alert` yang muncul di registri
+70. Buka menu baris `356938035643101`, klik `TAG Log`
+71. Verifikasi TAG Log menampilkan nilai sebagai teks literal
+72. Verifikasi tidak ada dialog `alert` yang muncul di TAG Log
+73. Tutup popup, klik `(←)` pada kotak Search
 
 ## Notes
 
@@ -147,17 +146,16 @@ Akun yang diuji (Tabel Data Uji Pre-setup):
 - Penyimpangan urutan: urutan sumber TC-34, TC-323, TC-324, TC-325, TC-326, TC-374, TC-375. Spec memakai TC-34, TC-323, TC-374, TC-375, TC-324, TC-325, TC-326 agar seluruh blok request langsung (sesi API, tanpa UI) berurutan, TC-324 (UI Client B) memakai akun hook, dan aksi yang membuat data (TC-325, TC-326, ganti akun ke Client A) ada di akhir.
 - Keputusan D-2 (plan): TC-34, 316c (spec 010), 323, 324 (sebagian), 325, 374, 375 tetap di E2E sebagai defense-in-depth; asersi request langsung hanya status respons dan state data.
 - Asersi absence log (TC-34, 323, 374) memakai baseline jumlah entri (D-1, S-12) dengan anchor positif respons 403 (langkah 3, 9/11/13, 20/22) sebelum asersi jumlah. Tidak ada spec absence terpisah. P-1 (S-05): klausa absence log dan asersi jumlah entri tetap TC-34, TC-323, dan TC-374 berada di spec asal; baseline dicatat sebelum request pertama tiap blok (langkah 1, 7, 18).
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 7, 18 (baseline), 39 sampai 41 (ganti akun dan membuka halaman; ganti akun eksplisit, S-07), langkah 45 dan 63 (menutup dialog informasi D-08 sebelum navigasi), langkah 46 dan 64 (Tunggu aksi selesai), langkah 47 dan 65 (kembali ke List: halaman Activate tetap terbuka sesudah commit, sehingga Search registri didahului sidebar `TAG` dan Tab All), langkah 56 dan 74 (menutup popup dan mengosongkan Search), langkah 68 (hover badge Brand untuk mengamati tooltip). Langkah 49 (`Verifikasi` baris berstatus Waiting for Approval) adalah asersi tambahan yang tidak ada di Expected TC-325 dan sekaligus anchor positif bahwa baris tampil sebelum asersi absence langkah 51; langkah 54 dan 55 menjalankan klausa "tidak ada nama, brand, atau identitas Client B" pada TAG Log dan baris. Langkah 33 (`No results found`) adalah anchor positif absence hasil Search.
-- Alasan spec melewati sekitar 35 langkah (74): semua blok kelas a (defense-in-depth) dengan tujuh TC sumber; tiap blok berdiri sendiri (akun, sesi, dan data berbeda) dan kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah request dan `Verifikasi` status dipecah per request dan per klausa (S-01). Blok TC-325 dan TC-326 memakai UI (kelas a, Tipe Security) sehingga tetap di spec ini.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 7, 18 (baseline), 39 sampai 41 (ganti akun dan membuka halaman; ganti akun eksplisit, S-07), langkah 45 (menutup dialog informasi D-08 sebelum navigasi), langkah 46 dan 63 (Tunggu aksi selesai), langkah 47 dan 64 (kembali ke List: halaman Activate tetap terbuka sesudah commit, sehingga Search registri didahului sidebar `TAG` dan Tab All), langkah 56 dan 73 (menutup popup dan mengosongkan Search), langkah 67 (hover badge Brand untuk mengamati tooltip). Langkah 49 (`Verifikasi` baris berstatus Waiting for Approval) berasal dari langkah 6 TC-325 ("hingga baris berstatus Waiting for Approval") dan sekaligus anchor positif bahwa baris tampil sebelum asersi absence langkah 51; langkah 54 dan 55 menjalankan klausa "tidak ada nama, brand, atau identitas Client B" pada TAG Log dan baris. Langkah 33 (`No results found`) adalah anchor positif absence hasil Search.
+- Alasan spec melewati sekitar 35 langkah (73): semua blok kelas a (defense-in-depth) dengan tujuh TC sumber; tiap blok berdiri sendiri (akun, sesi, dan data berbeda) dan kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah request dan `Verifikasi` status dipecah per request dan per klausa (S-01). Blok TC-325 dan TC-326 memakai UI (kelas a, Tipe Security) sehingga tetap di spec ini.
 - Spec memuat blok bukan pembuat data (TC-34, TC-323, TC-374, TC-375, TC-324: request langsung dan pembacaan) dan blok pembuat data (TC-325 dan TC-326: Activate GPS Self-Purchased) tanpa dipecah: semuanya satu kelas (a, defense-in-depth) pada permukaan registri dan Activate Client A; blok pembuat data ada di akhir sehingga kegagalan keras di dalamnya tidak menutupi hasil blok request langsung, dan pembersihan data dilakukan reset seed pada hook `after`.
 - Temuan untuk QA:
   - TC-34 butir c, TC-323, dan TC-374 butir c: "tidak ada entri Event Log maupun Activity Log baru" dipetakan sebagai baseline jumlah entri (Event Log dan Activity Log Client A); cara membaca jumlah tidak ditetapkan TC (disediakan tim FE/BE).
   - TC-34 langkah 2 ("Muat ulang halaman registri") adalah observasi UI untuk request langsung; spec tidak mengasersi UI (8b butir 1), melainkan state data. Perilaku FE pada respons 403 tidak diasersi.
   - TC-323 langkah 1 tidak menyebut payload Submit Audit; spec menulis "payload disediakan tim FE".
   - TC-324 Expected b menulis "ditolak server" tanpa kode status dan "tidak mengembalikan data DD-02" tanpa bentuk respons.
-  - TC-325 tidak menyebut nilai Template Self-Purchased yang diisi (Device Name, Brand, SKU) maupun makna "Buka baris tersebut"; spec memakai Device Name `Queclink GV300` dari katalog Client A, Brand `Queclink` (Brand wajib bila SKU kosong; Template sebagian menghasilkan `Needs Info` dan Submit diblokir, tabel field Template pada PRD all-tags.md), dan membuka TAG Log lewat menu baris (S-13).
-  - TC-325 dan TC-326 tidak menyebut dialog informasi D-08 "Your activation is pending review." yang tampil sesudah toast sukses saat ada baris Waiting for Approval; spec menutupnya (langkah 45 dan 63) dengan kontrol penutup yang disediakan tim FE, seperti spec 032.
-  - TC-326 Brand `<img src=x onerror=alert(1)>` berjumlah 28 karakter sehingga badge registri terpotong sesuai aturan 12+..+12 (TC-8); TC tidak membahas pemotongan. Spec mengasersi hover tooltip sebagai teks literal penuh (langkah 68 dan 69; asersi tambahan di luar Expected TC, dicatat di sini sesuai S-03).
+  - TC-325 langkah 7 ("Buka baris tersebut dan TAG Log-nya") tidak menyebut cara membuka baris; spec membuka TAG Log lewat menu baris (S-13).
+  - TC-326 Brand `<img src=x onerror=alert(1)>` berjumlah 28 karakter sehingga badge registri terpotong sesuai aturan 12+..+12 (TC-8); TC tidak membahas pemotongan. Spec mengasersi hover tooltip sebagai teks literal penuh (langkah 67 dan 68; asersi tambahan di luar Expected TC, dicatat di sini sesuai S-03).
   - TC-326 tidak menyebut cara mendeteksi "tidak ada skrip berjalan"; spec memakai deteksi dialog `alert` (kemampuan teknis).
   - TC-374 langkah 1 menyebut "permintaan baca daftar registri tag" tanpa endpoint; endpoint ditentukan tim FE dari `openapi.yaml`.
   - Post Condition semua TC bernilai `-`.

@@ -22,7 +22,7 @@ coverage:
 - Layar awal: hook `beforeEach` membuka Global Settings > Import > User Non Login untuk Client C.
 - Guided Tooltip: hook suite `before` men-set flag `guided_tooltip_seen_gs-import` true untuk akun aktor spec ini, lihat `suite.md`.
 - Data Pre-setup Client C (tidak diubah): User Login `rina.admin.c@example.com` (Activated), `budi.manager.c@example.com` (Activated), `tono.inactive.c@example.com` (Inactive), `baru.impor.c@example.com` (Pending Activation); User Non Login `agus.nonlogin.c@example.com`.
-- Data Dinamis: D-90 (Draft User Non Login Client C 1 baris `error` dari `user-non-login-rep-invalid.csv`: Siti Rahayu, `siti.rahayu@example.com`, Division `Engineering`, Position kosong, Represented By `tidak.ada@example.com`; pesan baris "Represented by must be an active User Login account"), dibuat lewat skrip fixture dan dipulihkan sebelum spec (Kontrak Fixture R2). Nilai ketikan: `tono.inactive`, `baru.impor`, `agus.nonlogin`, `rina.admin.c`, `budi.manager.c@example.com`, `budi`.
+- Data Dinamis: D-90 (Draft User Non Login Client C 1 baris `error` dari `user-non-login-rep-invalid.csv`: Siti Rahayu, `siti.rahayu@example.com`, Division `Engineering`, Position kosong, Represented By `tidak.ada@example.com`; pesan baris "Represented by must be an active User Login account"), dibuat oleh langkah 1 lewat skrip fixture (Kontrak Fixture R2). Nilai ketikan: `tono.inactive`, `baru.impor`, `agus.nonlogin`, `rina.admin.c`, `budi.manager.c@example.com`, `budi`.
 - Kemampuan teknis: pengamatan panel saran combobox, tombol Esc, skrip pemulihan draft D-90 (disediakan tim FE/BE).
 - State global: tidak ada yang diubah selain draft Client C dan flag Guided Tooltip (dipulihkan hook suite `after`).
 - Cleanup (hook `after`, tidak berasumsi setup berhasil penuh): buang draft User Non Login Client C dan lepas kunci sesi edit.
@@ -31,7 +31,7 @@ coverage:
 
 ### TC-GS-IMPORT-676, 967, 968: Satu sesi edit pada sel Represented By tersimpan tidak ditemukan
 
-1. Muat ulang halaman Import > User Non Login
+1. Reset Client C ke tanpa draft User Non Login dan seed draft D-90 lewat skrip fixture; muat ulang halaman Import > User Non Login
 2. Klik `⋯` pada baris #1, pilih `Edit`
 3. Verifikasi sel Represented By baris #1 menampilkan `tidak.ada@example.com` sebagai nilai terpilih berstatus Invalid (ikon dan teks deskriptif) dan tidak dikosongkan
 4. Klik sel Represented By baris #1 dan ketik `tono.inactive`
@@ -66,7 +66,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fungsional.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Penggabungan: TC-967, TC-968, dan TC-676 berbagi satu sesi edit pada draft D-90 yang sama; asersi TC-676 a pada langkah 3, TC-967 pada langkah 4 sampai 14, TC-968 a pada langkah 15 sampai 18, TC-968 b dan TC-676 b-c pada langkah 19 sampai 23, TC-676 d pada langkah 24 sampai 29. Teks diketik lalu dihapus di antara kasus tanpa membuka ulang sesi (halaman yang dipakai berulang, bagian 3).
-- Langkah penghubung (tanpa `Verifikasi`): langkah 1 (muat ulang halaman, Langkah 1 TC-676).
+- Langkah penghubung (tanpa `Verifikasi`): langkah 1 (reset dan seed draft D-90 lewat skrip fixture sinkron, lalu muat ulang halaman; Langkah 1 TC-676).
 - Spec berisi 29 langkah.
 - Pembagian TC lintas spec: TC-GS-IMPORT-898, 964 sampai 966 (combobox Client A) ada di spec 101.
 - Temuan untuk QA:

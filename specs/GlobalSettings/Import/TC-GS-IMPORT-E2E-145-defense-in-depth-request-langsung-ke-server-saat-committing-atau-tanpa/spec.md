@@ -48,144 +48,151 @@ coverage:
 
 1. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
 2. Seed draft Brand D-56 (250 baris `pending`) di Client E lewat skrip fixture
-3. Buka Global Settings > Import, pilih Sub-Tab Brand
+3. Muat ulang halaman Import > Brand
 4. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 5. Klik `[Import (250)]`
-6. Muat ulang halaman Import > Brand
-7. Kirim permintaan Upload `brand-append-6.csv` langsung ke server dengan token Total Control Client E
-8. Verifikasi respons permintaan Upload berstatus 409
-9. Muat ulang halaman Import > Brand
-10. Verifikasi Modal Column Mapping tidak terbuka (setelah Verifikasi elemen halaman Import tampil: kartu Total Rows tampil)
-11. Verifikasi kartu Total Rows tetap 250
+6. Tunggu aksi selesai (permintaan mendapat respons)
+7. Muat ulang halaman Import > Brand
+8. Kirim permintaan Upload `brand-append-6.csv` langsung ke server dengan token Total Control Client E
+9. Verifikasi respons permintaan Upload berstatus 409
+10. Muat ulang halaman Import > Brand
+11. Verifikasi Modal Column Mapping tidak terbuka (setelah Verifikasi elemen halaman Import tampil: kartu Total Rows tampil)
+12. Verifikasi kartu Total Rows tetap 250
 
 ### TC-GS-IMPORT-383: AI Accept dan Dismiss langsung saat committing ditolak 409
 
-12. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
-13. Pastikan mock AI mode normal (D-40), lalu seed draft Brand D-57 di Client E lewat skrip fixture
-14. Buka Global Settings > Import, pilih Sub-Tab Brand
-15. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
-16. Klik `[Import (248)]`
-17. Muat ulang halaman Import > Brand
-18. Kirim permintaan AI Accept untuk sel Brand Name baris #5 langsung ke server dengan token Total Control Client E
-19. Verifikasi respons permintaan AI Accept berstatus 409
-20. Kirim permintaan AI Dismiss untuk sel Brand Name baris #5 langsung ke server dengan token Total Control Client E
-21. Verifikasi respons permintaan AI Dismiss berstatus 409
-22. Muat ulang halaman Import > Brand
-23. Verifikasi Brand Name baris #5 tetap bernilai `PT Samsung Electronics Indonesia Manufacturing and Distribution Company for Consumer Electronics and Home Appliances Prod` (121 karakter)
-24. Verifikasi baris #5 tetap berstatus `error`
-25. Verifikasi badge saran AI pada sel Brand Name baris #5 masih tampil
+13. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
+14. Pastikan mock AI mode normal (D-40), lalu seed draft Brand D-57 di Client E lewat skrip fixture
+15. Muat ulang halaman Import > Brand
+16. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
+17. Klik `[Import (248)]`
+18. Tunggu aksi selesai (permintaan mendapat respons)
+19. Muat ulang halaman Import > Brand
+20. Kirim permintaan AI Accept untuk sel Brand Name baris #5 langsung ke server dengan token Total Control Client E
+21. Verifikasi respons permintaan AI Accept berstatus 409
+22. Kirim permintaan AI Dismiss untuk sel Brand Name baris #5 langsung ke server dengan token Total Control Client E
+23. Verifikasi respons permintaan AI Dismiss berstatus 409
+24. Muat ulang halaman Import > Brand
+25. Verifikasi Brand Name baris #5 tetap bernilai `PT Samsung Electronics Indonesia Manufacturing and Distribution Company for Consumer Electronics and Home Appliances Prod` (121 karakter)
+26. Verifikasi baris #5 tetap berstatus `error`
+27. Verifikasi badge saran AI pada sel Brand Name baris #5 masih tampil
 
 ### TC-GS-IMPORT-384: Memulai sesi edit langsung saat committing ditolak 409
 
-26. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
-27. Seed draft Brand D-56 (250 baris `pending`) di Client E lewat skrip fixture
-28. Buka Global Settings > Import, pilih Sub-Tab Brand
-29. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
-30. Klik `[Import (250)]`
-31. Muat ulang halaman Import > Brand
-32. Kirim permintaan memulai sesi edit untuk baris #1 langsung ke server dengan token Total Control Client E
-33. Verifikasi respons permintaan memulai sesi edit berstatus 409
+28. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
+29. Seed draft Brand D-56 (250 baris `pending`) di Client E lewat skrip fixture
+30. Muat ulang halaman Import > Brand
+31. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
+32. Klik `[Import (250)]`
+33. Tunggu aksi selesai (permintaan mendapat respons)
 34. Muat ulang halaman Import > Brand
-35. Verifikasi footer menampilkan `[Import (250)]` Disabled
-36. Verifikasi footer tidak menampilkan `[Cancel]` dan `[Save]`
-37. Verifikasi kartu Total Rows tetap 250
+35. Kirim permintaan memulai sesi edit untuk baris #1 langsung ke server dengan token Total Control Client E
+36. Verifikasi respons permintaan memulai sesi edit berstatus 409
+37. Muat ulang halaman Import > Brand
+38. Verifikasi footer menampilkan `[Import (250)]` Disabled
+39. Verifikasi footer tidak menampilkan `[Cancel]` dan `[Save]`
+40. Verifikasi kartu Total Rows tetap 250
 
 ### TC-GS-IMPORT-746: Discard Draft langsung saat committing ditolak 409
 
-38. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
-39. Seed draft Brand D-56 (250 baris `pending`) di Client E lewat skrip fixture dengan hook umur draft D-76 varian 1 (`created_at` dimundurkan 25 jam)
-40. Buka Global Settings > Import, pilih Sub-Tab Brand
-41. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
-42. Klik `[Import (250)]`
+41. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
+42. Seed draft Brand D-56 (250 baris `pending`) di Client E lewat skrip fixture dengan hook umur draft D-76 varian 1 (`created_at` dimundurkan 25 jam)
 43. Muat ulang halaman Import > Brand
-44. Kirim permintaan Discard Draft langsung ke server dengan token Total Control Client E
-45. Verifikasi respons permintaan Discard Draft berstatus 409
-46. Muat ulang halaman Import > Brand
-47. Verifikasi Unsaved Banner tampil
-48. Verifikasi kartu Total Rows tetap 250
+44. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
+45. Klik `[Import (250)]`
+46. Tunggu aksi selesai (permintaan mendapat respons)
+47. Muat ulang halaman Import > Brand
+48. Kirim permintaan Discard Draft langsung ke server dengan token Total Control Client E
+49. Verifikasi respons permintaan Discard Draft berstatus 409
+50. Muat ulang halaman Import > Brand
+51. Verifikasi Unsaved Banner tampil
+52. Verifikasi kartu Total Rows tetap 250
 
 ### TC-GS-IMPORT-739: Import langsung tanpa draft ditolak 404
 
-49. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
-50. Buka Global Settings > Import, pilih Sub-Tab Brand
-51. Kirim permintaan Import untuk Tab Brand langsung ke server dengan token Total Control Client E
-52. Verifikasi respons permintaan Import berstatus 404
-53. Muat ulang halaman Import > Brand
-54. Verifikasi Dropzone tampil
-55. Verifikasi Unsaved Banner tidak tampil
-56. Verifikasi `[Import (0)]` Disabled
+53. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
+54. Muat ulang halaman Import > Brand
+55. Kirim permintaan Import untuk Tab Brand langsung ke server dengan token Total Control Client E
+56. Verifikasi respons permintaan Import berstatus 404
+57. Muat ulang halaman Import > Brand
+58. Verifikasi Dropzone tampil
+59. Verifikasi Unsaved Banner tidak tampil
+60. Verifikasi `[Import (0)]` Disabled
 
 ### TC-GS-IMPORT-704: Accept langsung saat committing ditolak 409
 
-57. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
-58. Buka Global Settings > Import, pilih Sub-Tab Brand
-59. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-60. Klik `[Upload File]` di toolbar dan pilih berkas `brand-ai-commit.csv`
-61. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-62. Klik `[Import (2)]`
-63. Kirim permintaan Accept untuk baris #3 langsung ke server dengan token Total Control Client E (pengenal baris dari respons pembacaan Staging Table)
-64. Verifikasi respons permintaan Accept berstatus 409
-65. Muat ulang halaman Import > Brand
-66. Verifikasi sel Brand Name baris #3 tetap bernilai 121 karakter semula
-67. Verifikasi baris #3 tetap berstatus `error`
+61. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
+62. Muat ulang halaman Import > Brand
+63. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
+64. Klik `[Upload File]` di toolbar dan pilih berkas `brand-ai-commit.csv`
+65. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
+66. Klik `[Import (2)]`
+67. Tunggu aksi selesai (permintaan mendapat respons)
+68. Kirim permintaan Accept untuk baris #3 langsung ke server dengan token Total Control Client E (pengenal baris dari respons pembacaan Staging Table)
+69. Verifikasi respons permintaan Accept berstatus 409
+70. Muat ulang halaman Import > Brand
+71. Verifikasi sel Brand Name baris #3 tetap bernilai 121 karakter semula
+72. Verifikasi baris #3 tetap berstatus `error`
 
 ### TC-GS-IMPORT-729: Create Missing Divisions langsung saat committing ditolak 409
 
-68. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
-69. Buka Global Settings > Import, pilih Sub-Tab User Login
-70. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-71. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-logistik.csv` (baris #1 Bambang Hartono Division `Engineering`; baris #2 Citra Wulandari dan baris #3 Doni Kurniawan Division `Logistik`; Position kosong)
-72. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-73. Klik `[Import (1)]`
-74. Kirim permintaan Create Missing Divisions untuk kategori "Division not found" langsung ke server dengan token Total Control Client E
-75. Verifikasi respons permintaan Create Missing Divisions berstatus 409
-76. Buka Global Settings > User > Division
-77. Verifikasi tabel Division menampilkan 5 baris
-78. Verifikasi daftar Division tidak memuat `Logistik`
+73. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
+74. Muat ulang halaman Import > User Login
+75. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
+76. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-logistik.csv` (baris #1 Bambang Hartono Division `Engineering`; baris #2 Citra Wulandari dan baris #3 Doni Kurniawan Division `Logistik`; Position kosong)
+77. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
+78. Klik `[Import (1)]`
+79. Tunggu aksi selesai (permintaan mendapat respons)
+80. Kirim permintaan Create Missing Divisions untuk kategori "Division not found" langsung ke server dengan token Total Control Client E
+81. Verifikasi respons permintaan Create Missing Divisions berstatus 409
+82. Buka Global Settings > User > Division
+83. Verifikasi tabel Division menampilkan 5 baris
+84. Verifikasi daftar Division tidak memuat `Logistik`
 
 ### TC-GS-IMPORT-730: Create Missing Positions langsung saat committing ditolak 409
 
-79. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
-80. Buka Global Settings > Import, pilih Sub-Tab User Login
-81. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-82. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-store-supervisor.csv` (baris #1 Bambang Hartono Position kosong; baris #2 Citra Wulandari dan baris #3 Doni Kurniawan Position `Store Supervisor`; Division `Engineering`)
-83. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-84. Klik `[Import (1)]`
-85. Kirim permintaan Create Missing Positions untuk kategori "Position not found" langsung ke server dengan token Total Control Client E
-86. Verifikasi respons permintaan Create Missing Positions berstatus 409
-87. Buka Global Settings > User > Position
-88. Verifikasi tabel Position menampilkan 5 baris
-89. Verifikasi daftar Position tidak memuat `Store Supervisor`
+85. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
+86. Buka Global Settings > Import, pilih Sub-Tab User Login
+87. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
+88. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-store-supervisor.csv` (baris #1 Bambang Hartono Position kosong; baris #2 Citra Wulandari dan baris #3 Doni Kurniawan Position `Store Supervisor`; Division `Engineering`)
+89. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
+90. Klik `[Import (1)]`
+91. Tunggu aksi selesai (permintaan mendapat respons)
+92. Kirim permintaan Create Missing Positions untuk kategori "Position not found" langsung ke server dengan token Total Control Client E
+93. Verifikasi respons permintaan Create Missing Positions berstatus 409
+94. Buka Global Settings > User > Position
+95. Verifikasi tabel Position menampilkan 5 baris
+96. Verifikasi daftar Position tidak memuat `Store Supervisor`
 
 ### TC-GS-IMPORT-918: Create Missing Options selama committing Disabled dan request langsung ditolak 409
 
-90. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
-91. Buka Global Settings > Import, pilih Sub-Tab User Login
-92. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-93. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-shift.csv`
-94. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-95. Klik `[Import (1)]`
-96. Verifikasi footer `[Import (1)]` tampil Disabled
-97. Klik `⋯` pada baris #2
-98. Arahkan kursor ke `[Create Missing Options]` pada menu `⋯`
-99. Verifikasi `[Create Missing Options]` pada menu `⋯` baris #2 tampil Disabled dengan tooltip "Can't do this while an import is in progress."
-100. Tutup menu `⋯`
-101. Arahkan kursor ke `[Create Missing Options]` pada Error Summary Callout
-102. Verifikasi `[Create Missing Options]` pada Error Summary Callout tampil Disabled dengan tooltip "Can't do this while an import is in progress."
-103. Kirim permintaan Create Missing Options untuk kategori "Shift: Invalid option" langsung ke server dengan token Total Control Client E
-104. Verifikasi respons permintaan Create Missing Options berstatus 409 Conflict
-105. Buka Global Settings > User > Custom Field dan buka Value Setting `Shift`
-106. Verifikasi Value Setting Shift Client E tetap `Pagi, Siang, Malam`
+97. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
+98. Buka Global Settings > Import, pilih Sub-Tab User Login
+99. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
+100. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-shift.csv`
+101. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
+102. Klik `[Import (1)]`
+103. Verifikasi footer `[Import (1)]` tampil Disabled
+104. Klik `⋯` pada baris #2
+105. Arahkan kursor ke `[Create Missing Options]` pada menu `⋯`
+106. Verifikasi `[Create Missing Options]` pada menu `⋯` baris #2 tampil Disabled dengan tooltip "Can't do this while an import is in progress."
+107. Tutup menu `⋯`
+108. Arahkan kursor ke `[Create Missing Options]` pada Error Summary Callout
+109. Verifikasi `[Create Missing Options]` pada Error Summary Callout tampil Disabled dengan tooltip "Can't do this while an import is in progress."
+110. Kirim permintaan Create Missing Options untuk kategori "Shift: Invalid option" langsung ke server dengan token Total Control Client E
+111. Verifikasi respons permintaan Create Missing Options berstatus 409 Conflict
+112. Buka Global Settings > User > Custom Field dan buka Value Setting `Shift`
+113. Verifikasi Value Setting Shift Client E tetap `Pagi, Siang, Malam`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: defense-in-depth (a); kontrol worker commit D-47 hanya pemicu state `committing` (P-2) dan bukan objek uji.
 - P-2: kontrol worker commit D-47 dan seeding draft lewat fixture adalah pemicu state, bukan objek asersi spec ini.
-- Alasan melewati sekitar 35 langkah (106 langkah nominal, tiap blok 8 sampai 16 langkah): semua blok satu kelas (request langsung ke server saat `committing` atau tanpa draft), berdiri sendiri dengan reset Client E di awal tiap blok, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Alasan melewati sekitar 35 langkah (113 langkah nominal, tiap blok 8 sampai 17 langkah): semua blok satu kelas (request langsung ke server saat `committing` atau tanpa draft), berdiri sendiri dengan reset Client E di awal tiap blok, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok mengikuti kebutuhan state: blok yang memakai Sub-Tab Brand lebih dulu, lalu blok User Login; tiap blok mereset Client E sendiri sehingga urutan tidak saling bergantung.
-- Langkah penghubung (tanpa `Verifikasi`): langkah reset dan seeding (langkah 1, 2, 12, 13, 26, 27, 38, 39, 49, 57, 68, 79, 90); pembukaan Sub-Tab; langkah 100 menutup menu `⋯`; langkah 105 membuka Value Setting.
-- Langkah 10 memakai Verifikasi kartu Total Rows tampil sebagai anchor positif sebelum asersi absence Modal Column Mapping (butir 2 bagian 8b); langkah 77 dan 88 (jumlah baris tabel) adalah anchor positif untuk asersi absence `Logistik` dan `Store Supervisor`.
-- Langkah 36 dan 55 adalah asersi absence atas elemen UI pada halaman yang sudah termuat sesudah muat ulang; elemen lain pada halaman (langkah 35 dan 54) tampil lebih dulu.
+- Langkah penghubung (tanpa `Verifikasi`): langkah reset dan seeding (langkah 1, 2, 13, 14, 28, 29, 41, 42, 53, 61, 73, 85, 97); pembukaan Sub-Tab dan "Muat ulang halaman Import > <Sub-Tab>" sesudah reset (langkah 3, 15, 30, 43, 54, 62, 74; reset membuang atau mengganti draft sementara halaman Import dari blok sebelumnya masih terbuka, `suite.md`); langkah 107 menutup menu `⋯`; langkah 112 membuka Value Setting. Langkah 6, 18, 33, dan 46 (Tunggu aksi selesai: permintaan mendapat respons) memisahkan klik `[Import (250)]` atau `[Import (248)]` dari muat ulang halaman; langkah 67, 79, dan 91 (Tunggu aksi selesai: permintaan mendapat respons) memisahkan klik `[Import (N)]` dari permintaan langsung ke server pada langkah 68, 80, dan 92 (bagian 8b butir 8, K-16, D-1); bacaan Langkah TC "request langsung ke server" tetap sesuai K-15.
+- Langkah 11 memakai Verifikasi kartu Total Rows tampil sebagai anchor positif sebelum asersi absence Modal Column Mapping (butir 2 bagian 8b); langkah 83 dan 95 (jumlah baris tabel) adalah anchor positif untuk asersi absence `Logistik` dan `Store Supervisor`.
+- Langkah 39 dan 59 adalah asersi absence atas elemen UI pada halaman yang sudah termuat sesudah muat ulang; elemen lain pada halaman (langkah 38 dan 58) tampil lebih dulu.
 - Temuan untuk QA:
   - TC-GS-IMPORT-381, 383, 384, 739, 746, 918 bertanda FE Test `Need API`, sedangkan TC-GS-IMPORT-704, 729, 730 (pola identik: request langsung saat `committing` ditolak 409) bertanda `-` (hanya-BE). Keputusan user: ketiganya tetap menjadi spec FE+BE di sini. Seleksi hanya-BE tidak konsisten antar pola identik.
   - TC-GS-IMPORT-704, 729, 730 mengasersi UI (sel Brand Name baris #3 tetap 121 karakter; daftar Division dan Position tidak memuat nama baru) sehingga bukan murni kontrak API; spec mengasersinya sebagai state data setelah request langsung (butir 1 bagian 8b).
@@ -195,3 +202,4 @@ coverage:
   - TC-GS-IMPORT-729 dan TC-GS-IMPORT-730 tidak menyebut mode D-47 yang dimaksud; spec memakai mode 1 (dijeda sebelum job mulai) karena kondisi TC hanya mensyaratkan job tetap `committing`.
   - Post Condition TC-GS-IMPORT-381, 383, 384, 746 ("job tetap committing dengan worker dijeda") tidak punya langkah observasi tersendiri dan tidak diasersi (S-01); pemulihan worker dikerjakan hook `after`.
   - Mekanisme kontrol worker, klien HTTP, dan skrip reset Client E tidak didefinisikan di TC, PRD, atau LLD selain nama kemampuannya; disediakan tim FE/BE.
+  - Penanda selesai untuk pemicu sesi API atau fixture tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" (langkah 6, 18, 33, 46, 67, 79, dan 91) memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati di surface aktor UI.

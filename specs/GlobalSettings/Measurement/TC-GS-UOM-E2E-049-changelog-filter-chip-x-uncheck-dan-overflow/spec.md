@@ -78,7 +78,7 @@ coverage:
 
 ### TC-GS-UOM-303: Meng-uncheck opsi di dalam dropdown filter Changelog menghapus chip pada field Action, Unit Name, Field, dan Modified By
 
-38. Klik Filter, kosongkan seluruh pilihan field Action, Unit Name, Field, dan Modified By (sisa TC-GS-UOM-302)
+38. Kosongkan seluruh pilihan field Action, Unit Name, Field, dan Modified By (sisa TC-GS-UOM-302)
 39. Pilih Action `Create` dan `Edit`
 40. Pilih Unit Name `Centimeter` dan `Kilometer {runId}-049`
 41. Pilih Field `Unit Name` dan `Symbol`
@@ -108,3 +108,4 @@ coverage:
 - Langkah 36 dan 56 adalah pembanding positif bagi langkah 37 dan 57 (asersi universal). Unit Name `Kilometer {runId}-049` bersuffix menggantikan `Kilometer` di Data Uji agar tidak bentrok dengan spec lain; `Centimeter` memakai nama Population literal.
 - Spec ini melewati sekitar 35 langkah (57 langkah). Alasan: ketiga TC menguji satu perilaku (sinkronisasi chip dan checkbox pada Filter Panel Changelog) pada satu dataset dan satu modal; satu kelas harness (fungsional). Langkah TC-GS-UOM-302 dan 303 sengaja diulang untuk empat field sesuai Expected a sampai d. Memecah spec menambah seeding dan pembukaan modal tanpa memperkecil risiko.
 - Temuan untuk QA: Expected TC-GS-UOM-302 butir a sampai d menyebut chip pasangan "tetap" dan checkbox "ter-uncheck"; kondisi checkbox pasangan yang tetap tercentang tidak disebut TC dan tidak diasersi.
+- Temuan untuk QA: langkah 38 tidak membuka ulang Filter Panel karena spec mengasumsikan panel tetap terbuka sesudah `[Apply]` pada langkah 35 (TC-GS-UOM-303 langkah 1 membuka Modal Changelog dan panel sebagai kondisi awal TC mandiri; spec ini melanjutkan panel yang sama dari TC-GS-UOM-302). Asumsi kerja ini belum diamati di aplikasi: prd-conventions §9.8 hanya menyebut penutupan panel lewat klik luar panel atau klik ulang icon Filter dan tidak menyatakan keadaan panel sesudah `[Apply]`. Spec 037, 038, 039, dan 045 memakai asumsi yang sama. Bila aplikasi menutup panel sesudah `[Apply]`, langkah 38 perlu diawali `Klik Filter`.

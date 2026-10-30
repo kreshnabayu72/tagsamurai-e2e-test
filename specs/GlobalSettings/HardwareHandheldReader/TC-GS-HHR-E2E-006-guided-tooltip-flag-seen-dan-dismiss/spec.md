@@ -68,7 +68,7 @@ coverage:
 ### TC-GS-HHR-27: Skip lewat klik overlay gelap menutup walkthrough dan menyetel flag
 
 27. Buka Global Settings > Hardware > Handheld Reader lewat address bar
-28. Klik area overlay gelap di luar tooltip box
+28. Klik area overlay gelap di luar spotlight dan di luar tooltip box
 29. Verifikasi walkthrough tertutup
 30. Muat ulang halaman dengan `F5`
 31. Verifikasi License Counter Cards tampil
@@ -78,31 +78,29 @@ coverage:
 ### TC-GS-HHR-29: Resize viewport di tengah walkthrough menutup tanpa menyetel flag
 
 34. Buka Global Settings > Hardware > Handheld Reader lewat address bar
-35. Ubah ukuran viewport browser saat walkthrough berada di Step 1
+35. Ubah ukuran viewport browser dari ukuran awal menjadi lebar `1024` px dan tinggi `768` px (tetap di atas breakpoint Mobile `768` px) saat walkthrough berada di Step 1
 36. Verifikasi walkthrough tertutup saat resize
-37. Kembalikan ukuran viewport ke ukuran awal
-38. Muat ulang halaman dengan `F5`
-39. Verifikasi walkthrough muncul otomatis lagi dari Step 1 (judul `License Counter`), flag tidak diset
+37. Muat ulang halaman dengan `F5`
+38. Verifikasi walkthrough muncul otomatis lagi dari Step 1 (judul `License Counter`), flag tidak diset
 
 ### TC-GS-HHR-453: Navigasi keluar halaman di tengah walkthrough menutup tanpa menyetel flag
 
-40. Saat walkthrough berada di Step 1, buka Global Settings > Activity Log lewat address bar
-41. Verifikasi halaman Global Settings > Activity Log tampil
-42. Verifikasi walkthrough tertutup saat halaman ditinggalkan (tooltip walkthrough tidak tampil)
-43. Buka kembali Global Settings > Hardware > Handheld Reader lewat address bar
-44. Verifikasi walkthrough muncul otomatis lagi dari Step 1 (judul `License Counter`), flag tidak diset
+39. Saat walkthrough berada di Step 1, buka Global Settings > Activity Log lewat address bar
+40. Verifikasi halaman Global Settings > Activity Log tampil
+41. Verifikasi walkthrough tertutup saat halaman ditinggalkan (tooltip walkthrough tidak tampil)
+42. Buka kembali Global Settings > Hardware > Handheld Reader lewat address bar
+43. Verifikasi walkthrough muncul otomatis lagi dari Step 1 (judul `License Counter`), flag tidak diset
+44. Kembalikan ukuran viewport ke ukuran awal
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Urutan TC dalam spec: 24, 25, 26, 27, 29, 453. TC-GS-HHR-25 mengikuti TC-GS-HHR-24 karena precondition "flag sudah diset" dipenuhi oleh `[Done]` pada TC-GS-HHR-24; TC-GS-HHR-29 dan 453 ditaruh terakhir karena keduanya butuh flag belum ada dan tidak menyetelnya, sehingga TC-GS-HHR-453 tidak membutuhkan reset. Urutan ini meniadakan dua langkah buka: langkah "Buka Global Settings > Hardware > Handheld Reader" TC-GS-HHR-25 tidak ditulis karena halaman sudah terbuka sejak langkah 7 TC-GS-HHR-24, dan langkah buka TC-GS-HHR-453 tidak ditulis karena halaman sudah terbuka dengan walkthrough pada Step 1 sejak langkah 39 TC-GS-HHR-29.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 18, 26, dan 33 (reset flag), langkah 37 (kembalikan viewport sebelum muat ulang), langkah 1, 19, 27, 34 (membuka halaman lewat address bar sebagai pemicu auto-open), serta langkah 8, 16, 24, 31 (`Verifikasi` License Counter Cards tampil) yang merupakan anchor positif absence walkthrough sesudah `F5` (konvensi bagian 8b butir 2) dan bukan asersi dari TC. Langkah 41 adalah anchor positif absence walkthrough pada halaman tujuan (langkah 42).
+- Urutan TC dalam spec: 24, 25, 26, 27, 29, 453. TC-GS-HHR-25 mengikuti TC-GS-HHR-24 karena precondition "flag sudah diset" dipenuhi oleh `[Done]` pada TC-GS-HHR-24; TC-GS-HHR-29 dan 453 ditaruh terakhir karena keduanya butuh flag belum ada dan tidak menyetelnya, sehingga TC-GS-HHR-453 tidak membutuhkan reset. Urutan ini meniadakan dua langkah buka: langkah "Buka Global Settings > Hardware > Handheld Reader" TC-GS-HHR-25 tidak ditulis karena halaman sudah terbuka sejak langkah 7 TC-GS-HHR-24, dan langkah buka TC-GS-HHR-453 tidak ditulis karena halaman sudah terbuka dengan walkthrough pada Step 1 sejak langkah 38 TC-GS-HHR-29.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 18, 26, dan 33 (reset flag), langkah 44 (kembalikan viewport ke ukuran awal sesudah blok terakhir; viewport 1024x768 dipertahankan selama TC-GS-HHR-29 dan 453 karena mengubah ukuran menutup walkthrough Step 1 yang dipakai TC-GS-HHR-453), langkah 1, 19, 27, 34 (membuka halaman lewat address bar sebagai pemicu auto-open), serta langkah 8, 16, 24, 31 (`Verifikasi` License Counter Cards tampil) yang merupakan anchor positif absence walkthrough sesudah `F5` (konvensi bagian 8b butir 2) dan bukan asersi dari TC. Langkah 40 adalah anchor positif absence walkthrough pada halaman tujuan (langkah 41).
 - Spec 006 (flag seen, dismiss, resize, navigasi keluar) dan spec 005 (konten, navigasi Back, keyboard) menguji Guided Tooltip halaman Handheld Reader yang sama dan sengaja dipisah: gabungannya 83 langkah (39 dan 44), jauh di atas sekitar 35 langkah, dan tiap blok mereset atau menjaga flag seen sendiri sehingga kegagalan keras satu spec tidak menghilangkan makna spec lain.
 - Spec melewati sekitar 35 langkah (44 langkah). Seluruhnya satu kelas (Guided Tooltip halaman Handheld Reader: flag seen dan dismiss), tiap blok TC berdiri sendiri karena flag di-reset atau dijaga sebelum tiap blok. Pengecualian: blok TC-GS-HHR-25 bergantung pada flag seen hasil `[Done]` blok TC-GS-HHR-24, dan blok TC-GS-HHR-453 bergantung pada halaman dengan walkthrough Step 1 hasil blok TC-GS-HHR-29; kegagalan keras blok sebelumnya membuat blok itu gagal. Risiko diterima karena alternatifnya (reset flag dan buka ulang halaman per blok) menambah langkah tanpa cakupan baru.
 - Temuan untuk QA:
   - TC-GS-HHR-24 sampai 27, 29, dan 453 mensyaratkan flag belum diset atau sudah diset tanpa menyebut cara menyetelnya; mekanismenya disediakan tim FE/BE.
-  - TC-GS-HHR-27 tidak menyebut titik klik pada overlay gelap; spec mengklik area overlay di luar spotlight dan tooltip box.
-  - TC-GS-HHR-29 tidak menyebut ukuran viewport yang dipakai; spec memakai ukuran berbeda dari ukuran awal lalu memulihkannya sebelum `F5`.
   - TC-GS-HHR-453 tidak menyebut apakah halaman tujuan Global Settings > Activity Log memuat Guided Tooltip sendiri; spec mengasersi tidak ada tooltip walkthrough Handheld Reader dan tidak mengasersi walkthrough halaman lain.
   - TC-GS-HHR-24 Expected a menyebut walkthrough muncul otomatis dari Step 1 tanpa judul step; spec memakai judul Step 1 `License Counter` dari PRD §4.7 dan TC-GS-HHR-23 sebagai penanda.

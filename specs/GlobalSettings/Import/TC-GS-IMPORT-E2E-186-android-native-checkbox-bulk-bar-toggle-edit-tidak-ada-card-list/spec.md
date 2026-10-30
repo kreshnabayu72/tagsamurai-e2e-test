@@ -127,28 +127,29 @@ coverage:
 64. Verifikasi Modal Column Mapping `Column Mapping: Brand` tampil sebagai bottom sheet layar penuh
 65. Verifikasi Modal Column Mapping memuat deskripsi "Map columns from your uploaded file to the system attributes."
 66. Ketuk `[Confirm Mapping]`
-67. Ketuk row action `[⋯]` pada card #1 lalu Remove
-68. Verifikasi dialog Delete Row tampil sebagai bottom sheet layar penuh
-69. Verifikasi dialog Delete Row memuat Title "Delete Row"
-70. Verifikasi dialog Delete Row memuat Body `Row #1` diikuti "This row will be permanently removed from this draft. Are you sure you want to delete it? This action cannot be undone."
-71. Verifikasi dialog Delete Row memuat tombol `[Cancel]` dan `[Delete]`
-72. Ketuk `[Cancel]` pada dialog Delete Row
+67. Tunggu aksi selesai (Modal Column Mapping tertutup)
+68. Ketuk row action `[⋯]` pada card #1 lalu Remove
+69. Verifikasi dialog Delete Row tampil sebagai bottom sheet layar penuh
+70. Verifikasi dialog Delete Row memuat Title "Delete Row"
+71. Verifikasi dialog Delete Row memuat Body `Row #1` diikuti "This row will be permanently removed from this draft. Are you sure you want to delete it? This action cannot be undone."
+72. Verifikasi dialog Delete Row memuat tombol `[Cancel]` dan `[Delete]`
+73. Ketuk `[Cancel]` pada dialog Delete Row
 
 ### Client C: tombol aksi baris pesan Callout wrap (TC-GS-IMPORT-561)
 
-73. Ganti akun: keluar dari aplikasi Android, lalu masuk sebagai Total Control Client C (Rudi Hartanto)
-74. Seed draft User Login 1 baris dengan Division `Gudng` yang tidak ditemukan di Client C lewat skrip fixture
-75. Buka halaman Import > User Login di aplikasi Android
-76. Verifikasi Error Summary Callout tampil full-width
-77. Verifikasi baris pesan `Division not found` memuat `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Divisions]`
-78. Verifikasi tombol pada baris pesan `Division not found` wrap ke baris berikutnya di bawah teks pesan
+74. Ganti akun: keluar dari aplikasi Android, lalu masuk sebagai Total Control Client C (Rudi Hartanto)
+75. Seed draft User Login 1 baris dengan Division `Gudng` yang tidak ditemukan di Client C lewat skrip fixture
+76. Buka halaman Import > User Login di aplikasi Android
+77. Verifikasi Error Summary Callout tampil full-width
+78. Verifikasi baris pesan `Division not found` memuat `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Divisions]`
+79. Verifikasi tombol pada baris pesan `Division not found` wrap ke baris berikutnya di bawah teks pesan
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Platform: aplikasi native Android (PRD §4.6). Tidak ada kelas harness lain; semua TC adalah verifikasi tampilan dan interaksi mobile yang berbeda dari web. Semua TC bertanda Manual Only di sumber (kriteria b) tetapi tetap spec sesuai konvensi bagian 2 (hambatan teknis dan label Manual bukan alasan mengeluarkan TC).
-- Alasan melewati sekitar 35 langkah (78 langkah nominal): enam blok homogen (verifikasi tampilan Android pada Sub-Tab dan akun yang sama), satu platform dan berdiri sendiri; urutan blok dikelompokkan per akun dengan langkah ganti akun eksplisit (langkah 53, 60, 73) sehingga bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal. Blok Client A memakai satu draft tanpa mengubah data (hanya membuka bottom sheet dan membatalkannya).
+- Alasan melewati sekitar 35 langkah (79 langkah nominal): enam blok homogen (verifikasi tampilan Android pada Sub-Tab dan akun yang sama), satu platform dan berdiri sendiri; urutan blok dikelompokkan per akun dengan langkah ganti akun eksplisit (langkah 53, 60, 74) sehingga bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal. Blok Client A memakai satu draft tanpa mengubah data (hanya membuka bottom sheet dan membatalkannya).
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok: screening (TC-556, 560, 557, 555) sebelum bottom sheet penyuntingan (TC-558, 811) dan blok User Login (TC-836, 935); `[Cancel]` pada bottom sheet dan menutup sheet ditulis sebagai langkah penghubung.
-- Langkah penghubung (tanpa `Verifikasi`): pemulihan dan seeding (langkah 1, 37, 54, 61, 74), pembukaan halaman, mengetuk `[⋯]` di toolbar dan menutup bottom sheet (langkah 18 dan 20), menutup menu row action (langkah 27), ketuk `[Cancel]` (langkah 31, 36, 51, 72), konfirmasi mapping (langkah 66), dan ganti akun (langkah 53, 60, 73). Langkah 14 (tidak ada `[🔍]`) dan 22 sampai 24 (tidak ada checkbox, Bulk Action Bar, toggle) adalah asersi absence atas elemen UI pada halaman yang sudah termuat; kartu dan card list tampil lebih dulu (langkah 3 sampai 13) sebagai anchor permukaan.
+- Langkah penghubung (tanpa `Verifikasi`): pemulihan dan seeding (langkah 1, 37, 54, 61, 75), pembukaan halaman, mengetuk `[⋯]` di toolbar dan menutup bottom sheet (langkah 18 dan 20), menutup menu row action (langkah 27), ketuk `[Cancel]` (langkah 31, 36, 51, 73), konfirmasi mapping (langkah 66), Tunggu aksi selesai sesudah konfirmasi mapping (langkah 67), dan ganti akun (langkah 53, 60, 74). Langkah 14 (tidak ada `[🔍]`) dan 22 sampai 24 (tidak ada checkbox, Bulk Action Bar, toggle) adalah asersi absence atas elemen UI pada halaman yang sudah termuat; kartu dan card list tampil lebih dulu (langkah 3 sampai 13) sebagai anchor permukaan.
 - Urutan asersi TC-GS-IMPORT-557: asersi halaman (Expected b sampai f) dilakukan sebelum membuka bottom sheet toolbar (Expected a) karena bottom sheet menutupi halaman (butir 5 bagian 8b).
 - Temuan untuk QA:
   - TC-GS-IMPORT-555 sampai 562, 811, 836, 935 tidak menyebut cara masuk ke aplikasi Android native dan pola enroll atau prefix perangkat; kebutuhan ini ditulis di Prerequisites dan disediakan tim FE/BE.
@@ -158,3 +159,4 @@ coverage:
   - TC-GS-IMPORT-560 menyebut angka `0` pudar tanpa nilai kontras atau opasitas; spec mengasersinya sebagai kata TC.
   - TC-GS-IMPORT-561 menyebut tombol "wrap ke baris berikutnya di bawah teks" tanpa ukuran layar acuan; spec mengikuti kata TC pada perangkat uji.
   - Post Condition TC-GS-IMPORT-811 ("sesi Duplicate dibatalkan dengan `[Cancel]`") dikerjakan langkah 36; Post Condition TC lain "-".
+  - Penanda "Tunggu aksi selesai (Modal Column Mapping tertutup)" pada langkah 67 tidak ada di TC-GS-IMPORT-559; spec memilihnya karena langkah berikutnya mengetuk row action card #1 pada surface yang sama dan hasil UI sesudah `[Confirm Mapping]` tidak ditetapkan TC.

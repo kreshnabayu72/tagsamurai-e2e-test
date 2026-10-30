@@ -39,47 +39,50 @@ coverage:
 7. [Sesi TC] Verifikasi baris #1 menampilkan `Acme Corporation` berstatus `pending`
 8. [Sesi TC] Verifikasi footer `[Import (12)]` tampil kembali
 9. Pulihkan jam server ke waktu nyata dan draft D-01
+10. [Sesi TC] Muat ulang halaman Import > Brand
+11. [Sesi Admin kedua] Muat ulang halaman Import > Brand
 
 ### TC-GS-IMPORT-254: Save pemegang lama ditolak 409 bila kunci kedaluwarsa sudah diambil
 
-10. [Sesi TC] Klik `⋯` pada baris #1
-11. [Sesi TC] Pilih Edit
-12. [Sesi TC] Ubah Brand Name baris #1 menjadi `Acme Corporation`
-13. Majukan jam server 11 menit (fixture jam server)
-14. [Sesi Admin kedua] Klik `⋯` pada baris #2
-15. [Sesi Admin kedua] Pilih Edit
-16. [Sesi TC] Klik `[Save]`
-17. [Sesi TC] Verifikasi dialog Title "Edit Session Taken Over" dengan Body "Another admin took over this edit session. Your unsaved changes were not saved." dan tombol `[OK]` saja
-18. [Sesi TC] Klik `[OK]` pada dialog
-19. [Sesi TC] Muat ulang halaman Import > Brand
-20. [Sesi TC] Verifikasi baris #1 menampilkan `Acme Corp` (perubahan Total Control tidak tersimpan)
-21. [Sesi Admin kedua] Verifikasi baris #2 tetap input aktif
-22. [Sesi Admin kedua] Verifikasi footer tetap `[Cancel]` dan `[Save]`
-23. [Sesi Admin kedua] Klik `[Cancel]` pada footer; pulihkan jam server ke waktu nyata dan draft D-01
+12. [Sesi TC] Klik `⋯` pada baris #1
+13. [Sesi TC] Pilih Edit
+14. [Sesi TC] Ubah Brand Name baris #1 menjadi `Acme Corporation`
+15. Majukan jam server 11 menit (fixture jam server)
+16. [Sesi Admin kedua] Klik `⋯` pada baris #2
+17. [Sesi Admin kedua] Pilih Edit
+18. [Sesi TC] Klik `[Save]`
+19. [Sesi TC] Verifikasi dialog Title "Edit Session Taken Over" dengan Body "Another admin took over this edit session. Your unsaved changes were not saved." dan tombol `[OK]` saja
+20. [Sesi TC] Klik `[OK]` pada dialog
+21. [Sesi TC] Muat ulang halaman Import > Brand
+22. [Sesi TC] Verifikasi baris #1 menampilkan `Acme Corp` (perubahan Total Control tidak tersimpan)
+23. [Sesi Admin kedua] Verifikasi baris #2 tetap input aktif
+24. [Sesi Admin kedua] Verifikasi footer tetap `[Cancel]` dan `[Save]`
+25. [Sesi Admin kedua] Klik `[Cancel]` pada footer; pulihkan jam server ke waktu nyata dan draft D-01
 
 ### TC-GS-IMPORT-257: Save pemegang lama setelah Admin kedua melakukan Discard Draft
 
-24. Siapkan draft D-01 berumur 25 jam (varian 1) dan muat ulang halaman Import > Brand pada kedua sesi
-25. [Sesi TC] Klik `⋯` pada baris #1
-26. [Sesi TC] Pilih Edit
-27. [Sesi TC] Ubah Brand Name baris #1 menjadi `Acme Corporation`
-28. Majukan jam server 11 menit (fixture jam server)
-29. [Sesi Admin kedua] Klik `[Discard]` pada Unsaved Banner
-30. [Sesi Admin kedua] Klik `[Discard Draft]` pada dialog
-31. [Sesi Admin kedua] Tunggu aksi selesai (draft terhapus)
-32. [Sesi TC] Klik `[Save]`
-33. [Sesi TC] Verifikasi toast netral "This draft is no longer available."
-34. [Sesi TC] Verifikasi halaman me-refresh ke state belum ada draft: Dropzone tampil
-35. [Sesi TC] Verifikasi Unsaved Banner tidak tampil
-36. Pulihkan jam server ke waktu nyata dan reset Client A ke draft D-01
+26. Siapkan draft D-01 berumur 25 jam (varian 1) dan muat ulang halaman Import > Brand pada kedua sesi
+27. [Sesi TC] Klik `⋯` pada baris #1
+28. [Sesi TC] Pilih Edit
+29. [Sesi TC] Ubah Brand Name baris #1 menjadi `Acme Corporation`
+30. Majukan jam server 11 menit (fixture jam server)
+31. [Sesi Admin kedua] Klik `[Discard]` pada Unsaved Banner
+32. [Sesi Admin kedua] Klik `[Discard Draft]` pada dialog
+33. [Sesi Admin kedua] Tunggu aksi selesai (draft terhapus)
+34. [Sesi TC] Klik `[Save]`
+35. [Sesi TC] Verifikasi toast netral "This draft is no longer available."
+36. [Sesi TC] Verifikasi halaman me-refresh ke state belum ada draft: Dropzone tampil
+37. [Sesi TC] Verifikasi Unsaved Banner tidak tampil
+38. Pulihkan jam server ke waktu nyata dan reset Client A ke draft D-01
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (kelas d, prinsip 13d; objek uji perilaku Save setelah TTL kunci habis).
-- Spec memuat 36 langkah, sedikit di atas smell 35 langkah. Alasan: semua blok satu kelas harness (TTL kunci dengan fixture jam server) dan tiap blok berdiri sendiri dengan draft dan jam yang dipulihkan, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Urutan TC-GS-IMPORT-257 terakhir karena Discard Draft menghapus draft.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 9, 23, 36 (pemulihan jam dan draft), langkah 19 (muat ulang), langkah 24 (menyiapkan draft berumur 25 jam), langkah 31 (menunggu aksi selesai).
-- Langkah 35 (absence Unsaved Banner) memakai Dropzone yang tampil di langkah 34 sebagai anchor positif.
-- Jam server dipulihkan pada langkah 9, 23, 36 sebelum akun aktor membuka halaman atau log lain.
+- Spec memuat 38 langkah, sedikit di atas smell 35 langkah. Alasan: semua blok satu kelas harness (TTL kunci dengan fixture jam server) dan tiap blok berdiri sendiri dengan draft dan jam yang dipulihkan, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Urutan TC-GS-IMPORT-257 terakhir karena Discard Draft menghapus draft.
+- Konteks kedua beraksi: belum ada id pengecualian untuk Sesi Admin kedua yang beraksi (Edit pada TC-GS-IMPORT-254, Discard Draft pada TC-GS-IMPORT-257) di spec kelas d; `P-2` hanya untuk konteks yang bukan objek asersi dan `P-6` hanya untuk pengamat read-only tanpa interaksi. Spec tidak dipecah (satu kelas harness, blok berdiri sendiri); usulan aturan baru menunggu batch konvensi.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 9, 25, 38 (pemulihan jam dan draft), langkah 10 dan 11 (muat ulang halaman kedua sesi sesudah draft dipulihkan), langkah 21 (muat ulang), langkah 26 (menyiapkan draft berumur 25 jam), langkah 33 (menunggu aksi selesai).
+- Langkah 37 (absence Unsaved Banner) memakai Dropzone yang tampil di langkah 36 sebagai anchor positif.
+- Jam server dipulihkan pada langkah 9, 25, 38 sebelum akun aktor membuka halaman atau log lain.
 - Temuan untuk QA:
   - TC-GS-IMPORT-253 mencantumkan Login hanya Total Control sedangkan seluruh langkah memakai satu sesi; spec tidak memakai Sesi Admin kedua pada blok ini.
   - TC-GS-IMPORT-257 Expected b menyebut halaman "me-refresh" tanpa menyebut cara pemicunya; spec mengasersi hasilnya (Dropzone tampil).

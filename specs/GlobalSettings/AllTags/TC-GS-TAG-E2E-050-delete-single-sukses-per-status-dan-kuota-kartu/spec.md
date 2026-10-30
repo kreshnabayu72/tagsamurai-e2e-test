@@ -57,7 +57,7 @@ coverage:
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
 - Perubahan urutan (S-05 butir terakhir): TC-GS-TAG-143 dijalankan sebelum TC-GS-TAG-142 karena TC-GS-TAG-143 mengasersi kartu RFID – Object TAG tetap `21 of 50`, sedangkan TC-GS-TAG-142 mengurangi kartu itu menjadi `20 of 50`; urutan TC sumber akan menggeser baseline. Penghapusan Available/Damaged/Missing (aksi yang mengubah kartu) tetap di akhir.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 8 (mencatat baseline kartu), 5 dan 13 (menutup toast sukses sebelum toast berikutnya diasersi, S-09), 9 (mengubah Rows per page menjadi 50 supaya DD-12 pada halaman 2 Tab All tampil; dikembalikan ke 10 di hook `after`).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 8 (mencatat baseline kartu), 5 dan 13 (menutup toast sukses sebelum toast berikutnya diasersi, S-09). Rows per page 50 pada langkah 9 adalah langkah TC-GS-TAG-142 (dikembalikan ke 10 di hook `after`).
 - Asersi tambahan di luar Expected TC (S-03): tidak ada.
 - Temuan untuk QA:
   - Q-4: identifier Seed Registri A tetap dan kartu `21 of 50` valid hanya bila Seed Registri A dipulihkan sebelum spec.

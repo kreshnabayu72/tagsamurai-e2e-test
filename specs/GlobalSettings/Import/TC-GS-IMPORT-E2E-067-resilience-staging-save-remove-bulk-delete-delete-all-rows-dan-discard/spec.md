@@ -60,159 +60,165 @@ coverage:
 15. Klik `[Save]`
 16. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
 17. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
-18. Verifikasi sesi edit tetap terbuka dengan baris #1 berisi input `Acme Corp 2`
-19. Verifikasi `[Save]` Enabled
-20. Verifikasi toast sukses tidak tampil
-21. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog
+18. Tutup toast "Connection problem. Please try again."
+19. Verifikasi sesi edit tetap terbuka dengan baris #1 berisi input `Acme Corp 2`
+20. Verifikasi `[Save]` Enabled
+21. Verifikasi toast sukses tidak tampil
+22. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog
 
 ### TC-GS-IMPORT-219: Save sesi Duplicate gagal 500
 
-22. Klik `⋯` pada baris #2
-23. Pilih Duplicate
-24. Atur intercept jaringan agar permintaan Save dibalas 500
-25. Klik `[Save]`
-26. Lepas intercept jaringan
-27. Verifikasi toast error "Error, failed to add row."
-28. Verifikasi sesi Duplicate tetap terbuka dengan baris salinan #3 tetap tampil sebagai input
-29. Verifikasi `[Save]` Enabled
-30. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog
+23. Klik `⋯` pada baris #2
+24. Pilih Duplicate
+25. Atur intercept jaringan agar permintaan Save dibalas 500
+26. Klik `[Save]`
+27. Lepas intercept jaringan
+28. Verifikasi toast error "Error, failed to add row."
+29. Verifikasi sesi Duplicate tetap terbuka dengan baris salinan #3 tetap tampil sebagai input
+30. Verifikasi `[Save]` Enabled
+31. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog
 
 ### TC-GS-IMPORT-261: Remove gagal 500
 
-31. Klik `⋯` pada baris #3
-32. Pilih Remove
-33. Atur intercept jaringan agar permintaan hapus baris dibalas 500
-34. Klik `[Delete]`
-35. Lepas intercept jaringan
-36. Verifikasi toast error "Error, failed to delete row."
-37. Verifikasi dialog "Delete Row" tetap terbuka dengan item list `Row #3`
-38. Verifikasi `[Delete]` Enabled
-39. Klik `[Cancel]`
-40. Verifikasi baris #3 `Zebra Technologies` tetap ada
-41. Verifikasi footer tetap `[Import (12)]`
+32. Klik `⋯` pada baris #3
+33. Pilih Remove
+34. Atur intercept jaringan agar permintaan hapus baris dibalas 500
+35. Klik `[Delete]`
+36. Lepas intercept jaringan
+37. Verifikasi toast error "Error, failed to delete row."
+38. Verifikasi dialog "Delete Row" tetap terbuka dengan item list `Row #3`
+39. Verifikasi `[Delete]` Enabled
+40. Klik `[Cancel]`
+41. Verifikasi baris #3 `Zebra Technologies` tetap ada
+42. Verifikasi footer tetap `[Import (12)]`
 
 ### TC-GS-IMPORT-681: Remove tanpa respons (timeout)
 
-42. Klik `⋯` pada baris #3
-43. Pilih Remove
-44. Atur intercept jaringan agar permintaan hapus baris tidak dibalas (timeout)
-45. Klik `[Delete]`
-46. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
-47. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
-48. Verifikasi dialog "Delete Row" tetap terbuka dengan item list `Row #3`
-49. Verifikasi `[Delete]` Enabled
-50. Klik `[Cancel]`
-51. Verifikasi baris #3 `Zebra Technologies` tetap ada
-52. Verifikasi footer tetap `[Import (12)]`
+43. Klik `⋯` pada baris #3
+44. Pilih Remove
+45. Atur intercept jaringan agar permintaan hapus baris tidak dibalas (timeout)
+46. Klik `[Delete]`
+47. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
+48. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
+49. Tutup toast "Connection problem. Please try again."
+50. Verifikasi dialog "Delete Row" tetap terbuka dengan item list `Row #3`
+51. Verifikasi `[Delete]` Enabled
+52. Klik `[Cancel]`
+53. Verifikasi baris #3 `Zebra Technologies` tetap ada
+54. Verifikasi footer tetap `[Import (12)]`
 
 ### TC-GS-IMPORT-273: Bulk Delete gagal 500
 
-53. Centang baris #2 dan #5
-54. Klik `[Bulk Action ▾]`
-55. Klik `[Delete]` pada overlay
-56. Atur intercept jaringan agar permintaan hapus baris dibalas 500
-57. Klik `[Delete]` pada dialog Delete Rows
-58. Lepas intercept jaringan
-59. Verifikasi toast error "Error, failed to delete row."
-60. Verifikasi dialog "Delete Rows" tetap terbuka dengan item list `Row #2` dan `Row #5`
-61. Verifikasi `[Delete]` Enabled
-62. Klik `[Cancel]`
-63. Verifikasi baris #2 `Lenovo` dan #5 `Dell` tetap ada
-64. Verifikasi Bulk Action Bar menampilkan "2 Rows selected"
-65. Klik `[×]` pada Bulk Action Bar
+55. Centang baris #2 dan #5
+56. Klik `[Bulk Action ▾]`
+57. Klik `[Delete]` pada overlay
+58. Atur intercept jaringan agar permintaan hapus baris dibalas 500
+59. Klik `[Delete]` pada dialog Delete Rows
+60. Lepas intercept jaringan
+61. Verifikasi toast error "Error, failed to delete row."
+62. Verifikasi dialog "Delete Rows" tetap terbuka dengan item list `Row #2` dan `Row #5`
+63. Verifikasi `[Delete]` Enabled
+64. Klik `[Cancel]`
+65. Verifikasi baris #2 `Lenovo` dan #5 `Dell` tetap ada
+66. Verifikasi Bulk Action Bar menampilkan "2 Rows selected"
+67. Klik `[×]` pada Bulk Action Bar
 
 ### TC-GS-IMPORT-682: Bulk Delete tanpa respons (timeout)
 
-66. Centang baris #2
-67. Centang baris #5
-68. Klik `[Bulk Action ▾]`
-69. Klik `[Delete]` pada overlay
-70. Atur intercept jaringan agar permintaan hapus baris tidak dibalas (timeout)
-71. Klik `[Delete]` pada dialog Delete Rows
-72. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
-73. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
-74. Verifikasi dialog "Delete Rows" tetap terbuka dengan item list `Row #2` dan `Row #5`
-75. Verifikasi `[Delete]` Enabled
-76. Klik `[Cancel]`
-77. Verifikasi baris #2 `Lenovo` dan #5 `Dell` tetap ada
-78. Verifikasi Bulk Action Bar menampilkan "2 Rows selected"
-79. Klik `[×]` pada Bulk Action Bar
+68. Centang baris #2
+69. Centang baris #5
+70. Klik `[Bulk Action ▾]`
+71. Klik `[Delete]` pada overlay
+72. Atur intercept jaringan agar permintaan hapus baris tidak dibalas (timeout)
+73. Klik `[Delete]` pada dialog Delete Rows
+74. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
+75. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
+76. Tutup toast "Connection problem. Please try again."
+77. Verifikasi dialog "Delete Rows" tetap terbuka dengan item list `Row #2` dan `Row #5`
+78. Verifikasi `[Delete]` Enabled
+79. Klik `[Cancel]`
+80. Verifikasi baris #2 `Lenovo` dan #5 `Dell` tetap ada
+81. Verifikasi Bulk Action Bar menampilkan "2 Rows selected"
+82. Klik `[×]` pada Bulk Action Bar
 
 ### TC-GS-IMPORT-283: Discard Draft gagal 500
 
-80. Siapkan draft D-01 berumur 25 jam (varian 1) dan muat ulang halaman Import > Brand
-81. Klik `[Discard]` pada Unsaved Banner
-82. Atur intercept jaringan agar permintaan Discard Draft dibalas 500
-83. Klik `[Discard Draft]`
-84. Lepas intercept jaringan
-85. Verifikasi toast error "Error, failed to discard draft."
-86. Verifikasi dialog "Discard Draft" tetap terbuka
-87. Verifikasi `[Discard Draft]` Enabled
-88. Klik `[Cancel]`
-89. Verifikasi draft tetap 12 baris: footer `[Import (12)]`
-90. Verifikasi Unsaved Banner tetap tampil
+83. Siapkan draft D-01 berumur 25 jam (varian 1) dan muat ulang halaman Import > Brand
+84. Klik `[Discard]` pada Unsaved Banner
+85. Atur intercept jaringan agar permintaan Discard Draft dibalas 500
+86. Klik `[Discard Draft]`
+87. Lepas intercept jaringan
+88. Verifikasi toast error "Error, failed to discard draft."
+89. Verifikasi dialog "Discard Draft" tetap terbuka
+90. Verifikasi `[Discard Draft]` Enabled
+91. Klik `[Cancel]`
+92. Verifikasi draft tetap 12 baris: footer `[Import (12)]`
+93. Verifikasi Unsaved Banner tetap tampil
 
 ### TC-GS-IMPORT-684: Discard Draft tanpa respons (timeout)
 
-91. Klik `[Discard]` pada Unsaved Banner
-92. Atur intercept jaringan agar permintaan Discard Draft tidak dibalas (timeout)
-93. Klik `[Discard Draft]`
-94. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
-95. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
-96. Verifikasi dialog "Discard Draft" tetap terbuka
-97. Verifikasi `[Discard Draft]` Enabled
-98. Klik `[Cancel]`
-99. Verifikasi draft tetap 12 baris: footer `[Import (12)]`
-100. Verifikasi Unsaved Banner tetap tampil
+94. Klik `[Discard]` pada Unsaved Banner
+95. Atur intercept jaringan agar permintaan Discard Draft tidak dibalas (timeout)
+96. Klik `[Discard Draft]`
+97. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
+98. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
+99. Tutup toast "Connection problem. Please try again."
+100. Verifikasi dialog "Discard Draft" tetap terbuka
+101. Verifikasi `[Discard Draft]` Enabled
+102. Klik `[Cancel]`
+103. Verifikasi draft tetap 12 baris: footer `[Import (12)]`
+104. Verifikasi Unsaved Banner tetap tampil
 
 ### TC-GS-IMPORT-683: Delete All Rows tanpa respons (timeout)
 
-101. Pulihkan draft Client A ke D-09 dan muat ulang halaman Import > Brand
-102. Atur intercept jaringan agar permintaan Delete All Rows tidak dibalas (timeout)
-103. Klik `[Delete All Rows]` pada baris pesan "Brand Name: Max. 120 characters"
-104. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
-105. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
-106. Verifikasi tidak ada dialog yang tampil
-107. Verifikasi baris pesan "Brand Name: Max. 120 characters" tetap ada di Error Summary Callout dengan `[Delete All Rows]` Enabled
-108. Verifikasi Total Rows tetap 13
+105. Pulihkan draft Client A ke D-09 dan muat ulang halaman Import > Brand
+106. Atur intercept jaringan agar permintaan Delete All Rows tidak dibalas (timeout)
+107. Klik `[Delete All Rows]` pada baris pesan "Brand Name: Max. 120 characters"
+108. Tunggu hingga toast timeout tampil, lalu lepas intercept jaringan
+109. Verifikasi toast error persisten "Connection problem. Please try again." tanpa tombol aksi
+110. Tutup toast "Connection problem. Please try again."
+111. Verifikasi tidak ada dialog yang tampil
+112. Verifikasi baris pesan "Brand Name: Max. 120 characters" tetap ada di Error Summary Callout dengan `[Delete All Rows]` Enabled
+113. Verifikasi Total Rows tetap 13
 
 ### TC-GS-IMPORT-685: Delete All Rows gagal 500
 
-109. Atur intercept jaringan agar permintaan Delete All Rows dibalas 500
-110. Klik `[Delete All Rows]` pada baris pesan "Brand Name: Max. 120 characters"
-111. Lepas intercept jaringan
-112. Verifikasi toast error "Error, failed to delete row."
-113. Verifikasi tidak ada dialog yang tampil
-114. Verifikasi baris pesan "Brand Name: Max. 120 characters" tetap ada di Error Summary Callout
-115. Verifikasi Total Rows tetap 13
+114. Atur intercept jaringan agar permintaan Delete All Rows dibalas 500
+115. Klik `[Delete All Rows]` pada baris pesan "Brand Name: Max. 120 characters"
+116. Lepas intercept jaringan
+117. Verifikasi toast error "Error, failed to delete row."
+118. Verifikasi tidak ada dialog yang tampil
+119. Verifikasi baris pesan "Brand Name: Max. 120 characters" tetap ada di Error Summary Callout
+120. Verifikasi Total Rows tetap 13
 
 ### TC-GS-IMPORT-234: Save ulang sesi Duplicate setelah respons pertama hilang
 
-116. Pulihkan draft Client A ke D-01 dan muat ulang halaman Import > Brand
-117. Klik `⋯` pada baris #2
-118. Pilih Duplicate
-119. Ubah Brand Name salinan menjadi `Lenovo Group {runId}-067`
-120. Atur intercept jaringan agar permintaan Save diteruskan ke server tetapi responsnya dibuang (timeout)
-121. Klik `[Save]`
-122. Verifikasi toast error persisten "Connection problem. Please try again." tampil
-123. Verifikasi sesi Duplicate tetap terbuka
-124. Tutup toast "Connection problem. Please try again."
-125. Lepas intercept jaringan
-126. Klik `[Save]` lagi
-127. Verifikasi tidak ada dialog
-128. Verifikasi tidak ada toast
-129. Verifikasi Staging Table me-refresh dengan draft 13 baris dan tepat satu baris `Lenovo Group {runId}-067`
-130. Verifikasi footer `[Import (13)]`
-131. Pulihkan draft Client A ke D-01
+121. Pulihkan draft Client A ke D-01 dan muat ulang halaman Import > Brand
+122. Klik `⋯` pada baris #2
+123. Pilih Duplicate
+124. Ubah Brand Name salinan menjadi `Lenovo Group {runId}-067`
+125. Atur intercept jaringan agar permintaan Save diteruskan ke server tetapi responsnya dibuang (timeout)
+126. Klik `[Save]`
+127. Verifikasi toast error persisten "Connection problem. Please try again." tampil
+128. Verifikasi sesi Duplicate tetap terbuka
+129. Tutup toast "Connection problem. Please try again."
+130. Lepas intercept jaringan
+131. Klik `[Save]` lagi
+132. Verifikasi tidak ada dialog
+133. Verifikasi tidak ada toast
+134. Verifikasi Staging Table me-refresh dengan draft 13 baris dan tepat satu baris `Lenovo Group {runId}-067`
+135. Verifikasi footer `[Import (13)]`
+136. Pulihkan draft Client A ke D-01
 
 ## Notes
 
 - Mode: FE+BE (intercept parsial di atas backend nyata). Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fault injection / resilience (kelas b, prinsip 13b). TC-GS-IMPORT-218, 219, 261, 273, 283, 579, 681, 682, 683, 684, 685 hanya mengasersi perilaku FE atas respons yang dipaksa dan dapat dijalankan juga sebagai `Mode: mock`; TC-GS-IMPORT-234 mengasersi state server sehingga FE+BE.
-- Spec memuat 131 langkah, jauh di atas smell 35 langkah. Alasan: semua blok satu kelas harness (kegagalan 5xx dan timeout pada aksi Staging Table), tiap blok berdiri sendiri dengan intercept dan draft yang dipulihkan, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah muncul dari satu baris per aksi dan satu `Verifikasi` per klausa Expected.
+- Spec memuat 136 langkah, jauh di atas smell 35 langkah. Alasan: semua blok satu kelas harness (kegagalan 5xx dan timeout pada aksi Staging Table), tiap blok berdiri sendiri dengan intercept dan draft yang dipulihkan, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah muncul dari satu baris per aksi dan satu `Verifikasi` per klausa Expected.
 - Urutan blok: sesi edit dan Duplicate (TC-GS-IMPORT-218, 579, 219), Remove dan Bulk Delete (261, 681, 273, 682), Discard Draft (283, 684), Delete All Rows (683, 685), lalu TC-GS-IMPORT-234 di akhir karena draft menjadi 13 baris.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6, 26, 35, 46, 58, 72, 84, 94, 104, 111, 125 (melepas intercept segera setelah pemicu), langkah 10, 21, 30 (`[Cancel]` lalu `[Discard]` menutup sesi edit atau Duplicate), langkah 39, 50, 62, 76, 88, 98 (menutup dialog), langkah 65 dan 79 (menutup Bulk Action Bar), langkah 80, 101, 116, 131 (memulihkan draft), langkah 124 (menutup toast), langkah 16, 46, 72, 94, 104 (menunggu batas waktu permintaan).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6, 27, 36, 47, 60, 74, 87, 97, 108, 116, 130 (melepas intercept segera setelah pemicu), langkah 10, 22, 31 (`[Cancel]` lalu `[Discard]` menutup sesi edit atau Duplicate), langkah 40, 52, 64, 79, 91, 102 (menutup dialog), langkah 67 dan 82 (menutup Bulk Action Bar), langkah 83, 105, 121, 136 (memulihkan draft), langkah 18, 49, 76, 99, 110, 129 (menutup toast persisten supaya tidak terbawa ke langkah berikutnya), langkah 16, 47, 74, 97, 108 (menunggu batas waktu permintaan).
 - Pembagian TC lintas spec: Save, Remove, Bulk Delete, Discard Draft, dan Delete All Rows yang gagal ada di spec ini; kegagalan Confirm Mapping dan Upload ada di spec 047.
 - Temuan untuk QA:
   - Batas waktu permintaan FE tidak disebut pada TC-GS-IMPORT-579, 681, 682, 683, 684; spec menunggu sampai toast timeout tampil.
   - TC-GS-IMPORT-218, 219, dan 579 tidak menyebut cara menutup sesi edit sesudah Expected; spec menambahkan `[Cancel]` dan `[Discard]` sebagai langkah penghubung.
+  - TC-GS-IMPORT-579, 681, 682, 684, dan 683 tidak menyebut penutupan toast persisten "Connection problem. Please try again."; spec menambahkan langkah menutup toast sebagai langkah penghubung.
   - TC-GS-IMPORT-234 menuliskan "Lenovo Group" tanpa suffix; spec memakai nama bersuffix per run.

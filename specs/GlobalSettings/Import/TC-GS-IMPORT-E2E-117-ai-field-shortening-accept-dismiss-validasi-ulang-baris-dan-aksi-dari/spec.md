@@ -47,26 +47,26 @@ coverage:
 2. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 3. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 4. Klik `[Accept]` pada badge saran sel Brand Name baris #1
-5. Verifikasi sel Brand Name baris #1 berisi `Samsung Electronics Indonesia`
-6. Verifikasi baris #1 berstatus `pending`
-7. Verifikasi Staging Metric Cards: Total Rows 1
-8. Verifikasi Staging Metric Cards: Ready to Import 1
-9. Verifikasi Staging Metric Cards: Errors 0
-10. Verifikasi footer menampilkan `[Import (1)]`
-11. Verifikasi footer tidak menampilkan `[Cancel]` maupun `[Save]` (tidak ada sesi edit)
-12. Verifikasi tidak ada toast baru sesudah klik `[Accept]`
+5. Verifikasi tidak ada toast baru sesudah klik `[Accept]`
+6. Verifikasi sel Brand Name baris #1 berisi `Samsung Electronics Indonesia`
+7. Verifikasi baris #1 berstatus `pending`
+8. Verifikasi Staging Metric Cards: Total Rows 1
+9. Verifikasi Staging Metric Cards: Ready to Import 1
+10. Verifikasi Staging Metric Cards: Errors 0
+11. Verifikasi footer menampilkan `[Import (1)]`
+12. Verifikasi footer tidak menampilkan `[Cancel]` maupun `[Save]` (tidak ada sesi edit)
 13. Verifikasi Error Summary Callout tidak tampil
 
 ### TC-GS-IMPORT-295: Dismiss menghilangkan badge dan baris tetap error
 
-14. Reset draft Client C Tab Brand lewat skrip reset
+14. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
 15. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
 16. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 17. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 18. Klik `[Dismiss]` pada badge saran sel Brand Name baris #1
-19. Verifikasi badge hilang dari sel Brand Name baris #1
-20. Verifikasi baris #1 tetap berstatus `error`
-21. Verifikasi tidak ada toast baru
+19. Verifikasi tidak ada toast baru
+20. Verifikasi badge hilang dari sel Brand Name baris #1
+21. Verifikasi baris #1 tetap berstatus `error`
 22. Muat ulang halaman Import > Brand
 23. Verifikasi Staging Table menampilkan baris #1 (halaman termuat)
 24. Verifikasi badge saran tidak muncul lagi pada nilai sel yang sama
@@ -75,7 +75,7 @@ coverage:
 
 ### TC-GS-IMPORT-296: Save diblokir saat sel yang di-Dismiss diedit ke nilai lain yang masih melebihi batas
 
-27. Reset draft Client C Tab Brand lewat skrip reset
+27. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
 28. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
 29. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 30. Klik `[Dismiss]` pada badge saran sel Brand Name baris #1
@@ -94,7 +94,7 @@ coverage:
 
 ### TC-GS-IMPORT-851: Accept dari halaman basi ditolak bila nilai sel sudah diubah admin lain
 
-43. Reset draft Client C Tab Brand lewat skrip reset
+43. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
 44. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
 45. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 46. Verifikasi badge saran tampil pada sel Brand Name baris #1 (halaman tidak dimuat ulang sesudahnya)
@@ -108,7 +108,7 @@ coverage:
 
 ### TC-GS-IMPORT-852: Dismiss dari halaman basi tidak berefek bila nilai sel sudah diubah admin lain
 
-54. Reset draft Client C Tab Brand lewat skrip reset
+54. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
 55. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
 56. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 57. Verifikasi badge saran tampil pada sel Brand Name baris #1 (halaman tidak dimuat ulang sesudahnya)
@@ -140,7 +140,7 @@ coverage:
 
 ### TC-GS-IMPORT-302: Saran Division Name dicek ulang terhadap keunikan
 
-80. Reset draft Client C Tab Division lewat skrip reset
+80. Reset draft Client C Tab Division lewat skrip reset, lalu muat ulang halaman Import > Division
 81. Klik [Upload File] di toolbar dan pilih berkas `ai-division-dup.csv`
 82. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 83. Klik `[Accept]` pada badge saran sel Division Name baris #1
@@ -174,7 +174,7 @@ coverage:
 - Urutan TC sumber diubah: Brand (293, 295, 296, 851, 852) lebih dulu, lalu Division (294, 302), lalu User Login (700), supaya perpindahan Tab minimal dan reset draft tiap Tab dilakukan seperlunya (S-10); tidak ada TC yang menghapus data milik TC lain.
 - Spec berisi 103 langkah, jauh di atas sekitar 35 langkah. Alasan: delapan TC, tiap TC berdiri sendiri dengan draft barunya, seluruhnya satu kelas (AI Field Shortening, mock normal); kegagalan satu TC tidak membuat TC lain kehilangan makna.
 - P-2 (pemicu bukan objek uji): Admin kedua Client C pada langkah 47 dan 58 hanya mengubah nilai sel lewat sesi API; hasilnya diasersi di sesi Total Control Client C.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 3 dan 17 (menunggu toast lama hilang), 14, 27, 43, 54, 69, 80, 89 (reset draft dan pindah Tab), 22 dan 62 (muat ulang), 38 dan 39 (Cancel lalu Discard sesuai Langkah Uji TC 296), 47 dan 58 (pemicu Admin kedua). Langkah 23 dan 63 adalah anchor positif halaman termuat sebelum asersi absence badge (8b butir 2).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 3 dan 17 (menunggu toast lama hilang), 14, 27, 43, 54, 69, 80, 89 (reset draft; pada 14, 27, 43, 54, 80 disertai muat ulang halaman Import pada Tab yang sama, pada 69 dan 89 disertai pindah Tab), 22 dan 62 (muat ulang), 38 dan 39 (Cancel lalu Discard sesuai Langkah Uji TC 296), 47 dan 58 (pemicu Admin kedua). Langkah 5 dan 19 (`Verifikasi` tidak ada toast) ditulis tepat sesudah pemicu `[Accept]` dan `[Dismiss]`, sebelum `Verifikasi` artefak (8b butir 11). Langkah 23 dan 63 adalah anchor positif halaman termuat sebelum asersi absence badge (8b butir 2).
 - Pembagian TC lintas spec: TC-GS-IMPORT-286 sampai 292 dan 697 (badge tampil) ada di spec 115; kasus tanpa badge ada di spec 116; Accept dan Dismiss Reference Suggestion ada di spec 119; Read Only di spec 131; commit tanpa saran AI di spec 137.
 - Temuan untuk QA:
   - TC-GS-IMPORT-851 dan 852: Langkah Uji "ubah Brand Name baris #1 ... dan simpan" lewat fixture permintaan tanpa menyebut mekanisme; spec memakai sesi API Admin kedua dan fixture inspeksi data tersimpan yang disediakan tim FE/BE (S-11, S-13).

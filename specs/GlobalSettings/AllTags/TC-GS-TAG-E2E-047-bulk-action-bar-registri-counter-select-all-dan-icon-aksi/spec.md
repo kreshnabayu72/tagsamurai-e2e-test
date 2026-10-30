@@ -55,7 +55,7 @@ coverage:
 17. Centang baris DD-02
 18. Klik `Select All (23 records)`
 19. Verifikasi tombol berubah menjadi `Unselect All`
-20. Uncheck baris DD-02
+20. Hapus centang baris DD-02
 21. Verifikasi tombol kembali menjadi `Select All (23 records)`
 22. Verifikasi counter `22 TAGs selected`
 23. Klik `Select All (23 records)`
@@ -80,12 +80,13 @@ coverage:
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
 - Alasan spec melewati sekitar 35 langkah (36 langkah): empat TC atas satu permukaan (Bulk Action Bar Tab Not Paired) dan satu dataset (Seed Registri A), tanpa kelas harness khusus dan tanpa menghapus data; tiap blok mulai dari seleksi yang dibentuk sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 12 dan 17 (mencentang baris DD-02 supaya Bulk Action Bar dan `Select All (23 records)` tampil; bar hilang bila seleksi kosong, TC-GS-TAG-149 Expected c), 16 (mengosongkan seleksi dari TC-GS-TAG-150 sebelum TC-GS-TAG-159 mulai dari Select All baru), 31 dan 35 (menutup menu dan dropdown), 36 (membersihkan seleksi).
+- Langkah 12 dan 17 (mencentang satu baris eligible supaya Bulk Action Bar dan `Select All (23 records)` tampil) adalah langkah 2 TC-GS-TAG-150 dan langkah 1 TC-GS-TAG-159.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 16 (mengosongkan seleksi dari TC-GS-TAG-150 sebelum TC-GS-TAG-159 mulai dari Select All baru), 31 dan 35 (menutup menu dan dropdown), 36 (membersihkan seleksi).
 - Asersi tambahan di luar Expected TC (S-03): tidak ada.
 - Rujukan lintas spec: TC-GS-TAG-172 (checkbox combined Hidden dan dilewati Select All) ada di spec 046; asersi dilewati Select All untuk DD-11 dan DD-13 diasersi di sini (langkah 14).
 - Temuan untuk QA:
   - Q-4: hitungan 23 record, 26 baris Not Paired, dan kondisi checkbox valid hanya bila Seed Registri A dipulihkan sebelum spec.
   - TC-GS-TAG-159 Expected b menulis `Select All ([N] records)` tanpa nilai N; spec mengasersi `Select All (23 records)` (N = 23 dari seeding) dan counter `22 TAGs selected`. TC tidak menyebut ukuran halaman default sehingga "lintas halaman" (Expected c) tidak diverifikasi pada halaman tertentu.
   - TC-GS-TAG-149 Expected c: `(✕)` "membatalkan seleksi dan bar hilang" dipecah menjadi dua `Verifikasi` (langkah 7 dan 8).
-  - TC-GS-TAG-150 dan TC-GS-TAG-159 tidak menyebut seleksi awal sebelum klik `Select All`, padahal Bulk Action Bar (tempat tombol itu berada) hilang bila seleksi kosong; spec mencentang baris DD-02 lebih dulu (langkah 12 dan 17).
+  - TC-GS-TAG-150 langkah 2 dan TC-GS-TAG-159 langkah 1 menulis baris eligible "mis. DD-09"; spec memakai DD-02 (eligible, Available) secara konsisten di seluruh spec.
   - Post Condition semua TC bernilai `-`.

@@ -95,59 +95,60 @@ coverage:
 54. Klik `[Apply]`
 55. Verifikasi total pada Pagination Changelog Import dengan Filter Action `Import Brand` bertambah tepat satu dibanding baseline langkah 42
 56. Verifikasi baris pertama tabel (sort default Date descending) memiliki Action `Import Brand`
+57. Tutup modal Changelog Import
 
 ### TC-GS-IMPORT-370: Impor hanya menambah record, Brand existing pada baris duplicate tidak ditimpa
 
-57. Reset Client E ke tanpa draft (D-47), siapkan draft Brand 2 baris dari brand-nikon-samsung.csv (`Nikon` `pending`, `Samsung` `duplicate`) lewat fixture
-58. Buka halaman Master Reference > Brand
-59. Catat nilai kolom Last Updated Brand `Samsung`
-60. Buka halaman Import > Brand
-61. Klik [Import (1)]
-62. Muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-63. Verifikasi Dropzone tampil (baris `Samsung` sudah dihapus dari Staging Table tanpa disisipkan)
-64. Buka halaman Master Reference > Brand
-65. Verifikasi Brand `Nikon` ada di halaman Master Reference > Brand Client E
-66. Verifikasi Brand `Samsung` tampil satu kali dengan nama `Samsung`
-67. Verifikasi Last Updated Brand `Samsung` sama dengan nilai langkah 59
+58. Reset Client E ke tanpa draft (D-47), siapkan draft Brand 2 baris dari brand-nikon-samsung.csv (`Nikon` `pending`, `Samsung` `duplicate`) lewat fixture
+59. Buka halaman Master Reference > Brand
+60. Catat nilai kolom Last Updated Brand `Samsung`
+61. Buka halaman Import > Brand
+62. Klik [Import (1)]
+63. Muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+64. Verifikasi Dropzone tampil (baris `Samsung` sudah dihapus dari Staging Table tanpa disisipkan)
+65. Buka halaman Master Reference > Brand
+66. Verifikasi Brand `Nikon` ada di halaman Master Reference > Brand Client E
+67. Verifikasi Brand `Samsung` tampil satu kali dengan nama `Samsung`
+68. Verifikasi Last Updated Brand `Samsung` sama dengan nilai langkah 60
 
 ### TC-GS-IMPORT-371: Baris error dan duplicate tidak pernah dikomit
 
-68. Reset Client E ke tanpa draft (D-47), siapkan draft Brand 3 baris dari brand-mixed-3.csv (`Nikon` `pending`, Brand Name 121 karakter huruf `A` `error`, `Samsung` `duplicate`) lewat fixture, lalu muat ulang halaman Import > Brand
-69. Klik [Import (1)]
-70. Muat ulang halaman Import > Brand setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-71. Verifikasi Staging Table masih menampilkan 1 baris `error` (Brand Name 121 karakter)
-72. Verifikasi Staging Table tidak menampilkan baris `duplicate`
-73. Verifikasi kartu Errors 1
-74. Verifikasi kartu Duplicates 0
-75. Buka halaman Master Reference > Brand
-76. Verifikasi halaman Master Reference > Brand Client E memuat Brand `Nikon`
-77. Verifikasi tidak ada Brand dengan nama 121 karakter huruf `A`
-78. Verifikasi `Samsung` tetap satu
+69. Reset Client E ke tanpa draft (D-47), siapkan draft Brand 3 baris dari brand-mixed-3.csv (`Nikon` `pending`, Brand Name 121 karakter huruf `A` `error`, `Samsung` `duplicate`) lewat fixture, lalu muat ulang halaman Import > Brand
+70. Klik [Import (1)]
+71. Muat ulang halaman Import > Brand setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+72. Verifikasi Staging Table masih menampilkan 1 baris `error` (Brand Name 121 karakter)
+73. Verifikasi Staging Table tidak menampilkan baris `duplicate`
+74. Verifikasi kartu Errors 1
+75. Verifikasi kartu Duplicates 0
+76. Buka halaman Master Reference > Brand
+77. Verifikasi halaman Master Reference > Brand Client E memuat Brand `Nikon`
+78. Verifikasi tidak ada Brand dengan nama 121 karakter huruf `A`
+79. Verifikasi `Samsung` tetap satu
 
 ### TC-GS-IMPORT-930: Tidak ada opsi Custom Field dibuat otomatis saat commit
 
-79. Reset Client E ke tanpa draft Tab User Login (D-47), lalu buka Import > User Login
-80. Klik [Upload File] di toolbar dan pilih berkas user-login-commit-shift.csv
-81. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
-82. Verifikasi Footer menampilkan `[Import (1)]`
-83. Verifikasi Error Summary Callout memuat "Shift: Invalid option"
-84. Verifikasi Error Summary Callout menampilkan badge "2 rows"
-85. Klik [Import (1)]
-86. Muat ulang halaman Import berkala sampai Footer menampilkan `[Import (0)]` Disabled dengan tooltip "No rows are ready to import."
-87. Verifikasi Staging Table berisi 2 baris `error` dengan Shift `Lembur`
-88. Verifikasi Staging Metric Cards Total Rows 2
-89. Verifikasi Staging Metric Cards Errors 2
-90. Buka Global Settings > User > Custom Field dan buka Value Setting Shift
-91. Verifikasi Value Setting Shift Client E tetap `Pagi, Siang, Malam`
+80. Reset Client E ke tanpa draft Tab User Login (D-47), lalu buka Import > User Login
+81. Klik [Upload File] di toolbar dan pilih berkas user-login-commit-shift.csv
+82. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
+83. Verifikasi Footer menampilkan `[Import (1)]`
+84. Verifikasi Error Summary Callout memuat "Shift: Invalid option"
+85. Verifikasi Error Summary Callout menampilkan badge "2 rows"
+86. Klik [Import (1)]
+87. Muat ulang halaman Import berkala sampai Footer menampilkan `[Import (0)]` Disabled dengan tooltip "No rows are ready to import."
+88. Verifikasi Staging Table berisi 2 baris `error` dengan Shift `Lembur`
+89. Verifikasi Staging Metric Cards Total Rows 2
+90. Verifikasi Staging Metric Cards Errors 2
+91. Buka Global Settings > User > Custom Field dan buka Value Setting Shift
+92. Verifikasi Value Setting Shift Client E tetap `Pagi, Siang, Malam`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan (301, 343, 369, 370, 371, 930); semuanya commit di Client E sehingga tidak ada aksi yang menghabisi data pada spec ini selain reset antar blok.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 18, 33, 57, 68, dan 79 (reset Client E dan penyiapan draft karena tiap TC mensyaratkan Client E direset sebelum TC); langkah 17 dan 32 (pemulihan sesuai Post Condition TC-301 dan TC-343, Data Dinamis D-47); langkah 8, 25, 45, 62, 70, dan 86 (menunggu commit selesai); langkah 36 dan 42 (mencatat baseline Changelog sebelum aksi pemicu); langkah 37, 43, dan 50 (menutup modal dan pindah halaman); langkah 59 (baseline Last Updated).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 18, 33, 58, 69, dan 80 (reset Client E dan penyiapan draft karena tiap TC mensyaratkan Client E direset sebelum TC); langkah 17 dan 32 (pemulihan sesuai Post Condition TC-301 dan TC-343, Data Dinamis D-47); langkah 8, 25, 45, 63, 71, dan 87 (menunggu commit selesai); langkah 36 dan 42 (mencatat baseline Changelog sebelum aksi pemicu); langkah 37, 43, 50, dan 57 (menutup modal dan pindah halaman); langkah 60 (baseline Last Updated).
 - Baseline Changelog (S-12): jumlah total Changelog modul Brand dan Changelog Import difilter `Import Brand` dicatat sebelum aksi commit (langkah 36 dan 42) dan dibandingkan sesudah commit (langkah 49 dan 55); asersi jumlah, bukan absence, sehingga tidak butuh spec kelas g. Anchor positif commit membuat record: langkah 47.
-- Anchor positif untuk asersi absence: langkah 15 sebelum langkah 16, langkah 30 sebelum langkah 31, langkah 76 sebelum langkah 77, dan langkah 90 sebelum langkah 91 (Value Setting terbuka).
-- Spec melewati sekitar 35 langkah (91 langkah). Alasan: enam blok TC homogen (satu objek uji "commit hanya menambah record") yang berdiri sendiri dan masing-masing mereset Client E; kegagalan satu blok tidak membuat blok lain kehilangan makna. Langkah prefix berulang (upload, auto-match, Confirm Mapping, tunggu commit) mendominasi jumlah langkah.
+- Anchor positif untuk asersi absence: langkah 15 sebelum langkah 16, langkah 30 sebelum langkah 31, langkah 77 sebelum langkah 78, dan langkah 91 sebelum langkah 92 (Value Setting terbuka).
+- Spec melewati sekitar 35 langkah (92 langkah). Alasan: enam blok TC homogen (satu objek uji "commit hanya menambah record") yang berdiri sendiri dan masing-masing mereset Client E; kegagalan satu blok tidak membuat blok lain kehilangan makna. Langkah prefix berulang (upload, auto-match, Confirm Mapping, tunggu commit) mendominasi jumlah langkah.
 - Pembagian TC lintas spec: kontrol worker commit tidak dipakai; mock AI mode normal hanya prasyarat TC-301, bukan objek uji kelas lain.
 - Temuan untuk QA:
   - TC-GS-IMPORT-301 dan TC-GS-IMPORT-343: Post Condition a (Brand `Lenovo` dan `Dell` tersimpan dan draft berisi 1 baris `error`; User Login `bambang.hartono@example.com` tersimpan) sebagian sudah teramati lewat Expected c TC-301 dan tidak diulang; User Login `bambang.hartono@example.com` tersimpan tidak punya langkah observasi di TC-343 sehingga tidak diasersi.

@@ -24,20 +24,20 @@ coverage:
 - Mode: FE+BE (backend nyata).
 - Akun aktor: Total Control Client C (Rudi Hartanto) `totalControl_automated_qaTeam3@qwertysystem.net`. Login sekali di hook `before` dengan `Spectra.env.GS_CLIENTC_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
 - Layar awal: hook `beforeEach` suite membuka Global Settings > Import (Tab Brand); perpindahan Tab berikutnya ditulis sebagai langkah penghubung.
-- Kondisi awal tiap TC (Kontrak Fixture R1): Client C tanpa draft pada Sub-Tab yang diuji. Skrip reset draft Client C disediakan tim FE/BE dan dijalankan di hook `before` serta sebagai langkah penghubung pada baris tabel dengan kolom Reset draft sebelum unggah = ya; mekanismenya tidak ada di TC (lihat Temuan untuk QA).
+- Kondisi awal tiap TC (Kontrak Fixture R1): Client C tanpa draft pada Sub-Tab yang diuji. Skrip reset draft Client C disediakan tim FE/BE dan dijalankan oleh langkah 1 pada setiap iterasi; mekanismenya tidak ada di TC (lihat Temuan untuk QA).
 - Layanan AI: mock deterministik mode normal (Data Dinamis D-40, tabel D-41 dan D-42) yang diatur tim QA/BE lewat hook uji di lingkungan non-produksi; hook `before` memastikan mode normal dan hook `after` mengembalikannya ke normal.
 - Data Dinamis (berkas upload disediakan tim QA; fixture baru `Fixture.import.aiFieldShortening115`; nilai sel melanggar batas 120 karakter sesuai D-41, tanpa suffix per run karena berkas statis dan draft direset per Tab):
 
-| TC | Tab | Berkas | Sel yang diuji | Isi baris data #1 | Saran AI | Pindah Tab | Reset draft sebelum unggah |
-|---|---|---|---|---|---|---|---|
-| 286 | Brand | `ai-brand-long.csv` (D-44) | Brand Name | Brand Name = nilai sumber Brand pada D-41 (121 karakter) | `Samsung Electronics Indonesia` | tidak | tidak |
-| 287 | Measurement | `ai-measurement-long.csv` (D-44) | Unit Name | Unit Name = nilai sumber Unit Name pada D-41 (121 karakter), Symbol `kg/m2` | `Kilogram per Square Meter` | ya | tidak |
-| 288 | Position | `ai-position-long.csv` (D-44) | Position Name | Position Name = nilai sumber Position pada D-41 (121 karakter) | `Senior Regional Operations Coordinator` | ya | tidak |
-| 289 | Division | `ai-division-long.csv` (D-44) | Division Name | Division Name = nilai sumber Division pada D-41 (121 karakter) | `Corporate Strategy and Business Development` | ya | tidak |
-| 290 | User Login | `ai-ul-first-long.csv` (berkas User Login standar D-45) | First Name | First Name = nilai sumber First Name pada D-41 (121 karakter), Last Name `Rahmawati`, Email `siti.rahmawati@example.com`, Division `Engineering`, Position kosong | `Muhammad Abdurrahman Nurrahman` | ya | tidak |
-| 291 | User Login | `ai-ul-last-long.csv` (D-45) | Last Name | First Name `Siti`, Last Name = nilai sumber Last Name pada D-41 (121 karakter), Email `siti.rahmawati@example.com`, Division `Engineering`, Position kosong | `Hadiningrat Prawirodiningrat` | tidak | ya |
-| 292 | User Non Login | `ai-unl-first-long.csv` (berkas User Non Login standar D-45) | First Name | First Name = nilai sumber First Name pada D-41 (121 karakter), Last Name `Lestari`, Email `ayu.lestari@example.com`, Division `Engineering`, Position kosong, Represented By `budi.manager.c@example.com` | `Muhammad Abdurrahman Nurrahman` | ya | tidak |
-| 697 | User Non Login | `ai-unl-last-long.csv` (D-45) | Last Name | First Name `Ayu`, Last Name = nilai sumber Last Name pada D-41 (121 karakter), Email `ayu.lestari@example.com`, Division `Engineering`, Position kosong, Represented By `budi.manager.c@example.com` | `Hadiningrat Prawirodiningrat` | tidak | ya |
+| TC | Tab | Berkas | Sel yang diuji | Isi baris data #1 | Saran AI |
+|---|---|---|---|---|---|
+| 286 | Brand | `ai-brand-long.csv` (D-44) | Brand Name | Brand Name = nilai sumber Brand pada D-41 (121 karakter) | `Samsung Electronics Indonesia` |
+| 287 | Measurement | `ai-measurement-long.csv` (D-44) | Unit Name | Unit Name = nilai sumber Unit Name pada D-41 (121 karakter), Symbol `kg/m2` | `Kilogram per Square Meter` |
+| 288 | Position | `ai-position-long.csv` (D-44) | Position Name | Position Name = nilai sumber Position pada D-41 (121 karakter) | `Senior Regional Operations Coordinator` |
+| 289 | Division | `ai-division-long.csv` (D-44) | Division Name | Division Name = nilai sumber Division pada D-41 (121 karakter) | `Corporate Strategy and Business Development` |
+| 290 | User Login | `ai-ul-first-long.csv` (berkas User Login standar D-45) | First Name | First Name = nilai sumber First Name pada D-41 (121 karakter), Last Name `Rahmawati`, Email `siti.rahmawati@example.com`, Division `Engineering`, Position kosong | `Muhammad Abdurrahman Nurrahman` |
+| 291 | User Login | `ai-ul-last-long.csv` (D-45) | Last Name | First Name `Siti`, Last Name = nilai sumber Last Name pada D-41 (121 karakter), Email `siti.rahmawati@example.com`, Division `Engineering`, Position kosong | `Hadiningrat Prawirodiningrat` |
+| 292 | User Non Login | `ai-unl-first-long.csv` (berkas User Non Login standar D-45) | First Name | First Name = nilai sumber First Name pada D-41 (121 karakter), Last Name `Lestari`, Email `ayu.lestari@example.com`, Division `Engineering`, Position kosong, Represented By `budi.manager.c@example.com` | `Muhammad Abdurrahman Nurrahman` |
+| 697 | User Non Login | `ai-unl-last-long.csv` (D-45) | Last Name | First Name `Ayu`, Last Name = nilai sumber Last Name pada D-41 (121 karakter), Email `ayu.lestari@example.com`, Division `Engineering`, Position kosong, Represented By `budi.manager.c@example.com` | `Hadiningrat Prawirodiningrat` |
 
 - Cleanup (hook `after`, tidak berasumsi setup berhasil penuh): reset draft Client C pada semua Sub-Tab yang disentuh spec ini dan kembalikan mock AI ke mode normal.
 - Guided Tooltip: hook suite `before` men-set flag `guided_tooltip_seen_gs-import` true, lihat `suite.md`.
@@ -48,10 +48,10 @@ coverage:
 
 ### TC-GS-IMPORT-286 sampai 292 dan 697: badge AI Field Shortening per Tab dan field
 
-Untuk setiap baris tabel Data Dinamis, urut 286, 287, 288, 289, 290, 291, 292, 697, lakukan langkah 1 sampai 13 (iterasi 286 mulai di Tab Brand yang dibuka hook `beforeEach` dengan kolom Pindah Tab = tidak dan kolom Reset draft sebelum unggah = tidak, karena draft Brand sudah kosong dan Tab sudah aktif).
+Untuk setiap baris tabel Data Dinamis, urut 286, 287, 288, 289, 290, 291, 292, 697, lakukan langkah 1 sampai 13 (langkah 1 dan 2 dijalankan pada setiap iterasi, termasuk iterasi 286).
 
-1. Buka Import > Tab pada kolom Tab baris tabel (kolom Pindah Tab = ya)
-2. Reset draft Client C pada Tab tersebut lewat skrip reset (kolom Reset draft sebelum unggah = ya)
+1. Reset draft Client C pada Tab kolom Tab baris tabel lewat skrip reset
+2. Muat ulang halaman Import > Tab pada kolom Tab baris tabel
 3. Klik [Upload File] di toolbar dan pilih berkas pada kolom Berkas
 4. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 5. Verifikasi modal Confirm Mapping tertutup
@@ -68,7 +68,7 @@ Untuk setiap baris tabel Data Dinamis, urut 286, 287, 288, 289, 290, 291, 292, 6
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`, TC-GS-IMPORT-286 sampai 292 dan 697.
 - Satu blok langkah 1 sampai 13 diulang delapan kali dengan parameter dari tabel Data Dinamis (idiom 8b butir 7); `Verifikasi` tetap satu per klausa Expected (a: langkah 5-8, b: langkah 10-11, c: langkah 12-13). Ekspansi 13 x 8 = 104 langkah melewati sekitar 35; alasan: seluruh blok satu kelas (AI Field Shortening, mock normal), berdiri sendiri, dan kegagalan satu Tab tidak membuat Tab lain kehilangan makna.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (pindah Tab; kolom Pindah Tab = ya pada 287, 288, 289, 290, 292), langkah 2 (reset draft; kolom Reset draft sebelum unggah = ya pada 291 dan 697, yang memakai Tab yang sama dengan iterasi sebelumnya).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset draft Client C pada Tab iterasi) dan langkah 2 (muat ulang halaman Import > Tab iterasi, supaya halaman menampilkan keadaan tanpa draft dan Tab yang diuji) dijalankan tanpa syarat pada setiap iterasi; skrip fixture berjalan sinkron sehingga tidak ada penanda tunggu.
 - Pembagian TC lintas spec: TC-GS-IMPORT-299, 300, 698, 699, 703, 866 (tanpa badge dan batas waktu) ada di spec 116; Accept dan Dismiss ada di spec 117; Read Only di spec 131.
 - Temuan untuk QA:
   - Skrip reset draft Client C (Kontrak Fixture R1) tidak didefinisikan mekanismenya di TC; disediakan tim FE/BE, endpoint tidak dikarang.

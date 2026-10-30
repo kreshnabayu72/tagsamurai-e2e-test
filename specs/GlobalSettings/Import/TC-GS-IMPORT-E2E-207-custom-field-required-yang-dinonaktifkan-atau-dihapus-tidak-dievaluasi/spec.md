@@ -41,7 +41,7 @@ coverage:
 5. Admin kedua Client A (sesi API) menonaktifkan Custom Field `Shift Notes` hingga tersimpan
 6. Tekan `F5` pada halaman Import
 7. Verifikasi kolom `Shift Notes` tidak tampil
-8. Verifikasi tidak ada Banner Custom Field (tidak ada nilai tersimpan pada seluruh baris)
+8. Verifikasi tidak ada Banner Custom Field
 9. Verifikasi seluruh 8 baris berstatus `pending`
 10. Verifikasi Staging Metric Cards: Total Rows 8, Ready to Import 8, Errors 0
 11. Verifikasi Error Summary Callout tidak tampil
@@ -94,7 +94,7 @@ coverage:
 49. Admin kedua Client A (sesi API) menghapus Custom Field `Shift Notes` hingga tersimpan
 50. Tekan `F5` pada halaman Import
 51. Verifikasi kolom `Shift Notes` tidak tampil
-52. Verifikasi tidak ada Banner Custom Field (tidak ada nilai tersimpan pada seluruh baris)
+52. Verifikasi tidak ada Banner Custom Field
 53. Verifikasi seluruh 8 baris berstatus `pending`
 54. Verifikasi Staging Metric Cards: Total Rows 8, Ready to Import 8, Errors 0
 55. Verifikasi Error Summary Callout tidak tampil
@@ -107,6 +107,7 @@ coverage:
 - Panjang spec: 56 langkah, di atas 35 langkah. Alasan: empat blok berpola sama (mutasi Required/Active/hapus lewat sesi API, F5, baca Staging Table) pada satu Sub-Tab dan satu dataset D-05; tiap blok berdiri sendiri dan dipulihkan eksplisit (langkah 12, 31, 44, 56).
 - P-2: Admin kedua hanya memicu perubahan Custom Field lewat sesi API; hasil diasersi hanya di sesi admin pertama.
 - Langkah 12, 31, 44, dan 56 adalah langkah pemulihan tanpa `Verifikasi` (S-09); hook `after` adalah cadangan.
+- Langkah 8 dan 52 hanya mengasersi ketiadaan Banner Custom Field; sebabnya tidak diasersi (lihat Temuan untuk QA TC-GS-IMPORT-939 dan 940 Expected b).
 - Urutan 939, 952, 953, 940 menempatkan penghapusan Custom Field (TC-940) paling akhir; nomor TC di sourceTc tetap.
 - Temuan untuk QA:
   - TC-GS-IMPORT-939 dan 940 Expected b menyebut "tidak ada Banner Custom Field karena tidak ada nilai tersimpan"; alasan sebab-akibat tidak diasersi, hanya ketiadaan banner (didahului kolom `Shift Notes` tidak tampil dan 8 baris `pending`).

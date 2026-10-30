@@ -31,7 +31,7 @@ coverage:
   - `Hapus {runId}-050` dibuat lalu dihapus oleh Sari Dewi (entri Create dan Delete, setara TC-GS-UOM-96); dilakukan paling akhir sehingga entri Delete menjadi entri terbaru di Changelog (default Date terbaru di atas) dan menyediakan baris New Value `—` untuk TC-GS-UOM-184.
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API `Rina Sort {runId}-050`, `Gallon {runId}-050`, dan unit Population yang dibuat spec ini (yang sudah ada sebelum spec dilewati). Entri Changelog tidak bisa dihapus.
 - Kemampuan teknis: pindah ke halaman terakhir lewat Pagination; membaca indikator sort pada header kolom.
-- Search `{runId}-050` (langkah 9) membatasi halaman Changelog selama TC-GS-UOM-183 (langkah 9 sampai 23) ke enam entri milik spec: Create `Rina Sort {runId}-050`, Create dan dua Edit `Gallon {runId}-050`, serta Create dan Delete `Hapus {runId}-050`. Halaman yang diamati memuat sedikitnya dua nilai distinct pada Action (`Create`, `Edit`, `Delete`), Field (`Symbol`, `Unit Name`), Modified By (`Rina M`, `Sari D`), dan Unit Name (S-11, S-14). Search dikosongkan di langkah 24 sebelum TC-GS-UOM-184, yang membutuhkan Pagination atas seluruh Changelog.
+- Search `{runId}-050` (langkah 9) membatasi halaman Changelog selama TC-GS-UOM-183 (langkah 9 sampai 23) ke enam entri milik spec: Create `Rina Sort {runId}-050`, Create dan dua Edit `Gallon {runId}-050`, serta Create dan Delete `Hapus {runId}-050`. Halaman yang diamati memuat sedikitnya dua nilai distinct pada Action (`Create`, `Edit`, `Delete`), Field (`Symbol`, `Unit Name`), Modified By (`Rina M`, `Sari D`), dan Unit Name (S-11, S-14). Search dikosongkan di langkah 24. TC-GS-UOM-184 memakai Search yang sama pada kolom Old Value (langkah 25 sampai 29; enam entri milik spec: tiga baris dengan Old Value terisi, yaitu dua Edit dan satu Delete, dan tiga baris Create dengan Old Value `—`, S-14) dan dikosongkan di langkah 29; kolom New Value (langkah 30 sampai 34) memakai Pagination atas seluruh Changelog.
 - Tabel "Kolom sort" untuk TC-GS-UOM-183 (klik 1 = ascending, klik 2 = descending, klik 3 = netral):
 
   | Kolom | Hasil klik 1 | Hasil klik 2 |
@@ -83,11 +83,11 @@ Kolom Date:
 
 ### TC-GS-UOM-184: Sort Old Value dan New Value menempatkan nilai kosong di akhir saat ascending
 
-25. Klik header Old Value (ascending)
-26. Verifikasi baris pertama pada halaman 1 bernilai (Old Value bukan `—`)
-27. Pindah ke halaman terakhir pada Pagination
-28. Verifikasi baris Create (Old Value `—`) berada di akhir pada halaman terakhir
-29. Pindah ke halaman 1 pada Pagination
+25. Ketik Search `{runId}-050`, tekan Enter
+26. Klik header Old Value (ascending)
+27. Verifikasi tiga baris pertama bernilai (Old Value bukan `—`)
+28. Verifikasi tiga baris terakhir adalah baris Create (Old Value `—`)
+29. Klik `(←)` pada kotak Search
 30. Klik header New Value (ascending)
 31. Verifikasi baris pertama pada halaman 1 bernilai (New Value bukan `—`)
 32. Pindah ke halaman terakhir pada Pagination
@@ -105,7 +105,7 @@ Kolom Date:
 41. Verifikasi setiap baris yang tampil memiliki Action `Edit` dan Unit Name `Gallon {runId}-050` (irisan Search dan Filter)
 42. Klik header Date (Oldest First)
 43. Verifikasi baris pertama New Value `oz` dan baris kedua New Value `oz.` (irisan Search, Filter, dan Sort Date oldest)
-44. Klik Filter, kosongkan field Action
+44. Kosongkan field Action
 45. Klik [Apply]
 46. Verifikasi kotak Search tetap berisi `gallon {runId}-050`
 47. Verifikasi header Date tetap menampilkan sort Oldest First
@@ -119,11 +119,13 @@ Kolom Date:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: TC-GS-UOM-185, 183, 184, 190. Alasan: TC-GS-UOM-185 mengamati state awal Pagination sebelum sort mengubah tabel (screening dahulu, S-14); TC-GS-UOM-190 terakhir karena memakai Search dan Filter.
 - Langkah 10 sampai 16 diulang untuk setiap baris tabel "Kolom sort" (4 kolom); parameter tiap iterasi ada di Prerequisites. Ekspansi: 4 x 7 = 28 langkah, ditambah kolom Date (langkah 17 sampai 23).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8 (mengembalikan ukuran halaman 10 dan halaman 1), 9 (Search `{runId}-050` membatasi halaman Changelog ke baris milik spec), 24 (mengosongkan Search lewat `(←)` sebelum TC-GS-UOM-184 yang membutuhkan Pagination atas seluruh Changelog; S-09), 29 dan 34 (kembali ke halaman 1 karena halaman terakhir tidak punya Next dan membuat state netral untuk TC berikutnya), dan 44 (mengosongkan filter Action).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8 (mengembalikan ukuran halaman 10 dan halaman 1), 9 (Search `{runId}-050` membatasi halaman Changelog ke baris milik spec), 24 dan 29 (mengosongkan Search lewat `(←)`; S-09), 25 (Search `{runId}-050` membatasi halaman ke enam entri milik spec untuk kolom Old Value; TC-GS-UOM-184 memakai Pagination atas seluruh Changelog pada kolom New Value), 34 (kembali ke halaman 1 karena halaman terakhir tidak punya Next dan membuat state netral untuk TC berikutnya), dan 44 (mengosongkan filter Action).
 - Langkah 36 adalah pembanding positif bagi langkah 41 (asersi universal). Keyword Search TC-GS-UOM-190 `gallon` diperluas menjadi `gallon {runId}-050` supaya irisan tidak memuat baris dari unit `Gallon` Population dan unit Gallon spec lain; Expected TC tidak menghitung baris.
-- Langkah 26 dan 31 mewujudkan "baris bernilai lebih dulu" pada halaman 1 dan langkah 28 dan 33 mewujudkan "`—` di akhir" pada halaman terakhir (nilai kosong di akhir seluruh urutan ascending).
+- Langkah 27 dan 31 mewujudkan "baris bernilai lebih dulu" (pada Old Value: tiga baris pertama dari enam entri milik spec; pada New Value: halaman 1) dan langkah 28 dan 33 mewujudkan "`—` di akhir" (pada Old Value: tiga baris terakhir; pada New Value: halaman terakhir, nilai kosong di akhir seluruh urutan ascending).
 - Spec ini melewati sekitar 35 langkah (50 langkah nominal, sekitar 71 dengan ekspansi). Alasan: keempat TC adalah perilaku tabel pada satu Modal Changelog dengan satu dataset seeding dan satu kelas harness (fungsional); pemisahan hanya menambah seeding (termasuk tunggu pergantian menit) dan pembukaan modal berulang. Kegagalan keras membuka modal (langkah 1) membuat seluruh blok kehilangan makna.
 - Temuan untuk QA:
   - TC-GS-UOM-183 tidak menyebut nilai yang diharapkan untuk Unit Name dan Modified By; spec mengasersi urutan A-Z dan Z-A atas enam entri milik spec yang dibatasi Search `{runId}-050` (nilai konkret ada di tabel "Kolom sort").
   - TC-GS-UOM-184 tidak menyebut apakah mengklik header lain mereset sort kolom sebelumnya; spec membuat kolom netral eksplisit di langkah 34.
   - TC-GS-UOM-190 menulis "Clear Filter" dan "Clear Search" tanpa kontrol yang disebut; spec mengosongkan field Action lalu [Apply] dan memakai `(←)` pada kotak Search.
+  - Panel Filter sesudah `[Apply]`: langkah 44 tidak membuka ulang panel karena spec mengasumsikan panel tetap terbuka sesudah `[Apply]` pada langkah 39, juga sesudah klik header Date pada langkah 42. Asumsi kerja ini belum diamati di aplikasi: prd-conventions §9.8 hanya menyebut penutupan panel lewat klik luar panel atau klik ulang icon Filter dan tidak menyatakan keadaan panel sesudah `[Apply]`. Spec 037, 038, 039, dan 045 memakai asumsi yang sama. Selain itu §9.8 menyebut klik luar panel menutup panel tanpa Apply, sehingga klik header Date dapat menutupnya. Bila aplikasi menutup panel (sesudah `[Apply]` atau sesudah klik header Date), langkah 44 perlu diawali `Klik Filter`.
+  - TC-GS-UOM-184 Expected a ("Create (Old `—`) di akhir") juga benar pada urutan default (Date terbaru di atas), sehingga tidak membedakan sort Old Value dari tanpa sort. Spec membatasi halaman dengan Search `{runId}-050` dan mengasersi tiga baris pertama terisi dan tiga baris terakhir Create (langkah 25 sampai 29); Expected TC perlu syarat yang tidak benar pada urutan default.

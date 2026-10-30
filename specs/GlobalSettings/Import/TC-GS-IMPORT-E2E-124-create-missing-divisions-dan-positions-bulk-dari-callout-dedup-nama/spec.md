@@ -116,7 +116,7 @@ coverage:
 66. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
 67. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 68. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
-69. Tunggu aksi selesai (Error Summary Callout tidak tampil dan keempat baris berstatus `pending`)
+69. Tunggu aksi selesai (permintaan mendapat respons)
 70. Mundurkan umur draft 25 jam lewat hook umur draft (D-76), lalu muat ulang halaman Import > User Login
 71. Klik [Discard] pada Unsaved Banner
 72. Klik [Discard Draft] pada dialog
@@ -131,13 +131,14 @@ coverage:
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Subjudul `###` memetakan langkah ke id TC.
 - Urutan: TC-GS-IMPORT-327, 329 (Division), 328 (Position), 717, 718 (User Non Login), lalu TC-GS-IMPORT-345 terakhir karena menghapus draft (aksi merusak ditaruh paling akhir).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 15, 27, 39, 52, 65 (memilih sub-tab), 11, 22, 35, 48, 61, 74 (membuka daftar master data), 14, 26, 38, 51, 64, 78 (pemulihan master data dan draft, R2 dan S-09), 69 (menunggu aksi Create Missing selesai sebelum umur draft dimundurkan, bagian 8b butir 8), 70 (pemicu umur draft, hook D-76, dan muat ulang), 71 (membuka dialog Discard).
-- Langkah 69 menunggu permintaan Create Missing Divisions selesai sebelum langkah 70 memundurkan umur draft lewat hook dan memuat ulang halaman, supaya hook dan muat ulang tidak berlomba dengan permintaan yang belum selesai; langkah 69 tanpa `Verifikasi` karena TC tidak memuat Expected penyelesaian untuk aksi itu.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 15, 27, 39, 52, 65 (memilih sub-tab), 11, 22, 35, 48, 61, 75 (membuka daftar master data), 14, 26, 38, 51, 64, 78 (pemulihan master data dan draft, R2 dan S-09), 69 (menunggu aksi Create Missing selesai sebelum umur draft dimundurkan, bagian 8b butir 8), 70 (pemicu umur draft, hook D-76, dan muat ulang), 71 (membuka dialog Discard).
+- Langkah 69 menunggu permintaan Create Missing Divisions selesai sebelum langkah 70 memundurkan umur draft lewat hook dan memuat ulang halaman, supaya hook dan muat ulang tidak berlomba dengan permintaan yang belum selesai; langkah 69 tanpa `Verifikasi` karena TC tidak memuat Expected penyelesaian untuk aksi itu; penanda memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.
 - Absence langkah 6 (dialog konfirmasi) diletakkan segera setelah pemicu dan berjangkar pada toast langkah 7; absence langkah 25 berjangkar pada langkah 23.
 - Spec melewati sekitar 35 langkah (78 langkah): enam blok homogen (bulk Create Missing per Tab atau jenis), satu kelas fungsional, tiap blok berdiri sendiri dengan master data dan draft sendiri; kegagalan satu blok tidak menghilangkan makna blok lain.
 - Pembagian TC lintas spec: Create Missing per-baris ada di spec 123; kegagalan sebagian di spec 125; konflik data admin lain di spec 127; pencatatan log di spec 128.
 - Temuan untuk QA:
   - TC-GS-IMPORT-345: langkah 4 TC ("lewat hook umur draft... lalu klik `[Discard]` pada Unsaved Banner") menggabungkan pemicu hook, muat ulang, dan klik dalam satu langkah; spec memecahnya menjadi langkah 70 dan 71. Munculnya Unsaved Banner tidak punya Expected sendiri di TC dan tidak diasersi.
+  - TC-GS-IMPORT-345: langkah 3 TC tidak memuat Expected penyelesaian untuk `[Create Missing Divisions]`; pemulihan keempat baris ke `pending` menurut PRD hanya teramati pada pembacaan Staging Table berikutnya (setelah muat ulang), sehingga langkah 69 tidak menegaskan Callout hilang atau baris `pending` sebelum muat ulang langkah 70. Penanda yang teramati sebelum muat ulang belum ditetapkan TC atau PRD.
   - TC-GS-IMPORT-329: Expected c membedakan `Logistik`, `LOGISTIK`, dan `logistik` hanya dari daftar Division tanpa memeriksa Row # yang tersimpan; spec mengikuti Expected TC (ejaan kemunculan pertama = baris #1 `Logistik`).
   - Berkas `user-login-logistik-case.csv`, `user-login-store-supervisor-3.csv`, `user-non-login-logistik-3.csv`, dan `user-non-login-store-supervisor-3.csv` hanya didefinisikan pada kolom Data Uji TC.
   - Hitungan "6 baris" mengandalkan Pre-setup 5 Division dan 5 Position tanpa record sisa spec lain.

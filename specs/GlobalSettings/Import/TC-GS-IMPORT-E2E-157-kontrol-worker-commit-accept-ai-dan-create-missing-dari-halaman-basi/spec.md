@@ -44,90 +44,99 @@ coverage:
 3. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
 4. Klik `[Upload File]` di toolbar dan pilih berkas `brand-ai-commit.csv`
 5. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-6. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (2)]`)
-7. Pada halaman langkah 5 (tanpa muat ulang) klik `[Accept]` pada badge saran sel Brand Name baris #3
-8. Verifikasi dialog Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan satu tombol `[OK]`
-9. Klik `[OK]` pada dialog
-10. Verifikasi dialog tertutup
-11. Verifikasi sel Brand Name baris #3 tetap bernilai 121 karakter semula
-12. Verifikasi baris #3 tetap `error`
+6. Tunggu aksi selesai (modal tertutup)
+7. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (2)]`)
+8. Tunggu aksi selesai (permintaan mendapat respons)
+9. Pada halaman langkah 5 (tanpa muat ulang) klik `[Accept]` pada badge saran sel Brand Name baris #3
+10. Verifikasi dialog Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan satu tombol `[OK]`
+11. Klik `[OK]` pada dialog
+12. Verifikasi dialog tertutup
+13. Verifikasi sel Brand Name baris #3 tetap bernilai 121 karakter semula
+14. Verifikasi baris #3 tetap `error`
 
 ### TC-GS-IMPORT-747: AI Accept dari halaman basi saat committing
 
-13. Reset Client E (D-47) dan seed draft Brand D-57 (250 baris: 248 `pending`, 1 `error` baris #5, 1 `duplicate` baris #20) lewat skrip fixture
-14. Buka Global Settings > Import, pilih Sub-Tab Brand
-15. Verifikasi footer `[Import (248)]` Enabled
-16. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
-17. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API)
-18. Pada halaman langkah 14 (tanpa muat ulang) klik `[Accept]` pada badge saran sel Brand Name baris #5
-19. Verifikasi dialog Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan tombol hanya `[OK]`
-20. Klik `[OK]`
-21. Muat ulang halaman Import > Brand
-22. Verifikasi Brand Name baris #5 tetap bernilai `PT Samsung Electronics Indonesia Manufacturing and Distribution Company for Consumer Electronics and Home Appliances Prod` (121 karakter)
-23. Verifikasi baris #5 tetap berstatus `error`
+15. Reset Client E (D-47) dan seed draft Brand D-57 (250 baris: 248 `pending`, 1 `error` baris #5, 1 `duplicate` baris #20) lewat skrip fixture
+16. Buka Global Settings > Import, pilih Sub-Tab Brand
+17. Verifikasi footer `[Import (248)]` Enabled
+18. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
+19. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API)
+20. Tunggu aksi selesai (permintaan mendapat respons)
+21. Pada halaman langkah 16 (tanpa muat ulang) klik `[Accept]` pada badge saran sel Brand Name baris #5
+22. Verifikasi dialog Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan tombol hanya `[OK]`
+23. Klik `[OK]`
+24. Muat ulang halaman Import > Brand
+25. Verifikasi Brand Name baris #5 tetap bernilai `PT Samsung Electronics Indonesia Manufacturing and Distribution Company for Consumer Electronics and Home Appliances Prod` (121 karakter)
+26. Verifikasi baris #5 tetap berstatus `error`
 
 ### TC-GS-IMPORT-860: Accept saran AI basi saat committing ditolak, bukan no-op diam
 
-24. Reset Client E (D-47) dan seed draft Brand D-57 lewat skrip fixture; pastikan mock AI mode normal
-25. Buka Global Settings > Import, pilih Sub-Tab Brand
-26. Verifikasi badge saran tampil pada baris #5 (halaman tidak dimuat ulang setelahnya)
-27. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-28. Hapus baris #5 atas nama Admin kedua Client E lewat fixture permintaan (sesi API)
-29. Mulai Import atas nama Admin kedua Client E lewat fixture permintaan (sesi API) sehingga job berstatus `committing`
-30. Klik `[Accept]` pada badge saran baris #5 yang masih tampil
-31. Verifikasi dialog blok Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan tombol `[OK]` saja
-32. Klik `[OK]`
-33. Verifikasi dialog tertutup
-34. Verifikasi Staging Table menampilkan baris lain selain baris #5
-35. Verifikasi baris #5 tidak lagi tampil pada Staging Table
-36. Verifikasi kartu Total Rows tetap 249
+27. Reset Client E (D-47) dan seed draft Brand D-57 lewat skrip fixture; pastikan mock AI mode normal
+28. Buka Global Settings > Import, pilih Sub-Tab Brand
+29. Verifikasi badge saran tampil pada baris #5 (halaman tidak dimuat ulang setelahnya)
+30. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
+31. Hapus baris #5 atas nama Admin kedua Client E lewat fixture permintaan (sesi API)
+32. Mulai Import atas nama Admin kedua Client E lewat fixture permintaan (sesi API) sehingga job berstatus `committing`
+33. Tunggu aksi selesai (permintaan mendapat respons)
+34. Klik `[Accept]` pada badge saran baris #5 yang masih tampil
+35. Verifikasi dialog blok Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan tombol `[OK]` saja
+36. Klik `[OK]`
+37. Verifikasi dialog tertutup
+38. Verifikasi Staging Table menampilkan baris lain selain baris #5
+39. Verifikasi baris #5 tidak lagi tampil pada Staging Table
+40. Verifikasi kartu Total Rows tetap 249
 
 ### TC-GS-IMPORT-731: Create Missing Divisions bulk dari halaman basi saat committing
 
-37. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
-38. Pilih Sub-Tab User Login
-39. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-40. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-logistik.csv`
-41. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-42. Mulai commit draft User Login Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (1)]`)
-43. Pada halaman langkah 41 (tanpa muat ulang) klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
-44. Verifikasi dialog Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan satu tombol `[OK]`
-45. Klik `[OK]` pada dialog
-46. Verifikasi dialog tertutup
-47. Verifikasi baris #2 berstatus `error` dengan Division `Logistik` pada Staging Table
-48. Verifikasi baris #3 berstatus `error` dengan Division `Logistik` pada Staging Table
-49. Buka Global Settings > User > Division
-50. Verifikasi tabel Division menampilkan 5 baris
-51. Verifikasi daftar Division tidak memuat `Logistik`
+41. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
+42. Pilih Sub-Tab User Login
+43. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
+44. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-logistik.csv`
+45. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
+46. Tunggu aksi selesai (modal tertutup)
+47. Mulai commit draft User Login Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (1)]`)
+48. Tunggu aksi selesai (permintaan mendapat respons)
+49. Pada halaman langkah 45 (tanpa muat ulang) klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
+50. Verifikasi dialog Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan satu tombol `[OK]`
+51. Klik `[OK]` pada dialog
+52. Verifikasi dialog tertutup
+53. Verifikasi baris #2 berstatus `error` dengan Division `Logistik` pada Staging Table
+54. Verifikasi baris #3 berstatus `error` dengan Division `Logistik` pada Staging Table
+55. Buka Global Settings > User > Division
+56. Verifikasi tabel Division menampilkan 5 baris
+57. Verifikasi daftar Division tidak memuat `Logistik`
 
 ### TC-GS-IMPORT-732: Create Missing Positions per-baris dari halaman basi saat committing
 
-52. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
-53. Buka Global Settings > Import, pilih Sub-Tab User Login
-54. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-55. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-store-supervisor.csv`
-56. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-57. Mulai commit draft User Login Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (1)]`)
-58. Pada halaman langkah 56 (tanpa muat ulang) klik `⋯` pada baris #2
-59. Pilih `[Create Missing Positions]`
-60. Verifikasi dialog Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan satu tombol `[OK]`
-61. Klik `[OK]` pada dialog
-62. Verifikasi dialog tertutup
-63. Verifikasi baris #2 berstatus `error` dengan Position `Store Supervisor` pada Staging Table
-64. Verifikasi baris #3 berstatus `error` dengan Position `Store Supervisor` pada Staging Table
-65. Buka Global Settings > User > Position
-66. Verifikasi tabel Position menampilkan 5 baris
-67. Verifikasi daftar Position tidak memuat `Store Supervisor`
+58. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
+59. Buka Global Settings > Import, pilih Sub-Tab User Login
+60. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
+61. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-store-supervisor.csv`
+62. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
+63. Tunggu aksi selesai (modal tertutup)
+64. Mulai commit draft User Login Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (1)]`)
+65. Tunggu aksi selesai (permintaan mendapat respons)
+66. Pada halaman langkah 62 (tanpa muat ulang) klik `⋯` pada baris #2
+67. Pilih `[Create Missing Positions]`
+68. Verifikasi dialog Import In Progress dengan Title "Import In Progress", Body "An import is currently running for this draft. Please try again after it finishes.", dan satu tombol `[OK]`
+69. Klik `[OK]` pada dialog
+70. Verifikasi dialog tertutup
+71. Verifikasi baris #2 berstatus `error` dengan Position `Store Supervisor` pada Staging Table
+72. Verifikasi baris #3 berstatus `error` dengan Position `Store Supervisor` pada Staging Table
+73. Buka Global Settings > User > Position
+74. Verifikasi tabel Position menampilkan 5 baris
+75. Verifikasi daftar Position tidak memuat `Store Supervisor`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah penolakan aksi dari halaman basi saat job `committing` yang dibentuk kontrol worker D-47. Pelaku kedua hanya memicu perubahan state lewat sesi API (P-2); langkah TC "Admin kedua Client E: buka Import > Brand" dan "klik `[Import (N)]`" digantikan pemicu sesi API tanpa pembukaan halaman karena hasil di sesi itu tidak diasersi.
-- Alasan melewati sekitar 35 langkah (67 langkah nominal): lima blok homogen (aksi dari halaman basi saat `committing`), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok Brand (TC-705, 747, 860) mendahului blok User Login; TC-860 menghapus baris dan diletakkan terakhir di antara blok Brand.
+- Alasan melewati sekitar 35 langkah (75 langkah nominal): lima blok homogen (aksi dari halaman basi saat `committing`), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok Brand (TC-705, 747, 860) mendahului blok User Login; TC-860 menghapus baris dan diletakkan terakhir di antara blok Brand.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 13, 24, 37, 52), aktivasi kontrol worker, pembukaan halaman dan Sub-Tab, dan pemicu sesi API (langkah 6, 17, 28, 29, 42, 57). Langkah 34 adalah `Verifikasi` anchor (Staging Table masih menampilkan baris lain) bagi langkah 35. Langkah 15 dan 26 adalah `Verifikasi` tambahan di luar Expected TC yang membuktikan prasyarat halaman basi (footer `[Import (248)]` Enabled; badge saran tampil sebelum pemicu).
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 15, 27, 41, 58), aktivasi kontrol worker, pembukaan halaman dan Sub-Tab, dan pemicu sesi API (langkah 7, 19, 31, 32, 47, 64). Langkah 6, 46, dan 63 menunggu modal Column Mapping tertutup sesudah `[Confirm Mapping]` dan sebelum permintaan Import sesi API (K-16 dan bagian 8b butir 8), tanpa `Verifikasi`. Langkah 38 adalah `Verifikasi` anchor (Staging Table masih menampilkan baris lain) bagi langkah 39. Langkah 17 dan 29 adalah `Verifikasi` tambahan di luar Expected TC yang membuktikan prasyarat halaman basi (footer `[Import (248)]` Enabled; badge saran tampil sebelum pemicu). Langkah 8, 20, 33, 48, dan 65 (Tunggu aksi selesai: permintaan mendapat respons) mengikuti pemicu sesi API dan mendahului aksi UI pada halaman basi (bagian 8b butir 8, K-16).
 - Asersi `Logistik` dan `Store Supervisor` tidak ada di daftar didahului Verifikasi jumlah baris tabel (5 baris) sebagai anchor positif (butir 2 bagian 8b).
 - Temuan untuk QA:
   - TC-GS-IMPORT-705, 747, dan 860 hampir duplikat (Accept AI dari halaman basi saat `committing` ditolak dengan dialog Import In Progress); perbedaan hanya sumber data (brand-ai-commit.csv vs D-57) dan, pada TC-860, penegasan "bukan no-op diam" serta baris #5 yang dihapus pemicu.
   - TC-GS-IMPORT-860 menghapus baris #5 oleh Admin kedua sebelum Import sehingga Accept menargetkan baris yang sudah terhapus; TC menyatakan hasilnya 409 dengan dialog Import In Progress (gerbang `committing` mendahului pemeriksaan keberadaan baris).
   - TC-GS-IMPORT-705, 731, 732 tidak menyebut apakah draft Brand/User Login dengan 2 atau 3 baris `pending` cukup agar `[Import (N)]` tampil Enabled sebelum job dimulai; angka `[Import (2)]` dan `[Import (1)]` mengikuti Langkah TC.
   - Post Condition TC-GS-IMPORT-705, 731, 732 ("worker dilanjutkan dan Client E dipulihkan") tidak punya langkah observasi dan tidak diasersi (S-01); Post Condition TC-GS-IMPORT-747 ("job committing; draft tetap 250 baris") dan TC-GS-IMPORT-860 ("job `committing`; kontrol worker dan hasil commit direset") juga tidak diasersi.
+  - Penanda selesai untuk pemicu sesi API atau fixture tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati di surface aktor UI.

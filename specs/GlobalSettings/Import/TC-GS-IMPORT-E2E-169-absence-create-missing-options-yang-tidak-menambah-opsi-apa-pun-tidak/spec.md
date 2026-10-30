@@ -38,15 +38,17 @@ coverage:
 8. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout
 9. Verifikasi toast error: "Error, failed to create option."
 10. Buka Global Settings > User > Custom Field, lalu klik icon `[Changelog]`
-11. Verifikasi angka total Pagination Changelog Custom Field sama dengan baseline langkah 3 (tidak ada entri baru)
+11. Verifikasi modal Changelog Custom Field terbuka
+12. Verifikasi angka total Pagination Changelog Custom Field sama dengan baseline langkah 3 (tidak ada entri baru)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: asersi absence (g) dengan aksi nyata di spec ini (upload, Confirm Mapping, Create Missing Options) dan baseline sendiri, sehingga memenuhi S-05.
-- Spec singkat (11 langkah) sehingga tidak melewati sekitar 35 langkah.
-- Langkah penghubung (tanpa `Verifikasi`): reset (langkah 1), pembukaan halaman dan Sub-Tab, pencatatan baseline (langkah 3), dan menutup modal Changelog (langkah 4). Langkah 9 (toast error) menjadi anchor positif yang terhubung ke pemicu sebelum asersi absence entri pada langkah 11; surface yang diperiksa hanya Changelog Custom Field karena itu satu-satunya surface yang disebut TC.
+- Spec singkat (12 langkah) sehingga tidak melewati sekitar 35 langkah.
+- Langkah penghubung (tanpa `Verifikasi`): reset (langkah 1), pembukaan halaman dan Sub-Tab, pencatatan baseline (langkah 3), dan menutup modal Changelog (langkah 4). Langkah 9 (toast error) menjadi anchor positif yang terhubung ke pemicu sebelum asersi absence entri pada langkah 12. Langkah 11 (modal Changelog Custom Field terbuka) menjadi anchor positif pada surface yang sama sebelum asersi absence (D-15, K-5); surface yang diperiksa hanya Changelog Custom Field karena itu satu-satunya surface yang disebut TC.
 - Pembagian TC lintas spec: TC-GS-IMPORT-923 hanya ada di spec ini; Create Missing Options yang sukses (menambah opsi) dan pencatatan entri log Custom Field ada di spec lain (S4 dan S6).
 - Temuan untuk QA:
+  - TC-GS-IMPORT-923 tidak menyebut anchor modal Changelog sebelum asersi absence entri; langkah 11 menambahkan `Verifikasi` modal Changelog Custom Field terbuka sebagai anchor positif (baseline boleh 0).
   - TC-GS-IMPORT-923 mengasersi absence entri log hanya di Changelog Custom Field dan tidak menyebut System Log atau Activity Log; spec hanya memeriksa surface yang disebut TC (butir 2 bagian 8b: surface disebut satu per satu).
   - TC-GS-IMPORT-923 Expected a menyebut toast error "Error, failed to create option." sebagai akibat dua nama 121 karakter; penyebab kegagalan (nama melebihi 120 karakter) tidak dijelaskan di Expected.
   - Post Condition TC-GS-IMPORT-923 ("draft berisi 2 baris `error`; tidak ada opsi baru") tidak punya langkah observasi di TC dan tidak diasersi (S-01).

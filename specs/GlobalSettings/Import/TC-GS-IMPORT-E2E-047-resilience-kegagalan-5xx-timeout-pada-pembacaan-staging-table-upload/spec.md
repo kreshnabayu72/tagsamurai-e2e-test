@@ -57,73 +57,76 @@ coverage:
 14. Verifikasi toast error persisten: "Error, failed to upload file."
 15. Verifikasi Modal Column Mapping tidak terbuka
 16. Verifikasi halaman tetap menampilkan Dropzone tanpa draft
+17. Tutup toast "Error, failed to upload file."
 
 ### TC-GS-IMPORT-80: Kegagalan teknis saat Confirm Mapping menampilkan banner generik
 
-17. Catat jumlah notifikasi lonceng
-18. Aktifkan intercept network yang membuat permintaan Confirm Mapping gagal 500
-19. Klik [Upload File]
-20. Pilih berkas `brand-12.csv` di file picker
-21. Klik [Confirm Mapping]
-22. Hapus intercept network
-23. Verifikasi Error Banner generik di dalam modal berheader "Failed to process brand-12.csv. Please try uploading again."
-24. Verifikasi Error Banner tanpa rincian per-rule
-25. Verifikasi Error Banner tanpa link download
-26. Verifikasi dropdown mapping yang diisi tetap ada
-27. Verifikasi tidak ada baris parsial di Staging Table
-28. Verifikasi jumlah notifikasi lonceng sama dengan jumlah yang dicatat pada langkah 17
-29. Klik [Cancel] pada Modal Column Mapping
+18. Catat jumlah notifikasi lonceng
+19. Aktifkan intercept network yang membuat permintaan Confirm Mapping gagal 500
+20. Klik [Upload File]
+21. Pilih berkas `brand-12.csv` di file picker
+22. Klik [Confirm Mapping]
+23. Hapus intercept network
+24. Verifikasi Error Banner generik di dalam modal berheader "Failed to process brand-12.csv. Please try uploading again."
+25. Verifikasi Error Banner tanpa rincian per-rule
+26. Verifikasi Error Banner tanpa link download
+27. Verifikasi dropdown mapping yang diisi tetap ada
+28. Verifikasi tidak ada baris parsial di Staging Table
+29. Verifikasi jumlah notifikasi lonceng sama dengan jumlah yang dicatat pada langkah 18
+30. Klik [Cancel] pada Modal Column Mapping
 
 ### TC-GS-IMPORT-578: Timeout saat Confirm Mapping
 
-30. Klik [Upload File]
-31. Pilih berkas `brand-12.csv` di file picker
-32. Aktifkan intercept network yang menahan respons permintaan Confirm Mapping tanpa mengembalikan respons
-33. Klik [Confirm Mapping]
-34. Tunggu hingga batas waktu permintaan habis dan toast timeout tampil
-35. Hapus intercept network
-36. Verifikasi toast error persisten: "Connection problem. Please try again."
-37. Verifikasi toast tanpa tombol aksi
-38. Verifikasi Modal Column Mapping tetap terbuka dengan dropdown Brand Name `Brand Name`
-39. Verifikasi tombol `[Confirm Mapping]` Enabled
-40. Verifikasi tidak ada Error Banner kegagalan teknis
-41. Verifikasi halaman di balik modal tetap menampilkan Dropzone tanpa draft
-42. Klik [Cancel] pada Modal Column Mapping
+31. Klik [Upload File]
+32. Pilih berkas `brand-12.csv` di file picker
+33. Aktifkan intercept network yang menahan respons permintaan Confirm Mapping tanpa mengembalikan respons
+34. Klik [Confirm Mapping]
+35. Tunggu hingga batas waktu permintaan habis dan toast timeout tampil
+36. Hapus intercept network
+37. Verifikasi toast error persisten: "Connection problem. Please try again."
+38. Verifikasi toast tanpa tombol aksi
+39. Verifikasi Modal Column Mapping tetap terbuka dengan dropdown Brand Name `Brand Name`
+40. Verifikasi tombol `[Confirm Mapping]` Enabled
+41. Verifikasi tidak ada Error Banner kegagalan teknis
+42. Verifikasi halaman di balik modal tetap menampilkan Dropzone tanpa draft
+43. Tutup toast "Connection problem. Please try again."
+44. Klik [Cancel] pada Modal Column Mapping
 
 ### TC-GS-IMPORT-610: Timeout saat Upload File
 
-43. Aktifkan intercept network yang menahan respons permintaan upload tanpa mengembalikan respons
-44. Klik [Upload File]
-45. Pilih berkas `brand-12.csv` di file picker
-46. Tunggu hingga batas waktu permintaan habis dan toast timeout tampil
-47. Hapus intercept network
-48. Verifikasi toast error persisten: "Connection problem. Please try again."
-49. Verifikasi toast tanpa tombol aksi
-50. Verifikasi Modal Column Mapping tidak terbuka
-51. Verifikasi halaman tetap menampilkan Dropzone tanpa draft
-52. Klik [Upload File]
-53. Pilih berkas `brand-12.csv` di file picker
-54. Verifikasi Modal Column Mapping `Column Mapping: Brand` terbuka
-55. Klik [Cancel] pada Modal Column Mapping
+45. Aktifkan intercept network yang menahan respons permintaan upload tanpa mengembalikan respons
+46. Klik [Upload File]
+47. Pilih berkas `brand-12.csv` di file picker
+48. Tunggu hingga batas waktu permintaan habis dan toast timeout tampil
+49. Hapus intercept network
+50. Verifikasi toast error persisten: "Connection problem. Please try again."
+51. Verifikasi toast tanpa tombol aksi
+52. Verifikasi Modal Column Mapping tidak terbuka
+53. Verifikasi halaman tetap menampilkan Dropzone tanpa draft
+54. Tutup toast "Connection problem. Please try again."
+55. Klik [Upload File]
+56. Pilih berkas `brand-12.csv` di file picker
+57. Verifikasi Modal Column Mapping `Column Mapping: Brand` terbuka
+58. Klik [Cancel] pada Modal Column Mapping
 
 ### TC-GS-IMPORT-81: Retry Confirm Mapping setelah kegagalan teknis
 
-56. Aktifkan intercept network yang membuat permintaan Confirm Mapping gagal 500 satu kali
-57. Klik [Upload File]
-58. Pilih berkas `brand-12.csv` di file picker
-59. Klik [Confirm Mapping]
-60. Verifikasi Error Banner tampil di Modal Column Mapping dengan header "Failed to process brand-12.csv. Please try uploading again."
-61. Klik [Confirm Mapping] lagi
-62. Verifikasi toast sukses: "Success, row has been added."
-63. Verifikasi draft Brand terbentuk dengan 12 baris tanpa baris ganda (Total Rows 12)
+59. Aktifkan intercept network yang membuat permintaan Confirm Mapping gagal 500 satu kali
+60. Klik [Upload File]
+61. Pilih berkas `brand-12.csv` di file picker
+62. Klik [Confirm Mapping]
+63. Verifikasi Error Banner tampil di Modal Column Mapping dengan header "Failed to process brand-12.csv. Please try uploading again."
+64. Klik [Confirm Mapping] lagi
+65. Verifikasi toast sukses: "Success, row has been added."
+66. Verifikasi draft Brand terbentuk dengan 12 baris tanpa baris ganda (Total Rows 12)
 
 ## Notes
 
 - Mode: FE+BE (intercept parsial di atas backend nyata). Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fault injection / resilience (kelas b, prinsip 13b).
-- Spec memuat 63 langkah, di atas smell 35 langkah. Alasan: semua blok satu kelas harness (kegagalan 5xx dan timeout pada alur Upload dan Confirm Mapping), tiap blok berdiri sendiri dengan intercept dan kondisi awal sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec memuat 66 langkah, di atas smell 35 langkah. Alasan: semua blok satu kelas harness (kegagalan 5xx dan timeout pada alur Upload dan Confirm Mapping), tiap blok berdiri sendiri dengan intercept dan kondisi awal sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Urutan blok: TC-GS-IMPORT-81 di akhir karena membentuk draft Brand 12 baris; blok lain mensyaratkan Client C tanpa draft. TC-GS-IMPORT-18 di awal memakai akun default suite sehingga hook `before` tidak perlu mengganti akun.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 5, 13, 22, 35, 47 (melepas intercept segera setelah pemicu); langkah 9 (ganti akun); langkah 29, 42, 55 (menutup Modal Column Mapping dengan `[Cancel]` agar blok berikutnya mulai dari layar awal); langkah 34 dan 46 (menunggu batas waktu permintaan FE).
-- Pada TC-GS-IMPORT-80 dan 578, `Verifikasi` absence (langkah 27, 40, 41) memakai Error Banner atau toast hasil kegagalan sebagai anchor (respons gagal sudah diterima).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 5, 13, 23, 36, 49 (melepas intercept segera setelah pemicu); langkah 9 (ganti akun); langkah 30, 44, 58 (menutup Modal Column Mapping dengan `[Cancel]` agar blok berikutnya mulai dari layar awal); langkah 35 dan 48 (menunggu batas waktu permintaan FE); langkah 17, 43, 54 (menutup toast error persisten sebelum blok berikutnya, supaya asersi toast berikutnya tidak lulus dari toast basi; TC tidak menyebut penutupan toast).
+- Pada TC-GS-IMPORT-80 dan 578, `Verifikasi` absence (langkah 28, 41, 42) memakai Error Banner atau toast hasil kegagalan sebagai anchor (respons gagal sudah diterima).
 - Temuan untuk QA:
   - TC-GS-IMPORT-578 dan 610 menyebut "Tunggu hingga batas waktu permintaan habis" tanpa menyebut durasi batas waktu permintaan FE; spec menunggu sampai toast timeout tampil.
   - Post Condition TC-GS-IMPORT-81 ("Draft Brand 12 baris") setara dengan Expected c dan sudah diasersi.

@@ -77,19 +77,21 @@ coverage:
 31. Klik `[Upload File]`
 32. Pilih berkas `brand-12.csv` di file picker
 33. Klik `[Confirm Mapping]`
-34. Buka Global Settings > File Manager
-35. Perhatikan daftar berkas File Manager
-36. Verifikasi daftar File Manager tidak memuat `brand-12.csv`
-37. Verifikasi jumlah berkas File Manager sama dengan baseline langkah 29
+34. Tunggu aksi selesai (modal tertutup)
+35. Buka Global Settings > File Manager
+36. Perhatikan daftar berkas File Manager
+37. Verifikasi daftar File Manager tidak memuat `brand-12.csv`
+38. Verifikasi jumlah berkas File Manager sama dengan baseline langkah 29
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
-- Spec berisi 37 langkah, di atas 35 langkah. Alasan: lima TC (85, 86, 87, 88, 97) satu kelas (penyaringan berkas) dan tiap blok berdiri sendiri dengan pembuangan draft eksplisit sebelum TC berikutnya (S-09).
+- Spec berisi 38 langkah, di atas 35 langkah. Alasan: lima TC (85, 86, 87, 88, 97) satu kelas (penyaringan berkas) dan tiap blok berdiri sendiri dengan pembuangan draft eksplisit sebelum TC berikutnya (S-09).
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 85, 86, 87 (modal ditutup bersih tanpa draft), lalu 88 dan 97 (membuat draft). Draft dari TC-GS-IMPORT-88 dibuang pada langkah 27 sebelum TC-GS-IMPORT-97 yang mensyaratkan Client C tanpa draft (S-09); draft TC-GS-IMPORT-97 dibuang hook `after`.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 3, 9, 15, 21, 24, 29, 35 (mengamati sesuai Langkah Uji TC), langkah 6, 12, 18 (menutup modal bersih dengan `[Cancel]`; TC tidak menyebut cara menutup modal), langkah 27 (reset), langkah 28 dan 34 (buka File Manager), langkah 30 (buka menu Import). Langkah 29 mencatat baseline jumlah berkas sebelum Upload (S-12).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 3, 9, 15, 21, 24, 29, 36 (mengamati sesuai Langkah Uji TC), langkah 6, 12, 18 (menutup modal bersih dengan `[Cancel]`; TC tidak menyebut cara menutup modal), langkah 27 (reset), langkah 28 dan 35 (buka File Manager), langkah 30 (buka menu Import), langkah 34 (menunggu modal tertutup sebelum pindah ke File Manager; penanda tidak ada di TC). Langkah 29 mencatat baseline jumlah berkas sebelum Upload (S-12).
 - Temuan untuk QA:
   - TC-GS-IMPORT-85, 86, 87 tidak menyebut cara menutup Modal Column Mapping; spec menutup lewat `[Cancel]`.
   - TC-GS-IMPORT-97 Precondition d ("daftar berkas File Manager Client C tidak berisi `brand-12.csv`") disediakan lewat Pre-setup File Manager Client C yang tidak ada di Tabel Pre-setup TC; disediakan tim FE.
+  - Penanda "modal tertutup" pada langkah 34 tidak ditulis di TC-GS-IMPORT-97; spec memakai penanda aman agar permintaan Confirm Mapping selesai sebelum pindah ke File Manager.
   - Skrip reset draft Client C tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE (S-13).

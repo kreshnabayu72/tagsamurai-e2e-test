@@ -73,7 +73,7 @@ coverage:
 30. Tekan `F5` pada halaman Import > User Login
 31. Verifikasi Staging Metric Cards: Ready to Import 8, Errors 0
 32. Verifikasi header tidak memuat kolom Shift Notes
-33. Verifikasi tidak ada Banner Custom Field (tidak ada nilai tersimpan)
+33. Verifikasi tidak ada Banner Custom Field
 34. Admin kedua Client A (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan
 35. Tekan `F5` pada halaman Import > User Login
 36. Verifikasi hanya satu banner yang tampil, yaitu untuk Shift
@@ -120,6 +120,7 @@ coverage:
 - Langkah 14, 28, 41, 54, dan 63 adalah langkah pemulihan tanpa `Verifikasi` (S-09); hook `after` adalah cadangan.
 - Langkah 31 (Staging Metric Cards) dan langkah 39 (Breadcrumb `Import > Brand`) adalah anchor positif untuk asersi absence berikutnya (langkah 32 dan 33; langkah 40) (bagian 8b butir 2, S-03).
 - TC-GS-IMPORT-961 dan 962 menghapus Custom Field `Overtime Hours` dan diletakkan paling akhir.
+- Langkah 33 hanya mengasersi tidak adanya banner; sebab (Shift Notes tidak punya nilai tersimpan pada draft D-05) tidak diasersi karena tidak teramati di UI.
 - Temuan untuk QA:
   - TC-GS-IMPORT-962 Precondition d mensyaratkan Total Control membuka Import > User Login tanpa memuat ulang sampai `F5` pada langkah 3; hook `beforeEach` membuka halaman itu sebelum langkah 55, dan `F5` pada langkah 57 adalah pemuatan pertama sesudah rename dan hapus.
   - TC tidak menyebut password per akun; tiap akun memakai env `<APP>_<ROLE>_PASSWORD` yang tercantum di Prerequisites (satu env hanya satu akun, S-11); env yang belum terdaftar didaftarkan di `spectra.config.ts` dan `.env.example` pada tahap script.

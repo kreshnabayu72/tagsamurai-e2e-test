@@ -19,9 +19,9 @@ coverage:
 - Environment variable: `GS_CLIENTLARGE_TC_PASSWORD`.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader dengan Search dan Filter kosong.
 - Data: Client Large memiliki lebih dari 5.000 reader (Tabel Data Uji Pre-setup TC; ukuran data disediakan tim FE). Spec hanya membaca daftar dan tidak mengubah data.
-- Kemampuan teknis: menangkap berkas unduhan browser ke direktori bersih supaya nama berkas tidak tertimpa; menahan dan melepas respons permintaan unduh lewat intercept jaringan hanya untuk mengamati state loading screen (bukan kegagalan; intercept dilepas pada langkah 7 dan tidak ada respons yang dipaksa error); membaca daftar notifikasi in-app milik akun aktor (jumlah) dan membaca keberadaan job latar belakang untuk unduhan, disediakan tim FE/BE tanpa endpoint yang dikarang (lihat Temuan untuk QA).
+- Kemampuan teknis: menangkap berkas unduhan browser ke direktori bersih supaya nama berkas tidak tertimpa; menahan dan melepas respons permintaan unduh lewat intercept jaringan hanya untuk mengamati state loading screen (bukan kegagalan; intercept dilepas pada langkah 6 dan tidak ada respons yang dipaksa error). Jumlah notifikasi in-app dibaca dari Notification Center, toast dan indikator job latar belakang diamati pada halaman.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-handheld-reader`: diatur hook suite (lihat `suite.md`, bagian Hook suite) untuk akun Client Large; spec ini tidak mengatur flag sendiri.
-- State yang diubah dan dipulihkan: tidak ada state yang diubah selain intercept (dilepas pada langkah 7; hook `after` melepasnya sebagai cadangan).
+- State yang diubah dan dipulihkan: tidak ada state yang diubah selain intercept (dilepas pada langkah 6; hook `after` melepasnya sebagai cadangan).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -32,23 +32,24 @@ coverage:
 2. Tahan respons permintaan unduh (intercept) supaya loading screen dapat diamati
 3. Klik ikon Download
 4. Klik `Download as CSV`
-5. Verifikasi loading screen tampil
-6. Verifikasi tidak ada toast
-7. Lepas tahanan respons permintaan unduh
-8. Verifikasi file `Handheld-Reader-List.csv` langsung terunduh
-9. Verifikasi jumlah notifikasi in-app sama dengan baseline (tidak ada notifikasi baru)
-10. Verifikasi tidak ada job latar belakang yang dibuat untuk unduhan ini
+5. Verifikasi loading screen tampil selama respons ditahan
+6. Lepas tahanan respons permintaan unduh
+7. Verifikasi file `Handheld-Reader-List.csv` langsung terunduh
+8. Verifikasi tidak ada toast
+9. Verifikasi tidak ada toast informasional `Preparing…`
+10. Verifikasi tidak ada indikator job latar belakang pada halaman
+11. Buka Notification Center
+12. Verifikasi jumlah notifikasi in-app sama dengan baseline (tidak ada notifikasi baru)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`, section 4a-6. Kelas volume data khusus (prinsip 13e): Client Large (lebih dari 5.000 reader) dipisah dari Download biasa (spec 057).
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Spec hanya memuat satu TC.
-- Langkah penghubung (aksi tanpa `Verifikasi`): mencatat baseline jumlah notifikasi (langkah 1); menahan dan melepas respons unduh (langkah 2 dan 7). Menahan respons hanya untuk mengamati loading screen dan bukan fault injection (prinsip 13b).
-- Asersi absence atas state sementara (toast) diletakkan segera sesudah klik pilihan format dan sebelum asersi berkas; klik pilihan format dan loading screen yang tampil menjadi anchor positif yang buktinya menyusul pada `Verifikasi` berkas terunduh.
+- Langkah penghubung (aksi tanpa `Verifikasi`): mencatat baseline jumlah notifikasi (langkah 1); menahan dan melepas respons unduh (langkah 2 dan 6); membuka Notification Center (langkah 11). Menahan respons hanya untuk mengamati loading screen dan bukan fault injection (prinsip 13b).
+- Respons unduh ditahan selama loading screen diamati, sehingga toast hasil belum dapat muncul. Asersi absence (toast, toast `Preparing…`, indikator job latar belakang) ditulis sesudah langkah "Lepas tahanan respons" dan sesudah `Verifikasi` berkas terunduh (langkah 7), yang menjadi anchor positif bahwa respons sudah diproses (konvensi bagian 8b butir 11, pengecualian respons ditahan).
 - Pembagian TC lintas spec: Download biasa (TC-GS-HHR-306 sampai 311, 313) di spec 057; isi berkas (TC-GS-HHR-312, 314) di spec 058; kegagalan Download (TC-GS-HHR-315) di spec 028.
 - Temuan untuk QA:
   - TC-GS-HHR-316: email akun Client Large tidak tertulis di Pre-setup TC (hanya pola `totalControl_automated_{namaClient}@qwertysystem.net`) dan env var passwordnya belum terdaftar; spec memakai `GS_CLIENTLARGE_TC_PASSWORD` (env baru).
-  - TC-GS-HHR-316: Expected a ("Loading screen tampil sampai berkas siap") tidak menyebut cara mengamatinya bila unduhan selesai terlalu cepat; spec menahan respons unduh lewat intercept hanya untuk mengamati loading screen. TC tidak menyebut endpoint unduh, sehingga target intercept disediakan tim FE.
-  - TC-GS-HHR-316: Expected b ("tidak ada job latar belakang, tidak ada notifikasi, dan tidak ada toast") tidak menyebut cara memeriksa job latar belakang dan notifikasi; spec memakai baseline jumlah notifikasi in-app dan kemampuan "disediakan tim FE/BE" untuk job latar belakang tanpa mengarang endpoint.
+  - TC-GS-HHR-316: Langkah 2 ("Aktifkan penundaan respons pada request unduhan") tidak menyebut endpoint unduh; target intercept disediakan tim FE.
   - TC-GS-HHR-316: Expected tidak menyebut isi atau jumlah baris berkas; spec tidak mengasersi isi berkas (isi berkas diuji di spec 058 pada Client A).
   - Post Condition TC-GS-HHR-316 `-`; tidak ada yang diasersi.

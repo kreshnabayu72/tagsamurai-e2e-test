@@ -44,7 +44,7 @@ coverage:
 8. Klik [Apply]
 9. Verifikasi Title `No results found`
 10. Verifikasi Description `Try adjusting your search or filter.`
-11. Klik Filter, klik `[Clear Field]`, klik `[Apply]`
+11. Klik `[Clear Field]`, klik `[Apply]`
 
 ### TC-GS-UOM-175: Empty state Modal Changelog saat Search tidak menemukan hasil
 
@@ -83,3 +83,4 @@ coverage:
 - Pada TC-GS-UOM-10, absence tombol CTA tambahan (langkah 23) memakai Title dan Description empty state (langkah 21 dan 22) sebagai anchor positif pada surface yang sama.
 - Spec memakai dua entity (Client A lalu Client C) dengan Step ganti akun eksplisit; bagian Client C tetap bermakna walau bagian Client A gagal.
 - Temuan untuk QA: TC-GS-UOM-175 tidak menyebut precondition bahwa Changelog Client A berisi entri; tanpa entri, pencarian `zzqx` akan menampilkan `No changelog yet` dan bukan `No results found`. Spec mencatat kebutuhan itu di Prerequisites.
+- Temuan untuk QA: langkah 11 tidak membuka ulang Filter Panel karena spec mengasumsikan panel tetap terbuka sesudah `[Apply]` pada langkah 8; TC-GS-UOM-12 tidak menyebut keadaan panel sesudah Apply. Asumsi kerja ini belum diamati di aplikasi: prd-conventions §9.8 hanya menyebut penutupan panel lewat klik luar panel atau klik ulang icon Filter dan tidak menyatakan keadaan panel sesudah `[Apply]`. Spec 037, 038, 039, dan 045 memakai asumsi yang sama. Bila aplikasi menutup panel sesudah `[Apply]`, langkah 11 perlu diawali `Klik Filter`.

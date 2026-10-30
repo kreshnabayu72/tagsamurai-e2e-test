@@ -84,49 +84,53 @@ coverage:
 
 34. Total Control Client C: klik `[Upload File]` di toolbar dan pilih `user-login-shift-lembur.csv` (D-79)
 35. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-36. Admin kedua Client C (sesi API) menambahkan opsi `Lembur` ke Custom Field `Shift` hingga tersimpan
-37. Total Control Client C: tekan `F5` pada halaman Import
-38. Verifikasi baris #1 dan #2 (Shift `Lembur` dan `lembur `) pulih ke `pending`
-39. Verifikasi baris #3 (Shift `Siang`) tetap `pending`
-40. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 3, Errors 0
-41. Verifikasi Error Summary Callout tidak tampil
-42. Pulihkan: Admin kedua menghapus opsi `Lembur` dari `Shift`, buang draft Tab User Login Client C lewat skrip reset, muat ulang halaman
+36. Tunggu aksi selesai (permintaan mendapat respons)
+37. Admin kedua Client C (sesi API) menambahkan opsi `Lembur` ke Custom Field `Shift` hingga tersimpan
+38. Total Control Client C: tekan `F5` pada halaman Import
+39. Verifikasi baris #1 dan #2 (Shift `Lembur` dan `lembur `) pulih ke `pending`
+40. Verifikasi baris #3 (Shift `Siang`) tetap `pending`
+41. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 3, Errors 0
+42. Verifikasi Error Summary Callout tidak tampil
+43. Pulihkan: Admin kedua menghapus opsi `Lembur` dari `Shift`, buang draft Tab User Login Client C lewat skrip reset, muat ulang halaman
 
 ### Custom Field Deactivated, opsi tidak valid (TC-GS-IMPORT-963)
 
-43. Total Control Client C: klik `[Upload File]` di toolbar dan pilih `user-login-shift-lembur.csv` (D-79)
-44. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
-45. Admin kedua Client C (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan
-46. Total Control Client C: muat ulang halaman Import > User Login
-47. Verifikasi sel Shift baris #1 dan #2 menampilkan `Lembur`
-48. Verifikasi baris #1 dan #2 berstatus `error`
-49. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "2 rows"
-50. Verifikasi Error Summary Callout tanpa tombol `[Create Missing Options]`
-51. Klik `⋯` pada baris #1
-52. Verifikasi menu `⋯` baris #1 tidak memuat `[Create Missing Options]`
-53. Pilih Edit, pilih `Pagi` pada sel Shift baris #1, klik `[Save]`
-54. Verifikasi muncul toast sukses: "Success, row has been updated."
-55. Verifikasi baris #1 berstatus `pending`
-56. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "1 row"
-57. Verifikasi Error Summary Callout tanpa tombol `[Create Missing Options]`
-58. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 2, Errors 1
-59. Klik `⋯` pada baris #2 lalu Edit, kosongkan sel Shift baris #2 (hapus pilihan pada Select), klik `[Save]`
-60. Verifikasi muncul toast sukses: "Success, row has been updated." walau sel Shift baris #2 kosong
-61. Verifikasi baris #2 berstatus `pending` tanpa border `danger`
-62. Verifikasi Error Summary Callout tidak tampil
-63. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 3, Errors 0
-64. Pulihkan: Admin kedua mengaktifkan kembali `Shift`, buang draft Tab User Login Client C lewat skrip reset
+44. Total Control Client C: klik `[Upload File]` di toolbar dan pilih `user-login-shift-lembur.csv` (D-79)
+45. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
+46. Tunggu aksi selesai (permintaan mendapat respons)
+47. Admin kedua Client C (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan
+48. Total Control Client C: muat ulang halaman Import > User Login
+49. Verifikasi sel Shift baris #1 dan #2 menampilkan `Lembur`
+50. Verifikasi baris #1 dan #2 berstatus `error`
+51. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "2 rows"
+52. Verifikasi Error Summary Callout tanpa tombol `[Create Missing Options]`
+53. Klik `⋯` pada baris #1
+54. Verifikasi menu `⋯` baris #1 tidak memuat `[Create Missing Options]`
+55. Pilih Edit, pilih `Pagi` pada sel Shift baris #1, klik `[Save]`
+56. Verifikasi muncul toast sukses: "Success, row has been updated."
+57. Verifikasi baris #1 berstatus `pending`
+58. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "1 row"
+59. Verifikasi Error Summary Callout tanpa tombol `[Create Missing Options]`
+60. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 2, Errors 1
+61. Klik `⋯` pada baris #2 lalu Edit, kosongkan sel Shift baris #2 (hapus pilihan pada Select), klik `[Save]`
+62. Verifikasi muncul toast sukses: "Success, row has been updated." walau sel Shift baris #2 kosong
+63. Verifikasi baris #2 berstatus `pending` tanpa border `danger`
+64. Verifikasi Error Summary Callout tidak tampil
+65. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 3, Errors 0
+66. Pulihkan: Admin kedua mengaktifkan kembali `Shift`, buang draft Tab User Login Client C lewat skrip reset
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Panjang spec: 64 langkah, di atas 35 langkah. Alasan: lima blok berpola sama (upload UI, mutasi Custom Field Client C lewat sesi API, F5, baca Staging Table) pada satu client dan satu akun; tiap blok berdiri sendiri dan dipulihkan eksplisit (langkah 8, 23, 33, 42, 64).
+- Panjang spec: 66 langkah, di atas 35 langkah. Alasan: lima blok berpola sama (upload UI, mutasi Custom Field Client C lewat sesi API, F5, baca Staging Table) pada satu client dan satu akun; tiap blok berdiri sendiri dan dipulihkan eksplisit (langkah 8, 23, 33, 43, 66).
 - P-2: Admin kedua hanya memicu perubahan Custom Field lewat sesi API; hasil diasersi hanya di sesi admin pertama.
-- Langkah 8, 23, 33, 42, dan 64 adalah langkah pemulihan tanpa `Verifikasi` (S-09); hook `after` adalah cadangan. Langkah 24 dan 33 adalah pemindahan Sub-Tab (penghubung, S-03).
-- Judul TC-GS-IMPORT-963 menyebut "Create Missing Options" sebagai tombol yang tidak ada; langkah 50, 52, dan 57 mengasersi ketiadaannya (anchor positif: Error Summary Callout dan menu `⋯` tampil lebih dulu).
+- Langkah 8, 23, 33, 43, dan 66 adalah langkah pemulihan tanpa `Verifikasi` (S-09); hook `after` adalah cadangan. Langkah 24 dan 33 adalah pemindahan Sub-Tab (penghubung, S-03).
+- Langkah 36 dan 46 adalah "Tunggu aksi selesai" (langkah penghubung tanpa `Verifikasi`, bagian 8b butir 8) sebelum Admin kedua mengubah Custom Field lewat sesi API.
+- Judul TC-GS-IMPORT-963 menyebut "Create Missing Options" sebagai tombol yang tidak ada; langkah 52, 54, dan 59 mengasersi ketiadaannya (anchor positif: Error Summary Callout dan menu `⋯` tampil lebih dulu).
 - Temuan untuk QA:
   - TC-GS-IMPORT-519 Expected c menyebut Number berisi `081234567`, sedangkan langkah 6 mengganti isi dengan `812345678`; tidak jelas mana nilai berkas dan mana nilai tampil (kemungkinan salah ketik; lihat Data Uji TC). Spec mengasersi `081234567` sesuai Expected dan mengetik `812345678` sesuai langkah.
   - TC-GS-IMPORT-934 dan 963 Langkah 3 menulis "lewat fixture permintaan" untuk Admin kedua; spec memakai sesi API Admin kedua (kemampuan disediakan tim FE/BE).
   - TC-GS-IMPORT-513, 519, 521 Data Uji menulis "Email unik"; spec memakai suffix per run.
   - TC tidak menyebut password per akun; tiap akun memakai env `<APP>_<ROLE>_PASSWORD` yang tercantum di Prerequisites (satu env hanya satu akun, S-11); env yang belum terdaftar didaftarkan di `spectra.config.ts` dan `.env.example` pada tahap script.
+  - Penanda selesai untuk langkah 35 dan 45 (`[Confirm Mapping]`) tidak disebut di TC, PRD, atau spec ini; langkah "Tunggu aksi selesai" (langkah 36 dan 46) memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.
