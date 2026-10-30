@@ -46,18 +46,18 @@ Keputusan rencana (disetujui user): D-1 opsi B (klausa absence log memakai basel
 | TC-GS-FILEMGR-E2E-034-kombinasi-search-filter-sort-dan-pemulihan-empty-state | Kombinasi Search, Filter, dan Sort Tabel Utama: Irisan, Independensi Clear, Reset Halaman, dan Pemulihan Empty State | FE+BE | 65 | 129, 130, 131, 132, 133, 140, 141 |
 | TC-GS-FILEMGR-E2E-035-sort-tabel-utama | Sort Tabel Utama: Siklus 3 Tahap, Nama Lengkap, Nilai Byte, Perpindahan Kolom, dan Tie-Breaker | FE+BE | 59 | 143, 144, 145, 146, 147, 148 |
 | TC-GS-FILEMGR-E2E-036-pagination-dan-retensi-state-tabel-utama | Pagination Tabel Utama dan Retensi State setelah Refresh, Tab Baru, dan Logout | FE+BE | 47 | 150, 151, 152, 154, 155 |
-| TC-GS-FILEMGR-E2E-037-lintas-surface-search-tanggal-visibilitas-filter-dan-ikon-sort | Lintas Tiga Surface: Search Kolom Tanggal, Search Terikat Visibilitas Kolom, Filter Tanpa Apply, Search Dropdown Filter, dan Ikon Sort | FE+BE | 77 | 118, 121, 134, 139, 149 |
+| TC-GS-FILEMGR-E2E-037-lintas-surface-search-tanggal-visibilitas-filter-dan-ikon-sort | Lintas Tiga Surface: Search Kolom Tanggal, Search Terikat Visibilitas Kolom, Filter Tanpa Apply, Search Dropdown Filter, dan Ikon Sort | FE+BE | 78 | 118, 121, 134, 139, 149 |
 | TC-GS-FILEMGR-E2E-038-screening-recycle-bin-urutan-default-dan-tutup | Screening Modal Recycle Bin: Layout, Urutan Default, Tutup Modal, dan Tooltip | FE+BE | 34 | 16, 18, 26, 27 |
 | TC-GS-FILEMGR-E2E-039-search-recycle-bin | Search Modal Recycle Bin: Siklus Toolbar, Substring Kolom, dan Size | FE+BE | 34 | 24, 201, 202, 203 |
 | TC-GS-FILEMGR-E2E-040-filter-recycle-bin-panel-opsi-rentang-dan-logika | Filter Modal Recycle Bin: Panel, Opsi Dropdown, OR, Rentang Size, Rentang Deleted Date, dan AND | FE+BE | 38 | 204, 205, 206, 207, 208, 209 |
 | TC-GS-FILEMGR-E2E-041-kombinasi-search-filter-recycle-bin | Kombinasi Search dan Filter Modal Recycle Bin: Irisan Simetris dan Independensi Clear | FE+BE | 27 | 210, 211, 212 |
 | TC-GS-FILEMGR-E2E-042-sort-recycle-bin | Sort Modal Recycle Bin: File Name, File Format, Nama Lengkap, Size, Deleted Date, dan Auto-Purge In | FE+BE | 33 | 213, 214, 215, 216, 217 |
-| TC-GS-FILEMGR-E2E-043-pagination-dan-buka-ulang-recycle-bin-dan-changelog | Pagination dan Reset ke Default Saat Dibuka Ulang pada Modal Recycle Bin dan Changelog | FE+BE | 36 | 218, 219 |
-| TC-GS-FILEMGR-E2E-044-screening-changelog-format-sel-dan-tutup | Screening Modal Changelog: Layout, Format Sel Modified By dan Action, Tooltip, dan Tutup Modal | FE+BE | 30 | 28, 29, 33, 174 |
-| TC-GS-FILEMGR-E2E-045-search-changelog | Search Modal Changelog: Siklus Toolbar, Substring Seluruh Kolom, dan Empty Hasil | FE+BE | 34 | 31, 156, 157 |
+| TC-GS-FILEMGR-E2E-043-pagination-dan-buka-ulang-recycle-bin-dan-changelog | Pagination dan Reset ke Default Saat Dibuka Ulang pada Modal Recycle Bin dan Changelog | FE+BE | 38 | 218, 219 |
+| TC-GS-FILEMGR-E2E-044-screening-changelog-format-sel-dan-tutup | Screening Modal Changelog: Layout, Format Sel Modified By dan Action, Tooltip, dan Tutup Modal | FE+BE | 31 | 28, 29, 33, 174 |
+| TC-GS-FILEMGR-E2E-045-search-changelog | Search Modal Changelog: Siklus Toolbar, Substring Seluruh Kolom, dan Empty Hasil | FE+BE | 35 | 31, 156, 157 |
 | TC-GS-FILEMGR-E2E-046-filter-changelog-panel-opsi-dan-nilai | Filter Modal Changelog: Panel, Tanpa Field Field, Opsi Dropdown, Multi-Select, Rentang Date, dan AND | FE+BE | 48 | 158, 159, 160, 161, 162, 163, 266 |
 | TC-GS-FILEMGR-E2E-047-kombinasi-search-filter-changelog | Kombinasi Search dan Filter Modal Changelog: Irisan, Independensi Clear, dan Pemulihan Empty State | FE+BE | 33 | 164, 165, 166, 167 |
-| TC-GS-FILEMGR-E2E-048-sort-changelog | Sort Modal Changelog: Date, Action, File Name, Old Value, Modified By, dan Kolom Bernilai Sama | FE+BE | 31 | 168, 169, 170, 171 |
+| TC-GS-FILEMGR-E2E-048-sort-changelog | Sort Modal Changelog: Date, Action, File Name, Old Value, Modified By, dan Kolom Bernilai Sama | FE+BE | 32 | 168, 169, 170, 171 |
 | TC-GS-FILEMGR-E2E-049-setup-column-screening-tutup-dan-guard-tiga-surface | Setup Column Tiga Surface: Screening Overlay dan Popup, Tutup Tanpa Save, dan Guard Kolom Terakhir | mock | 52 | 175, 176, 177, 178, 179, 180, 186, 187 |
 | TC-GS-FILEMGR-E2E-050-setup-column-hide-reorder-isolasi-dan-persistensi | Setup Column Tiga Surface: Hide, Reorder, Isolasi Antar Tabel, dan Persistensi setelah Refresh dan Logout | FE+BE | 42 | 181, 182, 188, 189 |
 | TC-GS-FILEMGR-E2E-051-setup-column-pin-dan-reset | Setup Column Tiga Surface: Pin, Unpin, Batas Tiga Pin, dan Reset to Default | mock | 42 | 183, 184, 185 |
@@ -124,9 +124,9 @@ TC hanya-BE: tidak ada.
 | TC-GS-FILEMGR-E2E-034-kombinasi-search-filter-sort-dan-pemulihan-empty-state | 65 |
 | TC-GS-FILEMGR-E2E-035-sort-tabel-utama | 59 |
 | TC-GS-FILEMGR-E2E-036-pagination-dan-retensi-state-tabel-utama | 47 |
-| TC-GS-FILEMGR-E2E-037-lintas-surface-search-tanggal-visibilitas-filter-dan-ikon-sort | 77 |
+| TC-GS-FILEMGR-E2E-037-lintas-surface-search-tanggal-visibilitas-filter-dan-ikon-sort | 78 |
 | TC-GS-FILEMGR-E2E-040-filter-recycle-bin-panel-opsi-rentang-dan-logika | 38 |
-| TC-GS-FILEMGR-E2E-043-pagination-dan-buka-ulang-recycle-bin-dan-changelog | 36 |
+| TC-GS-FILEMGR-E2E-043-pagination-dan-buka-ulang-recycle-bin-dan-changelog | 38 |
 | TC-GS-FILEMGR-E2E-046-filter-changelog-panel-opsi-dan-nilai | 48 |
 | TC-GS-FILEMGR-E2E-049-setup-column-screening-tutup-dan-guard-tiga-surface | 52 |
 | TC-GS-FILEMGR-E2E-050-setup-column-hide-reorder-isolasi-dan-persistensi | 42 |

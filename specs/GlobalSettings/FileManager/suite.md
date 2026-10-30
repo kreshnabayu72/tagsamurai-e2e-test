@@ -10,7 +10,7 @@ parallel: false
 
 Suite ini mencakup halaman File Manager pada Global Settings: tabel utama File Manager (isi sel, Search, Filter, Sort, Pagination, Setup Column, Download CSV/XLSX), modal Recycle Bin dan modal Changelog, aksi Delete (single dan Bulk Delete), Permanently Delete (single dan bulk), Open File dan Download File di web, File Preview mobile (Android), kartu Storage Usage, pengaturan Lifecycle Settings (retensi, Selection Limit), auto-transition foto profil, auto-purge dan cascade purge, pencatatan log di tiga surface, Role Matrix per capability Manage files, state tenant (Suspended/Expired, plan tier), Guided Tooltip, ketahanan terhadap kegagalan server, serta request langsung dan isolasi Client.
 
-`parallel: false` karena spec mengubah state global dan menghapus data. Setiap spec tetap men-seed dan membersihkan datanya sendiri lewat hook (seed idempotent per hook `before`) dan tidak bergantung pada hasil spec lain. Hitungan baris tetap ("33 records", 16 baris Recycle Bin, 14 entri Changelog) hanya valid bila suite berjalan serial dan dataset di-seed ulang per spec. Spec yang menghapus data (Delete, Bulk Delete, Permanently Delete, cascade purge) sebaiknya berjalan sesudah spec baca-saja bila runner mengikuti nomor spec; urutan itu belum terbukti.
+`parallel: false` karena spec mengubah state global dan menghapus data. Setiap spec tetap men-seed dan membersihkan datanya sendiri lewat hook (seed idempotent per hook `before`) dan tidak bergantung pada hasil spec lain. Hitungan baris tetap ("33 records", 16 baris Recycle Bin) hanya valid bila suite berjalan serial dan dataset di-seed ulang per spec. Changelog tidak dapat di-seed ulang atau dibersihkan (audit trail permanen, tiap spec menambah entri), sehingga hitungan entri Changelog tidak diasersi sebagai total absolut (S-12): spec membatasi dengan Filter Date rentang Tabel A4 (`23/08/26` sampai `14/09/26`) atau memakai baseline sebelum dan sesudah aksi. Spec yang menghapus data (Delete, Bulk Delete, Permanently Delete, cascade purge) sebaiknya berjalan sesudah spec baca-saja bila runner mengikuti nomor spec; urutan itu belum terbukti.
 
 ## Hook Guided Tooltip
 
@@ -30,7 +30,7 @@ Hook `before` suite menyetel flag `guided_tooltip_seen_gs-file-manager` menjadi 
 
 Mekanisme dan endpoint tidak disebut di TC, PRD, maupun LLD yang dibaca tahap ini; spec menulisnya sebagai kemampuan dan tahap script wajib melengkapinya dari `openapi.yaml`.
 
-- Seed 33 file aktif, Recycle Bin (16 baris), dan Changelog (14 entri) secara idempotent di hook `before` tiap spec.
+- Seed 33 file aktif, Recycle Bin (16 baris), dan Changelog (14 entri Tabel A4 dengan tanggal tetap; entri baru dari spec lain tetap menumpuk dan tidak dibersihkan) secara idempotent di hook `before` tiap spec.
 - Pemicu job auto-purge dan cascade purge, serta job dijeda atau jam dibekukan di environment e2e.
 - Penyimpanan file tidak terjangkau (kegagalan soft-delete/storage), laporan Storage per app dan kuota, client uji tanpa data.
 - Ubah Lifecycle Settings, format tanggal General Settings, status Client, tier plan, dan capability role lewat sesi API.
