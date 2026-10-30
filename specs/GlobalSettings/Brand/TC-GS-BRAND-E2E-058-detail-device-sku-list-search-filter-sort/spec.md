@@ -11,6 +11,7 @@ sourceTc:
   - TC-GS-BRAND-255
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Brand Detail Principal: Search, Filter Category, dan Sort Accordion Device SKU List

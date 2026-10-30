@@ -106,7 +106,7 @@ coverage:
 53. Klik icon Search, ketik "e", tekan Enter
 54. Buka panel Filter
 55. Centang `John Doe` pada `Published By`
-56. Klik di luar panel (tanpa Apply)
+56. Klik ulang icon Filter untuk menutup panel (tanpa Apply)
 57. Buka panel Filter lagi
 58. Verifikasi field `Published By` kosong dengan placeholder "All users" (draft tanpa Apply dibuang)
 59. Verifikasi tabel tetap menampilkan 3 baris hasil Search `e`

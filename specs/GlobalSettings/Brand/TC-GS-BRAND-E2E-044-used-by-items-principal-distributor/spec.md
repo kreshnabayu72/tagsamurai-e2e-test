@@ -8,6 +8,7 @@ sourceTc:
   - TC-GS-BRAND-272
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Used By (Items) Sama dengan Total Item di Detail pada Instance Principal dan Distributor

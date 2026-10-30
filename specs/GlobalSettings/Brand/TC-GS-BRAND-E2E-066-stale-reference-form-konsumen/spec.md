@@ -10,6 +10,7 @@ sourceTc:
   - TC-GS-BRAND-257
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Stale Reference: Submit Form Konsumen dengan Brand yang Baru Dihapus Admin Lain

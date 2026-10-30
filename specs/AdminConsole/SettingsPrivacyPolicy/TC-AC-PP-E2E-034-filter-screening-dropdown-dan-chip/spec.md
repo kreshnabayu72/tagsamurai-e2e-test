@@ -56,7 +56,7 @@ coverage:
 18. Klik field `Published By`
 19. Centang `John Doe` dan `Jane Smith`
 20. Tutup dropdown
-21. Verifikasi dua chip `John Doe` dan `Jane Smith` tampil di dalam field `Published By`
+21. Verifikasi field `Published By` menampilkan chip `John Doe` dan ringkasan `+1 more` (dua opsi terpilih; chip tampil sebanyak yang muat pada lebar field, sisanya diringkas)
 22. Klik (X) pada chip `John Doe`
 23. Verifikasi chip `John Doe` hilang
 24. Verifikasi chip `Jane Smith` tetap ada
@@ -73,13 +73,14 @@ coverage:
 32. Verifikasi chip `Jane Smith` hilang dari field `Published By`
 33. Verifikasi chip `John Doe` tetap ada
 34. Verifikasi checkbox `John Doe` tetap tercentang
-35. Tutup dropdown, klik `[Clear Field]` untuk mengosongkan field, lalu tutup panel Filter dengan klik di luar panel (tanpa Apply)
+35. Tutup dropdown, klik `[Clear Field]` untuk mengosongkan field, lalu tutup panel Filter dengan klik ulang icon Filter (tanpa Apply)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-privacy-policy/TestCases/tc-settings-privacy-policy.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Langkah penghubung (tanpa awalan Verifikasi): langkah membersihkan kotak search dropdown dan menutup dropdown di akhir blok TC-AC-PP-108; langkah `[Clear Field]` tanpa Apply di akhir blok TC-AC-PP-109 dan 110 agar draft panel tidak terbawa ke TC berikutnya (panel tetap terbuka antar TC sesuai precondition TC-AC-PP-108 sampai 110 "panel Filter terbuka"); langkah menutup dropdown setelah memilih opsi di blok TC-AC-PP-109.
+- TC-AC-PP-109 langkah 21: pada lebar field filter (sekitar 213 px) chip `John Doe` dan `Jane Smith` tidak muat berdampingan, sehingga field menampilkan satu chip dan `+1 more` sesuai aturan Overflow Chip (prd-conventions §9.8 butir 4: chip sebanyak yang muat pada lebar field, sisanya satu chip `+N more`). Langkah 22 sampai 24 tidak berubah: chip `John Doe` masih tampil untuk dihapus, dan setelah itu `Jane Smith` menjadi satu-satunya chip.
 - Perilaku Apply (logika OR, AND, rentang tanggal) ada di spec `TC-AC-PP-E2E-035` dan `TC-AC-PP-E2E-037`; opsi dropdown dari Riwayat S ada di `TC-AC-PP-E2E-002` (TC-AC-PP-107).
 - Temuan untuk QA:
   - TC-AC-PP-106 Expected c menyebut placeholder `Published By` "All users" dan Expected e menyebut placeholder `Published At` "Select date", dua butir Expected tentang placeholder dipisah dari label di butir c; spec mengasersi masing-masing.

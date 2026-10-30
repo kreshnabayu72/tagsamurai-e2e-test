@@ -33,7 +33,7 @@ coverage:
 1. Klik `[⋯]` pada baris `Version 3` → pilih `Edit`
 2. Tunggu konten editor termuat
 3. Klik `[Clear Field]`
-4. Verifikasi editor kosong dengan placeholder "Enter Privacy Policy content"
+4. Verifikasi editor kosong dengan placeholder "Enter privacy policy content"
 5. Verifikasi tidak ada dialog konfirmasi apa pun
 6. Verifikasi Modal tetap di state Edit
 7. Verifikasi Title Modal tetap "Edit Privacy Policy"

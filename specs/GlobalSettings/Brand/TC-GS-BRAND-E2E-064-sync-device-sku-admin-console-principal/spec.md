@@ -11,6 +11,7 @@ sourceTc:
   - TC-GS-BRAND-248
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Sinkronisasi Brand ke Device SKU Admin Console pada Instance Principal

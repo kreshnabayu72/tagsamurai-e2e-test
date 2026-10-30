@@ -10,6 +10,7 @@ sourceTc:
   - TC-GS-BRAND-290
 coverage:
   web: automated
+tags: [principal]
 ---
 
 # Brand Detail Principal: Chip Filter Category dan Logika OR pada Device SKU List

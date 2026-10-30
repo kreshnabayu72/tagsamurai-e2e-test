@@ -35,19 +35,19 @@ coverage:
 2. Klik header `(⋯)` lalu klik "Setup Column..."
 3. Uncheck `Version`
 4. Verifikasi kolom `Version` hilang dari Live Preview
-5. Verifikasi kolom `Version` hilang dari tabel di belakang popup
+5. Verifikasi kolom `Version` masih tampil di tabel di belakang popup (perubahan baru berlaku setelah `[Save]`)
 6. Klik `[Save]`
 7. Verifikasi kolom `Version` tetap hilang dari tabel
 8. Buka popup Setup Column, check kembali `Version`, lalu klik `[Save]`
 9. Buka popup Setup Column, uncheck `Published At`
 10. Verifikasi kolom `Published At` hilang dari Live Preview
-11. Verifikasi kolom `Published At` hilang dari tabel di belakang popup
+11. Verifikasi kolom `Published At` masih tampil di tabel di belakang popup (perubahan baru berlaku setelah `[Save]`)
 12. Klik `[Save]`
 13. Verifikasi kolom `Published At` tetap hilang dari tabel
 14. Buka popup Setup Column, check kembali `Published At`, lalu klik `[Save]`
 15. Buka popup Setup Column, uncheck `Published By`
 16. Verifikasi kolom `Published By` hilang dari Live Preview
-17. Verifikasi kolom `Published By` hilang dari tabel di belakang popup
+17. Verifikasi kolom `Published By` masih tampil di tabel di belakang popup (perubahan baru berlaku setelah `[Save]`)
 18. Klik `[Save]`
 19. Verifikasi kolom `Published By` tetap hilang dari tabel
 20. Muat ulang halaman dengan F5
@@ -112,6 +112,7 @@ coverage:
 
 ## Notes
 
+- Langkah 5, 11, dan 17: perubahan Setup Column baru berlaku di tabel setelah `[Save]` (konsisten dengan spec 043: menutup popup tanpa Save membuang perubahan); spec semula menulis kolom langsung hilang dari tabel di belakang popup. Keputusan pemilik spec 2026-10-26 (F-37), lihat D-008.
 - Mode: FE+BE (lihat Prerequisites). Sumber: `admin-console/settings-privacy-policy/TestCases/tc-settings-privacy-policy.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC sesuai TC sumber (131, 132, 133, 135, 137). TC-137 di akhir karena memakai login ulang dan menyisakan konfigurasi tersembunyi yang direset di langkah 66 (S-10).

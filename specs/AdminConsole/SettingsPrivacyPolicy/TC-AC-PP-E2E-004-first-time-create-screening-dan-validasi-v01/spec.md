@@ -37,7 +37,7 @@ coverage:
 5. Verifikasi Header: Title modal "Create Privacy Policy"
 6. Verifikasi Header: tombol close `[✕]`
 7. Verifikasi Body: toolbar format berurutan `H1 | H2 | H3`, `B | I | U`, `• List | 1. List`, `Link`, `Undo | Redo`
-8. Verifikasi Body: area editor kosong dengan placeholder "Enter Privacy Policy content"
+8. Verifikasi Body: area editor kosong dengan placeholder "Enter privacy policy content"
 9. Verifikasi Footer: `[Clear Field]` (text, primary)
 10. Verifikasi Footer: `[Publish New Version]` (Success)
 11. Verifikasi Footer: tidak ada tombol `[Cancel]`
@@ -48,7 +48,7 @@ coverage:
 ### TC-AC-PP-36: Publish dengan editor kosong diblok client dengan error inline V-01 tanpa membuka dialog
 
 15. Biarkan editor kosong lalu klik [Publish New Version]
-16. Verifikasi error inline "Privacy Policy content must not be empty" tampil di bawah editor
+16. Verifikasi error inline "Privacy policy content must not be empty" tampil di bawah editor
 17. Verifikasi Dialog Publish Confirm tidak terbuka
 18. Verifikasi modal tetap terbuka di state Edit
 19. Verifikasi tidak ada toast
@@ -56,13 +56,13 @@ coverage:
 ### TC-AC-PP-37: Publish dengan konten yang hanya berisi whitespace diblok client dengan error inline V-01
 
 20. Ketik 5 spasi pada editor lalu klik [Publish New Version]
-21. Verifikasi error inline "Privacy Policy content must not be empty" tampil (konten a: 5 spasi, menghasilkan `&nbsp;` di HTML editor)
+21. Verifikasi error inline "Privacy policy content must not be empty" tampil (konten a: 5 spasi, menghasilkan `&nbsp;` di HTML editor)
 22. Verifikasi Dialog Publish Confirm tidak terbuka
 23. Klik [Clear Field], tekan Enter 3 kali pada editor lalu klik [Publish New Version]
-24. Verifikasi error inline "Privacy Policy content must not be empty" tampil (konten b: 3 baris kosong)
+24. Verifikasi error inline "Privacy policy content must not be empty" tampil (konten b: 3 baris kosong)
 25. Verifikasi Dialog tidak terbuka
 26. Klik [Clear Field], ketik 3 spasi lalu tekan Enter 2 kali lalu klik [Publish New Version]
-27. Verifikasi error inline "Privacy Policy content must not be empty" tampil (konten c: 3 spasi + 2 baris kosong)
+27. Verifikasi error inline "Privacy policy content must not be empty" tampil (konten c: 3 spasi + 2 baris kosong)
 28. Verifikasi Dialog tidak terbuka
 
 ### TC-AC-PP-38: Clear Field pada first-time setup mengosongkan editor dan menampilkan kembali placeholder tanpa dialog
@@ -70,7 +70,7 @@ coverage:
 29. Klik [Clear Field]
 30. Ketik "Draft text" pada editor
 31. Klik `[Clear Field]`
-32. Verifikasi editor kosong dengan placeholder "Enter Privacy Policy content"
+32. Verifikasi editor kosong dengan placeholder "Enter privacy policy content"
 33. Verifikasi tidak ada dialog konfirmasi
 34. Verifikasi modal tetap terbuka di state Edit
 35. Verifikasi Title modal tetap "Create Privacy Policy"

@@ -35,7 +35,7 @@ coverage:
 7. Verifikasi jumlah chip nama yang tampil ditambah N sama dengan 6
 8. Verifikasi field tidak melebar keluar panel
 9. Verifikasi field tidak digulir horizontal
-10. Klik `[Clear Field]` lalu tutup panel Filter dengan klik di luar panel (tanpa Apply)
+10. Klik `[Clear Field]` lalu tutup panel Filter dengan klik ulang icon Filter (tanpa Apply)
 
 ## Notes
 
