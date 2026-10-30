@@ -198,3 +198,12 @@ Aturan:
 - **Karena:** perilaku ini sudah dijaga unit test backend `TestLogin_TimedLockCrossesMidnight` (`iam-service` `internal/modules/auth/service/login_service_test.go`).
 - **Keputusan:** langkah 31–36 tidak diotomasi di e2e dan dijaga unit test tersebut. Langkah 37–42 (setelah lock berakhir, hitungan hari baru mulai dari 1) tetap diotomasi dengan `ageTime`. Issue iam #113 ditutup.
 - **Diterapkan di:** skrip 013 (TC-AUTH-LP-55).
+
+## D-023 Kode MFA terkirim otomatis pada digit ke-6 (2026-10-30)
+
+- **Spec / langkah:** suite `Auth/Mfa`: langkah yang mengisi 6 digit kode (OTP email atau Authenticator) lalu mengklik [Login] atau [Verify] (antara lain spec 010, 011, 012, 029, 030, 034, 035, 037, 039, 041, 044, 046, 049, 056).
+- **Spec meminta:** user mengklik [Login] atau [Verify] setelah kode 6 digit lengkap.
+- **Kenyataannya:** aplikasi mengirim kode begitu digit ke-6 terisi, sama seperti Login with OTP (PRD F-AUTHOTP-05 dan FI-01). Setelah itu layar sudah berpindah atau tombol sedang sibuk, sehingga klik manual tidak bisa dilakukan.
+- **Karena:** auto-submit pada digit terakhir adalah perilaku umum isian kode OTP, dan diputuskan owner.
+- **Keputusan:** pada layar verifikasi MFA, kode terkirim otomatis pada digit ke-6. Langkah "klik [Login]/[Verify]" setelah kode lengkap dipenuhi oleh pengiriman otomatis itu, dan hasil langkah berikutnya tetap diverifikasi. Klik tombol hanya diuji pada isian yang belum lengkap, misalnya untuk memastikan tombol disabled atau memunculkan caption.
+- **Diterapkan di:** skrip suite Auth/Mfa.
