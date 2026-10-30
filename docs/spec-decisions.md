@@ -216,3 +216,12 @@ Aturan:
 - **Karena:** batas inklusif adalah logika backend (`time.Now().After(token.ExpiresAt)`), yang lebih tepat dijaga oleh unit test dengan clock yang bisa disuntikkan. Route pembeku jam untuk satu batas ini tidak sepadan.
 - **Keputusan:** TC-AUTH-ACT-137 tidak diotomasi di e2e. Batasnya dijaga unit test backend yang dilacak di iam #115, dan issue itu tetap terbuka sampai test-nya ada di `dev`. TC-AUTH-ACT-87, TC-AUTH-ACT-124 dan TC-AUTH-ACT-86 tetap diotomasi dengan `ageTime`.
 - **Diterapkan di:** skrip 027 (TC-AUTH-ACT-137).
+
+## D-025 Token reset email lama yang lolos invalidasi dijaga unit test backend (2026-10-30)
+
+- **Spec / langkah:** `TC-AUTH-RST-E2E-023` TC-AUTH-RST-141 langkah 20–26 (token milik email lama yang belum di-invalidate callback ditolak 404 dan dicatat "Reset link expired").
+- **Spec meminta:** kondisi email user sudah berganti sementara token reset email lama masih aktif.
+- **Kenyataannya:** alur ganti email yang normal selalu menjalankan callback yang meng-invalidate token, jadi kondisi itu tidak bisa dibuat tanpa route khusus test.
+- **Karena:** pemeriksaan cadangan ini (`validate_reset_password_service.go`, kecocokan email token dengan email user) sudah dijaga unit test backend `TestValidate_UnusableOwnerKillsTheToken`, kasus "email changed".
+- **Keputusan:** TC-AUTH-RST-141 tidak diotomasi di e2e. TC-AUTH-RST-114 dan TC-AUTH-RST-133 tetap diotomasi. Issue iam #116 ditutup.
+- **Diterapkan di:** skrip 023 (TC-AUTH-RST-141).
