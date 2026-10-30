@@ -252,3 +252,48 @@ Aturan:
 - **Karena:** yang diuji TC ini adalah guard perpindahan halaman di dalam app saat form terisi. Selagi popup terbuka, perpindahan itu hanya bisa terjadi lewat Back/Forward browser, dan guard yang sama yang mencegatnya.
 - **Keputusan:** klik menu sidebar diganti Back (action `navigateBack`: Back browser di web, Back sistem di Android). Guard hanya mencegat Back bila halaman sebelumnya dibuka di dalam app, jadi sebelum popup dibuka skrip berpindah ke tab User List lalu kembali ke tab Position. Setelah `[Leave]`, yang diverifikasi adalah halaman sebelumnya itu (tab User List aktif), bukan General Settings. Langkah verifikasi dialog, `[Cancel]`, dan `[Leave]` tetap diotomasi.
 - **Diterapkan di:** skrip Position 013 (TC-GS-POS-64) dan 018 (TC-GS-POS-103).
+
+## D-029 Name beremoji yang "lolos validasi klien" diuji lewat request langsung (2026-10-31)
+
+- **Spec / langkah:** `TC-GS-DIV-E2E-073` TC-GS-DIV-270 langkah 31-44 (Edit) dan TC-GS-DIV-267 langkah 45-57 (Create): injeksi `Finance 😀` langsung ke DOM field Division Name, klik [Save]/[Submit], lalu penolakan server tampil di form.
+- **Spec meminta:** nilai beremoji melewati validasi klien lewat DOM, lalu form menampilkan penolakan server.
+- **Kenyataannya:** form menghapus emoji saat input, saat blur, dan sekali lagi saat submit (D-016). Nilai beremoji tidak pernah sampai ke request, jadi form tidak mungkin menampilkan penolakan server.
+- **Karena:** yang diuji TC ini adalah pertahanan server terhadap nilai yang tidak lolos validasi klien. Request langsung menguji hal yang sama, seperti TC-GS-DIV-259 sampai 262 di spec yang sama.
+- **Keputusan:** Create dan Edit dengan Name `Finance 😀` dikirim langsung ke server dengan sesi aktor. Yang diverifikasi: server menolak dengan validasi pada Name, Division tidak dibuat, dan Name tidak berubah (dicek di tabel). Langkah yang hanya ada di form (modal tetap terbuka, input dipertahankan, penolakan tampil di form, ✕, dan Unsaved Changes) tidak diotomasi, karena keadaan itu tidak bisa terjadi.
+- **Diterapkan di:** skrip Division 073 (TC-GS-DIV-270, TC-GS-DIV-267).
+
+## D-030 Layar Auth mengikuti layout AuthShell, bukan Card terpusat (2026-10-31)
+
+- **Spec / langkah:** `TC-AUTH-OTP-E2E-001` TC-AUTH-OTP-01 langkah 3; `TC-AUTH-MFA-E2E-001` TC-AUTH-MFA-01 langkah 8; `TC-AUTH-MFA-E2E-004` TC-AUTH-MFA-04 langkah 10; `TC-AUTH-MFA-E2E-009` TC-AUTH-MFA-05 langkah 9; `TC-AUTH-MFA-E2E-014` TC-AUTH-MFA-07 langkah 10 dan 13.
+- **Spec meminta:** form tampil dalam Card `Elevated` terpusat di canvas penuh; tiga langkah Enrollment tampil dalam satu card.
+- **Kenyataannya:** semua layar Auth memakai AuthShell, yaitu dua kolom: panel brand di kiri dan form di kanan, tanpa Card.
+- **Karena:** keputusan owner. Spec UI tidak akurat, dan UI aplikasi sudah berkembang lebih baik daripada spec.
+- **Keputusan:** layout AuthShell dipertahankan. Langkah yang memverifikasi Card terpusat atau satu card tidak diotomasi. Isi layar (judul, subjudul, field, dan tombol) tetap diverifikasi.
+- **Diterapkan di:** skrip Login OTP 001 dan MFA 001, 004, 009, 014.
+
+## D-031 Tautan Privacy Policy terpisah dari label checkbox, mengikuti PRD (2026-10-31)
+
+- **Spec / langkah:** `TC-AUTH-OTP-E2E-002` TC-AUTH-OTP-09 langkah 33 (teks "Privacy Policy" pada label checkbox berupa tautan ke halaman Privacy Policy).
+- **Spec meminta:** kata "Privacy Policy" di label checkbox Agreement bisa diklik.
+- **Kenyataannya:** label checkbox polos "I have read and agree to the Privacy Policy *". Dokumen dibuka lewat tautan terpisah "Read the full Privacy Policy" di bawah teks persetujuan.
+- **Karena:** PRD login-password §4.2b menetapkan susunan itu: teks persetujuan dengan tautan "Read the full Privacy Policy", lalu checkbox berlabel polos. Satu tautan ke dokumen sudah cukup, dan label checkbox tetap berfungsi mencentang.
+- **Keputusan:** mengikuti PRD. Langkah 33 diverifikasi pada tautan "Read the full Privacy Policy", bukan pada label checkbox.
+- **Diterapkan di:** skrip Login OTP 002 (TC-AUTH-OTP-09).
+
+## D-032 Tautan [Reset password] tampil inline di dalam Alert (2026-10-31)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-012` TC-AUTH-LP-50 langkah 17 dan TC-AUTH-LP-51 langkah 26; `TC-AUTH-LP-E2E-013` TC-AUTH-LP-56 langkah 48; `TC-AUTH-LP-E2E-014` TC-AUTH-LP-58 langkah 6 dan TC-AUTH-LP-59 langkah 12.
+- **Spec meminta:** tautan [Reset password] tampil satu baris di bawah teks Alert (PRD login-password §4.3, FI-AUTHLP-10).
+- **Kenyataannya:** tautan tampil inline tepat setelah kalimat Alert, dipisah satu spasi, dan ikut membungkus bersama teks.
+- **Karena:** keputusan product owner pada 2026-10-20, ditegaskan lagi oleh owner pada 2026-10-31 karena tampilannya lebih rapi.
+- **Keputusan:** tautan inline di dalam Alert. Langkah-langkah itu memverifikasi tautan [Reset password] ada di dalam Alert dan membuka Reset Password, bukan posisinya satu baris di bawah teks.
+- **Diterapkan di:** skrip Login Password 012, 013, 014.
+
+## D-033 Chip TC-GS-ACTLOG-82 memakai nama literal di entitas log-terbatas (2026-10-31)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-021` TC-GS-ACTLOG-82 langkah 17-21 (Data uji TC-GS-ACTLOG-82, Client A: `John Doe {runId}-021`/`Budi Anwar {runId}-021`, `Staff {runId}-021`/`Supervisor {runId}-021`, `Marketing {runId}-021`/`Finance {runId}-021`, `Login`/`Logout`, `Success`/`Failed`).
+- **Spec meminta:** dua opsi dicentang di tiap field, lalu kedua chip tampil di dalam field yang tertutup.
+- **Kenyataannya:** pada jendela 1280px, panel filter memuat empat field per baris. Satu chip `John Doe {runId}-021` saja sudah memenuhi field, dan pasangan nama literal `John Doe` + `Budi Anwar` pun meleset beberapa piksel. Chip kedua masuk ke `+1 more`, sehingga kedua chip tidak pernah tampil bersama.
+- **Karena:** keputusan owner: nama dipendekkan dan jendela diperlebar. Nama tanpa sufiks hanya unik di entitas segar milik spec ini, yaitu `entitasLog021`, yang sudah memuat `John Doe`, `Budi Anwar`, `Staff`, `Supervisor`, `Marketing`, `Finance`, `Login`, dan `Logout` dengan nama literal TC.
+- **Keputusan:** TC-GS-ACTLOG-82 berjalan pada jendela 1440px. Pasangan User, Position, Division, dan Activity diuji di `entitasLog021` dengan nama literal TC. Pasangan Status (`Success`/`Failed`) tetap di Client A, karena nilainya tanpa sufiks dan `entitasLog021` hanya memuat `Success` (TC-GS-ACTLOG-78).
+- **Diterapkan di:** skrip Activity Log 021 (TC-GS-ACTLOG-82).
