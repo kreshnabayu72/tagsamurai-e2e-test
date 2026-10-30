@@ -20,10 +20,11 @@ coverage:
 - Aktor yang dimodelkan lewat payload izin mock: Total Control Sinta Maharani `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup A1). Sesi dibangun dari payload mock sehingga tidak ada login nyata dan tidak membutuhkan password. Bila spec dijalankan terhadap backend nyata, kredensial memakai `Spectra.env.GS_TC_PASSWORD`.
 - Kebutuhan mock (respons yang dipaksa):
   - Respons sesi/profil dan payload izin: Total Control (semua aksi File Manager); disediakan tim FE (S-13).
-  - Daftar file aktif: `GET /v2/file-manager/{type}/files/list` (openapi baris 16); skema respons mengikuti openapi (baris 16). Sedikitnya satu halaman baris sehingga toolbar dan tabel utama ter-render, termasuk tombol Recycle Bin di toolbar.
-  - Daftar Recycle Bin: `GET /v2/file-manager/{type}/files/recycle-bin/list` (openapi baris 334); skema respons mengikuti openapi (baris 334). Dimuat saat halaman dibuka bila halaman memuatnya; isi minimal.
+  - Daftar file aktif: `POST /v2/file-manager/{type}/files/list` (openapi baris 16); skema respons mengikuti openapi (baris 16). Sedikitnya satu halaman baris sehingga toolbar dan tabel utama ter-render, termasuk tombol Recycle Bin di toolbar.
+  - Daftar Recycle Bin: `POST /v2/file-manager/{type}/files/recycle-bin/list` (openapi baris 334); skema respons mengikuti openapi (baris 334). Dimuat saat halaman dibuka bila halaman memuatnya; isi minimal.
   - Storage Usage: `GET /v2/file-manager/storage-usage` (openapi baris 579); skema respons mengikuti openapi (baris 579). Skenario S1 (Tabel A5) agar halaman termuat penuh.
-  - Daftar Changelog: endpoint baca Changelog tidak ada di `openapi.yaml` maupun `low-level-design.md` modul; disediakan tim FE (S-13), hanya bila halaman memuatnya saat dibuka.
+  - Daftar Changelog: `POST /v2/analytics-reporting/change-logs/list` (`low-level-design.md` baris 479; pembaca Changelog generik Analytics Reporting, tidak dideklarasikan di `openapi.yaml` modul); skema respons disediakan tim FE dari openapi Analytics Reporting (S-13). Hanya bila halaman memuatnya saat dibuka.
+  - Stream SSE `client_{clientId}` (event `file.deleted` dan `file.purged`; `low-level-design.md` baris 429): di-mock tanpa event, tidak memancarkan event selama spec ini berjalan karena tidak ada langkah yang membutuhkannya.
   - Respons preferensi Guided Tooltip untuk flag `guided_tooltip_seen_gs-file-manager`: true (walkthrough tidak muncul otomatis; hanya terbuka lewat tombol [?]). API pendukung di luar sumber modul (identitas pengguna, sesi, menu, preferensi Guided Tooltip) disediakan tim FE (S-13). Penyimpanan flag oleh [Done] dan overlay direkam sebagai permintaan pada mock.
 - Tidak ada data backend atau state global yang diubah, sehingga tidak ada cleanup selain melepas mock di hook `after`.
 
@@ -83,6 +84,6 @@ coverage:
 - TC-34, TC-37, dan TC-39 tidak menyebut kondisi flag; spec memakai flag true agar walkthrough hanya muncul lewat tombol [?] (pola yang sama dengan Guided Tooltip modul lain). Step otomatis pada kunjungan pertama diuji di spec 070.
 - Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 (mock sesi dan flag), langkah 13 (Done menutup walkthrough sebelum TC berikutnya), langkah 21 dan 22 (TC-37 langkah 4), langkah 25 (TC-37 langkah 5).
 - Temuan untuk QA:
-  - Endpoint baca Changelog tidak ada di `openapi.yaml` maupun `low-level-design.md` modul (Changelog ditulis lintas-service oleh Analytics Reporting); owner: API/LLD. Sampai dilengkapi, disediakan tim FE (S-13).
+  - Endpoint baca Changelog tidak dideklarasikan di `openapi.yaml` modul File Manager (dilayani pembaca generik Analytics Reporting, `low-level-design.md` baris 479); skema responsnya berada di openapi Analytics Reporting dan disediakan tim FE (S-13).
   - TC-37 butir d ("menetapkan flag seen") diasersi lewat rekaman permintaan simpan pada mock; TC tidak menyebut cara cek flag.
   - TC-34, TC-37, dan TC-39 tidak menyebut kondisi flag.

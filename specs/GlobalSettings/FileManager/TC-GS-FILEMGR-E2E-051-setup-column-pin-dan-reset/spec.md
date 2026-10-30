@@ -19,9 +19,10 @@ coverage:
 - Mode: mock (spec hanya-FE, dijalankan tim FE sebagai integration test; API di-mock, tanpa backend nyata).
 - Akun: Total Control Sinta Maharani (Tabel A1 TC) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net`. Sesi login disuntikkan lewat seedSession di hook `before` tanpa memanggil backend, sehingga tidak ada password yang dipakai di spec ini.
 - Kebutuhan mock (respons yang dipaksa):
-  - Daftar file aktif tabel utama: `GET /v2/file-manager/{type}/files/list` (openapi baris 16); skema respons mengikuti openapi (baris 16). Mengembalikan 33 file Tabel A2 (ukuran halaman 10).
-  - Daftar Recycle Bin: `GET /v2/file-manager/{type}/files/recycle-bin/list` (openapi baris 334); skema respons mengikuti openapi (baris 334). Mengembalikan 16 baris Tabel A3 (retensi 30 hari).
-  - Daftar Changelog: endpoint baca Changelog tidak ada di `openapi.yaml` maupun `low-level-design.md` modul (Changelog ditulis lintas-service); endpoint dan skema responsnya disediakan tim FE (S-13). Mengembalikan 14 entri Tabel A4.
+  - Daftar file aktif tabel utama: `POST /v2/file-manager/{type}/files/list` (openapi baris 16); skema respons mengikuti openapi (baris 16). Mengembalikan 33 file Tabel A2 (ukuran halaman 10).
+  - Daftar Recycle Bin: `POST /v2/file-manager/{type}/files/recycle-bin/list` (openapi baris 334); skema respons mengikuti openapi (baris 334). Mengembalikan 16 baris Tabel A3 (retensi 30 hari).
+  - Daftar Changelog: `POST /v2/analytics-reporting/change-logs/list` (`low-level-design.md` baris 479; pembaca Changelog generik Analytics Reporting, tidak dideklarasikan di `openapi.yaml` modul); skema respons disediakan tim FE dari openapi Analytics Reporting (S-13). Mengembalikan 14 entri Tabel A4.
+  - Stream SSE `client_{clientId}` (event `file.deleted` dan `file.purged`; `low-level-design.md` baris 429): di-mock tanpa event, tidak memancarkan event selama spec ini berjalan karena tidak ada langkah yang membutuhkannya.
   - Storage Usage: `GET /v2/file-manager/storage-usage` (openapi baris 579), hanya bila halaman memuatnya saat dibuka; skema respons mengikuti openapi (baris 579). Tidak menjadi objek langkah spec ini.
   - Respons preferensi Guided Tooltip untuk `guided_tooltip_seen_gs-file-manager`: true (di-mock). API pendukung di luar modul (identitas pengguna, sesi, menu, preferensi Guided Tooltip, General Settings) disediakan tim FE (S-13).
 - Preferensi kolom (visibilitas, urutan, pin) tersimpan per tabel di browser (PRD File Manager; prd-conventions.md §9.3), bukan lewat API, sehingga tidak ada endpoint yang di-mock untuknya. "Tekan F5" dilakukan pada konteks browser yang sama supaya penyimpanan preferensi kolom tetap ada.
@@ -102,4 +103,4 @@ coverage:
 - Temuan untuk QA:
   - TC-GS-FILEMGR-183 tidak menyebut lebar viewport atau data yang membuat tabel overflow horizontal, padahal "scroll horizontal" hanya teramati bila konten melebihi lebar kontainer; lebar tabel dengan 6 sampai 7 kolom pada viewport desktop bisa tidak overflow. Dibutuhkan kemampuan viewport (mis. mempersempit) atau konfirmasi lebar minimum kolom.
   - TC-GS-FILEMGR-185 menyebut precondition "sudah diubah dan disimpan (hide, urut, pin)" tanpa kolom dan nilai konkret; spec memilih kolom sendiri (tabel Prerequisites) dan menyalin langkah penyiapan (S-04).
-  - Endpoint baca Changelog tidak ada di `openapi.yaml` maupun `low-level-design.md` modul (Changelog ditulis lintas-service oleh Analytics Reporting); owner: API/LLD. Sampai dilengkapi, endpoint dan skemanya disediakan tim FE (S-13).
+  - Endpoint baca Changelog tidak dideklarasikan di `openapi.yaml` modul File Manager (dilayani pembaca generik Analytics Reporting, `low-level-design.md` baris 479); skema responsnya berada di openapi Analytics Reporting dan disediakan tim FE (S-13).

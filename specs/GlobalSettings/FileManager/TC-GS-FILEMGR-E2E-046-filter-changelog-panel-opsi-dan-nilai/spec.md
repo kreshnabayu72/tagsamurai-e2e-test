@@ -23,11 +23,11 @@ coverage:
 - Mode: FE+BE.
 - Akun: Total Control Sinta Maharani (Tabel A1 TC) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net`; kredensial `Spectra.env.GS_TC_PASSWORD` (terdaftar di `executionConfig.environmentVariables` dan `.env.example`; password tidak ditulis di spec atau fixture). Login sekali di hook `before`; ini akun default suite sehingga hook `after` tidak mengganti sesi.
 - Data Pre-setup: Tabel A4 (14 entri Changelog File Manager; format tanggal General Settings default `dd/MM/yy HH:mm`). Dataset disiapkan lewat fixture BE di hook `before` (kemampuan "disediakan tim FE/BE"; mekanisme dan endpoint seeding tidak didefinisikan di TC, lihat Temuan untuk QA). Entri literal sesuai Tabel A4 karena asersi filter bergantung pada Action, File Name, Modified By, dan Date (pengecualian setara S-12: seeding idempotent, suite serial). Spec hanya membaca data; tidak ada aksi tulis dan tidak ada data dinamis.
-- Suite serial (`parallel: false`): hitungan entri hasil filter hanya valid bila tidak ada spec lain yang menghasilkan entri Changelog bersamaan.
+- Suite serial (`parallel: false`). Changelog adalah audit trail permanen yang tidak dapat di-seed ulang atau dibersihkan dan spec lain menambah entri (S-12), sehingga hitungan entri tidak diasersi sebagai total absolut: hitungan dibatasi dengan Filter Date rentang Date Tabel A4 (`23/08/26` sampai `14/09/26`, inklusif; entri terlama 23/08/26 08:00 dan terbaru 14/09/26 02:00) yang hanya memuat populasi Tabel A4. Pilihan Date ini ikut dipilih pada langkah 11, 31, 34, 37, dan 40.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-file-manager` disetel true oleh hook suite `before` dan dipulihkan di `after` (dinyatakan di `suite.md`).
 - Hook `beforeEach`: buka Global Settings > File Manager.
 - State global yang dipulihkan: tidak ada.
-- Kemampuan teknis: kontrol date range picker yang dapat memilih tanggal tetap 10/09/26 sampai 12/09/26 (Date entri Tabel A4 tetap, bukan relatif); mengetik di kotak search di dalam dropdown filter; membaca placeholder field.
+- Kemampuan teknis: kontrol date range picker yang dapat memilih tanggal tetap 10/09/26 sampai 12/09/26 dan 23/08/26 sampai 14/09/26 (Date entri Tabel A4 tetap, bukan relatif); mengetik di kotak search di dalam dropdown filter; membaca placeholder field.
 
 ## Test Steps
 
@@ -47,10 +47,10 @@ coverage:
 
 ### TC-GS-FILEMGR-159: Filter Field tidak ada karena hanya satu nilai Field tercatat, kolom Field tetap searchable
 
-11. Tutup Filter Panel dengan klik ikon Filter
+11. Pilih Date `23/08/26` sampai `14/09/26`, klik `[Apply]`, lalu tutup Filter Panel dengan klik ikon Filter
 12. Ketik Search `File Name`, tekan Enter
 13. Verifikasi kolom `Field` tetap tampil dengan nilai `File Name` pada seluruh entri
-14. Verifikasi Search `File Name` mengembalikan seluruh 14 entri
+14. Verifikasi Search `File Name` mengembalikan seluruh 14 entri dalam rentang Date Tabel A4
 15. Klik ikon panah (←) di kiri input Search
 
 ### TC-GS-FILEMGR-160: Opsi dropdown filter Action dan Modified By berasal dari data Changelog
@@ -76,19 +76,19 @@ coverage:
 ### TC-GS-FILEMGR-161: Filter multi-select Action dan Modified By
 
 30. Klik `[Clear Field]`
-31. Pilih `Delete` pada Action, klik `[Apply]`
+31. Pilih Date `23/08/26` sampai `14/09/26` dan `Delete` pada Action, klik `[Apply]`
 32. Verifikasi tabel memuat 2 entri: C04 dan C05
 33. Klik `[Clear Field]`, klik `[Apply]`
-34. Pilih `Delete` dan `Permanently Delete` pada Action, klik `[Apply]`
-35. Verifikasi tabel memuat 14 entri
+34. Pilih Date `23/08/26` sampai `14/09/26` serta `Delete` dan `Permanently Delete` pada Action, klik `[Apply]`
+35. Verifikasi tabel memuat 14 entri (rentang Date Tabel A4)
 36. Klik `[Clear Field]`, klik `[Apply]`
-37. Pilih `System` pada Modified By, klik `[Apply]`
-38. Verifikasi tabel memuat 5 entri: C01, C05, `archive-photo-03.jpg`, `archive-photo-06.jpg`, `archive-photo-09.jpg`
+37. Pilih Date `23/08/26` sampai `14/09/26` dan `System` pada Modified By, klik `[Apply]`
+38. Verifikasi tabel memuat 5 entri dalam rentang Date Tabel A4: C01, C05, `archive-photo-03.jpg`, `archive-photo-06.jpg`, `archive-photo-09.jpg`
 
 ### TC-GS-FILEMGR-163: Kombinasi filter Action dan Modified By dengan logika AND
 
 39. Klik `[Clear Field]`
-40. Pilih `Permanently Delete` pada Action dan `System` pada Modified By, klik `[Apply]`
+40. Pilih Date `23/08/26` sampai `14/09/26`, `Permanently Delete` pada Action, dan `System` pada Modified By, klik `[Apply]`
 41. Verifikasi tabel memuat 4 entri: C01, `archive-photo-03.jpg`, `archive-photo-06.jpg`, `archive-photo-09.jpg`
 42. Verifikasi entri C05 (Delete oleh System) tidak tampil
 
@@ -107,9 +107,10 @@ coverage:
 - Urutan TC dalam spec: 158, 159, 160, 266, 161, 163, 162. Screening dan opsi di awal, lalu nilai filter dengan kemajuan dari satu field ke gabungan (266 dan 161 satu field, 163 AND), rentang Date di akhir. TC-GS-FILEMGR-266 diletakkan sebelum 161 karena dropdown File Name dibuka dari panel yang sama dengan TC-GS-FILEMGR-160.
 - Panjang spec: 48 langkah, di atas sekitar 35 langkah. Alasan dipertahankan: seluruh blok berkelas sama (filter satu panel, satu dataset Tabel A4, tanpa aksi tulis), setiap blok memulai dari `[Clear Field]` sehingga berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; memecahnya hanya menambah buka modal dan login ulang tanpa pemisah nyata (bagian 3, ukuran batas spec). Blok screening dan opsi (langkah 4 sampai 22) tidak memuat aksi tulis atau pembuat data.
 - Pembagian lintas spec: TC-GS-FILEMGR-159 butir a (Filter Panel tidak memuat field `Field`) sudah terasersi pada langkah 9 (TC-GS-FILEMGR-158 butir c), dan tidak diasersi ulang. Kombinasi Search dan Filter Changelog ada di spec `TC-GS-FILEMGR-E2E-047-kombinasi-search-filter-changelog`.
-- Anchor: langkah 2 membuktikan tabel Changelog termuat sebelum asersi universal "hanya ...". Langkah 14 memakai total 14 entri pada pagination sebagai pembanding.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 11, 15, 16, 20, 22, 27, 30, 33, 36, 39, 43, 46 (menutup/membuka panel atau dropdown, membersihkan Search, dan membersihkan filter dari blok sebelumnya). Filter Panel diasumsikan tetap terbuka setelah `[Apply]` mengikuti langkah TC.
+- Anchor: langkah 2 membuktikan tabel Changelog termuat sebelum asersi universal "hanya ...". Langkah 14 memakai total 14 entri pada pagination sebagai pembanding dalam rentang Date Tabel A4 yang dipilih pada langkah 11 (tetap aktif sampai `[Clear Field]` langkah 27).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 11, 15, 16, 20, 22, 27, 30, 33, 36, 39, 43, 46 (menutup/membuka panel atau dropdown, membersihkan Search, dan membersihkan filter dari blok sebelumnya). Langkah 11 juga memilih Date rentang Tabel A4 dan langkah 31, 34, 37, 40 menyertakan pilihan Date yang sama; keduanya tidak ada di TC dan dicatat per S-03 supaya hitungan entri hanya dari populasi Tabel A4. Filter Panel diasumsikan tetap terbuka setelah `[Apply]` mengikuti langkah TC.
 - Temuan untuk QA:
   - TC tidak menyatakan apakah Filter Panel tetap terbuka setelah `[Apply]`; spec mengikuti langkah TC (langsung `[Clear Field]` setelah `[Apply]`). Perlu konfirmasi perilaku panel agar skrip menulis langkah buka-ulang yang benar.
-  - TC-GS-FILEMGR-160 menyebut opsi Action "tepat dua" (`Delete`, `Permanently Delete`) sesuai Tabel A4; opsi dropdown bergantung pada Changelog seluruh client, sehingga bila spec lain menambah Action lain (mis. `Edit`) sebelum spec ini berjalan, langkah 18 dan 21 tidak stabil. Suite serial tidak menjamin urutan spec; dataset di-seed ulang per spec (Q-7).
+  - TC-GS-FILEMGR-160 menyebut opsi Action "tepat dua" (`Delete`, `Permanently Delete`) sesuai Tabel A4; opsi dropdown bergantung pada Changelog seluruh client, sehingga bila spec lain menambah Action lain (mis. `Edit`) sebelum spec ini berjalan, langkah 18 dan 21 tidak stabil. Hal yang sama berlaku untuk hitungan 14 opsi File Name (langkah 24). TC tidak menyatakan apakah opsi dropdown dibatasi Filter Date; Changelog tidak dapat di-seed ulang, sehingga spec tidak dapat menjamin opsi hanya dari Tabel A4.
+  - TC sumber (mis. TC-GS-FILEMGR-172 dan TC Changelog sejenis) menyatakan hitungan entri absolut ("14 entri", "5 baris") yang bertentangan dengan S-12 (Changelog tidak dapat di-seed ulang atau dibersihkan). Spec membatasi dengan Filter Date rentang Tabel A4 sebagai langkah penghubung; pemilik TC perlu menulis ulang Data Uji sebagai Filter Date rentang Tabel A4 atau hitungan relatif.
   - Mekanisme dan endpoint seeding Tabel A4 tidak didefinisikan di TC (Q-4).
