@@ -207,3 +207,12 @@ Aturan:
 - **Karena:** auto-submit pada digit terakhir adalah perilaku umum isian kode OTP, dan diputuskan owner.
 - **Keputusan:** pada layar verifikasi MFA, kode terkirim otomatis pada digit ke-6. Langkah "klik [Login]/[Verify]" setelah kode lengkap dipenuhi oleh pengiriman otomatis itu, dan hasil langkah berikutnya tetap diverifikasi. Klik tombol hanya diuji pada isian yang belum lengkap, misalnya untuk memastikan tombol disabled atau memunculkan caption.
 - **Diterapkan di:** skrip suite Auth/Mfa.
+
+## D-024 Batas tepat 24 jam link aktivasi dijaga unit test backend (2026-10-30)
+
+- **Spec / langkah:** `TC-AUTH-ACT-E2E-027` TC-AUTH-ACT-137 langkah 10–13 (link berusia tepat 24 jam 00 menit 00 detik masih menampilkan Set Password).
+- **Spec meminta:** jam server uji di-set tepat 24 jam 00 menit 00 detik setelah token terbit, lalu link dibuka.
+- **Kenyataannya:** e2e hanya bisa menggeser umur token (`ageTime`), sementara jam server terus berjalan. Detik tepat itu tidak bisa dicapai.
+- **Karena:** batas inklusif adalah logika backend (`time.Now().After(token.ExpiresAt)`), yang lebih tepat dijaga oleh unit test dengan clock yang bisa disuntikkan. Route pembeku jam untuk satu batas ini tidak sepadan.
+- **Keputusan:** TC-AUTH-ACT-137 tidak diotomasi di e2e. Batasnya dijaga unit test backend yang dilacak di iam #115, dan issue itu tetap terbuka sampai test-nya ada di `dev`. TC-AUTH-ACT-87, TC-AUTH-ACT-124 dan TC-AUTH-ACT-86 tetap diotomasi dengan `ageTime`.
+- **Diterapkan di:** skrip 027 (TC-AUTH-ACT-137).
