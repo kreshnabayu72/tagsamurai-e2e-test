@@ -234,3 +234,12 @@ Aturan:
 - **Karena:** rollback adalah perilaku transaksi database yang lebih tepat dibuktikan oleh integration test backend dengan Postgres asli daripada route fault khusus e2e.
 - **Keputusan:** TC-AUTH-RST-92 tidak diotomasi di e2e. Rollback dijaga integration test backend yang dilacak di iam #117, dan issue itu tetap terbuka sampai test-nya ada di `dev`. TC-AUTH-RST-21, TC-AUTH-RST-103 dan TC-AUTH-RST-144 tetap diotomasi.
 - **Diterapkan di:** skrip 037 (TC-AUTH-RST-92).
+
+## D-027 Baris tab Session Activity Log disiapkan dengan seed, bukan aksi nyata (2026-10-30)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-017` sampai `TC-GS-ACTLOG-E2E-023`, bagian Prerequisites (tabel data awal, kolom "Cara").
+- **Spec meminta:** baris tab Session dibentuk lewat aksi nyata: login dengan password benar dan salah, logout manual, membuka card Global Settings, meminta Reset Password, dan Change Password di My Profile.
+- **Kenyataannya:** langkah yang diuji ketujuh spec ini adalah search, filter, dan sort pada tab Session. Aksi nyata hanya menyiapkan baris, tetapi menghasilkan waktu dan urutan yang tidak bisa diatur, bergantung pada modul lain (Change Password belum punya endpoint), dan terkena rate limit, pemicu MFA, serta reCAPTCHA.
+- **Karena:** halaman Activity Log diuji pada perilakunya sendiri. Ketepatan baris yang ditulis oleh aksi nyata diuji di suite alurnya masing-masing (LoginPassword, ResetPassword, SessionManagement) lewat API log.
+- **Keputusan:** baris tab Session pada ketujuh spec ini disiapkan dengan seed lewat route dev `session-logs`. Nilai Activity, Status, Note, dan kolom snapshot diambil dari nilai yang memang ditulis backend (kontrak dan asersi spec alurnya), bukan dikarang. Semua langkah bernomor tetap diotomasi.
+- **Diterapkan di:** skrip ActivityLog 017, 018, 019, 020, 021, 022, 023.
