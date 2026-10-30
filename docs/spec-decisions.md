@@ -243,3 +243,12 @@ Aturan:
 - **Karena:** halaman Activity Log diuji pada perilakunya sendiri. Ketepatan baris yang ditulis oleh aksi nyata diuji di suite alurnya masing-masing (LoginPassword, ResetPassword, SessionManagement) lewat API log.
 - **Keputusan:** baris tab Session pada ketujuh spec ini disiapkan dengan seed lewat route dev `session-logs`. Nilai Activity, Status, Note, dan kolom snapshot diambil dari nilai yang memang ditulis backend (kontrak dan asersi spec alurnya), bukan dikarang. Semua langkah bernomor tetap diotomasi.
 - **Diterapkan di:** skrip ActivityLog 017, 018, 019, 020, 021, 022, 023.
+
+## D-028 Pindah halaman saat popup form terisi dipicu Back browser, bukan menu sidebar (2026-10-30)
+
+- **Spec / langkah:** `TC-GS-POS-E2E-013` TC-GS-POS-64 langkah 51 dan 57, `TC-GS-POS-E2E-018` TC-GS-POS-103 langkah 59 (klik menu sidebar Global Settings > General Settings saat popup Create/Edit Position terisi).
+- **Spec meminta:** klik menu sidebar selagi popup terbuka, lalu dialog Unsaved Changes mencegat perpindahan halaman.
+- **Kenyataannya:** popup form menutup layar dengan scrim, sehingga sidebar tidak bisa diklik, dan popup tidak tertutup oleh klik di luarnya. Pengguna tidak pernah bisa memilih menu sidebar selagi popup terbuka.
+- **Karena:** yang diuji TC ini adalah guard perpindahan halaman di dalam app saat form terisi. Selagi popup terbuka, perpindahan itu hanya bisa terjadi lewat Back/Forward browser, dan guard yang sama yang mencegatnya.
+- **Keputusan:** klik menu sidebar diganti Back browser. Halaman sebelumnya di riwayat adalah Global Settings > General Settings, sehingga `[Leave]` tetap berpindah ke sana. Langkah verifikasi dialog, `[Cancel]`, dan `[Leave]` tetap diotomasi.
+- **Diterapkan di:** skrip Position 013 (TC-GS-POS-64) dan 018 (TC-GS-POS-103).
