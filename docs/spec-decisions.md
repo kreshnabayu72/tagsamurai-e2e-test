@@ -303,6 +303,6 @@ Aturan:
 - **Spec / langkah:** `TC-GS-FILEMGR-E2E-002` TC-GS-FILEMGR-05 langkah 16-21 dan TC-GS-FILEMGR-06 (kolom Size), serta spec lain yang membaca sel Size.
 - **Spec meminta:** satu desimal, pembulatan half-up (PRD file-manager §4.2a baris Size), misalnya `1.3 MB` untuk 1.310.720 byte.
 - **Kenyataannya:** backend memformat ukuran dengan dua desimal (`1.00 KB`, `1.25 MB`).
-- **Karena:** keputusan owner: ukuran diformat backend dengan satu atau dua desimal sesuai kebutuhan. Bentuk yang dipilih adalah pola yang umum dipakai: maksimal dua desimal, semua nol di ujung dibuang (`1.00` jadi `1`, `2.40` jadi `2.4`, `1.25` tetap).
-- **Keputusan:** sel Size diverifikasi dengan aturan itu: `1 KB`, `512 KB`, `1 MB`, `1.25 MB`, `2.4 MB`, `1.5 GB`; Recycle Bin `2 MB`, `100 KB`, `1.8 MB`, `700 KB`. Satuan tetap naik setelah pembulatan sesuai PRD (1.048.575 byte tampil `1 MB`). Backend masih perlu membuang nol di ujung (BT-89).
-- **Diterapkan di:** skrip File Manager 002, 038, 039, 042 dan fixture `fileManager.json`.
+- **Karena:** keputusan owner. Ukuran diformat backend dengan maksimal dua desimal; bila desimal kedua nol, ditampilkan satu desimal (`1.00` jadi `1.0`, `2.40` jadi `2.4`), sedangkan dua desimal yang bermakna tetap (`1.25`).
+- **Keputusan:** sel Size diverifikasi dengan aturan itu: `1.0 KB`, `512.0 KB`, `1.0 MB`, `1.25 MB`, `2.4 MB`, `1.5 GB`. Satuan tetap naik setelah pembulatan sesuai PRD (1.048.575 byte tampil `1.0 MB`). Backend masih perlu membuang nol di ujung (BT-89).
+- **Diterapkan di:** skrip File Manager 002 dan fixture `fileManager.json`.
