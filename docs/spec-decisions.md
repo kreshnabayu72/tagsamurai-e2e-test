@@ -250,5 +250,5 @@ Aturan:
 - **Spec meminta:** klik menu sidebar selagi popup terbuka, lalu dialog Unsaved Changes mencegat perpindahan halaman.
 - **Kenyataannya:** popup form menutup layar dengan scrim, sehingga sidebar tidak bisa diklik, dan popup tidak tertutup oleh klik di luarnya. Pengguna tidak pernah bisa memilih menu sidebar selagi popup terbuka.
 - **Karena:** yang diuji TC ini adalah guard perpindahan halaman di dalam app saat form terisi. Selagi popup terbuka, perpindahan itu hanya bisa terjadi lewat Back/Forward browser, dan guard yang sama yang mencegatnya.
-- **Keputusan:** klik menu sidebar diganti Back browser. Halaman sebelumnya di riwayat adalah Global Settings > General Settings, sehingga `[Leave]` tetap berpindah ke sana. Langkah verifikasi dialog, `[Cancel]`, dan `[Leave]` tetap diotomasi.
+- **Keputusan:** klik menu sidebar diganti Back (action `navigateBack`: Back browser di web, Back sistem di Android). Guard hanya mencegat Back bila halaman sebelumnya dibuka di dalam app, jadi sebelum popup dibuka skrip berpindah ke tab User List lalu kembali ke tab Position. Setelah `[Leave]`, yang diverifikasi adalah halaman sebelumnya itu (tab User List aktif), bukan General Settings. Langkah verifikasi dialog, `[Cancel]`, dan `[Leave]` tetap diotomasi.
 - **Diterapkan di:** skrip Position 013 (TC-GS-POS-64) dan 018 (TC-GS-POS-103).
