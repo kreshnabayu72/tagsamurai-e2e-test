@@ -225,3 +225,12 @@ Aturan:
 - **Karena:** pemeriksaan cadangan ini (`validate_reset_password_service.go`, kecocokan email token dengan email user) sudah dijaga unit test backend `TestValidate_UnusableOwnerKillsTheToken`, kasus "email changed".
 - **Keputusan:** TC-AUTH-RST-141 tidak diotomasi di e2e. TC-AUTH-RST-114 dan TC-AUTH-RST-133 tetap diotomasi. Issue iam #116 ditutup.
 - **Diterapkan di:** skrip 023 (TC-AUTH-RST-141).
+
+## D-026 Rollback Submit New Password dijaga integration test backend (2026-10-30)
+
+- **Spec / langkah:** `TC-AUTH-RST-E2E-037` TC-AUTH-RST-92 langkah 26–33 (kegagalan setelah password disimpan dan sebelum commit tidak meninggalkan perubahan sebagian).
+- **Spec meminta:** injeksi kegagalan di tengah transaksi Submit, lalu memverifikasi password lama masih berlaku dan lock permanen belum dibuka.
+- **Kenyataannya:** backend tidak punya route fault untuk transaksi Submit. Seluruh langkah reset sudah berjalan dalam satu transaksi (`confirm_reset_password_service.go`). Unit test yang ada memakai repository tiruan, sehingga belum membuktikan rollback di database.
+- **Karena:** rollback adalah perilaku transaksi database yang lebih tepat dibuktikan oleh integration test backend dengan Postgres asli daripada route fault khusus e2e.
+- **Keputusan:** TC-AUTH-RST-92 tidak diotomasi di e2e. Rollback dijaga integration test backend yang dilacak di iam #117, dan issue itu tetap terbuka sampai test-nya ada di `dev`. TC-AUTH-RST-21, TC-AUTH-RST-103 dan TC-AUTH-RST-144 tetap diotomasi.
+- **Diterapkan di:** skrip 037 (TC-AUTH-RST-92).
