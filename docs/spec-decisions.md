@@ -297,3 +297,12 @@ Aturan:
 - **Karena:** keputusan owner: nama dipendekkan dan jendela diperlebar. Nama tanpa sufiks hanya unik di entitas segar milik spec ini, yaitu `entitasLog021`, yang sudah memuat `John Doe`, `Budi Anwar`, `Staff`, `Supervisor`, `Marketing`, `Finance`, `Login`, dan `Logout` dengan nama literal TC.
 - **Keputusan:** TC-GS-ACTLOG-82 berjalan pada jendela 1440px. Pasangan User, Position, Division, dan Activity diuji di `entitasLog021` dengan nama literal TC. Pasangan Status (`Success`/`Failed`) tetap di Client A, karena nilainya tanpa sufiks dan `entitasLog021` hanya memuat `Success` (TC-GS-ACTLOG-78).
 - **Diterapkan di:** skrip Activity Log 021 (TC-GS-ACTLOG-82).
+
+## D-034 Ukuran file tampil maksimal dua desimal, nol di ujung dibuang (2026-10-31)
+
+- **Spec / langkah:** `TC-GS-FILEMGR-E2E-002` TC-GS-FILEMGR-05 langkah 16-21 dan TC-GS-FILEMGR-06 (kolom Size), serta spec lain yang membaca sel Size.
+- **Spec meminta:** satu desimal, pembulatan half-up (PRD file-manager §4.2a baris Size), misalnya `1.3 MB` untuk 1.310.720 byte.
+- **Kenyataannya:** backend memformat ukuran dengan dua desimal (`1.00 KB`, `1.25 MB`).
+- **Karena:** keputusan owner. Ukuran diformat backend dengan maksimal dua desimal; bila desimal kedua nol, ditampilkan satu desimal (`1.00` jadi `1.0`, `2.40` jadi `2.4`), sedangkan dua desimal yang bermakna tetap (`1.25`).
+- **Keputusan:** sel Size diverifikasi dengan aturan itu: `1.0 KB`, `512.0 KB`, `1.0 MB`, `1.25 MB`, `2.4 MB`, `1.5 GB`. Satuan tetap naik setelah pembulatan sesuai PRD (1.048.575 byte tampil `1.0 MB`). Backend masih perlu membuang nol di ujung (BT-89).
+- **Diterapkan di:** skrip File Manager 002 dan fixture `fileManager.json`.
