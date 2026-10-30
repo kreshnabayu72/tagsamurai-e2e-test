@@ -15,8 +15,8 @@ Rujukan aturan: `docs/e2e-conventions.md`. Skill ini melengkapi `spectra lint`, 
 - **Baca dulu catatan generate.** Sebelum menilai, baca `## Notes` tiap spec (butir "Temuan untuk QA", langkah penghubung, penyimpangan urutan) dan, bila ada, laporan akhir generate / `progress-e2e-generate-spec.md`. Hal yang sudah tercatat di sana dan sah menurut konvensi bukan temuan; masalah TC yang sudah tercatat dipisah ke bagian "Temuan sumber yang sudah diketahui" (lihat format laporan).
 - **Tingkat temuan.**
   - **Berat:** cakupan hilang atau salah (TC tanpa spec, butir Expected tanpa `Verifikasi`, asersi berlawanan dengan TC, `sourceTc` salah).
-  - **Sedang:** spec tidak bisa dieksekusi apa adanya atau hasilnya bisa lulus/gagal bukan karena perilaku yang diuji (langkah bersyarat, state bocor antar-TC, data tidak dijamin, kebutuhan tidak ada di Prerequisites, menumpang spec lain).
-  - **Ringan:** kosmetik atau dokumentasi (langkah penghubung tidak dicatat di Notes, Prerequisites memuat data tak dipakai, urutan atau penghematan langkah).
+  - **Sedang:** spec tidak bisa dieksekusi apa adanya atau hasilnya bisa lulus/gagal bukan karena perilaku yang diuji (langkah bersyarat, state bocor antar-TC, data tidak dijamin, kebutuhan tidak ada di Prerequisites, menumpang spec lain; asersi universal tanpa pembanding pada hasil Search/Filter/Sort yang menjadi `Verifikasi` pertama di surface itu).
+  - **Ringan:** kosmetik atau dokumentasi (langkah penghubung tidak dicatat di Notes, Prerequisites memuat data tak dipakai, urutan atau penghematan langkah; asersi universal tanpa pembanding bila tabel default sudah termuat dan pembanding menyusul di blok yang sama).
 - **Dua daftar, bukan satu.** Penyebab (1) kesalahan hasil generate masuk daftar temuan spec. Penyebab (2) kekurangan TC sumber atau konvensi masuk daftar "Temuan sumber" untuk pemilik TC/konvensi dan tidak menentukan status audit spec.
 
 ## Input

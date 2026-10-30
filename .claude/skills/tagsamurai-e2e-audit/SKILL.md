@@ -9,6 +9,16 @@ Skill ini hanya **melaporkan**. Jangan mengubah file apa pun, termasuk spec, scr
 
 Rujukan aturan: `docs/e2e-conventions.md`. Skill ini melengkapi `spectra lint`, yang hanya memeriksa format. Jalankan `python scripts/check-suite.py specs/<Suite> <path tc-[modul].md> docs/coverage/<Suite>.md` lebih dulu (cakupan, duplikat sourceTc, id folder, Mode, spec di atas 35 langkah tanpa alasan, jumlah TC di coverage, asersi absence tanpa anchor) dan jalankan `python scripts/sync-skills.py --check`; lalu Jalankan `spectra lint --strict specs/<Suite>` dan `pnpm type-check` dulu, lalu periksa hal-hal yang tidak dicakup linter.
 
+## Aturan umum
+
+- **Satu sumber aturan.** Kategori B, D, dan E memakai `docs/e2e-conventions.md` bagian 10 (S-01 sampai S-15) beserta bagian konvensi lain. Setiap temuan B/D/E menyebut id aturannya (contoh `S-04`). Jangan menandai hal yang tidak ada di daftar itu atau di konvensi; kalau menemukan pola yang menurut Anda perlu aturan baru, taruh di "Perlu keputusan" sebagai usulan aturan, bukan sebagai temuan.
+- **Baca dulu catatan generate.** Sebelum menilai, baca `## Notes` tiap spec (butir "Temuan untuk QA", langkah penghubung, penyimpangan urutan) dan, bila ada, laporan akhir generate / `progress-e2e-generate-spec.md`. Hal yang sudah tercatat di sana dan sah menurut konvensi bukan temuan; masalah TC yang sudah tercatat dipisah ke bagian "Temuan sumber yang sudah diketahui" (lihat format laporan).
+- **Tingkat temuan.**
+  - **Berat:** cakupan hilang atau salah (TC tanpa spec, butir Expected tanpa `Verifikasi`, asersi berlawanan dengan TC, `sourceTc` salah).
+  - **Sedang:** spec tidak bisa dieksekusi apa adanya atau hasilnya bisa lulus/gagal bukan karena perilaku yang diuji (langkah bersyarat, state bocor antar-TC, data tidak dijamin, kebutuhan tidak ada di Prerequisites, menumpang spec lain; asersi universal tanpa pembanding pada hasil Search/Filter/Sort yang menjadi `Verifikasi` pertama di surface itu).
+  - **Ringan:** kosmetik atau dokumentasi (langkah penghubung tidak dicatat di Notes, Prerequisites memuat data tak dipakai, urutan atau penghematan langkah; asersi universal tanpa pembanding bila tabel default sudah termuat dan pembanding menyusul di blok yang sama).
+- **Dua daftar, bukan satu.** Penyebab (1) kesalahan hasil generate masuk daftar temuan spec. Penyebab (2) kekurangan TC sumber atau konvensi masuk daftar "Temuan sumber" untuk pemilik TC/konvensi dan tidak menentukan status audit spec.
+
 ## Input
 
 Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbernya.
@@ -70,10 +80,15 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 ## Format laporan
 
 1. Ringkasan: jumlah TC granular, jumlah spec, TC diotomasi / dilewati / belum tercakup, hasil lint dan type-check.
-2. Tabel temuan, diurutkan dari yang paling berat: `No` | `Kategori (A-F)` | `Spec/TC` | `Temuan` | `Bukti (file:baris)` | `Penyebab (1/2)` | `Rekomendasi` | `Diubah di`.
+2. Tabel temuan spec (penyebab 1), diurutkan dari yang paling berat: `No` | `Kategori (A-F)` | `Id aturan` | `Tingkat` | `Spec/TC` | `Temuan` | `Bukti (file:baris)` | `Rekomendasi` | `Diubah di`. Temuan Ringan boleh dikelompokkan per tema dalam satu baris; Berat dan Sedang satu baris per temuan.
    - `Rekomendasi`: perubahan konkret yang menutup temuan (apa yang ditulis, dipindah, atau dihapus), bukan sekadar "perbaiki".
    - `Diubah di`: file yang harus diedit, salah satu atau lebih dari `spec` (spec.md suite), `TC` (`tc-[modul].md`), `PRD` (PRD modul), `konvensi` (`docs/e2e-conventions.md`), `skill generator` (`tagsamurai-e2e-generate-spec`), `coverage` (`docs/coverage/<Suite>.md`). Temuan penyebab (2) tidak boleh hanya `spec`. Temuan penyebab (1) yang berulang di beberapa spec juga mencantumkan `skill generator` supaya tidak terulang.
-3. Bagian "Perlu keputusan" untuk hal yang tidak bisa disimpulkan dari file (contoh: TC sumber ambigu, atau selector belum ada di app). Tiap butir memuat opsi beserta rekomendasi pilihan dan alasannya.
-4. Bagian "Rekomendasi urutan perbaikan": kelompokkan temuan per file tujuan (`TC`/`PRD`/`konvensi` dulu karena sumber, lalu `skill generator`, lalu `spec`/`coverage`), dan sebut workflow yang dipakai (contoh `audit-testcase` untuk TC, `e2e-generate-spec` untuk spec).
+3. Tabel "Temuan sumber" (penyebab 2: TC, PRD, atau konvensi): `No` | `Pemilik` | `Spec/TC terdampak` | `Temuan` | `Rekomendasi` | `Sudah dicatat di Notes/laporan generate (ya/tidak)`. Temuan yang sudah dicatat tampil di sini sekali saja, tidak diulang di tabel 2.
+4. Bagian "Perlu keputusan" untuk hal yang tidak bisa disimpulkan dari file (contoh: TC sumber ambigu, atau selector belum ada di app). Tiap butir memuat opsi beserta rekomendasi pilihan dan alasannya.
+5. Bagian "Rekomendasi urutan perbaikan": kelompokkan temuan per file tujuan (`TC`/`PRD`/`konvensi` dulu karena sumber, lalu `skill generator`, lalu `spec`/`coverage`), dan sebut workflow yang dipakai (contoh `audit-testcase` untuk TC, `e2e-generate-spec` untuk spec).
 
 Bedakan dua jenis penyebab pada tiap temuan: (1) kesalahan hasil generate, atau (2) kekurangan di TC sumber atau konvensi. Untuk jenis (2) arahkan ke perbaikan sumber, jangan ke spec.
+
+## Status audit
+
+Audit spec dinyatakan bersih bila tidak ada temuan Berat atau Sedang pada tabel 2; Ringan hanya dilaporkan sebagai jumlah dan tidak memblokir. Tabel "Temuan sumber" dilaporkan ke pemilik TC/konvensi dan tidak memblokir status spec.
