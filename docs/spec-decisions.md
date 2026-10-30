@@ -324,3 +324,12 @@ Aturan:
 - **Karena:** PRD mfa §4 hanya menyebut "SegmentedInput 6 digit" tanpa pengelompokan; lebar kotak sama dengan tombol adalah keputusan owner 2026-10-19. Keputusan UI menang.
 - **Keputusan:** langkah itu memverifikasi enam kotak dalam satu grup.
 - **Diterapkan di:** skrip MFA 004 dan 009.
+
+## D-037 reCAPTCHA yang belum diverifikasi ditolak browser sebelum lock diperiksa (2026-10-31)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-010` TC-AUTH-LP-43 langkah 10-11.
+- **Spec meminta:** submit tanpa reCAPTCHA selama lock 15 menit aktif menampilkan Alert lock, dan reCAPTCHA tanpa caption error (lock diperiksa sebelum reCAPTCHA).
+- **Kenyataannya:** browser menolak reCAPTCHA yang belum diverifikasi saat [Log in] diklik. Caption "Please verify that you are not a robot" tampil di bawah widget dan tidak ada request login, sehingga lock di server tidak ditanya.
+- **Karena:** PRD login-password V-AUTHLP-05 memvalidasi reCAPTCHA "saat klik Log in" dengan caption di bawah widget, sama seperti field wajib lain (pola D-017). Urutan "lock sebelum captcha" pada catatan ordering PRD berlaku untuk request yang sampai ke server.
+- **Keputusan:** langkah 10-11 memverifikasi caption reCAPTCHA, nol request login, dan tidak ada Alert. Alert lock diverifikasi pada langkah 5 (request dengan reCAPTCHA terverifikasi).
+- **Diterapkan di:** skrip Login Password 010.
