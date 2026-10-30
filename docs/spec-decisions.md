@@ -306,3 +306,12 @@ Aturan:
 - **Karena:** keputusan owner. Ukuran diformat backend dengan maksimal dua desimal; bila desimal kedua nol, ditampilkan satu desimal (`1.00` jadi `1.0`, `2.40` jadi `2.4`), sedangkan dua desimal yang bermakna tetap (`1.25`).
 - **Keputusan:** sel Size diverifikasi dengan aturan itu: `1.0 KB`, `512.0 KB`, `1.0 MB`, `1.25 MB`, `2.4 MB`, `1.5 GB`. Satuan tetap naik setelah pembulatan sesuai PRD (1.048.575 byte tampil `1.0 MB`). Backend masih perlu membuang nol di ujung (BT-89).
 - **Diterapkan di:** skrip File Manager 002 dan fixture `fileManager.json`.
+
+## D-035 Dialog Duplicate Login Attempt dan tombol Confirm-nya berseverity danger (2026-10-31)
+
+- **Spec / langkah:** `TC-AUTH-SES-E2E-001` TC-AUTH-SES-1 langkah 3-7 dan 10-12; `TC-AUTH-SES-E2E-007` TC-AUTH-SES-17 langkah 6-9.
+- **Spec meminta:** dialog dan tombol [Confirm] berseverity warning (PRD session-management S-05).
+- **Kenyataannya:** dialog dan [Confirm] berseverity danger; [Cancel] tetap contrast.
+- **Karena:** override product owner yang sudah tertulis di aplikasi (`useDuplicateLoginAttempt.ts`): mengonfirmasi berarti mengakhiri sesi di device lain, jadi aksinya destruktif. Keputusan UI menang atas PRD.
+- **Keputusan:** langkah-langkah itu memverifikasi severity danger untuk dialog dan [Confirm].
+- **Diterapkan di:** skrip Session Management 001 dan 007.
