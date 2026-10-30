@@ -315,3 +315,12 @@ Aturan:
 - **Karena:** override product owner yang sudah tertulis di aplikasi (`useDuplicateLoginAttempt.ts`): mengonfirmasi berarti mengakhiri sesi di device lain, jadi aksinya destruktif. Keputusan UI menang atas PRD.
 - **Keputusan:** langkah-langkah itu memverifikasi severity danger untuk dialog dan [Confirm].
 - **Diterapkan di:** skrip Session Management 001 dan 007.
+
+## D-036 Kotak kode MFA satu baris enam kotak, bukan dua grup tiga (2026-10-31)
+
+- **Spec / langkah:** `TC-AUTH-MFA-E2E-004` TC-AUTH-MFA-04 langkah 15; `TC-AUTH-MFA-E2E-009` TC-AUTH-MFA-05 langkah 13.
+- **Spec meminta:** SegmentedInput 6 kotak digit dalam dua grup tiga kotak.
+- **Kenyataannya:** enam kotak dalam satu baris selebar tombol.
+- **Karena:** PRD mfa §4 hanya menyebut "SegmentedInput 6 digit" tanpa pengelompokan; lebar kotak sama dengan tombol adalah keputusan owner 2026-10-19. Keputusan UI menang.
+- **Keputusan:** langkah itu memverifikasi enam kotak dalam satu grup.
+- **Diterapkan di:** skrip MFA 004 dan 009.
