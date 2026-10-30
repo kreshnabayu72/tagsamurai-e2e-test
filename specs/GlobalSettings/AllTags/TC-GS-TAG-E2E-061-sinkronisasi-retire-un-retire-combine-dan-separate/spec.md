@@ -18,9 +18,10 @@ coverage:
 
 - Mode: FE+BE (backend nyata). Spec ini mengubah status tag lewat aksi FAMS/Supply Asset dan memisahkan lalu menggabungkan kembali tag combined; tidak ada penghapusan data.
 - Akun aktor: Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`; hook `after` mengembalikan sesi ke akun default suite. Akses Global Settings > TAG Combine & Separate dipakai oleh akun ini.
-- Pemicu (P-2, sesi API, tidak diasersi): pemensiunan tag oleh FAMS/Supply Asset (TC-GS-TAG-301) dan Un-retire oleh akun Supply Asset yang berwenang (TC-GS-TAG-302). Akun Supply Asset tidak ada di Pre-setup TC dan disediakan tim FE (S-13); pemensiunan oleh FAMS memakai Admin FAMS (Hendra Gunawan) `famsAdmin_automated_qaTeam1@qwertysystem.net`, kredensial `Spectra.env.FA_ADMIN_PASSWORD`. Mekanisme dan endpoint tidak didefinisikan di TC, PRD, atau LLD (Q-9).
+- Pemicu (sesi API aktor, tidak diasersi): pemensiunan tag oleh FAMS/Supply Asset (TC-GS-TAG-301) dan Un-retire oleh akun Supply Asset yang berwenang (TC-GS-TAG-302). Akun Supply Asset tidak ada di Pre-setup TC dan disediakan tim FE (S-13); pemensiunan oleh FAMS memakai Admin FAMS (Hendra Gunawan) `famsAdmin_automated_qaTeam1@qwertysystem.net`, kredensial `Spectra.env.FA_ADMIN_PASSWORD`. Mekanisme dan endpoint tidak didefinisikan di TC, PRD, atau LLD (Q-9).
 - Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab All.
 - Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30; kartu RFID – Object TAG `21 of 50`). Baris yang dipakai: DD-12 `E2801160600002054D8A0012` (RFID Object Available, dipensiunkan), DD-08 `E2801160600002054D8A0008` (RFID Retired, di-Un-retire), DD-11 `E2801160600002054D8A0011` (RFID) dan DD-13 `04A224B2C15E83` (NFC) yang combined. Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4); fixture BE memulihkan kondisi awal sebelum spec dan sebelum tiap TC.
+- Sesi API aktor (kemampuan dinyatakan di `suite.md`): FAMS/Supply Asset memensiunkan tag dan akun Supply Asset melakukan Un-retire.
 - Kemampuan teknis (disediakan tim FE/BE): sesi API pemensiunan dan Un-retire; penanda event selesai diproses (Eventual/SSE); simulasi reader RFID dan NFC untuk wizard Combine (D-4, Q-1); langkah rinci halaman Combine & Separate (selektor dan alur pemisahan) tidak didefinisikan di TC, PRD, atau LLD ("disediakan tim FE"); seed dan reset idempotent Seed Registri A.
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan Seed Registri A (DD-08, DD-11, DD-12, DD-13) lewat fixture BE.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data registri dan sesi akun.
@@ -54,41 +55,42 @@ coverage:
 18. Buka menu baris DD-08, lalu klik `TAG Log`
 19. Verifikasi entri baru `Recovered` dengan `Previous Status: Retired`
 20. Tutup popup TAG Log
-21. Verifikasi kartu RFID – Object TAG terpakai bertambah 1 (`22 of 50`)
+21. Klik Tab All
+22. Verifikasi kartu RFID – Object TAG terpakai bertambah 1 (`22 of 50`)
 
 ### TC-GS-TAG-303: Combine dan Separate
 
-22. Pulihkan Seed Registri A lewat fixture BE (DD-11 dan DD-13 combined), muat ulang halaman, lalu klik Tab All
-23. Buka Global Settings > TAG Combine & Separate
-24. Pisahkan DD-11 dan DD-13
-25. Kembali ke Global Settings > TAG Tab All
-26. Untuk setiap baris pada tabel "Pasangan combined" (langkah 27 sampai 30):
-27. Verifikasi baris tag tidak menampilkan ikon 🔗
-28. Buka menu baris tag, lalu klik `TAG Log`
-29. Verifikasi TAG Log tag memuat `Separated`
-30. Tutup popup TAG Log
-31. Buka Global Settings > TAG Combine & Separate
-32. Gabungkan kembali dengan memindai DD-11 lalu DD-13 di wizard Combine, lalu Submit
-33. Kembali ke Global Settings > TAG Tab All
-34. Untuk setiap baris pada tabel "Pasangan combined" (langkah 35 sampai 41):
-35. Verifikasi baris tag menampilkan ikon 🔗
-36. Klik ikon 🔗 pada baris tag
-37. Verifikasi popup Combined TAG memuat pasangannya
-38. Tutup popup Combined TAG
-39. Buka menu baris tag, lalu klik `TAG Log`
-40. Verifikasi TAG Log tag memuat `Combined`
-41. Tutup popup TAG Log
+23. Pulihkan Seed Registri A lewat fixture BE (DD-11 dan DD-13 combined), muat ulang halaman, lalu klik Tab All
+24. Buka Global Settings > TAG Combine & Separate
+25. Pisahkan DD-11 dan DD-13
+26. Kembali ke Global Settings > TAG Tab All
+27. Untuk setiap baris pada tabel "Pasangan combined" (langkah 28 sampai 31):
+28. Verifikasi baris tag tidak menampilkan ikon 🔗
+29. Buka menu baris tag, lalu klik `TAG Log`
+30. Verifikasi TAG Log tag memuat `Separated`
+31. Tutup popup TAG Log
+32. Buka Global Settings > TAG Combine & Separate
+33. Gabungkan kembali dengan memindai DD-11 lalu DD-13 di wizard Combine, lalu Submit
+34. Kembali ke Global Settings > TAG Tab All
+35. Untuk setiap baris pada tabel "Pasangan combined" (langkah 36 sampai 42):
+36. Verifikasi baris tag menampilkan ikon 🔗
+37. Klik ikon 🔗 pada baris tag
+38. Verifikasi popup Combined TAG memuat pasangannya
+39. Tutup popup Combined TAG
+40. Buka menu baris tag, lalu klik `TAG Log`
+41. Verifikasi TAG Log tag memuat `Combined`
+42. Tutup popup TAG Log
 
 ## Notes
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
-- Spec melewati sekitar 35 langkah (41 langkah nominal, sekitar 54 setelah ekspansi dua blok ulang: langkah 27 sampai 30 untuk 2 tag dan langkah 35 sampai 41 untuk 2 tag). Alasan: tiga TC satu topik (sinkronisasi perubahan status tag dan relasi combined ke registri) dengan satu dataset Seed Registri A dan satu kelas harness; tiap blok berdiri sendiri karena data dipulihkan lewat fixture BE di langkah 9 dan 22. Langkah berulang memakai idiom tabel di Prerequisites (langkah 26 dan 34).
+- Spec melewati sekitar 35 langkah (42 langkah nominal, sekitar 54 setelah ekspansi dua blok ulang: langkah 28 sampai 31 untuk 2 tag dan langkah 36 sampai 42 untuk 2 tag). Alasan: tiga TC satu topik (sinkronisasi perubahan status tag dan relasi combined ke registri) dengan satu dataset Seed Registri A dan satu kelas harness; tiap blok berdiri sendiri karena data dipulihkan lewat fixture BE di langkah 9 dan 23. Langkah berulang memakai idiom tabel di Prerequisites (langkah 27 dan 35).
 - Perubahan urutan di dalam TC-GS-TAG-302 (S-05 butir terakhir): Expected d (modul GS tidak menyediakan kontrol Un-retire) hanya bermakna selagi DD-08 masih Retired, sehingga diamati di langkah 10 sampai 12 sebelum pemicu Un-retire (langkah 13); TC sumber menaruhnya di Expected sesudah Un-retire.
-- Pengecualian P-2: pemensiunan dan Un-retire hanyalah pemicu state lewat sesi API; objek asersi adalah status, kartu, dan TAG Log di registri Global Settings. Aksi Separate dan Combine (TC-GS-TAG-303) dijalankan langsung oleh Total Control Client A pada Global Settings.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 (baseline kartu), 8, 20, 30, 38, dan 41 (menutup popup), 9 dan 22 (memulihkan data lewat fixture BE), 12 (menutup menu), 16 (pindah tab), 25 dan 33 (kembali ke registri).
+- Aksi Separate dan Combine (TC-GS-TAG-303) dijalankan langsung oleh Total Control Client A pada Global Settings.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 (baseline kartu), 8, 20, 31, 39, dan 42 (menutup popup), 9 dan 23 (memulihkan data lewat fixture BE), 12 (menutup menu), 16 (pindah ke Tab Not Paired), 21 (pindah ke Tab All, tempat License Counter Card tampil), 26 dan 34 (kembali ke registri).
 - Asersi tambahan di luar Expected TC (S-03): langkah 10 sampai 12 menjalankan Expected d TC-GS-TAG-302 dengan langkah buka menu yang tidak ada di TC; tidak ada asersi lain.
 - Temuan untuk QA:
-  - Q-9: langkah dan selektor FAMS, Supply Asset, dan halaman Combine & Separate tidak didefinisikan; langkah 24 dan 32 ditulis sebagai kemampuan "disediakan tim FE".
+  - Q-9: langkah dan selektor FAMS, Supply Asset, dan halaman Combine & Separate tidak didefinisikan; langkah 25 dan 33 ditulis sebagai kemampuan "disediakan tim FE".
   - Q-1: TC-GS-TAG-303 berlabel `Manual Only — (b)` (pemindaian DD-11 lalu DD-13 di wizard Combine); kemampuan simulasi reader dicatat di Prerequisites (D-4).
   - TC-GS-TAG-301 Expected b menyebut entri `Retired` "dengan Previous Status" tanpa nilai; spec mengasersi kehadiran field (nilai Available mengikuti Seed Registri A dan tidak diasersi). Post Condition tidak ada.
   - TC-GS-TAG-302 Expected a menyebut DD-08 menjadi `Available` dan tampil di Tab Not Paired; Expected c menyebut kartu `22 of 50` (naik 1 dari `21 of 50`). Post Condition tidak ada.

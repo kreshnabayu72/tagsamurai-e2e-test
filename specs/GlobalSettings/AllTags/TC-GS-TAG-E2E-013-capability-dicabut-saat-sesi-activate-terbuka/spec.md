@@ -16,9 +16,9 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor UI: Manage TAG (Update) Client A (Agus Wijaya) `manageTagUpdate_automated_qaTeam1@qwertysystem.net`, password `Spectra.env.GS_TAG_UPDATE_PASSWORD` (belum terdaftar di `.env.example` dan `spectra.config.ts`; dicatat di `suite.md` bagian Kredensial). Login di hook `before`; hook `after` mengembalikan sesi ke akun default suite (Total Control, `GS_TC_PASSWORD`).
-- Pelaku kedua (Admin B): Total Control kedua Client A (Dewi Lestari) `totalControl2_automated_qaTeam1@qwertysystem.net`, password `Spectra.env.GS_TC2_PASSWORD`, memakai sesi API sebagai pemicu saja (P-2); kesamaan akun dengan env var `GS_TC2` dikonfirmasi tim FE (Q-2). Mekanisme API pencabutan capability disediakan tim FE (tidak didefinisikan di TC, PRD, atau LLD).
+- Pelaku kedua (Admin B): Total Control kedua Client A (Dewi Lestari) `totalControl2_automated_qaTeam1@qwertysystem.net`, password `Spectra.env.GS_TC2_PASSWORD`, memakai sesi API aktor (kemampuan dinyatakan di `suite.md`); kesamaan akun dengan env var `GS_TC2` perlu dikonfirmasi tim FE saat tahap script (Q-2, kategori B). Mekanisme API pencabutan capability disediakan tim FE (tidak didefinisikan di TC, PRD, atau LLD).
 - Data: stok resmi Admin Console Client A DD-S1 (GPS `356938035643001`, Available); kuota GPS tersedia. Stok di-seed ulang idempotent oleh hook `before` (Q-4; mekanisme disediakan tim FE/BE).
-- State global: capability `Manage TAG` akun Manage TAG (Update) dicabut pada langkah 3 dan dipulihkan ke Manage TAG (Update) pada langkah 6 serta hook `after` sebagai cadangan. Suite berjalan serial (`parallel: false`).
+- State global: capability `Manage TAG` akun Manage TAG (Update) dicabut pada langkah 3 dan dipulihkan ke Manage TAG (Update) pada langkah 8 serta hook `after` sebagai cadangan. Suite berjalan serial (`parallel: false`).
 - Kemampuan teknis: sesi API admin kedua untuk mencabut dan memulihkan capability; kemampuan baca status identifier lewat fixture BE (untuk Expected "tag tidak teraktivasi").
 - Layar awal: Global Settings > TAG Tab All dibuka di hook `beforeEach`.
 - Guided Tooltip: flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate` disetel true oleh hook suite `before` dan dipulihkan di `after` (pernyataan hook di `suite.md`); spec ini tidak mengubahnya.
@@ -41,7 +41,6 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md` (Section 7d). TC-320 berlabel `Manual Only — (d) dua sesi paralel` di TC; tetap masuk spec (D-4).
-- Pengecualian P-2: sesi Admin B hanya memicu perubahan state (pencabutan capability) lewat sesi API dan bukan objek asersi; langkah 3 dan 8 ditulis "hingga ... tersimpan".
 - Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1 (membuka halaman Activate), langkah 8 (pemulihan capability; hook `after` sebagai cadangan, S-09), langkah 9 (kembali ke List dari halaman Activate yang masih berisi staging lewat sidebar `TAG` lalu `[Leave]`; `[Leave]` pada dialog `Unsaved Changes` tidak diasersi terpisah).
 - Temuan untuk QA:
   - TC-320 langkah 2 menyebut "sesi Total Control" tanpa menyebut akun; Pre-setup Total Control kedua (`totalControl2_automated_qaTeam1`) berbeda nama dengan env `GS_TC2` (`totalControlSecond_automated_qaTeam1`) (Q-2).

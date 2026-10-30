@@ -1,0 +1,73 @@
+---
+id: TC-GS-IMPORT-E2E-049-multi-konteks-client-c-halaman-basi-setelah-draft-dihapus-dibuat-admin
+title: "Multi-Konteks Client C: Halaman Basi Setelah Draft Dihapus atau Dibuat Admin Lain, Confirm Mapping Append ke Draft yang Sudah Hilang"
+priority: High
+caseType: Edge
+status: draft
+sourceTc:
+  - TC-GS-IMPORT-868@L738
+  - TC-GS-IMPORT-873
+  - TC-GS-IMPORT-874
+coverage:
+  web: automated
+---
+
+# Multi-Konteks Client C: Halaman Basi Setelah Draft Dihapus atau Dibuat Admin Lain, Confirm Mapping Append ke Draft yang Sudah Hilang
+
+## Prerequisites
+
+- Mode: FE+BE (backend nyata). Suite serial (`parallel: false`); lihat `suite.md`.
+- Akun, password lewat env:
+  - Total Control Client C (Rudi Hartanto) `totalControl_automated_qaTeam3@qwertysystem.net`, `Spectra.env.GS_CLIENTC_TC_PASSWORD`; login UI di hook `before`; satu-satunya sesi UI yang diasersi.
+  - Admin kedua Client C (Oki Setiawan) `totalControlSecond_automated_qaTeam3@qwertysystem.net`, `Spectra.env.GS_CLIENTC_TC2_PASSWORD`; hanya memicu perubahan state lewat sesi API ("lewat fixture permintaan" pada TC): Discard Draft Brand atau unggah `brand-3.csv` dan konfirmasi pemetaan sampai draft tersimpan. Kemampuan sesi API ini disediakan tim FE/BE.
+  - Password tidak ditulis di spec atau fixture.
+- Data: `brand-3.csv` (header `Brand Name`; Acme Corp, Lenovo, Zebra Technologies) dan `brand-3b.csv` (Hitachi, Philips, Sony). Client C tanpa draft Tab Brand sebelum tiap TC (Kontrak Fixture R1).
+- Layar awal: hook `beforeEach` suite membuka Global Settings > Import untuk Total Control Client C.
+- Guided Tooltip: flag `guided_tooltip_seen_gs-import` untuk akun aktor spec ini diatur hook suite `before` dan dipulihkan hook `after`; lihat `suite.md`.
+- Pemulihan: draft Brand Client C direset lewat skrip fixture di akhir tiap blok (R1).
+
+## Test Steps
+
+### TC-GS-IMPORT-868 (baris L738): Confirm Mapping pada alur Append membuat draft baru bila draft tujuan sudah dihapus
+
+1. Unggah `brand-3.csv` dan klik [Confirm Mapping] sehingga draft Brand 3 baris terbentuk
+2. Unggah `brand-3b.csv`, pada dialog Confirm Append Draft klik [Append Records], dan biarkan Modal Column Mapping terbuka
+3. Admin kedua Client C (sesi API): Discard Draft Brand hingga draft terhapus
+4. Klik [Confirm Mapping]
+5. Verifikasi modal tertutup
+6. Verifikasi toast sukses: "Success, row has been added."
+7. Verifikasi toast "This draft is no longer available." tidak muncul
+8. Verifikasi Staging Table menampilkan draft baru berisi 3 baris `pending` bernomor 1 sampai 3: `Hitachi`, `Philips`, `Sony`
+9. Reset Client C ke tanpa draft Tab Brand lewat skrip fixture
+
+### TC-GS-IMPORT-873: Upload pada halaman basi setelah draft dihapus admin lain
+
+10. Buka Import > Brand lewat menu Import
+11. Unggah `brand-3.csv` dan klik [Confirm Mapping] sehingga draft Brand 3 baris terbentuk (jangan muat ulang halaman setelahnya)
+12. Admin kedua Client C (sesi API): Discard Draft Brand hingga draft terhapus
+13. Klik [Upload File] dan pilih `brand-3b.csv`
+14. Pada dialog Confirm Append Draft klik [Append Records]
+15. Verifikasi Modal Column Mapping terbuka untuk `brand-3b.csv`
+16. Verifikasi toast "This draft is no longer available." tidak muncul
+17. Verifikasi unggahan tidak ditolak
+18. Klik [Cancel] pada Modal Column Mapping
+
+### TC-GS-IMPORT-874: Upload dari halaman basi saat draft sudah dibuat admin lain
+
+19. Buka Import > Brand lewat menu Import (belum ada draft; jangan muat ulang halaman setelahnya)
+20. Admin kedua Client C (sesi API): unggah `brand-3.csv` dan konfirmasi pemetaan hingga draft Brand 3 baris tersimpan
+21. Klik [Upload File] dan pilih `brand-3b.csv`
+22. Verifikasi Modal Column Mapping terbuka langsung tanpa dialog Confirm Append Draft
+23. Klik [Confirm Mapping] pada Modal Column Mapping
+24. Verifikasi toast sukses: "Success, row has been added."
+25. Verifikasi Staging Table menampilkan satu draft berisi 6 baris `pending` bernomor 1 sampai 6 (3 baris Admin kedua lalu `Hitachi`, `Philips`, `Sony`)
+26. Reset Client C ke tanpa draft Tab Brand lewat skrip fixture
+
+## Notes
+
+- Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Halaman Total Control yang basi menjadi objek asersi (kelas c, prinsip 13c). Admin kedua hanya memicu perubahan lewat sesi API (P-2); tidak ada sesi UI kedua.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 9, 26 (reset Client C), langkah 10 dan 19 (membuka halaman tanpa draft), langkah 18 (menutup modal agar blok berikutnya mulai dari layar awal), langkah 3, 12, 20 (pemicu Admin kedua; langkah 20 dan 3, 12 diikuti "Tunggu aksi selesai" hingga draft tersimpan atau terhapus).
+- Pembagian TC lintas spec: nomor TC-GS-IMPORT-868 dipakai dua baris; spec ini memuat baris di L738 (Confirm Mapping pada alur Append) dan spec 073 memuat baris di L1077 (Take Over Session).
+- Temuan untuk QA:
+  - ID ganda TC-GS-IMPORT-868 (L738 dan L1077), 869 (L937 dan L1078), 870 (L1020 dan L1079), 871 (L938 dan L1080) dengan isi berbeda; `sourceTc` dan `check-suite.py` tidak dapat membedakannya. Usulan: QA memberi nomor baru pada empat baris di L1077-L1080.
+  - TC-GS-IMPORT-868 dan 873 menyebut dialog "Confirm Append Draft", sedangkan TC lain memberi judul dialog yang sama "Append to Draft"; spec memakai nama dialog sesuai TC sumber.

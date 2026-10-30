@@ -63,7 +63,7 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6 (menutup pilihan Rows per page), langkah 7 (pindah ke halaman 2 supaya "halaman kembali 1" pada langkah 9 bermakna, S-14), langkah 12 (memulihkan Rows per page 10), langkah 21 dan 22 (mengembalikan sort ke netral dan mengosongkan Search).
 - Langkah 11 (memilih `100`) adalah langkah 4 TC-GS-TAG-245 yang tidak punya Expected sendiri; spec tidak menambah asersi untuk langkah itu.
 - Hitungan 30 baris, 16 baris `Generic` (DD-15 sampai DD-30 dan merek Generic), dan tiga halaman pada 10 baris per halaman diturunkan dari Seed Registri A; Expected TC-GS-TAG-246 hanya menyebut "halaman 1" dan "halaman 2".
-- Pemisahan dari spec topik registri lain (Search, Filter, Sort, Pagination, Setup Column): kelas harness tidak sama dan tidak semua memakai data yang sama; ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
+- Pemisahan dari spec topik registri lain (Search, Filter, Sort, Pagination, Setup Column): ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
 - Temuan untuk QA:
   - TC-GS-TAG-246 judul dan Skenario menyebut "Search dan Apply Filter mereset halaman ke 1", tetapi Langkah Uji dan Expected hanya memuat Search; reset halaman oleh Apply Filter tidak diuji. Spec mengikuti langkah TC dan tidak menambah langkah Filter. Perlu TC tambahan atau koreksi judul.
   - TC-GS-TAG-245 langkah 3 memilih 25 saat tabel sudah berada di halaman 1, sehingga Expected c ("halaman kembali 1") tidak dapat dibuktikan; spec menambahkan perpindahan ke halaman 2 (langkah 7) sebagai langkah menuju keadaan (S-14).

@@ -22,9 +22,10 @@ coverage:
 - Akun aktor (ganti akun eksplisit pada blok terakhir; bagian sesudah ganti akun tetap bermakna):
   - Total Control Client Audit Joko Santoso `totalControl_automated_qaAudit@qwertysystem.net`, `Spectra.env.GS_TC_AUDIT_PASSWORD`. Login di hook `before` (TC-GS-TAG-127, 170, 171, 329).
   - Manage TAG (Update) Client A Agus Wijaya `manageTagUpdate_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TAG_UPDATE_PASSWORD` (TC-GS-TAG-32). Kedua nama env belum terdaftar di `spectra.config.ts` dan `.env.example` (didaftarkan pemilik repositori). Hook `after` mengembalikan sesi ke akun default suite.
+- Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab Not Paired.
 - Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok, S-12):
-  - Seed Client Audit: AU1 (DD-31) `E2801160600002054D8A5001` RFID Object Available (combined dengan AUN); AU2 (DD-32) `E2801160600002054D8A5002` Damaged/Missing; AU3 (DD-33) `E2801160600002054D8A5003` Retired; AU4 (DD-34) `E2801160600002054D8A5004` Available; AU5 (DD-35) `E2801160600002054D8A5005` Reserved; AU6 (DD-36) `E2801160600002054D8A5006` Paired; AU7 (DD-37) `E2801160600002054D8A5007` To be Returned; AUN (DD-38) NFC `04A224B2C15E95` Available (combined dengan AU1).
-  - Client A (TC-GS-TAG-32): Seed Registri A; satu-satunya tag NFC eligible Audit adalah `04A224B2C15E83` (DD-13, Available, combined dengan DD-11). Submit mengubah Last Scanned DD-13; dipulihkan lewat fixture BE (langkah 62 dan hook `after`).
+  - Seed Client Audit: AU1 (DD-31) `E2801160600002054D8A5001` RFID Object Available (combined dengan AUN); AU2 (DD-32) `E2801160600002054D8A5002` Damaged/Missing; AU3 (DD-33) `E2801160600002054D8A5003` Retired; AU4 (DD-34) `E2801160600002054D8A5004` Available; AU5 (DD-35) `E2801160600002054D8A5005` Reserved; AU6 (DD-36) `E2801160600002054D8A5006` Paired; AU7 (DD-37) `E2801160600002054D8A5007` To be Returned; AUN (DD-38) NFC `04A224B2C15E95` Available (combined dengan AU1). AU5, AU6, dan AU7 dipakai sebagai precondition TC, tidak diasersi.
+  - Client A (TC-GS-TAG-32): Seed Registri A; satu-satunya tag NFC eligible Audit adalah `04A224B2C15E83` (DD-13, Available, combined dengan DD-11). Submit mengubah Last Scanned DD-13; dipulihkan lewat fixture BE (langkah 61 dan hook `after`).
 - Kolom `Last Scanned` dan `Last Scanned In` ditampilkan di registri (precondition TC-GS-TAG-170 dan 171; cara menampilkannya disediakan tim FE). Format tanggal `dd/MM/yy`, 24-hour, Asia/Jakarta.
 - Kemampuan teknis (disediakan tim FE, kelas d harness hardware, D-4, Q-1, Q-6): simulasi Handheld Reader `Zebra RFD40 (SN-2201)`; `Pindai X` pada popup Audit berarti memulai sesi pemindaian pada popup (kontrol pemicu disediakan tim FE), X dipindai, lalu klik [Stop] pada Floating Status Widget; jam server dan jam browser diatur bersama (waktu pindai dicatat sesudah pemindaian dengan toleransi satu menit; jam dimajukan 5 menit agar selisih dengan waktu Submit melebihi toleransi dan dipulihkan sesudah Submit, sebelum asersi, S-09); baca jumlah entri Event Log Tab Audit TAG dan TAG Log NFC (baseline); seed/reset Seed Client Audit dan Seed Registri A.
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): pulihkan jam server dan jam browser, reset Seed Client Audit dan Seed Registri A, kembalikan sesi ke akun default suite.
@@ -34,7 +35,7 @@ coverage:
 
 ### TC-GS-TAG-127: Submit semua Verified, tanpa dialog, recovery Damaged/Missing
 
-1. Buka Global Settings > TAG > Tab Not Paired, klik `Audit TAG`, lalu pilih `RFID` pada overlay `Select TAG Type`
+1. Klik `Audit TAG`, lalu pilih `RFID` pada overlay `Select TAG Type`
 2. Pindai AU1, AU2, AU3, dan AU4
 3. Catat waktu pindai `T127` (waktu browser sesudah pemindaian terakhir)
 4. Klik [Submit]
@@ -70,7 +71,7 @@ coverage:
 
 ### TC-GS-TAG-171: Sibling combined yang ikut Verified secara silent
 
-31. Ketik Search `04A224B2C15E95`, tekan Enter, buka menu baris NFC `04A224B2C15E95` > `TAG Log`, catat jumlah entri sebagai `TLN`, lalu tutup popup TAG Log
+31. Ganti isi kotak search dengan `04A224B2C15E95`, tekan Enter, buka menu baris NFC `04A224B2C15E95` > `TAG Log`, catat jumlah entri sebagai `TLN`, lalu tutup popup TAG Log
 32. Klik `Audit TAG`, lalu pilih `RFID` pada overlay `Select TAG Type`
 33. Pindai AU1 (combined dengan NFC `04A224B2C15E95`)
 34. Catat waktu pindai `T171` (waktu browser sesudah pemindaian)
@@ -106,14 +107,13 @@ coverage:
 58. Pindai `04A224B2C15E83`
 59. Klik [Submit]
 60. Verifikasi toast sukses: "Success, audit has been submitted."
-61. Tutup popup bila masih terbuka
-62. Pulihkan Seed Registri A lewat fixture BE
+61. Pulihkan Seed Registri A lewat fixture BE
 
 ## Notes
 
-- Mode: FE+BE. Kelas d (harness hardware tersimulasi; D-4, Q-1). P-1 (S-05, keputusan D-1): klausa absence TC-GS-TAG-171 (tidak ada entri TAG Log `Audit` untuk NFC) berada di spec asal dengan baseline `TLN` dan anchor positif langkah 42. TC-GS-TAG-32 ditempatkan di spec Audit karena butuh scan (rujukan dua arah dengan spec Role Matrix positif, TC-GS-TAG-31 dan 33).
-- Spec melewati sekitar 35 langkah (62 langkah). Alasan: seluruh blok satu topik aksi (Submit Audit) dan satu kelas harness (reader tersimulasi), tiap blok berdiri sendiri karena Seed Client Audit dipulihkan antar blok (langkah 12, 30, 46, 54) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; blok akun Manage TAG (Update) memakai ganti akun eksplisit dan tetap bermakna sendiri (bagian 3, pemisah (b)) dan ditaruh paling akhir karena mengubah Seed Registri A.
-- Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 3, 7, 12, 13, 14, 16, 17, 19, 20, 21, 30, 31, 32, 34, 35, 37, 38, 39, 43, 46, 47, 48, 52, 54, 55, 56, 57, 61, 62 (membuka popup dan surface log, Search untuk menemukan baris target, mencatat nilai, menunggu aksi konfirmasi selesai sebelum memulihkan jam, mengatur dan memulihkan jam, pemulihan data, ganti akun).
+- Mode: FE+BE. Kelas d (harness hardware tersimulasi; D-4, Q-1). P-1 (S-05, keputusan D-1): klausa absence TC-GS-TAG-171 (tidak ada entri TAG Log `Audit` untuk NFC) berada di spec asal dengan baseline `TLN` dan anchor positif langkah 44. TC-GS-TAG-32 ditempatkan di spec Audit karena butuh scan (rujukan dua arah dengan spec Role Matrix positif, TC-GS-TAG-31 dan 33).
+- Spec melewati sekitar 35 langkah (61 langkah). Alasan: seluruh blok satu topik aksi (Submit Audit) dan satu kelas harness (reader tersimulasi), tiap blok berdiri sendiri karena Seed Client Audit dipulihkan antar blok (langkah 12, 30, 46, 54) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; blok akun Manage TAG (Update) memakai ganti akun eksplisit dan tetap bermakna sendiri (bagian 3, pemisah (b)) dan ditaruh paling akhir karena mengubah Seed Registri A.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 3, 7, 12, 13, 14, 16, 17, 19, 20, 21, 30, 31, 32, 34, 35, 37, 38, 39, 43, 46, 47, 48, 52, 54, 55, 56, 57, 61 (membuka popup dan surface log, Search untuk menemukan baris target, mencatat nilai, menunggu aksi konfirmasi selesai sebelum memulihkan jam, mengatur dan memulihkan jam, pemulihan data, ganti akun).
 - Pembagian TC lintas spec: TC-GS-TAG-128 sampai 131 dan 174 (dialog Submit Audit dan hasil status) di spec 043; TC-GS-TAG-132 (sibling silent) di spec 041; TC-GS-TAG-31 dan 33 di spec Role Matrix positif (slice 1).
 - Temuan untuk QA:
   - Q-6: "Tunggu minimal 1 menit" (TC-GS-TAG-170 dan 171) tidak menentukan menunggu nyata atau mengatur jam; spec mengatur jam server dan jam browser bersama (5 menit). VAL "1 menit" diturunkan dari Tabel Data Uji (Q-13).

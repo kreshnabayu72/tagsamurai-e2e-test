@@ -19,13 +19,14 @@ coverage:
 
 ## Prerequisites
 
-- Mode: FE+BE (backend nyata; pemicu Failed memakai sesi API, P-2).
+- Mode: FE+BE (backend nyata).
 - Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab All.
 - Akun aktor:
   - Total Control Client A Sari Dewi `totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`. Login di hook `before` (TC-GS-TAG-111, 112, 113, 184, 185).
   - Total Control Client NoByo Eka Pratama `totalControl_automated_qaNoByo@qwertysystem.net`, `Spectra.env.GS_TC_NOBYO_PASSWORD` (TC-GS-TAG-183): login lewat langkah ganti akun eksplisit pada blok terakhir. Hook `after` mengembalikan sesi ke akun default suite.
   - Pelaku kedua (TC-GS-TAG-185, sesi API, hanya memicu perubahan state): Total Control kedua Client A Dewi Lestari `totalControl2_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC2_PASSWORD`, mengaktivasi `356938035643001` hingga Activated (kesamaan akun dengan `.env.example` perlu dikonfirmasi tim FE saat tahap script, Q-2, kategori B).
-- Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok, S-12): stok resmi Admin Console Client A: GPS `356938035643001` (DD-S1) dan `356938035643003` (DD-S3) Available, `356938035643002` (DD-S2) Damaged/Missing, Device Name `Teltonika FMB920`. Katalog Client A memuat `Queclink GV300` (Brand `Queclink`). Client NoByo: opsi mandiri nonaktif, tidak ada stok resmi untuk `356938035643101` (DD-N1). Data uji `35693803564` (DD-N6, 11 digit) hanya muncul di daftar Preview.
+- Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok, S-12): stok resmi Admin Console Client A: GPS `356938035643001` (DD-S1) dan `356938035643003` (DD-S3) Available, `356938035643002` (DD-S2) Damaged/Missing, Device Name `Teltonika FMB920` (DD-S2 dan DD-S3 dipakai sebagai precondition TC, tidak diasersi). Katalog Client A memuat `Queclink GV300` (Brand `Queclink`). Client NoByo: opsi mandiri nonaktif, tidak ada stok resmi untuk `356938035643101` (DD-N1). Data uji `35693803564` (DD-N6, 11 digit) hanya muncul di daftar Preview.
+- Sesi API aktor (kemampuan dinyatakan di `suite.md`): Total Control kedua Client A memicu state Failed pada TC-GS-TAG-185 (langkah 19).
 - Kemampuan teknis (disediakan tim FE/BE): penanganan dialog `beforeunload` di runner (mendeteksi kemunculan konfirmasi bawaan browser, membatalkannya agar tetap di halaman, atau menyetujuinya; S-08); tombol Back dan Forward browser; seed/reset stok dan registri; sesi API Total Control kedua; label dan placeholder input entri manual GPS serta tombol `Add` menunggu desain (NC-11), selektor disediakan tim FE.
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): pulihkan stok dan registri Client A dan Client NoByo, buang staging yang tersisa, kembalikan sesi ke akun default suite.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global. Guided Tooltip: mengikuti pernyataan hook suite di `suite.md`.
@@ -83,45 +84,46 @@ coverage:
 38. Verifikasi dialog Unsaved Changes yang sama muncul
 39. Klik [Cancel]
 40. Klik tiap segmen breadcrumb (dua segmen)
-41. Verifikasi breadcrumb dua segmen tidak dapat diklik (tidak ada navigasi dan tidak ada dialog)
-42. Klik tombol Back browser
-43. Verifikasi dialog Unsaved Changes yang sama muncul
-44. Klik [Leave]
-45. Verifikasi navigasi dilanjutkan (halaman Activate TAG tidak lagi tampil)
-46. Klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, lalu klik [Continue] pada popup `Ready to Activate a TAG`
-47. Verifikasi tabel staging kosong (staging sebelumnya dibuang)
-48. Klik item sidebar `Global Settings > User`
-49. Verifikasi halaman `Global Settings > User` tampil
-50. Klik tombol Back browser
-51. Verifikasi halaman Activate TAG tampil
-52. Tambahkan lewat entri manual (ketik di input lalu klik [Add]) `356938035643001`
-53. Klik tombol Forward browser
-54. Verifikasi dialog Unsaved Changes yang sama muncul
-55. Klik [Leave]
-56. Tunggu aksi selesai (dialog tertutup)
+41. Verifikasi breadcrumb dua segmen tidak dapat diklik (tidak ada navigasi; halaman Activate TAG tetap tampil)
+42. Verifikasi tidak ada dialog yang tampil setelah klik breadcrumb
+43. Klik tombol Back browser
+44. Verifikasi dialog Unsaved Changes yang sama muncul
+45. Klik [Leave]
+46. Verifikasi navigasi dilanjutkan (halaman Activate TAG tidak lagi tampil)
+47. Klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, lalu klik [Continue] pada popup `Ready to Activate a TAG`
+48. Verifikasi tabel staging kosong (staging sebelumnya dibuang)
+49. Klik item sidebar `Global Settings > User`
+50. Verifikasi halaman `Global Settings > User` tampil
+51. Klik tombol Back browser
+52. Verifikasi halaman Activate TAG tampil
+53. Tambahkan lewat entri manual (ketik di input lalu klik [Add]) `356938035643001`
+54. Klik tombol Forward browser
+55. Verifikasi dialog Unsaved Changes yang sama muncul
+56. Klik [Leave]
+57. Tunggu aksi selesai (dialog tertutup)
 
 ### TC-GS-TAG-183: Hanya baris Error di staging (Client NoByo)
 
-57. Ganti akun: logout, lalu login sebagai Total Control Client NoByo dengan `Spectra.env.GS_TC_NOBYO_PASSWORD`
-58. Buka Global Settings > TAG > Tab All, lalu klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, dan klik [Continue] pada popup `Ready to Activate a TAG`
-59. Tambahkan lewat entri manual (ketik di input lalu klik [Add]) `356938035643101`
-60. Muat ulang halaman (F5)
-61. Verifikasi konfirmasi bawaan browser (`beforeunload`) muncul (baris Error dihitung sebagai staging belum tersubmit)
-62. Batalkan konfirmasi bawaan browser (tetap di halaman)
-63. Klik item sidebar `TAG`, lalu klik [Leave] pada dialog Unsaved Changes (membuang staging)
+58. Ganti akun: logout, lalu login sebagai Total Control Client NoByo dengan `Spectra.env.GS_TC_NOBYO_PASSWORD`
+59. Buka Global Settings > TAG > Tab All, lalu klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, dan klik [Continue] pada popup `Ready to Activate a TAG`
+60. Tambahkan lewat entri manual (ketik di input lalu klik [Add]) `356938035643101`
+61. Muat ulang halaman (F5)
+62. Verifikasi konfirmasi bawaan browser (`beforeunload`) muncul (baris Error dihitung sebagai staging belum tersubmit)
+63. Batalkan konfirmasi bawaan browser (tetap di halaman)
+64. Klik item sidebar `TAG`, lalu klik [Leave] pada dialog Unsaved Changes (membuang staging)
 
 ## Notes
 
-- Mode: FE+BE. P-2: sesi API Total Control kedua (langkah 19) hanya memicu state Failed (ditulis "hingga ... tersimpan"). Konfirmasi bawaan browser ditangani runner (S-08, kemampuan tertulis di Prerequisites).
-- Spec melewati sekitar 35 langkah (63 langkah). Alasan: seluruh blok satu topik (proteksi keluar halaman Activate: `beforeunload` dan Dialog 9) dengan harness yang sama (penanganan dialog `beforeunload`) dan berdiri sendiri; staging dibuang dan data dipulihkan antar blok (langkah 7, 25, 26, 56, 63) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. TC-GS-TAG-111 dan TC-GS-TAG-113 berbagi satu sesi karena precondition dan staging awalnya identik (satu baris `356938035643001`); refresh TC-GS-TAG-111 dibatalkan agar staging utuh untuk TC-GS-TAG-113.
-- Urutan: kasus tanpa konfirmasi (TC-GS-TAG-112, 184) di awal; blok Client NoByo (TC-GS-TAG-183) paling akhir karena ganti akun hanya sekali (langkah 57) dan sesudahnya tidak ada blok Client A. TC-GS-TAG-112 dan 184 dijalankan sebelum TC-GS-TAG-111 karena keduanya tidak meninggalkan staging dirty; TC-GS-TAG-185 dan blok TC-GS-TAG-111/113 memakai akun Client A yang sama tanpa ganti akun.
-- Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 3, 7, 12, 17, 21, 24, 25, 26, 31, 46, 56, 57, 58, 62, 63 (membuka sesi, ganti akun, menunggu aksi selesai, membatalkan konfirmasi bawaan, membuang staging, pemulihan); langkah 3, 21, 56 adalah "Tunggu aksi selesai" sebelum berpindah surface (F5 atau ganti akun, butir 8 bagian 8b); langkah 5, 10, 15 adalah anchor positif halaman termuat untuk asersi absence konfirmasi sesudah F5 (8b butir 2).
-- Langkah tambahan demi Expected TC-GS-TAG-113 butir c dan d (S-03): langkah 37 sampai 41 (navbar dan breadcrumb), langkah 46 sampai 47 (mengamati staging dibuang), dan langkah 48 sampai 56 (urutan Forward: sidebar ke `Global Settings > User`, Back kembali ke halaman Activate, tambah baris, Forward, dialog, `Leave`; langkah 49 dan 51 adalah anchor positif), karena Langkah Uji TC hanya memuat sidebar dan Back.
+- Mode: FE+BE. Konfirmasi bawaan browser ditangani runner (S-08, kemampuan tertulis di Prerequisites).
+- Spec melewati sekitar 35 langkah (64 langkah). Alasan: seluruh blok satu topik (proteksi keluar halaman Activate: `beforeunload` dan Dialog 9) dengan harness yang sama (penanganan dialog `beforeunload`) dan berdiri sendiri; staging dibuang dan data dipulihkan antar blok (langkah 7, 25, 26, 57, 64) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. TC-GS-TAG-111 dan TC-GS-TAG-113 berbagi satu sesi karena precondition dan staging awalnya identik (satu baris `356938035643001`); refresh TC-GS-TAG-111 dibatalkan agar staging utuh untuk TC-GS-TAG-113.
+- Urutan: kasus tanpa konfirmasi (TC-GS-TAG-112, 184) di awal; blok Client NoByo (TC-GS-TAG-183) paling akhir karena ganti akun hanya sekali (langkah 58) dan sesudahnya tidak ada blok Client A. TC-GS-TAG-112 dan 184 dijalankan sebelum TC-GS-TAG-111 karena keduanya tidak meninggalkan staging dirty; TC-GS-TAG-185 dan blok TC-GS-TAG-111/113 memakai akun Client A yang sama tanpa ganti akun.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 3, 7, 12, 17, 21, 24, 25, 26, 31, 47, 57, 58, 59, 63, 64 (membuka sesi, ganti akun, menunggu aksi selesai, membatalkan konfirmasi bawaan, membuang staging, pemulihan); langkah 3, 21, 57 adalah "Tunggu aksi selesai" sebelum berpindah surface (F5 atau ganti akun, butir 8 bagian 8b); langkah 5, 10, 15 adalah anchor positif halaman termuat untuk asersi absence konfirmasi sesudah F5 (8b butir 2).
+- Langkah tambahan demi Expected TC-GS-TAG-113 butir c dan d (S-03): langkah 37 sampai 42 (navbar dan breadcrumb), langkah 47 sampai 48 (mengamati staging dibuang), dan langkah 49 sampai 57 (urutan Forward: sidebar ke `Global Settings > User`, Back kembali ke halaman Activate, tambah baris, Forward, dialog, `Leave`; langkah 50 dan 52 adalah anchor positif), karena Langkah Uji TC hanya memuat sidebar dan Back.
 - Pembagian TC lintas spec: TC-GS-TAG-102 (sumber baris Failed pada blok Failed) berada di spec 033; TC-GS-TAG-182 (refresh saat sesi scan aktif) berada di spec sesi scan (038).
 - Temuan untuk QA:
-  - TC-GS-TAG-113 Expected c menyebut pemicu navbar dan tombol Forward browser, tetapi Langkah Uji hanya memuat sidebar dan Back. Spec menambah pemicu navbar (icon Profile di navbar, lalu `My Profile`; item navbar tidak disebut TC, selektor disediakan tim FE), klik breadcrumb, dan urutan Forward (langkah 48 sampai 56). Keadaan halaman Activate setelah Back dari halaman lain (tipe terkunci atau sesi baru) tidak ditulis di TC maupun PRD; langkah 51 dan 52 mengasumsikan halaman Activate dengan input entri manual tersedia, dan bila tidak, bukti dicatat (S-15) serta TC-GS-TAG-113 diperbaiki.
+  - TC-GS-TAG-113 Expected c menyebut pemicu navbar dan tombol Forward browser, tetapi Langkah Uji hanya memuat sidebar dan Back. Spec menambah pemicu navbar (icon Profile di navbar, lalu `My Profile`; item navbar tidak disebut TC, selektor disediakan tim FE), klik breadcrumb, dan urutan Forward (langkah 49 sampai 57). Keadaan halaman Activate setelah Back dari halaman lain (tipe terkunci atau sesi baru) tidak ditulis di TC maupun PRD; langkah 52 dan 53 mengasumsikan halaman Activate dengan input entri manual tersedia, dan bila tidak, bukti dicatat (S-15) serta TC-GS-TAG-113 diperbaiki.
   - TC-GS-TAG-111/112/183/184/185: TC tidak menyatakan pilihan pada konfirmasi bawaan browser (tetap atau muat ulang); spec membatalkannya (tetap di halaman).
   - TC-GS-TAG-112: Skenario menyebut staging kosong dan baris Waiting for Approval, tetapi Langkah Uji hanya memuat baris Activated; spec mengikuti Langkah Uji.
   - TC-GS-TAG-185 bergantung pada TC-GS-TAG-102 (baris Failed); spec membangun baris Failed sendiri (langkah 18 sampai 20) tanpa menumpang TC lain.
-  - TC-GS-TAG-113 Expected d ("staging dibuang") tidak punya langkah observasi di TC; spec mengamati dengan membuka sesi baru (langkah 46 sampai 47).
+  - TC-GS-TAG-113 Expected d ("staging dibuang") tidak punya langkah observasi di TC; spec mengamati dengan membuka sesi baru (langkah 47 sampai 48).
   - Post Condition semua TC bernilai `-`.

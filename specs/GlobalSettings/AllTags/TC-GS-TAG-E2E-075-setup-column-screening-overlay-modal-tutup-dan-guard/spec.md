@@ -29,7 +29,7 @@ coverage:
 - Suite serial (`parallel: false`): konfigurasi kolom adalah state global browser yang dipakai spec lain.
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`): pernyataan hook suite ada di `suite.md`; pada spec mock ini dipenuhi lewat respons preferensi Guided Tooltip yang di-mock true, sehingga walkthrough tidak muncul otomatis.
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
-- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): konfigurasi kolom registri dikembalikan ke default (10 kolom Hideable tampil, 3 kolom Curated tersembunyi, urutan awal, tanpa pin).
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): konfigurasi kolom registri dikembalikan ke default dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE; 10 kolom Hideable tampil, 3 kolom Curated tersembunyi, urutan awal, tanpa pin).
 - Kemampuan teknis: `Spectra.intercept()` untuk respons daftar, counter, dan opsi; mengarahkan kursor ke header kolom Actions dan ke checkbox disabled untuk membaca tooltip; menutup modal lewat `[✕]`.
 
 ## Test Steps
@@ -65,7 +65,7 @@ coverage:
 ### TC-GS-TAG-237: Menutup modal tanpa Save membuang perubahan preview
 
 23. Buka modal Setup Column lewat header kolom Actions (⋯) dan item `Setup Column...`
-24. Uncheck `Brand`
+24. Hapus centang `Brand`
 25. Klik `[✕]`
 26. Verifikasi tabel kembali ke konfigurasi tersimpan terakhir
 27. Verifikasi kolom `Brand` tetap tampil
@@ -75,9 +75,9 @@ coverage:
 ### TC-GS-TAG-238: Guard satu kolom tersisa
 
 30. Buka modal Setup Column lewat header kolom Actions (⋯) dan item `Setup Column...`
-31. Uncheck `TAG Type`, `Device Name`, `SKU`, `Brand`, `Model/Type`, `Source`, `Type`, `Status`, dan `Last Scanned` (sisakan `Code`)
+31. Hapus centang `TAG Type`, `Device Name`, `SKU`, `Brand`, `Model/Type`, `Source`, `Type`, `Status`, dan `Last Scanned` (sisakan `Code`)
 32. Arahkan kursor ke checkbox `Code`
-33. Verifikasi checkbox `Code` disabled dan tidak bisa di-uncheck
+33. Verifikasi checkbox `Code` disabled dan tidak bisa dihapus centangnya
 34. Verifikasi tooltip `At least one column must remain visible.`
 35. Klik `[✕]` untuk menutup modal tanpa Save
 
@@ -91,5 +91,5 @@ coverage:
 - Temuan untuk QA:
   - Mekanisme penyimpanan preferensi kolom (sisi klien atau API) tidak didefinisikan di TC maupun `tc-all-tags-backend.md`; kutipan `prd-conventions.md` §9.3 yang dirujuk TC tidak menyebut endpoint. Spec mock mengasumsikan tidak ada endpoint dan tidak mengarang satu pun; bila persistensi ternyata lewat API, endpoint tambahan disediakan tim FE (S-13).
   - TC-GS-TAG-227 butir b menulis "13 kolom data" yang tercentang atau tidak dalam satu butir; spec memecahnya menjadi urutan, checkbox, drag handle, kelompok tercentang, dan kelompok tidak tercentang.
-  - TC-GS-TAG-238 langkah 2 ("Uncheck seluruh kolom kecuali `Code`") tidak menyebut apakah kolom Curated yang default tersembunyi ikut dihitung; spec hanya meng-uncheck sembilan kolom Hideable yang tercentang.
+  - TC-GS-TAG-238 langkah 2 ("Uncheck seluruh kolom kecuali `Code`") tidak menyebut apakah kolom Curated yang default tersembunyi ikut dihitung; spec hanya menghapus centang sembilan kolom Hideable yang tercentang.
   - Endpoint opsi dan stream (lihat Prerequisites) tidak berperan dalam langkah spec ini; kebutuhannya bergantung pada apa yang dipanggil halaman saat dibuka.

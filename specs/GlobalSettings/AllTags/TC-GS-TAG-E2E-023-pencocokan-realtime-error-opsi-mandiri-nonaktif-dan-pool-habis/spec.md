@@ -23,7 +23,7 @@ coverage:
   - Nama env `GS_TC_NOBYO_PASSWORD` dan `GS_TC_QUOTA_PASSWORD` belum terdaftar di `spectra.config.ts` dan `.env.example` (lihat `suite.md` bagian Kredensial). Password tidak ditulis di spec atau fixture. Hook `after` mengembalikan sesi ke akun default suite (Total Control Client A).
 - Layar awal Global Settings > TAG > Tab All dibuka hook `beforeEach` untuk akun pertama; setelah ganti akun dibuka di langkah ganti akun.
 - State yang diubah: jumlah terpakai kuota GPS Client Quota; hook `after` memulihkannya ke nilai awal (dicatat di hook `before`).
-- Kemampuan teknis: entri manual GPS (input teks dan tombol `Add`; label dan placeholder kontrol menunggu desain, NC-11, selektor disediakan tim FE sesuai plan bagian 6) dan unggah berkas CSV/XLSX; tidak ada endpoint atau selektor yang dikarang spec ini.
+- Kemampuan teknis: entri manual GPS (input teks dan tombol `Add`; label dan placeholder kontrol menunggu desain, NC-11, selektor disediakan tim FE, S-13) dan unggah berkas CSV/XLSX; tidak ada endpoint atau selektor yang dikarang spec ini.
 - Spec tidak melakukan Submit Activation; registri Client A tidak berubah.
 - Suite serial (`parallel: false`); spec tidak bergantung pada hasil spec lain. Identifier TAG (EPC, IMEI, UID) tetap dan tidak dapat diberi sufiks `{runId}` (S-12), sehingga seeding bersifat idempotent: hook `before` mengembalikan data yang dipakai spec ini ke kondisi awal (Q-4).
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate` menjadi true untuk akun aktor spec ini dan hook `after` memulihkannya; lihat `suite.md` bagian Hook Guided Tooltip.
@@ -39,7 +39,7 @@ coverage:
 4. Verifikasi baris `356938035643101` berstatus `Error`
 5. Verifikasi tooltip `Not in your official stock; self-purchased activation is not enabled for your account. Contact your administrator.`
 6. Verifikasi aksi baris `356938035643101` hanya `Remove` (baris tidak bisa di-resolve)
-7. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+7. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 8. Ganti akun: logout, login sebagai Total Control Client Quota (`Spectra.env.GS_TC_QUOTA_PASSWORD`)
 9. Setel GPS Client Quota kuota 3 dengan terpakai 1 (sisa 2) lewat fixture BE (disediakan tim FE/BE)
 10. Buka Global Settings > TAG > Tab All
@@ -55,14 +55,14 @@ coverage:
 17. Verifikasi baris `356938035643103` berstatus `Error`
 18. Verifikasi tooltip lencana `Error` baris `356938035643103` adalah `License limit reached.`
 19. Verifikasi input entri manual dan tombol `Add` tetap aktif setelah baris `Error` (sesi entri tidak berhenti)
-20. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+20. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md`. Kelas harness: blokir karena kondisi data (prinsip 12 bagian 3) dengan data kuota disetel fixture BE.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec memakai dua client dengan Step ganti akun eksplisit (langkah 8); bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal (pemisah akun kasus b, bagian 3).
-- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; hover lencana `Error` adalah pengamatan tooltip; langkah 9 menyiapkan Precondition TC-64; `Buka section` dan isi Template menjalankan TC-64 langkah 4; `Kembali ke List` dengan `Leave` adalah langkah penghubung (S-03): sesi dengan baris staging dianggap dirty sehingga keluar halaman memunculkan dialog konfirmasi; definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113) dan tidak diasersi di spec ini.
+- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; hover lencana `Error` adalah pengamatan tooltip; langkah 9 menyiapkan Precondition TC-64; `Buka section` dan isi Template menjalankan TC-64 langkah 4; `Kembali ke List` dengan `Leave` adalah langkah penghubung (S-03) karena dialog `Unsaved Changes` muncul pada sesi dengan baris staging, sedangkan definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113) dan tidak diasersi di spec ini.
 - Temuan untuk QA:
   - TC-64 Expected b ("Sesi entri tidak berhenti; baris `Error` tidak mengurangi pool") tidak punya ukuran teramati; spec mengasersi input dan `Add` tetap aktif, sedangkan "tidak mengurangi pool" tidak diasersi karena TC tidak menyebut indikator pool selain kartu kuota.
   - TC-63 Expected b ("baris tidak bisa di-resolve") sama dengan aksi baris hanya `Remove`; satu `Verifikasi` (langkah 6).

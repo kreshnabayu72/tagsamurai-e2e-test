@@ -25,8 +25,8 @@ coverage:
   - Client A, Seed Registri A: DD-01 `E2801160600002054D8A0001` (RFID, Official, Object TAG, Paired; Device Name `Handheld Scanner X1`, SKU `SKU-8821`, Brand `Zebra`, Model/Type `ZT410`) dengan tiga entri TAG Log fixture: `Activated` (10/09/26 08:00, Budi Santoso), `Reserved` (15/09/26 10:00, Siti Amalia; Asset `Handheld Scanner X1`, Asset Code `AST-0001`), dan `Paired` (16/09/26 14:30, Budi Santoso; Type `Asset`); DD-05 `TAG-QR-00512` (QR, Official, Paired; Device Name, SKU, Brand, Model/Type kosong) tanpa entri TAG Log.
   - Client Log: DD-56 `E2801160600002054D8C0056` (RFID Object, Available) tanpa entri TAG Log (disisipkan fixture).
 - Format tanggal General Settings Client A default `dd/MM/yy`, 24-hour.
-- Kemampuan teknis: mengarahkan kursor ke nama pelaku untuk membaca tooltip; mempersempit viewport sehingga daftar TAG Log dapat di-scroll (langkah 13); mengganti akun (Logout lalu login) di tengah spec.
-- State global yang diubah: tidak ada.
+- Kemampuan teknis: mengarahkan kursor ke nama pelaku untuk membaca tooltip; mempersempit viewport sehingga daftar TAG Log dapat di-scroll (langkah 15); mengganti akun (Logout lalu login) di tengah spec.
+- State global yang diubah: tidak ada selain viewport browser, yang dipulihkan pada langkah 17; hook `after` memulihkan viewport ke ukuran awal sebagai cadangan (tetap jalan walau spec gagal di tengah).
 
 ## Test Steps
 

@@ -20,10 +20,11 @@ coverage:
 
 - Mode: FE+BE (backend nyata). Spec ini mengubah status tag lewat aksi FAMS; disposal aset bertag QR (TC-GS-TAG-349) dan disposal aset dengan tag combined RFID dan QR (TC-GS-TAG-379) yang mengeluarkan tag QR dari registri dijalankan terakhir.
 - Akun aktor (seluruh blok, termasuk TC-GS-TAG-379): Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`; hook `after` mengembalikan sesi ke akun default suite.
-- Pemicu (P-2, sesi API, tidak diasersi): Admin FAMS (Hendra Gunawan) `famsAdmin_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.FA_ADMIN_PASSWORD`: menyelesaikan disposal aset dan menerima tag lewat `Receive TAG` (pemindaian disimulasikan; D-4). Mekanisme dan endpoint tidak didefinisikan di TC, PRD, atau LLD (Q-9).
+- Pemicu (sesi API aktor, tidak diasersi): Admin FAMS (Hendra Gunawan) `famsAdmin_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.FA_ADMIN_PASSWORD`: menyelesaikan disposal aset dan menerima tag lewat `Receive TAG` (pemindaian disimulasikan; D-4). Mekanisme dan endpoint tidak didefinisikan di TC, PRD, atau LLD (Q-9).
 - Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab All.
 - Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30; kartu RFID – Object TAG `21 of 50`, NFC `3 of 30`). Baris yang dipakai: DD-01 `E2801160600002054D8A0001` (RFID Paired), DD-13 `04A224B2C15E83` (NFC; disetel Paired ke aset FAMS lewat fixture BE dengan relasi combined ke DD-11 dilepas), DD-05 `TAG-QR-00512` (QR Paired), DD-10 `04A224B2C15E82` (NFC Paired), DD-02 (Available), DD-07 `E2801160600002054D8A0007` (To be Returned), DD-08 (Retired). Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4); fixture BE memulihkan kondisi awal sebelum spec dan sebelum TC-GS-TAG-298 dan 370.
-- Fixture khusus TC-GS-TAG-379 (di luar hitungan Seed Registri A, disisipkan fixture BE di langkah 57, setelah blok lain agar kartu RFID – Object TAG blok sebelumnya tidak berubah): DD-62 RFID `E2801160600002054D8A0062` dan DD-63 QR `TAG-QR-00620`, keduanya Paired ke Asset Z yang sama dan berelasi combined.
+- Fixture khusus TC-GS-TAG-379 (di luar hitungan Seed Registri A, disisipkan fixture BE di langkah 58, setelah blok lain agar kartu RFID – Object TAG blok sebelumnya tidak berubah): DD-62 RFID `E2801160600002054D8A0062` dan DD-63 QR `TAG-QR-00620`, keduanya Paired ke Asset Z yang sama dan berelasi combined.
+- Sesi API aktor (kemampuan dinyatakan di `suite.md`): Admin FAMS menyelesaikan disposal dan menerima tag lewat `Receive TAG`.
 - Kemampuan teknis (disediakan tim FE/BE): sesi API FAMS untuk menyelesaikan disposal aset dan Receive TAG; penanda event selesai diproses (Eventual/SSE); pembacaan relasi aset sebuah tag (untuk asersi "tidak tertaut ke aset"; kolom registri yang menampilkannya tidak dinamai TC); seed dan reset idempotent Seed Registri A.
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan Seed Registri A (DD-01, DD-05, DD-13), hapus fixture DD-62 dan DD-63, dan pulihkan aset FAMS lewat fixture BE.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data registri dan sesi akun.
@@ -80,64 +81,64 @@ coverage:
 39. Verifikasi entri itu memuat `Asset`, `Asset Code`, `Reason: Disposal`, dan `Return Group` Disposal Group transaksi
 40. Verifikasi tidak ada entri `TAG Unpaired by ...` maupun `TAG Retired by ...`
 41. Tutup popup TAG Log
-42. Verifikasi kartu NFC tetap `3 of 30`
+42. Klik Tab All
+43. Verifikasi kartu NFC tetap `3 of 30`
 
 ### TC-GS-TAG-349: Disposal aset bertag QR
 
-43. Klik Tab Paired
-44. Verifikasi DD-10 tampil di Tab Paired
-45. Selesaikan disposal aset bertag QR DD-05 di FAMS lewat sesi API Admin FAMS hingga selesai dan event diproses
-46. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab Paired
-47. Klik Tab Not Paired
-48. Verifikasi DD-02 tampil di Tab Not Paired
-49. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab Not Paired
-50. Klik Tab All, lalu pasang filter `Status` = `Retired`
-51. Verifikasi DD-08 tampil pada hasil filter
-52. Verifikasi tidak ada baris QR berstatus `Retired`
-53. Ganti filter `Status` menjadi `To be Returned`
-54. Verifikasi DD-07 tampil pada hasil filter
-55. Verifikasi tidak ada baris QR berstatus `To be Returned`
-56. Hapus filter `Status`
+44. Klik Tab Paired
+45. Verifikasi DD-10 tampil di Tab Paired
+46. Selesaikan disposal aset bertag QR DD-05 di FAMS lewat sesi API Admin FAMS hingga selesai dan event diproses
+47. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab Paired
+48. Klik Tab Not Paired
+49. Verifikasi DD-02 tampil di Tab Not Paired
+50. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab Not Paired
+51. Klik Tab All, lalu pasang filter `Status` = `Retired`
+52. Verifikasi DD-08 tampil pada hasil filter
+53. Verifikasi tidak ada baris QR berstatus `Retired`
+54. Ganti filter `Status` menjadi `To be Returned`
+55. Verifikasi DD-07 tampil pada hasil filter
+56. Verifikasi tidak ada baris QR berstatus `To be Returned`
+57. Hapus filter `Status`
 
 ### TC-GS-TAG-379: Disposal aset: RFID combined masuk To be Returned, sibling QR keluar dari registri
 
-57. Sisipkan DD-62 dan DD-63 (Paired ke Asset Z, combined) lewat fixture BE, muat ulang halaman, lalu klik Tab Paired
-58. Verifikasi DD-62 tampil di Tab Paired
-59. Klik ikon 🔗 pada baris DD-62
-60. Verifikasi Popup Combined TAG baris DD-62 memuat sibling QR DD-63 (`TAG-QR-00620`)
-61. Tutup popup
-62. Selesaikan disposal Asset Z (bertag DD-62 dan DD-63) di FAMS lewat sesi API Admin FAMS hingga selesai dan event diproses
-63. Verifikasi DD-62 tidak lagi tampil di Tab Paired tanpa muat ulang
-64. Verifikasi baris `TAG-QR-00620` tidak tampil di Tab Paired
-65. Klik Tab Not Paired
-66. Verifikasi DD-62 tampil di Tab Not Paired
-67. Verifikasi status DD-62 `To be Returned`
-68. Verifikasi baris `TAG-QR-00620` tidak tampil di Tab Not Paired
-69. Klik Tab All
-70. Verifikasi DD-62 tampil di Tab All
-71. Verifikasi baris `TAG-QR-00620` tidak tampil di Tab All
-72. Ketik Search `TAG-QR-00620`, tekan Enter
-73. Verifikasi pencarian `TAG-QR-00620` tidak menemukan baris (`No results found`)
-74. Klik `(←)` pada kotak Search
-75. Klik ikon 🔗 pada baris DD-62
-76. Verifikasi Popup Combined TAG baris DD-62 terbuka
-77. Verifikasi popup tidak memuat baris sibling QR DD-63 (`TAG-QR-00620`)
-78. Tutup popup, lalu pasang filter `Status` = `To be Returned`
-79. Verifikasi DD-62 tampil pada hasil filter
-80. Verifikasi tidak ada baris QR berstatus `To be Returned`
-81. Ganti filter `Status` menjadi `Retired`
-82. Verifikasi DD-08 tampil pada hasil filter
-83. Verifikasi tidak ada baris QR berstatus `Retired`
-84. Hapus filter `Status`
+58. Sisipkan DD-62 dan DD-63 (Paired ke Asset Z, combined) lewat fixture BE, muat ulang halaman, lalu klik Tab Paired
+59. Verifikasi DD-62 tampil di Tab Paired
+60. Klik ikon 🔗 pada baris DD-62
+61. Verifikasi Popup Combined TAG baris DD-62 memuat sibling QR DD-63 (`TAG-QR-00620`)
+62. Tutup popup
+63. Selesaikan disposal Asset Z (bertag DD-62 dan DD-63) di FAMS lewat sesi API Admin FAMS hingga selesai dan event diproses
+64. Verifikasi DD-62 tidak lagi tampil di Tab Paired tanpa muat ulang
+65. Verifikasi baris `TAG-QR-00620` tidak tampil di Tab Paired
+66. Klik Tab Not Paired
+67. Verifikasi DD-62 tampil di Tab Not Paired
+68. Verifikasi status DD-62 `To be Returned`
+69. Verifikasi baris `TAG-QR-00620` tidak tampil di Tab Not Paired
+70. Klik Tab All
+71. Verifikasi DD-62 tampil di Tab All
+72. Verifikasi baris `TAG-QR-00620` tidak tampil di Tab All
+73. Ketik Search `TAG-QR-00620`, tekan Enter
+74. Verifikasi pencarian `TAG-QR-00620` tidak menemukan baris (`No results found`)
+75. Klik `(←)` pada kotak Search
+76. Klik ikon 🔗 pada baris DD-62
+77. Verifikasi Popup Combined TAG baris DD-62 terbuka
+78. Verifikasi popup tidak memuat baris sibling QR DD-63 (`TAG-QR-00620`)
+79. Tutup popup, lalu pasang filter `Status` = `To be Returned`
+80. Verifikasi DD-62 tampil pada hasil filter
+81. Verifikasi tidak ada baris QR berstatus `To be Returned`
+82. Ganti filter `Status` menjadi `Retired`
+83. Verifikasi DD-08 tampil pada hasil filter
+84. Verifikasi tidak ada baris QR berstatus `Retired`
+85. Hapus filter `Status`
 
 ## Notes
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
-- Spec melewati sekitar 35 langkah (84 langkah nominal). Alasan: lima TC satu topik (efek disposal FAMS pada status tag) dengan satu dataset Seed Registri A dan satu kelas harness; pemicu FAMS lewat sesi API (P-2) dan tiap blok berdiri sendiri karena data dipulihkan lewat fixture BE di langkah 11, 29, dan 57.
-- Perubahan urutan (S-05 butir terakhir): urutan TC sumber (298, 348, 349, 370, 379) disusun ulang menjadi 348, 298, 370, 349, 379. TC-GS-TAG-348 dan 298 memakai DD-01 yang sama (dipulihkan di langkah 11); TC-GS-TAG-349 (tag QR keluar dari registri) dan TC-GS-TAG-379 (sibling QR keluar bersama disposal RFID) di akhir.
-- Pengecualian P-2: disposal dan Receive TAG oleh Admin FAMS hanyalah pemicu state lewat sesi API; objek asersi adalah status, baris, kartu, dan TAG Log di registri Global Settings.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 30 (baseline jumlah entri TAG Log), 9, 21, 28, dan 41 (menutup popup TAG Log), 11 dan 29 (memulihkan data lewat fixture BE), 15, 34, 43, 47, dan 50 (pindah tab dan memasang filter), 53 dan 56 (mengganti dan menghapus filter), 57 (menyisipkan fixture TC-GS-TAG-379 lewat fixture BE), 65 dan 69 (pindah tab), 61 (menutup popup), 74 (mengosongkan Search), 78 (menutup popup dan memasang filter), 81 dan 84 (mengganti dan menghapus filter).
-- Asersi tambahan di luar Expected TC (S-03): langkah 12, 31, 44, 48, 51, 54, 58, 63, 70, 79, dan 82 (data pembanding atau perubahan baris akibat disposal sebagai anchor absence, bagian 8b butir 2); langkah 76 (popup terbuka sebagai anchor absence langkah 77); langkah 16 dan 35 menjabarkan "tampil di Tab Not Paired" (Expected a TC-GS-TAG-298 dan 370); langkah 66 dan 67 menjabarkan "tampil di Tab Not Paired" dan status `To be Returned` (Expected b TC-GS-TAG-379).
+- Spec melewati sekitar 35 langkah (85 langkah nominal). Alasan: lima TC satu topik (efek disposal FAMS pada status tag) dengan satu dataset Seed Registri A dan satu kelas harness; pemicu FAMS lewat sesi API aktor dan tiap blok berdiri sendiri karena data dipulihkan lewat fixture BE di langkah 11, 29, dan 58.
+- Perubahan urutan (S-05 butir terakhir): urutan TC sumber (298, 348, 349, 370, 379) disusun ulang menjadi 348, 298, 370, 349, 379. TC-GS-TAG-348 dan 298 memakai DD-01 yang sama (dipulihkan di langkah 11); TC-GS-TAG-349 (tag QR keluar dari registri) dan TC-GS-TAG-379 (sibling QR keluar bersama disposal RFID) di akhir.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 30 (baseline jumlah entri TAG Log), 9, 21, 28, dan 41 (menutup popup TAG Log), 11 dan 29 (memulihkan data lewat fixture BE), 15, 34, 42, 44, 48, dan 51 (pindah tab dan memasang filter; langkah 42 klik Tab All karena kartu `N of M` hanya tampil di Tab All), 54 dan 57 (mengganti dan menghapus filter), 58 (menyisipkan fixture TC-GS-TAG-379 lewat fixture BE), 66 dan 70 (pindah tab), 62 (menutup popup), 75 (mengosongkan Search), 79 (menutup popup dan memasang filter), 82 dan 85 (mengganti dan menghapus filter).
+- Asersi tambahan di luar Expected TC (S-03): langkah 12, 31, 45, 49, 52, 55, 59, 64, 71, 80, dan 83 (data pembanding atau perubahan baris akibat disposal sebagai anchor absence, bagian 8b butir 2); langkah 77 (popup terbuka sebagai anchor absence langkah 78); langkah 16 dan 35 menjabarkan "tampil di Tab Not Paired" (Expected a TC-GS-TAG-298 dan 370); langkah 67 dan 68 menjabarkan "tampil di Tab Not Paired" dan status `To be Returned` (Expected b TC-GS-TAG-379).
 - Temuan untuk QA:
   - Q-9: langkah dan selektor FAMS (disposal, Receive TAG) tidak didefinisikan; verifikasi di modul konsumen hanya sejauh Expected TC.
   - Q-15: `[pelaku disposal]`, `[pelaku user FAMS yang menerima]`, dan Return Group pada TAG Log tidak diberi nilai dan format penulisan nama; spec menulis placeholder TC apa adanya.
@@ -145,6 +146,6 @@ coverage:
   - Kolom registri yang menampilkan relasi tag ke aset ("tidak tertaut ke aset") tidak dinamai di TC; asersinya memakai pembacaan relasi yang disediakan tim FE/BE.
   - TC-GS-TAG-298 butir c ("tidak ada entri `Unpaired` Reason `Returned`") dan TC-GS-TAG-370 tidak menyebut nilai Return Group; spec hanya mengasersi kehadiran field.
   - Q-1: TC-GS-TAG-298 berlabel Automatable, tetapi langkah `Receive TAG` bersifat pemindaian; kemampuan simulasi reader dicatat di Prerequisites sebagai kebutuhan (D-4).
-  - TC-GS-TAG-379 Expected d ("baris DD-62 tidak lagi memuat DD-63 pada Popup Combined TAG") tidak menyatakan apakah ikon 🔗 tetap tampil pada baris DD-62 yang tidak punya sibling lagi; spec mengikuti TC dan membuka popup lewat ikon 🔗 (langkah 75). Hasilnya perlu keputusan PM.
+  - TC-GS-TAG-379 Expected d ("baris DD-62 tidak lagi memuat DD-63 pada Popup Combined TAG") tidak menyatakan apakah ikon 🔗 tetap tampil pada baris DD-62 yang tidak punya sibling lagi; spec mengikuti TC dan membuka popup lewat ikon 🔗 (langkah 76). Hasilnya perlu keputusan PM.
   - TC-GS-TAG-379 tidak menyebut Return Group atau entri TAG Log DD-62; spec tidak mengasersinya. TC-GS-TAG-379 tidak punya Post Condition.
   - Post Condition TC-GS-TAG-348 tidak ada; Post Condition TC-GS-TAG-370 butir a dan b identik dengan Expected a dan c; TC-GS-TAG-349 tidak punya Post Condition.

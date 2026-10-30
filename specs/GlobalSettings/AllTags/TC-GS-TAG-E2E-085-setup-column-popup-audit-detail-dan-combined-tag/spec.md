@@ -27,7 +27,7 @@ coverage:
   - GET `/v2/analytics-reporting/tag-audit-logs/{sessionId}` (bagian 26): untuk `A-01` mengembalikan section `TAGs Found` dan `TAGs Not Found` (baris berisi `tagType`, `code`, `deviceName`, `sku`, `statusAfter`), sedikitnya satu baris per section.
   - API pendukung halaman (GET `/v2/hardware-tagging/tags/license-counters` bagian 2, GET `/v2/hardware-tagging/tags/health-counters` bagian 3, POST `/v2/hardware-tagging/tags/options` bagian 4, POST `/v2/analytics-reporting/tag-activate-logs/options` bagian 21, POST `/v2/analytics-reporting/tag-audit-logs/options` bagian 25), stream SSE registri bila halaman berlangganan (di-mock tanpa event), serta API di luar modul (identitas pengguna, menu, flag Guided Tooltip) disediakan tim FE.
 - Preferensi kolom (visibilitas) tersimpan per browser per tabel (PRD; prd-conventions.md §9.3), bukan lewat API, sehingga tidak ada endpoint yang di-mock untuknya.
-- Suite serial (`parallel: false`): konfigurasi kolom adalah state browser yang dipakai spec lain. State yang dipulihkan di hook `after` (tetap jalan walau spec gagal): konfigurasi kolom semua surface dikembalikan ke default (semua kolom tercentang, urutan default).
+- Suite serial (`parallel: false`): konfigurasi kolom adalah state browser yang dipakai spec lain. State yang dipulihkan di hook `after` (tetap jalan walau spec gagal): konfigurasi kolom semua surface dikembalikan ke default dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE; semua kolom tercentang, urutan default).
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
 - Tabel "Surface popup yang diuji" (parameter langkah 2 sampai 13):
 
@@ -65,7 +65,7 @@ coverage:
 - Pembagian TC lintas spec: TC-168 mencakup enam surface; lima surface popup ada di spec ini, surface staging Activate TAG di spec 100. Setup Column Event Log (TC-258) ada di spec 101. Spec ini, 100, dan 101 sama-sama `Mode: mock` dengan komponen Setup Column yang identik, tetapi cara membuka dan menutup surface berbeda (popup dari registri atau modal Event Log; halaman Activate dengan dialog `Unsaved Changes`; dua tab pada modal Event Log), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Alasan spec di atas sekitar 35 langkah (13 langkah tertulis, 61 setelah ekspansi: 1 + 12 x 5): seluruh blok berkelas sama (komponen Setup Column yang identik di lima surface, Mode mock), langkah berulang per surface memakai parameter di tabel Prerequisites tanpa langkah bersyarat (bagian 8b butir 7), dan kegagalan satu surface tidak membuat blok surface lain kehilangan makna. Langkah yang diulang: 2 sampai 13 (lima iterasi).
 - `Verifikasi` yang diulang tetap satu per klausa (S-01).
-- Langkah penghubung (tanpa `Verifikasi`, tidak ada di TC): langkah 5, 7, 8, 13 (guard, pemulihan kolom; hook `after` sebagai cadangan).
+- Langkah penghubung (tanpa `Verifikasi`, tidak ada di TC): langkah 5, 7, 13 (guard, pemulihan kolom; hook `after` sebagai cadangan).
 - Pemilihan kolom tersisa `Code` pada uji guard (langkah 5) dan perilaku disabled checkbox sebagai bukti "tidak bisa di-uncheck" adalah pilihan spec (TC-168 hanya menyatakan "guard satu kolom tersisa berlaku").
 - Temuan untuk QA:
   - TC-168 mencakup Popup Audit TAG dengan Client Audit sebagai sesi aktif, tetapi Pre-setup TC memberi Popup Audit di Client Audit sedangkan semua surface lain di Client A; pada spec mock perbedaan client tidak berlaku (respons di-mock).

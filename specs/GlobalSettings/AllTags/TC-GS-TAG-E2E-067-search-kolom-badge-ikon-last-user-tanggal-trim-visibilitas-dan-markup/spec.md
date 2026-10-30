@@ -27,7 +27,7 @@ coverage:
 - Suite serial (`parallel: false`).
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`) disetel true oleh hook suite `before` dan dipulihkan di `after` (dinyatakan di `suite.md`).
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
-- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): visibilitas kolom registri dikembalikan ke default lewat `[Reset to Default]` Setup Column (Last Scanned In dan Last User tersembunyi, Brand tampil).
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): preferensi kolom registri dihapus di browser sehingga visibilitas kembali ke default (Last Scanned In dan Last User tersembunyi, Brand tampil); kemampuan menghapus preferensi kolom di browser disediakan tim FE.
 - Kemampuan teknis: mengetik pada kotak Search dan menekan Enter; membaca nilai input apa adanya (termasuk spasi depan dan belakang); memantau dialog browser (`alert`) dan error halaman tak tertangani selama langkah 33 sampai 36 (TC tidak mendefinisikan mekanismenya; disediakan tim FE; lihat Temuan untuk QA).
 
 ## Test Steps
@@ -103,7 +103,7 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (menampilkan Last Scanned In dan Last User, precondition TC butir d), langkah 25 dan 29 (mengosongkan Search), langkah 37 (mengosongkan Search), langkah 38 (memulihkan visibilitas kolom).
 - Asersi tambahan di luar Expected TC (S-03): langkah 21 (baseline hasil `Zebra` supaya "hasil identik" pada Expected TC-GS-TAG-194 punya pembanding yang teramati).
 - Absence hasil Search (langkah 17, 19, 28, 34) memakai empty state `No results found` sebagai anchor positif yang sah (bagian 8b butir 2). Kalimat kedua Expected TC-GS-TAG-193 ("penyaringan tanggal hanya lewat Filter Panel") adalah kesimpulan yang tidak teramati terpisah (S-03) sehingga tidak diberi `Verifikasi` sendiri.
-- Pemisahan dari spec topik registri lain (Search, Filter, Sort, Pagination, Setup Column): kelas harness tidak sama dan tidak semua memakai data yang sama; ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
+- Pemisahan dari spec topik registri lain (Search, Filter, Sort, Pagination, Setup Column): ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
 - Temuan untuk QA:
   - TC-GS-TAG-196 menyebut "tidak ada skrip berjalan dan tidak ada error tak tertangani" tanpa mendefinisikan cara mengamatinya (dialog `alert`, error console, atau lainnya); spec memakai pemantauan dialog dan error halaman yang disediakan tim FE, tanpa mengarang mekanisme.
   - TC-GS-TAG-194 hanya meminta pencarian ` Zebra `; pembanding "identik dengan keyword `Zebra`" dibangun spec lewat langkah 20 sampai 21.

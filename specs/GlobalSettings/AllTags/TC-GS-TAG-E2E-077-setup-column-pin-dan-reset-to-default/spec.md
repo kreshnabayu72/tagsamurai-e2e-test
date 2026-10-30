@@ -31,7 +31,7 @@ coverage:
 - Suite serial (`parallel: false`): konfigurasi kolom registri adalah state global browser yang dipakai spec lain.
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`): pernyataan hook suite ada di `suite.md`; pada spec mock ini dipenuhi lewat respons preferensi Guided Tooltip yang di-mock true, sehingga walkthrough tidak muncul otomatis.
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
-- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): konfigurasi kolom registri dikembalikan ke default (10 kolom Hideable tampil, 3 kolom Curated tersembunyi, urutan awal, tanpa pin) dan viewport dikembalikan ke ukuran awal.
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): konfigurasi kolom registri dikembalikan ke default dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE; 10 kolom Hideable tampil, 3 kolom Curated tersembunyi, urutan awal, tanpa pin) dan viewport dikembalikan ke ukuran awal.
 - Kemampuan teknis: `Spectra.intercept()` untuk respons daftar, counter, dan opsi; mengatur viewport; scroll horizontal tabel; drag and drop elemen daftar kolom; mengarahkan kursor ke ikon Pin disabled untuk membaca tooltip.
 
 ## Test Steps
@@ -87,7 +87,7 @@ coverage:
 ### TC-GS-TAG-236: Reset to Default mengembalikan konfigurasi bawaan setelah Save
 
 40. Buka modal Setup Column lewat header kolom Actions (⋯) dan item `Setup Column...`
-41. Uncheck `Brand`
+41. Hapus centang `Brand`
 42. Seret `Status` ke posisi pertama
 43. Pin `Code`
 44. Klik `Save`
@@ -98,15 +98,21 @@ coverage:
 49. Verifikasi preview tanpa kolom yang di-pin
 50. Verifikasi preview berurutan sesuai urutan awal
 51. Klik `Save`
-52. Verifikasi tabel menampilkan konfigurasi default (10 kolom Hideable tampil, 3 kolom Curated tersembunyi, tanpa pin, urutan awal)
-53. Tekan F5
-54. Verifikasi konfigurasi default bertahan setelah F5
+52. Verifikasi tabel menampilkan 10 kolom Hideable (`TAG Type`, `Code`, `Device Name`, `SKU`, `Brand`, `Model/Type`, `Source`, `Type`, `Status`, `Last Scanned`)
+53. Verifikasi tabel menyembunyikan 3 kolom Curated (`Last Scanned In`, `Activated At`, `Last User`)
+54. Verifikasi tabel tanpa kolom yang di-pin
+55. Verifikasi tabel berurutan sesuai urutan awal
+56. Tekan F5
+57. Verifikasi 10 kolom Hideable tetap tampil setelah F5
+58. Verifikasi 3 kolom Curated tetap tersembunyi setelah F5
+59. Verifikasi tabel tetap tanpa kolom yang di-pin setelah F5
+60. Verifikasi tabel tetap berurutan sesuai urutan awal setelah F5
 
 ## Notes
 
 - Mode: mock. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC sumber dipertahankan (233, 234, 235, 236). TC-GS-TAG-236 di akhir karena mengembalikan konfigurasi ke default sekaligus menjadi pemulihan state.
-- Panjang spec: 54 langkah, di atas sekitar 35 langkah. Alasan dipertahankan: seluruh blok satu kelas (Setup Column pin dan reset pada satu tabel registri, Mode mock, tanpa backend), tiap TC diakhiri pemulihan (langkah 15 dan 27, 28, 29 sampai 31, 39, 51 sampai 54) sehingga berdiri sendiri, dan pemisahan hanya menambah hook tanpa memisahkan harness. Kegagalan keras pada pembukaan modal Setup Column akan memengaruhi semua blok; hal ini diakui.
+- Panjang spec: 60 langkah, di atas sekitar 35 langkah. Alasan dipertahankan: seluruh blok satu kelas (Setup Column pin dan reset pada satu tabel registri, Mode mock, tanpa backend), tiap TC diakhiri pemulihan (langkah 15 dan 27, 28, 29 sampai 31, 39, 51 (`Save`)) sehingga berdiri sendiri; langkah 47 sampai 50 dan 52 sampai 60 adalah asersi TC-GS-TAG-236, bukan pemulihan, dan pemisahan hanya menambah hook tanpa memisahkan harness. Kegagalan keras pada pembukaan modal Setup Column akan memengaruhi semua blok; hal ini diakui.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 28 (mempersempit dan memulihkan viewport), langkah 15 dan 27 (mengembalikan posisi scroll), langkah 16 sampai 18 (precondition TC-GS-TAG-234 butir d: `Last Scanned In` dicentang dan tersimpan, dipakai sebagai precondition TC, tidak diasersi), langkah 29 sampai 31 (pemulihan ke default), langkah 39 (menutup modal tanpa Save sehingga pin sementara tidak tersimpan), langkah 40 sampai 44 (menyiapkan precondition TC-GS-TAG-236 butir d "konfigurasi sudah diubah dan tersimpan").
 - "Klik Pin lagi melepas" dan "persist setelah F5" pada Expected TC-GS-TAG-233 serta "persist setelah F5" pada TC-GS-TAG-234 tidak punya langkah di TC; spec menulis langkah 7 sampai 14 dan 24 sampai 26 sebagai langkah menuju keadaan yang diasersi (S-14).
 - Temuan untuk QA:

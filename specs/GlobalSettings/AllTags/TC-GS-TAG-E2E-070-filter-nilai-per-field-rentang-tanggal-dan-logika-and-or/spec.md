@@ -24,7 +24,7 @@ coverage:
 - Suite serial (`parallel: false`).
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`) disetel true oleh hook suite `before` dan dipulihkan di `after` (dinyatakan di `suite.md`).
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
-- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): filter registri dikosongkan dan visibilitas kolom dikembalikan ke default lewat `[Reset to Default]` Setup Column (Activated At tersembunyi).
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): filter registri dikosongkan dan visibilitas kolom dikembalikan ke default dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE; Activated At tersembunyi).
 - Tabel "Filter per field" (parameter langkah 3 sampai 6; jumlah baris dibaca dari teks pagination `Showing ... of N TAGs`):
 
 | Field | Opsi yang dipilih | Hasil yang diharapkan |
@@ -90,7 +90,7 @@ coverage:
 - Urutan TC sumber dipertahankan (203, 204, 205, 212). TC-GS-TAG-201, 202, 206 sampai 211 (screening dan perilaku Filter Panel) ada di spec `TC-GS-TAG-E2E-069-filter-panel-screening-opsi-populate-chip-dan-tutup-tanpa-apply`. Spec ini tidak menghapus data.
 - Panjang spec: 31 langkah tertulis (sekitar 63 langkah setelah ekspansi sembilan field pada langkah 3 sampai 6), di atas sekitar 35 langkah setelah ekspansi. Alasan dipertahankan: seluruh blok satu topik (nilai Filter) pada satu dataset (Seed Registri A) dan satu kelas harness biasa; langkah berulang memakai parameter di tabel Prerequisites tanpa langkah bersyarat (bagian 8b butir 7); tiap iterasi diakhiri `Clear Field` + `Apply` sehingga berdiri sendiri. `Verifikasi` yang diulang tetap satu per klausa. Langkah yang diulang: 3 sampai 6 (9 iterasi).
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6 (mengosongkan filter setelah tiap field), langkah 14, 21, 29 (mengosongkan filter), langkah 22 sampai 24 (menampilkan kolom `Activated At`, precondition TC-GS-TAG-212 butir 3, lewat overlay Column Visibility), langkah 30 dan 31 (menutup panel dan memulihkan kolom).
-- Pemisahan dari spec Filter Panel, Search, Sort, dan Pagination registri: kelas harness tidak sama dan tidak semua memakai data yang sama; ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
+- Pemisahan dari spec Filter Panel, Search, Sort, dan Pagination registri: ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
 - Jumlah baris per field pada langkah 5 dan 17 sampai 20 diturunkan dari Seed Registri A dan teks pagination TC-GS-TAG-245; nilai hasilnya mengikuti Expected TC.
 - Temuan untuk QA:
   - TC-GS-TAG-203 langkah 1 menulis "klik `Apply`, amati tabel, lalu `Clear Field` + `Apply`" untuk sembilan field dalam satu langkah tanpa menyebut apakah `Clear Field` mengosongkan seluruh panel; spec mengosongkan panel setelah tiap field (langkah 6).

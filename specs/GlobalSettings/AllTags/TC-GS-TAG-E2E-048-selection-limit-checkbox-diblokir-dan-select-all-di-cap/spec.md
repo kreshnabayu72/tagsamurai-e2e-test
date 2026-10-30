@@ -39,23 +39,25 @@ coverage:
 
 ### TC-GS-TAG-158: Select All lintas halaman di-cap otomatis
 
-9. Klik `Select All (N records)`
-10. Verifikasi seleksi di-cap ke L baris pertama
-11. Verifikasi toast error persisten `Error, only the first L of N rows were selected. Narrow your filter to include the rest.` dengan L dan N berisi nilai berlaku
-12. Verifikasi Bulk Action Bar tetap muncul
-13. Buka dropdown `Bulk Action`
-14. Verifikasi dropdown dapat dipakai (entri `Delete` tampil)
-15. Tutup dropdown
-16. Klik `Unselect All`
+9. Centang baris Not Paired pertama
+10. Klik `Select All (N records)`
+11. Verifikasi seleksi di-cap ke L baris pertama
+12. Verifikasi toast error persisten `Error, only the first L of N rows were selected. Narrow your filter to include the rest.` dengan L dan N berisi nilai berlaku
+13. Verifikasi Bulk Action Bar tetap muncul
+14. Buka dropdown `Bulk Action`
+15. Verifikasi dropdown dapat dipakai (entri `Delete` tampil)
+16. Tutup dropdown
+17. Klik `Unselect All`
 
 ## Notes
 
 - Mode: FE+BE. Kelas e (Selection Limit, lebih dari L baris). Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah 1 mengulang pencentangan satu per satu sampai baris ke-L (L dari seeding; Prerequisites); diulang sebanyak L kali, berpindah halaman mengikuti urutan baris.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 8 dan 16 (membersihkan seleksi), 15 (menutup dropdown). Langkah 13 dan 14 menerjemahkan Expected "bar tetap muncul dan dapat dipakai" (TC-GS-TAG-158 butir b): bukti "dapat dipakai" memakai dropdown `Bulk Action`.
-- Asersi tambahan di luar Expected TC (S-03): langkah 14 (isi dropdown) sebagai bukti "dapat dipakai", dicatat di sini.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 8 dan 17 (membersihkan seleksi), 9 (mencentang baris pertama supaya Bulk Action Bar dan `Select All (N records)` tampil; bar hilang bila seleksi kosong), 16 (menutup dropdown). Langkah 14 dan 15 menerjemahkan Expected "bar tetap muncul dan dapat dipakai" (TC-GS-TAG-158 butir b): bukti "dapat dipakai" memakai dropdown `Bulk Action`.
+- Asersi tambahan di luar Expected TC (S-03): langkah 15 (isi dropdown) sebagai bukti "dapat dipakai", dicatat di sini.
 - Temuan untuk QA:
   - Q-7: TC tidak memberi angka L ("nilai berlaku", "disetel ke minimum"); L dan seed lebih dari L disediakan tim FE/BE.
   - TC-GS-TAG-158 Expected a menyebut toast error "persisten" tanpa durasi atau cara membuktikan persistensi; spec hanya mengasersi toast tampil dengan teks yang ditetapkan.
   - TC-GS-TAG-157 Expected a mengatakan L adalah "nilai berlaku" sedangkan Data Uji menulis "L = Selection Limit Client Limit"; sama maknanya, dicatat sebagai informasi.
+  - TC-GS-TAG-158 tidak menyebut seleksi awal sebelum klik `Select All ([N] records)`, padahal Bulk Action Bar hilang bila seleksi kosong; spec mencentang baris pertama lebih dulu (langkah 9).
   - Post Condition semua TC bernilai `-`.

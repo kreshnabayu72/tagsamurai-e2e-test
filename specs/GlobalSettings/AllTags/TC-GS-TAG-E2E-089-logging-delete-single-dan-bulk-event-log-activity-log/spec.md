@@ -23,6 +23,7 @@ coverage:
 - Data Pre-setup: Seed Registri A (dipulihkan ke kondisi awal oleh hook `before` lewat fixture BE; mekanisme disediakan tim FE/BE, lihat Temuan untuk QA). Target hapus milik dataset ini: DD-12 `E2801160600002054D8A0012` (RFID Object, Self-Purchased, Available; Tab All), DD-15 `E28011606000020F00000001` (RFID Object, Official, Available; Tab Not Paired), dan DD-04 `AABBCCDDEE80` (BLE, Damaged/Missing; Tab Not Paired). Sesuai aturan data destruktif (bagian 2 konvensi), aksi Delete dikonfirmasi sungguhan di environment automation.
 - Baseline log: Event Log dan Activity Log menumpuk antar spec (tidak dibersihkan) dan nama entri memakai identifier tetap (DD-12) atau teks tetap (`2 TAGs`), sehingga semua asersi entri baru memakai selisih total terhadap baseline yang dicatat sebelum aksi (S-12); blok TC-267 memakai `N0`, `A0`, `B`, dan `C`, blok TC-268 memakai `N1` dan `A1`.
 - Kemampuan teknis: pembaca nilai footer pagination Event Log dan Activity Log.
+- Aturan baca total entri Activity Log setelah Search (berlaku untuk langkah 3 dan 4): total dibaca dari footer `Showing ... of N` bila ada baris, dan bernilai 0 bila tampil empty state `No results found`.
 - State global yang diubah: tidak ada selain data (Seed Registri A dan log).
 
 ## Test Steps
@@ -31,8 +32,8 @@ coverage:
 
 1. Klik tombol `Event Log` di toolbar, catat total `N0` pada footer Tab Activate TAG (`Showing ... of N0 logs`), lalu tutup modal lewat `✕`
 2. Buka Global Settings > Activity Log, tab User Action, filter Action `Delete TAG`, catat total entri `A0` pada footer
-3. Ketik Search `E2801160600002054D8A0012`, tekan Enter, catat total entri `B` (0 bila empty state `No results found`), lalu klik `(←)` pada kotak Search
-4. Ketik Search `2 TAGs`, tekan Enter, catat total entri `C` (0 bila empty state `No results found`), lalu klik `(←)` pada kotak Search
+3. Ketik Search `E2801160600002054D8A0012`, tekan Enter, catat total entri `B` (aturan baca total di Prerequisites), lalu klik `(←)` pada kotak Search
+4. Ketik Search `2 TAGs`, tekan Enter, catat total entri `C` (aturan baca total di Prerequisites), lalu klik `(←)` pada kotak Search
 
 ### TC-GS-TAG-267: Delete single mencatat Event Log dan Activity Log dengan kode tag dan entry point
 

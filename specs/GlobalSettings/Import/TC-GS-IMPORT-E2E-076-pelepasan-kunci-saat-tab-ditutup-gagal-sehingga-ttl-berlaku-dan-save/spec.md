@@ -1,0 +1,81 @@
+---
+id: TC-GS-IMPORT-E2E-076-pelepasan-kunci-saat-tab-ditutup-gagal-sehingga-ttl-berlaku-dan-save
+title: "Pelepasan Kunci saat Tab Ditutup Gagal sehingga TTL Berlaku, dan Save Ditolak setelah Capability Dicabut lalu Kunci Lepas setelah TTL"
+priority: Medium
+caseType: Positive
+status: draft
+sourceTc:
+  - TC-GS-IMPORT-207
+  - TC-GS-IMPORT-668
+coverage:
+  web: automated
+---
+
+# Pelepasan Kunci saat Tab Ditutup Gagal sehingga TTL Berlaku, dan Save Ditolak setelah Capability Dicabut lalu Kunci Lepas setelah TTL
+
+## Prerequisites
+
+- Mode: FE+BE (backend nyata). Suite serial (`parallel: false`) karena spec mengubah jam server dan capability role; lihat `suite.md`.
+- Dua sesi browser (kelas harness eksternal; sesi kedua menjadi objek asersi), konteks terpisah dengan sesi login sendiri:
+  - TC-GS-IMPORT-207: Sesi TC Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`, dan Sesi Admin kedua Admin kedua Client A (Nadia Pratama) `totalControlSecond_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC2_PASSWORD`; keduanya login di hook `before`.
+  - TC-GS-IMPORT-668: Sesi Import data (Create) Client A (Rina Marlina) `importCreate_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_IMPORTCREATE_PASSWORD`, dan Sesi Admin kedua yang sama dengan blok pertama (login lewat langkah ganti akun untuk Sesi Import data (Create)).
+  - Password tidak ditulis di spec atau fixture. Hook `after` menutup konteks kedua, memulihkan capability dan jam server, dan mengembalikan sesi ke akun default suite.
+- Data Dinamis (Client A, dipulihkan lewat skrip fixture sebelum tiap TC): D-01 draft Brand 12 baris `pending` dari `brand-12.csv` (Row # 1 `Acme Corp`, #2 `Lenovo`).
+- Kemampuan teknis yang disediakan tim FE/BE (lingkungan non-produksi):
+  - Fixture kegagalan pelepasan kunci saat tab ditutup (TC-GS-IMPORT-207; mekanisme paksa gagal tidak didefinisikan di TC, kemungkinan intercept atau blokir jaringan) dan penanganan dialog native browser `beforeunload` pada penutupan tab.
+  - Fixture jam server: dimajukan 10 menit (TC-GS-IMPORT-207) atau 12 menit (TC-GS-IMPORT-668); hanya jam server karena TTL kunci dihitung murni di server dan tidak diamati lewat countdown UI. Dipulihkan lewat langkah eksplisit.
+  - TC-GS-IMPORT-668: perubahan capability Import data pada role akun Import data (Create) dari Create menjadi Read saja lewat Role & Permission (UI atau fixture yang disediakan tim FE/BE), dipulihkan ke Create sesudah TC.
+- Layar awal: hook `beforeEach` suite membuka Global Settings > Import > Brand untuk akun aktor pertama. Guided Tooltip: flag `guided_tooltip_seen_gs-import` untuk semua akun diatur hook suite `before` dan dipulihkan hook `after`; lihat `suite.md`.
+- Pemulihan: capability role, jam server, dan draft D-01 dipulihkan di akhir tiap blok dan di hook `after`.
+
+## Test Steps
+
+### TC-GS-IMPORT-207: Pelepasan kunci saat tab ditutup gagal
+
+1. [Sesi TC] Klik `⋯` pada baris #1
+2. [Sesi TC] Pilih Edit
+3. [Sesi TC] Ubah Brand Name baris #1 menjadi `Acme Corporation`
+4. [Sesi TC] Tutup tab browser
+5. [Sesi TC] Verifikasi dialog native browser konfirmasi tutup tab tampil
+6. [Sesi TC] Konfirmasi dialog native browser
+7. [Sesi Admin kedua] Klik `⋯` pada baris #2
+8. [Sesi Admin kedua] Pilih Edit
+9. [Sesi Admin kedua] Verifikasi dialog Title "Draft Is Being Edited" dengan Body "Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved." dan tombol `[Cancel]` dan `[Take Over Session]`
+10. [Sesi Admin kedua] Klik `[Cancel]` pada dialog
+11. Majukan jam server 10 menit (fixture jam server)
+12. [Sesi Admin kedua] Klik `⋯` pada baris #2
+13. [Sesi Admin kedua] Pilih Edit
+14. [Sesi Admin kedua] Verifikasi baris #2 menjadi input aktif
+15. [Sesi Admin kedua] Verifikasi footer menampilkan `[Cancel]` dan `[Save]` tanpa dialog
+16. [Sesi Admin kedua] Klik `[Cancel]` pada footer; pulihkan jam server ke waktu nyata dan draft D-01
+
+### TC-GS-IMPORT-668: Save ditolak bila capability dicabut dan kunci terlepas setelah TTL
+
+17. Ganti akun: Sesi Import data (Create) login sebagai Import data (Create) Client A dan membuka Import > Brand
+18. [Sesi Import data (Create)] Klik `⋯` pada baris #1
+19. [Sesi Import data (Create)] Pilih Edit
+20. [Sesi Import data (Create)] Ubah Brand Name baris #1 menjadi `Acme Corporation`
+21. [Sesi Admin kedua] Ubah capability Import data pada role akun Import data (Create) dari Create menjadi Read saja lewat Role & Permission
+22. [Sesi Import data (Create)] Klik `[Save]`
+23. [Sesi Import data (Create)] Verifikasi toast error "You don't have permission to do this."
+24. [Sesi Import data (Create)] Muat ulang halaman Import > Brand
+25. [Sesi Import data (Create)] Verifikasi baris #1 menampilkan `Acme Corp` (perubahan tidak tersimpan)
+26. Majukan jam server 12 menit (fixture jam server)
+27. [Sesi Admin kedua] Buka Import > Brand
+28. [Sesi Admin kedua] Klik `⋯` pada baris #2
+29. [Sesi Admin kedua] Pilih Edit
+30. [Sesi Admin kedua] Verifikasi baris #2 menjadi input aktif untuk Admin kedua
+31. [Sesi Admin kedua] Verifikasi footer menampilkan `[Cancel]` dan `[Save]` tanpa dialog
+32. [Sesi Admin kedua] Klik `[Cancel]` pada footer; pulihkan capability Import data (Create) ke Create, jam server ke waktu nyata, dan draft D-01
+
+## Notes
+
+- Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (kelas d, prinsip 13d; objek uji TTL kunci setelah pelepasan gagal dan setelah capability dicabut).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 4 dan 6 (menutup tab dan mengonfirmasi dialog), langkah 11 dan 26 (jam server), langkah 16 dan 32 (pemulihan), langkah 17 (ganti akun), langkah 24 (muat ulang), langkah 27 (membuka Import).
+- Langkah 21 diperlakukan sebagai pemicu perubahan capability oleh Admin kedua; hasilnya dibaca di Sesi Import data (Create) (langkah 22 sampai 25) dan Sesi Admin kedua (langkah 27 sampai 31).
+- Pembagian TC lintas spec: pelepasan kunci saat tab ditutup berhasil (best-effort, TC-GS-IMPORT-871@L1080) ada di spec 072.
+- Temuan untuk QA:
+  - TC-GS-IMPORT-207 Precondition d memakai fixture "pelepasan kunci dibuat gagal" yang tidak ada di Kontrak Fixture R1-R7 maupun Data Dinamis; mekanisme paksa gagal tidak terdefinisi (kemungkinan intercept atau blokir jaringan). Langkah 5 bergantung pada dukungan runner terhadap `beforeunload`.
+  - TC-GS-IMPORT-668 memuat dua objek uji berbeda kelas dalam satu TC (capability dicabut di tengah sesi: ditolak server; lalu TTL 12 menit melepas kunci untuk Admin kedua); judul memuat keduanya.
+  - Nilai waktu 12 menit pada TC-GS-IMPORT-668 ditandai `PRD?` (tidak tertulis di PRD); PRD hanya menetapkan TTL 10 menit.
+  - TC-GS-IMPORT-668 menyebut kedua akun login di sesi browser terpisah tetapi tidak menyebut apakah perubahan capability oleh Admin kedua lewat UI atau fixture.

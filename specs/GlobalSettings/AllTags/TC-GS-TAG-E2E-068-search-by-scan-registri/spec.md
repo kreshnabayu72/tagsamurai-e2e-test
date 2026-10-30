@@ -25,7 +25,7 @@ coverage:
 - Suite serial (`parallel: false`).
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`) disetel true oleh hook suite `before` dan dipulihkan di `after` (dinyatakan di `suite.md`).
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
-- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): sesi scan dihentikan, visibilitas kolom registri dikembalikan ke default lewat `[Reset to Default]` Setup Column.
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): sesi scan dihentikan, preferensi kolom registri dihapus di browser sehingga visibilitas kembali ke default; kemampuan menghapus preferensi kolom di browser disediakan tim FE.
 - Kemampuan teknis (disediakan tim FE; kelas d, D-4 dan Q-1): simulasi reader RFID yang mengirim pindaian (tanpa pemindai fisik; label TC `Manual Only — (b)` tidak menjadi alasan mengeluarkan TC); kontrol penghentian sesi scan (selektor dan mekanismenya tidak didefinisikan di TC). Spec tidak mengarang endpoint atau selektor.
 
 ## Test Steps

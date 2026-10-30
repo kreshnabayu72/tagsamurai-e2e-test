@@ -22,7 +22,7 @@ coverage:
 - Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok, S-12): stok resmi Admin Console Client A: GPS `356938035643001` (DD-S1) dan `356938035643003` (DD-S3) Available, `356938035643002` (DD-S2) Damaged/Missing, Device Name `Teltonika FMB920`, SKU `SKU-GPS-01`, Brand `Teltonika`, Model/Type `FMB920`. Katalog Client A memuat Device Name `Queclink GV300` (Brand `Queclink`, Model/Type `GV300`, aktif). Opsi mandiri aktif; Client A GPS terpakai 1 dari 30 (Seed Registri A).
 - Data uji: IMEI `356938035643101` (DD-N1; tidak ada di stok, Self-Purchased) dan `356938035643201` (DD-N4; In Use di Client B, dibuat lewat fixture BE sebagai precondition TC-GS-TAG-169). Kolom `Last Scanned` ditampilkan di registri (precondition TC-GS-TAG-169); kolom `Last Scanned In` default Hidden (TC-GS-TAG-11) dan ditampilkan lewat Setup Column pada blok TC-GS-TAG-169. Format tanggal Client A `dd/MM/yy`, 24-hour, Asia/Jakarta.
 - Kemampuan teknis (disediakan tim FE/BE): seed/reset stok resmi, registri Client A, dan unit Client B; jam server dan jam browser diatur bersama (Q-6, S-12: waktu entri dicatat sesudah aksi, toleransi satu menit; jam dimajukan 5 menit agar selisih dengan waktu Submit melebihi toleransi dan dipulihkan sesudah Submit, sebelum asersi); label dan placeholder input entri manual GPS serta tombol `Add` menunggu desain (NC-11), selektor disediakan tim FE.
-- Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): pulihkan jam server dan jam browser, preferensi Setup Column (`[Reset to Default]`), stok resmi, registri Client A dan unit Client B ke kondisi awal, buang staging yang tersisa.
+- Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): pulihkan jam server dan jam browser, preferensi Setup Column (hapus preferensi kolom di browser; kemampuan disediakan tim FE), stok resmi, registri Client A dan unit Client B ke kondisi awal, buang staging yang tersisa.
 - Suite serial (`parallel: false`). Spec mengubah jam server dan jam browser serta preferensi Setup Column akun Total Control (`Last Scanned In` ditampilkan); keduanya dipulihkan seperti di atas. Guided Tooltip: mengikuti pernyataan hook suite di `suite.md`.
 
 ## Test Steps
@@ -89,7 +89,7 @@ coverage:
 49. Ganti isi kotak search dengan `356938035643201`, tekan Enter
 50. Verifikasi Last Scanned `356938035643201` bernilai `—`
 51. Verifikasi Last Scanned In `356938035643201` bernilai `—`
-52. Buka overlay Column Visibility, klik `Setup Column`, klik [Reset to Default], lalu klik [Save]
+52. Hapus preferensi kolom di browser (kemampuan disediakan tim FE)
 53. Pulihkan stok resmi, registri Client A, dan unit Client B ke kondisi awal lewat fixture BE
 
 ## Notes

@@ -118,5 +118,5 @@ coverage:
   - TC-GS-TAG-179 langkah 5: "Coba klik tombol Submit dan row action" dilakukan sebelum pemindaian sehingga staging masih kosong dan row action belum ada; spec memakai urutan TC.
   - TC-GS-TAG-182: Langkah Uji tidak menyebut aksi menutup modal sebelum F5 (langkah 41) maupun pilihan pada konfirmasi bawaan; Expected d menyebut "teks tidak dikustom" yang tidak dapat dibaca; spec mengasersi kemunculan konfirmasi tanpa dialog aplikasi.
   - TC-GS-TAG-115 Expected d ("Submit tetap dapat dijalankan dengan baris yang ada") tidak menyebut hasil konkret; spec mengasersi baris keluar dari staging (langkah 54).
-  - TC-GS-TAG-116 Expected b ("dapat langsung memindai ulang tanpa retry otomatis") dibaca sebagai dua klausa (langkah 28 dan 29).
+  - TC-GS-TAG-116 Expected b ("dapat langsung memindai ulang tanpa retry otomatis") dibaca sebagai tiga klausa (langkah 27 sampai 29).
   - Post Condition semua TC bernilai `-`.

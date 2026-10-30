@@ -23,7 +23,7 @@ coverage:
   - POST `/v2/analytics-reporting/tag-audit-logs/list` (bagian 24): mengembalikan Seed Event Log `A-01` sampai `A-12` (Tab Audit TAG) dengan kolom Date, TAG Type, Found, Not Found, Not Found Action, Hardware, dan PIC.
   - API pendukung halaman (GET `/v2/hardware-tagging/tags/license-counters` bagian 2, GET `/v2/hardware-tagging/tags/health-counters` bagian 3, POST `/v2/hardware-tagging/tags/options` bagian 4, POST `/v2/analytics-reporting/tag-activate-logs/options` bagian 21, POST `/v2/analytics-reporting/tag-audit-logs/options` bagian 25), stream SSE registri bila halaman berlangganan (di-mock tanpa event), serta API di luar modul (identitas pengguna, menu, flag Guided Tooltip) disediakan tim FE. Endpoint Detail sesi tidak dipanggil karena spec ini tidak membuka popup Detail.
 - Preferensi kolom (visibilitas) tersimpan per browser per tabel dan per tab Event Log (PRD; prd-conventions.md §9.3), bukan lewat API, sehingga tidak ada endpoint yang di-mock untuknya.
-- Suite serial (`parallel: false`): konfigurasi kolom adalah state browser yang dipakai spec lain. State yang dipulihkan di hook `after` (tetap jalan walau spec gagal): konfigurasi kolom kedua tab Event Log dikembalikan ke default (semua kolom tercentang, urutan default).
+- Suite serial (`parallel: false`): konfigurasi kolom adalah state browser yang dipakai spec lain. State yang dipulihkan di hook `after` (tetap jalan walau spec gagal): konfigurasi kolom kedua tab Event Log dikembalikan ke default dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE; semua kolom tercentang, urutan default).
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
 - Kemampuan teknis: `Spectra.intercept()` untuk respons mock di atas.
 

@@ -17,7 +17,7 @@ coverage:
 - Mode: FE+BE (kegagalan dipaksa lewat `Spectra.intercept()` di atas backend nyata; bagian 6 konvensi).
 - Akun: Total Control Sari Dewi (Pre-setup TC, Client A) `totalControl_automated_qaTeam1@qwertysystem.net`; kredensial `Spectra.env.GS_TC_PASSWORD` (terdaftar di `.env.example`; password tidak ditulis di spec atau fixture). Login sekali di hook `before`; ini akun default suite sehingga hook `after` tidak mengganti sesi.
 - Data Pre-setup: Seed Registri A Client A (DD-01 sampai DD-30; Tabel Data Uji Dinamis TC). Di-seed dan direset idempotent lewat fixture BE di hook `before` (kemampuan "disediakan tim FE/BE"; mekanisme tidak didefinisikan di TC, Q-4). Spec hanya membaca data.
-- Kebutuhan intercept: request export registri `POST /v2/hardware-tagging/tags/export` (disebut di `tc-all-tags-backend.md` bagian 5; tab dan format yang dipakai mengikuti langkah) dipaksa mengembalikan respons 5xx. Kode status tepatnya tidak ditetapkan TC (lihat Temuan untuk QA). Intercept dilepas segera setelah asersi toast (S-09, P-2) dan di hook `after` sebagai cadangan.
+- Kebutuhan intercept: request export registri `POST /v2/hardware-tagging/tags/export` (disebut di `tc-all-tags-backend.md` bagian 5; tab dan format yang dipakai mengikuti langkah) dipaksa mengembalikan respons 5xx. Kode status tepatnya tidak ditetapkan TC (lihat Temuan untuk QA). Intercept dilepas segera setelah asersi toast (S-09) dan di hook `after` sebagai cadangan.
 - General Settings: Date Format `dd/MM/yy`, 24-hour, Asia/Jakarta (default Client A); spec ini tidak mengubahnya.
 - Suite serial (`parallel: false`).
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`) disetel true oleh hook suite `before` dan dipulihkan di `after` (dinyatakan di `suite.md`).

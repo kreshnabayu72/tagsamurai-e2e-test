@@ -25,7 +25,7 @@ coverage:
 - Suite serial (`parallel: false`).
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`) disetel true oleh hook suite `before` dan dipulihkan di `after` (dinyatakan di `suite.md`).
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
-- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): filter dan Search registri dikosongkan, visibilitas kolom dikembalikan ke default lewat `[Reset to Default]` Setup Column, dan berkas unduhan dihapus.
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): filter dan Search registri dikosongkan, visibilitas kolom dikembalikan ke default dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE), dan berkas unduhan dihapus.
 - Kemampuan teknis (kelas binary buffer, prinsip 13f): menangkap berkas unduhan browser (event download) ke direktori bersih per unduhan supaya nama berkas yang sama tidak tertimpa atau diberi akhiran `(1)`; membaca isi berkas CSV (header, jumlah baris data) dan XLSX (nilai sel baris DD-01 dan DD-05). Kegagalan unduhan (5xx) ada di spec `TC-GS-TAG-E2E-079-download-registri-gagal` dan unduhan lebih dari 5.000 baris di spec `TC-GS-TAG-E2E-080-download-registri-lebih-5000-baris`.
 
 ## Test Steps

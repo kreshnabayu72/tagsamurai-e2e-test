@@ -21,8 +21,8 @@ coverage:
   - Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_TC_PASSWORD`, untuk Global Settings > TAG (aksi Delete). Hook `after` mengembalikan sesi ke akun ini sebagai default suite.
 - Layar awal: hook `beforeEach` membuka Fixed Asset > TAG > To Be Returned (akun pertama spec).
 - Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30; kartu RFID – Object TAG `21 of 50`). Target hapus: DD-07 `E2801160600002054D8A0007` (To be Returned, tampil di Fixed Asset > TAG > To Be Returned; aset terakhir sudah tidak bertag DD-07) dan DD-15 `E28011606000020F00000001` (Filler Tag Available di seed; disetel To be Returned, Return Group `Gudang Pusat`, lewat fixture BE untuk TC-GS-TAG-371, dengan aset terakhir yang disediakan fixture BE karena seed tidak memuat aset untuk DD-15). Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4).
-- Pemulihan sebelum TC-GS-TAG-371 (langkah 22): fixture BE memulihkan Seed Registri A penuh (DD-07 kembali ada, kartu RFID – Object TAG `21 of 50`), lalu menyetel DD-07 dan DD-15 menjadi To be Returned (Return Group `Gudang Pusat`) dengan aset terakhir masing-masing. Dengan pemulihan penuh ini kartu `19 of 50` pada langkah 32 berlaku.
-- Kemampuan teknis (disediakan tim FE/BE): seed dan reset idempotent Seed Registri A; penyetelan DD-07 dan DD-15 menjadi To be Returned beserta aset terakhir; pembacaan TAG Log tag yang sudah dihapus; pembacaan status dan Tagging aset terakhir. Langkah dan selektor Fixed Asset tidak didefinisikan di TC, PRD, atau LLD (Q-9).
+- Pemulihan sebelum TC-GS-TAG-371 (langkah 22): fixture BE memulihkan Seed Registri A penuh (DD-07 kembali ada, kartu RFID – Object TAG `21 of 50`), lalu menyetel DD-07 dan DD-15 menjadi To be Returned (Return Group `Gudang Pusat`) dengan aset terakhir masing-masing. Dengan pemulihan penuh ini kartu `19 of 50` pada langkah 33 berlaku.
+- Kemampuan teknis (disediakan tim FE/BE): seed dan reset idempotent Seed Registri A; penyetelan DD-07 dan DD-15 menjadi To be Returned beserta aset terakhir; pembacaan TAG Log tag yang sudah dihapus; pembacaan jumlah entri Event Log To Be Returned sebelum aksi (N tidak diturunkan dari seeding); pembacaan status dan Tagging aset terakhir. Langkah dan selektor Fixed Asset tidak didefinisikan di TC, PRD, atau LLD (Q-9).
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan Seed Registri A idempotent lewat fixture BE; sesi dikembalikan ke Total Control Client A.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data di atas dan sesi akun.
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate`, lihat `suite.md`.
@@ -65,25 +65,26 @@ coverage:
 29. Klik `Delete` pada dialog
 30. Verifikasi toast sukses `Success, TAG has been deleted.`
 31. Verifikasi baris DD-07 dan DD-15 hilang dari registri
-32. Verifikasi kartu RFID – Object TAG `19 of 50`
-33. Ganti akun ke Admin FAMS, buka Fixed Asset > TAG > To Be Returned
-34. Verifikasi DD-07 dan DD-15 tidak ada lagi di tab To Be Returned
-35. Verifikasi badge tab berkurang 2 dari nilai yang dicatat
-36. Klik `Event Log`
-37. Verifikasi Event Log To Be Returned tidak memuat entri untuk DD-07 maupun DD-15 dan jumlah entri sama dengan yang dicatat
-38. Tutup modal Event Log, lalu buka aset terakhir DD-07 dan DD-15 di Fixed Asset
-39. Verifikasi status dan Tagging aset DD-07 dan DD-15 sama seperti sebelum Delete
+32. Klik Tab All
+33. Verifikasi kartu RFID – Object TAG `19 of 50`
+34. Ganti akun ke Admin FAMS, buka Fixed Asset > TAG > To Be Returned
+35. Verifikasi DD-07 dan DD-15 tidak ada lagi di tab To Be Returned
+36. Verifikasi badge tab berkurang 2 dari nilai yang dicatat
+37. Klik `Event Log`
+38. Verifikasi Event Log To Be Returned tidak memuat entri untuk DD-07 maupun DD-15 dan jumlah entri sama dengan yang dicatat
+39. Tutup modal Event Log, lalu buka aset terakhir DD-07 dan DD-15 di Fixed Asset
+40. Verifikasi status dan Tagging aset DD-07 dan DD-15 sama seperti sebelum Delete
 
 ## Notes
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
-- Spec melewati sekitar 35 langkah (39 langkah nominal). Alasan: dua TC satu topik aksi (Delete tag To be Returned dan efeknya di Fixed Asset) dengan satu dataset Seed Registri A; blok TC-GS-TAG-371 berdiri sendiri (Seed Registri A dipulihkan penuh di langkah 22 dan baseline dicatat ulang), dan bagian sesudah tiap ganti akun tetap bermakna walau bagian sebelumnya gagal. Mayoritas langkah adalah ganti akun dan navigasi ke Fixed Asset yang dibutuhkan Expected TC.
+- Spec melewati sekitar 35 langkah (40 langkah nominal). Alasan: dua TC satu topik aksi (Delete tag To be Returned dan efeknya di Fixed Asset) dengan satu dataset Seed Registri A; blok TC-GS-TAG-371 berdiri sendiri (Seed Registri A dipulihkan penuh di langkah 22 dan baseline dicatat ulang), dan bagian sesudah tiap ganti akun tetap bermakna walau bagian sebelumnya gagal. Mayoritas langkah adalah ganti akun dan navigasi ke Fixed Asset yang dibutuhkan Expected TC.
 - Pemisahan: spec ini memuat seluruh blok FAMS (kelas harness FE+BE dengan fixture aset terakhir dan akun Admin FAMS); TC-GS-TAG-145, 187, dan 347 (Approvals dan Admin Console TAG Stock) ada di spec 051.
-- Langkah ganti akun eksplisit: 6, 14, 27, 33.
+- Langkah ganti akun eksplisit: 6, 14, 27, 34.
 - Perubahan urutan (S-05 butir terakhir): pada TC-GS-TAG-144, asersi registri Global Settings (baris hilang, `No results found`, TAG Log; langkah 10 sampai 13) ditaruh tepat sesudah Delete, sebelum kembali ke FAMS (langkah 14 sampai 21), supaya ganti akun tidak berulang. TC-GS-TAG-371 ditaruh sesudah TC-GS-TAG-144 karena memakai DD-07 yang sudah dihapus TC-GS-TAG-144 dan dipulihkan di langkah 22.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1, 4, 5, 23, 25, dan 26 (mencatat baseline badge, jumlah entri Event Log, atau status aset), 6, 14, 20, 27, 33, dan 38 (ganti akun dan navigasi), 22 (memulihkan data lewat fixture BE).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1, 4, 5, 23, 25, dan 26 (mencatat baseline badge, jumlah entri Event Log, atau status aset), 2 (Search agar baris DD-07 tampil), 6, 14, 20, 27, 32, 34, dan 39 (ganti akun dan navigasi; langkah 32 klik Tab All karena kartu `N of M` hanya tampil di Tab All), 22 (memulihkan data lewat fixture BE).
 - Asersi tambahan di luar Expected TC (S-03): langkah 3 dan 24 (anchor positif sebelum absence, S-02 butir 2 bagian 8b); langkah 9 dan 30 memakai toast `Success, TAG has been deleted.` yang ditetapkan TC-GS-TAG-142 sebagai teks toast Delete tag.
-- Pengecualian P-1 (state berat): asersi bahwa Event Log To Be Returned tidak memuat entri DD-07 dan jumlah entri tetap (langkah 19), serta DD-07 dan DD-15 (langkah 37), memakai baseline jumlah entri yang dicatat sebelum Delete (langkah 4 dan 25; S-05, S-12) dan didahului toast sukses (langkah 9 dan 30) serta badge tab berkurang (langkah 15 dan 35) sebagai anchor positif (bagian 8b butir 2); state berat (penghapusan tag To be Returned dengan aset terakhir) dibangun di spec ini.
+- Pengecualian P-1 (state berat): asersi bahwa Event Log To Be Returned tidak memuat entri DD-07 dan jumlah entri tetap (langkah 19), serta DD-07 dan DD-15 (langkah 38), memakai baseline jumlah entri yang dicatat sebelum Delete (langkah 4 dan 25; S-05, S-12) dan didahului toast sukses (langkah 9 dan 30) serta badge tab berkurang (langkah 15 dan 36) sebagai anchor positif (bagian 8b butir 2); state berat (penghapusan tag To be Returned dengan aset terakhir) dibangun di spec ini.
 - Rujukan: TC-GS-TAG-358 (Delete by Scan atas DD-07 dengan verifikasi FAMS) ada di spec 099.
 - Temuan untuk QA:
   - Q-9: langkah dan selektor di Fixed Asset tidak didefinisikan; verifikasi di FAMS hanya sejauh Expected TC.

@@ -21,7 +21,9 @@ coverage:
 - Data Pre-setup Client A (dibaca saja): Seed Event Log `E-01` sampai `E-14` (Tab Activate TAG) dan `A-01` sampai `A-12` (Tab Audit TAG), Tabel Data Uji Dinamis TC; mekanisme seeding disediakan tim FE/BE (lihat Temuan untuk QA). Baris `E-03` (14/09/26 16:45, TAG Type RFID, Activity `Delete`, Success 3, Waiting for Approval `—`, Failed 0) dipakai sebagai baris pembaca isi berkas Tab Activate TAG; baris itu dicari di berkas lewat Date `14/09/26 16:45`.
 - Event Log menumpuk antar spec, sehingga isi berkas tidak diasersi sebagai jumlah baris absolut; asersi isi memakai baris seed `E-03`.
 - Kemampuan teknis (disediakan tim FE): pembaca berkas CSV/XLSX terunduh (nama berkas dan isi sel); pengamat toast.
-- State global yang diubah: tidak ada.
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): berkas unduhan dihapus.
+- Kemampuan teknis tambahan (disediakan tim FE): menangkap berkas unduhan browser ke direktori bersih per unduhan sehingga nama berkas yang sama tidak tertimpa atau diberi akhiran `(1)`.
+- State global yang diubah: tidak ada selain berkas unduhan.
 
 ## Test Steps
 

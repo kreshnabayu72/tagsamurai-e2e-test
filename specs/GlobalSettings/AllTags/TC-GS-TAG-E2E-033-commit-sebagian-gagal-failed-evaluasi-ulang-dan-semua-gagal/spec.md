@@ -18,9 +18,9 @@ coverage:
 
 ## Prerequisites
 
-- Mode: FE+BE (backend nyata; pemicu "tepat saat commit" memakai sesi API, P-2, Q-5).
+- Mode: FE+BE (backend nyata; pemicu "tepat saat commit" memakai sesi API, Q-5).
 - Akun aktor: Total Control Client A Sari Dewi `totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`. Tidak ada sesi UI kedua.
-- Pelaku kedua (sesi API, hanya memicu perubahan state):
+- Pelaku kedua memakai sesi API aktor (kemampuan dinyatakan di `suite.md`):
   - Total Control kedua Client A Dewi Lestari `totalControl2_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC2_PASSWORD`, mengaktivasi `356938035643001` hingga Activated (TC-GS-TAG-102 dan 176). Email di `.env.example` dan Pre-setup perlu dikonfirmasi FE (Q-2).
   - Akun Principal pada Admin Console > Client yang mematikan opsi mandiri (BYO) Client A (TC-GS-TAG-104). Akun tidak tertulis di TC; disediakan tim FE (S-13).
 - Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok, S-12): stok resmi Admin Console Client A: GPS `356938035643001` (DD-S1) dan `356938035643003` (DD-S3) Available, `356938035643002` (DD-S2) Damaged/Missing, Device Name `Teltonika FMB920`, SKU `SKU-GPS-01`, Brand `Teltonika`, Model/Type `FMB920`. Katalog Client A memuat Device Name `Queclink GV300` (Brand `Queclink`, Model/Type `GV300`). Opsi mandiri Client A aktif. IMEI `356938035643401` (DD-N13) berstatus Waiting for Approval di Client B (Total Control Client B `totalControl_automated_qaTeam2@qwertysystem.net`, `Spectra.env.GS_CLIENTB_TC_PASSWORD`; hanya fixture BE, tidak login). IMEI `356938035643101` (DD-N1) tidak ada di stok dan registri.
@@ -96,11 +96,11 @@ coverage:
 48. Verifikasi tooltip "Self-purchased device activation is not enabled for your account."
 49. Verifikasi baris `356938035643101` tetap di staging
 50. Pulihkan opsi mandiri Client A menjadi aktif (sesi API Principal)
-51. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris `356938035643101`)
+51. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris `356938035643101`)
 
 ## Notes
 
-- Mode: FE+BE. P-2: pelaku kedua (Total Control kedua dan Principal) hanya memicu perubahan state lewat sesi API ("hingga ... tersimpan"); hasil diasersi di sesi Client A. Client B hanya fixture (unit Waiting for Approval).
+- Mode: FE+BE. Hasil pemicu diasersi di sesi Client A. Client B hanya fixture (unit Waiting for Approval).
 - Spec melewati sekitar 35 langkah (51 langkah). Alasan: seluruh blok satu kelas (kegagalan baris saat commit Activate, tanpa harness lain) atas satu halaman dan dataset stok yang sama; tiap blok berdiri sendiri karena staging dibuang (langkah 10, 28, 40) dan stok dipulihkan (langkah 31, 41); kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok yang mengubah state global (TC-GS-TAG-104, mematikan opsi mandiri) ditaruh paling akhir.
 - Urutan: TC-GS-TAG-105 (tanpa pemicu sesi lain) lebih dulu; TC-GS-TAG-103 melanjutkan sesi TC-GS-TAG-102 sesuai kolom Dependensi (langkah TC-GS-TAG-102 disalin utuh, S-04).
 - Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 10, 11, 28, 29, 31, 32, 40, 41, 50, 51 (membuka sesi, membuang staging, Search di registri, pemulihan, kembali ke List).

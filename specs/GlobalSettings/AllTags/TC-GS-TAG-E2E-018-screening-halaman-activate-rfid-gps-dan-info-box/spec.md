@@ -29,6 +29,7 @@ coverage:
 - Data Client A: Seed Registri A (RFID – Object TAG terpakai 21 dari kuota 50, GPS terpakai 1 dari kuota 30). Stok resmi untuk TC-48: GPS `356938035643001` dan `356938035643003` Available, `356938035643002` Damaged/Missing (DD-S1 sampai DD-S3).
 - State global yang diubah: Communication Endpoint Client A di Admin Console > Settings > Communication Endpoint (langkah 30 dan 35). Nilai awal untuk TC-44 disetel hook `before`: Domain `device.tagsamurai.test`, IP Address `203.0.113.10` (Q-3: nilai literal tidak ditetapkan TC selain Data Uji TC-44). Hook `after` memulihkan Communication Endpoint ke nilai yang dicatat di hook `before` walau spec gagal. Akun Admin Console pelaku perubahan tidak ada di Pre-setup TC: disediakan tim FE (S-13).
 - Kemampuan teknis: mengubah Communication Endpoint Client A di Admin Console (disediakan tim FE); entri manual GPS (input teks dan tombol `Add`, label menunggu desain NC-11, selektor disediakan tim FE); jumlah terpakai kuota GPS Client Quota disetel fixture BE.
+- Opsi mandiri (BYO) aktif untuk Client Quota (IMEI `356938035643101` pada TC-47 menjadi Self-Purchased lewat Template).
 - Spec tidak melakukan Submit Activation; registri Client A tidak berubah.
 - Suite serial (`parallel: false`); spec tidak bergantung pada hasil spec lain. Identifier TAG (EPC, IMEI, UID) tetap dan tidak dapat diberi sufiks `{runId}` (S-12), sehingga seeding bersifat idempotent: hook `before` mengembalikan data yang dipakai spec ini ke kondisi awal (Q-4).
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate` menjadi true untuk akun aktor spec ini dan hook `after` memulihkannya; lihat `suite.md` bagian Hook Guided Tooltip.
@@ -72,7 +73,7 @@ coverage:
 26. Verifikasi klik header tidak mengubah urutan baris
 27. Verifikasi tabel staging memakai scroll internal dengan header tetap
 28. Verifikasi tabel staging tanpa pagination
-29. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+29. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ### TC-GS-TAG-45: Info Box: baris IP Address kosong tidak dirender
 
@@ -106,7 +107,7 @@ coverage:
 48. Isi Template Device Name `Queclink GV300` dan Brand `Queclink`
 49. Tambahkan lewat entri manual (ketik di input lalu klik `Add`) `356938035643101` sehingga pool sesi habis
 50. Verifikasi Info Box tetap tampil di atas halaman setelah kuota pool habis
-51. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+51. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ## Notes
 
@@ -114,7 +115,8 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Alasan di atas sekitar 35 langkah: semua blok satu kelas harness (screening halaman Activate) dan berdiri sendiri; kegagalan satu blok TC tidak membuat blok lain kehilangan makna karena tiap blok membuka sesi Activate sendiri. Ganti akun eksplisit (langkah 41 dan 45) sah menurut bagian 3 (pemisah akun, kasus b); bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal. TC-45 dan TC-46 mengubah Communication Endpoint (state global, dipulihkan di langkah pemulihan dan hook `after`).
 - Urutan: TC-43 dan TC-44 (screening) lebih dulu, TC-48 menambah baris pada sesi GPS TC-44 (screening yang sama), lalu TC-45 dan TC-46 (mengubah state global), TC-166 (Manage TAG (Update)), TC-47 (Client Quota) paling akhir karena butuh ganti client. Urutan ini berbeda dari urutan angka TC dan sengaja agar sesi GPS dipakai bersama dan state global diubah di bagian akhir.
-- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; `Kembali ke List` dengan `Leave` hanya bila staging berisi baris, dan langkah itu adalah langkah penghubung (S-03): sesi dengan baris staging dianggap dirty sehingga keluar halaman memunculkan dialog konfirmasi; definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113) dan tidak diasersi di spec ini. langkah 30, 35, dan pemulihan endpoint menjalankan Precondition TC-45/46 serta pemulihan state; langkah isi Template dan entri IMEI di TC-47 menjalankan langkah 4 TC-47 ("Masukkan 1 IMEI valid ... hingga pool habis") dengan IMEI Needs Info diubah menjadi Self-Purchased lewat Template (pola TC-64) agar pool benar-benar terpakai.
+- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; `Kembali ke List` dengan `Leave` hanya bila staging berisi baris adalah langkah penghubung (S-03) karena dialog `Unsaved Changes` muncul pada sesi dengan baris staging, sedangkan definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113) dan tidak diasersi di spec ini. Langkah 30, 35, dan pemulihan endpoint menjalankan Precondition TC-45/46 serta pemulihan state; langkah isi Template dan entri IMEI di TC-47 menjalankan langkah 4 TC-47 ("Masukkan 1 IMEI valid ... hingga pool habis") dengan IMEI Needs Info diubah menjadi Self-Purchased lewat Template (pola TC-64) agar pool benar-benar terpakai.
+- Langkah 37 (`Verifikasi` judul `Activate TAG — GPS`) adalah anchor positif untuk absence Info Box pada langkah 38 (8b butir 2); asersi ini tidak ada di Expected TC-46.
 - Rujukan silang: TC-166 (Info Box untuk Manage TAG (Update)) bukan matriks role; Role Matrix registri ada di spec 006.
 - Temuan untuk QA:
   - TC-44, TC-45, TC-46, TC-47, TC-166: nilai literal `Domain` dan `IP Address` Info Box ("sesuai Communication Endpoint") dan cara mengosongkannya tidak ditetapkan TC selain Data Uji TC-44 (Q-3); spec memakai nilai Data Uji TC-44 dan menulis pengubahan endpoint sebagai kemampuan yang disediakan tim FE.

@@ -15,9 +15,9 @@ coverage:
 
 ## Prerequisites
 
-- Mode: FE+BE (backend nyata; pemicu Admin Console memakai sesi API, P-2).
+- Mode: FE+BE (backend nyata).
 - Akun aktor: Total Control Client A Sari Dewi `totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`. Tidak ada sesi UI kedua.
-- Pelaku kedua (sesi API, hanya memicu perubahan state): Principal pada Admin Console yang menambahkan unit stok resmi (TC-GS-TAG-167). Akun pelaku tidak tertulis di TC; disediakan tim FE (S-13). Pre-setup TC mencatat Principal approver `principalApprover_automated@qwertysystem.net` (`Spectra.env.GS_PRINCIPAL_TC_PASSWORD`) tetapi tidak menyatakannya untuk menambah stok (Q-2).
+- Pelaku kedua memakai sesi API aktor (kemampuan dinyatakan di `suite.md`): Principal pada Admin Console yang menambahkan unit stok resmi (TC-GS-TAG-167). Akun pelaku tidak tertulis di TC; disediakan tim FE (S-13). Pre-setup TC mencatat Principal approver `principalApprover_automated@qwertysystem.net` (`Spectra.env.GS_PRINCIPAL_TC_PASSWORD`) tetapi tidak menyatakannya untuk menambah stok (Q-2).
 - Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok): Client A GPS terpakai 1 dari 30 (Seed Registri A); opsi mandiri Client A aktif; katalog Client A memuat Device Name `Queclink GV300` (Brand `Queclink`, Model/Type `GV300`, aktif) dan `Teltonika FMB920` (Brand `Teltonika`, Model/Type `FMB920`). IMEI `356938035643201` (DD-N4) aktif In Use di Client B (milik Total Control Client B Kartika Sari `totalControl_automated_qaTeam2@qwertysystem.net`, `Spectra.env.GS_CLIENTB_TC_PASSWORD`; hanya fixture BE, tidak login). IMEI `356938035643101` (DD-N1) tidak ada di stok maupun registri; unit stok resminya ditambahkan oleh pelaku kedua pada TC-GS-TAG-167.
 - Kemampuan teknis (disediakan tim FE/BE): seed/reset unit Client B, stok resmi Client A, dan registri Client A; sesi API Admin Console untuk menambah unit stok resmi; label dan placeholder input entri manual GPS serta tombol `Add` menunggu desain (NC-11), selektor disediakan tim FE.
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): hapus unit stok resmi `356938035643101` yang ditambahkan, pulihkan registri Client A dan unit Client B, buang staging yang tersisa.
@@ -55,7 +55,7 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. P-2: pelaku kedua hanya memicu perubahan state lewat sesi API (langkah 16 ditulis "hingga ... tersimpan"); hasilnya diasersi di sesi Client A, bukan di sesi pelaku. Client B hanya fixture (unit In Use), tanpa sesi UI.
+- Mode: FE+BE. Hasil pemicu langkah 16 diasersi di sesi Client A. Client B hanya fixture (unit In Use), tanpa sesi UI.
 - Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 8, 9, 12, 13, 20 (membuka sesi, menutup dialog informasi sebelum navigasi, pindah ke registri dan Search untuk menemukan baris target, pemulihan); 16 adalah pemicu state dari TC.
 - Langkah 5 dan 6 diasersi berurutan (toast lalu dialog) sesuai urutan Expected TC-GS-TAG-100 butir a.
 - Pembagian TC lintas spec: TC-GS-TAG-99 dan 101 (commit sukses tanpa kolisi) berada di spec 031.

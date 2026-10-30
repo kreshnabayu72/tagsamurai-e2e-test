@@ -28,7 +28,7 @@ coverage:
 - Suite serial (`parallel: false`).
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`) disetel true oleh hook suite `before` dan dipulihkan di `after` (dinyatakan di `suite.md`).
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
-- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): filter registri dikosongkan dan visibilitas kolom dikembalikan ke default lewat `[Reset to Default]` Setup Column.
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): filter registri dikosongkan dan visibilitas kolom dikembalikan ke default dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE).
 - Tabel "Field Filter Panel" (parameter langkah 7; urutan field sama dengan Expected TC-GS-TAG-201 butir b):
 
 | Field | Tipe kontrol | Placeholder |
@@ -149,8 +149,8 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC dalam spec: 201 (screening di awal), 202, 206, 207, 208, 209, 210, 211. TC-GS-TAG-203, 204, 205, 212 (nilai filter, rentang tanggal, logika OR/AND) ada di spec `TC-GS-TAG-E2E-070-filter-nilai-per-field-rentang-tanggal-dan-logika-and-or`. Spec ini tidak menghapus data.
 - Panjang spec: 71 langkah tertulis (sekitar 81 langkah setelah ekspansi 11 field pada langkah 7), di atas sekitar 35 langkah. Alasan dipertahankan: seluruh blok satu topik (Filter Panel) pada satu dataset (Seed Registri A) dan satu kelas harness biasa (bagian 3 prinsip 1), memakai satu pembukaan layar, dan tiap blok diawali `Clear Field` atau pindah tab sehingga tidak bergantung pada hasil blok sebelumnya. Kegagalan keras pada pembukaan Filter Panel akan membuat blok sesudah screening tidak berjalan; hal ini diakui dan pemisahan tidak dilakukan karena semua blok memakai panel dan dataset yang sama. Langkah yang diulang: langkah 7 (11 iterasi, satu per baris tabel Prerequisites).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 10, 14, 19, 23 (menutup panel supaya perpindahan tab dan pembukaan panel berikutnya deterministik), langkah 24 (kembali ke Tab All karena Tab Paired tidak punya filter `Status`), langkah 32, 37, 43, 52 (mengosongkan panel), langkah 63, 70 (menutup panel), langkah 71 (memulihkan kolom `Source`). Tutup dan buka panel pada langkah 14 sampai 16 dan 19 sampai 21 ditambahkan karena TC tidak menyebut keadaan panel setelah pindah tab.
-- Pemisahan dari spec nilai Filter, Search, Sort, dan Pagination registri: kelas harness tidak sama dan tidak semua memakai data yang sama; ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 10, 14, 19, 23 (menutup panel supaya perpindahan tab dan pembukaan panel berikutnya deterministik), langkah 24 (kembali ke Tab All karena Tab Paired tidak punya filter `Status`), langkah 32, 37, 43, 52, 69 (mengosongkan panel), langkah 63, 70 (menutup panel), langkah 71 (memulihkan kolom `Source`). TC tidak menyebut keadaan panel setelah pindah tab; spec menutup panel sebelum pindah tab dan membukanya kembali sesudahnya (langkah 14 sampai 16 dan 19 sampai 21).
+- Pemisahan dari spec nilai Filter, Search, Sort, dan Pagination registri: ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
 - Asersi absence opsi `Paired` (langkah 18) didahului langkah 17 sebagai anchor positif (opsi Status lain tampil di surface yang sama, bagian 8b butir 2).
 - Langkah 50 dan 67 adalah pembanding positif (sedikitnya satu baris tampil) sebelum asersi hasil tabel pada langkah 51 dan 68.
 - Hasil tabel 24 baris (langkah 51, 68) diturunkan dari Seed Registri A (24 baris Source Official, TC-GS-TAG-203 butir e); Expected TC-GS-TAG-209 dan 211 hanya menyebut "tetap menampilkan hasil Official" dan "tetap tersaring".

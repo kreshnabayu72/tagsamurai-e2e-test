@@ -46,54 +46,61 @@ Akun yang diuji (Tabel Data Uji Pre-setup):
 1. Amati toolbar dan area kartu sebagai Total Control Client Free
 2. Verifikasi kontrol baca `Search by Scan`, `Search`, `Filter`, `Download` tampil
 3. Verifikasi tombol `+ Activate TAG` Hidden
-4. Verifikasi tidak ada overlay setelah tombol `+ Activate TAG` dicari
-5. Verifikasi tidak ada tooltip pada tombol `+ Activate TAG`
+4. Verifikasi tidak ada overlay pada area tombol `+ Activate TAG`
+5. Verifikasi tidak ada tooltip pada area tombol `+ Activate TAG`
 6. Verifikasi kartu License tidak tampil
-7. Verifikasi kartu Health tidak tampil
-8. Logout, lalu login sebagai Manage TAG (Update) Client Free
-9. Buka Global Settings > TAG > Tab All
-10. Verifikasi kontrol baca `Search by Scan`, `Search`, `Filter`, `Download` tampil
-11. Verifikasi tombol `+ Activate TAG` Hidden
-12. Verifikasi tidak ada overlay setelah tombol `+ Activate TAG` dicari
-13. Verifikasi tidak ada tooltip pada tombol `+ Activate TAG`
-14. Verifikasi kartu License dan Health tidak tampil
-15. Logout, lalu login sebagai Total Control Client Free
+7. Klik Tab Not Paired
+8. Verifikasi kontrol baca `Search by Scan`, `Search`, `Filter`, `Download` tampil di Tab Not Paired
+9. Verifikasi kartu Health tidak tampil
 
 ### TC-GS-TAG-316: Client Free: tag RFID, NFC, BLE, GPS warisan terkunci dan menu baris hanya TAG Log
 
-16. Buka Global Settings > TAG > Tab All
-17. Amati sel TAG Type baris DD-F2 `E2801160600002054D8A6001`
-18. Verifikasi sel TAG Type baris DD-F2 menampilkan ikon gembok
-19. Hover ikon gembok baris DD-F2
-20. Verifikasi tooltip `Upgrade to unlock`
-21. Buka menu baris DD-F2
-22. Verifikasi menu baris hanya berisi `TAG Log`
-23. Klik `TAG Log`
-24. Verifikasi Popup TAG Log DD-F2 terbuka
-25. Tutup popup
-26. Ketik Search `E2801160600002054D8A6001`, tekan Enter
-27. Verifikasi baris DD-F2 tampil
-28. Klik `(←)` pada kotak Search
-29. Klik `Download`, pilih `Download as CSV`
-30. Verifikasi berkas CSV terunduh memuat baris DD-F2 `E2801160600002054D8A6001`
-31. Kirim permintaan Delete DD-F2 langsung ke server memakai sesi Total Control Client Free (klien HTTP, tanpa lewat UI)
-32. Verifikasi permintaan ditolak 403 Forbidden
-33. Verifikasi tag DD-F2 tetap ada (state data dibaca lewat kemampuan baca disediakan tim FE/BE)
+10. Buka Global Settings > TAG > Tab All
+11. Amati sel TAG Type baris DD-F2 `E2801160600002054D8A6001`
+12. Verifikasi sel TAG Type baris DD-F2 menampilkan ikon gembok
+13. Hover ikon gembok baris DD-F2
+14. Verifikasi tooltip `Upgrade to unlock`
+15. Buka menu baris DD-F2
+16. Verifikasi menu baris hanya berisi `TAG Log`
+17. Klik `TAG Log`
+18. Verifikasi Popup TAG Log DD-F2 terbuka
+19. Tutup popup
+20. Ketik Search `E2801160600002054D8A6001`, tekan Enter
+21. Verifikasi baris DD-F2 tampil
+22. Klik `(←)` pada kotak Search
+23. Klik `Download`, pilih `Download as CSV`
+24. Verifikasi berkas CSV terunduh memuat baris DD-F2 `E2801160600002054D8A6001`
+25. Kirim permintaan Delete DD-F2 langsung ke server memakai sesi Total Control Client Free (klien HTTP, tanpa lewat UI)
+26. Verifikasi permintaan ditolak 403 Forbidden
+27. Verifikasi tag DD-F2 tetap ada (state data dibaca lewat kemampuan baca disediakan tim FE/BE)
+
+### TC-GS-TAG-315 (lanjutan): Manage TAG (Update) Client Free
+
+28. Logout, lalu login sebagai Manage TAG (Update) Client Free
+29. Buka Global Settings > TAG > Tab All
+30. Verifikasi kontrol baca `Search by Scan`, `Search`, `Filter`, `Download` tampil
+31. Verifikasi tombol `+ Activate TAG` Hidden
+32. Verifikasi tidak ada overlay pada area tombol `+ Activate TAG`
+33. Verifikasi tidak ada tooltip pada area tombol `+ Activate TAG`
+34. Verifikasi kartu License tidak tampil
+35. Klik Tab Not Paired
+36. Verifikasi kontrol baca `Search by Scan`, `Search`, `Filter`, `Download` tampil di Tab Not Paired
+37. Verifikasi kartu Health tidak tampil
 
 ### TC-GS-TAG-317: Downgrade ke Free: tag non-QR tidak dihapus, tetap ada namun tidak dapat diakses
 
-34. Logout, lalu login sebagai Total Control Client Down
-35. Buka Global Settings > TAG > Tab All
-36. Verifikasi tag RFID tetap tercantum di registri
-37. Verifikasi sel TAG Type tag RFID menampilkan ikon gembok
-38. Hover ikon gembok tag RFID
-39. Verifikasi tooltip `Upgrade to unlock`
-40. Verifikasi tag QR dapat dikelola (menu baris tag QR tampil tanpa ikon gembok)
-41. Verifikasi kartu counter tidak tampil
+38. Logout, lalu login sebagai Total Control Client Down
+39. Buka Global Settings > TAG > Tab All
+40. Verifikasi tag RFID tetap tercantum di registri
+41. Verifikasi sel TAG Type tag RFID menampilkan ikon gembok
+42. Hover ikon gembok tag RFID
+43. Verifikasi tooltip `Upgrade to unlock`
+44. Verifikasi tag QR dapat dikelola (menu baris tag QR tampil tanpa ikon gembok)
+45. Verifikasi kartu counter tidak tampil
 
 ### TC-GS-TAG-318: Plan berbayar (Growth/Professional/Enterprise): perilaku identik tanpa pembatasan antar-tier
 
-42. Untuk setiap client pada tabel "TC-318" di bawah (Client A, Client Professional, Client Enterprise), lakukan langkah 43 sampai 50
+46. Untuk setiap client pada tabel "TC-318" di bawah (Client A, Client Professional, Client Enterprise), lakukan langkah 47 sampai 54
 
 | Client | Akun |
 |---|---|
@@ -101,23 +108,26 @@ Akun yang diuji (Tabel Data Uji Pre-setup):
 | Client Professional | Total Control Client Professional |
 | Client Enterprise | Total Control Client Enterprise |
 
-43. Logout, lalu login sebagai Total Control client pada baris tabel
-44. Buka Global Settings > TAG > Tab All
-45. Verifikasi tombol `+ Activate TAG` tampil
-46. Klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
-47. Ketik `356938035643001` di input entri manual, klik `Add`
-48. Klik `Submit`
-49. Klik `Submit` pada dialog `Submit Activation`
-50. Verifikasi toast sukses `Success, TAG has been activated.`
+47. Logout, lalu login sebagai Total Control client pada baris tabel
+48. Buka Global Settings > TAG > Tab All
+49. Verifikasi tombol `+ Activate TAG` tampil
+50. Klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
+51. Ketik `356938035643001` di input entri manual, klik `Add`
+52. Klik `Submit`
+53. Klik `Submit` pada dialog `Submit Activation`
+54. Verifikasi toast sukses `Success, TAG has been activated.`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md` (Section 7d). Subjudul `###` memetakan langkah ke id TC granular.
-- Pengecualian P-5: TC-316 butir c (Delete langsung 403, langkah 31 sampai 33) adalah satu-satunya request langsung di spec ini dan objek-uji ringan kelas a; berada di spec plan tier karena permukaan dan akun Client Free yang sama (butir b P-5).
-- Langkah 42 sampai 50 adalah perulangan tiga client: Untuk setiap baris tabel "TC-318" (langkah 43 sampai 50), 8 langkah x 3 client = 24 langkah setelah ekspansi; tiap `Verifikasi` tetap satu per klausa.
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 8, 15, 17, 25, 28, 34, 35 (login dan membuka), langkah 8, 15, 34, 43 (ganti akun eksplisit, S-07), dan penutupan popup. Langkah 26 sampai 28 (Search lalu `(←)`) adalah bagian Expected b TC-316 ("Search ... dapat membaca baris"); langkah 29 sampai 30 untuk "Download ... dapat membaca baris".
-- Alasan spec melewati sekitar 35 langkah (nominal 50, ekspansi 66): semua blok satu kelas harness (h, state tenant/plan tier) dengan satu butir kelas a ringan (P-5 b); tiap blok berdiri sendiri dengan akun berbeda dan Step ganti akun eksplisit, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna (bagian 3 konvensi kasus (b)). Langkah 42 sampai 50 diulang per client dengan parameter di tabel. Spec mencampur blok bukan pembuat data (TC-315, TC-316, TC-317, TC-318: hanya membaca dan menekan aksi yang ditolak atau tidak ada) dengan satu aksi tulis sukses per client pada TC-318 (Activate) dan satu Delete langsung yang ditolak: semuanya satu kelas (h, plan tier) pada permukaan dan akun yang berbagi Seed; blok TC-318 yang membuat data ada di akhir dan pembersihannya mengikuti Prerequisites, sehingga kegagalan keras di blok itu tidak menutupi hasil blok baca.
+- Pengecualian P-5: TC-316 butir c (Delete langsung 403, langkah 25 sampai 27) adalah satu-satunya request langsung di spec ini dan objek-uji ringan kelas a; berada di spec plan tier karena permukaan dan akun Client Free yang sama (butir b P-5).
+- Langkah 46 sampai 54 adalah perulangan tiga client: Untuk setiap baris tabel "TC-318" (langkah 47 sampai 54), 8 langkah x 3 client = 24 langkah setelah ekspansi; tiap `Verifikasi` tetap satu per klausa.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 7, 10, 11, 19, 22, 28, 29, 35, 38, 39 (amati, pindah tab, login dan membuka halaman, penutupan popup), langkah 28, 38, 47 (ganti akun eksplisit, S-07). Langkah 20 sampai 22 (Search lalu `(←)`) adalah bagian Expected b TC-316 ("Search ... dapat membaca baris"); langkah 23 sampai 24 untuk "Download ... dapat membaca baris".
+- Health Counter Card hanya ada di Tab Not Paired, License Counter Card hanya di Tab All (PRD all-tags.md, TC-3, TC-14); TC-315 butir b diasersi per tab: License di Tab All (langkah 6 dan 34), Health di Tab Not Paired (langkah 9 dan 37). Langkah 8 dan 36 (`Verifikasi` kontrol baca tampil di Tab Not Paired) adalah asersi tambahan di luar Expected TC-315 dan menjadi anchor positif bagi asersi absence kartu Health (8b butir 2, S-03).
+- Urutan blok: TC-315 (bagian Manage TAG (Update)) ditaruh setelah TC-316 supaya akun Total Control Client Free tidak login, logout, lalu login lagi (S-10); langkah 28 sampai 37 melanjutkan TC-315 dengan akun Manage TAG (Update).
+- Alasan spec melewati sekitar 35 langkah (nominal 54, ekspansi 70): semua blok satu kelas harness (h, state tenant/plan tier) dengan satu butir kelas a ringan (P-5 b); tiap blok berdiri sendiri dengan akun berbeda dan Step ganti akun eksplisit, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna (bagian 3 konvensi kasus (b)). Langkah 46 sampai 54 diulang per client dengan parameter di tabel. Spec mencampur blok bukan pembuat data (TC-315, TC-316, TC-317, TC-318: hanya membaca dan menekan aksi yang ditolak atau tidak ada) dengan satu aksi tulis sukses per client pada TC-318 (Activate) dan satu Delete langsung yang ditolak: semuanya satu kelas (h, plan tier) pada permukaan dan akun yang berbagi Seed; blok TC-318 yang membuat data ada di akhir dan pembersihannya mengikuti Prerequisites, sehingga kegagalan keras di blok itu tidak menutupi hasil blok baca.
 - Temuan untuk QA:
+  - TC-315 Expected b ("Kartu License dan Health tidak tampil") tidak menyebut tab; License Counter Card ada di Tab All dan Health Counter Card di Tab Not Paired, sehingga spec mengasersi tiap kartu pada tabnya.
   - TC-315 langkah 2 ("Ulangi sebagai Manage TAG (Update)") tidak menyebut akun Manage TAG (Update) di Client Free; Pre-setup TC hanya memuat Manage TAG (Update) untuk Client A. Akun ditulis "disediakan tim FE" (S-13).
   - TC-316 Expected b ("Search dan Download tetap dapat membaca baris tersebut") tidak mendefinisikan asersi Download; spec mengasersi berkas CSV memuat Code DD-F2 (butuh pembaca CSV).
   - TC-316 tidak menyebut identifier tag NFC, BLE, GPS warisan walau judulnya menyebut "RFID, NFC, BLE, GPS warisan"; Pre-setup Client Free hanya memuat DD-F1 (QR) dan DD-F2 (RFID). Spec hanya menguji DD-F2.

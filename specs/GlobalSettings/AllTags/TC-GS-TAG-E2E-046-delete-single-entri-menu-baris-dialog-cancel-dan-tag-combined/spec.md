@@ -26,7 +26,7 @@ coverage:
 - Tabel "Menu tanpa Delete" (TC-GS-TAG-138 butir a): DD-01 `E2801160600002054D8A0001` (Paired), DD-06 `E2801160600002054D8A0006` (Reserved).
 - Tabel "Menu dengan Delete" (TC-GS-TAG-138 butir b): DD-02 (Available), DD-07 (To be Returned), DD-04 (Damaged/Missing), DD-08 (Retired), DD-03 (Waiting for Approval).
 - Kemampuan teknis (disediakan tim FE/BE): seed dan reset idempotent Seed Registri A; simulasi reader RFID untuk satu sesi Delete by Scan (D-4, Q-1; mekanisme tidak didefinisikan di TC, PRD, atau LLD).
-- Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan Seed Registri A (DD-15 dipulihkan) lewat fixture BE.
+- Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan Seed Registri A (DD-15 dipulihkan) lewat fixture BE; kembalikan Rows per page ke 10.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data registri di atas dan sesi akun.
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate`, lihat `suite.md`.
 
@@ -88,30 +88,32 @@ coverage:
 37. Klik `Delete by Scan` lalu pilih teknologi `RFID` pada overlay
 38. Pindai DD-15 `E28011606000020F00000001`
 39. Klik `Stop` pada widget
-40. Buka menu baris DD-16, lalu klik `Delete`
-41. Verifikasi dialog `Delete TAG` untuk DD-16 memuat baris `This will free up license quota.`
-42. Verifikasi dialog `Delete TAG` untuk DD-16 memuat baris `For more accurate results, use Delete by Scan.`
-43. Klik `Cancel`
-44. Klik Tab Not Paired
-45. Centang baris DD-17 dan DD-18
-46. Pilih `Bulk Action` > `Delete`
-47. Verifikasi dialog `Delete TAGs` untuk DD-17 dan DD-18 memuat baris `This will free up license quota.`
-48. Verifikasi dialog `Delete TAGs` untuk DD-17 dan DD-18 memuat baris `For more accurate results, use Delete by Scan.`
-49. Klik `Cancel`
-50. Verifikasi DD-16, DD-17, dan DD-18 tetap tampil di registri (tidak ada baris yang terhapus)
-51. Klik `(✕)` pada Bulk Action Bar untuk membatalkan seleksi
+40. Ubah Rows per page menjadi 50 (seluruh baris tab ini tampil pada satu halaman)
+41. Buka menu baris DD-16, lalu klik `Delete`
+42. Verifikasi dialog `Delete TAG` untuk DD-16 memuat baris `This will free up license quota.`
+43. Verifikasi dialog `Delete TAG` untuk DD-16 memuat baris `For more accurate results, use Delete by Scan.`
+44. Klik `Cancel`
+45. Klik Tab Not Paired
+46. Ubah Rows per page menjadi 50 (seluruh baris tab ini tampil pada satu halaman)
+47. Centang baris DD-17 dan DD-18
+48. Pilih `Bulk Action` > `Delete`
+49. Verifikasi dialog `Delete TAGs` untuk DD-17 dan DD-18 memuat baris `This will free up license quota.`
+50. Verifikasi dialog `Delete TAGs` untuk DD-17 dan DD-18 memuat baris `For more accurate results, use Delete by Scan.`
+51. Klik `Cancel`
+52. Verifikasi DD-16, DD-17, dan DD-18 tetap tampil di registri (tidak ada baris yang terhapus)
+53. Klik `(✕)` pada Bulk Action Bar untuk membatalkan seleksi
 
 ## Notes
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular. Spec ini tidak punya asersi absence log.
-- Spec melewati sekitar 35 langkah (51 langkah nominal, sekitar 69 setelah ekspansi dua blok ulang: langkah 2 sampai 5 untuk 2 baris dan langkah 7 sampai 10 untuk 5 baris). Alasan: seluruh blok memakai satu dataset (Seed Registri A), satu kelas (FE+BE, hanya buka menu dan dialog lalu `Cancel`), dan tiap blok berdiri sendiri: kegagalan satu blok tidak membuat blok lain kehilangan makna. Langkah berulang memakai idiom tabel di Prerequisites (langkah 1 dan 6).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 5 dan 10 (menutup menu), 23, 27, 43, dan 49 (`Cancel` pada dialog yang hanya diamati), 28 dan 36 (pindah tab sesuai precondition TC), 31 dan 34 (menutup menu), 51 (membersihkan seleksi).
+- Spec melewati sekitar 35 langkah (53 langkah nominal, sekitar 71 setelah ekspansi dua blok ulang: langkah 2 sampai 5 untuk 2 baris dan langkah 7 sampai 10 untuk 5 baris). Alasan: seluruh blok memakai satu dataset (Seed Registri A), satu kelas (FE+BE, hanya buka menu dan dialog lalu `Cancel`), dan tiap blok berdiri sendiri: kegagalan satu blok tidak membuat blok lain kehilangan makna. Langkah berulang memakai idiom tabel di Prerequisites (langkah 1 dan 6).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 5 dan 10 (menutup menu), 23, 27, 44, dan 51 (`Cancel` pada dialog yang hanya diamati), 28 dan 36 (pindah tab sesuai precondition TC), 31 dan 34 (menutup menu), 40 dan 46 (mengubah Rows per page menjadi 50 supaya baris halaman 2 tampil; ukuran halaman tidak diasumsikan terbawa antar tab, dan dikembalikan ke 10 di hook `after`), 53 (membersihkan seleksi).
 - Perubahan urutan (S-05 butir terakhir): TC-GS-TAG-172 (screening menu) ditaruh sebelum TC-GS-TAG-363 karena langkah pembuka TC-GS-TAG-363 menghapus DD-15 lewat scan, sehingga bagian tanpa penghapusan lebih dulu.
-- TC-GS-TAG-363 Langkah 37 sampai 39 memakai simulasi reader (D-4, Q-1) hanya sebagai pembuka; objek asersinya dialog Delete manual dan Bulk Delete. TC ini ditempatkan di spec fungsional sesuai rencana, padahal membutuhkan harness scan (kelas d).
+- TC-GS-TAG-363 Langkah 37 sampai 39 memakai simulasi reader (D-4, Q-1) hanya sebagai pembuka; objek asersinya dialog Delete manual dan Bulk Delete. Langkah pembuka itu memakai harness scan (kelas d); TC ini berada di spec fungsional karena objek asersinya dialog Delete.
 - Asersi tambahan di luar Expected TC (S-03): tidak ada.
 - Temuan untuk QA:
   - Q-4: identifier Seed Registri A tetap; hitungan dan baris yang dipakai valid hanya bila Seed Registri A dipulihkan sebelum spec.
   - TC-GS-TAG-172 Expected b menyebut checkbox DD-11 dan DD-13 "dilewati Select All" tetapi langkah TC tidak menjalankan Select All; spec hanya mengasersi checkbox Hidden. Perilaku dilewati Select All diasersi di spec 047 (TC-GS-TAG-150).
   - TC-GS-TAG-363 tidak memberi Expected untuk toast hasil pindai DD-15 (langkah 2), sehingga langkah 38 tidak punya `Verifikasi`.
-  - Post Condition TC-GS-TAG-363 menyebut DD-16, DD-17, DD-18 tetap di registri; ini sama dengan Expected c (langkah 50). DD-15 yang terhapus oleh scan tidak disebut Post Condition.
+  - Post Condition TC-GS-TAG-363 menyebut DD-16, DD-17, DD-18 tetap di registri; ini sama dengan Expected c (langkah 52). DD-15 yang terhapus oleh scan tidak disebut Post Condition.
   - Q-1: TC-GS-TAG-363 berlabel `Manual Only — (b)` untuk scan; kemampuan simulasi reader dicatat di Prerequisites sebagai kebutuhan resmi.

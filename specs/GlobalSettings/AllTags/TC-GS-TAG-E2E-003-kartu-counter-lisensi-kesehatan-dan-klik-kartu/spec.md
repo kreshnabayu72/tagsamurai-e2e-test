@@ -75,36 +75,37 @@ coverage:
 
 35. Klik Tab Paired
 36. Amati area di atas toolbar
-37. Verifikasi tidak ada License Counter Card di Tab Paired
-38. Verifikasi tidak ada Health Counter Card di Tab Paired
+37. Verifikasi sedikitnya satu baris tabel tampil di Tab Paired
+38. Verifikasi tidak ada License Counter Card di Tab Paired
+39. Verifikasi tidak ada Health Counter Card di Tab Paired
 
 ### TC-GS-TAG-14: Health Counter Card Tab Not Paired menampilkan jumlah Available dan Damaged/Missing per tipe
 
-39. Klik Tab Not Paired
-40. Amati lima kartu pada Tab Not Paired
-41. Verifikasi kartu RFID – Object TAG nilai utama `18` dengan `Damaged/Missing: 0`
-42. Verifikasi kartu RFID – User TAG `1` dengan `Damaged/Missing: 0`
-43. Verifikasi kartu NFC `1` dengan `Damaged/Missing: 0`
-44. Verifikasi kartu BLE `0` dengan `Damaged/Missing: 1`
-45. Verifikasi kartu GPS `1` dengan `Damaged/Missing: 0`
-46. Ketik Search `alien`, tekan Enter
-47. Verifikasi sedikitnya satu baris tabel tampil
-48. Verifikasi nilai kelima kartu tetap sama setelah Search
-49. Klik `(←)` pada kotak Search
-50. Buka Filter Panel, pilih `Source` = Self-Purchased, klik `Apply`
-51. Verifikasi sedikitnya satu baris tabel tampil
-52. Verifikasi nilai kelima kartu tetap sama setelah Filter diterapkan
-53. Kosongkan field `Source` pada Filter Panel, klik `Apply` (langkah penghubung pembersih)
+40. Klik Tab Not Paired
+41. Amati lima kartu pada Tab Not Paired
+42. Verifikasi kartu RFID – Object TAG nilai utama `18` dengan `Damaged/Missing: 0`
+43. Verifikasi kartu RFID – User TAG `1` dengan `Damaged/Missing: 0`
+44. Verifikasi kartu NFC `1` dengan `Damaged/Missing: 0`
+45. Verifikasi kartu BLE `0` dengan `Damaged/Missing: 1`
+46. Verifikasi kartu GPS `1` dengan `Damaged/Missing: 0`
+47. Ketik Search `alien`, tekan Enter
+48. Verifikasi sedikitnya satu baris tabel tampil
+49. Verifikasi nilai kelima kartu tetap sama setelah Search
+50. Klik `(←)` pada kotak Search
+51. Buka Filter Panel, pilih `Source` = Self-Purchased, klik `Apply`
+52. Verifikasi sedikitnya satu baris tabel tampil
+53. Verifikasi nilai kelima kartu tetap sama setelah Filter diterapkan
+54. Kosongkan field `Source` pada Filter Panel, klik `Apply` (langkah penghubung pembersih)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md` (Section 1c). Subjudul `###` memetakan langkah ke id TC granular.
 - Penyimpangan urutan: urutan sumber TC-12, TC-14, TC-15, TC-16, TC-17. Spec memakai TC-12, TC-16, TC-17, TC-15, TC-14 agar TC-14 (Search dan Filter di Tab Not Paired) berada terakhir dan tidak meninggalkan filter yang memengaruhi blok Tab All (S-09, S-10).
-- Langkah penghubung (bukan dari TC, tanpa awalan `Verifikasi`, S-03): langkah 25, 34, 53 (membersihkan filter), langkah 1, 10, 18, 28, 36, 40 (amati), dan pembukaan Filter Panel. Langkah 25 hanya membersihkan filter kartu; keadaan Filter Panel sesudahnya tidak diasersi karena tidak ada Expected TC. Langkah 14, 47, dan 51 adalah anchor positif asersi universal (8b butir 2): sedikitnya satu baris tampil sebelum "hanya ...". Langkah 16 dan 24 mengasersi indikator Filter sesuai Expected c TC-16.
+- Langkah penghubung (bukan dari TC, tanpa awalan `Verifikasi`, S-03): langkah 25, 34, 54 (membersihkan filter), langkah 1, 10, 18, 28, 36, 41 (amati), langkah 40 (membuka Tab Not Paired sebagai precondition TC-14), langkah 50 (`(←)` pada kotak Search), dan pembukaan Filter Panel. Langkah 25 hanya membersihkan filter kartu; keadaan Filter Panel sesudahnya tidak diasersi karena tidak ada Expected TC. Langkah 14, 37, 48, dan 52 adalah anchor positif asersi universal (8b butir 2): sedikitnya satu baris tampil sebelum "hanya ..." atau sebelum klaim absence kartu di Tab Paired (langkah 38 dan 39). Langkah 16 dan 24 mengasersi indikator Filter sesuai Expected c TC-16.
 - Langkah 2 sampai 6 masing-masing satu kartu: nilai `of` dan `remaining` kartu yang sama dibaca dari satu kartu dan dipertahankan dalam satu `Verifikasi` per kartu (TC-12 Expected menyebut keduanya dalam satu butir per tipe).
 - TC-13 (kartu `60 of 50` pada Client Over) ada di spec 017 (gate kuota), bukan di spec ini; kartu counter Tab All hanya diuji pada Client A.
 - Temuan untuk QA:
   - TC-14 tidak menyebut cara membersihkan Search dan Filter sesudah blok; spec menambahkan langkah penghubung `(←)` dan kosongkan `Source` (label tombol bersih di Filter Panel tidak ditetapkan TC).
   - TC-16 butir c ("selama filter yang disetel kartu aktif") diasersi pada kedua keadaan kartu; setelah klik kartu NFC dua kali tidak ada Expected tentang indikator hilang, sehingga tidak diasersi.
   - Post Condition semua TC bernilai `-`.
-- Alasan spec melewati sekitar 35 langkah (53): lima TC atas satu dataset Seed Registri A dan satu kelas harness; tiap blok berdiri sendiri (pindah tab dan pembersih filter memisahkan state), dan sebagian besar langkah adalah `Verifikasi` per nilai kartu yang tiap klausanya dapat gagal sendiri (S-01).
+- Alasan spec melewati sekitar 35 langkah (54): lima TC atas satu dataset Seed Registri A dan satu kelas harness; tiap blok berdiri sendiri (pindah tab dan pembersih filter memisahkan state), dan sebagian besar langkah adalah `Verifikasi` per nilai kartu yang tiap klausanya dapat gagal sendiri (S-01).

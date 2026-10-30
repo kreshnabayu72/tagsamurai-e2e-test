@@ -61,7 +61,7 @@ coverage:
 11. Verifikasi toast error persisten `Error, the uploaded file doesn't contain an IMEI column.`
 12. Verifikasi tidak ada baris baru di staging
 13. Verifikasi baris `356938035643001` tetap di staging
-14. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+14. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ### Sesi 2
 
@@ -72,7 +72,7 @@ coverage:
 16. Unggah CSV dengan header ` imei ` dan `Notes`, baris data `356938035643001` dan `356938035643003`
 17. Verifikasi dua baris `356938035643001` dan `356938035643003` masuk staging sebagai `Official`
 18. Verifikasi kolom `Notes` diabaikan (tidak ada data `Notes` di tabel staging)
-19. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+19. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ### Sesi 3
 
@@ -83,14 +83,14 @@ coverage:
 21. Unggah XLSX dengan Sheet1 berisi header `IMEI` dan `356938035643001`, Sheet2 berisi `356938035643003`
 22. Verifikasi hanya `356938035643001` masuk staging
 23. Verifikasi `356938035643003` dari Sheet2 tidak dibaca
-24. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+24. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md`. Kelas harness: fungsional (unggah berkas); berkas uji disediakan tim FE.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan: sesi 1 memuat kasus ditolak (TC-76, TC-75) lebih dulu; TC-76 mendahului TC-75 karena staging harus kosong untuk memastikan "tidak ada baris masuk". Sesi 2 dan 3 dipisah karena TC-73 dan TC-74 memakai identifier yang sama (`356938035643001`, `356938035643003`).
-- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; `Tambahkan ... 356938035643001` pada TC-75 menjalankan TC langkah 4; `Kembali ke List` dengan `Leave` adalah langkah penghubung (S-03): sesi dengan baris staging dianggap dirty sehingga keluar halaman memunculkan dialog konfirmasi; definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113) dan tidak diasersi di spec ini.
+- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; `Tambahkan ... 356938035643001` pada TC-75 menjalankan TC langkah 4; `Kembali ke List` dengan `Leave` adalah langkah penghubung (S-03) karena dialog `Unsaved Changes` muncul pada sesi dengan baris staging, sedangkan definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113) dan tidak diasersi di spec ini.
 - Temuan untuk QA:
   - TC-76 Langkah 5 merujuk batas ukuran berkas pada `global-settings/import/PRD/import.md` §6.1 tanpa angka; ukuran berkas uji ditentukan tim FE.
   - TC-75 dan TC-76: toast error bersifat persisten tetapi TC tidak menyatakan cara menutupnya; tiga unggahan beruntun pada TC-76 dapat menumpuk toast yang sama, dan spec memverifikasi muncul toast tiap unggahan tanpa langkah menutup (menunggu jawaban QA).

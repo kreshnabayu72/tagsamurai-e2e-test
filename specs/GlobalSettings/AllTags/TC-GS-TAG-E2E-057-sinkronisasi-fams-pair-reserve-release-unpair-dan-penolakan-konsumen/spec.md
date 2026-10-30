@@ -22,10 +22,11 @@ coverage:
 - Mode: FE+BE (backend nyata). Spec ini mengubah status tag lewat aksi FAMS; unpair tag QR (TC-GS-TAG-297) yang mengeluarkan tag dari registri dijalankan terakhir.
 - Akun aktor (ganti akun eksplisit hanya pada TC-GS-TAG-321):
   - Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`; hook `after` mengembalikan sesi ke akun ini sebagai default suite.
-  - Admin FAMS (Hendra Gunawan) `famsAdmin_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.FA_ADMIN_PASSWORD`: pemicu lewat sesi API (P-2; Register Asset final, pair, unpair) dan, pada TC-GS-TAG-321, sesi UI FAMS Register Asset karena penolakan diasersi di FAMS.
-  - Approver aset di FAMS (TC-GS-TAG-294 dan 295: menyetujui atau menolak aset Draft): tidak ada di Pre-setup TC; akun dan kredensial disediakan tim FE (S-13). Sesi API, hanya pemicu (P-2).
+  - Admin FAMS (Hendra Gunawan) `famsAdmin_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.FA_ADMIN_PASSWORD`: pemicu lewat sesi API aktor (Register Asset final, pair, unpair) dan, pada TC-GS-TAG-321, sesi UI FAMS Register Asset karena penolakan diasersi di FAMS.
+  - Approver aset di FAMS (TC-GS-TAG-294 dan 295: menyetujui atau menolak aset Draft): tidak ada di Pre-setup TC; akun dan kredensial disediakan tim FE (S-13). Sesi API aktor, hanya pemicu.
 - Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab Not Paired.
 - Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30; kartu Health dan License RFID – Object TAG). Baris yang dipakai: DD-15 `E28011606000020F00000001` (Available; Reserved oleh aset Draft pada TC-GS-TAG-295 lewat fixture BE), DD-01 `E2801160600002054D8A0001` (Paired), DD-05 `TAG-QR-00512` (QR Paired), DD-10 `04A224B2C15E82` (NFC Paired), DD-02 (Available), identifier uji `E2801160600002054D8A3003` (EPC valid belum diaktivasi). Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4); fixture BE memulihkan kondisi awal sebelum spec dan sebelum TC-GS-TAG-294.
+- Sesi API aktor (kemampuan dinyatakan di `suite.md`): Admin FAMS dan approver aset memicu Register Asset final, pendaftaran Draft, persetujuan, penolakan, dan unpair.
 - Kemampuan teknis (disediakan tim FE/BE): sesi API FAMS untuk Register Asset final dengan tag, pendaftaran aset Draft/Waiting Approval dengan tag, persetujuan dan penolakan aset, unpair tag, dan unpair tag QR (mekanisme dan endpoint tidak didefinisikan di TC, PRD, atau LLD; Q-9, Q-15); simulasi reader di FAMS Register Asset untuk TC-GS-TAG-321 (D-4, Q-1); penanda event FAMS selesai diproses (Eventual/SSE); seed dan reset idempotent Seed Registri A dan keadaan Reserved oleh aset Draft.
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan Seed Registri A (DD-01, DD-05, DD-15), aset FAMS yang dibuat, dan sesi akun lewat fixture BE.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data registri dan sesi akun.
@@ -95,31 +96,32 @@ coverage:
 46. Ganti akun ke Total Control Client A, buka Global Settings > TAG Tab All
 47. Ketik Search `E2801160600002054D8A3003`, tekan Enter
 48. Verifikasi pencarian menampilkan `No results found` (tag tidak muncul di registri Global Settings)
+49. Klik `(←)` pada kotak Search
 
 ### TC-GS-TAG-297: Unpair tag QR
 
-49. Klik Tab Paired
-50. Verifikasi DD-10 tampil di Tab Paired
-51. Lepas tautan tag QR DD-05 dari aset di FAMS lewat sesi API Admin FAMS hingga tersimpan dan event diproses
-52. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab Paired
-53. Klik Tab Not Paired
-54. Verifikasi DD-02 tampil di Tab Not Paired
-55. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab Not Paired (tidak kembali `Available`)
-56. Klik Tab All
-57. Verifikasi DD-02 tampil di Tab All
-58. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab All
-59. Ketik Search `TAG-QR-00512`, tekan Enter
-60. Verifikasi pencarian menampilkan `No results found`
+50. Klik Tab Paired
+51. Verifikasi DD-10 tampil di Tab Paired
+52. Lepas tautan tag QR DD-05 dari aset di FAMS lewat sesi API Admin FAMS hingga tersimpan dan event diproses
+53. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab Paired
+54. Klik Tab Not Paired
+55. Verifikasi DD-02 tampil di Tab Not Paired
+56. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab Not Paired (tidak kembali `Available`)
+57. Klik Tab All
+58. Verifikasi DD-02 tampil di Tab All
+59. Verifikasi baris `TAG-QR-00512` tidak tampil di Tab All
+60. Ketik Search `TAG-QR-00512`, tekan Enter
+61. Verifikasi pencarian menampilkan `No results found`
 
 ## Notes
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
-- Spec melewati sekitar 35 langkah (60 langkah nominal). Alasan: enam TC satu topik (sinkronisasi status tag dari FAMS ke registri) dengan satu dataset Seed Registri A dan satu kelas harness; pemicu FAMS lewat sesi API (P-2), dan blok berdiri sendiri karena DD-15 dipulihkan lewat fixture BE di langkah 1 dan 21.
+- Spec melewati sekitar 35 langkah (61 langkah nominal). Alasan: enam TC satu topik (sinkronisasi status tag dari FAMS ke registri) dengan satu dataset Seed Registri A dan satu kelas harness; pemicu FAMS lewat sesi API aktor, dan blok berdiri sendiri karena DD-15 dipulihkan lewat fixture BE di langkah 1 dan 21.
 - Perubahan urutan (S-05 butir terakhir): urutan TC sumber (293, 294, 295, 296, 297, 321) disusun ulang menjadi 295, 293, 294, 296, 321, 297. TC-GS-TAG-295 mulai dari DD-15 Reserved lalu menghasilkan Available yang dipakai TC-GS-TAG-293; TC-GS-TAG-297 (tag QR keluar dari registri) di akhir.
-- Pengecualian P-2: seluruh aksi FAMS selain di TC-GS-TAG-321 (Register Asset final, pendaftaran Draft, persetujuan, penolakan, unpair) hanyalah pemicu state lewat sesi API; objek asersi adalah status dan baris di registri Global Settings. Pada TC-GS-TAG-321 asersi ada di FAMS sehingga sesi UI dipakai dengan ganti akun eksplisit.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 21 (memulihkan DD-15), 9 dan 42 (menutup popup TAG Log), 10 dan 12 (baseline kartu), 27 (menutup menu), 11, 13, 17, 19, 29, 31, 34, 38, 49, 53, dan 56 (pindah tab), 43 dan 46 (ganti akun), 47 (Search untuk menemukan baris target).
+- Seluruh aksi FAMS selain di TC-GS-TAG-321 dijalankan lewat sesi API aktor. Pada TC-GS-TAG-321 asersi ada di FAMS sehingga sesi UI dipakai dengan ganti akun eksplisit.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 21 (memulihkan DD-15), 9 dan 42 (menutup popup TAG Log), 10 dan 12 (baseline kartu), 27 (menutup menu), 11, 13, 17, 19, 29, 31, 34, 38, 50, 54, dan 57 (pindah tab), 43 dan 46 (ganti akun), 47 (Search untuk menemukan baris target), 49 (membersihkan Search Tab All, karena Search tersimpan per tab dan akan menyaring DD-02 pada langkah 58).
 - Kartu License hanya tampil di Tab All, sedangkan kartu Health RFID – Object TAG dibaca di Tab Not Paired: pada TC-GS-TAG-293 Health dicatat dan diasersi di Tab Not Paired (langkah 10, 15), License dicatat dan diasersi di Tab All (langkah 12, 18), dan baris DD-15 diasersi hilang dari Tab Not Paired (langkah 16) sebelum pindah ke Tab All (S-03).
-- Asersi tambahan di luar Expected TC (S-03): langkah 2 dan 3 (keadaan awal Reserved dan checkbox Hidden agar "tampil kembali" bermakna), langkah 32, 35, 50, 54, dan 57 (data pembanding sebagai anchor absence), langkah 33, 55, dan 58 (absence tab sebagai penjabaran "pindah" dan "tidak tampil di tab manapun").
+- Asersi tambahan di luar Expected TC (S-03): langkah 2 dan 3 (keadaan awal Reserved dan checkbox Hidden agar "tampil kembali" bermakna), langkah 32, 35, 51, 55, dan 58 (data pembanding sebagai anchor absence), langkah 33, 56, dan 59 (absence tab sebagai penjabaran "pindah" dan "tidak tampil di tab manapun").
 - Temuan untuk QA:
   - Q-1: TC-GS-TAG-293, 294, dan 321 berlabel `Manual Only — (b)` (scan hardware); kemampuan simulasi reader dan sesi API dicatat di Prerequisites (D-4).
   - Q-9: langkah dan selektor FAMS (Register Asset, persetujuan aset, unpair) tidak didefinisikan; verifikasi di modul konsumen hanya sejauh Expected TC.

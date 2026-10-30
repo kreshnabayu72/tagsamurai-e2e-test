@@ -19,9 +19,10 @@ coverage:
 
 - Mode: FE+BE (backend nyata). Spec ini mengubah status tag lewat aksi FAMS; tidak ada penghapusan data.
 - Akun aktor: Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`; hook `after` mengembalikan sesi ke akun default suite.
-- Pemicu (P-2, sesi API, tidak diasersi): Admin FAMS (Hendra Gunawan) `famsAdmin_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.FA_ADMIN_PASSWORD`: menandai tag Reported, menjalankan `Replace TAG` di FAMS Asset Detail dengan pemindaian tag lama dan/atau tag pengganti (simulasi reader; D-4). Pada TC-GS-TAG-368 akun FAMS adalah pemegang Update dengan Return Group DD-15 dalam scope Group user; kesesuaian akun perlu dikonfirmasi tim FE saat tahap script (Q-2, kategori B). Mekanisme dan endpoint tidak didefinisikan di TC, PRD, atau LLD (Q-9).
+- Pemicu (sesi API aktor, tidak diasersi): Admin FAMS (Hendra Gunawan) `famsAdmin_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.FA_ADMIN_PASSWORD`: menandai tag Reported, menjalankan `Replace TAG` di FAMS Asset Detail dengan pemindaian tag lama dan/atau tag pengganti (simulasi reader; D-4). Pada TC-GS-TAG-368 akun FAMS adalah pemegang Update dengan Return Group DD-15 dalam scope Group user; kesesuaian akun perlu dikonfirmasi tim FE saat tahap script (Q-2, kategori B). Mekanisme dan endpoint tidak didefinisikan di TC, PRD, atau LLD (Q-9).
 - Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab All.
 - Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30; kartu RFID – Object TAG `21 of 50`, NFC `3 of 30`). Baris yang dipakai: DD-01 `E2801160600002054D8A0001` (RFID Paired ke aset), DD-13 `04A224B2C15E83` (NFC; disetel Paired ke aset FAMS kedua lewat fixture BE dengan relasi combined ke DD-11 dilepas), DD-15 `E28011606000020F00000001` (pengganti; Available, atau To be Returned dengan Return Group `Gudang Pusat` pada TC-GS-TAG-368), DD-16 `E28011606000020F00000002` (pengganti Available), DD-08 `E2801160600002054D8A0008` (Retired, tetap dari seed). Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4); fixture BE memulihkan kondisi awal sebelum spec dan sebelum tiap TC.
+- Sesi API aktor (kemampuan dinyatakan di `suite.md`): Admin FAMS menandai tag Reported dan menjalankan `Replace TAG`.
 - Kemampuan teknis (disediakan tim FE/BE): sesi API FAMS untuk Tag Reported dan Replace TAG (dengan pilihan memindai atau tidak memindai tag lama); penanda event selesai diproses (Eventual/SSE); pembacaan relasi aset sebuah tag; seed dan reset idempotent Seed Registri A dan keadaan DD-15 To be Returned.
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): kembalikan Seed Registri A (DD-01, DD-13, DD-15, DD-16) dan aset FAMS lewat fixture BE.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data registri dan sesi akun.
@@ -99,9 +100,8 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
-- Spec melewati sekitar 35 langkah (55 langkah nominal). Alasan: empat TC satu topik (hasil `Replace TAG` di FAMS pada status tag lama dan pengganti) dengan satu dataset Seed Registri A dan satu kelas harness; pemicu FAMS lewat sesi API (P-2) dan tiap blok berdiri sendiri karena data dipulihkan lewat fixture BE di langkah 16 dan 31.
+- Spec melewati sekitar 35 langkah (55 langkah nominal). Alasan: empat TC satu topik (hasil `Replace TAG` di FAMS pada status tag lama dan pengganti) dengan satu dataset Seed Registri A dan satu kelas harness; pemicu FAMS lewat sesi API aktor dan tiap blok berdiri sendiri karena data dipulihkan lewat fixture BE di langkah 16 dan 31.
 - Perubahan urutan (S-05 butir terakhir): urutan TC sumber (299, 300, 368, 376) disusun ulang menjadi 300, 299, 368, 376; TC-GS-TAG-300 tidak mengubah status sehingga dijalankan lebih dulu.
-- Pengecualian P-2: tandai Reported dan `Replace TAG` oleh Admin FAMS hanyalah pemicu state lewat sesi API; objek asersi adalah status, baris, kartu, dan TAG Log di registri Global Settings.
 - Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1, 5, 29 (pindah tab), 6, 17, 32, dan 33 (baseline jumlah entri TAG Log), 14, 24, 28, 48, dan 53 (menutup popup TAG Log), 16 dan 31 (memulihkan data lewat fixture BE), 40 dan 43 (memasang dan menghapus filter).
 - Asersi tambahan di luar Expected TC (S-03): langkah 41 (DD-08 sebagai pembanding hasil filter Retired, bagian 8b butir 2).
 - Temuan untuk QA:

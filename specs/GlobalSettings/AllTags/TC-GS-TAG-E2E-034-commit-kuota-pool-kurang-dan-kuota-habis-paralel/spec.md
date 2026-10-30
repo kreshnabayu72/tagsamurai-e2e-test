@@ -15,9 +15,9 @@ coverage:
 
 ## Prerequisites
 
-- Mode: FE+BE (backend nyata; fixture BE dan sesi API sebagai pemicu kuota, P-2).
+- Mode: FE+BE (backend nyata; fixture BE sebagai pemicu kuota).
 - Akun aktor: Total Control Client Quota Fitri Handayani `totalControl_automated_qaQuota@qwertysystem.net`, `Spectra.env.GS_TC_QUOTA_PASSWORD`. Login di hook `before`. Nama env `GS_TC_QUOTA_PASSWORD` belum terdaftar di `spectra.config.ts` dan `.env.example` (didaftarkan pemilik repositori).
-- Pelaku kedua (TC-GS-TAG-107, sesi API, hanya memicu perubahan state): admin kedua Client Quota yang mengaktivasi tag GPS `356938035643104` (identifier khusus untuk sesi kedua, tidak ada di stok maupun registri Client Quota) hingga kuota GPS habis. Akun tidak ada di Pre-setup TC; disediakan tim FE (S-13).
+- Pelaku kedua (TC-GS-TAG-107) memakai sesi API aktor (kemampuan dinyatakan di `suite.md`): admin kedua Client Quota yang mengaktivasi tag GPS `356938035643104` (identifier khusus untuk sesi kedua, tidak ada di stok maupun registri Client Quota) hingga kuota GPS habis. Akun tidak ada di Pre-setup TC; disediakan tim FE (S-13).
 - Data Pre-setup (dipulihkan lewat fixture BE sebelum spec dan antar blok, kelas data-kuota prinsip 12): Client Quota plan Growth, kuota GPS 3 terpakai 0 (NFC 0), opsi mandiri aktif, registri GPS kosong. Katalog memuat Device Name `Queclink GV300` (Brand `Queclink`). IMEI `356938035643101` (DD-N1), `356938035643102` (DD-N2), `356938035643103` (DD-N3) tidak ada di stok (Self-Purchased dengan Template). IMEI `356938035643001` (DD-S1) pada TC-GS-TAG-107: stok resmi Client Quota yang Available (precondition tidak tertulis di TC; disediakan tim FE, lihat Temuan untuk QA).
 - Kemampuan teknis (disediakan tim FE/BE): fixture BE yang mengurangi sisa kuota GPS Client Quota (TC-GS-TAG-106 langkah 4: sisa menjadi 1) dan mengembalikannya; seed/reset registri dan stok Client Quota; sesi API admin kedua; label dan placeholder input entri manual GPS serta tombol `Add` menunggu desain (NC-11), selektor disediakan tim FE.
 - State global yang diubah: kuota GPS Client Quota (terpakai) diubah fixture BE dan dipulihkan di hook `after` (tidak berasumsi seeding berhasil penuh), beserta registri Client Quota dan staging yang tersisa.
@@ -58,7 +58,7 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Kelas data-kuota (prinsip 12, perluasan e). P-2: sesi API admin kedua dan fixture BE hanya pemicu state kuota, bukan objek asersi.
+- Mode: FE+BE. Kelas data-kuota (prinsip 12, perluasan e). Fixture BE hanya pemicu state kuota, bukan objek asersi.
 - Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 10, 11, 14, 15, 21, 22 (membuka sesi, menutup dialog, membuang staging, pemulihan); langkah 12, 13, 23, 24 memakai empty state hasil Search sebagai anchor absence yang sah (8b butir 2) untuk "nol baris ter-commit".
 - Langkah 24 menjadi anchor positif lewat pemicu langkah 17 (registri memuat tag lain dari sesi kedua) dan hasil Search yang diproses.
 - Pembagian TC lintas spec: TC-GS-TAG-13 (kartu 60 of 50) bersama gate kuota Activate (Client Over) berada di spec lain.

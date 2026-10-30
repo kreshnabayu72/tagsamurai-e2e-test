@@ -14,11 +14,12 @@ coverage:
 
 ## Prerequisites
 
-- Mode: FE+BE (kelas multi-konteks c, dua tenant; backend nyata).
+- Mode: FE+BE (backend nyata; pelaku Client B lewat sesi API aktor).
 - Akun aktor:
   - Total Control Client A Sari Dewi `totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`; satu-satunya sesi UI.
-  - Total Control Client B Kartika Sari `totalControl_automated_qaTeam2@qwertysystem.net`, `Spectra.env.GS_CLIENTB_TC_PASSWORD`. Konteks kedua berupa sesi API yang hanya memicu perubahan state (aktivasi Self-Purchased hingga Activated); hasil di sisi Client B tidak diasersi, sehingga tidak butuh sesi UI kedua (P-2).
+  - Total Control Client B Kartika Sari `totalControl_automated_qaTeam2@qwertysystem.net`, `Spectra.env.GS_CLIENTB_TC_PASSWORD`. Konteks kedua berupa sesi API yang hanya memicu perubahan state (aktivasi Self-Purchased hingga Activated); hasil di sisi Client B tidak diasersi, sehingga tidak butuh sesi UI kedua.
 - Data Pre-setup (dipulihkan lewat fixture BE sebelum spec): opsi mandiri aktif untuk Client A dan Client B; IMEI `356938035643101` (DD-N1) belum ada di stok maupun registri keduanya; katalog Client A memuat Device Name `Queclink GV300` (Brand `Queclink`).
+- Sesi API aktor (kemampuan dinyatakan di `suite.md`): Total Control Client B memicu aktivasi Self-Purchased (langkah 4).
 - Kemampuan teknis (disediakan tim FE/BE): kontrol penutup dialog informasi "Your activation is pending review."; sesi API Client B untuk aktivasi Self-Purchased; seed/reset registri dan stok kedua client; label dan placeholder input entri manual GPS serta tombol `Add` menunggu desain (NC-11), selektor disediakan tim FE.
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): hapus `356938035643101` dari registri Client B dan Client A, pulihkan stok, buang staging yang tersisa.
 - Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab All.
@@ -42,7 +43,7 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Kelas c (dua tenant). Konteks Client B hanya pemicu state lewat sesi API (P-2, langkah 4 ditulis "hingga ... tersimpan"); hasil diasersi di sesi Client A. Spec ini satu-satunya spec dua tenant untuk TC ini (satu spec per jenis harness).
+- Mode: FE+BE. Konteks Client B adalah pelaku kedua lewat sesi API aktor yang hanya memicu state (langkah 4 ditulis "hingga ... tersimpan"); hasil diasersi di sesi Client A. Spec ini satu-satunya spec konflik dua tenant untuk TC ini.
 - Langkah penghubung (tanpa `Verifikasi`, S-03): 1, 9, 10 (membuka sesi, menutup dialog informasi, pindah ke registri dan Search untuk menemukan baris target); langkah 4 adalah pemicu state dari TC.
 - Pembagian TC lintas spec: TC-GS-TAG-100 dan 167 (kolisi Self-Purchased dengan unit In Use dan auto-switch) berada di spec 032.
 - Temuan untuk QA:

@@ -43,7 +43,7 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md` (Section 3h). TC-175 berlabel `Manual Only — (b)` di TC; tetap masuk spec (D-4, Q-1). Dipisah dari spec plan tier (spec 010) karena butuh harness scan (kelas d).
+- Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md` (Section 3h). TC-175 berlabel `Manual Only — (b)` di TC; masuk spec sesuai D-4 dan Q-1. Terpisah dari spec plan tier (spec 010) karena butuh harness scan (kelas d).
 - Rujukan lintas spec: perilaku plan Free pada tombol Activate dan tag terkunci ada di spec 010 (TC-315, TC-316).
 - Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 5 (menutup popup), langkah 11 (`Stop` pada Floating Status Widget; konvensi `Pindai X` di Catatan TC memakai `Stop` sebelum menyentuh kontrol halaman lain, page-lock sesi scan), langkah 12 (Search untuk menemukan baris target). Langkah 13 mengasersi "tag tetap ada" (Expected b); langkah 9 menjadi anchor respons server.
 - Temuan untuk QA:

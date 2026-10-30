@@ -2,7 +2,7 @@
 id: TC-GS-TAG-E2E-025-sesi-scan-rfid-nfc-ble-staging-format-pool-remove-dan-normalisasi
 title: "Sesi Scan RFID/NFC/BLE di Staging: Pindai Ulang T-02, Format Salah T-32, Pool User TAG, Remove by Scan, Petunjuk Dialog Remove, Normalisasi BLE, dan Info Kuota Header setelah Commit"
 priority: High
-caseType: Negative
+caseType: Positive
 status: draft
 sourceTc:
   - TC-GS-TAG-65
@@ -73,67 +73,73 @@ coverage:
 
 23. Pindai `E2801160600002054D8A` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
 24. Hover lencana `Error` baris `E2801160600002054D8A`
-25. Verifikasi tooltip `Invalid format. Please scan a valid RFID TAG.`
-26. Verifikasi aksi baris `E2801160600002054D8A` hanya `Remove`
-27. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+25. Verifikasi baris `E2801160600002054D8A` berstatus `Error`
+26. Verifikasi tooltip `Invalid format. Please scan a valid RFID TAG.`
+27. Verifikasi aksi baris `E2801160600002054D8A` hanya `Remove`
+28. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ### Sesi NFC
 
-28. Mulai sesi Activate TAG tipe `NFC`: klik `+ Activate TAG`, pilih `NFC` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
+29. Mulai sesi Activate TAG tipe `NFC`: klik `+ Activate TAG`, pilih `NFC` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
 
 ### TC-GS-TAG-65: Format salah NFC menghasilkan Error T-32
 
-29. Pindai `04A224B2C1` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
-30. Hover lencana `Error` baris `04A224B2C1`
-31. Verifikasi tooltip `Invalid format. Please scan a valid NFC TAG.`
-32. Verifikasi aksi baris `04A224B2C1` hanya `Remove`
-33. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+30. Pindai `04A224B2C1` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
+31. Hover lencana `Error` baris `04A224B2C1`
+32. Verifikasi baris `04A224B2C1` berstatus `Error`
+33. Verifikasi tooltip `Invalid format. Please scan a valid NFC TAG.`
+34. Verifikasi aksi baris `04A224B2C1` hanya `Remove`
+35. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ### Sesi BLE
 
-34. Mulai sesi Activate TAG tipe `BLE`: klik `+ Activate TAG`, pilih `BLE` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
+36. Mulai sesi Activate TAG tipe `BLE`: klik `+ Activate TAG`, pilih `BLE` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
 
 ### TC-GS-TAG-65: Format salah BLE menghasilkan Error T-32
 
-35. Pindai `AABBCCDD` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
-36. Hover lencana `Error` baris `AABBCCDD`
-37. Verifikasi tooltip `Invalid format. Please scan a valid BLE TAG.`
-38. Verifikasi aksi baris `AABBCCDD` hanya `Remove`
+37. Pindai `AABBCCDD` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
+38. Hover lencana `Error` baris `AABBCCDD`
+39. Verifikasi baris `AABBCCDD` berstatus `Error`
+40. Verifikasi tooltip `Invalid format. Please scan a valid BLE TAG.`
+41. Verifikasi aksi baris `AABBCCDD` hanya `Remove`
 
 ### TC-GS-TAG-322: Normalisasi identifier BLE
 
-39. Pindai `aa:bb:cc:dd:ee:12` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
-40. Verifikasi baris staging berlencana `Official` untuk identifier BLE `AABBCCDDEE12`
-41. Pindai `AABBCCDDEE12` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget) sekali lagi
-42. Verifikasi toast error `Error, TAG is already on the list.`
-43. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog konfirmasi keluar halaman (staging berisi baris)
+42. Pindai `aa:bb:cc:dd:ee:12` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
+43. Verifikasi baris staging berlencana `Official` untuk identifier BLE `AABBCCDDEE12`
+44. Pindai `AABBCCDDEE12` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget) sekali lagi
+45. Verifikasi toast error `Error, TAG is already on the list.`
+46. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
 
 ### Sesi RFID – Object TAG (commit)
 
-44. Mulai sesi Activate TAG tipe `RFID – Object TAG`: klik `+ Activate TAG`, pilih `RFID – Object TAG` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
+47. Mulai sesi Activate TAG tipe `RFID – Object TAG`: klik `+ Activate TAG`, pilih `RFID – Object TAG` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
 
 ### TC-GS-TAG-110: Info kuota header hanya berubah setelah commit
 
-45. Catat info kuota header sebagai `Q0`
-46. Pindai `E2801160600002054D8A1001` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
-47. Verifikasi info kuota header sama dengan `Q0` (tidak berubah walau baris bertambah)
-48. Klik `Submit`, lalu klik `Submit` pada dialog (konfirmasi)
-49. Verifikasi info kuota header berkurang satu dari `Q0`
-50. Pulihkan stok resmi dan registri Client A ke kondisi awal lewat fixture BE
+48. Catat info kuota header sebagai `Q0`
+49. Pindai `E2801160600002054D8A1001` (klik `Scan TAG`, pindai, lalu klik `Stop` pada Floating Status Widget)
+50. Verifikasi info kuota header sama dengan `Q0` (tidak berubah walau baris bertambah)
+51. Klik `Submit`, lalu klik `Submit` pada dialog (konfirmasi)
+52. Verifikasi info kuota header berkurang satu dari `Q0`
+53. Pulihkan stok resmi dan registri Client A ke kondisi awal lewat fixture BE
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md`. Kelas harness: hardware scan (kelas d, D-4 dan Q-1); pemicu pemindaian adalah kemampuan teknis yang disediakan tim FE, bukan endpoint yang dikarang spec ini.
+- Spec ini membuat data (Submit pada blok TC-110) sekaligus memuat blok yang tidak membuat data. Blok TC-110 ditaruh paling akhir dan stok dipulihkan lewat fixture BE (langkah 53 dan hook `after`), sehingga kegagalan keras blok itu tidak menutupi hasil blok sebelumnya; blok lain memakai sesi scan yang sama (kelas hardware scan) dan tidak membuat data.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Alasan di atas sekitar 35 langkah (50 langkah): satu kelas harness (simulasi reader pada sesi Activate), empat sesi yang berdiri sendiri (satu per TAG Type karena tipe terkunci selama sesi, ditambah sesi commit TC-110 pada RFID – Object TAG), dan blok TC-65 diulang per TAG Type.
+- Alasan di atas sekitar 35 langkah (53 langkah): satu kelas harness (simulasi reader pada sesi Activate), empat sesi yang berdiri sendiri (satu per TAG Type karena tipe terkunci selama sesi, ditambah sesi commit TC-110 pada RFID – Object TAG), dan blok TC-65 diulang per TAG Type.
 - Pembagian TC: TC-69 (pindai ulang RFID, T-02) ada di spec ini (kelas d, bukan di spec pencocokan GPS 022); TC-68 (Duplicate in File GPS) ada di spec 024; TC-110 (info kuota header setelah commit, reader tersimulasi) ada di spec ini, sedangkan commit GPS manual (TC-98, 99, 101, 169) ada di spec 031.
-- Urutan sesi RFID – Object TAG: TC-69, TC-90, TC-93 lebih dulu karena mensyaratkan hitungan staging bersih (TC-69 `Total Scanned: 1`); TC-72 dan TC-65 (RFID) di akhir sesi karena menambah baris `Error` yang memengaruhi `Total Scanned`. TC-90 dan TC-93 memakai baris `E2801160600002054D8A1001` yang sudah ada dari TC-69 sehingga pemindaian `E2801160600002054D8A1001` pada TC-90 langkah 4 dan TC-93 langkah 4 tidak diulang (baris sudah ada; pemindaian ulang akan menghasilkan T-02); TC-93 hanya memindai `E2801160600002054D8A1003` karena `E2801160600002054D8A1001` sudah di staging. Sesi commit TC-110 (langkah 44 sampai 50) ditaruh paling akhir karena Submit mengubah stok dan registri Client A; stok dipulihkan pada langkah 50.
-- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; `Pindai X` = klik `Scan TAG`, pindai X, lalu `Stop` pada Floating Status Widget sebelum menyentuh kontrol lain (Catatan TC: page-lock sesi scan); `Cancel` pada dialog setelah TC-90 menutup dialog tanpa menghapus; `Catat info kuota header` (langkah 45) dan pemulihan stok (langkah 50); hover lencana `Error` menjalankan pengamatan tooltip yang tidak ada langkahnya di TC-65 dan TC-72; `Kembali ke List` dengan `Leave` adalah langkah penghubung (S-03): sesi dengan baris staging dianggap dirty sehingga keluar halaman memunculkan dialog konfirmasi; definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113) dan tidak diasersi di spec ini (`Leave` tanpa `Verifikasi` dialog).
+- Urutan sesi RFID – Object TAG: TC-69, TC-90, TC-93 lebih dulu karena mensyaratkan hitungan staging bersih (TC-69 `Total Scanned: 1`); TC-72 dan TC-65 (RFID) di akhir sesi karena menambah baris `Error` yang memengaruhi `Total Scanned`. TC-90 dan TC-93 memakai baris `E2801160600002054D8A1001` yang sudah ada dari TC-69 sehingga pemindaian `E2801160600002054D8A1001` pada TC-90 langkah 4 dan TC-93 langkah 4 tidak diulang (baris sudah ada; pemindaian ulang akan menghasilkan T-02); TC-93 hanya memindai `E2801160600002054D8A1003` karena `E2801160600002054D8A1001` sudah di staging. Sesi commit TC-110 (langkah 47 sampai 53) ditaruh paling akhir karena Submit mengubah stok dan registri Client A; stok dipulihkan pada langkah 53.
+- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; `Pindai X` = klik `Scan TAG`, pindai X, lalu `Stop` pada Floating Status Widget sebelum menyentuh kontrol lain (Catatan TC: page-lock sesi scan); `Cancel` pada dialog setelah TC-90 menutup dialog tanpa menghapus; `Catat info kuota header` (langkah 48) dan pemulihan stok (langkah 53); hover lencana `Error` menjalankan pengamatan tooltip yang tidak ada langkahnya di TC-65 dan TC-72. `Verifikasi baris ... berstatus Error` pada langkah 25, 32, dan 39 menjalankan klausa "baris Error" di Expected a, b, dan c TC-65.
+- `Kembali ke List` dengan `Leave` pada langkah 28, 35, dan 46 adalah langkah penghubung (S-03) tanpa `Verifikasi` dialog karena sesi dengan baris staging dianggap dirty sehingga keluar halaman memunculkan dialog `Unsaved Changes`, sedangkan definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113).
+- `caseType: Positive` karena empat dari tujuh sourceTc bertipe Positive (TC-90, TC-93, TC-110, TC-322) dan spec berakhir pada Submit sukses (blok TC-110), sedangkan tiga TC bertipe Negative (TC-65, TC-69, TC-72) menjadi bagian sesi scan yang sama.
 - Temuan untuk QA:
   - TC-65, TC-69, TC-72, TC-90, TC-93, TC-110, TC-322 berlabel `Manual Only — (b)` (pemindaian hardware) padahal konvensi E2E mengikat hambatan teknis bukan alasan keluar; cara simulasi reader tidak didefinisikan di TC, PRD, atau LLD (Q-1); spec memasukkannya sebagai kelas d dengan kemampuan "disediakan tim FE".
   - TC-65 Expected d ("Baris Error tidak ikut commit dan hanya bisa di-Remove") tidak punya langkah Submit; spec hanya mengasersi aksi baris hanya `Remove`; komitmen "tidak ikut commit" untuk baris `Error` diasersi di spec 029 (TC-94) dan tidak diulang di sini.
   - TC-72 Expected b ("tidak memblokir `Submit`", "tidak ada unit baru yang dibuat") tanpa langkah Submit; spec mengasersi tombol `Submit` aktif dan registri tanpa unit baru lewat pembaca BE yang disediakan tim FE/BE.
   - TC-69, TC-322 Expected: toast T-02 bersifat sementara sedangkan konvensi `Stop` pada Floating Status Widget terjadi setelah pemindaian; TC tidak menyatakan apakah toast masih tampil saat `Stop`; spec mengasersi toast sebelum langkah berikutnya (butir 5 bagian 8b) dan bergantung pada waktu tampil toast.
   - TC-93 Langkah 4 memindai dua identifier; spec tidak memindai ulang yang sudah di staging (lihat urutan di atas).
-  - TC-110: Skenario RFID dengan reader tersimulasi (Handheld Reader `Zebra RFD40 (SN-2201)`, D-4, Q-1); letak info kuota header di halaman Activate tidak ditulis di TC, selektor disediakan tim FE. Langkah TC 4, 6, dan 8 (`Catat`, `Amati`) dipetakan ke langkah spec 45, 47, dan 49.
+  - TC-110: Skenario RFID dengan reader tersimulasi (Handheld Reader `Zebra RFD40 (SN-2201)`, D-4, Q-1); letak info kuota header di halaman Activate tidak ditulis di TC, selektor disediakan tim FE. Langkah TC 4, 6, dan 8 (`Catat`, `Amati`) dipetakan ke langkah spec 48, 50, dan 52.
   - TC-65 Metadata "VAL: 20 karakter" sesuai Data Uji `E2801160600002054D8A` (20 karakter); informasional (Q-13).

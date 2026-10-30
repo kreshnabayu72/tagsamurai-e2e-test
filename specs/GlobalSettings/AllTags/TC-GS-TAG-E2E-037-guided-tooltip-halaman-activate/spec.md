@@ -17,7 +17,7 @@ coverage:
 - Mode: FE+BE (backend nyata; flag Guided Tooltip disimpan di backend).
 - Akun aktor: Total Control Client A Sari Dewi `totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`. Tidak ada ganti akun.
 - Guided Tooltip (page_key `gs-tag-activate`): spec ini menguji flag `guided_tooltip_seen_gs-tag-activate` sendiri sehingga dikecualikan dari penyetelan true oleh hook suite `before` (lihat `suite.md`). Hook `before` mencatat nilai awal flag akun Total Control Client A lalu menyetelnya menjadi belum true (precondition TC-GS-TAG-114); hook `after` memulihkan nilai awal. Mekanisme membaca dan menyetel flag disediakan tim FE/BE (S-13).
-- Data: tidak ada Data Pre-setup maupun Dinamis yang diasersi; sesi Activate GPS dibuka tanpa menambah baris.
+- Data: tidak ada Data Pre-setup maupun Dinamis yang diasersi; sesi Activate GPS dibuka tanpa menambah baris. Opsi mandiri (BYO) Client A aktif (section `Self-Purchased Template` tidak terkunci dan disorot pada Step 1).
 - Kemampuan teknis (disediakan tim FE/BE): baca dan setel flag Guided Tooltip per akun; sorotan (spotlight) elemen diamati lewat selektor yang disediakan tim FE. PRD menetapkan target tur Activate `#activate-template`, `#activate-staging-table`, `#btn-submit-activation`, dan `#btn-scan-tag`; kontrol masuk data GPS (input entri manual dan unggah) tidak punya ID di sumber.
 - Pemulihan di hook `after` (tidak berasumsi setup berhasil penuh): pulihkan nilai awal flag `guided_tooltip_seen_gs-tag-activate`, buang staging bila ada.
 - Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab All.
@@ -43,11 +43,12 @@ coverage:
 14. Klik ikon `[?]`
 15. Verifikasi tur dimulai ulang dari Step 1 `Self-Purchased Template`
 16. Verifikasi flag `guided_tooltip_seen_gs-tag-activate` tetap true (tidak direset oleh `[?]`)
+17. Tutup tur dengan klik `Skip`
 
 ## Notes
 
-- Mode: FE+BE. Spec berisi satu TC, 16 langkah (di bawah batas 35).
-- Langkah penghubung (tanpa `Verifikasi`, S-03): 1 (membuka sesi yang memicu tur), 4, 7, 10, 13, 14 (navigasi tur dan replay sesuai Langkah Uji TC).
+- Mode: FE+BE. Spec berisi satu TC, 17 langkah (di bawah batas 35).
+- Langkah penghubung (tanpa `Verifikasi`, S-03): 1 (membuka sesi yang memicu tur), 4, 7, 10, 13, 14 (navigasi tur dan replay sesuai Langkah Uji TC), 17 (menutup tur yang terbuka akibat replay sebelum spec berakhir).
 - Pembagian TC lintas spec: Guided Tooltip registri (`gs-tag-registry`) berada di spec 005.
 - Temuan untuk QA:
   - Judul spec "per Tipe Sesi" mengikuti pengelompokan topik; TC-GS-TAG-114 hanya menjalankan sesi GPS. Expected e menyebut elemen yang disorot "pada tipe sesi aktif" tanpa menetapkan elemen per tipe selain GPS step 2; sesi RFID, NFC, dan BLE tidak diuji.

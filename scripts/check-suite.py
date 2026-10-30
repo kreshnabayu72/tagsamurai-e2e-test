@@ -12,6 +12,7 @@ Memeriksa satu suite terhadap TC granular sumbernya:
   C7 [FINDING] jumlah TC di header docs/coverage != jumlah TC di tc-[modul].md; spec di coverage != folder spec
   C8 [REVIEW]  tc-[modul].md lebih baru dari spec terbaru (generate mungkin basi)
   C9 [REVIEW]  asersi absence ("tidak ada entri/pencatatan") tanpa langkah anchor positif dalam blok yang sama
+  C10 [FINDING] priority spec != prioritas tertinggi TC sumber (mapping konvensi bagian 8: P0 Critical, P1 High, P2 Medium, P3 Low)
 
 Pemakaian:
     python scripts/check-suite.py specs/Auth/AccountActivation ../auth/account-activation/TestCases/tc-account-activation.md docs/coverage/AuthAccountActivation.md
@@ -27,6 +28,7 @@ except Exception:
     pass
 
 LIMIT = 35
+PRIORITY = {"P0": ("Critical", 0), "P1": ("High", 1), "P2": ("Medium", 2), "P3": ("Low", 3)}
 
 
 def read(p):
@@ -44,6 +46,23 @@ def source_tc(fm):
         return []
     block = re.split(r"\n\w+:", block[1], 1)[0]
     return re.findall(r"TC-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*-\d+", block)
+
+
+def tc_priorities(tc_text):
+    result = {}
+    col = None
+    for line in tc_text.split("\n"):
+        if not line.startswith("|"):
+            col = None if not line.strip() else col
+            continue
+        cells = [c.strip() for c in re.split(r"(?<!\\)\|", line.strip().strip("|"))]
+        if cells and cells[0] == "TC ID":
+            col = cells.index("Priority") if "Priority" in cells else None
+            continue
+        if col is not None and len(cells) > col and re.fullmatch(r"TC-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*-\d+", cells[0]):
+            if cells[col] in PRIORITY:
+                result.setdefault(cells[0], cells[col])
+    return result
 
 
 def steps_and_notes(text):
@@ -76,6 +95,7 @@ def main():
         if m.group(1) not in tc_ids:
             tc_ids.append(m.group(1))
 
+    tc_prio = tc_priorities(tc_text)
     specs = sorted(suite.glob("TC-*/spec.md"))
     owner = {}
     newest = 0
@@ -91,6 +111,12 @@ def main():
             owner.setdefault(tid, []).append(folder)
             if tid not in tc_ids:
                 out("FINDING", "C3", f"{folder}: sourceTc {tid} tidak ada di {tc_path.name}")
+        mp = re.search(r"^priority:\s*(\w+)", fm, re.M)
+        ranks = [PRIORITY[tc_prio[t]] for t in source_tc(fm) if t in tc_prio]
+        if mp and ranks:
+            expected = min(ranks, key=lambda r: r[1])[0]
+            if mp.group(1) != expected:
+                out("FINDING", "C10", f"{folder}: priority {mp.group(1)} != {expected} (tertinggi TC sumber)")
         steps, notes = steps_and_notes(text)
         n = len(re.findall(r"^\d+\. ", steps, re.M))
         if not re.search(r"^- Mode:", text, re.M):
@@ -108,6 +134,9 @@ def main():
 
     for tid, folders in owner.items():
         if len(folders) > 1:
+            if all(re.search(r"^- Mode:\s*mock", read(suite / f / "spec.md"), re.M)
+                   and "Pembagian TC lintas spec" in read(suite / f / "spec.md") for f in folders):
+                continue
             out("FINDING", "C2", f"{tid} ada di sourceTc {len(folders)} spec: {', '.join(folders)}")
 
     be_only = set()

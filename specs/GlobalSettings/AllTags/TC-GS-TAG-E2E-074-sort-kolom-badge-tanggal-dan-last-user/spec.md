@@ -30,7 +30,7 @@ coverage:
 - Suite serial (`parallel: false`).
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`) disetel true oleh hook suite `before` dan dipulihkan di `after` (dinyatakan di `suite.md`).
 - Hook `beforeEach`: buka Global Settings > TAG, Tab All.
-- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): Sort dikembalikan netral, Rows per page dikembalikan ke 10, visibilitas kolom dikembalikan ke default lewat `[Reset to Default]` Setup Column (Last Scanned In, Activated At, Last User tersembunyi).
+- State global yang dipulihkan di hook `after` (tetap jalan walau spec gagal di tengah): Sort dikembalikan netral, Rows per page dikembalikan ke 10, visibilitas kolom dikembalikan ke default dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE; Last Scanned In, Activated At, Last User tersembunyi).
 - Kemampuan teknis: membaca indikator sort pada header kolom dan urutan baris tabel; Rows per page 50 dipakai supaya seluruh 30 baris tampil pada satu halaman (langkah 1).
 
 ## Test Steps
@@ -83,7 +83,7 @@ coverage:
 - Panjang spec: 29 langkah, di bawah sekitar 35 langkah.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 29 (Rows per page 50 supaya seluruh baris terlihat, lalu dipulihkan), langkah 2 dan 28 (menampilkan dan menyembunyikan kolom curated, precondition TC butir d), langkah 11, 18, 24, 27 (mengembalikan sort ke netral).
 - Nilai batas urutan tanggal (DD-08, DD-01, DD-15, DD-03) diturunkan dari Seed Registri A; Expected TC hanya menyebut `Oldest First`, `Newest First`, dan penempatan nilai kosong.
-- Pemisahan dari spec topik registri lain (Search, Filter, Sort, Pagination, Setup Column): kelas harness tidak sama dan tidak semua memakai data yang sama; ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
+- Pemisahan dari spec topik registri lain (Search, Filter, Sort, Pagination, Setup Column): ukuran gabungan semua topik registri melewati batas langkah jauh (KEPUTUSAN 2026-10-21, bagian 3 prinsip 1).
 - Temuan untuk QA:
   - TC-GS-TAG-224 butir a menyebut `Oldest First` dan `Newest First` tanpa menyatakan apakah itu label yang tampil (tooltip atau caption sort) atau hanya nama arah; spec mengasersi arah urutan berdasarkan nilai timestamp.
   - Seed Registri A memuat dua baris dengan Last Scanned dan Activated At sama persis (DD-11 dan DD-13: `09/09/26 13:30` dan `02/09/26 10:00`); TC tidak menetapkan urutan sekunder, sehingga spec tidak mengasersi urutan relatif kedua baris itu.

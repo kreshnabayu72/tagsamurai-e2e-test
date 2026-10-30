@@ -17,7 +17,6 @@ coverage:
 - Mode: FE+BE.
 - Akun: Total Control Yusuf Rahman (Pre-setup TC, Client Large) `totalControl_automated_qaLarge@qwertysystem.net`; kredensial `Spectra.env.GS_TC_LARGE_PASSWORD` (belum terdaftar di `spectra.config.ts` dan `.env.example`; tercantum di bagian Kredensial `suite.md` untuk didaftarkan pemilik repositori; password tidak ditulis di spec atau fixture). Login sekali di hook `before` sebagai akun default spec ini; hook `after` mengembalikan sesi ke akun default suite (Total Control Client A, `Spectra.env.GS_TC_PASSWORD`).
 - Data Pre-setup: Client Large memuat 5.200 tag RFID – Object TAG (fixture backend, Pre-setup TC). Registri Client Large tidak diubah dan terpisah dari Seed Registri A. Fixture di-seed atau direset idempotent oleh tim FE/BE (kemampuan "disediakan tim FE/BE"; mekanisme tidak didefinisikan di TC, Q-4). Spec hanya membaca data.
-- Kelas harness e (volume lebih dari 5.000 baris) dan f (binary buffer: nama dan isi berkas) dalam satu spec karena satu TC.
 - General Settings: Date Format `dd/MM/yy`, 24-hour, Asia/Jakarta; spec ini tidak mengubahnya.
 - Suite serial (`parallel: false`).
 - Flag Guided Tooltip registri (`guided_tooltip_seen_gs-tag-registry`) disetel true oleh hook suite `before` untuk akun Client Large dan dipulihkan di `after` (dinyatakan di `suite.md`).
@@ -43,6 +42,7 @@ coverage:
 
 - Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Panjang spec: 9 langkah, di bawah ambang sekitar 35 langkah.
+- Kelas harness e (volume lebih dari 5.000 baris) dan f (binary buffer: nama dan isi berkas) berada dalam satu spec karena keduanya dibutuhkan satu TC.
 - Absence toast sukses dan notifikasi (langkah 4 dan 5) diletakkan segera setelah pemicu, saat loading screen tampil (langkah 3 sebagai anchor positif), dan sebelum asersi berkas (bagian 8b butir 11). Absence job background (langkah 9) mengandalkan kemampuan baca state BE yang disediakan tim FE/BE dan dibuktikan oleh berkas yang sudah terunduh (langkah 7 sebagai anchor positif).
 - Temuan untuk QA:
   - TC-GS-TAG-346 butir b ("Tidak ada job background maupun notifikasi") tidak memberi cara mengamati job background lewat UI; spec memakai kemampuan baca state BE yang disediakan tim FE/BE tanpa mengarang endpoint.

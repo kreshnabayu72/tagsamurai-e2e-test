@@ -16,9 +16,10 @@ coverage:
 
 - Mode: FE+BE (backend nyata; kelas d, event/background job: konsumen event Delete TAG ditahan lalu dilepas). Spec ini menghapus tag DD-03 lewat pemicu API.
 - Akun aktor: Principal approver (Mira Anggraini) `principalApprover_automated@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_PRINCIPAL_TC_PASSWORD`. Login di hook `before` (sesi Admin Console); hook `after` mengembalikan sesi ke akun default suite. Kesamaan akun ini dengan env var terdaftar perlu dikonfirmasi tim FE saat tahap script (Q-2, kategori B).
-- Pemicu (P-2, sesi API, tidak diasersi): Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_TC_PASSWORD`, menghapus tag DD-03 dari registri Global Settings sementara konsumen event Delete TAG ditahan (precondition TC: "lewat sesi lain").
+- Pemicu (penahanan konsumen event lewat fixture BE; penghapusan lewat sesi API aktor, tidak diasersi): Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_TC_PASSWORD`, menghapus tag DD-03 dari registri Global Settings sementara konsumen event Delete TAG ditahan (precondition TC: "lewat sesi lain").
 - Layar awal: hook `beforeEach` membuka Admin Console > Approvals > TAG Stock Tab Active.
 - Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30), dengan DD-03 `04A224B2C15E80` (NFC Waiting for Approval) dan subject `Activation Collision` DD-03 berstatus `pending` di Tab Active Approvals > TAG Stock. Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4); fixture BE memulihkan kondisi awal sebelum spec.
+- Sesi API aktor (kemampuan dinyatakan di `suite.md`): Total Control Client A menghapus DD-03 (langkah 3).
 - Kemampuan teknis (disediakan tim FE/BE): penahanan dan pelepasan konsumen event Delete TAG lewat fixture BE (Q-5; mekanisme tidak didefinisikan di TC, PRD, atau LLD); sesi API Total Control Client A yang menghapus DD-03; penanda event Delete selesai diproses (Eventual); pembacaan TAG Code yang diterbitkan untuk subject (untuk Expected b); seed dan reset idempotent Seed Registri A dan subject Approvals. Langkah dan selektor Approvals tidak didefinisikan di TC, PRD, atau LLD (Q-9).
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): lepas konsumen event Delete TAG yang masih ditahan, kembalikan Seed Registri A (DD-03) dan subject Approvals lewat fixture BE; sesi dikembalikan ke akun default suite.
 - Suite serial (`parallel: false`). Spec tidak mengubah state global selain data di atas dan sesi akun.
@@ -46,7 +47,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Kelas d (event/background). Spec memuat satu TC.
-- Pengecualian P-2: langkah 3 (penghapusan DD-03 lewat sesi API Total Control Client A dengan konsumen event ditahan) hanyalah pemicu state; objek asersi adalah dialog dan Tab History di Approvals.
+- Langkah 3 (penghapusan DD-03 lewat sesi API Total Control Client A dengan konsumen event ditahan) hanyalah pemicu state; objek asersi adalah dialog dan Tab History di Approvals.
 - Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): 1 dan 2 (membuka Detail Approval dengan radio Approve terpilih sebagai precondition TC), 10 (melepas tahan konsumen event).
 - Asersi tambahan di luar Expected TC (S-03): tidak ada.
 - Temuan untuk QA:

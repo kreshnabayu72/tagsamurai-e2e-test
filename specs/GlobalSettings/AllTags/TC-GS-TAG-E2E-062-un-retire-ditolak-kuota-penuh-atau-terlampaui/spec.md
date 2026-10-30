@@ -20,7 +20,7 @@ coverage:
   - Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC), kredensial `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`; hook `after` mengembalikan sesi ke akun ini sebagai default suite.
   - Akun Supply Asset yang berwenang un-retire: tidak ada di Pre-setup TC; akun dan kredensial disediakan tim FE (S-13). Sesi UI dipakai karena penolakan diasersi di Supply Asset.
 - Layar awal: hook `beforeEach` membuka Global Settings > TAG > Tab All.
-- Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30; kartu RFID – Object TAG `21 of 50`), dengan DD-08 `E2801160600002054D8A0008` (RFID Retired). Kuota RFID – Object TAG Client A disetel lewat fixture BE: sama dengan terpakai (21) untuk TC-GS-TAG-350, dan 20 sementara terpakai 21 (`21 of 20`) untuk TC-GS-TAG-351. Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4). Rencana menyebut Client Quota; TC menetapkan Client A dengan fixture kuota (lihat Temuan untuk QA).
+- Data Pre-setup: Seed Registri A (Client A, DD-01..DD-30; kartu RFID – Object TAG `21 of 50`), dengan DD-08 `E2801160600002054D8A0008` (RFID Retired). Kuota RFID – Object TAG Client A disetel lewat fixture BE: sama dengan terpakai (21) untuk TC-GS-TAG-350, dan 20 sementara terpakai 21 (`21 of 20`) untuk TC-GS-TAG-351. Identifier tetap, tidak bisa bersufiks `{runId}` (S-12, Q-4).
 - Kemampuan teknis (disediakan tim FE/BE): penyetelan kuota RFID – Object TAG Client A lewat fixture BE (21 dan 20); seed dan reset idempotent Seed Registri A dan kuota; pembacaan jumlah entri TAG Log DD-08 (baseline). Langkah dan selektor Un-retire di Supply Asset tidak didefinisikan di TC, PRD, atau LLD (Q-9).
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): pulihkan kuota RFID – Object TAG Client A ke 50, kembalikan Seed Registri A (DD-08 Retired), dan sesi ke Total Control Client A.
 - Suite serial (`parallel: false`). State global yang diubah: kuota RFID – Object TAG Client A (dipulihkan hook `after`).
@@ -68,6 +68,6 @@ coverage:
 - Expected a ("tidak ada event ke registri") diamati lewat langkah 9, 10, dan 12 (TC-GS-TAG-350) dan langkah 22, 23, dan 25 (TC-GS-TAG-351): status, kartu, dan TAG Log DD-08 tidak berubah.
 - Temuan untuk QA:
   - Q-9: langkah, selektor, dan copy penolakan Un-retire di Supply Asset tidak didefinisikan; langkah 7 dan 20 hanya mengasersi bahwa Un-retire ditolak (tanpa teks).
-  - Rencana (kolom role/data) menyebut Client Quota, sedangkan Precondition TC-GS-TAG-350 dan 351 menetapkan Total Control Client A dengan kuota RFID – Object TAG disetel lewat fixture BE; spec mengikuti TC. Client Quota di Pre-setup TC berkuota GPS 3 dan NFC 0 dan tidak memuat DD-08.
+  - Precondition TC-GS-TAG-350 dan 351 menetapkan Total Control Client A dengan kuota RFID – Object TAG disetel lewat fixture BE; spec memakai Client A. Client Quota di Pre-setup TC berkuota GPS 3 dan NFC 0 dan tidak memuat DD-08.
   - Q-4: identifier tetap; kuota yang diubah di Client A dipulihkan di hook `after`.
   - Post Condition TC-GS-TAG-350 dan 351 tidak ada.
