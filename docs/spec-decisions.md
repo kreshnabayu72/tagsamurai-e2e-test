@@ -342,3 +342,12 @@ Aturan:
 - **Karena:** PRD role §2.1 (role.md:293, :339): role "Manage user and role" men-gate menu User dan Role & Permission; "User tanpa role Manage user and role: tidak ada akses ke menu ini sama sekali".
 - **Keputusan:** langkah-langkah itu memverifikasi halaman tanpa menu dan tidak ada tab maupun elemen tabel; elemen Hidden lainnya tetap diverifikasi.
 - **Diterapkan di:** skrip Division 007 dan Position 007.
+
+## D-039 Urutan bawaan tabel tidak menampilkan panah sort (2026-10-31)
+
+- **Spec / langkah:** `TC-GS-DIV-E2E-001` TC-GS-DIV-3 langkah 24; `TC-GS-DIV-E2E-053` TC-GS-DIV-190 langkah 15; spec lain yang meminta ikon sort kolom default menunjukkan arah pada keadaan awal.
+- **Spec meminta:** ikon sort kolom default (Name pada tabel Division, Date pada Changelog) menunjukkan arah urutan bawaan sebelum ada klik.
+- **Kenyataannya:** urutan bawaan berasal dari API dan semua kolom netral (tanpa panah) sampai diklik.
+- **Karena:** prd-conventions §9.7: pada State Awal tabel menampilkan urutan bawaan dan kolom tanpa sort aktif netral; klik ketiga "menghilangkan indikator panah sort aktif" dan mengembalikan urutan bawaan. Keputusan owner 2026-10-31: urutan default adalah urutan API, tanpa opsi tambahan di tabel.
+- **Keputusan:** langkah itu memverifikasi urutan baris bawaan dan ikon sort netral.
+- **Diterapkan di:** skrip Division 001 dan 053.
