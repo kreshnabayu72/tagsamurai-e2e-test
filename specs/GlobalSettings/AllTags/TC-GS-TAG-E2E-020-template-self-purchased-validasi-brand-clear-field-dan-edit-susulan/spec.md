@@ -1,0 +1,119 @@
+---
+id: TC-GS-TAG-E2E-020-template-self-purchased-validasi-brand-clear-field-dan-edit-susulan
+title: "Template Self-Purchased: Brand Baru/Case-Insensitive, Batas 120 Karakter, Emoji, Terisi Sebagian, Clear Field, dan Edit Susulan"
+priority: High
+caseType: Positive
+status: draft
+sourceTc:
+  - TC-GS-TAG-53
+  - TC-GS-TAG-54
+  - TC-GS-TAG-55
+  - TC-GS-TAG-56
+  - TC-GS-TAG-57
+  - TC-GS-TAG-58
+coverage:
+  web: automated
+---
+
+# Template Self-Purchased: Brand Baru/Case-Insensitive, Batas 120 Karakter, Emoji, Terisi Sebagian, Clear Field, dan Edit Susulan
+
+## Prerequisites
+
+- Mode: FE+BE (backend nyata).
+- Aktor utama: Total Control Client A `totalControl_automated_qaTeam1@qwertysystem.net` (Sari Dewi), `Spectra.env.GS_TC_PASSWORD`. Login di hook `before`; layar awal Global Settings > TAG > Tab All dibuka hook `beforeEach`. Password tidak ditulis di spec atau fixture. Hook `after` mengembalikan sesi ke akun default suite (Total Control Client A).
+- Data: opsi mandiri (BYO) aktif; opsi Brand existing `Zebra` (Global Settings > Brand Client A, dibaca saja); katalog Device Name `Queclink GV300` (Admin Console Client A, dibaca saja; disediakan tim FE). Identifier uji `356938035643101` (DD-N1) dan `356938035643102` (DD-N2) tidak ada di stok resmi, tidak ada di registri Client A, dan tidak In Use di client mana pun; Template kosong pada awal tiap sesi.
+- Brand `NovaTrack` dan `Queclink` diketik bebas; spec tidak membuat record Brand di Global Settings > Brand. Langkah akhir (TC-53 lanjutan) membaca Global Settings > Brand Client A sebagai pengamat.
+- Kemampuan teknis: entri manual GPS (input teks dan tombol `Add`; label dan placeholder kontrol menunggu desain, NC-11, selektor disediakan tim FE, S-13) dan unggah berkas CSV/XLSX; tidak ada endpoint atau selektor yang dikarang spec ini.
+- Spec tidak melakukan Submit Activation; registri Client A tidak berubah.
+- Suite serial (`parallel: false`); spec tidak bergantung pada hasil spec lain. Identifier TAG (EPC, IMEI, UID) tetap dan tidak dapat diberi sufiks `{runId}` (S-12), sehingga seeding bersifat idempotent: hook `before` mengembalikan data yang dipakai spec ini ke kondisi awal (Q-4).
+- Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_gs-tag-registry` dan `guided_tooltip_seen_gs-tag-activate` menjadi true untuk akun aktor spec ini dan hook `after` memulihkannya; lihat `suite.md` bagian Hook Guided Tooltip.
+- Nilai data mengacu ke `fixtures/all-tags.json` (identitas saja, dibuat tahap script); tidak ada password di fixture.
+
+## Test Steps
+
+### TC-GS-TAG-55: Emoji pada Brand dan Model/Type diblok (sesi 1)
+
+1. Mulai sesi Activate TAG tipe `GPS`: klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
+2. Buka section `Self-Purchased Template`
+3. Ketik `Zebra😀` pada Brand
+4. Verifikasi karakter emoji tidak masuk ke field Brand
+5. Ketik `ZT😀` pada Model/Type
+6. Verifikasi karakter emoji tidak masuk ke field Model/Type
+7. Kosongkan field Brand dan Model/Type
+
+### TC-GS-TAG-53: Brand baru dan pencocokan case-insensitive
+
+8. Ketik `zebra` pada Brand lalu tekan Enter
+9. Verifikasi input `zebra` menjadi nilai opsi existing `Zebra` (pencocokan tidak peka huruf besar-kecil)
+10. Ganti isi Brand dengan `NovaTrack` lalu tekan Enter
+11. Verifikasi input `NovaTrack` tersimpan sebagai teks pada Template
+
+### TC-GS-TAG-54: Batas 120 karakter Brand dan Model/Type
+
+12. Isi Template Device Name `Queclink GV300`
+13. Ganti isi Brand dengan 121 karakter `A`
+14. Verifikasi Brand menampilkan error inline `Max. 120 characters` langsung tanpa menunggu `Save`
+15. Isi Model/Type dengan 121 karakter `B`
+16. Verifikasi Model/Type menampilkan error inline `Max. 120 characters` langsung tanpa menunggu `Save`
+17. Tambahkan lewat entri manual (ketik di input lalu klik `Add`) `356938035643101`
+18. Verifikasi baris `356938035643101` berstatus `Needs Info` karena field yang melebihi batas tidak dianggap terisi
+19. Verifikasi Device Name `Queclink GV300` pada baris `356938035643101` valid sehingga satu-satunya sebab `Needs Info` adalah Brand yang tidak dianggap terisi
+20. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
+
+### TC-GS-TAG-56: Template terisi sebagian tidak menampilkan error
+
+21. Mulai sesi Activate TAG tipe `GPS`: klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
+22. Buka section `Self-Purchased Template`
+23. Isi hanya Brand `Queclink`
+24. Tambahkan lewat entri manual (ketik di input lalu klik `Add`) `356938035643101`
+25. Verifikasi tidak ada error inline pada Template
+26. Verifikasi baris `356938035643101` berstatus `Needs Info`
+27. Verifikasi baris `356938035643101` memuat Device Name `—`
+28. Verifikasi baris `356938035643101` memuat SKU `—`
+29. Verifikasi baris `356938035643101` memuat Brand `—`
+30. Verifikasi baris `356938035643101` memuat Model/Type `—`
+31. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
+
+### TC-GS-TAG-57: Clear Field mengosongkan empat field Template
+
+32. Mulai sesi Activate TAG tipe `GPS`: klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
+33. Isi Template dengan Device Name `Queclink GV300`, Brand `Queclink`, Model/Type `GV300`
+34. Tambahkan lewat entri manual (ketik di input lalu klik `Add`) `356938035643101`
+35. Klik `Clear Field`
+36. Verifikasi empat field Template (Device Name, SKU, Brand, Model/Type) kosong
+37. Verifikasi baris `356938035643101` (Self-Purchased) tetap di staging dengan nilai snapshot Template (Device Name `Queclink GV300`, Brand `Queclink`, Model/Type `GV300`)
+38. Verifikasi halaman Activate TAG tidak tertutup
+39. Verifikasi tidak ada dialog konfirmasi
+40. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
+
+### TC-GS-TAG-58: Edit Template sesudahnya tidak mengubah baris
+
+41. Mulai sesi Activate TAG tipe `GPS`: klik `+ Activate TAG`, pilih `GPS` pada overlay `Select TAG Type`, klik `Continue` pada popup `Ready to Activate a TAG`
+42. Isi Template Device Name `Queclink GV300` dan Brand `Queclink`
+43. Tambahkan lewat entri manual (ketik di input lalu klik `Add`) `356938035643101`
+44. Ubah Brand Template menjadi `Teltonika`
+45. Kosongkan seluruh Template lalu tambahkan lewat entri manual (ketik di input lalu klik `Add`) `356938035643102`
+46. Isi kembali Template dengan Device Name `Queclink GV300` dan Brand `Queclink`
+47. Verifikasi baris `356938035643101` tetap `Self-Purchased` dengan Brand `Queclink` (snapshot)
+48. Verifikasi baris `356938035643102` tetap `Needs Info` walau Template diisi belakangan
+49. Kembali ke List: klik item sidebar `TAG`, klik `Leave` pada dialog `Unsaved Changes` (staging berisi baris)
+
+### TC-GS-TAG-53 (lanjutan): Brand `NovaTrack` tidak membuat record di Global Settings > Brand
+
+50. Buka Global Settings > Brand
+51. Verifikasi sedikitnya satu baris Brand tampil, termasuk `Zebra`
+52. Ketik Search `NovaTrack`, tekan Enter
+53. Verifikasi empty state `No results found` tampil sehingga `NovaTrack` tidak ada di Global Settings > Brand
+
+## Notes
+
+- Mode: FE+BE. Sumber: `global-settings/all-tags/TestCases/tc-all-tags.md`. Kelas harness: fungsional (validasi Template).
+- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
+- Alasan di atas sekitar 35 langkah: semua blok satu kelas harness (Template di halaman Activate GPS) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna. Total 53 langkah, dengan empat langkah `Mulai sesi` dan empat `Kembali ke List` yang merupakan prefix berulang; blok yang hanya mengetik tanpa menambah baris (TC-55, TC-53, TC-54) memakai satu sesi (butir halaman yang sama dipakai berulang, bagian 3).
+- Urutan: TC-55 (diblok) lebih dulu, lalu TC-53, TC-54, dan sesi terpisah untuk TC-56, TC-57, TC-58 karena ketiganya memakai identifier `356938035643101` pada baris baru. TC-53 lanjutan (membaca Global Settings > Brand) paling akhir karena meninggalkan halaman Activate.
+- Langkah penghubung (tanpa `Verifikasi`): langkah mulai sesi menggabungkan TC langkah 1 sampai 3; `Buka section` Template mengikuti TC langkah 4; `Kosongkan field Brand dan Model/Type` (langkah 7) memulihkan field sebelum TC-53; `Kembali ke List` dengan `Leave` adalah langkah penghubung (S-03) karena dialog `Unsaved Changes` muncul pada sesi dengan baris staging, sedangkan definisi dirty dan teks dialog diuji di spec 036 (TC-183 sampai TC-185, TC-111 sampai TC-113) dan tidak diasersi di spec ini.
+- Langkah 51 (`Verifikasi` sedikitnya satu baris Brand tampil, termasuk `Zebra`) adalah asersi tambahan di luar Expected TC-53 dan sekaligus anchor positif bahwa daftar Brand termuat sebelum asersi absence langkah 53 (8b butir 2, S-03).
+- Temuan untuk QA:
+  - TC-53 Expected b ("tidak membuat record baru di Global Settings > Brand") tidak memiliki langkah observasi dan permukaan Brand milik spec lain; spec mengamatinya di langkah akhir (Search `NovaTrack` di Global Settings > Brand) tanpa mengarang selektor (disediakan tim FE).
+  - TC-53 Brand `zebra` dan `NovaTrack`, TC-54, TC-55, dan TC-57: field Brand adalah input pencarian/tambah; tindakan yang menyimpan nilai (Enter) hanya disebut TC-53; spec memakai Enter di TC-53 dan mengetik langsung di TC lain sesuai TC.
+  - TC-58 langkah 7 memakai "Kosongkan seluruh Template" tanpa menyebut kontrol; spec memakai `Clear Field` (kontrol yang diuji TC-57).

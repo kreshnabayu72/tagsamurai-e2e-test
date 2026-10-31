@@ -1,0 +1,38 @@
+---
+name: Global Settings Hardware Handheld Reader
+id: suite-global-settings-hardware-handheld-reader
+description: Spec e2e turunan tc-hardware-handheld-reader.md untuk Global Settings > Hardware > Handheld Reader
+executionOrder: 1.0
+parallel: false
+---
+
+# Suite: Global Settings Hardware Handheld Reader
+
+Suite ini mencakup halaman Handheld Reader pada Global Settings > Hardware: tabel daftar reader (Search, Filter, Sort, Pagination, Setup Column, Download), kartu kuota License Counter, Activate (Jalur A dan Jalur B, Sync reader USB, collision, Event Log Activate), Edit Alias Name dan Edit Reader Power, Popup Detail dengan Tab Usage dan Tab Changelog, Mark as (Damaged, Missing, Available), Cancel Request, Delete single dan Bulk Action, Modal Changelog, pencatatan log di tiga surface (Changelog, System Log aktor, Activity Log), Role Matrix dan defense-in-depth, sinkronisasi ke Admin Console (Hardware Stock, Approvals, Device Allocation, Device Name) dan ke produk lain (Last Scanned dari Usage Event), state tenant (Suspended, Expired, plan, toggle `Allow Self-Purchased Device Activation`), format tanggal dan zona waktu General Settings, konkurensi dua admin, tampilan Mobile, serta ketahanan terhadap kegagalan server.
+
+`parallel: false` karena spec mengubah state global: plan dan status Client, toggle `Allow Self-Purchased Device Activation` (BYO), format tanggal dan zona waktu General Settings, capability role, flag Guided Tooltip, alokasi Device Allocation, katalog Device Name, stok Hardware Stock, serta kuota dan reader fisik atau simulator USB yang hanya dapat dipakai satu sesi pada satu waktu. Spec yang menghapus data (Delete single dan Bulk Delete) dijalankan sesudah spec lain. Setiap spec tetap menyiapkan dan membersihkan datanya sendiri lewat hook dan tidak bergantung pada hasil spec lain.
+
+## Hook suite
+
+Flag Guided Tooltip halaman Handheld Reader (`guided_tooltip_seen_gs-handheld-reader`, page_key `gs-handheld-reader`): hook suite `before` men-set flag itu true untuk setiap akun aktor yang dipakai spec dalam suite (nilai awal tiap akun dicatat) supaya walkthrough otomatis tidak menutupi layar, dan hook suite `after` memulihkan nilai awal tiap akun. Mekanisme baca, penyetelan, reset, dan pemulihan flag disediakan tim FE/BE (tidak didefinisikan di TC, PRD, atau LLD). Spec 005, 006, dan 007 menguji flag itu sendiri sehingga dikecualikan: spec-spec itu mereset flag ke belum ada dan menulis pengaturan flag-nya di `## Prerequisites` masing-masing. Spec 076 (Mobile) mereset flag untuk TC-GS-HHR-443 dengan cara yang sama dan menulisnya di `## Prerequisites`. Tiap spec lain memuat satu baris rujukan ke pernyataan ini.
+
+## Kemampuan reset dan pemulihan yang diasumsikan spec
+
+Spec mengandalkan kemampuan berikut dan tidak mendefinisikan endpoint-nya. Tim FE/BE menyediakannya; bila belum ada, spec yang bersangkutan belum dapat dijalankan penuh.
+
+- **Seed Reader A (Client A):** pemulihan 10 reader DD-01 sampai DD-10 (nama, Serial Number, status, Range Type, Source, Reader Power, tanggal) beserta kuota `Long Range` terpakai 5 dari 6 dan `Short Range` terpakai 5 dari 8 ke keadaan awal. Dipakai di hook `before` dan `after` spec yang mengubah reader, serta sebagai langkah penghubung antar blok TC dalam satu spec (Catatan TC: mutasi TC sebelumnya tidak dibawa ke TC berikutnya). Nama Seed Reader A ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nilai dan jumlah baris.
+
+## Pengecualian Population S-12 (Seed Reader A)
+
+Aturan Population S-12 meminta nilai Data Dinamis memakai suffix `{runId}`. Suite ini mengecualikan data Seed Reader A (reader DD-01 sampai DD-10 beserta Seed Changelog, Seed Event Log, dan Seed Usage Event turunannya): nama dan nilainya ditulis literal tanpa suffix `{runId}`. Alasan: asersi spec bergantung pada nama persis, isi opsi daftar, urutan, dan jumlah baris seed (mis. kuota `Long Range` 5 dari 6, 10 baris, tooltip dan tanggal tetap), sehingga suffix per run membuat nilai tidak dapat diasersi dan data seed tidak dapat dipulihkan ke keadaan yang sama. Pemulihan seed dijamin fixture backend (bagian di atas). Data yang dibuat spec sendiri (mis. hasil aktivasi Jalur B) tetap memakai `{runId}`. Pengecualian ini tertulis di `docs/e2e-conventions.md` Lampiran A butir A-5 (S-12, Hardware > Handheld Reader). Dirujuk dari `docs/coverage/GlobalSettingsHardwareHandheldReader.md`.
+- **Seed Changelog Client A (CL-01 sampai CL-09) dan Seed Event Log Client A (EL-01 sampai EL-05):** pemulihan audit trail ke seed untuk spec yang mengasersi jumlah baris absolut.
+- **Seed Usage Event DD-01 (UE-01 sampai UE-06):** pembuatan dan pemulihan Usage Event untuk Tab Usage; plus sesi audit Fixed Asset dengan Pair TAG untuk Last Scanned dari produk lain.
+- **Stok Hardware Stock Principal:** pemulihan unit `SN-HHR-00201` sampai `SN-HHR-00206`, `SN-HHR-00301`, `SN-HHR-00302`, `SN-HHR-00303` ke bebas atau `Available`, reset counter `N` Device Name (mis. `Zebra RFID Reader`), dan reset fixture backend di tengah spec yang melakukan lebih dari satu aktivasi.
+- **Visibilitas kolom:** pemulihan Column Visibility dan Setup Column (urutan, pin, kolom curated `Brand`, `Model/Type`, `Last Scanned In`, `Last User` tersembunyi secara bawaan) tiap tabel ke default, serta penghapusan preferensi kolom di browser. Spec yang mengubah konfigurasi kolom memulihkannya sendiri lewat `[Reset to Default]` dan `[Save]`, dengan hook `after` sebagai cadangan.
+- **State tenant dan konfigurasi:** pengubahan toggle `Allow Self-Purchased Device Activation` Client A oleh Principal, format tanggal dan zona waktu General Settings Client A, `Selection Limit` Client SL, alokasi Device Allocation Client A (spec 072) dan Client O (spec 015), serta pemulihannya sesudah spec.
+- **Capability role:** pencabutan capability (spec 011) dan pemulihannya.
+- **Sesi admin kedua:** sesi API Admin B dan sesi API Principal sebagai pelaku yang hanya memicu state, bukan sesi UI. Admin B = Total Control Client A kedua, `Nadia Pratama`, `totalControlSecond_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC2_PASSWORD` (sudah terdaftar); sesi API-nya dipakai spec 048, 073, 074, 075, dan 078, dan spec 073 dan 075 juga membuka sesi UI Admin B untuk satu sisi konkurensi. Spec 011 memakai sesi API Total Control Client A (`Sari Dewi`) sebagai pencabut capability, bukan Admin B.
+- **Simulator reader USB dan driver lokal:** penyajian Serial Number dan Current Power, pergantian reader, cabut kabel, driver tidak terpasang, dan penahanan pembacaan. Mekanisme tidak didefinisikan di TC, PRD, atau LLD.
+- **Fixture baru:** `Fixture.hardwareHandheldReader.*` merujuk berkas `fixtures/hardwareHandheldReader.json` yang belum ada dan disediakan tim FE; berkas itu memuat data Pre-setup Client A, Seed Reader A, Seed Changelog Client A, Seed Event Log Client A, Seed Usage Event DD-01, dan data per spec yang dirujuk Prerequisites tiap spec. Nama kunci ditetapkan tim FE.
+
+Akun, password (dibaca dari `Spectra.env.*`, tidak ditulis di spec atau fixture), dan data fixture per spec tertulis di `## Prerequisites` masing-masing. Pemetaan TC ke spec, ringkasan kebutuhan lingkungan, dan temuan untuk QA ada di `docs/coverage/GlobalSettingsHardwareHandheldReader.md`.
