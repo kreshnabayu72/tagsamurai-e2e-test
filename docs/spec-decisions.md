@@ -351,3 +351,12 @@ Aturan:
 - **Karena:** prd-conventions §9.7: pada State Awal tabel menampilkan urutan bawaan dan kolom tanpa sort aktif netral; klik ketiga "menghilangkan indikator panah sort aktif" dan mengembalikan urutan bawaan. Keputusan owner 2026-10-31: urutan default adalah urutan API, tanpa opsi tambahan di tabel.
 - **Keputusan:** langkah itu memverifikasi urutan baris bawaan dan ikon sort netral.
 - **Diterapkan di:** skrip Division 001 dan 053.
+
+## D-040 Login baru menggantikan login lain yang masih menunggu Confirm Duplicate Login (2026-10-31)
+
+- **Spec / langkah:** `TC-AUTH-SES-E2E-012` TC-AUTH-SES-321 langkah 49-57.
+- **Spec meminta:** dua dialog Duplicate Login (Browser B dan C) tetap valid; Confirm B mengakhiri sesi A, lalu Confirm C mengakhiri sesi B.
+- **Kenyataannya:** login C meng-invalidate login B yang masih menunggu (iam: satu handoff aktif per user, client, dan platform, sama seperti MFA EC-34). Confirm B ditolak 422; Confirm C berhasil dan mengakhiri sesi A.
+- **Karena:** PRD session-management tidak mengatur dua dialog bersamaan (skenario hanya ada di dokumen TC). Satu login tertunda per user adalah aturan backend yang konsisten, dan PRD EC-21 sudah mengatur token pra-autentikasi yang tidak berlaku lagi: ditolak 422, FE kembali ke Login dengan toast `Error, failed to log in.`.
+- **Keputusan:** langkah-langkah itu memverifikasi Confirm B kembali ke Login dengan toast dan sesi A tetap aktif; Confirm C masuk Portal dan mengakhiri sesi A; Browser B tanpa sesi; Browser A tidak menerima dialog Duplicate Login.
+- **Diterapkan di:** skrip Session Management 012.
