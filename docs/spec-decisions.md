@@ -369,3 +369,12 @@ Aturan:
 - **Karena:** keputusan owner 2026-10-31: soal bahasa dikerjakan serentak setelah fitur final.
 - **Keputusan:** langkah-langkah bahasa tidak dijalankan di e2e untuk sementara; TC yang seluruhnya tentang bahasa ditandai `// @spec-decision: D-041 TC-…`, langkah bahasa di TC lain ditandai `// @ui-gap: D-041 TC-… steps …`. Langkah lain di spec yang sama tetap dijalankan. Ditinjau ulang saat fitur final.
 - **Diterapkan di:** skrip Activity Log 008 dan spec lain yang punya langkah bahasa.
+
+## D-042 Aktor bernama satu kata tidak mungkin ada (2026-10-31)
+
+- **Spec / langkah:** `TC-GS-POS-E2E-038` TC-GS-POS-292 langkah 39, 42-43; spec lain yang memakai aktor atau user bernama satu kata (mis. `Budi`, `Bagas`).
+- **Spec meminta:** Modified By aktor bernama satu kata tampil `Budi` dan tooltip-nya `Budi`.
+- **Kenyataannya:** user tidak dapat dibuat tanpa Last Name; iam menolak dengan 422 "Last name must not be empty".
+- **Karena:** PRD user V-02: Last Name wajib.
+- **Keputusan:** langkah untuk aktor bernama satu kata tidak dijalankan (`// @ui-gap: D-042 …`); langkah nama depan panjang di TC yang sama tetap dijalankan.
+- **Diterapkan di:** skrip Position 038; CustomFieldUser 018 TC-450 memakai alasan yang sama.
