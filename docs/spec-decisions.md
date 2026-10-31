@@ -333,3 +333,12 @@ Aturan:
 - **Karena:** PRD login-password V-AUTHLP-05 memvalidasi reCAPTCHA "saat klik Log in" dengan caption di bawah widget, sama seperti field wajib lain (pola D-017). Urutan "lock sebelum captcha" pada catatan ordering PRD berlaku untuk request yang sampai ke server.
 - **Keputusan:** langkah 10-11 memverifikasi caption reCAPTCHA, nol request login, dan tidak ada Alert. Alert lock diverifikasi pada langkah 5 (request dengan reCAPTCHA terverifikasi).
 - **Diterapkan di:** skrip Login Password 010.
+
+## D-038 Tanpa role "Manage user and role" tidak ada menu User sama sekali (2026-10-31)
+
+- **Spec / langkah:** `TC-GS-DIV-E2E-007` TC-GS-DIV-18 langkah 68-71; `TC-GS-POS-E2E-007` TC-GS-POS-25 langkah 1-4.
+- **Spec meminta:** halaman Global Settings > User terbuka, Tab `User List` tampil, dan Tab Division/Position Hidden.
+- **Kenyataannya:** aktor tanpa role apa pun tidak mendapat menu User. Global Settings menampilkan halaman "You don't have access to any menu yet.", tanpa tab.
+- **Karena:** PRD role §2.1 (role.md:293, :339): role "Manage user and role" men-gate menu User dan Role & Permission; "User tanpa role Manage user and role: tidak ada akses ke menu ini sama sekali".
+- **Keputusan:** langkah-langkah itu memverifikasi halaman tanpa menu dan tidak ada tab maupun elemen tabel; elemen Hidden lainnya tetap diverifikasi.
+- **Diterapkan di:** skrip Division 007 dan Position 007.
