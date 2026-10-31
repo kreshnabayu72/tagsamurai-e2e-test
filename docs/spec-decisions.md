@@ -360,3 +360,12 @@ Aturan:
 - **Karena:** PRD session-management tidak mengatur dua dialog bersamaan (skenario hanya ada di dokumen TC). Satu login tertunda per user adalah aturan backend yang konsisten, dan PRD EC-21 sudah mengatur token pra-autentikasi yang tidak berlaku lagi: ditolak 422, FE kembali ke Login dengan toast `Error, failed to log in.`.
 - **Keputusan:** langkah-langkah itu memverifikasi Confirm B kembali ke Login dengan toast dan sesi A tetap aktif; Confirm C masuk Portal dan mengakhiri sesi A; Browser B tanpa sesi; Browser A tidak menerima dialog Duplicate Login.
 - **Diterapkan di:** skrip Session Management 012.
+
+## D-041 Verifikasi bahasa ditunda sampai fitur final (2026-10-31)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-008` TC-GS-ACTLOG-27 (ganti bahasa, kolom verbatim vs translatable), serta langkah lain di spec mana pun yang mengganti bahasa lewat Language picker atau memverifikasi teks terjemahan non-Inggris.
+- **Spec meminta:** ganti bahasa ke non-Inggris lalu verifikasi kolom/teks yang ikut diterjemahkan dan yang tetap verbatim.
+- **Kenyataannya:** terjemahan app belum final; copy dan kunci terjemahan masih berubah per fitur.
+- **Karena:** keputusan owner 2026-10-31: soal bahasa dikerjakan serentak setelah fitur final.
+- **Keputusan:** langkah-langkah bahasa tidak dijalankan di e2e untuk sementara; TC yang seluruhnya tentang bahasa ditandai `// @spec-decision: D-041 TC-…`, langkah bahasa di TC lain ditandai `// @ui-gap: D-041 TC-… steps …`. Langkah lain di spec yang sama tetap dijalankan. Ditinjau ulang saat fitur final.
+- **Diterapkan di:** skrip Activity Log 008 dan spec lain yang punya langkah bahasa.
