@@ -432,3 +432,12 @@ Aturan:
 - **Karena:** keputusan owner (Zain Kurnia) 2026-11-01: perilaku app sudah benar. Urutan Tab mengikuti urutan tampilan.
 - **Keputusan:** langkah 40 memverifikasi fokus pada [Verify], lalu [Cancel].
 - **Diterapkan di:** skrip Mfa 014.
+
+## D-049 Respons yang ditahan untuk mengamati loading: 2 detik, bukan 5 (2026-11-01)
+
+- **Spec / langkah:** `TC-AUTH-ACT-E2E-018` TC-AUTH-ACT-02 langkah 1 dan 3; `TC-AUTH-ACT-E2E-028` TC-AUTH-ACT-64 langkah 37 dan 39; `TC-AUTH-OTP-E2E-010` TC-AUTH-OTP-29 langkah 14, 16 dan 19; `TC-AUTH-OTP-E2E-013` TC-AUTH-OTP-42 langkah 18, 21 dan 24.
+- **Spec meminta:** respons ditahan 5 detik, lalu halaman diamati selama 5 detik dan respons diteruskan normal.
+- **Kenyataannya:** request auth di client punya timeout 5 detik (keputusan owner 2026-11-01, ui-items #24). Penahanan 5 detik, ditambah waktu jawab server, sampai ke client setelah timeout, sehingga yang tampil toast gagal (misalnya "Error, failed to send the code."), bukan alur sukses yang diminta spec.
+- **Karena:** keputusan koordinator (didelegasikan owner) 2026-11-01. Tujuan langkahnya adalah mengamati loading selama request berjalan dan alur sukses setelahnya; durasi yang tidak sampai timeout tetap memenuhi tujuan itu. Kasus timeout sendiri diuji terpisah (TC-AUTH-MFA-157, penahanan 20 detik).
+- **Keputusan:** respons ditahan 2 detik (`// @spec-decision: D-049 …`).
+- **Diterapkan di:** skrip AccountActivation 018 dan 028, LoginOtp 010 dan 013.
