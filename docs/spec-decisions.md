@@ -387,3 +387,39 @@ Aturan:
 - **Karena:** perilaku komponen. Modal adalah overlay blocking yang hanya ditutup lewat aksi eksplisit (`Modal.spec.md`: "cannot be dismissed by clicking the overlay").
 - **Keputusan:** perilaku komponen berlaku. Langkah backdrop memverifikasi dialog tetap terbuka dan tidak ada perubahan sesi; dialog lalu ditutup lewat [Cancel]. Bagian absence (tidak ada entri log) tetap diverifikasi.
 - **Diterapkan di:** skrip SessionManagement 011 dan 066.
+
+## D-044 Input kosong ditolak di client, tanpa request dan tanpa baris Failed (2026-11-01)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-035` TC-AUTH-LP-105 langkah 4, TC-AUTH-LP-106 langkah 13; `TC-AUTH-MFA-E2E-033` TC-AUTH-MFA-158 langkah 10-15, TC-AUTH-MFA-162 langkah 40-45; `TC-AUTH-MFA-E2E-028` TC-AUTH-MFA-133 langkah 90-91.
+- **Spec meminta:** [Log in] dengan Password kosong, reCAPTCHA belum diselesaikan, atau kode kosong dikirim ke server; server mencatat baris Failed (`Empty password`, `Captcha not completed`, `Empty OTP`) dan menghitung percobaan kosong.
+- **Kenyataannya:** form menolak di client (field Required, kode kurang dari 6 digit) dan menampilkan caption-nya sendiri; tidak ada request, jadi tidak ada baris log dan percobaan kosong tidak dihitung.
+- **Karena:** keputusan owner (Zain Kurnia) 2026-11-01: validasi di client sudah benar. PRD F-AUTHLP-02 langkah 5-6 dan §9.8 tidak diikuti untuk input kosong dari UI.
+- **Keputusan:** langkah-langkah itu memverifikasi caption client dan tidak adanya request. Pemeriksaan server untuk request kosong yang dikirim langsung (bukan dari UI) tetap dijalankan bila skripnya sudah ada (LP 035).
+- **Diterapkan di:** skrip LoginPassword 035, Mfa 033 dan 028.
+
+## D-045 Paste selalu mengisi dari kotak 1 (2026-11-01)
+
+- **Spec / langkah:** `TC-AUTH-MFA-E2E-004` TC-AUTH-MFA-88 langkah 92-97; `TC-AUTH-OTP-E2E-012` TC-AUTH-OTP-46 langkah 22-28.
+- **Spec meminta:** paste `123456` setelah klik kotak 3 mengisi kotak 3-6 dengan 1-4, kotak 1-2 kosong, tanpa verifikasi otomatis.
+- **Kenyataannya:** paste mulai dari kotak 1, mengisi keenam kotak, dan digit ke-6 langsung memverifikasi kode.
+- **Karena:** keputusan owner (Zain Kurnia) 2026-11-01: perilaku komponen benar, spec yang salah. `SegmentedInput` Wangs UI menyimpan kode sebagai satu string berurutan (`Snap-to-End Clamping`, `SegmentedInput.spec.md`).
+- **Keputusan:** langkah paste dari kotak 3 tidak dijalankan (`// @spec-decision: D-045 …`), karena akan memverifikasi kode yang salah. Perilaku paste diuji di komponen Wangs UI.
+- **Diterapkan di:** skrip Mfa 004 dan LoginOtp 012.
+
+## D-046 Back setelah sesi pre-auth berakhir kembali ke Login (2026-11-01)
+
+- **Spec / langkah:** `TC-AUTH-MFA-E2E-028` TC-AUTH-MFA-129 langkah 22-24, TC-AUTH-MFA-130 langkah 49-51; `TC-AUTH-MFA-E2E-031` TC-AUTH-MFA-150 langkah 108.
+- **Spec meminta:** Back ke halaman kode setelah sesi pre-auth berakhir, lalu mengetik kode di sana.
+- **Kenyataannya:** halaman kode sudah diganti di history; Back mendarat di Choose Verification Method, yang menolak token pre-auth yang tidak berlaku lagi dan menggantinya dengan Login. Tidak ada kotak kode untuk diketik.
+- **Karena:** keputusan owner (Zain Kurnia) 2026-11-01: perilaku app dibiarkan; token pre-auth yang sudah berakhir tidak boleh melanjutkan login.
+- **Keputusan:** kode tidak diketik ulang setelah Back. Mfa 028 memverifikasi Back berakhir di Login tanpa sesi; Mfa 031 (login sudah berhasil) memverifikasi tetap tepat satu baris Success (langkah 110-111).
+- **Diterapkan di:** skrip Mfa 028 dan 031.
+
+## D-047 Setelah Backspace, kotak aktif adalah kotak kosong berikutnya (2026-11-01)
+
+- **Spec / langkah:** `TC-AUTH-MFA-E2E-004` TC-AUTH-MFA-67 langkah 51 dan 54; `TC-AUTH-MFA-E2E-009` TC-AUTH-MFA-101 langkah 79 dan 82; `TC-AUTH-MFA-E2E-014` TC-AUTH-MFA-121 langkah 71 dan 74.
+- **Spec meminta:** setelah Backspace, fokus kembali ke kotak terakhir yang terisi (kotak 2, lalu kotak 1).
+- **Kenyataannya:** kotak aktif adalah tempat digit berikutnya masuk: kotak 3 setelah `12`, kotak 2 setelah `1`.
+- **Karena:** keputusan owner (Zain Kurnia) 2026-11-01: perilaku `SegmentedInput` Wangs UI sudah benar.
+- **Keputusan:** langkah-langkah itu memverifikasi kotak 3, lalu kotak 2 (`shouldHaveActiveSlotIndex(2)`, lalu `(1)`).
+- **Diterapkan di:** skrip Mfa 004, 009 dan 014.
