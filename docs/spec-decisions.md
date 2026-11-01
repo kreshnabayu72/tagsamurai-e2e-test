@@ -378,3 +378,12 @@ Aturan:
 - **Karena:** PRD user V-02: Last Name wajib.
 - **Keputusan:** langkah untuk aktor bernama satu kata tidak dijalankan (`// @ui-gap: D-042 …`); langkah nama depan panjang di TC yang sama tetap dijalankan.
 - **Diterapkan di:** skrip Position 038; CustomFieldUser 018 TC-450 memakai alasan yang sama.
+
+## D-043 Klik backdrop tidak menutup Dialog Duplicate Login Attempt (2026-11-01)
+
+- **Spec / langkah:** `TC-AUTH-SES-E2E-011` TC-AUTH-SES-31 langkah 23-28; `TC-AUTH-SES-E2E-066` TC-AUTH-SES-31 (bagian absence) langkah 24-28.
+- **Spec meminta:** klik area gelap di luar dialog menutup Dialog Duplicate Login Attempt dengan efek Cancel.
+- **Kenyataannya:** dialog tetap terbuka. Dialog ini confirm Modal Wangs UI (`useModals().confirm`), yang tidak bisa ditutup lewat klik backdrop; Escape tetap menutupnya karena dialog ini memakai opsi `closeOnEscape` (TC-AUTH-SES-30).
+- **Karena:** perilaku komponen. Modal adalah overlay blocking yang hanya ditutup lewat aksi eksplisit (`Modal.spec.md`: "cannot be dismissed by clicking the overlay").
+- **Keputusan:** perilaku komponen berlaku. Langkah backdrop memverifikasi dialog tetap terbuka dan tidak ada perubahan sesi; dialog lalu ditutup lewat [Cancel]. Bagian absence (tidak ada entri log) tetap diverifikasi.
+- **Diterapkan di:** skrip SessionManagement 011 dan 066.
