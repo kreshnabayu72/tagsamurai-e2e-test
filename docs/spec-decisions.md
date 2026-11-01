@@ -423,3 +423,12 @@ Aturan:
 - **Karena:** keputusan owner (Zain Kurnia) 2026-11-01: perilaku `SegmentedInput` Wangs UI sudah benar.
 - **Keputusan:** langkah-langkah itu memverifikasi kotak 3, lalu kotak 2 (`shouldHaveActiveSlotIndex(2)`, lalu `(1)`).
 - **Diterapkan di:** skrip Mfa 004, 009 dan 014.
+
+## D-048 Urutan Tab di Set up authenticator app: [Verify] lalu [Cancel] (2026-11-01)
+
+- **Spec / langkah:** `TC-AUTH-MFA-E2E-014` TC-AUTH-MFA-16 langkah 40.
+- **Spec meminta:** setelah kotak digit, fokus berpindah ke [Cancel], lalu [Verify].
+- **Kenyataannya:** [Verify] (button utama, lebar penuh) tampil di atas [Cancel] (button teks) dalam satu kolom, sehingga urutan Tab adalah [Verify], lalu [Cancel].
+- **Karena:** keputusan owner (Zain Kurnia) 2026-11-01: perilaku app sudah benar. Urutan Tab mengikuti urutan tampilan.
+- **Keputusan:** langkah 40 memverifikasi fokus pada [Verify], lalu [Cancel].
+- **Diterapkan di:** skrip Mfa 014.
