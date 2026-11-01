@@ -52,7 +52,7 @@ Aturan:
 - **Kenyataannya:** MultiSelect hanya punya `maxVisibleChips` berbasis jumlah, tanpa `+N more` yang mengikuti lebar. Setelah `maxVisibleChips="responsive"` ditambahkan, field filter selebar sekitar 213 px hanya memuat satu dari dua chip itu (82 px + sekitar 92 px + gap 8 px melebihi 181 px).
 - **Karena:** aturan Overflow Chip (`prd-conventions` §9.8 butir 4) dan lebar field filter.
 - **Keputusan:** komponen mengikuti aturan itu (`responsive`, dipakai FilterContainer). Spec 034 langkah 21 meminta `John Doe` dan `+1 more`; spec 036 tidak berubah.
-- **Diterapkan di:** react-core `MultiSelect` dan `FilterContainer`; spec 034 langkah 21 (commit `68ddf89e`); skrip 034 dan 036.
+- **Diterapkan di:** react-core `MultiSelect` dan `FilterContainer`; spec 034 langkah 21 (commit `68ddf89e`); skrip 034 dan 036; skrip Division 058 (`TC-GS-DIV-E2E-058` TC-GS-DIV-233 langkah 5-7: chip pertama + `+N more`, tanpa scroll horizontal, 2026-11-02).
 
 ## D-008 Setup Column berlaku setelah Save, bukan langsung (2026-10-26)
 
@@ -260,7 +260,7 @@ Aturan:
 - **Kenyataannya:** form menghapus emoji saat input, saat blur, dan sekali lagi saat submit (D-016). Nilai beremoji tidak pernah sampai ke request, jadi form tidak mungkin menampilkan penolakan server.
 - **Karena:** yang diuji TC ini adalah pertahanan server terhadap nilai yang tidak lolos validasi klien. Request langsung menguji hal yang sama, seperti TC-GS-DIV-259 sampai 262 di spec yang sama.
 - **Keputusan:** Create dan Edit dengan Name `Finance 😀` dikirim langsung ke server dengan sesi aktor. Yang diverifikasi: server menolak dengan validasi pada Name, Division tidak dibuat, dan Name tidak berubah (dicek di tabel). Langkah yang hanya ada di form (modal tetap terbuka, input dipertahankan, penolakan tampil di form, ✕, dan Unsaved Changes) tidak diotomasi, karena keadaan itu tidak bisa terjadi.
-- **Diterapkan di:** skrip Division 073 (TC-GS-DIV-270, TC-GS-DIV-267).
+- **Diterapkan di:** skrip Division 073 (TC-GS-DIV-270, TC-GS-DIV-267); skrip Custom Field User 013 (TC-GS-UCF-468 langkah 43-52: rename opsi Dropdown beremoji, form menolaknya inline, 2026-11-02).
 
 ## D-030 Layar Auth mengikuti layout AuthShell, bukan Card terpusat (2026-10-31)
 
@@ -458,7 +458,7 @@ Aturan:
 - **Kenyataannya:** field filter Changelog (sekitar 173 px) dan field Field di Activity Log pada jendela 1280px hanya memuat satu chip. Chip kedua masuk ke `+1 more`.
 - **Karena:** aturan Overflow Chip (`prd-conventions` §9.8 butir 4) dan D-005. Memperlebar jendela (D-033) hanya menguji lebar jendela, bukan aturan overflow; D-033 tetap khusus untuk nama literal di TC-GS-ACTLOG-82. Keputusan koordinator (didelegasikan owner) 2026-11-02.
 - **Keputusan:** langkah memverifikasi chip pertama dan `+1 more`, serta kedua opsi tercentang di daftar opsi.
-- **Diterapkan di:** skrip Position 040, Activity Log 031.
+- **Diterapkan di:** skrip Position 040, Activity Log 031, Custom Field User 063 (TC-GS-UCF-266 langkah 23-29).
 
 ## D-052 Opsi Modified By di filter Changelog berlabel nama lengkap (2026-11-02)
 
@@ -476,7 +476,7 @@ Aturan:
 - **Kenyataannya:** server mengurutkan dua baris Date sebagai Joining Date, lalu Birth Date.
 - **Karena:** PRD custom-field-user §4.1.1 (baris Data Type, l.260) hanya menetapkan `Alphabetical (A-Z)`; `prd-conventions` §9.7 menetapkan tiebreaker hanya untuk kolom `+N more`. Tidak ada aturan urutan kedua. Keputusan koordinator (didelegasikan owner) 2026-11-02.
 - **Keputusan:** langkah memverifikasi pengelompokan menurut Data Type (urutan A-Z / Z-A antar kelompok), bukan urutan di dalam kelompok.
-- **Diterapkan di:** skrip Custom Field User 054.
+- **Diterapkan di:** skrip Custom Field User 054, termasuk sort Required (TC-GS-UCF-224 langkah 31, 34, 37: baris dengan nilai Required sama).
 
 ## D-054 Nilai kosong di Changelog tampil `—` (2026-11-02)
 
@@ -495,3 +495,21 @@ Aturan:
 - **Karena:** `prd-conventions` §9.11 hanya menetapkan "input nomor halaman → Enter → ke halaman tersebut", tanpa aturan untuk nomor di luar jangkauan. Membawa ke halaman terakhir adalah pola umum (quick jumper) dan tidak pernah menampilkan halaman kosong. Keputusan koordinator (didelegasikan owner) 2026-11-02.
 - **Keputusan:** langkah memverifikasi tabel di halaman terakhir dan tidak ada error; `abc` tetap di halaman yang sama.
 - **Diterapkan di:** skrip Custom Field User 055, File Manager 036.
+
+## D-056 Daftar bullet di dialog konfirmasi baru bisa di-scroll di atas batas tampil (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-UCF-E2E-041` TC-GS-UCF-165 langkah 67, serta langkah yang sama di TC-GS-UCF-166 dan follow-up dengan sedikit nama.
+- **Spec meminta:** daftar nama field terpilih berada dalam container scrollable, juga untuk tiga nama.
+- **Kenyataannya:** daftar dibungkus area scroll hanya bila jumlahnya melebihi batas tampil (5); tiga nama tampil utuh tanpa container scroll.
+- **Karena:** `prd-conventions` l.733 menetapkan daftar entitas "scrollable, jumlah tampil dibatasi, tidak diringkas"; scroll baru bermakna bila daftar melebihi batas tampil. PRD custom-field-user BA-01a/BA-02a tidak menetapkan ambang lain. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** dengan nama lebih dari 5, langkah memverifikasi container scrollable; dengan 5 nama atau kurang, langkah memverifikasi semua nama tampil utuh.
+- **Diterapkan di:** skrip Custom Field User 041.
+
+## D-057 Keyboard mencapai `⋯` (Column Visibility) lewat baris header grid (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-POS-E2E-001` langkah 52 ("Tab hingga fokus pada ⋯"); langkah serupa di tabel lain.
+- **Spec meminta:** menekan Tab berulang sampai fokus berada di tombol `⋯` di header tabel.
+- **Kenyataannya:** tabel adalah grid dengan satu tab stop. Tab masuk ke sel body pertama, ArrowUp pindah ke baris header, lalu Tab mencapai tombol `⋯`. Tab saja melompati header.
+- **Karena:** pola grid (WAI-ARIA Grid) memakai satu tab stop dan navigasi panah di dalamnya; PRD tidak menetapkan urutan Tab di dalam tabel. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah mencapai `⋯` dengan Tab ke grid, ArrowUp ke baris header, lalu Tab; Enter membuka menu.
+- **Diterapkan di:** skrip Position 001; react-core DataTable (tombol `⋯` dapat difokus, wangs-ui `f12585e9a`).
