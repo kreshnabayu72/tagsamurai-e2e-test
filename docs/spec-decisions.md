@@ -143,7 +143,7 @@ Aturan:
 - **Kenyataannya:** field teks membuang emoji saat diketik, saat blur, dan saat submit, sehingga validator dan server tidak pernah menerimanya.
 - **Karena:** konvensi PRD §4 dan TC-048 menetapkan emoji diblokir di level input. Spec yang meminta pesan error bertentangan dengan keduanya.
 - **Keputusan:** langkah dipenuhi bila emoji tidak masuk ke field dan nama yang tersimpan tidak mengandung emoji. Skrip memverifikasi isi field setelah mengetik emoji, bukan pesan error.
-- **Diterapkan di:** skrip 068.
+- **Diterapkan di:** skrip 068; skrip Division 024 (langkah 5-7: nama tanpa emoji valid, isi field diverifikasi, tanpa Save; 2026-11-02).
 
 ## D-017 Password kosong ditolak di browser sebelum cek lock (2026-10-29)
 
@@ -450,3 +450,48 @@ Aturan:
 - **Karena:** keputusan product owner (tagsamurai `plans/auth/decisions.md`, 2026-10-20): toast ditambahkan di atas PRD mfa V-11. Keputusan UI mengalahkan PRD (aturan owner 2026-10-31); dicatat koordinator (didelegasikan owner) 2026-11-01.
 - **Keputusan:** langkah 15 memverifikasi toast itu tampil (`// @spec-decision: D-050 …`).
 - **Diterapkan di:** skrip Mfa 029.
+
+## D-051 Chip yang meluap di field filter Changelog/Activity Log: chip pertama + `+N more` (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-POS-E2E-040` TC-GS-POS-214 langkah 38-40; `TC-GS-ACTLOG-E2E-031` TC-GS-ACTLOG-171 langkah 5.
+- **Spec meminta:** dua opsi dicentang, lalu kedua chip tampil di field yang tertutup (`Delete` dan `Create`; `Division` dan `Brand Name`).
+- **Kenyataannya:** field filter Changelog (sekitar 173 px) dan field Field di Activity Log pada jendela 1280px hanya memuat satu chip. Chip kedua masuk ke `+1 more`.
+- **Karena:** aturan Overflow Chip (`prd-conventions` §9.8 butir 4) dan D-005. Memperlebar jendela (D-033) hanya menguji lebar jendela, bukan aturan overflow; D-033 tetap khusus untuk nama literal di TC-GS-ACTLOG-82. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah memverifikasi chip pertama dan `+1 more`, serta kedua opsi tercentang di daftar opsi.
+- **Diterapkan di:** skrip Position 040, Activity Log 031.
+
+## D-052 Opsi Modified By di filter Changelog berlabel nama lengkap (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-UCF-E2E-063` TC-GS-UCF-264 langkah 12-13 dan 16-17.
+- **Spec meminta:** opsi filter Modified By di Changelog berlabel nama pendek (`Budi S`).
+- **Kenyataannya:** opsi berlabel nama lengkap (`Budi Santoso`), sesuai facet dari server.
+- **Karena:** PRD custom-field-user l.293 menetapkan `[First Name] [Last Initial]` hanya untuk kolom Changelog, tanpa aturan label opsi (aturan label opsi pendek l.264 milik tabel utama); kontrak analytics-reporting (`activity-log/API/openapi.yaml:1100-1103`) mengirim `modifiedByOptions` sebagai nama lengkap. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah memverifikasi opsi dan chip bernama lengkap (`Budi Santoso`, `Siti Rahmawati`, `Sari Dewi`); sel tabel tetap nama pendek.
+- **Diterapkan di:** skrip Custom Field User 063.
+
+## D-053 Urutan baris dengan Data Type sama tidak ditetapkan (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-UCF-E2E-054` TC-GS-UCF-222 langkah 13 dan 16.
+- **Spec meminta:** sort Data Type, lalu baris dengan Data Type sama berurut Field Name A-Z.
+- **Kenyataannya:** server mengurutkan dua baris Date sebagai Joining Date, lalu Birth Date.
+- **Karena:** PRD custom-field-user §4.1.1 (baris Data Type, l.260) hanya menetapkan `Alphabetical (A-Z)`; `prd-conventions` §9.7 menetapkan tiebreaker hanya untuk kolom `+N more`. Tidak ada aturan urutan kedua. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah memverifikasi pengelompokan menurut Data Type (urutan A-Z / Z-A antar kelompok), bukan urutan di dalam kelompok.
+- **Diterapkan di:** skrip Custom Field User 054.
+
+## D-054 Nilai kosong di Changelog tampil `—` (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-UCF-E2E-061` TC-GS-UCF-253 langkah 15-17.
+- **Spec meminta:** Old Value / New Value kosong tampil `-`.
+- **Kenyataannya:** komponen Changelog bersama menampilkan `—` untuk semua modul.
+- **Karena:** PRD file-manager l.276, non-login-user l.310/344, hardware-ble-gateway l.333 dan activity-log menetapkan `—`; hanya custom-field-user l.291 yang menulis `-`. Satu komponen Changelog dipakai semua modul, jadi tampilannya mengikuti mayoritas PRD. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah memverifikasi `—`.
+- **Diterapkan di:** skrip Custom Field User 061.
+
+## D-055 Nomor halaman di luar jangkauan dibawa ke halaman terakhir (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-UCF-E2E-055` langkah 19-20; `TC-GS-FILEMGR-E2E-036` (langkah input halaman `99`).
+- **Spec meminta:** mengetik `99` di input halaman lalu Enter membuat tabel tetap di halaman 1.
+- **Kenyataannya:** input halaman Paginator Wangs UI dibatasi ke jumlah halaman, sehingga `99` membawa tabel ke halaman terakhir, tanpa error.
+- **Karena:** `prd-conventions` §9.11 hanya menetapkan "input nomor halaman → Enter → ke halaman tersebut", tanpa aturan untuk nomor di luar jangkauan. Membawa ke halaman terakhir adalah pola umum (quick jumper) dan tidak pernah menampilkan halaman kosong. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah memverifikasi tabel di halaman terakhir dan tidak ada error; `abc` tetap di halaman yang sama.
+- **Diterapkan di:** skrip Custom Field User 055, File Manager 036.
