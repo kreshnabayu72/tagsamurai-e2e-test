@@ -441,3 +441,12 @@ Aturan:
 - **Karena:** keputusan koordinator (didelegasikan owner) 2026-11-01. Tujuan langkahnya adalah mengamati loading selama request berjalan dan alur sukses setelahnya; durasi yang tidak sampai timeout tetap memenuhi tujuan itu. Kasus timeout sendiri diuji terpisah (TC-AUTH-MFA-157, penahanan 20 detik).
 - **Keputusan:** respons ditahan 2 detik (`// @spec-decision: D-049 …`).
 - **Diterapkan di:** skrip AccountActivation 018 dan 028, LoginOtp 010 dan 013.
+
+## D-050 Toast sesi MFA berakhir tampil di halaman Login (2026-11-01)
+
+- **Spec / langkah:** `TC-AUTH-MFA-E2E-029` TC-AUTH-MFA-125 langkah 15.
+- **Spec meminta:** setelah dialihkan ke Login karena sesi pre-auth habis, tidak ada toast.
+- **Kenyataannya:** halaman Login menampilkan toast "Your MFA session has expired. Please log in again." satu kali setelah pengalihan itu.
+- **Karena:** keputusan product owner (tagsamurai `plans/auth/decisions.md`, 2026-10-20): toast ditambahkan di atas PRD mfa V-11. Keputusan UI mengalahkan PRD (aturan owner 2026-10-31); dicatat koordinator (didelegasikan owner) 2026-11-01.
+- **Keputusan:** langkah 15 memverifikasi toast itu tampil (`// @spec-decision: D-050 …`).
+- **Diterapkan di:** skrip Mfa 029.
