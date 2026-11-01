@@ -462,7 +462,7 @@ Aturan:
 
 ## D-052 Opsi Modified By di filter Changelog berlabel nama lengkap (2026-11-02)
 
-- **Spec / langkah:** `TC-GS-UCF-E2E-063` TC-GS-UCF-264 langkah 12-13 dan 16-17.
+- **Spec / langkah:** `TC-GS-UCF-E2E-063` TC-GS-UCF-264 langkah 12-13, 16-17, dan setiap langkah berikutnya yang memilih opsi atau membaca chip Modified By.
 - **Spec meminta:** opsi filter Modified By di Changelog berlabel nama pendek (`Budi S`).
 - **Kenyataannya:** opsi berlabel nama lengkap (`Budi Santoso`), sesuai facet dari server.
 - **Karena:** PRD custom-field-user l.293 menetapkan `[First Name] [Last Initial]` hanya untuk kolom Changelog, tanpa aturan label opsi (aturan label opsi pendek l.264 milik tabel utama); kontrak analytics-reporting (`activity-log/API/openapi.yaml:1100-1103`) mengirim `modifiedByOptions` sebagai nama lengkap. Keputusan koordinator (didelegasikan owner) 2026-11-02.
