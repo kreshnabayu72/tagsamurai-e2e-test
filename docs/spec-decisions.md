@@ -576,3 +576,12 @@ Aturan:
 - **Karena:** keputusan owner atas iam #97 (2026-11-02): rumus §5.1 dipertahankan dan `users.last_logout_at` tidak dipakai.
 - **Keputusan:** tiap user login sekali lalu logout di browser A saat seeding, lalu riwayat sesi tenant digeser dengan `ageTime` (`sessions`, `users`) sehingga logout web terakhir berumur 31, 30, dan 29 hari. Jam server tidak dibekukan dan `last_logout_at` tidak di-seed. Batas TC-AUTH-MFA-27 diuji pada umur 30 hari ditambah detik berjalannya run (tetap ≥30 hari), bukan tepat 30 hari 0 detik.
 - **Diterapkan di:** skrip MFA 021 (Prerequisites).
+
+## D-065 Baseline Changelog File Manager 062 dibaca sesudah setup, bukan nol (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-FILEMGR-E2E-062` Prerequisites "Baseline log" dan langkah 21–22 (Log Suspended), serta langkah Log Expired yang sama.
+- **Spec meminta:** baseline nol untuk file bersuffix `{runId}-062` di Changelog File Manager; langkah 22 memverifikasi tidak ada entri baru dengan empty state "No results found".
+- **Kenyataannya:** `legacy-photo-{runId}-062.jpeg` masuk Recycle Bin lewat Delete File Manager yang nyata (satu-satunya jalan ke Recycle Bin), dan Delete itu menulis satu baris Changelog `Delete` untuk file tersebut. Sesudah setup, pencarian `{runId}-062` sudah memuat satu baris, sehingga baseline nol tidak bisa terpenuhi. Ketiga aksi tulis saat Suspended tetap ditolak dan tidak menulis baris baru.
+- **Karena:** state disusun seperti terjadinya di produk (aturan owner); maksud langkah 22 adalah "tidak ada entri baru". Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** baseline adalah jumlah baris Changelog untuk pencarian `{runId}-062` yang dibaca sesudah setup (baris Delete dari setup sudah tercatat) dan sebelum aksi tulis saat Suspended. Langkah 22 memverifikasi jumlah baris sama dengan baseline (tidak ada entri baru dari aksi yang ditolak), bukan empty state.
+- **Diterapkan di:** skrip File Manager 062.
