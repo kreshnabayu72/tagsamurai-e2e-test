@@ -585,3 +585,12 @@ Aturan:
 - **Karena:** state disusun seperti terjadinya di produk (aturan owner); maksud langkah 22 adalah "tidak ada entri baru". Keputusan koordinator (didelegasikan owner) 2026-11-02.
 - **Keputusan:** baseline adalah jumlah baris Changelog untuk pencarian `{runId}-062` yang dibaca sesudah setup (baris Delete dari setup sudah tercatat) dan sebelum aksi tulis saat Suspended. Langkah 22 memverifikasi jumlah baris sama dengan baseline (tidak ada entri baru dari aksi yang ditolak), bukan empty state.
 - **Diterapkan di:** skrip File Manager 062.
+
+## D-066 FILEMGR 024 gambar tidak tersedia mengikuti aturan galeri in-page (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-FILEMGR-E2E-024`, TC-53, langkah 5–8.
+- **Spec meminta:** gambar yang tidak tersedia dibuka di tab baru, tanpa toast.
+- **Kenyataannya:** PRD file-manager, aturan preview in-page (l.399) dan V-11: gambar dibuka di galeri in-page, bukan tab baru.
+- **Karena:** keputusan koordinator (didelegasikan owner) 2026-11-02, dicatat sebagai G21 di tagsamurai-slicing `plans/_program/gs-triage/ui-items.md`.
+- **Keputusan:** perilaku galeri in-page berlaku untuk gambar yang tidak tersedia: galeri menutup, toast T-13 tampil, dan daftar di-refetch. Tidak ada tab baru.
+- **Diterapkan di:** skrip File Manager 024 (sudah meng-assert perilaku ini, commit e0e7272f di feat/connect-api-b).
