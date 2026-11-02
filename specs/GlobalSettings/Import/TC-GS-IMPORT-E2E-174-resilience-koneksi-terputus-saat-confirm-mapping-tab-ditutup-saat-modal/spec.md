@@ -18,7 +18,7 @@ coverage:
 
 ## Prerequisites
 
-- Mode: FE+BE (backend nyata) dengan `Spectra.intercept` parsial di atas backend nyata. Bukan `Mode: mock`: asersi mengandalkan state server nyata (draft tidak tercipta, total draft tetap 12 baris, total entri Changelog sama dengan pembacaan sebelum aksi), sehingga pengecualian resilience `Mode: mock` (keputusan 2026-10-29) tidak dipakai.
+- Mode: FE+BE (backend nyata) dengan `Spectra.intercept` parsial di atas backend nyata. Bukan `Mode: mock`: asersi mengandalkan state server nyata (draft tidak tercipta, total draft tetap 12 baris, total entri Changelog sama dengan pembacaan sebelum aksi), sehingga pengecualian resilience `Mode: mock` tidak dipakai.
 - Suite serial (`parallel: false`): draft Import dibagikan ke seluruh admin satu client dan Changelog Import Client E dibagikan lintas spec (seed D-60); lihat `suite.md`.
 - Akun (login aktor pertama di hook `before`; ganti akun eksplisit di tengah spec, hook `after` mengembalikan sesi ke akun default suite). Password tidak ditulis di spec atau fixture. Layar awal Global Settings > Import dibuka hook `beforeEach` untuk akun aktor pertama:
   - Total Control Client B (Bayu Santoso) `totalControl_automated_qaTeam2@qwertysystem.net` (Pre-setup), `Spectra.env.GS_CLIENTB_TC_PASSWORD`: aktor pertama (TC-539, 541).
@@ -39,7 +39,7 @@ coverage:
 ### TC-GS-IMPORT-539: Koneksi terputus saat Confirm Mapping tidak menyisakan draft atau baris
 
 1. Reset Client B ke tanpa draft Tab Brand (aksi fixture)
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Klik `[Upload File]`
 4. Pilih berkas `brand-12.csv`
 5. Pasang intercept jaringan yang memutus koneksi permintaan Confirm Mapping sebelum respons diterima
@@ -118,7 +118,7 @@ coverage:
 - Mode: FE+BE dengan intercept parsial. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fault injection (b) (koneksi terputus, tab ditutup, kegagalan unduh dan baca server); kegagalan dipaksa lewat `Spectra.intercept` dan menjadi objek uji, sehingga spec ini kelas ringan b tunggal untuk Confirm Mapping dan Changelog.
 - Alasan melewati sekitar 35 langkah (59 langkah nominal): lima blok homogen (kegagalan jaringan atau server pada alur impor atau Changelog), semua satu kelas dan berdiri sendiri dengan reset di awal tiap blok. Urutan blok dikelompokkan per akun (Client B, Client A, Client E) dengan langkah ganti akun eksplisit (langkah 25 dan 40) sehingga bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal.
 - Subjudul `###` dan `####` memetakan langkah ke id TC granular. TC-GS-IMPORT-541 (tanpa intercept) diletakkan di antara blok Client B sebelum ganti akun.
-- Langkah penghubung (tanpa `Verifikasi`): reset, seeding, dan pemulihan draft (langkah 1, 15, 26, 41), pembacaan N (langkah 42), pembukaan halaman dan Sub-Tab, melepas intercept (langkah 7, 33, 48, 55), menutup toast dan modal (langkah 51, 52), dan ganti akun (langkah 25 dan 40). Langkah 19 adalah `Verifikasi` tambahan di luar Expected TC-GS-IMPORT-541 yang membuktikan prasyarat TC (Modal Column Mapping terbuka sebelum tab ditutup). Langkah 12, 22 (Dropzone tampil) menjadi anchor positif sebelum asersi absence Unsaved Banner.
+- Langkah penghubung (tanpa `Verifikasi`): reset, seeding, dan pemulihan draft (langkah 1, 15, 26, 41), pembacaan N (langkah 42), muat ulang halaman Import > Brand (langkah 2), pembukaan halaman dan Sub-Tab, melepas intercept (langkah 7, 33, 48, 55), menutup toast dan modal (langkah 51, 52), dan ganti akun (langkah 25 dan 40). Langkah 19 adalah `Verifikasi` tambahan di luar Expected TC-GS-IMPORT-541 yang membuktikan prasyarat TC (Modal Column Mapping terbuka sebelum tab ditutup). Langkah 12, 22 (Dropzone tampil) menjadi anchor positif sebelum asersi absence Unsaved Banner.
 - Langkah 50 (tidak ada berkas terunduh) didahului langkah 49 (toast tampil) sebagai anchor positif yang terhubung ke pemicu.
 - Temuan untuk QA:
   - TC-GS-IMPORT-539 dan TC-GS-IMPORT-540 menulis `[Cancel]` pada Modal Column Mapping tanpa dialog Unsaved Changes; spec menganggap tidak ada dropdown yang diubah dari auto-match sehingga modal langsung tertutup (PRD §4.1 Dialog Unsaved Changes: 0 perubahan = langsung tertutup).

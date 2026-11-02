@@ -17,7 +17,7 @@ coverage:
 - Mode: FE+BE (backend nyata). Suite serial (`parallel: false`) karena spec mengubah capability role dan state kunci; lihat `suite.md`.
 - Dua sesi browser (konteks kedua menjadi objek asersi): sesi Import data (Create) Client C dan sesi Total Control Client C pada konteks browser terpisah.
   - Import data (Create) Client C (Kiki Amalia) `importCreate_automated_qaTeam3@qwertysystem.net`, `Spectra.env.GS_CLIENTC_IMPORTCREATE_PASSWORD`; login di hook `before`.
-  - Total Control Client C (Rudi Hartanto) `totalControl_automated_qaTeam3@qwertysystem.net`, `Spectra.env.GS_CLIENTC_TC_PASSWORD`; dibuka di sesi browser terpisah pada langkah 13.
+  - Total Control Client C (Rudi Hartanto) `totalControl_automated_qaTeam3@qwertysystem.net`, `Spectra.env.GS_CLIENTC_TC_PASSWORD`; dibuka di sesi browser terpisah pada langkah 11.
   - Password tidak ditulis di spec atau fixture. Hook `after` menutup sesi Total Control dan mengembalikan sesi ke akun default suite.
 - Data Dinamis (Client C): D-18 draft Brand 12 baris `pending` dari `brand-12.csv` (Row # 1 `Acme Corp`), disiapkan oleh langkah 1 lewat skrip fixture; pembaca status respons HTTP permintaan Save (pengamatan jaringan tanpa mock).
 - Kemampuan teknis yang disediakan tim FE/BE: fixture Role & Permission untuk mencabut capability Import data (Create) dari akun uji (capability Read tetap aktif) dan memulihkannya; fixture timestamp untuk mengatur kedaluwarsa kunci sesi edit akun uji ke waktu yang sudah lewat (batas persis lewat timestamp, bukan jam server).
@@ -38,30 +38,29 @@ coverage:
 8. [Sesi Import data (Create)] Klik `[Save]`
 9. [Sesi Import data (Create)] Verifikasi server menolak Save dengan 403 Forbidden
 10. [Sesi Import data (Create)] Verifikasi toast error: "You don't have permission to do this."
-11. [Sesi Import data (Create)] Muat ulang halaman Import
-12. [Sesi Import data (Create)] Verifikasi baris #1 tetap berisi `Acme Corp`
-13. Buka sesi browser terpisah sebagai Total Control Client C
-14. [Sesi Total Control] Buka menu Import dari sidebar
-15. [Sesi Total Control] Klik `[⋯]` pada baris #1
-16. [Sesi Total Control] Pilih Edit
-17. [Sesi Total Control] Verifikasi dialog Title "Draft Is Being Edited" dengan Body "Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved." dan tombol `[OK]`
-18. [Sesi Total Control] Klik `[OK]`
-19. [Sesi Total Control] Tunggu aksi selesai (dialog tertutup)
-20. Atur kedaluwarsa kunci sesi edit akun uji ke waktu yang sudah lewat lewat fixture timestamp
-21. [Sesi Total Control] Klik `[⋯]` pada baris #1
-22. [Sesi Total Control] Pilih Edit
-23. [Sesi Total Control] Verifikasi sesi edit Total Control dimulai: baris #1 menjadi input dan footer menampilkan `[Cancel]` dan `[Save]`
-24. [Sesi Total Control] Verifikasi tidak ada dialog konflik
-25. [Sesi Total Control] Klik `[Cancel]` pada footer
-26. [Sesi Total Control] Verifikasi sesi edit Total Control berakhir tanpa dialog
-27. [Sesi Total Control] Verifikasi footer menampilkan kembali `[Import (12)]`
+11. Buka sesi browser terpisah sebagai Total Control Client C
+12. [Sesi Total Control] Buka menu Import dari sidebar
+13. [Sesi Total Control] Verifikasi baris #1 tetap berisi `Acme Corp`
+14. [Sesi Total Control] Klik `[⋯]` pada baris #1
+15. [Sesi Total Control] Pilih Edit
+16. [Sesi Total Control] Verifikasi dialog Title "Draft Is Being Edited" dengan Body "Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved." dan tombol `[Cancel]` dan `[Take Over Session]`
+17. [Sesi Total Control] Klik `[Cancel]` pada dialog
+18. [Sesi Total Control] Tunggu aksi selesai (dialog tertutup)
+19. Atur kedaluwarsa kunci sesi edit akun uji ke waktu yang sudah lewat lewat fixture timestamp
+20. [Sesi Total Control] Klik `[⋯]` pada baris #1
+21. [Sesi Total Control] Pilih Edit
+22. [Sesi Total Control] Verifikasi sesi edit Total Control dimulai: baris #1 menjadi input dan footer menampilkan `[Cancel]` dan `[Save]`
+23. [Sesi Total Control] Verifikasi tidak ada dialog konflik
+24. [Sesi Total Control] Klik `[Cancel]` pada footer
+25. [Sesi Total Control] Verifikasi sesi edit Total Control berakhir tanpa dialog
+26. [Sesi Total Control] Verifikasi footer menampilkan kembali `[Import (12)]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (kelas d, prinsip 13d; objek uji fixture timestamp TTL 10 menit dan perubahan capability).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset dan seed draft D-18); langkah 2 dan 11 (muat ulang); langkah 7 dan 20 (fixture capability dan timestamp); langkah 13 (membuka sesi browser kedua); langkah 6 dan 19 (Tunggu aksi selesai: permintaan mendapat respons dan dialog tertutup, penanda yang tidak ada di TC dan tidak memuat hasil UI).
-- Langkah 24 (absence dialog konflik) memakai sesi edit yang dimulai pada langkah 23 sebagai anchor positif.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset dan seed draft D-18); langkah 2 (muat ulang); langkah 7 dan 19 (fixture capability dan timestamp); langkah 11 (membuka sesi browser kedua); langkah 6 dan 18 (Tunggu aksi selesai: permintaan mendapat respons dan dialog tertutup, penanda yang tidak ada di TC dan tidak memuat hasil UI).
+- Langkah 23 (absence dialog konflik) memakai sesi edit yang dimulai pada langkah 22 sebagai anchor positif.
 - Temuan untuk QA:
-  - TC-GS-IMPORT-607 memuat tiga topik dalam satu TC (izin dicabut di tengah sesi edit, dialog konflik Draft Is Being Edited, pelepasan kunci lewat TTL 10 menit); spec mempertahankan satu TC satu spec. Spec berkelas d (prinsip 13d) dan sesi Total Control kedua beraksi serta diasersi (langkah 13 sampai 27, kelas c); belum ada id pengecualian untuk konteks kedua yang beraksi di spec kelas d, sehingga spec tidak dipecah dan usulan aturan baru menunggu batch konvensi.
-  - Langkah 11 memuat ulang halaman saat sesi edit Import data (Create) masih berisi perubahan yang belum disimpan, tanpa `[Cancel]` dan `[Discard]`, karena melepas sesi edit akan melepas kunci yang dibutuhkan dialog "Draft Is Being Edited" pada langkah 17; perlakuan muat ulang pada sesi dirty belum diputuskan.
+  - TC-GS-IMPORT-607 memuat tiga topik dalam satu TC (izin dicabut di tengah sesi edit, dialog konflik Draft Is Being Edited, pelepasan kunci lewat TTL 10 menit); spec mempertahankan satu TC satu spec. Spec berkelas d (prinsip 13d) dan sesi Total Control kedua beraksi serta diasersi (langkah 11 sampai 26, kelas c); belum ada id pengecualian untuk konteks kedua yang beraksi di spec kelas d, sehingga spec tidak dipecah dan usulan aturan baru menunggu batch konvensi.
   - Status 403 pada langkah 9 diamati dari respons permintaan Save yang dikirim FE; TC tidak menyebut cara mengamati status itu selain Expected a.
+  - Expected TC-GS-IMPORT-607 menyebut tombol `[OK]` pada dialog "Draft Is Being Edited" (langkah 16 dan 17), sedangkan PRD baris 568 menetapkan tombol `[Cancel]` dan `[Take Over Session]`; spec mengikuti PRD dan mengklik `[Cancel]`, sehingga Expected TC-607 menyimpang dari PRD.

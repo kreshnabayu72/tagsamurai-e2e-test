@@ -27,7 +27,7 @@ coverage:
 ### TC-GS-IMPORT-533: Batas 10000 baris ditegakkan di server pada permintaan langsung
 
 1. Reset Client C lewat skrip fixture dan seed draft Brand D-16 (9995 baris `pending`)
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Kirim permintaan Confirm Mapping langsung ke server dengan token akun Total Control Client C dan berkas `brand-10.csv`
 4. Verifikasi server menolak permintaan dengan 422 all-or-nothing
 5. Muat ulang halaman Import > Brand
@@ -37,7 +37,7 @@ coverage:
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: volume data (e) (draft 9995 baris sebagai volume, di atas ambang 100 baris), dengan irisan defense-in-depth (a) karena permintaan langsung ke server; volume dominan sehingga tidak dipisah.
 - Spec singkat (6 langkah) sehingga tidak melewati sekitar 35 langkah.
-- Langkah penghubung (tanpa `Verifikasi`): seeding (langkah 1), pembukaan halaman dan Sub-Tab (langkah 2), dan muat ulang (langkah 5). Asersi pada request langsung hanya respons server dan state data (kartu Total Rows).
+- Langkah penghubung (tanpa `Verifikasi`): seeding (langkah 1), muat ulang halaman Import > Brand (langkah 2 dan 5). Asersi pada request langsung hanya respons server dan state data (kartu Total Rows).
 - Temuan untuk QA:
   - TC-GS-IMPORT-533 tidak menyebut isi payload permintaan Confirm Mapping langsung (pengenal berkas sementara dan mapping) selain berkas `brand-10.csv`; payload disediakan klien HTTP tim FE.
   - Post Condition TC-GS-IMPORT-533 "-" dan tidak ada keadaan yang perlu dipulihkan selain yang dikerjakan hook `after`.

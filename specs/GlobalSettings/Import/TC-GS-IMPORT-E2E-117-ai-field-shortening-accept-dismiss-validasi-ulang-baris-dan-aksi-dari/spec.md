@@ -97,7 +97,7 @@ coverage:
 43. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
 44. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
 45. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
-46. Verifikasi badge saran tampil pada sel Brand Name baris #1 (halaman tidak dimuat ulang sesudahnya)
+46. Verifikasi badge saran tampil pada sel Brand Name baris #1
 47. Admin kedua Client C (sesi API): ubah Brand Name baris #1 menjadi `Brand Revisi Satu` hingga tersimpan
 48. Verifikasi (fixture inspeksi data tersimpan) baris #1 berstatus `pending` dengan nilai `Brand Revisi Satu`
 49. Total Control Client C: klik `[Accept]` pada badge saran yang masih tampil
@@ -111,7 +111,7 @@ coverage:
 54. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
 55. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
 56. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
-57. Verifikasi badge saran tampil pada sel Brand Name baris #1 (halaman tidak dimuat ulang sesudahnya)
+57. Verifikasi badge saran tampil pada sel Brand Name baris #1
 58. Admin kedua Client C (sesi API): ubah Brand Name baris #1 menjadi `Brand Revisi Dua` hingga tersimpan
 59. Total Control Client C: klik `[Dismiss]` pada badge saran yang masih tampil
 60. Verifikasi tidak ada dialog
@@ -126,7 +126,7 @@ coverage:
 
 ### TC-GS-IMPORT-294: Accept pada baris dengan pelanggaran lain, baris tetap error
 
-69. Reset draft Client C Tab Brand lewat skrip reset, lalu buka Import > Division
+69. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Division
 70. Klik [Upload File] di toolbar dan pilih berkas `ai-division-long-code-eng.csv`
 71. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 72. Verifikasi baris #1 berstatus `error`
@@ -152,7 +152,7 @@ coverage:
 
 ### TC-GS-IMPORT-700: Dua badge AI pada baris yang sama dievaluasi terpisah per field
 
-89. Reset draft Client C Tab Division lewat skrip reset, lalu buka Import > User Login
+89. Reset draft Client C Tab Division lewat skrip reset, lalu muat ulang halaman Import > User Login
 90. Klik [Upload File] di toolbar dan pilih berkas `ai-ul-first-long-div-typo.csv`
 91. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 92. Verifikasi sel First Name menampilkan badge "AI suggestion: 'Muhammad Abdurrahman Nurrahman'?" disertai `[Accept]` dan `[Dismiss]`
@@ -171,10 +171,10 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`, TC-GS-IMPORT-293 sampai 296, 302, 700, 851, 852.
-- Urutan TC sumber diubah: Brand (293, 295, 296, 851, 852) lebih dulu, lalu Division (294, 302), lalu User Login (700), supaya perpindahan Tab minimal dan reset draft tiap Tab dilakukan seperlunya (S-10); tidak ada TC yang menghapus data milik TC lain.
+- Urutan TC sumber: Brand (293, 295, 296, 851, 852) lebih dulu, lalu Division (294, 302), lalu User Login (700), supaya perpindahan Tab minimal dan reset draft tiap Tab dilakukan seperlunya (S-10); tidak ada TC yang menghapus data milik TC lain.
 - Spec berisi 103 langkah, jauh di atas sekitar 35 langkah. Alasan: delapan TC, tiap TC berdiri sendiri dengan draft barunya, seluruhnya satu kelas (AI Field Shortening, mock normal); kegagalan satu TC tidak membuat TC lain kehilangan makna.
-- P-2 (pemicu bukan objek uji): Admin kedua Client C pada langkah 47 dan 58 hanya mengubah nilai sel lewat sesi API; hasilnya diasersi di sesi Total Control Client C.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 3 dan 17 (menunggu toast lama hilang), 14, 27, 43, 54, 69, 80, 89 (reset draft; pada 14, 27, 43, 54, 80 disertai muat ulang halaman Import pada Tab yang sama, pada 69 dan 89 disertai pindah Tab), 22 dan 62 (muat ulang), 38 dan 39 (Cancel lalu Discard sesuai Langkah Uji TC 296), 47 dan 58 (pemicu Admin kedua). Langkah 5 dan 19 (`Verifikasi` tidak ada toast) ditulis tepat sesudah pemicu `[Accept]` dan `[Dismiss]`, sebelum `Verifikasi` artefak (8b butir 11). Langkah 23 dan 63 adalah anchor positif halaman termuat sebelum asersi absence badge (8b butir 2).
+- P-2 (pemicu bukan objek uji): Admin kedua Client C pada langkah 47 dan 58 hanya mengubah nilai sel lewat sesi API; hasilnya diasersi di sesi Total Control Client C. Halaman Total Control Client C tidak dimuat ulang sesudah langkah 46 dan 57, sehingga langkah 49 dan 59 beraksi dari halaman basi.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 3 dan 17 (menunggu toast lama hilang), 14, 27, 43, 54, 69, 80, 89 (reset draft; pada 14, 27, 43, 54, 80 disertai muat ulang halaman Import pada Tab yang sama, pada 69 dan 89 disertai muat ulang halaman Import pada Tab tujuan), 22 dan 62 (muat ulang), 38 dan 39 (Cancel lalu Discard sesuai Langkah Uji TC 296), 47 dan 58 (pemicu Admin kedua). Langkah 5 dan 19 (`Verifikasi` tidak ada toast) ditulis tepat sesudah pemicu `[Accept]` dan `[Dismiss]`, sebelum `Verifikasi` artefak (8b butir 11). Langkah 23 dan 63 adalah anchor positif halaman termuat sebelum asersi absence badge (8b butir 2).
 - Pembagian TC lintas spec: TC-GS-IMPORT-286 sampai 292 dan 697 (badge tampil) ada di spec 115; kasus tanpa badge ada di spec 116; Accept dan Dismiss Reference Suggestion ada di spec 119; Read Only di spec 131; commit tanpa saran AI di spec 137.
 - Temuan untuk QA:
   - TC-GS-IMPORT-851 dan 852: Langkah Uji "ubah Brand Name baris #1 ... dan simpan" lewat fixture permintaan tanpa menyebut mekanisme; spec memakai sesi API Admin kedua dan fixture inspeksi data tersimpan yang disediakan tim FE/BE (S-11, S-13).

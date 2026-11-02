@@ -17,7 +17,7 @@ coverage:
 - Mode: FE+BE (backend nyata). Suite serial (`parallel: false`); lihat `suite.md`.
 - Akun: Total Control Client A (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net`, `Spectra.env.GS_TC_PASSWORD`; login di hook `before`; hook `after` mengembalikan sesi ke akun default suite. Password tidak ditulis di spec atau fixture.
 - Data Dinamis (Client A, dipulihkan oleh langkah 1 di awal tiap varian lewat skrip fixture): D-09 draft Brand 13 baris (D-01 ditambah baris #13 `error` Brand Name 121 karakter) dengan D-76 varian 1 (`created_at` dimundurkan 25 jam lewat fixture timestamp, bukan jam server, sehingga log tidak bercap waktu masa depan; Unsaved Banner tampil).
-- Tabel varian aksi (aksi varian dilakukan pada langkah 9; langkah 1 sampai 16 diulang untuk tiap varian):
+- Tabel varian aksi (aksi varian dilakukan pada langkah 9; langkah 1 sampai 17 diulang untuk tiap varian):
 
 | Varian | Aksi |
 |---|---|
@@ -35,9 +35,9 @@ coverage:
 
 ## Test Steps
 
-Untuk setiap varian pada tabel varian aksi (langkah 1 sampai 16):
+Untuk setiap varian pada tabel varian aksi (langkah 1 sampai 17):
 
-1. Pulihkan draft Client A ke D-09 dengan D-76 varian 1 lewat skrip fixture; muat ulang halaman Import > Brand
+1. Pulihkan draft Client A ke D-09 dengan D-76 varian 1 lewat skrip fixture; buka halaman Import > Brand lewat sidebar, lalu muat ulang halaman Import > Brand
 2. Buka Changelog Import lewat `[Changelog]` di header
 3. Catat angka total pada teks Pagination Changelog Import (baseline Changelog)
 4. Tutup modal Changelog
@@ -47,20 +47,21 @@ Untuk setiap varian pada tabel varian aksi (langkah 1 sampai 16):
 8. Catat angka total pada teks Pagination Activity Log (baseline Activity Log)
 9. Buka kembali Import > Brand dan lakukan aksi varian pada tabel varian sampai toast tampil
 10. Buka kembali Changelog Import lewat `[Changelog]` di header
-11. Verifikasi total pada Pagination Changelog Import sama dengan baseline Changelog pada langkah 3
-12. Tutup modal Changelog
-13. Buka kembali System Log pada halaman Detail User pelaku (Sari Dewi)
-14. Verifikasi total pada Pagination System Log Detail User pelaku sama dengan baseline System Log pada langkah 6
-15. Buka kembali Activity Log (Global Settings > Activity Log) pada tab User Action
-16. Verifikasi total pada Pagination Activity Log tab User Action sama dengan baseline Activity Log pada langkah 8
+11. Verifikasi modal Changelog Import terbuka
+12. Verifikasi total pada Pagination Changelog Import sama dengan baseline Changelog pada langkah 3
+13. Tutup modal Changelog
+14. Buka kembali System Log pada halaman Detail User pelaku (Sari Dewi)
+15. Verifikasi total pada Pagination System Log Detail User pelaku sama dengan baseline System Log pada langkah 6
+16. Buka kembali Activity Log (Global Settings > Activity Log) pada tab User Action
+17. Verifikasi total pada Pagination Activity Log tab User Action sama dengan baseline Activity Log pada langkah 8
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: asersi absence (kelas g, prinsip 13g); objek uji ialah tidak adanya entri log untuk aksi Staging Table dengan baseline jumlah di tiga surface (S-12). Aksi dilakukan di spec ini (bukan hanya dirujuk).
-- Langkah 1 sampai 16 diulang tujuh kali (ekspansi 16 × 7 = 112 langkah), di atas smell 35 langkah. Alasan: langkah identik antar-varian dengan parameter aksi pada tabel varian, tiap varian berdiri sendiri dengan baseline dan draft D-09 sendiri, dan blok baca-log berpola (buka surface, baca total) tidak dihitung sebagai smell. Draft dipulihkan ke D-09 pada langkah 1 tiap varian.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (pemulihan draft D-09 dan muat ulang halaman), langkah 2 sampai 10, 12, 13, 15 (membuka surface dan mencatat baseline). Skrip fixture langkah 1 sinkron (`suite.md`).
-- Anchor asersi absence: pembacaan baseline pada langkah 3, 6, dan 8 sebelum aksi pertama; toast aksi pada langkah 9 membuktikan aksi selesai sebelum total dibaca ulang.
+- Langkah 1 sampai 17 diulang tujuh kali (ekspansi 17 × 7 = 119 langkah), di atas smell 35 langkah. Alasan: langkah identik antar-varian dengan parameter aksi pada tabel varian, tiap varian berdiri sendiri dengan baseline dan draft D-09 sendiri, dan blok baca-log berpola (buka surface, baca total) tidak dihitung sebagai smell. Draft dipulihkan ke D-09 pada langkah 1 tiap varian.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (pemulihan draft D-09, membuka halaman Import > Brand dari halaman mana pun posisinya, dan muat ulang halaman), langkah 2 sampai 10, 13, 14, 16 (membuka surface dan mencatat baseline). Skrip fixture langkah 1 sinkron (`suite.md`).
+- Anchor asersi absence: pembacaan baseline pada langkah 3, 6, dan 8 sebelum aksi pertama; Verifikasi judul modal Changelog Import pada langkah 11 menjadi anchor pembacaan ulang Changelog; toast aksi pada langkah 9 membuktikan aksi selesai sebelum total dibaca ulang.
 - Pembagian TC lintas spec: TC-GS-IMPORT-669 hanya memuat aksi pra-commit; pencatatan log commit dan aksi lain ada di spec Changelog dan log lain pada suite ini.
 - Temuan untuk QA:
-  - TC-GS-IMPORT-669 mencampur tujuh varian aksi dalam satu TC dengan langkah baseline yang sama; spec mengulang langkah 1 sampai 16 per varian.
+  - TC-GS-IMPORT-669 mencampur tujuh varian aksi dalam satu TC dengan langkah baseline yang sama; spec mengulang langkah 1 sampai 17 per varian.
   - Surface ketiga (Activity Log tab User Action) dan System Log Detail User pelaku tidak menyebut filter Date; spec membaca total tanpa filter dan membandingkan terhadap baseline.

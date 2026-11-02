@@ -27,7 +27,7 @@ coverage:
 | Sesi | Role | Nama user | Email | Env var password |
 |---|---|---|---|---|
 | A | Total Control (Client A) | Sari Dewi | `totalControl_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_TC_PASSWORD` |
-| P | Principal (Admin Console) | Bambang Hartono | `principal_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_PRINCIPAL_TC_PASSWORD` |
+| P | Principal (Admin Console) | Bambang Hartono | `totalControlPrincipal_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_PRINCIPAL_TC_PASSWORD` |
 | C | Total Control (Client C) | - (tidak tertulis di Pre-setup TC) | `totalControl_automated_qaTeam3@qwertysystem.net` | `Spectra.env.GS_CLIENTC_TC_PASSWORD` |
 
 - Password tidak ditulis di spec atau fixture.

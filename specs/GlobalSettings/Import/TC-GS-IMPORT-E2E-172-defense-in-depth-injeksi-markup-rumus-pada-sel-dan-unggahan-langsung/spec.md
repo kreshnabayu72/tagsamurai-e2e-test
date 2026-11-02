@@ -42,7 +42,7 @@ coverage:
 ### TC-GS-IMPORT-547: Upload File langsung dua kali menghasilkan dua pengenal berkas sementara berbeda tanpa draft
 
 1. Reset Client B ke tanpa draft Tab Brand (aksi fixture)
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Kirim permintaan Upload File langsung ke server dengan token akun Total Control Client B dan berkas `brand-12.csv`
 4. Verifikasi permintaan Upload File pertama sukses
 5. Kirim permintaan Upload File yang sama sekali lagi
@@ -111,7 +111,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: defense-in-depth (a); objek uji adalah penolakan server atas unggahan langsung dan perenderan aman isi sel. Tanpa harness eksternal.
 - Alasan melewati sekitar 35 langkah (52 langkah nominal): lima blok homogen satu kelas dan berdiri sendiri dengan reset Client B atau Client C di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Bagian sesudah ganti akun (langkah 28, Client C) tetap bermakna walau bagian sebelumnya gagal. Blok TC-547 diletakkan lebih dulu karena tidak menciptakan draft; blok TC-536 dan TC-537 menciptakan draft sehingga masing-masing mereset Client B.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok mengikuti kebutuhan akun, bukan nomor TC.
-- Langkah penghubung (tanpa `Verifikasi`): reset (langkah 1, 11, 21, 29, 38), pembukaan halaman dan Sub-Tab, muat ulang halaman (langkah 12, 22), dan ganti akun (langkah 28). Asersi absence Unsaved Banner dan draft (langkah 10, 37, 49, 52) didahului Verifikasi Dropzone tampil sebagai anchor positif pada halaman yang sama; langkah 16 (tidak ada alert) didahului langkah 15 (Staging Table tampil) dan diasersi segera setelah perenderan (butir 5 bagian 8b).
+- Langkah penghubung (tanpa `Verifikasi`): reset (langkah 1, 11, 21, 29, 38), pembukaan halaman dan Sub-Tab, muat ulang halaman (langkah 2, 12, 22), dan ganti akun (langkah 28). Asersi absence Unsaved Banner dan draft (langkah 10, 37, 49, 52) didahului Verifikasi Dropzone tampil sebagai anchor positif pada halaman yang sama; langkah 16 (tidak ada alert) didahului langkah 15 (Staging Table tampil) dan diasersi segera setelah perenderan (butir 5 bagian 8b).
 - Pembagian TC lintas spec: penyaringan berkas lewat UI ada di spec 021 (kelas fungsional); spec ini memuat penolakan lewat unggahan langsung ke server.
 - Temuan untuk QA:
   - TC-GS-IMPORT-577 menyebut berkas `brand-1mb-plus1-direct.csv` 87380 baris dengan baris terakhir `XXXXX` agar tepat 1.048.577 byte; spec mengandalkan generator berkas besar tim FE. Nama TC menyebut "melanggar penyaringan berkas" tanpa membedakan batas ukuran dan format; spec mengasersi 422 tiap permintaan tanpa copy UI.

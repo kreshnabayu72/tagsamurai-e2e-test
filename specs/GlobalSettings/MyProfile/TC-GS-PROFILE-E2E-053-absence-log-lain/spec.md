@@ -22,9 +22,9 @@ coverage:
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Hook `beforeEach` suite mengonfirmasi `beforeunload` dan menutup dialog `Unsaved Changes` sebagai jaring pengaman (S-09), bukan pengganti langkah pemulihan form. Lihat `suite.md`, Hook suite 5.
 - Counter Change Password dan Login akun Pre-setup #7 dan #18 direset ke 0 di hook `beforeEach` suite; spec yang menguji counter mengaturnya sesudah hook; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 6.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
-- Akun aktor pertama spec: Pre-setup #8 (Citra Lestari, Activated, Email `citralestari@qwertysystem.net`) `pendingEmailProfile_automated_{namaCompany}@qwertysystem.net`, login di hook `before` spec ini dengan `Spectra.env.GS_PROFILE_PENDING_PASSWORD`. Ganti akun ke Pre-setup #7 (Maya Anggraini, password aktif `Passw0rd!Old`, counter 0) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_PWD_PASSWORD`; lalu Pre-setup #5 (Sinta Maharani, App Access Global Settings dan Fixed Asset) `multiAccessProfile_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_MULTI_PASSWORD`. Pembaca log: admin Pre-setup #6 (Hendra Wijaya) `adminActor_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_ADMIN_PASSWORD`, login lewat UI pada langkah ganti akun.
-- Env var: `GS_PROFILE_PENDING_PASSWORD`, `GS_PROFILE_PWD_PASSWORD`, `PROFILE_PASSWORD_NEW` (Data Dinamis #3, `N3wPassw0rd!`), `GS_PROFILE_MULTI_PASSWORD`, `GS_PROFILE_ADMIN_PASSWORD`.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Akun aktor pertama spec: Pre-setup #8 (Citra Lestari, Activated, Email `citralestari@qwertysystem.net`) `pendingEmailProfile_automated_{namaCompany}@qwertysystem.net`, login di hook `before` spec ini dengan `Spectra.env.GS_PROFILE_PENDING_PASSWORD`. Ganti akun ke Pre-setup #7 (Maya Anggraini, password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`, counter 0) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_PWD_PASSWORD`; lalu Pre-setup #5 (Sinta Maharani, App Access Global Settings dan Fixed Asset) `multiAccessProfile_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_MULTI_PASSWORD`. Pembaca log: admin Pre-setup #6 (Hendra Wijaya) `adminActor_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_ADMIN_PASSWORD`, login lewat UI pada langkah ganti akun.
+- Env var: `GS_PROFILE_PENDING_PASSWORD`, `GS_PROFILE_PWD_PASSWORD`, `PROFILE_PASSWORD_NEW` (Data Dinamis #3), `GS_PROFILE_MULTI_PASSWORD`, `GS_PROFILE_ADMIN_PASSWORD`.
 - Data Dinamis #2: permintaan Email change live dari Citra Lestari ke `citra.baru@qwertysystem.net`, dibuat lewat fixture BE di hook `before` (disediakan tim FE/BE) dan dibatalkan di hook `after`.
 - Kemampuan teknis: muat ulang halaman; membaca jumlah baris Tab Changelog, Tab System Log, Tab User Log Detail User dan Activity Log sebelum dan sesudah aksi (baseline, S-12; disediakan tim FE/BE); fixture BE mengunci Change Password Maya Anggraini pada tier 15 menit (disediakan tim FE/BE) untuk TC-GS-PROFILE-236, dipulihkan oleh langkah 24 dan hook `after`; Product Selector.
 - Pemulihan (R-08): langkah 24 memulihkan lock dan counter Change Password Maya Anggraini ke 0 lewat fixture BE; password Maya Anggraini tidak berubah karena semua submit ditolak.
@@ -46,16 +46,16 @@ coverage:
 7. Buka My Profile dari account menu navbar
 8. Catat baseline lewat kemampuan baca: jumlah baris Activity `Change Password` pada Tab User Log Detail Maya Anggraini
 9. Klik `[Change Password]`
-10. Isi New Password `N3wPassw0rd!` dan Confirm New Password `N3wPassw0rd!` dengan Current Password dikosongkan
+10. Isi New Password `Spectra.env.PROFILE_PASSWORD_NEW` dan Confirm New Password `Spectra.env.PROFILE_PASSWORD_NEW` dengan Current Password dikosongkan
 11. Upaya submit: klik `[Save]` (Current kosong)
-12. Isi Current Password `Passw0rd!Old` dan ganti isi Confirm New Password dengan `Different1!`
+12. Isi Current Password `Spectra.env.GS_PROFILE_PWD_PASSWORD` dan ganti isi Confirm New Password dengan `Different1!`
 13. Upaya submit: klik `[Save]` (Confirm tidak sama)
 14. Ganti isi New Password dan Confirm New Password dengan `abc`
 15. Upaya submit: klik `[Save]` (Policy gagal)
-16. Ganti isi New Password dan Confirm New Password dengan `Passw0rd!Old`
+16. Ganti isi New Password dan Confirm New Password dengan `Spectra.env.GS_PROFILE_PWD_PASSWORD`
 17. Upaya submit: klik `[Save]` (New sama dengan password lama)
 18. Kunci Change Password Maya Anggraini pada tier 15 menit lewat fixture BE
-19. Ganti isi New Password dan Confirm New Password dengan `N3wPassw0rd!`
+19. Ganti isi New Password dan Confirm New Password dengan `Spectra.env.PROFILE_PASSWORD_NEW`
 20. Upaya submit: klik `[Save]` (saat terkunci)
 21. Klik `✕`
 22. Verifikasi dialog `Unsaved Changes` tampil
@@ -108,7 +108,7 @@ coverage:
 - Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 7, 27 (membuka My Profile setelah login), 21 sampai 23 (menutup modal dirty lewat `✕`, dialog `Unsaved Changes`, `[Leave]`, S-08), 24 (pemulihan lock), 31 (tunggu aksi selesai sebelum ganti akun).
 - Asersi tambahan di luar Expected TC (S-03): langkah 2 dan 4 serta 30 adalah pembanding (anchor) pemicu; langkah 35, 38, 41, 44, 47, 50, dan 53 adalah pembanding surface (8b butir 2).
 - Temuan untuk QA:
-  - TC-GS-PROFILE-236 tidak menyebut nilai Current, New, dan Confirm untuk kasus selain yang disebut; spec memakai Current `Passw0rd!Old`, New dan Confirm `N3wPassw0rd!` kecuali dinyatakan lain pada tiap kasus.
+  - TC-GS-PROFILE-236 tidak menyebut nilai Current, New, dan Confirm untuk kasus selain yang disebut; spec memakai Current `Spectra.env.GS_PROFILE_PWD_PASSWORD`, New dan Confirm `Spectra.env.PROFILE_PASSWORD_NEW` kecuali dinyatakan lain pada tiap kasus.
   - TC-GS-PROFILE-236 tidak menyatakan apakah `[Save]` Disabled pada kasus field kosong, Confirm tidak sama, dan Policy gagal; spec menulis "Upaya submit" dan penanganan tombol Disabled ditentukan di tahap script.
   - TC-GS-PROFILE-236 butir "Policy gagal" hanya menyebut New `abc` tanpa nilai Confirm; spec memakai Confirm `abc`.
   - TC-GS-PROFILE-237 menyebut Detail Sinta Maharani tanpa Expected untuk perubahan Product Selector sendiri; spec memakai tampilan opsi `Fixed Asset` terpilih sebagai pembanding pemicu.

@@ -151,7 +151,7 @@ coverage:
 106. Buka Global Settings > Activity Log > tab User Action, terapkan Filter Action `Edit` dan Search Name `Shift`, baca angka total pada teks Pagination, dan perhatikan entri teratas
 107. Verifikasi angka total Pagination Activity Log tab User Action terfilter bertambah tepat 1 dari catatan langkah 93
 108. Verifikasi entri teratas Activity Log memuat Action `Edit`, Object `Custom Field`, Name `Shift`, Old Value `Pagi, Siang, Malam`, New Value `Pagi, Siang, Malam, Lembur, Piket`, dan Modified By `Rudi H`
-109. Verifikasi pertambahan tepat 1 pada ketiga surface (langkah 100, 104, dan 107) sehingga tidak ada entri baru dengan Action `Create (Import)` maupun `Import User Login`
+109. Verifikasi pertambahan tepat 1 pada ketiga surface (langkah 100, 104, dan 107)
 
 ## Notes
 

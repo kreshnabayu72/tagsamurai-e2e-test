@@ -42,132 +42,139 @@ coverage:
 5. Verifikasi Footer menampilkan `[Import (2)]`
 6. Ubah Division Name `Gudang` menjadi `Gudang Pusat` lewat sesi API Total Control Client E hingga tersimpan (pemicu, bukan tab UI kedua)
 7. Kembali ke tab Import tanpa memuat ulang halaman, klik [Import (2)]
-8. Muat ulang halaman Import berkala sampai Footer menampilkan `[Import (0)]` Disabled dengan tooltip "No rows are ready to import."
-9. Verifikasi Staging Table berisi 1 baris berstatus `error` dengan Division `Gudang`
-10. Verifikasi Staging Metric Cards Total Rows 1
-11. Verifikasi Staging Metric Cards Errors 1
-12. Verifikasi sel Division pada baris tersebut menampilkan pesan "Division 'Gudang' was not found. Check spelling, or create the missing division from this row."
-13. Verifikasi sel Division pada baris tersebut menampilkan badge inline "Did you mean 'Gudang Pusat'?"
-14. Verifikasi badge disertai `[Accept]` dan `[Dismiss]`
-15. Hapus User Login `citra.wulandari@example.com`, kembalikan nama Division `Gudang Pusat` menjadi `Gudang`, dan hapus draft User Login Client E lewat fixture pembersihan (D-47)
+8. Tunggu aksi selesai (permintaan mendapat respons)
+9. Muat ulang halaman Import berkala sampai Footer menampilkan `[Import (0)]` Disabled dengan tooltip "No rows are ready to import."
+10. Verifikasi Staging Table berisi 1 baris berstatus `error` dengan Division `Gudang`
+11. Verifikasi Staging Metric Cards Total Rows 1
+12. Verifikasi Staging Metric Cards Errors 1
+13. Verifikasi sel Division pada baris tersebut menampilkan pesan "Division 'Gudang' was not found. Check spelling, or create the missing division from this row."
+14. Verifikasi sel Division pada baris tersebut menampilkan badge inline "Did you mean 'Gudang Pusat'?"
+15. Verifikasi badge disertai `[Accept]` dan `[Dismiss]`
+16. Hapus User Login `citra.wulandari@example.com`, kembalikan nama Division `Gudang Pusat` menjadi `Gudang`, dan hapus draft User Login Client E lewat fixture pembersihan (D-47)
 
 ### TC-GS-IMPORT-388: Division dihapus setelah staging, baris User gagal uji ulang FK saat commit tanpa memblokir baris lain
 
-16. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris D-54 (user-login-commit-8.csv, Division `Gudang` pada baris #5, #6, dan #7) lewat fixture; Division `Gudang` tidak dipakai user maupun Position manapun
-17. Muat ulang halaman Import > User Login dan tunggu Staging Table termuat
-18. Verifikasi footer menampilkan `[Import (8)]` Enabled
-19. Hapus Division `Gudang` Client E lewat sesi API Admin kedua Client E hingga tersimpan
-20. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
-21. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-22. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 3 errors remain." tampil
-23. Verifikasi Staging Table menampilkan 3 baris berstatus `error`: Fajar Hidayat, Gita Savitri, Hendra Gunawan (Division `Gudang`)
-24. Verifikasi Error Summary Callout memuat "Division not found"
-25. Verifikasi Error Summary Callout menampilkan badge "3 rows"
-26. Verifikasi Error Summary Callout menampilkan `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Divisions]`
-27. Buka halaman User > User List > Login User
-28. Atur Rows per page 100
-29. Verifikasi halaman User > User List > Login User Client E memuat 5 user baru: Rizky Pratama, Sinta Maharani, Doni Kurniawan, Eka Putri, Indah Permata
-30. Verifikasi user Fajar Hidayat, Gita Savitri, Hendra Gunawan tidak ada
+17. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris D-54 (user-login-commit-8.csv, Division `Gudang` pada baris #5, #6, dan #7) lewat fixture; Division `Gudang` tidak dipakai user maupun Position manapun
+18. Muat ulang halaman Import > User Login dan tunggu Staging Table termuat
+19. Verifikasi footer menampilkan `[Import (8)]` Enabled
+20. Hapus Division `Gudang` Client E lewat sesi API Admin kedua Client E hingga tersimpan
+21. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
+22. Tunggu aksi selesai (permintaan mendapat respons)
+23. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+24. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 3 errors remain." tampil
+25. Verifikasi Staging Table menampilkan 3 baris berstatus `error`: Fajar Hidayat, Gita Savitri, Hendra Gunawan (Division `Gudang`)
+26. Verifikasi Error Summary Callout memuat "Division not found"
+27. Verifikasi Error Summary Callout menampilkan badge "3 rows"
+28. Verifikasi Error Summary Callout menampilkan `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Divisions]`
+29. Buka halaman User > User List > Login User
+30. Atur Rows per page 100
+31. Verifikasi halaman User > User List > Login User Client E memuat 5 user baru: Rizky Pratama, Sinta Maharani, Doni Kurniawan, Eka Putri, Indah Permata
+32. Verifikasi user Fajar Hidayat, Gita Savitri, Hendra Gunawan tidak ada
 
 ### TC-GS-IMPORT-389: Position di-rename setelah staging, baris menjadi error saat commit
 
-31. Reset Client E ke tanpa draft dan pulihkan master data (D-47), siapkan draft User Login 8 baris D-54 (Position `Finance Manager` pada baris #3) lewat fixture
-32. Buka Import > User Login dan tunggu Staging Table termuat
-33. Verifikasi footer menampilkan `[Import (8)]` Enabled
-34. Ubah nama Position `Finance Manager` menjadi `Finance Head` lewat sesi API Admin kedua Client E hingga tersimpan
-35. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
-36. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-37. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
-38. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Doni Kurniawan (Position `Finance Manager`)
-39. Verifikasi Error Summary Callout memuat "Position not found"
-40. Verifikasi Error Summary Callout menampilkan badge "1 row"
-41. Verifikasi Error Summary Callout menampilkan `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Positions]`
-42. Buka halaman User > User List > Login User
-43. Atur Rows per page 100
-44. Verifikasi halaman User > User List > Login User Client E memuat 7 user baru
-45. Verifikasi user Doni Kurniawan tidak ada
+33. Reset Client E ke tanpa draft dan pulihkan master data (D-47), siapkan draft User Login 8 baris D-54 (Position `Finance Manager` pada baris #3) lewat fixture
+34. Buka Import > User Login dan tunggu Staging Table termuat
+35. Verifikasi footer menampilkan `[Import (8)]` Enabled
+36. Ubah nama Position `Finance Manager` menjadi `Finance Head` lewat sesi API Admin kedua Client E hingga tersimpan
+37. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
+38. Tunggu aksi selesai (permintaan mendapat respons)
+39. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+40. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
+41. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Doni Kurniawan (Position `Finance Manager`)
+42. Verifikasi Error Summary Callout memuat "Position not found"
+43. Verifikasi Error Summary Callout menampilkan badge "1 row"
+44. Verifikasi Error Summary Callout menampilkan `[View Data]`, `[Delete All Rows]`, dan `[Create Missing Positions]`
+45. Buka halaman User > User List > Login User
+46. Atur Rows per page 100
+47. Verifikasi halaman User > User List > Login User Client E memuat 7 user baru
+48. Verifikasi user Doni Kurniawan tidak ada
 
 ### TC-GS-IMPORT-390: Represented By dinonaktifkan setelah staging, baris User Non Login error saat commit
 
-46. Reset Client E ke tanpa draft dan pulihkan master data (D-47), siapkan draft User Non Login 5 baris D-55 (Represented By `rina.admin.e@example.com` pada baris #1 dan #4) lewat fixture
-47. Buka Import > User Non Login dan tunggu Staging Table termuat
-48. Verifikasi footer menampilkan `[Import (5)]` Enabled
-49. Nonaktifkan Login User `rina.admin.e@example.com` lewat sesi API Admin kedua Client E hingga tersimpan
-50. Pada halaman yang sama (tanpa memuat ulang) klik [Import (5)]
-51. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-52. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 2 errors remain." tampil
-53. Verifikasi Staging Table menampilkan 2 baris berstatus `error`: Joko Santoso dan Maya Sari (Represented By `rina.admin.e@example.com`)
-54. Verifikasi Error Summary Callout memuat "Represented by must be an active User Login account"
-55. Verifikasi Error Summary Callout menampilkan badge "2 rows"
-56. Buka halaman User > User List > Non-Login User
-57. Verifikasi halaman User > User List > Non-Login User Client E memuat 3 user baru: Kartika Dewi, Lukman Hakim, Nanda Wijaya
-58. Verifikasi user Joko Santoso dan Maya Sari tidak ada
+49. Reset Client E ke tanpa draft dan pulihkan master data (D-47), siapkan draft User Non Login 5 baris D-55 (Represented By `rina.admin.e@example.com` pada baris #1 dan #4) lewat fixture
+50. Buka Import > User Non Login dan tunggu Staging Table termuat
+51. Verifikasi footer menampilkan `[Import (5)]` Enabled
+52. Nonaktifkan Login User `rina.admin.e@example.com` lewat sesi API Admin kedua Client E hingga tersimpan
+53. Pada halaman yang sama (tanpa memuat ulang) klik [Import (5)]
+54. Tunggu aksi selesai (permintaan mendapat respons)
+55. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+56. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 2 errors remain." tampil
+57. Verifikasi Staging Table menampilkan 2 baris berstatus `error`: Joko Santoso dan Maya Sari (Represented By `rina.admin.e@example.com`)
+58. Verifikasi Error Summary Callout memuat "Represented by must be an active User Login account"
+59. Verifikasi Error Summary Callout menampilkan badge "2 rows"
+60. Buka halaman User > User List > Non-Login User
+61. Verifikasi halaman User > User List > Non-Login User Client E memuat 3 user baru: Kartika Dewi, Lukman Hakim, Nanda Wijaya
+62. Verifikasi user Joko Santoso dan Maya Sari tidak ada
 
 ### TC-GS-IMPORT-391: Represented By di-rename (email berubah) setelah staging, baris error
 
-59. Reset Client E ke tanpa draft dan pulihkan master data (D-47), siapkan draft User Non Login 5 baris D-55 (Represented By `budi.manager.e@example.com` pada baris #2 dan #5) lewat fixture
-60. Buka Import > User Non Login dan tunggu Staging Table termuat
-61. Verifikasi footer menampilkan `[Import (5)]` Enabled
-62. Ubah email Login User `budi.manager.e@example.com` menjadi `budi.manager2.e@example.com` lewat sesi API Admin kedua Client E hingga tersimpan, dengan fixture yang menerapkan email baru langsung
-63. Pada halaman yang sama (tanpa memuat ulang) klik [Import (5)]
-64. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-65. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 2 errors remain." tampil
-66. Verifikasi Staging Table menampilkan 2 baris berstatus `error`: Kartika Dewi dan Nanda Wijaya (Represented By `budi.manager.e@example.com`)
-67. Verifikasi Error Summary Callout memuat "Represented by must be an active User Login account"
-68. Verifikasi Error Summary Callout menampilkan badge "2 rows"
-69. Buka halaman User > User List > Non-Login User
-70. Verifikasi halaman User > User List > Non-Login User Client E memuat 3 user baru: Joko Santoso, Lukman Hakim, Maya Sari
-71. Verifikasi user Kartika Dewi dan Nanda Wijaya tidak ada
+63. Reset Client E ke tanpa draft dan pulihkan master data (D-47), siapkan draft User Non Login 5 baris D-55 (Represented By `budi.manager.e@example.com` pada baris #2 dan #5) lewat fixture
+64. Buka Import > User Non Login dan tunggu Staging Table termuat
+65. Verifikasi footer menampilkan `[Import (5)]` Enabled
+66. Ubah email Login User `budi.manager.e@example.com` menjadi `budi.manager2.e@example.com` lewat sesi API Admin kedua Client E hingga tersimpan, dengan fixture yang menerapkan email baru langsung
+67. Pada halaman yang sama (tanpa memuat ulang) klik [Import (5)]
+68. Tunggu aksi selesai (permintaan mendapat respons)
+69. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+70. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 2 errors remain." tampil
+71. Verifikasi Staging Table menampilkan 2 baris berstatus `error`: Kartika Dewi dan Nanda Wijaya (Represented By `budi.manager.e@example.com`)
+72. Verifikasi Error Summary Callout memuat "Represented by must be an active User Login account"
+73. Verifikasi Error Summary Callout menampilkan badge "2 rows"
+74. Buka halaman User > User List > Non-Login User
+75. Verifikasi halaman User > User List > Non-Login User Client E memuat 3 user baru: Joko Santoso, Lukman Hakim, Maya Sari
+76. Verifikasi user Kartika Dewi dan Nanda Wijaya tidak ada
 
 ### TC-GS-IMPORT-751: Division yang hanya ada di draft Tab Division tidak diakui sebagai referensi sah pada Tab User Login sampai di-commit
 
-72. Reset Client E ke tanpa draft (D-47), siapkan draft Division 1 baris dari division-ref-1.csv (Legal/LGL) dan draft User Login 1 baris dari user-login-ref-div-1.csv (Kevin Anggara, Division `Legal`) lewat fixture, lalu buka Import > User Login
-73. Verifikasi baris Kevin Anggara berstatus `error`
-74. Verifikasi Error Summary Callout memuat "Division not found"
-75. Verifikasi Error Summary Callout menampilkan badge "1 row"
-76. Klik Sub-Tab Division
-77. Klik [Import (1)]
-78. Muat ulang halaman Import > Division setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-79. Verifikasi Dropzone tampil di Tab Division
-80. Buka halaman User > Division
-81. Ketik Search `Legal`, tekan Enter
-82. Verifikasi Search `Legal` pada halaman User > Division Client E menampilkan baris bernama persis `Legal`
-83. Buka halaman Import > User Login
-84. Verifikasi baris Kevin Anggara berstatus `pending`
-85. Verifikasi kartu Ready to Import menampilkan 1
-86. Verifikasi kartu Errors Disabled (0)
+77. Reset Client E ke tanpa draft (D-47), siapkan draft Division 1 baris dari division-ref-1.csv (Legal/LGL) dan draft User Login 1 baris dari user-login-ref-div-1.csv (Kevin Anggara, Division `Legal`) lewat fixture, lalu buka Import > User Login
+78. Verifikasi baris Kevin Anggara berstatus `error`
+79. Verifikasi Error Summary Callout memuat "Division not found"
+80. Verifikasi Error Summary Callout menampilkan badge "1 row"
+81. Klik Sub-Tab Division
+82. Klik [Import (1)]
+83. Tunggu aksi selesai (permintaan mendapat respons)
+84. Muat ulang halaman Import > Division setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+85. Verifikasi Dropzone tampil di Tab Division
+86. Buka halaman User > Division
+87. Ketik Search `Legal`, tekan Enter
+88. Verifikasi Search `Legal` pada halaman User > Division Client E menampilkan baris bernama persis `Legal`
+89. Buka halaman Import > User Login
+90. Verifikasi baris Kevin Anggara berstatus `pending`
+91. Verifikasi kartu Ready to Import menampilkan 1
+92. Verifikasi kartu Errors Disabled (0)
 
 ### TC-GS-IMPORT-752: Position yang hanya ada di draft Tab Position tidak diakui sebagai referensi sah pada Tab User Login sampai di-commit
 
-87. Reset Client E ke tanpa draft (D-47), siapkan draft Position 1 baris dari position-ref-1.csv (Sales Executive) dan draft User Login 1 baris dari user-login-ref-pos-1.csv (Kevin Anggara, Division `Engineering`, Position `Sales Executive`) lewat fixture, lalu muat ulang halaman Import > User Login
-88. Verifikasi baris Kevin Anggara berstatus `error`
-89. Verifikasi Error Summary Callout memuat "Position not found"
-90. Verifikasi Error Summary Callout menampilkan badge "1 row"
-91. Klik Sub-Tab Position
-92. Klik [Import (1)]
-93. Muat ulang halaman Import > Position setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-94. Verifikasi Dropzone tampil di Tab Position
-95. Buka halaman User > Position
-96. Ketik Search `Sales Executive`, tekan Enter
-97. Verifikasi Search `Sales Executive` pada halaman User > Position Client E menampilkan baris bernama persis `Sales Executive`
-98. Buka halaman Import > User Login
-99. Verifikasi baris Kevin Anggara berstatus `pending`
-100. Verifikasi kartu Ready to Import menampilkan 1
-101. Verifikasi kartu Errors Disabled (0)
+93. Reset Client E ke tanpa draft (D-47), siapkan draft Position 1 baris dari position-ref-1.csv (Sales Executive) dan draft User Login 1 baris dari user-login-ref-pos-1.csv (Kevin Anggara, Division `Engineering`, Position `Sales Executive`) lewat fixture, lalu muat ulang halaman Import > User Login
+94. Verifikasi baris Kevin Anggara berstatus `error`
+95. Verifikasi Error Summary Callout memuat "Position not found"
+96. Verifikasi Error Summary Callout menampilkan badge "1 row"
+97. Klik Sub-Tab Position
+98. Klik [Import (1)]
+99. Tunggu aksi selesai (permintaan mendapat respons)
+100. Muat ulang halaman Import > Position setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+101. Verifikasi Dropzone tampil di Tab Position
+102. Buka halaman User > Position
+103. Ketik Search `Sales Executive`, tekan Enter
+104. Verifikasi Search `Sales Executive` pada halaman User > Position Client E menampilkan baris bernama persis `Sales Executive`
+105. Buka halaman Import > User Login
+106. Verifikasi baris Kevin Anggara berstatus `pending`
+107. Verifikasi kartu Ready to Import menampilkan 1
+108. Verifikasi kartu Errors Disabled (0)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan TC sumber (322, 388, 389, 390, 391, 751, 752) dipertahankan; TC-GS-IMPORT-322 pertama karena memakai Division `Gudang` sebelum TC-GS-IMPORT-388 menghapusnya.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah pertama tiap blok (reset Client E dan penyiapan draft karena Precondition tiap TC mensyaratkan Client E direset sebelum TC), langkah pemicu Admin kedua, langkah menunggu commit selesai, langkah pindah halaman dan Rows per page 100, serta langkah pemulihan di akhir TC-GS-IMPORT-322.
-- P-2: Admin kedua Client E (dan sesi API akun Total Control Client E pada TC-GS-IMPORT-322) hanya memicu perubahan master data lewat sesi API dan bukan objek asersi. TC-GS-IMPORT-322 menyebut tab peramban kedua dengan akun yang sama; ditulis sebagai sesi API karena hanya berfungsi sebagai pemicu (keputusan 2026-10-21).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah pertama tiap blok (reset Client E dan penyiapan draft karena Precondition tiap TC mensyaratkan Client E direset sebelum TC), langkah pemicu Admin kedua, langkah menunggu aksi selesai sesudah klik [Import (N)], langkah menunggu commit selesai, langkah pindah halaman dan Rows per page 100, serta langkah pemulihan di akhir TC-GS-IMPORT-322.
+- P-2: Admin kedua Client E (dan sesi API akun Total Control Client E pada TC-GS-IMPORT-322) hanya memicu perubahan master data lewat sesi API dan bukan objek asersi. TC-GS-IMPORT-322 menyebut tab peramban kedua dengan akun yang sama; ditulis sebagai sesi API karena hanya berfungsi sebagai pemicu.
 - Pembagian TC lintas spec: TC-GS-IMPORT-322 berada di section 3j (AI Reference) pada TC sumber, tetapi skenarionya commit dengan late-binding FK pada Client E; dikerjakan di spec ini. Pemicu kelas c (tab kedua) dan kelas d (kontrol worker) tidak dipakai.
 - Anchor positif untuk absence: halaman Login User atau Non-Login User memuat daftar user baru (verifikasi nama) sebelum verifikasi user tertentu tidak ada.
 - Spec melewati sekitar 35 langkah. Alasan: tujuh blok TC homogen (satu objek uji, late-binding saat commit di Client E) yang berdiri sendiri dan masing-masing mereset Client E; kegagalan satu blok tidak membuat blok lain kehilangan makna, dan langkah prefix berulang (upload, tunggu commit, pindah halaman) mendominasi jumlah langkah.
 - Pola halaman basi (late-binding saat commit, TC-GS-IMPORT-388..391): halaman Import dimuat dan Staging Table dibaca sebelum pemicu, lalu `[Import (N)]` diklik pada halaman yang sama tanpa dimuat ulang, dengan N dari sebelum pemicu. Referensi, duplikat, dan opsi dievaluasi ulang saat commit selain saat pembacaan Staging Table (PRD `import.md` baris 994, 1164, 1195). `Verifikasi` footer `[Import (N)]` sebelum pemicu adalah `Verifikasi` tambahan di luar Expected TC yang membuktikan draft sudah dibaca pada halaman itu.
-- Muat ulang sesudah reset fixture: langkah 1, 17, dan 87 memakai "Muat ulang halaman Import > User Login" karena reset membuang atau mengganti draft sementara halaman Import yang sama masih terbuka dari langkah atau hook sebelumnya (`suite.md`); halaman dimuat segar sebelum pemicu Admin kedua dan tidak dimuat ulang sesudahnya (TC-GS-IMPORT-388 sampai 391).
+- Muat ulang sesudah reset fixture: langkah 1, 18, dan 93 memakai "Muat ulang halaman Import > User Login" karena reset membuang atau mengganti draft sementara halaman Import yang sama masih terbuka dari langkah atau hook sebelumnya (`suite.md`); halaman dimuat segar sebelum pemicu Admin kedua dan tidak dimuat ulang sesudahnya (TC-GS-IMPORT-388 sampai 391).
 - Temuan untuk QA:
-  - TC-GS-IMPORT-322: berada di section 3j (AI Reference) padahal skenarionya commit dengan late-binding FK pada Client E; sebaiknya dipindah ke section late-binding (3m). Expected b menyatakan Total Rows 1 dan Errors 1 sementara baris kedua (Citra Wulandari) sudah terkomit; spec mengikuti TC.
+  - TC-GS-IMPORT-322: berada di section 3j (AI Reference) padahal skenarionya commit dengan late-binding FK pada Client E (section late-binding 3m). Expected b menyatakan Total Rows 1 dan Errors 1 sementara baris kedua (Citra Wulandari) sudah terkomit; spec mengikuti TC.
   - TC-GS-IMPORT-322: Post Condition a (User Login `citra.wulandari@example.com` tersimpan dan draft berisi 1 baris `error`) tidak punya langkah observasi di TC; tidak diasersi.
   - TC-GS-IMPORT-388, 389, 390, 391: Post Condition (kondisi master data: Division `Gudang` tidak ada, Position `Finance Head` ada, Login User `rina.admin.e` berstatus Inactive, email berubah) tidak punya langkah observasi di TC dan tidak diasersi; sisanya teramati lewat Expected.
   - TC-GS-IMPORT-391: fixture ubah email diasumsikan menerapkan email baru langsung (tanpa konfirmasi email); TC tidak menyebut mekanisme perubahan email yang diizinkan PRD User.

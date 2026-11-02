@@ -34,7 +34,7 @@ coverage:
 ### Pagination, lompat halaman, dan Rows per page (TC-GS-IMPORT-478, TC-GS-IMPORT-479, TC-GS-IMPORT-480)
 
 1. Reset Client Limit lewat skrip fixture: seed draft Brand D-61 (150 baris) dan tanpa draft Tab Division
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Verifikasi pagination menampilkan "Showing 1 - 10 of 150 items" (default 10 baris per halaman)
 4. Buka dropdown Rows per page
 5. Verifikasi dropdown Rows per page memuat opsi 10, 25, 50, dan 100
@@ -61,7 +61,7 @@ coverage:
 23. Klik kartu Errors yang sudah Active
 24. Verifikasi kartu Errors tetap Active
 25. Verifikasi pagination tetap "Showing 11 - 20 of 30 items" (halaman 2)
-26. Verifikasi total item tetap 30 sehingga tabel tidak kembali ke semua baris (150)
+26. Verifikasi total item tetap 30
 27. Klik kartu Total Rows (kembali ke semua baris)
 28. Pindah ke halaman 3
 29. Klik kartu Errors
@@ -118,7 +118,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: volume data (e); draft 150 baris (di atas ambang 100 baris) menjadi dataset bersama dan volume adalah syarat asersi pagination ("of 150 items", halaman 5, halaman 3). Spec hanya membaca draft sehingga delapan TC berbagi satu seeding.
 - Alasan melewati sekitar 35 langkah (67 langkah nominal): lima kelompok homogen (pagination dan filter kartu pada satu dataset) yang membaca draft yang sama tanpa mengubah data, semua satu kelas volume. Seeding draft 150 baris satu kali di awal (langkah 1) dan penjagaan state antar-TC dengan klik kartu Total Rows memenuhi S-09.
 - Urutan kelompok mengikuti kebutuhan state halaman: pagination default (TC-478, 479, 480) lebih dulu agar Rows per page dikembalikan ke 10, lalu filter kartu (TC-464, 576, 586, 763), dan retensi Sub-Tab terakhir (TC-472).
-- Langkah penghubung (tanpa `Verifikasi`): seeding (langkah 1), pembukaan halaman dan Sub-Tab, pemulihan state antar-TC (langkah 10, 17, 27, 35, 46, 54: kembali ke halaman 1, Rows per page 10, atau klik kartu Total Rows), tutup dropdown (langkah 7), serta perpindahan halaman.
+- Langkah penghubung (tanpa `Verifikasi`): seeding (langkah 1), muat ulang halaman Import > Brand (langkah 2), pindah Sub-Tab, pemulihan state antar-TC (langkah 10, 17, 27, 35, 46, 54: kembali ke halaman 1, Rows per page 10, atau klik kartu Total Rows), tutup dropdown (langkah 7), serta perpindahan halaman.
 - Asersi absence chip (langkah 44, 52) didahului Verifikasi kartu Errors tetap Active (langkah 43, 51) sebagai anchor positif pada surface yang sama.
 - Temuan untuk QA:
   - TC-GS-IMPORT-464, 472, 576, 586, 763 memakai draft D-61 yang dibuat ulang sebelum tiap TC; spec memakai satu draft untuk delapan TC karena semuanya hanya membaca. Penjagaan state antar-TC memakai klik kartu Total Rows (kartu Total Rows Active tanpa chip menurut Expected TC-GS-IMPORT-472 c).

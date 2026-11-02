@@ -63,11 +63,11 @@ coverage:
 
 ### TC-GS-IMPORT-869 (baris L1078): Memulai sesi edit saat job committing ditolak
 
-28. Reset Client E (D-47) ke tanpa draft dan siapkan draft Brand 12 baris dari brand-12.csv (D-50) lewat fixture, lalu buka Import > Brand
+28. Reset Client E (D-47) ke tanpa draft dan siapkan draft Brand 12 baris dari brand-12.csv (D-50) lewat fixture, lalu muat ulang halaman Import > Brand
 29. Tahan commit pada status `committing` (kontrol worker D-47 mode 1)
 30. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (12)]`)
 31. Tunggu aksi selesai (permintaan mendapat respons)
-32. Pada halaman langkah 26 (tanpa muat ulang) klik `⋯` pada baris #1
+32. Pada halaman langkah 28 (tanpa muat ulang) klik `⋯` pada baris #1
 33. Pilih Edit
 34. Verifikasi dialog Title "Import In Progress" dengan Body "An import is currently running for this draft. Please try again after it finishes." dan tombol `[OK]` saja (tanpa `[Take Over Session]`)
 35. Klik `[OK]` pada dialog
@@ -76,7 +76,7 @@ coverage:
 
 ## Notes
 
-- Spec melewati sekitar 35 langkah (37 langkah). Seluruhnya satu topik dengan akun dan client yang sama; langkah pembuka seed eksplisit (suite.md, `beforeEach` hanya menyiapkan keadaan dasar) menambah langkah pada spec yang sudah mendekati batas, dan memecahnya hanya menambah login, hook, dan pembersihan tanpa menambah daya deteksi.
+- Spec melewati sekitar 35 langkah (37 langkah). Seluruhnya satu topik dengan akun dan client yang sama; memecahnya hanya menambah login, hook, dan pembersihan tanpa menambah daya deteksi.
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (kelas d, prinsip 13d; objek uji kontrol worker commit D-47 mode jeda).
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset dan seed fixture), langkah 2 (muat ulang sesudah seed), langkah 3, 4, 12, 13, 29, 30 (menahan job pada status `committing`), langkah 6, 11, 15 (muat ulang; langkah 11 memuat ulang halaman Import > Brand setelah reset fixture langkah 10 sebelum klik `[Import (250)]`), langkah 10, 27, 37 (pemulihan), langkah 19 sampai 21, 23, 25 (aksi menuju keadaan yang diasersi), langkah 28 (reset dan penyiapan draft), langkah 5, 14, dan 31 (menunggu permintaan commit mendapat respons sebelum sesi atau halaman lain bertindak; langkah 14 mencegah muat ulang langkah 15 berlomba dengan permintaan `[Import (250)]` langkah 13). Langkah 30 adalah pemicu sesi API Admin kedua Client E tanpa pembukaan halaman; langkah TC "Admin kedua Client E: klik `[Import (12)]`" digantikan pemicu itu karena hasil di sesi tersebut tidak diasersi.
 - Konteks kedua beraksi: belum ada id pengecualian untuk Sesi Import data (Read Only) Client E yang memuat ulang halaman dan melakukan hover lalu diasersi (TC-GS-IMPORT-208) di spec kelas d; `P-6` hanya untuk pengamat read-only tanpa interaksi dan `P-2` hanya untuk konteks yang bukan objek asersi. Spec tidak dipecah (satu kelas harness, blok berdiri sendiri); usulan aturan baru menunggu batch konvensi.

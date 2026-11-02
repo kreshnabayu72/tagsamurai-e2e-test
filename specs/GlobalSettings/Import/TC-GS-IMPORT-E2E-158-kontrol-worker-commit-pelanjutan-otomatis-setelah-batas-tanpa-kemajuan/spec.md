@@ -36,7 +36,7 @@ coverage:
 ### TC-GS-IMPORT-749: Di bawah batas 15 menit tidak dilanjutkan
 
 1. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Aktifkan kontrol worker commit mode 3 (dijeda setelah batch pertama selesai; tidak dijalankan lagi) dan pencatat jumlah percobaan pelanjutan job
 4. Klik `[Import (250)]`
 5. Tunggu aksi selesai (permintaan mendapat respons)
@@ -59,7 +59,7 @@ coverage:
 ### TC-GS-IMPORT-822: Tepat 15 menit sudah terlampaui dan dilanjutkan otomatis
 
 21. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-22. Buka Global Settings > Import, pilih Sub-Tab Brand
+22. Muat ulang halaman Import > Brand
 23. Aktifkan kontrol worker commit mode 3 (dijeda setelah batch pertama selesai; tidak dijalankan lagi)
 24. Klik `[Import (250)]`
 25. Tunggu aksi selesai (permintaan mendapat respons)
@@ -75,7 +75,7 @@ coverage:
 ### TC-GS-IMPORT-385: Pelanjutan otomatis lalu kembali ke draft bila pelanjutan juga tanpa kemajuan
 
 34. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-35. Buka Global Settings > Import, pilih Sub-Tab Brand
+35. Muat ulang halaman Import > Brand
 36. Aktifkan kontrol worker commit mode 3 (dijeda setelah batch pertama selesai; tidak dijalankan lagi) dan pencatat jumlah percobaan pelanjutan job
 37. Klik `[Import (250)]`
 38. Tunggu aksi selesai (permintaan mendapat respons)
@@ -120,7 +120,7 @@ coverage:
 - Alasan melewati sekitar 35 langkah (69 langkah nominal): empat blok homogen (satu kelas harness, satu job `committing` per blok), tiap blok berdiri sendiri dengan reset Client E di awal sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Urutan blok: TC-749 dan TC-822 (tanpa pelanjutan atau pelanjutan sekali, tanpa commit selesai), lalu TC-385 (pelanjutan kedua kembali ke draft), lalu TC-386 (commit selesai).
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Penggantian jeda nyata: TC-GS-IMPORT-749 Langkah 5 "Tunggu 2 menit" dan Langkah 8 "Tunggu 1 menit" diganti memundurkan penanda kemajuan job tambahan 2 menit dan 1 menit (langkah 9 dan 15), karena menunggu waktu nyata di atas ±30 detik tidak diizinkan konvensi (bagian 6) dan penanda dihitung di server. Batas yang diuji tidak berubah: usia tanpa kemajuan total 10 menit dan 11 menit, tetap di bawah 15 menit.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 21, 34, 57), aktivasi dan penonaktifan kontrol worker (langkah 3, 23, 36, 59, 62), pembukaan halaman dan Sub-Tab, penyetelan penanda kemajuan (langkah 8, 9, 15, 28, 40, 46, 63), "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (250)]` dan sebelum polling (langkah 5, 25, 38, 60; K-16 dan bagian 8b butir 8), dan polling job (langkah 6, 26, 29, 39, 41, 47, 61, 64) yang menunggu job latar belakang dan bukan menunggu jam.
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 21, 34, 56), aktivasi dan penonaktifan kontrol worker (langkah 3, 23, 36, 59, 62), muat ulang halaman Import > Brand sesudah reset (langkah 2, 22, dan 35), pembukaan halaman dan Sub-Tab lain, penyetelan penanda kemajuan (langkah 8, 9, 15, 28, 40, 46, 63), "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (250)]` dan sebelum polling (langkah 5, 25, 38, 60; bagian 8b butir 8), dan polling job (langkah 6, 26, 29, 39, 41, 47, 61, 64) yang menunggu job latar belakang dan bukan menunggu jam.
 - Langkah 7, 27 (Total Rows 150) dan TC-GS-IMPORT-749 Expected a diasersi sebelum penyetelan penanda sebagai anchor bahwa batch pertama terkomit. Langkah 14 dan 20 (jumlah percobaan pelanjutan 0) diasersi sesudah muat ulang.
 - Temuan untuk QA:
   - Penanda selesai untuk klik `[Import (250)]` (langkah 5, 25, 38, 60) tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.

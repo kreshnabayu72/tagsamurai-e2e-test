@@ -23,9 +23,9 @@ coverage:
 | Blok | Pre-setup | Akun | Kondisi data | Env var password |
 |---|---|---|---|---|
 | 1 | #1 | Andi Pratama, `totalControlProfile_automated_{namaCompany}@qwertysystem.net`, Total Control | TC-GS-PROFILE-72, 306, 71 | `Spectra.env.GS_PROFILE_TC_PASSWORD` |
-| 2 | #7 | Maya Anggraini, `passwordProfile_automated_{namaCompany}@qwertysystem.net`, Total Control | password aktif `Passw0rd!Old`, counter Change Password 0, counter Login 0, Time Format 24 jam, timezone Asia/Jakarta; TC-GS-PROFILE-114 | `Spectra.env.GS_PROFILE_PWD_PASSWORD` |
+| 2 | #7 | Maya Anggraini, `passwordProfile_automated_{namaCompany}@qwertysystem.net`, Total Control | password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`, counter Change Password 0, counter Login 0, Time Format 24 jam, timezone Asia/Jakarta; TC-GS-PROFILE-114 | `Spectra.env.GS_PROFILE_PWD_PASSWORD` |
 
-- Password baru `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3, nilai `N3wPassw0rd!`) diketik di New Password dan Confirm New Password pada langkah 15; nilai itu tidak pernah tersimpan karena sesi server dihapus sebelum [Save].
+- Password baru `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3) diketik di New Password dan Confirm New Password pada langkah 15; nilai itu tidak pernah tersimpan karena sesi server dihapus sebelum [Save].
 - Login akun aktor default suite (Pre-setup #1) dilakukan di hook `before`; spec ini login akun pertamanya (Pre-setup #1) di hook `before` spec dan hook `after` mengembalikan sesi ke akun default. Lihat `suite.md`, Hook suite 1.
 - Halaman My Profile dibuka hook `beforeEach` suite. Lihat `suite.md`, Hook suite 2.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
@@ -65,7 +65,7 @@ coverage:
 ### Sesi habis saat submit Change Password (TC-GS-PROFILE-114)
 
 14. Klik [Change Password]
-15. Isi Current Password `Passw0rd!Old` dari `Spectra.env.GS_PROFILE_PWD_PASSWORD`, New Password dan Confirm New Password dari `Spectra.env.PROFILE_PASSWORD_NEW`
+15. Isi Current Password dari `Spectra.env.GS_PROFILE_PWD_PASSWORD`, New Password dan Confirm New Password dari `Spectra.env.PROFILE_PASSWORD_NEW`
 16. Hapus sesi login Pre-setup #7 di server lewat fixture BE sementara modal tetap terbuka
 17. Klik [Save]
 18. Verifikasi pengguna diarahkan ke halaman Login (bukan inline error Current Password salah)

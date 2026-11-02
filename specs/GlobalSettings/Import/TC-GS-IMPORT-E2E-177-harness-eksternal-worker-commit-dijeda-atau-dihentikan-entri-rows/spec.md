@@ -46,7 +46,7 @@ coverage:
 ### TC-GS-IMPORT-755: Commit yang berhenti tanpa satu pun baris terkomit tidak menulis entri ringkasan
 
 1. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Klik `[Changelog]` di header halaman, terapkan Filter Action = `Import Brand`, catat angka total pada teks Pagination (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state) sebagai baseline, lalu tutup modal Changelog
 4. Aktifkan kontrol worker commit mode 6 (dihentikan sebelum batch pertama selesai; tidak dijalankan lagi) dan pencatat jumlah percobaan pelanjutan job
 5. Klik `[Import (250)]`
@@ -144,14 +144,14 @@ coverage:
 ### TC-GS-IMPORT-518: Tulis-balik tidak dijalankan saat job committing
 
 84. Reset Client E (D-47) dan seed draft User Login D-54 (8 baris `pending`, Shift `Siang` pada Row # 1 dan 2) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-85. Buka Global Settings > Import, pilih Sub-Tab User Login
+85. Muat ulang halaman Import > User Login
 86. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
 87. Klik `[Import (8)]`
 88. Tunggu aksi selesai (permintaan mendapat respons)
 89. Hapus opsi `Siang` dari Custom Field `Shift` di Custom Field User atas nama Admin kedua Client E lewat sesi API
 90. Muat ulang halaman Import > User Login
-91. Verifikasi Row # 1 tampil berstatus `error` sebagai hasil hitung read-only untuk tampilan
-92. Verifikasi Row # 2 tampil berstatus `error` sebagai hasil hitung read-only untuk tampilan
+91. Verifikasi Row # 1 tampil berstatus `error`
+92. Verifikasi Row # 2 tampil berstatus `error`
 93. Verifikasi Staging Metric Cards Ready to Import 6
 94. Verifikasi Staging Metric Cards Errors 2
 95. Arahkan kursor ke `[Discard]` pada Unsaved Banner
@@ -169,8 +169,8 @@ coverage:
 104. Tunggu aksi selesai (permintaan mendapat respons)
 105. Jadikan Custom Field `Shift Notes` Required di Custom Field User atas nama Admin kedua Client E lewat sesi API
 106. Muat ulang halaman Import > User Login
-107. Verifikasi Row # 1 tampil berstatus `error` sebagai hasil hitung read-only untuk tampilan
-108. Verifikasi Row # 2 tampil berstatus `error` sebagai hasil hitung read-only untuk tampilan
+107. Verifikasi Row # 1 tampil berstatus `error`
+108. Verifikasi Row # 2 tampil berstatus `error`
 109. Baca status tersimpan Row # 1 dan 2 lewat skrip fixture inspeksi data
 110. Verifikasi status tersimpan Row # 1 dan 2 masih `pending`
 111. Pulihkan `Shift Notes` ke opsional
@@ -180,14 +180,15 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah perilaku job `committing` yang dijeda atau dihentikan (kontrol worker D-47, penanda kemajuan job 15 menit sebagai batas yang diuji). Admin kedua hanya memicu perubahan Custom Field lewat sesi API (P-2).
 - Alasan melewati sekitar 35 langkah (111 langkah nominal): tujuh blok homogen (satu job `committing` per blok), semua satu kelas harness dan berdiri sendiri dengan reset Client E di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok User Login (TC-518, 947) diletakkan terakhir karena mengubah Custom Field dan dipulihkan setelahnya.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok mengikuti kebutuhan state: tanpa commit sebagian (TC-755), commit sebagian dengan entri Changelog (TC-426), pelanjutan dan Discard (TC-553), request langsung (TC-532, 809), dan tulis-balik (TC-518, 947).
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 17, 36, 61, 72, 84, 100), pembukaan halaman dan Sub-Tab, pencatatan baseline (langkah 3, 19), aktivasi kontrol worker, penyetelan penanda kemajuan (langkah 7, 10, 25, 28, 42, 50), polling job, pembukaan Changelog dan penerapan filter, pemicu Admin kedua (langkah 89 dan 105), pemulihan Custom Field (langkah 99 dan 111), hover `[Discard]` sebelum asersi tooltip (langkah 47), dan Tunggu aksi selesai (langkah 6, 22, 40, 65, 76, 88, 104). Langkah 15 adalah `Verifikasi` modal Changelog Import terbuka sebagai anchor positif sebelum asersi jumlah entri tidak berubah (langkah 16).
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 17, 36, 61, 72, 84, 100), muat ulang halaman Import > Brand dan Import > User Login (langkah 2, 85), pembukaan halaman dan Sub-Tab, pencatatan baseline (langkah 3, 19), aktivasi kontrol worker, penyetelan penanda kemajuan (langkah 7, 10, 25, 28, 42, 50), polling job, pembukaan Changelog dan penerapan filter, pemicu Admin kedua (langkah 89 dan 105), pemulihan Custom Field (langkah 99 dan 111), hover `[Discard]` sebelum asersi tooltip (langkah 47), dan Tunggu aksi selesai (langkah 6, 22, 40, 65, 76, 88, 104). Langkah 15 adalah `Verifikasi` modal Changelog Import terbuka sebagai anchor positif sebelum asersi jumlah entri tidak berubah (langkah 16).
 - Langkah 16, 32 memakai baseline jumlah entri Changelog dengan Filter Action `Import Brand`; penanda kemajuan tidak menggeser jam server sehingga posisi baris pertama tidak terdampak (S-12).
 - Kelas campur: TC-GS-IMPORT-532 dan TC-GS-IMPORT-809 berkelas a (request langsung ke server sebagai objek uji) berada di spec kelas d. Id pengecualian yang paling dekat adalah P-1 (state berat: job `committing` dibangun oleh langkah sebelumnya dan tidak dapat diulang tanpa biaya besar), tetapi P-1 tidak menyebut kelas a sebagai objek uji sehingga kesesuaiannya belum pasti; usulan aturan baru menunggu batch konvensi.
-- Langkah 11 dan 12 adalah `Verifikasi` yang terhubung ke pemicu sebelum asersi jumlah entri Changelog tidak berubah (TC-755 Expected c).
+- Langkah 12 dan 13 adalah `Verifikasi` yang terhubung ke pemicu sebelum asersi jumlah entri Changelog tidak berubah (TC-755 Expected c).
 - Temuan untuk QA:
   - TC-GS-IMPORT-426, 553, 532, 809, 755 menulis "menghentikan worker commit setelah batch pertama selesai"; D-47 mendefinisikan "dijeda setelah batch pertama selesai" (mode 3) dan "dihentikan sebelum batch pertama selesai" (mode 6). Spec memakai mode 3 untuk TC-426, 532, 553, 809 dan mode 6 untuk TC-755.
   - TC-GS-IMPORT-426, 755, 553 memakai D-56/D-34 dan jam 16 menit untuk perilaku sama (job `committing` tanpa kemajuan); TC-GS-IMPORT-553 (Must NOT) dan TC-GS-IMPORT-755 tumpang tindih sebagian pada asersi "job kembali `draft` setelah 16 menit"; bukan kontradiksi, tetapi duplikasi asersi. TC-GS-IMPORT-426 dan TC-GS-IMPORT-385 (spec 158) juga beririsan.
   - TC-GS-IMPORT-426 dan TC-GS-IMPORT-755 asersi langkah 7 dan 9 bergantung pada hook "jumlah percobaan pelanjutan" D-47 yang tidak menyebut nomor mode untuk TC ini.
+  - Status `error` pada Row # 1 dan 2 (langkah 91, 92, 107, 108) adalah hasil hitung read-only untuk tampilan selama job `committing`, bukan nilai tersimpan; nilai tersimpan tetap `pending` dan diasersi lewat skrip fixture inspeksi data (langkah 98 dan 110).
   - TC-GS-IMPORT-518 dan TC-GS-IMPORT-947 menyebut Admin kedua Client E mengubah Custom Field User lewat UI; spec memakai sesi API (P-2) karena hasil di sesi itu tidak diasersi. Mekanisme dan skrip fixture inspeksi data disediakan tim FE/BE.
   - TC-GS-IMPORT-532 dan TC-GS-IMPORT-809 memakai D-34 (`Brand nnn`), sedangkan TC commit Client E lain memakai D-56 (`Brand Impor nnn`); Post Condition menyebut 100 Brand hasil batch pertama dihapus kembali (R2), dikerjakan reset dan hook `after`.
   - Post Condition TC-GS-IMPORT-426 (draft 150 baris; satu entri ringkasan), TC-GS-IMPORT-755 (draft 250 baris; tidak ada record), dan TC-GS-IMPORT-532, 809, 553, 518, 947 tidak punya langkah observasi tersendiri selain Expected dan tidak diasersi tambahan (S-01).

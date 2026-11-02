@@ -38,7 +38,7 @@ coverage:
 ### TC-GS-IMPORT-361: Commit yang berhenti tidak memunculkan Banner Hasil Commit
 
 1. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Buka notifikasi lonceng, catat jumlah notifikasi "Import Brand stopped" sebagai baseline, lalu tutup lonceng
 4. Aktifkan kontrol worker commit mode 3 (dijeda setelah batch pertama selesai; tidak dijalankan lagi) dan pencatat jumlah percobaan pelanjutan job
 5. Klik `[Import (250)]`
@@ -60,7 +60,7 @@ coverage:
 ### TC-GS-IMPORT-840: Commit yang berhenti dengan baris duplicate dan error
 
 20. Reset Client E (D-47) dan seed draft Brand D-57 (250 baris: 248 `pending`, 1 `error` baris #5, 1 `duplicate` baris #20) dengan hook umur draft D-76 varian 1 lewat skrip fixture; pastikan mock AI mode normal
-21. Buka Global Settings > Import, pilih Sub-Tab Brand
+21. Muat ulang halaman Import > Brand
 22. Klik `[Changelog]` di header halaman, catat total entri Changelog Import sebagai baseline, lalu tutup modal Changelog
 23. Aktifkan kontrol worker commit mode 3 (dijeda setelah batch pertama selesai; tidak dijalankan lagi)
 24. Klik `[Import (248)]`
@@ -95,7 +95,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah hasil commit yang berhenti (penanda kemajuan job sebagai batas yang diuji, notifikasi, Changelog). Mock AI normal hanya pemicu badge saran (P-2).
 - Alasan melewati sekitar 35 langkah (49 langkah nominal): dua blok homogen (satu job `committing` yang berhenti per blok), satu kelas harness dan berdiri sendiri dengan reset Client E di awal tiap blok.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 20), pembukaan halaman dan Sub-Tab, pencatatan baseline (langkah 3, 22), aktivasi kontrol worker, "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (N)]` dan sebelum polling (langkah 6, 25; K-16 dan bagian 8b butir 8), penyetelan penanda kemajuan (langkah 8, 11, 28, 31), polling job (langkah 7, 9, 12, 26, 29, 32), membuka dan menutup lonceng dan modal Changelog. Langkah 38 mengklik kartu Duplicates agar Staging Table menampilkan baris `duplicate`.
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 20), muat ulang halaman Import > Brand sesudah reset (langkah 2 dan 21), pembukaan halaman dan Sub-Tab lain, pencatatan baseline (langkah 3, 22), aktivasi kontrol worker, "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (N)]` dan sebelum polling (langkah 6, 25; bagian 8b butir 8), penyetelan penanda kemajuan (langkah 8, 11, 28, 31), polling job (langkah 7, 9, 12, 26, 29, 32), membuka dan menutup lonceng dan modal Changelog. Langkah 38 mengklik kartu Duplicates agar Staging Table menampilkan baris `duplicate`.
 - Asersi "tanpa Banner Hasil Commit" (langkah 16) didahului langkah 13 sampai 15 (Unsaved Banner tampil, `[Discard]` Enabled, Total Rows 150) sebagai anchor positif pada halaman yang sama setelah muat ulang. Asersi notifikasi dan entri Changelog memakai baseline jumlah (S-12) dan tidak memakai posisi absolut; langkah 42 sampai 44 dan 47 sampai 49 membaca entri terbaru yang tercipta oleh aksi spec ini.
 - Temuan untuk QA:
   - Penanda selesai untuk klik `[Import (N)]` (langkah 6, 25) tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.

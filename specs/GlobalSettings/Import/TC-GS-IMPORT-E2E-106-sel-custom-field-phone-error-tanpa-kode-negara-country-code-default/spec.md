@@ -43,7 +43,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fungsional.
-- Langkah penghubung (tanpa `Verifikasi`): langkah 1 menyiapkan keadaan awal (reset, seed D-36, ubah tipe Custom Field, muat ulang) karena `beforeEach` hanya mereset client ke keadaan dasar dan membuka layar awal (K-7); skrip fixture berjalan sinkron sehingga tidak ada penanda tunggu.
+- Langkah penghubung (tanpa `Verifikasi`): langkah 1 menyiapkan keadaan awal (reset, seed D-36, ubah tipe Custom Field, muat ulang) karena `beforeEach` hanya mereset client ke keadaan dasar dan membuka layar awal; skrip fixture berjalan sinkron sehingga tidak ada penanda tunggu.
 - Spec satu TC dengan satu alur; tidak digabung dengan spec Edit Mode lain karena memakai client dan perubahan tipe Custom Field yang berbeda.
 - Temuan untuk QA:
   - TC-GS-IMPORT-236 Precondition c menyebut baris menjadi `error` setelah tipe Emergency Phone diubah lewat fixture, tetapi Kontrak Fixture tidak memuat fixture ubah tipe Custom Field; mekanisme disediakan tim FE/BE (S-13).

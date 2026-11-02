@@ -29,12 +29,12 @@ Role yang diuji (langkah 1 sampai 10; urutan baris = urutan iterasi):
 | System Role | #3 | Dewi Lestari, `systemRoleProfile_automated_{namaCompany}@qwertysystem.net` (role individual "Manage user and role") | `Spectra.env.GS_PROFILE_SYSROLE_PASSWORD` |
 | User Basic | #4 | Budi Santoso, `userBasicProfile_automated_{namaCompany}@qwertysystem.net` (0 role individual, App Access Fixed Asset saja) | `Spectra.env.GS_PROFILE_BASIC_PASSWORD` |
 
-- Password baru untuk New Password dan Confirm New Password: `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3, nilai `N3wPassw0rd!`).
+- Password baru untuk New Password dan Confirm New Password: `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3).
 - Login akun aktor default suite (Pre-setup #1) dilakukan di hook `before`; spec ini login akun pertamanya (Pre-setup #1) di hook `before` spec dan hook `after` mengembalikan sesi ke akun default. Lihat `suite.md`, Hook suite 1.
 - Halaman My Profile dibuka hook `beforeEach` suite. Lihat `suite.md`, Hook suite 2.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Hook `beforeEach` suite mengonfirmasi `beforeunload` dan menutup dialog `Unsaved Changes` sebagai jaring pengaman (S-09), bukan pengganti langkah pemulihan form. Lihat `suite.md`, Hook suite 5.
-- State global yang diubah: password akun Pre-setup #1 sampai #4 berubah menjadi `N3wPassw0rd!`. Hook suite 7 hanya memulihkan password Pre-setup #7, #18, dan #24, sehingga spec ini memulihkan password Pre-setup #1 sampai #4 ke nilai awal (env var tabel di atas) lewat fixture pemulihan password yang disediakan tim FE/BE: di langkah 10 tiap iterasi, dan di hook `after` spec sebagai cadangan yang tidak berasumsi iterasi berhasil penuh. Suite berjalan serial (`parallel: false`).
+- State global yang diubah: password akun Pre-setup #1 sampai #4 berubah menjadi `Spectra.env.PROFILE_PASSWORD_NEW`. Hook suite 7 hanya memulihkan password Pre-setup #7, #18, dan #24, sehingga spec ini memulihkan password Pre-setup #1 sampai #4 ke nilai awal (env var tabel di atas) lewat fixture pemulihan password yang disediakan tim FE/BE: di langkah 10 tiap iterasi, dan di hook `after` spec sebagai cadangan yang tidak berasumsi iterasi berhasil penuh. Suite berjalan serial (`parallel: false`).
 - Data Dinamis: tidak ada selain password baru di atas.
 
 ## Test Steps
@@ -60,5 +60,5 @@ Role yang diuji (langkah 1 sampai 10; urutan baris = urutan iterasi):
 - Langkah penghubung (tanpa awalan `Verifikasi`): langkah 1 adalah Step ganti akun; langkah 2 membuka My Profile untuk akun baru; langkah 10 memulihkan password (R-08, S-09).
 - Form Change Password tertutup oleh sukses [Save], sehingga tidak ada form dirty di akhir iterasi.
 - Temuan untuk QA:
-  - Post Condition TC-GS-PROFILE-52, 57, 62, dan 67 ("Password akun berubah menjadi `N3wPassw0rd!`") tidak punya langkah observasi di TC dan tidak diasersi di spec ini (S-01).
+  - Post Condition TC-GS-PROFILE-52, 57, 62, dan 67 ("Password akun berubah menjadi `Spectra.env.PROFILE_PASSWORD_NEW`") tidak punya langkah observasi di TC dan tidak diasersi di spec ini (S-01).
   - TC-GS-PROFILE-52, 57, 62, dan 67 menulis Precondition "Login sbg Role: ..." dan Current Password "password aktif akun" tanpa nilai; spec memakai env var per akun Pre-setup #1 sampai #4.

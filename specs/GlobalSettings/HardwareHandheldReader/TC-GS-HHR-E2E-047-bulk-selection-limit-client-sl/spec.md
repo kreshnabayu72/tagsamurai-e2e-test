@@ -51,7 +51,7 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md` (section 3k). Kelas e (volume data: batas Selection Limit), berdiri sebagai spec sendiri sesuai prinsip 12.
+- Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md` (section 3k). Spec ini dipisah menurut prinsip 12 (kasus blokir karena kondisi data target: Selection Limit Client SL); 12 reader di bawah ambang kelas e.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC sumber dipertahankan: 221, 222. Seleksi dikosongkan lewat `×` antar-TC (langkah 10 dan 17).
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 10 dan 17 (mengosongkan seleksi lewat `×`).

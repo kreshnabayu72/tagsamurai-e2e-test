@@ -82,7 +82,7 @@ coverage:
 
 ## Notes
 
-- Spec melewati sekitar 35 langkah (36 langkah). Seluruhnya satu topik dengan akun dan client yang sama; langkah pembuka seed eksplisit (suite.md, `beforeEach` hanya menyiapkan keadaan dasar) menambah langkah pada spec yang sudah mendekati batas, dan memecahnya hanya menambah login, hook, dan pembersihan tanpa menambah daya deteksi.
+- Spec melewati sekitar 35 langkah (36 langkah). Seluruhnya satu topik dengan akun dan client yang sama; memecahnya hanya menambah login, hook, dan pembersihan tanpa menambah daya deteksi.
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Semua TC berbagi dataset D-10 read-only dan akun yang sama; TC-GS-IMPORT-488 (kontras) paling akhir karena berupa pengukuran visual tanpa mengubah state.

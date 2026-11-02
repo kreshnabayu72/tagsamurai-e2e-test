@@ -39,7 +39,7 @@ coverage:
 ### TC-GS-IMPORT-542: Aksi mutasi pada draft yang baru dihapus admin lain di tujuh tab
 
 1. Pulihkan draft dasar Client A D-09 (13 baris) dengan hook umur draft D-76 varian 1 lewat skrip fixture; pastikan mock AI mode normal
-2. [Sesi A] Buka Global Settings > Import, pilih Sub-Tab Brand pada tujuh tab peramban ([Tab 1] sampai [Tab 7])
+2. [Sesi A] Muat ulang halaman Import > Brand pada tujuh tab peramban ([Tab 1] sampai [Tab 7])
 3. [Sesi A] Verifikasi draft tampil di setiap tab
 4. [Tab 3] Klik row action `⋯` pada Row # 2 lalu Remove (Dialog Delete Row terbuka)
 5. [Tab 4] Centang checkbox Row # 3
@@ -125,7 +125,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: multi-konteks (c); objek uji adalah halaman terbuka yang basi sesudah draft dihapus admin lain. Discard Draft Admin kedua pada TC-542 hanya pemicu lewat sesi API (P-2); jam server dan fixture kunci hanya pemicu.
 - Alasan melewati sekitar 35 langkah (75 langkah nominal): tiga blok satu kelas multi-konteks yang berdiri sendiri; TC-542 memakai tujuh tab (tujuh aksi homogen yang masing-masing mengasersi toast dan Dropzone, 28 langkah di antaranya satu tab satu aksi). Blok Client D (TC-543) memakai ganti akun eksplisit di dua sesi (langkah 59 dan 60), sehingga bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok: TC-542, TC-544 (Client A), lalu TC-543 (Client D). Tiap blok memulihkan draft sendiri.
-- Langkah penghubung (tanpa `Verifikasi`): pemulihan draft (langkah 1, 43, 61), pembukaan halaman dan Sub-Tab, centang dan klik pemicu (langkah 4 sampai 8, 10, 12, 13), fixture kedaluwarsa kunci (langkah 14), Discard Draft Admin kedua (langkah 15), menutup toast antar-asersi (S-09; langkah 19, 23, 27, 31, 35, 39, 52), serta ganti akun (langkah 59 dan 60). Langkah 3, 9, 11 adalah `Verifikasi` tambahan di luar Expected TC-542 yang membuktikan prasyarat (draft tampil di tiap tab; badge saran AI tampil di tab 6 dan 7).
+- Langkah penghubung (tanpa `Verifikasi`): pemulihan draft (langkah 1, 43, 61), muat ulang halaman Import > Brand pada tujuh tab (langkah 2), pembukaan halaman dan Sub-Tab, centang dan klik pemicu (langkah 4 sampai 8, 10, 12, 13), fixture kedaluwarsa kunci (langkah 14), Discard Draft Admin kedua (langkah 15), menutup toast antar-asersi (S-09; langkah 19, 23, 27, 31, 35, 39, 52), serta ganti akun (langkah 59 dan 60). Langkah 3, 9, 11 adalah `Verifikasi` tambahan di luar Expected TC-542 yang membuktikan prasyarat (draft tampil di tiap tab; badge saran AI tampil di tab 6 dan 7).
 - Langkah 54 dan 55 adalah asersi absence state sementara (toast error dan dialog) segera setelah pemicu langkah 53; langkah 57 dan 58 membuktikan draft akhir pada surface yang sama.
 - Temuan untuk QA:
   - TC-GS-IMPORT-542 Expected a sampai g menyebut "ditolak server 404" tetapi Langkah TC melakukan aksi lewat UI sehingga status 404 tidak teramati tanpa intercept; spec hanya mengasersi toast netral "This draft is no longer available." dan Dropzone, yaitu akibat yang teramati di UI.

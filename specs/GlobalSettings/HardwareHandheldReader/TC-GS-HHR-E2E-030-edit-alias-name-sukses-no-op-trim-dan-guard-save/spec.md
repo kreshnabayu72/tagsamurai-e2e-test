@@ -25,7 +25,7 @@ coverage:
 - Suite serial (`parallel: false`): spec mengubah alias lima reader pada Seed Reader A dan menambah entri log Client A, sehingga tidak berjalan bersamaan dengan spec lain pada Client A.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader (Client A); langkah 4 membuka layar lagi hanya sebagai kembali dari surface log.
 - Akun aktor: Total Control (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup, Client A, plan Growth). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
-- Data Dinamis: Seed Reader A (DD-01 sampai DD-10; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), format tanggal default Client A `dd/MM/yy` 24-hour. Reader yang diedit, masing-masing milik satu blok TC: DD-01 (Serial Number `SN-HHR-00101`, TC-GS-HHR-104), DD-02 (`SN-HHR-00102`, TC-GS-HHR-106, 107, 124, 105), DD-03 (`SN-HHR-00103`, TC-GS-HHR-108), DD-04 (`SN-HHR-00104`, TC-GS-HHR-120), DD-06 (`SN-HHR-00107`, TC-GS-HHR-123). Seed Reader A bernama literal tanpa suffix karena Device Name bawaan ditentukan sistem (HHR-LOGIC-02g) dan DD-01 dan DD-06 sama-sama bernama `Zebra RFID Reader - 1`; baris diidentifikasi lewat Serial Number. Alias Name tidak wajib unik, sehingga alias uji ditulis literal sesuai TC.
+- Data Dinamis (Seed Reader A, dipulihkan fixture backend): Seed Reader A (DD-01 sampai DD-10; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), format tanggal default Client A `dd/MM/yy` 24-hour. Reader yang diedit, masing-masing milik satu blok TC: DD-01 (Serial Number `SN-HHR-00101`, TC-GS-HHR-104), DD-02 (`SN-HHR-00102`, TC-GS-HHR-106, 107, 124, 105), DD-03 (`SN-HHR-00103`, TC-GS-HHR-108), DD-04 (`SN-HHR-00104`, TC-GS-HHR-120), DD-06 (`SN-HHR-00107`, TC-GS-HHR-123). Seed Reader A bernama literal tanpa suffix (pengecualian S-12 Population Seed Reader A HHR) karena Device Name bawaan ditentukan sistem (HHR-LOGIC-02g) dan DD-01 dan DD-06 sama-sama bernama `Zebra RFID Reader - 1`; baris diidentifikasi lewat Serial Number. Alias Name tidak wajib unik, sehingga alias uji ditulis literal sesuai TC.
 - Baseline: jumlah entri total Changelog Handheld Reader, System Log aktor (Sari Dewi), dan Activity Log Global Settings dicatat sebelum aksi pemicu pertama yang diasersi (langkah 1 sampai 3); jumlah entri Changelog dicatat lagi sebelum TC-GS-HHR-123 (langkah 53). Nilai kartu kuota `Short Range` dan `Long Range` dicatat sebelum TC-GS-HHR-104 (langkah 29).
 - Cleanup: Seed Reader A dipulihkan ke kondisi awal oleh fixture backend sebelum spec (hook `before`) dan sesudah spec (hook `after`). Mekanisme pemulihan disediakan tim FE/BE (lihat Temuan untuk QA). Entri log yang bertambah tidak dihapus (audit trail permanen).
 - Guided Tooltip: hook suite `before` men-set flag `guided_tooltip_seen_gs-handheld-reader` true untuk akun aktor spec ini dan hook `after` memulihkannya (lihat `suite.md`).
@@ -45,7 +45,7 @@ coverage:
 
 5. Klik `⋯` pada baris DD-02 (`Gudang Reader - 1`), pilih `Edit Alias Name`
 6. Klik `[Save]` tanpa mengubah `Alias Name`
-7. Verifikasi tidak ada toast sukses "Success, Reader Gudang 02 has been updated."
+7. Verifikasi tidak ada toast sukses
 8. Verifikasi toast netral `No changes to save.`
 9. Verifikasi dialog tertutup
 10. Buka ikon Changelog
@@ -146,10 +146,13 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 4 (baseline), langkah 12, 16, 24, 28 (pindah surface log dan kembali ke layar Handheld Reader), langkah 29 (mencatat kartu kuota sebagai pembanding), langkah 43 dan 52 (memasang dan melepas penahanan respons, S-09), langkah 53 (baseline Changelog), langkah 56 (menunggu toast lama hilang agar hitungan satu toast bermakna), langkah 62 (menutup modal), langkah 63 dan 69 (Search agar baris target tampil dan menutup input Search).
 - Jumlah pembukaan dialog Edit Alias Name: 8 (langkah 5, 17, 30, 39, 44, 54, 65, 70); jumlah penutupan: 8 (semua lewat Save atau penutupan otomatis sesudah Save).
 - Spec melewati sekitar 35 langkah (74 langkah). Seluruhnya satu topik dan satu kelas (Edit Alias Name yang berhasil atau no-op), satu akun, tanpa harness eksternal; penahanan respons pada langkah 43 hanya untuk mengamati saving state dan dilepas pada langkah 52. Tiap blok TC memakai reader sendiri dan memulai dari dialog yang baru dibuka, sehingga kegagalan satu blok tidak mengubah makna blok lain, kecuali kegagalan keras pada pembukaan dialog. Sekitar 18 langkah adalah blok baca-log berpola (buka surface, bandingkan jumlah).
+- Spec 029, 030, dan 031 menguji dialog Edit Alias Name pada dataset Seed Reader A yang sama dan sengaja dipisah: gabungannya 163 langkah (61, 74, dan 28), jauh di atas sekitar 35 langkah, dan tiap spec membuka dialog sendiri sehingga kegagalan keras satu spec tidak menghilangkan makna spec lain.
+- Pengecualian S-12 Population Seed Reader A HHR (A-5) berlaku untuk Seed Reader A (nama literal tanpa suffix `{runId}`); pemulihannya dijamin fixture backend dan dinyatakan di `suite.md`. Entri audit trail yang bertambah tidak dipulihkan; asersinya memakai selisih terhadap baseline.
 - Pembagian TC lintas spec: TC-GS-HHR-103, 109 sampai 114, dan 462 ada di spec 029; TC-GS-HHR-115 sampai 119 ada di spec 031; TC-GS-HHR-121 dan 122 ada di spec 026. Spec absence 065 tidak memuat TC-GS-HHR-106 dan 107.
 - Temuan untuk QA:
   - TC-GS-HHR-106 dan 107 menyebut System Log aktor dan Activity Log tanpa menyebut jalur navigasi surface atau cara membaca jumlah entri; spec membaca jumlah entri total tiap surface dan jalur navigasinya mengikuti TC section 5.
   - TC-GS-HHR-104 Expected d ("Kartu kuota dan `Status` tidak berubah") tidak menyebut nilai; spec membandingkan kartu dengan nilai yang dicatat sebelum Save dan `Status` `Available` sesuai Seed Reader A.
+  - TC-GS-HHR-106 Expected b hanya menulis "bukan toast sukses" tanpa teks toast sukses; spec mengasersi tidak adanya toast sukses tanpa menyebut teksnya.
   - TC-GS-HHR-105 tidak menyebut toast; spec hanya mengasersi Expected a dan b.
   - TC-GS-HHR-120 dan 123 menyebut DD-01 sedangkan Seed Reader A tidak dipulihkan antar blok dalam spec; spec memakai reader lain (lihat Notes di atas).
   - TC-GS-HHR-124 Expected a ("hanya DD-02 yang cocok") diasersi sebagai tepat satu baris DD-02 pada hasil Search `Reader Gudang`.

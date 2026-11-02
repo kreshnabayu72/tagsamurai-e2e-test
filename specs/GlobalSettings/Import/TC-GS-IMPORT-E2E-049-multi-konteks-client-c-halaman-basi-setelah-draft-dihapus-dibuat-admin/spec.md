@@ -32,7 +32,7 @@ coverage:
 
 1. Unggah `brand-3.csv` dan klik [Confirm Mapping] sehingga draft Brand 3 baris terbentuk
 2. Unggah `brand-3b.csv`, pada dialog Confirm Append Draft klik [Append Records], dan biarkan Modal Column Mapping terbuka
-3. Tunggu aksi selesai (dialog Confirm Append Draft tertutup dan Modal Column Mapping terbuka)
+3. Tunggu aksi selesai (permintaan mendapat respons)
 4. Admin kedua Client C (sesi API): Discard Draft Brand hingga draft terhapus
 5. Klik [Confirm Mapping]
 6. Verifikasi modal tertutup
@@ -69,7 +69,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Halaman Total Control yang basi menjadi objek asersi (kelas c, prinsip 13c). Admin kedua hanya memicu perubahan lewat sesi API (P-2); tidak ada sesi UI kedua.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 10, 29 (reset Client C), langkah 11 dan 21 (muat ulang halaman Import > Brand sesudah reset, halaman tanpa draft), langkah 20 (menutup modal agar blok berikutnya mulai dari layar awal), langkah 4, 14, 23 (pemicu Admin kedua lewat sesi API; langkah 4, 14, dan 23 didahului "Tunggu aksi selesai" langkah 3, 13, dan 22). Langkah 3, 13, 22 (Tunggu aksi selesai: menunggu aksi tanpa `Verifikasi` selesai sebelum Admin kedua memicu perubahan lewat sesi API; penanda dialog Confirm Append Draft tertutup dan Modal Column Mapping terbuka / Modal Column Mapping tertutup / permintaan mendapat respons). Penanda langkah 22 tidak ada di TC; halaman dimuat segar pada langkah 21 sebelum pemicu dan tidak dimuat ulang sesudahnya.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 10, 29 (reset Client C), langkah 11 dan 21 (muat ulang halaman Import > Brand sesudah reset, halaman tanpa draft), langkah 20 (menutup modal agar blok berikutnya mulai dari layar awal), langkah 4, 14, 23 (pemicu Admin kedua lewat sesi API; langkah 4, 14, dan 23 didahului "Tunggu aksi selesai" langkah 3, 13, dan 22). Langkah 3, 13, 22 (Tunggu aksi selesai: menunggu aksi tanpa `Verifikasi` selesai sebelum Admin kedua memicu perubahan lewat sesi API; penanda langkah 3 dan 22 permintaan mendapat respons, langkah 13 Modal Column Mapping tertutup). Penanda langkah 3 dan 22 tidak ada di TC; halaman dimuat segar pada langkah 21 sebelum pemicu dan tidak dimuat ulang sesudahnya.
 - Pembagian TC lintas spec: nomor TC-GS-IMPORT-868 dipakai dua baris; spec ini memuat baris di L738 (Confirm Mapping pada alur Append) dan spec 073 memuat baris di L1077 (Take Over Session).
 - Temuan untuk QA:
   - ID ganda TC-GS-IMPORT-868 (L738 dan L1077), 869 (L937 dan L1078), 870 (L1020 dan L1079), 871 (L938 dan L1080) dengan isi berbeda; `sourceTc` dan `check-suite.py` tidak dapat membedakannya. Usulan: QA memberi nomor baru pada empat baris di L1077-L1080.

@@ -125,7 +125,7 @@ coverage:
 
 #### TC-GS-IMPORT-309: badge pada sel Division tidak ditemukan
 
-57. Reset draft Client C Tab User Login lewat skrip reset, lalu buka Import > User Non Login
+57. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Non Login
 58. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-div-enginering.csv`
 59. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 60. Verifikasi baris #1 berstatus `error`
@@ -151,7 +151,7 @@ coverage:
 
 #### TC-GS-IMPORT-711: respons AI dalam 3 detik tetap bersaran
 
-75. Reset draft Client C Tab User Non Login lewat skrip reset, lalu buka Import > User Login
+75. Reset draft Client C Tab User Non Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 76. Atur mock layanan AI ke mode tunda 3 detik (D-40)
 77. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudng.csv`
 78. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
@@ -177,7 +177,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`, TC-GS-IMPORT-307 sampai 310, 313 sampai 315, 317, 710, 711, 825.
-- Urutan TC sumber diubah: TC 311 dan 312 (Accept dan Dismiss) ada di spec 119; di spec ini pengelompokan menurut Tab dan mode mock (mode normal lebih dulu, mode tunda 3 detik dan D-71 sesudahnya) supaya mode mock diubah seminimal mungkin (S-10).
+- Urutan TC sumber: TC 311 dan 312 (Accept dan Dismiss) ada di spec 119; di spec ini pengelompokan menurut Tab dan mode mock (mode normal lebih dulu, mode tunda 3 detik dan D-71 sesudahnya) supaya mode mock diubah seminimal mungkin (S-10).
 - Spec berisi 93 langkah, di atas sekitar 35 langkah. Alasan: sebelas TC, tiap TC berdiri sendiri dengan draft barunya dan memverifikasi satu kondisi badge; seluruhnya satu kelas (AI Reference Suggestion, mock deterministik) dan kegagalan satu TC tidak membuat TC lain kehilangan makna.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 57, 75 (pindah Tab), 10, 19, 28, 35, 42, 51, 66, 83 (reset draft; sesudah reset pada 10, 19, 35, 42, 51, 66, 83 halaman Import Tab itu dimuat ulang, sedangkan pemuatan ulang sesudah reset 28 dilakukan di langkah 29), 29 (seed D-43 lalu muat ulang halaman Import > User Login), 50 (tutup menu), 76 dan 84 (atur mode mock), 79 (jeda nyata 4 detik sesuai TC), 93 (pulihkan mock).
 - Create Missing hanya diamati ketersediaannya pada TC 317 dan 825 (tidak dijalankan); perilaku Create Missing ada di spec 122 sampai 130.

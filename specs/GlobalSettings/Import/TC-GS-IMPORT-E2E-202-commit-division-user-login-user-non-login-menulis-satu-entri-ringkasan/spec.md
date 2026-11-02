@@ -39,60 +39,66 @@ coverage:
 
 1. Seed draft Division D-53 (6 baris), User Login D-54 (8 baris), dan User Non Login D-55 (5 baris) di Client E lewat skrip seed, lalu muat ulang halaman Import > Brand
 2. Buka Changelog Import, terapkan Filter Action = `Import Division`, lalu catat total entri pada Pagination sebagai baseline Changelog (0 bila empty state)
-3. Buka Activity Log (Global Settings > Activity Log) pada tab User Action, terapkan Filter Action = `Import Division`, lalu catat total entri pada Pagination sebagai baseline Activity Log (0 bila empty state)
-4. Buka halaman Import > Division
-5. Klik `[Import (6)]`
-6. Tunggu aksi selesai (permintaan mendapat respons)
-7. Muat ulang halaman Import > Division setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-8. Buka Changelog Import, terapkan Filter Action = `Import Division`, lalu baca total entri pada Pagination
-9. Verifikasi total Changelog Import bertambah tepat satu dibanding baseline langkah 2
-10. Verifikasi baris pertama tabel (sort default Date descending): Action `Import Division` (plain text), Data `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
-11. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import Division`, lalu baca total entri pada Pagination
-12. Verifikasi total Activity Log bertambah tepat satu dibanding baseline langkah 3
-13. Verifikasi baris pertama tabel (sort default Date descending): Action `Import Division` (plain text), Object `Import`, Name `Division`, Field `Import Summary`, Old Value `—`, New Value `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+3. Tutup modal Changelog Import
+4. Buka Activity Log (Global Settings > Activity Log) pada tab User Action, terapkan Filter Action = `Import Division`, lalu catat total entri pada Pagination sebagai baseline Activity Log (0 bila empty state)
+5. Buka halaman Import > Division
+6. Klik `[Import (6)]`
+7. Tunggu aksi selesai (permintaan mendapat respons)
+8. Muat ulang halaman Import > Division setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+9. Buka Changelog Import, terapkan Filter Action = `Import Division`, lalu baca total entri pada Pagination
+10. Verifikasi total Changelog Import bertambah tepat satu dibanding baseline langkah 2
+11. Verifikasi baris pertama tabel (sort default Date descending): Action `Import Division` (plain text), Data `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+12. Tutup modal Changelog Import
+13. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import Division`, lalu baca total entri pada Pagination
+14. Verifikasi total Activity Log bertambah tepat satu dibanding baseline langkah 4
+15. Verifikasi baris pertama tabel (sort default Date descending): Action `Import Division` (plain text), Object `Import`, Name `Division`, Field `Import Summary`, Old Value `—`, New Value `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
 
 ### Entri ringkasan User Login (TC-GS-IMPORT-423)
 
-14. Buka halaman Import > User Login
-15. Buka Changelog Import, terapkan Filter Action = `Import User Login`, lalu catat total entri pada Pagination sebagai baseline Changelog (0 bila empty state)
-16. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import User Login`, lalu catat total entri pada Pagination sebagai baseline Activity Log (0 bila empty state)
-17. Buka halaman Import > User Login
-18. Klik `[Import (8)]`
-19. Tunggu aksi selesai (permintaan mendapat respons)
-20. Muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-21. Buka Changelog Import, terapkan Filter Action = `Import User Login`, lalu baca total entri pada Pagination
-22. Verifikasi total Changelog Import bertambah tepat satu dibanding baseline langkah 15
-23. Verifikasi baris pertama tabel: Action `Import User Login` (plain text), Data `8 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
-24. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import User Login`, lalu baca total entri pada Pagination
-25. Verifikasi total Activity Log bertambah tepat satu dibanding baseline langkah 16
-26. Verifikasi baris pertama tabel: Action `Import User Login` (plain text), Object `Import`, Name `User Login`, Field `Import Summary`, Old Value `—`, New Value `8 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+16. Buka halaman Import > User Login
+17. Buka Changelog Import, terapkan Filter Action = `Import User Login`, lalu catat total entri pada Pagination sebagai baseline Changelog (0 bila empty state)
+18. Tutup modal Changelog Import
+19. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import User Login`, lalu catat total entri pada Pagination sebagai baseline Activity Log (0 bila empty state)
+20. Buka halaman Import > User Login
+21. Klik `[Import (8)]`
+22. Tunggu aksi selesai (permintaan mendapat respons)
+23. Muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+24. Buka Changelog Import, terapkan Filter Action = `Import User Login`, lalu baca total entri pada Pagination
+25. Verifikasi total Changelog Import bertambah tepat satu dibanding baseline langkah 17
+26. Verifikasi baris pertama tabel: Action `Import User Login` (plain text), Data `8 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+27. Tutup modal Changelog Import
+28. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import User Login`, lalu baca total entri pada Pagination
+29. Verifikasi total Activity Log bertambah tepat satu dibanding baseline langkah 19
+30. Verifikasi baris pertama tabel: Action `Import User Login` (plain text), Object `Import`, Name `User Login`, Field `Import Summary`, Old Value `—`, New Value `8 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
 
 ### Entri ringkasan User Non Login (TC-GS-IMPORT-424)
 
-27. Buka halaman Import > User Non Login
-28. Buka Changelog Import, terapkan Filter Action = `Import User Non Login`, lalu catat total entri pada Pagination sebagai baseline Changelog (0 bila empty state)
-29. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import User Non Login`, lalu catat total entri pada Pagination sebagai baseline Activity Log (0 bila empty state)
-30. Buka halaman Import > User Non Login
-31. Klik `[Import (5)]`
-32. Tunggu aksi selesai (permintaan mendapat respons)
-33. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-34. Buka Changelog Import, terapkan Filter Action = `Import User Non Login`, lalu baca total entri pada Pagination
-35. Verifikasi total Changelog Import bertambah tepat satu dibanding baseline langkah 28
-36. Verifikasi baris pertama tabel: Action `Import User Non Login` (plain text), Data `5 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
-37. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import User Non Login`, lalu baca total entri pada Pagination
-38. Verifikasi total Activity Log bertambah tepat satu dibanding baseline langkah 29
-39. Verifikasi baris pertama tabel: Action `Import User Non Login` (plain text), Object `Import`, Name `User Non Login`, Field `Import Summary`, Old Value `—`, New Value `5 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+31. Buka halaman Import > User Non Login
+32. Buka Changelog Import, terapkan Filter Action = `Import User Non Login`, lalu catat total entri pada Pagination sebagai baseline Changelog (0 bila empty state)
+33. Tutup modal Changelog Import
+34. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import User Non Login`, lalu catat total entri pada Pagination sebagai baseline Activity Log (0 bila empty state)
+35. Buka halaman Import > User Non Login
+36. Klik `[Import (5)]`
+37. Tunggu aksi selesai (permintaan mendapat respons)
+38. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+39. Buka Changelog Import, terapkan Filter Action = `Import User Non Login`, lalu baca total entri pada Pagination
+40. Verifikasi total Changelog Import bertambah tepat satu dibanding baseline langkah 32
+41. Verifikasi baris pertama tabel: Action `Import User Non Login` (plain text), Data `5 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+42. Tutup modal Changelog Import
+43. Buka Activity Log pada tab User Action, terapkan Filter Action = `Import User Non Login`, lalu baca total entri pada Pagination
+44. Verifikasi total Activity Log bertambah tepat satu dibanding baseline langkah 34
+45. Verifikasi baris pertama tabel: Action `Import User Non Login` (plain text), Object `Import`, Name `User Non Login`, Field `Import Summary`, Old Value `—`, New Value `5 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Panjang spec: 39 langkah, di atas 35 langkah; tiap blok berpola sama (baseline, commit, tunggu, baca log) dan berdiri sendiri.
-- Langkah 7, 20, dan 33 menunggu worker commit nyata (muat ulang tiap 5 detik, batas 2 menit) seperti yang tertulis di TC.
-- Langkah 2-3, 15-16, dan 28-29 mencatat baseline sebelum aksi pemicu pertama yang diasersi (S-12).
-- Langkah 1 adalah langkah penghubung pembuka (seed draft D-53 sampai D-55; S-03, K-7), tanpa `Verifikasi`. Langkah 6, 19, dan 32 adalah langkah penghubung "Tunggu aksi selesai" sesudah `[Import (N)]` (S-03). Langkah 14 dan 27 membuka halaman Import Sub-Tab terkait sebelum membuka Changelog Import, karena langkah sebelumnya membaca Activity Log (S-03).
+- Panjang spec: 45 langkah, di atas 35 langkah; tiap blok berpola sama (baseline, commit, tunggu, baca log) dan berdiri sendiri.
+- Langkah 8, 23, dan 38 menunggu worker commit nyata (muat ulang tiap 5 detik, batas 2 menit) seperti yang tertulis di TC.
+- Langkah 2 dan 4, 17 dan 19, serta 32 dan 34 mencatat baseline sebelum aksi pemicu pertama yang diasersi (S-12).
+- Langkah 1 adalah langkah penghubung pembuka (seed draft D-53 sampai D-55; S-03), tanpa `Verifikasi`. Langkah 7, 22, dan 37 adalah langkah penghubung "Tunggu aksi selesai" sesudah `[Import (N)]` (S-03). Langkah 16 dan 31 membuka halaman Import Sub-Tab terkait sebelum membuka Changelog Import, karena langkah sebelumnya membaca Activity Log (S-03). Langkah 3, 12, 18, 27, 33, dan 42 adalah langkah penghubung `Tutup modal Changelog Import` tanpa `Verifikasi`, supaya modal tidak masih terbuka saat Activity Log atau halaman Import dibuka (S-03).
 - Temuan untuk QA:
-  - Penanda selesai untuk langkah 6, 19, dan 32 (`[Import (N)]`) tidak disebut di TC-GS-IMPORT-422, 423, 424; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.
+  - Penanda selesai untuk langkah 7, 22, dan 37 (`[Import (N)]`) tidak disebut di TC-GS-IMPORT-422, 423, 424; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.
   - TC-GS-IMPORT-422, 423, 424 Post Condition a, b, c (draft dihapus, record tersimpan di halaman master, entri tercatat) tidak punya langkah observasi di TC selain Expected a-b; tidak diasersi terpisah (S-01).
   - TC-GS-IMPORT-423 Data Uji menulis Email tanpa suffix per run (`rizky.pratama@example.com`, dan seterusnya) dan TC-GS-IMPORT-424 sama; spec memakai suffix per run, nama dan Employee ID tetap literal.
   - TC tidak menyebut password per akun; tiap akun memakai env `<APP>_<ROLE>_PASSWORD` yang tercantum di Prerequisites (satu env hanya satu akun, S-11); env yang belum terdaftar didaftarkan di `spectra.config.ts` dan `.env.example` pada tahap script.

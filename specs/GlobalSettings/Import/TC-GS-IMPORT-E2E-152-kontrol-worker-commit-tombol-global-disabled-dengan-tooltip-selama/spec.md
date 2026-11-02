@@ -39,11 +39,11 @@ coverage:
 ### TC-GS-IMPORT-736, TC-GS-IMPORT-373, TC-GS-IMPORT-374, TC-GS-IMPORT-387: Satu sesi committing (draft D-56)
 
 1. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Verifikasi Unsaved Banner tampil
 4. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 5. Klik `[Import (250)]`
-6. Verifikasi tidak ada toast apa pun pada area toast selama 10 detik sejak klik `[Import (250)]` (pengamatan kontinu, jeda nyata; tidak ada toast "Preparing…")
+6. Verifikasi tidak ada toast apa pun pada area toast selama 10 detik sejak klik `[Import (250)]`
 7. Verifikasi `[Import (250)]` Disabled
 8. Muat ulang halaman Import > Brand
 9. Hover `[Import (250)]`
@@ -74,7 +74,7 @@ coverage:
 ### TC-GS-IMPORT-375: Kartu Errors, View Data, chip filter, Sub-Tab, Download Template, dan Changelog tetap berfungsi
 
 33. Reset Client E (D-47) dan seed draft Brand D-57 (250 baris: 248 `pending`, 1 `error` baris #5, 1 `duplicate` baris #20) lewat skrip fixture
-34. Buka Global Settings > Import, pilih Sub-Tab Brand
+34. Muat ulang halaman Import > Brand
 35. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 36. Klik `[Import (248)]`
 37. Tunggu aksi selesai (permintaan mendapat respons)
@@ -103,7 +103,7 @@ coverage:
 ### TC-GS-IMPORT-581: Baris duplicate tetap tampil selama committing dan dihapus saat commit selesai
 
 59. Reset Client E (D-47) dan seed draft Brand `brand-250-mutual.csv` (247 `pending`, 3 `duplicate`) lewat skrip fixture
-60. Buka Global Settings > Import, pilih Sub-Tab Brand
+60. Muat ulang halaman Import > Brand
 61. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 62. Klik `[Import (247)]`
 63. Tunggu aksi selesai (permintaan mendapat respons)
@@ -122,7 +122,7 @@ coverage:
 - Alasan melewati sekitar 35 langkah (71 langkah nominal): tiga blok homogen (satu sesi committing yang dibagi empat TC, satu sesi committing dengan draft campuran, satu commit sampai selesai), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok.
 - Pembagian TC lintas blok: TC-GS-IMPORT-736, 373, 374, dan 387 diamati pada satu job `committing` yang dibentuk satu kali (langkah 1 sampai 5) karena keempatnya hanya mengamati state yang sama dan job yang sudah `committing` tidak dapat dimulai ulang tanpa reset. Draft D-56 diberi umur >=24 jam (D-76 varian 1) agar `[Discard]` pada Unsaved Banner tampil untuk TC-373; TC-374, 387, dan 736 tidak bergantung pada banner. Langkah 6 (TC-736 a) dilakukan segera setelah klik `[Import (250)]`, sebelum `Verifikasi` artefak langkah 7 dan sebelum muat ulang, sesuai butir 5 dan 11 bagian 8b (state sementara diasersi sebelum langkah yang mengubahnya). Urutan langkah TC-736, 387, 373, 374 mengikuti urutan state halaman, bukan nomor TC.
 - TC-GS-IMPORT-387 hanya mengasersi bahwa klik pada tombol Disabled tidak membuka dialog dan tidak menampilkan toast; tooltip `[Import (250)]` diasersi pada langkah 10 (TC-736 b) dan tidak diasersi ulang pada TC-387 a karena nilainya sama.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 33, 59), aktivasi dan pelepasan kontrol worker (langkah 4, 35, 61, 68), pembukaan halaman dan Sub-Tab, hover, pengaturan Rows per page (langkah 20 dan 65; langkah 65 menampilkan baris #10 sampai #12 pada satu halaman), pindah halaman (langkah 21), menutup menu `⋯` (langkah 29), menutup modal Changelog (langkah 58), langkah 37 dan 63 (Tunggu aksi selesai: permintaan mendapat respons, memisahkan klik `[Import (248)]` dan `[Import (247)]` dari muat ulang), dan polling job (langkah 69) yang menunggu job latar belakang dan bukan jam. Langkah 3 dan 38 adalah `Verifikasi` tambahan di luar Expected TC yang menjadi anchor positif (Unsaved Banner tampil pada draft berumur >=24 jam; ada baris sebelum filter), sebelum asersi absence atau asersi universal.
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 33, 59), aktivasi dan pelepasan kontrol worker (langkah 4, 35, 61, 68), pembukaan halaman dan Sub-Tab, hover, pengaturan Rows per page (langkah 20 dan 65; langkah 65 menampilkan baris #10 sampai #12 pada satu halaman), pindah halaman (langkah 21), menutup menu `⋯` (langkah 29), menutup modal Changelog (langkah 58), langkah 37 dan 63 (Tunggu aksi selesai: permintaan mendapat respons, memisahkan klik `[Import (248)]` dan `[Import (247)]` dari muat ulang), dan polling job (langkah 69) yang menunggu job latar belakang dan bukan jam. Langkah 3 dan 39 adalah `Verifikasi` tambahan di luar Expected TC yang menjadi anchor positif (Unsaved Banner tampil pada draft berumur >=24 jam; ada baris sebelum filter), sebelum asersi absence atau asersi universal.
 - Langkah 6, 13, 55 adalah asersi absence toast; langkah 6 ditulis segera sesudah pemicu klik `[Import (250)]` dan sebelum `Verifikasi` artefak langkah 7 (`[Import (250)]` Disabled) sesuai butir 11 bagian 8b, sehingga anchor positif menyusul; langkah 12 (absence dialog) didahului langkah 10 yang membuktikan tombol tampil; langkah 54 berkas terunduh mendahului langkah 55.
 - Temuan untuk QA:
   - TC-GS-IMPORT-373, 374, 375, 387, 581, 736 tidak merujuk kontrol worker D-47 pada kolom D-ref walau butuh worker dijeda.

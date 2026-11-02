@@ -22,7 +22,7 @@ coverage:
 - Suite serial (`parallel: false`); lihat `suite.md`. Spec ini tidak mengubah data reader: opsi Bulk Action hanya dibuka dan dibaca, tidak ada yang dipilih.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader; `## Test Steps` tidak mengulang langkah buka.
 - Akun aktor: Total Control (Sari Dewi) Client A `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup (dibaca saja): Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), 10 reader DD-01 s.d. DD-10, plan Growth, format tanggal default `dd/MM/yy` 24-hour. Status yang dipakai: DD-01, DD-02, DD-06, DD-07 `Available`; DD-03 `Damaged`; DD-04 `Missing`. Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya.
+- Data Dinamis (Seed Reader A, dipulihkan fixture backend; dibaca saja): Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), 10 reader DD-01 s.d. DD-10, plan Growth, format tanggal default `dd/MM/yy` 24-hour. Status yang dipakai: DD-01, DD-02, DD-06, DD-07 `Available`; DD-03 `Damaged`; DD-04 `Missing`. Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya.
 - Guided Tooltip: hook suite `before` menyetel flag Guided Tooltip halaman Handheld Reader menjadi true untuk akun aktor dan hook `after` memulihkannya; lihat `suite.md`.
 - Tabel "Kasus eligibility bulk" (parameter langkah 1 sampai 7):
 
@@ -79,8 +79,8 @@ Untuk setiap baris tabel "Kasus eligibility bulk" (langkah 1 sampai 7):
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6, 12, 17, dan 22 (menutup daftar opsi dengan klik `Bulk Action` kedua kali), langkah 7, 13, dan 23 (mengosongkan seleksi lewat `×`), dan langkah 18 (melepas centang DD-03 sebagai bagian aksi TC-GS-HHR-200).
 - Asersi tidak ada (langkah 5) didahului langkah 4 yang membuktikan daftar opsi pada surface yang sama sudah tampil dan memuat opsi lain (anchor positif; 8b butir 2).
 - Aturan hak aktor per level capability (TC-GS-HHR-201 sampai 203) ada di spec 008.
+- Pengecualian S-12 Population Seed Reader A HHR (A-5): spec memakai nama literal tanpa suffix reader Pre-setup DD-01, DD-02, DD-03, DD-04, DD-06, dan DD-07 Client A karena asersi bergantung pada nama dan status persis; pemulihan Seed Reader A dijamin fixture backend yang disediakan tim FE/BE dan dinyatakan di `suite.md` dan Prerequisites; spec ini hanya membaca daftar opsi sehingga tidak ada langkah pemulihan; suite serial.
 - Temuan untuk QA:
   - TC-GS-HHR-196 Expected a menulis "masing-masing severity danger" sedangkan TC-GS-HHR-197 menulis `Mark as Available` (dark) dan `Delete` (danger); TC-GS-HHR-198, 199, dan 200 tidak menyebut severity. Spec mengasersi severity hanya pada kasus yang menyebutnya.
   - TC-GS-HHR-200 tidak menyebut cara melepas centang DD-03 sebelum mencentang DD-06 selain "Lepas centang DD-03"; spec memakai klik checkbox baris DD-03.
   - TC-GS-HHR-196 sampai 200 tidak mencantumkan Post Condition.
-  - Nama literal Seed Reader A tidak termasuk pengecualian Population S-12 di konvensi; spec memakainya karena asersi bergantung pada nilai dan hanya membaca data.

@@ -42,95 +42,100 @@ coverage:
 1. Siapkan draft Brand 12 baris (brand-12.csv, D-50) di Client E lewat fixture, lalu muat ulang halaman Import > Brand
 2. Catat baseline: buka Changelog Import (icon [Changelog] di header halaman), baca total pada teks Pagination (0 bila empty state), lalu tutup modal
 3. Klik [Import (12)]
-4. Muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-5. Verifikasi Dropzone tampil menggantikan Staging Table
-6. Verifikasi Unsaved Banner tidak tampil
-7. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
-8. Buka halaman Master Reference > Brand
-9. Atur Rows per page 100
-10. Verifikasi halaman Master Reference > Brand Client E memuat 12 Brand baru: Acme Corp, Lenovo, Zebra Technologies, Honeywell, Dell, HP Inc, Canon, Epson, Brother, Logitech, Cisco, Asus
-11. Buka halaman Import > Brand
-12. Buka Changelog Import (icon [Changelog] di header halaman)
-13. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
-14. Verifikasi entri teratas (sort default Date descending): Action `Import Brand`, Data `12 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
-15. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
+4. Tunggu aksi selesai (permintaan mendapat respons)
+5. Muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+6. Verifikasi Dropzone tampil menggantikan Staging Table
+7. Verifikasi Unsaved Banner tidak tampil
+8. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
+9. Buka halaman Master Reference > Brand
+10. Atur Rows per page 100
+11. Verifikasi halaman Master Reference > Brand Client E memuat 12 Brand baru: Acme Corp, Lenovo, Zebra Technologies, Honeywell, Dell, HP Inc, Canon, Epson, Brother, Logitech, Cisco, Asus
+12. Buka halaman Import > Brand
+13. Buka Changelog Import (icon [Changelog] di header halaman)
+14. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
+15. Verifikasi entri teratas (sort default Date descending): Action `Import Brand`, Data `12 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+16. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
 
 ### TC-GS-IMPORT-353: Import 6 baris Measurement
 
-16. Buka Tab Measurement pada halaman Import, siapkan draft Measurement 6 baris (measurement-commit-6.csv, D-51) di Client E lewat fixture, lalu muat ulang halaman Import > Measurement
-17. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
-18. Klik [Import (6)]
-19. Muat ulang halaman Import > Measurement setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-20. Verifikasi Dropzone tampil menggantikan Staging Table
-21. Verifikasi Unsaved Banner tidak tampil
-22. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
-23. Buka halaman Master Reference > Measurement
-24. Verifikasi halaman Master Reference > Measurement Client E memuat 6 Measurement baru dengan Symbol: Meter `m`, Liter `l`, Gram `g`, Centimeter `cm`, Pack `pk`, Dozen `dz`
-25. Buka halaman Import > Measurement
-26. Buka Changelog Import (icon [Changelog] di header halaman)
-27. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
-28. Verifikasi entri teratas (sort default Date descending): Action `Import Measurement`, Data `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
-29. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
+17. Buka Tab Measurement pada halaman Import, siapkan draft Measurement 6 baris (measurement-commit-6.csv, D-51) di Client E lewat fixture, lalu muat ulang halaman Import > Measurement
+18. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
+19. Klik [Import (6)]
+20. Tunggu aksi selesai (permintaan mendapat respons)
+21. Muat ulang halaman Import > Measurement setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+22. Verifikasi Dropzone tampil menggantikan Staging Table
+23. Verifikasi Unsaved Banner tidak tampil
+24. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
+25. Buka halaman Master Reference > Measurement
+26. Verifikasi halaman Master Reference > Measurement Client E memuat 6 Measurement baru dengan Symbol: Meter `m`, Liter `l`, Gram `g`, Centimeter `cm`, Pack `pk`, Dozen `dz`
+27. Buka halaman Import > Measurement
+28. Buka Changelog Import (icon [Changelog] di header halaman)
+29. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
+30. Verifikasi entri teratas (sort default Date descending): Action `Import Measurement`, Data `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+31. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
 
 ### TC-GS-IMPORT-354: Import 6 baris Position
 
-30. Buka Tab Position pada halaman Import, siapkan draft Position 6 baris (position-commit-6.csv, D-52) di Client E lewat fixture, lalu muat ulang halaman Import > Position
-31. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
-32. Klik [Import (6)]
-33. Muat ulang halaman Import > Position setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-34. Verifikasi Dropzone tampil menggantikan Staging Table
-35. Verifikasi Unsaved Banner tidak tampil
-36. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
-37. Buka halaman User > Position
-38. Atur Rows per page 100
-39. Verifikasi halaman User > Position Client E memuat 6 Position baru: Store Supervisor, HR Business Partner, IT Operations Lead, Warehouse Staff, Procurement Officer, Sales Executive
-40. Buka halaman Import > Position
-41. Buka Changelog Import (icon [Changelog] di header halaman)
-42. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
-43. Verifikasi entri teratas (sort default Date descending): Action `Import Position`, Data `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
-44. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
+32. Buka Tab Position pada halaman Import, siapkan draft Position 6 baris (position-commit-6.csv, D-52) di Client E lewat fixture, lalu muat ulang halaman Import > Position
+33. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
+34. Klik [Import (6)]
+35. Tunggu aksi selesai (permintaan mendapat respons)
+36. Muat ulang halaman Import > Position setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+37. Verifikasi Dropzone tampil menggantikan Staging Table
+38. Verifikasi Unsaved Banner tidak tampil
+39. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
+40. Buka halaman User > Position
+41. Atur Rows per page 100
+42. Verifikasi halaman User > Position Client E memuat 6 Position baru: Store Supervisor, HR Business Partner, IT Operations Lead, Warehouse Staff, Procurement Officer, Sales Executive
+43. Buka halaman Import > Position
+44. Buka Changelog Import (icon [Changelog] di header halaman)
+45. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
+46. Verifikasi entri teratas (sort default Date descending): Action `Import Position`, Data `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+47. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
 
 ### TC-GS-IMPORT-355: Import 6 baris Division
 
-45. Buka Tab Division pada halaman Import, siapkan draft Division 6 baris (division-commit-6.csv, D-53) di Client E lewat fixture, lalu muat ulang halaman Import > Division
-46. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
-47. Klik [Import (6)]
-48. Muat ulang halaman Import > Division setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-49. Verifikasi Dropzone tampil menggantikan Staging Table
-50. Verifikasi Unsaved Banner tidak tampil
-51. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
-52. Buka halaman User > Division
-53. Atur Rows per page 100
-54. Verifikasi halaman User > Division Client E memuat 6 Division baru: Finance & Accounting (Code `FIN`), Operations, IT Support (Code `ITS`), Procurement (Code `PRC`), Sales (Code `SLS`), Legal (Code `LGL`)
-55. Verifikasi Division `Operations` (Code kosong pada berkas) tampil dengan kolom Code terisi
-56. Buka halaman Import > Division
-57. Buka Changelog Import (icon [Changelog] di header halaman)
-58. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
-59. Verifikasi entri teratas (sort default Date descending): Action `Import Division`, Data `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
-60. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
+48. Buka Tab Division pada halaman Import, siapkan draft Division 6 baris (division-commit-6.csv, D-53) di Client E lewat fixture, lalu muat ulang halaman Import > Division
+49. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
+50. Klik [Import (6)]
+51. Tunggu aksi selesai (permintaan mendapat respons)
+52. Muat ulang halaman Import > Division setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+53. Verifikasi Dropzone tampil menggantikan Staging Table
+54. Verifikasi Unsaved Banner tidak tampil
+55. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
+56. Buka halaman User > Division
+57. Atur Rows per page 100
+58. Verifikasi halaman User > Division Client E memuat 6 Division baru: Finance & Accounting (Code `FIN`), Operations, IT Support (Code `ITS`), Procurement (Code `PRC`), Sales (Code `SLS`), Legal (Code `LGL`)
+59. Verifikasi Division `Operations` (Code kosong pada berkas) tampil dengan kolom Code terisi
+60. Buka halaman Import > Division
+61. Buka Changelog Import (icon [Changelog] di header halaman)
+62. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
+63. Verifikasi entri teratas (sort default Date descending): Action `Import Division`, Data `6 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+64. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
 
 ### TC-GS-IMPORT-572: Commit satu baris memakai bentuk tunggal
 
-61. Buka Tab Brand pada halaman Import, siapkan draft Brand 1 baris (brand-nikon-1.csv) di Client E lewat fixture, lalu muat ulang halaman Import > Brand
-62. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
-63. Klik [Import (1)]
-64. Muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-65. Verifikasi Dropzone tampil
-66. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil
-67. Buka notifikasi lonceng
-68. Verifikasi notifikasi lonceng memuat judul "Import Brand completed" dengan isi "1 record imported."
-69. Buka Changelog Import (icon [Changelog] di header halaman)
-70. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
-71. Verifikasi entri teratas (sort default Date descending) memuat Data `1 record imported, 0 duplicates ignored, 0 errors remaining`
+65. Buka Tab Brand pada halaman Import, siapkan draft Brand 1 baris (brand-nikon-1.csv) di Client E lewat fixture, lalu muat ulang halaman Import > Brand
+66. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
+67. Klik [Import (1)]
+68. Tunggu aksi selesai (permintaan mendapat respons)
+69. Muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+70. Verifikasi Dropzone tampil
+71. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil
+72. Buka notifikasi lonceng
+73. Verifikasi notifikasi lonceng memuat judul "Import Brand completed" dengan isi "1 record imported."
+74. Buka Changelog Import (icon [Changelog] di header halaman)
+75. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
+76. Verifikasi entri teratas (sort default Date descending) memuat Data `1 record imported, 0 duplicates ignored, 0 errors remaining`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md` (TC-GS-IMPORT-352, 353, 354, 355, 572).
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan TC sumber dipertahankan.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 16, 30, 45, 61 (penyiapan draft sebagai precondition TC lewat fixture dan berpindah Tab); langkah 2, 17, 31, 46, 62 (baseline jumlah entri Changelog Import sebelum aksi pemicu pertama yang diasersi, S-12); langkah 15, 29, 44, 60 (menutup modal dan reset Client E sesuai D-47 sebelum TC berikutnya, Kontrak Fixture R1); langkah 9, 38, 53 (Rows per page 100 agar seluruh record baru tampil).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 17, 32, 48, 65 (penyiapan draft sebagai precondition TC lewat fixture dan berpindah Tab); langkah 2, 18, 33, 49, 66 (baseline jumlah entri Changelog Import sebelum aksi pemicu pertama yang diasersi, S-12); langkah 16, 31, 47, 64 (menutup modal dan reset Client E sesuai D-47 sebelum TC berikutnya, Kontrak Fixture R1); langkah 10, 41, 57 (Rows per page 100 agar seluruh record baru tampil); langkah 4, 20, 35, 51, 68 (tunggu aksi selesai sesudah klik [Import (N)] sebelum memuat ulang halaman).
 - Baseline Changelog: entri yang diasersi dicari sebagai entri teratas sesuai sort default Date descending setelah total bertambah tepat satu; total Changelog tidak diasersi sebagai angka absolut (S-12).
 - Tunggu commit: pemuatan ulang tiap 5 detik dengan batas 2 menit adalah bagian langkah TC (worker commit normal), bukan manipulasi jam.
-- Spec ini di atas sekitar 35 langkah (71 langkah). Alasan: lima blok homogen (siapkan draft, Import, tunggu commit, periksa banner, periksa halaman master data, periksa Changelog Import) yang berdiri sendiri dengan draft dan reset Client E sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini di atas sekitar 35 langkah (76 langkah). Alasan: lima blok homogen (siapkan draft, Import, tunggu commit, periksa banner, periksa halaman master data, periksa Changelog Import) yang berdiri sendiri dengan draft dan reset Client E sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: commit User Login dan User Non Login ada di spec 134; Partial Commit (draft berisi baris error dan duplicate) di spec 135; kontrol worker commit D-47 dan late-binding di spec kelas d dan 140 sampai 143. Spec ini tidak memakai kontrol worker (worker berjalan normal).
 - Temuan untuk QA:
   - TC-GS-IMPORT-352 sampai 355 dan 572 tidak punya asersi isi lain yang dapat dibaca untuk Post Condition "Draft ... dihapus (state belum ada draft)" selain Dropzone tampil (sudah diasersi); Post Condition record tersimpan diasersi lewat halaman master data.

@@ -24,7 +24,7 @@ coverage:
 | Sesi | Peran | Nama user | Email | Env var password |
 |---|---|---|---|---|
 | A | Total Control (Client A) | Sari Dewi | `totalControl_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_TC_PASSWORD` |
-| Principal (API) | Principal, hanya memicu keputusan Approve atau Reject | Bambang Hartono | `principal_automated_qaTeam1@qwertysystem.net` | Sesi API (`Spectra.env.GS_PRINCIPAL_TC_PASSWORD`) |
+| Principal (API) | Principal, hanya memicu keputusan Approve atau Reject | Bambang Hartono | `totalControlPrincipal_automated_qaTeam1@qwertysystem.net` | Sesi API (`Spectra.env.GS_PRINCIPAL_TC_PASSWORD`) |
 | Admin B (API) | Admin B, Total Control Client A, hanya memicu perubahan state | Nadia Pratama | `totalControlSecond_automated_qaTeam1@qwertysystem.net` | Sesi API (`Spectra.env.GS_TC2_PASSWORD`) |
 
 - Login Sesi A dilakukan di hook `before`; hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader. Principal dan Admin B memakai sesi API karena hanya memicu perubahan state dan hasil di sesi itu tidak diasersi; langkah pemicunya ditulis "hingga ... tersimpan". Hook `after` mengembalikan sesi ke akun default suite (Sesi A).

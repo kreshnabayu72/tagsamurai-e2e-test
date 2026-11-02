@@ -26,7 +26,7 @@ coverage:
   - D-09: Draft Brand 13 baris Client A: D-01 ditambah baris #13 berstatus `error` dengan Brand Name 121 karakter (nilai sumber Brand pertama tabel D-41), dipulihkan sebelum TC-201.
   - D-76 varian 1 (hook umur draft, jam server dan `created_at` job): untuk TC-202 `created_at` job draft dimundurkan 25 jam sehingga Unsaved Banner tampil. Umur draft hanya dipakai sebagai pemicu banner (bukan batas waktu yang diuji).
 - Kemampuan teknis: hover untuk tooltip, pengamatan unduhan berkas (tanpa memeriksa isi), tombol keyboard Tab, Shift+Tab, panah atas dan bawah, hook umur draft D-76 (jam server atau `created_at`) serta skrip pemulihan draft (disediakan tim FE/BE).
-- State global: jam server atau `created_at` draft dimajukan pada langkah 11 (D-76 varian 1); hook `after` memulihkan draft Client A ke D-01 dan jam server ke nilai awal. Jam browser tidak diubah.
+- State global: jam server atau `created_at` draft dimajukan pada langkah 14 (D-76 varian 1); hook `after` memulihkan draft Client A ke D-01 dan jam server ke nilai awal. Jam browser tidak diubah.
 - Cleanup (hook `after`, tidak berasumsi setup berhasil penuh): pulihkan draft Brand Client A ke D-01, pulihkan jam server, dan lepas kunci sesi edit.
 
 ## Test Steps

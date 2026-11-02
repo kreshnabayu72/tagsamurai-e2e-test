@@ -22,7 +22,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor (ganti akun eksplisit): Total Control Pre-setup #10 (Fajar Nugroho, tanpa foto) `noPhotoProfile_automated_{namaCompany}@qwertysystem.net` (password `Spectra.env.GS_PROFILE_NOPHOTO_PASSWORD`), login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Total Control Pre-setup #7 (Maya Anggraini) `passwordProfile_automated_{namaCompany}@qwertysystem.net` (password aktif `Passw0rd!Old`, `Spectra.env.GS_PROFILE_PWD_PASSWORD`; Time Format 24 jam; timezone Asia/Jakarta). Password baru uji `N3wPassw0rd!` (Data Dinamis #3, `Spectra.env.PROFILE_PASSWORD_NEW`) hanya dipakai pada request yang ditolak. Password tidak ditulis di spec atau fixture.
+- Akun aktor (ganti akun eksplisit): Total Control Pre-setup #10 (Fajar Nugroho, tanpa foto) `noPhotoProfile_automated_{namaCompany}@qwertysystem.net` (password `Spectra.env.GS_PROFILE_NOPHOTO_PASSWORD`), login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Total Control Pre-setup #7 (Maya Anggraini) `passwordProfile_automated_{namaCompany}@qwertysystem.net` (password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`; Time Format 24 jam; timezone Asia/Jakarta). Password baru uji `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3) hanya dipakai pada request yang ditolak. Password tidak ditulis di spec atau fixture.
 - File uji Pre-setup #17: `document.pdf`, `animated.gif`, `not-an-image.png` (isi teks), `valid-photo.png`, `incompressible-5mb.png` (5 MB), `1mb-plus-1byte.png` (1.048.577 byte). Input uji yang submit-nya ditolak boleh literal: Confirm New Password `Different1!`.
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): memberikan file ke file chooser tanpa filter ekstensi picker (bypass file picker); `Spectra.intercept()` yang mengganti isi request unggahan foto dengan file lain tanpa resize FE; kemampuan membaca status dan isi respons server atas unggahan; klien HTTP yang mengirim request langsung ke server memakai token sesi akun yang login (unggahan Edit Photo dan Change Password); login lewat sesi API aktor untuk memeriksa password lama tanpa mengusir sesi UI; fixture BE jam server absolut (09:05) dan fixture BE lock Change Password tier 15 menit (terkunci sampai 09:15) serta tier wajib-reset (counter 8); fixture BE reset counter Change Password dan Login ke 0.
 - State global yang diubah: jam server dan lock Change Password akun #7. Dipulihkan oleh langkah pemulihan di akhir spec dan hook `after` suite. Suite berjalan serial (`parallel: false`).
@@ -39,7 +39,7 @@ coverage:
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Pelaku kedua admin (Pre-setup #6) memicu perubahan state lewat sesi API aktor yang tidak dihitung sebagai sesi web; kemampuan disediakan tim BE/FE. Lihat `suite.md`, Hook suite 4.
 - Counter Change Password dan Login akun Pre-setup #7 dan #18 direset ke 0 di hook `beforeEach` suite; spec yang menguji counter mengaturnya sesudah hook; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 6.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
 
 ## Test Steps
 
@@ -124,7 +124,7 @@ TC-GS-PROFILE-129 (tier wajib-reset):
 - Pembagian TC lintas spec: TC-GS-PROFILE-122 dan 129 mengasersi respons request langsung; perilaku UI saat lock ada di spec 029 sampai 031.
 - Temuan untuk QA:
   - "Bypass file picker" pada TC-GS-PROFILE-277 sampai 279 tidak menyebut mekanisme dan tidak menyebut apakah FE memvalidasi ekstensi sebelum mengirim; spec mengasumsikan FE tetap mengirim file sehingga respons 422 teramati.
-  - TC-GS-PROFILE-308 langkah 1 sampai 3 tidak menyebut Current Password pada langkah 3 selain "benar"; spec memakai `Passw0rd!Old`.
+  - TC-GS-PROFILE-308 langkah 1 sampai 3 tidak menyebut Current Password pada langkah 3 selain "benar"; spec memakai `Spectra.env.GS_PROFILE_PWD_PASSWORD`.
   - Post Condition TC-GS-PROFILE-308 ("Counter Change Password tidak bertambah") dan Post Condition TC-GS-PROFILE-122 tidak punya langkah observasi di TC sehingga tidak diasersi.
   - TC-GS-PROFILE-122 dan 129 menyebut "Login dan sesi tidak terpengaruh" tanpa cara cek; spec memakai login lewat sesi API aktor dan muat ulang halaman web.
   - Nilai durasi lock 15 menit pada TC-GS-PROFILE-122, 129, dan 308 bertanda PRD? di sumber; spec mengikuti TC.

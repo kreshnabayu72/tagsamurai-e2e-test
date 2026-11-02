@@ -4,17 +4,17 @@ Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld
 
 Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 488 TC masuk 79 spec, 0 TC hanya-BE tidak masuk spec. Sembilan TC kandidat hanya-BE (TC-GS-HHR-417 sampai 423, 466, 474) tetap masuk sebagai spec FE+BE atas keputusan user (P-4). Setiap TC yang masuk terpetakan ke spec di `sourceTc` (diverifikasi skrip: 488 TC, 0 hilang, TC-GS-HHR-426 tidak ada di sumber maupun spec). Satu-satunya TC yang muncul di dua spec adalah 13 TC log-absence (TC-GS-HHR-229, 403 sampai 408, 413 sampai 416, 420, 474) yang asersinya terbelah antara spec asal (`012`, `013`, `049`) dan spec `079` menurut S-05; `check-suite.py` menandainya C2 (batasan skrip yang diketahui, bukan cacat), lihat Pembagian TC lintas spec.
 
-Status revisi 2026-10-30: Wave 1 selesai (spec baru `077`, `078`, `079`; 44 spec lama dalam slice A sampai F disinkronkan dengan TC dan konvensi terapan). **Wave 2 belum dikerjakan**: 27 spec (`002`, `003`, `014`, `015`, `019`, `024`, `025`, `076`, `027`, `028`, `030`, `033`, `036`, `037`, `039`, `041`, `042`, `044`, `045`, `047`, `050`, `052`, `053`, `063`, `064`, `065`, `072`) masih menunggu sapuan Ringan; slug `036` masih berakhir `-dan-download` sampai Wave 2. Halaman ini difinalkan sesudah Wave 2.
+Status revisi 2 (2026-11-02): Wave 1 dan Wave 2 selesai (79 spec). Revisi 2 menerapkan CV-03 opsi 3 (Expected relatif baseline untuk audit trail seed; 33 TC), perubahan TC Tahap 4 (BX-09, BY-01, BY-06, BY-27, BY-30, BY-31), dan Wave 2 sapuan Ringan (43 spec disunting, 36 tidak berubah); folder `036` berganti slug menjadi `TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort`.
 
 ## TC granular → spec e2e
 
-Kolom Langkah = jumlah langkah bernomor nominal di `## Test Steps` (blok yang diulang per kolom atau per entri dihitung sekali). Dengan ekspansi iterasi: `068` 99, `070` sekitar 85, `040` 56, `079` sekitar 165.
+Kolom Langkah = jumlah langkah bernomor nominal di `## Test Steps` (blok yang diulang per kolom atau per entri dihitung sekali). Dengan ekspansi iterasi: `068` 99, `070` sekitar 85, `040` 56, `041` 56, `042` 60, `045` 118, `066` 141 (80 + 61), `079` sekitar 165.
 
 | Spec | Judul | Mode | Langkah | TC sumber |
 |---|---|:---:|:---:|---|
 | TC-GS-HHR-E2E-001-screening-tabel-layout-urutan-default-dan-kontras | Screening Halaman Handheld Reader: Layout Tiga Zona, Urutan Default Device Name A-Z, Navigasi Keyboard Row Action, dan Kontras Teks WCAG 4.5:1 | FE+BE | 44 | 1, 2, 463, 464 |
-| TC-GS-HHR-E2E-002-format-isi-sel-kolom-badge-tanggal-dan-kolom-curated | Format Isi Sel Kolom Daftar Reader: Text Link Device Name, Nilai Kosong, Reader Power, Badge, Tanggal, dan Kolom Curated lewat Column Visibility | FE+BE | 82 | 3–14 |
-| TC-GS-HHR-E2E-003-kartu-kuota-dan-empty-state-client-khusus | License Counter Cards Used of Kuota dan Remaining, Kartu Kuota Habis Client Q, dan Empty State Client E | FE+BE | 25 | 15–17 |
+| TC-GS-HHR-E2E-002-format-isi-sel-kolom-badge-tanggal-dan-kolom-curated | Format Isi Sel Kolom Daftar Reader: Text Link Device Name, Nilai Kosong, Reader Power, Badge, Tanggal, dan Kolom Curated lewat Column Visibility | FE+BE | 89 | 3–14 |
+| TC-GS-HHR-E2E-003-kartu-kuota-dan-empty-state-client-khusus | License Counter Cards Used of Kuota dan Remaining, Kartu Kuota Habis Client Q, dan Empty State Client E | FE+BE | 27 | 15–17 |
 | TC-GS-HHR-E2E-004-resilience-baca-loading-dan-error-load-tabel-kartu | Resilience Baca Halaman Handheld Reader: State Loading, Error Load Tabel, dan Error Load License Counter Cards dengan Try Again | mock | 23 | 20–22 |
 | TC-GS-HHR-E2E-005-guided-tooltip-konten-navigasi-keyboard | Guided Tooltip Halaman Handheld Reader: Konten Tiga Step, Navigasi Back di Step 1 dan 2, dan Navigasi Keyboard | FE+BE | 39 | 23, 28, 30 |
 | TC-GS-HHR-E2E-006-guided-tooltip-flag-seen-dan-dismiss | Guided Tooltip Halaman Handheld Reader: Muncul Otomatis, Done, Skip, Klik Overlay Menandai Seen, Replay lewat [?], serta Resize dan Navigasi Keluar Tidak Menandai Seen | FE+BE | 44 | 24–27, 29, 453 |
@@ -25,18 +25,18 @@ Kolom Langkah = jumlah langkah bernomor nominal di `## Test Steps` (blok yang di
 | TC-GS-HHR-E2E-011-capability-dicabut-saat-aksi-berjalan | Capability Manage hardware Dicabut Saat Sesi Berjalan: Aksi Tulis Ditolak Server dan UI Di-refresh | FE+BE | 11 | 50 |
 | TC-GS-HHR-E2E-012-defense-in-depth-izin-aksi-tulis-langsung-ke-server | Defense-in-Depth: Aksi Tulis Handheld Reader Tanpa Izin atau pada Reader Waiting for Approval Ditolak Server | FE+BE | 65 | 403–416 |
 | TC-GS-HHR-E2E-013-defense-in-depth-validasi-payload-aktivasi-alias-dan-power | Defense-in-Depth: Validasi Payload Aktivasi, Alias Name, dan Reader Power Lewat Request Langsung ke Server | FE+BE | 90 | 417–425, 448, 449, 482, 483 |
-| TC-GS-HHR-E2E-014-activate-pintu-masuk-overlay-range-type-dan-resolusi-minimum | Pintu Masuk Activate Reader: Overlay Select Range Type, Penutupan Overlay, Popup Menunggu Sync, dan Resolusi Minimum 1280x720 | FE+BE | 45 | 51–53, 57, 444 |
+| TC-GS-HHR-E2E-014-activate-pintu-masuk-overlay-range-type-dan-resolusi-minimum | Pintu Masuk Activate Reader: Overlay Select Range Type, Penutupan Overlay, Popup Menunggu Sync, dan Resolusi Minimum 1280x720 | FE+BE | 49 | 51–53, 57, 444 |
 | TC-GS-HHR-E2E-015-activate-gate-kuota-habis-dan-kuota-terlampaui | Gate Kuota Activate Reader: Insufficient License Quota saat Kuota Habis dan Kuota Terlampaui akibat Downgrade | FE+BE | 32 | 54–56 |
 | TC-GS-HHR-E2E-016-activate-sync-kegagalan-driver-dan-reader | Sync Activate Reader: Spinner, Driver Tidak Terpasang, Reader Mati, Kabel Dicabut, Dua Reader Tersambung, dan Sync Ulang yang Gagal | FE+BE | 48 | 58–62, 465 |
 | TC-GS-HHR-E2E-017-activate-jalur-a-official-sync-submit-dan-power | Aktivasi Jalur A (Official): Hasil Sync, Submit Long Range dan Short Range, Default Reader Power 30 dBm, Reader Power Disesuaikan, Alias Name, dan Aktivasi oleh Manage hardware Create | FE+BE | 90 | 42, 63–68 |
 | TC-GS-HHR-E2E-018-activate-jalur-b-field-pemilih-dan-validasi | Aktivasi Jalur B (Self-Purchased): Field, Pemilih Device Name dan SKU, Validasi Submit, Batas 120 Karakter, dan Default Reader Power 30 dBm | FE+BE | 95 | 69, 71, 74, 445, 479–481, 484, 485 |
-| TC-GS-HHR-E2E-019-activate-jalur-b-submit-sukses-penomoran-dan-brand-baru | Aktivasi Jalur B Berhasil: Source Self-Purchased, Penomoran Device Name per ID, Brand Baru, Model/Type Kosong, Stay on Form, dan Counter yang Tidak Dipakai Ulang | FE+BE | 107 | 70, 72, 73, 486, 487 |
+| TC-GS-HHR-E2E-019-activate-jalur-b-submit-sukses-penomoran-dan-brand-baru | Aktivasi Jalur B Berhasil: Source Self-Purchased, Penomoran Device Name per ID, Brand Baru, Model/Type Kosong, Stay on Form, dan Counter yang Tidak Dipakai Ulang | FE+BE | 112 | 70, 72, 73, 486, 487 |
 | TC-GS-HHR-E2E-020-activate-jalur-b-toggle-byo-nonaktif | Aktivasi Jalur B saat Toggle Self-Purchased Device Activation Nonaktif: Ditolak saat Sync, Pulih dengan Reader Stok, dan Ditolak saat Submit setelah Toggle Dimatikan | FE+BE | 45 | 75, 76, 473 |
 | TC-GS-HHR-E2E-021-activate-collision-duplikat-dan-ketidaksesuaian-range-type | Activate Reader: Collision Lintas Tenant, Serial Duplikat, Ketidaksesuaian Range Type, dan Jalur Berubah antara Sync dan Submit | FE+BE | 107 | 77–80, 477, 478 |
 | TC-GS-HHR-E2E-022-activate-sync-ulang-dan-reader-dicabut | Activate Reader: Sync Ulang dengan Reader yang Sama atau Berbeda dan Reader Dicabut setelah Sync | FE+BE | 30 | 82–84 |
 | TC-GS-HHR-E2E-023-activate-clear-field-penutupan-popup-dan-reload | Activate Reader: Clear Field, Penutupan Popup (X, Esc, Backdrop, Dialog Cancel Activation), dan Reload Halaman | FE+BE | 94 | 85–94, 102 |
-| TC-GS-HHR-E2E-024-activate-validasi-alias-trim-dan-stay-on-form | Activate Reader: Validasi Alias Name (Batas 120, Emoji), Trim Alias, Brand, dan Model/Type, serta Checkbox Stay on this form | FE+BE | 74 | 99–101, 446, 447, 467, 468 |
-| TC-GS-HHR-E2E-025-activate-saving-state-dan-klik-ganda-submit | Activate Reader: Saving State Tombol Submit dan Klik Ganda Cepat pada Submit | FE+BE | 29 | 95, 98 |
+| TC-GS-HHR-E2E-024-activate-validasi-alias-trim-dan-stay-on-form | Activate Reader: Validasi Alias Name (Batas 120, Emoji), Trim Alias, Brand, dan Model/Type, serta Checkbox Stay on this form | FE+BE | 76 | 99–101, 446, 447, 467, 468 |
+| TC-GS-HHR-E2E-025-activate-saving-state-dan-klik-ganda-submit | Activate Reader: Saving State Tombol Submit dan Klik Ganda Cepat pada Submit | FE+BE | 30 | 95, 98 |
 | TC-GS-HHR-E2E-026-resilience-tulis-aktivasi-edit-alias-dan-power | Resilience Tulis: Aktivasi, Edit Alias Name, dan Edit Reader Power saat Kegagalan Server 5xx dan Timeout, Retry setelah Timeout | FE+BE (intercept) | 122 | 96, 97, 121, 122, 137, 368, 436 |
 | TC-GS-HHR-E2E-027-resilience-tulis-status-delete-cancel-dan-bulk | Resilience Tulis: Mark as, Delete, Cancel Request, dan Aksi Bulk saat Kegagalan Server 5xx serta Tidak Ada Entri Log Baru | FE+BE (intercept) | 89 | 147, 155, 160, 225, 226, 352 |
 | TC-GS-HHR-E2E-028-resilience-download-daftar-usage-dan-changelog | Resilience Download: Kegagalan Unduh Daftar Reader, Tab Usage, Modal Changelog, dan Popup Event Log Activate | FE+BE (intercept) | 33 | 184, 315, 339 |
@@ -46,17 +46,17 @@ Kolom Langkah = jumlah langkah bernomor nominal di `## Test Steps` (blok yang di
 | TC-GS-HHR-E2E-032-edit-reader-power-screening-slider-dan-guard | Edit Reader Power: Screening Dialog, Step Slider 1 dBm, Save Tanpa Perubahan, Row Action Short Range, dan Clear Field | FE+BE | 50 | 125, 129–132 |
 | TC-GS-HHR-E2E-033-edit-reader-power-sukses-batas-dan-guard-save | Edit Reader Power Sukses: Nilai Baru, Batas 5 dan 30 dBm, Reader Damaged, Saving State, dan Klik Ganda Save | FE+BE | 46 | 126–128, 133, 451, 457 |
 | TC-GS-HHR-E2E-034-edit-reader-power-penutupan-form-dan-unsaved-changes | Edit Reader Power: Dialog Unsaved Changes (Cancel dan Leave), Klik Backdrop, dan Tutup Tanpa Perubahan | FE+BE | 22 | 134–136, 450 |
-| TC-GS-HHR-E2E-035-popup-detail-reader-screening-dan-pembukaan | Popup Handheld Reader Detail: Pembukaan, Screening, Nilai Kosong, Penutupan, Reader Waiting for Approval dan Jalur B, serta State Tab | FE+BE | 54 | 163–168, 472, 489 |
-| TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | Tab Usage Popup Detail: Screening, Isi Baris, Badge Product, Search, Filter Panel, Sort 3-State, serta Empty State | FE+BE | 92 | 169–178 |
-| TC-GS-HHR-E2E-037-tab-usage-transaction-id-akses-produk-dan-isolasi | Tab Usage: Transaction ID sebagai Tautan atau Teks Biasa Menurut Akses Produk, Strip untuk Event Global Settings, dan Isolasi Client | FE+BE | 19 | 179–182 |
+| TC-GS-HHR-E2E-035-popup-detail-reader-screening-dan-pembukaan | Popup Handheld Reader Detail: Pembukaan, Screening, Nilai Kosong, Penutupan, Reader Waiting for Approval dan Jalur B, serta State Tab | FE+BE | 56 | 163–168, 472, 489 |
+| TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | Tab Usage Popup Detail: Screening, Isi Baris, Badge Product, Search, Filter Panel, Sort 3-State, serta Empty State | FE+BE | 99 | 169–178 |
+| TC-GS-HHR-E2E-037-tab-usage-transaction-id-akses-produk-dan-isolasi | Tab Usage: Transaction ID sebagai Tautan atau Teks Biasa Menurut Akses Produk, Strip untuk Event Global Settings, dan Isolasi Client | FE+BE | 20 | 179–182 |
 | TC-GS-HHR-E2E-038-last-scanned-dari-usage-event-produk-lain | Last Scanned, Last Scanned In, Last User, dan Tab Usage Diperbarui dari Sesi Audit Fixed Asset dan Pair TAG Global Settings | FE+BE | 23 | 185, 186 |
 | TC-GS-HHR-E2E-039-mark-as-screening-dialog-esc-dan-row-action-per-status | Mark as Damaged, Missing, dan Available: Screening Dialog, Cancel, Esc, dan Row Action per Status | FE+BE | 23 | 138, 140, 142, 144, 146, 148 |
 | TC-GS-HHR-E2E-040-mark-as-sukses-damaged-missing-available | Mark as Damaged, Missing, dan Available Berhasil Mengubah Status, Row Action Mengikuti Status Baru, dan Klik Ganda Hanya Sekali | FE+BE | 23 | 139, 141, 143, 145, 459 |
-| TC-GS-HHR-E2E-041-cancel-request-waiting-for-approval | Cancel Request Reader Waiting for Approval: Row Action Terkunci, Dialog, Go Back, Pembatalan Jalur A dan B, dan Klik Ganda | FE+BE | 38 | 156–159, 161, 162, 460 |
-| TC-GS-HHR-E2E-042-delete-reader-single | Delete Reader Tunggal: Dialog, Cancel, Delete Jalur A dan B pada Status Available, Damaged, Missing, dan Klik Ganda | FE+BE | 28 | 149–154, 458 |
+| TC-GS-HHR-E2E-041-cancel-request-waiting-for-approval | Cancel Request Reader Waiting for Approval: Row Action Terkunci, Dialog, Go Back, Pembatalan Jalur A dan B, dan Klik Ganda | FE+BE | 39 | 156–159, 161, 162, 460 |
+| TC-GS-HHR-E2E-042-delete-reader-single | Delete Reader Tunggal: Dialog, Cancel, Delete Jalur A dan B pada Status Available, Damaged, Missing, dan Klik Ganda | FE+BE | 29 | 149–154, 458 |
 | TC-GS-HHR-E2E-043-bulk-action-bar-protokol-seleksi | Bulk Action Bar dan Protokol Seleksi: Elemen Bar, Checkbox Header, Checkbox Disabled, Select All Lintas Halaman, Retensi Seleksi, dan Ikon × | FE+BE | 69 | 189–194 |
 | TC-GS-HHR-E2E-044-bulk-eligibility-opsi-per-status | Bulk Action: Opsi yang Tampil Mengikuti Status Seluruh Reader Terpilih | FE+BE | 23 | 196–200 |
-| TC-GS-HHR-E2E-045-bulk-mark-as-damaged-missing-available | Bulk Mark as Damaged, Missing, dan Available: Dialog, Cancel, Esc, Eksekusi, Dialog Tunggal, Pencatatan Log per Reader, dan Klik Ganda | FE+BE | 82 | 207–213, 218, 219, 461 |
+| TC-GS-HHR-E2E-045-bulk-mark-as-damaged-missing-available | Bulk Mark as Damaged, Missing, dan Available: Dialog, Cancel, Esc, Eksekusi, Dialog Tunggal, Pencatatan Log per Reader, dan Klik Ganda | FE+BE | 83 | 207–213, 218, 219, 461 |
 | TC-GS-HHR-E2E-046-bulk-delete-reader | Bulk Delete Reader: Screening Dialog, Cancel, Delete Jalur A dan B, Pengembalian Kuota, dan Pencatatan Log per Reader | FE+BE | 57 | 214–216, 220 |
 | TC-GS-HHR-E2E-047-bulk-selection-limit-client-sl | Selection Limit Bulk Reader Client SL: Checkbox ke-(Limit+1) Disabled dan Select All Dipotong ke Limit | FE+BE | 17 | 221, 222 |
 | TC-GS-HHR-E2E-048-bulk-status-berubah-sebelum-konfirmasi | Multi-Konteks: Bulk Mark as Damaged saat Sebagian atau Seluruh Reader Terpilih Sudah Diubah Admin Lain Sebelum Konfirmasi | FE+BE | 53 | 223, 224 |
@@ -69,25 +69,25 @@ Kolom Langkah = jumlah langkah bernomor nominal di `## Test Steps` (blok yang di
 | TC-GS-HHR-E2E-055-overlay-column-visibility-dan-setup-column-daftar | Overlay Column Visibility dan Setup Column Daftar Reader Handheld Reader: Screening, Hide/Show, Reorder, Pin, Reset to Default, dan Persistensi | FE+BE | 202 | 277–291 |
 | TC-GS-HHR-E2E-056-setup-column-tabel-sekunder | Setup Column Tabel Sekunder Handheld Reader: Screening, Hide/Show, Reorder, Pin, Reset to Default, Tutup Tanpa Simpan, dan Kolom Terakhir pada Modal Changelog, Tab Usage, Popup Event Log Activate, dan Tab Changelog | FE+BE | 150 | 292–305 |
 | TC-GS-HHR-E2E-057-download-csv-xlsx-daftar-reader | Download Daftar Reader Handheld Reader: CSV dan XLSX, Seluruh Baris, Search dan Filter Aktif, Kolom Visible, dan Hasil Nol Baris | FE+BE | 63 | 306–311, 313 |
-| TC-GS-HHR-E2E-058-download-isi-file-csv-xlsx-binary-buffer | Isi File Download Daftar Reader Handheld Reader: Transformasi Nilai Sel XLSX, Escape CSV dengan BOM, Download Tab Usage, Kolom Checkbox pada Export, dan Download Modal serta Tab Changelog | FE+BE | 72 | 312, 314, 183, 195, 338, 454 |
+| TC-GS-HHR-E2E-058-download-isi-file-csv-xlsx-binary-buffer | Isi File Download Daftar Reader Handheld Reader: Transformasi Nilai Sel XLSX, Escape CSV dengan BOM, Download Tab Usage, Kolom Checkbox pada Export, dan Download Modal serta Tab Changelog | FE+BE | 74 | 312, 314, 183, 195, 338, 454 |
 | TC-GS-HHR-E2E-059-download-lebih-dari-5000-baris | Download Daftar Reader Lebih dari 5.000 Baris pada Client Large: Loading Screen dan Unduhan Langsung | FE+BE (intercept) | 12 | 316 |
 | TC-GS-HHR-E2E-060-pagination-tabel-utama-dan-sekunder | Pagination Tabel Utama dan Sekunder Handheld Reader: Navigasi, Rows per Page, Input Halaman, Reset ke Halaman 1, Sort, dan Hapus Baris Terakhir | FE+BE | 65 | 317–325 |
-| TC-GS-HHR-E2E-061-changelog-modal-screening-search-filter-sort | Modal Changelog Handheld Reader: Screening, Isi Baris, Search, Filter, Sort 3-State, dan Empty State Client E | FE+BE | 88 | 326–336 |
-| TC-GS-HHR-E2E-062-changelog-modal-penutupan-dan-tab-changelog-detail | Tab Changelog Popup Detail dan Modal Changelog: Kolom, Filter Panel, Search Tanpa Hasil, Empty State, Hover Nama Pengguna, dan Penutupan Modal | FE+BE | 51 | 337, 340–342, 469, 470 |
+| TC-GS-HHR-E2E-061-changelog-modal-screening-search-filter-sort | Modal Changelog Handheld Reader: Screening, Isi Baris, Search, Filter, Sort 3-State, dan Empty State Client E | FE+BE | 102 | 326–336 |
+| TC-GS-HHR-E2E-062-changelog-modal-penutupan-dan-tab-changelog-detail | Tab Changelog Popup Detail dan Modal Changelog: Kolom, Filter Panel, Search Tanpa Hasil, Empty State, Hover Nama Pengguna, dan Penutupan Modal | FE+BE | 52 | 337, 340–342, 469, 470 |
 | TC-GS-HHR-E2E-063-pencatatan-log-per-aksi-tiga-surface | Pencatatan Log per Aksi pada Tiga Surface: Edit Alias Name, Edit Reader Power, Mark as, Cancel Request, Delete, dan Snapshot Nama Reader | FE+BE | 170 | 345–351, 353 |
 | TC-GS-HHR-E2E-064-pencatatan-log-aktivasi-jalur-a-dan-collision | Pencatatan Log Aktivasi Jalur A pada Tiga Surface: Status Available dan Collision Waiting for Approval | FE+BE | 45 | 343, 344 |
-| TC-GS-HHR-E2E-065-absence-log-last-scanned-usage-event-no-op-dan-event-log | Absence Log: Last Scanned, Usage Event, Edit No-Op, Kegagalan Driver, dan Penolakan Client Suspended Tidak Menghasilkan Entri | FE+BE | 81 | 187, 188, 354, 355, 369, 370 |
-| TC-GS-HHR-E2E-066-event-log-activate-popup-screening-search-filter-sort | Popup Event Log Activate: Screening, Isi Baris, Search, Filter, Sort 3-State, Download, dan Empty State Client E | FE+BE | 72 | 356–363 |
-| TC-GS-HHR-E2E-067-event-log-activate-pencatatan-hasil-aktivasi | Event Log Activate: Pencatatan Baris Activated, Waiting for Approval, dan Failed (V-04 dan V-10) | FE+BE | 61 | 364–367 |
+| TC-GS-HHR-E2E-065-absence-log-last-scanned-usage-event-no-op-dan-event-log | Absence Log: Last Scanned, Usage Event, Edit No-Op, Kegagalan Driver, dan Penolakan Client Suspended Tidak Menghasilkan Entri | FE+BE | 83 | 187, 188, 354, 355, 369, 370 |
+| TC-GS-HHR-E2E-066-event-log-activate-popup-screening-search-filter-sort | Popup Event Log Activate: Screening, Isi Baris, Search, Filter, Sort 3-State, Download, dan Empty State Client E | FE+BE | 80 | 356–363 |
+| TC-GS-HHR-E2E-067-event-log-activate-pencatatan-hasil-aktivasi | Event Log Activate: Pencatatan Baris Activated, Waiting for Approval, dan Failed (V-04 dan V-10) | FE+BE | 63 | 364–367 |
 | TC-GS-HHR-E2E-068-sinkron-hardware-stock-status-delete-cancel-dan-bulk-delete | Sinkron Admin Console Hardware Stock: Efek Mark as, Bulk, Delete, Bulk Delete, dan Cancel Request pada Unit | FE+BE | 83 | 217, 376–383 |
-| TC-GS-HHR-E2E-069-approval-principal-collision-dan-log | Keputusan Approval Principal atas Collision: Approve, Reject, Cancel Request, Pencatatan Log, dan Isolasi Tenant Lain | FE+BE | 77 | 371, 372, 385–389 |
+| TC-GS-HHR-E2E-069-approval-principal-collision-dan-log | Keputusan Approval Principal atas Collision: Approve, Reject, Cancel Request, Pencatatan Log, dan Isolasi Tenant Lain | FE+BE | 84 | 371, 372, 385–389 |
 | TC-GS-HHR-E2E-070-state-tenant-suspended-expired-plan-dan-toggle-byo | State Tenant: Plan Starter sampai Enterprise, Client Suspended dan Expired Menolak Tulis, dan Toggle Self-Purchased Device Activation | FE+BE | 67 | 227, 390, 391, 399–402 |
-| TC-GS-HHR-E2E-071-format-general-settings-dan-zona-waktu | Format Tanggal, Jam, dan Zona Waktu General Settings Tercermin pada Semua Surface Tanggal Handheld Reader | FE+BE | 32 | 392–396 |
+| TC-GS-HHR-E2E-071-format-general-settings-dan-zona-waktu | Format Tanggal, Jam, dan Zona Waktu General Settings Tercermin pada Semua Surface Tanggal Handheld Reader | FE+BE | 39 | 392–396 |
 | TC-GS-HHR-E2E-072-sinkron-device-allocation-dan-rename-device-name | Sinkron Admin Console: Alokasi Device Allocation pada Kartu Kuota dan Rename Device Name pada Nama Dasar Reader Jalur B | FE+BE | 31 | 397, 398, 488 |
 | TC-GS-HHR-E2E-073-konkurensi-edit-dan-status-dua-admin | Konkurensi Dua Admin: Edit Alias Name, Edit Reader Power, Mark as Damaged, dan Edit pada Reader yang Dihapus | FE+BE | 58 | 427, 428, 430, 431, 452 |
 | TC-GS-HHR-E2E-074-konkurensi-delete-dan-cancel-request-dua-admin | Konkurensi: Cancel Request Setelah Principal Memutuskan atau Admin Lain Membatalkan, dan Delete Reader yang Sudah Dihapus | FE+BE | 38 | 429, 432, 433, 475 |
 | TC-GS-HHR-E2E-075-konkurensi-aktivasi-kuota-terakhir-dan-serial-sama | Konkurensi Aktivasi: Kuota Habis Sebelum Submit, Dua Admin pada Slot Kuota Terakhir, dan Serial Number yang Sama | FE+BE | 47 | 81, 434, 435 |
-| TC-GS-HHR-E2E-076-mobile-layout-card-list-selection-mode-dan-bottom-sheet | Mobile (Viewport di Bawah 768px): Layout Card List, Toolbar Ikon, Selection Mode, Bottom Sheet, dan Activate Reader Disembunyikan | FE+BE (mobile) | 66 | 437–443, 471 |
+| TC-GS-HHR-E2E-076-mobile-layout-card-list-selection-mode-dan-bottom-sheet | Mobile (Viewport di Bawah 768px): Layout Card List, Toolbar Ikon, Selection Mode, Bottom Sheet, dan Activate Reader Disembunyikan | FE+BE (mobile) | 67 | 437–443, 471 |
 | TC-GS-HHR-E2E-077-sinkron-hardware-stock-aktivasi-dan-current-power-reader-usb | Sinkron Admin Console Hardware Stock: Efek Aktivasi Reader USB pada Unit dan Current Power Dibaca saat Aktivasi | FE+BE | 39 | 373–375, 384 |
 | TC-GS-HHR-E2E-078-filter-opsi-dropdown-dinamis-dan-perubahan-data-live | Filter Daftar Reader Handheld Reader: Opsi Dropdown Device Name Bertambah Setelah Aktivasi, Opsi Aktif Dibersihkan Setelah Reader Dihapus Admin Lain, dan Loading serta No options available pada Client Tanpa Reader | FE+BE | 39 | 255, 256, 456 |
 | TC-GS-HHR-E2E-079-absence-log-request-langsung-ditolak | Absence Log: Request Langsung ke Server yang Ditolak Tidak Menambah Entri Changelog Handheld Reader, System Log Aktor, Activity Log, dan Event Log | FE+BE | 47 | 229, 403–408, 413–416, 420, 474 |
@@ -127,9 +127,9 @@ Ringkasan; sumber resmi tiap spec adalah `## Prerequisites`-nya.
 
 ## Catatan ukuran spec
 
-- Spec ≤ 35 langkah nominal (21 spec): `003`, `004`, `007`, `009`, `011`, `015`, `022`, `025`, `028`, `031`, `034`, `037`, `038`, `039`, `040`, `042`, `044`, `047`, `059`, `071`, `072`.
-- Spec di atas 35 langkah (58 spec): alasan tertulis di `## Notes` tiap spec (satu kelas harness, satu akun, satu dataset, blok per TC yang saling pulih). Terbesar: `055` (202), `063` (170), `054` (151), `056` (150), `008` (138), `026` (122), `051` (114), `019` dan `021` (masing-masing 107), `018` (95). Yang berubah pada revisi: `051` menyusut dari 149 ke 114 (TC-255, 256, 456 pindah), `046` 65 ke 57, `068` 100 ke 83 (99 dengan ekspansi), `010` 45 ke 36, `012` 76 ke 65, `013` 87 ke 90, `026` 116 ke 122, `059` 10 ke 12; spec baru `077` (39), `078` (39), `079` (47, sekitar 165 dengan ekspansi). Titik pisah yang disarankan penulis tercatat di Notes sebagai opsi saat script ditulis.
-- Spec `076` (66 langkah) berisi satu kelas (Mobile), satu akun, tanpa aksi yang mengubah data; alasannya ada di `## Notes`.
+- Spec ≤ 35 langkah nominal (20 spec): `003`, `004`, `007`, `009`, `011`, `015`, `022`, `025`, `028`, `031`, `034`, `037`, `038`, `039`, `040`, `042`, `044`, `047`, `059`, `072`.
+- Spec di atas 35 langkah (59 spec): alasan tertulis di `## Notes` tiap spec (satu kelas harness, satu akun, satu dataset, blok per TC yang saling pulih). Terbesar: `055` (202), `063` (170), `054` (151), `056` (150), `008` (138), `026` (122), `051` (114), `019` (112), `021` (107), `061` (102). Yang berubah pada revisi: `051` menyusut dari 149 ke 114 (TC-255, 256, 456 pindah), `046` 65 ke 57, `068` 100 ke 83 (99 dengan ekspansi), `010` 45 ke 36, `012` 76 ke 65, `013` 87 ke 90, `026` 116 ke 122, `059` 10 ke 12; spec baru `077` (39), `078` (39), `079` (47, sekitar 165 dengan ekspansi). Revisi 2: `071` 32 ke 39 (kini di atas 35), `035` 54 ke 56, `036` 92 ke 99, `061` 88 ke 102, `066` 72 ke 80, `002` 82 ke 89, `019` 107 ke 112, `014` 45 ke 49, `058` 72 ke 74, `024` 74 ke 76. Titik pisah yang disarankan penulis tercatat di Notes sebagai opsi saat script ditulis.
+- Spec `076` (67 langkah) berisi satu kelas (Mobile), satu akun, tanpa aksi yang mengubah data; alasannya ada di `## Notes`.
 
 ## Pembagian TC lintas spec
 
@@ -154,7 +154,9 @@ Rincian usulan ada di `work-items/gs-hardware-handheld-reader/proposal-e2e-fixtu
 - **Nama baru akun Manage hardware (Q1, didaftarkan FE):** `GS_HW_READ_PASSWORD` (`008`), `GS_HW_CREATE_PASSWORD` (`008`, `012`, `017`), `GS_HW_UPDATE_PASSWORD` (`008`, `010`, `011`, `012`), `GS_HW_DELETE_PASSWORD` (`008`, `010`). `GS_READ/CREATE/UPDATE/DELETE_PASSWORD` yang sudah terdaftar dipakai suite Brand untuk akun `readCapability_...` dan tidak dipakai spec HHR.
 - **Skema `GS_CLIENT<NAMA>_TC_PASSWORD` yang perlu didaftarkan baru (12 nama):** `GS_CLIENTD_TC_PASSWORD`, `GS_CLIENTE_TC_PASSWORD`, `GS_CLIENTL_TC_PASSWORD`, `GS_CLIENTL2_TC_PASSWORD`, `GS_CLIENTLARGE_TC_PASSWORD`, `GS_CLIENTN_TC_PASSWORD`, `GS_CLIENTO_TC_PASSWORD`, `GS_CLIENTP_TC_PASSWORD`, `GS_CLIENTQ_TC_PASSWORD`, `GS_CLIENTS_TC_PASSWORD`, `GS_CLIENTSL_TC_PASSWORD`, `GS_CLIENTX_TC_PASSWORD`; tabel final ada di proposal di atas. `GS_BUDI_PASSWORD` (spec `038`, login Budi Santoso di hook `before`) menunggu penentuan akun dan perannya.
 - **Fixture baru:** berkas `fixtures/hardwareHandheldReader.json` dengan kunci `Fixture.hardwareHandheldReader.*` yang dirujuk spec (`seedReaderA`, `seedChangelogClientA`, `seedEventLogClientA`, `seedUsageDd01`, dan kunci per spec); rujukan pertama pada tiap spec ditandai "(fixture baru)" sesuai plan.
-- **Belum diketahui (menunggu FE atau keputusan deferred):** email Principal (BY-27; Pre-setup TC `principal_automated_qaTeam1@...` lawan deskripsi `.env.example` `totalControlPrincipal_automated_qaTeam1@...`), Client E (BY-30), Client D, X, P, N (BY-31), serta email Client L, L2, Large, O, Q, S, SL ("disediakan tim FE"; tertulis di spec sebagai pola `totalControl_automated_{namaClient}@qwertysystem.net`); pendaftaran semua env di atas; folder `hooks/`; peran akun Budi Santoso.
+- **Email diketahui dari Pre-setup TC (kandidat dari modul Import, konfirmasi tim FE):** Principal `totalControlPrincipal_automated_qaTeam1@qwertysystem.net`; Client E `totalControl_automated_qaTeam5@qwertysystem.net`, Client D `..._qaTeam9@...`, Client X `..._qaTeam11@...`, Client P `..._qaTeam12@...`, Client N `..._qaTeam13@...`.
+- **Belum diketahui (menunggu FE):** email Client L, L2, Large, O, Q, S, SL ("disediakan tim FE"; sebagian spec masih menulis pola `totalControl_automated_{namaClient}@qwertysystem.net`; spec 054 dan 070 menulis "disediakan tim FE"); pendaftaran semua env di atas (termasuk `GS_CLIENTE_TC_PASSWORD`, belum tentu terdaftar); folder `hooks/`; peran akun Budi Santoso.
+- **Kemampuan fixture audit trail:** fixture backend harus dapat menulis entri Changelog, Event Log, dan Usage Event bertanggal Juni 2026 (`Date` masa lalu); audit trail permanen tidak dipulihkan, jadi spec membaca relatif terhadap baseline N0 dan Filter `Date` seed. Reader DD-04 (Tab Usage) dan DD-08 (Tab Changelog) harus tanpa event pada awal spec yang membacanya (reset tingkat reader; belum ada keputusan FE/BE).
 - Kemampuan teknis: lihat bagian Kebutuhan kemampuan khusus per spec dan bagian Kemampuan reset dan pemulihan di `suite.md`.
 - Suite berjalan serial (`parallel: false`). Spec yang menghapus data (`042`, `046`, `068`, `060` TC-324, `049`) berjalan sesudah spec lain. Environment automation harus terisolasi dari aktivitas pengguna lain.
 
@@ -168,12 +170,12 @@ Tidak ada keputusan terbuka. Kelima keputusan dijawab user lewat klik:
 4. **Env var: DISERAGAMKAN ke skema `GS_CLIENT<NAMA>_TC_PASSWORD`.** Nama diganti di seluruh spec (46 kemunculan, 15 spec, satu `edits apply`); nama yang sudah terdaftar tidak berubah. `proposal-e2e-fixtures-env.md` memuat tabel nama final. `spectra.config.ts`, `.env.example`, dan `fixtures/` tetap tidak disentuh (tim FE mendaftarkan 12 nama baru dan fixture). `GS_BUDI_PASSWORD` (spec `038`) belum diganti karena akun Budi Santoso belum ditentukan (tindak lanjut tim FE, bukan keputusan terbuka).
 5. **Label Manual Only (USB simulator): DITERIMA sebagai keterbatasan yang diketahui** (diterima user 2026-10-30; spec tetap, prasyarat disediakan tim FE; tandai `coverage.web: unsupported` di tahap script bila perlu).
 
-Revisi terarah 2026-10-30 (plan `plan-e2e-spec-revision.md`, disetujui user): Q1 nama env Manage hardware `GS_HW_*_PASSWORD`; Q2 TC-42 pindah ke `017` sebagai blok terakhir; Q3 TC-217 pindah ke `068`; Q4 slug `068` dan `062` diganti (`036` pada Wave 2); Q5 TC-474 ikut `079`, TC-477 d tetap di `021` dengan `P-1`; Q6 baca terbatas path endpoint di `API/openapi.yaml`; Q7 `026` dan `014` tidak dipecah, alasan jujur di Notes tanpa id pengecualian palsu; Q8 penulis menilai tiap situs penutupan popup Activate. Konvensi CV-01, 02, 04 sampai 11 terapan (K-1, P-7, S-08, format alias `<Alias>-{runId}-<NNN>`). CV-03 (total absolut audit trail pada seed) flagged dan HELD. Pengecualian S-05: 13 TC log-absence ada di `sourceTc` dua spec (`012`/`013`/`049` dan `079`); temuan `check-suite.py` C2 untuk 13 TC itu adalah batasan skrip yang diketahui, bukan cacat.
+Revisi terarah 2026-10-30 (plan `plan-e2e-spec-revision.md`, disetujui user): Q1 nama env Manage hardware `GS_HW_*_PASSWORD`; Q2 TC-42 pindah ke `017` sebagai blok terakhir; Q3 TC-217 pindah ke `068`; Q4 slug `068` dan `062` diganti (`036` pada Wave 2); Q5 TC-474 ikut `079`, TC-477 d tetap di `021` dengan `P-1`; Q6 baca terbatas path endpoint di `API/openapi.yaml`; Q7 `026` dan `014` tidak dipecah, alasan jujur di Notes tanpa id pengecualian palsu; Q8 penulis menilai tiap situs penutupan popup Activate. Konvensi CV-01, 02, 04 sampai 11 terapan (K-1, P-7, S-08, format alias `<Alias>-{runId}-<NNN>`). CV-03 opsi 3 (Expected relatif baseline) terapan pada revisi 2; BX-09, BY-01, BY-06, BY-27, BY-30, BY-31 terapan. Pengecualian S-05: 13 TC log-absence ada di `sourceTc` dua spec (`012`/`013`/`049` dan `079`); temuan `check-suite.py` C2 untuk 13 TC itu adalah batasan skrip yang diketahui, bukan cacat.
 
 
 ## Temuan untuk QA (gabungan dari `## Notes` spec)
 
-Diregenerasi dari bagian "Temuan untuk QA" semua 79 spec pada akhir Wave 1; angka dalam kurung adalah nomor spec. Butir yang masalahnya sudah dibereskan perubahan TC (BX, AT, BY terapan) atau yang kini menjadi fakta di spec sudah gugur. Spec Wave 2 (27 spec) belum disinkronkan: butir mereka tertulis apa adanya dan yang pasti gugur atau berubah tercantum di bagian G. Tidak ada TC, PRD, atau fixture yang diubah.
+Diringkas dari bagian "Temuan untuk QA" 79 spec setelah revisi 2; angka dalam kurung adalah nomor spec. Butir yang sudah dibereskan perubahan TC (BX, BY, CV-03 terapan) atau kini fakta di spec sudah gugur. Tidak ada TC, PRD, atau fixture yang diubah.
 
 ### A. TC kontradiktif atau tidak konsisten
 
@@ -183,19 +185,17 @@ Diregenerasi dari bagian "Temuan untuk QA" semua 79 spec pada akhir Wave 1; angk
 - TC-196 (severity `danger` untuk semua) lawan TC-197 (`Mark as Available` dark, `Delete` danger); TC-198, 199, 200 tanpa severity (044).
 - TC-421 menamai baris `Failed` `Chainway C72` tanpa ` - [N]`, TC-448 dan 449 memakai `Zebra RFID Reader (SKU-HHR-01)` (013).
 - Judul identik: TC-142 dan 144, TC-143 dan 145 (dibedakan Data Uji DD-03 lawan DD-04) (039, 040).
-- Judul tidak sesuai isi: TC-11 "batas 25 karakter" tanpa data tepat 25 (002; HELD BX-09); TC-241 "dua opsi" hanya satu opsi (051); TC-304 "X atau Esc" hanya `[✕]` (056); TC-34 judul menyebut dua role, Precondition hanya Read Only (008).
+- Judul tidak sesuai isi: TC-241 "dua opsi" hanya satu opsi (051); TC-304 "X atau Esc" hanya `[✕]` (056); TC-34 judul menyebut dua role, Precondition hanya Read Only (008).
 - Expected tidak sesuai langkah: TC-173 ("seluruh Filter" dikosongkan, langkah hanya Search) (036); TC-268 ("filter kosong" tanpa Filter diterapkan, keadaan panel dan indikator pada ikon tertutup tidak dinyatakan) (054).
 - TC-193 Langkah Uji 6 mengklik ikon Filter lagi sebelum `[Clear Field]` padahal panel tetap terbuka sesudah `[Apply]` (043).
 - Seed Event Log menulis EL-04 `11/06/26` sebelum EL-05 `17/06/26` padahal urutan tampil mengikuti Date (066).
-- TC-267 mensyaratkan seluruh 26 reader Client L `Short Range` tanpa menyebutnya (054; HELD BY-06).
 - TC-229 Expected b memuat dua klausa yang diasersi di dua spec: kedua reader tetap ada (`049`) dan jumlah entri log tidak bertambah (`079`); TC tidak menyatakan apakah Read Only dapat membuka tiga surface log (079).
 - TC-474 Expected b menggabungkan jumlah entri tiga surface dengan `Status` `Damaged`/`Waiting for Approval` dalam satu butir; Status diasersi di `049`, jumlah entri di `079` (049, 079).
 - TC-121 dan 137 menutup dialog edit dengan `✕` dan `[Leave]` (dialog `Unsaved Changes`), tetapi teks dialog tidak ada di TC; langkah 11 dan 22 di spec 026 tidak memverifikasi isi dialog (026).
 
 ### B. Precondition atau data kurang
 
-- Email akun Client D, E, L, L2, Large, N, O, P, Q, S, SL, X hanya pola `totalControl_automated_{namaClient}@qwertysystem.net`, dan env passwordnya belum terdaftar (003, 015, 043, 047, 054, 057, 059, 060, 061, 065, 066, 070, 076, 078). Admin B (Nadia Pratama), Client B (`qaTeam2`), dan Client C (`qaTeam3`) sudah diketahui dan terdaftar. Akun Budi Santoso (038) tidak ada di Pre-setup TC.
-- Email Principal Pre-setup TC lawan deskripsi `GS_PRINCIPAL_TC_PASSWORD` di `.env.example` (020; BY-27 deferred, berlaku untuk 011, 020, 021, 068, 069, 070, 072, 074, 077).
+- Email akun Client L, L2, Large, O, Q, S, SL belum diketahui (pola `totalControl_automated_{namaClient}@qwertysystem.net` atau "disediakan tim FE") dan env passwordnya belum terdaftar (003, 015, 043, 047, 054, 057, 059, 060, 070). Email Client D, E, X, P, N dan Principal kini kandidat dari Pre-setup TC (lihat Kebutuhan lingkungan; konfirmasi FE). `GS_CLIENTE_TC_PASSWORD` (061) belum tentu terdaftar. Admin B (Nadia Pratama), Client B (`qaTeam2`), dan Client C (`qaTeam3`) sudah diketahui dan terdaftar. Akun Budi Santoso (038) tidak ada di Pre-setup TC.
 - Status dan Range Type reader Client L, data reader Client S, P, N, nama tiga reader Short Range Client O, katalog Device Name Client B (TC-391), Seed Changelog DD-03 (`cl_values`), seed task audit Fixed Asset `TSK-202606-0014`, SKU/Brand/Model/Current Power unit TC-477/478 tidak dirinci (015, 021, 035, 037, 054, 057, 060, 070).
 - Nilai request yang tidak disebut: Reader Power TC-417; Range Type TC-421 sampai 423, 482, 483; ID Device Name yang tidak ada di katalog TC-483; payload TC-403 dan nilai request TC-413 sampai 416; rentang tanggal TC-393 dan 395; serial dan Device Name reader Admin B pada TC-81 (012, 013, 071, 075, 079).
 - Reader `Missing` (DD-04) memindai di TC-185: perlu dikonfirmasi apakah reader Missing boleh memindai (038).
@@ -207,7 +207,7 @@ Diregenerasi dari bagian "Temuan untuk QA" semua 79 spec pada akhir Wave 1; angk
 
 - Simulator reader USB dan driver lokal (014 sampai 026, 038, 064, 065, 067, 070, 075, 077, 078).
 - Reset flag Guided Tooltip (005, 006, 007, 076).
-- Pemulihan Seed Reader A, Seed Changelog, Seed Event Log, Seed Usage Event, stok Hardware Stock, counter Device Name (banyak spec).
+- Pemulihan Seed Reader A, stok Hardware Stock, counter Device Name (banyak spec); pembuatan entri seed Changelog, Event Log, dan Usage Event bertanggal Juni 2026 (audit trail tidak dipulihkan; 035, 036, 037, 058, 061, 062, 066, 071).
 - Pencabutan capability (011), sesi API Admin B dan Principal, toggle BYO, Device Allocation, General Settings, Selection Limit Client SL (011, 020, 047, 048, 070 sampai 075, 078).
 - Seeding sesi audit Fixed Asset dan Pair TAG (038, 065); Seed Usage Event (036, 037).
 - Penghapusan preferensi kolom di browser, pembacaan posisi kolom, pembacaan berkas unduhan, pembacaan notifikasi in-app dan job latar belakang (055, 056, 057, 058, 059).
@@ -228,7 +228,7 @@ Diregenerasi dari bagian "Temuan untuk QA" semua 79 spec pada akhir Wave 1; angk
 - Keadaan Filter Panel sesudah `[Apply]`: model "tetap terbuka" dari TC-258 (052, 036); keadaan panel pada TC-268 dan TC-193 (054, 043).
 - Teks dialog `Unsaved Changes` tidak ada di TC-121/137 (026); nama tombol dialog Mark as Missing dan Mark as Available mengikuti pola `[Mark as Damaged]` (068).
 - Cara menutup Overlay, dialog, atau Filter Panel (`Esc`, `✕`, `[Cancel]`) tidak disebut pada beberapa TC (027, 028, 053, 057, 061, 062, 076).
-- Popup Activate yang ditutup sesudah penolakan V-10 atau baris Failed langsung tertutup tanpa dialog `Cancel Activation` (S-08): spec 065, 067, 070 menulisnya tanpa langkah bersyarat.
+- Popup Activate yang ditutup sesudah penolakan V-10 langsung tertutup tanpa dialog `Cancel Activation` (S-08): spec 070 menulisnya tanpa langkah bersyarat. Spec 067 dan 065 (TC-370) memverifikasi dialog `Cancel Activation` (TC-89).
 - DD-01 dan DD-06 sama-sama bernama `Zebra RFID Reader - 1`: spec membedakan lewat Serial Number (026, 035, 065).
 - TC-434 dan 435: hasil "sesi lain" bergantung pada urutan di server; spec memakai `Verifikasi` deterministik "tepat satu sesi berhasil" (075). TC-432: posisi Approve Principal sesudah dialog dibuka (074).
 - TC-229 dan TC-403 sampai 408 membuka tiga surface log sebagai Read Only tanpa menyebut path dan hak akses (079).
@@ -242,25 +242,28 @@ Diregenerasi dari bagian "Temuan untuk QA" semua 79 spec pada akhir Wave 1; angk
 - TC-473 menyebut "sesi kedua" Principal; spec memakai sesi API (020).
 - TC-GS-HHR-229, 403 sampai 408, 413 sampai 416, 420, 474 ada di dua spec menurut S-05 (C2, 13 pasangan).
 
-### G. HELD dan butir yang menunggu
+### G. Temuan baru revisi 2 dan tindak lanjut FE/BE
 
-HELD (tidak ditulis; menunggu FE/BE atau keputusan):
+Temuan baru (revisi 2):
 
-- **CV-03 (flagged):** total absolut audit trail pada seed tidak diubah dan tidak diberi pernyataan pemulihan: spec 035 (langkah 47 dan 51), 071 (seluruhnya), 072 dan 063 (pernyataan pemulihan Seed Changelog), 061, 062, 066 (asersi total absolut, TC-326, 329, 330, 334 sampai 336, 342, 356 sampai 362). Dasar: `decisions-e2e-conventions.json` CV-03.
-- **Deferred:** TC-11 (BX-09) di 002; TC-267 (BY-06) di 054; TC-396 (BY-01) di 071; email Principal (BY-27); email Client E (BY-30); email Client D, X, P, N (BY-31). Spec mengikuti TC saat ini.
-- **Tindak lanjut FE/BE:** pendaftaran env di `.env.example` dan `spectra.config.ts`, `fixtures/hardwareHandheldReader.json`, folder `hooks/`, peran akun Budi Santoso, mekanisme simulator USB dan pemulihan.
+- **Filter `Date` server-side dan inklusif:** TC-326 sampai 336 (061), 356 sampai 362 (066), 393 sampai 395 (071) bergantung pada Filter `Date` yang bekerja pada seluruh data di server dan inklusif kedua ujung; tidak didefinisikan di TC, PRD, atau LLD.
+- **Fixture menulis entri Juni 2026:** fixture backend harus dapat menulis entri Changelog, Event Log, dan Usage Event dengan `Date` masa lalu (Juni 2026); tidak ada spec yang menggeser jam mundur.
+- **Nol absolut TC-172 dan TC-341:** empty state Tab Usage DD-04 (036) dan Tab Changelog DD-08 (062) bergantung pada reset tingkat reader atau urutan eksekusi (spec 038 dan 065 menulis event DD-04); belum ada keputusan FE/BE. TC-185 dan TC-186 (038) tetap absolut sebagai prasyarat Tab Usage kosong DD-04/DD-07.
+- **Label Time Zone TC-396:** `(UTC+00:00) UTC, Reykjavik, Accra` disalin dari TC dan belum dicocokkan dengan opsi UI General Settings (071).
+- **Date picker `MM/dd/yyyy`:** format teks field date picker (036, 066, 071) belum diverifikasi pada UI.
+- **`GS_CLIENTE_TC_PASSWORD`** (061) belum tentu terdaftar.
+- **TC-106 butir b** (030): TC hanya menulis "bukan toast sukses" tanpa teks toast sukses.
 
-Butir di spec Wave 2 yang akan gugur atau berubah setelah Wave 2 (belum diedit):
+Tindak lanjut FE/BE: pendaftaran env di `.env.example` dan `spectra.config.ts`, `fixtures/hardwareHandheldReader.json`, folder `hooks/`, peran akun Budi Santoso, mekanisme simulator USB dan pemulihan, konfirmasi email kandidat (Principal, Client E, D, X, P, N) dan email Client L, L2, Large, O, Q, S, SL.
 
-- 014: butir "judul dan isi dialog `Cancel Activation` tidak tertulis di TC sumber" keliru (teks dari TC-89); langkah penutupan popup berisi hasil Sync perlu `Verifikasi` dialog (S-08).
-- 036: butir "`id` spec masih memuat kata download" gugur setelah rename slug; 039, 041, 042, 044, 045, 050: butir "pengecualian Population S-12 belum ada di konvensi" diganti rujukan ke `suite.md` dan Lampiran A butir A-5.
-- 002, 003, 015, 019, 024, 025, 076, 027, 028, 030, 033, 037, 047, 052, 053, 063, 064, 065, 072: sapuan Ringan (pecah `Verifikasi`, alias `<Alias>-{runId}-<NNN>`, "Tunggu aksi selesai", label Data Dinamis, alasan pemisahan topik) belum diterapkan.
+Butir terbuka untuk audit (tidak diubah; di luar plan revisi 2):
+
+- Folder `036` berganti nama (slug `-dan-download` dibuang); rujukan nama lama di luar suite ini tidak diperiksa.
 
 ## Tindak lanjut di luar stage ini
 
 - **Tim FE:** menerapkan `proposal-e2e-fixtures-env.md` (fixture dan env var, termasuk `GS_HW_*_PASSWORD`), mengisi email akun yang belum ada di Pre-setup TC, dan menyediakan kemampuan pemulihan dan simulator di bagian Kemampuan reset dan pemulihan pada `suite.md`.
-- **QA:** meninjau Temuan untuk QA bagian A sampai G (Keputusan 1 sampai 5 sudah dijawab user; CV-03 dan keputusan deferred menunggu).
-- **Pemilik suite:** finalkan halaman ini setelah Wave 2 (27 spec).
+- **QA:** meninjau Temuan untuk QA bagian A sampai G (Keputusan 1 sampai 5 sudah dijawab user; butir terbuka di bagian G menunggu).
 - **Tooling:** `pnpm exec spectra lint --strict` gagal sebelum lint berjalan karena pengecekan dependensi `pnpm install` berhenti pada `ERR_PNPM_IGNORED_BUILDS` (esbuild, msw) di lingkungan ini; lint dijalankan lewat `node_modules/.bin/spectra lint --strict`. Tim FE perlu menjalankan `pnpm approve-builds` bila `pnpm exec` dipakai.
 
 ## Lapisan per TC
@@ -479,16 +482,16 @@ TC yang muncul di dua spec (S-05) menyebut kedua spec pada satu baris.
 | TC-GS-HHR-168 | TC-GS-HHR-E2E-035-popup-detail-reader-screening-dan-pembukaan | FE+BE |
 | TC-GS-HHR-472 | TC-GS-HHR-E2E-035-popup-detail-reader-screening-dan-pembukaan | FE+BE |
 | TC-GS-HHR-489 | TC-GS-HHR-E2E-035-popup-detail-reader-screening-dan-pembukaan | FE+BE |
-| TC-GS-HHR-169 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-170 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-171 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-172 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-173 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-174 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-175 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-176 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-177 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
-| TC-GS-HHR-178 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-sort-dan-download | FE+BE |
+| TC-GS-HHR-169 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-170 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-171 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-172 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-173 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-174 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-175 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-176 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-177 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
+| TC-GS-HHR-178 | TC-GS-HHR-E2E-036-tab-usage-screening-search-filter-dan-sort | FE+BE |
 | TC-GS-HHR-179 | TC-GS-HHR-E2E-037-tab-usage-transaction-id-akses-produk-dan-isolasi | FE+BE |
 | TC-GS-HHR-180 | TC-GS-HHR-E2E-037-tab-usage-transaction-id-akses-produk-dan-isolasi | FE+BE |
 | TC-GS-HHR-181 | TC-GS-HHR-E2E-037-tab-usage-transaction-id-akses-produk-dan-isolasi | FE+BE |

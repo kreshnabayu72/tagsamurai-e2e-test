@@ -43,7 +43,7 @@ coverage:
 ### TC-GS-IMPORT-526: Produk Access dicabut dari organisasi
 
 3. Reset Client E ke tanpa draft dan seed draft User Login D-62 (3 baris `pending`) lewat skrip fixture
-4. Buka Global Settings > Import, pilih Sub-Tab User Login
+4. Muat ulang halaman Import > User Login
 5. Cabut produk Fixed Asset dari Client E lewat fixture Admin Console
 6. Tekan F5 pada halaman Import
 7. Verifikasi Row # 2 (Access `Global Settings;Fixed Asset`) berstatus `error`
@@ -59,7 +59,7 @@ coverage:
 14. Seed draft Brand D-18 (12 baris `pending`, plan Growth) Client C lewat skrip fixture
 15. Buka Global Settings > Import, pilih Sub-Tab Brand
 16. Turunkan plan Client C ke Free lewat fixture Admin Console
-17. Buka halaman Import
+17. Muat ulang halaman Import
 18. Verifikasi halaman Import Disabled total dengan chip "Upgrade"
 19. Verifikasi draft tidak dapat diakses
 20. Naikkan plan Client C ke Growth lewat fixture Admin Console
@@ -95,7 +95,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: state tenant (h); objek uji adalah perilaku Import saat produk organisasi dicabut, plan turun, serta status Suspended dan Expired. Fixture Admin Console adalah pemicu perubahan state tenant. Verifikasi baca per tier (bukan perubahan tier) untuk plan gating ada di spec 059.
 - Alasan melewati sekitar 35 langkah (40 langkah nominal): empat blok homogen satu kelas state tenant yang berdiri sendiri dengan penyiapan dan pemulihan tenant di dalam blok. Urutan blok dikelompokkan per akun dengan langkah ganti akun eksplisit (langkah 13, 27, 33) sehingga bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1 sampai 4, 14), pembukaan halaman dan Sub-Tab, perubahan produk dan plan lewat fixture Admin Console (langkah 5, 12, 16, 20), muat ulang, pembacaan status tersimpan (langkah 31, 38), dan ganti akun. Langkah 19 (draft tidak dapat diakses) didahului langkah 18 (halaman Disabled dengan chip "Upgrade") sebagai pembuktian state.
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1 sampai 4, 14), muat ulang halaman Import (langkah 4, 17), pembukaan halaman dan Sub-Tab, perubahan produk dan plan lewat fixture Admin Console (langkah 5, 12, 16, 20), muat ulang, pembacaan status tersimpan (langkah 31, 38), dan ganti akun. Langkah 19 (draft tidak dapat diakses) didahului langkah 18 (halaman Disabled dengan chip "Upgrade") sebagai pembuktian state.
 - Temuan untuk QA:
   - TC-GS-IMPORT-575 Precondition c menyiapkan draft "isi seperti D-05" di Client Suspended lewat skrip fixture, sedangkan D-72 sampai D-74 tidak mencakup draft User Login 8 baris untuk Suspended; ketergantungan hanya pada precondition TC (tidak ada entri Data Dinamis).
   - TC-GS-IMPORT-526 dikelompokkan pada kelas state tenant; sebagai alternatif ia dapat menjadi spec fungsional karena objek uji adalah evaluasi ulang Access, bukan lockdown tenant.

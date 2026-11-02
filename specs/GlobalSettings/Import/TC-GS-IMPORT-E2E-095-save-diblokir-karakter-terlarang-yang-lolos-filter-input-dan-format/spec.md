@@ -23,14 +23,14 @@ coverage:
 - Data Dinamis (nama literal karena asersi bergantung pada isi dan jumlah baris; pengecualian S-12), dipulihkan oleh skrip pemulihan (Kontrak Fixture R2) sebelum spec: D-01 (Draft Brand 12 baris), D-02 (Measurement 6 baris), D-03 (Position 6 baris), D-04 (Division 6 baris), D-05 (User Login 8 baris `pending`; Custom Field Active Overtime Hours (Numeric 2 desimal) dan Emergency Phone (Phone)).
 - Tabel "Karakter terlarang" (TC-672; nilai dimasukkan lewat injeksi value langsung ke DOM sehingga melewati filter input FE, kecuali varian 6 yang diketik biasa):
 
-  | No | Sub-Tab | Baris | Field | Nilai | Pesan (sel dan Callout) |
-  |---|---|---|---|---|---|
-  | 1 | Brand | #1 | Brand Name | `Acme 😀` | Brand name contains invalid characters |
-  | 2 | Measurement | #1 | Unit Name | `Kilo 😀` | Unit name contains invalid characters |
-  | 3 | Measurement | #1 | Symbol | `k😀` | Symbol contains invalid characters |
-  | 4 | Position | #1 | Position Name | `Manager 😀` | Position name contains invalid characters |
-  | 5 | Division | #2 | Division Name | `Ops 😀` | Division name contains invalid characters |
-  | 6 | Division | #2 | Code | `FIN@1` (diketik biasa) | Code contains invalid characters |
+  | No | Sub-Tab | Baris | Field | Nilai | Nilai tampil | Pesan (sel dan Callout) |
+  |---|---|---|---|---|---|---|
+  | 1 | Brand | #1 | Brand Name | `Acme 😀` | `Acme 😀` | Brand name contains invalid characters |
+  | 2 | Measurement | #1 | Unit Name | `Kilo 😀` | `Kilo 😀` | Unit name contains invalid characters |
+  | 3 | Measurement | #1 | Symbol | `k😀` | `k😀` | Symbol contains invalid characters |
+  | 4 | Position | #1 | Position Name | `Manager 😀` | `Manager 😀` | Position name contains invalid characters |
+  | 5 | Division | #2 | Division Name | `Ops 😀` | `Ops 😀` | Division name contains invalid characters |
+  | 6 | Division | #2 | Code | `FIN@1` (diketik biasa) | `FIN@1` | Code contains invalid characters |
 
 - Tabel "Format tidak valid" (TC-675; Sub-Tab User Login, baris #1):
 
@@ -52,7 +52,7 @@ Untuk setiap baris No 1 sampai 5 tabel "Karakter terlarang" (langkah 1 sampai 10
 1. Buka Sub-Tab sesuai kolom Sub-Tab
 2. Klik `⋯` pada baris sesuai kolom Baris, pilih `Edit`
 3. Ganti isi sel field sesuai kolom Field dengan Nilai lewat injeksi value langsung ke DOM
-4. Verifikasi sel field menampilkan Nilai
+4. Verifikasi sel field menampilkan nilai sesuai kolom Nilai tampil
 5. Klik `[Save]`
 6. Verifikasi `[Save]` diblokir: sel field berborder `danger` dengan Pesan
 7. Verifikasi Error Summary Callout memuat baris pesan sesuai Pesan dengan badge "1 row"
@@ -97,8 +97,7 @@ Untuk setiap baris tabel "Format tidak valid" (langkah 23 sampai 31 diulang tiga
 - Langkah penghubung (tanpa `Verifikasi`): `[Cancel]` lalu `[Discard]` (langkah 9, 10, 21, 22, 31) membuang perubahan karena sesi berisi perubahan sehingga dialog Discard Changes pasti tampil.
 - Pembagian TC lintas spec: TC-GS-IMPORT-212 sampai 214, 671, 673, 674, dan 842 (Save diblokir) ada di spec 094.
 - Temuan untuk QA:
-  - TC-GS-IMPORT-672 Expected a membedakan varian 1 sampai 5 (hanya nilai tampil) dan varian 6 (pesan live); spec mengikuti pembagian itu dan tidak mengasersi pesan sebelum `[Save]` pada varian 1 sampai 5.
-  - TC-GS-IMPORT-672 Expected a: klausa "menampilkan nilai varian" tidak tegas apakah berlaku juga untuk varian 6; spec menafsirkannya berlaku untuk semua varian dan mengasersi nilai `FIN@1` pada langkah 14 sebelum border dan pesan live. Tafsir ini menunggu konfirmasi QA; TC-672 Expected a perlu dipecah per varian (1 sampai 5: nilai; 6: nilai dan pesan live).
+  - TC-GS-IMPORT-672 Expected a: setiap varian (1 sampai 6) menampilkan nilainya di sel sebelum `[Save]` (kolom Nilai tampil; langkah 4 untuk varian 1 sampai 5, langkah 14 untuk varian 6); hanya varian 6 menampilkan pesan live (langkah 15 dan 16). Pesan sebelum `[Save]` pada varian 1 sampai 5 tidak diasersi.
   - TC-GS-IMPORT-672 Expected b menyebut baris Callout "yang sama" dengan pesan sel, sedangkan pada TC-GS-IMPORT-671 baris Callout memakai awalan nama field; spec menulis pesan persis seperti TC.
   - Injeksi value langsung ke DOM bergantung pada kemampuan runner; disediakan tim FE.
   - Post Condition kedua TC kosong; tidak ada yang diasersi.

@@ -56,25 +56,26 @@ coverage:
 18. Buka menu Import dari sidebar (User berada di Import > Brand tanpa draft)
 19. Klik `[Upload File]`
 20. Pilih berkas `brand-12.csv` di file picker
-21. Cabut capability Import data (Create) dari akun uji lewat fixture tanpa menutup Modal Column Mapping (capability Read tetap aktif)
-22. Klik `[Confirm Mapping]`
-23. Perhatikan halaman
-24. Verifikasi server menolak permintaan Confirm Mapping dengan 403 Forbidden
-25. Verifikasi tampil toast error "You don't have permission to do this."
-26. Muat ulang halaman Import
-27. Perhatikan halaman
-28. Verifikasi halaman menampilkan Dropzone Disabled tanpa draft
-29. Verifikasi Staging Metric Cards: Total Rows 0, Ready to Import 0, Errors 0, dan Duplicates 0
-30. Pulihkan capability Import data (Create) akun uji lewat fixture
+21. Tunggu aksi selesai (permintaan mendapat respons)
+22. Cabut capability Import data (Create) dari akun uji lewat fixture tanpa menutup Modal Column Mapping (capability Read tetap aktif)
+23. Klik `[Confirm Mapping]`
+24. Perhatikan halaman
+25. Verifikasi server menolak permintaan Confirm Mapping dengan 403 Forbidden
+26. Verifikasi tampil toast error "You don't have permission to do this."
+27. Muat ulang halaman Import
+28. Perhatikan halaman
+29. Verifikasi halaman menampilkan Dropzone Disabled tanpa draft
+30. Verifikasi Staging Metric Cards: Total Rows 0, Ready to Import 0, Errors 0, dan Duplicates 0
+31. Pulihkan capability Import data (Create) akun uji lewat fixture
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 597, 44. TC-GS-IMPORT-44 di akhir karena ganti akun dan mengubah capability akun (state global).
-- P-2: pencabutan capability lewat fixture Role & Permission (langkah 21) hanya pemicu state; objek uji adalah penolakan Confirm Mapping di UI dan responsnya, bukan request langsung ke server (kelas a). Tidak ada konteks UI kedua.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset dan seed lewat skrip fixture sinkron, tanpa penanda tunggu), langkah 2 (muat ulang halaman), langkah 4, 11, 23, 27 (mengamati sesuai Langkah Uji TC), langkah 16 sampai 18 (ganti akun dan buka menu), langkah 30 (pemulihan capability, S-09; hook `after` sebagai cadangan).
-- Langkah 24 (403 Forbidden) mengasersi respons server atas Confirm Mapping yang dikirim browser (bukan request langsung); toast pada langkah 25 diasersi karena ditulis di Expected TC.
+- P-2: pencabutan capability lewat fixture Role & Permission (langkah 22) hanya pemicu state; objek uji adalah penolakan Confirm Mapping di UI dan responsnya, bukan request langsung ke server (kelas a). Tidak ada konteks UI kedua.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset dan seed lewat skrip fixture sinkron, tanpa penanda tunggu), langkah 2 (muat ulang halaman), langkah 4, 11, 24, 28 (mengamati sesuai Langkah Uji TC), langkah 16 sampai 18 (ganti akun dan buka menu), langkah 21 (menunggu unggahan berkas diproses sebelum pencabutan capability), langkah 31 (pemulihan capability, S-09; hook `after` sebagai cadangan).
+- Langkah 25 (403 Forbidden) mengasersi respons server atas Confirm Mapping yang dikirim browser (bukan request langsung); toast pada langkah 26 diasersi karena ditulis di Expected TC.
 - Temuan untuk QA:
   - TC-GS-IMPORT-44 mengandalkan fixture Role & Permission untuk mencabut/memulihkan capability tanpa mendefinisikan mekanismenya di TC, PRD, atau LLD; disediakan tim FE/BE (S-13).
   - TC-GS-IMPORT-597 mensyaratkan draft D-14 dan akun Import data (Read Only) Client C; seed draft memakai skrip fixture yang disediakan tim FE/BE. Data literal Population tanpa suffix `{runId}`.
