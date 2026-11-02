@@ -20,7 +20,7 @@ coverage:
 - Akun aktor:
   - Total Control (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup 1, Client A) untuk TC-GS-HHR-15. Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`.
   - Total Control Client Q `totalControl_automated_{namaClient}@qwertysystem.net` dengan nama client Client Q, untuk TC-GS-HHR-16: login lewat langkah ganti akun eksplisit dengan `Spectra.env.GS_CLIENTQ_TC_PASSWORD` (env baru bila belum terdaftar; tim FE mendaftarkannya di `executionConfig.environmentVariables` dan `.env.example`).
-  - Total Control Client E `totalControl_automated_{namaClient}@qwertysystem.net` dengan nama client Client E, untuk TC-GS-HHR-17: login lewat langkah ganti akun eksplisit dengan `Spectra.env.GS_CLIENTE_TC_PASSWORD` (env baru bila belum terdaftar; didaftarkan seperti di atas).
+  - Total Control Client E `totalControl_automated_qaTeam5@qwertysystem.net` (Pre-setup TC, Client E), untuk TC-GS-HHR-17: login lewat langkah ganti akun eksplisit dengan `Spectra.env.GS_CLIENTE_TC_PASSWORD` (env baru bila belum terdaftar; didaftarkan seperti di atas).
   - Password tidak ditulis di spec atau fixture. Hook `after` mengembalikan sesi ke akun Total Control Client A default suite.
 - Layar awal: hook `beforeEach` suite membuka Global Settings > Hardware > Handheld Reader untuk akun Total Control Client A; setelah ganti akun, halaman dibuka lewat langkah eksplisit.
 - Guided Tooltip: flag halaman Handheld Reader (`guided_tooltip_seen_gs-handheld-reader`) mengikuti hook suite (lihat `suite.md`), termasuk akun Client Q dan Client E (disediakan tim FE).
@@ -57,7 +57,7 @@ coverage:
 ### TC-GS-HHR-17: Empty state saat Client belum memiliki reader (Client E)
 
 15. Ganti akun: logout dari akun Total Control Client Q
-16. Login sebagai Total Control Client E dengan `Spectra.env.GS_CLIENTE_TC_PASSWORD`
+16. Login sebagai Total Control Client E `totalControl_automated_qaTeam5@qwertysystem.net` dengan `Spectra.env.GS_CLIENTE_TC_PASSWORD`
 17. Buka Global Settings > Hardware > Handheld Reader
 18. Amati area tabel
 19. Verifikasi ilustrasi tampil menggantikan tabel dengan judul `No handheld reader yet`
@@ -65,8 +65,10 @@ coverage:
 21. Verifikasi tidak ada tombol aksi pada empty state
 22. Verifikasi tombol `[+ Activate Reader]` ada di toolbar
 23. Verifikasi License Counter Cards tetap tampil
-24. Verifikasi kartu `Short Range` menampilkan `0 of 2` dan `2 remaining`
-25. Verifikasi kartu `Long Range` menampilkan `0 of 2` dan `2 remaining`
+24. Verifikasi kartu `Short Range` menampilkan `0 of 2`
+25. Verifikasi kartu `Short Range` menampilkan `2 remaining`
+26. Verifikasi kartu `Long Range` menampilkan `0 of 2`
+27. Verifikasi kartu `Long Range` menampilkan `2 remaining`
 
 ## Notes
 
@@ -75,8 +77,8 @@ coverage:
 - Urutan TC dalam spec: 15, 16, 17. Akun default suite (Client A) lebih dulu; TC-GS-HHR-16 dan 17 masing-masing butuh login client lain lewat langkah ganti akun eksplisit (langkah 7 sampai 9 dan 15 sampai 17). Bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal keras karena tiap client membawa data dan login sendiri (prinsip 3, pemisah "beda akun, role, atau entity" kasus b); tidak ada kelas harness campuran.
 - Pembukaan Global Settings > Hardware > Handheld Reader untuk TC-GS-HHR-15 dilakukan hook `beforeEach`; TC-GS-HHR-16 dan 17 membukanya lewat langkah eksplisit sesudah ganti akun.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 7 dan 15 (logout), langkah 8 dan 16 (login).
-- TC-GS-HHR-17 Expected c diasersi pada langkah 23 sampai 25; langkah 21 dan 22 memetakan Expected b (tidak ada tombol aksi pada empty state, tombol `[+ Activate Reader]` hanya di toolbar).
+- TC-GS-HHR-17 Expected c diasersi pada langkah 23 sampai 27; langkah 21 dan 22 memetakan Expected b (tidak ada tombol aksi pada empty state, tombol `[+ Activate Reader]` hanya di toolbar).
 - Langkah 6 (TC-GS-HHR-15 Expected c) mengasersi komposisi Used berdasar status Seed Reader A; Seed Reader A tidak memuat reader berstatus selain keempat status itu.
 - Temuan untuk QA:
-  - Email akun Total Control Client Q dan Client E tidak tertulis di Tabel Data Uji Pre-setup TC (hanya pola `totalControl_automated_{namaClient}@qwertysystem.net`); nama env password Client Q dan Client E tidak ditetapkan TC dan disediakan tim FE.
+  - Email akun Total Control Client Q tidak tertulis di Tabel Data Uji Pre-setup TC (hanya pola `totalControl_automated_{namaClient}@qwertysystem.net`); nama env password Client Q dan Client E tidak ditetapkan TC dan disediakan tim FE.
   - TC-GS-HHR-16 dan 17 tidak menyebut cara berpindah antar client; spec memakai logout lalu login akun Total Control client terkait.

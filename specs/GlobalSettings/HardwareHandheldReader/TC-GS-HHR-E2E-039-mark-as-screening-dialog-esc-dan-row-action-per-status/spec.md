@@ -23,7 +23,7 @@ coverage:
 - Suite serial (`parallel: false`); lihat `suite.md`. Spec ini tidak mengubah data: seluruh dialog ditutup lewat `[Cancel]` atau `Esc`.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader; `## Test Steps` tidak mengulang langkah buka.
 - Akun aktor: Total Control (Sari Dewi) Client A `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup (dibaca saja, tidak diubah spec ini): Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), 10 reader DD-01 s.d. DD-10, plan Growth, format tanggal default General Settings `dd/MM/yy` 24-hour. Spec memakai DD-01 (`Zebra RFID Reader - 1`, Long Range, Available), DD-03 (`Zebra Mobile Reader - 1`, Long Range, Damaged), dan DD-04 (`Gudang Reader - 2`, Short Range, Missing). Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya; pemulihan Seed Reader A oleh fixture backend disediakan tim FE/BE (lihat Temuan untuk QA).
+- Data Dinamis (Seed Reader A, dipulihkan fixture backend; dibaca saja, tidak diubah spec ini): Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), 10 reader DD-01 s.d. DD-10, plan Growth, format tanggal default General Settings `dd/MM/yy` 24-hour. Spec memakai DD-01 (`Zebra RFID Reader - 1`, Long Range, Available), DD-03 (`Zebra Mobile Reader - 1`, Long Range, Damaged), dan DD-04 (`Gudang Reader - 2`, Short Range, Missing). Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya (pengecualian S-12 Population Seed Reader A HHR); pemulihan Seed Reader A oleh fixture backend disediakan tim FE/BE (lihat Temuan untuk QA).
 - Guided Tooltip: hook suite `before` menyetel flag Guided Tooltip halaman Handheld Reader menjadi true untuk akun aktor dan hook `after` memulihkannya; lihat `suite.md`.
 - Tabel "Kasus dialog Mark as" (parameter langkah 11 sampai 17):
 
@@ -82,9 +82,10 @@ Untuk setiap baris tabel "Kasus dialog Mark as" (langkah 11 sampai 17):
 - Pengecualian alasan di atas sekitar 35 langkah (ekspansi 44): seluruh blok satu kelas (screening tanpa perubahan data), memakai reader Seed Reader A yang hanya dibaca, dan tiap blok berdiri sendiri sehingga kegagalan satu blok tidak menghilangkan makna blok lain. Langkah 11 sampai 17 hanya diulang per baris data.
 - Dialog konfirmasi diasersi utuh dalam satu `Verifikasi` (judul, isi, dan tombol footer) sesuai S-01 untuk dialog konfirmasi satu elemen.
 - Mark as Damaged, Missing, dan Available yang berhasil (TC-GS-HHR-139, 141, 143, 145, 459) ada di spec 040.
+- Pengecualian S-12 Population Seed Reader A HHR (A-5) berlaku untuk Seed Reader A (nama literal tanpa suffix `{runId}`); pemulihannya dijamin fixture backend dan dinyatakan di `suite.md`.
 - Temuan untuk QA:
   - TC-GS-HHR-142 dan 144 berjudul identik ("Screening dialog Mark as Available dan Cancel tidak mengubah status"); keduanya dibedakan oleh Data Uji (DD-03 Damaged versus DD-04 Missing), jadi bukan duplikat dan keduanya ditulis sebagai baris tabel. TC-GS-HHR-143 dan 145 (spec 040) berjudul identik pula.
   - TC-GS-HHR-148 Expected b tidak menyebut `Edit Reader Power` untuk DD-04 (Short Range); PRD §4.2d menyatakan `Edit Reader Power` khusus Long Range. Spec mengikuti daftar TC dan tidak mengasersi ketidakhadiran `Edit Reader Power` pada DD-04.
   - TC-GS-HHR-138, 140, 142, 144, dan 146 tidak mencantumkan Post Condition; tidak ada yang tidak diasersi.
-  - Nama literal Seed Reader A (`Zebra RFID Reader - 1`, dan seterusnya) tidak termasuk pengecualian Population S-12 di konvensi; spec memakai nama literal karena asersi bergantung pada nilai dan hanya membacanya. Perlu keputusan QA untuk menambah pengecualian Population HHR.
+  - Mekanisme pemulihan Seed Reader A oleh fixture backend ("Reset antar TC" pada Catatan TC) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE.
   - TC-GS-HHR-146 Expected a tidak menyebut cara menutup selain `Esc`; spec mengikuti TC.

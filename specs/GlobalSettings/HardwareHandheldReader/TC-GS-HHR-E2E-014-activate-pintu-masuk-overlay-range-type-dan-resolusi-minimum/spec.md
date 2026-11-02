@@ -78,30 +78,34 @@ coverage:
 33. Klik `[Sync]`
 34. Verifikasi `Serial Number` read-only terisi `SN-HHR-00202` (Sync berhasil)
 35. Verifikasi slider `Reader Power` tidak ada pada popup Short Range
-36. Klik `[✕]` di header popup, lalu klik `[Cancel Activation]` pada dialog
+36. Klik `[✕]` di header popup
+37. Verifikasi dialog `Cancel Activation` tampil dengan body "Are you sure you want to cancel this activation? The Sync progress you've made will be lost." dan tombol `[Go Back]` `[Cancel Activation]`
+38. Klik `[Cancel Activation]`
 
 ### TC-GS-HHR-57: Popup Activate dapat dipakai penuh pada resolusi minimum 1280x720
 
-37. Atur viewport browser ke 1280x720
-38. Klik `[+ Activate Reader]`
-39. Klik `Long Range` pada Overlay `Select Range Type`
-40. Sambungkan reader Long Range dengan Serial Number `SN-HHR-00201` (HS-01) lewat simulator reader USB
-41. Klik `[Sync]`
-42. Verifikasi seluruh elemen popup (header `[✕]`, `[Sync]`, `Serial Number`, label `Official`, slider `Reader Power`, `Alias Name`, `[Clear Field]`, `[Submit]`) terlihat tanpa terpotong
-43. Verifikasi seluruh elemen popup yang sama dapat diklik
-44. Klik `[✕]` di header popup, lalu klik `[Cancel Activation]` pada dialog
-45. Pulihkan viewport browser ke ukuran awal
+39. Atur viewport browser ke 1280x720
+40. Klik `[+ Activate Reader]`
+41. Klik `Long Range` pada Overlay `Select Range Type`
+42. Sambungkan reader Long Range dengan Serial Number `SN-HHR-00201` (HS-01) lewat simulator reader USB
+43. Klik `[Sync]`
+44. Verifikasi seluruh elemen popup (header `[✕]`, `[Sync]`, `Serial Number`, label `Official`, slider `Reader Power`, `Alias Name`, `[Clear Field]`, `[Submit]`) terlihat tanpa terpotong
+45. Verifikasi seluruh elemen popup yang sama dapat diklik
+46. Klik `[✕]` di header popup
+47. Verifikasi dialog `Cancel Activation` tampil dengan body "Are you sure you want to cancel this activation? The Sync progress you've made will be lost." dan tombol `[Go Back]` `[Cancel Activation]`
+48. Klik `[Cancel Activation]`
+49. Pulihkan viewport browser ke ukuran awal
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`. Kelas harness: fungsional dengan harness USB hanya pada TC-GS-HHR-53 dan TC-GS-HHR-57 (keduanya di akhir spec supaya kegagalan simulator tidak menutupi hasil blok screening TC-GS-HHR-51, TC-GS-HHR-444, dan TC-GS-HHR-52).
+- Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`. Spec memuat dua kelas harness: screening fungsional (TC-GS-HHR-51, TC-GS-HHR-444, TC-GS-HHR-52) dan harness eksternal simulator reader USB (TC-GS-HHR-53 dan TC-GS-HHR-57). Keduanya berbagi topik pintu masuk Activate, akun, dan data yang sama; blok USB diletakkan di akhir spec supaya kegagalan simulator tidak menutupi hasil blok screening.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec melewati sekitar 35 langkah (45 langkah). Alasan: 26 langkah adalah `Verifikasi` yang dipecah satu per klausa Expected (S-01), terutama TC-GS-HHR-52 (11 langkah `Verifikasi` untuk tujuh butir Expected) dan TC-GS-HHR-444 (6 langkah); seluruh blok memakai satu topik (pintu masuk popup Activate), satu akun, dan data yang sama, tidak membuat data, dan blok screening berjalan lebih dulu sehingga kegagalan TC-GS-HHR-53 atau TC-GS-HHR-57 tidak menghapus hasil blok sebelumnya.
-- Langkah penghubung (tanpa `Verifikasi`): langkah 28 menutup popup TC-GS-HHR-52 yang belum berisi hasil Sync agar TC-GS-HHR-53 membuka popup baru (TC-GS-HHR-62 menutup popup tanpa hasil Sync lewat `[✕]` tanpa dialog); langkah 32 dan 40 menyiapkan reader di simulator; langkah 36 dan 44 menutup popup yang sudah berisi hasil Sync; langkah 37 dan 45 mengatur dan memulihkan viewport.
+- Spec melewati sekitar 35 langkah (49 langkah). Alasan: 28 langkah adalah `Verifikasi` yang dipecah satu per klausa Expected (S-01), terutama TC-GS-HHR-52 (11 langkah `Verifikasi` untuk tujuh butir Expected) dan TC-GS-HHR-444 (6 langkah); seluruh blok memakai satu topik (pintu masuk popup Activate), satu akun, dan data yang sama, tidak membuat data, dan blok screening berjalan lebih dulu sehingga kegagalan TC-GS-HHR-53 atau TC-GS-HHR-57 tidak menghapus hasil blok sebelumnya.
+- Langkah penghubung (tanpa `Verifikasi`): langkah 28 menutup popup TC-GS-HHR-52 yang belum berisi hasil Sync agar TC-GS-HHR-53 membuka popup baru (TC-GS-HHR-62 menutup popup tanpa hasil Sync lewat `[✕]` tanpa dialog); langkah 32 dan 42 menyiapkan reader di simulator; langkah 36 sampai 38 dan 46 sampai 48 menutup popup yang sudah berisi hasil Sync lewat dialog `Cancel Activation` (S-08); langkah 39 dan 49 mengatur dan memulihkan viewport.
+- Teks dialog `Cancel Activation` (langkah 37 dan 47) mengikuti Expected TC-GS-HHR-89; TC-GS-HHR-53 dan TC-GS-HHR-57 sendiri tidak memuatnya.
 - Langkah 34 adalah `Verifikasi` tambahan di luar Expected TC-GS-HHR-53 yang menjadi anchor positif (Sync berhasil) bagi asersi absence slider `Reader Power` pada langkah 35 (butir 2 bagian 8b konvensi); langkah 7 dan 11 menjadi anchor bagi absence popup dan dialog pada langkah 8 dan 12.
 - Tidak ada pencatatan log yang diasersi di spec ini.
 - Temuan untuk QA:
   - Mekanisme simulasi reader USB, driver lokal, dan pembacaan Serial Number tidak didefinisikan di TC, PRD, atau LLD (TC-GS-HHR-53 dan TC-GS-HHR-57 berlabel Manual Only (b)); spec hanya mencatat kebutuhan di Prerequisites dan tidak mengarang endpoint atau perintah simulator.
-  - Judul dan isi dialog yang memuat tombol `[Cancel Activation]` (langkah 36 dan 44) tidak tertulis di TC sumber slice ini; hanya TC-GS-HHR-473 menyebut tombolnya. Langkah penutupan popup berisi hasil Sync ditulis tanpa `Verifikasi` dialog (S-08 tidak dapat dipenuhi tanpa judul dan isi dialog).
-  - TC-GS-HHR-57 tidak mendefinisikan cara mengukur "terpotong" dan "dapat diklik" pada viewport 1280x720; spec memecahnya menjadi dua `Verifikasi` (langkah 42 dan 43) dan membutuhkan pembacaan geometri elemen (Prerequisites).
+  - TC-GS-HHR-57 tidak mendefinisikan cara mengukur "terpotong" dan "dapat diklik" pada viewport 1280x720; spec memecahnya menjadi dua `Verifikasi` (langkah 44 dan 45) dan membutuhkan pembacaan geometri elemen (Prerequisites).
   - TC-GS-HHR-53 tidak menyebut kuota atau stok yang dikonsumsi (tidak ada Submit); spec tidak mengirim `[Submit]` pada TC mana pun sehingga stok HS-01 dan HS-02 tidak berubah.

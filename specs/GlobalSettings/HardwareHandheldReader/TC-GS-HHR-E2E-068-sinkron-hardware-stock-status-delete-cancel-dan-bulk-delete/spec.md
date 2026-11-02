@@ -29,7 +29,7 @@ coverage:
 | Sesi | Role | Nama user | Email | Env var password |
 |---|---|---|---|---|
 | A | Total Control (Client A) | Sari Dewi | `totalControl_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_TC_PASSWORD` |
-| P | Principal (Admin Console) | Bambang Hartono | `principal_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_PRINCIPAL_TC_PASSWORD` |
+| P | Principal (Admin Console) | Bambang Hartono | `totalControlPrincipal_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_PRINCIPAL_TC_PASSWORD` |
 
 - Login Sesi A dilakukan di hook `before`; Sesi P dibuka dengan langkah ganti akun eksplisit (langkah 1) karena hasilnya diasersi di Hardware Stock. Hook `after` menutup Sesi P dan mengembalikan sesi ke akun default suite (Sesi A).
 - Data Dinamis (Seed Reader A, dipulihkan fixture backend; Client A, plan Growth, DD-01 s.d. DD-10): DD-01 (Available, Jalur A, unit `SN-HHR-00101`), DD-03 (Damaged, Jalur A, `SN-HHR-00103`, `In Use`), DD-04 (Missing, Jalur A, `SN-HHR-00104`, `In Use`), DD-07 (Available, Jalur B, `SN-HHR-00108`), DD-10 (Waiting for Approval, Jalur A, `SN-HHR-00205`). Nama reader bernilai literal tanpa suffix (pengecualian S-12 Population Seed Reader A HHR).

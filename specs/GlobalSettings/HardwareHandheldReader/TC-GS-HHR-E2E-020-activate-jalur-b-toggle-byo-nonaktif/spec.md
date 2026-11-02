@@ -24,7 +24,7 @@ coverage:
   |---|---|---|---|---|
   | TC-GS-HHR-75, TC-GS-HHR-76 | Client B | Plan Growth, toggle `Allow Self-Purchased Device Activation` nonaktif, `Long Range` kuota 3 tersedia, belum ada reader | Total Control Client B `totalControl_automated_qaTeam2@qwertysystem.net` | `Spectra.env.GS_CLIENTB_TC_PASSWORD` |
   | TC-GS-HHR-473 | Client A | Plan Growth, toggle aktif, Seed Reader A DD-01 s.d. DD-10 | Total Control Sari Dewi `totalControl_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_TC_PASSWORD` |
-  | TC-GS-HHR-473 (pemicu) | Admin Console | memutuskan toggle BYO Client A | Principal Bambang Hartono `principal_automated_qaTeam1@qwertysystem.net`, sesi API | `Spectra.env.GS_PRINCIPAL_TC_PASSWORD` |
+  | TC-GS-HHR-473 (pemicu) | Admin Console | memutuskan toggle BYO Client A | Principal Bambang Hartono `totalControlPrincipal_automated_qaTeam1@qwertysystem.net`, sesi API | `Spectra.env.GS_PRINCIPAL_TC_PASSWORD` |
 
   Login Client B di hook `before`; ganti akun ke Client A di langkah 18 sampai 20; hook `after` mengembalikan sesi ke akun default suite (Client A, `GS_TC_PASSWORD`). Password tidak ditulis di spec atau fixture.
 - Layar awal Global Settings > Hardware > Handheld Reader dibuka hook `beforeEach` untuk akun hook `before`; langkah 20 membukanya sesudah ganti akun.
@@ -107,7 +107,6 @@ coverage:
 - Temuan untuk QA:
   - Mekanisme simulasi reader USB (penyajian serial, pergantian reader, Current Power) dan mekanisme Principal mematikan dan menyalakan toggle `Allow Self-Purchased Device Activation` Client A tidak didefinisikan di TC, PRD, atau LLD; spec mencatat kebutuhan di Prerequisites tanpa mengarang endpoint.
   - TC-GS-HHR-473 menyebut "sesi kedua" Principal; sesuai konvensi pelaku kedua yang hanya memicu state memakai sesi API, bukan sesi UI. Bila QA menghendaki sesi UI kedua, spec perlu diubah.
-  - Email akun Principal di Tabel Pre-setup TC (`principal_automated_qaTeam1@qwertysystem.net`) berbeda dari deskripsi `GS_PRINCIPAL_TC_PASSWORD` di `.env.example` (`totalControlPrincipal_automated_qaTeam1@qwertysystem.net`); spec memakai email Tabel Pre-setup TC dan `GS_PRINCIPAL_TC_PASSWORD`; QA/tim FE perlu memastikan akun dan env var yang sama.
   - TC-GS-HHR-473 Expected c menyebut "satu baris `Failed` baru" tanpa kolom pembeda baris baru dari baris `Failed` run sebelumnya; spec memakai selisih jumlah baris hasil Search sebagai penanda baris baru (langkah 43) dan mengasersi atribut baris pada langkah 44.
   - TC-GS-HHR-473 tidak menyatakan state Event Log Activate lain yang ikut berubah; baseline hanya untuk hasil Search `Chainway C72`.
   - TC-GS-HHR-75 Expected a ("tidak ada record dibuat") tidak dapat diamati selama popup terbuka; spec mengamatinya pada langkah 17.

@@ -22,7 +22,7 @@ coverage:
 
 - Mode: FE+BE. Kelas harness: state tenant (kelas h, write-lockdown Suspended/Expired, plan tier, toggle BYO). TC-GS-HHR-390 dan TC-GS-HHR-391 juga membutuhkan simulator reader USB (kelas d) bersama state tenant toggle BYO sesuai pengecualian `P-7` (lihat Notes). Suite `parallel: false` karena spec mengubah state global (toggle BYO Client A dan Client B).
 - Flag Guided Tooltip halaman Handheld Reader: diatur hook suite untuk setiap akun pada tabel di bawah (lihat `suite.md`, Hook suite).
-- Akun (Total Control pada tiap Client). Client A: `totalControl_automated_qaTeam1@qwertysystem.net`. Client B: `totalControl_automated_qaTeam2@qwertysystem.net`. Client S, P, N, D, dan X: email mengikuti pola Pre-setup TC `totalControl_automated_{namaClient}@qwertysystem.net`, nilai `{namaClient}` tidak tertulis di Pre-setup TC (lihat Temuan untuk QA):
+- Akun (Total Control pada tiap Client). Client A: `totalControl_automated_qaTeam1@qwertysystem.net`. Client B: `totalControl_automated_qaTeam2@qwertysystem.net`. Client P: `totalControl_automated_qaTeam12@qwertysystem.net`. Client N: `totalControl_automated_qaTeam13@qwertysystem.net`. Client D: `totalControl_automated_qaTeam9@qwertysystem.net`. Client X: `totalControl_automated_qaTeam11@qwertysystem.net`. Client S: email disediakan tim FE (tidak tertulis di Pre-setup TC; lihat Temuan untuk QA):
 
 | Client | Kondisi | Dipakai di | Env var password |
 |---|---|---|---|
@@ -151,4 +151,4 @@ Client A (sesi hook `before`) dikerjakan lebih dulu (langkah 1 sampai 8). Untuk 
   - TC-GS-HHR-391 precondition e menyebut katalog Device Name Client A, padahal aktornya Client B; spec mengasumsikan katalog yang sama tersedia di Client B.
   - TC-GS-HHR-402 tidak menyebut tab Popup Detail yang diamati dan cara membuktikan "berfungsi tanpa penolakan"; spec memakai tampilnya Tab Usage dan Tab Changelog dan berkas terunduh.
   - Mekanisme simulasi reader USB (Sync `SN-HHR-00302`) dan cara Principal mengubah toggle BYO tidak didefinisikan di TC, PRD, atau LLD; tidak ada endpoint yang dikarang.
-  - Email dan nilai `{namaClient}` untuk akun Total Control Client S, P, N, D, dan X tidak tertulis di Pre-setup TC.
+  - Email akun Total Control Client S tidak tertulis di Pre-setup TC.

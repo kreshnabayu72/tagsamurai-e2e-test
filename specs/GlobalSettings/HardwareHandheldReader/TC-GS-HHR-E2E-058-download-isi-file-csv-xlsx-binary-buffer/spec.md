@@ -35,8 +35,8 @@ coverage:
 
 - Precondition TC-GS-HHR-314 (langkah 22): Alias Name DD-02 diubah menjadi `Gudang, "Utama"` lewat fixture backend; mekanisme fixture disediakan tim FE/BE (tidak didefinisikan di TC, PRD, atau LLD). Alias Name DD-02 dipulihkan ke `Reader Gudang 02` oleh fixture backend di hook `after`.
 - Data tambahan untuk TC-GS-HHR-183, 338, dan 454:
-  - Seed Usage Event DD-01 UE-01 sampai UE-06 (`Fixture.hardwareHandheldReader.seedUsageDd01`): enam baris Tab Usage DD-01 (`SN-HHR-00101`), sebagian dengan `Transaction ID` kosong; pemulihan oleh fixture backend.
-  - Seed Changelog Client A CL-01 sampai CL-09 (`Fixture.hardwareHandheldReader.seedChangelogClientA`): DD-03 (`Zebra Mobile Reader - 1`, `SN-HHR-00103`) memiliki 3 entri Changelog (CL-06, CL-07, CL-08); Modal Changelog memuat baris dengan nilai kosong. Pemulihan oleh fixture backend.
+  - Seed Usage Event DD-01 UE-01 sampai UE-06 (`Fixture.hardwareHandheldReader.seedUsageDd01`, `Date` `16/06/26` sampai `21/06/26`): enam baris seed Tab Usage DD-01 (`SN-HHR-00101`), sebagian dengan `Transaction ID` kosong. Fixture hanya menyediakan baris seed bertanggal Juni 2026 dan tidak memulihkan audit trail; Tab Usage dapat memuat baris non-seed, sehingga jumlah baris file tidak diasersi absolut dan dibandingkan dengan baseline N0 yang dicatat dari tab sebelum unduh.
+  - Seed Changelog Client A CL-01 sampai CL-09 (`Fixture.hardwareHandheldReader.seedChangelogClientA`): DD-03 (`Zebra Mobile Reader - 1`, `SN-HHR-00103`) memiliki 3 baris seed Changelog (CL-06, CL-07, CL-08; `Date` `16/06/26` sampai `18/06/26`); Modal Changelog memuat baris dengan nilai kosong. Audit trail tidak dipulihkan; jumlah baris berkas Tab Changelog DD-03 dibandingkan dengan baseline N0 yang dicatat dari tab sebelum unduh.
 - Kemampuan teknis: menangkap berkas unduhan browser ke direktori bersih per unduhan supaya nama berkas yang sama (`Handheld-Reader-List.xlsx`, `Handheld-Reader-List.csv`) tidak tertimpa atau diberi akhiran `(1)`; membaca isi berkas CSV (byte mentah untuk BOM dan pemisah, serta sel) dan XLSX (nilai dan tipe sel, termasuk sel angka vs teks). Berkas unduhan dihapus di hook `after`.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-handheld-reader`: diatur hook suite (lihat `suite.md`, bagian Hook suite); spec ini tidak mengatur flag sendiri.
 - State yang diubah dan dipulihkan: visibilitas kolom `Last Scanned In` dan `Last User` (dipulihkan tersembunyi pada langkah penutup TC-GS-HHR-312), Alias Name DD-02 (dipulihkan di hook `after`); hook `after` juga memulihkan konfigurasi kolom Daftar Reader ke default sebagai cadangan.
@@ -83,64 +83,66 @@ coverage:
 
 30. Klik `Device Name` baris DD-01 (Serial Number `SN-HHR-00101`)
 31. Verifikasi tab `Usage` aktif
-32. Klik ikon Download, pilih `Download as CSV`
-33. Verifikasi tidak ada toast sukses
-34. Verifikasi file `Handheld-Reader-Usage.csv` terunduh
-35. Verifikasi isi file CSV mengikuti 6 baris dan kolom yang tampil
-36. Verifikasi `Transaction ID` kosong ditulis `-` pada file CSV
-37. Klik ikon Download, pilih `Download as XLSX`
-38. Verifikasi tidak ada toast sukses
-39. Verifikasi file `Handheld-Reader-Usage.xlsx` terunduh
-40. Verifikasi isi file XLSX mengikuti 6 baris dan kolom yang tampil
-41. Verifikasi `Transaction ID` kosong ditulis `-` pada file XLSX
-42. Tutup Popup `Handheld Reader Detail` dengan `✕`
+32. Catat jumlah baris tab `Usage` sebagai baseline N0
+33. Klik ikon Download, pilih `Download as CSV`
+34. Verifikasi tidak ada toast sukses
+35. Verifikasi file `Handheld-Reader-Usage.csv` terunduh
+36. Verifikasi isi file CSV mengikuti baris tab (jumlah baris file sama dengan N0 pada langkah 32, termasuk 6 baris seed UE-01 sampai UE-06) dan kolom yang tampil
+37. Verifikasi `Transaction ID` kosong ditulis `-` pada file CSV
+38. Klik ikon Download, pilih `Download as XLSX`
+39. Verifikasi tidak ada toast sukses
+40. Verifikasi file `Handheld-Reader-Usage.xlsx` terunduh
+41. Verifikasi isi file XLSX mengikuti baris tab (jumlah baris file sama dengan N0 pada langkah 32, termasuk 6 baris seed UE-01 sampai UE-06) dan kolom yang tampil
+42. Verifikasi `Transaction ID` kosong ditulis `-` pada file XLSX
+43. Tutup Popup `Handheld Reader Detail` dengan `✕`
 
 ### TC-GS-HHR-195: Kolom Checkbox bukan bagian Setup Column dan tidak ikut export
 
-43. Klik header kolom Actions `(⋯)` untuk membuka Overlay Column Visibility
-44. Verifikasi daftar Overlay Column Visibility memuat sedikitnya satu kolom tabel
-45. Verifikasi daftar Overlay Column Visibility tidak memuat `Checkbox`
-46. Verifikasi checkbox header dan checkbox baris tetap tampil di tabel
-47. Tutup Overlay Column Visibility dengan klik di luar Overlay
-48. Klik ikon Download, pilih `Download as CSV`
-49. Buka file `Handheld-Reader-List.csv` dan baca header
-50. Verifikasi header file memuat kolom tabel selain `Checkbox`
-51. Verifikasi file `Handheld-Reader-List.csv` tidak memuat kolom `Checkbox`
+44. Klik header kolom Actions `(⋯)` untuk membuka Overlay Column Visibility
+45. Verifikasi daftar Overlay Column Visibility memuat sedikitnya satu kolom tabel
+46. Verifikasi daftar Overlay Column Visibility tidak memuat `Checkbox`
+47. Verifikasi checkbox header dan checkbox baris tetap tampil di tabel
+48. Tutup Overlay Column Visibility dengan klik di luar Overlay
+49. Klik ikon Download, pilih `Download as CSV`
+50. Buka file `Handheld-Reader-List.csv` dan baca header
+51. Verifikasi header file memuat kolom tabel selain `Checkbox`
+52. Verifikasi file `Handheld-Reader-List.csv` tidak memuat kolom `Checkbox`
 
 ### TC-GS-HHR-338: Download Modal Changelog
 
-52. Klik ikon Changelog
-53. Klik ikon Download di modal
-54. Klik `Download as CSV`
-55. Verifikasi tidak ada toast sukses
-56. Verifikasi berkas `Changelog-Handheld-Reader.csv` terunduh
-57. Verifikasi nilai kosong ditulis `-` pada berkas CSV
-58. Klik ikon Download di modal
-59. Klik `Download as XLSX`
-60. Verifikasi tidak ada toast sukses
-61. Verifikasi berkas `Changelog-Handheld-Reader.xlsx` terunduh
-62. Verifikasi nilai kosong ditulis `-` pada berkas XLSX
-63. Tutup Modal Changelog dengan `✕`
+53. Klik ikon Changelog
+54. Klik ikon Download di modal
+55. Klik `Download as CSV`
+56. Verifikasi tidak ada toast sukses
+57. Verifikasi berkas `Changelog-Handheld-Reader.csv` terunduh
+58. Verifikasi nilai kosong ditulis `-` pada berkas CSV
+59. Klik ikon Download di modal
+60. Klik `Download as XLSX`
+61. Verifikasi tidak ada toast sukses
+62. Verifikasi berkas `Changelog-Handheld-Reader.xlsx` terunduh
+63. Verifikasi nilai kosong ditulis `-` pada berkas XLSX
+64. Tutup Modal Changelog dengan `✕`
 
 ### TC-GS-HHR-454: Download Tab Changelog Popup Detail
 
-64. Klik `Device Name` baris DD-03 (Serial Number `SN-HHR-00103`)
-65. Klik tab `Changelog`
-66. Klik ikon Download di tab
-67. Klik `Download as CSV`
-68. Verifikasi tidak ada toast sukses
-69. Verifikasi berkas `Changelog-Handheld-Reader.csv` terunduh
-70. Verifikasi berkas memuat 3 baris entri DD-03
-71. Verifikasi berkas hanya memuat kolom yang tampil di tab (tanpa kolom `Device Name`)
-72. Tutup Popup `Handheld Reader Detail` dengan `✕`
+65. Klik `Device Name` baris DD-03 (Serial Number `SN-HHR-00103`)
+66. Klik tab `Changelog`
+67. Catat jumlah baris tab `Changelog` sebagai baseline N0
+68. Klik ikon Download di tab
+69. Klik `Download as CSV`
+70. Verifikasi tidak ada toast sukses
+71. Verifikasi berkas `Changelog-Handheld-Reader.csv` terunduh
+72. Verifikasi berkas memuat seluruh baris tab (jumlah baris berkas sama dengan N0 pada langkah 67, termasuk 3 baris seed DD-03: CL-06, CL-07, CL-08)
+73. Verifikasi berkas hanya memuat kolom yang tampil di tab (tanpa kolom `Device Name`)
+74. Tutup Popup `Handheld Reader Detail` dengan `✕`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`, section 4a-6. Kelas binary buffer (prinsip 13f): isi berkas dipisah dari Download biasa (spec 057) dan kegagalan ekspor (spec 028).
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC di spec: 312, 314 (daftar utama), lalu 183, 195, 338, 454 (Tab Usage, Overlay Column Visibility, Modal Changelog, Tab Changelog). Tiap TC berada utuh di spec ini karena klausa fungsional (nama berkas, nama kolom, jumlah baris, tanpa toast sukses, Overlay Column Visibility) dan klausa isi berkas (nilai sel, BOM, tipe sel) berada dalam satu TC yang sama. Nama berkas, nama kolom, dan jumlah baris adalah asersi fungsional (konvensi bagian 3 prinsip 13f); asersi serupa untuk Daftar Reader ada di spec 057, sedangkan nilai sel, BOM, dan tipe sel hanya di spec ini.
-- Langkah penghubung (aksi tanpa `Verifikasi`): menutup overlay dengan `Esc`; mengaktifkan kolom `Last Scanned In` dan `Last User` serta memulihkannya; membuka isi berkas unduhan; membuka dan menutup Popup Detail, Modal Changelog, dan Overlay (langkah 30, 42, 43, 47, 52, 63, 64, 65, 72); memuat ulang halaman sesudah fixture mengubah Alias Name DD-02 (langkah 23).
-- Spec memuat 72 langkah (di atas sekitar 35 langkah). Alasan: satu kelas (isi berkas unduhan, prinsip 13f), satu akun, hanya membaca data (satu-satunya perubahan state adalah Alias Name DD-02 oleh fixture dan kolom yang dipulihkan); tiap blok TC membuka dan menutup popup atau modal sendiri dari layar daftar, sehingga kegagalan satu blok tidak menghilangkan makna blok lain.
-- Asersi "tidak ada toast sukses" (TC-GS-HHR-183, 338, 454) diletakkan segera sesudah pemicu pilihan format dan sebelum asersi berkas terunduh yang menjadi anchor positifnya; absence kolom `Checkbox` (langkah 51) didahului langkah 50 (header memuat kolom lain).
+- Langkah penghubung (aksi tanpa `Verifikasi`): menutup overlay dengan `Esc`; mengaktifkan kolom `Last Scanned In` dan `Last User` serta memulihkannya; membuka isi berkas unduhan; membuka dan menutup Popup Detail, Modal Changelog, dan Overlay (langkah 30, 43, 44, 48, 53, 64, 65, 66, 74); mencatat baseline N0 jumlah baris tab `Usage` (langkah 32) dan tab `Changelog` (langkah 67) sebelum unduhan; memuat ulang halaman sesudah fixture mengubah Alias Name DD-02 (langkah 23).
+- Spec memuat 74 langkah (di atas sekitar 35 langkah). Alasan: satu kelas (isi berkas unduhan, prinsip 13f), satu akun, hanya membaca data (satu-satunya perubahan state adalah Alias Name DD-02 oleh fixture dan kolom yang dipulihkan); tiap blok TC membuka dan menutup popup atau modal sendiri dari layar daftar, sehingga kegagalan satu blok tidak menghilangkan makna blok lain.
+- Asersi "tidak ada toast sukses" (TC-GS-HHR-183, 338, 454) diletakkan segera sesudah pemicu pilihan format dan sebelum asersi berkas terunduh yang menjadi anchor positifnya; absence kolom `Checkbox` (langkah 52) didahului langkah 51 (header memuat kolom lain).
 - Pembagian TC lintas spec: Download biasa (TC-GS-HHR-306 sampai 311, 313) di spec 057; kegagalan Download (TC-GS-HHR-315) di spec 028; Download lebih dari 5.000 baris (TC-GS-HHR-316) di spec 059; TC-GS-HHR-469 (hover nama pengguna) ada di spec 062.
 - Temuan untuk QA:
   - TC-GS-HHR-312: Expected a ("warna badge tidak ikut") tidak punya cara pengamatan sendiri pada berkas; spec mengasersi sel berisi teks label saja.

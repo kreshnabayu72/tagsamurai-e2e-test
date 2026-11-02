@@ -92,7 +92,7 @@ coverage:
 
 ### TC-GS-HHR-5: Nilai kosong kolom Alias Name, SKU, dan Model/Type, kolom Serial Number selalu terisi
 
-28. Klik header kolom `⋯` untuk membuka Overlay Column Visibility
+28. Klik header kolom Actions `(⋯)` untuk membuka Overlay Column Visibility
 29. Centang `Model/Type`
 30. Tutup Overlay Column Visibility dengan `Esc`
 31. Amati kolom `Alias Name`, `Serial Number`, `SKU`, dan `Model/Type` pada seluruh 10 baris
@@ -101,91 +101,95 @@ coverage:
 34. Verifikasi `SKU` baris Jalur A: DD-01 `SKU-HHR-01`, DD-03 `SKU-HHR-02`, DD-02, DD-04, dan DD-10 `SKU-HHR-03`, DD-06 `SKU-HHR-04`
 35. Verifikasi `Serial Number` terisi pada 10 baris (`SN-HHR-00101` sampai `SN-HHR-00205`), tidak ada sel kosong
 36. Verifikasi `Model/Type`: hanya DD-08 (Jalur B tanpa Model/Type) menampilkan `—`, sembilan baris lain terisi
-37. Klik header kolom `⋯` untuk membuka Overlay Column Visibility dan hapus centang `Model/Type`
+37. Klik header kolom Actions `(⋯)` untuk membuka Overlay Column Visibility dan hapus centang `Model/Type`
 38. Tutup Overlay Column Visibility dengan `Esc`
 
 ### TC-GS-HHR-8: Kolom curated tampil setelah diaktifkan lewat Column Visibility
 
-39. Klik header kolom `⋯` untuk membuka Overlay Column Visibility
+39. Klik header kolom Actions `(⋯)` untuk membuka Overlay Column Visibility
 40. Centang `Brand`, `Model/Type`, `Last Scanned In`, `Last User`, dan `Activated At`
 41. Verifikasi kolom `Brand`, `Model/Type`, `Last Scanned In`, `Last User`, dan `Activated At` tampil langsung pada tabel tanpa menekan Save (panel cepat ter-apply)
 42. Tutup Overlay Column Visibility dengan `Esc`
 43. Amati baris DD-01, DD-04, dan DD-08
-44. Verifikasi DD-01: `Brand` `Zebra`, `Model/Type` `RFD40`, `Last Scanned In` `Fixed Asset`, `Last User` `Budi S`, `Activated At` `21/06/26 08:00`
-45. Verifikasi DD-04 (belum pernah dipindai): `Last Scanned In` `—`, `Last User` `—`, `Activated At` `01/06/26 07:45`
-46. Verifikasi DD-08 (Jalur B tanpa Model/Type): `Brand` `Unitech`, `Model/Type` `—`
+44. Verifikasi DD-01 `Brand` `Zebra`
+45. Verifikasi DD-01 `Model/Type` `RFD40`
+46. Verifikasi DD-01 `Last Scanned In` `Fixed Asset`
+47. Verifikasi DD-01 `Last User` `Budi S`
+48. Verifikasi DD-01 `Activated At` `21/06/26 08:00`
+49. Verifikasi DD-04 (belum pernah dipindai) `Last Scanned In` `—`
+50. Verifikasi DD-04 `Last User` `—`
+51. Verifikasi DD-04 `Activated At` `01/06/26 07:45`
+52. Verifikasi DD-08 (Jalur B tanpa Model/Type) `Brand` badge `Unitech`
+53. Verifikasi DD-08 `Model/Type` `—`
 
 ### TC-GS-HHR-9: Badge Last Scanned In per produk
 
-47. Amati kolom `Last Scanned In` baris DD-01, DD-02, dan DD-03
-48. Verifikasi `Last Scanned In` DD-01 `Fixed Asset` memakai badge `severity="info"`
-49. Verifikasi `Last Scanned In` DD-02 `Supply` memakai badge `severity="success"`
-50. Verifikasi `Last Scanned In` DD-03 `Global Settings` memakai badge `severity="secondary"`
+54. Amati kolom `Last Scanned In` baris DD-01, DD-02, dan DD-03
+55. Verifikasi `Last Scanned In` DD-01 `Fixed Asset` memakai badge `severity="info"`
+56. Verifikasi `Last Scanned In` DD-02 `Supply` memakai badge `severity="success"`
+57. Verifikasi `Last Scanned In` DD-03 `Global Settings` memakai badge `severity="secondary"`
 
 ### TC-GS-HHR-10: Last User tampil `[First Name] [Last Initial]` dan tooltip nama lengkap
 
-51. Amati kolom `Last User` baris DD-01
-52. Verifikasi `Last User` DD-01 berupa teks polos `Budi S` (bukan badge)
-53. Arahkan kursor ke nilai `Last User` DD-01
-54. Verifikasi tooltip `Budi Santoso`
+58. Amati kolom `Last User` baris DD-01
+59. Verifikasi `Last User` DD-01 berupa teks polos `Budi S` (bukan badge)
+60. Arahkan kursor ke nilai `Last User` DD-01
+61. Verifikasi tooltip `Budi Santoso`
 
-### TC-GS-HHR-11: Badge Brand dan Model/Type, nama penuh dan dipotong 12+..+12
+### TC-GS-HHR-11: Badge Brand dan Model/Type, nama pendek tampil penuh dan nama di atas 25 karakter dipotong 12+..+12 dengan tooltip nama lengkap
 
-55. Amati kolom `Brand` dan `Model/Type` baris DD-01, DD-08, dan DD-09
-56. Verifikasi DD-01: badge `Zebra` dan `RFD40` tampil penuh dengan `severity="dark"`
-57. Arahkan kursor ke badge `Brand` DD-01
-58. Verifikasi badge `Brand` DD-01 tanpa tooltip
-59. Arahkan kursor ke badge `Model/Type` DD-01
-60. Verifikasi badge `Model/Type` DD-01 tanpa tooltip
-61. Verifikasi DD-09 `Brand` tampil `Internationa..erminals Ltd`
-62. Arahkan kursor ke badge `Brand` DD-09
-63. Verifikasi tooltip `International Handheld Terminals Ltd`
-64. Verifikasi DD-09 `Model/Type` tampil `Ultra-Rugged..7000 Pro Max`
-65. Arahkan kursor ke badge `Model/Type` DD-09
-66. Verifikasi tooltip `Ultra-Rugged Series 7000 Pro Max`
-67. Verifikasi DD-08 `Brand` badge `Unitech` tampil penuh
-68. Verifikasi DD-08 `Model/Type` tampil `—`
+62. Amati kolom `Brand` dan `Model/Type` baris DD-01, DD-08, dan DD-09
+63. Verifikasi DD-01: badge `Zebra` dan `RFD40` tampil penuh dengan `severity="dark"`
+64. Arahkan kursor ke badge `Brand` DD-01
+65. Verifikasi badge `Brand` DD-01 tanpa tooltip
+66. Arahkan kursor ke badge `Model/Type` DD-01
+67. Verifikasi badge `Model/Type` DD-01 tanpa tooltip
+68. Verifikasi DD-09 `Brand` tampil `Internationa..erminals Ltd`
+69. Arahkan kursor ke badge `Brand` DD-09
+70. Verifikasi tooltip `International Handheld Terminals Ltd`
+71. Verifikasi DD-09 `Model/Type` tampil `Ultra-Rugged..7000 Pro Max`
+72. Arahkan kursor ke badge `Model/Type` DD-09
+73. Verifikasi tooltip `Ultra-Rugged Series 7000 Pro Max`
+74. Verifikasi DD-08 `Brand` badge `Unitech` tampil penuh
+75. Verifikasi DD-08 `Model/Type` tampil `—`
 
 ### TC-GS-HHR-12: Format tanggal Last Scanned dan Activated At mengikuti General Settings Client A
 
-69. Amati kolom `Last Scanned` dan `Activated At` baris DD-01
-70. Verifikasi `Last Scanned` DD-01 `21/06/26 10:15`
-71. Verifikasi `Activated At` DD-01 `21/06/26 08:00`
+76. Amati kolom `Last Scanned` dan `Activated At` baris DD-01
+77. Verifikasi `Last Scanned` DD-01 `21/06/26 10:15`
+78. Verifikasi `Activated At` DD-01 `21/06/26 08:00`
 
 ### TC-GS-HHR-13: Reader yang belum pernah memindai menampilkan `—`
 
-72. Amati baris DD-04
-73. Verifikasi `Last Scanned` DD-04 `—`
-74. Verifikasi `Last Scanned In` DD-04 `—`
-75. Verifikasi `Last User` DD-04 `—`
+79. Amati baris DD-04
+80. Verifikasi `Last Scanned` DD-04 `—`
+81. Verifikasi `Last Scanned In` DD-04 `—`
+82. Verifikasi `Last User` DD-04 `—`
 
 ### TC-GS-HHR-14: Last Scanned, Last Scanned In, dan Last User berasal dari satu Usage Event terbaru
 
-76. Amati baris DD-03
-77. Verifikasi `Last Scanned` DD-03 `17/06/26 16:05`
-78. Verifikasi `Last Scanned In` DD-03 `Global Settings`
-79. Verifikasi `Last User` DD-03 `Sari D`
-80. Verifikasi ketiga nilai DD-03 berasal dari event `Pair TAG` (17/06/26), bukan campuran dengan event `Audit Scan` 14/06/26 (nilai tidak ada yang `Fixed Asset`, `Budi S`, atau `14/06/26`)
+83. Amati baris DD-03
+84. Verifikasi `Last Scanned` DD-03 `17/06/26 16:05`
+85. Verifikasi `Last Scanned In` DD-03 `Global Settings`
+86. Verifikasi `Last User` DD-03 `Sari D`
+87. Verifikasi ketiga nilai DD-03 berasal dari event `Pair TAG` (17/06/26), bukan campuran dengan event `Audit Scan` 14/06/26 (nilai tidak ada yang `Fixed Asset`, `Budi S`, atau `14/06/26`)
 
 ### Pemulihan visibilitas kolom
 
-81. Klik header kolom `⋯` untuk membuka Overlay Column Visibility dan hapus centang `Brand`, `Model/Type`, `Last Scanned In`, `Last User`, dan `Activated At`
-82. Tutup Overlay Column Visibility dengan `Esc`
+88. Klik header kolom Actions `(⋯)` untuk membuka Overlay Column Visibility dan hapus centang `Brand`, `Model/Type`, `Last Scanned In`, `Last User`, dan `Activated At`
+89. Tutup Overlay Column Visibility dengan `Esc`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Urutan TC dalam spec: 3, 4, 6, 7, 5, 8, 9, 10, 11, 12, 13, 14. Kolom default (TC-GS-HHR-3, 4, 6, 7) lebih dulu karena tidak butuh kolom curated; TC-GS-HHR-5 mengaktifkan `Model/Type` lalu langkah 37 memulihkannya sebelum TC-GS-HHR-8 supaya centang kelima kolom di langkah 40 tidak membalik state `Model/Type`; TC-GS-HHR-9 sampai 14 memakai kolom curated yang sudah diaktifkan di langkah 40. Langkah "Aktifkan kolom ..." pada TC-GS-HHR-9, 10, 11, 12, 13, dan 14 tidak diulang karena kolom yang sama sudah aktif sejak langkah 40 dan tidak ada langkah yang menyembunyikannya sebelum langkah 81 (halaman yang sama dipakai berulang, prinsip 13 konvensi).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8 (tutup Popup Detail), langkah 30, 38, 42, dan 82 (tutup Overlay Column Visibility dengan `Esc`), langkah 37 (pulihkan `Model/Type`), langkah 81 (pulihkan visibilitas kolom ke default), serta langkah hover pada TC-GS-HHR-11 (langkah 57 dan 59) yang memicu asersi "tanpa tooltip" pada DD-01 (TC hanya menyuruh hover pada badge DD-09 tetapi Expected a menyebut DD-01 tanpa tooltip).
+- Urutan TC dalam spec: 3, 4, 6, 7, 5, 8, 9, 10, 11, 12, 13, 14. Kolom default (TC-GS-HHR-3, 4, 6, 7) lebih dulu karena tidak butuh kolom curated; TC-GS-HHR-5 mengaktifkan `Model/Type` lalu langkah 37 memulihkannya sebelum TC-GS-HHR-8 supaya centang kelima kolom di langkah 40 tidak membalik state `Model/Type`; TC-GS-HHR-9 sampai 14 memakai kolom curated yang sudah diaktifkan di langkah 40. Langkah "Aktifkan kolom ..." pada TC-GS-HHR-9, 10, 11, 12, 13, dan 14 tidak diulang karena kolom yang sama sudah aktif sejak langkah 40 dan tidak ada langkah yang menyembunyikannya sebelum langkah 88 (halaman yang sama dipakai berulang, prinsip 13 konvensi).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8 (tutup Popup Detail), langkah 30, 38, 42, dan 89 (tutup Overlay Column Visibility dengan `Esc`), langkah 37 (pulihkan `Model/Type`), langkah 88 (pulihkan visibilitas kolom ke default).
 - TC-GS-HHR-3 langkah 6 sampai 8 membuka Popup Detail lewat klik Device Name sebagai Expected c TC itu; isi Popup Detail diuji di spec lain.
-- TC-GS-HHR-14 langkah 80 adalah kesimpulan dari langkah 77 sampai 79 (Expected d TC) dan tetap satu `Verifikasi` karena tidak teramati terpisah.
-- Spec melewati sekitar 35 langkah (82 langkah). Seluruhnya satu kelas (screening baca isi sel tabel daftar reader pada Seed Reader A, tanpa aksi yang mengubah data reader), dan tiap blok TC memeriksa sel yang berbeda. Blok TC-GS-HHR-9 sampai 14 bergantung pada kolom curated yang diaktifkan di blok TC-GS-HHR-8; bila langkah 39 sampai 42 gagal keras, blok 9 sampai 14 ikut gagal. Risiko ini diterima karena alternatifnya (mengaktifkan dan menyembunyikan kolom yang sama pada tiap TC) menambah sekitar 12 langkah tanpa cakupan baru, dan aktivasi kolom itu sendiri sudah diasersi di blok TC-GS-HHR-8. Blok TC-GS-HHR-3, 4, 5, 6, dan 7 berdiri sendiri.
+- TC-GS-HHR-14 langkah 87 adalah kesimpulan dari langkah 84 sampai 86 (Expected d TC) dan tetap satu `Verifikasi` karena tidak teramati terpisah.
+- Spec melewati sekitar 35 langkah (89 langkah). Seluruhnya satu kelas (screening baca isi sel tabel daftar reader pada Seed Reader A, tanpa aksi yang mengubah data reader), dan tiap blok TC memeriksa sel yang berbeda. Blok TC-GS-HHR-9 sampai 14 bergantung pada kolom curated yang diaktifkan di blok TC-GS-HHR-8; bila langkah 39 sampai 42 gagal keras, blok 9 sampai 14 ikut gagal. Risiko ini diterima karena alternatifnya (mengaktifkan dan menyembunyikan kolom yang sama pada tiap TC) menambah sekitar 12 langkah tanpa cakupan baru, dan aktivasi kolom itu sendiri sudah diasersi di blok TC-GS-HHR-8. Blok TC-GS-HHR-3, 4, 5, 6, dan 7 berdiri sendiri.
 - Temuan untuk QA:
-  - TC-GS-HHR-11 judul menyebut "nama penuh di batas 25 karakter", tetapi Data Uji (DD-01, DD-08, DD-09) tidak memuat nama tepat 25 karakter; spec tidak menguji batas eksak 25 karakter, hanya nama pendek (penuh) dan nama jauh di atas 25 karakter (dipotong).
-  - TC-GS-HHR-11 Expected a menyebut DD-01 "tanpa tooltip" tetapi Langkah Uji tidak memuat hover pada badge DD-01; spec menambah hover (langkah 57 dan 59).
   - TC-GS-HHR-4 Expected c ("tinggi baris tabel konsisten") tidak menyebut ukuran pembanding; spec membandingkan tinggi baris DD-09 dengan baris lain.
   - TC-GS-HHR-3 Expected b menulis warna primary Global Settings "(hitam)" tanpa nilai warna; spec mengasersi perubahan warna ke warna primary tanpa nilai heksadesimal.
   - TC-GS-HHR-7 sampai 9 menyebut varian badge lewat nilai `severity`; spec mengasumsikan `severity` terbaca dari komponen badge tanpa menamai atribut DOM (tim FE menyediakan pembacaannya).
-  - TC-GS-HHR-5 dan 8 menamai kolom `⋯` sebagai header kolom Actions `(⋯)`, sedangkan TC-GS-HHR-1 menamainya `Column Visibility (⋯)`; spec memakai "header kolom `⋯`".
   - TC-GS-HHR-5 dan 8 tidak menyebut cara menutup Overlay Column Visibility sebelum mengamati tabel; spec menutup dengan `Esc`.
