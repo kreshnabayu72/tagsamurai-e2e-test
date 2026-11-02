@@ -1,6 +1,6 @@
 ---
 id: TC-GS-IMPORT-E2E-199-modal-changelog-import-column-visibility-dan-setup-column-preview-save
-title: "Modal Changelog Import: Column Visibility dan Setup Column (preview, Save, Reset, F5, pemisahan dari Staging Table)"
+title: "Modal Changelog Import: Column Visibility dan Setup Column (preview, Save, Reset, F5)"
 priority: High
 caseType: Positive
 status: draft
@@ -16,7 +16,7 @@ coverage:
   web: automated
 ---
 
-# Modal Changelog Import: Column Visibility dan Setup Column (preview, Save, Reset, F5, pemisahan dari Staging Table)
+# Modal Changelog Import: Column Visibility dan Setup Column (preview, Save, Reset, F5)
 
 ## Prerequisites
 
@@ -28,9 +28,9 @@ coverage:
 - Data Dinamis D-60: Changelog Import Client E berisi tepat 30 entri seed, disiapkan oleh langkah 1 lewat skrip seed (skrip juga membersihkan entri hasil commit spec lain; mekanisme disediakan tim FE/BE). Entri ke-i bertanggal i Sep 2026 pukul 10:00 UTC+7; Data `12 records imported, 0 duplicates ignored, 0 errors remaining` ada pada tepat satu entri (i = 12). Spec hanya membaca seed.
 - Draft untuk TC-GS-IMPORT-798: Data Dinamis D-50 (draft Brand 12 baris `pending` di Client E dari `brand-12.csv`), disiapkan lewat skrip seed sebelum TC itu (dipakai sebagai precondition TC, tidak diasersi). Tidak di-commit.
 - General Settings Client E: Date Format `dd MMM yy`, Time Format 24 jam (`HH:mm`), Time Zone `(UTC+07:00) Bangkok, Hanoi, Jakarta` (Pre-setup, tidak diubah).
-- State yang diubah spec ini: preferensi tampil kolom Changelog Import (dan Staging Table untuk TC-GS-IMPORT-798) milik akun Total Control Client E, tersimpan di cache browser/akun. Pemulihan antar blok (langkah 47 dan 69) dan hook `after` memakai kemampuan pemulihan konfigurasi kolom (hapus preferensi kolom di browser), bukan `[Reset to Default]`.
-- Pemulihan konfigurasi kolom: hapus preferensi kolom Changelog Import dan Staging Table di browser akun Total Control Client E (kemampuan disediakan tim FE; didaftarkan di `suite.md`).
-- Cleanup (hook `after`): hapus preferensi kolom Changelog Import dan Staging Table di browser akun Total Control Client E; entri seed D-60 dibersihkan; draft Brand Client E dibuang.
+- State yang diubah spec ini: preferensi tampil kolom Changelog Import milik akun Total Control Client E, tersimpan di cache browser/akun. Pemulihan antar blok (langkah 47) dan hook `after` memakai kemampuan pemulihan konfigurasi kolom (hapus preferensi kolom di browser); TC-GS-IMPORT-798 dipulihkan lewat `[Reset to Default]` dan `[Save]` (langkah 65 sampai 68) sesuai Post Condition TC.
+- Pemulihan konfigurasi kolom: hapus preferensi kolom Changelog Import di browser akun Total Control Client E (kemampuan disediakan tim FE; didaftarkan di `suite.md`).
+- Cleanup (hook `after`): hapus preferensi kolom Changelog Import di browser akun Total Control Client E; entri seed D-60 dibersihkan; draft Brand Client E dibuang.
 - State global: flag Guided Tooltip (dipulihkan hook suite `after`).
 
 ## Test Steps
@@ -110,32 +110,31 @@ coverage:
 56. Verifikasi modal Setup Column tertutup
 57. Verifikasi tabel Changelog menampilkan keempat kolom
 
-### Pemisahan Staging Table dan Changelog (TC-GS-IMPORT-798)
+### Column Visibility Changelog: kolom Data disembunyikan (TC-GS-IMPORT-798)
 
 58. Tutup modal Changelog, lalu seed draft D-50 dan muat ulang halaman Import > Brand
-59. Klik header kolom Actions (`⋯`) pada Staging Table
-60. Hilangkan centang kolom `Status`
-61. Klik `[Changelog]`
-62. Verifikasi tabel Changelog masih menampilkan keempat kolom Date, Action, Data, dan Modified By
-63. Klik header kolom Actions (kosong) pada Changelog
-64. Hilangkan centang kolom `Data`
-65. Verifikasi tabel Changelog tidak menampilkan kolom Data
-66. Tutup modal Changelog
-67. Verifikasi Staging Table masih tanpa kolom `Status`
-68. Verifikasi Staging Table tetap menampilkan kolom `Brand Name`
-69. Pulihkan: hapus preferensi kolom Changelog Import dan Staging Table di browser akun Total Control Client E lewat kemampuan pemulihan konfigurasi kolom
+59. Klik `[Changelog]`
+60. Verifikasi tabel Changelog menampilkan keempat kolom Date, Action, Data, dan Modified By
+61. Klik header kolom Actions (kosong) pada Changelog
+62. Hilangkan centang kolom `Data`
+63. Verifikasi kolom Date, Action, dan Modified By tetap tampil
+64. Verifikasi tabel Changelog tidak menampilkan kolom Data
+65. Pulihkan: klik header kolom Actions (kosong) pada Changelog
+66. Klik item "Setup Column..."
+67. Klik `[Reset to Default]`
+68. Klik `[Save]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Panjang spec: 69 langkah, di atas 35 langkah. Alasan: satu surface (Setup Column dan Column Visibility) dan satu dataset seed read-only (D-60); blok berdiri sendiri dengan pemulihan eksplisit antar blok (langkah 8, 15, 25, 47, 58, 69). Urutan 503, 502, 779, 796, 795, 797, 798 mengikuti ketergantungan preferensi kolom: blok yang menyimpan preferensi (795) memulihkannya di langkah 47, dan TC-GS-IMPORT-798 yang menyentuh Staging Table paling akhir.
+- Panjang spec: 68 langkah, di atas 35 langkah. Alasan: satu surface (Setup Column dan Column Visibility) dan satu dataset seed read-only (D-60); blok berdiri sendiri dengan pemulihan eksplisit antar blok (langkah 8, 15, 25, 47, 58, 65 sampai 68). Urutan 503, 502, 779, 796, 795, 797, 798 mengikuti ketergantungan preferensi kolom: blok yang menyimpan preferensi (795) memulihkannya di langkah 47, dan TC-GS-IMPORT-798 yang menyembunyikan kolom Data Changelog paling akhir, dipulihkan lewat `[Reset to Default]`.
 - Langkah 1 adalah langkah penghubung pembuka (seed D-60 lalu muat ulang halaman; S-03, K-7), tanpa `Verifikasi`.
-- Langkah 8, 15, 25, 47, 58, 66, 69 adalah langkah penghubung atau pemulihan (S-03, S-09). Langkah 47 menghapus preferensi kolom, memuat ulang halaman, dan membuka kembali modal Changelog.
+- Langkah 8, 15, 25, 47, 58, 65, 66, 67, 68 adalah langkah penghubung atau pemulihan (S-03, S-09). Langkah 47 menghapus preferensi kolom, memuat ulang halaman, dan membuka kembali modal Changelog.
 - Langkah 45 (kolom Date, Data, dan Modified By tampil) adalah anchor positif untuk asersi absence kolom Action di langkah 46 (bagian 8b butir 2, S-03).
 - Tombol `[Save]` Setup Column adalah aksi sisi klien (bagian 8b butir 8), sehingga tidak diikuti "Tunggu aksi selesai".
 - Temuan untuk QA:
-  - TC-GS-IMPORT-798 bertentangan dengan TC-GS-IMPORT-890: TC-890 menyatakan Staging Table tidak memiliki Column Visibility maupun Setup Column, sedangkan TC-798 langkah 1-2 dan Expected c mengasersi penyembunyian kolom `Status` di Staging Table. Langkah 58-69 mengikuti TC-798 apa adanya; bagian Staging Table tidak dapat diotomasi sebelum QA mengklarifikasi.
-  - TC-GS-IMPORT-502, 779, 795, 798 Post Condition ("dikembalikan tampil lewat Reset to Default") ditulis sebagai langkah pemulihan antar blok tanpa asersi lewat penghapusan preferensi kolom di browser (konvensi bagian 4), bukan `[Reset to Default]`, yang hanya diuji di TC-GS-IMPORT-797 (langkah 53); hook `after` memakai kemampuan yang sama.
+  - TC-GS-IMPORT-798 hanya mencakup Changelog (Staging Table tidak memiliki Column Visibility, lihat TC-GS-IMPORT-890). `suite.md` masih mendaftarkan spec 199 untuk Changelog Import dan Staging Table; spec ini hanya menyentuh Changelog Import.
+  - TC-GS-IMPORT-502, 779, 795 Post Condition ("dikembalikan tampil lewat Reset to Default") ditulis sebagai langkah pemulihan antar blok tanpa asersi lewat penghapusan preferensi kolom di browser (konvensi bagian 4), sedangkan `[Reset to Default]` diuji di TC-GS-IMPORT-797 (langkah 53); TC-GS-IMPORT-798 Post Condition dipenuhi langkah 65 sampai 68 tanpa asersi; hook `after` memakai kemampuan penghapusan preferensi kolom.
   - Asersi "di balik modal" (langkah 39 dan 54) mengamati tabel di balik modal Setup Column; TC tidak menyebut cara memastikan tabel di balik modal terlihat, spec mengasumsikan elemen tabel dapat dibaca walau tertutup overlay.
   - TC tidak menyebut password per akun; tiap akun memakai env `<APP>_<ROLE>_PASSWORD` yang tercantum di Prerequisites (satu env hanya satu akun, S-11); env yang belum terdaftar didaftarkan di `spectra.config.ts` dan `.env.example` pada tahap script.
