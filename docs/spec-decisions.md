@@ -603,3 +603,12 @@ Aturan:
 - **Karena:** `prd-conventions.md` §9.10 Changelog Modal (l.1720): "**Klik backdrop (area di luar modal) tidak menutup modal** — menutup hanya lewat icon `[✕]` atau `Esc`." PRD division §5 Global Table Rules (l.672) merujuk modal "Changelog: Division" ke §9.10; §24.5 (l.2631) berlaku untuk semua modal. Keputusan koordinator (didelegasikan owner) 2026-11-02.
 - **Keputusan:** langkah 40 memverifikasi modal Changelog tetap terbuka setelah klik backdrop, lalu modal ditutup lewat icon `[✕]`.
 - **Diterapkan di:** skrip Division 053 (TC-GS-DIV-211).
+
+## D-068 ACTLOG 031 Object Role mengikuti nama tab role (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-031` TC-GS-ACTLOG-174, `spec.md` l.37 dan l.53 (tagsamurai-slicing `apps/e2e/specs/GlobalSettings/ActivityLog/TC-GS-ACTLOG-E2E-031-*`).
+- **Spec meminta:** Role `Role {runId}-031` yang di-seed oleh Sari Dewi tercatat di Activity Log dengan Object `Role & Permission`; opsi filter Object memuat `Role & Permission`.
+- **Kenyataannya:** PRD role (`global-settings/role/PRD/role.md`): `object_path` = "`Total Control` · `Read Only` · `System Role` (nilai kolom Object §8.5–§8.6)" (l.1885) dan "memakai nama tab ..., bukan nama menu `Role & Permission`" (l.1891). Global Settings juga tidak punya operasi create role: baris role fixed dan tidak ada +Add (`role.md` l.1238, l.2144 "hardcoded di kode"), dan API role (`API/low-level-design.md`) hanya memuat list/options/export serta Assign/Remove user dan access level, tanpa route create role. Role `Role {runId}-031` tidak bisa dibuat lewat produk.
+- **Karena:** PRD menang atas spec. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** skrip meng-assert Object `Total Control` untuk Role yang di-seed, mengikuti nama tab di PRD, bukan `Role & Permission`.
+- **Diterapkan di:** skrip Activity Log 031 (TC-GS-ACTLOG-174), commit 26e7dbbc di feat/connect-api-b (tagsamurai-slicing-b).
