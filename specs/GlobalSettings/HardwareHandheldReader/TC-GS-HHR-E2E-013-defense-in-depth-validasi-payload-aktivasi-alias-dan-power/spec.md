@@ -29,6 +29,7 @@ coverage:
 - Mode: FE+BE. Kelas harness: defense-in-depth (kelas a, request langsung ke server tanpa melalui UI; injeksi markup pada TC-GS-HHR-425). Suite `parallel: false`.
 - Klien HTTP: klien HTTP yang mengirim request langsung ke server dengan sesi Sari Dewi (token sesi aktor; cara memperolehnya disediakan tim FE). Asersi pada request langsung hanya respons server (status dan pesan) dan state data; perilaku FE untuk respons yang sama tidak diasersi pada langkah request (bagian 8b butir 1). Event Log dibaca lewat UI sebagai state data (baris `Failed`). Endpoint request (kontrak `global-settings/hardware-handheld-reader/API/openapi.yaml`): Edit Alias Name `PATCH /v2/hardware-tagging/handheld-readers/{readerId}/alias-name`; Edit Reader Power `PATCH /v2/hardware-tagging/handheld-readers/{readerId}/reader-power`; Activate (Jalur A dan Jalur B) `POST /v2/hardware-tagging/handheld-readers`.
 - Kemampuan membaca state data lewat fixture BE (disediakan tim FE): daftar reader Client A beserta `Status`, `Alias Name`, `Reader Power` per reader, dan jumlah reader.
+- Kemampuan membaca jumlah entri audit trail (disediakan tim FE/BE): jumlah total baris Event Log (footer popup) dan jumlah entri Modal Changelog, dibaca sebelum dan sesudah aksi pemicu untuk asersi selisih (S-12, bagian 8b butir 10).
 - Kemampuan teknis: penangkap dialog JavaScript browser (untuk memastikan `alert` tidak berjalan pada TC-GS-HHR-425) dan simulator reader USB tidak dibutuhkan (semua aktivasi dikirim sebagai request langsung).
 - Flag Guided Tooltip halaman Handheld Reader: diatur hook suite untuk akun aktor spec ini (lihat `suite.md`, Hook suite).
 - Akun aktor (Tabel Data Uji Pre-setup #1, Client A):
@@ -128,36 +129,39 @@ coverage:
 
 ### Markup pada Alias Name: TC-GS-HHR-425
 
-73. Buka Overlay row action DD-01, klik `Edit Alias Name`
-74. Isi `Alias Name` dengan `<script>alert(1)</script>`, klik `[Save]`
-75. Verifikasi tidak ada dialog JavaScript `alert` yang berjalan
-76. Verifikasi kolom `Alias Name` baris DD-01 pada tabel menampilkan teks `<script>alert(1)</script>` apa adanya
-77. Klik `Zebra RFID Reader - 1` untuk membuka Popup Detail DD-01
-78. Verifikasi Popup Detail menampilkan teks `<script>alert(1)</script>` apa adanya
-79. Tutup Popup Detail
-80. Klik ikon Changelog
-81. Verifikasi Modal Changelog menampilkan teks `<script>alert(1)</script>` apa adanya
-82. Tutup Modal Changelog
+73. Klik ikon Changelog, catat jumlah entri sebagai baseline, lalu tutup modal
+74. Buka Overlay row action DD-01, klik `Edit Alias Name`
+75. Isi `Alias Name` dengan `<script>alert(1)</script>`, klik `[Save]`
+76. Verifikasi tidak ada dialog JavaScript `alert` yang berjalan
+77. Verifikasi kolom `Alias Name` baris DD-01 pada tabel menampilkan teks `<script>alert(1)</script>` apa adanya
+78. Klik `Zebra RFID Reader - 1` untuk membuka Popup Detail DD-01
+79. Verifikasi Popup Detail menampilkan teks `<script>alert(1)</script>` apa adanya
+80. Tutup Popup Detail
+81. Klik ikon Changelog
+82. Verifikasi jumlah entri Modal Changelog bertambah satu dari baseline
+83. Verifikasi entri teratas Modal Changelog menampilkan teks `<script>alert(1)</script>` apa adanya
+84. Verifikasi tidak ada dialog JavaScript `alert` yang berjalan
+85. Tutup Modal Changelog
 
 ### Aktivasi Jalur B tanpa Model/Type diterima: TC-GS-HHR-422
 
-83. Kirim request aktivasi langsung Jalur B untuk `SN-HHR-00302` dengan ID Device Name `Unitech EA520`, `Brand` `Unitech`, dan `Model/Type` kosong
-84. Verifikasi server menerima request tanpa pesan penolakan
-85. Muat ulang halaman Handheld Reader
-86. Aktifkan kolom `Model/Type` lewat Column Visibility
-87. Verifikasi baris baru `Unitech EA520 - 2` tampil dengan `Source` `Self-Purchased`
-88. Verifikasi kolom `Model/Type` baris `Unitech EA520 - 2` menampilkan `—`
-89. Nonaktifkan kembali kolom `Model/Type` lewat Column Visibility
-90. Pulihkan Seed Reader A lewat fixture BE (menghapus reader hasil TC-GS-HHR-422 dan memulihkan `Alias Name` DD-01)
+86. Kirim request aktivasi langsung Jalur B untuk `SN-HHR-00302` dengan ID Device Name `Unitech EA520`, `Brand` `Unitech`, dan `Model/Type` kosong
+87. Verifikasi server menerima request tanpa pesan penolakan
+88. Muat ulang halaman Handheld Reader
+89. Aktifkan kolom `Model/Type` lewat Column Visibility
+90. Verifikasi baris baru `Unitech EA520 - 2` tampil dengan `Source` `Self-Purchased`
+91. Verifikasi kolom `Model/Type` baris `Unitech EA520 - 2` menampilkan `—`
+92. Nonaktifkan kembali kolom `Model/Type` lewat Column Visibility
+93. Pulihkan Seed Reader A lewat fixture BE (menghapus reader hasil TC-GS-HHR-422 dan memulihkan `Alias Name` DD-01)
 
 ## Notes
 
 - Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md` (section 8 Security & Defense-in-Depth). Kelas harness: defense-in-depth (a), prinsip 13a konvensi bagian 3. K-1: TC kelas a ini memiliki Expected berupa respons API (status respons, pesan, dan state data) yang tumpang tindih dengan `tc-hardware-handheld-reader-backend.md`; TC granular tetap sumber dan tiap TC tepat satu spec, sehingga spec FE+BE ini tetap memuatnya (konvensi bagian 2, K-1). TC-GS-HHR-425 memakai jalur UI hanya sebagai pemicu injeksi markup (objek uji defense-in-depth XSS, kelas a). TC defense-in-depth lain ada di `TC-GS-HHR-E2E-012-defense-in-depth-izin-aksi-tulis-langsung-ke-server` dan `TC-GS-HHR-E2E-049-defense-in-depth-bulk-langsung-ke-server`.
-- Spec melewati sekitar 35 langkah (90 langkah nominal). Alasan: seluruh blok satu kelas harness (defense-in-depth, satu akun aktor, tanpa harness eksternal) dan tiap request punya baseline, request, dan asersi sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna. Pola baseline Event Log, request, lalu pembacaan Event Log diulang untuk enam request aktivasi (langkah 17 sampai 72); request TC-GS-HHR-420 (langkah 13 sampai 16) tidak membaca Event Log.
+- Spec melewati sekitar 35 langkah (93 langkah nominal). Alasan: seluruh blok satu kelas harness (defense-in-depth, satu akun aktor, tanpa harness eksternal) dan tiap request punya baseline, request, dan asersi sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna. Pola baseline Event Log, request, lalu pembacaan Event Log diulang untuk enam request aktivasi (langkah 17 sampai 72); request TC-GS-HHR-420 (langkah 13 sampai 16) tidak membaca Event Log.
 - Urutan: validasi diblokir lebih dulu, lalu TC yang mengubah data (TC-GS-HHR-425 mengubah `Alias Name` DD-01 sehingga berada sesudah TC-GS-HHR-424 yang mengasersi `Alias Name` DD-01 tetap `—`), dan TC-GS-HHR-422 (request yang diterima, membuat reader) paling akhir karena `SN-HHR-00302` dipakai TC-GS-HHR-421, TC-GS-HHR-423, TC-GS-HHR-482, dan TC-GS-HHR-483 yang harus berstatus belum aktif.
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC sumber): mencatat baseline Event Log (langkah 17, 27, 37, 46, 55, 64), menutup popup Event Log (langkah 26, 36, 45, 54, 63, 72), menutup Popup Detail dan Modal Changelog (langkah 79, 82), memuat ulang halaman dan mengaktifkan lalu menonaktifkan kolom `Model/Type` (langkah 86, 89, S-09), dan pemulihan Seed Reader A (langkah 90).
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC sumber): mencatat baseline Event Log (langkah 17, 27, 37, 46, 55, 64), menutup popup Event Log (langkah 26, 36, 45, 54, 63, 72), mencatat baseline jumlah entri Modal Changelog dan menutupnya (langkah 73, 85), menutup Popup Detail (langkah 80), membuka Modal Changelog (langkah 81), memuat ulang halaman dan mengaktifkan lalu menonaktifkan kolom `Model/Type` (langkah 89, 92, S-09), dan pemulihan Seed Reader A (langkah 93).
 - Pembagian TC lintas spec: TC-GS-HHR-420 terbelah antara presence (a: status 422, pesan, tidak ada reader baru, di spec ini) dan absence (b: tidak ada baris baru di Event Log, S-05). Id TC tetap di `sourceTc` spec ini dan juga di `TC-GS-HHR-E2E-079-absence-log-request-langsung-ditolak`, yang mengirim request aktivasi langsung nyata dengan user dan baseline Event Log sendiri. Spec ini tidak membaca Event Log untuk TC-GS-HHR-420.
-- TC-GS-HHR-448 dan TC-GS-HHR-449 (juga TC-GS-HHR-482 dan TC-GS-HHR-483) membaca Event Log sebagai asersi pencatatan baris `Failed` (Expected TC); baris baru diidentifikasi lewat selisih jumlah baris terhadap baseline dan isi baris `Failed` terbaru.
+- TC-GS-HHR-448 dan TC-GS-HHR-449 (juga TC-GS-HHR-482 dan TC-GS-HHR-483) membaca Event Log sebagai asersi pencatatan baris `Failed` (Expected TC); baris baru diidentifikasi lewat selisih jumlah baris terhadap baseline; isi baris `Failed` baru dibaca pada baris teratas urutan default `Date` terbaru Event Log sesudah selisih jumlah (satu baris) dibuktikan (S-12, S-14). Pembacaan yang sama berlaku untuk entri teratas Modal Changelog pada TC-GS-HHR-425 (langkah 82 sebelum langkah 83).
 - Temuan untuk QA:
   - TC-GS-HHR-417 tidak menyebut nilai Reader Power request (spec memakai 25). TC-GS-HHR-421, TC-GS-HHR-422, TC-GS-HHR-423, TC-GS-HHR-482, dan TC-GS-HHR-483 tidak menyebut Range Type request; spec tidak menebaknya (nilai valid disediakan tim FE).
   - TC-GS-HHR-417 dan TC-GS-HHR-422 menyatakan server menolak atau menerima tanpa menyebut kode status; spec memakai pesan penolakan dan state data. TC-GS-HHR-422 tidak menyebut Range Type request sehingga kuota yang terpakai tidak diketahui; Seed Reader A memuat `Unitech EA520 - 1` (DD-08, Short Range) sehingga hasil `Unitech EA520 - 2` mengikuti counter `N` Device Name tersebut.
@@ -165,5 +169,5 @@ coverage:
   - TC-GS-HHR-483 menyebut "ID Device Name yang tidak ada di katalog" tanpa nilai; nilai ID disediakan tim FE.
   - TC-GS-HHR-421 menyebut Device Name `Chainway C72` untuk baris `Failed` tanpa ` - [N]`, sedangkan TC-GS-HHR-448 dan TC-GS-HHR-449 memakai `Zebra RFID Reader (SKU-HHR-01)` (Jalur A dengan nama SKU); aturan penamaan baris `Failed` mengikuti TC.
   - TC-GS-HHR-425 mengubah `Alias Name` DD-01 (Seed Reader A bersama) lewat UI tanpa langkah pemulihan di TC; TC-GS-HHR-422 dan TC-GS-HHR-424 menarget Seed Reader A pula, padahal S-06 mewajibkan data milik spec. Reader milik spec tidak dapat ditambahkan karena kuota `Long Range` Client A sudah terpakai 5 dari 6; spec memulihkan Seed Reader A lewat fixture BE.
-  - TC-GS-HHR-425 menyatakan "tidak ada script berjalan" tanpa cara pengamatan; spec memakai penangkap dialog JavaScript browser.
+  - TC-GS-HHR-425 menyatakan "tidak ada script berjalan" tanpa cara pengamatan; spec memakai penangkap dialog JavaScript browser pada langkah 76 (tepat sesudah `[Save]`, state sementara, 8b butir 5 dan 11) dan diulang pada langkah 84 sesudah render Modal Changelog.
   - TC-GS-HHR-449 butir c ("alias yang ditolak tidak tampil") tidak menyebut kolom Event Log yang memuat alias; spec mengasersi alias tidak tampil pada baris `Failed` baru.

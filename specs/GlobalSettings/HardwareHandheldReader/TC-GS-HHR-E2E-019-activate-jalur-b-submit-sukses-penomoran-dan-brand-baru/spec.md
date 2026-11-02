@@ -25,9 +25,9 @@ coverage:
 - Data Pre-setup (Tabel Data Uji `tc-hardware-handheld-reader.md`):
   - Client A plan Growth, Seed Reader A DD-01 s.d. DD-10 (`Short Range` `5 of 8`, `Long Range` `5 of 6`); DD-05 `Chainway C72 - 1` dan DD-08 `Unitech EA520 - 1` sudah ada sehingga reader baru bernomor `- 2`; DN-05 `Handheld Terminal` belum punya unit (`N` mulai 1).
   - Serial Jalur B bebas (tidak ada di stok Principal): `SN-HHR-00302` dan `SN-HHR-00303`; reader `SN-HHR-00302` mengembalikan Current Power 20 dBm.
-  - Katalog Device Name Admin Console, dibaca Client A read-only: DN-01 `Chainway C72`, DN-03 `Unitech EA520`, DN-05 `Handheld Terminal`. `SKU-HHR-01` (Zebra, RFD40) ada di pemilih `SKU`.
+  - Katalog Device Name Admin Console, dibaca Client A read-only: DN-01 `Chainway C72`, DN-03 `Unitech EA520`, DN-05 `Handheld Terminal`. SKU-486: satu SKU katalog yang Device Name-nya `Handheld Terminal` (DN-05) dan ada di pemilih `SKU`; kode SKU disediakan pemilik TC (TC-GS-HHR-486 tidak menyebut kodenya; lihat Temuan untuk QA).
 - Data Dinamis: Brand baru `Aurora Scan {runId}-019` (langkah 43 sampai 46); Brand `Chainway`, `Unitech`, dan `Zebra` adalah nilai katalog yang sudah ada.
-- Pemulihan state di tengah spec: tiap blok sukses dimulai dari state awal. Langkah 18, 33, 59, dan 85 memulihkan Seed Reader A (menghapus reader hasil aktivasi), kuota `Short Range` `5 of 8` dan `Long Range` `5 of 6`, counter `N` Device Name (`Chainway C72` ke 1, `Unitech EA520` ke 1, `Handheld Terminal` ke 0), dan serial `SN-HHR-00302` serta `SN-HHR-00303` ke bebas lewat reset fixture backend dan hook reset counter (Catatan TC: "mutasi TC sebelumnya tidak dibawa ke TC berikutnya"); mekanisme disediakan tim FE/BE. Kuota `Long Range` hanya 5 dari 6 sehingga hanya satu aktivasi `Long Range` sukses per state awal.
+- Pemulihan state di tengah spec: tiap blok sukses dimulai dari state awal. Langkah 18, 33, 59, dan 84 memulihkan Seed Reader A (menghapus reader hasil aktivasi), kuota `Short Range` `5 of 8` dan `Long Range` `5 of 6`, counter `N` Device Name (`Chainway C72` ke 1, `Unitech EA520` ke 1, `Handheld Terminal` ke 0), dan serial `SN-HHR-00302` serta `SN-HHR-00303` ke bebas lewat reset fixture backend dan hook reset counter (Catatan TC: "mutasi TC sebelumnya tidak dibawa ke TC berikutnya"); mekanisme disediakan tim FE/BE. Kuota `Long Range` hanya 5 dari 6 sehingga hanya satu aktivasi `Long Range` sukses per state awal.
 - Kemampuan teknis: simulator reader USB dan driver lokal (disediakan tim FE; mekanisme tidak didefinisikan di TC, PRD, atau LLD) yang menyajikan reader `SN-HHR-00302` dan `SN-HHR-00303` bergantian; seluruh TC spec ini berlabel Manual Only (b) di TC sumber. Reset fixture backend dan counter `N` (di atas). Pembacaan daftar opsi combobox `Brand`.
 - Cleanup (hook `after`, tidak berasumsi spec berjalan penuh): pulihkan state seperti di atas, pulihkan Column Visibility ke default (langkah 29 mengaktifkan kolom `Model/Type`), dan tutup popup yang masih terbuka.
 
@@ -117,61 +117,61 @@ coverage:
 71. Verifikasi popup pada state Menunggu Sync: `Serial Number`, label jalur, `Device Name`, `SKU`, `Brand`, `Model/Type`, slider `Reader Power`, dan `Alias Name` tidak tampil
 72. Sambungkan reader dengan Serial Number `SN-HHR-00303` lewat simulator reader USB
 73. Klik `[Sync]`
-74. Pilih `Handheld Terminal` pada `Device Name`
-75. Pilih `SKU-HHR-01` pada `SKU`
-76. Klik `[Submit]`
-77. Verifikasi muncul toast sukses: "Success, Handheld Terminal - 2 has been activated."
-78. Klik `[✕]` di header popup
-79. Ketik Search `Handheld Terminal`, tekan Enter
-80. Verifikasi baris `Handheld Terminal - 1` menampilkan `SKU` `—`
-81. Verifikasi baris `Handheld Terminal - 2` menampilkan `SKU` `SKU-HHR-01`
-82. Klik `(←)` pada kotak Search
-83. Verifikasi kartu `Short Range` menampilkan `7 of 8`
-84. Verifikasi kartu `Short Range` menampilkan `1 remaining`
-85. Pulihkan state awal lewat reset fixture backend dan counter `N` Device Name
-86. Muat ulang halaman Handheld Reader (`F5`)
+74. Pilih pada `SKU` satu SKU katalog ber-Device Name `Handheld Terminal` (SKU-486)
+75. Klik `[Submit]`
+76. Verifikasi muncul toast sukses: "Success, Handheld Terminal - 2 has been activated."
+77. Klik `[✕]` di header popup
+78. Ketik Search `Handheld Terminal`, tekan Enter
+79. Verifikasi baris `Handheld Terminal - 1` menampilkan `SKU` `—`
+80. Verifikasi baris `Handheld Terminal - 2` menampilkan `SKU` berisi SKU-486 yang dipilih pada langkah 74
+81. Klik `(←)` pada kotak Search
+82. Verifikasi kartu `Short Range` menampilkan `7 of 8`
+83. Verifikasi kartu `Short Range` menampilkan `1 remaining`
+84. Pulihkan state awal lewat reset fixture backend dan counter `N` Device Name
+85. Muat ulang halaman Handheld Reader (`F5`)
 
 ### TC-GS-HHR-487: Counter N per ID Device Name tidak dipakai ulang setelah reader dihapus (destruktif, terakhir)
 
-87. Klik `[+ Activate Reader]`
-88. Klik `Short Range` pada Overlay `Select Range Type`
-89. Sambungkan reader dengan Serial Number `SN-HHR-00302` lewat simulator reader USB
-90. Klik `[Sync]`
-91. Pilih `Handheld Terminal` pada `Device Name`
-92. Isi `Brand` dengan `Zebra`
-93. Klik `[Submit]`
-94. Verifikasi muncul toast sukses: "Success, Handheld Terminal - 1 has been activated."
-95. Ketik Search `Handheld Terminal - 1`, tekan Enter
-96. Klik `⋯` pada baris `Handheld Terminal - 1`
-97. Pilih `Delete`
-98. Klik `[Delete]` pada dialog
-99. Verifikasi muncul toast sukses: "Success, Handheld Terminal - 1 has been deleted."
-100. Klik `(←)` pada kotak Search
-101. Klik `[+ Activate Reader]`
-102. Klik `Short Range` pada Overlay `Select Range Type`
-103. Sambungkan reader dengan Serial Number `SN-HHR-00303` lewat simulator reader USB
-104. Klik `[Sync]`
-105. Pilih `Handheld Terminal` pada `Device Name`
-106. Isi `Brand` dengan `Zebra`
-107. Klik `[Submit]`
-108. Verifikasi muncul toast sukses: "Success, Handheld Terminal - 2 has been activated." (nomor `1` tidak dipakai ulang)
-109. Ketik Search `Handheld Terminal`, tekan Enter
-110. Verifikasi baris `Handheld Terminal - 2` tampil di daftar
-111. Verifikasi tidak ada baris `Handheld Terminal - 1` di daftar
-112. Klik `(←)` pada kotak Search
+86. Klik `[+ Activate Reader]`
+87. Klik `Short Range` pada Overlay `Select Range Type`
+88. Sambungkan reader dengan Serial Number `SN-HHR-00302` lewat simulator reader USB
+89. Klik `[Sync]`
+90. Pilih `Handheld Terminal` pada `Device Name`
+91. Isi `Brand` dengan `Zebra`
+92. Klik `[Submit]`
+93. Verifikasi muncul toast sukses: "Success, Handheld Terminal - 1 has been activated."
+94. Ketik Search `Handheld Terminal - 1`, tekan Enter
+95. Klik `⋯` pada baris `Handheld Terminal - 1`
+96. Pilih `Delete`
+97. Klik `[Delete]` pada dialog
+98. Verifikasi muncul toast sukses: "Success, Handheld Terminal - 1 has been deleted."
+99. Klik `(←)` pada kotak Search
+100. Klik `[+ Activate Reader]`
+101. Klik `Short Range` pada Overlay `Select Range Type`
+102. Sambungkan reader dengan Serial Number `SN-HHR-00303` lewat simulator reader USB
+103. Klik `[Sync]`
+104. Pilih `Handheld Terminal` pada `Device Name`
+105. Isi `Brand` dengan `Zebra`
+106. Klik `[Submit]`
+107. Verifikasi muncul toast sukses: "Success, Handheld Terminal - 2 has been activated." (nomor `1` tidak dipakai ulang)
+108. Ketik Search `Handheld Terminal`, tekan Enter
+109. Verifikasi baris `Handheld Terminal - 2` tampil di daftar
+110. Verifikasi tidak ada baris `Handheld Terminal - 1` di daftar
+111. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`. Kelas harness: eksternal (d), simulator reader USB; seluruh TC berlabel Manual Only (b). Satu topik (submit sukses Jalur B), satu akun, satu harness. Aksi destruktif (Delete reader milik spec) berada di blok terakhir (TC-GS-HHR-487).
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec melewati sekitar 35 langkah (112 langkah). Alasan: lima blok sukses yang masing-masing mengulang prefix `Klik [+ Activate Reader]` sampai `Klik [Sync]` dan Submit, ditambah pemulihan state; 29 langkah adalah `Verifikasi` yang dipecah per klausa Expected (S-01). Tiap blok dimulai dari state hasil reset (langkah 18, 33, 59, 85) sehingga kegagalan satu blok tidak membuat blok berikutnya kehilangan makna; semua blok satu kelas harness dan satu akun. Kuota `Long Range` (5 dari 6) dan counter `N` Device Name membuat blok sukses tidak dapat digabung tanpa pemulihan.
-- Langkah penghubung (tanpa `Verifikasi`): langkah 3, 22, 37, 52, 64, 72, 89, 103 (menyiapkan reader di simulator); langkah 12, 30, 79, 95, 109 (Search untuk menemukan baris target) dan langkah 17, 32, 82, 100, 112 (mengosongkan Search); langkah 18, 19, 33, 34, 59, 60, 85, 86 (pemulihan state dan muat ulang); langkah 29 (mengaktifkan kolom `Model/Type` sesuai langkah TC-GS-HHR-72); langkah 56 sampai 58 (menutup popup yang berisi hasil Sync lewat dialog `Cancel Activation`, S-08; teks dialog mengikuti Expected TC-GS-HHR-89); langkah 78 (menutup popup yang sudah kembali ke state Menunggu Sync).
+- Spec melewati sekitar 35 langkah (111 langkah). Alasan: lima blok sukses yang masing-masing mengulang prefix `Klik [+ Activate Reader]` sampai `Klik [Sync]` dan Submit, ditambah pemulihan state; 29 langkah adalah `Verifikasi` yang dipecah per klausa Expected (S-01). Tiap blok dimulai dari state hasil reset (langkah 18, 33, 59, 84) sehingga kegagalan satu blok tidak membuat blok berikutnya kehilangan makna; semua blok satu kelas harness dan satu akun. Kuota `Long Range` (5 dari 6) dan counter `N` Device Name membuat blok sukses tidak dapat digabung tanpa pemulihan.
+- Langkah penghubung (tanpa `Verifikasi`): langkah 3, 22, 37, 52, 64, 72, 88, 102 (menyiapkan reader di simulator); langkah 12, 30, 78, 94, 108 (Search untuk menemukan baris target) dan langkah 17, 32, 81, 99, 111 (mengosongkan Search); langkah 18, 19, 33, 34, 59, 60, 84, 85 (pemulihan state dan muat ulang); langkah 29 (mengaktifkan kolom `Model/Type` sesuai langkah TC-GS-HHR-72); langkah 56 sampai 58 (menutup popup yang berisi hasil Sync lewat dialog `Cancel Activation`, S-08; teks dialog mengikuti Expected TC-GS-HHR-89); langkah 77 (menutup popup yang sudah kembali ke state Menunggu Sync).
 - Brand baru TC-GS-HHR-73 ditulis `Aurora Scan {runId}-019` supaya opsi `Add '...'` muncul pada tiap run (S-12); asersi memakai nilai bersuffix yang sama.
-- Asersi absence langkah 111 didahului toast sukses Delete (langkah 99) dan `Verifikasi` baris `Handheld Terminal - 2` tampil (langkah 110) sebagai anchor (butir 2 bagian 8b); asersi absence langkah 71 didahului `Verifikasi` popup tetap terbuka (langkah 70).
-- Langkah 9, 28, 49, 69, 77, 94, 99, 108 (toast) diasersi tepat sesudah pemicu karena toast bersifat sementara.
+- Asersi absence langkah 110 didahului toast sukses Delete (langkah 98) dan `Verifikasi` baris `Handheld Terminal - 2` tampil (langkah 109) sebagai anchor (butir 2 bagian 8b); asersi absence langkah 71 didahului `Verifikasi` popup tetap terbuka (langkah 70).
+- Langkah 9, 28, 49, 69, 76, 93, 98, 107 (toast) diasersi tepat sesudah pemicu karena toast bersifat sementara.
 - Temuan untuk QA:
   - Mekanisme simulasi reader USB, pembacaan Current Power, pemulihan serial `SN-HHR-00302` dan `SN-HHR-00303` ke bebas, reset fixture backend, dan reset counter `N` Device Name di tengah spec tidak didefinisikan di TC, PRD, atau LLD; spec mencatat kebutuhan di Prerequisites tanpa mengarang endpoint.
   - TC-GS-HHR-73 Expected e ("`Aurora Scan` tersedia sebagai opsi `Brand` pada aktivasi Jalur B berikutnya") tidak menyebut Range Type, reader, atau cara pembuktian; spec membuka aktivasi `Short Range` dengan `SN-HHR-00303` (kuota `Long Range` sudah habis sesudah Submit) dan mengasersi opsi muncul saat mengetik `Aurora` (langkah 50 sampai 55).
   - TC-GS-HHR-72 mengaktifkan kolom `Model/Type` lewat Column Visibility (langkah TC 7) sehingga kolom itu tersembunyi secara default; spec memulihkan kolom ke default di hook `after`.
-  - TC-GS-HHR-487 langkah 6 ("Ulangi aktivasi Short Range dengan reader SN-HHR-00303") tidak menyebut `[Sync]` secara eksplisit; spec menyalin langkah aktivasi utuh termasuk `[Sync]` (langkah 101 sampai 107) sesuai S-04.
+  - TC-GS-HHR-487 langkah 6 ("Ulangi aktivasi Short Range dengan reader SN-HHR-00303") tidak menyebut `[Sync]` secara eksplisit; spec menyalin langkah aktivasi utuh termasuk `[Sync]` (langkah 100 sampai 106) sesuai S-04.
+  - TC-GS-HHR-486 langkah 7 memilih "satu SKU yang katalognya memuat Device Name `Handheld Terminal`" tanpa menyebut kode SKU (data uji "ditetapkan pemilik TC dari Tabel Data Uji"); spec menamainya SKU-486 dan menyerahkan kodenya ke pemilik TC. Pemilihan SKU mengisi dan mengunci Device Name, Brand, dan Model/Type dari katalog (all-tags.md FI-01, dirujuk TC); TC tidak mengasersinya sehingga spec tidak menambah asersi. Asersi `SKU` baris `Handheld Terminal - 2` memakai SKU-486 itu, bukan literal `SKU-HHR-01`.
   - Brand `Aurora Scan {runId}-019` yang dibuat TC-GS-HHR-73 tidak punya cara pembersihan di TC; pembersihan Brand baru disediakan tim FE/BE bila diperlukan.
