@@ -31,6 +31,14 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
    - `# <title>` sama dengan `title`.
    - `## Prerequisites`: butir pertama baris `Mode:` (R-01), lalu akun, env, data Pre-setup dan Dinamis, hook, kemampuan teknis, dan state global beserta pemulihannya (S-11). Untuk spec Role Matrix, tabel "Role yang diuji" (bagian 3a).
    - `## Test Steps`: langkah bernomor, konkret, satu aksi per baris (langkah berulang ditulis sebagai teks biasa), subjudul `###` untuk spec panjang (bagian 3). Jangan menulis `@step:<nama>` (bagian 8a): `@step` ditambahkan skill `tagsamurai-e2e-generate-script` saat Step-nya dibuat. Expected menjadi langkah `Verifikasi` tepat setelah aksinya (R-03).
+   - Pola berulang yang wajib dihindari saat menulis (juga diperiksa audit):
+     - Asersi yang merujuk "baseline sesudah TC-xxx" atau "bertambah dari" didahului langkah `Catat ...` (bukan `Verifikasi`) tepat setelah write TC itu; N total surface audit-trail bersama dibaca via BE sebelum aksi (8b.10, S-12).
+     - Beri langkah `Tunggu aksi selesai` setelah Submit/Confirm/Delete yang hasilnya tidak diasersi dan sebelum ganti surface/akun/sesi atau membuka log.
+     - Tutup modal Event Log sebelum pindah ke surface berikutnya (hook `afterEach` tidak jalan antar-iterasi dalam satu `it()`).
+     - `## Prerequisites` hanya memuat yang dipakai langkah: tanpa kunci fixture tak terpakai, tanpa frasa "tahap script", tanpa penanda rencana Q-n/D-n. Langkah memakai kunci `Fixture.tagStock.<key>`, bukan literal Pre-setup mentah (kecuali nilai Expected dan nama file).
+     - Jangan tulis "Kesamaan akun dikonfirmasi tim FE"; tulis "perlu dikonfirmasi tim FE".
+     - Asersi absence/universal didahului anchor positif ("sedikitnya satu baris").
+     - Search yang nilainya bertahan setelah breadcrumb/Back: tulis "ganti isi kotak search dengan X" (8b.9).
    - `## Notes`: langkah penghubung, penyimpangan urutan, pembagian TC lintas spec, id pengecualian (`P-n`, `K-1`), dan "Temuan untuk QA" (S-03, S-05, S-15), ditulis sebagai keadaan final (bagian 7).
 8. **Swa-periksa** tiap spec terhadap konvensi bagian 10 (S-01 sampai S-15), bagian 10a (R-01 sampai R-21), dan butir Lampiran A modul ini sebelum lint. Audit memakai daftar dan id yang sama, jadi butir yang lolos di sini tidak menjadi temuan audit. Butir bertanda kode C di bagian 10a diperiksa `check-suite.py` di langkah 9 dan tidak perlu ditelusuri manual per spec; periksa manual butir tanpa kode C.
 9. Jalankan `spectra lint --strict specs/<Suite>` dan `python scripts/check-suite.py specs/<Suite> <path tc-[modul].md> docs/coverage/<Suite>.md`; perbaiki semua [FINDING] sampai bersih dan baca tiap [REVIEW]. [FINDING] C11 sampai C18 bersifat mekanis: perbaiki teks yang ditunjuk tanpa menelusuri ulang aturannya.
