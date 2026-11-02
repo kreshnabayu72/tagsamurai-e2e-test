@@ -16,14 +16,14 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor (ganti akun eksplisit): Total Control Pre-setup #14 (Client plan Starter) `totalControlStarter_automated_{namaCompany}@qwertysystem.net` (password `Spectra.env.GS_PROFILE_STARTER_PASSWORD`), login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Total Control Pre-setup #15 (Client plan Enterprise) `totalControlEnterprise_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.GS_PROFILE_ENTERPRISE_PASSWORD`). Password baru `N3wPassw0rd!` (Data Dinamis #3, `Spectra.env.PROFILE_PASSWORD_NEW`). Password tidak ditulis di spec atau fixture.
+- Akun aktor (ganti akun eksplisit): Total Control Pre-setup #14 (Client plan Starter) `totalControlStarter_automated_{namaCompany}@qwertysystem.net` (password `Spectra.env.GS_PROFILE_STARTER_PASSWORD`), login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Total Control Pre-setup #15 (Client plan Enterprise) `totalControlEnterprise_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.GS_PROFILE_ENTERPRISE_PASSWORD`). Password baru `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3). Password tidak ditulis di spec atau fixture.
 - Data Pre-setup: #14 (plan Starter), #15 (plan Enterprise), file uji Pre-setup #17 `valid-photo.png`.
-- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): fixture BE yang memulihkan password akun #14 dan #15 ke nilai awal dan foto akun #14 dan #15 ke keadaan awal (pemulihan akun #14 dan #15 tidak tercakup hook `after` suite, lihat Temuan untuk QA).
-- State global yang diubah: password dan foto profil akun #14 dan #15. Dipulihkan oleh langkah pemulihan antar blok dan di akhir spec. Suite berjalan serial (`parallel: false`).
+- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): fixture BE yang memulihkan password akun #14 dan #15 ke nilai awal dan foto akun #14 dan #15 ke keadaan awal (pemulihan akun #14 dan #15 tidak tercakup hook `after` suite, sehingga ditulis di langkah 7 dan 15 serta di hook `after` spec ini; lihat Temuan untuk QA).
+- State global yang diubah: password dan foto profil akun #14 dan #15. Dipulihkan oleh langkah pemulihan antar blok (langkah 7) dan di akhir spec (langkah 15), serta oleh hook `after` spec ini yang memulihkan password dan foto akun #14 dan #15 ke nilai awal lewat fixture BE (idempoten, aman dijalankan walau langkah 7 dan 15 sudah berjalan; cadangan bila spec gagal sebelum langkah itu agar login #14 di spec 003 tidak rusak). Suite berjalan serial (`parallel: false`).
 - Login akun aktor default suite (Pre-setup #1) dilakukan di hook `before`; spec ini login akun pertamanya di hook `before` spec dan hook `after` mengembalikan sesi ke akun default. Lihat `suite.md`, Hook suite 1.
 - Halaman My Profile dibuka hook `beforeEach` suite. Lihat `suite.md`, Hook suite 2.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
 
 ## Test Steps
 

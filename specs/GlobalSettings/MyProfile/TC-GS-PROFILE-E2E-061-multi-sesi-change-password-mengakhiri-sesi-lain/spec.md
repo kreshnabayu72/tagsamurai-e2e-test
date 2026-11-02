@@ -20,15 +20,15 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Pre-setup #7 (Maya Anggraini) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, password aktif `Passw0rd!Old` (`Spectra.env.GS_PROFILE_PWD_PASSWORD`); password baru `N3wPassw0rd!` (Data Dinamis #3, `Spectra.env.PROFILE_PASSWORD_NEW`). Login sesi A di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Password tidak ditulis di spec atau fixture.
+- Akun aktor: Total Control Pre-setup #7 (Maya Anggraini) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`; password baru `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3). Login sesi A di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Password tidak ditulis di spec atau fixture.
 - Konteks: dua sesi web akun yang sama. Sesi A adalah konteks browser utama; sesi B adalah konteks browser kedua (kelas c). Environment mengizinkan dua sesi web bersamaan untuk akun #7. Konteks B ditutup dan sesi loginnya dihapus di akhir tiap blok (S-09).
-- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): fixture BE jam server (diset absolut 09:05) dan fixture BE lock Change Password tier 15 menit (terkunci sampai 09:15); fixture BE reset counter Change Password dan Login ke 0; fixture BE memulihkan password akun #7 ke `Passw0rd!Old`; kemampuan baca status sesi produk Fixed Asset sesi B (Expected TC-249). Pilihan spec (bukan nilai TC atau PRD): menunggu dialog `Password Changed` di sesi B sampai batas tunggu 2 menit setelah aksi (interval request atau heartbeat tidak disebut TC).
+- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): fixture BE jam server (diset absolut 09:05) dan fixture BE lock Change Password tier 15 menit (terkunci sampai 09:15); fixture BE reset counter Change Password dan Login ke 0; fixture BE memulihkan password akun #7 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`); kemampuan baca status sesi produk Fixed Asset sesi B (Expected TC-249). Pilihan spec (bukan nilai TC atau PRD): menunggu dialog `Password Changed` di sesi B sampai batas tunggu 2 menit setelah aksi (interval request atau heartbeat tidak disebut TC).
 - State global yang diubah: jam server, lock dan counter Change Password akun #7, password akun #7. Dipulihkan oleh langkah pemulihan antar blok dan oleh hook `after` suite. Suite berjalan serial (`parallel: false`).
 - Login akun aktor default suite (Pre-setup #1) dilakukan di hook `before`; spec ini login akun pertamanya di hook `before` spec dan hook `after` mengembalikan sesi ke akun default. Lihat `suite.md`, Hook suite 1.
 - Halaman My Profile dibuka hook `beforeEach` suite. Lihat `suite.md`, Hook suite 2.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Counter Change Password dan Login akun Pre-setup #7 dan #18 direset ke 0 di hook `beforeEach` suite; spec yang menguji counter mengaturnya sesudah hook; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 6.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
 
 ## Test Steps
 
@@ -69,7 +69,7 @@ coverage:
 
 22. Di sesi B klik [OK]
 23. Verifikasi sesi B diarahkan ke halaman Login
-24. Tutup konteks sesi B dan hapus sesi loginnya, lalu fixture BE memulihkan password akun #7 ke `Passw0rd!Old` dan mereset counter Change Password dan Login ke 0
+24. Tutup konteks sesi B dan hapus sesi loginnya, lalu fixture BE memulihkan password akun #7 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`) dan mereset counter Change Password dan Login ke 0
 
 ### TC-GS-PROFILE-249: Change Password mengakhiri sesi lain dan sesi produk turunannya
 
@@ -85,7 +85,7 @@ coverage:
 
 ### Pemulihan state
 
-34. Tutup konteks sesi B dan hapus sesi loginnya, lalu fixture BE memulihkan password akun #7 ke `Passw0rd!Old` dan mereset counter Change Password dan Login ke 0
+34. Tutup konteks sesi B dan hapus sesi loginnya, lalu fixture BE memulihkan password akun #7 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`) dan mereset counter Change Password dan Login ke 0
 
 ## Notes
 

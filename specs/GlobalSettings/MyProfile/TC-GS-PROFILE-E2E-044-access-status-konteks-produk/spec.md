@@ -62,8 +62,8 @@ coverage:
 
 14. Tetapkan status akun Pre-setup #5 di Admin Console menjadi Inactive lewat fixture BE, lalu muat ulang My Profile
 15. Pilih opsi "Admin Console" pada Product Selector
-16. Pilih opsi "Global Settings" pada Product Selector
-17. Verifikasi konteks Admin Console: status "Inactive"
+16. Verifikasi konteks Admin Console: status "Inactive"
+17. Pilih opsi "Global Settings" pada Product Selector
 18. Verifikasi konteks Global Settings: status "Active"
 19. Pulihkan status akun Pre-setup #5 di Admin Console menjadi Active lewat fixture BE
 
@@ -87,5 +87,6 @@ coverage:
 - Langkah 7 menjadi anchor positif untuk asersi absence di langkah 8 dan 10, dan langkah 24 menjadi anchor untuk langkah 25 (bagian 8b butir 2).
 - Temuan untuk QA:
   - Data Uji TC-GS-PROFILE-195, 197, dan 198 menyebut Pre-setup #5, konsisten dengan spec; TC-GS-PROFILE-196 dan 190 sama-sama memakai Pre-setup #1 untuk konteks berbeda.
+  - Expected a dan b TC-GS-PROFILE-198 (status Inactive di Admin Console, Active di Global Settings) tidak menunjuk langkah pemilihan konteks; spec memilih Admin Console lalu mengasersi Inactive (langkah 15 dan 16), kemudian memilih Global Settings lalu mengasersi Active (langkah 17 dan 18).
   - Precondition TC-GS-PROFILE-198 ("status Inactive di Admin Console") tidak menyebut mekanisme penetapan status; ditulis sebagai fixture BE yang disediakan tim BE/FE tanpa endpoint karangan.
   - Pre-setup #23 (TC-GS-PROFILE-194) hanya valid selama akun belum pernah login ke Fixed Asset; spec tidak membuka Fixed Asset dengan akun itu, tetapi spec lain yang memakai akun yang sama dapat merusak syarat ini.

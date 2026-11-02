@@ -23,9 +23,9 @@ coverage:
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Hook `beforeEach` suite mengonfirmasi `beforeunload` dan menutup dialog `Unsaved Changes` sebagai jaring pengaman (S-09), bukan pengganti langkah pemulihan form. Lihat `suite.md`, Hook suite 5.
 - Counter Change Password dan Login akun Pre-setup #7 dan #18 direset ke 0 di hook `beforeEach` suite; spec yang menguji counter mengaturnya sesudah hook; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 6.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
-- Akun aktor pertama spec: Pre-setup #7 (Maya Anggraini, Total Control, password aktif `Passw0rd!Old`, Time Format 24 jam) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, login di hook `before` spec ini dengan `Spectra.env.GS_PROFILE_PWD_PASSWORD`. Pembaca log: admin Pre-setup #6 (Hendra Wijaya) `adminActor_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_ADMIN_PASSWORD`, login lewat UI pada langkah ganti akun.
-- Env var: `GS_PROFILE_PWD_PASSWORD`, `PROFILE_PASSWORD_NEW` (Data Dinamis #3, `N3wPassw0rd!`), `GS_PROFILE_ADMIN_PASSWORD`.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Akun aktor pertama spec: Pre-setup #7 (Maya Anggraini, Total Control, password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`, Time Format 24 jam) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, login di hook `before` spec ini dengan `Spectra.env.GS_PROFILE_PWD_PASSWORD`. Pembaca log: admin Pre-setup #6 (Hendra Wijaya) `adminActor_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_ADMIN_PASSWORD`, login lewat UI pada langkah ganti akun.
+- Env var: `GS_PROFILE_PWD_PASSWORD`, `PROFILE_PASSWORD_NEW` (Data Dinamis #3), `GS_PROFILE_ADMIN_PASSWORD`.
 - Input uji Current Password salah `Wr0ngPass!` ditulis literal seperti di TC: masukan uji yang ditolak server, bukan kredensial akun.
 - State awal tiap tier (diatur lewat fixture BE yang disediakan tim FE/BE setelah reset hook `beforeEach`; mekanisme tidak disebut TC, PRD, atau LLD):
 
@@ -49,7 +49,7 @@ coverage:
 2. Untuk setiap baris TC-GS-PROFILE-232 sampai TC-GS-PROFILE-234 pada tabel Prerequisites (langkah 3 sampai 9)
 3. Atur counter dan state tahap Change Password Maya Anggraini sesuai baris tabel lewat fixture BE
 4. Klik `[Change Password]`
-5. Isi Current Password `Wr0ngPass!`, New Password `N3wPassw0rd!`, Confirm New Password `N3wPassw0rd!`
+5. Isi Current Password `Wr0ngPass!`, New Password `Spectra.env.PROFILE_PASSWORD_NEW`, Confirm New Password `Spectra.env.PROFILE_PASSWORD_NEW`
 6. Klik `[Save]`
 7. Klik `✕`
 8. Verifikasi dialog `Unsaved Changes` tampil
@@ -59,7 +59,7 @@ coverage:
 
 10. Atur state tujuh hari berturut-turut mencapai lock 1 jam pada counter Change Password Maya Anggraini lewat fixture BE
 11. Klik `[Change Password]`
-12. Isi Current Password `Wr0ngPass!`, New Password `N3wPassw0rd!`, Confirm New Password `N3wPassw0rd!`
+12. Isi Current Password `Wr0ngPass!`, New Password `Spectra.env.PROFILE_PASSWORD_NEW`, Confirm New Password `Spectra.env.PROFILE_PASSWORD_NEW`
 13. Klik `[Save]`
 14. Klik `✕`
 15. Verifikasi dialog `Unsaved Changes` tampil

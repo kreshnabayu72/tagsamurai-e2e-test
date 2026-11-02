@@ -23,12 +23,12 @@ coverage:
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Hook `beforeEach` suite mengonfirmasi `beforeunload` dan menutup dialog `Unsaved Changes` sebagai jaring pengaman (S-09), bukan pengganti langkah pemulihan form. Lihat `suite.md`, Hook suite 5.
 - Counter Change Password dan Login akun Pre-setup #7 dan #18 direset ke 0 di hook `beforeEach` suite; spec yang menguji counter mengaturnya sesudah hook; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 6.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
-- Akun aktor pertama spec: Pre-setup #7 (Maya Anggraini, Total Control, password aktif `Passw0rd!Old`, Time Format 24 jam, counter 0) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, login di hook `before` spec ini dengan `Spectra.env.GS_PROFILE_PWD_PASSWORD`. Pembaca log: admin Pre-setup #6 (Hendra Wijaya) `adminActor_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_ADMIN_PASSWORD`, login lewat UI pada langkah ganti akun.
-- Env var: `GS_PROFILE_PWD_PASSWORD` (Current Password benar), `PROFILE_PASSWORD_NEW` (Data Dinamis #3, `N3wPassw0rd!`), `GS_PROFILE_ADMIN_PASSWORD`.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Akun aktor pertama spec: Pre-setup #7 (Maya Anggraini, Total Control, password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`, Time Format 24 jam, counter 0) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, login di hook `before` spec ini dengan `Spectra.env.GS_PROFILE_PWD_PASSWORD`. Pembaca log: admin Pre-setup #6 (Hendra Wijaya) `adminActor_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.GS_PROFILE_ADMIN_PASSWORD`, login lewat UI pada langkah ganti akun.
+- Env var: `GS_PROFILE_PWD_PASSWORD` (Current Password benar), `PROFILE_PASSWORD_NEW` (Data Dinamis #3), `GS_PROFILE_ADMIN_PASSWORD`.
 - Input uji Current Password salah `Wr0ngPass!` ditulis literal seperti di TC: itu masukan uji yang ditolak server, bukan kredensial akun.
 - Kemampuan teknis: kontrol show/hide password pada modal Change Password (tidak diaktifkan di spec ini); membaca jumlah baris User Log Detail User, Tab Changelog, Tab System Log, dan Activity Log > Session sebelum aksi (baseline, S-12; disediakan tim FE/BE); fixture BE memulihkan password.
-- Pemulihan (R-08): langkah 29 memulihkan password Maya Anggraini ke `Passw0rd!Old` dan counter ke 0 lewat fixture BE; hook `after` suite memulihkan state yang sama bila spec gagal di tengah.
+- Pemulihan (R-08): langkah 29 memulihkan password Maya Anggraini ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`) dan counter ke 0 lewat fixture BE; hook `after` suite memulihkan state yang sama bila spec gagal di tengah.
 - State global yang diubah: password dan counter Pre-setup #7. Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -37,13 +37,13 @@ coverage:
 
 1. Catat baseline lewat kemampuan baca: jumlah baris Activity `Change Password` per Note (`Incorrect current password`, `Password changed`) pada Tab User Log Detail Maya Anggraini dan Activity Log > Session, serta jumlah baris Tab Changelog dan Tab System Log Detail Maya Anggraini
 2. Klik `[Change Password]`
-3. Isi Current Password `Wr0ngPass!`, New Password `N3wPassw0rd!`, Confirm New Password `N3wPassw0rd!`
+3. Isi Current Password `Wr0ngPass!`, New Password `Spectra.env.PROFILE_PASSWORD_NEW`, Confirm New Password `Spectra.env.PROFILE_PASSWORD_NEW`
 4. Verifikasi Current Password, New Password, dan Confirm New Password tersamarkan selama kontrol show/hide tidak diaktifkan
 5. Klik `[Save]`
 
 ### TC-GS-PROFILE-230 dan TC-GS-PROFILE-228: Change Password berhasil
 
-6. Ganti isi Current Password dengan `Passw0rd!Old`
+6. Ganti isi Current Password dengan `Spectra.env.GS_PROFILE_PWD_PASSWORD`
 7. Klik `[Save]`
 8. Tunggu aksi selesai
 9. Logout
@@ -54,7 +54,7 @@ coverage:
 
 12. Verifikasi Tab User Log memuat baris baru: Activity `Change Password`, Status `Failed`, Note `Incorrect current password` (jumlah baris dengan Note itu bertambah tepat satu dibanding baseline)
 13. Verifikasi Note baris `Incorrect current password` hanya berisi `Incorrect current password`
-14. Verifikasi Note baris `Incorrect current password` tidak memuat `Wr0ngPass!` maupun `N3wPassw0rd!`
+14. Verifikasi Note baris `Incorrect current password` tidak memuat `Wr0ngPass!` maupun `Spectra.env.PROFILE_PASSWORD_NEW`
 15. Verifikasi Tab User Log memuat baris baru: Activity `Change Password`, Status `Success`, Note `Password changed` (jumlah baris dengan Note itu bertambah tepat satu dibanding baseline)
 16. Buka Global Settings > Activity Log > Session
 17. Verifikasi Activity Log > Session memuat baris baru untuk Maya Anggraini: Activity `Change Password`, Status `Failed`, Note `Incorrect current password`
@@ -71,11 +71,11 @@ coverage:
 25. Buka Global Settings > Activity Log
 26. Verifikasi Activity Log memuat sedikitnya satu baris pembanding
 27. Verifikasi Activity Log tidak memuat baris password
-28. Verifikasi nilai password (`Passw0rd!Old` dan `N3wPassw0rd!` sebagai teks biasa, serta nilai hash password) tidak ada di isi Tab Changelog, Tab System Log, dan Activity Log
+28. Verifikasi nilai password (`Spectra.env.GS_PROFILE_PWD_PASSWORD` dan `Spectra.env.PROFILE_PASSWORD_NEW` sebagai teks biasa, serta nilai hash password) tidak ada di isi Tab Changelog, Tab System Log, dan Activity Log
 
 ### Pemulihan
 
-29. Pulihkan password Maya Anggraini ke `Passw0rd!Old` dan counter Change Password ke 0 lewat fixture BE
+29. Pulihkan password Maya Anggraini ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`) dan counter Change Password ke 0 lewat fixture BE
 
 ## Notes
 

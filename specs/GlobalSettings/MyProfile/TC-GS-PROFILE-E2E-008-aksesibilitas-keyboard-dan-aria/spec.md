@@ -23,7 +23,7 @@ coverage:
 | Blok | Pre-setup | Akun | Kondisi data | Env var password |
 |---|---|---|---|---|
 | 1 | #1 | Andi Pratama, `totalControlProfile_automated_{namaCompany}@qwertysystem.net`, Total Control, tanpa foto | App Access Global Settings dan Fixed Asset | `Spectra.env.GS_PROFILE_TC_PASSWORD` |
-| 2 | #7 | Maya Anggraini, `passwordProfile_automated_{namaCompany}@qwertysystem.net`, Total Control | password aktif `Passw0rd!Old`, counter Change Password 0, counter Login 0, Time Format 24 jam, timezone Asia/Jakarta | `Spectra.env.GS_PROFILE_PWD_PASSWORD` |
+| 2 | #7 | Maya Anggraini, `passwordProfile_automated_{namaCompany}@qwertysystem.net`, Total Control | password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`, counter Change Password 0, counter Login 0, Time Format 24 jam, timezone Asia/Jakarta | `Spectra.env.GS_PROFILE_PWD_PASSWORD` |
 
 - Login akun aktor default suite (Pre-setup #1) dilakukan di hook `before`; spec ini login akun pertamanya di hook `before` spec dan hook `after` mengembalikan sesi ke akun default. Lihat `suite.md`, Hook suite 1.
 - Halaman My Profile dibuka hook `beforeEach` suite. Lihat `suite.md`, Hook suite 2.

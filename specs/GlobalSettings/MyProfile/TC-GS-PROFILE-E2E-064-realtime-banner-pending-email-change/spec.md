@@ -20,12 +20,12 @@ coverage:
 - Data Dinamis #2: permintaan Email change live ke `citra.baru@qwertysystem.net`, dibuat lewat fixture BE sebelum tiap blok dan dipulihkan sesudahnya.
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): fixture BE yang membuat permintaan Email change live untuk Pre-setup #8 dan memulihkan Email Citra ke `citralestari@qwertysystem.net`; mail-catcher untuk membaca email konfirmasi di alamat `citra.baru@qwertysystem.net` (baseline jumlah email per alamat dicatat sebelum fixture, R-11); konteks browser kedua untuk membuka tautan konfirmasi (hasilnya tidak diasersi di konteks itu).
 - Jendela amat SSE: asersi atas propagasi realtime didahului jeda 5 detik tanpa memuat ulang halaman. Lima detik adalah pilihan spec (bukan nilai TC atau PRD) sampai TC menyatakan durasinya.
-- State global yang diubah: permintaan Email change dan Email akun #8. Dipulihkan oleh langkah pemulihan di akhir spec. Suite berjalan serial (`parallel: false`).
+- State global yang diubah: permintaan Email change dan Email akun #8. Dipulihkan oleh langkah pemulihan 15 dan, bila spec gagal sebelum langkah itu, oleh hook `after` spec ini: fixture BE membatalkan permintaan Email change live Pre-setup #8 dan memulihkan Email Citra ke `citralestari@qwertysystem.net` (idempoten, aman dijalankan walau langkah 15 sudah berjalan; disediakan tim FE/BE). Suite berjalan serial (`parallel: false`).
 - Login akun aktor default suite (Pre-setup #1) dilakukan di hook `before`; spec ini login akun pertamanya di hook `before` spec dan hook `after` mengembalikan sesi ke akun default. Lihat `suite.md`, Hook suite 1.
 - Halaman My Profile dibuka hook `beforeEach` suite. Lihat `suite.md`, Hook suite 2.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Pelaku kedua admin (Pre-setup #6) memicu perubahan state lewat sesi API aktor yang tidak dihitung sebagai sesi web; kemampuan disediakan tim BE/FE. Lihat `suite.md`, Hook suite 4.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
 
 ## Test Steps
 
@@ -55,7 +55,7 @@ coverage:
 
 ## Notes
 
-- Urutan: TC-GS-PROFILE-209 dahulu karena tidak mengubah Email; TC-GS-PROFILE-210 mengubah Email Citra sehingga pemulihan di langkah 15.
+- Urutan: TC-GS-PROFILE-209 dahulu karena tidak mengubah Email; TC-GS-PROFILE-210 mengubah Email Citra sehingga pemulihan di langkah 15 dan hook `after` spec (cadangan bila TC-GS-PROFILE-210 gagal sebelum langkah 15, agar state tidak bocor ke spec 046, 047, 048, dan 053).
 - Langkah penghubung (S-03): langkah 1 dan 9 memuat ulang halaman sebelum aksi; langkah 4 dan 12 adalah jeda jendela amat SSE 5 detik (bagian 6) tanpa `Verifikasi`; langkah 2 dan 10 menegaskan banner tampil sebelum perubahan sebagai anchor positif untuk asersi hilangnya banner (bagian 8b butir 2); langkah 15 memulihkan state (S-09).
 - Pembagian dengan spec lain: sinkronisasi saat admin mengubah Email (TC-GS-PROFILE-246) ada di spec 047; tampilan banner statis ada di spec 046.
 - Temuan untuk QA:

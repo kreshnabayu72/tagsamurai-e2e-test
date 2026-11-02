@@ -16,15 +16,15 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Pre-setup #7 (Maya Anggraini) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, password aktif `Passw0rd!Old` (`Spectra.env.GS_PROFILE_PWD_PASSWORD`); password baru `N3wPassw0rd!` (Data Dinamis #3, `Spectra.env.PROFILE_PASSWORD_NEW`). Login sesi web di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Password tidak ditulis di spec atau fixture.
+- Akun aktor: Total Control Pre-setup #7 (Maya Anggraini) `passwordProfile_automated_{namaCompany}@qwertysystem.net`, password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`; password baru `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3). Login sesi web di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Password tidak ditulis di spec atau fixture.
 - Perangkat: perangkat Android uji dengan aplikasi mobile terpasang dan biometric aktif untuk akun #7 (kelas d, hardware biometrik; disediakan tim FE). Spec berjalan di web dan di perangkat Android, sehingga `coverage.web` dan `coverage.mobile` keduanya `automated`. Perangkat dipakai bersama sehingga suite berjalan serial (`parallel: false`).
-- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): pemasangan kredensial biometric aktif akun #7 di perangkat Android uji di hook `before` spec ini; prompt biometric OS diselesaikan oleh perangkat uji; fixture BE yang memulihkan password akun #7 ke `Passw0rd!Old`.
+- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): pemasangan kredensial biometric aktif akun #7 di perangkat Android uji di hook `before` spec ini; prompt biometric OS diselesaikan oleh perangkat uji; fixture BE yang memulihkan password akun #7 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`).
 - State global yang diubah: password akun #7 dan kredensial biometric akun #7 (dicabut oleh Change Password). Dipulihkan oleh langkah pemulihan di akhir spec dan hook `after` suite; kredensial biometric dipasang ulang di hook `before` spec yang membutuhkannya.
 - Login akun aktor default suite (Pre-setup #1) dilakukan di hook `before`; spec ini login akun pertamanya di hook `before` spec dan hook `after` mengembalikan sesi ke akun default. Lihat `suite.md`, Hook suite 1.
 - Halaman My Profile dibuka hook `beforeEach` suite. Lihat `suite.md`, Hook suite 2.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Counter Change Password dan Login akun Pre-setup #7 dan #18 direset ke 0 di hook `beforeEach` suite; spec yang menguji counter mengaturnya sesudah hook; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 6.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
 
 ## Test Steps
 
@@ -39,7 +39,7 @@ coverage:
 
 ### Pemulihan state
 
-7. Fixture BE memulihkan password akun #7 ke `Passw0rd!Old` hingga tersimpan
+7. Fixture BE memulihkan password akun #7 ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`) hingga tersimpan
 
 ## Notes
 

@@ -22,7 +22,7 @@ coverage:
 
 - Mode: mock (seluruh API di-mock; dijalankan tim FE sebagai integration test tanpa backend nyata).
 - Aktor dimodelkan lewat payload identitas mock, tanpa login nyata: Pre-setup #7 (Maya Anggraini, Total Control, `Fixture.myProfile.accounts.password.email`; Time Format 24 jam, timezone Asia/Jakarta) untuk TC-GS-PROFILE-111, 112, dan 113; Pre-setup #9 (Nadia Putri, Total Control, `Fixture.myProfile.accounts.photo.email`; foto profil aktif `Fixture.myProfile.photo.nadiaActive`) untuk TC-GS-PROFILE-168, 169, 175, dan 176. Pergantian akun adalah pergantian payload identitas mock (Step ganti akun eksplisit).
-- Nilai yang diketik pada form Change Password: Current Password `Spectra.env.GS_PROFILE_PWD_PASSWORD` (Pre-setup #7, nilai `Passw0rd!Old`), New Password dan Confirm New Password `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3, nilai `N3wPassw0rd!`). Tidak ada login yang memakai password itu.
+- Nilai yang diketik pada form Change Password: Current Password `Spectra.env.GS_PROFILE_PWD_PASSWORD` (Pre-setup #7), New Password dan Confirm New Password `Spectra.env.PROFILE_PASSWORD_NEW` (Data Dinamis #3). Tidak ada login yang memakai password itu.
 - File uji Edit Photo: `Fixture.myProfile.files.validPng` (`valid-photo.png`, Pre-setup #17), dipilih lewat kemampuan penanganan file picker native (disediakan tim FE).
 - Halaman My Profile dibuka hook `beforeEach` suite dengan mock normal. Lihat `suite.md`, Hook suite 2.
 - Hook `beforeEach` suite mengonfirmasi `beforeunload` dan menutup dialog `Unsaved Changes` sebagai jaring pengaman (S-09), bukan pengganti langkah pemulihan form. Lihat `suite.md`, Hook suite 5.
