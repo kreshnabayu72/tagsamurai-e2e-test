@@ -513,3 +513,30 @@ Aturan:
 - **Karena:** pola grid (WAI-ARIA Grid) memakai satu tab stop dan navigasi panah di dalamnya; PRD tidak menetapkan urutan Tab di dalam tabel. Keputusan koordinator (didelegasikan owner) 2026-11-02.
 - **Keputusan:** langkah mencapai `⋯` dengan Tab ke grid, ArrowUp ke baris header, lalu Tab; Enter membuka menu.
 - **Diterapkan di:** skrip Position 001; react-core DataTable (tombol `⋯` dapat difokus, wangs-ui `f12585e9a`).
+
+## D-058 User Pending Activation dengan kode OTP aktif dibuat lewat hapus lalu buat ulang (2026-11-02)
+
+- **Spec / langkah:** `TC-AUTH-OTP-E2E-019` TC-AUTH-OTP-184 langkah 3 (dan Prerequisites "fixture BE yang dapat mengembalikan status user ke Pending Activation").
+- **Spec meminta:** status user `Rudi Hartono` dikembalikan ke Pending Activation lewat fixture BE setelah kode OTP terbit, tanpa meng-invalidasi kode.
+- **Kenyataannya:** tidak ada aksi admin atau API yang mengembalikan user Activated ke Pending Activation (AUTHACT-LOGIC-02c, transisi satu arah); fixture itu menulis state yang tidak pernah dihasilkan produk. Akun Pending dengan kode OTP yang sudah terbit tetap bisa terjadi: admin menghapus user (soft delete membebaskan email) lalu membuat user baru dengan email yang sama. Kode OTP berkunci email dan tidak di-invalidasi oleh penghapusan, dan Verify OTP memeriksa status akun sebelum kode, sehingga hasilnya sama dengan EC-49.
+- **Karena:** state disusun seperti terjadinya di produk. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah 3 dijalankan sebagai admin (Global Settings > User): hapus `Rudi Hartono`, lalu buat user baru `Rudi Hartono` dengan email yang sama (Pending Activation, tidak diaktivasi). Baseline langkah 4 dan asersi langkah 12 memakai user baru tersebut. Langkah 5-12 tidak berubah.
+- **Diterapkan di:** skrip Login OTP 019 (TC-AUTH-OTP-184).
+
+## D-059 Token aktivasi tetap Active setelah pengiriman gagal dijaga unit test backend (2026-11-02)
+
+- **Spec / langkah:** `TC-AUTH-ACT-E2E-024` TC-AUTH-ACT-17 langkah 7 (bagian "token aktivasi tetap Active").
+- **Spec meminta:** memverifikasi status user Pending Activation dan token aktivasi tetap Active.
+- **Kenyataannya:** status token tidak punya permukaan UI maupun API produk (PRD account-activation §9.7: disimpan di Auth); token mentah hanya ada di email yang gagal terkirim. Yang teramati user dan admin adalah badge Pending Activation di Global Settings > User > Login User.
+- **Karena:** nilai internal yang tidak dapat diamati; dijaga unit test backend pada cabang kegagalan pengiriman Activation Email (token tidak diubah), issue iam menyusul. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah 7 memverifikasi badge Pending Activation user `Intan Ramadhan` di tabel Login User setelah 15 menit. "Akun masih bisa diaktivasi" dibuktikan oleh Resend pada TC-AUTH-ACT-18 (langkah 9-14).
+- **Diterapkan di:** skrip Account Activation 024 (TC-AUTH-ACT-17).
+
+## D-060 Data lock 052 diverifikasi lewat caption lock; hitungan hari berturut-turut dijaga unit test backend (2026-11-02)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-052` TC-AUTH-LP-163 langkah 42-44.
+- **Spec meminta:** membaca data lock user lewat fixture BE (langkah 42), memverifikasi hitungan hari berturut-turut tetap 1 (langkah 43), dan status akun bukan Requires Reset dan bukan Permanent (langkah 44).
+- **Kenyataannya:** status akun sudah terlihat oleh user sebagai caption lock: langkah 41 menampilkan lock 15 menit, bukan lock 1 jam, Requires Reset, atau Permanent. Hitungan hari berturut-turut adalah penghitung internal tanpa permukaan UI atau API produk (login-password.md l.789). Bukti publiknya (eskalasi Permanent pada hari ke-8, seperti spec 014) butuh enam hari lock 1 jam lagi dan tidak masuk alur satu hari TC-AUTH-LP-163.
+- **Karena:** nilai internal yang tidak dapat diamati; dijaga unit test backend (reset data lock harian tidak mengubah hitungan hari berturut-turut, AUTHLP-LOGIC-02l), issue iam menyusul. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah 44 diverifikasi pada caption langkah 41 (tidak ada Alert Requires Reset maupun Permanent). Langkah 42-43 tidak diotomasi di e2e dan dijaga unit test backend tersebut.
+- **Diterapkan di:** skrip Login Password 052 (TC-AUTH-LP-163).
