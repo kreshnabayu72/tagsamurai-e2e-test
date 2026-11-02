@@ -25,7 +25,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 327 TC masuk 69 spec, 0 TC ha
 | TC-GS-PROFILE-E2E-015-gate-akses-sesi-dan-pemilik-record | Gate akses My Profile: tanpa sesi, sesi habis, dan hanya record sendiri | FE+BE | 18 | 71, 72, 306, 114 |
 | TC-GS-PROFILE-E2E-016-change-password-layar-modal-dan-show-hide | Change Password: layar modal, masked input, dan kontrol show/hide password | FE+BE | 48 | 73, 74, 316, 317 |
 | TC-GS-PROFILE-E2E-017-change-password-checklist-password-policy | Change Password: checklist Password Policy real-time dan batas 72 karakter | FE+BE | 23 | 75, 76, 77, 78, 79, 80, 81, 82, 83 |
-| TC-GS-PROFILE-E2E-018-change-password-validasi-kosong-dan-confirm-beda | Change Password: field kosong dan Confirm tidak sama diblokir | FE+BE | 56 | 84, 85, 86, 87, 90, 91, 92 |
+| TC-GS-PROFILE-E2E-018-change-password-validasi-kosong-dan-confirm-beda | Change Password: field kosong dan Confirm tidak sama diblokir | FE+BE | 57 | 84, 85, 86, 87, 90, 91, 92 |
 | TC-GS-PROFILE-E2E-019-change-password-current-salah-dan-hitungan | Change Password: Current Password salah, hitungan percobaan, dan urutan evaluasi | FE+BE | 39 | 88, 89, 102, 103 |
 | TC-GS-PROFILE-E2E-020-change-password-penolakan-server-aturan-policy | Change Password: penolakan server per aturan Password Policy (enam aturan) | FE+BE | 13 | 93, 94, 95, 96, 97, 98 |
 | TC-GS-PROFILE-E2E-021-change-password-penolakan-server-lanjutan | Change Password: batas 72 karakter, multi-aturan, non-ASCII, sama dengan password aktif, dan anti-reuse | FE+BE | 45 | 99, 100, 101, 104, 315 |
