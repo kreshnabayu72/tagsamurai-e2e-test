@@ -540,3 +540,39 @@ Aturan:
 - **Karena:** nilai internal yang tidak dapat diamati; dijaga unit test backend (reset data lock harian tidak mengubah hitungan hari berturut-turut, AUTHLP-LOGIC-02l), issue iam menyusul. Keputusan koordinator (didelegasikan owner) 2026-11-02.
 - **Keputusan:** langkah 44 diverifikasi pada caption langkah 41 (tidak ada Alert Requires Reset maupun Permanent). Langkah 42-43 tidak diotomasi di e2e dan dijaga unit test backend tersebut.
 - **Diterapkan di:** skrip Login Password 052 (TC-AUTH-LP-163).
+
+## D-061 Password tersimpan berspasi tidak ada di V2; "password tidak di-trim" dibuktikan dengan password valid (2026-11-02)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-004` TC-AUTH-LP-22 (langkah 20–25), TC-AUTH-LP-21 (langkah 26–31), dan Prerequisites "password akun `Tika Wulandari` di-set langsung oleh tim BE ke nilai `Spectra.env.LP_PASSWORD_SPACED`".
+- **Spec meminta:** password Tika di-set BE ke nilai dengan spasi di awal dan akhir; login tanpa spasi tepi ditolak (TC-22) dan login dengan spasi tepi berhasil (TC-21).
+- **Kenyataannya:** password tersimpan berspasi tidak dapat ada di V2. Set Password (aktivasi) dan Reset Password menolak spasi (`auth-foundation.md` §1); tidak ada jalur produksi, import, SSO, atau migrasi yang menulisnya; satu-satunya penulisnya adalah route dev `POST /dev/clients` (jawaban tim BE, iam `origin/dev`, 2026-11-02). Aturan PRD yang teramati (login-password.md D5 l.713, FLD-AUTHLP-02 l.844: password tidak di-trim, login tidak menolak spasi) adalah bahwa password valid yang diketik dengan spasi tepi tidak cocok dengan password tersimpan.
+- **Karena:** state hanya disusun seperti terjadinya di produk (aturan owner). Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** Tika diaktivasi lewat flow aktivasi publik dengan `LP_PASSWORD`. TC-AUTH-LP-21 diotomasi sebagai: login dengan `" " + LP_PASSWORD + " "` menampilkan Alert "Incorrect email or password" tanpa sesi (kalau di-trim, login berhasil; kalau spasi ditolak sebagai format, pesannya lain). TC-AUTH-LP-22 dan login sukses dengan password tersimpan berspasi tidak diotomasi di e2e; perbandingan password apa adanya dijaga unit test backend pada verifikasi password login (issue iam menyusul). `setUserPassword` dan `LP_PASSWORD_SPACED` tidak dipakai lagi.
+- **Diterapkan di:** skrip Login Password 004 (TC-AUTH-LP-21, TC-AUTH-LP-22).
+
+## D-062 State sisa tulis Set Password yang putus di tengah dijaga unit test backend (2026-11-02)
+
+- **Spec / langkah:** `TC-AUTH-ACT-E2E-020` TC-AUTH-ACT-129 (langkah 9–13) dan TC-AUTH-ACT-130 (langkah 14–17), serta fixture BE untuk `Dimas Pratama` dan `Eka Wulandari` di Prerequisites.
+- **Spec meminta:** user Pending Activation dengan token Active yang statusnya diubah menjadi Activated tanpa mengonsumsi token (129), dan user Pending Activation dengan token Active yang kredensialnya sudah berisi password (130), keduanya lewat fixture BE; link dan submit langsung ditolak 409 tanpa mengubah data.
+- **Kenyataannya:** tidak ada aksi user atau admin yang menghasilkan kedua state itu. Satu-satunya penulis status Activated adalah Set Password, yang juga meng-consume token; Reset Password menolak akun Pending Activation; tidak ada API admin yang mengubah status aktivasi atau menulis password. Keduanya hanya muncul bila `SetActivationPassword` putus di tengah: tiga tulisan (hash password, consume token, set Activated) lintas skema public dan tenant tanpa transaksi. User tertinggal Pending dengan password terisi dan setiap retry dijawab 409 `ACTIVATION_CREDENTIAL_ALREADY_SET`; dua request dengan token yang sama juga bisa sama-sama 200. Itu cacat backend, bukan state yang disusun e2e (jawaban tim BE 2026-11-02, issue draft `ISSUE-DRAFT-iam-activation-set-password-not-atomic.md`).
+- **Karena:** state hanya disusun seperti terjadinya di produk (aturan owner). Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** TC-AUTH-ACT-129 dan TC-AUTH-ACT-130 tidak diotomasi di e2e. Perbaikan backend: ketiga tulisan dalam satu transaksi; unit test backend menjaga AUTHACT-LOGIC-01e/01f: user Activated dengan token Active dijawab 409; kredensial yang sudah berisi password dijawab 409 `ACTIVATION_CREDENTIAL_ALREADY_SET` dan token tidak di-consume. Halaman Invalid Link untuk token yang tidak lagi Active tetap diuji e2e di spec 013, 014, 021, dan 026.
+- **Diterapkan di:** skrip Account Activation 020 (TC-AUTH-ACT-129, TC-AUTH-ACT-130).
+
+## D-063 Lock 15 menit di mobile dibuat lewat tiga login mobile yang salah (2026-11-02)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-055` TC-AUTH-LP-65 Prerequisites ("terkunci 15 menit di mobile (fixture BE)") dan Kemampuan teknis "fixture BE untuk membuat user terkunci 15 menit di mobile".
+- **Spec meminta:** fixture BE yang membuat user terkunci 15 menit di mobile tanpa kegagalan di web.
+- **Kenyataannya:** di produk lock mobile terjadi lewat tiga login salah dari aplikasi mobile. API login publik (`POST /v2/iam/auth/login`, `platform: mobile`) melakukan hal yang sama, dengan token Play Integrity uji `e2e-test-integrity` yang diterima iam di stack e2e (`E2E_TEST_EVIDENCE`; provider Play Integrity belum dibangun, iam #99). Notes spec sendiri mencatat cara membuat lock "di mobile saja" tidak dijelaskan TC sumber.
+- **Karena:** state disusun seperti terjadinya di produk (aturan owner). Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** Prerequisites dijalankan dengan login mobile yang salah lewat API login publik dari device mobile tersendiri, sampai backend menjawab `LOCKED_15M` (kegagalan ketiga); tanpa fixture BE dan tanpa kegagalan di web. Langkah 1–8 berjalan di web sesuai spec.
+- **Diterapkan di:** skrip Login Password 055 (TC-AUTH-LP-65).
+
+## D-064 Idle 30 hari di MFA 021 diukur dari riwayat sesi, tanpa membekukan jam dan tanpa seed `last_logout_at` (2026-11-02)
+
+- **Spec / langkah:** `TC-AUTH-MFA-E2E-021` Prerequisites, hook `before`/`after` (bekukan jam server uji di T0, seed `last_logout_at` per user relatif terhadap T0) dan Kemampuan teknis "Manipulasi jam server uji ... serta seeding `last_logout_at` per user".
+- **Spec meminta:** jam server uji dibekukan di T0 dan `last_logout_at` tiap user di-seed 31, 30, dan 29 hari sebelum T0.
+- **Kenyataannya:** `auth-foundation.md` §5.1 (l.364): logout terakhir per platform tidak disimpan di kolom sendiri, tetapi diturunkan dari tabel `sessions` (`MAX(COALESCE(terminated_at, expires_at))` per user dan platform); kolom `users.last_logout_at` tidak dipakai. Riwayat itu ditulis oleh login dan logout nyata, dan umurnya digeser oleh `ageTime`. Backend tidak punya route untuk membekukan jam server (D-022).
+- **Karena:** keputusan owner atas iam #97 (2026-11-02): rumus §5.1 dipertahankan dan `users.last_logout_at` tidak dipakai.
+- **Keputusan:** tiap user login sekali lalu logout di browser A saat seeding, lalu riwayat sesi tenant digeser dengan `ageTime` (`sessions`, `users`) sehingga logout web terakhir berumur 31, 30, dan 29 hari. Jam server tidak dibekukan dan `last_logout_at` tidak di-seed. Batas TC-AUTH-MFA-27 diuji pada umur 30 hari ditambah detik berjalannya run (tetap ≥30 hari), bukan tepat 30 hari 0 detik.
+- **Diterapkan di:** skrip MFA 021 (Prerequisites).
