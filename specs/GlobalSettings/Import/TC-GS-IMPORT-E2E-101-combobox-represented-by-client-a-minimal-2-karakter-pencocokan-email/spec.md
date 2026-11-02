@@ -74,7 +74,7 @@ coverage:
 
 ## Notes
 
-- Spec melewati sekitar 35 langkah (36 langkah). Seluruhnya satu topik dengan akun dan client yang sama; langkah pembuka seed eksplisit (suite.md, `beforeEach` hanya menyiapkan keadaan dasar) menambah langkah pada spec yang sudah mendekati batas, dan memecahnya hanya menambah login, hook, dan pembersihan tanpa menambah daya deteksi.
+- Spec melewati sekitar 35 langkah (36 langkah). Seluruhnya satu topik dengan akun dan client yang sama; memecahnya hanya menambah login, hook, dan pembersihan tanpa menambah daya deteksi.
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fungsional (seed 12 user D-92 hanya data; di bawah ambang kelas e).
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Penggabungan: TC-964, TC-965, dan TC-966 berbagi satu sesi edit pada sel Represented By yang sama; sel dikosongkan di antara kasus (hapus teks) tanpa membuka ulang sesi (halaman yang dipakai berulang, bagian 3). TC-898 menyimpan perubahan sehingga dijalankan paling akhir.

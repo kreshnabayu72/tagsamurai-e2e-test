@@ -80,7 +80,7 @@ coverage:
 
 ### TC-GS-IMPORT-566: Save sesi Edit Baris dengan Custom Field Dropdown di luar opsi menyimpan baris sebagai error
 
-33. Pulihkan draft Client A ke D-05 (User Login 8 baris `pending`) dan klik Sub-Tab User Login
+33. Pulihkan draft Client A ke D-05 (User Login 8 baris `pending`) lalu muat ulang halaman Import > User Login
 34. Klik `⋯` pada baris #1
 35. Pilih Edit
 36. Klik sel Shift baris #1 dan ketik `Dini`

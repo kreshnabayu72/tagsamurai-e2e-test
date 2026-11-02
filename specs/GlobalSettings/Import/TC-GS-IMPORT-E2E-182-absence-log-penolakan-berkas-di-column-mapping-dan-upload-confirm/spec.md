@@ -43,42 +43,48 @@ coverage:
 13. Tutup Modal Column Mapping lewat `✕`
 14. Verifikasi kartu Total Rows tetap 12
 15. Buka Changelog Import dan baca angka total pada teks Pagination
-16. Verifikasi total Changelog Import sama dengan baseline langkah 2
-17. Tutup modal Changelog Import
-18. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
-19. Verifikasi total System Log sama dengan baseline langkah 4
-20. Buka Activity Log pada tab User Action dan baca angka total
-21. Verifikasi total Activity Log sama dengan baseline langkah 5
+16. Verifikasi modal `Changelog: Import` terbuka
+17. Verifikasi total Changelog Import sama dengan baseline langkah 2
+18. Tutup modal Changelog Import
+19. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
+20. Verifikasi tab System Log pada Detail User Sari Dewi tampil
+21. Verifikasi total System Log sama dengan baseline langkah 4
+22. Buka Activity Log pada tab User Action dan baca angka total
+23. Verifikasi halaman Activity Log pada tab User Action tampil
+24. Verifikasi total Activity Log sama dengan baseline langkah 5
 
 ### TC-GS-IMPORT-433: Upload dan Confirm Mapping (Append)
 
-22. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) lewat skrip fixture
-23. Buka halaman Import > Brand
-24. Buka Changelog Import dan catat angka total pada teks Pagination sebagai baseline Changelog
-25. Tutup modal Changelog Import
-26. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total sebagai baseline System Log
-27. Buka Activity Log pada tab User Action dan catat angka total sebagai baseline Activity Log
-28. Buka halaman Import > Brand
-29. Klik `[Upload File]`
-30. Pilih berkas `brand-log-append-6.csv`
-31. Klik `[Append Records]`
-32. Klik `[Confirm Mapping]`
-33. Verifikasi toast sukses "Success, row has been added." tampil
-34. Verifikasi kartu Total Rows menampilkan 18
-35. Buka Changelog Import dan baca angka total pada teks Pagination
-36. Verifikasi total Changelog Import sama dengan baseline langkah 24
-37. Tutup modal Changelog Import
-38. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
-39. Verifikasi total System Log sama dengan baseline langkah 26
-40. Buka Activity Log pada tab User Action dan baca angka total
-41. Verifikasi total Activity Log sama dengan baseline langkah 27
+25. Pulihkan draft dasar Client A D-01 (Brand 12 baris `pending`) lewat skrip fixture
+26. Buka halaman Import > Brand
+27. Buka Changelog Import dan catat angka total pada teks Pagination sebagai baseline Changelog
+28. Tutup modal Changelog Import
+29. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan catat angka total sebagai baseline System Log
+30. Buka Activity Log pada tab User Action dan catat angka total sebagai baseline Activity Log
+31. Buka halaman Import > Brand
+32. Klik `[Upload File]`
+33. Pilih berkas `brand-log-append-6.csv`
+34. Klik `[Append Records]`
+35. Klik `[Confirm Mapping]`
+36. Verifikasi toast sukses "Success, row has been added." tampil
+37. Verifikasi kartu Total Rows menampilkan 18
+38. Buka Changelog Import dan baca angka total pada teks Pagination
+39. Verifikasi modal `Changelog: Import` terbuka
+40. Verifikasi total Changelog Import sama dengan baseline langkah 27
+41. Tutup modal Changelog Import
+42. Buka System Log pada Detail User Sari Dewi (Tab System Log) dan baca angka total
+43. Verifikasi tab System Log pada Detail User Sari Dewi tampil
+44. Verifikasi total System Log sama dengan baseline langkah 29
+45. Buka Activity Log pada tab User Action dan baca angka total
+46. Verifikasi halaman Activity Log pada tab User Action tampil
+47. Verifikasi total Activity Log sama dengan baseline langkah 30
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: asersi absence (g); setiap TC memuat aksi nyata (upload berkas yang ditolak dan upload + Confirm Mapping Append) dengan baseline tiga surface sendiri, sehingga memenuhi S-05.
-- Alasan melewati sekitar 35 langkah (41 langkah nominal): dua blok homogen satu kelas (absence log) yang berdiri sendiri dengan pemulihan draft di awal tiap blok. Sebagian besar langkah adalah blok baca-log berpola (buka surface, catat atau baca total, `Verifikasi` sama dengan baseline) yang tidak dihitung sebagai smell (bagian 3 konvensi). Urutan TC-432 sebelum TC-433 karena TC-433 menambah 6 baris pada draft.
+- Alasan melewati sekitar 35 langkah (47 langkah nominal): dua blok homogen satu kelas (absence log) yang berdiri sendiri dengan pemulihan draft di awal tiap blok. Sebagian besar langkah adalah blok baca-log berpola (buka surface, catat atau baca total, `Verifikasi` sama dengan baseline) yang tidak dihitung sebagai smell (bagian 3 konvensi). Urutan TC-432 sebelum TC-433 karena TC-433 menambah 6 baris pada draft.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): pemulihan draft (langkah 1, 22), pembukaan surface dan pencatatan baseline (langkah 2 sampai 5, 24 sampai 27), penutupan modal Changelog Import sebelum surface berikutnya (langkah 3, 17, 25, 37), pembukaan halaman Import > Brand sebelum Changelog Import yang datang sesudah Activity Log (langkah 23), pembacaan total, serta pembukaan Import > Brand dan upload. Langkah 13 menutup Modal Column Mapping lewat `✕` (tanpa perubahan dropdown, modal langsung tertutup). Asersi absence (kesamaan total) didahului Verifikasi hasil aksi (Error Banner pada langkah 12; toast dan Total Rows pada langkah 33 dan 34) sebagai anchor positif yang terhubung ke pemicu.
+- Langkah penghubung (tanpa `Verifikasi`): pemulihan draft (langkah 1, 25), pembukaan surface dan pencatatan baseline (langkah 2 sampai 5, 27 sampai 30), penutupan modal Changelog Import sebelum surface berikutnya (langkah 3, 18, 28, 41), pembukaan halaman Import > Brand sebelum Changelog Import yang datang sesudah Activity Log (langkah 26), pembacaan total, serta pembukaan Import > Brand dan upload. Langkah 13 menutup Modal Column Mapping lewat `✕` (tanpa perubahan dropdown, modal langsung tertutup). Pembacaan akhir tiap Changelog Import, System Log, dan Activity Log didahului satu `Verifikasi` (modal Changelog: Import terbuka; tab System Log tampil; halaman Activity Log tampil) sebagai anchor positif sebelum asersi kesamaan total. Asersi absence (kesamaan total) didahului Verifikasi hasil aksi (Error Banner pada langkah 12; toast dan Total Rows pada langkah 36 dan 37) sebagai anchor positif yang terhubung ke pemicu.
 - Temuan untuk QA:
   - TC-GS-IMPORT-432 Expected a menyebut kartu Total Rows tetap 12 "setelah langkah 11" saat Modal Column Mapping masih terbuka; spec mengasersinya sesudah modal ditutup (langkah 14) agar kartu terbaca.
   - TC-GS-IMPORT-432 menyebut berkas dengan 10 baris data dan satu baris Brand Name kosong; header Error Banner "1 row couldn't be imported" menyiratkan satu baris ditolak walau berkas ditolak seluruhnya (PRD §6); TC tidak menjelaskan.

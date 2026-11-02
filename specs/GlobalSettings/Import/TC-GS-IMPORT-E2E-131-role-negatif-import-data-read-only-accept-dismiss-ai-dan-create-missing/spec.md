@@ -50,7 +50,7 @@ coverage:
 
 ### TC-GS-IMPORT-347: Create Missing Divisions Disabled pada menu row action dan Callout
 
-8. Hapus draft Brand Client C dan siapkan draft User Login `user-login-logistik-4.csv` lewat sesi API Total Control Client C, lalu buka Import > User Login
+8. Hapus draft Brand Client C dan siapkan draft User Login `user-login-logistik-4.csv` lewat sesi API Total Control Client C, lalu muat ulang halaman Import > User Login
 9. Klik `⋯` pada baris #1
 10. Arahkan kursor ke `[Create Missing Divisions]` pada menu `⋯`
 11. Verifikasi `[Create Missing Divisions]` pada menu `⋯` tampil Disabled

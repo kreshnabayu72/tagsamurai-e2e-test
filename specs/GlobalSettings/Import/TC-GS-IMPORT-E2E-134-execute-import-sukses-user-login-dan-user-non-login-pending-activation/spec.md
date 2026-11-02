@@ -35,69 +35,71 @@ coverage:
 1. Buka Tab User Login pada halaman Import, siapkan draft User Login 8 baris (user-login-commit-8.csv, D-54) di Client E lewat fixture, lalu muat ulang halaman Import > User Login
 2. Catat baseline: buka Changelog Import (icon [Changelog] di header halaman), baca total pada teks Pagination (0 bila empty state), lalu tutup modal
 3. Klik [Import (8)]
-4. Muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-5. Verifikasi Dropzone tampil menggantikan Staging Table
-6. Verifikasi Unsaved Banner tidak tampil
-7. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
-8. Buka halaman User > User List > Login User
-9. Atur Rows per page 100
-10. Verifikasi halaman User > User List > Login User Client E memuat 8 user baru: Rizky Pratama, Sinta Maharani, Doni Kurniawan, Eka Putri, Fajar Hidayat, Gita Savitri, Hendra Gunawan, Indah Permata
-11. Verifikasi kedelapan user baru berstatus aktivasi `Pending Activation`
-12. Buka Detail user `Rizky Pratama`
-13. Verifikasi Detail `Rizky Pratama`: Division `Engineering`
-14. Verifikasi Detail `Rizky Pratama`: Position `Senior Developer`
-15. Verifikasi Detail `Rizky Pratama`: Employee ID `EMP-5001`
-16. Verifikasi Detail `Rizky Pratama`: Access `Global Settings` dan `Fixed Asset`
-17. Verifikasi Detail `Rizky Pratama`: Custom Field Shift `Siang`
-18. Buka Detail user `Sinta Maharani`
-19. Verifikasi Detail `Sinta Maharani` tercatat sebagai Temporary User
-20. Verifikasi Detail `Sinta Maharani`: Temporary Until sama dengan tanggal Active Period pada berkas (H+30)
-21. Buka Detail user `Doni Kurniawan`
-22. Verifikasi Detail `Doni Kurniawan`: Position `Finance Manager`
-23. Verifikasi Detail `Doni Kurniawan`: Access `Fixed Asset`
-24. Verifikasi Detail `Doni Kurniawan`: Custom Field Shift `Pagi`
-25. Buka Detail user `Eka Putri`
-26. Verifikasi Detail `Eka Putri`: Custom Field Overtime Hours `1.25`
-27. Buka halaman Import > User Login
-28. Buka Changelog Import (icon [Changelog] di header halaman)
-29. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
-30. Verifikasi entri teratas (sort default Date descending): Action `Import User Login`, Data `8 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
-31. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
+4. Tunggu aksi selesai (permintaan mendapat respons)
+5. Muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+6. Verifikasi Dropzone tampil menggantikan Staging Table
+7. Verifikasi Unsaved Banner tidak tampil
+8. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
+9. Buka halaman User > User List > Login User
+10. Atur Rows per page 100
+11. Verifikasi halaman User > User List > Login User Client E memuat 8 user baru: Rizky Pratama, Sinta Maharani, Doni Kurniawan, Eka Putri, Fajar Hidayat, Gita Savitri, Hendra Gunawan, Indah Permata
+12. Verifikasi kedelapan user baru berstatus aktivasi `Pending Activation`
+13. Buka Detail user `Rizky Pratama`
+14. Verifikasi Detail `Rizky Pratama`: Division `Engineering`
+15. Verifikasi Detail `Rizky Pratama`: Position `Senior Developer`
+16. Verifikasi Detail `Rizky Pratama`: Employee ID `EMP-5001`
+17. Verifikasi Detail `Rizky Pratama`: Access `Global Settings` dan `Fixed Asset`
+18. Verifikasi Detail `Rizky Pratama`: Custom Field Shift `Siang`
+19. Buka Detail user `Sinta Maharani`
+20. Verifikasi Detail `Sinta Maharani` tercatat sebagai Temporary User
+21. Verifikasi Detail `Sinta Maharani`: Temporary Until sama dengan tanggal Active Period pada berkas (H+30)
+22. Buka Detail user `Doni Kurniawan`
+23. Verifikasi Detail `Doni Kurniawan`: Position `Finance Manager`
+24. Verifikasi Detail `Doni Kurniawan`: Access `Fixed Asset`
+25. Verifikasi Detail `Doni Kurniawan`: Custom Field Shift `Pagi`
+26. Buka Detail user `Eka Putri`
+27. Verifikasi Detail `Eka Putri`: Custom Field Overtime Hours `1.25`
+28. Buka halaman Import > User Login
+29. Buka Changelog Import (icon [Changelog] di header halaman)
+30. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
+31. Verifikasi entri teratas (sort default Date descending): Action `Import User Login`, Data `8 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+32. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
 
 ### TC-GS-IMPORT-357: Import 5 baris User Non Login
 
-32. Buka Tab User Non Login pada halaman Import, siapkan draft User Non Login 5 baris (user-non-login-commit-5.csv, D-55) di Client E lewat fixture, lalu muat ulang halaman Import > User Non Login
-33. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
-34. Klik [Import (5)]
-35. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-36. Verifikasi Dropzone tampil menggantikan Staging Table
-37. Verifikasi Unsaved Banner tidak tampil
-38. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
-39. Buka halaman User > User List > Non-Login User
-40. Verifikasi halaman User > User List > Non-Login User Client E memuat 5 user baru: Joko Santoso, Kartika Dewi, Lukman Hakim, Maya Sari, Nanda Wijaya
-41. Verifikasi kelima user baru berstatus `active`
-42. Buka Detail user `Joko Santoso`
-43. Verifikasi Detail `Joko Santoso`: Division `Engineering`
-44. Verifikasi Detail `Joko Santoso`: Represented By `rina.admin.e@example.com`
-45. Buka Detail user `Kartika Dewi`
-46. Verifikasi Detail `Kartika Dewi`: Position `Supervisor`
-47. Verifikasi Detail `Kartika Dewi`: Employee ID `EMP-6002`
-48. Verifikasi Detail `Kartika Dewi`: Represented By `budi.manager.e@example.com`
-49. Verifikasi Detail `Kartika Dewi` tercatat sebagai Temporary User
-50. Verifikasi Detail `Kartika Dewi`: Temporary Until sama dengan tanggal Active Period pada berkas (H+30)
-51. Buka halaman Import > User Non Login
-52. Buka Changelog Import (icon [Changelog] di header halaman)
-53. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
-54. Verifikasi entri teratas (sort default Date descending): Action `Import User Non Login`, Data `5 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
+33. Buka Tab User Non Login pada halaman Import, siapkan draft User Non Login 5 baris (user-non-login-commit-5.csv, D-55) di Client E lewat fixture, lalu muat ulang halaman Import > User Non Login
+34. Catat baseline: buka Changelog Import, baca total pada teks Pagination (0 bila empty state), lalu tutup modal
+35. Klik [Import (5)]
+36. Tunggu aksi selesai (permintaan mendapat respons)
+37. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+38. Verifikasi Dropzone tampil menggantikan Staging Table
+39. Verifikasi Unsaved Banner tidak tampil
+40. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil di atas halaman dengan tombol `[×]`
+41. Buka halaman User > User List > Non-Login User
+42. Verifikasi halaman User > User List > Non-Login User Client E memuat 5 user baru: Joko Santoso, Kartika Dewi, Lukman Hakim, Maya Sari, Nanda Wijaya
+43. Verifikasi kelima user baru berstatus `active`
+44. Buka Detail user `Joko Santoso`
+45. Verifikasi Detail `Joko Santoso`: Division `Engineering`
+46. Verifikasi Detail `Joko Santoso`: Represented By `rina.admin.e@example.com`
+47. Buka Detail user `Kartika Dewi`
+48. Verifikasi Detail `Kartika Dewi`: Position `Supervisor`
+49. Verifikasi Detail `Kartika Dewi`: Employee ID `EMP-6002`
+50. Verifikasi Detail `Kartika Dewi`: Represented By `budi.manager.e@example.com`
+51. Verifikasi Detail `Kartika Dewi` tercatat sebagai Temporary User
+52. Verifikasi Detail `Kartika Dewi`: Temporary Until sama dengan tanggal Active Period pada berkas (H+30)
+53. Buka halaman Import > User Non Login
+54. Buka Changelog Import (icon [Changelog] di header halaman)
+55. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
+56. Verifikasi entri teratas (sort default Date descending): Action `Import User Non Login`, Data `5 records imported, 0 duplicates ignored, 0 errors remaining`, Modified By `Yoga P`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md` (TC-GS-IMPORT-356, 357).
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan TC sumber dipertahankan.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 32 (penyiapan draft sebagai precondition TC lewat fixture dan berpindah Tab); langkah 2 dan 33 (baseline jumlah entri Changelog Import sebelum aksi pemicu pertama yang diasersi, S-12); langkah 31 (menutup modal dan reset Client E sesuai D-47 sebelum TC berikutnya); langkah 9 (Rows per page 100 agar kedelapan user baru tampil). Pembukaan Detail user adalah aksi observasi.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 33 (penyiapan draft sebagai precondition TC lewat fixture dan berpindah Tab); langkah 2 dan 34 (baseline jumlah entri Changelog Import sebelum aksi pemicu pertama yang diasersi, S-12); langkah 32 (menutup modal dan reset Client E sesuai D-47 sebelum TC berikutnya); langkah 10 (Rows per page 100 agar kedelapan user baru tampil). Pembukaan Detail user adalah aksi observasi. Langkah 4 dan 36 (tunggu aksi selesai sesudah klik [Import (N)] sebelum memuat ulang halaman).
 - Baseline Changelog: total Changelog tidak diasersi sebagai angka absolut; entri yang diasersi dicari sebagai entri teratas sesuai sort default Date descending setelah total bertambah tepat satu (S-12).
 - Tanggal H+30: dihitung hook penyiapan dari hari eksekusi dan ditulis ke berkas (YYYY-MM-DD); Temporary Until dibandingkan dengan tanggal itu. Pre-setup Client E menetapkan Date Format `dd MMM yy`, sehingga tampilan tanggal di Detail mengikuti format itu.
-- Spec ini di atas sekitar 35 langkah (54 langkah). Alasan: dua blok homogen (siapkan draft, Import, tunggu commit, periksa banner, periksa daftar user dan Detail user, periksa Changelog Import) yang berdiri sendiri dengan draft dan reset Client E sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini di atas sekitar 35 langkah (56 langkah). Alasan: dua blok homogen (siapkan draft, Import, tunggu commit, periksa banner, periksa daftar user dan Detail user, periksa Changelog Import) yang berdiri sendiri dengan draft dan reset Client E sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: commit Brand, Measurement, Position, Division di spec 133; Partial Commit di spec 135.
 - Temuan untuk QA:
   - TC-GS-IMPORT-356 Expected d hingga g tidak menyebut nilai default untuk field Detail user yang tidak diisi berkas; spec hanya mengasersi field yang disebut TC.

@@ -44,8 +44,8 @@ coverage:
 14. [Sesi Total Control] Buka menu Import dari sidebar
 15. [Sesi Total Control] Klik `[⋯]` pada baris #1
 16. [Sesi Total Control] Pilih Edit
-17. [Sesi Total Control] Verifikasi dialog Title "Draft Is Being Edited" dengan Body "Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved." dan tombol `[OK]`
-18. [Sesi Total Control] Klik `[OK]`
+17. [Sesi Total Control] Verifikasi dialog Title "Draft Is Being Edited" dengan Body "Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved." dan tombol `[Cancel]` dan `[Take Over Session]`
+18. [Sesi Total Control] Klik `[Cancel]` pada dialog
 19. [Sesi Total Control] Tunggu aksi selesai (dialog tertutup)
 20. Atur kedaluwarsa kunci sesi edit akun uji ke waktu yang sudah lewat lewat fixture timestamp
 21. [Sesi Total Control] Klik `[⋯]` pada baris #1
@@ -65,3 +65,4 @@ coverage:
   - TC-GS-IMPORT-607 memuat tiga topik dalam satu TC (izin dicabut di tengah sesi edit, dialog konflik Draft Is Being Edited, pelepasan kunci lewat TTL 10 menit); spec mempertahankan satu TC satu spec. Spec berkelas d (prinsip 13d) dan sesi Total Control kedua beraksi serta diasersi (langkah 13 sampai 27, kelas c); belum ada id pengecualian untuk konteks kedua yang beraksi di spec kelas d, sehingga spec tidak dipecah dan usulan aturan baru menunggu batch konvensi.
   - Langkah 11 memuat ulang halaman saat sesi edit Import data (Create) masih berisi perubahan yang belum disimpan, tanpa `[Cancel]` dan `[Discard]`, karena melepas sesi edit akan melepas kunci yang dibutuhkan dialog "Draft Is Being Edited" pada langkah 17; perlakuan muat ulang pada sesi dirty belum diputuskan.
   - Status 403 pada langkah 9 diamati dari respons permintaan Save yang dikirim FE; TC tidak menyebut cara mengamati status itu selain Expected a.
+  - Expected TC-GS-IMPORT-607 menyebut tombol `[OK]` pada dialog "Draft Is Being Edited" (langkah 17 dan 18), sedangkan PRD baris 568 menetapkan tombol `[Cancel]` dan `[Take Over Session]`; spec mengikuti PRD dan mengklik `[Cancel]`, sehingga Expected TC-607 menyimpang dari PRD.

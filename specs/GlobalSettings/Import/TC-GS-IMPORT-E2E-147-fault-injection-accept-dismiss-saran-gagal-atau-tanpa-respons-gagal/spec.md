@@ -51,7 +51,7 @@ coverage:
 #### TC-GS-IMPORT-303: Accept gagal server pada AI Field Shortening
 
 1. Reset Client C ke tanpa draft pada Sub-Tab Brand dan User Login (aksi fixture); pastikan mock AI mode normal
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Klik `[Upload File]` di toolbar dan pilih berkas `ai-brand-long.csv`
 4. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 5. Pasang intercept jaringan yang membalas permintaan Accept dengan status 500
@@ -96,7 +96,7 @@ coverage:
 #### TC-GS-IMPORT-321: Accept gagal server pada AI Reference Suggestion
 
 34. Reset Client C ke tanpa draft pada Sub-Tab Brand dan User Login (aksi fixture)
-35. Pilih Sub-Tab User Login
+35. Muat ulang halaman Import > User Login
 36. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-div-gudng.csv`
 37. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 38. Pasang intercept jaringan yang membalas permintaan Accept dengan status 500

@@ -83,7 +83,7 @@ coverage:
 - Spec berisi 37 langkah, hanya sedikit di atas 35 langkah. Alasan: tiga TC (56, 57, 59) berstruktur sama dalam satu kelas (guard pra-Confirm Mapping) dan memakai Sub-Tab berbeda sehingga tidak saling memengaruhi; satu TC yang gagal tidak membuat TC lain kehilangan makna.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 56 (diblokir, tidak membuat data), lalu 57 dan 59 (membuat draft pada Sub-Tab berbeda sehingga tidak saling memengaruhi); sesuai prinsip validasi diblokir sebelum aksi berhasil.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 18, 29 (pindah Sub-Tab), langkah 5, 9, 15, 22, 27, 35 (mengamati sesuai Langkah Uji TC), langkah 13 dan 14 (tutup modal dengan `[Cancel]` lalu `[Leave]`, sesuai Langkah Uji TC-GS-IMPORT-56).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 18, 30 (pindah Sub-Tab), langkah 5, 9, 15, 22, 27, 35 (mengamati sesuai Langkah Uji TC), langkah 13 dan 14 (tutup modal dengan `[Cancel]` lalu `[Leave]`, sesuai Langkah Uji TC-GS-IMPORT-56).
 - Langkah 23 (`Verifikasi` dropdown Code menampilkan "No Column") adalah asersi tambahan di luar Expected TC: anchor positif pada modal yang sama untuk absence "tidak ada Error Banner untuk Code" di langkah 24 (8b butir 2, S-03).
 - Temuan untuk QA:
   - Skrip reset draft Client C tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE (S-13). Berkas fixture literal tanpa suffix `{runId}`; keunikan dijaga lewat reset draft.

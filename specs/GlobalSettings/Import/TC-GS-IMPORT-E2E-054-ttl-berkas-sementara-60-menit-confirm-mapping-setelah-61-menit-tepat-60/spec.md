@@ -30,45 +30,48 @@ coverage:
 
 1. Klik [Upload File]
 2. Pilih berkas `brand-12.csv` di file picker
-3. Majukan jam server 61 menit sejak upload (fixture jam server)
-4. Klik [Confirm Mapping]
-5. Verifikasi Modal Column Mapping tetap terbuka
-6. Verifikasi Error Banner generik dengan header "Failed to process brand-12.csv. Please try uploading again." tampil
-7. Verifikasi Error Banner tanpa rincian per-rule
-8. Verifikasi Error Banner tanpa link download
-9. Klik [Reupload File]
-10. Pilih berkas `brand-12.csv` di file picker
-11. Klik [Confirm Mapping]
-12. Verifikasi modal tertutup
-13. Verifikasi Staging Table menampilkan 12 baris berstatus `pending`
-14. Verifikasi Pagination "Showing 1 - 10 of 12 items"
-15. Pulihkan jam server ke waktu nyata (fixture jam server); reset Client C ke tanpa draft Tab Brand
-16. Muat ulang halaman Import > Brand
+3. Tunggu aksi selesai (permintaan mendapat respons)
+4. Majukan jam server 61 menit sejak upload (fixture jam server)
+5. Klik [Confirm Mapping]
+6. Verifikasi Modal Column Mapping tetap terbuka
+7. Verifikasi Error Banner generik dengan header "Failed to process brand-12.csv. Please try uploading again." tampil
+8. Verifikasi Error Banner tanpa rincian per-rule
+9. Verifikasi Error Banner tanpa link download
+10. Klik [Reupload File]
+11. Pilih berkas `brand-12.csv` di file picker
+12. Klik [Confirm Mapping]
+13. Verifikasi modal tertutup
+14. Verifikasi Staging Table menampilkan 12 baris berstatus `pending`
+15. Verifikasi Pagination "Showing 1 - 10 of 12 items"
+16. Pulihkan jam server ke waktu nyata (fixture jam server); reset Client C ke tanpa draft Tab Brand
+17. Muat ulang halaman Import > Brand
 
 ### TC-GS-IMPORT-823: Berkas sementara berusia tepat 60 menit
 
-17. Klik [Upload File]
-18. Pilih berkas `brand-12.csv` di file picker
-19. Atur umur berkas sementara hasil upload menjadi tepat 60 menit lewat hook uji (fixture umur berkas sementara)
-20. Klik [Confirm Mapping]
-21. Verifikasi Modal Column Mapping tetap terbuka
-22. Verifikasi Error Banner generik dengan header "Failed to process brand-12.csv. Please try uploading again." tampil
-23. Verifikasi Error Banner tanpa rincian per-rule
-24. Verifikasi Error Banner tanpa link download
-25. Klik [Reupload File]
-26. Pilih berkas `brand-12.csv` di file picker
-27. Klik [Confirm Mapping]
-28. Verifikasi modal tertutup
-29. Verifikasi Staging Table menampilkan 12 baris berstatus `pending`
-30. Verifikasi Pagination "Showing 1 - 10 of 12 items"
-31. Reset Client C ke tanpa draft Tab Brand
+18. Klik [Upload File]
+19. Pilih berkas `brand-12.csv` di file picker
+20. Tunggu aksi selesai (permintaan mendapat respons)
+21. Atur umur berkas sementara hasil upload menjadi tepat 60 menit lewat hook uji (fixture umur berkas sementara)
+22. Klik [Confirm Mapping]
+23. Verifikasi Modal Column Mapping tetap terbuka
+24. Verifikasi Error Banner generik dengan header "Failed to process brand-12.csv. Please try uploading again." tampil
+25. Verifikasi Error Banner tanpa rincian per-rule
+26. Verifikasi Error Banner tanpa link download
+27. Klik [Reupload File]
+28. Pilih berkas `brand-12.csv` di file picker
+29. Klik [Confirm Mapping]
+30. Verifikasi modal tertutup
+31. Verifikasi Staging Table menampilkan 12 baris berstatus `pending`
+32. Verifikasi Pagination "Showing 1 - 10 of 12 items"
+33. Reset Client C ke tanpa draft Tab Brand
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (kelas d, prinsip 13d; objek uji TTL berkas sementara sebagai batas waktu).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 15 dan 31 (pemulihan jam server dan reset draft); langkah 16 (muat ulang halaman Import > Brand).
-- Pembersihan state antar blok (S-03): langkah 16 memuat ulang halaman sesudah fixture membuang draft (langkah 15), sehingga langkah 17 [Upload File] pada blok TC-GS-IMPORT-823 berjalan pada halaman tanpa draft (tanpa Staging Table dan tanpa dialog Append).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 16 dan 33 (pemulihan jam server dan reset draft); langkah 17 (muat ulang halaman Import > Brand); langkah 3 dan 20 (Tunggu aksi selesai: menunggu unggahan diproses sebelum fixture mengubah jam server atau umur berkas; penanda permintaan mendapat respons).
+- Pembersihan state antar blok (S-03): langkah 17 memuat ulang halaman sesudah fixture membuang draft (langkah 16), sehingga langkah 18 [Upload File] pada blok TC-GS-IMPORT-823 berjalan pada halaman tanpa draft (tanpa Staging Table dan tanpa dialog Append).
 - Pembagian TC lintas spec: batas eksak tepat 60 menit (TC-GS-IMPORT-823) dan lebih dari 60 menit (TC-GS-IMPORT-82) berada di spec ini; tidak ada spec lain yang menguji TTL berkas sementara.
 - Temuan untuk QA:
   - TC-GS-IMPORT-823 Expected a ("Modal Column Mapping tetap terbuka") dan b (Error Banner) dinomori pada langkah 4 dan 5, sedangkan TC-GS-IMPORT-82 menggabungkannya di langkah 5; spec memetakan keduanya ke langkah setelah klik [Confirm Mapping].
   - TC-GS-IMPORT-823 tidak menyebut cara membaca waktu terbit berkas sementara; spec menuliskannya sebagai kemampuan hook uji yang disediakan tim FE/BE.
+  - Penanda selesai untuk langkah 3 dan 20 (sesudah pemilihan berkas `brand-12.csv`, sebelum fixture jam atau umur berkas) tidak ada di TC; spec memakai "permintaan mendapat respons" sebagai penanda tunggu tanpa hasil UI.

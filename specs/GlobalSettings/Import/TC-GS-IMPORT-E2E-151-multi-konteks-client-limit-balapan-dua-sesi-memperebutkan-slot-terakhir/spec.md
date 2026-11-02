@@ -37,7 +37,7 @@ coverage:
 ### TC-GS-IMPORT-410: Commit Tab Division dan Create Missing Divisions bersamaan di slot terakhir
 
 1. Reset Client Limit lewat skrip fixture: 999 Division tersimpan dan Master Data Count Limit Division 1000 (D-46); seed draft Tab Division 1 baris `Legal`/`LGL` dan draft Tab User Login 1 baris `error` (Division `Logistik`) dengan hook umur draft D-76 varian 1
-2. [Sesi A] Buka Global Settings > Import, pilih Sub-Tab Division
+2. [Sesi A] Muat ulang halaman Import > Division
 3. [Sesi B] Buka Global Settings > Import, pilih Sub-Tab User Login
 4. Pasang intercept yang menahan permintaan commit Tab Division dan permintaan Create Missing Divisions sampai dilepas
 5. [Sesi A] Klik `[Import (1)]` di Tab Division
@@ -78,7 +78,7 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: multi-konteks (c) dengan race dua sesi sebagai objek uji. Kuota Master Data Count Limit adalah pemicu state (P-2 dan keputusan 2026-10-21: kuota boleh menjadi pemicu pada spec multi-konteks), spec tidak dipindah ke kelas volume. TC-GS-IMPORT-410 dan TC-GS-IMPORT-720 berstatus Manual di sumber; keduanya tetap spec dan kebutuhan teknisnya tercatat di Prerequisites.
+- Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: multi-konteks (c) dengan race dua sesi sebagai objek uji. Kuota Master Data Count Limit adalah pemicu state (P-2: kuota boleh menjadi pemicu pada spec multi-konteks), spec tidak dipindah ke kelas volume. TC-GS-IMPORT-410 dan TC-GS-IMPORT-720 berstatus Manual di sumber; keduanya tetap spec dan kebutuhan teknisnya tercatat di Prerequisites.
 - Spec berisi 36 langkah, hanya sedikit di atas 35 langkah. Alasan: satu skenario balapan dua sesi (kelas multi-konteks) yang tidak dapat dipecah tanpa kehilangan makna race; reset dan seeding hanya di langkah 1 dan 16. Langkah 16 juga menghapus Division `Legal`, `Logistik`, dan `Pengadaan` yang mungkin tersisa dari TC-410 (S-03), supaya baris #2 TC-720 tetap "Division not found" dan slot 1000 belum terpakai.
 - Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 16), pembukaan halaman dan Sub-Tab, pencatatan jumlah baris (langkah 12, 14, 30, 32), polling job (langkah 8), dan ganti isi kotak search (langkah 13, 31). Langkah 34 membuka halaman Import > User Login pada Sesi A tanpa muat ulang paksa karena halaman dibuka dari halaman Division.
 - Langkah 24 dan 25 tidak menentukan sesi mana yang menang karena Expected TC-GS-IMPORT-720 menyatakan "akun yang memperoleh slot tidak ditentukan"; langkah 26, 27, 35, dan 36 merujuk "sesi yang menerima toast error" dan "nama yang tidak terbentuk" yang ditentukan saat run.

@@ -28,31 +28,33 @@ coverage:
 ### TC-GS-IMPORT-500: Aktivitas pre-commit tidak menambah entri Changelog Import
 
 1. Seed Changelog Import Client E 30 entri (D-60), reset Client E ke tanpa draft, dan seed draft Brand D-50 (12 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Klik `[Changelog]`
-4. Baca jumlah entri Changelog Import Client E sebagai N lewat kemampuan baca jumlah entri
-5. Verifikasi pagination Changelog "Showing 1 - 10 of N items" dan selisih total terhadap N yang dibaca pada langkah 4 adalah 0
-6. Tutup modal Changelog lewat `✕`
-7. Klik row action `⋯` pada Row # 1 lalu Edit
-8. Ubah Brand Name menjadi `Acme Corp 2`
-9. Klik `[Save]`
-10. Verifikasi toast sukses "Success, row has been updated."
-11. Klik row action `⋯` pada Row # 2 lalu Remove
-12. Klik `[Delete]` pada Dialog Delete Row
-13. Verifikasi toast sukses "Success, row has been deleted."
-14. Klik `[Discard]` pada Unsaved Banner
-15. Klik `[Discard Draft]` pada Dialog Discard Draft
-16. Verifikasi toast sukses "Success, draft has been discarded."
-17. Verifikasi halaman kembali ke Dropzone
-18. Klik `[Changelog]`
-19. Verifikasi pagination Changelog tetap "Showing 1 - 10 of N items" dan selisih total terhadap N yang dibaca pada langkah 4 adalah 0
-20. Verifikasi baris pertama tetap Date `30 Sep 26` (tidak ada entri baru)
+4. Verifikasi modal `Changelog: Import` terbuka
+5. Baca jumlah entri Changelog Import Client E sebagai N lewat kemampuan baca jumlah entri
+6. Verifikasi pagination Changelog "Showing 1 - 10 of N items" dan selisih total terhadap N yang dibaca pada langkah 5 adalah 0
+7. Tutup modal Changelog lewat `✕`
+8. Klik row action `⋯` pada Row # 1 lalu Edit
+9. Ubah Brand Name menjadi `Acme Corp 2`
+10. Klik `[Save]`
+11. Verifikasi toast sukses "Success, row has been updated."
+12. Klik row action `⋯` pada Row # 2 lalu Remove
+13. Klik `[Delete]` pada Dialog Delete Row
+14. Verifikasi toast sukses "Success, row has been deleted."
+15. Klik `[Discard]` pada Unsaved Banner
+16. Klik `[Discard Draft]` pada Dialog Discard Draft
+17. Verifikasi toast sukses "Success, draft has been discarded."
+18. Verifikasi halaman kembali ke Dropzone
+19. Klik `[Changelog]`
+20. Verifikasi modal `Changelog: Import` terbuka
+21. Verifikasi pagination Changelog tetap "Showing 1 - 10 of N items" dan selisih total terhadap N yang dibaca pada langkah 5 adalah 0
+22. Verifikasi baris pertama tetap Date `30 Sep 26` (tidak ada entri baru)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: asersi absence (g); spec memuat aksi nyata (Edit, Remove, Discard Draft) dengan baseline sendiri, sehingga memenuhi S-05. Hook umur draft D-76 hanya pemicu (P-5a).
-- Spec singkat (20 langkah) sehingga tidak melewati sekitar 35 langkah.
-- Langkah penghubung (tanpa `Verifikasi`): seeding (langkah 1), pembukaan halaman dan Sub-Tab, pembacaan N (langkah 4), dan menutup modal Changelog (langkah 6). Asersi absence (langkah 19 dan 20) didahului toast sukses atas tiap aksi (langkah 10, 13, 16) dan Dropzone (langkah 17) sebagai anchor positif yang terhubung ke pemicu (butir 2 bagian 8b).
+- Spec singkat (22 langkah) sehingga tidak melewati sekitar 35 langkah.
+- Langkah penghubung (tanpa `Verifikasi`): seeding (langkah 1), muat ulang halaman Import > Brand (langkah 2), pembukaan halaman dan Sub-Tab, pembacaan N (langkah 5), dan menutup modal Changelog (langkah 7). Langkah 4 dan 20 adalah `Verifikasi` modal Changelog Import terbuka sebagai anchor positif sebelum asersi jumlah entri. Asersi absence (langkah 21 dan 22) didahului toast sukses atas tiap aksi (langkah 11, 14, 17) dan Dropzone (langkah 18) sebagai anchor positif yang terhubung ke pemicu (butir 2 bagian 8b).
 - Temuan untuk QA:
-  - Jumlah 30 entri adalah keadaan seed D-60 yang dijamin skrip seed (langkah 1), bukan total audit trail yang tumbuh; TC-GS-IMPORT-500 Expected a dan e mengasersi pagination "of 30 items" absolut dan baris pertama Date `30 Sep 26`, sedangkan spec membaca N sebelum aksi (langkah 4) dan mengasersi selisih 0 terhadap N (langkah 5, 19; S-12). Baris pertama Date `30 Sep 26` dipertahankan sebagai baris seeding terbaru (S-14).
+  - Jumlah 30 entri adalah keadaan seed D-60 yang dijamin skrip seed (langkah 1), bukan total audit trail yang tumbuh; TC-GS-IMPORT-500 Expected a dan e mengasersi pagination "of 30 items" absolut dan baris pertama Date `30 Sep 26`, sedangkan spec membaca N sebelum aksi (langkah 5) dan mengasersi selisih 0 terhadap N (langkah 6, 21; S-12). Baris pertama Date `30 Sep 26` dipertahankan sebagai baris seeding terbaru (S-14).
   - Post Condition TC-GS-IMPORT-500 ("draft Brand sudah di-Discard; Changelog Import tetap 30 entri") dikonfirmasi oleh Expected d dan e; tidak ada asersi tambahan.

@@ -38,102 +38,106 @@ coverage:
 1. Siapkan draft Brand 15 baris (brand-partial-15.csv, D-58) di Client E lewat fixture, mundurkan umur draft 25 jam (D-76 varian 1), lalu muat ulang halaman Import > Brand
 2. Catat baseline: buka Changelog Import (icon [Changelog] di header halaman), baca total pada teks Pagination (0 bila empty state), lalu tutup modal
 3. Klik [Import (10)]
-4. Muat ulang halaman Import > Brand setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-5. Verifikasi Staging Metric Card Total Rows 2
-6. Verifikasi Staging Metric Card Ready to Import 0 (Disabled)
-7. Verifikasi Staging Metric Card Errors 2
-8. Verifikasi Staging Metric Card Duplicates 0 (Disabled)
-9. Verifikasi Staging Table menampilkan 2 baris berstatus `error` (Brand Name 121 karakter)
-10. Verifikasi tidak ada baris `duplicate` yang tampil
-11. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 2 errors remain." tampil
-12. Verifikasi Unsaved Banner dengan tombol `[Discard]` tampil
-13. Buka halaman Master Reference > Brand
-14. Atur Rows per page 100
-15. Verifikasi halaman Master Reference > Brand Client E memuat 10 Brand baru: Nikon, Pentax, Olympus, Fujifilm, Leica, Sigma, Tamron, Hasselblad, Ricoh, dan `Brand Kembar` satu kali
-16. Verifikasi `Samsung` tetap satu
-17. Verifikasi tidak ada Brand dari kedua baris `error`
-18. Buka halaman Import > Brand
-19. Buka Changelog Import (icon [Changelog] di header halaman)
-20. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
-21. Verifikasi entri teratas (sort default Date descending): Action `Import Brand`, Data `10 records imported, 3 duplicates ignored, 2 errors remaining`, Modified By `Yoga P`
-22. Tutup modal Changelog Import
+4. Tunggu aksi selesai (permintaan mendapat respons)
+5. Muat ulang halaman Import > Brand setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+6. Verifikasi Staging Metric Card Total Rows 2
+7. Verifikasi Staging Metric Card Ready to Import 0 (Disabled)
+8. Verifikasi Staging Metric Card Errors 2
+9. Verifikasi Staging Metric Card Duplicates 0 (Disabled)
+10. Verifikasi Staging Table menampilkan 2 baris berstatus `error` (Brand Name 121 karakter)
+11. Verifikasi tidak ada baris `duplicate` yang tampil
+12. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 2 errors remain." tampil
+13. Verifikasi Unsaved Banner dengan tombol `[Discard]` tampil
+14. Buka halaman Master Reference > Brand
+15. Atur Rows per page 100
+16. Verifikasi halaman Master Reference > Brand Client E memuat 10 Brand baru: Nikon, Pentax, Olympus, Fujifilm, Leica, Sigma, Tamron, Hasselblad, Ricoh, dan `Brand Kembar` satu kali
+17. Verifikasi `Samsung` tetap satu
+18. Verifikasi tidak ada Brand dari kedua baris `error`
+19. Buka halaman Import > Brand
+20. Buka Changelog Import (icon [Changelog] di header halaman)
+21. Verifikasi total pada teks Pagination Changelog Import bertambah tepat satu dibanding baseline
+22. Verifikasi entri teratas (sort default Date descending): Action `Import Brand`, Data `10 records imported, 3 duplicates ignored, 2 errors remaining`, Modified By `Yoga P`
+23. Tutup modal Changelog Import
 
 ### TC-GS-IMPORT-359: Perbaiki baris error lalu commit ulang (melanjutkan keadaan akhir TC-GS-IMPORT-358)
 
-23. Buka Changelog Import (icon [Changelog] di header halaman)
-24. Klik icon Filter
-25. Pilih Action `Import Brand` pada dropdown Action
-26. Klik `[Apply]`
-27. Catat angka total pada teks Pagination (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state)
-28. Tutup modal Changelog Import
-29. Buka row action Edit pada baris `error` pertama dari atas
-30. Ubah Brand Name menjadi `Kamera Baru`
-31. Klik [Save]
-32. Buka row action Edit pada baris `error` yang tersisa
-33. Ubah Brand Name menjadi `Printer Baru`
-34. Klik [Save]
-35. Verifikasi Staging Metric Card Ready to Import 2
-36. Verifikasi Staging Metric Card Errors 0 (Disabled)
-37. Verifikasi footer menampilkan `[Import (2)]`
-38. Klik [Import (2)]
-39. Muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
-40. Verifikasi Dropzone tampil menggantikan Staging Table
-41. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil
-42. Buka halaman Master Reference > Brand
-43. Atur Rows per page 100
-44. Verifikasi halaman Master Reference > Brand Client E memuat Brand `Kamera Baru` dan `Printer Baru`
-45. Buka halaman Import > Brand
-46. Buka Changelog Import (icon [Changelog] di header halaman)
-47. Klik icon Filter
-48. Pilih Action `Import Brand` pada dropdown Action
-49. Klik `[Apply]`
-50. Baca angka total pada teks Pagination
-51. Verifikasi total pada Pagination Changelog Import dengan Filter Action `Import Brand` bertambah tepat satu dibanding langkah 27
-52. Verifikasi baris pertama tabel (sort default Date descending): Data `2 records imported, 0 duplicates ignored, 0 errors remaining`
-53. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
+24. Buka Changelog Import (icon [Changelog] di header halaman)
+25. Klik icon Filter
+26. Pilih Action `Import Brand` pada dropdown Action
+27. Klik `[Apply]`
+28. Catat angka total pada teks Pagination (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state)
+29. Tutup modal Changelog Import
+30. Buka row action Edit pada baris `error` pertama dari atas
+31. Ubah Brand Name menjadi `Kamera Baru`
+32. Klik [Save]
+33. Buka row action Edit pada baris `error` yang tersisa
+34. Ubah Brand Name menjadi `Printer Baru`
+35. Klik [Save]
+36. Verifikasi Staging Metric Card Ready to Import 2
+37. Verifikasi Staging Metric Card Errors 0 (Disabled)
+38. Verifikasi footer menampilkan `[Import (2)]`
+39. Klik [Import (2)]
+40. Tunggu aksi selesai (permintaan mendapat respons)
+41. Muat ulang halaman Import > Brand setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
+42. Verifikasi Dropzone tampil menggantikan Staging Table
+43. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored." tampil
+44. Buka halaman Master Reference > Brand
+45. Atur Rows per page 100
+46. Verifikasi halaman Master Reference > Brand Client E memuat Brand `Kamera Baru` dan `Printer Baru`
+47. Buka halaman Import > Brand
+48. Buka Changelog Import (icon [Changelog] di header halaman)
+49. Klik icon Filter
+50. Pilih Action `Import Brand` pada dropdown Action
+51. Klik `[Apply]`
+52. Baca angka total pada teks Pagination
+53. Verifikasi total pada Pagination Changelog Import dengan Filter Action `Import Brand` bertambah tepat satu dibanding langkah 28
+54. Verifikasi baris pertama tabel (sort default Date descending): Data `2 records imported, 0 duplicates ignored, 0 errors remaining`
+55. Tutup modal Changelog Import dan reset Client E sesuai D-47 lewat fixture
 
 ### TC-GS-IMPORT-833: Penomoran ulang padat setelah commit (draft 12 pending dan 2 error)
 
-54. Siapkan draft Brand 14 baris (D-17) di Client E lewat fixture dengan mock AI mode normal, lalu muat ulang halaman Import > Brand
-55. Atur Rows per page 100
-56. Verifikasi dua baris `error` bernomor 13 dan 14
-57. Klik [Import (12)]
-58. Muat ulang halaman Import > Brand setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-59. Verifikasi Staging Table menampilkan 2 baris `error`: baris dengan Brand Name 121 karakter bernomor 1 dan baris dengan Brand Name 125 karakter bernomor 2
-60. Verifikasi Staging Metric Card Total Rows 2 (Active)
-61. Verifikasi Staging Metric Card Ready to Import 0 (Disabled)
-62. Verifikasi Staging Metric Card Errors 2
-63. Verifikasi Staging Metric Card Duplicates 0 (Disabled)
-64. Verifikasi Pagination "Showing 1 - 2 of 2 items"
-65. Reset Client E sesuai D-47 lewat fixture
+56. Siapkan draft Brand 14 baris (D-17) di Client E lewat fixture dengan mock AI mode normal, lalu muat ulang halaman Import > Brand
+57. Atur Rows per page 100
+58. Verifikasi dua baris `error` bernomor 13 dan 14
+59. Klik [Import (12)]
+60. Tunggu aksi selesai (permintaan mendapat respons)
+61. Muat ulang halaman Import > Brand setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+62. Verifikasi Staging Table menampilkan 2 baris `error`: baris dengan Brand Name 121 karakter bernomor 1 dan baris dengan Brand Name 125 karakter bernomor 2
+63. Verifikasi Staging Metric Card Total Rows 2 (Active)
+64. Verifikasi Staging Metric Card Ready to Import 0 (Disabled)
+65. Verifikasi Staging Metric Card Errors 2
+66. Verifikasi Staging Metric Card Duplicates 0 (Disabled)
+67. Verifikasi Pagination "Showing 1 - 2 of 2 items"
+68. Reset Client E sesuai D-47 lewat fixture
 
 ### TC-GS-IMPORT-834: Penomoran ulang padat setelah commit (draft 10 pending, 2 error, 3 duplicate)
 
-66. Siapkan draft Brand 15 baris (brand-partial-15.csv, D-58) di Client E lewat fixture, lalu muat ulang halaman Import > Brand
-67. Atur Rows per page 100
-68. Verifikasi dua baris `error` bernomor 14 dan 15
-69. Klik [Import (10)]
-70. Muat ulang halaman Import > Brand setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-71. Verifikasi Staging Table menampilkan 2 baris `error`: baris Brand Name 121 huruf `A` bernomor 1 dan baris Brand Name 121 huruf `B` bernomor 2
-72. Verifikasi tidak ada baris `duplicate` yang tampil
-73. Verifikasi Staging Metric Card Total Rows 2 (Active)
-74. Verifikasi Staging Metric Card Ready to Import 0 (Disabled)
-75. Verifikasi Staging Metric Card Errors 2
-76. Verifikasi Staging Metric Card Duplicates 0 (Disabled)
-77. Verifikasi Pagination "Showing 1 - 2 of 2 items"
+69. Siapkan draft Brand 15 baris (brand-partial-15.csv, D-58) di Client E lewat fixture, lalu muat ulang halaman Import > Brand
+70. Atur Rows per page 100
+71. Verifikasi dua baris `error` bernomor 14 dan 15
+72. Klik [Import (10)]
+73. Tunggu aksi selesai (permintaan mendapat respons)
+74. Muat ulang halaman Import > Brand setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+75. Verifikasi Staging Table menampilkan 2 baris `error`: baris Brand Name 121 huruf `A` bernomor 1 dan baris Brand Name 121 huruf `B` bernomor 2
+76. Verifikasi tidak ada baris `duplicate` yang tampil
+77. Verifikasi Staging Metric Card Total Rows 2 (Active)
+78. Verifikasi Staging Metric Card Ready to Import 0 (Disabled)
+79. Verifikasi Staging Metric Card Errors 2
+80. Verifikasi Staging Metric Card Duplicates 0 (Disabled)
+81. Verifikasi Pagination "Showing 1 - 2 of 2 items"
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md` (TC-GS-IMPORT-358, 359, 833, 834).
 - Subjudul `###` memetakan langkah ke id TC granular. TC-GS-IMPORT-359 diletakkan tepat sesudah TC-GS-IMPORT-358 dalam spec yang sama karena melanjutkan keadaan akhirnya (draft Brand 2 baris `error`, Dependensi 1 pada TC sumber); TC-GS-IMPORT-359 tidak punya D-ref sendiri. Urutan TC sumber dipertahankan.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 54, 66 (penyiapan draft sebagai precondition TC lewat fixture); langkah 2 (baseline jumlah entri Changelog Import sebelum aksi pemicu pertama yang diasersi, S-12); langkah 22, 28 (menutup modal); langkah 23 sampai 27 (membaca baseline total Pagination dengan Filter Action `Import Brand`, sesuai TC langkah 1 sampai 5); langkah 53, 65 (reset Client E sesuai D-47 sebelum TC berikutnya, Kontrak Fixture R1); langkah 14, 43, 55, 67 (Rows per page 100).
-- Baseline Changelog: pada TC-GS-IMPORT-358 total Changelog tanpa filter dibandingkan sebelum dan sesudah; pada TC-GS-IMPORT-359 total dengan Filter Action `Import Brand` dibandingkan dengan nilai langkah 27 (S-12). Total tidak diasersi sebagai angka absolut.
-- Absence: "tidak ada baris `duplicate`" (langkah 10, 72) didahului `Verifikasi` dua baris `error` tampil pada tabel yang sama; "tidak ada Brand dari kedua baris `error`" (langkah 17) didahului `Verifikasi` 10 Brand baru tampil di daftar yang sama.
-- Spec ini di atas sekitar 35 langkah (77 langkah). Alasan: empat blok yang berdiri sendiri dengan draft Client E dan reset D-47 sendiri (TC-GS-IMPORT-358 dan 359 berurutan karena 359 melanjutkan 358; TC-GS-IMPORT-833 dan 834 homogen: periksa penomoran ulang padat setelah commit); kegagalan 833 atau 834 tidak membuat blok sebelumnya kehilangan makna.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 56, 69 (penyiapan draft sebagai precondition TC lewat fixture); langkah 2 (baseline jumlah entri Changelog Import sebelum aksi pemicu pertama yang diasersi, S-12); langkah 23, 29 (menutup modal); langkah 24 sampai 28 (membaca baseline total Pagination dengan Filter Action `Import Brand`, sesuai TC langkah 1 sampai 5); langkah 55, 68 (reset Client E sesuai D-47 sebelum TC berikutnya, Kontrak Fixture R1); langkah 15, 45, 57, 70 (Rows per page 100); langkah 4, 40, 60, 73 (tunggu aksi selesai sesudah klik [Import (N)] sebelum memuat ulang halaman).
+- Baseline Changelog: pada TC-GS-IMPORT-358 total Changelog tanpa filter dibandingkan sebelum dan sesudah; pada TC-GS-IMPORT-359 total dengan Filter Action `Import Brand` dibandingkan dengan nilai langkah 28 (S-12). Total tidak diasersi sebagai angka absolut.
+- Absence: "tidak ada baris `duplicate`" (langkah 11, 76) didahului `Verifikasi` dua baris `error` tampil pada tabel yang sama; "tidak ada Brand dari kedua baris `error`" (langkah 18) didahului `Verifikasi` 10 Brand baru tampil di daftar yang sama.
+- Spec ini di atas sekitar 35 langkah (81 langkah). Alasan: empat blok yang berdiri sendiri dengan draft Client E dan reset D-47 sendiri (TC-GS-IMPORT-358 dan 359 berurutan karena 359 melanjutkan 358; TC-GS-IMPORT-833 dan 834 homogen: periksa penomoran ulang padat setelah commit); kegagalan 833 atau 834 tidak membuat blok sebelumnya kehilangan makna.
 - Pembagian TC lintas spec: commit sukses tanpa baris error ada di spec 133 dan 134; Banner Hasil Commit dapat ditutup dan batas umur banner di spec 136; Commit hanya menambah record di spec 137.
 - Temuan untuk QA:
   - TC-GS-IMPORT-359 tidak punya D-ref dan Precondition-nya bergantung pada keadaan akhir TC-GS-IMPORT-358 (2 baris `error` tersisa); tidak berdiri sendiri. Spec meletakkannya sesudah TC-GS-IMPORT-358.
-  - TC-GS-IMPORT-359 langkah 5 menyebut "0 bila yang tampil adalah empty state" sebagai baseline tetapi tidak menyatakan nilai awal yang dijamin; spec mencatat baseline dari pembacaan langkah 27.
+  - TC-GS-IMPORT-359 langkah 5 menyebut "0 bila yang tampil adalah empty state" sebagai baseline tetapi tidak menyatakan nilai awal yang dijamin; spec mencatat baseline dari pembacaan langkah 28.
   - Post Condition TC-GS-IMPORT-833 (a, b, c) dan TC-GS-IMPORT-834 (a, b, c) tidak punya langkah observasi tambahan di luar Expected; hanya yang ada di Expected yang diasersi. Khusus 833 dan 834 Post Condition b (record Brand baru tersimpan di Master Reference > Brand) tidak diasersi.
   - TC-GS-IMPORT-833 Precondition d (mock AI mode normal) dan D-17 (badge saran AI pada kedua baris `error`) tidak diasersi pada Expected; spec memakai keduanya sebagai precondition tanpa `Verifikasi`.
   - TC-GS-IMPORT-358 Precondition d (umur draft 25 jam, D-76) hanya relevan untuk Unsaved Banner (Expected d); spec menerapkan hook umur draft hanya pada TC-GS-IMPORT-358 dan tidak pada 834 yang memakai D-58 yang sama tanpa Precondition umur.

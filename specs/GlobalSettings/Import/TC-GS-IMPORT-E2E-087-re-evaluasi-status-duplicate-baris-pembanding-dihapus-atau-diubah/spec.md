@@ -57,7 +57,7 @@ coverage:
 14. Verifikasi badge Status baris 1 bertuliskan `duplicate`
 15. Buka Global Settings > Master Reference > Brand
 16. Ketik Search `Nova Duplicate {runId}-087`, tekan Enter; klik row action `Delete` pada Brand `Nova Duplicate {runId}-087`; konfirmasi dialog hapus Brand
-17. Tunggu aksi selesai (daftar Brand ter-refresh/dialog tertutup)
+17. Tunggu aksi selesai (permintaan mendapat respons)
 18. Buka Import > Brand, lalu muat ulang halaman
 19. Verifikasi badge Status baris 1 bertuliskan `pending`
 20. Verifikasi Staging Metric Cards: Total Rows 1 (Active), Ready to Import 1, Errors 0 (Disabled), Duplicates 0 (Disabled)
@@ -102,7 +102,7 @@ coverage:
 - Penyimpangan urutan dari TC: TC-188 dijalankan paling akhir (menghapus baris), TC-647 dijalankan pertama karena memakai D-22 yang sama sebelum penghapusan (prinsip 5 bagian 3).
 - P-2: Admin kedua Client C (langkah 23) hanya memicu pembuatan Brand lewat sesi API, bukan objek asersi; tidak ada sesi UI kedua.
 - Langkah penghubung (tanpa `Verifikasi`): langkah 1, 2, 10, 21, 29, dan 37 (pembuatan Brand lewat API, menunggu toast, seed atau reset draft, muat ulang) menjalankan Precondition draft; langkah 15, 16, 17, 18 menjalankan langkah 5 sampai 9 TC-567 (Search pada langkah 16 untuk menemukan baris target); langkah 24 menjalankan langkah 6 TC-568.
-- Langkah penghubung "Tunggu aksi selesai" (aksi tanpa `Verifikasi`): langkah 17 menunggu penghapusan Brand pada langkah 16 selesai (daftar Brand ter-refresh/dialog tertutup) sebelum langkah 18 berpindah ke Import > Brand dan memuat ulang halaman.
+- Langkah penghubung "Tunggu aksi selesai" (aksi tanpa `Verifikasi`): langkah 17 menunggu penghapusan Brand pada langkah 16 selesai (permintaan mendapat respons) sebelum langkah 18 berpindah ke Import > Brand dan memuat ulang halaman.
 - Spec berisi 44 langkah. Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dengan satu topik re-evaluasi status duplicate, tiap blok berdiri sendiri dengan reset draft dan unggah sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - ID ganda: `TC-GS-IMPORT-870` dipakai dua kali di `tc-import.md` (baris 1020 Save no-op, baris 1079 Cancel dialog konflik kunci); spec ini memakai `870@L1020`. TC tidak diubah.
@@ -110,4 +110,5 @@ coverage:
   - TC-GS-IMPORT-870@L1020 Post Condition ("Draft tidak berubah"; "Tidak ada entri log", dengan awalan ganda `a. a.` dan `b. b.` pada kolom) tidak punya langkah observasi sendiri; Draft tidak berubah sudah diasersi pada Expected b, "Tidak ada entri log" tidak diasersi (S-01, S-05).
   - TC-GS-IMPORT-870@L1020 Expected b "kunci dilepas" tidak punya cara amat di UI untuk aktor ini; spec hanya mengasersi sesi edit ditutup (Switch `Edit this page` kembali OFF), dan pelepasan kunci tidak diasersi.
   - TC-GS-IMPORT-188 Precondition menyebut baris #1 sebagai `duplicate` dari D-22 yang disiapkan fixture; skrip seeding D-22 tidak didefinisikan di TC, PRD, atau LLD dan disediakan tim FE/BE (S-13).
+  - Penanda selesai untuk langkah 17 (konfirmasi dialog hapus Brand) tidak disebut di TC, PRD, atau spec ini; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.
   - Mekanisme skrip reset draft Brand (Kontrak Fixture R1) disediakan tim FE/BE (S-13).

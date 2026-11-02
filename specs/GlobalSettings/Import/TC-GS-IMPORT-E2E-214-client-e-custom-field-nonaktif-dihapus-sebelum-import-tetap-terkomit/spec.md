@@ -54,62 +54,66 @@ coverage:
 12. Seed draft D-54 lewat skrip seed, lalu buka Import > User Login
 13. Admin kedua Client E (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan (halaman Import tidak dimuat ulang)
 14. Klik `[Import (8)]`
-15. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-16. Verifikasi Banner Hasil Commit bertone success: "Success, record has been imported. Duplicate records were ignored."
-17. Verifikasi halaman kembali ke Dropzone tanpa baris error
-18. Buka halaman User > User List > Login User
-19. Atur Rows per page 100
-20. Verifikasi daftar Login User memuat 8 user baru termasuk `Rizky Pratama`
-21. Buka Detail user `Rizky Pratama`
-22. Verifikasi Detail user `Rizky Pratama` menampilkan nama `Rizky Pratama`
-23. Verifikasi Detail user `Rizky Pratama` tidak menampilkan Custom Field Shift selama field nonaktif
-24. Admin kedua Client E (sesi API) mengaktifkan kembali Custom Field `Shift` hingga tersimpan
-25. Muat ulang Detail user `Rizky Pratama` (`F5`)
-26. Verifikasi Detail user `Rizky Pratama` menampilkan Custom Field Shift bernilai `Siang`
-27. Pulihkan: hapus 8 user hasil commit dari Client E, reset hasil commit terakhir dan Banner Hasil Commit
+15. Tunggu aksi selesai (permintaan mendapat respons)
+16. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+17. Verifikasi Banner Hasil Commit bertone success: "Success, record has been imported. Duplicate records were ignored."
+18. Verifikasi halaman kembali ke Dropzone tanpa baris error
+19. Buka halaman User > User List > Login User
+20. Atur Rows per page 100
+21. Verifikasi daftar Login User memuat 8 user baru termasuk `Rizky Pratama`
+22. Buka Detail user `Rizky Pratama`
+23. Verifikasi Detail user `Rizky Pratama` menampilkan nama `Rizky Pratama`
+24. Verifikasi Detail user `Rizky Pratama` tidak menampilkan Custom Field Shift selama field nonaktif
+25. Admin kedua Client E (sesi API) mengaktifkan kembali Custom Field `Shift` hingga tersimpan
+26. Muat ulang Detail user `Rizky Pratama` (`F5`)
+27. Verifikasi Detail user `Rizky Pratama` menampilkan Custom Field Shift bernilai `Siang`
+28. Pulihkan: hapus 8 user hasil commit dari Client E, reset hasil commit terakhir dan Banner Hasil Commit
 
 ### Custom Field dinonaktifkan sebelum halaman dimuat ulang (TC-GS-IMPORT-954)
 
-28. Seed draft D-54 lewat skrip seed, lalu buka Import > User Login
-29. Admin kedua Client E (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan
-30. Tekan `F5` pada halaman Import > User Login
-31. Verifikasi kolom Shift tampil tanpa lencana dengan nilai tersimpan
-32. Verifikasi Banner Custom Field Deactivated tampil
-33. Verifikasi Staging Metric Cards: Ready to Import 8, Errors 0
-34. Klik `[Import (8)]`
-35. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-36. Verifikasi Banner Hasil Commit bertone success: "Success, record has been imported. Duplicate records were ignored." dan halaman kembali ke Dropzone tanpa baris error
-37. Buka halaman User > User List > Login User dan atur Rows per page 100
-38. Buka Detail user `Doni Kurniawan`
-39. Verifikasi Detail user `Doni Kurniawan` menampilkan nama `Doni Kurniawan`
-40. Verifikasi Detail user `Doni Kurniawan` tidak menampilkan Custom Field Shift selama field nonaktif
-41. Admin kedua Client E (sesi API) mengaktifkan kembali Custom Field `Shift` hingga tersimpan
-42. Muat ulang Detail user `Doni Kurniawan` (`F5`)
-43. Verifikasi Detail user `Doni Kurniawan` menampilkan Custom Field Shift bernilai `Pagi`
-44. Pulihkan: hapus 8 user hasil commit dari Client E, reset hasil commit terakhir dan Banner Hasil Commit
+29. Seed draft D-54 lewat skrip seed, lalu buka Import > User Login
+30. Admin kedua Client E (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan
+31. Tekan `F5` pada halaman Import > User Login
+32. Verifikasi kolom Shift tampil tanpa lencana dengan nilai tersimpan
+33. Verifikasi Banner Custom Field Deactivated tampil
+34. Verifikasi Staging Metric Cards: Ready to Import 8, Errors 0
+35. Klik `[Import (8)]`
+36. Tunggu aksi selesai (permintaan mendapat respons)
+37. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+38. Verifikasi Banner Hasil Commit bertone success: "Success, record has been imported. Duplicate records were ignored." dan halaman kembali ke Dropzone tanpa baris error
+39. Buka halaman User > User List > Login User dan atur Rows per page 100
+40. Buka Detail user `Doni Kurniawan`
+41. Verifikasi Detail user `Doni Kurniawan` menampilkan nama `Doni Kurniawan`
+42. Verifikasi Detail user `Doni Kurniawan` tidak menampilkan Custom Field Shift selama field nonaktif
+43. Admin kedua Client E (sesi API) mengaktifkan kembali Custom Field `Shift` hingga tersimpan
+44. Muat ulang Detail user `Doni Kurniawan` (`F5`)
+45. Verifikasi Detail user `Doni Kurniawan` menampilkan Custom Field Shift bernilai `Pagi`
+46. Pulihkan: hapus 8 user hasil commit dari Client E, reset hasil commit terakhir dan Banner Hasil Commit
 
 ### Custom Field dihapus sebelum Import (TC-GS-IMPORT-802)
 
-45. Seed draft D-54 lewat skrip seed, lalu buka Import > User Login
-46. Admin kedua Client E (sesi API) menghapus Custom Field `Shift` hingga tersimpan (halaman Import tidak dimuat ulang)
-47. Klik `[Import (8)]`
-48. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-49. Verifikasi Banner Hasil Commit bertone success: "Success, record has been imported. Duplicate records were ignored." dan halaman kembali ke Dropzone tanpa baris error
-50. Buka halaman User > User List > Login User dan atur Rows per page 100
-51. Verifikasi daftar Login User memuat 8 user baru: Rizky Pratama, Sinta Maharani, Doni Kurniawan, Eka Putri, Fajar Hidayat, Gita Savitri, Hendra Gunawan, dan Indah Permata
-52. Buka Detail user `Rizky Pratama`
-53. Verifikasi Detail user `Rizky Pratama` menampilkan nama `Rizky Pratama`
-54. Verifikasi Detail user `Rizky Pratama` tidak menampilkan Custom Field Shift
-55. Verifikasi Detail user `Rizky Pratama` tidak menampilkan nilai `Siang`
-56. Pulihkan: Admin kedua membuat ulang Custom Field `Shift` (Dropdown Pagi/Siang/Malam, Optional, Active), hapus 8 user hasil commit dari Client E, reset hasil commit terakhir dan Banner Hasil Commit
+47. Seed draft D-54 lewat skrip seed, lalu buka Import > User Login
+48. Admin kedua Client E (sesi API) menghapus Custom Field `Shift` hingga tersimpan (halaman Import tidak dimuat ulang)
+49. Klik `[Import (8)]`
+50. Tunggu aksi selesai (permintaan mendapat respons)
+51. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+52. Verifikasi Banner Hasil Commit bertone success: "Success, record has been imported. Duplicate records were ignored." dan halaman kembali ke Dropzone tanpa baris error
+53. Buka halaman User > User List > Login User dan atur Rows per page 100
+54. Verifikasi daftar Login User memuat 8 user baru: Rizky Pratama, Sinta Maharani, Doni Kurniawan, Eka Putri, Fajar Hidayat, Gita Savitri, Hendra Gunawan, dan Indah Permata
+55. Buka Detail user `Rizky Pratama`
+56. Verifikasi Detail user `Rizky Pratama` menampilkan nama `Rizky Pratama`
+57. Verifikasi Detail user `Rizky Pratama` tidak menampilkan Custom Field Shift
+58. Verifikasi Detail user `Rizky Pratama` tidak menampilkan nilai `Siang`
+59. Pulihkan: Admin kedua membuat ulang Custom Field `Shift` (Dropdown Pagi/Siang/Malam, Optional, Active), hapus 8 user hasil commit dari Client E, reset hasil commit terakhir dan Banner Hasil Commit
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Panjang spec: 56 langkah, di atas 35 langkah. Alasan: empat blok berdiri sendiri (satu blok baca master data, tiga blok commit User Login dengan pola sama: seed draft, mutasi Custom Field lewat sesi API, commit, tunggu worker, baca daftar dan Detail user) pada satu client dan satu akun; tiap blok dipulihkan eksplisit (langkah 27, 44, 56), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Panjang spec: 59 langkah, di atas 35 langkah. Alasan: empat blok berdiri sendiri (satu blok baca master data, tiga blok commit User Login dengan pola sama: seed draft, mutasi Custom Field lewat sesi API, commit, tunggu worker, baca daftar dan Detail user) pada satu client dan satu akun; tiap blok dipulihkan eksplisit (langkah 28, 46, 59), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - P-2: Admin kedua hanya memicu perubahan status Custom Field lewat sesi API; hasil diasersi hanya di sesi admin pertama.
-- Langkah pemulihan (27, 44, 56) adalah aksi tanpa `Verifikasi` (S-09); hook `after` adalah cadangan. Langkah 1 (reset Client E dan seed D-50 serta D-53) adalah langkah pembuka penghubung (S-03). Langkah 22, 39, dan 53 (nama user tampil) adalah anchor positif untuk asersi absence Custom Field Shift pada Detail user (bagian 8b butir 2, S-03). Langkah 11 menutup form Create User yang dibuka untuk asersi dropdown dan tidak punya isi dirty.
+- Langkah 15, 36, dan 50 (Tunggu aksi selesai, permintaan mendapat respons) adalah langkah penghubung tanpa `Verifikasi` sesudah klik `[Import (8)]` (D-1) sebelum polling.
+- Langkah pemulihan (28, 46, 59) adalah aksi tanpa `Verifikasi` (S-09); hook `after` adalah cadangan. Langkah 1 (reset Client E dan seed D-50 serta D-53) adalah langkah pembuka penghubung (S-03). Langkah 23, 41, dan 56 (nama user tampil) adalah anchor positif untuk asersi absence Custom Field Shift pada Detail user (bagian 8b butir 2, S-03). Langkah 11 menutup form Create User yang dibuka untuk asersi dropdown dan tidak punya isi dirty.
 - Urutan 528, 801, 954, 802 menempatkan penghapusan Custom Field (TC-802) paling akhir; nomor TC di sourceTc tetap (S-05).
 - Temuan untuk QA:
   - TC-GS-IMPORT-528 mensyaratkan commit Brand dan Division selesai (D-50 dan D-53) tanpa langkah penyiapannya; spec menyiapkan record hasil commit lewat skrip seed (dependensi TC-GS-IMPORT-352 dan 355 tidak disalin utuh karena hanya state hasilnya yang dibutuhkan).

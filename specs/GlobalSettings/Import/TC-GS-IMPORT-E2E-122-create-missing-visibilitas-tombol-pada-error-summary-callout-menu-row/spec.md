@@ -107,7 +107,7 @@ Draft pada langkah 9-10 dipakai ulang karena TC-GS-IMPORT-349 dan 734 memakai be
 54. Total Control Client C: muat ulang halaman Import > User Login
 55. Verifikasi kolom Shift tampil tanpa lencana
 56. Verifikasi Banner Custom Field Deactivated tampil
-57. Verifikasi baris #1 dan #2 tetap `error` karena nilai `Lembur` bukan opsi
+57. Verifikasi baris #1 dan #2 tetap `error`
 58. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "2 rows"
 59. Verifikasi baris pesan "Shift: Invalid option" tanpa tombol `[Create Missing Options]`
 60. Verifikasi Staging Metric Cards: Total Rows 3, Ready to Import 1, Errors 2

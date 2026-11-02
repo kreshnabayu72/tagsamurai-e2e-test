@@ -51,7 +51,7 @@ coverage:
 11. Perhatikan Modal Column Mapping
 12. Verifikasi dropdown Unit Name ter-auto-match ke kolom berkas `Unit Name`
 13. Verifikasi dropdown Symbol tetap "No Column" (header yang muncul lebih dari sekali tidak di-auto-match)
-14. Verifikasi tidak ada Error Banner karena Symbol atribut opsional
+14. Verifikasi tidak ada Error Banner
 15. Klik dropdown File Column untuk Symbol
 16. Perhatikan opsi bernama `Symbol` pada dropdown
 17. Verifikasi dropdown memuat dua opsi bernama `Symbol`: opsi pertama dengan teks sekunder `m` dan opsi kedua dengan teks sekunder `mtr`

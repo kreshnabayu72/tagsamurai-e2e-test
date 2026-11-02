@@ -51,11 +51,11 @@ coverage:
 4. Verifikasi baris #1 berstatus `error`
 5. Verifikasi Error Summary Callout memuat "Brand Name: Max. 120 characters"
 6. Verifikasi Error Summary Callout menampilkan badge "1 row"
-7. Verifikasi sel Brand Name baris #1 tidak menampilkan badge saran (anchor: baris #1 `error` dan Callout sudah tampil pada langkah 4 sampai 6)
+7. Verifikasi sel Brand Name baris #1 tidak menampilkan badge saran
 
 ### TC-GS-IMPORT-300: Field Symbol di luar daftar tidak memakai AI Field Shortening
 
-8. Atur mock layanan AI ke mode normal (D-40); reset draft Client C pada Tab Brand lewat skrip reset; buka Tab Measurement
+8. Atur mock layanan AI ke mode normal (D-40); reset draft Client C pada Tab Brand lewat skrip reset; muat ulang halaman Import > Measurement
 9. Klik [Upload File] di toolbar dan pilih berkas `measurement-symbol-11.csv`
 10. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 11. Verifikasi baris #1 berstatus `error`
@@ -66,7 +66,7 @@ coverage:
 
 ### TC-GS-IMPORT-698: Field Employee ID di luar daftar tidak memakai AI Field Shortening
 
-16. Reset draft Client C pada Tab Measurement lewat skrip reset; buka Tab User Login
+16. Reset draft Client C pada Tab Measurement lewat skrip reset; muat ulang halaman Import > User Login
 17. Klik [Upload File] di toolbar dan pilih berkas `ai-ul-empid-long.csv`
 18. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 19. Verifikasi baris #1 berstatus `error`
@@ -76,7 +76,7 @@ coverage:
 
 ### TC-GS-IMPORT-699: Field Code Division di luar daftar tidak memakai AI Field Shortening
 
-23. Reset draft Client C pada Tab User Login lewat skrip reset; buka Tab Division
+23. Reset draft Client C pada Tab User Login lewat skrip reset; muat ulang halaman Import > Division
 24. Klik [Upload File] di toolbar dan pilih berkas `ai-division-code-16.csv`
 25. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 26. Verifikasi baris #1 berstatus `error`
@@ -86,7 +86,7 @@ coverage:
 
 ### TC-GS-IMPORT-703: Respons AI dalam 3 detik tetap menampilkan badge saran
 
-30. Reset draft Client C pada Tab Division lewat skrip reset; buka Tab Brand; atur mock layanan AI ke mode tunda 3 detik (D-40)
+30. Reset draft Client C pada Tab Division lewat skrip reset; muat ulang halaman Import > Brand; atur mock layanan AI ke mode tunda 3 detik (D-40)
 31. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
 32. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 33. Tunggu 4 detik
@@ -107,7 +107,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
-- Subjudul `###` memetakan langkah ke id TC granular. Urutan TC diubah dari urutan ID menjadi 299, 300, 698, 699, 703, 866 supaya mode mock AI hanya berubah tiga kali (kosong, normal, tunda 3 detik); tidak ada TC yang bergantung pada TC lain.
+- Subjudul `###` memetakan langkah ke id TC granular. Urutan TC disusun 299, 300, 698, 699, 703, 866 supaya mode mock AI hanya berubah tiga kali (kosong, normal, tunda 3 detik); tidak ada TC yang bergantung pada TC lain.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 8, 16, 23, 30, dan 36 (atur mode mock, reset draft Client C, pindah Tab). Reset draft memenuhi Kontrak Fixture R1 sebelum tiap TC; langkah 33 dan 41 adalah jeda tunggu. Langkah 36 juga memuat ulang halaman Import > Brand sesudah reset karena halaman masih menampilkan draft blok sebelumnya.
 - Butir Expected c TC 866 ("permintaan per sel diajukan bersamaan") tidak punya langkah `Verifikasi` sendiri: hasil teramatinya adalah badge pada kedua sel (langkah 42 dan 43); sebab batas 5 detik per permintaan tidak teramati terpisah dan dicatat di Temuan untuk QA.
 - Spec melewati sekitar 35 langkah (43 langkah). Alasan: keenam blok berdiri sendiri, memakai satu kelas harness (mock AI Field Shortening) dan satu akun; kegagalan satu blok tidak membuat blok lain kehilangan makna, dan tiap blok punya draft serta Tab sendiri.
