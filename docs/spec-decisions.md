@@ -594,3 +594,12 @@ Aturan:
 - **Karena:** keputusan koordinator (didelegasikan owner) 2026-11-02, dicatat sebagai G21 di tagsamurai-slicing `plans/_program/gs-triage/ui-items.md`.
 - **Keputusan:** perilaku galeri in-page berlaku untuk gambar yang tidak tersedia: galeri menutup, toast T-13 tampil, dan daftar di-refetch. Tidak ada tab baru.
 - **Diterapkan di:** skrip File Manager 024 (sudah meng-assert perilaku ini, commit e0e7272f di feat/connect-api-b).
+
+## D-067 Klik backdrop tidak menutup modal Changelog (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-DIV-E2E-053` TC-GS-DIV-211 langkah 39–40.
+- **Spec meminta:** klik area gelap di luar modal menutup modal Changelog: Division.
+- **Kenyataannya:** modal Changelog tetap terbuka setelah klik backdrop. Spec lain untuk modal Changelog yang sama meminta hal sebaliknya dan lolos: `TC-GS-POS-E2E-038` TC-GS-POS-203 langkah 44–45 dan `TC-GS-FILEMGR-E2E-044` TC-GS-FILEMGR-174.
+- **Karena:** `prd-conventions.md` §9.10 Changelog Modal (l.1720): "**Klik backdrop (area di luar modal) tidak menutup modal** — menutup hanya lewat icon `[✕]` atau `Esc`." PRD division §5 Global Table Rules (l.672) merujuk modal "Changelog: Division" ke §9.10; §24.5 (l.2631) berlaku untuk semua modal. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah 40 memverifikasi modal Changelog tetap terbuka setelah klik backdrop, lalu modal ditutup lewat icon `[✕]`.
+- **Diterapkan di:** skrip Division 053 (TC-GS-DIV-211).
