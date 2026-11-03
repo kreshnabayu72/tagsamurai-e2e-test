@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -93,7 +93,6 @@ coverage:
 - Cara menemukan unit (langkah 19): tiap unit milik spec berada pada tepat satu baris Tab Available SKU `Fixture.tagStock.skuRfid`; barisnya ditemukan dengan menelusuri halaman Pagination dari halaman pertama sampai terakhir, bukan Search, sehingga seleksi ketiga unit bertahan lintas halaman (TC-AC-ACTS-842) dan tidak bergantung pada halaman tempat unit berada.
 - TC-AC-ACTS-476 (sesi Delete by Scan) ada di spec 261.
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-473 menyebut registrasi scan dan import GPS sebagai precondition tanpa langkah; spec memakai sesi seed fixture BE.
   - TC-AC-ACTS-474 dan 475 menyebut Modified By "pelaku" tanpa nama; spec mengasersi format `[First Name] [Last Initial]` milik akun aktor.
   - TC-AC-ACTS-477 Expected c ("Event Log adalah record sesi tersendiri, bukan tampilan Activity Log") bersifat konseptual dan tidak punya langkah observasi sendiri; dicakup oleh Expected a dan b.

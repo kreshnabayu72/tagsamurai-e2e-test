@@ -22,7 +22,6 @@ coverage:
 - Pengecualian atas hook suite: spec ini menguji Guided Tooltip sehingga mengatur flag `guided_tooltip_seen_ac-settings-group` sendiri sesudah hook (flag disetel belum `seen` sebelum tiap blok TC dan dipulihkan oleh hook `after` suite).
 - Kemampuan teknis: Fixture BE untuk membaca dan menyetel flag Guided Tooltip `guided_tooltip_seen_ac-settings-group` pada akun aktor; disediakan tim FE/BE (lihat `suite.md`).
 - State yang diubah spec: lebar jendela browser (TC-AC-SG-50, 1100px); dipulihkan ke 1440px pada langkah 15 dan di hook `after`.
-- Data Pre-setup (dibaca saja, tidak diubah): `Pohon Uji Utama` entitas Principal (#16, 14 group).
 - Data Dinamis: tidak ada; spec tidak membuat atau mengubah data sehingga tidak ada seeding, suffix `{runId}-013`, maupun cleanup.
 - Suite berjalan serial (`parallel: false`); spec ini tidak mengubah state global selain flag Guided Tooltip akun aktor yang dipulihkan hook suite.
 

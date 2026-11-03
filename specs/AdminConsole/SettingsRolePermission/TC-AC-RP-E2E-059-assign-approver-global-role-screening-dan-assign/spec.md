@@ -45,7 +45,7 @@ coverage:
 10. Verifikasi seluruh kandidat yang tampil berstatus `Active` pada kolom Status
 11. Verifikasi seluruh kandidat yang tampil ber-Activation Status `Activated`, termasuk pemegang Total Control
 12. Verifikasi daftar kandidat tidak memuat `Maya Putri`, `Yuni Lestari`, user Inactive (`Jane Smith`, `Teguh Santoso`), dan `Sarah Kimura`
-13. Verifikasi aktor `Siti Nurhaliza` muncul di daftar kandidat
+13. Verifikasi aktor `Siti Nurhaliza` tidak muncul di daftar kandidat pada seluruh halaman Pagination popup
 14. Klik `✕` pada popup
 
 ### TC-AC-RP-413: Aktor tidak muncul di picker Assign Approver
@@ -53,8 +53,8 @@ coverage:
 15. Klik "+ Assign" pada section Approvers
 16. Ketik Search `Alex Tan`, tekan Enter
 17. Verifikasi daftar kandidat memuat user Active berstatus Activated (mis. `Alex Tan`)
-18. Ganti isi kotak search dengan `Siti Nurhaliza` pada kolom Name, tekan Enter
-19. Verifikasi `Siti Nurhaliza` (aktor) tidak ada di daftar kandidat
+18. Ganti isi kotak search dengan `Siti Nurhaliza`, tekan Enter
+19. Verifikasi pada kolom Name `Siti Nurhaliza` (aktor) tidak ada di daftar kandidat
 20. Verifikasi empty state "No results found"
 21. Klik `✕` pada popup
 
@@ -84,11 +84,9 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular. Tanda "→" pada kolom Langkah Uji TC tidak diasersi; hanya kolom Expected Result yang menjadi `Verifikasi`.
 - Urutan TC di spec: 203, 413, 204, 205. Alasan: blok yang tidak mengubah data (screening dan pencarian) didahulukan sebelum Assign, dan ganti akun ke `Hendra Wijaya` diletakkan di akhir (S-10).
 - Langkah penghubung (S-03): langkah 14, 21 (tutup popup; popup picker ditutup `✕` tanpa dialog Unsaved Changes karena bukan form), 26 dan 35 (pemulihan baseline), 27 sampai 29 (ganti akun eksplisit, S-07), langkah 30 dan 31 (navigasi ke Role Detail), langkah 7 dan 8 (membuka Column Visibility dan mencentang Activation Status karena kolom itu tersembunyi default di picker, sehingga klausa Activation Status pada langkah 11 dapat diamati; keduanya diletakkan sebelum penelusuran halaman supaya satu penelusuran mencakup kolom Status dan Activation Status), langkah 9 (telusuri seluruh halaman Pagination popup dan amati seluruh baris kandidat sebelum asersi kandidat langkah 10 sampai 13; picker berpaginasi bawaan 10 baris, R-22, pola spec 045), langkah 16 (Search `Alex Tan` untuk menemukan kandidat target langkah 17, R-16) dan langkah 18 (ganti isi kotak search, bagian 8b butir 9).
-- Asersi tambahan (S-03): langkah 6 memverifikasi sedikitnya satu kandidat tampil sebagai pembanding positif sebelum asersi universal dan absence (langkah 10, 11, dan 12; bagian 8b butir 2); langkah 10 memverifikasi kolom Status dan langkah 11 kolom Activation Status sebagai dua klausa Expected b yang dipecah sesuai kolom yang teramati.
-- Search (R-16): langkah 18 mencari target absence `Siti Nurhaliza` pada kolom Name; langkah 17 (`Alex Tan` tampil pada hasil Search di popup yang sama) dan empty state "No results found" menjadi anchor positif asersi absence langkah 19 (bagian 8b butir 2).
+- Asersi tambahan (S-03): langkah 6 memverifikasi sedikitnya satu kandidat tampil sebagai pembanding positif sebelum asersi universal dan absence (langkah 10, 11, 12, dan 13; bagian 8b butir 2); langkah 10 memverifikasi kolom Status dan langkah 11 kolom Activation Status sebagai dua klausa Expected b yang dipecah sesuai kolom yang teramati.
+- Search (R-16): langkah 18 mencari target absence `Siti Nurhaliza` dan langkah 19 membaca hasilnya pada kolom Name; langkah 17 (`Alex Tan` tampil pada hasil Search di popup yang sama) dan empty state "No results found" menjadi anchor positif asersi absence langkah 19 (bagian 8b butir 2).
 - Temuan untuk QA:
-  - TC-AC-RP-203 Expected c menyatakan aktor `Siti Nurhaliza` muncul di daftar kandidat, sedangkan TC-AC-RP-413 dan TC-AC-RP-437 menyatakan aktor tidak muncul di picker Assign (PRD §9.5). Kedua klaim bertentangan untuk popup Assign Approver yang sama; spec mengikuti masing-masing TC (langkah 13 dan langkah 19) sehingga salah satunya akan gagal sampai TC dikoreksi.
-  - TC-AC-RP-413 Langkah 5 (langkah 18 spec) menyebut "pada kolom Name" tanpa selektor kolom: Search di popup picker mencakup Name, Email, Position, Division, dan Status sekaligus. Spec mengetik nilai di kotak search lalu membaca hasilnya pada kolom Name; mohon konfirmasi maksud frasa tersebut.
   - TC-AC-RP-203 Expected b menyebut "pemegang Total Control" tanpa nama; spec memverifikasi secara generik.
   - Daftar kandidat berpaginasi (ukuran halaman bawaan 10); TC-AC-RP-203 Expected b tidak menyebut Search atau halaman, sehingga spec menelusuri seluruh halaman Pagination popup (langkah 9) sebelum asersi kandidat langkah 10 sampai 13.
   - TC memakai user Pre-setup literal (`Alex Tan`) sebagai target Assign dan tidak memberi Data Dinamis bersuffix; pemulihan lewat "automation baseline" tidak didefinisikan mekanismenya di TC, PRD, atau LLD (S-13); ditulis sebagai kemampuan yang disediakan tim FE/BE.

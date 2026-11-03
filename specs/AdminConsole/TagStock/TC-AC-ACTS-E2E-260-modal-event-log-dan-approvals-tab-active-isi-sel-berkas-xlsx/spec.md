@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -81,6 +81,5 @@ coverage:
 - Beberapa TC berurutan memakai satu pembukaan halaman atau modal dengan state yang dibersihkan di antaranya (halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - Spec ini memuat asersi isi berkas (kelas f) saja; nama berkas dan ekstensi diasersi di spec 236 (TC-AC-ACTS-514 dan 515), 244 (TC-AC-ACTS-924 dan 925), dan 258 (TC-AC-ACTS-607 dan 608).
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-516, 926, dan 609 tidak menyebut format tanggal General Settings yang dipakai; spec mengasersi bahwa kolom tanggal mengikuti General Settings tanpa nilai literal.
   - TC-AC-ACTS-609 Expected b menyebut baris Client BYO tanpa SKU ditulis `[Device Name] (-)`, sedangkan TC-AC-ACTS-568 menampilkannya sebagai `(—)` di UI; spec mengikuti rumusan masing-masing TC.

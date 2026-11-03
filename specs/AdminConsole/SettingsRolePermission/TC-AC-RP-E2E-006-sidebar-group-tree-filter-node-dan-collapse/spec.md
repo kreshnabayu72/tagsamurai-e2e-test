@@ -34,7 +34,7 @@ coverage:
 1. Klik tab `Group Manager`
 2. Klik node `Region Jawa` pada Sidebar Group Tree
 3. Verifikasi node `Region Jawa` di-highlight
-4. Verifikasi tabel hanya menampilkan baris `Fajar Nugroho` — `Region Jawa` dan `Jane Smith` — `Region Jawa`
+4. Verifikasi tabel hanya menampilkan baris `Fajar Nugroho` — `Region Jawa` dan `Jane Smith` — `Region Jawa`, dan baris `Fajar Nugroho` — `Sumatera` tidak tampil
 5. Verifikasi kolom Group tetap tampil
 
 ### TC-AC-RP-23: Node tanpa GM langsung tampil kosong walau ancestor punya GM
@@ -81,6 +81,7 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Ganti akun eksplisit pada langkah 20 karena TC-AC-RP-26 mensyaratkan aktor Default User sedangkan TC-AC-RP-22 sampai TC-AC-RP-25 mensyaratkan Total Control; TC-AC-RP-26 ditaruh di akhir spec agar ganti akun hanya sekali (S-10). Langkah login dan pembukaan halaman sesudahnya adalah langkah penghubung ganti akun (S-07).
 - Langkah penghubung tanpa awalan Verifikasi (S-03): langkah 31 menutup overlay row action, dan klik `(←)` pada Search sebelumnya mengosongkan Search sebagai pengganti frasa "Kosongkan Search" (R-16, 8b butir 9). Search "Bambang" pada TC-AC-RP-26 adalah langkah TC sumber.
+- Klausa "hanya" pada langkah 4 mengasersi dua baris `Region Jawa` tampil dan baris `Fajar Nugroho` — `Sumatera` tidak tampil; baris itu adalah pembanding yang dijamin ada oleh Pre-setup #14 (8b butir 2).
 - Verifikasi tabel Tab Group Manager menampilkan sedikitnya satu baris (langkah 24) adalah anchor positif untuk absence baris Default User, Total Control, dan Read Only (8b butir 2); "No results found" dari Search juga menjadi anchor yang sah.
 - Urutan TC-AC-RP-22 sampai TC-AC-RP-25 mengikuti TC sumber; node aktif dibawa antar TC (Region Jawa, Jakarta, Sumatera) dan dikembalikan ke "All Groups" pada TC-AC-RP-24 sebelum TC-AC-RP-25 (S-09).
 - Temuan untuk QA:

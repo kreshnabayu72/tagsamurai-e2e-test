@@ -21,7 +21,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Dinamis (Tabel Data Uji Dinamis #5) pada SKU `RFID-ASSET-CORE-R5` (Pre-setup #12): unit uji hapus milik spec, di-seed di hook `before` (idempoten) dan dipulihkan fixture BE di hook `after`: Available U1 (`TAG-4F7K2XQ9`), U2, U3; Damaged/Missing U4; Combined C1; Existing Record Subject Register Duplicate pending P1; Waiting for Approval W1 (tidak tampil di Tab Available, Subject ada di Approvals); In Use I1; pada SKU `NFC-CARD-BETA-N2` (Pre-setup #13): Available X1. Identifier unit tetap (tidak bersuffix `{runId}`; S-12): seeding idempoten, pemulihan lewat fixture BE sebelum spec ini, suite serial.
@@ -106,7 +106,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), `[Cancel]` dan `[OK]` dialog, pembukaan dan penutupan menu aksi, "Atur saldo Stock Ledger" dan pemulihannya lewat fixture BE, navigasi ke Activity Log, dan "Muat ulang halaman" sesudah Subject di-approve. Urutan TC: 360, 363, 364, 366, 368, 369, 367; TC-AC-ACTS-367 diletakkan terakhir karena menghapus unit P1 pada bagiannya (aksi menghapus data di akhir).
 - P-1: bagian "tidak ada log baru" TC-AC-ACTS-369 diasersi sebagai jumlah entri Activity Log sama dengan baseline di spec ini karena bergantung pada state saldo Stock Ledger 0 yang dibangun fixture BE sebelum aksi TC yang sama; tidak ada spec absence untuk TC itu.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Identifier dan hitungan tetap (Data Uji Dinamis) dipakai ulang lintas TC dan tidak dapat bersuffix per run; kebenaran hitungan hanya terjamin bila fixture BE mereset dataset sebelum spec.
   - Langkah Uji TC-AC-ACTS-363 nomor 1 menyebut "Klik (⋯) > Delete" tanpa menyebut unit; spec memakai unit U1.
   - TC-AC-ACTS-368 menyebut "Klik `[Delete]` pada unit itu" tanpa langkah membuka menu aksi; spec membuka (⋯) > `Delete`. Pre-setup dan Dinamis TC tidak mendaftar unit Combined sekaligus Existing Record (CP); unit itu dari seeding. Precondition TC-AC-ACTS-368 menyebut unit target berstatus Available, sehingga toast `T-17` tidak boleh tampil.

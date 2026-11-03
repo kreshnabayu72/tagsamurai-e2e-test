@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Kemampuan teknis: Fixture BE (seeding idempoten dan pemulihan SKU, unit, Subject, saldo Stock Ledger, dan sesi log) serta pembacaan state BE yang tidak terlihat di UI disediakan tim FE/BE tanpa endpoint karangan (lihat `suite.md`).
@@ -86,7 +86,6 @@ coverage:
 - Alasan di atas smell ~35 langkah: seluruh blok satu topik (Detail SKU, satu SKU dan satu dataset); tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal. Langkah pembukaan Detail SKU dan pemulihan state diulang per blok.
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), navigasi sidebar yang mereset state, Search `tag-4f` dan `maju` (R-16), "Reset dataset", dan pembukaan Detail SKU lain. Urutan TC: 795, 787, 801, 789; aksi menghapus data (TC-AC-ACTS-789) di akhir (prinsip 5).
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - TC-AC-ACTS-787 dan 801 mensyaratkan >= 11 unit Available ber-TAG Code `TAG-4F` dan >= 11 unit In Use milik Client `PT Maju Bersama` (cocok Search `maju`); Pre-setup dan Dinamis TC tidak mendaftarnya, sehingga dari seeding spec.
   - TC-AC-ACTS-787 Expected butir a-c menyebut state "Search, Filter, Sort, halaman, dan jumlah baris" dalam satu butir; spec mengasersi tiap tab dalam satu Verifikasi karena TC menyebut daftarnya utuh.
   - Langkah Uji TC-AC-ACTS-789 nomor 3 "untuk SKU yang hanya punya satu unit" memakai SKU lain tanpa menyebutnya; spec memakai `RFID-SEAL-DELTA-R1` (Pre-setup #16) dengan satu unit seeding.

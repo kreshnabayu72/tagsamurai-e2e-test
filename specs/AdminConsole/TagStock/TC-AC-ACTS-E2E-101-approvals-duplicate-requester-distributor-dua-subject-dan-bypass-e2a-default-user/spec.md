@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Akun ganti di tengah spec: Default User `defaultUser_automated_{namaCompany}@qwertysystem.net` (Pre-setup #2), password dari `Spectra.env.AC_DU_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Akun ganti di tengah spec: Distributor Toggle ON (Local Registration aktif; jalur approval normal tanpa bypass E2a) `distributorOn_automated_{namaCompany}@qwertysystem.net` (Pre-setup #9), password dari `Spectra.env.AC_DIST_ON_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Halaman awal: halaman Add Stock SKU `RFID-ASSET-CORE-R5` (dari Stock List lewat row action Add Stock), dibuka oleh hook `beforeEach` suite.
@@ -81,7 +81,7 @@ coverage:
 39. Verifikasi sidebar Distributor memuat menu TAG
 40. Verifikasi sidebar Distributor tidak memuat menu Approvals
 41. Ganti akun: klik Logout
-42. Login sebagai Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`)
+42. Login sebagai Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`)
 43. Buka Approvals > TAG Stock > Tab Active
 44. Verifikasi jumlah Subject Tab Active bertambah tepat 1 terhadap baseline, dengan Requested By `[Entity Name] (Distributor)`
 

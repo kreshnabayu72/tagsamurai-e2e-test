@@ -15,7 +15,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (TAG > Stock lewat sidebar). Hook `after` mengembalikan sesi ke akun default suite (Total Control). Tidak ada ganti akun di tengah spec.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -52,5 +52,4 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 (mencatat baseline Total Registered sebelum scan, S-12), langkah 2 dan 3 (Search SKU untuk menemukan baris target, R-16, dan membuka halaman Add Stock), langkah 5 sampai 7 (sesi scan), langkah 12 (membuka modal Event Log), dan langkah 14 (menutup modal Event Log, S-09).
 - Asersi tambahan di luar Expected TC (S-03): langkah 15 (Total Registered bertambah 1.001) mengonfirmasi unit tercatat sejumlah Success `1.001` di Event Log (Expected c) dengan baseline langkah 1; langkah 9 (counter) adalah Expected b TC.
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun perlu dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-732 langkah 4 menyebut membuka Detail SKU > `[Event Log]` (Tab Add Stock) tanpa menyebut cara; spec memakai icon `[Event Log]` di toolbar Tab Available setelah Submit sukses kembali ke Detail SKU. Format angka `1.001` di counter widget mengikuti TC.

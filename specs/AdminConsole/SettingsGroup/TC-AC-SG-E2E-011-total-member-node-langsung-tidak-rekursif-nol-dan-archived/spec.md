@@ -20,7 +20,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor pertama (TC-AC-SG-41, 42, 44): Total Control Principal (Pre-setup #1) `totalControlGroup_automated_{namaCompany}@qwertysystem.net` (nama tampil `Budi Santoso`), password `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Akun aktor kedua (TC-AC-SG-43): Total Control `Distributor Hapus Utama` (Pre-setup #21) `totalControlDistHapus_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_SG_HAPUS_PASSWORD`; dipakai lewat langkah ganti akun. Hook `after` mengembalikan sesi ke akun default suite.
-- Nama env `AC_SG_HAPUS_PASSWORD` baru dan perlu didaftarkan di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example` oleh pemilik repo (lihat `suite.md`).
+- Nama env `AC_SG_HAPUS_PASSWORD`: pendaftaran mengikuti `suite.md`.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-settings-group` disetel `seen` oleh hook suite untuk kedua akun UI (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Pre-setup (dibaca saja, tidak diubah): `Pohon Uji Utama` entitas Principal (#16) dengan Total Member per node (#19): `Region A` 4, `Branch 2` 3 (`Distributor Epsilon` Active, `Distributor Fajar` Suspended, `Distributor Gunawan` Active), `Region C` 1 (`Distributor Sigma` Active), `Finance Dept` 0; `Distributor Hapus Utama` (#21) dengan node `Hapus Arsip` yang menempel `Client Lama` berstatus Archived. Target aksi hanya dibaca; tidak ada yang diubah.
 - Data Dinamis: tidak ada; spec tidak membuat atau mengubah data sehingga tidak ada seeding, suffix `{runId}-011`, maupun cleanup.

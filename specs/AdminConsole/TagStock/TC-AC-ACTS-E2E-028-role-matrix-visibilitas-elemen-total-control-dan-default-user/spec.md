@@ -20,7 +20,7 @@ coverage:
 
 | Urutan | Role yang diuji | Email (Pre-setup) | Env var password |
 |---|---|---|---|
-| 1 | Total Control (#1) | `totalControl_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.AC_TC_PASSWORD` |
+| 1 | Total Control (#1) | `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.AC_TC_PASSWORD` |
 | 2 | Default User (#2) | `defaultUser_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.AC_DU_PASSWORD` |
 
 - Hook suite (flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen`, sesi API aktor, jaring pengaman dialog `beforeunload`, pemulihan flag) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali dinyatakan di bawah.

@@ -20,7 +20,7 @@ coverage:
 
 - Mode: FE+BE. Request langsung ke server pada TC-AC-ACTS-288 (klien HTTP, kelas a ringan, K-1).
 - Akun aktor: Additional Approver dengan capability Manage TAG stock Create `additionalApproverCreate_automated_{namaCompany}@qwertysystem.net` (Pre-setup #21), password dari `Spectra.env.AC_AA_CREATE_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
-- Akun ganti di tengah spec: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
+- Akun ganti di tengah spec: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Akun ganti di tengah spec: Additional Approver tanpa capability `additionalApprover_automated_{namaCompany}@qwertysystem.net` (Pre-setup #4), password dari `Spectra.env.AC_AA_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Halaman awal spec: Approvals > TAG Stock > Tab Active (dibuka langkah 1).
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
@@ -46,7 +46,7 @@ coverage:
 7. Verifikasi S1 tidak muncul sebagai baris
 8. Verifikasi S2 muncul dengan row action `Review`
 9. Ganti akun: klik Logout
-10. Login sebagai Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`)
+10. Login sebagai Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`)
 11. Buka Approvals > TAG Stock > Tab Active
 12. Cari S1 dan S2
 13. Verifikasi S1 dan S2 sama-sama muncul
@@ -58,7 +58,7 @@ coverage:
 16. Buka Approvals > TAG Stock > Tab Active dan cari S1b
 17. Verifikasi S1b tidak muncul di Tab Active
 18. Ganti akun: klik Logout
-19. Login sebagai Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`)
+19. Login sebagai Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`)
 20. Buka Approvals > TAG Stock > Tab Active, klik `Review` pada S1b
 21. Pilih Approve, klik `[Submit]`
 22. Tunggu aksi selesai (dialog Review tertutup)

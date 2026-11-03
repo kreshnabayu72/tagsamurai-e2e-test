@@ -21,7 +21,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Kemampuan teknis: Fixture BE (seeding idempoten dan pemulihan SKU, unit, Subject, saldo Stock Ledger, dan sesi log) serta pembacaan state BE yang tidak terlihat di UI disediakan tim FE/BE tanpa endpoint karangan (lihat `suite.md`).
@@ -93,7 +93,6 @@ coverage:
 - K-1: TC-AC-ACTS-359 berkelas a (request langsung) dengan Expected respons API; tetap FE+BE dan hanya mengasersi status respons dan state data (8b butir 1). TC itu satu-satunya objek uji ringan kelas a di spec ini (P-5 butir b).
 - Pembagian TC lintas spec: TC-AC-ACTS-240 dan 271 (Hidden untuk BLE dan GPS) dikumpulkan di spec ini bersama TC-AC-ACTS-355 sampai 359.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - TC-AC-ACTS-355 butir "satu-satunya aksi unit GPS ... adalah `[Delete]`" tidak punya langkah observasi di TC; spec menambah langkah membuka menu aksi unit GPS untuk mengasersinya.
   - TC-AC-ACTS-356 langkah "Telusuri semua halaman TAG > Stock" tidak menyebut halaman; spec menelusuri Stock List, Tab Available, Tab In Use, dan halaman Add Stock.
   - TC-AC-ACTS-358 menyebut Client melaporkan Damaged/Missing lewat FAMS atau Supply tanpa langkah pemicu; spec memakai pengirim event Condition yang disediakan tim FE/BE.

@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (TAG > Stock lewat sidebar). Hook `after` mengembalikan sesi ke akun default suite (Total Control). Tidak ada ganti akun di tengah spec.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -102,5 +102,4 @@ Langkah 32 sampai 33 diulang untuk setiap baris tabel "Page size" pada Prerequis
 - Perulangan bagian 8b butir 7: langkah 5 sampai 6, 19 sampai 20, dan 32 sampai 33 diulang untuk setiap baris tabel "Page size" (3 iterasi); parameter tiap iterasi ada di tabel itu pada Prerequisites, tanpa langkah bersyarat, dan `Verifikasi` tetap satu per klausa.
 - Langkah penghubung (S-03): langkah 13 (Search SKU untuk menemukan baris target di Stock List berisi 101 baris atau lebih, R-16), langkah 14 (row action `Detail`), dan langkah 27 (berpindah ke Tab `In Use`) menyiapkan halaman kerja; tidak ada `Verifikasi` karena hanya menyiapkan state.
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun perlu dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-66, 417, dan 463 langkah "Pilih 25 lalu 50 lalu 100" tidak menyebut Expected jumlah baris per pilihan; spec mengasersi jumlah baris mengikuti page size terpilih (Expected c). TC-AC-ACTS-66 Precondition b menyebut minimal 5 SKU sedangkan Test Data meminta minimal 101 baris; spec memakai 101 baris. TC-AC-ACTS-66 butir a menulis `Showing [From]–[To] of [Total] entries` sebagai pola; spec mengasersi pola tersebut.

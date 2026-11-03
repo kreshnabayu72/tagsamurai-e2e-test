@@ -50,7 +50,7 @@ coverage:
 18. Buka Activity Log Admin Console
 19. Verifikasi jumlah entri Activity Log bertambah dibanding baseline langkah 3
 20. Verifikasi entri baru ber-Modified By "Siti N"
-21. Buka Changelog: User milik `Rina Wijaya`
+21. Buka `Settings > User > Detail User` `Rina Wijaya` > Changelog: User
 22. Verifikasi jumlah entri bertambah dibanding baseline langkah 3
 23. Verifikasi memuat entri yang sama dengan Changelog Tab Total Control
 24. Pulihkan baseline: `Rina Wijaya` kembali Total Control dan D `Manage preload` tercentang

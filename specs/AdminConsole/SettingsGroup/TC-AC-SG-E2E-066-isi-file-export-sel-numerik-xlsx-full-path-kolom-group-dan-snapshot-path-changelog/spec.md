@@ -68,39 +68,44 @@ coverage:
 14. Klik ikon Download di toolbar modal
 15. Klik `Download as CSV`
 16. Verifikasi sel Group Name baris Delete `Branch 4` pada berkas CSV bernilai `Region B > Branch 4`
+17. Tutup Modal Changelog lewat `[✕]`
 
 ### TC-AC-SG-396: Rename group sesudah entri Changelog ditulis tidak mengubah snapshot full path entri lama
 
-17. Ganti akun: Logout, lalu login sebagai Total Control entitas `Distributor Race` (`totalControlRaceA_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.AC_SG_RACEA_PASSWORD`)
-18. Buka `Settings > Group` lewat sidebar navigasi
-19. Klik ikon `⋯` pada node `Race Induk {runId}-066` di sidebar, lalu klik `+ Add Subgroup`
-20. Ketik `Anak Snapshot {runId}-066` pada field nama group
-21. Klik `[Submit]`
-22. Tunggu aksi selesai (popup tertutup)
-23. Klik ikon `⋯` pada node `Race Induk {runId}-066` di sidebar, lalu klik `Edit`
-24. Ubah nama menjadi `Race Induk Baru {runId}-066`
-25. Klik `[Save]`
-26. Tunggu aksi selesai (popup tertutup)
-27. Klik ikon Changelog pada toolbar
-28. Ketik Search `Anak Snapshot {runId}-066` pada Modal `Changelog: Group`, tekan Enter
-29. Hover nilai Group Name pada baris Create `Anak Snapshot {runId}-066`
-30. Verifikasi tooltip entri Create menampilkan `Race Induk {runId}-066 > Anak Snapshot {runId}-066` (snapshot saat entri ditulis)
-31. Verifikasi tooltip tidak menampilkan `Race Induk Baru {runId}-066 > Anak Snapshot {runId}-066`
-32. Klik ikon Download di toolbar modal
-33. Klik `Download as CSV`
-34. Verifikasi sel Group Name baris Create `Anak Snapshot {runId}-066` pada berkas CSV bernilai `Race Induk {runId}-066 > Anak Snapshot {runId}-066`
-35. Ganti isi kotak search modal dengan `Race Induk Baru {runId}-066`, tekan Enter
-36. Verifikasi entri Edit tercatat Old Value `Race Induk {runId}-066` dan New Value `Race Induk Baru {runId}-066`
+18. Ganti akun: Logout, lalu login sebagai Total Control entitas `Distributor Race` (`totalControlRaceA_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.AC_SG_RACEA_PASSWORD`)
+19. Buka `Settings > Group` lewat sidebar navigasi
+20. Klik ikon `⋯` pada node `Race Induk {runId}-066` di sidebar, lalu klik `+ Add Subgroup`
+21. Ketik `Anak Snapshot {runId}-066` pada field nama group
+22. Klik `[Submit]`
+23. Tunggu aksi selesai (popup tertutup)
+24. Klik ikon `⋯` pada node `Race Induk {runId}-066` di sidebar, lalu klik `Edit`
+25. Ubah nama menjadi `Race Induk Baru {runId}-066`
+26. Klik `[Save]`
+27. Tunggu aksi selesai (popup tertutup)
+28. Klik ikon Changelog pada toolbar
+29. Ketik Search `Anak Snapshot {runId}-066` pada Modal `Changelog: Group`, tekan Enter
+30. Hover nilai Group Name pada baris Create `Anak Snapshot {runId}-066`
+31. Verifikasi tooltip entri Create menampilkan `Race Induk {runId}-066 > Anak Snapshot {runId}-066` (snapshot saat entri ditulis)
+32. Verifikasi tooltip tidak menampilkan `Race Induk Baru {runId}-066 > Anak Snapshot {runId}-066`
+33. Ganti isi kotak search modal dengan `Race Induk Baru {runId}-066`, tekan Enter
+34. Verifikasi entri Edit tercatat Old Value `Race Induk {runId}-066` dan New Value `Race Induk Baru {runId}-066`
+35. Ganti isi kotak search modal dengan `Anak Snapshot {runId}-066`, tekan Enter
+36. Klik ikon Download di toolbar modal
+37. Klik `Download as CSV`
+38. Verifikasi sel Group Name baris Create `Anak Snapshot {runId}-066` pada berkas CSV bernilai `Race Induk {runId}-066 > Anak Snapshot {runId}-066`
+39. Tutup Modal Changelog lewat `[✕]`
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 9 dan 18 (membuka halaman sesudah ganti akun; hook `beforeEach` suite hanya membuka halaman untuk akun pertama), langkah 11, 28, dan 35 (Search di modal untuk menemukan baris target, R-16 dan S-14), langkah 22 dan 26 (menunggu popup tertutup setelah `[Submit]` dan `[Save]` sebelum Changelog dibaca, R-04 dan bagian 8b butir 8).
-- Spec ini 36 langkah, di atas smell sekitar 35 langkah. Alasan: empat blok TC tentang isi file export dan snapshot path pada satu halaman; tiap blok memakai data dan akun sendiri sehingga kegagalan satu blok tidak menghilangkan makna blok lain, dan langkah ganti akun serta membuka halaman tidak dapat digabung.
-- Ganti akun pada langkah 8 dan 17 adalah langkah eksplisit (S-07); akun pertama login di hook `before`.
+- Langkah penghubung (S-03): langkah 9 dan 19 (membuka halaman sesudah ganti akun; hook `beforeEach` suite hanya membuka halaman untuk akun pertama), langkah 11, 29, dan 33 (Search di modal untuk menemukan baris target, R-16 dan S-14), langkah 23 dan 27 (menunggu popup tertutup setelah `[Submit]` dan `[Save]` sebelum Changelog dibaca, R-04 dan bagian 8b butir 8).
+- Langkah penghubung (S-03, S-09, S-14): langkah 17 dan 39 (menutup Modal Changelog lewat `[✕]` sebelum Ganti akun dan di akhir spec; modal dibuka langkah 10 dan 28) dan langkah 35 (Search ulang ke `Anak Snapshot {runId}-066` supaya Download CSV memuat entri Create, karena langkah 33 mengganti Search ke entri Edit).
+- P-10: TC-AC-SG-395 dan TC-AC-SG-396 (spec fungsional) memuat klausa isi berkas CSV dalam alur unduh yang sama dengan klausa UI. Klausa isi berkas diletakkan setelah seluruh klausa UI TC itu (TC-AC-SG-395: langkah 13 sebelum langkah 16; TC-AC-SG-396: langkah 31, 32, dan 34 sebelum langkah 38) dan `Verifikasi` isi berkas satu per klausa (S-01). Alur unduh tidak dapat dipisah dari asersi UI karena berkas yang diunduh adalah keadaan Modal Changelog yang sama (Search dan baris yang sedang tampil) yang diasersi klausa UI; spec kelas f terpisah akan mengulang ganti akun, pembuatan subgroup, dan rename.
+- Spec ini 39 langkah, di atas smell sekitar 35 langkah. Alasan: empat blok TC tentang isi file export dan snapshot path pada satu halaman; tiap blok memakai data dan akun sendiri sehingga kegagalan satu blok tidak menghilangkan makna blok lain, dan langkah ganti akun serta membuka halaman tidak dapat digabung.
+- Ganti akun pada langkah 8 dan 18 adalah langkah eksplisit (S-07); akun pertama login di hook `before`.
 - Nama group TC-AC-SG-396 (`Race Induk`, `Anak Snapshot`, `Race Induk Baru`) memakai suffix `{runId}-066` pada node milik spec dan teks asersi dibentuk dari nilai bersuffix yang sama (S-06, S-12); hook baseline tidak menghapus entri Changelog.
-- Langkah 31 (absence teks) didahului langkah 30 yang membuktikan tooltip menampilkan teks snapshot (8b butir 2).
+- Langkah 32 (absence teks) didahului langkah 31 yang membuktikan tooltip menampilkan teks snapshot (8b butir 2).
 - Temuan untuk QA:
   - TC-AC-SG-396: TC menyebut "Total Control entitas Distributor Race" tanpa memilih akun A atau B; spec memakai akun A (`totalControlRaceA`).
-  - TC-AC-SG-396: Expected c (entri Edit Old Value dan New Value) tidak memiliki langkah observasi di kolom Langkah Uji; spec menambah langkah 35 (Search entri Edit) berdasarkan Expected.
+  - TC-AC-SG-396: Expected c (entri Edit Old Value dan New Value) tidak memiliki langkah observasi di kolom Langkah Uji; spec menambah langkah 33 (Search entri Edit) berdasarkan Expected.
   - TC-AC-SG-395 dan TC-AC-SG-396: TC tidak menyebut nama kolom Changelog untuk jenis aksi (Create, Edit, Delete); baris target dikenali lewat Search dan teks Group Name.
   - TC-AC-SG-233: TC tidak menyebut baris atau sel yang dibaca tipenya; spec mengasersi tipe sel kolom Total User dan Total Member secara keseluruhan.

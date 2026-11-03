@@ -74,9 +74,9 @@ coverage:
 34. Verifikasi dialog tampil
 35. Verifikasi bullet nama pada dialog hanya memuat baris terpilih (`Hapus Member B1`, `Hapus Member B2`, `Hapus Member B3`), bukan group di luar node `Hapus Member B`
 36. Klik `[Cancel]` pada dialog
-37. Verifikasi dialog tertutup
-38. Verifikasi seluruh group tetap ada (`Hapus Member B1`, `Hapus Member B2`, `Hapus Member B3` masih tampil di tabel)
-39. Verifikasi tidak ada toast
+37. Verifikasi tidak ada toast
+38. Verifikasi dialog tertutup
+39. Verifikasi seluruh group tetap ada (`Hapus Member B1`, `Hapus Member B2`, `Hapus Member B3` masih tampil di tabel)
 40. Klik ikon `×` pada Bulk Actions Bar
 41. Klik node `All Groups` di sidebar
 
@@ -94,11 +94,11 @@ coverage:
 ## Notes
 
 - Langkah penghubung (S-03): langkah 1, 20, 26, dan 42 (Search untuk menemukan baris target, R-16); langkah 3, 9, 28 (reset Search); langkah 18 (menutup Filter Panel); langkah 19, 40, dan 49 (membersihkan seleksi, S-09); langkah 41 (kembali ke All Groups); langkah 45 (aksi TC `[Cancel]`).
-- Langkah 26: Search tetap menyaring tabel `Hapus Bulk` pada langkah 20 atau sudah kosong setelah klik node sidebar; langkah ditulis "Ganti isi kotak search" supaya benar pada kedua keadaan. Perilaku Search setelah klik node sidebar (bertahan atau direset) perlu dikonfirmasi tim FE.
 - Langkah 32 (`Verifikasi Bulk Actions Bar menampilkan "3 Groups selected"`) adalah asersi tambahan yang tidak ada di Expected TC-AC-SG-156: teks hitungan seleksi memperkuat bukti bahwa Select All hanya memilih tiga descendant `Hapus Member B` (selaras dengan teks "2 Groups selected" pada langkah 47 untuk TC-AC-SG-167), sehingga dipertahankan.
 - Langkah 30 mengikuti TC; "Select All (3 records)" memakai N = 3 dari seeding.
 - Langkah 15 dan 16 membersihkan Filter dengan `[Clear Field]` lalu `[Apply]`; Filter Panel tetap terbuka sesudah `[Apply]` dan ditutup di langkah 18.
 - Alasan di atas sekitar 35 langkah: satu halaman, satu komponen (Bulk Actions Bar), dan seluruh blok memakai seed Pre-setup #21 yang sama tanpa mengubah data; tiap blok TC berdiri sendiri dan berakhir dengan seleksi bersih, sehingga penggabungan menghemat login dan pembukaan halaman.
 - Temuan untuk QA:
+  - Langkah 26: PRD (ACSG-LOGIC-09e) hanya menyatakan Search lokal ke node terpilih dan tidak menyatakan apakah kotak search direset saat ganti node; spec mengasumsikan tidak direset (kotak masih berisi `Hapus Bulk` dari langkah 20 setelah klik node sidebar), perlu konfirmasi FE; langkah ditulis "Ganti isi kotak search dengan `Hapus Bulk`, tekan Enter" (bentuk deterministik, bagian 8b butir 9).
   - TC-AC-SG-154 langkah 3 "centang satu baris" di halaman 2 tidak menyebut baris tertentu; spec memilih baris pertama halaman 2.
   - Perilaku `(←)` pada kotak Search terhadap pagination diasumsikan mereset tabel ke halaman 1 sesuai bagian 8b butir 9.

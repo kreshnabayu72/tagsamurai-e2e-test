@@ -41,8 +41,8 @@ coverage:
 3. Pada Sesi B (API), hapus `Race Lain Satu {runId}-102` hingga terhapus
 4. Pada Sesi A, klik `[Submit]`
 5. Verifikasi popup Add Subgroup ditutup
-6. Verifikasi Sidebar Group Tree Sesi A di-refresh dan tidak memuat `Race Lain Satu {runId}-102`
-7. Verifikasi toast netral: "This group is no longer available."
+6. Verifikasi toast netral: "This group is no longer available."
+7. Verifikasi Sidebar Group Tree Sesi A di-refresh dan tidak memuat `Race Lain Satu {runId}-102`
 
 ### TC-AC-SG-386: Edit node yang sudah dihapus admin lain
 
@@ -51,8 +51,8 @@ coverage:
 10. Pada Sesi B (API), hapus `Race Lain Dua {runId}-102` hingga terhapus
 11. Pada Sesi A, klik `[Save]`
 12. Verifikasi popup Edit Group ditutup
-13. Verifikasi Sidebar Group Tree Sesi A di-refresh dan tidak memuat `Race Lain Dua {runId}-102`
-14. Verifikasi toast netral: "This group is no longer available."
+13. Verifikasi toast netral: "This group is no longer available."
+14. Verifikasi Sidebar Group Tree Sesi A di-refresh dan tidak memuat `Race Lain Dua {runId}-102`
 
 ### TC-AC-SG-387: Delete node yang sudah dihapus admin lain
 
@@ -86,7 +86,7 @@ coverage:
 ### TC-AC-SG-389: Seluruh item bulk sudah dihapus admin lain
 
 38. Pada Sesi A, tunggu toast lama hilang otomatis
-39. Pada Sesi A, ketik Search `{runId}-102`, tekan Enter
+39. Pada Sesi A, ganti isi kotak search dengan `{runId}-102`, tekan Enter
 40. Pada Sesi A, centang kolom Checkbox pada baris `Race Induk Anak Lima {runId}-102` dan `Race Lain Lima {runId}-102`
 41. Pada Sesi A, pilih `Bulk Action` > `Delete` pada Bulk Actions Bar sehingga dialog Delete Groups terbuka
 42. Pada Sesi B (API), hapus `Race Induk Anak Lima {runId}-102` dan `Race Lain Lima {runId}-102` hingga terhapus
@@ -98,7 +98,7 @@ coverage:
 
 - Kelas c (multi-konteks, dua admin). Sesi B hanya memicu penghapusan lewat sesi API dan seluruh hasil diasersi di Sesi A, sehingga konteks kedua UI tidak dipakai dan butir P-2 tidak diperlukan (bagian 3 prinsip 13, P-2 `[KEPUTUSAN 2026-10-30]`).
 - Langkah penghubung (S-03, R-16, tanpa `Verifikasi`): langkah 16, 26, 27, 38, dan 39 (Search untuk menemukan baris target atau menyiapkan seleksi, termasuk menunggu toast lama hilang agar toast berulang diasersi sebagai toast baru, R-12).
-- Absence (langkah 6, 13, 22, 23, 33, 34, 36, dan 45) didahului `Verifikasi` toast netral atau toast campuran pada surface yang sama sebagai anchor positif (respons server sudah diproses, bagian 8b butir 2).
+- Absence (langkah 7, 14, 22, 23, 33, 34, 36, dan 45) didahului `Verifikasi` toast netral atau toast campuran pada surface yang sama sebagai anchor positif (respons server sudah diproses, bagian 8b butir 2); pada TC-AC-SG-385 dan TC-AC-SG-386 toast netral (langkah 6 dan 13) ditaruh sebelum asersi tree.
 - P-1: klausa "tanpa entri log" pada TC-AC-SG-388 (langkah 36) bergantung pada state kontensi yang dibangun Sesi B pada langkah 30 dan tidak dapat diulang di spec absence; ditulis sebagai `Verifikasi` berbaseline nama bersuffix unik (S-05).
 - Alasan di atas sekitar 35 langkah: seluruh blok satu kelas harness (kelas c, dua admin pada satu entitas), berdiri sendiri, dan memakai node sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Pemisahan akan mengulang login dan seeding yang sama.
 - Hook `after` memulihkan pohon Distributor Race lewat Fixture BE.

@@ -70,6 +70,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16); langkah 11 (menutup overlay yang dibuka untuk asersi langkah 10); langkah 12 dan 15 (membersihkan seleksi dan Search, S-09); langkah 16 (memilih satu baris agar Bulk Actions Bar tampil); langkah 30 (membersihkan seleksi).
+- Langkah 18 (`Verifikasi Bulk Actions Bar menampilkan "24 Groups selected"`) dan langkah 27 ("10 Groups selected") adalah asersi tambahan yang hitungannya tidak tertulis di Expected TC-AC-SG-152 dan TC-AC-SG-153 (Expected hanya menyebut seluruh baris cocok lintas halaman dan hanya baris halaman 1): teks hitungan memperkuat bukti cakupan seleksi dan diturunkan dari N total 24 node serta ukuran halaman 10, sehingga dipertahankan.
 - Langkah 9 sampai 11 adalah tambahan untuk mengasersi overlay `Bulk Action` yang disebut Expected TC-AC-SG-151 butir b; TC tidak memberi langkah yang membuka overlay (S-03).
 - Temuan untuk QA:
   - TC-AC-SG-152 langkah 2 mengklik "Select All ([N] records)" tanpa menyebut baris yang dicentang lebih dulu; spec memilih satu baris pertama agar Bulk Actions Bar tampil.

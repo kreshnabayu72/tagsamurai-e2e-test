@@ -33,34 +33,36 @@ coverage:
 ### Blok akun Manage group Update + Delete: TC-AC-SG-71
 
 1. Verifikasi tombol `⋯` Show pada seluruh baris tabel dan seluruh node sidebar (seluruh tree, termasuk level 1)
-2. Klik ikon `⋯` pada baris group `Region A` di tabel
-3. Verifikasi Overlay Row Action hanya memuat "Edit", "Delete"
-4. Tutup Overlay Row Action dengan Esc
-5. Klik ikon `⋯` pada node `Region A` di sidebar
-6. Verifikasi Overlay Row Action node `Region A` (level 1) hanya memuat "Edit", "Delete"
-7. Tutup Overlay Row Action dengan Esc
-8. Klik ikon `⋯` pada node `Room 301` di sidebar
-9. Verifikasi Overlay Row Action node `Room 301` (level dalam) hanya memuat "Edit", "Delete", sama dengan level 1 dan baris tabel (tanpa state per node)
-10. Tutup Overlay Row Action dengan Esc
-11. Verifikasi `[+] Group` Hidden
-12. Verifikasi kolom Checkbox Show
-13. Verifikasi pohon penuh, Search sidebar, popup drill-down, Download, Changelog, dan ikon Column Visibility tetap Show
-14. Verifikasi seluruh 14 node tree tampil
+2. Ketik Search `Region A`, tekan Enter
+3. Klik ikon `⋯` pada baris group `Region A` di tabel
+4. Verifikasi Overlay Row Action hanya memuat "Edit", "Delete"
+5. Tutup Overlay Row Action dengan Esc
+6. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+7. Klik ikon `⋯` pada node `Region A` di sidebar
+8. Verifikasi Overlay Row Action node `Region A` (level 1) hanya memuat "Edit", "Delete"
+9. Tutup Overlay Row Action dengan Esc
+10. Klik ikon `⋯` pada node `Room 301` di sidebar
+11. Verifikasi Overlay Row Action node `Room 301` (level dalam) hanya memuat "Edit", "Delete", sama dengan level 1 dan baris tabel (tanpa state per node)
+12. Tutup Overlay Row Action dengan Esc
+13. Verifikasi `[+] Group` Hidden
+14. Verifikasi kolom Checkbox Show
+15. Verifikasi pohon penuh, Search sidebar, popup drill-down, Download, Changelog, dan ikon Column Visibility tetap Show
+16. Verifikasi seluruh 14 node tree tampil
 
 ### Blok akun Manage group tanpa capability mutasi: TC-AC-SG-72
 
-15. Ganti akun: logout, lalu login sebagai Manage group tanpa Create/Update/Delete (`manageGroupNone_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_SG_MGNONE_PASSWORD`)
-16. Buka halaman `Settings > Group` lewat sidebar
-17. Verifikasi tombol `⋯` Hidden pada baris tabel dan node sidebar (tidak dirender)
-18. Verifikasi `[+] Group` Hidden
-19. Verifikasi kolom Checkbox Hidden
-20. Verifikasi pohon penuh, Search sidebar, popup drill-down, Download, Changelog, dan ikon Column Visibility tetap Show
-21. Verifikasi seluruh 14 node tree tampil
+17. Ganti akun: logout, lalu login sebagai Manage group tanpa Create/Update/Delete (`manageGroupNone_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_SG_MGNONE_PASSWORD`)
+18. Buka halaman `Settings > Group` lewat sidebar
+19. Verifikasi tombol `⋯` Hidden pada baris tabel dan node sidebar (tidak dirender)
+20. Verifikasi `[+] Group` Hidden
+21. Verifikasi kolom Checkbox Hidden
+22. Verifikasi pohon penuh, Search sidebar, popup drill-down, Download, Changelog, dan ikon Column Visibility tetap Show
+23. Verifikasi seluruh 14 node tree tampil
 
 ## Notes
 
 - Spec ditulis per blok akun karena ganti akun menuntut Step eksplisit (akun pertama login di hook `before`).
-- Langkah penghubung (S-03): langkah 4, 7, dan 10 (menutup Overlay Row Action).
+- Langkah penghubung (S-03, R-16): langkah 2 (Search `Region A` untuk menemukan baris target karena tabel All Groups terbagi dua halaman), langkah 6 (klik `(←)` pada kotak Search sesudah overlay ditutup), langkah 5, 9, dan 12 (menutup Overlay Row Action).
 - Temuan untuk QA:
-  - TC-AC-SG-72 langkah 3 dan 4 meminta klik `⋯` pada baris dan node, sedangkan Expected menyatakan tombol `⋯` Hidden (tidak dirender); klik tidak dapat dilakukan sehingga spec hanya mengasersi Hidden.
+  - TC-AC-SG-72 langkah 3 (Search `Region A`) tidak ditulis di spec karena tidak ada tombol `⋯` yang dapat diklik; langkah 4 hanya meminta mengamati ikon `⋯` pada baris `Region A` serta node `Region A` dan `Room 301`, sedangkan Expected menyatakan tombol `⋯` Hidden (tidak dirender), sehingga spec hanya mengasersi Hidden (langkah 19).
   - Lihat juga catatan pada spec 019 mengenai Expected butir a "seluruh baris tabel" yang berlaku untuk TC-AC-SG-71.

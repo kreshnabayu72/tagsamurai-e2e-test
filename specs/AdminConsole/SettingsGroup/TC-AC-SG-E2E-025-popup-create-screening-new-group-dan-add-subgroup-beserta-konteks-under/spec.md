@@ -31,30 +31,32 @@ coverage:
 2. Verifikasi Header popup: Title "New Group" dan ikon close `[✕]`
 3. Verifikasi tidak ada konteks "Under:" pada popup
 4. Verifikasi Body: field Group Name kosong dengan placeholder "Enter group name"
-5. Verifikasi Footer: checkbox "Stay on this form after submitting" default tidak tercentang dan rata kanan, di atas baris tombol
-6. Verifikasi tombol `[Clear Field]` (varian teks) dan `[Submit]` (filled, success)
-7. Verifikasi tidak ada tombol `[Cancel]`
-8. Klik `[✕]` pada popup
+5. Verifikasi Footer: checkbox "Stay on this form after submitting" default tidak tercentang
+6. Verifikasi Footer: checkbox "Stay on this form after submitting" rata kanan, di atas baris tombol
+7. Verifikasi tombol `[Clear Field]` (varian teks) dan `[Submit]` (filled, success)
+8. Verifikasi tidak ada tombol `[Cancel]`
+9. Klik `[✕]` pada popup
 
 ### TC-AC-SG-79: Screening Popup Add Subgroup
 
-9. Klik ikon `⋯` pada baris group `Branch 1` di tabel
-10. Klik "+ Add Subgroup"
-11. Verifikasi Title popup "Add Subgroup" (tanpa nama parent di title)
-12. Verifikasi teks konteks di bawah title: "Under: Region A > Branch 1" (full path parent)
-13. Verifikasi field Group Name kosong dengan placeholder "Enter group name"
-14. Verifikasi checkbox "Stay on this form after submitting" tidak tercentang
-15. Verifikasi tombol `[Clear Field]` dan `[Submit]` tampil
-16. Klik `[✕]` pada popup
+10. Ketik Search `Branch 1`, tekan Enter
+11. Klik ikon `⋯` pada baris group `Branch 1` di tabel
+12. Klik "+ Add Subgroup"
+13. Verifikasi Title popup "Add Subgroup" (tanpa nama parent di title)
+14. Verifikasi teks konteks di bawah title: "Under: Region A > Branch 1" (full path parent)
+15. Verifikasi field Group Name kosong dengan placeholder "Enter group name"
+16. Verifikasi checkbox "Stay on this form after submitting" tidak tercentang
+17. Verifikasi tombol `[Clear Field]` dan `[Submit]` tampil
+18. Klik `[✕]` pada popup
+19. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ### TC-AC-SG-80: Konteks Under untuk subgroup di bawah group level 1
 
-17. Klik ikon `⋯` pada node `Region B` di sidebar, lalu pilih "+ Add Subgroup"
-18. Verifikasi konteks menampilkan "Under: Region B"
-19. Verifikasi Title popup "Add Subgroup"
-20. Klik `[✕]` pada popup
+20. Klik ikon `⋯` pada node `Region B` di sidebar, lalu pilih "+ Add Subgroup"
+21. Verifikasi konteks menampilkan "Under: Region B"
+22. Verifikasi Title popup "Add Subgroup"
+23. Klik `[✕]` pada popup
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 8, 16, dan 20 (menutup popup yang kosong; popup tanpa isian tertutup tanpa dialog Unsaved Changes).
-- Baris `Branch 1` pada langkah 9 dibaca dari halaman tabel All Groups; bila baris tidak berada pada halaman pertama, Search atas nama group dipakai sebagai langkah penghubung (R-16).
+- Langkah penghubung (S-03, R-16): langkah 10 (Search `Branch 1` untuk menemukan baris target karena tabel All Groups terbagi dua halaman), langkah 19 (klik `(←)` pada kotak Search sesudah popup ditutup), langkah 9, 18, dan 23 (menutup popup yang kosong; popup tanpa isian tertutup tanpa dialog Unsaved Changes).

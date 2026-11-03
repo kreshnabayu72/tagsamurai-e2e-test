@@ -20,7 +20,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Distributor Toggle ON (Pre-setup #9) `distributorOn_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_ON_PASSWORD`.
-- Akun aktor kedua (Ganti akun): Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor kedua (Ganti akun): Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Distributor Toggle ON; halaman dibuka hook `beforeEach` suite. Hook `after` memulihkan sesi ke Total Control.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - SKU Pre-setup #13 `NFC-CARD-BETA-N2` (Device Name `NFC Access Card`, Brand `Beta`, Model `N2`, TAG Type NFC).
@@ -90,7 +90,7 @@ coverage:
 33. Ketik Search `<UID TAG D kanonik>`, tekan Enter
 34. Verifikasi Approvals menampilkan identifier TAG D dalam bentuk kanonik (huruf kapital, tanpa pemisah)
 35. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
-36. Catat jumlah Subject pending dan jumlah entri `Add Stock` di Activity Log sebagai baseline sesudah TC-AC-ACTS-209 (lewat kemampuan baca BE)
+36. Catat jumlah Subject pending, jumlah entri `Add Stock` di Activity Log, dan jumlah baris Event Log SKU `NFC-CARD-BETA-N2` (Tab Add Stock) sebagai baseline sesudah TC-AC-ACTS-209 (lewat kemampuan baca BE)
 37. Ganti akun: Logout, login sebagai Distributor Toggle ON (`Spectra.env.AC_DIST_ON_PASSWORD`)
 38. Klik Breadcrumb `Stock`
 39. Ganti isi kotak search dengan `NFC-CARD-BETA-N2`, tekan Enter
@@ -110,16 +110,18 @@ coverage:
 50. Buka Approvals > TAG Stock > Tab Active
 51. Verifikasi jumlah Subject pending bertambah dua dari baseline sesudah TC-AC-ACTS-209 (langkah 36; dua Subject untuk TAG E dan TAG F)
 52. Buka modal Event Log SKU `NFC-CARD-BETA-N2` (Tab Add Stock)
-53. Verifikasi baris baru Activity `Add Stock` dengan Success `0` dan Waiting for Approval `2`
-54. Tutup modal Event Log
-55. Buka Activity Log
-56. Verifikasi jumlah entri `Add Stock` sama dengan baseline sesudah TC-AC-ACTS-209 (langkah 36; tidak ada entri `Add Stock` baru)
+53. Verifikasi jumlah baris Event Log bertambah satu dari baseline sesudah TC-AC-ACTS-209 (langkah 36)
+54. Verifikasi baris teratas Event Log (urutan default `Date` terbaru) adalah baris baru Activity `Add Stock` dengan Success `0` dan Waiting for Approval `2`
+55. Tutup modal Event Log
+56. Buka Activity Log
+57. Verifikasi jumlah entri `Add Stock` sama dengan baseline sesudah TC-AC-ACTS-209 (langkah 36; tidak ada entri `Add Stock` baru)
 
 ## Notes
 
 - Urutan TC dalam spec: 203, 204, 205, 209, 202 (dialog Partial Register yang tidak menulis data lebih dulu, Submit yang menulis data sesudahnya, S-10).
 - Langkah penghubung (S-03): langkah 2 dan 3 (membuka halaman Add Stock), pembukaan ulang halaman Add Stock sesudah Submit (Breadcrumb `Stock`, Search, row action `Add Stock`), `[Stop]`, Search di Approvals untuk menemukan Subject target (R-16), penutupan modal Event Log, dan pencatatan baseline. Hook `after` memulihkan sesi ke Total Control.
 - Angka Subject pending dan entri Activity Log pada TC-AC-ACTS-202 ditulis relatif terhadap baseline karena audit trail permanen (S-12); "tidak ada entri `Add Stock` baru" ditulis sebagai selisih nol dengan anchor baris Event Log baru, bukan kelas g.
+- Cara baca entri audit trail baru (S-12, S-14): jumlah dicatat sebelum aksi pemicu, selisihnya diverifikasi, lalu baris teratas urutan default `Date` terbaru dibaca; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya. Pada TC-AC-ACTS-202 baris Event Log baru dibaca setelah selisih satu dari baseline langkah 36.
 - Alasan di atas sekitar 35 langkah (8b butir 7): semua blok satu kelas harness (simulator NFC, akun Distributor Toggle ON) dan satu dataset; tiap blok berdiri sendiri.
 - Temuan untuk QA:
   - TC-AC-ACTS-205 "semuanya dalam satu transaksi" tidak punya langkah observasi; tidak diasersi.

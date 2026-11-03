@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -92,6 +92,5 @@ coverage:
 - Alasan di atas sekitar 35 langkah: spec ini 40 langkah dihitung dengan ekspansi; semua blok membaca Popup Detail dari sesi seed pada modal Event Log yang sama dan berdiri sendiri; jumlah langkah berasal dari `Verifikasi` per klausa Expected (S-01) dan langkah membuka atau menutup popup antar TC (S-09).
 - Penulisan sesi Delete Stock dan Add Stock (aksinya) diuji di spec 218 dan 261; spec ini hanya membaca isi Popup Detail dari sesi seed.
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-905 berjudul "kedua tab" tetapi langkah 6 (klik header kolom Actions) hanya satu kali; spec memeriksa header Actions pada kedua tab mengikuti judul.
   - TC-AC-ACTS-933 sampai 935 tidak menyebut penanda baris sesi yang dimaksud; spec mengenalinya dari kombinasi nilai kolom seed.

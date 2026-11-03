@@ -70,5 +70,5 @@ coverage:
 - Langkah penghubung (S-03): langkah 14 (membuka halaman setelah ganti akun). Langkah 1 dan 15 membuka Tab System yang dibutuhkan langkah berikutnya (S-14). Langkah 4, 6, 7, 9 (TC-AC-RP-88) dan 18, 20, 21, 23 (TC-AC-RP-94) membuka dan menutup overlay `⋯` baris `John Dohan` serta mencentang dan melepas satu baris agar row action `Remove` dan Bulk Action teramati (TC langkah 6 dan 7); baris target TC `John Dohan` (Pre-setup #15).
 - Temuan untuk QA:
   - TC-AC-RP-88 dan 94 menyebut langkah "Hover checkbox C baris `John Dohan`" tanpa Expected tooltip; Expected hanya menyatakan checkbox CRUD enabled sehingga tooltip tidak diasersi.
-  - Expected TC menyatakan checkbox C/U/D baris `John Dohan` enabled dan R tetap checked dan disabled (sejalan TC-AC-RP-73); spec mengasersi C, U, D, dan R sebagai Verifikasi terpisah.
+  - Expected TC menyatakan checkbox C/U/D baris `John Dohan` enabled dan R tetap checked dan disabled (sejalan TC-AC-RP-73); spec mengasersi C, U, dan D dalam satu `Verifikasi` dan R dalam `Verifikasi` lain.
   - Post Condition TC-AC-RP-88 dan 94 bernilai "-" sehingga tidak ada yang diasersi.

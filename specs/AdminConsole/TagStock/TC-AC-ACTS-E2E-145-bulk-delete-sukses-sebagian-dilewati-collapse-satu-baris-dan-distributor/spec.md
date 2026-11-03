@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Akun aktor kedua (Ganti akun): Distributor Toggle ON (Pre-setup #9) `distributorOn_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_ON_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -67,30 +67,32 @@ coverage:
 26. Buka Device Allocation > Stock Balance Summary Panel dan baca saldo entitas registrant
 27. Verifikasi saldo Stock Ledger sama dengan S dikurangi 3
 28. Buka Activity Log (filter Object `TAG Stock`)
-29. Verifikasi satu entri `Delete Stock` baru (Name `RFID-ASSET-CORE-R5 (RFID)`, Field `Quantity`, Old Value `3 TAGs`, New Value `—`)
-30. Verifikasi jumlah entri `Delete by Scan` sama dengan baseline
-31. Buka modal Event Log SKU (Tab Add Stock)
-32. Verifikasi satu baris baru Activity `Delete Stock` dengan Success `3`
-33. Tutup modal Event Log
+29. Verifikasi jumlah entri `Delete Stock` naik tepat 1 dari baseline
+30. Verifikasi entri `Delete Stock` teratas (urutan default `Date` terbaru): Name `RFID-ASSET-CORE-R5 (RFID)`, Field `Quantity`, Old Value `3 TAGs`, New Value `—`
+31. Verifikasi jumlah entri `Delete by Scan` sama dengan baseline
+32. Buka modal Event Log SKU (Tab Add Stock)
+33. Verifikasi jumlah baris Event Log naik tepat 1 dari baseline
+34. Verifikasi baris Event Log teratas (urutan default terbaru): Activity `Delete Stock` dengan Success `3`
+35. Tutup modal Event Log
 
 ### TC-AC-ACTS-852: Distributor, Bulk Delete atas unit stok sendiri berhasil
 
-34. Ganti akun: Logout, lalu login sebagai Distributor Toggle ON (`Spectra.env.AC_DIST_ON_PASSWORD`)
-35. Buka Stock List dan catat Total Registered SKU `RFID-ASSET-CORE-R5` milik Distributor (ND)
-36. Klik row action `Detail` pada SKU `RFID-ASSET-CORE-R5`, lalu buka Tab Available
-37. Centang D1 dan D2, pilih Bulk Action > `Delete`
-38. Klik `[Delete]`
-39. Verifikasi toast `Success, unit has been deleted.`
-40. Verifikasi D1 dan D2 tidak ada di tabel
-41. Buka Stock List dan baca Total Registered SKU `RFID-ASSET-CORE-R5`
-42. Verifikasi Total Registered Distributor sama dengan ND dikurangi 2
+36. Ganti akun: Logout, lalu login sebagai Distributor Toggle ON (`Spectra.env.AC_DIST_ON_PASSWORD`)
+37. Buka Stock List dan catat Total Registered SKU `RFID-ASSET-CORE-R5` milik Distributor (ND)
+38. Klik row action `Detail` pada SKU `RFID-ASSET-CORE-R5`, lalu buka Tab Available
+39. Centang D1 dan D2, pilih Bulk Action > `Delete`
+40. Klik `[Delete]`
+41. Verifikasi toast `Success, unit has been deleted.`
+42. Verifikasi D1 dan D2 tidak ada di tabel
+43. Buka Stock List dan baca Total Registered SKU `RFID-ASSET-CORE-R5`
+44. Verifikasi Total Registered Distributor sama dengan ND dikurangi 2
 
 ## Notes
 
 - Alasan di atas smell ~35 langkah: seluruh blok satu kelas harness (d, simulator reader) dengan satu dataset; tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal. Langkah penutup popup (`✕`, dialog Unsaved Changes, `[Leave]`) diulang per blok.
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), pembatalan seleksi, "Reset dataset", pencatatan baseline dan navigasi ke Stock List, Device Allocation, Activity Log, dan modal Event Log. Urutan TC: 844, 847, 846, 852; blok yang menghapus data (847, 846, 852) di akhir, dan TC-AC-ACTS-852 terakhir karena Ganti akun. Langkah "Tutup modal Event Log" menutup modal sebelum pindah surface atau ganti akun (pemulihan state, S-09).
+- Cara baca entri audit trail baru (S-12, S-14): jumlah entri dicatat sebelum aksi pemicu, selisihnya diverifikasi, lalu baris teratas urutan default `Date` terbaru dibaca; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya. Pada TC-AC-ACTS-846 selisih satu entri `Delete Stock` (Activity Log) dan satu baris Event Log, dibaca dari baris teratas setelah selisih terverifikasi.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Cara simulasi reader (scan, pemutusan koneksi) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE tanpa mekanisme karangan.
   - Identifier dan hitungan tetap (Data Uji Dinamis) dipakai ulang lintas TC dan tidak dapat bersuffix per run; kebenaran hitungan hanya terjamin bila fixture BE mereset dataset sebelum spec.
   - TC-AC-ACTS-846 Precondition "Total Registered = 10" dan Expected `7`; spec mengasersi relatif terhadap baseline (S-12).

@@ -21,7 +21,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Halaman awal: Detail SKU `RFID-ASSET-CORE-R5` > Tab Available (dibuka langkah 1).
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
 - Data milik spec disiapkan seeding fixture BE (disediakan tim FE/BE; keadaan dibentuk sebelum spec dan dipakai sebagai precondition TC, tidak diasersi): unit baru hasil Add Stock scan dengan Handheld Reader `HR-RFID-01` (TC-AC-ACTS-960; Data Pre-setup #25), unit GPS hasil Import pada `GPS-TRACK-CORE-G3` (TC-AC-ACTS-961), unit hasil bypass E2a (TC-AC-ACTS-962), unit hasil Approve Register Duplicate dengan Approval Note `OK, valid` (TC-AC-ACTS-963), unit In Use hasil Approve Activation Collision dari Client `PT Maju Bersama` (TC-AC-ACTS-964), Subject Register Duplicate yang sudah di-reject (TC-AC-ACTS-965), dan unit Waiting terkait Activation Collision yang tagnya dihapus Client (TC-AC-ACTS-966). Fixture `fixtures/tag-stock.json` belum ada dan dibuat di tahap script.

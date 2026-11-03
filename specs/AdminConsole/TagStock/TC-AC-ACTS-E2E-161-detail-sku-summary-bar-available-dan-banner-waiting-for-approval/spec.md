@@ -21,7 +21,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Kemampuan teknis: Fixture BE (seeding idempoten dan pemulihan SKU, unit, Subject, saldo Stock Ledger, dan sesi log) serta pembacaan state BE yang tidak terlihat di UI disediakan tim FE/BE tanpa endpoint karangan (lihat `suite.md`).
@@ -93,7 +93,6 @@ coverage:
 - Alasan di atas smell ~35 langkah: seluruh blok satu topik (Detail SKU, satu SKU dan satu dataset); tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal. Langkah pembukaan Detail SKU dan pemulihan state diulang per blok.
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), "Reset dataset", pemulihan Filter Status, navigasi ke Approvals dan kembali ke Detail SKU. Urutan TC: 891, 984, 988, 985, 986, 987, 892; aksi menghapus data (TC-AC-ACTS-892) di akhir spec.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun dikonfirmasi tim FE.
   - TC-AC-ACTS-891 mengasersi card `Total Registered` `12` dari dataset seeding (5+3+4) dan card Available terhadap jumlah baris berstatus Available; TC tidak menyebut cara menghitung baris (spec memakai Filter Status).
   - TC-AC-ACTS-892 Precondition "5 Available dan 3 Damaged/Missing" mengasersi Total Registered `7` dan `6` pada dataset tanpa unit In Use; angka mengikuti TC dan dataset di-reset sebelum blok.
   - TC-AC-ACTS-988 meminta "Subject pending SKU lain" tanpa menyebut SKU; spec memakai Subject pending seeding pada SKU lain.

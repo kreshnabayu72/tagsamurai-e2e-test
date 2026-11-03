@@ -19,7 +19,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE. Request langsung ke server lewat klien HTTP (kelas a, K-1).
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Akun ganti di tengah spec: Distributor dengan entitas Suspended `distributorSuspended_automated_{namaCompany}@qwertysystem.net` (Pre-setup #20), password dari `Spectra.env.AC_DIST_SUSP_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Akun ganti di tengah spec: Read Only `readOnly_automated_{namaCompany}@qwertysystem.net` (Pre-setup #3), password dari `Spectra.env.AC_RO_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Akun ganti di tengah spec: Manage TAG stock Read+Create `manageTagStockCreate_automated_{namaCompany}@qwertysystem.net` (Pre-setup #5), password dari `Spectra.env.AC_TS_CREATE_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.

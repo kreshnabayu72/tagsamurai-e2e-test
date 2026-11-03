@@ -21,7 +21,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Distributor Toggle ON (Pre-setup #9) `distributorOn_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_ON_PASSWORD`.
-- Akun aktor kedua (Ganti akun): Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor kedua (Ganti akun): Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Distributor Toggle ON; halaman dibuka hook `beforeEach` suite. Hook `after` memulihkan sesi ke Total Control.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - SKU Pre-setup #12 `RFID-ASSET-CORE-R5` (Device Name `RFID Asset Tag`, Brand `Core`, Model `R5`, TAG Type RFID).
@@ -87,7 +87,7 @@ coverage:
 25. Verifikasi halaman Detail SKU `RFID-ASSET-CORE-R5` Tab Available tampil
 26. Verifikasi dua unit OK (TAG A dan TAG B) memiliki TAG Code baru
 27. Verifikasi jumlah Subject pending bertambah satu dari baseline (satu Subject Waiting dibuat)
-28. Catat jumlah Subject pending dan jumlah entri `Add Stock` di Activity Log sebagai baseline sesudah TC-AC-ACTS-172 (lewat kemampuan baca BE)
+28. Catat jumlah Subject pending, jumlah entri `Add Stock` di Activity Log, dan jumlah baris Event Log SKU `RFID-ASSET-CORE-R5` (Tab Add Stock) sebagai baseline sesudah TC-AC-ACTS-172 (lewat kemampuan baca BE)
 29. Klik Breadcrumb `Stock`
 30. Ganti isi kotak search dengan `RFID-ASSET-CORE-R5`, tekan Enter
 31. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
@@ -106,30 +106,32 @@ coverage:
 41. Buka Approvals > TAG Stock > Tab Active
 42. Verifikasi jumlah Subject pending bertambah dua dari baseline sesudah TC-AC-ACTS-172 (langkah 28; dua Subject untuk TAG E dan TAG F)
 43. Buka modal Event Log SKU `RFID-ASSET-CORE-R5` (Tab Add Stock)
-44. Verifikasi baris baru Activity `Add Stock` dengan Success `0` dan Waiting for Approval `2`
-45. Tutup modal Event Log
-46. Buka Activity Log
-47. Verifikasi jumlah entri `Add Stock` sama dengan baseline sesudah TC-AC-ACTS-172 (langkah 28; tidak ada entri `Add Stock` baru)
-48. Ganti akun: Logout, login sebagai Distributor Toggle ON (`Spectra.env.AC_DIST_ON_PASSWORD`)
-49. Klik Breadcrumb `Stock`
-50. Ganti isi kotak search dengan `RFID-ASSET-CORE-R5`, tekan Enter
-51. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
+44. Verifikasi jumlah baris Event Log bertambah satu dari baseline sesudah TC-AC-ACTS-172 (langkah 28)
+45. Verifikasi baris teratas Event Log (urutan default `Date` terbaru) adalah baris baru Activity `Add Stock` dengan Success `0` dan Waiting for Approval `2`
+46. Tutup modal Event Log
+47. Buka Activity Log
+48. Verifikasi jumlah entri `Add Stock` sama dengan baseline sesudah TC-AC-ACTS-172 (langkah 28; tidak ada entri `Add Stock` baru)
+49. Ganti akun: Logout, login sebagai Distributor Toggle ON (`Spectra.env.AC_DIST_ON_PASSWORD`)
+50. Klik Breadcrumb `Stock`
+51. Ganti isi kotak search dengan `RFID-ASSET-CORE-R5`, tekan Enter
+52. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
 
 ### TC-AC-ACTS-746: Satu TAG cocok existing, toast bentuk tunggal
 
-52. Klik `[Add by Scan]`
-53. Scan TAG G
-54. Klik `[Stop]`
-55. Klik `[Submit]`
-56. Verifikasi tidak ada dialog `Partial Register`
-57. Verifikasi toast `Success, 1 TAG has been sent for approval.`
-58. Verifikasi halaman Detail SKU `RFID-ASSET-CORE-R5` Tab Available tampil
+53. Klik `[Add by Scan]`
+54. Scan TAG G
+55. Klik `[Stop]`
+56. Klik `[Submit]`
+57. Verifikasi tidak ada dialog `Partial Register`
+58. Verifikasi toast `Success, 1 TAG has been sent for approval.`
+59. Verifikasi halaman Detail SKU `RFID-ASSET-CORE-R5` Tab Available tampil
 
 ## Notes
 
 - Urutan TC dalam spec: 761, 170, 171, 172, 169, 746 (dialog Partial Register yang tidak menulis data lebih dulu pada satu sesi; Submit yang menulis data sesudahnya, S-10). Dari list 2 OK + 2 Waiting (TC-AC-ACTS-761) satu baris Waiting dikeluarkan lewat Remove agar menjadi list 2 OK + 1 Waiting (TC-AC-ACTS-170 sampai TC-AC-ACTS-172).
 - Langkah penghubung (S-03): langkah 2 dan 3 (membuka halaman Add Stock), pembukaan ulang halaman Add Stock sesudah Submit (Breadcrumb `Stock`, Search, row action `Add Stock`), `[Stop]`, `[Cancel]` dialog, Remove TAG D, penutupan modal Event Log, dan pencatatan baseline.
 - Catatan angka Subject pending dan entri Activity Log pada TC-AC-ACTS-169 ditulis relatif terhadap baseline karena audit trail permanen (S-12); kemampuan baca BE disediakan tim FE/BE.
+- Cara baca entri audit trail baru (S-12, S-14): jumlah dicatat sebelum aksi pemicu, selisihnya diverifikasi, lalu baris teratas urutan default `Date` terbaru dibaca; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya. Pada TC-AC-ACTS-169 baris Event Log baru dibaca setelah selisih satu dari baseline langkah 28.
 - Asersi "tidak ada entri `Add Stock` baru" TC-AC-ACTS-169 ditulis sebagai selisih jumlah nol dengan baseline dan anchor positif baris Event Log baru; bukan kelas g (bagian 3, asersi jumlah).
 - Alasan di atas sekitar 35 langkah (8b butir 7): semua blok satu kelas harness (simulator RFID, akun Distributor Toggle ON) dan satu dataset; tiap blok Submit berdiri sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:

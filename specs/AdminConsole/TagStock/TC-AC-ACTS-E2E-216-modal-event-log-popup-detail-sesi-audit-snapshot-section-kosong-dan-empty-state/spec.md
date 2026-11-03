@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -96,6 +96,5 @@ coverage:
 - Alasan di atas sekitar 35 langkah: spec ini 44 langkah dihitung dengan ekspansi; semua blok membaca Popup Detail dari sesi seed pada modal Event Log yang sama dan berdiri sendiri; jumlah langkah berasal dari `Verifikasi` per klausa Expected (S-01), dan TC-AC-ACTS-937 membutuhkan urutan buka, hapus pantau, dan buka lagi (S-04).
 - TC-AC-ACTS-937: langkah mencari U1 di Tab Available memakai Search sebagai langkah penghubung (R-16).
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-939 menyebut sesi Audit yang seluruh barisnya dilewati `T-08` hanya sebagai contoh ("mis."); spec memakai sesi itu sebagai data seed.
   - Identifier tetap Data Uji Dinamis #5 dipakai ulang lintas TC dan tidak dapat bersuffix per run; hitungan valid hanya bila tidak ada spec lain yang mengubah dataset.

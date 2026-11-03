@@ -43,26 +43,27 @@ coverage:
 9. Isi Total User Min = 3 dan Max = 5
 10. Klik `[Apply]`
 11. Verifikasi tabel menampilkan `Default Group` (5), `Region A` (5), `Branch 1` (4), dan `Warehouse Jakarta` (3)
-12. Verifikasi indikator filter aktif tampil pada ikon Filter
-13. Ubah Total User Min = 4 dan Max = 4
-14. Klik `[Apply]`
-15. Verifikasi tabel menampilkan `Branch 1` (Total User 4)
+12. Verifikasi `Branch 2` (Total User 2) tidak tampil pada tabel
+13. Verifikasi indikator filter aktif tampil pada ikon Filter
+14. Ubah Total User Min = 4 dan Max = 4
+15. Klik `[Apply]`
+16. Verifikasi tabel menampilkan `Branch 1` (Total User 4)
 
 ### TC-AC-SG-186: Filter tabel utama by Total User: hanya Min atau hanya Max
 
-16. Klik `[Clear Field]`
-17. Isi hanya Total User Min = 4
-18. Klik `[Apply]`
-19. Verifikasi tabel menampilkan baris dengan Total User ≥ 4: `Default Group` (5), `Region A` (5), dan `Branch 1` (4)
-20. Kosongkan Min dan isi hanya Max = 1
-21. Klik `[Apply]`
-22. Verifikasi empty state dengan Title `No results found` dan Description `Try adjusting your search or filter.`
+17. Klik `[Clear Field]`
+18. Isi hanya Total User Min = 4
+19. Klik `[Apply]`
+20. Verifikasi tabel menampilkan baris dengan Total User ≥ 4: `Default Group` (5), `Region A` (5), dan `Branch 1` (4)
+21. Kosongkan Min dan isi hanya Max = 1
+22. Klik `[Apply]`
+23. Verifikasi empty state dengan Title `No results found` dan Description `Try adjusting your search or filter.`
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 16 (mengosongkan field filter sebelum mengisi hanya Min, S-09). Filter Panel tetap terbuka dari langkah 1 sampai akhir; TC-AC-SG-185 dan TC-AC-SG-186 melanjutkan panel yang sama sehingga langkah "Klik ikon Filter" TC tersebut tidak diulang. Perilaku panel tetap terbuka sesudah `[Apply]` mengikuti TC-AC-SG-196 (menutup panel dengan klik ikon Filter).
-- Langkah 13: TC-185 menulis "nilai tepat salah satu baris" tanpa nilai; spec memilih 4 (`Branch 1`, satu-satunya baris Total User 4 menurut Pre-setup #17).
-- Langkah 19: Expected TC-186 a menulis "baris dengan nilai ≥ 4 tampil" tanpa nama baris; spec memakai baris menurut Pre-setup #17.
+- Langkah penghubung (S-03): langkah 17 (mengosongkan field filter sebelum mengisi hanya Min, S-09). Filter Panel tetap terbuka dari langkah 1 sampai akhir; TC-AC-SG-185 dan TC-AC-SG-186 melanjutkan panel yang sama sehingga langkah "Klik ikon Filter" TC tersebut tidak diulang. Perilaku panel tetap terbuka sesudah `[Apply]` mengikuti TC-AC-SG-196 (menutup panel dengan klik ikon Filter).
+- Langkah 14: TC-185 menulis "nilai tepat salah satu baris" tanpa nilai; spec memilih 4 (`Branch 1`, satu-satunya baris Total User 4 menurut Pre-setup #17).
+- Langkah 20: Expected TC-186 a menulis "baris dengan nilai ≥ 4 tampil" tanpa nama baris; spec memakai baris menurut Pre-setup #17.
 - Temuan untuk QA:
   - TC-AC-SG-185 langkah 5 dan TC-AC-SG-187 langkah 5 tidak menyebut nilai Min = Max; spec memilih nilai dari Pre-setup #17/#19.
   - TC-AC-SG-186 Expected b: "tidak ada baris sehingga empty state" ditulis dalam kurung sebagai penjelasan Total User; spec mengasersi empty state sebagai hasil Max = 1.

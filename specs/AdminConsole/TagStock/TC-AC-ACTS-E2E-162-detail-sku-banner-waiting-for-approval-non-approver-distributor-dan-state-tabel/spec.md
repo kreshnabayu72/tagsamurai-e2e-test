@@ -19,7 +19,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Akun aktor kedua (Ganti akun): Manage TAG stock Read+Create (Pre-setup #5) `manageTagStockCreate_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TS_CREATE_PASSWORD`.
 - Akun aktor ketiga (Ganti akun): Distributor Toggle ON (Pre-setup #9) `distributorOn_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_ON_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
@@ -91,7 +91,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), "Reset dataset", navigasi sidebar yang mereset state, `(←)` pada kotak Search, pemulihan Filter Status, pelepasan intercept, dan penahanan request. Urutan TC: 992, 993, 994, 989, 990; TC-AC-ACTS-989 dan 990 sesudah Ganti akun.
 - P-5 butir b: TC-AC-ACTS-993 menahan request dan menginjeksi satu respons 5xx hanya untuk mengamati tidak adanya banner pada keadaan Loading dan Error (objek uji ringan kelas b) di spec fungsional banner; satu-satunya TC kelas b di spec ini.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Langkah Uji TC-AC-ACTS-992 nomor 4 membandingkan Summary bar sebelum dan sesudah; TC tidak menyebut kartu mana yang dicatat, sehingga spec mencatat Total Registered dan semua kartu Summary bar.
   - TC-AC-ACTS-993 menyebut hanya "komponen Loading / error `S-04`"; teks error tidak disebut, sehingga spec mengasersi tidak adanya banner pada kedua keadaan tanpa menyalin teks.
   - TC-AC-ACTS-990 tidak menyebut apakah Search/Filter Tab Available diubah; spec tidak mengubahnya.

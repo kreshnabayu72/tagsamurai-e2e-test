@@ -21,7 +21,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - SKU Pre-setup #13 `NFC-CARD-BETA-N2` (Device Name `NFC Access Card`, Brand `Beta`, Model `N2`, TAG Type NFC).
@@ -115,28 +115,29 @@ coverage:
 43. Klik `Leave Page`
 44. Verifikasi halaman Add Stock ditinggalkan
 45. Verifikasi Total Registered SKU sama dengan baseline (hasil scan yang belum Submit hilang)
+46. Klik Breadcrumb `Stock`
 
 ### TC-AC-ACTS-877: Remove manual dan Remove by Scan, BLE
 
-46. Ketik Search `BLE-BEACON-ALPHA-B1`, tekan Enter
-47. Klik (⋯) baris SKU `BLE-BEACON-ALPHA-B1`, klik `Add Stock`
-48. Klik `[Add by Scan]`
-49. Scan TAG A
-50. Scan TAG B
-51. Klik `[Stop]`
-52. Centang TAG A
-53. Pilih Bulk Action > `Remove`, klik `[Remove]`
-54. Verifikasi toast `Success, TAG has been removed.`
-55. Klik `[Remove by Scan]`
-56. Scan TAG B
-57. Verifikasi toast `Success, <MAC TAG B> has been removed.`
-58. Klik `[Stop]`
-59. Verifikasi list kosong
-60. Verifikasi tombol `[Remove by Scan]` Disabled
+47. Ganti isi kotak search dengan `BLE-BEACON-ALPHA-B1`, tekan Enter
+48. Klik (⋯) baris SKU `BLE-BEACON-ALPHA-B1`, klik `Add Stock`
+49. Klik `[Add by Scan]`
+50. Scan TAG A
+51. Scan TAG B
+52. Klik `[Stop]`
+53. Centang TAG A
+54. Pilih Bulk Action > `Remove`, klik `[Remove]`
+55. Verifikasi toast `Success, TAG has been removed.`
+56. Klik `[Remove by Scan]`
+57. Scan TAG B
+58. Verifikasi toast `Success, <MAC TAG B> has been removed.`
+59. Klik `[Stop]`
+60. Verifikasi list kosong
+61. Verifikasi tombol `[Remove by Scan]` Disabled
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 3 dan 4 (membuka halaman Add Stock), penyetelan simulator reader antar TC (menghubungkan dan memutuskan), penutupan Sync Panel, pembentukan list precondition TC-AC-ACTS-877 (scan lalu `[Stop]`), `[Add by Scan]` untuk membentuk sesi aktif, `Continue Scan` untuk melanjutkan sesi antar TC, dan Search `BLE-BEACON-ALPHA-B1` untuk menemukan baris target (R-16).
+- Langkah penghubung (S-03): langkah 3 dan 4 (membuka halaman Add Stock), penyetelan simulator reader antar TC (menghubungkan dan memutuskan), penutupan Sync Panel, pembentukan list precondition TC-AC-ACTS-877 (scan lalu `[Stop]`), `[Add by Scan]` untuk membentuk sesi aktif, `Continue Scan` untuk melanjutkan sesi antar TC, Breadcrumb `Stock` kembali ke Stock List sebelum blok BLE, dan Search `BLE-BEACON-ALPHA-B1` untuk menemukan baris target (R-16).
 - TC-AC-ACTS-877 berisi dua bagian (NFC, lalu "ulangi untuk BLE-BEACON-ALPHA-B1"); keduanya ada di spec ini sebagai dua blok. Bagian BLE memakai scanner BLE terhubung dan MAC Address sebagai identifier.
 - Urutan TC dalam spec: 197, 199, 198, 195, 877 (NFC), 797, 196, 877 (BLE) (keadaan reader tidak terhubung lebih dulu; TC yang keluar halaman 196 sebelum blok BLE, S-10).
 - Alasan di atas sekitar 35 langkah (8b butir 7): semua blok satu kelas harness (simulator reader) dan satu dataset; tiap blok berdiri sendiri.

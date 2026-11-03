@@ -24,7 +24,7 @@ coverage:
 - Akun kedua (ganti akun pada TC-AC-SG-304): Total Control entitas `Distributor Custom Field` (Pre-setup #44, 12 custom field User aktif sehingga popup Users memiliki 9 kolom ditambah 12 kolom curated) `totalControlCustomField_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_SG_CUSTOMFIELD_PASSWORD`.
 - State global: Max Visible Columns di System Limits bernilai 20 (default, Pre-setup #34); spec ini tidak mengubahnya.
 - Preferensi kolom tabel di browser dihapus di hook `before` dan `after` spec ini (bukan `[Reset to Default]`); kemampuan ini disediakan tim FE (lihat `suite.md`). Spec ini menyimpan konfigurasi kolom popup Users (TC-AC-SG-303).
-- Kemampuan teknis: Fixture BE (pembacaan state BE, seeding dan pemulihan data milik spec) dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`). Nilai data uji dirujuk lewat `Fixture.settingsGroup.<kunci>` (berkas `fixtures/settingsGroup.json` belum ada; ditandai untuk tahap script).
+- Kemampuan teknis: Fixture BE (pembacaan state BE, seeding dan pemulihan data milik spec) dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`). Nilai data uji dirujuk lewat `Fixture.settingsGroup.<kunci>` (berkas `fixtures/settingsGroup.json` belum ada).
 - Suite berjalan serial (`parallel: false`); spec ini tidak menulis data.
 
 ## Test Steps
@@ -47,37 +47,40 @@ coverage:
 10. Klik `[Save]`
 11. Tutup popup lewat `[✕]`
 12. Klik angka Total User pada baris `Region A`
-13. Verifikasi Activation Status tampil dan Division tersembunyi setelah popup dibuka kembali
-14. Muat ulang halaman dengan F5
-15. Ketik Search `Branch 1` pada toolbar tabel utama, tekan Enter
-16. Klik angka Total User pada baris `Branch 1`
-17. Verifikasi Activation Status tampil dan Division tersembunyi pada popup node `Branch 1`
-18. Tutup popup lewat `[✕]`
-19. Verifikasi kolom tabel utama sama dengan daftar yang dicatat pada langkah 8
-20. Klik angka Total Member pada baris `Branch 1`
-21. Verifikasi popup Members memuat kolom Entity Name, Type, Relation Status, dan Last Updated tanpa perubahan
-22. Tutup popup lewat `[✕]`
-23. Klik ikon Changelog pada toolbar
-24. Verifikasi modal Changelog memuat tujuh kolom default tanpa perubahan
-25. Tutup modal Changelog lewat `[✕]`
-26. Klik `(←)` pada kotak Search tabel utama untuk menutup input dan mereset tabel
+13. Verifikasi Activation Status tampil setelah popup dibuka kembali
+14. Verifikasi Division tersembunyi setelah popup dibuka kembali
+15. Muat ulang halaman dengan F5
+16. Ketik Search `Branch 1` pada toolbar tabel utama, tekan Enter
+17. Klik angka Total User pada baris `Branch 1`
+18. Verifikasi Activation Status tampil pada popup node `Branch 1`
+19. Verifikasi Division tersembunyi pada popup node `Branch 1`
+20. Tutup popup lewat `[✕]`
+21. Verifikasi kolom tabel utama sama dengan daftar yang dicatat pada langkah 8
+22. Klik angka Total Member pada baris `Branch 1`
+23. Verifikasi popup Members memuat kolom Entity Name, Type, Relation Status, dan Last Updated tanpa perubahan
+24. Tutup popup lewat `[✕]`
+25. Klik ikon Changelog pada toolbar
+26. Verifikasi modal Changelog memuat tujuh kolom default tanpa perubahan
+27. Tutup modal Changelog lewat `[✕]`
+28. Klik `(←)` pada kotak Search tabel utama untuk menutup input dan mereset tabel
 
 ### TC-AC-SG-304: Max Visible Columns di popup Users dengan banyak custom field
 
-27. Ganti akun: Logout, lalu login sebagai Total Control entitas `Distributor Custom Field`
-28. Buka halaman `Settings > Group` lewat sidebar
-29. Klik angka Total User baris `Default Group`
-30. Klik header Actions popup
-31. Klik `Setup Column...`
-32. Centang seluruh kolom hingga 20 kolom tercentang
-33. Hover checkbox kolom ke-21
-34. Verifikasi checkbox kolom yang belum dicentang disabled dengan tooltip `Maximum 20 columns can be shown at once. Uncheck another column first.`
-35. Verifikasi kolom yang sudah tercentang tidak berubah
-36. Tutup Setup Column lewat `[✕]` tanpa `[Save]`
+29. Ganti akun: Logout, lalu login sebagai Total Control entitas `Distributor Custom Field`
+30. Buka halaman `Settings > Group` lewat sidebar
+31. Klik angka Total User baris `Default Group`
+32. Klik header Actions popup
+33. Klik `Setup Column...`
+34. Centang seluruh kolom hingga 20 kolom tercentang
+35. Hover checkbox kolom ke-21
+36. Verifikasi checkbox kolom yang belum dicentang disabled dengan tooltip `Maximum 20 columns can be shown at once. Uncheck another column first.`
+37. Verifikasi kolom yang sudah tercentang tidak berubah
+38. Tutup Setup Column lewat `[✕]` tanpa `[Save]`
+39. Tutup popup lewat `[✕]`
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target `Region A`, R-16), langkah 8 (baseline kolom tabel utama), penutupan popup dan modal, Search `Branch 1` sesudah F5 (R-16), klik `(←)` pada Search tabel utama, dan penutupan Setup Column tanpa menyimpan di akhir.
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target `Region A`, R-16), langkah 8 (baseline kolom tabel utama), penutupan popup dan modal, Search `Branch 1` sesudah F5 (R-16), klik `(←)` pada Search tabel utama, penutupan Setup Column tanpa menyimpan, dan penutupan popup Users `Distributor Custom Field` di akhir (S-10).
 - Spec ini melewati sekitar 35 langkah. Alasan: blok TC-AC-SG-304 memakai akun dan entitas lain dan berdiri sendiri; kegagalan blok TC-AC-SG-302 atau TC-AC-SG-303 tidak membuat blok itu kehilangan makna (bagian 3 butir b, Step ganti akun eksplisit). Ketiga blok satu kelas (Setup Column popup Users).
 - Temuan untuk QA:
   - TC-AC-SG-303 menyebut "tidak memengaruhi tabel utama, popup Members, maupun Changelog" tanpa menyebut apa yang diperbandingkan; spec membandingkan daftar kolom default tiap tabel (tabel utama dicatat sebelum Save).

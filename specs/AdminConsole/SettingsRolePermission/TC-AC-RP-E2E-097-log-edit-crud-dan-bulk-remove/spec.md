@@ -45,7 +45,7 @@ coverage:
 12. Verifikasi jumlah entri System Log bertambah tepat 2 dibanding baseline langkah 3
 13. Verifikasi entri baru ber-Object `Global Role` dan Field "Manage device master data — Create"
 14. Verifikasi entri baru ber-Object `Global Role` dan Field "Manage device master data — Delete"
-15. Buka Changelog: User > Global Role milik `Jane Smith`
+15. Buka `Settings > User > Detail User` `Jane Smith` > Changelog: User > Global Role
 16. Verifikasi jumlah record bertambah tepat 2 dibanding baseline langkah 3
 17. Verifikasi record Create dan Delete sama dengan entri Changelog Detail Role
 18. Pulihkan baseline: C dan D `Jane Smith` pada `Manage device master data` tidak tercentang

@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Kemampuan teknis: Fixture BE (seeding idempoten dan pemulihan SKU, unit, Subject, saldo Stock Ledger, dan sesi log) serta pembacaan state BE yang tidak terlihat di UI disediakan tim FE/BE tanpa endpoint karangan (lihat `suite.md`).
@@ -84,6 +84,5 @@ coverage:
 - Alasan di atas smell ~35 langkah: seluruh blok satu kelas harness dan satu dataset; tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal. Langkah "Reset dataset" dan pembukaan Detail SKU diulang per blok.
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), pembatalan seleksi, "Kosongkan Filter", pengaturan dan pemulihan Selection Limit lewat fixture BE, "Reset dataset", dan muat ulang halaman (pemulihan state, S-09).
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - TC-AC-ACTS-843 Precondition menyebut Selection Limit 1000 dengan lebih dari 1000 unit eligible; spec mengatur Selection Limit menjadi 12 dengan 25 unit agar `{limit}` dan `{n}` pada Expected dapat diasersi tanpa seeding di atas 1000 baris. Nilai limit pada teks toast dan tooltip dibaca dari nilai yang diatur.
   - TC-AC-ACTS-841 dan 842 memakai 25 unit eligible; Pre-setup dan Dinamis TC tidak mendaftarnya, sehingga dari seeding spec.

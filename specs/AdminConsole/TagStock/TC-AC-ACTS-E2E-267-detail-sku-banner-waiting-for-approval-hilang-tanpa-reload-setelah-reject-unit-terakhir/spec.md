@@ -15,7 +15,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (TAG > Stock lewat sidebar). Hook `after` mengembalikan sesi ke akun default suite (Total Control). Tidak ada ganti akun di tengah spec.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -48,5 +48,4 @@ coverage:
 - Pelaku kedua (Admin 2) memakai sesi API aktor yang hanya memicu perubahan state dan bukan konteks UI kedua; hasil diasersi di sesi Admin 1.
 - Langkah penghubung (S-03): langkah 1 (Reset dataset), langkah 2 dan 3 (Search SKU untuk menemukan baris target, R-16, dan membuka Detail SKU), dan langkah 7 (mengamati halaman tanpa reload). Langkah 4 adalah anchor positif sebelum asersi banner hilang (8b butir 2); langkah 5 adalah baseline untuk asersi tidak ada baris baru dan Total Registered tidak berubah (S-12).
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun perlu dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-995 menyebut Admin 2 di Approvals > TAG Stock > Tab Active me-reject Subject; sesuai keputusan suite pelaku kedua yang hanya memicu perubahan state memakai sesi API aktor (disediakan tim FE/BE), bukan sesi UI kedua. TC tidak menyebut isi Approval Note; spec memakai Approval Note terisi.

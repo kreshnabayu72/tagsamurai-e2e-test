@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Akun aktor kedua (Ganti akun): Distributor Toggle ON (Pre-setup #9) `distributorOn_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_ON_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -61,35 +61,39 @@ coverage:
 20. Kembali ke Detail SKU `RFID-ASSET-CORE-R5` > Tab Available
 21. Klik `[Delete by Scan]`, scan U1 dan U2, scan satu kode tidak dikenal
 22. Klik `[Stop]`
-23. Buka Activity Log (filter Object `TAG Stock`), urutkan Newest First
-24. Verifikasi satu entri `Delete by Scan` baru (Name `RFID-ASSET-CORE-R5 (RFID)`, Field `Quantity`, Old Value `2 TAGs`, New Value `—`)
-25. Verifikasi jumlah entri `Delete Stock` per unit sama dengan baseline
-26. Verifikasi scan yang ditolak tidak dihitung pada `Quantity`
-27. Buka System Log user aktor
-28. Verifikasi jumlah entri `Delete by Scan` di System Log bertambah 1 dari baseline langkah 19 dan entri baru yang sama tampil dengan Quantity `2`
-29. Buka modal Event Log SKU (Tab Add Stock)
-30. Verifikasi satu baris baru Activity `Delete Stock` dengan Success `2` dan Failed `0`
-31. Tutup modal Event Log
+23. Tunggu aksi selesai (sesi Delete by Scan tertutup)
+24. Buka Activity Log (filter Object `TAG Stock`), urutkan Newest First
+25. Verifikasi jumlah entri `Delete by Scan` di Activity Log bertambah satu dari baseline langkah 19
+26. Verifikasi baris teratas Activity Log (urutan default `Date` terbaru) adalah satu entri `Delete by Scan` baru (Name `RFID-ASSET-CORE-R5 (RFID)`, Field `Quantity`, Old Value `2 TAGs`, New Value `—`)
+27. Verifikasi jumlah entri `Delete Stock` per unit sama dengan baseline
+28. Verifikasi scan yang ditolak tidak dihitung pada `Quantity`
+29. Buka System Log user aktor
+30. Verifikasi jumlah entri `Delete by Scan` di System Log bertambah 1 dari baseline langkah 19 dan entri baru yang sama tampil dengan Quantity `2`
+31. Buka modal Event Log SKU (Tab Add Stock)
+32. Verifikasi jumlah baris Event Log SKU bertambah satu dari baseline langkah 19
+33. Verifikasi baris teratas Event Log (urutan default `Date` terbaru) adalah satu baris baru Activity `Delete Stock` dengan Success `2` dan Failed `0`
+34. Tutup modal Event Log
 
 ### TC-AC-ACTS-836: Distributor hanya menghapus unit stok sendiri; unit entitas lain ditolak sebagai tidak ada di stok
 
-32. Ganti akun: Logout, lalu login sebagai Distributor Toggle ON (`Spectra.env.AC_DIST_ON_PASSWORD`)
-33. Klik row action `Detail` pada SKU `RFID-ASSET-CORE-R5` di Stock List, lalu buka Tab Available
-34. Klik `[Delete by Scan]`
-35. Scan P2 (milik Principal)
-36. Verifikasi toast error `Error, TAG not found in stock.`
-37. Scan D1 (milik sendiri)
-38. Verifikasi toast `Success, [TAG Code] has been deleted.` dengan TAG Code D1
-39. Klik `[Stop]`
-40. Verifikasi P2 tidak terhapus (dibaca lewat fixture BE)
-41. Verifikasi D1 tidak ada di tabel
+35. Ganti akun: Logout, lalu login sebagai Distributor Toggle ON (`Spectra.env.AC_DIST_ON_PASSWORD`)
+36. Klik row action `Detail` pada SKU `RFID-ASSET-CORE-R5` di Stock List, lalu buka Tab Available
+37. Klik `[Delete by Scan]`
+38. Scan P2 (milik Principal)
+39. Verifikasi toast error `Error, TAG not found in stock.`
+40. Scan D1 (milik sendiri)
+41. Verifikasi toast `Success, [TAG Code] has been deleted.` dengan TAG Code D1
+42. Klik `[Stop]`
+43. Verifikasi P2 tidak terhapus (dibaca lewat fixture BE)
+44. Verifikasi D1 tidak ada di tabel
 
 ## Notes
 
 - Alasan di atas smell ~35 langkah: seluruh blok satu kelas harness (d, simulator reader) dengan satu dataset; tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal. Langkah penutup popup (`✕`, dialog Unsaved Changes, `[Leave]`) diulang per blok.
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), "Reset dataset", "Tutup Sync Panel", "Hubungkan kembali reader RFID", pencatatan baseline dan navigasi ke Activity Log, System Log, dan modal Event Log. Urutan TC mengikuti nomor TC; TC-AC-ACTS-836 terakhir karena Ganti akun ke Distributor. Langkah "Tutup modal Event Log" menutup modal sebelum pindah surface atau ganti akun (pemulihan state, S-09).
+- Cara baca entri audit trail baru (S-12, S-14): jumlah dicatat sebelum aksi pemicu, selisihnya diverifikasi, lalu baris teratas urutan default `Date` terbaru dibaca; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya. Pada TC-AC-ACTS-835 entri `Delete by Scan` Activity Log dan baris Event Log baru dibaca setelah selisih satu dari baseline langkah 19.
+- Langkah penghubung (S-03, 8b butir 8): "Tunggu aksi selesai (sesi Delete by Scan tertutup)" sesudah `[Stop]` menunggu sesi Delete by Scan tertutup sebelum log atau surface lain dibuka; tidak ada `Verifikasi` karena hanya pemulihan state (S-09).
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Cara simulasi reader (scan, pemutusan koneksi) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE tanpa mekanisme karangan.
   - Identifier dan hitungan tetap (Data Uji Dinamis) dipakai ulang lintas TC dan tidak dapat bersuffix per run; kebenaran hitungan hanya terjamin bila fixture BE mereset dataset sebelum spec.
   - TC-AC-ACTS-833 Expected butir a ("sesi berhenti otomatis seperti `[Stop]`") dan TC-AC-ACTS-834 butir c ("U1 tetap terhapus") tidak punya langkah observasi sesudah keluar halaman; spec membuka kembali Detail SKU.

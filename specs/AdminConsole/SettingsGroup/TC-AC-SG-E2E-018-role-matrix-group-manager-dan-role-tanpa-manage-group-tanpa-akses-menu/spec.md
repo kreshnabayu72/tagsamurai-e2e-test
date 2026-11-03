@@ -53,5 +53,5 @@ coverage:
 
 - Spec ditulis per blok akun karena ganti akun menuntut Step eksplisit (akun pertama login di hook `before`).
 - Temuan untuk QA:
-  - Hook `beforeEach` suite membuka Settings > Group lewat sidebar sehingga tidak berlaku bagi akun tanpa menu `Group` (spec ini dan blok Client di spec 016); perlu pengecualian di hook suite.
+  - Hook `beforeEach` suite membuka Settings > Group lewat sidebar sehingga tidak berlaku bagi akun tanpa menu `Group` (spec ini dan blok Client di spec 016); pengecualiannya tercatat di `suite.md`.
   - TC-AC-SG-63 dan TC-AC-SG-64 menyebut "request data Group dijawab 403" tanpa endpoint; spec mengasersi status respons request yang dipicu halaman tanpa menyebut endpoint (S-13).

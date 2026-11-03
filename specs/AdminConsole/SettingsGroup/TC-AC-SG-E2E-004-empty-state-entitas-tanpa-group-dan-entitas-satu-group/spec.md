@@ -18,7 +18,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor pertama (TC-AC-SG-12): Total Control `Distributor Tanpa Group` (Pre-setup #41) `totalControlTanpaGroup_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_SG_TANPAGROUP_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Akun aktor kedua (TC-AC-SG-14): Total Control `Distributor Satu Group` (Pre-setup #22) `totalControlSatuGroup_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_SG_SATU_PASSWORD`; dipakai lewat langkah ganti akun. Hook `after` mengembalikan sesi ke akun default suite.
-- Nama env `AC_SG_TANPAGROUP_PASSWORD` dan `AC_SG_SATU_PASSWORD` baru dan perlu didaftarkan di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example` oleh pemilik repo (lihat `suite.md`).
+- Nama env `AC_SG_TANPAGROUP_PASSWORD` dan `AC_SG_SATU_PASSWORD`: pendaftaran mengikuti `suite.md`.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-settings-group` disetel `seen` oleh hook suite untuk kedua akun UI (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Pre-setup (dibaca saja, tidak diubah): `Distributor Tanpa Group` tanpa satu pun group selain root `All Groups` (#41; kondisi seed onboarding gagal, tidak normal) dan `Distributor Satu Group` yang hanya berisi `Default Group` (#22).
 - Kemampuan teknis: keadaan entitas `Distributor Tanpa Group` (0 group) dijaga oleh Fixture BE, disediakan tim FE/BE (lihat `suite.md`); pembentukannya tidak dijelaskan TC (lihat Temuan untuk QA).

@@ -20,7 +20,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -100,7 +100,6 @@ coverage:
 - Alasan di atas sekitar 35 langkah: spec ini 41 langkah dihitung dengan ekspansi; semua blok membuka modal Event Log SKU yang sama dengan dataset seed yang sama, dan tiap blok berdiri sendiri; jumlah langkah berasal dari `Verifikasi` per klausa Expected (S-01) dan langkah penutup atau pembuka modal antar TC (S-09).
 - TC-AC-ACTS-478: bagian "untuk Distributor hanya sesi dari batch registrasi miliknya" diuji di spec 222 (TC-AC-ACTS-942).
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-478 tidak menyebut cara membedakan sesi SKU A dan SKU B pada tabel (tabel tidak memiliki kolom SKU). Spec memakai Hardware seed khusus SKU lain dan Search; TC perlu menyebut data pembeda.
   - TC-AC-ACTS-479 Expected c (Search, Filter, Sort, Pagination kembali default) tidak didahului langkah yang mengubah state tersebut sebelum modal ditutup, sehingga asersi default tidak membedakan state. Spec mengikuti langkah TC.
   - TC-AC-ACTS-472 menyebut kolom `Actions` pada tabel, sedangkan TC-AC-ACTS-480 menyebut kolom Column Visibility (⋯) pada posisi yang sama; spec mengikuti rumusan masing-masing TC.

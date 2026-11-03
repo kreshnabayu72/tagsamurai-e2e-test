@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Akun ganti di tengah spec: Distributor Toggle ON (Local Registration aktif; jalur approval normal tanpa bypass E2a) `distributorOn_automated_{namaCompany}@qwertysystem.net` (Pre-setup #9), password dari `Spectra.env.AC_DIST_ON_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Halaman awal: halaman Add Stock SKU `GPS-TRACK-CORE-G3` (Import/Manual IMEI), dibuka dari Stock List lewat row action Add Stock pada SKU itu oleh hook `beforeEach` suite.
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
@@ -49,8 +49,8 @@ coverage:
 12. Verifikasi halaman menavigasi ke Detail SKU > Tab Available SKU itu
 13. Verifikasi tiga unit Available baru dengan TAG Code baru (selisih +3 terhadap baseline)
 14. Buka modal Event Log SKU itu (Tab Add Stock)
-15. Verifikasi baris Activity `Add Stock` baru dengan Success `3` dan Hardware `—`
-16. Tutup modal Event Log
+15. Verifikasi jumlah baris Event Log SKU bertambah satu dari baseline langkah 8
+16. Verifikasi baris teratas Event Log (urutan default `Date` terbaru) adalah baris Activity `Add Stock` baru dengan Success `3` dan Hardware `—`
 17. Tutup modal Event Log
 18. Ganti akun: klik Logout
 19. Login sebagai Distributor Toggle ON (`distributorOn_automated_{namaCompany}@qwertysystem.net`)
@@ -76,6 +76,7 @@ coverage:
 
 - Mode: FE+BE.
 - Urutan TC: TC-AC-ACTS-259 dan TC-AC-ACTS-260 (Total Control) lebih dulu, lalu satu kali ganti akun ke Distributor Toggle ON di langkah 18 untuk TC-AC-ACTS-261 dan TC-AC-ACTS-262 (S-07, S-10). Karena TC-AC-ACTS-260 memakai bypass E2a Total Control, TC-AC-ACTS-261 dan TC-AC-ACTS-262 memakai Distributor supaya baris Waiting terbentuk.
+- Cara baca entri audit trail baru (S-12, S-14): jumlah dicatat sebelum aksi pemicu, selisihnya diverifikasi, lalu baris teratas urutan default `Date` terbaru dibaca; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya. Pada TC-AC-ACTS-260 baris Event Log baru dibaca setelah selisih satu dari baseline langkah 8.
 - Langkah penghubung tanpa Verifikasi (S-03): "Hapus seluruh baris Preview lewat ikon hapus pada tiap baris" (S-09), langkah mencatat baseline (S-12), langkah ganti akun dan buka halaman Add Stock, serta langkah menutup dialog Partial Register dari TC-AC-ACTS-261 sebelum TC-AC-ACTS-262 menjalankan langkahnya sendiri. Langkah "Tutup modal Event Log" menutup modal sebelum pindah surface atau ganti akun (pemulihan state, S-09).
 - Asersi selisih nol pada TC-AC-ACTS-262 ("tidak ada unit, Subject, atau log tersimpan") memakai baseline dan bukan absence log kelas g: ini asersi jumlah (prinsip 13g, bagian akhir).
 - Temuan untuk QA:

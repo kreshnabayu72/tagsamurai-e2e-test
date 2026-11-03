@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -82,7 +82,6 @@ coverage:
 - Beberapa TC berurutan memakai satu pembukaan halaman atau modal dengan state yang dibersihkan di antaranya (halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - TC-AC-ACTS-930 (Audit Submit tanpa perubahan status) bukan asersi di spec ini; TC-AC-ACTS-931 dan 932 ada di spec 261.
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-927 menyebut "halaman Audit TAG", sedangkan TC-AC-ACTS-904 menyebut Popup Audit TAG; spec memakai `[Audit TAG]` di toolbar Tab Available.
   - TC-AC-ACTS-927 sampai 929 tidak menyebut cara membaca jumlah entri sebelum aksi (baseline); spec memakai kemampuan baca fixture BE dan teks footer pagination.
   - TC-AC-ACTS-928 Expected b (unit Not Scanned tidak berubah status) tidak memberi cara cek; spec memakai pembacaan status unit di BE (disediakan tim FE/BE).

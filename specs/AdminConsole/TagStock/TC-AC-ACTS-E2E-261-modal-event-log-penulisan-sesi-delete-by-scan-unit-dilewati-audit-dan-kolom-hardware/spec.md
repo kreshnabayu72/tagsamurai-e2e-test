@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -89,7 +89,6 @@ coverage:
 - P-8: TC-AC-ACTS-932 membutuhkan Sync Panel (simulator Handheld Reader USB `HR-RFID-01`) hanya untuk membentuk precondition (reader terdeteksi atau tidak); objek ujinya kolom Hardware Tab Audit TAG, bukan reader USB. Blok USB diletakkan paling akhir sehingga kegagalan keras simulator tidak menutupi blok TC-AC-ACTS-476 dan 931; state antar blok dipulihkan lewat langkah penghubung (Tutup modal dan Popup).
 - Penulisan sesi Add Stock dan Audit lain ada di spec 218 dan 220.
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-931 Expected b tidak memberi angka Found dan Not Found; spec mengasersi secara kualitatif (unit dilewati tidak dihitung).
   - TC-AC-ACTS-932 menyebut Hardware `Zebra RFD40 (SN-2201)` untuk sesi dengan "Handheld Reader terdeteksi di Sync Panel", sedangkan Pre-setup #25 menamai reader di Sync Panel `HR-RFID-01`; hubungan keduanya tidak jelas, spec mengikuti rumusan TC.
   - TC-AC-ACTS-476 menyebut "pindai tiga unit lalu satu kode tidak dikenali" tanpa menyebut toast penolakan; spec tidak mengasersi toast.

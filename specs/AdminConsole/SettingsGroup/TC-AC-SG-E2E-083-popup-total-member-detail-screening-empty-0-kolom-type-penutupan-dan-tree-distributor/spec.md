@@ -24,7 +24,7 @@ coverage:
 - Flag Guided Tooltip halaman Settings > Group disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Pre-setup (dibaca saja, tidak ditulis spec ini): entitas Principal `Pohon Uji Utama` (Pre-setup #16, 14 group), Total User per node (#17), penugasan Group Role dan Group Manager (#18), Total Member (#19), Last Updated dan Modified By (#20). Node `Region A`: Total User 5 (`Budi Santoso` Total Control, `Rina Wijaya` Read Only, `Andi Pratama` Group Manager dengan Position `Manager` dan Division `Operations`, `Sari Dewi` Group Role `Manage partner` dan `Manage allocation` tampil `2 roles`, `Dewi Lestari` Group Role `Manage active client`); Total Member 4 bertipe Distributor (`Distributor Alpha` Active 14 Jul 2026, `Distributor Beta` Suspended 12 Jul 2026, `Distributor Delta` Active 11 Jul 2026, `Distributor Gamma` Suspended 10 Jul 2026). Tabel Data Uji Dinamis TC tidak memuat data untuk spec ini.
 - Akun kedua (ganti akun pada TC-AC-SG-397): Total Control entitas `Distributor Anggota` (Pre-setup #45, tree milik Distributor: `Default Group` dan `Wilayah Timur` dengan 4 anggota langsung `Client Alpha` Client Active, `Client Beta` Client Suspended, `Partner Delta` Partner Active, `Partner Gamma` Partner Suspended) `totalControlAnggota_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_SG_ANGGOTA_PASSWORD`.
-- Kemampuan teknis: Fixture BE (pembacaan state BE, seeding dan pemulihan data milik spec) dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`). Nilai data uji dirujuk lewat `Fixture.settingsGroup.<kunci>` (berkas `fixtures/settingsGroup.json` belum ada; ditandai untuk tahap script).
+- Kemampuan teknis: Fixture BE (pembacaan state BE, seeding dan pemulihan data milik spec) dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`). Nilai data uji dirujuk lewat `Fixture.settingsGroup.<kunci>` (berkas `fixtures/settingsGroup.json` belum ada).
 - Suite berjalan serial (`parallel: false`); spec ini tidak mengubah state global dan tidak menulis data.
 
 ## Test Steps
@@ -52,35 +52,36 @@ coverage:
 12. Klik `[✕]`
 13. Verifikasi popup tertutup
 14. Klik angka Total Member pada baris `Region A`
-15. Verifikasi tidak ada tombol teks `Close`
-16. Tekan Esc
-17. Verifikasi popup tertutup
+15. Verifikasi popup Members terbuka
+16. Verifikasi tidak ada tombol teks `Close`
+17. Tekan Esc
+18. Verifikasi popup tertutup
 
 ### TC-AC-SG-308: Popup Members dengan 0 entitas tetap terbuka dengan empty state
 
-18. Ganti isi kotak search tabel utama dengan `Finance Dept`, tekan Enter
-19. Klik angka Total Member baris `Finance Dept`
-20. Verifikasi popup terbuka dengan teks identitas `Head Office > Finance Dept (0)`
-21. Verifikasi empty state standar tampil tanpa baris
-22. Verifikasi popup tidak menampilkan error
-23. Tutup popup lewat `[✕]`
-24. Klik `(←)` pada kotak Search tabel utama untuk menutup input dan mereset tabel
+19. Ganti isi kotak search tabel utama dengan `Finance Dept`, tekan Enter
+20. Klik angka Total Member baris `Finance Dept`
+21. Verifikasi popup terbuka dengan teks identitas `Head Office > Finance Dept (0)`
+22. Verifikasi empty state standar tampil tanpa baris
+23. Verifikasi popup tidak menampilkan error
+24. Tutup popup lewat `[✕]`
+25. Klik `(←)` pada kotak Search tabel utama untuk menutup input dan mereset tabel
 
 ### TC-AC-SG-397: Popup Members pada tree milik Distributor hanya memuat tipe sah Partner dan Client
 
-25. Ganti akun: Logout, lalu login sebagai Total Control entitas `Distributor Anggota`
-26. Buka halaman `Settings > Group` lewat sidebar
-27. Verifikasi Total Member pada baris `Wilayah Timur` bernilai 4
-28. Klik angka Total Member pada baris `Wilayah Timur`
-29. Verifikasi teks identitas popup `Wilayah Timur (4)`
-30. Verifikasi popup memuat `Client Alpha` (Client, Active), `Client Beta` (Client, Suspended), `Partner Delta` (Partner, Active), dan `Partner Gamma` (Partner, Suspended)
-31. Verifikasi kolom Type hanya bernilai `Client` atau `Partner`
-32. Klik ikon Filter pada toolbar popup
-33. Buka dropdown Type
-34. Verifikasi opsi Type hanya `Client` dan `Partner` (tanpa `Distributor`)
-35. Pilih `Partner` lalu klik `[Apply]`
-36. Verifikasi baris `Partner Delta` dan `Partner Gamma` tampil
-37. Tutup popup lewat `[✕]`
+26. Ganti akun: Logout, lalu login sebagai Total Control entitas `Distributor Anggota`
+27. Buka halaman `Settings > Group` lewat sidebar
+28. Verifikasi Total Member pada baris `Wilayah Timur` bernilai 4
+29. Klik angka Total Member pada baris `Wilayah Timur`
+30. Verifikasi teks identitas popup `Wilayah Timur (4)`
+31. Verifikasi popup memuat `Client Alpha` (Client, Active), `Client Beta` (Client, Suspended), `Partner Delta` (Partner, Active), dan `Partner Gamma` (Partner, Suspended)
+32. Verifikasi kolom Type hanya bernilai `Client` atau `Partner`
+33. Klik ikon Filter pada toolbar popup
+34. Buka dropdown Type
+35. Verifikasi opsi Type hanya `Client` dan `Partner` (tanpa `Distributor`)
+36. Pilih `Partner` lalu klik `[Apply]`
+37. Verifikasi baris `Partner Delta` dan `Partner Gamma` tampil
+38. Tutup popup lewat `[✕]`
 
 ## Notes
 

@@ -17,9 +17,9 @@ coverage:
 
 ## Prerequisites
 
-- Mode: FE+BE (backend nyata; seeding via API)
+- Mode: FE+BE (backend nyata)
 - Akun aktor: Total Control Principal `totalControlRP_automated_{namaCompany}@qwertysystem.net` (`Siti Nurhaliza`), password `Spectra.env.AC_RP_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Flag Guided Tooltip halaman ini mengikuti pernyataan di `suite.md`.
-- Data Pre-setup (Tabel Data Uji Pre-setup TC): #11 (tree group Principal: `Default Group`, `Region A` dengan anak `Branch 1`, `Region Jawa` dengan anak `Jakarta` dan `Surabaya`, `Sumatera`), #12 (user Standard), #13 (pemegang Total Control dan Read Only), #14 (penugasan Group Manager), #15 (penugasan peran individual), dan #17 (approver dan toggle). Target aksi memakai user Pre-setup bernama literal sesuai TC karena data itu tidak dapat dimiliki spec; tidak ada Data Dinamis bersuffix `+{runId}-<NNN>` yang dibuat spec ini.
+- Data Pre-setup (Tabel Data Uji Pre-setup TC): #11 (tree group Principal: `Default Group`, `Region A` dengan anak `Branch 1`, `Region Jawa` dengan anak `Jakarta` dan `Surabaya`, `Sumatera`), dan #12 (user Standard). Target aksi memakai user Pre-setup bernama literal sesuai TC karena data itu tidak dapat dimiliki spec; tidak ada Data Dinamis bersuffix `+{runId}-<NNN>` yang dibuat spec ini.
 - Pemulihan baseline: data Pre-setup (tingkat akses dan penugasan Group Manager) dipulihkan ke kondisi Tabel Data Uji Pre-setup TC; kemampuan reset dinyatakan di `suite.md` (Pemulihan baseline automation); dijalankan di hook `before` dan `after` spec ini serta sebagai langkah penghubung "Pulihkan baseline" antar blok TC. Efek yang tidak dipulihkan: Modified By dan Last Updated baris yang disentuh serta entri audit trail (Changelog, System Log, Activity Log) bertambah.
 - Suite berjalan serial (`parallel: false`) karena spec mengubah state Pre-setup bersama.
 - Env var `AC_RP_TC_PASSWORD` dipakai langkah login hook `before`; nama ini perlu terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`.
@@ -77,7 +77,7 @@ coverage:
 
 - Mode: FE+BE. Sumber: `admin-console/settings-role-permission/TestCases/tc-settings-role-permission.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, S-09): langkah 9, 10, 16 (tanpa `Verifikasi`; menyiapkan, membersihkan, atau memulihkan state).
+- Langkah penghubung (S-03, S-09): langkah 5, 9, 10, 16 (tanpa `Verifikasi`; menyiapkan, membersihkan, atau memulihkan state; langkah 5 membuka tab `System` sebagai navigasi menuju Role Detail).
 - Search untuk menemukan baris target (langkah penghubung, R-16): langkah 2, 7, 12, 14, 22, 29.
 - Pemulihan baseline: setelah TC-AC-RP-123 `Alex Tan` dipulihkan (langkah 9) karena TC-AC-RP-124 memakai user yang sama; hasil TC-AC-RP-124, 127, dan 416 (user berbeda) dipulihkan hook `after`.
 - TC-AC-RP-122 ada di spec 034 (Role Detail seluruh Global Role); TC-AC-RP-123 memeriksa Role Detail Group Role `Manage distributor`.

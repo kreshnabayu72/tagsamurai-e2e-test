@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Halaman awal spec: TAG > Stock (Stock List, dibuka hook `beforeEach` suite).
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
 - SKU `RFID-ASSET-CORE-R5` (Data Pre-setup #12) dengan sedikitnya dua unit Available milik spec ini (U-A untuk TC-AC-ACTS-673 dan U-B untuk TC-AC-ACTS-674), disiapkan seeding fixture BE (disediakan tim FE/BE). Client memiliki akses Global Settings > TAG; Activate TAG dipicu lewat sesi API aktor (akun Client tidak ada di Pre-setup TC; disediakan tim FE/BE). Tag BYO Jalur B baru dengan SKU (TC-AC-ACTS-675) dan tanpa SKU (TC-AC-ACTS-676) memakai identifier baru yang belum terdaftar. Fixture `fixtures/tag-stock.json` belum ada dan dibuat di tahap script.

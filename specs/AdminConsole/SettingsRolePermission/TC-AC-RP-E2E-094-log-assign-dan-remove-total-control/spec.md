@@ -95,7 +95,7 @@ coverage:
 - Mode: FE+BE. Sumber: `admin-console/settings-role-permission/TestCases/tc-settings-role-permission.md`. Spec tanpa kelas harness khusus.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Langkah penghubung tanpa awalan Verifikasi (S-03, S-09): langkah 1, 7, 12, 13, 14, 20, 24, 25, 26, 32, 37, 38, 39, 40, 48.
-- Baseline 1 dan 14 mencatat jumlah entri sebelum aksi pemicu (S-12); jumlah bertambah diasersi sebagai selisih, bukan angka absolut.
+- Baseline 1, 14, 26, dan 40 mencatat jumlah entri sebelum aksi pemicu (S-12); jumlah bertambah diasersi sebagai selisih, bukan angka absolut.
 - Klausa "tanpa entri Group Role" TC-AC-RP-319 dan "aggregate hanya memuat 1 baris" TC-AC-RP-336 diasersi lewat selisih jumlah entri yang tepat (asersi jumlah, bukan kelas g); entri cascade di aggregate tidak diasersi absen secara terpisah.
 - Jumlah 10 entri cascade mengikuti Expected TC-AC-RP-319 ("10 entri" Global Role yang berlaku untuk Principal).
 - Pemulihan baseline: kemampuan reset yang disediakan tim FE/BE (mekanisme "dipulihkan automation baseline" tidak didefinisikan di TC, PRD, atau LLD; S-13); dijalankan sebagai langkah penghubung "Pulihkan baseline" dan di hook `after`.

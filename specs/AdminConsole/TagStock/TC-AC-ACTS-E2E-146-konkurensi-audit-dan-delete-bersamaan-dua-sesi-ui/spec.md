@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Akun aktor kedua (Admin 2, Total Control lain): password `Spectra.env.AC_TC2_PASSWORD`; email akun ini tidak tertulis di Pre-setup TC (lihat Temuan untuk QA), disediakan tim FE.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -84,7 +84,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 dan langkah terakhir (membuka dan menutup konteks browser kedua), langkah 2 (membuka Detail SKU), "Reset dataset", pencatatan baseline, navigasi ke Activity Log dan Stock List, serta "Tunggu aksi selesai".
 - Pembagian TC lintas spec: TC-AC-ACTS-712 dan 713 (pelaku kedua lewat sesi API) ada di spec 164.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Cara simulasi reader (scan, pemutusan koneksi) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE tanpa mekanisme karangan.
   - Admin 2 (Total Control lain) tidak ada di Pre-setup TC; email dan password (`AC_TC2_PASSWORD`) disediakan tim FE (S-13).
   - TC-AC-ACTS-710 butir b ("tanpa entri Activity Log baru dan tanpa perubahan Last Updated") diasersi sebagai jumlah entri dan Last Updated sama dengan nilai sebelum Submit Admin 2 (S-12); TC mengamati hanya setelah kedua Submit.

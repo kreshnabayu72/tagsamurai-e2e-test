@@ -19,12 +19,12 @@ coverage:
 
 - Mode: FE+BE.
 - Sesi A (akun aktor pertama): Total Control entitas Distributor Race, `totalControlRaceA_automated_{namaCompany}@qwertysystem.net` (Pre-setup #32), password `Spectra.env.AC_SG_RACEA_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
-- Sesi B (konteks browser kedua, Pre-setup #39): Total Control entitas Distributor Race, `totalControlRaceB_automated_{namaCompany}@qwertysystem.net` (Pre-setup #32), password `Spectra.env.AC_SG_RACEB_PASSWORD`. Dibuka di langkah 1 dan ditutup di langkah 48 (S-09).
+- Sesi B (konteks browser kedua, Pre-setup #39): Total Control entitas Distributor Race, `totalControlRaceB_automated_{namaCompany}@qwertysystem.net` (Pre-setup #32), password `Spectra.env.AC_SG_RACEB_PASSWORD`. Dibuka di langkah 1 dan ditutup di langkah 49 (S-09).
 - Flag Guided Tooltip halaman Settings > Group disetel `seen` oleh hook `before` suite untuk kedua akun dan dipulihkan hook `after` suite (suite.md).
 - Data milik spec (seed lewat Fixture BE di hook `before` pada entitas Distributor Race, dihapus atau dipulihkan hook `after`; setiap nama bersuffix `{runId}-100`; Pre-setup #32 tidak diubah): `Race Induk {runId}-100` (tanpa entitas) dan `Race Lain {runId}-100` (level 1, tanpa entitas).
 - Data yang dibuat langkah spec: `Anak Kembar {runId}-100` (anak `Race Induk {runId}-100`), `Race Lain A {runId}-100` lalu `Race Lain B {runId}-100` (rename `Race Lain {runId}-100`), `Sesi Lain {runId}-100` (level 1), dan `Node Pulih {runId}-100` (level 1).
 - Jendela tunggu SSE: "Tunggu 5 detik tanpa memuat ulang halaman" adalah pilihan spec (bukan nilai TC atau PRD) untuk asersi absence refresh. Batas tunggu refresh otomatis lewat SSE pada langkah 24 adalah 30 detik (nilai TC-AC-SG-390).
-- Kemampuan teknis: Fixture BE (seeding dan pemulihan; disediakan tim FE/BE) dan klien HTTP untuk request langsung ke endpoint Group (Pre-setup #36; langkah 46).
+- Kemampuan teknis: Fixture BE (seeding dan pemulihan; disediakan tim FE/BE) dan klien HTTP untuk request langsung ke endpoint Group (Pre-setup #36; langkah 47).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -73,28 +73,29 @@ coverage:
 
 31. Pada Sesi B, klik `[+] Group` di Sidebar Group Tree
 32. Pada Sesi B, ketik `Node Pulih {runId}-100` lalu klik `[Submit]`
-33. Pada Sesi A, muat ulang halaman
-34. Pada Sesi A, klik node `Node Pulih {runId}-100` di Sidebar Group Tree
-35. Pada Sesi A, ketik Search `x`, tekan Enter
-36. Pada Sesi A, urutkan kolom Total User
-37. Pada Sesi B, klik ikon `⋯` pada node `Node Pulih {runId}-100` di sidebar lalu `Delete`
-38. Pada Sesi B, konfirmasi penghapusan pada dialog Delete dengan `[Delete]`
-39. Tunggu hingga Sesi B menampilkan toast sukses penghapusan
-40. Pada Sesi A, tekan F5
-41. Verifikasi node sidebar terpilih Sesi A kembali ke `All Groups` (aktif)
-42. Verifikasi Sesi A tidak menampilkan error
-43. Verifikasi toast netral: "This group is no longer available."
-44. Verifikasi Group Context Header dan tabel Sesi A menampilkan state default `All Groups`
-45. Verifikasi Search, Filter, Sort, dan halaman Sesi A kembali ke default
-46. Kirim request list langsung (klien HTTP) yang di-scope ke ID node `Node Pulih {runId}-100` yang sudah terhapus
-47. Verifikasi respons `404 Not Found`
-48. Tutup konteks browser Sesi B
+33. Tunggu aksi selesai (dialog/popup tertutup)
+34. Pada Sesi A, muat ulang halaman
+35. Pada Sesi A, klik node `Node Pulih {runId}-100` di Sidebar Group Tree
+36. Pada Sesi A, ketik Search `x`, tekan Enter
+37. Pada Sesi A, urutkan kolom Total User
+38. Pada Sesi B, klik ikon `⋯` pada node `Node Pulih {runId}-100` di sidebar lalu `Delete`
+39. Pada Sesi B, konfirmasi penghapusan pada dialog Delete dengan `[Delete]`
+40. Tunggu hingga Sesi B menampilkan toast sukses penghapusan
+41. Pada Sesi A, tekan F5
+42. Verifikasi node sidebar terpilih Sesi A kembali ke `All Groups` (aktif)
+43. Verifikasi Sesi A tidak menampilkan error
+44. Verifikasi toast netral: "This group is no longer available."
+45. Verifikasi Group Context Header dan tabel Sesi A menampilkan state default `All Groups`
+46. Verifikasi Search, Filter, Sort, dan halaman Sesi A kembali ke default
+47. Kirim request list langsung (klien HTTP) yang di-scope ke ID node `Node Pulih {runId}-100` yang sudah terhapus
+48. Verifikasi respons `404 Not Found`
+49. Tutup konteks browser Sesi B
 
 ## Notes
 
 - Kelas c (multi-konteks, dua admin). Sesi B menjadi objek asersi pada TC-AC-SG-380 dan TC-AC-SG-381 dan pemicu pada TC-AC-SG-390 dan TC-AC-SG-392 dengan hasil diasersi di Sesi A; satu konteks kedua dipakai untuk semuanya sehingga tidak memakai P-2.
-- Langkah penghubung (S-03, R-16, tanpa `Verifikasi`): langkah 1 (membuka Sesi B), langkah 11 sampai 13 bagian penutupan popup dirty (S-08), langkah 24 dan 29 (menunggu), langkah 39 (menunggu penghapusan selesai sebelum Sesi A memuat ulang), dan langkah 48 (menutup konteks Sesi B).
-- Penutupan konteks Sesi B di akhir (langkah 48) memenuhi S-09; sesi Sesi A dipulihkan ke akun default spec di hook `after`.
+- Langkah penghubung (S-03, R-16, tanpa `Verifikasi`): langkah 1 (membuka Sesi B), langkah 11 sampai 13 bagian penutupan popup dirty (S-08), langkah 24 dan 29 (menunggu), langkah 33 (menunggu `[Submit]` Sesi B selesai sebelum Sesi A memuat ulang, bagian 8b butir 8), langkah 40 (menunggu penghapusan selesai sebelum Sesi A memuat ulang), dan langkah 49 (menutup konteks Sesi B).
+- Penutupan konteks Sesi B di akhir (langkah 49) memenuhi S-09; sesi Sesi A dipulihkan ke akun default spec di hook `after`.
 - Hook `after` memulihkan pohon `Race Induk {runId}-100` dan `Race Lain {runId}-100` lewat Fixture BE (menghapus `Anak Kembar`, `Sesi Lain`, dan hasil rename).
 - Asersi absence refresh (langkah 30) didahului `Verifikasi` refresh otomatis yang berhasil pada surface yang sama (langkah 25 dan 26) dan jendela tunggu 5 detik (langkah 29).
 - Alasan di atas sekitar 35 langkah: seluruh blok satu kelas harness (kelas c, dua sesi admin pada satu entitas) dan berdiri sendiri; tiap blok memakai node milik spec sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Pemisahan menjadi beberapa spec akan mengulang login dan pembukaan Sesi B.

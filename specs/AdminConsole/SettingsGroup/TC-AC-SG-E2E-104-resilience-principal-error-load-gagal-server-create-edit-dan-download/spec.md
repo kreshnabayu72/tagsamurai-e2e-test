@@ -21,8 +21,8 @@ coverage:
 - Akun aktor: Total Control entitas Principal, `totalControlGroup_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip halaman Settings > Group disetel `seen` oleh hook `before` suite dan dipulihkan hook `after` suite (suite.md).
-- Data Pre-setup: Pohon Uji Utama entitas Principal, 14 group (Pre-setup #16 dan #17), dibaca saja oleh TC-AC-SG-11 dan TC-AC-SG-239. Total record pada TC-AC-SG-11 dicatat dan diasersi sebelum data milik spec di-seed.
-- Data milik spec: `Region B {runId}-104` (level 1, tanpa entitas) untuk TC-AC-SG-127, di-seed lewat Fixture BE pada langkah 10 (sesudah TC-AC-SG-11 agar total record yang dicatat tidak berubah) dan dihapus hook `after`. Data yang dibuat langkah spec: `Region Gagal {runId}-104` (TC-AC-SG-105), dihapus hook `after`.
+- Data Pre-setup: Pohon Uji Utama entitas Principal, 14 group (Pre-setup #16 dan #17), dibaca saja oleh TC-AC-SG-11 dan TC-AC-SG-239. Total record pada TC-AC-SG-11 dicatat (langkah 1) sesudah seeding data milik spec di hook `before`, sehingga total yang diasersi pada langkah 8 sama dengan total yang dicatat.
+- Data milik spec: `Region B {runId}-104` (level 1, tanpa entitas) untuk TC-AC-SG-127, di-seed lewat Fixture BE di hook `before` (sebelum langkah 1) dan dihapus hook `after`. Data yang dibuat langkah spec: `Region Gagal {runId}-104` (TC-AC-SG-105), dihapus hook `after`.
 - Failure injection (Pre-setup #38; disediakan tim FE): respons 5xx pada pengambilan data Group (list), pada Create Group, dan pada Edit Group, serta Download gagal. Tiap injeksi dinyalakan sebelum aksi pemicu dan dimatikan segera sesudahnya (S-09); hook `after` memastikan semua injeksi mati.
 - Kemampuan teknis: Fixture BE (seeding dan pemulihan; disediakan tim FE/BE).
 - Suite berjalan serial (`parallel: false`).
@@ -40,7 +40,7 @@ coverage:
 7. Klik `[Try Again]`
 8. Verifikasi tabel menampilkan data group dengan total record sama dengan total yang dicatat pada langkah 1
 9. Verifikasi pesan error "Unable to load this data." hilang
-10. Seed `Region B {runId}-104` lewat Fixture BE, lalu buka halaman Settings > Group lewat sidebar
+10. Buka halaman Settings > Group lewat sidebar
 
 ### TC-AC-SG-105: Gagal server saat Create: popup tetap terbuka dan input dipertahankan
 
@@ -86,7 +86,7 @@ coverage:
 ## Notes
 
 - Kelas b (fault injection). Pada seluruh blok, pemicu kegagalan adalah objek uji; tidak ada TC kelas lain dalam spec ini.
-- Langkah penghubung (S-03, tanpa `Verifikasi`): menyalakan dan mematikan failure injection, pencatatan total record sebelum injeksi (langkah 1), seeding `Region B {runId}-104` dan membuka kembali Settings > Group (langkah 10), menutup toast persisten (langkah 19, 35, dan 42; R-12), dan Search `{runId}-104` untuk menemukan baris target (langkah 23; R-16).
+- Langkah penghubung (S-03, tanpa `Verifikasi`): menyalakan dan mematikan failure injection, pencatatan total record sebelum injeksi (langkah 1), membuka kembali Settings > Group (langkah 10), menutup toast persisten (langkah 19, 35, dan 42; R-12), dan Search `{runId}-104` untuk menemukan baris target (langkah 23; R-16).
 - Absence pada langkah 40 (tidak ada file terunduh) didahului `Verifikasi` toast error (langkah 39) sebagai anchor positif; langkah 30 (nama tidak berubah) didahului toast error pada langkah 27.
 - Alasan di atas sekitar 35 langkah: seluruh blok satu kelas harness (kelas b) dan berdiri sendiri; tiap blok memakai satu injeksi kegagalan pada satu aksi sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Penutupan popup dirty (S-08) dan penutupan toast persisten (R-12) menambah panjang spec.
 - Temuan untuk QA:

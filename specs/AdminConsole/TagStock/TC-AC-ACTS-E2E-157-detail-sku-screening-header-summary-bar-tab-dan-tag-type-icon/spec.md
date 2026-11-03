@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Kemampuan teknis: Fixture BE (seeding idempoten dan pemulihan SKU, unit, Subject, saldo Stock Ledger, dan sesi log) serta pembacaan state BE yang tidak terlihat di UI disediakan tim FE/BE tanpa endpoint karangan (lihat `suite.md`).
@@ -76,7 +76,6 @@ coverage:
 - Alasan di atas smell ~35 langkah: seluruh blok satu topik (Detail SKU, satu SKU dan satu dataset); tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal. Langkah pembukaan Detail SKU dan pemulihan state diulang per blok.
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), klik segmen `Stock` dan kembali ke Detail SKU, navigasi antar SKU, Add Stock, popup Audit, dan Approvals, serta penutup popup Idle.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun dikonfirmasi tim FE.
   - TC-AC-ACTS-374 butir a menulis "segmen `Stock` bisa diklik membuka Stock List" tanpa langkah klik; spec menambah klik segmen `Stock` dan kembali ke Detail SKU untuk mengasersinya.
   - Langkah Uji TC-AC-ACTS-856 nomor 4 menyebut hover "pada tiap halaman" tanpa menyebut elemen; spec meng-hover icon TAG Type di keempat halaman.
   - TC-AC-ACTS-375 dan 856 memakai SKU Pre-setup (#14, #15) dan Subject pending seeding yang tidak disebut di Pre-setup TC.

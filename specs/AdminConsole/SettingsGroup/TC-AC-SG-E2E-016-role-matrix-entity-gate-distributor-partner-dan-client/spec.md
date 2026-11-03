@@ -69,4 +69,4 @@ coverage:
 - Temuan untuk QA:
   - Isi tree entitas `Distributor Jaringan` dan `Partner Jaringan` tidak tertulis di Pre-setup TC (hanya `All Groups` miliknya); asersi absence group Principal memakai nama group yang khas pada `Pohon Uji Utama` (`Warehouse Jakarta`, `Room 301`, `Finance Dept`) dan perlu dipastikan namanya tidak dipakai di tree kedua entitas itu.
   - TC-AC-SG-59 menyebut "request data Group dijawab 403" tanpa menyebut endpoint; spec mengasersi status respons request yang dipicu halaman tanpa menyebut endpoint (S-13).
-  - Hook `beforeEach` suite membuka Settings > Group lewat sidebar sehingga tidak berlaku bagi akun tanpa menu `Group` (Client, TC-AC-SG-59; juga spec 018); perlu pengecualian di hook suite.
+  - Hook `beforeEach` suite membuka Settings > Group lewat sidebar sehingga tidak berlaku bagi akun tanpa menu `Group` (Client, TC-AC-SG-59; juga spec 018); pengecualiannya tercatat di `suite.md`.

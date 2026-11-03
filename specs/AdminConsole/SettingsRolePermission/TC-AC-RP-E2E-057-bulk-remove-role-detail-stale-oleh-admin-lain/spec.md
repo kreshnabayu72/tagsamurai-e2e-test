@@ -66,7 +66,7 @@ coverage:
 
 - Sumber: `admin-console/settings-role-permission/TestCases/tc-settings-role-permission.md`. Subjudul `###` memetakan langkah ke id TC granular. TC-AC-RP-197 ada di spec 127.
 - Aktor: Sesi A pada TC-AC-RP-195 dan TC-AC-RP-196 adalah `Hendra Wijaya` (Manage user and role); sesi B Total Control dijalankan lewat sesi API `Siti Nurhaliza` sesuai keputusan Admin B memakai sesi API (bagian 3 prinsip 13).
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 4 dan 14 (pemicu pelaku kedua, ditulis "hingga tersimpan", R-20), langkah 16 (baseline jumlah entri Changelog), langkah 17 dan 25 (tutup modal Changelog), langkah 11 dan 26 (pemulihan baseline), langkah 12 (muat ulang halaman agar tabel memuat state hasil pemulihan).
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 4 dan 14 (pemicu pelaku kedua, ditulis "hingga tersimpan", R-20), langkah 16 (baseline jumlah entri Changelog), langkah 15 dan 23 (buka modal Changelog `Manage device master data` lewat Table Tools), langkah 17 dan 25 (tutup modal Changelog), langkah 11 dan 26 (pemulihan baseline), langkah 12 (muat ulang halaman agar tabel memuat state hasil pemulihan).
 - P-1: asersi "tidak ada entri log" pada TC-AC-RP-196 ditulis di spec ini sebagai `Verifikasi` berbaseline karena konteksnya bergantung pada state baris yang baru diubah Sesi B; spec absence (kelas g) tidak memuat aksi nyata untuk TC ini (S-05). Baseline: jumlah entri Changelog `Manage device master data` sebelum aksi.
 - Temuan untuk QA:
   - TC-AC-RP-195 dan TC-AC-RP-196 berautomation `Manual Only — (d) dua sesi paralel`; spec memakai sesi API untuk Sesi B sehingga dapat diotomasi. Konfirmasi bila QA menghendaki sesi UI kedua.

@@ -20,7 +20,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
 - Kelas d ringan: time-travel Subject (TC-AC-ACTS-308) lewat fixture BE yang menggeser timestamp pembuatan Subject 30 hari ke belakang (disediakan tim FE/BE); tidak ada pergeseran jam server atau jam browser.
 - Data Subject disiapkan seeding fixture BE (disediakan tim FE/BE): Subject Activation Collision pending dengan tag Client yang dapat dihapus di Global Settings dan event Delete TAG yang dapat ditahan atau dikirim ulang (TC-AC-ACTS-292, TC-AC-ACTS-304, TC-AC-ACTS-305), Subject Register Duplicate pending (TC-AC-ACTS-306, TC-AC-ACTS-308), dan unit Waiting for Approval hasil Register Duplicate (TC-AC-ACTS-307). Fixture `fixtures/tag-stock.json` belum ada dan dibuat di tahap script.
@@ -52,47 +52,49 @@ coverage:
 15. Verifikasi Subject tampil di Tab History dengan Approval `Canceled`, Approver `—`, dan TAG Code `—`
 16. Verifikasi unit Waiting terkait dihapus dan unit existing target collision tidak berubah
 17. Buka Activity Log
-18. Verifikasi entri `Duplicate Canceled` dengan Modified By `System`
-19. Verifikasi Date entri Activity Log sama dengan waktu tag dihapus (toleransi satu menit) dan sama dengan Resolved At baris Tab History
-20. Buka modal Event Log SKU
-21. Verifikasi Event Log memuat baris pembanding milik SKU itu
-22. Verifikasi Event Log tidak memuat baris `Duplicate Canceled` (jumlah baris sama dengan baseline)
-23. Tutup modal Event Log
+18. Verifikasi jumlah entri Activity Log bertambah satu dari baseline langkah 10
+19. Verifikasi baris teratas Activity Log (urutan default `Date` terbaru) adalah entri `Duplicate Canceled` dengan Modified By `System`
+20. Verifikasi Date entri Activity Log sama dengan waktu tag dihapus (toleransi satu menit) dan sama dengan Resolved At baris Tab History
+21. Buka modal Event Log SKU
+22. Verifikasi Event Log memuat baris pembanding milik SKU itu
+23. Verifikasi Event Log tidak memuat baris `Duplicate Canceled` (jumlah baris sama dengan baseline)
+24. Tutup modal Event Log
 
 ### TC-AC-ACTS-305: Event Delete TAG diterima ulang atau setelah Subject diputuskan menjadi no-op
 
-24. Catat baseline jumlah entri Activity Log
-25. Kirim ulang event Delete TAG yang sama (fixture BE)
-26. Buka Activity Log dan Approvals > Tab History
-27. Verifikasi Subject Canceled tetap berstatus Canceled di Tab History (tidak ada perubahan status)
-28. Verifikasi tidak ada entri log baru (jumlah entri Activity Log sama dengan baseline)
+25. Catat baseline jumlah entri Activity Log
+26. Kirim ulang event Delete TAG yang sama (fixture BE)
+27. Buka Activity Log dan Approvals > Tab History
+28. Verifikasi Subject Canceled tetap berstatus Canceled di Tab History (tidak ada perubahan status)
+29. Verifikasi tidak ada entri log baru (jumlah entri Activity Log sama dengan baseline)
 
 ### TC-AC-ACTS-306: Register Duplicate tidak punya jalur pembatalan otomatis
 
-29. Client menghapus tag lain di Global Settings hingga tersimpan (sesi API aktor)
-30. Muat ulang Tab Active setiap 5 detik sampai event Delete TAG diproses (batas tunggu 2 menit)
-31. Verifikasi Subject Register Duplicate tetap pending di Tab Active (tidak Canceled)
+30. Client menghapus tag lain di Global Settings hingga tersimpan (sesi API aktor)
+31. Muat ulang Tab Active setiap 5 detik sampai event Delete TAG diproses (batas tunggu 2 menit)
+32. Verifikasi Subject Register Duplicate tetap pending di Tab Active (tidak Canceled)
 
 ### TC-AC-ACTS-307: Activate TAG pada identifier unit Waiting tidak membuat Subject kedua
 
-32. Catat baseline jumlah Subject di Tab Active
-33. Client mengaktivasi tag dengan identifier sama dengan unit Waiting di Global Settings hingga tersimpan (sesi API aktor)
-34. Buka Approvals > TAG Stock > Tab Active
-35. Verifikasi tidak ada Subject Activation Collision baru (jumlah Subject sama dengan baseline)
-36. Verifikasi Subject Register Duplicate yang pending tidak berubah
+33. Catat baseline jumlah Subject di Tab Active
+34. Client mengaktivasi tag dengan identifier sama dengan unit Waiting di Global Settings hingga tersimpan (sesi API aktor)
+35. Buka Approvals > TAG Stock > Tab Active
+36. Verifikasi tidak ada Subject Activation Collision baru (jumlah Subject sama dengan baseline)
+37. Verifikasi Subject Register Duplicate yang pending tidak berubah
 
 ### TC-AC-ACTS-308: Subject tidak memiliki timeout atau peringatan H-24
 
-37. Geser timestamp pembuatan Subject pending 30 hari ke belakang (fixture BE)
-38. Muat ulang Tab Active
-39. Buka Notification Center
-40. Verifikasi Subject tetap pending di Tab Active tanpa auto-cancel
-41. Verifikasi Notification Center tampil tanpa notifikasi peringatan 24 jam
+38. Geser timestamp pembuatan Subject pending 30 hari ke belakang (fixture BE)
+39. Muat ulang Tab Active
+40. Buka Notification Center
+41. Verifikasi Subject tetap pending di Tab Active tanpa auto-cancel
+42. Verifikasi Notification Center tampil tanpa notifikasi peringatan 24 jam
 
 ## Notes
 
-- Mode: FE+BE. Spec ini melewati sekitar 35 langkah (41 langkah); alasan: semua blok satu kelas harness (kelas d ringan, event Delete TAG dan time-travel Subject) dan satu dataset Subject, dan tiap blok TC berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Mode: FE+BE. Spec ini melewati sekitar 35 langkah (42 langkah); alasan: semua blok satu kelas harness (kelas d ringan, event Delete TAG dan time-travel Subject) dan satu dataset Subject, dan tiap blok TC berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - P-1 (state berat): TC-AC-ACTS-304 memuat asersi tidak adanya baris Event Log `Duplicate Canceled` dengan baseline karena state Canceled baru dibangun langkah sebelumnya; ini asersi jumlah, bukan kelas g.
+- Cara baca entri audit trail baru (S-12, S-14): jumlah dicatat sebelum aksi pemicu, selisihnya diverifikasi, lalu baris teratas urutan default `Date` terbaru dibaca; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya. Pada TC-AC-ACTS-304 entri `Duplicate Canceled` dibaca setelah selisih satu dari baseline langkah 10.
 - Langkah penghubung tanpa Verifikasi (S-03): mencatat baseline (S-12), menahan dan melepas pemrosesan event, membuka layar, dan memuat ulang Tab Active tiap 5 detik memakai idiom baku "polling worker commit" (bagian 6, batas tunggu 2 menit). Pelaku Client lewat sesi API aktor ditulis "hingga tersimpan" (R-20). Langkah "Tutup modal Event Log" menutup modal sebelum pindah surface atau ganti akun (pemulihan state, S-09).
 - Absence pada TC-AC-ACTS-308 didahului anchor positif (Subject tetap tampil di Tab Active; Notification Center tampil); pergeseran timestamp memakai fixture BE, bukan jam server.
 - Temuan untuk QA:

@@ -22,7 +22,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Pre-setup: SKU `RFID-ASSET-CORE-R5` (Pre-setup #12; Device Name `RFID Asset Tag`, Brand `Core`, Model `R5`, Object TAG). Unit uji milik spec di-seed di hook `before` pada SKU itu (idempoten) dan dipulihkan fixture BE di hook `after`: 2 unit Available (A, B) dan 2 unit Damaged/Missing (C, D), seluruhnya eligible Audit. Aksi spec mengubah Last Updated SKU Pre-setup; efeknya dipulihkan fixture BE.
@@ -113,7 +113,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), "Reset dataset", pencatatan baseline, dan "Tunggu aksi selesai"; aksi menghapus data (TC-AC-ACTS-665) diletakkan terakhir. Langkah "Tutup modal Event Log" menutup modal sebelum pindah surface atau ganti akun (pemulihan state, S-09).
 - P-1: bagian "tidak ada entri di System Log" TC-AC-ACTS-664 diasersi sebagai jumlah entri System Log sama dengan baseline di spec ini karena bergantung pada Subject Activation Collision yang baru dibangun fixture BE pada TC yang sama; bagian "Event Log tidak memuat baris unit bypass" TC-AC-ACTS-662 memakai anchor baris Event Log lain.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Cara simulasi reader (scan, pemutusan koneksi) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE tanpa mekanisme karangan.
   - TC-AC-ACTS-658 sampai 665 memuat Precondition "Aksi dijalankan pada SKU RFID-ASSET-CORE-R5" tanpa menyebut data; spec memakai dataset seeding yang menjalankan aksi masing-masing.
   - TC-AC-ACTS-660, 661, 663 tidak menyebut jalur Approve atau Reject; spec memakai dialog Review di Approvals > TAG Stock > Tab Active.

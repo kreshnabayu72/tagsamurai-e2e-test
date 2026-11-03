@@ -59,14 +59,17 @@ coverage:
 19. Tunggu aksi selesai (dialog tertutup dan baris `Hapus Warn B` hilang dari tabel)
 20. Buka Settings > User lewat sidebar
 21. Buka Detail `Nina Amelia`, lalu buka Tab Role
-22. Verifikasi penugasan Group Role `Nina Amelia` pada `Hapus Warn B` hilang dan tidak dialihkan ke group lain (Tab Role tidak memuat penugasan Group Role)
-23. Buka Settings > Role & Permission lewat sidebar, lalu buka Tab Group Manager List
-24. Verifikasi penugasan Group Manager `Lia Marlina` untuk `Hapus Warn B1` hilang dari Tab Group Manager List
+22. Verifikasi Tab Role pada Detail `Nina Amelia` termuat dan tampil
+23. Verifikasi penugasan Group Role `Nina Amelia` pada `Hapus Warn B` hilang dan tidak dialihkan ke group lain (Tab Role tidak memuat penugasan Group Role)
+24. Buka Settings > Role & Permission lewat sidebar, lalu buka Tab Group Manager List
+25. Verifikasi Tab Group Manager List termuat dan tampil
+26. Verifikasi penugasan Group Manager `Lia Marlina` untuk `Hapus Warn B1` hilang dari Tab Group Manager List
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1, 11, dan 16 (Search untuk menemukan baris target, R-16); langkah 9 dan 10 (pemulihan baseline dan muat ulang antar blok, S-09); langkah 19 (tunggu aksi selesai, bagian 8b butir 8) dan langkah 20 serta 23 (navigasi modul lain); langkah 13 dihitung satu aksi klik ganda.
+- Langkah penghubung (S-03): langkah 1, 11, dan 16 (Search untuk menemukan baris target, R-16); langkah 9 dan 10 (pemulihan baseline dan muat ulang antar blok, S-09); langkah 19 (tunggu aksi selesai, bagian 8b butir 8) dan langkah 20 serta 24 (navigasi modul lain); langkah 13 dihitung satu aksi klik ganda.
 - Perubahan urutan TC (S-10): TC-148 ditempatkan sebelum TC-146 karena TC-146 meninggalkan Settings > Group dan menjadi blok terakhir; TC-133 berada paling awal agar pemulihan subtree `Hapus Warn B` dilakukan sebelum TC-146 memakainya lagi.
+- Langkah 22 dan 25 (asersi tambahan, 8b.2): `Verifikasi` Tab Role dan Tab Group Manager List termuat dan tampil, sebagai anchor positif sebelum `Verifikasi` absence di langkah 23 dan 26; Expected TC-AC-SG-146 tidak memuat klausa anchor ini.
 - TC-AC-SG-144 dan TC-AC-SG-145 (fallback seleksi ke All Groups sesudah Delete) berada di spec 110. TC-AC-SG-134 berada di spec absence 091.
 - Temuan untuk QA:
   - TC-AC-SG-133 butir c (penugasan dilepas) tidak memberi langkah observasi; spec mengasersinya lewat kemampuan baca Fixture BE (disediakan tim FE/BE, tanpa endpoint karangan).

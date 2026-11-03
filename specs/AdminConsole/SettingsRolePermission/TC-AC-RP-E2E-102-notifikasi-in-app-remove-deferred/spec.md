@@ -22,7 +22,6 @@ coverage:
 - Ganti akun di tengah spec ke akun target notifikasi: `John Doe` (TC-AC-RP-337), `Lisa Wong` (TC-AC-RP-338), dan `Fajar Nugroho` (TC-AC-RP-339 dan 417) untuk membuka notifikasi masing-masing; email dan password akun target ini tidak tertulis di Pre-setup #1 sampai #10 dan disediakan tim FE (Email akun ini tidak tertulis di Pre-setup TC; lihat Temuan untuk QA). Setelah tiap blok sesi dikembalikan ke `Siti Nurhaliza`.
 - Hook suite (flag Guided Tooltip halaman ini, pemulihan baseline automation, pemulihan Setup Column, sesi API aktor) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya.
 - Data Pre-setup: #11 (tree group Principal), #13 (pemegang Total Control `John Doe` dan Read Only `Lisa Wong`), dan #14 (penugasan Group Manager: `Fajar Nugroho` di `Region Jawa` dan `Sumatera`). Target aksi memakai user, role, dan group Pre-setup bernama literal sesuai TC karena data itu tidak dapat dimiliki spec; tidak ada Data Dinamis bersuffix `+{runId}-<NNN>` yang dibuat spec ini. Pengiriman notifikasi berstatus future implementation sampai modul Admin Console > Notification tersedia (`[DEFERRED]`, kontrak event normatif PRD §8.8); spec dijalankan setelah modul Notification tersedia.
-- Kemampuan teknis: membaca jumlah entri audit trail (Changelog, System Log, Activity Log, Changelog: User) lewat kemampuan baca tanpa mengasersi angka absolut (disediakan tim FE/BE; bagian 8b butir 10). Langkah "Catat baseline" mencatat jumlah entri sebelum aksi; asersi memakai selisih terhadap baseline (S-12). Entri yang baru dibuat aksi spec ini dikenali lewat Action, Object, dan Modified By pada halaman pertama (Date Newest First).
 - Kemampuan teknis: format tanggal General Settings entitas uji (contoh `15 Jun 2026, 10:05`) dipakai untuk [Date] pada Body notifikasi; waktu aksi dicatat sesaat setelah tombol konfirmasi dan dibandingkan dengan toleransi satu menit (S-12). Jam server dan jam browser sinkron.
 - Pemulihan baseline: kemampuan reset data Pre-setup (tingkat akses, penugasan Group Manager, peran individual, approver, toggle) ke kondisi Tabel Data Uji Pre-setup TC disediakan tim FE/BE dan dinyatakan di `suite.md`; dijalankan di hook `before` dan `after` serta sebagai langkah penghubung "Pulihkan baseline". Efek yang tidak dipulihkan: Modified By dan Last Updated baris yang disentuh serta entri audit trail (Changelog, System Log, Activity Log) bertambah.
 - Suite berjalan serial (`parallel: false`); spec ini tidak bergantung pada hasil spec lain.
@@ -44,7 +43,7 @@ coverage:
 
 ### TC-AC-RP-338: [DEFERRED] Notifikasi Remove Read Only ke target
 
-9. Klik tab `Read Only`
+9. Buka halaman `Settings > Role & Permission`, lalu klik tab `Read Only`
 10. Klik `⋯` baris `Lisa Wong` lalu klik `Remove`
 11. Klik `[Remove]`
 12. Catat waktu aksi sesaat setelah klik `[Remove]`
@@ -87,7 +86,7 @@ coverage:
 
 - Mode: FE+BE. Sumber: `admin-console/settings-role-permission/TestCases/tc-settings-role-permission.md`. Kelas harness d (harness eksternal: notifikasi in-app dari modul Admin Console > Notification) dan `[DEFERRED]`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Langkah penghubung tanpa awalan Verifikasi (S-03, S-09): langkah 3, 7, 8, 12, 16, 17, 18, 22, 26, 27, 28, 32, 39, 40.
+- Langkah penghubung tanpa awalan Verifikasi (S-03, S-09): langkah 3, 7, 8, 12, 16, 17, 18, 22, 26, 27, 28, 32, 39, 40; langkah 9 memuat pembukaan halaman `Settings > Role & Permission` sebagai penghubung sesudah ganti akun.
 - `[DEFERRED]`: pengiriman notifikasi berstatus future implementation sampai modul Admin Console > Notification tersedia; spec ditandai `coverage.web: unsupported` karena modul Notification belum ada dan pengiriman notifikasi tidak dapat diverifikasi; spec diaktifkan lagi (`coverage.web: automated`) saat modul Notification selesai.
 - Ganti akun eksplisit pada langkah 4, 13, 23, dan 33 (S-07); pengembalian sesi ke `Siti Nurhaliza` adalah langkah penghubung.
 - Asersi "tidak ada notifikasi gabungan" (TC-AC-RP-417) didahului Verifikasi dua notifikasi per group sebagai anchor positif (bagian 8b butir 2 dan 11).

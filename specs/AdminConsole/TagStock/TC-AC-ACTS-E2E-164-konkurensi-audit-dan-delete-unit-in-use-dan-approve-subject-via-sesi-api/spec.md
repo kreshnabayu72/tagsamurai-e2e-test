@@ -16,7 +16,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Pre-setup: SKU `RFID-ASSET-CORE-R5` (Pre-setup #12; Device Name `RFID Asset Tag`, Brand `Core`, Model `R5`, Object TAG). Unit uji milik spec di-seed di hook `before` pada SKU itu (idempoten) dan dipulihkan fixture BE di hook `after`: 2 unit Available (A, B) dan 2 unit Damaged/Missing (C, D), seluruhnya eligible Audit. Aksi spec mengubah Last Updated SKU Pre-setup; efeknya dipulihkan fixture BE.
@@ -60,7 +60,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), pencatatan baseline, navigasi ke Activity Log dan kembali ke Detail SKU, "Reset dataset", `[OK]` dialog, dan "Muat ulang halaman" (pemulihan state, S-09).
 - Pembagian TC lintas spec: TC-AC-ACTS-710, 711, dan 714 (dua sesi UI) ada di spec 146.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Cara simulasi reader (scan, pemutusan koneksi) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE tanpa mekanisme karangan.
   - Aktor dan mekanisme "sesi lain mengaktivasi unit" dan "Admin 2 Approve" tidak didefinisikan di TC, PRD, atau LLD; spec memakai sesi API aktor dengan kemampuan yang disediakan tim FE/BE.
   - TC-AC-ACTS-712 butir a ("tanpa log" untuk unit A) tidak punya langkah observasi di TC; spec mengasersi jumlah entri Activity Log unit A sama dengan baseline.

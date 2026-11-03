@@ -81,7 +81,7 @@ coverage:
 - Langkah penghubung (S-03): langkah 14 dan 24 (membuka halaman setelah ganti akun). Langkah 1, 15, dan 25 membuka Tab System yang dibutuhkan langkah berikutnya (S-14). Langkah 4, 6, 7, dan 9 (TC-AC-RP-85) membuka dan menutup overlay `⋯` baris `John Dohan` serta mencentang dan melepas satu baris agar row action `Remove` dan Bulk Action teramati (TC langkah 6 dan 7); baris target TC `John Dohan` (Pre-setup #15).
 - Langkah 17 dan 27 (baris `John Dohan` tampil) adalah pembanding generik untuk asersi universal "seluruh baris" pada langkah 20 dan 30 dan anchor permukaan Role Detail untuk asersi Hidden pada langkah 18 dan 28 (bagian 8b butir 2); keduanya tidak ada di TC.
 - Temuan untuk QA:
-  - TC-AC-RP-85 Expected menyatakan checkbox C/U/D baris `John Dohan` enabled dan R tetap checked dan disabled (sejalan TC-AC-RP-73); spec mengasersi C, U, D, dan R sebagai Verifikasi terpisah.
+  - TC-AC-RP-85 Expected menyatakan checkbox C/U/D baris `John Dohan` enabled dan R tetap checked dan disabled (sejalan TC-AC-RP-73); spec mengasersi C, U, dan D dalam satu `Verifikasi` dan R dalam `Verifikasi` lain.
   - TC-AC-RP-91 dan 97 menyebut "checkbox C/U/D seluruh baris Disabled" tetapi langkah hanya meng-hover satu baris (`John Dohan`); tooltip diamati pada baris itu, sedangkan state Disabled seluruh baris tidak punya cara pengamatan tambahan di TC.
   - TC-AC-RP-97 Expected menyebut tooltip "Read Only access cannot modify data." untuk aktor Manage user and role tanpa Update (bukan Read Only); spec menuliskannya persis seperti TC.
   - Post Condition TC-AC-RP-85, 91, dan 97 bernilai "-" sehingga tidak ada yang diasersi.

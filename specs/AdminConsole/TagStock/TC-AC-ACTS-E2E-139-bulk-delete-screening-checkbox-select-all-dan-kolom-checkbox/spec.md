@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Kemampuan teknis: Fixture BE (seeding idempoten dan pemulihan SKU, unit, Subject, saldo Stock Ledger, dan sesi log) serta pembacaan state BE yang tidak terlihat di UI disediakan tim FE/BE tanpa endpoint karangan (lihat `suite.md`).
@@ -81,7 +81,6 @@ coverage:
 - Alasan di atas smell ~35 langkah: seluruh blok satu kelas harness (d, simulator reader) dengan satu dataset; tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal. Langkah penutup popup (`✕`, dialog Unsaved Changes, `[Leave]`) diulang per blok.
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), pembatalan seleksi, penutupan daftar aksi dan Setup Column dan panel Filter, navigasi antar SKU dan Stock List, serta Search `TAG` (R-16) yang mengisi tabel agar panel Search dan Filter teramati.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun dikonfirmasi tim FE.
   - Prasyarat "Reader RFID terhubung" pada keempat TC tidak berpengaruh pada Expected (Bulk Delete dan kolom Checkbox tidak memakai reader); spec tidak memakai simulator untuk asersi.
   - TC-AC-ACTS-840 Data Uji "12 unit" dan skenario 1 unit memakai SKU berbeda tanpa menyebut SKU kedua; spec memakai SKU Pre-setup tanpa unit yang diberi satu unit.
   - TC-AC-ACTS-851 tidak menyebut berkas Download (CSV atau XLSX) dan cara membaca header; spec mengasersi header kolom dengan pembaca isi berkas yang disediakan tim FE (kelas f hanya untuk isi berkas).

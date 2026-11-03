@@ -51,44 +51,46 @@ coverage:
 ### TC-AC-SG-336: Pelepasan Group Role tidak dicatat di System Log maupun Activity Log
 
 13. Buka Activity Log Admin Console tanpa saringan Object
-14. Catat jumlah total entri Activity Log sebagai baseline BA
-15. Buka Settings > User > Detail akun aktor > Tab System Log
-16. Catat jumlah total entri System Log aktor sebagai baseline BS
-17. Buka halaman Settings > Group lewat sidebar
-18. Ketik Search `{runId}-116`, tekan Enter
-19. Klik ikon `⋯` pada baris `Hapus Warn A {runId}-116` lalu `Delete`
-20. Konfirmasi penghapusan pada dialog Delete dengan `[Delete]`
-21. Tunggu hingga entri log muncul
-22. Buka Activity Log Admin Console tanpa saringan Object
-23. Verifikasi jumlah total entri Activity Log sama dengan BA ditambah 1 (tidak ada entri Object `Group Role (Group Deleted)`)
-24. Verifikasi Activity Log memuat entri Action `Delete`, Object `Group`, Name `Hapus Warn A {runId}-116`
-25. Buka Settings > User > Detail akun aktor > Tab System Log
-26. Verifikasi jumlah total entri System Log aktor sama dengan BS ditambah 1 (tidak ada entri Object `Group Role (Group Deleted)`)
-27. Verifikasi System Log aktor memuat entri Action `Delete`, Object `Group`, Name `Hapus Warn A {runId}-116`
+14. Tunggu hingga entri Delete `Hapus Warn B {runId}-116` muncul pada Activity Log
+15. Catat jumlah total entri Activity Log sebagai baseline BA
+16. Buka Settings > User > Detail akun aktor > Tab System Log
+17. Tunggu hingga entri Delete `Hapus Warn B {runId}-116` muncul pada System Log
+18. Catat jumlah total entri System Log aktor sebagai baseline BS
+19. Buka halaman Settings > Group lewat sidebar
+20. Ketik Search `{runId}-116`, tekan Enter
+21. Klik ikon `⋯` pada baris `Hapus Warn A {runId}-116` lalu `Delete`
+22. Konfirmasi penghapusan pada dialog Delete dengan `[Delete]`
+23. Tunggu hingga entri log muncul
+24. Buka Activity Log Admin Console tanpa saringan Object
+25. Verifikasi jumlah total entri Activity Log sama dengan BA ditambah 1 (tidak ada entri Object `Group Role (Group Deleted)`)
+26. Verifikasi Activity Log memuat entri Action `Delete`, Object `Group`, Name `Hapus Warn A {runId}-116`
+27. Buka Settings > User > Detail akun aktor > Tab System Log
+28. Verifikasi jumlah total entri System Log aktor sama dengan BS ditambah 1 (tidak ada entri Object `Group Role (Group Deleted)`)
+29. Verifikasi System Log aktor memuat entri Action `Delete`, Object `Group`, Name `Hapus Warn A {runId}-116`
 
 ### TC-AC-SG-337: Tidak ada notifikasi in-app ke user yang terdampak Delete
 
-28. Buka halaman Settings > Group lewat sidebar
-29. Ketik Search `{runId}-116`, tekan Enter
-30. Klik ikon `⋯` pada baris `Hapus Notif {runId}-116` lalu `Delete`
-31. Konfirmasi penghapusan pada dialog Delete dengan `[Delete]`
-32. Tunggu hingga Sidebar Group Tree tidak lagi memuat `Hapus Notif {runId}-116`
-33. Ganti akun: Logout, lalu login sebagai `Nina Amelia`
-34. Buka notifikasi in-app
-35. Verifikasi panel notifikasi in-app tampil
-36. Verifikasi notifikasi in-app `Nina Amelia` tidak memuat notifikasi yang menyebut `Hapus Notif {runId}-116`
-37. Ganti akun: Logout, lalu login sebagai `Lia Marlina`
-38. Buka notifikasi in-app
-39. Verifikasi panel notifikasi in-app tampil
-40. Verifikasi notifikasi in-app `Lia Marlina` tidak memuat notifikasi yang menyebut `Hapus Notif {runId}-116`
+30. Buka halaman Settings > Group lewat sidebar
+31. Ketik Search `{runId}-116`, tekan Enter
+32. Klik ikon `⋯` pada baris `Hapus Notif {runId}-116` lalu `Delete`
+33. Konfirmasi penghapusan pada dialog Delete dengan `[Delete]`
+34. Tunggu hingga Sidebar Group Tree tidak lagi memuat `Hapus Notif {runId}-116`
+35. Ganti akun: Logout, lalu login sebagai `Nina Amelia`
+36. Buka notifikasi in-app
+37. Verifikasi panel notifikasi in-app tampil
+38. Verifikasi notifikasi in-app `Nina Amelia` tidak memuat notifikasi yang menyebut `Hapus Notif {runId}-116`
+39. Ganti akun: Logout, lalu login sebagai `Lia Marlina`
+40. Buka notifikasi in-app
+41. Verifikasi panel notifikasi in-app tampil
+42. Verifikasi notifikasi in-app `Lia Marlina` tidak memuat notifikasi yang menyebut `Hapus Notif {runId}-116`
 
 ## Notes
 
 - Kelas g (absence). Aksi nyata (Delete group yang memiliki Group Role) dan baseline ada di spec ini. Anchor positif tiap asersi absence: Tab Role dan Sub-tab Group Role tampil (langkah 9, anchor yang ditambahkan spec, S-03) dan baseline agregat TN (TC-AC-SG-335); entri Delete Group pada surface yang sama dan baseline agregat BA dan BS (TC-AC-SG-336); panel notifikasi in-app tampil (TC-AC-SG-337, anchor yang ditambahkan spec, S-03, karena Expected TC hanya menyebut ketiadaan notifikasi).
-- Langkah penghubung (S-03, R-16, tanpa `Verifikasi`): langkah 1 sampai 8, 11, 13 sampai 22, 25, dan 28 sampai 34 (membuka surface, baseline, Search `{runId}-116` untuk menemukan baris target, konfirmasi Delete, dan menunggu), serta langkah 7 (menunggu pencatatan yang bersifat eventual; durasi tercatat di Prerequisites).
-- Langkah 33 dan 37 adalah ganti akun eksplisit (S-07); sesi dipulihkan ke akun aktor pertama di hook `after`.
+- Langkah penghubung (S-03, R-16, tanpa `Verifikasi`): langkah 1 sampai 8, 11, 13 sampai 24, 27, dan 30 sampai 36 (membuka surface, baseline, Search `{runId}-116` untuk menemukan baris target, konfirmasi Delete, dan menunggu), serta langkah 7 (menunggu pencatatan yang bersifat eventual; durasi tercatat di Prerequisites).
+- Langkah 35 dan 39 adalah ganti akun eksplisit (S-07); sesi dipulihkan ke akun aktor pertama di hook `after`.
 - Pembagian TC: TC-AC-SG-134, 331, dan 332 (absence log Delete lainnya) ada di spec 091.
-- Spec ini 40 langkah. Alasan di atas sekitar 35 langkah: seluruh langkah satu topik (absence atas pelepasan Group Role akibat Delete) dan satu kelas (absence log); langkah membaca surface (buka surface, catat atau `Verifikasi` jumlah entri) pada langkah 1 sampai 2, 8 sampai 16, dan 22 sampai 27 (17 langkah) tidak dihitung menurut bagian 3 (prinsip 13, Smell); tanpa langkah itu langkah inti 23.
+- Spec ini 42 langkah. Alasan di atas sekitar 35 langkah: seluruh langkah satu topik (absence atas pelepasan Group Role akibat Delete) dan satu kelas (absence log); langkah membaca surface (buka surface, catat atau `Verifikasi` jumlah entri) pada langkah 1 sampai 2, 8 sampai 18, dan 24 sampai 29 (19 langkah) tidak dihitung menurut bagian 3 (prinsip 13, Smell); tanpa langkah itu langkah inti 23.
 - Temuan untuk QA:
   - Pre-setup TC tidak memuat email, password, atau akun login untuk `Nina Amelia` dan `Lia Marlina` (hanya nama user pada Pre-setup #21); TC-AC-SG-337 langkah 3 menuntut login sebagai keduanya. Spec menulis akun itu sebagai disediakan tim FE.
   - TC-AC-SG-335 dan TC-AC-SG-336 tidak menyebut nama Group Role yang ditugaskan pada `Nina Amelia` dan `Hapus Warn A`; spec memakai `Manage partner` (sama dengan TC-AC-SG-345 untuk `Joko Susilo`).

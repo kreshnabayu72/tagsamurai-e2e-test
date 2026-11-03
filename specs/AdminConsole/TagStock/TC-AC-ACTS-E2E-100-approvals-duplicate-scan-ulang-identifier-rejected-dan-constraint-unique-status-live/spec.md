@@ -16,7 +16,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Akun ganti di tengah spec: Distributor Toggle ON (Local Registration aktif; jalur approval normal tanpa bypass E2a) `distributorOn_automated_{namaCompany}@qwertysystem.net` (Pre-setup #9), password dari `Spectra.env.AC_DIST_ON_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Halaman awal: halaman Add Stock SKU `NFC-CARD-BETA-N2` (dari Stock List lewat row action Add Stock), dibuka oleh hook `beforeEach` suite.
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
@@ -64,7 +64,7 @@ coverage:
 29. Klik `[Submit]`
 30. Tunggu aksi selesai (Preview kosong dan tombol `[Submit]` aktif kembali atau halaman berpindah)
 31. Ganti akun: klik Logout
-32. Login sebagai Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`)
+32. Login sebagai Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`)
 33. Buka Approvals > TAG Stock > Tab Active
 34. Verifikasi Subject baru dibuat untuk UID `A1B2C3D4E5F8`
 35. Klik `Review` pada Subject baru

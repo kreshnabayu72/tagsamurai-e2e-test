@@ -15,7 +15,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (TAG > Stock lewat sidebar). Hook `after` mengembalikan sesi ke akun default suite (Total Control). Tidak ada ganti akun di tengah spec.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -49,6 +49,5 @@ coverage:
 - Simulator reader RFID hanya membentuk state sebelum Submit (precondition) dan bukan objek uji. Spec ini adalah spec resilience kelas b untuk TC-AC-ACTS-981, sehingga tidak memakai `P-9` (ketahanan terhadap kegagalan tulis masuk spec resilience menurut konvensi); spec hanya memuat satu blok.
 - Langkah penghubung (S-03): langkah 1 (baseline sebelum aksi, S-12), langkah 2 dan 3 (Search SKU untuk menemukan baris target, R-16, dan membuka halaman Add Stock), langkah 4 (menyetel kegagalan penulisan TAG Log), dan langkah 9 (melepas kegagalan, S-09).
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun perlu dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-981 menyebut toast `T-03` sebagai kode pesan; spec memakai teks "Error, failed to register TAGs." dari PRD bagian 7. TC tidak menyebut cara membaca "receipt"; spec memakai kemampuan baca BE.
   - TC-AC-ACTS-981 Precondition b menyebut halaman Add Stock dibuka dari Stock List > Add Stock; spec membuka lewat row action `Add Stock` setelah baseline.

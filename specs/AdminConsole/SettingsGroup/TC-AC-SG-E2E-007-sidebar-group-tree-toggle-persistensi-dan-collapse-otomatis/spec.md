@@ -20,7 +20,6 @@ coverage:
 - Akun aktor: Total Control Principal (Pre-setup #1) `totalControlGroup_automated_{namaCompany}@qwertysystem.net` (nama tampil `Budi Santoso`), password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-settings-group` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
-- Data Pre-setup (dibaca saja, tidak diubah): `Pohon Uji Utama` entitas Principal (#16, 14 group).
 - State yang diubah spec: preferensi Open/Collapsed Sidebar Group Tree akun aktor (tersimpan per user, TC-AC-SG-23) dan lebar jendela browser (TC-AC-SG-24, 1440px dan 1100px).
 - Kemampuan teknis: penghapusan preferensi Open/Collapsed Sidebar Group Tree akun aktor sehingga akun berstatus belum punya preferensi (Expected c TC-AC-SG-23), disediakan tim FE; mekanisme penyimpanan preferensi tidak disebut TC (lihat Temuan untuk QA). Hook `before` dan `after` spec ini menghapus preferensi itu; viewport dipulihkan ke 1440px di langkah akhir TC-AC-SG-24 dan di hook `after`.
 - Data Dinamis: tidak ada; spec tidak membuat data sehingga tidak ada seeding atau suffix `{runId}-007`.

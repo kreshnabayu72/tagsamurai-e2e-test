@@ -45,5 +45,5 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16) dan langkah 12 (reset Search, S-09).
 - Langkah 10 memakai toast sukses langkah 9 sebagai anchor absence baris (bagian 8b butir 2).
 - Temuan untuk QA:
-  - Email dan password akun Manage group Delete saja pada `Distributor Hapus Utama` tidak tertulis di Pre-setup; #6 adalah akun Delete-Only entitas Principal, sedangkan data yang dihapus ada di `Distributor Hapus Utama` (#21). Nama env `AC_SG_HAPUSMGD_PASSWORD` ditetapkan penulis dan perlu didaftarkan pemilik repo.
+  - Email dan password akun Manage group Delete saja pada `Distributor Hapus Utama` tidak tertulis di Pre-setup; #6 adalah akun Delete-Only entitas Principal, sedangkan data yang dihapus ada di `Distributor Hapus Utama` (#21). Pendaftaran nama env `AC_SG_HAPUSMGD_PASSWORD` mengikuti `suite.md`.
   - Pre-setup #21 memuat `Hapus Bulk 1` sampai `Hapus Bulk 6`; spec memakai dua node milik spec dengan nama TC bersuffix, bukan node Pre-setup.

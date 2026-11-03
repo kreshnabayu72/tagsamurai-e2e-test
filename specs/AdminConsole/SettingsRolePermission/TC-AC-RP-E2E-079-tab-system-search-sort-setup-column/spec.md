@@ -50,7 +50,7 @@ coverage:
 ### TC-AC-RP-274: Setup Column Tab System
 
 14. Buka Column Visibility
-15. Verifikasi daftar hanya memuat Role Name dan Users (tanpa kolom curated)
+15. Verifikasi daftar hanya memuat Role Name dan Users (tanpa kolom curated seperti Position, Division, Status, Modified By, dan Last Updated)
 16. Sembunyikan kolom Users
 17. Verifikasi kolom Users tidak tampil pada section Global Role dan Group Role
 

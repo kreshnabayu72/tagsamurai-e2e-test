@@ -20,7 +20,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Akun aktor kedua (Ganti akun): Distributor Toggle ON (Pre-setup #9) `distributorOn_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_ON_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -93,7 +93,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 2 (membuka Detail SKU), pencatatan baseline, "Tunggu aksi selesai", Search TAG Code, dan navigasi ke Activity Log, User Detail, dan modal Event Log. Urutan TC: 522, 667, 668, 666, 526, 525; TC-AC-ACTS-525 terakhir karena Ganti akun. Dataset U1 sampai U4 di-reset fixture BE sebelum TC-AC-ACTS-522; dataset 2 Available dan 2 Damaged/Missing (A sampai D) di-reset fixture BE sebelum TC-AC-ACTS-668.
 - P-1: asersi "tanpa System Log" TC-AC-ACTS-666 diasersi sebagai jumlah entri System Log sama dengan baseline di spec ini karena bergantung pada event Condition yang baru diterima pada TC yang sama; tidak ada spec absence untuk TC itu.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Cara simulasi reader (scan, pemutusan koneksi) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE tanpa mekanisme karangan.
   - TC-AC-ACTS-526 Expected "tidak ada entri Activate TAG atau Delete TAG" tidak menyebut kata kunci pencarian; spec memakai Search `Activate TAG` dan `Delete TAG` dengan anchor entri TAG Stock lain.
   - TC-AC-ACTS-525 "Event Log hanya memuat sesi Distributor itu" tidak menyebut baris pembanding; spec memakai satu baris sesi Distributor sebagai anchor lewat seeding.

@@ -20,7 +20,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Halaman awal spec: Approvals > TAG Stock > Tab Active (dibuka langkah 1).
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
 - Data Subject pending disiapkan seeding fixture BE (disediakan tim FE/BE): Subject dengan Existing Record Available (`TAG-4F7K2XQ9`, entitas `PT Principal`), Damaged/Missing, dan In Use (Client pemegang); Subject RFID dengan UID cocok dan Subject RFID dengan hanya EPC cocok; Subject NFC, BLE, dan GPS; Subject Register Duplicate dengan Existing Record didaftarkan `Budi Santoso` dan New Request dipindai `Sari Dewi` (Data Dinamis #3); Subject Register Duplicate dengan Existing Record unit In Use hasil BYO Jalur B milik Client `PT XYZ`.

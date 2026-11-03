@@ -16,7 +16,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Halaman kerja spec ini adalah Approvals > TAG Stock, dibuka oleh langkah 1 dan 2.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -83,7 +83,6 @@ coverage:
 - Beberapa TC berurutan memakai satu pembukaan halaman atau modal dengan state yang dibersihkan di antaranya (halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - Alasan di atas sekitar 35 langkah: spec ini 40 langkah dihitung dengan ekspansi; kedua blok membaca state dua sub-tab yang sama pada dataset yang sama dan hanya berbeda pemicunya (pindah sub-tab atau F5); sebagian besar langkah adalah `Verifikasi` per properti state yang dipulihkan (S-01).
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-788 dan 802 tidak menyebut opsi filter `Approval` Tab History dan opsi filter `Type` Tab Active; spec memakai opsi seed dan `Register Duplicate`.
   - TC-AC-ACTS-788 Expected b menyebut "jumlah baris" tanpa menyatakan nilai awal; spec mengasersi nilai yang sama seperti sebelum berpindah tab.
   - TC-AC-ACTS-788 tidak menyebut kolom yang disortir pada Tab History; spec tidak mengasersi sort di Tab History.

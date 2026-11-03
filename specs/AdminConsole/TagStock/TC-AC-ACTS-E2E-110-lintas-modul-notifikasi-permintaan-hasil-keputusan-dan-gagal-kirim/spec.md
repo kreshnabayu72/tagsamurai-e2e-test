@@ -19,7 +19,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Distributor Toggle ON (Local Registration aktif; jalur approval normal tanpa bypass E2a) `distributorOn_automated_{namaCompany}@qwertysystem.net` (Pre-setup #9), password dari `Spectra.env.AC_DIST_ON_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
-- Akun ganti di tengah spec: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
+- Akun ganti di tengah spec: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Akun ganti di tengah spec: Additional Approver tanpa capability `additionalApprover_automated_{namaCompany}@qwertysystem.net` (Pre-setup #4), password dari `Spectra.env.AC_AA_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Halaman awal: halaman Add Stock SKU `GPS-TRACK-CORE-G3` (Import/Manual IMEI), dibuka dari Stock List lewat row action Add Stock pada SKU itu oleh hook `beforeEach` suite.
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
@@ -37,7 +37,7 @@ coverage:
 3. Klik `[Submit]`
 4. Verifikasi toast "Success, 1 TAG has been sent for approval."
 5. Ganti akun: klik Logout
-6. Login sebagai Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`)
+6. Login sebagai Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`)
 7. Buka Notification Center
 8. Verifikasi notifikasi actionable baru muncul untuk Total Control (jumlah notifikasi bertambah terhadap baseline)
 9. Verifikasi Title `Duplicate identifier needs your review`

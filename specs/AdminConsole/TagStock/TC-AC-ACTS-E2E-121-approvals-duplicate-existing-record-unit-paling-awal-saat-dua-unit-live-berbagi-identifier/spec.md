@@ -16,7 +16,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Distributor Toggle ON (Local Registration aktif; jalur approval normal tanpa bypass E2a) `distributorOn_automated_{namaCompany}@qwertysystem.net` (Pre-setup #9), password dari `Spectra.env.AC_DIST_ON_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
-- Akun ganti di tengah spec: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
+- Akun ganti di tengah spec: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Halaman awal: halaman Add Stock SKU `RFID-ASSET-CORE-R5` (dari Stock List lewat row action Add Stock), dibuka oleh hook `beforeEach` suite.
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
 - Kelas d (harness eksternal): simulator reader RFID (scan, `[Add by Scan]`, `[Stop]`) disediakan tim FE; mekanismenya tidak dikarang di spec.
@@ -36,7 +36,7 @@ coverage:
 5. Verifikasi toast "Success, 1 TAG has been sent for approval."
 6. Verifikasi tidak ada toast error konflik unik ("Error, failed to register TAGs.")
 7. Ganti akun: klik Logout
-8. Login sebagai Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`)
+8. Login sebagai Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`)
 9. Buka Approvals > TAG Stock > Tab Active
 10. Verifikasi hanya satu Subject dibuat (jumlah Subject bertambah tepat 1)
 11. Klik `Review` pada Subject baru

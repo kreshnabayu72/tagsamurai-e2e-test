@@ -25,7 +25,7 @@ coverage:
 - Akun ganti di tengah spec: Role Lain tanpa capability `roleLain_automated_{namaCompany}@qwertysystem.net` (Pre-setup #11), password dari `Spectra.env.AC_ROLELAIN_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Akun ganti di tengah spec: Distributor Toggle ON (Local Registration aktif; jalur approval normal tanpa bypass E2a) `distributorOn_automated_{namaCompany}@qwertysystem.net` (Pre-setup #9), password dari `Spectra.env.AC_DIST_ON_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Akun ganti di tengah spec: Distributor Toggle OFF `distributorOff_automated_{namaCompany}@qwertysystem.net` (Pre-setup #10), password dari `Spectra.env.AC_DIST_OFF_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
-- Akun ganti di tengah spec: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
+- Akun ganti di tengah spec: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Pergantian akun ditulis sebagai langkah eksplisit.
 - Halaman awal: tidak ada halaman UI yang dibuka oleh langkah spec ini; seluruh langkah adalah request langsung lewat klien HTTP dengan sesi API aktor masing-masing akun (Partner tidak punya akses TAG > Stock).
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
 - Kemampuan teknis disediakan tim FE/BE: klien HTTP untuk request Add Stock, Audit Submit, Delete, Approve, daftar unit, Event Log, serta Generate QR dan Print/Mark as Printed; sesi API aktor per akun (login API password, token tidak dihitung sebagai sesi web); kemampuan baca status respons dan state data (jumlah unit, status unit, jumlah Subject) lewat fixture BE. Endpoint tidak dikarang di spec; nama dan bentuk request mengikuti kemampuan klien HTTP yang disediakan.
@@ -80,7 +80,7 @@ coverage:
 
 ### TC-AC-ACTS-708: Endpoint tulis QR tidak dikenali di Admin Console
 
-25. Ganti sesi API ke Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`)
+25. Ganti sesi API ke Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`)
 26. Panggil endpoint Generate QR atau Print/Mark as Printed
 27. Verifikasi resource tidak dikenali (bukan sekadar ditolak)
 

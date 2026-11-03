@@ -20,7 +20,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Distributor Suspended (Pre-setup #20) `distributorSuspended_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_SUSP_PASSWORD`.
-- Akun aktor kedua (Ganti akun): Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor kedua (Ganti akun): Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Distributor Suspended; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - State global: status Suspended entitas Distributor dan plan tier diatur lewat fixture BE sebelum blok TC terkait dan dipulihkan ke nilai awal di hook `after` spec ini (R-08); suite berjalan serial (`parallel: false`).
@@ -83,31 +83,33 @@ coverage:
 ### TC-AC-ACTS-758: Aksi sistem tanpa aktor (Duplicate Canceled) tidak diblokir saat entitas Suspended
 
 32. Ganti akun: Logout, lalu login sebagai Total Control (`Spectra.env.AC_TC_PASSWORD`)
-33. Kirim event Delete TAG dari Global Settings (Client menghapus tag Waiting di registri) hingga event diproses
-34. Buka Approvals > TAG Stock > Tab History
-35. Verifikasi Subject ditandai Canceled
-36. Verifikasi unit Waiting for Approval terkait dihapus
-37. Buka Activity Log
-38. Verifikasi entri `Duplicate Canceled` tercatat dengan Modified By `System`
+33. Buka Activity Log (filter Object `TAG Stock`) dan catat baseline jumlah entri `Duplicate Canceled`
+34. Kirim event Delete TAG dari Global Settings (Client menghapus tag Waiting di registri) hingga event diproses
+35. Buka Approvals > TAG Stock > Tab History
+36. Verifikasi Subject ditandai Canceled
+37. Verifikasi unit Waiting for Approval terkait dihapus
+38. Buka Activity Log
+39. Verifikasi jumlah entri `Duplicate Canceled` naik tepat 1 dari baseline langkah 33
+40. Verifikasi entri `Duplicate Canceled` teratas (urutan default `Date` terbaru) tercatat dengan Modified By `System`
 
 ### TC-AC-ACTS-736: Plan Gating tidak ada, perilaku Add Stock identik lintas semua tier plan
 
-39. Atur plan tier sesuai baris tabel Tier plan (mulai Starter) lewat fixture BE, lalu muat ulang halaman
-40. Buka halaman Add Stock SKU `RFID-ASSET-CORE-R5`
-41. Scan 1 TAG baru sesuai baris tabel
-42. Klik `[Stop]`
-43. Klik `[Submit]`
-44. Verifikasi toast sukses `Success, TAG has been registered.`
-45. Verifikasi tidak ada gating, upsell, atau limit berbeda pada halaman Add Stock
-46. Untuk setiap baris tabel Tier plan berikutnya (Growth, Professional, Enterprise) ulangi langkah 39 sampai 45
-47. Pulihkan plan tier ke nilai awal lewat fixture BE
+41. Atur plan tier sesuai baris tabel Tier plan (mulai Starter) lewat fixture BE, lalu muat ulang halaman
+42. Buka halaman Add Stock SKU `RFID-ASSET-CORE-R5`
+43. Scan 1 TAG baru sesuai baris tabel
+44. Klik `[Stop]`
+45. Klik `[Submit]`
+46. Verifikasi toast sukses `Success, TAG has been registered.`
+47. Verifikasi tidak ada gating, upsell, atau limit berbeda pada halaman Add Stock
+48. Untuk setiap baris tabel Tier plan berikutnya (Growth, Professional, Enterprise) ulangi langkah 41 sampai 47
+49. Pulihkan plan tier ke nilai awal lewat fixture BE
 
 ## Notes
 
-- Alasan di atas smell ~35 langkah: blok 138 sampai 837 berkelas h (Suspended) dengan satu akun dan dataset, blok 758 dan 736 sesudah Ganti akun berkelas h dan plan tier; TC-AC-ACTS-736 mengulang langkah 39 sampai 45 untuk empat tier (8b butir 7; parameter ada di tabel Prerequisites, ekspansi 4 kali tujuh langkah). Tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal.
+- Alasan di atas smell ~35 langkah: blok 138 sampai 837 berkelas h (Suspended) dengan satu akun dan dataset, blok 758 dan 736 sesudah Ganti akun berkelas h dan plan tier; TC-AC-ACTS-736 mengulang langkah 41 sampai 47 untuk empat tier (8b butir 7; parameter ada di tabel Prerequisites, ekspansi 4 kali tujuh langkah). Tiap blok TC berdiri sendiri dan tidak kehilangan makna bila blok lain gagal.
 - Langkah penghubung (S-03): langkah 1 (menyetel status Suspended), pembukaan dan penutupan modal, navigasi, dan pemulihan plan tier di langkah terakhir. Urutan TC: 138, 760, 837, 758, 736; blok 758 dan 736 sesudah Ganti akun.
+- Cara baca entri audit trail baru (S-12, S-14): jumlah entri dicatat sebelum aksi pemicu, selisihnya diverifikasi, lalu baris teratas urutan default `Date` terbaru dibaca; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya. Pada TC-AC-ACTS-758 selisih satu entri `Duplicate Canceled` setelah event Delete TAG diproses.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Langkah Uji TC-AC-ACTS-138 nomor 1 menyebut "Klik `[Add Stock]` pada SKU lalu Submit" tanpa menyebut TAG yang discan; spec men-scan satu TAG baru (simulator).
   - TC-AC-ACTS-758 dan 736 dijalankan sebagai Total Control walau TC-AC-ACTS-758 berprecondition entitas Distributor Suspended; Pre-setup #1 dipakai untuk melihat hasil di Approvals (Tab History) dan Activity Log.
   - TC-AC-ACTS-736 menyebut "1 TAG baru per tier" tanpa identifier; spec memakai EPC baru per tier yang disediakan simulator (identifier tetap tidak dapat dipakai ulang antar tier).

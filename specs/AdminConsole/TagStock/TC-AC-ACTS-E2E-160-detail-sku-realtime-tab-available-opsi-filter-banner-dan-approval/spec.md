@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Pre-setup: SKU `RFID-ASSET-CORE-R5` (Pre-setup #12; Device Name `RFID Asset Tag`, Brand `Core`, Model `R5`, Object TAG). Unit uji milik spec di-seed di hook `before` pada SKU itu (idempoten) dan dipulihkan fixture BE di hook `after`: 2 unit Available (A, B) dan 2 unit Damaged/Missing (C, D), seluruhnya eligible Audit. Aksi spec mengubah Last Updated SKU Pre-setup; efeknya dipulihkan fixture BE.
@@ -81,7 +81,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), "Reset dataset", pencatatan opsi dropdown. Langkah "Tutup modal Event Log" menutup modal sebelum pindah surface atau ganti akun (pemulihan state, S-09).
 - P-2: pelaku kedua yang hanya memicu perubahan state memakai sesi API aktor; tidak ada konteks UI kedua, sehingga tidak ada butir `P-2` selain pernyataan ini (kelas c ringan; hasil diasersi di sesi Admin 1).
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Pelaku kedua (Admin 2, Sari Dewi, PT Karya Utama) tidak ada di Pre-setup TC; spec memakai sesi API aktor yang disediakan tim FE/BE.
   - TC-AC-ACTS-735 menyebut "semua record dibuat oleh Budi S"; Data Dinamis #3 memuat `Budi Santoso`, `Sari Dewi`, `Andi Wijaya`, sehingga opsi `Sari D` diasersi persis dari TC.
   - TC-AC-ACTS-386 tidak menyebut apakah unit yang diaktivasi muncul di Tab In Use pada Expected butir selain "muncul di Tab In Use"; spec membuka Tab In Use untuk mengasersinya.

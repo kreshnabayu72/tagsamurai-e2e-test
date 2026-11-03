@@ -54,6 +54,7 @@ coverage:
 ## Notes
 
 - Langkah 1 diulang untuk 14 baris tabel "Total User per node" (idiom bagian 8b butir 7); dihitung dengan ekspansi spec ini 18 langkah. Memilih node baru memindahkan pilihan secara exclusive, sehingga tidak perlu melepas pilihan di antara iterasi; langkah 3 mengembalikan node `All Groups`.
+- Default Sidebar Group Tree: seluruh tree ter-expand (PRD §4.2b), sehingga spec ini tidak memuat langkah expand node.
 - Langkah 1 adalah aksi pembacaan tanpa asersi sendiri (nilai per node bukan butir Expected TC); penjumlahan 37 pada langkah 2 adalah Expected a.
 - Temuan untuk QA:
   - TC-AC-SG-32 Expected a menyebut "Penjumlahan Total User per node adalah 37" tanpa langkah yang menjumlahkan; langkah 2 dihitung dari nilai yang dicatat pada langkah 1.

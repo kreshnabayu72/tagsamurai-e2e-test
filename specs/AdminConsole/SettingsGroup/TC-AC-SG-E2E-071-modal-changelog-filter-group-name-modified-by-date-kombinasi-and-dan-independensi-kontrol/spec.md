@@ -24,7 +24,7 @@ coverage:
 - Flag Guided Tooltip halaman Settings > Group disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Pre-setup (dibaca saja): entitas `Distributor Changelog` (Pre-setup #42) dengan riwayat Changelog Group seed: 12 entri campuran Create/Edit/Delete oleh `Admin Alpha` (tampil `Admin A`), `Admin Bravo` (`Admin B`), dan `Admin Charlie` (`Admin C`), tanggal 14 Jul 2026 08:00 sampai 08:15 dan variasi tanggal lain, termasuk entri Create `Region B` dan `Branch 3`, Edit `Region A1` menjadi `Region A`, dan Delete `Branch 4` (snapshot path `Region B > Branch 4`). Total entri tidak diasersi sebagai angka absolut (S-12); baris seed dikenali lewat isi kolom. Tabel Data Uji Dinamis TC tidak memuat data untuk spec ini.
 - Data seed tambahan (disediakan tim FE/BE): sedikitnya satu entri Edit oleh `Admin A`, sedikitnya satu entri Create yang memuat kata `region`, dan entri pada 14 Jul 2026. Pre-setup #42 hanya menyebut tanggal 14 Jul 2026 08:00 sampai 08:15 dan variasi tanggal lain tanpa pembagian per pengubah (lihat Temuan untuk QA).
-- Kemampuan teknis: Fixture BE (pembacaan state BE, seeding dan pemulihan data milik spec) dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`). Nilai data uji dirujuk lewat `Fixture.settingsGroup.<kunci>` (berkas `fixtures/settingsGroup.json` belum ada; ditandai untuk tahap script).
+- Kemampuan teknis: Fixture BE (pembacaan state BE, seeding dan pemulihan data milik spec) dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`). Nilai data uji dirujuk lewat `Fixture.settingsGroup.<kunci>` (berkas `fixtures/settingsGroup.json` belum ada).
 - Suite berjalan serial (`parallel: false`); spec ini tidak mengubah state global dan tidak menulis data.
 
 ## Test Steps
@@ -43,30 +43,30 @@ coverage:
 
 ### TC-AC-SG-256: Filter Changelog by Modified By
 
-7. Klik ikon Filter pada toolbar modal
-8. Pilih Modified By `Admin A` lalu klik `[Apply]`
-9. Verifikasi sedikitnya satu baris tampil
-10. Verifikasi setiap baris yang tampil bernilai Modified By `Admin A`
-11. Buka dropdown Modified By
-12. Verifikasi opsi dropdown Modified By hanya user pengubah yang ada pada Changelog: `Admin A`, `Admin B`, dan `Admin C`
-13. Tutup dropdown Modified By lalu klik `[Clear Field]` dan `[Apply]` untuk membersihkan filter
+7. Pilih Modified By `Admin A` lalu klik `[Apply]`
+8. Verifikasi sedikitnya satu baris tampil
+9. Verifikasi setiap baris yang tampil bernilai Modified By `Admin A`
+10. Buka dropdown Modified By
+11. Verifikasi opsi dropdown Modified By hanya user pengubah yang ada pada Changelog: `Admin A`, `Admin B`, dan `Admin C`
+12. Tutup dropdown Modified By lalu klik `[Clear Field]` dan `[Apply]` untuk membersihkan filter
 
 ### TC-AC-SG-257: Filter Changelog by Date: rentang inklusif
 
-14. Klik ikon Filter pada toolbar modal
-15. Pilih rentang Date 14 Jul 2026 sampai 14 Jul 2026 lalu klik `[Apply]`
-16. Verifikasi sedikitnya satu baris tampil
-17. Verifikasi setiap baris yang tampil bertanggal 14 Jul 2026
-18. Klik `[Clear Field]` lalu klik `[Apply]` untuk membersihkan filter
+13. Pilih rentang Date 14 Jul 2026 sampai 14 Jul 2026 lalu klik `[Apply]`
+14. Verifikasi sedikitnya satu baris tampil
+15. Verifikasi setiap baris yang tampil bertanggal 14 Jul 2026
+16. Klik `[Clear Field]` lalu klik `[Apply]` untuk membersihkan filter
 
 ### TC-AC-SG-258: Kombinasi filter Changelog memakai logika AND dan dapat di-clear
 
-19. Klik ikon Filter pada toolbar modal
-20. Pilih Action `Edit` dan Modified By `Admin A`, lalu klik `[Apply]`
-21. Verifikasi sedikitnya satu baris tampil
-22. Verifikasi setiap baris yang tampil bernilai Action `Edit` dan Modified By `Admin A`
-23. Klik `[Clear Field]`
-24. Verifikasi seluruh field Filter Panel kosong (Date, Action, Group Name, dan Modified By)
+17. Pilih Action `Edit` dan Modified By `Admin A`, lalu klik `[Apply]`
+18. Verifikasi sedikitnya satu baris tampil
+19. Verifikasi setiap baris yang tampil bernilai Action `Edit` dan Modified By `Admin A`
+20. Klik `[Clear Field]`
+21. Verifikasi field Date kosong
+22. Verifikasi field Action kosong
+23. Verifikasi field Group Name kosong
+24. Verifikasi field Modified By kosong
 25. Klik `[Apply]` untuk memulihkan tabel tanpa filter
 
 ### TC-AC-SG-259: Kombinasi Search, Filter, Sort, dan Pagination Changelog saling independen
@@ -93,4 +93,5 @@ coverage:
   - Pre-setup #42 tidak membagi 12 entri seed per pengubah dan per Action; TC-AC-SG-256 dan TC-AC-SG-258 mengandaikan entri Edit oleh `Admin A`, dan TC-AC-SG-259 mengandaikan entri Create yang memuat `region`. Kebutuhan ini ditulis sebagai data seed tambahan yang disediakan tim FE/BE.
   - TC-AC-SG-259 menyuruh "pindah halaman" padahal hasil Search `region` dengan Filter Action `Create` pada seed 12 entri tidak dijamin lebih dari satu halaman; spec mengklik nomor halaman `1` dan mengasersi Search, Filter, dan sort tetap berlaku. Usulan: TC memakai kombinasi yang menghasilkan sedikitnya dua halaman.
   - TC-AC-SG-258 menyebut "setelah `[Clear Field]` seluruh field kosong" tanpa menyatakan tabel kembali tanpa filter sebelum `[Apply]`; spec hanya mengasersi field kosong dan menekan `[Apply]` sebagai langkah penghubung.
+  - Perilaku panel Filter sesudah `[Apply]` di popup/modal tidak dinyatakan PRD; spec mengasumsikan panel tetap terbuka (pola spec 051 sampai 054 dan 070), sehingga klik ikon Filter berikutnya tidak diulang. Perlu konfirmasi FE.
   - TC-AC-SG-259: frasa "hasil memenuhi Search AND Filter" tidak menyebut kolom yang dicocokkan Search; spec mengasersi kata `region` pada kolom mana pun yang dicari Search.

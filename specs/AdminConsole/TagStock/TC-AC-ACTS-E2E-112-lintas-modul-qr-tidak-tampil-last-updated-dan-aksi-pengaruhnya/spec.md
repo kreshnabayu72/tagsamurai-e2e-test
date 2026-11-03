@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control Principal `totalControl_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor: Total Control Principal `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (Pre-setup #1), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Halaman awal spec: TAG > Stock (Stock List, dibuka hook `beforeEach` suite).
 - Hook suite (flag Guided Tooltip, sesi API aktor, simulator reader, fixture BE, jam server dan jam browser, pemulihan state global) dinyatakan di `suite.md`; spec ini merujuknya dan tidak mengubahnya kecuali yang tertulis di Prerequisites ini.
 - SKU `RFID-ASSET-CORE-R5` (Data Pre-setup #12) dengan unit milik spec ini, disiapkan seeding fixture BE (disediakan tim FE/BE): unit Available untuk Activate TAG, dua unit untuk Combine, unit untuk Mark as Damaged/Missing, dan unit untuk lima aksi pada TC-AC-ACTS-700 (Waiting for Approval, Approve, Reject, Canceled, Delete). Modul TAG > QR berisi QR Client (sedikitnya satu QR ter-generate). Fixture `fixtures/tag-stock.json` belum ada dan dibuat di tahap script.

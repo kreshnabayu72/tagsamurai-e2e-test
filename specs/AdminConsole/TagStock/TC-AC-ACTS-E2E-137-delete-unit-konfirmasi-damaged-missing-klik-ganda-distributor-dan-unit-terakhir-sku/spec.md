@@ -19,7 +19,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Akun aktor kedua (Ganti akun): Distributor Toggle ON (Pre-setup #9) `distributorOn_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_ON_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -96,7 +96,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), pencatatan baseline Total Registered dan saldo, navigasi ke Stock List, Device Allocation, dan Activity Log, serta "Tunggu toast lama hilang" dan "Tunggu aksi selesai". Aksi Delete memakai unit milik spec; TC-AC-ACTS-373 memakai SKU Pre-setup tanpa unit yang diberi satu unit seeding sehingga Last Updated SKU itu berubah, dipulihkan fixture BE (S-06). Urutan TC: 361, 362, 371, 373, 372; TC-AC-ACTS-372 diletakkan terakhir karena membutuhkan Ganti akun ke Distributor.
 - P-5 butir b: TC-AC-ACTS-372 (request langsung ke server sebagai bagian Security, objek uji ringan kelas a tanpa harness eksternal) berada di spec fungsional Delete dengan permukaan yang sama; satu-satunya TC kelas a di spec ini. Asersi request langsung hanya status respons dan state data (8b butir 1).
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Identifier dan hitungan tetap (Data Uji Dinamis) dipakai ulang lintas TC dan tidak dapat bersuffix per run; kebenaran hitungan hanya terjamin bila fixture BE mereset dataset sebelum spec.
   - TC-AC-ACTS-361 Precondition menyebut "Total Registered SKU = 10" dan Expected `9`; spec mengasersi relatif terhadap baseline (S-12). Post Condition ("Receipt batch registrasi tidak dihapus") tanpa langkah observasi tidak diasersi.
   - TC-AC-ACTS-361 Expected butir d menulis entri Activity Log `Delete Stock` per unit untuk Delete lewat row action; pencatatan Delete by Scan dan Bulk Delete (satu entri level-sesi) ada di spec 141, 144, dan 145.

@@ -15,7 +15,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -58,7 +58,6 @@ coverage:
 - P-1: asersi absence TC-AC-ACTS-945 butir c tetap di spec ini karena bergantung pada sesi Add Stock seluruhnya Waiting yang baru dibangun lewat simulator pemindai pada langkah 6 (state berat).
 - Penulisan sesi Add Stock dengan Success lebih dari 0 diuji di spec 219.
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-945 Expected c (tidak ada entri log aktivitas `Add Stock` untuk Quantity 0) tidak punya langkah membaca Activity Log dan tidak menyebut jalur menunya; spec membuka Activity Log dengan filter Object `TAG Stock` (idiom suite) untuk mencatat baseline (langkah 1) dan membandingkan jumlah entri (langkah 16), dengan anchor positif tabel Activity Log berisi baris (langkah 15) dan baris Event Log yang tampil lebih dulu (langkah 10).
   - TC-AC-ACTS-945 tidak menyebut cara membaca jumlah baris Event Log sebelum aksi (baseline); spec memakai kemampuan baca fixture BE dan mencatatnya sebelum Submit.
   - TC-AC-ACTS-945 tidak merinci langkah UI Add Stock selain `[Submit]`; spec mengikuti rumusan TC.

@@ -22,7 +22,7 @@ coverage:
 - Flag Guided Tooltip halaman Settings > Group disetel `seen` oleh hook `before` suite dan dipulihkan hook `after` suite (suite.md).
 - Akses akun aktor ke Activity Log Admin Console tersedia (Pre-setup #40).
 - Data milik spec (seed lewat Fixture BE di hook `before` pada entitas Distributor Hapus Utama; setiap nama bersuffix `{runId}-091`; Pre-setup #21 tidak diubah):
-  - `Hapus Warn A {runId}-091` (tanpa entitas; Group Role `Manage partner` pada `Joko Susilo`, user Pre-setup #21) untuk TC-AC-SG-134.
+  - `Hapus Warn A {runId}-091` (tanpa entitas; Group Role `Manage partner` pada `Joko Susilo`, user Pre-setup #21; Group Role dipakai sebagai precondition TC, tidak diasersi) untuk TC-AC-SG-134.
   - `Hapus Campur 2 {runId}-091` (tanpa entitas) dan `Hapus Campur M2 {runId}-091` (satu Client Active `Client Campur {runId}-091`) untuk TC-AC-SG-331.
   - `Hapus Member A {runId}-091` (satu Client Active `Client Mawar {runId}-091`) untuk TC-AC-SG-332.
 - Baseline audit trail permanen (kemampuan baca jumlah entri disediakan tim FE/BE): jumlah total entri Changelog Group (BC) dan jumlah entri Activity Log dengan saringan Object `Group` (BA) dicatat sebelum aksi pertama (TC-AC-SG-134); baseline kedua (BC2 dan BA2) dicatat ulang sebelum aksi pemicu TC-AC-SG-332. Entri milik spec dikenali lewat nama group bersuffix unik (baseline nol, S-12).

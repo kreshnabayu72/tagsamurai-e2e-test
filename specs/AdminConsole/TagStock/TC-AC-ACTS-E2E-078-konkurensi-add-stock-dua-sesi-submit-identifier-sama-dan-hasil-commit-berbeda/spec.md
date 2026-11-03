@@ -40,78 +40,79 @@ coverage:
 
 ## Test Steps
 
-1. Catat baseline: Total Registered SKU `RFID-ASSET-CORE-R5` dan `GPS-TRACK-CORE-G3`, serta jumlah Subject pending di Approvals > TAG Stock Tab Active (lewat kemampuan baca BE)
-2. Ketik Search `RFID-ASSET-CORE-R5`, tekan Enter
-3. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
-
-### TC-AC-ACTS-178: Dua sesi scan Submit bersamaan dengan identifier sama
-
-4. Klik `[Add by Scan]`
-5. Scan TAG A
-6. Klik `[Stop]`
-7. Ganti ke sesi UI Admin B (konteks browser kedua): login sebagai Admin B, buka TAG > Stock
-8. Ketik Search `RFID-ASSET-CORE-R5`, tekan Enter
-9. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
-10. Klik `[Add by Scan]`
-11. Scan TAG A
-12. Klik `[Stop]`
-13. Ganti ke sesi Admin A, klik `[Submit]`
-14. Tunggu aksi selesai
-15. Ganti ke sesi Admin B, klik `[Submit]`
-16. Verifikasi unit milik Admin A terdaftar OK (Total Registered SKU bertambah satu dari baseline)
-17. Verifikasi identifier milik Admin B diperlakukan sebagai match cross-session (jumlah Subject pending bertambah satu dari baseline)
-18. Verifikasi tidak ada unit ganda (Total Registered SKU tetap bertambah satu dari baseline)
-19. Verifikasi tidak ada toast error konflik di sesi Admin B
-20. Catat jumlah Subject pending sebagai baseline sesudah TC-AC-ACTS-178 (lewat kemampuan baca BE)
-21. Tutup sesi Admin B
-
-### TC-AC-ACTS-727: Hasil commit berbeda dari badge di list
-
-22. Klik Breadcrumb `Stock`
-23. Ganti isi kotak search dengan `RFID-ASSET-CORE-R5`, tekan Enter
-24. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
-25. Klik `[Add by Scan]`
-26. Scan TAG B (belum terdaftar, badge OK)
-27. Scan TAG C (cocok unit existing, badge Waiting for Approval)
-28. Klik `[Stop]`
-29. Submit TAG B lewat sesi API Admin B hingga unit tersimpan
-30. Tunggu aksi selesai
-31. Klik `[Submit]`
-32. Verifikasi dialog `Partial Register`: `1 TAG matched an existing record and will be sent for approval. Register the remaining 1 TAG?` (hitungan dari badge saat `[Submit]` diklik)
-33. Klik `[Continue]`
-34. Verifikasi toast `Success, 2 TAGs have been sent for approval.`
-35. Verifikasi toast sukses pendaftaran `Success, TAG has been registered.` tidak tampil
-36. Verifikasi TAG B dan TAG C sama-sama menjadi Waiting for Approval (jumlah Subject pending bertambah dua dari baseline sesudah TC-AC-ACTS-178, langkah 20)
-37. Catat jumlah Subject pending sebagai baseline sesudah TC-AC-ACTS-727 (lewat kemampuan baca BE)
-38. Klik Breadcrumb `Stock`
+1. Catat baseline: Total Registered SKU `GPS-TRACK-CORE-G3` dan jumlah Subject pending di Approvals > TAG Stock Tab Active (lewat kemampuan baca BE)
+2. Ketik Search `GPS-TRACK-CORE-G3`, tekan Enter
+3. Klik (⋯) baris SKU `GPS-TRACK-CORE-G3`, klik `Add Stock`
 
 ### TC-AC-ACTS-715: Dua submit GPS dengan IMEI sama bersamaan
 
-39. Ganti isi kotak search dengan `GPS-TRACK-CORE-G3`, tekan Enter
-40. Klik (⋯) baris SKU `GPS-TRACK-CORE-G3`, klik `Add Stock`
-41. Tambahkan IMEI uji lewat Manual Entry untuk membentuk Preview satu baris OK
-42. Ganti ke sesi UI Admin B (konteks browser kedua): buka TAG > Stock
-43. Ketik Search `GPS-TRACK-CORE-G3`, tekan Enter
-44. Klik (⋯) baris SKU `GPS-TRACK-CORE-G3`, klik `Add Stock`
-45. Tambahkan IMEI uji yang sama lewat Manual Entry
-46. Ganti ke sesi Admin A, klik `[Submit]` (Admin 1)
-47. Tunggu aksi selesai
-48. Ganti ke sesi Admin B, klik `[Submit]` (Admin 2)
-49. Verifikasi unit Admin 1 terdaftar OK (Total Registered SKU GPS bertambah satu dari baseline)
-50. Verifikasi IMEI Admin 2 diperlakukan sebagai match cross-session (Waiting), bukan error konflik (jumlah Subject pending bertambah satu dari baseline sesudah TC-AC-ACTS-727, langkah 37)
-51. Tutup sesi Admin B
+4. Tambahkan IMEI uji lewat Manual Entry untuk membentuk Preview satu baris OK
+5. Ganti ke sesi UI Admin B (konteks browser kedua): login sebagai Admin B, buka TAG > Stock
+6. Ketik Search `GPS-TRACK-CORE-G3`, tekan Enter
+7. Klik (⋯) baris SKU `GPS-TRACK-CORE-G3`, klik `Add Stock`
+8. Tambahkan IMEI uji yang sama lewat Manual Entry
+9. Ganti ke sesi Admin A, klik `[Submit]` (Admin 1)
+10. Tunggu aksi selesai
+11. Ganti ke sesi Admin B, klik `[Submit]` (Admin 2)
+12. Verifikasi unit Admin 1 terdaftar OK (Total Registered SKU GPS bertambah satu dari baseline langkah 1)
+13. Verifikasi IMEI Admin 2 diperlakukan sebagai match cross-session (Waiting), bukan error konflik (jumlah Subject pending bertambah satu dari baseline langkah 1)
+14. Tutup sesi Admin B
+
+### TC-AC-ACTS-178: Dua sesi scan Submit bersamaan dengan identifier sama
+
+15. Catat baseline: Total Registered SKU `RFID-ASSET-CORE-R5` dan jumlah Subject pending di Approvals > TAG Stock Tab Active (lewat kemampuan baca BE)
+16. Klik Breadcrumb `Stock`
+17. Ganti isi kotak search dengan `RFID-ASSET-CORE-R5`, tekan Enter
+18. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
+19. Klik `[Add by Scan]`
+20. Scan TAG A
+21. Klik `[Stop]`
+22. Ganti ke sesi UI Admin B (konteks browser kedua): login sebagai Admin B, buka TAG > Stock
+23. Ketik Search `RFID-ASSET-CORE-R5`, tekan Enter
+24. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
+25. Klik `[Add by Scan]`
+26. Scan TAG A
+27. Klik `[Stop]`
+28. Ganti ke sesi Admin A, klik `[Submit]`
+29. Tunggu aksi selesai
+30. Ganti ke sesi Admin B, klik `[Submit]`
+31. Verifikasi unit milik Admin A terdaftar OK (Total Registered SKU bertambah satu dari baseline langkah 15)
+32. Verifikasi identifier milik Admin B diperlakukan sebagai match cross-session (jumlah Subject pending bertambah satu dari baseline langkah 15)
+33. Verifikasi tidak ada unit ganda (Total Registered SKU tetap bertambah satu dari baseline langkah 15)
+34. Verifikasi tidak ada toast error konflik di sesi Admin B
+35. Catat jumlah Subject pending sebagai baseline sesudah TC-AC-ACTS-178 (lewat kemampuan baca BE)
+36. Tutup sesi Admin B
+
+### TC-AC-ACTS-727: Hasil commit berbeda dari badge di list
+
+37. Klik Breadcrumb `Stock`
+38. Ganti isi kotak search dengan `RFID-ASSET-CORE-R5`, tekan Enter
+39. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
+40. Klik `[Add by Scan]`
+41. Scan TAG B (belum terdaftar, badge OK)
+42. Scan TAG C (cocok unit existing, badge Waiting for Approval)
+43. Klik `[Stop]`
+44. Submit TAG B lewat sesi API Admin B hingga unit tersimpan
+45. Tunggu aksi selesai
+46. Klik `[Submit]`
+47. Verifikasi dialog `Partial Register`: `1 TAG matched an existing record and will be sent for approval. Register the remaining 1 TAG?` (hitungan dari badge saat `[Submit]` diklik)
+48. Klik `[Continue]`
+49. Verifikasi toast `Success, 2 TAGs have been sent for approval.`
+50. Verifikasi toast sukses pendaftaran `Success, TAG has been registered.` tidak tampil
+51. Verifikasi TAG B dan TAG C sama-sama menjadi Waiting for Approval (jumlah Subject pending bertambah dua dari baseline sesudah TC-AC-ACTS-178, langkah 35)
 
 ## Notes
 
+- Urutan TC dalam spec: 715 (GPS, tanpa hardware, baseline sendiri), 178, 727 (RFID) (P-9, S-10, S-12).
 - Konteks kedua: sesi UI Admin B (browser kedua) dipakai pada TC-AC-ACTS-178 dan TC-AC-ACTS-715 karena kedua admin memindai atau menyiapkan Preview dan submit secara bergantian (race dua sesi adalah objek uji). TC-AC-ACTS-727 memakai sesi API untuk Admin B karena hasil hanya diasersi di sesi Admin A (pemicu, bukan konteks kedua).
 - Admin B tidak ada di Pre-setup TC dan ditulis "disediakan tim FE" (akun kedua). Suite berjalan serial.
-- Langkah penghubung (S-03): langkah 2 dan 3 (membuka halaman Add Stock), pencatatan baseline (termasuk baseline sesudah TC-AC-ACTS-178 dan TC-AC-ACTS-727, S-12), `[Stop]`, pembukaan ulang halaman Add Stock sesudah Submit (Breadcrumb `Stock`, Search, row action `Add Stock`), penutupan sesi Admin B, dan "Tunggu aksi selesai" antar aktor.
+- Langkah penghubung (S-03): langkah 2 dan 3 (membuka halaman Add Stock), pencatatan baseline per blok (baseline GPS di langkah 1, baseline RFID di langkah 15, dan baseline sesudah TC-AC-ACTS-178 di langkah 35 untuk TC-AC-ACTS-727, S-12), `[Stop]`, pembukaan ulang halaman Add Stock sesudah Submit (Breadcrumb `Stock`, Search, row action `Add Stock`), penutupan sesi Admin B, dan "Tunggu aksi selesai" antar aktor.
 - Temuan untuk QA:
   - TC-AC-ACTS-178 dan TC-AC-ACTS-715 tidak menyebut akun Admin B (Distributor atau Total Control); Total Control memakai bypass E2a sehingga Admin B diasumsikan Distributor kedua dengan jalur approval normal.
   - TC-AC-ACTS-715 tidak menyebut IMEI uji dan cara membentuk Preview.
   - TC-AC-ACTS-727 memakai istilah "Admin B sudah men-submit" tanpa mekanisme; spec memakai sesi API Admin B.
   - TC-AC-ACTS-178 Expected (b) "tanpa unit ganda" tidak punya langkah observasi selain Total Registered; spec memakai kemampuan baca BE.
 - Alasan di atas sekitar 35 langkah (8b butir 7): semua blok satu kelas harness (konkurensi dua sesi pada Add Stock) dengan pola serupa; tiap blok berdiri sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Langkah penghubung tambahan (S-14): Klik Breadcrumb `Stock` (langkah 38) dari Detail SKU RFID sebelum Search SKU GPS; Search di Stock List hanya tersedia sesudah kembali ke daftar.
-- `P-9` (simulator scan sebagai pembentuk state): TC-AC-ACTS-178 dan TC-AC-ACTS-727 memakai simulator scan RFID hanya untuk membentuk list Scanned TAG (TAG A; TAG B dan TAG C) sebelum Submit; objek uji adalah race dua sesi dan hasil commit yang berbeda dari badge, bukan perangkat scan. Blok GPS (TC-AC-ACTS-715) tidak membutuhkan hardware tetapi tetap di akhir: baseline Subject pending-nya berantai dari baseline sesudah TC-AC-ACTS-727 (langkah 37), sehingga memindahkannya ke awal menuntut pencatatan ulang baseline seluruh blok dan mengubah asersi selisih; state antar blok dipulihkan lewat langkah penghubung (Breadcrumb `Stock`, Search, row action `Add Stock`).
+- Langkah penghubung tambahan (S-14): Klik Breadcrumb `Stock` (langkah 16 dan 37) dari Detail SKU sebelum Search SKU RFID; Search di Stock List hanya tersedia sesudah kembali ke daftar.
+- `P-9` (simulator scan sebagai pembentuk state): TC-AC-ACTS-178 dan TC-AC-ACTS-727 memakai simulator scan RFID hanya untuk membentuk list Scanned TAG (TAG A; TAG B dan TAG C) sebelum Submit; objek uji adalah race dua sesi dan hasil commit yang berbeda dari badge, bukan perangkat scan. Blok GPS (TC-AC-ACTS-715) tidak membutuhkan hardware dan diletakkan lebih dulu dengan baseline sendiri (langkah 1), tidak berantai dari baseline blok RFID (S-12); blok yang membutuhkan simulator berada sesudahnya dengan baseline sendiri (langkah 15 dan 35), dan state antar blok dipulihkan lewat langkah penghubung (Breadcrumb `Stock`, Search, row action `Add Stock`).
 - Temuan untuk QA (identifier): identifier TAG tetap (EPC, UID, MAC, IMEI Data Uji Dinamis #1, #2, #4) dipakai bersama banyak TC dan tidak dapat bersuffix `{runId}` (S-12); state awal (unit tidak ada atau ada) dijamin seeding idempotent dan fixture BE di hook `before`.

@@ -19,7 +19,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Data Pre-setup: SKU `RFID-ASSET-CORE-R5` (Pre-setup #12; Device Name `RFID Asset Tag`, Brand `Core`, Model `R5`, Object TAG). Unit uji milik spec di-seed di hook `before` pada SKU itu (idempoten) dan dipulihkan fixture BE di hook `after`: 2 unit Available (A, B) dan 2 unit Damaged/Missing (C, D), seluruhnya eligible Audit. Aksi spec mengubah Last Updated SKU Pre-setup; efeknya dipulihkan fixture BE.
@@ -103,7 +103,6 @@ coverage:
 - P-8: seluruh TC di spec ini membutuhkan Handheld Reader USB `HR-RFID-01` terdeteksi di Sync Panel (simulator USB) hanya untuk membentuk precondition; objek uji adalah penulisan Usage Event, bukan reader USB. Blok TC kegagalan penulisan (TC-AC-ACTS-866 dan 867) diletakkan paling akhir sehingga kegagalan simulator tidak menutupi blok sebelumnya.
 - P-1: bagian "tidak ada unit, receipt, saldo, atau entri Activity Log tersimpan" (TC-AC-ACTS-866) dan "tidak ada entri level-sesi, baris Event Log, dan baris Tab Usage" (TC-AC-ACTS-867) diasersi sebagai jumlah sama dengan baseline di spec ini karena bergantung pada state kegagalan penulisan yang dibangun fixture BE sebelum aksi TC yang sama.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun perlu dikonfirmasi tim FE.
   - Cara simulasi reader (scan, pemutusan koneksi) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE tanpa mekanisme karangan.
   - Identifier dan hitungan tetap (Data Uji Dinamis) dipakai ulang lintas TC dan tidak dapat bersuffix per run; kebenaran hitungan hanya terjamin bila fixture BE mereset dataset sebelum spec.
   - Langkah Uji TC-AC-ACTS-860 nomor 1 menyebut `[Add by Scan]` dan TC-AC-ACTS-861 menyebut Tab Usage tanpa menyebut cara menutup dialog; spec mengikuti TC dan tidak menambah langkah.

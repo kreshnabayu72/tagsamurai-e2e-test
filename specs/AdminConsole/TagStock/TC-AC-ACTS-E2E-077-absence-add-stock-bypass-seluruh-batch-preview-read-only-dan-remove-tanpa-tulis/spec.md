@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Akun aktor kedua (Ganti akun): Distributor Toggle ON (Pre-setup #9) `distributorOn_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_DIST_ON_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite. Hook `after` memulihkan sesi ke Total Control.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -57,7 +57,7 @@ coverage:
 10. Verifikasi tidak ada toast T-04
 11. Verifikasi dua unit baru Available dengan TAG Code baru di Tab Available
 12. Buka Activity Log
-13. Verifikasi dua entri `Duplicate Approved` baru tampil
+13. Verifikasi jumlah entri `Duplicate Approved` bertambah dua dari baseline langkah 1, lalu dua baris teratas (urutan default `Date` terbaru, dibaca sebagai himpunan tanpa mengandalkan urutan di antaranya) adalah dua entri `Duplicate Approved` baru
 14. Verifikasi tidak ada entri `Add Stock` baru (jumlah entri `Add Stock` sama dengan baseline)
 15. Buka modal Event Log SKU (Tab Add Stock)
 16. Verifikasi baris existing Event Log tampil
@@ -78,7 +78,7 @@ coverage:
 28. Klik `[Submit]`
 29. Verifikasi toast `Success, TAG has been registered.`
 30. Buka Activity Log
-31. Verifikasi entri `Duplicate Approved` baru tampil (dua entri bertambah dari baseline langkah 24)
+31. Verifikasi jumlah entri `Duplicate Approved` bertambah dua dari baseline langkah 24, lalu dua baris teratas (urutan default `Date` terbaru, dibaca sebagai himpunan tanpa mengandalkan urutan di antaranya) adalah dua entri `Duplicate Approved` baru
 32. Verifikasi tidak ada entri `Add Stock` baru (jumlah entri `Add Stock` sama dengan baseline langkah 24)
 33. Buka modal Event Log SKU (Tab Add Stock)
 34. Verifikasi baris existing Event Log tampil
@@ -127,6 +127,7 @@ coverage:
 - Spec kelas g (P-5 butir a): pemicu scan dan Manual Entry hanya membentuk kondisi yang diasersi tidak tercatat. Tiap TC punya baseline sendiri; baseline TC-AC-ACTS-946 (langkah 24) dan TC-AC-ACTS-878 (langkah 40) dicatat ulang di awal blok masing-masing, sesudah TC sebelumnya, karena audit trail dan Tab Usage bertambah oleh Submit TC sebelumnya (S-12).
 - Langkah penghubung (S-03): langkah 2 dan 3 (membuka halaman Add Stock), pencatatan baseline, `[Stop]`, penutupan modal Event Log, pembukaan ulang halaman Add Stock sesudah Submit, dan Search `GPS-TRACK-CORE-G3` untuk menemukan baris target (R-16). Hook `after` memulihkan sesi ke Total Control.
 - Urutan TC dalam spec: 779, 946, 878, 773 (akun Total Control lebih dulu; Distributor terakhir, S-10).
+- Cara baca entri audit trail baru (S-12, S-14): jumlah dicatat sebelum aksi pemicu, selisihnya diverifikasi, lalu baris teratas urutan default `Date` terbaru dibaca; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya. Pada TC-AC-ACTS-779 dan TC-AC-ACTS-946 dua entri `Duplicate Approved` ditulis satu aksi dan dapat jatuh dalam menit yang sama, sehingga dua baris teratas diasersi sebagai himpunan.
 - Alasan di atas sekitar 35 langkah (8b butir 7): semua blok kelas g dengan pemicu simulator reader dan Import atau Manual Entry; tiap blok punya baseline sendiri dan berdiri sendiri.
 - Temuan untuk QA:
   - TC-AC-ACTS-878 Expected menulis "Activity Log, System Log, atau Activity Log" (Activity Log disebut dua kali); spec mengasersi Activity Log dan System Log.

@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite (TAG > Stock). Hook `after` memulihkan sesi ke akun default suite (Total Control).
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Kemampuan teknis: Fixture BE (seeding idempoten dan pemulihan SKU, unit, Subject, saldo Stock Ledger, dan sesi log) serta pembacaan state BE yang tidak terlihat di UI disediakan tim FE/BE tanpa endpoint karangan (lihat `suite.md`).
@@ -76,7 +76,6 @@ coverage:
 
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU), navigasi antar SKU dan Stock List, `[Cancel]` dialog, pembatalan seleksi, "Putuskan semua reader", dan "Tunggu toast lama hilang". Urutan TC: 815, 818, 817, 819; TC-AC-ACTS-819 terakhir karena membutuhkan kondisi tanpa reader.
 - Temuan untuk QA:
-  - Email akun Total Control memakai Pre-setup #1 (`totalControl_automated_{namaCompany}`); suite Admin Console lain mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`. Kesamaan akun dikonfirmasi tim FE.
   - Cara simulasi reader (scan, pemutusan koneksi) tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE tanpa mekanisme karangan.
   - TC-AC-ACTS-817 dan 819 tidak mendaftar unit GPS dan unit BLE di Data Uji Dinamis #5 (hanya SKU RFID); spec memakai unit hasil seeding pada SKU tersebut.
   - TC-AC-ACTS-819 menulis "ulangi untuk BLE-BEACON-ALPHA-B1" dan membuka dua SKU dalam satu TC; spec menuliskannya sebagai dua blok langkah (RFID lalu BLE) dan mengasersi teks toast V-03 dan V-04 persis seperti TC.

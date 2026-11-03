@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Env var `AC_TC_PASSWORD` dipakai juga oleh suite Admin Console lain dan sudah terdaftar; password tidak ditulis di spec atau fixture.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (TAG > Stock lewat sidebar). Hook `after` mengembalikan sesi ke akun default suite (Total Control). Tidak ada ganti akun di tengah spec.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
@@ -72,7 +72,6 @@ coverage:
 - Spec ini memuat asersi isi berkas (kelas f) saja; nama berkas dan ekstensi diasersi di spec 180 (TC-AC-ACTS-422 dan 423), 195 (TC-AC-ACTS-468 dan 469), dan 211 (TC-AC-ACTS-651 dan 652). Isi sel Stock List, Event Log, dan Approvals Tab Active ada di spec 037 dan 260.
 - Langkah penghubung (S-03): langkah 1 (membuka Detail SKU `Fixture.tagStock.skuNfc`), langkah 9 dan 10 (kembali ke Stock List dan membuka Tab `In Use` SKU RFID), dan langkah 19 (membuka Approvals > TAG Stock Tab `History`) menyiapkan halaman kerja; tidak ada `Verifikasi` karena hanya menyiapkan state.
 - Temuan untuk QA (S-15):
-  - Email akun Total Control di Pre-setup TC adalah `totalControl_automated_{namaCompany}`, sedangkan `.env.example` mendaftarkan `AC_TC_PASSWORD` untuk `totalControlAdminConsole_automated_{namaCompany}`; kesamaan akun perlu dikonfirmasi tim FE. Pre-setup #1 menyebut "822 TC" yang tidak cocok dengan jumlah TC aktif.
   - TC-AC-ACTS-424 memakai SKU `NFC-CARD-BETA-N2` dengan satu unit Waiting for Approval W1; unit non-RFID dan unit W1 disediakan fixture BE karena TC tidak menyebut identitasnya.
   - TC-AC-ACTS-470 Expected a menyatakan "`-` bila belum sinkron" dan Expected d "`-` untuk BYO" tanpa menyebut unit seed; disediakan fixture BE.
   - Pembaca isi berkas dan format tanggal General Settings tidak disebut TC; disediakan tim FE.

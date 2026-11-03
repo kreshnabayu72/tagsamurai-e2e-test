@@ -19,7 +19,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Total Control (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
+- Akun aktor: Total Control (Pre-setup #1) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-tag-stock` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - SKU Pre-setup #12 `RFID-ASSET-CORE-R5` (Device Name `RFID Asset Tag`, Brand `Core`, Model `R5`, TAG Type RFID).
@@ -99,26 +99,24 @@ coverage:
 39. Verifikasi halaman Detail SKU Tab Available tampil tanpa dialog Unsaved Changes
 40. Verifikasi unit TAG F tampil di Tab Available berstatus Available
 41. Klik Breadcrumb `Stock`
-42. Ganti isi kotak search dengan `RFID-ASSET-CORE-R5`, tekan Enter
-43. Klik (⋯) baris SKU `RFID-ASSET-CORE-R5`, klik `Add Stock`
 
 ### TC-AC-ACTS-720: SKU sudah tidak valid saat Submit
 
-44. Ketik Search `RFID-TEMP-UJI-R9`, tekan Enter
-45. Klik (⋯) baris SKU `RFID-TEMP-UJI-R9`, klik `Add Stock`
-46. Klik `[Add by Scan]`, scan TAG G, lalu klik `[Stop]`
-47. Hapus SKU `RFID-TEMP-UJI-R9` lewat sesi API aktor Admin lain hingga SKU terhapus
-48. Tunggu aksi selesai
-49. Klik `[Submit]`
-50. Verifikasi toast netral `This SKU is no longer available.`
-51. Verifikasi Stock List tampil
-52. Ketik Search `RFID-TEMP-UJI-R9`, tekan Enter
-53. Verifikasi empty state `No results found` (SKU tidak ada di Stock List)
-54. Verifikasi tidak ada unit, receipt, atau log tersimpan untuk TAG G lewat kemampuan baca BE
+42. Ganti isi kotak search dengan `RFID-TEMP-UJI-R9`, tekan Enter
+43. Klik (⋯) baris SKU `RFID-TEMP-UJI-R9`, klik `Add Stock`
+44. Klik `[Add by Scan]`, scan TAG G, lalu klik `[Stop]`
+45. Hapus SKU `RFID-TEMP-UJI-R9` lewat sesi API aktor Admin lain hingga SKU terhapus
+46. Tunggu aksi selesai
+47. Klik `[Submit]`
+48. Verifikasi toast netral `This SKU is no longer available.`
+49. Verifikasi Stock List tampil
+50. Ganti isi kotak search dengan `RFID-TEMP-UJI-R9`, tekan Enter
+51. Verifikasi empty state `No results found` (SKU tidak ada di Stock List)
+52. Verifikasi tidak ada unit, receipt, atau log tersimpan untuk TAG G lewat kemampuan baca BE
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 2 dan 3 (membuka halaman Add Stock) serta pembukaan ulang halaman Add Stock sesudah Submit (Breadcrumb `Stock`, Search, row action `Add Stock`), pencatatan baseline, `[Stop]`, menahan dan melepas respons Submit TC-AC-ACTS-174 (hanya untuk mengamati state loading), penutupan modal Event Log, dan Search `RFID-TEMP-UJI-R9` untuk menemukan baris target (R-16).
+- Langkah penghubung (S-03): langkah 2 dan 3 (membuka halaman Add Stock) serta pembukaan ulang halaman Add Stock sesudah Submit (Breadcrumb `Stock`, Search, row action `Add Stock`), Breadcrumb `Stock` ke Stock List sebelum TC-AC-ACTS-720, pencatatan baseline, `[Stop]`, menahan dan melepas respons Submit TC-AC-ACTS-174 (hanya untuk mengamati state loading), penutupan modal Event Log, dan Search `RFID-TEMP-UJI-R9` untuk menemukan baris target (R-16).
 - Volume 1.001 TAG (TC-AC-ACTS-732, kelas e) ada di spec 264.
 - Alasan di atas sekitar 35 langkah (8b butir 7): semua blok satu kelas harness (simulator RFID) dan satu dataset; tiap blok Submit berdiri sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pelaku kedua (Admin yang menghapus SKU) lewat sesi API aktor yang disediakan tim FE/BE; bukan konteks kedua (P-2 tidak dipakai).
