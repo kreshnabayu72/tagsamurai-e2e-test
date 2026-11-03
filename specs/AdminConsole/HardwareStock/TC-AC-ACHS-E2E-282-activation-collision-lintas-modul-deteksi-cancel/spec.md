@@ -36,7 +36,7 @@ coverage:
 | `akun defaultUserPrincipal` | #2 | Akun Principal Default User | `Fixture.hardwareStock.account.p02.defaultUser.email`, `Fixture.hardwareStock.account.p02.defaultUser.fullName` |
 
 - Waktu: Resolved At TC-561 dibandingkan dengan waktu Cancel Request yang dicatat sesudah aksi dengan toleransi satu menit; jam server dan jam browser sinkron (S-12). Jendela SSE 5 detik adalah pilihan spec (bukan nilai TC atau PRD).
-- Baseline: jumlah baris Subject dan nilai lencana (badge counter) menu Approvals dicatat sebelum aksi (S-12).
+- Baseline: nilai lencana (badge counter) menu Approvals dicatat sebelum aksi (S-12).
 
 ## Test Steps
 
@@ -44,7 +44,7 @@ coverage:
 
 1. Buka Approvals > Hardware Stock
 2. Klik Tab `Active`
-3. Catat nilai lencana (badge counter) menu Approvals dan jumlah entri pada footer tabel
+3. Catat nilai lencana (badge counter) menu Approvals
 4. Client mengaktivasi perangkat dengan identifier `SN-E2E-{runId}-282A` (sudah Active di `Fixture.hardwareStock.p23.client[2].name`) dari akun Client `Fixture.hardwareStock.p23.client[1].name` lewat sesi API hingga tersimpan; tunggu aksi selesai
 5. Muat ulang halaman (F5)
 6. Verifikasi Subject `Activation Collision` dengan Matched Identifier `SN-E2E-{runId}-282A` baru tampil di Tab Active dengan Requested By nama Client pemohon `Fixture.hardwareStock.p23.client[1].name`
@@ -52,49 +52,53 @@ coverage:
 
 ### TC-AC-ACHS-561: Cancel Request oleh Client
 
-8. Catat jumlah unit pada Summary bar SKU `Fixture.hardwareStock.p16.a[2].sku` (Stock Detail) sebagai nilai awal
-9. Buka Approvals > Hardware Stock
-10. Klik Tab `Active`
-11. Verifikasi Subject `SN-E2E-{runId}-282B` tampil di Tab Active
-12. Client menjalankan Cancel Request pada Subject `SN-E2E-{runId}-282B` di Global Settings lewat sesi API hingga pembatalan tersimpan; catat waktu pembatalan; tunggu aksi selesai
-13. Tunggu 5 detik tanpa memuat ulang halaman
-14. Verifikasi tidak ada toast ke approver
-15. Muat ulang halaman (F5)
-16. Verifikasi Subject `SN-E2E-{runId}-282B` hilang dari Tab Active (Subject lain tetap tampil sebagai pembanding)
-17. Klik Tab `History`
-18. Ketik Search `SN-E2E-{runId}-282B`, tekan Enter
-19. Verifikasi Subject tampil di Tab History dengan Approval `Canceled`
-20. Verifikasi Approver `—`
-21. Verifikasi Resolved At sesuai waktu Cancel Request pada langkah 12 (toleransi satu menit)
-22. Klik `(←)` pada kotak Search
-23. Buka Hardware > Stock, klik row action `Detail` pada SKU `Fixture.hardwareStock.p16.a[2].sku`
-24. Verifikasi unit di Stock Detail tidak berubah: Summary bar sama dengan nilai langkah 8
+8. Buka Hardware > Stock, ketik Search `Fixture.hardwareStock.p16.a[2].sku`, tekan Enter, lalu klik row action `Detail` pada SKU `Fixture.hardwareStock.p16.a[2].sku`
+9. Catat jumlah unit pada Summary bar SKU `Fixture.hardwareStock.p16.a[2].sku` (Stock Detail) sebagai nilai awal
+10. Buka Approvals > Hardware Stock
+11. Klik Tab `Active`
+12. Verifikasi Subject `SN-E2E-{runId}-282B` tampil di Tab Active
+13. Client menjalankan Cancel Request pada Subject `SN-E2E-{runId}-282B` di Global Settings lewat sesi API hingga pembatalan tersimpan; catat waktu pembatalan; tunggu aksi selesai
+14. Tunggu 5 detik tanpa memuat ulang halaman
+15. Verifikasi tidak ada toast ke approver
+16. Muat ulang halaman (F5)
+17. Verifikasi sedikitnya satu Subject lain tampil di Tab Active (pembanding)
+18. Verifikasi Subject `SN-E2E-{runId}-282B` hilang dari Tab Active
+19. Klik Tab `History`
+20. Ketik Search `SN-E2E-{runId}-282B`, tekan Enter
+21. Verifikasi Subject tampil di Tab History dengan Approval `Canceled`
+22. Verifikasi Approver `—`
+23. Verifikasi Resolved At sesuai waktu Cancel Request pada langkah 13 (toleransi satu menit)
+24. Klik `(←)` pada kotak Search
+25. Buka Hardware > Stock, ketik Search `Fixture.hardwareStock.p16.a[2].sku`, tekan Enter, lalu klik row action `Detail` pada SKU `Fixture.hardwareStock.p16.a[2].sku`
+26. Verifikasi unit di Stock Detail tidak berubah: Summary bar sama dengan nilai langkah 9
 
 ### TC-AC-ACHS-562: Cancel Request setelah keputusan approver ditolak
 
-25. Buka Approvals > Hardware Stock, lalu klik Tab `Active`
-26. Approver Principal (`Fixture.hardwareStock.account.p02.defaultUser.fullName`) menyetujui (Approve) Subject `SN-E2E-{runId}-282C` lewat sesi API hingga keputusan tersimpan; tunggu aksi selesai
-27. Client menjalankan Cancel Request pada Subject `SN-E2E-{runId}-282C` lewat sesi API
-28. Verifikasi Cancel Request ditolak server (respons penolakan; kode status tidak ditetapkan TC)
-29. Klik Tab `History`
-30. Ketik Search `SN-E2E-{runId}-282C`, tekan Enter
-31. Verifikasi Subject tampil dengan Approval `Approved`, bukan `Canceled`
-32. Klik `(←)` pada kotak Search
-33. Logout, lalu login sebagai Client `Fixture.hardwareStock.p23.client[1].name` (akun Client disediakan tim FE); tunggu aksi selesai
+27. Buka Approvals > Hardware Stock, lalu klik Tab `Active`
+28. Approver Principal (`Fixture.hardwareStock.account.p02.defaultUser.fullName`) menyetujui (Approve) Subject `SN-E2E-{runId}-282C` lewat sesi API hingga keputusan tersimpan; tunggu aksi selesai
+29. Client menjalankan Cancel Request pada Subject `SN-E2E-{runId}-282C` lewat sesi API
+30. Verifikasi Cancel Request ditolak server (respons penolakan; kode status tidak ditetapkan TC)
+31. Klik Tab `History`
+32. Ketik Search `SN-E2E-{runId}-282C`, tekan Enter
+33. Verifikasi Subject tampil dengan Approval `Approved`, bukan `Canceled`
+34. Klik `(←)` pada kotak Search
+35. Logout, lalu login sebagai Client `Fixture.hardwareStock.p23.client[1].name` (akun Client disediakan tim FE); tunggu aksi selesai
 
 ### TC-AC-ACHS-560 (lanjutan): sisi Client
 
-34. Buka Global Settings > Hardware sebagai Client `Fixture.hardwareStock.p23.client[1].name`
-35. Verifikasi Client melihat status `Waiting for Approval` pada perangkat `SN-E2E-{runId}-282A`
+36. Buka Global Settings > Hardware sebagai Client `Fixture.hardwareStock.p23.client[1].name`
+37. Verifikasi Client melihat status `Waiting for Approval` pada perangkat `SN-E2E-{runId}-282A`
 
 ## Notes
 
 - Sumber: `admin-console/hardware-stock/TestCases/tc-hardware-stock.md` (TC-560, 561, 562). Tidak ada TC hanya-BE di spec ini.
-- Keyword Search pada langkah 18 dan 30 memakai Serial Number penuh Subject milik spec (`SN-E2E-{runId}-282B`, `SN-E2E-{runId}-282C`), bukan potongan; bersuffix `{runId}` sehingga hanya memuat Subject milik spec ini.
-- Pembagian TC lintas spec: TC-560 butir c ada di akhir spec ini (langkah 34 dan 35) karena ganti akun ke Client dilakukan paling akhir; butir a dan b TC-560 ada di langkah 6 dan 7.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03): langkah 1, 2, 9, 10 (langkah TC "Pastikan Tab `Active` aktif" ditulis `Klik Tab`, `[KEPUTUSAN 2026-11-02]`), 17, 23, 25, 29, 34 (navigasi), 3, 8, 12 (baseline dan mencatat waktu), 4, 12, 26, 27 (pelaku kedua lewat sesi API, R-20), 5, 15 (memuat ulang), 13 (jendela SSE 5 detik sebelum asersi absence, butir 8b), 18 dan 30 (Search untuk menemukan baris target, R-16), 22 dan 32 (mengosongkan Search lewat `(←)`), 33 (ganti akun).
-- Anchor positif asersi absence (butir 8b nomor 2): langkah 11 dan 16 (Subject lain tampil) untuk absence Subject di Tab Active; langkah 14 (tidak ada toast) memakai langkah 11 sebagai anchor bahwa halaman Approvals termuat.
+- Keyword Search pada langkah 20 dan 32 memakai Serial Number penuh Subject milik spec (`SN-E2E-{runId}-282B`, `SN-E2E-{runId}-282C`), bukan potongan; bersuffix `{runId}` sehingga hanya memuat Subject milik spec ini.
+- Pembagian TC lintas spec: TC-560 butir c ada di akhir spec ini (langkah 36 dan 37) karena ganti akun ke Client dilakukan paling akhir; butir a dan b TC-560 ada di langkah 6 dan 7.
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03): langkah 1, 2, 8, 10, 11, 19, 25, 27, 31, 36 (navigasi; TC-560 langkah 2 dan TC-561 langkah 2 menulis "Buka Approvals > Hardware Stock Tab Active" dan spec menulis Tab sebagai `Klik Tab` terpisah pada langkah 2, 11, dan 27, `[KEPUTUSAN 2026-11-02]`), 3, 9, 13 (baseline dan mencatat waktu), 4, 13, 28, 29 (pelaku kedua lewat sesi API, R-20), 5, 16 (memuat ulang), 14 (jendela SSE 5 detik sebelum asersi absence, butir 8b), 20 dan 32 (Search untuk menemukan baris target, R-16), 24 dan 34 (mengosongkan Search lewat `(←)`), 35 (ganti akun).
+- Langkah 8 dan 25 (Search SKU `Fixture.hardwareStock.p16.a[2].sku` lalu row action `Detail`) adalah langkah penghubung (8b.13, R-16, S-14): langkah 8 membuka Stock Detail sebelum Summary bar dicatat pada langkah 9; Search dibuat di dalam langkah karena Stock List memuat lebih dari satu halaman.
+- Anchor positif asersi absence (butir 8b nomor 2): langkah 12 dan 17 (Subject lain tampil) untuk absence Subject di Tab Active (langkah 18); langkah 15 (tidak ada toast) memakai langkah 12 sebagai anchor bahwa halaman Approvals termuat.
 - Post Condition TC-560 (notifikasi ke Total Control dan Additional Approver, dicek di TC modul notifikasi) dan TC-561 (identitas Canceled, notifikasi pending diselesaikan) tidak punya langkah observasi di TC dan tidak diasersi; dicatat di Temuan untuk QA.
+- Spec ini 37 langkah, lebih dari 35 langkah. Alasan: tiga TC (TC-560 sampai TC-562) satu alur Activation Collision lintas modul dengan satu dataset unit; sesi Client, Approvals, dan Stock Detail harus berurutan dan langkah penghubung navigasi (S-14) tidak bisa dipisah ke spec lain.
 - Temuan untuk QA:
   - TC-560 tidak menyebut identifier yang bentrok; spec memakai `SN-E2E-{runId}-282A` (Active di `Fixture.hardwareStock.p23.client[2].name`) dan Client `Fixture.hardwareStock.p23.client[1].name` sebagai pemohon.
   - TC-562 butir a ("Cancel ditolak") tidak menyebut bentuk penolakan (dialog atau status respons); spec mengasersi penolakan server pada level request dan state Tab History (K-1 tidak berlaku karena TC bukan kelas a).

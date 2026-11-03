@@ -27,7 +27,7 @@ coverage:
 - Data milik spec (S-06, S-12): target aksi tulis di atas (`SN-ZEBRA-RFD40-{runId}-276A` sampai `SN-ZEBRA-RFD40-{runId}-276G`, unit dan Subject terkait) di-seed hook `before` dengan struktur yang sama dengan baris Pre-setup #17, #18, dan #21 yang digantikannya; data Pre-setup #16 sampai #22 dan #27 tidak diubah spec ini. Mekanisme seeding disediakan tim BE/FE tanpa endpoint karangan dan kunci fixture-nya belum ada (Temuan untuk QA).
 - Cleanup (R-08): hook `after` menghapus data milik spec di atas secara idempotent (unit, Subject, dan entri pending bersuffix `{runId}-276`). Entri Activity Log adalah audit trail permanen dan tidak dihapus.
 - Unit bypass E2a (TC-140) memakai Serial Number bersuffix `SN-ZEBRA-FX9600-{runId}-276E` yang menggantikan Serial Number literal dari Tabel Data Uji Dinamis (S-12).
-- Baseline (S-12): jumlah entri Activity Log Object `Hardware` per Name dan Action dicatat hook `before` sebelum aksi sumber yang menghasilkan entri itu; asersi "tidak ada entri" dan "tepat satu entri" (langkah 7, 30, 33) memakai selisih terhadap baseline (+1 per Name dan Action; audit trail permanen).
+- Baseline (S-12): jumlah entri Activity Log Object `Hardware` per Name dan Action dicatat hook `before` sebelum aksi sumber yang menghasilkan entri itu; asersi "tidak ada entri" dan "tepat satu entri" (langkah 3, 10, 14, 19, 24, 29, 34, 35, 39) memakai selisih terhadap baseline (+1 per Name dan Action, +2 untuk dua entri `Waiting for Approval` pada langkah 3; audit trail permanen).
 - Data Pre-setup dirujuk lewat parameter (S-12: tanpa nama literal Pre-setup, tanpa pengecualian S-12); nilai dibaca dari tabel Pre-setup TC saat script dibuat.
 
 | Parameter | Pre-setup | Peran dan atribut penentu (nilai dibaca penulis script dari tabel Pre-setup TC) | Kunci fixture |
@@ -49,62 +49,72 @@ coverage:
 
 ### TC-AC-ACHS-535: Waiting for Approval
 
-3. Cari entri terbaru dengan Name `Fixture.hardwareStock.p16.a[4].deviceName` untuk Waiting for Approval hasil Sync oleh `Fixture.hardwareStock.account.p06.additionalApproverCreate.shortName`
-4. Verifikasi entri Register Duplicate: Name `Fixture.hardwareStock.p16.a[4].deviceName`, Action `Waiting for Approval`, Field `Status`, Old Value `—`, New Value `Waiting for Approval`
-5. Verifikasi Modified By staf pemicu Sync `Fixture.hardwareStock.account.p06.additionalApproverCreate.shortName`, bukan user Client
-6. Cari entri terbaru `Waiting for Approval` dengan Name `Fixture.hardwareStock.p16.a[4].deviceName` hasil aktivasi Client
-7. Verifikasi entri Activation Collision memiliki field yang sama (Name, Action `Waiting for Approval`, Field `Status`, Old Value `—`, New Value `Waiting for Approval`) dan jumlah entri bertambah 1 dari baseline Name dan Action tersebut (baseline dicatat hook sebelum aksi aktivasi Client)
-8. Verifikasi Modified By entri Activation Collision adalah user Client pelaku
+3. Verifikasi jumlah entri `Waiting for Approval` Name `Fixture.hardwareStock.p16.a[4].deviceName` bertambah 2 dari baseline hook sebelum aksi sumber pertama (satu entri Register Duplicate hasil Sync, satu entri Activation Collision hasil aktivasi Client)
+4. Cari entri `Waiting for Approval` dengan Name `Fixture.hardwareStock.p16.a[4].deviceName` hasil Sync oleh `Fixture.hardwareStock.account.p06.additionalApproverCreate.shortName` pada himpunan dua baris teratas urutan `Date` terbaru
+5. Verifikasi entri Register Duplicate: Name `Fixture.hardwareStock.p16.a[4].deviceName`, Action `Waiting for Approval`, Field `Status`, Old Value `—`, New Value `Waiting for Approval`
+6. Verifikasi Modified By staf pemicu Sync `Fixture.hardwareStock.account.p06.additionalApproverCreate.shortName`, bukan user Client
+7. Cari entri `Waiting for Approval` dengan Name `Fixture.hardwareStock.p16.a[4].deviceName` hasil aktivasi Client pada himpunan dua baris teratas yang sama
+8. Verifikasi entri Activation Collision memiliki field yang sama (Name, Action `Waiting for Approval`, Field `Status`, Old Value `—`, New Value `Waiting for Approval`)
+9. Verifikasi Modified By entri Activation Collision adalah user Client pelaku
 
 ### TC-AC-ACHS-536: Duplicate Approved
 
-9. Cari entri terbaru dengan Name `SN-ZEBRA-RFD40-{runId}-276A`
-10. Verifikasi entri: Action `Duplicate Approved`, Object `Hardware`, Field `Status`, Old Value `Waiting for Approval`, New Value `Available`
-11. Verifikasi Modified By approver `Fixture.hardwareStock.account.p01.totalControl.shortName`
+10. Verifikasi jumlah entri Action `Duplicate Approved` Name `SN-ZEBRA-RFD40-{runId}-276A` bertambah 1 dari baseline (nol, nama bersuffix unik)
+11. Cari entri dengan Name `SN-ZEBRA-RFD40-{runId}-276A` pada himpunan baris teratas urutan `Date` terbaru sebanyak selisih langkah 10
+12. Verifikasi entri: Action `Duplicate Approved`, Object `Hardware`, Field `Status`, Old Value `Waiting for Approval`, New Value `Available`
+13. Verifikasi Modified By approver `Fixture.hardwareStock.account.p01.totalControl.shortName`
 
 ### TC-AC-ACHS-537: Duplicate Rejected
 
-12. Cari entri terbaru dengan Name `SN-ZEBRA-TC52-{runId}-276B`
-13. Verifikasi entri: Action `Duplicate Rejected`, Object `Hardware`, Field `Status`, Old Value `Waiting for Approval`, New Value `Rejected`
-14. Verifikasi Modified By approver `Fixture.hardwareStock.account.p01.totalControl.shortName`
-15. Verifikasi alasan penolakan tidak ditampilkan sebagai baris `Rejection Reason` terpisah pada entri Activity Log (alasan hanya terlihat sebagai Approval Note di Tab History)
+14. Verifikasi jumlah entri Action `Duplicate Rejected` Name `SN-ZEBRA-TC52-{runId}-276B` bertambah 1 dari baseline (nol, nama bersuffix unik)
+15. Cari entri dengan Name `SN-ZEBRA-TC52-{runId}-276B` pada himpunan baris teratas urutan `Date` terbaru sebanyak selisih langkah 14
+16. Verifikasi entri: Action `Duplicate Rejected`, Object `Hardware`, Field `Status`, Old Value `Waiting for Approval`, New Value `Rejected`
+17. Verifikasi Modified By approver `Fixture.hardwareStock.account.p01.totalControl.shortName`
+18. Verifikasi alasan penolakan tidak ditampilkan sebagai baris `Rejection Reason` terpisah pada entri Activity Log (alasan hanya terlihat sebagai Approval Note di Tab History)
 
 ### TC-AC-ACHS-538: Device Activation Approved
 
-16. Cari entri terbaru dengan Name `Fixture.hardwareStock.p16.a[4].deviceName` untuk Action `Device Activation Approved`
-17. Verifikasi entri: Action `Device Activation Approved`, Object `Hardware`, Field `Status`, Old Value `Waiting for Approval`, New Value `Active`
-18. Verifikasi Name adalah Device Name
-19. Verifikasi Modified By approver `Fixture.hardwareStock.account.p01.totalControl.shortName`
-
-### TC-AC-ACHS-539: Device Activation Rejected
-
-20. Cari entri terbaru dengan Name `Fixture.hardwareStock.p16.a[3].deviceName` untuk Action `Device Activation Rejected`
-21. Verifikasi entri: Action `Device Activation Rejected`, Object `Hardware`, Field `Status`, Old Value `Waiting for Approval`, New Value `Rejected`
+19. Verifikasi jumlah entri Action `Device Activation Approved` Name `Fixture.hardwareStock.p16.a[4].deviceName` bertambah 1 dari baseline hook sebelum aksi sumber
+20. Cari entri dengan Name `Fixture.hardwareStock.p16.a[4].deviceName` untuk Action `Device Activation Approved` pada himpunan baris teratas urutan `Date` terbaru sebanyak selisih langkah 19
+21. Verifikasi entri: Action `Device Activation Approved`, Object `Hardware`, Field `Status`, Old Value `Waiting for Approval`, New Value `Active`
 22. Verifikasi Name adalah Device Name
 23. Verifikasi Modified By approver `Fixture.hardwareStock.account.p01.totalControl.shortName`
 
+### TC-AC-ACHS-539: Device Activation Rejected
+
+24. Verifikasi jumlah entri Action `Device Activation Rejected` Name `Fixture.hardwareStock.p16.a[3].deviceName` bertambah 1 dari baseline hook sebelum aksi sumber
+25. Cari entri dengan Name `Fixture.hardwareStock.p16.a[3].deviceName` untuk Action `Device Activation Rejected` pada himpunan baris teratas urutan `Date` terbaru sebanyak selisih langkah 24
+26. Verifikasi entri: Action `Device Activation Rejected`, Object `Hardware`, Field `Status`, Old Value `Waiting for Approval`, New Value `Rejected`
+27. Verifikasi Name adalah Device Name
+28. Verifikasi Modified By approver `Fixture.hardwareStock.account.p01.totalControl.shortName`
+
 ### TC-AC-ACHS-540: Duplicate Approved bypass E2a
 
-24. Cari entri terbaru dengan Name `SN-ZEBRA-FX9600-{runId}-276E`
-25. Verifikasi entri `Duplicate Approved` tampil: Field `Status`, Old Value `—`, New Value `Available`
-26. Verifikasi Modified By `Fixture.hardwareStock.account.p01.totalControl.shortName` (bukan `System`)
-27. Verifikasi entri memuat teks `Approved by Fixture.hardwareStock.account.p01.totalControl.fullName (Total Control — requester)`
-28. Verifikasi tidak ada entri `Waiting for Approval` sintetis untuk Name `SN-ZEBRA-FX9600-{runId}-276E` (jumlah entri `Waiting for Approval` sama dengan baseline)
+29. Verifikasi jumlah entri Action `Duplicate Approved` Name `SN-ZEBRA-FX9600-{runId}-276E` bertambah 1 dari baseline (nol, nama bersuffix unik)
+30. Cari entri dengan Name `SN-ZEBRA-FX9600-{runId}-276E` pada himpunan baris teratas urutan `Date` terbaru sebanyak selisih langkah 29
+31. Verifikasi entri `Duplicate Approved` tampil: Field `Status`, Old Value `—`, New Value `Available`
+32. Verifikasi Modified By `Fixture.hardwareStock.account.p01.totalControl.shortName` (bukan `System`)
+33. Verifikasi entri memuat teks `Approved by Fixture.hardwareStock.account.p01.totalControl.fullName (Total Control — requester)`
+34. Verifikasi tidak ada entri `Waiting for Approval` sintetis untuk Name `SN-ZEBRA-FX9600-{runId}-276E` (jumlah entri `Waiting for Approval` sama dengan baseline)
 
 ### TC-AC-ACHS-541: Device Activation Canceled dan Device Released
 
-29. Periksa entri terbaru Action `Device Activation Canceled` dengan Name `Fixture.hardwareStock.p16.a[4].deviceName` untuk Subject `SN-ZEBRA-RFD40-{runId}-276F`
-30. Verifikasi entri `Device Activation Canceled`: Name Device Name, Field `Status`, Old Value `Waiting for Approval`, New Value `Canceled`, dan jumlah entri bertambah 1 dari baseline Name dan Action tersebut
-31. Verifikasi Modified By entri `Device Activation Canceled` adalah user Client pelaku
-32. Periksa entri Action `Device Released` dengan Name `SN-ZEBRA-RFD40-{runId}-276G`
-33. Verifikasi entri `Device Released`: Name Serial Number, Field `Status`, Old Value `In Use`, New Value `Available`, dan jumlah entri Name tersebut bertambah 1 dari baseline
-34. Verifikasi Modified By entri `Device Released` adalah user Client pelaku
+35. Verifikasi jumlah entri Action `Device Activation Canceled` Name `Fixture.hardwareStock.p16.a[4].deviceName` bertambah 1 dari baseline hook sebelum aksi sumber
+36. Periksa entri Action `Device Activation Canceled` dengan Name `Fixture.hardwareStock.p16.a[4].deviceName` untuk Subject `SN-ZEBRA-RFD40-{runId}-276F` pada himpunan baris teratas urutan `Date` terbaru sebanyak selisih langkah 35
+37. Verifikasi entri `Device Activation Canceled`: Name Device Name, Field `Status`, Old Value `Waiting for Approval`, New Value `Canceled`
+38. Verifikasi Modified By entri `Device Activation Canceled` adalah user Client pelaku
+39. Verifikasi jumlah entri Action `Device Released` Name `SN-ZEBRA-RFD40-{runId}-276G` bertambah 1 dari baseline
+40. Periksa entri Action `Device Released` dengan Name `SN-ZEBRA-RFD40-{runId}-276G` pada himpunan baris teratas urutan `Date` terbaru sebanyak selisih langkah 39
+41. Verifikasi entri `Device Released`: Name Serial Number, Field `Status`, Old Value `In Use`, New Value `Available`
+42. Verifikasi Modified By entri `Device Released` adalah user Client pelaku
 
 ## Notes
 
 - Sumber: `admin-console/hardware-stock/TestCases/tc-hardware-stock.md` (TC-535 sampai TC-541). Tidak ada TC hanya-BE di spec ini.
-- `P-1`: langkah 28 (asersi tidak ada entri `Waiting for Approval` sintetis, TC-540 butir b) bergantung pada state berat bypass E2a yang dibangun di hook spec ini; dipenuhi dengan `Verifikasi` berbaseline di spec asal dengan anchor positif entri `Duplicate Approved` pada langkah 25 (S-05, butir 8b nomor 2). Langkah 15 (TC-537 butir c) adalah asersi tidak adanya baris `Rejection Reason`, diasersi pada entri yang sama dengan anchor langkah 13.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03): langkah 1 dan 2 (navigasi dan Filter), 3, 6, 9, 12, 16, 20, 24, 29, 32 (mencari entri target, R-16).
+- `P-1`: langkah 34 (asersi tidak ada entri `Waiting for Approval` sintetis, TC-540 butir b) bergantung pada state berat bypass E2a yang dibangun di hook spec ini; dipenuhi dengan `Verifikasi` berbaseline di spec asal dengan anchor positif entri `Duplicate Approved` pada langkah 31 (S-05, butir 8b nomor 2). Langkah 18 (TC-537 butir c) adalah asersi tidak adanya baris `Rejection Reason`, diasersi pada entri yang sama dengan anchor langkah 16.
+- Cara baca entri baru (S-14 `[KEPUTUSAN 2026-11-03]`): selisih jumlah entri terhadap baseline dibuktikan lebih dulu (langkah 3, 10, 14, 19, 24, 29, 35, 39); entri dibaca pada himpunan baris teratas urutan `Date` terbaru sebanyak selisih itu, tanpa mengandalkan urutan di antaranya karena beberapa entri bisa jatuh dalam menit yang sama (langkah 4, 7, 11, 15, 20, 25, 30, 36, 40). Selisih pada langkah 3 (+2), 10, 14, 19, 24, 29, 35, 39 memakai Action dan Name aksi sumber di Prerequisites; angka selisih untuk TC-536 sampai TC-540 diturunkan dari satu aksi sumber per entri dan dicatat sebagai asersi tambahan pendahulu pembacaan (S-03).
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03): langkah 1 dan 2 (navigasi dan Filter), 4, 7, 11, 15, 20, 25, 30, 36, 40 (mencari entri target, R-16).
+- Spec ini 42 langkah, lebih dari 35 langkah. Alasan: tujuh TC (TC-535 sampai TC-541) satu surface Activity Log Object `Hardware`; tiap blok memakai unit milik spec berbeda dan dimulai dengan Verifikasi selisih baseline (S-12, S-14), sehingga langkah bertambah tanpa menambah klaim TC.
 - Temuan untuk QA:
   - TC-535 sampai TC-541 memakai Dependensi ke TC aksi (TC-143, 560, 180, 182, 183, 184, 140, 561, 557); aksi sumber dijalankan lewat sesi API aktor karena spec tidak boleh bergantung pada spec lain; mekanismenya (Sync tanpa perangkat USB, aksi Client) tidak didefinisikan di TC, PRD, atau LLD.
   - TC-535 dan TC-541 menyebut "user Client pelaku" tanpa nama akun; akun Client disediakan tim FE.
