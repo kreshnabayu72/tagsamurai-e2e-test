@@ -1,0 +1,109 @@
+---
+id: TC-FA-SU-E2E-281-tab-user-log-sub-tab-assignment-filter-dan-kontrol-filter-dan-setup-column
+title: "Tab User Log sub-tab Assignment: Filter dan Kontrol Filter dan Setup Column"
+priority: High
+caseType: Positive
+status: draft
+sourceTc:
+  - TC-FA-SU-855
+  - TC-FA-SU-856
+  - TC-FA-SU-857
+  - TC-FA-SU-858
+coverage:
+  web: automated
+---
+
+# Tab User Log sub-tab Assignment: Filter dan Kontrol Filter dan Setup Column
+
+## Prerequisites
+
+- Mode: FE+BE.
+- Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
+- Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen` dan pemulihan Pre-setup bersama lewat seed API.
+- Data Pre-setup: Client `FaUserMain` (#20) dan User Log (#30). Pengguna target: Budi Santoso. Nama pengguna dirujuk lewat fixture `Fixture.fixedAssetSettingsUser.<kunci>` (berkas `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan tim FE).
+- Seed Tab User Log sub-tab Assignment Budi Santoso (Pre-setup #30, 5 baris; urutan default Date descending). Label baris = `Activity|Transaction ID`; alias dipakai langkah:
+  - A-1: `Unassigned|ASG-20260618-0089`, Date `30/06/26`, PIC `Eka W` (keyword `Wulandari`)
+  - A-2: `Assigned|ASG-20260625-0102`, Name `Lemari`, PIC `Ahmad D`
+  - A-3: `Assigned|ASG-20260618-0089`, PIC `Eka W` (keyword `Wulandari`)
+  - A-4: `Assigned|ASG-20260512-0067`, PIC `Ahmad D`, Date di dalam rentang 05/05/26 sampai 12/05/26
+  - A-5: `Assigned|ASG-20260505-0045`, PIC `Ahmad D`, Date di dalam rentang 05/05/26 sampai 12/05/26
+- Kemampuan seed API (disediakan tim BE/FE): menyediakan ulang seed User Log #30 (Catatan TC: fixture yang diubah disediakan ulang lewat seed API) di hook `before` dan `after`. Spec ini hanya membaca surface User Log dan tidak menambah entri pada Budi Santoso.
+- Pemulihan preferensi kolom: kemampuan menghapus preferensi kolom tabel di browser (bukan `[Reset to Default]`) disediakan tim FE; dijalankan sebagai langkah penghubung dan di hook `after`. Preferensi kolom disimpan per perangkat (browser) sehingga spec ini tidak memengaruhi tabel lain.
+
+## Test Steps
+
+### TC-FA-SU-855: Perilaku Filter Panel: tutup tanpa Apply, indikator titik, dan nilai kosong
+
+1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
+2. Klik icon Filter, buka dropdown Activity, centang `Assigned` tanpa `[Apply]`
+3. Klik di luar panel Filter
+4. Klik icon Filter
+5. Verifikasi panel yang dibuka lagi menampilkan nilai ter-Apply terakhir (field Activity kosong)
+6. Verifikasi tabel tidak berubah
+7. Buka dropdown Activity, centang `Assigned`, klik `[Apply]`
+8. Verifikasi panel Filter tetap terbuka setelah `[Apply]`
+9. Klik icon Filter untuk menutup panel
+10. Verifikasi panel Filter tertutup
+11. Verifikasi ikon Filter menampilkan badge titik saat panel tertutup
+12. Klik icon Filter untuk membuka panel
+13. Verifikasi ikon Filter menampilkan badge titik saat panel terbuka
+14. Klik `[Clear Field]`, lalu klik `[Apply]`
+15. Verifikasi badge titik hilang
+16. Buka dropdown Activity
+17. Verifikasi dropdown menampilkan opsi `Assigned` dan `Unassigned`
+18. Verifikasi dropdown tidak memiliki opsi untuk nilai kosong
+19. Centang `Assigned`, klik `[Apply]`
+20. Verifikasi memilih opsi menyaring keluar baris yang nilai Activity-nya kosong
+21. Klik header kolom Column Visibility (⋯), hilangkan centang Activity, tekan Esc
+22. Verifikasi field Activity pada Filter Panel tidak hilang
+23. Verifikasi filter Activity `Assigned` yang ter-Apply tetap berlaku
+24. Klik `[Clear Field]`, lalu klik `[Apply]`
+25. Klik header kolom Column Visibility (⋯), centang kembali Activity, tekan Esc
+
+### TC-FA-SU-856: Chip dan checkbox dropdown Filter sinkron dua arah, logika OR dalam field
+
+26. Buka dropdown Activity
+27. Centang `Assigned` dan `Unassigned`
+28. Verifikasi dua chip `Assigned` dan `Unassigned` tampil di dalam field Activity
+29. Klik `[Apply]`
+30. Verifikasi hasil adalah gabungan (OR) kedua opsi: A-1, A-2, A-3, A-4, A-5
+31. Klik ✕ pada chip `Unassigned` tanpa membuka dropdown
+32. Verifikasi chip `Unassigned` hilang
+33. Verifikasi chip `Assigned` tetap
+34. Buka dropdown Activity
+35. Verifikasi checkbox opsi `Unassigned` ter-uncheck
+36. Centang kembali `Unassigned`
+37. Hilangkan centang `Assigned`
+38. Verifikasi chip `Assigned` hilang
+39. Verifikasi chip `Unassigned` tetap tampil
+40. Ketik `assi` pada kotak cari dropdown Activity
+41. Verifikasi opsi dropdown dipersempit menjadi `Assigned` dan `Unassigned` (substring, tidak case-sensitive)
+42. Ganti isi kotak cari dropdown Activity dengan `zzzz`
+43. Verifikasi dropdown menampilkan `No results found`
+44. Tutup dropdown, klik `[Clear Field]`, lalu klik `[Apply]`
+45. Klik icon Filter untuk menutup panel
+
+### TC-FA-SU-857: Screening Overlay Column Visibility
+
+46. Klik header kolom Actions (⋯)
+47. Verifikasi overlay tampil dengan tooltip `Column Visibility` pada header
+48. Verifikasi daftar kolom berurutan Date, Activity, Transaction ID, Name, PIC
+49. Verifikasi tiap kolom memiliki checkbox Hideable terpilih dan enabled serta drag handle
+50. Verifikasi item `Setup Column...` di bagian bawah overlay
+
+### TC-FA-SU-858: Screening Popup Setup Column dan Preview Table
+
+51. Klik item `Setup Column...` pada overlay Column Visibility yang masih terbuka
+52. Verifikasi Title `Setup Column`, deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`, dan icon close ✕ tampil
+53. Verifikasi body: daftar kolom Date, Activity, Transaction ID, Name, PIC dengan checkbox, drag handle, icon Pin, dan Live Preview tabel
+54. Verifikasi footer: `[Reset to Default]` dan `[Save]` rata kanan tanpa `[Cancel]`
+55. Klik ✕ untuk menutup popup Setup Column
+
+## Notes
+
+- Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Panel Filter tetap terbuka sesudah `[Apply]` dan baru tertutup bila icon Filter diklik (keputusan produk); karena itu `[Clear Field]` + `[Apply]` dijalankan tanpa mengklik icon Filter lagi. Langkah 9, 12 dan 45 (`Klik icon Filter untuk menutup panel`) adalah langkah penghubung yang menutup panel sebelum blok berikutnya (S-03, S-09).
+- Langkah 36 (Centang kembali `Unassigned`) adalah langkah penghubung: TC-FA-SU-856 butir b dan c meminta chip lain tetap sesudah satu chip hilang; dengan hanya dua opsi, `Unassigned` dicentang kembali dahulu supaya chip itu teramati tetap tampil saat `Assigned` dihilangkan (langkah 37 sampai 39, pola yang sama dengan spec 259 dan 271). Langkah 9 dan 12 mengikuti Langkah Uji 3 TC-FA-SU-855 (menutup panel lewat icon Filter) dan langkah 8 serta 10 adalah `Verifikasi` Expected e (panel tetap terbuka sesudah `[Apply]` dan tertutup setelah icon Filter diklik).
+- Spec ini berjumlah 55 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Temuan untuk QA (S-15): (1) TC mengasersi isi dan urutan baris seed tanpa Filter pembatas pada surface User Log yang dapat bertambah entri; spec mengikuti TC dan mengandalkan seed #30 yang disediakan ulang di hook `before` dan `after` (S-12, S-14). (2) TC-FA-SU-855: Expected c kalimat kedua (memilih opsi menyaring keluar baris bernilai kosong) tidak teramati karena seed tidak punya baris dengan Activity kosong; spec mengasersi tidak adanya opsi kosong dan menjalankan filter `Assigned` tanpa klaim tambahan. TC-FA-SU-856: keyword kotak cari dropdown (`assi`, `zzzz`) dipilih spec karena TC tidak menyebutnya; "chip lain tetap" pada Expected c diamati dengan mencentang kembali `Unassigned` lebih dulu (lihat butir langkah penghubung).

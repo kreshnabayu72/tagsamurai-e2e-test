@@ -37,6 +37,12 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
 10. Update `docs/coverage/<Suite>.md`: pemetaan TC granular ke spec, alasan TC hanya-BE, dan tabel "Lapisan per TC" (Spec, Mode).
 11. Laporkan ke user: daftar spec, TC yang dilewati, temuan TC sumber (ambigu, kontradiktif, precondition kurang; S-15), dan hal yang butuh keputusan. Jangan lanjut membuat `web.test.ts`, itu skill `tagsamurai-e2e-generate-script`.
 
+## Aturan tambahan `[KEPUTUSAN 2026-11-02]`
+
+- Kunci fixture memakai skema R-06: camelCase tanpa tanda hubung, akun sebagai `Fixture.<berkas>.akun.<peran>`; hex warna dan nilai berulang lewat fixture, bukan literal.
+- Spec "(bagian n/m)" menulis satu butir alasan pemisahan (mis. batas ukuran) di `## Notes`.
+- Langkah jeda "tunggu N detik" tidak boleh mendahului asersi state sementara yang diamati (toast, tooltip): asersi state tampil dulu, baru jeda, lalu asersi state hilang.
+
 ## Larangan
 
 - Jangan mengubah isi atau nomor TC granular. Kalau menemukan masalah di TC sumber, catat sebagai temuan untuk QA.

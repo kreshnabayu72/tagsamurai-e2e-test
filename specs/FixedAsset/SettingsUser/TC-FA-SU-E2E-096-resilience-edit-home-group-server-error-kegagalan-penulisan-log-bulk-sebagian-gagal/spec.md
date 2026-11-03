@@ -1,0 +1,81 @@
+---
+id: TC-FA-SU-E2E-096-resilience-edit-home-group-server-error-kegagalan-penulisan-log-bulk-sebagian-gagal
+title: "Resilience Edit Home Group: Server Error, Kegagalan Penulisan Log, Bulk Sebagian Gagal, dan Seluruh Gagal"
+priority: High
+caseType: Negative
+status: draft
+sourceTc:
+  - TC-FA-SU-301
+  - TC-FA-SU-303
+  - TC-FA-SU-310
+  - TC-FA-SU-311
+coverage:
+  web: automated
+---
+
+# Resilience Edit Home Group: Server Error, Kegagalan Penulisan Log, Bulk Sebagian Gagal, dan Seluruh Gagal
+
+## Prerequisites
+
+- Mode: FE+BE.
+- Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
+- Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor untuk pelaku kedua, dan pemulihan Pre-setup bersama lewat seed API.
+- Data Pre-setup: Client `FaUserMain` (#20), pohon grup (#21), changelog (#27). Pengguna target: Gita Permata (Home Group Finance & Accounting), Hana Kusuma, Kartika Sari, Mira Anggraini, Eka Wulandari. Nama pengguna dan grup Pre-setup dirujuk lewat fixture `Fixture.fixedAssetSettingsUser.<kunci>` (berkas `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan tim FE).
+- Kemampuan teknis: `Spectra.intercept()` atas respons HTTP Edit Home Group tunggal dan bulk (5xx, kegagalan sebagian per item, kegagalan seluruh item). Intercept dilepas segera setelah pemicu selesai (S-09).
+- Kemampuan teknis (disediakan tim FE/BE): memicu kegagalan penulisan log di sisi server (layanan log terkendali, Pre-setup #37) dan memulihkannya. TC-FA-SU-303 berlabel `Manual Only — BE`; tetap dimasukkan karena tidak ada `tc-settings-user-backend.md`.
+- Kemampuan baca jumlah entri (disediakan tim FE/BE): entri `Edit Home Group` pada Tab Changelog pengguna target, Tab System Log aktor, dan Activity Log, dibaca sebelum dan sesudah aksi. Audit trail bersifat permanen sehingga asersi hanya memakai selisih terhadap baseline (S-12), bukan angka absolut.
+- Kemampuan seed API (disediakan tim BE/FE): memulihkan Home Group dan penugasan peran pengguna Pre-setup ke kondisi Tabel Data Uji Pre-setup TC. Pemulihan dijalankan sebagai langkah penghubung dan di hook `after` (cadangan). Pemulihan Home Group item bulk yang berhasil pada langkah 23 dan di hook `after`. Efek pada Pre-setup: Home Group item bulk yang berhasil berubah (Last Updated, Modified By) dan entri log permanen bertambah.
+
+## Test Steps
+
+1. Catat jumlah entri `Edit Home Group` pada Tab Changelog Gita Permata, Tab System Log aktor, dan Activity Log sebagai baseline
+
+### TC-FA-SU-301: Edit Home Group gagal karena server error
+
+2. Intercept respons Edit Home Group menjadi 5xx
+3. Klik ⋯ pada baris Gita Permata lalu klik `Edit Home Group`
+4. Klik node IT Infrastructure lalu klik `[Select]`
+5. Lepas intercept Edit Home Group
+6. Verifikasi toast error "Error, failed to update home group." tampil
+7. Verifikasi popup tetap terbuka
+8. Verifikasi Home Group Gita Permata di tabel tidak berubah
+9. Klik `[Cancel]`
+
+### TC-FA-SU-303: Kegagalan penulisan log membatalkan perubahan
+
+10. Picu kegagalan penulisan log di sisi server
+11. Klik ⋯ pada baris Gita Permata, klik `Edit Home Group`, klik node IT Infrastructure, lalu klik `[Select]`
+12. Verifikasi toast gagal tampil
+13. Verifikasi Home Group Gita Permata tidak berubah
+14. Pulihkan layanan penulisan log
+15. Baca jumlah entri `Edit Home Group` pada Tab Changelog Gita Permata, Tab System Log aktor, dan Activity Log
+16. Verifikasi jumlah entri sama dengan baseline pada Tab Changelog Gita Permata, Tab System Log aktor, dan Activity Log
+
+### TC-FA-SU-310: Bulk sebagian gagal
+
+17. Intercept respons bulk Edit Home Group sehingga satu item gagal
+18. Centang Hana Kusuma, Kartika Sari, dan Mira Anggraini lalu klik Bulk Action > `Edit Home Group`
+19. Klik node IT Infrastructure lalu klik `[Select]`
+20. Lepas intercept bulk Edit Home Group
+21. Verifikasi toast "Success, home group has been updated. Some items failed." tampil
+22. Verifikasi item yang sudah ter-apply tetap tersimpan dan daftar di-refresh
+23. Pulihkan Home Group Hana Kusuma, Kartika Sari, dan Mira Anggraini ke kondisi Pre-setup lewat seed API
+
+### TC-FA-SU-311: Bulk seluruh item gagal
+
+24. Catat jumlah entri `Edit Home Group` pada Tab Changelog Hana Kusuma, Tab Changelog Eka Wulandari, Tab System Log aktor, dan Activity Log sebagai baseline
+25. Intercept respons bulk Edit Home Group sehingga seluruh item gagal
+26. Centang Hana Kusuma dan Eka Wulandari lalu klik Bulk Action > `Edit Home Group`
+27. Klik node IT Infrastructure lalu klik `[Select]`
+28. Lepas intercept bulk Edit Home Group
+29. Verifikasi toast error "Error, failed to update home group." tampil
+30. Verifikasi tidak ada Home Group yang berubah pada Hana Kusuma dan Eka Wulandari
+31. Baca jumlah entri `Edit Home Group` pada Tab Changelog Hana Kusuma, Tab Changelog Eka Wulandari, Tab System Log aktor, dan Activity Log
+32. Verifikasi jumlah entri sama dengan baseline langkah sebelum intercept pada Tab Changelog Hana Kusuma, Tab Changelog Eka Wulandari, Tab System Log aktor, dan Activity Log
+
+## Notes
+
+- Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular. Spec berisi satu kelas harness (b, fault injection) dengan intercept di atas backend nyata; modenya FE+BE (bagian 6).
+- Langkah penghubung (tanpa awalan `Verifikasi`): langkah 1 dan langkah baseline TC-FA-SU-311 (baseline), menutup popup dengan `[Cancel]`, melepas intercept dan layanan log (S-09), dan langkah 23 (pemulihan).
+- Pembagian log: TC-FA-SU-301, TC-FA-SU-303, dan TC-FA-SU-311 "tidak ada entri log" ditulis sebagai asersi jumlah dengan baseline (S-12), bukan kelas g. Baseline langkah 1 dipakai untuk Gita Permata (TC-FA-SU-301 dan TC-FA-SU-303); TC-FA-SU-311 memakai baseline sendiri karena TC-FA-SU-310 menambah entri. Post Condition TC-FA-SU-310 "satu entri log per item" tidak punya langkah observasi dan tidak diasersi.
+- Temuan untuk QA (S-15): (1) TC-FA-SU-303 tidak menyebut teks toast gagal; spec memverifikasi toast error tampil tanpa teks. (2) TC-FA-SU-303 berlabel `Manual Only — BE` dengan PIC FE `-`; kemampuan memicu kegagalan penulisan log di sisi server disediakan tim FE/BE (S-13). (3) TC-FA-SU-310 dan TC-FA-SU-311 tidak menyebut baris yang dicentang; spec memakai Hana Kusuma, Kartika Sari, Mira Anggraini (TC-FA-SU-310) dan Hana Kusuma, Eka Wulandari (TC-FA-SU-311) serta node IT Infrastructure. (4) TC-FA-SU-310 tidak menyebut item mana yang gagal; ditentukan oleh intercept. (5) Post Condition TC-FA-SU-311 ("item yang berhasil tersimpan") bertentangan dengan Expected (seluruh item gagal); spec mengikuti Expected.

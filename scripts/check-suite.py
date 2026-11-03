@@ -201,7 +201,7 @@ def main():
             for i, l in enumerate(lines):
                 if re.search(r"Verifikasi\s+Tidak ada (?:entri|pencatatan)", l, re.I):
                     before = " ".join(lines[:i])
-                    if not re.search(r"Verifikasi[^\n]*(?:jangkar|anchor|memuat entri|Failed|tampil)", before, re.I) and "jangkar" not in l.lower():
+                    if not re.search(r"Verifikasi[^\n]*(?:jangkar|anchor|memuat entri|Failed|tampil|bertambah tepat satu|entri baru itu adalah)", before, re.I) and "jangkar" not in l.lower():
                         out("REVIEW", "C9", f"{folder}: «{l[:90]}» tanpa anchor positif sebelumnya di blok yang sama")
                         break
 
@@ -209,6 +209,9 @@ def main():
         if len(folders) > 1:
             if all(re.search(r"^- Mode:\s*mock", read(suite / f / "spec.md"), re.M)
                    and "Pembagian TC lintas spec" in read(suite / f / "spec.md") for f in folders):
+                continue
+            # TC terbelah presence/absence (S-05 [2026-10-13]): sah bila tiap spec mencatat pembagiannya di Notes
+            if all(re.search(r"Pembagian TC lintas spec|\bS-05\b", read(suite / f / "spec.md")) for f in folders):
                 continue
             out("FINDING", "C2", f"{tid} ada di sourceTc {len(folders)} spec: {', '.join(folders)}")
 

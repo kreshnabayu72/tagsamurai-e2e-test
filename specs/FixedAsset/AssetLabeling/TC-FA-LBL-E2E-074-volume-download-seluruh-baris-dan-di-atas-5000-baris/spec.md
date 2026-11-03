@@ -1,0 +1,55 @@
+---
+id: TC-FA-LBL-E2E-074-volume-download-seluruh-baris-dan-di-atas-5000-baris
+title: "Volume: Download Seluruh Baris dan di Atas 5.000 Baris"
+priority: High
+caseType: Positive
+status: draft
+sourceTc:
+  - TC-FA-LBL-265
+  - TC-FA-LBL-277
+coverage:
+  web: automated
+---
+
+# Volume: Download Seluruh Baris dan di Atas 5.000 Baris
+
+## Prerequisites
+
+- Mode: FE+BE.
+- Akun aktor: Total Control Company Volume (Pre-setup #10), `Fixture.assetLabeling.totalControlVolume` (email mengikuti pola Pre-setup #1 untuk Company Volume; ditetapkan tim FE), password `Spectra.env.FA_TC_VOLUME_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Password tidak ditulis di spec atau fixture.
+- Akun ganti: Total Control Company Export (Pre-setup #24), `Fixture.assetLabeling.totalControlExport` (email mengikuti pola Pre-setup #1 untuk Company Export; ditetapkan tim FE), password `Spectra.env.FA_TC_EXPORT_PASSWORD`; dipakai pada langkah 5 sampai 7. Kedua nama env didaftarkan di `executionConfig.environmentVariables` dan `.env.example`.
+- Hook suite (`before`, `beforeEach`, `after` di `suite.md`) berlaku; spec ini tidak menulis ulang isinya.
+- Fixture `fixtures/asset-labeling.json` (fixture baru; isi identitas data ditetapkan tim FE).
+- Data Pre-setup #10: Company Volume dengan 120 label `Project Tag 1` sampai `Project Tag 120` (hanya dibaca); Pre-setup #24: Company Export dengan 5.001 label (seed API, hanya dibaca). Ukuran halaman tabel default 10 baris.
+- Kemampuan teknis (disediakan tim FE): direktori unduhan uji untuk menangkap berkas dan pembaca CSV/XLSX (nama berkas, header, dan jumlah baris).
+- State global: tidak ada yang diubah.
+
+## Test Steps
+
+### TC-FA-LBL-265: Download tanpa Search atau Filter mengekspor seluruh baris, bukan satu halaman
+
+1. Klik icon Download
+2. Klik `Download as CSV`
+3. Verifikasi halaman aktif tabel memuat 10 baris
+4. Verifikasi berkas `Labels.csv` memuat baris header dan seluruh 120 label
+
+### TC-FA-LBL-277: Download di atas 5.000 baris memakai loading screen tanpa job background
+
+5. Ganti akun: logout dari Total Control Company Volume
+6. Login sebagai Total Control Company Export (`Fixture.assetLabeling.totalControlExport`, password `Spectra.env.FA_TC_EXPORT_PASSWORD`)
+7. Buka Fixed Asset > Settings > Asset Master > tab Labels
+8. Klik icon Download
+9. Klik `Download as XLSX`
+10. Verifikasi loading screen tampil sampai berkas siap
+11. Verifikasi tidak ada notifikasi in-app
+12. Verifikasi tidak ada job background (tidak ada indikator job atau antrean unduhan di UI)
+13. Verifikasi berkas terunduh langsung memuat seluruh 5.001 label
+
+## Notes
+
+- Mode: FE+BE (backend nyata; berkas diunduh dan dibaca). Sumber: `fixed-asset/settings-asset-labeling/TestCases/tc-settings-asset-labeling.md`, section 4a.
+- Langkah 5 sampai 7 adalah Ganti akun eksplisit (S-07); hook `after` suite mengembalikan sesi ke akun default suite.
+- Asersi absence notifikasi in-app (langkah 11) diletakkan sesudah klik pilihan format dan sebelum asersi berkas, dengan loading screen sebagai anchor positif (bagian 8b butir 11).
+- Temuan untuk QA:
+  - TC-FA-LBL-277 Expected "tidak ada job background" tidak punya mekanisme cek di TC; spec mengasersi tidak ada indikator job atau antrean unduhan di UI.
+  - TC-FA-LBL-265 menyebut "walau halaman aktif hanya 10 baris"; spec mengasersi 10 baris pada halaman aktif sebagai bagian dari Expected itu.
