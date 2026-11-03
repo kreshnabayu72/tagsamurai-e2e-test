@@ -30,7 +30,7 @@ coverage:
 1. Untuk setiap kolom pada tabel parameter: klik header kolom Actions `(⋯)` lalu klik `Setup Column...`
 2. Verifikasi kolom itu belum tampil di tabel sebelum dicentang
 3. Centang kolom itu
-4. Verifikasi kolom itu masih belum tampil di tabel di balik modal sebelum [Save] (perubahan baru berlaku setelah [Save], D-008)
+4. Verifikasi kolom itu masih belum tampil di tabel di balik modal sebelum [Save] (perubahan baru berlaku setelah [Save], D-065)
 5. Klik `[Save]`
 6. Verifikasi kolom itu tampil di tabel
 7. Tekan F5
@@ -42,5 +42,5 @@ coverage:
 
 - Langkah 1 sampai 10 diulang per kolom (7 iterasi). Spec melewati sekitar 35 langkah setelah ekspansi; alasan: satu TC dengan satu kelas harness dan dataset, iterasi tidak saling bergantung.
 - Post Condition TC dipenuhi tiap iterasi (kolom dikembalikan Hidden) dan hook `after`.
-- Temuan untuk QA
-  - TC-AC-ACC-689 Expected a sampai g meminta kolom tampil di tabel di balik modal saat dicentang, sebelum [Save]. Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-008 (tabel di balik popup tidak berubah sampai [Save]): langkah 4 mengasersi kolom masih belum tampil dan tampilnya kolom diasersi setelah [Save] (langkah 6). TC tidak diubah. TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview.
+- Keselarasan TC dan spec
+  - TC-AC-ACC-689: TC sudah diselaraskan pada 2026-11-03 sesuai `docs/spec-decisions.md` D-065 (tabel di balik popup tidak berubah sampai [Save]); spec dan TC sama. langkah 4 mengasersi kolom masih belum tampil dan tampilnya kolom diasersi setelah [Save] (langkah 6). TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview. Sisa konflik hanya `prd-conventions.md` §9.3 (di luar scope suite, dilaporkan ke pemilik foundation).

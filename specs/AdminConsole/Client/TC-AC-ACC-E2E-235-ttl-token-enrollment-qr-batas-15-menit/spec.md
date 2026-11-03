@@ -19,7 +19,8 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Active-Full A-15 `activeFullJakarta_automated_qaTeam1@qwertysystem.net` (Manage active client C/R/U/D pada Area Jakarta dan Cabang Menteng), password `Spectra.env.AC_CLIENT_ACTIVE_FULL_PASSWORD` (nama env baru, didaftarkan di `executionConfig.environmentVariables` dan `.env.example` pada tahap script). Login di hook `before` spec ini; halaman List Client dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control).
-- Data fixture Tabel A3 (skrip seed, bukan lewat UI; di-seed ulang lewat reset data uji): C-AST-8 "PT Uji Token QR" (Asset Control Total 5 / Used 1; SFR "Reader Token 1" bertipe Asset Control tanpa station aktif; tanpa token Enrollment QR Active).
+- Data Dinamis milik spec (kembaran fixture; skrip seed di hook `before`, bukan lewat UI; dihapus di hook `after`; Generate Enrollment QR menulis token Active sehingga spec tidak memakai C-AST-8 bersama [S-06]; Company Name bersuffix `{runId}-235`, atribut setara baris fixture asal di Tabel A3 (Partner CV Mitra Sejati; Group Area Jakarta; FAMS Active), nama SFR, Station, dan Tablet di dalam kembaran sama dengan fixture asal karena terlingkup pada Client kembaran):
+  - "PT Uji Token QR {runId}-235" (kembaran C-AST-8): Asset Control Total 5 / Used 1; SFR "Reader Token 1" bertipe Asset Control tanpa station aktif; tanpa token Enrollment QR Active.
 - General Settings: Time Format 24-hour (tidak diubah).
 - Kemampuan teknis (kelas harness d, objek uji adalah TTL token): jam server uji dapat dibekukan dan diubah ke waktu absolut. Acuan waktu T0 dibaca dari waktu terbit token lewat kemampuan baca fixture BE (disediakan tim FE/BE), bukan diperkirakan dari waktu hook; jam server diset absolut ke T0 + durasi (14:59, 15:00, 15:01), margin batas kurang dari 5 menit. Hanya jam server yang diatur karena TTL dihitung di server dan tidak diamati lewat countdown UI; jam server dipulihkan di akhir tiap blok TC dan di hook `after`. Token Active dikembalikan ke Expired dengan memajukan jam server 15 menit.
 - Sesi UI dan sesi API aktor tetap valid selama jam digeser (suite.md > Kemampuan teknis > Sesi tetap valid saat jam digeser)
@@ -28,7 +29,7 @@ coverage:
 
 ## Test Steps
 
-1. Ketik Search "PT Uji Token QR" di List Client, tekan Enter, klik Company Name "PT Uji Token QR", lalu klik Tab Asset Control
+1. Ketik Search "PT Uji Token QR {runId}-235" di List Client, tekan Enter, klik Company Name "PT Uji Token QR {runId}-235", lalu klik Tab Asset Control
 
 ### TC-AC-ACC-899: Expiry menunjukkan 15 menit setelah QR dibuat
 
@@ -89,6 +90,7 @@ coverage:
 - Langkah penghubung (S-03, R-16): langkah 1 (Search dan buka Detail Client; hook suite hanya membuka List Client), langkah 7, 14, 20, 25, 35, 41 (menutup dialog), langkah 8, 22, 31, 42 (memulihkan jam server dan mengembalikan token Active ke Expired, mengikuti Post Condition TC-AC-ACC-899/321/897/898 dan melayani precondition "tanpa token Active" TC berikutnya).
 - Urutan TC di spec (899, 321, 897, 898) berbeda dari urutan nomor TC agar pembekuan jam 10:00 dikerjakan lebih dulu; tiap blok memulai dari keadaan tanpa token Active.
 - Spec ini melewati sekitar 35 langkah. Alasan: semua blok satu kelas harness (d, TTL sebagai batas yang diuji) pada satu Client; tiap blok dimulai dari keadaan tanpa token Active sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Replika S-06 [KEPUTUSAN 2026-11-03]: aksi [Generate Enrollment QR] menulis token Active, sehingga spec memakai kembaran C-AST-8 bersuffix `{runId}-235` (seed di `before`, cleanup di `after`).
 - Temuan untuk QA:
   - TC-AC-ACC-899 membekukan jam server pada "pukul 10:00" tanpa tanggal; spec memakai tanggal hari ini. Browser uji tidak diatur jamnya karena Expiry dihitung dari timestamp server dan tidak berasal dari countdown klien.
   - TC-AC-ACC-897 mensyaratkan Cancel pada menit ke-14:59 tanpa menyebut apakah token lama tetap Active sesudahnya; tidak diasersi.

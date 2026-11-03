@@ -25,7 +25,7 @@ coverage:
 - Flag Guided Tooltip halaman Client dan Detail Client (`guided_tooltip_seen_ac-client`, `guided_tooltip_seen_ac-client-detail`) disetel true untuk akun aktor oleh hook suite `before` dan dipulihkan oleh hook suite `after` (dinyatakan sekali di `suite.md`).
 - Data milik spec (kelas Dikonsumsi pada TC, ditiru bersuffix): Client "PT Retry Tampilan Basi {runId}-224" di-seed hook `before` lewat Fixture BE (disediakan tim FE/BE; atribut C-FX15-10: Active, Direct, Group Area Jakarta, FAMS Active, penyediaan akses FAMS berstatus gagal final). Hook `after` membatalkan simulasi penyediaan dan menghapus Client lewat API.
 - Kemampuan teknis (kelas c, multi-konteks): dua sesi UI Total Control (Principal) bersamaan (Sesi 1 dan Sesi 2, browser/konteks terpisah); simulasi penyediaan instance FAMS tetap berjalan (belum selesai) selama klik `[Retry]` kedua (kelas d, disediakan tim FE/BE tanpa endpoint karangan, S-13).
-- Sesi 2 memakai akun yang sama tanpa mengusir Sesi 1 (suite.md > Kemampuan teknis > Dua sesi web akun yang sama).
+- Sesi 2 memakai akun yang sama tanpa mengusir Sesi 1 (suite.md > Kemampuan teknis > Dua sesi web akun yang sama). Sesi 2 login sendiri pada langkah 3 (hook `before` hanya login Sesi 1) dengan `Spectra.env.AC_TC_PASSWORD`.
 - Jendela amat: asersi absence toast sesudah klik `[Retry]` didahului langkah "Tunggu 5 detik tanpa memuat ulang halaman" (jendela standar 5 detik adalah pilihan spec, bukan nilai TC atau PRD; bagian 6). Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -34,7 +34,7 @@ coverage:
 
 1. [Sesi 1] Buka Admin Console > Client, ketik Search `PT Retry Tampilan Basi {runId}-224`, tekan Enter, klik Company Name, buka Tab `Subscription` sub-tab `FAMS`, dan jangan muat ulang
 2. Verifikasi [Sesi 1] sub-tab `FAMS` menampilkan indikator "Access setup failed" dengan tombol `[Retry]`
-3. [Sesi 2] Buka Tab `Subscription` sub-tab `FAMS` Client yang sama lalu klik `[Retry]` pada indikator "Access setup failed"
+3. [Sesi 2] Login sebagai Total Control (Principal) (A-01) pada konteks browser terpisah, buka Admin Console > Client, ketik Search `PT Retry Tampilan Basi {runId}-224`, tekan Enter, klik Company Name, buka Tab `Subscription` sub-tab `FAMS` lalu klik `[Retry]` pada indikator "Access setup failed"
 4. Verifikasi [Sesi 2] toast sukses "Success, access setup retry has been started."
 5. Verifikasi [Sesi 2] indikator menjadi "Preparing access"
 6. [Sesi 1] Klik `[Retry]` pada indikator "Access setup failed" (tampilan basi)

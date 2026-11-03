@@ -43,41 +43,40 @@ coverage:
 5. Verifikasi addon yang belum dialokasikan tampil "0"
 6. Klik ⋯ pada header tabel Fixed Asset Module
 7. Verifikasi panel Column Visibility Fixed Asset Module memuat kolom Feature, Value, Source
-8. Verifikasi baris data Fixed Asset Module tanpa ikon ⋯
+8. Verifikasi baris data Fixed Asset Module tanpa ikon ⋯, tanpa tombol Add, Edit, atau Remove
 9. Tutup panel Column Visibility
 10. Klik ⋯ pada header tabel Feature Suites
 11. Verifikasi panel Column Visibility Feature Suites memuat kolom Feature, Value, Source
-12. Verifikasi baris data Feature Suites tanpa ikon ⋯
+12. Verifikasi baris data Feature Suites tanpa ikon ⋯, tanpa tombol Add, Edit, atau Remove
 13. Tutup panel Column Visibility
 14. Klik ⋯ pada header tabel Addon Features
 15. Verifikasi panel Column Visibility Addon Features memuat kolom Feature, Qty
-16. Verifikasi baris data Addon Features tanpa ikon ⋯
+16. Verifikasi baris data Addon Features tanpa ikon ⋯, tanpa tombol Add, Edit, atau Remove
 17. Tutup panel Column Visibility
 18. Klik sub-tab `SIEM`, lalu klik ⋯ pada header tabel SIEM Module
 19. Verifikasi panel Column Visibility SIEM Module memuat kolom Feature, Value, Source
-20. Verifikasi baris data SIEM Module tanpa ikon ⋯
-21. Verifikasi tidak ada tombol Add, Edit, atau Remove pada keempat tabel (Fixed Asset Module, Feature Suites, Addon Features, SIEM Module)
-22. Tutup panel Column Visibility
-23. Verifikasi sub-tab `SIEM` hanya memuat section SIEM Module (Log Source cap, Concurrent User cap, Source Plan Default) (TC-266)
-24. Verifikasi sub-tab `SIEM` tanpa Platform Core, Fixed Asset Module, Feature Suites, dan Addon Features (TC-266)
-25. Klik sub-tab `SAMS`, lalu lihat tabel License Quota dan Section "Feature Entitlement"
-26. Verifikasi tabel License Quota sub-tab `SAMS` memuat baris Asset dan Concurrent User (TC-804)
-27. Verifikasi section Platform Core tidak tampil pada Client Paid, disembunyikan total (TC-804, TC-263)
-28. Verifikasi section Fixed Asset Module, Feature Suites, dan Addon Features tidak tampil pada sub-tab `SAMS` (TC-804)
+20. Verifikasi baris data SIEM Module tanpa ikon ⋯, tanpa tombol Add, Edit, atau Remove
+21. Tutup panel Column Visibility
+22. Verifikasi sub-tab `SIEM` hanya memuat section SIEM Module (Log Source cap, Concurrent User cap, Source Plan Default) (TC-266)
+23. Verifikasi sub-tab `SIEM` tanpa Platform Core, Fixed Asset Module, Feature Suites, dan Addon Features (TC-266)
+24. Klik sub-tab `SAMS`, lalu lihat tabel License Quota dan Section "Feature Entitlement"
+25. Verifikasi tabel License Quota sub-tab `SAMS` memuat baris Asset dan Concurrent User (TC-804)
+26. Verifikasi section Platform Core tidak tampil pada Client Paid, disembunyikan total (TC-804, TC-263)
+27. Verifikasi section Fixed Asset Module, Feature Suites, dan Addon Features tidak tampil pada sub-tab `SAMS` (TC-804)
 
 ### Client Free "PT Uji Free": TC-AC-ACC-803 (dan Free TC-AC-ACC-263), TC-AC-ACC-267
 
-29. Kembali ke List lewat breadcrumb Client
-30. Ganti isi Search dengan `PT Uji Free`, tekan Enter
-31. Klik Company Name "PT Uji Free" untuk membuka Detail
-32. Klik Tab `Subscription`, lalu klik sub-tab `SAMS`
-33. Lihat Section "Feature Entitlement"
-34. Verifikasi section Platform Core tampil dengan tabel berkolom Feature, Value, Source yang memuat baris "Supplier" (TC-803, TC-263)
-35. Verifikasi catatan "Feature entitlements are configured in Plans & Features." tampil di bagian bawah Section Feature Entitlement (TC-803)
-36. Verifikasi section Fixed Asset Module, Feature Suites, dan Addon Features tidak tampil (TC-803)
-37. Klik sub-tab `FAMS`
-38. Verifikasi area konten sub-tab `FAMS` menampilkan ilustrasi (package) dengan Title "No subscriptions yet" dan Description "Active and pending subscriptions for this client will appear here." (anchor sub-tab FAMS Client "PT Uji Free" sudah termuat)
-39. Verifikasi baris Supplier tidak tampil di sub-tab `FAMS` (TC-267)
+28. Kembali ke List lewat breadcrumb Client
+29. Ganti isi Search dengan `PT Uji Free`, tekan Enter
+30. Klik Company Name "PT Uji Free" untuk membuka Detail
+31. Klik Tab `Subscription`, lalu klik sub-tab `SAMS`
+32. Lihat Section "Feature Entitlement"
+33. Verifikasi section Platform Core tampil dengan tabel berkolom Feature, Value, Source yang memuat baris "Supplier" (TC-803, TC-263)
+34. Verifikasi catatan "Feature entitlements are configured in Plans & Features." tampil di bagian bawah Section Feature Entitlement (TC-803)
+35. Verifikasi section Fixed Asset Module, Feature Suites, dan Addon Features tidak tampil (TC-803)
+36. Klik sub-tab `FAMS`
+37. Verifikasi area konten sub-tab `FAMS` menampilkan ilustrasi (package) dengan Title "No subscriptions yet" dan Description "Active and pending subscriptions for this client will appear here." (anchor sub-tab FAMS Client "PT Uji Free" sudah termuat)
+38. Verifikasi baris Supplier tidak tampil di sub-tab `FAMS` (TC-267)
 
 ## Notes
 

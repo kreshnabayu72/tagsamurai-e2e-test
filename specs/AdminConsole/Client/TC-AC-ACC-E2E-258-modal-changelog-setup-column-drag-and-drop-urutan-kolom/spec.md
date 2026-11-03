@@ -33,20 +33,22 @@ coverage:
 
 ### TC-AC-ACC-744: Drag and drop urutan kolom tabel Changelog lalu Save dan refresh
 
-1. Untuk setiap baris tabel "Modal Changelog" (langkah 1 sampai 7): buka modal sesuai kolom "Cara buka"
+1. Untuk setiap baris tabel "Modal Changelog" (langkah 1 sampai 9): buka modal sesuai kolom "Cara buka"
 2. Klik header kolom Actions (⋯) pada tabel modal lalu klik "Setup Column..."
-3. Untuk setiap kolom pada kolom "Urutan seret" baris itu (langkah 3 sampai 4): seret kolom itu ke posisi pertama daftar kolom
-4. Verifikasi urutan header tabel di balik modal belum berubah dari sebelum seretan (urutan baru berlaku setelah [Save], D-008)
-5. Klik [Save], tekan F5, lalu buka kembali modal yang sama sesuai kolom "Cara buka"
-6. Verifikasi urutan header tersimpan sesuai kolom "Urutan header tersimpan" baris itu
-7. Tutup modal Changelog
+3. Untuk setiap kolom pada kolom "Urutan seret" baris itu (langkah 3 sampai 5): seret kolom itu ke posisi pertama daftar kolom
+4. Verifikasi kolom itu berada di posisi pertama pada daftar kolom modal
+5. Verifikasi urutan header tabel di balik modal belum berubah dari sebelum seretan (urutan baru berlaku setelah [Save], D-065)
+6. Klik [Save], tekan F5, lalu buka kembali modal yang sama sesuai kolom "Cara buka"
+7. Verifikasi urutan header tersimpan sesuai kolom "Urutan header tersimpan" baris itu
+8. Klik header kolom Actions (⋯) pada tabel modal, klik Setup Column..., klik [Reset to Default], lalu klik [Save]
+9. Tutup modal Changelog
 
 ## Notes
 
 - Sumber: `admin-console/client/TestCases/tc-client.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, R-16): "Cara buka" tiap modal (menu Client di sidebar, Search dan buka Detail Client; hook suite hanya membuka List Client dan klik sidebar mereset Search), langkah 7 (menutup modal).
-- Langkah 3 dan 4 diulang untuk 7 kolom pada tiap modal; ekspansi sekitar 3 x (modal + Setup Column + 14 + simpan + verifikasi + tutup) = sekitar 60 langkah.
+- Langkah penghubung (S-03, R-16): "Cara buka" tiap modal (menu Client di sidebar, Search dan buka Detail Client; hook suite hanya membuka List Client dan klik sidebar mereset Search), langkah 8 (`[Reset to Default]` lalu `[Save]` memulihkan urutan kolom sesuai Post Condition TC), langkah 9 (menutup modal).
+- Langkah 3 sampai 5 diulang untuk 7 kolom pada tiap modal; ekspansi sekitar 3 x (modal + Setup Column + 21 + simpan + verifikasi + tutup) = sekitar 80 langkah.
 - Spec ini melewati sekitar 35 langkah setelah ekspansi. Alasan: semua iterasi satu kelas harness (UI Only, Setup Column pada tiga modal Changelog dengan akun yang sama), parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat; tiap modal dibuka dari awal sehingga kegagalan satu modal tidak membuat modal lain kehilangan makna.
-- Temuan untuk QA:
-  - TC-AC-ACC-744 Expected a sampai c meminta urutan header di balik modal berubah langsung setelah tiap seretan, sebelum [Save]. Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-008 (tabel di balik popup tidak berubah sampai [Save]): langkah 4 mengasersi urutan header belum berubah dan urutan baru diasersi setelah [Save] dan F5 (langkah 6). TC tidak diubah. TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview.
+- Keselarasan TC dan spec:
+  - TC-AC-ACC-744 sudah diselaraskan pada 2026-11-03 sesuai `docs/spec-decisions.md` D-065; spec dan TC sama: untuk tiap kolom yang diseret, kolom berada di posisi pertama pada daftar kolom modal (langkah 4) dan urutan header tabel di balik modal belum berubah sebelum [Save] (langkah 5); urutan baru diasersi setelah [Save] dan F5 (langkah 7). Sisa konflik hanya `prd-conventions.md` §9.3 (di luar scope suite, dilaporkan ke pemilik foundation).
   - TC-AC-ACC-744 langkah 3 menulis daftar seret termasuk "kolom ketiga" yang berbeda per modal (Client Name, Subscription, Object); spec menuliskannya pada tabel Prerequisites.

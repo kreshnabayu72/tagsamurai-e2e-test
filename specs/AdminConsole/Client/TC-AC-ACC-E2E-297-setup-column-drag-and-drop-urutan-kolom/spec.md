@@ -21,8 +21,8 @@ coverage:
 - Suite berjalan serial (`parallel: false`); spec ini tidak bergantung pada hasil spec lain.
 - Flag Guided Tooltip halaman List dan Detail diset true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan sekali di `suite.md`).
 - Pemulihan preferensi Setup Column: hook `after` menghapus preferensi kolom di browser (bukan `[Reset to Default]`); kemampuan ini disediakan tim FE.
-- Tabel parameter drag Hideable (dipakai langkah 2 sampai 3, diseret berurutan ke posisi pertama): Client Code, PIC Name, Managed By, Group, FAMS, SAMS, SIEM, Modified By, Last Updated, Company Name.
-- Tabel parameter drag Curated (dipakai langkah 9 sampai 10, diseret berurutan ke posisi pertama): City, State, Country, Industry, PIC Phone, PIC Email, Company Email.
+- Tabel parameter drag Hideable (dipakai langkah 2 sampai 4, diseret berurutan ke posisi pertama): Client Code, PIC Name, Managed By, Group, FAMS, SAMS, SIEM, Modified By, Last Updated, Company Name.
+- Tabel parameter drag Curated (dipakai langkah 10 sampai 12, diseret berurutan ke posisi pertama): City, State, Country, Industry, PIC Phone, PIC Email, Company Email.
 - Kemampuan teknis: drag and drop pada modal Setup Column; menghapus preferensi Setup Column di browser (disediakan tim FE). Tidak butuh klien HTTP, intercept, atau jam server.
 
 ## Test Steps
@@ -31,24 +31,26 @@ coverage:
 
 1. Klik header kolom Actions `(⋯)` lalu klik `Setup Column...`
 2. Untuk setiap kolom pada tabel parameter drag Hideable: seret kolom itu ke posisi pertama daftar kolom
-3. Verifikasi urutan header tabel di balik modal belum berubah dari sebelum seretan (urutan baru berlaku setelah [Save], D-008)
-4. Klik `[Save]`, lalu tekan F5
-5. Verifikasi urutan header tersimpan: Company Name, Last Updated, Modified By, SIEM, SAMS, FAMS, Group, Managed By, PIC Name, Client Code
-6. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, klik `[Reset to Default]`, lalu klik `[Save]` (pemulihan urutan)
+3. Verifikasi kolom itu berada di posisi pertama pada daftar kolom modal
+4. Verifikasi urutan header tabel di balik modal belum berubah dari sebelum seretan (urutan baru berlaku setelah [Save], D-065)
+5. Klik `[Save]`, lalu tekan F5
+6. Verifikasi urutan header tersimpan: Company Name, Last Updated, Modified By, SIEM, SAMS, FAMS, Group, Managed By, PIC Name, Client Code
+7. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, klik `[Reset to Default]`, lalu klik `[Save]` (pemulihan urutan)
 
 ### Drag and drop kolom Curated (TC-AC-ACC-691)
 
-7. Klik header kolom Actions `(⋯)` lalu klik `Setup Column...`
-8. Centang Company Email, PIC Email, PIC Phone, Industry, Country, State, dan City
-9. Untuk setiap kolom pada tabel parameter drag Curated: seret kolom itu ke posisi pertama daftar kolom
-10. Verifikasi urutan header tabel di balik modal belum berubah dari sebelum seretan (urutan baru berlaku setelah [Save], D-008)
-11. Klik `[Save]`, lalu tekan F5
-12. Verifikasi urutan header tersimpan: Company Email, PIC Email, PIC Phone, Industry, Country, State, City, Company Name, Client Code, PIC Name, Managed By, Group, FAMS, SAMS, SIEM, Modified By, Last Updated
-13. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, klik `[Reset to Default]`, lalu klik `[Save]` (pemulihan urutan dan visibilitas)
+8. Klik header kolom Actions `(⋯)` lalu klik `Setup Column...`
+9. Centang Company Email, PIC Email, PIC Phone, Industry, Country, State, dan City
+10. Untuk setiap kolom pada tabel parameter drag Curated: seret kolom itu ke posisi pertama daftar kolom
+11. Verifikasi kolom itu berada di posisi pertama pada daftar kolom modal
+12. Verifikasi urutan header tabel di balik modal belum berubah dari sebelum seretan (urutan baru berlaku setelah [Save], D-065)
+13. Klik `[Save]`, lalu tekan F5
+14. Verifikasi urutan header tersimpan: Company Email, PIC Email, PIC Phone, Industry, Country, State, City, Company Name, Client Code, PIC Name, Managed By, Group, FAMS, SAMS, SIEM, Modified By, Last Updated
+15. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, klik `[Reset to Default]`, lalu klik `[Save]` (pemulihan urutan dan visibilitas)
 
 ## Notes
 
-- Langkah 2 sampai 3 (10 iterasi) dan 9 sampai 10 (7 iterasi) diulang per kolom. Spec melewati sekitar 35 langkah setelah ekspansi; alasan: semua blok satu kelas harness dan dataset (Setup Column List); blok kedua memulai dari konfigurasi default hasil pemulihan blok pertama dan kegagalan blok pertama tidak membuat blok kedua kehilangan makna.
+- Langkah 2 sampai 4 (10 iterasi) dan 10 sampai 12 (7 iterasi) diulang per kolom. Spec melewati sekitar 35 langkah setelah ekspansi; alasan: semua blok satu kelas harness dan dataset (Setup Column List); blok kedua memulai dari konfigurasi default hasil pemulihan blok pertama dan kegagalan blok pertama tidak membuat blok kedua kehilangan makna.
 - Langkah penghubung (S-03): `[Reset to Default]` lalu `[Save]` memulihkan urutan sesuai Post Condition TC.
-- Temuan untuk QA
-  - TC-AC-ACC-690 (Expected a sampai j) dan TC-AC-ACC-691 (Expected a sampai g) meminta kolom yang diseret langsung berada di posisi pertama pada tabel di balik modal, sebelum [Save]. Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-008 (tabel di balik popup tidak berubah sampai [Save]): langkah 3 dan 10 mengasersi urutan header belum berubah dan urutan baru diasersi setelah [Save] dan F5 (langkah 5 dan 12). TC tidak diubah. TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview. Lihat juga Temuan di spec 294.
+- Keselarasan TC dan spec
+  - TC-AC-ACC-690 (Expected a sampai j) dan TC-AC-ACC-691 (Expected a sampai g) sudah diselaraskan pada 2026-11-03 sesuai `docs/spec-decisions.md` D-065; spec dan TC sama: untuk tiap kolom yang diseret, kolom berada di posisi pertama pada daftar kolom modal (langkah 3 dan 11) dan urutan header tabel di balik modal belum berubah sebelum [Save] (langkah 4 dan 12); urutan baru diasersi setelah [Save] dan F5 (langkah 6 dan 14). Sisa konflik hanya `prd-conventions.md` §9.3 (di luar scope suite, dilaporkan ke pemilik foundation). Lihat juga catatan di spec 294.

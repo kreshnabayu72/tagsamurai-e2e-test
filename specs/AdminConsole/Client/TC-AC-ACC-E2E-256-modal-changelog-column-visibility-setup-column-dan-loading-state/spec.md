@@ -92,6 +92,6 @@ coverage:
 - Langkah 1 sampai 8 diulang 3 kali (24 langkah setelah ekspansi), 9 sampai 14 diulang 3 kali (18), 15 sampai 23 diulang 3 kali (27), 24 sampai 31 diulang 3 kali (24), 32 sampai 35 diulang 3 kali (12); total ekspansi sekitar 108 langkah.
 - Spec ini melewati sekitar 35 langkah. Alasan: semua blok satu kelas harness (UI Only: Column Visibility, Setup Column, dan loading state pada tiga modal Changelog dengan akun yang sama); tiap iterasi membuka modal dari awal sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: Setup Column yang disimpan (hide/show, drag, pin, reset) ada di spec 257, 258, 259, dan 260; error state modal Changelog ada di spec 240.
-- Temuan untuk QA:
-  - Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-008 (tabel di balik popup tidak berubah sampai [Save]; menutup popup tanpa Save membuang perubahan) untuk Setup Column. TC-AC-ACC-747 dan 748 di spec ini tidak mengasersi perubahan tabel sebelum [Save] sehingga tidak terdampak; selisih TC-AC-ACC-743 sampai 746 dicatat di spec 257, 258, dan 260.
+- Keselarasan TC dan spec:
+  - Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-065 (tabel di balik popup tidak berubah sampai [Save]; menutup popup tanpa Save membuang perubahan) untuk Setup Column. TC-AC-ACC-747 dan 748 di spec ini tidak mengasersi perubahan tabel sebelum [Save] sehingga tidak terdampak; TC-AC-ACC-743 sampai 746 sudah diselaraskan pada 2026-11-03 sesuai D-065 dan sama dengan spec 257, 258, dan 260. Sisa konflik hanya `prd-conventions.md` §9.3 (di luar scope suite, dilaporkan ke pemilik foundation).
   - TC-AC-ACC-858 tidak menyebut durasi tahanan respons; spec menahan respons sampai Loading component teramati.

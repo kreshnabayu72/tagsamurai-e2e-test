@@ -22,9 +22,10 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Active-Full A-15 `activeFullJakarta_automated_qaTeam1@qwertysystem.net` (Manage active client C/R/U/D pada Area Jakarta dan Cabang Menteng), password `Spectra.env.AC_CLIENT_ACTIVE_FULL_PASSWORD` (nama env baru, didaftarkan di `executionConfig.environmentVariables` dan `.env.example` pada tahap script). Login di hook `before` spec ini; halaman List Client dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Data Pre-setup (hanya dibaca, dialog dibatalkan): C-01 "PT Sejahtera Abadi" dengan Station "Gerbang Gudang A" (Active) berisi Tablet "Tablet Lobi 1" (Active), dan Station "Gerbang Lama" (Deactivated) berisi Tablet "Tablet Lama" (Revoked) untuk TC-AC-ACC-329, 331, 332.
-- Data fixture Tabel A3 (skrip seed, bukan lewat UI; Revoke permanen sehingga di-seed ulang lewat reset data uji): C-AST-7 "PT Uji Aksi Asset Control" dengan Station "Stasiun Tablet Uji" (Active) berisi Tablet Active "Tablet Revoke Aktif" dan "Tablet Klik Ganda Revoke", dan Tablet Inactive "Tablet Revoke Inactive" (TC-AC-ACC-330, 901, 918).
+- Data Dinamis milik spec (kembaran fixture; skrip seed di hook `before`, bukan lewat UI; dihapus di hook `after`; Revoke permanen sehingga spec tidak memakai C-AST-7 bersama [S-06]; Company Name bersuffix `{runId}-239`, atribut setara baris fixture asal di Tabel A3 (Partner CV Mitra Sejati; Group Area Jakarta; FAMS Active), nama SFR, Station, dan Tablet di dalam kembaran sama dengan fixture asal karena terlingkup pada Client kembaran):
+  - "PT Uji Aksi Asset Control {runId}-239" (kembaran C-AST-7, TC-AC-ACC-330, 901, 918): Asset Control Total 10 / Used 6 (nilai awal sama dengan fixture asal; asersi memakai nilai yang dicatat); Station "Stasiun Tablet Uji" Active dengan Tablet Active "Tablet Revoke Aktif" dan "Tablet Klik Ganda Revoke", dan Tablet Inactive "Tablet Revoke Inactive".
 - Kemampuan teknis: baca jumlah baris Changelog Asset Control lewat Search di modal (baseline, S-12).
-- State global: tidak ada yang diubah selain data fixture di atas; suite berjalan serial (`parallel: false`); flag Guided Tooltip halaman Detail diatur hook suite.
+- State global: tidak ada yang diubah selain data milik spec di atas; suite berjalan serial (`parallel: false`); flag Guided Tooltip halaman Detail diatur hook suite.
 - Env var `AC_CLIENT_ACTIVE_FULL_PASSWORD` didaftarkan di `executionConfig.environmentVariables` dan `.env.example`.
 
 ## Test Steps
@@ -55,7 +56,7 @@ coverage:
 
 ### TC-AC-ACC-330: Revoke Tablet Active: status Revoked permanen, Tablets berkurang, kuota Station tidak berubah
 
-16. Klik breadcrumb "Client", ketik Search "PT Uji Aksi Asset Control", tekan Enter, klik Company Name "PT Uji Aksi Asset Control", lalu klik Tab Asset Control
+16. Klik breadcrumb "Client", ketik Search "PT Uji Aksi Asset Control {runId}-239", tekan Enter, klik Company Name "PT Uji Aksi Asset Control {runId}-239", lalu klik Tab Asset Control
 17. Catat Station Quota, lalu klik row "Stasiun Tablet Uji" untuk expand Tablet List dan catat kolom Tablets (T1)
 18. Buka ⋯ pada "Tablet Revoke Aktif" lalu pilih Revoke
 19. Klik [Revoke] pada dialog
@@ -107,6 +108,7 @@ coverage:
 - Baseline (S-12): TC-AC-ACC-901 dan 918 tidak mencatat jumlah baris Changelog; langkah 29 dan 45 menambahkan baseline L2 dan L3 serta Search dan ukuran halaman 100 agar "baris baru" teruji dengan selisih (S-14).
 - Spec ini melewati sekitar 35 langkah. Alasan: semua blok satu topik aksi (Revoke Tablet) dengan Active-Full tanpa ganti akun, tiap blok memakai Tablet sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: asersi "tanpa log" untuk Cancel (TC-AC-ACC-331) ada di spec 272; Deactivate Station di spec 238; kegagalan Global Settings di spec 240; dua sesi (stale 409) di spec 247; pencatatan lintas surface Revoke di spec 270.
+- Replika S-06 [KEPUTUSAN 2026-11-03]: Revoke bersifat permanen, sehingga TC-AC-ACC-330, 901, dan 918 memakai kembaran C-AST-7 bersuffix `{runId}-239` (seed di `before`, cleanup di `after`); C-01 "PT Sejahtera Abadi" hanya dibaca (dialog dibatalkan).
 - Temuan untuk QA:
   - TC-AC-ACC-330 Post Condition a sampai c (sesi Station User di-terminate via Auth, Global Settings > Hardware menampilkan "Tablet Revoke Aktif" Revoked, baris Changelog Asset Control `Revoke Tablet`) tidak punya langkah observasi di TC-AC-ACC-330 sehingga tidak diasersi; pencatatan Changelog Asset Control Revoke diasersi lewat TC-AC-ACC-901 dan 911 (spec 267).
   - TC-AC-ACC-331 Expected "Status tetap" tidak menyebut "tanpa log"; TC-AC-ACC-326 menyebutnya. Spec memakai Expected apa adanya.

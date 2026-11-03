@@ -62,76 +62,77 @@ coverage:
 20. Arahkan kursor ke checkbox Last Updated
 21. Verifikasi tooltip checkbox Last Updated `At least one column must remain visible.`
 22. Klik checkbox Last Updated
-23. Verifikasi Last Updated tetap tampil di tabel di balik modal (tabel belum berubah sebelum [Save], D-008)
-24. Centang Company Name
-25. Verifikasi checkbox Last Updated enabled kembali
-26. Klik `[✕]` untuk menutup modal tanpa menyimpan
+23. Verifikasi checkbox Last Updated tetap tercentang dan disabled
+24. Verifikasi Last Updated tetap tampil di tabel di balik modal (tabel belum berubah sebelum [Save], D-065)
+25. Centang Company Name
+26. Verifikasi checkbox Last Updated enabled kembali
+27. Klik `[✕]` untuk menutup modal tanpa menyimpan
 
 ### Menutup modal tanpa menyimpan (TC-AC-ACC-695)
 
-27. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, hapus centang PIC Name, lalu klik `[✕]`
-28. Verifikasi modal tertutup
-29. Verifikasi kolom PIC Name tetap tampil di tabel (state tersimpan terakhir)
-30. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, hapus centang PIC Name, lalu tekan Esc
-31. Verifikasi modal tertutup
-32. Verifikasi kolom PIC Name tetap tampil di tabel
-33. Tekan F5
-34. Verifikasi kolom PIC Name tetap tampil
+28. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, hapus centang PIC Name, lalu klik `[✕]`
+29. Verifikasi modal tertutup
+30. Verifikasi kolom PIC Name tetap tampil di tabel (state tersimpan terakhir)
+31. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, hapus centang PIC Name, lalu tekan Esc
+32. Verifikasi modal tertutup
+33. Verifikasi kolom PIC Name tetap tampil di tabel
+34. Tekan F5
+35. Verifikasi kolom PIC Name tetap tampil
 
 ### Pin keempat diblok (TC-AC-ACC-694)
 
-35. Klik header kolom Actions `(⋯)` lalu klik `Setup Column...`
-36. Klik ikon Pin pada Company Name, Client Code, dan PIC Name
-37. Arahkan kursor ke ikon Pin Managed By
-38. Verifikasi ikon Pin Managed By disabled dengan tooltip `Maximum 3 columns can be pinned at once. Unpin another column first.`
-39. Klik ikon Pin Managed By
-40. Verifikasi klik pada ikon Pin yang disabled tidak membekukan Managed By
-41. Unpin PIC Name
-42. Arahkan kursor ke ikon Pin Managed By
-43. Verifikasi ikon Pin Managed By enabled kembali
-44. Klik `[✕]` untuk menutup modal tanpa menyimpan
+36. Klik header kolom Actions `(⋯)` lalu klik `Setup Column...`
+37. Klik ikon Pin pada Company Name, Client Code, dan PIC Name
+38. Arahkan kursor ke ikon Pin Managed By
+39. Verifikasi ikon Pin Managed By disabled dengan tooltip `Maximum 3 columns can be pinned at once. Unpin another column first.`
+40. Klik ikon Pin Managed By
+41. Verifikasi klik pada ikon Pin yang disabled tidak membekukan Managed By
+42. Unpin PIC Name
+43. Arahkan kursor ke ikon Pin Managed By
+44. Verifikasi ikon Pin Managed By enabled kembali
+45. Klik `[✕]` untuk menutup modal tanpa menyimpan
 
 ### Kolom terakhir yang tampil disabled pada overlay (TC-AC-ACC-697)
 
-45. Klik header kolom Actions `(⋯)`
-46. Hapus centang Company Name, Client Code, PIC Name, Managed By, Group, FAMS, SAMS, SIEM, dan Modified By satu per satu
-47. Verifikasi hanya Last Updated yang tercentang dan tabel langsung hanya menampilkan kolom Last Updated
-48. Verifikasi checkbox Last Updated tetap tampil namun disabled
-49. Arahkan kursor ke checkbox Last Updated
-50. Verifikasi tooltip checkbox Last Updated `At least one column must remain visible.`
-51. Klik checkbox Last Updated
-52. Verifikasi Last Updated tetap tampil di tabel
-53. Centang Company Name
-54. Verifikasi checkbox Last Updated enabled kembali
-55. Klik `Setup Column...`, klik `[Reset to Default]`, lalu klik `[Save]` (pemulihan konfigurasi kolom ke default)
+46. Klik header kolom Actions `(⋯)`
+47. Hapus centang Company Name, Client Code, PIC Name, Managed By, Group, FAMS, SAMS, SIEM, dan Modified By satu per satu
+48. Verifikasi hanya Last Updated yang tercentang dan tabel langsung hanya menampilkan kolom Last Updated
+49. Verifikasi checkbox Last Updated tetap tampil namun disabled
+50. Arahkan kursor ke checkbox Last Updated
+51. Verifikasi tooltip checkbox Last Updated `At least one column must remain visible.`
+52. Klik checkbox Last Updated
+53. Verifikasi Last Updated tetap tampil di tabel
+54. Centang Company Name
+55. Verifikasi checkbox Last Updated enabled kembali
+56. Klik `Setup Column...`, klik `[Reset to Default]`, lalu klik `[Save]` (pemulihan konfigurasi kolom ke default)
 
 ### Pengaturan kolom List independen dari Changelog (TC-AC-ACC-408)
 
-56. Klik `[Changelog]` di toolbar List dan catat kolom tabel modal Changelog: Client (baseline), lalu tutup modal
-57. Klik header kolom Actions `(⋯)` lalu hapus centang kolom Group di List
-58. Klik `[Changelog]` di toolbar List
-59. Verifikasi kolom modal Changelog: Client tidak terpengaruh: sama dengan baseline
-60. Tutup modal Changelog, lalu klik header kolom Actions `(⋯)` dan centang kolom Group kembali
+57. Klik `[Changelog]` di toolbar List dan catat kolom tabel modal Changelog: Client (baseline), lalu tutup modal
+58. Klik header kolom Actions `(⋯)` lalu hapus centang kolom Group di List
+59. Klik `[Changelog]` di toolbar List
+60. Verifikasi kolom modal Changelog: Client tidak terpengaruh: sama dengan baseline
+61. Tutup modal Changelog, lalu klik header kolom Actions `(⋯)` dan centang kolom Group kembali
 
 ### Reset to Default (TC-AC-ACC-407)
 
-61. Klik header kolom Actions `(⋯)` lalu klik `Setup Column...`
-62. Hapus centang Group, centang Industry, seret Last Updated ke posisi pertama, klik ikon Pin pada PIC Name, lalu klik `[Save]`
-63. Verifikasi tabel menampilkan konfigurasi kustom: Group hilang, Industry tampil, Last Updated paling kiri, PIC Name terpin
-64. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, lalu klik `[Reset to Default]`
-65. Verifikasi daftar kolom di popup: 10 kolom Hideable tercentang dengan urutan Company Name, Client Code, PIC Name, Managed By, Group, FAMS, SAMS, SIEM, Modified By, Last Updated
-66. Verifikasi 7 kolom Curated tidak tercentang
-67. Verifikasi tidak ada kolom terpin
-68. Verifikasi tabel di balik modal masih menampilkan konfigurasi kustom langkah 62 (Group hilang, Industry tampil) sebelum [Save] (Reset baru berlaku setelah [Save], D-008)
-69. Klik `[Save]`, lalu tekan F5
-70. Verifikasi tabel tetap memakai konfigurasi default tersebut
+62. Klik header kolom Actions `(⋯)` lalu klik `Setup Column...`
+63. Hapus centang Group, centang Industry, seret Last Updated ke posisi pertama, klik ikon Pin pada PIC Name, lalu klik `[Save]`
+64. Verifikasi tabel menampilkan konfigurasi kustom: Group hilang, Industry tampil, Last Updated paling kiri, PIC Name terpin
+65. Klik header kolom Actions `(⋯)`, klik `Setup Column...`, lalu klik `[Reset to Default]`
+66. Verifikasi daftar kolom di popup: 10 kolom Hideable tercentang dengan urutan Company Name, Client Code, PIC Name, Managed By, Group, FAMS, SAMS, SIEM, Modified By, Last Updated
+67. Verifikasi 7 kolom Curated tidak tercentang
+68. Verifikasi tidak ada kolom terpin
+69. Verifikasi tabel di balik modal masih menampilkan konfigurasi kustom langkah 63 (Group hilang, Industry tampil) sebelum [Save] (Reset baru berlaku setelah [Save], D-065)
+70. Klik `[Save]`, lalu tekan F5
+71. Verifikasi tabel tetap memakai konfigurasi default tersebut
 
 ## Notes
 
 - Urutan TC disusun ulang (S-10): screening (406, 687) di awal, guard tanpa Save (696, 695, 694), lalu overlay yang langsung berlaku (697) beserta pemulihan Reset to Default, independensi Changelog (408), dan TC-AC-ACC-407 (menyimpan konfigurasi kustom) paling akhir karena mengubah preferensi yang tersimpan.
 - Spec melewati sekitar 35 langkah; alasan: semua blok satu kelas harness dan satu dataset (Setup Column List), blok memulihkan state sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (S-03): `[✕]` penutup modal, `Setup Column...`/`[Reset to Default]`/`[Save]` pemulihan Post Condition, dan baseline kolom Changelog sebelum aksi (S-12).
-- Temuan untuk QA
-  - TC-AC-ACC-696 dan 407: TC menegaskan tabel di balik modal Setup Column berubah saat centang diubah atau Reset (pratinjau langsung). Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-008 (tabel di balik popup tidak berubah sampai [Save]; menutup popup tanpa Save membuang perubahan): langkah 23 mengasersi tabel belum berubah, langkah 68 mengasersi tabel masih kustom sebelum [Save], dan konfigurasi default diasersi setelah [Save] dan F5 (langkah 70). TC tidak diubah. TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview. TC-AC-ACC-697 memakai panel Column Visibility (bukan popup) yang berlaku langsung dan tidak terdampak; TC-AC-ACC-695 sudah sesuai D-008.
+- Keselarasan TC dan spec
+  - TC-AC-ACC-696 dan 407: TC sudah diselaraskan pada 2026-11-03 sesuai `docs/spec-decisions.md` D-065 (tabel di balik popup tidak berubah sampai [Save]; menutup popup tanpa Save membuang perubahan); spec dan TC sama. langkah 24 mengasersi tabel belum berubah, langkah 69 mengasersi tabel masih kustom sebelum [Save], dan konfigurasi default diasersi setelah [Save] dan F5 (langkah 71). TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview. TC-AC-ACC-697 memakai panel Column Visibility (bukan popup) yang berlaku langsung dan tidak terdampak; TC-AC-ACC-695 sudah sesuai D-065. Sisa konflik hanya `prd-conventions.md` §9.3 (di luar scope suite, dilaporkan ke pemilik foundation).
   - TC-AC-ACC-408: Expected `Kolom modal Changelog tidak terpengaruh` tanpa daftar kolom; spec memakai baseline kolom modal yang dicatat sebelum aksi.
   - TC-AC-ACC-407: Expected butir (a) mengasersi tabel setelah [Save] dan Expected (b) preview setelah [Reset to Default]; spec menulis keduanya.

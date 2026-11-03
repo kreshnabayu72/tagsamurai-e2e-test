@@ -45,7 +45,7 @@ coverage:
   | Active | Modified By | `andi` | baris Client terakhir diubah Andi |
   | Suspended | SAMS | `archive` | `PT Wahana Nusantara` (C-03 berstatus Suspended) |
 
-- Ukuran halaman 10 (default); keyword Search tidak dipakai ulang antar kolom tanpa langkah ganti isi kotak search.
+- Ukuran halaman 10 (default); keyword Search tidak dipakai ulang antar kolom; pada iterasi ke-2 dan seterusnya langkah 29 mengganti isi kotak search yang masih berisi keyword iterasi sebelumnya.
 - Tidak ada data yang dibuat atau diubah spec ini; tidak butuh klien HTTP, intercept, atau jam server. Tidak ada preferensi Setup Column yang diubah.
 
 ## Test Steps
@@ -83,7 +83,7 @@ coverage:
 
 ### Pencarian per kolom (TC-AC-ACC-356 sampai TC-AC-ACC-364)
 
-29. Untuk setiap baris tabel parameter Search per kolom di Prerequisites: klik sub-tab sesuai kolom Sub-tab, lalu ketik Search kata kunci kolom itu (huruf kecil, tanpa debounce), tekan Enter
+29. Untuk setiap baris tabel parameter Search per kolom di Prerequisites: klik sub-tab sesuai kolom Sub-tab, lalu pada iterasi pertama ketik Search kata kunci kolom itu (huruf kecil, tanpa debounce), tekan Enter; pada iterasi ke-2 dan seterusnya ganti isi kotak Search dengan kata kunci kolom itu (huruf kecil, tanpa debounce), tekan Enter
 30. Verifikasi baris yang cocok pada kolom tersebut tampil (sesuai tabel parameter)
 31. Verifikasi pencarian tidak membedakan huruf besar-kecil: kata kunci berhuruf kecil cocok dengan nilai kolom berhuruf kapital pada baris yang tampil
 32. Klik sub-tab Active, lalu klik `(←)` pada kotak Search
@@ -108,6 +108,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung (S-03): pemilihan sub-tab, `(←)` pada kotak Search, dan ubah ukuran halaman menjadi 100 adalah langkah pemulihan/penghubung tanpa asersi. Baseline baris pertama dan terakhir dicatat sebelum aksi Search (S-12/S-14).
+- Langkah 29: pada iterasi ke-2 dan seterusnya kotak Search masih berisi keyword iterasi sebelumnya, sehingga aksi yang dipakai adalah mengganti isi kotak Search (bukan mengetik ke kotak kosong).
 - Langkah 29 sampai 31 diulang per baris tabel parameter (9 iterasi; satu `Verifikasi` per klausa Expected tiap iterasi). Spec melewati sekitar 35 langkah setelah ekspansi; alasan: seluruh blok satu kelas harness (Search List, dataset Pre-setup sama, tanpa state yang dibangun antar blok) dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
 - P-5: TC-AC-ACC-374 (injeksi SQL/XSS lewat input Search, kelas a) adalah satu-satunya objek uji ringan kelas a/b/h di spec ini; dijalankan lewat UI, bukan request langsung, sehingga tidak ada butir K-1. Penjaga empty state `No results found` pada TC-AC-ACC-374 mengikuti judul empty state pada TC-AC-ACC-372 karena Expected TC-AC-ACC-374 hanya menyebut `empty state`.
 - Temuan untuk QA
