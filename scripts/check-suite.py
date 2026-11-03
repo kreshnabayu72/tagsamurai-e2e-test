@@ -210,6 +210,10 @@ def main():
             if all(re.search(r"^- Mode:\s*mock", read(suite / f / "spec.md"), re.M)
                    and "Pembagian TC lintas spec" in read(suite / f / "spec.md") for f in folders):
                 continue
+            # S-05: TC terbelah presence/absence boleh ada di spec asal dan satu spec absence (kelas g)
+            absn = [f for f in folders if "absence" in f.lower()]
+            if len(absn) == 1 and len(folders) == 2 and all("S-05" in read(suite / f / "spec.md") for f in folders):
+                continue
             out("FINDING", "C2", f"{tid} ada di sourceTc {len(folders)} spec: {', '.join(folders)}")
 
     be_only = set()

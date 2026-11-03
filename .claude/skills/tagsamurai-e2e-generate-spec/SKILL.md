@@ -23,7 +23,7 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
 4. **Tampilkan rencana ke user dan tunggu persetujuan** sebelum menulis file. Rencana berisi tabel:
    `spec (id + judul)` | `sourceTc` | `role/precondition` | `data` | `hook/step yang dibutuhkan` | `kelas harness` | `jumlah langkah (perkiraan)` | `mode (FE+BE / mock)` | `TC hanya-BE`.
 5. Setelah disetujui, buat di `specs/<ModulBesar>/<SubModul>/` (PascalCase, contoh `specs/GlobalSettings/User/`):
-   - `suite.md` hanya jika belum ada (`id: suite-<kebab>`, `parallel: true` hanya jika semua spec independen). Kalau sudah ada, pakai apa adanya.
+   - `suite.md` hanya jika belum ada (`id: suite-<kebab>`, `parallel: true` hanya jika semua spec independen). Kalau sudah ada, pakai apa adanya. Tulis `suite.md` lebih dulu, sebelum spec pertama, dan isinya harus memuat setiap pernyataan hook atau kemampuan suite yang akan dirujuk spec dengan "dinyatakan sekali di `suite.md`" (sesi API aktor, hook flag, pemulihan preferensi kolom, seed idempotent, fixture bersama, jam server digeser). Spec tidak boleh merujuk pernyataan yang tidak ada di `suite.md`.
    - `TC-<ModulBesar>-<SubModul>-E2E-<NNN>-<slug>/spec.md`, dengan `NNN` melanjutkan nomor terakhir di suite itu.
 6. Isi frontmatter sesuai bagian 8 konvensi, termasuk `sourceTc` (daftar id TC granular) dan `status: draft`. `caseType` spec gabungan ikut jenis alur utama yang dominan (bagian 8 konvensi). `coverage.web: automated` untuk spec yang dirancang untuk otomasi, progres dibaca dari `status`.
 7. **Tulis body spec.md** mengikuti konvensi bagian 5 sampai 9, 10, 10a, dan butir Lampiran A modul ini (aturan lengkapnya ada di sana, tidak diulang di skill ini). Struktur wajib:
@@ -44,3 +44,5 @@ Kalau salah satu tidak ada, berhenti dan tanyakan. Jangan menebak prefix.
 - Jangan mengubah `ARCHITECTURE.md`, `spectra.config.ts`, `package.json`, atau spec suite lain tanpa izin.
 - Jangan menyimpan password atau token di spec dan fixture.
 - Jangan membuat spec yang bergantung pada hasil spec lain.
+- Jangan menulis rujukan proses di spec (id pertanyaan rencana `Q-xx`, "plan", "pemilik proses") atau kalimat "belum ada butir Lampiran A"; tulis hanya fakta kemampuan atau butir Lampiran A yang berlaku.
+- Jangan menulis tag proses yang tidak didefinisikan seperti `(K2)`, `K-n`, `(Q-xx)` di Prerequisites atau Notes; pakai hanya id keputusan yang didefinisikan di konvensi (K-1, P-1..P-8) dan tulis alasan sebagai fakta.
