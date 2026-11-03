@@ -37,80 +37,79 @@ coverage:
 
 ### TC-GS-USER-176: Emoji diblok saat diketik di First Name
 
-1. Buka Global Settings > User > User List, sub-tab Login User
-2. Klik icon Search, ketik `Dewi Lestari {runId}-034`, tekan Enter
-3. Buka row action baris `Dewi Lestari {runId}-034` lalu klik `Edit`
-4. Ketik `😊` di akhir First Name
-5. Verifikasi emoji tidak masuk field: First Name tetap `Dewi`
-6. Verifikasi tidak ada pesan error pada First Name
+1. Klik icon Search, ketik `Dewi Lestari {runId}-034`, tekan Enter
+2. Buka row action baris `Dewi Lestari {runId}-034` lalu klik `Edit`
+3. Ketik `😊` di akhir First Name
+4. Verifikasi emoji tidak masuk field: First Name tetap `Dewi`
+5. Verifikasi tidak ada pesan error pada First Name
 
 ### TC-GS-USER-177: Emoji First Name yang lolos filter input ditolak validasi FE real-time
 
-7. Injeksi value `Dewi😊` langsung ke DOM field First Name (bypass filter keystroke FE)
-8. Verifikasi inline error `First name contains invalid characters` muncul langsung di field, tanpa menunggu Submit
-9. Klik `[Save]`
-10. Tunggu aksi selesai
-11. Isi kembali First Name dengan `Dewi`
+6. Injeksi value `Dewi😊` langsung ke DOM field First Name (bypass filter keystroke FE)
+7. Verifikasi inline error `First name contains invalid characters` muncul langsung di field, tanpa menunggu Submit
+8. Klik `[Save]`
+9. Tunggu aksi selesai
+10. Isi kembali First Name dengan `Dewi`
 
 ### TC-GS-USER-178: Emoji diblok saat diketik di Last Name
 
-12. Ketik `😊` di akhir Last Name
-13. Verifikasi emoji tidak masuk field: Last Name tetap `Lestari {runId}-034`
-14. Verifikasi tidak ada pesan error pada Last Name
+11. Ketik `😊` di akhir Last Name
+12. Verifikasi emoji tidak masuk field: Last Name tetap `Lestari {runId}-034`
+13. Verifikasi tidak ada pesan error pada Last Name
 
 ### TC-GS-USER-179: Emoji Last Name yang lolos filter input ditolak validasi FE real-time
 
-15. Injeksi value `Dewi😊` langsung ke DOM field Last Name (bypass filter keystroke FE)
-16. Verifikasi inline error `Last name contains invalid characters` muncul langsung di field, tanpa menunggu Submit
-17. Klik `[Save]`
-18. Tunggu aksi selesai
-19. Isi kembali Last Name dengan `Lestari {runId}-034`
+14. Injeksi value `Dewi😊` langsung ke DOM field Last Name (bypass filter keystroke FE)
+15. Verifikasi inline error `Last name contains invalid characters` muncul langsung di field, tanpa menunggu Submit
+16. Klik `[Save]`
+17. Tunggu aksi selesai
+18. Isi kembali Last Name dengan `Lestari {runId}-034`
 
 ### TC-GS-USER-180: Email diubah ke email user lain
 
-20. Ubah Email ke `mayaanggraini+{runId}-034@qwertysystem.net`
-21. Tunggu ±500 ms
-22. Verifikasi inline error `Email already exists`
-23. Isi kembali Email dengan `dewilestari+{runId}-034@qwertysystem.net`
+19. Ubah Email ke `mayaanggraini+{runId}-034@qwertysystem.net`
+20. Tunggu ±500 ms
+21. Verifikasi inline error `Email already exists`
+22. Isi kembali Email dengan `dewilestari+{runId}-034@qwertysystem.net`
 
 ### TC-GS-USER-181: Email milik target sendiri yang diketik ulang identik
 
-24. Hapus 1 karakter di akhir Email lalu ketik ulang karakter yang sama
-25. Tunggu ±500 ms
-26. Verifikasi Email berisi `dewilestari+{runId}-034@qwertysystem.net`
-27. Verifikasi tidak ada error `Email already exists`
+23. Hapus 1 karakter di akhir Email lalu ketik ulang karakter yang sama
+24. Tunggu ±500 ms
+25. Verifikasi Email berisi `dewilestari+{runId}-034@qwertysystem.net`
+26. Verifikasi tidak ada error `Email already exists`
 
 ### TC-GS-USER-182: Employee ID diubah ke milik user lain
 
-28. Ubah Employee ID ke `EMP-{runId}-034-B`
-29. Tunggu ±500 ms
-30. Verifikasi inline error `Employee ID already exists`
-31. Isi kembali Employee ID dengan `EMP-{runId}-034-A`
+27. Ubah Employee ID ke `EMP-{runId}-034-B`
+28. Tunggu ±500 ms
+29. Verifikasi inline error `Employee ID already exists`
+30. Isi kembali Employee ID dengan `EMP-{runId}-034-A`
 
 ### TC-GS-USER-183: Format Email tidak valid ditolak saat Save
 
-32. Ubah Email ke `dewi.qwertysystem.net`
-33. Klik `[Save]`
-34. Verifikasi inline error `Invalid email format`
+31. Ubah Email ke `dewi.qwertysystem.net`
+32. Klik `[Save]`
+33. Verifikasi inline error `Invalid email format`
 
 ### Penutupan form dan data tidak berubah (butir "data tidak berubah" TC-GS-USER-177 dan 179)
 
-35. Klik `[✕]`
-36. Verifikasi dialog `Unsaved Changes` tampil
-37. Klik `[Leave]`
-38. Verifikasi Popup Edit tertutup
-39. Verifikasi baris `Dewi Lestari {runId}-034` di tabel tidak berubah: Name, Email, dan Employee ID sama dengan data seed
+34. Klik `[✕]`
+35. Verifikasi dialog `Unsaved Changes` tampil
+36. Klik `[Leave]`
+37. Verifikasi Popup Edit tertutup
+38. Verifikasi baris `Dewi Lestari {runId}-034` di tabel tidak berubah: Name, Email, dan Employee ID sama dengan data seed
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md` (TC-GS-USER-176 sampai 183). Mode FE+BE; kelas harness: validasi form Edit (satu kelas). TC-GS-USER-177 dan 179 bertipe Security di sumber, tetapi memakai injeksi DOM sebagai cara mencapai kondisi, bukan defense-in-depth server (kelas a); asersinya hanya validasi FE real-time sehingga tetap di spec ini.
 - Satu pembukaan Edit dengan field dikembalikan ke nilai seed di antara kasus; setiap kasus berakhir tanpa data tersimpan. Form ditutup deterministik lewat `[✕]`, `Unsaved Changes`, `[Leave]` (S-08).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 3 (membuka layar dan form), 10 dan 18 (Tunggu aksi selesai sesudah `[Save]` yang hasilnya tidak diasersi langsung, bagian 8b butir 8), 11, 19, 23, 31 (mengembalikan field ke nilai seed), 35 dan 37 (penutupan). Verifikasi dialog `Unsaved Changes` (langkah 36) dan Popup tertutup (langkah 38) adalah asersi tambahan penutupan deterministik S-08; tidak ada di Expected TC sumber.
-- Butir "Setelah klik `[Save]`, data tidak berubah" (TC-GS-USER-177 dan 179) diasersi sekali pada langkah 39 setelah form ditutup.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 2 (membuka form), 9 dan 17 (Tunggu aksi selesai sesudah `[Save]` yang hasilnya tidak diasersi langsung, bagian 8b butir 8), 10, 18, 22, 30 (mengembalikan field ke nilai seed), 34 dan 36 (penutupan). Verifikasi dialog `Unsaved Changes` (langkah 35) dan Popup tertutup (langkah 37) adalah asersi tambahan penutupan deterministik S-08; tidak ada di Expected TC sumber.
+- Butir "Setelah klik `[Save]`, data tidak berubah" (TC-GS-USER-177 dan 179) diasersi sekali pada langkah 38 setelah form ditutup.
 - Nilai duplikat TC sumber (email John Doe, `EMP-0001`) diganti data U-2 milik spec (S-06); makna tidak berubah karena kasus hanya membutuhkan nilai yang sudah dipakai user lain.
 - Pembagian TC lintas spec: TC-GS-USER-176 sampai 183 diverifikasi seluruhnya di spec ini.
 - Temuan untuk QA:
   - TC-GS-USER-177 dan 179 menjelaskan injeksi DOM tanpa menyebut cara; kemampuan menyetel nilai field langsung di DOM disediakan tim FE.
   - TC-GS-USER-177 dan 179 butir b ("data tidak berubah") tidak menyebut cara memeriksa; spec memeriksa baris tabel setelah form ditutup.
   - TC-GS-USER-181 dan 183 tidak menyebut hasil `[Save]` setelah verifikasi (TC-GS-USER-181 tidak menyimpan; TC-GS-USER-183 hanya error); spec tidak menyimpan data pada kasus apa pun.
-- Spec melewati sekitar 35 langkah (39 langkah) karena memuat satu kelas (validasi form Edit), satu layar, satu pembukaan form dipakai bersama, dan tiap blok berdiri sendiri (kegagalan satu field tidak membuat blok field lain kehilangan makna).
+- Spec melewati sekitar 35 langkah (38 langkah) karena memuat satu kelas (validasi form Edit), satu layar, satu pembukaan form dipakai bersama, dan tiap blok berdiri sendiri (kegagalan satu field tidak membuat blok field lain kehilangan makna).

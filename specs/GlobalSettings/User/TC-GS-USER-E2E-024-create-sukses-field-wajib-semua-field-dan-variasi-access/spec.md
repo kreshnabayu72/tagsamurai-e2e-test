@@ -44,7 +44,7 @@ coverage:
 
 1. Buka Global Settings > User > User List (sub-tab Login User)
 2. Klik `[+ User]` di Table Tools
-3. Isi First Name `Budi`, Last Name `Santoso {runId}-024-117`, Division `Finance`, Email `budisantoso+{runId}-024-117@qwertysystem.net`, centang Access `Fixed Asset`
+3. Isi First Name `Budi`, Last Name `Santoso {runId}-024-117`, Division `Finance`, Email `budisantoso+{runId}-024-117@qwertysystem.net`, pilih Access `Fixed Asset`
 4. Klik `[Submit]`
 5. Verifikasi Popup tertutup
 6. Verifikasi toast sukses: "Success, user has been created."
@@ -68,7 +68,7 @@ coverage:
 21. Buka Global Settings > User > User List (sub-tab Login User)
 22. Klik `[+ User]` di Table Tools
 23. Upload Photo `budi.png`
-24. Isi First Name `Budi`, Last Name `Santoso {runId}-024-118`, Division `Finance`, Email `budisantoso+{runId}-024-118@qwertysystem.net`, centang Access `Fixed Asset`
+24. Isi First Name `Budi`, Last Name `Santoso {runId}-024-118`, Division `Finance`, Email `budisantoso+{runId}-024-118@qwertysystem.net`, pilih Access `Fixed Asset`
 25. Isi Position `Finance Manager`, Employee ID `EMP-0101-{runId}-024`
 26. Klik `Scan TAG`, scan `TAG-USR-0001`
 27. Centang `Set as Temporary User`, Temporary Until = hari ini + 30 hari
@@ -95,7 +95,7 @@ coverage:
 45. Buka Global Settings > User > User List (sub-tab Login User)
 46. Klik `[+ User]` di Table Tools
 47. Isi First Name `Sari`, Last Name `Wulandari {runId}-024-119`, Division `Logistics`, Email `sariwulandari+{runId}-024-119@qwertysystem.net`
-48. Centang Access `Global Settings` saja
+48. Pilih Access `Global Settings` saja
 49. Klik `[Submit]`
 50. Verifikasi toast sukses: "Success, user has been created."
 51. Refresh halaman
@@ -111,7 +111,7 @@ coverage:
 58. Buka Global Settings > User > User List (sub-tab Login User)
 59. Klik `[+ User]` di Table Tools
 60. Isi First Name `Sari`, Last Name `Wulandari {runId}-024-120`, Division `Logistics`, Email `sariwulandari+{runId}-024-120@qwertysystem.net`
-61. Centang Access `Fixed Asset` dan `Supply Asset`
+61. Pilih Access `Fixed Asset` dan `Supply Asset`
 62. Klik `[Submit]`
 63. Verifikasi toast sukses: "Success, user has been created."
 64. Refresh halaman

@@ -1,8 +1,8 @@
 # Coverage E2E — Global Settings > User > User List dan User Detail
 
-Sumber: `global-settings/user/TestCases/tc-user.md` (1086 ID aktif `TC-GS-USER-1`–`1088`; `TC-GS-USER-956` dan `TC-GS-USER-957` retired dan tidak ada di berkas). Referensi kontrak: `global-settings/user/PRD/user.md`. Suite: `specs/GlobalSettings/User/`. Prefix: `GS` + `USER` (`TC-GS-USER-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`).
+Sumber: `global-settings/user/TestCases/tc-user.md` (1136 ID aktif `TC-GS-USER-1`–`1138`; `TC-GS-USER-956` dan `TC-GS-USER-957` retired dan tidak ada di berkas). Referensi kontrak: `global-settings/user/PRD/user.md`. Suite: `specs/GlobalSettings/User/`. Prefix: `GS` + `USER` (`TC-GS-USER-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`).
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1086 TC aktif masuk spec, 0 TC hanya-BE (kolom PIC FE seluruh TC bernilai `v`; TC request-langsung Section 8 tetap spec karena asersinya respons server dan state data). 159 spec (155 FE+BE, 4 mock). Setiap TC terpetakan ke tepat satu spec (`sourceTc`); tidak ada TC yang terbelah antar `sourceTc`, pembagian asersi lintas spec dicatat di bagian berikut.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1136 TC aktif masuk spec, 0 TC hanya-BE (kolom PIC FE seluruh TC bernilai `v`; TC request-langsung Section 8 tetap spec karena asersinya respons server dan state data). 176 spec (172 FE+BE, 4 mock). Setiap TC terpetakan ke tepat satu spec (`sourceTc`); tidak ada TC yang terbelah antar `sourceTc`, pembagian asersi lintas spec dicatat di bagian berikut.
 
 ## TC granular → spec e2e
 
@@ -167,6 +167,23 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1086 TC aktif masuk spec, 0 T
 | TC-GS-USER-E2E-157-siklus-aktivasi-login-link-kedaluwarsa-dan-deactivate-memutus-akses | Siklus Aktivasi dan Login: Status Activated, Link Kedaluwarsa, Effective Active, dan Deactivate Memutus Login | FE+BE | 39 | 988–991 |
 | TC-GS-USER-E2E-158-isolasi-subtab-login-non-login-dan-persistensi-setup-column | Isolasi Sub-tab Login User dan Non-Login User serta Persistensi Setup Column Terpisah | FE+BE | 20 | 992–993 |
 | TC-GS-USER-E2E-159-multi-konteks-sesi-user-target-setelah-aksi-admin-deactivate-dan-reset-authenticator | Multi-Konteks: Sesi Browser User Target Berakhir Setelah Admin Deactivate dan Tetap Berjalan Setelah Admin Reset Authenticator | FE+BE | 23 | 243, 331 |
+| TC-GS-USER-E2E-160-role-matrix-negatif-read-only-detail-tab-dan-tab-role | Role Matrix Negatif: Detail User untuk Read Only (Tooltip Checkbox Tab Role Baris Switch OFF, Keenam Tab Detail Tanpa Kontrol Tulis, dan Tab Responsibilities Murni Tampilan) | FE+BE | 34 | 1107, 1128, 1129 |
+| TC-GS-USER-E2E-161-role-matrix-tab-role-aktor-manage-user-and-role-update-read-dan-diri-sendiri | Role Matrix: Visibilitas Switch Active dan Checkbox Tab Role per Aktor Manage user and role (Update-Only, Read-Only role, dan Akun Sendiri Full CRUD) | FE+BE | 26 | 1090, 1091, 1108 |
+| TC-GS-USER-E2E-162-tab-role-switch-off-on-inactive-retained-dan-tooltip-checkbox | User Detail Tab Role: Tooltip Checkbox Baris Switch OFF, Column Visibility Kolom Active, Switch OFF Menyimpan Inactive-Retained, dan Switch ON Memulihkan Nilai Tersimpan | FE+BE | 52 | 1092, 1093, 1100, 1106 |
+| TC-GS-USER-E2E-163-tab-role-user-type-dan-auto-revert-tier-lewat-switch-off | User Detail Tab Role: User Type Mengikuti Role Active, Cancel Dialog Auto-revert, dan Switch OFF pada User Total Control dan Read Only Memunculkan Dialog Auto-revert dan Tier Lepas | FE+BE | 56 | 1094–1096, 1098 |
+| TC-GS-USER-E2E-164-tab-role-state-in-flight-optimistic-loading-mini-dan-kontrol-disabled | User Detail Tab Role: State In-flight Checkbox CRUD dan Switch Active (Nilai Langsung Tampil, Indikator Loading Mini, Kontrol Disabled Sesaat, dan Klik Ganda Diabaikan) | FE+BE | 31 | 1109, 1110 |
+| TC-GS-USER-E2E-165-remove-access-global-settings-role-active-dan-inactive-retained | Remove Access Global Settings: Role Active dan Inactive-Retained Dihapus Tanpa Pemulihan | FE+BE | 19 | 1099 |
+| TC-GS-USER-E2E-166-pencatatan-switch-active-tab-role-di-changelog-modal-system-log-dan-activity-log | Pencatatan Log: Switch Active OFF dan ON di Tab Role Tercatat sebagai Remove dan Assign di Changelog Role, Modal Changelog User, System Log, dan Activity Log | FE+BE | 34 | 1101 |
+| TC-GS-USER-E2E-167-dialog-deactivate-peringatan-aset-approval-single-bulk-dan-switch-pending | Dialog Deactivate: Peringatan Aset Aktif dan Approval In-Flight untuk Single dan Bulk, serta Switch Active Tetap Enabled untuk User Pending Activation dan Pending Email Confirmation | FE+BE | 34 | 1111, 1113, 1114 |
+| TC-GS-USER-E2E-168-resilience-tulis-switch-tab-role-5xx-dan-kegagalan-penulisan-log | Resilience Tulis User: Switch Active Tab Role Gagal 5xx, serta Kegagalan Penulisan Log pada Perubahan Permission, Deactivate, dan Resend Activation Email | FE+BE | 57 | 1097, 1117, 1135, 1136 |
+| TC-GS-USER-E2E-169-resilience-baca-pemeriksaan-aset-approval-gagal-dan-load-detail-gagal | Resilience Baca User: Pemeriksaan Aset dan Approval pada Dialog Deactivate Gagal Menampilkan Baris Fallback, dan Load Header serta General Information Detail Gagal dengan Try Again | FE+BE | 23 | 1112, 1124 |
+| TC-GS-USER-E2E-170-detail-user-header-general-information-custom-fields-dan-user-tidak-ditemukan | User Detail: Tanpa Guided Walkthrough, Subtitle Employee ID Kosong, Label Switch dan Severity Badge Header, Section Custom Fields Collapsed, serta User Tidak Ditemukan | FE+BE | 36 | 1089, 1118, 1120, 1123, 1125 |
+| TC-GS-USER-E2E-171-detail-user-label-tab-retensi-state-modified-by-changelog-dan-nama-file-download | User Detail: Label Tab dan Sub-Tab dengan Angka 0, Retensi State Search Sort Paginasi antar Tab, Modified By Singkat dengan Hover Nama Lengkap, dan Nama File Download Changelog | FE+BE | 49 | 1122, 1126, 1127, 1132 |
+| TC-GS-USER-E2E-172-detail-responsibilities-kolom-pending-tasks-dan-badge-brand-model-type | User Detail Responsibilities: Kolom Group Badge, PIC Kosong, dan Total Asset Kosong pada Pending Tasks, serta Badge Brand dan Model / Type dengan Filter Model / Type pada Borrowed dan Assigned Assets | FE+BE | 30 | 1137, 1138 |
+| TC-GS-USER-E2E-173-user-list-paginasi-kembali-ke-halaman-1-saat-search-filter-page-size | User List: Paginasi Kembali ke Halaman 1 saat Search, Filter, atau Page Size Berubah dan Sort Tetap di Halaman | FE+BE | 27 | 1131 |
+| TC-GS-USER-E2E-174-sinkron-custom-field-deactivated-import-create-dan-section-hidden | Sinkron Custom Field Deactivated: Create Ditolak di Field, Import Tersimpan dan Tersembunyi, serta Section Custom Fields Hidden di Detail | FE+BE | 40 | 1104, 1105, 1121 |
+| TC-GS-USER-E2E-175-multi-konteks-resend-ditolak-server-dan-record-berubah-atau-dihapus-sesi-lain | Multi-Konteks: Resend Ditolak Server saat Cooldown atau Status Berubah, Switch Tab Role dan Auto-Revert saat Record Berubah, serta Deactivate saat User Dihapus Admin Lain | FE+BE | 62 | 1103, 1115, 1116, 1119, 1133 |
+| TC-GS-USER-E2E-176-state-tenant-client-suspended-tab-role-resend-hidden-dan-prioritas-tooltip-read-only | State Tenant Client Suspended: Tab Role Disabled, Resend Hidden, dan Tooltip Suspended Menang atas Read Only | FE+BE | 37 | 1102, 1130, 1134 |
 
 ## Pembagian TC lintas spec
 
@@ -177,19 +194,24 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1086 TC aktif masuk spec, 0 T
 - **TC-GS-USER-1043** (Modified By Default User seed `System`) di spec `001` dan **TC-GS-USER-1044** (baris Changelog paling awal `Create` oleh `System`) di spec `139`: dijalankan sebelum spec yang mengedit Default User (`017`, `032`); suite berjalan serial.
 - **TC-GS-USER-243 dan 331** (sesi browser user target setelah admin Deactivate / Reset Authenticator) seluruhnya di spec `159` (kelas c, hasil di jendela kedua diasersi); spec `047` dan `058` mencatat rujukan di Notes.
 - **TC-GS-USER-462** (Download lebih dari 5.000 baris) berdiri sendiri di spec `077` (kelas e, seed volume).
+- **TC-GS-USER-1096, 1101, 1103, 1116, 1133, 1136** (klausa "tidak ada entri/email/log baru"): ditulis sebagai asersi jumlah berbaseline setelah anchor positif di spec asal (`163`, `166`, `175`, `168`), jumlah dibaca lewat BE sebelum aksi; bukan spec absence `147` dan tidak ada di `sourceTc` spec `147`.
+- **TC-GS-USER-1092 dan 1093** (Switch OFF lalu ON): berurutan pada user seed yang sama di spec `162` (1093 memakai state hasil 1092), suite berjalan serial.
+- **TC-GS-USER-1105** (Create ditolak saat Custom Field dinonaktifkan sesi lain): di spec `174` (pola spec `031`, `040`; referensi berubah dipicu lewat API), bukan spec `175`.
+- **TC-GS-USER-1130** (tooltip Suspended menang atas Read Only) di spec `176`; spec `160` hanya merujuknya di Notes.
 
 ## Kebutuhan lingkungan (tim FE)
 
-- Env var password yang dipakai spec (jumlah spec pemakai): `AC_STAFF_PASSWORD` (1), `GS_BASIC_PASSWORD` (1), `GS_CLIENTB_TC_PASSWORD` (2), `GS_CLIENTEXP_TC_PASSWORD` (1), `GS_CLIENTSUSP_TC_PASSWORD` (1), `GS_CREATE_PASSWORD` (3), `GS_DEFAULT_PASSWORD` (3), `GS_DELETE_PASSWORD` (3), `GS_DISTRIBUTOR_TC_PASSWORD` (1), `GS_FULLCRUD_PASSWORD` (24), `GS_LIMIT_TC_PASSWORD` (1), `GS_NOFAMS_TC_PASSWORD` (1), `GS_NOSUPPLY_TC_PASSWORD` (1), `GS_PLANGROWTH_TC_PASSWORD` (1), `GS_PLANSTARTER_TC_PASSWORD` (1), `GS_PRINCIPAL_TC_PASSWORD` (4), `GS_READ_PASSWORD` (2), `GS_RO_PASSWORD` (3), `GS_TC2_PASSWORD` (6), `GS_TC_PASSWORD` (157), `GS_UPDATE_PASSWORD` (6), `USER_PASSWORD` (18), `USER_PASSWORD_NEW` (7), `USER_PASSWORD_WRONG` (2). Nama baru milik suite ini (`GS_DEFAULT_PASSWORD`, `GS_FULLCRUD_PASSWORD`, `GS_BASIC_PASSWORD`, `GS_NOFAMS_TC_PASSWORD`, `GS_NOSUPPLY_TC_PASSWORD`, `AC_STAFF_PASSWORD`, `USER_PASSWORD`, `USER_PASSWORD_NEW`, `USER_PASSWORD_WRONG`) sudah didaftarkan di `spectra.config.ts` dan `.env.example`; password aktual diisi tim FE.
-- Akun di luar Tabel Pre-setup TC User (disediakan tim FE): Total Control admin kedua (`GS_TC2_PASSWORD`), Client B, Principal, Distributor, Client Limit, Client Suspended, Client Expired, Client plan Starter dan Growth, Client tanpa FAMS, Client tanpa Supply Asset, Admin FAMS, staff Principal Admin Console, serta Default User client baru.
+- Env var password yang dipakai spec (jumlah spec pemakai): `AC_STAFF_PASSWORD` (1), `GS_BASIC_PASSWORD` (1), `GS_CLIENTB_TC_PASSWORD` (2), `GS_CLIENTEXP_TC_PASSWORD` (1), `GS_CLIENTSUSP_RO_PASSWORD` (1), `GS_CLIENTSUSP_TC_PASSWORD` (2), `GS_CREATE_PASSWORD` (3), `GS_DEFAULT_PASSWORD` (3), `GS_DELETE_PASSWORD` (3), `GS_DISTRIBUTOR_TC_PASSWORD` (1), `GS_FULLCRUD_PASSWORD` (25), `GS_LIMIT_TC_PASSWORD` (1), `GS_NOFAMS_TC_PASSWORD` (1), `GS_NOSUPPLY_TC_PASSWORD` (1), `GS_PLANGROWTH_TC_PASSWORD` (1), `GS_PLANSTARTER_TC_PASSWORD` (1), `GS_PRINCIPAL_TC_PASSWORD` (4), `GS_READ_PASSWORD` (3), `GS_RO_PASSWORD` (4), `GS_TC2_PASSWORD` (8), `GS_TC_PASSWORD` (174), `GS_UPDATE_PASSWORD` (7), `USER_PASSWORD` (18), `USER_PASSWORD_NEW` (7), `USER_PASSWORD_WRONG` (2). Nama baru milik suite ini (`GS_DEFAULT_PASSWORD`, `GS_FULLCRUD_PASSWORD`, `GS_BASIC_PASSWORD`, `GS_NOFAMS_TC_PASSWORD`, `GS_NOSUPPLY_TC_PASSWORD`, `AC_STAFF_PASSWORD`, `USER_PASSWORD`, `USER_PASSWORD_NEW`, `USER_PASSWORD_WRONG`) sudah didaftarkan di `spectra.config.ts` dan `.env.example`; password aktual diisi tim FE. Nama baru `GS_CLIENTSUSP_RO_PASSWORD` (Read Only Client Suspended, spec `176`) belum didaftarkan di `spectra.config.ts` dan `.env.example`.
+- Akun di luar Tabel Pre-setup TC User (disediakan tim FE): Total Control admin kedua (`GS_TC2_PASSWORD`), Client B, Principal, Distributor, Client Limit, Client Suspended (Total Control dan Read Only `GS_CLIENTSUSP_RO_PASSWORD`, spec `176`), Client Expired, Client plan Starter dan Growth, Client tanpa FAMS, Client tanpa Supply Asset, Admin FAMS, staff Principal Admin Console, serta Default User client baru.
 - Seeding lewat API tanpa endpoint di TC, PRD, atau LLD: user dan Non-Login User milik spec (suffix `{runId}-NNN`), data Responsibilities FAMS (borrowed, assigned, approval, task), Handheld, tier dan role individual, Custom Field, Master Data, event User Log dengan IP dan User-Agent tertentu, foto, dan populasi volume (5.001 user).
+- Spec `160`..`176`: seeding Group, PIC, dan Total Asset kosong serta populasi aset FAMS (borrowed, assigned, approval, task) untuk user seed pengganti Joko Susilo dan Ahmad Fauzi (spec `167`, `171`, `172`); toggle kegagalan penulisan log disediakan tim BE dan dipulihkan di `after` (spec `168`); penghitung request dan intercept parsial (spec `164`, `168`, `169`); draft Import User Login 1 baris `pending` (spec `174`); salinan data Pre-setup di Client Suspended dan akun Read Only Client Suspended (spec `176`); user seed Basic, Tier Total Control, dan Tier Read Only (spec `163`); baris `Manage files` switch OFF pada akun Fajar Nugroho (spec `161`, P-6); sesi API Admin B dan mail-catcher (spec `174`, `175`); populasi User List lebih dari 20 baris (spec `173`).
 - Kemampuan teknis: intercept jaringan (5xx, timeout, tahan respons, download gagal), dua sesi browser, sesi API admin kedua, mail-catcher, manipulasi jam server dan jam browser, picu job auto-deactivate, simulasi scan TAG, mengubah System Limits (Master Data Count Limit, Selection Limit), plan dan status Client, General Settings, membaca dan menyetel flag Guided Tooltip `gs-user`, menangkap dan membaca berkas CSV/XLSX, drag and drop, viewport sempit, dan membaca atau menghapus preferensi Setup Column di browser.
 - Environment automation terisolasi dari aktivitas pengguna lain dan suite berjalan serial (`parallel: false`); spec yang menghapus data (Delete, Bulk Delete, Remove Access) dijalankan sesudah spec lain.
 - Baris Pre-setup yang terpaksa diubah lalu dipulihkan (Last Update dan Modified By tidak dapat dipulihkan): Default User (spec `017`, `032`), John Doe (spec `041`, `057`), Siti Nurhaliza (spec `018` Position, pending email, TAG; spec `060` Blood Type), foto Fajar Nugroho (spec `018`), opsi Custom Field `Blood Type` dan `Skills` (spec `031`, opsi bersuffix). State global yang diubah dan dipulihkan: subscription Client (spec `020`, `039`), Required `Emergency Phone` (spec `024`, `025`); diterima atas keputusan user 2026-10-21 (S-06: pulihkan dan catat efeknya).
 
 ## Temuan yang masih terbuka
 
-- Spec melewati batas ±35 langkah (134 spec), masing-masing dengan alasan di Notes (satu layar, satu kelas, blok berdiri sendiri; langkah menjadi banyak karena satu `Verifikasi` per klausa Expected, S-01, dan siklus Save + F5 per kolom di spec Setup Column). Terbesar: 075 (385), 112 (343), 118 (287), 106 (226), 082 (206), 094 (196), 088 (193), 100 (181), 136 (175), 072 (173), 144 (170), 130 (156), 124 (150), 015 (140), 074 (137), 140 (121), 071 (120), 133 (120), 067 (112), 108 (112). Diterima atas keputusan user 2026-10-21 (alasan sah di Notes; tidak dipecah).
+- Spec melewati batas ±35 langkah (142 spec; dari spec `160`..`176`: 162, 163, 168, 170, 171, 174, 175, 176), masing-masing dengan alasan di Notes (satu layar, satu kelas, blok berdiri sendiri; langkah menjadi banyak karena satu `Verifikasi` per klausa Expected, S-01, dan siklus Save + F5 per kolom di spec Setup Column). Terbesar: 075 (385), 112 (343), 118 (287), 106 (226), 082 (206), 094 (196), 088 (193), 100 (181), 136 (175), 072 (173), 144 (170), 130 (156), 124 (150), 015 (140), 074 (137), 140 (121), 071 (120), 133 (120), 067 (112), 108 (112). Diterima atas keputusan user 2026-10-21 (alasan sah di Notes; tidak dipecah).
 - Spec Setup Column tiap permukaan (075, 082, 088, 094, 100, 106, 112, 118, 124, 130, 136) mengulang siklus Save dan F5 per kolom; pemecahan per aksi (hide, reorder, pin) menunggu keputusan.
 - TC "uncheck lalu check, Save, F5" (Setup Column) tidak menghasilkan konfigurasi yang berbeda dari default; spec memakai urutan hide, Save, F5, lalu unhide dan mencatat tafsirannya di Notes.
 - TC-462 meminta toast informasional dan notifikasi `[Download]` untuk ekspor >5.000 baris, sedangkan `error-handling-convention.md` §10.1 menyatakan tidak ada job background; spec `077` mengikuti TC.
@@ -199,6 +221,27 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1086 TC aktif masuk spec, 0 T
 - Post Condition tanpa langkah observasi tidak diasersi; dicatat di "Temuan untuk QA" tiap spec.
 - Header kolom aksi bernama `Actions (⋯)` di sebagian TC dan `Column Visibility (⋯)` di TC lain; spec memakai `Column Visibility (⋯)`.
 - Spec `042` (gating plan Starter, downgrade plan): kemampuan mengubah plan ditulis "disediakan tim FE" sesuai S-13; tetap `coverage.web: automated`.
+- Spec `160`..`176` (Need Confirmation, per spec):
+  - `160`: TC-1128 Expected c ("tab lain tanpa kontrol tulis") tidak mendefinisikan kontrol tulis per tab, dan langkah 3 tidak menyebut baris Tab Role yang diamati; TC-1129 Expected b tidak menyebut sub-tab (diasersi pada keempat sub-tab).
+  - `161`: TC-1108 (P-6) akun Fajar Nugroho (dipakai 25 spec) harus punya baris `Manage files` switch OFF; perlu keputusan seed FE/BE atau akun klon. TC-1090 dan 1091 tidak menyebut baris atau checkbox yang di-hover.
+  - `162`: TC-1100 Expected b (nilai switch tidak berubah selama kolom hidden) tidak teramati, dibandingkan sebelum hide dan sesudah unhide; TC-1092 langkah 4-5 tidak menyebut surface Detail role; TC-1106 Expected a (checkbox inactive-retained "tidak tercentang") diikuti apa adanya; TC-1093 (P-10) precondition "hasil 1092" dibangun berurutan.
+  - `163`: TC-1096 Expected c tidak menyebut surface log (dipakai Tab Changelog Detail); Post Condition TC-1094 dan 1095 (notifikasi in-app view-only) tanpa langkah observasi dan tidak diasersi; mekanisme membentuk tier Total Control dan Read Only pada user seed tidak disebut TC.
+  - `164`: TC-1109 dan 1110 ("disabled sesaat", "hanya 1 request terkirim") tanpa durasi dan tanpa cara menghitung request; penghitung request disediakan tim FE/BE.
+  - `165`: TC-1099 Expected a tidak menyebut teks isi dialog Remove Access Global Settings (hanya Title yang diasersi) dan tidak menyebut kontrol Access.
+  - `166`: TC-1101 butir d tidak menyebut kolom Activity Log selain Modified By; butir b tidak menyebut urutan kolom Modal Changelog User (memakai format TC-1052).
+  - `167`: teks heading kelompok approver in-flight (TC-1113 Expected c) tidak ditulis (Need Confirmation); TC-1114 langkah 3 tidak menyebut lokasi switch (header Detail dipakai); teks baris fallback TC-1111 Expected e diambil dari TC-1112.
+  - `168` (P-9): mekanisme dan lingkup toggle kegagalan penulisan log (TC-1136, 1135, 1117) tidak ada di TC, PRD, atau LLD (disediakan tim BE); surface "tidak ada entri log baru" TC-1136 tidak jelas (Changelog User dan System Log aktor diasersi); Expected c TC-1117 ("ditandai butuh reprocessing manual `USER-LOGIC-09c`") tidak punya permukaan UI dan tidak diasersi; batas "eventual" TC-1135 memakai polling 5 detik maksimum 2 menit.
+  - `169`: nama endpoint dan durasi timeout TC-1112 serta durasi "lambat" TC-1124 (dipakai 3 detik) tidak disebut; Expected c TC-1124 ("data tampil") tidak merinci data.
+  - `170` (P-2): TC-1125 Precondition c ambigu; hook suite menyetel flag `seen` sehingga hanya varian "sudah selesai" diuji, varian "belum selesai" perlu spec sendiri atau pengecualian flag seperti spec `005`/`006`. TC-1118 Expected c tidak menyebut cara mengamati refresh User List.
+  - `171` (P-3): lihat butir Lampiran A di bawah. TC-1122 Expected c tidak merinci nilai default (Need Confirmation: sort Date Newest First dan page size 10 pada Tab Changelog); "Filter" di judul TC-1122 tidak punya langkah dan tidak diasersi; TC-1127 tidak menyebut perubahan data yang menghasilkan Modified By `Siti N`.
+  - `172`: seeding Group, PIC, dan Total Asset kosong tanpa mekanisme di TC, PRD, atau LLD (Need Confirmation); opsi pembanding `ThinkPad T14` ditambahkan spec untuk TC-1138 Expected b.
+  - `173` (P-7): TC-1131 langkah 4 "Apply satu Filter" tidak menyebut filter (dipakai Division `Finance`); asersi "lebih dari 20 baris" bergantung populasi bersama (Pre-setup No. 29 = 25 user) yang diubah spec penghapus lain.
+  - `174` (P-1, P-5): TC-1121 tidak menyebut Client dan cara menonaktifkan seluruh Custom Field (spec menonaktifkan Custom Field akun aktor sementara; alternatif Client khusus tanpa Custom Field aktif); fixture draft Import TC-1104 "mengikuti `tc-import.md`" yang menyebut draft commit hanya di Client E, sedangkan TC mengubah Custom Field akun aktor; cara mengamati baris draft sesudah commit tidak disebut; hasil commit bergantung Required `Emergency Phone`.
+  - `175` (P-8): aksi Sesi B TC-1115, 1116, 1119, 1103, 1133 ditulis lewat UI dan Manual Only, spec memakai Admin B lewat sesi API; surface log "hanya satu entri" (TC-1115) dan "tidak ada entri" (TC-1103) tidak disebut; banner TC-1133 Expected c tidak diidentifikasi; "Resend belum cooldown" (TC-1115) tanpa mekanisme seeding.
+  - `176` (P-4): TC-1130 butuh akun Read Only di Client Suspended yang tidak ada di Pre-setup maupun `.env.example` (`GS_CLIENTSUSP_RO_PASSWORD` baru; alternatif menyuspend Client A sementara); precondition "Client berstatus suspended" TC-1102 dan 1130 tidak menyebut Client dan data; kontrol tulis TC-1134 Expected b tidak merinci baris.
+- Konflik teks tooltip Client Suspended: TC-1102, 1134, dan 1130 (spec `176`) menulis `Entity is suspended.`, sedangkan TC-1021 sampai 1024 (spec `156`) menulis `You don't have permission to edit.` untuk kontrol tulis pada Client Suspended; teks yang benar perlu dikonfirmasi, tiap spec mengikuti TC sumbernya.
+- Lampiran A (A-3, A-4) tidak mencakup user bernama literal `Mary Ann  &  O'Neil` (dua spasi) yang dipakai TC-1132 (spec `171`); nama berkas `Changelog-Mary-Ann-ONeil.csv` rusak bila nama diberi suffix `{runId}`. Spec memakai nama literal dengan email bersuffix; perlu butir Lampiran A baru (pengecualian S-12).
+- `suite.md` S-06: spec `174` mengubah status Custom Field Pre-setup (`Blood Type`, `Skills`, `Emergency Phone`, dan Custom Field lain) dan memulihkannya lewat kemampuan fixture FE/BE; `suite.md` belum menyatakan jaminan pemulihan itu dan perlu dinyatakan sebelum status spec naik.
 
 ## Lapisan per TC
 
@@ -1290,3 +1333,53 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1086 TC aktif masuk spec, 0 T
 | TC-GS-USER-1086 | TC-GS-USER-E2E-149-user-log-note-lock-change-password-dan-account-locked | FE+BE |
 | TC-GS-USER-1087 | TC-GS-USER-E2E-047-toggle-active-single-deactivate-activate-dan-header-detail | FE+BE |
 | TC-GS-USER-1088 | TC-GS-USER-E2E-049-temporary-auto-inactive-jam-server-dan-job-terjadwal | FE+BE |
+| TC-GS-USER-1089 | TC-GS-USER-E2E-170-detail-user-header-general-information-custom-fields-dan-user-tidak-ditemukan | FE+BE |
+| TC-GS-USER-1090 | TC-GS-USER-E2E-161-role-matrix-tab-role-aktor-manage-user-and-role-update-read-dan-diri-sendiri | FE+BE |
+| TC-GS-USER-1091 | TC-GS-USER-E2E-161-role-matrix-tab-role-aktor-manage-user-and-role-update-read-dan-diri-sendiri | FE+BE |
+| TC-GS-USER-1092 | TC-GS-USER-E2E-162-tab-role-switch-off-on-inactive-retained-dan-tooltip-checkbox | FE+BE |
+| TC-GS-USER-1093 | TC-GS-USER-E2E-162-tab-role-switch-off-on-inactive-retained-dan-tooltip-checkbox | FE+BE |
+| TC-GS-USER-1094 | TC-GS-USER-E2E-163-tab-role-user-type-dan-auto-revert-tier-lewat-switch-off | FE+BE |
+| TC-GS-USER-1095 | TC-GS-USER-E2E-163-tab-role-user-type-dan-auto-revert-tier-lewat-switch-off | FE+BE |
+| TC-GS-USER-1096 | TC-GS-USER-E2E-163-tab-role-user-type-dan-auto-revert-tier-lewat-switch-off | FE+BE |
+| TC-GS-USER-1097 | TC-GS-USER-E2E-168-resilience-tulis-switch-tab-role-5xx-dan-kegagalan-penulisan-log | FE+BE |
+| TC-GS-USER-1098 | TC-GS-USER-E2E-163-tab-role-user-type-dan-auto-revert-tier-lewat-switch-off | FE+BE |
+| TC-GS-USER-1099 | TC-GS-USER-E2E-165-remove-access-global-settings-role-active-dan-inactive-retained | FE+BE |
+| TC-GS-USER-1100 | TC-GS-USER-E2E-162-tab-role-switch-off-on-inactive-retained-dan-tooltip-checkbox | FE+BE |
+| TC-GS-USER-1101 | TC-GS-USER-E2E-166-pencatatan-switch-active-tab-role-di-changelog-modal-system-log-dan-activity-log | FE+BE |
+| TC-GS-USER-1102 | TC-GS-USER-E2E-176-state-tenant-client-suspended-tab-role-resend-hidden-dan-prioritas-tooltip-read-only | FE+BE |
+| TC-GS-USER-1103 | TC-GS-USER-E2E-175-multi-konteks-resend-ditolak-server-dan-record-berubah-atau-dihapus-sesi-lain | FE+BE |
+| TC-GS-USER-1104 | TC-GS-USER-E2E-174-sinkron-custom-field-deactivated-import-create-dan-section-hidden | FE+BE |
+| TC-GS-USER-1105 | TC-GS-USER-E2E-174-sinkron-custom-field-deactivated-import-create-dan-section-hidden | FE+BE |
+| TC-GS-USER-1106 | TC-GS-USER-E2E-162-tab-role-switch-off-on-inactive-retained-dan-tooltip-checkbox | FE+BE |
+| TC-GS-USER-1107 | TC-GS-USER-E2E-160-role-matrix-negatif-read-only-detail-tab-dan-tab-role | FE+BE |
+| TC-GS-USER-1108 | TC-GS-USER-E2E-161-role-matrix-tab-role-aktor-manage-user-and-role-update-read-dan-diri-sendiri | FE+BE |
+| TC-GS-USER-1109 | TC-GS-USER-E2E-164-tab-role-state-in-flight-optimistic-loading-mini-dan-kontrol-disabled | FE+BE |
+| TC-GS-USER-1110 | TC-GS-USER-E2E-164-tab-role-state-in-flight-optimistic-loading-mini-dan-kontrol-disabled | FE+BE |
+| TC-GS-USER-1111 | TC-GS-USER-E2E-167-dialog-deactivate-peringatan-aset-approval-single-bulk-dan-switch-pending | FE+BE |
+| TC-GS-USER-1112 | TC-GS-USER-E2E-169-resilience-baca-pemeriksaan-aset-approval-gagal-dan-load-detail-gagal | FE+BE |
+| TC-GS-USER-1113 | TC-GS-USER-E2E-167-dialog-deactivate-peringatan-aset-approval-single-bulk-dan-switch-pending | FE+BE |
+| TC-GS-USER-1114 | TC-GS-USER-E2E-167-dialog-deactivate-peringatan-aset-approval-single-bulk-dan-switch-pending | FE+BE |
+| TC-GS-USER-1115 | TC-GS-USER-E2E-175-multi-konteks-resend-ditolak-server-dan-record-berubah-atau-dihapus-sesi-lain | FE+BE |
+| TC-GS-USER-1116 | TC-GS-USER-E2E-175-multi-konteks-resend-ditolak-server-dan-record-berubah-atau-dihapus-sesi-lain | FE+BE |
+| TC-GS-USER-1117 | TC-GS-USER-E2E-168-resilience-tulis-switch-tab-role-5xx-dan-kegagalan-penulisan-log | FE+BE |
+| TC-GS-USER-1118 | TC-GS-USER-E2E-170-detail-user-header-general-information-custom-fields-dan-user-tidak-ditemukan | FE+BE |
+| TC-GS-USER-1119 | TC-GS-USER-E2E-175-multi-konteks-resend-ditolak-server-dan-record-berubah-atau-dihapus-sesi-lain | FE+BE |
+| TC-GS-USER-1120 | TC-GS-USER-E2E-170-detail-user-header-general-information-custom-fields-dan-user-tidak-ditemukan | FE+BE |
+| TC-GS-USER-1121 | TC-GS-USER-E2E-174-sinkron-custom-field-deactivated-import-create-dan-section-hidden | FE+BE |
+| TC-GS-USER-1122 | TC-GS-USER-E2E-171-detail-user-label-tab-retensi-state-modified-by-changelog-dan-nama-file-download | FE+BE |
+| TC-GS-USER-1123 | TC-GS-USER-E2E-170-detail-user-header-general-information-custom-fields-dan-user-tidak-ditemukan | FE+BE |
+| TC-GS-USER-1124 | TC-GS-USER-E2E-169-resilience-baca-pemeriksaan-aset-approval-gagal-dan-load-detail-gagal | FE+BE |
+| TC-GS-USER-1125 | TC-GS-USER-E2E-170-detail-user-header-general-information-custom-fields-dan-user-tidak-ditemukan | FE+BE |
+| TC-GS-USER-1126 | TC-GS-USER-E2E-171-detail-user-label-tab-retensi-state-modified-by-changelog-dan-nama-file-download | FE+BE |
+| TC-GS-USER-1127 | TC-GS-USER-E2E-171-detail-user-label-tab-retensi-state-modified-by-changelog-dan-nama-file-download | FE+BE |
+| TC-GS-USER-1128 | TC-GS-USER-E2E-160-role-matrix-negatif-read-only-detail-tab-dan-tab-role | FE+BE |
+| TC-GS-USER-1129 | TC-GS-USER-E2E-160-role-matrix-negatif-read-only-detail-tab-dan-tab-role | FE+BE |
+| TC-GS-USER-1130 | TC-GS-USER-E2E-176-state-tenant-client-suspended-tab-role-resend-hidden-dan-prioritas-tooltip-read-only | FE+BE |
+| TC-GS-USER-1131 | TC-GS-USER-E2E-173-user-list-paginasi-kembali-ke-halaman-1-saat-search-filter-page-size | FE+BE |
+| TC-GS-USER-1132 | TC-GS-USER-E2E-171-detail-user-label-tab-retensi-state-modified-by-changelog-dan-nama-file-download | FE+BE |
+| TC-GS-USER-1133 | TC-GS-USER-E2E-175-multi-konteks-resend-ditolak-server-dan-record-berubah-atau-dihapus-sesi-lain | FE+BE |
+| TC-GS-USER-1134 | TC-GS-USER-E2E-176-state-tenant-client-suspended-tab-role-resend-hidden-dan-prioritas-tooltip-read-only | FE+BE |
+| TC-GS-USER-1135 | TC-GS-USER-E2E-168-resilience-tulis-switch-tab-role-5xx-dan-kegagalan-penulisan-log | FE+BE |
+| TC-GS-USER-1136 | TC-GS-USER-E2E-168-resilience-tulis-switch-tab-role-5xx-dan-kegagalan-penulisan-log | FE+BE |
+| TC-GS-USER-1137 | TC-GS-USER-E2E-172-detail-responsibilities-kolom-pending-tasks-dan-badge-brand-model-type | FE+BE |
+| TC-GS-USER-1138 | TC-GS-USER-E2E-172-detail-responsibilities-kolom-pending-tasks-dan-badge-brand-model-type | FE+BE |

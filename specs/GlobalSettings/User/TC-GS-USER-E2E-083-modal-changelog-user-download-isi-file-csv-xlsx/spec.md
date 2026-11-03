@@ -40,10 +40,10 @@ coverage:
 2. Klik icon Download di modal
 3. Verifikasi overlay memuat opsi `Download as CSV` dan `Download as XLSX`
 4. Klik `Download as CSV`
-5. Verifikasi berkas `Changelog-User.csv` terunduh
-6. Verifikasi berkas memuat semua baris (jumlah baris data sama dengan total entri Changelog Client)
-7. Verifikasi jumlah baris data berkas lebih dari 10 (tidak dibatasi halaman)
-8. Verifikasi tidak ada toast sukses
+5. Verifikasi tidak ada toast sukses
+6. Verifikasi berkas `Changelog-User.csv` terunduh
+7. Verifikasi berkas memuat semua baris (jumlah baris data sama dengan total entri Changelog Client)
+8. Verifikasi jumlah baris data berkas lebih dari 10 (tidak dibatasi halaman)
 ### TC-GS-USER-507: Nilai kosong ditulis `-` di berkas ekspor
 9. Buka berkas `Changelog-User.csv` yang terunduh
 10. Verifikasi berkas memuat baris Create `Alfa {runId}-083`
@@ -62,9 +62,9 @@ coverage:
 20. Klik header Column Visibility (⋯), hilangkan centang `Modified By` pada overlay
 21. Tutup overlay Column Visibility
 22. Klik icon Download di modal, klik `Download as CSV`
-23. Verifikasi berkas pertama memuat kolom `Date`, `Action`, `User Name`, `Field`, `Old Value`, dan `New Value`
-24. Verifikasi berkas pertama tidak memuat kolom `Modified By`
-25. Verifikasi tidak ada toast peringatan
+23. Verifikasi tidak ada toast peringatan
+24. Verifikasi berkas pertama memuat kolom `Date`, `Action`, `User Name`, `Field`, `Old Value`, dan `New Value`
+25. Verifikasi berkas pertama tidak memuat kolom `Modified By`
 26. Klik header Column Visibility (⋯), centang kembali `Modified By` pada overlay
 27. Tutup overlay Column Visibility
 28. Klik icon Download di modal, klik `Download as CSV`
@@ -77,6 +77,7 @@ coverage:
 - Urutan TC dalam spec: TC-GS-USER-503, 507, 504, 505, 506. Alasan: TC-GS-USER-507 diverifikasi pada berkas CSV yang sama dengan TC-GS-USER-503 (langkah "Download CSV" identik), sehingga tidak ada unduhan CSV kedua; TC-GS-USER-506 terakhir karena menyembunyikan kolom (mengubah konfigurasi kolom) dan memulihkannya sendiri. Modal Changelog dibuka sekali di langkah 1.
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): `Klik icon (✕), tekan Enter pada input kosong` sebelum TC-GS-USER-506 (melepas Search TC-GS-USER-505), menutup overlay Column Visibility, dan membuka berkas hasil unduhan pada TC-GS-USER-507 (aksi TC "Buka file").
 - Langkah tambahan atas TC (S-03): `Verifikasi` berkas memuat baris Create `Alfa` pada TC-GS-USER-507 adalah anchor positif untuk asersi sel `-`; `Verifikasi` berkas pertama memuat enam kolom lain pada TC-GS-USER-506 adalah pembanding untuk asersi ketiadaan kolom `Modified By`; `Verifikasi` jumlah baris lebih dari 10 pada TC-GS-USER-503 membuktikan berkas tidak dibatasi halaman.
-- Isi berkas dipisah dari spec kegagalan ekspor (kelas binary buffer, prinsip 13f). Asersi berkas memakai pola baris bersuffix `{runId}-083`; satu-satunya asersi jumlah terhadap seluruh entri adalah langkah 6 (pembanding total entri Changelog Client yang dibaca tim FE/BE) dan jumlah dua baris hasil Search pada TC-GS-USER-505.
+- Urutan asersi absence toast (bagian 8b butir 11): `Verifikasi tidak ada toast sukses` (langkah 5) dan `Verifikasi tidak ada toast peringatan` (langkah 23) ditaruh segera setelah klik `Download as CSV` dan sebelum `Verifikasi` berkas; klik pilihan format menjadi anchor positif yang buktinya menyusul pada `Verifikasi` berkas terunduh.
+- Isi berkas dipisah dari spec kegagalan ekspor (kelas binary buffer, prinsip 13f). Asersi berkas memakai pola baris bersuffix `{runId}-083`; satu-satunya asersi jumlah terhadap seluruh entri adalah langkah 7 (pembanding total entri Changelog Client yang dibaca tim FE/BE) dan jumlah dua baris hasil Search pada TC-GS-USER-505.
 - Pembagian TC Modal Changelog User: screening dan Search ada di spec 078, Filter Panel ada di spec 079, kombinasi Search+Filter ada di spec 080, Sort dan Pagination ada di spec 081, Setup Column ada di spec 082.
 - Temuan untuk QA: (1) TC-GS-USER-503 Expected b "semua baris" tidak menyebut cara mengetahui total entri; spec membandingkan jumlah baris data berkas dengan total entri Changelog yang dibaca tim FE/BE. (2) TC-GS-USER-504 hanya mengharapkan nama berkas; isi XLSX tidak diasersi. (3) TC-GS-USER-505 tidak menyebut keyword; spec memakai `Alfa {runId}-083`. (4) TC-GS-USER-506 tidak menyebut kolom yang di-hide; spec memakai `Modified By`. (5) TC-GS-USER-507 tidak menyebut kolom tempat sel kosong; spec memakai Old Value baris Create (UI menampilkan `—`, berkas menulis `-`, prd-conventions.md §9.9). (6) PRD prd-conventions.md §9.17 menyebut CSV berencoding UTF-8 dengan BOM dan XLSX satu sheet `Sheet1`; TC tidak memuatnya sehingga tidak diasersi.

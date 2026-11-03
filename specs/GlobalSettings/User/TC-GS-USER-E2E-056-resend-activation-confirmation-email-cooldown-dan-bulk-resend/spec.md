@@ -25,7 +25,7 @@ coverage:
 
 - Mode: FE+BE (kelas harness d: mail-catcher dan manipulasi jam server dan jam browser).
 - Hook suite: flag Guided Tooltip `gs-user` = seen (lihat `suite.md`).
-- Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2; kredensial `Spectra.env.GS_TC_PASSWORD`). Login sekali di hook `before`; hook `after` mengembalikan sesi ke akun default suite (Total Control). Password tidak ditulis di spec atau fixture.
+- Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2; kredensial `Spectra.env.GS_TC_PASSWORD`). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control). Password tidak ditulis di spec atau fixture.
 - Env var: `GS_TC_PASSWORD` (didaftarkan di `executionConfig.environmentVariables`).
 - Data Pre-setup (hanya dibaca, tidak diubah): Dewi Lestari (No. 12, Activated tanpa email pending) untuk TC-GS-USER-312; Division `Finance` (No. 23) untuk form Create TC-GS-USER-307.
 - Data Dinamis, di-seed lewat API di hook `before` (HK1) dan dibersihkan di hook `after`; semua Activation Email/Confirmation Email seed memulai cooldown 60 detik pada waktu terbit:
@@ -49,88 +49,88 @@ coverage:
 
 ## Test Steps
 
-### Pembukaan layar
+### Persiapan
 
-1. Buka Global Settings > User > User List (sub-tab Login User)
-2. Pilih 100 baris per halaman pada Pagination
+1. Pilih 100 baris per halaman pada Pagination
 
 ### TC-GS-USER-312: Button Resend tidak tampil untuk user Activated tanpa email pending
 
-3. Klik Name `Dewi Lestari` di User List
-4. Verifikasi User Detail `Dewi Lestari` tampil
-5. Verifikasi Detail tidak memuat Button `Resend Activation Email` maupun Button `Resend Confirmation Email`
-6. Kembali ke User List dengan klik Back
+2. Klik Name `Dewi Lestari` di User List
+3. Verifikasi User Detail `Dewi Lestari` tampil
+4. Verifikasi Detail tidak memuat Button `Resend Activation Email` maupun Button `Resend Confirmation Email`
+5. Kembali ke User List dengan klik Back
 
 ### TC-GS-USER-307: Cooldown resend dimulai sejak Activation Email awal saat Create
 
-7. Klik `[+ User]` di Table Tools
-8. Isi First Name `Lukman`, Last Name `Hakim {runId}-056`, Division `Finance`, Email `lukmanhakim+{runId}-056@qwertysystem.net`, centang Access `Fixed Asset`
-9. Klik `[Submit]`
-10. Tunggu aksi selesai (popup tertutup dan baris `Lukman Hakim {runId}-056` tampil di User List)
-11. Klik (⋯) baris `Lukman Hakim {runId}-056`
-12. Hover opsi `Resend Activation Email`
-13. Verifikasi opsi `Resend Activation Email` tampil dan disabled
-14. Verifikasi tooltip `"Please wait {X} seconds before resending."` tampil dengan X berupa angka 1 sampai 60
-15. Tekan Esc untuk menutup menu row action
-16. Baca `T_L` dari mail-catcher untuk alamat `lukmanhakim+{runId}-056@qwertysystem.net`, lalu atur jam ke `T_L` + 60 detik sehingga cooldown semua user seed dan Lukman Hakim berakhir
+6. Klik `[+ User]` di Table Tools
+7. Isi First Name `Lukman`, Last Name `Hakim {runId}-056`, Division `Finance`, Email `lukmanhakim+{runId}-056@qwertysystem.net`, pilih Access `Fixed Asset` pada multi dropdown Access (placeholder `Select access`)
+8. Klik `[Submit]`
+9. Tunggu aksi selesai (popup tertutup dan baris `Lukman Hakim {runId}-056` tampil di User List)
+10. Klik (⋯) baris `Lukman Hakim {runId}-056`
+11. Hover opsi `Resend Activation Email`
+12. Verifikasi opsi `Resend Activation Email` tampil dan disabled
+13. Verifikasi tooltip `"Please wait {X} seconds before resending."` tampil dengan X berupa angka 1 sampai 60
+14. Tekan Esc untuk menutup menu row action
+15. Baca `T_L` dari mail-catcher untuk alamat `lukmanhakim+{runId}-056@qwertysystem.net`, lalu atur jam ke `T_L` + 60 detik sehingga cooldown semua user seed dan Lukman Hakim berakhir
 
 ### TC-GS-USER-305: Resend Activation Email dari row action memulai cooldown
 
-17. Klik (⋯) baris `Mike Tan {runId}-056` → `Resend Activation Email`
-18. Verifikasi toast sukses: "Success, activation email has been sent."
-19. Klik (⋯) baris `Mike Tan {runId}-056` lagi
-20. Hover opsi `Resend Activation Email`
-21. Verifikasi opsi tetap berlabel `Resend Activation Email`
-22. Verifikasi opsi tampil dan disabled
-23. Verifikasi tooltip `"Please wait {X} seconds before resending."` tampil; catat X sebagai X1
-24. Baca `T_1` dari mail-catcher untuk alamat `miketan+{runId}-056@qwertysystem.net`
-25. Atur jam ke `T_1` + 30 detik
-26. Hover ulang opsi `Resend Activation Email`
-27. Verifikasi tooltip `"Please wait {X} seconds before resending."` menampilkan X lebih kecil dari X1 (menghitung mundur)
+16. Klik (⋯) baris `Mike Tan {runId}-056` → `Resend Activation Email`
+17. Verifikasi toast sukses: "Success, activation email has been sent."
+18. Klik (⋯) baris `Mike Tan {runId}-056` lagi
+19. Hover opsi `Resend Activation Email`
+20. Verifikasi opsi tetap berlabel `Resend Activation Email`
+21. Verifikasi opsi tampil dan disabled
+22. Verifikasi tooltip `"Please wait {X} seconds before resending."` tampil; catat X sebagai X1
+23. Baca `T_1` dari mail-catcher untuk alamat `miketan+{runId}-056@qwertysystem.net`
+24. Atur jam ke `T_1` + 30 detik
+25. Hover ulang opsi `Resend Activation Email`
+26. Verifikasi tooltip `"Please wait {X} seconds before resending."` menampilkan X lebih kecil dari X1 (menghitung mundur)
 
 ### TC-GS-USER-306: Cooldown resend berakhir setelah 60 detik
 
-28. Atur jam ke `T_1` + 60 detik
-29. Tekan Esc untuk menutup menu row action
-30. Klik (⋯) baris `Mike Tan {runId}-056`
-31. Hover opsi `Resend Activation Email`
-32. Verifikasi opsi `Resend Activation Email` enabled
-33. Verifikasi tooltip countdown tidak tampil
+27. Atur jam ke `T_1` + 60 detik
+28. Tekan Esc untuk menutup menu row action
+29. Klik (⋯) baris `Mike Tan {runId}-056`
+30. Hover opsi `Resend Activation Email`
+31. Verifikasi opsi `Resend Activation Email` enabled
+32. Verifikasi tooltip countdown tidak tampil
 
 ### TC-GS-USER-309: Resend Confirmation Email dari row action
 
-34. Tekan Esc untuk menutup menu row action
-35. Klik (⋯) baris `Rina Putri {runId}-056` → `Resend Confirmation Email`
-36. Verifikasi toast sukses: "Success, confirmation email has been sent to Rina Putri {runId}-056."
-37. Klik (⋯) baris `Rina Putri {runId}-056` lagi
-38. Hover opsi `Resend Confirmation Email`
-39. Verifikasi opsi `Resend Confirmation Email` disabled
-40. Verifikasi tooltip `"Please wait {X} seconds before resending."` tampil
+33. Tekan Esc untuk menutup menu row action
+34. Klik (⋯) baris `Rina Putri {runId}-056` → `Resend Confirmation Email`
+35. Verifikasi toast sukses: "Success, confirmation email has been sent to Rina Putri {runId}-056."
+36. Klik (⋯) baris `Rina Putri {runId}-056` lagi
+37. Hover opsi `Resend Confirmation Email`
+38. Verifikasi opsi `Resend Confirmation Email` disabled
+39. Verifikasi tooltip `"Please wait {X} seconds before resending."` tampil
 
 ### TC-GS-USER-238: Edit email user Pending Activation langsung tersimpan dan Activation Email dikirim ulang
 
-41. Tekan Esc untuk menutup menu row action
-42. Catat tautan aktivasi pada email terbaru di mail-catcher untuk alamat `miketan+{runId}-056@qwertysystem.net` sebagai tautan aktivasi lama
-43. Bekukan jam di nilai saat ini dan catat nilainya sebagai `F0`
-44. Klik (⋯) baris `Mike Tan {runId}-056` → `Edit`
-45. Ubah Email ke `miketan.new+{runId}-056@qwertysystem.net`
-46. Klik `[Save]`
-47. Verifikasi toast sukses: "Success, user has been updated."
-48. Verifikasi kolom Email baris `Mike Tan {runId}-056` menampilkan `miketan.new+{runId}-056@qwertysystem.net`
-49. Verifikasi kolom Email baris `Mike Tan {runId}-056` tanpa badge `Pending Email Confirmation`
-50. Buka tautan aktivasi lama di tab baru
-51. Verifikasi halaman menolak tautan aktivasi lama sebagai kedaluwarsa
-52. Tutup tab tautan aktivasi lama
-53. Klik (⋯) baris `Mike Tan {runId}-056`
-54. Hover opsi `Resend Activation Email`
-55. Verifikasi opsi `Resend Activation Email` disabled (masuk cooldown)
-56. Verifikasi tooltip `"Please wait {X} seconds before resending."` tampil
+40. Tekan Esc untuk menutup menu row action
+41. Catat tautan aktivasi pada email terbaru di mail-catcher untuk alamat `miketan+{runId}-056@qwertysystem.net` sebagai tautan aktivasi lama
+42. Bekukan jam di nilai saat ini dan catat nilainya sebagai `F0`
+43. Klik (⋯) baris `Mike Tan {runId}-056` → `Edit`
+44. Ubah Email ke `miketan.new+{runId}-056@qwertysystem.net`
+45. Klik `[Save]`
+46. Verifikasi toast sukses: "Success, user has been updated."
+47. Verifikasi kolom Email baris `Mike Tan {runId}-056` menampilkan `miketan.new+{runId}-056@qwertysystem.net`
+48. Verifikasi kolom Email baris `Mike Tan {runId}-056` tanpa badge `Pending Email Confirmation`
+49. Buka tautan aktivasi lama di tab baru
+50. Verifikasi halaman menolak tautan aktivasi lama sebagai kedaluwarsa
+51. Tutup tab tautan aktivasi lama
+52. Klik (⋯) baris `Mike Tan {runId}-056`
+53. Hover opsi `Resend Activation Email`
+54. Verifikasi opsi `Resend Activation Email` disabled (masuk cooldown)
+55. Verifikasi tooltip `"Please wait {X} seconds before resending."` tampil
 
 ### TC-GS-USER-311: Button Resend di User Detail tampil kondisional dengan cooldown
 
-57. Tekan Esc untuk menutup menu row action
-58. Klik Name `Andre Kurniawan {runId}-056` di User List
-59. Verifikasi Button `Resend Activation Email` tampil di Detail
+56. Tekan Esc untuk menutup menu row action
+57. Klik Name `Andre Kurniawan {runId}-056` di User List
+58. Verifikasi Button `Resend Activation Email` tampil di header Detail, sebelum menu `[⋯]`
+59. Verifikasi Button `Resend Activation Email` tidak tampil di General Information
 60. Klik `Resend Activation Email`
 61. Verifikasi toast sukses: "Success, activation email has been sent."
 62. Hover tombol `Resend Activation Email`
@@ -184,7 +184,7 @@ coverage:
 - Spec melewati sekitar 35 langkah (95 langkah). Alasan: seluruh blok satu kelas harness (d: mail-catcher dan jam) dan satu layar (User List dan Detail), serta state cooldown Mike Tan dan Andre Kurniawan dibangun berurutan dari blok ke blok dan tidak bisa diulang tanpa biaya besar (P-3): cooldown Mike Tan dari TC-GS-USER-238 menjadi precondition TC-GS-USER-239 dan TC-GS-USER-303, dan cooldown Andre Kurniawan dari TC-GS-USER-311 menjadi precondition TC-GS-USER-303 dan TC-GS-USER-302. Tiap blok tetap diawali keadaan data yang ditulis di langkah pembuka blok.
 - Urutan TC sumber diubah: TC-GS-USER-312 (screening tanpa aksi) di awal; TC-GS-USER-307 (butuh Create dan cooldown berjalan) sebelum jam diubah; TC-GS-USER-309 dan TC-GS-USER-238 sebelum TC-GS-USER-311 dan TC-GS-USER-239 supaya cooldown Mike Tan dan Andre Kurniawan berbeda waktu mulai; TC-GS-USER-303 sebelum TC-GS-USER-302, karena TC-GS-USER-303 membutuhkan Mike Tan dalam cooldown dan Andre Kurniawan sudah lewat, sedangkan TC-GS-USER-302 membutuhkan keduanya lewat.
 - Rumus waktu TC-GS-USER-303: Mike Tan disimpan ulang pada `F0` + 30 detik (TC-GS-USER-239), jadi cooldown-nya berakhir `F0` + 90 detik; Andre Kurniawan di-resend pada `F0` (TC-GS-USER-311), jadi cooldown-nya berakhir `F0` + 60 detik. Jam diatur absolut ke `F0` + 60 detik. State "Mike Tan baru di-resend" pada TC-GS-USER-303 dibentuk oleh Edit email (TC-GS-USER-239) yang juga mengirim Activation Email dan memulai cooldown.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): pembukaan layar, Esc menutup menu row action, Back ke User List, "Tunggu aksi selesai", membaca `T_L`, `T_1`, dan tautan aktivasi lama dari mail-catcher, mengatur, membekukan, dan memulihkan jam, mencatat baseline, menutup tab dan Modal Changelog User, dan `Unselect All`. Verifikasi User Detail `Dewi Lestari` tampil adalah anchor positif untuk asersi ketiadaan Button Resend (bagian 8b butir 2).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): Esc menutup menu row action, Back ke User List, "Tunggu aksi selesai", membaca `T_L`, `T_1`, dan tautan aktivasi lama dari mail-catcher, mengatur, membekukan, dan memulihkan jam, mencatat baseline, menutup tab dan Modal Changelog User, dan `Unselect All`. Verifikasi User Detail `Dewi Lestari` tampil adalah anchor positif untuk asersi ketiadaan Button Resend (bagian 8b butir 1).
 - Jam dipulihkan ke waktu nyata sebelum Modal Changelog User dibuka (S-09). Log yang dibuat saat jam digeser bercap waktu masa depan, sehingga asersi Changelog memakai selisih jumlah baris terhadap baseline per user (nama user bersuffix), bukan posisi teratas (S-12). Asersi "Mike Tan sama dengan baseline" adalah asersi jumlah, bukan asersi absence kelas g.
 - Email aktivasi lama TC-GS-USER-238 diidentifikasi sebagai email terbaru di alamat lama sebelum Edit (hasil Resend di TC-GS-USER-305).
 - Tooltip "Please wait {X} seconds before resending." ditulis persis seperti Expected TC, termasuk tanda kutip ganda. Pada nama bersuffix, toast TC-GS-USER-309 memuat nama lengkap `Rina Putri {runId}-056`.
@@ -199,4 +199,4 @@ coverage:
   - TC-GS-USER-239 dan 303: precondition "baru saja menerima Resend" / "baru di-resend" untuk Mike Tan dipenuhi lewat Edit email, bukan lewat aksi Resend.
   - TC-GS-USER-303: Expected b ("Changelog hanya memuat baris Resend Activation Email untuk Andre Kurniawan") tidak menyebut baseline; spec mengasersi selisih jumlah baris per user terhadap baseline.
   - TC-GS-USER-307: langkah "Create user `Lukman Hakim` (valid)" tidak menyebut field; spec memakai field wajib dari TC-GS-USER-117 (First Name, Last Name, Division, Email, Access).
-  - TC-GS-USER-311: Expected a ("tampil di Detail") tidak menyebut posisi atau kondisi tampil selain Pending Activation.
+  - TC-GS-USER-311: Expected a tidak menyebut kondisi tampil selain Pending Activation; spec memakai user Pending Activation.

@@ -24,7 +24,7 @@ coverage:
 - Layar awal: kunjungan ke halaman Handheld Reader adalah pemicu auto-open Guided Tooltip, sehingga langkah buka ditulis di `## Test Steps` dan bukan di hook `beforeEach`.
 - Guided Tooltip (page_key `gs-handheld-reader`): spec ini menguji flag `guided_tooltip_seen_gs-handheld-reader` sendiri, sehingga dikecualikan dari penyetelan true oleh hook suite `before` (lihat `suite.md`). Hook `before` mencatat nilai awal flag akun Total Control lalu mereset flag ke belum ada (precondition "flag belum diset" TC-GS-HHR-24). Flag tetap bernilai seen sesudah `[Done]` pada TC-GS-HHR-24 dan itulah precondition "flag sudah diset" TC-GS-HHR-25. Flag di-reset ke belum ada sebagai langkah penghubung sebelum TC-GS-HHR-26 dan 27 (TC sebelumnya menandai seen); TC-GS-HHR-29 menjaga flag tetap belum ada sehingga TC-GS-HHR-453 memakai flag belum ada tanpa reset. Hook `after` memulihkan nilai awal flag. Mekanisme baca, reset, dan pemulihan flag disediakan tim FE/BE (tidak didefinisikan di TC, PRD, atau LLD).
 - Data Pre-setup (Client A, plan Growth, General Settings `dd/MM/yy` 24-hour): Seed Reader A (DD-01 s.d. DD-10) dipulihkan fixture backend (disediakan tim FE) sebelum spec berjalan; spec tidak membaca atau mengubah isi baris. Data Dinamis: tidak ada.
-- Kemampuan teknis: klik pada area overlay gelap di luar tooltip box (koordinat di luar spotlight dan tooltip); mengubah ukuran viewport browser dan memulihkannya; navigasi lewat address bar (ke Global Settings > Activity Log dan kembali); muat ulang halaman dengan `F5`; pembacaan state flag lewat perilaku kunjungan ulang.
+- Kemampuan teknis: klik pada area overlay gelap di luar tooltip box (koordinat di luar spotlight dan tooltip); mengubah ukuran viewport browser dan memulihkannya; navigasi lewat address bar (ke Global Settings > Activity Log (tab `User Action`) dan kembali); muat ulang halaman dengan `F5`; pembacaan state flag lewat perilaku kunjungan ulang.
 - Cleanup (hook `after`, tidak berasumsi setup berhasil penuh): pulihkan nilai awal flag akun Total Control dan kembalikan viewport ke ukuran awal.
 - State global: tidak ada yang diubah selain flag Guided Tooltip dan viewport (dipulihkan seperti di atas).
 
@@ -85,8 +85,8 @@ coverage:
 
 ### TC-GS-HHR-453: Navigasi keluar halaman di tengah walkthrough menutup tanpa menyetel flag
 
-39. Saat walkthrough berada di Step 1, buka Global Settings > Activity Log lewat address bar
-40. Verifikasi halaman Global Settings > Activity Log tampil
+39. Saat walkthrough berada di Step 1, buka Global Settings > Activity Log (tab `User Action`) lewat address bar
+40. Verifikasi halaman Global Settings > Activity Log (tab `User Action`) tampil
 41. Verifikasi walkthrough tertutup saat halaman ditinggalkan (tooltip walkthrough tidak tampil)
 42. Buka kembali Global Settings > Hardware > Handheld Reader lewat address bar
 43. Verifikasi walkthrough muncul otomatis lagi dari Step 1 (judul `License Counter`), flag tidak diset

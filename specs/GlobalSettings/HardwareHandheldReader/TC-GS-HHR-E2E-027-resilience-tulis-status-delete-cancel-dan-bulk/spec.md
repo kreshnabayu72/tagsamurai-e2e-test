@@ -26,8 +26,8 @@ coverage:
 - Akun aktor (login di hook `before`, bukan di langkah): Total Control Sari Dewi, Client A, `totalControl_automated_qaTeam1@qwertysystem.net`, password `Spectra.env.GS_TC_PASSWORD`. Hook `after` mengembalikan sesi ke akun default suite.
 - Data Pre-setup (Client A): Seed Reader A, plan Growth, `Long Range` terpakai 5 dari 6 dan `Short Range` terpakai 5 dari 8, General Settings `dd/MM/yy` 24-hour Asia/Jakarta. Reader target (tidak ada yang diubah karena respons 500): DD-01 (Serial Number `SN-HHR-00101`, Long Range, Available, Alias Name `—`), DD-05 (`SN-HHR-00105`, `Chainway C72 - 1`, Waiting for Approval), DD-07 (`SN-HHR-00108`, `Honeywell CK65 - 1`, Long Range, Available), DD-08 (`SN-HHR-00109`, `Unitech EA520 - 1`, Short Range, Available). Device Name DD-01 sama dengan DD-06 (`Zebra RFID Reader - 1`), sehingga DD-01 ditemukan lewat Serial Number. Fixture baru `Fixture.hardwareHandheldReader.resilienceStatus027`.
 - Data Dinamis: tidak ada.
-- Baseline: jumlah entri Changelog Handheld Reader, System Log aktor (Detail User akun aktor > Tab System Log, PRD §8.2), dan Activity Log (Global Settings > Activity Log, PRD §8.3) dicatat sekali sebelum intercept pertama (langkah 1) dan dibandingkan pada langkah 13, 52, dan 83. Seluruh aksi spec ini gagal, sehingga baseline tidak berubah antar blok.
-- Kemampuan teknis: `Spectra.intercept()` untuk memaksa respons 500; membaca toast beserta ketahanannya (toast error tidak hilang otomatis; `foundation/functions/toast-copy.md`) dan men-dismiss toast; membaca jumlah entri Changelog, System Log, dan Activity Log.
+- Baseline: jumlah entri Changelog Handheld Reader, System Log aktor (Detail User akun aktor > Tab System Log, PRD §8.2), dan Activity Log (Global Settings > Activity Log > tab `User Action`, PRD §8.3; tab `Session` tidak dibaca) dicatat sekali sebelum intercept pertama (langkah 1) dan dibandingkan pada langkah 14, 17, dan 19 (blok TC-GS-HHR-147), langkah 53, 56, dan 58 (TC-GS-HHR-225), serta langkah 86, 89, dan 91 (TC-GS-HHR-352). Seluruh aksi spec ini gagal, sehingga baseline tidak berubah antar blok.
+- Kemampuan teknis: `Spectra.intercept()` untuk memaksa respons 500; membaca toast beserta ketahanannya (toast error tidak hilang otomatis; `foundation/functions/toast-copy.md`) dan men-dismiss toast; membaca jumlah entri Changelog, System Log, dan Activity Log tab `User Action`.
 
 ## Test Steps
 
@@ -35,7 +35,7 @@ coverage:
 
 1. Klik ikon Changelog, catat jumlah entri Changelog Handheld Reader sebagai baseline, lalu tutup Modal Changelog lewat `✕`
 2. Buka Detail User akun aktor > Tab System Log, lalu catat jumlah entri System Log sebagai baseline
-3. Buka Global Settings > Activity Log, lalu catat jumlah entri Activity Log sebagai baseline
+3. Buka Global Settings > Activity Log > tab `User Action`, lalu catat jumlah entri tab `User Action` sebagai baseline Activity Log
 4. Kembali ke Global Settings > Hardware > Handheld Reader
 
 ### TC-GS-HHR-147: Konfirmasi Mark as Damaged gagal 5xx tidak mengubah status
@@ -53,8 +53,8 @@ coverage:
 15. Tutup Modal Changelog lewat `✕`
 16. Buka Detail User akun aktor > Tab System Log
 17. Verifikasi jumlah entri System Log sama dengan baseline
-18. Buka Global Settings > Activity Log
-19. Verifikasi jumlah entri Activity Log sama dengan baseline
+18. Buka Global Settings > Activity Log > tab `User Action`
+19. Verifikasi jumlah entri tab `User Action` sama dengan baseline Activity Log
 20. Kembali ke Global Settings > Hardware > Handheld Reader
 
 ### TC-GS-HHR-155: Konfirmasi Delete gagal 5xx tidak menghapus reader
@@ -101,8 +101,8 @@ coverage:
 54. Tutup Modal Changelog lewat `✕`
 55. Buka Detail User akun aktor > Tab System Log
 56. Verifikasi jumlah entri System Log sama dengan baseline
-57. Buka Global Settings > Activity Log
-58. Verifikasi jumlah entri Activity Log sama dengan baseline
+57. Buka Global Settings > Activity Log > tab `User Action`
+58. Verifikasi jumlah entri tab `User Action` sama dengan baseline Activity Log
 59. Kembali ke Global Settings > Hardware > Handheld Reader
 
 ### TC-GS-HHR-226: Konfirmasi bulk Delete gagal 5xx tidak menghapus reader
@@ -131,28 +131,30 @@ coverage:
 78. Klik `[Save]`
 79. Dismiss toast error
 80. Lepas intercept pada request edit
-81. Klik `✕` di header dialog, lalu klik `[Leave]` pada dialog `Unsaved Changes`
-82. Klik `(←)` pada kotak Search
-83. Klik ikon Changelog
-84. Verifikasi jumlah entri Changelog Handheld Reader sama dengan baseline
-85. Tutup Modal Changelog lewat `✕`
-86. Buka Detail User akun aktor > Tab System Log
-87. Verifikasi jumlah entri System Log sama dengan baseline
-88. Buka Global Settings > Activity Log
-89. Verifikasi jumlah entri Activity Log sama dengan baseline
+81. Klik `✕` di header dialog
+82. Verifikasi dialog `Unsaved Changes` tampil dengan body "You have unsaved changes. Are you sure you want to leave?" dan tombol `[Cancel]` `[Leave]`
+83. Klik `[Leave]`
+84. Klik `(←)` pada kotak Search
+85. Klik ikon Changelog
+86. Verifikasi jumlah entri Changelog Handheld Reader sama dengan baseline
+87. Tutup Modal Changelog lewat `✕`
+88. Buka Detail User akun aktor > Tab System Log
+89. Verifikasi jumlah entri System Log sama dengan baseline
+90. Buka Global Settings > Activity Log > tab `User Action`
+91. Verifikasi jumlah entri tab `User Action` sama dengan baseline Activity Log
 
 ## Notes
 
 - Mode: FE+BE (intercept parsial). Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan blok mengikuti urutan nomor TC kecuali TC-GS-HHR-352 yang memakai Edit Alias Name ditaruh paling akhir. Tidak ada aksi yang menghabisi atau mengubah data, karena seluruh aksi tulis ditolak respons 500 (konvensi bagian 3 butir 5 tidak berlaku).
-- Pencatatan baseline: TC-GS-HHR-147, 225, dan 352 masing-masing menulis baseline sebelum aksi; spec ini mencatatnya sekali di langkah 1 sebelum intercept pertama, karena aksi gagal tidak menambah entri sehingga baseline yang sama berlaku bagi ketiga pembanding (langkah 13, 52, 83). Asersi memakai selisih jumlah entri terhadap baseline, bukan angka absolut (S-12).
-- Langkah penghubung (aksi tanpa `Verifikasi`): pemasangan dan pelepasan intercept; dismiss toast error dan `Esc` untuk menutup dialog konfirmasi (error-handling-convention §2: pada 5xx dialog tetap terbuka); Search untuk menemukan baris target dan `(←)` untuk mengosongkan Search; navigasi ke dan dari surface log; menghapus centang seleksi sebelum blok berikutnya (S-09); `✕` dan `[Leave]` untuk menutup dialog edit yang dirty (S-08; dialog `Unsaved Changes` tidak perlu dicatat lagi).
-- Spec melewati sekitar 35 langkah (89 langkah). Alasan: seluruhnya satu kelas harness (kelas b: fault injection 5xx pada aksi tulis) dan satu akun aktor, tanpa data baru. Tiap blok TC memasang intercept sendiri, tidak mengubah data, dan menutup dialog di akhirnya, sehingga kegagalan satu blok tidak menghilangkan makna blok lain. Langkah baca-log (buka surface, bandingkan jumlah entri) berpola dan diulang tiga kali mulai langkah 13, 52, dan 83 (tujuh sampai delapan langkah tiap blok).
-- Spec 026, 027, dan 028 menguji kelas b (fault injection 5xx) pada permukaan berbeda dan sengaja dipisah: gabungannya 244 langkah (122, 89, dan 33), jauh di atas sekitar 35 langkah. Spec 026 membutuhkan simulator USB dan membuat reader, spec ini hanya memicu 5xx pada aksi tulis atas Seed Reader A yang tidak berubah, dan spec 028 hanya memicu 5xx pada unduhan, sehingga kegagalan keras satu spec tidak menghilangkan makna spec lain.
+- Pencatatan baseline: TC-GS-HHR-147, 225, dan 352 masing-masing menulis baseline sebelum aksi; spec ini mencatatnya sekali di langkah 1 sebelum intercept pertama, karena aksi gagal tidak menambah entri sehingga baseline yang sama berlaku bagi ketiga pembanding (langkah 14, 17, 19, 53, 56, 58, 86, 89, dan 91). Asersi memakai selisih jumlah entri terhadap baseline, bukan angka absolut (S-12).
+- Langkah penghubung (aksi tanpa `Verifikasi`): pemasangan dan pelepasan intercept; dismiss toast error dan `Esc` untuk menutup dialog konfirmasi (error-handling-convention §2: pada 5xx dialog tetap terbuka); Search untuk menemukan baris target dan `(←)` untuk mengosongkan Search; navigasi ke dan dari surface log; menghapus centang seleksi sebelum blok berikutnya (S-09); `✕` dan `[Leave]` untuk menutup dialog edit yang dirty (S-08; dialog `Unsaved Changes` diverifikasi pada langkah 82).
+- Spec melewati sekitar 35 langkah (91 langkah). Alasan: seluruhnya satu kelas harness (kelas b: fault injection 5xx pada aksi tulis) dan satu akun aktor, tanpa data baru. Tiap blok TC memasang intercept sendiri, tidak mengubah data, dan menutup dialog di akhirnya, sehingga kegagalan satu blok tidak menghilangkan makna blok lain. Langkah baca-log (buka surface, bandingkan jumlah entri) berpola dan diulang tiga kali mulai langkah 13, 52, dan 85 (tujuh sampai delapan langkah tiap blok).
+- Spec 026, 027, dan 028 menguji kelas b (fault injection 5xx) pada permukaan berbeda dan sengaja dipisah: gabungannya 252 langkah (128, 91, dan 33), jauh di atas sekitar 35 langkah. Spec 026 membutuhkan simulator USB dan membuat reader, spec ini hanya memicu 5xx pada aksi tulis atas Seed Reader A yang tidak berubah, dan spec 028 hanya memicu 5xx pada unduhan, sehingga kegagalan keras satu spec tidak menghilangkan makna spec lain.
 - Pengecualian S-12 Population Seed Reader A HHR (A-5) berlaku untuk Seed Reader A (nama dan Serial Number literal tanpa suffix `{runId}`); spec ini tidak mengubah reader, dan pemulihan Seed Reader A dijamin fixture backend serta dinyatakan di `suite.md`.
 - Pembagian TC lintas spec: TC-GS-HHR-96, 97, 121, 122, 137, 368, dan 436 (5xx dan timeout pada aktivasi serta edit) ada di spec 026; TC-GS-HHR-184, 315, dan 339 (kegagalan unduh) ada di spec 028. Asersi "tidak ada entri log" pada TC-GS-HHR-147, 225, dan 352 adalah asersi jumlah dengan baseline dan toast error sebagai anchor positif, sehingga ditulis di spec ini dan bukan di spec absence (kelas g); pencatatan log per aksi ada di spec 063.
 - Temuan untuk QA:
-  - TC-GS-HHR-147, 155, 160, 225, 226, dan 352 tidak menyebut cara membuka System Log aktor dan Activity Log; spec memakai PRD §8.2 (Detail User > Tab System Log) dan §8.3 (Global Settings > Activity Log) untuk navigasi.
+  - TC-GS-HHR-147, 155, 160, 225, 226, dan 352 tidak menyebut cara membuka System Log aktor; spec memakai PRD §8.2 (Detail User > Tab System Log) untuk navigasi. Activity Log dibuka lewat Global Settings > Activity Log > tab `User Action` (TC dan PRD §8.3).
   - TC-GS-HHR-147, 155, 160, 225, dan 226 tidak menyebut cara menutup dialog konfirmasi sesudah 5xx; spec menekan `Esc` (dialog tetap terbuka pada 5xx menurut error-handling-convention §2). Label tombol penutup dialog tidak disebut di TC.
   - TC-GS-HHR-147, 225, dan 352 menyebut System Log "aktor" tanpa menyebut identifikasi aktor selain akun yang sedang login; spec memakai Detail User akun aktor (Sari Dewi).
   - TC-GS-HHR-155 dan 226 menyebut "kuota tetap/tidak berubah" tanpa angka untuk kartu `Short Range`; spec memakai angka seeding Client A (`Long Range` `5 of 6`, `Short Range` `5 of 8`).

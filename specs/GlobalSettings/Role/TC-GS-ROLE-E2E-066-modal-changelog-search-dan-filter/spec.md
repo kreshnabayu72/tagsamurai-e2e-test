@@ -91,7 +91,7 @@ coverage:
 34. Klik `[Apply]`
 35. Verifikasi sedikitnya satu baris tampil
 36. Verifikasi baris hasil sesuai kolom "Kriteria baris hasil" pada tabel
-37. Klik `[Clear]`
+37. Klik `[Clear Field]`
 38. Tutup Modal Changelog lewat `[✕]`
 
 ### TC-GS-ROLE-201: Filter Modal Changelog Tab System dan Detail
@@ -111,7 +111,7 @@ coverage:
 51. Klik `[Apply]`
 52. Verifikasi sedikitnya satu baris tampil
 53. Verifikasi baris hasil sesuai kolom "Kriteria baris hasil" pada tabel
-54. Klik `[Clear]`
+54. Klik `[Clear Field]`
 55. Tutup Modal Changelog lewat `[✕]`
 56. Klik Role Name `Manage TAG`
 57. Klik icon Changelog di Table Tools
@@ -128,7 +128,7 @@ coverage:
 - Sumber TC: `global-settings/role/TestCases/tc-role.md`. Mode: FE+BE.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber (199, 200, 201) dipertahankan; TC-GS-ROLE-199 memakai Tab System untuk enam Search pertama lalu Tab Total Control untuk Search User Name, Old Value, dan New Value.
 - Langkah 33 sampai 37 diulang untuk empat baris tabel Filter Tab Total Control, dan langkah 50 sampai 54 untuk tiga baris tabel Filter Tab System.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 2 (mencatat Date untuk Search Date), langkah 15 dan 23 (menutup kotak Search), langkah 16, 38, 55, dan 64 (menutup Modal Changelog), langkah 17, 39 (pindah tab), langkah 32, 49, dan 63 (menutup dropdown), langkah 37 dan 54 (`[Clear]` pada tiap iterasi mengosongkan filter, S-09), dan langkah 56 (membuka Detail "Manage TAG" lewat Role Name).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 2 (mencatat Date untuk Search Date), langkah 15 dan 23 (menutup kotak Search), langkah 16, 38, 55, dan 64 (menutup Modal Changelog), langkah 17, 39 (pindah tab), langkah 32, 49, dan 63 (menutup dropdown), langkah 37 dan 54 (`[Clear Field]` pada tiap iterasi mengosongkan filter, S-09), dan langkah 56 (membuka Detail "Manage TAG" lewat Role Name).
 - Langkah 35 dan 52 (sedikitnya satu baris tampil) adalah anchor positif untuk asersi universal "semua baris" pada langkah 36 dan 53 (bagian 8b butir 2). Langkah 14 ("No results found") menjadi anchor positif untuk absence hasil Search Date.
 - Spec melewati sekitar 35 langkah (64 langkah nominal, sekitar 85 dengan ekspansi dua blok ulang) karena tiap klausa Expected dipecah menjadi satu `Verifikasi` (S-01) dan Search serta Filter dilakukan pada empat varian modal. Semuanya satu kelas harness (Search dan Filter Modal Changelog), satu akun, dan satu dataset seeding; tiap blok TC berdiri sendiri (membuka modalnya sendiri), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Tidak ada TC yang terbelah lintas spec.

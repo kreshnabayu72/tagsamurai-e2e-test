@@ -48,17 +48,17 @@ coverage:
 6. Aksi pemicu (sesi API Ahmad Fauzi): Remove Total Control dari `Sari Wulandari Putri` (setara TC-GS-ROLE-86 langkah 1 sampai 2; menghasilkan entry baru sesudah rename)
 7. Buka Global Settings > Role & Permission > Tab Total Control, klik [Changelog], ketik Search `Sari Wulandari`, tekan Enter
 8. Verifikasi total hasil Search sama dengan `B-SW` + 1 (hanya entry Remove baru dari langkah 6 yang bertambah)
-9. Verifikasi entry lama tepat di bawah entry baru (entry Assign dari hook `before`): Action `Assign`, User Name `Sari Wulandari` (bukan `Sari Wulandari Putri`)
+9. Verifikasi entry lama masih tampil (entry Assign dari hook `before`, dikenali lewat Action dan User Name): Action `Assign`, User Name `Sari Wulandari` (bukan `Sari Wulandari Putri`)
 10. Ganti isi kotak search dengan `Sari Wulandari Putri`, tekan Enter
 11. Verifikasi total hasil Search sama dengan `B-PUTRI` + 1 (entry lama tidak ikut berganti nama; tepat 1 entry baru)
-12. Verifikasi entry baru (teratas): Action `Remove`, User Name `Sari Wulandari Putri`
+12. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 11): Action `Remove`, User Name `Sari Wulandari Putri`
 
 ### TC-GS-ROLE-225: Modified By dan Last Updated hanya diperbarui oleh Assign
 
 13. Tutup modal Changelog, aksi pemicu (sesi API Ahmad Fauzi): Assign Total Control ke Siti Nurhaliza (upgrade dari Read Only, setara TC-GS-ROLE-60 langkah 1 sampai 3)
 14. Klik [Changelog], ketik Search `Siti Nurhaliza`, tekan Enter
 15. Verifikasi total hasil Search sama dengan `B-SITI` + 1 (tepat 1 entry upgrade baru)
-16. Verifikasi entry baru (teratas): Action `Assign`, Old Value `Read Only`, New Value `Total Control`; catat Date entry sebagai `D-225`
+16. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 15): Action `Assign`, Old Value `Read Only`, New Value `Total Control`; catat Date entry sebagai `D-225`
 17. Tutup modal Changelog, ketik Search `Siti Nurhaliza` pada Table Tools Tab Total Control, tekan Enter
 18. Verifikasi Modified By baris Siti Nurhaliza adalah `Ahmad F`
 19. Verifikasi Last Updated baris Siti Nurhaliza sama dengan `D-225` (waktu upgrade)
@@ -68,7 +68,7 @@ coverage:
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec memuat 19 langkah. Urutan TC sumber (220, 225) dipertahankan. Dependensi TC-GS-ROLE-58 (Given Sari Wulandari ber-Total Control), TC-GS-ROLE-86, dan TC-GS-ROLE-60 dijalankan lewat seeding API di hook `before` atau aksi pemicu (langkah 6 dan 13); Given Sari Wulandari dan Siti Nurhaliza terjadi sebelum baseline dicatat.
 - Langkah 6 (Remove Total Control dari `Sari Wulandari Putri`) bukan langkah TC-GS-ROLE-220: aksi itu menghasilkan "entry baru setelah rename" yang diminta Expected b. Langkah ini dicatat di sini dan di "Temuan untuk QA".
-- "Entry baru (teratas)" berarti entri teratas pada hasil Search (urutan default Newest First); jumlah entri baru diyakinkan lewat selisih terhadap baseline. Langkah 9 membaca entry Assign lama sebagai baris di bawah entry Remove baru pada hasil Search `Sari Wulandari`, sedangkan langkah 11 membuktikan entry lama tidak berganti nama lewat total hasil Search `Sari Wulandari Putri` yang bertambah tepat 1.
+- "Entry baru" dikenali lewat kombinasi kolom yang diasersi pada langkah Verifikasinya dan selisih jumlah terhadap baseline, bukan lewat posisi baris (S-12, S-14); urutan antar-entri yang jatuh pada menit yang sama tidak diasersi karena kolom Date berketelitian menit. Langkah 9 membaca entry Assign lama pada hasil Search `Sari Wulandari` tanpa mengasersi urutannya terhadap entry Remove baru, sedangkan langkah 11 membuktikan entry lama tidak berganti nama lewat total hasil Search `Sari Wulandari Putri` yang bertambah tepat 1.
 - Langkah 19 membandingkan Last Updated dengan Date entry Changelog aksi upgrade yang sama (kolom Date berketelitian menit, sehingga dibandingkan pada ketelitian yang sama).
 - Langkah penghubung (aksi tanpa `Verifikasi`): menutup modal Changelog, mengganti isi kotak search, dan mencari baris Siti Nurhaliza pada tabel (langkah 1 sampai 4, 7, 10, 13, 14, 17); aksi pemicu API (langkah 5, 6, 13).
 - Temuan untuk QA:

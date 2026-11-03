@@ -38,57 +38,56 @@ coverage:
 
 ### Pembukaan layar
 
-1. Buka Global Settings > User > User List (sub-tab Login User)
-2. Verifikasi pembacaan user lewat backend berfungsi: user Hendra Gunawan (Default User) ditemukan menurut Email
-3. Klik `[+ User]` di Table Tools
+1. Verifikasi pembacaan user lewat backend berfungsi: user Hendra Gunawan (Default User) ditemukan menurut Email
+2. Klik `[+ User]` di Table Tools
 
 ### TC-GS-USER-112: Email yang dipakai user di client lain ditolak real-time via debounce
 
-4. Ketik Email `teguhsantoso+{runId}-023@qwertysystem.net`
-5. Tunggu ±500 ms tanpa memindahkan kursor
-6. Verifikasi inline error `Email already exists` muncul di Email tanpa blur dan tanpa `[Submit]`
-7. Isi First Name `Teguh`, Last Name `Santoso`, Division `Finance`, centang Access `Fixed Asset`, Emergency Phone `081234567890`
-8. Klik `[Submit]`
-9. Verifikasi user tidak dibuat: tidak ada user ber-Email `teguhsantoso+{runId}-023@qwertysystem.net` pada Client aktor di backend
+3. Ketik Email `teguhsantoso+{runId}-023@qwertysystem.net`
+4. Tunggu ±500 ms tanpa memindahkan kursor
+5. Verifikasi inline error `Email already exists` muncul di Email tanpa blur dan tanpa `[Submit]`
+6. Isi First Name `Teguh`, Last Name `Santoso`, Division `Finance`, pilih Access `Fixed Asset`, Emergency Phone `081234567890`
+7. Klik `[Submit]`
+8. Verifikasi user tidak dibuat: tidak ada user ber-Email `teguhsantoso+{runId}-023@qwertysystem.net` pada Client aktor di backend
 
 ### TC-GS-USER-1031: Email dengan huruf besar/kecil berbeda dan spasi tepi dianggap duplikat
 
-10. Klik `[Clear Field]`
-11. Ketik Email ` TeguhSantoso+{runId}-023@qwertysystem.net ` (huruf besar `S`, spasi di awal dan akhir)
-12. Tunggu ±500 ms tanpa memindahkan kursor
-13. Verifikasi inline error `Email already exists` muncul di Email tanpa blur dan tanpa `[Submit]`
-14. Isi First Name `Teguh`, Last Name `Santoso`, Division `Finance`, centang Access `Fixed Asset`, Emergency Phone `081234567890`
-15. Klik `[Submit]`
-16. Verifikasi user tidak dibuat: tidak ada user ber-Email `teguhsantoso+{runId}-023@qwertysystem.net` pada Client aktor di backend
+9. Klik `[Clear Field]`
+10. Ketik Email ` TeguhSantoso+{runId}-023@qwertysystem.net ` (huruf besar `S`, spasi di awal dan akhir)
+11. Tunggu ±500 ms tanpa memindahkan kursor
+12. Verifikasi inline error `Email already exists` muncul di Email tanpa blur dan tanpa `[Submit]`
+13. Isi First Name `Teguh`, Last Name `Santoso`, Division `Finance`, pilih Access `Fixed Asset`, Emergency Phone `081234567890`
+14. Klik `[Submit]`
+15. Verifikasi user tidak dibuat: tidak ada user ber-Email `teguhsantoso+{runId}-023@qwertysystem.net` pada Client aktor di backend
 
 ### TC-GS-USER-114: Employee ID duplikat di entitas yang sama ditolak real-time
 
-17. Klik `[Clear Field]`
-18. Ketik Employee ID `EMP-0001`
-19. Tunggu ±500 ms
-20. Verifikasi inline error `Employee ID already exists` muncul di Employee ID tanpa blur dan tanpa `[Submit]`
+16. Klik `[Clear Field]`
+17. Ketik Employee ID `EMP-0001`
+18. Tunggu ±500 ms
+19. Verifikasi inline error `Employee ID already exists` muncul di Employee ID tanpa blur dan tanpa `[Submit]`
 
 ### TC-GS-USER-1032: Employee ID dengan spasi tepi dianggap duplikat
 
-21. Klik `[Clear Field]`
-22. Ketik Employee ID ` EMP-0001 ` (spasi di awal dan akhir)
-23. Tunggu ±500 ms tanpa memindahkan kursor
-24. Verifikasi inline error `Employee ID already exists` muncul di Employee ID tanpa blur dan tanpa `[Submit]`
-25. Isi First Name `Budi`, Last Name `Santoso`, Division `Finance`, Email `budisantoso+{runId}-023@qwertysystem.net`, centang Access `Fixed Asset`, Emergency Phone `081234567890`
-26. Klik `[Submit]`
-27. Verifikasi user tidak dibuat: tidak ada user ber-Email `budisantoso+{runId}-023@qwertysystem.net` di backend
+20. Klik `[Clear Field]`
+21. Ketik Employee ID ` EMP-0001 ` (spasi di awal dan akhir)
+22. Tunggu ±500 ms tanpa memindahkan kursor
+23. Verifikasi inline error `Employee ID already exists` muncul di Employee ID tanpa blur dan tanpa `[Submit]`
+24. Isi First Name `Budi`, Last Name `Santoso`, Division `Finance`, Email `budisantoso+{runId}-023@qwertysystem.net`, pilih Access `Fixed Asset`, Emergency Phone `081234567890`
+25. Klik `[Submit]`
+26. Verifikasi user tidak dibuat: tidak ada user ber-Email `budisantoso+{runId}-023@qwertysystem.net` di backend
 
 ### TC-GS-USER-1033: Employee ID dengan huruf besar/kecil berbeda tidak dianggap duplikat
 
-28. Ganti isi Employee ID dengan `emp-0001`
-29. Tunggu ±500 ms tanpa memindahkan kursor
-30. Verifikasi tidak ada error `Employee ID already exists` pada field Employee ID
+27. Ganti isi Employee ID dengan `emp-0001`
+28. Tunggu ±500 ms tanpa memindahkan kursor
+29. Verifikasi tidak ada error `Employee ID already exists` pada field Employee ID
 
 ### Penutup
 
-31. Klik `✕` di header Popup
-32. Verifikasi dialog `Unsaved Changes` tampil
-33. Klik `[Leave]`
+30. Klik `✕` di header Popup
+31. Verifikasi dialog `Unsaved Changes` tampil
+32. Klik `[Leave]`
 
 ## Notes
 

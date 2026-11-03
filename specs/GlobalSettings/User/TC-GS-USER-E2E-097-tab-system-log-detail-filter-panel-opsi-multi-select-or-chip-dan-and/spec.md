@@ -32,7 +32,7 @@ coverage:
   - Target aksi `Target Alfa {runId}-097` (email `targetalfa+{runId}-097@qwertysystem.net`, Position `Staff`) dan `Target Beta {runId}-097` (email `targetbeta+{runId}-097@qwertysystem.net`).
   - Aksi seed oleh Aktor Log, berurutan (hanya data yang dipakai `Verifikasi`, S-11): (1) Create `Target Alfa` (Field `Name`, Old Value `—`); (2) Create `Target Beta`; (3) Edit Position `Target Alfa` dari `Staff` menjadi `Supervisor`; (4) Deactivate `Target Alfa` (Field `Status (Global)`, `Active` menjadi `Inactive`); (5) Activate `Target Alfa` (`Inactive` menjadi `Active`); (6) Delete `Target Beta` (Field `Name`, New Value `—`); (7) Assign Total Control ke `Target Alfa` (Object `Total Control`, Field `Access Level`, New Value `Total Control`). Hasil: kolom Action memuat `Activate`, `Assign`, `Create`, `Deactivate`, `Delete`, `Edit`; kolom Object memuat `Total Control` dan `User`; kolom Name memuat `Target Alfa` dan `Target Beta`; kolom Field memuat `Access Level`, `Name`, `Position`, `Status (Global)` (sedikitnya dua nilai distinct per kolom, S-11). Seluruh entri bertanggal hari uji.
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API `Target Alfa` (cabut tier Total Control lebih dulu bila diperlukan), `Target Beta` bila masih ada, dan `Aktor Log`; hapus sisa user bersuffix `-097` dari run lama. Entri log tidak bisa dihapus.
-- Kemampuan teknis: kontrol date range picker (memilih rentang 1 Jan 2020 sampai 31 Jan 2020 dan rentang yang memuat hari uji); membaca format tanggal yang dikonfigurasi di General Settings (Date Format) sebagai pembanding teks di input Date; mengamati state icon Filter aktif (berubah gelap), chip, dan checkbox opsi dropdown.
+- Kemampuan teknis: kontrol date range picker (memilih rentang 1 Jan 2020 sampai 31 Jan 2020 dan rentang yang memuat hari uji); membaca format tanggal yang dikonfigurasi di General Settings (Date Format) sebagai pembanding teks di input Date; mengamati state icon Filter (gelap saat panel terbuka), badge titik selama filter ter-Apply, chip, dan checkbox opsi dropdown.
 - State global yang diubah: tidak ada (filter hanya state tampilan tab; spec tidak mengubah General Settings). Suite berjalan serial (`parallel: false`).
 - Precondition TC-GS-USER-598 sampai 606: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User).
 
@@ -100,47 +100,59 @@ coverage:
 
 44. Klik `[Clear Field]`
 45. Pilih Action `Create`, klik `[Apply]`
-46. Verifikasi tabel hanya memuat baris Action `Create`
-47. Verifikasi icon Filter berubah gelap
-48. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
-49. Klik icon Filter, pilih Object `Total Control`, klik `[Apply]`
-50. Verifikasi tabel hanya memuat baris Object `Total Control`
-51. Verifikasi icon Filter berubah gelap
-52. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
-53. Klik icon Filter, pilih Name `Target Beta {runId}-097`, klik `[Apply]`
-54. Verifikasi tabel hanya memuat baris Name `Target Beta {runId}-097`
-55. Verifikasi icon Filter berubah gelap
-56. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
-57. Klik icon Filter, pilih Field `Position`, klik `[Apply]`
-58. Verifikasi tabel hanya memuat baris Field `Position`
-59. Verifikasi icon Filter berubah gelap
-60. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+46. Verifikasi sedikitnya satu baris tampil di tabel
+47. Verifikasi tabel hanya memuat baris Action `Create`
+48. Verifikasi badge titik tampil pada icon Filter selama filter ter-Apply
+49. Klik icon Filter
+50. Verifikasi icon Filter gelap saat panel terbuka
+51. Klik `[Clear Field]`, lalu klik `[Apply]`
+52. Klik icon Filter, pilih Object `Total Control`, klik `[Apply]`
+53. Verifikasi sedikitnya satu baris tampil di tabel
+54. Verifikasi tabel hanya memuat baris Object `Total Control`
+55. Verifikasi badge titik tampil pada icon Filter selama filter ter-Apply
+56. Klik icon Filter
+57. Verifikasi icon Filter gelap saat panel terbuka
+58. Klik `[Clear Field]`, lalu klik `[Apply]`
+59. Klik icon Filter, pilih Name `Target Beta {runId}-097`, klik `[Apply]`
+60. Verifikasi sedikitnya satu baris tampil di tabel
+61. Verifikasi tabel hanya memuat baris Name `Target Beta {runId}-097`
+62. Verifikasi badge titik tampil pada icon Filter selama filter ter-Apply
+63. Klik icon Filter
+64. Verifikasi icon Filter gelap saat panel terbuka
+65. Klik `[Clear Field]`, lalu klik `[Apply]`
+66. Klik icon Filter, pilih Field `Position`, klik `[Apply]`
+67. Verifikasi sedikitnya satu baris tampil di tabel
+68. Verifikasi tabel hanya memuat baris Field `Position`
+69. Verifikasi badge titik tampil pada icon Filter selama filter ter-Apply
+70. Klik icon Filter
+71. Verifikasi icon Filter gelap saat panel terbuka
+72. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-GS-USER-601: Dua opsi dalam satu field filter digabung OR
 
-61. Klik icon Filter, pilih Action `Create` dan `Delete`, klik `[Apply]`
-62. Verifikasi tabel memuat baris Action `Create`
-63. Verifikasi tabel memuat baris Action `Delete`
-64. Verifikasi baris Action `Edit` tidak tampil
-65. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+73. Klik icon Filter, pilih Action `Create` dan `Delete`, klik `[Apply]`
+74. Verifikasi tabel memuat baris Action `Create`
+75. Verifikasi tabel memuat baris Action `Delete`
+76. Verifikasi baris Action `Edit` tidak tampil
+77. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-GS-USER-605: Filter date range
 
-66. Klik icon Filter, pilih rentang tanggal yang memuat hari uji pada Date
-67. Verifikasi tanggal di input Date mengikuti Date Format General Settings
-68. Klik `[Apply]`
-69. Verifikasi baris Action `Create` Name `Target Alfa {runId}-097` (entri hari uji) tampil
-70. Klik icon Filter, pilih rentang tanggal 1 Jan 2020 sampai 31 Jan 2020 pada Date
-71. Klik `[Apply]`
-72. Verifikasi pesan `No results found`
-73. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+78. Klik icon Filter, pilih rentang tanggal yang memuat hari uji pada Date
+79. Verifikasi tanggal di input Date mengikuti Date Format General Settings
+80. Klik `[Apply]`
+81. Verifikasi baris Action `Create` Name `Target Alfa {runId}-097` (entri hari uji) tampil
+82. Klik icon Filter, pilih rentang tanggal 1 Jan 2020 sampai 31 Jan 2020 pada Date
+83. Klik `[Apply]`
+84. Verifikasi pesan `No results found`
+85. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-GS-USER-606: Kombinasi dua field filter digabung AND
 
-74. Klik icon Filter, pilih Action `Create` dan Name `Target Beta {runId}-097`, klik `[Apply]`
-75. Verifikasi baris Action `Create` Name `Target Beta {runId}-097` tampil
-76. Verifikasi baris Action `Create` Name `Target Alfa {runId}-097` tidak tampil
-77. Verifikasi baris Action `Delete` Name `Target Beta {runId}-097` tidak tampil
+86. Klik icon Filter, pilih Action `Create` dan Name `Target Beta {runId}-097`, klik `[Apply]`
+87. Verifikasi baris Action `Create` Name `Target Beta {runId}-097` tampil
+88. Verifikasi baris Action `Create` Name `Target Alfa {runId}-097` tidak tampil
+89. Verifikasi baris Action `Delete` Name `Target Beta {runId}-097` tidak tampil
 
 ## Notes
 
@@ -148,10 +160,11 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Pemilik log: TC sumber memakai `Siti Nurhaliza` sebagai pemilik System Log; isi log user itu bergantung pada aksi spec lain. Spec memakai user milik spec (`Aktor Log`) dengan aksi seed yang diketahui (S-06, S-11).
 - Urutan TC dalam spec: TC-GS-USER-598, 599, 602, 603, 604, 600, 601, 605, 606. Alasan: screening (598, 599) di awal; TC-GS-USER-602, 603, 604 tidak memakai `[Apply]` sehingga memakai satu pembukaan Filter Panel (langkah 4) dan hanya mengosongkan field di antara kasus; TC-GS-USER-600, 601, 605, 606 memakai `[Apply]` yang menutup panel dan membuka panel kembali sebelum tiap kasus.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 sampai 3 (membuka User Detail; Name dicari di User List), langkah 29 (mengosongkan kotak search dropdown), langkah 37 dan 44 (`[Clear Field]` sebelum kasus berikutnya), serta langkah 65 dan 73 (melepas filter sebelum kasus berikutnya). Langkah 48, 52, 56, 60 adalah langkah TC-GS-USER-600 (`[Clear Field]` + `[Apply]` tiap field).
-- Langkah 13, 16, 19, 22 (nilai tanpa baris tidak tampil) didahului `Verifikasi` daftar opsi utuh pada dropdown yang sama sebagai anchor positif (bagian 8b butir 2). Langkah 26 didahului langkah 25 (opsi `Create` tampil) dan langkah 12 (opsi `Delete` ada sebelum disaring). Langkah 76 dan 77 didahului langkah 75 (baris yang memenuhi kedua kriteria tampil).
-- Langkah 69 (baris entri hari uji tampil) adalah anchor positif untuk `Verifikasi` `No results found` pada langkah 72 (rentang Januari 2020), sehingga hasil kosong bukan karena tabel belum dimuat.
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 sampai 3 (membuka User Detail; Name dicari di User List), langkah 29 (mengosongkan kotak search dropdown), langkah 37 dan 44 (`[Clear Field]` sebelum kasus berikutnya), serta langkah 77 dan 85 (melepas filter sebelum kasus berikutnya). Langkah 51, 58, 65, 72 adalah langkah TC-GS-USER-600 (`[Clear Field]` + `[Apply]` tiap field).
+- Langkah 13, 16, 19, 22 (nilai tanpa baris tidak tampil) didahului `Verifikasi` daftar opsi utuh pada dropdown yang sama sebagai anchor positif (bagian 8b butir 2). Langkah 26 didahului langkah 25 (opsi `Create` tampil) dan langkah 12 (opsi `Delete` ada sebelum disaring). Langkah 88 dan 89 didahului langkah 87 (baris yang memenuhi kedua kriteria tampil).
+- Pada TC-GS-USER-600 tiap field: `Verifikasi sedikitnya satu baris tampil di tabel` adalah pembanding sebelum asersi "hanya" (S-03, bagian 8b butir 2); sesudah `Verifikasi` badge titik (filter ter-Apply, panel tertutup), `Klik icon Filter` membuka panel kembali untuk `Verifikasi icon Filter gelap saat panel terbuka`, lalu `[Clear Field]` dan `[Apply]` (langkah TC).
+- Langkah 81 (baris entri hari uji tampil) adalah anchor positif untuk `Verifikasi` `No results found` pada langkah 84 (rentang Januari 2020), sehingga hasil kosong bukan karena tabel belum dimuat.
 - Asersi memakai pola baris (bukan jumlah baris), sehingga entri log dari run atau spec lain tidak memengaruhi hasil.
-- Spec melewati sekitar 35 langkah (77 langkah) karena sembilan TC memakai Filter Panel yang sama dan tiap klausa Expected menjadi satu `Verifikasi` (S-01), termasuk empat field pada TC-GS-USER-599 dan 600. Semua blok satu kelas (Filter Panel Tab System Log), satu akun, satu dataset, dan tiap blok berdiri sendiri karena filter dilepas di akhir tiap blok.
+- Spec melewati sekitar 35 langkah (89 langkah) karena sembilan TC memakai Filter Panel yang sama dan tiap klausa Expected menjadi satu `Verifikasi` (S-01), termasuk empat field pada TC-GS-USER-599 dan 600. Semua blok satu kelas (Filter Panel Tab System Log), satu akun, satu dataset, dan tiap blok berdiri sendiri karena filter dilepas di akhir tiap blok.
 - Pembagian TC lintas spec: Search Tab System Log TC-GS-USER-591 sampai 597 diverifikasi di spec 096; kombinasi Search dan Filter TC-GS-USER-607 sampai 611 di spec 098.
-- Temuan untuk QA: (1) TC-GS-USER-600 Expected "icon Filter berubah gelap" tidak menyebut cara mengamati; cara membaca state aktif disediakan tim FE. (2) TC-GS-USER-602 Expected b "tidak ada opsi cocok" tidak menyebut teks empty state dropdown; spec hanya mengasersi tidak ada opsi tampil. (3) TC-GS-USER-603 "chip pertama" tidak mendefinisikan urutan; spec memakai opsi yang dipilih pertama (`Create`). (4) TC-GS-USER-605 Data Uji "Rentang tanggal sesuai data" dan judul "per field" tidak menyebut rentang; spec memakai rentang hari uji dan 1 Jan 2020 sampai 31 Jan 2020, dan hanya field Date yang bertipe rentang. (5) TC-GS-USER-606 "Isi 2 field filter berbeda" tidak menyebut field; spec memakai Action `Create` dan Name `Target Beta`. (6) TC-GS-USER-599 "nilai tanpa baris" tidak menyebut contoh; spec memakai `Pair TAG`, `Non-Login User`, dan `Photo`. (7) TC-GS-USER-598 memakai Date sebagai field filter; cara mengisi date range picker disediakan tim FE.
+- Temuan untuk QA: (1) TC-GS-USER-600 Expected "icon Filter gelap saat panel terbuka; badge titik tampil selama filter ter-Apply" tidak menyebut cara mengamati; cara membaca state icon Filter dan badge disediakan tim FE. (2) TC-GS-USER-602 Expected b "tidak ada opsi cocok" tidak menyebut teks empty state dropdown; spec hanya mengasersi tidak ada opsi tampil. (3) TC-GS-USER-603 "chip pertama" tidak mendefinisikan urutan; spec memakai opsi yang dipilih pertama (`Create`). (4) TC-GS-USER-605 Data Uji "Rentang tanggal sesuai data" dan judul "per field" tidak menyebut rentang; spec memakai rentang hari uji dan 1 Jan 2020 sampai 31 Jan 2020, dan hanya field Date yang bertipe rentang. (5) TC-GS-USER-606 "Isi 2 field filter berbeda" tidak menyebut field; spec memakai Action `Create` dan Name `Target Beta`. (6) TC-GS-USER-599 "nilai tanpa baris" tidak menyebut contoh; spec memakai `Pair TAG`, `Non-Login User`, dan `Photo`. (7) TC-GS-USER-598 memakai Date sebagai field filter; cara mengisi date range picker disediakan tim FE.

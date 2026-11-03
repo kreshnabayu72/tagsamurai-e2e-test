@@ -4,7 +4,7 @@ check-suite.py — pemeriksa mekanis hasil generate spec e2e (pelengkap `spectra
 
 Memeriksa satu suite terhadap TC granular sumbernya:
   C1 [FINDING] TC di tc-[modul].md yang tidak ada di sourceTc spec mana pun dan tidak tercatat hanya-BE di coverage
-  C2 [FINDING] id TC muncul di sourceTc lebih dari satu spec
+  C2 [FINDING] id TC muncul di sourceTc lebih dari satu spec; pengecualian S-05: pasangan spec asal dan spec absence (nama folder memuat «absence») yang kedua `## Notes`-nya menyebut id itu menjadi [REVIEW] (aksi nyata dan baseline di spec absence diperiksa manual)
   C3 [FINDING] sourceTc menunjuk id yang tidak ada di tc-[modul].md
   C4 [FINDING] nama folder spec != field id di frontmatter
   C5 [FINDING] spec tanpa baris `Mode:` di Prerequisites
@@ -17,10 +17,11 @@ Memeriksa satu suite terhadap TC granular sumbernya:
   C12 [FINDING] langkah aksi (bukan Verifikasi) memuat tanda "→ … tampil" (R-02)
   C13 [FINDING] "Kosongkan Search" tanpa aksi (Enter, lewat, ←, ✕) pada Search tabel (R-16, bagian 8b butir 9)
   C14 [FINDING] langkah "Tunggu N menit/jam/hari" atau "Tunggu" di atas 30 detik, di luar idiom "batas tunggu" (R-10)
-  C15 [FINDING] Prerequisites/Notes memuat rujukan proses atau narasi pemecahan (rencana, brief, orkestrator, dipecah/dipindah dari) (R-17)
+  C15 [FINDING] Prerequisites/Notes memuat rujukan proses atau narasi pemecahan (rencana, brief, orkestrator, dipecah/dipindah dari, penanda perencanaan Q-n dan D-n tanpa nol di depan; id dialog PRD D-01..D-12 sah) (R-17)
   C16 [FINDING] Prerequisites memuat "latar tabel" atau "dilakukan di hook suite" (R-09)
   C17 [FINDING] Spectra.env.<NAMA> dipakai di Test Steps tetapi nama itu tidak ada di Prerequisites (R-07)
   C18 [FINDING] rujukan "langkah N" melewati jumlah langkah spec (R-04)
+  C20 [FINDING] placeholder generator `([0-9]+)` yang tidak terganti angka nyata (R-04)
   C19 [REVIEW]  "Verifikasi hanya N toast" tanpa "Tunggu toast lama hilang" sebelumnya di blok yang sama (R-12)
 
 Pemakaian:
@@ -100,7 +101,8 @@ ARROW = re.compile(r"→[^\n]*\btampil")
 CLEAR_SEARCH = re.compile(r"(?i)\bkosongkan search\b")
 CLEAR_ACTION = re.compile(r"(?i)enter|lewat|\(←\)|←|✕|dropdown")
 LONG_WAIT = re.compile(r"(?i)(?<!batas )\btunggu (?:\d+ (?:menit|jam|hari)\b|(?:3[1-9]|[4-9]\d|\d{3,}) detik)")
-PROCESS_WORDS = re.compile(r"(?i)dipecah dari|dipindah(?:kan)? dari|\borkestrator\b|\bbrief\b|\brencana\b")
+PROCESS_WORDS = re.compile(r"(?i)dipecah dari|dipindah(?:kan)? dari|\borkestrator\b|\bbrief\b|\brencana\b|(?-i:\bQ-[0-9]+\b|\bD-[1-9]\b)")
+PLACEHOLDER_GEN = re.compile(r"\(\[0-9\]\+\)")
 PRE_WORDS = re.compile(r"(?i)latar tabel|dilakukan di hook suite")
 STEP_REF = re.compile(r"(?i)\blangkah (\d+)(?:\s*(?:sampai|s\.d\.|hingga|-|–)\s*(\d+))?")
 ONLY_TOAST = re.compile(r"(?i)Verifikasi hanya (?:satu|\d+) toast")
@@ -123,6 +125,8 @@ def style_checks(folder, text, out):
             out("FINDING", "C13", f"{folder}: langkah {num} «Kosongkan Search» tanpa aksi")
         if LONG_WAIT.search(l):
             out("FINDING", "C14", f"{folder}: langkah {num} «{LONG_WAIT.search(l).group(0)}»; atur jam, bukan menunggu")
+    if PLACEHOLDER_GEN.search(text):
+        out("FINDING", "C20", f"{folder}: memuat placeholder «([0-9]+)» yang belum diganti angka nyata")
     for name, part in (("Prerequisites", pre), ("Notes", notes)):
         for m in PROCESS_WORDS.finditer(part):
             out("FINDING", "C15", f"{folder}: {name} memuat «{m.group(0)}»")
@@ -193,7 +197,7 @@ def main():
         n = len(re.findall(r"^\d+\. ", steps, re.M))
         if not re.search(r"^- Mode:", text, re.M):
             out("FINDING", "C5", f"{folder}: tidak ada baris «- Mode:» di Prerequisites")
-        if n > LIMIT and not re.search(r"di atas smell|35 langkah", notes):
+        if n > LIMIT and not re.search(r"di atas smell|(?<!\d)35 langkah", notes):
             out("FINDING", "C6", f"{folder}: {n} langkah (> {LIMIT}) tanpa alasan di Notes")
         style_checks(folder, text, out)
         for blk in re.split(r"(?m)^(?=### )", steps):
@@ -209,6 +213,17 @@ def main():
         if len(folders) > 1:
             if all(re.search(r"^- Mode:\s*mock", read(suite / f / "spec.md"), re.M)
                    and "Pembagian TC lintas spec" in read(suite / f / "spec.md") for f in folders):
+                continue
+            absence = [f for f in folders if "absence" in f.lower()]
+            short = re.sub(r"^TC-[A-Z0-9]+-[A-Z0-9]+-(?=\d+$)", "TC-", tid)
+            notes_of = {f: steps_and_notes(read(suite / f / "spec.md"))[1] for f in folders}
+            cited = all(tid in n or re.search(re.escape(short) + r"(?!\d)", n) for n in notes_of.values())
+            if len(folders) == 2 and len(absence) == 0 and cited and all(
+                    "Pembagian TC lintas spec" in n for n in notes_of.values()):
+                out("REVIEW", "C2", f"{tid} terbagi antara dua spec (K12-A): {', '.join(folders)}; periksa pembagian asersi di kedua ## Notes")
+                continue
+            if len(folders) == 2 and len(absence) == 1 and cited:
+                out("REVIEW", "C2", f"{tid} di sourceTc spec asal dan spec absence (S-05): {', '.join(folders)}; periksa aksi nyata dan Verifikasi berbaseline")
                 continue
             out("FINDING", "C2", f"{tid} ada di sourceTc {len(folders)} spec: {', '.join(folders)}")
 

@@ -23,10 +23,10 @@ coverage:
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader (Client A); langkah 4 membuka layar lagi hanya sebagai kembali dari surface log.
 - Akun aktor: Total Control (Sari Dewi) `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup, Client A, plan Growth). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
 - Data Dinamis (Seed Reader A, dipulihkan fixture backend): Seed Reader A (DD-01 sampai DD-10; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`), format tanggal default Client A `dd/MM/yy` 24-hour. Spec memakai DD-01 (`Zebra RFID Reader - 1`, Serial Number `SN-HHR-00101`, Long Range, `30 dBm`), DD-03 (`Zebra Mobile Reader - 1`, Serial Number `SN-HHR-00103`, Long Range, `25 dBm`, Damaged), DD-02 (`Gudang Reader - 1`, Short Range, Available), dan DD-04 (`Gudang Reader - 2`, Short Range, Missing). Seed Reader A bernama literal tanpa suffix (pengecualian S-12 Population Seed Reader A HHR) karena Device Name bawaan ditentukan sistem (HHR-LOGIC-02g) dan DD-01 dan DD-06 sama-sama bernama `Zebra RFID Reader - 1`; baris diidentifikasi lewat Serial Number.
-- Baseline: jumlah entri total Changelog Handheld Reader, System Log aktor (Sari Dewi), dan Activity Log Global Settings dicatat sebelum aksi pemicu pertama yang diasersi (langkah 1 sampai 3).
+- Baseline: jumlah entri total Changelog Handheld Reader, System Log aktor (Sari Dewi), dan Activity Log Global Settings (tab `User Action`; tab `Session` tidak dibaca) dicatat sebelum aksi pemicu pertama yang diasersi (langkah 1 sampai 3).
 - Cleanup: Seed Reader A tidak diubah spec ini; fixture backend memulihkannya ke kondisi awal sebelum spec (hook `before`) dan sesudah spec (hook `after`). Pemulihan dijamin fixture backend yang disediakan tim FE/BE.
 - Guided Tooltip: hook suite `before` men-set flag `guided_tooltip_seen_gs-handheld-reader` true untuk akun aktor spec ini dan hook `after` memulihkannya (lihat `suite.md`).
-- Kemampuan teknis: input keyboard (`←`, `→`, `Esc`) untuk slider; membaca jumlah entri total pada Changelog Handheld Reader, System Log aktor, dan Activity Log.
+- Kemampuan teknis: input keyboard (`←`, `→`, `Esc`) untuk slider; membaca jumlah entri total pada Changelog Handheld Reader, System Log aktor, dan Activity Log tab `User Action`.
 - State global: tidak ada yang diubah selain flag Guided Tooltip (dikelola hook suite).
 
 ## Test Steps
@@ -35,7 +35,7 @@ coverage:
 
 1. Buka ikon Changelog, catat jumlah entri total sebagai baseline Changelog, tutup modal
 2. Buka System Log aktor Sari Dewi, catat jumlah entri total sebagai baseline System Log
-3. Buka Activity Log Global Settings, catat jumlah entri total sebagai baseline Activity Log
+3. Buka Global Settings > Activity Log > tab `User Action`, catat jumlah entri total tab `User Action` sebagai baseline Activity Log
 4. Buka Global Settings > Hardware > Handheld Reader
 
 ### TC-GS-HHR-125: Screening Dialog Edit Reader Power
@@ -70,8 +70,8 @@ coverage:
 26. Verifikasi jumlah entri total Changelog sama dengan baseline Changelog
 27. Tutup modal Changelog, buka System Log aktor Sari Dewi
 28. Verifikasi jumlah entri total System Log sama dengan baseline System Log
-29. Buka Activity Log Global Settings
-30. Verifikasi jumlah entri total Activity Log sama dengan baseline Activity Log
+29. Buka Global Settings > Activity Log > tab `User Action`
+30. Verifikasi jumlah entri total tab `User Action` sama dengan baseline Activity Log
 31. Buka Global Settings > Hardware > Handheld Reader
 32. Verifikasi kolom `Reader Power` baris DD-01 tetap `30 dBm`
 
@@ -112,6 +112,6 @@ coverage:
 - Spec 032, 033, dan 034 menguji dialog Edit Reader Power pada dataset Seed Reader A yang sama dan sengaja dipisah: gabungannya 118 langkah (50, 46, dan 22), jauh di atas sekitar 35 langkah, dan tiap spec membuka dialog sendiri sehingga kegagalan keras satu spec tidak menghilangkan makna spec lain.
 - Pembagian TC lintas spec: TC-GS-HHR-126 sampai 128, 133, 451, dan 457 ada di spec 033; TC-GS-HHR-134 sampai 136 dan 450 ada di spec 034; TC-GS-HHR-137 ada di spec 026.
 - Temuan untuk QA:
-  - TC-GS-HHR-130 menyebut System Log aktor dan Activity Log tanpa menyebut jalur navigasi surface atau cara membaca jumlah entri; spec membaca jumlah entri total tiap surface dan jalur navigasinya mengikuti TC section 5.
+  - TC-GS-HHR-130 menyebut System Log aktor dan Activity Log (tab `User Action`) tanpa menyebut jalur navigasi surface atau cara membaca jumlah entri; spec membaca jumlah entri total tiap surface dan jalur navigasinya mengikuti TC section 5.
   - TC-GS-HHR-131 Expected a menyebut "default 30 dBm" sedangkan nilai tersimpan DD-03 adalah 25 dBm; spec mengikuti TC (slider 30 dBm sesudah `[Clear Field]`, nilai tersimpan tetap 25 dBm).
   - Tidak ada Post Condition pada TC sumber spec ini.

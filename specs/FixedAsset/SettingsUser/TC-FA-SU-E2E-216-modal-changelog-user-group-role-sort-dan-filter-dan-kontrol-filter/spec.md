@@ -1,0 +1,92 @@
+---
+id: TC-FA-SU-E2E-216-modal-changelog-user-group-role-sort-dan-filter-dan-kontrol-filter
+title: "Modal Changelog User > Group Role: Sort dan Filter dan Kontrol Filter"
+priority: High
+caseType: Positive
+status: draft
+sourceTc:
+  - TC-FA-SU-647
+  - TC-FA-SU-648
+  - TC-FA-SU-649
+  - TC-FA-SU-650
+coverage:
+  web: automated
+---
+
+# Modal Changelog User > Group Role: Sort dan Filter dan Kontrol Filter
+
+## Prerequisites
+
+- Mode: FE+BE.
+- Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
+- Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen` dan pemulihan Pre-setup bersama lewat seed API.
+- Data Pre-setup: Client `FaUserMain` (#20) dan Changelog (#27). Pengguna target: Budi Santoso. Nama pengguna dirujuk lewat fixture `Fixture.fixedAssetSettingsUser.<kunci>` (berkas `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan tim FE).
+- Seed Modal Changelog Budi Santoso > Group Role (Pre-setup #27, 4 baris; urutan default Date descending). Alias baris yang dipakai langkah (nilai kolom Field; Modified By):
+  - GR-1: `Manage files — Branch Surabaya`; Modified By `Lina M`
+  - GR-2: `Manage files — IT Infrastructure`; Modified By `Ahmad D`
+  - GR-3: `Group Manager — IT Infrastructure`; Modified By `Ahmad D`
+  - GR-4: `Manage group — IT Infrastructure — Update`; Modified By `Ahmad D`
+- Kemampuan seed API (disediakan tim BE/FE): menyediakan ulang seed Changelog #27 (Catatan TC: fixture yang diubah disediakan ulang lewat seed API) di hook `before` dan `after`. Spec ini hanya membaca surface Changelog dan tidak menambah entri pada Budi Santoso.
+
+## Test Steps
+
+### TC-FA-SU-647: Sort kelas teks (Action, Field)
+
+1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Group Role, lalu klik icon Changelog
+2. Klik header Action satu kali
+3. Verifikasi urutan baris klik 1 ascending (↑): GR-2, GR-4, GR-1, GR-3
+4. Klik header Action kedua kali
+5. Verifikasi urutan baris klik 2 descending (↓): GR-1, GR-3, GR-4, GR-2
+6. Klik header Action ketiga kali
+7. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+8. Klik header Field satu kali
+9. Verifikasi urutan baris klik 1 ascending (↑): GR-3, GR-1, GR-2, GR-4
+10. Klik header Field kedua kali
+11. Verifikasi urutan baris klik 2 descending (↓): GR-4, GR-2, GR-1, GR-3
+12. Klik header Field ketiga kali
+13. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+
+### TC-FA-SU-648: Sort kelas mixed (Old Value, New Value)
+
+14. Klik header Old Value satu kali
+15. Verifikasi urutan baris klik 1 ascending (↑): GR-4, GR-1, GR-3, GR-2
+16. Klik header Old Value kedua kali
+17. Verifikasi urutan baris klik 2 descending (↓): GR-2, GR-1, GR-3, GR-4
+18. Klik header Old Value ketiga kali
+19. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+20. Klik header New Value satu kali
+21. Verifikasi urutan baris klik 1 ascending (↑): GR-2, GR-4, GR-1, GR-3
+22. Klik header New Value kedua kali
+23. Verifikasi urutan baris klik 2 descending (↓): GR-1, GR-3, GR-4, GR-2
+24. Klik header New Value ketiga kali
+25. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+
+### TC-FA-SU-649: Sort kelas user (Modified By)
+
+26. Klik header Modified By satu kali
+27. Verifikasi urutan baris klik 1 ascending (↑): GR-2, GR-3, GR-4, GR-1
+28. Klik header Modified By kedua kali
+29. Verifikasi urutan baris klik 2 descending (↓): GR-1, GR-2, GR-3, GR-4
+30. Klik header Modified By ketiga kali
+31. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+
+### TC-FA-SU-650: Screening Filter Panel
+
+32. Klik icon Filter
+33. Verifikasi panel terbuka di bawah Table Tools
+34. Verifikasi ikon Filter menjadi gelap
+35. Hover icon Filter
+36. Verifikasi tooltip `Filter`
+37. Verifikasi field ke-1 adalah Date (date range picker) dengan placeholder `Select date`
+38. Verifikasi field ke-2 adalah Action (multi-select searchable) dengan placeholder `All actions`
+39. Verifikasi field ke-3 adalah Field (multi-select searchable) dengan placeholder `All fields`
+40. Verifikasi field ke-4 adalah Modified By (multi-select searchable) dengan placeholder `All users`
+41. Verifikasi footer panel: `[Clear Field]` di kiri dan `[Apply]` di kanan
+42. Verifikasi tidak ada badge titik pada ikon Filter selama belum ada filter ter-Apply
+
+## Notes
+
+- Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Spec ini berjumlah 42 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). (2) Urutan beberapa sort tidak simetris: Date ascending (GR-3, GR-4, GR-2, GR-1) bukan kebalikan urutan default descending (GR-1, GR-2, GR-3, GR-4), dan Old Value descending bukan kebalikan ascending. TC tidak menyebut aturan tie-break untuk nilai seri (Date berketelitian menit); spec mengikuti urutan TC dan urutan itu bergantung pada seed yang disediakan tim FE/BE.

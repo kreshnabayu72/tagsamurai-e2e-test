@@ -34,83 +34,82 @@ coverage:
 
 ### Pembukaan layar
 
-1. Buka Global Settings > User > User List (sub-tab Login User)
-2. Klik icon Search, ketik `Joko Susilo {runId}-043`, tekan Enter
-3. Klik Name `Joko Susilo {runId}-043` di User List
-4. Klik Tab Changelog
-5. Catat jumlah entri Tab Changelog `Joko Susilo {runId}-043` sebagai baseline
-6. Klik menu User di sidebar Global Settings
-7. Klik icon Search, ketik `Joko Susilo {runId}-043`, tekan Enter
+1. Klik icon Search, ketik `Joko Susilo {runId}-043`, tekan Enter
+2. Klik Name `Joko Susilo {runId}-043` di User List
+3. Klik Tab Changelog
+4. Catat jumlah entri Tab Changelog `Joko Susilo {runId}-043` sebagai baseline
+5. Klik menu User di sidebar Global Settings
+6. Klik icon Search, ketik `Joko Susilo {runId}-043`, tekan Enter
 
 ### TC-GS-USER-219 dan TC-GS-USER-1008: Dialog peringatan produk dengan aset atau approval (screening)
 
-8. Klik (⋯) baris `Joko Susilo {runId}-043` → `Edit`
-9. Uncheck Access `Fixed Asset`
-10. Klik `[Save]`
-11. Verifikasi dialog peringatan muncul sebelum submit (belum ada toast sukses)
-12. Verifikasi dialog Title `Remove Access`
-13. Verifikasi body dialog memuat bullet `• Joko Susilo {runId}-043`
-14. Verifikasi body dialog memuat baris dampak `Removing access to Fixed Asset will affect borrowed asset(s) and pending approval(s) — historical data will be preserved, but the user will lose functional access to Fixed Asset.`
-15. Verifikasi body dialog diakhiri pertanyaan `Are you sure you want to remove it?`
-16. Verifikasi dialog memuat tombol `[Cancel]` dan `[Remove]`
+7. Klik (⋯) baris `Joko Susilo {runId}-043` → `Edit`
+8. Hapus pilihan Access `Fixed Asset`
+9. Klik `[Save]`
+10. Verifikasi dialog peringatan muncul sebelum submit (belum ada toast sukses)
+11. Verifikasi dialog Title `Remove Access`
+12. Verifikasi body dialog memuat bullet `• Joko Susilo {runId}-043`
+13. Verifikasi body dialog memuat baris dampak `Removing access to Fixed Asset will affect borrowed asset(s) and pending approval(s) — historical data will be preserved, but the user will lose functional access to Fixed Asset.`
+14. Verifikasi body dialog diakhiri pertanyaan `Are you sure you want to remove it?`
+15. Verifikasi dialog memuat tombol `[Cancel]` dan `[Remove]`
 
-### TC-GS-USER-221: Cancel menahan Popup Edit dengan checkbox tetap ter-uncheck
+### TC-GS-USER-221: Cancel menahan Popup Edit dengan pilihan Access tetap terhapus
 
-17. Klik `[Cancel]` pada dialog
-18. Verifikasi Popup Edit tetap terbuka
-19. Verifikasi checkbox Access `Fixed Asset` tetap ter-uncheck
-20. Klik `✕` pada header Popup Edit
-21. Verifikasi dialog `Unsaved Changes`
-22. Klik `[Leave]`
-23. Verifikasi sel Access baris `Joko Susilo {runId}-043` memuat `Fixed Asset` dan `Supply Asset` (tidak ada perubahan tersimpan)
-24. Klik Name `Joko Susilo {runId}-043` di User List
-25. Klik Tab Changelog
-26. Verifikasi jumlah entri Tab Changelog sama dengan baseline (tidak ada entri Changelog baru)
-27. Klik menu User di sidebar Global Settings
+16. Klik `[Cancel]` pada dialog
+17. Verifikasi Popup Edit tetap terbuka
+18. Verifikasi Access `Fixed Asset` tetap tidak terpilih
+19. Klik `✕` pada header Popup Edit
+20. Verifikasi dialog `Unsaved Changes`
+21. Klik `[Leave]`
+22. Verifikasi sel Access baris `Joko Susilo {runId}-043` memuat `Fixed Asset` dan `Supply Asset` (tidak ada perubahan tersimpan)
+23. Klik Name `Joko Susilo {runId}-043` di User List
+24. Klik Tab Changelog
+25. Verifikasi jumlah entri Tab Changelog sama dengan baseline (tidak ada entri Changelog baru)
+26. Klik menu User di sidebar Global Settings
 
 ### TC-GS-USER-218: Produk tanpa aset atau approval, Save langsung tanpa dialog
 
-28. Klik icon Search, ketik `Dewi Lestari {runId}-043`, tekan Enter
-29. Klik (⋯) baris `Dewi Lestari {runId}-043` → `Edit`
-30. Uncheck Access `Fixed Asset`
-31. Klik `[Save]`
-32. Verifikasi toast sukses: "Success, user has been updated."
-33. Verifikasi tidak ada dialog peringatan
-34. Verifikasi sel Access baris `Dewi Lestari {runId}-043` hanya `Global Settings`
+27. Klik icon Search, ketik `Dewi Lestari {runId}-043`, tekan Enter
+28. Klik (⋯) baris `Dewi Lestari {runId}-043` → `Edit`
+29. Hapus pilihan Access `Fixed Asset`
+30. Klik `[Save]`
+31. Verifikasi toast sukses: "Success, user has been updated."
+32. Verifikasi tidak ada dialog peringatan
+33. Verifikasi sel Access baris `Dewi Lestari {runId}-043` hanya `Global Settings`
 
 ### TC-GS-USER-222: Dua produk terdampak sekaligus, satu dialog gabungan
 
-35. Ganti isi kotak search dengan `Joko Susilo {runId}-043`, tekan Enter
-36. Klik (⋯) baris `Joko Susilo {runId}-043` → `Edit`
-37. Uncheck Access `Fixed Asset` dan `Supply Asset`
-38. Klik `[Save]`
-39. Verifikasi hanya satu dialog yang tampil
-40. Verifikasi dialog memuat bullet `• Joko Susilo {runId}-043`
-41. Verifikasi dialog memuat satu baris dampak untuk Fixed Asset
-42. Verifikasi dialog memuat satu baris dampak untuk Supply Asset
-43. Verifikasi dialog ditutup pertanyaan yang berakhir `remove them?`
+34. Ganti isi kotak search dengan `Joko Susilo {runId}-043`, tekan Enter
+35. Klik (⋯) baris `Joko Susilo {runId}-043` → `Edit`
+36. Hapus pilihan Access `Fixed Asset` dan `Supply Asset`
+37. Klik `[Save]`
+38. Verifikasi hanya satu dialog yang tampil
+39. Verifikasi dialog memuat bullet `• Joko Susilo {runId}-043`
+40. Verifikasi dialog memuat satu baris dampak untuk Fixed Asset
+41. Verifikasi dialog memuat satu baris dampak untuk Supply Asset
+42. Verifikasi dialog ditutup pertanyaan yang berakhir `remove them?`
 
 ### TC-GS-USER-220: Lanjut mencabut akses dan snapshot historis tetap
 
-44. Klik `[Cancel]` pada dialog
-45. Centang kembali Access `Supply Asset`
-46. Klik `[Save]`
-47. Klik `[Remove]` pada dialog
-48. Verifikasi toast sukses: "Success, user has been updated."
-49. Verifikasi sel Access baris `Joko Susilo {runId}-043` memuat `Supply Asset` (pembanding)
-50. Verifikasi sel Access baris `Joko Susilo {runId}-043` tanpa `Fixed Asset`
-51. Buka Fixed Asset > Borrow, cari transaksi `Joko Susilo {runId}-043`
-52. Verifikasi transaksi borrow lama tetap menampilkan nama `Joko Susilo {runId}-043`
+43. Klik `[Cancel]` pada dialog
+44. Pilih kembali Access `Supply Asset`
+45. Klik `[Save]`
+46. Klik `[Remove]` pada dialog
+47. Verifikasi toast sukses: "Success, user has been updated."
+48. Verifikasi sel Access baris `Joko Susilo {runId}-043` memuat `Supply Asset` (pembanding)
+49. Verifikasi sel Access baris `Joko Susilo {runId}-043` tanpa `Fixed Asset`
+50. Buka Fixed Asset > Borrow, cari transaksi `Joko Susilo {runId}-043`
+51. Verifikasi transaksi borrow lama tetap menampilkan nama `Joko Susilo {runId}-043`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`. Semua TC di spec ini satu topik aksi (Remove Access produk) dan tidak berkelas harness.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec melewati sekitar 35 langkah (52 langkah) karena enam TC berada di satu topik aksi dan satu layar (Popup Edit dan dialog Remove Access) dengan satu user seed berborrowed asset yang dipakai bersama; tiap blok TC berdiri sendiri. Pembukaan layar dan baseline (langkah 1 sampai 7) tidak dihitung.
+- Spec melewati sekitar 35 langkah (51 langkah) karena enam TC berada di satu topik aksi dan satu layar (Popup Edit dan dialog Remove Access) dengan satu user seed berborrowed asset yang dipakai bersama; tiap blok TC berdiri sendiri. Pembukaan layar dan baseline (langkah 1 sampai 6) tidak dihitung.
 - Urutan TC sumber diubah: TC-GS-USER-1008 digabung dengan TC-GS-USER-219 (satu dialog yang sama, satu pembukaan Popup Edit); TC-GS-USER-221 mengikuti dialog itu; TC-GS-USER-222 dan TC-GS-USER-220 berada dalam satu pembukaan Popup Edit (dialog dua produk lalu `[Cancel]`, centang kembali `Supply Asset`, Save, `[Remove]`) karena aksi `[Remove]` pada TC-GS-USER-220 mencabut akses sungguhan dan berada paling akhir (bagian 3 prinsip 5). TC-GS-USER-218 berada sebelum aksi pencabutan Joko Susilo.
-- Langkah 45 sampai 47 mengubah keadaan dari dua produk ter-uncheck ke hanya `Fixed Asset` ter-uncheck, setara langkah TC-GS-USER-220 (uncheck `Fixed Asset`, `[Save]`, `[Remove]`).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 sampai 7 (pembukaan layar dan baseline Tab Changelog), 17 (menutup dialog), 20 sampai 22 (menutup Popup Edit dirty, S-08), 24 sampai 25 dan 27 (navigasi ke Tab Changelog dan kembali), 28 dan 35 (Search), 44 (menutup dialog), 45 (centang kembali).
-- Asersi tambahan di luar Expected TC (S-03): langkah 23 (Access tidak berubah) membuktikan "Tidak ada perubahan tersimpan" TC-GS-USER-221; langkah 49 adalah pembanding (anchor) untuk absence `Fixed Asset`; langkah 26 adalah asersi jumlah berbaseline (bukan asersi absence log kelas g).
+- Langkah 44 sampai 46 mengubah keadaan dari dua produk terhapus pilihannya ke hanya `Fixed Asset` terhapus pilihannya, setara langkah TC-GS-USER-220 (hapus pilihan Access `Fixed Asset`, `[Save]`, `[Remove]`).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 sampai 6 (baseline Tab Changelog), 16 (menutup dialog), 19 sampai 21 (menutup Popup Edit dirty, S-08), 23 sampai 24 dan 26 (navigasi ke Tab Changelog dan kembali), 27 dan 34 (Search), 43 (menutup dialog), 44 (pilih kembali).
+- Asersi tambahan di luar Expected TC (S-03): langkah 22 (Access tidak berubah) membuktikan "Tidak ada perubahan tersimpan" TC-GS-USER-221; langkah 48 adalah pembanding (anchor) untuk absence `Fixed Asset`; langkah 25 adalah asersi jumlah berbaseline (bukan asersi absence log kelas g).
 - Temuan untuk QA:
   - TC-GS-USER-218 Post Condition "Terdampak: Fixed Asset > Settings > User" tidak punya langkah observasi; tidak diasersi (S-01).
   - TC-GS-USER-220 Post Condition "Terdampak: Fixed Asset > Settings > User, approver pool Fixed Asset" tidak punya langkah observasi; tidak diasersi (S-01).

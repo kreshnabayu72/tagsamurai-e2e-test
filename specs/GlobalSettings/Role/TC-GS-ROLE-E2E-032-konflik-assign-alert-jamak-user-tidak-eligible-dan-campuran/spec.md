@@ -26,6 +26,7 @@ coverage:
   - Ahmad Fauzan (`ahmad.fauzan@client.com`): di-assign Total Control sesi API Eko di TC-GS-ROLE-305.
   - Nina Kartika dan Wawan Setiawan: di-assign Total Control sesi API Eko di TC-GS-ROLE-301 dan TC-GS-ROLE-305; Nina Kartika dihapus dan Wawan Setiawan di-assign Total Control sesi API Eko di TC-GS-ROLE-302.
 - Pemulihan: langkah penghubung sesi API Eko mencabut access level Total Control dan membuat ulang user yang dihapus sebagai kandidat (langkah 11, 22, dan 35) dan hook `after` menjadi cadangan.
+- Efek pemulihan yang tidak dikembalikan: assign, pencabutan, penghapusan, dan pembuatan ulang user lewat sesi API Eko meninggalkan efek pada Modified By, Last Updated, dan entri Changelog user kandidat (Nina Kartika, Wawan Setiawan, Ahmad Fauzan `ahmad.fauzan@client.com`) yang tidak dapat dipulihkan. Spec tidak mengasersi Modified By, Last Updated, maupun jumlah entri Changelog; bila asersi itu ditambahkan, memakai baseline jumlah entri sebelum aksi (S-12).
 - Kemampuan teknis (disediakan tim FE/BE; nama endpoint tidak ditentukan di TC, PRD, dan LLD): klien HTTP terotentikasi sebagai Eko Prasetyo untuk meng-assign Total Control, menghapus user, mencabut access level, dan membuat ulang user kandidat.
 
 ## Test Steps
@@ -34,7 +35,7 @@ coverage:
 
 1. Klik `[+ Assign]`
 2. Centang Ahmad Fauzan (`ahmad.fz@client.com`), Nina Kartika, dan Wawan Setiawan
-3. Sesi API Eko: assign Total Control ke Nina Kartika dan Wawan Setiawan
+3. Sesi API Eko: assign Total Control ke Nina Kartika dan Wawan Setiawan hingga access level Total Control keduanya tersimpan
 4. Klik `[Assign]`
 5. Verifikasi alert inline (danger) jamak satu kalimat dengan pola `[User Names] are no longer eligible. Please select another.` tampil dan menyebut kedua nama Nina Kartika dan Wawan Setiawan (urutan nama tidak diasersi)
 6. Verifikasi Ahmad Fauzan (`ahmad.fz@client.com`) tetap tercentang
@@ -42,13 +43,13 @@ coverage:
 8. Verifikasi Ahmad Fauzan (`ahmad.fz@client.com`) tetap tampil di picker, artinya belum menjadi Total Control (submit ditolak seluruhnya)
 9. Verifikasi Nina Kartika dan Wawan Setiawan tidak tampil di picker setelah picker di-refetch
 10. Klik `[Cancel]`
-11. Sesi API Eko: cabut access level Total Control dari Nina Kartika dan Wawan Setiawan
+11. Sesi API Eko: cabut access level Total Control dari Nina Kartika dan Wawan Setiawan hingga pencabutan access level keduanya tersimpan
 
 ### TC-GS-ROLE-305: Assign Total Control saat tiga user terpilih menjadi tidak eligible sebelum submit (alert jamak ≥3)
 
 12. Klik `[+ Assign]`
 13. Centang Ahmad Fauzan (`ahmad.fz@client.com`), Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan
-14. Sesi API Eko: assign Total Control ke Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan
+14. Sesi API Eko: assign Total Control ke Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan hingga access level Total Control ketiganya tersimpan
 15. Klik `[Assign]`
 16. Verifikasi alert inline (danger) satu kalimat dengan pola `[User Names] are no longer eligible. Please select another.` tampil dan menyebut ketiga nama Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan dengan koma dan `and` sebelum nama terakhir (urutan nama tidak diasersi)
 17. Verifikasi Ahmad Fauzan (`ahmad.fz@client.com`) tetap tercentang
@@ -56,14 +57,14 @@ coverage:
 19. Verifikasi Ahmad Fauzan (`ahmad.fz@client.com`) tetap tampil di picker, artinya belum menjadi Total Control (submit ditolak seluruhnya)
 20. Verifikasi Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan tidak tampil di picker setelah picker di-refetch
 21. Klik `[Cancel]`
-22. Sesi API Eko: cabut access level Total Control dari Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan
+22. Sesi API Eko: cabut access level Total Control dari Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan hingga pencabutan access level ketiganya tersimpan
 
 ### TC-GS-ROLE-302: Assign Total Control dengan campuran user dihapus dan user tidak eligible dalam satu submit
 
 23. Klik `[+ Assign]`
 24. Centang Ahmad Fauzan (`ahmad.fz@client.com`), Nina Kartika, dan Wawan Setiawan
-25. Sesi API Eko: hapus user Nina Kartika di modul User
-26. Sesi API Eko: assign Total Control ke Wawan Setiawan
+25. Sesi API Eko: hapus user Nina Kartika di modul User hingga penghapusan tersimpan
+26. Sesi API Eko: assign Total Control ke Wawan Setiawan hingga access level Total Control Wawan Setiawan tersimpan
 27. Klik `[Assign]`
 28. Verifikasi alert inline (danger) V-10 `Nina Kartika no longer exists. Please select another.` tampil
 29. Verifikasi alert V-11 untuk Wawan Setiawan (`Wawan Setiawan is no longer eligible. Please select another.`) tidak tampil
@@ -72,12 +73,11 @@ coverage:
 32. Verifikasi Ahmad Fauzan (`ahmad.fz@client.com`) tetap tampil di picker, artinya belum menjadi Total Control (submit ditolak seluruhnya)
 33. Verifikasi Nina Kartika tidak tampil di picker setelah picker di-refetch
 34. Klik `[Cancel]`
-35. Sesi API Eko: buat ulang user Nina Kartika sebagai kandidat dan cabut access level Total Control dari Wawan Setiawan
+35. Sesi API Eko: buat ulang user Nina Kartika sebagai kandidat dan cabut access level Total Control dari Wawan Setiawan hingga user kandidat dan pencabutan access level tersimpan
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/role/TestCases/tc-role.md`. Kelas harness: multi-konteks (c), dua admin, satu spec untuk satu jenis harness.
-- `P-2`: Eko Prasetyo hanya memicu perubahan state (assign Total Control, hapus user) lewat sesi API dan bukan objek asersi; tidak ada sesi UI kedua. Objek asersi tetap sesi A.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec berjumlah 35 langkah, tepat di ambang sekitar 35. Ketiga TC satu kelas harness dan satu layar, tiap blok dimulai dari popup baru dan dipulihkan oleh sesi API Eko di antara blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Urutan TC sumber diubah (301, 305, 302): TC-GS-ROLE-302 yang menghapus user diletakkan paling akhir (bagian 3 prinsip 5).

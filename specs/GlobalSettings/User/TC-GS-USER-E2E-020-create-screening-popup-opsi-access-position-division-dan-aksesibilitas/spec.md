@@ -32,61 +32,61 @@ coverage:
 
 ## Test Steps
 
-### Pembukaan layar
-
-1. Buka Global Settings > User > User List (sub-tab Login User)
-
 ### TC-GS-USER-88: Screening Popup Create User
 
-2. Klik `[+ User]` di Table Tools
-3. Verifikasi Header Popup: Title `Create User`
-4. Verifikasi Header Popup: icon `✕` tampil
-5. Verifikasi Body: Photo upload berada di baris pertama
-6. Verifikasi Body: Photo upload center-aligned
-7. Verifikasi Body: avatar Photo upload kosong
-8. Verifikasi Body grid 2 kolom baris pertama: `First Name *` (placeholder `Enter first name`) di kolom kiri dan `Last Name *` (placeholder `Enter last name`) di kolom kanan
-9. Verifikasi Body grid 2 kolom baris kedua: `Position` (placeholder `Select position`) di kolom kiri dan `Division *` (placeholder `Select division`) di kolom kanan
-10. Verifikasi Body grid 2 kolom baris ketiga: `Employee ID` (placeholder `Enter employee ID`) di kolom kiri dan `Email *` (placeholder `Enter email address`) di kolom kanan
-11. Verifikasi Body: `Employee ID` tanpa helper text
-12. Verifikasi Body: `Access *` membentang 2 kolom
-13. Verifikasi Body: checkbox group `Access *` berisi `Fixed Asset` | `Global Settings` | `Supply Asset`
-14. Verifikasi Body: tidak ada checkbox Access yang tercentang
-15. Verifikasi Body: `User TAG` menampilkan badge `Unverified` dengan varian warning
-16. Verifikasi Body: `User TAG` menampilkan tombol `Scan TAG`
-17. Verifikasi Body: checkbox `Set as Temporary User` tidak tercentang
-18. Verifikasi Body: field `Temporary Until` belum tampil
-19. Verifikasi Body: divider full-width tampil di bawah bagian `Set as Temporary User`
-20. Verifikasi Body: di bawah divider tampil Custom Field `Blood Type` | `Skills` | `Emergency Phone`
-21. Verifikasi Footer: checkbox `Stay on this form after submitting` tidak tercentang
-22. Verifikasi Footer: urutan elemen checkbox `Stay on this form after submitting`, `[Clear Field]`, lalu `[Submit]`
+1. Klik `[+ User]` di Table Tools
+2. Verifikasi Header Popup: Title `Create User`
+3. Verifikasi Header Popup: icon `✕` tampil
+4. Verifikasi Body: Photo upload berada di baris pertama
+5. Verifikasi Body: Photo upload center-aligned
+6. Verifikasi Body: avatar Photo upload kosong
+7. Verifikasi Body grid 2 kolom baris pertama: `First Name *` (placeholder `Enter first name`) di kolom kiri dan `Last Name *` (placeholder `Enter last name`) di kolom kanan
+8. Verifikasi Body grid 2 kolom baris kedua: `Position` (placeholder `Select position`) di kolom kiri dan `Division *` (placeholder `Select division`) di kolom kanan
+9. Verifikasi Body grid 2 kolom baris ketiga: `Employee ID` (placeholder `Enter employee ID`) di kolom kiri dan `Email *` (placeholder `Enter email address`) di kolom kanan
+10. Verifikasi Body: `Employee ID` tanpa helper text
+11. Verifikasi Body: `Access *` membentang 2 kolom
+12. Verifikasi Body: `Access *` berupa multi dropdown dengan placeholder `Select access`
+13. Verifikasi Body: belum ada produk terpilih pada `Access *`
+14. Klik dropdown Access
+15. Verifikasi Body: dropdown `Access *` memuat opsi `Fixed Asset` | `Global Settings` | `Supply Asset`
+16. Tutup dropdown Access dengan mengklik Title Popup `Create User`
+17. Verifikasi Body: `User TAG` menampilkan badge `Unverified` dengan varian warning
+18. Verifikasi Body: `User TAG` menampilkan tombol `Scan TAG`
+19. Verifikasi Body: checkbox `Set as Temporary User` tidak tercentang
+20. Verifikasi Body: field `Temporary Until` belum tampil
+21. Verifikasi Body: divider full-width tampil di bawah bagian `Set as Temporary User`
+22. Verifikasi Body: di bawah divider tampil Custom Field `Blood Type` | `Skills` | `Emergency Phone`
+23. Verifikasi Footer: checkbox `Stay on this form after submitting` tidak tercentang
+24. Verifikasi Footer: urutan elemen checkbox `Stay on this form after submitting`, `[Clear Field]`, lalu `[Submit]`
 
 ### TC-GS-USER-90: Opsi Position dan Division diambil dari Master Data aktif
 
-23. Klik dropdown Position
-24. Verifikasi dropdown Position memuat `Internal Auditor`
-25. Verifikasi dropdown Position memuat `Finance Manager`, `HR Business Partner`, `Staff`, dan `Supervisor`
-26. Verifikasi isi dropdown Position sama dengan seluruh Position aktif Master Data yang dibaca dari backend
-27. Tutup dropdown Position dengan mengklik Title Popup `Create User`
-28. Klik dropdown Division
-29. Verifikasi dropdown Division memuat `Finance`, `General Affairs`, `Logistics`, dan `Legal`
-30. Verifikasi isi dropdown Division sama dengan seluruh Division aktif Master Data yang dibaca dari backend
-31. Tutup dropdown Division dengan mengklik Title Popup `Create User`
+25. Klik dropdown Position
+26. Verifikasi dropdown Position memuat `Internal Auditor`
+27. Verifikasi dropdown Position memuat `Finance Manager`, `HR Business Partner`, `Staff`, dan `Supervisor`
+28. Verifikasi isi dropdown Position sama dengan seluruh Position aktif Master Data yang dibaca dari backend
+29. Tutup dropdown Position dengan mengklik Title Popup `Create User`
+30. Klik dropdown Division
+31. Verifikasi dropdown Division memuat `Finance`, `General Affairs`, `Logistics`, dan `Legal`
+32. Verifikasi isi dropdown Division sama dengan seluruh Division aktif Master Data yang dibaca dari backend
+33. Tutup dropdown Division dengan mengklik Title Popup `Create User`
 
 ### TC-GS-USER-148: Accessibility Popup Create User, fokus terkunci
 
-32. Tekan Tab berulang sebanyak jumlah elemen yang dapat difokus di Popup ditambah satu
-33. Verifikasi fokus berputar kembali ke elemen pertama yang dapat difokus di Popup sesudah elemen terakhir
-34. Verifikasi fokus tidak pernah keluar ke elemen halaman di belakang Popup pada setiap penekanan Tab
-35. Klik `✕` di header Popup
+34. Tekan Tab berulang sebanyak jumlah elemen yang dapat difokus di Popup ditambah satu
+35. Verifikasi fokus berputar kembali ke elemen pertama yang dapat difokus di Popup sesudah elemen terakhir
+36. Verifikasi fokus tidak pernah keluar ke elemen halaman di belakang Popup pada setiap penekanan Tab
+37. Klik `✕` di header Popup
 
 ### TC-GS-USER-89: Opsi Access menyembunyikan produk yang tidak disubscribe Client
 
-36. Ubah subscription Client uji menjadi hanya Fixed Asset (Supply Asset tidak disubscribe)
-37. Muat ulang halaman User List
-38. Klik `[+ User]` di Table Tools
-39. Verifikasi opsi Access `Fixed Asset` | `Global Settings` tampil
-40. Verifikasi `Supply Asset` tidak dirender di Access (Hidden, bukan checkbox disabled)
-41. Klik `✕` di header Popup
+38. Ubah subscription Client uji menjadi hanya Fixed Asset (Supply Asset tidak disubscribe)
+39. Muat ulang halaman User List
+40. Klik `[+ User]` di Table Tools
+41. Klik dropdown Access
+42. Verifikasi opsi Access `Fixed Asset` | `Global Settings` tampil
+43. Verifikasi `Supply Asset` tidak dirender di dropdown Access (Hidden, bukan opsi disabled)
+44. Klik `✕` di header Popup
 
 ## Notes
 
@@ -94,12 +94,13 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC: TC-GS-USER-88, 90, 148, lalu 89. TC-GS-USER-89 ditaruh terakhir karena mengubah subscription Client (state global) menjadi tanpa Supply Asset, sedangkan TC-GS-USER-88 mensyaratkan Fixed Asset dan Supply Asset aktif.
 - TC-GS-USER-88, 90, dan 148 berbagi satu pembukaan Popup (prinsip 6 dan 8 bagian 3 konvensi). Fokus awal TC-GS-USER-148 adalah fokus sesudah dropdown ditutup pada langkah sebelumnya; asersi putaran fokus tidak bergantung pada elemen awal.
-- Spec melewati sekitar 35 langkah (41 langkah) karena seluruh blok berada di satu kelas harness (screening fungsional, tanpa submit), memakai satu layar yang sama (Popup Create User), dan tiap blok berdiri sendiri; Verifikasi TC-GS-USER-88 dipecah per klausa (S-01) sehingga jumlah langkahnya besar.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): menutup dropdown dengan mengklik Title Popup; `✕` di header Popup (form tidak dirty, tidak ada dialog); mengubah subscription Client dan memuat ulang halaman sebelum TC-GS-USER-89.
-- Verifikasi isi dropdown sama dengan daftar Master Data dari backend memakai kemampuan baca yang disediakan tim FE/BE; Verifikasi `Supply Asset` tidak dirender didahului Verifikasi bahwa opsi `Fixed Asset` dan `Global Settings` pada checkbox group yang sama sudah tampil (8b butir 2).
+- Spec melewati sekitar 35 langkah (44 langkah) karena seluruh blok berada di satu kelas harness (screening fungsional, tanpa submit), memakai satu layar yang sama (Popup Create User), dan tiap blok berdiri sendiri; Verifikasi TC-GS-USER-88 dipecah per klausa (S-01) sehingga jumlah langkahnya besar.
+- Langkah buka layar User List tidak ditulis di Test Steps: dibuka oleh `beforeEach` suite (`suite.md`). Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): membuka dropdown Access (opsi hanya tampak saat dropdown terbuka) dan menutup dropdown dengan mengklik Title Popup; `✕` di header Popup (form tidak dirty, tidak ada dialog); mengubah subscription Client dan memuat ulang halaman sebelum TC-GS-USER-89.
+- Verifikasi isi dropdown sama dengan daftar Master Data dari backend memakai kemampuan baca yang disediakan tim FE/BE; Verifikasi `Supply Asset` tidak dirender didahului Verifikasi bahwa opsi `Fixed Asset` dan `Global Settings` pada dropdown Access yang sama sudah tampil (8b butir 2).
 - Temuan untuk QA:
   - TC-GS-USER-89 mensyaratkan Client hanya subscribe Fixed Asset, sedangkan TC-GS-USER-88 mensyaratkan Fixed Asset dan Supply Asset; TC tidak menyebut Client mana atau cara mengubah subscription. Disediakan tim FE/BE.
   - TC-GS-USER-90 mensyaratkan Position `Internal Auditor` belum dipakai user mana pun; Tabel Pre-setup No. 22 tidak menyebut kondisi ini. Spec tidak mengasersinya (precondition), disediakan tim FE.
   - TC-GS-USER-90 menyebut "seluruh Position aktif lain" dan "seluruh Division aktif Master Data" tanpa daftar; spec membandingkan dengan daftar aktif dari backend.
   - TC-GS-USER-148 tidak menyebut jumlah penekanan Tab atau elemen awal; spec memakai satu siklus penuh ditambah satu penekanan.
+  - TC-GS-USER-89 menyebut "Opsi Access"; spec memakai multi dropdown Access (placeholder `Select access` menurut TC-GS-USER-88) dan membuka dropdown sebelum membaca opsinya.
   - TC-GS-USER-88 tidak menyebut tanda wajib (`*`) pada Custom Field `Emergency Phone` (Required); spec mengikuti teks TC `Emergency Phone` tanpa tanda.

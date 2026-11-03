@@ -45,7 +45,7 @@ coverage:
     - l. `Edit` | `Position` | `Internal Auditor` | `Supervisor` | `Fajar N`
   - Pelaku entri: `Siti N` lewat sesi API Total Control, `Fajar N` lewat sesi API Fajar Nugroho. Dengan demikian kolom Modified By memuat dua nilai distinct (`Siti N`, `Fajar N`); kolom Action, Field, Old Value, dan New Value memuat sedikitnya dua nilai distinct (S-11).
 - Kemampuan teknis yang disediakan tim FE/BE (TC, PRD, dan LLD tidak memberi cara): memberi cap waktu pada entri seed sehingga setiap entri berjarak sedikitnya 1 menit dari entri sebelumnya mengikuti urutan huruf di atas, dan entri a (`Create`) bercap tanggal hari uji dikurangi 2 hari (H-2) sedangkan entri lain bercap hari uji. Cap waktu ini membuat urutan Date deterministik (entri terbaru di atas) dan memberi dua nilai distinct pada kolom Date.
-- Kemampuan teknis: klik header kolom dan icon di toolbar tabel; mengetik di kotak Search dan dropdown Filter; menyalin teks sel.
+- Kemampuan teknis: klik header kolom dan icon di toolbar tabel; mengetik di kotak Search dan dropdown Filter; memilih rentang pada date range picker Date (H-2 sampai H-2); mengamati state icon Filter (gelap saat panel terbuka) dan badge titik; menyalin teks sel.
 - Konfigurasi kolom Tab Changelog akun Total Control dalam keadaan default (6 kolom tampil, tanpa pin) saat spec dimulai; hook `before` mengosongkan konfigurasi kolom Tab Changelog bila perlu (mekanisme disediakan tim FE).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus user uji `Log User {runId}-091` lewat API. Entri Changelog tidak bisa dihapus.
 - Precondition TC-GS-USER-558, 559, 560, 561, 562, 563, 564, 565, 566: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User); data Pre-setup (Tabel Data Uji Pre-setup No. 10 sampai 22) tersedia; user uji punya riwayat Changelog.
@@ -77,78 +77,86 @@ coverage:
 16. Verifikasi opsi `Photo` tidak ada di dropdown Field (tidak ada baris dengan nilai itu)
 17. Tutup dropdown Field
 18. Buka dropdown Modified By
-19. Verifikasi opsi dropdown Modified By: `Siti N` dan `Fajar N`
-20. Verifikasi opsi `System` tidak ada di dropdown Modified By (tidak ada baris dengan nilai itu)
-21. Tutup dropdown Modified By
+19. Verifikasi opsi dropdown Modified By: `Siti N`, `Fajar N`, dan `System`
+20. Tutup dropdown Modified By
 
 ### TC-GS-USER-562: Search di dalam dropdown filter mempersempit opsi
 
-22. Buka dropdown Action
-23. Ketik `ACTIV` pada search dropdown Action
-24. Verifikasi opsi `Activate` tampil
-25. Verifikasi opsi `Deactivate` tampil
-26. Verifikasi opsi `Create` tidak tampil (opsi tersaring substring tanpa membedakan huruf besar kecil)
-27. Ganti isi search dropdown Action dengan `zzz`
-28. Verifikasi tidak ada opsi cocok pada dropdown Action
-29. Kosongkan search dropdown Action, lalu tutup dropdown Action
+21. Buka dropdown Action
+22. Ketik `ACTIV` pada search dropdown Action
+23. Verifikasi opsi `Activate` tampil
+24. Verifikasi opsi `Deactivate` tampil
+25. Verifikasi opsi `Create` tidak tampil (opsi tersaring substring tanpa membedakan huruf besar kecil)
+26. Ganti isi search dropdown Action dengan `zzz`
+27. Verifikasi tidak ada opsi cocok pada dropdown Action
+28. Kosongkan search dropdown Action, lalu tutup dropdown Action
 
 ### TC-GS-USER-563: Hapus chip filter lewat (X) meng-uncheck opsi
 
-30. Pilih opsi `Create` dan `Edit` pada dropdown Action, lalu tutup dropdown Action
-31. Verifikasi chip `Create` dan chip `Edit` tampil
-32. Klik (X) pada chip pertama (`Create`)
-33. Verifikasi chip `Create` hilang
-34. Verifikasi chip `Edit` tetap tampil
-35. Buka dropdown Action
-36. Verifikasi checkbox opsi `Create` ter-uncheck
-37. Tutup dropdown Action, lalu klik `[Clear Field]`
+29. Pilih opsi `Create` dan `Edit` pada dropdown Action, lalu tutup dropdown Action
+30. Verifikasi chip `Create` dan chip `Edit` tampil
+31. Klik (X) pada chip pertama (`Create`)
+32. Verifikasi chip `Create` hilang
+33. Verifikasi chip `Edit` tetap tampil
+34. Buka dropdown Action
+35. Verifikasi checkbox opsi `Create` ter-uncheck
+36. Tutup dropdown Action, lalu klik `[Clear Field]`
 
 ### TC-GS-USER-564: Uncheck opsi di dropdown menghapus chip
 
-38. Pilih opsi `Create` dan `Edit` pada dropdown Action
-39. Uncheck opsi kedua (`Edit`) di dropdown Action yang masih terbuka
-40. Verifikasi chip `Edit` hilang
-41. Verifikasi chip `Create` tetap tampil
-42. Tutup dropdown Action, lalu klik `[Clear Field]`
+37. Pilih opsi `Create` dan `Edit` pada dropdown Action
+38. Uncheck opsi kedua (`Edit`) di dropdown Action yang masih terbuka
+39. Verifikasi chip `Edit` hilang
+40. Verifikasi chip `Create` tetap tampil
+41. Tutup dropdown Action, lalu klik `[Clear Field]`
 
 ### TC-GS-USER-560: Filter multi-select per field menyaring baris
 
-43. Pilih opsi `Deactivate` pada Action, lalu klik `[Apply]`
+42. Pilih opsi `Deactivate` pada Action, lalu klik `[Apply]`
+43. Verifikasi sedikitnya satu baris tampil di tabel
 44. Verifikasi tabel hanya memuat baris Action `Deactivate`
-45. Verifikasi icon Filter berubah gelap
-46. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
-47. Klik icon Filter, pilih opsi `Employee ID` pada Field, lalu klik `[Apply]`
-48. Verifikasi tabel hanya memuat baris Field `Employee ID`
-49. Verifikasi icon Filter berubah gelap
-50. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
-51. Klik icon Filter, pilih opsi `Fajar N` pada Modified By, lalu klik `[Apply]`
-52. Verifikasi tabel hanya memuat baris Modified By `Fajar N`
-53. Verifikasi icon Filter berubah gelap
-54. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+45. Verifikasi badge titik tampil pada icon Filter selama filter ter-Apply
+46. Klik icon Filter
+47. Verifikasi icon Filter gelap saat panel terbuka
+48. Klik `[Clear Field]`, lalu klik `[Apply]`
+49. Klik icon Filter, pilih opsi `Employee ID` pada Field, lalu klik `[Apply]`
+50. Verifikasi sedikitnya satu baris tampil di tabel
+51. Verifikasi tabel hanya memuat baris Field `Employee ID`
+52. Verifikasi badge titik tampil pada icon Filter selama filter ter-Apply
+53. Klik icon Filter
+54. Verifikasi icon Filter gelap saat panel terbuka
+55. Klik `[Clear Field]`, lalu klik `[Apply]`
+56. Klik icon Filter, pilih opsi `Fajar N` pada Modified By, lalu klik `[Apply]`
+57. Verifikasi sedikitnya satu baris tampil di tabel
+58. Verifikasi tabel hanya memuat baris Modified By `Fajar N`
+59. Verifikasi badge titik tampil pada icon Filter selama filter ter-Apply
+60. Klik icon Filter
+61. Verifikasi icon Filter gelap saat panel terbuka
+62. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-GS-USER-561: Dua opsi dalam satu field filter digabung OR
 
-55. Klik icon Filter, pilih opsi `Create` dan `Activate` pada Action, lalu klik `[Apply]`
-56. Verifikasi tabel memuat baris Action `Create`
-57. Verifikasi tabel memuat baris Action `Activate`
-58. Verifikasi tidak ada baris Action `Edit`
-59. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+63. Klik icon Filter, pilih opsi `Create` dan `Activate` pada Action, lalu klik `[Apply]`
+64. Verifikasi tabel memuat baris Action `Create`
+65. Verifikasi tabel memuat baris Action `Activate`
+66. Verifikasi tidak ada baris Action `Edit`
+67. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-GS-USER-565: Filter date range per field
 
-60. Klik icon Filter, pilih rentang tanggal pada Date dari H-2 sampai H-2 (tanggal entri `Create`), lalu klik `[Apply]`
-61. Verifikasi tabel hanya memuat baris dalam rentang (baris Action `Create`, Field `Name`)
-62. Verifikasi baris Action `Edit` tidak tampil
-63. Klik icon Filter
-64. Verifikasi tanggal pada input Date mengikuti Date Format General Settings
-65. Klik `[Clear Field]`, lalu klik `[Apply]`
+68. Klik icon Filter, pilih rentang tanggal pada Date dari H-2 sampai H-2 (tanggal entri `Create`), lalu klik `[Apply]`
+69. Verifikasi tabel hanya memuat baris dalam rentang (baris Action `Create`, Field `Name`)
+70. Verifikasi baris Action `Edit` tidak tampil
+71. Klik icon Filter
+72. Verifikasi tanggal pada input Date mengikuti Date Format General Settings
+73. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-GS-USER-566: Kombinasi dua field filter digabung AND
 
-66. Klik icon Filter, pilih opsi `Edit` pada Action dan opsi `Siti N` pada Modified By, lalu klik `[Apply]`
-67. Verifikasi tabel hanya memuat baris Action `Edit` dengan Modified By `Siti N`
-68. Verifikasi baris Action `Edit` dengan Modified By `Fajar N` tidak tampil
-69. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+74. Klik icon Filter, pilih opsi `Edit` pada Action dan opsi `Siti N` pada Modified By, lalu klik `[Apply]`
+75. Verifikasi tabel hanya memuat baris Action `Edit` dengan Modified By `Siti N`
+76. Verifikasi baris Action `Edit` dengan Modified By `Fajar N` tidak tampil
+77. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
@@ -157,9 +165,10 @@ coverage:
 - Urutan TC dalam spec: TC-GS-USER-558, 559, 562, 563, 564, 560, 561, 565, 566. Alasan: TC-GS-USER-558 dan 559 hanya mengamati (screening di awal, bagian 3 konvensi); TC-GS-USER-562, 563, dan 564 hanya memakai panel tanpa `[Apply]` sehingga tabel tetap utuh; TC-GS-USER-560, 561, 565, dan 566 menerapkan filter dan dibersihkan di akhir tiap blok. Detail user dan Tab `Changelog` dibuka sekali di langkah 1 sampai 3.
 - Langkah 1 sampai 3 (mencari user uji lewat Search User List, lalu klik Name dan Tab `Changelog`) adalah langkah penghubung tanpa `Verifikasi`; TC menulis "Klik Name `John Doe`" tanpa cara menemukan baris, dan user uji milik spec menggantikan John Doe (lihat Prerequisites).
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): menutup dropdown, mengosongkan search dropdown, `[Clear Field]` setelah TC-GS-USER-563 dan 564 (tanpa `[Apply]` karena filter belum diterapkan), serta "Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`" setelah tiap filter yang diterapkan pada TC-GS-USER-560, 561, dan 566. Pembersihan filter pada TC-GS-USER-560 dan 565 adalah langkah TC ("lalu clear"; `[Clear Field]` + `[Apply]`).
-- Asersi tambahan di luar Expected TC (S-03): `Verifikasi` chip `Create` dan `Edit` tampil (TC-GS-USER-563) adalah anchor sebelum chip dihapus; `Verifikasi` ketiadaan baris `Edit` (TC-GS-USER-561 dan 565), baris Modified By `Fajar N` (TC-GS-USER-566), dan ketiadaan opsi `Delete`, `Photo`, `System` (TC-GS-USER-559) membuktikan pembatasan, didahului `Verifikasi` pembanding pada surface yang sama (bagian 8b butir 2).
+- Asersi tambahan di luar Expected TC (S-03): `Verifikasi` chip `Create` dan `Edit` tampil (TC-GS-USER-563) adalah anchor sebelum chip dihapus; `Verifikasi` ketiadaan baris `Edit` (TC-GS-USER-561 dan 565), baris Modified By `Fajar N` (TC-GS-USER-566), dan ketiadaan opsi `Delete` dan `Photo` (TC-GS-USER-559) membuktikan pembatasan, didahului `Verifikasi` pembanding pada surface yang sama (bagian 8b butir 2).
+- Pada TC-GS-USER-560 tiap field: `Verifikasi sedikitnya satu baris tampil di tabel` adalah pembanding sebelum asersi "hanya" (S-03, bagian 8b butir 2); sesudah `Verifikasi` badge titik (filter ter-Apply, panel tertutup), `Klik icon Filter` membuka panel kembali untuk `Verifikasi icon Filter gelap saat panel terbuka`, lalu `[Clear Field]` dan `[Apply]` (langkah TC).
 - Rentang Date pada TC-GS-USER-565 memakai H-2 (tanggal entri `Create`); seluruh entri lain bertanggal hari uji sehingga rentang itu hanya mencocokkan entri `Create`.
 - Pembagian TC Tab Changelog di User Detail: Filter Panel di spec 091; Search di spec 090; kombinasi Search dan Filter di spec 092.
-- Spec melewati sekitar 35 langkah (69 langkah) karena sembilan TC memakai Filter Panel Tab Changelog pada dataset dan layar yang sama dan tiap klausa Expected menjadi satu `Verifikasi` (S-01); semua blok satu kelas harness (Filter Panel Tab Changelog), satu akun, satu dataset, dan tiap blok berdiri sendiri karena filter dibersihkan di akhir tiap blok.
-- Temuan untuk QA: (1) Cap waktu entri Changelog (entri `Create` H-2, jarak sedikitnya 1 menit antar entri) tidak punya cara di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE (S-13). (2) Label Field Changelog untuk perubahan Employee ID tidak disebut eksplisit (PRD user.md §8.3 hanya menulis `[Field]`); spec memakai `Employee ID`. (3) TC-GS-USER-559 Expected c menyebut dropdown Modified By hanya memuat nilai yang muncul di tabel, sedangkan PRD user.md §4.1.5 menulis "opsi filter memuat `System`"; spec mengikuti TC (tanpa `System` karena user uji tidak punya entri bermodifier `System`). (4) TC-GS-USER-560 Expected "icon Filter berubah gelap" tidak menyebut cara mengamati warna; spec mengasersi state aktif icon Filter. (5) TC-GS-USER-561 dan 566 tidak menyebut opsi dan field yang dipilih; spec memilih `Create`/`Activate` (OR) dan `Edit`/`Siti N` (AND). (6) TC-GS-USER-565 Data Uji "rentang tanggal sesuai data" tidak menyebut rentang; spec memakai H-2. (7) TC-GS-USER-563 Expected b tidak menyebut apakah opsi kedua tetap ter-check; spec hanya mengasersi opsi pertama ter-uncheck.
+- Spec melewati sekitar 35 langkah (77 langkah) karena sembilan TC memakai Filter Panel Tab Changelog pada dataset dan layar yang sama dan tiap klausa Expected menjadi satu `Verifikasi` (S-01); semua blok satu kelas harness (Filter Panel Tab Changelog), satu akun, satu dataset, dan tiap blok berdiri sendiri karena filter dibersihkan di akhir tiap blok.
+- Temuan untuk QA: (1) Cap waktu entri Changelog (entri `Create` H-2, jarak sedikitnya 1 menit antar entri) tidak punya cara di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE (S-13). (2) Label Field Changelog untuk perubahan Employee ID tidak disebut eksplisit (PRD user.md §8.3 hanya menulis `[Field]`); spec memakai `Employee ID`. (3) TC-GS-USER-559 Expected c menyebut dropdown Modified By memuat nilai yang muncul di tabel ditambah opsi `System`; spec mengasersi `Siti N`, `Fajar N`, dan `System` (user uji tidak punya entri bermodifier `System`, sehingga `System` berasal dari opsi tetap). (4) TC-GS-USER-560 Expected "icon Filter gelap saat panel terbuka; badge titik tampil selama filter ter-Apply" tidak menyebut cara mengamati warna dan badge; kemampuan membaca state icon Filter dan badge disediakan tim FE. (5) TC-GS-USER-561 dan 566 tidak menyebut opsi dan field yang dipilih; spec memilih `Create`/`Activate` (OR) dan `Edit`/`Siti N` (AND). (6) TC-GS-USER-565 Data Uji "rentang tanggal sesuai data" tidak menyebut rentang; spec memakai H-2. (7) TC-GS-USER-563 Expected b tidak menyebut apakah opsi kedua tetap ter-check; spec hanya mengasersi opsi pertama ter-uncheck.
 

@@ -60,27 +60,27 @@ coverage:
 5. Verifikasi overlay memuat opsi `Download as CSV`
 6. Verifikasi overlay memuat opsi `Download as XLSX`
 7. Klik `Download as CSV`
-8. Verifikasi file `Changelog-Log-User-{runId}-095.csv` terunduh
-9. Verifikasi file memuat semua baris (12 baris data, sama dengan total entri Changelog user uji dan lebih dari 10 baris halaman)
-10. Verifikasi tidak ada toast sukses
+8. Verifikasi tidak ada toast sukses
+9. Verifikasi file `Changelog-Log-User-{runId}-095.csv` terunduh
+10. Verifikasi file memuat semua baris (12 baris data, sama dengan total entri Changelog user uji dan lebih dari 10 baris halaman)
 
-### TC-GS-USER-588: Nilai kosong ditulis `-` di file export
+### TC-GS-USER-588: Nilai kosong ditulis `—` di file export
 
-11. Klik icon Download, lalu klik `Download as CSV`
-12. Buka file CSV yang terunduh
-13. Verifikasi sel kosong ditulis `-` (baris `Create`: Old Value `-`; baris `Remove Access`: New Value `-`)
+11. Buka file CSV yang terunduh pada langkah 7
+12. Verifikasi sel kosong ditulis `—` (baris `Create`: Old Value `—`; baris `Remove Access`: New Value `—`)
 
 ### TC-GS-USER-406: Download Tab Changelog memakai nama file per user
 
-14. Klik icon Download, lalu klik `Download as XLSX`
+13. Klik icon Download, lalu klik `Download as XLSX`
+14. Verifikasi tidak ada toast
 15. Verifikasi file `Changelog-Log-User-{runId}-095.xlsx` terunduh
-16. Verifikasi tidak ada toast
 
 ### TC-GS-USER-585: Download XLSX
 
-17. Klik icon Download
-18. Klik `Download as XLSX`
-19. Verifikasi file `Changelog-Log-User-{runId}-095.xlsx` terunduh
+16. Buka isi file `Changelog-Log-User-{runId}-095.xlsx` yang terunduh pada langkah 13
+17. Verifikasi file `Changelog-Log-User-{runId}-095.xlsx` terunduh
+18. Verifikasi jumlah baris data di file XLSX sama dengan total entri Changelog user uji (12 baris)
+19. Verifikasi nilai kolom `Date`, `Action`, `Field`, `Old Value`, `New Value`, dan `Modified By` pada baris yang tampil di halaman 1 tabel sama dengan baris yang bersesuaian di file XLSX
 
 ### TC-GS-USER-586: Download mengikuti Search aktif
 
@@ -94,12 +94,13 @@ coverage:
 24. Klik header kolom Column Visibility (⋯), hilangkan centang `Old Value`, lalu tutup overlay
 25. Verifikasi kolom `Old Value` tidak tampil
 26. Klik icon Download, lalu klik `Download as CSV`
-27. Verifikasi file pertama tidak memuat kolom `Old Value`
-28. Verifikasi file pertama tidak disertai toast peringatan
-29. Klik header kolom Column Visibility (⋯), centang kembali `Old Value`, lalu tutup overlay
-30. Verifikasi kolom `Old Value` tampil kembali
-31. Klik icon Download, lalu klik `Download as CSV`
-32. Verifikasi file kedua memuat kolom `Old Value`
+27. Verifikasi file pertama tidak disertai toast peringatan
+28. Verifikasi file pertama memuat kolom `Date`, `Action`, `Field`, `New Value`, dan `Modified By`
+29. Verifikasi file pertama tidak memuat kolom `Old Value`
+30. Klik header kolom Column Visibility (⋯), centang kembali `Old Value`, lalu tutup overlay
+31. Verifikasi kolom `Old Value` tampil kembali
+32. Klik icon Download, lalu klik `Download as CSV`
+33. Verifikasi file kedua memuat kolom `Old Value`
 
 ## Notes
 
@@ -110,9 +111,10 @@ coverage:
 - Nama berkas mengikuti nama user dengan spasi diganti hyphen (`Changelog-[User-Name]`, PRD user.md §4.1; contoh TC `Changelog-John-Doe`), sehingga user uji `Log User {runId}-095` menghasilkan `Changelog-Log-User-{runId}-095`.
 - Isi berkas export dipisah dari spec kegagalan export (kelas binary buffer, prinsip 13f). Tiap unduhan ditangkap ke direktori terpisah (Prerequisites) karena nama berkas CSV kedua sama dengan unduhan sebelumnya.
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): membersihkan Search (Klik icon ×, lalu Enter pada input kosong) setelah TC-GS-USER-586; menyembunyikan lalu menampilkan kembali `Old Value` lewat overlay Column Visibility tanpa Save pada TC-GS-USER-587; langkah "Buka file CSV yang terunduh" di TC-GS-USER-588 adalah langkah TC.
-- TC-GS-USER-406 dan 585 menguji unduhan XLSX yang sama (nama berkas tanpa toast); keduanya mengunduh sendiri sehingga masing-masing punya `Verifikasi` Expected-nya. Pada TC-GS-USER-406 `Verifikasi` tidak ada toast adalah Expected TC; pada TC-GS-USER-585 Expected hanya berkas terunduh.
+- TC-GS-USER-406 dan 585 menguji unduhan XLSX yang sama (state tabel identik: tanpa Search dan semua kolom tampil). TC-GS-USER-585 membaca berkas XLSX hasil unduhan TC-GS-USER-406 (langkah 13) tanpa unduh ulang dan tetap punya `Verifikasi` Expected-nya sendiri (berkas terunduh, jumlah baris, nilai baris); TC-GS-USER-588 membaca berkas CSV hasil unduhan TC-GS-USER-584 (langkah 7) tanpa unduh ulang. Pada TC-GS-USER-406 `Verifikasi` tidak ada toast adalah Expected TC.
+- Urutan asersi absence toast (bagian 8b butir 11): `Verifikasi tidak ada toast sukses` (langkah 8), `Verifikasi tidak ada toast` (langkah 14), dan `Verifikasi file pertama tidak disertai toast peringatan` (langkah 27) ditaruh segera setelah pemicu unduhan dan sebelum `Verifikasi` berkas; klik pilihan format menjadi anchor positif yang buktinya menyusul pada `Verifikasi` berkas terunduh. `Verifikasi file pertama memuat kolom ...` sebelum asersi ketiadaan kolom `Old Value` adalah anchor positif tambahan (S-03, bagian 8b butir 2).
 - Asersi tambahan di luar Expected TC (S-03): `Verifikasi` jumlah baris data 7 pada TC-GS-USER-586 (semua baris Action `Edit`) dan 12 pada TC-GS-USER-584 (total entri) membuktikan cakupan Search dan "semua baris"; `Verifikasi` kolom `Old Value` tidak tampil di tabel pada TC-GS-USER-587 adalah anchor sebelum unduhan.
 - Pembagian TC Tab Changelog di User Detail: Download di spec 095. TC-GS-USER-406 diverifikasi di spec 095; TC-GS-USER-405 (screening toolbar `Download`) di spec 090.
-- Spec berjalan sekitar 35 langkah (32 langkah), semua blok satu kelas harness (isi berkas export Tab Changelog), satu akun, satu dataset.
-- Temuan untuk QA: (1) Cap waktu entri Changelog (entri `Create` H-2, jarak sedikitnya 1 menit antar entri) tidak punya cara di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE (S-13). (2) Label Field Changelog untuk perubahan Employee ID tidak disebut eksplisit (PRD user.md §8.3 hanya menulis `[Field]`); spec memakai `Employee ID`. (3) TC-GS-USER-584 Expected b "semua baris" tidak menyebut cara mengetahui total entri; spec membandingkan jumlah baris data berkas dengan total entri user uji (12) yang dibaca tim FE/BE. (4) TC-GS-USER-588 Expected "sel kosong ditulis `-`" memakai hyphen, sedangkan tabel menampilkan `—` (em dash); spec mengasersi `-` di berkas (prd-conventions.md §9.9). (5) TC-GS-USER-406 dan 585 menguji unduhan XLSX yang sama; keduanya tetap ditulis sesuai TC. (6) TC-GS-USER-587 Expected "tanpa toast peringatan" tidak menyebut kolom yang disembunyikan; spec memakai `Old Value`. (7) TC-GS-USER-586 tidak menyebut keyword; spec memakai `edit`.
+- Spec berjalan sekitar 35 langkah (33 langkah), semua blok satu kelas harness (isi berkas export Tab Changelog), satu akun, satu dataset.
+- Temuan untuk QA: (1) Cap waktu entri Changelog (entri `Create` H-2, jarak sedikitnya 1 menit antar entri) tidak punya cara di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE (S-13). (2) Label Field Changelog untuk perubahan Employee ID tidak disebut eksplisit (PRD user.md §8.3 hanya menulis `[Field]`); spec memakai `Employee ID`. (3) TC-GS-USER-584 Expected b "semua baris" tidak menyebut cara mengetahui total entri; spec membandingkan jumlah baris data berkas dengan total entri user uji (12) yang dibaca tim FE/BE. (4) TC-GS-USER-588 Expected "sel kosong ditulis `—`" (em dash), sedangkan TC-GS-USER-507 dan 548 menulis `-` dan prd-conventions.md §9.9 menetapkan `-` di berkas; spec mengikuti teks TC-GS-USER-588. (5) TC-GS-USER-406 dan 585 menguji unduhan XLSX yang sama; keduanya tetap ditulis sesuai TC. (6) TC-GS-USER-587 Expected "tanpa toast peringatan" tidak menyebut kolom yang disembunyikan; spec memakai `Old Value`. (7) TC-GS-USER-586 tidak menyebut keyword; spec memakai `edit`. (8) TC-GS-USER-585 Expected "jumlah dan nilai baris di file sama dengan baris tabel" tidak menyebut perlakuan paginasi (tabel menampilkan 10 baris, berkas memuat 12); spec membandingkan jumlah baris berkas dengan total entri user uji (12) dan nilai baris halaman 1 dengan baris yang bersesuaian di berkas.
 

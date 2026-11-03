@@ -612,3 +612,11 @@ Aturan:
 - **Karena:** PRD menang atas spec. Keputusan koordinator (didelegasikan owner) 2026-11-02.
 - **Keputusan:** skrip meng-assert Object `Total Control` untuk Role yang di-seed, mengikuti nama tab di PRD, bukan `Role & Permission`.
 - **Diterapkan di:** skrip Activity Log 031 (TC-GS-ACTLOG-174), commit 26e7dbbc di feat/connect-api-b (tagsamurai-slicing-b).
+## D-065 Setup Column Client berlaku setelah Save: tabel di balik modal tidak berubah sebelum [Save] (2026-11-03)
+
+- **Spec / langkah:** `TC-AC-ACC-E2E-245`, `257`, `258`, `260`, `294`, `295`, `296`, `297` (TC-AC-ACC-825, 743, 744, 746, 696, 407, 688, 689, 690, 691).
+- **Spec meminta:** TC menulis kolom yang dicentang/dilepas, diseret, atau di-reset di modal Setup Column langsung terlihat pada tabel di balik modal sebelum `[Save]`, mengutip `prd-conventions.md` §9.3.
+- **Kenyataannya:** tabel di balik modal tidak berubah sampai `[Save]`; menutup modal dengan `[✕]` atau `Esc` tanpa Save membuang perubahan. Sama seperti D-008. Teks `prd-conventions.md` §9.3 ("di-preview langsung di tabel (tabel di balik modal merefleksikan state sementara ini secara real-time)") berbeda dari perilaku ini dan belum diubah (berlaku untuk modul lain juga).
+- **Karena:** keputusan user 2026-11-03 (jalur "UI tidak preview") atas temuan F-1 `report-e2e-audit.md` (`prd-harness/work-items/ac-client`), selaras dengan keputusan user 2026-11-02 yang sudah tertulis di Notes spec-spec ini.
+- **Keputusan:** spec Client mengikuti UI: kolom masih tampil/urutan tidak berubah di tabel di balik modal sampai `[Save]`. Live Preview di dalam popup tetap terpisah.
+- **Diterapkan di:** Notes dan asersi spec 245, 257, 258, 260, 294, 295, 296, 297 (sudah sesuai). `tc-client.md` (10 TC) dan `prd-conventions.md` §9.3 belum diselaraskan: menunggu keputusan cakupan, lihat `report-e2e-audit.md` F-1.

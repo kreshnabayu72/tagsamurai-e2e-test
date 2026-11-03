@@ -25,6 +25,7 @@ coverage:
   - Ahmad Fauzan (`ahmad.fauzan@client.com`, Warehouse Staff, Logistics): dihapus sesi API Eko di TC-GS-ROLE-304.
   - Nina Kartika dan Wawan Setiawan: dihapus sesi API Eko di TC-GS-ROLE-300 dan TC-GS-ROLE-304.
 - Pemulihan: langkah penghubung sesi API Eko membuat ulang user yang dihapus sebagai kandidat (langkah 12 dan 23) dan hook `after` menjadi cadangan.
+- Efek pemulihan yang tidak dikembalikan: penghapusan dan pembuatan ulang user lewat sesi API Eko meninggalkan efek pada Modified By, Last Updated, dan entri Changelog user kandidat (Nina Kartika, Wawan Setiawan, Ahmad Fauzan `ahmad.fauzan@client.com`) yang tidak dapat dipulihkan. Spec tidak mengasersi Modified By, Last Updated, maupun jumlah entri Changelog; bila asersi itu ditambahkan, memakai baseline jumlah entri sebelum aksi (S-12).
 - Kemampuan teknis (disediakan tim FE/BE; nama endpoint tidak ditentukan di TC, PRD, dan LLD): klien HTTP terotentikasi sebagai Eko Prasetyo untuk menghapus user dan membuat ulang user kandidat.
 
 ## Test Steps
@@ -33,7 +34,7 @@ coverage:
 
 1. Klik `[+ Assign]`
 2. Centang Ahmad Fauzan (`ahmad.fz@client.com`), Nina Kartika, dan Wawan Setiawan
-3. Sesi API Eko: hapus user Nina Kartika dan Wawan Setiawan di modul User
+3. Sesi API Eko: hapus user Nina Kartika dan Wawan Setiawan di modul User hingga penghapusan tersimpan
 4. Klik `[Assign]`
 5. Verifikasi alert inline (danger) jamak satu kalimat dengan pola `[User Names] no longer exist. Please select another.` tampil dan menyebut kedua nama Nina Kartika dan Wawan Setiawan (urutan nama tidak diasersi)
 6. Verifikasi popup Assign Total Control tetap terbuka
@@ -42,13 +43,13 @@ coverage:
 9. Verifikasi Ahmad Fauzan (`ahmad.fz@client.com`) tetap tampil di picker, artinya belum menjadi Total Control (submit ditolak seluruhnya)
 10. Verifikasi Nina Kartika dan Wawan Setiawan tidak tampil di picker setelah picker di-refetch
 11. Klik `[Cancel]`
-12. Sesi API Eko: buat ulang user Nina Kartika dan Wawan Setiawan sebagai kandidat
+12. Sesi API Eko: buat ulang user Nina Kartika dan Wawan Setiawan sebagai kandidat hingga user kandidat tersimpan
 
 ### TC-GS-ROLE-304: Assign Total Control saat tiga user terpilih dihapus admin lain sebelum submit (alert jamak ≥3)
 
 13. Klik `[+ Assign]`
 14. Centang Ahmad Fauzan (`ahmad.fz@client.com`), Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan
-15. Sesi API Eko: hapus user Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan di modul User
+15. Sesi API Eko: hapus user Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan di modul User hingga penghapusan tersimpan
 16. Klik `[Assign]`
 17. Verifikasi alert inline (danger) satu kalimat dengan pola `[User Names] no longer exist. Please select another.` tampil dan menyebut ketiga nama Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan dengan koma dan `and` sebelum nama terakhir (urutan nama tidak diasersi)
 18. Verifikasi Ahmad Fauzan (`ahmad.fz@client.com`) tetap tercentang
@@ -56,12 +57,11 @@ coverage:
 20. Verifikasi Ahmad Fauzan (`ahmad.fz@client.com`) tetap tampil di picker, artinya belum menjadi Total Control (submit ditolak seluruhnya)
 21. Verifikasi Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan tidak tampil di picker setelah picker di-refetch
 22. Klik `[Cancel]`
-23. Sesi API Eko: buat ulang user Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan sebagai kandidat
+23. Sesi API Eko: buat ulang user Ahmad Fauzan (`ahmad.fauzan@client.com`), Nina Kartika, dan Wawan Setiawan sebagai kandidat hingga user kandidat tersimpan
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/role/TestCases/tc-role.md`. Kelas harness: multi-konteks (c), dua admin, satu spec untuk satu jenis harness.
-- `P-2`: Eko Prasetyo hanya memicu penghapusan user lewat sesi API dan bukan objek asersi; tidak ada sesi UI kedua. Objek asersi tetap sesi A.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): klik `[Cancel]` menutup popup (langkah 11 dan 22) dan pemulihan sesi API Eko (langkah 12 dan 23).
 - Asersi tambahan di luar kalimat Expected TC (S-03): "Ahmad Fauzan (`ahmad.fz@client.com`) tetap tampil di picker" (langkah 9 dan 20) membuktikan Expected "submit ditolak seluruhnya, Ahmad Fauzan tidak menjadi Total Control" karena pool picker hanya memuat user tanpa access level; langkah 7 dan 18 menjadi anchor positif bagi asersi absence di picker (langkah 10 dan 21; bagian 8b butir 2).

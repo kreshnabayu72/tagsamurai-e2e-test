@@ -40,10 +40,11 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - Isi spec sesuai TC sumbernya (role, precondition, langkah, expected result). Bandingkan per TC yang digabung. Langkah atau expected result yang hilang, ditambah, atau berubah makna adalah temuan.
 - `priority` sesuai mapping bagian 8 konvensi (tertinggi dari TC sumber).
 - `caseType` mengikuti aturan spec gabungan bagian 8 konvensi (jenis alur utama yang dominan). Jangan menandai temuan hanya karena TC sumber campuran jenisnya.
-- Label tombol dan cara menutup form sesuai bagian 9 konvensi (Create `[Submit]`, Edit `[Save]`, `[Clear Field]`, `✕`/`Esc`, tanpa `[Cancel]` pada modal). Cocokkan ke `prd-conventions.md` §24.1, bukan hanya ke TC.
+- Label tombol dan cara menutup form sesuai bagian 9 konvensi (Create `[Submit]`, Edit `[Save]`, `[Clear Field]`, `✕`/`Esc`, tanpa `[Cancel]` pada modal kecuali pengecualian bagian 9: dialog Review tag-stock dan halaman Add Stock). Cocokkan ke `prd-conventions.md` §24.1, bukan hanya ke TC.
 - `coverage.web` tidak dinilai terhadap `status`. Kolom itu hanya jenis pengujian, progres dibaca dari `status`.
 - Bahasa spec Indonesia (bagian 7 konvensi): narasi Indonesia, teks UI persis seperti di aplikasi, langkah asersi diawali `Verifikasi`. Spec berbahasa Inggris adalah temuan.
 - Aturan asersi bagian 8b konvensi: request langsung ke server tidak mengasersi perilaku FE; asersi absence punya anchor positif yang terhubung ke pemicu; batas waktu dihitung dari waktu terbit artefak; rate limit menyebut endpoint dan payload flood; state sementara diasersi sebelum langkah yang mengubahnya. Pelanggaran yang bersumber dari expected TC dilaporkan sebagai jenis (2), diarahkan ke perbaikan TC.
+- Pola berulang dari generator (tiap kemunculan dilaporkan, disapu per G): (a) asersi "baseline sesudah TC-xxx"/"bertambah dari" tanpa langkah `Catat ...` sebelumnya; (b) Submit/Confirm/Delete yang hasilnya tidak diasersi tanpa `Tunggu aksi selesai` sebelum ganti surface/akun/sesi atau buka log, termasuk `[Confirm]` dialog Audit (8b.8); (c) modal Event Log tidak ditutup sebelum pindah surface; (d) Search tidak memakai "ganti isi kotak search dengan X" setelah breadcrumb/Back (8b.9); (e) N total surface audit-trail bersama tidak dibaca via BE tepat sebelum aksi (8b.10/S-12); (f) "Kesamaan akun dikonfirmasi tim FE" (harus "perlu dikonfirmasi tim FE"); (g) asersi absence/universal tanpa anchor positif ("sedikitnya satu baris").
 - Spec Role Matrix (bagian 3a): dipisah positif dan negatif, ada tabel "Role yang diuji", dan tiap kombinasi role × aksi punya TC granular sumber. Kombinasi tanpa TC sumber adalah temuan.
 
 **C. Spec → script**
@@ -67,6 +68,7 @@ Path suite (contoh `specs/GlobalSettings/User`) dan path `tc-[modul].md` sumbern
 - Tidak ada password, token, atau kredensial di spec, fixture, atau script.
 - Data yang harus unik memakai suffix dinamis. Data yang dibuat spec dibersihkan di hook.
 - Setiap data, akun, kondisi environment, dan kemampuan teknis yang dipakai langkah spec tercantum di `## Prerequisites`, bukan hanya di `## Notes`.
+- Prerequisites hanya memuat yang dipakai langkah: kunci fixture tak terpakai, frasa "tahap script", dan penanda rencana Q-n/D-n adalah temuan (Ringan). Langkah memakai `Fixture.tagStock.<key>`, bukan literal Pre-setup mentah (kecuali nilai Expected dan nama file).
 - Data pre-setup mengacu ke fixture yang cocok dengan tabel Data Uji Pre-setup di TC sumber.
 
 **F. Kode**

@@ -25,7 +25,7 @@ coverage:
 - Environment variable: `GS_TC_PASSWORD`, `GS_FULLCRUD_PASSWORD`. Password tidak ditulis di spec atau fixture.
 - Data Pre-setup: tidak dipakai. TC menyebut `Ahmad Fauzi` (Tabel Data Uji Pre-setup baris 13); aksi tulis Role memakai user seed milik spec (S-06), jadi Pre-setup tidak diubah.
 - Data Dinamis: user seed `Ahmad Fauzi {runId}-087`, email `ahmadfauzi+{runId}-087@qwertysystem.net`, Access `Global Settings`, bukan tier, field wajib lain diisi seadanya oleh seeding.
-- Seeding minimal (S-11; lewat API di hook `before`, urutan sebagai berikut; setara TC-GS-USER-902, 903, 904, 1052). TC-GS-USER-549 mensyaratkan sedikitnya 21 baris; seeding membuat 26 entri agar page size 25 terisi penuh dan halaman 3 pada page size 10 ada:
+- Seeding minimal (S-11; lewat API di hook `before`, urutan sebagai berikut; setara TC-GS-USER-902, 903, 904, 1052). TC-GS-USER-549 mensyaratkan sedikitnya 21 baris; seeding membuat 26 entri agar page size 25 terisi penuh dan halaman 3 pada page size 10 ada. Hook menunggu sampai menit berganti (maksimum 60 detik; konvensi bagian 6) setelah entri 6 dan sebelum entri 7, sehingga entri 1 sampai 6 dan entri 7 sampai 26 berada di menit berbeda; asersi urutan Date dibatasi pada pasangan entri beda menit, urutan antar entri se-menit tidak diasersi:
   - 1. Siti N: Assign `Manage TAG` -> `Assign | Manage TAG | Access | — | Assigned | Siti N`.
   - 2. Siti N: centang Update `Manage TAG` -> `Edit | Manage TAG | Update | Inactive | Active | Siti N`.
   - 3. Fajar N: Assign `Manage files` -> `Assign | Manage files | Access | — | Assigned | Fajar N`.
@@ -50,9 +50,9 @@ coverage:
 3. Klik icon Changelog di toolbar Tab Role
 4. Ubah page size ke 100
 5. Klik header Date
-6. Verifikasi Date Oldest First (baris pertama `Assign | Manage TAG | Access | — | Assigned | Siti N`)
+6. Verifikasi Date Oldest First: baris `Assign | Manage TAG | Access | — | Assigned | Siti N` (entri 1) di atas baris `Remove | Manage hardware | Access | Assigned | — | Siti N` (entri 26), pasangan entri beda menit
 7. Klik header Date
-8. Verifikasi Date Newest First (baris pertama `Remove | Manage hardware | Access | Assigned | — | Siti N`)
+8. Verifikasi Date Newest First: baris `Remove | Manage hardware | Access | Assigned | — | Siti N` (entri 26) di atas baris `Assign | Manage TAG | Access | — | Assigned | Siti N` (entri 1), pasangan entri beda menit
 9. Klik header Date
 10. Verifikasi kembali ke default sort tabel (Date terbaru di atas)
 
@@ -65,9 +65,9 @@ coverage:
 15. Klik header Action
 16. Verifikasi Action kembali ke default sort tabel (Date terbaru di atas)
 17. Klik header Role
-18. Verifikasi Role A-Z
+18. Verifikasi Role A-Z case-insensitive (baris pertama Role `Manage files`, baris terakhir Role `Manage TAG`)
 19. Klik header Role
-20. Verifikasi Role Z-A
+20. Verifikasi Role Z-A case-insensitive (baris pertama Role `Manage TAG`, baris terakhir Role `Manage files`)
 21. Klik header Role
 22. Verifikasi Role kembali ke default sort tabel (Date terbaru di atas)
 23. Klik header Field
@@ -129,7 +129,9 @@ coverage:
 - Urutan TC dalam spec mengikuti TC sumber (532, 533, 534, 549, 550). Penyimpangan dari tabel slice tidak ada.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 4 (page size 100 agar seluruh 26 baris berada pada satu halaman selama TC-GS-USER-532, 533, dan 534; TC tidak menyebut page size untuk Sort), dan langkah 49 (kembali ke page size 10, tertulis "Kembali 10" di TC-GS-USER-549). Tiap klik ketiga mengembalikan sort ke default, sehingga TC berikutnya mulai dari default.
 - "Kembali ke default sort tabel" diasersi sebagai urutan Date terbaru di atas, sama dengan kondisi awal tabel; kondisi awal itu tidak diasersi sendiri di spec ini.
-- Asersi baris pertama dan terakhir memakai pola baris dan nilai distinct dari seeding (26 entri milik user seed), jadi entri dari run atau spec lain tidak memengaruhi hasil. Sort Role tidak memakai nilai literal karena urutan huruf besar dan kecil (`Manage TAG`, `Manage files`, `Manage hardware`) tidak disebut TC.
+- Asersi baris pertama dan terakhir memakai pola baris dan nilai distinct dari seeding (26 entri milik user seed), jadi entri dari run atau spec lain tidak memengaruhi hasil. Sort Role diasersi case-insensitive (Expected e TC-GS-USER-533): `Manage files` dan `Manage hardware` sebelum `Manage TAG`, sedangkan urutan sensitif huruf besar-kecil menaruh `Manage TAG` lebih dulu.
+- Urutan Date (langkah 6 dan 8) dan baris pertama pada TC-GS-USER-550 (langkah 63) hanya memakai pasangan entri beda menit: entri 1 sampai 6 dan entri 7 sampai 26 dipisahkan penantian pergantian menit (Prerequisites); pada langkah 63 hanya entri 2 dari kelompok pertama yang lolos Search `edit` dan Filter `Siti N`, sehingga baris pertama pada Oldest First tidak bergantung pada urutan entri se-menit.
+- `Verifikasi halaman 1 menampilkan 10 baris` (langkah 59) adalah pembanding tambahan atas page size default sebelum diubah ke 25 (S-03).
 - Spec melewati sekitar 35 langkah (64 langkah) karena TC-GS-USER-533 menguji empat kolom dan TC-GS-USER-534 dua kolom, masing-masing tiga klik dan tiga `Verifikasi` (S-01). Semua blok satu kelas harness (tabel Modal Changelog Role: Sort, Pagination, kombinasi), satu akun, satu dataset, dan tiap blok berdiri sendiri karena sort dikembalikan ke default pada klik ketiga dan modal dibuka sekali.
 - TC terbagi lintas spec: Search dan Filter berdiri sendiri ada di spec 084 dan 085; kombinasi Search dan Filter tanpa Sort di spec 086.
-- Temuan untuk QA: (1) TC-GS-USER-534 Expected "numerik dulu lalu teks" tidak berlaku untuk data Changelog Role, karena Old Value dan New Value hanya bernilai teks (`Inactive`, `Active`, `Assigned`) atau `—`; spec mengasersi teks A-Z dengan kosong di akhir. (2) TC-GS-USER-534 klik 2 "kebalikannya" tidak menyebut posisi nilai kosong; spec membaca kebalikan klik 1 (kosong di awal). (3) TC-GS-USER-550 "terapkan filter bila tersedia" ambigu; spec selalu menerapkan Filter (Modified By `Siti N`) dan tidak memakai langkah bersyarat. (4) TC-GS-USER-549 Data Uji "≥21 baris"; spec memakai 26 entri supaya page size 25 terisi penuh. (5) TC-GS-USER-532 sampai 550 menyebut `Ahmad Fauzi` tanpa suffix; spec memakai user seed bersuffix. (6) TC-GS-USER-533 klik 3 "kembali ke default sort tabel" tidak menyebut apakah icon sort Date ikut kembali; spec hanya mengasersi urutan baris.
+- Temuan untuk QA: (1) TC-GS-USER-534 Expected "numerik dulu lalu teks" tidak berlaku untuk data Changelog Role, karena Old Value dan New Value hanya bernilai teks (`Inactive`, `Active`, `Assigned`) atau `—`; spec mengasersi teks A-Z dengan kosong di akhir. (2) TC-GS-USER-534 klik 2 "kebalikannya" tidak menyebut posisi nilai kosong; spec membaca kebalikan klik 1 (kosong di awal). (3) TC-GS-USER-550 "terapkan filter bila tersedia" ambigu; spec selalu menerapkan Filter (Modified By `Siti N`) dan tidak memakai langkah bersyarat. (4) TC-GS-USER-549 menyebut `Volume Test User` dan Data Uji tabel berisi 25 baris (fixture BE, Pre-setup No. 29); spec memakai user seed milik spec dengan 26 entri supaya page size 25 terisi penuh dan halaman 3 ada. (5) TC-GS-USER-532 sampai 550 menyebut `Ahmad Fauzi` tanpa suffix; spec memakai user seed bersuffix. (6) TC-GS-USER-533 klik 3 "kembali ke default sort tabel" tidak menyebut apakah icon sort Date ikut kembali; spec hanya mengasersi urutan baris.

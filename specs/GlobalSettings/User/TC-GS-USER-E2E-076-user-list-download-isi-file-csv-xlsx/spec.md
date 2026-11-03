@@ -43,11 +43,11 @@ coverage:
 2. Klik icon Download
 3. Verifikasi Overlay menampilkan opsi `Download as CSV` dan `Download as XLSX`
 4. Klik `Download as CSV`
-5. Verifikasi file `User.csv` terunduh
-6. Buka isi file `User.csv` yang diunduh
-7. Verifikasi file memuat baris `Zulkifli Hakim {runId}-076` dan `Yolanda Putri {runId}-076` yang tidak tampil di halaman 1 tabel (tidak dibatasi halaman)
-8. Verifikasi jumlah baris data di file lebih dari 10
-9. Verifikasi tidak ada toast sukses
+5. Verifikasi tidak ada toast sukses
+6. Verifikasi file `User.csv` terunduh
+7. Buka isi file `User.csv` yang diunduh
+8. Verifikasi file memuat baris `Zulkifli Hakim {runId}-076` dan `Yolanda Putri {runId}-076` yang tidak tampil di halaman 1 tabel (tidak dibatasi halaman)
+9. Verifikasi jumlah baris data di file lebih dari 10
 
 ### TC-GS-USER-457: Nilai kosong ditulis `-` di file export
 
@@ -86,10 +86,10 @@ coverage:
 30. Verifikasi kolom `Division` tidak tampil di tabel
 31. Klik icon Download
 32. Klik `Download as CSV`
-33. Buka isi file `User.csv` yang diunduh
-34. Verifikasi file memuat kolom `Name` dan `Email`
-35. Verifikasi file pertama tanpa kolom `Division`
-36. Verifikasi tidak ada toast peringatan
+33. Verifikasi tidak ada toast peringatan
+34. Buka isi file `User.csv` yang diunduh
+35. Verifikasi file memuat kolom `Name` dan `Email`
+36. Verifikasi file pertama tanpa kolom `Division`
 37. Klik header kolom Column Visibility (⋯)
 38. Centang `Division`
 39. Tekan Esc untuk menutup Overlay Column Visibility
@@ -124,8 +124,9 @@ coverage:
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Kelas harness binary buffer (prinsip 13f): isi berkas CSV dan XLSX dipisah dari kegagalan ekspor (spec 069) dan dari volume lebih dari 5.000 baris (spec 077).
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: 453, 457, 461 (berkas `User.csv` seluruh data, semua kolom default), 454, 455, 456, lalu 1079 di akhir. Urutan di `tc-user.md`: 453 sampai 457, 461, 1079. TC-GS-USER-457 dan 461 membaca berkas `User.csv` hasil unduhan TC-GS-USER-453 (langkah 4) tanpa unduh ulang: state tabel ketiganya identik (tanpa Search dan Filter, semua kolom default, seluruh baris), sehingga langkah "Download CSV" TC-GS-USER-457 dan 461 dipenuhi unduhan itu. TC-GS-USER-1079 ditaruh paling akhir karena menampilkan kolom lewat Setup Column.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6 dan semua langkah `Buka isi file` (membaca isi berkas unduhan; blok baca berpola), `Klik icon panah (←)` (langkah 26), pencentangan kembali `Division`, penutupan Overlay Column Visibility lewat Esc, serta langkah 55 sampai 58 (memulihkan konfigurasi kolom).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 7 dan semua langkah `Buka isi file` (membaca isi berkas unduhan; blok baca berpola), `Klik icon panah (←)` (langkah 26), pencentangan kembali `Division`, penutupan Overlay Column Visibility lewat Esc, serta langkah 55 sampai 58 (memulihkan konfigurasi kolom).
 - Asersi tambahan (S-03): TC-GS-USER-453 memuat `Verifikasi` bahwa halaman 1 tidak memuat SA dan SB dan `Verifikasi` jumlah baris di file lebih dari 10, sebagai anchor bahwa berkas memuat baris di luar halaman tampil; TC-GS-USER-455 memuat `Verifikasi` baris SA tampil di tabel hasil search dan di file, sebagai anchor ketiadaan baris lain; TC-GS-USER-456 memuat `Verifikasi` kolom `Name` dan `Email` ada di file pertama, sebagai anchor ketiadaan kolom `Division`.
+- Urutan asersi absence toast (bagian 8b butir 11): `Verifikasi tidak ada toast sukses` (langkah 5) dan `Verifikasi tidak ada toast peringatan` (langkah 33) ditaruh segera setelah klik `Download as CSV` dan sebelum `Verifikasi` berkas; klik pilihan format menjadi anchor positif yang buktinya menyusul pada `Verifikasi` berkas terunduh.
 - Pembagian TC lintas spec: TC-GS-USER-460 dan 1055 sampai 1060 (Download gagal, toast error) diverifikasi di spec 069; TC-GS-USER-462 (lebih dari 5.000 baris) di spec 077; Search di spec 071; Filter Panel di spec 072; Setup Column di spec 075.
 - Spec melewati sekitar 35 langkah (58 langkah) karena tujuh TC Download memakai dataset dan layar yang sama dan satu kelas harness (binary buffer). Blok 453, 454, 455, 456, dan 1079 mengunduh berkas sendiri; blok 457 dan 461 membaca berkas hasil unduhan blok 453. Langkah membaca isi berkas termasuk blok baca berpola.
 - Temuan untuk QA:

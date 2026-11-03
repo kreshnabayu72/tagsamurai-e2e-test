@@ -44,7 +44,7 @@ coverage:
 
 1. Catat baseline jumlah user Login pada entitas (lewat API)
 2. Klik `[+ User]` di Table Tools
-3. Isi First Name `Budi`, Last Name `Santoso {runId}-031`, Division `Finance`, Email `budisantoso+{runId}-031@qwertysystem.net`, centang Access `Fixed Asset`
+3. Isi First Name `Budi`, Last Name `Santoso {runId}-031`, Division `Finance`, Email `budisantoso+{runId}-031@qwertysystem.net`, pilih Access `Fixed Asset`
 
 ### TC-GS-USER-153: Position dihapus sesi lain sebelum Submit ditolak di field
 
@@ -57,7 +57,7 @@ coverage:
 10. Verifikasi opsi `Staff` tampil di dropdown Position
 11. Verifikasi opsi `Internal Auditor {runId}-031` tidak ada di dropdown Position
 12. Klik kembali field Position untuk menutup dropdown
-13. Verifikasi field lain tetap terisi: First Name `Budi`, Last Name `Santoso {runId}-031`, Division `Finance`, Email `budisantoso+{runId}-031@qwertysystem.net`, Access `Fixed Asset` tercentang
+13. Verifikasi field lain tetap terisi: First Name `Budi`, Last Name `Santoso {runId}-031`, Division `Finance`, Email `budisantoso+{runId}-031@qwertysystem.net`, Access `Fixed Asset` terpilih
 14. Verifikasi jumlah user Login pada entitas sama dengan baseline (user tidak dibuat)
 
 ### TC-GS-USER-154: Division dihapus sesi lain sebelum Submit ditolak di field
@@ -71,7 +71,7 @@ coverage:
 21. Verifikasi opsi `Finance` tampil di dropdown Division
 22. Verifikasi opsi `Legal {runId}-031` tidak ada di dropdown Division
 23. Klik kembali field Division untuk menutup dropdown
-24. Verifikasi field lain tetap terisi: First Name `Budi`, Last Name `Santoso {runId}-031`, Email `budisantoso+{runId}-031@qwertysystem.net`, Access `Fixed Asset` tercentang
+24. Verifikasi field lain tetap terisi: First Name `Budi`, Last Name `Santoso {runId}-031`, Email `budisantoso+{runId}-031@qwertysystem.net`, Access `Fixed Asset` terpilih
 25. Verifikasi jumlah user Login pada entitas sama dengan baseline (user tidak dibuat)
 26. Pilih Division `Finance`
 

@@ -25,7 +25,7 @@ coverage:
 - Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2). Pada mode mock sesi aktor dipasang hook `before` sebagai sesi mock tanpa login ke backend nyata (mekanisme disediakan tim FE); hook `after` memulihkan sesi ke akun default suite.
 - Env var: tidak ada (tidak ada login ke backend nyata, tidak ada password).
 - Layar awal: hook `beforeEach` mengembalikan layar ke Global Settings > User > User List, sub-tab Login User.
-- Kebutuhan mock (seluruh API di-mock; nama endpoint ditentukan tim FE di tahap script):
+- Kebutuhan mock (seluruh API di-mock; Endpoint yang di-mock mengacu `global-settings/user/API/user-crud.yaml`: `POST /v2/iam/users/list` untuk daftar User Login, `POST /v2/iam/users` untuk Create yang dipantau; sumber opsi Division, Access, dan Position tidak ada di `user-crud.yaml`, ditentukan tim FE di tahap script):
   - Respons daftar User Login: sedikitnya satu baris, jumlah baris tetap selama spec.
   - Respons opsi form Create: Division (`Finance`), opsi Access (`Fixed Asset`), dan Position; Custom Field aktif tidak diperlukan.
   - Endpoint Create user dipantau tanpa dijawab dan harus menerima nol request selama spec ini.
@@ -43,14 +43,14 @@ coverage:
 ### TC-GS-USER-139: [Clear Field] mengosongkan seluruh field tanpa dialog
 
 2. Klik `[+ User]` di Table Tools
-3. Isi First Name `Budi`, Last Name `Santoso`, Division `Finance`, Email `budisantoso@qwertysystem.net`, centang Access `Fixed Asset`
+3. Isi First Name `Budi`, Last Name `Santoso`, Division `Finance`, Email `budisantoso@qwertysystem.net`, pilih Access `Fixed Asset`
 4. Centang `Stay on this form after submitting`
 5. Klik `[Clear Field]`
 6. Verifikasi First Name kosong dan menampilkan placeholder
 7. Verifikasi Last Name kosong dan menampilkan placeholder
 8. Verifikasi Division kosong dan menampilkan placeholder
 9. Verifikasi Email kosong dan menampilkan placeholder
-10. Verifikasi Access `Fixed Asset` tidak tercentang
+10. Verifikasi Access (multi dropdown) kosong dan menampilkan placeholder `Select access`
 11. Verifikasi checkbox `Stay on this form after submitting` tetap tercentang
 12. Verifikasi tidak ada dialog konfirmasi
 

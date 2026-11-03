@@ -53,15 +53,15 @@ coverage:
 
 11. Ketik Search `Rudi Hartono`, tekan Enter
 12. Hapus centang Update pada baris Rudi Hartono
-13. Verifikasi checkbox Update baris Rudi Hartono menampilkan nilai baru (unchecked) selama dialog `Remove Access` terbuka sebelum submit
+13. Verifikasi checkbox Update baris Rudi Hartono menampilkan nilai baru (unchecked) selama dialog `Remove Total Control` terbuka sebelum submit
 14. Pasang intercept pada respons Edit CRUD: jawab 500
-15. Klik `[Remove]` pada dialog `Remove Access`
+15. Klik `[Remove]` pada dialog `Remove Total Control`
 16. Verifikasi toast error `Error, failed to update permissions.`
-17. Verifikasi dialog `Remove Access` tetap terbuka
+17. Verifikasi dialog `Remove Total Control` tetap terbuka
 18. Verifikasi `[Remove]` aktif kembali untuk retry
 19. Verifikasi checkbox Update baris Rudi Hartono tetap menampilkan nilai baru (unchecked) setelah gagal
 20. Lepas intercept 500
-21. Klik `[Cancel]` pada dialog `Remove Access`
+21. Klik `[Cancel]` pada dialog `Remove Total Control`
 22. Verifikasi checkbox Update baris Rudi Hartono kembali checked
 23. Klik `(←)` pada kotak Search
 24. Klik menu sidebar `Role & Permission`
