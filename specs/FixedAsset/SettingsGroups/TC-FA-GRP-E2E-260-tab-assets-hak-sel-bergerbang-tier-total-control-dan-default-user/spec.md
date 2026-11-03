@@ -31,49 +31,63 @@ coverage:
 
 ### TC-FA-GRP-1256: Hak sel bergerbang tier Total Control
 
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Buka Popup Setup Column, centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
-3. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `—`, G4 8000, G5 120, G6 2300
-4. Verifikasi Value Gate Node A kolom Warranty Expiry: G1 15/03/2027, G3 `—`, G4 20/05/2028
-5. Verifikasi Value Gate Node A kolom PO Number: G1 `PO-001`, G3 `—`, G4 `—` (di luar Scope)
-6. Verifikasi Value Gate Node A kolom Cost Account: G1 `CA-100`, G3 `—`
-7. Tutup Popup Detail Group, buka Detail Value Gate Node B (Tab Assets)
-8. Verifikasi keempat kolom tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
-9. Verifikasi B1: Asset Value 900, Warranty Expiry 01/06/2027, PO Number `PO-B01`, Cost Account `CA-300`
-10. Verifikasi B2 menampilkan `—` pada seluruh kolom (tanpa nilai)
-11. Verifikasi B3: Asset Value dan Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
-12. Tutup Popup Detail Group, buka Detail Value Gate Child (Tab Assets)
-13. Verifikasi keempat kolom tampil pada Value Gate Child tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
-14. Verifikasi C1: Asset Value 700, Warranty Expiry 09/09/2027, PO Number `PO-C01`, Cost Account `CA-400`
-15. Verifikasi tidak ada sel `No access` pada group mana pun walau aktor tidak memegang View asset value, Manage purchase, atau Manage accounting pada group (hak mengikuti tier)
-16. Buka Popup Setup Column, hilangkan centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
-17. Logout
-18. Login sebagai akun Default User
+1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Buka Popup Setup Column, centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
+4. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `—`, G4 8000, G5 120, G6 2300
+5. Verifikasi Value Gate Node A kolom Warranty Expiry: G1 15/03/2027, G3 `—`, G4 20/05/2028
+6. Verifikasi Value Gate Node A kolom PO Number: G1 `PO-001`, G3 `—`, G4 `—` (di luar Scope)
+7. Verifikasi Value Gate Node A kolom Cost Account: G1 `CA-100`, G3 `—`
+8. Tutup Popup Detail Group
+9. Ganti isi kotak Search Groups List dengan `Value Gate Node B`, tekan Enter
+10. Buka Detail Value Gate Node B (Tab Assets)
+11. Verifikasi keempat kolom tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
+12. Verifikasi B1: Asset Value 900, Warranty Expiry 01/06/2027, PO Number `PO-B01`, Cost Account `CA-300`
+13. Verifikasi B2 menampilkan `—` pada seluruh kolom (tanpa nilai)
+14. Verifikasi B3: Asset Value dan Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
+15. Tutup Popup Detail Group
+16. Ganti isi kotak Search Groups List dengan `Value Gate Child`, tekan Enter
+17. Buka Detail Value Gate Child (Tab Assets)
+18. Verifikasi keempat kolom tampil pada Value Gate Child tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
+19. Verifikasi C1: Asset Value 700, Warranty Expiry 09/09/2027, PO Number `PO-C01`, Cost Account `CA-400`
+20. Verifikasi tidak ada sel `No access` pada group mana pun walau aktor tidak memegang View asset value, Manage purchase, atau Manage accounting pada group (hak mengikuti tier)
+21. Buka Popup Setup Column, hilangkan centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
+22. Logout
+23. Login sebagai akun Default User
+24. Buka Fixed Asset > Settings > Groups
 
 ### TC-FA-GRP-1257: Hak sel bergerbang tier Default User
 
-19. Buka Detail Value Gate Node A (Tab Assets)
-20. Buka Popup Setup Column, centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
-21. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `—`, G4 8000, G5 120, G6 2300
-22. Verifikasi Value Gate Node A kolom Warranty Expiry: G1 15/03/2027, G3 `—`, G4 20/05/2028
-23. Verifikasi Value Gate Node A kolom PO Number: G1 `PO-001`, G3 `—`, G4 `—` (di luar Scope)
-24. Verifikasi Value Gate Node A kolom Cost Account: G1 `CA-100`, G3 `—`
-25. Tutup Popup Detail Group, buka Detail Value Gate Node B (Tab Assets)
-26. Verifikasi keempat kolom tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
-27. Verifikasi B1: Asset Value 900, Warranty Expiry 01/06/2027, PO Number `PO-B01`, Cost Account `CA-300`
-28. Verifikasi B2 menampilkan `—` pada seluruh kolom (tanpa nilai)
-29. Verifikasi B3: Asset Value dan Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
-30. Tutup Popup Detail Group, buka Detail Value Gate Child (Tab Assets)
-31. Verifikasi keempat kolom tampil pada Value Gate Child tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
-32. Verifikasi C1: Asset Value 700, Warranty Expiry 09/09/2027, PO Number `PO-C01`, Cost Account `CA-400`
-33. Verifikasi tidak ada sel `No access` pada group mana pun walau aktor tidak memegang View asset value, Manage purchase, atau Manage accounting pada group (hak mengikuti tier)
-34. Buka Popup Setup Column, hilangkan centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
+25. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+26. Buka Detail Value Gate Node A (Tab Assets)
+27. Buka Popup Setup Column, centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
+28. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `—`, G4 8000, G5 120, G6 2300
+29. Verifikasi Value Gate Node A kolom Warranty Expiry: G1 15/03/2027, G3 `—`, G4 20/05/2028
+30. Verifikasi Value Gate Node A kolom PO Number: G1 `PO-001`, G3 `—`, G4 `—` (di luar Scope)
+31. Verifikasi Value Gate Node A kolom Cost Account: G1 `CA-100`, G3 `—`
+32. Tutup Popup Detail Group
+33. Ganti isi kotak Search Groups List dengan `Value Gate Node B`, tekan Enter
+34. Buka Detail Value Gate Node B (Tab Assets)
+35. Verifikasi keempat kolom tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
+36. Verifikasi B1: Asset Value 900, Warranty Expiry 01/06/2027, PO Number `PO-B01`, Cost Account `CA-300`
+37. Verifikasi B2 menampilkan `—` pada seluruh kolom (tanpa nilai)
+38. Verifikasi B3: Asset Value dan Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
+39. Tutup Popup Detail Group
+40. Ganti isi kotak Search Groups List dengan `Value Gate Child`, tekan Enter
+41. Buka Detail Value Gate Child (Tab Assets)
+42. Verifikasi keempat kolom tampil pada Value Gate Child tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
+43. Verifikasi C1: Asset Value 700, Warranty Expiry 09/09/2027, PO Number `PO-C01`, Cost Account `CA-400`
+44. Verifikasi tidak ada sel `No access` pada group mana pun walau aktor tidak memegang View asset value, Manage purchase, atau Manage accounting pada group (hak mengikuti tier)
+45. Buka Popup Setup Column, hilangkan centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
 
 ## Notes
 
 - Dua blok identik dengan akun berbeda (Total Control lalu Default User); ganti akun eksplisit dan blok kedua tetap bermakna walau blok pertama gagal. Blok ditulis utuh per akun karena ganti akun menuntut Step eksplisit (akun pertama login di hook `before`).
 - Langkah penghubung (S-03): menutup Popup Detail Group antar group dan menghilangkan centang keempat kolom pada akhir tiap blok.
 - Alasan di atas ~35 langkah: dua akun pada satu dataset dan satu kelas; tiap blok berdiri sendiri.
+- Langkah penghubung (S-03, S-14): `Buka Fixed Asset > Settings > Groups` sesudah tiap login akun lain karena hook `beforeEach` hanya membuka halaman untuk akun pertama.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A`, `Value Gate Node B`, `Value Gate Child`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1256 dan TC-1257 menyebut 'Value Gate Child' sedangkan data akun memakai Value Gate Parent > Child; spec memakai Value Gate Child (Tabel Dinamis No 12).
   - TC-1256 butir a menyebut 'currency nol (mis. `Rp 0,00`)' tanpa menetapkan simbol mata uang client; spec mengasersi currency nol sesuai `prd-conventions.md` §32.
+  - Value Gate Child adalah node level 2 di bawah Value Gate Parent; TC dan PRD tidak menyatakan apakah Search Groups List pada All Groups menjangkau node level 2. Spec memakai Search `Value Gate Child`; tim FE memastikan cakupan Search atau menentukan navigasi lewat Value Gate Parent.

@@ -30,44 +30,46 @@ coverage:
 
 ### TC-FA-GRP-157: Aksesibilitas Popup New Subgroup
 
-1. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-2. Klik [Submit] dengan form kosong
-3. Verifikasi Group Name ber-`aria-required`
-4. Verifikasi error terhubung ke Group Name via `aria-describedby`
-5. Tekan Tab berulang
-6. Verifikasi fokus berputar di dalam popup (focus trap)
-7. Tekan Esc
-8. Verifikasi Esc menutup popup
+1. Ketik Search `Head Office`, tekan Enter
+2. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+3. Klik [Submit] dengan form kosong
+4. Verifikasi Group Name ber-`aria-required`
+5. Verifikasi error terhubung ke Group Name via `aria-describedby`
+6. Tekan Tab berulang
+7. Verifikasi fokus berputar di dalam popup (focus trap)
+8. Tekan Esc
+9. Verifikasi Esc menutup popup
 
 ### TC-FA-GRP-153: Hover dan Saving state tombol [Submit]
 
-9. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-10. Isi Group Name `Hover Save Sub {runId}-051`
-11. Hover [Submit]
-12. Verifikasi [Submit] menampilkan state hover
-13. Tahan respons simpan group lewat intercept
-14. Klik [Submit]
-15. Verifikasi [Submit] masuk saving state (disabled + loading)
-16. Lepas tahanan respons dan tunggu popup tertutup
+10. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+11. Isi Group Name `Hover Save Sub {runId}-051`
+12. Hover [Submit]
+13. Verifikasi [Submit] menampilkan state hover
+14. Tahan respons simpan group lewat intercept
+15. Klik [Submit]
+16. Verifikasi [Submit] masuk saving state (disabled + loading)
+17. Lepas tahanan respons dan tunggu popup tertutup
 
 ### TC-FA-GRP-159: Double-click [Submit] hanya 1 request
 
-17. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-18. Isi Group Name `Double Click Sub {runId}-051`
-19. Tunggu toast lama hilang otomatis
-20. Catat jumlah group lewat fixture BE sebagai baseline TC-FA-GRP-159
-21. Double-click cepat [Submit]
-22. Verifikasi tombol [Submit] disabled setelah klik pertama
-23. Verifikasi hanya 1 toast sukses `Success, group has been created.`
-24. Verifikasi hanya 1 record dibuat: jumlah group lewat fixture BE = baseline TC-FA-GRP-159 + 1
+18. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+19. Isi Group Name `Double Click Sub {runId}-051`
+20. Tunggu toast lama hilang otomatis
+21. Catat jumlah group lewat fixture BE sebagai baseline TC-FA-GRP-159
+22. Double-click cepat [Submit]
+23. Verifikasi tombol [Submit] disabled setelah klik pertama
+24. Verifikasi hanya 1 toast sukses `Success, group has been created.`
+25. Verifikasi hanya 1 record dibuat: jumlah group lewat fixture BE = baseline TC-FA-GRP-159 + 1
 
 ## Notes
 
 - Mode: FE+BE (backend nyata, intercept hanya menahan respons untuk mengamati saving state; bukan kegagalan yang dipaksa sehingga bukan kelas b). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: TC-FA-GRP-157 (submit kosong, diblokir) lebih dulu, lalu TC-FA-GRP-153 dan TC-FA-GRP-159 yang menyimpan subgroup (S-10); berbeda dari urutan nomor TC sumber.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 13 (Tahan respons simpan group lewat intercept); langkah 16 (Lepas tahanan respons dan tunggu popup tertutup); langkah 19 (Tunggu toast lama hilang otomatis); langkah 20 (Catat jumlah group lewat fixture BE sebagai baseline TC-FA-GRP-159).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 14 (Tahan respons simpan group lewat intercept); langkah 17 (Lepas tahanan respons dan tunggu popup tertutup); langkah 20 (Tunggu toast lama hilang otomatis); langkah 21 (Catat jumlah group lewat fixture BE sebagai baseline TC-FA-GRP-159).
+- Pencarian baris target (S-03, R-16): langkah 1 (Ketik Search `Head Office`, tekan Enter) menemukan baris Head Office; client memiliki lebih dari 10 node level 1 dan page size 10, jadi baris Head Office tidak dijamin berada di halaman 1 All Groups.
 - Temuan untuk QA:
-  - TC-FA-GRP-159 Expected b "Tombol disabled setelah klik pertama" adalah state sementara; diasersi tepat setelah double-click (8b butir 5). Jika popup sudah menutup sebelum asersi, tim script perlu menahan respons seperti langkah 13; TC tidak menyebut penundaan respons.
+  - TC-FA-GRP-159 Expected b "Tombol disabled setelah klik pertama" adalah state sementara; diasersi tepat setelah double-click (8b butir 5). Jika popup sudah menutup sebelum asersi, tim script perlu menahan respons seperti langkah 14; TC tidak menyebut penundaan respons.
   - TC-FA-GRP-157 Expected c "dialog Unsaved changes bila ada perubahan" bersyarat dan tidak punya langkah perubahan di TC; tidak diasersi di spec ini.
-  - TC-FA-GRP-153 Expected b "sampai response" tidak menyebut keadaan setelah respons; spec hanya menunggu popup tertutup (langkah 16) tanpa `Verifikasi` tambahan.
+  - TC-FA-GRP-153 Expected b "sampai response" tidak menyebut keadaan setelah respons; spec hanya menunggu popup tertutup (langkah 17) tanpa `Verifikasi` tambahan.
 

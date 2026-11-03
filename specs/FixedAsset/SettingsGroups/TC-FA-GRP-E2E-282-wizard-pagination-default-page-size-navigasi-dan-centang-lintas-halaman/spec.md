@@ -58,20 +58,25 @@ coverage:
 27. Klik next ke halaman 2
 28. Verifikasi halaman berpindah ke halaman 2
 29. Buka Filter
-30. Pilih satu opsi, klik [Apply]
+30. Pilih opsi `Pg 20` pada dropdown Group, klik [Apply]
 31. Verifikasi tabel menampilkan halaman 1
 32. Verifikasi counter tetap "5 of 20 selected" (centang tidak hilang saat hasil disaring)
-33. Hapus filter
-34. Uncheck kelima group yang tercentang di halaman 1 dan halaman 2 (kembali ke keadaan saat step dibuka: 0 tercentang)
-35. Klik [Cancel]
-36. Verifikasi step langsung tertutup tanpa dialog Unsaved changes
+33. Klik icon Filter
+34. Klik [Clear Field]
+35. Klik [Apply]
+36. Uncheck tiga group yang tercentang di halaman 1
+37. Klik next ke halaman 2
+38. Uncheck dua group yang tercentang di halaman 2 (kembali ke keadaan saat step dibuka: 0 tercentang)
+39. Klik [Cancel]
+40. Verifikasi step langsung tertutup tanpa dialog Unsaved changes
 
 ## Notes
 
-- Spec 36 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec 40 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 26, 33 sampai 35: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 26, 33 sampai 39: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
 - Pindah halaman tidak memicu dialog Unsaved changes; penutupan step pada langkah akhir dijalankan setelah seluruh centang dikembalikan ke keadaan saat step dibuka (perubahan bersih nol) sehingga step langsung tertutup tanpa dialog (FI-06).
+- Langkah penghubung (S-03, S-14): `Pg 20` dipilih spec sebagai satu opsi dropdown Group karena TC menulis "pilih satu opsi" tanpa nilai; `[Clear Field]` dan `[Apply]` melepas Filter, dan Apply Filter mereset tabel ke halaman 1 (PRD); sesudahnya tiga centang di halaman 1 dan dua centang di halaman 2 di-uncheck dengan langkah pindah halaman eksplisit.
 - Temuan untuk QA:
   - TC-1066 menyebut `[Group Limit]` = 20 tanpa menegaskan cap; spec memakai counter "5 of 20 selected" sesuai cap plan baru 20 pada Precondition.
   - TC-1066 Langkah 4 "kata yang cocok dengan beberapa group" tanpa nilai; spec memakai `Pg 1`.

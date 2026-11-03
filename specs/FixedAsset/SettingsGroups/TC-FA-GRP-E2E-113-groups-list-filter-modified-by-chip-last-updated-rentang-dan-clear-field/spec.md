@@ -40,7 +40,7 @@ coverage:
   - Total Asset dibentuk dengan menambahkan aset ke group; Total User = user yang otomatis punya akses ke semua group (Total Control, Default User, Read Only client) ditambah user yang ditugaskan lewat Group Role; kemampuan seeding aset dan penugasan user ini disediakan tim FE/BE.
   - Group Pre-setup Tabel A (Default Group, Head Office, dan seterusnya) tetap tampil di Groups List dan hanya dibaca; asersi memakai baris data di atas.
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API seluruh group `... {runId}-113`, aset, dan penugasan user yang di-seed spec ini; hapus preferensi kolom Setup Column yang disimpan spec (kemampuan disediakan tim FE).
-- Spec ini tidak membatasi tabel dengan Search suffix. Format tanggal input Last Updated mengikuti Date Format General Settings akun aktor (dibaca sebelum uji; spec tidak mengubahnya). `Default Group` (Pre-setup Tabel A) punya Last Updated waktu onboarding client, di luar rentang hari ini.
+- Spec ini tidak membatasi tabel dengan Search suffix, kecuali Search nama baris sebelum asersi baris pada TC-FA-GRP-362. Format tanggal input Last Updated mengikuti Date Format General Settings akun aktor (dibaca sebelum uji; spec tidak mengubahnya). `Default Group` (Pre-setup Tabel A) punya Last Updated waktu onboarding client, di luar rentang hari ini.
 
 ## Test Steps
 
@@ -95,24 +95,30 @@ coverage:
 38. Buka date range picker Last Updated, pilih tanggal awal = hari ini - 1 dan tanggal akhir = hari ini
 39. Klik [Apply]
 40. Verifikasi sedikitnya satu baris tampil pada tabel
-41. Verifikasi baris `Alpha {runId}-113` tampil (Last Updated hari ini, batas akhir inklusif)
-42. Verifikasi baris `Default Group` tidak tampil (Last Updated di luar rentang)
-43. Klik icon Filter
-44. Ubah rentang Last Updated: tanggal awal = tanggal akhir = hari ini
-45. Verifikasi teks tanggal pada input Last Updated mengikuti Date Format General Settings
-46. Klik [Apply]
-47. Verifikasi baris `Alpha {runId}-113` tampil dan baris `Default Group` tidak tampil (hari itu saja)
-48. Klik icon Filter
-49. Klik [Clear Field]
-50. Klik [Apply]
+41. Ketik Search `Alpha {runId}-113`, tekan Enter
+42. Verifikasi baris `Alpha {runId}-113` tampil (Last Updated hari ini, batas akhir inklusif)
+43. Ganti isi kotak Search dengan `Default Group`, tekan Enter
+44. Verifikasi baris `Default Group` tidak tampil (Last Updated di luar rentang)
+45. Klik icon Filter
+46. Ubah rentang Last Updated: tanggal awal = tanggal akhir = hari ini
+47. Verifikasi teks tanggal pada input Last Updated mengikuti Date Format General Settings
+48. Klik [Apply]
+49. Ganti isi kotak Search dengan `Alpha {runId}-113`, tekan Enter
+50. Verifikasi baris `Alpha {runId}-113` tampil (hari itu saja)
+51. Ganti isi kotak Search dengan `Default Group`, tekan Enter
+52. Verifikasi baris `Default Group` tidak tampil (hari itu saja)
+53. Klik `(←)` pada kotak Search
+54. Klik icon Filter
+55. Klik [Clear Field]
+56. Klik [Apply]
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
-- Langkah penghubung (tanpa awalan `Verifikasi`): mencatat nama baris halaman 1 (langkah 1), membuka Filter Panel dan dropdown, menutup dropdown, dan [Clear Field] + [Apply] antar TC (S-03, S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`): mencatat nama baris halaman 1 (langkah 1), membuka Filter Panel dan dropdown, menutup dropdown, dan [Clear Field] + [Apply] antar TC (S-03, S-09), serta Search nama bersuffix atau `Default Group` sebelum asersi baris pada TC-FA-GRP-362 karena client punya lebih dari 10 node level 1 dan page size 10, sehingga baris target tidak diandalkan berada di halaman 1 (S-03, R-16).
 - Opsi A = `ModA` dan opsi B = `ModB` ditentukan spec. Nilai kombinasi Function/Total Asset pada TC-FA-GRP-364 ditentukan spec karena TC hanya menyebut "isi Function dan Total Asset".
 - Rentang tanggal TC-FA-GRP-362 memakai tanggal relatif hari uji (hari ini - 1 s.d. hari ini); TC tidak menyebut tanggal.
-- Spec 50 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec 56 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.

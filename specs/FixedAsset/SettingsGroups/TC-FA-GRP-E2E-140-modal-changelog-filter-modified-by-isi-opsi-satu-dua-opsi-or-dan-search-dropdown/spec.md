@@ -68,28 +68,34 @@ coverage:
 17. Klik [Clear Field]
 18. Centang opsi `ModA` dan opsi `ModB` pada dropdown Modified By
 19. Klik [Apply]
-20. Verifikasi baris Action Create Group Name `Log1 {runId}-140` dan baris Action Create Group Name `Log3 {runId}-140` tampil (opsi 1 atau opsi 2)
-21. Verifikasi baris Action Edit Group Name `Log1 {runId}-140` Field Function (Modified By `ModC`) tidak tampil
+20. Ganti isi kotak Search dengan `Log1 {runId}-140`, tekan Enter
+21. Verifikasi baris Action Create Group Name `Log1 {runId}-140` tampil (opsi 1)
+22. Ganti isi kotak Search dengan `Log3 {runId}-140`, tekan Enter
+23. Verifikasi baris Action Create Group Name `Log3 {runId}-140` tampil (opsi 2)
+24. Ganti isi kotak Search dengan `Log1 {runId}-140`, tekan Enter
+25. Verifikasi baris Action Edit Group Name `Log1 {runId}-140` Field Function (Modified By `ModC`) tidak tampil
 
 ### TC-FA-GRP-464: Search internal dropdown Filter Modified By
 
-22. Klik icon Filter
-23. Klik [Clear Field]
-24. Buka dropdown Modified By
-25. Ketik potongan nama `ModC` huruf kecil di kotak search dropdown
-26. Verifikasi daftar opsi menyempit: opsi `ModC` tampil
-27. Verifikasi opsi `ModA` tidak tampil
-28. Ganti isi kotak search dropdown dengan `zzz-tidak-ada`
-29. Verifikasi daftar opsi kosong dengan teks `No results found` (teks saja, tanpa ilustrasi)
-30. Klik [Apply]
-31. Klik `(←)` pada kotak Search
-32. Klik icon close (X) pada header Modal Changelog
+26. Klik icon Filter
+27. Klik [Clear Field]
+28. Buka dropdown Modified By
+29. Ketik potongan nama `ModC` huruf kecil di kotak search dropdown
+30. Verifikasi daftar opsi menyempit: opsi `ModC` tampil
+31. Verifikasi opsi `ModA` tidak tampil
+32. Ganti isi kotak search dropdown dengan `zzz-tidak-ada`
+33. Verifikasi daftar opsi kosong dengan teks `No results found` (teks saja, tanpa ilustrasi)
+34. Klik [Apply]
+35. Klik `(←)` pada kotak Search
+36. Klik icon close (X) pada header Modal Changelog
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membuka Modal Changelog, membatasi tabel dengan Search suffix spec, membuka Filter Panel dan dropdown, menghilangkan centang pada TC pertama, serta [Clear Field] + [Apply] dan `(←)` sebagai pemulihan state antar TC (S-03, S-09, R-16).
 - Pilihan opsi untuk satu opsi, dua opsi, dan potongan nama pencarian dropdown ditentukan spec dari dataset karena TC menyebut "1 opsi", "2 opsi berbeda", dan "potongan nama opsi" tanpa nilai.
+- Filter ModA atau ModB meloloskan 11 entri dengan page size 10, sehingga baris bernama dicari lewat Search nama bersuffix sebelum asersi (S-03, R-16).
+- Spec 36 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.

@@ -43,49 +43,53 @@ coverage:
 ### TC-FA-GRP-161: Edit Group, ubah Group Name saja
 
 9. Ubah Group Name menjadi `Edit Target Renamed {runId}-053`, lalu klik [Save]
-10. Verifikasi popup tertutup
-11. Verifikasi toast sukses `Success, group has been updated.`
-12. Verifikasi nama baru `Edit Target Renamed {runId}-053` tampil di tabel
-13. Verifikasi nama baru tampil di sidebar
-14. Klik nama `Edit Target Renamed {runId}-053` untuk membuka Popup Detail Group
-15. Verifikasi nama baru tampil di header Popup Detail Group
-16. Verifikasi field lain tidak berubah (Code `ET`, Description `Edit me`, Function Assignable)
-17. Tutup Popup Detail Group
-18. Verifikasi Modified By = aktor (format `[First Name] [Last Initial]`) pada baris `Edit Target Renamed {runId}-053`
-19. Verifikasi Last Updated = waktu save (toleransi satu menit)
+10. Catat waktu sesudah [Save]
+11. Verifikasi popup tertutup
+12. Verifikasi toast sukses `Success, group has been updated.`
+13. Ganti isi kotak Search dengan `Edit Target Renamed {runId}-053`, tekan Enter
+14. Verifikasi nama baru `Edit Target Renamed {runId}-053` tampil di tabel
+15. Verifikasi nama baru tampil di sidebar
+16. Klik nama `Edit Target Renamed {runId}-053` untuk membuka Popup Detail Group
+17. Verifikasi nama baru tampil di header Popup Detail Group
+18. Verifikasi field lain tidak berubah (Code `ET`, Description `Edit me`, Function Assignable)
+19. Tutup Popup Detail Group
+20. Verifikasi Modified By = aktor (format `[First Name] [Last Initial]`) pada baris `Edit Target Renamed {runId}-053`
+21. Verifikasi Last Updated = waktu save yang dicatat pada langkah 10 (toleransi satu menit)
 
 ### TC-FA-GRP-162: Edit Group, ubah Code saja
 
-20. Buka elipsis (⋯) baris `Edit Target Renamed {runId}-053`, klik Edit, ubah Code menjadi `ETR`, lalu klik [Save]
-21. Verifikasi popup tertutup
-22. Verifikasi toast sukses `Success, group has been updated.`
-23. Verifikasi kolom Code menampilkan `ETR`
-24. Klik nama group untuk membuka Popup Detail Group
-25. Verifikasi header Popup Detail Group menampilkan Code `ETR`
-26. Verifikasi field lain tidak berubah (Name `Edit Target Renamed {runId}-053`, Description `Edit me`, Function Assignable)
-27. Tutup Popup Detail Group
-28. Verifikasi Modified By = aktor (format `[First Name] [Last Initial]`)
-29. Verifikasi Last Updated = waktu save (toleransi satu menit)
+22. Buka elipsis (⋯) baris `Edit Target Renamed {runId}-053`, klik Edit, ubah Code menjadi `ETR`, lalu klik [Save]
+23. Catat waktu sesudah [Save]
+24. Verifikasi popup tertutup
+25. Verifikasi toast sukses `Success, group has been updated.`
+26. Verifikasi kolom Code menampilkan `ETR`
+27. Klik nama group untuk membuka Popup Detail Group
+28. Verifikasi header Popup Detail Group menampilkan Code `ETR`
+29. Verifikasi field lain tidak berubah (Name `Edit Target Renamed {runId}-053`, Description `Edit me`, Function Assignable)
+30. Tutup Popup Detail Group
+31. Verifikasi Modified By = aktor (format `[First Name] [Last Initial]`)
+32. Verifikasi Last Updated = waktu save yang dicatat pada langkah 23 (toleransi satu menit)
 
 ### TC-FA-GRP-163: Edit Group, ubah Description saja
 
-30. Buka elipsis (⋯) baris `Edit Target Renamed {runId}-053`, klik Edit, ubah Description menjadi `Updated notes`, lalu klik [Save]
-31. Verifikasi popup tertutup
-32. Verifikasi toast sukses `Success, group has been updated.`
-33. Klik nama group untuk membuka Popup Detail Group
-34. Verifikasi Description baru `Updated notes` tampil di header Popup Detail Group
-35. Verifikasi field lain tidak berubah (Name `Edit Target Renamed {runId}-053`, Code `ETR`, Function Assignable)
-36. Tutup Popup Detail Group
-37. Verifikasi Modified By = aktor (format `[First Name] [Last Initial]`)
-38. Verifikasi Last Updated = waktu save (toleransi satu menit)
-39. Klik `(←)` pada kotak Search
+33. Buka elipsis (⋯) baris `Edit Target Renamed {runId}-053`, klik Edit, ubah Description menjadi `Updated notes`, lalu klik [Save]
+34. Catat waktu sesudah [Save]
+35. Verifikasi popup tertutup
+36. Verifikasi toast sukses `Success, group has been updated.`
+37. Klik nama group untuk membuka Popup Detail Group
+38. Verifikasi Description baru `Updated notes` tampil di header Popup Detail Group
+39. Verifikasi field lain tidak berubah (Name `Edit Target Renamed {runId}-053`, Code `ETR`, Function Assignable)
+40. Tutup Popup Detail Group
+41. Verifikasi Modified By = aktor (format `[First Name] [Last Initial]`)
+42. Verifikasi Last Updated = waktu save yang dicatat pada langkah 34 (toleransi satu menit)
+43. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-053`, tekan Enter); langkah 14 (Klik nama `Edit Target Renamed {runId}-053` untuk membuka Popup Detail...); langkah 17 (Tutup Popup Detail Group); langkah 24 (Klik nama group untuk membuka Popup Detail Group); langkah 27 (Tutup Popup Detail Group); langkah 33 (Klik nama group untuk membuka Popup Detail Group); langkah 36 (Tutup Popup Detail Group); langkah 39 (Klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-053`, tekan Enter); langkah 16 (Klik nama `Edit Target Renamed {runId}-053` untuk membuka Popup Detail Group); langkah 19 (Tutup Popup Detail Group); langkah 27 (Klik nama group untuk membuka Popup Detail Group); langkah 30 (Tutup Popup Detail Group); langkah 37 (Klik nama group untuk membuka Popup Detail Group); langkah 40 (Tutup Popup Detail Group); langkah 43 (Klik `(←)` pada kotak Search). Langkah 13 (Ganti isi kotak Search dengan `Edit Target Renamed {runId}-053`, tekan Enter; Search `Edit Target {runId}-053` tidak lagi cocok dengan baris yang sudah diganti namanya) dan langkah 10, 23, 34 (Catat waktu sesudah [Save], pembanding Last Updated TC-FA-GRP-161, 162, 163; S-12).
 - Langkah 1 mencari baris target (R-16); node yang di-seed diubah berurutan oleh TC-FA-GRP-161, 162, dan 163 sehingga tiap blok memakai nama dan Code hasil blok sebelumnya (data milik spec ini).
-- Alasan spec melewati ~35 langkah (39 langkah): keempat TC satu kelas (fungsional Edit Group), satu dataset (node `Edit Target` milik spec), dan tiap blok berdiri sendiri; langkah banyak karena `Verifikasi` per klausa Expected (S-01) dan langkah penghubung membuka Detail.
+- Alasan spec melewati ~35 langkah (43 langkah): keempat TC satu kelas (fungsional Edit Group), satu dataset (node `Edit Target` milik spec), dan tiap blok berdiri sendiri; langkah banyak karena `Verifikasi` per klausa Expected (S-01) dan langkah penghubung membuka Detail.
 - Temuan untuk QA:
   - TC-FA-GRP-161, 162, dan 163 Post Condition "Changelog: tepat 1 baris Edit Field ..." tidak punya langkah observasi di TC; tidak diasersi di spec ini.
   - TC-FA-GRP-161 Expected b dan TC-FA-GRP-162 Expected b menyebut hasil di "header Popup Detail Group" tanpa langkah membuka Detail; spec menambahkannya sebagai langkah penghubung.

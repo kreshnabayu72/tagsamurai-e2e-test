@@ -57,30 +57,35 @@ coverage:
 21. Klik [Cancel] pada dialog
 22. Verifikasi dialog tertutup dan popup tetap terbuka dengan 2 centang dipertahankan
 23. Klik [Cancel] lagi
-24. Klik [Leave]
-25. Verifikasi popup tertutup
-26. Verifikasi status Excess tidak berubah
-27. Verifikasi Alert Group Consolidation tetap tampil
+24. Verifikasi dialog Unsaved changes tampil lagi
+25. Klik [Leave]
+26. Verifikasi popup tertutup
+27. Verifikasi status Excess tidak berubah
+28. Verifikasi Alert Group Consolidation tetap tampil
+29. Klik [Choose Groups]
+30. Verifikasi tidak ada group yang tercentang (centang dibuang oleh [Leave])
+31. Klik [X] di header popup
 
 ### TC-FA-GRP-1125: [X] dan Esc setelah mengubah centang memunculkan dialog Unsaved changes
 
-28. Klik [Choose Groups]
-29. Centang 2 group
-30. Klik [X] di header popup
-31. Verifikasi dialog tanpa title "You have unsaved changes. Are you sure you want to leave?" dengan [Cancel] dan [Leave]
-32. Klik [Cancel] pada dialog
-33. Verifikasi popup tetap terbuka dengan 2 centang dipertahankan
-34. Tekan Esc pada popup
+32. Klik [Choose Groups]
+33. Centang 2 group
+34. Klik [X] di header popup
 35. Verifikasi dialog tanpa title "You have unsaved changes. Are you sure you want to leave?" dengan [Cancel] dan [Leave]
-36. Klik [Leave] pada dialog
-37. Verifikasi popup tertutup dan centang dibuang
-38. Verifikasi status Excess tidak berubah
-39. Verifikasi Alert Group Consolidation tetap tampil
+36. Klik [Cancel] pada dialog
+37. Verifikasi popup tetap terbuka dengan 2 centang dipertahankan
+38. Tekan Esc pada popup
+39. Verifikasi dialog tanpa title "You have unsaved changes. Are you sure you want to leave?" dengan [Cancel] dan [Leave]
+40. Klik [Leave] pada dialog
+41. Verifikasi popup tertutup dan centang dibuang
+42. Verifikasi status Excess tidak berubah
+43. Verifikasi Alert Group Consolidation tetap tampil
 
 ## Notes
 
 - Urutan: tutup tanpa perubahan (TC-1124), backdrop (TC-1126) yang menyisakan popup terbuka dengan 2 centang, lalu TC-1116 yang melanjutkan keadaan itu (tanpa mengulang membuka popup dan mencentang), lalu TC-1125. Asersi popup tetap terbuka pada TC-1126 didahului verifikasi popup terbuka (anchor, 8b butir 2).
 - Spec berisi lebih dari 35 langkah. Alasan: empat TC satu surface (popup Alert Group Consolidation) dan satu dataset, tiap blok berdiri sendiri dan menutup popup lewat jalur berbeda; `Verifikasi` dialog dan status dipecah per klausa (S-01).
+- Dialog Unsaved changes kedua (langkah 24) diverifikasi tampil sebelum [Leave] (S-08, 8b butir 2); TC-1116 langkah 6 menulis "[Cancel] lagi, lalu [Leave]" tanpa verifikasi dialog, jadi `Verifikasi` itu ditambahkan spec sebagai langkah pembuktian dan bukan klausa Expected TC (S-03).
 - Temuan untuk QA:
   - TC-1116 Langkah 3 mencentang 2 group; spec melanjutkan 2 centang dari TC-1126 yang sama dengan langkah TC-1116 (state popup terbuka tidak berubah), sehingga langkah "Centang 2 group" TC-1116 tidak diulang.
   - TC-1125 Expected c menyebut centang dibuang tanpa langkah observasi di TC; spec mengasersi pada satu `Verifikasi` bersama popup tertutup.

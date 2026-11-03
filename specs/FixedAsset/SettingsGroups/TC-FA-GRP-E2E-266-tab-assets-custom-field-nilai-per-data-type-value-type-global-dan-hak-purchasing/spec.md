@@ -29,37 +29,40 @@ coverage:
 ## Test Steps
 
 ### TC-1230: Kolom Custom Field bernilai sesuai Data Type; belum diisi atau di luar Scope tampil `—`
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Buka Popup Setup Column, centang kolom Cost Center, PO Number, Purchase Date, dan Cost Account, klik [Save]
-3. Verifikasi Cost Center: G1 `CC-ALPHA`, G2 `CC-GAMMA`, G4 `CC-ALPHA`, G6 `CC-BETA`
-4. Verifikasi Cost Center G3 `—` (belum diisi)
-5. Verifikasi Cost Center G5 `—` (Asset Name Kabel Roll di luar Scope field)
-6. Verifikasi PO Number: G1 `PO-001`, G2 `PO-002`, G6 `PO-006`
-7. Verifikasi PO Number G3 `—` (belum diisi)
-8. Verifikasi PO Number G4 dan G5 `—` (di luar Scope field)
-9. Verifikasi Purchase Date (Data Type Date, Scope General): G1 10/02/2026, G2 01/03/2026, G4 01/04/2026, G5 05/05/2026, G6 01/03/2026 (format General Settings)
-10. Verifikasi Purchase Date G3 `—` (belum diisi)
-11. Verifikasi Cost Account: G1 `CA-100`, G2 `CA-150`, G6 `CA-200`
-12. Verifikasi Cost Account G3, G4, G5 `—`
-13. Verifikasi tidak ada sel `No access` pada keempat kolom
+1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Buka Popup Setup Column, centang kolom Cost Center, PO Number, Purchase Date, dan Cost Account, klik [Save]
+4. Verifikasi Cost Center: G1 `CC-ALPHA`, G2 `CC-GAMMA`, G4 `CC-ALPHA`, G6 `CC-BETA`
+5. Verifikasi Cost Center G3 `—` (belum diisi)
+6. Verifikasi Cost Center G5 `—` (Asset Name Kabel Roll di luar Scope field)
+7. Verifikasi PO Number: G1 `PO-001`, G2 `PO-002`, G6 `PO-006`
+8. Verifikasi PO Number G3 `—` (belum diisi)
+9. Verifikasi PO Number G4 dan G5 `—` (di luar Scope field)
+10. Verifikasi Purchase Date (Data Type Date, Scope General): G1 10/02/2026, G2 01/03/2026, G4 01/04/2026, G5 05/05/2026, G6 01/03/2026 (format General Settings)
+11. Verifikasi Purchase Date G3 `—` (belum diisi)
+12. Verifikasi Cost Account: G1 `CA-100`, G2 `CA-150`, G6 `CA-200`
+13. Verifikasi Cost Account G3, G4, G5 `—`
+14. Verifikasi tidak ada sel `No access` pada keempat kolom
 ### TC-1231: Custom Field Value Type Global menampilkan nilai yang sama pada semua unit Asset Name dalam Scope
-14. Ganti akun: Logout, login sebagai Total Control (`totalControlGroups_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PASSWORD`), buka Fixed Asset > Settings > Groups
-15. Buka Detail Value Gate Node A (Tab Assets)
-16. Buka Popup Setup Column, centang kolom Insurance Policy, klik [Save]
-17. Verifikasi Insurance Policy G1 dan G6 (Laptop Dell) sama-sama `INS-2026`
-18. Verifikasi Insurance Policy G2, G3, G4, G5 (Asset Name di luar Scope) `—`
+15. Ganti akun: Logout, login sebagai Total Control (`totalControlGroups_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PASSWORD`), buka Fixed Asset > Settings > Groups
+16. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+17. Buka Detail Value Gate Node A (Tab Assets)
+18. Buka Popup Setup Column, centang kolom Insurance Policy, klik [Save]
+19. Verifikasi Insurance Policy G1 dan G6 (Laptop Dell) sama-sama `INS-2026`
+20. Verifikasi Insurance Policy G2, G3, G4, G5 (Asset Name di luar Scope) `—`
 ### TC-1232: Custom field Purchasing: pemegang Manage purchase di group lain melihat `No access`; field General tetap bernilai
-19. Ganti akun: Logout, login sebagai managePurchaseGroups (`managePurchaseGroups_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_GRP_MANAGEPURCHASE_PASSWORD`), buka Fixed Asset > Settings > Groups
-20. Buka Detail Value Gate Node B (Tab Assets)
-21. Buka Popup Setup Column, centang kolom Cost Center, Insurance Policy, PO Number, dan Purchase Date, klik [Save]
-22. Verifikasi PO Number B1 dan B2 `No access`
-23. Verifikasi PO Number B3 `—` (Kabel Roll di luar Scope; `—` mengalahkan `No access`)
-24. Verifikasi Purchase Date (Scope General) B1, B2, dan B3 `No access`
-25. Hover sel `No access`
-26. Verifikasi tooltip sel "Requires Manage purchase access in this group."
-27. Verifikasi Cost Center (General) B1 `CC-ALPHA`
-28. Verifikasi Cost Center B2 `—` (belum diisi) dan B3 `—` (di luar Scope)
-29. Verifikasi Insurance Policy B1 `INS-2026` (field grup General tidak bergerbang)
+21. Ganti akun: Logout, login sebagai managePurchaseGroups (`managePurchaseGroups_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_GRP_MANAGEPURCHASE_PASSWORD`), buka Fixed Asset > Settings > Groups
+22. Ketik Search `Value Gate Node B` pada Groups List, tekan Enter
+23. Buka Detail Value Gate Node B (Tab Assets)
+24. Buka Popup Setup Column, centang kolom Cost Center, Insurance Policy, PO Number, dan Purchase Date, klik [Save]
+25. Verifikasi PO Number B1 dan B2 `No access`
+26. Verifikasi PO Number B3 `—` (Kabel Roll di luar Scope; `—` mengalahkan `No access`)
+27. Verifikasi Purchase Date (Scope General) B1, B2, dan B3 `No access`
+28. Hover sel `No access`
+29. Verifikasi tooltip sel "Requires Manage purchase access in this group."
+30. Verifikasi Cost Center (General) B1 `CC-ALPHA`
+31. Verifikasi Cost Center B2 `—` (belum diisi) dan B3 `—` (di luar Scope)
+32. Verifikasi Insurance Policy B1 `INS-2026` (field grup General tidak bergerbang)
 
 ## Notes
 
@@ -67,5 +70,6 @@ coverage:
 - Langkah penghubung (S-03): dua langkah Ganti akun (aktor berhak berbeda per TC; bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal).
 - Urutan: TC-1230, TC-1231, TC-1232; TC-1232 terakhir karena mengganti akun ke aktor yang tidak berhak di Value Gate Node B.
 - Alasan di atas ~35 langkah: ketiga TC satu kelas (fungsional baca kolom Custom Field Tab Assets), dataset sama, dan tiap blok berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna. Langkah ganti akun eksplisit, tanpa kelas harness lain.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A`, `Value Gate Node B`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1230 Expected e dan TC-1232 menyebut aktor "berhak"; Pre-setup No 17 dan No 14 tidak menyebut email client khusus. Akun mengikuti Pre-setup, password dari env `FA_GRP_*` yang didaftarkan tim FE.

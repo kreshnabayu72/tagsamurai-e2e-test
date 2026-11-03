@@ -28,46 +28,48 @@ coverage:
 
 ### TC-FA-GRP-1140: Sort Status sel multi-badge menurut label badge pertama
 
-1. Buka Detail Multi Badge Node (Tab Assets)
-2. Verifikasi kolom Status tampil pada tabel (precondition TC)
-3. Klik header Status 1×
-4. Verifikasi urutan Ascending A→Z menurut label badge pertama: A2 (Assigned), A1 (Borrowed + Damaged), A3 (Damaged), A4 (Draft)
-5. Verifikasi A1 diurutkan menurut `Borrowed`, bukan `Damaged` maupun gabungan label
-6. Klik header 2×
-7. Verifikasi urutan Descending Z→A (kebalikan urutan Ascending): A4, A3, A1, A2
-8. Klik header 3×
-9. Verifikasi urutan kembali ke default tabel (Name A→Z)
+1. Ketik Search `Multi Badge Node`, tekan Enter
+2. Buka Detail Multi Badge Node (Tab Assets)
+3. Verifikasi kolom Status tampil pada tabel (precondition TC)
+4. Klik header Status 1×
+5. Verifikasi urutan Ascending A→Z menurut label badge pertama: A2 (Assigned), A1 (Borrowed + Damaged), A3 (Damaged), A4 (Draft)
+6. Verifikasi A1 diurutkan menurut `Borrowed`, bukan `Damaged` maupun gabungan label
+7. Klik header 2×
+8. Verifikasi urutan Descending Z→A (kebalikan urutan Ascending): A4, A3, A1, A2
+9. Klik header 3×
+10. Verifikasi urutan kembali ke default tabel (Name A→Z)
 
 ### TC-FA-GRP-1141: Filter Status sel multi-badge cocok bila salah satu badge sama (OR)
 
-10. Klik icon Filter
-11. Buka dropdown Status
-12. Verifikasi opsi Status berisi nilai badge distinct `Borrowed`, `Damaged`, `Assigned`, `Draft` sebagai opsi terpisah
-13. Verifikasi tidak ada opsi gabungan `Borrowed, Damaged`
-14. Pilih Damaged
-15. Klik [Apply]
-16. Verifikasi A1 dan A3 tampil (salah satu badge A1 sama dengan opsi)
-17. Verifikasi A2 dan A4 tidak tampil
-18. Klik icon Filter, ganti pilihan Status menjadi Borrowed saja, klik [Apply]
-19. Verifikasi hanya A1 yang tampil (A2, A3, A4 tidak tampil)
-20. Klik icon Filter, pilih Assigned dan Borrowed (hanya dua opsi itu terpilih), klik [Apply]
-21. Verifikasi A1 dan A2 tampil (OR di dalam field)
+11. Klik icon Filter
+12. Buka dropdown Status
+13. Verifikasi opsi Status berisi nilai badge distinct `Borrowed`, `Damaged`, `Assigned`, `Draft` sebagai opsi terpisah
+14. Verifikasi tidak ada opsi gabungan `Borrowed, Damaged`
+15. Pilih Damaged
+16. Klik [Apply]
+17. Verifikasi A1 dan A3 tampil (salah satu badge A1 sama dengan opsi)
+18. Verifikasi A2 dan A4 tidak tampil
+19. Klik icon Filter, ganti pilihan Status menjadi Borrowed saja, klik [Apply]
+20. Verifikasi hanya A1 yang tampil (A2, A3, A4 tidak tampil)
+21. Klik icon Filter, pilih Assigned dan Borrowed (hanya dua opsi itu terpilih), klik [Apply]
+22. Verifikasi A1 dan A2 tampil (OR di dalam field)
 
 ### TC-FA-GRP-1142: Search Status sel multi-badge dicocokkan ke label badge mana pun
 
-22. Klik icon Filter, kosongkan pilihan Status, klik [Apply] (langkah penghubung)
-23. Verifikasi kolom Status tampil pada tabel (precondition TC)
-24. Ketik Search `damaged`, tekan Enter
-25. Verifikasi A1 dan A3 tampil (A1 cocok lewat badge kedua `Damaged`)
-26. Verifikasi A2 dan A4 tidak tampil
-27. Ganti isi kotak search dengan `borrowed`, tekan Enter
-28. Verifikasi hanya A1 yang tampil (cocok lewat badge pertama `Borrowed`)
-29. Klik `(←)` pada kotak Search (langkah penghubung)
+23. Klik icon Filter, kosongkan pilihan Status, klik [Apply] (langkah penghubung)
+24. Verifikasi kolom Status tampil pada tabel (precondition TC)
+25. Ketik Search `damaged`, tekan Enter
+26. Verifikasi A1 dan A3 tampil (A1 cocok lewat badge kedua `Damaged`)
+27. Verifikasi A2 dan A4 tidak tampil
+28. Ganti isi kotak search dengan `borrowed`, tekan Enter
+29. Verifikasi hanya A1 yang tampil (cocok lewat badge pertama `Borrowed`)
+30. Klik `(←)` pada kotak Search (langkah penghubung)
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): "Klik icon Filter, kosongkan pilihan Status, klik [Apply]" dan "Klik `(←)` pada kotak Search" mengosongkan state sebelum TC berikutnya dan di akhir spec (S-09).
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-1140: nama aset A1 sampai A4 tidak ditentukan, sehingga urutan default Name A→Z hanya diasersi sebagai "kembali ke default tabel" tanpa urutan nama konkret.
   - TC-FA-GRP-1141: langkah 7 "pilih Assigned dan Borrowed" tidak menyebut apakah pilihan sebelumnya dikosongkan; spec memilih tepat dua opsi itu.

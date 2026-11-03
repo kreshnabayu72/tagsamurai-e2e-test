@@ -68,7 +68,7 @@ coverage:
 
 - Mode: FE+BE (backend nyata, intercept hanya menahan respons untuk mengamati saving state; bukan kegagalan yang dipaksa sehingga bukan kelas b). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: TC-FA-GRP-215 (diblokir) lebih dulu, lalu TC-FA-GRP-211 dan TC-FA-GRP-217 yang menyimpan perubahan (S-10); berbeda dari urutan nomor TC sumber.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-065`, tekan Enter); langkah 15 (Tahan respons simpan group lewat intercept); langkah 18 (Lepas tahanan respons dan tunggu popup tertutup); langkah 20 (Tunggu toast lama hilang otomatis); langkah 21 (Catat jumlah entri Changelog node `Edit Target {runId}-065` sebagai ba...); langkah 26 (Klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-065`, tekan Enter); langkah 15 (Tahan respons simpan group lewat intercept); langkah 18 (Lepas tahanan respons dan tunggu popup tertutup); langkah 20 (Tunggu toast lama hilang otomatis); langkah 21 (Catat jumlah entri Changelog node `Edit Target {runId}-065` sebagai baseline); langkah 26 (Klik `(←)` pada kotak Search).
 - Langkah Search mencari baris target (R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-217 Expected a "Hanya 1 record dibuat/diubah" tidak menyebut cara membaca; spec memakai selisih jumlah entri Changelog node terhadap baseline (kemampuan baca disediakan tim FE/BE).

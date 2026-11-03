@@ -42,72 +42,70 @@ coverage:
 
 ## Test Steps
 
-1. Ketik Search `{runId}-110`, tekan Enter
+1. Ketik Search `{runId}-110`, tekan Enter, lalu catat nama baris halaman 1 tabel (baseline sebelum filter)
 
 ### TC-FA-GRP-1131: Indikator filter aktif muncul saat Apply dan hilang saat Clear
 
 2. Klik icon Filter
 3. Pilih `Assignable` pada dropdown Function
 4. Klik [Apply]
-5. Klik icon Filter untuk menutup panel
-6. Verifikasi badge titik tampil pada icon Filter saat panel tertutup
-7. Klik icon Filter
-8. Verifikasi badge titik tampil pada icon Filter saat panel terbuka
-9. Klik [Clear Field]
-10. Klik [Apply]
-11. Verifikasi badge titik hilang dari icon Filter
-12. Verifikasi baris `Alpha {runId}-110` dan `bravo {runId}-110` tampil (tabel kembali menampilkan seluruh baris)
+5. Verifikasi badge titik tampil pada icon Filter saat panel tertutup
+6. Klik icon Filter
+7. Verifikasi badge titik tampil pada icon Filter saat panel terbuka
+8. Klik [Clear Field]
+9. Klik [Apply]
+10. Verifikasi badge titik hilang dari icon Filter
+11. Verifikasi nama baris halaman 1 tabel sama dengan yang dicatat pada langkah 1 (tabel kembali menampilkan seluruh baris)
 
 ### TC-FA-GRP-1118: Filter tetap tersedia dan berlaku saat kolom Function di-hide
 
-13. Klik icon Filter
-14. Pilih `Assignable` pada dropdown Function
-15. Klik [Apply]
-16. Verifikasi sedikitnya satu baris tampil dan seluruh baris yang tampil ber-Function `Assignable` (baris `Alpha {runId}-110` tampil, baris `bravo {runId}-110` tidak tampil)
-17. Catat nama baris yang tampil pada tabel
-18. Hide kolom Function lewat Column Visibility (icon `⋯` di header kolom terakhir)
-19. Verifikasi kolom Function tidak tampil pada header tabel
-20. Verifikasi filter yang sudah di-Apply tetap berlaku: nama baris yang tampil sama dengan yang dicatat pada langkah 17
-21. Klik icon Filter
-22. Verifikasi Filter Panel tetap memuat field Function walau kolomnya tersembunyi
-23. Klik icon Filter untuk menutup panel
-24. Tampilkan kembali kolom Function lewat Column Visibility
-25. Verifikasi kolom Function tampil pada header tabel
-26. Verifikasi nama baris yang tampil tidak berubah dari yang dicatat pada langkah 17
-27. Klik icon Filter
-28. Verifikasi nilai filter Function tetap `Assignable`
-29. Klik [Clear Field]
-30. Klik [Apply]
+12. Klik icon Filter
+13. Pilih `Assignable` pada dropdown Function
+14. Klik [Apply]
+15. Verifikasi sedikitnya satu baris tampil dan seluruh baris yang tampil ber-Function `Assignable` (baris `Alpha {runId}-110` tampil, baris `bravo {runId}-110` tidak tampil)
+16. Catat nama baris yang tampil pada tabel
+17. Hide kolom Function lewat Column Visibility (icon `⋯` di header kolom terakhir)
+18. Verifikasi kolom Function tidak tampil pada header tabel
+19. Verifikasi filter yang sudah di-Apply tetap berlaku: nama baris yang tampil sama dengan yang dicatat pada langkah 16
+20. Klik icon Filter
+21. Verifikasi Filter Panel tetap memuat field Function walau kolomnya tersembunyi
+22. Klik icon Filter untuk menutup panel
+23. Tampilkan kembali kolom Function lewat Column Visibility
+24. Verifikasi kolom Function tampil pada header tabel
+25. Verifikasi nama baris yang tampil tidak berubah dari yang dicatat pada langkah 16
+26. Klik icon Filter
+27. Verifikasi nilai filter Function tetap `Assignable`
+28. Klik [Clear Field]
+29. Klik [Apply]
 
 ### TC-FA-GRP-1130: Menutup panel tanpa [Apply] membuang draft
 
-31. Klik icon Filter
-32. Pilih `None` pada dropdown Function
-33. Klik [Apply]
-34. Klik icon Filter
-35. Ubah Function menjadi `Assignable` (hilangkan centang `None`, centang `Assignable`) tanpa [Apply]
-36. Klik di luar Filter Panel
-37. Verifikasi tabel tetap menampilkan hasil Function = `None`: baris `bravo {runId}-110` tampil dan baris `Alpha {runId}-110` tidak tampil
-38. Klik icon Filter
-39. Verifikasi Filter Panel menampilkan Function = `None` (nilai ter-Apply, bukan draft)
-40. Ubah Function menjadi `Disposal Group` (hilangkan centang `None`, centang `Disposal Group`) tanpa [Apply]
-41. Klik icon Filter untuk menutup panel
-42. Verifikasi tabel tetap menampilkan hasil Function = `None`: baris `bravo {runId}-110` tampil dan baris `hotel {runId}-110` tidak tampil
-43. Klik icon Filter
-44. Verifikasi Filter Panel menampilkan Function = `None` (nilai ter-Apply, bukan draft)
-45. Verifikasi indikator filter aktif tetap tampil pada icon Filter
-46. Klik icon Filter
-47. Klik [Clear Field]
-48. Klik [Apply]
-49. Klik `(←)` pada kotak Search
+30. Klik icon Filter
+31. Pilih `None` pada dropdown Function
+32. Klik [Apply]
+33. Klik icon Filter
+34. Ubah Function menjadi `Assignable` (hilangkan centang `None`, centang `Assignable`) tanpa [Apply]
+35. Klik di luar Filter Panel
+36. Verifikasi tabel tetap menampilkan hasil Function = `None`: baris `bravo {runId}-110` tampil dan baris `Alpha {runId}-110` tidak tampil
+37. Klik icon Filter
+38. Verifikasi Filter Panel menampilkan Function = `None` (nilai ter-Apply, bukan draft)
+39. Ubah Function menjadi `Disposal Group` (hilangkan centang `None`, centang `Disposal Group`) tanpa [Apply]
+40. Klik icon Filter untuk menutup panel
+41. Verifikasi tabel tetap menampilkan hasil Function = `None`: baris `bravo {runId}-110` tampil dan baris `hotel {runId}-110` tidak tampil
+42. Klik icon Filter
+43. Verifikasi Filter Panel menampilkan Function = `None` (nilai ter-Apply, bukan draft)
+44. Verifikasi indikator filter aktif tetap tampil pada icon Filter
+45. Klik [Clear Field]
+46. Klik [Apply]
+47. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membatasi tabel dengan Search suffix spec di awal, membuka Filter Panel dan dropdown, menutup dropdown, serta [Clear Field] + [Apply] dan `(←)` pada kotak Search sebagai pemulihan state antar TC (S-03, S-09, R-16).
+- Langkah penghubung (tanpa awalan `Verifikasi`): membatasi tabel dengan Search suffix spec di awal sekaligus mencatat nama baris halaman 1 sebagai baseline langkah 11 (S-12; posisi baris tertentu di halaman 1 tidak diandalkan, 12 baris seeding dengan page size 10), membuka Filter Panel dan dropdown, menutup dropdown, serta [Clear Field] + [Apply] dan `(←)` pada kotak Search sebagai pemulihan state antar TC (S-03, S-09, R-16). Panel Filter menutup sendiri sesudah [Apply] (A-9), sehingga tiap pembukaan panel berikutnya memakai satu `Klik icon Filter`.
 - Urutan TC di spec berbeda dari urutan sumber (TC-FA-GRP-1131 lebih dulu, lalu TC-FA-GRP-1118, TC-FA-GRP-1130) karena TC-FA-GRP-1131 mensyaratkan tidak ada filter ter-Apply sebelum aksi, sedangkan TC-FA-GRP-1130 mensyaratkan Function = None sudah ter-Apply.
 - Catatan TC-FA-GRP-1131 Expected c (bagian nilai kosong diuji pada Tab Users) tidak diasersi di spec ini.
-- Spec 49 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec 47 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.

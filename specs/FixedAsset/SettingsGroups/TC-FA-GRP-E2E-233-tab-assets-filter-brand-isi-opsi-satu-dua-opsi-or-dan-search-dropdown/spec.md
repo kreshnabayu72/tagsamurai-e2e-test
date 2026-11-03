@@ -28,48 +28,50 @@ coverage:
 
 ### TC-FA-GRP-1069: Screening isi opsi dropdown Filter Brand Tab Assets
 
-1. Buka Detail Warehouse A (Tab Assets)
-2. Klik icon Filter
-3. Buka dropdown Brand
-4. Verifikasi opsi sama dengan nilai Brand distinct yang ada di baris tabel Warehouse A saat ini dan tidak memuat nilai yang tidak dipakai baris mana pun
-5. Verifikasi opsi dapat dicentang lebih dari satu (multi-select)
-6. Verifikasi kotak search internal tampil di dalam dropdown
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Buka Detail Warehouse A (Tab Assets)
+3. Klik icon Filter
+4. Buka dropdown Brand
+5. Verifikasi opsi sama dengan nilai Brand distinct yang ada di baris tabel Warehouse A saat ini dan tidak memuat nilai yang tidak dipakai baris mana pun
+6. Verifikasi opsi dapat dicentang lebih dari satu (multi-select)
+7. Verifikasi kotak search internal tampil di dalam dropdown
 
 ### TC-FA-GRP-1070: Filter Tab Assets by Brand: satu opsi
 
-7. Pilih 1 opsi pada Brand (Brand A)
-8. Klik [Apply]
-9. Verifikasi sedikitnya satu baris tampil
-10. Verifikasi hanya baris dengan Brand = Brand A yang tampil
-11. Verifikasi indikator filter aktif tampil pada icon Filter
+8. Pilih 1 opsi pada Brand (Brand A)
+9. Klik [Apply]
+10. Verifikasi sedikitnya satu baris tampil
+11. Verifikasi hanya baris dengan Brand = Brand A yang tampil
+12. Verifikasi indikator filter aktif tampil pada icon Filter
 
 ### TC-FA-GRP-1071: Filter Tab Assets by Brand: dua opsi dalam satu field (OR)
 
-12. Klik icon Filter, kosongkan pilihan Brand, klik [Apply] (langkah penghubung)
-13. Klik icon Filter
-14. Centang 2 opsi berbeda pada Brand (Brand A dan Brand B)
-15. Klik [Apply]
-16. Verifikasi sedikitnya satu baris tampil
-17. Verifikasi baris dengan Brand = Brand A atau Brand B tampil (OR di dalam field)
-18. Verifikasi baris dengan nilai Brand lain tidak tampil
+13. Klik icon Filter, kosongkan pilihan Brand, klik [Apply] (langkah penghubung)
+14. Klik icon Filter
+15. Centang 2 opsi berbeda pada Brand (Brand A dan Brand B)
+16. Klik [Apply]
+17. Verifikasi sedikitnya satu baris tampil
+18. Verifikasi baris dengan Brand = Brand A atau Brand B tampil (OR di dalam field)
+19. Verifikasi baris dengan nilai Brand lain tidak tampil
 
 ### TC-FA-GRP-1072: Search internal dropdown Filter Brand Tab Assets
 
-19. Klik icon Filter, kosongkan pilihan Brand, klik [Apply] (langkah penghubung)
-20. Klik icon Filter
-21. Buka dropdown Brand
-22. Ketik potongan nama Brand A dalam huruf kecil di kotak search dropdown
-23. Verifikasi daftar opsi menyempit ke opsi yang mengandung substring (case-insensitive) dan memuat Brand A
-24. Ganti isi kotak search dropdown dengan `Fixture.settingsGroups.noMatchText`
-25. Verifikasi tidak ada opsi yang tampil di daftar opsi
-26. Verifikasi teks `No results found` tampil di daftar opsi
-27. Verifikasi tidak ada ilustrasi di daftar opsi (teks saja)
+20. Klik icon Filter, kosongkan pilihan Brand, klik [Apply] (langkah penghubung)
+21. Klik icon Filter
+22. Buka dropdown Brand
+23. Ketik potongan nama Brand A dalam huruf kecil di kotak search dropdown
+24. Verifikasi daftar opsi menyempit ke opsi yang mengandung substring (case-insensitive) dan memuat Brand A
+25. Ganti isi kotak search dropdown dengan `Fixture.settingsGroups.noMatchText`
+26. Verifikasi tidak ada opsi yang tampil di daftar opsi
+27. Verifikasi teks `No results found` tampil di daftar opsi
+28. Verifikasi tidak ada ilustrasi di daftar opsi (teks saja)
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): "Klik icon Filter, kosongkan pilihan Brand, klik [Apply]" mengembalikan filter ke kosong sebelum TC berikutnya (S-09).
 - Layar awal (Groups List) dibuka hook `beforeEach` suite; langkah "Buka Detail Warehouse A (Tab Assets)" adalah bagian TC.
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-1069: Expected "tidak termasuk nilai yang tidak dipakai baris mana pun" tidak menyebut contoh Brand katalog yang tidak dipakai; asersinya dibuktikan lewat kesamaan daftar opsi dengan nilai distinct tabel.
   - TC-FA-GRP-1072: "potongan nama opsi" tidak menyebut panjang potongan; spec memakai Brand A dalam huruf kecil.

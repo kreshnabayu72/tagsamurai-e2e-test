@@ -26,7 +26,7 @@ coverage:
 
 ## Test Steps
 
-1. Klik angka Total User Warehouse A
+1. Ketik Search `Warehouse A`, tekan Enter, lalu klik angka Total User Warehouse A
 2. Klik icon Filter
 
 ### TC-1013: Filter Temporary User Yes/No
@@ -57,32 +57,36 @@ coverage:
 23. Tampilkan kolom Temporary Until via Column Visibility
 24. Verifikasi sedikitnya satu baris tampil pada tabel
 25. Verifikasi hanya baris dengan Temporary Until di rentang (inklusif) tampil
-26. Verifikasi tanggal pada filter dan kolom Temporary Until berformat Date Format General Settings
+26. Verifikasi tanggal pada kolom Temporary Until berformat Date Format General Settings
 27. Verifikasi user tanpa Temporary Until tidak tampil
-28. Buka Filter, klik [Clear Field], klik [Apply]
+28. Klik icon Filter
+29. Verifikasi tanggal pada field Temporary Until di Filter Panel berformat Date Format General Settings
+30. Tutup Filter Panel
+31. Buka Filter, klik [Clear Field], klik [Apply]
 
 ### TC-1015: Filter Custom Field Dropdown
 
-29. Tampilkan kolom Custom Field `Lokasi Kerja {runId}` via Column Visibility
-30. Klik icon Filter
-31. Verifikasi field filter `Lokasi Kerja {runId}` tampil dengan placeholder `All [plural noun]`
-32. Verifikasi `Phone {runId}` (teks) tidak punya field filter
-33. Pilih dua opsi berbeda pada field `Lokasi Kerja {runId}`, klik [Apply]
-34. Verifikasi sedikitnya satu baris tampil pada tabel
-35. Verifikasi baris yang bernilai salah satu dari kedua opsi `Lokasi Kerja {runId}` tampil (OR di dalam field)
-36. Verifikasi baris bernilai lain tidak tampil
-37. Sembunyikan kolom Custom Field `Lokasi Kerja {runId}` via Column Visibility
-38. Buka Filter, klik [Clear Field], pilih dua opsi berbeda pada field `Lokasi Kerja {runId}`, klik [Apply]
-39. Verifikasi sedikitnya satu baris tampil pada tabel
-40. Verifikasi filter bekerja walau kolom Custom Field sedang tidak tampil (Hidden)
-41. Buka Filter, klik [Clear Field], klik [Apply]
+32. Tampilkan kolom Custom Field `Lokasi Kerja {runId}` via Column Visibility
+33. Klik icon Filter
+34. Verifikasi field filter `Lokasi Kerja {runId}` tampil dengan placeholder `All [plural noun]`
+35. Verifikasi `Phone {runId}` (teks) tidak punya field filter
+36. Pilih dua opsi berbeda pada field `Lokasi Kerja {runId}`, klik [Apply]
+37. Verifikasi sedikitnya satu baris tampil pada tabel
+38. Verifikasi baris yang bernilai salah satu dari kedua opsi `Lokasi Kerja {runId}` tampil (OR di dalam field)
+39. Verifikasi baris bernilai lain tidak tampil
+40. Sembunyikan kolom Custom Field `Lokasi Kerja {runId}` via Column Visibility
+41. Buka Filter, klik [Clear Field], pilih dua opsi berbeda pada field `Lokasi Kerja {runId}`, klik [Apply]
+42. Verifikasi sedikitnya satu baris tampil pada tabel
+43. Verifikasi filter bekerja walau kolom Custom Field sedang tidak tampil (Hidden)
+44. Buka Filter, klik [Clear Field], klik [Apply]
 
 ## Notes
 
-- Spec 41 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec 44 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03): `Buka Filter, klik [Clear Field], klik [Apply]` antar TC (S-09); menyembunyikan kolom Temporary User dan Custom Field `Lokasi Kerja {runId}` serta menampilkan kolom Temporary Until lewat Column Visibility agar Expected d (TC-1013), Expected c (TC-1015), dan Expected c (TC-1014, format tanggal kolom) dapat diamati; kolom dipulihkan lewat hook `after` (hapus preferensi kolom).
 - Asersi tambahan (S-03, 8b.2): `Verifikasi sedikitnya satu baris tampil pada tabel` ditambahkan sebelum asersi hasil Search atau Filter yang bersifat universal ("hanya baris ...", "nilai lain tidak tampil") agar asersi tidak vacuous; bukan klausa Expected TC.
+- Baris `Warehouse A` dicari lewat Search sebelum klik angka Total User (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan; Refresh F5 membuang Search sehingga Search diketik ulang). Langkah Search digabung ke langkah klik angka dan dihitung langkah penghubung (S-03, S-14, R-16).
 - Temuan untuk QA:
   - Tabel Data Uji untuk variasi baris Tab Users tidak punya tabel konkret di TC (hanya `>= 12 user variasi role`); spec mendefinisikan kebutuhan nilai distinct di Prerequisites.
   - Custom Field User beserta nilainya pada user Warehouse A tidak tertulis di Tabel Pre-setup TC (TC-1013 sampai 1015); spec men-seed sendiri di hook `before` (bersuffix `{runId}`) dan menghapusnya di hook `after` (S-11).

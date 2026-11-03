@@ -63,33 +63,37 @@ coverage:
 23. Verifikasi dialog native browser leave-page muncul
 24. Batalkan dialog native (tetap di halaman)
 25. Verifikasi popup dan input `Reload Guard Edit {runId}-066` tetap
-26. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
+26. Klik (X)
+27. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil
+28. Klik [Leave] (pemulihan form kotor)
 
 ### TC-FA-GRP-1029: Klik backdrop saat ada perubahan tidak menutup popup dan tanpa dialog Unsaved changes
 
-27. Buka elipsis (⋯) baris `Edit Target {runId}-066`, klik Edit, lalu ubah Group Name menjadi `Backdrop Test`
-28. Klik backdrop (area di luar popup)
-29. Verifikasi popup tetap terbuka dengan input `Backdrop Test` dipertahankan
-30. Verifikasi dialog `Unsaved changes` tidak muncul
-31. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
+29. Buka elipsis (⋯) baris `Edit Target {runId}-066`, klik Edit, lalu ubah Group Name menjadi `Backdrop Test`
+30. Klik backdrop (area di luar popup)
+31. Verifikasi popup tetap terbuka dengan input `Backdrop Test` dipertahankan
+32. Verifikasi dialog `Unsaved changes` tidak muncul
+33. Klik (X)
+34. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil
+35. Klik [Leave] (pemulihan form kotor)
 
 ### TC-FA-GRP-1032: Navigasi sidebar dan Back browser dengan perubahan memunculkan dialog Unsaved changes
 
-32. Buka elipsis (⋯) baris `Edit Target {runId}-066`, klik Edit, lalu ubah Group Name menjadi `Route Test`
-33. Klik menu lain di sidebar
-34. Verifikasi perubahan route dicegat dan dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur klik menu sidebar
-35. Klik [Cancel] pada dialog
-36. Verifikasi navigasi dibatalkan: popup tetap terbuka dengan input `Route Test` dipertahankan
-37. Klik tombol Back browser
-38. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur tombol Back browser
-39. Klik [Leave]
-40. Verifikasi navigasi dilanjutkan dan popup ditutup tanpa menyimpan: Group Name node target lewat fixture BE tetap `Edit Target {runId}-066`
+36. Buka elipsis (⋯) baris `Edit Target {runId}-066`, klik Edit, lalu ubah Group Name menjadi `Route Test`
+37. Klik menu lain di sidebar
+38. Verifikasi perubahan route dicegat dan dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur klik menu sidebar
+39. Klik [Cancel] pada dialog
+40. Verifikasi navigasi dibatalkan: popup tetap terbuka dengan input `Route Test` dipertahankan
+41. Klik tombol Back browser
+42. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur tombol Back browser
+43. Klik [Leave]
+44. Verifikasi navigasi dilanjutkan dan popup ditutup tanpa menyimpan: Group Name node target lewat fixture BE tetap `Edit Target {runId}-066`
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-066`, tekan Enter); langkah 26 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...); langkah 31 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...).
-- Alasan spec melewati ~35 langkah (40 langkah): kelima TC satu kelas (UI tutup popup dan guard Unsaved changes pada Popup Edit Group), satu dataset (node `Edit Target` milik spec, tidak berubah), dan tiap blok berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna); blok ditutup bersih sebelum blok berikutnya (S-09); langkah banyak karena `Verifikasi` per klausa Expected (S-01).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-066`, tekan Enter); langkah 26 (Klik (X)) dan langkah 28 (Klik [Leave], pemulihan form kotor); langkah 33 (Klik (X)) dan langkah 35 (Klik [Leave], pemulihan form kotor).
+- Alasan spec melewati ~35 langkah (44 langkah): kelima TC satu kelas (UI tutup popup dan guard Unsaved changes pada Popup Edit Group), satu dataset (node `Edit Target` milik spec, tidak berubah), dan tiap blok berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna); blok ditutup bersih sebelum blok berikutnya (S-09); langkah banyak karena `Verifikasi` per klausa Expected (S-01).
 - Reload TC-FA-GRP-214 memakai dialog `beforeunload` yang ditangani (S-08); kemampuannya tertulis di Prerequisites. Langkah Search mencari baris target (R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-212 Langkah Uji "Buka lagi" tidak menyebut cara membuka lagi; spec membuka lewat elipsis baris target, Edit.

@@ -71,21 +71,22 @@ coverage:
 
 19. Isi Group Name `Edit Code A {runId}-063`, ganti isi Code dengan `ABCDEFGHIJ-1234` (15 karakter), lalu klik [Save]
 20. Verifikasi toast sukses `Success, group has been updated.`
-21. Ketik Search `Edit Code A {runId}-063`, tekan Enter
+21. Ganti isi kotak Search dengan `Edit Code A {runId}-063`, tekan Enter
 22. Verifikasi Code `ABCDEFGHIJ-1234` tersimpan utuh 15 karakter pada baris hasil Search
 
 ### TC-FA-GRP-203: Code menerima huruf, angka, -, _, . dan auto-uppercase
 
 23. Buka elipsis (⋯) baris hasil Search, klik Edit, isi Group Name `Edit Code C {runId}-063` dan Code `wh_a-1.b`, lalu klik [Save]
-24. Verifikasi Code tampil dan tersimpan uppercase `WH_A-1.B`
-25. Verifikasi toast sukses `Success, group has been updated.`
-26. Klik `(←)` pada kotak Search
+24. Verifikasi toast sukses `Success, group has been updated.`
+25. Ganti isi kotak Search dengan `Edit Code C {runId}-063`, tekan Enter
+26. Verifikasi Code tampil dan tersimpan uppercase `WH_A-1.B`
+27. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: validasi yang diblokir lebih dulu (TC-FA-GRP-201, 202, 204, 205), lalu aksi sukses (TC-FA-GRP-200, 203) sesuai S-10; berbeda dari urutan nomor TC sumber. Dalam satu popup, nilai Code diganti sehingga error TC sebelumnya hilang sebelum TC berikutnya (R-12, S-09).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-063`, tekan Enter); langkah 9 (Tunggu ±500 ms); langkah 11 (Klik [Save] (memeriksa "Submit tidak menyimpan")); langkah 14 (Tunggu ±500 ms (Code lolos debounce)); langkah 21 (Ketik Search `Edit Code A {runId}-063`, tekan Enter); langkah 26 (Klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-063`, tekan Enter); langkah 9 (Tunggu ±500 ms); langkah 11 (Klik [Save] (memeriksa "Submit tidak menyimpan")); langkah 14 (Tunggu ±500 ms (Code lolos debounce)); langkah 21 (Ganti isi kotak Search dengan `Edit Code A {runId}-063`, tekan Enter); langkah 25 (Ganti isi kotak Search dengan `Edit Code C {runId}-063`, tekan Enter; Search `Edit Code A {runId}-063` tidak lagi cocok dengan baris yang sudah diganti namanya); langkah 27 (Klik `(←)` pada kotak Search).
 - Langkah 5 sampai 7 berulang untuk tiga nilai tabel Prerequisites; `Verifikasi` tetap satu per klausa dan ekspansinya 3 x 3 langkah (8b butir 7). Langkah Search mencari baris target (R-16).
 - TC-FA-GRP-205: pelaku kedua memakai sesi API aktor (bukan konteks UI kedua), sehingga tidak butuh butir `P-2` (P-2 `[KEPUTUSAN 2026-10-30]`).
 - Temuan untuk QA:

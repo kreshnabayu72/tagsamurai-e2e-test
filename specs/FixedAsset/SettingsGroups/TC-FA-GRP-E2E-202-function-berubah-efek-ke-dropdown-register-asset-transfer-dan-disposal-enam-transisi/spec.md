@@ -42,34 +42,59 @@ coverage:
 
 ## Test Steps
 
-1. Untuk setiap baris tabel Transisi tanpa Dialog Change Function (langkah 1 sampai 11): Buka Fixed Asset > Settings > Groups
+1. Untuk setiap baris tabel Transisi tanpa Dialog Change Function (langkah 1 sampai 23): Buka Fixed Asset > Settings > Groups
 2. Atur Function Node XF ke nilai kolom Dari lewat sesi API hingga tersimpan
-3. Buka elipsis Node XF, pilih Edit, pilih Function kolom Ke, klik [Save]
-4. Tunggu aksi selesai
-5. Buka field Group Register Asset dan field tujuan Transfer
-6. Verifikasi sedikitnya satu opsi group lain tampil di field Group Register Asset dan field tujuan Transfer
-7. Verifikasi node XF sesuai kolom Register Asset dan Transfer
-8. Buka dropdown tujuan Disposal
-9. Verifikasi sedikitnya satu opsi group lain tampil di dropdown tujuan Disposal
-10. Verifikasi node XF sesuai kolom Tujuan Disposal
-11. Verifikasi aset dan histori disposal yang menunjuk node XF tidak berpindah, terkunci, atau terhapus
-12. Untuk setiap baris tabel Transisi dengan Dialog Change Function (langkah 12 sampai 23): Buka Fixed Asset > Settings > Groups
-13. Atur Function Node XF ke nilai kolom Dari lewat sesi API hingga tersimpan
-14. Buka elipsis Node XF, pilih Edit, pilih Function kolom Ke, klik [Save]
-15. Klik [Save] pada Dialog Change Function
-16. Tunggu aksi selesai
-17. Buka field Group Register Asset dan field tujuan Transfer
-18. Verifikasi sedikitnya satu opsi group lain tampil di field Group Register Asset dan field tujuan Transfer
-19. Verifikasi node XF sesuai kolom Register Asset dan Transfer
-20. Buka dropdown tujuan Disposal
-21. Verifikasi sedikitnya satu opsi group lain tampil di dropdown tujuan Disposal
-22. Verifikasi node XF sesuai kolom Tujuan Disposal
-23. Verifikasi aset dan histori disposal yang menunjuk node XF tidak berpindah, terkunci, atau terhapus
+3. Ketik Search `Node XF {runId}-202`, tekan Enter
+4. Klik angka Total Asset Node XF untuk membuka Popup Detail Group, Tab Assets
+5. Catat Group, status, dan jumlah aset node XF (termasuk aset Disposed) sebagai pembanding sebelum perubahan Function
+6. Tutup Popup Detail Group
+7. Buka elipsis Node XF, pilih Edit, pilih Function kolom Ke, klik [Save]
+8. Tunggu aksi selesai
+9. Klik angka Total Asset Node XF untuk membuka Popup Detail Group, Tab Assets
+10. Verifikasi aset dan histori disposal yang menunjuk node XF tidak berpindah, terkunci, atau terhapus dibanding catatan sebelum perubahan Function
+11. Tutup Popup Detail Group
+12. Buka Fixed Asset > Register Asset
+13. Buka field Group Register Asset
+14. Verifikasi sedikitnya satu opsi group lain tampil di field Group Register Asset
+15. Verifikasi node XF sesuai kolom Register Asset dan Transfer pada field Group Register Asset
+16. Buka Fixed Asset > Transfer
+17. Buka field tujuan Transfer
+18. Verifikasi sedikitnya satu opsi group lain tampil di field tujuan Transfer
+19. Verifikasi node XF sesuai kolom Register Asset dan Transfer pada field tujuan Transfer
+20. Buka Fixed Asset > Disposal
+21. Buka dropdown tujuan Disposal
+22. Verifikasi sedikitnya satu opsi group lain tampil di dropdown tujuan Disposal
+23. Verifikasi node XF sesuai kolom Tujuan Disposal
+24. Untuk setiap baris tabel Transisi dengan Dialog Change Function (langkah 24 sampai 47): Buka Fixed Asset > Settings > Groups
+25. Atur Function Node XF ke nilai kolom Dari lewat sesi API hingga tersimpan
+26. Ketik Search `Node XF {runId}-202`, tekan Enter
+27. Klik angka Total Asset Node XF untuk membuka Popup Detail Group, Tab Assets
+28. Catat Group, status, dan jumlah aset node XF (termasuk aset Disposed) sebagai pembanding sebelum perubahan Function
+29. Tutup Popup Detail Group
+30. Buka elipsis Node XF, pilih Edit, pilih Function kolom Ke, klik [Save]
+31. Klik [Save] pada Dialog Change Function
+32. Tunggu aksi selesai
+33. Klik angka Total Asset Node XF untuk membuka Popup Detail Group, Tab Assets
+34. Verifikasi aset dan histori disposal yang menunjuk node XF tidak berpindah, terkunci, atau terhapus dibanding catatan sebelum perubahan Function
+35. Tutup Popup Detail Group
+36. Buka Fixed Asset > Register Asset
+37. Buka field Group Register Asset
+38. Verifikasi sedikitnya satu opsi group lain tampil di field Group Register Asset
+39. Verifikasi node XF sesuai kolom Register Asset dan Transfer pada field Group Register Asset
+40. Buka Fixed Asset > Transfer
+41. Buka field tujuan Transfer
+42. Verifikasi sedikitnya satu opsi group lain tampil di field tujuan Transfer
+43. Verifikasi node XF sesuai kolom Register Asset dan Transfer pada field tujuan Transfer
+44. Buka Fixed Asset > Disposal
+45. Buka dropdown tujuan Disposal
+46. Verifikasi sedikitnya satu opsi group lain tampil di dropdown tujuan Disposal
+47. Verifikasi node XF sesuai kolom Tujuan Disposal
 
 ## Notes
 
-- Langkah 1 sampai 11 berulang untuk dua baris tabel pertama; langkah 12 sampai 23 berulang untuk empat baris tabel kedua (8b butir 7). Langkah penghubung (S-03): membuka Fixed Asset > Settings > Groups di awal tiap iterasi (S-14; iterasi sebelumnya berakhir di form modul konsumen), mengatur Function awal lewat sesi API, dan Tunggu aksi selesai (8b butir 8). Asersi tambahan (S-03): sebelum asersi absence atau "tetap tidak muncul" ada Verifikasi sedikitnya satu opsi group lain tampil di dropdown yang sama sebagai anchor positif (8b butir 2); TC tidak memintanya.
-- Spec memiliki 23 langkah nominal dan 70 langkah setelah ekspansi, di atas smell 35 langkah. Alasan: seluruh blok satu topik (efek perubahan Function ke dropdown konsumen) pada node yang sama; langkah tiap transisi identik sehingga ekspansi berasal dari perulangan per transisi tanpa langkah bersyarat (8b butir 7).
+- Langkah 1 sampai 23 berulang untuk dua baris tabel pertama; langkah 24 sampai 47 berulang untuk empat baris tabel kedua (8b butir 7). Langkah penghubung (S-03): membuka Fixed Asset > Settings > Groups di awal tiap iterasi (S-14; iterasi sebelumnya berakhir di form modul konsumen), mengatur Function awal lewat sesi API, dan Tunggu aksi selesai (8b butir 8). Navigasi ke modul konsumen (S-14): Buka Fixed Asset > Register Asset, > Transfer, dan > Disposal sebelum membuka field atau dropdown, karena field itu milik form modul masing-masing. Pembanding "tidak berpindah, terkunci, atau terhapus" (S-12): Group, status, dan jumlah aset node XF (termasuk aset Disposed) dicatat dari Popup Detail Group Tab Assets sebelum perubahan Function, lalu dibaca ulang dari Popup yang sama sesudahnya dan ditutup sebelum pindah modul. Baris target dicari lewat Search nama bersuffix (client memiliki lebih dari 10 node level 1 dan page size 10; S-03, R-16). Asersi tambahan (S-03): sebelum asersi absence atau "tetap tidak muncul" ada Verifikasi sedikitnya satu opsi group lain tampil di dropdown yang sama sebagai anchor positif (8b butir 2); TC tidak memintanya.
+- Spec memiliki 47 langkah nominal dan 142 langkah setelah ekspansi, di atas smell 35 langkah. Alasan: seluruh blok satu topik (efek perubahan Function ke dropdown konsumen) pada node yang sama; langkah tiap transisi identik sehingga ekspansi berasal dari perulangan per transisi tanpa langkah bersyarat (8b butir 7).
 - Temuan untuk QA:
   - TC-896 sampai 901 menulis "(konfirmasi dialog bila muncul)" dan "aset existing di node (bila Assignable) atau histori disposal (bila Disposal Group)"; spec memisahkan transisi tanpa dan dengan dialog, dan memakai node dengan aset aktif serta histori disposal sekaligus.
+  - TC tidak menyebut cara mengamati histori disposal pada node; spec membaca aset Disposed lewat Tab Assets Popup Detail Group.
   - Field "Group Register Asset" dan "tujuan Transfer" serta "tujuan Disposal" diverifikasi pada pilihan dropdown; TC tidak menyebut langkah rinci membuka form Register Asset, Transfer, dan Disposal.

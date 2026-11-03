@@ -69,9 +69,11 @@ coverage:
 
 23. Klik [+] Group di sidebar
 24. Ketik Group Name `Nama Bersama {runId}-034` (nama yang sudah dipakai node di parent berbeda)
-25. Verifikasi tidak ada error duplikat (keunikan per parent)
-26. Klik [Submit]
-27. Verifikasi toast sukses `Success, group has been created.`
+25. Tunggu ±500 ms tanpa blur
+26. Verifikasi field Group Name berisi `Nama Bersama {runId}-034` (anchor positif sebelum absence)
+27. Verifikasi tidak ada error duplikat (keunikan per parent)
+28. Klik [Submit]
+29. Verifikasi toast sukses `Success, group has been created.`
 
 ## Notes
 
@@ -79,6 +81,7 @@ coverage:
 - Urutan TC: validasi yang diblokir lebih dulu (TC-FA-GRP-85, 87, 88), lalu aksi sukses (TC-FA-GRP-86, 89) sesuai S-10; berbeda dari urutan nomor TC sumber.
 - Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 8 (Klik [Submit] (memeriksa "Submit tidak tersimpan selama error")); langkah 11 (Tunggu ±500 ms tanpa blur); langkah 13 (Klik [Submit] (memeriksa "[Submit] tidak menyimpan data")); langkah 20 (Ketik Search string 120 karakter tersebut, tekan Enter); langkah 22 (Klik `(←)` pada kotak Search).
 - Langkah 20 mencari baris target yang baru dibuat (R-16), karena tabel dapat memuat banyak baris.
+- Langkah 25 (Tunggu ±500 ms tanpa blur) memberi waktu debounce sebelum absence error duplikat diasersi, dan langkah 26 adalah anchor positif absence (8b butir 2; tidak ada di Expected TC), agar asersi tidak lulus hanya karena error belum sempat muncul.
 - Pembanding TC-FA-GRP-89 memakai node milik spec (`Nama Bersama {runId}-034`) menggantikan contoh `IT Department` Pre-setup, supaya group baru tidak memakai nama literal Pre-setup (S-06, S-12).
 - Temuan untuk QA:
   - TC-FA-GRP-87 dan TC-FA-GRP-88 Expected "Submit tidak tersimpan / tidak menyimpan" tidak punya langkah klik [Submit] di Langkah Uji; spec menambahkan klik sebagai langkah penghubung supaya asersi bermakna.

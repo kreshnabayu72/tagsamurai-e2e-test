@@ -23,9 +23,12 @@ coverage:
 - Data Pre-setup: Warehouse A (Pre-setup No 9) dibaca dan tidak diubah; memuat >= 12 user dengan variasi role, dan client punya Custom Field aktif Phone (Data Dinamis, dibaca saja). Tabel Data Uji variasi baris tidak punya tabel konkret di TC (lihat Temuan untuk QA); asersi Search, Filter, dan Sort memakai data dengan sedikitnya dua nilai distinct pada kolom yang diasersi.
 - Kolom yang disort memuat nilai bervariasi (huruf besar dan kecil, angka, dan kosong) dengan sedikitnya dua nilai distinct, termasuk sepasang nilai yang membedakan case-insensitive dari case-sensitive (mis. `anggur` dan `Apel`).
 
-  | Kolom |
+  | Kolom default (sudah tampil, tidak perlu dicentang) |
   |---|
   | Group Role |
+
+  | Kolom curated (perlu dicentang lewat Column Visibility) |
+  |---|
   | Activation Status |
   | Temporary User |
 
@@ -33,29 +36,36 @@ coverage:
 
 ## Test Steps
 
-1. Klik angka Total User Warehouse A
-2. Untuk setiap baris tabel Prerequisites (langkah 2 sampai 8): Pastikan kolom pada baris tabel tampil (kolom curated ditampilkan via Column Visibility)
-3. Klik header kolom pada baris tabel 1x
-4. Verifikasi urutan ascending A-Z case-insensitive (mis. `anggur` sebelum `Apel`)
-5. Klik header kolom pada baris tabel 2x
-6. Verifikasi urutan descending Z-A
-7. Klik header kolom pada baris tabel 3x
-8. Verifikasi urutan kembali ke default tabel (Name A-Z)
+1. Ketik Search `Warehouse A`, tekan Enter, lalu klik angka Total User Warehouse A
+2. Untuk setiap baris tabel kolom default (langkah 2 sampai 7): Klik header kolom pada baris tabel 1x
+3. Verifikasi urutan ascending A-Z case-insensitive (mis. `anggur` sebelum `Apel`)
+4. Klik header kolom pada baris tabel 2x
+5. Verifikasi urutan descending Z-A
+6. Klik header kolom pada baris tabel 3x
+7. Verifikasi urutan kembali ke default tabel (Name A-Z)
+8. Untuk setiap baris tabel kolom curated (langkah 8 sampai 14): Tampilkan kolom pada baris tabel via Column Visibility
+9. Klik header kolom pada baris tabel 1x
+10. Verifikasi urutan ascending A-Z case-insensitive (mis. `anggur` sebelum `Apel`)
+11. Klik header kolom pada baris tabel 2x
+12. Verifikasi urutan descending Z-A
+13. Klik header kolom pada baris tabel 3x
+14. Verifikasi urutan kembali ke default tabel (Name A-Z)
 
 ### TC-622: Sort Temporary Until
 
-9. Tampilkan kolom Temporary Until via Column Visibility
-10. Klik header Temporary Until 1x
-11. Verifikasi urutan Oldest First
-12. Klik header Temporary Until 2x
-13. Verifikasi urutan Newest First
-14. Klik header Temporary Until 3x
-15. Verifikasi urutan kembali ke default tabel (Name A-Z)
+15. Tampilkan kolom Temporary Until via Column Visibility
+16. Klik header Temporary Until 1x
+17. Verifikasi urutan Oldest First
+18. Klik header Temporary Until 2x
+19. Verifikasi urutan Newest First
+20. Klik header Temporary Until 3x
+21. Verifikasi urutan kembali ke default tabel (Name A-Z)
 
 ## Notes
 
-- Langkah 2 sampai 8 berulang untuk setiap baris tabel Prerequisites (Group Role, Activation Status, Temporary User); Temporary Until memakai urutan Oldest First dan Newest First sehingga ditulis sebagai blok sendiri (langkah 9 sampai 15).
-- Spec memiliki 15 langkah nominal dan 29 langkah setelah ekspansi (3 iterasi x 7 langkah + 8), di bawah smell 35 langkah.
+- Langkah 2 sampai 7 berulang untuk baris tabel kolom default (Group Role); langkah 8 sampai 14 berulang untuk baris tabel kolom curated (Activation Status, Temporary User) dan diawali langkah menampilkan kolom lewat Column Visibility, karena kolom default sudah tampil dan tidak perlu dicentang (8b butir 7). Temporary Until memakai urutan Oldest First dan Newest First sehingga ditulis sebagai blok sendiri (langkah 15 sampai 21).
+- Spec memiliki 21 langkah nominal dan 28 langkah setelah ekspansi (1 iterasi x 6 langkah + 2 iterasi x 7 langkah + 8), di bawah smell 35 langkah.
+- Baris `Warehouse A` dicari lewat Search sebelum klik angka Total User (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan; Refresh F5 membuang Search sehingga Search diketik ulang). Langkah Search digabung ke langkah klik angka dan dihitung langkah penghubung (S-03, S-14, R-16).
 - Temuan untuk QA:
   - Tabel Data Uji untuk variasi baris Tab Users tidak punya tabel konkret di TC (hanya `>= 12 user variasi role`); spec mendefinisikan kebutuhan nilai distinct di Prerequisites.
   - Pre-setup tidak menyebut nilai Temporary Until bervariasi; spec mensyaratkan sedikitnya dua tanggal distinct pada Warehouse A.

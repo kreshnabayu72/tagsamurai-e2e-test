@@ -68,14 +68,14 @@ coverage:
 11. Buka Popup Setup Column: klik icon `⋯` di header kolom terakhir, lalu klik `Setup Column...`
 12. Klik [Reset to Default]
 13. Klik [Save]
-14. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
 - Pengulangan (bagian 8b butir 7): langkah 3 sampai 13 diulang untuk tiap baris tabel parameter iterasi (Group/Code/Function/Total Asset): 11 langkah per iterasi.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membuka Popup Setup Column lewat icon `⋯` > `Setup Column...`, [Reset to Default] + [Save] untuk memulihkan susunan default antar iterasi, serta F5 setelah [Save] (S-03, S-09). Verifikasi kolom lain pada tabel tampil (langkah 9) ditambahkan sebagai anchor positif sebelum asersi kolom hilang sesudah F5 (8b butir 2, R-21; S-03). Pemulihan akhir preferensi kolom: hook `after` menghapus preferensi kolom di browser (bagian 4).
-- Spec 14 langkah (ekspansi iterasi ± 46 langkah), di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah per kolom/field memakai tabel di Prerequisites (bagian 8b butir 7).
+- Spec 13 langkah (ekspansi iterasi ± 46 langkah), di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah per kolom/field memakai tabel di Prerequisites (bagian 8b butir 7).
+- Muat ulang halaman (F5) membuang kotak Search, sehingga spec tidak menutup Search dengan `(←)` di akhir (A-9, S-14).
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.

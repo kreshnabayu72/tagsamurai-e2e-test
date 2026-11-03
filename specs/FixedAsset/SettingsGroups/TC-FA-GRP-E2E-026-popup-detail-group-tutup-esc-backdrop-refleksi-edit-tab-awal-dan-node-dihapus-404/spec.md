@@ -22,15 +22,15 @@ coverage:
 - Akun aktor: Total Control (Pre-setup No 1) `totalControlGroups_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
 - Flag Guided Tooltip `fa-settings-groups` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
-- Data Pre-setup (hanya dibaca): pohon group baku Tabel A (Pre-setup No 9) dengan Warehouse A (24 aset aktif, sedikitnya satu user). Jumlah node level 1 tidak lebih dari 10 sehingga seluruh baris tampil di halaman 1.
+- Data Pre-setup (hanya dibaca): pohon group baku Tabel A (Pre-setup No 9) dengan Warehouse A (24 aset aktif, sedikitnya satu user). Node level 1 client lebih dari 10 dan page size 10, sehingga baris target dicari dengan Search, bukan diandalkan berada di halaman 1; Search `Warehouse` menampilkan Warehouse A dan Warehouse B (dua nilai distinct untuk asersi sort).
 - Data Dinamis (di-seed di hook `before` lewat API, node level 1, dihapus di hook `after` bila masih ada):
 
 | TC | Nama TC | Nama seed | State |
 |---|---|---|---|
-| TC-FA-GRP-285 | Edit Target | `Edit Target {runId}-026` | Kosong, Function None; diubah oleh langkah 33 sampai 37 |
-| TC-FA-GRP-986 | Stale D1, Stale D2, Stale D3 | `Stale D1 {runId}-026`, `Stale D2 {runId}-026`, `Stale D3 {runId}-026` | Masing-masing kosong; dihapus sekaligus oleh admin lain (sesi API) pada langkah 44 |
+| TC-FA-GRP-285 | Edit Target | `Edit Target {runId}-026` | Kosong, Function None; diubah oleh langkah 35 sampai 39 |
+| TC-FA-GRP-986 | Stale D1, Stale D2, Stale D3 | `Stale D1 {runId}-026`, `Stale D2 {runId}-026`, `Stale D3 {runId}-026` | Masing-masing kosong; dihapus satu per iterasi oleh admin lain (sesi API) pada langkah 49 |
 
-- Parameter perulangan TC-FA-GRP-986 (langkah 47 sampai 52):
+- Parameter perulangan TC-FA-GRP-986 (langkah 49 sampai 56):
 
 | Node | Jalur klik pada sesi aktor |
 |---|---|
@@ -46,79 +46,84 @@ coverage:
 
 ### TC-FA-GRP-284: Tutup lewat [X], backdrop tidak menutup
 
-1. Klik header kolom Group 2× (sort Group Z→A)
-2. Klik nama Warehouse A
-3. Verifikasi Popup Detail Group Warehouse A terbuka
-4. Klik [X]
-5. Verifikasi popup tertutup tanpa dialog
-6. Verifikasi tabel List tampil kembali dengan sort Group Z→A tetap
-7. Klik nama Warehouse A
-8. Klik area backdrop di luar popup
-9. Verifikasi popup tetap terbuka
-10. Verifikasi tidak ada dialog yang tampil
-11. Klik [X]
+1. Ketik Search `Warehouse`, tekan Enter
+2. Klik header kolom Group 2× (sort Group Z→A)
+3. Klik nama Warehouse A
+4. Verifikasi Popup Detail Group Warehouse A terbuka
+5. Klik [X]
+6. Verifikasi popup tertutup tanpa dialog
+7. Verifikasi tabel List tampil kembali dengan sort Group Z→A tetap
+8. Klik nama Warehouse A
+9. Klik area backdrop di luar popup
+10. Verifikasi popup tetap terbuka
+11. Verifikasi tidak ada dialog yang tampil
+12. Klik [X]
 
 ### TC-FA-GRP-1148: Tutup lewat Esc
 
-12. Klik nama Warehouse A (Tab Assets)
-13. Tekan Esc
-14. Verifikasi popup tertutup tanpa dialog
-15. Klik angka Total User Warehouse A (Tab Users)
-16. Tekan Esc
-17. Verifikasi popup tertutup tanpa dialog
-18. Verifikasi tabel List tampil kembali dengan sort Group Z→A tetap
+13. Klik nama Warehouse A (Tab Assets)
+14. Tekan Esc
+15. Verifikasi popup tertutup tanpa dialog
+16. Klik angka Total User Warehouse A (Tab Users)
+17. Tekan Esc
+18. Verifikasi popup tertutup tanpa dialog
+19. Verifikasi tabel List tampil kembali dengan sort Group Z→A tetap
 
 ### TC-FA-GRP-1017: Tab awal sesuai jalur akses
 
-19. Klik nama Warehouse A
-20. Verifikasi popup terbuka dengan Tab Assets aktif
-21. Klik [X]
-22. Klik (⋯) pada baris Warehouse A
-23. Klik `Detail`
-24. Verifikasi popup terbuka dengan Tab Assets aktif
-25. Klik [X]
-26. Klik angka Total Asset Warehouse A
-27. Verifikasi popup terbuka dengan Tab Assets aktif
-28. Klik [X]
-29. Klik angka Total User Warehouse A
-30. Verifikasi popup terbuka dengan Tab Users aktif
-31. Verifikasi urutan tab Assets, Users
-32. Klik [X]
+20. Klik nama Warehouse A
+21. Verifikasi popup terbuka dengan Tab Assets aktif
+22. Klik [X]
+23. Klik (⋯) pada baris Warehouse A
+24. Klik `Detail`
+25. Verifikasi popup terbuka dengan Tab Assets aktif
+26. Klik [X]
+27. Klik angka Total Asset Warehouse A
+28. Verifikasi popup terbuka dengan Tab Assets aktif
+29. Klik [X]
+30. Klik angka Total User Warehouse A
+31. Verifikasi popup terbuka dengan Tab Users aktif
+32. Verifikasi urutan tab Assets, Users
+33. Klik [X]
 
 ### TC-FA-GRP-285: Refleksi live setelah Edit
 
-33. Klik (⋯) pada baris `Edit Target {runId}-026`
-34. Klik `Edit`
-35. Ganti Group Name dengan `Edit Renamed {runId}-026`, Code dengan `ER{runId}`, dan Description dengan `Deskripsi {runId}-026`
-36. Klik [Save]
-37. Tunggu aksi selesai (modal Edit tertutup)
-38. Klik (⋯) pada baris `Edit Renamed {runId}-026`
-39. Klik `Detail`
-40. Verifikasi header menampilkan Group Name `Edit Renamed {runId}-026`, Code `ER{runId}`, dan Description `Deskripsi {runId}-026`
-41. Klik [X]
+34. Ganti isi kotak search dengan `Edit Target {runId}-026`, tekan Enter
+35. Klik (⋯) pada baris `Edit Target {runId}-026`
+36. Klik `Edit`
+37. Ganti Group Name dengan `Edit Renamed {runId}-026`, Code dengan `ER{runId}`, dan Description dengan `Deskripsi {runId}-026`
+38. Klik [Save]
+39. Tunggu aksi selesai (modal Edit tertutup)
+40. Ganti isi kotak search dengan `Edit Renamed {runId}-026`, tekan Enter
+41. Klik (⋯) pada baris `Edit Renamed {runId}-026`
+42. Klik `Detail`
+43. Verifikasi header menampilkan Group Name `Edit Renamed {runId}-026`, Code `ER{runId}`, dan Description `Deskripsi {runId}-026`
+44. Klik [X]
 
 ### TC-FA-GRP-986: Node dihapus user lain, buka popup menghasilkan 404
 
-42. Muat ulang halaman dengan F5 agar sesi aktor memuat `Stale D1`, `Stale D2`, dan `Stale D3`
-43. Verifikasi baris `Stale D1 {runId}-026`, `Stale D2 {runId}-026`, dan `Stale D3 {runId}-026` tampil pada tabel
-44. Hapus `Stale D1 {runId}-026`, `Stale D2 {runId}-026`, dan `Stale D3 {runId}-026` lewat sesi API admin lain hingga penghapusan tersimpan
-45. Catat jumlah entri Changelog Group lewat fixture BE
-46. Untuk setiap baris tabel "Parameter perulangan" di Prerequisites, lakukan langkah 47 sampai 52
-47. Buka Popup Detail Group node tersebut lewat jalur klik pada baris tabel (sesi aktor yang dimuat sebelum penghapusan)
-48. Verifikasi permintaan detail group node tersebut dijawab 404
-49. Verifikasi popup ditutup (tidak ada popup kosong)
-50. Verifikasi toast netral `This group is no longer available.`
-51. Verifikasi tree di-refresh dan node tersebut hilang dari sidebar dan tabel
-52. Verifikasi jumlah entri Changelog Group sama dengan yang dicatat pada langkah 45
+45. Muat ulang halaman dengan F5 agar sesi aktor memuat `Stale D1`, `Stale D2`, dan `Stale D3`
+46. Ketik Search `{runId}-026`, tekan Enter
+47. Verifikasi baris `Stale D1 {runId}-026`, `Stale D2 {runId}-026`, dan `Stale D3 {runId}-026` tampil pada tabel
+48. Untuk setiap baris tabel "Parameter perulangan" di Prerequisites, lakukan langkah 49 sampai 56
+49. Hapus node tersebut lewat sesi API admin lain hingga penghapusan tersimpan
+50. Catat jumlah entri Changelog Group lewat fixture BE
+51. Buka Popup Detail Group node tersebut lewat jalur klik pada baris tabel (sesi aktor yang dimuat sebelum penghapusan)
+52. Verifikasi permintaan detail group node tersebut dijawab 404
+53. Verifikasi popup ditutup (tidak ada popup kosong)
+54. Verifikasi toast netral `This group is no longer available.`
+55. Verifikasi tree di-refresh dan node tersebut hilang dari sidebar dan tabel
+56. Verifikasi jumlah entri Changelog Group sama dengan yang dicatat pada langkah 50
 
 ## Notes
 
-- Spec melewati sekitar 35 langkah setelah ekspansi (langkah nominal 52; ekspansi 3 iterasi langkah 47 sampai 52 menjadi 18 langkah sehingga total ekspansi 64): seluruh blok adalah satu kelas (perilaku Popup Detail Group) pada layar dan dataset Tabel A yang sama, perulangan TC-FA-GRP-986 per node dari tabel Prerequisites (8b butir 7), tiap blok berdiri sendiri, dan blok yang menghapus data (TC-FA-GRP-986) berada paling akhir (S-10).
-- Langkah penghubung (S-03): langkah 1 (menyiapkan sort Group Z→A sebagai state tabel TC-FA-GRP-284 dan 1148), langkah 11 (menutup popup), langkah 37 (tunggu aksi selesai, 8b butir 8), langkah 42 (muat ulang agar sesi aktor memuat node stale), langkah 43 (anchor positif sebelum absence node, 8b butir 2), langkah 44 (admin lain menghapus ketiga node sekaligus), langkah 45 (mencatat baseline jumlah entri).
-- Pelaku kedua (admin lain Total Control) hanya memicu perubahan state lewat sesi API, bukan konteks kedua (P-2 `[KEPUTUSAN 2026-10-30]`). Langkah 44 ditulis "... hingga ... tersimpan" (R-20).
-- `P-1`: asersi "tidak ada baris log baru" TC-FA-GRP-986 (langkah 45 dan 52) ditulis di spec asal dengan baseline jumlah entri Changelog Group (S-12) karena node stale yang baru dihapus sesi lain adalah state yang dibangun langkah sebelumnya dan tidak dapat diulang di spec absence.
+- Spec melewati sekitar 35 langkah setelah ekspansi (langkah nominal 56; ekspansi 3 iterasi langkah 49 sampai 56 menjadi 24 langkah sehingga total ekspansi 72): seluruh blok adalah satu kelas (perilaku Popup Detail Group) pada layar dan dataset Tabel A yang sama, perulangan TC-FA-GRP-986 per node dari tabel Prerequisites (8b butir 7), tiap blok berdiri sendiri, dan blok yang menghapus data (TC-FA-GRP-986) berada paling akhir (S-10).
+- Langkah penghubung (S-03): langkah 2 (menyiapkan sort Group Z→A sebagai state tabel TC-FA-GRP-284 dan 1148), langkah 12 (menutup popup), langkah 39 (tunggu aksi selesai, 8b butir 8), langkah 45 (muat ulang agar sesi aktor memuat node stale), langkah 47 (anchor positif sebelum absence node, 8b butir 2), langkah 49 (admin lain menghapus node iterasi ini), langkah 50 (mencatat baseline jumlah entri setelah penghapusan). Langkah 1, 34, 40, dan 46 (Search) menemukan baris target karena client punya lebih dari 10 node level 1 dengan page size 10, sehingga baris tidak diandalkan berada di halaman 1 (R-16); Search `Warehouse` dipertahankan sampai langkah 33 agar asersi sort Z→A tetap punya dua baris; Search langkah 46 dipasang sekali di luar perulangan dan tidak diulang di dalamnya, karena Search ulang atau refresh tree memuat ulang daftar dari server dan ketiga node sudah terhapus bila dihapus sekaligus; node dihapus satu per iterasi (langkah 49) supaya node iterasi berikutnya masih ada di server saat tree di-refresh.
+- Pelaku kedua (admin lain Total Control) hanya memicu perubahan state lewat sesi API, bukan konteks kedua (P-2 `[KEPUTUSAN 2026-10-30]`). Langkah 49 ditulis "... hingga ... tersimpan" (R-20).
+- `P-1`: asersi "tidak ada baris log baru" TC-FA-GRP-986 (langkah 50 dan 56) ditulis di spec asal dengan baseline jumlah entri Changelog Group (S-12) karena node stale yang baru dihapus sesi lain adalah state yang dibangun langkah sebelumnya dan tidak dapat diulang di spec absence.
 - Urutan TC dalam spec: 284, 1148, 1017, 285, 986.
 - Temuan untuk QA:
+  - TC-FA-GRP-986 menghapus ketiga node sekaligus sebelum sesi A membuka popup, sedangkan Search dan refresh tree memuat ulang keadaan server. Spec menghapus satu node per iterasi (langkah 49) agar baris yang diklik masih ada di sesi A dan di server saat tree di-refresh; ini menyimpang dari urutan harfiah TC, butuh konfirmasi QA.
   - TC-FA-GRP-986 menyebut status 404 dari server tanpa cara mengamati; spec memakai pencatatan respons jaringan browser (disediakan tim FE/BE).
   - TC-FA-GRP-284 tidak menyebut state tabel yang dipertahankan; spec memakai sort Group Z→A seperti TC-FA-GRP-1148.
   - Post Condition TC-FA-GRP-285 (entri log lama tetap snapshot) tidak punya langkah observasi di TC sehingga tidak diasersi.

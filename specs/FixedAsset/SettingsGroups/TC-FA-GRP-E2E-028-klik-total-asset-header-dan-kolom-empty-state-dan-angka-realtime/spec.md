@@ -36,46 +36,51 @@ coverage:
 
 ### TC-FA-GRP-286: Klik angka Total Asset lebih dari 0
 
-1. Klik angka Total Asset (24) pada baris Warehouse A
-2. Verifikasi Popup Detail Group terbuka pada Tab Assets (aktif)
-3. Verifikasi header berisi Group Name Warehouse A (full path), Code `WH-A`, dan Description
-4. Verifikasi Toolbar Tab Assets memuat Search, Filter, Download
-5. Verifikasi kolom Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated, dan Column Visibility (⋯)
-6. Verifikasi kolom Measurement, Category, Label, Transactional Policy, Last Scanned, Asset Value, Warranty Expiry, dan Custom Field tersembunyi secara default
-7. Verifikasi tidak ada kolom Group
-8. Verifikasi default sort Name A–Z
-9. Verifikasi Tab Users tersedia
-10. Tutup popup dengan [X]
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik angka Total Asset (24) pada baris Warehouse A
+3. Verifikasi Popup Detail Group terbuka pada Tab Assets (aktif)
+4. Verifikasi header berisi Group Name Warehouse A (full path), Code `WH-A`, dan Description
+5. Verifikasi Toolbar Tab Assets memuat Search, Filter, Download
+6. Verifikasi kolom Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated, dan Column Visibility (⋯)
+7. Verifikasi kolom Measurement, Category, Label, Transactional Policy, Last Scanned, Asset Value, Warranty Expiry, dan Custom Field tersembunyi secara default
+8. Verifikasi tidak ada kolom Group
+9. Verifikasi default sort Name A–Z
+10. Verifikasi Tab Users tersedia
+11. Tutup popup dengan [X]
 
 ### TC-FA-GRP-277: Tab Assets genuine empty state via Detail
 
-11. Klik (⋯) pada baris Branch Office
-12. Klik `Detail`
-13. Verifikasi area tabel menampilkan Illustration dengan title `No assets assigned` dan body `No assets are currently assigned to this group.`
-14. Tutup popup dengan [X]
+12. Ganti isi kotak search dengan `Branch Office`, tekan Enter
+13. Klik (⋯) pada baris Branch Office
+14. Klik `Detail`
+15. Verifikasi area tabel menampilkan Illustration dengan title `No assets assigned` dan body `No assets are currently assigned to this group.`
+16. Tutup popup dengan [X]
 
 ### TC-FA-GRP-287: Angka Total Asset 0 dapat diklik
 
-15. Klik angka `0` pada baris Branch Office
-16. Verifikasi Popup Detail Group terbuka pada Tab Assets
-17. Verifikasi empty state Illustration dengan title `No assets assigned` dan body `No assets are currently assigned to this group.`
-18. Tutup popup dengan [X]
+17. Klik angka `0` pada baris Branch Office
+18. Verifikasi Popup Detail Group terbuka pada Tab Assets
+19. Verifikasi empty state Illustration dengan title `No assets assigned` dan body `No assets are currently assigned to this group.`
+20. Tutup popup dengan [X]
 
 ### TC-FA-GRP-292: Angka realtime setelah aset ditambah
 
-19. Catat angka Total Asset pada baris `Count Node {runId}-028` (3)
-20. Daftarkan 1 aset baru `Count Asset {runId}-028` ke `Count Node {runId}-028` lewat modul Asset (sesi API) hingga tersimpan
-21. Muat ulang halaman Settings > Groups dengan F5
-22. Verifikasi angka Total Asset pada baris `Count Node {runId}-028` bertambah 1 menjadi 4
-23. Klik node `Count Node {runId}-028` di sidebar
-24. Verifikasi Total Asset di header menjadi 4
-25. Klik angka Total Asset pada kolom baris `Count Node {runId}-028`
-26. Verifikasi Tab Assets berisi 4 aset (bertambah 1 dari angka yang dicatat pada langkah 19)
+21. Ganti isi kotak search dengan `Count Node {runId}-028`, tekan Enter
+22. Catat angka Total Asset pada baris `Count Node {runId}-028` (3)
+23. Daftarkan 1 aset baru `Count Asset {runId}-028` ke `Count Node {runId}-028` lewat modul Asset (sesi API) hingga tersimpan
+24. Muat ulang halaman Settings > Groups dengan F5
+25. Ketik Search `Count Node {runId}-028`, tekan Enter
+26. Verifikasi angka Total Asset pada baris `Count Node {runId}-028` bertambah 1 menjadi 4
+27. Klik angka Total Asset pada kolom baris `Count Node {runId}-028`
+28. Verifikasi Tab Assets berisi 4 aset (bertambah 1 dari angka yang dicatat pada langkah 22)
+29. Tutup popup dengan [X]
+30. Klik node `Count Node {runId}-028` di sidebar
+31. Verifikasi Total Asset di header menjadi 4
 
 ## Notes
 
-- Spec 26 langkah, di bawah batas sekitar 35 langkah. Penambahan aset (TC-FA-GRP-292) diletakkan paling akhir (S-10).
-- Langkah penghubung (S-03): langkah 10, 14, 18 (menutup popup), langkah 19 (mencatat angka sebagai baseline), langkah 21 (muat ulang sebagai pengganti "Buka Fixed Asset > Settings > Groups" karena halaman sudah dibuka hook `beforeEach`), langkah 23 (memilih node agar header tampil), langkah 25 (klik angka kolom agar tab Assets tampil).
+- Spec 31 langkah, di bawah batas sekitar 35 langkah. Penambahan aset (TC-FA-GRP-292) diletakkan paling akhir (S-10).
+- Langkah penghubung (S-03): langkah 11, 16, 20 (menutup popup), langkah 22 (mencatat angka sebagai baseline), langkah 24 (muat ulang sebagai pengganti "Buka Fixed Asset > Settings > Groups" karena halaman sudah dibuka hook `beforeEach`), langkah 30 (memilih node agar header tampil), langkah 27 (klik angka kolom agar tab Assets tampil). Langkah Search (Ketik Search `Warehouse A`, ganti isi kotak search dengan `Branch Office` dan `Count Node {runId}-028`, serta Ketik Search `Count Node {runId}-028` sesudah F5 yang menutup kotak Search) menemukan baris target karena client punya lebih dari 10 node level 1 dengan page size 10, sehingga baris tidak diandalkan berada di halaman 1 (R-16). Langkah klik angka Total Asset baris `Count Node` dan penutupan popup dikerjakan sebelum memilih node di sidebar, karena sesudah node dipilih tabel berisi direct children node itu dan baris `Count Node` tidak ada lagi.
 - Pemicu pelaku kedua lewat sesi API ditulis "... hingga ... tersimpan" (R-20); bukan konteks kedua (P-2 `[KEPUTUSAN 2026-10-30]`).
 - Urutan TC dalam spec: 286, 277, 287, 292.
 - Temuan untuk QA:

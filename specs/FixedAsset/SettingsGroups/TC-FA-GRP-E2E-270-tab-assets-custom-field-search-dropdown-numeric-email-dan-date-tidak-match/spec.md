@@ -30,46 +30,50 @@ coverage:
 ## Test Steps
 
 ### TC-1266: Search kolom Custom Field Dropdown dan Multi-Dropdown: label opsi, case-insensitive
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Buka Popup Setup Column, centang kolom Condition Grade dan Features, klik [Save]
-3. Ketik Search `bluetooth`, tekan Enter
-4. Verifikasi G1 dan G6 tampil (opsi Bluetooth pada Features)
-5. Ganti isi kotak search dengan `wifi`, tekan Enter
-6. Verifikasi G1 dan G2 tampil
-7. Ganti isi kotak search dengan `xyz`, tekan Enter
-8. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter."
+1. Ketik Search `Value Gate Node A {runId}-270` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Buka Popup Setup Column, centang kolom Condition Grade dan Features, klik [Save]
+4. Ketik Search `bluetooth`, tekan Enter
+5. Verifikasi G1 dan G6 tampil (opsi Bluetooth pada Features)
+6. Ganti isi kotak search dengan `wifi`, tekan Enter
+7. Verifikasi G1 dan G2 tampil
+8. Ganti isi kotak search dengan `xyz`, tekan Enter
+9. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter."
 ### TC-1267: Search kolom Custom Field Numeric dan Percentage: nilai yang tampil
-9. Klik `(←)` pada kotak Search, buka Popup Setup Column, klik [Reset to Default], klik [Save]
-10. Buka Popup Setup Column, centang kolom Usage Hours dan Utilization, klik [Save]
-11. Ketik Search `250`, tekan Enter
-12. Verifikasi G2 tampil (Usage Hours 250)
-13. Baca teks sel Utilization G4 dari tabel
-14. Ganti isi kotak search dengan teks sel Utilization G4 persis seperti tampil di sel, tekan Enter
-15. Verifikasi G4 tampil
-16. Verifikasi baris lain tidak tampil
+10. Klik `(←)` pada kotak Search, buka Popup Setup Column, klik [Reset to Default], klik [Save]
+11. Buka Popup Setup Column, centang kolom Usage Hours dan Utilization, klik [Save]
+12. Baca teks sel Utilization G4 dari tabel
+13. Ketik Search `250`, tekan Enter
+14. Verifikasi G2 tampil (Usage Hours 250)
+15. Ganti isi kotak search dengan teks sel Utilization G4 yang dibaca sebelum Search `250`, persis seperti tampil di sel, tekan Enter
+16. Verifikasi G4 tampil
+17. Verifikasi baris lain tidak tampil
 ### TC-1268: Search kolom Custom Field Email (Text-like): substring, case-insensitive
-17. Klik `(←)` pada kotak Search, buka Popup Setup Column, klik [Reset to Default], klik [Save]
-18. Buka Popup Setup Column, centang kolom Contact Email, klik [Save]
-19. Ketik Search `B@X.COM`, tekan Enter
-20. Verifikasi G2 tampil (nilai `b@x.com`, case-insensitive)
-21. Verifikasi baris lain termasuk yang `—` tidak tampil
+18. Klik `(←)` pada kotak Search, buka Popup Setup Column, klik [Reset to Default], klik [Save]
+19. Buka Popup Setup Column, centang kolom Contact Email, klik [Save]
+20. Ketik Search `B@X.COM`, tekan Enter
+21. Verifikasi G2 tampil (nilai `b@x.com`, case-insensitive)
+22. Verifikasi baris lain termasuk yang `—` tidak tampil
 ### TC-1269: Search kolom Custom Field Date dan DateTime tidak menghasilkan match
-22. Klik `(←)` pada kotak Search, buka Popup Setup Column, klik [Reset to Default], klik [Save]
-23. Ganti akun: Logout, login sebagai allValueAccess (`allValueAccess_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_GRP_ALLVALUEACCESS_PASSWORD`), buka Fixed Asset > Settings > Groups
-24. Buka Detail Value Gate Node A (Tab Assets)
-25. Buka Popup Setup Column, centang kolom Purchase Date dan Inspection Time, klik [Save]
-26. Ketik Search `10/02/2026`, tekan Enter
-27. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter." (Data Type Date di luar cakupan Search)
-28. Ganti isi kotak search dengan `01/10/2026`, tekan Enter
-29. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter." (Data Type DateTime di luar cakupan Search)
-30. Klik icon Filter
-31. Verifikasi Filter Panel memuat field Purchase Date dan Inspection Time
+23. Klik `(←)` pada kotak Search, buka Popup Setup Column, klik [Reset to Default], klik [Save]
+24. Ganti akun: Logout, login sebagai allValueAccess (`allValueAccess_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_GRP_ALLVALUEACCESS_PASSWORD`), buka Fixed Asset > Settings > Groups
+25. Ketik Search `Value Gate Node A {runId}-270` pada Groups List, tekan Enter
+26. Buka Detail Value Gate Node A (Tab Assets)
+27. Buka Popup Setup Column, centang kolom Purchase Date dan Inspection Time, klik [Save]
+28. Ketik Search `10/02/2026`, tekan Enter
+29. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter." (Data Type Date di luar cakupan Search)
+30. Ganti isi kotak search dengan `01/10/2026`, tekan Enter
+31. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter." (Data Type DateTime di luar cakupan Search)
+32. Klik icon Filter
+33. Verifikasi Filter Panel memuat field Purchase Date dan Inspection Time
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah pembuka TC-1267, TC-1268, TC-1269 mengosongkan Search lewat `(←)` dan [Reset to Default] + [Save] (S-09); satu langkah Ganti akun sebelum TC-1269 (aktor berbeda; TC-1269 diletakkan terakhir).
 - Asersi tambahan (S-03): `Verifikasi` Filter Panel memuat field Purchase Date dan Inspection Time pada akhir TC-1269 menerjemahkan Expected b "Penyaringan kedua kolom hanya lewat Filter Panel", yang tidak punya langkah observasi di TC; keberadaan kedua field itu mengikuti Langkah TC-1272.
+- Langkah penghubung (S-03, S-12): `Baca teks sel Utilization G4` dipindah ke sebelum Search pertama TC-1267 karena Search `250` menyaring G4 dari tabel.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A {runId}-270`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1267 langkah 5 tidak menyebut format tampil nilai Percentage (mis. dengan atau tanpa simbol %); spec membaca teks sel sebelum Search.
   - TC-1267 Expected a hanya menyebut G2 tampil untuk keyword `250`; apakah baris lain boleh ikut tampil (mis. Asset ID atau kolom lain yang memuat `250`) tidak dinyatakan, sehingga tidak diasersi.

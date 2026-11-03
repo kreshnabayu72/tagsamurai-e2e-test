@@ -30,43 +30,46 @@ coverage:
 ### TC-FA-GRP-243: Delete single gagal server
 
 1. Pasang intercept: respons 5xx pada request hapus group
-2. Buka elipsis `⋯` baris `Del Empty`, pilih `Delete`
-3. Klik [Delete]
-4. Verifikasi toast error "Error, failed to delete group."
-5. Verifikasi `Del Empty` tetap ada di tabel (node tidak terhapus)
-6. Lepas intercept
-7. Buka elipsis `⋯` baris `Del Empty`, pilih `Delete` lagi
-8. Verifikasi dialog dengan title "Delete Group" tampil kembali (dialog dapat diulang)
-9. Klik [Cancel]
+2. Ketik Search `{runId}-088`, tekan Enter
+3. Buka elipsis `⋯` baris `Del Empty`, pilih `Delete`
+4. Klik [Delete]
+5. Verifikasi toast error "Error, failed to delete group."
+6. Verifikasi `Del Empty` tetap ada di tabel (node tidak terhapus)
+7. Lepas intercept
+8. Buka elipsis `⋯` baris `Del Empty`, pilih `Delete` lagi
+9. Verifikasi dialog dengan title "Delete Group" tampil kembali (dialog dapat diulang)
+10. Klik [Cancel]
 
 ### TC-FA-GRP-267: Bulk Delete gagal server
 
-10. Pasang intercept: respons 5xx pada request hapus massal
-11. Centang `Bulk E11` dan `Bulk E12`
-12. Buka Bulk Action, pilih `Delete`
-13. Klik [Delete]
-14. Verifikasi toast error "Error, failed to delete group."
-15. Verifikasi bar bulk action dan seleksi dipertahankan (counter `2 groups selected`)
-16. Verifikasi list di-refresh dan `Bulk E11` serta `Bulk E12` tampil sesuai keadaan nyata server (tetap ada)
-17. Lepas intercept, lalu klik (X)
+11. Pasang intercept: respons 5xx pada request hapus massal
+12. Centang `Bulk E11` dan `Bulk E12`
+13. Buka Bulk Action, pilih `Delete`
+14. Tunggu toast lama hilang otomatis
+15. Klik [Delete]
+16. Verifikasi toast error "Error, failed to delete group."
+17. Verifikasi bar bulk action dan seleksi dipertahankan (counter `2 groups selected`)
+18. Verifikasi list di-refresh dan `Bulk E11` serta `Bulk E12` tampil sesuai keadaan nyata server (tetap ada)
+19. Lepas intercept, lalu klik (X)
 
 ### TC-FA-GRP-307: Simpan Wizard gagal server mempertahankan seleksi
 
-18. Ganti akun: Logout, login sebagai Total Control client Wizard (`Spectra.env.FA_WIZ_TC_PASSWORD`), lalu buka Fixed Asset > Settings > Groups
-19. Pasang intercept: respons 5xx pada request simpan seleksi Wizard
-20. Buka Wizard Reconciliation > Step Group Consolidation
-21. Centang 3 group
-22. Klik [Save Selection]
-23. Verifikasi toast error "Error, failed to update group consolidation."
-24. Verifikasi centang 3 group dipertahankan
-25. Lepas intercept, lalu klik [Cancel]
-26. Verifikasi dialog "You have unsaved changes. Are you sure you want to leave?" tampil
-27. Klik [Leave]
+20. Ganti akun: Logout, login sebagai Total Control client Wizard (`Spectra.env.FA_WIZ_TC_PASSWORD`), lalu buka Fixed Asset > Settings > Groups
+21. Pasang intercept: respons 5xx pada request simpan seleksi Wizard
+22. Buka Wizard Reconciliation > Step Group Consolidation
+23. Centang 3 group
+24. Klik [Save Selection]
+25. Verifikasi toast error "Error, failed to update group consolidation."
+26. Verifikasi centang 3 group dipertahankan
+27. Lepas intercept, lalu klik [Cancel]
+28. Verifikasi dialog "You have unsaved changes. Are you sure you want to leave?" tampil
+29. Klik [Leave]
 
 ## Notes
 
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 6, 9 dan 10, 17 sampai 20, 25, 27: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
-- Spec FE+BE dengan intercept parsial, bukan `Mode: mock`: asersi memakai state nyata server (APISpec kosong sehingga daftar endpoint mock tidak dapat dituliskan tanpa mengarang; S-13, R-15). Dua dari TC bersumber dari resilience Delete; TC-307 memakai plan terjadwal hanya sebagai precondition (kelas h bukan objek uji); pengecualian kelas h: state tenant plan downgrade terjadwal dibentuk dan dipulihkan fixture BE (disediakan tim FE/BE) pada client Wizard, bukan oleh akun aktor hook `before`, sehingga langkah 18 mengganti akun.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 7, 10 dan 11, 19 sampai 22, 27, 29: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state. Langkah 14 (Tunggu toast lama hilang otomatis) memastikan toast error langkah 5 sudah hilang sebelum toast error langkah 16 diasersi (R-12).
+- Pencarian baris target (S-03, R-16): langkah 2 (Ketik Search `{runId}-088`, tekan Enter) menampilkan seluruh group seed spec ini (`Del Empty`, `Bulk E11`, `Bulk E12`; satu halaman); client memiliki lebih dari 10 node level 1 dan page size 10, jadi baris target tidak dijamin berada di halaman 1 All Groups.
+- Spec FE+BE dengan intercept parsial, bukan `Mode: mock`: asersi memakai state nyata server (APISpec kosong sehingga daftar endpoint mock tidak dapat dituliskan tanpa mengarang; S-13, R-15). Dua dari TC bersumber dari resilience Delete; TC-307 memakai plan terjadwal hanya sebagai precondition (kelas h bukan objek uji); pengecualian kelas h: state tenant plan downgrade terjadwal dibentuk dan dipulihkan fixture BE (disediakan tim FE/BE) pada client Wizard, bukan oleh akun aktor hook `before`, sehingga langkah 20 mengganti akun.
 - Temuan untuk QA:
   - TC-243 Expected c "Dialog dapat diulang" ambigu (dialog tetap terbuka atau dapat dibuka lagi); spec mengasersi dialog Delete tampil kembali saat dibuka ulang.
   - TC-267 Expected b ("item yang sudah ter-commit tetap commit; sisanya tetap") tidak bermakna bila seluruh request dibalas 5xx; spec mengasersi keadaan nyata server lewat refresh list.

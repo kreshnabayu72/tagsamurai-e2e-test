@@ -38,7 +38,7 @@ coverage:
   - Total Asset dibentuk dengan menambahkan aset ke group; Total User = user yang otomatis punya akses ke semua group (Total Control, Default User, Read Only client) ditambah user yang ditugaskan lewat Group Role; kemampuan seeding aset dan penugasan user ini disediakan tim FE/BE.
   - Group Pre-setup Tabel A (Default Group, Head Office, dan seterusnya) tetap tampil di Groups List dan hanya dibaca; asersi memakai baris data di atas.
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API seluruh group `... {runId}-126`, aset, dan penugasan user yang di-seed spec ini; hapus preferensi kolom Setup Column yang disimpan spec (kemampuan disediakan tim FE).
-- Kemampuan teknis (disediakan tim FE): viewport browser disesuaikan sehingga tabel dapat di-scroll horizontal, dan penghapusan preferensi kolom Setup Column di browser (hook `after`, bagian 4).
+- Kemampuan teknis (disediakan tim FE): penghapusan preferensi kolom Setup Column di browser (hook `after`, bagian 4).
 - Parameter iterasi TC-FA-GRP-401, 402, urutan baris = urutan iterasi:
 
 | Kolom |
@@ -52,29 +52,32 @@ coverage:
 
 ### TC-FA-GRP-401 dan 402: Pin kolom Modified By dan Last Updated (iterasi per kolom)
 
-2. Untuk setiap baris tabel parameter iterasi (langkah 3 sampai 15): jalankan langkah berikut dengan kolom pada baris itu
+2. Untuk setiap baris tabel parameter iterasi (langkah 3 sampai 17): jalankan langkah berikut dengan kolom pada baris itu
 3. Buka Popup Setup Column: klik icon `⋯` di header kolom terakhir, lalu klik `Setup Column...`
 4. Klik icon Pin kolom pada baris tabel
 5. Klik [Save]
-6. Scroll tabel secara horizontal
-7. Verifikasi kolom pada baris tabel membeku (sticky) saat tabel di-scroll horizontal
-8. Muat ulang halaman (F5)
-9. Scroll tabel secara horizontal
-10. Verifikasi kolom pada baris tabel masih membeku (pin bertahan setelah F5)
-11. Buka Popup Setup Column: klik icon `⋯` di header kolom terakhir, lalu klik `Setup Column...`
-12. Klik icon Pin kolom pada baris tabel untuk unpin
-13. Klik [Save]
-14. Scroll tabel secara horizontal
-15. Verifikasi kolom pada baris tabel kembali ikut ter-scroll
-16. Klik `(←)` pada kotak Search
+6. Setel lebar viewport 900px
+7. Scroll tabel secara horizontal
+8. Verifikasi kolom pada baris tabel membeku (sticky) saat tabel di-scroll horizontal
+9. Muat ulang halaman (F5)
+10. Scroll tabel secara horizontal
+11. Verifikasi kolom pada baris tabel masih membeku (pin bertahan setelah F5)
+12. Buka Popup Setup Column: klik icon `⋯` di header kolom terakhir, lalu klik `Setup Column...`
+13. Klik icon Pin kolom pada baris tabel untuk unpin
+14. Klik [Save]
+15. Scroll tabel secara horizontal
+16. Verifikasi kolom pada baris tabel kembali ikut ter-scroll
+17. Pulihkan lebar viewport
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
-- Pengulangan (bagian 8b butir 7): langkah 3 sampai 15 diulang untuk tiap baris tabel parameter iterasi (Modified By/Last Updated): 13 langkah per iterasi.
+- Pengulangan (bagian 8b butir 7): langkah 3 sampai 17 diulang untuk tiap baris tabel parameter iterasi (Modified By/Last Updated): 15 langkah per iterasi.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membuka Popup Setup Column lewat icon `⋯` > `Setup Column...`, [Reset to Default] + [Save] untuk memulihkan susunan default antar iterasi, serta F5 setelah [Save] (S-03, S-09). Pemulihan akhir preferensi kolom: hook `after` menghapus preferensi kolom di browser (bagian 4).
+- Muat ulang halaman (F5) membuang kotak Search, sehingga spec tidak menutup Search dengan `(←)` di akhir (A-9, S-14).
+- Lebar viewport 900px disetel agar tabel dapat di-scroll horizontal dan dipulihkan di akhir tiap iterasi (mengikuti spec 100).
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.
   - Password akun aktor memakai env baru `FA_TC_PASSWORD` (nama `<APP>_<ROLE>_PASSWORD`); perlu didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
-  - TC Setup Column tidak menyebut lebar viewport; asersi pin (sticky saat scroll horizontal) mensyaratkan tabel dapat di-scroll horizontal, sehingga viewport disesuaikan (Prerequisites).
+  - TC Setup Column tidak menyebut lebar viewport; asersi pin (sticky saat scroll horizontal) mensyaratkan tabel dapat di-scroll horizontal, sehingga spec menyetel lebar viewport 900px lewat langkah penghubung.

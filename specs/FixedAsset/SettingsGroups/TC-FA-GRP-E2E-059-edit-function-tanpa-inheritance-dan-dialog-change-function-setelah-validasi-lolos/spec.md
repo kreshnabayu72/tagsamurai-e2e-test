@@ -41,17 +41,21 @@ coverage:
 9. Ganti isi kotak Search dengan `Func Parent {runId}-059`, tekan Enter
 10. Buka elipsis (⋯) baris `Func Parent {runId}-059`, klik Edit, pilih Function Assignable, lalu klik [Save]
 11. Verifikasi Func Parent yang sudah punya child tersimpan sebagai Assignable dengan toast `Success, group has been updated.` tanpa guard container atau leaf
-12. Klik `Func Parent {runId}-059` di sidebar
-13. Verifikasi Func Child `Func Child {runId}-059` tetap ber-Function None (`—`), tidak mewarisi Function parent
-14. Buka elipsis (⋯) baris `Func Child {runId}-059`, klik Edit, pilih Function Disposal Group, lalu klik [Save]
-15. Verifikasi Func Child tersimpan sebagai Disposal Group dengan toast `Success, group has been updated.`
-16. Klik All Groups
-17. Verifikasi Func Parent tetap Assignable (perubahan child tidak naik ke parent)
+12. Klik `(←)` pada kotak Search
+13. Klik `Func Parent {runId}-059` di sidebar
+14. Verifikasi Func Child `Func Child {runId}-059` tetap ber-Function None (`—`), tidak mewarisi Function parent
+15. Ketik Search `Func Child {runId}-059`, tekan Enter
+16. Buka elipsis (⋯) baris `Func Child {runId}-059`, klik Edit, pilih Function Disposal Group, lalu klik [Save]
+17. Verifikasi Func Child tersimpan sebagai Disposal Group dengan toast `Success, group has been updated.`
+18. Klik `(←)` pada kotak Search
+19. Klik All Groups
+20. Ketik Search `Func Parent {runId}-059`, tekan Enter
+21. Verifikasi Func Parent tetap Assignable (perubahan child tidak naik ke parent)
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
-- Langkah Search pada TC-FA-GRP-979 dan TC-FA-GRP-1025 mencari baris target (R-16); langkah "Ganti isi kotak Search" pada TC-FA-GRP-1025 adalah langkah penghubung (S-03).
+- Langkah Search pada TC-FA-GRP-979 dan TC-FA-GRP-1025 mencari baris target (R-16); langkah "Ganti isi kotak Search" pada TC-FA-GRP-1025 adalah langkah penghubung (S-03). Langkah 15 dan langkah 20 (Ketik Search) mencari baris Func Child dan Func Parent karena client memiliki lebih dari 10 node level 1 dengan page size 10 dan isi kotak Search tidak diandalkan terbawa saat konteks sidebar berganti; langkah 12 dan langkah 18 (Klik `(←)` pada kotak Search) menutup Search sebelum konteks sidebar berganti, sehingga kotak Search kosong saat langkah 15 dan 20 mengetik.
 - Temuan untuk QA:
   - TC-FA-GRP-979 Expected b menyebut "Dialog Change Function (D-01)" tanpa teks Body; spec hanya mengasersi dialog muncul dengan bullet nama node.
   - TC-FA-GRP-1025 langkah 5 menyebut "amati badge Function Func Parent" di All Groups; badge dibaca pada baris Func Parent di tabel All Groups.

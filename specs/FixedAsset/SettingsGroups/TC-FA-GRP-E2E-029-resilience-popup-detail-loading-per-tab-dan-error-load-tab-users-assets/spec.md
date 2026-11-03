@@ -29,54 +29,55 @@ coverage:
 
 ### TC-FA-GRP-282: Loading per tab
 
-1. Tahan respons request data Tab Users dengan intercept
-2. Klik nama Warehouse A
-3. Klik Tab Users
-4. Verifikasi Loading component tampil hanya di area tabel Tab Users
-5. Verifikasi header popup, toolbar, dan Tab Assets tetap tampil
-6. Lepas tahanan respons
-7. Tutup popup dengan [X]
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Tahan respons request data Tab Users dengan intercept
+3. Klik nama Warehouse A
+4. Klik Tab Users
+5. Verifikasi Loading component tampil hanya di area tabel Tab Users
+6. Verifikasi header popup, toolbar, dan Tab Assets tetap tampil
+7. Lepas tahanan respons
+8. Tutup popup dengan [X]
 
 ### TC-FA-GRP-283: Error load Tab Users tidak memengaruhi tab lain
 
-8. Paksa respons 5xx pada request data Tab Users dengan intercept
-9. Klik nama Warehouse A
-10. Klik Tab Users
-11. Verifikasi Tab Users menampilkan `Unable to load this data.` beserta tombol [Try Again]
-12. Klik Tab Assets
-13. Verifikasi Tab Assets tampil normal dengan baris data
-14. Lepas intercept 5xx
-15. Klik Tab Users
-16. Klik [Try Again]
-17. Verifikasi Tab Users memuat ulang dan menampilkan baris data
-18. Tutup popup dengan [X]
+9. Paksa respons 5xx pada request data Tab Users dengan intercept
+10. Klik nama Warehouse A
+11. Klik Tab Users
+12. Verifikasi Tab Users menampilkan `Unable to load this data.` beserta tombol [Try Again]
+13. Klik Tab Assets
+14. Verifikasi Tab Assets tampil normal dengan baris data
+15. Lepas intercept 5xx
+16. Klik Tab Users
+17. Klik [Try Again]
+18. Verifikasi Tab Users memuat ulang dan menampilkan baris data
+19. Tutup popup dengan [X]
 
 ### TC-FA-GRP-291: Error load Tab Assets
 
-19. Paksa respons 5xx pada request data Tab Assets dengan intercept
-20. Klik angka Total Asset Warehouse A
-21. Verifikasi area tabel Tab Assets menampilkan `Unable to load this data.` beserta tombol [Try Again]
-22. Verifikasi header popup dan Tab Users tetap tampil
-23. Lepas intercept 5xx
-24. Klik [Try Again]
-25. Verifikasi Tab Assets memuat data dan menampilkan baris data
-26. Tutup popup dengan [X]
+20. Paksa respons 5xx pada request data Tab Assets dengan intercept
+21. Klik angka Total Asset Warehouse A
+22. Verifikasi area tabel Tab Assets menampilkan `Unable to load this data.` beserta tombol [Try Again]
+23. Verifikasi header popup dan Tab Users tetap tampil
+24. Lepas intercept 5xx
+25. Klik [Try Again]
+26. Verifikasi Tab Assets memuat data dan menampilkan baris data
+27. Tutup popup dengan [X]
 
 ### TC-FA-GRP-298: Tab Users read-only, error load
 
-27. Paksa respons 5xx pada request data Tab Users dengan intercept
-28. Klik angka Total User Warehouse A
-29. Verifikasi area tabel Tab Users menampilkan `Unable to load this data.` beserta tombol [Try Again]
-30. Verifikasi Tab Users tidak memiliki aksi tulis
-31. Lepas intercept 5xx
-32. Klik [Try Again]
-33. Verifikasi Tab Users memuat data dan menampilkan baris data
-34. Tutup popup dengan [X]
+28. Paksa respons 5xx pada request data Tab Users dengan intercept
+29. Klik angka Total User Warehouse A
+30. Verifikasi area tabel Tab Users menampilkan `Unable to load this data.` beserta tombol [Try Again]
+31. Verifikasi Tab Users tidak memiliki aksi tulis
+32. Lepas intercept 5xx
+33. Klik [Try Again]
+34. Verifikasi Tab Users memuat data dan menampilkan baris data
+35. Tutup popup dengan [X]
 
 ## Notes
 
-- Spec 34 langkah, di bawah batas sekitar 35 langkah.
-- Langkah penghubung (S-03): langkah 6, 14, 23, 31 (melepas intercept segera setelah pemicu selesai, S-09), langkah 7, 18, 26, 34 (menutup popup).
+- Spec 35 langkah, pada batas sekitar 35 langkah.
+- Langkah penghubung (S-03): langkah 7, 15, 24, 32 (melepas intercept segera setelah pemicu selesai, S-09), langkah 8, 19, 27, 35 (menutup popup). Langkah 1 (Ketik Search `Warehouse A`, tekan Enter, sebelum intercept dipasang) menemukan baris target karena client punya lebih dari 10 node level 1 dengan page size 10, sehingga baris tidak diandalkan berada di halaman 1; Search tetap aktif selama popup dibuka dan ditutup (R-16).
 - Kelas b: kegagalan 5xx dipaksa lewat intercept parsial di atas backend nyata sehingga spec ditandai `FE+BE`, bukan `Mode: mock` (bagian 6 konvensi). TC-FA-GRP-282 menahan respons hanya untuk mengamati Loading (bukan kelas b) dan berada di spec ini bersama TC-FA-GRP-283 pada permukaan yang sama.
 - Urutan TC dalam spec: 282, 283, 291, 298.
 - Temuan untuk QA:

@@ -34,72 +34,77 @@ coverage:
 
 ### TC-FA-GRP-1220: Kolom Asset Value (Commercial) ditulis nilai asli, — ditulis - (viewAssetValueGroups)
 
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Buka Popup Setup Column
-3. Centang Asset Value (Commercial)
-4. Klik [Save]
-5. Klik icon Download
-6. Pilih Download as CSV
-7. Verifikasi tidak ada toast sukses
-8. Buka berkas
-9. Verifikasi kolom Asset Value (Commercial): G1 = `1500`, G2 = `0`, G4 = `8000`, G5 = `120`, G6 = `2300` ditulis nilai asli (bukan teks `No access`)
-10. Verifikasi sel Asset Value (Commercial) G3 ditulis hyphen tunggal `-`
-11. Tutup Popup Detail Group
+1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Buka Popup Setup Column
+4. Centang Asset Value (Commercial)
+5. Klik [Save]
+6. Klik icon Download
+7. Pilih Download as CSV
+8. Verifikasi tidak ada toast sukses
+9. Buka berkas
+10. Verifikasi kolom Asset Value (Commercial): G1 = `1500`, G2 = `0`, G4 = `8000`, G5 = `120`, G6 = `2300` ditulis nilai asli (bukan teks `No access`)
+11. Verifikasi sel Asset Value (Commercial) G3 ditulis hyphen tunggal `-`
+12. Tutup Popup Detail Group
 
 ### TC-FA-GRP-1227: Kolom Warranty Expiry mengikuti format General Settings, — ditulis - (managePurchaseGroups)
 
-12. Ganti akun: Logout
-13. Login dengan email `managePurchaseGroups_automated_{namaCompany}@qwertysystem.net` dan password `Spectra.env.FA_GRP_MANAGEPURCHASE_PASSWORD`
-14. Buka Fixed Asset > Settings > Groups
-15. Buka Detail Value Gate Node A (Tab Assets)
-16. Buka Popup Setup Column
-17. Centang Warranty Expiry
-18. Klik [Save]
-19. Klik icon Download
-20. Pilih Download as CSV
-21. Verifikasi tidak ada toast sukses
-22. Buka berkas
-23. Verifikasi kolom Warranty Expiry: G6 = `01/01/2026`, G2 = `20/01/2027`, G1 = `15/03/2027`, G4 = `20/05/2028` ditulis tanggal sesuai format General Settings (nilai asli)
-24. Verifikasi sel Warranty Expiry G3 dan G5 ditulis hyphen tunggal `-`
-25. Tutup Popup Detail Group
+13. Ganti akun: Logout
+14. Login dengan email `managePurchaseGroups_automated_{namaCompany}@qwertysystem.net` dan password `Spectra.env.FA_GRP_MANAGEPURCHASE_PASSWORD`
+15. Buka Fixed Asset > Settings > Groups
+16. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+17. Buka Detail Value Gate Node A (Tab Assets)
+18. Buka Popup Setup Column
+19. Centang Warranty Expiry
+20. Klik [Save]
+21. Klik icon Download
+22. Pilih Download as CSV
+23. Verifikasi tidak ada toast sukses
+24. Buka berkas
+25. Verifikasi kolom Warranty Expiry: G6 = `01/01/2026`, G2 = `20/01/2027`, G1 = `15/03/2027`, G4 = `20/05/2028` ditulis tanggal sesuai format General Settings (nilai asli)
+26. Verifikasi sel Warranty Expiry G3 dan G5 ditulis hyphen tunggal `-`
+27. Tutup Popup Detail Group
 
 ### TC-FA-GRP-1237: Kolom Custom Field ditulis nilai (tanggal mengikuti General Settings), — ditulis - (allValueAccess)
 
-26. Ganti akun: Logout
-27. Login dengan email `allValueAccess_automated_{namaCompany}@qwertysystem.net` dan password `Spectra.env.FA_GRP_ALLVALUEACCESS_PASSWORD`
-28. Buka Fixed Asset > Settings > Groups
-29. Buka Detail Value Gate Node A (Tab Assets)
-30. Buka Popup Setup Column
-31. Centang Cost Center, Insurance Policy, PO Number, Purchase Date, dan Cost Account
-32. Klik [Save]
-33. Klik icon Download
-34. Pilih Download as CSV
-35. Verifikasi tidak ada toast sukses
-36. Buka berkas
-37. Verifikasi kolom Cost Center, Insurance Policy, PO Number, Purchase Date, dan Cost Account hadir dengan nilai asli (G1 = `CC-ALPHA`, `INS-2026`, `PO-001`, `10/02/2026`, `CA-100`)
-38. Verifikasi sel yang belum diisi atau di luar Scope (mis. Cost Center G3 dan G5) ditulis hyphen tunggal `-`
-39. Tutup Popup Detail Group
+28. Ganti akun: Logout
+29. Login dengan email `allValueAccess_automated_{namaCompany}@qwertysystem.net` dan password `Spectra.env.FA_GRP_ALLVALUEACCESS_PASSWORD`
+30. Buka Fixed Asset > Settings > Groups
+31. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+32. Buka Detail Value Gate Node A (Tab Assets)
+33. Buka Popup Setup Column
+34. Centang Cost Center, Insurance Policy, PO Number, Purchase Date, dan Cost Account
+35. Klik [Save]
+36. Klik icon Download
+37. Pilih Download as CSV
+38. Verifikasi tidak ada toast sukses
+39. Buka berkas
+40. Verifikasi kolom Cost Center, Insurance Policy, PO Number, Purchase Date, dan Cost Account hadir dengan nilai asli (G1 = `CC-ALPHA`, `INS-2026`, `PO-001`, `10/02/2026`, `CA-100`)
+41. Verifikasi sel yang belum diisi atau di luar Scope (mis. Cost Center G3 dan G5) ditulis hyphen tunggal `-`
+42. Tutup Popup Detail Group
 
 ### TC-FA-GRP-1247: Sel No access ditulis teks No access; kolom tidak bergerbang tetap bernilai (noValueAccess)
 
-40. Ganti akun: Logout
-41. Login dengan email `noValueAccess_automated_{namaCompany}@qwertysystem.net` dan password `Spectra.env.FA_GRP_NOVALUEACCESS_PASSWORD`
-42. Buka Fixed Asset > Settings > Groups
-43. Buka Detail Value Gate Node A (Tab Assets)
-44. Buka Popup Setup Column
-45. Centang Asset Value (Commercial), Warranty Expiry, dan Last Scanned
-46. Klik [Save]
-47. Klik icon Download
-48. Pilih Download as CSV
-49. Verifikasi tidak ada toast sukses
-50. Buka berkas
-51. Verifikasi kolom Asset Value (Commercial) dan Warranty Expiry: seluruh baris ditulis teks `No access` (bukan nilai asli dan bukan `-`)
-52. Verifikasi kolom Last Scanned tetap bernilai (G1 = `10/10/2026`)
-53. Verifikasi sel Last Scanned untuk aset yang belum pernah dipindai (G2, G4, G6) ditulis `-`
+43. Ganti akun: Logout
+44. Login dengan email `noValueAccess_automated_{namaCompany}@qwertysystem.net` dan password `Spectra.env.FA_GRP_NOVALUEACCESS_PASSWORD`
+45. Buka Fixed Asset > Settings > Groups
+46. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+47. Buka Detail Value Gate Node A (Tab Assets)
+48. Buka Popup Setup Column
+49. Centang Asset Value (Commercial), Warranty Expiry, dan Last Scanned
+50. Klik [Save]
+51. Klik icon Download
+52. Pilih Download as CSV
+53. Verifikasi tidak ada toast sukses
+54. Buka berkas
+55. Verifikasi kolom Asset Value (Commercial) dan Warranty Expiry: seluruh baris ditulis teks `No access` (bukan nilai asli dan bukan `-`)
+56. Verifikasi kolom Last Scanned tetap bernilai (G1 = `10/10/2026`)
+57. Verifikasi sel Last Scanned untuk aset yang belum pernah dipindai (G2, G4, G6) ditulis `-`
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular. Kelas harness f (isi berkas) untuk seluruh spec.
 - Langkah penghubung (S-03): menutup Popup Detail Group antar blok; Logout dan Login pada Ganti akun (akun pertama login di hook `before`; ganti akun punya langkah eksplisit, S-07); Buka Fixed Asset > Settings > Groups sesudah login akun baru karena hook `beforeEach` hanya membuka halaman untuk akun pertama. Asersi tidak ada toast sukses diletakkan segera sesudah memilih format Download dan sebelum membuka berkas (8b butir 11); anchor positifnya adalah Verifikasi isi berkas sesudahnya.
-- Spec ini 53 langkah, di atas smell 35 langkah: seluruh blok satu kelas harness (isi berkas unduhan kolom bergerbang) pada dataset yang sama (Value Gate Node A) dengan alur yang sama, dan ganti akun eksplisit di antara blok (bagian sesudah ganti akun tetap bermakna walau blok sebelumnya gagal); kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini 57 langkah, di atas smell 35 langkah: seluruh blok satu kelas harness (isi berkas unduhan kolom bergerbang) pada dataset yang sama (Value Gate Node A) dengan alur yang sama, dan ganti akun eksplisit di antara blok (bagian sesudah ganti akun tetap bermakna walau blok sebelumnya gagal); kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA (S-15): (1) TC-1220 dan TC-1247 menulis "centang kolom Asset Value" padahal Setup Column memuat dua kolom `Asset Value (Commercial)` dan `Asset Value (Fiscal)`; spec memakai `Asset Value (Commercial)` mengikuti Catatan TC. (2) TC-1237 tidak menyebut nilai konkret kolom Insurance Policy dan Cost Account selain G1; spec mengasersi nilai G1 yang tertulis di TC. (3) TC-1247 butir b menulis tanggal pemindaian G1 sebagai "mis. G1 = 10/10/2026" tanpa jam.

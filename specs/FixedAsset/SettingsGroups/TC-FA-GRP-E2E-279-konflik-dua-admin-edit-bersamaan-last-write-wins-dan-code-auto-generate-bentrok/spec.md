@@ -30,33 +30,38 @@ coverage:
 ### TC-FA-GRP-190: Dua aktor mengedit node yang sama (last-write-wins)
 
 1. Catat jumlah entri Changelog `LWW Node {runId}-279` sebagai baseline, lalu buka konteks UI B dan login sebagai Total Control B
-2. Konteks A dan B sama-sama membuka Edit `LWW Node {runId}-279`
-3. Konteks A mengubah Description menjadi `A`, lalu klik [Save]
-4. Verifikasi konteks A menampilkan toast `Success, group has been updated.` tanpa 409
-5. Konteks B mengubah Description menjadi `B`, lalu klik [Save]
-6. Verifikasi konteks B menampilkan toast `Success, group has been updated.` tanpa 409
-7. Buka Popup Detail Group `LWW Node {runId}-279`
-8. Verifikasi nilai akhir Description = `B` (seluruh field form B menimpa)
-9. Verifikasi Changelog mencatat kedua perubahan: jumlah entri bertambah 2 terhadap baseline
-10. Tutup Popup Detail Group dan konteks UI B
+2. Konteks B: Buka Fixed Asset > Settings > Groups
+3. Konteks A dan B sama-sama ketik Search `LWW Node {runId}-279` pada Groups List, tekan Enter
+4. Konteks A dan B sama-sama membuka Edit `LWW Node {runId}-279`
+5. Konteks A mengubah Description menjadi `A`, lalu klik [Save]
+6. Verifikasi konteks A menampilkan toast `Success, group has been updated.` tanpa 409
+7. Konteks B mengubah Description menjadi `B`, lalu klik [Save]
+8. Verifikasi konteks B menampilkan toast `Success, group has been updated.` tanpa 409
+9. Konteks A ganti isi kotak Search Groups List dengan `LWW Node {runId}-279`, tekan Enter
+10. Buka Popup Detail Group `LWW Node {runId}-279`
+11. Verifikasi nilai akhir Description = `B` (seluruh field form B menimpa)
+12. Verifikasi Changelog mencatat kedua perubahan: jumlah entri bertambah 2 terhadap baseline
+13. Tutup Popup Detail Group dan konteks UI B
 
 ### TC-FA-GRP-334: Code auto-generate bersamaan bentrok, retry otomatis sekali
 
-11. Buka konteks UI B dan login sebagai Total Control B
-12. Konteks A klik Add Subgroup pada Warehouse A, konteks B klik Add Subgroup pada Head Office, keduanya mengisi Group Name `Main Lab` dengan Code kosong
-13. Konteks A dan B menekan [Submit] bersamaan
-14. Verifikasi keduanya sukses (tanpa error)
-15. Verifikasi salah satu group mendapat Code `ML` dan yang lain mendapat suffix berikutnya `ML2`
-16. Tutup konteks UI B
+14. Buka konteks UI B dan login sebagai Total Control B
+15. Konteks B: Buka Fixed Asset > Settings > Groups
+16. Konteks A ganti isi kotak Search Groups List dengan `Warehouse A`, konteks B ketik Search `Head Office` pada Groups List, keduanya tekan Enter
+17. Konteks A klik Add Subgroup pada Warehouse A, konteks B klik Add Subgroup pada Head Office, keduanya mengisi Group Name `Main Lab` dengan Code kosong
+18. Konteks A dan B menekan [Submit] bersamaan
+19. Verifikasi keduanya sukses (tanpa error)
+20. Verifikasi salah satu group mendapat Code `ML` dan yang lain mendapat suffix berikutnya `ML2`
+21. Tutup konteks UI B
 
 ### TC-FA-GRP-335: Retry juga bentrok, inline error dan popup tetap terbuka
 
-17. Klik [+] Group, isi Group Name `Retry Lab` dengan Code kosong
-18. Picu bentrok ganda: kandidat Code dan suffix berikutnya diambil request lain bersamaan, lalu klik [Submit]
-19. Verifikasi inline error `Code already exists` pada field Code
-20. Verifikasi popup tetap terbuka
-21. Klik [Submit] ulang
-22. Verifikasi aktor dapat submit ulang dan berhasil (toast sukses `Success, group has been created.`)
+22. Klik [+] Group, isi Group Name `Retry Lab` dengan Code kosong
+23. Picu bentrok ganda: kandidat Code dan suffix berikutnya diambil request lain bersamaan, lalu klik [Submit]
+24. Verifikasi inline error `Code already exists` pada field Code
+25. Verifikasi popup tetap terbuka
+26. Klik [Submit] ulang
+27. Verifikasi aktor dapat submit ulang dan berhasil (toast sukses `Success, group has been created.`)
 
 ## Notes
 
@@ -64,7 +69,8 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-GRP-119, 123, 124, dan 974 (konflik batas plan dan platform) ada di spec 043; spec ini memuat konflik Edit dan Code auto-generate pada client Professional.
 - TC-FA-GRP-334 dan TC-FA-GRP-190 non-deterministik pada konteks mana yang lebih dulu; asersi dirumuskan tanpa menentukan konteks (TC-FA-GRP-334 "salah satu group").
 - TC-FA-GRP-335 memakai satu konteks UI; pemicu bentrok dari request lain disediakan tim BE dan bukan konteks UI kedua.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Catat jumlah entri Changelog `LWW Node {runId}-279` sebagai baseline, ...); langkah 7 (Buka Popup Detail Group `LWW Node {runId}-279`); langkah 10 (Tutup Popup Detail Group dan konteks UI B); langkah 11 (Buka konteks UI B dan login sebagai Total Control B); langkah 16 (Tutup konteks UI B).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Catat jumlah entri Changelog `LWW Node {runId}-279` sebagai baseline, ...); langkah 10 (Buka Popup Detail Group `LWW Node {runId}-279`); langkah 13 (Tutup Popup Detail Group dan konteks UI B); langkah 14 (Buka konteks UI B dan login sebagai Total Control B); langkah 21 (Tutup konteks UI B).
+- Langkah penghubung (S-03, S-14, R-16): `Search` pada Groups List dengan nama node target (`LWW Node {runId}-279`, `Warehouse A`, `Head Office`) sebelum membuka Edit, Popup Detail Group, atau Add Subgroup, karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; `Konteks B: Buka Fixed Asset > Settings > Groups` sesudah login Total Control B (S-14).
 - Temuan untuk QA:
   - Email dan password akun Total Control B client Professional tidak tertulis di Pre-setup TC; spec memakai env baru `FA_TC_B_PASSWORD` dan akun yang disediakan tim FE.
   - TC-FA-GRP-190 Expected c "Changelog mencatat kedua perubahan" tidak menyebut cara membaca Changelog; spec memakai Popup Detail Group (kemampuan baca Changelog) dengan selisih jumlah entri terhadap baseline (S-12).

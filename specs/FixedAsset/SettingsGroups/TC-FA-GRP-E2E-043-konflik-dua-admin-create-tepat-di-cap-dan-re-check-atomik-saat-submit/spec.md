@@ -22,7 +22,7 @@ coverage:
 - Hook suite (flag Guided Tooltip `fa-settings-groups` seen, sesi API aktor, klien HTTP, fixture BE): lihat `suite.md` bagian Hook suite; tidak ditulis ulang di sini.
 - Data client (disediakan tim FE): client Growth berisi tepat 2 group (precondition TC-FA-GRP-119, 974, dan 123); client Enterprise dengan Master Data Count Limit yang dapat diturunkan (TC-FA-GRP-124).
 - Data Dinamis bersuffix `{runId}-043`: `Race Fill {runId}-043` (group pemicu dari sesi API), `Race Group {runId}-043`, `Race Close {runId}-043`, `Race A {runId}-043`, `Race B {runId}-043`, `Limit A {runId}-043`, `Limit B {runId}-043`; nilai diacu lewat `Fixture.fixedAssetSettingsGroups.<kunci>` (berkas fixture belum ada, dibuat di tahap script).
-- State global yang diubah: Master Data Count Limit client Enterprise diturunkan menjadi jumlah group + 1 (langkah 31) dan dipulihkan di langkah 37 serta di hook `after`; pelaku dan mekanismenya disediakan tim FE/BE. Suite berjalan serial (`parallel: false`). Antar blok TC-FA-GRP-119, 974, dan 123 jumlah group client Growth dikembalikan ke 2 lewat API (langkah penghubung).
+- State global yang diubah: Master Data Count Limit client Enterprise diturunkan menjadi jumlah group + 1 (langkah 33) dan dipulihkan di langkah 40 serta di hook `after`; pelaku dan mekanismenya disediakan tim FE/BE. Suite berjalan serial (`parallel: false`). Antar blok TC-FA-GRP-119, 974, dan 123 jumlah group client Growth dikembalikan ke 2 lewat API (langkah penghubung).
 - Kemampuan teknis: sesi API aktor untuk membuat dan menghapus group sebagai pemicu; dua konteks browser terpisah (A dan B) yang menekan [Submit] bersamaan; pembacaan status respons simpan (409 Conflict) lewat intercept pasif atau fixture BE (disediakan tim FE); pembacaan jumlah group lewat fixture BE (disediakan tim FE/BE).
 - Pemulihan (hook `after`): hapus lewat API semua group dengan suffix `{runId}-043`; pulihkan Master Data Count Limit; tutup konteks UI B; kembalikan sesi ke akun default suite.
 
@@ -58,24 +58,27 @@ coverage:
 ### TC-FA-GRP-123: Create bersamaan tepat di cap, satu sukses dan satu ditolak
 
 22. Buka konteks UI B dan login sebagai Total Control B client Growth
-23. Konteks A dan B masing-masing klik [+] Group, A mengisi `Race A {runId}-043` dan B mengisi `Race B {runId}-043`
-24. Konteks A dan B menekan [Submit] bersamaan
-25. Verifikasi tepat satu konteks menampilkan toast sukses `Success, group has been created.`
-26. Verifikasi konteks lainnya ditolak server `409 Conflict` dengan dialog plan gating D-06 di atas popup form
-27. Pada konteks yang ditolak, klik [OK]
-28. Verifikasi dialog dan popup form di konteks itu tertutup
-29. Tutup konteks UI B dan hapus lewat API group yang tersimpan hingga jumlah group client Growth = 2
+23. Buka Fixed Asset > Settings > Groups di konteks UI B
+24. Konteks A dan B masing-masing klik [+] Group, A mengisi `Race A {runId}-043` dan B mengisi `Race B {runId}-043`
+25. Konteks A dan B menekan [Submit] bersamaan
+26. Verifikasi tepat satu konteks menampilkan toast sukses `Success, group has been created.`
+27. Verifikasi konteks lainnya ditolak server `409 Conflict` dengan dialog plan gating D-06 di atas popup form
+28. Pada konteks yang ditolak, klik [OK]
+29. Verifikasi dialog dan popup form di konteks itu tertutup
+30. Tutup konteks UI B dan hapus lewat API group yang tersimpan hingga jumlah group client Growth = 2
 
 ### Client Enterprise (TC-FA-GRP-124)
 
-30. Ganti akun: logout konteks A, lalu login sebagai Total Control A client Enterprise; buka konteks UI B dan login sebagai Total Control B client Enterprise
-31. Turunkan Master Data Count Limit di Lifecycle Settings > System Limits menjadi jumlah group client + 1 (tersisa 1 slot)
-32. Konteks A dan B masing-masing klik [+] Group, A mengisi `Limit A {runId}-043` dan B mengisi `Limit B {runId}-043`, lalu keduanya menekan [Submit] bersamaan
-33. Verifikasi tepat satu konteks sukses menyimpan group
-34. Verifikasi konteks lainnya ditolak `409 Conflict` dengan dialog 🔒 `Cannot Add Group` (D-08) Body `You've reached the platform limit of [Group Limit] groups. Contact support if you need a higher limit.` dan tombol hanya [OK]
-35. Pada konteks yang ditolak, klik [OK]
-36. Verifikasi dialog dan popup form di konteks itu tertutup
-37. Pulihkan Master Data Count Limit ke nilai awal dan tutup konteks UI B
+31. Ganti akun: logout konteks A, lalu login sebagai Total Control A client Enterprise; buka konteks UI B dan login sebagai Total Control B client Enterprise
+32. Buka Fixed Asset > Settings > Groups di konteks A dan konteks UI B
+33. Turunkan Master Data Count Limit di Lifecycle Settings > System Limits menjadi jumlah group client + 1 (tersisa 1 slot)
+34. Buka Fixed Asset > Settings > Groups di konteks A dan konteks UI B
+35. Konteks A dan B masing-masing klik [+] Group, A mengisi `Limit A {runId}-043` dan B mengisi `Limit B {runId}-043`, lalu keduanya menekan [Submit] bersamaan
+36. Verifikasi tepat satu konteks sukses menyimpan group
+37. Verifikasi konteks lainnya ditolak `409 Conflict` dengan dialog 🔒 `Cannot Add Group` (D-08) Body `You've reached the platform limit of [Group Limit] groups. Contact support if you need a higher limit.` dan tombol hanya [OK]
+38. Pada konteks yang ditolak, klik [OK]
+39. Verifikasi dialog dan popup form di konteks itu tertutup
+40. Pulihkan Master Data Count Limit ke nilai awal dan tutup konteks UI B
 
 ## Notes
 
@@ -83,9 +86,9 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-GRP-190, 334, dan 335 (konflik dua admin pada Edit dan Code auto-generate, client Professional) ada di spec 279; spec ini hanya memuat konflik batas plan dan platform.
 - Pelaku kedua pada TC-FA-GRP-119 dan 974 memakai sesi API aktor (bukan konteks UI kedua), sehingga tanpa butir `P-2`; konteks UI B hanya dibuka untuk TC-FA-GRP-123 dan TC-FA-GRP-124 karena hasilnya diasersi.
 - TC-FA-GRP-123 dan TC-FA-GRP-124 non-deterministik pada konteks mana yang menang; asersi dirumuskan "tepat satu konteks" sukses dan konteks lainnya ditolak.
-- Urutan blok: blok client Growth lebih dulu, lalu ganti akun ke client Enterprise (langkah 30); bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal (bagian 3, pemisah (b)). State dari blok sebelumnya (jumlah group = 3) dikembalikan ke 2 lewat API sebelum blok berikutnya (S-09).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 10 (Hapus `Race Fill {runId}-043` lewat API hingga jumlah group client Gro...); langkah 21 (Hapus `Race Fill {runId}-043` lewat API hingga jumlah group client Gro...); langkah 22 (Buka konteks UI B dan login sebagai Total Control B client Growth); langkah 29 (Tutup konteks UI B dan hapus lewat API group yang tersimpan hingga jum...); langkah 30 (Ganti akun: logout konteks A, lalu login sebagai Total Control A clien...); langkah 31 (Turunkan Master Data Count Limit di Lifecycle Settings > System Limits...); langkah 37 (Pulihkan Master Data Count Limit ke nilai awal dan tutup konteks UI B).
-- Alasan spec melewati ~35 langkah (37 langkah): seluruh blok satu kelas (multi-konteks race pada plan gating Create), tiap blok berdiri sendiri (precondition dibangun ulang lewat langkah penghubung), dan langkah banyak karena `Verifikasi` per klausa Expected (S-01).
+- Urutan blok: blok client Growth lebih dulu, lalu ganti akun ke client Enterprise (langkah 31); bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal (bagian 3, pemisah (b)). State dari blok sebelumnya (jumlah group = 3) dikembalikan ke 2 lewat API sebelum blok berikutnya (S-09).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 10 dan 21 (Hapus `Race Fill {runId}-043` lewat API hingga jumlah group client Growth = 2); langkah 22 (Buka konteks UI B dan login sebagai Total Control B client Growth); langkah 23 (Buka Fixed Asset > Settings > Groups di konteks UI B, karena hook `beforeEach` hanya membuka layar konteks A, S-14); langkah 30 (Tutup konteks UI B dan hapus lewat API group yang tersimpan hingga jumlah group client Growth = 2); langkah 31 (Ganti akun dan login konteks A dan B client Enterprise); langkah 32 dan 34 (Buka Fixed Asset > Settings > Groups di konteks A dan konteks UI B sesudah login dan sesudah System Limits diubah lewat UI Admin Console, S-14); langkah 33 (Turunkan Master Data Count Limit); langkah 40 (Pulihkan Master Data Count Limit ke nilai awal dan tutup konteks UI B).
+- Alasan spec melewati ~35 langkah (40 langkah): seluruh blok satu kelas (multi-konteks race pada plan gating Create), tiap blok berdiri sendiri (precondition dibangun ulang lewat langkah penghubung), dan langkah banyak karena `Verifikasi` per klausa Expected (S-01).
 - Temuan untuk QA:
   - Email dan password akun Total Control A dan B untuk client Growth dan Enterprise tidak tertulis di Pre-setup TC; spec memakai env baru dan akun yang disediakan tim FE.
   - TC-FA-GRP-119 dan TC-FA-GRP-974 Expected "state di-refresh (count terbaru)" tidak menyebut apa yang teramati; spec mengasersi bahwa sidebar menampilkan group pemicu dari sesi API.

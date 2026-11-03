@@ -28,49 +28,54 @@ coverage:
 
 ### Langkah penghubung
 
-1. Buka Detail Warehouse A (Tab Assets)
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Buka Detail Warehouse A (Tab Assets)
 
 ### TC-FA-GRP-1166: Setup Column: centang kolom curated Category
 
-2. Buka Popup Setup Column
-3. Centang Category
-4. Verifikasi Live Preview langsung menampilkan kolom Category
-5. Klik [Save]
-6. Verifikasi kolom Category tampil di tabel
-7. Refresh F5
-8. Buka Detail Warehouse A (Tab Assets) (langkah penghubung)
-9. Verifikasi kolom Category tampil di tabel (konfigurasi bertahan setelah F5)
+3. Buka Popup Setup Column
+4. Centang Category
+5. Verifikasi Live Preview langsung menampilkan kolom Category
+6. Klik [Save]
+7. Verifikasi kolom Category tampil di tabel
+8. Refresh F5
+9. Ketik Search `Warehouse A`, tekan Enter
+10. Buka Detail Warehouse A (Tab Assets) (langkah penghubung)
+11. Verifikasi kolom Category tampil di tabel (konfigurasi bertahan setelah F5)
 
 ### TC-FA-GRP-1165: Sort Tab Assets by kolom Category: siklus Asc, Desc, Netral
 
-10. Klik header Category 1×
-11. Verifikasi urutan Ascending A→Z case-insensitive berdasarkan teks badge
-12. Klik header 2×
-13. Verifikasi urutan Descending Z→A
-14. Klik header 3×
-15. Verifikasi urutan kembali ke default tabel (Name A→Z)
+12. Klik header Category 1×
+13. Verifikasi urutan Ascending A→Z case-insensitive berdasarkan teks badge
+14. Klik header 2×
+15. Verifikasi urutan Descending Z→A
+16. Klik header 3×
+17. Verifikasi urutan kembali ke default tabel (Name A→Z)
 
 ### TC-FA-GRP-1167: Setup Column: geser (drag) kolom Category
 
-16. Hapus preferensi kolom Setup Column di browser lalu muat ulang halaman (langkah penghubung)
-17. Buka Detail Warehouse A (Tab Assets) (langkah penghubung)
-18. Verifikasi kolom Name tampil di tabel
-19. Verifikasi kolom Category tidak tampil di tabel
-20. Buka Popup Setup Column
-21. Centang Category
-22. Drag Category ke posisi lain (posisi paling atas daftar kolom)
-23. Verifikasi urutan Live Preview mengikuti posisi baru
-24. Klik [Save]
-25. Verifikasi urutan kolom tabel berubah sesuai posisi baru
-26. Refresh F5
-27. Buka Detail Warehouse A (Tab Assets) (langkah penghubung)
-28. Verifikasi urutan kolom tabel tetap sesuai posisi baru
+18. Hapus preferensi kolom Setup Column di browser lalu muat ulang halaman (langkah penghubung)
+19. Ketik Search `Warehouse A`, tekan Enter
+20. Buka Detail Warehouse A (Tab Assets) (langkah penghubung)
+21. Verifikasi kolom Name tampil di tabel
+22. Verifikasi kolom Category tidak tampil di tabel
+23. Buka Popup Setup Column
+24. Centang Category
+25. Drag Category ke posisi lain (posisi paling atas daftar kolom)
+26. Verifikasi urutan Live Preview mengikuti posisi baru
+27. Klik [Save]
+28. Verifikasi urutan kolom tabel berubah sesuai posisi baru
+29. Refresh F5
+30. Ketik Search `Warehouse A`, tekan Enter
+31. Buka Detail Warehouse A (Tab Assets) (langkah penghubung)
+32. Verifikasi urutan kolom tabel tetap sesuai posisi baru
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC di spec: TC-FA-GRP-1166, TC-FA-GRP-1165, TC-FA-GRP-1167. TC-FA-GRP-1166 memuat aksi yang membentuk precondition d (kolom Category ditampilkan) yang dibutuhkan TC-FA-GRP-1165 (S-10).
 - Langkah penghubung (S-03): "Hapus preferensi kolom Setup Column di browser lalu muat ulang halaman" mengembalikan kolom Category ke tersembunyi sebelum TC-FA-GRP-1167 (S-09); pemulihan akhir lewat hook `after`.
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-1167: "drag Category ke posisi lain" tidak menyebut posisi tujuan; spec memakai posisi paling atas daftar kolom.
   - TC-FA-GRP-1166 dan TC-FA-GRP-1167: TC tidak menyatakan apakah Detail Group tetap terbuka setelah F5; spec membuka ulang Detail Warehouse A sebagai langkah penghubung.

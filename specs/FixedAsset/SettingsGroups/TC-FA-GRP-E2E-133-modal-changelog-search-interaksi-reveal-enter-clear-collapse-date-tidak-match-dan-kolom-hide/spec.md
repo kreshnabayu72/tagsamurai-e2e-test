@@ -62,50 +62,56 @@ coverage:
 19. Tekan Enter pada input kosong
 20. Verifikasi tabel kembali ke semua data: nama baris halaman 1 sama dengan yang dicatat pada langkah 2
 21. Ganti isi kotak search dengan `Log3 {runId}-133`, tekan Enter
-22. Verifikasi tabel hanya memuat baris dengan Group Name `Log3 {runId}-133`
-23. Ganti isi kotak search dengan `  Log3 {runId}-133  ` (dua spasi sebelum dan sesudah keyword), tekan Enter
-24. Verifikasi tabel menampilkan baris yang sama dengan hasil pada langkah 22
-25. Verifikasi isi input Search tetap `  Log3 {runId}-133  ` seperti yang diketik
-26. Ganti isi kotak search dengan `Log1 {runId}-133`, tekan Enter
-27. Klik `(←)` pada kotak Search
-28. Verifikasi input Search tertutup
-29. Verifikasi keyword Search kosong dan tabel langsung reset: nama baris halaman 1 sama dengan yang dicatat pada langkah 2
+22. Verifikasi sedikitnya satu baris tampil pada tabel
+23. Verifikasi tabel hanya memuat baris dengan Group Name `Log3 {runId}-133`
+24. Ganti isi kotak search dengan `  Log3 {runId}-133  ` (dua spasi sebelum dan sesudah keyword), tekan Enter
+25. Verifikasi tabel menampilkan baris yang sama dengan hasil pada langkah 23
+26. Verifikasi isi input Search tetap `  Log3 {runId}-133  ` seperti yang diketik
+27. Ganti isi kotak search dengan `Log1 {runId}-133`, tekan Enter
+28. Klik `(←)` pada kotak Search
+29. Verifikasi input Search tertutup
+30. Verifikasi keyword Search kosong dan tabel langsung reset: nama baris halaman 1 sama dengan yang dicatat pada langkah 2
 
 ### TC-FA-GRP-439: Nilai kolom Date tidak menghasilkan match
 
-30. Salin nilai Date yang tampil pada baris pertama tabel
-31. Ketik Search dengan nilai Date yang disalin, tekan Enter
-32. Verifikasi empty state tampil dengan title `No results found`
-33. Klik `(←)` pada kotak Search
-34. Klik icon Filter
-35. Verifikasi Filter Panel memuat field Date (date range picker, placeholder `Select date`)
-36. Klik icon Filter untuk menutup panel
+31. Salin nilai Date yang tampil pada baris pertama tabel
+32. Ketik Search dengan nilai Date yang disalin, tekan Enter
+33. Verifikasi empty state tampil dengan title `No results found`
+34. Klik `(←)` pada kotak Search
+35. Klik icon Filter
+36. Verifikasi Filter Panel memuat field Date (date range picker, placeholder `Select date`)
+37. Klik icon Filter untuk menutup panel
 
 ### TC-FA-GRP-440: Search pada kolom Group Name yang di-hide
 
-37. Hide kolom Group Name lewat Column Visibility (icon `⋯` di header kolom terakhir)
-38. Verifikasi kolom Group Name tidak tampil pada header tabel
-39. Ketik Search `Log3 {runId}-133`, tekan Enter
-40. Verifikasi empty state tampil dengan title `No results found` (kolom yang di-hide dikecualikan dari cakupan search)
-41. Klik `(←)` pada kotak Search
-42. Tampilkan kembali kolom Group Name lewat Column Visibility
-43. Verifikasi kolom Group Name tampil pada header tabel
-44. Ketik Search `Log3 {runId}-133`, tekan Enter
-45. Verifikasi baris Group Name `Log3 {runId}-133` tampil
-46. Klik `(←)` pada kotak Search
-47. Klik icon close (X) pada header Modal Changelog
+38. Hide kolom Group Name lewat Column Visibility (icon `⋯` di header kolom terakhir)
+39. Verifikasi kolom Group Name tidak tampil pada header tabel
+40. Ketik Search `Log3 {runId}-133`, tekan Enter
+41. Verifikasi baris Action Create dengan New Value `Log3 {runId}-133` tampil (cocok lewat kolom New Value yang masih tampil)
+42. Verifikasi tidak ada baris Action Edit pada tabel (baris Edit `Log3 {runId}-133` hanya memuat nama di kolom Group Name yang di-hide)
+43. Klik `(←)` pada kotak Search
+44. Tampilkan kembali kolom Group Name lewat Column Visibility
+45. Verifikasi kolom Group Name tampil pada header tabel
+46. Ketik Search `Log3 {runId}-133`, tekan Enter
+47. Verifikasi baris Group Name `Log3 {runId}-133` tampil
+48. Verifikasi baris Action Edit Group Name `Log3 {runId}-133` tampil
+49. Klik `(←)` pada kotak Search
+50. Klik icon close (X) pada header Modal Changelog
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
 - Langkah penghubung (tanpa awalan `Verifikasi`): mencatat nama baris halaman 1 (langkah 2), mengganti isi kotak search antar bagian TC-FA-GRP-432, menutup Search dengan `(←)`, menyalin nilai Date, membuka dan menutup Filter Panel, serta men-hide dan meng-unhide kolom Group Name lewat Column Visibility (S-03, R-16).
+- Anchor positif (8b butir 2, S-03): `Verifikasi sedikitnya satu baris tampil pada tabel` mendahului asersi universal "hanya memuat" hasil Search `Log3 {runId}-133` (langkah 22), seperti pada langkah 13; bukan klausa Expected TC.
 - Search adalah objek uji pada spec ini sehingga tabel tidak dibatasi suffix kecuali pada keyword yang memuat suffix spec.
 - Keyword 1 karakter `L` ditentukan spec (TC: "keyword 1 karakter" tanpa nilai); karena 12 entri seeding semuanya memuat `L` pada Group Name, asersi hasil Enter adalah tersaring dan memuat karakter itu.
 - Expected b TC-FA-GRP-439 ("penyaringan Date hanya tersedia lewat Filter Panel") ditulis sebagai `Verifikasi` Filter Panel memuat field Date.
-- Spec 47 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec 50 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Nama group seeding juga muncul di kolom New Value (baris Create) dan Old Value (baris Delete) sehingga Search tidak menghasilkan empty state; asersi kolom Group Name yang di-hide memakai baris Action Edit yang namanya hanya ada di kolom itu (TC-FA-GRP-440, R-13).
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.
   - Password akun aktor memakai env baru `FA_TC_PASSWORD` (nama `<APP>_<ROLE>_PASSWORD`); perlu didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
+  - TC-FA-GRP-440 Expected a (empty state "No results found") tidak dapat dipenuhi pada dataset ini: seluruh nama group seeding level 1 juga ada di kolom New Value atau Old Value yang tetap tampil. Spec mengasersi baris Action Edit tidak tampil; empty state penuh butuh nilai unik Group Name (mis. path group non-level-1), perlu seeding tambahan atau keputusan QA.
   - Rujukan "Example Data" dan "Tabel Data Uji" Changelog pada Precondition TC tidak punya data konkret; spec mendefinisikan 12 entri seeding sendiri di Prerequisites (Action Create/Edit/Delete; Field Group Name/Function/Description/Code). Entri Marked as Excess dan Restored from Excess hanya dipakai pada spec 132.
   - Changelog adalah audit trail permanen sehingga N total tidak dapat diturunkan dari seeding (bagian 8b butir 10); spec memakai Search suffix dan selisih terhadap data milik spec. Akun `ModB` dan `ModC` (dua user lain sebagai pelaku seeding) disediakan tim FE.

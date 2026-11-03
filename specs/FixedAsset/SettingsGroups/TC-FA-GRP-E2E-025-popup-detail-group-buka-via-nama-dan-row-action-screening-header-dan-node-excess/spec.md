@@ -39,52 +39,56 @@ coverage:
 ### TC-FA-GRP-271: Buka Popup Detail Group via row action Detail dan elipsis sidebar
 
 6. Klik node `All Groups` di sidebar
-7. Klik (⋯) pada baris Warehouse A
-8. Klik `Detail`
-9. Verifikasi Popup Detail Group Warehouse A terbuka
-10. Tutup popup dengan [X]
-11. Klik (⋯) pada node Warehouse A di sidebar
-12. Klik `Detail`
-13. Verifikasi Popup Detail Group yang sama (Warehouse A) terbuka dari elipsis sidebar
-14. Tutup popup dengan [X]
+7. Ketik Search `Warehouse A`, tekan Enter
+8. Klik (⋯) pada baris Warehouse A
+9. Klik `Detail`
+10. Verifikasi Popup Detail Group Warehouse A terbuka
+11. Tutup popup dengan [X]
+12. Klik (⋯) pada node Warehouse A di sidebar
+13. Klik `Detail`
+14. Verifikasi Popup Detail Group yang sama (Warehouse A) terbuka dari elipsis sidebar
+15. Tutup popup dengan [X]
+16. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ### TC-FA-GRP-272: Screening header Popup Detail Group
 
-15. Klik Floor 2 di sidebar
-16. Klik (⋯) pada baris IT Department
-17. Klik `Detail`
-18. Verifikasi Title popup `Group Detail` (flat, tidak diinterpolasi)
-19. Verifikasi Group Name berupa full path `Head Office > Floor 2 > IT Department` disertai badge Assignable pada baris yang sama
-20. Verifikasi Code `ITD` pada baris terpisah
-21. Verifikasi Description full-width dan terisi
-22. Verifikasi ikon close [X] tampil
-23. Verifikasi tidak ada tombol Edit atau Delete dan tidak ada Section Impact Summary
-24. Verifikasi Body memuat Tab Assets (aktif default) dan Tab Users
-25. Tutup popup dengan [X]
+17. Klik Floor 2 di sidebar
+18. Klik (⋯) pada baris IT Department
+19. Klik `Detail`
+20. Verifikasi Title popup `Group Detail` (flat, tidak diinterpolasi)
+21. Verifikasi Group Name berupa full path `Head Office > Floor 2 > IT Department` disertai badge Assignable pada baris yang sama
+22. Verifikasi Code `ITD` pada baris terpisah
+23. Verifikasi Description full-width dan terisi
+24. Verifikasi ikon close [X] tampil
+25. Verifikasi tidak ada tombol Edit atau Delete dan tidak ada Section Impact Summary
+26. Verifikasi Body memuat Tab Assets (aktif default) dan Tab Users
+27. Tutup popup dengan [X]
 
 ### TC-FA-GRP-273: Header Detail Function None dan Description kosong
 
-26. Klik node `All Groups` di sidebar
-27. Klik (⋯) pada baris Head Office
-28. Klik `Detail`
-29. Verifikasi badge Function tidak dirender
-30. Verifikasi Description tampil `—`
-31. Tutup popup dengan [X]
+28. Klik node `All Groups` di sidebar
+29. Ketik Search `Head Office`, tekan Enter
+30. Klik (⋯) pada baris Head Office
+31. Klik `Detail`
+32. Verifikasi badge Function tidak dirender
+33. Verifikasi Description tampil `—`
+34. Tutup popup dengan [X]
 
 ### TC-FA-GRP-274: Header Detail node Excess
 
-32. Klik (⋯) pada baris Warehouse B
-33. Klik `Detail`
-34. Verifikasi Popup Detail Group terbuka (Detail tidak kena CRU Lock)
-35. Hover Group Name di header popup
-36. Verifikasi Group Name di-dim tanpa badge tambahan
-37. Verifikasi tooltip `Read-only — over your plan's group limit` tampil
-38. Tutup popup dengan [X]
+35. Ganti isi kotak search dengan `Warehouse B`, tekan Enter
+36. Klik (⋯) pada baris Warehouse B
+37. Klik `Detail`
+38. Verifikasi Popup Detail Group terbuka (Detail tidak kena CRU Lock)
+39. Hover Group Name di header popup
+40. Verifikasi Group Name di-dim tanpa badge tambahan
+41. Verifikasi tooltip `Read-only — over your plan's group limit` tampil
+42. Tutup popup dengan [X]
 
 ## Notes
 
-- Spec melewati sekitar 35 langkah (38 langkah): seluruh blok adalah satu kelas (screening Popup Detail Group, hanya membaca) pada dataset Tabel A yang sama, tiap blok berdiri sendiri, dan memisahkannya hanya menggandakan login, hook, dan cleanup.
-- Langkah penghubung (S-03): langkah 1 (expand-all), langkah 6, 15, 26 (memilih node agar baris target tampil), langkah 5, 10, 14, 25, 31, 38 (menutup popup).
+- Spec melewati sekitar 35 langkah (42 langkah): seluruh blok adalah satu kelas (screening Popup Detail Group, hanya membaca) pada dataset Tabel A yang sama, tiap blok berdiri sendiri, dan memisahkannya hanya menggandakan login, hook, dan cleanup.
+- Langkah penghubung (S-03): langkah 1 (expand-all), langkah 6, 17, 28 (memilih node agar baris target tampil), langkah 5, 11, 15, 27, 34, 42 (menutup popup). Langkah 7, 29, dan 35 (Search `Warehouse A`, `Head Office`, lalu ganti isi kotak search dengan `Warehouse B`) menemukan baris target karena client punya lebih dari 10 node level 1 dengan page size 10, sehingga baris tidak diandalkan berada di halaman 1; langkah 16 (`(←)` pada kotak Search) mengembalikan tabel penuh sebelum memilih node berikutnya (R-16).
 - Urutan TC dalam spec: 270, 271, 272, 273, 274.
 - Temuan untuk QA:
   - TC-FA-GRP-272 tidak menyebut isi Description; spec mengasersi Description terisi sesuai precondition.

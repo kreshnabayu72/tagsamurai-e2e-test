@@ -86,15 +86,15 @@ coverage:
 31. Klik icon Filter
 32. Klik [Clear Field]
 33. Klik [Apply]
-34. Ganti isi kotak search dengan `delete`, tekan Enter
+34. Ganti isi kotak search dengan `Log2 {runId}-144`, tekan Enter
 35. Klik icon Filter
-36. Pilih `Create` pada dropdown Action
+36. Pilih `Delete` pada dropdown Action
 37. Klik [Apply]
 38. Verifikasi empty state tampil dengan Illustration, title `No results found`, dan body `Try adjusting your search or filter.`
 39. Klik icon Filter
 40. Klik [Clear Field]
 41. Klik [Apply]
-42. Verifikasi baris Action Delete Group Name `Log4 {runId}-144` tampil (tabel pulih)
+42. Verifikasi baris Action Create Group Name `Log2 {runId}-144` tampil (tabel pulih)
 43. Klik `(←)` pada kotak Search
 44. Klik icon close (X) pada header Modal Changelog
 
@@ -102,7 +102,7 @@ coverage:
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membentuk state awal Search + Filter + Sort, membersihkan filter dan Search antar TC, dan mengembalikan sort ke netral (S-03, S-09, R-16). Pada TC-FA-GRP-480 filter Action `Edit` dipasang ulang karena TC-FA-GRP-479 melepasnya.
-- TC-FA-GRP-481: kolom A = Group Name (Ascending) dan kolom B = Field; TC-FA-GRP-482: Search `delete` dengan filter Action `Create` tidak beririsan. Keduanya ditentukan spec karena TC memakai "K", "A", "B" tanpa nilai.
+- TC-FA-GRP-481: kolom A = Group Name (Ascending) dan kolom B = Field; TC-FA-GRP-482: Search `Log2 {runId}-144` dengan filter Action `Delete` tidak beririsan (group Log2 tidak punya entri Delete; keyword bersuffix spec agar tidak bertabrakan dengan entri permanen lain). Keduanya ditentukan spec karena TC memakai "K", "A", "B" tanpa nilai.
 - Spec 44 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.

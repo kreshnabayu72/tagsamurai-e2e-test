@@ -40,30 +40,32 @@ coverage:
 
 ### TC-FA-GRP-169: Ubah lalu kembalikan ke nilai awal dianggap No-Op
 
-7. Buka elipsis (⋯) baris target, klik Edit, ubah Description lalu ketik ulang nilai semula `Edit me`, lalu klik [Save]
-8. Verifikasi toast netral `No changes to save.`
-9. Verifikasi tidak ada baris log baru: jumlah entri Changelog, System Log, dan Activity Log sama dengan baseline langkah 1
+7. Catat jumlah entri Changelog node `Edit Target {runId}-055`, System Log, dan Activity Log sebagai baseline TC-FA-GRP-169
+8. Buka elipsis (⋯) baris target, klik Edit, ubah Description lalu ketik ulang nilai semula `Edit me`, lalu klik [Save]
+9. Verifikasi toast netral `No changes to save.`
+10. Verifikasi tidak ada baris log baru: jumlah entri Changelog, System Log, dan Activity Log sama dengan baseline langkah 7
 
 ### TC-FA-GRP-978: Ubah Group Name hanya kapitalisasi atau spasi tepi dianggap No-Op
 
-10. Buka elipsis (⋯) baris target, klik Edit, ubah Group Name menjadi `edit target {runId}-055 ` (huruf kecil dan spasi di akhir), lalu klik [Save]
-11. Verifikasi toast netral `No changes to save.` (bukan toast sukses)
-12. Verifikasi Group Name tersimpan tetap `Edit Target {runId}-055`
-13. Verifikasi Modified By dan Last Updated baris target tidak berubah terhadap baseline langkah 1
-14. Verifikasi tidak ada baris baru di Changelog, System Log, dan Activity Log: jumlah entri sama dengan baseline langkah 1
+11. Catat jumlah entri Changelog node `Edit Target {runId}-055`, System Log, dan Activity Log serta Modified By dan Last Updated baris target sebagai baseline TC-FA-GRP-978
+12. Buka elipsis (⋯) baris target, klik Edit, ubah Group Name menjadi `edit target {runId}-055 ` (huruf kecil dan spasi di akhir), lalu klik [Save]
+13. Verifikasi toast netral `No changes to save.` (bukan toast sukses)
+14. Verifikasi Group Name tersimpan tetap `Edit Target {runId}-055`
+15. Verifikasi Modified By dan Last Updated baris target tidak berubah terhadap baseline langkah 11
+16. Verifikasi tidak ada baris baru di Changelog, System Log, dan Activity Log: jumlah entri sama dengan baseline langkah 11
 
 ### TC-FA-GRP-170: Dialog Unsaved tidak muncul setelah revert ke nilai tersimpan
 
-15. Buka elipsis (⋯) baris target, klik Edit, ubah Group Name lalu kembalikan persis ke nilai tersimpan, lalu klik (X)
-16. Verifikasi popup langsung tertutup
-17. Verifikasi dialog `Unsaved changes` tidak muncul
-18. Klik `(←)` pada kotak Search
+17. Buka elipsis (⋯) baris target, klik Edit, ubah Group Name lalu kembalikan persis ke nilai tersimpan, lalu klik (X)
+18. Verifikasi popup langsung tertutup
+19. Verifikasi dialog `Unsaved changes` tidak muncul
+20. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: TC-FA-GRP-168, 169, 978 (semua No-Op, node tidak berubah) lalu TC-FA-GRP-170; berbeda dari urutan nomor TC sumber.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Catat jumlah entri Changelog node `Edit Target {runId}-055`, System Lo...); langkah 18 (Klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Catat jumlah entri Changelog node `Edit Target {runId}-055`, System Log, dan Activity Log, serta Modified By dan Last Updated baris target sebagai baseline, lalu ketik Search `Edit Target {runId}-055`, tekan Enter); langkah 20 (Klik `(←)` pada kotak Search). Langkah 7 dan langkah 11 mencatat ulang baseline sebelum pemicu tiap TC yang mengasersi selisih (S-12).
 - Asersi "tidak ada baris log baru" ditulis sebagai `Verifikasi` berbaseline jumlah entri di spec ini (S-12) dengan toast netral sebagai anchor positif respons server; tidak ada rujukan ke spec absence.
 - Langkah 1 mencatat baseline dan mencari baris target (R-16).
 - Temuan untuk QA:

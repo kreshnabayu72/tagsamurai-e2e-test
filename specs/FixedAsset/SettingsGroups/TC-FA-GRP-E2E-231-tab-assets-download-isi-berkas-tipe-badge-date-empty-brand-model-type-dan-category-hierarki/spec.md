@@ -23,44 +23,46 @@ coverage:
 - Kelas harness: binary buffer (f); spec ini hanya mengasersi isi berkas. Nama berkas, header, dan jumlah baris diasersi di spec 230.
 - Data Pre-setup (hanya dibaca): Warehouse A (WH-A, Assignable, 24 aset aktif variasi status, ditambah 2 Disposed) pada pohon group Tabel A. Kolom Tab Assets berada pada konfigurasi default sebagai kondisi awal.
 - Data tambahan di Warehouse A (disediakan tim FE/BE; tidak ada di Tabel Data Uji): aset ber-Brand `Dell` dan Model/Type `Latitude 5420`; aset ber-Brand dan Model/Type `International Business Machines Corporation` (> 25 karakter); sedikitnya satu aset dengan sel kosong (`—`) pada kolom yang tampil; aset ber-Category `Laptop` (parent `IT Equipment`) dan aset ber-Category level 1 (tanpa parent).
-- Kemampuan teknis (disediakan tim FE): membuka berkas unduhan XLSX dan CSV, membaca nilai sel, dan membaca warna latar sel; format tanggal General Settings client dibaca lewat fixture BE (dipakai langkah 6).
-- Setup Column: spec menyimpan konfigurasi kolom Tab Assets (centang Category pada langkah 12, `[Save]` pada langkah 13); hook `after` menghapus preferensi kolom Tab Assets di browser (kemampuan disediakan tim FE).
+- Kemampuan teknis (disediakan tim FE): membuka berkas unduhan XLSX dan CSV, membaca nilai sel, dan membaca warna latar sel; format tanggal General Settings client dibaca lewat fixture BE (dipakai langkah 7).
+- Setup Column: spec menyimpan konfigurasi kolom Tab Assets (centang Category pada langkah 13, `[Save]` pada langkah 14); hook `after` menghapus preferensi kolom Tab Assets di browser (kemampuan disediakan tim FE).
 - State global: tidak ada. Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
 
 ### TC-FA-GRP-727, TC-FA-GRP-728, TC-FA-GRP-729, dan TC-FA-GRP-1086: Isi berkas XLSX
 
-1. Klik angka Total Asset Warehouse A
-2. Klik icon Download
-3. Pilih Download as XLSX
-4. Buka file XLSX yang terunduh
-5. Verifikasi sel kolom Status (tipe badge) ditulis label teks apa adanya tanpa warna
-6. Verifikasi sel kolom Last Updated (tipe date) mengikuti format tanggal General Settings
-7. Verifikasi sel yang kosong (`—`) di tabel ditulis hyphen tunggal `-` di berkas
-8. Verifikasi kolom Brand dan Model/Type memuat nama penuh `Dell`, `Latitude 5420`, dan `International Business Machines Corporation` tanpa truncation `..`
-9. Verifikasi nilai Brand dan Model/Type ditulis nama saja, tanpa hierarki dan tanpa warna badge
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik angka Total Asset Warehouse A
+3. Klik icon Download
+4. Pilih Download as XLSX
+5. Buka file XLSX yang terunduh
+6. Verifikasi sel kolom Status (tipe badge) ditulis label teks apa adanya tanpa warna
+7. Verifikasi sel kolom Last Updated (tipe date) mengikuti format tanggal General Settings
+8. Verifikasi sel yang kosong (`—`) di tabel ditulis hyphen tunggal `-` di berkas
+9. Verifikasi kolom Brand dan Model/Type memuat nama penuh `Dell`, `Latitude 5420`, dan `International Business Machines Corporation` tanpa truncation `..`
+10. Verifikasi nilai Brand dan Model/Type ditulis nama saja, tanpa hierarki dan tanpa warna badge
 
 ### TC-FA-GRP-1186: Category ditulis hierarki penuh dari root
 
-10. Klik icon (⋯) pada header kolom terakhir
-11. Klik [Setup Column]
-12. Centang Category
-13. Klik [Save]
-14. Klik icon Download
-15. Pilih Download as CSV
-16. Verifikasi tidak ada toast sukses
-17. Buka file CSV yang terunduh
-18. Verifikasi sel Category aset ber-Category `Laptop` berisi hierarki penuh dari root `IT Equipment > Laptop`
-19. Verifikasi sel Category aset ber-Category level 1 berisi nama Category itu saja
+11. Klik icon (⋯) pada header kolom terakhir
+12. Klik [Setup Column]
+13. Centang Category
+14. Klik [Save]
+15. Klik icon Download
+16. Pilih Download as CSV
+17. Verifikasi tidak ada toast sukses
+18. Buka file CSV yang terunduh
+19. Verifikasi sel Category aset ber-Category `Laptop` berisi hierarki penuh dari root `IT Equipment > Laptop`
+20. Verifikasi sel Category aset ber-Category level 1 berisi nama Category itu saja
 
 ## Notes
 
-- Subjudul `###` memetakan langkah ke id TC granular. TC-FA-GRP-727, 728, 729, dan 1086 memiliki Langkah 1 sampai 4 yang identik (Download as XLSX, buka file); satu unduhan berkas dipakai untuk keempatnya dan langkah 5 sampai 9 membaca berkas yang sama.
-- Langkah penghubung (S-03): langkah 4 dan 17 membuka berkas unduhan; langkah 10 sampai 13 menampilkan kolom Category (precondition TC-FA-GRP-1186, tidak diasersi).
-- Langkah 13 `[Save]` Setup Column adalah aksi sisi klien tanpa Tunggu aksi selesai (8b butir 8).
-- Langkah 16 (absence toast sukses) diletakkan segera sesudah pemicu Download dan sebelum asersi berkas; berkas terbuka (langkah 17) dan sel terbaca (langkah 18) menjadi bukti respons diproses (8b butir 11).
+- Subjudul `###` memetakan langkah ke id TC granular. TC-FA-GRP-727, 728, 729, dan 1086 memiliki Langkah 2 sampai 5 yang identik (Download as XLSX, buka file); satu unduhan berkas dipakai untuk keempatnya dan langkah 6 sampai 10 membaca berkas yang sama.
+- Langkah penghubung (S-03): langkah 5 dan 18 membuka berkas unduhan; langkah 11 sampai 14 menampilkan kolom Category (precondition TC-FA-GRP-1186, tidak diasersi).
+- Langkah 14 `[Save]` Setup Column adalah aksi sisi klien tanpa Tunggu aksi selesai (8b butir 8).
+- Langkah 17 (absence toast sukses) diletakkan segera sesudah pemicu Download dan sebelum asersi berkas; berkas terbuka (langkah 18) dan sel terbaca (langkah 19) menjadi bukti respons diproses (8b butir 11).
 - Spec ini tidak memakai butir `P-n`: seluruh TC berkelas f.
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-727 Expected "Kolom badge ditulis label teks apa adanya tanpa warna" tidak menyebut kolom badge mana yang diperiksa; spec memeriksa kolom Status.
   - TC-FA-GRP-728 Expected "Kolom tanggal mengikuti format General Settings" tidak menyebut kolom tanggal mana; spec memeriksa kolom Last Updated.

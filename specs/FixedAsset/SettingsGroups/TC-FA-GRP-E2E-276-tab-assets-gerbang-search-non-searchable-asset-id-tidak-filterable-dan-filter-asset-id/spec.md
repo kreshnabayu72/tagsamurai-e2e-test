@@ -28,40 +28,43 @@ coverage:
 ## Test Steps
 
 ### TC-1248: Search kolom non-searchable Warranty Expiry dan Last Scanned tidak menghasilkan match
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Buka Popup Setup Column, centang kolom Warranty Expiry dan Last Scanned, klik [Save]
-3. Ketik Search `15/03/2027`, tekan Enter
-4. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter."
-5. Ganti isi kotak search dengan `10/10/2026`, tekan Enter
-6. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter."
-7. Klik icon Filter
-8. Verifikasi Filter Panel memuat field Warranty Expiry dan Last Scanned
-9. Tutup Filter Panel; klik `(←)` pada kotak Search
+1. Ketik Search `Value Gate Node A {runId}-276` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Buka Popup Setup Column, centang kolom Warranty Expiry dan Last Scanned, klik [Save]
+4. Ketik Search `15/03/2027`, tekan Enter
+5. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter."
+6. Ganti isi kotak search dengan `10/10/2026`, tekan Enter
+7. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter."
+8. Klik icon Filter
+9. Verifikasi Filter Panel memuat field Warranty Expiry dan Last Scanned
+10. Tutup Filter Panel; klik `(←)` pada kotak Search
 ### TC-1263: Screening kolom Asset ID Tab Assets tidak Filterable (Asset ID unik)
-10. Ganti akun: Logout, login sebagai Total Control (`totalControlGroups_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PASSWORD`), buka Fixed Asset > Settings > Groups
-11. Buka Detail Value Gate Node A (Tab Assets)
-12. Klik icon Filter
-13. Amati daftar field
-14. Verifikasi Filter Panel memuat field lain (Status)
-15. Verifikasi Filter Panel tidak memuat field `Asset ID`
-16. Tutup Filter Panel; ketik Search potongan Asset ID G1 (kapitalisasi berbeda dari aslinya), tekan Enter
-17. Verifikasi baris G1 tampil
-18. Verifikasi baris lain tidak tampil
-19. Klik `(←)` pada kotak Search
+11. Ganti akun: Logout, login sebagai Total Control (`totalControlGroups_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PASSWORD`), buka Fixed Asset > Settings > Groups
+12. Ketik Search `Value Gate Node A {runId}-276` pada Groups List, tekan Enter
+13. Buka Detail Value Gate Node A (Tab Assets)
+14. Klik icon Filter
+15. Amati daftar field
+16. Verifikasi Filter Panel memuat field lain (Status)
+17. Verifikasi Filter Panel tidak memuat field `Asset ID`
+18. Tutup Filter Panel; ketik Search potongan Asset ID G1 (kapitalisasi berbeda dari aslinya), tekan Enter
+19. Verifikasi baris G1 tampil
+20. Verifikasi baris lain tidak tampil
+21. Klik `(←)` pada kotak Search
 ### TC-1264: Filter Tab Assets by Asset Name: satu opsi dan dua opsi (logika OR)
-20. Klik icon Filter; pada field Asset Name pilih Laptop Dell, klik [Apply]
-21. Verifikasi hanya G1 dan G6 (Laptop Dell - 1, Laptop Dell - 2) tampil
-22. Verifikasi indikator filter aktif tampil pada icon Filter
-23. Verifikasi Filter Panel tertutup setelah [Apply]
-24. Klik icon Filter, klik [Clear Field]; pilih Asset Name Laptop Dell dan Forklift Toyota, klik [Apply]
-25. Verifikasi G1, G6, dan G4 tampil (OR di dalam field)
-26. Verifikasi G2, G3, dan G5 tidak tampil
-27. Klik icon Filter, klik [Clear Field]
+22. Klik icon Filter; pada field Asset Name pilih Laptop Dell, klik [Apply]
+23. Verifikasi hanya G1 dan G6 (Laptop Dell - 1, Laptop Dell - 2) tampil
+24. Verifikasi indikator filter aktif tampil pada icon Filter
+25. Verifikasi Filter Panel tertutup setelah [Apply]
+26. Klik icon Filter, klik [Clear Field]; pilih Asset Name Laptop Dell dan Forklift Toyota, klik [Apply]
+27. Verifikasi G1, G6, dan G4 tampil (OR di dalam field)
+28. Verifikasi G2, G3, dan G5 tidak tampil
+29. Klik icon Filter, klik [Clear Field]
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): "Tutup Filter Panel; klik `(←)` pada kotak Search" di akhir TC-1248 dan TC-1263; satu langkah Ganti akun sebelum TC-1263 (aktor berbeda); [Clear Field] terakhir TC-1264 (langkah 27).
+- Langkah penghubung (S-03): "Tutup Filter Panel; klik `(←)` pada kotak Search" di akhir TC-1248 dan TC-1263; satu langkah Ganti akun sebelum TC-1263 (aktor berbeda); [Clear Field] terakhir TC-1264 (langkah 29).
 - Asersi tambahan (S-03): `Verifikasi` Filter Panel memuat field Warranty Expiry dan Last Scanned pada TC-1248 menerjemahkan Expected b "hanya tersedia lewat Filter Panel", yang tidak punya langkah observasi di TC; `Verifikasi` field lain (Status) pada TC-1263 adalah anchor positif untuk absence field `Asset ID`.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A {runId}-276`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1263 Langkah 5 tidak menyebut potongan Asset ID konkret; spec memakai potongan Asset ID G1.

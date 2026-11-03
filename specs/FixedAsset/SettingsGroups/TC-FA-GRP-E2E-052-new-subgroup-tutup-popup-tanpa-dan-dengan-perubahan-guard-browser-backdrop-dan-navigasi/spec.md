@@ -31,66 +31,72 @@ coverage:
 
 ### TC-FA-GRP-154: Tutup tanpa perubahan langsung tertutup
 
-1. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-2. Tanpa mengubah field, klik (X)
-3. Verifikasi popup tertutup langsung
-4. Verifikasi dialog `Unsaved changes` tidak muncul
-5. Buka elipsis (⋯) baris Head Office, klik Add Subgroup, lalu tekan Esc
-6. Verifikasi popup tertutup langsung
-7. Verifikasi dialog `Unsaved changes` tidak muncul
-8. Buka elipsis (⋯) baris Head Office, klik Add Subgroup, lalu klik backdrop (area di luar popup)
-9. Verifikasi popup tetap terbuka (klik backdrop tidak menutup popup)
-10. Verifikasi dialog `Unsaved changes` tidak muncul
+1. Ketik Search `Head Office`, tekan Enter
+2. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+3. Tanpa mengubah field, klik (X)
+4. Verifikasi popup tertutup langsung
+5. Verifikasi dialog `Unsaved changes` tidak muncul
+6. Buka elipsis (⋯) baris Head Office, klik Add Subgroup, lalu tekan Esc
+7. Verifikasi popup tertutup langsung
+8. Verifikasi dialog `Unsaved changes` tidak muncul
+9. Buka elipsis (⋯) baris Head Office, klik Add Subgroup, lalu klik backdrop (area di luar popup)
+10. Verifikasi popup tetap terbuka (klik backdrop tidak menutup popup)
+11. Verifikasi dialog `Unsaved changes` tidak muncul
 
 ### TC-FA-GRP-155: Tutup dengan perubahan memunculkan dialog Unsaved changes
 
-11. Ubah Group Name menjadi `Dirty Close Sub {runId}-052`
-12. Klik (X)
-13. Verifikasi dialog tanpa title `You have unsaved changes. Are you sure you want to leave?` dengan [Cancel] dan [Leave] ([Leave] destruktif)
-14. Klik [Cancel] pada dialog
-15. Verifikasi kembali ke popup dengan input `Dirty Close Sub {runId}-052` dipertahankan
-16. Klik (X) lagi
-17. Verifikasi dialog `Unsaved changes` tampil kembali
-18. Klik [Leave]
-19. Verifikasi popup tertutup tanpa menyimpan: jumlah group lewat fixture BE sama dengan baseline
+12. Ubah Group Name menjadi `Dirty Close Sub {runId}-052`
+13. Klik (X)
+14. Verifikasi dialog tanpa title `You have unsaved changes. Are you sure you want to leave?` dengan [Cancel] dan [Leave] ([Leave] destruktif)
+15. Klik [Cancel] pada dialog
+16. Verifikasi kembali ke popup dengan input `Dirty Close Sub {runId}-052` dipertahankan
+17. Klik (X) lagi
+18. Verifikasi dialog `Unsaved changes` tampil kembali
+19. Klik [Leave]
+20. Verifikasi popup tertutup tanpa menyimpan: jumlah group lewat fixture BE sama dengan baseline
 
 ### TC-FA-GRP-156: Reload dengan perubahan memicu guard browser
 
-20. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-21. Ubah Group Name menjadi `Reload Guard Sub {runId}-052`
-22. Tekan F5
-23. Verifikasi dialog native browser leave-page muncul
-24. Batalkan dialog native (tetap di halaman)
-25. Verifikasi popup dan input `Reload Guard Sub {runId}-052` tetap
-26. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
+21. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+22. Ubah Group Name menjadi `Reload Guard Sub {runId}-052`
+23. Tekan F5
+24. Verifikasi dialog native browser leave-page muncul
+25. Batalkan dialog native (tetap di halaman)
+26. Verifikasi popup dan input `Reload Guard Sub {runId}-052` tetap
+27. Klik (X)
+28. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil
+29. Klik [Leave] (pemulihan form kotor)
 
 ### TC-FA-GRP-1028: Klik backdrop saat ada perubahan tidak menutup popup dan tanpa dialog Unsaved changes
 
-27. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-28. Ketik Group Name `Backdrop Test`
-29. Klik backdrop (area di luar popup)
-30. Verifikasi popup tetap terbuka dengan input `Backdrop Test` dipertahankan
-31. Verifikasi dialog `Unsaved changes` tidak muncul
-32. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
+30. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+31. Ketik Group Name `Backdrop Test`
+32. Klik backdrop (area di luar popup)
+33. Verifikasi popup tetap terbuka dengan input `Backdrop Test` dipertahankan
+34. Verifikasi dialog `Unsaved changes` tidak muncul
+35. Klik (X)
+36. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil
+37. Klik [Leave] (pemulihan form kotor)
 
 ### TC-FA-GRP-1031: Navigasi sidebar dan Back browser dengan perubahan memunculkan dialog Unsaved changes
 
-33. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-34. Ketik Group Name `Route Test`
-35. Klik menu lain di sidebar
-36. Verifikasi perubahan route dicegat dan dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur klik menu sidebar
-37. Klik [Cancel] pada dialog
-38. Verifikasi navigasi dibatalkan: popup tetap terbuka dengan input `Route Test` dipertahankan
-39. Klik tombol Back browser
-40. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur tombol Back browser
-41. Klik [Leave]
-42. Verifikasi navigasi dilanjutkan dan popup ditutup tanpa menyimpan: jumlah group lewat fixture BE sama dengan baseline
+38. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+39. Ketik Group Name `Route Test`
+40. Klik menu lain di sidebar
+41. Verifikasi perubahan route dicegat dan dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur klik menu sidebar
+42. Klik [Cancel] pada dialog
+43. Verifikasi navigasi dibatalkan: popup tetap terbuka dengan input `Route Test` dipertahankan
+44. Klik tombol Back browser
+45. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur tombol Back browser
+46. Klik [Leave]
+47. Verifikasi navigasi dilanjutkan dan popup ditutup tanpa menyimpan: jumlah group lewat fixture BE sama dengan baseline
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 26 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...); langkah 32 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...).
-- Alasan spec melewati ~35 langkah (42 langkah): kelima TC satu kelas (UI tutup popup dan guard Unsaved changes pada Popup New Subgroup), satu dataset (tanpa data tulis), dan tiap blok berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna); blok ditutup bersih sebelum blok berikutnya (S-09); langkah banyak karena `Verifikasi` per klausa Expected (S-01).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 27 (Klik (X)) dan langkah 29 (Klik [Leave], pemulihan form kotor); langkah 35 (Klik (X)) dan langkah 37 (Klik [Leave], pemulihan form kotor).
+- Pencarian baris target (S-03, R-16): langkah 1 (Ketik Search `Head Office`, tekan Enter) menemukan baris Head Office; client memiliki lebih dari 10 node level 1 dan page size 10, jadi baris Head Office tidak dijamin berada di halaman 1 All Groups.
+- Alasan spec melewati ~35 langkah (47 langkah): kelima TC satu kelas (UI tutup popup dan guard Unsaved changes pada Popup New Subgroup), satu dataset (tanpa data tulis), dan tiap blok berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna); blok ditutup bersih sebelum blok berikutnya (S-09); langkah banyak karena `Verifikasi` per klausa Expected (S-01).
 - Reload TC-FA-GRP-156 memakai dialog `beforeunload` yang ditangani (S-08); kemampuannya tertulis di Prerequisites.
 - Temuan untuk QA:
   - TC-FA-GRP-154 Langkah Uji "Buka lagi" tidak menyebut cara membuka lagi; spec membuka lewat elipsis baris Head Office, Add Subgroup.

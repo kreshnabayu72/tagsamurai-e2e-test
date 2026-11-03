@@ -23,7 +23,7 @@ coverage:
 - Akun aktor: Total Control (Pre-setup No 1) `totalControlGroups_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
 - Flag Guided Tooltip `fa-settings-groups` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
-- Data Pre-setup (hanya dibaca, tidak diubah): pohon group baku Tabel A (Pre-setup No 9) termasuk Default Group, Head Office, Warehouse A, Branch Office, Disposal Yard, Warehouse B (Excess). Jumlah node level 1 client saat spec berjalan tidak lebih dari 10 sehingga seluruh baris tampil di halaman 1.
+- Data Pre-setup (hanya dibaca, tidak diubah): pohon group baku Tabel A (Pre-setup No 9) termasuk Default Group, Head Office, Warehouse A, Branch Office, Disposal Yard, Warehouse B (Excess). Node level 1 client lebih dari 10 dan page size 10, sehingga baris target yang dinamai (bukan baris pertama) dicari dengan Search, bukan diandalkan berada di halaman 1.
 - Data Dinamis (di-seed di hook `before`, dihapus di hook `after`):
 
 | TC | Nama TC | Nama seed | Keterangan |
@@ -69,39 +69,41 @@ coverage:
 24. Hover nilai pada kolom Modified By
 25. Verifikasi tooltip menampilkan nama lengkap pengguna
 26. Verifikasi Last Updated mengikuti format tanggal-waktu General Settings
-27. Verifikasi nama Warehouse B (Excess) di-dim tanpa badge tambahan
+27. Ketik Search `Warehouse B`, tekan Enter
+28. Verifikasi nama Warehouse B (Excess) di-dim tanpa badge tambahan
+29. Klik `(←)` pada kotak Search
 
 ### TC-FA-GRP-3: Nama group 120 karakter
 
-28. Verifikasi nama group 120 karakter tampil utuh (wrap/hug content), tidak dipotong `..`
-29. Hover nama group 120 karakter
-30. Verifikasi tidak ada tooltip yang tampil
-31. Verifikasi row height kolom lain pada baris itu tetap 1 baris
+30. Verifikasi nama group 120 karakter tampil utuh (wrap/hug content), tidak dipotong `..`
+31. Hover nama group 120 karakter
+32. Verifikasi tidak ada tooltip yang tampil
+33. Verifikasi row height kolom lain pada baris itu tetap 1 baris
 
 ### TC-FA-GRP-4: Hover nama Group
 
-32. Hover nama Group pada baris pertama
-33. Verifikasi warna teks berubah ke primary Fixed Asset (biru)
-34. Verifikasi nama Group tidak bergaris bawah
-35. Verifikasi kursor berupa pointer
+34. Hover nama Group pada baris pertama
+35. Verifikasi warna teks berubah ke primary Fixed Asset (biru)
+36. Verifikasi nama Group tidak bergaris bawah
+37. Verifikasi kursor berupa pointer
 
 ### TC-FA-GRP-5: Hover icon Table Tools
 
-36. Hover ikon `Search`
-37. Verifikasi tooltip `Search` tampil
-38. Hover ikon `Filter`
-39. Verifikasi tooltip `Filter` tampil
-40. Hover ikon `Download`
-41. Verifikasi tooltip `Download` tampil
-42. Hover ikon `Changelog`
-43. Verifikasi tooltip `Changelog` tampil
-44. Hover ikon (⋯) pada header kolom Column Visibility
-45. Verifikasi tooltip nama aksi ikon (⋯) header tampil
+38. Hover ikon `Search`
+39. Verifikasi tooltip `Search` tampil
+40. Hover ikon `Filter`
+41. Verifikasi tooltip `Filter` tampil
+42. Hover ikon `Download`
+43. Verifikasi tooltip `Download` tampil
+44. Hover ikon `Changelog`
+45. Verifikasi tooltip `Changelog` tampil
+46. Hover ikon (⋯) pada header kolom Column Visibility
+47. Verifikasi tooltip nama aksi ikon (⋯) header tampil
 
 ## Notes
 
-- Spec melewati sekitar 35 langkah (45 langkah): seluruh blok adalah screening satu kelas pada layar dan dataset yang sama (Groups List All Groups), tiap blok berdiri sendiri, dan memisahnya hanya menggandakan login, hook, dan cleanup tanpa alur baru.
-- Langkah penghubung (S-03): langkah 11 dan 14 (menutup overlay dan menu agar langkah berikutnya tidak tertutup), langkah 24 dan 29 (hover sebagai pemicu tooltip).
+- Spec melewati sekitar 35 langkah (47 langkah): seluruh blok adalah screening satu kelas pada layar dan dataset yang sama (Groups List All Groups), tiap blok berdiri sendiri, dan memisahnya hanya menggandakan login, hook, dan cleanup tanpa alur baru.
+- Langkah penghubung (S-03): langkah 11 dan 14 (menutup overlay dan menu agar langkah berikutnya tidak tertutup), langkah 24 dan 31 (hover sebagai pemicu tooltip), langkah 27 dan 29 (Search `Warehouse B` lalu `(←)` agar tabel penuh kembali; baris tidak diandalkan berada di halaman 1; R-16).
 - Urutan TC dalam spec: 1, 952, 2, 3, 4, 5 (screening statis di awal, aksi hover paling akhir; S-10).
 - Temuan untuk QA:
   - TC-FA-GRP-3 dan 1093 menyebut "group bernama 120 karakter (Tabel B)", tetapi Tabel Data Uji Dinamis TC tidak memuat baris group 120 karakter; spec memakai seed bernama 120 karakter bersuffix (S-12).

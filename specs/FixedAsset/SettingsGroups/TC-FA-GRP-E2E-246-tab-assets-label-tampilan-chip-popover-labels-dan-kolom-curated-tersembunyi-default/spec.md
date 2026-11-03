@@ -27,39 +27,42 @@ coverage:
 
 ### TC-FA-GRP-1185: Kolom curated tersembunyi secara default
 
-1. Buka Detail Warehouse A (Tab Assets)
-2. Amati header kolom tabel
-3. Verifikasi hanya kolom Name, Asset ID, TAG, Brand, Model/Type, Status, dan Last Updated yang tampil di tabel pada kondisi default
-4. Buka Popup Setup Column
-5. Amati status seluruh kolom curated
-6. Verifikasi kolom Measurement, Category, Label, Transactional Policy, Last Scanned, Asset Value (Commercial), Warranty Expiry, dan Custom Field berstatus curated: unchecked dan enabled
-7. Klik ✕ pada Popup Setup Column
-8. Tutup Popup Detail Group
+1. Ketik Search `Warehouse A` pada Groups List, tekan Enter
+2. Buka Detail Warehouse A (Tab Assets)
+3. Amati header kolom tabel
+4. Verifikasi hanya kolom Name, Asset ID, TAG, Brand, Model/Type, Status, dan Last Updated yang tampil di tabel pada kondisi default
+5. Buka Popup Setup Column
+6. Amati status seluruh kolom curated
+7. Verifikasi kolom Measurement, Category, Label, Transactional Policy, Last Scanned, Asset Value (Commercial), Warranty Expiry, dan Custom Field berstatus curated: unchecked dan enabled
+8. Klik ✕ pada Popup Setup Column
+9. Tutup Popup Detail Group
 
 ### TC-FA-GRP-1182: Kolom Label tampil sebagai chip berwarna, 1–2 badge lalu +N more, urut A–Z, dan —
 
-9. Buka Detail Multi Label Node (Tab Assets)
-10. Buka Popup Setup Column
-11. Centang Label
-12. Klik [Save]
-13. Amati kolom Label pada aset L1 sampai L5
-14. Verifikasi L1 menampilkan 2 chip `Finance` dan `Fragile` lalu chip `+1 more` (urut A–Z; `Priority` tersembunyi)
-15. Verifikasi L2 menampilkan 2 chip `Fragile` dan `Priority` tanpa `+N more`, serta L3 dan L5 masing-masing 1 chip
-16. Verifikasi warna tiap chip mengikuti warna hex label di katalog Labels
-17. Verifikasi L4 (tanpa label) menampilkan `—` (bukan blank)
+10. Ganti isi kotak Search Groups List dengan `Multi Label Node`, tekan Enter
+11. Buka Detail Multi Label Node (Tab Assets)
+12. Buka Popup Setup Column
+13. Centang Label
+14. Klik [Save]
+15. Amati kolom Label pada aset L1 sampai L5
+16. Verifikasi L1 menampilkan 2 chip `Finance` dan `Fragile` lalu chip `+1 more` (urut A–Z; `Priority` tersembunyi)
+17. Verifikasi L2 menampilkan 2 chip `Fragile` dan `Priority` tanpa `+N more`, serta L3 dan L5 masing-masing 1 chip
+18. Verifikasi warna tiap chip mengikuti warna hex label di katalog Labels
+19. Verifikasi L4 (tanpa label) menampilkan `—` (bukan blank)
 
 ### TC-FA-GRP-1183: Klik chip +N more membuka popover Labels
 
-18. Klik chip `+1 more` pada aset L1
-19. Amati isi popover
-20. Verifikasi popover berjudul "Labels" terbuka
-21. Verifikasi popover memuat seluruh label aset L1 (`Finance`, `Fragile`, `Priority`) sebagai badge penuh berwarna label urut A–Z
-22. Verifikasi badge di popover tampil tanpa truncation
-23. Klik di luar popover
-24. Verifikasi popover tertutup
+20. Klik chip `+1 more` pada aset L1
+21. Amati isi popover
+22. Verifikasi popover berjudul "Labels" terbuka
+23. Verifikasi popover memuat seluruh label aset L1 (`Finance`, `Fragile`, `Priority`) sebagai badge penuh berwarna label urut A–Z
+24. Verifikasi badge di popover tampil tanpa truncation
+25. Klik di luar popover
+26. Verifikasi popover tertutup
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): TC-1185 diletakkan pertama karena memeriksa kolom default sebelum kolom Label dicentang; menutup Popup Setup Column dan Popup Detail Group; Setup Column centang Label sebelum TC-1182 (precondition d "kolom curated Label sudah ditampilkan"), yang juga menjadi dasar TC-1183.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Warehouse A`, `Multi Label Node`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA (S-15): (1) TC-1182 dan TC-1183 mensyaratkan kolom Label sudah ditampilkan tetapi langkah TC tidak memuat pencentangan; spec menambahkannya. (2) Katalog Labels dan warna hex tiap label tidak ada di Tabel Data Uji; warna dibaca lewat kemampuan baca data (disediakan tim FE/BE). (3) Expected TC-1185 butir b menyebut "Custom Field" sebagai satu kolom curated padahal Custom Field berupa banyak kolom (Tabel Dinamis No 13); spec mengikuti teks TC.

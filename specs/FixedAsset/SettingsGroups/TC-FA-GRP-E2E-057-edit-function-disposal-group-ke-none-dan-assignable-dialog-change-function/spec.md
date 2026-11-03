@@ -50,31 +50,33 @@ coverage:
 9. Verifikasi badge dan dot sidebar `FN Disposal {runId}-057` berubah ke `—` (tanpa dot)
 10. Verifikasi aset dan histori yang menunjuk node tetap menunjuk node yang sama dan datanya tidak berubah: jumlah sama dengan baseline langkah 1
 11. Pulihkan Function `FN Disposal {runId}-057` ke Disposal Group lewat API
+12. Muat ulang halaman dengan F5
+13. Ketik Search `FN Disposal {runId}-057`, tekan Enter
 
 ### TC-FA-GRP-180: Disposal Group ke Assignable, screening Dialog Change Function
 
-12. Buka elipsis (⋯) baris `FN Disposal {runId}-057`, klik Edit, pilih Function Assignable, lalu klik [Save]
-13. Verifikasi dialog konfirmasi non-blok title `Change Function`, Body diawali bullet `FN Disposal {runId}-057` lalu `This group will no longer appear as a destination in disposal transactions — it will become available for asset registration and transfer instead. Past disposal records for this group are not affected. Are you sure you want to save it?`, tombol [Cancel] (text, contrast) dan [Save] (filled, success)
+14. Buka elipsis (⋯) baris `FN Disposal {runId}-057`, klik Edit, pilih Function Assignable, lalu klik [Save]
+15. Verifikasi dialog konfirmasi non-blok title `Change Function`, Body diawali bullet `FN Disposal {runId}-057` lalu `This group will no longer appear as a destination in disposal transactions — it will become available for asset registration and transfer instead. Past disposal records for this group are not affected. Are you sure you want to save it?`, tombol [Cancel] (text, contrast) dan [Save] (filled, success)
 
 ### TC-FA-GRP-182: Disposal Group ke Assignable, [Cancel] pada dialog kembali ke form
 
-14. Klik [Cancel] pada dialog
-15. Verifikasi dialog tertutup dan Popup Edit tetap terbuka dengan pilihan Assignable dipertahankan
-16. Verifikasi belum ada perubahan tersimpan dan tidak ada toast
+16. Klik [Cancel] pada dialog
+17. Verifikasi dialog tertutup dan Popup Edit tetap terbuka dengan pilihan Assignable dipertahankan
+18. Verifikasi belum ada perubahan tersimpan dan tidak ada toast
 
 ### TC-FA-GRP-181: Disposal Group ke Assignable, [Save] pada dialog menyimpan
 
-17. Klik [Save] pada Popup Edit, lalu klik [Save] pada dialog
-18. Verifikasi toast sukses `Success, group has been updated.`
-19. Verifikasi badge dan dot sidebar `FN Disposal {runId}-057` berubah ke Assignable
-20. Verifikasi aset dan histori yang menunjuk node tetap menunjuk node yang sama dan datanya tidak berubah: jumlah sama dengan baseline langkah 1
-21. Klik `(←)` pada kotak Search
+19. Klik [Save] pada Popup Edit, lalu klik [Save] pada dialog
+20. Verifikasi toast sukses `Success, group has been updated.`
+21. Verifikasi badge dan dot sidebar `FN Disposal {runId}-057` berubah ke Assignable
+22. Verifikasi aset dan histori yang menunjuk node tetap menunjuk node yang sama dan datanya tidak berubah: jumlah sama dengan baseline langkah 1
+23. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: screening dialog, lalu [Cancel], lalu [Save] untuk tiap transisi dalam satu pembukaan popup (TC-FA-GRP-177, 179, 178; lalu TC-FA-GRP-180, 182, 181), sesuai S-10; berbeda dari urutan nomor TC sumber. Function dipulihkan ke Disposal Group lewat API (langkah 11) sebelum transisi kedua (S-09).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Catat jumlah aset dan histori yang menunjuk `FN Disposal {runId}-057` ...); langkah 11 (Pulihkan Function `FN Disposal {runId}-057` ke Disposal Group lewat AP...); langkah 21 (Klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Catat jumlah aset dan histori yang menunjuk `FN Disposal {runId}-057` lewat fixture BE sebagai baseline, lalu ketik Search `FN Disposal {runId}-057`, tekan Enter); langkah 11 (Pulihkan Function `FN Disposal {runId}-057` ke Disposal Group lewat API); langkah 23 (Klik `(←)` pada kotak Search). Langkah 12 (Muat ulang halaman dengan F5) dan langkah 13 (Ketik Search `FN Disposal {runId}-057`, tekan Enter) menyegarkan baris tabel yang masih menampilkan Function lama sesudah pemulihan lewat API; F5 membuang kotak Search (S-14).
 - Dialog konfirmasi (judul, Body, tombol) ditulis satu `Verifikasi` karena Expected TC menyebutnya utuh dalam butir a sampai c (S-01, dialog konfirmasi satu elemen).
 - Temuan untuk QA:
   - TC-FA-GRP-178 dan TC-FA-GRP-181 Post Condition "Changelog Edit Field Function ..." dan "Dropdown konsumen berubah sesuai matriks transisi (Section 7)" tidak punya langkah observasi di TC; tidak diasersi di spec ini.

@@ -69,9 +69,9 @@ coverage:
 20. Verifikasi toolbar Modal Changelog menampilkan `Search`, `Filter`, dan `Download`
 21. Klik `Download`
 22. Klik `Download as CSV`
-23. Verifikasi berkas CSV terunduh
-24. Verifikasi berkas CSV hanya berisi baris header kolom yang visible dan tanpa baris data
-25. Verifikasi tidak ada toast yang tampil
+23. Verifikasi tidak ada toast yang tampil
+24. Verifikasi berkas CSV terunduh
+25. Verifikasi berkas CSV hanya berisi baris header kolom yang visible dan tanpa baris data
 26. Klik ikon `Filter` pada Modal Changelog
 27. Buka dropdown field Action
 28. Verifikasi dropdown Action menampilkan teks `No options available`

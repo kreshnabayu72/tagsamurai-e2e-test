@@ -28,65 +28,67 @@ coverage:
 
 ### Persiapan kolom Label (langkah penghubung)
 
-1. Buka Detail Multi Label Node (Tab Assets)
-2. Buka Popup Setup Column
-3. Centang Label
-4. Klik [Save]
+1. Ketik Search `Multi Label Node`, tekan Enter
+2. Buka Detail Multi Label Node (Tab Assets)
+3. Buka Popup Setup Column
+4. Centang Label
+5. Klik [Save]
 
 ### TC-FA-GRP-1174: Search internal dropdown Filter Label Tab Assets
 
-5. Klik icon Filter
-6. Buka dropdown Label
-7. Ketik `fra` di kotak search dropdown
-8. Verifikasi daftar opsi menyempit ke `Fragile` (case-insensitive)
-9. Ganti isi kotak search dropdown dengan `zzzz`
-10. Verifikasi daftar opsi kosong dengan teks "No results found"
-11. Verifikasi tidak ada ilustrasi pada daftar opsi kosong (teks saja)
-12. Kosongkan kotak search dropdown, tutup dropdown Label, klik [Clear Field]
+6. Klik icon Filter
+7. Buka dropdown Label
+8. Ketik `fra` di kotak search dropdown
+9. Verifikasi daftar opsi menyempit ke `Fragile` (case-insensitive)
+10. Ganti isi kotak search dropdown dengan `zzzz`
+11. Verifikasi daftar opsi kosong dengan teks "No results found"
+12. Verifikasi tidak ada ilustrasi pada daftar opsi kosong (teks saja)
+13. Kosongkan kotak search dropdown, tutup dropdown Label, klik [Clear Field]
 
 ### TC-FA-GRP-1175: Chip opsi Filter Label dihapus via (X) pada chip
 
-13. Buka dropdown Label
-14. Centang opsi `Finance`, lalu centang opsi `Fragile`
-15. Tutup dropdown
-16. Verifikasi chip `Finance` dan chip `Fragile` tampil di dalam field (chip kedua tidak menggantikan chip pertama)
-17. Klik (X) pada chip `Finance`
-18. Verifikasi chip `Finance` hilang
-19. Verifikasi chip `Fragile` tetap ada
-20. Buka dropdown Label
-21. Verifikasi checkbox `Finance` di dropdown ter-uncheck
-22. Tutup dropdown
-23. Klik [Apply]
-24. Verifikasi baris L1 dan L2 tampil
-25. Verifikasi baris L3, L4, dan L5 tidak tampil
+14. Buka dropdown Label
+15. Centang opsi `Finance`, lalu centang opsi `Fragile`
+16. Tutup dropdown
+17. Verifikasi chip `Finance` dan chip `Fragile` tampil di dalam field (chip kedua tidak menggantikan chip pertama)
+18. Klik (X) pada chip `Finance`
+19. Verifikasi chip `Finance` hilang
+20. Verifikasi chip `Fragile` tetap ada
+21. Buka dropdown Label
+22. Verifikasi checkbox `Finance` di dropdown ter-uncheck
+23. Tutup dropdown
+24. Klik [Apply]
+25. Verifikasi baris L1 dan L2 tampil
+26. Verifikasi baris L3, L4, dan L5 tidak tampil
 
 ### TC-FA-GRP-1176: Chip opsi Filter Label dihapus via uncheck di dalam dropdown
 
-26. Klik icon Filter
-27. Klik [Clear Field]
-28. Buka dropdown Label
-29. Centang opsi `Finance`, lalu centang opsi `Fragile`
-30. Uncheck opsi `Finance` dari dalam dropdown
-31. Tutup dropdown
-32. Verifikasi chip `Finance` hilang dari field
-33. Verifikasi chip `Fragile` tetap ada
-34. Klik [Apply]
-35. Verifikasi baris L1 dan L2 tampil
-36. Verifikasi baris L3, L4, dan L5 tidak tampil
+27. Klik icon Filter
+28. Klik [Clear Field]
+29. Buka dropdown Label
+30. Centang opsi `Finance`, lalu centang opsi `Fragile`
+31. Uncheck opsi `Finance` dari dalam dropdown
+32. Tutup dropdown
+33. Verifikasi chip `Finance` hilang dari field
+34. Verifikasi chip `Fragile` tetap ada
+35. Klik [Apply]
+36. Verifikasi baris L1 dan L2 tampil
+37. Verifikasi baris L3, L4, dan L5 tidak tampil
 
 ### TC-FA-GRP-1177: Filter Tab Assets kombinasi Label + Status (AND antar-field)
 
-37. Klik icon Filter
-38. Klik [Clear Field]
-39. Buka dropdown Label, centang opsi `Priority`, tutup dropdown
-40. Buka dropdown Status, centang salah satu status yang dimiliki aset L1 (status L1 dibaca dari data seed sebelum aksi), tutup dropdown
-41. Klik [Apply]
-42. Verifikasi baris L1 tampil
-43. Verifikasi hanya baris yang memenuhi kedua kriteria (Label `Priority` dan status L1) yang tampil (AND antar-field)
+38. Klik icon Filter
+39. Klik [Clear Field]
+40. Buka dropdown Label, centang opsi `Priority`, tutup dropdown
+41. Buka dropdown Status, centang salah satu status yang dimiliki aset L1 (status L1 dibaca dari data seed sebelum aksi), tutup dropdown
+42. Klik [Apply]
+43. Verifikasi baris L1 tampil
+44. Verifikasi hanya baris yang memenuhi kedua kriteria (Label `Priority` dan status L1) yang tampil (AND antar-field)
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): Setup Column centang Label di awal spec (precondition d TC-1175 sampai TC-1177 "kolom curated Label sudah ditampilkan"); mengosongkan kotak search dropdown, menutup dropdown, [Clear Field] sebelum TC berikutnya; membuka ulang Filter Panel dengan klik icon Filter.
-- Spec ini 43 langkah, di atas smell 35 langkah: satu kelas (fungsional), satu dataset (Multi Label Node), tiap blok TC berdiri sendiri dan tidak bergantung pada hasil blok lain; langkah dominan berupa Verifikasi per klausa (S-01).
+- Spec ini 44 langkah, di atas smell 35 langkah: satu kelas (fungsional), satu dataset (Multi Label Node), tiap blok TC berdiri sendiri dan tidak bergantung pada hasil blok lain; langkah dominan berupa Verifikasi per klausa (S-01).
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
 - Temuan untuk QA (S-15): (1) TC-1174 langkah 6 "teks yang tidak ada di opsi mana pun" tidak menyebut nilai; spec memakai `zzzz`. (2) TC-1177 menulis Status "salah satu status yang dimiliki aset L1" tanpa menyebut status konkret dan tanpa menyatakan aset lain mana yang berstatus sama sehingga hasil AND tidak terbukti membuang baris selain L1; precondition perlu menetapkan status tiap aset. (3) TC tidak menyatakan apakah Filter Panel tertutup sesudah [Apply]; spec membuka ulang dengan klik icon Filter sebelum tiap blok. (4) TC-1174 tidak memuat precondition d (kolom Label ditampilkan) sedangkan TC-1175 sampai TC-1177 memuatnya.

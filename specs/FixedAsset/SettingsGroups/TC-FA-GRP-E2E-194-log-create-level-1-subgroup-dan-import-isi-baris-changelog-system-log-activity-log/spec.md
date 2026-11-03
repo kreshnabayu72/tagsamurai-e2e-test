@@ -30,68 +30,71 @@ coverage:
 
 ### TC-868: Create level 1
 
-2. Klik [+] Group
-3. Isi Group Name `Jakarta Hub {runId}-194`, Code `JKT-194`, Description `Main hub`, pilih Assignable
-4. Klik [Submit]
-5. Verifikasi toast sukses "Success, group has been created."
-6. Buka Modal Changelog: Group
-7. Filter Changelog dengan Group Name `Jakarta Hub {runId}-194`
-8. Verifikasi baris Changelog: Action `Create`, Group Name `Jakarta Hub {runId}-194`, Field `Group Name`, Old `—`, New `Jakarta Hub {runId}-194`, Modified By aktor berformat `[First Name] [Last Initial]`
-9. Verifikasi jumlah baris Changelog untuk `Jakarta Hub {runId}-194` bertambah tepat 1 per node per field yang berubah dibanding baseline (tidak duplikat, tidak ada baris untuk field yang tidak berubah atau node lain)
-10. Tutup Modal Changelog
-11. Buka Detail User aktor, klik Tab System Log
-12. Verifikasi jumlah baris System Log aktor bertambah 1 dibanding baseline
-13. Verifikasi baris System Log aktor baru (Note memuat `Jakarta Hub {runId}-194`): object `Groups`
-14. Buka Activity Log FAMS
-15. Verifikasi jumlah baris Activity Log FAMS yang memuat nama `Jakarta Hub {runId}-194` bertambah 1 dibanding baseline
-16. Verifikasi baris Activity Log baru (Note memuat `Jakarta Hub {runId}-194`): kolom Modified By aktor
+2. Buka Fixed Asset > Settings > Groups
+3. Klik [+] Group
+4. Isi Group Name `Jakarta Hub {runId}-194`, Code `JKT-194`, Description `Main hub`, pilih Assignable
+5. Klik [Submit]
+6. Verifikasi toast sukses "Success, group has been created."
+7. Buka Modal Changelog: Group
+8. Filter Changelog dengan Group Name `Jakarta Hub {runId}-194`
+9. Verifikasi baris Changelog: Action `Create`, Group Name `Jakarta Hub {runId}-194`, Field `Group Name`, Old `—`, New `Jakarta Hub {runId}-194`, Modified By aktor berformat `[First Name] [Last Initial]`
+10. Verifikasi jumlah baris Changelog untuk `Jakarta Hub {runId}-194` bertambah tepat 1 per node per field yang berubah dibanding baseline (tidak duplikat, tidak ada baris untuk field yang tidak berubah atau node lain)
+11. Tutup Modal Changelog
+12. Buka Detail User aktor, klik Tab System Log
+13. Verifikasi jumlah baris System Log aktor bertambah 1 dibanding baseline
+14. Verifikasi baris System Log aktor baru (Note memuat `Jakarta Hub {runId}-194`): object `Groups`
+15. Buka Activity Log FAMS
+16. Verifikasi jumlah baris Activity Log FAMS yang memuat nama `Jakarta Hub {runId}-194` bertambah 1 dibanding baseline
+17. Verifikasi baris Activity Log baru (Note memuat `Jakarta Hub {runId}-194`): kolom Modified By aktor
 
 ### TC-869: Create Subgroup
 
-17. Catat baseline sebelum aksi: jumlah baris Changelog Group yang memuat nama `Meeting Room {runId}-194`, jumlah baris System Log aktor, dan jumlah baris Activity Log FAMS yang memuat nama `Meeting Room {runId}-194`
-18. Klik Head Office
-19. Buka elipsis Floor 2, pilih Add Subgroup
-20. Isi Group Name `Meeting Room {runId}-194`, pilih Function Assignable, klik [Submit]
-21. Verifikasi toast sukses "Success, group has been created."
-22. Buka Modal Changelog: Group
-23. Filter Changelog dengan Group Name `Meeting Room {runId}-194`
-24. Verifikasi baris Changelog: Action `Create`, Group Name `Head Office > Floor 2 > Meeting Room {runId}-194` (full path), Field `Group Name`, Old `—`, New `Meeting Room {runId}-194`, Modified By aktor berformat `[First Name] [Last Initial]`
-25. Verifikasi jumlah baris Changelog untuk `Meeting Room {runId}-194` bertambah tepat 1 per node per field yang berubah dibanding baseline (tidak duplikat, tidak ada baris untuk field yang tidak berubah atau node lain)
-26. Tutup Modal Changelog
-27. Buka Detail User aktor, klik Tab System Log
-28. Verifikasi jumlah baris System Log aktor bertambah 1 dibanding baseline
-29. Verifikasi baris System Log aktor baru (Note memuat `Meeting Room {runId}-194`): object `Groups`
-30. Buka Activity Log FAMS
-31. Verifikasi jumlah baris Activity Log FAMS yang memuat nama `Meeting Room {runId}-194` bertambah 1 dibanding baseline
-32. Verifikasi baris Activity Log baru (Note memuat `Meeting Room {runId}-194`): kolom Modified By aktor
+18. Catat baseline sebelum aksi: jumlah baris Changelog Group yang memuat nama `Meeting Room {runId}-194`, jumlah baris System Log aktor, dan jumlah baris Activity Log FAMS yang memuat nama `Meeting Room {runId}-194`
+19. Buka Fixed Asset > Settings > Groups
+20. Klik Head Office
+21. Buka elipsis Floor 2, pilih Add Subgroup
+22. Isi Group Name `Meeting Room {runId}-194`, pilih Function Assignable, klik [Submit]
+23. Verifikasi toast sukses "Success, group has been created."
+24. Buka Modal Changelog: Group
+25. Filter Changelog dengan Group Name `Meeting Room {runId}-194`
+26. Verifikasi baris Changelog: Action `Create`, Group Name `Head Office > Floor 2 > Meeting Room {runId}-194` (full path), Field `Group Name`, Old `—`, New `Meeting Room {runId}-194`, Modified By aktor berformat `[First Name] [Last Initial]`
+27. Verifikasi jumlah baris Changelog untuk `Meeting Room {runId}-194` bertambah tepat 1 per node per field yang berubah dibanding baseline (tidak duplikat, tidak ada baris untuk field yang tidak berubah atau node lain)
+28. Tutup Modal Changelog
+29. Buka Detail User aktor, klik Tab System Log
+30. Verifikasi jumlah baris System Log aktor bertambah 1 dibanding baseline
+31. Verifikasi baris System Log aktor baru (Note memuat `Meeting Room {runId}-194`): object `Groups`
+32. Buka Activity Log FAMS
+33. Verifikasi jumlah baris Activity Log FAMS yang memuat nama `Meeting Room {runId}-194` bertambah 1 dibanding baseline
+34. Verifikasi baris Activity Log baru (Note memuat `Meeting Room {runId}-194`): kolom Modified By aktor
 
 ### TC-870: Create via Import (akun importer)
 
-33. Ganti akun: Logout, lalu login sebagai importer
-34. Buka Fixed Asset > Settings > Groups
-35. Catat baseline sebelum aksi: jumlah baris Changelog Group yang memuat nama `Branch C {runId}-194`, jumlah baris System Log importer, dan jumlah baris Activity Log FAMS yang memuat nama `Branch C {runId}-194`
-36. Lakukan Import Group `Branch C {runId}-194`
-37. Tunggu aksi selesai
-38. Buka Modal Changelog: Group
-39. Filter Changelog dengan Group Name `Branch C {runId}-194`
-40. Verifikasi baris Changelog: Action `Create` (tanpa penanda Import), Group Name `Branch C {runId}-194`, Field `Group Name`, Old `—`, New `Branch C {runId}-194`, Modified By importer berformat `[First Name] [Last Initial]`
-41. Verifikasi jumlah baris Changelog untuk `Branch C {runId}-194` bertambah tepat 1 per node per field yang berubah dibanding baseline (tidak duplikat, tidak ada baris untuk field yang tidak berubah atau node lain)
-42. Tutup Modal Changelog
-43. Buka Detail User importer, klik Tab System Log
-44. Verifikasi jumlah baris System Log importer bertambah 1 dibanding baseline
-45. Verifikasi baris System Log importer baru (Note memuat `Branch C {runId}-194`): object `Groups`, identik dengan Create manual dan tanpa entri auto-assign creator
-46. Buka Activity Log FAMS
-47. Verifikasi jumlah baris Activity Log FAMS yang memuat nama `Branch C {runId}-194` bertambah 1 dibanding baseline
-48. Verifikasi baris Activity Log baru (Note memuat `Branch C {runId}-194`): kolom Modified By importer
+35. Ganti akun: Logout, lalu login sebagai importer
+36. Buka Fixed Asset > Settings > Groups
+37. Catat baseline sebelum aksi: jumlah baris Changelog Group yang memuat nama `Branch C {runId}-194`, jumlah baris System Log importer, dan jumlah baris Activity Log FAMS yang memuat nama `Branch C {runId}-194`
+38. Lakukan Import Group `Branch C {runId}-194`
+39. Tunggu aksi selesai
+40. Buka Fixed Asset > Settings > Groups
+41. Buka Modal Changelog: Group
+42. Filter Changelog dengan Group Name `Branch C {runId}-194`
+43. Verifikasi baris Changelog: Action `Create` (tanpa penanda Import), Group Name `Branch C {runId}-194`, Field `Group Name`, Old `—`, New `Branch C {runId}-194`, Modified By importer berformat `[First Name] [Last Initial]`
+44. Verifikasi jumlah baris Changelog untuk `Branch C {runId}-194` bertambah tepat 1 per node per field yang berubah dibanding baseline (tidak duplikat, tidak ada baris untuk field yang tidak berubah atau node lain)
+45. Tutup Modal Changelog
+46. Buka Detail User importer, klik Tab System Log
+47. Verifikasi jumlah baris System Log importer bertambah 1 dibanding baseline
+48. Verifikasi baris System Log importer baru (Note memuat `Branch C {runId}-194`): object `Groups`, identik dengan Create manual dan tanpa entri auto-assign creator
+49. Buka Activity Log FAMS
+50. Verifikasi jumlah baris Activity Log FAMS yang memuat nama `Branch C {runId}-194` bertambah 1 dibanding baseline
+51. Verifikasi baris Activity Log baru (Note memuat `Branch C {runId}-194`): kolom Modified By importer
 
 ## Notes
 
-- Baseline (S-12) dicatat per surface sebelum aksi tiap TC dan dicatat ulang tiap TC untuk System Log dan Activity Log yang dipakai ulang (langkah 17 dan 35); nama bersuffix unik memberi baseline nol untuk Changelog. Baris log dicari lewat Note atau nama bersuffix, bukan lewat urutan; asersi jumlah memakai selisih terhadap baseline.
-- Langkah penghubung (S-03): mencatat baseline, Tunggu aksi selesai, menutup Modal Changelog, membuka Head Office dan elipsis Floor 2 pada TC-869, serta Ganti akun ke importer pada TC-870 (akun aktor pertama login di hook `before`; hook `after` memulihkan sesi ke akun default).
+- Baseline (S-12) dicatat per surface sebelum aksi tiap TC dan dicatat ulang tiap TC untuk System Log dan Activity Log yang dipakai ulang (langkah 18 dan 37); nama bersuffix unik memberi baseline nol untuk Changelog. Baris log dicari lewat Note atau nama bersuffix, bukan lewat urutan; asersi jumlah memakai selisih terhadap baseline.
+- Langkah penghubung (S-03): Buka Fixed Asset > Settings > Groups sebelum aksi tiap blok dan sesudah Import (baseline dan log meninggalkan halaman Groups; S-14), mencatat baseline, Tunggu aksi selesai, menutup Modal Changelog, membuka Head Office dan elipsis Floor 2 pada TC-869, serta Ganti akun ke importer pada TC-870 (akun aktor pertama login di hook `before`; hook `after` memulihkan sesi ke akun default).
 - Blok membaca log berpola (buka surface, cari entri, `Verifikasi` kolom log) tidak dihitung terhadap smell 35 langkah (bagian 3 prinsip 13). Langkah baseline dan pencarian baris adalah langkah penghubung (S-03, R-16).
 - Asersi "tepat 1 baris" memakai baseline (S-12); kolom Modified By diasersi berformat `[First Name] [Last Initial]` (R-14).
-- Spec memiliki 48 langkah, di atas smell 35 langkah. Alasan: tiga blok satu topik (isi baris log hasil Create) dengan pola baca-log yang sama; tiap TC berdiri sendiri.
+- Spec memiliki 51 langkah, di atas smell 35 langkah. Alasan: tiga blok satu topik (isi baris log hasil Create) dengan pola baca-log yang sama; tiap TC berdiri sendiri.
 - Temuan untuk QA:
   - TC-868 sampai 870 menulis "Lakukan aksi: TC Create Jakarta Hub" dan menyalin hasil dari TC-80 dan TC-126 (Jakarta Hub / JKT / Main hub dan Meeting Room di bawah Floor 2); spec menyalin langkah aksi dari TC-80 dan TC-126 (S-04) dengan nama bersuffix.
   - TC-870 "Group Import Branch C dibuat via Import" tidak punya langkah import dan tidak menyebut akun importer; spec menulis keduanya sebagai kemampuan yang disediakan tim FE/BE (S-13). Kolom System Log/Activity Log tidak diuraikan di TC selain "baris sama"; spec memverifikasi sebagaimana ditulis TC.
-  - TC-870 tidak menyebut System Log user mana yang dibaca; spec membaca System Log importer (pelaku Create) dengan baseline importer sendiri (langkah 35).
+  - TC-870 tidak menyebut System Log user mana yang dibaca; spec membaca System Log importer (pelaku Create) dengan baseline importer sendiri (langkah 37).

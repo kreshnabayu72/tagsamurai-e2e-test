@@ -62,7 +62,7 @@ coverage:
 
 17. Ganti isi Group Name dengan `  Trim Hall {runId}-062  `, isi Code `  TH1  `, lalu klik [Save]
 18. Verifikasi toast sukses `Success, group has been updated.`
-19. Ketik Search `Trim Hall {runId}-062`, tekan Enter
+19. Ganti isi kotak Search dengan `Trim Hall {runId}-062`, tekan Enter
 20. Verifikasi di tabel, Group Name `Trim Hall {runId}-062` dan Code `TH1` tersimpan tanpa spasi di depan dan belakang
 21. Verifikasi di sidebar, node `Trim Hall {runId}-062` tampil tanpa spasi di depan dan belakang
 22. Klik nama `Trim Hall {runId}-062` untuk membuka Popup Detail Group
@@ -73,7 +73,7 @@ coverage:
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: validasi yang diblokir lebih dulu (TC-FA-GRP-1057, 196, 197, 198), lalu aksi sukses (TC-FA-GRP-199) sesuai S-10; berbeda dari urutan nomor TC sumber. Dalam satu popup, isi Group Name diganti sehingga error TC sebelumnya hilang (R-12).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-062`, tekan Enter); langkah 19 (Ketik Search `Trim Hall {runId}-062`, tekan Enter); langkah 22 (Klik nama `Trim Hall {runId}-062` untuk membuka Popup Detail Group); langkah 24 (Tutup Popup Detail Group dan klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-062`, tekan Enter); langkah 19 (Ganti isi kotak Search dengan `Trim Hall {runId}-062`, tekan Enter); langkah 22 (Klik nama `Trim Hall {runId}-062` untuk membuka Popup Detail Group); langkah 24 (Tutup Popup Detail Group dan klik `(←)` pada kotak Search).
 - Langkah Search mencari baris target (R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-199 Expected b menyebut hasil "di tabel, sidebar, Detail" tanpa langkah membuka Detail; spec menambahkannya sebagai langkah penghubung.

@@ -31,48 +31,50 @@ coverage:
 
 ### TC-FA-GRP-1056: Group Name hanya spasi ditolak sebagai kosong
 
-1. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-2. Isi Group Name dengan tiga spasi saja, lalu klik [Submit]
-3. Verifikasi inline error `Group name must not be empty` di bawah Group Name
-4. Verifikasi popup tetap terbuka
-5. Verifikasi data tidak tersimpan: jumlah group lewat fixture BE sama dengan baseline
+1. Ketik Search `Head Office`, tekan Enter
+2. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+3. Isi Group Name dengan tiga spasi saja, lalu klik [Submit]
+4. Verifikasi inline error `Group name must not be empty` di bawah Group Name
+5. Verifikasi popup tetap terbuka
+6. Verifikasi data tidak tersimpan: jumlah group lewat fixture BE sama dengan baseline
 
 ### TC-FA-GRP-138: Nama reserved All Groups ditolak (case dan trim)
 
-6. Ganti isi Group Name dengan `  all groups  `, lalu klik [Submit]
-7. Verifikasi inline error `'All Groups' is a reserved name and cannot be used` setelah submit
-8. Verifikasi data tidak tersimpan: jumlah group lewat fixture BE sama dengan baseline
+7. Ganti isi Group Name dengan `  all groups  `, lalu klik [Submit]
+8. Verifikasi inline error `'All Groups' is a reserved name and cannot be used` setelah submit
+9. Verifikasi data tidak tersimpan: jumlah group lewat fixture BE sama dengan baseline
 
 ### TC-FA-GRP-139: Emoji diblok saat ketik/paste di Group Name
 
-9. Kosongkan Group Name, lalu ketik dan paste `Gudang 🚀 Utama` ke Group Name
-10. Verifikasi emoji tidak masuk ke value field dan karakter lain tetap (`Gudang` dan `Utama` tampil)
-11. Verifikasi tidak ada pesan error pada Group Name
+10. Kosongkan Group Name, lalu ketik dan paste `Gudang 🚀 Utama` ke Group Name
+11. Verifikasi emoji tidak masuk ke value field dan karakter lain tetap (`Gudang` dan `Utama` tampil)
+12. Verifikasi tidak ada pesan error pada Group Name
 
 ### TC-FA-GRP-140: Emoji yang lolos blok input ditolak server
 
-12. Injeksi value `Gudang 🚀` langsung ke DOM field Group Name (bypass filter keystroke FE), lalu klik [Submit]
-13. Verifikasi inline error `Group name contains invalid characters` dari server
-14. Verifikasi popup tetap terbuka
-15. Verifikasi data tidak tersimpan: jumlah group lewat fixture BE sama dengan baseline
+13. Injeksi value `Gudang 🚀` langsung ke DOM field Group Name (bypass filter keystroke FE), lalu klik [Submit]
+14. Verifikasi inline error `Group name contains invalid characters` dari server
+15. Verifikasi popup tetap terbuka
+16. Verifikasi data tidak tersimpan: jumlah group lewat fixture BE sama dengan baseline
 
 ### TC-FA-GRP-141: Auto-trim spasi depan/belakang Group Name dan Code
 
-16. Ganti isi Group Name dengan `  Trim Hall {runId}-048  `, isi Code `  TH1  `, lalu klik [Submit]
-17. Verifikasi toast sukses `Success, group has been created.`
-18. Klik Head Office di sidebar, lalu ketik Search `Trim Hall {runId}-048`, tekan Enter
-19. Verifikasi di tabel, Group Name `Trim Hall {runId}-048` dan Code `TH1` tersimpan tanpa spasi di depan dan belakang
-20. Verifikasi di sidebar, node `Trim Hall {runId}-048` tampil tanpa spasi di depan dan belakang
-21. Klik nama `Trim Hall {runId}-048` untuk membuka Popup Detail Group
-22. Verifikasi di Detail, Group Name `Trim Hall {runId}-048` dan Code `TH1` tanpa spasi di depan dan belakang
-23. Tutup Popup Detail Group dan klik `(←)` pada kotak Search
+17. Ganti isi Group Name dengan `  Trim Hall {runId}-048  `, isi Code `  TH1  `, lalu klik [Submit]
+18. Verifikasi toast sukses `Success, group has been created.`
+19. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+20. Klik Head Office di sidebar, lalu ketik Search `Trim Hall {runId}-048`, tekan Enter
+21. Verifikasi di tabel, Group Name `Trim Hall {runId}-048` dan Code `TH1` tersimpan tanpa spasi di depan dan belakang
+22. Verifikasi di sidebar, node `Trim Hall {runId}-048` tampil tanpa spasi di depan dan belakang
+23. Klik nama `Trim Hall {runId}-048` untuk membuka Popup Detail Group
+24. Verifikasi di Detail, Group Name `Trim Hall {runId}-048` dan Code `TH1` tanpa spasi di depan dan belakang
+25. Tutup Popup Detail Group dan klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: validasi yang diblokir lebih dulu (TC-FA-GRP-1056, 138, 139, 140), lalu aksi sukses (TC-FA-GRP-141) sesuai S-10; berbeda dari urutan nomor TC sumber. Dalam satu popup, isi Group Name diganti sehingga error TC sebelumnya hilang (R-12).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 18 (Klik Head Office di sidebar, lalu ketik Search `Trim Hall {runId}-048`...); langkah 21 (Klik nama `Trim Hall {runId}-048` untuk membuka Popup Detail Group); langkah 23 (Tutup Popup Detail Group dan klik `(←)` pada kotak Search).
-- Langkah 18 mencari baris target yang baru dibuat (R-16).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 20 (Klik Head Office di sidebar, lalu ketik Search `Trim Hall {runId}-048`, tekan Enter); langkah 23 (Klik nama `Trim Hall {runId}-048` untuk membuka Popup Detail Group); langkah 25 (Tutup Popup Detail Group dan klik `(←)` pada kotak Search); langkah 1 (Ketik Search `Head Office`, tekan Enter) menemukan baris target karena client punya lebih dari 10 node level 1 dengan page size 10, sehingga baris tidak diandalkan berada di halaman 1 (R-16); langkah 19 (`(←)` pada kotak Search) mengosongkan Search sebelum memilih Head Office di sidebar.
+- Langkah 20 mencari baris target yang baru dibuat (R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-141 Expected b menyebut hasil "di tabel, sidebar, Detail" tanpa langkah membuka Detail; spec menambahkannya sebagai langkah penghubung.
   - TC-FA-GRP-139 tidak menyebut apakah teks tetap `Gudang  Utama` (dua spasi) atau dipadatkan; spec hanya mengasersi bahwa emoji tidak masuk dan karakter lain tetap.

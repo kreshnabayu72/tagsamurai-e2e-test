@@ -26,7 +26,7 @@ coverage:
 
 ## Test Steps
 
-1. Klik angka Total User Warehouse A
+1. Ketik Search `Warehouse A`, tekan Enter, lalu klik angka Total User Warehouse A
 
 ### TC-630: Screening overlay Column Visibility
 
@@ -34,7 +34,7 @@ coverage:
 3. Verifikasi tooltip Column Visibility tampil
 4. Klik icon (⋯)
 5. Verifikasi item `Setup Column...` ada di bagian bawah panel overlay
-6. Verifikasi daftar kolom berurutan: Name (Hideable, checked, enabled), Email (Hideable, checked, enabled), Position (Hideable, checked, enabled), Division (Hideable, checked, enabled), Group Role (Hideable, checked, enabled), Activation Status (Curated, unchecked, enabled), Temporary User (Curated, unchecked, enabled), Temporary Until (Curated, unchecked, enabled), TAG (Curated, unchecked, enabled), Custom Field `Phone {runId}` (Curated, unchecked, enabled)
+6. Verifikasi daftar kolom memuat dengan urutan relatif berikut: Name (Hideable, checked, enabled), Email (Hideable, checked, enabled), Position (Hideable, checked, enabled), Division (Hideable, checked, enabled), Group Role (Hideable, checked, enabled), Activation Status (Curated, unchecked, enabled), Temporary User (Curated, unchecked, enabled), Temporary Until (Curated, unchecked, enabled), TAG (Curated, unchecked, enabled), Custom Field `Phone {runId}` (Curated, unchecked, enabled); Custom Field User lain milik client tidak diasersi
 7. Verifikasi tiap baris kolom punya drag handle
 8. Tekan Esc untuk menutup overlay
 
@@ -43,7 +43,7 @@ coverage:
 9. Klik icon (⋯)
 10. Klik [Setup Column]
 11. Verifikasi header popup memuat title Setup Column, teks panduan drag/check/pin, dan icon close (X)
-12. Verifikasi body memuat daftar kolom Name, Email, Position, Division, Group Role (Hideable, checked, enabled) dan Activation Status, Temporary User, Temporary Until, TAG, Custom Field `Phone {runId}` (Curated, unchecked, enabled) dengan drag handle dan icon Pin
+12. Verifikasi body memuat kolom milik spec (Custom Field User lain milik client tidak diasersi) Name, Email, Position, Division, Group Role (Hideable, checked, enabled) dan Activation Status, Temporary User, Temporary Until, TAG, Custom Field `Phone {runId}` (Curated, unchecked, enabled) dengan drag handle dan icon Pin
 13. Verifikasi Live Preview menampilkan header kolom dan sel data sesuai tabel asli
 14. Verifikasi footer memuat [Reset to Default] (text, primary) dan [Save] (filled, success)
 15. Verifikasi footer tidak memuat [Cancel]
@@ -72,6 +72,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03): menutup overlay dengan Esc setelah TC-630, menutup popup lewat `(X)` setelah TC-665 dan TC-1089 (draf tidak disimpan; modal Setup Column tidak punya [Cancel]), dan membuka ulang overlay dan popup pada TC-1089.
+- Baris `Warehouse A` dicari lewat Search sebelum klik angka Total User (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan; Refresh F5 membuang Search sehingga Search diketik ulang). Langkah Search digabung ke langkah klik angka dan dihitung langkah penghubung (S-03, S-14, R-16).
 - Temuan untuk QA:
   - Tabel Data Uji untuk variasi baris Tab Users tidak punya tabel konkret di TC (hanya `>= 12 user variasi role`); spec mendefinisikan kebutuhan nilai distinct di Prerequisites.
-  - TC-630 dan TC-631 menyebut "Custom Field aktif (mis. Phone)"; spec memakai Custom Field `Phone {runId}` (seed spec) sebagai kolom ke-10. TC-665 "uncheck seluruh kolom kecuali satu" tidak menyebut kolom yang tersisa; spec mengikuti TC dan tidak menyebut kolom tertentu.
+  - TC-630 dan TC-631 menyebut "Custom Field aktif (mis. Phone)"; spec memakai Custom Field `Phone {runId}` (seed spec) sebagai satu-satunya Custom Field yang diasersi; Custom Field User lain milik client boleh ada dan tidak diasersi, sehingga asersi daftar kolom dibatasi pada kolom milik spec (langkah 6 dan 12). TC-665 "uncheck seluruh kolom kecuali satu" tidak menyebut kolom yang tersisa; spec mengikuti TC dan tidak menyebut kolom tertentu.

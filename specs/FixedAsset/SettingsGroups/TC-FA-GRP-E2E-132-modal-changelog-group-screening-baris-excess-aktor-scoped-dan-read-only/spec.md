@@ -87,35 +87,38 @@ coverage:
 ### TC-FA-GRP-429: Aktor scoped hanya melihat riwayat dalam scope
 
 31. Ganti akun: logout, lalu login sebagai Group Manager scope Region West dengan `Spectra.env.FA_GM_PASSWORD`
-32. Klik icon Changelog
-33. Ketik Search `West Child {runId}-132`, tekan Enter
-34. Verifikasi baris Group Name `Global HQ > Region West > West Child {runId}-132` tampil
-35. Ganti isi kotak search dengan `East Child {runId}-132`, tekan Enter
-36. Verifikasi empty state tampil dengan title `No results found` (riwayat Region East di luar scope)
-37. Ganti isi kotak search dengan `Old Storage {runId}-132`, tekan Enter
-38. Verifikasi empty state tampil dengan title `No results found` (node terhapus di luar scope)
-39. Klik icon close (X) pada header Modal Changelog
+32. Buka Fixed Asset > Settings > Groups
+33. Klik icon Changelog
+34. Ketik Search `West Child {runId}-132`, tekan Enter
+35. Verifikasi baris Group Name `Global HQ > Region West > West Child {runId}-132` tampil
+36. Ganti isi kotak search dengan `East Child {runId}-132`, tekan Enter
+37. Verifikasi empty state tampil dengan title `No results found` (riwayat Region East di luar scope)
+38. Ganti isi kotak search dengan `Old Storage {runId}-132`, tekan Enter
+39. Verifikasi empty state tampil dengan title `No results found` (node terhapus di luar scope)
+40. Klik icon close (X) pada header Modal Changelog
 
 ### TC-FA-GRP-430: Total Control, Read Only, dan Default User melihat seluruh riwayat
 
-40. Untuk setiap baris tabel Role (langkah 41 sampai 47): jalankan langkah berikut dengan akun pada baris itu
-41. Ganti akun: logout, lalu login sebagai role pada baris tabel dengan env var password pada baris itu
-42. Klik icon Changelog
-43. Ketik Search `Old Storage {runId}-132`, tekan Enter
-44. Verifikasi baris Action Delete Group Name `Old Storage {runId}-132` tampil
-45. Ganti isi kotak search dengan `East Child {runId}-132`, tekan Enter
-46. Verifikasi baris Group Name `Global HQ > Region East > East Child {runId}-132` tampil
-47. Klik icon close (X) pada header Modal Changelog
+41. Untuk setiap baris tabel Role (langkah 42 sampai 49): jalankan langkah berikut dengan akun pada baris itu
+42. Ganti akun: logout, lalu login sebagai role pada baris tabel dengan env var password pada baris itu
+43. Buka Fixed Asset > Settings > Groups
+44. Klik icon Changelog
+45. Ketik Search `Old Storage {runId}-132`, tekan Enter
+46. Verifikasi baris Action Delete Group Name `Old Storage {runId}-132` tampil
+47. Ganti isi kotak search dengan `East Child {runId}-132`, tekan Enter
+48. Verifikasi baris Group Name `Global HQ > Region East > East Child {runId}-132` tampil
+49. Klik icon close (X) pada header Modal Changelog
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
 - Spec memuat tiga akun di luar akun default suite; ganti akun punya langkah eksplisit (S-07) dan hook `after` mengembalikan sesi ke akun default suite. Spec ditulis per blok TC (bukan satu perulangan role) karena TC-FA-GRP-429 menguji aktor scoped dengan asersi berbeda dari TC-FA-GRP-430.
-- Pengulangan (bagian 8b butir 7): langkah 41 sampai 47 diulang untuk tiap baris tabel Role (Read Only, Total Control, Default User).
+- Pengulangan (bagian 8b butir 7): langkah 42 sampai 49 diulang untuk tiap baris tabel Role (Read Only, Total Control, Default User).
 - Langkah penghubung (tanpa awalan `Verifikasi`): membuka dan menutup Modal Changelog, mengganti isi kotak search antar pemeriksaan, `(←)` pada kotak Search, dan menutup Filter Panel (S-03). Search per nama (`Excess Node`, `Log1`, `Log4`, `West Child`, `East Child`, `Old Storage`) dipakai agar baris yang dicek tampil di halaman 1.
 - TC-FA-GRP-427 memakai node Excess, scope, dan terhapus milik spec (`Excess Node`, `West Child`, `East Child`, `Old Storage`) sebagai pengganti Warehouse B, Region West/East, dan Old Storage Pre-setup (S-06). Log Region West dan Branch West 1 pada TC-FA-GRP-429 diwakili entri `West Child`.
 - Asersi "tidak tampil" (TC-FA-GRP-429 Expected b) memakai empty state `No results found` hasil Search sebagai anchor positif (bagian 8b butir 2).
-- Spec 47 langkah (ekspansi iterasi ± 60 langkah), di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah per kolom/field memakai tabel di Prerequisites (bagian 8b butir 7).
+- Spec 49 langkah (ekspansi iterasi ± 65 langkah), di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah per kolom/field memakai tabel di Prerequisites (bagian 8b butir 7).
+- Hook `beforeEach` tidak jalan sesudah ganti akun, sehingga halaman Groups dibuka lagi lewat langkah `Buka Fixed Asset > Settings > Groups` sebelum Klik icon Changelog (S-14).
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.

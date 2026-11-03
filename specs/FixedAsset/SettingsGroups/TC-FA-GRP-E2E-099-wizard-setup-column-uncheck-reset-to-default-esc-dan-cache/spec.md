@@ -36,55 +36,56 @@ coverage:
 ### TC-FA-GRP-1098: Uncheck kolom Group, Total Asset, dan Total User
 
 1. Buka Wizard Reconciliation > Step Group Consolidation
-2. Untuk setiap baris tabel Kolom pada Prerequisites, lakukan langkah 3 sampai 10
+2. Untuk setiap baris tabel Kolom pada Prerequisites, lakukan langkah 3 sampai 11
 3. Buka Popup Setup Column
 4. Uncheck kolom pada baris tabel
 5. Verifikasi Live Preview langsung menyembunyikan kolom tersebut
 6. Klik [Save]
 7. Verifikasi kolom tersebut hilang dari tabel
 8. Refresh F5
-9. Verifikasi kolom tersebut tetap hilang dari tabel setelah F5 (konfigurasi bertahan)
-10. Buka Popup Setup Column, check kolom kembali, lalu klik [Save]
+9. Verifikasi kolom selain kolom pada baris tabel tetap tampil di tabel setelah F5
+10. Verifikasi kolom tersebut tetap hilang dari tabel setelah F5 (konfigurasi bertahan)
+11. Buka Popup Setup Column, check kolom kembali, lalu klik [Save]
 
 ### TC-FA-GRP-1102: [Reset to Default]
 
-11. Ubah urutan (drag Group ke posisi lain), hide Total User, dan pin Total Asset, lalu klik [Save]
-12. Buka Popup Setup Column
-13. Klik [Reset to Default]
-14. Verifikasi Live Preview kembali ke susunan default (ketiga kolom tampil, tanpa pin)
-15. Klik [Save]
-16. Verifikasi tabel kembali ke susunan default
-17. Refresh F5
-18. Verifikasi susunan default bertahan setelah F5
+12. Ubah urutan (drag Group ke posisi lain), hide Total User, dan pin Total Asset, lalu klik [Save]
+13. Buka Popup Setup Column
+14. Klik [Reset to Default]
+15. Verifikasi Live Preview kembali ke susunan default (ketiga kolom tampil, tanpa pin)
+16. Klik [Save]
+17. Verifikasi tabel kembali ke susunan default
+18. Refresh F5
+19. Verifikasi susunan default bertahan setelah F5
 
 ### TC-FA-GRP-1103: (X) dan Esc membatalkan perubahan
 
-19. Buka Popup Setup Column
-20. Uncheck satu kolom (Total User)
-21. Klik (X)
-22. Verifikasi popup tertutup tanpa menerapkan perubahan
-23. Verifikasi tabel tetap memakai konfigurasi tersimpan terakhir (ketiga kolom tampil)
-24. Buka Popup Setup Column
-25. Drag satu kolom (Group) ke posisi lain
-26. Tekan Esc
-27. Verifikasi popup tertutup tanpa menerapkan perubahan
-28. Verifikasi tabel tetap memakai konfigurasi tersimpan terakhir (urutan default)
+20. Buka Popup Setup Column
+21. Uncheck satu kolom (Total User)
+22. Klik (X)
+23. Verifikasi popup tertutup tanpa menerapkan perubahan
+24. Verifikasi tabel tetap memakai konfigurasi tersimpan terakhir (ketiga kolom tampil)
+25. Buka Popup Setup Column
+26. Drag satu kolom (Group) ke posisi lain
+27. Tekan Esc
+28. Verifikasi popup tertutup tanpa menerapkan perubahan
+29. Verifikasi tabel tetap memakai konfigurasi tersimpan terakhir (urutan default)
 
 ### TC-FA-GRP-1104: Cache tidak memengaruhi tabel lain
 
-29. Buka Popup Setup Column
-30. Hide satu kolom (Total User)
-31. Klik [Save]
-32. Buka Fixed Asset > Settings > Groups
-33. Verifikasi Groups List tetap memakai konfigurasi kolomnya sendiri
-34. Buka Wizard Reconciliation > Step Group Consolidation
-35. Verifikasi kolom Total User tetap tersembunyi (konfigurasi tabel Step Group Consolidation tetap tersimpan)
-36. Buka Popup Setup Column, check Total User kembali, lalu klik [Save]
+30. Buka Popup Setup Column
+31. Hide satu kolom (Total User)
+32. Klik [Save]
+33. Buka Fixed Asset > Settings > Groups
+34. Verifikasi Groups List tetap memakai konfigurasi kolomnya sendiri
+35. Buka Wizard Reconciliation > Step Group Consolidation
+36. Verifikasi kolom Total User tetap tersembunyi (konfigurasi tabel Step Group Consolidation tetap tersimpan)
+37. Buka Popup Setup Column, check Total User kembali, lalu klik [Save]
 
 ## Notes
 
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 10 dan 11, 32, 34, 36: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
-- Langkah 3 sampai 10 diulang untuk setiap baris tabel Kolom (Group, Total Asset, Total User); `Verifikasi` tetap satu per klausa. Alur ekspansi: 3 iterasi dari 8 langkah.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 11 dan 12, 33, 35, 37: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
+- Langkah 3 sampai 11 diulang untuk setiap baris tabel Kolom (Group, Total Asset, Total User); `Verifikasi` tetap satu per klausa. Asersi absence kolom setelah F5 (langkah 10) didahului `Verifikasi` kolom lain tampil (langkah 9, anchor 8b butir 2). Alur ekspansi: 3 iterasi dari 9 langkah.
 - Spec berisi lebih dari 35 langkah setelah ekspansi. Alasan: satu kelas dan satu surface (Setup Column Step Group Consolidation); iterasi per kolom sah menurut 8b butir 7 dan blok tiap TC berdiri sendiri; konfigurasi dipulihkan oleh langkah penghubung dan hook `after`.
 - Temuan untuk QA:
   - TC-1098 Langkah 6 mengubah dua kolom berurutan (check Group, uncheck Total Asset); spec memulihkan kolom pada akhir tiap iterasi sehingga tiap kolom diuji terisolasi.

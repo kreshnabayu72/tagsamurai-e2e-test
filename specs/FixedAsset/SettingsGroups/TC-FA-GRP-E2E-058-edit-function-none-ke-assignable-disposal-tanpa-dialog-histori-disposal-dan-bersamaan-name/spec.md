@@ -51,23 +51,24 @@ coverage:
 13. Verifikasi Dialog Change Function varian Assignable ke None tampil
 14. Klik [Save] pada dialog
 15. Verifikasi toast sukses `Success, group has been updated.`
-16. Verifikasi Name baru `FN Renamed {runId}-058` dan Function baru `—` tersimpan pada baris itu
+16. Ganti isi kotak Search dengan `FN Renamed {runId}-058`, tekan Enter
+17. Verifikasi Name baru `FN Renamed {runId}-058` dan Function baru `—` tersimpan pada baris itu
 
 ### TC-FA-GRP-185: Function dari Disposal Group pada node dengan histori disposal diizinkan
 
-17. Ganti isi kotak Search dengan `Disposal Edit Own {runId}-058`, tekan Enter
-18. Buka elipsis (⋯) baris `Disposal Edit Own {runId}-058`, lalu klik Edit
-19. Verifikasi field Function enabled (tidak ada guard histori disposal)
-20. Pilih Function None, klik [Save] pada Popup Edit, lalu klik [Save] pada dialog
-21. Verifikasi perubahan sukses dengan toast `Success, group has been updated.`
-22. Verifikasi record disposal lama tetap menunjuk `Disposal Edit Own {runId}-058` (snapshot nama), dibaca lewat fixture BE
-23. Klik `(←)` pada kotak Search
+18. Ganti isi kotak Search dengan `Disposal Edit Own {runId}-058`, tekan Enter
+19. Buka elipsis (⋯) baris `Disposal Edit Own {runId}-058`, lalu klik Edit
+20. Verifikasi field Function enabled (tidak ada guard histori disposal)
+21. Pilih Function None, klik [Save] pada Popup Edit, lalu klik [Save] pada dialog
+22. Verifikasi perubahan sukses dengan toast `Success, group has been updated.`
+23. Verifikasi record disposal lama tetap menunjuk `Disposal Edit Own {runId}-058` (snapshot nama), dibaca lewat fixture BE
+24. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: TC-FA-GRP-183, 184, 186, lalu TC-FA-GRP-185 di akhir karena mengubah Function node berhistori disposal; berbeda dari urutan nomor TC sumber.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `FN None A {runId}-058`, tekan Enter); langkah 6 (Ganti isi kotak Search dengan `FN None B {runId}-058`, tekan Enter); langkah 11 (Ganti isi kotak Search dengan `FN Assign {runId}-058`, tekan Enter); langkah 17 (Ganti isi kotak Search dengan `Disposal Edit Own {runId}-058`, tekan Enter); langkah 23 (Klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `FN None A {runId}-058`, tekan Enter); langkah 6 (Ganti isi kotak Search dengan `FN None B {runId}-058`, tekan Enter); langkah 11 (Ganti isi kotak Search dengan `FN Assign {runId}-058`, tekan Enter); langkah 16 (Ganti isi kotak Search dengan `FN Renamed {runId}-058`, tekan Enter; Search `FN Assign {runId}-058` tidak lagi cocok dengan baris yang sudah diganti namanya); langkah 18 (Ganti isi kotak Search dengan `Disposal Edit Own {runId}-058`, tekan Enter); langkah 24 (Klik `(←)` pada kotak Search).
 - Temuan untuk QA:
   - TC-FA-GRP-185 Expected a menyebut "Field Function enabled" tanpa langkah observasi; spec mengasersi field Function enabled sebelum [Save] (Langkah Uji [Save] → [Save]).
   - TC-FA-GRP-185 Expected b "Record disposal lama tetap menunjuk Disposal Edit Own" tidak menyebut cara membaca; spec memakai fixture BE (disediakan tim FE/BE).

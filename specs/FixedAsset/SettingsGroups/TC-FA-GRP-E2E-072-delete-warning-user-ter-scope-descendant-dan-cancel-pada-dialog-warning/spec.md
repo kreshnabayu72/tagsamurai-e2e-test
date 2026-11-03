@@ -35,41 +35,47 @@ coverage:
 
 ### TC-FA-GRP-223: Screening dialog Warning Delete, user ter-scope
 
-5. Buka elipsis `⋯` baris `Del Users`, pilih `Delete`
-6. Verifikasi dialog dengan title "Delete Group", bullet `Del Users`, isi "This group has users assigned — deleting it will remove their group roles. This action cannot be undone. Are you sure you want to delete it?", tombol [Cancel] dan [Delete]
+5. Ketik Search `Del Users`, tekan Enter
+6. Buka elipsis `⋯` baris `Del Users`, pilih `Delete`
+7. Verifikasi dialog dengan title "Delete Group", bullet `Del Users`, isi "This group has users assigned — deleting it will remove their group roles. This action cannot be undone. Are you sure you want to delete it?", tombol [Cancel] dan [Delete]
 
 ### TC-FA-GRP-1033: [Cancel] pada dialog Warning
 
-7. Klik [Cancel] pada dialog
-8. Verifikasi dialog tertutup
-9. Verifikasi `Del Users` tetap ada di tabel
-10. Verifikasi `Del Users` tetap ada di sidebar
-11. Verifikasi tidak ada toast yang tampil
-12. Buka Settings > Role & Permission, pilih `User GR 1`
-13. Verifikasi Group Role `User GR 1` di `Del Users` tidak dicabut
-14. Klik icon Changelog
-15. Verifikasi jumlah entri Changelog `User GR 1` sama dengan baseline N0 (tanpa baris Delete baru)
-16. Tutup Changelog dan buka Fixed Asset > Settings > Groups
+8. Klik [Cancel] pada dialog
+9. Verifikasi dialog tertutup
+10. Verifikasi `Del Users` tetap ada di tabel
+11. Verifikasi `Del Users` tetap ada di sidebar
+12. Verifikasi tidak ada toast yang tampil
+13. Buka Settings > Role & Permission, pilih `User GR 1`
+14. Verifikasi Group Role `User GR 1` di `Del Users` tidak dicabut
+15. Klik icon Changelog
+16. Verifikasi jumlah entri Changelog `User GR 1` sama dengan baseline N0 (tanpa baris Delete baru)
+17. Tutup Changelog dan buka Fixed Asset > Settings > Groups
 
 ### TC-FA-GRP-224: Warning untuk user ter-scope di descendant, lalu commit
 
-17. Buka elipsis `⋯` baris `Del Users Parent`, pilih `Delete`
-18. Verifikasi dialog varian warning memuat himpunan node dan descendant: title "Delete Group", bullet `Del Users Parent` dan `Del Users Child`, isi "This group has users assigned — deleting it will remove their group roles. This action cannot be undone. Are you sure you want to delete it?"
-19. Klik [Delete] pada dialog warning
-20. Verifikasi toast sukses "Success, group has been deleted."
-21. Verifikasi `Del Users Parent` dan `Del Users Child` terhapus dari tabel dan sidebar
-22. Buka Settings > Role & Permission, pilih `User GR 3`
-23. Verifikasi assignment Group Role `User GR 3` terlepas
-24. Buka Settings > Role & Permission, pilih `User GM 1`
-25. Verifikasi assignment Group Manager `User GM 1` terlepas
-26. Buka Settings > Role & Permission, pilih `User TR 1`
-27. Verifikasi assignment Transaction Role `User TR 1` terlepas
+18. Ketik Search `Del Users Parent`, tekan Enter
+19. Buka elipsis `⋯` baris `Del Users Parent`, pilih `Delete`
+20. Verifikasi dialog varian warning memuat himpunan node dan descendant: title "Delete Group", bullet `Del Users Parent` dan `Del Users Child`, isi "This group has users assigned — deleting it will remove their group roles. This action cannot be undone. Are you sure you want to delete it?"
+21. Klik [Delete] pada dialog warning
+22. Verifikasi toast sukses "Success, group has been deleted."
+23. Verifikasi `Del Users Parent` dan `Del Users Child` terhapus dari tabel dan sidebar
+24. Buka Settings > Role & Permission, pilih `User GR 3`
+25. Verifikasi nama user `User GR 3` tampil pada detail user di Role & Permission
+26. Verifikasi assignment Group Role `User GR 3` terlepas
+27. Buka Settings > Role & Permission, pilih `User GM 1`
+28. Verifikasi nama user `User GM 1` tampil pada detail user di Role & Permission
+29. Verifikasi assignment Group Manager `User GM 1` terlepas
+30. Buka Settings > Role & Permission, pilih `User TR 1`
+31. Verifikasi nama user `User TR 1` tampil pada detail user di Role & Permission
+32. Verifikasi assignment Transaction Role `User TR 1` terlepas
 
 ## Notes
 
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 3 dan 4, 12, 14, 16, 22, 24, 26: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 3 dan 4, 13, 15, 17, 24, 27, 30: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
+- Pencarian baris target (S-03, R-16): langkah 5 dan 18 (Ketik Search `Del Users` dan `Del Users Parent`, tekan Enter) menemukan baris yang dibuka elipsisnya; Search kosong sesudah langkah 17 karena halaman Groups dibuka ulang; client memiliki lebih dari 10 node level 1 dan page size 10, jadi baris target tidak dijamin berada di halaman 1 All Groups.
 - Urutan: TC-223 dan TC-1033 memakai satu pembukaan dialog `Del Users` (diasersi lalu dibatalkan); Delete yang menghapus data (TC-224) paling akhir (S-10).
-- Klausa "tanpa toast dan tanpa baris Delete baru di Changelog" (TC-1033) diasersi pada langkah 11 dan 15; anchor positif: langkah 2 (entri lain tampil) dan langkah 9 (`Del Users` tetap ada). Baris hilang sesudah Delete memakai toast sukses sebagai anchor (8b butir 2).
+- Klausa "tanpa toast dan tanpa baris Delete baru di Changelog" (TC-1033) diasersi pada langkah 12 dan 16; anchor positif: langkah 2 (entri lain tampil) dan langkah 10 (`Del Users` tetap ada). Baris hilang sesudah Delete memakai toast sukses sebagai anchor (8b butir 2). Asersi "terlepas" pada langkah 26, 29, dan 32 didahului `Verifikasi` nama user tampil di Role & Permission (langkah 25, 28, 31) sebagai anchor permukaan (8b butir 2).
 - Temuan untuk QA:
   - TC-1033 langkah 5 ("Klik icon Changelog") tidak menyebut Changelog mana; spec memakai Changelog user pada Role & Permission sesuai langkah 4 TC. Changelog Group tidak diasersi.
   - TC-224 Expected c menyebut Transaction Role, sedangkan Precondition hanya menyebut user Group Role dan Group Manager; spec menambah `User TR 1` ber-Transaction Role di seeding supaya Expected c dapat diasersi.

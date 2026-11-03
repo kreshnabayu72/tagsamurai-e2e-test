@@ -24,6 +24,7 @@ coverage:
 - Jam server dan jam browser sinkron; Date entri log dibandingkan dengan waktu yang dicatat sesudah transaksi T-0 commit dengan toleransi satu menit (S-12).
 - Akun pelaku kedua: User B (Total Control client Wizard; email dan password disediakan tim FE, tidak tertulis di Pre-setup TC) menyimpan seleksi B lewat sesi API aktor (suite.md); User A adalah akun hook `before`. Kemampuan membaca System Log per user (User A dan User B) disediakan tim FE/BE tanpa endpoint karangan.
 - Baseline log: N0 (Modal Changelog: Group), A0 (Activity Log), SA0 (System Log User A), SB0 (System Log User B) dicatat pada langkah 3, 5, dan 6, sebelum aksi pemicu pertama yang diasersi (S-12).
+- Baseline N1 (Modal Changelog: Group) dicatat sebelum pemicu T-0 siklus 2 (TC-990) dan dibandingkan sesudah T-0 (S-12).
 - Untuk siklus 2 (TC-990) hook mengatur enam group `G1` (terlama) sampai `G6` dibuat berurutan, cap 3, seleksi G4, G5, G6 sudah diterapkan, dan downgrade berikutnya dijadwalkan (cap baru 2), T-30 berjalan; keadaan dipulihkan lewat fixture BE sebagai langkah penghubung.
 
 ## Test Steps
@@ -56,33 +57,36 @@ coverage:
 21. Verifikasi Date entri sesuai waktu penerapan di T-0 (toleransi satu menit)
 22. Klik `(←)` pada kotak Search, lalu tutup Modal Changelog: Group
 23. Verifikasi entri Activity Log `Marked as Excess (Group Consolidation)` untuk ketiga group tersebut (dibaca lewat kemampuan baca)
-24. Verifikasi System Log User B memuat entri untuk penerapan seleksi di T-0
-25. Verifikasi System Log User A tidak bertambah (sama dengan SA0)
+24. Verifikasi jumlah entri System Log User B bertambah dibanding baseline SB0
+25. Verifikasi System Log User B memuat entri untuk penerapan seleksi di T-0
+26. Verifikasi System Log User A tidak bertambah (sama dengan SA0)
 
 ### TC-FA-GRP-990: Siklus downgrade berikutnya memulai siklus baru
 
-26. Pulihkan state siklus 2 lewat fixture BE: G1 sampai G6, cap 3, seleksi G4, G5, G6 diterapkan (G1, G2, G3 Excess), downgrade berikutnya dijadwalkan (cap baru 2), customer belum submit
-27. Buka Wizard Reconciliation > Step Group Consolidation
-28. Verifikasi seleksi siklus 1 dibuang dan Wizard memuat seluruh 6 group (termasuk G1 sampai G3 yang Excess)
-29. Verifikasi seluruh checkbox unchecked
-30. Klik [Cancel]
-31. Picu hook uji handler plan-efektif pada tanggal T-0 downgrade terjadwal di lingkungan non-produksi, tunggu transaksi T-0 commit
-32. Buka Fixed Asset > Settings > Groups
-33. Verifikasi `G1` dan `G2` (terlama) usable
-34. Verifikasi `G3` sampai `G6` berstatus Excess
-35. Buka Modal Changelog: Group, lalu ketik Search `{runId}-281`, tekan Enter
-36. Verifikasi `G1` dan `G2` memiliki entri Action `Restored from Excess (Group Consolidation)`
-37. Verifikasi `G4`, `G5`, dan `G6` memiliki entri Action `Marked as Excess (Group Consolidation)`
-38. Verifikasi `G3` tanpa entri baru pada siklus ini
-39. Verifikasi Modified By seluruh entri baru = System
-40. Klik `(←)` pada kotak Search, lalu tutup Modal Changelog: Group
+27. Pulihkan state siklus 2 lewat fixture BE: G1 sampai G6, cap 3, seleksi G4, G5, G6 diterapkan (G1, G2, G3 Excess), downgrade berikutnya dijadwalkan (cap baru 2), customer belum submit
+28. Buka Wizard Reconciliation > Step Group Consolidation
+29. Verifikasi seleksi siklus 1 dibuang dan Wizard memuat seluruh 6 group (termasuk G1 sampai G3 yang Excess)
+30. Verifikasi seluruh checkbox unchecked
+31. Klik [Cancel]
+32. Catat jumlah entri Modal Changelog: Group sebagai baseline N1 (kemampuan baca disediakan tim FE/BE)
+33. Picu hook uji handler plan-efektif pada tanggal T-0 downgrade terjadwal di lingkungan non-produksi, tunggu transaksi T-0 commit
+34. Buka Fixed Asset > Settings > Groups
+35. Verifikasi `G1` dan `G2` (terlama) usable
+36. Verifikasi `G3` sampai `G6` berstatus Excess
+37. Buka Modal Changelog: Group, lalu ketik Search `{runId}-281`, tekan Enter
+38. Verifikasi `G1` dan `G2` memiliki entri Action `Restored from Excess (Group Consolidation)`
+39. Verifikasi `G4`, `G5`, dan `G6` memiliki entri Action `Marked as Excess (Group Consolidation)`
+40. Verifikasi `G3` tanpa entri baru pada siklus ini
+41. Verifikasi Modified By seluruh entri baru = System
+42. Klik `(←)` pada kotak Search, lalu tutup Modal Changelog: Group
+43. Verifikasi jumlah entri Modal Changelog: Group bertambah 5 dibanding baseline N1 (2 Restored dan 3 Marked; kemampuan baca)
 
 ## Notes
 
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 3 sampai 7, 10 sampai 12, 14, 17 sampai 19, 22, 26 dan 27, 30 sampai 32, 35, 40: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 3 sampai 12, 14, 17 sampai 19, 22, 27, 28, 31 sampai 34, 37, 42: mencatat baseline, menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
 - Dua TC memakai kelas h (T-0 penerapan seleksi) dengan pemicu hook uji; User B hanya memicu perubahan state lewat sesi API dan bukan konteks kedua (P-2 2026-10-30, tanpa butir Notes).
-- Klausa "tidak ada baris Marked/Restored baru" sebelum T-0 (TC-989 Expected a) diasersi pada langkah 13, 15, dan seterusnya dengan baseline jumlah entri; anchor positif: langkah 2 (entri lain tampil) dan toast/penyimpanan seleksi. Absence `G3` tanpa baris baru (TC-990) didahului entri `G1` dan `G2` pada Changelog (anchor, 8b butir 2). Absence System Log User A didahului entri System Log User B (langkah 24).
-- Spec berisi lebih dari 35 langkah. Alasan: dua TC satu kelas (h, penerapan T-0) dan berdiri sendiri; sekitar 17 langkah adalah penghubung seeding, pemicu T-0, dan pembacaan log berpola, bukan asersi baru.
+- Klausa "tidak ada baris Marked/Restored baru" sebelum T-0 (TC-989 Expected a) diasersi pada langkah 13, 15, dan seterusnya dengan baseline jumlah entri; anchor positif: langkah 2 (entri lain tampil) dan toast/penyimpanan seleksi. Absence `G3` tanpa baris baru (TC-990) didahului entri `G1` dan `G2` pada Changelog (anchor, 8b butir 2). Absence System Log User A didahului entri System Log User B (langkah 25); selisih System Log User B (langkah 24) dan Changelog TC-990 (langkah 43) terhadap baseline SB0 dan N1 (S-12).
+- Spec berisi lebih dari 35 langkah. Alasan: dua TC satu kelas (h, penerapan T-0) dan berdiri sendiri; 24 langkah adalah penghubung seeding, pemicu T-0, dan pembacaan log berpola, bukan asersi baru.
 - P-1 (state berat): TC-990 memakai siklus 1 yang dibangun lewat fixture BE; pembangunan ulang state dilakukan di langkah penghubung.
 - Temuan untuk QA:
   - TC-989 Expected c tidak menyebut surface System Log (halaman mana) maupun cara membuka System Log User A dan User B; spec memakai kemampuan baca disediakan tim FE/BE.

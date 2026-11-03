@@ -34,53 +34,59 @@ coverage:
 2. Verifikasi sedikitnya satu entri tampil di Modal Changelog: Group
 3. Catat jumlah entri Modal Changelog: Group sebagai baseline N0 (jumlah total pada footer pagination)
 4. Tutup Modal Changelog: Group
-5. Buka elipsis `⋯` baris `Del Empty` pada tabel, pilih `Delete`
-6. Verifikasi dialog dengan title "Delete Group", bullet `Del Empty`, isi "Are you sure you want to delete it? This action cannot be undone.", tombol [Cancel] dan [Delete]
-7. Klik [Cancel]
-8. Verifikasi dialog tertutup
-9. Verifikasi `Del Empty` tetap ada di tabel
-10. Verifikasi tidak ada toast yang tampil
-11. Buka Modal Changelog: Group
-12. Verifikasi jumlah entri Modal Changelog: Group sama dengan baseline N0
-13. Tutup Modal Changelog: Group
+5. Ketik Search `Del Empty`, tekan Enter
+6. Buka elipsis `⋯` baris `Del Empty` pada tabel, pilih `Delete`
+7. Verifikasi dialog dengan title "Delete Group", bullet `Del Empty`, isi "Are you sure you want to delete it? This action cannot be undone.", tombol [Cancel] dan [Delete]
+8. Klik [Cancel]
+9. Verifikasi dialog tertutup
+10. Verifikasi `Del Empty` tetap ada di tabel
+11. Verifikasi tidak ada toast yang tampil
+12. Buka Modal Changelog: Group
+13. Verifikasi jumlah entri Modal Changelog: Group sama dengan baseline N0
+14. Tutup Modal Changelog: Group
 
 ### TC-FA-GRP-221: Delete via elipsis sidebar
 
-14. Buka elipsis node `Del Sidebar` di sidebar, pilih `Delete`
-15. Verifikasi dialog identik dengan dialog row action: title "Delete Group", bullet `Del Sidebar`, isi "Are you sure you want to delete it? This action cannot be undone.", tombol [Cancel] dan [Delete]
-16. Klik [Delete]
-17. Verifikasi toast sukses "Success, group has been deleted."
+15. Buka elipsis node `Del Sidebar` di sidebar, pilih `Delete`
+16. Verifikasi dialog identik dengan dialog row action: title "Delete Group", bullet `Del Sidebar`, isi "Are you sure you want to delete it? This action cannot be undone.", tombol [Cancel] dan [Delete]
+17. Klik [Delete]
+18. Verifikasi toast sukses "Success, group has been deleted."
 
 ### TC-FA-GRP-239: Delete Disposal Group berisi aset Disposed
 
-18. Buka elipsis `⋯` baris `Disposal Del Own`, pilih `Delete`
-19. Verifikasi dialog konfirmasi normal: title "Delete Group", bullet `Disposal Del Own`, isi "Are you sure you want to delete it? This action cannot be undone." (aset Disposed tidak memblokir)
-20. Klik [Delete]
-21. Verifikasi toast sukses "Success, group has been deleted."
-22. Verifikasi aset Disposed milik `Disposal Del Own` tetap ada dan kolom group-nya kosong (dibaca lewat fixture BE)
+19. Ganti isi kotak Search dengan `Disposal Del Own`, tekan Enter
+20. Buka elipsis `⋯` baris `Disposal Del Own`, pilih `Delete`
+21. Verifikasi dialog konfirmasi normal: title "Delete Group", bullet `Disposal Del Own`, isi "Are you sure you want to delete it? This action cannot be undone." (aset Disposed tidak memblokir)
+22. Klik [Delete]
+23. Verifikasi toast sukses "Success, group has been deleted."
+24. Verifikasi aset Disposed milik `Disposal Del Own` tetap ada dan kolom group-nya kosong (dibaca lewat fixture BE)
 
 ### TC-FA-GRP-219: Delete node kosong, happy path
 
-23. Buka elipsis `⋯` baris `Del Empty`, pilih `Delete`
-24. Klik [Delete]
-25. Verifikasi dialog tertutup
-26. Verifikasi toast sukses "Success, group has been deleted."
-27. Verifikasi `Del Empty` hilang dari tabel
-28. Verifikasi `Del Empty` hilang dari sidebar
+25. Ganti isi kotak Search dengan `Del Empty`, tekan Enter
+26. Buka elipsis `⋯` baris `Del Empty`, pilih `Delete`
+27. Klik [Delete]
+28. Verifikasi dialog tertutup
+29. Verifikasi toast sukses "Success, group has been deleted."
+30. Verifikasi `Del Empty` hilang dari tabel
+31. Verifikasi `Del Empty` hilang dari sidebar
 
 ### TC-FA-GRP-222: Delete node dengan subtree kosong, cascade seluruh descendant
 
-29. Buka elipsis `⋯` baris `Cascade A`, pilih `Delete`
-30. Klik [Delete]
-31. Verifikasi toast sukses "Success, group has been deleted."
-32. Verifikasi `Cascade A`, `Cascade B`, dan `Cascade C` hilang dari tree sidebar
+32. Ganti isi kotak Search dengan `Cascade A`, tekan Enter
+33. Buka elipsis `⋯` baris `Cascade A`, pilih `Delete`
+34. Klik [Delete]
+35. Verifikasi toast sukses "Success, group has been deleted."
+36. Verifikasi `Cascade A`, `Cascade B`, dan `Cascade C` hilang dari tree sidebar
 
 ## Notes
 
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 3 dan 4, 11, 13: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1, 3 dan 4, 12, 14: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
+- Pencarian baris target (S-03, R-16): langkah 5, 19, 25, 32 (Ketik atau ganti isi kotak Search dengan `Del Empty`, `Disposal Del Own`, `Del Empty`, dan `Cascade A`, tekan Enter) menemukan baris yang dibuka elipsisnya; client memiliki lebih dari 10 node level 1 dan page size 10, jadi baris target tidak dijamin berada di halaman 1 All Groups.
 - Urutan: non-destruktif dan batal lebih dulu (TC-218, TC-220, TC-221 sidebar), lalu TC-239, dan Delete yang menghapus data paling akhir (TC-219, TC-222) sesuai S-10. TC-218 dan TC-220 memakai satu pembukaan dialog `Del Empty` yang sama (dialog dibuka sekali, diasersi, lalu dibatalkan); TC-219 membuka dialog baru.
-- Klausa "tanpa toast, tanpa log" TC-220 diasersi pada langkah 10 dan 12 dengan baseline N0 (S-12); anchor positif: langkah 2 (entri lain tampil) dan langkah 9 (`Del Empty` tetap ada). Baris hilang pada langkah 27, 28, dan 32 memakai toast sukses sebagai anchor (8b butir 2).
-- Langkah 22 (Verifikasi aset Disposed tetap ada) dipakai untuk Expected c TC-239; kemampuan baca state aset disediakan tim FE/BE (S-11).
+- Spec berisi lebih dari 35 langkah. Alasan: lima TC Delete satu keluarga (dialog konfirmasi dan Delete node tanpa blokir), satu kelas (fungsional), satu dataset seed milik spec, dan tiap blok berdiri sendiri; langkah Search baris target dan baca-log berpola bukan asersi baru (bagian 3 prinsip 13).
+- Klausa "tanpa toast, tanpa log" TC-220 diasersi pada langkah 11 dan 13 dengan baseline N0 (S-12); anchor positif: langkah 2 (entri lain tampil) dan langkah 10 (`Del Empty` tetap ada). Baris hilang pada langkah 30, 31, dan 36 memakai toast sukses sebagai anchor (8b butir 2).
+- Langkah 24 (Verifikasi aset Disposed tetap ada) dipakai untuk Expected c TC-239; kemampuan baca state aset disediakan tim FE/BE (S-11).
 - Temuan untuk QA:
   - TC-219 dan TC-222: Post Condition (baris Changelog Delete dan count group turun 1; 3 baris Delete cascade dengan Modified By = aktor) tidak punya langkah observasi di TC, sehingga tidak diasersi (S-01).
   - TC-239: Post Condition (nama Disposal Del Own terbaca di Disposal Log/Changelog sebagai snapshot) tidak punya langkah observasi; tidak diasersi.

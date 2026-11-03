@@ -25,7 +25,7 @@ coverage:
 
 ## Test Steps
 
-1. Klik angka Total User Warehouse A
+1. Ketik Search `Warehouse A`, tekan Enter, lalu klik angka Total User Warehouse A
 2. Klik icon Filter
 
 ### TC-594: Dua opsi (OR)
@@ -60,24 +60,28 @@ coverage:
 24. Tutup dropdown
 25. Verifikasi chip B tetap ada
 26. Klik [Apply]
-27. Verifikasi tabel hanya menyaring Division = opsi B
-28. Buka Filter, klik [Clear Field], klik [Apply]
-29. Klik icon Filter
+27. Verifikasi sedikitnya satu baris tampil pada tabel
+28. Verifikasi tabel hanya menyaring Division = opsi B
+29. Buka Filter, klik [Clear Field], klik [Apply]
+30. Klik icon Filter
 
 ### TC-597: Chip Division dihapus via uncheck
 
-30. Buka dropdown Division
-31. Centang opsi A lalu opsi B pada Division
-32. Buka lagi dropdown dan uncheck opsi A dari dalam dropdown
-33. Verifikasi chip A hilang dari field
-34. Verifikasi chip B tetap ada
-35. Klik [Apply]
-36. Verifikasi tabel hanya menyaring Division = opsi B
-37. Buka Filter, klik [Clear Field], klik [Apply]
+31. Buka dropdown Division
+32. Centang opsi A lalu opsi B pada Division
+33. Buka lagi dropdown dan uncheck opsi A dari dalam dropdown
+34. Verifikasi chip A hilang dari field
+35. Verifikasi chip B tetap ada
+36. Klik [Apply]
+37. Verifikasi sedikitnya satu baris tampil pada tabel
+38. Verifikasi tabel hanya menyaring Division = opsi B
+39. Buka Filter, klik [Clear Field], klik [Apply]
 
 ## Notes
 
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03): menutup dropdown, membuka dropdown untuk memeriksa checkbox opsi A pada TC-596, serta `Buka Filter, klik [Clear Field], klik [Apply]` antar TC (S-09).
-- Spec memiliki 37 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik (Filter Division Tab Users pada dataset yang sama), tiap TC berdiri sendiri, dan TC-596 memuat 12 langkah karena Expected b memeriksa chip dan checkbox.
+- Spec memiliki 39 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik (Filter Division Tab Users pada dataset yang sama), tiap TC berdiri sendiri, dan TC-596 memuat 13 langkah karena Expected b memeriksa chip dan checkbox.
+- Asersi tambahan (S-03, 8b.2): `Verifikasi sedikitnya satu baris tampil pada tabel` ditambahkan sebelum asersi hasil Filter yang bersifat universal ("hanya menyaring ...") pada langkah 28 dan 38 agar asersi tidak vacuous; bukan klausa Expected TC.
+- Baris `Warehouse A` dicari lewat Search sebelum klik angka Total User (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan; Refresh F5 membuang Search sehingga Search diketik ulang). Langkah Search digabung ke langkah klik angka dan dihitung langkah penghubung (S-03, S-14, R-16).
 - Temuan untuk QA:
   - Tabel Data Uji untuk variasi baris Tab Users tidak punya tabel konkret di TC (hanya `>= 12 user variasi role`); spec mendefinisikan kebutuhan nilai distinct di Prerequisites.

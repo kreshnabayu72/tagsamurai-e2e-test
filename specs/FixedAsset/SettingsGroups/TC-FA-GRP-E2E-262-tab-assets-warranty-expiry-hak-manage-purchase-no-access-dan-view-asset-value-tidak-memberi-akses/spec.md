@@ -33,48 +33,55 @@ coverage:
 
 ### TC-FA-GRP-1222: Pemegang Manage purchase melihat tanggal Warranty
 
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Verifikasi header tabel default tidak memuat kolom Warranty Expiry
-3. Buka Popup Setup Column
-4. Verifikasi kolom Warranty Expiry di Popup Setup Column berstatus curated (unchecked, enabled)
-5. Centang kolom Warranty Expiry, klik [Save]
-6. Verifikasi G6 = 01/01/2026, G2 = 20/01/2027, G1 = 15/03/2027, G4 = 20/05/2028 (format dan timezone General Settings)
-7. Hover sel G6
-8. Verifikasi G6 (tanggal lampau) tampil penuh dengan penanda danger dan tooltip "Warranty expired"
-9. Verifikasi G3 dan G5 (belum ada nilai) menampilkan `—`
-10. Verifikasi tidak ada sel `No access` pada Value Gate Node A
-11. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
+1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Verifikasi header tabel default tidak memuat kolom Warranty Expiry
+4. Buka Popup Setup Column
+5. Verifikasi kolom Warranty Expiry di Popup Setup Column berstatus curated (unchecked, enabled)
+6. Centang kolom Warranty Expiry, klik [Save]
+7. Verifikasi G6 = 01/01/2026, G2 = 20/01/2027, G1 = 15/03/2027, G4 = 20/05/2028 (format dan timezone General Settings)
+8. Hover sel G6
+9. Verifikasi G6 (tanggal lampau) tampil penuh dengan penanda danger dan tooltip "Warranty expired"
+10. Verifikasi G3 dan G5 (belum ada nilai) menampilkan `—`
+11. Verifikasi tidak ada sel `No access` pada Value Gate Node A
+12. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
 
 ### TC-FA-GRP-1223: Pemegang Manage purchase di group lain melihat No access
 
-12. Buka Detail Value Gate Node B (Tab Assets)
-13. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
-14. Verifikasi kolom Warranty Expiry tetap tersedia
-15. Verifikasi B1, B2, dan B3 menampilkan `No access` (bukan 01/06/2027 dan bukan `—`)
-16. Hover sel `No access`
-17. Verifikasi tooltip "Requires Manage purchase access in this group."
-18. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
+13. Tutup Popup Detail Group
+14. Ganti isi kotak Search Groups List dengan `Value Gate Node B`, tekan Enter
+15. Buka Detail Value Gate Node B (Tab Assets)
+16. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
+17. Verifikasi kolom Warranty Expiry tetap tersedia
+18. Verifikasi B1, B2, dan B3 menampilkan `No access` (bukan 01/06/2027 dan bukan `—`)
+19. Hover sel `No access`
+20. Verifikasi tooltip "Requires Manage purchase access in this group."
+21. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
 
 ### TC-FA-GRP-1224: View asset value dan Manage accounting tidak memberi akses Warranty
 
-19. Logout
-20. Login sebagai akun viewAssetValueGroups
-21. Buka Detail Value Gate Node A (Tab Assets)
-22. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
-23. Verifikasi G1 sampai G6 seluruhnya menampilkan `No access` (termasuk G3 dan G5 yang tidak punya nilai)
-24. Hover salah satu sel `No access`
-25. Verifikasi tooltip "Requires Manage purchase access in this group."
-26. Verifikasi tidak ada tanggal Warranty yang tampil
-27. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
-28. Logout
-29. Login sebagai akun manageAccountingGroups
-30. Buka Detail Value Gate Node A (Tab Assets)
-31. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
-32. Verifikasi G1 sampai G6 seluruhnya menampilkan `No access` (termasuk G3 dan G5 yang tidak punya nilai)
-33. Hover salah satu sel `No access`
-34. Verifikasi tooltip "Requires Manage purchase access in this group."
-35. Verifikasi tidak ada tanggal Warranty yang tampil
-36. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
+22. Logout
+23. Login sebagai akun viewAssetValueGroups
+24. Buka Fixed Asset > Settings > Groups
+25. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+26. Buka Detail Value Gate Node A (Tab Assets)
+27. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
+28. Verifikasi G1 sampai G6 seluruhnya menampilkan `No access` (termasuk G3 dan G5 yang tidak punya nilai)
+29. Hover salah satu sel `No access`
+30. Verifikasi tooltip "Requires Manage purchase access in this group."
+31. Verifikasi tidak ada tanggal Warranty yang tampil
+32. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
+33. Logout
+34. Login sebagai akun manageAccountingGroups
+35. Buka Fixed Asset > Settings > Groups
+36. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+37. Buka Detail Value Gate Node A (Tab Assets)
+38. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
+39. Verifikasi G1 sampai G6 seluruhnya menampilkan `No access` (termasuk G3 dan G5 yang tidak punya nilai)
+40. Hover salah satu sel `No access`
+41. Verifikasi tooltip "Requires Manage purchase access in this group."
+42. Verifikasi tidak ada tanggal Warranty yang tampil
+43. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
 
 ## Notes
 
@@ -82,4 +89,6 @@ coverage:
 - Penanda warna Warranty (TC-1222 butir b) diasersi sebagai danger beserta tooltip "Warranty expired" untuk G6; penanda G1, G2, dan G4 tidak diasersi di spec ini karena tanggal tetap; pengujian penanda masa garansi dengan tanggal relatif hari uji ada di spec 264 dan 265.
 - Langkah penghubung (S-03): menghilangkan centang Warranty Expiry pada akhir tiap blok.
 - Alasan di atas ~35 langkah: tiga akun pada satu dataset (kolom Warranty Expiry); tiap blok berdiri sendiri dan blok sesudah ganti akun tetap bermakna.
+- Langkah penghubung (S-03, S-14): `Buka Fixed Asset > Settings > Groups` sesudah tiap login akun lain karena hook `beforeEach` hanya membuka halaman untuk akun pertama.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A`, `Value Gate Node B`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:

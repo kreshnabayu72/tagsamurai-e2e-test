@@ -29,33 +29,36 @@ coverage:
 ## Test Steps
 
 ### TC-1274: Filter Panel Custom Field bertipe Text, Text Area, Phone, Email, URL, Document tidak punya field Filter
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Buka Popup Setup Column
-3. Verifikasi kolom Contact Email, Cost Center, dan Computed Total ada di daftar Popup Setup Column
-4. Centang kolom Contact Email, Cost Center, dan Computed Total, klik [Save]
-5. Klik icon Filter
-6. Verifikasi Filter Panel tidak memuat field Contact Email (Email) maupun Cost Center (Text)
-7. Verifikasi tidak ada field untuk Computed Total (Formula)
-8. Tutup Filter Panel; ketik Search `b@x.com`, tekan Enter
-9. Verifikasi G2 tampil (kolom Contact Email tetap dapat dicari lewat Search)
+1. Ketik Search `Value Gate Node A {runId}-272` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Buka Popup Setup Column
+4. Verifikasi kolom Contact Email, Cost Center, dan Computed Total ada di daftar Popup Setup Column
+5. Centang kolom Contact Email, Cost Center, dan Computed Total, klik [Save]
+6. Klik icon Filter
+7. Verifikasi Filter Panel tidak memuat field Contact Email (Email) maupun Cost Center (Text)
+8. Verifikasi tidak ada field untuk Computed Total (Formula)
+9. Tutup Filter Panel; ketik Search `b@x.com`, tekan Enter
+10. Verifikasi G2 tampil (kolom Contact Email tetap dapat dicari lewat Search)
 ### TC-1275: Kolom Custom Field bertipe Formula (Computed Total) tanpa Search, Sort, maupun Filter
-10. Klik `(←)` pada kotak Search
-11. Verifikasi header kolom Computed Total tanpa icon Sort
-12. Ketik Search `500`, tekan Enter
-13. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter." (hasil formula G2 tidak menemukan baris dari kolom ini)
-14. Klik icon Filter
-15. Verifikasi Filter Panel tidak memuat field Computed Total
+11. Klik `(←)` pada kotak Search
+12. Verifikasi header kolom Computed Total tanpa icon Sort
+13. Ketik Search `500`, tekan Enter
+14. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter." (hasil formula G2 tidak menemukan baris dari kolom ini)
+15. Klik icon Filter
+16. Verifikasi Filter Panel tidak memuat field Computed Total
 ### TC-1276: Filter pada kolom Custom Field bergerbang: baris `No access` tidak cocok dengan filter apa pun
-16. Ganti akun: Logout, login sebagai managePurchaseGroups (`managePurchaseGroups_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_GRP_MANAGEPURCHASE_PASSWORD`), buka Fixed Asset > Settings > Groups
-17. Buka Detail Value Gate Node B (Tab Assets)
-18. Klik icon Filter; pada field Purchase Date pilih rentang 01/01/2020-31/12/2035, klik [Apply]
-19. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter." (Purchase Date B1-B3 `No access` tidak cocok filter apa pun)
+17. Ganti akun: Logout, login sebagai managePurchaseGroups (`managePurchaseGroups_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_GRP_MANAGEPURCHASE_PASSWORD`), buka Fixed Asset > Settings > Groups
+18. Ketik Search `Value Gate Node B {runId}-272` pada Groups List, tekan Enter
+19. Buka Detail Value Gate Node B (Tab Assets)
+20. Klik icon Filter; pada field Purchase Date pilih rentang 01/01/2020-31/12/2035, klik [Apply]
+21. Verifikasi empty state Illustration, title "No results found", body "Try adjusting your search or filter." (Purchase Date B1-B3 `No access` tidak cocok filter apa pun)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): pada TC-1274, Popup Setup Column dibuka dan ketiga kolom dicentang sebelum Filter Panel dibuka (urutan langkah TC dibalik karena kolom harus tampil dahulu); "Tutup Filter Panel" sebelum Search; satu langkah Ganti akun sebelum TC-1276.
 - Asersi tambahan (S-03): `Verifikasi` Search `b@x.com` menampilkan G2 pada TC-1274 menerjemahkan klausa Expected a "kolom tetap dapat dicari lewat Search", yang tidak punya langkah di TC; nilai `b@x.com` dari TC-1268. `Verifikasi` ketiga kolom ada di Popup Setup Column adalah anchor positif untuk asersi absence field Filter (8b butir 2).
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A {runId}-272`, `Value Gate Node B {runId}-272`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1274 langkah 4 dan Expected a tidak menjelaskan cara membuktikan "kolom tetap dapat dicari lewat Search"; spec menambah langkah Search seperti di atas.
   - TC-1275 Expected b "tidak menemukan baris dari kolom ini" tidak menyebut keyword; spec memakai hasil formula G2 (Usage Hours 250 x 2 = 500) dan mengasumsikan empty state karena kolom lain tidak memuat `500`.

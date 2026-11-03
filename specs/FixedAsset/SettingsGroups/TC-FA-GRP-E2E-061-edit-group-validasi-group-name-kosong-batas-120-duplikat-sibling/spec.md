@@ -65,23 +65,24 @@ coverage:
 18. Verifikasi tidak ada error panjang pada Group Name
 19. Klik [Save]
 20. Verifikasi toast sukses `Success, group has been updated.`
-21. Ketik Search string 120 karakter tersebut, tekan Enter
+21. Ganti isi kotak Search dengan string 120 karakter tersebut, tekan Enter
 22. Verifikasi nama 120 karakter tersimpan utuh pada baris hasil Search
 
 ### TC-FA-GRP-195: Group Name sama dengan group di parent lain diterima
 
 23. Buka elipsis (⋯) baris hasil Search (node target yang kini bernama 120 karakter), lalu klik Edit
 24. Ganti isi Group Name dengan `Nama Bersama {runId}-061` (nama yang sudah dipakai node di parent berbeda)
-25. Verifikasi tidak ada error duplikat (keunikan per parent)
-26. Klik [Save]
-27. Verifikasi toast sukses `Success, group has been updated.`
-28. Klik `(←)` pada kotak Search
+25. Tunggu ±500 ms tanpa blur
+26. Verifikasi tidak ada error duplikat (keunikan per parent)
+27. Klik [Save]
+28. Verifikasi toast sukses `Success, group has been updated.`
+29. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: validasi yang diblokir lebih dulu (TC-FA-GRP-191, 193, 194), lalu aksi sukses (TC-FA-GRP-192, 195) sesuai S-10; berbeda dari urutan nomor TC sumber. TC-FA-GRP-195 mengedit node target yang sama setelah diubah TC-FA-GRP-192 (data milik spec ini).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-061`, tekan Enter); langkah 9 (Klik [Save] (memeriksa "Submit tidak tersimpan selama error")); langkah 12 (Tunggu ±500 ms tanpa blur); langkah 14 (Klik [Save] (memeriksa "[Save] tidak menyimpan data")); langkah 21 (Ketik Search string 120 karakter tersebut, tekan Enter); langkah 28 (Klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-061`, tekan Enter); langkah 9 (Klik [Save] (memeriksa "Submit tidak tersimpan selama error")); langkah 12 (Tunggu ±500 ms tanpa blur); langkah 14 (Klik [Save] (memeriksa "[Save] tidak menyimpan data")); langkah 21 (Ganti isi kotak Search dengan string 120 karakter tersebut, tekan Enter); langkah 29 (Klik `(←)` pada kotak Search). Langkah 25 (Tunggu ±500 ms tanpa blur) memberi waktu debounce sebelum absence error duplikat.
 - Langkah 1 dan Search sesudah TC-FA-GRP-192 mencari baris target (R-16).
 - Pembanding TC-FA-GRP-195 memakai node milik spec (`Nama Bersama {runId}-061`) menggantikan contoh `IT Department` Pre-setup (S-06, S-12).
 - Temuan untuk QA:

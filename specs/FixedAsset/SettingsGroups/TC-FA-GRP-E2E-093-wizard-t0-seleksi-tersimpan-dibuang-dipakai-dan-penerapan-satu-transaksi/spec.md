@@ -24,8 +24,9 @@ coverage:
 - Login di hook `before` spec ini sebagai Total Control client Wizard (Pre-setup No 8: plan dijadwalkan downgrade Professional ke Growth, cap 3, T-30 berjalan, client punya 6 group; email dan `Spectra.env.FA_WIZ_TC_PASSWORD` disediakan tim FE, tidak tertulis di Pre-setup TC); halaman Fixed Asset > Settings > Groups dibuka hook `beforeEach` suite. Hook suite (flag Guided Tooltip, sesi API aktor, klien HTTP, fixture BE) mengikuti `suite.md`; hook `after` mengembalikan sesi ke akun default suite. Suite berjalan serial (`parallel: false`).
 - Nama data Dinamis di Test Steps ditulis tanpa suffix; nilai sebenarnya `<nama> {runId}-NNN` (NNN = nomor spec ini) dan sama di seeding, asersi teks, dan cleanup. Nilai mengacu `Fixture.fixedAssetSettingsGroups.<kunci>` (berkas `fixtures/fixedAssetSettingsGroups.json` belum ada; ditambahkan tim FE).
 - State tenant (kelas h): plan dijadwalkan downgrade. Hook `after` memulihkan plan terjadwal, seleksi tersimpan, dan status Excess lewat fixture BE (disediakan tim FE/BE). Hook uji handler plan-efektif pada T-0 (pemicu, bukan objek uji) disediakan tim FE/BE tanpa endpoint karangan. Suite berjalan serial.
-- Data Dinamis (di-seed ulang per blok lewat fixture BE, kosong tanpa aset): blok TC-312 dan TC-1051 memakai group `G1` sampai `G6` dan `Warehouse B`; blok TC-313: seleksi tersimpan 3 group lalu `New After` dibuat sebelum T-0; blok TC-314: seleksi `G1`, `G2`, `G3`, lalu `G3` dihapus sebelum T-0 (count masih di atas cap); blok TC-315 sampai TC-317: seleksi dan cap sesuai blok. Seleksi Wizard tersimpan dan perubahan cap dilakukan fixture BE (disediakan tim FE/BE).
+- Data Dinamis (di-seed ulang per blok lewat fixture BE, kosong tanpa aset): blok TC-312 memakai group `G1` sampai `G6`; blok TC-1051 memakai group `Sync G1` sampai `Sync G5` dan `Sync Warehouse B` (enam group; `Sync G4`, `Sync G5`, dan `Sync Warehouse B` tidak dicentang), nama berbeda dari blok lain supaya baris log dicari lewat nama; blok TC-313: seleksi tersimpan 3 group lalu `New After` dibuat sebelum T-0; blok TC-314: seleksi `Del G1`, `Del G2`, `Del G3`, lalu `Del G3` dihapus sebelum T-0 (count masih di atas cap); blok TC-315 sampai TC-317: seleksi dan cap sesuai blok. Seleksi Wizard tersimpan dan perubahan cap dilakukan fixture BE (disediakan tim FE/BE).
 - Kemampuan teknis (disediakan tim FE/BE): membaca jumlah entri Modal Changelog: Group, Activity Log, dan System Log aktor sebelum dan sesudah aksi (audit trail permanen; 8b butir 10).
+- Baseline log TC-FA-GRP-1051: N1 dan A1 = jumlah entri Modal Changelog: Group dan Activity Log yang dicatat pada langkah 33, sebelum pemicu T-0 (S-12).
 - Jam server dan jam browser sinkron; Date entri log dibandingkan dengan waktu yang dicatat sesudah transaksi T-0 commit dengan toleransi satu menit (S-12).
 - Pemicu T-0 (perubahan cap langsung, T-0 = saat disimpan, atau hook uji) dan pembatalan downgrade di Admin Console disediakan tim FE/BE tanpa endpoint karangan. Sesi A (TC-1051) adalah akun hook `before`.
 
@@ -48,11 +49,11 @@ coverage:
 
 ### TC-FA-GRP-314: Group tercentang yang dihapus sebelum T-0 tidak diisi otomatis
 
-10. Seed ulang: seleksi `G1`, `G2`, `G3`; `G3` dihapus sebelum T-0; count masih di atas cap
+10. Seed ulang: seleksi `Del G1`, `Del G2`, `Del G3`; `Del G3` dihapus sebelum T-0; count masih di atas cap
 11. Picu hook uji handler plan-efektif pada tanggal T-0 downgrade terjadwal di lingkungan non-produksi, tunggu transaksi T-0 commit
 12. Buka Fixed Asset > Settings > Groups
-13. Verifikasi hanya `G1` dan `G2` usable
-14. Verifikasi slot `G3` tidak diisi group lain (group lain berstatus Excess)
+13. Verifikasi hanya `Del G1` dan `Del G2` usable
+14. Verifikasi slot `Del G3` tidak diisi group lain (group lain berstatus Excess)
 
 ### TC-FA-GRP-315: Downgrade terjadwal dibatalkan, seleksi dibuang
 
@@ -79,31 +80,39 @@ coverage:
 
 ### TC-FA-GRP-1051: T-0 diterapkan Sync dalam satu transaksi
 
-29. Seed ulang: client di atas cap plan baru; seleksi Wizard tersimpan; `Warehouse B` tidak dicentang
+29. Seed ulang: client di atas cap plan baru; seleksi Wizard tersimpan `Sync G1`, `Sync G2`, dan `Sync G3`; `Sync Warehouse B` tidak dicentang
 30. Muat ulang Fixed Asset > Settings > Groups di sesi A
-31. Verifikasi `Warehouse B` usable di tabel, Group Context Header, dan sidebar sebelum T-0
-32. Picu hook uji handler plan-efektif pada tanggal T-0 downgrade terjadwal di lingkungan non-produksi, tunggu transaksi T-0 commit
-33. Muat ulang Fixed Asset > Settings > Groups di sesi A
-34. Verifikasi `Warehouse B` berstatus Excess di tabel (nama di-dim)
-35. Klik `Warehouse B` di sidebar
-36. Verifikasi Group Context Header `Warehouse B` berstatus Excess pada pemuatan yang sama
-37. Verifikasi `Warehouse B` berstatus Excess di sidebar pada pemuatan yang sama
-38. Buka dropdown tujuan Register Asset
-39. Verifikasi `Warehouse B` tetap tampil di dropdown tetapi tidak dapat dipilih
-40. Tutup dropdown
-41. Verifikasi tidak ada keadaan sebagian: seluruh group tidak tercentang berstatus Excess dan seluruh group tercentang usable di tabel, header, dan sidebar
-42. Buka Modal Changelog: Group, lalu ketik Search `{runId}-093`, tekan Enter
-43. Verifikasi Modal Changelog memuat entri `Marked as Excess (Group Consolidation)` untuk setiap group yang berubah
-44. Klik `(←)` pada kotak Search, lalu tutup Modal Changelog: Group
-45. Verifikasi Activity Log memuat entri untuk setiap group yang berubah (dibaca lewat kemampuan baca)
+31. Klik `Sync Warehouse B` di sidebar
+32. Verifikasi `Sync Warehouse B` usable di tabel, Group Context Header, dan sidebar sebelum T-0
+33. Catat jumlah entri Modal Changelog: Group sebagai baseline N1 dan jumlah entri Activity Log sebagai baseline A1 (dibaca lewat fixture BE)
+34. Picu hook uji handler plan-efektif pada tanggal T-0 downgrade terjadwal di lingkungan non-produksi, tunggu transaksi T-0 commit
+35. Catat waktu sesudah transaksi T-0 commit
+36. Muat ulang Fixed Asset > Settings > Groups di sesi A
+37. Verifikasi `Sync Warehouse B` berstatus Excess di tabel (nama di-dim)
+38. Klik `Sync Warehouse B` di sidebar
+39. Verifikasi Group Context Header `Sync Warehouse B` berstatus Excess pada pemuatan yang sama
+40. Verifikasi `Sync Warehouse B` berstatus Excess di sidebar pada pemuatan yang sama
+41. Buka Fixed Asset > Register Asset
+42. Buka dropdown tujuan Register Asset
+43. Verifikasi `Sync Warehouse B` tetap tampil di dropdown tetapi tidak dapat dipilih
+44. Tutup dropdown
+45. Buka Fixed Asset > Settings > Groups
+46. Verifikasi tidak ada keadaan sebagian: seluruh group tidak tercentang berstatus Excess dan seluruh group tercentang usable di tabel, header, dan sidebar
+47. Buka Modal Changelog: Group, lalu ketik Search `{runId}-093`, tekan Enter
+48. Verifikasi entri Action `Marked as Excess (Group Consolidation)` untuk `Sync G4`, `Sync G5`, dan `Sync Warehouse B` (dicari lewat nama group) bertanggal sesuai waktu yang dicatat pada langkah 35
+49. Verifikasi jumlah entri Modal Changelog: Group (dibaca lewat fixture BE) bertambah tepat 3 terhadap baseline N1: satu entri per group yang menjadi Excess
+50. Klik `(←)` pada kotak Search, lalu tutup Modal Changelog: Group
+51. Verifikasi Activity Log memuat entri untuk `Sync G4`, `Sync G5`, dan `Sync Warehouse B` bertanggal sesuai waktu yang dicatat pada langkah 35 (dibaca lewat kemampuan baca)
+52. Verifikasi jumlah entri Activity Log (dibaca lewat fixture BE) bertambah tepat 3 terhadap baseline A1
 
 ## Notes
 
-- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1 sampai 3, 6 sampai 8, 10 sampai 12, 15 sampai 17, 20 sampai 22, 25 sampai 27, 29 dan 30, 32 dan 33, 35, 38, 40, 42, 44: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
+- Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 1 sampai 3, 6 sampai 8, 10 sampai 12, 15 sampai 17, 20 sampai 22, 25 sampai 27, 29 sampai 31, 33 sampai 36, 38, 41 dan 42, 44, 45, 47, 50: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
 - Seeding ulang antar blok memulihkan state tiap TC (S-09). Seluruh blok kelas h dengan pemicu T-0 yang sama; pemicu bukan objek uji. Asersi absence Excess (TC-312, TC-315) didahului verifikasi group lain tampil (anchor, 8b butir 2).
 - Spec berisi lebih dari 35 langkah. Alasan: tujuh blok satu kelas (h, penerapan T-0 atas seleksi tersimpan) dan berdiri sendiri dengan state seed berbeda; sebagian besar langkah adalah penghubung seeding dan pemicu T-0, bukan asersi baru.
-- Langkah 31 dan 34 membandingkan tampilan sebelum dan sesudah T-0 pada sesi A (TC-1051 langkah 1 sampai 3).
+- Langkah 32 dan 37 membandingkan tampilan sebelum dan sesudah T-0 pada sesi A (TC-1051 langkah 1 sampai 3).
+- Asersi tambahan (S-03): Date entri log pada langkah 48 dan 51 dibandingkan dengan waktu yang dicatat pada langkah 35 (toleransi satu menit); klausa tanggal ini tidak ada di Expected TC-1051 d, dicatat di sini sebagai asersi di luar TC.
 - Temuan untuk QA:
   - TC-312 sampai TC-317 tidak menyebut cara men-seed seleksi tersimpan, penghapusan group, dan perubahan cap sebelum T-0 selain di Precondition; kemampuan fixture BE disediakan tim FE/BE (R-19).
-  - TC-1051 Expected d menyebut Modal Changelog dan Activity Log "untuk setiap node yang berubah" tanpa jumlah; spec mengasersi entri per group yang berubah.
+  - TC-1051 Expected d menyebut Modal Changelog dan Activity Log "untuk setiap node yang berubah" tanpa jumlah; spec mengasersi entri per group yang berubah (tiga group Excess: client enam group, cap 3) dan selisih jumlah entri terhadap baseline.
   - TC-1051 tidak menyebut sesi A selain Langkah 1; spec memakai satu sesi A.

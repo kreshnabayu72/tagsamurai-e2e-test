@@ -35,7 +35,8 @@ coverage:
 | 12 | Edit | `Log1 {runId}-155` | Function | `None` | `Assignable` | ModC | 3 |
   - Changelog adalah audit trail permanen: jumlah total entri tidak diasersi; tabel dibatasi Search suffix spec sehingga hanya 12 entri di atas yang teramati (10 entri di halaman 1, 2 entri di halaman 2).
   - Entri permanen tidak dihapus; cleanup (hook `after`, tidak berasumsi seeding berhasil penuh) menghapus lewat API group `Log1 {runId}-155` sampai `Log4 {runId}-155` bila masih ada dan preferensi kolom Setup Column di browser (kemampuan disediakan tim FE).
-- Kemampuan teknis (disediakan tim FE): viewport browser disesuaikan sehingga tabel Modal Changelog dapat di-scroll horizontal, dan penghapusan preferensi kolom Setup Column di browser (hook `after`, bagian 4).
+- Lebar viewport 900px sehingga tabel Modal Changelog dapat di-scroll horizontal; viewport disetel pada langkah 2 dan dipulihkan pada langkah 19.
+- Kemampuan teknis (disediakan tim FE): penghapusan preferensi kolom Setup Column di browser (hook `after`, bagian 4).
 - Parameter iterasi TC-FA-GRP-504, 505, urutan baris = urutan iterasi:
 
 | Kolom |
@@ -46,30 +47,32 @@ coverage:
 ## Test Steps
 
 1. Klik icon Changelog
+2. Setel lebar viewport 900px
 
 ### TC-FA-GRP-504 dan 505: Pin kolom New Value dan Modified By (iterasi per kolom)
 
-2. Untuk setiap baris tabel parameter iterasi (langkah 3 sampai 16): jalankan langkah berikut dengan kolom pada baris itu
-3. Buka Popup Setup Column pada Modal Changelog: klik icon `⋯` di header kolom terakhir tabel modal, lalu klik `Setup Column...`
-4. Klik icon Pin kolom pada baris tabel
-5. Klik [Save]
-6. Scroll tabel modal secara horizontal
-7. Verifikasi kolom pada baris tabel membeku (sticky) saat tabel modal di-scroll horizontal
-8. Muat ulang halaman (F5)
-9. Klik icon Changelog
-10. Scroll tabel modal secara horizontal
-11. Verifikasi kolom pada baris tabel masih membeku (pin bertahan setelah F5)
-12. Buka Popup Setup Column pada Modal Changelog: klik icon `⋯` di header kolom terakhir tabel modal, lalu klik `Setup Column...`
-13. Klik icon Pin kolom pada baris tabel untuk unpin
-14. Klik [Save]
-15. Scroll tabel modal secara horizontal
-16. Verifikasi kolom pada baris tabel kembali ikut ter-scroll
-17. Klik icon close (X) pada header Modal Changelog
+3. Untuk setiap baris tabel parameter iterasi (langkah 4 sampai 17): jalankan langkah berikut dengan kolom pada baris itu
+4. Buka Popup Setup Column pada Modal Changelog: klik icon `⋯` di header kolom terakhir tabel modal, lalu klik `Setup Column...`
+5. Klik icon Pin kolom pada baris tabel
+6. Klik [Save]
+7. Scroll tabel modal secara horizontal
+8. Verifikasi kolom pada baris tabel membeku (sticky) saat tabel modal di-scroll horizontal
+9. Muat ulang halaman (F5)
+10. Klik icon Changelog
+11. Scroll tabel modal secara horizontal
+12. Verifikasi kolom pada baris tabel masih membeku (pin bertahan setelah F5)
+13. Buka Popup Setup Column pada Modal Changelog: klik icon `⋯` di header kolom terakhir tabel modal, lalu klik `Setup Column...`
+14. Klik icon Pin kolom pada baris tabel untuk unpin
+15. Klik [Save]
+16. Scroll tabel modal secara horizontal
+17. Verifikasi kolom pada baris tabel kembali ikut ter-scroll
+18. Klik icon close (X) pada header Modal Changelog
+19. Pulihkan lebar viewport
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
-- Pengulangan (bagian 8b butir 7): langkah 3 sampai 16 diulang untuk tiap baris tabel parameter iterasi (New Value/Modified By): 14 langkah per iterasi.
+- Pengulangan (bagian 8b butir 7): langkah 4 sampai 17 diulang untuk tiap baris tabel parameter iterasi (New Value/Modified By): 14 langkah per iterasi.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membuka Modal Changelog dan Popup Setup Column (icon `⋯` > `Setup Column...`), [Reset to Default] + [Save] untuk memulihkan susunan default antar iterasi, dan membuka kembali Modal Changelog setelah F5 karena F5 menutup modal (S-03, S-09). Pemulihan akhir preferensi kolom: hook `after` menghapus preferensi kolom di browser (bagian 4).
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
@@ -77,4 +80,4 @@ coverage:
   - Password akun aktor memakai env baru `FA_TC_PASSWORD` (nama `<APP>_<ROLE>_PASSWORD`); perlu didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
   - Rujukan "Example Data" dan "Tabel Data Uji" Changelog pada Precondition TC tidak punya data konkret; spec mendefinisikan 12 entri seeding sendiri di Prerequisites (Action Create/Edit/Delete; Field Group Name/Function/Description/Code). Entri Marked as Excess dan Restored from Excess hanya dipakai pada spec 132.
   - Changelog adalah audit trail permanen sehingga N total tidak dapat diturunkan dari seeding (bagian 8b butir 10); spec memakai Search suffix dan selisih terhadap data milik spec. Akun `ModB` dan `ModC` (dua user lain sebagai pelaku seeding) disediakan tim FE.
-  - TC Setup Column tidak menyebut lebar viewport; asersi pin (sticky saat scroll horizontal) mensyaratkan tabel modal dapat di-scroll horizontal, sehingga viewport disesuaikan (Prerequisites).
+  - TC Setup Column tidak menyebut lebar viewport; asersi pin (sticky saat scroll horizontal) mensyaratkan tabel modal dapat di-scroll horizontal, sehingga spec menyetel lebar viewport 900px (langkah 2) dan memulihkannya (langkah 19), pola spec 186.

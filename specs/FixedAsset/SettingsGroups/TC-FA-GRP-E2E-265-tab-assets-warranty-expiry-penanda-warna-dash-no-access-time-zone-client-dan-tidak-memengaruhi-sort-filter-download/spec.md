@@ -30,54 +30,66 @@ coverage:
 
 ### TC-FA-GRP-1281: Sel `—` dan `No access` tidak diberi warna
 
-1. Buka Detail Value Warranty Node (Tab Assets)
-2. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
-3. Verifikasi W6 menampilkan `—` tanpa warna
-4. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
-5. Logout
-6. Login sebagai akun noValueAccess
-7. Buka Detail Value Warranty Node (Tab Assets)
-8. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
-9. Verifikasi seluruh sel Warranty Expiry menampilkan `No access` tanpa warna danger/warning, walau tanggal aslinya lewat atau segera habis
-10. Hover salah satu sel `No access`
-11. Verifikasi tooltip hanya "Requires Manage purchase access in this group."
-12. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
-13. Logout
-14. Login sebagai akun warrantyWatch
+1. Ketik Search `Value Warranty Node` pada Groups List, tekan Enter
+2. Buka Detail Value Warranty Node (Tab Assets)
+3. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
+4. Verifikasi W6 menampilkan `—` tanpa warna
+5. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
+6. Logout
+7. Login sebagai akun noValueAccess
+8. Buka Fixed Asset > Settings > Groups
+9. Ketik Search `Value Warranty Node` pada Groups List, tekan Enter
+10. Buka Detail Value Warranty Node (Tab Assets)
+11. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
+12. Verifikasi seluruh sel Warranty Expiry menampilkan `No access` tanpa warna danger/warning, walau tanggal aslinya lewat atau segera habis
+13. Hover salah satu sel `No access`
+14. Verifikasi tooltip hanya "Requires Manage purchase access in this group."
+15. Buka Popup Setup Column, hilangkan centang kolom Warranty Expiry, klik [Save]
+16. Logout
+17. Login sebagai akun warrantyWatch
+18. Buka Fixed Asset > Settings > Groups
 
 ### TC-FA-GRP-1283: Penanda warna tidak memengaruhi Sort, Filter, dan isi berkas Download
 
-15. Buka Detail Value Warranty Node (Tab Assets)
-16. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
-17. Klik header Warranty Expiry (Oldest First)
-18. Verifikasi urutan: W1 (lewat), W2, W3, W4, W5 menurut tanggal, baris `—` (W6) di akhir
-19. Klik icon Filter, isi rentang Warranty Expiry yang memuat W1 sampai W3, klik [Apply]
-20. Verifikasi W1 dan W3 (di dalam rentang) tampil walau berbeda kelas warna
-21. Klik icon Download, pilih Download as CSV
-22. Buka berkas
-23. Verifikasi berkas memuat tanggal asli W1 sampai W5 (format DD/MM/YYYY sesuai General Settings) tanpa warna atau teks penanda
-24. Verifikasi W6 ditulis `-` pada berkas
-25. Klik icon Filter, klik [Clear Field], klik [Apply]
+19. Ketik Search `Value Warranty Node` pada Groups List, tekan Enter
+20. Buka Detail Value Warranty Node (Tab Assets)
+21. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
+22. Klik header Warranty Expiry (Oldest First)
+23. Verifikasi urutan: W1 (lewat), W2, W3, W4, W5 menurut tanggal, baris `—` (W6) di akhir
+24. Klik icon Filter, isi rentang Warranty Expiry yang memuat W1 sampai W3, klik [Apply]
+25. Verifikasi W1 dan W3 (di dalam rentang) tampil walau berbeda kelas warna
+26. Klik icon Filter, klik [Clear Field], klik [Apply]
+27. Klik icon Download, pilih Download as CSV
+28. Buka berkas
+29. Verifikasi berkas memuat tanggal asli W1 sampai W5 (format DD/MM/YYYY sesuai General Settings) tanpa warna atau teks penanda
+30. Verifikasi W6 ditulis `-` pada berkas
 
 ### TC-FA-GRP-1282: Hari ini mengikuti Time Zone General Settings
 
-26. Atur waktu sistem uji sehingga tanggal UTC lebih awal sehari dari tanggal Asia/Jakarta (mis. 20:00 UTC = 03:00 hari berikutnya di Jakarta), isi ulang W2 dengan tanggal Jakarta saat itu
-27. Muat ulang tab
-28. Hover sel W2
-29. Verifikasi W2 (tanggal = hari ini menurut Asia/Jakarta) menampilkan warning "Warranty expires soon", bukan danger
-30. Ubah Time Zone General Settings ke zona yang tanggalnya masih sehari sebelumnya (mis. UTC), muat ulang tab
-31. Hover sel W2
-32. Verifikasi W2 (besok menurut zona itu) tetap menampilkan warning, bukan danger
+31. Atur waktu sistem uji sehingga tanggal UTC lebih awal sehari dari tanggal Asia/Jakarta (mis. 20:00 UTC = 03:00 hari berikutnya di Jakarta), isi ulang W2 dengan tanggal Jakarta saat itu
+32. Muat ulang tab
+33. Ketik Search `Value Warranty Node` pada Groups List, tekan Enter
+34. Buka Detail Value Warranty Node (Tab Assets)
+35. Hover sel W2
+36. Verifikasi W2 (tanggal = hari ini menurut Asia/Jakarta) menampilkan warning "Warranty expires soon", bukan danger
+37. Ubah Time Zone General Settings ke zona yang tanggalnya masih sehari sebelumnya (mis. UTC), muat ulang tab
+38. Buka Fixed Asset > Settings > Groups
+39. Ketik Search `Value Warranty Node` pada Groups List, tekan Enter
+40. Buka Detail Value Warranty Node (Tab Assets)
+41. Hover sel W2
+42. Verifikasi W2 (besok menurut zona itu) tetap menampilkan warning, bukan danger
 
 ## Notes
 
 - Urutan TC: TC-1281 (ganti akun ke NVA lalu kembali ke WW), TC-1283, lalu TC-1282 paling akhir karena mengubah state global (waktu sistem dan Time Zone); perubahan urutan dari TC.
-- TC-1283 butir c (isi berkas CSV) dicatat dalam spec fungsional ini (P-10): unduhan dilakukan pada filter dan sort yang sama dengan asersi UI butir sebelumnya, klausa isi berkas (butir c) diletakkan setelah klausa UI TC itu.
-- Langkah penghubung (S-03): menghilangkan centang Warranty Expiry sebelum ganti akun; `[Clear Field]` dan `[Apply]` untuk membersihkan filter.
+- TC-1283 butir c (isi berkas CSV) dicatat dalam spec fungsional ini (P-10): unduhan dilakukan pada sort yang sama dengan asersi UI butir sebelumnya (filter dibersihkan lebih dulu), klausa isi berkas (butir c) diletakkan setelah klausa UI TC itu.
+- Langkah penghubung (S-03): menghilangkan centang Warranty Expiry sebelum ganti akun; `Buka Fixed Asset > Settings > Groups` sesudah tiap login akun lain karena hook `beforeEach` hanya membuka halaman untuk akun pertama (S-14); `Buka Fixed Asset > Settings > Groups` dan `Buka Detail Value Warranty Node (Tab Assets)` sesudah muat ulang tab atau ubah Time Zone karena Popup Detail Group tertutup (A-9); `[Clear Field]` dan `[Apply]` membersihkan filter sebelum Download supaya asersi berkas W1 sampai W5 berlaku atas seluruh baris (TC-1283 butir c).
+- Alasan di atas ~35 langkah: tiga blok TC pada satu dataset (Value Warranty Node, kolom Warranty Expiry) dengan dua ganti akun; tiap blok berdiri sendiri dan blok sesudah ganti akun tetap bermakna walau blok sebelumnya gagal.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Warranty Node`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1283 butir b 'rentang yang memuat W1 dan W3' tidak menyebut batas tanggal persis; spec memakai rentang W1 sampai W3 (memuat juga W2).
   - TC-1282 'zona yang tanggalnya masih sehari sebelumnya' tidak menyebut zona; spec memakai contoh UTC.
   - TC-1281 butir a hanya mengasersi W6; asumsi W1–W5 tidak diasersi di blok ini.
   - TC-1283 menyebut tanggal asli tanpa nilai konkret karena tanggal relatif terhadap hari uji; spec mengasersi tanggal W1 sampai W5 sesuai hasil seeding hari itu.
-  - Berkas diunduh pada alur yang sama dengan Sort dan Filter sehingga kondisi filter saat Download tidak tegas dalam TC; asersi 'seluruh baris' dan W6 mengasumsikan semua baris tercakup.
+  - Kondisi filter saat Download tidak tegas dalam TC; spec membersihkan filter sebelum Download sehingga asersi 'seluruh baris' dan W6 berlaku atas semua baris.
   - TC-1282 memverifikasi teks tooltip "Warranty expires soon" tanpa menyebut langkah Hover; spec menambah Hover sel W2 sebelum tiap Verifikasi.

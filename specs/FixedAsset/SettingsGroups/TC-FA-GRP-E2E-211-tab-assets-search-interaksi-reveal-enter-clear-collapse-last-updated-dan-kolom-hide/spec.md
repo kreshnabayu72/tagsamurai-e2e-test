@@ -28,56 +28,60 @@ coverage:
 
 ### TC-FA-GRP-677: Interaksi Search Tab Assets (reveal, Enter, clear, collapse)
 
-1. Klik angka Total Asset Warehouse A untuk membuka Popup Detail Group, Tab Assets
-2. Hover icon Search pada toolbar
-3. Verifikasi tooltip Search tampil
-4. Klik icon Search
-5. Verifikasi input Search melebar
-6. Verifikasi input Search auto-focus
-7. Verifikasi placeholder input Search sesuai konvensi platform
-8. Ketik 1 karakter keyword `Fixture.settingsGroups.searchChar` di input Search tanpa menekan Enter
-9. Verifikasi icon (✕) tampil di dalam input
-10. Verifikasi tabel belum tersaring (jumlah baris sama dengan baris sebelum mengetik)
-11. Ganti isi kotak search dengan `Fixture.settingsGroups.searchKeyword`, tekan Enter
-12. Verifikasi sedikitnya satu baris tampil
-13. Verifikasi setiap baris yang tampil sesuai keyword `Fixture.settingsGroups.searchKeyword`
-14. Klik icon (✕) di dalam input
-15. Verifikasi input Search kosong
-16. Verifikasi input Search tetap terbuka dan fokus
-17. Verifikasi tabel tetap menampilkan hasil search terakhir
-18. Tekan Enter pada input kosong
-19. Verifikasi tabel kembali menampilkan semua data (jumlah baris sama dengan baris sebelum Search)
-20. Ketik Search `  Fixture.settingsGroups.searchKeyword  ` (dua spasi sebelum dan sesudah keyword), tekan Enter
-21. Verifikasi baris yang tampil sama dengan baris pada langkah 13
-22. Verifikasi isi input Search di layar tetap `  Fixture.settingsGroups.searchKeyword  ` seperti yang diketik
-23. Ganti isi kotak search dengan `Fixture.settingsGroups.searchKeyword`, tekan Enter
-24. Klik icon (←)
-25. Verifikasi input Search tertutup
-26. Verifikasi keyword dikosongkan
-27. Verifikasi tabel langsung reset menampilkan semua data
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik angka Total Asset Warehouse A untuk membuka Popup Detail Group, Tab Assets
+3. Hover icon Search pada toolbar
+4. Verifikasi tooltip Search tampil
+5. Klik icon Search
+6. Verifikasi input Search melebar
+7. Verifikasi input Search auto-focus
+8. Verifikasi placeholder input Search sesuai konvensi platform
+9. Catat jumlah baris tabel Tab Assets sebelum mengetik Search
+10. Ketik 1 karakter keyword `Fixture.settingsGroups.searchChar` di input Search tanpa menekan Enter
+11. Verifikasi icon (✕) tampil di dalam input
+12. Verifikasi tabel belum tersaring (jumlah baris sama dengan jumlah baris yang dicatat sebelum mengetik)
+13. Ganti isi kotak search dengan `Fixture.settingsGroups.searchKeyword`, tekan Enter
+14. Verifikasi sedikitnya satu baris tampil
+15. Verifikasi setiap baris yang tampil sesuai keyword `Fixture.settingsGroups.searchKeyword`
+16. Klik icon (✕) di dalam input
+17. Verifikasi input Search kosong
+18. Verifikasi input Search tetap terbuka dan fokus
+19. Verifikasi tabel tetap menampilkan hasil search terakhir
+20. Tekan Enter pada input kosong
+21. Verifikasi tabel kembali menampilkan semua data (jumlah baris sama dengan jumlah baris yang dicatat sebelum mengetik Search)
+22. Ketik Search `  Fixture.settingsGroups.searchKeyword  ` (dua spasi sebelum dan sesudah keyword), tekan Enter
+23. Verifikasi baris yang tampil sama dengan baris pada langkah 15
+24. Verifikasi isi input Search di layar tetap `  Fixture.settingsGroups.searchKeyword  ` seperti yang diketik
+25. Ganti isi kotak search dengan `Fixture.settingsGroups.searchKeyword`, tekan Enter
+26. Klik icon (←)
+27. Verifikasi input Search tertutup
+28. Verifikasi keyword dikosongkan
+29. Verifikasi tabel langsung reset menampilkan semua data
 
 ### TC-FA-GRP-681: Search nilai Last Updated tidak menghasilkan match
 
-28. Salin nilai Last Updated yang tampil pada baris pertama (`Fixture.settingsGroups.lastUpdatedBarisPertama`)
-29. Klik icon Search, tempel nilai tersebut, tekan Enter
-30. Verifikasi empty state "No results found"
-31. Klik icon Filter
-32. Verifikasi Filter Panel memuat field Last Updated
-33. Tutup Filter Panel dan klik icon (←) pada kotak Search (langkah pemulihan)
+30. Salin nilai Last Updated yang tampil pada baris pertama (`Fixture.settingsGroups.lastUpdatedBarisPertama`)
+31. Klik icon Search, tempel nilai tersebut, tekan Enter
+32. Verifikasi empty state "No results found"
+33. Klik icon Filter
+34. Verifikasi Filter Panel memuat field Last Updated
+35. Tutup Filter Panel dan klik icon (←) pada kotak Search (langkah pemulihan)
 
 ### TC-FA-GRP-682: Search pada kolom Asset ID yang di-hide
 
-34. Sembunyikan kolom Asset ID lewat Column Visibility
-35. Ketik Search `Fixture.settingsGroups.assetIdUnik`, tekan Enter
-36. Verifikasi empty state "No results found"
-37. Tampilkan kembali kolom Asset ID lewat Column Visibility
-38. Ganti isi kotak search dengan `Fixture.settingsGroups.assetIdUnik`, tekan Enter
-39. Verifikasi baris yang cocok dengan nilai Asset ID tampil
+36. Sembunyikan kolom Asset ID lewat Column Visibility
+37. Ketik Search `Fixture.settingsGroups.assetIdUnik`, tekan Enter
+38. Verifikasi empty state "No results found"
+39. Tampilkan kembali kolom Asset ID lewat Column Visibility
+40. Ganti isi kotak search dengan `Fixture.settingsGroups.assetIdUnik`, tekan Enter
+41. Verifikasi baris yang cocok dengan nilai Asset ID tampil
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 membuka Popup Detail Group Tab Assets dari Groups List; langkah 31 membuka Filter Panel hanya untuk menjangkau Expected TC-681 b dan menutupnya. Langkah menutup Filter Panel dan klik (←) serta langkah menampilkan kembali kolom adalah pemulihan state (S-09).
-- Spec memuat 3 TC Search Tab Assets satu kelas harness tanpa harness eksternal; tiap blok TC berdiri sendiri dan kegagalan satu blok tidak menghilangkan makna blok lain. Jumlah langkah (39) di atas smell 35 langkah karena TC-677 sendiri memuat 8 klausa Expected (a sampai g) yang masing-masing menjadi `Verifikasi`.
+- Langkah penghubung (S-03): langkah 2 membuka Popup Detail Group Tab Assets dari Groups List; langkah 33 membuka Filter Panel hanya untuk menjangkau Expected TC-681 b dan menutupnya. Langkah menutup Filter Panel dan klik (←) serta langkah menampilkan kembali kolom adalah pemulihan state (S-09).
+- Spec memuat 3 TC Search Tab Assets satu kelas harness tanpa harness eksternal; tiap blok TC berdiri sendiri dan kegagalan satu blok tidak menghilangkan makna blok lain. Jumlah langkah (41) di atas smell 35 langkah karena TC-677 sendiri memuat 8 klausa Expected (a sampai g) yang masing-masing menjadi `Verifikasi`.
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
+- Pembanding jumlah baris (S-12): jumlah baris tabel Tab Assets dicatat sebelum mengetik Search dan dipakai pada Verifikasi tabel belum tersaring serta tabel kembali menampilkan semua data.
 - Temuan untuk QA:
   - TC-677 a: placeholder "sesuai konvensi platform" tidak menyebut teks persis; spec mengasersi mengikuti konvensi tanpa teks literal.
   - TC-677: "keyword 1 karakter lalu lanjutkan tanpa Enter" ambigu (lanjutkan apa); spec mengetik 1 karakter tanpa Enter lalu mengamati ikon (✕) dan tabel belum tersaring.

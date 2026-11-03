@@ -86,13 +86,13 @@ coverage:
 32. Buka Popup Setup Column: klik icon `⋯` di header kolom terakhir, lalu klik `Setup Column...`
 33. Klik [Reset to Default]
 34. Klik [Save]
-35. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membatasi tabel dengan Search suffix spec, membuka Modal Changelog dan menutupnya lewat (X), serta [Reset to Default] + [Save] sebagai pemulihan antar TC (S-03, S-09, R-16). Posisi tujuan drag (paling awal), kolom yang di-hide (`Code`, `Total User`), dan kolom yang dipin (`Group`) pada TC-FA-GRP-404/405/406 ditentukan spec karena TC menyebut "beberapa kolom" tanpa nama.
 - Footer popup tanpa tombol [Cancel]: penutupan lewat icon close (X) dan Esc (TC-FA-GRP-405, Expected a).
+- Muat ulang halaman (F5) membuang kotak Search, sehingga spec tidak menutup Search dengan `(←)` di akhir (A-9, S-14).
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.

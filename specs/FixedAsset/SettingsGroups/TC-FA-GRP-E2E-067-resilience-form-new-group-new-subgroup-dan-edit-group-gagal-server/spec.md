@@ -36,36 +36,45 @@ coverage:
 4. Verifikasi toast error `Error, failed to create group.`
 5. Verifikasi popup tetap terbuka dengan input dipertahankan
 6. Verifikasi [Submit] kembali enabled untuk retry
-7. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
-8. Lepas intercept respons simpan group
+7. Klik (X)
+8. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil
+9. Klik [Leave] (pemulihan form kotor)
+10. Lepas intercept respons simpan group
 
 ### TC-FA-GRP-158: Gagal server mempertahankan form pada Popup New Subgroup
 
-9. Pasang intercept: respons simpan group dijawab 500
-10. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
-11. Isi Group Name `Fail Sub {runId}-067`, lalu klik [Submit]
-12. Verifikasi toast error `Error, failed to create group.`
-13. Verifikasi popup tetap terbuka dengan input dipertahankan
-14. Verifikasi [Submit] kembali enabled untuk retry
-15. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
-16. Lepas intercept respons simpan group
+11. Pasang intercept: respons simpan group dijawab 500
+12. Ketik Search `Head Office`, tekan Enter
+13. Tunggu toast lama hilang otomatis
+14. Buka elipsis (⋯) baris Head Office, lalu klik Add Subgroup
+15. Isi Group Name `Fail Sub {runId}-067`, lalu klik [Submit]
+16. Verifikasi toast error `Error, failed to create group.`
+17. Verifikasi popup tetap terbuka dengan input dipertahankan
+18. Verifikasi [Submit] kembali enabled untuk retry
+19. Klik (X)
+20. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil
+21. Klik [Leave] (pemulihan form kotor)
+22. Lepas intercept respons simpan group
 
 ### TC-FA-GRP-216: Gagal server mempertahankan form pada Popup Edit Group
 
-17. Pasang intercept: respons simpan group dijawab 500
-18. Ketik Search `Fail Edit {runId}-067`, tekan Enter
-19. Buka elipsis (⋯) baris `Fail Edit {runId}-067`, lalu klik Edit
-20. Ubah Description menjadi `Fail Edit Desc`, lalu klik [Save]
-21. Verifikasi toast error `Error, failed to update group.`
-22. Verifikasi popup tetap terbuka dengan input dipertahankan
-23. Verifikasi [Save] kembali enabled untuk retry
-24. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
-25. Lepas intercept respons simpan group dan klik `(←)` pada kotak Search
+23. Pasang intercept: respons simpan group dijawab 500
+24. Ganti isi kotak Search dengan `Fail Edit {runId}-067`, tekan Enter
+25. Buka elipsis (⋯) baris `Fail Edit {runId}-067`, lalu klik Edit
+26. Ubah Description menjadi `Fail Edit Desc`, lalu klik [Save]
+27. Verifikasi toast error `Error, failed to update group.`
+28. Verifikasi popup tetap terbuka dengan input dipertahankan
+29. Verifikasi [Save] kembali enabled untuk retry
+30. Klik (X)
+31. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil
+32. Klik [Leave] (pemulihan form kotor)
+33. Lepas intercept respons simpan group dan klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (kelas b fault injection; bagian 3 prinsip 13 butir b). Intercept parsial di atas backend nyata; bukan `Mode: mock` karena TC memakai backend nyata untuk data lain. Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Pasang intercept: respons simpan group dijawab 500); langkah 7 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...); langkah 8 (Lepas intercept respons simpan group); langkah 9 (Pasang intercept: respons simpan group dijawab 500); langkah 15 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...); langkah 16 (Lepas intercept respons simpan group); langkah 17 (Pasang intercept: respons simpan group dijawab 500); langkah 18 (Ketik Search `Fail Edit {runId}-067`, tekan Enter); langkah 24 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...); langkah 25 (Lepas intercept respons simpan group dan klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Pasang intercept: respons simpan group dijawab 500); langkah 7 (Klik (X)) dan langkah 9 (Klik [Leave], pemulihan form kotor); langkah 10 (Lepas intercept respons simpan group); langkah 11 (Pasang intercept: respons simpan group dijawab 500); langkah 12 (Ketik Search `Head Office`, tekan Enter); langkah 13 (Tunggu toast lama hilang otomatis, supaya toast error langkah 4 tidak lolos sebagai toast langkah 16; R-12); langkah 19 (Klik (X)) dan langkah 21 (Klik [Leave], pemulihan form kotor); langkah 22 (Lepas intercept respons simpan group); langkah 23 (Pasang intercept: respons simpan group dijawab 500); langkah 24 (Ganti isi kotak Search dengan `Fail Edit {runId}-067`, tekan Enter); langkah 30 (Klik (X)) dan langkah 32 (Klik [Leave], pemulihan form kotor); langkah 33 (Lepas intercept respons simpan group dan klik `(←)` pada kotak Search).
+- Pencarian baris target (S-03, R-16): langkah 12 (Ketik Search `Head Office`, tekan Enter) menemukan baris Head Office; client memiliki lebih dari 10 node level 1 dan page size 10, jadi baris target tidak dijamin berada di halaman 1 All Groups.
 - Langkah Search mencari baris target (R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-110, 158, dan 216 menyebut "5xx/timeout" tetapi Langkah Uji dan Expected hanya memuat 5xx; spec memaksa 500 saja dan tidak menguji timeout.

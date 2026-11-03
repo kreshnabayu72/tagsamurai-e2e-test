@@ -26,43 +26,45 @@ coverage:
 
 ### TC-FA-GRP-1008: Chip opsi Asset Name dihapus via (X)
 
-1. Klik angka Total Asset Warehouse A untuk membuka Popup Detail Group, Tab Assets
-2. Klik icon Filter
-3. Buka dropdown Asset Name, centang `Laptop Dell` lalu `Monitor LG`
-4. Verifikasi chip `Laptop Dell` dan chip `Monitor LG` tampil di dalam field
-5. Tutup dropdown
-6. Klik (X) pada chip `Laptop Dell`
-7. Verifikasi chip `Laptop Dell` hilang
-8. Buka dropdown Asset Name
-9. Verifikasi checkbox `Laptop Dell` ter-uncheck
-10. Verifikasi chip `Monitor LG` tetap ada
-11. Tutup dropdown, klik [Apply]
-12. Verifikasi `Monitor LG - 3` tampil
-13. Verifikasi setiap baris yang tampil bernama aset `Monitor LG`
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik angka Total Asset Warehouse A untuk membuka Popup Detail Group, Tab Assets
+3. Klik icon Filter
+4. Buka dropdown Asset Name, centang `Laptop Dell` lalu `Monitor LG`
+5. Verifikasi chip `Laptop Dell` dan chip `Monitor LG` tampil di dalam field
+6. Tutup dropdown
+7. Klik (X) pada chip `Laptop Dell`
+8. Verifikasi chip `Laptop Dell` hilang
+9. Buka dropdown Asset Name
+10. Verifikasi checkbox `Laptop Dell` ter-uncheck
+11. Verifikasi chip `Monitor LG` tetap ada
+12. Tutup dropdown, klik [Apply]
+13. Verifikasi `Monitor LG - 3` tampil
+14. Verifikasi setiap baris yang tampil bernama aset `Monitor LG`
 
 ### TC-FA-GRP-1009: Chip opsi Asset Name dihapus via uncheck
 
-14. Klik icon Filter, klik [Clear Field], klik [Apply] (langkah penghubung)
-15. Klik icon Filter, buka dropdown Asset Name, centang `Laptop Dell` lalu `Monitor LG`
-16. Buka lagi dropdown dan uncheck `Laptop Dell`
-17. Verifikasi chip `Laptop Dell` hilang dari field
-18. Verifikasi chip `Monitor LG` tetap ada
-19. Klik [Apply]
-20. Verifikasi `Monitor LG - 3` tampil
-21. Verifikasi setiap baris yang tampil bernama aset `Monitor LG`
+15. Klik icon Filter, klik [Clear Field], klik [Apply] (langkah penghubung)
+16. Klik icon Filter, buka dropdown Asset Name, centang `Laptop Dell` lalu `Monitor LG`
+17. Buka lagi dropdown dan uncheck `Laptop Dell`
+18. Verifikasi chip `Laptop Dell` hilang dari field
+19. Verifikasi chip `Monitor LG` tetap ada
+20. Klik [Apply]
+21. Verifikasi `Monitor LG - 3` tampil
+22. Verifikasi setiap baris yang tampil bernama aset `Monitor LG`
 
 ### TC-FA-GRP-1010: Kombinasi Asset Name + Status (AND)
 
-22. Klik icon Filter, klik [Clear Field], klik [Apply] (langkah penghubung)
-23. Klik icon Filter, pilih `Laptop Dell` pada Asset Name dan pilih `Fixture.settingsGroups.statusLaptopDell` pada Status, klik [Apply]
-24. Verifikasi sedikitnya satu baris tampil
-25. Verifikasi setiap baris yang tampil bernama aset `Laptop Dell` dan berstatus `Fixture.settingsGroups.statusLaptopDell`
-26. Verifikasi unit `Laptop Dell` berstatus lain tidak tampil
-27. Verifikasi aset bernama lain (`Monitor LG - 3`) tidak tampil
+23. Klik icon Filter, klik [Clear Field], klik [Apply] (langkah penghubung)
+24. Klik icon Filter, pilih `Laptop Dell` pada Asset Name dan pilih `Fixture.settingsGroups.statusLaptopDell` pada Status, klik [Apply]
+25. Verifikasi sedikitnya satu baris tampil
+26. Verifikasi setiap baris yang tampil bernama aset `Laptop Dell` dan berstatus `Fixture.settingsGroups.statusLaptopDell`
+27. Verifikasi unit `Laptop Dell` berstatus lain tidak tampil
+28. Verifikasi aset bernama lain (`Monitor LG - 3`) tidak tampil
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 membuka Popup Detail Group Tab Assets; menutup dropdown, [Clear Field], dan [Apply] mengosongkan Filter antar-TC (S-09); pembukaan dropdown sesudah klik (X) dipakai untuk mengamati checkbox.
+- Langkah penghubung (S-03): langkah 2 membuka Popup Detail Group Tab Assets; menutup dropdown, [Clear Field], dan [Apply] mengosongkan Filter antar-TC (S-09); pembukaan dropdown sesudah klik (X) dipakai untuk mengamati checkbox.
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
 - Temuan untuk QA:
   - TC-1008: Expected b ("checkbox ikut ter-uncheck") tidak punya langkah observasi eksplisit; spec membuka dropdown untuk mengamatinya.
   - TC-1010: Status "yang dimiliki sebagian unit `Laptop Dell`" tidak disebut konkret; memakai fixture dari data variasi Warehouse A.

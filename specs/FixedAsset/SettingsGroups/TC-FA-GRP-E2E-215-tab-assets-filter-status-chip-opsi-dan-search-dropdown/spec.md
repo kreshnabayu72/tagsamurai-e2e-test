@@ -26,45 +26,47 @@ coverage:
 
 ### TC-FA-GRP-687: Search internal dropdown Filter Status
 
-1. Klik angka Total Asset Warehouse A untuk membuka Popup Detail Group, Tab Assets
-2. Klik icon Filter
-3. Buka dropdown Status
-4. Ketik `Fixture.settingsGroups.statusSearchKecil` di kotak search dropdown
-5. Verifikasi sedikitnya satu opsi tampil
-6. Verifikasi setiap opsi yang tampil mengandung substring `Fixture.settingsGroups.statusSearchKecil` (case-insensitive)
-7. Ganti isi kotak search dropdown dengan `Fixture.settingsGroups.statusTanpaMatch`
-8. Verifikasi daftar opsi kosong dengan teks "No results found"
-9. Verifikasi tidak ada ilustrasi pada daftar opsi kosong
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik angka Total Asset Warehouse A untuk membuka Popup Detail Group, Tab Assets
+3. Klik icon Filter
+4. Buka dropdown Status
+5. Ketik `Fixture.settingsGroups.statusSearchKecil` di kotak search dropdown
+6. Verifikasi sedikitnya satu opsi tampil
+7. Verifikasi setiap opsi yang tampil mengandung substring `Fixture.settingsGroups.statusSearchKecil` (case-insensitive)
+8. Ganti isi kotak search dropdown dengan `Fixture.settingsGroups.statusTanpaMatch`
+9. Verifikasi daftar opsi kosong dengan teks "No results found"
+10. Verifikasi tidak ada ilustrasi pada daftar opsi kosong
 
 ### TC-FA-GRP-688: Chip opsi dihapus via (X)
 
-10. Hapus isi kotak search dropdown, tutup dropdown Status, klik [Clear Field] (langkah penghubung)
-11. Buka dropdown Status, centang opsi `Fixture.settingsGroups.statusA` lalu opsi `Fixture.settingsGroups.statusB`
-12. Verifikasi chip `Fixture.settingsGroups.statusA` dan chip `Fixture.settingsGroups.statusB` tampil di dalam field dan chip `Fixture.settingsGroups.statusB` tidak menggantikan chip `Fixture.settingsGroups.statusA`
-13. Tutup dropdown
-14. Klik (X) pada chip `Fixture.settingsGroups.statusA`
-15. Verifikasi chip `Fixture.settingsGroups.statusA` hilang
-16. Buka dropdown Status
-17. Verifikasi checkbox `Fixture.settingsGroups.statusA` ter-uncheck
-18. Verifikasi chip `Fixture.settingsGroups.statusB` tetap ada
-19. Tutup dropdown, klik [Apply]
-20. Verifikasi sedikitnya satu baris tampil
-21. Verifikasi setiap baris yang tampil berstatus `Fixture.settingsGroups.statusB`
+11. Hapus isi kotak search dropdown, tutup dropdown Status, klik [Clear Field] (langkah penghubung)
+12. Buka dropdown Status, centang opsi `Fixture.settingsGroups.statusA` lalu opsi `Fixture.settingsGroups.statusB`
+13. Verifikasi chip `Fixture.settingsGroups.statusA` dan chip `Fixture.settingsGroups.statusB` tampil di dalam field dan chip `Fixture.settingsGroups.statusB` tidak menggantikan chip `Fixture.settingsGroups.statusA`
+14. Tutup dropdown
+15. Klik (X) pada chip `Fixture.settingsGroups.statusA`
+16. Verifikasi chip `Fixture.settingsGroups.statusA` hilang
+17. Buka dropdown Status
+18. Verifikasi checkbox `Fixture.settingsGroups.statusA` ter-uncheck
+19. Verifikasi chip `Fixture.settingsGroups.statusB` tetap ada
+20. Tutup dropdown, klik [Apply]
+21. Verifikasi sedikitnya satu baris tampil
+22. Verifikasi setiap baris yang tampil berstatus `Fixture.settingsGroups.statusB`
 
 ### TC-FA-GRP-689: Chip opsi dihapus via uncheck di dropdown
 
-22. Klik icon Filter, klik [Clear Field], klik [Apply] (langkah penghubung)
-23. Klik icon Filter, buka dropdown Status, centang opsi `Fixture.settingsGroups.statusA` lalu opsi `Fixture.settingsGroups.statusB`
-24. Buka lagi dropdown Status dan uncheck opsi `Fixture.settingsGroups.statusA` dari dalam dropdown
-25. Verifikasi chip `Fixture.settingsGroups.statusA` hilang dari field
-26. Verifikasi chip `Fixture.settingsGroups.statusB` tetap ada
-27. Klik [Apply]
-28. Verifikasi sedikitnya satu baris tampil
-29. Verifikasi setiap baris yang tampil berstatus `Fixture.settingsGroups.statusB`
+23. Klik icon Filter, klik [Clear Field], klik [Apply] (langkah penghubung)
+24. Klik icon Filter, buka dropdown Status, centang opsi `Fixture.settingsGroups.statusA` lalu opsi `Fixture.settingsGroups.statusB`
+25. Buka lagi dropdown Status dan uncheck opsi `Fixture.settingsGroups.statusA` dari dalam dropdown
+26. Verifikasi chip `Fixture.settingsGroups.statusA` hilang dari field
+27. Verifikasi chip `Fixture.settingsGroups.statusB` tetap ada
+28. Klik [Apply]
+29. Verifikasi sedikitnya satu baris tampil
+30. Verifikasi setiap baris yang tampil berstatus `Fixture.settingsGroups.statusB`
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 membuka Popup Detail Group Tab Assets; langkah yang menghapus isi search dropdown, menutup dropdown, dan menekan [Clear Field] atau [Apply] mengosongkan Filter antar-TC (S-09); pembukaan dropdown pada TC-688 sesudah klik (X) dipakai untuk mengamati checkbox.
+- Langkah penghubung (S-03): langkah 2 membuka Popup Detail Group Tab Assets; langkah yang menghapus isi search dropdown, menutup dropdown, dan menekan [Clear Field] atau [Apply] mengosongkan Filter antar-TC (S-09); pembukaan dropdown pada TC-688 sesudah klik (X) dipakai untuk mengamati checkbox.
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
 - Temuan untuk QA:
   - TC-688/689: nilai opsi Status A dan B tidak disebut konkret; memakai fixture dari data variasi Warehouse A.
   - TC-687: Expected "teks saja, tanpa ilustrasi" ditulis sebagai dua Verifikasi (teks tampil, ilustrasi tidak ada; anchor positif teks "No results found").

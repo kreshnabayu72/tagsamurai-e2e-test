@@ -31,58 +31,68 @@ coverage:
 
 ### TC-FA-GRP-1217: Manage purchase atau tanpa hak tidak memberi akses Asset Value
 
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Centang kolom Asset Value di Popup Setup Column, klik [Save]
-3. Verifikasi G1 sampai G6 seluruhnya menampilkan `No access`, termasuk G3 (tanpa nilai) dan G2 (bernilai nol)
-4. Hover salah satu sel `No access`
-5. Verifikasi tooltip "Requires View asset value access in this group."
-6. Verifikasi tidak ada nilai Asset Value yang tampil pada G1 sampai G6
-7. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
-8. Logout
-9. Login sebagai akun noValueAccess
-10. Buka Detail Value Gate Node A (Tab Assets)
-11. Centang kolom Asset Value di Popup Setup Column, klik [Save]
-12. Verifikasi G1 sampai G6 seluruhnya menampilkan `No access`, termasuk G3 (tanpa nilai) dan G2 (bernilai nol)
-13. Hover salah satu sel `No access`
-14. Verifikasi tooltip "Requires View asset value access in this group."
-15. Verifikasi tidak ada nilai Asset Value yang tampil pada G1 sampai G6
-16. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
-17. Logout
-18. Login sebagai akun viewAssetValueGroups
+1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Centang kolom Asset Value di Popup Setup Column, klik [Save]
+4. Verifikasi G1 sampai G6 seluruhnya menampilkan `No access`, termasuk G3 (tanpa nilai) dan G2 (bernilai nol)
+5. Hover salah satu sel `No access`
+6. Verifikasi tooltip "Requires View asset value access in this group."
+7. Verifikasi tidak ada nilai Asset Value yang tampil pada G1 sampai G6
+8. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
+9. Logout
+10. Login sebagai akun noValueAccess
+11. Buka Fixed Asset > Settings > Groups
+12. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+13. Buka Detail Value Gate Node A (Tab Assets)
+14. Centang kolom Asset Value di Popup Setup Column, klik [Save]
+15. Verifikasi G1 sampai G6 seluruhnya menampilkan `No access`, termasuk G3 (tanpa nilai) dan G2 (bernilai nol)
+16. Hover salah satu sel `No access`
+17. Verifikasi tooltip "Requires View asset value access in this group."
+18. Verifikasi tidak ada nilai Asset Value yang tampil pada G1 sampai G6
+19. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
+20. Logout
+21. Login sebagai akun viewAssetValueGroups
+22. Buka Fixed Asset > Settings > Groups
 
 ### TC-FA-GRP-1218: Sort Asset Value numerik
 
-19. Buka Detail Value Gate Node A (Tab Assets)
-20. Centang kolom Asset Value di Popup Setup Column, klik [Save]
-21. Klik header Asset Value (Ascending)
-22. Verifikasi urutan Ascending numerik: G2 (0), G5 (120), G1 (1500), G6 (2300), G4 (8000), lalu baris `—` (G3) di akhir
-23. Klik header Asset Value (Descending)
-24. Verifikasi urutan Descending: G3 (`—`) di awal, lalu G4, G6, G1, G5, G2
-25. Klik header Asset Value (Netral)
-26. Verifikasi urutan kembali ke default tabel (Name A→Z)
+23. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+24. Buka Detail Value Gate Node A (Tab Assets)
+25. Centang kolom Asset Value di Popup Setup Column, klik [Save]
+26. Klik header Asset Value (Ascending)
+27. Verifikasi urutan Ascending numerik: G2 (0), G5 (120), G1 (1500), G6 (2300), G4 (8000), lalu baris `—` (G3) di akhir
+28. Klik header Asset Value (Descending)
+29. Verifikasi urutan Descending: G3 (`—`) di awal, lalu G4, G6, G1, G5, G2
+30. Klik header Asset Value (Netral)
+31. Verifikasi urutan kembali ke default tabel (Name A→Z)
 
 ### TC-FA-GRP-1219: Filter Asset Value rentang Min–Max
 
-27. Klik icon Filter
-28. Verifikasi field Asset Value berupa range dengan placeholder `Min` dan `Max`
-29. Isi Min 100 dan Max 2000, klik [Apply]
-30. Verifikasi hanya G1 (1500) dan G5 (120) tampil
-31. Klik [Clear Field], isi hanya Min 5000, klik [Apply]
-32. Verifikasi hanya G4 (8000) tampil
-33. Klik [Clear Field], isi hanya Max 500, klik [Apply]
-34. Verifikasi G2 (0) dan G5 (120) tampil
-35. Verifikasi G3 (`—`) tidak cocok dengan rentang mana pun dan tidak tampil
-36. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
-37. Verifikasi header tabel tidak memuat kolom Asset Value
-38. Verifikasi filter Max 500 tetap berlaku: hanya G2 dan G5 tampil
-39. Klik icon Filter, klik [Clear Field], klik [Apply]
+32. Klik icon Filter
+33. Verifikasi field Asset Value berupa range dengan placeholder `Min` dan `Max`
+34. Isi Min 100 dan Max 2000, klik [Apply]
+35. Verifikasi hanya G1 (1500) dan G5 (120) tampil
+36. Klik icon Filter
+37. Klik [Clear Field], isi hanya Min 5000, klik [Apply]
+38. Verifikasi hanya G4 (8000) tampil
+39. Klik icon Filter
+40. Klik [Clear Field], isi hanya Max 500, klik [Apply]
+41. Verifikasi G2 (0) dan G5 (120) tampil
+42. Verifikasi G3 (`—`) tidak cocok dengan rentang mana pun dan tidak tampil
+43. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
+44. Verifikasi header tabel tidak memuat kolom Asset Value
+45. Verifikasi filter Max 500 tetap berlaku: hanya G2 dan G5 tampil
+46. Klik icon Filter, klik [Clear Field], klik [Apply]
 
 ## Notes
 
 - TC-1217 memakai dua akun berurutan (MPU lalu NVA) dengan langkah ganti akun eksplisit; bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal. Ganti akun ketiga ke VAV untuk TC-1218 dan TC-1219.
 - Langkah penghubung (S-03): menghilangkan centang Asset Value antar blok, `[Clear Field]` dan `[Apply]` untuk membersihkan filter, serta menyembunyikan kolom untuk mengamati filter pada kolom tersembunyi (TC-1219 butir d).
+- Langkah penghubung (S-03, S-14): `Buka Fixed Asset > Settings > Groups` sesudah tiap login akun lain karena hook `beforeEach` hanya membuka halaman untuk akun pertama.
 - Alasan di atas ~35 langkah: tiga akun pada satu dataset (Value Gate Node A, kolom Asset Value); tiap blok berdiri sendiri dan blok sesudah ganti akun tetap bermakna walau blok sebelumnya gagal.
 - Kolom `Asset Value` dibaca sebagai `Asset Value (Commercial)` (Catatan TC).
+- Langkah penghubung (S-03, S-14, A-9): `Klik icon Filter` sebelum tiap `[Clear Field]` yang jatuh sesudah `[Apply]`, karena Filter Panel menutup setelah `[Apply]`.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1217 menulis 'Ulangi langkah 1–4' untuk aktor kedua; ditulis utuh di spec sebagai blok kedua.
   - TC-1219 butir d mensyaratkan filter berlaku walau kolom di-hide tetapi tidak ada langkah hide; spec menambah langkah penghubung.

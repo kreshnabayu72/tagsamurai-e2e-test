@@ -26,72 +26,80 @@ coverage:
 - Kemampuan teknis: menghapus preferensi kolom Setup Column di browser (disediakan tim FE); membaca urutan baris tabel.
 - Preferensi kolom Setup Column yang disimpan spec ini dihapus dari browser di hook `after` (kemampuan disediakan tim FE).
 - State global: tidak ada yang diubah. Spec berjalan di suite serial (`parallel: false`).
+- Lebar viewport diatur supaya tabel Tab Assets dapat di-scroll horizontal (dipakai asersi pin/scroll horizontal); hook `after` memulihkan viewport (S-03).
 
 ## Test Steps
 
 ### TC-FA-GRP-1209: Kolom Last Scanned mengikuti General Settings
 
-1. Buka Detail Value Gate Node A (Tab Assets)
-2. Verifikasi header tabel default tidak memuat kolom Last Scanned
-3. Buka Popup Setup Column
-4. Verifikasi kolom Last Scanned di Popup Setup Column berstatus curated (unchecked, enabled)
-5. Centang kolom Last Scanned, klik [Save]
-6. Verifikasi G3 menampilkan Last Scanned 01/09/2026
-7. Verifikasi G1 menampilkan Last Scanned 10/10/2026
-8. Verifikasi G5 menampilkan Last Scanned 20/10/2026
-9. Verifikasi G2, G4, dan G6 (belum pernah dipindai) menampilkan `—`
-10. Verifikasi nilai Last Scanned hanya berasal dari pemindaian pada Audit dan pemindaian Search by Scan tidak dihitung
+1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+2. Buka Detail Value Gate Node A (Tab Assets)
+3. Verifikasi header tabel default tidak memuat kolom Last Scanned
+4. Buka Popup Setup Column
+5. Verifikasi kolom Last Scanned di Popup Setup Column berstatus curated (unchecked, enabled)
+6. Centang kolom Last Scanned, klik [Save]
+7. Verifikasi G3 menampilkan Last Scanned 01/09/2026
+8. Verifikasi G1 menampilkan Last Scanned 10/10/2026
+9. Verifikasi G5 menampilkan Last Scanned 20/10/2026
+10. Verifikasi G2, G4, dan G6 (belum pernah dipindai) menampilkan `—`
+11. Verifikasi nilai Last Scanned hanya berasal dari pemindaian pada Audit dan pemindaian Search by Scan tidak dihitung
 
 ### TC-FA-GRP-1210: Filter Last Scanned rentang tanggal
 
-11. Klik icon Filter
-12. Verifikasi field Last Scanned berupa date range picker dengan placeholder `Select date`
-13. Pilih rentang 01/10/2026–31/10/2026, klik [Apply]
-14. Verifikasi hanya G1 (10/10/2026) dan G5 (20/10/2026) tampil
-15. Verifikasi G3 (01/09/2026) dan baris `—` (G2, G4, G6) tidak tampil
-16. Buka Popup Setup Column
-17. Hilangkan centang kolom Last Scanned, klik [Save]
-18. Verifikasi header tabel tidak memuat kolom Last Scanned
-19. Verifikasi filter Last Scanned tetap berlaku: hanya G1 dan G5 tampil
-20. Klik icon Filter, klik [Clear Field], klik [Apply]
+12. Klik icon Filter
+13. Verifikasi field Last Scanned berupa date range picker dengan placeholder `Select date`
+14. Pilih rentang 01/10/2026–31/10/2026, klik [Apply]
+15. Verifikasi hanya G1 (10/10/2026) dan G5 (20/10/2026) tampil
+16. Verifikasi G3 (01/09/2026) dan baris `—` (G2, G4, G6) tidak tampil
+17. Buka Popup Setup Column
+18. Hilangkan centang kolom Last Scanned, klik [Save]
+19. Verifikasi header tabel tidak memuat kolom Last Scanned
+20. Verifikasi filter Last Scanned tetap berlaku: hanya G1 dan G5 tampil
+21. Klik icon Filter, klik [Clear Field], klik [Apply]
 
 ### TC-FA-GRP-1211: Sort Last Scanned
 
-21. Centang kolom Last Scanned di Popup Setup Column, klik [Save]
-22. Klik header Last Scanned (Ascending)
-23. Verifikasi urutan Oldest First: G3, G1, G5, lalu baris `—` (G2, G4, G6) di akhir
-24. Klik header Last Scanned (Descending)
-25. Verifikasi urutan Newest First: baris `—` (G2, G4, G6) di awal, lalu G5, G1, G3
-26. Klik header Last Scanned (Netral)
-27. Verifikasi urutan kembali ke default tabel (Name A→Z)
+22. Centang kolom Last Scanned di Popup Setup Column, klik [Save]
+23. Klik header Last Scanned (Ascending)
+24. Verifikasi urutan Oldest First: G3, G1, G5, lalu baris `—` (G2, G4, G6) di akhir
+25. Klik header Last Scanned (Descending)
+26. Verifikasi urutan Newest First: baris `—` (G2, G4, G6) di awal, lalu G5, G1, G3
+27. Klik header Last Scanned (Netral)
+28. Verifikasi urutan kembali ke default tabel (Name A→Z)
 
 ### TC-FA-GRP-1213: Setup Column kolom curated Last Scanned
 
-28. Buka Popup Setup Column, hilangkan centang kolom Last Scanned, klik [Save]
-29. Centang kolom Last Scanned di Popup Setup Column, klik [Save]
-30. Verifikasi kolom Last Scanned tampil
-31. Muat ulang halaman (F5)
-32. Buka Detail Value Gate Node A (Tab Assets)
-33. Verifikasi kolom Last Scanned tetap tampil setelah F5
-34. Buka Popup Setup Column, geser kolom Last Scanned ke posisi sebelum Last Updated, klik [Save]
-35. Verifikasi urutan kolom tabel mengikuti posisi baru (Last Scanned sebelum Last Updated)
-36. Muat ulang halaman (F5)
-37. Buka Detail Value Gate Node A (Tab Assets)
-38. Verifikasi urutan kolom tetap mengikuti posisi baru setelah F5
-39. Buka Popup Setup Column, pin kolom Last Scanned, klik [Save]
-40. Scroll tabel secara horizontal
-41. Verifikasi kolom Last Scanned membeku (sticky) saat scroll horizontal
-42. Muat ulang halaman (F5)
-43. Buka Detail Value Gate Node A (Tab Assets)
-44. Buka Popup Setup Column, hilangkan pin kolom Last Scanned, klik [Save]
-45. Scroll tabel secara horizontal
-46. Verifikasi kolom Last Scanned ikut scroll setelah unpin
+29. Buka Popup Setup Column, hilangkan centang kolom Last Scanned, klik [Save]
+30. Centang kolom Last Scanned di Popup Setup Column, klik [Save]
+31. Verifikasi kolom Last Scanned tampil
+32. Muat ulang halaman (F5)
+33. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+34. Buka Detail Value Gate Node A (Tab Assets)
+35. Verifikasi kolom Last Scanned tetap tampil setelah F5
+36. Buka Popup Setup Column, geser kolom Last Scanned ke posisi sebelum Last Updated, klik [Save]
+37. Verifikasi urutan kolom tabel mengikuti posisi baru (Last Scanned sebelum Last Updated)
+38. Muat ulang halaman (F5)
+39. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+40. Buka Detail Value Gate Node A (Tab Assets)
+41. Verifikasi urutan kolom tetap mengikuti posisi baru setelah F5
+42. Buka Popup Setup Column, pin kolom Last Scanned, klik [Save]
+43. Atur lebar viewport supaya tabel Tab Assets dapat di-scroll horizontal
+44. Scroll tabel secara horizontal
+45. Verifikasi kolom Last Scanned membeku (sticky) saat scroll horizontal
+46. Muat ulang halaman (F5)
+47. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+48. Buka Detail Value Gate Node A (Tab Assets)
+49. Buka Popup Setup Column, hilangkan pin kolom Last Scanned, klik [Save]
+50. Scroll tabel secara horizontal
+51. Verifikasi kolom Last Scanned ikut scroll setelah unpin
 
 ## Notes
 
 - Langkah penghubung (S-03): menghilangkan centang Last Scanned untuk mengamati filter pada kolom tersembunyi (TC-1210 butir c), `[Clear Field]` dan `[Apply]` untuk membersihkan filter (S-09), serta menghilangkan lalu mencentang ulang Last Scanned sebelum TC-1213 agar kolom mulai tidak tampil. Membuka ulang Detail Value Gate Node A sesudah tiap Muat ulang halaman (F5).
 - TC-1211 prasyarat (e) kolom Last Scanned dicentang dipenuhi langkah centang pada blok TC-1211. Langkah unpin dan scroll horizontal TC-1213 ditulis eksplisit agar asersi sticky dan ikut scroll punya aksi.
 - Alasan di atas ~35 langkah: empat blok satu kelas dan satu dataset (Value Gate Node A, kolom Last Scanned); tiap blok berdiri sendiri dan kegagalan satu blok tidak menghilangkan makna blok lain.
+- Langkah penghubung (S-03): "Atur lebar viewport ..." sebelum scroll horizontal pertama supaya tabel dapat di-scroll horizontal (asersi pin sticky); hook `after` memulihkan viewport.
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1209 butir d (Search by Scan tidak dihitung) tidak memberi data pemindaian Search by Scan pada Tabel Dinamis No 15; asersi hanya bermakna bila fixture memuat pemindaian Search by Scan pada aset uji.
   - TC-1213 tidak menyatakan Expected setelah F5 di langkah pin dan tidak menyatakan hasil unpin selain 'ikut scroll'; spec mengasersi sesuai butir c.

@@ -30,36 +30,38 @@ coverage:
 
 ### TC-FA-GRP-1277: Tanggal lewat tampil danger
 
-1. Buka Detail Value Warranty Node (Tab Assets)
-2. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
-3. Verifikasi W1 (hari uji − 1) menampilkan tanggal penuh dengan kelas warna danger
-4. Hover sel W1
-5. Verifikasi tooltip "Warranty expired"
+1. Ketik Search `Value Warranty Node` pada Groups List, tekan Enter
+2. Buka Detail Value Warranty Node (Tab Assets)
+3. Buka Popup Setup Column, centang kolom Warranty Expiry, klik [Save]
+4. Verifikasi W1 (hari uji − 1) menampilkan tanggal penuh dengan kelas warna danger
+5. Hover sel W1
+6. Verifikasi tooltip "Warranty expired"
 
 ### TC-FA-GRP-1278: Hari ini dan besok tampil warning
 
-6. Verifikasi W2 (hari uji) menampilkan tanggal penuh dengan kelas warning, bukan danger
-7. Hover sel W2
-8. Verifikasi tooltip "Warranty expires soon" pada W2
-9. Verifikasi W3 (hari uji + 1) menampilkan tanggal penuh dengan kelas warning, bukan danger
-10. Hover sel W3
-11. Verifikasi tooltip "Warranty expires soon" pada W3
+7. Verifikasi W2 (hari uji) menampilkan tanggal penuh dengan kelas warning, bukan danger
+8. Hover sel W2
+9. Verifikasi tooltip "Warranty expires soon" pada W2
+10. Verifikasi W3 (hari uji + 1) menampilkan tanggal penuh dengan kelas warning, bukan danger
+11. Hover sel W3
+12. Verifikasi tooltip "Warranty expires soon" pada W3
 
 ### TC-FA-GRP-1279: Batas hari ke-30 inklusif
 
-12. Verifikasi W4 (hari uji + 30) menampilkan kelas warning
-13. Hover sel W4
-14. Verifikasi tooltip "Warranty expires soon" pada W4
+13. Verifikasi W4 (hari uji + 30) menampilkan kelas warning
+14. Hover sel W4
+15. Verifikasi tooltip "Warranty expires soon" pada W4
 
 ### TC-FA-GRP-1280: Hari ke-31 tampil normal
 
-15. Verifikasi W5 (hari uji + 31) menampilkan tanggal penuh tanpa warna danger/warning
-16. Hover sel W5
-17. Verifikasi W5 tanpa tooltip penanda masa garansi
+16. Verifikasi W5 (hari uji + 31) menampilkan tanggal penuh tanpa warna danger/warning
+17. Hover sel W5
+18. Verifikasi W5 tanpa tooltip penanda masa garansi
 
 ## Notes
 
 - Satu pembukaan Detail Value Warranty Node dan satu centang kolom dipakai bersama keempat TC karena hanya mengamati sel (halaman yang dipakai berulang).
 - TC-1279 dan TC-1280 berlabel Boundary; caseType spec mengikuti alur utama (Positive).
+- Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Warranty Node`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.
 - Temuan untuk QA:
   - TC-1277 hingga TC-1280 tidak menyebut kode warna atau kelas CSS persis; spec mengasersi kelas danger/warning secara umum dan teks tooltip.

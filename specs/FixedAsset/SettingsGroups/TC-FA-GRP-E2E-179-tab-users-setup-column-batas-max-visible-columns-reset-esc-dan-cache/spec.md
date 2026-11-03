@@ -26,7 +26,7 @@ coverage:
 
 ## Test Steps
 
-1. Klik angka Total User Warehouse A
+1. Ketik Search `Warehouse A`, tekan Enter, lalu klik angka Total User Warehouse A
 
 ### TC-666: [Reset to Default]
 
@@ -36,7 +36,7 @@ coverage:
 5. Verifikasi Live Preview kembali ke susunan default (kolom default tampil, curated tersembunyi, tanpa pin)
 6. Klik [Save]
 7. Verifikasi tabel kembali ke susunan default
-8. Refresh F5, lalu klik angka Total User Warehouse A
+8. Refresh F5, lalu ketik Search `Warehouse A`, tekan Enter, lalu klik angka Total User Warehouse A
 9. Verifikasi tabel tetap berada pada susunan default setelah F5
 
 ### TC-667: (X) dan Esc membatalkan perubahan
@@ -52,29 +52,34 @@ coverage:
 
 ### TC-668: Cache tidak memengaruhi tabel lain
 
-18. Hide satu kolom di tabel ini, lalu klik [Save]
-19. Buka tabel lain modul ini (klik Tab Assets)
-20. Verifikasi tabel Tab Assets tetap memakai konfigurasi kolomnya sendiri
-21. Kembali ke Tab Users
-22. Verifikasi konfigurasi Tab Users tetap tersimpan (kolom yang di-hide tidak tampil)
+18. Buka tabel lain modul ini (klik Tab Assets)
+19. Catat susunan kolom tabel Tab Assets (urutan dan kolom yang tampil)
+20. Kembali ke Tab Users
+21. Hide satu kolom di tabel ini, lalu klik [Save]
+22. Buka tabel lain modul ini (klik Tab Assets)
+23. Verifikasi susunan kolom Tab Assets sama dengan catatan langkah 19 (tabel Tab Assets tetap memakai konfigurasi kolomnya sendiri)
+24. Kembali ke Tab Users
+25. Verifikasi konfigurasi Tab Users tetap tersimpan (kolom yang di-hide tidak tampil)
 
 ### TC-1091: Batas Max Visible Columns
 
-23. Buka Popup Setup Column
-24. Centang kolom hingga 20 kolom tercentang
-25. Verifikasi tepat 20 kolom tercentang
-26. Hover checkbox kolom ke-21 yang belum tercentang
-27. Verifikasi checkbox kolom ke-21 disabled
-28. Verifikasi tooltip `Maximum 20 columns can be shown at once. Uncheck another column first.` tampil
-29. Verifikasi 20 kolom yang tercentang tidak berubah
-30. Uncheck satu kolom yang tercentang
-31. Hover checkbox kolom ke-21
-32. Verifikasi checkbox kolom ke-21 kembali enabled
-33. Klik (X) untuk menutup popup tanpa menyimpan
+26. Buka Popup Setup Column
+27. Centang kolom hingga 20 kolom tercentang
+28. Verifikasi tepat 20 kolom tercentang
+29. Hover checkbox kolom ke-21 yang belum tercentang
+30. Verifikasi checkbox kolom ke-21 disabled
+31. Verifikasi tooltip `Maximum 20 columns can be shown at once. Uncheck another column first.` tampil
+32. Verifikasi 20 kolom yang tercentang tidak berubah
+33. Uncheck satu kolom yang tercentang
+34. Hover checkbox kolom ke-21
+35. Verifikasi checkbox kolom ke-21 kembali enabled
+36. Klik (X) untuk menutup popup tanpa menyimpan
 
 ## Notes
 
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03): `Refresh F5, lalu klik angka Total User Warehouse A` pada TC-666 (TC tidak menyebut pembukaan ulang popup sesudah F5; lihat Temuan untuk QA), membuka Tab Assets dan kembali ke Tab Users pada TC-668, dan menutup popup lewat `(X)` di akhir spec.
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03): `Refresh F5, lalu ketik Search `Warehouse A`, tekan Enter, lalu klik angka Total User Warehouse A` pada TC-666 (TC tidak menyebut pembukaan ulang popup sesudah F5; lihat Temuan untuk QA), membuka Tab Assets, mencatat susunan kolomnya sebagai baseline sebelum hide (S-12), dan kembali ke Tab Users pada TC-668, dan menutup popup lewat `(X)` di akhir spec.
+- Spec memiliki 36 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik (Setup Column Tab Users pada dataset yang sama), tiap TC berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan TC-668 memuat baseline Tab Assets.
+- Baris `Warehouse A` dicari lewat Search sebelum klik angka Total User (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan; Refresh F5 membuang Search sehingga Search diketik ulang). Langkah Search digabung ke langkah klik angka dan dihitung langkah penghubung (S-03, S-14, R-16).
 - Temuan untuk QA:
   - Tabel Data Uji untuk variasi baris Tab Users tidak punya tabel konkret di TC (hanya `>= 12 user variasi role`); spec mendefinisikan kebutuhan nilai distinct di Prerequisites.
   - TC-666 langkah 3 "ubah urutan, hide, dan pin beberapa kolom" tidak menyebut kolom; spec memilih satu kolom tiap aksi. Perilaku sesudah F5 (popup tertutup atau tetap terbuka) tidak disebut TC.

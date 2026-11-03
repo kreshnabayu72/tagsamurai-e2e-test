@@ -30,56 +30,66 @@ coverage:
 
 ### TC-FA-GRP-950: Row action icon, severity, dan urutan menu
 
-1. Klik (⋯) pada baris Warehouse A
-2. Verifikasi urutan menu: Detail, Add Subgroup, Edit, Delete
-3. Verifikasi ikon Detail `FileInfoLine` dark, Add Subgroup `AddLine` dark, Edit `Edit2Line` dark, Delete `DeleteBin6Line` danger
-4. Tutup menu dengan Esc
-5. Klik (⋯) pada node Warehouse A di sidebar
-6. Verifikasi menu sidebar identik dengan menu baris tabel (urutan, ikon, dan severity)
-7. Tutup menu dengan Esc
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik (⋯) pada baris Warehouse A
+3. Verifikasi urutan menu: Detail, Add Subgroup, Edit, Delete
+4. Verifikasi ikon Detail `FileInfoLine` dark, Add Subgroup `AddLine` dark, Edit `Edit2Line` dark, Delete `DeleteBin6Line` danger
+5. Tutup menu dengan Esc
+6. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+7. Klik (⋯) pada node Warehouse A di sidebar
+8. Verifikasi menu sidebar identik dengan menu baris tabel (urutan, ikon, dan severity)
+9. Tutup menu dengan Esc
 
 ### TC-FA-GRP-951: Bulk action Delete
 
-8. Centang 2 baris group
-9. Verifikasi Bulk Action Bar menampilkan Delete dengan ikon `DeleteBin6Line` dan severity danger
+10. Centang 2 baris group
+11. Verifikasi Bulk Action Bar menampilkan Delete dengan ikon `DeleteBin6Line` dan severity danger
 
-### TC-FA-GRP-943: Tidak ada Activate/Deactivate/Move
+### TC-FA-GRP-943 (bagian 1): Bulk Action Bar tidak memuat Activate/Deactivate/Move
 
-10. Klik (⋯) pada baris Warehouse A
-11. Verifikasi menu baris memuat Detail, Add Subgroup, Edit, Delete (anchor surface menu sudah tampil)
-12. Verifikasi menu baris tidak memuat opsi Activate, Deactivate, atau Move
-13. Tutup menu dengan Esc
-14. Klik (⋯) pada node Warehouse A di sidebar
-15. Verifikasi menu sidebar memuat Detail, Add Subgroup, Edit, Delete (anchor)
-16. Verifikasi menu sidebar tidak memuat opsi Activate, Deactivate, atau Move
-17. Tutup menu dengan Esc
-18. Verifikasi Bulk Action Bar (dua baris masih tercentang) memuat Delete (anchor)
-19. Verifikasi Bulk Action Bar tidak memuat opsi Activate, Deactivate, atau Move
-20. Seret node Warehouse A di sidebar ke node Head Office
-21. Verifikasi Warehouse A tidak berpindah di bawah Head Office di sidebar dan parent Warehouse A di fixture BE tidak berubah
-22. Klik ikon `Filter`
-23. Verifikasi panel Filter terbuka dengan field Function (anchor)
-24. Verifikasi panel Filter tidak memuat field Status Active/Inactive
-25. Tutup panel Filter dengan Esc
-26. Hapus centang dua baris dengan Unselect All
+12. Verifikasi Bulk Action Bar (dua baris tercentang) memuat Delete (anchor)
+13. Verifikasi Bulk Action Bar tidak memuat opsi Activate, Deactivate, atau Move
+14. Hapus centang dua baris dengan Unselect All
+
+### TC-FA-GRP-943 (bagian 2): Tidak ada Activate/Deactivate/Move pada menu, drag, dan Filter
+
+15. Ketik Search `Warehouse A`, tekan Enter
+16. Klik (⋯) pada baris Warehouse A
+17. Verifikasi menu baris memuat Detail, Add Subgroup, Edit, Delete (anchor surface menu sudah tampil)
+18. Verifikasi menu baris tidak memuat opsi Activate, Deactivate, atau Move
+19. Tutup menu dengan Esc
+20. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+21. Klik (⋯) pada node Warehouse A di sidebar
+22. Verifikasi menu sidebar memuat Detail, Add Subgroup, Edit, Delete (anchor)
+23. Verifikasi menu sidebar tidak memuat opsi Activate, Deactivate, atau Move
+24. Tutup menu dengan Esc
+25. Seret node Warehouse A di sidebar ke node Head Office
+26. Verifikasi Warehouse A tidak berpindah di bawah Head Office di sidebar dan parent Warehouse A di fixture BE tidak berubah
+27. Klik ikon `Filter`
+28. Verifikasi panel Filter terbuka dengan field Function (anchor)
+29. Verifikasi panel Filter tidak memuat field Status Active/Inactive
+30. Tutup panel Filter dengan Esc
 
 ### TC-FA-GRP-6: Klik area baris
 
-27. Klik area kosong pada baris Head Office (bukan nama, angka, atau (⋯))
-28. Verifikasi tidak ada popup atau navigasi yang terbuka
-29. Verifikasi tabel tetap tampil dengan baris Head Office
+31. Ketik Search `Head Office`, tekan Enter
+32. Klik area kosong pada baris Head Office (bukan nama, angka, atau (⋯))
+33. Verifikasi tidak ada popup atau navigasi yang terbuka
+34. Verifikasi tabel tetap tampil dengan baris Head Office
+35. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ### TC-FA-GRP-944: Nama All Groups bukan row
 
-30. Ketik Search `All Groups`, tekan Enter
-31. Verifikasi empty state `No results found` tampil (hasil Search tanpa baris)
-32. Verifikasi tidak ada baris bernama `All Groups` pada tabel
-33. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+36. Ketik Search `All Groups`, tekan Enter
+37. Verifikasi empty state `No results found` tampil (hasil Search tanpa baris)
+38. Verifikasi tidak ada baris bernama `All Groups` pada tabel
+39. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 4, 7, 13, 17, 25 (menutup menu/panel), langkah 26 (Unselect All sebelum TC berikutnya, S-09), langkah 33 (reset Search). Langkah 20 adalah pemicu drag untuk TC-FA-GRP-943.
-- Urutan TC dalam spec: 950, 951, 943, 6, 944. Seleksi dua baris dari TC-FA-GRP-951 dipakai ulang TC-FA-GRP-943 untuk Bulk Action lalu dibersihkan (langkah 26).
+- Spec melewati sekitar 35 langkah (39 langkah): lima blok TC kecil pada layar dan dataset yang sama (Groups List All Groups), tiap blok berdiri sendiri, dan memisahnya hanya menggandakan login, hook, dan cleanup tanpa alur baru; tambahan langkah Search karena baris target tidak boleh diandalkan berada di halaman 1.
+- Langkah penghubung (S-03): langkah 5, 9, 19, 24, 30 (menutup menu/panel), langkah 14 (Unselect All sebelum TC berikutnya, S-09), langkah 25 adalah pemicu drag untuk TC-FA-GRP-943. Langkah 1, 15, dan 31 (Ketik Search `Warehouse A` atau `Head Office`, tekan Enter) menemukan baris target karena client punya lebih dari 10 node level 1 dengan page size 10, sehingga baris tidak diandalkan berada di halaman 1; langkah 6, 20, 35, dan 39 (`(←)` pada kotak Search) mengembalikan tabel penuh (R-16).
+- Urutan TC dalam spec: 950, 951, 943 (bagian 1: Bulk Action Bar), 943 (bagian 2: menu, drag, Filter), 6, 944. Seleksi dua baris dari TC-FA-GRP-951 dipakai ulang TC-FA-GRP-943 untuk Bulk Action lalu dibersihkan (langkah 14) sebelum Search dipakai, sehingga seleksi tidak bergantung pada perilaku Search.
 - Temuan untuk QA:
   - TC-FA-GRP-943 langkah 3 ("coba drag node") tidak menyebut node asal/tujuan; spec memakai Warehouse A ke Head Office.
   - TC-FA-GRP-944 tidak menyebut cara cek tabel "tidak ada baris"; spec memakai Search sehingga empty state `No results found` menjadi anchor positif (8b butir 2).

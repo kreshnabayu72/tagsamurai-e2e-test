@@ -79,9 +79,9 @@ coverage:
 20. Verifikasi kolom Code tidak tampil pada header tabel
 21. Klik icon Download
 22. Klik `Download as CSV`
-23. Verifikasi berkas `Groups.csv` terunduh
-24. Verifikasi header berkas `Groups.csv` tidak memuat kolom Code dan berurutan Group, Function, Total Asset, Total User, Modified By, Last Updated
-25. Verifikasi tidak ada toast atau peringatan tambahan tampil
+23. Verifikasi tidak ada toast atau peringatan tambahan tampil
+24. Verifikasi berkas `Groups.csv` terunduh
+25. Verifikasi header berkas `Groups.csv` tidak memuat kolom Code dan berurutan Group, Function, Total Asset, Total User, Modified By, Last Updated
 
 ### TC-FA-GRP-410: Kolom yang di-unhide kembali ikut ter-export
 
@@ -113,23 +113,24 @@ coverage:
 ### TC-FA-GRP-421: Node terpilih dan scope aktor server-side
 
 47. Ganti akun: logout, lalu login sebagai Group Manager scope Region West dengan `Spectra.env.FA_GM_PASSWORD`
-48. Klik `Region West` di sidebar Group Tree
-49. Verifikasi group `Branch West 1` tampil pada tabel
-50. Klik icon Download
-51. Klik `Download as CSV`
-52. Verifikasi berkas `Groups.csv` terunduh
-53. Verifikasi berkas `Groups.csv` hanya berisi direct children Region West: baris data `Branch West 1`
-54. Verifikasi berkas `Groups.csv` tidak memuat baris di luar scope aktor (`Region East`, `Region North`, `Global HQ`)
-55. Verifikasi nilai Total Asset dan Total User baris `Branch West 1` pada berkas sama dengan nilai pada tabel
+48. Buka Fixed Asset > Settings > Groups
+49. Klik `Region West` di sidebar Group Tree
+50. Verifikasi group `Branch West 1` tampil pada tabel
+51. Klik icon Download
+52. Klik `Download as CSV`
+53. Verifikasi berkas `Groups.csv` terunduh
+54. Verifikasi berkas `Groups.csv` hanya berisi direct children Region West: baris data `Branch West 1`
+55. Verifikasi berkas `Groups.csv` tidak memuat baris di luar scope aktor (`Region East`, `Region North`, `Global HQ`)
+56. Verifikasi nilai Total Asset dan Total User baris `Branch West 1` pada berkas sama dengan nilai pada tabel
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membatasi tabel dengan Search suffix spec, [Clear Field] + [Apply], membuka node di sidebar Group Tree, dan menutup Filter Panel; ganti akun pada TC-FA-GRP-421 ditempatkan paling akhir agar akun aktor tidak berganti di tengah spec (S-03, S-07, R-16).
-- Asersi "tidak ada toast sukses" (bagian 8b butir 11) ditulis segera setelah memilih format dan sebelum `Verifikasi` berkas terunduh; pemilihan format menjadi anchor positif yang buktinya menyusul pada `Verifikasi` berkas.
+- Langkah penghubung (tanpa awalan `Verifikasi`): membatasi tabel dengan Search suffix spec, [Clear Field] + [Apply], membuka node di sidebar Group Tree, dan menutup Filter Panel; ganti akun pada TC-FA-GRP-421 ditempatkan paling akhir agar akun aktor tidak berganti di tengah spec, disusul langkah Buka Fixed Asset > Settings > Groups karena hook `beforeEach` tidak jalan sesudah login ulang (S-03, S-07, S-14, R-16).
+- Asersi "tidak ada toast sukses" (bagian 8b butir 11) ditulis segera setelah memilih format dan sebelum `Verifikasi` berkas terunduh, termasuk pada TC-FA-GRP-409; pemilihan format menjadi anchor positif yang buktinya menyusul pada `Verifikasi` berkas.
 - Isi sel berkas (tipe sel, BOM, escaping) diasersi pada spec kelas f terpisah (spec 128); spec ini hanya mengasersi nama berkas, header, dan jumlah baris (bagian 3 prinsip 13 kelas f).
 - TC-FA-GRP-408 memakai filter Function `Assignable` pada dataset; hasil berkas dicocokkan terhadap 6 baris Assignable milik spec.
-- Spec 55 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec 56 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.

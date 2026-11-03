@@ -52,19 +52,22 @@ coverage:
 
 19. Atur General Settings (Date Format DD/MM/YYYY, Time 24-hour, Timezone Asia/Jakarta) lewat sesi API hingga tersimpan
 20. Muat ulang halaman (F5)
-21. Buka Detail Warehouse A, klik Tab Assets
-22. Verifikasi nilai Last Updated pada Tab Assets mengikuti format DD/MM/YYYY, 24-hour, dan timezone Asia/Jakarta
-23. Klik Tab Users, tampilkan kolom Temporary Until via Column Visibility
-24. Verifikasi nilai Temporary Until pada Tab Users mengikuti format DD/MM/YYYY
-25. Atur General Settings (Date Format MM/DD/YYYY, Time 12-hour) lewat sesi API hingga tersimpan
-26. Muat ulang halaman (F5)
-27. Buka Detail Warehouse A, klik Tab Assets
-28. Verifikasi nilai Last Updated pada Tab Assets ikut berubah mengikuti MM/DD/YYYY dan 12-hour
-29. Klik Tab Users, tampilkan kolom Temporary Until via Column Visibility
-30. Verifikasi nilai Temporary Until pada Tab Users ikut berubah mengikuti MM/DD/YYYY
+21. Ketik Search `Warehouse A`, tekan Enter
+22. Buka Detail Warehouse A, klik Tab Assets
+23. Verifikasi nilai Last Updated pada Tab Assets mengikuti format DD/MM/YYYY, 24-hour, dan timezone Asia/Jakarta
+24. Klik Tab Users, tampilkan kolom Temporary Until via Column Visibility
+25. Verifikasi nilai Temporary Until pada Tab Users mengikuti format DD/MM/YYYY
+26. Atur General Settings (Date Format MM/DD/YYYY, Time 12-hour) lewat sesi API hingga tersimpan
+27. Muat ulang halaman (F5)
+28. Ketik Search `Warehouse A`, tekan Enter
+29. Buka Detail Warehouse A, klik Tab Assets
+30. Verifikasi nilai Last Updated pada Tab Assets ikut berubah mengikuti MM/DD/YYYY dan 12-hour
+31. Klik Tab Users, tampilkan kolom Temporary Until via Column Visibility
+32. Verifikasi nilai Temporary Until pada Tab Users ikut berubah mengikuti MM/DD/YYYY
 
 ## Notes
 
 - Langkah penghubung (S-03): mengatur General Settings lewat sesi API, memuat ulang halaman agar format baru berlaku, dan menutup Modal Changelog. Kolom Temporary Until yang ditampilkan dipulihkan lewat hook `after` (hapus preferensi kolom).
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
 - Temuan untuk QA:
   - TC-914 sampai 916 menulis "Ubah General Settings ... ulangi" tanpa menyebut cara mengubahnya; spec memakai sesi API (kemampuan disediakan tim FE/BE). Expected "timezone aktif" tidak punya nilai terukur selain format; spec mengasersi format dan timezone Asia/Jakarta sebagaimana precondition TC.

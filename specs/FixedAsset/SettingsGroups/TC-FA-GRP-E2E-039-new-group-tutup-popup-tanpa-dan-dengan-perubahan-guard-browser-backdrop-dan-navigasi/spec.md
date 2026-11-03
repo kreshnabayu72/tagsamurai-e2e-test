@@ -62,35 +62,39 @@ coverage:
 23. Verifikasi dialog native browser leave-page muncul
 24. Batalkan dialog native (tetap di halaman)
 25. Verifikasi popup dan input `Reload Guard {runId}-039` tetap
-26. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
+26. Klik (X)
+27. Verifikasi dialog `Unsaved changes` tampil
+28. Klik [Leave] (pemulihan form kotor)
 
 ### TC-FA-GRP-1027: Klik backdrop saat ada perubahan tidak menutup popup dan tanpa dialog Unsaved changes
 
-27. Klik [+] Group di sidebar
-28. Ketik Group Name `Backdrop Test`
-29. Klik backdrop (area di luar popup)
-30. Verifikasi popup tetap terbuka dengan input `Backdrop Test` dipertahankan
-31. Verifikasi dialog `Unsaved changes` tidak muncul
-32. Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form kotor)
+29. Klik [+] Group di sidebar
+30. Ketik Group Name `Backdrop Test`
+31. Klik backdrop (area di luar popup)
+32. Verifikasi popup tetap terbuka dengan input `Backdrop Test` dipertahankan
+33. Verifikasi dialog `Unsaved changes` tidak muncul
+34. Klik (X)
+35. Verifikasi dialog `Unsaved changes` tampil
+36. Klik [Leave] (pemulihan form kotor)
 
 ### TC-FA-GRP-1030: Navigasi sidebar dan Back browser dengan perubahan memunculkan dialog Unsaved changes
 
-33. Klik [+] Group di sidebar
-34. Ketik Group Name `Route Test`
-35. Klik menu lain di sidebar
-36. Verifikasi perubahan route dicegat dan dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur klik menu sidebar
-37. Klik [Cancel] pada dialog
-38. Verifikasi navigasi dibatalkan: popup tetap terbuka dengan input `Route Test` dipertahankan
-39. Klik tombol Back browser
-40. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur tombol Back browser
-41. Klik [Leave]
-42. Verifikasi navigasi dilanjutkan dan popup ditutup tanpa menyimpan: jumlah group lewat fixture BE sama dengan baseline
+37. Klik [+] Group di sidebar
+38. Ketik Group Name `Route Test`
+39. Klik menu lain di sidebar
+40. Verifikasi perubahan route dicegat dan dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur klik menu sidebar
+41. Klik [Cancel] pada dialog
+42. Verifikasi navigasi dibatalkan: popup tetap terbuka dengan input `Route Test` dipertahankan
+43. Klik tombol Back browser
+44. Verifikasi dialog `Unsaved changes` `You have unsaved changes. Are you sure you want to leave?` tampil pada jalur tombol Back browser
+45. Klik [Leave]
+46. Verifikasi navigasi dilanjutkan dan popup ditutup tanpa menyimpan: jumlah group lewat fixture BE sama dengan baseline
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 26 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...); langkah 32 (Klik (X), klik [Leave] pada dialog `Unsaved changes` (pemulihan form k...).
-- Alasan spec melewati ~35 langkah (42 langkah): kelima TC satu kelas (UI tutup popup dan guard Unsaved changes pada Popup New Group), satu dataset (tanpa data tulis), dan tiap blok berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna); blok ditutup bersih sebelum blok berikutnya (S-09); langkah banyak karena `Verifikasi` per klausa Expected (S-01).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 26 dan 28, serta langkah 34 dan 36 (Klik (X), lalu klik [Leave] pada dialog `Unsaved changes` sebagai pemulihan form kotor; keduanya langkah penghubung, `Verifikasi` dialognya mengikuti S-08 dan tidak dicatat lagi).
+- Alasan spec melewati ~35 langkah (46 langkah): kelima TC satu kelas (UI tutup popup dan guard Unsaved changes pada Popup New Group), satu dataset (tanpa data tulis), dan tiap blok berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna); blok ditutup bersih sebelum blok berikutnya (S-09); langkah banyak karena `Verifikasi` per klausa Expected (S-01).
 - Reload TC-FA-GRP-108 memakai dialog `beforeunload` yang ditangani (S-08); kemampuannya tertulis di Prerequisites.
 - Temuan untuk QA:
   - TC-FA-GRP-106 Langkah Uji "Buka lagi" tidak menyebut apakah popup dibuka lagi dari [+] Group; spec memakai [+] Group di sidebar.

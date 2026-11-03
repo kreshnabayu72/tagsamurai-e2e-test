@@ -45,44 +45,48 @@ coverage:
 
 ### TC-FA-GRP-330: Dedup Tier 2 ParentCode setelah lebih dari 5 percobaan
 
-4. Klik Add Subgroup pada Warehouse A, isi Group Name `Store Room` dengan Code kosong, lalu klik [Submit]
-5. Ganti isi kotak Search dengan `Store Room`, tekan Enter
-6. Verifikasi Code tersimpan `WH-A-SR` (6 percobaan Tier 1 habis: `SR`, `SR2` sampai `SR6` dipakai)
-7. Hapus `Store Room` hasil uji dan seed `SR6` lewat API
+4. Ganti isi kotak Search dengan `Warehouse A`, tekan Enter
+5. Klik Add Subgroup pada baris Warehouse A di tabel, isi Group Name `Store Room` dengan Code kosong, lalu klik [Submit]
+6. Ganti isi kotak Search dengan `Store Room`, tekan Enter
+7. Verifikasi Code tersimpan `WH-A-SR` (6 percobaan Tier 1 habis: `SR`, `SR2` sampai `SR6` dipakai)
+8. Hapus `Store Room` hasil uji dan seed `SR6` lewat API
 
 ### TC-FA-GRP-1064: Tepat di batas, 5 percobaan Tier 1 terpakai, percobaan ke-6 masih Tier 1
 
-8. Klik Add Subgroup pada Warehouse A, isi Group Name `Store Room` dengan Code kosong, lalu klik [Submit]
-9. Ganti isi kotak Search dengan `Store Room`, tekan Enter
-10. Verifikasi Code tersimpan `SR6` (Tier 1 belum gagal lebih dari 5 percobaan)
-11. Verifikasi Code tidak berformat `WH-A-SR`
+9. Ganti isi kotak Search dengan `Warehouse A`, tekan Enter
+10. Klik Add Subgroup pada baris Warehouse A di tabel, isi Group Name `Store Room` dengan Code kosong, lalu klik [Submit]
+11. Ganti isi kotak Search dengan `Store Room`, tekan Enter
+12. Verifikasi Code tersimpan `SR6` (Tier 1 belum gagal lebih dari 5 percobaan)
+13. Verifikasi Code tidak berformat `WH-A-SR`
 
 ### TC-FA-GRP-331: ParentCode 14 karakter atau lebih melewati Tier 2
 
-12. Klik Add Subgroup pada `Long Parent {runId}-070`, isi Group Name `Store Room` dengan Code kosong, lalu klik [Submit]
-13. Ganti isi kotak Search dengan `Store Room`, tekan Enter
-14. Verifikasi Code tersimpan `SR7` (lanjut suffix angka Tier 1)
+14. Ganti isi kotak Search dengan `Long Parent {runId}-070`, tekan Enter
+15. Klik Add Subgroup pada baris `Long Parent {runId}-070`, isi Group Name `Store Room` dengan Code kosong, lalu klik [Submit]
+16. Ganti isi kotak Search dengan `Store Room`, tekan Enter
+17. Verifikasi Code tersimpan `SR7` (lanjut suffix angka Tier 1)
 
 ### TC-FA-GRP-332: Truncate ke 15 karakter tanpa memotong suffix
 
-15. Klik [+] Group di sidebar, isi Group Name 16 kata berbeda inisial dengan Code kosong, lalu klik [Submit]
-16. Ketik Search nama 16 kata tersebut, tekan Enter
-17. Verifikasi Code akhir paling banyak 15 karakter
-18. Verifikasi suffix angka tetap utuh di akhir Code dan bagian kandidat yang dipotong
+18. Klik [+] Group di sidebar, isi Group Name 16 kata berbeda inisial dengan Code kosong, lalu klik [Submit]
+19. Ketik Search nama 16 kata tersebut, tekan Enter
+20. Verifikasi Code akhir paling banyak 15 karakter
+21. Verifikasi suffix angka tetap utuh di akhir Code dan bagian kandidat yang dipotong
 
 ### TC-FA-GRP-333: Keunikan case-insensitive terhadap Code manual lowercase
 
-19. Klik [+] Group di sidebar, isi Group Name `Research Office` dengan Code kosong, lalu klik [Submit]
-20. Ketik Search `Research Office`, tekan Enter
-21. Verifikasi Code tersimpan `RO2` (Code manual `ro` tersimpan `RO` sudah dipakai)
-22. Klik `(←)` pada kotak Search
+22. Klik [+] Group di sidebar, isi Group Name `Research Office` dengan Code kosong, lalu klik [Submit]
+23. Ketik Search `Research Office`, tekan Enter
+24. Verifikasi Code tersimpan `RO2` (Code manual `ro` tersimpan `RO` sudah dipakai)
+25. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
-- Urutan TC: TC-FA-GRP-329, 330, lalu TC-FA-GRP-1064, 331, 332, 333; berbeda dari urutan nomor TC sumber. Urutan SR dipilih supaya state seed konsisten: TC-FA-GRP-330 membutuhkan `SR` sampai `SR6` terpakai; sesudah langkah 7 hanya `SR` sampai `SR5` terpakai (precondition TC-FA-GRP-1064); TC-FA-GRP-1064 menghasilkan `SR6` sehingga `SR` sampai `SR6` terpakai kembali untuk TC-FA-GRP-331 (S-09).
-- Nama `Store Room` dipakai berulang di bawah Warehouse A (TC-FA-GRP-330 dan TC-FA-GRP-1064); hasil TC-FA-GRP-330 dihapus di langkah 7 supaya nama tidak duplikat sibling.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 2 (Ketik Search `Home Office`, tekan Enter); langkah 5 (Ganti isi kotak Search dengan `Store Room`, tekan Enter); langkah 7 (Hapus `Store Room` hasil uji dan seed `SR6` lewat API); langkah 9 (Ganti isi kotak Search dengan `Store Room`, tekan Enter); langkah 13 (Ganti isi kotak Search dengan `Store Room`, tekan Enter); langkah 16 (Ketik Search nama 16 kata tersebut, tekan Enter); langkah 20 (Ketik Search `Research Office`, tekan Enter); langkah 22 (Klik `(←)` pada kotak Search).
+- Urutan TC: TC-FA-GRP-329, 330, lalu TC-FA-GRP-1064, 331, 332, 333; berbeda dari urutan nomor TC sumber. Urutan SR dipilih supaya state seed konsisten: TC-FA-GRP-330 membutuhkan `SR` sampai `SR6` terpakai; sesudah langkah 8 hanya `SR` sampai `SR5` terpakai (precondition TC-FA-GRP-1064); TC-FA-GRP-1064 menghasilkan `SR6` sehingga `SR` sampai `SR6` terpakai kembali untuk TC-FA-GRP-331 (S-09).
+- Nama `Store Room` dipakai berulang di bawah Warehouse A (TC-FA-GRP-330 dan TC-FA-GRP-1064); hasil TC-FA-GRP-330 dihapus di langkah 8 supaya nama tidak duplikat sibling.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 2 (Ketik Search `Home Office`, tekan Enter); langkah 6 (Ganti isi kotak Search dengan `Store Room`, tekan Enter); langkah 8 (Hapus `Store Room` hasil uji dan seed `SR6` lewat API); langkah 11 (Ganti isi kotak Search dengan `Store Room`, tekan Enter); langkah 16 (Ganti isi kotak Search dengan `Store Room`, tekan Enter); langkah 19 (Ketik Search nama 16 kata tersebut, tekan Enter); langkah 23 (Ketik Search `Research Office`, tekan Enter); langkah 25 (Klik `(←)` pada kotak Search).
+- Pencarian baris target (S-03, R-16): langkah 4, 9, 14 (Ganti isi kotak Search dengan `Warehouse A` dan `Long Parent {runId}-070`, tekan Enter) menemukan baris yang dipakai Add Subgroup; client memiliki lebih dari 10 node level 1 dan page size 10, jadi baris target tidak dijamin berada di halaman 1 All Groups.
 - Temuan untuk QA:
   - Code Server Room Pre-setup adalah `SR` (Tabel A baris 9); precondition TC-FA-GRP-330, 331, dan 1064 yang menyebut "SR sudah dipakai" dipenuhi oleh Pre-setup, sedangkan TC-FA-GRP-326 (spec 069) menyebut `SR` belum dipakai. Dua TC ini saling bertentangan.
   - TC-FA-GRP-332 tidak menyebut nama 16 kata, Code seed, maupun Code akhir yang diharapkan; spec memakai Code akhir paling banyak 15 karakter dengan suffix angka utuh dan nama 16 kata `A` sampai `P` yang dipilih penulis.

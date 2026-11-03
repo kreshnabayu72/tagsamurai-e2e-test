@@ -22,7 +22,7 @@ coverage:
 | Role | Akun (Pre-setup) | Password | Blok langkah |
 |---|---|---|---|
 | Manage Group D parsial level 1 (R+D di Head Office, R saja di Branch Office) (TC-FA-GRP-62, 1123) | No 24 (email perlu data dari tim FE/QA) | `Spectra.env.FA_MGDP_PASSWORD` | langkah 1 sampai 12 |
-| Manage Group R+U scope Region West (TC-FA-GRP-63) | No 6 `manageGroupUpdate_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_MGRU_PASSWORD` | langkah 13 sampai 16 |
+| Manage Group R+U scope Region West (TC-FA-GRP-63) | No 6 `manageGroupUpdate_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_MGRU_PASSWORD` | langkah 13 sampai 17 |
 
 - Login di hook `before` spec ini sebagai Manage Group D parsial; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
 - Flag Guided Tooltip `fa-settings-groups` untuk kedua akun disetel `seen` di hook `before` spec ini dan dipulihkan di hook `after` (kemampuan disediakan tim FE/BE); hook suite hanya menyetel akun aktor default suite.
@@ -55,12 +55,13 @@ coverage:
 13. Logout dari akun Manage Group D parsial
 14. Login sebagai Manage Group R+U dengan `Spectra.env.FA_MGRU_PASSWORD`
 15. Buka Fixed Asset > Settings > Groups
-16. Verifikasi tabel menampilkan baris group (anchor permukaan) dan kolom Checkbox tidak dirender sama sekali, termasuk checkbox header
+16. Verifikasi Table Tools tampil (anchor permukaan; tabel All Groups berisi empty state karena Region West bukan node level 1)
+17. Verifikasi kolom Checkbox tidak dirender sama sekali, termasuk checkbox header
 
 ## Notes
 
-- Spec 16 langkah, di bawah batas sekitar 35 langkah.
-- Langkah penghubung (S-03): langkah 12 (Unselect All sebelum ganti akun, S-09), langkah 13 sampai 15 (ganti akun eksplisit dan membuka layar), langkah 16 memuat anchor positif absence kolom Checkbox (8b butir 2; tidak ada di Expected TC).
+- Spec 17 langkah, di bawah batas sekitar 35 langkah.
+- Langkah penghubung (S-03): langkah 12 (Unselect All sebelum ganti akun, S-09), langkah 13 sampai 15 (ganti akun eksplisit dan membuka layar), langkah 16 dan 17 memuat anchor positif absence kolom Checkbox (8b butir 2; tidak ada di Expected TC). Anchor memakai Table Tools, bukan baris group: akun R+U scope Region West membuka All Groups yang menampilkan empty state `No groups at this level` karena Region West bukan node level 1 (TC-FA-GRP-59).
 - Urutan TC dalam spec: 62, 1123, 63.
 - Temuan untuk QA:
   - Email akun Manage Group R+U pada Pre-setup No 6 ditulis dengan elipsis; spec melengkapinya dengan pola `{namaCompany}@qwertysystem.net`.

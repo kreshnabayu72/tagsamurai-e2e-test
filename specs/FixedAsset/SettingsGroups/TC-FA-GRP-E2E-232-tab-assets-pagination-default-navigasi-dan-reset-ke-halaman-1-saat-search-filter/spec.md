@@ -25,49 +25,52 @@ coverage:
 
 ### TC-FA-GRP-1047: Default dan pilihan page size
 
-1. Klik angka Total Asset Warehouse A
-2. Verifikasi footer pagination menampilkan default 10 baris per halaman
-3. Verifikasi tabel menampilkan 10 baris
-4. Buka dropdown page size
-5. Verifikasi pilihan page size: 10 / 25 / 50 / 100
-6. Verifikasi dropdown page size tidak memuat opsi All
-7. Pilih page size 25
-8. Verifikasi tabel menampilkan 24 baris (seluruh aset aktif, kurang dari 25)
-9. Buka dropdown page size
-10. Pilih page size 50
-11. Verifikasi tabel menampilkan 24 baris
-12. Buka dropdown page size
-13. Pilih page size 100
-14. Verifikasi tabel menampilkan 24 baris
-15. Buka dropdown page size
-16. Pilih page size 10
-17. Verifikasi tabel menampilkan 10 baris
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik angka Total Asset Warehouse A
+3. Verifikasi footer pagination menampilkan default 10 baris per halaman
+4. Verifikasi tabel menampilkan 10 baris
+5. Buka dropdown page size
+6. Verifikasi pilihan page size: 10 / 25 / 50 / 100
+7. Verifikasi dropdown page size tidak memuat opsi All
+8. Pilih page size 25
+9. Verifikasi tabel menampilkan 24 baris (seluruh aset aktif, kurang dari 25)
+10. Buka dropdown page size
+11. Pilih page size 50
+12. Verifikasi tabel menampilkan 24 baris
+13. Buka dropdown page size
+14. Pilih page size 100
+15. Verifikasi tabel menampilkan 24 baris
+16. Buka dropdown page size
+17. Pilih page size 10
+18. Verifikasi tabel menampilkan 10 baris
 
 ### TC-FA-GRP-1048: Navigasi, input nomor halaman, dan reset ke halaman 1
 
-18. Klik next
-19. Verifikasi tabel berpindah ke halaman 2
-20. Klik prev
-21. Verifikasi tabel berpindah ke halaman 1
-22. Ketik nomor halaman 2 di input halaman, tekan Enter
-23. Verifikasi halaman 2 terbuka
-24. Ketik Search `<kata cocok>`, tekan Enter
-25. Verifikasi tabel menampilkan sedikitnya satu baris hasil Search
-26. Verifikasi tabel menampilkan halaman 1 dari hasil Search
-27. Klik `(←)` pada kotak Search
-28. Klik next
-29. Verifikasi tabel berada di halaman 2
-30. Klik icon Filter
-31. Pilih satu opsi Status
-32. Klik [Apply]
-33. Verifikasi tabel menampilkan sedikitnya satu baris hasil Filter
-34. Verifikasi tabel menampilkan halaman 1 dari hasil Filter
-35. Hapus pilihan Status pada Filter lalu klik [Apply]
+19. Klik next
+20. Verifikasi tabel berpindah ke halaman 2
+21. Klik prev
+22. Verifikasi tabel berpindah ke halaman 1
+23. Ketik nomor halaman 2 di input halaman, tekan Enter
+24. Verifikasi halaman 2 terbuka
+25. Ketik Search `<kata cocok>`, tekan Enter
+26. Verifikasi tabel menampilkan sedikitnya satu baris hasil Search
+27. Verifikasi tabel menampilkan halaman 1 dari hasil Search
+28. Klik `(←)` pada kotak Search
+29. Klik next
+30. Verifikasi tabel berada di halaman 2
+31. Klik icon Filter
+32. Pilih satu opsi Status
+33. Klik [Apply]
+34. Verifikasi tabel menampilkan sedikitnya satu baris hasil Filter
+35. Verifikasi tabel menampilkan halaman 1 dari hasil Filter
+36. Klik icon Filter, hapus pilihan Status, klik [Apply]
 
 ## Notes
 
-- Subjudul `###` memetakan langkah ke id TC granular. `<kata cocok>` pada langkah 24 adalah kata Search dari fixture Warehouse A.
-- Langkah penghubung (S-03): langkah 27 mengosongkan Search sebelum navigasi berikutnya; langkah 28 dan 29 mengembalikan tabel ke halaman 2 sebelum Filter (Langkah 6 TC: "Pindah ke halaman 2"); langkah 35 membersihkan Filter; langkah 16 mengembalikan page size ke 10 sebelum TC-FA-GRP-1048.
+- Subjudul `###` memetakan langkah ke id TC granular. `<kata cocok>` pada langkah 25 adalah kata Search dari fixture Warehouse A.
+- Langkah penghubung (S-03): langkah 28 mengosongkan Search sebelum navigasi berikutnya; langkah 29 dan 30 mengembalikan tabel ke halaman 2 sebelum Filter (Langkah 6 TC: "Pindah ke halaman 2"); langkah 36 membuka kembali Filter Panel (menutup sesudah [Apply] langkah 33) lalu membersihkan Filter; langkah 17 mengembalikan page size ke 10 sebelum TC-FA-GRP-1048.
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
+- Spec memiliki 36 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik (pagination Tab Assets) pada satu dataset Warehouse A; TC-FA-GRP-1047 memuat klausa Expected terpisah untuk tiap pilihan page size (S-01) dan tiap blok berdiri sendiri.
 - Temuan untuk QA:
-  - TC-FA-GRP-1048 Langkah 5 tidak menyebut kata Search dan Langkah 6 tidak menyebut opsi Filter; spec memakai nilai dari fixture Warehouse A.
+  - TC-FA-GRP-1048 Langkah 6 tidak menyebut kata Search dan Langkah 7 tidak menyebut opsi Filter; spec memakai nilai dari fixture Warehouse A.
   - TC-FA-GRP-1047 Expected b "jumlah baris menyesuaikan pilihan" untuk page size 25, 50, dan 100 dengan N = 24 diasersi sebagai 24 baris (seluruh data).

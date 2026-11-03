@@ -27,47 +27,54 @@ coverage:
 
 ### TC-889: Log pencabutan assignment saat Delete
 
-2. Buka elipsis `Del Users {runId}-200`, pilih Delete
-3. Klik [Delete]
-4. Verifikasi toast sukses "Success, group has been deleted."
-5. Buka Changelog: User
-6. Filter dengan user A
-7. Verifikasi entri pencabutan Group Role untuk user A (Note memuat `Del Users {runId}-200`) dengan pelaku admin penghapus (format `[First Name] [Last Initial]`)
-8. Filter dengan user B
-9. Verifikasi entri pencabutan Group Manager untuk user B (Note memuat `Del Users {runId}-200`) dengan pelaku admin penghapus
-10. Filter dengan user C
-11. Verifikasi entri pencabutan Transaction Role untuk user C (Note memuat `Del Users {runId}-200`) dengan pelaku admin penghapus
-12. Buka System Log
-13. Verifikasi entri pencabutan sama untuk A, B, dan C pada System Log
-14. Buka Activity Log FAMS
-15. Verifikasi entri pencabutan sama untuk A, B, dan C pada Activity Log
-16. Buka Modal Changelog: Group
-17. Filter Changelog dengan Group Name `Del Users {runId}-200`
-18. Verifikasi Changelog: Group hanya berisi baris Delete `Del Users {runId}-200` (jumlah baris bertambah 1 dibanding baseline)
-19. Tutup Modal Changelog
-20. Buka Changelog: User
-21. Verifikasi jumlah baris Changelog: User yang Note-nya memuat `Del Users {runId}-200` bertambah tepat 3 dibanding baseline (hanya entri user A, B, dan C; tanpa entri Home Group)
-22. Buka System Log
-23. Verifikasi jumlah baris System Log yang Note-nya memuat `Del Users {runId}-200` bertambah tepat 3 dibanding baseline (hanya entri user A, B, dan C; tanpa entri Home Group)
-24. Buka Activity Log FAMS
-25. Verifikasi jumlah baris Activity Log yang Note-nya memuat `Del Users {runId}-200` bertambah tepat 3 dibanding baseline (hanya entri user A, B, dan C; tanpa entri Home Group)
+2. Buka Fixed Asset > Settings > Groups
+3. Ketik Search `Del Users {runId}-200`, tekan Enter
+4. Buka elipsis `Del Users {runId}-200`, pilih Delete
+5. Klik [Delete]
+6. Verifikasi toast sukses "Success, group has been deleted."
+7. Buka Changelog: User
+8. Filter dengan user A
+9. Verifikasi entri pencabutan Group Role untuk user A (Note memuat `Del Users {runId}-200`) dengan pelaku admin penghapus (format `[First Name] [Last Initial]`)
+10. Filter dengan user B
+11. Verifikasi entri pencabutan Group Manager untuk user B (Note memuat `Del Users {runId}-200`) dengan pelaku admin penghapus
+12. Filter dengan user C
+13. Verifikasi entri pencabutan Transaction Role untuk user C (Note memuat `Del Users {runId}-200`) dengan pelaku admin penghapus
+14. Buka System Log
+15. Verifikasi entri pencabutan sama untuk A, B, dan C pada System Log
+16. Buka Activity Log FAMS
+17. Verifikasi entri pencabutan sama untuk A, B, dan C pada Activity Log
+18. Buka Fixed Asset > Settings > Groups
+19. Buka Modal Changelog: Group
+20. Filter Changelog dengan Group Name `Del Users {runId}-200`
+21. Verifikasi Changelog: Group hanya berisi baris Delete `Del Users {runId}-200` (jumlah baris bertambah 1 dibanding baseline)
+22. Tutup Modal Changelog
+23. Buka Changelog: User
+24. Verifikasi jumlah baris Changelog: User yang Note-nya memuat `Del Users {runId}-200` bertambah tepat 3 dibanding baseline (hanya entri user A, B, dan C; tanpa entri Home Group)
+25. Buka System Log
+26. Verifikasi jumlah baris System Log yang Note-nya memuat `Del Users {runId}-200` bertambah tepat 3 dibanding baseline (hanya entri user A, B, dan C; tanpa entri Home Group)
+27. Buka Activity Log FAMS
+28. Verifikasi jumlah baris Activity Log yang Note-nya memuat `Del Users {runId}-200` bertambah tepat 3 dibanding baseline (hanya entri user A, B, dan C; tanpa entri Home Group)
 
 ### TC-895: Tanpa notifikasi in-app
 
-26. Buka elipsis `Del Notif {runId}-200`, pilih Delete
-27. Klik [Delete]
-28. Verifikasi toast sukses "Success, group has been deleted."
-29. Tunggu aksi selesai
-30. Ganti akun: Logout, lalu login sebagai user D
-31. Buka lonceng notifikasi
-32. Verifikasi lonceng notifikasi terbuka dan daftar notifikasi tampil
-33. Verifikasi tidak ada notifikasi terkait penghapusan group atau perubahan Excess
+29. Buka Fixed Asset > Settings > Groups
+30. Ketik Search `Del Notif {runId}-200`, tekan Enter
+31. Buka elipsis `Del Notif {runId}-200`, pilih Delete
+32. Klik [Delete]
+33. Verifikasi toast sukses "Success, group has been deleted."
+34. Tunggu aksi selesai
+35. Ganti akun: Logout, lalu login sebagai user D
+36. Buka lonceng notifikasi
+37. Verifikasi lonceng notifikasi terbuka dan daftar notifikasi tampil
+38. Verifikasi tidak ada notifikasi terkait penghapusan group atau perubahan Excess
 
 ## Notes
 
 - Aksi dan objek entri pencabutan (Action dan Object) mengikuti kebijakan pemilik (`settings-role-permission` §8) dan tidak diasersi (Expected TC-889 a).
-- Langkah penghubung (S-03): baseline, filter, menutup Modal Changelog, dan Tunggu aksi selesai sebelum Ganti akun ke user D (akun aktor login di hook `before`; hook `after` memulihkan sesi ke akun default).
+- Langkah penghubung (S-03): baseline, Buka Fixed Asset > Settings > Groups sebelum aksi tiap blok dan sebelum membuka Modal Changelog: Group (baseline dan log meninggalkan halaman Groups; S-14), filter, menutup Modal Changelog, dan Tunggu aksi selesai sebelum Ganti akun ke user D (akun aktor login di hook `before`; hook `after` memulihkan sesi ke akun default).
+- Baris target dicari lewat Search nama bersuffix (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
+- Spec memiliki 38 langkah, di atas smell 35 langkah. Alasan: dua blok satu topik (pencatatan pencabutan assignment saat Delete dan tanpa notifikasi in-app) dengan pola baca-log yang sama pada empat surface; tiap TC berdiri sendiri.
 - Temuan untuk QA:
   - TC-889 dan 895 tidak menyebut cara membuka Changelog: User, System Log, dan lonceng notifikasi secara rinci; spec memakai penamaan TC. Assert absence notifikasi (TC-895) memakai anchor `Verifikasi` daftar notifikasi tampil (8b butir 2); TC tidak memberi pembanding notifikasi lain.
   - Email user A..D tidak ada di TC; spec memakai fixture baru ditetapkan tim FE.
-  - TC-889 c: tanpa entri Home Group diasersi lewat selisih jumlah baris terhadap baseline pada penanda baris (Note memuat nama group `Del Users` bersuffix): Changelog: Group +1 (baris Delete), tiga surface lain +3 (hanya entri A, B, dan C), dengan entri pencabutan A, B, C sebagai anchor positif (langkah 7 sampai 15).
+  - TC-889 c: tanpa entri Home Group diasersi lewat selisih jumlah baris terhadap baseline pada penanda baris (Note memuat nama group `Del Users` bersuffix): Changelog: Group +1 (baris Delete), tiga surface lain +3 (hanya entri A, B, dan C), dengan entri pencabutan A, B, C sebagai anchor positif (langkah 9 sampai 17).

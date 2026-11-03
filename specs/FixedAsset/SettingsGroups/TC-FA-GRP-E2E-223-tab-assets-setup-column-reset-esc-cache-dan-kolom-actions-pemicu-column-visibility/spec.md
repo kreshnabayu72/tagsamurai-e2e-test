@@ -20,77 +20,83 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup No 1) `totalControlGroups_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook suite pada `suite.md` berlaku.
 - Data Pre-setup (hanya dibaca): Warehouse A (WH-A, Assignable, 24 aset aktif variasi status, ditambah 2 Disposed) pada pohon group Tabel A. Kolom Tab Assets berada pada konfigurasi default sebagai kondisi awal; susunan default: Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated; kolom curated tersembunyi; tanpa pin.
-- Setup Column: spec menyimpan konfigurasi kolom Tab Assets (langkah 7, 14, dan 38). Hook `after` menghapus preferensi kolom Tab Assets di browser (kemampuan disediakan tim FE), bukan `[Reset to Default]`.
-- Lebar viewport diatur supaya tabel Tab Assets dapat di-scroll horizontal (dipakai asersi pin pada langkah 17); hook `after` memulihkan viewport.
-- Tab Users Detail Group Warehouse A (Group yang sama) dipakai hanya dibaca; daftar kolom default Tab Users disediakan tim FE sebagai pembanding langkah 40.
+- Setup Column: spec menyimpan konfigurasi kolom Tab Assets (langkah 8, 15, dan 42). Hook `after` menghapus preferensi kolom Tab Assets di browser (kemampuan disediakan tim FE), bukan `[Reset to Default]`.
+- Lebar viewport 900px disetel pada langkah 18 supaya tabel Tab Assets dapat di-scroll horizontal (dipakai asersi pin pada langkah 20) dan dipulihkan pada langkah 21; hook `after` memulihkan viewport bila spec berhenti sebelum langkah 21.
+- Tab Users Detail Group Warehouse A (Group yang sama) dipakai hanya dibaca; daftar kolom default Tab Users disediakan tim FE sebagai pembanding langkah 44.
 - State global: tidak ada. Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
 
 ### TC-FA-GRP-719: [Reset to Default]
 
-1. Klik angka Total Asset Warehouse A
-2. Klik icon (⋯) pada header kolom terakhir
-3. Klik [Setup Column]
-4. Uncheck Brand
-5. Drag Status ke posisi paling atas
-6. Klik icon Pin Asset ID
-7. Klik [Save]
-8. Klik icon (⋯) pada header kolom terakhir
-9. Klik [Setup Column]
-10. Klik [Reset to Default]
-11. Verifikasi Live Preview menampilkan kolom default (Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated)
-12. Verifikasi Live Preview tidak menampilkan kolom curated
-13. Verifikasi Live Preview tanpa kolom terpin
-14. Klik [Save]
-15. Verifikasi tabel menampilkan kolom default (Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated)
-16. Verifikasi tabel tanpa kolom curated
-17. Scroll tabel horizontal ke kanan
-18. Verifikasi tidak ada kolom yang membeku saat tabel di-scroll horizontal
-19. Refresh F5
-20. Klik angka Total Asset Warehouse A
-21. Verifikasi tabel tetap menampilkan kolom default (Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated) setelah F5
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik angka Total Asset Warehouse A
+3. Klik icon (⋯) pada header kolom terakhir
+4. Klik [Setup Column]
+5. Uncheck Brand
+6. Drag Status ke posisi paling atas
+7. Klik icon Pin Asset ID
+8. Klik [Save]
+9. Klik icon (⋯) pada header kolom terakhir
+10. Klik [Setup Column]
+11. Klik [Reset to Default]
+12. Verifikasi Live Preview menampilkan kolom default (Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated)
+13. Verifikasi Live Preview tidak menampilkan kolom curated
+14. Verifikasi Live Preview tanpa kolom terpin
+15. Klik [Save]
+16. Verifikasi tabel menampilkan kolom default (Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated)
+17. Verifikasi tabel tanpa kolom curated
+18. Setel lebar viewport 900px
+19. Scroll tabel horizontal ke kanan
+20. Verifikasi tidak ada kolom yang membeku saat tabel di-scroll horizontal
+21. Pulihkan lebar viewport
+22. Refresh F5
+23. Ketik Search `Warehouse A`, tekan Enter
+24. Klik angka Total Asset Warehouse A
+25. Verifikasi tabel tetap menampilkan kolom default (Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated) setelah F5
 
 ### TC-FA-GRP-720: (X) dan Esc membatalkan perubahan
 
-22. Klik icon (⋯) pada header kolom terakhir
-23. Klik [Setup Column]
-24. Uncheck Brand
-25. Verifikasi footer popup memuat `[Save]` dan tidak memuat `[Cancel]`
-26. Klik (X) pada header popup
-27. Verifikasi popup tertutup tanpa menerapkan perubahan
-28. Verifikasi tabel masih menampilkan kolom Brand
-29. Klik icon (⋯) pada header kolom terakhir
-30. Klik [Setup Column]
-31. Drag Status ke posisi paling atas
-32. Tekan Esc
-33. Verifikasi popup tertutup tanpa menerapkan perubahan
-34. Verifikasi urutan kolom tabel tetap Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated
+26. Klik icon (⋯) pada header kolom terakhir
+27. Klik [Setup Column]
+28. Uncheck Brand
+29. Verifikasi footer popup memuat `[Save]` dan tidak memuat `[Cancel]`
+30. Klik (X) pada header popup
+31. Verifikasi popup tertutup tanpa menerapkan perubahan
+32. Verifikasi tabel masih menampilkan kolom Brand
+33. Klik icon (⋯) pada header kolom terakhir
+34. Klik [Setup Column]
+35. Drag Status ke posisi paling atas
+36. Tekan Esc
+37. Verifikasi popup tertutup tanpa menerapkan perubahan
+38. Verifikasi urutan kolom tabel tetap Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated
 
 ### TC-FA-GRP-721: Cache tidak memengaruhi tabel lain
 
-35. Klik icon (⋯) pada header kolom terakhir
-36. Klik [Setup Column]
-37. Uncheck Brand
-38. Klik [Save]
-39. Klik Tab Users pada Popup Detail Group Warehouse A
-40. Verifikasi tabel Tab Users tetap memakai konfigurasi kolomnya sendiri (kolom default Tab Users)
-41. Klik Tab Assets
-42. Verifikasi tabel Tab Assets tetap menyembunyikan kolom Brand
+39. Klik icon (⋯) pada header kolom terakhir
+40. Klik [Setup Column]
+41. Uncheck Brand
+42. Klik [Save]
+43. Klik Tab Users pada Popup Detail Group Warehouse A
+44. Verifikasi tabel Tab Users tetap memakai konfigurasi kolomnya sendiri (kolom default Tab Users)
+45. Klik Tab Assets
+46. Verifikasi tabel Tab Assets tetap menyembunyikan kolom Brand
 
 ### TC-FA-GRP-955: Kolom Actions hanya pemicu Column Visibility
 
-43. Verifikasi kolom Actions tampil paling kanan pada Tab Assets
-44. Klik header kolom Actions (⋯)
-45. Verifikasi dropdown Column Visibility terbuka
-46. Verifikasi baris data tampil (sedikitnya satu baris) dan tidak memuat row action per baris
+47. Verifikasi kolom Actions tampil paling kanan pada Tab Assets
+48. Klik header kolom Actions (⋯)
+49. Verifikasi dropdown Column Visibility terbuka
+50. Verifikasi baris data tampil (sedikitnya satu baris) dan tidak memuat row action per baris
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 20 membuka ulang Detail Warehouse A sesudah F5 (sesudah `[Save]` popup Detail tetap terbuka, sama seperti spec 224 sampai 229, sehingga tidak ada langkah buka ulang); langkah 2 sampai 4 dan 22 sampai 24 membuka popup lewat icon (⋯) dan [Setup Column]; langkah 5 menetapkan posisi tujuan drag Status paling atas dan langkah 6 menetapkan kolom pin Asset ID (TC-FA-GRP-719 hanya menulis "beberapa kolom").
-- Langkah 35 sampai 38 menyimpan Brand tersembunyi untuk TC-FA-GRP-721; TC-FA-GRP-955 tidak bergantung pada konfigurasi itu.
+- Langkah penghubung (S-03): langkah 24 membuka ulang Detail Warehouse A sesudah F5 (sesudah `[Save]` popup Detail tetap terbuka, sama seperti spec 224 sampai 229, sehingga tidak ada langkah buka ulang); langkah 3 sampai 5 dan 26 sampai 28 membuka popup lewat icon (⋯) dan [Setup Column]; langkah 6 menetapkan posisi tujuan drag Status paling atas dan langkah 7 menetapkan kolom pin Asset ID (TC-FA-GRP-719 hanya menulis "beberapa kolom").
+- Langkah 39 sampai 42 menyimpan Brand tersembunyi untuk TC-FA-GRP-721; TC-FA-GRP-955 tidak bergantung pada konfigurasi itu.
 - Alasan di atas 35 langkah: seluruh blok satu kelas (Setup Column Tab Assets, dataset Warehouse A yang sama), tiap blok berdiri sendiri, dan TC-FA-GRP-719 memerlukan satu `Verifikasi` per klausa untuk Live Preview dan tabel (default, tanpa curated, tanpa pin).
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
+- Langkah penghubung (S-03, 8b butir 2): langkah 18 (Setel lebar viewport 900px) dan langkah 21 (Pulihkan lebar viewport) menjamin tabel lebih lebar dari viewport sehingga asersi "tidak ada kolom yang membeku" tidak lulus kosong, pola spec 187.
 - Temuan untuk QA:
   - TC-FA-GRP-719 Langkah 3 "Ubah urutan, hide, dan pin beberapa kolom" tidak menyebut kolom dan posisi tujuan; spec memilih Brand (hide), Status (drag ke atas), Asset ID (pin).
   - TC-FA-GRP-721 Expected a tidak menyebut isi konfigurasi kolom Tab Users sebagai pembanding; spec memakai daftar kolom default Tab Users dari tim FE.

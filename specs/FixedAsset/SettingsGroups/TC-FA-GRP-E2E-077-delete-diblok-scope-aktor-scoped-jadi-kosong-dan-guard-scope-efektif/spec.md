@@ -29,6 +29,7 @@ coverage:
 | TC-1058 | Manage Group C/R/U/D hanya di `Solo Scope 3`; sekaligus Group Role Asset Admin (tanpa capability Manage Group) di `Warehouse A` | `Spectra.env.FA_MGCRUD_SOLO3_PASSWORD` |
 | TC-237 | Group Manager dengan dua node scope level 1 (Pre-setup No 23): `Head Office` dan `Del Scope Own` | `Spectra.env.FA_GM_WN_PASSWORD` |
 
+- Flag Guided Tooltip `fa-settings-groups` untuk akun hasil ganti akun (langkah 8, 17, 26): disetel `seen` di hook `before` spec ini dan dipulihkan di hook `after` (kemampuan disediakan tim FE/BE); akun pertama mengikuti hook suite.
 - Data Dinamis (di-seed lewat API di `before`, kosong tanpa aset dan tanpa user lain): `Solo Scope`, `Solo Scope 2`, `Solo Scope 3` (masing-masing menjadi satu-satunya scope aktor TC-nya) dan `Del Scope Own` (group level 1 kosong milik spec ini, dibuat di `before` dan di-assign ke aktor TC-237 sebagai node scope kedua selain `Head Office`; target Delete TC-237). Penetapan scope tiap akun dan penetapan Transaction Role atau Group Role di `Warehouse A` dilakukan seeding API (disediakan tim FE/BE). `Warehouse A` (Pre-setup No 9) hanya dibaca.
 - Cleanup di `after`: hapus data milik spec dan lepas assignment seed lewat API.
 

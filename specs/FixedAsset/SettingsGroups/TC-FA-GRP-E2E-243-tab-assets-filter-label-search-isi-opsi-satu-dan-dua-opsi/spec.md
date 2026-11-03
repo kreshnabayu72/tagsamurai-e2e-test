@@ -29,58 +29,60 @@ coverage:
 
 ### Langkah penghubung: tampilkan kolom curated Label
 
-1. Buka Detail Multi Label Node (Tab Assets)
-2. Buka Popup Setup Column
-3. Centang Label
-4. Klik [Save]
-5. Verifikasi kolom Label tampil di tabel (precondition TC)
+1. Ketik Search `Multi Label Node`, tekan Enter
+2. Buka Detail Multi Label Node (Tab Assets)
+3. Buka Popup Setup Column
+4. Centang Label
+5. Klik [Save]
+6. Verifikasi kolom Label tampil di tabel (precondition TC)
 
 ### TC-FA-GRP-1170: Search kolom Label: substring, case-insensitive, label di balik +N more, tanpa hasil
 
-6. Ketik Search `prior`, tekan Enter
-7. Verifikasi aset L1, L2, dan L3 tampil
-8. Verifikasi label Priority aset L1 tersembunyi di balik `+1 more`
-9. Verifikasi aset L4 dan L5 tidak tampil
-10. Ganti isi kotak search dengan `PRIOR`, tekan Enter
-11. Verifikasi hasil identik dengan huruf kecil: L1, L2, L3 tampil dan L4, L5 tidak tampil (case-insensitive)
-12. Ganti isi kotak search dengan `Fixture.settingsGroups.noMatchText`, tekan Enter
-13. Verifikasi empty state Illustration dengan title `No results found` dan body `Try adjusting your search or filter.`
-14. Klik `(←)` pada kotak Search (langkah penghubung)
+7. Ketik Search `prior`, tekan Enter
+8. Verifikasi aset L1, L2, dan L3 tampil
+9. Verifikasi label Priority aset L1 tersembunyi di balik `+1 more`
+10. Verifikasi aset L4 dan L5 tidak tampil
+11. Ganti isi kotak search dengan `PRIOR`, tekan Enter
+12. Verifikasi hasil identik dengan huruf kecil: L1, L2, L3 tampil dan L4, L5 tidak tampil (case-insensitive)
+13. Ganti isi kotak search dengan `Fixture.settingsGroups.noMatchText`, tekan Enter
+14. Verifikasi empty state Illustration dengan title `No results found` dan body `Try adjusting your search or filter.`
+15. Klik `(←)` pada kotak Search (langkah penghubung)
 
 ### TC-FA-GRP-1171: Screening isi opsi dropdown Filter Label
 
-15. Klik icon Filter
-16. Verifikasi placeholder field Label `All labels`
-17. Buka dropdown Label
-18. Verifikasi opsi = Finance, Fragile, Priority (nilai Label distinct yang ada di baris tabel saat ini)
-19. Verifikasi label katalog yang tidak dipakai aset mana pun tidak menjadi opsi
-20. Verifikasi opsi tampil berbadge warna label
-21. Verifikasi opsi dapat dicentang lebih dari satu (multi-select)
-22. Verifikasi kotak search internal tampil di dalam dropdown
-23. Tutup dropdown
+16. Klik icon Filter
+17. Verifikasi placeholder field Label `All labels`
+18. Buka dropdown Label
+19. Verifikasi opsi = Finance, Fragile, Priority (nilai Label distinct yang ada di baris tabel saat ini)
+20. Verifikasi label katalog yang tidak dipakai aset mana pun tidak menjadi opsi
+21. Verifikasi opsi tampil berbadge warna label
+22. Verifikasi opsi dapat dicentang lebih dari satu (multi-select)
+23. Verifikasi kotak search internal tampil di dalam dropdown
+24. Tutup dropdown
 
 ### TC-FA-GRP-1172: Filter Label satu opsi, aset berlabel ganda cocok bila salah satu labelnya sama
 
-24. Pilih opsi Fragile pada Label
-25. Klik [Apply]
-26. Verifikasi aset L1 dan L2 tampil (Fragile adalah salah satu labelnya)
-27. Verifikasi aset L3, L4, dan L5 tidak tampil
-28. Verifikasi indikator filter aktif tampil pada icon Filter
+25. Pilih opsi Fragile pada Label
+26. Klik [Apply]
+27. Verifikasi aset L1 dan L2 tampil (Fragile adalah salah satu labelnya)
+28. Verifikasi aset L3, L4, dan L5 tidak tampil
+29. Verifikasi indikator filter aktif tampil pada icon Filter
 
 ### TC-FA-GRP-1173: Filter Label dua opsi dalam satu field (OR)
 
-29. Klik icon Filter, kosongkan pilihan Label, klik [Apply] (langkah penghubung)
-30. Klik icon Filter
-31. Centang Finance dan Priority pada Label
-32. Klik [Apply]
-33. Verifikasi aset L1, L2, L3, dan L5 tampil (memiliki Finance atau Priority)
-34. Verifikasi aset L4 (tanpa label) tidak tampil
-35. Klik icon Filter, kosongkan pilihan Label, klik [Apply] (langkah penghubung)
+30. Klik icon Filter, kosongkan pilihan Label, klik [Apply] (langkah penghubung)
+31. Klik icon Filter
+32. Centang Finance dan Priority pada Label
+33. Klik [Apply]
+34. Verifikasi aset L1, L2, L3, dan L5 tampil (memiliki Finance atau Priority)
+35. Verifikasi aset L4 (tanpa label) tidak tampil
+36. Klik icon Filter, kosongkan pilihan Label, klik [Apply] (langkah penghubung)
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (Section 4e). Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): kolom Label dicentang lewat Setup Column dan disimpan untuk membentuk precondition d; "Klik `(←)` pada kotak Search" dan "kosongkan pilihan Label, klik [Apply]" mengosongkan state antar-TC dan di akhir spec (S-09). Search untuk menemukan baris target tidak dipakai di luar TC.
+- Langkah penghubung (S-03): kolom Label dicentang lewat Setup Column dan disimpan untuk membentuk precondition d; "Klik `(←)` pada kotak Search" dan "kosongkan pilihan Label, klik [Apply]" mengosongkan state antar-TC dan di akhir spec (S-09). Search nama node dipakai sebagai langkah penghubung untuk menemukan baris target (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan; R-16).
+- Spec memiliki 36 langkah, di atas smell 35 langkah. Alasan: satu kelas (fungsional Filter Label), satu dataset (Multi Label Node), tiap blok TC berdiri sendiri dan tidak bergantung pada hasil blok lain; langkah dominan berupa Verifikasi per klausa (S-01).
 - Temuan untuk QA:
   - TC-FA-GRP-1171 tidak menyebut precondition d (kolom Label ditampilkan) dan tidak menyebut nama label katalog yang tidak dipakai; spec memakai kolom Label yang sama dan `Fixture.settingsGroups.unusedLabel`.
   - TC-FA-GRP-1170: Expected (a) "L1 yang label Priority-nya tersembunyi di balik `+1 more`" dipecah menjadi satu Verifikasi tersendiri (S-01).

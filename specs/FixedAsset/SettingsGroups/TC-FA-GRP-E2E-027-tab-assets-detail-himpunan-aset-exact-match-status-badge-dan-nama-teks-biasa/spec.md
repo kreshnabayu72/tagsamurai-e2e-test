@@ -32,59 +32,61 @@ coverage:
 
 ### TC-FA-GRP-275: Tab Assets via Detail, himpunan exact-match
 
-1. Klik nama Warehouse A di tabel (Tab Assets aktif default)
-2. Verifikasi Tab Assets aktif
-3. Verifikasi kolom default Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated
-4. Verifikasi kolom Measurement, Category, Label, Transactional Policy, Last Scanned, Asset Value, Warranty Expiry, dan Custom Field tersembunyi secara default
-5. Verifikasi tidak ada kolom Group
-6. Verifikasi tab berisi total 24 aset (22 Active, 1 Draft, 1 Waiting for Approval) sesuai pembacaan fixture BE
-7. Verifikasi aset Disposed, aset Deleted, dan 3 aset milik Rack 1 tidak termasuk dalam 24 aset
-8. Verifikasi default sort Name A–Z
+1. Ketik Search `Warehouse A`, tekan Enter
+2. Klik nama Warehouse A di tabel (Tab Assets aktif default)
+3. Verifikasi Tab Assets aktif
+4. Verifikasi kolom default Name, Asset ID, TAG, Brand, Model/Type, Status, Last Updated
+5. Verifikasi kolom Measurement, Category, Label, Transactional Policy, Last Scanned, Asset Value, Warranty Expiry, dan Custom Field tersembunyi secara default
+6. Verifikasi tidak ada kolom Group
+7. Verifikasi tab berisi total 24 aset (22 Active, 1 Draft, 1 Waiting for Approval) sesuai pembacaan fixture BE
+8. Verifikasi aset Disposed, aset Deleted, dan 3 aset milik Rack 1 tidak termasuk dalam 24 aset
+9. Verifikasi default sort Name A–Z
 
 ### TC-FA-GRP-276: Nama aset teks biasa
 
-9. Klik nama aset pertama
-10. Verifikasi nama aset tampil sebagai teks biasa (bukan link)
-11. Verifikasi klik tidak membuka Asset Detail dan tidak berpindah halaman
-12. Tutup popup dengan [X]
+10. Klik nama aset pertama
+11. Verifikasi nama aset tampil sebagai teks biasa (bukan link)
+12. Verifikasi klik tidak membuka Asset Detail dan tidak berpindah halaman
+13. Tutup popup dengan [X]
 
 ### TC-FA-GRP-288: Klik angka Total Asset, himpunan exact-match
 
-13. Klik angka Total Asset (24) pada baris Warehouse A
-14. Verifikasi Tab Assets berisi 24 aset (Draft, Waiting for Approval, Active)
-15. Verifikasi aset Disposed, aset Deleted, dan aset di Rack 1 tidak termasuk
-16. Verifikasi jumlah total aset tab sama dengan angka kolom Total Asset, yaitu 24
+14. Klik angka Total Asset (24) pada baris Warehouse A
+15. Verifikasi Tab Assets berisi 24 aset (Draft, Waiting for Approval, Active)
+16. Verifikasi aset Disposed, aset Deleted, dan aset di Rack 1 tidak termasuk
+17. Verifikasi jumlah total aset tab sama dengan angka kolom Total Asset, yaitu 24
 
 ### TC-FA-GRP-289: Nama aset teks biasa, read-only, format Name
 
-17. Klik nama aset pertama
-18. Verifikasi nama aset teks biasa dan klik tidak membuka Asset Detail
-19. Verifikasi Tab Assets tidak memiliki aksi tulis
-20. Verifikasi teks Name berformat `[Asset Name] - [Increment]` (mis. `Laptop Dell - 12`)
+18. Klik nama aset pertama
+19. Verifikasi nama aset teks biasa dan klik tidak membuka Asset Detail
+20. Verifikasi Tab Assets tidak memiliki aksi tulis
+21. Verifikasi teks Name berformat `[Asset Name] - [Increment]` (mis. `Laptop Dell - 12`)
 
 ### TC-FA-GRP-290 dan TC-FA-GRP-987: Status mengikuti Aturan Resolusi Tampilan Status
 
-21. Verifikasi baris aset Active pada halaman 1 menampilkan badge hasil resolusi Custody/Condition sesuai Aturan Resolusi Tampilan Status (`fixed-asset/_foundation/asset-state-machine.md` §6) dengan palette badge platform
-22. Klik ikon `Filter`
-23. Buka dropdown Status
-24. Verifikasi opsi filter Status sama dengan himpunan nilai badge distinct pada data tab sesuai pembacaan fixture BE
-25. Pilih Status `Draft`
-26. Klik [Apply]
-27. Verifikasi baris aset Lifecycle Draft menampilkan badge `Draft`
-28. Klik ikon `Filter`
-29. Ganti pilihan Status menjadi `Waiting for Approval`
-30. Klik [Apply]
-31. Verifikasi baris aset Waiting for Approval menampilkan badge `Waiting for Approval`
-32. Klik ikon `Filter`
-33. Hapus pilihan Status
-34. Klik [Apply]
-35. Tutup popup dengan [X]
+22. Verifikasi baris aset Active pada halaman 1 menampilkan badge hasil resolusi Custody/Condition sesuai Aturan Resolusi Tampilan Status (`fixed-asset/_foundation/asset-state-machine.md` §6) dengan palette badge platform
+23. Klik ikon `Filter`
+24. Buka dropdown Status
+25. Verifikasi opsi filter Status sama dengan himpunan nilai badge distinct pada data tab sesuai pembacaan fixture BE
+26. Pilih Status `Draft`
+27. Klik [Apply]
+28. Verifikasi baris aset Lifecycle Draft menampilkan badge `Draft`
+29. Klik ikon `Filter`
+30. Ganti pilihan Status menjadi `Waiting for Approval`
+31. Klik [Apply]
+32. Verifikasi baris aset Waiting for Approval menampilkan badge `Waiting for Approval`
+33. Klik ikon `Filter`
+34. Hapus pilihan Status
+35. Klik [Apply]
+36. Tutup popup dengan [X]
 
 ## Notes
 
-- Spec 35 langkah, pada batas sekitar 35 langkah.
-- Langkah 21, 24, 27, dan 31 memenuhi Expected TC-FA-GRP-290 dan TC-FA-GRP-987 sekaligus karena kedua TC memuat klausa yang sama (badge Lifecycle Draft dan Waiting for Approval, badge hasil resolusi untuk aset lainnya); opsi filter Status (langkah 24) berasal dari Expected TC-FA-GRP-987 butir c.
-- Langkah penghubung (S-03): langkah 12 dan 35 (menutup popup), langkah 22 sampai 26 dan 28 sampai 30 (Filter Status sebagai cara menemukan baris Draft dan Waiting for Approval pada tab 3 halaman, R-16), langkah 32 sampai 34 (membersihkan Filter, S-09).
+- Spec 36 langkah, melewati sekitar 35 langkah hanya oleh satu langkah Search penemu baris: seluruh blok adalah satu kelas (Tab Assets Warehouse A) pada dataset yang sama, tiap blok berdiri sendiri, dan memisahkannya hanya menggandakan login, hook, dan cleanup tanpa alur baru.
+- Langkah 2 (Ketik Search `Warehouse A`, tekan Enter) menemukan baris target karena client punya lebih dari 10 node level 1 dengan page size 10, sehingga baris tidak diandalkan berada di halaman 1; Search tetap aktif untuk klik angka Total Asset pada langkah 14 (R-16).
+- Langkah 22, 25, 28, dan 31 memenuhi Expected TC-FA-GRP-290 dan TC-FA-GRP-987 sekaligus karena kedua TC memuat klausa yang sama (badge Lifecycle Draft dan Waiting for Approval, badge hasil resolusi untuk aset lainnya); opsi filter Status (langkah 25) berasal dari Expected TC-FA-GRP-987 butir c.
+- Langkah penghubung (S-03): langkah 13 dan 36 (menutup popup), langkah 23 sampai 27 dan 29 sampai 31 (Filter Status sebagai cara menemukan baris Draft dan Waiting for Approval pada tab 3 halaman, R-16), langkah 33 sampai 35 (membersihkan Filter, S-09).
 - Urutan TC dalam spec: 275, 276, 288, 289, 290/987.
 - Temuan untuk QA:
   - TC-FA-GRP-275 dan 288 menyebut "24 aset" tanpa cara membaca total pada tab beberapa halaman; spec memakai pembacaan fixture BE untuk himpunan dan jumlah.

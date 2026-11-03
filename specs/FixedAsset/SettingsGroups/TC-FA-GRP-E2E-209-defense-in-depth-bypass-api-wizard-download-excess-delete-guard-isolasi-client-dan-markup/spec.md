@@ -58,34 +58,45 @@ coverage:
 5. Klik [+] Group
 6. Isi Group Name `<script>alert(1)</script> {runId}-209` dan Description `<img src=x onerror=alert(1)>`, klik [Submit]
 7. Verifikasi toast sukses "Success, group has been created."
-8. Buka tabel Groups List, sidebar, Detail, dan Changelog
-9. Verifikasi Group Name dan Description tampil sebagai teks literal di tabel, sidebar, Detail, dan Changelog
-10. Verifikasi tidak ada script yang dieksekusi (tidak ada dialog alert)
+8. Ketik Search `{runId}-209`, tekan Enter
+9. Buka tabel Groups List, sidebar, Detail, dan Changelog
+10. Verifikasi Group Name dan Description tampil sebagai teks literal di tabel, sidebar, Detail, dan Changelog
+11. Verifikasi tidak ada script yang dieksekusi (tidak ada dialog alert)
 
 ### TC-935: String SQL disimpan literal
 
-11. Klik [+] Group
-12. Isi Group Name `Lab'; DROP TABLE groups; -- {runId}-209`, klik [Submit]
-13. Verifikasi toast sukses "Success, group has been created."
-14. Verifikasi group tersimpan dengan nama literal `Lab'; DROP TABLE groups; -- {runId}-209`
-15. Verifikasi data group lain tidak terdampak (Head Office dan Warehouse A tetap tampil di Groups List)
+12. Klik [+] Group
+13. Isi Group Name `Lab'; DROP TABLE groups; -- {runId}-209`, klik [Submit]
+14. Verifikasi toast sukses "Success, group has been created."
+15. Kosongkan Search dengan klik `✕`, lalu ketik Search `{runId}-209`, tekan Enter
+16. Verifikasi group tersimpan dengan nama literal `Lab'; DROP TABLE groups; -- {runId}-209`
+17. Kosongkan Search dengan klik `✕`, lalu ketik Search `Head Office`, tekan Enter
+18. Verifikasi Head Office tetap tampil di Groups List
+19. Kosongkan Search dengan klik `✕`, lalu ketik Search `Warehouse A`, tekan Enter
+20. Verifikasi Warehouse A tetap tampil di Groups List
 
 ### TC-1249: Server tidak mengirim nilai sel bergerbang
 
-16. Kirim request baca data Tab Assets `Value Gate Node A {runId}-209` sebagai noValueAccess
-17. Verifikasi payload baris tidak memuat nilai Asset Value, Warranty Expiry, maupun custom field Purchasing; hanya penanda keadaan `No access`
-18. Kirim request baca yang sama dengan parameter filter Asset Value Min 0 Max 99999 sebagai noValueAccess
-19. Verifikasi respons filter Asset Value mengembalikan 0 baris
-20. Kirim request baca yang sama sebagai managePurchaseGroups untuk kolom Asset Value
-21. Verifikasi nilai Asset Value tidak ikut terkirim
-22. Verifikasi nilai Warranty Expiry terkirim
-23. Verifikasi state data tidak berubah
+21. Catat state data Tab Assets `Value Gate Node A {runId}-209` lewat fixture BE
+22. Kirim request baca data Tab Assets `Value Gate Node A {runId}-209` sebagai noValueAccess
+23. Verifikasi respons memuat sedikitnya satu baris dengan kolom lain yang tidak bergerbang terisi (anchor)
+24. Verifikasi payload baris tidak memuat nilai Asset Value, Warranty Expiry, maupun custom field Purchasing; hanya penanda keadaan `No access`
+25. Kirim request baca yang sama dengan parameter filter Asset Value Min 0 Max 99999 sebagai noValueAccess
+26. Verifikasi data Tab Assets `Value Gate Node A {runId}-209` tanpa filter berisi sedikitnya satu baris (anchor, dari respons request tanpa filter)
+27. Verifikasi respons filter Asset Value mengembalikan 0 baris
+28. Kirim request baca yang sama sebagai managePurchaseGroups untuk kolom Asset Value
+29. Verifikasi respons memuat sedikitnya satu baris dengan kolom lain yang tidak bergerbang terisi (anchor)
+30. Verifikasi nilai Warranty Expiry terkirim
+31. Verifikasi nilai Asset Value tidak ikut terkirim
+32. Verifikasi state data tidak berubah dibanding yang dicatat lewat fixture BE sebelum request
 
 ## Notes
 
 - K-1: seluruh TC API di spec ini kelas a dengan Expected respons API; tetap masuk spec FE+BE karena TC granular tetap sumber dan tiap TC tepat satu spec. Asersi hanya status respons dan state data lewat fixture BE (8b butir 1). TC-934 dan 935 memakai UI untuk melihat payload dirender sebagai teks.
 - Langkah 1 sampai 4 berulang untuk setiap baris tabel Prerequisites (9 baris: TC-926 sampai 933 dan TC-963); satu `Verifikasi` per klausa tetap dipertahankan (8b butir 7). TC-931 dan 963 mengasersi hanya respons API; dialog blok FE "Cannot Save Selection" diasersi di spec jalur form, bukan di sini (8b butir 1).
-- Spec memiliki 23 langkah nominal dan 55 langkah setelah ekspansi, di atas smell 35 langkah. Alasan: seluruh blok satu kelas harness (defense-in-depth tanpa harness eksternal) dan tiap blok berdiri sendiri; ekspansi berasal dari perulangan tabel tanpa langkah bersyarat (8b butir 7).
+- Spec memiliki 32 langkah nominal dan 64 langkah setelah ekspansi, di atas smell 35 langkah. Alasan: seluruh blok satu kelas harness (defense-in-depth tanpa harness eksternal) dan tiap blok berdiri sendiri; ekspansi berasal dari perulangan tabel tanpa langkah bersyarat (8b butir 7).
+- Baris target dicari lewat Search nama (client memiliki lebih dari 10 node level 1 dan page size 10, sehingga posisi baris di halaman 1 tidak diandalkan). Langkah Search adalah langkah penghubung (S-03, R-16).
+- Asersi absence payload TC-1249 (8b butir 2): `Verifikasi` respons memuat sedikitnya satu baris dengan kolom lain terisi mendahului asersi tiap nilai bergerbang tidak terkirim; Warranty Expiry terkirim dipindah mendahului asersi Asset Value tidak terkirim untuk managePurchaseGroups. Filter Asset Value mengembalikan 0 baris dianchor oleh data tanpa filter yang berisi sedikitnya satu baris. Baseline state dicatat sebelum request TC-1249 (S-12).
 - Temuan untuk QA:
   - TC-931 dan 963 Expected b (dialog blok D-23 "Cannot Save Selection") adalah perilaku FE pada request langsung; tidak disalin ke spec (8b butir 1).
   - Kode status respons TC-928, 932, dan 933 tidak ditulis TC ("ditolak"); spec tidak mengarang kode. TC-933 memuat ID group client lain tanpa menyebut sumbernya; disediakan tim FE/BE.

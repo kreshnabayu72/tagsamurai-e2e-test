@@ -21,7 +21,7 @@ coverage:
 - Hook suite (flag Guided Tooltip, sesi API aktor, fixture BE, pemulihan state global): lihat `suite.md`. Suite berjalan serial (`parallel: false`).
 - Kelas h (state tenant): suite berjalan serial (`parallel: false`). Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): mengubah status Client menjadi Suspended atau Expired lewat fixture BE atau sesi API dan memulihkannya; klien HTTP untuk request langsung ke server; sesi API aktor dengan token yang tetap berlaku; hook uji handler plan-efektif pada tanggal T-0 di lingkungan non-produksi; downgrade terjadwal plan Professional ke Growth (cap 3); pembacaan status Excess group dan jumlah baris Changelog, System Log, dan Activity Log lewat fixture BE.
 - State global yang diubah spec: status Client (Suspended, Expired), plan terjadwal downgrade, dan status Excess group; dipulihkan di hook `after` (status Client Active, jadwal downgrade dibatalkan, group dipulihkan menjadi usable).
-- Data Dinamis (Pre-setup tambahan, di-seed lewat API di hook `before` sebelum status Client diubah, dihapus di hook `after`; nama bersuffix `{runId}-210`): `Edit Target {runId}-210`, `Del Empty {runId}-210`, `Bulk E10 {runId}-210`, `Bulk E11 {runId}-210`; untuk TC-1149 client dengan 6 group (G1 terlama sampai G6, dibuat berurutan) tanpa seleksi Wizard tersimpan; seleksi Wizard terjadwal untuk request Set Group Consolidation Selection.
+- Data Dinamis (Pre-setup tambahan, di-seed lewat API di hook `before` sebelum status Client diubah, dihapus di hook `after`; nama bersuffix `{runId}-210`): `Edit Target {runId}-210`, `Del Empty {runId}-210`, `Bulk E10 {runId}-210`, `Bulk E11 {runId}-210`; untuk TC-1149 client terisolasi yang berisi tepat enam group `G1 {runId}-210` (terlama) sampai `G6 {runId}-210` (dibuat berurutan) tanpa group lain dan tanpa seleksi Wizard tersimpan, token sesi API aktor diikat ke client itu oleh fixture BE (kemampuan disediakan tim FE/BE, tanpa endpoint karangan); seleksi Wizard terjadwal untuk request Set Group Consolidation Selection.
 
   | Status Client |
   |---|
@@ -53,17 +53,20 @@ coverage:
 18. Verifikasi handler T-0 berjalan dan commit tanpa `403` (aksi sistem tanpa aktor tidak diblokir status Suspended)
 19. Baca status Excess keenam group lewat API baca
 20. Verifikasi 3 group tetap usable (terlama dibuat diprioritaskan) dan 3 group Excess
-21. Verifikasi Changelog dan Activity Log memuat `Marked as Excess (Group Consolidation)` per group Excess dengan Modified By `System`
-22. Verifikasi jumlah baris System Log sama dengan baseline (tanpa System Log)
-23. Kirim request Edit Group pada salah satu group dengan token sesi API aktor
-24. Verifikasi request Edit Group ditolak server `403 Forbidden`
-25. Verifikasi data tidak berubah
-26. Pulihkan status Client menjadi Active lewat fixture BE hingga tersimpan
+21. Catat state keenam group (Group Name, Code, dan status usable atau Excess) sebagai pembanding
+22. Verifikasi Changelog dan Activity Log memuat `Marked as Excess (Group Consolidation)` per group Excess dengan Modified By `System`
+23. Verifikasi selisih jumlah baris Changelog terhadap baseline langkah 16 sama dengan jumlah group Excess (3)
+24. Verifikasi selisih jumlah baris Activity Log terhadap baseline langkah 16 sama dengan jumlah group Excess (3)
+25. Verifikasi jumlah baris System Log sama dengan baseline langkah 16 (tanpa System Log)
+26. Kirim request Edit Group pada salah satu group dengan token sesi API aktor
+27. Verifikasi request Edit Group ditolak server `403 Forbidden`
+28. Verifikasi Group Name, Code, dan status keenam group sama dengan state yang dicatat pada langkah 21 (data tidak berubah)
+29. Pulihkan status Client menjadi Active lewat fixture BE hingga tersimpan
 
 ## Notes
 
-- Langkah 1 sampai 14 berulang untuk setiap baris tabel Prerequisites (Suspended, Expired). Langkah penghubung (S-03): mengatur dan memulihkan status Client, serta mencatat baseline. Asersi "tidak ada baris log baru" atas request yang ditolak (langkah 13 dan 22) tetap di spec fungsional ini, bukan di spec absence kelas g, berdasarkan keputusan pengguna (S-05 dibaca bersama prinsip 13g): asersi ditulis sebagai selisih jumlah baris Changelog, System Log, dan Activity Log terhadap baseline yang dicatat sebelum request (langkah 2 dan 16, S-12).
-- Spec memiliki 26 langkah nominal dan 40 langkah setelah ekspansi (2 iterasi x 14 langkah + 12), di atas smell 35 langkah. Alasan: seluruh blok satu kelas harness (state tenant, kelas h) dan langkah dua status identik sehingga ekspansi berasal dari perulangan tanpa langkah bersyarat (8b butir 7); TC-1149 berdiri sendiri.
+- Langkah 1 sampai 14 berulang untuk setiap baris tabel Prerequisites (Suspended, Expired). Langkah penghubung (S-03): mengatur dan memulihkan status Client, serta mencatat baseline. Asersi "tidak ada baris log baru" atas request yang ditolak (langkah 13 dan 25) tetap di spec fungsional ini, bukan di spec absence kelas g, mengikuti pengecualian kelas h S-05 (2026-11-02) yang dibaca bersama prinsip 13g (penolakan aksi tulis pada client Suspended atau Expired adalah objek uji kelas h): asersi ditulis sebagai selisih jumlah baris Changelog, System Log, dan Activity Log terhadap baseline yang dicatat sebelum request (langkah 2 dan 16, S-12); langkah 23 dan 24 juga selisih terhadap baseline langkah 16 (S-12), dan langkah 28 membandingkan state group dengan catatan langkah 21.
+- Spec memiliki 29 langkah nominal dan 43 langkah setelah ekspansi (2 iterasi x 14 langkah + 15), di atas smell 35 langkah. Alasan: seluruh blok satu kelas harness (state tenant, kelas h) dan langkah dua status identik sehingga ekspansi berasal dari perulangan tanpa langkah bersyarat (8b butir 7); TC-1149 berdiri sendiri.
 - K-1: TC-995, 996, dan 1149 adalah kelas a atau h dengan Expected respons API dan state data lewat fixture BE; tetap masuk spec FE+BE karena TC granular tetap sumber dan tiap TC tepat satu spec.
 - P-2: job sistem T-0 pada TC-1149 adalah proses sistem yang hanya memicu kondisi yang diuji (Excess), bukan objek asersi aktor.
 - Temuan untuk QA:
