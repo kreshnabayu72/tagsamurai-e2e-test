@@ -67,12 +67,12 @@ coverage:
 
 ### TC-GS-USER-1040: Foto lebih dari 10 MB ditolak dengan toast error
 
-20. Isi First Name `Budi`, Last Name `Santoso {runId}-027`, Division `Finance`, Email `budisantoso+{runId}-027@qwertysystem.net`, centang Access `Fixed Asset`
+20. Isi First Name `Budi`, Last Name `Santoso {runId}-027`, Division `Finance`, Email `budisantoso+{runId}-027@qwertysystem.net`, pilih Access `Fixed Asset`
 21. Klik `[Edit]` pada overlay avatar, pilih `huge.jpg` (12 MB)
 22. Verifikasi toast error: "Error, failed to upload photo."
 23. Verifikasi avatar tetap tanpa foto
 24. Verifikasi Popup Create tetap terbuka
-25. Verifikasi field lain tidak berubah: First Name `Budi`, Last Name `Santoso {runId}-027`, Division `Finance`, Email `budisantoso+{runId}-027@qwertysystem.net`, Access `Fixed Asset` tercentang
+25. Verifikasi field lain tidak berubah: First Name `Budi`, Last Name `Santoso {runId}-027`, Division `Finance`, Email `budisantoso+{runId}-027@qwertysystem.net`, Access `Fixed Asset` terpilih
 26. Tunggu toast error tertutup
 
 ### TC-GS-USER-128: Foto lebih dari 1 MB otomatis dikompres tanpa error

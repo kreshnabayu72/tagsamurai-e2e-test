@@ -29,7 +29,7 @@ coverage:
 
 - Mode: FE+BE.
 - Hook suite: flag Guided Tooltip `gs-user` = seen (lihat `suite.md`).
-- Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2; kredensial `Spectra.env.GS_TC_PASSWORD`). Login sekali di hook `before` (akun default suite); tidak ada ganti akun. Password tidak ditulis di spec atau fixture.
+- Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2; kredensial `Spectra.env.GS_TC_PASSWORD`). Login di hook `before` spec ini (akun default suite); halaman dibuka hook `beforeEach` suite; tidak ada ganti akun. Password tidak ditulis di spec atau fixture.
 - Env var: `GS_TC_PASSWORD` (didaftarkan di `executionConfig.environmentVariables`).
 - Data Pre-setup (dibaca, tidak diubah; Tabel Data Uji Pre-setup): John Doe (No. 18; Activated, Position Staff, Employee ID `EMP-0001`), Mike Tan (No. 14; Pending Activation), Rina Putri (No. 15; email pending `rinaputri.new@qwertysystem.net`), Jane Smith (No. 17; Inactive manual), Andi Wijaya (No. 10; Total Control), Doni Pratama (No. 11; Read Only), Ahmad Fauzi (No. 13; User Type Admin), Dewi Lestari (No. 12; Basic, Temporary aktif +30 hari, Position Staff), Division `Finance` (No. 23).
 - Data Dinamis, di-seed lewat API di hook `before` dan dihapus di hook `after` (untuk TC-GS-USER-365 dan TC-GS-USER-366 agar halaman 2 ada setelah Search `a` + filter Division `Finance`): sebelas user Activated, Division `Finance`, nama `Aria Uji 01 {runId}-061` sampai `Aria Uji 11 {runId}-061`, email `ariauji01+{runId}-061@qwertysystem.net` sampai `ariauji11+{runId}-061@qwertysystem.net` (email berbeda-beda sehingga sort Email punya nilai distinct). Field wajib lain diisi seadanya oleh seeding.
@@ -38,18 +38,18 @@ coverage:
 
 ## Test Steps
 
-### Pembukaan layar
+### Persiapan
 
-1. Buka Global Settings > User > User List (sub-tab Login User)
-2. Pilih 100 baris per halaman pada Pagination
+1. Pilih 100 baris per halaman pada Pagination
 
 ### TC-GS-USER-356: Screening halaman User Detail
 
-3. Klik Name `John Doe` di User List
-4. Verifikasi Header: breadcrumb `User > Detail` tampil
-5. Verifikasi Header: breadcrumb `User > Detail` berupa label statis yang tidak dapat diklik
-6. Verifikasi Header Baris 1: Avatar + `John Doe` (kiri) dan switch Active (kanan atas)
-7. Verifikasi Header Baris 2: badge `Active` dan menu `[⋯]`
+2. Klik Name `John Doe` di User List
+3. Verifikasi Header: breadcrumb `User > Detail` tampil
+4. Verifikasi Header: breadcrumb `User > Detail` berupa label statis yang tidak dapat diklik
+5. Verifikasi Header Baris 1: Avatar + `John Doe` (kiri) dan switch Active (kanan atas)
+6. Verifikasi Header Baris 2: badge `Active` dan menu `[⋯]`
+7. Verifikasi Header Baris 2: Button Resend tidak tampil (kondisional; tidak tampil untuk John Doe)
 8. Verifikasi Header Baris 3: Employee ID `EMP-0001` (muted)
 9. Verifikasi Header Baris 4: `Viewing: [Global Settings ▾]`
 10. Verifikasi Body: SectionCard General Information grid 4 kolom: Identity (Position, Division, Email) | Access & Status (User Type badge, daftar product access) | User TAG | Authenticator (MFA)
@@ -59,7 +59,7 @@ coverage:
 
 ### TC-GS-USER-1054: Detail User dibuka dengan tab Role aktif secara default
 
-14. Verifikasi Tab `Role` aktif pada Detail `John Doe` yang sama (langkah 1 TC-GS-USER-1054 dipenuhi langkah 3)
+14. Verifikasi Tab `Role` aktif pada Detail `John Doe` yang sama (langkah 1 TC-GS-USER-1054 dipenuhi langkah 2)
 15. Verifikasi konten Tab `Role` tampil
 16. Verifikasi Tab `Responsibilities`, `Non-Login User`, `Changelog`, `System Log`, dan `User Log` tidak aktif
 
@@ -162,8 +162,8 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`.
 - Urutan TC sumber diubah: TC-GS-USER-1054 dan TC-GS-USER-1018 dimajukan masing-masing tepat sesudah TC yang membuka Detail yang sama (TC-GS-USER-356 dan TC-GS-USER-358) agar tidak ada pembukaan Detail ulang; TC-GS-USER-273 diletakkan sesudah TC-GS-USER-364 karena memakai Detail Dewi Lestari yang sama; TC-GS-USER-365 dan TC-GS-USER-366 di akhir karena memakai ukuran halaman 10 dan mengubah state List.
 - Spec melewati sekitar 35 langkah (74 langkah, di antaranya 21 langkah pembukaan Detail berulang berupa klik menu User, Search, dan klik Name) karena empat belas TC berada di satu kelas harness (fungsional, baca saja, tanpa aksi yang mengubah data), satu layar (User Detail dan User List), dan tiap blok TC berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 2 (100 baris per halaman agar John Doe tampil tanpa Search), 17 sampai 18, 22 sampai 23, 29 sampai 30, 34 sampai 35, 38 sampai 39, 42 sampai 43, 46 sampai 47, dan 56 (kembali ke User List dan mencari user target), 55 (menutup Popup `Edit User` yang belum diubah lewat `✕`; tanpa dialog `Unsaved Changes` karena form tidak dirty), dan 57 (10 baris per halaman agar halaman 2 ada).
-- Asersi absence (langkah 13, 16, dan 28) berada di layar yang sudah menampilkan pembandingnya pada langkah sebelumnya (General Information pada langkah 10, Tab `Role` aktif pada langkah 14 dan 15, teks pending email pada langkah 27). Spec tidak menambah asersi di luar Expected TC.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (100 baris per halaman agar John Doe tampil tanpa Search), 17 sampai 18, 22 sampai 23, 29 sampai 30, 34 sampai 35, 38 sampai 39, 42 sampai 43, 46 sampai 47, dan 56 (kembali ke User List dan mencari user target), 55 (menutup Popup `Edit User` yang belum diubah lewat `✕`; tanpa dialog `Unsaved Changes` karena form tidak dirty), dan 57 (10 baris per halaman agar halaman 1 ada).
+- Asersi absence (langkah 7, 13, 16, dan 28) berada di layar yang sudah menampilkan pembandingnya pada langkah sebelumnya (badge `Active` dan menu `[⋯]` pada langkah 6, General Information pada langkah 10, Tab `Role` aktif pada langkah 14 dan 15, teks pending email pada langkah 27). Spec tidak menambah asersi di luar Expected TC.
 - Langkah 1 TC-GS-USER-1018, TC-GS-USER-364, dan TC-GS-USER-273 ("Klik Name" atau "Buka Detail") dipenuhi pembukaan Detail pada langkah 24 dan 48; Search `a` dan sort Email pada langkah 1 TC-GS-USER-366 sudah aktif dari langkah 58 sampai 59.
 - Pembagian TC lintas spec: Tab `Role` aktif default (TC-GS-USER-1054) diverifikasi hanya di spec ini; isi Tab Role diverifikasi di spec 063 dan 064.
 - Temuan untuk QA:

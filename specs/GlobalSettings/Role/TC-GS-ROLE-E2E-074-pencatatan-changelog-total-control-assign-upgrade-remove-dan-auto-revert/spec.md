@@ -53,7 +53,7 @@ coverage:
 9. Aksi pemicu (sesi API Ahmad Fauzi): Assign Total Control ke Sari Wulandari (setara TC-GS-ROLE-58 langkah 1 sampai 3)
 10. Buka Global Settings > Role & Permission > Tab Total Control, klik [Changelog], ketik Search `Sari Wulandari`, tekan Enter
 11. Verifikasi total hasil Search sama dengan `B-207` + 1 (tepat 1 entry baru)
-12. Verifikasi entry baru (teratas): Action `Assign`, User Name `Sari Wulandari`, Field `Access Level`, Old Value `—`, New Value `Total Control`, Modified By `Ahmad F`
+12. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 11): Action `Assign`, User Name `Sari Wulandari`, Field `Access Level`, Old Value `—`, New Value `Total Control`, Modified By `Ahmad F`
 13. Tutup modal Changelog, klik Tab System, klik [Changelog], ketik Search `Sari Wulandari`, tekan Enter
 14. Verifikasi total hasil Search sama dengan `B-207-SYS` (tidak ada entry Sari Wulandari baru di Changelog Tab System)
 
@@ -62,7 +62,7 @@ coverage:
 15. Aksi pemicu (sesi API Ahmad Fauzi): Assign Total Control ke Siti Nurhaliza (upgrade dari Read Only, setara TC-GS-ROLE-60 langkah 1 sampai 3)
 16. Tutup modal Changelog, buka Global Settings > Role & Permission > Tab Total Control, klik [Changelog], ketik Search `Siti Nurhaliza`, tekan Enter
 17. Verifikasi total hasil Search sama dengan `B-208` + 1 (tepat 1 entry baru)
-18. Verifikasi entry baru (teratas): Action `Assign`, User Name `Siti Nurhaliza`, Field `Access Level`, Old Value `Read Only`, New Value `Total Control`, Modified By `Ahmad F`
+18. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 17): Action `Assign`, User Name `Siti Nurhaliza`, Field `Access Level`, Old Value `Read Only`, New Value `Total Control`, Modified By `Ahmad F`
 19. Tutup modal Changelog, klik Tab Read Only, klik [Changelog], ketik Search `Siti Nurhaliza`, tekan Enter
 20. Verifikasi total hasil Search sama dengan `B-208-RO` (tidak ada entry baru untuk Siti Nurhaliza akibat upgrade; tidak ada entry Remove atau Auto-Revert)
 
@@ -71,7 +71,7 @@ coverage:
 21. Aksi pemicu (sesi API Ahmad Fauzi): Remove Total Control dari Sari Wulandari (setara TC-GS-ROLE-86 langkah 1 sampai 2)
 22. Tutup modal Changelog, buka Global Settings > Role & Permission > Tab Total Control, klik [Changelog], ketik Search `Sari Wulandari`, tekan Enter
 23. Verifikasi total hasil Search sama dengan `B-207` + 2 (entry Assign dari langkah 9 dan tepat 1 entry Remove baru)
-24. Verifikasi entry Remove baru (teratas): Action `Remove`, Field `Access Level`, Old Value `Total Control`, New Value `—`, Modified By `Ahmad F`
+24. Verifikasi entry Remove baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 23): Action `Remove`, Field `Access Level`, Old Value `Total Control`, New Value `—`, Modified By `Ahmad F`
 25. Tutup modal Changelog, klik Tab System, klik [Changelog], ketik Search `Sari Wulandari`, tekan Enter
 26. Verifikasi total hasil Search sama dengan `B-207-SYS` (Changelog Tab System tidak memuat entry Remove per-role untuk Sari Wulandari)
 27. Tutup modal Changelog, klik Role Name `Manage TAG` untuk membuka Detail, klik [Changelog], ketik Search `Sari Wulandari`, tekan Enter
@@ -82,11 +82,11 @@ coverage:
 29. Aksi pemicu (sesi API Ahmad Fauzi): hapus centang Update baris Manage TAG milik Maya Anggraini dan konfirmasi `[Remove]` (setara TC-GS-ROLE-106 langkah 1 sampai 2)
 30. Tutup modal Changelog, buka Global Settings > Role & Permission > Tab Total Control, klik [Changelog], ketik Search `Maya Anggraini`, tekan Enter
 31. Verifikasi total hasil Search sama dengan `B-210` + 1 (tepat 1 entry baru)
-32. Verifikasi entry baru (teratas): Action `Auto-Revert`, Field `Access Level`, Old Value `Total Control`, New Value `—`
+32. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 31): Action `Auto-Revert`, Field `Access Level`, Old Value `Total Control`, New Value `—`
 33. Verifikasi Modified By entry Auto-Revert adalah `Ahmad F` (bukan `System`)
 34. Tutup modal Changelog, klik Tab System, klik Role Name `Manage TAG` untuk membuka Detail, klik [Changelog], ketik Search `Maya Anggraini`, tekan Enter
 35. Verifikasi total hasil Search sama dengan `B-210-DET` + 1 (entry Edit pemicu tercatat terpisah di Changelog "Manage TAG")
-36. Verifikasi entry baru (teratas): Action `Edit`, Role — User `Manage TAG — Maya Anggraini`, Field `Update`, Old Value `Active`, New Value `Inactive`
+36. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 35): Action `Edit`, Role — User `Manage TAG — Maya Anggraini`, Field `Update`, Old Value `Active`, New Value `Inactive`
 
 ## Notes
 
@@ -94,7 +94,7 @@ coverage:
 - Spec memuat 36 langkah nominal. Alasan di atas sekitar 35 langkah: seluruh spec satu kelas (pencatatan Changelog Tab Total Control, dibaca di Role & Permission), dan sebagian besar langkah adalah blok baca-log berpola (buka surface, cari entri, lalu `Verifikasi` kolom log) serta baseline, yang tidak dihitung ke ambang (bagian 3 konvensi). Tiap blok TC berdiri sendiri dengan baseline sendiri, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; satu-satunya keterkaitan data adalah Sari Wulandari pada TC-GS-ROLE-207 dan TC-GS-ROLE-209 (Assign lalu Remove), sesuai Dependensi TC sumber.
 - Urutan TC sumber (207, 208, 209, 210) dipertahankan. TC-GS-ROLE-209 (Remove Sari Wulandari) berjalan sesudah TC-GS-ROLE-207 karena Remove membutuhkan Sari Wulandari ber-Total Control hasil Assign TC-GS-ROLE-207.
 - Dependensi TC-GS-ROLE-58, 60, 86, dan 106 dijalankan lewat aksi pemicu sesi API (langkah 9, 15, 21, 29). Given Maya Anggraini ber-Total Control (setara TC-GS-ROLE-59) dijalankan di hook `before` dan tidak diasersi di spec ini (dipakai sebagai precondition TC, tidak diasersi); Assign Maya Anggraini oleh hook terjadi sebelum baseline `B-210` dan `B-210-DET` dicatat.
-- "Entry baru (teratas)" berarti entri teratas pada hasil Search (urutan default Newest First); jumlah entri baru diyakinkan lewat selisih terhadap baseline.
+- "Entry baru" dikenali lewat kombinasi kolom yang diasersi pada langkah Verifikasinya dan selisih jumlah terhadap baseline, bukan lewat posisi baris (S-12, S-14); urutan antar-entri yang jatuh pada menit yang sama tidak diasersi karena kolom Date berketelitian menit.
 - Langkah penghubung (aksi tanpa `Verifikasi`): menutup modal Changelog, berpindah tab, membuka Detail, dan mengganti isi kotak search (langkah 2 sampai 8, 10, 13, 16, 19, 22, 25, 27, 30, 34); aksi pemicu API (langkah 9, 15, 21, 29).
 - TC-GS-ROLE-207 Expected b, TC-GS-ROLE-208 Expected b, dan TC-GS-ROLE-209 Expected b ditulis sebagai asersi jumlah terhadap baseline (langkah 14, 20, 26, 28), bukan asersi absence kelas g: tiap aksi pemicu punya aksi nyata di spec ini, dan jumlah entri sebelum aksi dicatat sebagai baseline.
 - Temuan untuk QA:

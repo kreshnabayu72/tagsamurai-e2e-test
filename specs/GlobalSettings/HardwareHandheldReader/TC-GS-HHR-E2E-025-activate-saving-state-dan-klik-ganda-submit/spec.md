@@ -16,7 +16,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE. Backend nyata dengan fixture backend; reader hasil aktivasi dipulihkan oleh spec sendiri dan hook `after`.
-- Suite serial (`parallel: false`). State global yang diubah spec ini: dua aktivasi sukses unit `SN-HHR-00201` menjadi reader `Zebra RFID Reader - 2` (langkah 6 dan 25) dan kartu `Long Range` menjadi `6 of 6`. Reader dari TC-GS-HHR-95 dihapus oleh spec lewat `Delete` agar kuota `Long Range` pulih (NC-06: Delete reader Jalur A mengembalikan unit ke `Available` di Hardware Stock). Hook `after` melepas penundaan respons yang tersisa, menghapus reader sisa, dan memulihkan Seed Reader A lewat fixture backend.
+- Suite serial (`parallel: false`). State global yang diubah spec ini: dua aktivasi sukses unit `SN-HHR-00201` menjadi reader `Zebra RFID Reader - 2` (langkah 6 dan 26) dan kartu `Long Range` menjadi `6 of 6`. Reader dari TC-GS-HHR-95 dihapus oleh spec lewat `Delete` agar kuota `Long Range` pulih (NC-06: Delete reader Jalur A mengembalikan unit ke `Available` di Hardware Stock). Hook `after` melepas penundaan respons yang tersisa, menghapus reader sisa, dan memulihkan Seed Reader A lewat fixture backend.
 - Guided Tooltip: hook suite `before` men-set flag `guided_tooltip_seen_gs-handheld-reader` true untuk akun aktor dan hook `after` memulihkannya, lihat `suite.md`.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader; `## Test Steps` tidak mengulang langkah buka karena spec ini tidak menguji navigasi.
 - Akun aktor (login di hook `before`, bukan di langkah): Total Control Sari Dewi, Client A, `totalControl_automated_qaTeam1@qwertysystem.net`, password `Spectra.env.GS_TC_PASSWORD`. Hook `after` mengembalikan sesi ke akun default suite.
@@ -46,28 +46,29 @@ coverage:
 16. Ketik Search `Zebra RFID Reader - 2`, tekan Enter
 17. Klik `⋯` pada baris `Zebra RFID Reader - 2`, pilih `Delete`
 18. Klik `[Delete]` pada dialog
-19. Klik `(←)` pada kotak Search
+19. Tunggu aksi selesai
+20. Klik `(←)` pada kotak Search
 
 ### TC-GS-HHR-98: Klik ganda cepat pada Submit hanya membuat satu reader
 
-20. Tunggu toast lama hilang otomatis
-21. Klik `[+ Activate Reader]`
-22. Klik `Long Range` pada Overlay `Select Range Type`
-23. Sambungkan reader USB dengan Serial Number `SN-HHR-00201` lewat simulator USB
-24. Klik `[Sync]`
-25. Klik ganda cepat `[Submit]`
-26. Verifikasi hanya satu toast sukses tampil
-27. Ketik Search `Zebra RFID Reader - 2`, tekan Enter
-28. Verifikasi hanya satu baris `Zebra RFID Reader - 2` pada hasil Search
-29. Verifikasi kartu `Long Range` menjadi `6 of 6`
-30. Klik `(←)` pada kotak Search
+21. Tunggu toast lama hilang otomatis
+22. Klik `[+ Activate Reader]`
+23. Klik `Long Range` pada Overlay `Select Range Type`
+24. Sambungkan reader USB dengan Serial Number `SN-HHR-00201` lewat simulator USB
+25. Klik `[Sync]`
+26. Klik ganda cepat `[Submit]`
+27. Verifikasi hanya satu toast sukses tampil
+28. Ketik Search `Zebra RFID Reader - 2`, tekan Enter
+29. Verifikasi hanya satu baris `Zebra RFID Reader - 2` pada hasil Search
+30. Verifikasi kartu `Long Range` menjadi `6 of 6`
+31. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec singkat (30 langkah), di bawah ambang sekitar 35 langkah. Popup Activate dibuka 2 kali dan ditutup 2 kali (keduanya lewat Submit sukses).
+- Spec singkat (31 langkah), di bawah ambang sekitar 35 langkah. Popup Activate dibuka 2 kali dan ditutup 2 kali (keduanya lewat Submit sukses).
 - Urutan TC-GS-HHR-95 dulu lalu 98 mengikuti nomor TC. TC-GS-HHR-95 menahan respons hanya untuk mengamati state UI (kelas fungsional, bukan kelas b); setelah penahanan dilepas, Submit berhasil dan membuat reader `Zebra RFID Reader - 2`. Reader itu dihapus lewat `Delete` (langkah penghubung, tanpa `Verifikasi`) agar TC-GS-HHR-98 memulai dari kuota `Long Range` `5 of 6` dan serial `SN-HHR-00201` kembali tersedia di stok; TC-GS-HHR-98 membuat reader itu lagi. Reader dari TC-GS-HHR-98 dipulihkan oleh hook `after`.
-- Langkah penghubung (aksi tanpa `Verifikasi`): pemasangan dan pelepasan penundaan respons, "Tunggu aksi selesai" (langkah 15; hasil Submit TC-GS-HHR-95 tidak diasersi sebelum Search), penyambungan reader di simulator USB, `[Sync]`, Search untuk menemukan baris target dan `(←)` untuk mengosongkan Search, `Delete` reader hasil TC-GS-HHR-95, serta "Tunggu toast lama hilang otomatis" sebelum penghitungan toast pada TC-GS-HHR-98 (toast sukses dari aktivasi dan Delete sebelumnya harus hilang agar hitungan "hanya satu toast" tidak terpengaruh).
+- Langkah penghubung (aksi tanpa `Verifikasi`): pemasangan dan pelepasan penundaan respons, "Tunggu aksi selesai" (langkah 15; hasil Submit TC-GS-HHR-95 tidak diasersi sebelum Search), penyambungan reader di simulator USB, `[Sync]`, Search untuk menemukan baris target dan `(←)` untuk mengosongkan Search, `Delete` reader hasil TC-GS-HHR-95 diikuti "Tunggu aksi selesai" (langkah 19; aktivasi TC-GS-HHR-98 bergantung pada kuota dan stok yang pulih, bagian 8b butir 8), serta "Tunggu toast lama hilang otomatis" sebelum penghitungan toast pada TC-GS-HHR-98 (toast sukses dari aktivasi dan Delete sebelumnya harus hilang agar hitungan "hanya satu toast" tidak terpengaruh).
 - Verifikasi toast pada TC-GS-HHR-98 diletakkan segera sesudah klik ganda karena toast sukses hilang otomatis setelah 4 detik (`foundation/functions/toast-copy.md`).
 - Pembagian TC lintas spec: TC-GS-HHR-96 dan 97 (kegagalan 5xx dan timeout saat Submit) ada di spec 026; TC-GS-HHR-99 sampai 101 dan 446 sampai 447 ada di spec 024.
 - Temuan untuk QA:

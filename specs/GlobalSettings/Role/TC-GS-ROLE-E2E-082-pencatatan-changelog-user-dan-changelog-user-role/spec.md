@@ -27,7 +27,7 @@ coverage:
 | Wawan Setiawan | #11 kandidat (Active) | Tanpa access level dan tanpa baris role | Assign baris Manage TAG | TC-GS-ROLE-290 |
 | Doni Pratama | #10 (Staff, IT) | Manage TAG: Read checked, Update unchecked | Remove baris Manage TAG | TC-GS-ROLE-290 |
 
-- Data Dinamis bersuffix tidak ada: entri log dikenali lewat baseline jumlah entri (S-12). User Pre-setup bernama literal, sehingga entri log run sebelumnya tetap ada. Jumlah entri adalah total entri pada tab Changelog: User atau Changelog: User > Role milik user itu (seluruh halaman), dicatat pada langkah 1 sampai 5 (sebelum aksi pemicu pertama yang diasersi) sebagai `B-SW-U`, `B-MA-R`, `B-MA-U`, `B-WS-R`, dan `B-DP-R`; asersi "entry baru" memakai selisih terhadap baseline itu. Kemampuan membaca total entri pada kedua tab disediakan tim FE.
+- Data Dinamis bersuffix tidak ada: entri log dikenali lewat baseline jumlah entri (S-12). User Pre-setup bernama literal, sehingga entri log run sebelumnya tetap ada. Jumlah entri adalah total entri pada tab Changelog: User atau Changelog: User > Role milik user itu (seluruh halaman), dicatat pada langkah 1 sampai 5 (sebelum aksi pemicu pertama yang diasersi) sebagai `B-SW-U`, `B-MA-R`, `B-MA-U`, `B-WS-R`, dan `B-DP-R`; asersi "entry baru" memakai selisih terhadap baseline itu. Kemampuan membaca total entri pada kedua tab disediakan tim FE. Tab Changelog Detail User (inline) berscope satu user dan tidak punya kolom Name (`user.md` §4.1.5), dan spec ini tidak memakai Search nama user; entri dikenali lewat kombinasi kolom Action, Field, Old Value, dan New Value.
 - Kemampuan teknis: aksi pemicu dijalankan lewat sesi API atas nama Ahmad Fauzi (agar Modified By tercatat `Ahmad F`): Assign dan Remove access level, Edit CRUD satu baris role beserta konfirmasi `[Remove]` auto-revert, Assign Role, dan Remove baris role. Aksi ini adalah dependensi TC sumber (TC-GS-ROLE-58, 86, 106, 94, 112) yang dijalankan lewat seeding API (S-04). Mekanisme dan endpoint disediakan tim FE/BE (tidak didefinisikan di TC, PRD, atau LLD).
 - Pemulihan (hook `after`, tidak berasumsi seeding atau aksi berhasil penuh), lewat sesi API Ahmad Fauzi: Sari Wulandari, Maya Anggraini, dan Wawan Setiawan dikembalikan ke tanpa access level dan tanpa baris role; baris Manage TAG milik Doni Pratama ditambahkan kembali dengan Read checked dan Update unchecked. Efek pada Pre-setup: Modified By dan Last Updated keempat user berubah; entri log bersifat immutable dan tidak dihapus.
 - Format tanggal mengikuti General Settings aktif. Tidak ada manipulasi jam.
@@ -51,11 +51,11 @@ coverage:
 8. Aksi pemicu (sesi API Ahmad Fauzi): hapus centang Update baris Manage TAG milik Maya Anggraini dan konfirmasi `[Remove]` (setara TC-GS-ROLE-106 langkah 1 sampai 2)
 9. Buka Global Settings > User > Sari Wulandari > Changelog: User
 10. Verifikasi total entri sama dengan `B-SW-U` + 2 (entry Assign dan entry Remove baru)
-11. Verifikasi entry Remove Access Level (teratas): Action `Remove`, Field `Access Level`
-12. Verifikasi entry Assign Access Level (kedua): Action `Assign`, Field `Access Level`
+11. Verifikasi entry terbaru dengan Action `Remove` dan Field `Access Level`: Action `Remove`, Field `Access Level`
+12. Verifikasi entry terbaru dengan Action `Assign` dan Field `Access Level`: Action `Assign`, Field `Access Level`
 13. Buka Global Settings > User > Maya Anggraini > Changelog: User > Role
 14. Verifikasi total entri sama dengan `B-MA-R` + 1 (tepat 1 entry baru)
-15. Verifikasi entry baru (teratas): Action `Edit`, Manage TAG, Field `Update`
+15. Verifikasi entry baru (dikenali lewat kombinasi Action dan Field, bukan posisi baris; selisih +1 pada langkah 14): Action `Edit`, Manage TAG, Field `Update`
 16. Verifikasi tidak ada entry baru Action `Auto-Revert` pada Changelog: User > Role Maya Anggraini; satu-satunya entry baru adalah Edit pada langkah 15
 
 ### TC-GS-ROLE-290: Changelog: User > Role mencatat Assign dan Remove baris role; Changelog: User mencatat Auto-Revert
@@ -64,10 +64,10 @@ coverage:
 18. Aksi pemicu (sesi API Ahmad Fauzi): Remove baris Doni Pratama dari Detail "Manage TAG" (setara TC-GS-ROLE-112 langkah 1 sampai 2)
 19. Buka Global Settings > User > Wawan Setiawan > Changelog: User > Role
 20. Verifikasi total entri sama dengan `B-WS-R` + 1 (tepat 1 entry baru)
-21. Verifikasi entry baru (teratas): Action `Assign`, Manage TAG, Field `Access`, Old Value `—`, New Value `Assigned`
+21. Verifikasi entry baru (dikenali lewat kombinasi Action dan Field, bukan posisi baris; selisih +1 pada langkah 20): Action `Assign`, Manage TAG, Field `Access`, Old Value `—`, New Value `Assigned`
 22. Buka Global Settings > User > Doni Pratama > Changelog: User > Role
 23. Verifikasi total entri sama dengan `B-DP-R` + 1 (tepat 1 entry baru)
-24. Verifikasi entry baru (teratas): Action `Remove`, Manage TAG, Field `Access`, Old Value `Assigned`, New Value `—`
+24. Verifikasi entry baru (dikenali lewat kombinasi Action dan Field, bukan posisi baris; selisih +1 pada langkah 23): Action `Remove`, Manage TAG, Field `Access`, Old Value `Assigned`, New Value `—`
 25. Buka Global Settings > User > Maya Anggraini > Changelog: User
 26. Verifikasi total entri lebih besar daripada `B-MA-U` (entry baru dari langkah 8 tercatat)
 27. Verifikasi entry baru Auto-Revert tampil: Action `Auto-Revert`, Field `Access Level`, Old Value `Total Control`, New Value `—`
@@ -77,7 +77,7 @@ coverage:
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec memuat 27 langkah. Urutan TC sumber (223, 290) dipertahankan. Dependensi TC-GS-ROLE-58, 86, 106, 94, dan 112 dijalankan lewat aksi pemicu sesi API (langkah 6 sampai 8, 17, 18). Aksi pemicu Maya Anggraini (langkah 8) dipakai bersama oleh TC-GS-ROLE-223 Expected b dan c (Changelog: User > Role) dan TC-GS-ROLE-290 Expected c (Changelog: User); Given Maya Anggraini ber-Total Control terjadi di hook `before` sebelum baseline dicatat. Nina Kartika tidak di-assign karena tidak diasersi di spec ini (seeding minimal, S-11).
 - TC-GS-ROLE-223 Expected c ("tidak memuat entry Auto-Revert") ditulis sebagai asersi jumlah terhadap baseline (langkah 14 dan 16), bukan asersi absence kelas g: aksi pemicu nyata ada di spec ini (langkah 8) dan anchor positifnya adalah entry Edit pada langkah 15 di tab yang sama. Asersi absence untuk Assign Total Control ada di spec `TC-GS-ROLE-E2E-083-absence-log-assign-total-control-tidak-menulis-changelog-user-role` (TC-GS-ROLE-224), yang tidak dimuat di spec ini.
-- "Entry baru (teratas)" dan "(kedua)" berarti urutan pada tab (urutan default Newest First); jumlah entri baru diyakinkan lewat selisih terhadap baseline.
+- "Entry baru" pada entri tunggal dikenali lewat kombinasi kolom Action dan Field serta selisih terhadap baseline (+1), bukan lewat posisi baris. Entri berpasangan yang dibuat berurutan dalam hitungan detik tidak diidentifikasi lewat posisi baris karena kolom Date berketelitian menit (S-12, S-14); tiap entri dikenali lewat kombinasi kolom Action dan Field (serta Old Value dan New Value bila diasersi) pada tab Changelog milik user, bukan lewat Search nama user: tab itu berscope satu user, tanpa kolom Name, dan placeholder Search-nya "Search action, field, or value..." (`user.md` §4.1.5 dan wireframe Tab Changelog).
 - Langkah penghubung (aksi tanpa `Verifikasi`): membuka tab Changelog: User atau Changelog: User > Role milik user (langkah 1 sampai 5, 9, 13, 19, 22, 25); aksi pemicu API (langkah 6 sampai 8, 17, 18).
 - Temuan untuk QA:
   - TC-GS-ROLE-223 Expected a menyebut "Changelog: User Sari Wulandari memuat entry Assign dan Remove Access Level" tanpa jumlah entri; spec mengasersi selisih +2 terhadap baseline karena Sari Wulandari tidak punya aksi lain pada langkah 6 dan 7.

@@ -35,85 +35,81 @@ coverage:
 
 ## Test Steps
 
-### Pembukaan layar
-
-1. Buka Global Settings > User > User List (sub-tab Login User)
-
 ### TC-GS-USER-1009: Screening dialog Remove Access Global Settings (tier Total Control)
 
-2. Klik icon Search, ketik `Andi Wijaya {runId}-044`, tekan Enter
-3. Klik (⋯) baris `Andi Wijaya {runId}-044` → `Edit`
-4. Uncheck Access `Global Settings`
-5. Klik `[Save]`
-6. Verifikasi dialog Title `Remove Access`
-7. Verifikasi body dialog memuat bullet `• Andi Wijaya {runId}-044`
-8. Verifikasi body dialog memuat `This user currently has Total Control in Role & Permission. Removing Global Settings access will also revoke it.`
-9. Verifikasi body dialog diakhiri pertanyaan `Are you sure you want to remove it?`
-10. Verifikasi dialog memuat tombol `[Cancel]` dan `[Remove]`
-11. Klik `[Cancel]` pada dialog
-12. Klik `✕` pada header Popup Edit
-13. Verifikasi dialog `Unsaved Changes`
-14. Klik `[Leave]`
+1. Klik icon Search, ketik `Andi Wijaya {runId}-044`, tekan Enter
+2. Klik (⋯) baris `Andi Wijaya {runId}-044` → `Edit`
+3. Hapus pilihan Access `Global Settings`
+4. Klik `[Save]`
+5. Verifikasi dialog Title `Remove Access`
+6. Verifikasi body dialog memuat bullet `• Andi Wijaya {runId}-044`
+7. Verifikasi body dialog memuat `This user currently has Total Control in Role & Permission. Removing Global Settings access will also revoke it.`
+8. Verifikasi body dialog diakhiri pertanyaan `Are you sure you want to remove it?`
+9. Verifikasi dialog memuat tombol `[Cancel]` dan `[Remove]`
+10. Klik `[Cancel]` pada dialog
+11. Klik `✕` pada header Popup Edit
+12. Verifikasi dialog `Unsaved Changes`
+13. Klik `[Leave]`
 
 ### TC-GS-USER-225: Holder dengan N role menyebut jumlah role di dialog
 
-15. Ganti isi kotak search dengan `Ahmad Fauzi {runId}-044`, tekan Enter
-16. Klik (⋯) baris `Ahmad Fauzi {runId}-044` → `Edit`
-17. Uncheck Access `Global Settings`
-18. Klik `[Save]`
-19. Verifikasi body dialog menyebut `This user currently has 3 roles in Role & Permission. Removing Global Settings access will also revoke it.`
-20. Klik `[Cancel]` pada dialog
-21. Klik `✕` pada header Popup Edit
-22. Verifikasi dialog `Unsaved Changes`
-23. Klik `[Leave]`
+14. Ganti isi kotak search dengan `Ahmad Fauzi {runId}-044`, tekan Enter
+15. Klik (⋯) baris `Ahmad Fauzi {runId}-044` → `Edit`
+16. Hapus pilihan Access `Global Settings`
+17. Klik `[Save]`
+18. Verifikasi body dialog menyebut `This user currently has 3 roles in Role & Permission. Removing Global Settings access will also revoke it.`
+19. Klik `[Cancel]` pada dialog
+20. Klik `✕` pada header Popup Edit
+21. Verifikasi dialog `Unsaved Changes`
+22. Klik `[Leave]`
 
 ### TC-GS-USER-223 dan TC-GS-USER-224: User bertier, dialog Role & Permission lalu lanjut mencabut tier
 
-24. Ganti isi kotak search dengan `Doni Pratama {runId}-044`, tekan Enter
-25. Klik (⋯) baris `Doni Pratama {runId}-044` → `Edit`
-26. Uncheck Access `Global Settings`
-27. Klik `[Save]`
-28. Verifikasi body dialog memuat bullet `• Doni Pratama {runId}-044`
-29. Verifikasi body dialog memuat `This user currently has Read Only in Role & Permission. Removing Global Settings access will also revoke it. Are you sure you want to remove it?`
-30. Klik `[Remove]` pada dialog
-31. Verifikasi toast sukses: "Success, user has been updated."
-32. Buka Global Settings > Role & Permission > Read Only
-33. Verifikasi tab Read Only memuat `Yudi Pratomo` (pembanding)
-34. Verifikasi `Doni Pratama {runId}-044` tidak lagi tercantum di tab Read Only
-35. Buka Global Settings > User > User List (sub-tab Login User)
-36. Klik icon Search, ketik `Doni Pratama {runId}-044`, tekan Enter
-37. Verifikasi sel Access baris `Doni Pratama {runId}-044` memuat `Fixed Asset` (tidak terpengaruh)
+23. Ganti isi kotak search dengan `Doni Pratama {runId}-044`, tekan Enter
+24. Klik (⋯) baris `Doni Pratama {runId}-044` → `Edit`
+25. Hapus pilihan Access `Global Settings`
+26. Klik `[Save]`
+27. Verifikasi body dialog memuat bullet `• Doni Pratama {runId}-044`
+28. Verifikasi body dialog memuat `This user currently has Read Only in Role & Permission. Removing Global Settings access will also revoke it. Are you sure you want to remove it?`
+29. Klik `[Remove]` pada dialog
+30. Verifikasi toast sukses: "Success, user has been updated."
+31. Buka Global Settings > Role & Permission > Read Only
+32. Verifikasi tab Read Only memuat `Yudi Pratomo` (pembanding)
+33. Verifikasi `Doni Pratama {runId}-044` tidak lagi tercantum di tab Read Only
+34. Buka Global Settings > User > User List (sub-tab Login User)
+35. Klik icon Search, ketik `Doni Pratama {runId}-044`, tekan Enter
+36. Verifikasi sel Access baris `Doni Pratama {runId}-044` memuat `Fixed Asset` (tidak terpengaruh)
 
 ### TC-GS-USER-227: Remove Access Global Settings mempertahankan relasi Represented By
 
-38. Ganti isi kotak search dengan `Ahmad Fauzi {runId}-044`, tekan Enter
-39. Klik (⋯) baris `Ahmad Fauzi {runId}-044` → `Edit`
-40. Uncheck Access `Global Settings`
-41. Klik `[Save]`
-42. Klik `[Remove]` pada dialog
-43. Tunggu aksi selesai
-44. Klik Name `Ahmad Fauzi {runId}-044` di User List
-45. Klik Tab Non-Login User
-46. Verifikasi `Agus Prasetyo {runId}-044` tetap tercantum di Tab Non-Login User
+37. Ganti isi kotak search dengan `Ahmad Fauzi {runId}-044`, tekan Enter
+38. Klik (⋯) baris `Ahmad Fauzi {runId}-044` → `Edit`
+39. Hapus pilihan Access `Global Settings`
+40. Klik `[Save]`
+41. Klik `[Remove]` pada dialog
+42. Tunggu aksi selesai
+43. Klik Name `Ahmad Fauzi {runId}-044` di User List
+44. Klik Tab Non-Login User
+45. Verifikasi `Agus Prasetyo {runId}-044` tetap tercantum di Tab Non-Login User
 
 ### TC-GS-USER-226: User Basic tanpa aset atau approval, tanpa dialog
 
-47. Klik menu User di sidebar Global Settings
-48. Klik icon Search, ketik `Dewi Lestari {runId}-044`, tekan Enter
-49. Klik (⋯) baris `Dewi Lestari {runId}-044` → `Edit`
-50. Uncheck Access `Global Settings`
-51. Klik `[Save]`
-52. Verifikasi toast sukses: "Success, user has been updated."
-53. Verifikasi tidak ada dialog
+46. Klik menu User di sidebar Global Settings
+47. Klik icon Search, ketik `Dewi Lestari {runId}-044`, tekan Enter
+48. Klik (⋯) baris `Dewi Lestari {runId}-044` → `Edit`
+49. Hapus pilihan Access `Global Settings`
+50. Klik `[Save]`
+51. Verifikasi toast sukses: "Success, user has been updated."
+52. Verifikasi tidak ada dialog
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`. Semua TC di spec ini satu topik aksi (Remove Access Global Settings) dan tidak berkelas harness.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec melewati sekitar 35 langkah (53 langkah) karena enam TC berada di satu topik aksi dan satu layar (Popup Edit dan dialog Remove Access), dengan user seed berbeda per TC sehingga tiap blok berdiri sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec melewati sekitar 35 langkah (52 langkah) karena enam TC berada di satu topik aksi dan satu layar (Popup Edit dan dialog Remove Access), dengan user seed berbeda per TC sehingga tiap blok berdiri sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Urutan TC sumber diubah: TC-GS-USER-1009 dan TC-GS-USER-225 (hanya melihat dialog lalu `[Cancel]`) mendahului pencabutan sungguhan; TC-GS-USER-223 digabung dengan TC-GS-USER-224 dalam satu pembukaan Popup Edit (dialog lalu `[Remove]`); TC-GS-USER-227 dan TC-GS-USER-226 berada paling akhir karena keduanya mencabut akses sungguhan (bagian 3 prinsip 5). TC-GS-USER-227 memakai Ahmad Fauzi yang tidak dicabut di TC-GS-USER-225 (hanya `[Cancel]`).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 (pembukaan), 2, 15, 24, 36, 38, 48 (Search), 11, 20 (menutup dialog), 12 sampai 14 dan 21 sampai 23 (menutup Popup Edit dirty, S-08), 32 dan 35 (navigasi), 43 (menunggu aksi selesai), 44 sampai 45 dan 47 (navigasi).
-- Asersi tambahan di luar Expected TC (S-03): langkah 33 adalah pembanding (anchor) untuk absence `Doni Pratama` di tab Read Only; langkah 37 mengamati Expected c TC-GS-USER-224 di User List.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1, 14, 23, 35, 37, 47 (Search), 10, 19 (menutup dialog), 11 sampai 13 dan 20 sampai 22 (menutup Popup Edit dirty, S-08), 31 dan 34 (navigasi), 42 (menunggu aksi selesai), 43 sampai 44 dan 46 (navigasi).
+- Asersi tambahan di luar Expected TC (S-03): langkah 32 adalah pembanding (anchor) untuk absence `Doni Pratama` di tab Read Only; langkah 36 mengamati Expected c TC-GS-USER-224 di User List.
 - Temuan untuk QA:
   - TC-GS-USER-224 Post Condition (entri Changelog Role & Permission dengan Modified By = Siti Nurhaliza bukan System; sesi aktif Doni Pratama diakhiri; terdampak Role & Permission) tidak punya langkah observasi; tidak diasersi (S-01).
   - TC-GS-USER-225 menyebut "Ahmad Fauzi punya 3 role individual aktif" sedangkan Tabel Data Uji Pre-setup No. 13 hanya menyebut holder Manage user and role; spec men-seed tiga role individual untuk user seed.

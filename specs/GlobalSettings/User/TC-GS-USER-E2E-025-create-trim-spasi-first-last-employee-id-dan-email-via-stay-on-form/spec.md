@@ -37,63 +37,62 @@ coverage:
 
 ### Pembukaan layar
 
-1. Buka Global Settings > User > User List (sub-tab Login User)
-2. Pilih 100 baris per halaman pada Pagination
-3. Klik `[+ User]` di Table Tools
+1. Pilih 100 baris per halaman pada Pagination
+2. Klik `[+ User]` di Table Tools
 
 ### TC-GS-USER-137: Create dengan Stay on this form, Popup tetap terbuka dan form ter-reset
 
-4. Isi First Name `Budi`, Last Name `Santoso {runId}-025-137`, Division `Finance`, Email `budisantoso+{runId}-025-137@qwertysystem.net`, centang Access `Fixed Asset`
-5. Centang `Stay on this form after submitting`
-6. Klik `[Submit]`
-7. Verifikasi toast sukses: "Success, user has been created."
-8. Verifikasi Popup tetap terbuka
-9. Verifikasi seluruh field kembali kosong
-10. Verifikasi checkbox `Stay on this form after submitting` tetap tercentang
-11. Verifikasi baris `Budi Santoso {runId}-025-137` muncul di tabel di belakang Popup
+3. Isi First Name `Budi`, Last Name `Santoso {runId}-025-137`, Division `Finance`, Email `budisantoso+{runId}-025-137@qwertysystem.net`, pilih Access `Fixed Asset`
+4. Centang `Stay on this form after submitting`
+5. Klik `[Submit]`
+6. Verifikasi toast sukses: "Success, user has been created."
+7. Verifikasi Popup tetap terbuka
+8. Verifikasi seluruh field kembali kosong
+9. Verifikasi checkbox `Stay on this form after submitting` tetap tercentang
+10. Verifikasi baris `Budi Santoso {runId}-025-137` muncul di tabel di belakang Popup
 
 ### TC-GS-USER-101, 102, 103, 104: pembuatan user dengan spasi tepi (Popup tetap terbuka karena Stay on this form)
 
-12. Isi First Name `  Budi  `, Last Name `Santoso {runId}-025-101`, Division `Finance`, Email `budisantoso+{runId}-025-101@qwertysystem.net`, centang Access `Fixed Asset`
-13. Klik `[Submit]`
-14. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-101)
-15. Isi First Name `Budi`, Last Name `  Santoso {runId}-025-102  `, Division `Finance`, Email `budisantoso+{runId}-025-102@qwertysystem.net`, centang Access `Fixed Asset`
-16. Klik `[Submit]`
-17. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-102)
-18. Isi First Name `Budi`, Last Name `Santoso {runId}-025-103`, Division `Finance`, Email `budisantoso+{runId}-025-103@qwertysystem.net`, centang Access `Fixed Asset`, Employee ID `  EMP-0099-{runId}-025  `
-19. Klik `[Submit]`
-20. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-103)
-21. Isi First Name `Budi`, Last Name `Santoso {runId}-025-104`, Division `Finance`, centang Access `Fixed Asset`, Email `  budisantoso+{runId}-025-104@qwertysystem.net  `
-22. Klik `[Submit]`
-23. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-104)
-24. Klik `✕` di header Popup
+11. Isi First Name `  Budi  `, Last Name `Santoso {runId}-025-101`, Division `Finance`, Email `budisantoso+{runId}-025-101@qwertysystem.net`, pilih Access `Fixed Asset`
+12. Klik `[Submit]`
+13. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-101)
+14. Isi First Name `Budi`, Last Name `  Santoso {runId}-025-102  `, Division `Finance`, Email `budisantoso+{runId}-025-102@qwertysystem.net`, pilih Access `Fixed Asset`
+15. Klik `[Submit]`
+16. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-102)
+17. Isi First Name `Budi`, Last Name `Santoso {runId}-025-103`, Division `Finance`, Email `budisantoso+{runId}-025-103@qwertysystem.net`, pilih Access `Fixed Asset`, Employee ID `  EMP-0099-{runId}-025  `
+18. Klik `[Submit]`
+19. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-103)
+20. Isi First Name `Budi`, Last Name `Santoso {runId}-025-104`, Division `Finance`, pilih Access `Fixed Asset`, Email `  budisantoso+{runId}-025-104@qwertysystem.net  `
+21. Klik `[Submit]`
+22. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-104)
+23. Klik `✕` di header Popup
 
 ### TC-GS-USER-101: Detail, First Name ter-trim
 
-25. Klik icon Search, ketik `{runId}-025-101`, tekan Enter
-26. Buka Detail user baru `Budi Santoso {runId}-025-101`
-27. Verifikasi First Name tersimpan tanpa spasi awal/akhir: nama lengkap Detail sama persis `Budi Santoso {runId}-025-101`
+24. Klik icon Search, ketik `{runId}-025-101`, tekan Enter
+25. Buka Detail user baru `Budi Santoso {runId}-025-101`
+26. Verifikasi First Name tersimpan tanpa spasi awal/akhir: nama lengkap Detail sama persis `Budi Santoso {runId}-025-101`
 
 ### TC-GS-USER-102: Detail, Last Name ter-trim
 
-28. Buka Global Settings > User > User List (sub-tab Login User)
-29. Klik icon Search, ketik `{runId}-025-102`, tekan Enter
-30. Buka Detail user baru `Budi Santoso {runId}-025-102`
-31. Verifikasi Last Name tersimpan tanpa spasi awal/akhir: nama lengkap Detail sama persis `Budi Santoso {runId}-025-102`
+27. Buka Global Settings > User > User List (sub-tab Login User)
+28. Klik icon Search, ketik `{runId}-025-102`, tekan Enter
+29. Buka Detail user baru `Budi Santoso {runId}-025-102`
+30. Verifikasi Last Name tersimpan tanpa spasi awal/akhir: nama lengkap Detail sama persis `Budi Santoso {runId}-025-102`
 
 ### TC-GS-USER-103: Detail, Employee ID ter-trim
 
-32. Buka Global Settings > User > User List (sub-tab Login User)
-33. Klik icon Search, ketik `{runId}-025-103`, tekan Enter
-34. Buka Detail user baru `Budi Santoso {runId}-025-103`
-35. Verifikasi Employee ID tersimpan tanpa spasi awal/akhir: Employee ID di Detail sama persis `EMP-0099-{runId}-025`
+31. Buka Global Settings > User > User List (sub-tab Login User)
+32. Klik icon Search, ketik `{runId}-025-103`, tekan Enter
+33. Buka Detail user baru `Budi Santoso {runId}-025-103`
+34. Verifikasi Employee ID tersimpan tanpa spasi awal/akhir: Employee ID di Detail sama persis `EMP-0099-{runId}-025`
 
 ### TC-GS-USER-104: Detail, Email ter-trim
 
-36. Buka Global Settings > User > User List (sub-tab Login User)
-37. Klik icon Search, ketik `{runId}-025-104`, tekan Enter
-38. Buka Detail user baru `Budi Santoso {runId}-025-104`
-39. Verifikasi Email tersimpan tanpa spasi awal/akhir: Email di Detail sama persis `budisantoso+{runId}-025-104@qwertysystem.net`
+35. Buka Global Settings > User > User List (sub-tab Login User)
+36. Klik icon Search, ketik `{runId}-025-104`, tekan Enter
+37. Buka Detail user baru `Budi Santoso {runId}-025-104`
+38. Verifikasi Email tersimpan tanpa spasi awal/akhir: Email di Detail sama persis `budisantoso+{runId}-025-104@qwertysystem.net`
 
 ## Notes
 
@@ -101,7 +100,7 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC: TC-GS-USER-137, lalu pembuatan TC-GS-USER-101 sampai 104, lalu Detail TC-GS-USER-101 sampai 104. TC-GS-USER-101 sampai 104 pada TC sumber masing-masing membuka Popup baru, menekan `[Submit]` (Popup menutup), lalu membuka Detail. Spec memakai checkbox `Stay on this form after submitting` yang tetap tercentang dari TC-GS-USER-137 supaya keempat user dibuat dalam satu pembukaan Popup (prinsip 8 bagian 3 konvensi), lalu menutup Popup dan membuka Detail tiap user. Asersi toast tiap TC berada tepat sesudah `[Submit]`-nya; asersi Detail berada sesudah Popup ditutup.
 - Popup ditutup lewat `✕` sesudah `[Submit]` terakhir dengan form kosong (ter-reset oleh Stay on this form), sehingga tidak ada form dirty dan tidak ada dialog `Unsaved Changes`.
-- Spec melewati sekitar 35 langkah (39 langkah) karena seluruh blok berada di satu kelas harness (Create sukses dengan trim spasi, tanpa harness eksternal), memakai satu sesi Popup untuk lima pembuatan, dan tiap blok Detail berdiri sendiri pada user miliknya sendiri (kegagalan satu blok Detail tidak membuat blok lain kehilangan makna). Pembukaan User List yang berulang pada blok Detail tidak dihitung.
+- Spec melewati sekitar 35 langkah (38 langkah) karena seluruh blok berada di satu kelas harness (Create sukses dengan trim spasi, tanpa harness eksternal), memakai satu sesi Popup untuk lima pembuatan, dan tiap blok Detail berdiri sendiri pada user miliknya sendiri (kegagalan satu blok Detail tidak membuat blok lain kehilangan makna). Pembukaan User List yang berulang pada blok Detail tidak dihitung.
 - Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): memilih 100 baris per halaman supaya baris `Budi Santoso {runId}-025-137` tampil di tabel di belakang Popup tanpa Search (Search tidak dapat dipakai saat Popup terbuka; sort default Name A-Z); `✕` di header Popup; Search menurut `{runId}-025-<TC>` untuk menemukan baris sebelum membuka Detail; membuka User List di awal tiap blok Detail.
 - Tiap Verifikasi toast mengacu pada toast yang muncul sesudah `[Submit]` pada langkah sebelumnya; pembedaan toast berurutan (menunggu toast sebelumnya hilang) ditentukan tim FE di tahap script.
 - Temuan untuk QA:

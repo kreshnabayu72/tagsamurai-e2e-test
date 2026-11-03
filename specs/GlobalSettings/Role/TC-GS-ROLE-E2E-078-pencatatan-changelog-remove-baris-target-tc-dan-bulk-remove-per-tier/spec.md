@@ -53,10 +53,10 @@ coverage:
 10. Aksi pemicu (sesi API Ahmad Fauzi): Remove baris Rudi Hartono dari Detail "Manage files" dan konfirmasi `[Remove]` pada dialog auto-revert (setara TC-GS-ROLE-114 langkah 1 sampai 3)
 11. Klik Tab System, klik Role Name `Manage files`, klik [Changelog], ketik Search `Rudi Hartono`, tekan Enter
 12. Verifikasi total hasil Search sama dengan `B-RH-DET` + 1 (tepat 1 entry baru)
-13. Verifikasi entry baru (teratas): Action `Remove`, Role — User `Manage files — Rudi Hartono`, Field `Access`
+13. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 12): Action `Remove`, Role — User `Manage files — Rudi Hartono`, Field `Access`
 14. Tutup modal Changelog, klik Tab Total Control, klik [Changelog], ketik Search `Rudi Hartono`, tekan Enter
 15. Verifikasi total hasil Search sama dengan `B-RH-TC` + 1 (tepat 1 entry baru)
-16. Verifikasi entry baru (teratas): Action `Auto-Revert`, User Name `Rudi Hartono`
+16. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 15): Action `Auto-Revert`, User Name `Rudi Hartono`
 17. Tutup modal Changelog, klik Tab System, klik [Changelog], ketik Search `Rudi Hartono`, tekan Enter
 18. Verifikasi total hasil Search sama dengan `B-RH-SYS` + 1 (hanya entry Remove dari langkah 13; tidak ada entry per-role untuk role lain Rudi Hartono)
 
@@ -65,25 +65,25 @@ coverage:
 19. Tutup modal Changelog, aksi pemicu (sesi API Ahmad Fauzi): Bulk Remove baris Wawan Setiawan, Siti Nurhaliza (Total Control), dan Rina Putri (Read Only) dari Detail "Manage master reference" (setara TC-GS-ROLE-131 langkah 1 sampai 2)
 20. Klik Role Name `Manage master reference`, klik [Changelog], ketik Search `Wawan Setiawan`, tekan Enter
 21. Verifikasi total hasil Search sama dengan `B-WS-MR` + 1 (tepat 1 entry Remove baru, tanpa duplikat)
-22. Verifikasi entry baru (teratas): Action `Remove`
+22. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 21): Action `Remove`
 23. Ganti isi kotak search dengan `Siti Nurhaliza`, tekan Enter
 24. Verifikasi total hasil Search sama dengan `B-SN-MR` + 1 (tepat 1 entry Remove baru, tanpa duplikat)
-25. Verifikasi entry baru (teratas): Action `Remove`
+25. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 24): Action `Remove`
 26. Ganti isi kotak search dengan `Rina Putri`, tekan Enter
 27. Verifikasi total hasil Search sama dengan `B-RP-MR` + 1 (tepat 1 entry Remove baru, tanpa duplikat)
-28. Verifikasi entry baru (teratas): Action `Remove`
+28. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 27): Action `Remove`
 29. Tutup modal Changelog, klik breadcrumb `System`, klik Tab Total Control, klik [Changelog], ketik Search `Siti Nurhaliza`, tekan Enter
 30. Verifikasi total hasil Search sama dengan `B-SN-TC` + 1 (tepat 1 entry Auto-Revert baru)
-31. Verifikasi entry baru (teratas): Action `Auto-Revert`, User Name `Siti Nurhaliza`
+31. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 30): Action `Auto-Revert`, User Name `Siti Nurhaliza`
 32. Tutup modal Changelog, klik Tab Read Only, klik [Changelog], ketik Search `Rina Putri`, tekan Enter
 33. Verifikasi total hasil Search sama dengan `B-RP-RO` + 1 (tepat 1 entry Auto-Revert baru)
-34. Verifikasi entry baru (teratas): Action `Auto-Revert`, User Name `Rina Putri`
+34. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 33): Action `Auto-Revert`, User Name `Rina Putri`
 
 ## Notes
 
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec memuat 34 langkah. Urutan TC sumber (217, 218) dipertahankan. Dependensi TC-GS-ROLE-114 dan TC-GS-ROLE-131 dijalankan lewat aksi pemicu sesi API (langkah 10 dan 19); Given Rudi Hartono ber-Total Control (setara TC-GS-ROLE-59) dan Siti Nurhaliza ber-Total Control (setara TC-GS-ROLE-60) dijalankan di hook `before` sebelum baseline dicatat, sehingga entry Assign keduanya tidak termasuk entri baru yang diasersi.
-- "Entry baru (teratas)" berarti entri teratas pada hasil Search (urutan default Newest First); jumlah entri baru diyakinkan lewat selisih terhadap baseline. "Tanpa duplikat" (TC-GS-ROLE-218 Expected a) dipenuhi oleh selisih tepat +1 per user pada langkah 21, 24, dan 27; "tepat 3 entry Remove" dipenuhi oleh ketiga langkah itu bersama.
+- "Entry baru" dikenali lewat kombinasi kolom yang diasersi pada langkah Verifikasinya dan selisih jumlah terhadap baseline, bukan lewat posisi baris (S-12, S-14); urutan antar-entri yang jatuh pada menit yang sama tidak diasersi karena kolom Date berketelitian menit. "Tanpa duplikat" (TC-GS-ROLE-218 Expected a) dipenuhi oleh selisih tepat +1 per user pada langkah 21, 24, dan 27; "tepat 3 entry Remove" dipenuhi oleh ketiga langkah itu bersama.
 - Langkah 18 menyatakan "tidak ada entry per-role untuk role lain Rudi Hartono" sebagai asersi jumlah terhadap baseline Tab System (superset semua role), dengan anchor positif entry Remove baris Manage files pada langkah 13.
 - Langkah penghubung (aksi tanpa `Verifikasi`): menutup modal Changelog, berpindah tab atau Detail lewat breadcrumb `System`, dan mengganti isi kotak search (langkah 1 sampai 9, 11, 14, 17, 20, 23, 26, 29, 32); aksi pemicu API (langkah 10 dan 19).
 - Temuan untuk QA:

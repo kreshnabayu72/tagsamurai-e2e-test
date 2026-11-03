@@ -38,108 +38,107 @@ coverage:
 
 ### TC-GS-USER-164: First Name dikosongkan lalu Save
 
-1. Buka Global Settings > User > User List, sub-tab Login User
-2. Klik icon Search, ketik `Dewi Lestari {runId}-033`, tekan Enter
-3. Buka row action baris `Dewi Lestari {runId}-033` lalu klik `Edit`
-4. Kosongkan First Name
-5. Klik `[Save]`
-6. Verifikasi inline error `First name must not be empty`
-7. Verifikasi Popup Edit tetap terbuka
-8. Isi kembali First Name dengan `Dewi`
+1. Klik icon Search, ketik `Dewi Lestari {runId}-033`, tekan Enter
+2. Buka row action baris `Dewi Lestari {runId}-033` lalu klik `Edit`
+3. Kosongkan First Name
+4. Klik `[Save]`
+5. Verifikasi inline error `First name must not be empty`
+6. Verifikasi Popup Edit tetap terbuka
+7. Isi kembali First Name dengan `Dewi`
 
 ### TC-GS-USER-165: Last Name dikosongkan lalu Save
 
-9. Kosongkan Last Name
-10. Klik `[Save]`
-11. Verifikasi inline error `Last name must not be empty`
-12. Verifikasi Popup Edit tetap terbuka
-13. Isi kembali Last Name dengan `Lestari {runId}-033`
+8. Kosongkan Last Name
+9. Klik `[Save]`
+10. Verifikasi inline error `Last name must not be empty`
+11. Verifikasi Popup Edit tetap terbuka
+12. Isi kembali Last Name dengan `Lestari {runId}-033`
 
 ### TC-GS-USER-166: Email dikosongkan lalu Save
 
-14. Kosongkan Email
-15. Klik `[Save]`
-16. Verifikasi inline error `Email must not be empty`
-17. Verifikasi Popup Edit tetap terbuka
-18. Isi kembali Email dengan `dewilestari+{runId}-033@qwertysystem.net`
+13. Kosongkan Email
+14. Klik `[Save]`
+15. Verifikasi inline error `Email must not be empty`
+16. Verifikasi Popup Edit tetap terbuka
+17. Isi kembali Email dengan `dewilestari+{runId}-033@qwertysystem.net`
 
 ### TC-GS-USER-167: Division dikosongkan lalu Save
 
-19. Kosongkan Division
-20. Klik `[Save]`
-21. Verifikasi inline error `Division must not be empty`
-22. Verifikasi Popup Edit tetap terbuka
-23. Pilih kembali Division `Finance`
+18. Kosongkan Division
+19. Klik `[Save]`
+20. Verifikasi inline error `Division must not be empty`
+21. Verifikasi Popup Edit tetap terbuka
+22. Pilih kembali Division `Finance`
 
-### TC-GS-USER-168: Uncheck semua Access lalu Save
+### TC-GS-USER-168: Hapus semua pilihan Access lalu Save
 
-24. Uncheck `Fixed Asset` dan `Global Settings`
-25. Klik `[Save]`
-26. Verifikasi inline error `Access must not be empty`
-27. Verifikasi dialog Remove Access tidak muncul
-28. Centang kembali `Fixed Asset` dan `Global Settings`
+23. Hapus pilihan Access `Fixed Asset` dan `Global Settings`
+24. Klik `[Save]`
+25. Verifikasi inline error `Access must not be empty`
+26. Verifikasi dialog Remove Access tidak muncul
+27. Pilih kembali Access `Fixed Asset` dan `Global Settings`
 
 ### TC-GS-USER-169: First Name 121 karakter
 
-29. Ubah First Name menjadi 120 karakter (120 huruf `A`)
-30. Verifikasi tidak ada error pada First Name
-31. Ketik 1 karakter lagi (`A`) di akhir First Name sehingga menjadi 121 karakter
-32. Verifikasi error `Max. 120 characters` langsung muncul pada First Name
-33. Klik `[Save]`
-34. Verifikasi `[Save]` tidak memproses form: Popup Edit tetap terbuka
-35. Verifikasi `[Save]` tidak memproses form: tidak ada toast sukses
-36. Isi kembali First Name dengan `Dewi`
+28. Ubah First Name menjadi 120 karakter (120 huruf `A`)
+29. Verifikasi tidak ada error pada First Name
+30. Ketik 1 karakter lagi (`A`) di akhir First Name sehingga menjadi 121 karakter
+31. Verifikasi error `Max. 120 characters` langsung muncul pada First Name
+32. Klik `[Save]`
+33. Verifikasi `[Save]` tidak memproses form: Popup Edit tetap terbuka
+34. Verifikasi `[Save]` tidak memproses form: tidak ada toast sukses
+35. Isi kembali First Name dengan `Dewi`
 
 ### TC-GS-USER-170: Last Name 121 karakter
 
-37. Ubah Last Name menjadi 120 karakter (120 huruf `A`)
-38. Verifikasi tidak ada error pada Last Name
-39. Ketik 1 karakter lagi (`A`) di akhir Last Name sehingga menjadi 121 karakter
-40. Verifikasi error `Max. 120 characters` langsung muncul pada Last Name
-41. Klik `[Save]`
-42. Verifikasi `[Save]` tidak memproses form: Popup Edit tetap terbuka
-43. Verifikasi `[Save]` tidak memproses form: tidak ada toast sukses
-44. Isi kembali Last Name dengan `Lestari {runId}-033`
+36. Ubah Last Name menjadi 120 karakter (120 huruf `A`)
+37. Verifikasi tidak ada error pada Last Name
+38. Ketik 1 karakter lagi (`A`) di akhir Last Name sehingga menjadi 121 karakter
+39. Verifikasi error `Max. 120 characters` langsung muncul pada Last Name
+40. Klik `[Save]`
+41. Verifikasi `[Save]` tidak memproses form: Popup Edit tetap terbuka
+42. Verifikasi `[Save]` tidak memproses form: tidak ada toast sukses
+43. Isi kembali Last Name dengan `Lestari {runId}-033`
 
 ### TC-GS-USER-171: Employee ID 121 karakter
 
-45. Ubah Employee ID menjadi 120 karakter (120 huruf `A`)
-46. Verifikasi tidak ada error pada Employee ID
-47. Ketik 1 karakter lagi (`A`) di akhir Employee ID sehingga menjadi 121 karakter
-48. Verifikasi error `Max. 120 characters` langsung muncul pada Employee ID
-49. Klik `[Save]`
-50. Verifikasi `[Save]` tidak memproses form: Popup Edit tetap terbuka
-51. Verifikasi `[Save]` tidak memproses form: tidak ada toast sukses
-52. Isi kembali Employee ID dengan `EMP-{runId}-033`
+44. Ubah Employee ID menjadi 120 karakter (120 huruf `A`)
+45. Verifikasi tidak ada error pada Employee ID
+46. Ketik 1 karakter lagi (`A`) di akhir Employee ID sehingga menjadi 121 karakter
+47. Verifikasi error `Max. 120 characters` langsung muncul pada Employee ID
+48. Klik `[Save]`
+49. Verifikasi `[Save]` tidak memproses form: Popup Edit tetap terbuka
+50. Verifikasi `[Save]` tidak memproses form: tidak ada toast sukses
+51. Isi kembali Employee ID dengan `EMP-{runId}-033`
 
 ### TC-GS-USER-172: Email 121 karakter
 
-53. Ubah Email menjadi 120 karakter (103 huruf `a` diikuti `@qwertysystem.net`)
-54. Verifikasi tidak ada error pada Email
-55. Ketik 1 karakter lagi (`a`) di akhir Email sehingga menjadi 121 karakter
-56. Verifikasi error `Max. 120 characters` langsung muncul pada Email
-57. Klik `[Save]`
-58. Verifikasi `[Save]` tidak memproses form: Popup Edit tetap terbuka
-59. Verifikasi `[Save]` tidak memproses form: tidak ada toast sukses
+52. Ubah Email menjadi 120 karakter (103 huruf `a` diikuti `@qwertysystem.net`)
+53. Verifikasi tidak ada error pada Email
+54. Ketik 1 karakter lagi (`a`) di akhir Email sehingga menjadi 121 karakter
+55. Verifikasi error `Max. 120 characters` langsung muncul pada Email
+56. Klik `[Save]`
+57. Verifikasi `[Save]` tidak memproses form: Popup Edit tetap terbuka
+58. Verifikasi `[Save]` tidak memproses form: tidak ada toast sukses
 
 ### Penutupan form dan data tidak berubah (butir "data tidak berubah" TC-GS-USER-164 sampai 168)
 
-60. Klik `[✕]`
-61. Verifikasi dialog `Unsaved Changes` tampil
-62. Klik `[Leave]`
-63. Verifikasi Popup Edit tertutup
-64. Verifikasi baris `Dewi Lestari {runId}-033` di tabel tidak berubah: Name, Email, Position, Division, Access (`Fixed Asset` dan `Global Settings`), dan Employee ID sama dengan data seed
+59. Klik `[✕]`
+60. Verifikasi dialog `Unsaved Changes` tampil
+61. Klik `[Leave]`
+62. Verifikasi Popup Edit tertutup
+63. Verifikasi baris `Dewi Lestari {runId}-033` di tabel tidak berubah: Name, Email, Position, Division, Access (`Fixed Asset` dan `Global Settings`), dan Employee ID sama dengan data seed
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md` (TC-GS-USER-164 sampai 172). Mode FE+BE; kelas harness: validasi form Edit (satu kelas, tanpa aksi sukses).
 - Semua TC memakai satu pembukaan Edit dengan field dikembalikan ke nilai seed di antara kasus (bagian 3 prinsip 13, halaman yang sama dipakai berulang); tiap kasus diakhiri `[Save]` yang diblokir. Kasus terakhir (TC-GS-USER-172) tidak mengembalikan Email, sehingga form tetap dirty dan ditutup deterministik lewat `[✕]`, `Unsaved Changes`, `[Leave]` (S-08).
-- Butir "data tidak berubah" (TC-GS-USER-164 sampai 168) dan "Save tidak memproses form" (169 sampai 172) diasersi di tempat: Popup tetap terbuka dan tidak ada toast sukses per kasus, lalu satu `Verifikasi` data baris tabel pada langkah 64 setelah form ditutup.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 2, 3 (membuka layar dan form), 8, 13, 18, 23, 28, 36, 44, 52 (mengembalikan field ke nilai seed), 60 dan 62 (penutupan form). `Verifikasi` dialog `Unsaved Changes` (langkah 61) dan Popup tertutup (langkah 63) adalah asersi tambahan sebagai bagian penutupan deterministik S-08; tidak ada di Expected TC sumber.
+- Butir "data tidak berubah" (TC-GS-USER-164 sampai 168) dan "Save tidak memproses form" (169 sampai 172) diasersi di tempat: Popup tetap terbuka dan tidak ada toast sukses per kasus, lalu satu `Verifikasi` data baris tabel pada langkah 63 setelah form ditutup.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 2 (membuka form), 7, 12, 17, 22, 27, 35, 43, 51 (mengembalikan field ke nilai seed), 59 dan 61 (penutupan form). `Verifikasi` dialog `Unsaved Changes` (langkah 60) dan Popup tertutup (langkah 62) adalah asersi tambahan sebagai bagian penutupan deterministik S-08; tidak ada di Expected TC sumber.
 - Pembagian TC lintas spec: TC-GS-USER-164 sampai 172 diverifikasi seluruhnya di spec ini.
 - Temuan untuk QA:
   - TC-GS-USER-164 sampai 167 butir "data tidak berubah" tidak menyebut cara memeriksa; spec memeriksa baris tabel setelah form ditutup.
   - TC-GS-USER-167 ("Kosongkan Division") tidak menyebut cara mengosongkan dropdown Division; spec menulis "Kosongkan Division".
   - TC-GS-USER-169 sampai 172 butir c ("`[Save]` tidak memproses form") tidak menyebut indikator selain form tidak diproses; spec memakai Popup tetap terbuka dan tidak ada toast sukses.
   - TC-GS-USER-172 tidak menyebut format 120 karakter Email yang valid; spec memakai 103 huruf `a` diikuti `@qwertysystem.net`.
-- Spec melewati sekitar 35 langkah (64 langkah) karena memuat satu kelas (validasi form Edit), satu layar, satu user seed, satu pembukaan form yang dipakai bersama, dan tiap blok validasi berdiri sendiri (kegagalan satu blok field tidak membuat blok field lain kehilangan makna).
+- Spec melewati sekitar 35 langkah (63 langkah) karena memuat satu kelas (validasi form Edit), satu layar, satu user seed, satu pembukaan form yang dipakai bersama, dan tiap blok validasi berdiri sendiri (kegagalan satu blok field tidak membuat blok field lain kehilangan makna).

@@ -24,6 +24,7 @@ coverage:
   - Siti Nurhaliza (Pre-setup #4, Read Only dengan baris Manage TAG) di-assign Total Control (kondisi hasil TC-GS-ROLE-60, Tabel Data Uji Dinamis #3). Target TC-GS-ROLE-116.
 - Data Pre-setup #4: Rina Putri (Read Only, Inactive, punya baris Manage TAG) dan baris `Manage files` Rina Putri sebagai Read Only. Target TC-GS-ROLE-115.
 - Data yang diubah spec: Rudi Hartono kehilangan Total Control (TC-GS-ROLE-114) dan Rina Putri kehilangan Read Only (TC-GS-ROLE-115); baris `Manage files` keduanya dihapus. Hook `after` memulihkan ke kondisi Pre-setup lewat seeding API: Rudi Hartono menjadi kandidat Pre-setup #11 (tanpa access level, tanpa baris role), Rina Putri kembali Read Only dengan baris role Pre-setup #4, dan Siti Nurhaliza kembali Read Only dengan baris Manage TAG (mengikuti "Reset Pre-setup per TC" di `tc-role.md`).
+- Efek pemulihan Pre-setup yang tidak terpulihkan (S-06): Rudi Hartono, Rina Putri, dan Siti Nurhaliza berubah access level dan baris rolenya oleh spec lalu dipulihkan di hook `after`; Modified By dan Last Updated ketiga user tidak dapat dipulihkan ke nilai awal, dan entri Changelog (Assign, Remove, Auto-Revert), Activity Log, dan System Log bersifat immutable dan tidak dihapus. Spec tidak mengasersi isi atau jumlah entri log mana pun, sehingga tidak ada asersi baseline (S-12) yang terdampak.
 - Kemampuan teknis: hover pada komponen user di dialog.
 - State global: tidak ada yang diubah (suite berjalan serial, `suite.md`).
 
@@ -48,11 +49,11 @@ coverage:
 12. Klik Role Name `Manage files`
 13. Klik `(⋯)` baris Rudi Hartono
 14. Klik `Remove`
-15. Verifikasi title dialog "Remove Access"
+15. Verifikasi title dialog "Remove Total Control"
 16. Verifikasi body dialog memuat komponen user (ikon user generik dan "Rudi H")
 17. Arahkan kursor ke komponen user "Rudi H"
 18. Verifikasi tooltip menampilkan nama lengkap "Rudi Hartono"
-19. Verifikasi body dialog memuat teks "Editing this permission will remove Total Control access from this user. Are you sure you want to remove it?"
+19. Verifikasi body dialog memuat teks "This edit will remove this user's Total Control access level. Their individual role permissions will remain as edited. Are you sure you want to remove it?"
 20. Verifikasi tombol `[Cancel]` dan `[Remove]` (danger) tampil
 21. Klik `[Remove]`
 22. Verifikasi toast sukses "Success, permissions have been updated. Rudi Hartono is no longer Total Control."
@@ -73,22 +74,23 @@ coverage:
 34. Klik Role Name `Manage files`
 35. Klik `(⋯)` baris Rina Putri
 36. Klik `Remove`
-37. Verifikasi body dialog menyebut "Read Only"
-38. Klik `[Remove]`
-39. Verifikasi toast sukses "Success, permissions have been updated. Rina Putri is no longer Read Only."
-40. Buka Tab Read Only
-41. Ketik Search `Rina`, tekan Enter
-42. Verifikasi "No results found"
-43. Klik `(←)` pada kotak Search
+37. Verifikasi title dialog "Remove Read Only"
+38. Verifikasi body dialog menyebut "Read Only access level"
+39. Klik `[Remove]`
+40. Verifikasi toast sukses "Success, permissions have been updated. Rina Putri is no longer Read Only."
+41. Buka Tab Read Only
+42. Ketik Search `Rina`, tekan Enter
+43. Verifikasi "No results found"
+44. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Subjudul `###` memetakan langkah ke id TC sumber.
-- Spec melewati sekitar 35 langkah (43 langkah) karena ketiga TC berada di satu kelas harness (fungsional, Remove baris target access level pada Detail `Manage files`) dengan akun aktor yang sama; tiap blok memakai user target sendiri (Siti Nurhaliza, Rudi Hartono, Rina Putri) dan dimulai dari Tab System, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec melewati sekitar 35 langkah (44 langkah) karena ketiga TC berada di satu kelas harness (fungsional, Remove baris target access level pada Detail `Manage files`) dengan akun aktor yang sama; tiap blok memakai user target sendiri (Siti Nurhaliza, Rudi Hartono, Rina Putri) dan dimulai dari Tab System, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Urutan TC sumber diubah: TC-GS-ROLE-116 (Cancel) dijalankan pertama karena tidak mengubah data, sedangkan TC-GS-ROLE-114 dan TC-GS-ROLE-115 mengubah access level target (prinsip 3 dan 5 bagian 3).
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka tab, Tab System, dan Detail yang dibutuhkan langkah berikutnya (langkah 1, 7, 11, 12, 24, 28, 29, 33, 34, 40), dan mengosongkan Search lewat `(←)` (langkah 10, 27, 43).
-- Langkah 5 (tidak ada toast) diletakkan segera sesudah pemicu `[Cancel]` (butir 11 bagian 8b). Langkah 23 (baris hilang) memakai toast sukses langkah 22 sebagai anchor. Langkah 26 dan 42 ("No results found" dari Search) adalah anchor positif untuk absence di Tab Total Control dan Tab Read Only.
-- Langkah 37 mengasersi body dialog hanya menyebut "Read Only" sesuai Expected a TC-GS-ROLE-115.
+- Langkah penghubung (tanpa awalan `Verifikasi`): membuka tab, Tab System, dan Detail yang dibutuhkan langkah berikutnya (langkah 1, 7, 11, 12, 24, 28, 29, 33, 34, 41), dan mengosongkan Search lewat `(←)` (langkah 10, 27, 44).
+- Langkah 5 (tidak ada toast) diletakkan segera sesudah pemicu `[Cancel]` (butir 11 bagian 8b). Langkah 23 (baris hilang) memakai toast sukses langkah 22 sebagai anchor. Langkah 26 dan 43 ("No results found" dari Search) adalah anchor positif untuk absence di Tab Total Control dan Tab Read Only.
+- Langkah 37 dan 38 mengasersi title dialog "Remove Read Only" dan body dialog yang menyebut "Read Only access level" sesuai Expected a TC-GS-ROLE-115.
 - Temuan untuk QA:
   - TC-GS-ROLE-114, TC-GS-ROLE-115, dan TC-GS-ROLE-116 tidak punya Post Condition.
   - TC-GS-ROLE-116 menyebut Siti Nurhaliza Total Control berdasarkan dependensi TC-GS-ROLE-60, sedangkan Pre-setup #4 menyebut Siti Nurhaliza Read Only; spec menyiapkan Total Control sebagai Given.

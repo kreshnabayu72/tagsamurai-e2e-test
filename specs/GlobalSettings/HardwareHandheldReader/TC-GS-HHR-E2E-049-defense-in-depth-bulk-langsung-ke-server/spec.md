@@ -26,7 +26,7 @@ coverage:
   - Hook `after` mengembalikan sesi ke akun Total Control default suite. Password tidak ditulis di spec atau fixture.
 - Data Dinamis (Seed Reader A, dipulihkan fixture backend): Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`): 10 reader DD-01 s.d. DD-10, plan Growth, format tanggal default `dd/MM/yy` 24-hour. Spec memakai DD-01 (`Zebra RFID Reader - 1`, SKU-HHR-01, Available), DD-03 (`Zebra Mobile Reader - 1`, Damaged), DD-05 (`Chainway C72 - 1`, Waiting for Approval), dan DD-07 (`Honeywell CK65 - 1`, Available). Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya (pengecualian S-12 Population Seed Reader A HHR).
 - Pemulihan Seed Reader A: TC menyatakan Seed Reader A dipulihkan oleh fixture backend sebelum tiap TC yang mensyaratkannya. Spec memulihkannya sebelum TC-GS-HHR-466 (DD-01 sudah Damaged oleh TC-GS-HHR-228) lewat kemampuan "pulihkan Seed Reader A lewat fixture backend" yang disediakan tim FE/BE tanpa endpoint yang dikarang, lalu memuat ulang halaman. Hook `before` dan `after` juga memulihkannya.
-- Tiga surface log: Changelog Handheld Reader (ikon Changelog di halaman), System Log aktor (Global Settings > User > Detail akun aktor > tab System Log), dan Activity Log (Global Settings > Activity Log > tab User Action). Baseline jumlah entri dicatat per surface sebelum request langsung pada TC-GS-HHR-228 (TC-GS-HHR-229 dan TC-GS-HHR-474 tidak membaca log di spec ini; jumlah entri log atas keduanya diasersi di spec `TC-GS-HHR-E2E-079-absence-log-request-langsung-ditolak`).
+- Tiga surface log: Changelog Handheld Reader (ikon Changelog di halaman), System Log aktor (Global Settings > User > Detail akun aktor > tab System Log), dan Activity Log (tab `User Action`, dibuka lewat Global Settings > Activity Log). Baseline jumlah entri dicatat per surface sebelum request langsung pada TC-GS-HHR-228 (TC-GS-HHR-229 dan TC-GS-HHR-474 tidak membaca log di spec ini; jumlah entri log atas keduanya diasersi di spec `TC-GS-HHR-E2E-079-absence-log-request-langsung-ditolak`).
 - Kemampuan teknis: klien HTTP yang mengirim request bulk Mark as Damaged dan bulk Delete langsung ke server dengan kredensial akun aktor (endpoint sesuai kontrak API modul; tidak diulang di spec) dan membaca status serta isi respons per reader; pembacaan Badge `Status` dan tiga surface log; pemulihan Seed Reader A lewat fixture backend; ganti akun (logout lalu login).
 - State global: tidak ada yang diubah selain status Seed Reader A (dipulihkan seperti di atas) dan flag Guided Tooltip (diatur hook suite); Guided Tooltip: hook suite `before` menyetel flag Guided Tooltip halaman Handheld Reader menjadi true untuk akun aktor (Total Control dan Read Only) dan hook `after` memulihkannya; lihat `suite.md`.
 
@@ -46,7 +46,7 @@ coverage:
 7. Buka Global Settings > Hardware > Handheld Reader
 8. Catat baseline Changelog: buka ikon Changelog, catat jumlah entri, tutup dengan `✕`
 9. Catat baseline System Log aktor: buka Global Settings > User > Detail akun aktor > tab System Log, catat jumlah entri
-10. Catat baseline Activity Log: buka Global Settings > Activity Log > tab User Action, catat jumlah entri
+10. Catat baseline Activity Log (tab `User Action`): buka Global Settings > Activity Log > tab User Action, catat jumlah entri
 11. Kirim langsung request bulk Mark as Damaged berisi DD-01 (Available), DD-03 (Damaged), dan DD-05 (Waiting for Approval) lewat klien HTTP
 12. Verifikasi hasil per reader pada respons: DD-01 diproses
 13. Verifikasi hasil per reader pada respons: DD-03 dilewati dengan 409 Conflict (status sudah Damaged)
@@ -55,12 +55,12 @@ coverage:
 16. Verifikasi Badge `Status` DD-01 menjadi `Damaged`
 17. Verifikasi Badge `Status` DD-05 tetap `Waiting for Approval`
 18. Buka ikon Changelog
-19. Verifikasi jumlah entri Changelog bertambah tepat 1 dibanding baseline langkah 8, yaitu untuk `Zebra RFID Reader - 1 (SKU-HHR-01)`
+19. Verifikasi jumlah entri Changelog bertambah tepat 1 dibanding baseline langkah 8, yaitu satu baris teratas urutan default `Date` terbaru untuk `Zebra RFID Reader - 1 (SKU-HHR-01)`
 20. Tutup Modal Changelog dengan `✕`
 21. Buka Global Settings > User > Detail akun aktor > tab System Log
-22. Verifikasi jumlah entri System Log aktor bertambah tepat 1 dibanding baseline langkah 9, yaitu untuk `Zebra RFID Reader - 1 (SKU-HHR-01)`
-23. Buka Global Settings > Activity Log > tab User Action
-24. Verifikasi jumlah entri Activity Log bertambah tepat 1 dibanding baseline langkah 10, yaitu untuk `Zebra RFID Reader - 1 (SKU-HHR-01)`
+22. Verifikasi jumlah entri System Log aktor bertambah tepat 1 dibanding baseline langkah 9, yaitu satu baris teratas urutan default `Date` terbaru untuk `Zebra RFID Reader - 1 (SKU-HHR-01)`
+23. Buka Activity Log (tab `User Action`) lewat Global Settings > Activity Log > tab User Action
+24. Verifikasi jumlah entri Activity Log (tab `User Action`) bertambah tepat 1 dibanding baseline langkah 10, yaitu satu baris teratas urutan default `Date` terbaru untuk `Zebra RFID Reader - 1 (SKU-HHR-01)`
 
 ### TC-GS-HHR-466: Request bulk campuran diproses dan dilewati dijawab 200 dengan hasil per reader
 
@@ -95,7 +95,7 @@ coverage:
 - Urutan TC di spec: 474 (ditolak, tidak mengubah data), 228 (mengubah DD-01), 466 (memulihkan lalu mengubah DD-01), lalu ganti akun ke Read Only dan 229 paling akhir. Menyimpang dari urutan nomor TC sumber (228, 229, 466, 474). TC-GS-HHR-229 diletakkan sesudah ganti akun eksplisit (langkah 33 sampai 35) dan bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal keras (konvensi bagian 3, kasus b). Bila server ternyata memproses Delete oleh Read Only, TC-GS-HHR-229 berada di akhir spec sehingga kegagalannya tidak mengubah data yang dipakai TC lain.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8 sampai 10 (baseline jumlah entri sebelum request langsung; S-12), langkah 4, 7, 15, 30, 35, dan 39 (membuka atau kembali ke halaman Handheld Reader), langkah 18, 21, dan 23 (membuka surface log untuk dibaca), langkah 20 (menutup Modal Changelog), langkah 25 dan 36 (pemulihan dan muat ulang), dan ganti akun 33 sampai 34.
 - Request langsung ke server (8b butir 1): hanya respons server dan state data yang diasersi. Perilaku UI untuk respons yang sama tidak diasersi di spec ini (lihat Temuan untuk QA).
-- Asersi jumlah entri memakai selisih terhadap baseline; pada TC-GS-HHR-228 selisih tepat 1 tiap surface membuktikan tidak ada entri untuk DD-03 dan DD-05.
+- Asersi jumlah entri memakai selisih terhadap baseline; pada TC-GS-HHR-228 selisih tepat 1 tiap surface membuktikan tidak ada entri untuk DD-03 dan DD-05. Entri baru pada Changelog, System Log aktor, dan Activity Log (tab `User Action`) dibaca pada baris teratas urutan default `Date` terbaru setelah selisih jumlah dari baseline dibuktikan; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya (S-14). Tab `User Action` dipilih karena PRD Activity Log memisahkannya dari tab `Session`.
 - Pembagian TC lintas spec (S-05): TC-GS-HHR-474 dan TC-GS-HHR-229 juga ada di spec `TC-GS-HHR-E2E-079-absence-log-request-langsung-ditolak`, yang mengasersi jumlah entri Changelog Handheld Reader, System Log aktor, dan Activity Log tidak bertambah dengan baseline, sesi, dan request langsung sendiri (rujukan sebaliknya ada di Notes spec 079). Spec ini hanya mengasersi respons server (409 untuk TC-GS-HHR-474, 403 untuk TC-GS-HHR-229) dan state data (Badge `Status` tetap, reader tetap ada) (8b butir 1).
 - Spec memuat 40 langkah (di atas sekitar 35 langkah). Alasan: seluruh blok satu kelas harness (request bulk langsung ke server lewat klien HTTP), tiap blok mengasersi respons dan state data sendiri, dan Seed Reader A dipulihkan fixture backend sebelum blok yang mengubahnya (langkah 25 dan 36), sehingga kegagalan satu blok tidak menghilangkan makna blok lain.
 - Temuan untuk QA:

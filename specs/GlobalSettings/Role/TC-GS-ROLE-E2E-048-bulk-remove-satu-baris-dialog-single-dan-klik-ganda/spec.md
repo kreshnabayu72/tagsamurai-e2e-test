@@ -21,7 +21,7 @@ coverage:
 - Environment variable: `GS_TC_PASSWORD` (sudah terdaftar). Tidak ada env baru.
 - Layar awal (hook `beforeEach`): Global Settings > Role & Permission > System > Detail `Manage hardware`. Blok TC-GS-ROLE-295 berpindah ke Detail `Manage master reference` lewat langkah 27.
 - Data Dinamis milik spec (hook `before`, lewat seeding API): dua user Access Global Settings tanpa access level dengan baris Manage hardware untuk TC-GS-ROLE-135: `Ganda Satu {runId}-048` (`gandasatu+{runId}-048@qwertysystem.net`) dan `Ganda Dua {runId}-048` (`gandadua+{runId}-048@qwertysystem.net`). Entri Changelog atas dua nama bersuffix ini belum ada sebelum aksi (baseline nol, S-12).
-- Data Pre-setup yang dipakai (Tabel Data Uji Pre-setup): Nina Kartika (baris 11, kandidat) dengan baris Manage hardware dari seeding (TC-GS-ROLE-294); Rina Putri (baris 4, Read Only, Inactive) dengan baris Manage master reference dari seeding dan Read Only di-assign ulang bila sudah hilang (Tabel Data Uji Dinamis baris 14; TC-GS-ROLE-295). Siti Nurhaliza dan Intan Permata (Read Only, baris 4 dan 19) dipakai sebagai baris pembanding di Tab Read Only.
+- Data Pre-setup yang dipakai (Tabel Data Uji Pre-setup): Nina Kartika (baris 11, kandidat) dengan baris Manage hardware dari seeding (TC-GS-ROLE-294); Rina Putri (baris 4, Read Only, Inactive) dengan baris Manage master reference dari seeding dan Read Only di-assign ulang bila sudah hilang (Tabel Data Uji Dinamis baris 14; TC-GS-ROLE-295). Siti Nurhaliza (Read Only, baris 4) dipakai sebagai baris pembanding di Tab Read Only.
 - Pemulihan (hook `after`, tidak berasumsi seeding berhasil penuh): hapus user `Ganda Satu {runId}-048` dan `Ganda Dua {runId}-048`; hapus baris Manage hardware milik Nina Kartika yang masih ada (aksi spec menghapusnya, sehingga Nina Kartika kembali tanpa baris role); hapus baris Manage master reference milik Rina Putri yang masih ada, lalu kembalikan Read Only Rina Putri (aksi TC-GS-ROLE-295 mencabut Read Only lewat auto-revert; baris Manage TAG milik Rina Putri tidak disentuh). Last Updated Rina Putri berubah dan tidak dipulihkan. Entri Changelog tidak dapat dihapus.
 - Kemampuan teknis: klik dua kali cepat pada `[Remove]` (dua klik dalam satu aksi); hover pada komponen user di body dialog; membaca entri Changelog Detail dengan Search per nama bersuffix.
 - Kemampuan teknis (seeding): seeding API untuk akses level, baris role, dan data user disediakan tim FE/BE; nama endpoint tidak disebut di TC dan PRD dan tidak dikarang di spec.
@@ -68,11 +68,11 @@ coverage:
 28. Centang baris `Rina Putri`
 29. Klik `Bulk Action`
 30. Klik `Remove`
-31. Verifikasi Title dialog `Remove Access`
+31. Verifikasi Title dialog `Remove Read Only`
 32. Verifikasi body dialog memuat bullet `• Rina P` berupa komponen user (ikon user generik + first name + inisial last name)
 33. Arahkan kursor ke `Rina P`
 34. Verifikasi hover pada `Rina P` menampilkan nama lengkap `Rina Putri`
-35. Verifikasi body dialog memuat kalimat `Editing this permission will remove Read Only access from this user. Are you sure you want to remove it?`
+35. Verifikasi body dialog memuat kalimat `This edit will remove this user's Read Only access level. Their individual role permissions will remain as edited. Are you sure you want to remove it?`
 36. Verifikasi tombol `[Cancel]` dan `[Remove]` (danger) tampil
 37. Klik `[Remove]`
 38. Verifikasi toast sukses `Success, user has been removed.`

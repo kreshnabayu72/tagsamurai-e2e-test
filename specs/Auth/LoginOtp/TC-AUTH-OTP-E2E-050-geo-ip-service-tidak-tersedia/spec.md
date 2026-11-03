@@ -7,7 +7,7 @@ status: draft
 sourceTc:
   - TC-AUTH-OTP-192
 coverage:
-  web: automated
+  web: manual
 ---
 
 # Geo-IP Service Tidak Tersedia: Trigger Jarak dan Negara Dilewati, Verify OTP Lanjut ke Portal tanpa MFA

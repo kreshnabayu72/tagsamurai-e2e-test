@@ -26,10 +26,11 @@ coverage:
 | P | Principal (Admin Console) | Bambang Hartono | `totalControlPrincipal_automated_qaTeam1@qwertysystem.net` | `Spectra.env.GS_PRINCIPAL_TC_PASSWORD` |
 
 - Login Sesi A dilakukan di hook `before`; hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader. Sesi P dibuka dengan langkah ganti akun eksplisit (langkah 20) untuk blok TC-GS-HHR-488, karena TC memberi langkah UI Principal. Hook `after` menutup Sesi P dan mengembalikan sesi ke akun default suite (Sesi A).
-- Data (Client A, plan Growth, Seed Reader A dari fixture BE, alokasi awal `Short Range` 8 dan `Long Range` 6; terpakai `Short Range` 5 dan `Long Range` 5): DD-07 (`Honeywell CK65 - 1`, Jalur B, menyimpan ID Device Name DN-02 `Honeywell CK65`, `SKU` `—`); lima reader Short Range: DD-02 (`Gudang Reader - 1`), DD-04 (`Gudang Reader - 2`), DD-06 (`Zebra RFID Reader - 1`), DD-08 (`Unitech EA520 - 1`), DD-10 (`Gudang Reader - 4`). Seed Changelog Client A memuat entri Activate 22/06/26 10:00 untuk DD-07.
+- Data (Client A, plan Growth, Seed Reader A dari fixture BE, alokasi awal `Short Range` 8 dan `Long Range` 6; terpakai `Short Range` 5 dan `Long Range` 5): DD-07 (`Honeywell CK65 - 1`, Jalur B, menyimpan ID Device Name DN-02 `Honeywell CK65`, `SKU` `—`); lima reader Short Range: DD-02 (`Gudang Reader - 1`), DD-04 (`Gudang Reader - 2`), DD-06 (`Zebra RFID Reader - 1`), DD-08 (`Unitech EA520 - 1`), DD-10 (`Gudang Reader - 4`). Seed Changelog Client A memuat entri CL-02 Activate `22/06/26 10:00` untuk DD-07; Changelog tumbuh (entri Okt dari spec lain berada di atas seed Juni), sehingga CL-02 dibaca pada hasil Filter `Date` `22/06/26` s.d. `22/06/26` sebagai pembatas (S-14).
 - Kemampuan teknis (disediakan tim FE/BE):
   - Sesi API Principal untuk mengubah alokasi Client A di Admin Console > Device Allocation (menambah `Long Range` dari 6 menjadi 8 dan mengurangi `Short Range` dari 8 menjadi 4). Pelaku hanya memicu perubahan state; endpoint tidak didefinisikan di TC, PRD, atau LLD dan tidak ditulis di spec ini.
   - Konteks browser kedua untuk Sesi P (blok TC-GS-HHR-488).
+  - Pengisian rentang tanggal pada Filter `Date` Modal Changelog lewat date picker; Filter `Date` diproses server-side dan inklusif kedua ujung (tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE).
   - Pemulihan alokasi Client A (`Short Range` 8, `Long Range` 6) dan nama Device Name `Honeywell CK65` (Post Condition TC-GS-HHR-488: dipulihkan automation baseline).
 - Baseline: nilai kartu `Short Range` (`5 of 8`, `3 remaining`) dicatat dari keadaan awal sebelum perubahan alokasi.
 - State global yang diubah: alokasi Device Allocation Client A dan Device Name `Honeywell CK65`. Pemulihan: langkah pemulihan eksplisit dan hook `after` sebagai cadangan.
@@ -72,19 +73,27 @@ coverage:
 26. Verifikasi baris DD-07 menampilkan `Device Name` `Honeywell CK65 Plus - 1` (`N` tetap 1)
 27. Verifikasi baris DD-07 menampilkan `SKU` `—`
 28. Sesi A: klik ikon Changelog
-29. Verifikasi Modal Changelog baris `22/06/26 10:00` tetap menampilkan `Honeywell CK65 - 1` (snapshot saat entri dicatat)
-30. Sesi A: tutup Modal Changelog
-31. Sesi P: ubah kembali Device Name `Honeywell CK65 Plus` menjadi `Honeywell CK65` di `Settings > Device > Device Name`, klik `[Save]`
+29. Klik ikon Filter di modal
+30. Isi `Date` rentang `22/06/26` s.d. `22/06/26` (pembatas seed CL-02)
+31. Klik `[Apply]`
+32. Verifikasi Modal Changelog baris `22/06/26 10:00` tetap menampilkan `Honeywell CK65 - 1` (snapshot saat entri dicatat), dibaca pada hasil yang dibatasi Filter `Date` itu
+33. Klik `[Clear Field]`
+34. Klik `[Apply]`
+35. Klik ikon Filter di modal untuk menutup Filter Panel
+36. Sesi A: tutup Modal Changelog
+37. Sesi P: ubah kembali Device Name `Honeywell CK65 Plus` menjadi `Honeywell CK65` di `Settings > Device > Device Name`, klik `[Save]`
 
 ## Notes
 
 - Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md` (Section 7d dan 7f). Semua TC berlabel Automatable.
 - Urutan: penambahan alokasi (TC-GS-HHR-397) sebelum pengurangan (TC-GS-HHR-398), rename Device Name paling akhir (prinsip 3 butir 4). Langkah 8 memulihkan alokasi `Long Range` sebelum TC-GS-HHR-398 supaya tiap TC dimulai dari alokasi Tabel Pre-setup (Catatan TC: tabel dipulihkan antar TC).
-- Langkah penghubung tanpa `Verifikasi` (S-03): mencatat nilai awal, mengubah dan memulihkan alokasi lewat sesi API, muat ulang, membuka dan menutup Overlay `Select Range Type`, dialog, dan Modal Changelog, mencari Device Name, memulihkan nama. Langkah "Tunggu aksi selesai" dipakai karena langkah berikut berpindah surface atau sesi.
+- Langkah penghubung tanpa `Verifikasi` (S-03): mencatat nilai awal, mengubah dan memulihkan alokasi lewat sesi API, muat ulang, membuka dan menutup Overlay `Select Range Type`, dialog, dan Modal Changelog, Filter `Date` seed sebagai pembatas dan pelepasannya (langkah 29 sampai 31 dan 33 sampai 35, S-14), mencari Device Name, memulihkan nama. Langkah "Tunggu aksi selesai" dipakai karena langkah berikut berpindah surface atau sesi.
 - TC-GS-HHR-398 memakai Client A sesuai TC; Client lain tidak dipakai.
+- Spec memuat 37 langkah (di atas sekitar 35 langkah). Alasan: seluruhnya satu kelas harness (multi-konteks c: Sesi API Principal lalu dibaca di Sesi A) dan satu dataset (Client A dengan Seed Reader A, DD-07, dan alokasi Device Allocation); ketiga TC mengubah state global yang sama (alokasi Client A dan Device Name `Honeywell CK65`) sehingga memecah spec berarti mengulang login Sesi A dan P serta pemulihan state tanpa menambah makna; 9 langkah adalah `Verifikasi` dan 6 langkah (29 sampai 31, 33 sampai 35) adalah pembatas Filter `Date` seed (S-14), bukan asersi baru; TC-GS-HHR-488 berdiri sendiri di akhir dengan ganti akun eksplisit sehingga kegagalan blok sebelumnya tidak membuatnya kehilangan makna.
 - Temuan untuk QA:
   - TC-GS-HHR-397 dan TC-GS-HHR-398 menyatakan perubahan alokasi di Admin Console > Device Allocation sebagai precondition oleh Principal tanpa langkah UI; spec memakai sesi API yang disediakan tim FE tanpa mengarang endpoint.
   - TC-GS-HHR-398 butir a ("Kelima reader Short Range tetap tampil") tidak menyebut nama kelima reader; spec memakai nama dari Seed Reader A (DD-02, DD-04, DD-06, DD-08, DD-10).
   - TC-GS-HHR-398 butir b tidak menyebut tombol dialog; spec memakai `[OK]` sesuai langkah TC.
   - TC-GS-HHR-488 precondition a menyebut "akun fixture modul Device Name" untuk Principal; spec memakai akun Principal Pre-setup TC (`totalControlPrincipal_automated_qaTeam1@qwertysystem.net`).
-  - TC-GS-HHR-488 Post Condition ("Device Name dipulihkan automation baseline") tidak punya langkah observasi dan tidak diasersi; spec memulihkan nama pada langkah 31 dan di hook `after`.
+  - Pembatas Filter `Date` `22/06/26` (langkah 29 sampai 31) ditambahkan spec di luar langkah TC-GS-HHR-488 agar entri seed CL-02 teramati (S-14); Expected TC tetap terpenuhi. Tolong konfirmasi bahwa penambahan itu tidak mengubah maksud TC.
+  - TC-GS-HHR-488 Post Condition ("Device Name dipulihkan automation baseline") tidak punya langkah observasi dan tidak diasersi; spec memulihkan nama pada langkah 37 dan di hook `after`.
