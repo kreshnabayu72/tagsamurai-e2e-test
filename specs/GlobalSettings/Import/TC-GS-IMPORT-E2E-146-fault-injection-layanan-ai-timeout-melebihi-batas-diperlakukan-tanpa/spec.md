@@ -36,7 +36,7 @@ coverage:
 
 1. Reset Client C ke tanpa draft pada Sub-Tab Brand (aksi fixture)
 2. Atur mock layanan AI ke mode tunda 6 detik (D-40)
-3. Buka Global Settings > Import, pilih Sub-Tab Brand
+3. Muat ulang halaman Import > Brand
 4. Klik `[Upload File]` di toolbar dan pilih berkas `ai-brand-long.csv`
 5. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 6. Verifikasi baris #1 berstatus `error`
@@ -48,7 +48,7 @@ coverage:
 ### TC-GS-IMPORT-316: Timeout AI Reference Suggestion pada sel Division
 
 11. Reset Client C ke tanpa draft pada Sub-Tab Brand dan User Login (aksi fixture)
-12. Pilih Sub-Tab User Login
+12. Muat ulang halaman Import > User Login
 13. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-div-gudng.csv`
 14. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 15. Verifikasi baris #1 berstatus `error`
@@ -60,7 +60,7 @@ coverage:
 ### TC-GS-IMPORT-843: Hasil tanpa saran AI Field Shortening disimpan dan tidak diminta ulang
 
 20. Reset Client C ke tanpa draft pada Sub-Tab Brand dan User Login (aksi fixture)
-21. Pilih Sub-Tab Brand
+21. Muat ulang halaman Import > Brand
 22. Klik `[Upload File]` di toolbar
 23. Pilih berkas `ai-brand-long.csv` di file picker
 24. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
@@ -80,7 +80,7 @@ coverage:
 
 36. Reset Client C ke tanpa draft pada Sub-Tab Brand dan User Login (aksi fixture)
 37. Atur mock layanan AI ke mode tunda 6 detik (D-40)
-38. Pilih Sub-Tab User Login
+38. Muat ulang halaman Import > User Login
 39. Klik `[Upload File]` di toolbar
 40. Pilih berkas `user-login-div-gudng.csv` di file picker
 41. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
@@ -99,7 +99,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fault injection (b) dengan pemicu di layanan AI; seluruh blok satu kelas.
 - Alasan melewati sekitar 35 langkah (50 langkah nominal): empat blok homogen (dua Sub-Tab, dua TC per Sub-Tab), tiap blok berdiri sendiri dengan reset Client C di awal sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. TC-298 dan TC-316 menguji timeout pada Confirm Mapping, TC-843 dan TC-844 menguji hasil tersimpan sesudah muat ulang.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): langkah reset dan pengaturan mock AI (1, 2, 11, 20, 30, 36, 37, 45), pemilihan Sub-Tab, dan jeda nyata `Tunggu 8 detik` (langkah 8, 16, 27, 32, 43, 47).
+- Langkah penghubung (tanpa `Verifikasi`): langkah reset dan pengaturan mock AI (1, 2, 11, 20, 30, 36, 37, 45), muat ulang halaman Import > Sub-Tab sesudah reset atau pengaturan mock, dan jeda nyata `Tunggu 8 detik` (langkah 8, 16, 27, 32, 43, 47).
 - Langkah 30 dan 45 mengembalikan mock ke mode normal sebelum muat ulang sehingga badge saran akan tampil bila halaman meminta ulang saran; itu dasar asersi "tidak diminta ulang" pada langkah 33 sampai 35 dan 48.
 - Temuan untuk QA:
   - TC-GS-IMPORT-843 dan TC-GS-IMPORT-844 judulnya menyatakan "tidak diminta ulang saat halaman dimuat ulang", tetapi Expected hanya mengasersi tidak adanya badge saran sesudah muat ulang dan setelah mock dikembalikan ke mode normal; tidak ada Expected yang membaca jumlah permintaan mock. Spec hanya mengasersi Expected TC dan tidak menambah asersi jumlah permintaan.

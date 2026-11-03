@@ -152,17 +152,16 @@ Untuk setiap baris tabel "Field wajib dikosongkan" (langkah 53 sampai 60 diulang
 66. Admin kedua Client A mengirim permintaan Remove langsung ke server dengan token akun Admin kedua Client A untuk pengenal baris itu
 67. Verifikasi server membalas sukses atas permintaan Remove langsung
 68. Klik `[Save]`
-69. Verifikasi dialog dengan Title "Draft Is Being Edited" dan Body "Another admin is currently editing this draft. Please try again in a moment." tampil
+69. Verifikasi dialog dengan Title "Draft Is Being Edited" dan Body "Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved." tampil
 70. Verifikasi dialog hanya memiliki tombol `[OK]`
 71. Klik `[OK]`
 72. Verifikasi dialog tertutup
 73. Pulihkan jam server ke waktu nyata (aksi tanpa `Verifikasi`)
-74. Klik `[Cancel]`, lalu klik `[Discard]` pada dialog Discard Changes
-75. Muat ulang halaman Import > Brand
-76. Verifikasi baris #1 menampilkan `Lenovo`
-77. Verifikasi tidak ada baris `Lenovo Baru`, `Acme Corp`, maupun `Acme Corporation`
-78. Verifikasi kartu Total Rows menampilkan 11
-79. Verifikasi Pagination "Showing 1 - 10 of 11 items"
+74. Muat ulang halaman Import > Brand
+75. Verifikasi baris #1 menampilkan `Lenovo`
+76. Verifikasi tidak ada baris `Lenovo Baru`, `Acme Corp`, maupun `Acme Corporation`
+77. Verifikasi kartu Total Rows menampilkan 11
+78. Verifikasi Pagination "Showing 1 - 10 of 11 items"
 
 ## Notes
 
@@ -171,8 +170,8 @@ Untuk setiap baris tabel "Field wajib dikosongkan" (langkah 53 sampai 60 diulang
 - Penyimpangan urutan dari TC: TC-673 dan TC-212 sampai 214 mendahului blok Sub-Tab lain; TC-842 dijalankan paling akhir karena menghapus baris dan memajukan jam server (prinsip 5 bagian 3). Jam server dipulihkan pada langkah 73 (sesudah Save ditolak dan sebelum pemuatan ulang) sebagai langkah aksi tanpa `Verifikasi` (S-09); hook `after` hanya cadangan.
 - P-2: langkah 61, 65, 66, dan 73 adalah pemicu atau pemulihan (jam server, permintaan Remove langsung, pengenal baris); asersi respons server (langkah 67) hanya status sukses. Perilaku FE atas Save diasersi pada langkah 69 sampai 72.
 - Langkah penghubung (tanpa `Verifikasi`): langkah 8, 16 sampai 17, 32, 39, 51 sampai 52, dan 60 (`[Cancel]` lalu `[Discard]`) membuang perubahan karena sesi edit berisi perubahan sehingga dialog Discard Changes pasti tampil.
-- Langkah penghubung sebelum muat ulang: langkah 74 (`[Cancel]` lalu `[Discard]`) menutup sesi edit yang masih berisi perubahan (langkah 62 sampai 64) sebelum langkah 75 memuat ulang halaman, karena dialog `[OK]` pada langkah 71 tidak menutup sesi (S-08, S-09, K-19c).
-- Spec berisi sekitar 247 langkah dengan ekspansi (langkah 40 sampai 52 dikali 9 dan langkah 53 sampai 60 dikali 9 ditambah 58 langkah lain). Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (Save diblokir all-or-nothing), parameter tiap iterasi ada di tabel Prerequisites tanpa langkah bersyarat, tiap blok berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung sebelum muat ulang: langkah 73 (pemulihan jam server) mendahului langkah 74 (muat ulang). `[OK]` pada langkah 71 menutup dialog dan sesi edit serta melepas kunci (PRD baris 568), sehingga tidak ada `[Cancel]` atau `[Discard]` sesudahnya.
+- Spec berisi sekitar 246 langkah dengan ekspansi (langkah 40 sampai 52 dikali 9 dan langkah 53 sampai 60 dikali 9 ditambah 57 langkah lain). Alasan melewati sekitar 35 langkah: semua blok satu kelas (fungsional) dan satu topik (Save diblokir all-or-nothing), parameter tiap iterasi ada di tabel Prerequisites tanpa langkah bersyarat, tiap blok berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: TC-GS-IMPORT-672 dan 675 (karakter terlarang dan format) ada di spec 095; TC-GS-IMPORT-871 dan 869 (kunci sesi) ada di spec lain.
 - Temuan untuk QA:
   - TC-GS-IMPORT-673 langkah 3 (121 karakter `A` diikuti emoji 😀) belum menyebut injeksi value langsung ke DOM, sedangkan TC-GS-IMPORT-672 memakainya karena filter input FE memblok karakter di luar whitelist; spec menulis langkah 34 dengan injeksi agar kedua aturan sama-sama dilanggar dan presedensi pesan teruji.
@@ -180,4 +179,5 @@ Untuk setiap baris tabel "Field wajib dikosongkan" (langkah 53 sampai 60 diulang
   - TC-GS-IMPORT-842 tidak menyebut endpoint Remove langsung maupun cara mengambil pengenal baris; spec memakai "permintaan Remove langsung" dan "respons pembacaan Staging Table" tanpa mengarang endpoint; disediakan tim FE/BE (S-13).
   - TC-GS-IMPORT-842 Expected e ("Showing 1 - 10 of 11 items") dan Expected d bergantung pada urutan dan jumlah D-01; tidak ada hook jam browser karena kedaluwarsa kunci dihitung server.
   - TC-GS-IMPORT-213, 214, 673: nilai "121 kali" atau "120 kali" ditandai `PRD?` di dump TC; ini data uji berulang karakter dan tidak memengaruhi hasil.
-  - Post Condition TC-842 ("Draft Brand Client A berisi 11 baris `pending`", "Jam server dikembalikan") dipenuhi oleh Expected e dan langkah 73; tidak diasersi lagi (S-01). Post Condition lain kosong.
+  - TC-GS-IMPORT-842 Expected b menulis Body "Another admin is currently editing this draft. Please try again in a moment.", yang menyimpang dari PRD baris 568 ("Another admin is currently editing this draft. Taking over ends their edit session, and their unsaved changes will not be saved."); spec mengikuti PRD pada langkah 69. Expected c (dialog tertutup, sesi edit tertutup, kunci dilepas) diasersi pada langkah 72 sebatas dialog tertutup; penutupan sesi dan pelepasan kunci tidak punya penanda UI di TC dan dibuktikan tidak langsung lewat muat ulang langkah 74.
+  - Post Condition TC-842 ("Draft Brand Client A berisi 11 baris `pending`", "Jam server dikembalikan") dipenuhi oleh Expected e dan langkah 73; tidak diasersi lagi (S-01). Post Condition b TC-842 (sesi edit tertutup dan kunci dilepas setelah `[OK]`) dipenuhi oleh Expected c dan langkah 72; penutupan sesi tidak punya penanda UI selain dialog tertutup.

@@ -65,85 +65,88 @@ coverage:
 28. Pilih Action `Import Division` pada dropdown Action
 29. Klik `[Apply]`
 30. Perhatikan teks Pagination pada modal Changelog
-31. Verifikasi jumlah entri hasil filter Action `Import Division` sama dengan baseline langkah 6 (empty state bila baseline 0)
-32. Tutup modal Changelog
+31. Verifikasi modal `Changelog: Import` terbuka
+32. Verifikasi jumlah entri hasil filter Action `Import Division` sama dengan baseline langkah 6 (empty state bila baseline 0)
+33. Tutup modal Changelog
 
 ### TC-GS-IMPORT-5: Upload berkas CSV valid di Tab User Login lalu Confirm Mapping membuat draft baru
 
-33. Klik Sub-Tab User Login
-34. Klik tombol `[Changelog]` di header halaman
-35. Klik icon Filter
-36. Pilih Action `Import User Login` pada dropdown Action
-37. Klik `[Apply]`
-38. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline User Login
-39. Tutup modal Changelog
-40. Klik `[Upload File]` di toolbar
-41. Pilih berkas `user-login-8.csv` di file picker
-42. Perhatikan Modal Column Mapping yang terbuka
-43. Verifikasi Modal Column Mapping berjudul `Column Mapping: User Login`
-44. Verifikasi deskripsi modal "Map columns from your uploaded file to the system attributes."
-45. Verifikasi tidak ada toast upload
-46. Verifikasi atribut `First Name`, `Last Name`, `Email`, `Division`, `Position`, `Employee ID`, `Access`, `Active Period`, `Shift`, dan `Overtime Hours` terisi otomatis dengan kolom berkas bernama sama
-47. Verifikasi atribut Shift Notes, Emergency Phone, dan Join Date tetap "No Column" (opsional)
-48. Verifikasi tidak ada Error Banner
-49. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column
-50. Verifikasi modal tertutup
-51. Verifikasi muncul toast sukses "Success, row has been added."
-52. Perhatikan Staging Table, Staging Metric Cards, Pagination, Footer, dan area di atas Staging Metric Cards
-53. Verifikasi Staging Table halaman 1 menampilkan 8 baris berstatus `pending` berurut `Row #` 1-8
-54. Verifikasi Pagination `Showing 1 - 8 of 8 items`
-55. Verifikasi Staging Metric Cards: Total Rows 8 (Active), Ready to Import 8, Errors 0 (Disabled), Duplicates 0 (Disabled)
-56. Verifikasi Footer menampilkan `[Import (8)]`
-57. Verifikasi Unsaved Banner tidak tampil
-58. Verifikasi tidak ada tombol `[Discard]` di halaman
-59. Klik tombol `[Changelog]` di header halaman
-60. Klik icon Filter
-61. Pilih Action `Import User Login` pada dropdown Action
-62. Klik `[Apply]`
-63. Perhatikan teks Pagination pada modal Changelog
-64. Verifikasi jumlah entri hasil filter Action `Import User Login` sama dengan baseline langkah 38 (empty state bila baseline 0)
-65. Tutup modal Changelog
+34. Klik Sub-Tab User Login
+35. Klik tombol `[Changelog]` di header halaman
+36. Klik icon Filter
+37. Pilih Action `Import User Login` pada dropdown Action
+38. Klik `[Apply]`
+39. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline User Login
+40. Tutup modal Changelog
+41. Klik `[Upload File]` di toolbar
+42. Pilih berkas `user-login-8.csv` di file picker
+43. Perhatikan Modal Column Mapping yang terbuka
+44. Verifikasi Modal Column Mapping berjudul `Column Mapping: User Login`
+45. Verifikasi deskripsi modal "Map columns from your uploaded file to the system attributes."
+46. Verifikasi tidak ada toast upload
+47. Verifikasi atribut `First Name`, `Last Name`, `Email`, `Division`, `Position`, `Employee ID`, `Access`, `Active Period`, `Shift`, dan `Overtime Hours` terisi otomatis dengan kolom berkas bernama sama
+48. Verifikasi atribut Shift Notes, Emergency Phone, dan Join Date tetap "No Column" (opsional)
+49. Verifikasi tidak ada Error Banner
+50. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column
+51. Verifikasi modal tertutup
+52. Verifikasi muncul toast sukses "Success, row has been added."
+53. Perhatikan Staging Table, Staging Metric Cards, Pagination, Footer, dan area di atas Staging Metric Cards
+54. Verifikasi Staging Table halaman 1 menampilkan 8 baris berstatus `pending` berurut `Row #` 1-8
+55. Verifikasi Pagination `Showing 1 - 8 of 8 items`
+56. Verifikasi Staging Metric Cards: Total Rows 8 (Active), Ready to Import 8, Errors 0 (Disabled), Duplicates 0 (Disabled)
+57. Verifikasi Footer menampilkan `[Import (8)]`
+58. Verifikasi Unsaved Banner tidak tampil
+59. Verifikasi tidak ada tombol `[Discard]` di halaman
+60. Klik tombol `[Changelog]` di header halaman
+61. Klik icon Filter
+62. Pilih Action `Import User Login` pada dropdown Action
+63. Klik `[Apply]`
+64. Perhatikan teks Pagination pada modal Changelog
+65. Verifikasi modal `Changelog: Import` terbuka
+66. Verifikasi jumlah entri hasil filter Action `Import User Login` sama dengan baseline langkah 39 (empty state bila baseline 0)
+67. Tutup modal Changelog
 
 ### TC-GS-IMPORT-6: Upload berkas CSV valid di Tab User Non Login lalu Confirm Mapping membuat draft baru
 
-66. Klik Sub-Tab User Non Login
-67. Klik tombol `[Changelog]` di header halaman
-68. Klik icon Filter
-69. Pilih Action `Import User Non Login` pada dropdown Action
-70. Klik `[Apply]`
-71. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline User Non Login
-72. Tutup modal Changelog
-73. Klik `[Upload File]` di toolbar
-74. Pilih berkas `user-non-login-5.csv` di file picker
-75. Perhatikan Modal Column Mapping yang terbuka
-76. Verifikasi Modal Column Mapping berjudul `Column Mapping: User Non Login`
-77. Verifikasi deskripsi modal "Map columns from your uploaded file to the system attributes."
-78. Verifikasi tidak ada toast upload
-79. Verifikasi atribut `First Name`, `Last Name`, `Email`, `Division`, `Position`, `Employee ID`, `Represented By`, dan `Active Period` terisi otomatis dengan kolom berkas bernama sama
-80. Verifikasi tidak ada Error Banner
-81. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column
-82. Verifikasi modal tertutup
-83. Verifikasi muncul toast sukses "Success, row has been added."
-84. Perhatikan Staging Table, Staging Metric Cards, Pagination, Footer, dan area di atas Staging Metric Cards
-85. Verifikasi Staging Table halaman 1 menampilkan 5 baris berstatus `pending` berurut `Row #` 1-5
-86. Verifikasi Pagination `Showing 1 - 5 of 5 items`
-87. Verifikasi Staging Metric Cards: Total Rows 5 (Active), Ready to Import 5, Errors 0 (Disabled), Duplicates 0 (Disabled)
-88. Verifikasi Footer menampilkan `[Import (5)]`
-89. Verifikasi Unsaved Banner tidak tampil
-90. Verifikasi tidak ada tombol `[Discard]` di halaman
-91. Klik tombol `[Changelog]` di header halaman
-92. Klik icon Filter
-93. Pilih Action `Import User Non Login` pada dropdown Action
-94. Klik `[Apply]`
-95. Perhatikan teks Pagination pada modal Changelog
-96. Verifikasi jumlah entri hasil filter Action `Import User Non Login` sama dengan baseline langkah 71 (empty state bila baseline 0)
+68. Klik Sub-Tab User Non Login
+69. Klik tombol `[Changelog]` di header halaman
+70. Klik icon Filter
+71. Pilih Action `Import User Non Login` pada dropdown Action
+72. Klik `[Apply]`
+73. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline User Non Login
+74. Tutup modal Changelog
+75. Klik `[Upload File]` di toolbar
+76. Pilih berkas `user-non-login-5.csv` di file picker
+77. Perhatikan Modal Column Mapping yang terbuka
+78. Verifikasi Modal Column Mapping berjudul `Column Mapping: User Non Login`
+79. Verifikasi deskripsi modal "Map columns from your uploaded file to the system attributes."
+80. Verifikasi tidak ada toast upload
+81. Verifikasi atribut `First Name`, `Last Name`, `Email`, `Division`, `Position`, `Employee ID`, `Represented By`, dan `Active Period` terisi otomatis dengan kolom berkas bernama sama
+82. Verifikasi tidak ada Error Banner
+83. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column
+84. Verifikasi modal tertutup
+85. Verifikasi muncul toast sukses "Success, row has been added."
+86. Perhatikan Staging Table, Staging Metric Cards, Pagination, Footer, dan area di atas Staging Metric Cards
+87. Verifikasi Staging Table halaman 1 menampilkan 5 baris berstatus `pending` berurut `Row #` 1-5
+88. Verifikasi Pagination `Showing 1 - 5 of 5 items`
+89. Verifikasi Staging Metric Cards: Total Rows 5 (Active), Ready to Import 5, Errors 0 (Disabled), Duplicates 0 (Disabled)
+90. Verifikasi Footer menampilkan `[Import (5)]`
+91. Verifikasi Unsaved Banner tidak tampil
+92. Verifikasi tidak ada tombol `[Discard]` di halaman
+93. Klik tombol `[Changelog]` di header halaman
+94. Klik icon Filter
+95. Pilih Action `Import User Non Login` pada dropdown Action
+96. Klik `[Apply]`
+97. Perhatikan teks Pagination pada modal Changelog
+98. Verifikasi modal `Changelog: Import` terbuka
+99. Verifikasi jumlah entri hasil filter Action `Import User Non Login` sama dengan baseline langkah 73 (empty state bila baseline 0)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Spec melewati sekitar 35 langkah (96 langkah nominal; tiga blok homogen). Alasan: ketiga blok satu pola yang sama (baca baseline Changelog, Upload, verifikasi mapping dan draft, baca Changelog), masing-masing pada Sub-Tab dan draft sendiri sehingga berdiri sendiri; kegagalan satu blok tidak menghilangkan makna blok lain. Blok baca-log berpola (langkah 2 sampai 7, 26 sampai 32, 34 sampai 39, 59 sampai 65, 67 sampai 72, 91 sampai 96) tidak dihitung ke batas ±35.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 33, 66 (pindah Sub-Tab); langkah 7, 32, 39, 65, 72 (tutup modal Changelog); langkah 10, 19, 30, 42, 52, 63, 75, 84, 95 (mengamati sesuai Langkah Uji TC).
+- Spec melewati sekitar 35 langkah (99 langkah nominal; tiga blok homogen). Alasan: ketiga blok satu pola yang sama (baca baseline Changelog, Upload, verifikasi mapping dan draft, baca Changelog), masing-masing pada Sub-Tab dan draft sendiri sehingga berdiri sendiri; kegagalan satu blok tidak menghilangkan makna blok lain. Blok baca-log berpola (langkah 2 sampai 7, 26 sampai 33, 35 sampai 40, 60 sampai 67, 69 sampai 74, 93 sampai 99) tidak dihitung ke batas ±35.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 34, 68 (pindah Sub-Tab); langkah 7, 33, 40, 67, 74 (tutup modal Changelog); langkah 10, 19, 30, 43, 53, 64, 77, 86, 97 (mengamati sesuai Langkah Uji TC).
 - Langkah "sama dengan baseline" (31, 64, 96) mengasersi bahwa Upload dan Confirm Mapping tidak mencatat entri Changelog; memakai baseline jumlah entri hasil filter Action, bukan total absolut (S-12).
 - Temuan untuk QA:
   - Skrip reset draft Client A tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE (S-13).

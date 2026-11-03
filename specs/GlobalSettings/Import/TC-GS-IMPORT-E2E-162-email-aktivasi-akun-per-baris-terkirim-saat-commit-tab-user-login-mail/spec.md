@@ -31,7 +31,7 @@ coverage:
 
 1. Reset Client E (D-47) dan seed draft User Login D-54 (8 baris `pending`) lewat skrip fixture
 2. Catat jumlah email pada mail-catcher untuk masing-masing dari 8 alamat (`rizky.pratama`, `sinta.maharani`, `doni.kurniawan`, `eka.putri`, `fajar.hidayat`, `gita.savitri`, `hendra.gunawan`, `indah.permata` @example.com) sebagai baseline
-3. Buka Global Settings > Import, pilih Sub-Tab User Login
+3. Muat ulang halaman Import > User Login
 4. Klik `[Import (8)]`
 5. Tunggu aksi selesai (permintaan mendapat respons)
 6. Tunggu commit selesai: muat ulang halaman Import > User Login setiap 5 detik sampai Dropzone tampil (batas tunggu 2 menit)
@@ -46,7 +46,7 @@ coverage:
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah email aktivasi per baris yang dibaca lewat mail-catcher setelah commit (spec TC tunggal untuk harness mail-catcher).
 - Spec singkat (12 langkah) sehingga tidak melewati sekitar 35 langkah.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1), pencatatan baseline (langkah 2), pembukaan halaman dan Sub-Tab (langkah 3), "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (8)]` dan sebelum polling (langkah 5; K-16 dan bagian 8b butir 8), polling job (langkah 6), dan pembacaan mail-catcher (langkah 9). Langkah 7 dan 8 menjadi anchor positif (commit selesai) sebelum asersi email.
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1), pencatatan baseline (langkah 2), muat ulang halaman Import > User Login (langkah 3), "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (8)]` dan sebelum polling (langkah 5; bagian 8b butir 8), polling job (langkah 6), dan pembacaan mail-catcher (langkah 9). Langkah 7 dan 8 menjadi anchor positif (commit selesai) sebelum asersi email.
 - Asersi email memakai baseline jumlah per alamat (S-12) dan tidak memakai anchor baris seed.
 - Temuan untuk QA:
   - Penanda selesai untuk klik `[Import (8)]` (langkah 5) tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.

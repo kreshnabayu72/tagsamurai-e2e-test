@@ -94,7 +94,7 @@ coverage:
 42. Total Control Client C: Perhatikan label Target Attribute pada Modal Column Mapping
 43. Verifikasi label First Name, Last Name, Email, Division, dan Access diikuti asterisk `*` (varian Required)
 44. Verifikasi label Position, Employee ID, dan Active Period tanpa penanda
-45. Verifikasi label Custom Field Active Client C (Emergency Phone, Join Date, Overtime Hours, Shift, Shift Notes, Tax ID) tanpa penanda karena opsional
+45. Verifikasi label Custom Field Active Client C (Emergency Phone, Join Date, Overtime Hours, Shift, Shift Notes, Tax ID) tanpa penanda
 46. Total Control Client C: Ubah dropdown File Column untuk Division menjadi "No Column"
 47. Total Control Client C: Ubah dropdown File Column untuk Position menjadi "No Column"
 48. Total Control Client C: Perhatikan label Target Attribute

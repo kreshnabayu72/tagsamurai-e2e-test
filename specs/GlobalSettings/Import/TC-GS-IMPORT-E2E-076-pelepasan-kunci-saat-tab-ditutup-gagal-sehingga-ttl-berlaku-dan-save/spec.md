@@ -24,9 +24,9 @@ coverage:
 - Kemampuan teknis yang disediakan tim FE/BE (lingkungan non-produksi):
   - Fixture kegagalan pelepasan kunci saat tab ditutup (TC-GS-IMPORT-207; mekanisme paksa gagal tidak didefinisikan di TC, kemungkinan intercept atau blokir jaringan) dan penanganan dialog native browser `beforeunload` pada penutupan tab.
   - Fixture jam server: dimajukan 10 menit (TC-GS-IMPORT-207) atau 12 menit (TC-GS-IMPORT-668); hanya jam server karena TTL kunci dihitung murni di server dan tidak diamati lewat countdown UI. Dipulihkan lewat langkah eksplisit.
-  - Margin jam (8b.3): usia kunci hanya bertambah oleh waktu nyata (arah aman ke kedaluwarsa). TC-GS-IMPORT-207 (langkah 12): jam dimajukan tepat 10 menit sehingga usia kunci 10 menit ditambah waktu nyata sejak sesi edit dimulai (margin 0 menit terhadap TTL 10 menit, hitung: 10 menit dikurangi 10 menit); dialog langkah 10 dibaca sebelum jam dimajukan dengan usia kunci hanya selama waktu nyata beberapa detik. TC-GS-IMPORT-668 (langkah 28): jam dimajukan 12 menit, margin 2 menit di atas TTL (12 menit dikurangi 10 menit).
+  - Margin jam (8b.3): usia kunci hanya bertambah oleh waktu nyata (arah aman ke kedaluwarsa). TC-GS-IMPORT-207 (langkah 12): jam dimajukan tepat 10 menit sehingga usia kunci 10 menit ditambah waktu nyata sejak sesi edit dimulai (margin 0 menit terhadap TTL 10 menit, hitung: 10 menit dikurangi 10 menit); dialog langkah 10 dibaca sebelum jam dimajukan dengan usia kunci hanya selama waktu nyata beberapa detik. TC-GS-IMPORT-668 (langkah 26): jam dimajukan 12 menit, margin 2 menit di atas TTL (12 menit dikurangi 10 menit).
   - TC-GS-IMPORT-668: perubahan capability Import data pada role akun Import data (Create) dari Create menjadi Read saja lewat Role & Permission (UI atau fixture yang disediakan tim FE/BE), dipulihkan ke Create sesudah TC.
-- Layar awal: hook `beforeEach` suite membuka Global Settings > Import > Brand untuk akun aktor pertama. Guided Tooltip: flag `guided_tooltip_seen_gs-import` untuk semua akun diatur hook suite `before` dan dipulihkan hook `after`; lihat `suite.md`.
+- Layar awal: hook `beforeEach` suite membuka Global Settings > Import > Brand untuk akun aktor pertama dan, sesudah login di hook `before`, untuk Sesi Admin kedua. Guided Tooltip: flag `guided_tooltip_seen_gs-import` untuk semua akun diatur hook suite `before` dan dipulihkan hook `after`; lihat `suite.md`.
 - Pemulihan: capability role, jam server, dan draft D-01 dipulihkan di akhir tiap blok dan di hook `after`.
 
 ## Test Steps
@@ -61,21 +61,20 @@ coverage:
 23. [Sesi Admin kedua] Tunggu aksi selesai (permintaan mendapat respons)
 24. [Sesi Import data (Create)] Klik `[Save]`
 25. [Sesi Import data (Create)] Verifikasi toast error "You don't have permission to do this."
-26. [Sesi Import data (Create)] Muat ulang halaman Import > Brand
-27. [Sesi Import data (Create)] Verifikasi baris #1 menampilkan `Acme Corp` (perubahan tidak tersimpan)
-28. Majukan jam server 12 menit (fixture jam server)
-29. [Sesi Admin kedua] Buka Import > Brand
-30. [Sesi Admin kedua] Klik `⋯` pada baris #2
-31. [Sesi Admin kedua] Pilih Edit
-32. [Sesi Admin kedua] Verifikasi baris #2 menjadi input aktif untuk Admin kedua
-33. [Sesi Admin kedua] Verifikasi footer menampilkan `[Cancel]` dan `[Save]` tanpa dialog
-34. [Sesi Admin kedua] Klik `[Cancel]` pada footer; pulihkan capability Import data (Create) ke Create, jam server ke waktu nyata, dan draft D-01
+26. Majukan jam server 12 menit (fixture jam server)
+27. [Sesi Admin kedua] Buka Import > Brand
+28. [Sesi Admin kedua] Verifikasi baris #1 menampilkan `Acme Corp` (perubahan tidak tersimpan)
+29. [Sesi Admin kedua] Klik `⋯` pada baris #2
+30. [Sesi Admin kedua] Pilih Edit
+31. [Sesi Admin kedua] Verifikasi baris #2 menjadi input aktif untuk Admin kedua
+32. [Sesi Admin kedua] Verifikasi footer menampilkan `[Cancel]` dan `[Save]` tanpa dialog
+33. [Sesi Admin kedua] Klik `[Cancel]` pada footer; pulihkan capability Import data (Create) ke Create, jam server ke waktu nyata, dan draft D-01
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (kelas d, prinsip 13d; objek uji TTL kunci setelah pelepasan gagal dan setelah capability dicabut).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 4 dan 6 (menutup tab dan mengonfirmasi dialog), langkah 7 dan 23 (menunggu aksi selesai sebelum aktor atau sesi lain bertindak), langkah 12 dan 28 (jam server), langkah 17 dan 34 (pemulihan), langkah 18 (ganti akun), langkah 26 (muat ulang), langkah 29 (membuka Import).
-- Langkah 22 diperlakukan sebagai pemicu perubahan capability oleh Admin kedua; hasilnya dibaca di Sesi Import data (Create) (langkah 24 sampai 27) dan Sesi Admin kedua (langkah 29 sampai 33).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 4 dan 6 (menutup tab dan mengonfirmasi dialog), langkah 7 dan 23 (menunggu aksi selesai sebelum aktor atau sesi lain bertindak), langkah 12 dan 26 (jam server), langkah 17 dan 33 (pemulihan), langkah 18 (ganti akun), langkah 27 (membuka Import).
+- Langkah 22 diperlakukan sebagai pemicu perubahan capability oleh Admin kedua; hasilnya dibaca di Sesi Import data (Create) (langkah 24 dan 25) dan Sesi Admin kedua (langkah 27 sampai 32).
 - Konteks kedua beraksi: belum ada id pengecualian untuk Sesi Admin kedua yang beraksi (Edit dan ubah capability) dan diasersi di spec kelas d (TC-GS-IMPORT-207 dan 668), dengan TC-GS-IMPORT-668 mencampur kelas c dan d; `P-2` hanya untuk konteks yang bukan objek asersi dan `P-6` hanya untuk pengamat read-only tanpa interaksi. Spec tidak dipecah (satu TC satu blok, TC mencampur c dan d); usulan aturan baru menunggu batch konvensi.
 - Pembagian TC lintas spec: pelepasan kunci saat tab ditutup berhasil (best-effort, TC-GS-IMPORT-871@L1080) ada di spec 072.
 - Temuan untuk QA:

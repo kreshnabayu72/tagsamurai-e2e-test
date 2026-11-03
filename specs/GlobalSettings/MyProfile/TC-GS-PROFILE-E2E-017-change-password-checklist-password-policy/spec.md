@@ -23,14 +23,14 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE (backend nyata)
-- Akun aktor: Pre-setup #7 `passwordProfile_automated_{namaCompany}@qwertysystem.net` (Maya Anggraini; Total Control; password aktif `Passw0rd!Old`; Time Format 24 jam; timezone Asia/Jakarta), kredensial `Spectra.env.GS_PROFILE_PWD_PASSWORD`. Akun ini bukan akun default suite.
+- Akun aktor: Pre-setup #7 `passwordProfile_automated_{namaCompany}@qwertysystem.net` (Maya Anggraini; Total Control; password aktif `Spectra.env.GS_PROFILE_PWD_PASSWORD`; Time Format 24 jam; timezone Asia/Jakarta), kredensial `Spectra.env.GS_PROFILE_PWD_PASSWORD`. Akun ini bukan akun default suite.
 - Login akun aktor default suite (Pre-setup #1) dilakukan di hook `before`; spec ini login akun pertamanya di hook `before` spec dan hook `after` mengembalikan sesi ke akun default. Lihat `suite.md`, Hook suite 1.
 - Halaman My Profile dibuka hook `beforeEach` suite. Lihat `suite.md`, Hook suite 2.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-my-profile` disetel true di hook `before` suite dan dipulihkan di `after`; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 3.
 - Hook `beforeEach` suite mengonfirmasi `beforeunload` dan menutup dialog `Unsaved Changes` sebagai jaring pengaman (S-09), bukan pengganti langkah pemulihan form. Lihat `suite.md`, Hook suite 5.
 - Counter Change Password dan Login akun Pre-setup #7 dan #18 direset ke 0 di hook `beforeEach` suite; spec yang menguji counter mengaturnya sesudah hook; mekanisme disediakan tim FE/BE. Lihat `suite.md`, Hook suite 6.
-- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke `Passw0rd!Old`, counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
-- Environment variable: `Spectra.env.GS_PROFILE_PWD_PASSWORD` (login akun #7 di hook `before` spec dan Current Password TC-GS-PROFILE-83), `Spectra.env.PROFILE_PASSWORD_72` (password uji 72 karakter `Ab1!` + 68 huruf `x`, dipasang sebagai password baru TC-GS-PROFILE-83; nama baru yang didaftarkan di `executionConfig.environmentVariables` dan `.env.example`). Password tidak ditulis di spec atau fixture.
+- Hook `after` suite memulihkan jam server dan jam browser, password #7/#18/#24 ke password awal masing-masing (`Spectra.env.GS_PROFILE_PWD_PASSWORD`, `Spectra.env.GS_PROFILE_PWD12H_PASSWORD`, `Spectra.env.GS_PROFILE_SUSPENDED_PASSWORD`), counter ke 0, foto #9/#10, kuota dan ledger Storage #11-#13, serta status Client #24/#25 ke Active; fixture pemulihan disediakan tim FE/BE. Suite serial (`parallel: false`). Lihat `suite.md`, Hook suite 7.
+- Environment variable: `Spectra.env.GS_PROFILE_PWD_PASSWORD` (login akun #7 di hook `before` spec dan Current Password TC-GS-PROFILE-83), `Spectra.env.PROFILE_PASSWORD_72` (password uji 72 karakter yang memenuhi Password Policy, dipasang sebagai password baru TC-GS-PROFILE-83; nama baru yang didaftarkan di `executionConfig.environmentVariables` dan `.env.example`). Password tidak ditulis di spec atau fixture.
 - Data input uji (`Fixture.myProfile.changePassword`, literal input yang tidak dikirim, bukan kredensial): 73 karakter `Ab1!` + 69 huruf `x` (TC-GS-PROFILE-82) dan `Ab1!xyzw` (TC-GS-PROFILE-81); nilai TC-GS-PROFILE-75 sampai 80 ada di tabel "Data checklist".
 
 | TC | Baris checklist | New Password awal | New Password akhir |
@@ -43,7 +43,7 @@ coverage:
 | TC-GS-PROFILE-80 | "Password cannot contain spaces" | `Ab1! xyzw` | `Ab1!xyzw` |
 
 - Halaman dipakai berulang: TC-GS-PROFILE-75 sampai 82 hanya mengetik dan mengamati tanpa submit, jadi memakai satu pembukaan modal dengan New Password dikosongkan di antara kasus. TC-GS-PROFILE-83 mengirim [Save] dan berada di akhir spec.
-- State global yang berubah: TC-GS-PROFILE-83 mengubah password akun #7 menjadi `Spectra.env.PROFILE_PASSWORD_72`. Pemulihan ke `Passw0rd!Old` dan counter 0 dilakukan hook `after` suite (Hook suite 7). Suite berjalan serial (`parallel: false`).
+- State global yang berubah: TC-GS-PROFILE-83 mengubah password akun #7 menjadi `Spectra.env.PROFILE_PASSWORD_72`. Pemulihan ke password awal (`Spectra.env.GS_PROFILE_PWD_PASSWORD`) dan counter 0 dilakukan hook `after` suite (Hook suite 7). Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
 

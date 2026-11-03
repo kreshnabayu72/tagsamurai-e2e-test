@@ -53,7 +53,7 @@ coverage:
 16. [Sesi Admin kedua] Klik `[Upload File]`
 17. [Sesi Admin kedua] Pilih `brand-6.csv` di file picker
 18. [Sesi Admin kedua] Klik `[Append Records]` pada dialog Append to Draft
-19. [Sesi Admin kedua] Tunggu aksi selesai (dialog Append to Draft tertutup dan Modal Column Mapping terbuka)
+19. [Sesi Admin kedua] Tunggu aksi selesai (permintaan mendapat respons)
 20. [Sesi TC] Klik `⋯` pada baris #1
 21. [Sesi TC] Pilih Edit
 22. [Sesi Admin kedua] Klik `[Confirm Mapping]` pada Modal Column Mapping
@@ -132,7 +132,7 @@ coverage:
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: multi-konteks (kelas c, prinsip 13c); kedua sesi UI menjadi objek asersi.
 - Spec memuat 80 langkah, di atas smell 35 langkah. Alasan: semua blok satu kelas harness (dua sesi admin pada Client A), tiap blok mengikuti pola identik (Sesi TC memegang kunci, Admin kedua mencoba satu aksi tulis, ditolak dengan dialog, sesi TC tidak berubah) dan berdiri sendiri dengan draft D-01 yang dipulihkan, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 15, 29, 42, 56, 69, 80 (menutup sesi edit Sesi TC), langkah 11, 25, 37, 51, 64, 75 (muat ulang Sesi Admin kedua), langkah 57 (menyiapkan draft berumur 25 jam). Langkah 19 (Tunggu aksi selesai: menunggu aksi tanpa `Verifikasi` selesai sebelum Sesi TC mengambil kunci edit; penanda dialog Append to Draft tertutup dan Modal Column Mapping terbuka).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 15, 29, 42, 56, 69, 80 (menutup sesi edit Sesi TC), langkah 11, 25, 37, 51, 64, 75 (muat ulang Sesi Admin kedua), langkah 57 (menyiapkan draft berumur 25 jam). Langkah 19 (Tunggu aksi selesai: menunggu aksi tanpa `Verifikasi` selesai sebelum Sesi TC mengambil kunci edit; penanda permintaan mendapat respons, tidak ada di TC).
 - Aksi Admin kedua tiap blok (Upload File, Confirm Mapping, Remove, Bulk Delete, Discard, Import) tidak diasersi UI-nya selain dialog yang tampil, mengikuti Expected TC.
 - Pembagian TC lintas spec: TC-GS-IMPORT-242 sampai 244 (Delete All Rows, AI Accept, AI Dismiss) ada di spec 070; TC-GS-IMPORT-247 (Create Missing Divisions) di spec 071; TC-GS-IMPORT-237, 248, 249, 679, 680 di spec 068.
 - Temuan untuk QA:

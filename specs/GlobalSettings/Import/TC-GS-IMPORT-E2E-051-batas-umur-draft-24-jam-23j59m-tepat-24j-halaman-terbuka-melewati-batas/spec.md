@@ -83,7 +83,7 @@ coverage:
 39. Verifikasi toast sukses: "Success, row has been added."
 40. Muat ulang halaman Import > Brand
 41. Verifikasi Staging Metric Cards Total Rows 18 (Active)
-42. Verifikasi Unsaved Banner tidak tampil karena umur draft masih kurang dari 24 jam (edit dan Append tidak mereset umur)
+42. Verifikasi Unsaved Banner tidak tampil
 43. Majukan jam server 11 menit (fixture jam server)
 44. Muat ulang halaman Import > Brand
 45. Verifikasi Unsaved Banner "You have an unsaved import from [Date]. [Discard]" tampil (24 jam sejak `[Confirm Mapping]` pertama, bukan sejak edit atau Append)
@@ -96,6 +96,7 @@ coverage:
 - Spec memuat 47 langkah, di atas smell 35 langkah. Alasan: semua blok satu kelas harness (hook umur draft D-76 dan jam server), tiap blok memakai draft D-77 yang dibuat ulang dan berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 2, 9, 17, 24, 29, 40, 44 (muat ulang halaman); langkah 1, 8, 16, 28 (mengatur ulang draft D-77); langkah 21 (jeda nyata 30 detik); langkah 27 dan 47 (memulihkan jam server dan draft).
 - Anchor positif untuk absence (konvensi 8b butir 2, S-03): langkah 18 (Metric Cards Total Rows 6) mendahului langkah 19, langkah 22 (footer `[Import (6)]`) mendahului langkah 23, langkah 41 (Metric Cards Total Rows 18) mendahului langkah 42; langkah 6 didahului langkah 3 sampai 5.
+- Langkah 42: umur draft masih kurang dari 24 jam karena edit dan Append tidak mereset umur.
 - Pembagian TC lintas spec: TC-GS-IMPORT-881 (commit sebagian tidak mereset umur) ada di spec 053; TC-GS-IMPORT-882, 883, dan 885 (draft baru mulai dari umur 0) ada di spec 052.
 - Temuan untuk QA:
   - TC-GS-IMPORT-878 tidak merujuk acuan T0 untuk "tepat 24 jam"; spec menghitung dari waktu server yang dibaca saat seeding.

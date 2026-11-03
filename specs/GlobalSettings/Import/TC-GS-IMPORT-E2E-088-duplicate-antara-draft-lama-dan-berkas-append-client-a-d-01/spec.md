@@ -42,7 +42,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: fungsional.
-- Spec satu TC dengan satu alur; tidak digabung dengan spec Append lain karena alur Append milik slice lain memakai data berbeda.
+- Spec satu TC dengan satu alur; tidak digabung dengan spec Append lain karena alur Append lain memakai data berbeda.
 - Urutan Expected TC (a badge dan tooltip, b baris #13, c kartu) diikuti; asersi tooltip (langkah 7) diletakkan sebelum pindah halaman (butir 5 bagian 8b).
 - Temuan untuk QA:
   - TC-GS-IMPORT-187 Dependensi mencantumkan `TC-GS-IMPORT-1` (draft D-01); spec menyiapkan D-01 sendiri lewat hook `beforeEach` dan tidak menumpang hasil TC lain.

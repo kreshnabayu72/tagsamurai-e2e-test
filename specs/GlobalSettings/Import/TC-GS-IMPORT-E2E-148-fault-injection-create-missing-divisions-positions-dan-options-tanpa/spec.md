@@ -40,7 +40,7 @@ coverage:
 #### TC-GS-IMPORT-721: tanpa respons
 
 1. Reset Client C ke tanpa draft pada Sub-Tab User Login (aksi fixture)
-2. Buka Global Settings > Import, pilih Sub-Tab User Login
+2. Muat ulang halaman Import > User Login
 3. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-logistik-4.csv`
 4. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 5. Pasang intercept yang menahan permintaan Create Missing tanpa jawaban sampai batas waktu

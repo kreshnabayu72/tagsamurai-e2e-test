@@ -25,8 +25,8 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 327 TC masuk 69 spec, 0 TC ha
 | TC-GS-PROFILE-E2E-015-gate-akses-sesi-dan-pemilik-record | Gate akses My Profile: tanpa sesi, sesi habis, dan hanya record sendiri | FE+BE | 18 | 71, 72, 306, 114 |
 | TC-GS-PROFILE-E2E-016-change-password-layar-modal-dan-show-hide | Change Password: layar modal, masked input, dan kontrol show/hide password | FE+BE | 48 | 73, 74, 316, 317 |
 | TC-GS-PROFILE-E2E-017-change-password-checklist-password-policy | Change Password: checklist Password Policy real-time dan batas 72 karakter | FE+BE | 23 | 75, 76, 77, 78, 79, 80, 81, 82, 83 |
-| TC-GS-PROFILE-E2E-018-change-password-validasi-kosong-dan-confirm-beda | Change Password: field kosong dan Confirm tidak sama diblokir | FE+BE | 55 | 84, 85, 86, 87, 90, 91, 92 |
-| TC-GS-PROFILE-E2E-019-change-password-current-salah-dan-hitungan | Change Password: Current Password salah, hitungan percobaan, dan urutan evaluasi | FE+BE | 38 | 88, 89, 102, 103 |
+| TC-GS-PROFILE-E2E-018-change-password-validasi-kosong-dan-confirm-beda | Change Password: field kosong dan Confirm tidak sama diblokir | FE+BE | 57 | 84, 85, 86, 87, 90, 91, 92 |
+| TC-GS-PROFILE-E2E-019-change-password-current-salah-dan-hitungan | Change Password: Current Password salah, hitungan percobaan, dan urutan evaluasi | FE+BE | 39 | 88, 89, 102, 103 |
 | TC-GS-PROFILE-E2E-020-change-password-penolakan-server-aturan-policy | Change Password: penolakan server per aturan Password Policy (enam aturan) | FE+BE | 13 | 93, 94, 95, 96, 97, 98 |
 | TC-GS-PROFILE-E2E-021-change-password-penolakan-server-lanjutan | Change Password: batas 72 karakter, multi-aturan, non-ASCII, sama dengan password aktif, dan anti-reuse | FE+BE | 45 | 99, 100, 101, 104, 315 |
 | TC-GS-PROFILE-E2E-022-change-password-berhasil-dan-saving-state | Change Password berhasil: toast, saving state, klik ganda, auto-hide 4 detik, tanpa guard | FE+BE | 47 | 105, 106, 109, 110, 156 |
@@ -36,13 +36,13 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 327 TC masuk 69 spec, 0 TC ha
 | TC-GS-PROFILE-E2E-026-change-password-dialog-unsaved-changes | Change Password: Dialog Unsaved Changes saat Menutup Modal Terisi | FE+BE | 34 | 144, 145, 146, 147, 148, 149, 151 |
 | TC-GS-PROFILE-E2E-027-change-password-guard-refresh-dan-pindah-menu | Change Password: Guard Refresh Browser dan Pindah Menu Navbar saat Modal Terisi | FE+BE | 27 | 153, 154, 155, 309 |
 | TC-GS-PROFILE-E2E-028-change-password-lock-15-menit-toast-format-timezone | Change Password: Lock 15 Menit (Toast, Format 12 Jam, Timezone, Note User Log, Time Format Berubah) | FE+BE | 45 | 115, 117, 118, 119, 251 |
-| TC-GS-PROFILE-E2E-029-change-password-lock-state-modal-dan-tooltip-save | Change Password: [Save] Disabled saat Modal Dibuka Terkunci, Tooltip, Loading Baca Lock, dan Fail-Open | FE+BE | 52 | 44, 116, 120, 121, 139, 326, 327 |
+| TC-GS-PROFILE-E2E-029-change-password-lock-state-modal-dan-tooltip-save | Change Password: [Save] Disabled saat Modal Dibuka Terkunci, Tooltip, Loading Baca Lock, dan Fail-Open | FE+BE | 53 | 44, 116, 120, 121, 139, 326, 327 |
 | TC-GS-PROFILE-E2E-030-change-password-lock-batas-waktu-15-menit | Change Password: Batas Waktu Boleh-Coba-Lagi (Satu Langkah Sebelum, Tepat, dan Setelah) | FE+BE | 15 | 123, 124, 125 |
-| TC-GS-PROFILE-E2E-031-change-password-lock-1-jam-dan-wajib-reset | Change Password: Lock 1 Jam, Tier Wajib-Reset, dan Tidak Lepas oleh Waktu | FE+BE | 33 | 126, 127, 128, 130 |
+| TC-GS-PROFILE-E2E-031-change-password-lock-1-jam-dan-wajib-reset | Change Password: Lock 1 Jam, Tier Wajib-Reset, dan Tidak Lepas oleh Waktu | FE+BE | 35 | 126, 127, 128, 130 |
 | TC-GS-PROFILE-E2E-032-change-password-reset-harian-dan-eskalasi-7-hari | Change Password: Reset Hitungan Harian per Timezone, Lock Melewati Tengah Malam, dan Eskalasi 7 Hari | FE+BE | 41 | 131, 132, 133, 134, 135 |
 | TC-GS-PROFILE-E2E-033-resilience-halaman-dan-access-status | Resilience (Mock): Fetch Awal 500, Kegagalan Access & Status, Timeout, Try Again, dan Banner Email Change Gagal Dibaca | mock | 33 | 28, 188, 189, 305, 310 |
 | TC-GS-PROFILE-E2E-034-resilience-change-password-dan-foto | Resilience (Mock): Change Password, Edit Photo, dan Delete Photo Gagal 500, 403, dan Timeout | mock | 60 | 111, 112, 113, 168, 169, 175, 176 |
-| TC-GS-PROFILE-E2E-035-resilience-kegagalan-transaksi-server | Resilience: Kegagalan di Tengah Transaksi Server pada Change Password, Edit Photo, dan Delete Photo | FE+BE | 35 | 298, 299, 300 |
+| TC-GS-PROFILE-E2E-035-resilience-kegagalan-transaksi-server | Resilience: Kegagalan di Tengah Transaksi Server pada Change Password, Edit Photo, dan Delete Photo | FE+BE | 40 | 298, 299, 300 |
 | TC-GS-PROFILE-E2E-036-edit-photo-overlay-dan-file-picker | Edit Photo: Hover Overlay, Edit Langsung dari Overlay, Filter File Picker, dan Batal | FE+BE | 17 | 157, 158, 159, 160, 165 |
 | TC-GS-PROFILE-E2E-037-edit-photo-berhasil-per-format | Edit Photo: Berhasil dengan PNG, JPG, dan JPEG | FE+BE | 23 | 161, 162, 163 |
 | TC-GS-PROFILE-E2E-038-edit-photo-ganti-resize-dan-toast | Edit Photo: Ganti Foto, Resize Lebih dari 1 MB, Tepat 1 MB, dan Toast Baru Menggantikan Toast Lama | FE+BE | 30 | 164, 166, 167, 314 |
@@ -62,7 +62,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 327 TC masuk 69 spec, 0 TC ha
 | TC-GS-PROFILE-E2E-052-absence-log-aksi-foto-ditolak | Absence Log: Delete Photo No-op, Ekstensi Ditolak, dan Storage Penuh Tidak Menulis Log | FE+BE | 37 | 224, 225, 226 |
 | TC-GS-PROFILE-E2E-053-absence-log-lain | Absence Log: Banner Email Change, Penolakan Change Password, dan Ganti Produk Tidak Menulis Log | FE+BE | 54 | 227, 236, 237 |
 | TC-GS-PROFILE-E2E-054-sinkron-foto-navbar-dan-user | Sinkron Foto: Avatar Navbar, User List, dan Detail User Setelah Edit atau Delete Photo | FE+BE | 27 | 238, 239, 240, 241 |
-| TC-GS-PROFILE-E2E-055-sinkron-foto-lintas-modul | Sinkron Foto: Fixed Asset, Admin Console, Recycle Bin, dan Changelog File Manager | FE+BE | 39 | 242, 243, 244, 245, 312 |
+| TC-GS-PROFILE-E2E-055-sinkron-foto-lintas-modul | Sinkron Foto: Fixed Asset, Admin Console, Recycle Bin, dan Changelog File Manager | FE+BE | 40 | 242, 243, 244, 245, 312 |
 | TC-GS-PROFILE-E2E-056-sinkron-identitas-tag-dan-authenticator | Sinkron Data Admin: Rename Position dan Division, Pair dan Unpair TAG, Reset Authenticator | FE+BE | 32 | 217, 260, 261, 262, 263 |
 | TC-GS-PROFILE-E2E-057-sinkron-custom-field-siklus-hidup | Sinkron Custom Field: Buat, Nonaktifkan, Aktifkan, Wajib, dan Hapus | FE+BE | 29 | 254, 255, 256, 257, 259 |
 | TC-GS-PROFILE-E2E-058-sinkron-custom-field-tipe-nama-dan-dropdown | Sinkron Custom Field: Ganti Data Type, Rename Field, Rename dan Hapus Value Dropdown | FE+BE | 22 | 258, 319, 320, 321 |
@@ -86,7 +86,7 @@ Tidak ada. Kandidat yang ditimbang (TC-122, 129, 204, 267–281, 296–300, 308)
 
 - Butir "Pembagian TC lintas spec" ada di `## Notes` spec `062`, `067`.
 - `P-1` dipakai spec `063`, `069`; alasannya di `## Notes` tiap spec.
-- `P-2` dipakai spec `045`, `047`, `056`, `057`, `058`, `060`; alasannya di `## Notes` tiap spec.
+- `P-2` dipakai spec `035`, `045`, `047`, `056`, `057`, `058`, `060`; alasannya di `## Notes` tiap spec.
 - `P-5` dipakai spec `029`, `052`, `053`, `059`; alasannya di `## Notes` tiap spec.
 - `K-1` dipakai spec `066`, `067`; alasannya di `## Notes` tiap spec.
 - Spec `068` (plan starter dan enterprise, TC-303, 304) dan `069` (Client Suspended dan Expired, TC-322–325) adalah satu topik state tenant yang dipisah karena gabungannya sekitar 50 langkah tanpa alasan yang bisa dipertahankan.
@@ -94,7 +94,7 @@ Tidak ada. Kandidat yang ditimbang (TC-122, 129, 204, 267–281, 296–300, 308)
 ## Kebutuhan lingkungan (tim FE)
 
 - Env var yang sudah terdaftar dan dipakai: `LP_PASSWORD_WRONG`.
-- Env var baru yang perlu didaftarkan di `spectra.config.ts` (`executionConfig.environmentVariables`) dan `.env.example`: `GS_PROFILE_ADMIN_PASSWORD`, `GS_PROFILE_BASIC_PASSWORD`, `GS_PROFILE_ENTERPRISE_PASSWORD`, `GS_PROFILE_EXPIRED_PASSWORD`, `GS_PROFILE_FRESHGUIDE_PASSWORD`, `GS_PROFILE_MULTI_PASSWORD`, `GS_PROFILE_NOPHOTO_PASSWORD`, `GS_PROFILE_NOQUOTA_PASSWORD`, `GS_PROFILE_NOTENROLLED_PASSWORD`, `GS_PROFILE_PENDING_PASSWORD`, `GS_PROFILE_PHOTO_PASSWORD`, `GS_PROFILE_PWD12H_PASSWORD`, `GS_PROFILE_PWD_PASSWORD`, `GS_PROFILE_RO_PASSWORD`, `GS_PROFILE_SAMSSIEM_PASSWORD`, `GS_PROFILE_STARTER_PASSWORD`, `GS_PROFILE_STORAGEFULL_PASSWORD`, `GS_PROFILE_STORAGENEAR_PASSWORD`, `GS_PROFILE_SUSPENDED_PASSWORD`, `GS_PROFILE_SYSROLE_PASSWORD`, `GS_PROFILE_TC_PASSWORD`, `GS_PROFILE_TEMP_PASSWORD`, `GS_PROFILE_UNPROV_PASSWORD`, `PROFILE_PASSWORD_72`, `PROFILE_PASSWORD_NEW`. Pola `GS_PROFILE_<ROLE>_PASSWORD`, satu nama untuk satu akun Pre-setup (daftar akun di `suite.md`).
+- Env var baru yang perlu didaftarkan di `spectra.config.ts` (`executionConfig.environmentVariables`) dan `.env.example`: `GS_PROFILE_ADMIN_PASSWORD`, `GS_PROFILE_BASIC_PASSWORD`, `GS_PROFILE_ENTERPRISE_PASSWORD`, `GS_PROFILE_EXPIRED_PASSWORD`, `GS_PROFILE_FRESHGUIDE_PASSWORD`, `GS_PROFILE_MULTI_PASSWORD`, `GS_PROFILE_NOPHOTO_PASSWORD`, `GS_PROFILE_NOQUOTA_PASSWORD`, `GS_PROFILE_NOTENROLLED_PASSWORD`, `GS_PROFILE_PENDING_PASSWORD`, `GS_PROFILE_PHOTO_PASSWORD`, `GS_PROFILE_PWD12H_PASSWORD`, `GS_PROFILE_PWD_PASSWORD`, `GS_PROFILE_RO_PASSWORD`, `GS_PROFILE_SAMSSIEM_PASSWORD`, `GS_PROFILE_STARTER_PASSWORD`, `GS_PROFILE_STORAGEFULL_PASSWORD`, `GS_PROFILE_STORAGENEAR_PASSWORD`, `GS_PROFILE_SUSPENDED_PASSWORD`, `GS_PROFILE_SYSROLE_PASSWORD`, `GS_PROFILE_TC_PASSWORD`, `GS_PROFILE_TEMP_PASSWORD`, `GS_PROFILE_UNPROV_PASSWORD`, `PROFILE_PASSWORD_72`, `PROFILE_PASSWORD_NEW`, `PROFILE_PASSWORD_NEW_ALT`. Pola `GS_PROFILE_<ROLE>_PASSWORD`, satu nama untuk satu akun Pre-setup (daftar akun di `suite.md`).
 - Hook suite (`suite.md`, Hook suite 1 sampai 7): login aktor default, pembukaan My Profile di web, flag Guided Tooltip `guided_tooltip_seen_gs-my-profile`, sesi API pelaku kedua (admin Pre-setup #6), jaring pengaman `beforeunload`/`Unsaved Changes`, reset counter Change Password dan Login (#7, #18), serta pemulihan jam, password, foto, Storage, dan status Client di hook `after`. Suite serial (`parallel: false`).
 - Kemampuan teknis yang disediakan tim FE/BE (mekanisme tidak disebut TC, PRD, atau LLD): mengatur jam server dan jam browser bersama; membaca dan mereset counter Change Password/Login; membaca jumlah sesi aktif; fixture foto aktif, kuota dan ledger Storage, status Client dan plan tier; permintaan Email change live dan umurnya; intercept jaringan (5xx, timeout) untuk spec `033`–`035`; dua sesi browser atau perangkat untuk spec `061`–`064`; request langsung ke server dan bypass file picker untuk spec `066`–`067`; emulator atau perangkat Android untuk spec mobile; hardware biometrik untuk spec `065`.
 - Spec `Mode: mock` (`033`, `034`): `openapi.yaml` dan `low-level-design.md` modul tidak ada, sehingga endpoint ditulis "disediakan tim FE". Hook suite 1, 3, 4, 6, 7 mengasumsikan backend nyata; tim FE menyesuaikan mekanismenya untuk spec mock.
@@ -106,7 +106,7 @@ Tidak ada. Kandidat yang ditimbang (TC-122, 129, 204, 267–281, 296–300, 308)
 Dicatat sebagai kebutuhan atau usulan; tidak membuka stage ini.
 
 - **Perbaikan TC sumber (QA):** temuan per spec ada di butir "Temuan untuk QA" pada `## Notes`. Pola yang berulang: Post Condition tanpa langkah observasi (counter, password, sesi) tidak diasersi; mekanisme fixture (jam, counter, status Client, Storage, permintaan Email) tidak disebut; Precondition "Total Control" tidak cocok dengan akun Pre-setup #7, #9, #10, #11; TC-54/59/64/69/273 membutuhkan foto aktif padahal Pre-setup #1 tanpa foto; TC mengubah Custom Field Pre-setup #16 yang dibaca TC lain (spec memakai field milik spec bersuffix, S-06).
-- **Spec panjang:** 18 spec melewati sekitar 35 langkah (nominal atau sesudah ekspansi blok ulang) dan menulis alasannya di `## Notes`; ditinjau di `e2e-audit`.
+- **Spec panjang:** 19 spec melewati sekitar 35 langkah (nominal atau sesudah ekspansi blok ulang) dan menulis alasannya di `## Notes`; ditinjau di `e2e-audit`.
 - **Tim FE:** mendaftarkan env var baru dan membuat `fixtures/myProfile.json`.
 
 ## Lapisan per TC

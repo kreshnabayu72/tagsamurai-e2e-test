@@ -27,9 +27,9 @@ coverage:
 - Suite serial (`parallel: false`); lihat `suite.md`. Spec ini mengubah status reader Seed Reader A dan memulihkannya (lihat butir pemulihan).
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader; `## Test Steps` tidak mengulang langkah buka kecuali sesudah pemulihan (muat ulang halaman) atau pembacaan log (kembali ke halaman).
 - Akun aktor: Total Control (Sari Dewi) Client A `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup: Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`): 10 reader DD-01 s.d. DD-10, kartu kuota `Short Range` `5 of 8` dan `Long Range` `5 of 6`, plan Growth, format tanggal default `dd/MM/yy` 24-hour. Spec memakai DD-01 (`Zebra RFID Reader - 1`, SKU-HHR-01, Available), DD-07 (`Honeywell CK65 - 1`, Available), DD-03 (`Zebra Mobile Reader - 1`, Damaged), dan DD-04 (`Gudang Reader - 2`, Missing). Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya; urutan bullet dialog mengikuti urutan baris tabel.
+- Data Dinamis (Seed Reader A, dipulihkan fixture backend): Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`): 10 reader DD-01 s.d. DD-10, kartu kuota `Short Range` `5 of 8` dan `Long Range` `5 of 6`, plan Growth, format tanggal default `dd/MM/yy` 24-hour. Spec memakai DD-01 (`Zebra RFID Reader - 1`, SKU-HHR-01, Available), DD-07 (`Honeywell CK65 - 1`, Available), DD-03 (`Zebra Mobile Reader - 1`, Damaged), dan DD-04 (`Gudang Reader - 2`, Missing). Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya; urutan bullet dialog mengikuti urutan baris tabel.
 - Pemulihan Seed Reader A: TC menyatakan Seed Reader A dipulihkan oleh fixture backend sebelum tiap TC yang mensyaratkannya. Spec memulihkannya pada langkah pertama tiap iterasi eksekusi dan sebelum TC-GS-HHR-219, 213, dan 461 lewat kemampuan "pulihkan Seed Reader A lewat fixture backend" yang disediakan tim FE/BE tanpa endpoint yang dikarang, lalu memuat ulang halaman. Hook `before` dan `after` juga memulihkannya.
-- Tiga surface log (dibaca TC-GS-HHR-219): Changelog Handheld Reader (ikon Changelog di halaman), System Log aktor (Global Settings > User > Detail akun aktor > tab System Log), dan Activity Log (Global Settings > Activity Log > tab User Action). Baseline jumlah entri dicatat per surface sebelum aksi pemicu.
+- Tiga surface log (dibaca TC-GS-HHR-219): Changelog Handheld Reader (ikon Changelog di halaman), System Log aktor (Global Settings > User > Detail akun aktor > tab System Log), dan Activity Log (tab `User Action`, dibuka lewat Global Settings > Activity Log). Baseline jumlah entri dicatat per surface sebelum aksi pemicu.
 - Guided Tooltip: hook suite `before` menyetel flag Guided Tooltip halaman Handheld Reader menjadi true untuk akun aktor dan hook `after` memulihkannya; lihat `suite.md`.
 - Tabel "Kasus dialog bulk Mark as" (parameter langkah 1 sampai 12):
 
@@ -103,7 +103,7 @@ Untuk setiap baris tabel "Kasus bulk Mark as berhasil" (langkah 24 sampai 34):
 35. Pulihkan Seed Reader A lewat fixture backend, lalu muat ulang halaman
 36. Catat baseline Changelog: buka ikon Changelog, catat jumlah entri, tutup dengan `✕`
 37. Catat baseline System Log aktor: buka Global Settings > User > Detail akun aktor > tab System Log, catat jumlah entri
-38. Catat baseline Activity Log: buka Global Settings > Activity Log > tab User Action, catat jumlah entri
+38. Catat baseline Activity Log (tab `User Action`): buka Global Settings > Activity Log > tab User Action, catat jumlah entri
 39. Buka Global Settings > Hardware > Handheld Reader
 40. Centang checkbox baris DD-01
 41. Centang checkbox baris DD-07
@@ -117,14 +117,14 @@ Untuk setiap baris tabel "Kasus bulk Mark as berhasil" (langkah 24 sampai 34):
 49. Verifikasi kartu kuota tidak berubah: `Short Range` `5 of 8` dan `Long Range` `5 of 6`
 50. Buka ikon Changelog
 51. Verifikasi jumlah entri Changelog bertambah tepat 2 dibanding baseline langkah 36
-52. Verifikasi dua entri baru masing-masing Action `Edit`, Field `Status`, Old Value `Available`, New Value `Damaged`, untuk `Zebra RFID Reader - 1 (SKU-HHR-01)` dan `Honeywell CK65 - 1`, Modified By `Sari D`
+52. Verifikasi dua entri baru pada dua baris teratas urutan default `Date` terbaru, masing-masing Action `Edit`, Field `Status`, Old Value `Available`, New Value `Damaged`, untuk `Zebra RFID Reader - 1 (SKU-HHR-01)` dan `Honeywell CK65 - 1`, Modified By `Sari D`
 53. Tutup Modal Changelog dengan `✕`
 54. Buka Global Settings > User > Detail akun aktor > tab System Log
 55. Verifikasi jumlah entri System Log aktor bertambah tepat 2 dibanding baseline langkah 37
-56. Verifikasi dua entri baru, satu per reader (`Zebra RFID Reader - 1 (SKU-HHR-01)` dan `Honeywell CK65 - 1`)
-57. Buka Global Settings > Activity Log > tab User Action
-58. Verifikasi jumlah entri Activity Log bertambah tepat 2 dibanding baseline langkah 38
-59. Verifikasi dua entri baru dengan Action `Mark as Damaged`, satu per reader
+56. Verifikasi dua entri baru pada dua baris teratas urutan default `Date` terbaru, satu per reader (`Zebra RFID Reader - 1 (SKU-HHR-01)` dan `Honeywell CK65 - 1`)
+57. Buka Activity Log (tab `User Action`) lewat Global Settings > Activity Log > tab User Action
+58. Verifikasi jumlah entri Activity Log (tab `User Action`) bertambah tepat 2 dibanding baseline langkah 38
+59. Verifikasi dua entri baru pada dua baris teratas urutan default `Date` terbaru dengan Action `Mark as Damaged`, satu per reader
 60. Verifikasi tidak ada entri gabungan satu baris untuk dua reader
 
 ### TC-GS-HHR-213: Seleksi satu reader memakai dialog single dan toast bulk generik
@@ -142,33 +142,34 @@ Untuk setiap baris tabel "Kasus bulk Mark as berhasil" (langkah 24 sampai 34):
 ### TC-GS-HHR-461: Klik ganda cepat pada konfirmasi bulk Mark as Damaged hanya memproses satu permintaan
 
 70. Pulihkan Seed Reader A lewat fixture backend, lalu muat ulang halaman
-71. Catat baseline Changelog: buka ikon Changelog, catat jumlah entri, tutup dengan `✕`
-72. Centang checkbox baris DD-01
-73. Centang checkbox baris DD-07
-74. Klik tombol `Bulk Action`
-75. Klik `Mark as Damaged`
-76. Klik ganda cepat `[Mark as Damaged]` pada dialog
-77. Verifikasi hanya satu toast sukses yang tampil: "Success, reader has been marked as damaged."
-78. Verifikasi toast tidak memuat kalimat `Some items were skipped.`
-79. Buka ikon Changelog
-80. Verifikasi jumlah entri Changelog bertambah tepat 2 dibanding baseline langkah 71
-81. Verifikasi dua entri baru `Edit` `Status` `Available` ke `Damaged`, satu untuk DD-01 dan satu untuk DD-07
-82. Tutup Modal Changelog dengan `✕`
+71. Tunggu toast lama hilang otomatis
+72. Catat baseline Changelog: buka ikon Changelog, catat jumlah entri, tutup dengan `✕`
+73. Centang checkbox baris DD-01
+74. Centang checkbox baris DD-07
+75. Klik tombol `Bulk Action`
+76. Klik `Mark as Damaged`
+77. Klik ganda cepat `[Mark as Damaged]` pada dialog
+78. Verifikasi hanya satu toast sukses yang tampil: "Success, reader has been marked as damaged."
+79. Verifikasi toast tidak memuat kalimat `Some items were skipped.`
+80. Buka ikon Changelog
+81. Verifikasi jumlah entri Changelog bertambah tepat 2 dibanding baseline langkah 72
+82. Verifikasi dua entri baru pada dua baris teratas urutan default `Date` terbaru: `Edit` `Status` `Available` ke `Damaged`, satu untuk DD-01 dan satu untuk DD-07
+83. Tutup Modal Changelog dengan `✕`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md` (section 3k).
-- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Langkah 1 sampai 12 diulang tiga kali dan langkah 24 sampai 34 diulang dua kali, sehingga ekspansi spec 36 + 11 + 22 + 26 + 9 + 13 = 117 langkah.
+- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Langkah 1 sampai 12 diulang tiga kali dan langkah 24 sampai 34 diulang dua kali, sehingga ekspansi spec 36 + 11 + 22 + 26 + 9 + 14 = 118 langkah.
 - Urutan TC di spec: 207, 209, 211, 218 (screening dan batal, tidak mengubah data), lalu 212 dan 210 (eksekusi pada pasangan reader yang terpisah), lalu 208 dan 219 (satu eksekusi), 213, dan 461. Menyimpang dari urutan nomor TC sumber. TC-GS-HHR-208 dan 219 memuat aksi yang sama persis (bulk Mark as Damaged atas DD-01 dan DD-07) sehingga digabung dalam satu eksekusi; Expected 208 (toast, Badge, Bar, kartu) ada di langkah 45 sampai 49 dan Expected 219 (tiga surface log) di langkah 50 sampai 60. TC-GS-HHR-210, 213, dan 461 memakai DD-01 yang berstatus Available pada precondition TC sehingga Seed Reader A dipulihkan sebelum tiap eksekusi. Langkah pemulihan pada iterasi pertama tidak mengubah apa pun dan dipertahankan agar iterasi seragam tanpa langkah bersyarat.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 12, 23 (mengosongkan seleksi lewat `×`), langkah 24, 35, 62, dan 70 (pemulihan dan muat ulang), langkah 36 sampai 38, dan 71 (baseline jumlah entri sebelum aksi pemicu; S-12), langkah 39 dan 61 (kembali ke halaman Handheld Reader), langkah 53 dan 82 (menutup Modal Changelog), serta langkah 50, 54, 57, dan 79 (membuka surface log untuk dibaca).
-- Pada TC-GS-HHR-207 sampai 218 asersi tidak ada toast (langkah 7 dan 18) diletakkan segera sesudah `[Cancel]` atau `Esc` karena toast adalah state sementara. Pada TC-GS-HHR-461 langkah 77 dan 78 diletakkan segera sesudah klik ganda dan sebelum membuka Changelog; hitungan "satu toast" didahului muat ulang halaman pada langkah 70.
-- Langkah 60 (tidak ada entri gabungan) didahului langkah 59 yang membuktikan dua entri per reader tampil pada surface yang sama (8b butir 2). Asersi jumlah entri memakai selisih terhadap baseline dan bukan posisi "teratas" (S-12).
-- Pengecualian alasan di atas sekitar 35 langkah (ekspansi 117): seluruh blok satu kelas (aksi bulk Mark as atas Seed Reader A), tiap eksekusi memakai pemulihan Seed Reader A sendiri sehingga kegagalan satu blok tidak menghilangkan makna blok lain, langkah 1 sampai 12 dan 24 sampai 34 hanya diulang per baris data, dan blok log (langkah 36 sampai 60) adalah blok baca-log berpola.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 12, 23 (mengosongkan seleksi lewat `×`), langkah 24, 35, 62, dan 70 (pemulihan dan muat ulang), langkah 36 sampai 38, dan 72 (baseline jumlah entri sebelum aksi pemicu; S-12), langkah 39 dan 61 (kembali ke halaman Handheld Reader), langkah 53 dan 83 (menutup Modal Changelog), langkah 50, 54, 57, dan 80 (membuka surface log untuk dibaca), serta langkah 71 (menunggu toast lama hilang otomatis sebelum hitungan toast TC-GS-HHR-461; R-12).
+- Pada TC-GS-HHR-207 sampai 218 asersi tidak ada toast (langkah 7 dan 18) diletakkan segera sesudah `[Cancel]` atau `Esc` karena toast adalah state sementara. Pada TC-GS-HHR-461 langkah 78 dan 79 diletakkan segera sesudah klik ganda dan sebelum membuka Changelog; hitungan "satu toast" didahului muat ulang halaman pada langkah 70 dan langkah 71 (menunggu toast lama hilang otomatis).
+- Langkah 60 (tidak ada entri gabungan) didahului langkah 59 yang membuktikan dua entri per reader tampil pada surface yang sama (8b butir 2). Asersi jumlah entri memakai selisih terhadap baseline (S-12). Entri baru pada Changelog, System Log aktor, dan Activity Log (tab `User Action`) dibaca pada baris teratas urutan default `Date` terbaru setelah selisih jumlah dari baseline dibuktikan; bila beberapa entri baru jatuh dalam menit yang sama, himpunan baris teratas sebanyak selisih diasersi tanpa mengandalkan urutan di antaranya (S-14). Tab `User Action` dipilih karena PRD Activity Log memisahkannya dari tab `Session`.
+- Pengecualian alasan di atas sekitar 35 langkah (ekspansi 118): seluruh blok satu kelas (aksi bulk Mark as atas Seed Reader A), tiap eksekusi memakai pemulihan Seed Reader A sendiri sehingga kegagalan satu blok tidak menghilangkan makna blok lain, langkah 1 sampai 12 dan 24 sampai 34 hanya diulang per baris data, dan blok log (langkah 36 sampai 60) adalah blok baca-log berpola.
 - Opsi bulk per status (TC-GS-HHR-196 sampai 200) ada di spec 044; Bulk Delete (TC-GS-HHR-214 sampai 217, 220) di spec 046; resilience 5xx bulk (TC-GS-HHR-225 dan 226) di spec 027; pencatatan log per aksi single dan sinkronisasi Hardware Stock Client Reported Condition (TC-GS-HHR-379 dan 380) tidak diasersi di spec ini.
+- Pengecualian S-12 Population Seed Reader A HHR (A-5): spec memakai nama literal tanpa suffix reader Pre-setup DD-01, DD-03, DD-04, dan DD-07 Client A karena asersi bergantung pada nama dan status persis; pemulihan ke keadaan awal lewat fixture backend yang disediakan tim FE/BE di hook `before` dan `after` serta sebagai langkah penghubung antar blok (langkah 24, 35, 62, dan 70), dinyatakan di `suite.md` dan Prerequisites; suite serial.
 - Temuan untuk QA:
   - Post Condition TC-GS-HHR-208, 210, dan 212 ("Satu entri per reader pada tiga surface log (TC section 5)"; "Hardware Stock Jalur A (TC section 7)") tidak punya langkah observasi untuk Hardware Stock di TC ini; surface log hanya diasersi untuk TC-GS-HHR-219 yang punya langkah observasinya. Hardware Stock tidak diasersi.
   - TC-GS-HHR-219 Expected b dan c tidak menyebut isi kolom entri System Log aktor selain "satu per reader" dan "Action `Mark as Damaged`" untuk Activity Log; spec mengasersi nama reader dan Action tersebut sesuai TC.
   - TC-GS-HHR-461 Expected b ("tepat dua entri") tidak menyebut cara menemukan entri di Changelog kumulatif; spec memakai selisih jumlah entri terhadap baseline.
   - TC-GS-HHR-207, 209, dan 211 Expected a.ii menulis urutan bullet "mengikuti urutan baris tabel" sehingga `Honeywell CK65 - 1` mendahului `Zebra RFID Reader - 1` (DD-07 di atas DD-01 pada tabel); `Gudang Reader - 2` mendahului `Zebra Mobile Reader - 1`. Spec mengikuti urutan itu.
   - TC-GS-HHR-218 Expected a tidak menyebut Bulk Action Bar secara terpisah dari seleksi; spec mengasersi keduanya sebagai dua klausa.
-  - Seed Reader A tidak diberi suffix per run (nama literal) dan mekanisme pemulihannya hanya disebut "fixture backend" di Catatan TC; pengecualian Population S-12 untuk HHR belum ada di konvensi.

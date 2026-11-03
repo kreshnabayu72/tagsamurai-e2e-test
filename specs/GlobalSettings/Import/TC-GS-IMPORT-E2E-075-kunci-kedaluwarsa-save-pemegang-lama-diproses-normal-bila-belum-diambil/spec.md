@@ -68,7 +68,7 @@ coverage:
 30. Majukan jam server 11 menit (fixture jam server)
 31. [Sesi Admin kedua] Klik `[Discard]` pada Unsaved Banner
 32. [Sesi Admin kedua] Klik `[Discard Draft]` pada dialog
-33. [Sesi Admin kedua] Tunggu aksi selesai (draft terhapus)
+33. [Sesi Admin kedua] Tunggu aksi selesai (permintaan mendapat respons)
 34. [Sesi TC] Klik `[Save]`
 35. [Sesi TC] Verifikasi toast netral "This draft is no longer available."
 36. [Sesi TC] Verifikasi halaman me-refresh ke state belum ada draft: Dropzone tampil
@@ -86,3 +86,4 @@ coverage:
 - Temuan untuk QA:
   - TC-GS-IMPORT-253 mencantumkan Login hanya Total Control sedangkan seluruh langkah memakai satu sesi; spec tidak memakai Sesi Admin kedua pada blok ini.
   - TC-GS-IMPORT-257 Expected b menyebut halaman "me-refresh" tanpa menyebut cara pemicunya; spec mengasersi hasilnya (Dropzone tampil).
+  - Penanda selesai untuk langkah 33 (setelah `[Discard Draft]` Admin kedua) tidak ada di TC; spec memakai "permintaan mendapat respons" sebagai penanda tunggu tanpa hasil UI.

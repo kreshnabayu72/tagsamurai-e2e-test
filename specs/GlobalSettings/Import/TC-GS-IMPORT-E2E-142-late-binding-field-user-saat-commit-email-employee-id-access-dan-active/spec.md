@@ -33,87 +33,92 @@ coverage:
 ### TC-GS-IMPORT-396: Email menjadi bentrok tepat saat commit menghasilkan error
 
 1. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris dari user-login-commit-8.csv (D-54, Email `indah.permata@example.com` pada baris #8) lewat fixture
-2. Buka Import > User Login dan tunggu Staging Table termuat
+2. Muat ulang halaman Import > User Login dan tunggu Staging Table termuat
 3. Verifikasi footer menampilkan `[Import (8)]` Enabled
 4. Buat Login User dengan Email `indah.permata@example.com` di halaman User > User List > Login User atas nama Admin kedua Client E lewat sesi API hingga tersimpan
 5. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
-6. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-7. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
-8. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Indah Permata (kolom # bernilai 1)
-9. Verifikasi Error Summary Callout memuat "Email already exists"
-10. Verifikasi Error Summary Callout menampilkan badge "1 row"
-11. Buka halaman User > User List > Login User
-12. Atur Rows per page 100
-13. Verifikasi halaman User > User List > Login User Client E memuat 7 user baru dari baris #1-#7
+6. Tunggu aksi selesai (permintaan mendapat respons)
+7. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+8. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
+9. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Indah Permata (kolom # bernilai 1)
+10. Verifikasi Error Summary Callout memuat "Email already exists"
+11. Verifikasi Error Summary Callout menampilkan badge "1 row"
+12. Buka halaman User > User List > Login User
+13. Atur Rows per page 100
+14. Verifikasi halaman User > User List > Login User Client E memuat 7 user baru dari baris #1-#7
 
 ### TC-GS-IMPORT-397: Employee ID menjadi bentrok tepat saat commit menghasilkan error
 
-14. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris dari user-login-commit-8.csv (D-54, Employee ID `EMP-5001` pada baris #1) lewat fixture
-15. Buka Import > User Login dan tunggu Staging Table termuat
-16. Verifikasi footer menampilkan `[Import (8)]` Enabled
-17. Buat Login User dengan Employee ID `EMP-5001` di halaman User > User List > Login User atas nama Admin kedua Client E lewat sesi API hingga tersimpan
-18. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
-19. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-20. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
-21. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Rizky Pratama (kolom # bernilai 1)
-22. Verifikasi Error Summary Callout memuat "Employee ID already exists"
-23. Verifikasi Error Summary Callout menampilkan badge "1 row"
-24. Buka halaman User > User List > Login User
-25. Atur Rows per page 100
-26. Verifikasi halaman User > User List > Login User Client E memuat 7 user baru dari baris #2-#8
+15. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris dari user-login-commit-8.csv (D-54, Employee ID `EMP-5001` pada baris #1) lewat fixture
+16. Buka Import > User Login dan tunggu Staging Table termuat
+17. Verifikasi footer menampilkan `[Import (8)]` Enabled
+18. Buat Login User dengan Employee ID `EMP-5001` di halaman User > User List > Login User atas nama Admin kedua Client E lewat sesi API hingga tersimpan
+19. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
+20. Tunggu aksi selesai (permintaan mendapat respons)
+21. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+22. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
+23. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Rizky Pratama (kolom # bernilai 1)
+24. Verifikasi Error Summary Callout memuat "Employee ID already exists"
+25. Verifikasi Error Summary Callout menampilkan badge "1 row"
+26. Buka halaman User > User List > Login User
+27. Atur Rows per page 100
+28. Verifikasi halaman User > User List > Login User Client E memuat 7 user baru dari baris #2-#8
 
 ### TC-GS-IMPORT-398: Access menjadi tidak valid saat commit (produk tidak lagi tersedia) menghasilkan error
 
-27. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris dari user-login-commit-8.csv (D-54, Access `Fixed Asset` pada baris #1, #3, #5, #7 dan `Global Settings` saja pada baris #2, #4, #6, #8) lewat fixture
-28. Buka Import > User Login dan tunggu Staging Table termuat
-29. Verifikasi footer menampilkan `[Import (8)]` Enabled
-30. Hapus produk Fixed Asset dari organisasi Client E lewat fixture Admin Console (atas nama administrator Admin Console)
-31. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
-32. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-33. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 4 errors remain." tampil
-34. Verifikasi Staging Table menampilkan 4 baris berstatus `error`: Rizky Pratama, Doni Kurniawan, Fajar Hidayat, Hendra Gunawan (Access memuat `Fixed Asset`)
-35. Verifikasi Error Summary Callout memuat "Access must only contain the following values: Global Settings"
-36. Verifikasi Error Summary Callout menampilkan badge "4 rows"
-37. Buka halaman User > User List > Login User
-38. Atur Rows per page 100
-39. Verifikasi halaman User > User List > Login User Client E memuat 4 user baru: Sinta Maharani, Eka Putri, Gita Savitri, Indah Permata
+29. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris dari user-login-commit-8.csv (D-54, Access `Fixed Asset` pada baris #1, #3, #5, #7 dan `Global Settings` saja pada baris #2, #4, #6, #8) lewat fixture
+30. Buka Import > User Login dan tunggu Staging Table termuat
+31. Verifikasi footer menampilkan `[Import (8)]` Enabled
+32. Hapus produk Fixed Asset dari organisasi Client E lewat fixture Admin Console (atas nama administrator Admin Console)
+33. Pada halaman yang sama (tanpa memuat ulang) klik [Import (8)]
+34. Tunggu aksi selesai (permintaan mendapat respons)
+35. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+36. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 4 errors remain." tampil
+37. Verifikasi Staging Table menampilkan 4 baris berstatus `error`: Rizky Pratama, Doni Kurniawan, Fajar Hidayat, Hendra Gunawan (Access memuat `Fixed Asset`)
+38. Verifikasi Error Summary Callout memuat "Access must only contain the following values: Global Settings"
+39. Verifikasi Error Summary Callout menampilkan badge "4 rows"
+40. Buka halaman User > User List > Login User
+41. Atur Rows per page 100
+42. Verifikasi halaman User > User List > Login User Client E memuat 4 user baru: Sinta Maharani, Eka Putri, Gita Savitri, Indah Permata
 
 ### TC-GS-IMPORT-399: Active Period menjadi tidak valid saat commit (tanggal sudah lewat) menghasilkan error
 
-40. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris dari user-login-commit-8.csv (D-54, Active Period baris #2 H+30) lewat fixture
-41. Atur Active Period baris #2 (Sinta Maharani) menjadi tanggal hari ini menurut zona waktu Client E lewat fixture data staging hingga tersimpan (tanpa membuka Staging Table)
-42. Buka Import > User Login
-43. Klik [Import (8)]
-44. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-45. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
-46. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Sinta Maharani (kolom # bernilai 1)
-47. Verifikasi Error Summary Callout memuat "Active Period: Please select a future date."
-48. Verifikasi Error Summary Callout menampilkan badge "1 row"
-49. Buka halaman User > User List > Login User
-50. Atur Rows per page 100
-51. Verifikasi halaman User > User List > Login User Client E memuat 7 user baru
-52. Verifikasi user Sinta Maharani tidak ada
+43. Reset Client E ke tanpa draft (D-47), siapkan draft User Login 8 baris dari user-login-commit-8.csv (D-54, Active Period baris #2 H+30) lewat fixture
+44. Atur Active Period baris #2 (Sinta Maharani) menjadi tanggal hari ini menurut zona waktu Client E lewat fixture data staging hingga tersimpan (tanpa membuka Staging Table)
+45. Buka Import > User Login
+46. Klik [Import (8)]
+47. Tunggu aksi selesai (permintaan mendapat respons)
+48. Muat ulang halaman Import > User Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+49. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
+50. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Sinta Maharani (kolom # bernilai 1)
+51. Verifikasi Error Summary Callout memuat "Active Period: Please select a future date."
+52. Verifikasi Error Summary Callout menampilkan badge "1 row"
+53. Buka halaman User > User List > Login User
+54. Atur Rows per page 100
+55. Verifikasi halaman User > User List > Login User Client E memuat 7 user baru
+56. Verifikasi user Sinta Maharani tidak ada
 
 ### TC-GS-IMPORT-400: Active Period menjadi tidak valid saat commit pada User Non Login
 
-53. Reset Client E ke tanpa draft (D-47), siapkan draft User Non Login 5 baris dari user-non-login-commit-5.csv (D-55, Active Period baris #2 H+30) lewat fixture
-54. Atur Active Period baris #2 (Kartika Dewi) menjadi tanggal hari ini menurut zona waktu Client E lewat fixture data staging hingga tersimpan (tanpa membuka Staging Table)
-55. Buka Import > User Non Login
-56. Klik [Import (5)]
-57. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
-58. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
-59. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Kartika Dewi (kolom # bernilai 1)
-60. Verifikasi Error Summary Callout memuat "Active Period: Please select a future date."
-61. Verifikasi Error Summary Callout menampilkan badge "1 row"
-62. Buka halaman User > User List > Non-Login User
-63. Verifikasi halaman User > User List > Non-Login User Client E memuat 4 user baru
-64. Verifikasi user Kartika Dewi tidak ada
+57. Reset Client E ke tanpa draft (D-47), siapkan draft User Non Login 5 baris dari user-non-login-commit-5.csv (D-55, Active Period baris #2 H+30) lewat fixture
+58. Atur Active Period baris #2 (Kartika Dewi) menjadi tanggal hari ini menurut zona waktu Client E lewat fixture data staging hingga tersimpan (tanpa membuka Staging Table)
+59. Buka Import > User Non Login
+60. Klik [Import (5)]
+61. Tunggu aksi selesai (permintaan mendapat respons)
+62. Muat ulang halaman Import > User Non Login setiap 5 detik sampai Banner Hasil Commit tampil (batas tunggu 2 menit)
+63. Verifikasi Banner Hasil Commit "Success, record has been imported. Duplicate records were ignored. 1 error remains." tampil
+64. Verifikasi Staging Table menampilkan 1 baris berstatus `error`: Kartika Dewi (kolom # bernilai 1)
+65. Verifikasi Error Summary Callout memuat "Active Period: Please select a future date."
+66. Verifikasi Error Summary Callout menampilkan badge "1 row"
+67. Buka halaman User > User List > Non-Login User
+68. Verifikasi halaman User > User List > Non-Login User Client E memuat 4 user baru
+69. Verifikasi user Kartika Dewi tidak ada
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan TC sumber (396 sampai 400) dipertahankan; User Non Login (TC-GS-IMPORT-400) terakhir karena berbeda Sub-Tab.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah pertama tiap blok (reset Client E dan penyiapan draft karena Precondition tiap TC mensyaratkan Client E direset sebelum TC), langkah pemicu (Admin kedua, fixture Admin Console, atau fixture Active Period), langkah menunggu commit, langkah pindah halaman dan Rows per page 100.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah pertama tiap blok (reset Client E dan penyiapan draft karena Precondition tiap TC mensyaratkan Client E direset sebelum TC), langkah pemicu (Admin kedua, fixture Admin Console, atau fixture Active Period), langkah menunggu aksi selesai sesudah klik [Import (N)], langkah menunggu commit, langkah pindah halaman dan Rows per page 100.
 - P-2: Admin kedua Client E dan fixture Admin Console hanya memicu perubahan state dan bukan objek asersi.
 - Anchor positif untuk absence: daftar user baru diverifikasi lebih dulu di blok yang sama sebelum verifikasi user tertentu tidak ada.
 - Spec melewati sekitar 35 langkah. Alasan: lima blok TC homogen (satu objek uji: field User menjadi tidak valid tepat saat commit) yang berdiri sendiri, masing-masing mereset Client E; kegagalan satu blok tidak membuat blok lain kehilangan makna.

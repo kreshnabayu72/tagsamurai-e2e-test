@@ -106,7 +106,7 @@ coverage:
 
 ### TC-GS-IMPORT-707: Accept kandidat peringkat 1 pada sel Division Tab User Non Login
 
-56. Reset draft Client C Tab User Login lewat skrip reset, lalu buka Import > User Non Login
+56. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Non Login
 57. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-div-enginering.csv`
 58. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 59. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
@@ -139,9 +139,9 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`, TC-GS-IMPORT-311, 312, 706 sampai 709.
-- Urutan TC sumber diubah: TC Tab User Login (311, 706, 312, 709) lebih dulu lalu Tab User Non Login (707, 708) supaya perpindahan Tab satu kali; TC 709 (sunting dan simpan) setelah TC Dismiss (S-10).
+- Urutan TC sumber: TC Tab User Login (311, 706, 312, 709) lebih dulu lalu Tab User Non Login (707, 708) supaya perpindahan Tab satu kali; TC 709 (sunting dan simpan) setelah TC Dismiss (S-10).
 - Spec berisi 81 langkah, di atas sekitar 35 langkah. Alasan: enam TC, tiap TC berdiri sendiri dengan draft barunya dan seluruhnya satu kelas (AI Reference Suggestion, mock normal); kegagalan satu TC tidak membuat TC lain kehilangan makna.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 56 (pindah Tab), 14, 27, 40, 56, 69 (reset draft; sesudah reset pada 14, 27, 40, 69 halaman Import Tab itu dimuat ulang, pada 56 halaman berpindah Tab), 4, 17, 30, 59, 72 (menunggu toast lama hilang), 35 (muat ulang). Langkah 6, 19, 32, 61, 74 (`Verifikasi` tidak ada toast) ditulis tepat sesudah pemicu `[Accept]` atau `[Dismiss]`, sebelum `Verifikasi` artefak (8b butir 11).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 dan 56 (pindah Tab), 14, 27, 40, 56, 69 (reset draft; sesudah reset pada 14, 27, 40, 69 halaman Import Tab itu dimuat ulang, pada 56 halaman Import dimuat ulang pada Tab tujuan), 4, 17, 30, 59, 72 (menunggu toast lama hilang), 35 (muat ulang). Langkah 6, 19, 32, 61, 74 (`Verifikasi` tidak ada toast) ditulis tepat sesudah pemicu `[Accept]` atau `[Dismiss]`, sebelum `Verifikasi` artefak (8b butir 11).
 - Langkah 36 adalah anchor positif halaman termuat sebelum asersi absence badge (8b butir 2). Langkah 54 adalah anchor positif sebelum asersi absence Division `Gudnag` (langkah 55).
 - Pembagian TC lintas spec: TC-GS-IMPORT-307 sampai 310, 313 sampai 315, 317, 710, 711, 825 ada di spec 118; TC-GS-IMPORT-318, 320, 716, 826, 827 di spec 120; TC-GS-IMPORT-319, 713 sampai 715, 853, 933 di spec 121; Accept AI dari halaman basi saat committing di spec lain (kelas a).
 - Temuan untuk QA:

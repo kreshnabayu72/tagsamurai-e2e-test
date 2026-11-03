@@ -21,10 +21,10 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE (backend nyata).
-- Suite serial (`parallel: false`); lihat `suite.md`. Spec ini menghapus reader Waiting for Approval dan memulihkan Seed Reader A (lihat butir pemulihan); aksi yang menghapus data berada di akhir spec.
+- Suite serial (`parallel: false`); lihat `suite.md`. Spec ini menghapus reader Waiting for Approval dan memulihkan Seed Reader A (lihat butir pemulihan); aksi yang menghapus data berada di akhir spec. Entri audit trail yang bertambah tidak dipulihkan (audit trail permanen).
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader; `## Test Steps` tidak mengulang langkah buka kecuali sesudah pemulihan (muat ulang halaman).
 - Akun aktor: Total Control (Sari Dewi) Client A `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup TC). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup: Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`): 10 reader DD-01 s.d. DD-10, kartu kuota `Short Range` `5 of 8` dan `Long Range` `5 of 6`, plan Growth, format tanggal default `dd/MM/yy` 24-hour. Spec memakai DD-05 (`Chainway C72 - 1`, Jalur B, Long Range, Waiting for Approval) dan DD-10 (`Gudang Reader - 4`, Jalur A, Short Range, Waiting for Approval). Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya.
+- Data Dinamis (Seed Reader A, dipulihkan fixture backend): Seed Reader A Client A (Tabel Data Uji Dinamis TC; fixture baru `Fixture.hardwareHandheldReader.seedReaderA`): 10 reader DD-01 s.d. DD-10, kartu kuota `Short Range` `5 of 8` dan `Long Range` `5 of 6`, plan Growth, format tanggal default `dd/MM/yy` 24-hour. Spec memakai DD-05 (`Chainway C72 - 1`, Jalur B, Long Range, Waiting for Approval) dan DD-10 (`Gudang Reader - 4`, Jalur A, Short Range, Waiting for Approval). Nama reader bernilai literal tanpa suffix karena asersi bergantung pada nilainya (pengecualian S-12 Population Seed Reader A HHR).
 - Pemulihan Seed Reader A: TC menyatakan Seed Reader A dipulihkan oleh fixture backend sebelum tiap TC yang mensyaratkannya. Spec memulihkannya sebelum TC-GS-HHR-460 (DD-05 dihapus lebih dulu oleh TC-GS-HHR-157) lewat kemampuan "pulihkan Seed Reader A lewat fixture backend" yang disediakan tim FE/BE tanpa endpoint yang dikarang, lalu memuat ulang halaman. Hook `before` dan `after` juga memulihkannya.
 - Guided Tooltip: hook suite `before` menyetel flag Guided Tooltip halaman Handheld Reader menjadi true untuk akun aktor dan hook `after` memulihkannya; lihat `suite.md`.
 - Tabel "Kasus dialog Cancel Request" (parameter langkah 10 sampai 20):
@@ -92,27 +92,29 @@ Untuk setiap baris tabel "Kasus Cancel Request berhasil" (langkah 21 sampai 26):
 29. Tutup Modal Changelog dengan `✕`
 30. Buka Overlay row action baris DD-05
 31. Klik `Cancel Request`
-32. Klik ganda cepat `[Cancel Request]` pada dialog
-33. Verifikasi hanya satu toast sukses yang tampil: "Success, Chainway C72 - 1 request has been canceled."
-34. Verifikasi tidak ada toast `This request is no longer available.`
-35. Buka ikon Changelog
-36. Verifikasi jumlah entri Changelog bertambah tepat 1 dibanding baseline langkah 28
-37. Verifikasi entri baru: Action `Delete` untuk `Chainway C72 - 1`
-38. Tutup Modal Changelog dengan `✕`
+32. Tunggu toast lama hilang otomatis
+33. Klik ganda cepat `[Cancel Request]` pada dialog
+34. Verifikasi hanya satu toast sukses yang tampil: "Success, Chainway C72 - 1 request has been canceled."
+35. Verifikasi tidak ada toast `This request is no longer available.`
+36. Buka ikon Changelog
+37. Verifikasi jumlah entri Changelog bertambah tepat 1 dibanding baseline langkah 28
+38. Verifikasi entri baru: Action `Delete` untuk `Chainway C72 - 1`
+39. Tutup Modal Changelog dengan `✕`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/hardware-handheld-reader/TestCases/tc-hardware-handheld-reader.md` (section 3f dan 3g).
-- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Langkah 10 sampai 20 diulang dua kali dan langkah 21 sampai 26 diulang dua kali, sehingga ekspansi spec 9 + 22 + 12 + 12 = 55 langkah.
+- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Langkah 10 sampai 20 diulang dua kali dan langkah 21 sampai 26 diulang dua kali, sehingga ekspansi spec 9 + 22 + 12 + 13 = 56 langkah.
 - Urutan TC di spec: 161 dan 162 (row action), 156 dan 158 (dialog dengan `[Go Back]`), 157 dan 159 (pembatalan), lalu 460 paling akhir karena memakai DD-05 yang sudah dihapus TC-GS-HHR-157 dan membutuhkan pemulihan Seed Reader A. Menyimpang dari urutan nomor TC sumber. Aksi yang menghapus data berada sesudah semua kasus yang membutuhkan baris tetap ada (prinsip 5). Kartu `Short Range` pada TC-GS-HHR-159 tidak terpengaruh pembatalan DD-05 (Long Range), sehingga nilai Expected TC tetap berlaku tanpa pemulihan antar-iterasi.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6 (menutup Popup Detail), langkah 9 (menutup Overlay), langkah 27 (pemulihan dan muat ulang), langkah 28 dan 29 (baseline Changelog sebelum aksi pemicu; S-12), dan langkah 38 (menutup Modal Changelog).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 6 (menutup Popup Detail), langkah 9 (menutup Overlay), langkah 27 (pemulihan dan muat ulang), langkah 28 dan 29 (baseline Changelog sebelum aksi pemicu; S-12), langkah 32 (menunggu toast lama hilang agar hitungan satu toast bermakna), dan langkah 39 (menutup Modal Changelog).
 - Langkah 5 adalah klausa c Expected TC-GS-HHR-161 ("Klik `Detail` membuka Popup `Handheld Reader Detail` DD-05"); Popup ditutup pada langkah 6 sebelum screening berikutnya.
-- Pada TC-GS-HHR-156, 158, dan 460 asersi tidak ada toast (langkah 18) diletakkan segera sesudah `[Go Back]` karena toast adalah state sementara; hitungan "satu toast" pada langkah 33 didahului muat ulang halaman pada langkah 27.
-- Pengecualian alasan di atas sekitar 35 langkah (ekspansi 55): seluruh blok satu kelas (Cancel Request pada reader Waiting for Approval), tiap blok memakai reader sendiri dan tabel parameter, langkah diulang hanya per baris data, dan blok pembatalan berada di akhir sehingga kegagalan satu blok tidak menghilangkan makna blok screening.
+- Pada TC-GS-HHR-156, 158, dan 460 asersi tidak ada toast (langkah 18) diletakkan segera sesudah `[Go Back]` karena toast adalah state sementara; hitungan "satu toast" pada langkah 34 didahului muat ulang halaman pada langkah 27 dan langkah 32.
+- Pengecualian alasan di atas sekitar 35 langkah (ekspansi 56): seluruh blok satu kelas (Cancel Request pada reader Waiting for Approval), tiap blok memakai reader sendiri dan tabel parameter, langkah diulang hanya per baris data, dan blok pembatalan berada di akhir sehingga kegagalan satu blok tidak menghilangkan makna blok screening.
+- Pengecualian S-12 Population Seed Reader A HHR (A-5) berlaku untuk Seed Reader A (nama literal tanpa suffix `{runId}`); pemulihannya dijamin fixture backend dan dinyatakan di `suite.md`.
 - Pencatatan log dan sinkronisasi Hardware Stock untuk Cancel Request dan approval collision di Admin Console tidak diasersi di spec ini (lihat Temuan untuk QA).
 - Temuan untuk QA:
-  - Post Condition TC-GS-HHR-157 dan 159 ("Approval collision terkait dibatalkan di Admin Console", "Status stok Admin Console tidak berubah", "Tiga surface log dengan Action `Delete` (Changelog, System Log) dan `Cancel Request` (Activity Log)") tidak punya langkah observasi di TC ini; tidak diasersi.
+  - Post Condition TC-GS-HHR-157 dan 159 ("Approval collision terkait dibatalkan di Admin Console", "Status stok Admin Console tidak berubah", "Tiga surface log dengan Action `Delete` (Changelog, System Log) dan `Cancel Request` (Activity Log (tab `User Action`))") tidak punya langkah observasi di TC ini; tidak diasersi.
   - TC-GS-HHR-157 dan 159 Expected c menulis kartu kuota sesudah pembatalan tetapi tidak menyebut kartu lain; spec mengasersi hanya kartu yang disebut.
-  - TC-GS-HHR-460 Expected b ("satu entri `Delete` untuk `Chainway C72 - 1`") tidak menyebut cara menemukan entri di Changelog kumulatif; spec memakai selisih jumlah entri terhadap baseline dan entri baru pada urutan default.
+  - TC-GS-HHR-460 Expected b ("satu entri `Delete` untuk `Chainway C72 - 1`") tidak menyebut cara menemukan entri di Changelog kumulatif; spec memakai selisih jumlah entri terhadap baseline dan membaca entri baru (langkah 38) di baris teratas urutan default `Date` terbaru sesudah selisih +1 dibuktikan pada langkah 37; hanya satu entri baru, sehingga tidak ada ambiguitas urutan pada menit yang sama (S-14).
   - TC-GS-HHR-162 Expected a hanya menyebut `Detail` dan `Cancel Request` tanpa urutan severity dan tanpa daftar aksi yang tidak ada (berbeda dengan TC-GS-HHR-161); spec mengikuti TC masing-masing.
-  - Seed Reader A tidak diberi suffix per run (nama literal) dan mekanisme pemulihannya hanya disebut "fixture backend" di Catatan TC; pengecualian Population S-12 untuk HHR belum ada di konvensi.
+  - Mekanisme pemulihan Seed Reader A oleh fixture backend hanya disebut "fixture backend" di Catatan TC dan tidak didefinisikan di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE.

@@ -66,7 +66,7 @@ coverage:
 18. Verifikasi Error Summary Callout memuat `Represented by must be an active User Login account` dengan badge "1 row"
 19. Verifikasi Row # 2 dan 3 tetap `pending`
 20. Verifikasi Staging Metric Cards: Ready to Import 2, Errors 1
-21. Pulihkan: Admin kedua mengaktifkan kembali User Login `budi.manager.e@example.com`, buang draft User Non Login dan draft User Login (D-62) lewat skrip reset, muat ulang halaman, buka Sub-Tab User Login
+21. Pulihkan: Admin kedua mengaktifkan kembali User Login `budi.manager.e@example.com`, buang draft User Non Login dan draft User Login (D-62) lewat skrip reset, muat ulang halaman Import > User Login
 
 ### Division baru meresolve baris error (TC-GS-IMPORT-527)
 
@@ -96,7 +96,7 @@ coverage:
 
 ### Division dihapus (TC-GS-IMPORT-522)
 
-42. Seed draft D-62 lewat skrip seed, lalu buka Import > User Login
+42. Seed draft D-62 lewat skrip seed, lalu muat ulang halaman Import > User Login
 43. Admin kedua Client E (sesi API) menghapus Division `Gudang` hingga tersimpan
 44. Tekan `F5` pada halaman Import
 45. Verifikasi Row # 1 berstatus `error`

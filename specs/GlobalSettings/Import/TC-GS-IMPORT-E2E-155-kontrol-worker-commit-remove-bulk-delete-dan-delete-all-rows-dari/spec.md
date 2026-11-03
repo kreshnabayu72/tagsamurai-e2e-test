@@ -75,7 +75,7 @@ coverage:
 ### TC-GS-IMPORT-748: Delete All Rows pada kategori yang seluruh barisnya di dalam batch aktif
 
 31. Reset Client E (D-47) dan seed draft User Login `user-login-130.csv` (127 `pending`, 3 `error` baris #101-#103) lewat skrip fixture
-32. Buka Global Settings > Import, pilih Sub-Tab User Login
+32. Muat ulang halaman Import > User Login
 33. Hapus Division `Gudang` atas nama Admin kedua Client E lewat fixture
 34. Ubah nama Position `Technician` menjadi `Technician Lead` atas nama Admin kedua Client E lewat fixture
 35. Tunggu aksi selesai (permintaan mendapat respons)
@@ -93,7 +93,7 @@ coverage:
 ### TC-GS-IMPORT-378: Bulk Delete dari halaman basi (di luar batch dihapus, di dalam batch dilewati)
 
 46. Reset Client E (D-47), pulihkan Division `Gudang` dan Position `Technician`, dan seed draft Brand D-56 (250 baris `pending`) lewat skrip fixture
-47. Buka Global Settings > Import, pilih Sub-Tab Brand
+47. Muat ulang halaman Import > Brand
 48. Verifikasi footer `[Import (250)]` Enabled
 49. Atur Rows per page 100
 50. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
@@ -116,7 +116,7 @@ coverage:
 ### TC-GS-IMPORT-380: Delete All Rows saat committing (di luar batch dihapus, di dalam batch dilewati)
 
 66. Reset Client E (D-47), pulihkan Division `Gudang` dan Position `Technician`, dan seed draft User Login `user-login-130.csv` (127 `pending`, 3 `error` baris #101-#103) lewat skrip fixture
-67. Buka Global Settings > Import, pilih Sub-Tab User Login
+67. Muat ulang halaman Import > User Login
 68. Hapus Division `Gudang` atas nama Admin kedua Client E lewat fixture
 69. Ubah nama Position `Technician` menjadi `Technician Lead` atas nama Admin kedua Client E lewat fixture
 70. Tunggu aksi selesai (permintaan mendapat respons)
@@ -143,7 +143,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah penolakan atau partial pada aksi hapus dari halaman basi saat job `committing`. Pelaku kedua hanya memicu perubahan state lewat sesi API (P-2); kontrol worker D-47 adalah pemicu.
 - Alasan melewati sekitar 35 langkah (87 langkah nominal): lima blok homogen (aksi hapus dari halaman yang tidak dimuat ulang pada job `committing`), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok. Blok yang menolak aksi (TC-376, 379, 748) mendahului blok yang menghapus (TC-378, 380), sesuai prinsip aksi yang menghapus data diletakkan di akhir.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok mengikuti kebutuhan state, bukan nomor TC.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 17, 31, 46, 66), "Muat ulang halaman Import > Brand" sesudah reset (langkah 2 dan 18; reset membuang atau mengganti draft sementara halaman Import dari blok atau hook sebelumnya masih terbuka, `suite.md`), aktivasi kontrol worker, pembukaan halaman dan Sub-Tab, pengaturan Rows per page, pindah halaman, pemicu Admin kedua (langkah 6, 21, 33, 34, 51, 68, 69), dan langkah 60 yang mengatur ulang Rows per page 100 dan membuka halaman 3 sesudah muat ulang (TC tidak menyebut apakah ukuran halaman bertahan setelah muat ulang; lihat Temuan untuk QA). Langkah 7, 22, 35, 52, dan 70 (Tunggu aksi selesai: permintaan mendapat respons) mengikuti pemicu sesi API Admin kedua dan mendahului aksi UI atau aktivasi kontrol worker berikutnya; langkah 38 dan 73 (Tunggu aksi selesai: permintaan mendapat respons) memisahkan klik `[Import (127)]` dari muat ulang halaman (bagian 8b butir 8, K-16, D-1).
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 17, 31, 46, 66), "Muat ulang halaman Import > <Sub-Tab>" sesudah reset (langkah 2, 18, 32, 47, dan 67; reset membuang atau mengganti draft sementara halaman Import dari blok atau hook sebelumnya masih terbuka, `suite.md`), aktivasi kontrol worker, pembukaan halaman dan Sub-Tab, pengaturan Rows per page, pindah halaman, pemicu Admin kedua (langkah 6, 21, 33, 34, 51, 68, 69), dan langkah 60 yang mengatur ulang Rows per page 100 dan membuka halaman 3 sesudah muat ulang (TC tidak menyebut apakah ukuran halaman bertahan setelah muat ulang; lihat Temuan untuk QA). Langkah 7, 22, 35, 52, dan 70 (Tunggu aksi selesai: permintaan mendapat respons) mengikuti pemicu sesi API Admin kedua dan mendahului aksi UI atau aktivasi kontrol worker berikutnya; langkah 38 dan 73 (Tunggu aksi selesai: permintaan mendapat respons) memisahkan klik `[Import (127)]` dari muat ulang halaman (bagian 8b butir 8).
 - Langkah 3, 19, dan 48 adalah `Verifikasi` tambahan di luar Expected TC yang membuktikan prasyarat TC (halaman terbuka dengan `[Import (N)]` Enabled sebelum commit dimulai Admin kedua). Langkah 62 adalah anchor positif sebelum asersi absence `Brand Impor 230` pada langkah 63 (butir 2 bagian 8b).
 - Temuan untuk QA:
   - TC-GS-IMPORT-380 dan TC-GS-IMPORT-748 mengubah data Pre-setup bersama Client E (menghapus Division `Gudang` dan mengubah nama Position `Technician`); spec mengikuti Langkah TC dan memulihkannya lewat reset dan hook `after` (S-06), dan karena itu suite berjalan serial.

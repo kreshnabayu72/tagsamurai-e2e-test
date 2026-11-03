@@ -46,7 +46,7 @@ coverage:
 2. [Sesi TC] Pilih Edit
 3. [Sesi TC] Ubah Brand Name baris #1 menjadi `Acme Corporation`
 4. [Sesi TC] Klik `[Save]`
-5. [Sesi TC] Tunggu aksi selesai (toast sukses "Success, row has been updated." tampil)
+5. [Sesi TC] Tunggu aksi selesai (permintaan mendapat respons)
 6. [Sesi Admin kedua] Klik `⋯` pada baris #2
 7. [Sesi Admin kedua] Pilih Edit
 8. [Sesi Admin kedua] Verifikasi baris #2 menjadi input aktif
@@ -76,7 +76,7 @@ coverage:
 Untuk setiap varian pada tabel varian (langkah 26 sampai 32):
 
 26. [Sesi TC] Buka menu Import dari sidebar, lalu lakukan aksi varian sampai sesi edit berakhir
-27. [Sesi TC] Tunggu aksi selesai (sesi edit berakhir)
+27. [Sesi TC] Tunggu aksi selesai (permintaan mendapat respons)
 28. [Sesi Admin kedua] Klik `⋯` pada baris #2
 29. [Sesi Admin kedua] Pilih Edit
 30. [Sesi Admin kedua] Verifikasi baris #2 menjadi input aktif
@@ -146,3 +146,4 @@ Untuk setiap varian pada tabel varian (langkah 26 sampai 32):
   - TC-GS-IMPORT-871@L1080 bertanda Manual Only dan Expected b ("Jam server tidak dimajukan") tidak memuat langkah observasi; spec menuliskannya sebagai `Verifikasi` berbasis pembacaan jam server oleh fixture. Pelepasan best-effort saat tab ditutup konsisten dengan IMP-LOGIC-04 tetapi tidak ada TC yang menetapkan perilaku defaultnya secara pasti (bandingkan TC-GS-IMPORT-207 yang mengasumsikan pelepasan gagal).
   - Penanda "tab tertutup" pada langkah 46 tidak ada di TC-GS-IMPORT-871@L1080; spec memakai penanda itu sebagai langkah penghubung.
   - TC-GS-IMPORT-191 memakai Client E sedangkan TC lain di spec ini memakai Client A.
+  - Penanda selesai untuk langkah 5 dan 27 (setelah `[Save]` dan setelah aksi varian pada TC-GS-IMPORT-678) tidak ada di TC; spec memakai "permintaan mendapat respons" sebagai penanda tunggu tanpa hasil UI.

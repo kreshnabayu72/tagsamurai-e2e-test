@@ -40,7 +40,7 @@ coverage:
 ### TC-GS-IMPORT-705: Accept dari halaman basi saat committing
 
 1. Reset Client E (D-47) ke tanpa draft; pastikan mock AI mode normal
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
 4. Klik `[Upload File]` di toolbar dan pilih berkas `brand-ai-commit.csv`
 5. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
@@ -57,7 +57,7 @@ coverage:
 ### TC-GS-IMPORT-747: AI Accept dari halaman basi saat committing
 
 15. Reset Client E (D-47) dan seed draft Brand D-57 (250 baris: 248 `pending`, 1 `error` baris #5, 1 `duplicate` baris #20) lewat skrip fixture
-16. Buka Global Settings > Import, pilih Sub-Tab Brand
+16. Muat ulang halaman Import > Brand
 17. Verifikasi footer `[Import (248)]` Enabled
 18. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 19. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API)
@@ -72,8 +72,8 @@ coverage:
 ### TC-GS-IMPORT-860: Accept saran AI basi saat committing ditolak, bukan no-op diam
 
 27. Reset Client E (D-47) dan seed draft Brand D-57 lewat skrip fixture; pastikan mock AI mode normal
-28. Buka Global Settings > Import, pilih Sub-Tab Brand
-29. Verifikasi badge saran tampil pada baris #5 (halaman tidak dimuat ulang setelahnya)
+28. Muat ulang halaman Import > Brand
+29. Verifikasi badge saran tampil pada baris #5
 30. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
 31. Hapus baris #5 atas nama Admin kedua Client E lewat fixture permintaan (sesi API)
 32. Mulai Import atas nama Admin kedua Client E lewat fixture permintaan (sesi API) sehingga job berstatus `committing`
@@ -132,7 +132,7 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (d); objek uji adalah penolakan aksi dari halaman basi saat job `committing` yang dibentuk kontrol worker D-47. Pelaku kedua hanya memicu perubahan state lewat sesi API (P-2); langkah TC "Admin kedua Client E: buka Import > Brand" dan "klik `[Import (N)]`" digantikan pemicu sesi API tanpa pembukaan halaman karena hasil di sesi itu tidak diasersi.
 - Alasan melewati sekitar 35 langkah (75 langkah nominal): lima blok homogen (aksi dari halaman basi saat `committing`), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok Brand (TC-705, 747, 860) mendahului blok User Login; TC-860 menghapus baris dan diletakkan terakhir di antara blok Brand.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 15, 27, 41, 58), aktivasi kontrol worker, pembukaan halaman dan Sub-Tab, dan pemicu sesi API (langkah 7, 19, 31, 32, 47, 64). Langkah 6, 46, dan 63 menunggu modal Column Mapping tertutup sesudah `[Confirm Mapping]` dan sebelum permintaan Import sesi API (K-16 dan bagian 8b butir 8), tanpa `Verifikasi`. Langkah 38 adalah `Verifikasi` anchor (Staging Table masih menampilkan baris lain) bagi langkah 39. Langkah 17 dan 29 adalah `Verifikasi` tambahan di luar Expected TC yang membuktikan prasyarat halaman basi (footer `[Import (248)]` Enabled; badge saran tampil sebelum pemicu). Langkah 8, 20, 33, 48, dan 65 (Tunggu aksi selesai: permintaan mendapat respons) mengikuti pemicu sesi API dan mendahului aksi UI pada halaman basi (bagian 8b butir 8, K-16).
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 15, 27, 41, 58), aktivasi kontrol worker, muat ulang halaman Import > Brand sesudah reset (langkah 2, 16, dan 28), pembukaan halaman dan Sub-Tab lain, dan pemicu sesi API (langkah 7, 19, 31, 32, 47, 64). Langkah 6, 46, dan 63 menunggu modal Column Mapping tertutup sesudah `[Confirm Mapping]` dan sebelum permintaan Import sesi API (bagian 8b butir 8), tanpa `Verifikasi`. Langkah 38 adalah `Verifikasi` anchor (Staging Table masih menampilkan baris lain) bagi langkah 39. Langkah 17 dan 29 adalah `Verifikasi` tambahan di luar Expected TC yang membuktikan prasyarat halaman basi (footer `[Import (248)]` Enabled; badge saran tampil sebelum pemicu). Langkah 8, 20, 33, 48, dan 65 (Tunggu aksi selesai: permintaan mendapat respons) mengikuti pemicu sesi API dan mendahului aksi UI pada halaman basi (bagian 8b butir 8).
 - Asersi `Logistik` dan `Store Supervisor` tidak ada di daftar didahului Verifikasi jumlah baris tabel (5 baris) sebagai anchor positif (butir 2 bagian 8b).
 - Temuan untuk QA:
   - TC-GS-IMPORT-705, 747, dan 860 hampir duplikat (Accept AI dari halaman basi saat `committing` ditolak dengan dialog Import In Progress); perbedaan hanya sumber data (brand-ai-commit.csv vs D-57) dan, pada TC-860, penegasan "bukan no-op diam" serta baris #5 yang dihapus pemicu.

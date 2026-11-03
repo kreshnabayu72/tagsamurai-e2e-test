@@ -20,7 +20,7 @@ Hook suite:
 
 Sesi API aktor: login API (password) untuk akun yang sama dengan sesi UI memakai token yang tidak dihitung sebagai sesi web, sehingga sesi UI tidak diusir; pelaku kedua lewat sesi API bukan konteks kedua. Kemampuan ini disediakan tim BE/FE; `## Prerequisites` spec merujuknya dengan satu baris.
 
-Spec yang menyimpan konfigurasi kolom Setup Column: spec 199 (Changelog Import dan Staging Table) dan spec 180 (modal Changelog). Pemulihannya di hook `after` adalah menghapus preferensi kolom di browser (kemampuan disediakan tim FE).
+Spec yang menyimpan konfigurasi kolom Setup Column: spec 199 (Changelog Import) dan spec 180 (modal Changelog). Pemulihannya di hook `after` adalah menghapus preferensi kolom di browser (kemampuan disediakan tim FE).
 
 Skrip fixture (reset, pembuangan draft, pemulihan data, penyetelan umur draft, kontrol worker) berjalan sinkron: satu langkah fixture selesai sebelum langkah berikutnya dijalankan, sehingga spec tidak menulis penanda tunggu per langkah fixture. Sesudah reset fixture yang membuang atau mengganti draft, halaman yang sudah terbuka menampilkan keadaan lama; langkah berikutnya yang membutuhkan keadaan baru didahului "Muat ulang halaman ...".
 

@@ -34,7 +34,7 @@ coverage:
 ### TC-GS-IMPORT-364: Klik Import ganda lewat UI hanya mengirim satu permintaan
 
 1. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) lewat skrip fixture
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Pasang pemantau jaringan pada permintaan Import
 4. Klik `[Import (250)]` dua kali beruntun dalam waktu kurang dari 100 milidetik
 5. Verifikasi pemantau mencatat tepat satu permintaan Import
@@ -67,7 +67,7 @@ coverage:
 - Mode: FE+BE dengan pemantau jaringan. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: volume data (e), seed dua draft besar (250 dan 111 baris) lewat skrip fixture; volume menjadi bagian objek uji karena batas batch 100 baris diuji pada urutan pemrosesan.
 - Spec 25 langkah sehingga tidak melewati sekitar 35 langkah.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok: TC-364 lebih dulu, TC-368 kemudian; masing-masing mereset Client E sendiri.
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 12), pemasangan pemantau (langkah 3), pembukaan halaman dan Sub-Tab, pengaturan Rows per page (langkah 14), pencatatan urutan (langkah 15, 17), "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (111)]` dan sebelum polling (langkah 19; K-16 dan bagian 8b butir 8), polling job (langkah 8, 20), dan pembacaan kueri fixture (langkah 21).
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 12), pemasangan pemantau (langkah 3), muat ulang halaman Import > Brand (langkah 2), pembukaan halaman dan Sub-Tab (langkah 13), pengaturan Rows per page (langkah 14), pencatatan urutan (langkah 15, 17), "Tunggu aksi selesai (permintaan mendapat respons)" persis sesudah klik `[Import (111)]` dan sebelum polling (langkah 19; bagian 8b butir 8), polling job (langkah 8, 20), dan pembacaan kueri fixture (langkah 21).
 - Langkah 5 sampai 7 diasersi segera setelah klik ganda dan sebelum commit selesai (butir 5 dan 11 bagian 8b); langkah 7 (tidak ada dialog) didahului langkah 6 (tombol Disabled) sebagai anchor positif yang terhubung ke pemicu.
 - Temuan untuk QA:
   - Penanda selesai untuk klik `[Import (111)]` (langkah 19) tidak disebut di TC atau PRD; langkah "Tunggu aksi selesai" memakai "permintaan mendapat respons" sampai QA menetapkan penanda yang teramati.

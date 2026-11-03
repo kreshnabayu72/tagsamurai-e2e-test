@@ -38,7 +38,7 @@ coverage:
 ### TC-GS-IMPORT-516: Tidak ada push real-time
 
 1. Pulihkan Custom Field `Shift` (opsi Pagi, Siang, Malam) dan draft dasar Client A D-05 (User Login 8 baris `pending`) lewat skrip fixture
-2. [Sesi A] Buka Global Settings > Import, pilih Sub-Tab User Login (halaman dibiarkan terbuka tanpa aksi)
+2. [Sesi A] Muat ulang halaman Import > User Login (halaman dibiarkan terbuka tanpa aksi)
 3. Hapus opsi `Siang` dari Custom Field `Shift` Client A atas nama Admin kedua Client A lewat sesi API
 4. Majukan jam browser Sesi A 60 detik tanpa aksi apa pun pada halaman Import
 5. [Sesi A] Tunggu 5 detik tanpa memuat ulang halaman
@@ -59,8 +59,8 @@ coverage:
 17. [Sesi A] Tunggu aksi selesai (permintaan mendapat respons)
 18. Hapus opsi `Siang` dari Custom Field `Shift` di Custom Field User atas nama Admin kedua Client A lewat sesi API
 19. [Sesi B] Buka Global Settings > Import, pilih Sub-Tab User Login
-20. [Sesi B] Verifikasi Row # 1 berstatus `error` (hasil hitung read-only untuk tampilan)
-21. [Sesi B] Verifikasi Row # 2 berstatus `error` (hasil hitung read-only untuk tampilan)
+20. [Sesi B] Verifikasi Row # 1 berstatus `error`
+21. [Sesi B] Verifikasi Row # 2 berstatus `error`
 22. Baca status tersimpan Row # 1 dan 2 lewat skrip fixture inspeksi data
 23. Verifikasi status tersimpan Row # 1 dan 2 masih `pending`
 24. [Sesi A] Klik `[Cancel]` tanpa mengubah nilai
@@ -78,8 +78,8 @@ coverage:
 33. [Sesi A] Klik row action `⋯` pada Row # 1 lalu Edit (sesi edit dimulai dan kunci dipegang)
 34. [Sesi A] Tunggu aksi selesai (permintaan mendapat respons)
 35. Jadikan Custom Field `Shift Notes` Required di Custom Field User atas nama Admin kedua Client A lewat sesi API
-36. [Sesi B] Buka Global Settings > Import, pilih Sub-Tab User Login
-37. [Sesi B] Verifikasi seluruh 8 baris berstatus `error` (hasil hitung read-only untuk tampilan)
+36. [Sesi B] Muat ulang halaman Import > User Login
+37. [Sesi B] Verifikasi seluruh 8 baris berstatus `error`
 38. Baca status tersimpan Row # 1 sampai 8 lewat skrip fixture inspeksi data
 39. Verifikasi status tersimpan seluruh baris masih `pending`
 40. [Sesi A] Klik `[Cancel]` tanpa mengubah nilai
@@ -123,13 +123,14 @@ coverage:
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: multi-konteks (c); objek uji adalah tidak adanya push real-time (TC-516), tulis-balik evaluasi yang ditekan saat kunci dipegang administrator lain (TC-574, 946), dan penolakan mutasi saat kunci dipegang (TC-552). Admin kedua hanya memicu state lewat sesi API pada TC-516 dan TC-552 (P-2); Sesi B adalah sesi UI kedua yang diasersi pada TC-574 dan TC-946.
 - Alasan melewati sekitar 35 langkah (71 langkah nominal): empat blok satu kelas multi-konteks yang berdiri sendiri dengan pemulihan Custom Field dan draft di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok Client C (TC-552) memakai ganti akun eksplisit (langkah 47), sehingga bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok: TC-516, TC-574, TC-946 (Client A, mengubah Custom Field lalu memulihkannya), lalu TC-552 (Client C).
-- Langkah penghubung (tanpa `Verifikasi`): pemulihan dan seeding (langkah 1, 14, 31, 48), pembukaan halaman dan Sub-Tab, memajukan dan memulihkan jam browser (langkah 4 dan 13), perubahan Custom Field oleh Admin kedua (langkah 3, 18, 35), pembacaan status tersimpan (langkah 22, 27, 38, 43), sesi edit Admin kedua Client C (langkah 54), menutup dialog (langkah 58, 62, 65), menunggu 5 detik tanpa memuat ulang halaman (langkah 5; jendela amat SSE, pilihan spec), dan Tunggu aksi selesai (langkah 17, 34, 42, 53, 55). Langkah 17 dan 34 mengikuti Edit Sesi A lalu pemicu sesi API; langkah 42 mengikuti muat ulang Sesi A sebelum pembacaan fixture; langkah 55 mengikuti pemicu sesi edit sesi API sebelum `[Confirm Mapping]` (bagian 8b butir 8, K-16). Langkah 6 sampai 8 adalah asersi tidak berubah yang diasersi sebelum klik kartu Ready to Import (langkah 9) yang mengubah state (butir 5 bagian 8b).
+- Langkah penghubung (tanpa `Verifikasi`): pemulihan dan seeding (langkah 1, 14, 31, 48), muat ulang halaman Import > User Login (langkah 2, 36), pembukaan halaman dan Sub-Tab, memajukan dan memulihkan jam browser (langkah 4 dan 13), perubahan Custom Field oleh Admin kedua (langkah 3, 18, 35), pembacaan status tersimpan (langkah 22, 27, 38, 43), sesi edit Admin kedua Client C (langkah 54), menutup dialog (langkah 58, 62, 65), menunggu 5 detik tanpa memuat ulang halaman (langkah 5; jendela amat SSE, pilihan spec), dan Tunggu aksi selesai (langkah 17, 34, 42, 53, 55). Langkah 17 dan 34 mengikuti Edit Sesi A lalu pemicu sesi API; langkah 42 mengikuti muat ulang Sesi A sebelum pembacaan fixture; langkah 55 mengikuti pemicu sesi edit sesi API sebelum `[Confirm Mapping]` (bagian 8b butir 8). Langkah 6 sampai 8 adalah asersi tidak berubah yang diasersi sebelum klik kartu Ready to Import (langkah 9) yang mengubah state (butir 5 bagian 8b).
 - Langkah 8 (Row # 1 dan 2 tetap `pending`, tidak ada push) adalah asersi absence atas propagasi SSE; didahului langkah 5 (tunggu 5 detik tanpa memuat ulang halaman) supaya absence bukan karena push belum tiba.
 - Pembagian TC lintas spec: kunci sesi edit dengan dialog Take Over Session ada di spec 068 sampai 073; spec ini memuat kasus tulis-balik evaluasi yang ditekan dan tidak ada push.
 - Temuan untuk QA:
   - TC-GS-IMPORT-552 Expected a, b, c menyebut dialog Draft Is Being Edited dengan tombol `[OK]`, sedangkan PRD §4.1 Dialog Konflik Kunci Sesi menetapkan tombol `[Cancel]` dan `[Take Over Session]`; Langkah TC menutup dialog dengan `[Cancel]`. Spec mengasersi tombol sesuai PRD.
   - TC-GS-IMPORT-516 menunggu 60 detik tanpa aksi; jeda nyata di atas ±30 detik tidak diizinkan konvensi (bagian 6), sehingga spec memajukan jam browser 60 detik (langkah 4). Bila push real-time dipicu timer polling server, memajukan jam browser tidak menggantikan menunggu 60 detik nyata; kebutuhan jam yang dipakai harus dikonfirmasi tim FE.
   - TC-GS-IMPORT-516 dan 574 menghapus opsi `Siang` dari Custom Field `Shift` tanpa menyebut urutan opsi saat dipulihkan; Post Condition menyebut pemulihan ke kondisi Pre-setup (Pagi, Siang, Malam).
+  - Status `error` yang dilihat Sesi B pada TC-GS-IMPORT-574 dan 946 (langkah 20, 21, 37) adalah hasil hitung read-only untuk tampilan, bukan nilai tersimpan; nilai tersimpan tetap `pending` sampai tulis-balik (langkah 23 dan 39) dan hanya diasersi lewat skrip fixture inspeksi data.
   - TC-GS-IMPORT-574 dan 946 memakai skrip fixture inspeksi data untuk status tersimpan dan counter Errors tersimpan yang tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE tanpa mengarang endpoint.
   - TC-GS-IMPORT-552 mengunggah `user-login-1.csv` pada draft yang kuncinya dipegang; Langkah TC 6 dan 7 menutup dialog dan Modal Column Mapping tanpa mengubah dropdown (modal langsung tertutup, PRD §4.1).
   - Post Condition TC-GS-IMPORT-516, 574, 946 (pemulihan Custom Field) dikerjakan langkah 13, 30, 46 dan hook `after`; Post Condition TC-GS-IMPORT-552 (sesi edit dibatalkan) dikerjakan langkah 71.

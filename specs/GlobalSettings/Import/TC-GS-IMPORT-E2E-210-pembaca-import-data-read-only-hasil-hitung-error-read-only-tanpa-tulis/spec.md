@@ -35,7 +35,7 @@ coverage:
 ### Hasil hitung read-only setelah opsi dihapus (TC-GS-IMPORT-517)
 
 1. Admin kedua Client A (sesi API) menghapus opsi `Siang` dari Custom Field `Shift` hingga tersimpan
-2. Pembaca Import data (Read Only) membuka Import > User Login
+2. Pembaca Import data (Read Only): Muat ulang halaman Import > User Login
 3. Verifikasi Row # 1 dan 2 tampil berstatus `error`
 4. Verifikasi Staging Metric Cards: Ready to Import 6, Errors 2
 5. Tunggu 5 detik tanpa memuat ulang halaman
@@ -46,7 +46,7 @@ coverage:
 ### Hasil hitung Required read-only (TC-GS-IMPORT-945)
 
 9. Admin kedua Client A (sesi API) menjadikan Custom Field `Shift Notes` Required hingga tersimpan
-10. Pembaca Import data (Read Only) membuka Import > User Login
+10. Pembaca Import data (Read Only): Muat ulang halaman Import > User Login
 11. Verifikasi seluruh 8 baris tampil berstatus `error`
 12. Verifikasi Staging Metric Cards: Ready to Import 0, Errors 8
 13. Tunggu 5 detik tanpa memuat ulang halaman
@@ -57,7 +57,7 @@ coverage:
 ### Banner Custom Field ditutup pembaca (TC-GS-IMPORT-958)
 
 17. Admin kedua Client A (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan
-18. Pembaca Import data (Read Only) membuka Import > User Login
+18. Pembaca Import data (Read Only): Muat ulang halaman Import > User Login
 19. Verifikasi kolom Shift tampil
 20. Verifikasi Banner Custom Field Deactivated tampil dengan tombol `[×]`
 21. Klik `[×]` pada Banner Custom Field
@@ -74,7 +74,7 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - P-2: Admin kedua hanya memicu perubahan Custom Field lewat sesi API; hasil diasersi hanya di sesi pembaca.
 - Langkah 8, 16, dan 27 adalah langkah pemulihan tanpa `Verifikasi` (S-09); hook `after` adalah cadangan.
-- Membuka halaman di langkah 2, 10, dan 18 adalah pemuatan ulang halaman Import oleh pembaca (hook `beforeEach` sudah membuka layar sebelum Admin kedua mengubah Custom Field).
+- Langkah 2, 10, dan 18 memuat ulang halaman Import > User Login oleh pembaca (hook `beforeEach` sudah membuka layar sebelum Admin kedua mengubah Custom Field).
 - Langkah 5, 13, dan 24 adalah langkah penghubung tanpa `Verifikasi` (jendela 5 detik tanpa memuat ulang halaman sebelum pembacaan fixture; penanda ini tidak ada di TC).
 - Temuan untuk QA:
   - TC-GS-IMPORT-517 dan 945 serta 958 mengasersi status tersimpan lewat "skrip fixture inspeksi data"; TC tidak menjelaskan skrip itu (kemampuan membaca state BE yang tidak terlihat di UI, disediakan tim FE/BE; tidak ada endpoint karangan).

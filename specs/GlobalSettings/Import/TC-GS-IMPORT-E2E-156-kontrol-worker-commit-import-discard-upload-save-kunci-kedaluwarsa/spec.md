@@ -44,7 +44,7 @@ coverage:
 ### TC-GS-IMPORT-365: Import dari halaman basi saat committing
 
 1. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) lewat skrip fixture
-2. Buka Global Settings > Import, pilih Sub-Tab Brand
+2. Muat ulang halaman Import > Brand
 3. Verifikasi footer `[Import (250)]` Enabled
 4. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 5. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API)
@@ -58,7 +58,7 @@ coverage:
 ### TC-GS-IMPORT-382: Discard Draft dari halaman basi saat committing
 
 12. Reset Client E (D-47) dan seed draft Brand D-56 (250 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-13. Buka Global Settings > Import, pilih Sub-Tab Brand
+13. Muat ulang halaman Import > Brand
 14. Verifikasi footer `[Import (250)]` Enabled
 15. Aktifkan kontrol worker commit mode 2 (dijeda di dalam batch pertama)
 16. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API)
@@ -74,7 +74,7 @@ coverage:
 ### TC-GS-IMPORT-831: Save pemegang kunci yang sudah kedaluwarsa saat job committing
 
 25. Reset Client E (D-47) dan seed draft Brand D-50 (12 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-26. Buka Global Settings > Import, pilih Sub-Tab Brand
+26. Muat ulang halaman Import > Brand
 27. Verifikasi Unsaved Banner tampil
 28. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
 29. Klik `⋯` pada baris #1
@@ -100,7 +100,7 @@ coverage:
 ### TC-GS-IMPORT-832: Confirm Mapping dari Modal Column Mapping yang dibuka sebelum commit dimulai
 
 48. Reset Client E (D-47) dan seed draft Brand D-50 (12 baris `pending`) dengan hook umur draft D-76 varian 1 lewat skrip fixture
-49. Buka Global Settings > Import, pilih Sub-Tab Brand
+49. Muat ulang halaman Import > Brand
 50. Verifikasi Unsaved Banner tampil
 51. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
 52. Klik `[Upload File]`
@@ -148,7 +148,7 @@ coverage:
 - Alasan melewati sekitar 35 langkah (86 langkah nominal): lima blok homogen (aksi dari halaman basi pada job `committing`), semua satu kelas dan berdiri sendiri dengan reset Client E di awal tiap blok, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok TC-830 diletakkan terakhir karena memakai ganti akun eksplisit ke Admin kedua Client E (langkah 69); bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok mengikuti kebutuhan akun, bukan nomor TC.
 - Peran akun pada TC-830, 831, 832 dibalik dibanding Langkah TC agar pelaku yang hanya memicu commit memakai sesi API: pada TC-831 dan TC-832 Total Control Client E yang memegang halaman basi dan Admin kedua memicu Import; pada TC-830 Admin kedua memegang halaman basi dan Total Control Client E memicu Import (langkah TC menyebut pelaku yang sama).
-- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 12, 25, 48, 68), aktivasi kontrol worker, pembukaan halaman dan Sub-Tab, pemicu sesi API (langkah 5, 16, 33, 56, 73) yang masing-masing diikuti "Tunggu aksi selesai" (langkah 6, 17, 34, 57, 74; K-16 dan bagian 8b butir 8: permintaan sesi API mendapat respons sebelum aksi UI berikutnya), memajukan dan memulihkan jam server (langkah 32 dan 39), pengubahan nama pada Edit (langkah 31), dan ganti akun (langkah 69). Langkah 40 sampai 42 menutup sesi edit yang masih dirty sebelum muat ulang langkah 43 (K-19c, S-08, S-09): `[Cancel]` pada sesi edit dengan perubahan belum disimpan membuka dialog Discard Changes (PRD), `Verifikasi` dialog pada langkah 41, lalu `[Discard]` pada langkah 42, sehingga tidak ada dialog `beforeunload` yang perlu ditangani. Langkah 39 memulihkan jam server sesudah asersi dialog dan sebelum muat ulang; TTL kunci dihitung di server dan tidak diamati lewat countdown UI sehingga jam browser tidak diubah.
+- Langkah penghubung (tanpa `Verifikasi`): reset dan seeding (langkah 1, 12, 25, 48, 68), aktivasi kontrol worker, muat ulang halaman Import > Brand sesudah reset (langkah 2, 13, 26, dan 49), pembukaan halaman dan Sub-Tab lain, pemicu sesi API (langkah 5, 16, 33, 56, 73) yang masing-masing diikuti "Tunggu aksi selesai" (langkah 6, 17, 34, 57, 74; bagian 8b butir 8: permintaan sesi API mendapat respons sebelum aksi UI berikutnya), memajukan dan memulihkan jam server (langkah 32 dan 39), pengubahan nama pada Edit (langkah 31), dan ganti akun (langkah 69). Langkah 40 sampai 42 menutup sesi edit yang masih dirty sebelum muat ulang langkah 43 (K-19c, S-08, S-09): `[Cancel]` pada sesi edit dengan perubahan belum disimpan membuka dialog Discard Changes (PRD), `Verifikasi` dialog pada langkah 41, lalu `[Discard]` pada langkah 42, sehingga tidak ada dialog `beforeunload` yang perlu ditangani. Langkah 39 memulihkan jam server sesudah asersi dialog dan sebelum muat ulang; TTL kunci dihitung di server dan tidak diamati lewat countdown UI sehingga jam browser tidak diubah.
 - Langkah 3, 14, 27, 50, dan 71 adalah `Verifikasi` tambahan di luar Expected TC yang membuktikan prasyarat TC sebelum commit dimulai pelaku kedua (halaman basi dimuat dengan `[Import (N)]` Enabled atau Unsaved Banner tampil).
 - Temuan untuk QA:
   - TC-GS-IMPORT-830, 831, 832 menyebut Admin kedua dan Total Control Client E sebagai dua sesi browser terpisah (halaman Unsaved Banner Admin kedua dibuka pada Langkah 1 TC); spec memakai satu sesi UI dan satu sesi API sesuai P-2, sehingga langkah "Admin kedua: buka Import > Brand dan perhatikan Unsaved Banner" pada TC-831 dan TC-832 tidak dijalankan sebagai UI kedua. Menunggu konfirmasi QA.

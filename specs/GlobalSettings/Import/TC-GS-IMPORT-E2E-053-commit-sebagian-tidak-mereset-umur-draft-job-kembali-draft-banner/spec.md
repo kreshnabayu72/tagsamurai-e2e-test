@@ -35,7 +35,7 @@ coverage:
 9. Majukan jam server 11 menit (fixture jam server)
 10. Muat ulang halaman Import > Brand
 11. Verifikasi Unsaved Banner "You have an unsaved import from [Date]. [Discard]" tampil
-12. Verifikasi Unsaved Banner tampil di bawah Banner Hasil Commit
+12. Verifikasi Banner Hasil Commit tidak tampil (Banner Hasil Commit sudah ditampilkan pada pembacaan langkah 5; Unsaved Banner langkah 11 tampil lebih dulu sebagai anchor positif)
 13. Verifikasi Staging Metric Cards tetap Total Rows 2
 14. Pulihkan jam server ke waktu nyata (fixture jam server); reset Client E sesuai D-47
 
@@ -43,9 +43,9 @@ coverage:
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Kelas harness: harness eksternal (kelas d, prinsip 13d; objek uji umur draft sebagai batas waktu dan job latar commit).
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset dan seed draft D-58 dengan D-76 varian 4); langkah 2, 5, 10 (muat ulang halaman); langkah 4 (Tunggu aksi selesai: permintaan mendapat respons, penanda yang tidak ada di TC dan tidak memuat hasil UI); langkah 9 dan 14 (jam server).
-- Langkah 8 (absence Unsaved Banner) memakai Banner Hasil Commit langkah 6 sebagai anchor positif. Langkah 12 menyatakan posisi Unsaved Banner di bawah Banner Hasil Commit, yang tidak ditutup oleh langkah 2 sampai 11.
+- Langkah 8 (absence Unsaved Banner) memakai Banner Hasil Commit langkah 6 sebagai anchor positif. Langkah 12 (absence Banner Hasil Commit) memakai Unsaved Banner langkah 11 sebagai anchor positif; sesudah pembacaan langkah 10 Unsaved Banner tampil tanpa Banner Hasil Commit (PRD baris 575 dan 1655).
 - Pembagian TC lintas spec: TC-GS-IMPORT-877 sampai 880 ada di spec 051; TC-GS-IMPORT-882, 883, 885 di spec 052.
 - Temuan untuk QA:
-  - TC-GS-IMPORT-881 Expected c ("di bawah Banner Hasil Commit bila banner itu belum ditutup") bersyarat; spec menulis `Verifikasi` posisi di langkah 12 tanpa langkah menutup Banner Hasil Commit, mengikuti alur TC. TC dan PRD belum menetapkan apakah Banner Hasil Commit bertahan lintas muat ulang (langkah 10); bila tidak bertahan, klausa posisi tidak teramati dan TC-881 c perlu ditulis tak bersyarat (keputusan QA D-6 belum ada).
+  - TC-GS-IMPORT-881 Expected c: sesudah pembacaan langkah 10 Unsaved Banner tampil tanpa Banner Hasil Commit; langkah 12 mengasersi sesuai TC dan PRD.
   - TC-GS-IMPORT-881 tidak menyebut penanda selesai sesudah `[Import (10)]`; langkah 4 memakai penanda permintaan mendapat respons.
   - Post Condition "entri ringkasan job tercatat di Changelog Import" tidak punya langkah observasi di TC; tidak diasersi.

@@ -26,7 +26,7 @@ coverage:
 
 - Mode: FE+BE (backend nyata).
 - Akun aktor hook `before`: Total Control (Sari Dewi), Client A, `totalControl_automated_qaTeam1@qwertysystem.net` (Pre-setup 1). Login sekali di hook `before` dengan `Spectra.env.GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture.
-- Akun kedua (langkah 132, TC-GS-HHR-267): Total Control Client L, `totalControl_automated_{namaClient}@qwertysystem.net` dengan nama client Client L, password `Spectra.env.GS_CLIENTL_TC_PASSWORD` (nama env baru; didaftarkan di `spectra.config.ts` dan `.env.example` oleh pemilik suite). Client L memiliki 26 reader `Large Reader - 1` sampai `Large Reader - 26`; seluruhnya berjenis `Short Range` supaya Filter `Range Type` = `Short Range` tetap memuat 26 baris dan halaman terakhir pada `Rows per page` 25 adalah halaman 2 (kondisi data disediakan tim FE; lihat "Temuan untuk QA"). Hook `after` mengembalikan sesi ke akun default suite.
+- Akun kedua (langkah 132, TC-GS-HHR-267): Total Control Client L, email disediakan tim FE (tidak tertulis di Pre-setup TC), password `Spectra.env.GS_CLIENTL_TC_PASSWORD` (nama env baru; didaftarkan di `spectra.config.ts` dan `.env.example` oleh pemilik suite). Client L memiliki 26 reader `Large Reader - 1` sampai `Large Reader - 26`, seluruhnya `Short Range` (Tabel Data Uji Pre-setup TC); Filter `Range Type` = `Short Range` tetap memuat 26 baris dan halaman terakhir pada `Rows per page` 25 adalah halaman 2 dari 2. Hook `after` mengembalikan sesi ke akun default suite.
 - Layar awal: hook `beforeEach` membuka Global Settings > Hardware > Handheld Reader; spec tidak mengulang langkah buka di `## Test Steps` kecuali setelah ganti akun. Klik item sidebar `Handheld Reader` mereset Search, Sort, dan Filter; state yang harus dipulihkan ditulis sebagai langkah penghubung eksplisit.
 - Client A: plan Growth, format tanggal default General Settings `dd/MM/yy` 24-hour (tidak diubah spec ini).
 - Data Dinamis Seed Reader A (10 reader DD-01 sampai DD-10, jumlah baris N = 10 dari seeding), dibuat lewat fixture backend sebelum eksekusi (`Fixture.hardwareHandheldReader.seedReaderA`, fixture baru) dan dipulihkan antar TC oleh fixture backend. Pengecualian S-12 Population Seed Reader A HHR: nama literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah baris. Spec hanya membaca daftar. Kolom yang dicocokkan Search dan dipakai Filter dan Sort (data memuat sedikitnya dua nilai distinct pada kolom `Device Name`, `Serial Number`, `Status`, dan `Source`):
@@ -232,7 +232,7 @@ coverage:
 147. Verifikasi filter `Range Type` `Short Range` tetap sama
 148. Klik ikon Filter untuk menutup panel
 149. Verifikasi `Rows per page` 25 tetap sama
-150. Verifikasi halaman aktif tetap halaman terakhir
+150. Verifikasi halaman aktif tetap halaman terakhir (halaman 2 dari 2)
 151. Klik item `Handheld Reader` pada sidebar
 
 ## Notes
@@ -245,7 +245,6 @@ coverage:
 - Pembagian TC lintas spec: Search per kelas kolom ada di spec 050, Filter multi-select ada di spec 051, Filter rentang di spec 052, Sort per kolom di spec 053, Pagination tabel utama (ukuran halaman dan navigasi halaman) di spec 060.
 - Spec memuat 151 langkah (di atas smell sekitar 35 langkah, tanpa ekspansi). Alasan: seluruhnya satu kelas harness (kombinasi Search, Filter, Sort, dan Pagination daftar reader yang berbagi dataset yang sama), tanpa aksi yang mengubah data; tiap blok TC membersihkan state-nya sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; blok Client L (TC-GS-HHR-267) memakai langkah ganti akun eksplisit dan tetap bermakna walau bagian Client A gagal.
 - Temuan untuk QA:
-  - TC-GS-HHR-267: precondition hanya menyebut "Client L memiliki 26 reader" tanpa menyebut `Range Type` reader; agar Filter `Short Range` dan `Rows per page` 25 menghasilkan halaman terakhir (halaman 2), seluruh 26 reader harus `Short Range`. Spec menulis kondisi itu sebagai kebutuhan data yang disediakan tim FE. Email akun Total Control Client L mengikuti pola fixture `totalControl_automated_{namaClient}@qwertysystem.net`; nilai persis tidak tertulis di Pre-setup TC.
   - TC-GS-HHR-268: langkah TC 4 tidak menutup Filter Panel sebelum klik item `Handheld Reader` pada sidebar (model Filter Panel menyatakan panel tetap terbuka sesudah `[Apply]`); spec mengikuti TC dan keadaan panel serta penanda indikator Filter pada ikon yang tertutup tidak dinyatakan TC untuk kasus ini.
   - Seed Reader A bernama literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah baris; fixture backend dan pemulihannya antar TC disediakan tim FE/BE tanpa mekanisme yang ditulis di TC.
   - Post Condition semua TC di spec ini `-`; tidak ada yang diasersi.
