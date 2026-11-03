@@ -1,0 +1,168 @@
+{
+  "actors": {
+    "totalControl": {
+      "email": "totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net",
+      "displayName": "Andi Wijaya",
+      "env": "AC_TC_PASSWORD"
+    },
+    "defaultUser": {
+      "email": "defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net",
+      "displayName": "Dewi Lestari",
+      "env": "AC_DU_PASSWORD"
+    },
+    "readOnly": {
+      "email": "readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net",
+      "displayName": "Hadi Pratama",
+      "env": "AC_RO_PASSWORD"
+    },
+    "managePlansLicensing": {
+      "email": "managePlansLicensingAdminConsole_automated_{namaCompany}@qwertysystem.net",
+      "displayName": "Rina Kusuma",
+      "env": "AC_MPL_PASSWORD"
+    },
+    "noCapability": {
+      "email": "noCapabilityAdminConsole_automated_{namaCompany}@qwertysystem.net",
+      "env": "AC_NOCAP_PASSWORD"
+    },
+    "distributor": {
+      "email": "distributorUser_automated_{namaCompany}@qwertysystem.net",
+      "env": "AC_DIST_PASSWORD"
+    },
+    "partner": {
+      "email": "partnerUser_automated_{namaCompany}@qwertysystem.net",
+      "env": "AC_PARTNER_PASSWORD"
+    },
+    "client": {
+      "email": "clientUser_automated_{namaCompany}@qwertysystem.net",
+      "env": "AC_CLIENT_PASSWORD"
+    },
+    "defaultUserClientMajuJaya": {
+      "email": "defaultUserClientMajuJaya_automated_{namaCompany}@qwertysystem.net",
+      "env": "AC_DUCLIENT_PASSWORD",
+      "note": "Pre-setup 13; usulan, keberadaan dikonfirmasi tim FE"
+    },
+    "userClientBaruMandiri": {
+      "email": "clientUserBaruMandiri_automated_{namaCompany}@qwertysystem.net",
+      "note": "Pre-setup 14; usulan, env password disediakan tim FE"
+    },
+    "manageAllocationPrincipal": {
+      "email": "manageAllocationPrincipal_automated_{namaCompany}@qwertysystem.net",
+      "note": "Pre-setup 15; usulan, env password disediakan tim FE"
+    },
+    "manageArchivedClientPrincipal": {
+      "email": "manageArchivedClientPrincipal_automated_{namaCompany}@qwertysystem.net",
+      "note": "Pre-setup 15; usulan, env password disediakan tim FE"
+    },
+    "manageAllocationPartner": {
+      "email": "manageAllocationPartner_automated_{namaCompany}@qwertysystem.net",
+      "note": "Pre-setup 15; usulan, env password disediakan tim FE"
+    },
+    "manageAllocationDistributor": {
+      "email": "manageAllocationDistributor_automated_{namaCompany}@qwertysystem.net",
+      "note": "Pre-setup 15; usulan, env password disediakan tim FE"
+    }
+  },
+  "defaults": {
+    "trialSettings": [
+      30,
+      50,
+      10,
+      "OFF",
+      7,
+      1
+    ],
+    "freePlanSettings": [
+      365
+    ],
+    "licenseTiming": [
+      24,
+      2,
+      2
+    ],
+    "clientLifecycle": [
+      45,
+      30,
+      7,
+      1,
+      30,
+      30,
+      10,
+      2,
+      730
+    ],
+    "recycleBin": [
+      30
+    ],
+    "approvalSettings": [
+      3
+    ],
+    "systemLimits": [
+      1000,
+      1000,
+      1000,
+      50,
+      10000,
+      20
+    ]
+  },
+  "changelogDatasetL": {
+    "tab": "Client Lifecycle",
+    "entries": 27,
+    "date": "n May 26 10:00",
+    "action": "Edit",
+    "oldValue": "5n",
+    "newValue": "5n+3",
+    "modifiedBy": [
+      "John Doe",
+      "Sarah Thompson",
+      "Budi Santoso"
+    ]
+  },
+  "changelogDatasetSmall": {
+    "entries": 3,
+    "dates": [
+      "10 May 26",
+      "11 May 26",
+      "12 May 26"
+    ],
+    "modifiedBy": [
+      "John Doe",
+      "Sarah Thompson"
+    ]
+  },
+  "clientMajuJaya": {
+    "name": "PT Maju Jaya",
+    "note": "Direct"
+  },
+  "clientMitraSatu": {
+    "name": "PT Mitra Satu",
+    "note": "Partner"
+  },
+  "clientDistribusiUtama": {
+    "name": "PT Distribusi Utama",
+    "note": "Distributor"
+  },
+  "clientSentosaAbadi": {
+    "name": "PT Sentosa Abadi"
+  },
+  "clientRekanMandiri": {
+    "name": "PT Rekan Mandiri"
+  },
+  "clientBintangTimur": {
+    "name": "PT Bintang Timur"
+  },
+  "clientCahayaBaru": {
+    "name": "PT Cahaya Baru"
+  },
+  "clientLamaSejahtera": {
+    "name": "PT Lama Sejahtera",
+    "note": "purged"
+  },
+  "clientBaruMandiri": {
+    "name": "PT Baru Mandiri"
+  },
+  "clientBaruSentosa": {
+    "name": "PT Baru Sentosa",
+    "note": "Hard Purge setelah perubahan retensi (TC 529)"
+  }
+}
