@@ -28,7 +28,7 @@ coverage:
 - Permintaan langsung adalah pemicu kondisi yang diasersi tidak tercatat dan bukan objek uji; status respons dan state data diasersi di spec kelas a (`P-5` butir a).
 - Pemulihan: dataset Changelog dikembalikan ke keadaan awal dan ketujuh tab dipulihkan ke nilai default oleh hook `after` suite; permintaan yang ditolak tidak mengubah data.
 - Suite berjalan serial (`parallel: false`) karena spec ini memakai state global yang disebut pada butir pemulihan.
-- Fixture `fixtures/lifecycleSettings.json` belum ada dan disediakan tim FE; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` setelah tersedia.
+- Nilai Pre-setup dan state Changelog dirujuk lewat `Fixture.lifecycleSettings.<kunci>` dari `fixtures/lifecycle-settings.json`.
 
 ## Test Steps
 
@@ -97,7 +97,7 @@ coverage:
 ## Notes
 
 - `P-5` butir a: permintaan langsung ke server memakai sesi Read Only hanya memicu kondisi yang diasersi tidak tercatat dan bukan objek uji; tiap TC memakai tab dan baseline sendiri (S-05).
-- Pembagian TC lintas spec: butir Expected status `403` dan nilai field tetap diasersi di spec kelas a; TC 586, 588, dan 590 ada di spec 168, TC 592, 594, dan 596 di spec 169, dan TC 598 di spec 170. Spec ini hanya memuat butir "Tidak ada entri Changelog baru" (S-05).
+- Pembagian TC lintas spec: butir Expected status `403` dan nilai field tetap diasersi di spec kelas a; TC-AC-LCS-586, TC-AC-LCS-588, dan TC-AC-LCS-590 memuat aksi di spec TC-AC-LCS-E2E-168, TC-AC-LCS-592, TC-AC-LCS-594, dan TC-AC-LCS-596 di spec TC-AC-LCS-E2E-169, dan TC-AC-LCS-598 di spec TC-AC-LCS-E2E-170. Spec ini hanya memuat butir "Tidak ada entri Changelog baru" (S-05).
 - Langkah penghubung tanpa `Verifikasi`: "Klik tab" (precondition TC: user berada di tab terkait) dan "Tutup modal Changelog" antar TC (S-03, S-09). Anchor positif asersi absence adalah `Verifikasi` entri seed tampil pada surface yang sama (bagian 8b butir 2).
 - Alasan lebih dari sekitar 35 langkah: tujuh blok memakai pola yang sama, semuanya satu kelas absence, dan tiap blok memakai tab, permintaan, dan baseline sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA: Dataset kecil per tab (Pre-setup 9) tidak menyebut Field entri seed; anchor memakai Date `12 May 26` yang tercantum di Pre-setup.

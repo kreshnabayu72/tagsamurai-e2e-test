@@ -58,7 +58,8 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - `K-1`: TC defense-in-depth (kelas a) dengan Expected respons API tetap masuk spec FE+BE walau isinya tumpang tindih dengan `tc-plans-licensing-lifecycle-settings-backend.md`; TC granular tetap sumber dan tiap TC tepat satu spec.
 - Urutan TC mengikuti urutan nomor kolom `sourceTc` (598, 599, lalu 609); ganti akun ke Total Control terjadi satu kali pada TC 609.
-- Expected c "Tidak ada entri Changelog baru" TC 598 diasersi di spec absence (kelas g, nomor 137 sampai 140) dengan permintaan tersebut sebagai pemicu, user dan baseline sendiri (S-05, `P-5` butir a); id TC tetap di `sourceTc` spec ini dan spec ini hanya mengasersi status respons dan state data (bagian 8b butir 1).
+- Expected c "Tidak ada entri Changelog baru" TC-AC-LCS-598 diasersi di spec absence `TC-AC-LCS-E2E-137` (kelas g) dengan permintaan tersebut sebagai pemicu, user dan baseline sendiri (S-05, `P-5` butir a); id TC tetap di `sourceTc` spec ini dan spec ini hanya mengasersi status respons dan state data (bagian 8b butir 1).
+- Pemisahan dari 168 dan 169: satu spec untuk tab System Limits dan kasus tanpa capability agar alur tiap kelompok berdiri sendiri.
 - Temuan untuk QA:
   - TC 609 langkah 3 "Login sbg Role: Total Control dan buka tab Approval Settings" dipenuhi ganti akun eksplisit; TC 598 dan 599 memakai sesi UI Read Only dari hook `before`.
   - TC tidak merinci nilai field lain pada payload permintaan langsung; spec memakai nilai tersimpan tab untuk field lain tanpa mengarang struktur payload (S-13).

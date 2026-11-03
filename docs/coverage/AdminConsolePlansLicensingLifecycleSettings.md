@@ -2,7 +2,7 @@
 
 Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md` (687 ID `TC-AC-LCS-1`–`687`, semua aktif). Suite: `specs/AdminConsole/PlansLicensingLifecycleSettings/`. Prefix: `AC` + `LCS` (`TC-AC-LCS-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Berkas `tc-plans-licensing-lifecycle-settings-backend.md` ada, tetapi bukan sumber spec ini.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: seluruh 687 TC masuk 194 spec (total 4.975 langkah), tidak ada TC hanya-BE yang dilewati. Nomor spec 001–184 mengikuti rencana; nomor cadangan 185–196 dipakai untuk pemecahan (nomor 188 dan 190 tidak terpakai, sehingga ada 194 spec, bukan 196). Slug, judul, dan `sourceTc` pada tabel di bawah mengikuti frontmatter spec, bukan rencana. Spec yang dipecah ke nomor cadangan: 002 (menjadi 185), 013 (186), 045 (187), 084 (189), 092 (191), 119 (192), 154 dan 155 (193, 194), 163 dan 164 (196), 183 dan 184 (195). Semua spec bermode FE+BE dengan `coverage.web: automated`; tidak ada spec mock dan tidak ada spec mobile.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: seluruh 687 TC masuk 194 spec (total 5.110 langkah), tidak ada TC hanya-BE yang dilewati. Nomor spec 001–184 mengikuti rencana; nomor cadangan 185–196 dipakai untuk pemecahan (nomor 188 dan 190 tidak terpakai, sehingga ada 194 spec, bukan 196). Slug, judul, dan `sourceTc` pada tabel di bawah mengikuti frontmatter spec, bukan rencana. Spec yang dipecah ke nomor cadangan: 002 (menjadi 185), 013 (186), 045 (187), 084 (189), 092 (191), 119 (192), 154 dan 155 (193, 194), 163 dan 164 (196), 183 dan 184 (195). Semua spec bermode FE+BE dengan `coverage.web: automated`; tidak ada spec mock dan tidak ada spec mobile.
 
 ## TC hanya-BE (tidak masuk spec)
 
@@ -21,12 +21,12 @@ Tidak ada (0). Permintaan langsung ke server (kelas a, spec 168–183) tetap dit
 | TC-AC-LCS-E2E-007-pindah-tab-dan-dirty-state-antar-tab | Pindah Tab Mempertahankan Perubahan dan Independensi Dirty State Antar Tab | FE+BE | 23 | 20, 21 |
 | TC-AC-LCS-E2E-008-aksesibilitas-tab-bar-dan-viewport-sempit | Aksesibilitas Tab Bar dan Scroll Horizontal pada Viewport Sempit | FE+BE | 18 | 22, 23 |
 | TC-AC-LCS-E2E-009-resilience-error-load-tab-trial-sampai-client-lifecycle | Resilience Error Load 500 Tab Trial Settings, Free Plan Settings, License Timing, dan Client Lifecycle | FE+BE | 28 | 25, 26, 27, 28 |
-| TC-AC-LCS-E2E-010-resilience-error-load-tab-recycle-approval-limits-dan-muat-ulang | Resilience Error Load 500 Tab Recycle Bin, Approval Settings, System Limits, dan Muat Ulang dari State Gagal | FE+BE | 26 | 29, 30, 31, 32 |
-| TC-AC-LCS-E2E-011-nilai-default-instalasi-baru-trial-free-license | Nilai Default Instalasi Baru: Tab Trial Settings, Free Plan Settings, dan License Timing | FE+BE | 24 | 33, 34, 35 |
-| TC-AC-LCS-E2E-012-nilai-default-instalasi-baru-lifecycle-recycle-approval-limits | Nilai Default Instalasi Baru: Tab Client Lifecycle, Recycle Bin, Approval Settings, dan System Limits | FE+BE | 37 | 36, 37, 38, 39 |
+| TC-AC-LCS-E2E-010-resilience-error-load-tab-recycle-approval-limits-dan-muat-ulang | Resilience Error Load 500 Tab Recycle Bin, Approval Settings, System Limits, dan Muat Ulang dari State Gagal | FE+BE | 27 | 29, 30, 31, 32 |
+| TC-AC-LCS-E2E-011-nilai-default-instalasi-baru-trial-free-license | Nilai Default Instalasi Baru: Tab Trial Settings, Free Plan Settings, dan License Timing | FE+BE | 27 | 33, 34, 35 |
+| TC-AC-LCS-E2E-012-nilai-default-instalasi-baru-lifecycle-recycle-approval-limits | Nilai Default Instalasi Baru: Tab Client Lifecycle, Recycle Bin, Approval Settings, dan System Limits | FE+BE | 41 | 36, 37, 38, 39 |
 | TC-AC-LCS-E2E-013-tooltip-label-field-trial-free-license | Tooltip Label Field: Tab Trial Settings, Free Plan Settings, dan License Timing | FE+BE | 22 | 40, 41, 42 |
 | TC-AC-LCS-E2E-014-tooltip-label-field-recycle-approval-limits-dan-addon | Tooltip Label Field Recycle Bin, Approval Settings, System Limits, Fokus Keyboard, dan Addon Satuan | FE+BE | 29 | 44, 45, 46, 47, 48 |
-| TC-AC-LCS-E2E-015-guided-tooltip-alur-walkthrough | Guided Tooltip: Kunjungan Pertama dan Walkthrough Next, Back, serta Skip | FE+BE | 34 | 49, 50, 51, 52 |
+| TC-AC-LCS-E2E-015-guided-tooltip-alur-walkthrough | Guided Tooltip: Kunjungan Pertama dan Walkthrough Next, Back, serta Skip | FE+BE | 35 | 49, 50, 51, 52 |
 | TC-AC-LCS-E2E-016-guided-tooltip-penutupan-dan-mulai-ulang | Guided Tooltip: Penutupan lewat Overlay dan Esc, Mulai Ulang lewat [?], dan Navigasi Keluar | FE+BE | 41 | 53, 54, 55, 56 |
 | TC-AC-LCS-E2E-017-guided-tooltip-read-only | Guided Tooltip: Walkthrough Read Only Melewati Step Reset to Default dan Save | FE+BE | 10 | 57 |
 | TC-AC-LCS-E2E-018-role-matrix-positif-sidebar-dan-halaman | Role Matrix Positif: Item Sidebar dan Halaman Lifecycle Settings Terbuka per Role | FE+BE | 26 | 58, 59, 60, 61 |
@@ -39,7 +39,7 @@ Tidak ada (0). Permintaan langsung ke server (kelas a, spec 168–183) tetap dit
 | TC-AC-LCS-E2E-025-role-matrix-positif-manage-plans-lifecycle-recycle | Role Matrix Positif: Manage Plans & Licensing Mengeksekusi Save dan Reset Tab Client Lifecycle dan Recycle Bin | FE+BE | 20 | 83, 84, 85, 86 |
 | TC-AC-LCS-E2E-026-role-matrix-positif-manage-plans-approval-limits | Role Matrix Positif: Manage Plans & Licensing Mengeksekusi Save dan Reset Tab Approval Settings dan System Limits | FE+BE | 20 | 87, 88, 89, 90 |
 | TC-AC-LCS-E2E-027-role-matrix-positif-default-user-free-plan | Role Matrix Positif: Default User Mengeksekusi Save dan Reset Tab Free Plan Settings | FE+BE | 9 | 91, 92 |
-| TC-AC-LCS-E2E-028-capability-dicabut-saat-form-terbuka | Capability Update Dicabut Saat Form Terbuka: Save Trial Settings dan Reset Recycle Bin Ditolak | FE+BE | 23 | 93, 94 |
+| TC-AC-LCS-E2E-028-capability-dicabut-saat-form-terbuka | Capability Update Dicabut Saat Form Terbuka: Save Trial Settings dan Reset Recycle Bin Ditolak | FE+BE | 24 | 93, 94 |
 | TC-AC-LCS-E2E-029-validasi-field-max-trial-duration | Validasi Field Max Trial Duration | FE+BE | 29 | 95, 96, 97, 98, 99 |
 | TC-AC-LCS-E2E-030-validasi-field-max-trial-asset-quota | Validasi Field Max Trial Asset Quota | FE+BE | 29 | 100, 101, 102, 103, 104 |
 | TC-AC-LCS-E2E-031-validasi-field-max-trial-concurrent-user-quota | Validasi Field Max Trial Concurrent User Quota | FE+BE | 29 | 105, 106, 107, 108, 109 |
@@ -60,12 +60,12 @@ Tidak ada (0). Permintaan langsung ke server (kelas a, spec 168–183) tetap dit
 | TC-AC-LCS-E2E-046-license-timing-reset-dan-klik-ganda | Tab License Timing: Reset to Default dan Klik Ganda Cepat pada Save serta Reset | FE+BE | 34 | 163, 164, 166, 167 |
 | TC-AC-LCS-E2E-047-validasi-field-notify-plan-owner-before-event | Validasi Field Notify Plan Owner Before Event | FE+BE | 28 | 169, 170, 171, 172, 173 |
 | TC-AC-LCS-E2E-048-validasi-field-first-reminder-before-event | Validasi Field First Reminder Before Event | FE+BE | 30 | 174, 175, 176, 177, 178 |
-| TC-AC-LCS-E2E-049-validasi-field-second-reminder-before-event | Validasi Field Second Reminder Before Event | FE+BE | 23 | 179, 180, 181, 182 |
-| TC-AC-LCS-E2E-050-validasi-field-final-reminder-before-event | Validasi Field Final Reminder Before Event | FE+BE | 21 | 183, 184, 185, 186 |
+| TC-AC-LCS-E2E-049-validasi-field-second-reminder-before-event | Validasi Field Second Reminder Before Event | FE+BE | 24 | 179, 180, 181, 182 |
+| TC-AC-LCS-E2E-050-validasi-field-final-reminder-before-event | Validasi Field Final Reminder Before Event | FE+BE | 22 | 183, 184, 185, 186 |
 | TC-AC-LCS-E2E-051-validasi-field-grace-period-duration | Validasi Field Grace Period Duration | FE+BE | 28 | 187, 188, 189, 190, 191 |
 | TC-AC-LCS-E2E-052-validasi-field-archive-period-duration | Validasi Field Archive Period Duration | FE+BE | 31 | 192, 193, 194, 195, 196 |
 | TC-AC-LCS-E2E-053-validasi-field-purge-warning-email | Validasi Field Purge Warning Email | FE+BE | 31 | 197, 198, 199, 200, 201 |
-| TC-AC-LCS-E2E-054-validasi-field-purge-urgent-warning-email | Validasi Field Purge Urgent Warning Email | FE+BE | 21 | 202, 203, 204, 205 |
+| TC-AC-LCS-E2E-054-validasi-field-purge-urgent-warning-email | Validasi Field Purge Urgent Warning Email | FE+BE | 22 | 202, 203, 204, 205 |
 | TC-AC-LCS-E2E-055-validasi-field-post-purge-retention | Validasi Field Post-Purge Retention: Non-numerik, Kosong, Di Bawah Minimum, dan Batas Karakter | FE+BE | 23 | 206, 207, 208, 209 |
 | TC-AC-LCS-E2E-056-post-purge-retention-batas-atas-3650 | Post-Purge Retention: Batas Atas 3650 Ditolak di Atas dan Diterima pada Maksimum | FE+BE | 22 | 210, 211, 314, 327 |
 | TC-AC-LCS-E2E-057-client-lifecycle-dirty-state-save-seluruh-field | Tab Client Lifecycle: Dirty State dan Save Seluruh Sembilan Field | FE+BE | 32 | 212, 213 |
@@ -77,15 +77,15 @@ Tidak ada (0). Permintaan langsung ke server (kelas a, spec 168–183) tetap dit
 | TC-AC-LCS-E2E-063-field-tanpa-validasi-relasi | Field Tanpa Validasi Relasi: Max Trial dan Notify Plan Owner Before Event | FE+BE | 18 | 299, 313 |
 | TC-AC-LCS-E2E-064-warning-note-client-lifecycle-notify-sampai-final | Warning Note Client Lifecycle: Notify Plan Owner sampai Final Reminder Before Event | FE+BE | 17 | 315, 316, 317, 318 |
 | TC-AC-LCS-E2E-065-warning-note-client-lifecycle-grace-sampai-purge-urgent | Warning Note Client Lifecycle: Grace Period, Archive Period, Purge Warning, dan Purge Urgent Warning | FE+BE | 17 | 319, 320, 321, 322 |
-| TC-AC-LCS-E2E-066-warning-note-client-lifecycle-hilang-dan-tidak-tampil | Warning Note Client Lifecycle: Post-Purge Retention, Nilai Dikembalikan, Save, Muat, dan Reset | FE+BE | 20 | 323, 324, 325, 326 |
+| TC-AC-LCS-E2E-066-warning-note-client-lifecycle-hilang-dan-tidak-tampil | Warning Note Client Lifecycle: Post-Purge Retention, Nilai Dikembalikan, Save, Muat, dan Reset | FE+BE | 22 | 323, 324, 325, 326 |
 | TC-AC-LCS-E2E-067-validasi-field-permanently-delete-recycle-bin | Validasi Field Permanently Delete Recycle Bin | FE+BE | 27 | 222, 223, 224, 225, 226 |
 | TC-AC-LCS-E2E-068-recycle-bin-dirty-state-save-dan-koreksi | Tab Recycle Bin: Dirty State, Save Seluruh Field, Nilai Minimum, dan Koreksi Nilai Salah | FE+BE | 28 | 227, 228, 229, 236 |
-| TC-AC-LCS-E2E-069-recycle-bin-reset-dan-klik-ganda | Tab Recycle Bin: Reset to Default dan Klik Ganda Cepat pada Save serta Reset | FE+BE | 33 | 231, 232, 234, 235 |
-| TC-AC-LCS-E2E-070-warning-note-recycle-bin | Warning Note Recycle Bin: Muncul, Bertahan Saat Save Gagal, dan Hilang Setelah Save atau Reset | FE+BE | 20 | 328, 329, 330 |
-| TC-AC-LCS-E2E-071-warning-note-tab-tanpa-warning | Warning Note: Tab Tanpa Warning (Trial Settings, Free Plan, License Timing, Approval Settings, System Limits) | FE+BE | 24 | 331, 332, 333, 334, 335 |
+| TC-AC-LCS-E2E-069-recycle-bin-reset-dan-klik-ganda | Tab Recycle Bin: Reset to Default dan Klik Ganda Cepat pada Save serta Reset | FE+BE | 34 | 231, 232, 234, 235 |
+| TC-AC-LCS-E2E-070-warning-note-recycle-bin | Warning Note Recycle Bin: Muncul, Bertahan Saat Save Gagal, dan Hilang Setelah Save atau Reset | FE+BE | 22 | 328, 329, 330 |
+| TC-AC-LCS-E2E-071-warning-note-tab-tanpa-warning | Warning Note: Tab Tanpa Warning (Trial Settings, Free Plan, License Timing, Approval Settings, System Limits) | FE+BE | 29 | 331, 332, 333, 334, 335 |
 | TC-AC-LCS-E2E-072-validasi-field-approval-timeout | Validasi Field Approval Timeout | FE+BE | 28 | 237, 238, 239, 240, 241 |
 | TC-AC-LCS-E2E-073-approval-settings-dirty-state-save-dan-koreksi | Tab Approval Settings: Dirty State, Save Seluruh Field, Nilai Minimum, dan Koreksi Nilai Salah | FE+BE | 28 | 242, 243, 244, 251 |
-| TC-AC-LCS-E2E-074-approval-settings-reset-dan-klik-ganda | Tab Approval Settings: Reset to Default dan Klik Ganda Cepat pada Save serta Reset | FE+BE | 33 | 246, 247, 249, 250 |
+| TC-AC-LCS-E2E-074-approval-settings-reset-dan-klik-ganda | Tab Approval Settings: Reset to Default dan Klik Ganda Cepat pada Save serta Reset | FE+BE | 34 | 246, 247, 249, 250 |
 | TC-AC-LCS-E2E-075-validasi-field-bulk-transaction-row-limit | Validasi Field Bulk Transaction Row Limit | FE+BE | 28 | 252, 253, 254, 255, 256 |
 | TC-AC-LCS-E2E-076-validasi-field-selection-limit | Validasi Field Selection Limit | FE+BE | 28 | 257, 258, 259, 260, 261 |
 | TC-AC-LCS-E2E-077-validasi-field-register-asset-bulk-limit | Validasi Field Register Asset Bulk Limit | FE+BE | 28 | 262, 263, 264, 265, 266 |
@@ -94,7 +94,7 @@ Tidak ada (0). Permintaan langsung ke server (kelas a, spec 168–183) tetap dit
 | TC-AC-LCS-E2E-080-validasi-field-max-visible-columns | Validasi Field Max Visible Columns | FE+BE | 28 | 277, 278, 279, 280, 281 |
 | TC-AC-LCS-E2E-081-system-limits-dirty-state-save-seluruh-field | Tab System Limits: Dirty State dan Save Seluruh Enam Field | FE+BE | 26 | 282, 283 |
 | TC-AC-LCS-E2E-082-system-limits-save-minimum-dan-koreksi | Tab System Limits: Save Nilai Minimum dan Koreksi Nilai Salah | FE+BE | 23 | 284, 291 |
-| TC-AC-LCS-E2E-083-system-limits-reset-dan-klik-ganda | Tab System Limits: Reset to Default dan Klik Ganda Cepat pada Save serta Reset | FE+BE | 33 | 286, 287, 289, 290 |
+| TC-AC-LCS-E2E-083-system-limits-reset-dan-klik-ganda | Tab System Limits: Reset to Default dan Klik Ganda Cepat pada Save serta Reset | FE+BE | 34 | 286, 287, 289, 290 |
 | TC-AC-LCS-E2E-084-resilience-save-500-trial-dan-free-plan | Resilience Save 500: Toast Error, Form Tetap, dan Data Tidak Berubah pada Tab Trial Settings dan Free Plan Settings | FE+BE | 18 | 122, 137 |
 | TC-AC-LCS-E2E-085-resilience-save-500-recycle-approval-limits | Resilience Save 500 pada Tab Recycle Bin, Approval Settings, dan System Limits | FE+BE | 28 | 230, 245, 285 |
 | TC-AC-LCS-E2E-086-resilience-reset-500-trial-sampai-client-lifecycle | Resilience Reset to Default 500 pada Tab Trial, Free Plan, License Timing, dan Client Lifecycle | FE+BE | 29 | 125, 140, 165, 218 |
@@ -110,23 +110,23 @@ Tidak ada (0). Permintaan langsung ke server (kelas a, spec 168–183) tetap dit
 | TC-AC-LCS-E2E-096-empty-state-modal-changelog-lifecycle-recycle-approval-limits | Empty State Modal Changelog Tab Client Lifecycle, Recycle Bin, Approval Settings, dan System Limits | FE+BE | 6 | 362, 364, 366, 368 |
 | TC-AC-LCS-E2E-097-modal-changelog-isolasi-penutupan-dan-icon | Modal Changelog: Isolasi Riwayat per Tab, Penutupan Modal, dan Icon Changelog Membuka Tab Aktif | FE+BE | 30 | 369, 370, 371 |
 | TC-AC-LCS-E2E-098-search-modal-changelog-reveal-dan-siklus | Search Modal Changelog: Reveal Search Box, Siklus Interaksi, dan Panah Penutup | FE+BE | 22 | 372, 373, 374 |
-| TC-AC-LCS-E2E-099-search-modal-changelog-pencocokan-per-kolom | Search Modal Changelog: Pencocokan per Kolom Action, Field, Old Value, New Value, Modified By, dan Kolom Date | FE+BE | 23 | 375, 376, 377, 378, 379, 380 |
-| TC-AC-LCS-E2E-100-search-modal-changelog-normalisasi-literal-dan-hide | Search Modal Changelog: Case Insensitive, Spasi, Karakter Khusus, Tanpa Hasil, dan Kolom Tersembunyi | FE+BE | 24 | 381, 382, 383, 384, 385 |
+| TC-AC-LCS-E2E-099-search-modal-changelog-pencocokan-per-kolom | Search Modal Changelog: Pencocokan per Kolom Action, Field, Old Value, New Value, Modified By, dan Kolom Date | FE+BE | 24 | 375, 376, 377, 378, 379, 380 |
+| TC-AC-LCS-E2E-100-search-modal-changelog-normalisasi-literal-dan-hide | Search Modal Changelog: Case Insensitive, Spasi, Karakter Khusus, Tanpa Hasil, dan Kolom Tersembunyi | FE+BE | 25 | 381, 382, 383, 384, 385 |
 | TC-AC-LCS-E2E-101-modal-changelog-search-filter-trial-dan-free | Modal Changelog Tab Trial Settings dan Free Plan Settings: Search dan Filter pada Dataset Kecil | FE+BE | 27 | 658, 659, 660, 661, 662 |
 | TC-AC-LCS-E2E-102-modal-changelog-search-filter-license-dan-recycle | Modal Changelog Tab License Timing dan Recycle Bin: Search dan Filter pada Dataset Kecil | FE+BE | 28 | 663, 664, 665, 666, 667 |
 | TC-AC-LCS-E2E-103-modal-changelog-search-filter-approval-dan-limits | Modal Changelog Tab Approval Settings dan System Limits: Search dan Filter pada Dataset Kecil | FE+BE | 28 | 668, 669, 670, 671, 672 |
-| TC-AC-LCS-E2E-104-filter-modal-changelog-screening-dan-opsi | Filter Panel Modal Changelog: Screening, Opsi Dropdown Field dan Modified By, serta Search dalam Dropdown | FE+BE | 23 | 386, 387, 388, 389 |
-| TC-AC-LCS-E2E-105-filter-modal-changelog-field-modified-by-date | Filter Modal Changelog: Field, Modified By, Rentang Date, dan Satu Hari | FE+BE | 27 | 390, 391, 392, 393, 394 |
-| TC-AC-LCS-E2E-106-filter-modal-changelog-kombinasi-clear-dan-tutup | Filter Modal Changelog: Kombinasi AND, Tanpa Hasil, Clear Field, dan Tutup Tanpa Apply | FE+BE | 24 | 395, 396, 397, 398 |
-| TC-AC-LCS-E2E-107-sort-modal-changelog-default-date-field-action | Sort Modal Changelog: Urutan Default, Siklus Tiga Klik Date, Field, dan Action | FE+BE | 23 | 399, 400, 401, 402 |
-| TC-AC-LCS-E2E-108-sort-modal-changelog-nilai-modified-by-dan-perpindahan | Sort Modal Changelog: Old Value, New Value, Modified By, dan Perpindahan Kolom Sort | FE+BE | 23 | 403, 404, 405, 406 |
+| TC-AC-LCS-E2E-104-filter-modal-changelog-screening-dan-opsi | Filter Panel Modal Changelog: Screening, Opsi Dropdown Field dan Modified By, serta Search dalam Dropdown | FE+BE | 24 | 386, 387, 388, 389 |
+| TC-AC-LCS-E2E-105-filter-modal-changelog-field-modified-by-date | Filter Modal Changelog: Field, Modified By, Rentang Date, dan Satu Hari | FE+BE | 28 | 390, 391, 392, 393, 394 |
+| TC-AC-LCS-E2E-106-filter-modal-changelog-kombinasi-clear-dan-tutup | Filter Modal Changelog: Kombinasi AND, Tanpa Hasil, Clear Field, dan Tutup Tanpa Apply | FE+BE | 25 | 395, 396, 397, 398 |
+| TC-AC-LCS-E2E-107-sort-modal-changelog-default-date-field-action | Sort Modal Changelog: Urutan Default, Siklus Tiga Klik Date, Field, dan Action | FE+BE | 24 | 399, 400, 401, 402 |
+| TC-AC-LCS-E2E-108-sort-modal-changelog-nilai-modified-by-dan-perpindahan | Sort Modal Changelog: Old Value, New Value, Modified By, dan Perpindahan Kolom Sort | FE+BE | 24 | 403, 404, 405, 406 |
 | TC-AC-LCS-E2E-109-column-visibility-modal-changelog | Column Visibility Modal Changelog: Screening Overlay, Perubahan Langsung, dan Guard Kolom Terakhir | FE+BE | 26 | 407, 408, 409 |
 | TC-AC-LCS-E2E-110-setup-column-modal-changelog | Setup Column Modal Changelog: Popup, Preview, Save, Tutup, Reset to Default, dan Cache per Tab | FE+BE | 42 | 410, 411, 412, 413, 414 |
-| TC-AC-LCS-E2E-111-pagination-modal-changelog-default-dan-navigasi | Pagination Modal Changelog: Ukuran Halaman Default, Navigasi, dan Penggantian Page Size | FE+BE | 27 | 432, 433, 434 |
-| TC-AC-LCS-E2E-112-pagination-modal-changelog-reset-halaman-dan-kombinasi | Pagination Modal Changelog: Reset Halaman oleh Search dan Filter, Sort, dan Kombinasi Kontrol | FE+BE | 25 | 435, 436, 437 |
+| TC-AC-LCS-E2E-111-pagination-modal-changelog-default-dan-navigasi | Pagination Modal Changelog: Ukuran Halaman Default, Navigasi, dan Penggantian Page Size | FE+BE | 28 | 432, 433, 434 |
+| TC-AC-LCS-E2E-112-pagination-modal-changelog-reset-halaman-dan-kombinasi | Pagination Modal Changelog: Reset Halaman oleh Search dan Filter, Sort, dan Kombinasi Kontrol | FE+BE | 26 | 435, 436, 437 |
 | TC-AC-LCS-E2E-113-download-changelog-screening-dan-csv-trial-free-license | Download Changelog: Screening Overlay dan CSV Tab Trial Settings, Free Plan Settings, dan License Timing | FE+BE | 16 | 415, 416, 417, 418 |
 | TC-AC-LCS-E2E-114-download-changelog-csv-client-lifecycle-recycle-approval-limits | Download Changelog CSV Tab Client Lifecycle, Recycle Bin, Approval Settings, dan System Limits | FE+BE | 8 | 419, 420, 421, 422 |
-| TC-AC-LCS-E2E-115-download-changelog-xlsx-dan-mengikuti-search-dan-kolom-visible | Download Changelog XLSX dan Download Mengikuti Search serta Kolom Visible | FE+BE | 19 | 423, 424 |
+| TC-AC-LCS-E2E-115-download-changelog-xlsx-dan-mengikuti-search-dan-kolom-visible | Download Changelog XLSX dan Download Mengikuti Search serta Kolom Visible | FE+BE | 21 | 423, 424 |
 | TC-AC-LCS-E2E-116-download-changelog-di-atas-5000-baris | Download Changelog di Atas 5.000 Baris: Loading Screen lalu Langsung Terunduh | FE+BE | 10 | 684 |
 | TC-AC-LCS-E2E-117-resilience-download-gagal-trial-sampai-client-lifecycle | Resilience Download Changelog Gagal: Toast Error Tab Trial Settings, Free Plan Settings, License Timing, dan Client Lifecycle | FE+BE | 10 | 425, 426, 427, 428 |
 | TC-AC-LCS-E2E-118-resilience-download-gagal-recycle-approval-limits | Resilience Download Changelog Gagal: Toast Error Tab Recycle Bin, Approval Settings, dan System Limits | FE+BE | 10 | 429, 430, 431 |
@@ -134,14 +134,14 @@ Tidak ada (0). Permintaan langsung ke server (kelas a, spec 168–183) tetap dit
 | TC-AC-LCS-E2E-120-changelog-multi-field-trial-dan-free | Isi Entri Changelog: Save Enam Field Trial Settings dan Satu Field Free Plan Settings | FE+BE | 34 | 466, 467 |
 | TC-AC-LCS-E2E-121-changelog-multi-field-license-recycle-approval | Isi Entri Changelog: Save Tiga Field License Timing, Satu Field Recycle Bin, dan Satu Field Approval Settings | FE+BE | 30 | 468, 470, 471 |
 | TC-AC-LCS-E2E-122-changelog-multi-field-system-limits-dan-parsial-trial | Isi Entri Changelog: Save Enam Field System Limits dan Dua dari Enam Field Trial Settings | FE+BE | 35 | 472, 473 |
-| TC-AC-LCS-E2E-123-changelog-parsial-berulang-dan-modified-by | Isi Entri Changelog: Save Parsial Client Lifecycle, Save Berulang pada Field Sama, dan Format Modified By | FE+BE | 34 | 474, 475, 476 |
+| TC-AC-LCS-E2E-123-changelog-parsial-berulang-dan-modified-by | Isi Entri Changelog: Save Parsial Client Lifecycle, Save Berulang pada Field Sama, dan Format Modified By | FE+BE | 38 | 474, 475, 476 |
 | TC-AC-LCS-E2E-124-changelog-isi-entri-trial-field-1-sampai-4 | Isi Entri Changelog per Field Tab Trial Settings: Max Trial Duration, Max Trial Asset Quota, Concurrent User Quota, dan First Notification | FE+BE | 13 | 439, 440, 441, 442 |
-| TC-AC-LCS-E2E-125-changelog-isi-entri-second-notification-free-dan-switch | Isi Entri Changelog: Second Notification, Free Plan Duration, dan Switch Require Approval | FE+BE | 23 | 443, 444, 465 |
-| TC-AC-LCS-E2E-126-changelog-isi-entri-license-timing | Isi Entri Changelog per Field Tab License Timing | FE+BE | 26 | 445, 446, 447 |
-| TC-AC-LCS-E2E-127-changelog-isi-entri-client-lifecycle-notify-sampai-grace | Isi Entri Changelog per Field Tab Client Lifecycle: Notify Plan Owner sampai Final Reminder | FE+BE | 35 | 448, 449, 450, 451 |
-| TC-AC-LCS-E2E-128-changelog-isi-entri-client-lifecycle-grace-sampai-purge-urgent | Isi Entri Changelog per Field Tab Client Lifecycle: Grace Period Duration sampai Purge Urgent Warning Email | FE+BE | 35 | 452, 453, 454, 455 |
-| TC-AC-LCS-E2E-129-changelog-isi-entri-post-purge-recycle-approval | Isi Entri Changelog: Post-Purge Retention, Permanently Delete Recycle Bin, dan Approval Timeout | FE+BE | 26 | 456, 457, 458 |
-| TC-AC-LCS-E2E-130-changelog-isi-entri-system-limits-bulk-sampai-hierarchy | Isi Entri Changelog per Field Tab System Limits: Bulk Transaction Row Limit sampai Hierarchy Depth Limit | FE+BE | 35 | 459, 460, 461, 462 |
+| TC-AC-LCS-E2E-125-changelog-isi-entri-second-notification-free-dan-switch | Isi Entri Changelog: Second Notification, Free Plan Duration, dan Switch Require Approval | FE+BE | 26 | 443, 444, 465 |
+| TC-AC-LCS-E2E-126-changelog-isi-entri-license-timing | Isi Entri Changelog per Field Tab License Timing | FE+BE | 29 | 445, 446, 447 |
+| TC-AC-LCS-E2E-127-changelog-isi-entri-client-lifecycle-notify-sampai-grace | Isi Entri Changelog per Field Tab Client Lifecycle: Notify Plan Owner sampai Final Reminder | FE+BE | 39 | 448, 449, 450, 451 |
+| TC-AC-LCS-E2E-128-changelog-isi-entri-client-lifecycle-grace-sampai-purge-urgent | Isi Entri Changelog per Field Tab Client Lifecycle: Grace Period Duration sampai Purge Urgent Warning Email | FE+BE | 39 | 452, 453, 454, 455 |
+| TC-AC-LCS-E2E-129-changelog-isi-entri-post-purge-recycle-approval | Isi Entri Changelog: Post-Purge Retention, Permanently Delete Recycle Bin, dan Approval Timeout | FE+BE | 29 | 456, 457, 458 |
+| TC-AC-LCS-E2E-130-changelog-isi-entri-system-limits-bulk-sampai-hierarchy | Isi Entri Changelog per Field Tab System Limits: Bulk Transaction Row Limit sampai Hierarchy Depth Limit | FE+BE | 39 | 459, 460, 461, 462 |
 | TC-AC-LCS-E2E-131-changelog-isi-entri-master-data-dan-max-visible-columns | Isi Entri Changelog: Master Data Count Limit dan Max Visible Columns | FE+BE | 17 | 463, 464 |
 | TC-AC-LCS-E2E-132-log-save-trial-free-license | Pencatatan Log: Save Tab Trial Settings, Free Plan Settings, dan License Timing Menulis Entri di System Log dan Activity Log | FE+BE | 31 | 478, 479, 480 |
 | TC-AC-LCS-E2E-133-log-save-lifecycle-recycle-approval-limits | Pencatatan Log: Save Tab Client Lifecycle, Recycle Bin, Approval Settings, dan System Limits Menulis Entri di System Log dan Activity Log | FE+BE | 43 | 481, 482, 483, 484 |
@@ -151,29 +151,29 @@ Tidak ada (0). Permintaan langsung ke server (kelas a, spec 168–183) tetap dit
 | TC-AC-LCS-E2E-137-absence-changelog-penolakan-read-only | Absence Log: Penolakan Server Read Only pada Save Setiap Tab Tidak Menambah Entri Changelog | FE+BE | 41 | 586, 588, 590, 592, 594, 596, 598 |
 | TC-AC-LCS-E2E-138-absence-changelog-penolakan-rentang-trial-free-license | Absence Log: Penolakan Server atas Nilai di Atas dan di Bawah Rentang Tab Trial, Free Plan, dan License Timing Tidak Menambah Entri Changelog | FE+BE | 32 | 610, 611, 614, 615, 618, 619 |
 | TC-AC-LCS-E2E-139-absence-changelog-penolakan-rentang-lifecycle-recycle-approval-limits | Absence Log: Penolakan Server atas Nilai di Atas dan di Bawah Rentang Tab Client Lifecycle, Recycle Bin, Approval Settings, dan System Limits Tidak Menambah Entri Changelog | FE+BE | 43 | 622, 623, 626, 627, 630, 631, 634, 635 |
-| TC-AC-LCS-E2E-140-absence-log-reset-default-dan-penulisan-log-gagal | Absence Log: Reset to Default Saat Seluruh Field Default dan Kegagalan Penulisan Log Tidak Menulis Entri | FE+BE | 21 | 477, 686 |
+| TC-AC-LCS-E2E-140-absence-log-reset-default-dan-penulisan-log-gagal | Absence Log: Reset to Default Saat Seluruh Field Default dan Kegagalan Penulisan Log Tidak Menulis Entri | FE+BE | 22 | 477, 686 |
 | TC-AC-LCS-E2E-141-konsumen-free-plan-duration | Konsumen Free Plan Duration: Perubahan Memengaruhi Subscription Free Baru dan Tidak Mengubah yang Sudah Ada | FE+BE | 8 | 498 |
-| TC-AC-LCS-E2E-142-konsumen-trial-ceiling-form-activate-trial | Konsumen Trial: Ceiling Max Trial Duration, Asset Quota, dan Concurrent User Quota pada Form Activate Trial | FE+BE | 41 | 499, 500, 501 |
-| TC-AC-LCS-E2E-143-konsumen-trial-require-approval | Konsumen Trial: Switch Require Approval for Trial Activation pada Aktivasi Trial Distributor dan Principal | FE+BE | 29 | 502, 503, 504, 505 |
+| TC-AC-LCS-E2E-142-konsumen-trial-ceiling-form-activate-trial | Konsumen Trial: Ceiling Max Trial Duration, Asset Quota, dan Concurrent User Quota pada Form Activate Trial | FE+BE | 56 | 499, 500, 501 |
+| TC-AC-LCS-E2E-143-konsumen-trial-require-approval | Konsumen Trial: Switch Require Approval for Trial Activation pada Aktivasi Trial Distributor dan Principal | FE+BE | 35 | 502, 503, 504, 505 |
 | TC-AC-LCS-E2E-144-konsumen-trial-jadwal-pengingat | Konsumen Trial: Perubahan First Notification dan Second Notification Mengubah Jadwal Pengingat | FE+BE | 22 | 506, 507 |
-| TC-AC-LCS-E2E-145-approval-adopter-timeout-dan-recalculation | Approval Settings Konsumen: Timeout Auto-Cancel, Recalculation Batas, dan Warning H-24 pada Device Allocation | FE+BE | 37 | 508, 509, 510, 511 |
-| TC-AC-LCS-E2E-146-approval-adopter-warning-ulang-dan-status-final | Approval Settings Konsumen: Pengiriman Ulang Warning, Recalculation Berurutan, Reset, Progress Approver AND, dan Pengajuan Trial Activation | FE+BE | 44 | 512, 513, 514, 515, 516, 517 |
-| TC-AC-LCS-E2E-147-approval-adopter-race-pembatalan-dan-job | Approval Settings Konsumen: Pembatalan Manual Bersamaan dengan Job Timeout | FE+BE | 9 | 518 |
+| TC-AC-LCS-E2E-145-approval-adopter-timeout-dan-recalculation | Approval Settings Konsumen: Timeout Auto-Cancel, Recalculation Batas, dan Warning H-24 pada Device Allocation | FE+BE | 47 | 508, 509, 510, 511 |
+| TC-AC-LCS-E2E-146-approval-adopter-warning-ulang-dan-status-final | Approval Settings Konsumen: Pengiriman Ulang Warning, Recalculation Berurutan, Reset, Progress Approver AND, dan Pengajuan Trial Activation | FE+BE | 55 | 512, 513, 514, 515, 516, 517 |
+| TC-AC-LCS-E2E-147-approval-adopter-race-pembatalan-dan-job | Approval Settings Konsumen: Pembatalan Manual Bersamaan dengan Job Timeout | FE+BE | 11 | 518 |
 | TC-AC-LCS-E2E-148-timer-client-lifecycle-grace-diperpendek | Recalculation Timer Client Lifecycle: Grace Period Duration Diperpendek dan Batas Hari ke-14 dan ke-15 | FE+BE | 39 | 519, 520, 521, 522, 523 |
-| TC-AC-LCS-E2E-149-timer-client-lifecycle-save-reset-dan-job-gagal | Recalculation Timer Client Lifecycle: Save Post-Purge Saja, Reset, Save Berurutan, dan Job Per-Save Gagal | FE+BE | 41 | 524, 525, 526, 527 |
-| TC-AC-LCS-E2E-150-post-purge-retention-company-archive-dan-hard-purge | Post-Purge Retention: Company dalam Archive Tidak Terpengaruh dan Hard Purge Memakai Retention Baru | FE+BE | 19 | 528, 529 |
+| TC-AC-LCS-E2E-149-timer-client-lifecycle-save-reset-dan-job-gagal | Recalculation Timer Client Lifecycle: Save Post-Purge Saja, Reset, Save Berurutan, dan Job Per-Save Gagal | FE+BE | 43 | 524, 525, 526, 527 |
+| TC-AC-LCS-E2E-150-post-purge-retention-company-archive-dan-hard-purge | Post-Purge Retention: Company dalam Archive Tidak Terpengaruh dan Hard Purge Memakai Retention Baru | FE+BE | 20 | 528, 529 |
 | TC-AC-LCS-E2E-151-banner-pengingat-perpanjangan-severity | Banner Pengingat Perpanjangan: First Reminder, Severity pada Second dan Final Reminder Before Event | FE+BE | 31 | 530, 531, 532 |
 | TC-AC-LCS-E2E-152-email-trigger-reminder-dan-grace-period-end | Email Trigger Engine: First Reminder, Second Reminder, Final Reminder, dan Grace Period End | FE+BE | 32 | 533, 534, 535, 536 |
 | TC-AC-LCS-E2E-153-email-trigger-purge-warning-urgent-dan-confirmation | Email Trigger Engine: Purge Warning, Purge Urgent Warning, dan Purge Confirmation | FE+BE | 24 | 537, 538, 539 |
-| TC-AC-LCS-E2E-154-notifikasi-plan-owner-penerima-dan-deduplikasi | Notifikasi Plan Owner dalam Aplikasi: Penerima per Level, Deduplikasi, dan Client Direct | FE+BE | 29 | 540, 541, 542 |
+| TC-AC-LCS-E2E-154-notifikasi-plan-owner-penerima-dan-deduplikasi | Notifikasi Plan Owner dalam Aplikasi: Penerima per Level, Deduplikasi, dan Client Direct | FE+BE | 38 | 540, 541, 542 |
 | TC-AC-LCS-E2E-155-email-engine-kegagalan-layanan-dan-job | Email Trigger Engine: Email Service Gagal dan Kegagalan Cold Storage pada Transisi Grace ke Archive | FE+BE | 24 | 546, 676 |
 | TC-AC-LCS-E2E-156-email-engine-job-terlambat-dan-tahapan-dilewati | Email Trigger Engine: Job Terlambat, Konfigurasi Berubah, Tahapan Sebelum Pembuatan Subscription, dan Eksekusi Terlewat | FE+BE | 25 | 547, 548, 549, 550, 678 |
-| TC-AC-LCS-E2E-157-state-machine-downgrade-dan-notifikasi-kedaluwarsa | Scheduled Downgrade dan Transisi Active ke Expired pada T-0: Pengingat, Notifikasi Kedaluwarsa, Downgrade, dan Daftar Penerima Kosong | FE+BE | 32 | 551, 552, 553, 554, 555 |
-| TC-AC-LCS-E2E-158-state-machine-perpanjangan-renew-dan-downgrade-paralel | State Machine Lifecycle: Perpanjangan Membatalkan Lifecycle, Renew, Downgrade Paralel, dan Tanpa Aksi Renew pada Archive | FE+BE | 33 | 556, 557, 558, 559, 560, 687 |
-| TC-AC-LCS-E2E-159-post-purge-archive-indeks-dan-pencocokan | Post-Purge Archive Matching: Indeks Arsip, Pencocokan Email Client Baru, dan Masa Retensi | FE+BE | 33 | 561, 562, 563, 564, 565 |
+| TC-AC-LCS-E2E-157-state-machine-downgrade-dan-notifikasi-kedaluwarsa | Scheduled Downgrade dan Transisi Active ke Expired pada T-0: Pengingat, Notifikasi Kedaluwarsa, Downgrade, dan Daftar Penerima Kosong | FE+BE | 33 | 551, 552, 553, 554, 555 |
+| TC-AC-LCS-E2E-158-state-machine-perpanjangan-renew-dan-downgrade-paralel | State Machine Lifecycle: Perpanjangan Membatalkan Lifecycle, Renew, Downgrade Paralel, dan Tanpa Aksi Renew pada Archive | FE+BE | 42 | 556, 557, 558, 559, 560, 687 |
+| TC-AC-LCS-E2E-159-post-purge-archive-indeks-dan-pencocokan | Post-Purge Archive Matching: Indeks Arsip, Pencocokan Email Client Baru, dan Masa Retensi | FE+BE | 37 | 561, 562, 563, 564, 565 |
 | TC-AC-LCS-E2E-160-post-purge-archive-notifikasi-dan-visibilitas | Post-Purge Archive Matching: Principal Berizin, Notifikasi Gagal, Visibilitas Penanda, True Hard Delete, dan Principal di Luar Rantai Group | FE+BE | 39 | 566, 567, 568, 569, 681 |
 | TC-AC-LCS-E2E-161-landing-page-subscription-expired-archive | Landing Page Subscription Expired untuk Client yang Login pada Archive Period | FE+BE | 8 | 570 |
-| TC-AC-LCS-E2E-162-jalur-cancel-subscription-archive-notice-dan-purge | Jalur Cancel Subscription: Archive Notice, Pelacak Purge Warning, dan Email Purge Confirmation ke Penerima Tersimpan | FE+BE | 22 | 680, 682, 683 |
+| TC-AC-LCS-E2E-162-jalur-cancel-subscription-archive-notice-dan-purge | Jalur Cancel Subscription: Archive Notice, Pelacak Purge Warning, dan Email Purge Confirmation ke Penerima Tersimpan | FE+BE | 25 | 680, 682, 683 |
 | TC-AC-LCS-E2E-163-recycle-bin-countdown-reset-job-durasi | Countdown Reset Job Recycle Bin: Durasi Diperpendek, Diperpanjang, dan Reset to Default dari Nilai 60 | FE+BE | 24 | 571, 572, 573 |
 | TC-AC-LCS-E2E-164-recycle-bin-countdown-reset-job-ketahanan | Countdown Reset Job Recycle Bin: Reset pada Nilai 30, Respons Save Tanpa Menunggu Job, dan Schema Client Terhapus | FE+BE | 29 | 574, 575, 576 |
 | TC-AC-LCS-E2E-165-konsumen-hierarchy-depth-limit-add-subgroup | Konsumen Hierarchy Depth Limit pada Add Subgroup Settings Group | FE+BE | 29 | 579, 580, 581 |
@@ -220,7 +220,7 @@ Ketiga spec absence hanya memuat butir absence tersebut dan dipertahankan terpis
 
 ## Spec di atas ±35 langkah yang dipertahankan
 
-16 dari 194 spec melewati ±35 langkah menurut hitungan Langkah Uji: 001 (38), 012 (37), 016 (41), 021 (37), 110 (42), 133 (43), 134 (50), 135 (38), 137 (41), 139 (43), 142 (41), 145 (37), 146 (44), 148 (39), 149 (41), 160 (39). Spec 093, 094, 121, 124, dan 166 yang sempat diperkirakan melewati batas ternyata 15, 15, 30, 13, dan 25 langkah. Spec 134 (50 langkah) paling panjang. Alasan di `## Notes` tiap spec seragam: tiap klausa Expected menjadi satu `Verifikasi` (S-01); seluruh blok satu kelas harness dan satu pola (screening landing, nilai default, Guided Tooltip, Role Matrix Read Only, Setup Column Changelog, pencatatan log, absence, atau konsumen lintas modul); dan tiap blok berdiri sendiri (tab, akun, state diseed ulang, atau baseline sendiri) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Khusus spec 110, state konfigurasi kolom Setup Column Changelog menyambung antar blok (hasil Save TC-AC-LCS-411 menjadi precondition TC-AC-LCS-413). Spec 160 mencatat bahwa pemecahan hanya menggandakan pola ganti akun yang sama.
+23 dari 194 spec melewati ±35 langkah menurut hitungan Langkah Uji: 001 (38), 012 (41), 016 (41), 021 (37), 110 (42), 123 (38), 127 (39), 128 (39), 130 (39), 133 (43), 134 (50), 135 (38), 137 (41), 139 (43), 142 (56), 145 (47), 146 (55), 148 (39), 149 (43), 154 (38), 158 (42), 159 (37), 160 (39). Fix pass audit 2026-11-03 menambah langkah penghubung (pemulihan, baseline, Search, catat waktu, anchor) sehingga 123, 127, 128, 130, 142, 154, 158, dan 159 kini melewati batas; masing-masing menulis alasan di `## Notes`. Spec 093, 094, 121, 124, dan 166 yang sempat diperkirakan melewati batas ternyata 15, 15, 30, 13, dan 25 langkah. Spec 134 (50 langkah) paling panjang. Alasan di `## Notes` tiap spec seragam: tiap klausa Expected menjadi satu `Verifikasi` (S-01); seluruh blok satu kelas harness dan satu pola (screening landing, nilai default, Guided Tooltip, Role Matrix Read Only, Setup Column Changelog, pencatatan log, absence, atau konsumen lintas modul); dan tiap blok berdiri sendiri (tab, akun, state diseed ulang, atau baseline sendiri) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Khusus spec 110, state konfigurasi kolom Setup Column Changelog menyambung antar blok (hasil Save TC-AC-LCS-411 menjadi precondition TC-AC-LCS-413). Spec 160 mencatat bahwa pemecahan hanya menggandakan pola ganti akun yang sama.
 
 ## Kebutuhan lingkungan (tim FE)
 

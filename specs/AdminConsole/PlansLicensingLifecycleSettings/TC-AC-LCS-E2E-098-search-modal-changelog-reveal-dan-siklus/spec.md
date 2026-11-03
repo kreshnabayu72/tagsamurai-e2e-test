@@ -19,9 +19,10 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (`Andi Wijaya`), password `Spectra.env.AC_TC_PASSWORD`; login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Plans & Licensing > Lifecycle Settings, tab Trial Settings aktif).
 - Konfigurasi ketujuh tab pada nilai default (Pre-setup 7) dipulihkan lewat Fixture BE di hook `beforeEach` dan `after` suite (kemampuan disediakan tim FE/BE).
+- Kemampuan teknis (disediakan tim FE/BE): Fixture BE untuk menimpa atau mengosongkan riwayat Changelog per tab, idempotent (Lampiran A-15; dinyatakan di `suite.md`).
 - Hook `before` men-seed Dataset L (27 entri Changelog tab Client Lifecycle, Pre-setup 8: entri ke-n pada n May 26 pukul 10:00, Action Edit, Old Value 5n, New Value 5n+3, Modified By berputar John Doe, Sarah Thompson, Budi Santoso) lewat Fixture BE (kemampuan disediakan tim FE/BE; menimpa riwayat tab itu); hook `after` mengembalikan dataset ke keadaan awal.
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini).
-- Data uji mengacu ke fixture `Fixture.plansLicensingLifecycleSettings` (nilai default tiap tab dan dataset Changelog); fixture belum ada dan disediakan tim FE/BE.
+- Data uji mengacu ke `Fixture.lifecycleSettings.<kunci>` (`fixtures/lifecycle-settings.json`: nilai default tiap tab dan dataset Changelog).
 - Konfigurasi Lifecycle Settings bersifat platform-wide dan Changelog bersifat permanen; suite berjalan serial (`parallel: false`).
 - Env var: `AC_TC_PASSWORD` (password Total Control Admin Console, satu nama satu arti).
 
@@ -62,5 +63,6 @@ coverage:
 
 - Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung: tidak ada selain langkah TC; ketiga TC berurutan dalam satu pembukaan modal dan state Search dari TC sebelumnya sudah bersih (input kosong) saat TC berikutnya dimulai (S-09).
+- Pengecualian A-15: total absolut `1–10 of 27` dan `1–3 of 3` diasersi karena riwayat tab Client Lifecycle ditimpa lewat Fixture BE (Dataset L) di hook `before` sebelum modal dibuka; hook `after` mengembalikan dataset Changelog.
 - Temuan untuk QA:
   - Post Condition seluruh TC ("Tidak ada perubahan data") tidak punya langkah observasi dan tidak diasersi.

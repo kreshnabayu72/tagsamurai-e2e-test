@@ -29,7 +29,7 @@ coverage:
 - Permintaan langsung adalah pemicu kondisi yang diasersi tidak tercatat dan bukan objek uji; status respons dan state data diasersi di spec kelas a (`P-5` butir a).
 - Pemulihan: dataset Changelog dikembalikan ke keadaan awal dan ketujuh tab dipulihkan ke nilai default oleh hook `after` suite; permintaan yang ditolak tidak mengubah data.
 - Suite berjalan serial (`parallel: false`) karena spec ini memakai state global yang disebut pada butir pemulihan.
-- Fixture `fixtures/lifecycleSettings.json` belum ada dan disediakan tim FE; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` setelah tersedia.
+- Nilai Pre-setup dan state Changelog dirujuk lewat `Fixture.lifecycleSettings.<kunci>` dari `fixtures/lifecycle-settings.json`.
 
 ## Test Steps
 
@@ -103,7 +103,7 @@ coverage:
 ## Notes
 
 - `P-5` butir a: permintaan langsung ke server hanya memicu kondisi yang diasersi tidak tercatat dan bukan objek uji; tiap TC memakai tab dan baseline sendiri (S-05).
-- Pembagian TC lintas spec: butir Expected status `422` dan nilai field tetap diasersi di spec kelas a; TC 622 dan 623 ada di spec 176, TC 626 dan 627 di spec 178, TC 630 dan 631 di spec 179, serta TC 634 dan 635 di spec 180. Spec ini hanya memuat butir "Tidak ada entri Changelog baru" (S-05).
+- Pembagian TC lintas spec: butir Expected status `422` dan nilai field tetap diasersi di spec kelas a; TC-AC-LCS-622 dan TC-AC-LCS-623 memuat aksi di spec TC-AC-LCS-E2E-176, TC-AC-LCS-626 dan TC-AC-LCS-627 di spec TC-AC-LCS-E2E-178, TC-AC-LCS-630 dan TC-AC-LCS-631 di spec TC-AC-LCS-E2E-179, serta TC-AC-LCS-634 dan TC-AC-LCS-635 di spec TC-AC-LCS-E2E-180. Spec ini hanya memuat butir "Tidak ada entri Changelog baru" (S-05).
 - Langkah penghubung tanpa `Verifikasi`: "Klik tab" (precondition TC: user berada di tab terkait) dan "Tutup modal Changelog" antar TC; dua TC pada tab yang sama berurutan memakai satu pembukaan tab (S-03, S-09). Anchor positif asersi absence adalah `Verifikasi` entri seed tampil pada surface yang sama (bagian 8b butir 2).
 - Temuan untuk QA: Dataset kecil per tab (Pre-setup 9) tidak menyebut Field entri seed; anchor memakai Date `12 May 26` yang tercantum di Pre-setup.
 - Temuan untuk QA: Post Condition TC "Tidak ada perubahan data" tidak diasersi (S-01).

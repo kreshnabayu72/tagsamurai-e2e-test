@@ -37,46 +37,50 @@ coverage:
 3. Buat Client baru dengan email salah satu pengguna PT Lama Sejahtera
 4. Verifikasi pembuatan Client baru berhasil (email sudah dilepas dari klaim unik)
 5. Verifikasi indeks arsip (dibaca lewat Fixture BE) memuat nama perusahaan, tanggal pembersihan, dan batas kedaluwarsa retensi untuk kedua email
+6. Hapus Client baru hasil langkah 3 lewat Fixture BE
 
 ### TC-AC-LCS-562: Email Client baru cocok dengan indeks arsip dalam retensi, Client dibuat normal, notifikasi view-only ke Principal berizin, penanda pada Client
 
-6. Atur lewat Fixture BE: Company PT Lama Sejahtera sudah di-Hard Purge 100 hari lalu (retensi 730 hari) dengan email `ops@ptlamasejahtera.example` pada indeks arsip; Principal berizin Update pada role "Manage archived client" tersedia pada Group tempat Client baru PT Baru Mandiri ditempatkan (atau salah satu ancestor-nya)
-7. Buat Client baru PT Baru Mandiri dengan email User `ops@ptlamasejahtera.example`
-8. Verifikasi Client PT Baru Mandiri berhasil dibuat tanpa gangguan
-9. Ganti akun ke Principal berizin lalu buka Overlay Notifikasi
-10. Verifikasi satu notifikasi dalam aplikasi view-only memuat nama Client baru, email yang cocok, nama perusahaan lama, dan tanggal pembersihannya
-11. Klik notifikasi tersebut
-12. Verifikasi Detail Client PT Baru Mandiri terbuka
-13. Buka Detail Client PT Baru Mandiri sebagai Principal berizin
-14. Verifikasi penanda match internal tampil pada Client
+7. Atur lewat Fixture BE: Company PT Lama Sejahtera sudah di-Hard Purge 100 hari lalu (retensi 730 hari) dengan email `ops@ptlamasejahtera.example` pada indeks arsip; Principal berizin Update pada role "Manage archived client" tersedia pada Group tempat Client baru PT Baru Mandiri ditempatkan (atau salah satu ancestor-nya)
+8. Catat baseline jumlah notifikasi Principal berizin
+9. Buat Client baru PT Baru Mandiri dengan email User `ops@ptlamasejahtera.example`
+10. Verifikasi Client PT Baru Mandiri berhasil dibuat tanpa gangguan
+11. Ganti akun ke Principal berizin lalu buka Overlay Notifikasi
+12. Verifikasi jumlah notifikasi Principal berizin bertambah tepat satu dari baseline
+13. Verifikasi notifikasi baru dalam aplikasi view-only memuat nama Client baru, email yang cocok, nama perusahaan lama, dan tanggal pembersihannya
+14. Klik notifikasi tersebut
+15. Verifikasi Detail Client PT Baru Mandiri terbuka
+16. Verifikasi penanda match internal tampil pada Client
 
 ### TC-AC-LCS-563: Satu email cocok dengan lebih dari satu baris indeks, satu notifikasi memuat semua baris yang cocok
 
-15. Atur lewat Fixture BE; hapus Client PT Baru Mandiri hasil TC sebelumnya (data milik spec) lewat Fixture BE: email `ops@ptlamasejahtera.example` pada dua baris indeks arsip dari dua company yang pernah di-purge (PT Lama Sejahtera dan PT Lama Makmur) dengan retensi masih berlaku
-16. Ganti akun ke Total Control
-17. Buat Client baru PT Baru Mandiri dengan email User `ops@ptlamasejahtera.example`
-18. Ganti akun ke Principal berizin lalu buka Overlay Notifikasi
-19. Verifikasi satu notifikasi memuat nama perusahaan lama dan tanggal pembersihan dari kedua baris indeks yang cocok
+17. Atur lewat Fixture BE; hapus Client PT Baru Mandiri hasil TC sebelumnya (data milik spec) lewat Fixture BE: email `ops@ptlamasejahtera.example` pada dua baris indeks arsip dari dua company yang pernah di-purge (PT Lama Sejahtera dan PT Lama Makmur) dengan retensi masih berlaku
+18. Ganti akun ke Total Control
+19. Catat baseline jumlah notifikasi Principal berizin
+20. Buat Client baru PT Baru Mandiri dengan email User `ops@ptlamasejahtera.example`
+21. Ganti akun ke Principal berizin lalu buka Overlay Notifikasi
+22. Verifikasi jumlah notifikasi Principal berizin bertambah tepat satu dari baseline
+23. Verifikasi notifikasi baru memuat nama perusahaan lama dan tanggal pembersihan dari kedua baris indeks yang cocok
 
 ### TC-AC-LCS-564: Kecocokan indeks arsip yang masa retensinya sudah lewat tidak menghasilkan notifikasi maupun penanda
 
-20. Atur lewat Fixture BE; hapus Client PT Baru Mandiri hasil TC sebelumnya (data milik spec) lewat Fixture BE: Company PT Lama Sejahtera sudah di-Hard Purge 800 hari lalu (retensi 730 hari sudah lewat); catat baseline jumlah notifikasi Principal berizin
-21. Ganti akun ke Total Control
-22. Buat Client baru dengan email User milik PT Lama Sejahtera
-23. Verifikasi Client dibuat normal
-24. Ganti akun ke Principal berizin lalu buka Overlay Notifikasi
-25. Buka Detail Client yang baru dibuat sebagai Principal berizin
-26. Verifikasi tidak ada notifikasi baru (selisih terhadap baseline 0) dan tidak ada penanda match
+24. Atur lewat Fixture BE; hapus Client PT Baru Mandiri hasil TC sebelumnya (data milik spec) lewat Fixture BE: Company PT Lama Sejahtera sudah di-Hard Purge 800 hari lalu (retensi 730 hari sudah lewat); catat baseline jumlah notifikasi Principal berizin
+25. Ganti akun ke Total Control
+26. Buat Client baru dengan email User milik PT Lama Sejahtera
+27. Verifikasi Client dibuat normal
+28. Ganti akun ke Principal berizin lalu buka Overlay Notifikasi
+29. Buka Detail Client yang baru dibuat sebagai Principal berizin
+30. Verifikasi tidak ada notifikasi baru (selisih terhadap baseline 0) dan tidak ada penanda match
 
 ### TC-AC-LCS-565: Email Client baru berbeda dari data riwayat, tidak ada pencocokan otomatis
 
-27. Atur lewat Fixture BE; hapus Client PT Baru Mandiri hasil TC sebelumnya (data milik spec) lewat Fixture BE: Company PT Lama Sejahtera sudah di-Hard Purge 100 hari lalu; catat baseline jumlah notifikasi Principal berizin
-28. Ganti akun ke Total Control
-29. Buat Client baru dengan email User yang tidak ada pada indeks arsip
-30. Verifikasi Client dibuat normal
-31. Ganti akun ke Principal berizin lalu buka Overlay Notifikasi
-32. Buka Detail Client yang baru dibuat sebagai Principal berizin
-33. Verifikasi tidak ada notifikasi baru (selisih terhadap baseline 0) dan tidak ada penanda match
+31. Atur lewat Fixture BE; hapus Client PT Baru Mandiri hasil TC sebelumnya (data milik spec) lewat Fixture BE: Company PT Lama Sejahtera sudah di-Hard Purge 100 hari lalu; catat baseline jumlah notifikasi Principal berizin
+32. Ganti akun ke Total Control
+33. Buat Client baru dengan email User yang tidak ada pada indeks arsip
+34. Verifikasi Client dibuat normal
+35. Ganti akun ke Principal berizin lalu buka Overlay Notifikasi
+36. Buka Detail Client yang baru dibuat sebagai Principal berizin
+37. Verifikasi tidak ada notifikasi baru (selisih terhadap baseline 0) dan tidak ada penanda match
 
 ## Notes
 
@@ -86,8 +90,10 @@ coverage:
 - TC 564 dan 565 memuat satu `Verifikasi` untuk dua klausa absence (tidak ada notifikasi dan tidak ada penanda match) yang disebut utuh dalam satu butir Expected TC (daftar elemen yang sama-sama tidak ada, S-01); anchor positifnya `Verifikasi` Client dibuat normal dan Overlay Notifikasi yang dibuka.
 - Temuan untuk QA:
   - TC 562 Expected b menyebut "klik membuka Detail Client baru" tanpa langkah klik di kolom Langkah Uji; spec menambah satu aksi klik notifikasi (langkah penghubung) sebagai pemicu asersi tersebut.
+  - TC 562 langkah 4 membuka Detail Client PT Baru Mandiri sebagai Principal berizin, sedangkan klik notifikasi (langkah 14) sudah membuka Detail Client yang sama; spec tidak mengulang pembukaan Detail dan memverifikasi penanda match pada Detail yang terbuka dari klik notifikasi (langkah 16).
   - TC 565 Expected b menyebut "tidak ada penanda match" tanpa langkah yang membuka Detail Client; spec membuka Detail Client sebagai langkah penghubung seperti TC 564.
   - Form pembuatan Client (menu, field wajib selain nama dan email) tidak dirinci di TC; spec menulis satu langkah ringkas dan field wajib lain disediakan tim FE.
-  - Akun Principal berizin kini tertulis di Pre-setup 15 (usulan pola Pre-setup 6; keberadaan akun perlu dikonfirmasi tim FE); env password tidak terdaftar sehingga disediakan tim FE.
-  - Post Condition seluruh TC ("Tidak ada perubahan data") tanpa langkah observasi tidak diasersi.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): langkah 1-2, 6, 9, 13, 15-16, 18, 20-21, 24-25, 27-28, 31-32.
+  - Akun Principal berizin tertulis di Pre-setup 15 (usulan pola Pre-setup 6; keberadaan akun perlu dikonfirmasi tim FE); env password tidak terdaftar sehingga disediakan tim FE.
+  - Post Condition TC 561 (Client baru hasil langkah 2 dihapus sebagai cleanup) dilaksanakan di langkah 6; Post Condition TC lain ("Tidak ada perubahan data") tanpa langkah observasi tidak diasersi.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, baseline notifikasi, klik notifikasi, dan ganti akun): langkah 1-2, 6-8, 11, 14, 17-19, 21, 24-25, 28-29, 31-32, 35-36. Baseline notifikasi Principal berizin (langkah 8, 19) dicatat sebelum pemicu agar `Verifikasi` jumlah notifikasi memakai selisih satu (S-12).
+- Alasan di atas sekitar 35 langkah: kelima blok TC (561 sampai 565) satu kelas harness d tentang pencocokan arsip post-purge, memakai Detail Client dan Overlay Notifikasi yang sama, dan tiap blok memakai data arsip dan baseline notifikasi sendiri yang diatur lewat Fixture BE dan dipulihkan langkah penghubung; memecahnya hanya mengulang pengaturan Fixture BE dan ganti akun yang sama, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.

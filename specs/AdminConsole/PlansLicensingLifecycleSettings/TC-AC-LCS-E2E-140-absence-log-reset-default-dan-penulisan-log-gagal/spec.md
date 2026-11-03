@@ -23,7 +23,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): Fixture BE untuk memaksa penulisan log gagal (pemicu, bukan objek uji, `P-5` butir a), mengosongkan Changelog satu tab, menyeed satu entri Changelog, dan memulihkan ketujuh tab; kemampuan membaca entri teratas System Log aktor dan Activity Log Admin Console sebagai baseline.
 - Pemulihan: penulisan log dikembalikan normal di langkah akhir TC-AC-LCS-477 dan di hook `after` suite; ketujuh tab dipulihkan ke nilai default dan dataset Changelog ke keadaan awal oleh hook `after` suite.
 - Suite berjalan serial (`parallel: false`) karena spec ini memakai state global yang disebut pada butir pemulihan.
-- Fixture `fixtures/lifecycleSettings.json` belum ada dan disediakan tim FE; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` setelah tersedia.
+- Nilai Pre-setup dan state Changelog dirujuk lewat `Fixture.lifecycleSettings.<kunci>` dari `fixtures/lifecycle-settings.json`.
 
 ## Test Steps
 
@@ -31,33 +31,34 @@ coverage:
 
 1. Klik tab `Free Plan Settings`
 2. Ubah Free Plan Duration dari `365` menjadi `400`
-3. Klik `[Save]`
-4. Verifikasi toast error "Error, failed to save free plan settings." tampil
-5. Verifikasi `[Save]` tetap enabled
-6. Muat ulang halaman Lifecycle Settings
-7. Klik tab `Free Plan Settings`
-8. Verifikasi Free Plan Duration tetap `365`
-9. Klik icon Changelog di pojok kanan atas panel tab `Free Plan Settings`
-10. Verifikasi Changelog menampilkan empty state (tidak ada entri)
-11. Pulihkan penulisan log ke keadaan normal lewat Fixture BE
+3. Paksa penulisan log gagal lewat Fixture BE
+4. Klik `[Save]`
+5. Verifikasi toast error "Error, failed to save free plan settings." tampil
+6. Verifikasi `[Save]` tetap enabled
+7. Muat ulang halaman Lifecycle Settings
+8. Klik tab `Free Plan Settings`
+9. Verifikasi Free Plan Duration tetap `365`
+10. Klik icon Changelog di pojok kanan atas panel tab `Free Plan Settings`
+11. Verifikasi Changelog menampilkan empty state (tidak ada entri)
+12. Pulihkan penulisan log ke keadaan normal lewat Fixture BE
 
 ### TC-AC-LCS-686: Reset to Default tab Trial Settings saat seluruh field sudah bernilai default tidak menulis entri pada tiga surface log
 
-12. Atur lewat Fixture BE: tab `Trial Settings` tersimpan dengan nilai default (Max Trial Duration `30`, Max Trial Asset Quota `50`, Max Trial Concurrent User Quota `10`, Require Approval for Trial Activation `OFF`, First Notification `7`, Second Notification `1`) dan Changelog tab `Trial Settings` berisi tepat 1 entri (Edit Max Trial Duration 31 menjadi 30), lalu muat ulang halaman Lifecycle Settings
-13. Catat entri teratas System Log `Andi Wijaya` dan entri teratas Activity Log Admin Console sebagai baseline
-14. Klik `[Reset to Default]`
-15. Verifikasi toast sukses "Success, trial settings have been reset to default." tampil
-16. Klik icon Changelog di pojok kanan atas panel tab `Trial Settings`
-17. Verifikasi Changelog tetap `1–1 of 1` dan tidak ada baris baru
-18. Buka Settings > User > Detail `Andi Wijaya` > Tab System Log
-19. Verifikasi entri teratas System Log sama dengan baseline (tidak ada entri Reset karena tidak ada field yang berubah)
-20. Buka Activity Log (Admin Console)
-21. Verifikasi entri teratas Activity Log sama dengan baseline (tidak ada entri Reset karena tidak ada field yang berubah)
+13. Atur lewat Fixture BE: tab `Trial Settings` tersimpan dengan nilai default (Max Trial Duration `30`, Max Trial Asset Quota `50`, Max Trial Concurrent User Quota `10`, Require Approval for Trial Activation `OFF`, First Notification `7`, Second Notification `1`) dan Changelog tab `Trial Settings` berisi tepat 1 entri (Edit Max Trial Duration 31 menjadi 30), lalu muat ulang halaman Lifecycle Settings
+14. Catat entri teratas System Log `Andi Wijaya` dan entri teratas Activity Log Admin Console sebagai baseline
+15. Klik `[Reset to Default]`
+16. Verifikasi toast sukses "Success, trial settings have been reset to default." tampil
+17. Klik icon Changelog di pojok kanan atas panel tab `Trial Settings`
+18. Verifikasi Changelog tetap `1–1 of 1` dan tidak ada baris baru
+19. Buka Settings > User > Detail `Andi Wijaya` > Tab System Log
+20. Verifikasi entri teratas System Log sama dengan baseline (tidak ada entri Reset karena tidak ada field yang berubah)
+21. Buka Activity Log (Admin Console)
+22. Verifikasi entri teratas Activity Log sama dengan baseline (tidak ada entri Reset karena tidak ada field yang berubah)
 
 ## Notes
 
 - `P-5` butir a: kegagalan penulisan log yang dipaksa lewat Fixture BE pada TC-AC-LCS-477 hanya membentuk kondisi yang diasersi tidak tercatat dan bukan objek uji; tiap TC memakai state dan baseline sendiri (S-05).
 - Anchor positif asersi absence: toast error pada TC-AC-LCS-477 dan toast sukses Reset pada TC-AC-LCS-686 (respons server sudah diproses), ditambah nilai field dan halaman Changelog yang tampil (bagian 8b butir 2).
-- Langkah penghubung tanpa `Verifikasi`: "Klik tab" (precondition TC), "Muat ulang halaman", "Catat entri teratas ... sebagai baseline" (S-12), dan "Pulihkan penulisan log" (S-03, S-09).
+- Langkah penghubung tanpa `Verifikasi`: "Klik tab" (precondition TC), langkah 3 "Paksa penulisan log gagal lewat Fixture BE" (membentuk Precondition TC-AC-LCS-477 sebelum Save, S-04), "Muat ulang halaman", "Catat entri teratas ... sebagai baseline" (S-12), dan langkah 12 "Pulihkan penulisan log" (S-03, S-09).
 - Temuan untuk QA: Post Condition TC-AC-LCS-477 menyebut "Tidak ada entri log pada ketiga surface", tetapi langkah TC hanya mengamati Changelog; System Log dan Activity Log tidak diasersi karena TC tidak memberi langkah observasinya (S-01, S-05).
-- Temuan untuk QA: Expected TC-AC-LCS-686 butir c dan d ("entri teratas tidak berubah") bergantung pada entri teratas yang tidak berubah oleh aktivitas lain; spec mencatat entri teratas sebagai baseline sebelum aksi. Mekanisme memaksa penulisan log gagal tidak didefinisikan di TC, PRD, atau LLD (S-13).
+- Temuan untuk QA: Expected TC-AC-LCS-686 butir c dan d ("entri teratas tidak berubah") bergantung pada entri teratas yang tidak berubah oleh aktivitas lain; spec mencatat entri teratas sebagai baseline sebelum aksi. Mekanisme memaksa penulisan log gagal tidak didefinisikan di TC, PRD, atau LLD sehingga langkah 3 memakai kemampuan Fixture BE yang disediakan tim FE/BE (S-13).

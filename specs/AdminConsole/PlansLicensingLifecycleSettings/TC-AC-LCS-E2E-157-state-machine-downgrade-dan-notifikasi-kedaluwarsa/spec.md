@@ -69,12 +69,13 @@ coverage:
 ### TC-AC-LCS-555: Notifikasi kedaluwarsa dengan daftar penerima kosong ditandai tanpa penerima tanpa retry
 
 26. Atur lewat Fixture BE: tidak ada pengguna berizin Manage allocation di seluruh level rantai kepemilikan client; Subscription Paid PT Maju Jaya mencapai tanggal berakhir
-27. Picu eksekusi job lifecycle lewat Fixture BE
-28. Picu eksekusi job lifecycle sekali lagi lewat Fixture BE
-29. Ganti akun ke Total Control lalu buka Allocation > Client Subscription > List Subscriptions
-30. Verifikasi status subscription PT Maju Jaya `Expired`
-31. Verifikasi tidak ada notifikasi terkirim (jumlah notifikasi pada log notifikasi Fixture BE tidak bertambah)
-32. Verifikasi log job (Fixture BE) mencatat notifikasi Expired ditandai tanpa penerima sekali dan tanpa retry
+27. Catat baseline jumlah notifikasi pada log notifikasi Fixture BE
+28. Picu eksekusi job lifecycle lewat Fixture BE
+29. Picu eksekusi job lifecycle sekali lagi lewat Fixture BE
+30. Ganti akun ke Total Control lalu buka Allocation > Client Subscription > List Subscriptions
+31. Verifikasi status subscription PT Maju Jaya `Expired`
+32. Verifikasi tidak ada notifikasi terkirim (jumlah notifikasi pada log notifikasi Fixture BE sama dengan baseline, selisih 0)
+33. Verifikasi log job (Fixture BE) mencatat notifikasi Expired ditandai tanpa penerima sekali dan tanpa retry
 
 ## Notes
 
@@ -83,8 +84,8 @@ coverage:
 - Urutan TC mengikuti urutan nomor kolom `sourceTc`. Sesi akun Principal berizin dari TC 552 dipakai ulang oleh TC 553; TC 554 dan 555 mengganti akun ke Total Control untuk mengamati status di List Subscriptions, sesuai langkah TC.
 - Asersi "tidak ada notifikasi" pada TC 554 memakai baseline jumlah notifikasi kedaluwarsa sebelum aksi; anchor positifnya `Verifikasi` status subscription `Active` pada langkah sebelumnya dan Overlay Notifikasi yang dibuka.
 - Temuan untuk QA:
-  - Akun pengguna Partner, Distributor, dan Principal berizin "Manage allocation" kini tertulis di Pre-setup 15 (usulan pola Pre-setup 6; keberadaan akun perlu dikonfirmasi tim FE); env password tidak terdaftar sehingga disediakan tim FE.
+  - Akun pengguna Partner, Distributor, dan Principal berizin "Manage allocation" tertulis di Pre-setup 15 (usulan pola Pre-setup 6; keberadaan akun perlu dikonfirmasi tim FE); env password tidak terdaftar sehingga disediakan tim FE.
   - TC 553 dan 554 langkah 2 dan 3 tidak menyebut akun pengamat status subscription; spec memakai Total Control untuk status dan Principal berizin untuk Overlay Notifikasi (TC 552 langkah 3).
   - TC 555 Expected b menyebut "Tidak ada notifikasi terkirim" tanpa menyebut surface pengamatan; spec membaca log notifikasi lewat Fixture BE.
   - Post Condition seluruh TC ("Tidak ada perubahan data") tanpa langkah observasi tidak diasersi.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): langkah 1-2, 4, 6-8, 10, 12, 14, 16-18, 20-22, 24, 26-29.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): langkah 1-2, 4, 6-8, 10, 12, 14, 16-18, 20-22, 24, 26-30. Baseline jumlah notifikasi log Fixture BE (langkah 27) dicatat sebelum pemicu job agar absence pada langkah 32 memakai selisih 0 (S-12).

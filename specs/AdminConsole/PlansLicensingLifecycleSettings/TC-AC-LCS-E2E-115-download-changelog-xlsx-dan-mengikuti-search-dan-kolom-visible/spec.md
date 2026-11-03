@@ -22,7 +22,8 @@ coverage:
 - Kemampuan teknis: pembacaan isi berkas hasil unduhan (nama sheet, header, jumlah baris) lewat buffer, disediakan tim FE (spec ini memeriksa isi berkas, kelas binary buffer).
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini).
 - Preferensi kolom modal Changelog (Column Visibility dan Setup Column) yang tersimpan di browser dihapus di hook `after` (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
-- Data uji mengacu ke fixture `Fixture.plansLicensingLifecycleSettings` (nilai default tiap tab dan dataset Changelog); fixture belum ada dan disediakan tim FE/BE.
+- Pengecualian A-15: Fixture BE menyediakan kemampuan overwrite dan clear riwayat Changelog per tab (disediakan tim FE/BE, idempotent); total absolut Changelog (footer `1-N of N`, jumlah baris, empty state) diasersi pada riwayat yang dibentuk di hook `before` spec ini dan dikembalikan di hook `after` suite; suite berjalan serial (`parallel: false`).
+- Data uji mengacu ke berkas `fixtures/lifecycle-settings.json` (`Fixture.lifecycleSettings`: nilai default tiap tab dan dataset Changelog).
 - Konfigurasi Lifecycle Settings bersifat platform-wide dan Changelog bersifat permanen; suite berjalan serial (`parallel: false`).
 - Env var: `AC_TC_PASSWORD` (password Total Control Admin Console, satu nama satu arti).
 
@@ -52,12 +53,15 @@ coverage:
 17. Verifikasi berkas memuat tiga baris data (Field Grace Period Duration) dari seluruh hasil Search, bukan seluruh 27 entri
 18. Verifikasi kolom `Date`, `Action`, `Field`, `New Value`, dan `Modified By` ada pada berkas
 19. Verifikasi kolom `Old Value` tidak ada pada berkas
+20. Klik header Column Visibility `(⋯)`
+21. Check `Old Value` kembali
 
 ## Notes
 
 - Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Isi berkas diamati lewat pembacaan buffer. Spec mengikuti Langkah Uji TC-AC-LCS-424 yang hanya memakai Search dan Column Visibility (lihat Temuan untuk QA).
-- Langkah penghubung: tidak ada selain langkah TC; konfigurasi kolom TC-AC-LCS-424 dihapus di hook `after`.
+- Langkah penghubung: langkah 20 dan 21 (memulihkan kolom `Old Value`, S-09); preferensi kolom di browser juga dihapus di hook `after`.
+- Pengecualian A-15: total absolut Changelog (footer, jumlah baris, empty state) diasersi pada riwayat hasil overwrite lewat Fixture BE di hook `before`; spec tidak mereset riwayat di tengah langkah.
 - Temuan untuk QA:
   - TC-AC-LCS-424: judul menyebut "Search dan Filter aktif" tetapi Langkah Uji dan Expected hanya memakai Search dan kolom visible; Filter tidak diuji.
   - TC-AC-LCS-423: Expected butir c ("Tidak ada toast sukses") ditulis di depan asersi berkas (bagian 8b butir 11).

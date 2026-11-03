@@ -22,7 +22,7 @@ coverage:
 - Data: Company PT Lama Sejahtera (`Fixture.lifecycleSettings.clientLamaSejahtera`, sudah di-Hard Purge, email `ops@ptlamasejahtera.example` pada indeks arsip) dan Company PT Baru Sentosa (Pre-setup 10, TC 529; `Fixture.lifecycleSettings.clientBaruSentosa`, mencapai Hard Purge); Client baru yang dibuat spec memakai email milik kedua company itu dan dihapus di langkah penghubung dan hook `after`.
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan, S-13): Fixture BE untuk mengatur tanggal data uji, memajukan jam server dan jam browser, memicu eksekusi job, membaca log job, dan memulihkan ketujuh tab ke nilai default. Kemampuan membaca Overlay Notifikasi Principal berizin dan mencatat baseline jumlah notifikasinya (S-12).
 - Waktu: jam server dan jam browser dimajukan bersama pada TC-AC-LCS-529 dan dipulihkan sesudahnya (S-09). Jam yang dimajukan dipulihkan lewat Fixture BE sesudah tiap TC dan di hook `after` suite (S-09); suite berjalan serial (`parallel: false`) karena spec ini memakai state global (jam, job, konfigurasi tab).
-- Fixture `fixtures/lifecycleSettings.json` belum ada dan disediakan tim FE; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` setelah tersedia.
+- Fixture `fixtures/lifecycle-settings.json`; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>`.
 
 ## Test Steps
 
@@ -33,26 +33,27 @@ coverage:
 3. Ubah Post-Purge Retention dari `730` menjadi `200`
 4. Klik `[Save]` dan tunggu toast sukses
 5. Buat Client baru dengan email User `ops@ptlamasejahtera.example`
-6. Buka Overlay Notifikasi Principal berizin Update "Manage archived client"
+6. Ganti akun ke Principal berizin Update "Manage archived client" lalu buka Overlay Notifikasi
 7. Verifikasi Principal berizin menerima notifikasi dalam aplikasi atas kecocokan indeks arsip PT Lama Sejahtera (retensi tetap 730 hari sejak pembersihan)
 8. Buka Detail Client baru
 9. Verifikasi Client baru memiliki penanda match
-10. Hapus Client baru yang dibuat spec dan pulihkan ketujuh tab lewat Fixture BE, lalu buka Plans & Licensing > Lifecycle Settings
+10. Ganti akun ke Total Control
+11. Hapus Client baru yang dibuat spec dan pulihkan ketujuh tab lewat Fixture BE, lalu buka Plans & Licensing > Lifecycle Settings
 
 ### TC-AC-LCS-529: Company yang di-Hard Purge setelah perubahan memakai Post-Purge Retention baru
 
-11. Atur lewat Fixture BE: Post-Purge Retention tersimpan `200`, Company PT Baru Sentosa mencapai Hard Purge setelah perubahan, dan Principal berizin Update "Manage archived client" tersedia, lalu muat ulang halaman Lifecycle Settings
-12. Catat baseline jumlah notifikasi Principal berizin Update "Manage archived client"
-13. Majukan jam server dan jam browser 250 hari sejak Hard Purge PT Baru Sentosa lewat Fixture BE
-14. Buat Client baru dengan email User milik PT Baru Sentosa
-15. Verifikasi Client baru dibuat normal dan tampil pada daftar Client
-16. Buka Overlay Notifikasi Principal berizin Update "Manage archived client"
-17. Verifikasi tidak ada notifikasi kecocokan baru (jumlah notifikasi sama dengan baseline; retensi 200 hari terlewati)
-18. Buka Detail Client baru
-19. Verifikasi tidak ada penanda match pada Client baru
+12. Atur lewat Fixture BE: Post-Purge Retention tersimpan `200`, Company PT Baru Sentosa mencapai Hard Purge setelah perubahan, dan Principal berizin Update "Manage archived client" tersedia, lalu muat ulang halaman Lifecycle Settings
+13. Catat baseline jumlah notifikasi Principal berizin Update "Manage archived client"
+14. Majukan jam server dan jam browser 250 hari sejak Hard Purge PT Baru Sentosa lewat Fixture BE
+15. Buat Client baru dengan email User milik PT Baru Sentosa
+16. Verifikasi Client baru dibuat normal dan tampil pada daftar Client
+17. Ganti akun ke Principal berizin Update "Manage archived client" lalu buka Overlay Notifikasi
+18. Verifikasi tidak ada notifikasi kecocokan baru (jumlah notifikasi sama dengan baseline; retensi 200 hari terlewati)
+19. Buka Detail Client baru
+20. Verifikasi tidak ada penanda match pada Client baru
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: "Atur lewat Fixture BE ..." (precondition TC), "Klik tab", "Catat baseline ..." (S-12), "Majukan jam ...", dan "Hapus Client baru ... lalu buka ..." antar TC (S-03, S-09).
+- Langkah penghubung tanpa `Verifikasi`: "Atur lewat Fixture BE ..." (precondition TC), "Klik tab", "Catat baseline ..." (S-12), "Ganti akun ..." ke Principal berizin (langkah 6, 17) dan kembali ke Total Control (langkah 10) sebelum langkah yang membutuhkan akun Total Control (S-07), "Majukan jam ...", dan "Hapus Client baru ... lalu buka ..." antar TC (S-03, S-09). Pada TC-AC-LCS-529 sesi diakhiri sebagai Principal berizin dan dikembalikan ke Total Control oleh hook `after`.
 - Asersi absence pada TC-AC-LCS-529 didahului `Verifikasi` Client baru dibuat normal dan tampil pada daftar Client sebagai anchor positif (bagian 8b butir 2).
-- Temuan untuk QA: TC-AC-LCS-529 tidak menyebut akun pembuat Client baru; spec memakai akun Total Control default suite. PT Baru Sentosa kini ada di Pre-setup 10 dan akun berizin di Pre-setup 15 adalah usulan yang keberadaannya perlu dikonfirmasi tim FE. Penanda match pada Detail Client dan cara membaca notifikasi tidak diuraikan di TC (S-13). Post Condition TC "Tidak ada perubahan data" tidak diasersi (S-01).
+- Temuan untuk QA: TC-AC-LCS-529 tidak menyebut akun pembuat Client baru; spec memakai akun Total Control default suite. PT Baru Sentosa ada di Pre-setup 10 dan akun berizin di Pre-setup 15 adalah usulan yang keberadaannya perlu dikonfirmasi tim FE. Penanda match pada Detail Client dan cara membaca notifikasi tidak diuraikan di TC (S-13). Post Condition TC "Tidak ada perubahan data" tidak diasersi (S-01).

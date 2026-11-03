@@ -33,52 +33,61 @@ coverage:
 
 1. Atur lewat Fixture BE: Subscription PT Maju Jaya berstatus `Grace` (rantai kepemilikan Partner PT Mitra Satu dan Distributor PT Distribusi Utama dengan pengguna berizin Manage allocation)
 2. Buka Allocation > Client Subscription > List Subscriptions
-3. Perpanjang (Renew) subscription PT Maju Jaya
-4. Picu eksekusi job lifecycle lewat Fixture BE
-5. Muat ulang daftar List Subscriptions
-6. Verifikasi subscription lama PT Maju Jaya berstatus `Renewed`
-7. Verifikasi term baru PT Maju Jaya berstatus `Active`
-8. Verifikasi pelacak lifecycle dibatalkan (dibaca lewat Fixture BE)
-9. Verifikasi record subscription lama tetap ada (tidak dihapus) pada List Subscriptions
-10. Verifikasi data klien dapat diakses instan
+3. Ketik Search `PT Maju Jaya`, tekan Enter
+4. Perpanjang (Renew) subscription PT Maju Jaya
+5. Tunggu aksi selesai (Renew tersimpan)
+6. Picu eksekusi job lifecycle lewat Fixture BE
+7. Muat ulang daftar List Subscriptions
+8. Ketik Search `PT Maju Jaya`, tekan Enter
+9. Verifikasi subscription lama PT Maju Jaya berstatus `Renewed`
+10. Verifikasi term baru PT Maju Jaya berstatus `Active`
+11. Verifikasi pelacak lifecycle dibatalkan (dibaca lewat Fixture BE)
+12. Verifikasi record subscription lama tetap ada (tidak dihapus) pada List Subscriptions
+13. Verifikasi data klien dapat diakses instan
 
 ### TC-AC-LCS-557: Renew pada subscription Active yang data berlebihnya berada di Archive membatalkan pelacak Downgrade dan memulihkan data sekitar 24 jam
 
-11. Atur lewat Fixture BE: Subscription PT Maju Jaya berstatus `Active` dengan pelacak Downgrade aktif dan data berlebih pada fase Archive
-12. Perpanjang (Renew) subscription PT Maju Jaya dengan plan semula pada Allocation > Client Subscription > List Subscriptions
-13. Muat ulang daftar List Subscriptions
-14. Verifikasi term baru PT Maju Jaya berstatus `Active`
-15. Verifikasi pelacak Downgrade dibatalkan (dibaca lewat Fixture BE)
-16. Verifikasi record lama tidak dihapus pada List Subscriptions
-17. Verifikasi data berlebih dipulihkan dari cold storage sekitar 24 jam sesuai fase Archive
+14. Atur lewat Fixture BE: Subscription PT Maju Jaya berstatus `Active` dengan pelacak Downgrade aktif dan data berlebih pada fase Archive
+15. Ketik Search `PT Maju Jaya`, tekan Enter
+16. Perpanjang (Renew) subscription PT Maju Jaya dengan plan semula pada Allocation > Client Subscription > List Subscriptions
+17. Tunggu aksi selesai (Renew tersimpan)
+18. Muat ulang daftar List Subscriptions
+19. Ketik Search `PT Maju Jaya`, tekan Enter
+20. Verifikasi term baru PT Maju Jaya berstatus `Active`
+21. Verifikasi pelacak Downgrade dibatalkan (dibaca lewat Fixture BE)
+22. Verifikasi record lama tidak dihapus pada List Subscriptions
+23. Verifikasi data berlebih dipulihkan dari cold storage sekitar 24 jam sesuai fase Archive
 
 ### TC-AC-LCS-558: Principal menetapkan Downgrade pada subscription yang sudah memiliki pelacak Expired aktif, tidak diblok dan berjalan paralel
 
-18. Atur lewat Fixture BE: Subscription PT Maju Jaya memiliki pelacak Expired aktif
-19. Tetapkan Downgrade subscription PT Maju Jaya lewat Fixture BE
-20. Verifikasi penetapan Downgrade berhasil tanpa blok
-21. Verifikasi pelacak Expired tidak dibatalkan oleh penetapan Downgrade
-22. Verifikasi pelacak Downgrade baru berjalan paralel dengan pelacak Expired
+24. Atur lewat Fixture BE: Subscription PT Maju Jaya memiliki pelacak Expired aktif
+25. Tetapkan Downgrade subscription PT Maju Jaya lewat Fixture BE
+26. Verifikasi penetapan Downgrade berhasil tanpa blok
+27. Verifikasi pelacak Expired tidak dibatalkan oleh penetapan Downgrade
+28. Verifikasi pelacak Downgrade baru berjalan paralel dengan pelacak Expired
 
 ### TC-AC-LCS-559: Penetapan Downgrade kedua pada subscription dengan Downgrade aktif ditolak
 
-23. Atur lewat Fixture BE: Subscription PT Maju Jaya memiliki pelacak Downgrade aktif
-24. Tetapkan Downgrade kedua pada subscription yang sama lewat Fixture BE
-25. Verifikasi penetapan ditolak dengan pesan "This subscription already has an active downgrade in progress"
+29. Atur lewat Fixture BE: Subscription PT Maju Jaya memiliki pelacak Downgrade aktif
+30. Tetapkan Downgrade kedua pada subscription yang sama lewat Fixture BE
+31. Verifikasi penetapan ditolak dengan pesan "This subscription already has an active downgrade in progress"
 
 ### TC-AC-LCS-560: Pelacak Expired dan Downgrade mencapai T-0 hampir bersamaan, diproses independen dan pelacak Downgrade tetap tersimpan
 
-26. Atur lewat Fixture BE: Subscription PT Maju Jaya memiliki pelacak Expired dan pelacak Downgrade dengan tanggal T-0 hampir bersamaan
-27. Picu eksekusi job lifecycle lewat Fixture BE
-28. Verifikasi pelacak Expired dan Downgrade diproses independen sesuai urutan masing-masing (status dan pelacak dibaca lewat Fixture BE dan List Subscriptions)
-29. Verifikasi pelacak Downgrade tetap tersimpan apa adanya walau efeknya teredam oleh siklus Expired yang cakupannya lebih luas
+32. Atur lewat Fixture BE: Subscription PT Maju Jaya memiliki pelacak Expired dan pelacak Downgrade dengan tanggal T-0 hampir bersamaan
+33. Picu eksekusi job lifecycle lewat Fixture BE
+34. Buka Allocation > Client Subscription > List Subscriptions
+35. Ketik Search `PT Maju Jaya`, tekan Enter
+36. Verifikasi pelacak Expired dan Downgrade diproses independen sesuai urutan masing-masing (status dan pelacak dibaca lewat Fixture BE dan List Subscriptions)
+37. Verifikasi pelacak Downgrade tetap tersimpan apa adanya walau efeknya teredam oleh siklus Expired yang cakupannya lebih luas
 
 ### TC-AC-LCS-687: Subscription berstatus Archive pada Skenario Expired tidak punya aksi Renew
 
-30. Atur lewat Fixture BE: Subscription Paid PT Maju Jaya berstatus `Archive` (Skenario Expired)
-31. Buka Allocation > Client Subscription > List Subscriptions
-32. Verifikasi row action pada baris subscription PT Maju Jaya memuat `Detail`
-33. Verifikasi row action pada baris subscription PT Maju Jaya tidak memuat `Renew`
+38. Atur lewat Fixture BE: Subscription Paid PT Maju Jaya berstatus `Archive` (Skenario Expired)
+39. Buka Allocation > Client Subscription > List Subscriptions
+40. Ketik Search `PT Maju Jaya`, tekan Enter
+41. Verifikasi row action pada baris subscription PT Maju Jaya memuat `Detail`
+42. Verifikasi row action pada baris subscription PT Maju Jaya tidak memuat `Renew`
 
 ## Notes
 
@@ -92,4 +101,5 @@ coverage:
   - TC 557 Expected b "sekitar 24 jam" tidak menyebut cara membaca durasi pemulihan; spec mengasersi pemulihan dari cold storage sesuai fase Archive tanpa mengarang ambang.
   - TC 558 Expected b dan TC 560 Expected b mengamati pelacak lifecycle yang tidak terlihat di UI; spec membacanya lewat Fixture BE yang disediakan tim FE/BE.
   - Post Condition seluruh TC ("Tidak ada perubahan data") tanpa langkah observasi tidak diasersi.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): langkah 1-2, 4-5, 11, 13, 18-19, 23-24, 26-27, 30-31.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): langkah 1-3, 5-8, 14-15, 17-19, 24-25, 29-30, 32-35, 38-40. Langkah "Ketik Search `PT Maju Jaya`, tekan Enter" mendahului aksi Renew dan `Verifikasi` baris di List Subscriptions (R-16, R-23); "Tunggu aksi selesai" (langkah 5, 17) menyusul Renew yang hasilnya tidak diasersi langsung dan diikuti pemicu job atau muat ulang (bagian 8b butir 8); langkah 34 membuka List Subscriptions sebagai layar `Verifikasi` status di TC 560 (TC menyebut List Subscriptions tanpa langkah buka).
+- Alasan di atas sekitar 35 langkah: keenam blok TC (556 sampai 560 dan 687) satu kelas harness h tentang state machine lifecycle, memakai List Subscriptions dan Fixture BE yang sama, dan tiap blok menetapkan state subscription sendiri lalu memulihkannya lewat langkah penghubung; sebagian besar langkah tambahan adalah langkah penghubung (pemulihan, pengaturan data, ganti akun), sehingga memecahnya hanya mengulang pengaturan Fixture BE dan ganti akun yang sama, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.

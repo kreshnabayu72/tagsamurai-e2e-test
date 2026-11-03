@@ -19,7 +19,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (nama tampil `Andi Wijaya`), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Plans & Licensing > Lifecycle Settings, tab Trial Settings aktif); hook `after` spec mengembalikan sesi ke akun default suite (Total Control). Tidak ada ganti akun di tengah spec.
-- Data: konfigurasi ketujuh tab Lifecycle Settings pada nilai default (Pre-setup 7: Trial 30, 50, 10, OFF, 7, 1; Free Plan 365; License Timing 24, 2, 2; Client Lifecycle 45, 30, 7, 1, 30, 30, 10, 2, 730; Recycle Bin 30; Approval 3; System Limits 1000, 1000, 1000, 50, 10000, 20) dipulihkan hook `beforeEach` suite dan hook `after` suite lewat Fixture BE. Berkas fixture data modul belum ada (disediakan tim FE); spec menulis nilai uji sesuai TC dan merujuk `Fixture.<berkas>.<kunci>` setelah berkas itu tersedia.
+- Data: konfigurasi ketujuh tab Lifecycle Settings pada nilai default (Pre-setup 7: Trial 30, 50, 10, OFF, 7, 1; Free Plan 365; License Timing 24, 2, 2; Client Lifecycle 45, 30, 7, 1, 30, 30, 10, 2, 730; Recycle Bin 30; Approval 3; System Limits 1000, 1000, 1000, 50, 10000, 20) dipulihkan hook `beforeEach` suite dan hook `after` suite lewat Fixture BE. Data Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` (`fixtures/lifecycle-settings.json`); nilai uji yang diketik atau dikirim di langkah sama dengan TC (S-02).
 - Flag Guided Tooltip halaman Lifecycle Settings disetel true oleh hook suite `before` dan dipulihkan hook `after` (lihat `suite.md`).
 - Suite berjalan serial (`parallel: false`).
 - Kemampuan teknis (disediakan tim FE/BE): Fixture BE untuk memulihkan konfigurasi tab ke nilai default (dipakai hook suite). Endpoint tidak ditulis di spec ini.
@@ -53,7 +53,7 @@ coverage:
 
 ### TC-AC-LCS-244: Save tab Approval Settings dengan nilai minimum yang valid
 
-16. Ubah Approval Timeout menjadi `1`
+16. Ubah Approval Timeout menjadi `1`, lalu klik area kosong di luar field (blur)
 17. Verifikasi tidak ada pesan error pada seluruh field yang diisi
 18. Klik `[Save]`
 19. Verifikasi toast sukses "Success, approval settings have been saved."
@@ -75,6 +75,7 @@ coverage:
 - Langkah penghubung tanpa `Verifikasi`: langkah 1 (berpindah ke tab) dan langkah 27 (membuka tab dalam keadaan termuat baru).
 - Urutan di spec: TC-AC-LCS-242, TC-AC-LCS-251, TC-AC-LCS-244, TC-AC-LCS-243 (validasi yang diblokir dan koreksi nilai sebelum Save sukses, S-10); urutan nomor TC berbeda.
 - Teks pesan error rentang pada TC-AC-LCS-251 diambil dari TC validasi field yang sama (Value must be between 1 and 30); Expected TC-AC-LCS-251 hanya menyebut "pesan error rentang".
+- Asersi "tidak ada pesan error" ditulis sesudah blur karena validasi field muncul saat blur.
 - Temuan untuk QA:
   - Post Condition "Tidak ada perubahan data" tidak punya langkah observasi di TC sehingga tidak diasersi; Post Condition "tersimpan" teramati lewat Expected setelah F5.
   - Post Condition "Entri Changelog" (satu baris per field berubah) pada TC yang menyimpan atau mereset tidak punya langkah observasi di TC sehingga tidak diasersi di spec ini; spec ini tidak mengamati Changelog.
