@@ -49,7 +49,7 @@ coverage:
 13. Verifikasi respons permintaan baca tidak memuat nilai konfigurasi
 14. Kirim permintaan Save tab Approval Settings dengan Approval Timeout = `7` memakai sesi Principal tanpa capability
 15. Verifikasi permintaan Save ditolak server dengan status `403`
-16. Ganti akun ke Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`) lalu buka tab Approval Settings
+16. Ganti akun ke Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`) lalu buka Plans & Licensing > Lifecycle Settings, lalu tab Approval Settings
 17. Verifikasi Approval Timeout tetap `3`
 
 ## Notes

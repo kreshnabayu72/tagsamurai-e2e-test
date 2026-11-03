@@ -35,7 +35,7 @@ coverage:
 ### TC-AC-LCS-267: Field Hierarchy Depth Limit menolak karakter non-numerik
 
 2. Klik di akhir nilai field Hierarchy Depth Limit
-3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu
+3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu lalu klik area kosong di luar field (blur)
 4. Verifikasi karakter non-numerik tidak tampil pada field Hierarchy Depth Limit
 5. Verifikasi nilai Hierarchy Depth Limit tetap `50`
 6. Verifikasi tidak ada pesan error

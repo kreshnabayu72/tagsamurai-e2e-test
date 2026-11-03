@@ -35,7 +35,7 @@ coverage:
 ### TC-AC-LCS-252: Field Bulk Transaction Row Limit menolak karakter non-numerik
 
 2. Klik di akhir nilai field Bulk Transaction Row Limit
-3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu
+3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu lalu klik area kosong di luar field (blur)
 4. Verifikasi karakter non-numerik tidak tampil pada field Bulk Transaction Row Limit
 5. Verifikasi nilai Bulk Transaction Row Limit tetap `1000`
 6. Verifikasi tidak ada pesan error

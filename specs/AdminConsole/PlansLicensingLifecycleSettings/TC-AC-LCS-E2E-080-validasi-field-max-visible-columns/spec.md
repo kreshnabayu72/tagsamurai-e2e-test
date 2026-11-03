@@ -35,7 +35,7 @@ coverage:
 ### TC-AC-LCS-277: Field Max Visible Columns menolak karakter non-numerik
 
 2. Klik di akhir nilai field Max Visible Columns
-3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu
+3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu lalu klik area kosong di luar field (blur)
 4. Verifikasi karakter non-numerik tidak tampil pada field Max Visible Columns
 5. Verifikasi nilai Max Visible Columns tetap `20`
 6. Verifikasi tidak ada pesan error

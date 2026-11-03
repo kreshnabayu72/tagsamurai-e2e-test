@@ -65,15 +65,15 @@ coverage:
 19. Atur lewat Fixture BE: Subscription Paid PT Maju Jaya berstatus `Grace` dan batas Grace Period Duration (`30` hari) terlewati sejak satu hari lalu; satu eksekusi job lifecycle harian dilewati
 20. Picu eksekusi job lifecycle lewat Fixture BE
 21. Buka Allocation > Client Subscription > List Subscriptions
-22. Verifikasi status subscription PT Maju Jaya `Archive` (satu fase dari `Grace`)
-23. Picu eksekusi job lifecycle sekali lagi pada hari yang sama lewat Fixture BE
-24. Muat ulang daftar List Subscriptions
-25. Verifikasi status subscription PT Maju Jaya tetap `Archive` (tidak ada transisi ganda)
+22. Ketik Search `PT Maju Jaya`, tekan Enter
+23. Verifikasi status subscription PT Maju Jaya `Archive` (satu fase dari `Grace`)
+24. Picu eksekusi job lifecycle sekali lagi pada hari yang sama lewat Fixture BE
+25. Muat ulang daftar List Subscriptions
+26. Ketik Search `PT Maju Jaya`, tekan Enter
+27. Verifikasi status subscription PT Maju Jaya tetap `Archive` (tidak ada transisi ganda)
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Kelas harness d.
-- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC mengikuti urutan nomor kolom `sourceTc` (547, 548, 549, 550, lalu 678).
 - Asersi "tidak menerima email" memakai baseline jumlah email per alamat dan didahului `Verifikasi` email atau log yang seharusnya ada pada surface yang sama (anchor, bagian 8b butir 2); TC 547 memakai email Second Reminder sebagai anchor.
 - Pembuatan data uji dan pemicu job (Fixture BE) ditulis sebagai langkah penghubung karena TC menyebutnya sebagai precondition dan pemicu tanpa Expected.
@@ -82,4 +82,4 @@ coverage:
   - TC 547 Expected b menyebut First Reminder "ditandai dilewati" tanpa menyebut surface pengamatan; spec membaca log job lewat Fixture BE (TC 544 dan 545 menyebut log job lewat Fixture BE).
   - TC 678 langkah 1 dan 2 menyebut "amati status subscription" tanpa menyebut layar; spec memakai Allocation > Client Subscription > List Subscriptions seperti TC 552.
   - Post Condition seluruh TC ("Tidak ada perubahan data") tanpa langkah observasi tidak diasersi.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): langkah 1-2, 7-8, 10-11, 13-14, 16-17, 19-21, 23-24.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): langkah 1-2, 7-8, 10-11, 13-14, 16-17, 19-22, 24-26; langkah 22 dan 26 (`Ketik Search `PT Maju Jaya`, tekan Enter`) mendahului `Verifikasi` status baris List Subscriptions (R-16, bagian 8b butir 13, R-23).

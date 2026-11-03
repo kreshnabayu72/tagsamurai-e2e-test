@@ -35,7 +35,7 @@ coverage:
 ### TC-AC-LCS-262: Field Register Asset Bulk Limit menolak karakter non-numerik
 
 2. Klik di akhir nilai field Register Asset Bulk Limit
-3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu
+3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu lalu klik area kosong di luar field (blur)
 4. Verifikasi karakter non-numerik tidak tampil pada field Register Asset Bulk Limit
 5. Verifikasi nilai Register Asset Bulk Limit tetap `1000`
 6. Verifikasi tidak ada pesan error

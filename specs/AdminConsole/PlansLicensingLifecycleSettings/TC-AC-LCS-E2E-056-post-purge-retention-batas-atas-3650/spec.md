@@ -55,7 +55,7 @@ coverage:
 ### TC-AC-LCS-211: Save Post-Purge Retention pada nilai maksimum 3,650
 
 15. Ubah Post-Purge Retention kembali menjadi `730` lalu klik area kosong di luar field (blur)
-16. Ubah Post-Purge Retention menjadi `3650`
+16. Ubah Post-Purge Retention menjadi `3650`, lalu klik area kosong di luar field (blur)
 17. Verifikasi tidak ada pesan error rentang pada Post-Purge Retention saat nilai `3650` diisi
 18. Klik `[Save]`
 19. Verifikasi toast sukses "Success, client lifecycle settings have been saved."
@@ -65,10 +65,9 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 210, 314, 327, 211 (penolakan di atas batas dan penerimaan tanpa Save lebih dulu; Save nilai maksimum di akhir, S-10).
 - Langkah penghubung (S-03): langkah 1, 10, 15 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
+- Langkah 16 menyertakan blur sesuai TC-AC-LCS-211 langkah 1 ("lalu blur") sebelum asersi absence pada langkah 17, karena validasi rentang muncul saat blur (bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-AC-LCS-210, TC-AC-LCS-211, TC-AC-LCS-314, dan TC-AC-LCS-327 menguji nilai 3650 (diterima pada maksimum) dengan Expected yang hampir sama; TC-AC-LCS-314 dan TC-AC-LCS-327 identik dalam langkah dan Expected (tumpang tindih). Spec tetap menulis tiap TC sebagai bagian terpisah.
   - Post Condition TC-AC-LCS-211 (Post-Purge Retention tersimpan `3650`) setara dengan `Verifikasi` nilai sesudah F5; tidak ada asersi tambahan.

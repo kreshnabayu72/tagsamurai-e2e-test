@@ -68,7 +68,7 @@ coverage:
 
 ### TC-AC-LCS-196: Save Archive Period Duration pada nilai maksimum 999
 
-25. Ubah Archive Period Duration menjadi `999`
+25. Ubah Archive Period Duration menjadi `999`, lalu klik area kosong di luar field (blur)
 26. Verifikasi tidak ada pesan error rentang pada Archive Period Duration saat nilai `999` diisi
 27. Klik `[Save]`
 28. Verifikasi toast sukses "Success, client lifecycle settings have been saved."
@@ -78,10 +78,9 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah 1, 16, 21 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
 - Validasi yang diblokir berada sebelum aksi sukses: urutan mengikuti nomor TC dan TC Save nilai maksimum berada di akhir spec (S-10).
+- Langkah 25 menyertakan blur sesuai TC-AC-LCS-196 langkah 1 ("lalu blur") sebelum asersi absence pada langkah 26, karena validasi rentang muncul saat blur (bagian 8b butir 2).
 - Temuan untuk QA:
   - Post Condition TC-AC-LCS-196 (nilai tersimpan) setara dengan `Verifikasi` nilai sesudah F5 pada langkah 31; tidak ada asersi tambahan.
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).

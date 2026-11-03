@@ -78,10 +78,9 @@ coverage:
 
 ## Notes
 
-- Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung: membaca baseline N0 lalu menutup modal (S-12) pada langkah 1 sampai 4, 14 sampai 17, dan 28 sampai 31 (baseline TC-AC-LCS-476 dibaca sesudah pemulihan dan muat ulang), menutup modal sebelum pindah tab, serta pemulihan ketujuh tab dan muat ulang halaman antara TC-AC-LCS-475 dan TC-AC-LCS-476 (S-09).
 - Entri baru dicari di antara baris teratas urutan Newest First. Pada TC-AC-LCS-475 dua baris teratas dinilai sebagai himpunan tanpa urutan karena kedua Save dapat berada pada menit yang sama (S-14); pada TC-AC-LCS-474 dan TC-AC-LCS-476 urutan antar entri dengan cap waktu menit yang sama tidak diasersi karena TC tidak menyebutnya.
 - Temuan untuk QA:
   - Expected TC (footer `1–N of N` dengan N sama dengan jumlah entri baru) mengandaikan Changelog tab kosong; Changelog bersifat permanen sehingga spec mengasersi total entri sebagai baseline N0 ditambah jumlah entri baru (S-12) dan memeriksa entri baru di baris teratas urutan Newest First.
   - Post Condition TC berupa nilai field tersimpan tidak punya langkah observasi sendiri di TC dan tidak diasersi; entri Changelog yang tercatat diasersi lewat Expected.
-- Alasan di atas sekitar 35 langkah: ketiga blok TC (474, 475, 476) memakai modal Changelog yang sama pada tab Client Lifecycle, tiap blok membaca baseline N0 sendiri sesudah pemulihan, dan sebagian langkahnya adalah langkah penghubung baseline serta penutupan modal; memecahnya hanya mengulang pemulihan ketujuh tab dan muat ulang yang sama tanpa isolasi lebih, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Alasan di atas sekitar 35 langkah (38 langkah): ketiga blok TC memakai modal Changelog yang sama dengan pola yang sama (baca baseline N0, Save, baca entri baru). TC-AC-LCS-474 berada di tab Client Lifecycle, sedangkan TC-AC-LCS-475 dan TC-AC-LCS-476 berada di tab Free Plan Settings. Baseline N0 TC-AC-LCS-474 dibaca tanpa pemulihan; pemulihan ketujuh tab dan muat ulang halaman dengan F5 dilakukan satu kali, di antara TC-AC-LCS-475 dan TC-AC-LCS-476, agar baseline N0 TC-AC-LCS-476 dibaca dari state default. Memecah menjadi spec terpisah hanya mengulang pemulihan ketujuh tab dan muat ulang tersebut.

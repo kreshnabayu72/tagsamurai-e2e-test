@@ -35,7 +35,7 @@ coverage:
 ### TC-AC-LCS-272: Field Master Data Count Limit menolak karakter non-numerik
 
 2. Klik di akhir nilai field Master Data Count Limit
-3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu
+3. Ketik karakter `a`, `b`, `-`, `.`, `e`, `+` satu per satu lalu klik area kosong di luar field (blur)
 4. Verifikasi karakter non-numerik tidak tampil pada field Master Data Count Limit
 5. Verifikasi nilai Master Data Count Limit tetap `10000`
 6. Verifikasi tidak ada pesan error
