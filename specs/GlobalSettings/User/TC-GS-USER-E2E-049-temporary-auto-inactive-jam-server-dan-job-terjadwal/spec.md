@@ -52,7 +52,7 @@ coverage:
 6. Atur General Settings Timezone entitas menjadi `Asia/Jayapura` (UTC+9)
 7. Atur jam server dan jam browser bersama ke tanggal D pukul 23.30 UTC+7
 8. Klik `[+ User]` di Table Tools
-9. Isi First Name `Papua`, Last Name `Uji {runId}-049`, Division `Finance`, Email `papuauji+{runId}-049@qwertysystem.net`, centang Access `Fixed Asset`
+9. Isi First Name `Papua`, Last Name `Uji {runId}-049`, Division `Finance`, Email `papuauji+{runId}-049@qwertysystem.net`, pilih Access `Fixed Asset`
 10. Centang `Set as Temporary User`
 11. Pilih Temporary Until = tanggal kalender browser D + 1
 12. Klik `[Submit]`

@@ -1,8 +1,8 @@
 # Coverage E2E — Global Settings > Role & Permission
 
-Sumber: `global-settings/role/TestCases/tc-role.md` (317 ID `TC-GS-ROLE-1`–`317`, seluruhnya aktif). Referensi kontrak: `global-settings/role/PRD/role.md` dan `global-settings/role/API/openapi.yaml`. Suite: `specs/GlobalSettings/Role/`. Prefix: `GS` + `ROLE` (`TC-GS-ROLE-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`).
+Sumber: `global-settings/role/TestCases/tc-role.md` (341 ID `TC-GS-ROLE-1`–`341`, seluruhnya aktif). Referensi kontrak: `global-settings/role/PRD/role.md` dan `global-settings/role/API/openapi.yaml`. Suite: `specs/GlobalSettings/Role/`. Prefix: `GS` + `ROLE` (`TC-GS-ROLE-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`).
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 317 TC aktif masuk spec, 0 TC hanya-BE (TC-313 sampai TC-315 punya PIC FE `-` tetapi memuat langkah reload di UI, sehingga tetap masuk spec 099). 107 spec (105 FE+BE, 2 mock). Setiap TC terpetakan ke tepat satu spec.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 341 TC aktif masuk spec, 0 TC hanya-BE (TC-313 sampai TC-315 punya PIC FE `-` tetapi memuat langkah reload di UI, sehingga tetap masuk spec 099). 119 spec (117 FE+BE, 2 mock). Setiap TC terpetakan ke tepat satu spec.
 
 ## TC granular → spec e2e
 
@@ -26,18 +26,18 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 317 TC aktif masuk spec, 0 TC
 | TC-GS-ROLE-E2E-016-role-matrix-negatif-direct-url-tanpa-role-manage-user-and-role | Role Matrix Negatif: Akses Langsung URL Role & Permission Tanpa Role Manage user and role | FE+BE | 9 | 35 |
 | TC-GS-ROLE-E2E-017-role-matrix-visibilitas-elemen-total-control-read-only-dan-manage-read-saja | Role Matrix: Visibilitas Elemen Role & Permission untuk Total Control, Read Only, dan Manage user and role Read Saja | FE+BE | 53 | 36, 37, 38 |
 | TC-GS-ROLE-E2E-018-role-matrix-visibilitas-elemen-manage-user-and-role-tanpa-update-dan-dengan-update | Role Matrix: Visibilitas Elemen Role & Permission untuk Manage user and role Tanpa Update dan Dengan Update | FE+BE | 52 | 39, 40 |
-| TC-GS-ROLE-E2E-019-guard-proteksi-default-user-dan-diri-sendiri-pada-tab-dan-detail | Guard Proteksi Default User dan Diri Sendiri pada Tab Total Control dan Detail | FE+BE | 57 | 41, 42, 43 |
-| TC-GS-ROLE-E2E-020-prioritas-tooltip-elemen-non-aktif-lintas-aktor | Role Matrix: Prioritas Tooltip Elemen Non-Aktif pada Baris Default User Lintas Aktor | FE+BE | 26 | 44, 45, 46 |
+| TC-GS-ROLE-E2E-019-guard-proteksi-default-user-dan-diri-sendiri-pada-tab-dan-detail | Guard Proteksi Default User dan Diri Sendiri pada Tab Total Control dan Detail | FE+BE | 69 | 41, 42, 43 |
+| TC-GS-ROLE-E2E-020-prioritas-tooltip-elemen-non-aktif-lintas-aktor | Role Matrix: Prioritas Tooltip Elemen Non-Aktif pada Baris Default User Lintas Aktor | FE+BE | 30 | 44, 45, 46 |
 | TC-GS-ROLE-E2E-021-aksesibilitas-keyboard-checkbox-detail-dan-focus-trap-dialog | Aksesibilitas Keyboard: Checkbox Detail, Tooltip Saat Fokus, dan Focus Trap Dialog Remove | FE+BE | 16 | 47, 48 |
 | TC-GS-ROLE-E2E-022-role-matrix-gating-seleksi-checkbox-baris-detail | Role Matrix: Gating Seleksi Checkbox Baris Detail dan Select All per Aktor | FE+BE | 11 | 49, 50 |
 | TC-GS-ROLE-E2E-023-popup-assign-total-control-screening-pool-dan-aksesibilitas | Popup Assign Total Control: Screening, Pool Kandidat, dan Aksesibilitas | FE+BE | 23 | 51, 52, 53, 77 |
 | TC-GS-ROLE-E2E-024-popup-assign-total-control-seleksi-counter-validasi-kosong-dan-cancel | Popup Assign Total Control: Validasi Kosong, Selection Counter, Checkbox Header, dan Cancel | FE+BE | 35 | 54, 55, 56, 57 |
 | TC-GS-ROLE-E2E-025-popup-assign-pencarian-name-email-position-division-status-dan-no-result | Popup Assign: Pencarian Name, Email, Position, Division, Status, dan No Result | FE+BE | 53 | 69, 70, 71, 72, 316 |
 | TC-GS-ROLE-E2E-026-popup-assign-filter-panel | Popup Assign: Filter Panel Position, Division, Status, Activation Status, Temporary User, Temporary Until, dan Custom Field | FE+BE | 21 | 73, 74 |
-| TC-GS-ROLE-E2E-027-popup-assign-sort-pagination-dan-column-visibility | Popup Assign: Column Visibility, Sort Kolom, dan Pagination dengan Retensi Seleksi | FE+BE | 73 | 75, 76, 293, 317 |
+| TC-GS-ROLE-E2E-027-popup-assign-sort-pagination-dan-column-visibility | Popup Assign: Column Visibility, Sort Kolom, dan Pagination dengan Retensi Seleksi | FE+BE | 82 | 75, 76, 293, 317 |
 | TC-GS-ROLE-E2E-028-assign-total-control-sukses-satu-banyak-timpa-parsial-dan-klik-ganda | Assign Total Control: Sukses Satu dan Banyak User, Timpa Baris Parsial, dan Klik Ganda | FE+BE | 47 | 58, 59, 61, 63 |
 | TC-GS-ROLE-E2E-029-assign-total-control-upgrade-read-only-dan-user-pending-email-confirmation | Assign Total Control: Upgrade User Read Only dan User Pending Email Confirmation | FE+BE | 23 | 60, 307 |
-| TC-GS-ROLE-E2E-030-konflik-assign-user-dihapus-atau-tidak-eligible-tunggal | Konflik Assign: User Terpilih Dihapus atau Tidak Eligible Sebelum Submit (Alert Tunggal) | FE+BE | 69 | 65, 66, 67, 83, 292 |
+| TC-GS-ROLE-E2E-030-konflik-assign-user-dihapus-atau-tidak-eligible-tunggal | Konflik Assign: User Terpilih Dihapus atau Tidak Eligible Sebelum Submit (Alert Tunggal) | FE+BE | 71 | 65, 66, 67, 83, 292 |
 | TC-GS-ROLE-E2E-031-konflik-assign-alert-jamak-user-dihapus | Konflik Assign: Alert Jamak User Terpilih Dihapus Admin Lain | FE+BE | 23 | 300, 304 |
 | TC-GS-ROLE-E2E-032-konflik-assign-alert-jamak-user-tidak-eligible-dan-campuran | Konflik Assign: Alert Jamak User Tidak Eligible dan Campuran Dihapus dan Tidak Eligible | FE+BE | 35 | 301, 302, 305 |
 | TC-GS-ROLE-E2E-033-konflik-assign-concurrent-user-sama-dua-admin | Konflik Assign: Dua Admin Meng-Assign User yang Sama Secara Bersamaan | FE+BE | 39 | 279, 280 |
@@ -48,9 +48,9 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 317 TC aktif masuk spec, 0 TC
 | TC-GS-ROLE-E2E-038-assign-role-baris-baru-default-dan-klik-ganda | Assign Role: Baris Baru Default dan Klik Ganda [Assign] | FE+BE | 16 | 95, 98 |
 | TC-GS-ROLE-E2E-039-konflik-assign-role-user-dihapus-sudah-di-assign-atau-di-rename | Konflik Assign Role: User Dihapus, Sudah di-Assign, atau di-Rename oleh Admin Lain | FE+BE | 26 | 99, 100 |
 | TC-GS-ROLE-E2E-040-edit-crud-role-matrix-positif | Role Matrix: Edit CRUD Positif oleh Total Control dan Manage user and role dengan Update | FE+BE | 22 | 101, 102, 103 |
-| TC-GS-ROLE-E2E-041-auto-revert-saat-edit-crud-dialog-cancel-dan-konfirmasi | Auto-Revert saat Edit CRUD: Dialog, Cancel, dan Konfirmasi | FE+BE | 62 | 104, 105, 106, 107 |
+| TC-GS-ROLE-E2E-041-auto-revert-saat-edit-crud-dialog-cancel-dan-konfirmasi | Auto-Revert saat Edit CRUD: Dialog, Cancel, dan Konfirmasi | FE+BE | 63 | 104, 105, 106, 107 |
 | TC-GS-ROLE-E2E-042-remove-baris-role-matrix-positif-screening-cancel-dan-klik-ganda | Role Matrix: Remove Baris Role Positif (Screening, Cancel, Konfirmasi, dan Klik Ganda) | FE+BE | 51 | 110, 111, 112, 113, 119 |
-| TC-GS-ROLE-E2E-043-remove-baris-auto-revert-dialog-konfirmasi-dan-cancel | Remove Baris Role Target Total Control dan Read Only: Dialog Auto-Revert, Konfirmasi, dan Cancel | FE+BE | 43 | 114, 115, 116 |
+| TC-GS-ROLE-E2E-043-remove-baris-auto-revert-dialog-konfirmasi-dan-cancel | Remove Baris Role Target Total Control dan Read Only: Dialog Auto-Revert, Konfirmasi, dan Cancel | FE+BE | 44 | 114, 115, 116 |
 | TC-GS-ROLE-E2E-044-bulk-action-bar-seleksi-select-all-dan-retensi | Bulk Action Bar Detail: Seleksi, Select All, dan Retensi Seleksi saat Search Dikosongkan | FE+BE | 38 | 120, 121, 122, 123, 136 |
 | TC-GS-ROLE-E2E-045-selection-limit-volume-data-detail | Selection Limit Detail: Volume Data Melewati Batas Seleksi | FE+BE | 25 | 124, 125 |
 | TC-GS-ROLE-E2E-046-bulk-remove-dialog-screening-dan-cancel | Bulk Remove: Screening Dialog Konfirmasi dan Cancel Mempertahankan Seleksi | FE+BE | 59 | 126, 127, 129, 130 |
@@ -61,7 +61,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 317 TC aktif masuk spec, 0 TC
 | TC-GS-ROLE-E2E-051-filter-panel-screening-opsi-dan-chip | Filter Panel Tab Total Control dan Tab Read Only: Screening Field, Opsi Dropdown, dan Chip | FE+BE | 55 | 142, 143, 148, 149, 150 |
 | TC-GS-ROLE-E2E-052-filter-fungsional-multi-select-date-range-dan-urutan-search-filter | Filter Fungsional: Multi-Select per Field, Date Range, OR dan AND, serta Urutan Search dan Filter | FE+BE | 78 | 144, 145, 147, 151 |
 | TC-GS-ROLE-E2E-053-custom-field-aktif-search-filter-dan-sort | Custom Field Aktif Dropdown: Search, Filter, dan Sort Kolom Region | FE+BE | 22 | 146 |
-| TC-GS-ROLE-E2E-054-sort-kolom-tab-total-control-dan-read-only | Sort Kolom Tab Total Control dan Tab Read Only | FE+BE | 129 | 152, 153, 154, 155, 156 |
+| TC-GS-ROLE-E2E-054-sort-kolom-tab-total-control-dan-read-only | Sort Kolom Tab Total Control dan Tab Read Only | FE+BE | 141 | 152, 153, 154, 155, 156 |
 | TC-GS-ROLE-E2E-055-kombinasi-pagination-retensi-refresh-dan-pindah-tab | Kombinasi Search, Filter, Sort, Pagination, Retensi Refresh, dan Pindah Tab Total Control dan Read Only | FE+BE | 65 | 157, 158, 159, 160, 161 |
 | TC-GS-ROLE-E2E-056-setup-column-tab-total-control-screening-hide-show-discard-dan-kolom-terakhir | Setup Column Tab Total Control dan Read Only: Screening, Hide/Show Kolom, Tutup Tanpa Simpan, dan Kolom Visible Terakhir | FE+BE | 55 | 162, 163, 164, 165, 171, 172 |
 | TC-GS-ROLE-E2E-057-setup-column-tab-total-control-reorder-pin-reset-dan-isolasi-per-tabel | Setup Column Tab Total Control: Reorder, Pin, Reset to Default, dan Isolasi Konfigurasi per Tabel | FE+BE | 64 | 166, 167, 168, 169, 170, 173 |
@@ -74,7 +74,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 317 TC aktif masuk spec, 0 TC
 | TC-GS-ROLE-E2E-064-detail-sort-dan-setup-column-kolom-crud | Detail Role: Sort per Kolom Data, Kolom CRUD Tidak Sortable, dan Setup Column Kolom CRUD | FE+BE | 98 | 191, 192, 193 |
 | TC-GS-ROLE-E2E-065-modal-changelog-screening-semua-varian | Modal Changelog: Screening Varian Tab Total Control, Read Only, System, dan Detail | FE+BE | 33 | 196, 197 |
 | TC-GS-ROLE-E2E-066-modal-changelog-search-dan-filter | Modal Changelog: Search per Kelas Kolom dan Filter Varian Tab Total Control, System, dan Detail | FE+BE | 64 | 199, 200, 201 |
-| TC-GS-ROLE-E2E-067-modal-changelog-sort-setup-column-dan-pagination | Modal Changelog: Sort per Kolom, Setup Column, dan Pagination | FE+BE | 73 | 202, 203, 206 |
+| TC-GS-ROLE-E2E-067-modal-changelog-sort-setup-column-dan-pagination | Modal Changelog: Sort per Kolom, Setup Column, dan Pagination | FE+BE | 85 | 202, 203, 206 |
 | TC-GS-ROLE-E2E-068-download-modal-changelog-isi-file-per-varian | Download Modal Changelog: Berkas CSV dan XLSX per Varian | FE+BE | 26 | 204 |
 | TC-GS-ROLE-E2E-069-resilience-export-gagal-download-tabel-dan-changelog | Resilience Export: Kegagalan Download Tabel Total Control dan Modal Changelog | FE+BE | 13 | 179, 205 |
 | TC-GS-ROLE-E2E-070-resilience-tulis-assign-total-control-read-only-dan-role | Resilience Tulis: Assign Total Control, Read Only, dan Role Gagal 5xx atau Timeout | FE+BE | 51 | 64, 81, 97, 306 |
@@ -84,37 +84,49 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 317 TC aktif masuk spec, 0 TC
 | TC-GS-ROLE-E2E-074-pencatatan-changelog-total-control-assign-upgrade-remove-dan-auto-revert | Pencatatan Changelog Tab Total Control: Assign, Upgrade dari Read Only, Remove, dan Auto-Revert | FE+BE | 36 | 207, 208, 209, 210 |
 | TC-GS-ROLE-E2E-075-pencatatan-changelog-read-only-assign-remove-dan-auto-revert | Pencatatan Changelog Tab Read Only: Assign, Remove, dan Auto-Revert | FE+BE | 18 | 211 |
 | TC-GS-ROLE-E2E-076-pencatatan-changelog-system-dan-detail-edit-field-create-update-delete | Pencatatan Changelog Tab System dan Detail: Edit Field Create, Update, dan Delete | FE+BE | 29 | 212, 213, 214 |
-| TC-GS-ROLE-E2E-077-pencatatan-changelog-system-dan-detail-assign-remove-baris-dan-superset | Pencatatan Changelog Tab System dan Detail: Assign dan Remove Baris Role serta Tab System sebagai Superset Detail | FE+BE | 40 | 215, 216, 219 |
+| TC-GS-ROLE-E2E-077-pencatatan-changelog-system-dan-detail-assign-remove-baris-dan-superset | Pencatatan Changelog Tab System dan Detail: Assign dan Remove Baris Role serta Tab System sebagai Superset Detail | FE+BE | 42 | 215, 216, 219 |
 | TC-GS-ROLE-E2E-078-pencatatan-changelog-remove-baris-target-tc-dan-bulk-remove-per-tier | Pencatatan Changelog: Remove Baris Target Total Control dan Bulk Remove per Tier | FE+BE | 34 | 217, 218 |
 | TC-GS-ROLE-E2E-079-pencatatan-log-lama-tidak-berubah-setelah-rename-dan-modified-by-last-updated | Pencatatan Log Lama Tidak Berubah setelah Rename User serta Modified By dan Last Updated oleh Assign | FE+BE | 19 | 220, 225 |
-| TC-GS-ROLE-E2E-080-pencatatan-system-log-aktor-dan-activity-log-access-level | Pencatatan System Log Aktor dan Activity Log untuk Assign, Remove, dan Auto-Revert Access Level | FE+BE | 42 | 221, 289 |
-| TC-GS-ROLE-E2E-081-pencatatan-system-log-aktor-dan-activity-log-baris-role | Pencatatan System Log Aktor dan Activity Log untuk Edit, Assign, dan Remove Baris Role | FE+BE | 21 | 222 |
+| TC-GS-ROLE-E2E-080-pencatatan-system-log-aktor-dan-activity-log-access-level | Pencatatan System Log Aktor dan Activity Log untuk Assign, Remove, dan Auto-Revert Access Level | FE+BE | 61 | 221, 289 |
+| TC-GS-ROLE-E2E-081-pencatatan-system-log-aktor-dan-activity-log-baris-role | Pencatatan System Log Aktor dan Activity Log untuk Edit, Assign, dan Remove Baris Role | FE+BE | 31 | 222 |
 | TC-GS-ROLE-E2E-082-pencatatan-changelog-user-dan-changelog-user-role | Pencatatan Changelog: User dan Changelog: User > Role | FE+BE | 27 | 223, 290 |
 | TC-GS-ROLE-E2E-083-absence-log-assign-total-control-tidak-menulis-changelog-user-role | Absence Log: Assign Total Control Tidak Menulis Entry ke Changelog: User > Role | FE+BE | 8 | 224 |
-| TC-GS-ROLE-E2E-084-sinkron-menu-modul-target-assign-remove-baris-dan-edit-crud | Sinkronisasi Menu Modul Target: Assign Role, Remove Baris, dan Edit CRUD | FE+BE | 29 | 226, 227, 228 |
-| TC-GS-ROLE-E2E-085-sinkron-sidebar-target-assign-dan-remove-total-control | Sinkronisasi Sidebar Target: Assign dan Remove Total Control | FE+BE | 18 | 229, 230 |
+| TC-GS-ROLE-E2E-084-sinkron-menu-modul-target-assign-remove-baris-dan-edit-crud | Sinkronisasi Menu Modul Target: Assign Role, Remove Baris, dan Edit CRUD | FE+BE | 31 | 226, 227, 228 |
+| TC-GS-ROLE-E2E-085-sinkron-sidebar-target-assign-dan-remove-total-control | Sinkronisasi Sidebar Target: Assign dan Remove Total Control | FE+BE | 20 | 229, 230 |
 | TC-GS-ROLE-E2E-086-sinkron-edit-crud-dengan-user-detail-tab-role | Sinkronisasi Edit CRUD antara Detail Role dan Tab Role User Detail | FE+BE | 12 | 231, 232 |
 | TC-GS-ROLE-E2E-087-cascade-remove-access-global-settings-pada-tab-dan-detail | Cascade Remove Access Global Settings pada Tab dan Detail Role | FE+BE | 73 | 233, 234, 291 |
 | TC-GS-ROLE-E2E-088-cascade-user-dihapus-atau-dinonaktifkan | Cascade User Dihapus atau Dinonaktifkan pada Tab dan Detail Role | FE+BE | 28 | 235, 236 |
-| TC-GS-ROLE-E2E-089-sinkron-rename-position-dan-status-custom-field | Sinkronisasi Rename Position dan Status Custom Field pada Tab Total Control | FE+BE | 23 | 237, 240 |
+| TC-GS-ROLE-E2E-089-sinkron-rename-position-dan-status-custom-field | Sinkronisasi Rename Position dan Status Custom Field pada Tab Total Control | FE+BE | 25 | 237, 240 |
 | TC-GS-ROLE-E2E-090-format-tanggal-general-settings-tab-dan-changelog | Format Tanggal General Settings pada Tab Total Control dan Modal Changelog | FE+BE | 21 | 238, 239 |
-| TC-GS-ROLE-E2E-091-notifikasi-in-app-remove-access-level-dan-assign-tanpa-notifikasi | Notifikasi In-App Remove Access Level dan Assign Total Control Tanpa Notifikasi | FE+BE | 34 | 62, 241, 242 |
+| TC-GS-ROLE-E2E-091-notifikasi-in-app-remove-access-level-dan-assign-tanpa-notifikasi | Notifikasi In-App Remove Access Level dan Assign Total Control Tanpa Notifikasi | FE+BE | 37 | 62, 241, 242 |
 | TC-GS-ROLE-E2E-092-notifikasi-in-app-auto-revert-dan-bulk-remove | Notifikasi In-App Auto-Revert dan Bulk Remove | FE+BE | 44 | 243, 244, 245 |
 | TC-GS-ROLE-E2E-093-tanpa-gating-plan-role-tampil-di-semua-plan | Fitur Ber-Plan Tetap Muncul sebagai Role di Semua Plan | FE+BE | 27 | 246 |
-| TC-GS-ROLE-E2E-094-isolasi-akses-produk-lain-assign-total-control | Isolasi Akses Produk Lain pada Assign Total Control Global Settings | FE+BE | 12 | 283 |
+| TC-GS-ROLE-E2E-094-isolasi-akses-produk-lain-assign-total-control | Isolasi Akses Produk Lain pada Assign Total Control Global Settings | FE+BE | 16 | 283 |
 | TC-GS-ROLE-E2E-095-state-tenant-suspended-write-lockdown-access-level | State Tenant Suspended: Write-Lockdown Aksi Access Level pada Tab Total Control dan Read Only | FE+BE | 38 | 263, 264, 265, 266 |
-| TC-GS-ROLE-E2E-096-state-tenant-suspended-write-lockdown-detail | State Tenant Suspended: Write-Lockdown Aksi Tulis pada Detail Manage TAG | FE+BE | 31 | 267, 268, 269, 270 |
+| TC-GS-ROLE-E2E-096-state-tenant-suspended-write-lockdown-detail | State Tenant Suspended: Write-Lockdown Aksi Tulis pada Detail Manage TAG | FE+BE | 32 | 267, 268, 269, 270 |
 | TC-GS-ROLE-E2E-097-state-tenant-suspended-tetap-dapat-melihat | State Tenant Suspended: Tab dan Detail Role & Permission Tetap Dapat Dilihat | FE+BE | 8 | 271 |
-| TC-GS-ROLE-E2E-098-defense-in-depth-edit-crud-remove-baris-dan-aksi-tulis-detail | Defense-in-Depth: Edit CRUD, Remove Baris Role, dan Aksi Tulis Detail Lewat Permintaan Langsung Ditolak | FE+BE | 44 | 247, 248, 249, 250, 251, 252, 257 |
-| TC-GS-ROLE-E2E-099-defense-in-depth-access-level-dan-assign-ke-diri-sendiri | Defense-in-Depth: Remove Access Level dan Assign ke Diri Sendiri Lewat Permintaan Langsung Ditolak | FE+BE | 51 | 253, 254, 255, 256, 313, 314, 315 |
-| TC-GS-ROLE-E2E-100-defense-in-depth-payload-flag-bulk-dan-prioritas-403 | Defense-in-Depth: Flag Payload Diabaikan, Bulk Remove Default User, dan Prioritas Pesan 403 | FE+BE | 33 | 258, 259, 260, 308 |
+| TC-GS-ROLE-E2E-098-defense-in-depth-edit-crud-remove-baris-dan-aksi-tulis-detail | Defense-in-Depth: Edit CRUD, Remove Baris Role, dan Aksi Tulis Detail Lewat Permintaan Langsung Ditolak | FE+BE | 40 | 247, 248, 249, 250, 251, 252, 257 |
+| TC-GS-ROLE-E2E-099-defense-in-depth-access-level-dan-assign-ke-diri-sendiri | Defense-in-Depth: Remove Access Level dan Assign ke Diri Sendiri Lewat Permintaan Langsung Ditolak | FE+BE | 36 | 253, 254, 255, 256, 313, 314, 315 |
+| TC-GS-ROLE-E2E-100-defense-in-depth-payload-flag-bulk-dan-prioritas-403 | Defense-in-Depth: Flag Payload Diabaikan, Bulk Remove Default User, dan Prioritas Pesan 403 | FE+BE | 34 | 258, 259, 260, 308 |
 | TC-GS-ROLE-E2E-101-isolasi-data-entitas-lain | Isolasi Data: Permintaan List Tab Total Control dengan Identitas Client Lain Tidak Mengembalikan User Client Lain | FE+BE | 5 | 262 |
 | TC-GS-ROLE-E2E-102-default-user-tetap-total-control-setelah-semua-total-control-lain-di-remove | Default User Tetap Total Control Setelah Semua Total Control Lain Di-Remove | FE+BE | 24 | 278 |
-| TC-GS-ROLE-E2E-103-konflik-edit-crud-nilai-sama-status-berubah-dan-baris-dihapus | Konflik Antar Admin pada Edit CRUD: Nilai Sama, Status Total Control Berubah, dan Baris Sudah Dihapus | FE+BE | 34 | 272, 273, 284 |
-| TC-GS-ROLE-E2E-104-konflik-remove-baris-sudah-dihapus-atau-menjadi-total-control | Konflik Antar Admin pada Remove Baris Role: Sudah Dihapus Admin Lain atau Target Menjadi Total Control | FE+BE | 36 | 274, 276, 297 |
-| TC-GS-ROLE-E2E-105-konflik-remove-access-level-sudah-di-remove-atau-tier-berbeda | Konflik Antar Admin pada Remove Access Level: Target Sudah di-Remove atau Tier Berbeda dari Tab yang Dirender | FE+BE | 41 | 275, 298 |
-| TC-GS-ROLE-E2E-106-konflik-bulk-remove-sebagian-hilang-status-berubah-dan-nol-berhasil | Konflik Antar Admin pada Bulk Remove: Sebagian Baris Sudah Dihapus, Status Total Control Berubah, dan Nol Baris Berhasil | FE+BE | 62 | 134, 296, 299 |
+| TC-GS-ROLE-E2E-103-konflik-edit-crud-nilai-sama-status-berubah-dan-baris-dihapus | Konflik Antar Admin pada Edit CRUD: Nilai Sama, Status Total Control Berubah, dan Baris Sudah Dihapus | FE+BE | 38 | 272, 273, 284 |
+| TC-GS-ROLE-E2E-104-konflik-remove-baris-sudah-dihapus-atau-menjadi-total-control | Konflik Antar Admin pada Remove Baris Role: Sudah Dihapus Admin Lain atau Target Menjadi Total Control | FE+BE | 50 | 274, 276, 297 |
+| TC-GS-ROLE-E2E-105-konflik-remove-access-level-sudah-di-remove-atau-tier-berbeda | Konflik Antar Admin pada Remove Access Level: Target Sudah di-Remove atau Tier Berbeda dari Tab yang Dirender | FE+BE | 50 | 275, 298 |
+| TC-GS-ROLE-E2E-106-konflik-bulk-remove-sebagian-hilang-status-berubah-dan-nol-berhasil | Konflik Antar Admin pada Bulk Remove: Sebagian Baris Sudah Dihapus, Status Total Control Berubah, dan Nol Baris Berhasil | FE+BE | 72 | 134, 296, 299 |
 | TC-GS-ROLE-E2E-107-realtime-auto-revert-pada-tab-total-control-sesi-admin-lain | Realtime: Auto-Revert Menghilangkan User dari Tab Total Control Sesi Admin Lain Tanpa Reload | FE+BE | 8 | 277 |
+| TC-GS-ROLE-E2E-108-switch-active-on-pertama-off-inactive-retained-dan-on-pemulihan | Switch Active: ON Pertama Membuat Baris, OFF Menyimpan Inactive-Retained, dan ON Memulihkan Nilai Tersimpan | FE+BE | 38 | 318, 319, 320 |
+| TC-GS-ROLE-E2E-109-popup-assign-role-eksklusi-baris-inactive-retained-dan-konflik-user-menjadi-inactive-retained | Popup Assign Role: Eksklusi User dengan Baris Inactive-Retained dan Konflik User yang Menjadi Inactive-Retained Sejak Render | FE+BE | 30 | 321, 322 |
+| TC-GS-ROLE-E2E-110-cascade-remove-access-global-settings-baris-active-dan-inactive-retained | Cascade Remove Access Global Settings: Baris Active dan Inactive-Retained Terhapus Tanpa Pemulihan | FE+BE | 25 | 325 |
+| TC-GS-ROLE-E2E-111-auto-revert-lewat-switch-active-total-control-dan-read-only | Auto-Revert lewat Switch Active: Dialog Remove, Access Level Lepas pada User Total Control dan Read Only | FE+BE | 31 | 326, 327 |
+| TC-GS-ROLE-E2E-112-pencatatan-log-switch-active-remove-assign-auto-revert-dan-permintaan-sama | Pencatatan Log Switch Active: Remove dan Auto-Revert Terpisah, Remove/Assign tanpa Activate/Deactivate, dan Permintaan Sama Berulang | FE+BE | 80 | 329, 330, 338 |
+| TC-GS-ROLE-E2E-113-switch-active-menyembunyikan-menu-modul-target-lintas-sesi | Switch Active OFF Menyembunyikan Menu Modul Target pada Sesi User Target, ON Menampilkannya Kembali | FE+BE | 12 | 331 |
+| TC-GS-ROLE-E2E-114-landing-page-user-seluruh-role-inactive-retained | Landing Page User yang Seluruh Role-nya Inactive-Retained | FE+BE | 7 | 332 |
+| TC-GS-ROLE-E2E-115-absence-log-edit-crud-remove-baris-dan-bulk-remove-lewat-permintaan-langsung | Absence Log: Edit CRUD, Remove Baris, dan Bulk Remove Lewat Permintaan Langsung Tidak Menulis Entri Baru | FE+BE | 39 | 340, 341 |
+| TC-GS-ROLE-E2E-116-absence-log-assign-ke-diri-sendiri-dan-switch-active-default-user-diri-sendiri | Absence Log: Assign ke Diri Sendiri dan Switch Active Default User/Diri Sendiri Lewat Permintaan Langsung Tidak Menulis Entri Baru | FE+BE | 45 | 333, 334 |
+| TC-GS-ROLE-E2E-117-absence-log-switch-active-oleh-aktor-tanpa-hak-dan-client-suspended | Absence Log: Switch Active Target Total Control oleh Manage user and role, oleh Read Only, dan pada Client Suspended Tidak Menulis Entri Baru | FE+BE | 39 | 335, 336, 337 |
+| TC-GS-ROLE-E2E-118-absence-log-cancel-dialog-auto-revert-dan-switch-off-baris-sudah-dihapus | Absence Log: Cancel Dialog Auto-Revert dan Switch OFF atas Baris yang Sudah Dihapus Admin Lain Tidak Menulis Entri Baru | FE+BE | 33 | 328, 339 |
+| TC-GS-ROLE-E2E-119-assign-total-control-dan-read-only-mengaktifkan-baris-inactive-retained-dan-menyelaraskan-ke-tier | Assign Total Control dan Read Only: Baris Inactive-Retained Diaktifkan dan Diselaraskan ke Pola Tier | FE+BE | 37 | 323, 324 |
 
 Kolom Langkah = jumlah langkah bernomor nominal; spec dengan perulangan tabel punya ekspansi lebih besar yang dihitung di `## Notes` spec itu. Spec di atas sekitar 35 langkah memuat alasan di `## Notes`.
 
@@ -122,10 +134,14 @@ Kolom Langkah = jumlah langkah bernomor nominal; spec dengan perulangan tabel pu
 
 Tidak ada TC yang terbelah lintas spec pada sourceTc; rujukan absence log (kelas g) ada di `## Notes` spec 083 dan spec fungsional terkait (S-05).
 
+- Rujukan absence log: TC-247 (spec 098) dan TC-260 (spec 100) punya blok absence di spec 115; TC-313, TC-314, dan TC-315 (spec 099) punya blok absence di spec 116. Id TC tetap di `sourceTc` spec asalnya; rujukan dicatat di `## Notes` kedua spec (S-05).
+- Rujukan pencatatan: log dan notifikasi alur TC-326 diasersi sebagai TC-329 di spec 112; spec 111 (TC-326, TC-327) menunjuk spec 112 di `## Notes`.
+
 ## Kebutuhan lingkungan (tim FE)
 
 - Env baru belum terdaftar di `spectra.config.ts` dan `.env.example` (hanya disebut di Prerequisites spec): `GS_ROLE_MANAGE_CRUD_PASSWORD` (Hendra Wijaya), `GS_ROLE_MANAGE_READ_PASSWORD` (Fajar Nugroho), `GS_ROLE_MANAGE_CRD_PASSWORD` (Lina Marlina), `GS_ROLE_MANAGETAG_READ_PASSWORD` (Yusuf Hidayat), `GS_ROLE_TARGET_PASSWORD` (akun target yang login di sesi sendiri, mis. Agus Salim).
 - Env yang sudah ada dan dipakai: `GS_TC_PASSWORD`, `GS_TC2_PASSWORD` (Eko Prasetyo), `GS_RO_PASSWORD`, `GS_DEFAULT_PASSWORD`, `GS_CLIENTB_TC_PASSWORD`, `GS_CLIENTSUSP_TC_PASSWORD`, `GS_PLANSTARTER_TC_PASSWORD`, `GS_PLANGROWTH_TC_PASSWORD`, `GS_PLANPRO_TC_PASSWORD`, `GS_PLANENT_TC_PASSWORD`.
+- Akun target Pre-setup #20 yang login sendiri tanpa email dan env di TC (ditulis "disediakan tim FE" di spec): Hanif Pradipta (spec 113), Cakra Mahendra (spec 112, 118), Lutfi Hakim (spec 114), serta akun Total Control Client C suspended dan Siti Nurhaliza pada spec 117. Tidak ada nama env baru yang dikarang. Given state Pre-setup #20 (baris Active dan inactive-retained per user, Total Control ulang) di spec 108 sampai 119 adalah kemampuan yang disediakan tim FE/BE; LLD belum mengkontrakkan endpoint Switch Active.
 - Kemampuan teknis yang disediakan tim FE/BE (tanpa endpoint karangan): seeding dan pemulihan Given lewat API (access level, baris role, user bersuffix), aksi admin kedua lewat sesi API, membaca dan menyetel flag Guided Tooltip `guided_tooltip_seen_gs-role`, membaca berkas CSV/XLSX terunduh, mengamati request jaringan, `Spectra.intercept()` untuk kegagalan 5xx dan timeout, dua konteks browser paralel, perangkat Android uji (spec 012 sampai 014), data volume (≥101 baris eligible untuk Detail Manage hardware, >5.000 user untuk Tab Total Control), mengubah Selection Limit, Client B/C/plan, Custom Field `Region`, dan kunci flag Guided Tooltip halaman User.
 
 ## Temuan yang masih terbuka
@@ -141,6 +157,14 @@ Rincian per TC ada di sub-butir "Temuan untuk QA" pada `## Notes` tiap spec. Rin
 - TC-228 (spec 084): Doni Pratama "Manage files Read saja" berbeda dari Pre-setup #10 (R,D).
 - TC-245 (spec 092): Rina Putri Inactive di Pre-setup #4 tetapi diminta login; TC-233 Expected d (notifikasi) tanpa langkah observasi (spec 087).
 - Pre-setup #18 dan #11 hanya ber-Access Global Settings; mencabutnya ditolak V-15 sehingga spec 087 menambah Access produk lain sebagai Given.
+- TC-326 (spec 111): Given menyebut keenam baris CRUD penuh, sedangkan Expected e menyebut `Manage files` R,D checked; spec mengikuti Expected.
+- TC-322 (spec 109) dan TC-339 (spec 118): Expected menyebut Sesi B sebagai surface asersi padahal pelaku kedua hanya sesi API; state dibaca dari Sesi A.
+- TC-331 (spec 113): sidebar Hanif Pradipta hanya memuat menu TAG sehingga tidak ada item menu lain sebagai anchor absence; spec memakai area konten.
+- TC-337 (spec 117): user target, surface log, dan cara akun client suspended membaca log tidak disebut TC; respons yang membedakan alasan suspended tidak punya pesan tertulis.
+- TC-333 sampai TC-337, TC-340, TC-341, TC-328, TC-339 (spec 115 sampai 118): surface log untuk "tidak ada entry log baru" tidak disebut TC; spec memakai Changelog Detail role terkait dan Changelog: User > Role target.
+- TC-333 Expected b: "Disabled" adalah perilaku FE, bukan efek permintaan yang ditolak; tidak diasersi (bagian 8b butir 1).
+- TC-332 (spec 114): kolom Precondition terpotong; diperlakukan sebagai login Lutfi Hakim tanpa access level.
+- TC-329 (spec 112): `[Date]` pada body notifikasi tanpa format; mengikuti format tanggal General Settings aktif.
 - Post Condition tanpa langkah observasi tidak diasersi (dicatat per spec).
 - Estimasi langkah di rencana lebih rendah dari hasil: banyak spec berada di atas sekitar 35 langkah (satu `Verifikasi` per klausa, S-01); alasan tertulis di Notes dan perlu ditinjau QA untuk spec dengan ekspansi >70 langkah (mis. 054, 064, 067, 035, 087).
 
@@ -465,3 +489,27 @@ Rincian per TC ada di sub-butir "Temuan untuk QA" pada `## Notes` tiap spec. Rin
 | TC-GS-ROLE-315 | TC-GS-ROLE-E2E-099-defense-in-depth-access-level-dan-assign-ke-diri-sendiri | FE+BE |
 | TC-GS-ROLE-316 | TC-GS-ROLE-E2E-025-popup-assign-pencarian-name-email-position-division-status-dan-no-result | FE+BE |
 | TC-GS-ROLE-317 | TC-GS-ROLE-E2E-027-popup-assign-sort-pagination-dan-column-visibility | FE+BE |
+| TC-GS-ROLE-318 | TC-GS-ROLE-E2E-108-switch-active-on-pertama-off-inactive-retained-dan-on-pemulihan | FE+BE |
+| TC-GS-ROLE-319 | TC-GS-ROLE-E2E-108-switch-active-on-pertama-off-inactive-retained-dan-on-pemulihan | FE+BE |
+| TC-GS-ROLE-320 | TC-GS-ROLE-E2E-108-switch-active-on-pertama-off-inactive-retained-dan-on-pemulihan | FE+BE |
+| TC-GS-ROLE-321 | TC-GS-ROLE-E2E-109-popup-assign-role-eksklusi-baris-inactive-retained-dan-konflik-user-menjadi-inactive-retained | FE+BE |
+| TC-GS-ROLE-322 | TC-GS-ROLE-E2E-109-popup-assign-role-eksklusi-baris-inactive-retained-dan-konflik-user-menjadi-inactive-retained | FE+BE |
+| TC-GS-ROLE-323 | TC-GS-ROLE-E2E-119-assign-total-control-dan-read-only-mengaktifkan-baris-inactive-retained-dan-menyelaraskan-ke-tier | FE+BE |
+| TC-GS-ROLE-324 | TC-GS-ROLE-E2E-119-assign-total-control-dan-read-only-mengaktifkan-baris-inactive-retained-dan-menyelaraskan-ke-tier | FE+BE |
+| TC-GS-ROLE-325 | TC-GS-ROLE-E2E-110-cascade-remove-access-global-settings-baris-active-dan-inactive-retained | FE+BE |
+| TC-GS-ROLE-326 | TC-GS-ROLE-E2E-111-auto-revert-lewat-switch-active-total-control-dan-read-only | FE+BE |
+| TC-GS-ROLE-327 | TC-GS-ROLE-E2E-111-auto-revert-lewat-switch-active-total-control-dan-read-only | FE+BE |
+| TC-GS-ROLE-328 | TC-GS-ROLE-E2E-118-absence-log-cancel-dialog-auto-revert-dan-switch-off-baris-sudah-dihapus | FE+BE |
+| TC-GS-ROLE-329 | TC-GS-ROLE-E2E-112-pencatatan-log-switch-active-remove-assign-auto-revert-dan-permintaan-sama | FE+BE |
+| TC-GS-ROLE-330 | TC-GS-ROLE-E2E-112-pencatatan-log-switch-active-remove-assign-auto-revert-dan-permintaan-sama | FE+BE |
+| TC-GS-ROLE-331 | TC-GS-ROLE-E2E-113-switch-active-menyembunyikan-menu-modul-target-lintas-sesi | FE+BE |
+| TC-GS-ROLE-332 | TC-GS-ROLE-E2E-114-landing-page-user-seluruh-role-inactive-retained | FE+BE |
+| TC-GS-ROLE-333 | TC-GS-ROLE-E2E-116-absence-log-assign-ke-diri-sendiri-dan-switch-active-default-user-diri-sendiri | FE+BE |
+| TC-GS-ROLE-334 | TC-GS-ROLE-E2E-116-absence-log-assign-ke-diri-sendiri-dan-switch-active-default-user-diri-sendiri | FE+BE |
+| TC-GS-ROLE-335 | TC-GS-ROLE-E2E-117-absence-log-switch-active-oleh-aktor-tanpa-hak-dan-client-suspended | FE+BE |
+| TC-GS-ROLE-336 | TC-GS-ROLE-E2E-117-absence-log-switch-active-oleh-aktor-tanpa-hak-dan-client-suspended | FE+BE |
+| TC-GS-ROLE-337 | TC-GS-ROLE-E2E-117-absence-log-switch-active-oleh-aktor-tanpa-hak-dan-client-suspended | FE+BE |
+| TC-GS-ROLE-338 | TC-GS-ROLE-E2E-112-pencatatan-log-switch-active-remove-assign-auto-revert-dan-permintaan-sama | FE+BE |
+| TC-GS-ROLE-339 | TC-GS-ROLE-E2E-118-absence-log-cancel-dialog-auto-revert-dan-switch-off-baris-sudah-dihapus | FE+BE |
+| TC-GS-ROLE-340 | TC-GS-ROLE-E2E-115-absence-log-edit-crud-remove-baris-dan-bulk-remove-lewat-permintaan-langsung | FE+BE |
+| TC-GS-ROLE-341 | TC-GS-ROLE-E2E-115-absence-log-edit-crud-remove-baris-dan-bulk-remove-lewat-permintaan-langsung | FE+BE |

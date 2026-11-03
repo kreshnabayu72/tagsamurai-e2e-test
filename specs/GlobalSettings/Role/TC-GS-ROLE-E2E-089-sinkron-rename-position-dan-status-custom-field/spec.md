@@ -42,25 +42,27 @@ coverage:
 ### TC-GS-ROLE-240: Kolom Custom Field mengikuti status Custom Field
 
 11. Buka Role & Permission > Tab Total Control
-12. Klik `⋯` pada header kolom Actions untuk membuka modal Setup Column
-13. Verifikasi kolom `Region {runId}-089` tersedia di Setup Column
-14. Tampilkan kolom `Region {runId}-089`
-15. Klik `[Save]`
-16. Buka Global Settings > User > Tab Custom Field, ketik Search `Region {runId}-089`, tekan Enter
-17. Matikan switch Active baris `Region {runId}-089`, klik `[Deactivate]` pada dialog
-18. Tunggu aksi selesai
-19. Buka Role & Permission > Tab Total Control, muat ulang halaman
-20. Klik `⋯` pada header kolom Actions untuk membuka modal Setup Column
-21. Verifikasi kolom `Position` tersedia di Setup Column
-22. Verifikasi kolom `Region {runId}-089` tidak tersedia di Setup Column
-23. Tutup modal Setup Column dengan `✕`
+12. Klik `⋯` pada header kolom Actions
+13. Klik item `Setup Column...`
+14. Verifikasi kolom `Region {runId}-089` tersedia di Setup Column
+15. Tampilkan kolom `Region {runId}-089`
+16. Klik `[Save]`
+17. Buka Global Settings > User > Tab Custom Field, ketik Search `Region {runId}-089`, tekan Enter
+18. Matikan switch Active baris `Region {runId}-089`, klik `[Deactivate]` pada dialog
+19. Tunggu aksi selesai
+20. Buka Role & Permission > Tab Total Control, muat ulang halaman
+21. Klik `⋯` pada header kolom Actions
+22. Klik item `Setup Column...`
+23. Verifikasi kolom `Position` tersedia di Setup Column
+24. Verifikasi kolom `Region {runId}-089` tidak tersedia di Setup Column
+25. Tutup modal Setup Column dengan `✕`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/role/TestCases/tc-role.md`.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan TC mengikuti TC sumber; dua TC memakai data yang berbeda (Position Ahmad Fauzi dan Custom Field milik spec) sehingga tidak ada ketergantungan data.
-- Langkah penghubung (aksi tanpa `Verifikasi`): Search target (langkah 1, 6, 8, 16); "Tunggu aksi selesai" (langkah 5, 10, 18); pemulihan nama Position (langkah 8 sampai 10, S-09); menampilkan kolom dan menyimpan Setup Column (langkah 14 dan 15, bagian dari Langkah Uji 1 TC-GS-ROLE-240); menutup modal Setup Column (langkah 23).
-- Urutan Expected TC-GS-ROLE-240: langkah 13 memverifikasi Expected a sebelum kolom ditampilkan; langkah 21 (kolom `Position` tersedia) adalah anchor positif bahwa daftar Setup Column sudah termuat sebelum asersi absence kolom Custom Field pada langkah 22 (Expected b, bagian 8b butir 2).
+- Langkah penghubung (aksi tanpa `Verifikasi`): Search target (langkah 1, 6, 8, 17); "Tunggu aksi selesai" (langkah 5, 10, 19); pemulihan nama Position (langkah 8 sampai 10, S-09); membuka modal Setup Column lewat `⋯` header kolom Actions dan item `Setup Column...` (langkah 12 dan 13, 21 dan 22); menampilkan kolom dan menyimpan Setup Column (langkah 15 dan 16, bagian dari Langkah Uji 1 TC-GS-ROLE-240); menutup modal Setup Column (langkah 25).
+- Urutan Expected TC-GS-ROLE-240: langkah 14 memverifikasi Expected a sebelum kolom ditampilkan; langkah 23 (kolom `Position` tersedia) adalah anchor positif bahwa daftar Setup Column sudah termuat sebelum asersi absence kolom Custom Field pada langkah 24 (Expected b, bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-GS-ROLE-240 memakai Custom Field `Region` yang tidak ada di Tabel Data Uji Pre-setup TC; spec memakai `Region {runId}-089` milik spec yang di-seed lewat API (mekanisme seeding tidak didefinisikan TC).
   - TC-GS-ROLE-240 Data Uji `[Custom Field aktif]: Region` tidak menyebut tipe field; spec memakai tipe Text.

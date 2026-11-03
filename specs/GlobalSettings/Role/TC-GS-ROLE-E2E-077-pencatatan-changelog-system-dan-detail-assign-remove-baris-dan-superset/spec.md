@@ -51,52 +51,54 @@ coverage:
 8. Aksi pemicu (sesi API Ahmad Fauzi): Assign baris Manage TAG ke Wawan Setiawan dan Nina Kartika (setara TC-GS-ROLE-94 langkah 1 sampai 3)
 9. Klik Role Name `Manage TAG`, klik [Changelog], ketik Search `Wawan Setiawan`, tekan Enter
 10. Verifikasi total hasil Search sama dengan `B-WS-DET` + 1 (tepat 1 entry baru)
-11. Verifikasi entry baru (teratas): Action `Assign`, Field `Access`, Old Value `—`, New Value `Assigned`
+11. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 10): Action `Assign`, Field `Access`, Old Value `—`, New Value `Assigned`
 12. Verifikasi tidak ada entry Edit tambahan untuk Read; satu-satunya entry baru adalah Assign pada langkah 11
 13. Ganti isi kotak search dengan `Nina Kartika`, tekan Enter
 14. Verifikasi total hasil Search sama dengan `B-NK-DET` + 1 (tepat 1 entry baru)
-15. Verifikasi entry baru (teratas): Action `Assign`, Field `Access`, Old Value `—`, New Value `Assigned`
+15. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 14): Action `Assign`, Field `Access`, Old Value `—`, New Value `Assigned`
 16. Verifikasi tidak ada entry Edit tambahan untuk Read; satu-satunya entry baru adalah Assign pada langkah 15
 17. Tutup modal Changelog, klik breadcrumb `System`, klik [Changelog], ketik Search `Wawan Setiawan`, tekan Enter
 18. Verifikasi total hasil Search sama dengan `B-WS-SYS` + 1 (tepat 1 entry baru)
-19. Verifikasi entry baru (teratas): Action `Assign`, Field `Access`, Old Value `—`, New Value `Assigned`
+19. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 18): Action `Assign`, Field `Access`, Old Value `—`, New Value `Assigned`
 20. Ganti isi kotak search dengan `Nina Kartika`, tekan Enter
 21. Verifikasi total hasil Search sama dengan `B-NK-SYS` + 1 (tepat 1 entry baru)
-22. Verifikasi entry baru (teratas): Action `Assign`, Field `Access`, Old Value `—`, New Value `Assigned`
+22. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 21): Action `Assign`, Field `Access`, Old Value `—`, New Value `Assigned`
 
 ### TC-GS-ROLE-216: Entry Remove baris role
 
 23. Tutup modal Changelog, aksi pemicu (sesi API Ahmad Fauzi): Remove baris Doni Pratama dari Detail "Manage TAG" (setara TC-GS-ROLE-112 langkah 1 sampai 2)
 24. Klik Role Name `Manage TAG`, klik [Changelog], ketik Search `Doni Pratama`, tekan Enter
 25. Verifikasi total hasil Search sama dengan `B-DP-DET` + 1 (tepat 1 entry baru)
-26. Verifikasi entry baru (teratas): Action `Remove`, Role — User `Manage TAG — Doni Pratama`, Field `Access`, Old Value `Assigned`, New Value `—`
+26. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 25): Action `Remove`, Role — User `Manage TAG — Doni Pratama`, Field `Access`, Old Value `Assigned`, New Value `—`
 27. Tutup modal Changelog, klik breadcrumb `System`, klik [Changelog], ketik Search `Doni Pratama`, tekan Enter
 28. Verifikasi total hasil Search sama dengan `B-DP-SYS` + 1 (tepat 1 entry baru)
-29. Verifikasi entry baru (teratas): Action `Remove`, Role — User `Manage TAG — Doni Pratama`, Field `Access`, Old Value `Assigned`, New Value `—`
+29. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 28): Action `Remove`, Role — User `Manage TAG — Doni Pratama`, Field `Access`, Old Value `Assigned`, New Value `—`
 
 ### TC-GS-ROLE-219: Changelog Detail memuat entry role itu saja, Changelog System superset
 
 30. Tutup modal Changelog, aksi pemicu (sesi API Ahmad Fauzi): centang Update baris Wawan Setiawan di Detail "Manage TAG" (Edit CRUD, setara TC-GS-ROLE-101 langkah 1)
 31. Aksi pemicu (sesi API Ahmad Fauzi): hapus centang Delete baris Doni Pratama di Detail "Manage files" (Edit CRUD)
 32. Klik Role Name `Manage TAG`, klik [Changelog], ketik Search `Wawan Setiawan`, tekan Enter
-33. Verifikasi entry Edit tampil di Changelog Detail "Manage TAG" (teratas): Action `Edit`, Role — User `Manage TAG — Wawan Setiawan`, Field `Update`
-34. Ganti isi kotak search dengan `Doni Pratama`, tekan Enter
-35. Verifikasi total hasil Search sama dengan `B-DP-DET` + 1 (hanya entry Remove dari langkah 23; Changelog Detail "Manage TAG" tidak memuat entry `Manage files — Doni Pratama`)
-36. Tutup modal Changelog, klik breadcrumb `System`, klik [Changelog], ketik Search `Wawan Setiawan`, tekan Enter
-37. Verifikasi Changelog Tab System memuat entry Manage TAG (teratas): Action `Edit`, Role — User `Manage TAG — Wawan Setiawan`, Field `Update`
-38. Ganti isi kotak search dengan `Doni Pratama`, tekan Enter
-39. Verifikasi total hasil Search sama dengan `B-DP-SYS` + 2 (entry Remove Manage TAG dari langkah 23 dan entry Edit Manage files baru)
-40. Verifikasi Changelog Tab System memuat entry Manage files (teratas): Action `Edit`, Role — User `Manage files — Doni Pratama`, Field `Delete`
+33. Verifikasi total hasil Search sama dengan `B-WS-DET` + 2 (entry Assign dari langkah 8 dan entry Edit baru)
+34. Verifikasi entry Edit tampil di Changelog Detail "Manage TAG" (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 33): Action `Edit`, Role — User `Manage TAG — Wawan Setiawan`, Field `Update`
+35. Ganti isi kotak search dengan `Doni Pratama`, tekan Enter
+36. Verifikasi total hasil Search sama dengan `B-DP-DET` + 1 (hanya entry Remove dari langkah 23; Changelog Detail "Manage TAG" tidak memuat entry `Manage files — Doni Pratama`)
+37. Tutup modal Changelog, klik breadcrumb `System`, klik [Changelog], ketik Search `Wawan Setiawan`, tekan Enter
+38. Verifikasi total hasil Search sama dengan `B-WS-SYS` + 2 (entry Assign dari langkah 17 sampai 19 dan entry Edit baru)
+39. Verifikasi Changelog Tab System memuat entry Manage TAG (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 38): Action `Edit`, Role — User `Manage TAG — Wawan Setiawan`, Field `Update`
+40. Ganti isi kotak search dengan `Doni Pratama`, tekan Enter
+41. Verifikasi total hasil Search sama dengan `B-DP-SYS` + 2 (entry Remove Manage TAG dari langkah 23 dan entry Edit Manage files baru)
+42. Verifikasi Changelog Tab System memuat entry Manage files (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 41): Action `Edit`, Role — User `Manage files — Doni Pratama`, Field `Delete`
 
 ## Notes
 
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec memuat 40 langkah nominal. Alasan di atas sekitar 35 langkah: seluruh spec satu kelas (pencatatan Changelog Detail dan Tab System), dan sebagian besar langkah adalah blok baca-log berpola (buka surface, cari entri, lalu `Verifikasi` kolom log) serta baseline, yang tidak dihitung ke ambang (bagian 3 konvensi). TC-GS-ROLE-215 membaca dua user pada dua surface, sehingga jumlah blok baca-log berlipat; tiap blok berdiri sendiri dengan baseline sendiri, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec memuat 42 langkah nominal. Alasan di atas sekitar 35 langkah: seluruh spec satu kelas (pencatatan Changelog Detail dan Tab System), dan sebagian besar langkah adalah blok baca-log berpola (buka surface, cari entri, lalu `Verifikasi` kolom log) serta baseline, yang tidak dihitung ke ambang (bagian 3 konvensi). TC-GS-ROLE-215 membaca dua user pada dua surface, sehingga jumlah blok baca-log berlipat; tiap blok berdiri sendiri dengan baseline sendiri, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Urutan TC sumber (215, 216, 219) dipertahankan. TC-GS-ROLE-219 berjalan terakhir karena memakai Wawan Setiawan (baris Manage TAG hasil TC-GS-ROLE-215) dan Doni Pratama (sesudah Remove baris Manage TAG pada TC-GS-ROLE-216); entry Edit Manage TAG dan Manage files yang diminta Precondition TC-GS-ROLE-219 dibuat oleh aksi pemicu langkah 30 dan 31 dan diasersi, sehingga baseline `B-DP-DET` dan `B-DP-SYS` dicatat sebelumnya.
 - Dependensi TC-GS-ROLE-94, 112, dan 101 dijalankan lewat aksi pemicu sesi API (langkah 8, 23, 30). Edit Delete pada Manage files milik Doni Pratama (langkah 31) tidak punya dependensi TC dan memakai pola yang sama.
-- "Entry baru (teratas)" berarti entri teratas pada hasil Search (urutan default Newest First); jumlah entri baru diyakinkan lewat selisih terhadap baseline. Langkah 35 adalah asersi jumlah terhadap baseline (bukan absence): entry Edit Manage files milik Doni Pratama yang baru tercatat tidak menambah hasil Search di Detail "Manage TAG", sedangkan di Tab System hasil Search bertambah 2 (langkah 39). Entry Manage TAG pada Detail tampil sebagai anchor positif di langkah 33.
-- Langkah penghubung (aksi tanpa `Verifikasi`): menutup modal Changelog, berpindah tab atau Detail lewat breadcrumb `System`, dan mengganti isi kotak search (langkah 1 sampai 7, 9, 13, 17, 20, 24, 27, 32, 34, 36, 38); aksi pemicu API (langkah 8, 23, 30, 31).
+- "Entry baru" dikenali lewat kombinasi kolom yang diasersi pada langkah Verifikasinya dan selisih jumlah terhadap baseline, bukan lewat posisi baris (S-12, S-14); urutan antar-entri yang jatuh pada menit yang sama tidak diasersi karena kolom Date berketelitian menit. Langkah 36 adalah asersi jumlah terhadap baseline (bukan absence): entry Edit Manage files milik Doni Pratama yang baru tercatat tidak menambah hasil Search di Detail "Manage TAG", sedangkan di Tab System hasil Search bertambah 2 (langkah 41). Entry Manage TAG pada Detail dan pada Tab System dibuktikan lewat selisih jumlah Wawan Setiawan pada langkah 33 dan 38 (baseline `B-WS-DET` dan `B-WS-SYS`) sebelum dibaca pada langkah 34 dan 39.
+- Langkah penghubung (aksi tanpa `Verifikasi`): menutup modal Changelog, berpindah tab atau Detail lewat breadcrumb `System`, dan mengganti isi kotak search (langkah 1 sampai 7, 9, 13, 17, 20, 24, 27, 32, 35, 37, 40); aksi pemicu API (langkah 8, 23, 30, 31).
 - Temuan untuk QA:
-  - TC-GS-ROLE-219 Expected a menyebut "hanya memuat entry ber-Role — User 'Manage TAG — …'" (asersi universal); spec memverifikasinya lewat total hasil Search nama user yang memuat entry Manage TAG dan yang diubah di role lain (langkah 35), bukan lewat pemeriksaan seluruh baris modal karena modal dapat memuat banyak halaman dari run sebelumnya.
+  - TC-GS-ROLE-219 Expected a menyebut "hanya memuat entry ber-Role — User 'Manage TAG — …'" (asersi universal); spec memverifikasinya lewat total hasil Search nama user yang memuat entry Manage TAG dan yang diubah di role lain (langkah 36), bukan lewat pemeriksaan seluruh baris modal karena modal dapat memuat banyak halaman dari run sebelumnya.
   - TC-GS-ROLE-219 Precondition tidak menyebut user dan kolom CRUD yang di-Edit; spec memakai Update Manage TAG milik Wawan Setiawan dan Delete Manage files milik Doni Pratama (Pre-setup #10).
   - TC-GS-ROLE-215 dan TC-GS-ROLE-216 tidak mendefinisikan cara menghitung entri pada modal Changelog dan memakai user Pre-setup bernama literal yang entrinya menumpuk lintas run; spec memakai total hasil Search dengan baseline sebagai kemampuan yang disediakan tim FE.

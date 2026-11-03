@@ -54,32 +54,35 @@ coverage:
 
 ### TC-GS-ROLE-269: Remove baris role saat client suspended ditolak
 
-16. Klik Remove pada baris `Doni Pratama`
-17. Klik `[Remove]` pada dialog
-18. Verifikasi toast error `Changes can't be saved while this workspace is suspended or expired.` tampil
-19. Verifikasi halaman tidak menampilkan tampilan khusus suspend (banner, halaman pengganti, atau elemen khusus suspend)
-20. Muat ulang halaman
-21. Verifikasi baris `Doni Pratama` tetap ada di Detail "Manage TAG"
+16. Klik `(⋯)` pada baris `Doni Pratama`
+17. Klik `Remove`
+18. Klik `[Remove]` pada dialog
+19. Verifikasi toast error `Changes can't be saved while this workspace is suspended or expired.` tampil
+20. Verifikasi halaman tidak menampilkan tampilan khusus suspend (banner, halaman pengganti, atau elemen khusus suspend)
+21. Muat ulang halaman
+22. Verifikasi baris `Doni Pratama` tetap ada di Detail "Manage TAG"
 
 ### TC-GS-ROLE-270: Bulk Remove saat client suspended ditolak
 
-22. Centang baris `Doni Pratama`
-23. Centang baris `Rina Putri`
-24. Klik `Bulk Action`
-25. Klik `Remove`
-26. Klik `[Remove]` pada dialog
-27. Verifikasi toast error `Changes can't be saved while this workspace is suspended or expired.` tampil
-28. Verifikasi halaman tidak menampilkan tampilan khusus suspend (banner, halaman pengganti, atau elemen khusus suspend)
-29. Muat ulang halaman
-30. Verifikasi baris `Doni Pratama` tetap ada di Detail "Manage TAG"
-31. Verifikasi baris `Rina Putri` tetap ada di Detail "Manage TAG"
+23. Centang baris `Doni Pratama`
+24. Centang baris `Rina Putri`
+25. Klik `Bulk Action`
+26. Klik `Remove`
+27. Klik `[Remove]` pada dialog
+28. Verifikasi toast error `Changes can't be saved while this workspace is suspended or expired.` tampil
+29. Verifikasi halaman tidak menampilkan tampilan khusus suspend (banner, halaman pengganti, atau elemen khusus suspend)
+30. Muat ulang halaman
+31. Verifikasi baris `Doni Pratama` tetap ada di Detail "Manage TAG"
+32. Verifikasi baris `Rina Putri` tetap ada di Detail "Manage TAG"
 
 ## Notes
 
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Kelas harness: state tenant (h), prinsip 13h bagian 3 konvensi; keempat TC berbagi akun, Client, dan Detail yang sama. Aksi tulis access level (Tab Total Control dan Read Only) ada di spec `TC-GS-ROLE-E2E-095-state-tenant-suspended-write-lockdown-access-level`; tampilan baca ada di spec `TC-GS-ROLE-E2E-097-state-tenant-suspended-tetap-dapat-melihat`.
-- Langkah penghubung (aksi tanpa `Verifikasi`): membuka Detail "Manage TAG" (langkah 1 dan 2) dan memuat ulang halaman (langkah 8, 14, 20, 29). Muat ulang mempertahankan Detail yang terbuka (Detail adalah halaman tersendiri), membuang toast supaya toast error identik berikutnya tidak tertukar (S-09), dan mengosongkan Popup Assign, centangan, serta Bulk Action Bar.
+- Langkah penghubung (aksi tanpa `Verifikasi`): membuka Detail "Manage TAG" (langkah 1 dan 2) dan memuat ulang halaman (langkah 8, 14, 21, 30). Muat ulang mempertahankan Detail yang terbuka (Detail adalah halaman tersendiri), membuang toast supaya toast error identik berikutnya tidak tertukar (S-09), dan mengosongkan Popup Assign, centangan, serta Bulk Action Bar.
 - Butir Expected TC (a. toast, b. data tidak berubah, c. tidak ada tampilan khusus suspend) dipecah satu `Verifikasi` per klausa; toast diasersi segera sesudah aksi (bagian 8b butir 5). Absence `Wawan Setiawan` didahului baris pembanding `Doni Pratama` di surface yang sama (bagian 8b butir 2). Nilai awal Update `Doni Pratama` adalah unchecked (Pre-setup #10: Manage TAG R saja).
+- Langkah penghubung (S-15, bukan dari TC sumber): row action `Remove` berada di overlay `(⋯)` baris, sehingga "Klik Remove pada baris Doni Pratama" (TC-GS-ROLE-269) ditulis `Klik (⋯)` pada baris (langkah 16) lalu `Klik Remove` (langkah 17).
 - Temuan untuk QA:
   - TC-267 sampai TC-270 tidak menyebut data Client C; spec mengasumsikan Client C memakai data setara Pre-setup Role, disediakan tim FE.
   - TC-270 langkah "centang 2 baris" tidak menyebut baris; spec memakai `Doni Pratama` dan `Rina Putri` (keduanya punya baris Manage TAG).
   - TC-267 sampai TC-270 tidak menyebut apakah muat ulang halaman mempertahankan Detail; spec mengasumsikan Detail memiliki URL sendiri.
+  - TC-GS-ROLE-269 "Klik Remove pada baris Doni Pratama" tidak menyebut overlay `(⋯)`; spec membuka overlay `(⋯)` lalu klik `Remove`.

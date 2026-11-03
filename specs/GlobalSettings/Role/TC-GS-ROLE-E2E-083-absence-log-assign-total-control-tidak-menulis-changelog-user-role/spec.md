@@ -34,7 +34,7 @@ coverage:
 3. Aksi pemicu (sesi API Ahmad Fauzi): Assign Total Control ke Sari Wulandari (setara TC-GS-ROLE-58 langkah 1 sampai 3)
 4. Buka Global Settings > User > Sari Wulandari > Changelog: User
 5. Verifikasi total entri sama dengan `B-USER` + 1 (aksi Assign tercatat pada surface Changelog: User)
-6. Verifikasi entry baru (teratas): Action `Assign`, Field `Access Level`
+6. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 5): Action `Assign`, Field `Access Level`
 7. Buka Global Settings > User > Sari Wulandari > Changelog: User > Role
 8. Verifikasi total entri sama dengan `B-ROLE` (tidak ada entry per-role akibat Assign Total Control)
 

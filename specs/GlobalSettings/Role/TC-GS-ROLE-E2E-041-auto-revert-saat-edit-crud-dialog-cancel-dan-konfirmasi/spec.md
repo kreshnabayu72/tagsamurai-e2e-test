@@ -24,6 +24,7 @@ coverage:
   - Maya Anggraini (Pre-setup #11, Inactive) di-assign Total Control dengan keenam role CRUD penuh (kondisi hasil TC-GS-ROLE-59, Tabel Data Uji Dinamis #2). Target TC-GS-ROLE-104, 105, dan 106.
   - Wawan Setiawan (Pre-setup #11) di-assign Read Only sehingga punya baris `Manage hardware`. Target TC-GS-ROLE-107.
 - Data yang diubah spec: Maya Anggraini kehilangan access level Total Control (TC-GS-ROLE-106) dan Wawan Setiawan kehilangan Read Only (TC-GS-ROLE-107); Create baris `Manage hardware` Wawan Setiawan menjadi checked. Hook `after` memulihkan Maya Anggraini dan Wawan Setiawan ke kondisi kandidat Pre-setup #11 (tanpa access level, tanpa baris role) lewat seeding API.
+- Efek pemulihan Pre-setup yang tidak terpulihkan (S-06): Maya Anggraini dan Wawan Setiawan di-assign, diedit, dan dicabut access level-nya oleh spec lalu dipulihkan di hook `after`; Modified By dan Last Updated kedua user, serta baris role yang dihapus lalu dibuat ulang, tidak dapat dipulihkan ke nilai awal, dan entri Changelog (Edit, Auto-Revert, Assign, Remove), Activity Log, dan System Log bersifat immutable dan tidak dihapus. Asersi log tidak memakai nilai absolut: satu-satunya asersi jumlah entri (langkah 28) memakai selisih terhadap baseline K105 (langkah 14; S-12).
 - Kemampuan teknis: memuat ulang halaman; hover pada komponen user di dialog; baseline entry Changelog dibaca dari Modal Changelog.
 - State global: tidak ada yang diubah (suite berjalan serial, `suite.md`).
 
@@ -33,11 +34,11 @@ coverage:
 
 1. Klik Role Name `Manage TAG`
 2. Hapus centang Update baris Maya Anggraini
-3. Verifikasi title dialog "Remove Access"
+3. Verifikasi title dialog "Remove Total Control"
 4. Verifikasi body dialog memuat komponen user (ikon user generik dan "Maya A")
 5. Arahkan kursor ke komponen user "Maya A"
 6. Verifikasi tooltip menampilkan nama lengkap "Maya Anggraini"
-7. Verifikasi body dialog memuat teks "Editing this permission will remove Total Control access from this user. Are you sure you want to remove it?"
+7. Verifikasi body dialog memuat teks "This edit will remove this user's Total Control access level. Their individual role permissions will remain as edited. Are you sure you want to remove it?"
 8. Verifikasi tombol `[Cancel]` (contrast) dan `[Remove]` (danger) tampil
 9. Verifikasi tidak ada toast
 10. Klik `[Cancel]`
@@ -89,27 +90,28 @@ coverage:
 47. Klik segmen `System` pada breadcrumb untuk membuka Tab System
 48. Klik Role Name `Manage hardware`
 49. Centang Create baris Wawan Setiawan
-50. Verifikasi body dialog memuat komponen user (ikon user generik dan "Wawan S")
-51. Arahkan kursor ke komponen user "Wawan S"
-52. Verifikasi tooltip menampilkan nama lengkap "Wawan Setiawan"
-53. Verifikasi body dialog memuat teks "Editing this permission will remove Read Only access from this user. Are you sure you want to remove it?"
-54. Klik `[Remove]`
-55. Verifikasi toast sukses "Success, permissions have been updated. Wawan Setiawan is no longer Read Only."
-56. Buka Tab Read Only
-57. Ketik Search `Wawan`, tekan Enter
-58. Verifikasi "No results found"
-59. Klik `(←)` pada kotak Search
-60. Buka Tab System
-61. Klik Role Name `Manage hardware`
-62. Verifikasi Create baris Wawan Setiawan checked
+50. Verifikasi title dialog "Remove Read Only"
+51. Verifikasi body dialog memuat komponen user (ikon user generik dan "Wawan S")
+52. Arahkan kursor ke komponen user "Wawan S"
+53. Verifikasi tooltip menampilkan nama lengkap "Wawan Setiawan"
+54. Verifikasi body dialog memuat teks "This edit will remove this user's Read Only access level. Their individual role permissions will remain as edited. Are you sure you want to remove it?"
+55. Klik `[Remove]`
+56. Verifikasi toast sukses "Success, permissions have been updated. Wawan Setiawan is no longer Read Only."
+57. Buka Tab Read Only
+58. Ketik Search `Wawan`, tekan Enter
+59. Verifikasi "No results found"
+60. Klik `(←)` pada kotak Search
+61. Buka Tab System
+62. Klik Role Name `Manage hardware`
+63. Verifikasi Create baris Wawan Setiawan checked
 
 ## Notes
 
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Subjudul `###` memetakan langkah ke id TC sumber.
-- Spec melewati sekitar 35 langkah (62 langkah) karena empat TC berada di satu kelas harness (fungsional, Auto-Revert pada Detail dengan akun aktor yang sama) dan memakai dataset yang sama (Maya Anggraini pada TC-GS-ROLE-104, 105, dan 106). Urutan 104, 105, lalu 106 menjaga Maya Anggraini tetap Total Control sampai konfirmasi di TC-GS-ROLE-106; memisahkan ketiganya menggandakan seeding Maya Anggraini. TC-GS-ROLE-107 memakai Wawan Setiawan dan blok awalnya berdiri sendiri (dimulai dari Tab System), sehingga kegagalan blok sebelumnya tidak membuat blok ini kehilangan makna.
-- Langkah penghubung (tanpa awalan `Verifikasi`): menutup dialog dengan `[Cancel]` dan memuat ulang halaman (langkah 10 dan 11), mencatat baseline Changelog (langkah 13 sampai 15), menutup Modal Changelog (langkah 29), serta membuka tab dan Detail yang dibutuhkan langkah berikutnya (langkah 20, 24, 25, 33, 37, 38, 41, 42, 44, 45, 47, 48, 56, 60, 61).
+- Spec melewati sekitar 35 langkah (63 langkah) karena empat TC berada di satu kelas harness (fungsional, Auto-Revert pada Detail dengan akun aktor yang sama) dan memakai dataset yang sama (Maya Anggraini pada TC-GS-ROLE-104, 105, dan 106). Urutan 104, 105, lalu 106 menjaga Maya Anggraini tetap Total Control sampai konfirmasi di TC-GS-ROLE-106; memisahkan ketiganya menggandakan seeding Maya Anggraini. TC-GS-ROLE-107 memakai Wawan Setiawan dan blok awalnya berdiri sendiri (dimulai dari Tab System), sehingga kegagalan blok sebelumnya tidak membuat blok ini kehilangan makna.
+- Langkah penghubung (tanpa awalan `Verifikasi`): menutup dialog dengan `[Cancel]` dan memuat ulang halaman (langkah 10 dan 11), mencatat baseline Changelog (langkah 13 sampai 15), menutup Modal Changelog (langkah 29), serta membuka tab dan Detail yang dibutuhkan langkah berikutnya (langkah 20, 24, 25, 33, 37, 38, 41, 42, 44, 45, 47, 48, 57, 61, 62).
 - Langkah 10 dan 11 serta langkah 12 diperlukan karena TC-GS-ROLE-104 Expected d ("belum ada perubahan tersimpan") hanya dapat diamati sesudah dialog ditutup; spec membatalkan dialog lalu memuat ulang halaman untuk membuktikan Update tetap checked.
-- Absence di Tab Total Control dan Tab Read Only memakai Search yang menghasilkan "No results found" sebagai anchor positif (langkah 35 dan 58). Langkah 22 (baris Maya Anggraini tampil) adalah anchor positif untuk Search yang berhasil menemukan baris.
+- Absence di Tab Total Control dan Tab Read Only memakai Search yang menghasilkan "No results found" sebagai anchor positif (langkah 35 dan 59). Langkah 22 (baris Maya Anggraini tampil) adalah anchor positif untuk Search yang berhasil menemukan baris.
 - Asersi "tidak ada entry baru" di Changelog (langkah 28) memakai baseline jumlah entry yang dicatat sebelum aksi (langkah 14) dan didahului langkah 27 sebagai anchor bahwa modal sudah termuat.
 - Langkah 9 dan 18 (tidak ada toast) diletakkan segera sesudah pemicu (butir 11 bagian 8b).
 - Temuan untuk QA:

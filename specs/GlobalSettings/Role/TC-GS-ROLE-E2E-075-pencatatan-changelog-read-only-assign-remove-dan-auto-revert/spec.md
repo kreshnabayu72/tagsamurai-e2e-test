@@ -44,17 +44,17 @@ coverage:
 4. Aksi pemicu (sesi API Ahmad Fauzi): Assign Read Only ke Rahmat Hidayat (setara TC-GS-ROLE-80 langkah 1 sampai 3)
 5. Klik [Changelog], ketik Search `Rahmat Hidayat`, tekan Enter
 6. Verifikasi total hasil Search sama dengan `B-RH` + 1 (tepat 1 entry baru)
-7. Verifikasi entry baru (teratas): Action `Assign`, Field `Access Level`, Old Value `—`, New Value `Read Only`
+7. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 6): Action `Assign`, Field `Access Level`, Old Value `—`, New Value `Read Only`
 8. Tutup modal Changelog
 9. Aksi pemicu (sesi API Ahmad Fauzi): Remove Read Only dari Rahmat Hidayat (setara TC-GS-ROLE-88 langkah 1 sampai 3)
 10. Klik [Changelog], ketik Search `Rahmat Hidayat`, tekan Enter
 11. Verifikasi total hasil Search sama dengan `B-RH` + 2 (entry Assign dari langkah 4 dan tepat 1 entry Remove baru)
-12. Verifikasi entry Remove baru (teratas): Action `Remove`, Old Value `Read Only`, New Value `—`
+12. Verifikasi entry Remove baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 11): Action `Remove`, Old Value `Read Only`, New Value `—`
 13. Tutup modal Changelog
 14. Aksi pemicu (sesi API Ahmad Fauzi): centang Create baris Wawan Setiawan di Detail "Manage hardware" dan konfirmasi `[Remove]` (setara TC-GS-ROLE-107 langkah 1 sampai 3)
 15. Klik [Changelog], ketik Search `Wawan Setiawan`, tekan Enter
 16. Verifikasi total hasil Search sama dengan `B-WS` + 1 (tepat 1 entry baru)
-17. Verifikasi entry baru (teratas): Action `Auto-Revert`, Old Value `Read Only`, New Value `—`
+17. Verifikasi entry baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 16): Action `Auto-Revert`, Old Value `Read Only`, New Value `—`
 18. Verifikasi Modified By entry Auto-Revert adalah `Ahmad F`
 
 ## Notes
@@ -62,7 +62,7 @@ coverage:
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Satu TC sumber; subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Dependensi TC-GS-ROLE-80, 88, dan 107 dijalankan lewat aksi pemicu sesi API (langkah 4, 9, 14). Urutan TC sumber (Rahmat Hidayat Assign, Rahmat Hidayat Remove, Wawan Setiawan Auto-Revert) dipertahankan; Remove (Expected b) berjalan sesudah Assign (Expected a) karena membutuhkan Rahmat Hidayat ber-Read Only.
 - Given Wawan Setiawan ber-Read Only dijalankan di hook `before` sebelum baseline `B-WS` dicatat, sehingga entry Assign Wawan Setiawan tidak termasuk entri baru yang diasersi.
-- "Entry baru (teratas)" berarti entri teratas pada hasil Search (urutan default Newest First); jumlah entri baru diyakinkan lewat selisih terhadap baseline.
+- "Entry baru" dikenali lewat kombinasi kolom yang diasersi pada langkah Verifikasinya dan selisih jumlah terhadap baseline, bukan lewat posisi baris (S-12, S-14); urutan antar-entri yang jatuh pada menit yang sama tidak diasersi karena kolom Date berketelitian menit.
 - Langkah penghubung (aksi tanpa `Verifikasi`): berpindah tab, menutup modal Changelog, mengganti isi kotak search (langkah 1 sampai 3, 5, 8, 10, 13, 15); aksi pemicu API (langkah 4, 9, 14).
 - Temuan untuk QA:
   - TC-GS-ROLE-211 Expected c menyebut Modified By "Ahmad F" hanya untuk Auto-Revert Wawan Setiawan; Expected a dan b tidak menyebut Modified By, sehingga tidak diasersi untuk entry Assign dan Remove Rahmat Hidayat. Entri dikenali lewat Search nama user, sehingga User Name tidak diasersi terpisah.

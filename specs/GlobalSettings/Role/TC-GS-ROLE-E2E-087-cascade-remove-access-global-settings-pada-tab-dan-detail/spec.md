@@ -53,7 +53,7 @@ coverage:
 17. Verifikasi empty state `No results found` tampil di Detail role tersebut
 18. Buka Tab Total Control, buka Modal Changelog
 19. Verifikasi jumlah total entri Changelog Tab Total Control sama dengan baseline langkah 3 ditambah 1
-20. Verifikasi entri baru teratas: Action `Remove`, Field `Access Level`, Old Value `Total Control`, New Value `—`, Modified By `Ahmad F`
+20. Verifikasi entri baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 19): Action `Remove`, Field `Access Level`, Old Value `Total Control`, New Value `—`, Modified By `Ahmad F`
 21. Tutup Modal Changelog
 22. Buka Tab System
 23. Untuk setiap role pada tabel "Role", Verifikasi kolom Users role tersebut sama dengan baseline langkah 1 dikurangi 1
@@ -103,7 +103,7 @@ coverage:
 61. Verifikasi empty state `No results found` tampil di Detail role tersebut
 62. Buka Tab Read Only, buka Modal Changelog
 63. Verifikasi jumlah total entri Changelog Tab Read Only sama dengan baseline langkah 48 ditambah 1
-64. Verifikasi entri baru teratas: Action `Remove`, Field `Access Level`, Old Value `Read Only`, New Value `—`, Modified By `Ahmad F`
+64. Verifikasi entri baru (dikenali lewat kombinasi kolom yang diasersi di bawah, bukan posisi baris; selisih pada langkah 63): Action `Remove`, Field `Access Level`, Old Value `Read Only`, New Value `—`, Modified By `Ahmad F`
 65. Tutup Modal Changelog
 66. Buka Global Settings > Activity Log, ketik Search `Rahmat Hidayat`, tekan Enter
 67. Verifikasi jumlah entri hasil Search sama dengan baseline langkah 49 ditambah 2
@@ -122,7 +122,7 @@ coverage:
 - Langkah 15 sampai 17 dan 59 sampai 61 adalah perulangan atas enam baris tabel "Role" (langkah yang diulang: 16 dan 17, 60 dan 61); langkah 23 adalah perulangan satu `Verifikasi` per role atas tabel yang sama.
 - Langkah penghubung (aksi tanpa `Verifikasi`): mencatat baseline (langkah 1 sampai 6, 36, 48 sampai 50); Search user target di modul User (langkah 7, 37, 51); "Tunggu aksi selesai" (langkah 12, 42, 56); membuka dan menutup Modal Changelog (langkah 18, 21, 24, 26, 45, 47, 62, 65); membuka Detail role dan permukaan log.
 - Urutan Expected TC-GS-ROLE-233 mengikuti permukaan yang dikunjungi: a (langkah 14 sampai 17), b (langkah 19 dan 20), c (langkah 23), e (langkah 25), f (langkah 28 sampai 30), g (langkah 32 sampai 34), lalu d (langkah 35). Absence tabel (langkah 14, 17, 44, 58, 61) memakai empty state `No results found` hasil Search sebagai anchor positif (bagian 8b butir 2).
-- "Entri baru teratas" pada langkah 20 dan 64 berarti entri teratas Modal Changelog (urutan default terbaru) sesudah jumlah entri bertambah tepat 1 dari baseline. Entri log pada langkah 29 sampai 34 dan 68 sampai 73 dikenali lewat Search nama user target; jumlah entri dibandingkan dengan baseline hasil Search yang sama.
+- "Entri baru" pada langkah 20 dan 64 dikenali lewat kombinasi kolom yang diasersi dan selisih jumlah tepat 1 dari baseline (langkah 19 dan 63), bukan lewat posisi baris (S-12, S-14). Entri log pada langkah 29 sampai 34 dan 68 sampai 73 dikenali lewat Search nama user target; jumlah entri dibandingkan dengan baseline hasil Search yang sama.
 - Langkah 30, 34, 69, dan 73 memverifikasi klausa "di samping entry Remove Access milik modul User" pada Expected f dan g TC-GS-ROLE-233 serta Expected c dan d TC-GS-ROLE-291; TC tidak menyebut kolom entri Remove Access sehingga hanya keberadaannya yang diasersi.
 - Langkah 35 (Pandu Wijaya tidak menerima notifikasi) memakai pembacaan jumlah notifikasi lewat kemampuan teknis tim FE/BE dengan baseline langkah 6; spec tidak membuka sesi UI Pandu Wijaya karena TC tidak menyediakan langkah observasi notifikasi.
 - Temuan untuk QA:

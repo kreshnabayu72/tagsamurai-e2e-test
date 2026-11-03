@@ -26,13 +26,13 @@ coverage:
 
 - Mode: FE+BE.
 - Hook suite: flag Guided Tooltip `gs-user` = seen (lihat `suite.md`).
-- Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2), kredensial `Spectra.env.GS_TC_PASSWORD`. Login sekali di hook `before` lalu membuka Global Settings > User > User List (sub-tab Login User); hook `after` mengembalikan sesi ke akun default suite (Total Control). Password tidak ditulis di spec atau fixture.
+- Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2), kredensial `Spectra.env.GS_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control). Password tidak ditulis di spec atau fixture.
 - Env var: `GS_TC_PASSWORD` (didaftarkan di `executionConfig.environmentVariables`).
 - Data Pre-setup (Tabel Data Uji Pre-setup No. 10-22) tidak dipakai sebagai target aksi dan tidak diubah.
 - Data Dinamis, 16 user milik spec, di-seed lewat API di hook `before` (kemampuan seeding user lewat API disediakan tim FE/BE; endpoint tidak disebut di TC dan PRD). Semua user Activated, Division `Finance`, Access `Fixed Asset`, email `<name tanpa spasi huruf kecil>+{runId}-054@qwertysystem.net`:
   - Inactive manual (dapat diaktifkan), 12 user: `Jane Smith {runId}-054` (J1), `Ahmad Fauzi {runId}-054` (A1), `Jane Smith Dua {runId}-054` (J2), `Jane Smith Tiga {runId}-054` (J3), `Jane Smith Empat {runId}-054` (J4), `Jane Smith Lima {runId}-054` (J5), `Nonaktif 01 {runId}-054` sampai `Nonaktif 06 {runId}-054`.
   - Temporary-expired, Inactive: `Budi Hartono {runId}-054` (B1).
-  - Active: `Dewi Lestari {runId}-054` (D1), `Dewi Lestari Dua {runId}-054` (D2), dan `Joko Susilo {runId}-054` (K; approver pada 2 approval yang menunggu, HK8; seeding approval in-flight disediakan tim FE/BE).
+  - Active: `Dewi Lestari {runId}-054` (D1), `Dewi Lestari Dua {runId}-054` (D2), dan `Joko Susilo {runId}-054` (K; approver pada 2 approval yang menunggu dan memegang aset Borrowed, HK8; seeding approval in-flight dan aset Borrowed disediakan tim FE/BE).
 - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus 16 user seed lewat API, bersihkan seleksi, kosongkan Search, tutup dialog.
 - Kemampuan teknis: membaca isi dialog yang scrollable (12 nama); mengatur ukuran halaman 25 baris.
 - State global yang diubah: tidak ada. Suite berjalan serial.
@@ -71,7 +71,7 @@ coverage:
 19. Klik `Bulk Action` lalu opsi `Deactivate`
 20. Verifikasi Title dialog `Deactivate User`
 21. Verifikasi body memuat bullet `• Dewi Lestari {runId}-054`
-22. Verifikasi body memuat `This will deactivate user across all products.`
+22. Verifikasi body memuat `This will deactivate user across all products. This user will be immediately logged out.`
 23. Verifikasi body memuat `Are you sure you want to deactivate it?`
 24. Verifikasi tombol `[Cancel]` dan `[Deactivate]`
 25. Klik `[Cancel]`
@@ -166,24 +166,26 @@ coverage:
 90. Klik `Bulk Action` lalu opsi `Deactivate`
 91. Verifikasi Title dialog `Deactivate Users`
 92. Verifikasi satu daftar bullet `Dewi Lestari Dua {runId}-054` dan `Joko Susilo {runId}-054` (tanpa dua kelompok)
-93. Verifikasi body memuat baris approval in-flight `Pending approvals of this user will be reassigned to other approvers.`
-94. Verifikasi body memuat `They will be deactivated across all products. Are you sure you want to deactivate them?`
-95. Klik `[Deactivate]`
-96. Verifikasi toast sukses "Success, user has been deactivated."
-97. Verifikasi switch Active baris `Dewi Lestari Dua {runId}-054` dan `Joko Susilo {runId}-054` OFF
+93. Verifikasi body memuat peringatan aset aktif `Joko Susilo {runId}-054 is currently holding active assets (Borrowed / Assigned). Asset custody will remain recorded under this user until manually transferred or returned.` (nama pada `[User Name]` diganti nama user)
+94. Verifikasi body memuat baris approval in-flight `Pending approvals of this user will be reassigned to other approvers.`
+95. Verifikasi body memuat `These users will be immediately logged out.`
+96. Verifikasi body memuat `They will be deactivated across all products. Are you sure you want to deactivate them?`
+97. Klik `[Deactivate]`
+98. Verifikasi toast sukses "Success, user has been deactivated."
+99. Verifikasi switch Active baris `Dewi Lestari Dua {runId}-054` dan `Joko Susilo {runId}-054` OFF
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Spec melewati sekitar 35 langkah (97 langkah) karena sebelas TC Bulk Activate dan Deactivate berada di satu kelas harness (fungsional), satu aksi (Bulk Action Activate/Deactivate), dan satu layar (User List dengan Search `{runId}-054`). Tiap blok berdiri sendiri pada seed sendiri (satu pasang atau satu kelompok user per TC), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian besar langkah adalah `Verifikasi` isi dialog yang diwajibkan S-01 (teks tiap kelompok, ditutup, tombol).
+- Spec melewati sekitar 35 langkah (99 langkah) karena sebelas TC Bulk Activate dan Deactivate berada di satu kelas harness (fungsional), satu aksi (Bulk Action Activate/Deactivate), dan satu layar (User List dengan Search `{runId}-054`). Tiap blok berdiri sendiri pada seed sendiri (satu pasang atau satu kelompok user per TC), sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian besar langkah adalah `Verifikasi` isi dialog yang diwajibkan S-01 (teks tiap kelompok, ditutup, tombol).
 - Urutan TC sumber diubah: screening dan Cancel (TC-GS-USER-291, 295, 297, 298, 1027) di awal, lalu aksi sukses (TC-GS-USER-292, 293, 304, 1036, 1035, 296; bagian 3 prinsip 3). TC-GS-USER-1036 mendahului TC-GS-USER-1035 karena Dewi Lestari (Active) tetap Active pada TC-GS-USER-1036 dan dinonaktifkan pada TC-GS-USER-1035; TC-GS-USER-296 paling akhir karena menonaktifkan seed milik TC itu saja (`Dewi Lestari Dua`, `Joko Susilo`).
 - Langkah penghubung (aksi tanpa `Verifikasi`): 1 dan 2 (Search dan ukuran halaman 25 baris supaya 16 baris seed tampil dalam satu halaman), 11, 17, 26, 33, 42 (membersihkan seleksi dengan icon `×`, S-09), 10, 16, 25 (menutup dialog dengan `[Cancel]` setelah screening).
 - Langkah 59 ("dialog Reactivate Temporary tidak muncul", Expected TC-GS-USER-293 butir b) didahului toast pada langkah 58 sebagai pembanding bahwa dialog hasil sudah tampil dan ditutup (bagian 8b butir 2). Tidak ada asersi tambahan di luar Expected TC.
 - Seed `Dewi Lestari Dua {runId}-054` ditambahkan karena Dewi Lestari dinonaktifkan di dua TC (TC-GS-USER-1035 dan TC-GS-USER-296) dan Joko Susilo hanya dinonaktifkan di TC-GS-USER-296. Seed Inactive dibuat 12 user karena TC-GS-USER-291 mensyaratkan 12 nama; enam di antaranya (`Jane Smith`, `Ahmad Fauzi`, `Jane Smith Dua` sampai `Lima`) dipakai pula oleh TC lain, yang dilakukan sesudah TC-GS-USER-291.
 - Pembagian TC: Bulk Delete diverifikasi di spec 055; kegagalan server pada Bulk Activate dan Deactivate (5xx, sebagian gagal) diverifikasi di spec lain; log Bulk Activate dan Deactivate diverifikasi di spec pencatatan log.
 - Temuan untuk QA:
-  - TC-GS-USER-296 butir a menyebut "baris approval in-flight" tanpa teksnya; spec memakai teks dari TC-GS-USER-242 (`Pending approvals of this user will be reassigned to other approvers.`).
+  - TC-GS-USER-296 butir a menyebut peringatan aset aktif dan approval "hanya bila berlaku"; spec mengasersi peringatan aset aktif dan approval untuk Joko Susilo (memegang aset Borrowed dan approver) dan tidak mengasersi ketiadaannya pada Dewi Lestari Dua.
   - TC-GS-USER-295 butir tidak menyebut Title dialog single Activate; spec tidak mengasersi Title.
   - TC-GS-USER-291 tidak menyebut urutan nama dalam daftar bullet atau batas tinggi scroll; spec mengasersi 12 nama tanpa urutan dan body scrollable.
   - TC-GS-USER-293 butir b ("Dialog Reactivate Temporary tidak muncul") tidak menyebut kapan diamati (sebelum atau sesudah `[Continue]`); spec mengasersinya sesudah `[Continue]`.

@@ -50,35 +50,40 @@ Role yang diuji (Tabel Data Uji Pre-setup):
 6. Arahkan kursor ke checkbox Update baris Budi Santoso
 7. Verifikasi checkbox Update baris Budi Santoso disabled
 8. Verifikasi tooltip `Default User cannot be modified.`
-9. Arahkan kursor ke checkbox Remove baris Budi Santoso
-10. Verifikasi checkbox Remove baris Budi Santoso disabled
-11. Verifikasi tooltip `Default User cannot be modified.`
-12. Arahkan kursor ke checkbox seleksi baris Budi Santoso
-13. Verifikasi checkbox seleksi baris Budi Santoso disabled
-14. Verifikasi tooltip `Default User cannot be modified.`
-15. Buka Tab Total Control
-16. Buka overlay (⋯) baris Budi Santoso
-17. Arahkan kursor ke Remove
-18. Verifikasi Remove disabled
-19. Verifikasi tooltip `Default User cannot be modified.`
-20. Tekan Esc untuk menutup overlay
+9. Buka overlay (⋯) baris Budi Santoso
+10. Arahkan kursor ke item Remove
+11. Verifikasi item Remove baris Budi Santoso disabled
+12. Verifikasi tooltip `Default User cannot be modified.`
+13. Tekan Esc untuk menutup overlay
+14. Arahkan kursor ke checkbox seleksi baris Budi Santoso
+15. Verifikasi checkbox seleksi baris Budi Santoso disabled
+16. Verifikasi tooltip `Default User cannot be modified.`
+17. Buka Tab Total Control
+18. Buka overlay (⋯) baris Budi Santoso
+19. Arahkan kursor ke Remove
+20. Verifikasi Remove disabled
+21. Verifikasi tooltip `Default User cannot be modified.`
+22. Tekan Esc untuk menutup overlay
 
 ### TC-GS-ROLE-46: Prioritas tooltip, aktor Manage user and role C/R/U/D pada Default User
 
-21. Logout, lalu login sebagai Hendra Wijaya
-22. Buka Detail "Manage TAG"
-23. Arahkan kursor ke checkbox Update baris Budi Santoso
-24. Verifikasi tooltip `Default User cannot be modified.`
-25. Arahkan kursor ke checkbox Remove baris Budi Santoso
+23. Logout, lalu login sebagai Hendra Wijaya
+24. Buka Detail "Manage TAG"
+25. Arahkan kursor ke checkbox Update baris Budi Santoso
 26. Verifikasi tooltip `Default User cannot be modified.`
+27. Buka overlay (⋯) baris Budi Santoso
+28. Arahkan kursor ke item Remove
+29. Verifikasi tooltip `Default User cannot be modified.`
+30. Tekan Esc untuk menutup overlay
 
 ## Notes
 
 - Sumber: `global-settings/role/TestCases/tc-role.md`. Mode: FE+BE.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan.
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC sumber): logout lalu login ke aktor berikutnya (langkah 4 dan 21), membuka Tab Total Control (langkah 15), dan menutup overlay dengan Esc (langkah 20).
-- Expected TC-GS-ROLE-44 dan TC-GS-ROLE-46 menyebut teks tooltip yang tidak boleh muncul ("Default User cannot be modified." pada aktor Read Only; "You don't have permission to edit." pada aktor Manage user and role); asersi teks tooltip persis pada langkah 3, 24, dan 26 sudah memastikan teks lain tidak tampil, sehingga tidak ada `Verifikasi` negatif terpisah.
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC sumber): logout lalu login ke aktor berikutnya (langkah 4 dan 23), membuka Tab Total Control (langkah 17), membuka overlay (⋯) baris Detail untuk menjangkau item Remove (langkah 9 dan 27) dan Tab Total Control (langkah 18), serta menutup overlay dengan Esc (langkah 13, 22, dan 30).
+- Expected TC-GS-ROLE-44 dan TC-GS-ROLE-46 menyebut teks tooltip yang tidak boleh muncul ("Default User cannot be modified." pada aktor Read Only; "You don't have permission to edit." pada aktor Manage user and role); asersi teks tooltip persis pada langkah 3, 26, dan 29 sudah memastikan teks lain tidak tampil, sehingga tidak ada `Verifikasi` negatif terpisah.
 - Pembagian TC lintas spec: TC-GS-ROLE-41, 42, 43 (guard Default User dan diri sendiri) ada di spec 019; TC-GS-ROLE-47, 48 ada di spec 021.
 - Temuan untuk QA:
+  - TC-GS-ROLE-45 langkah 1 dan Expected a serta TC-GS-ROLE-46 langkah 2 menyebut "checkbox ... Remove" di Detail, padahal Remove adalah row action pada overlay (⋯) kolom Actions (PRD §4.3 dan §4.8; TC-GS-ROLE-4 Expected b.i; TC-GS-ROLE-42); spec membuka overlay (⋯) baris Budi Santoso, mengarahkan kursor ke item Remove, memverifikasi disabled dan tooltip, lalu menutup overlay dengan Esc.
   - TC-GS-ROLE-45 langkah 2 ("hover Remove baris Budi Santoso" di Tab Total Control) tidak menyebut overlay; spec membuka overlay `(⋯)` mengikuti TC-GS-ROLE-42 karena Remove Tab Total Control berada di overlay.
   - TC-GS-ROLE-46 Expected tidak menyebut apakah checkbox Update dan Remove disabled; spec hanya memverifikasi teks tooltip.

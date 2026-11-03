@@ -31,7 +31,7 @@ coverage:
   - Hasil: 11 entri (lebih dari 10 baris per halaman, sehingga berkas yang memuat seluruh baris dapat dibedakan dari satu halaman tabel). Search `alfa` mencocokkan 9 entri (semua kecuali Create dan Delete `Target Beta`). Entri Create memiliki Old Value kosong dan entri Delete memiliki New Value kosong (nilai kosong di berkas, TC-GS-USER-628).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API `Target Alfa` (cabut tier Total Control lebih dulu bila diperlukan), `Target Beta` bila masih ada, dan `Aktor Log`; hapus sisa user bersuffix `-101` dari run lama; hapus berkas unduhan. Entri log tidak bisa dihapus.
 - Kemampuan teknis (kelas binary buffer, prinsip 13f konvensi): menangkap berkas unduhan browser ke direktori bersih per unduhan supaya nama berkas yang sama tidak tertimpa atau diberi akhiran `(1)`; membaca isi berkas CSV dan XLSX (nama kolom, jumlah baris data, nilai sel). Nama berkas mengikuti `System-Log-[User-Name]` dengan spasi diganti `-` (PRD user.md §4.1; TC-GS-USER-408 `System-Log-John-Doe`).
-- State global yang diubah dan dipulihkan: visibilitas kolom `Field` pada tabel System Log (di-hide pada langkah 26 lalu dicentang kembali pada langkah 34); hook `before` mengosongkan preferensi Setup Column tab ini (tempat penyimpanan preferensi tidak disebut TC User; disediakan tim FE) dan hook `after` memulihkannya sebagai cadangan. Suite berjalan serial (`parallel: false`).
+- State global yang diubah dan dipulihkan: visibilitas kolom `Field` pada tabel System Log (di-hide pada langkah 32 lalu dicentang kembali pada langkah 40); hook `before` mengosongkan preferensi Setup Column tab ini (tempat penyimpanan preferensi tidak disebut TC User; disediakan tim FE) dan hook `after` memulihkannya sebagai cadangan. Suite berjalan serial (`parallel: false`).
 - Precondition TC-GS-USER-408, 624 sampai 628: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User).
 
 ## Test Steps
@@ -47,70 +47,76 @@ coverage:
 4. Klik icon Download
 5. Verifikasi overlay memuat opsi `Download as CSV` dan `Download as XLSX`
 6. Klik `Download as CSV`
-7. Verifikasi file `System-Log-Aktor-Log-{runId}-101.csv` terunduh
-8. Buka isi file `System-Log-Aktor-Log-{runId}-101.csv`
-9. Verifikasi file memuat semua 11 baris data (lebih dari 10 baris, tidak dibatasi halaman)
-10. Verifikasi tidak ada toast sukses
+7. Verifikasi tidak ada toast sukses
+8. Verifikasi file `System-Log-Aktor-Log-{runId}-101.csv` terunduh
+9. Buka isi file `System-Log-Aktor-Log-{runId}-101.csv`
+10. Verifikasi file memuat semua 11 baris data (lebih dari 10 baris, tidak dibatasi halaman)
 
 ### TC-GS-USER-408: Download Tab System Log memakai nama file per user
 
 11. Klik icon Download
 12. Klik `Download as XLSX`
-13. Verifikasi file `System-Log-Aktor-Log-{runId}-101.xlsx` terunduh
-14. Verifikasi tidak ada toast
+13. Verifikasi tidak ada toast
+14. Verifikasi file `System-Log-Aktor-Log-{runId}-101.xlsx` terunduh
 
 ### TC-GS-USER-625: Download XLSX
 
-15. Klik icon Download
-16. Klik `Download as XLSX`
-17. Verifikasi file `System-Log-Aktor-Log-{runId}-101.xlsx` terunduh
+15. Ubah page size ke 100
+16. Verifikasi tabel menampilkan 11 baris
+17. Klik icon Download
+18. Klik `Download as XLSX`
+19. Verifikasi file `System-Log-Aktor-Log-{runId}-101.xlsx` terunduh
+20. Buka isi file `System-Log-Aktor-Log-{runId}-101.xlsx`
+21. Verifikasi file memuat 11 baris data, sama dengan jumlah baris tabel
+22. Verifikasi nilai kolom `Action`, `Object`, `Name`, `Field`, `Old Value`, dan `New Value` tiap baris pada file sama dengan baris tabel
+23. Ubah page size ke 10
 
 ### TC-GS-USER-626: Download mengikuti Search aktif
 
-18. Klik icon Search, ketik `alfa`, tekan Enter
-19. Klik icon Download
-20. Klik `Download as CSV`
-21. Buka isi file hasil unduhan
-22. Verifikasi file memuat 9 baris data (hasil search)
-23. Verifikasi seluruh baris data pada file bernilai Name `Target Alfa {runId}-101`
-24. Klik icon `×`
-25. Tekan Enter pada input kosong
+24. Klik icon Search, ketik `alfa`, tekan Enter
+25. Klik icon Download
+26. Klik `Download as CSV`
+27. Buka isi file hasil unduhan
+28. Verifikasi file memuat 9 baris data (hasil search)
+29. Verifikasi seluruh baris data pada file bernilai Name `Target Alfa {runId}-101`
+30. Klik icon `×`
+31. Tekan Enter pada input kosong
 
 ### TC-GS-USER-627: Download mengecualikan kolom hidden lalu menyertakan lagi setelah unhide
 
-26. Klik header Column Visibility (⋯), hilangkan centang kolom `Field`
-27. Verifikasi kolom `Field` tidak tampil di tabel
-28. Klik icon Download
-29. Klik `Download as CSV`
-30. Buka isi file hasil unduhan
-31. Verifikasi file memuat kolom `Date`, `Action`, `Object`, `Name`, `Old Value`, dan `New Value`
-32. Verifikasi file tidak memuat kolom `Field`
-33. Verifikasi tidak ada toast peringatan
-34. Klik header Column Visibility (⋯), centang kembali kolom `Field`
-35. Verifikasi kolom `Field` tampil kembali di tabel
-36. Klik icon Download
-37. Klik `Download as CSV`
-38. Buka isi file hasil unduhan
-39. Verifikasi file memuat kolom `Field`
+32. Klik header Column Visibility (⋯), hilangkan centang kolom `Field`
+33. Verifikasi kolom `Field` tidak tampil di tabel
+34. Klik icon Download
+35. Klik `Download as CSV`
+36. Verifikasi tidak ada toast peringatan
+37. Buka isi file hasil unduhan
+38. Verifikasi file memuat kolom `Date`, `Action`, `Object`, `Name`, `Old Value`, dan `New Value`
+39. Verifikasi file tidak memuat kolom `Field`
+40. Klik header Column Visibility (⋯), centang kembali kolom `Field`
+41. Verifikasi kolom `Field` tampil kembali di tabel
+42. Klik icon Download
+43. Klik `Download as CSV`
+44. Buka isi file hasil unduhan
+45. Verifikasi file memuat kolom `Field`
 
-### TC-GS-USER-628: Nilai kosong ditulis `-` di file export
+### TC-GS-USER-628: Nilai kosong ditulis `—` di file export
 
-40. Klik icon Download
-41. Klik `Download as CSV`
-42. Buka isi file hasil unduhan
-43. Verifikasi sel Old Value pada baris Action `Create` ditulis `-`
-44. Verifikasi sel New Value pada baris Action `Delete` ditulis `-`
+46. Klik icon Download
+47. Klik `Download as CSV`
+48. Buka isi file hasil unduhan
+49. Verifikasi sel Old Value pada baris Action `Create` ditulis `—`
+50. Verifikasi sel New Value pada baris Action `Delete` ditulis `—`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`.
-- Spec melewati sekitar 35 langkah (44 langkah) karena enam blok TC berada di satu kelas harness (kelas f, isi berkas unduhan) pada satu dataset. Tiap blok mengunduh berkasnya sendiri dan tidak bergantung pada hasil blok lain kecuali pembacaan berkas yang tertulis di langkahnya, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec melewati sekitar 35 langkah (50 langkah) karena enam blok TC berada di satu kelas harness (kelas f, isi berkas unduhan) pada satu dataset. Tiap blok mengunduh berkasnya sendiri dan tidak bergantung pada hasil blok lain kecuali pembacaan berkas yang tertulis di langkahnya, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Pemilik log: TC sumber memakai `John Doe` (TC-GS-USER-408) dan `Siti Nurhaliza` (TC-GS-USER-624 sampai 628) sebagai pemilik System Log; isi log kedua user itu bergantung pada aksi spec lain. Spec memakai user milik spec (`Aktor Log`) dengan aksi seed yang diketahui (S-06, S-11), sehingga nama berkas memuat nama user milik spec dengan aturan penamaan yang sama.
 - Urutan TC dalam spec: TC-GS-USER-624, 408, 625, 626, 627, 628. Alasan: TC-GS-USER-624 memuat `Verifikasi` isi overlay Download (bagian screening) dan unduhan tanpa saringan sehingga ditaruh pertama; TC-GS-USER-626 dan 627 memasang Search dan menyembunyikan kolom, sehingga dijalankan sesudah unduhan tanpa saringan; TC-GS-USER-628 di akhir pada konfigurasi tabel yang sudah dipulihkan.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 sampai 3 (membuka User Detail; Name dicari di User List), langkah 24 sampai 25 (mengosongkan Search sebelum TC-GS-USER-627). Langkah 8, 21, 30, 38, 42 (membuka isi berkas) adalah langkah TC "Buka file" atau pembacaan berkas yang diperlukan `Verifikasi` berikutnya. Langkah 27 (kolom `Field` tidak tampil) dan 35 (kolom `Field` tampil kembali) adalah observasi keadaan sebelum unduhan (S-14).
-- Langkah 31 (file memuat kolom lain) adalah anchor positif untuk `Verifikasi` ketiadaan kolom `Field` pada langkah 32 (bagian 8b butir 2).
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 sampai 3 (membuka User Detail; Name dicari di User List), langkah 30 sampai 31 (mengosongkan Search sebelum TC-GS-USER-627), langkah 15 dan 23 (page size 100 agar seluruh 11 baris tampil pada tabel untuk TC-GS-USER-625, lalu pemulihan page size 10). Langkah 9, 20, 27, 37, 44, 48 (membuka isi berkas) adalah langkah TC "Buka file" atau pembacaan berkas yang diperlukan `Verifikasi` berikutnya. Langkah 33 (kolom `Field` tidak tampil) dan 41 (kolom `Field` tampil kembali) adalah observasi keadaan sebelum unduhan (S-14).
+- Langkah 38 (file memuat kolom lain) adalah anchor positif untuk `Verifikasi` ketiadaan kolom `Field` pada langkah 39 (bagian 8b butir 2). `Verifikasi` tidak ada toast (langkah 7, 13, 36) diletakkan segera sesudah klik pilihan format dan sebelum `Verifikasi` berkas (bagian 8b butir 11); klik pilihan format menjadi anchor positifnya.
 - Isi berkas export dipisah dari kegagalan export (kelas binary buffer, prinsip 13f); kegagalan unduhan seluruh permukaan tabel ada di spec 069.
 - Asersi pada berkas memakai pola baris dan kolom (bukan urutan), sehingga entri log dari run atau spec lain tidak memengaruhi hasil.
 - Pembagian TC lintas spec: Search, Filter, Sort, Pagination Tab System Log di spec 096 sampai 099; Setup Column di spec 100.
-- Temuan untuk QA: (1) TC-GS-USER-408 dan 625 mengasersi hal yang sama (unduhan XLSX bernama `System-Log-[User-Name]`); spec menjalankan keduanya pada user yang sama. (2) TC-GS-USER-626 judul "Search/Filter aktif" tetapi langkah dan Expected hanya memuat Search; Filter tidak diuji di spec ini. (3) TC-GS-USER-628 menulis nilai kosong `-` sedangkan tabel UI menampilkan nilai kosong `—` (PRD user.md §4.1.6); spec mengasersi `-` di berkas sesuai TC. (4) TC-GS-USER-628 tidak menyebut sel yang diamati; spec memakai Old Value baris Create dan New Value baris Delete. (5) TC-GS-USER-627 "Hide 1 kolom" tidak menyebut kolom; spec memakai `Field`. (6) TC-GS-USER-626 "keyword" tidak disebut; spec memakai `alfa`. (7) TC-GS-USER-624 "semua baris" tidak menyebut cara mengetahui total entri; spec membandingkan dengan 11 entri seed (lebih dari 10 baris halaman).
+- Temuan untuk QA: (1) TC-GS-USER-408 dan 625 mengasersi hal yang sama (unduhan XLSX bernama `System-Log-[User-Name]`); spec menjalankan keduanya pada user yang sama. (2) TC-GS-USER-626 judul "Search/Filter aktif" tetapi langkah dan Expected hanya memuat Search; Filter tidak diuji di spec ini. (3) TC-GS-USER-628 tidak menyebut sel yang diamati; spec memakai Old Value baris Create dan New Value baris Delete. (4) TC-GS-USER-627 "Hide 1 kolom" tidak menyebut kolom; spec memakai `Field`. (5) TC-GS-USER-626 "keyword" tidak disebut; spec memakai `alfa`. (6) TC-GS-USER-624 "semua baris" tidak menyebut cara mengetahui total entri; spec membandingkan dengan 11 entri seed (lebih dari 10 baris halaman). (7) TC-GS-USER-625 "sama dengan baris tabel" tidak menyebut halaman tabel yang dibandingkan; spec menaikkan page size ke 100 sehingga seluruh 11 baris tampil di tabel.

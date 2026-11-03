@@ -19,7 +19,7 @@ coverage:
 - Akun: Ahmad Fauzi (Total Control), `superAdminGlobalSettings_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.GS_TC_PASSWORD` (Pre-setup #1). Login dan navigasi dilakukan sekali di hook `before`. Password tidak ditulis di spec atau fixture.
 - Environment variable: `GS_TC_PASSWORD`.
 - Data Pre-setup (hanya dibaca): kandidat picker Pre-setup #11 (Maya Anggraini Staff IT Inactive; Ahmad Fauzan Warehouse Staff Logistics; Rudi Hartono Pending Activation) dan Pre-setup #18. Pool memuat user dengan Position, Division, dan Status yang berbeda-beda (sedikitnya dua nilai distinct per kolom).
-- Data uji field yang kolomnya Hidden di picker (disediakan tim FE): user temporary di pool (`{user temporary uji}`, Temporary User Yes, Temporary Until `{tanggal temporary until}`), dan user ber-Region Bandung (`{user region bandung}`) pada Custom Field aktif Region. Rentang Temporary Until memuat tepat `{tanggal temporary until}`. Format tanggal mengikuti General Settings aktif.
+- Data uji field yang kolomnya Hidden di picker: user temporary di pool (`{user temporary uji}`, Temporary User Yes, Temporary Until `{tanggal temporary until}`; disediakan tim FE). Prasyarat environment (tidak di-seed spec): Custom Field aktif `Region` (Dropdown) dengan opsi `Bandung` dan user ber-Region `Bandung` (`{user region bandung}`) di pool picker; pola seeding spec 062 dan 063 (PATCH custom-fields modul User ke akun aktor) tidak dipakai di sini karena yang dibutuhkan kandidat picker, bukan akun aktor Total Control, dan spec ini tidak mengubah data. Rentang Temporary Until memuat tepat `{tanggal temporary until}`. Format tanggal mengikuti General Settings aktif.
 - Flag Guided Tooltip `guided_tooltip_seen_gs-role`: diatur hook suite (lihat `suite.md`, bagian Hook suite); spec ini tidak mengatur flag sendiri.
 - Hook `beforeEach`: membuka Global Settings > Role & Permission > Tab Total Control.
 - Suite berjalan serial (`parallel: false`).
@@ -79,6 +79,6 @@ Field Filter yang diuji (langkah 6 sampai 11 untuk TC-GS-ROLE-73; langkah 16 sam
   - TC-GS-ROLE-73 langkah 4 dan 5 menulis "Reset" tanpa menyebut label tombol; spec memakai `[Clear Field]` mengikuti pola Filter Panel.
   - TC-GS-ROLE-74 langkah 2 hanya membuka Filter; langkah pilih nilai dan `[Apply]` tidak ada di TC, sehingga spec menambahkannya berdasarkan Expected a sampai d.
   - TC-GS-ROLE-74 Expected a ("hanya Rudi Hartono") bertentangan dengan Pre-setup #18: Yoga Pratama (Pending Activation) ada di pool kandidat. Spec mengikuti TC; bila Yoga Pratama berada di pool, langkah 20 untuk Activation Status gagal.
-  - TC-GS-ROLE-74 tidak menyebut user temporary, nilai Temporary Until, maupun user ber-Region Bandung; data disediakan tim FE (Pre-setup #19 hanya mencakup user yang sudah ber-access level).
+  - TC-GS-ROLE-74 tidak menyebut user temporary, nilai Temporary Until, maupun user ber-Region Bandung; user temporary dan nilai Temporary Until disediakan tim FE (Pre-setup #19 hanya mencakup user yang sudah ber-access level); user ber-Region Bandung adalah prasyarat environment (lihat Prerequisites).
   - TC-GS-ROLE-74 Expected tidak menyebut placeholder field Region; spec hanya memverifikasi field tampil.
   - Kolom Temporary User dan Region Hidden di picker, sehingga aturan hasil memakai daftar nama dari data uji, bukan membaca kolom.
