@@ -89,35 +89,38 @@ coverage:
 
 28. Buka dropdown Action, centang `Delete`, klik `[Apply]`
 29. Verifikasi hanya baris Action `Delete` yang tampil (baris r3 tampil dan baris r1 tidak tampil)
-30. Klik `[Clear Field]`, pilih Object `Partner`, klik `[Apply]`
-31. Verifikasi hanya baris Object `Partner` yang tampil (baris r4 tampil dan baris r1 tidak tampil)
-32. Klik `[Clear Field]`, pilih Field `PIC Name`, klik `[Apply]`
-33. Verifikasi hanya baris Field `PIC Name` yang tampil (baris r2 tampil dan baris r1 tidak tampil)
-34. Klik `[Clear Field]`, pilih Modified By `Hendra Pratama`, klik `[Apply]`
-35. Verifikasi hanya baris `Hendra P` yang tampil (baris r1 dan r2 tampil, baris r3 tidak tampil)
+30. Ketik Search `{runId}-030`, tekan Enter
+31. Klik `[Clear Field]`, pilih Object `Partner`, klik `[Apply]`
+32. Verifikasi hanya baris Object `Partner` yang tampil (baris r4 tampil dan baris r1 tidak tampil)
+33. Klik `[Clear Field]`, pilih Field `PIC Name`, klik `[Apply]`
+34. Verifikasi hanya baris Field `PIC Name` yang tampil (baris r2 tampil dan baris r1 tidak tampil)
+35. Klik `[Clear Field]`, pilih Modified By `Hendra Pratama`, klik `[Apply]`
+36. Verifikasi hanya baris `Hendra P` yang tampil (baris r1 dan r2 tampil, baris r3 tidak tampil)
 
 ### TC-AC-ACAL-98: OR di dalam satu field, AND antar field
 
-36. Klik `[Clear Field]`, pilih Action `Suspend` dan `Reassign`, klik `[Apply]`
-37. Verifikasi baris Suspend atau Reassign tampil (baris r4, r5, r6, dan r7 tampil, baris r1 tidak tampil)
-38. Tambah Object `Partner` dan Date `18 Jun 2026` sampai `18 Jun 2026`, klik `[Apply]`
-39. Verifikasi hanya baris Suspend atau Reassign dengan Object `Partner` pada `18 Jun 2026` yang tampil (baris r4 dan r5 tampil, baris r6 dan r7 tidak tampil)
+37. Klik `[Clear Field]`, pilih Action `Suspend` dan `Reassign`, klik `[Apply]`
+38. Verifikasi baris Suspend atau Reassign tampil (baris r4, r5, r6, dan r7 tampil, baris r1 tidak tampil)
+39. Tambah Object `Partner` dan Date `18 Jun 2026` sampai `18 Jun 2026`, klik `[Apply]`
+40. Verifikasi hanya baris Suspend atau Reassign dengan Object `Partner` pada `18 Jun 2026` yang tampil (baris r4 dan r5 tampil, baris r6 dan r7 tidak tampil)
 
 ### TC-AC-ACAL-176: Dua pengguna bernama sama tampil sebagai satu opsi Modified By
 
-40. Klik `[Clear Field]`, buka dropdown Modified By
-41. Verifikasi hanya ada satu opsi berlabel `Hendra Pratama` (nama lengkap)
-42. Centang opsi `Hendra Pratama`, klik `[Apply]`
-43. Verifikasi tabel memuat entri kedua akun `Hendra Pratama` (baris r1 dan baris r2 tampil)
-44. Klik `[Clear Field]`, klik `[Apply]` untuk mengosongkan saringan Modified By
+41. Klik `[Clear Field]`, buka dropdown Modified By
+42. Verifikasi hanya ada satu opsi berlabel `Hendra Pratama` (nama lengkap)
+43. Centang opsi `Hendra Pratama`, klik `[Apply]`
+44. Verifikasi tabel memuat entri kedua akun `Hendra Pratama` (baris r1 dan baris r2 tampil)
+45. Klik `[Clear Field]`, klik `[Apply]` untuk mengosongkan saringan Modified By
+46. Klik `(←)` pada kotak Search untuk menutup Search dan mereset tabel
 
 ## Notes
 
 - Sumber TC: `admin-console/activity-log/TestCases/tc-activity-log.md` (bagian 4b, Tab User Action). Seluruh TC sumber spec ini dikerjakan di sini.
-- Langkah penghubung (aksi tanpa `Verifikasi`): penutupan dropdown (langkah 14, 18, 22, 27), pengosongan saringan (langkah 30, 32, 34, 36, 40, 44). State Filter direset oleh hook `beforeEach` suite pada spec berikutnya (klik sidebar mereset Search, Sort, dan Filter).
-- Langkah 44 (pemulihan, tanpa `Verifikasi`, S-03 dan S-09): mengosongkan saringan Modified By yang tersisa dari langkah 42 agar state akhir tidak terbawa; hasil tabel tidak diasersi karena tidak ada Expected TC.
-- Spec memiliki 44 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu kelas (Filter Tab User Action pada akun dan dataset yang sama) dan tiap TC berdiri sendiri sehingga kegagalan satu TC tidak membuat TC lain kehilangan makna; seluruh blok hanya membuka dropdown dan menerapkan saringan tanpa langkah bersyarat.
-- Asersi tambahan (S-03): "baris tidak tampil" pada langkah 29, 31, 33, 35, 37, dan 39 membuktikan kata "hanya" pada Expected TC; baris r1, r3, r6, dan r7 dipakai sebagai pembanding.
+- Langkah penghubung (aksi tanpa `Verifikasi`): penutupan dropdown (langkah 14, 18, 22, 27), pengisian Search pembatas (langkah 30), pengosongan saringan (langkah 31, 33, 35, 37, 41, 45), penutupan Search (langkah 46). State Filter direset oleh hook `beforeEach` suite pada spec berikutnya (klik sidebar mereset Search, Sort, dan Filter).
+- Langkah 45 (pemulihan, tanpa `Verifikasi`, S-03 dan S-09): mengosongkan saringan Modified By yang tersisa dari langkah 43 agar state akhir tidak terbawa; hasil tabel tidak diasersi karena tidak ada Expected TC.
+- Spec memiliki 46 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu kelas (Filter Tab User Action pada akun dan dataset yang sama) dan tiap TC berdiri sendiri sehingga kegagalan satu TC tidak membuat TC lain kehilangan makna; seluruh blok hanya membuka dropdown dan menerapkan saringan tanpa langkah bersyarat.
+- Langkah penghubung pembatas (S-03, R-16): langkah 30 (Search `{runId}-030`, Enter) dan langkah 46 (tutup Search, S-09). Alasan: audit trail append-only, urut Date terbaru, page size default 10; baris r4 sampai r7 ber-Date lama, sehingga pada run berikutnya turun ke halaman 2 oleh baris Partner/Suspend/Reassign baru dari run dan spec lain, dan asersi "tampil" langkah 32, 38, dan 40 gagal bukan karena perilaku Filter. Name r4 sampai r7 bersuffix `{runId}-030`; Search dan Filter digabung AND dan tiap tab menyimpan keduanya (PRD FI-06), sehingga langkah 32 sampai 45 tetap dibatasi ke baris run ini. Langkah 29 (Action `Delete`, r3 terbaru) tidak memerlukan pembatas.
+- Asersi tambahan (S-03): "baris tidak tampil" pada langkah 29, 32, 34, 36, 38, dan 40 membuktikan kata "hanya" pada Expected TC; baris r1, r3, r6, dan r7 dipakai sebagai pembanding.
 - Baris r10 (Object `Wallet`, Name `Dompet Baru {runId}-030`) berada pada entitas Principal default akun aktor, terpisah dari Principal segar spec 043 (TC-AC-ACAL-166, dan prekondisi c TC-AC-ACAL-96); kedua data tidak saling memengaruhi.
 - Temuan untuk QA:
   - Email akun Pre-setup memakai placeholder `{namaCompany}` dan password memakai `AC_TC_PASSWORD`, yang sudah terdaftar di `.env.example` dan `spectra.config.ts`.

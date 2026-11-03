@@ -32,7 +32,7 @@ coverage:
 | Total Control (Distributor Gamma) | `totalControlAdminConsoleDistributorGamma_automated_{namaCompany}@qwertysystem.net` (No 7) | `Spectra.env.AC_GAMMA_TC_PASSWORD` |
 
 - Login akun pertama (Total Control Principal) di hook `before` spec ini; halaman Admin Console > Activity Log dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control Principal).
-- Data Pre-setup (tetap di environment, tidak diubah spec ini): hierarki entitas No 8 (Distributor Alfa, Partner Beta, Client Karya, Client Sejahtera, Distributor Gamma, Client Omega, Partner Delta; Client Karya dipegang Partner Beta dan Partner Delta) dan entri User Action contoh No 10 dan No 13 (seed BE) untuk entitas tersebut dan Brand `Acme`, termasuk baris `Edit` / `Client` / `Client Karya` oleh Principal (precondition TC-AC-ACAL-168, hanya keberadaan barisnya yang diasersi) dan entri Object `Category`, `Language`, serta `Role & Permission` (precondition TC-AC-ACAL-36, dibuat Principal). Mekanisme seeding log tidak didefinisikan di TC, PRD, atau LLD: disediakan tim FE/BE.
+- Data Pre-setup (tetap di environment, tidak diubah spec ini): hierarki entitas No 8 (Distributor Alfa, Partner Beta, Client Karya, Client Sejahtera, Distributor Gamma, Client Omega, Partner Delta; Client Karya dipegang Partner Beta dan Partner Delta) dan entri User Action contoh No 10 dan No 13 (seed BE) untuk entitas tersebut dan Brand `Acme`, termasuk baris `Edit` / `Client` / `Client Karya` oleh Principal (precondition TC-AC-ACAL-168, hanya keberadaan barisnya yang diasersi) dan entri Object `Category`, `Language`, serta Object berawalan `Role & Permission >` (opsi UI `Role & Permission > Total Control`, `> Read Only`, `> Group Manager`, `> System Role`; precondition TC-AC-ACAL-36, dibuat Principal). Mekanisme seeding log tidak didefinisikan di TC, PRD, atau LLD: disediakan tim FE/BE.
 - Entitas yang dicari (nama baris = nilai kolom Name di log; satu baris tabel = satu iterasi perulangan):
 
 | Kode | Object | Name |
@@ -51,7 +51,7 @@ coverage:
 |---|---|
 | N1 | `Category` |
 | N2 | `Language` |
-| N3 | `Role & Permission` |
+| N3 | `Role & Permission` (kata kunci pendek; Object di baris dan opsi filter berawalan `Role & Permission >`) |
 
 - Pengamat TC-AC-ACAL-168 (satu baris tabel = satu iterasi):
 
@@ -89,24 +89,24 @@ coverage:
 13. Ketik Search `Acme`, tekan Enter (Distributor Alfa)
 14. Verifikasi hasil Search kosong: ilustrasi dengan judul `No results found` dan deskripsi `Try adjusting your search or filter.`, tanpa baris Object `Brand` Name `Acme`
 15. Klik `(←)` pada kotak Search untuk menutup Search dan mereset tabel
-16. Untuk setiap Object `Category`, `Language`, dan `Role & Permission` (langkah 16 sampai 18): ketik Search nama Object itu, tekan Enter (Distributor Alfa)
-17. Verifikasi hasil Search kosong: ilustrasi dengan judul `No results found` dan deskripsi `Try adjusting your search or filter.`, tanpa baris dengan Object itu
+16. Untuk setiap Object `Category`, `Language`, dan `Role & Permission` (kata kunci Search; langkah 16 sampai 18): ketik Search nama Object itu, tekan Enter (Distributor Alfa)
+17. Verifikasi hasil Search kosong: ilustrasi dengan judul `No results found` dan deskripsi `Try adjusting your search or filter.`, tanpa baris dengan Object itu (N3: tanpa baris Object berawalan `Role & Permission >`)
 18. Klik `(←)` pada kotak Search untuk menutup Search dan mereset tabel
 19. Klik icon Filter, lalu buka dropdown Object
 20. Verifikasi daftar opsi Object memuat sedikitnya satu opsi
-21. Verifikasi daftar opsi Object tidak memuat `Brand`, `Category`, `Language`, dan `Role & Permission`
+21. Verifikasi daftar opsi Object tidak memuat opsi `Brand`, `Category`, `Language`, maupun opsi Object berawalan `Role & Permission >`
 22. Tutup dropdown Object dan Filter Panel
 23. Ganti akun: logout, lalu login sebagai Total Control (Partner Beta) dengan `Spectra.env.AC_BETA_TC_PASSWORD`
 24. Klik menu Activity Log di sidebar Admin Console, lalu klik tab "User Action"
 25. Ketik Search `Acme`, tekan Enter (Partner Beta)
 26. Verifikasi hasil Search kosong: ilustrasi dengan judul `No results found` dan deskripsi `Try adjusting your search or filter.`, tanpa baris Object `Brand` Name `Acme`
 27. Klik `(←)` pada kotak Search untuk menutup Search dan mereset tabel
-28. Untuk setiap Object `Category`, `Language`, dan `Role & Permission` (langkah 28 sampai 30): ketik Search nama Object itu, tekan Enter (Partner Beta)
-29. Verifikasi hasil Search kosong: ilustrasi dengan judul `No results found` dan deskripsi `Try adjusting your search or filter.`, tanpa baris dengan Object itu
+28. Untuk setiap Object `Category`, `Language`, dan `Role & Permission` (kata kunci Search; langkah 28 sampai 30): ketik Search nama Object itu, tekan Enter (Partner Beta)
+29. Verifikasi hasil Search kosong: ilustrasi dengan judul `No results found` dan deskripsi `Try adjusting your search or filter.`, tanpa baris dengan Object itu (N3: tanpa baris Object berawalan `Role & Permission >`)
 30. Klik `(←)` pada kotak Search untuk menutup Search dan mereset tabel
 31. Klik icon Filter, lalu buka dropdown Object
 32. Verifikasi daftar opsi Object memuat sedikitnya satu opsi
-33. Verifikasi daftar opsi Object tidak memuat `Brand`, `Category`, `Language`, dan `Role & Permission`
+33. Verifikasi daftar opsi Object tidak memuat opsi `Brand`, `Category`, `Language`, maupun opsi Object berawalan `Role & Permission >`
 34. Tutup dropdown Object dan Filter Panel
 
 ### TC-AC-ACAL-35: Scope Tab User Action Partner, diri dan Client miliknya saja
@@ -132,8 +132,8 @@ coverage:
 - Urutan TC di spec berbeda dari urutan sumber: TC-AC-ACAL-36 (Alfa lalu Beta) ditaruh sebelum TC-AC-ACAL-35 supaya sesi Alfa dan Beta masing-masing dipakai berurutan dan jumlah ganti akun minimal; TC-AC-ACAL-168 terakhir karena memakai empat akun. Iterasi pertama langkah 41 (Partner Beta) mengulang login akun yang sedang aktif supaya perulangan tidak bersyarat.
 - Spec 44 langkah nominal, 110 setelah ekspansi perulangan, di atas smell 35. Alasan: seluruh blok satu topik dan satu kelas (isolasi scope Tab User Action oleh query yang sama dengan pengamat berbeda), dataset sama, dan tiap blok akun berdiri sendiri setelah Step ganti akun sehingga kegagalan satu akun tidak membuat akun lain kehilangan makna.
 - Langkah penghubung (tanpa awalan `Verifikasi`): ganti akun (langkah 5, 23, 41), membuka menu dan tab (langkah 1, 6, 24, 42), mengetik Search (langkah 2, 7, 10, 13, 16, 25, 28, 35, 38, 43), menutup Search (langkah 4, 9, 12, 15, 18, 27, 30, 37, 40), dan membuka lalu menutup dropdown Object (langkah 19, 22, 31, 34).
-- Asersi tambahan di luar Expected TC (S-03): langkah 20 dan 32 membuktikan daftar opsi Object memuat sedikitnya satu opsi sebelum asersi absence opsi (bagian 8b butir 2). Asersi absence baris memakai empty state `No results found` hasil Search sebagai anchor positif. Langkah 16 sampai 18 (Alfa) dan 28 sampai 30 (Beta) mengasersi baris Object `Category`, `Language`, dan `Role & Permission` per TC-AC-ACAL-36 Expected a dan b; kata kunci Search mengikuti TC-AC-ACAL-36 Langkah 1: `Acme` (Name entri Brand), lalu `Category`, `Language`, dan `Role & Permission` satu per satu.
-- Batas asersi "hanya" (TC-AC-ACAL-35 "diri dan Client miliknya saja", TC-AC-ACAL-36 "tidak tampil"): diperiksa dengan sampel, yaitu entitas E1, E2, E5, E6 (langkah 38 sampai 40), Object N1 sampai N3, dan opsi `Brand`, `Category`, `Language`, `Role & Permission` pada dropdown Object; bukan seluruh baris atau seluruh opsi tabel, sehingga entri lain di luar sampel tidak diasersi.
+- Asersi tambahan di luar Expected TC (S-03): langkah 20 dan 32 membuktikan daftar opsi Object memuat sedikitnya satu opsi sebelum asersi absence opsi (bagian 8b butir 2). Asersi absence baris memakai empty state `No results found` hasil Search sebagai anchor positif. Langkah 16 sampai 18 (Alfa) dan 28 sampai 30 (Beta) mengasersi baris Object `Category`, `Language`, dan Object berawalan `Role & Permission >` per TC-AC-ACAL-36 Expected a dan b; kata kunci Search mengikuti TC-AC-ACAL-36 Langkah 1: `Acme` (Name entri Brand), lalu `Category`, `Language`, dan `Role & Permission` (kata kunci pendek) satu per satu.
+- Batas asersi "hanya" (TC-AC-ACAL-35 "diri dan Client miliknya saja", TC-AC-ACAL-36 "tidak tampil"): diperiksa dengan sampel, yaitu entitas E1, E2, E5, E6 (langkah 38 sampai 40), Object N1 sampai N3, dan opsi `Brand`, `Category`, `Language`, serta opsi berawalan `Role & Permission >` pada dropdown Object; bukan seluruh baris atau seluruh opsi tabel, sehingga entri lain di luar sampel tidak diasersi.
 - Asersi "tampil" TC-AC-ACAL-33 sampai 35 memakai Search nama entitas (padanan kolom Name) agar baris ditemukan di antara banyak entri; TC menulis "Filter Object lalu amati baris" tanpa nilai filter.
 - Temuan untuk QA:
   - Email Pre-setup memakai placeholder `{namaCompany}` (nilai ditetapkan tim FE); email akun Distributor Alfa, Partner Beta, Partner Delta, dan Distributor Gamma tidak ditulis utuh di Pre-setup No 7 ("format email sama"); `AC_TC_PASSWORD` terdaftar di `.env.example` dan `spectra.config.ts`; nama `AC_ALFA_TC_PASSWORD`, `AC_BETA_TC_PASSWORD`, `AC_DELTA_TC_PASSWORD`, `AC_GAMMA_TC_PASSWORD` adalah nama usulan tim FE dan belum terdaftar di `.env.example` maupun `spectra.config.ts`.
@@ -141,4 +141,4 @@ coverage:
   - TC-AC-ACAL-36 memberi kata kunci per Object (`Acme`, `Category`, `Language`, `Role & Permission`); spec memakainya persis pada langkah 13, 16 sampai 18, 25, dan 28 sampai 30, dan tetap mengasersi daftar opsi Object (langkah 21 dan 33). Karena entri non-entitas hanya diasersi lewat kata kunci itu, entri non-entitas yang tidak memuat kata kunci itu tidak tercakup.
   - TC-AC-ACAL-168 menyebut precondition "Principal mengedit Client Karya" tanpa menyebut field yang diubah; spec hanya mengasersi keberadaan baris `Edit` / `Client` / `Client Karya` dari seed BE.
   - TC-AC-ACAL-34 dan 35 memakai nama entitas literal sebagai kata kunci; QA konfirmasi bahwa nilai kolom Name log memakai nama entitas persis seperti di Pre-setup No 8.
-  - TC-AC-ACAL-36 menulis `Role & Permission > Total Control` pada precondition dan `Role & Permission` pada Expected; spec memakai opsi `Role & Permission` pada Expected.
+  - Kata kunci Search `Role & Permission` adalah bentuk pendek; Object di baris dan opsi filter UI berawalan `Role & Permission >` (PRD Enum Object), sehingga asersi absence filter memakai awalan itu.

@@ -40,7 +40,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 184 TC masuk 55 spec, 2 TC di
 | TC-AC-ACAL-E2E-027-setup-column-tab-session-urutan-pin-batas-tiga-dan-reset | Setup Column Tab Session: Urutan, Pin, Batas Tiga Kolom, dan Reset | FE+BE | 34 | 83, 84, 85 |
 | TC-AC-ACAL-E2E-028-isi-kolom-tab-user-action-pola-per-jenis-aksi-dan-description | Isi Kolom Tab User Action: Pola Per Jenis Aksi dan Kolom Description | FE+BE | 16 | 88, 184 |
 | TC-AC-ACAL-E2E-029-search-tab-user-action-siklus-kotak-modified-by-kolom-date-dan-nilai-di-luar-kolom | Search Tab User Action: Siklus Kotak, Modified By, Kolom Date, dan Nilai di Luar Kolom | FE+BE | 29 | 89, 91, 92, 94 |
-| TC-AC-ACAL-E2E-030-filter-tab-user-action-struktur-opsi-or-and-dan-nama-ganda | Filter Tab User Action: Struktur, Opsi Dinamis, OR/AND, dan Nama Ganda | FE+BE | 44 | 95, 96, 97, 98, 176 |
+| TC-AC-ACAL-E2E-030-filter-tab-user-action-struktur-opsi-or-and-dan-nama-ganda | Filter Tab User Action: Struktur, Opsi Dinamis, OR/AND, dan Nama Ganda | FE+BE | 46 | 95, 96, 97, 98, 176 |
 | TC-AC-ACAL-E2E-031-sort-tab-user-action-kolom-modified-by-dan-tipe-campuran | Sort Tab User Action: Kolom, Modified By, dan Tipe Campuran | FE+BE | 30 | 100, 101, 102, 103 |
 | TC-AC-ACAL-E2E-032-setup-column-tab-user-action-overlay-popup-sembunyikan-dan-kolom-terakhir | Setup Column Tab User Action: Overlay, Popup, Sembunyikan, Cancel, dan Kolom Terakhir | FE+BE | 52 | 104, 105, 106, 110, 111 |
 | TC-AC-ACAL-E2E-033-setup-column-tab-user-action-urutan-pin-batas-tiga-dan-reset | Setup Column Tab User Action: Urutan, Pin, Batas Tiga Kolom, dan Reset | FE+BE | 35 | 107, 108, 109 |
