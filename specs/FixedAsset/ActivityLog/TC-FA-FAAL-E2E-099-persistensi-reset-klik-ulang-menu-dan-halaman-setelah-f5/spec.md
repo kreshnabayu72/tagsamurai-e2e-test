@@ -45,7 +45,7 @@ coverage:
   - UA-14: 08:00; Edit; Groups; Gedung C; Group Name; Gedung C1; Gedung C; Hendra Pratama #2
   - UA-15: 07:30; Create; Groups; `Gedung Serbaguna` + nama 120 karakter; Group Name; `—`; nama sama; Admin Alpha
 - Seed dan pemulihan data log lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`). Identitas data dibaca dari `fixtures/activity-log.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE). Spec hanya membaca baris log seed dan tidak membuat, mengubah, atau menghapus baris log maupun data Pre-setup.
-- Jendela Seed Tab User Action (precondition TC-FA-FAAL-287): Filter Date `18/06/26` sampai `18/06/26` (memuat UA-01 sampai UA-15), diterapkan di langkah 14, sesudah langkah 8 yang mengosongkan seluruh state tab. TC-FA-FAAL-196 tidak memuat Filter Date. Filter Date di-reset pembukaan layar hook `beforeEach` suite sebelum spec berikutnya.
+- Jendela Seed Tab User Action (precondition TC-FA-FAAL-287): Filter Date `18/06/26` sampai `18/06/26` (memuat UA-01 sampai UA-15), diterapkan di langkah 15, sesudah langkah 8 yang mengosongkan seluruh state tab. TC-FA-FAAL-196 tidak memuat Filter Date. Filter Date di-reset pembukaan layar hook `beforeEach` suite sebelum spec berikutnya.
 - Flag Guided Tooltip halaman Activity Log: hook suite `before` men-set true untuk akun aktor dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
 - Suite berjalan serial (`parallel: false`); spec ini tidak mengubah state global.
 
@@ -63,28 +63,29 @@ coverage:
 8. Klik menu Activity Log di sidebar Reports & Logs
 9. Verifikasi halaman terbuka di Tab Session (tab default)
 10. Verifikasi Tab Session tanpa Search, Filter, maupun Sort
-11. Verifikasi Tab Session di halaman 1 dengan Rows per page 10
-12. Klik tab User Action
-13. Verifikasi Tab User Action kembali ke default: tanpa Search, Filter, maupun Sort
-14. Di Tab User Action klik icon Filter, pilih tanggal mulai `18/06/26` dan tanggal akhir `18/06/26` pada field Date, klik `[Apply]`
+11. Verifikasi Tab Session di halaman 1
+12. Verifikasi Tab Session memakai Rows per page 10
+13. Klik tab User Action
+14. Verifikasi Tab User Action kembali ke default: tanpa Search, Filter, maupun Sort
+15. Di Tab User Action klik icon Filter, pilih tanggal mulai `18/06/26` dan tanggal akhir `18/06/26` pada field Date, klik `[Apply]`
 
 ### TC-FA-FAAL-287: Refresh F5 mempertahankan halaman aktif
 
-15. Klik header Name sekali (Ascending)
-16. Klik `Next` untuk pindah ke halaman 2
-17. Tekan F5
-18. Verifikasi Tab User Action tetap aktif
-19. Verifikasi Sort Name Ascending tetap aktif
-20. Verifikasi teks pagination tetap `Showing 11–15 of 15 entries`
+16. Klik header Name sekali (Ascending)
+17. Klik `Next` untuk pindah ke halaman 2
+18. Tekan F5
+19. Verifikasi Tab User Action tetap aktif
+20. Verifikasi Sort Name Ascending tetap aktif
+21. Verifikasi teks pagination tetap `Showing 11–15 of 15 entries`
 
 ## Notes
 
 - Langkah penghubung (S-03): klik tab Session dan tab User Action untuk berpindah tab; langkah pertama TC-FA-FAAL-196 (klik menu Activity Log di sidebar Reports & Logs) memastikan awal di Tab Session. TC-FA-FAAL-287 berlanjut di Tab User Action dari akhir TC-FA-FAAL-196 (tab itu sudah terbuka setelah verifikasi default), sehingga langkah "Klik tab User Action" TC tidak diulang.
-- Langkah 14 (S-03): menerapkan Filter Date Jendela Seed Tab User Action sesuai precondition d TC-FA-FAAL-287, setelah state tab dikosongkan oleh langkah 8 (TC-FA-FAAL-196).
+- Langkah 15 (S-03): menerapkan Filter Date Jendela Seed Tab User Action sesuai precondition d TC-FA-FAAL-287, setelah state tab dikosongkan oleh langkah 8 (TC-FA-FAAL-196).
 - Panel Filter tiap tab dibuka satu kali dan diasumsikan tetap terbuka beserta nilai ter-Apply-nya.
-- Ukuran spec 20 langkah. TC-FA-FAAL-194 dan 195 ada di spec 045.
+- Ukuran spec 21 langkah. TC-FA-FAAL-194 dan 195 ada di spec 045.
 - Temuan untuk QA:
   - TC-FA-FAAL-196 butir b ("Tab User Action juga kembali ke default saat dibuka") mensyaratkan membuka Tab User Action; spec menambah langkah klik tab itu sebagai langkah menuju keadaannya (S-14).
   - TC-FA-FAAL-196 langkah 1 meminta "pindah ke halaman 2 dan Search `Chrome`" tanpa menyebut urutan; Search mereset ke halaman 1 (TC-FA-FAAL-160), sehingga spec mengikuti urutan penulisan TC (halaman 2 lalu Search).
   - TC tidak menyatakan apakah panel Filter tetap terbuka setelah `[Apply]` dan saat berpindah tab; spec mengasumsikan panel tetap terbuka beserta nilai ter-Apply-nya.
-  - TC-FA-FAAL-287 memberi precondition Filter Date Jendela Seed Tab User Action (18/06/26 sampai 18/06/26) agar angka `15 entries` tidak bergantung pada baris log lain; spec menerapkannya di langkah 14 dan mengikuti angka TC.
+  - TC-FA-FAAL-287 memberi precondition Filter Date Jendela Seed Tab User Action (18/06/26 sampai 18/06/26) agar angka `15 entries` tidak bergantung pada baris log lain; spec menerapkannya di langkah 15 dan mengikuti angka TC.

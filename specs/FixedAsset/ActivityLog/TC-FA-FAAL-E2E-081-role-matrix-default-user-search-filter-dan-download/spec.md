@@ -64,6 +64,7 @@ coverage:
 - Pembanding asersi universal (bagian 8b butir 2): teks pagination `Showing 1–10 of 11 entries` (langkah 5) dan `Showing 1–10 of 15 entries` (langkah 13) membuktikan baris ada di tabel sebelum asersi "hanya baris SS-06" dan "hanya baris UA-03".
 - Langkah 21 (absence toast) diletakkan segera setelah pemicu `Download as CSV` dan sebelum asersi berkas (bagian 8b butir 11); langkah 20 menjadi anchor positif yang buktinya langkah 22.
 - Langkah 5 dan 13 memakai total absolut dalam Filter Date Jendela Seed (Tab Session 14/07/26 sampai 16/07/26; Tab User Action 18/06/26 sampai 18/06/26) seperti Expected TC-FA-FAAL-277.
+- Search, Filter, dan Download untuk Default User berada dalam satu Role Matrix karena TC-FA-FAAL-277 satu TC dengan satu daftar Expected (bagian 3a).
 - Temuan untuk QA:
   - TC-FA-FAAL-277 tidak menyebut env var password; nama env var diusulkan dari butir "Env var" di `suite.md`.
   - TC-FA-FAAL-277 Expected butir a tidak menyebut jumlah baris setelah Search selain "hanya SS-06"; spec tidak menambah asersi jumlah.

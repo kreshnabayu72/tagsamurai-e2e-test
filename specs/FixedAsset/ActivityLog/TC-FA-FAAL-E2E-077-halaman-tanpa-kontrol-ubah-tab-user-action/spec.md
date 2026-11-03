@@ -44,5 +44,6 @@ coverage:
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - TC-FA-FAAL-4, 6, dan 9 ada di spec 002.
 - Langkah penghubung (S-03): langkah 1 (klik tab User Action agar klik sel Name, Action, dan baris UA-01 dilakukan di tab yang sesuai), langkah 5 dan 8 (anchor positif Breadcrumb tetap tampil, sebelum asersi absence popup, drawer, dan halaman, Expected b TC-FA-FAAL-261).
+- Klik sel Name, klik sel Action, dan klik kanan pada baris UA-01 (langkah 4, 7, dan 10) mengandalkan UA-01 berada di baris pertama; ini hanya berlaku bila log dipulihkan ke Pre-setup sebelum spec (butir "Prasyarat lingkungan eksternal" di `suite.md`, S-14).
 - Temuan untuk QA:
   - TC-FA-FAAL-261 langkah 3 ("klik kanan baris UA-01") tidak punya Expected sendiri; spec melakukan klik kanan pada langkah 10 tanpa `Verifikasi` tambahan (S-02).

@@ -19,8 +19,8 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control (Admin Alpha, Pre-setup #1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (didaftarkan di `executionConfig.environmentVariables` dan `.env.example`). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Reports & Logs > Activity Log, Tab Session). Tidak ada ganti akun di tengah spec.
-- Data Pre-setup #11 (Tab Session SS-01 sampai SS-11), hanya dibaca dan tidak diubah. Baris yang dipakai spec ini: SS-03 (Siti Nurbaya, Finance), SS-05 (Jane Smith, Finance), SS-08 (Hendra Pratama #1, Marketing), SS-09 (Hendra Pratama #2, Finance), SS-11 (John Davis, Finance). Identitas baris dirujuk lewat `Fixture.activity-log.<kunci>` (fixture `fixtures/activity-log.json` disediakan tim FE; nama kunci ditetapkan tim FE).
-- Nilai Data Uji TC: Search `Hendra` dan `zzz`; Division `Finance`; Position `Manager`; Division `Operations` (dirujuk lewat fixture yang sama).
+- Data Pre-setup #11 (Tab Session SS-01 sampai SS-11), hanya dibaca dan tidak diubah. Baris yang dipakai spec ini: SS-03 (Siti Nurbaya, Finance), SS-05 (Jane Smith, Finance), SS-08 (Hendra Pratama #1, Marketing), SS-09 (Hendra Pratama #2, Finance), SS-11 (John Davis, Finance). Identitas baris dibaca dari `fixtures/activity-log.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE); nama dan nilai ditulis seperti di TC.
+- Nilai Data Uji TC: Search `Hendra` dan `zzz`; Division `Finance`; Position `Manager`; Division `Operations` (ditulis seperti di TC).
 - Posisi dan isi baris pada asersi bergantung pada Tab Session client uji yang hanya memuat baris seed #11 saat spec berjalan; jaminan itu disediakan tim FE/BE (lihat Temuan untuk QA). Total entri tidak diasersi sebagai angka absolut.
 - State yang diubah spec: Search dan Filter Tab Session; keduanya dibersihkan oleh langkah penghubung dan di-reset pembukaan layar hook `beforeEach` suite sebelum spec berikutnya.
 - Flag Guided Tooltip halaman Activity Log di-set true oleh hook suite `before` untuk akun aktor (lihat `suite.md`).

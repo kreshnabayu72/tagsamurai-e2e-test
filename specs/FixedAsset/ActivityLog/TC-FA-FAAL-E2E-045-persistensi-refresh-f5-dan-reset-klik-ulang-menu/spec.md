@@ -80,7 +80,7 @@ coverage:
 - Langkah penghubung (S-03): klik tab Session dan tab User Action untuk berpindah tab; `Klik menu Activity Log di sidebar Reports & Logs` pada akhir TC-FA-FAAL-194 memulihkan semua state dan membuka Tab Session sebelum TC-FA-FAAL-195.
 - Panel Filter tiap tab dibuka satu kali dan diasumsikan tetap terbuka beserta nilai ter-Apply-nya.
 - Pada TC-FA-FAAL-194, F5 dilakukan ketika Tab User Action aktif; sesuai TC-FA-FAAL-195, tab aktif tetap sama sesudah muat ulang, sehingga tab Session dibuka lewat klik tab sebelum asersi Tab Session.
-- Ukuran spec 19 langkah. Hasil pemecahan spec ini yang semula 38 langkah (konvensi bagian 3, batas ukuran); TC-FA-FAAL-196 dan 287 dipindah ke spec 099.
+- Ukuran spec 19 langkah (konvensi bagian 3, batas ukuran). TC-FA-FAAL-196 dan 287 ada di spec 099.
 - Temuan untuk QA:
   - TC tidak menyatakan apakah panel Filter tetap terbuka setelah `[Apply]` dan saat berpindah tab; spec mengasumsikan panel tetap terbuka beserta nilai ter-Apply-nya.
   - Total `11 entries` (Tab Session) dan `15 entries` (Tab User Action) pada TC bergantung pada log client Pre-setup #11 dan #12 yang tidak bertambah. Log immutable dan spec lain menambah baris pada client yang sama, sehingga total absolut dapat berubah (S-12, S-14); TC tidak menyatakan client khusus atau Filter pembatas. Spec mengikuti angka TC.

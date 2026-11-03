@@ -43,25 +43,26 @@ coverage:
 
 ### TC-FA-FAAL-150: Ubah urutan kolom lewat drag
 
-2. Untuk setiap kolom pada parameter iterasi (langkah 3 sampai 14):
-3. Klik header kolom Actions (⋯)
-4. Klik `Setup Column...`
-5. Drag kolom ke posisi paling atas pada daftar popup
-6. Verifikasi kolom menjadi kolom pertama di Live Preview
-7. Klik `[Save]`
-8. Verifikasi kolom menjadi kolom pertama di tabel
-9. Muat ulang halaman (F5)
-10. Verifikasi kolom tetap menjadi kolom pertama di tabel setelah muat ulang
-11. Klik header kolom Actions (⋯)
-12. Klik `Setup Column...`
-13. Klik `[Reset to Default]`
-14. Klik `[Save]`
+Untuk setiap kolom pada parameter iterasi (langkah 2 sampai 13):
+
+2. Klik header kolom Actions (⋯)
+3. Klik `Setup Column...`
+4. Drag kolom ke posisi paling atas pada daftar popup
+5. Verifikasi kolom menjadi kolom pertama di Live Preview
+6. Klik `[Save]`
+7. Verifikasi kolom menjadi kolom pertama di tabel
+8. Muat ulang halaman (F5)
+9. Verifikasi kolom tetap menjadi kolom pertama di tabel setelah muat ulang
+10. Klik header kolom Actions (⋯)
+11. Klik `Setup Column...`
+12. Klik `[Reset to Default]`
+13. Klik `[Save]`
 
 ## Notes
 
 - Langkah penghubung (S-03): klik tab User Action di awal; popup dibuka ulang sebelum `[Reset to Default]` karena muat ulang menutup popup; kolom dipindah ke posisi paling atas dengan drag pada daftar popup.
-- Langkah 3 sampai 14 diulang per kolom; parameter iterasi (delapan kolom) ada di Prerequisites. Tiap iterasi memuat `Verifikasi` per klausa Expected (S-01).
-- Ukuran spec 14 langkah nominal (sekitar 104 langkah setelah ekspansi delapan iterasi). Iterasi per kolom ("Untuk tiap kolom pada Data Uji") tidak dapat dipecah tanpa memecah satu TC, sehingga TC-FA-FAAL-150 berdiri sendiri di spec ini. Hasil pemecahan spec 042 (konvensi bagian 3, batas ukuran); TC-FA-FAAL-152 dan 153 tetap di spec 042.
+- Langkah 2 sampai 13 diulang per kolom; parameter iterasi (delapan kolom) ada di Prerequisites. Tiap iterasi memuat `Verifikasi` per klausa Expected (S-01).
+- Ukuran spec 13 langkah nominal (sekitar 97 langkah setelah ekspansi delapan iterasi). Iterasi per kolom ("Untuk tiap kolom pada Data Uji") adalah satu TC yang tidak dapat dibagi, sehingga TC-FA-FAAL-150 berdiri sendiri di spec ini (konvensi bagian 3, batas ukuran); TC-FA-FAAL-152 dan 153 ada di spec 042.
 - Pembagian TC lintas spec: TC-FA-FAAL-149 ada di spec 071 dan TC-FA-FAAL-151 di spec 072; TC-FA-FAAL-147, 148, dan 154 di spec 041.
 - Temuan untuk QA:
   - TC-FA-FAAL-150 mengulang pemulihan lewat `[Reset to Default]` lalu `[Save]` pada tiap iterasi; hook `after` spec ini tetap menghapus preferensi kolom di browser.

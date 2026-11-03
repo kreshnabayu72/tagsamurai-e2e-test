@@ -46,7 +46,7 @@ coverage:
 
 ### Penghubung volume dari 5.000 ke 5.001 baris
 
-12. Tambahkan satu baris log pada Tab Session dan satu baris log pada Tab User Action hingga volume masing-masing tepat 5.001 baris tersimpan
+12. Tambahkan satu baris log pada Tab Session hingga volume tepat 5.001 baris tersimpan
 
 ### TC-FA-FAAL-69: Browsing dan Search dengan volume besar tidak memunculkan loading screen
 

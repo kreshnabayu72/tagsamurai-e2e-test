@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup #1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Env var `FA_TC_PASSWORD` didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example` (butir "Env var" di `suite.md`); password tidak ditulis di spec atau fixture.
 - Data: Tab Session SS-01 sampai SS-11 (Pre-setup #11), seperti tabel di bawah. Spec hanya membaca dan tidak mengubah data.
-- Visibilitas kolom Note diubah lewat overlay Column Visibility pada langkah 15 dan dipulihkan pada langkah 22; bila spec gagal di tengah, hook `after` menghapus preferensi kolom di browser (butir "Pemulihan Setup Column" di `suite.md`).
+- Visibilitas kolom Note diubah lewat overlay Column Visibility pada langkah 16 dan dipulihkan pada langkah 22; bila spec gagal di tengah, hook `after` menghapus preferensi kolom di browser (butir "Pemulihan Setup Column" di `suite.md`).
 - Flag Guided Tooltip halaman Activity Log: hook suite `before` men-set true untuk akun aktor dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed dan pemulihan data Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
 - Identitas data Pre-setup dibaca dari `fixtures/activity-log.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE). Nama data ditulis seperti di TC.
@@ -82,7 +82,7 @@ coverage:
 - Mode: FE+BE.
 - Langkah penghubung (S-03): langkah 3, 6, 9, 14, 17, 20, 23, dan 26 (mengosongkan atau menutup kotak Search, menutup overlay Column Visibility, dan menutup Filter Panel).
 - Langkah 7 (klik icon Filter) dan 8 (`Verifikasi` field Date) menjadi pengamatan untuk Expected b TC-FA-FAAL-65 ("penyaringan tanggal hanya melalui field Date di Filter Panel"), karena TC tidak memberi langkah pengamatannya (S-14).
-- TC-FA-FAAL-68 (trim spasi kedua tab) dipindah ke spec 080 agar spec ini tidak melewati sekitar 35 langkah.
+- TC-FA-FAAL-68 (trim spasi kedua tab) ada di spec 080.
 - Temuan untuk QA:
   - Pre-setup #11 menyebut tepat 11 baris Tab Session (dan #12 tepat 15 baris Tab User Action) tanpa menyatakan bahwa login aktor (dan spec lain pada client yang sama) menambah baris `Session started` pada log permanen. Asersi hitungan (`Showing 1–10 of 11 entries`, 15 baris) hanya benar bila data Pre-setup berada di client yang terisolasi dari login lain; spec mengikuti TC.
   - TC-FA-FAAL-65 Expected b ("penyaringan tanggal hanya melalui field Date di Filter Panel") berupa pernyataan aturan tanpa langkah uji; spec mengamati keberadaan field Date (langkah 8).

@@ -81,7 +81,7 @@ coverage:
 - Spec berjalan di aplikasi Android; `coverage.mobile: automated`. Kemampuan driver Android belum dipastikan tim FE; `coverage` dapat berubah menjadi `unsupported` bila tidak tersedia.
 - Langkah penghubung (S-03): langkah 12, 15, 21, dan 28 (menggulir ke posisi card yang diasersi), langkah 11, 14, dan 20 (pindah tab di luar langkah TC).
 - Asersi absence pada langkah 29 berjangkar pada card SS-03 yang tampil (langkah 28) dan kolom lain yang tetap tampil (langkah 30).
-- TC-FA-FAAL-35 (card tidak dapat diketuk) dipindah ke spec 079 agar spec ini tidak melewati sekitar 35 langkah.
+- TC-FA-FAAL-35 (card tidak dapat diketuk) ada di spec 079.
 - TC-FA-FAAL-36 (toolbar dan Guided Tooltip Android dengan akun Pre-setup #4) ada di spec 064.
 - Temuan untuk QA:
   - TC-FA-FAAL-30 sampai 34 memuat angka absolut jumlah card (10, 11, 15); audit trail tumbuh, sehingga angka hanya terjamin bila log dipulihkan ke Pre-setup (Catatan TC: fixture dipulihkan sebelum tiap TC); pemulihan itu kemampuan tim FE/BE (S-12, S-14).

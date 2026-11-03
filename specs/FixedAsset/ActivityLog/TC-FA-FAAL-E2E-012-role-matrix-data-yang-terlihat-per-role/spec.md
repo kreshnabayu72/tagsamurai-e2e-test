@@ -39,36 +39,40 @@ coverage:
 1. Klik tab Session
 2. Catat total Z0 pada teks pagination tab Session
 3. Verifikasi Total Control: teks pagination menampilkan `Showing 1–10 of Z0 entries` dengan Z0 ≥ 11 (SS-01 sampai SS-11 termasuk dalam Z0)
-4. Verifikasi Total Control: baris dari semua group tampil dan tidak ada baris yang tersaring oleh group pengguna
+4. Verifikasi Total Control: baris dari semua group tampil
+5. Verifikasi Total Control: tidak ada baris yang tersaring oleh group pengguna
 
 ### TC-FA-FAAL-49: Total Control melihat seluruh baris Tab User Action client tanpa filter
 
-5. Klik tab User Action
-6. Catat total Z0 pada teks pagination tab User Action
-7. Verifikasi Total Control: teks pagination menampilkan `Showing 1–10 of Z0 entries` dengan Z0 ≥ 15 (UA-01 sampai UA-15 termasuk dalam Z0)
-8. Verifikasi Total Control: baris dari semua modul dan group tampil dan tidak ada baris yang tersaring
+6. Klik tab User Action
+7. Catat total Z0 pada teks pagination tab User Action
+8. Verifikasi Total Control: teks pagination menampilkan `Showing 1–10 of Z0 entries` dengan Z0 ≥ 15 (UA-01 sampai UA-15 termasuk dalam Z0)
+9. Verifikasi Total Control: baris dari semua modul dan group tampil
+10. Verifikasi Total Control: tidak ada baris yang tersaring
 
 ### TC-FA-FAAL-50: Read Only melihat seluruh baris Tab Session client tanpa filter
 
-9. Ganti akun: Logout dari akun Total Control, lalu Login sebagai Read Only (`readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_RO_PASSWORD`) dan buka Fixed Asset > Reports & Logs > Activity Log
-10. Klik tab Session
-11. Catat total Z0 pada teks pagination tab Session
-12. Verifikasi Read Only: teks pagination menampilkan `Showing 1–10 of Z0 entries` dengan Z0 ≥ 11 (SS-01 sampai SS-11 termasuk dalam Z0)
-13. Verifikasi Read Only: baris dari semua group tampil dan tidak ada baris yang tersaring oleh group pengguna
+11. Ganti akun: Logout dari akun Total Control, lalu Login sebagai Read Only (`readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_RO_PASSWORD`) dan buka Fixed Asset > Reports & Logs > Activity Log
+12. Klik tab Session
+13. Catat total Z0 pada teks pagination tab Session
+14. Verifikasi Read Only: teks pagination menampilkan `Showing 1–10 of Z0 entries` dengan Z0 ≥ 11 (SS-01 sampai SS-11 termasuk dalam Z0)
+15. Verifikasi Read Only: baris dari semua group tampil
+16. Verifikasi Read Only: tidak ada baris yang tersaring oleh group pengguna
 
 ### TC-FA-FAAL-51: Read Only melihat seluruh baris Tab User Action client tanpa filter
 
-14. Klik tab User Action
-15. Catat total Z0 pada teks pagination tab User Action
-16. Verifikasi Read Only: teks pagination menampilkan `Showing 1–10 of Z0 entries` dengan Z0 ≥ 15 (UA-01 sampai UA-15 termasuk dalam Z0)
-17. Verifikasi Read Only: baris dari semua modul dan group tampil dan tidak ada baris yang tersaring
+17. Klik tab User Action
+18. Catat total Z0 pada teks pagination tab User Action
+19. Verifikasi Read Only: teks pagination menampilkan `Showing 1–10 of Z0 entries` dengan Z0 ≥ 15 (UA-01 sampai UA-15 termasuk dalam Z0)
+20. Verifikasi Read Only: baris dari semua modul dan group tampil
+21. Verifikasi Read Only: tidak ada baris yang tersaring
 
 ## Notes
 
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Spec Role Matrix (bagian 3a): data yang terlihat per role. Ditulis per blok role karena ganti akun menuntut langkah eksplisit (akun pertama login di hook `before`, S-07); tiap blok berdiri sendiri.
-- Langkah penghubung (S-03): langkah 1, 5, 10, dan 14 (klik tab untuk membuka tab yang diamati TC dengan "Buka tab"), langkah 9 (ganti akun, lalu membuka Activity Log), langkah 2, 6, 11, dan 15 (mencatat baseline Z0 dari teks pagination, TC-FA-FAAL-48 sampai 51 langkah 2).
-- Langkah 3, 7, 12, dan 16 membandingkan total dengan Z0 yang dicatat sebelumnya dan batas bawah (Z0 ≥ 11 dan Z0 ≥ 15) seperti Expected TC-FA-FAAL-48 sampai 51.
+- Langkah penghubung (S-03): langkah 1, 6, 12, dan 17 (klik tab untuk membuka tab yang diamati TC dengan "Buka tab"), langkah 11 (ganti akun, lalu membuka Activity Log), langkah 2, 7, 13, dan 18 (mencatat baseline Z0 dari teks pagination, TC-FA-FAAL-48 sampai 51 langkah 2).
+- Langkah 3, 8, 14, dan 19 membandingkan total dengan Z0 yang dicatat sebelumnya dan batas bawah (Z0 ≥ 11 dan Z0 ≥ 15) seperti Expected TC-FA-FAAL-48 sampai 51.
 - Temuan untuk QA:
   - TC-FA-FAAL-48 sampai 51 menyebut baris berasal dari group berbeda (Gedung A, Gedung B, tanpa group) tanpa memetakan baris SS/UA ke group; spec memverifikasi lewat total pagination dan tidak menyebut group per baris.
   - TC-FA-FAAL-48 sampai 51 tidak menyebut env var password; nama env var diusulkan dari butir "Env var" di `suite.md`.

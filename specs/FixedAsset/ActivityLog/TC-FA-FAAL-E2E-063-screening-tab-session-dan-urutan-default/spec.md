@@ -29,31 +29,33 @@ coverage:
 
 1. Klik tab Session
 2. Verifikasi Breadcrumb tampil `Reports & Logs > Activity Log`
-3. Verifikasi Tab tampil `Session | User Action` dengan tab Session aktif
-4. Verifikasi Table Tools tampil `Search | Filter | Download`
-5. Verifikasi header kolom Date, User, Employee ID, Position, Division, Activity, Status, Note, IP Address, dan Device/Browser masing-masing sortable
-6. Verifikasi header kolom Column Visibility (⋯) unsortable
-7. Klik header kolom Column Visibility (⋯)
-8. Verifikasi overlay Column Visibility terbuka
-9. Tutup overlay Column Visibility
-10. Verifikasi body tanpa row action
-11. Verifikasi baris data tampil dengan 10 baris per halaman
-12. Verifikasi footer menampilkan teks berformat `Showing X–Y of Z entries`
-13. Verifikasi Rows per page `10`
-14. Verifikasi kontrol `[← Prev] [Page] [Next →]` tampil
+3. Verifikasi Tab tampil `Session | User Action`
+4. Verifikasi tab Session aktif
+5. Verifikasi Table Tools tampil `Search | Filter | Download`
+6. Verifikasi header kolom Date, User, Employee ID, Position, Division, Activity, Status, Note, IP Address, dan Device/Browser masing-masing sortable
+7. Verifikasi header kolom Column Visibility (⋯) unsortable
+8. Klik header kolom Column Visibility (⋯)
+9. Verifikasi overlay Column Visibility terbuka
+10. Tutup overlay Column Visibility
+11. Verifikasi body tanpa row action
+12. Verifikasi baris data tampil
+13. Verifikasi tabel menampilkan 10 baris per halaman
+14. Verifikasi footer menampilkan teks berformat `Showing X–Y of Z entries`
+15. Verifikasi Rows per page `10`
+16. Verifikasi kontrol `[← Prev] [Page] [Next →]` tampil
 
 ### TC-FA-FAAL-5: Urutan default Tab Session: Date terbaru di atas
 
-15. Verifikasi baris pertama adalah SS-11 dengan Date `16/07/26, 09:00` (Date Newest First)
-16. Verifikasi baris kedua adalah SS-10 dengan Date `16/07/26, 08:00`
-17. Verifikasi tidak ada indikator panah sort aktif pada header kolom manapun
+17. Verifikasi baris pertama adalah SS-11 dengan Date `16/07/26, 09:00` (Date Newest First)
+18. Verifikasi baris kedua adalah SS-10 dengan Date `16/07/26, 08:00`
+19. Verifikasi tidak ada indikator panah sort aktif pada header kolom manapun
 
 ## Notes
 
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 1 (memastikan tab Session aktif), langkah 9 (menutup overlay Column Visibility yang dibuka langkah 7).
-- Langkah 7 sampai 8 mengamati klausa Expected "header klik membuka overlay Column Visibility" milik TC-FA-FAAL-3 butir b yang tidak punya langkah klik di TC; klik ditambahkan hanya untuk mengamati klausa itu.
-- Teks footer pada langkah 12 diasersi sebagai format; nilai X, Y, Z tidak diasersi sebagai angka absolut karena log tumbuh (S-12).
+- Langkah penghubung (S-03): langkah 1 (memastikan tab Session aktif), langkah 10 (menutup overlay Column Visibility yang dibuka langkah 8).
+- Langkah 8 sampai 9 mengamati klausa Expected "header klik membuka overlay Column Visibility" milik TC-FA-FAAL-3 butir b yang tidak punya langkah klik di TC; klik ditambahkan hanya untuk mengamati klausa itu.
+- Teks footer pada langkah 14 diasersi sebagai format; nilai X, Y, Z tidak diasersi sebagai angka absolut karena log tumbuh (S-12).
 - TC-FA-FAAL-1, 2 ada di spec 001; TC-FA-FAAL-4, 6 ada di spec 002.
 - Temuan untuk QA:
   - TC-FA-FAAL-5 butir a menyebut SS-11 di baris pertama; Activity Log adalah audit trail yang tumbuh, sehingga urutan ini hanya terjamin bila log dipulihkan ke Pre-setup (Catatan TC: fixture dipulihkan sebelum tiap TC). Pemulihan itu dinyatakan sebagai kemampuan tim FE/BE (S-14).

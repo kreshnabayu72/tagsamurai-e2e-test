@@ -47,5 +47,6 @@ coverage:
 - TC-FA-FAAL-30 sampai 34 ada di spec 008.
 - Langkah penghubung (S-03): langkah 1 dan 7 (pindah tab), langkah 2 dan 8 (menggulir ke posisi card yang diasersi).
 - Langkah 5 dan 11 (absence navigasi, drawer, menu) berjangkar pada langkah 4 dan 10 (halaman card tetap tampil), diverifikasi sesudah masing-masing ketukan sesuai Expected a dan b TC-FA-FAAL-35.
+- Ketuk card UA-01 (langkah 3) mengandalkan UA-01 berada di card paling atas; ini hanya berlaku bila log dipulihkan ke Pre-setup sebelum spec (butir "Prasyarat lingkungan eksternal" di `suite.md`, S-14).
 - Temuan untuk QA:
   - TC-FA-FAAL-35 tidak punya Expected per ketukan dan tidak menyebut kondisi pembanding; spec mengasersi hasil yang sama sesudah tiap ketukan.

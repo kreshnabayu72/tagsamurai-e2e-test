@@ -49,17 +49,20 @@ coverage:
 5. Klik header Name sekali (Ascending)
 6. Ubah Rows per page menjadi 25
 7. Verifikasi urutan baris UA-02, UA-13, UA-14, UA-15
-8. Verifikasi Filter Object `Groups`, Search `Gedung`, dan Sort Name Ascending tetap aktif
-9. Verifikasi teks pagination `Showing 1–4 of 4 entries`
+8. Verifikasi Filter Object `Groups` tetap aktif
+9. Verifikasi Search `Gedung` tetap aktif
+10. Verifikasi Sort Name Ascending tetap aktif
+11. Verifikasi teks pagination `Showing 1–4 of 4 entries`
 
 ### TC-FA-FAAL-139: Clear Field filter mempertahankan Search dan Sort
 
-10. Klik `[Clear Field]`, klik `[Apply]`
-11. Verifikasi Search `Gedung` dan Sort Name Ascending tetap aktif
-12. Verifikasi urutan baris UA-07, UA-12, UA-02, UA-13, UA-14, UA-15, UA-06
-13. Klik `(←)` pada kotak Search
-14. Klik header Name dua kali (kembali ke urutan default)
-15. Ubah Rows per page menjadi 10
+12. Klik `[Clear Field]`, klik `[Apply]`
+13. Verifikasi Search `Gedung` tetap aktif
+14. Verifikasi Sort Name Ascending tetap aktif
+15. Verifikasi urutan baris UA-07, UA-12, UA-02, UA-13, UA-14, UA-15, UA-06
+16. Klik `(←)` pada kotak Search
+17. Klik header Name dua kali (kembali ke urutan default)
+18. Ubah Rows per page menjadi 10
 
 ## Notes
 

@@ -99,8 +99,8 @@ coverage:
 
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung "Tunggu aksi selesai" (S-03, 8b.8, tanpa Verifikasi): langkah 3, 7, 12, 17, 21, 30; ditulis sebelum tiap pembukaan Activity Log > User Action yang mengikuti aksi tulis tanpa asersi di antaranya. Verifikasi polling tetap menunggu commit log.
-- Spec di atas 35 langkah karena 6 langkah penghubung "Tunggu aksi selesai"; enam TC berurutan pada akun Citra Lestari yang sama (status dan Home Group), sehingga dipertahankan dalam satu spec.
-- Urutan TC: 231, 232, 233, 234, 279, 253. TC-FA-FAAL-253 diletakkan terakhir karena menghapus pelaku Hendra Pratama #1 dan tidak menambah baris yang dihitung baseline.
+- Spec di atas 35 langkah karena 6 langkah penghubung "Tunggu aksi selesai"; spec memuat enam TC (39 langkah, 33 tanpa langkah penghubung tunggu); status Citra Lestari pada TC-FA-FAAL-231 sampai 234 berurutan (hasil tiap TC menjadi keadaan awal TC berikutnya sampai dipulihkan seed API), sedangkan TC-FA-FAAL-279 (Indra Wijaya) dan TC-FA-FAAL-253 (Hendra Pratama #1) independen dari TC lain, sehingga dipertahankan dalam satu spec.
+- Urutan TC: 231, 232, 233, 234, 279, 253. TC-FA-FAAL-253 diletakkan terakhir karena menghapus pelaku Hendra Pratama #1.
 - Langkah penghubung (S-03): langkah 1, 4, 8, 13, 18, 22, 24, 31 (membuka Tab User Action), langkah 10 dan 15 (pemulihan status Citra Lestari lewat seed API), langkah 25, 27, 32, 36 (Search untuk menemukan baris target, R-16), langkah 26 (membuktikan UA-13 tampil sebelum langkah 33, anchor sebelum aksi).
 - Langkah 5, 9, 14, 19, 23 memakai idiom polling (bagian 6): muat ulang Tab User Action tiap 5 detik, batas 2 menit, sebagai pengganti langkah tunggu tersendiri; TC-FA-FAAL-231, 232, 233 menuliskannya di Langkah 2 TC sumber dan spec memakainya juga untuk langkah 19.
 - Baseline S-12: langkah 1 mencatat N0. Tiap Verifikasi baris baru juga memeriksa total pagination lebih besar dari total pada Verifikasi sebelumnya.

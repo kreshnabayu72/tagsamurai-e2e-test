@@ -58,7 +58,7 @@ coverage:
 
 20. Terapkan Filter Action `Delete` dan Object `Audit` di Tab User Action
 21. Verifikasi icon Download tetap aktif (tidak Disabled)
-22. Bersihkan Filter Action dan Object lewat Clear Field
+22. Klik `[Clear Field]`, klik `[Apply]`
 
 ## Notes
 

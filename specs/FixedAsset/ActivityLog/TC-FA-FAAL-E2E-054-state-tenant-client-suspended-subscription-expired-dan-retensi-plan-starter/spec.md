@@ -18,7 +18,7 @@ coverage:
 
 - Mode: FE+BE (backend nyata; status client dan subscription diubah lewat fixture BE, tanpa intercept).
 - Akun aktor: Total Control (Pre-setup #1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Tab Session terbuka, sesi Fixed Asset sudah terbuka). Langkah 26 memakai akun Total Control di client plan Starter (ganti akun eksplisit); akun itu tidak tertulis di Pre-setup TC dan disediakan tim FE (lihat Temuan untuk QA). Hook `after` mengembalikan sesi ke akun default suite.
-- Data Pre-setup: Data Log Tab User Action UA-01 sampai UA-15 (#12) dan Tab Session (#11) pada client akun default; client dengan status Suspended dan subscription Fixed Asset Expired dari entitas Pre-setup #16 (status diubah fixture BE saat spec berjalan, sesi Fixed Asset sudah dibuka sebelum perubahan); baris Tab User Action dan Tab Session berusia 2 tahun di client plan Starter (#14). Identitas data dirujuk lewat `fixtures/activity-log.json` (belum ada, disediakan tim FE; nama kunci ditetapkan tim FE).
+- Data Pre-setup: Data Log Tab User Action UA-01 sampai UA-15 (#12) dan Tab Session (#11) pada client akun default; client akun default itu juga yang status client-nya menjadi Suspended dan subscription Fixed Asset-nya Expired (status diubah fixture BE saat spec berjalan, sesi Fixed Asset sudah dibuka sebelum perubahan); baris Tab User Action dan Tab Session berusia 2 tahun di client plan Starter (#14). Identitas data dirujuk lewat `fixtures/activity-log.json` (belum ada, disediakan tim FE; nama kunci ditetapkan tim FE).
 - Data Uji dari TC sumber: Format CSV; Search `Gedung`; Filter Date rentang dua tahun lalu (nilai tanggal rentang yang memuat baris berusia 2 tahun ditetapkan seed Pre-setup #14).
 - Total entri (Z): dibaca dari teks `Showing X–Y of Z entries` sebelum status diubah. Asersi "seluruh baris" memakai Z yang sama sesudah status berubah, bukan angka absolut, karena log bersifat permanen dan spec lain menambah baris (S-12, bagian 8b butir 10).
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): mengubah status client menjadi Suspended dan subscription Fixed Asset menjadi Expired lewat fixture BE sementara sesi Fixed Asset tetap terbuka; memulihkan keduanya ke Active; penangkap unduhan browser.
@@ -72,7 +72,7 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE, kelas h (state tenant): spec mengubah status client dan subscription lewat fixture BE dan mengasersi akses baca. Perubahan plan dan akses Auth dipisah ke spec 073 dan 074.
+- Mode: FE+BE, kelas h (state tenant): spec mengubah status client dan subscription lewat fixture BE dan mengasersi akses baca. Perubahan plan dan akses Auth ada di spec 073 dan 074.
 - Langkah 5 dan 15 mengubah state sementara sesi Fixed Asset tetap terbuka; pemicu itu bukan objek uji dan tidak diasersi (bagian 3 prinsip 13h, P-2 untuk pemicu state).
 - Langkah 6 dan 16 membuka layar lagi lewat menu karena TC mensyaratkan membuka Activity Log sesudah status berubah; hook `beforeEach` suite sudah membukanya sebelum status berubah.
 - Langkah penghubung (S-03, S-09): langkah 1 sampai 4 (mencatat baseline Z sebelum status diubah), langkah 14 dan 25 (memulihkan status), langkah 26 dan 27 (ganti akun eksplisit dan membuka layar di client Starter, S-07), langkah 3, 8, 10, 18 dan 30 (pindah tab).

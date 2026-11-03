@@ -15,8 +15,8 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE (backend nyata; empat client dengan plan berbeda, tanpa intercept).
-- Akun aktor: Total Control tiap client pada tabel di bawah (Pre-setup #17), satu akun Total Control per client. Email dan password akun tiap client tidak tertulis di Pre-setup TC dan disediakan tim FE (lihat Temuan untuk QA). Login akun pertama (client Starter) dilakukan lewat langkah ganti akun eksplisit pada iterasi pertama karena hook `before` login ke akun default suite; hook `after` mengembalikan sesi ke akun default suite.
-- Client yang diuji (tabel parameter langkah 1 sampai 9, satu iterasi per baris):
+- Akun aktor: Total Control tiap client pada tabel di bawah (Pre-setup #17), satu akun Total Control per client. Email dan password akun tiap client tidak tertulis di Pre-setup TC dan disediakan tim FE (lihat Temuan untuk QA). Login akun pertama (client Starter) dilakukan lewat langkah ganti akun eksplisit pada iterasi pertama karena hook `before` login ke akun default suite; hook `after` mengembalikan sesi ke akun default suite. Pengecualian hook `beforeEach` suite: langkah 2 membuka Activity Log sendiri di client iterasi karena layar awal hook dibuka pada akun default.
+- Client yang diuji (tabel parameter langkah 1 sampai 11, satu iterasi per baris):
 
   | Iterasi | Client | Plan |
   |---|---|---|
@@ -34,26 +34,28 @@ coverage:
 
 ## Test Steps
 
-### Untuk setiap iterasi pada tabel Prerequisites (langkah 1 sampai 9)
+### Untuk setiap iterasi pada tabel Prerequisites (langkah 1 sampai 11)
 
 1. Ganti akun: logout, lalu login sebagai Total Control client iterasi (Pre-setup #17)
 2. Buka Fixed Asset > Reports & Logs > Activity Log, lalu klik tab User Action
-3. Verifikasi Tab Session dan Tab User Action keduanya tampil
-4. Verifikasi kolom kedua tab sama dengan client Starter (iterasi 1 menjadi rujukan perbandingan)
-5. Ketik Search dengan nilai yang cocok dengan sedikitnya satu baris client, tekan Enter
-6. Terapkan Filter dengan nilai yang cocok dengan sedikitnya satu baris client
-7. Klik icon Download, pilih `Download as CSV`
-8. Verifikasi Search, Filter, dan Download berjalan sama dengan client Starter: hasil tersaring tampil dan berkas CSV terunduh
-9. Verifikasi tidak ada pembatasan, ikon upsell, maupun batas jumlah baris khusus plan
+3. Verifikasi Tab Session tampil
+4. Verifikasi Tab User Action tampil
+5. Verifikasi kolom kedua tab sama dengan client Starter (iterasi 1 menjadi rujukan perbandingan)
+6. Ketik Search dengan nilai yang cocok dengan sedikitnya satu baris client, tekan Enter
+7. Terapkan Filter dengan nilai yang cocok dengan sedikitnya satu baris client
+8. Klik icon Download, pilih `Download as CSV`
+9. Verifikasi Search dan Filter berjalan sama dengan client Starter: hasil tersaring tampil
+10. Verifikasi Download berjalan sama dengan client Starter: berkas CSV terunduh
+11. Verifikasi tidak ada pembatasan, ikon upsell, maupun batas jumlah baris khusus plan
 
 ## Notes
 
 - Mode: FE+BE, kelas h (state tenant): spec membandingkan perilaku di empat plan. Plan tidak diubah.
-- Langkah yang diulang (S-10, bagian 8b butir 7): langkah 1 sampai 9 diulang untuk empat client sehingga ekspansi 36 langkah; parameter tiap iterasi ada di tabel Prerequisites. Alasan melewati sekitar 35 langkah: seluruh iterasi satu blok TC (TC-FA-FAAL-276) dengan satu kelas harness dan langkah identik per client; tidak ada langkah bersyarat.
-- Perbandingan (langkah 4 dan 8): iterasi 1 (Starter) menjadi rujukan; iterasi 2 sampai 4 membandingkan terhadap hasil Starter. `Verifikasi` di iterasi 1 mencatat kolom, hasil Search dan Filter, serta berkas sebagai rujukan.
-- Urutan asersi pada langkah 7 sampai 9: absence ikon upsell dan pembatasan didahului langkah 3 dan 8 sebagai anchor positif bahwa halaman dan hasil tampil (bagian 8b butir 2).
+- Langkah yang diulang (S-10, bagian 8b butir 7): langkah 1 sampai 11 diulang untuk empat client sehingga ekspansi 44 langkah; parameter tiap iterasi ada di tabel Prerequisites. Alasan melewati sekitar 35 langkah: seluruh iterasi satu blok TC (TC-FA-FAAL-276) dengan satu kelas harness dan langkah identik per client; tidak ada langkah bersyarat.
+- Perbandingan (langkah 5, 9, dan 10): iterasi 1 (Starter) menjadi rujukan; iterasi 2 sampai 4 membandingkan terhadap hasil Starter. `Verifikasi` di iterasi 1 mencatat kolom, hasil Search dan Filter, serta berkas sebagai rujukan.
+- Urutan asersi pada langkah 9 sampai 11: absence ikon upsell dan pembatasan didahului langkah 3, 4, 9, dan 10 sebagai anchor positif bahwa halaman dan hasil tampil (bagian 8b butir 2).
 - Langkah penghubung (S-03): langkah 2 (membuka layar di client yang dilogin).
 - Temuan untuk QA:
   - TC-FA-FAAL-276 tidak menyebut nilai Search dan Filter, akun Total Control tiap client, atau data log tiap client; nilai dan akun ditetapkan tim FE sesuai seed Pre-setup #17.
   - TC-FA-FAAL-276 langkah 3 ("Bandingkan tampilan dan perilaku") tidak mendefinisikan cara membandingkan; spec memakai client Starter sebagai rujukan.
-  - TC-FA-FAAL-276 butir b memuat tiga klausa (pembatasan, ikon upsell, batas jumlah baris) yang digabung dalam satu `Verifikasi` (langkah 9) sebagai daftar elemen yang sama-sama tidak ada.
+  - TC-FA-FAAL-276 butir b memuat tiga klausa (pembatasan, ikon upsell, batas jumlah baris) yang digabung dalam satu `Verifikasi` (langkah 11) sebagai daftar elemen yang sama-sama tidak ada.

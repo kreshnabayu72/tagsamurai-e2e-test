@@ -32,7 +32,7 @@ coverage:
   | SS-10 | EMP008 | Staff | Operations | Session started | Chrome on Windows |
   | SS-11 | EMP009 | Supervisor | Finance | Session ended | Safari on macOS |
 
-  Identitas baris dirujuk lewat `Fixture.activity-log.<kunci>` (fixture `fixtures/activity-log.json` disediakan tim FE; nama kunci ditetapkan tim FE).
+  Identitas baris dibaca dari `fixtures/activity-log.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE); nama dan nilai ditulis seperti di TC.
 - Posisi dan urutan baris pada asersi bergantung pada Tab Session client uji yang hanya memuat baris seed #11 dalam Filter Date Jendela Seed (14/07/26 sampai 16/07/26) yang diterapkan langkah 1 sampai 3. Total entri tidak diasersi sebagai angka absolut.
 - State yang diubah spec: Sort Tab Session dan halaman aktif tabel; keduanya dikembalikan oleh langkah penghubung dan di-reset pembukaan layar hook `beforeEach` suite sebelum spec berikutnya.
 - Flag Guided Tooltip halaman Activity Log di-set true oleh hook suite `before` untuk akun aktor (lihat `suite.md`).

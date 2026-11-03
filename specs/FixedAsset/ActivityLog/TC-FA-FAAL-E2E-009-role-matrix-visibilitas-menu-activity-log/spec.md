@@ -54,28 +54,32 @@ coverage:
 13. Verifikasi Read Only: halaman Activity Log terbuka
 14. Verifikasi Read Only: tab `Session` dan `User Action` tampil
 15. Verifikasi Read Only: tabel tampil pada tab yang terbuka
-16. Verifikasi Read Only: Filter, Search, dan Download tampil dan aktif pada tab yang terbuka
-17. Klik tab User Action
-18. Verifikasi Read Only: tabel tampil pada tab User Action
-19. Verifikasi Read Only: Filter, Search, dan Download tampil dan aktif pada tab User Action
+16. Verifikasi Read Only: Filter, Search, dan Download tampil pada tab yang terbuka
+17. Verifikasi Read Only: Filter, Search, dan Download aktif pada tab yang terbuka
+18. Klik tab User Action
+19. Verifikasi Read Only: tabel tampil pada tab User Action
+20. Verifikasi Read Only: Filter, Search, dan Download tampil pada tab User Action
+21. Verifikasi Read Only: Filter, Search, dan Download aktif pada tab User Action
 
 ### TC-FA-FAAL-39: Menu Activity Log tampil untuk Default User
 
-20. Ganti akun: Logout dari akun Read Only, lalu Login sebagai Default User (`defaultUserFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_DU_PASSWORD`) dan buka Fixed Asset > Dashboard
-21. Buka sidebar Reports & Logs
-22. Klik `Activity Log`
-23. Verifikasi Default User: menu `Activity Log` tampil di bawah Reports & Logs
-24. Verifikasi Default User: halaman Activity Log terbuka dengan tab `Session` dan `User Action`
-25. Verifikasi Default User: tabel, Filter, Search, dan Download tampil pada tab yang terbuka
-26. Klik tab User Action
-27. Verifikasi Default User: tabel, Filter, Search, dan Download tampil pada tab User Action
+22. Ganti akun: Logout dari akun Read Only, lalu Login sebagai Default User (`defaultUserFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_DU_PASSWORD`) dan buka Fixed Asset > Dashboard
+23. Buka sidebar Reports & Logs
+24. Klik `Activity Log`
+25. Verifikasi Default User: menu `Activity Log` tampil di bawah Reports & Logs
+26. Verifikasi Default User: halaman Activity Log terbuka
+27. Verifikasi Default User: tab `Session` dan `User Action` tampil
+28. Verifikasi Default User: tabel, Filter, Search, dan Download tampil pada tab yang terbuka
+29. Klik tab User Action
+30. Verifikasi Default User: tabel, Filter, Search, dan Download tampil pada tab User Action
 
 ## Notes
 
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Spec Role Matrix visibilitas (bagian 3a): satu daftar elemen, banyak role. Spec ditulis per blok role karena ganti akun menuntut langkah eksplisit (akun pertama login di hook `before`, S-07); tiap blok berdiri sendiri.
-- Langkah penghubung (S-03): langkah 9 dan 20 (ganti akun, lalu membuka Fixed Asset > Dashboard sebagai precondition TC berikutnya).
+- Langkah penghubung (S-03): langkah 9 dan 22 (ganti akun, lalu membuka Fixed Asset > Dashboard sebagai precondition TC berikutnya).
 - Langkah 3 dan 4 dipisah (menu tampil, halaman terbuka) karena Expected butir a TC memuat dua klausa. Pada langkah 6, 15 dan seterusnya "tab yang terbuka" adalah tab awal halaman; tab lainnya diperiksa setelah klik tab User Action (langkah 7 dan seterusnya) agar kata "di kedua tab" pada Expected butir b terpenuhi.
+- Satu klausa per `Verifikasi`: langkah 16 dan 17 (Filter, Search, Download tampil; aktif), langkah 20 dan 21 (idem pada tab User Action), langkah 26 dan 27 (halaman Activity Log terbuka; tab `Session` dan `User Action` tampil untuk Default User).
 - Keterangan dalam kurung pada Expected TC-FA-FAAL-39 butir b ("Default User setara Total Control") adalah alasan, bukan klausa terpisah, sehingga tidak punya `Verifikasi` sendiri.
 - Temuan untuk QA:
   - TC-FA-FAAL-37 sampai 39 tidak menyebut tab awal yang terbuka saat Activity Log dibuka; spec memverifikasi tab yang terbuka lalu tab User Action. Kedua tab tercakup hanya bila tab awal adalah Session.

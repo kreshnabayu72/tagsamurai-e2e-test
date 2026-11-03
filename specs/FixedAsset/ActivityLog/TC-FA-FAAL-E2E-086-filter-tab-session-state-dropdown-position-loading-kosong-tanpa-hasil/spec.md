@@ -24,6 +24,8 @@ coverage:
 - Identitas data Pre-setup dibaca dari `fixtures/activity-log.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE). Nama data ditulis seperti di TC.
 - Suite berjalan serial (`parallel: false`).
 
+Tabel Data Tab Session berikut adalah precondition TC-FA-FAAL-80 dan tidak diasersi di spec ini:
+
 | Baris | User (nama lengkap) | Employee ID | Position | Division | Note | Tanggal (Asia/Jakarta) |
 |---|---|---|---|---|---|---|
 | SS-01 | John Doe | EMP001 | Staff | Marketing | Session started | 14/07/26 08:05 |

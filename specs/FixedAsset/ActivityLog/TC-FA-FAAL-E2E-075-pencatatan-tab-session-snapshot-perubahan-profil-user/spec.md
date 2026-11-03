@@ -21,7 +21,7 @@ coverage:
 - Pelaku (Pre-setup #16), email dari `Fixture.activity-log.<kunci>.email` (fixture belum ada, disediakan tim FE):
   - John Doe: App Access Fixed Asset dan seat subscription tersedia; password `Spectra.env.FA_JOHNDOE_PASSWORD`. Tanggal baris SS-01 dari `Fixture.activity-log.ss01.date`.
   - Dewi Lestari: user aktif dengan Employee ID `EMP005`, Position `Staff`, Division `Marketing`. User ini dihapus oleh langkah 14; tim FE/BE menyediakannya kembali sebagai data milik spec ini di hook `before` (baris SS-07 tetap dari Pre-setup #11).
-  - Env var `FA_JOHNDOE_PASSWORD` tidak tercantum di butir "Env var" `suite.md`; tim FE mendaftarkannya di `executionConfig.environmentVariables` dan `.env.example` (R-07). Password tidak ditulis di spec atau fixture.
+  - Env var `FA_JOHNDOE_PASSWORD` terdaftar di butir "Env var" `suite.md` (R-07). Password tidak ditulis di spec atau fixture.
 - Kemampuan teknis disediakan tim BE/FE: sesi API aktor (butir "Sesi API aktor" di `suite.md`) untuk John Doe dan Admin Alpha, termasuk mengubah Position dan Division, mengganti nama dan Employee ID, menonaktifkan, dan menghapus user di Global Settings > User.
 - State yang diubah dan pemulihannya: Position dan Division John Doe dikembalikan ke `Staff` dan `Marketing` pada langkah 12 dan di hook `after`; Dewi Lestari dihapus pada langkah 14 dan disediakan ulang di hook `before` run berikutnya; sesi-produk John Doe ditutup di hook `after`.
 - Flag Guided Tooltip halaman Activity Log: hook suite `before` men-set true dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`). Berlaku untuk akun observer.
@@ -75,4 +75,4 @@ coverage:
   - Baris log immutable, jadi baris John Doe dengan Position `Supervisor` dan Division `Finance` bertambah tiap run; asersi langkah 10 memakai rentang Date hari ini dan tidak dapat memakai nama bersuffix karena nilai berasal dari TC.
   - TC-FA-FAAL-284 memakai Dewi Lestari yang juga muncul sebagai target di TC-FA-FAAL-230; user dihapus di langkah 14; spec 058 menyeed Dewi Lestari sendiri di hook `before`, sehingga tiap spec menyediakan datanya sendiri dan tidak bergantung urutan.
   - TC-FA-FAAL-284 menyebut "Search `Anggraini` lalu `Lestari`" sedangkan spec memakai urutan sebaliknya untuk menemukan SS-07 lebih dulu; hasil asersi sama.
-  - Email dan password John Doe tidak tertulis di Pre-setup TC; nama env var diusulkan di Prerequisites.
+  - Email dan password John Doe tidak tertulis di Pre-setup TC; email disediakan tim FE dan env var password mengikuti `suite.md`.

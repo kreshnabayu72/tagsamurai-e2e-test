@@ -32,7 +32,7 @@ coverage:
 - Baseline (S-12): total baris Tab User Action dibaca dari teks pagination `Showing x–y of N entries` pada langkah 1; tiap Verifikasi baris baru juga memastikan total bertambah dari total terakhir yang dibaca.
 - State yang diubah dan pemulihannya: Separator Custom Asset ID client utama dipulihkan ke `Slash` di hook `after`; konfigurasi Custom Asset ID yang dibuat TC-FA-FAAL-250 di client kedua dikembalikan ke keadaan tanpa konfigurasi oleh tim FE/BE di hook `after`; Category `Electronic Devices`, Category Asset Name `Laptop`, Borrow dan Self Service Borrow `Laptop`, warna Label `Urgent`, dan status Custom Field `Warranty Note` dipulihkan oleh tim FE/BE di hook `after`.
 - Flag Guided Tooltip halaman Activity Log: hook suite `before` men-set true dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`). Berlaku untuk akun aktor.
-- Hook `after` mengembalikan sesi ke akun dan client default suite setelah langkah 27.
+- Hook `after` mengembalikan sesi ke akun dan client default suite karena langkah 27 beralih ke client kedua.
 - Penantian pencatatan: Verifikasi baris baru pertama tiap blok memakai idiom polling (muat ulang Tab User Action tiap 5 detik, batas 2 menit) sebagai pengganti langkah tunggu tersendiri.
 - Seed dan pemulihan lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
 - Identitas data Pre-setup dibaca dari `fixtures/activity-log.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
@@ -102,7 +102,7 @@ coverage:
 - Langkah penghubung "Tunggu aksi selesai" (S-03, 8b.8, tanpa Verifikasi): langkah 3, 7, 11, 15, 19, 23, 30; ditulis sebelum tiap pembukaan Activity Log > User Action yang mengikuti aksi tulis tanpa asersi di antaranya. Verifikasi polling tetap menunggu commit log.
 - Urutan TC: 237, 238, 239, 240, 241, 243, 250. TC-FA-FAAL-239 berjalan di client Pre-setup #26 dan TC-FA-FAAL-250 di client kedua tanpa konfigurasi Custom Asset ID (precondition b kedua TC); tidak ada ketergantungan urutan antara keduanya.
 - Langkah penghubung (S-03): langkah 1, 4, 8, 12, 16, 20, 24, 31 (membuka Tab User Action), langkah 27 (beralih ke client kedua sesuai precondition b TC-FA-FAAL-250), langkah 28 (baseline total baris client kedua, S-12).
-- Langkah 17 mencatat total Verifikasi langkah 16 sebagai Z0 (baseline TC-FA-FAAL-243, S-12) sebelum mematikan Borrow.
+- Langkah 22 mencatat total Verifikasi langkah 21 sebagai Z0 (baseline TC-FA-FAAL-243, S-12) sebelum mematikan Borrow.
 - Baseline S-12: langkah 1 mencatat N0 (client utama) dan langkah 28 mencatat N1 (client kedua). Tiap Verifikasi baris baru juga memeriksa total pagination lebih besar dari total pada Verifikasi sebelumnya; selisih eksak hanya diasersi untuk TC-FA-FAAL-243 (+2, langkah 25) dan TC-FA-FAAL-250 (+3, langkah 32).
 - Langkah 25 dan 26 memecah Expected TC-FA-FAAL-243 per klausa (total Z0 + 2, lalu himpunan dua baris teratas dengan Timestamp sama); langkah 26 dibaca tanpa urutan karena kedua baris dapat jatuh dalam menit yang sama pada kolom Date (S-14); langkah 32 sampai 34 memecah TC-FA-FAAL-250 per Field (S-01).
 - R-14: Modified By diasersi `Admin A` (First Name dan Last Initial).

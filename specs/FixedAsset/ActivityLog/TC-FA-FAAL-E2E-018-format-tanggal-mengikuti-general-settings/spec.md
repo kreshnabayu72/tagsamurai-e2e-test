@@ -65,7 +65,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke staf dan bagian TC; setiap `Verifikasi` menyebut id TC granularnya.
-- P-5 (butir b): objek uji ringan format tanggal General Settings (TC-FA-FAAL-204 sampai 207) pada satu topik dan satu permukaan (Date di tabel dan Filter Panel kedua tab); tidak ada harness eksternal dan tidak ada state berat. Pengecualian ini disetujui pemilik.
+- P-5 (butir b): objek uji ringan format tanggal General Settings (TC-FA-FAAL-204 sampai 207) pada satu topik dan satu permukaan (Date di tabel dan Filter Panel kedua tab); tidak ada harness eksternal dan tidak ada state berat.
 - Urutan TC di dalam spec: tiap TC (TC-FA-FAAL-204 sampai 207) menulis bagian staf A lalu ganti ke staf B. Spec mengelompokkan semua bagian staf A (langkah 1 sampai 11), lalu semua bagian staf B (langkah 12 sampai 22), supaya ganti akun (S-07) hanya satu kali; setiap Expected a dan b TC tetap punya `Verifikasi` sendiri dan urutan langkah dalam tiap bagian mengikuti TC (Session lalu User Action).
 - Langkah penghubung (S-03): langkah 2 dan 14 (halaman 2 berisi SS-01 karena SS-11 sampai SS-02 mengisi halaman 1), langkah 6, 11, dan 18 (menutup Filter Panel tanpa Apply sebelum pindah tab; draft dibuang), langkah 7 dan 19 (klik tab User Action), dan langkah 12 (ganti akun, lalu membuka Activity Log).
 - Teks field Date pada langkah 5, 10, 17, dan 22 diasersi sebagai "memuat" sesuai Expected TC.

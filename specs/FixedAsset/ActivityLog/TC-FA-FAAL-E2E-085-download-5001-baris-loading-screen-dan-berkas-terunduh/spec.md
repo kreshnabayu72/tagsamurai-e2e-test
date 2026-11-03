@@ -53,7 +53,7 @@ coverage:
 
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Mode: FE+BE.
-- Langkah penghubung (S-03): langkah 1 (mencatat baseline notifikasi dan job sebelum aksi).
+- Langkah penghubung (S-03): langkah 1 (mencatat baseline notifikasi dan job sebelum aksi); langkah 8 (pindah ke Tab User Action); langkah 15 (membuka pusat notifikasi sebelum asersi notifikasi).
 - Asersi absence state sementara (bagian 8b butir 11): `Verifikasi` tidak ada toast diletakkan segera setelah pemicu (pilih `Download as CSV`), sebelum `Verifikasi` berkas terunduh. Loading screen yang tampil menjadi anchor positif untuk absence toast.
 - Temuan untuk QA:
   - Pre-setup #14 tidak menyebut client dan akun aktor untuk volume 5.001 baris. Login aktor mencatat baris Session baru sehingga volume "tepat 5.001" dapat bergeser; spec mengikuti angka TC dan menyerahkan penyesuaian seed ke tim FE/BE.

@@ -61,21 +61,22 @@ coverage:
 
 10. Verifikasi kolom Field setiap baris pada halaman 1 (UA-01 sampai UA-10, termasuk baris Delete UA-03) terisi dan tidak ada sel Field bernilai `—`
 11. Klik `[Next →]`
-12. Verifikasi kolom Field setiap baris pada halaman 2 (UA-11 sampai UA-15, termasuk baris Create UA-11) terisi dan tidak ada sel Field bernilai `—`
+12. Verifikasi baris UA-15 tampil di halaman 2
+13. Verifikasi kolom Field setiap baris pada halaman 2 (UA-11 sampai UA-15, termasuk baris Create UA-11) terisi dan tidak ada sel Field bernilai `—`
 
 ### TC-FA-FAAL-29: Nilai panjang tampil utuh tanpa pemotongan
 
-13. Verifikasi nilai Name baris UA-15 tampil utuh tanpa pemotongan (tidak ada `..`)
-14. Verifikasi kolom Name melebar mengikuti isi
-15. Arahkan kursor ke sel Name baris UA-15
-16. Verifikasi tidak ada tooltip yang tampil
+14. Verifikasi nilai Name baris UA-15 tampil utuh tanpa pemotongan (tidak ada `..`)
+15. Verifikasi kolom Name melebar mengikuti isi
+16. Arahkan kursor ke sel Name baris UA-15
+17. Verifikasi tidak ada tooltip yang tampil
 
 ## Notes
 
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 1 (memastikan tab User Action aktif), langkah 11 (halaman 2 memuat UA-11 sampai UA-15; blok TC-FA-FAAL-29 berikutnya memakai UA-15 yang berada di halaman itu).
-- Asersi universal pada langkah 10 dan 12 berjangkar pada baris-baris yang sudah tampil dan diasersi pada langkah 2 sampai 8 (bagian 8b butir 2).
-- Hover pada langkah 15 diasersi segera sebelum elemen berikutnya disentuh (bagian 8b butir 5).
+- Langkah penghubung (S-03): langkah 1 (memastikan tab User Action aktif), langkah 11 (halaman 2 memuat UA-11 sampai UA-15; blok TC-FA-FAAL-29 berikutnya memakai UA-15 yang berada di halaman itu) dan langkah 12 (anchor baris yang tampil di halaman 2 sebelum asersi universal langkah 13).
+- Asersi universal pada langkah 10 berjangkar pada baris-baris halaman 1 yang sudah tampil dan diasersi pada langkah 2 sampai 8; asersi universal pada langkah 13 berjangkar pada baris UA-15 di halaman 2 yang diasersi pada langkah 12 (bagian 8b butir 2).
+- Hover pada langkah 16 diasersi segera sebelum elemen berikutnya disentuh (bagian 8b butir 5).
 - TC-FA-FAAL-20 sampai 24 (Modified By, Name) ada di spec 006.
 - Temuan untuk QA:
   - TC-FA-FAAL-29 menyebut "Baris Name dengan 120 karakter (Pre-setup #12)"; Tabel Pre-setup #12 menulis UA-15 sebagai `Gedung Serbaguna` + nama 120 karakter, sehingga tidak jelas apakah 120 karakter adalah total atau tambahan.

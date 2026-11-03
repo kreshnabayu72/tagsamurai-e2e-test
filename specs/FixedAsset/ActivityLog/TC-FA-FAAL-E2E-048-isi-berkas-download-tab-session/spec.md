@@ -45,24 +45,27 @@ coverage:
 
 ### TC-FA-FAAL-175: Sel teks dengan nilai kosong
 
-6. Verifikasi baris SS-05: Employee ID `-`, Position `-`, IP Address `-`, Division `Finance`, Activity `Session`
-7. Verifikasi baris SS-01: Activity `Session`, Note `Session started`
+6. Verifikasi baris SS-05: Employee ID `-`, Position `-`, IP Address `-`
+7. Verifikasi baris SS-05: Division `Finance`
+8. Verifikasi baris SS-05: Activity `Session`
+9. Verifikasi baris SS-01: Activity `Session`
+10. Verifikasi baris SS-01: Note `Session started`
 
 ### TC-FA-FAAL-176: Sel Status
 
-8. Verifikasi sel Status baris SS-01 sampai SS-04 semuanya bernilai `-` (bukan Success maupun Failed)
+11. Verifikasi sel Status baris SS-01 sampai SS-04 semuanya bernilai `-` (bukan Success maupun Failed)
 
 ### TC-FA-FAAL-177: Sel Device/Browser
 
-9. Verifikasi sel Device/Browser baris SS-01 bernilai `Chrome on Windows`
-10. Verifikasi sel Device/Browser baris SS-05 bernilai `TAG Samurai App on Android`
-11. Verifikasi sel Device/Browser baris SS-06 dan SS-07 bernilai `-`
+12. Verifikasi sel Device/Browser baris SS-01 bernilai `Chrome on Windows`
+13. Verifikasi sel Device/Browser baris SS-05 bernilai `TAG Samurai App on Android`
+14. Verifikasi sel Device/Browser baris SS-06 dan SS-07 bernilai `-`
 
 ## Notes
 
 - Mode: FE+BE, kelas f (binary buffer): spec ini khusus isi sel berkas; nama berkas, header, dan jumlah baris ada di spec 046 dan 047.
 - Satu unduhan CSV (langkah 1) dipakai bersama untuk TC-FA-FAAL-173 sampai 177 karena data (#11), format (CSV), dan General Settings staf identik pada kelima TC; tiap TC punya `Verifikasi` sendiri atas berkas yang sama.
-- Pengelompokan `Verifikasi` (S-01): nilai beberapa kolom dari satu baris yang diamati dari satu entri ditulis satu `Verifikasi` dengan daftar utuh (langkah 6, 7); nilai dari baris berbeda dipisah (langkah 2 dan 3, 4 dan 5, 9 dan 10).
+- Pengelompokan `Verifikasi` (S-01): kolom yang bernilai sama pada satu baris (Employee ID, Position, IP Address bernilai `-`) ditulis satu `Verifikasi` (langkah 6); selebihnya satu `Verifikasi` per klausa Expected dan per baris (langkah 2 dan 3, 4 dan 5, 12 dan 13).
 - Temuan untuk QA:
   - TC-FA-FAAL-173 sampai 177 tidak menyebut cara mengenali baris SS-xx di berkas; spec mengenalinya dari nilai Date dan User seed.
   - TC-FA-FAAL-174 menulis pembanding negatif "(bukan `Siti N` dan `Budi S`)" dalam Expected; spec mengasersi nilai nama lengkap, dan pembanding negatif dicantumkan sebagai keterangan pada nilai yang sama.

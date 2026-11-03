@@ -36,49 +36,51 @@ coverage:
 1. Di sesi A klik tab User Action
 2. Catat Z dari teks `Showing X–Y of Z entries` dan posisi gulir, lalu gulir tabel sedikit ke bawah dan biarkan terbuka
 3. Pelaku kedua (Admin Beta, sesi API) mengubah nama group `Gedung B` menjadi `Gedung B1` hingga perubahan tersimpan
-4. Verifikasi di sesi A baris `Edit` | `Groups` | `Gedung B1` muncul otomatis di baris paling atas tanpa muat ulang, dan Z bertambah satu dari nilai yang dicatat
-5. Verifikasi posisi gulir tidak berubah dan halaman tidak berubah
-6. Verifikasi tidak ada dialog maupun toast
-7. Pulihkan nama group `Gedung B1` menjadi `Gedung B` lewat fixture BE, lalu gulir tabel kembali ke atas
+4. Verifikasi di sesi A baris `Edit` | `Groups` | `Gedung B1` muncul otomatis di baris paling atas tanpa muat ulang
+5. Verifikasi Z bertambah satu dari nilai yang dicatat
+6. Verifikasi posisi gulir tidak berubah dan halaman tidak berubah
+7. Verifikasi tidak ada dialog maupun toast
+8. Pulihkan nama group `Gedung B1` menjadi `Gedung B` lewat fixture BE, lalu gulir tabel kembali ke atas
 
 ### TC-FA-FAAL-266: Event yang tidak cocok dengan Filter aktif diabaikan
 
-8. Di sesi A terapkan Filter Action `Assign`
-9. Catat teks `Showing 1–Y0 of Z0 entries` hasil filter sebagai baseline
-10. Pelaku kedua (Admin Beta, sesi API) mengubah nama group `Gedung B` menjadi `Gedung B1` hingga perubahan tersimpan
-11. Tunggu 5 detik tanpa memuat ulang halaman
-12. Verifikasi sedikitnya satu baris dengan Action `Assign` tetap tampil di sesi A
-13. Verifikasi baris `Edit` baru tidak disisipkan
-14. Verifikasi teks `Showing X–Y of Z entries` tetap `Showing 1–Y0 of Z0 entries`, sama dengan baseline langkah 9
-15. Pulihkan nama group `Gedung B1` menjadi `Gedung B` lewat fixture BE
-16. Bersihkan Filter lewat Clear Field
+9. Di sesi A terapkan Filter Action `Assign`
+10. Catat teks `Showing 1–Y0 of Z0 entries` hasil filter sebagai baseline
+11. Pelaku kedua (Admin Beta, sesi API) mengubah nama group `Gedung B` menjadi `Gedung B1` hingga perubahan tersimpan
+12. Tunggu 5 detik tanpa memuat ulang halaman
+13. Verifikasi sedikitnya satu baris dengan Action `Assign` tetap tampil di sesi A
+14. Verifikasi baris `Edit` baru tidak disisipkan
+15. Verifikasi teks `Showing X–Y of Z entries` tetap `Showing 1–Y0 of Z0 entries`, sama dengan baseline langkah 10
+16. Pulihkan nama group `Gedung B1` menjadi `Gedung B` lewat fixture BE
+17. Bersihkan Filter lewat Clear Field
 
 ### TC-FA-FAAL-267: Baris baru di halaman yang tidak dibuka hanya memperbarui angka Z
 
-17. Di sesi A pindah ke halaman 2
-18. Catat teks `Showing 11–Y0 of Z0 entries` halaman 2 sebagai baseline
-19. Pelaku kedua (Admin Beta, sesi API) mengubah nama group `Gedung B` menjadi `Gedung B1` hingga perubahan tersimpan
-20. Verifikasi sesi A tetap di halaman 2 dan tidak dipindahkan ke halaman lain
-21. Verifikasi teks pagination menjadi `Showing 11–Y0 of Z1 entries` dengan Z1 = Z0 + 1 (hanya angka Z bertambah)
-22. Pulihkan nama group `Gedung B1` menjadi `Gedung B` lewat fixture BE
-23. Pindah ke halaman 1
+18. Di sesi A pindah ke halaman 2
+19. Catat teks `Showing 11–Y0 of Z0 entries` halaman 2 sebagai baseline
+20. Pelaku kedua (Admin Beta, sesi API) mengubah nama group `Gedung B` menjadi `Gedung B1` hingga perubahan tersimpan
+21. Verifikasi sesi A tetap di halaman 2 dan tidak dipindahkan ke halaman lain
+22. Verifikasi teks pagination menjadi `Showing 11–Y0 of Z1 entries` dengan Z1 = Z0 + 1 (hanya angka Z bertambah)
+23. Pulihkan nama group `Gedung B1` menjadi `Gedung B` lewat fixture BE
+24. Pindah ke halaman 1
 
 ### TC-FA-FAAL-268: Baris baru disisipkan sesuai Sort aktif
 
-24. Di sesi A klik header Action sekali (Ascending)
-25. Catat Z dari teks `Showing X–Y of Z entries` dan posisi gulir
-26. Pelaku kedua (Admin Beta, sesi API) mengubah nama group `Gedung B` menjadi `Gedung B1` hingga perubahan tersimpan
-27. Verifikasi baris `Edit` baru disisipkan in-place pada posisi urutan Action ascending (setelah baris `Delete`), bukan di baris paling atas, dan Z bertambah satu dari nilai yang dicatat
-28. Verifikasi posisi gulir dan halaman tidak berubah
-29. Pulihkan nama group `Gedung B1` menjadi `Gedung B` lewat fixture BE
-30. Klik header Action dua kali lagi hingga netral
+25. Di sesi A klik header Action sekali (Ascending)
+26. Catat Z dari teks `Showing X–Y of Z entries` dan posisi gulir
+27. Pelaku kedua (Admin Beta, sesi API) mengubah nama group `Gedung B` menjadi `Gedung B1` hingga perubahan tersimpan
+28. Verifikasi baris `Edit` baru disisipkan in-place pada posisi urutan Action ascending (setelah baris `Delete`), bukan di baris paling atas
+29. Verifikasi Z bertambah satu dari nilai yang dicatat
+30. Verifikasi posisi gulir dan halaman tidak berubah
+31. Pulihkan nama group `Gedung B1` menjadi `Gedung B` lewat fixture BE
+32. Klik header Action dua kali lagi hingga netral
 
 ## Notes
 
 - Mode: FE+BE, kelas c (multi-konteks): sesi A mengamati pembaruan SSE akibat aksi pelaku kedua. Pelaku kedua memakai sesi API, bukan konteks UI kedua, sehingga tidak butuh butir `P-2` (keputusan 2026-10-30).
-- Asersi tambahan atas TC (S-03): `Verifikasi` selisih Z (+1) pada langkah 4, 21, dan 27 adalah baseline wajib S-12 agar baris `Edit` | `Groups` | `Gedung B1` dari run sebelumnya tidak dianggap baris baru.
-- Urutan asersi absence (langkah 11 sampai 14 dan 20): jendela lima detik ditulis sebagai langkah penghubung tanpa `Verifikasi` (bagian 6); langkah 12 menjadi anchor positif baris pembanding sebelum asersi absence baris `Edit`.
-- Langkah penghubung (S-03, S-09): langkah 1 (pindah tab), 7, 15, 22, 29 (memulihkan nama group agar blok berikutnya memakai nama awal), langkah 16 (membersihkan Filter), 23 (kembali ke halaman 1), dan 30 (mengembalikan Sort netral).
+- Asersi tambahan atas TC (S-03): `Verifikasi` selisih Z (+1) pada langkah 5, 22, dan 29 adalah baseline wajib S-12 agar baris `Edit` | `Groups` | `Gedung B1` dari run sebelumnya tidak dianggap baris baru.
+- Urutan asersi absence (langkah 12 sampai 15 dan 21): jendela lima detik ditulis sebagai langkah penghubung tanpa `Verifikasi` (bagian 6); langkah 13 menjadi anchor positif baris pembanding sebelum asersi absence baris `Edit`.
+- Langkah penghubung (S-03, S-09): langkah 1 (pindah tab), 8, 16, 23, 31 (memulihkan nama group agar blok berikutnya memakai nama awal), langkah 17 (membersihkan Filter), 24 (kembali ke halaman 1), dan 32 (mengembalikan Sort netral).
 - Temuan untuk QA:
   - TC-FA-FAAL-264 sampai 268 menyebut "sesi B" login sebagai Admin Beta, tetapi email dan password Admin Beta tidak ada di tabel Pre-setup; akun disediakan tim FE.
   - TC-FA-FAAL-268 tidak menyebut posisi baris `Edit` baru di antara baris `Edit` lain; spec mengikuti TC (setelah baris `Delete`) dan tidak mengasersi urutan di antara baris `Edit`.

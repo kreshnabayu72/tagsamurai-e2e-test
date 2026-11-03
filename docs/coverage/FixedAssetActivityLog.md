@@ -13,17 +13,17 @@ Setelah e2e-audit, TC sumber diedit (anchor positif, total baseline `Z0`, dan Fi
 | Spec | Judul | Mode | Langkah | TC sumber |
 |---|---|:---:|:---:|---|
 | TC-FA-FAAL-E2E-001-screening-halaman-dan-tooltip-toolbar | Screening Halaman Activity Log dan Tooltip Toolbar Kedua Tab | FE+BE | 29 | 1, 2 |
-| TC-FA-FAAL-E2E-002-screening-tab-user-action-loading-dan-halaman-tanpa-kontrol-tulis | Screening Tab User Action, Urutan Default, dan Loading | FE+BE | 27 | 4, 6, 9 |
+| TC-FA-FAAL-E2E-002-screening-tab-user-action-loading-dan-halaman-tanpa-kontrol-tulis | Screening Tab User Action, Urutan Default, dan Loading | FE+BE | 29 | 4, 6, 9 |
 | TC-FA-FAAL-E2E-003-empty-state-kedua-tab | Empty State Kedua Tab pada Client Baru | FE+BE | 6 | 7, 8 |
 | TC-FA-FAAL-E2E-004-error-load-dan-download-gagal | Kegagalan Server: Error Load Kedua Tab dan Download Gagal Tab Session | FE+BE | 33 | 10, 11, 171 |
 | TC-FA-FAAL-E2E-005-sel-tab-session | Sel Tab Session: User, Device/Browser, Employee ID, Position, IP, Division, Note, Activity, Status | FE+BE | 34 | 12-19 |
 | TC-FA-FAAL-E2E-006-sel-tab-user-action-bagian-a | Sel Tab User Action: Modified By, Name, dan Old/New Value Kosong (bagian A) | FE+BE | 18 | 20-24 |
-| TC-FA-FAAL-E2E-007-sel-tab-user-action-bagian-b | Sel Tab User Action: Old/New Value, Field, dan Nilai Panjang (bagian B) | FE+BE | 16 | 25-29 |
+| TC-FA-FAAL-E2E-007-sel-tab-user-action-bagian-b | Sel Tab User Action: Old/New Value, Field, dan Nilai Panjang (bagian B) | FE+BE | 17 | 25-29 |
 | TC-FA-FAAL-E2E-008-android-card-list-infinite-scroll-dan-susunan-card | Android: Card List, Infinite Scroll, dan Susunan Card Tab Session dan User Action | FE+BE | 30 | 30-34 |
-| TC-FA-FAAL-E2E-009-role-matrix-visibilitas-menu-activity-log | Role Matrix: Visibilitas Menu Activity Log (Total Control, Read Only, Default User) | FE+BE | 27 | 37-39 |
+| TC-FA-FAAL-E2E-009-role-matrix-visibilitas-menu-activity-log | Role Matrix: Visibilitas Menu Activity Log (Total Control, Read Only, Default User) | FE+BE | 30 | 37-39 |
 | TC-FA-FAAL-E2E-010-role-matrix-menu-tersembunyi-group-manager-dan-global-role | Role Matrix: Menu Activity Log Tersembunyi (Group Manager dan Global Role) | FE+BE | 6 | 40, 41 |
 | TC-FA-FAAL-E2E-011-role-matrix-direct-url-per-role | Role Matrix: Buka URL Activity Log Langsung per Role | FE+BE | 17 | 44-47 |
-| TC-FA-FAAL-E2E-012-role-matrix-data-yang-terlihat-per-role | Role Matrix: Seluruh Baris Kedua Tab untuk Total Control dan Read Only | FE+BE | 17 | 48-51 |
+| TC-FA-FAAL-E2E-012-role-matrix-data-yang-terlihat-per-role | Role Matrix: Seluruh Baris Kedua Tab untuk Total Control dan Read Only | FE+BE | 21 | 48-51 |
 | TC-FA-FAAL-E2E-013-read-only-search-filter-download | Read Only: Search, Filter, dan Download | FE+BE | 25 | 52-54 |
 | TC-FA-FAAL-E2E-014-perubahan-tier-akses-saat-halaman-terbuka | Perubahan Tier Akses: Dicabut dan Dipromosikan saat Halaman Terbuka | FE+BE | 24 | 55, 56 |
 | TC-FA-FAAL-E2E-015-defense-in-depth-akses-ditolak-group-manager | Defense-in-Depth: Direct API, Download, dan SSE Group Manager Ditolak | FE+BE | 23 | 256-258 |
@@ -47,34 +47,34 @@ Setelah e2e-audit, TC sumber diedit (anchor positif, total baseline `Z0`, dan Fi
 | TC-FA-FAAL-E2E-033-setup-column-tab-session-urutan-dan-pin | Setup Column Tab Session: Drag Urutan dan Pin/Unpin Kolom | FE+BE | 23 | 110, 111 |
 | TC-FA-FAAL-E2E-034-setup-column-tab-session-batas-pin-reset-dan-tutup | Setup Column Tab Session: Batas Pin, Overlay Langsung, Reset to Default, Tutup tanpa Save, dan Independensi Antar Tab | FE+BE | 46 | 112-114, 116, 117 |
 | TC-FA-FAAL-E2E-035-search-tab-user-action-reveal-dan-kolom | Search Tab User Action: Reveal Input dan Pencarian Kolom Action, Object, Field, Name, Old Value, New Value, serta Modified By | FE+BE | 18 | 118-122 |
-| TC-FA-FAAL-E2E-036-search-tab-user-action-date-tanpa-hasil-dan-tersembunyi | Search Tab User Action: Kolom Date Tidak Dicari, Tanpa Hasil, dan Kolom Field Tersembunyi | FE+BE | 17 | 123-125 |
+| TC-FA-FAAL-E2E-036-search-tab-user-action-date-tanpa-hasil-dan-tersembunyi | Search Tab User Action: Kolom Date Tidak Dicari, Tanpa Hasil, dan Kolom Field Tersembunyi | FE+BE | 16 | 123-125 |
 | TC-FA-FAAL-E2E-037-filter-tab-user-action-date-dan-opsi | Filter Tab User Action: Screening Panel, Date, serta Action, Object, dan Field | FE+BE | 23 | 126, 127, 129 |
 | TC-FA-FAAL-E2E-038-filter-tab-user-action-logika-dan-interaksi | Filter Tab User Action: Logika AND dan OR serta Interaksi Search dan Filter | FE+BE | 23 | 134-137 |
 | TC-FA-FAAL-E2E-039-filter-tab-user-action-pemulihan-dan-tanpa-hasil | Filter Tab User Action: Kosongkan Search, Pemulihan Empty State, dan Tanpa Hasil | FE+BE | 21 | 140-142 |
 | TC-FA-FAAL-E2E-040-sort-tab-user-action | Sort Tab User Action: Date, Teks, Modified By, Old/New Value | FE+BE | 34 | 143-146 |
 | TC-FA-FAAL-E2E-041-setup-column-tab-user-action-screening-dan-kolom-terakhir | Setup Column Tab User Action: Screening Overlay dan Popup, serta Kolom Visible Terakhir | FE+BE | 24 | 147, 148, 154 |
-| TC-FA-FAAL-E2E-042-setup-column-tab-user-action-urutan-reset-tutup | Setup Column Tab User Action: Reset to Default dan Tutup tanpa Save | FE+BE | 25 | 152, 153 |
+| TC-FA-FAAL-E2E-042-setup-column-tab-user-action-urutan-reset-tutup | Setup Column Tab User Action: Reset to Default dan Tutup tanpa Save | FE+BE | 26 | 152, 153 |
 | TC-FA-FAAL-E2E-043-paginasi-rows-per-page-dan-showing-kedua-tab | Paginasi: Rows per Page Default dan Navigasi Halaman di Kedua Tab | FE+BE | 31 | 155, 156 |
 | TC-FA-FAAL-E2E-044-persistensi-search-filter-sort-antar-tab | Persistensi Search dan Filter Saat Pindah Tab | FE+BE | 27 | 190, 191 |
 | TC-FA-FAAL-E2E-045-persistensi-refresh-f5-dan-reset-klik-ulang-menu | Persistensi Refresh F5 pada Search, Filter, Sort, Rows per Page, dan Tab Aktif | FE+BE | 19 | 194, 195 |
 | TC-FA-FAAL-E2E-046-download-overlay-nama-berkas-dan-ekstensi | Download: Overlay Format serta Nama Berkas CSV/XLSX di Kedua Tab | FE+BE | 22 | 161-165, 170 |
-| TC-FA-FAAL-E2E-047-download-cakupan-baris-kolom-dan-filter | Download: Seluruh Baris, Kolom Tersembunyi, Satu Kolom Tersisa, Hasil Kosong, serta Search dan Filter Aktif | FE+BE | 52 | 166-169, 184, 189 |
-| TC-FA-FAAL-E2E-048-isi-berkas-download-tab-session | Isi Berkas Download Tab Session: Sel Date, User, Teks, Status, dan Device/Browser | FE+BE | 11 | 173-177 |
+| TC-FA-FAAL-E2E-047-download-cakupan-baris-kolom-dan-filter | Download: Seluruh Baris, Kolom Tersembunyi, Satu Kolom Tersisa, Hasil Kosong, serta Search dan Filter Aktif | FE+BE | 58 | 166-169, 184, 189 |
+| TC-FA-FAAL-E2E-048-isi-berkas-download-tab-session | Isi Berkas Download Tab Session: Sel Date, User, Teks, Status, dan Device/Browser | FE+BE | 14 | 173-177 |
 | TC-FA-FAAL-E2E-049-isi-berkas-download-tab-user-action | Isi Berkas Download Tab User Action: Sel, Format CSV dan XLSX, Urutan Baris dan Kolom | FE+BE | 30 | 178-181, 185-188 |
-| TC-FA-FAAL-E2E-050-sse-tab-user-action-baris-baru-filter-dan-sort | SSE Tab User Action: Baris Baru, Filter Tidak Cocok, Halaman Lain, dan Sort | FE+BE | 30 | 264, 266-268 |
-| TC-FA-FAAL-E2E-051-sse-tab-user-action-halaman-penuh-dan-reconnect | SSE Tab User Action: Halaman Penuh, Putus-Sambung Koneksi, dan Muat Ulang | FE+BE | 32 | 269-271 |
+| TC-FA-FAAL-E2E-050-sse-tab-user-action-baris-baru-filter-dan-sort | SSE Tab User Action: Baris Baru, Filter Tidak Cocok, Halaman Lain, dan Sort | FE+BE | 32 | 264, 266-268 |
+| TC-FA-FAAL-E2E-051-sse-tab-user-action-halaman-penuh-dan-reconnect | SSE Tab User Action: Halaman Penuh, Putus-Sambung Koneksi, dan Muat Ulang | FE+BE | 35 | 269-271 |
 | TC-FA-FAAL-E2E-052-sse-tab-user-action-search-filter-role-dan-isolasi | SSE Tab User Action: Search/Filter Aktif, Default User, Empty State, Opsi Object Baru, dan Isolasi Client | FE+BE | 54 | 131, 263, 278, 280, 281, 288 |
-| TC-FA-FAAL-E2E-053-sse-tab-session-baris-baru-dan-opsi-position | SSE Tab Session: Sesi Baru, Filter Aktif, dan Opsi Position Real-Time | FE+BE | 31 | 79, 265, 282, 283 |
+| TC-FA-FAAL-E2E-053-sse-tab-session-baris-baru-dan-opsi-position | SSE Tab Session: Sesi Baru, Filter Aktif, dan Opsi Position Real-Time | FE+BE | 32 | 79, 265, 282, 283 |
 | TC-FA-FAAL-E2E-054-state-tenant-client-suspended-subscription-expired-dan-retensi-plan-starter | State Tenant: Client Suspended, Subscription Expired, dan Retensi Baris pada Plan Starter | FE+BE | 32 | 273-275 |
-| TC-FA-FAAL-E2E-055-pencatatan-tab-session-start-end-logout | Pencatatan Tab Session: Session started dan Session ended (Logout, Password, Keluar Produk) | FE+BE | 19 | 209, 210, 212, 213 |
-| TC-FA-FAAL-E2E-056-pencatatan-tab-session-cabut-akses-concurrent-force-logout | Pencatatan Tab Session: Cabut Akses, Nonaktif, Concurrent Limit, dan Force Logout | FE+BE | 25 | 214-217 |
+| TC-FA-FAAL-E2E-055-pencatatan-tab-session-start-end-logout | Pencatatan Tab Session: Session started dan Session ended (Logout, Password, Keluar Produk) | FE+BE | 22 | 209, 210, 212, 213 |
+| TC-FA-FAAL-E2E-056-pencatatan-tab-session-cabut-akses-concurrent-force-logout | Pencatatan Tab Session: Cabut Akses, Nonaktif, Concurrent Limit, dan Force Logout | FE+BE | 29 | 214-217 |
 | TC-FA-FAAL-E2E-057-absence-log-tab-session-dan-user-action | Absence Log: Membaca Tidak Menulis Baris dan Edit Tanpa Perubahan | FE+BE | 27 | 203, 251 |
-| TC-FA-FAAL-E2E-058-pencatatan-user-action-role-dan-akses | Pencatatan User Action: Assign dan Remove Role serta Access Level | FE+BE | 45 | 221-230 |
+| TC-FA-FAAL-E2E-058-pencatatan-user-action-role-dan-akses | Pencatatan User Action: Assign dan Remove Role serta Access Level | FE+BE | 50 | 221-230 |
 | TC-FA-FAAL-E2E-059-pencatatan-user-action-user-activate-resend-modified-by | Pencatatan User Action: Activate, Deactivate, Resend, Home Group, dan Modified By | FE+BE | 39 | 231-234, 253, 279 |
 | TC-FA-FAAL-E2E-060-pencatatan-user-action-groups | Pencatatan User Action: Edit dan Delete Group serta Snapshot Name | FE+BE | 37 | 235, 236, 252, 254, 285 |
 | TC-FA-FAAL-E2E-061-pencatatan-user-action-master-data | Pencatatan User Action: Category, Asset Name, Custom Asset ID, Label, dan Custom Field | FE+BE | 34 | 237-241, 243, 250 |
 | TC-FA-FAAL-E2E-062-pencatatan-user-action-import-license-transaksi | Pencatatan User Action: Import Group, License, Disposal, Damaged, dan Finish Audit | FE+BE | 30 | 242, 244-249 |
-| TC-FA-FAAL-E2E-063-screening-tab-session-dan-urutan-default | Screening Tab Session dan Urutan Default Tab Session | FE+BE | 17 | 3, 5 |
+| TC-FA-FAAL-E2E-063-screening-tab-session-dan-urutan-default | Screening Tab Session dan Urutan Default Tab Session | FE+BE | 19 | 3, 5 |
 | TC-FA-FAAL-E2E-064-android-toolbar-dan-guided-tooltip | Android: Toolbar dan Guided Tooltip Mengikuti Tombol ⋯ | FE+BE | 13 | 36 |
 | TC-FA-FAAL-E2E-065-role-matrix-menu-tersembunyi-group-role-dan-transaction-role | Role Matrix: Menu Activity Log Tersembunyi (Group Role dan Transaction Role) | FE+BE | 6 | 42, 43 |
 | TC-FA-FAAL-E2E-066-defense-in-depth-xss-markup-dan-tulis-log-ditolak | Defense-in-Depth: Payload Skrip dan SQL, Markup, dan Tulis Log Ditolak | FE+BE | 27 | 259, 260, 262 |
@@ -82,12 +82,12 @@ Setelah e2e-audit, TC sumber diedit (anchor positif, total baseline `Z0`, dan Fi
 | TC-FA-FAAL-E2E-068-date-picker-filter-tanggal-akhir-tidak-sebelum-tanggal-mulai | Date Picker Filter: Tanggal Akhir Tidak Dapat Dipilih Sebelum Tanggal Mulai di Kedua Tab | FE+BE | 13 | 75 |
 | TC-FA-FAAL-E2E-069-interaksi-search-filter-sort-kombinasi-irisan-tab-session | Kombinasi Filter, Search, Sort, dan Ukuran Halaman Tab Session: Pelepasan Kontrol dan Pindah Kolom Sort | FE+BE | 27 | 92-95 |
 | TC-FA-FAAL-E2E-070-sort-tab-session-kolom-teks | Sort Tab Session: Kolom Teks Employee ID, Position, Division, Note, dan Device/Browser | FE+BE | 42 | 103 |
-| TC-FA-FAAL-E2E-071-sembunyi-dan-tampil-kolom-tab-user-action | Setup Column Tab User Action: Sembunyikan dan Tampilkan Kolom | FE+BE | 18 | 149 |
-| TC-FA-FAAL-E2E-072-pin-dan-unpin-kolom-tab-user-action | Setup Column Tab User Action: Pin dan Unpin Kolom | FE+BE | 17 | 151 |
-| TC-FA-FAAL-E2E-073-perilaku-identik-di-semua-plan-tanpa-gating | State Tenant: Perilaku Activity Log Identik di Plan Starter, Growth, Professional, dan Enterprise | FE+BE | 9 | 276 |
-| TC-FA-FAAL-E2E-074-subscription-archive-purge-deleted-akses-mengikuti-auth | State Tenant: Subscription Archive, Purge, dan Deleted, Akses Activity Log Mengikuti Auth | FE+BE | 13 | 289 |
+| TC-FA-FAAL-E2E-071-sembunyi-dan-tampil-kolom-tab-user-action | Setup Column Tab User Action: Sembunyikan dan Tampilkan Kolom | FE+BE | 17 | 149 |
+| TC-FA-FAAL-E2E-072-pin-dan-unpin-kolom-tab-user-action | Setup Column Tab User Action: Pin dan Unpin Kolom | FE+BE | 16 | 151 |
+| TC-FA-FAAL-E2E-073-perilaku-identik-di-semua-plan-tanpa-gating | State Tenant: Perilaku Activity Log Identik di Plan Starter, Growth, Professional, dan Enterprise | FE+BE | 11 | 276 |
+| TC-FA-FAAL-E2E-074-subscription-archive-purge-deleted-akses-mengikuti-auth | State Tenant: Subscription Archive, Purge, dan Deleted, Akses Activity Log Mengikuti Auth | FE+BE | 15 | 289 |
 | TC-FA-FAAL-E2E-075-pencatatan-tab-session-snapshot-perubahan-profil-user | Pencatatan Tab Session: Baris Lama Tidak Berubah Setelah Profil User Diubah | FE+BE | 26 | 220, 284 |
-| TC-FA-FAAL-E2E-076-absence-log-tab-session-kedaluwarsa-force-logout-event-platform-dan-aksi-gagal | Absence Log: Session ended Kedaluwarsa, Force Logout, Event Platform, dan Aksi Edit Gagal | FE+BE | 30 | 211, 218, 219, 255 |
+| TC-FA-FAAL-E2E-076-absence-log-tab-session-kedaluwarsa-force-logout-event-platform-dan-aksi-gagal | Absence Log: Session ended Kedaluwarsa, Force Logout, Event Platform, dan Aksi Edit Gagal | FE+BE | 35 | 211, 218, 219, 255 |
 | TC-FA-FAAL-E2E-077-halaman-tanpa-kontrol-ubah-tab-user-action | Halaman Activity Log Tanpa Kontrol Ubah, Hapus, atau Buat (Tab User Action) | FE+BE | 12 | 261 |
 | TC-FA-FAAL-E2E-078-download-gagal-tab-user-action | Kegagalan Server: Download Gagal Tab User Action | FE+BE | 10 | 172 |
 | TC-FA-FAAL-E2E-079-android-card-tidak-dapat-diketuk | Android: Card Tab Session dan User Action Tidak Dapat Diketuk | FE+BE | 12 | 35 |
@@ -96,14 +96,14 @@ Setelah e2e-audit, TC sumber diedit (anchor positif, total baseline `Z0`, dan Fi
 | TC-FA-FAAL-E2E-082-tier-dicabut-saat-sse-terbuka | Perubahan Tier Akses: Tier Dicabut saat SSE Terbuka Menutup Koneksi dan Menghentikan Event | FE+BE | 11 | 272 |
 | TC-FA-FAAL-E2E-085-download-5001-baris-loading-screen-dan-berkas-terunduh | Volume 5.001 Baris: Download Menampilkan Loading Screen lalu Berkas Langsung Terunduh | FE+BE | 18 | 183 |
 | TC-FA-FAAL-E2E-086-filter-tab-session-state-dropdown-position-loading-kosong-tanpa-hasil | Filter Tab Session: State Loading, Sumber Kosong, dan Tanpa Hasil pada Dropdown Position | FE+BE | 14 | 80 |
-| TC-FA-FAAL-E2E-087-filter-tab-session-overflow-chip-dan-logika-and | Filter Tab Session: Overflow Chip +N more dan Logika AND | FE+BE | 12 | 88, 89 |
+| TC-FA-FAAL-E2E-087-filter-tab-session-overflow-chip-dan-logika-and | Filter Tab Session: Overflow Chip +N more dan Logika AND | FE+BE | 13 | 88, 89 |
 | TC-FA-FAAL-E2E-088-filter-tab-user-action-opsi-dropdown-dan-modified-by | Filter Tab User Action: Opsi Dropdown dan Filter Modified By | FE+BE | 23 | 130, 132, 133 |
-| TC-FA-FAAL-E2E-089-filter-tab-user-action-kombinasi-filter-search-sort-dan-clear-field | Filter Tab User Action: Kombinasi Filter, Search, Sort, Ukuran Halaman, dan Clear Field | FE+BE | 15 | 138, 139 |
-| TC-FA-FAAL-E2E-095-setup-column-tab-user-action-urutan-drag-per-kolom | Setup Column Tab User Action: Urutan Kolom Lewat Drag per Kolom | FE+BE | 14 | 150 |
+| TC-FA-FAAL-E2E-089-filter-tab-user-action-kombinasi-filter-search-sort-dan-clear-field | Filter Tab User Action: Kombinasi Filter, Search, Sort, Ukuran Halaman, dan Clear Field | FE+BE | 18 | 138, 139 |
+| TC-FA-FAAL-E2E-095-setup-column-tab-user-action-urutan-drag-per-kolom | Setup Column Tab User Action: Urutan Kolom Lewat Drag per Kolom | FE+BE | 13 | 150 |
 | TC-FA-FAAL-E2E-096-paginasi-nomor-halaman-tidak-valid-rows-per-page-dan-sort-kedua-tab | Paginasi: Nomor Halaman Tidak Valid, Ganti Rows per Page, dan Ganti Sort di Kedua Tab | FE+BE | 33 | 157-159 |
-| TC-FA-FAAL-E2E-097-paginasi-search-dan-apply-filter-mereset-ke-halaman-1 | Paginasi: Search dan Apply Filter Mereset ke Halaman 1 | FE+BE | 10 | 160 |
+| TC-FA-FAAL-E2E-097-paginasi-search-dan-apply-filter-mereset-ke-halaman-1 | Paginasi: Search dan Apply Filter Mereset ke Halaman 1 | FE+BE | 9 | 160 |
 | TC-FA-FAAL-E2E-098-persistensi-sort-halaman-dan-rows-per-page-antar-tab | Persistensi Sort, Halaman, dan Rows per Page Saat Pindah Tab | FE+BE | 25 | 192, 193 |
-| TC-FA-FAAL-E2E-099-persistensi-reset-klik-ulang-menu-dan-halaman-setelah-f5 | Persistensi Reset Klik Ulang Menu dan Halaman Aktif Setelah F5 | FE+BE | 20 | 196, 287 |
+| TC-FA-FAAL-E2E-099-persistensi-reset-klik-ulang-menu-dan-halaman-setelah-f5 | Persistensi Reset Klik Ulang Menu dan Halaman Aktif Setelah F5 | FE+BE | 21 | 196, 287 |
 
 ## TC hanya-BE yang dilewati
 
@@ -132,9 +132,9 @@ Temuan TC sumber (ambigu, kontradiktif, precondition kurang) ditulis per spec di
 - Perilaku Filter Panel setelah `[Apply]` (menutup sendiri atau tetap terbuka) tidak dinyatakan di TC dan tidak ditegaskan PRD §4.5; spec tidak mengasumsikan salah satunya dan hanya menutup panel secara eksplisit bila TC menyebutnya. Pemilik: TC/PRD.
 - Jendela Seed (Tab Session 14/07/26 sampai 16/07/26, Tab User Action 18/06/26 sampai 18/06/26, Asia/Jakarta) diasumsikan spec sebagai Filter Date yang diterapkan pada TC read-only yang mengasersi total atau posisi baris seed; baris dari aksi lain bertanggal berjalan dan berada di luar jendela, dan TC penulis baris memakai baseline `Z0` yang dicatat sebelum aksi. Asumsi bergantung pada tanggal seed Pre-setup #11/#12 yang tetap dan belum diverifikasi di lingkungan. Pemilik: tim FE/BE.
 - Pemulihan log ke Pre-setup sebelum tiap TC adalah kemampuan tim FE/BE yang belum ada (prasyarat eksternal); tanpa itu urutan dan jumlah baris tidak terjamin. Pemilik: tim FE/BE.
-- Spec di atas 35 langkah dengan alasan di `## Notes`: 058 (45), 059 (39), 060 (37) — TC saling bergantung pada akun atau group yang sama; 067 (39) — satu TC sumber (TC-FA-FAAL-58). Pemecahan 012 dan 014 menghasilkan spec 081 dan 082.
+- Spec 012 dan 014 dipecah dengan spec 081 dan 082; spec 067 (39 langkah) bersumber satu TC (TC-FA-FAAL-58) sehingga tidak bisa dipecah di batas TC.
 
-- Spec melewati batas ~35 langkah dengan satu kelas harness dan alasan di Notes: 030 (57), 052 (54), 047 (52), 034 (46), 058 (45), 070 (42), 059 (39), 060 (37), 016 (36).
+- Spec melewati batas ~35 langkah dengan alasan di `## Notes`: 047 (58), 030 (57), 052 (54), 058 (50), 034 (46), 070 (42), 059 (39), 067 (39), 060 (37), 016 (36); 058, 059 dan 060 berisi TC berurutan dengan ketergantungan yang dicatat di Notes tiap spec.
 
 ## Lapisan per TC
 

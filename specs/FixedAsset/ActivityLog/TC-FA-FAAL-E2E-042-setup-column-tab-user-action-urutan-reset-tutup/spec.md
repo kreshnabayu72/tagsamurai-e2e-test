@@ -34,7 +34,6 @@ coverage:
   - UA-15: 07:30; Create; Groups; `Gedung Serbaguna` + nama 120 karakter; Group Name; `—`; nama sama; Admin Alpha
 - Seed dan pemulihan data log lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`). Identitas data dibaca dari `fixtures/activity-log.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE). Spec hanya membaca baris log seed dan tidak membuat, mengubah, atau menghapus baris log maupun data Pre-setup.
 - Flag Guided Tooltip halaman Activity Log: hook suite `before` men-set true untuk akun aktor dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
-- Parameter iterasi (kolom Tab User Action, urutan default): `Date`, `Action`, `Object`, `Name`, `Field`, `Old Value`, `New Value`, `Modified By`.
 - Pemulihan Setup Column: hook `after` spec ini menghapus preferensi kolom di browser (butir "Pemulihan Setup Column" di `suite.md`; kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
 - Suite berjalan serial (`parallel: false`); spec ini tidak mengubah state global.
 
@@ -57,25 +56,26 @@ coverage:
 12. Verifikasi 8 kolom default dengan urutan awal tampil di tabel
 13. Verifikasi tidak ada kolom beku
 14. Muat ulang halaman (F5)
-15. Verifikasi 8 kolom default dengan urutan awal dan tanpa kolom beku tetap setelah muat ulang
+15. Verifikasi 8 kolom default dengan urutan awal tetap setelah muat ulang
+16. Verifikasi tidak ada kolom beku setelah muat ulang
 
 ### TC-FA-FAAL-153: Tutup Popup Setup Column tanpa Save
 
-16. Klik header kolom Actions (⋯)
-17. Klik `Setup Column...`
-18. Sembunyikan kolom Field
-19. Klik `(X)`
-20. Verifikasi kolom Field tetap tampil di tabel
-21. Klik header kolom Actions (⋯)
-22. Klik `Setup Column...`
-23. Sembunyikan kolom Field
-24. Tekan Esc
-25. Verifikasi kolom Field tetap tampil di tabel
+17. Klik header kolom Actions (⋯)
+18. Klik `Setup Column...`
+19. Sembunyikan kolom Field
+20. Klik `(X)`
+21. Verifikasi kolom Field tetap tampil di tabel
+22. Klik header kolom Actions (⋯)
+23. Klik `Setup Column...`
+24. Sembunyikan kolom Field
+25. Tekan Esc
+26. Verifikasi kolom Field tetap tampil di tabel
 
 ## Notes
 
 - Langkah penghubung (S-03): klik tab User Action di awal agar spec mulai di tab yang benar (layar awal hook `beforeEach` suite berada di Tab Session); kolom Field disembunyikan dengan menghilangkan centang checkbox-nya.
-- Ukuran spec 25 langkah. Hasil pemecahan spec ini karena melewati sekitar 35 langkah; TC-FA-FAAL-150 (iterasi per kolom) dipindah ke spec 095 (konvensi bagian 3, batas ukuran).
+- Ukuran spec 26 langkah. TC-FA-FAAL-150 (iterasi per kolom) ada di spec 095 (konvensi bagian 3, batas ukuran).
 - Pembagian TC lintas spec: TC-FA-FAAL-149 ada di spec 071 dan TC-FA-FAAL-151 di spec 072, masing-masing berupa iterasi per kolom yang berdiri sendiri; TC-FA-FAAL-147, 148, dan 154 di spec 041; TC-FA-FAAL-150 di spec 095.
 - Temuan untuk QA:
   - TC-FA-FAAL-152 langkah 4 menyebut "amati" sesudah `[Reset to Default]` tanpa Expected sendiri; spec tidak menambah `Verifikasi` sebelum `[Save]`.

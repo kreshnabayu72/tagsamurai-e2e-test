@@ -36,6 +36,7 @@ coverage:
 
 - State yang diubah spec: konfigurasi kolom Tab Session (urutan dan pin, disimpan lewat `[Save]`). Langkah 9 dan 10 serta langkah 20 sampai 21 mengembalikan konfigurasi tiap iterasi; hook `after` memulihkannya dengan menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
 - Flag Guided Tooltip halaman Activity Log di-set true oleh hook suite `before` untuk akun aktor (lihat `suite.md`).
+- Viewport uji cukup sempit sehingga tabel dapat digulir horizontal (kemampuan viewport disediakan tim FE); dipakai TC-FA-FAAL-111.
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps

@@ -25,7 +25,7 @@ coverage:
 - Data uji, identitas dari `Fixture.activity-log.<kunci>` (fixture belum ada, disediakan tim FE):
   - File import Group berisi 3 baris valid (Pre-setup #27, TC-FA-FAAL-242).
   - Group `Gedung A` memiliki Allocated Quota 10 (Pre-setup #28, TC-FA-FAAL-244); hasil TC-FA-FAAL-244 (Allocated Quota 15) menjadi precondition TC-FA-FAAL-245.
-  - Mike Tan memiliki sesi-produk Fixed Asset aktif (TC-FA-FAAL-246), dibuat langkah 14; password `Spectra.env.FA_MIKETAN_PASSWORD` (env var tidak tercantum di butir "Env var" `suite.md`; tim FE mendaftarkannya di `executionConfig.environmentVariables` dan `.env.example`, R-07).
+  - Mike Tan memiliki sesi-produk Fixed Asset aktif (TC-FA-FAAL-246), dibuat langkah 14; password `Spectra.env.FA_MIKETAN_PASSWORD` (terdaftar di butir "Env var" `suite.md`, R-07).
   - Aset `Kendaraan Operasional (AST-2024-0088)` berstatus In Use (Pre-setup #24, TC-FA-FAAL-247).
   - Aset `Kamera DSLR (AST-2024-0141)` berstatus Borrowed (Pre-setup #24, TC-FA-FAAL-248).
   - Task `Task Audit Q3-Gedung A` berstatus In Audit (Pre-setup #25, TC-FA-FAAL-249).
@@ -104,5 +104,5 @@ coverage:
   - TC-FA-FAAL-246 Expected tidak menyebut Field, Old Value, dan New Value baris Force Logout; spec tidak menambah asersi itu.
   - TC-FA-FAAL-242 tidak menyebut data yang dibuat oleh Import Group (nama tiga group); pembersihan group hasil import disediakan tim FE/BE.
   - TC-FA-FAAL-244 dan 245 memakai Pre-setup #28 yang sama dengan nilai awal berbeda (10 dan 15); spec memakai hasil TC-FA-FAAL-244 sebagai precondition TC-FA-FAAL-245.
-  - Email dan password Mike Tan tidak tertulis di Pre-setup TC; nama env var diusulkan di Prerequisites.
+  - Email dan password Mike Tan tidak tertulis di Pre-setup TC; email disediakan tim FE dan env var password mengikuti `suite.md`.
   - Nama literal TC (`Kendaraan Operasional`, `Kamera DSLR`, `Task Audit Q3-Gedung A`) dipakai tanpa suffix per run; baris log immutable sehingga baris paling atas dijamin oleh baseline total.

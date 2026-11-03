@@ -75,7 +75,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung (S-03): klik tab User Action dan icon Filter di awal; menutup dropdown; `[Clear Field]` lalu `[Apply]` di antara filter Modified By.
-- TC-FA-FAAL-132 dan 133 berhint c pada indeks, tetapi seluruh alurnya satu sesi: `Hendra Pratama` ganda berasal dari dua baris seed (UA-13 pengguna `Hendra Pratama #1`, UA-14 pengguna `Hendra Pratama #2`). Keduanya ditulis sebagai fungsional.
+- TC-FA-FAAL-132 dan 133 ditulis fungsional karena seluruh alurnya satu sesi: `Hendra Pratama` ganda berasal dari dua baris seed (UA-13 pengguna `Hendra Pratama #1`, UA-14 pengguna `Hendra Pratama #2`).
 - Tidak ada Post Condition TC pada blok ini.
 - Temuan untuk QA:
   - TC tidak menyatakan apakah panel Filter tetap terbuka setelah `[Apply]` dan saat berpindah tab; spec mengasumsikan panel tetap terbuka dan membukanya sekali di awal.

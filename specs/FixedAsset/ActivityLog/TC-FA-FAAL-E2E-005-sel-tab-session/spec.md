@@ -103,7 +103,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 13, 20, 24, dan 30 (`[← Prev]` mengembalikan halaman 1 sebelum TC berikutnya, S-09); langkah 25 (anchor baris pembanding untuk asersi universal pada langkah 26 dan 27, bagian 8b butir 2). Klik `[Next →]` ke halaman 2 (langkah 11, 18, 22, 28, 33) kini dibawa langkah TC-FA-FAAL-13, 16, 17, 18, dan 19.
+- Langkah penghubung (S-03): langkah 13, 20, 24, dan 30 (`[← Prev]` mengembalikan halaman 1 sebelum TC berikutnya, S-09); langkah 25 (anchor baris pembanding untuk asersi universal pada langkah 26 dan 27, bagian 8b butir 2). Klik `[Next →]` ke halaman 2 (langkah 11, 18, 22, 28, 33) berasal dari langkah TC-FA-FAAL-13, 16, 17, 18, dan 19.
 - Urutan `Verifikasi` TC-FA-FAAL-13 mengikuti langkah TC (baris halaman 1, lalu SS-01 di halaman 2); urutan huruf Expected TC (a. SS-01 lebih dulu) tidak dipertahankan, isinya tetap lengkap.
 - Hover pada langkah 3 dan 5 diasersi segera sebelum elemen berikutnya disentuh (bagian 8b butir 5).
 - Spec ini 34 langkah.
