@@ -218,7 +218,7 @@ coverage:
 - Langkah penghubung (S-03): langkah baseline (1, 79, 86, 54, 92, 103), langkah baca ulang lewat fixture baca, langkah pemulihan saldo dan harga (S-09, R-08), langkah ganti akun (S-07), langkah memasang pendeteksi dialog `alert`, menampilkan kolom Notes lewat Setup Column, dan menutup modal Allocation Log.
 - Pembacaan state lewat fixture baca adalah kemampuan "disediakan tim FE/BE" tanpa endpoint karangan (S-11, S-13).
 - Ukuran spec: 112 langkah (melewati sekitar 35 langkah). Alasan: seluruh blok satu kelas harness (a, defense-in-depth) dan berdiri sendiri dengan data dan pembanding sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah baca ulang state dan ganti akun tidak dihitung menurut bagian 3 konvensi (Smell).
-- Pengecualian S-12 nama literal (Lampiran A butir A-6): payload Notes `<script>alert(1)</script><img src=x onerror=alert(2)>` dan Category `RFID Premium` ditulis persis seperti TC (Pre-setup #66).
+- Pengecualian S-12 nama literal (Lampiran A butir A-11): payload Notes `<script>alert(1)</script><img src=x onerror=alert(2)>` dan Category `RFID Premium` ditulis persis seperti TC (Pre-setup #66).
 - Temuan untuk QA:
   - TC-AC-ACHA-426 dan TC-AC-ACHA-436 tidak menyebut kode atau pesan penolakan; spec hanya mengasersi "ditolak".
   - TC-AC-ACHA-423 a menyebut tiga permintaan pertama ditolak dengan satu pesan tetapi `Quantity 2.5` mungkin ditolak pesan berbeda oleh validator; spec mengikuti TC.

@@ -167,7 +167,7 @@ coverage:
 - Baris target (R-16): transaksi milik spec ditemukan lewat Search Allocation ID yang dicatat saat fixture sebagai langkah penghubung tanpa `Verifikasi` sebelum aksi baris; langkah ini tidak diberi nomor sendiri, dan Search dikosongkan lewat klik `(←)` pada kotak Search sebelum blok berikutnya.
 - Ukuran spec: 71 langkah (melewati sekitar 35 langkah). Alasan: semua blok satu topik, entri Allocation Log per kejadian, dan tiap blok memakai transaksi sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; ganti akun (S-07) dan penutupan modal menambah langkah tanpa verifikasi.
 - Asersi tambahan di luar Expected TC: langkah 66 (anchor status Canceled sebelum membuka Allocation Log); langkah 24 (jumlah baris Edit pada Activity Log, anchor positif langkah 23).
-- Pengecualian S-12 nama literal (Lampiran A butir A-6): Notes `Batch uji`, `Batch revisi`, dan `Stok belum siap` ditulis persis seperti TC karena diasersi pada Description Allocation Log; transaksi dibedakan lewat Allocation ID unik.
+- Pengecualian S-12 nama literal (Lampiran A butir A-11): Notes `Batch uji`, `Batch revisi`, dan `Stok belum siap` ditulis persis seperti TC karena diasersi pada Description Allocation Log; transaksi dibedakan lewat Allocation ID unik.
 - Temuan untuk QA:
   - TC-AC-ACHA-380 menyebut Date & Time "sesuai General Settings" tanpa menulis nilai persisnya; spec mengasersi format `dd/MM/yy` dan 24 jam dari Pre-setup #1 tanpa nilai tanggal absolut.
   - TC-AC-ACHA-490 langkah 3 membuka Activity Log tanpa menyebut siapa yang membuka; spec memakai aktor yang sama dengan pelaku Edit (Budi Santoso).

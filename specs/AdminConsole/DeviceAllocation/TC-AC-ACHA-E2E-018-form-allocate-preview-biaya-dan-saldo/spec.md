@@ -57,7 +57,7 @@ coverage:
 
 - Kemampuan teknis: `Spectra.intercept()` untuk menunda 3 detik respons permintaan estimasi biaya (endpoint tidak disebut TC, PRD, atau LLD; disediakan tim FE/BE), dilepas segera sesudah dipakai; kemampuan baca jumlah transaksi pengirim, Wallet Balance, dan Hardware Stock.
 - Hook suite (dinyatakan sekali di `suite.md`): flag Guided Tooltip halaman Device Allocation disetel true untuk akun aktor dan dipulihkan di `after`, sesi API aktor, fixture API Pre-setup #20, pemulihan preferensi Setup Column.
-- Suite berjalan serial (`parallel: false`); spec ini mengubah saldo kantong, stok fisik, dan harga produk (state bersama) dan memulihkannya di hook `after`, bersama seed 30 baris lewat fixture Pre-setup #20 (Lampiran A butir A-6).
+- Suite berjalan serial (`parallel: false`); spec ini mengubah saldo kantong, stok fisik, dan harga produk (state bersama) dan memulihkannya di hook `after`, bersama seed 30 baris lewat fixture Pre-setup #20 (Lampiran A butir A-11).
 
 ## Test Steps
 

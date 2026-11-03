@@ -45,7 +45,7 @@ coverage:
   - Atribut #50 (dibuat MB_P2): NFC, Quantity 40, Client PT Cipta Kreasi, Pay From `PT Global Distribusi (Distributor)`, Total Cost $60.00, Reserve $60.00 pada kantong A, untuk TC-258 dan TC-262.
   - Atribut #70 (dibuat MB_P2): NFC, Quantity 40, Client PT Cipta Kreasi, Pay From `PT ABC (Principal)`, Total Cost $48.00, Reserve $48.00 pada kantong B, untuk TC-474 dan TC-475.
   - Atribut #65 (dibuat MB_APR): RFID Object TAG, Quantity 100, Client PT Sejahtera Logistik, Pay From `PT ABC (Principal)`, Total Cost $250.00, untuk TC-263.
-  - Nilai literal `Batch uji`, `Stok belum siap`, dan `Tidak sesuai` diasersi TC (pengecualian S-12 nama literal, Lampiran A butir A-6).
+  - Nilai literal `Batch uji`, `Stok belum siap`, dan `Tidak sesuai` diasersi TC (pengecualian S-12 nama literal, Lampiran A butir A-11).
 - Kemampuan teknis (disediakan tim FE/BE, kontrak fixture tidak tertulis di TC): fixture API Pre-setup #20 untuk menyetel saldo dan Reserved kantong sebelum tiap blok, mematikan toggle loncat ke Principal CV Karya Mandiri dan memulihkannya (TC-474, 475), membaca kuota Client dan status transaksi, membaca jumlah entri Allocation Log, dan membaca jumlah notifikasi pembuat; sesi API TC_DIST (sebagai pelaku pertama TC-264 dan TC-265).
 - Waktu (S-12): jam server dan jam browser sinkron; Last Updated pada List dibandingkan dengan waktu Reject yang dicatat sesudah aksi dengan toleransi satu menit.
 - Kolom Cost ditampilkan lewat Setup Column pada langkah penyiapan TC-261 (precondition TC); preferensi kolom dipulihkan hook `after` suite.

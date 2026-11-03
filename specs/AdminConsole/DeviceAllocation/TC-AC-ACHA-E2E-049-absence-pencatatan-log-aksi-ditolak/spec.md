@@ -220,7 +220,7 @@ coverage:
 - Langkah penghubung (S-03): langkah baseline 1 sampai 5; langkah hitung ulang jumlah entri; langkah pemulihan saldo, harga, dan role (S-09); langkah ganti akun (S-07); langkah menutup form Edit dengan `[×]` (bersih) dan `[×]` beserta `Verifikasi` dialog `Unsaved Changes` lalu `[Leave]` pada form dirty (S-08, tidak perlu dicatat lagi).
 - Baris target (R-16): transaksi `target TC-391` dan `target TC-428` pada List (langkah 90 sampai 101) ditemukan lewat Search Allocation ID yang dicatat saat seeding sebagai langkah penghubung tanpa `Verifikasi`; langkah ini tidak diberi nomor sendiri.
 - Ukuran spec: 112 langkah (melewati sekitar 35 langkah). Alasan: seluruh blok satu kelas harness (g), tiap blok TC berdiri sendiri dengan aktor, pemicu, dan pembanding sendiri, kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah baca ulang log berpola (hitung ulang entri, `Verifikasi` selisih nol) dan ganti akun tidak dihitung menurut bagian 3 konvensi (Smell).
-- Pengecualian S-12 nama literal (Lampiran A butir A-6): Notes `Batch uji` dan Rejection Reason `Uji` ditulis persis seperti TC.
+- Pengecualian S-12 nama literal (Lampiran A butir A-11): Notes `Batch uji` dan Rejection Reason `Uji` ditulis persis seperti TC.
 - Temuan untuk QA:
   - TC-AC-ACHA-422 sampai 427, 429, 430, 431, 436 sampai 440, 489 menyebut "tidak ada entri log baru" tanpa menyebut surface log mana yang dibaca dan siapa pembacanya; spec membaca Activity Log (Hendra Wibowo) dan System Log aktor pengirim, dan Allocation Log untuk TC-AC-ACHA-489 (Expected d menyebut ketiganya).
   - TC-AC-ACHA-426 dan TC-AC-ACHA-436 tidak menyebut pesan atau kode penolakan; spec hanya mengasersi "ditolak" sebagai anchor.

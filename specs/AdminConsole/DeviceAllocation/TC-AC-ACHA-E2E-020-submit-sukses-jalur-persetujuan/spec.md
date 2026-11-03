@@ -34,7 +34,7 @@ coverage:
 - Kolom Payment, Paid From, dan Cost pada List ditampilkan lewat Setup Column pada langkah pertama (precondition TC-141 dan TC-142) dan ditampilkan ulang lewat Setup Column sesudah ganti akun ke A-10 dan A-11 (akun yang asersinya memakai kolom itu), karena cakupan preferensi kolom lintas akun tidak diasumsikan; preferensi kolom dihapus di hook `after` (`suite.md`).
 - Kemampuan teknis: kemampuan baca Wallet Balance (saldo, Reserved, tersedia), kuota Client, dan nilai panel `Allocated quota`; akses Approvals > Device Allocation Active Tab oleh approver; pelaku kedua tidak dipakai.
 - Waktu: jam server dan jam browser sinkron dan tidak diubah.
-- Hook suite: flag Guided Tooltip, sesi API aktor, fixture API Pre-setup #20, pemulihan preferensi Setup Column, dan seed 30 baris dinyatakan di `suite.md`. Suite berjalan serial (`parallel: false`). Hook `after` memulihkan seed lewat fixture Pre-setup #20 (Lampiran A butir A-6).
+- Hook suite: flag Guided Tooltip, sesi API aktor, fixture API Pre-setup #20, pemulihan preferensi Setup Column, dan seed 30 baris dinyatakan di `suite.md`. Suite berjalan serial (`parallel: false`). Hook `after` memulihkan seed lewat fixture Pre-setup #20 (Lampiran A butir A-11).
 
 ## Test Steps
 

@@ -254,7 +254,7 @@ coverage:
 - Intercept dilepas segera sesudah pemicu (S-09); form yang tersisa dirty sesudah kegagalan ditutup deterministik dengan `[×]`, `Verifikasi` dialog `Unsaved Changes`, lalu `[Leave]` (S-08, tidak perlu dicatat lagi); dialog `Cancel Allocation` pada TC-AC-ACHA-229 ditutup tanpa membatalkan.
 - Langkah penghubung (S-03): langkah baseline (1, 31, 65, 81, 110, 129), langkah baca state lewat fixture baca ("disediakan tim FE/BE", S-11, S-13), langkah memasang dan melepas intercept, langkah ganti akun (S-07), dan langkah menutup dialog `Cancel Allocation` lewat `[Go Back]` pada TC-AC-ACHA-229.
 - Asersi tambahan di luar Expected TC: tidak ada selain pembacaan state lewat fixture baca untuk Expected yang menyebut status, Quantity, Reserved, atau jumlah baris.
-- Pengecualian S-12 nama literal (Lampiran A butir A-6): Notes `Batch uji` dan `Batch lama`, serta Rejection Reason `Stok belum siap`, ditulis persis seperti TC.
+- Pengecualian S-12 nama literal (Lampiran A butir A-11): Notes `Batch uji` dan `Batch lama`, serta Rejection Reason `Stok belum siap`, ditulis persis seperti TC.
 - Ukuran spec: 154 langkah (melewati sekitar 35 langkah). Alasan: seluruh blok satu kelas harness (b, resilience tulis) dan tiap blok berdiri sendiri dengan state tidak berubah sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah baseline, baca ulang state, dan penutupan form dirty menambah langkah tanpa interaksi baru.
 - Temuan untuk QA:
   - TC-AC-ACHA-150 sampai 152, 252, 253 memakai Category `Hardware - BLE Gateway` sedangkan TC lain memakai `TAG - BLE`; spec mengikuti TC.

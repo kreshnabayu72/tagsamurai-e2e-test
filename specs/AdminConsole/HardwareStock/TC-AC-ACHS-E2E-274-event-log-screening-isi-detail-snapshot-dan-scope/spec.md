@@ -181,7 +181,7 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03): langkah 1, 5, 6, 11 (kecuali Verifikasi), 32, 34, 41, 46, 49, 56, 59, 63, 66, 69, 70, 78, 80, 81 (navigasi, membuka dan menutup popup), 25 (hover), 35, 38, 50, 53 (menahan dan melepas respons, S-09), 57, 58, 61, 64, 70, 71 sampai 75 (aksi alur TC), 60 dan 68 (pelaku kedua lewat sesi API, "Tunggu aksi selesai", R-20), 74 dan 79 (tunggu aksi selesai dan ganti akun).
 - Spec ini 84 langkah, lebih dari sekitar 35 langkah. Alasan: seluruh blok membaca surface popup Event Log satu SKU dengan dataset Pre-setup #20 yang sama dan masing-masing berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Penahanan respons pada TC-586 dan TC-587 hanya mengamati state Loading (bukan kelas b). Simulator USB (kelas d) pada TC-524 dan rename Device Name pada TC-518 hanya pemicu state; pelaku kedua lewat sesi API bukan konteks kedua.
-- `P-8`: TC-524 memakai simulator reader USB hanya untuk memicu Add Stock Sync (satu Sync OK dan satu unit match); USB (driver, Sync) bukan objek asersi dan kemampuan simulator dinyatakan di Prerequisites.
+- `P-11`: TC-524 memakai simulator reader USB hanya untuk memicu Add Stock Sync (satu Sync OK dan satu unit match); USB (driver, Sync) bukan objek asersi dan kemampuan simulator dinyatakan di Prerequisites.
 - Pasangan kolom Header, Body, dan Footer pada TC-514 ditulis satu `Verifikasi` per klausa kecuali daftar kolom dan daftar ikon Table Tools yang disebut utuh dalam satu butir Expected TC (S-01).
 - Temuan untuk QA:
   - TC-524 tidak menyebut Serial Number unit match; spec memakai unit milik spec `{snMatch524}` sebagai unit yang cocok. Sesi baru tercatat di atas sesi yang dicatat, bukan pada posisi absolut (audit trail permanen, S-12, S-14).

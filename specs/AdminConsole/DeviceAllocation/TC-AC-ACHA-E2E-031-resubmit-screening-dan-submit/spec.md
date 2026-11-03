@@ -30,12 +30,12 @@ coverage:
   - Transaksi milik MB_ON berstatus Waiting for Approval (atribut #49), Completed (atribut #55), dan Rejected (atribut #54) untuk TC-236.
   - Transaksi Canceled oleh Timeout Auto-Cancel milik MB_ON dengan atribut #53 (NFC, Quantity 15, Client PT Sejahtera Logistik, Total Cost $18.00) untuk TC-241.
   - Transaksi Canceled milik TC_DIST (Pre-setup #59; atribut kategori, Quantity, dan Total Cost tidak dirinci TC) untuk TC-251.
-  - Nilai literal `Batch lama` pada Notes diasersi oleh TC sehingga tidak bersuffix (pengecualian S-12 nama literal, Lampiran A butir A-6).
+  - Nilai literal `Batch lama` pada Notes diasersi oleh TC sehingga tidak bersuffix (pengecualian S-12 nama literal, Lampiran A butir A-11).
 - Kemampuan teknis (disediakan tim FE/BE, kontrak fixture tidak tertulis di TC): fixture API Pre-setup #20 untuk mengubah harga BLE Gateway PT ABC dari $2.00 menjadi $2.20 lalu memulihkannya ke $2.00; pembacaan saldo dan Reserved kantong PT Global Distribusi; pembacaan jumlah notifikasi Notification Center TC_DIST lewat sesi API aktor (baseline).
 - Kolom Cost ditampilkan lewat Setup Column pada langkah penghubung, dan ditampilkan ulang sesudah ganti akun ke TC_DIST sebelum TC-251; preferensi kolom dipulihkan hook `after` suite.
 - Pemulihan dan cleanup (R-08): hook `after` memulihkan harga BLE Gateway PT ABC ke $2.00 dan seed ke 30 baris, serta membatalkan transaksi Waiting for Approval hasil Resubmit (langkah 41, 53, 61, 71, 81, dan 90) lewat fixture Pre-setup #20 (disediakan tim FE/BE). Modul tanpa Delete sehingga transaksi baru hasil Resubmit tidak dihapus; transaksi Completed hasil langkah 112 mengurangi saldo kantong PT Global Distribusi dan saldo itu dipulihkan fixture ke nilai awal.
 - State global: harga BLE Gateway PT ABC diubah lalu dipulihkan (langkah penghubung dan hook `after`); suite berjalan serial (`parallel: false`).
-- Hook suite: flag Guided Tooltip, sesi API aktor, fixture API Pre-setup #20, pemulihan preferensi Setup Column, dan seed 30 baris dinyatakan di `suite.md`. Hook `after` memulihkan harga dan seed lewat fixture Pre-setup #20 (Lampiran A butir A-6).
+- Hook suite: flag Guided Tooltip, sesi API aktor, fixture API Pre-setup #20, pemulihan preferensi Setup Column, dan seed 30 baris dinyatakan di `suite.md`. Hook `after` memulihkan harga dan seed lewat fixture Pre-setup #20 (Lampiran A butir A-11).
 
 ## Test Steps
 

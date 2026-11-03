@@ -147,7 +147,7 @@ coverage:
 - Seluruh langkah adalah permintaan langsung ke server: tidak ada langkah UI sehingga tidak ada ganti akun UI (S-07); tiap aktor memakai sesi API sendiri. Perilaku FE untuk respons yang sama diasersi di spec jalur form (bagian 8b butir 1).
 - Pembagian TC lintas spec: klausa "tidak ada entri log baru" (Activity Log, System Log, Allocation Log) pada TC-AC-ACHA-429, 430, 431, 440, dan 489 dijalankan di spec 049 (`absence-pencatatan-log-aksi-ditolak`) dengan permintaan nyata, aktor, dan baseline sendiri (S-05); spec ini mengasersi status respons dan state data. TC-AC-ACHA-432, 433, dan 434 tidak memuat klausa log.
 - Langkah penghubung (S-03): langkah baseline (1 sampai 51) dan langkah baca ulang lewat fixture baca (kemampuan "disediakan tim FE/BE", S-11, S-13); langkah mencabut dan memulihkan role Citra Anggraini (S-09, R-08). Langkah 1 dicatat sebagai baseline umum blok.
-- Pengecualian S-12 nama literal (Lampiran A butir A-6): Rejection Reason `Uji` dan Notes `Batch uji` ditulis persis seperti TC.
+- Pengecualian S-12 nama literal (Lampiran A butir A-11): Rejection Reason `Uji` dan Notes `Batch uji` ditulis persis seperti TC.
 - Ukuran spec: 66 langkah (melewati sekitar 35 langkah). Alasan: seluruh blok satu kelas harness (a, defense-in-depth otorisasi) dan berdiri sendiri dengan transaksi, aktor, dan baseline sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah baseline dan baca ulang state lewat fixture baca menambah langkah tanpa interaksi UI.
 - Temuan untuk QA:
   - TC-AC-ACHA-433 tidak menyebut kode penolakan (403 atau 404) dan tidak menyebut surface log yang dimaksud; spec hanya mengasersi "ditolak" dan tidak ada data log yang dikembalikan.

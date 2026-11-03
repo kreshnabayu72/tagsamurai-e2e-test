@@ -287,7 +287,7 @@ Baris uji Allocated By, TC-18 (langkah 82 sampai 88):
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/device-allocation/TestCases/tc-device-allocation.md`. Spec screening dan format sel List, hanya baca; tidak ada aksi tulis.
-- Pengecualian S-12 nama literal: Population seed Pre-setup #48 (30 baris) memakai Allocation ID, nilai kolom, dan Last Updated literal karena asersi bergantung pada ID, urutan, dan jumlah. Seed idempotent, tidak diubah spec ini, suite serial. Dasarnya Lampiran A butir A-6 (seed idempotent Pre-setup #48).
+- Pengecualian S-12 nama literal: Population seed Pre-setup #48 (30 baris) memakai Allocation ID, nilai kolom, dan Last Updated literal karena asersi bergantung pada ID, urutan, dan jumlah. Seed idempotent, tidak diubah spec ini, suite serial. Dasarnya Lampiran A butir A-11 (seed idempotent Pre-setup #48).
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Anchor dan adaptasi (S-02, S-03, S-15): langkah 33 sampai 36 mengulang tooltip pada keyboard focus untuk lima elemen Table Tools (adaptasi dari TC-2 Expected f); jangkar pembuktian elemen sudah dimuat adalah verifikasi tooltip hover langkah 23 sampai 31 pada elemen yang sama, sehingga langkah 35 tidak dapat lolos kosong.
 - Langkah penghubung (S-03): langkah 13 dan 16 (tutup overlay dan menu), langkah 32 dan 36 (lepas kursor dan fokus), langkah 45 (kembali ke halaman 1), langkah 62 sampai 68, 69 sampai 72, 73 sampai 76, 77 sampai 80, dan 81 sampai 88 (Search untuk menemukan baris target, `(←)` untuk mereset Search), langkah 95 (tutup modal), langkah 96 dan 117 (Setup Column menampilkan kolom TC-14 sampai TC-17 dan TC-16), langkah 114 sampai 116 dan 125 sampai 127 (ganti akun), langkah 133 (tutup modal dan reset Search). Langkah 59 melepas intercept.

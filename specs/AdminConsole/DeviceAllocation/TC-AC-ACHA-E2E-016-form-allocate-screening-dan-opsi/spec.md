@@ -54,7 +54,7 @@ coverage:
 
 - Kemampuan teknis: dismiss klik backdrop dan tekan Esc pada modal; fixture API Pre-setup #20 (penyetel penempatan group, saldo, kantong, harga) disediakan tim FE/BE.
 - Hook suite (dinyatakan sekali di `suite.md`): flag Guided Tooltip halaman Device Allocation disetel true untuk akun aktor dan dipulihkan di `after`, sesi API aktor, fixture API Pre-setup #20, pemulihan preferensi Setup Column.
-- Suite berjalan serial (`parallel: false`); spec ini tidak mengubah state global. Kondisi data TC-120 dan penyetel fixture dipulihkan fixture Pre-setup #20 di hook `after` bersama seed 30 baris (Lampiran A butir A-6); tidak ada transaksi yang dibuat spec ini.
+- Suite berjalan serial (`parallel: false`); spec ini tidak mengubah state global. Kondisi data TC-120 dan penyetel fixture dipulihkan fixture Pre-setup #20 di hook `after` bersama seed 30 baris (Lampiran A butir A-11); tidak ada transaksi yang dibuat spec ini.
 
 ## Test Steps
 

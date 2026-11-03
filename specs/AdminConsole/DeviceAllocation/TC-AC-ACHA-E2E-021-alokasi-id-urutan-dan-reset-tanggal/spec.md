@@ -23,7 +23,7 @@ coverage:
 - Kondisi data: belum ada transaksi bertanggal `22 Dec 2026` dan `23 Dec 2026` pada tiap awal blok (fixture API Pre-setup #20 memastikan dan memulihkannya; hook `before` dan langkah penghubung antar blok); tanpa kondisi ini nomor urut berbeda dari Expected.
 - Suite berjalan serial (`parallel: false`) karena spec ini mengubah jam server (state global).
 - Kemampuan teknis: kemampuan membaca Allocation ID dari baris teratas List; sesi UI dan sesi API aktor tetap valid selama jam server digeser (dinyatakan di `suite.md`).
-- Hook suite: flag Guided Tooltip, sesi API aktor, fixture API Pre-setup #20, pemulihan preferensi Setup Column, dan seed 30 baris dinyatakan di `suite.md`. Hook `after` memulihkan jam server dan seed lewat fixture Pre-setup #20 (Lampiran A butir A-6).
+- Hook suite: flag Guided Tooltip, sesi API aktor, fixture API Pre-setup #20, pemulihan preferensi Setup Column, dan seed 30 baris dinyatakan di `suite.md`. Hook `after` memulihkan jam server dan seed lewat fixture Pre-setup #20 (Lampiran A butir A-11).
 
 ## Test Steps
 

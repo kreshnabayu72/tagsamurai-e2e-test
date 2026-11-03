@@ -119,7 +119,7 @@ coverage:
 - Pengecualian P-2 tidak dipakai: jam server digeser sebagai langkah eksplisit karena bagian dari skenario race; dipulihkan sebelum asersi UI (S-09).
 - Langkah penghubung (S-03): langkah catat baseline Allocation Log, langkah menunggu siklus job (polling 5 detik, batas 2 menit, atau jeda nyata 30 detik untuk kasus Timeout tidak mengubah apa pun, bagian 6 konvensi), langkah memulihkan jam server, langkah memuat ulang List dan membuka Allocation Log, tutup modal Allocation Log, langkah ganti akun (S-07).
 - Anchor absence (bagian 8b butir 2): asersi "tidak memuat entri `Allocation auto-canceled`" pada TC-AC-ACHA-448 dan 450 didahului `Verifikasi` entri milik aksi yang menang (entri Cancel manual atau Approve) pada modal Allocation Log yang sama.
-- Pengecualian S-12 nama literal (Lampiran A butir A-6): Notes `Batch uji` ditulis persis seperti TC.
+- Pengecualian S-12 nama literal (Lampiran A butir A-11): Notes `Batch uji` ditulis persis seperti TC.
 - Baris target (R-16): transaksi di List (Cancel, Allocation Log) ditemukan lewat Search Allocation ID yang dicatat saat fixture sebagai langkah penghubung tanpa `Verifikasi`; langkah ini tidak diberi nomor sendiri.
 - Langkah pembuka blok (membuat salinan dan mencatat baseline S0, R0) adalah langkah penghubung tanpa `Verifikasi`; geser jam server pada tiap blok dipulihkan sebelum blok berikutnya membuat salinan (S-09).
 - Ukuran spec: 58 langkah (melewati sekitar 35 langkah). Alasan: seluruh blok satu topik (race commit Timeout) dan tiap blok memakai transaksi sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; pergeseran dan pemulihan jam, polling job, dan pembacaan state menambah langkah tanpa verifikasi.

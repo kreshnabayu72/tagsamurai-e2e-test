@@ -68,7 +68,7 @@ coverage:
 - P-1 (state berat): asersi "tidak ada dokumen audit" pada TC-AC-ACHA-467 (baseline langkah 1 dan pembacaan Activity Log sesudah form ditutup) tetap berada di spec ini karena konteksnya bergantung pada fault injection yang baru dibangun; memakai baseline jumlah entri (S-12) dengan anchor positif entri pembanding Activity Log tepat sebelumnya.
 - Langkah penghubung (S-03): langkah baseline (1, 18), langkah mengaktifkan dan melepas fault injection (S-09), langkah baca state lewat fixture baca ("disediakan tim FE/BE", S-11, S-13), langkah menutup form dirty (S-08).
 - Baris target (R-16): transaksi salinan blok TC-AC-ACHA-468 pada langkah 20 ditemukan lewat Allocation ID yang ditangkap dari respons fixture seeding; baris Approvals dicocokkan dengan Allocation ID itu (Search bila tersedia) sebagai langkah penghubung tanpa `Verifikasi` dan tanpa nomor sendiri.
-- Pengecualian S-12 nama literal (Lampiran A butir A-6): Notes `Batch uji` ditulis persis seperti TC.
+- Pengecualian S-12 nama literal (Lampiran A butir A-11): Notes `Batch uji` ditulis persis seperti TC.
 - Temuan untuk QA:
   - TC-AC-ACHA-467 dan 468 menyebut "kuota Client tidak berubah" tanpa surface pembacaan; spec memakai fixture baca kuota (disediakan tim FE/BE).
   - TC-AC-ACHA-467 b menyebut "tidak ada dokumen audit" tanpa menyebut surface log; spec membaca Activity Log (Admin Console).
