@@ -18,6 +18,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup #1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (Rudi Hartono), client PT Sejahtera plan Paid, password dari `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Nama env `FA_TC_PASSWORD` didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
+- Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Hook suite (sesi API aktor, fixture BE pemulih Pre-setup): dinyatakan sekali di `suite.md`; spec ini merujuknya.
 - Data Pre-setup (hanya dibaca; fixture BE pemulih riwayat memulihkannya di hook `before` dan `after`): riwayat Changelog Concurrent User #31 (4 entri) lewat `Fixture.fixedAssetLicense.changelogConcurrentUser` (fixture belum ada, disediakan tim FE).
 
@@ -40,6 +41,7 @@ coverage:
   | Modified By | `dewi` | 29/09/26 14:20, 27/09/26 16:05 |
 
 - Spec ini hanya membaca data dan tidak mengubah state global.
+- Pengecualian S-12 [KEPUTUSAN 2026-11-02]: Urutan dan jumlah entri Changelog (langkah 10, 12, 16, 18, 22, dan 26) diasersi absolut (tanpa baseline) karena fixture BE pemulih riwayat Pre-setup #27 dan #31 juga menghapus entri baru (dinyatakan di `suite.md`); asersi tidak diubah.
 
 ## Test Steps
 
@@ -88,7 +90,7 @@ Untuk setiap baris tabel "Data Uji Search kolom teks Searchable" (langkah 25 sam
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC.
-- Langkah penghubung (tanpa `Verifikasi`): langkah 27 dan 30 mengosongkan Search antar kasus (S-09); langkah 23 membuka kembali kotak Search untuk mengamati keyword kosong. TC-FA-LIC-569 dan 570 (Sort) ada di spec `TC-FA-LIC-E2E-171`.
+- Langkah penghubung (tanpa `Verifikasi`): langkah 27 dan 30 mengosongkan Search antar kasus (S-09); langkah 23 membuka kembali kotak Search untuk mengamati keyword kosong. Spec ini hanya memuat Search (TC-FA-LIC-567, 568, dan 586); TC-FA-LIC-569 dan 570 (Sort) ada di spec `TC-FA-LIC-E2E-171`. Kata "sort" pada slug id dan folder spec ini tidak berarti spec ini memuat asersi sort.
 - Langkah yang diulang per baris tabel Data Uji: langkah 25 sampai 27 (6 iterasi) (bagian 8b butir 7); tiap kasus berawal dari kotak Search kosong.
 - Temuan untuk QA:
   - TC-FA-LIC-586 langkah 3 menyebut "Ketik 1 karakter" tanpa nilai; spec memakai `s`.

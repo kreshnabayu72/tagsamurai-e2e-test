@@ -34,25 +34,28 @@ coverage:
 
 1. Buka License > Concurrent User
 2. Catat nilai Online Users
-3. Klik `[Force Logout]` pada baris Budi Santoso
-4. Klik `[Confirm Logout]`
-5. Verifikasi toast sukses `Success, user session has been terminated.`
-6. Verifikasi baris Budi Santoso hilang dari daftar
-7. Verifikasi Online Users berkurang satu dari nilai yang dicatat
-8. Pulihkan sesi Budi Santoso (Pre-setup #14) lewat fixture BE
+3. Ketik Search `Budi Santoso`, tekan Enter
+4. Klik `[Force Logout]` pada baris Budi Santoso
+5. Klik `[Confirm Logout]`
+6. Verifikasi toast sukses `Success, user session has been terminated.`
+7. Verifikasi baris Budi Santoso hilang dari daftar
+8. Verifikasi Online Users berkurang satu dari nilai yang dicatat
+9. Pulihkan sesi Budi Santoso (Pre-setup #14) lewat fixture BE
 
 ### TC-FA-LIC-96: Force Logout dieksekusi sukses oleh Default User
 
-9. Ganti akun: logout, lalu login sebagai Default User dengan `Spectra.env.FA_DU_PASSWORD`
-10. Buka License > Concurrent User
-11. Klik `[Force Logout]` pada baris Budi Santoso
-12. Klik `[Confirm Logout]`
-13. Verifikasi toast sukses `Success, user session has been terminated.`
-14. Verifikasi baris Budi Santoso hilang dari daftar
+10. Ganti akun: logout, lalu login sebagai Default User dengan `Spectra.env.FA_DU_PASSWORD`
+11. Buka License > Concurrent User
+12. Ketik Search `Budi Santoso`, tekan Enter
+13. Klik `[Force Logout]` pada baris Budi Santoso
+14. Klik `[Confirm Logout]`
+15. Verifikasi toast sukses `Success, user session has been terminated.`
+16. Verifikasi baris Budi Santoso hilang dari daftar
 
 ## Notes
 
 - Spec Role Matrix positif (bagian 3a konvensi) atas eksekusi sukses Force Logout; ditulis per blok role karena ganti akun menuntut Step eksplisit (akun pertama login di hook `before`). Urutan blok: TC-FA-LIC-95 (Manage global license) lebih dulu, TC-FA-LIC-96 (Default User) terakhir. Visibilitas dan penolakan Force Logout per role (TC-FA-LIC-93, 94, 110, 596) ada di spec `TC-FA-LIC-E2E-028`.
-- Langkah penghubung (aksi tanpa `Verifikasi`): "Buka License > Concurrent User", "Catat nilai Online Users", dan "Pulihkan sesi Budi Santoso" (langkah 8; S-09, sesi Budi Santoso dipulihkan sebelum blok TC-FA-LIC-96 bergantung padanya).
+- Langkah penghubung (aksi tanpa `Verifikasi`): "Buka License > Concurrent User", "Catat nilai Online Users", dan "Pulihkan sesi Budi Santoso" (langkah 9; S-09, sesi Budi Santoso dipulihkan sebelum blok TC-FA-LIC-96 bergantung padanya).
+- Baris Budi Santoso di tabel Active Sessions (18 sesi, lebih dari satu halaman) dibuka lewat Search sebagai langkah penghubung (R-16, bagian 8b butir 13): langkah 3 dan 12. Ganti akun pada langkah 10 mereset Search.
 - Temuan untuk QA:
   - Akun Budi Santoso (Pre-setup #14) tidak punya email di Pre-setup TC; disediakan tim FE.

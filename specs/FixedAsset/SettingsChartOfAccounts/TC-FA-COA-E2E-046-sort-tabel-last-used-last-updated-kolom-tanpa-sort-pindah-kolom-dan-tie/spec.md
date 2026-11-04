@@ -20,7 +20,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Tidak ada ganti akun di tengah spec.
-- Data Pre-setup (hanya dibaca, tidak diubah; disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
+- Data Pre-setup (hanya dibaca, tidak diubah; identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
 
   | Akun | Account Code | Account Name | Function | Status | Last Used in Journal |
   |---|---|---|---|---|---|
@@ -33,7 +33,7 @@ coverage:
   | P8 | `1-2001` | Accumulated Depreciation – Equipment | Accumulated Depreciation | Active | `Sep 2026` |
 
 - Waktu Last Updated akun P1 lebih awal daripada akun P5 dengan selisih minimal satu menit (precondition c TC-FA-COA-177). Nilai waktunya tidak punya identitas di Pre-setup TC; disediakan tim FE.
-- Tabel client default berisi akun P1 sampai P8 dan akun hasil seed lainnya (lebih dari 100 akun; seed P1 sampai P115 disediakan tim FE). Tiap kolom yang di-sort punya sedikitnya dua nilai distinct pada akun P yang diasersi (S-11). Asersi urutan memakai urutan relatif akun P yang disebut di langkah, bukan posisi baris. Ukuran halaman diubah ke 100 pada langkah 1 agar akun P terlihat di satu halaman, diubah ke 10 pada langkah 62 (sesuai precondition d TC-FA-COA-220) dan tetap 10 sampai akhir spec. Asersi nilai kosong "di akhir" dan "di awal" memakai langkah pindah ke halaman terakhir (S-14); akun bernilai Last Used in Journal diasumsikan sedikit (kurang dari satu halaman) sehingga P2 dan P4 berada pada halaman yang sama.
+- Tabel client default berisi akun P1 sampai P8 dan akun hasil seed lainnya (lebih dari 100 akun; seed P1 sampai P117 disediakan tim FE). Tiap kolom yang di-sort punya sedikitnya dua nilai distinct pada akun P yang diasersi (S-11). Asersi urutan memakai urutan relatif akun P yang disebut di langkah, bukan posisi baris. Ukuran halaman diubah ke 100 pada langkah 1 agar akun P terlihat di satu halaman, diubah ke 10 pada langkah 62 (sesuai precondition d TC-FA-COA-220) dan tetap 10 sampai akhir spec. Asersi nilai kosong "di akhir" dan "di awal" memakai langkah pindah ke halaman terakhir (S-14); akun bernilai Last Used in Journal diasumsikan sedikit (kurang dari satu halaman) sehingga P2 dan P4 berada pada halaman yang sama.
 - Kolom Last Used in Journal tampil secara default (asumsi, TC-FA-COA-176 tidak menyebut Setup Column). Kolom Last Updated tidak tampil secara default dan ditampilkan lewat Setup Column pada langkah 17 sampai 18 (precondition d TC-FA-COA-177); langkah 28 sampai 29 memulihkannya (R-24).
 - State yang diubah spec: ukuran halaman, kolom Last Updated (ditampilkan lalu disembunyikan lagi), Search dan filter (dilepas di langkah 51), dan sort (tiap siklus berakhir netral). Tidak ada data yang ditulis. Hook `after` menghapus preferensi kolom dan tabel di browser sebagai cadangan (kemampuan disediakan tim FE).
 - Flag Guided Tooltip halaman Chart of Accounts di-set true oleh hook suite `before` untuk akun aktor (lihat `suite.md`).
@@ -129,7 +129,7 @@ coverage:
 ## Notes
 
 - Alasan spec di atas sekitar 35 langkah (67 langkah): lima TC sort satu kelas (Sort) pada satu layar dan satu dataset Pre-setup; tiap blok berupa siklus klik yang berdiri sendiri dan berakhir netral, dan Expected dipecah satu `Verifikasi` per klausa (S-01) termasuk pindah halaman terakhir untuk asersi nilai kosong dan penelusuran seluruh halaman TC-FA-COA-220. Memecahnya mengulang login, pembukaan halaman, dan pengaturan ukuran halaman yang sama.
-- Langkah penghubung (S-03, S-09): langkah 1 (ukuran halaman 100 agar akun P terlihat bersama); langkah 5, 7, 11, 13 (pindah halaman untuk asersi "di akhir" dan "di awal", S-14); langkah 17 sampai 18 dan 28 sampai 29 (menampilkan lalu memulihkan kolom Last Updated, R-24 dan 8b.13); langkah 38 (menutup menu Column Visibility); langkah 51 (melepas Search, filter, dan sort sebelum TC berikutnya); langkah 62 (ukuran halaman 10, precondition d TC-FA-COA-220, sekaligus memulihkan ukuran halaman awal); langkah 67 (kembali ke halaman pertama dan sort netral).
+- Langkah penghubung (S-03, S-09): langkah 1 (ukuran halaman 100 agar akun P terlihat bersama); langkah 5, 7, 11, 13 (pindah halaman untuk asersi "di akhir" dan "di awal", S-14); langkah 17 sampai 18 dan 28 sampai 29 (menampilkan lalu memulihkan kolom Last Updated, R-24 dan 8b.14); langkah 38 (menutup menu Column Visibility); langkah 51 (melepas Search, filter, dan sort sebelum TC berikutnya); langkah 62 (ukuran halaman 10, precondition d TC-FA-COA-220, sekaligus memulihkan ukuran halaman awal); langkah 67 (kembali ke halaman pertama dan sort netral).
 - Search pada langkah 39 diketik lalu Enter (8b.9); dikosongkan lewat `(←)` pada langkah 51.
 - Tiap siklus sort berakhir netral sehingga tidak ada langkah reset sort tambahan.
 - Tidak ada asersi pencatatan/log di spec ini (aksi sort tidak menghasilkan log).

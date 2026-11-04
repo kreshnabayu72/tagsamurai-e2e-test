@@ -105,7 +105,7 @@ coverage:
 ## Notes
 
 - K-1: TC kelas a (defense-in-depth) dengan Expected respons API tetap masuk spec FE+BE walau tumpang tindih dengan TC backend, karena tiap TC granular tepat satu spec. Spec hanya mengasersi status respons dan state data (bagian 8b butir 1), bukan perilaku FE.
-- Pembagian TC lintas spec: klausa "tidak ada entri log" pada Expected TC-FA-LIC-440 b dan TC-FA-LIC-441 b diasersi di spec absence 111 (request langsung ini sebagai pemicu, user dan baseline sendiri); spec ini hanya mengasersi status respons dan state data (S-05).
+- Pembagian TC lintas spec: klausa "jumlah entri tidak berubah dibanding baseline sebelum request" (Changelog: Concurrent User atau Allocation Quota, System Log akun pengirim tiap token, dan Activity Log Fixed Asset) pada Expected TC-FA-LIC-440 b dan TC-FA-LIC-441 b diasersi di spec absence 111 (request langsung ini sebagai pemicu, user dan baseline sendiri); spec ini hanya mengasersi status respons dan state data (S-05).
 - Langkah "Untuk setiap akun pada tabel" dan "Untuk setiap baris tabel request" adalah idiom perulangan (bagian 8b butir 7): langkah 1 sampai 2, 4 sampai 7, 9 sampai 10, dan 12 sampai 13 diulang per token atau per baris; `Verifikasi` tiap iterasi tetap satu per klausa.
 - Langkah penghubung (aksi tanpa `Verifikasi`): "Pulihkan Pre-setup #12".
 - Temuan untuk QA:

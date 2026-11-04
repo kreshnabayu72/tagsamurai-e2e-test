@@ -35,7 +35,7 @@ coverage:
 
 - State global yang diubah: General Settings Date Format `dd MMM yy` dan Time Format 12 jam dipasang lewat fixture BE penyetel state pada blok TC-FA-LIC-362 (langkah 31). Jam fixture 29/09/26 dan format awal `dd/MM/yy`, `HH:mm` dipulihkan di langkah 37 dan di hook `after`. Suite berjalan serial (`parallel: false`).
 - Pengecualian S-12 [KEPUTUSAN 2026-11-02]: Urutan dan jumlah entri Changelog (langkah 5 dan 29) diasersi absolut (tanpa baseline) karena fixture BE pemulih riwayat Pre-setup #27 dan #31 juga menghapus entri baru (dinyatakan di `suite.md`); asersi tidak diubah.
-- Kemampuan teknis: mengubah General Settings lewat fixture BE (disediakan tim FE/BE); tidak ada endpoint yang dikarang.
+- Kemampuan teknis: mengubah General Settings lewat fixture BE (disediakan tim FE/BE); mengirim tombol `Esc` ke browser (langkah 14); tidak ada endpoint yang dikarang.
 
 ## Test Steps
 
@@ -63,9 +63,9 @@ coverage:
 ### TC-FA-LIC-330: Isi entri alokasi pertama, Edit, Remove Allocation, dan penanda tingkat
 
 16. Klik ikon Changelog pada toolbar Level 1 Groups Quota
-17. Verifikasi entri Divisi Logistik tampil di modal `Changelog: Allocation Quota`: Action `Edit`, Group Name `Divisi Logistik`, Field `Allocated Quota`, Old Value `500`, New Value `600`, Modified By `Rudi H`
-18. Verifikasi entri Divisi IT (alokasi pertama): Action `Edit`, Old Value `—`, New Value `100`
-19. Verifikasi entri Gudang A: Action `Remove Allocation`, Old Value `100`, New Value `—`
+17. Verifikasi entri seed Pre-setup #27 (bukan entri baru) Divisi Logistik (29/09/26 10:05) tampil di modal `Changelog: Allocation Quota`: Action `Edit`, Group Name `Divisi Logistik`, Field `Allocated Quota`, Old Value `500`, New Value `600`, Modified By `Rudi H`
+18. Verifikasi entri Divisi IT (alokasi pertama, 28/09/26 15:30): Action `Edit`, Field `Allocated Quota`, Old Value `—`, New Value `100`, Modified By `Dewi L`
+19. Verifikasi entri Gudang A (27/09/26 09:00): Action `Remove Allocation`, Field `Allocated Quota`, Old Value `100`, New Value `—`, Modified By `Rudi H`
 20. Verifikasi entri penanda tingkat peringatan kuota: Action `Edit`, Group Name `—`, Field `Quota Alert Level`, Old Value `Normal`, New Value `Low`, Modified By `System`
 21. Verifikasi tidak ada entri dengan Action `Force Logout` atau Field `Session Status`
 
@@ -101,6 +101,5 @@ coverage:
 - Spec di atas 35 langkah (38 langkah): alasan dipertahankan, seluruh blok membaca modal Changelog Allocation Quota yang sama dengan dataset Pre-setup #27 dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok format tanggal (TC-FA-LIC-362) berada di akhir karena mengubah state global dan dipulihkan sebelum spec selesai (P-5 butir b: satu objek uji ringan kelas h).
 - P-5: TC-FA-LIC-362 (format tanggal General Settings) adalah satu objek uji ringan kelas h yang berpermukaan sama (modal Changelog) dengan blok lain.
 - Temuan untuk QA:
-  - TC-FA-LIC-330 butir b tidak menyebut Modified By entri Divisi IT dan butir c tidak menyebut Group Name dan Modified By Gudang A selain yang tertulis; spec tidak mengasersi bagian yang tidak tertulis.
   - TC-FA-LIC-348 butir d ("kolom Field tetap Searchable") tidak punya langkah pengamatan di TC; spec memakai data Search dari TC-FA-LIC-332 (langkah 28 dan 29).
   - TC-FA-LIC-362 butir a menyebut format `29 Sep 26, 10:05 AM` tanpa menyebut baris yang diamati; spec memakai entri 29/09/26 10:05 dari Pre-setup #27.

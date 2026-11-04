@@ -24,8 +24,9 @@ coverage:
 - Guided Tooltip: flag seen diatur dan dipulihkan hook suite untuk akun aktor pertama (dinyatakan sekali di `suite.md`); flag akun Starter sudah true menurut catatan TC (semua akun kecuali Pre-setup #19).
 - Data Pre-setup (hanya dibaca, tidak diubah):
   - #12 untuk License Summary client Paid: Total Asset License 5.000, Used 4.320, Reserved 15, Unmanaged 27; ledger Add-on Audit 100/60, Tracking 50/48, Maintenance 30/12 (Repair Ticketing identik dengan Maintenance Routine), IT Inventory 200/120, Maps belum dialokasikan. Lewat `Fixture.fixedAssetLicense.kuotaHierarki` (fixture belum ada; disediakan tim FE/BE).
-  - #13 untuk riwayat: 4 term Subscription (SUBS-20270101-00001, SUBS-20260101-00001, SUBS-20250101-00001, SUBS-20241201-00001) dan 6 alokasi (LALC-20260801-00004, LALC-20260720-00003, LALC-20260515-00002, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001), lewat `Fixture.fixedAssetLicense.riwayat` (fixture belum ada; disediakan tim FE/BE).
+  - #13 untuk riwayat: 4 term Subscription (SUBS-20270101-00001, SUBS-20260101-00001, SUBS-20250101-00001, SUBS-20241201-00001) dan 7 alokasi (LALC-20260801-00004, LALC-20260720-00003, LALC-20260515-00002, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001, LALC-20241205-00001), lewat `Fixture.fixedAssetLicense.riwayat` (fixture belum ada; disediakan tim FE/BE).
   - #9 untuk TC-FA-LIC-184: client Starter dengan cap plan Asset 500, Used 120, Reserved 0, Unmanaged 3, lewat `Fixture.fixedAssetLicense.starter` (fixture belum ada; disediakan tim FE/BE).
+- Date Format General Settings `dd/MM/yy` (Pre-setup #1; spec ini tidak mengubahnya) untuk asersi tanggal pada langkah 29 dan 40.
 - Kemampuan teknis (dinyatakan di `suite.md`, dirujuk satu baris): membaca isi berkas unduhan CSV dan XLSX (nama berkas, encoding dan BOM, pemisah, nama sheet, baris, sel, tipe sel); berkas tiap unduhan ditangkap ke direktori bersih sehingga nama sama tidak tertimpa; berkas dihapus di hook `after`.
 - State yang diubah dan dipulihkan: sort kolom pertama tabel Subscription History dan Allocation History (dinetralkan kembali pada langkah 31 dan 42).
 
@@ -83,7 +84,7 @@ coverage:
 36. Verifikasi CSV berencoding UTF-8 dengan BOM
 37. Verifikasi CSV memakai pemisah koma
 38. Verifikasi XLSX memuat satu sheet bernama `Sheet1`
-39. Verifikasi urutan baris CSV dan XLSX mengikuti sort aktif (Allocation ID Ascending): LALC-20250210-00001, LALC-20260101-00001, LALC-20260312-00002, LALC-20260515-00002, LALC-20260720-00003, LALC-20260801-00004
+39. Verifikasi urutan baris CSV dan XLSX mengikuti sort aktif (Allocation ID Ascending): LALC-20241205-00001, LALC-20250210-00001, LALC-20260101-00001, LALC-20260312-00002, LALC-20260515-00002, LALC-20260720-00003, LALC-20260801-00004
 40. Verifikasi tanggal pada berkas berformat General Settings (`dd/MM/yy`)
 41. Verifikasi angka pada berkas (kolom `Quantity`) bernilai numerik tanpa pemisah ribuan
 42. Klik header kolom `Allocation ID` dua kali lagi hingga netral

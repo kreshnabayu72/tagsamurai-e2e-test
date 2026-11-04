@@ -32,6 +32,7 @@ coverage:
   | 27/09/26 16:05 | Force Logout | Siti Rahma | Session Status | Active | Force Logged Out | Dewi L |
 
 - Data Uji Sort kolom bernilai tunggal (TC-FA-LIC-571), dipakai langkah 22 sampai 27: Action, Field, Old Value, New Value. Untuk keempat kolom, klik 1 `↑` dan klik 2 `↓` menghasilkan urutan 30/09/26 11:15, 29/09/26 14:20, 28/09/26 09:40, 27/09/26 16:05 (nilai sama, tie-breaker default sort Date terbaru).
+- Kemampuan teknis: mengirim tombol `Esc` ke browser (langkah 14), disediakan tim FE.
 - State global yang diubah: General Settings Date Format `dd MMM yy` dan Time Format 12 jam dipasang lewat fixture BE penyetel state pada blok TC-FA-LIC-585 (langkah 28) dan dipulihkan ke `dd/MM/yy`, `HH:mm` pada langkah 34 serta di hook `after`. Suite berjalan serial (`parallel: false`).
 - Pengecualian S-12 [KEPUTUSAN 2026-11-02]: Urutan dan jumlah entri Changelog (langkah 5, 20, 23, 25) diasersi absolut (tanpa baseline) karena fixture BE pemulih riwayat Pre-setup #27 dan #31 juga menghapus entri baru (dinyatakan di `suite.md`); asersi tidak diubah.
 
@@ -61,9 +62,9 @@ coverage:
 ### TC-FA-LIC-566: Isi hanya entri Force Logout dengan nama user target dan nilai Old/New
 
 16. Klik ikon Changelog pada toolbar
-17. Verifikasi entri Budi Santoso tampil di modal `Changelog: Concurrent User`: Action `Force Logout`, User Name `Budi Santoso`, Field `Session Status`, Old Value `Active`, New Value `Force Logged Out`, Modified By `Rudi H`
-18. Verifikasi entri Siti Rahma ada dua (29/09/26 14:20 dan 27/09/26 16:05) dengan Modified By `Dewi L`
-19. Verifikasi entri Andi Pratama dengan Modified By `Rudi H`
+17. Verifikasi entri seed Pre-setup #31 (bukan entri baru) Budi Santoso (30/09/26 11:15) tampil di modal `Changelog: Concurrent User`: Action `Force Logout`, User Name `Budi Santoso`, Field `Session Status`, Old Value `Active`, New Value `Force Logged Out`, Modified By `Rudi H`
+18. Verifikasi dua entri seed Siti Rahma (29/09/26 14:20 dan 27/09/26 16:05): Action `Force Logout`, Field `Session Status`, Old Value `Active`, New Value `Force Logged Out`, Modified By `Dewi L`
+19. Verifikasi satu entri seed Andi Pratama (28/09/26 09:40): Action `Force Logout`, Field `Session Status`, Old Value `Active`, New Value `Force Logged Out`, Modified By `Rudi H`
 20. Verifikasi tabel memuat tepat 4 entri
 21. Verifikasi tidak ada entri dengan Action `Edit` atau `Remove Allocation` dan tidak ada Field `Allocated Quota` atau `Quota Alert Level`
 
@@ -98,5 +99,4 @@ Untuk setiap kolom Action, Field, Old Value, New Value pada Data Uji Sort (langk
 - P-5: TC-FA-LIC-585 (format tanggal General Settings) adalah satu objek uji ringan kelas h berpermukaan sama dengan blok lain.
 - Temuan untuk QA:
   - TC-FA-LIC-566 butir d ("tepat 4 entri") adalah jumlah absolut pada audit trail permanen (S-12); asersi ini bergantung pada fixture pemulih riwayat Pre-setup #31.
-  - TC-FA-LIC-566 butir b menyebut dua entri Siti Rahma tanpa nilai Action, Field, Old, dan New; spec tidak mengasersi bagian yang tidak tertulis.
   - TC-FA-LIC-571 tidak menyebut hasil indikator sort pada kolom bernilai tunggal selain urutan; spec mengasersi indikator `↑` dan `↓` karena Expected TC menyebut klik 1 `↑` dan klik 2 `↓`.

@@ -66,37 +66,38 @@ coverage:
 21. Jalankan fixture BE pemulih Pre-setup #12 dengan Divisi IT Used by This Group 60 (Remaining 40), 2 aset Unmanaged di Divisi IT, dan pemrosesan aset digagalkan hingga tersimpan
 22. Buka License > All License; catat Reserved, Used, Remaining, dan Unmanaged pada License Summary kolom Asset
 23. Jalankan aksi Manage atas 2 aset Unmanaged di Divisi IT sesuai PRD `asset/`
-24. Muat ulang License > All License
-25. Verifikasi aksi lolos pemeriksaan kuota: License Summary Reserved `17`, Remaining `663`, dan Unmanaged `25`
-26. Buka License > Allocation Quota > node `Divisi IT` (aset dalam jeda transisi)
-27. Verifikasi Divisi IT: Reserved by This Group `2` dan Remaining `38`
-28. Picu kegagalan pemrosesan kedua aset lewat fixture BE hingga tersimpan
-29. Muat ulang License > All License
-30. Verifikasi setelah pemrosesan gagal, License Summary: Reserved `15`, Used `4320`, Remaining `665`, dan Unmanaged `27`
-31. Buka License > Allocation Quota > node `Divisi IT`
-32. Verifikasi Divisi IT: Reserved by This Group `0` dan Remaining `40`
-33. Buka daftar aset
-34. Verifikasi kedua aset tetap berstatus Unmanaged
+24. Tunggu aksi selesai
+25. Muat ulang License > All License
+26. Verifikasi aksi lolos pemeriksaan kuota: License Summary Reserved `17`, Remaining `663`, dan Unmanaged `25`
+27. Buka License > Allocation Quota > node `Divisi IT` (aset dalam jeda transisi)
+28. Verifikasi Divisi IT: Reserved by This Group `2` dan Remaining `38`
+29. Picu kegagalan pemrosesan kedua aset lewat fixture BE hingga tersimpan
+30. Muat ulang License > All License
+31. Verifikasi setelah pemrosesan gagal, License Summary: Reserved `15`, Used `4320`, Remaining `665`, dan Unmanaged `27`
+32. Buka License > Allocation Quota > node `Divisi IT`
+33. Verifikasi Divisi IT: Reserved by This Group `0` dan Remaining `40`
+34. Buka daftar aset
+35. Verifikasi kedua aset tetap berstatus Unmanaged
 
 ### TC-FA-LIC-503: Aksi Manage ke grup tanpa alokasi mengurangi Remaining leluhur beralokasi terdekat
 
-35. Jalankan fixture BE pemulih Pre-setup #12 dengan Remaining Kantor Pusat `200` dan 1 aset Unmanaged di Divisi Keuangan hingga tersimpan
-36. Pasang intercept jaringan yang mengamati respons pemeriksaan kuota
-37. Jalankan aksi Manage atas 1 aset Unmanaged di Divisi Keuangan sesuai PRD `asset/`
-38. Verifikasi pemeriksaan kuota terhadap Remaining Kantor Pusat (leluhur beralokasi terdekat) mengembalikan `OK`
-39. Verifikasi aksi diterima
-40. Lepas intercept jaringan
-41. Buka License > Allocation Quota > node `Divisi Keuangan`
-42. Verifikasi Divisi Keuangan: Reserved by This Group `1` dan Remaining `199` (mengikuti Kantor Pusat)
-43. Klik node `Kantor Pusat` di Sidebar
-44. Verifikasi Kantor Pusat: Allocated to Subgroups `601` dan Remaining `199`
+36. Jalankan fixture BE pemulih Pre-setup #12 dengan Remaining Kantor Pusat `200` dan 1 aset Unmanaged di Divisi Keuangan hingga tersimpan
+37. Pasang intercept jaringan yang mengamati respons pemeriksaan kuota
+38. Jalankan aksi Manage atas 1 aset Unmanaged di Divisi Keuangan sesuai PRD `asset/`
+39. Verifikasi pemeriksaan kuota terhadap Remaining Kantor Pusat (leluhur beralokasi terdekat) mengembalikan `OK`
+40. Verifikasi aksi diterima
+41. Lepas intercept jaringan
+42. Buka License > Allocation Quota > node `Divisi Keuangan`
+43. Verifikasi Divisi Keuangan: Reserved by This Group `1` dan Remaining `199` (mengikuti Kantor Pusat)
+44. Klik node `Kantor Pusat` di Sidebar
+45. Verifikasi Kantor Pusat: Allocated to Subgroups `601` dan Remaining `199`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, aksi tanpa `Verifikasi`): langkah 1, 11, 21, dan 35 (fixture BE pemulih dan penyetel state), pemasangan dan pelepasan intercept (langkah 2, 6, 14, 18, 36, dan 40), langkah 28 (memicu kegagalan pemrosesan), langkah 33 (membuka daftar aset), muat ulang halaman, navigasi License, serta pencatatan baseline pada langkah 22.
+- Langkah penghubung (S-03, aksi tanpa `Verifikasi`): langkah 1, 11, 21, dan 36 (fixture BE pemulih dan penyetel state), pemasangan dan pelepasan intercept (langkah 2, 6, 14, 18, 37, dan 41), langkah 29 (memicu kegagalan pemrosesan), langkah 34 (membuka daftar aset), muat ulang halaman, navigasi License, langkah 24 (Tunggu aksi selesai sesudah aksi Manage yang diikuti muat ulang, 8b.8), serta pencatatan baseline pada langkah 22.
 - Urutan TC diubah dari urutan nomor: TC-FA-LIC-504 dan TC-FA-LIC-506 (penolakan) lebih dulu, lalu TC-FA-LIC-507 dan TC-FA-LIC-503 yang menerima aksi Manage (S-10).
-- Alasan di atas sekitar 35 langkah (44 langkah): semua blok satu topik (aksi Manage terhadap kuota grup tanpa alokasi, over-used, dan kegagalan pemrosesan) dan berdiri sendiri dengan fixture sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah tambahan hanya intercept, navigasi, dan pemulihan fixture.
+- Alasan di atas sekitar 35 langkah (45 langkah): semua blok satu topik (aksi Manage terhadap kuota grup tanpa alokasi, over-used, dan kegagalan pemrosesan) dan berdiri sendiri dengan fixture sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah tambahan hanya intercept, navigasi, dan pemulihan fixture.
 - Temuan untuk QA:
   - Pemicu aksi Manage dan penyebab kegagalan pemrosesan ("sesuai PRD `asset/`") belum tertulis di PRD `asset/` (GAP-695); spec mengikuti kalimat TC tanpa mengarang langkah UI.
   - TC-FA-LIC-504, TC-FA-LIC-506, dan TC-FA-LIC-503 tidak menyebut cara mengamati kode `QUOTA_EXCEEDED` atau `OK`; spec memakai intercept jaringan seperti TC-FA-LIC-497 sampai TC-FA-LIC-501 (diamati lewat respons API).

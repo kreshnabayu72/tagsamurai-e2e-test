@@ -91,7 +91,7 @@ coverage:
 - Langkah 24 mengulang langkah 20 sampai 23 untuk lima kolom lain.
 - Langkah penghubung (S-03): langkah 1 (hover ikon agar tooltip TC-187 butir e teramati sebelum panel dibuka, 8b.5), langkah 9 (menutup panel), langkah 19 (anchor positif asersi hilangnya kolom, 8b.2), langkah 26 dan 35 (menutup popup tanpa `[Save]`), langkah 27 dan 28 (membuka ulang popup untuk TC-193), langkah 29 (menyiapkan precondition TC-193).
 - TC-189 langkah 1 (buka popup) dipenuhi oleh popup yang masih terbuka dari langkah 11.
-- Pemulihan Setup Column (R-24, 8b.13): spec tidak menyimpan konfigurasi kolom; semua perubahan dibuang dengan ✕ tanpa `[Save]` (langkah 26 dan 35).
+- Pemulihan Setup Column (R-24, 8b.14): spec tidak menyimpan konfigurasi kolom; semua perubahan dibuang dengan ✕ tanpa `[Save]` (langkah 26 dan 35).
 - TC-193 butir a ditulis dua `Verifikasi` (Disabled dengan tooltip pada langkah 31, tetap tercentang pada langkah 32).
 - Temuan untuk QA:
   - TC-189 butir g ("pratinjau langsung sebelum Save") tidak menyebut cara membedakan pratinjau dari tabel tersimpan; spec mengasersi bahwa tabel berubah tanpa klik `[Save]` (langkah 25).

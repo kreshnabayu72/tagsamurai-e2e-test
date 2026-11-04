@@ -21,9 +21,9 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor hook `before`: Total Control (Pre-setup #1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (Rudi Hartono), client PT Sejahtera plan Paid, password dari `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Spec ini tidak membuka UI untuk membaca log; pemicu dan pembacaan memakai klien HTTP dan kemampuan baca jumlah entri.
-- Akun pemicu (token lewat login API, tanpa UI): Read Only #2 `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_RO_PASSWORD`), Manage asset license #4 `manageAssetLicenseHQ_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_MAL_HQ_PASSWORD`), Group Manager #6 `groupManagerHQ_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_GM_HQ_PASSWORD`), role tanpa capability #8 `noCapability_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_NOCAP_PASSWORD`), Total Control #1 (`Spectra.env.FA_TC_PASSWORD`), dan Total Control client toggle OFF #35 `totalControlToggleOff_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_TOGGLEOFF_TC_PASSWORD`). Akun Total Control client hasil downgrade plan Starter (TC-FA-LIC-549) disediakan tim FE (email tidak tertulis di Pre-setup TC). Nama env di atas didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
+- Akun pemicu (token lewat login API, tanpa UI): Read Only #2 `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_RO_PASSWORD`), Manage asset license #4 `manageAssetLicenseHQ_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_MAL_HQ_PASSWORD`), Group Manager #6 `groupManagerHQ_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_GM_HQ_PASSWORD`), role tanpa capability #8 `noCapability_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_NOCAP_PASSWORD`), Total Control #1 (`Spectra.env.FA_TC_PASSWORD`), dan Total Control client toggle OFF #35 `totalControlToggleOff_automated_{namaCompany}@qwertysystem.net` (`Spectra.env.FA_TOGGLEOFF_TC_PASSWORD`). Pada TC-FA-LIC-549 token yang dipakai adalah token Total Control #1 sesudah plan client diturunkan ke Starter lewat fixture BE. Nama env di atas didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
 - Hook suite (sesi API aktor, fixture BE pemulih Pre-setup): dinyatakan sekali di `suite.md`; spec ini merujuknya.
-- Data Pre-setup (hanya dibaca; request ditolak sehingga tidak ada perubahan; fixture BE pemulih memulihkannya di hook `before` dan `after`): hierarki dan kuota #12 (Divisi Logistik beralokasi 500), sesi aktif #14 (sesi Budi Santoso aktif; sesi aktor #1 di dua perangkat), client toggle OFF #35 (Divisi Logistik beralokasi 500 dipertahankan), dan client hasil downgrade plan Starter (fixture downgrade, `Divisi Logistik` beralokasi 500). Last Updated alokasi tidak berubah.
+- Data Pre-setup (hanya dibaca; request ditolak sehingga tidak ada perubahan; fixture BE pemulih memulihkannya di hook `before` dan `after`): hierarki dan kuota #12 (Divisi Logistik beralokasi 500), sesi aktif #14 (sesi Budi Santoso aktif; sesi aktor #1 di dua perangkat), client toggle OFF #35 (Divisi Logistik beralokasi 500 dipertahankan), dan client PT Sejahtera yang diturunkan ke plan Starter lewat fixture BE pada TC-FA-LIC-549 (`Divisi Logistik` beralokasi 500) lalu dikembalikan ke Paid. Last Updated alokasi tidak berubah.
 - Kemampuan teknis:
   - Klien HTTP untuk request langsung ke endpoint Force Logout dan Edit Allocation (endpoint sesuai openapi dan LLD modul, disediakan tim FE).
   - Membaca state sesi dan jumlah entri log lewat fixture BE: Changelog Allocation Quota, Changelog Concurrent User, System Log tiap akun pemicu, dan Activity Log Fixed Asset. Baseline dicatat per TC sebelum request dan asersi memakai selisih terhadap baseline (S-12).
@@ -63,7 +63,7 @@ coverage:
 
 18. Catat jumlah entri Changelog Allocation Quota, Activity Log, dan System Log Rudi Hartono (baseline TC-FA-LIC-453)
 19. Kirim request Edit Allocation dengan nilai `12.5`, `-5`, `abc`, dan `1e3` melalui klien HTTP memakai token akun #1
-20. Verifikasi keempat request ditolak server
+20. Verifikasi keempat request ditolak server dengan respons error 4xx
 21. Verifikasi jumlah entri Changelog Allocation Quota tidak bertambah dari baseline
 22. Verifikasi jumlah entri Activity Log tidak bertambah dari baseline
 23. Verifikasi jumlah entri System Log Rudi Hartono tidak bertambah dari baseline
@@ -72,7 +72,7 @@ coverage:
 
 24. Turunkan plan client ke Starter lewat fixture downgrade (`Divisi Logistik` beralokasi 500)
 25. Catat jumlah entri Changelog Allocation Quota (baseline TC-FA-LIC-549)
-26. Kirim request Edit Allocation `Divisi Logistik` = `600` memakai token Total Control client hasil downgrade
+26. Kirim request Edit Allocation `Divisi Logistik` = `600` memakai token akun #1
 27. Kirim request Edit `Divisi Logistik` dengan nilai kosong (Remove Allocation) memakai token yang sama
 28. Verifikasi kedua request mendapat respons `403 Forbidden`
 29. Verifikasi jumlah entri Changelog Allocation Quota tidak bertambah dari baseline
@@ -91,12 +91,10 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC.
-- Pembagian TC lintas spec: asersi status respons `403` dan state data (sesi tetap aktif, Allocated Quota tetap 500) pada TC-FA-LIC-440, 441, 445, 453, 549, dan 614 ada di spec kelas a masing-masing (K-1); spec ini mengasersi pemicu `403` hanya sebagai anchor absence dan memuat klausa absence log (S-05, bagian 8b butir 1). Spec asal mencatat rujukan ke spec ini di `## Notes`.
+- Pembagian TC lintas spec: asersi status respons `403` dan state data (sesi tetap aktif, Allocated Quota tetap 500) pada TC-FA-LIC-440, TC-FA-LIC-441, TC-FA-LIC-445, TC-FA-LIC-453, TC-FA-LIC-549, dan TC-FA-LIC-614 ada di spec kelas a masing-masing (K-1); spec ini mengasersi pemicu `403` hanya sebagai anchor absence dan memuat klausa absence log (S-05, bagian 8b butir 1). Spec asal mencatat rujukan ke spec ini di `## Notes`.
 - Langkah penghubung (tanpa `Verifikasi`): langkah 1, 7, 13, 18, 25, dan 31 mencatat baseline; langkah 24 dan 30 menyetel dan memulihkan plan (S-09). Asersi respons dan jumlah entri tidak melewati browser, sehingga tidak ada asersi tampilan (bagian 8b butir 1).
 - Anchor absence: respons penolakan (langkah 3, 9, 15, 20, 28, 34) membuktikan request diproses server sebelum asersi jumlah entri, dan baseline per surface menjadi pembanding agregat (bagian 8b butir 2).
 - Spec di atas 35 langkah (37 langkah): alasan dipertahankan, seluruh blok adalah absence log atas request langsung yang ditolak, dengan akun dan baseline masing-masing, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
-  - TC-FA-LIC-440, 441, 445, dan 453 menyebut "tidak ada entri log" tanpa menyebut surface; spec memeriksa Changelog yang relevan, Activity Log, dan System Log akun pemicu. TC-FA-LIC-445 hanya menyebut System Log dan Activity Log; TC-FA-LIC-549 hanya Changelog Allocation Quota pada langkahnya; TC-FA-LIC-614 menyebut ketiga surface.
-  - TC-FA-LIC-453 tidak menyebut status respons selain "ditolak server"; spec mengasersi penolakan tanpa kode status.
-  - TC-FA-LIC-549 tidak menyebut akun Total Control client hasil downgrade (email tidak tertulis di Pre-setup TC).
+  - TC-FA-LIC-549 butir c ("Tidak ada entri log baru") tidak menyebut surface; spec memeriksa Changelog Allocation Quota sesuai langkah 3 TC.
   - TC-FA-LIC-135, 136, dan 175 memuat klausa absence log pada alur fungsional (bukan request langsung) dan tidak ada di spec ini.

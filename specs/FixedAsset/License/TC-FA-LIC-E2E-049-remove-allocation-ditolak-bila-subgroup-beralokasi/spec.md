@@ -73,7 +73,7 @@ coverage:
 
 ### TC-FA-LIC-162: Remove diizinkan bila child tidak punya baris alokasi walau punya pemakaian
 
-28. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
+28. Jalankan fixture BE pemulih Pre-setup #12 dan penyetel Gudang A tanpa alokasi (Used 100) di bawah Divisi Logistik beralokasi 500 hingga tersimpan
 29. Muat ulang halaman License, lalu klik tab `Allocation Quota`
 30. Klik node `Kantor Pusat` di Sidebar
 31. Klik tombol ikon `[Edit]` pada baris `Divisi Logistik`

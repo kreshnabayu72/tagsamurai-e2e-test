@@ -20,7 +20,7 @@ coverage:
 
 | Role | Akun | Env password | TC |
 |---|---|---|---|
-| Manage accounting – Update + Delete (akun pertama, login di hook `before`) | `manageAccountingUpdateDelete_automated_{namaCompany}@qwertysystem.net` (gabungan huruf; asumsi pre-setup, bukan data PRD) | `Spectra.env.FA_MACC_UPDDEL_PASSWORD` (belum terdaftar di `spectra.config.ts` dan `.env.example`; perlu didaftarkan tim FE) | TC-FA-COA-363 |
+| Manage accounting – Update + Delete (akun pertama, login di hook `before`) | `manageAccountingUpdateDelete_automated_{namaCompany}@qwertysystem.net` (gabungan huruf; asumsi pre-setup, bukan data PRD) | `Spectra.env.FA_MACC_UPDDEL_PASSWORD` (terdaftar di `spectra.config.ts` dan `.env.example`) | TC-FA-COA-363 |
 | Default User (Total Control permanen) | `defaultUserFixedAsset_automated_{namaCompany}@qwertysystem.net` (asumsi pre-setup, bukan data PRD) | `Spectra.env.FA_DU_PASSWORD` (sudah terdaftar dengan keterangan "Default User (#57)"; kesamaan akun dengan `defaultUserFixedAsset_automated_{namaCompany}` perlu dikonfirmasi tim FE) | TC-FA-COA-364 |
 
 - Login akun pertama (Manage accounting – Update + Delete) di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` spec mengembalikan sesi ke akun default suite (Total Control, `Spectra.env.FA_TC_PASSWORD`). Password tidak ditulis di spec atau fixture.
@@ -28,7 +28,7 @@ coverage:
 - Kemampuan teknis: klien HTTP untuk permintaan langsung Create Account (TC-FA-COA-363) dengan sesi API akun Manage accounting – Update + Delete (butir "Sesi API aktor" di `suite.md`). Endpoint Create Account tidak tertulis di TC; disediakan tim FE/BE (S-13). Spec hanya mengasersi status respons (bagian 8b butir 1).
 - Flag Guided Tooltip halaman Chart of Accounts disetel true oleh hook suite `before` untuk akun aktor yang dipakai, termasuk kedua akun di tabel (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed dan pemulihan akun Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
-- Identitas data Pre-setup dibaca dari `fixtures/settings-chart-of-accounts.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
+- Identitas data Pre-setup dibaca dari `Fixture.settingsChartOfAccounts.<kunci>` (disediakan tim FE, nama kunci ditetapkan tim FE).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -78,7 +78,7 @@ coverage:
 - Sumber: `fixed-asset/settings-chart-of-accounts/TestCases/tc-settings-chart-of-accounts.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Mode: FE+BE.
 - Role Matrix visibilitas (bagian 3a): matriks elemen per role boleh memuat polaritas Show dan Hidden/Disabled dalam satu spec. Spec ditulis per blok role karena ganti akun menuntut Step eksplisit (akun pertama login di hook `before`) dan langkah per role berbeda (TC-FA-COA-363 memuat permintaan langsung; TC-FA-COA-364 membuka modal Add Account). Satu spec memuat dua role karena daftar elemen yang diperiksa sama.
-- Langkah penghubung (S-03): langkah 1 dan 20 (Search untuk menampilkan baris P1; R-16, bagian 8b butir 12); langkah 4, 7, 30, dan 32 (menyiapkan seleksi lalu `Unselect All`, S-09); langkah 9, 11, 24, dan 26 (membuka dan menutup menu ⋯); langkah 14 dan 34 (menutup Search dan mereset tabel, S-09); langkah 15 sampai 17 (ganti akun eksplisit, S-07); langkah 29 (menutup modal Add Account yang tidak diisi, form tidak dirty sehingga dialog `Unsaved Changes` tidak diharapkan).
+- Langkah penghubung (S-03): langkah 1 dan 20 (Search untuk menampilkan baris P1; R-16, bagian 8b butir 13); langkah 4, 7, 30, dan 32 (menyiapkan seleksi lalu `Unselect All`, S-09); langkah 9, 11, 24, dan 26 (membuka dan menutup menu ⋯); langkah 14 dan 34 (menutup Search dan mereset tabel, S-09); langkah 15 sampai 17 (ganti akun eksplisit, S-07); langkah 29 (menutup modal Add Account yang tidak diisi, form tidak dirty sehingga dialog `Unsaved Changes` tidak diharapkan).
 - Asersi tambahan di luar Expected TC (S-03): absence Hidden pada langkah 2 memakai langkah 3 (Switch Status Show) sebagai anchor permukaan (bagian 8b butir 2); langkah 33 meringkas Expected d TC-FA-COA-364 ("Tidak ada elemen Hidden atau Disabled") atas elemen yang diasersi langkah 18 sampai 31.
 - Permintaan langsung (langkah 12 dan 13) hanya mengasersi status respons; tampilan FE untuk respons yang sama tidak diasersi (bagian 8b butir 1). Langkah 12 menyebut sesi API akun (butir "Sesi API aktor" di `suite.md`).
 - Pembagian TC lintas spec: TC-FA-COA-10 dan TC-FA-COA-11 ada di spec 005.

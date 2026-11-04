@@ -21,7 +21,8 @@ coverage:
 - Akun: Total Control Pre-setup #1 `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (Rudi Hartono), password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Data Pre-setup #26 (identitas dan nilai dirujuk lewat `Fixture.fixedAssetLicense.*`, berkas fixture belum ada, disiapkan tim FE; nilai pada langkah dan tabel di bawah adalah nilai fixture itu):
-  - Hook `before` menyiapkan fixture ini: tepat lima sesi cuplikan Rudi Hartono, Dewi Lestari, Andi Pratama, Siti Rahma, Budi Santoso pada client Paid Pre-setup #1; Online Users 5/25; seluruh Login Time dan Last Activity bertanggal 29/09/26; Andi Pratama Pending Activation dengan Position `—`; Dewi Lestari Temporary User Yes sampai 31/12/26 (Temporary Until); lainnya Temporary User No. Format tanggal General Settings `dd/MM/yy`. Kolom Curated (`Activation Status`, `Temporary User`, `Temporary Until`, `TAG`) tetap Hidden secara default dan tidak ditampilkan spec ini.
+  - Hook `before` menyiapkan fixture ini: tepat lima sesi cuplikan Rudi Hartono, Dewi Lestari, Andi Pratama, Siti Rahma, Budi Santoso pada client Paid Pre-setup #1; Online Users 5/25; seluruh Login Time dan Last Activity bertanggal 29/09/26; Andi Pratama Pending Activation dengan Position `—`; Dewi Lestari Temporary User Yes sampai 31/12/26 (Temporary Until); lainnya Temporary User No. Kolom Curated (`Activation Status`, `Temporary User`, `Temporary Until`, `TAG`) tetap Hidden secara default dan tidak ditampilkan spec ini.
+- Date Format General Settings `dd/MM/yy` (Pre-setup #1; spec ini tidak mengubahnya); dipakai asersi teks tanggal terpilih pada langkah 6.
 - Data Dinamis: tidak ada. Spec ini hanya membaca tabel.
 - Tabel "Filter date range" (parameter langkah 3 sampai 9):
 
@@ -66,22 +67,23 @@ coverage:
 
 ### TC-FA-LIC-281: Kolom Temporary Until dan nilai kosong disaring keluar saat filter dipakai
 
-22. Pilih `Position` = `Staff Gudang`, klik `[Apply]`
-23. Verifikasi tabel menampilkan hanya: Rudi Hartono
-24. Verifikasi Andi Pratama (Position `—`) tersaring keluar dan tidak tampil
-25. Buka dropdown `Position`
-26. Verifikasi dropdown `Position` memuat opsi `Admin Aset`, `Staff Gudang`, `Staff Keuangan`, `Supervisor Gudang`
-27. Verifikasi dropdown `Position` tidak memiliki opsi untuk nilai kosong
-28. Verifikasi badge titik tampil pada ikon Filter selama filter ter-Apply
-29. Klik `[Clear Field]`, lalu klik `[Apply]`
-30. Verifikasi badge titik pada ikon Filter hilang
-31. Pilih `Temporary Until` rentang 01/01/26 sampai 31/12/26, klik `[Apply]`
-32. Verifikasi tabel menampilkan: Dewi Lestari
-33. Klik `[Clear Field]`, lalu klik `[Apply]`
+22. Buka dropdown `Position`
+23. Verifikasi dropdown `Position` memuat opsi `Admin Aset`, `Staff Gudang`, `Staff Keuangan`, `Supervisor Gudang`
+24. Verifikasi dropdown `Position` tidak memiliki opsi untuk nilai kosong
+25. Tutup dropdown `Position`
+26. Pilih `Position` = `Staff Gudang`, klik `[Apply]`
+27. Verifikasi tabel menampilkan hanya: Rudi Hartono
+28. Verifikasi Andi Pratama (Position `—`) tersaring keluar dan tidak tampil
+29. Verifikasi badge titik tampil pada ikon Filter selama filter ter-Apply
+30. Klik `[Clear Field]`, lalu klik `[Apply]`
+31. Verifikasi badge titik pada ikon Filter hilang
+32. Pilih `Temporary Until` rentang 01/01/26 sampai 31/12/26, klik `[Apply]`
+33. Verifikasi tabel menampilkan: Dewi Lestari
+34. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: `[Clear Field]` lalu `[Apply]` di akhir tiap blok (S-09).
-- Asersi pembanding di luar Expected TC (S-03): langkah 26 memverifikasi opsi `Admin Aset`, `Staff Gudang`, `Staff Keuangan`, `Supervisor Gudang` pada dropdown `Position` sebagai data pembanding sebelum asersi absence opsi nilai kosong pada langkah 27; opsi diturunkan dari TC-FA-LIC-274 butir a (Pre-setup #26).
-- Blok ulang: langkah 3 sampai 9 dijalankan 2 kali; setelah ekspansi spec ini mendekati sekitar 40 langkah. Alasan: seluruh blok adalah Filter satu tabel dengan satu dataset Pre-setup #26 dan satu kelas harness, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Temuan untuk QA: TC-FA-LIC-280 langkah 4 menerapkan Temporary User `Yes` tanpa menyebut pembersihan filter Activation Status sebelumnya, padahal Expected c hanya menyebut Dewi Lestari; spec membersihkan filter sebelum Temporary User `Yes`. TC-FA-LIC-279 mengulang cakupan TC-FA-LIC-278 pada field Login Time (rentang satu hari yang sama); keduanya tetap diasersi sesuai TC. Pada TC-FA-LIC-278 seluruh lima baris tampil pada filter 29/09/26 sehingga rentang tidak membuktikan penyaringan di luar rentang; TC tidak menyediakan baris pembanding di luar tanggal itu. TC-FA-LIC-281 butir c menyebut dropdown `Position` tidak memiliki opsi untuk nilai kosong tanpa menyebut opsi pembanding; spec memakai opsi dari TC-FA-LIC-274 butir a.
+- Langkah penghubung tanpa `Verifikasi`: `[Clear Field]` lalu `[Apply]` di akhir tiap blok (S-09); langkah 25 menutup dropdown `Position` sebelum filter diterapkan (TC-FA-LIC-281 langkah 2: dropdown dibuka, diamati, lalu ditutup sebelum filter diterapkan pada langkah 3).
+- Langkah 23 (opsi `Admin Aset`, `Staff Gudang`, `Staff Keuangan`, `Supervisor Gudang` pada dropdown `Position`) berasal dari Expected c TC-FA-LIC-281 dan menjadi data pembanding sebelum asersi absence opsi nilai kosong pada langkah 24 (8b.2).
+- Blok ulang: langkah 3 sampai 9 dijalankan 2 kali; setelah ekspansi spec ini mendekati sekitar 41 langkah. Alasan: seluruh blok adalah Filter satu tabel dengan satu dataset Pre-setup #26 dan satu kelas harness, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Temuan untuk QA: TC-FA-LIC-280 langkah 4 menerapkan Temporary User `Yes` tanpa menyebut pembersihan filter Activation Status sebelumnya, padahal Expected c hanya menyebut Dewi Lestari; spec membersihkan filter sebelum Temporary User `Yes`. TC-FA-LIC-279 mengulang cakupan TC-FA-LIC-278 pada field Login Time (rentang satu hari yang sama); keduanya tetap diasersi sesuai TC. Pada TC-FA-LIC-278 seluruh lima baris tampil pada filter 29/09/26 sehingga rentang tidak membuktikan penyaringan di luar rentang; TC tidak menyediakan baris pembanding di luar tanggal itu.

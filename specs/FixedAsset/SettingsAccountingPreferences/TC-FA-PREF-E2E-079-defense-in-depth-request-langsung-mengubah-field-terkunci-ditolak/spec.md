@@ -87,7 +87,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 4 dan 11 (membuka kembali halaman agar nilai tersimpan dibaca dari server, aksi TC), langkah 15 (seed ulang penguncian karena seri fixture berganti dari PB-7a ke PC-2).
 - TC-521 menyimpan In-service Date Source "Manual by Accounting"; Post Condition ("hanya In-service Date Source yang berubah") diasersi pada langkah 33 sampai 35. Pemulihan nilai awal oleh hook `after` (R-08).
 - Temuan untuk QA:
-  - TC-FA-PREF-249 dan 250 tidak mencatat jumlah baris log pada Precondition padahal Post Condition meminta "tidak ada entri log baru"; spec menambah pencatatan dan penghitungan ulang (S-12).
   - TC-FA-PREF-249, 250, 519, 520, dan 521 hanya menyebut "server menolak permintaan" tanpa kode respons atau pesan; spec tidak menetapkan angka status.
   - TC-FA-PREF-521 tidak mensyaratkan pencatatan jumlah baris log pada Expected; spec tidak menambah asersi log untuk TC itu.
   - TC-FA-PREF-249 dan 250 membaca ulang lewat tab Preferences (UI), sedangkan TC-519 sampai 521 lewat "baca ulang"; spec memakai pembacaan API untuk 519 sampai 521.

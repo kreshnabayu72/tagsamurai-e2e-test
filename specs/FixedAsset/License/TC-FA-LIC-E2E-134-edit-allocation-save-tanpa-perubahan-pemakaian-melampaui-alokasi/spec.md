@@ -27,8 +27,9 @@ coverage:
 - Suite berjalan serial (`parallel: false`): hierarki dan alokasi grup dipakai bersama dan diubah spec ini; hook `after` memulihkannya.
 - Data: Pre-setup #12 dengan Divisi IT beralokasi 100, Used by This Group 110, Reserved by This Group 0, tanpa subgroup (pemakaian melampaui alokasi), sehingga Minimum Quota 110; diatur fixture BE penyetel pada langkah yang disebut.
 - Pengecualian S-06 `[KEPUTUSAN 2026-10-30]`: target aksi tulis adalah grup Pre-setup #12 bernama literal karena hierarki dan kuotanya tidak dapat dimiliki spec (nama, urutan, dan nilai kuota menjadi objek asersi). Pemulihan ke Pre-setup #12 dijamin fixture BE pemulih yang disediakan tim FE/BE (dinyatakan di `suite.md`), dijalankan di hook `before` dan `after` serta sebagai langkah penghubung antar blok. Efek: Last Updated baris alokasi, entri `Changelog: Allocation Quota`, System Log aktor, dan Activity Log bertambah. Fixture `Fixture.fixedAssetLicense` belum ada dan disediakan tim FE.
-- Kemampuan teknis: Intercept jaringan mengamati respons permintaan Save (status).
-- Kemampuan teknis: Kemampuan membaca jumlah entri `Changelog: Allocation Quota`, System Log aktor, dan Activity Log sebagai baseline (disediakan tim FE/BE; audit trail permanen sehingga asersi memakai selisih jumlah entri, S-12). Modified By tidak diasersi.
+- Kemampuan teknis: Intercept jaringan mengamati respons permintaan Save (status) pada langkah 9 dan 12.
+- Kemampuan teknis: Kemampuan membaca jumlah entri `Changelog: Allocation Quota`, System Log aktor, dan Activity Log sebagai baseline (langkah 4; disediakan tim FE/BE; audit trail permanen sehingga asersi memakai selisih jumlah entri pada langkah 16, 21, dan 24, S-12). Modified By tidak diasersi.
+- Jalur menu: Changelog lewat License > Allocation Quota > ikon Changelog pada toolbar; System Log aktor lewat Global Settings > User > Detail Rudi Hartono > Tab System Log; Activity Log lewat Fixed Asset > Reports & Logs > Activity Log.
 
 ## Test Steps
 
@@ -47,23 +48,31 @@ coverage:
 11. Verifikasi toast netral `No changes to save.` (bukan toast sukses)
 12. Verifikasi respons permintaan `200 OK`
 13. Verifikasi Allocated Quota baris `Divisi IT` tetap `100`
-14. Periksa `Changelog: Allocation Quota` (ikon Changelog pada toolbar), System Log aktor, dan Activity Log
-15. Verifikasi entri lama yang sudah ada sebelum aksi tampil di `Changelog: Allocation Quota`, System Log aktor, dan Activity Log
-16. Verifikasi tidak ada entri baru di `Changelog: Allocation Quota`, System Log aktor, dan Activity Log (jumlah entri sama dengan baseline)
+14. Klik ikon Changelog pada toolbar
+15. Verifikasi entri lama yang sudah ada sebelum aksi tampil di `Changelog: Allocation Quota`
+16. Verifikasi tidak ada entri baru di `Changelog: Allocation Quota` (jumlah entri sama dengan baseline)
 17. Tutup modal `Changelog: Allocation Quota`
-18. Klik tombol ikon `[Edit]` pada baris `Divisi IT`
-19. Ubah nilai menjadi `105`
-20. Pindahkan fokus keluar dari field (blur)
-21. Verifikasi pesan inline V-FALIC-01 tampil: `Cannot set quota below used, reserved, and subgroup-allocated quota (110).`
-22. Klik icon `[×]`
-23. Verifikasi dialog `Unsaved Changes` dengan teks `You have unsaved changes. Are you sure you want to leave?` dan tombol `[Cancel]` dan `[Leave]`
-24. Klik `[Leave]`
+18. Buka Global Settings > User, ketik Search `Rudi Hartono`, tekan Enter
+19. Klik Name `Rudi Hartono`, buka Tab System Log
+20. Verifikasi entri lama yang sudah ada sebelum aksi tampil di System Log aktor
+21. Verifikasi tidak ada entri baru di System Log aktor (jumlah entri sama dengan baseline)
+22. Buka Fixed Asset > Reports & Logs > Activity Log
+23. Verifikasi entri lama yang sudah ada sebelum aksi tampil di Activity Log
+24. Verifikasi tidak ada entri baru di Activity Log (jumlah entri sama dengan baseline)
+25. Buka License > Allocation Quota, klik node `Kantor Pusat` di Sidebar
+26. Klik tombol ikon `[Edit]` pada baris `Divisi IT`
+27. Ubah nilai menjadi `105`
+28. Pindahkan fokus keluar dari field (blur)
+29. Verifikasi pesan inline V-FALIC-01 tampil: `Cannot set quota below used, reserved, and subgroup-allocated quota (110).`
+30. Klik icon `[×]`
+31. Verifikasi dialog `Unsaved Changes` dengan teks `You have unsaved changes. Are you sure you want to leave?` dan tombol `[Cancel]` dan `[Leave]`
+32. Klik `[Leave]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): fixture BE pemulih dan penyetel, muat ulang halaman, dan klik tab menyiapkan state; `Periksa ...` membuka surface log untuk membaca jumlah entri; menutup modal Changelog dan modal dirty (`[×]`, dialog `Unsaved Changes`, `[Leave]`, S-08).
-- Anchor absence entri log: toast netral `No changes to save.` (langkah 11), baseline jumlah entri dicatat sebelum aksi (langkah 4), dan entri lama tampil di ketiga surface (langkah 15) sebelum asersi jumlah entri sama dengan baseline (langkah 16) (S-12, bagian 8b butir 2).
-- Asersi "tidak ada entri baru" pada langkah 16 berupa asersi jumlah dengan baseline langkah 4 (jumlah entri sama), bukan asersi absence kelas g (bagian 3 prinsip 13g, S-12).
+- Langkah penghubung (S-03): fixture BE pemulih dan penyetel, muat ulang halaman, dan klik tab menyiapkan state; langkah 14, 18 sampai 19, dan 22 membuka satu surface log per kali (Changelog, System Log aktor, Activity Log) untuk membaca jumlah entri, dengan langkah 18 dan 19 mencari baris `Rudi Hartono` lewat Search sebelum membuka Detail (R-16, bagian 8b butir 13); langkah 17 menutup modal Changelog; langkah 25 kembali ke License > Allocation Quota dan node `Kantor Pusat` sebelum `[Edit]` pada `Divisi IT` (S-14); modal dirty ditutup deterministik (`[×]`, dialog `Unsaved Changes`, `[Leave]`, S-08).
+- Anchor absence entri log: toast netral `No changes to save.` (langkah 11), baseline jumlah entri dicatat sebelum aksi (langkah 4), dan entri lama tampil di tiap surface (langkah 15, 20, dan 23) sebelum asersi jumlah entri sama dengan baseline (langkah 16, 21, dan 24) (S-12, bagian 8b butir 2).
+- Asersi "tidak ada entri baru" pada langkah 16, 21, dan 24 berupa asersi jumlah dengan baseline langkah 4 (jumlah entri sama), bukan asersi absence kelas g (bagian 3 prinsip 13g, S-12).
 - Temuan untuk QA:
   - TC-FA-LIC-598: klausa `nol entri baru` di tiga surface log ditulis di spec ini dengan baseline; belum ada spec absence (kelas g) yang memuat aksi nyata untuk TC ini (S-05).

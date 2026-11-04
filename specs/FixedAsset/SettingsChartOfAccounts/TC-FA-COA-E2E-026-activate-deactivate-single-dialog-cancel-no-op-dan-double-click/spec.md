@@ -27,6 +27,7 @@ coverage:
   | P84 | `CAP-8214 – Capitalization Clearing – Double Deactivate A` | Active, Used By 0; sekali pakai, dinonaktifkan | TC-285 |
   | P85 | `CAP-8215 – Capitalization Clearing – Double Deactivate B` | Active, Used By 0; sekali pakai, dinonaktifkan | TC-285 |
 
+- Pengecualian A-18 (butir "Data bersama" di `suite.md`): akun sekali pakai P48, P84, dan P85 diubah statusnya spec ini dan dipakai spec ini saja. Seed idempotent dan pemulihan ke kondisi awal (termasuk status dan Last Updated) dijalankan fixture backend (disediakan tim FE/BE) di hook `before` dan `after` spec ini; suite berjalan serial. P3 hanya dibaca.
 - Tabel akun memuat lebih dari satu halaman (ukuran halaman default 10); baris target dibuka lewat Search.
 - Flag Guided Tooltip halaman Chart of Accounts disetel true oleh hook suite `before` (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed akun Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
@@ -64,6 +65,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung (S-03, R-16): Search Account Code (langkah 1, 7) atau nama (langkah 12) untuk membuka baris target; langkah 12 menyaring tepat P84 dan P85; "Tunggu toast lama hilang otomatis" (langkah 13) sebelum hitungan toast.
+- `A-18`: P48 (TC-47), P84 dan P85 (TC-285) menjadi target ubah status sekali pakai; syarat A-18 dinyatakan di `## Prerequisites`.
 - Asersi tidak ada pencatatan atau log tidak ada di spec ini (S-05).
 - Temuan untuk QA:
   - Post Condition TC-47 (log L-03 di Changelog, System Log, Activity Log; dampak ke modul lain) dan TC-285 (satu entri L-03 per akun per surface) tidak punya langkah observasi di TC sehingga tidak diasersi.

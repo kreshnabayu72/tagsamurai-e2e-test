@@ -25,12 +25,12 @@ coverage:
 
   | Company | Plan | Total Control | TC |
   |---|---|---|---|
-  | PA-14 | Starter, modul akuntansi dan Preferences tersimpan | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` | TC-FA-PREF-113, TC-FA-PREF-114 |
-  | PB-12 | Starter | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` | TC-FA-PREF-277 |
-  | PC-11 | Starter (sebelumnya Growth dengan Preferences terisi) | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` | TC-FA-PREF-569, TC-FA-PREF-570 |
+  | PA-14 | Starter, modul akuntansi dan Preferences tersimpan | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PA_PASSWORD` | TC-FA-PREF-113, TC-FA-PREF-114 |
+  | PB-12 | Starter | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PB_PASSWORD` | TC-FA-PREF-277 |
+  | PC-11 | Starter (sebelumnya Growth dengan Preferences terisi) | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PC_PASSWORD` | TC-FA-PREF-569, TC-FA-PREF-570 |
 
-  `{namaCompany}` ketiga company belum tertulis di TC; disediakan tim FE (lihat Temuan untuk QA). Password: `Spectra.env.FA_TC_PASSWORD`.
-- Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture. Nama diusulkan mengikuti `<APP>_<ROLE>_PASSWORD` (perlu dikonfirmasi tim FE).
+  `{namaCompany}` ketiga company belum tertulis di TC; disediakan tim FE (lihat Temuan untuk QA). Password per company lewat env var terpisah (kolom Total Control).
+- Env var `FA_TC_PA_PASSWORD` (PA-14), `FA_TC_PB_PASSWORD` (PB-12), dan `FA_TC_PC_PASSWORD` (PC-11) belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture. Nama diusulkan mengikuti skema `FA_<ROLE>_PASSWORD` dengan akhiran company (perlu dikonfirmasi tim FE).
 - Data: company plan Starter PA-14, PB-12, dan PC-11 hasil seed (butir "Seed dan pemulihan lewat API" di `suite.md`, disediakan tim FE/BE). Spec hanya membaca. URL langsung: Settings > Accounting > Preferences.
 - State yang diubah spec: tidak ada.
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true untuk setiap akun aktor yang dipakai dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
@@ -55,14 +55,14 @@ coverage:
 ### TC-FA-PREF-277: Entri Accounting Disabled dengan chip Upgrade untuk company PB-12
 
 8. Logout dari akun Total Control company PA-14
-9. Login sebagai Total Control company PB-12 (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PASSWORD`)
+9. Login sebagai Total Control company PB-12 (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PB_PASSWORD`)
 10. Verifikasi entri sidebar Accounting Disabled dengan chip "Upgrade"
 11. Verifikasi halaman Settings > Accounting dan tab Preferences tidak terjangkau lewat navigasi
 
 ### TC-FA-PREF-569: Entri Accounting Disabled dengan chip Upgrade untuk company PC-11
 
 12. Logout dari akun Total Control company PB-12
-13. Login sebagai Total Control company PC-11 (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PASSWORD`)
+13. Login sebagai Total Control company PC-11 (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PC_PASSWORD`)
 14. Verifikasi entri sidebar Accounting Disabled dengan chip "Upgrade"
 15. Verifikasi halaman Settings > Accounting dan tab Preferences tidak terjangkau lewat navigasi
 
@@ -77,6 +77,7 @@ coverage:
 
 - Kelas h (bagian 3 prinsip 13h): spec membaca state tenant (plan Starter) tanpa mengubah plan; perubahan plan ada di spec lain.
 - Langkah penghubung (S-03): langkah 8, 9, 12, 13 (ganti akun). Langkah 5 dan 17 (sidebar menampilkan entri menu lain) adalah anchor positif asersi absence form dan nilai (8b.2) dan tidak ada di Expected TC.
+- Nama env password dipisah per company karena tiap company adalah akun berbeda; bila tim FE menetapkan satu password Total Control lintas company, ketiga nama dapat disatukan.
 - Asersi "tidak terjangkau lewat navigasi" (langkah 2, 11, 15) memakai entri sidebar Accounting Disabled (langkah sebelumnya) sebagai anchor permukaan.
 - Temuan untuk QA:
   - Post Condition TC-FA-PREF-277 ("Nilai Preferences yang sudah tersimpan tetap sama dan tidak dihapus") tidak punya langkah observasi di TC sehingga tidak diasersi (S-01).

@@ -43,53 +43,55 @@ coverage:
 3. Klik tombol ikon `[Edit]` pada baris `Divisi Keuangan`
 4. Isi New Allocated Quota `0`
 5. Klik `[Save]`
-6. Verifikasi toast sukses `Success, group license quota updated.`
-7. Verifikasi Allocated Quota baris `Divisi Keuangan` `0` (bukan `—`) dan Remaining Quota `0`
-8. Verifikasi nilai `0` diperlakukan sebagai alokasi, bukan Remove Allocation: toast sukses bukan `Success, group license allocation removed.`
+6. Verifikasi tidak ada pesan error pada modal
+7. Verifikasi toast sukses `Success, group license quota updated.`
+8. Verifikasi Allocated Quota baris `Divisi Keuangan` `0` (bukan `—`) dan Remaining Quota `0`
+9. Verifikasi nilai `0` diperlakukan sebagai alokasi, bukan Remove Allocation: toast sukses bukan `Success, group license allocation removed.`
 
 ### TC-FA-LIC-123: Nilai tepat Minimum Quota (450) diterima
 
-9. Klik tombol ikon `[Edit]` pada baris `Divisi Logistik`
-10. Isi New Allocated Quota `450`
-11. Klik `[Save]`
-12. Verifikasi toast sukses `Success, group license quota updated.`
-13. Verifikasi Allocated Quota baris `Divisi Logistik` `450` dan Remaining Quota `0`
+10. Klik tombol ikon `[Edit]` pada baris `Divisi Logistik`
+11. Isi New Allocated Quota `450`
+12. Klik `[Save]`
+13. Verifikasi tidak ada pesan error pada modal
+14. Verifikasi toast sukses `Success, group license quota updated.`
+15. Verifikasi Allocated Quota baris `Divisi Logistik` `450` dan Remaining Quota `0`
 
 ### TC-FA-LIC-127: Nilai tepat Maximum Quota (700) diterima
 
-14. Klik tombol ikon `[Edit]` pada baris `Divisi Logistik`
-15. Isi New Allocated Quota `700`
-16. Klik `[Save]`
-17. Verifikasi toast sukses `Success, group license quota updated.`
-18. Verifikasi Allocated Quota baris `Divisi Logistik` `700`
-19. Verifikasi Group Quota Summary Kantor Pusat: Remaining `0`
+16. Klik tombol ikon `[Edit]` pada baris `Divisi Logistik`
+17. Isi New Allocated Quota `700`
+18. Klik `[Save]`
+19. Verifikasi toast sukses `Success, group license quota updated.`
+20. Verifikasi Allocated Quota baris `Divisi Logistik` `700`
+21. Verifikasi Group Quota Summary Kantor Pusat: Remaining `0`
 
 ### TC-FA-LIC-146: Enter pada input kuota menyimpan
 
-20. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
-21. Muat ulang halaman License, lalu klik tab `Allocation Quota`
-22. Klik node `Kantor Pusat` di Sidebar
-23. Klik tombol ikon `[Edit]` pada baris `Divisi IT`
-24. Isi New Allocated Quota `120`
-25. Tekan Enter saat fokus di input
-26. Verifikasi form tersimpan dengan toast `Success, group license quota updated.`
+22. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
+23. Muat ulang halaman License, lalu klik tab `Allocation Quota`
+24. Klik node `Kantor Pusat` di Sidebar
+25. Klik tombol ikon `[Edit]` pada baris `Divisi IT`
+26. Isi New Allocated Quota `120`
+27. Tekan Enter saat fokus di input
+28. Verifikasi form tersimpan dengan toast `Success, group license quota updated.`
 
 ### TC-FA-LIC-159: Double-click Save hanya memproses satu request
 
-27. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
-28. Muat ulang halaman License, lalu klik tab `Allocation Quota`
-29. Klik node `Kantor Pusat` di Sidebar
-30. Klik tombol ikon `[Edit]` pada baris `Divisi IT`
-31. Catat jumlah entri `Changelog: Allocation Quota`, System Log aktor, dan Activity Log sebagai baseline
-32. Pasang intercept jaringan yang menghitung request Save
-33. Isi New Allocated Quota `120`
-34. Klik `[Save]` dua kali cepat
-35. Verifikasi hanya satu request dikirim
-36. Verifikasi satu toast sukses `Success, group license quota updated.`
-37. Klik ikon Changelog pada toolbar
-38. Verifikasi `Changelog: Allocation Quota` bertambah tepat satu entri dibanding baseline
-39. Tutup modal `Changelog: Allocation Quota`
-40. Lepas intercept jaringan
+29. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
+30. Muat ulang halaman License, lalu klik tab `Allocation Quota`
+31. Klik node `Kantor Pusat` di Sidebar
+32. Klik tombol ikon `[Edit]` pada baris `Divisi IT`
+33. Catat jumlah entri `Changelog: Allocation Quota`, System Log aktor, dan Activity Log sebagai baseline
+34. Pasang intercept jaringan yang menghitung request Save
+35. Isi New Allocated Quota `120`
+36. Klik `[Save]` dua kali cepat
+37. Verifikasi hanya satu request dikirim
+38. Verifikasi satu toast sukses `Success, group license quota updated.`
+39. Klik ikon Changelog pada toolbar
+40. Verifikasi `Changelog: Allocation Quota` bertambah tepat satu entri dibanding baseline
+41. Tutup modal `Changelog: Allocation Quota`
+42. Lepas intercept jaringan
 
 ## Notes
 
@@ -99,4 +101,4 @@ coverage:
 - TC-FA-LIC-122 klausa c (`diperlakukan sebagai alokasi, bukan Remove Allocation`) diasersi lewat teks toast yang berbeda dari toast Remove Allocation.
 - Temuan untuk QA:
   - TC-FA-LIC-159: `tepat satu entri baru` hanya diasersi di `Changelog: Allocation Quota`; TC tidak menyebut System Log dan Activity Log pada klausa itu.
-- Alasan di atas sekitar 35 langkah (40 langkah): semua blok satu topik (nilai batas yang diterima Edit Allocation) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah tambahan hanya pemulihan fixture dan muat ulang.
+- Alasan di atas sekitar 35 langkah (42 langkah): semua blok satu topik (nilai batas yang diterima Edit Allocation) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah tambahan hanya pemulihan fixture dan muat ulang.

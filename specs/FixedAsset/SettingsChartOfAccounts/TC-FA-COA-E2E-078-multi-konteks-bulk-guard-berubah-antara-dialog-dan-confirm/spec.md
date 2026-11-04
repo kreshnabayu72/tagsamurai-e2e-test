@@ -21,20 +21,21 @@ coverage:
 - Sesi API aktor: pelaku kedua (sesi B pada TC) hanya memicu perubahan state (ekspor akun, membuat Asset Class pemakai akun) dan memakai sesi API sesuai butir "Sesi API aktor" di `suite.md`.
 - Seed dan pemulihan lewat API: mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`; jalur ekspor Journal J-06 dan pembuatan Asset Class yang memakai akun sebagai Depreciation Expense disediakan tim FE/BE tanpa endpoint karangan.
 - Flag Guided Tooltip halaman Chart of Accounts: di-set true oleh hook `before` suite (lihat `suite.md`).
-- Data Pre-setup (akun sekali pakai milik spec, identitas di `Fixture.settings-chart-of-accounts` yang disediakan tim FE; nama kunci ditetapkan tim FE). Semua Active, Used By 0, Last Used in Journal kosong; akun yang akan dihapus belum pernah diekspor dan bukan nilai default company:
+- Data Pre-setup (akun Pre-setup sekali pakai, identitas di `Fixture.settingsChartOfAccounts.<kunci>` yang disediakan tim FE; nama kunci ditetapkan tim FE). Semua Active, Used By 0, Last Used in Journal kosong; akun yang akan dihapus belum pernah diekspor dan bukan nilai default company:
 
   | Akun | Code dan Name | Diubah oleh sesi B | TC |
   |---|---|---|---|
-  | P90 | `5-6108` · `Depreciation Expense – Bulk Deactivate Race Used` · Function Depreciation Expense | dipakai Asset Class baru (Used By 1) | TC-FA-COA-346 |
-  | P91 | `5-6109` · `Depreciation Expense – Bulk Deactivate Race Eligible` · Function Depreciation Expense | tidak diubah | TC-FA-COA-346 |
-  | P92 | `CAP-8301` · `Capitalization Clearing – Bulk Delete Race Export` · Function Capitalization Offset | diekspor lewat J-06 | TC-FA-COA-347 |
-  | P93 | `CAP-8302` · `Capitalization Clearing – Bulk Delete Race Eligible` · Function Capitalization Offset | tidak diubah | TC-FA-COA-347 |
-  | P94 | `CAP-8303` · `Capitalization Clearing – Bulk Delete Race All Export` · Function Capitalization Offset | diekspor lewat J-06 | TC-FA-COA-348 |
-  | P95 | `5-6115` · `Depreciation Expense – Bulk Delete Race All Used` · Function Depreciation Expense | dipakai Asset Class baru (Used By 1) | TC-FA-COA-348 |
+  | P90 (`Fixture.settingsChartOfAccounts.p90`) | `5-6108` · `Depreciation Expense – Bulk Deactivate Race Used` · Function Depreciation Expense | dipakai Asset Class baru (Used By 1) | TC-FA-COA-346 |
+  | P91 (`Fixture.settingsChartOfAccounts.p91`) | `5-6109` · `Depreciation Expense – Bulk Deactivate Race Eligible` · Function Depreciation Expense | tidak diubah | TC-FA-COA-346 |
+  | P92 (`Fixture.settingsChartOfAccounts.p92`) | `CAP-8301` · `Capitalization Clearing – Bulk Delete Race Export` · Function Capitalization Offset | diekspor lewat J-06 | TC-FA-COA-347 |
+  | P93 (`Fixture.settingsChartOfAccounts.p93`) | `CAP-8302` · `Capitalization Clearing – Bulk Delete Race Eligible` · Function Capitalization Offset | tidak diubah | TC-FA-COA-347 |
+  | P94 (`Fixture.settingsChartOfAccounts.p94`) | `CAP-8303` · `Capitalization Clearing – Bulk Delete Race All Export` · Function Capitalization Offset | diekspor lewat J-06 | TC-FA-COA-348 |
+  | P95 (`Fixture.settingsChartOfAccounts.p95`) | `5-6115` · `Depreciation Expense – Bulk Delete Race All Used` · Function Depreciation Expense | dipakai Asset Class baru (Used By 1) | TC-FA-COA-348 |
 
 - Data Dinamis: Asset Class pemakai P90 dan P95 (dibuat sesi API pada langkah 4 dan 30; Name memuat suffix `{runId}-078`, dihapus di hook `after`; disediakan tim FE).
 - Pada TC-FA-COA-346 dan 347 kedua akun target dipilih setelah satu Search dengan awalan Code bersama (`5-610`, `CAP-830`) yang memuat kedua akun pada halaman pertama (asumsi: tidak lebih dari 10 baris). Pada TC-FA-COA-348 kedua akun berawalan Code berbeda sehingga dipilih lewat dua Search berurutan dan spec mengasumsikan seleksi dipertahankan saat Search diganti (lihat Temuan untuk QA).
-- Efek pada Pre-setup (S-06): P90 dan P95 terpakai satu Asset Class sampai hook `after` menghapusnya; P91 menjadi Inactive; P93 terhapus; P92 dan P94 terisi Last Used in Journal. Hook `before` dan `after` mengembalikan akun ke state awal lewat seeding (disediakan tim FE/BE). Last Updated akun berubah.
+- Efek pada Pre-setup (S-06): P90 dan P95 terpakai satu Asset Class sampai hook `after` menghapusnya; P91 menjadi Inactive; P93 terhapus; P92 dan P94 terisi Last Used in Journal. Last Updated akun berubah.
+- Pengecualian A-18 (lihat butir "Pengecualian A-18" di `suite.md`): P90 sampai P95 adalah akun Pre-setup sekali pakai yang menjadi target ubah status, hapus, atau ekspor. Seed idempotent dan pemulihan akun ke state awal (termasuk Used By 0 dan belum pernah diekspor) dijalankan di hook `before` dan `after` spec ini (disediakan tim FE/BE); satu akun dan satu Account Code literal (`5-6108`, `5-6109`, `CAP-8301`, `CAP-8302`, `CAP-8303`, `5-6115`) hanya dipakai spec ini.
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): ekspor akun lewat jalur J-06; membuat dan menghapus Asset Class pemakai akun; membaca jumlah entri log L-03 (Deactivate) dan L-04 (Delete) atas akun tertentu.
 - Suite berjalan serial (`parallel: false`): spec mengubah akun Pre-setup bersama dan memakai Used By.
 - Env var yang dipakai: `FA_TC_PASSWORD` (terdaftar).
@@ -44,7 +45,7 @@ coverage:
 ### TC-FA-COA-346: Bulk Deactivate: salah satu akun menjadi dipakai Asset Class antara dialog dibuka dan Confirm: akun itu dilewati dan toast parsial tampil tanpa dialog blok
 
 1. Ketik Search `5-610`, tekan Enter
-2. Sesi A: centang kedua akun P90 (`5-6108`) dan P91 (`5-6109`)
+2. Sesi A: centang kedua akun P90 (`Fixture.settingsChartOfAccounts.p90.code`) dan P91 (`Fixture.settingsChartOfAccounts.p91.code`)
 3. Sesi A: klik Bulk `Deactivate` untuk membuka dialog D-02
 4. Buat Asset Class baru dengan P90 sebagai Depreciation Expense lewat sesi API hingga tersimpan (Used By P90 menjadi 1)
 5. Catat baseline jumlah entri log L-03 atas P90 dan P91 (kemampuan baca disediakan tim FE/BE)
@@ -59,7 +60,7 @@ coverage:
 ### TC-FA-COA-347: Bulk Delete: salah satu akun menjadi diekspor antara dialog dibuka dan Confirm: akun itu dilewati dan toast parsial tampil tanpa dialog blok
 
 13. Ganti isi kotak search dengan `CAP-830`, tekan Enter
-14. Sesi A: centang kedua akun P92 (`CAP-8301`) dan P93 (`CAP-8302`)
+14. Sesi A: centang kedua akun P92 (`Fixture.settingsChartOfAccounts.p92.code`) dan P93 (`Fixture.settingsChartOfAccounts.p93.code`)
 15. Sesi A: klik Bulk `Delete` untuk membuka dialog D-08
 16. Ekspor P92 melalui jalur API J-06 lewat sesi API hingga Last Used in Journal P92 tersimpan
 17. Catat baseline jumlah entri log L-04 atas P92 dan P93
@@ -73,21 +74,21 @@ coverage:
 
 ### TC-FA-COA-348: Bulk Delete: seluruh akun terpilih ditolak pada cek ulang saat Confirm: Dialog Blok memuat semua akun, tanpa perubahan data, seleksi dipertahankan
 
-25. Ganti isi kotak search dengan `CAP-8303`, tekan Enter
-26. Sesi A: centang akun P94 (`CAP-8303`)
-27. Ganti isi kotak search dengan `5-6115`, tekan Enter
-28. Sesi A: centang akun P95 (`5-6115`)
+25. Ganti isi kotak search dengan `Fixture.settingsChartOfAccounts.p94.code`, tekan Enter
+26. Sesi A: centang akun P94 (`Fixture.settingsChartOfAccounts.p94.code`)
+27. Ganti isi kotak search dengan `Fixture.settingsChartOfAccounts.p95.code`, tekan Enter
+28. Sesi A: centang akun P95 (`Fixture.settingsChartOfAccounts.p95.code`)
 29. Sesi A: klik Bulk `Delete` untuk membuka dialog D-08
 30. Ekspor P94 melalui jalur API J-06 lewat sesi API hingga Last Used in Journal P94 tersimpan, lalu buat Asset Class baru dengan P95 sebagai Depreciation Expense lewat sesi API hingga tersimpan
 31. Sesi A: klik `[Delete]`
 32. Verifikasi dialog blok `Cannot Delete Accounts` (D-12) tampil
 33. Verifikasi tidak ada toast tambahan
-34. Verifikasi teks "The following were last used in a journal and cannot be deleted:" memuat `• CAP-8303 – Capitalization Clearing – Bulk Delete Race All Export`
-35. Verifikasi teks "The following are in use and cannot be deleted:" memuat `• 5-6115 – Depreciation Expense – Bulk Delete Race All Used`
+34. Verifikasi teks "The following were last used in a journal and cannot be deleted:" memuat `• Fixture.settingsChartOfAccounts.p94.code – Fixture.settingsChartOfAccounts.p94.name`
+35. Verifikasi teks "The following are in use and cannot be deleted:" memuat `• Fixture.settingsChartOfAccounts.p95.code – Fixture.settingsChartOfAccounts.p95.name`
 36. Verifikasi tombol `[OK]` tampil pada dialog
 37. Klik `[OK]`
-38. Verifikasi seleksi P95 dipertahankan (checkbox P95 tercentang pada hasil Search `5-6115`)
-39. Ganti isi kotak search dengan `CAP-8303`, tekan Enter
+38. Verifikasi seleksi P95 dipertahankan (checkbox P95 tercentang pada hasil Search `Fixture.settingsChartOfAccounts.p95.code`)
+39. Ganti isi kotak search dengan `Fixture.settingsChartOfAccounts.p94.code`, tekan Enter
 40. Verifikasi seleksi P94 dipertahankan (checkbox P94 tercentang)
 41. Verifikasi Bulk Action Bar tetap tampil
 42. Klik `Unselect All` pada Bulk Action Bar
@@ -98,7 +99,8 @@ coverage:
 - Mode: FE+BE (kelas c, multi-konteks). Tiga blok berdiri sendiri pada halaman dan tabel yang sama, satu kelas harness (guard akun berubah antara dialog dibuka dan Confirm pada aksi bulk).
 - Spec berisi 43 langkah, melewati sekitar 35 langkah. Alasan: tiga blok TC berdiri sendiri dengan akun sekali pakai masing-masing; tiap blok wajib memuat Search akun target (R-23), centang dua akun, pemicu sesi API, dan Expected yang dipecah per klausa (S-01); TC-FA-COA-348 memuat dialog blok berisi dua daftar sehingga ada lima `Verifikasi` dialog dan tiga `Verifikasi` seleksi. Langkah berulang per blok (butir 8b.7); tidak ada langkah yang dapat dihapus tanpa menghilangkan Expected TC.
 - Pelaku kedua adalah sesi API yang hanya memicu state, bukan konteks kedua; tidak ada sesi UI kedua.
-- Langkah penghubung (S-03, S-09): langkah 1, 13, 25, 27, dan 39 (Search untuk menemukan akun target, R-16, butir 8b.12); langkah 43 (mengosongkan Search) dan 42 (membersihkan seleksi dari TC-FA-COA-348); langkah 3, 15, dan 29 membuka dialog bulk sesuai langkah TC; langkah 5 dan 17 mencatat baseline log (S-12); langkah 37 menutup dialog blok sesuai langkah 5 TC-FA-COA-348. Seleksi di-reset oleh aksi pada TC-FA-COA-346 dan 347 sehingga blok berikutnya tidak mewarisi seleksi.
+- `A-18`: TC-FA-COA-346, 347, dan 348 memakai akun Pre-setup sekali pakai P90 sampai P95 sebagai target ubah status, hapus, atau ekspor, dengan Account Code literal `5-6108`, `5-6109`, `CAP-8301`, `CAP-8302`, `CAP-8303`, dan `5-6115`; pemulihan di hook `before` dan `after`.
+- Langkah penghubung (S-03, S-09): langkah 1, 13, 25, 27, dan 39 (Search untuk menemukan akun target, R-16, butir 8b.13); langkah 43 (mengosongkan Search) dan 42 (membersihkan seleksi dari TC-FA-COA-348); langkah 3, 15, dan 29 membuka dialog bulk sesuai langkah TC; langkah 5 dan 17 mencatat baseline log (S-12); langkah 37 menutup dialog blok sesuai langkah 5 TC-FA-COA-348. Seleksi di-reset oleh aksi pada TC-FA-COA-346 dan 347 sehingga blok berikutnya tidak mewarisi seleksi.
 - Butir `P-1`: asersi "dilewati tanpa log" (langkah 9 dan 21; Expected a TC-FA-COA-346 dan 347) ditulis di spec asal dengan baseline karena bergantung pada state yang dibangun langkah sebelumnya (perubahan guard oleh sesi API sesudah dialog dibuka) dan tidak ada spec absence yang memuat aksi nyata untuk TC itu (S-05).
 - Post Condition TC-FA-COA-348 ("tidak ada data berubah dan tidak ada log untuk P94 dan P95") tidak punya langkah observasi di TC dan tidak diasersi (S-01).
 - Temuan untuk QA:

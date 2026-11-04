@@ -25,6 +25,7 @@ coverage:
 - Penutup Setup Column (TC-FA-LIC-255, parameter langkah 23 sampai 30): `(×)` dan Esc.
 - Kemampuan teknis: viewport browser disempitkan sehingga tabel Allocation History dapat digeser horizontal (pilihan spec; TC hanya menulis "geser tabel horizontal"), dan dipulihkan pada langkah 38. Pengamatan posisi kolom saat tabel digeser (sticky) disediakan tim FE.
 - State yang diubah dan dipulihkan: Pin, visibilitas, dan urutan kolom Setup Column (tiap iterasi memulihkan pada langkah 15; TC-FA-LIC-254 mengakhiri dengan susunan default tersimpan; didaftarkan di `suite.md`) dan viewport.
+- Kemampuan teknis (disediakan tim FE): seret-dan-lepas kolom (langkah 17), tombol `Esc` (langkah 25, iterasi penutup `Esc`), dan hover pada checkbox kolom (langkah 35).
 
 ## Test Steps
 
@@ -87,7 +88,7 @@ Untuk setiap penutup pada daftar penutup (langkah 23 sampai 30):
 
 - Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC. Tidak ada TC hanya-BE.
 - Spec ini di atas 35 langkah (38 langkah nominal; 150 langkah setelah ekspansi). Alasan: seluruh blok satu topik (Setup Column Allocation History), satu dataset Pre-setup #13 yang hanya dibaca, tiap blok berdiri sendiri, dan langkah 3 sampai 15 (sembilan iterasi) serta 23 sampai 30 (dua iterasi) diulang dengan parameter di `## Prerequisites`, tanpa langkah bersyarat dan dengan satu `Verifikasi` per klausa (S-01).
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1 (klik sub-tab sebagai aksi deterministik), langkah 2 dan 38 (menyempitkan dan memulihkan viewport), langkah 6, 9, dan 14 (menggeser tabel), langkah 12 sampai 13 (Unpin sebagai pemulihan sekaligus bagian Expected "Unpin melepasnya"), dan klik sub-tab sesudah muat ulang pada langkah 8 (agar sub-tab aktif deterministik).
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1 (klik sub-tab sebagai aksi deterministik), langkah 2 dan 38 (menyempitkan dan memulihkan viewport), langkah 6, 9, dan 14 (menggeser tabel), langkah 12 sampai 13 (Unpin sebagai pemulihan sekaligus bagian Expected "Unpin melepasnya"), langkah 28 (membuka ulang Setup Column untuk mengamati preview), langkah 30 dan 37 (menutup popup), dan klik sub-tab sesudah muat ulang pada langkah 8 dan 21 (agar sub-tab aktif deterministik).
 - Temuan untuk QA:
   - TC-FA-LIC-253 mengasersi kolom "membeku (sticky) di kiri saat scroll horizontal" tanpa menyebut lebar viewport; spec menyempitkan viewport.
   - TC-FA-LIC-254 menulis "ubah visibilitas dan urutan beberapa kolom" tanpa menyebut kolom; spec menyembunyikan `Quantity` dan memindahkan `Status` ke posisi pertama.

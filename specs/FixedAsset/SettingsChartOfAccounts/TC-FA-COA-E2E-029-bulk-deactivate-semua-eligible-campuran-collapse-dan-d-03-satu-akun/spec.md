@@ -32,6 +32,8 @@ coverage:
   | P54 | `4-7103 – Gain on Disposal – Mixed Skip` | Inactive, Used By 0; tidak berubah | TC-56 |
   | P105 | `5-6113 – Depreciation Expense – D-03 Single Eligible` | Active, Used By 0; sekali pakai | TC-354 |
 
+- Pengecualian A-18 (butir "Data bersama" di `suite.md`): akun sekali pakai P51, P52, P53, dan P105 dinonaktifkan spec ini. Seed idempotent dan pemulihan ke kondisi awal (termasuk status dan Last Updated) dijalankan fixture backend (disediakan tim FE/BE) di hook `before` dan `after` spec ini; suite berjalan serial. P1, P6, P7, dan P54 hanya dibaca atau tidak berubah.
+- P53 dan P54 hanya dipakai spec ini; kondisi awal: P53 Active dan P54 Inactive, Used By 0. Fixture memulihkan keduanya ke kondisi awal itu di hook `before` dan `after` spec ini.
 - Asset Class pemakai P6 dan P7 disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
 - Tabel akun memuat lebih dari satu halaman (ukuran halaman default 10); baris target dibuka lewat Search.
 - Flag Guided Tooltip halaman Chart of Accounts disetel true oleh hook suite `before` (butir "Flag Guided Tooltip" di `suite.md`).
@@ -49,7 +51,7 @@ coverage:
 6. Verifikasi dialog "Deactivate Accounts" (severity danger) dengan bullet `• 5-6102 – Depreciation Expense – Bulk Deactivate A`, `• CAP-8101 – Capitalization Clearing – Bulk Deactivate B`, dan teks "Are you sure you want to deactivate them?"
 7. Klik `[Deactivate]` pada dialog D-02
 8. Verifikasi toast "Success, account has been deactivated."
-9. Verifikasi seleksi di-reset dan Bulk Action Bar tidak tampil
+9. Verifikasi seleksi di-reset
 
 ### TC-FA-COA-56: Bulk Deactivate pada seleksi campuran hanya memproses akun Active
 
@@ -96,8 +98,9 @@ coverage:
 - Spec 40 langkah, di atas ambang 35 langkah. Alasan: seluruh blok satu topik aksi (Bulk Deactivate) dengan akun sekali pakai milik blok masing-masing; langkah Search dan Centang berulang per akun karena tabel berhalaman banyak; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (S-03, R-16): Search Account Code untuk membuka tiap baris target; `[Cancel]` dan hapus centang P1 (langkah 26, 27) membersihkan seleksi sebelum TC-354 (S-09); "Tunggu toast lama hilang otomatis" (langkah 17) karena teks toast sama dengan TC-55.
 - Asumsi: seleksi baris bertahan saat isi Search diganti (lihat Temuan untuk QA).
-- Asersi tidak ada pencatatan atau log tidak ada di spec ini (S-05).
+- `A-18`: P51 dan P52 (TC-55), P53 (TC-56), dan P105 (TC-354) menjadi target ubah status sekali pakai; syarat A-18 dinyatakan di `## Prerequisites`. P53 dan P54 hanya dipakai spec ini.
+- Pembagian TC lintas spec (S-05): TC-56 ada di spec ini dan di spec 103 (absence log). Spec ini mengasersi isi dialog, toast, dan status P54 tetap Inactive (langkah 15 sampai 20); klausa "Changelog, Activity Log, dan System Log tidak memuat baris untuk P54" beserta Langkah 4 TC (membuka ketiga surface log) diasersi di spec 103 dengan akun milik spec 103 dan baseline sendiri.
 - Temuan untuk QA:
   - TC tidak menyatakan apakah seleksi checkbox bertahan saat Search diganti; spec mengasumsikan bertahan.
-  - Post Condition TC-55, TC-56, TC-354 (status akun dan log L-03 per akun) dan TC-299 (data tidak berubah) tidak punya langkah observasi di TC sehingga tidak diasersi.
+  - Post Condition TC-55 dan TC-354 (status akun dan log L-03 per akun) dan TC-299 (data tidak berubah) tidak punya langkah observasi di TC sehingga tidak diasersi.
   - Akun Pre-setup bernama literal tanpa suffix `{runId}`; kode seperti `CAP-8101` sudah 8 dari 15 karakter Account Code sehingga suffix tidak muat.

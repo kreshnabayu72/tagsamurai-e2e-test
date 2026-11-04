@@ -34,6 +34,7 @@ coverage:
   | User Name | 28/09/26 09:40, 30/09/26 11:15, 29/09/26 14:20, 27/09/26 16:05 | 29/09/26 14:20, 27/09/26 16:05, 30/09/26 11:15, 28/09/26 09:40 |
   | Modified By | 29/09/26 14:20, 27/09/26 16:05, 30/09/26 11:15, 28/09/26 09:40 | 30/09/26 11:15, 28/09/26 09:40, 29/09/26 14:20, 27/09/26 16:05 |
 
+- Pengecualian S-12 `[KEPUTUSAN 2026-11-02]`: fixture BE pemulih riwayat Pre-setup #31 dijalankan di hook `before` sebelum asersi absolut; suite serial (`parallel: false`); urutan dan isi 4 entri Changelog Concurrent User (langkah 2, 5, 7, 9, 11, 13, dan 15) diasersi absolut tanpa baseline dan hanya valid tepat setelah pemulihan itu, karena fixture juga menghapus entri baru yang ditambahkan spec lain (A-17, dinyatakan di `suite.md`).
 - Spec ini hanya membaca data dan tidak mengubah state global.
 
 ## Test Steps

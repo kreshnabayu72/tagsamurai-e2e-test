@@ -16,7 +16,7 @@ coverage:
 
 - Mode: FE+BE.
 - Kelas harness: c (dua sesi UI paralel, dua admin).
-- Akun aktor: Admin A = Total Control (Pre-setup PC-8: Rina Anggraini) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD`. Admin B = Total Control kedua (Pre-setup PC-8: "satu Total Control kedua untuk sesi paralel"); email akun ini tidak tertulis di Pre-setup TC (disediakan tim FE); password lewat `Spectra.env.FA_TC_PASSWORD` (nama env perlu dikonfirmasi tim FE sebelum didaftarkan di `executionConfig.environmentVariables` dan `.env.example`).
+- Akun aktor: Admin A = Total Control (Pre-setup PC-8: Rina Anggraini) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD`. Admin B = Total Control kedua (Pre-setup PC-8: "satu Total Control kedua untuk sesi paralel"); email akun ini tidak tertulis di Pre-setup TC (disediakan tim FE); password `Spectra.env.FA_PREF_TC2_PASSWORD` (nama sama dengan spec 072 untuk akun kedua yang sama; belum terdaftar, didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`; `FA_TC_PASSWORD` untuk Admin A juga didaftarkan tim FE). Password tidak ditulis di spec atau fixture.
 - Login Admin A di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences). Sesi Admin B dibuka pada langkah 2 dan ditutup pada langkah 20; hook `after` menutup sesi itu bila spec gagal di tengah dan mengembalikan sesi ke akun default suite.
 - Data Pre-setup: Preferences nilai awal PC-1 dengan Default Capitalization Threshold tersimpan 5.000.000; Asset Class Vehicles dan Furniture tidak mengisi threshold sendiri (PC-6); Changelog Preferences terisi. Admin A dan Admin B membuka tab Preferences pada nilai tersimpan yang sama (PC-8). Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API).
 - Kemampuan baca BE (disediakan tim FE/BE, tanpa endpoint karangan): jumlah baris Changelog Preferences, dibaca sebelum aksi sebagai baseline (bagian 8b butir 10, S-12).
@@ -27,7 +27,7 @@ coverage:
 ## Test Steps
 
 1. Seed ulang Preferences ke nilai awal PC-1 hingga tersimpan
-2. Buka konteks browser kedua, login sebagai Admin B (Total Control kedua), lalu buka Settings > Accounting > Preferences
+2. Buka konteks browser kedua, login sebagai Admin B (Total Control kedua, `Spectra.env.FA_PREF_TC2_PASSWORD`), lalu buka Settings > Accounting > Preferences
 3. Catat jumlah baris Changelog Preferences (baseline)
 4. Sesi Admin A: ketik 10000000 pada CurrencyInput Default Capitalization Threshold
 5. Sesi Admin A: klik [Save changes]

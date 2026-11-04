@@ -85,7 +85,7 @@ coverage:
 - Langkah 19 mengulang langkah 15 sampai 18 untuk enam kolom lain.
 - TC-208 langkah 2 (buka popup Setup Column) dipenuhi oleh popup yang masih terbuka dari langkah 6.
 - Langkah penghubung (S-03): langkah 14 (anchor positif asersi hilangnya kolom, 8b.2), langkah 20 dan 28 (menutup popup tanpa `[Save]`), langkah 21 dan 22 (membuka ulang popup dan menyiapkan precondition TC-213), langkah 29 (menutup modal).
-- Pemulihan Setup Column (R-24, 8b.13): spec tidak menyimpan konfigurasi kolom; semua perubahan dibuang dengan ✕ tanpa `[Save]`.
+- Pemulihan Setup Column (R-24, 8b.14): spec tidak menyimpan konfigurasi kolom; semua perubahan dibuang dengan ✕ tanpa `[Save]`.
 - Reorder, Reset to Default, dan tutup popup tanpa Save tabel Changelog dan pin dan unpin tabel Changelog ada di spec 062.
 - Temuan untuk QA:
   - TC-208 tidak menyebut cara mengamati "tabel" di balik popup selain pratinjau; spec mengasersi tabel Changelog di balik popup.

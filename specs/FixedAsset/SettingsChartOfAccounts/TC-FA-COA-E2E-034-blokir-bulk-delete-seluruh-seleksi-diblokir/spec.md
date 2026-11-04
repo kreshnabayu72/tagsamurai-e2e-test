@@ -48,7 +48,7 @@ coverage:
 ### TC-FA-COA-131: Bulk Delete seluruh akun terpilih yang dipakai Asset Class menampilkan D-12
 
 10. Muat ulang halaman (F5)
-11. Ketik Search `5-6002`, tekan Enter
+11. Ganti isi kotak search dengan `5-6002`, tekan Enter
 12. Centang akun P6 (`5-6002`)
 13. Ganti isi kotak search dengan `4-7002`, tekan Enter
 14. Centang akun P7 (`4-7002`)
@@ -62,7 +62,7 @@ coverage:
 ## Notes
 
 - Dua TC default company (TC-FA-COA-168, 355) ada di spec 089.
-- Langkah penghubung (S-03, R-16): Search Account Code untuk membuka tiap baris target; "Muat ulang halaman (F5)" (langkah 10) membersihkan seleksi dan Search sebelum TC berikutnya (S-09); `[OK]` pada langkah 8 dan 19 mengikuti Expected TC (seleksi dipertahankan setelah `[OK]`).
+- Langkah penghubung (S-03, R-16): Search Account Code untuk membuka tiap baris target; "Muat ulang halaman (F5)" (langkah 10) membersihkan seleksi sebelum TC berikutnya (S-09), sedangkan Search tetap terisi sehingga langkah 11 mengganti isi kotak search (bagian 8b butir 9); `[OK]` pada langkah 8 dan 19 mengikuti Expected TC (seleksi dipertahankan setelah `[OK]`).
 - Asumsi: seleksi baris bertahan saat isi Search diganti (lihat Temuan untuk QA).
 - Asersi tidak ada pencatatan atau log tidak ada di spec ini (S-05).
 - Temuan untuk QA:

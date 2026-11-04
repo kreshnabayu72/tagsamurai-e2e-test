@@ -75,7 +75,7 @@ coverage:
 
 ### TC-FA-PREF-418: Pembuatan Preferences yang gagal pada aktivasi membatalkan aktivasi
 
-19. Bentuk kondisi PC-16 lewat seed: company PT Contoh Konstruksi belum pernah mengaktifkan modul akuntansi dan belum memiliki baris Preferences (precondition TC, tidak diasersi)
+19. Bentuk kondisi PC-16 lewat seed: company PT Contoh Konstruksi belum pernah mengaktifkan modul akuntansi dan belum memiliki baris Preferences (precondition TC, tidak diasersi); catat jumlah entri log Create Preferences company sebagai baseline (dibaca lewat kemampuan baca BE)
 20. Atur kegagalan pembuatan Preferences di tengah transaksi aktivasi lewat fixture BE untuk sesi ini
 21. Aktifkan modul akuntansi untuk PT Contoh Konstruksi pada modul pemilik transaksi aktivasi modul akuntansi (belum disusun; disediakan tim FE setelah modul tersedia) hingga aktivasi selesai
 22. Amati hasil aktivasi
@@ -83,7 +83,7 @@ coverage:
 24. Buka Settings > Accounting
 25. Verifikasi tidak ada baris Preferences tersimpan untuk company (dibaca lewat kemampuan baca BE)
 26. Verifikasi tidak ada periode akuntansi awal tersimpan untuk company (dibaca lewat kemampuan baca BE)
-27. Verifikasi tidak ada entri log Create untuk Preferences tersimpan (dibaca lewat kemampuan baca BE)
+27. Verifikasi jumlah entri log Create untuk Preferences sama dengan baseline langkah 19, tidak ada entri log Create baru (dibaca lewat kemampuan baca BE)
 28. Lepas kegagalan buatan lewat fixture BE
 
 ## Notes

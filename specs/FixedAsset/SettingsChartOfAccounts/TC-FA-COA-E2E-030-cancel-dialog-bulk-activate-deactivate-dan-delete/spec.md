@@ -47,38 +47,42 @@ coverage:
 9. Verifikasi akun P4 tetap Inactive
 10. Ganti isi kotak search dengan `4-7001`, tekan Enter
 11. Verifikasi akun P3 tetap Inactive
-12. Verifikasi seleksi dan Bulk Action Bar tetap tampil
+12. Verifikasi seleksi tetap dipertahankan
+13. Verifikasi Bulk Action Bar tetap tampil
 
 ### TC-FA-COA-294: Cancel pada dialog Bulk Deactivate semua lolos (D-02) mempertahankan seleksi dan data
 
-13. Muat ulang halaman (F5)
-14. Ketik Search `5-6001`, tekan Enter
-15. Centang akun P1 (`5-6001`)
-16. Ganti isi kotak search dengan `CAP-6100`, tekan Enter
-17. Centang akun P5 (`CAP-6100`)
-18. Klik Bulk `Deactivate`
-19. Klik `[Cancel]` pada dialog D-02
-20. Verifikasi dialog "Deactivate Accounts" tertutup
-21. Verifikasi tidak ada toast
-22. Verifikasi akun P5 tetap Active
-23. Ganti isi kotak search dengan `5-6001`, tekan Enter
-24. Verifikasi akun P1 tetap Active
-25. Verifikasi seleksi dan Bulk Action Bar tetap tampil
+14. Muat ulang halaman (F5)
+15. Ganti isi kotak search dengan `5-6001`, tekan Enter
+16. Centang akun P1 (`5-6001`)
+17. Ganti isi kotak search dengan `CAP-6100`, tekan Enter
+18. Centang akun P5 (`CAP-6100`)
+19. Klik Bulk `Deactivate`
+20. Klik `[Cancel]` pada dialog D-02
+21. Verifikasi dialog "Deactivate Accounts" tertutup
+22. Verifikasi tidak ada toast
+23. Verifikasi akun P5 tetap Active
+24. Ganti isi kotak search dengan `5-6001`, tekan Enter
+25. Verifikasi akun P1 tetap Active
+26. Verifikasi seleksi tetap dipertahankan
+27. Verifikasi Bulk Action Bar tetap tampil
 
 ### TC-FA-COA-296: Cancel pada dialog Bulk Delete semua lolos (D-08) mempertahankan seleksi dan data
 
-26. Klik Bulk `Delete`
-27. Klik `[Cancel]` pada dialog D-08
-28. Verifikasi dialog "Delete Accounts" tertutup
-29. Verifikasi tidak ada toast
-30. Verifikasi akun P1 tetap ada di tabel
-31. Ganti isi kotak search dengan `CAP-6100`, tekan Enter
-32. Verifikasi akun P5 tetap ada di tabel
-33. Verifikasi seleksi dan Bulk Action Bar tetap tampil
+28. Klik Bulk `Delete`
+29. Klik `[Cancel]` pada dialog D-08
+30. Verifikasi dialog "Delete Accounts" tertutup
+31. Verifikasi tidak ada toast
+32. Verifikasi akun P1 tetap ada di tabel
+33. Ganti isi kotak search dengan `CAP-6100`, tekan Enter
+34. Verifikasi akun P5 tetap ada di tabel
+35. Verifikasi seleksi tetap dipertahankan
+36. Verifikasi Bulk Action Bar tetap tampil
 
 ## Notes
+- Spec 36 langkah, di atas ambang 35 langkah. Alasan: tiga TC Cancel dialog bulk (Activate, Deactivate, Delete) satu topik aksi tanpa perubahan data; TC-296 memakai ulang seleksi TC-294 sehingga tidak mengulang Search dan Centang; tiap klausa seleksi dan Bulk Action Bar diasersi dalam langkah sendiri (S-01).
 
-- Langkah penghubung (S-03, R-16): Search Account Code untuk membuka tiap baris target; "Muat ulang halaman (F5)" (langkah 13) membersihkan seleksi dan Search sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search Account Code untuk membuka tiap baris target; "Muat ulang halaman (F5)" (langkah 14) membersihkan seleksi sebelum TC berikutnya (S-09), sedangkan Search tetap terisi sehingga langkah 15 mengganti isi kotak search (bagian 8b butir 9).
 - Langkah "Centang P1 dan P5" TC-296 sudah terpenuhi oleh seleksi TC-294 yang dipertahankan setelah `[Cancel]` (Expected TC-294 butir c); karena itu TC-296 dimulai dari Bulk `Delete`. Keduanya memakai akun P1 dan P5 yang sama.
 - Asersi tidak ada toast ditaruh segera setelah dialog tertutup, sebelum asersi data (8b.11); urutan Expected TC berubah untuk itu.
 - Asumsi: seleksi baris bertahan saat isi Search diganti (lihat Temuan untuk QA).

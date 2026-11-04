@@ -18,7 +18,7 @@ coverage:
 - Akun aktor: Total Control Pre-setup #1 (`Fixture.fixedAssetLicense.akunTotalControl`; pola email `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`), kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite. Spec tidak mengganti akun. Password tidak ditulis di spec atau fixture.
 - Guided Tooltip: flag seen diatur dan dipulihkan hook suite (dinyatakan sekali di `suite.md`).
 - Data Pre-setup #12 (hanya dibaca): hierarki PT Sejahtera dengan grup level 1 Produksi, Cabang Medan, Cabang Surabaya, Kantor Pusat (Divisi Logistik, Divisi IT, Divisi Keuangan); Data Pre-setup #13 (riwayat) dan #14 (sesi aktif) untuk Tab lain; lewat `Fixture.fixedAssetLicense.kuotaHierarki`, `.riwayat`, dan `.sesiAktif` (fixture belum ada; disediakan tim FE/BE).
-- State yang diubah dan dipulihkan: node terpilih Sidebar dan Search Section 2 (direset oleh perpindahan Tab pada langkah 16 dan 24).
+- State yang diubah dan dipulihkan: node terpilih Sidebar dan Search Section 2 (direset oleh perpindahan Tab pada langkah 15 dan 21).
 
 ## Test Steps
 
@@ -33,24 +33,25 @@ coverage:
 7. Verifikasi halaman tetap di Tab `Allocation Quota` dengan breadcrumb `License > Allocation Quota`
 8. Verifikasi node `Kantor Pusat` tetap terpilih
 9. Verifikasi Search `Logistik` tetap terisi
-10. Verifikasi Section 2 hanya memuat `Divisi Logistik`
-11. Verifikasi Sort dan paginasi tetap seperti sebelum F5 (Sort default, halaman 1)
-12. Klik Tab `All License`
-13. Verifikasi sub-tab aktif kembali ke `Subscription History`
-14. Klik Tab `Allocation Quota`
-15. Verifikasi node aktif kembali ke `All Groups`
-16. Verifikasi state tabel Section 2 direset (Search kosong, Sort default, halaman 1)
+10. Verifikasi Section 2 memuat `Divisi Logistik`
+11. Verifikasi `Divisi IT` dan `Divisi Keuangan` tidak tampil pada Section 2
+12. Verifikasi Sort dan paginasi tetap seperti sebelum F5 (Sort default, halaman 1)
+13. Klik Tab `All License`
+14. Verifikasi sub-tab aktif kembali ke `Subscription History`
+15. Klik Tab `Allocation Quota`
+16. Verifikasi node aktif kembali ke `All Groups`
+17. Verifikasi state tabel Section 2 direset (Search kosong, Sort default, halaman 1)
 
 ### TC-FA-LIC-537: Pindah Tab License lain lalu kembali ke Allocation Quota
 
-17. Klik node `Kantor Pusat` di Sidebar
-18. Ketik Search `Divisi` pada Search Child Groups Quota, tekan Enter
-19. Klik Tab `Concurrent User`
-20. Klik Tab `Allocation Quota`
-21. Verifikasi node `All Groups` terpilih di Sidebar dan Context Header `All Groups` (bukan `Kantor Pusat (GRP-HQ)`)
-22. Verifikasi Section 1 berjudul `All License`
-23. Verifikasi Section 2 berjudul `Level 1 Groups Quota`
-24. Verifikasi Search `Divisi` tidak lagi aktif pada tabel Group License Allocation
+18. Klik node `Kantor Pusat` di Sidebar
+19. Ketik Search `Divisi` pada Search Child Groups Quota, tekan Enter
+20. Klik Tab `Concurrent User`
+21. Klik Tab `Allocation Quota`
+22. Verifikasi node `All Groups` terpilih di Sidebar dan Context Header `All Groups` (bukan `Kantor Pusat (GRP-HQ)`)
+23. Verifikasi Section 1 berjudul `All License`
+24. Verifikasi Section 2 berjudul `Level 1 Groups Quota`
+25. Verifikasi Search `Divisi` tidak lagi aktif pada tabel Group License Allocation
 
 ## Notes
 

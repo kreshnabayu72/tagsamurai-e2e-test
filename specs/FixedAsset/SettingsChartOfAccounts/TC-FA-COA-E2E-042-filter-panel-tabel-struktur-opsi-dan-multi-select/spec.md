@@ -20,7 +20,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Tidak ada ganti akun di tengah spec.
-- Data Pre-setup yang hanya dibaca dan tidak diubah (disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`): akun P1 sampai P5, P7, dan P8 ada sehingga keenam nilai Function dan kedua nilai Active ada di tabel.
+- Data Pre-setup yang hanya dibaca dan tidak diubah (identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`): akun P1 sampai P5, P7, dan P8 ada sehingga keenam nilai Function dan kedua nilai Active ada di tabel.
   - P1 `Fixture.settingsChartOfAccounts.p1` (Function Depreciation Expense, Active).
   - P2 `Fixture.settingsChartOfAccounts.p2` (Function Capitalization Offset, Active).
   - P3 `Fixture.settingsChartOfAccounts.p3` (Function Gain on Disposal, Inactive).
@@ -63,7 +63,7 @@ coverage:
 21. Verifikasi opsi filter hanya memuat nilai yang ada di data tabel
 22. Verifikasi tidak ada opsi "None"
 23. Pilih `Capitalization Offset` dan `Gain on Disposal`, klik `[Apply]`
-24. Verifikasi tabel memuat akun dengan Function salah satu dari dua nilai yang dipilih (baris P2, P3, dan P5 tampil, baris P1 tidak tampil)
+24. Verifikasi tabel memuat akun dengan Function salah satu dari dua nilai yang dipilih (baris P3 `Fixture.settingsChartOfAccounts.p3.code` tampil pada halaman 1, baris P1 `Fixture.settingsChartOfAccounts.p1.code` tidak tampil karena Function-nya Depreciation Expense)
 25. Klik `Clear all`
 
 ### TC-FA-COA-180: Filter Modified By, multi-select searchable
@@ -104,6 +104,7 @@ coverage:
 - Langkah penghubung (S-03): langkah 14, 23, 32 (klik `[Apply]`, TC tidak menuliskan Apply tetapi Expected membutuhkan tabel terfilter); langkah 17, 25, 35 (`Clear all` membersihkan filter sebelum TC berikutnya, S-09); langkah 18, 26, 36 (membuka Filter Panel kembali); langkah 51 (menutup panel).
 - Langkah 10 dan 19 mengasersi placeholder sebelum opsi dipilih karena placeholder hanya tampil saat field kosong; langkah 48 sampai 50 sesudah `Clear Field`.
 - Langkah 15, 24, dan 33 memverifikasi baris yang memang harus tampil sebelum asersi absence (8b.2).
+- Langkah 24: filter gabungan meloloskan sekitar 69 akun (10 baris per halaman, urut Account Code A-Z); hanya P3 (sekitar posisi 2) dijamin di halaman 1, sedangkan P2 (sekitar posisi 19) dan P5 (sekitar posisi 22) berada di halaman lain sehingga tidak dipakai sebagai pembanding (S-14, R-23). Asersi absence P1 tetap benar karena P1 tidak memenuhi filter Function yang dipilih.
 - Langkah 46 per opsi: Active (`Active`, `Inactive`), Function (enam nilai), Modified By (tiap nama user pada daftar yang dicatat).
 - Temuan untuk QA:
   - TC-FA-COA-75 dan 76 tidak menyebut klik `[Apply]`; spec menambahkannya sebagai langkah penghubung.

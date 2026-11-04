@@ -19,8 +19,8 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Tidak ada ganti akun di tengah spec.
-- Data Pre-setup (hanya dibaca, tidak diubah; disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`): akun P2 `6-2001` Repairs & Maintenance Expense dan P5 `CAP-6100` Capitalization Clearing – Repairs (keduanya Function Capitalization Offset, Active).
-- Tabel client default berisi lebih dari 25 akun dengan ukuran halaman 10 (seed P1 sampai P115 disediakan tim FE). Search `-` dan Filter Active = Active menyisakan lebih dari 10 akun sehingga halaman 2 terisi (asumsi pre-setup; lihat Temuan untuk QA).
+- Data Pre-setup (hanya dibaca, tidak diubah; identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`): akun P2 `6-2001` Repairs & Maintenance Expense dan P5 `CAP-6100` Capitalization Clearing – Repairs (keduanya Function Capitalization Offset, Active).
+- Tabel client default berisi lebih dari 25 akun dengan ukuran halaman 10 (seed P1 sampai P117 disediakan tim FE). Search `-` dan Filter Active = Active menyisakan lebih dari 10 akun sehingga halaman 2 terisi (asumsi pre-setup; lihat Temuan untuk QA).
 - Kolom Function tampil secara default; TC-FA-COA-231 menyembunyikannya lewat Setup Column (langkah 2) dan memulihkannya pada langkah 11 (R-24).
 - State yang diubah spec: Filter Panel, Search, sort, halaman, dan konfigurasi kolom (hanya kolom Function, dipulihkan). Tiap TC dipulihkan dengan langkah eksplisit (langkah 15, 27, 44). Tidak ada data yang ditulis. Hook `after` menghapus preferensi kolom dan tabel di browser sebagai cadangan (kemampuan disediakan tim FE).
 - Flag Guided Tooltip halaman Chart of Accounts di-set true oleh hook suite `before` untuk akun aktor (lihat `suite.md`).
@@ -87,7 +87,7 @@ coverage:
 ## Notes
 
 - Alasan spec di atas sekitar 35 langkah (44 langkah): empat TC List State dan Filter pada satu layar dan satu dataset, kelas fungsional yang sama dan berdiri sendiri; tiap TC membangun kombinasi Search, Filter, Sort, dan halaman sendiri (TC-FA-COA-232 dan 233 masing-masing lima aksi) dan Expected dipecah satu `Verifikasi` per klausa (S-01), sehingga tidak ada langkah yang dapat dibuang tanpa menghilangkan butir.
-- Langkah penghubung (S-03, S-09): langkah 7 (menutup Filter Panel), 15 (mengosongkan Search dan melepas filter), 27 dan 44 (klik menu sidebar untuk mereset state tabel; langkah 32 adalah aksi uji TC-FA-COA-233). Langkah 11 mengembalikan kolom Function sesuai langkah 5 TC-FA-COA-231 (dijalankan di spec ini pada langkah 11) sekaligus pemulihan Setup Column (R-24, 8b.13). Langkah 12 memakai "ganti isi kotak search" karena kotak Search masih terisi dari langkah 8 (8b.9).
+- Langkah penghubung (S-03, S-09): langkah 7 (menutup Filter Panel), 15 (mengosongkan Search dan melepas filter), 27 dan 44 (klik menu sidebar untuk mereset state tabel; langkah 32 adalah aksi uji TC-FA-COA-233). Langkah 11 mengembalikan kolom Function sesuai langkah 5 TC-FA-COA-231 (dijalankan di spec ini pada langkah 11) sekaligus pemulihan Setup Column (R-24, 8b.14). Langkah 12 memakai "ganti isi kotak search" karena kotak Search masih terisi dari langkah 8 (8b.9).
 - Langkah 33 sampai 37 mengasersi keadaan kosong dan default tepat setelah aksi sidebar; state sebelum aksi dibangun langkah 28 sampai 31.
 - Spec ini hanya memuat TC-FA-COA-231, 232, 233, 234.
 - Temuan untuk QA:

@@ -19,7 +19,7 @@ coverage:
 
 - Mode: FE+BE (intercept parsial di atas backend nyata; respons Deactivate dan Activate dipaksa lewat `Spectra.intercept()`, status akun dibaca dari backend nyata).
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
-- Data Pre-setup (disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
+- Data Pre-setup (identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>` yang disediakan tim FE, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
   - Akun P1 `Fixture.settingsChartOfAccounts.p1` (Account Code `5-6001`, Account Name `Depreciation Expense – Admin`, Active, Used By 0).
   - Akun P3 `Fixture.settingsChartOfAccounts.p3` (Account Code `4-7001`, Account Name `Gain on Disposal`, Inactive, Used By 0).
   Kedua akun hanya dibaca; semua aksi status digagalkan sehingga status tidak berubah dan tidak ada data Dinamis yang dibuat.
@@ -87,8 +87,7 @@ coverage:
 - Mode: FE+BE (kelas b, fault injection). Spec memuat 36 langkah, sedikit di atas sekitar 35 langkah: empat TC berdiri sendiri dalam satu kelas harness dan Expected dipecah satu klausa per `Verifikasi` (S-01), sehingga tidak dipecah lebih jauh.
 - Langkah penghubung (S-03, S-09): langkah 1, 18, 19, 36 (Search nama akun sebagai penemu baris target, R-16, R-23, lalu kosongkan); langkah 2, 10, 20, 28 (membuka dialog konfirmasi lewat switch Status yang menjadi precondition TC); langkah 8, 16, 26, 34 (melepas intercept); langkah 9, 17, 27, 35 (menutup dialog dengan `[Cancel]`, label tombol dari TC lain di rumpun yang sama).
 - Expected b dan c TC-FA-COA-57 dan TC-FA-COA-58 sama-sama menyebut switch kembali ke nilai tersimpan; keduanya diasersi satu kali (langkah 6 dan 24), dialog tetap terbuka pada langkah 7 dan 25.
-- Klausa "tidak ada log" pada Expected TC-FA-COA-304 dan TC-FA-COA-361 tidak diasersi di spec ini (S-05). Asersi absence log berada di spec absence (kelas g); rujukan: TC-FA-COA-51 dan TC-FA-COA-52 di spec 083.
+- Pembagian TC lintas spec (S-05): klausa "tidak ada log" pada Expected c TC-FA-COA-304 dan TC-FA-COA-361 diasersi di spec 100, yang memuat pemicu timeout yang sama dengan baseline sendiri. Spec ini tidak mengasersi log.
 - Temuan untuk QA:
   - TC-FA-COA-57 dan 58 tidak memuat langkah membuka dialog D-01 dan D-14; spec menambahkannya dari precondition TC-FA-COA-304 dan 361 (klik switch Status).
-  - Klausa "tidak ada log" pada TC-FA-COA-304 dan 361 tidak punya spec absence yang memuatnya.
   - Tidak ada langkah menutup dialog setelah kegagalan di TC; `[Cancel]` dipakai sebagai langkah penghubung.

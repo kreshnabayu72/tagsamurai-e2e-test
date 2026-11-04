@@ -82,7 +82,6 @@ coverage:
 32. Verifikasi tidak ada toast sukses
 33. Verifikasi berkas `Changelog-Allocation-Quota.xlsx` terunduh
 34. Verifikasi isi berkas mengikuti Search/Filter aktif dan kolom visible (tidak ada Search atau Filter aktif; ketujuh kolom visible)
-35. Verifikasi sel Old Value dan New Value yang kosong ditulis `-` (Old Value entri 28/09/26 15:30 dan 26/09/26 11:20; New Value entri 27/09/26 09:00 dan 25/09/26 08:45)
 
 ## Notes
 
@@ -90,8 +89,9 @@ coverage:
 - Langkah penghubung (tanpa `Verifikasi`): langkah 5, 16, 20, dan 26 menutup modal, dropdown, atau membersihkan filter; langkah 26 ditulis eksplisit supaya TC-FA-LIC-360 mulai tanpa filter (S-09). Klik node di langkah 17 dan 21 adalah aksi uji TC-FA-LIC-600.
 - Spec ini hanya membaca data (Pre-setup #12, #27, #31 tidak diubah) sehingga tidak ada pemulihan selain jaring pengaman hook.
 - Slug folder `empty-state-tanpa-pengaruh` mempertahankan id spec; isi spec ini mengikuti judul: TC-FA-LIC-486, TC-FA-LIC-383, TC-FA-LIC-600, dan TC-FA-LIC-360.
-- Spec ini memuat 35 langkah. TC-FA-LIC-540 (modal tanpa entri) dan TC-FA-LIC-601 (contoh PRD) tidak ada di spec ini.
+- Spec ini memuat 34 langkah. TC-FA-LIC-540 (modal tanpa entri) dan TC-FA-LIC-601 (contoh PRD) tidak ada di spec ini.
+- Isi berkas unduhan modal Changelog Allocation Quota (encoding UTF-8 dengan BOM, urutan baris, nilai sel, format tanggal General Settings, sel kosong ditulis `-`, sheet `Sheet1`, dan tipe sel) adalah TC-FA-LIC-618, yang ada di spec `TC-FA-LIC-E2E-155`. Spec ini mengasersi nama berkas, tanpa toast sukses, dan keanggotaan kolom serta baris berkas (langkah 34).
 - TC-FA-LIC-383 langkah 15: contoh nama grup tanpa entri log diambil dari hierarki Pre-setup #12; TC hanya menulis "nama tanpa entri log tidak muncul".
 - Temuan untuk QA:
-  - TC-FA-LIC-360 butir b ("isi mengikuti Search/Filter aktif dan kolom visible; kolom Old/New kosong ditulis `-`") memeriksa nilai sel berkas, sedangkan prinsip kelas f memisahkan isi berkas dari spec fungsional; spec mengikuti TC. Langkah TC tidak mengaktifkan Search atau Filter, sehingga spec mengasersi keadaan tanpa Search/Filter aktif.
+  - TC-FA-LIC-360 butir b ("isi mengikuti Search/Filter aktif dan kolom visible") tidak mengaktifkan Search atau Filter pada langkah TC, sehingga spec mengasersi keadaan tanpa Search/Filter aktif. Nilai sel berkas dinyatakan TC di TC-FA-LIC-618 (spec `TC-FA-LIC-E2E-155`).
   - Jumlah entri absolut (4 entri Force Logout dan 6 entri) pada TC-FA-LIC-486 butir b dan TC-FA-LIC-600 butir a bergantung pada fixture pemulih riwayat Pre-setup #27 dan #31 karena Changelog adalah audit trail permanen (S-12); spec mengasersinya sesuai TC.

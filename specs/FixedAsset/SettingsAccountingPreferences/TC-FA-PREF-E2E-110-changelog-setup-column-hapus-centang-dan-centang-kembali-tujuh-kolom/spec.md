@@ -45,7 +45,7 @@ coverage:
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah 3 sampai 9 diulang untuk setiap kolom pada tabel "Kolom yang diuji" (tujuh iterasi; 8b.7). Parameter tiap iterasi hanya nama kolom uji, tanpa langkah bersyarat; `Verifikasi` tetap satu per klausa (S-01).
 - Alasan melewati sekitar 35 langkah (dihitung dengan ekspansi, sekitar 50): spec ini memuat satu TC (TC-FA-PREF-335) dengan 14 butir Expected dan tujuh iterasi identik; satu TC tepat satu spec sehingga tidak dapat dipecah.
-- Pemulihan Setup Column (8b.13, R-24): tiap iterasi memulihkan kolom uji dengan centang kembali lalu `[Save]` (langkah penghubung tanpa `Verifikasi` tambahan).
+- Pemulihan Setup Column (8b.14, R-24): tiap iterasi memulihkan kolom uji dengan centang kembali lalu `[Save]` (langkah penghubung tanpa `Verifikasi` tambahan).
 - Temuan untuk QA:
   - Nama env var password tidak disebut TC-FA-PREF-335; `FA_TC_PASSWORD` mengikuti spec lain di suite dan perlu keputusan tim.
   - Expected TC-FA-PREF-335 butir b, d, f, h, j, l, dan n menyebut "pada posisi urutan semula" tanpa menyebut cara mengamati posisi; spec mengasersi posisi sesuai urutan default kolom di Prerequisites.

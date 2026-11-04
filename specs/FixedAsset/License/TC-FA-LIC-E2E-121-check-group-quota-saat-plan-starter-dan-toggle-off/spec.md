@@ -30,7 +30,7 @@ coverage:
 - Password tidak ditulis di spec atau fixture; setiap `Spectra.env.*` di atas didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example` (dinyatakan di `suite.md`).
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Suite berjalan serial (`parallel: false`): plan, toggle `License allocation per group`, Total Asset License, hierarki, alokasi grup, dan status aset dipakai bersama dan diubah spec ini; hook `after` memulihkannya.
-- Data Pre-setup: #12 (hierarki dan kuota; Divisi IT Remaining 40), #9 (client Starter; cap plan Asset 500), #35 (client Paid, toggle OFF; data kuota dan hierarki Pre-setup #12 dengan baris alokasi grup dipertahankan), #20 (draf aset siap Submit di Divisi IT), dan #28 (2 aset Unmanaged Divisi IT pada client Starter). Kondisi per blok (diatur fixture BE): blok TC-FA-LIC-609 Total Asset License diturunkan di Admin Console menjadi 4338 sehingga Remaining tenant 3 (4338 − 4320 − 15) dan Total lebih kecil dari Total Allocated 4800, Divisi IT Remaining 40, 7 draf aset di Divisi IT, approval OFF; blok TC-FA-LIC-489 Starter Total 500, Used 498, Reserved 1 (Remaining 1), baris alokasi Divisi IT 5 dengan Used 5 dipertahankan, dua draf aset di Divisi IT; blok TC-FA-LIC-505 Starter Total 500, Used 498, Reserved 1, baris alokasi Divisi IT 5 dengan Used 5, 2 aset Unmanaged di Divisi IT; blok TC-FA-LIC-613 Total Asset License 4336 sehingga Remaining tenant 1 (4336 − 4320 − 15), baris alokasi Divisi IT 5 dengan Used by This Group 5, 2 draf aset di Divisi IT, approval OFF.
+- Data Pre-setup: #12 (hierarki dan kuota; Divisi IT Remaining 40), #9 (client Starter; cap plan Asset 500), #35 (client Paid, toggle OFF; data kuota dan hierarki Pre-setup #12 dengan baris alokasi grup dipertahankan), #20 (draf aset siap Submit di Divisi IT), dan #28 (2 aset Unmanaged Divisi IT pada client Starter). Kondisi per blok (diatur fixture BE): blok TC-FA-LIC-609 Total Asset License diturunkan di Admin Console menjadi 4338 sehingga Remaining tenant 3 (4338 − 4320 − 15) dan Total lebih kecil dari Total Allocated 4800, Divisi IT Remaining 40, 7 draf aset di Divisi IT, approval OFF; blok TC-FA-LIC-489 login Pre-setup #9, Starter Total 500, Used 498, Reserved 1 (Remaining 1; menyimpang dari Pre-setup #9: Used 120, Reserved 0) lewat fixture BE, baris alokasi Divisi IT 5 dengan Used 5 dipertahankan, dua draf aset di Divisi IT; blok TC-FA-LIC-505 Starter Total 500, Used 498, Reserved 1, baris alokasi Divisi IT 5 dengan Used 5, 2 aset Unmanaged di Divisi IT; blok TC-FA-LIC-613 Total Asset License 4336 sehingga Remaining tenant 1 (4336 − 4320 − 15), baris alokasi Divisi IT 5 dengan Used by This Group 5, draf ke-1 dan ke-2 Pre-setup #20 siap Submit di Divisi IT, approval OFF.
 - Blok TC-FA-LIC-505 berlaku setelah `asset/` menetapkan penanda aset dalam transisi Manage (PRD License §12 Open Item #1; Reserved dari Manage); pemicu aksi Manage sesuai PRD `asset/` disediakan tim FE.
 - Pengecualian S-06 `[KEPUTUSAN 2026-10-30]`: target aksi tulis adalah grup, aset, dan Total Asset License Pre-setup #9, #12, #20, #28, dan #35 bernama literal karena hierarki dan kuotanya tidak dapat dimiliki spec (nama, urutan, dan nilai kuota menjadi objek asersi). Pemulihan ke Pre-setup dijamin fixture BE pemulih yang disediakan tim FE/BE (dinyatakan di `suite.md`), dijalankan di hook `before` dan `after` serta sebagai langkah penghubung antar blok. Efek: Total Asset License, Used, Reserved, Remaining, status aset, dan Last Updated berubah; fixture memulihkannya. Fixture `Fixture.fixedAssetLicense` belum ada dan disediakan tim FE.
 
@@ -82,11 +82,11 @@ coverage:
 
 ### TC-FA-LIC-613: Paid dengan License allocation per group OFF, check_group_quota hanya memakai batas Total tenant
 
-30. Jalankan fixture BE pemulih Pre-setup #35 dengan Total Asset License `4336` (Remaining tenant 1), baris alokasi Divisi IT 5 dengan Used by This Group 5, 2 draf aset di Divisi IT, dan approval OFF hingga tersimpan
+30. Jalankan fixture BE pemulih Pre-setup #35 dengan Total Asset License `4336` (Remaining tenant 1), baris alokasi Divisi IT 5 dengan Used by This Group 5, draf ke-1 dan ke-2 Pre-setup #20 siap Submit di Divisi IT, dan approval OFF hingga tersimpan
 31. Buka Fixed Asset > Asset Registration
-32. Registrasi satu aset ke Divisi IT
+32. Registrasi satu aset ke Divisi IT (draf ke-1 Pre-setup #20)
 33. Verifikasi registrasi pertama berhasil walau alokasi Divisi IT sudah terpakai penuh (alokasi grup diabaikan, penanggung = batas Total tenant: Total − Used − Reserved = 1)
-34. Registrasi satu aset lagi ke Divisi IT
+34. Registrasi satu aset lagi ke Divisi IT (draf ke-2 Pre-setup #20)
 35. Verifikasi registrasi kedua ditolak `QUOTA_EXCEEDED` dengan pesan `Group quota exceeded. Available slots: 0. Please contact administrator to increase quota.`
 36. Jalankan fixture BE pemulih Pre-setup #35 dan Pre-setup #9 hingga tersimpan
 
@@ -98,6 +98,5 @@ coverage:
 - Spec ini berkelas h (state tenant: plan Starter dan toggle `License allocation per group` OFF) karena objek ujinya adalah perilaku `check_group_quota()` pada kondisi plan dan toggle itu.
 - Alasan di atas sekitar 35 langkah (36 langkah): semua blok satu topik (penanggung kuota `check_group_quota()` menurut plan dan toggle) dan berdiri sendiri dengan fixture sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
-  - TC-FA-LIC-489 Precondition menulis `Login sbg Role: Total Control (Pre-setup #1)` padahal data adalah client Starter (Pre-setup #9) yang berbeda client dari Pre-setup #1; spec login sebagai Pre-setup #9.
-  - TC-FA-LIC-489 dan TC-FA-LIC-613 tidak menyebut draf aset siap Submit di Divisi IT pada Precondition; spec menyiapkan dua draf aset lewat fixture.
+  - TC-FA-LIC-489 tidak menyebut draf aset siap Submit di Divisi IT pada Precondition; spec menyiapkan dua draf aset lewat fixture.
   - TC-FA-LIC-609 Expected b menyebut nilai terkecil antara Remaining grup 40 dan Remaining tenant 3; spec mengasersi pesan `Available slots: 3` dan hasil akhir Used `4323`.

@@ -33,6 +33,7 @@ coverage:
 - Pengecualian S-06 `[KEPUTUSAN 2026-10-30]`: target aksi tulis adalah grup Pre-setup #12 bernama literal karena hierarki dan kuotanya tidak dapat dimiliki spec (nama, urutan, dan nilai kuota menjadi objek asersi). Pemulihan ke Pre-setup #12 dijamin fixture BE pemulih yang disediakan tim FE/BE (dinyatakan di `suite.md`), dijalankan di hook `before` dan `after` serta sebagai langkah penghubung antar blok. Efek: Last Updated baris alokasi, entri `Changelog: Allocation Quota`, System Log aktor, dan Activity Log bertambah. Fixture `Fixture.fixedAssetLicense` belum ada dan disediakan tim FE.
 - Kemampuan teknis: Kemampuan membaca jumlah entri `Changelog: Allocation Quota`, System Log aktor, dan Activity Log sebagai baseline (disediakan tim FE/BE; audit trail permanen sehingga asersi memakai selisih jumlah entri, S-12).
 - Kemampuan teknis: Intercept jaringan menghitung request Save (asersi satu request pada double-click).
+- Kemampuan teknis (disediakan tim FE): hover untuk membaca tooltip (langkah 23 dan 37).
 
 ## Test Steps
 
@@ -73,39 +74,41 @@ coverage:
 
 25. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
 26. Muat ulang halaman License, lalu klik tab `Allocation Quota`
-27. Klik node `Divisi IT` di Sidebar
-28. Pada Group Quota Summary klik tombol ikon `[Edit]` di samping nilai `Total` (100)
-29. Klik `[Clear Field]`
-30. Klik `[Save]`
-31. Verifikasi tidak ada dialog konfirmasi
-32. Verifikasi modal tertutup
-33. Verifikasi toast sukses `Success, group license allocation removed.`
-34. Verifikasi Context Header `Divisi IT (GRP-IT)` memuat badge `Not Allocated`
-35. Verifikasi Group Quota Summary: Total `—`, Allocated to Subgroups `—`, Used by This Group `60`, Reserved by This Group `0`, Remaining `240`
-36. Arahkan kursor ke nilai Remaining
-37. Verifikasi tooltip `Shared from Kantor Pusat`
+27. Klik node `Kantor Pusat` di Sidebar
+28. Klik node `Divisi IT` di Sidebar
+29. Pada Group Quota Summary klik tombol ikon `[Edit]` di samping nilai `Total` (100)
+30. Klik `[Clear Field]`
+31. Klik `[Save]`
+32. Verifikasi tidak ada dialog konfirmasi
+33. Verifikasi modal tertutup
+34. Verifikasi toast sukses `Success, group license allocation removed.`
+35. Verifikasi Context Header `Divisi IT (GRP-IT)` memuat badge `Not Allocated`
+36. Verifikasi Group Quota Summary: Total `—`, Allocated to Subgroups `—`, Used by This Group `60`, Reserved by This Group `0`, Remaining `240`
+37. Arahkan kursor ke nilai Remaining
+38. Verifikasi tooltip `Shared from Kantor Pusat`
 
 ### TC-FA-LIC-168: Double-click Save pada Remove Allocation hanya memproses satu request
 
-38. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
-39. Muat ulang halaman License, lalu klik tab `Allocation Quota`
-40. Klik node `Kantor Pusat` di Sidebar
-41. Catat jumlah entri `Changelog: Allocation Quota` sebagai baseline
-42. Pasang intercept jaringan yang menghitung request Save
-43. Klik tombol ikon `[Edit]` pada baris `Divisi IT`
-44. Klik `[Clear Field]`
-45. Klik `[Save]` dua kali cepat
-46. Verifikasi hanya satu request dikirim
-47. Verifikasi satu toast `Success, group license allocation removed.`
-48. Klik ikon Changelog pada toolbar
-49. Verifikasi `Changelog: Allocation Quota` bertambah tepat satu entri dibanding baseline
-50. Tutup modal `Changelog: Allocation Quota`
-51. Lepas intercept jaringan
+39. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
+40. Muat ulang halaman License, lalu klik tab `Allocation Quota`
+41. Klik node `Kantor Pusat` di Sidebar
+42. Catat jumlah entri `Changelog: Allocation Quota` sebagai baseline
+43. Pasang intercept jaringan yang menghitung request Save
+44. Klik tombol ikon `[Edit]` pada baris `Divisi IT`
+45. Klik `[Clear Field]`
+46. Klik `[Save]` dua kali cepat
+47. Verifikasi hanya satu request dikirim
+48. Verifikasi satu toast `Success, group license allocation removed.`
+49. Klik ikon Changelog pada toolbar
+50. Verifikasi `Changelog: Allocation Quota` bertambah tepat satu entri dibanding baseline
+51. Tutup modal `Changelog: Allocation Quota`
+52. Lepas intercept jaringan
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): fixture BE pemulih, muat ulang halaman, dan klik tab mengembalikan Pre-setup #12 sebelum TC-FA-LIC-518 dan TC-FA-LIC-168 (keduanya membutuhkan Divisi IT beralokasi 100); menutup modal Changelog; melepas intercept.
+- Langkah 27 (klik node `Kantor Pusat`) adalah langkah penghubung (S-03): node anak `Divisi IT` dibuka sesudah node induknya.
 - Urutan TC: TC-FA-LIC-496 (hapus lalu beri kembali 100), TC-FA-LIC-160, TC-FA-LIC-164 (bergantung pada TC-FA-LIC-160: node Divisi IT sesudah alokasinya dihapus), TC-FA-LIC-518, lalu TC-FA-LIC-168 (S-10).
 - TC-FA-LIC-168: hanya `Changelog: Allocation Quota` yang dihitung karena Expected TC menyebut satu entri Changelog.
-- Alasan di atas sekitar 35 langkah (51 langkah): semua blok satu topik (Remove Allocation sukses) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah tambahan hanya pemulihan fixture, muat ulang, dan hover tooltip.
+- Alasan di atas sekitar 35 langkah (52 langkah): semua blok satu topik (Remove Allocation sukses) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah tambahan hanya pemulihan fixture, muat ulang, dan hover tooltip.

@@ -96,7 +96,7 @@ coverage:
 
 - Alasan spec di atas sekitar 35 langkah (39 langkah nominal, sekitar 45 dengan ekspansi langkah 5): semua blok memakai satu tabel, satu popup Setup Column, dan satu kelas harness (fungsional Setup Column); langkah 3 dan 4 diulang untuk enam kolom pada tabel Prerequisites (idiom 8b.7), `Verifikasi` tetap satu per klausa, dan tiap blok berdiri sendiri.
 - Langkah 5 mengulang langkah 3 dan 4 untuk lima kolom lain.
-- Langkah penghubung (S-03): langkah 7 dan 18 (menutup popup tanpa `[Save]`, perubahan dibuang), langkah 21 (menyiapkan precondition TC-332), langkah 35 sampai 39 (pemulihan Setup Column eksplisit, R-24 dan 8b.13).
+- Langkah penghubung (S-03): langkah 7 dan 18 (menutup popup tanpa `[Save]`, perubahan dibuang), langkah 21 (menyiapkan precondition TC-332), langkah 35 sampai 39 (pemulihan Setup Column eksplisit, R-24 dan 8b.14).
 - Pin dan unpin pada TC-333 mengikuti TC sumber: unpin pada langkah 32 menyusul `[Save]` pada langkah 33.
 - Urutan 190, 194, 332, 333 dipilih agar blok yang tidak menyimpan konfigurasi berjalan lebih dulu.
 - Pin/unpin kolom default Visible (TC-FA-COA-191) ada di spec 092.

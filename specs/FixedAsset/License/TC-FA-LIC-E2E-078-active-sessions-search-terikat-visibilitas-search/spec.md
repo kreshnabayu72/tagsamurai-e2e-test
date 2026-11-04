@@ -21,7 +21,7 @@ coverage:
 - Mode: FE+BE (backend nyata, tanpa mock).
 - Akun: Total Control Pre-setup #1 `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (Rudi Hartono), password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
-- Data Pre-setup #26 (fixture tabel sesi, dipulihkan fixture BE di hook `before`): tepat lima sesi cuplikan pada client Paid Pre-setup #1; Online Users 5/25. Profil Curated: Rudi Hartono Activated, TAG-001; Dewi Lestari Activated, Temporary User Yes sampai 31/12/26; Andi Pratama Pending Activation; Siti Rahma Activated, TAG-014; Budi Santoso Activated. Pengguna selain Dewi Lestari bukan user temporary (Temporary User `No`); TAG hanya Rudi Hartono dan Siti Rahma. Urutan default (Login Time terbaru lebih dulu): Rudi Hartono, Dewi Lestari, Andi Pratama, Siti Rahma, Budi Santoso. Kolom Curated (`Activation Status`, `Temporary User`, `Temporary Until`, `TAG`) Hidden secara default. Identitas dan nilai data dirujuk lewat `Fixture.fixedAssetLicense.*` (berkas fixture belum ada, disiapkan tim FE); nilai pada langkah dan tabel di bawah adalah nilai fixture itu.
+- Data Pre-setup #26 (fixture tabel sesi, dipulihkan fixture BE di hook `before`): tepat lima sesi cuplikan pada client Paid Pre-setup #1; Online Users 5/25. Profil Curated: Rudi Hartono Activated, TAG-001; Dewi Lestari Activated, Temporary User Yes sampai 31/12/26; Andi Pratama Pending Activation; Siti Rahma Activated, TAG-014; Budi Santoso Activated. Pengguna selain Dewi Lestari bukan user temporary (Temporary User `No`); TAG hanya Rudi Hartono dan Siti Rahma. Urutan default (Login Time terbaru lebih dulu): Rudi Hartono, Dewi Lestari, Andi Pratama, Siti Rahma, Budi Santoso. Kolom Curated (`Activation Status`, `Temporary User`, `Temporary Until`, `TAG`) Hidden secara default. Identitas dan nilai data dirujuk lewat `Fixture.fixedAssetLicense.sesiTabel` (berkas fixture belum ada, disiapkan tim FE); nilai pada langkah dan tabel di bawah adalah nilai fixture itu.
 - Data Dinamis: tidak ada. Spec ini tidak mengubah data sesi.
 - Tabel "Sort kolom Curated alfabetis" (parameter langkah 29 sampai 34); klik 3 selalu kembali ke urutan default:
 
@@ -31,7 +31,7 @@ coverage:
   | Temporary User | Rudi Hartono, Andi Pratama, Siti Rahma, Budi Santoso, Dewi Lestari | Dewi Lestari, Rudi Hartono, Andi Pratama, Siti Rahma, Budi Santoso |
   | TAG | Rudi Hartono, Siti Rahma, Dewi Lestari, Andi Pratama, Budi Santoso (nilai kosong `—` di akhir) | Dewi Lestari, Andi Pratama, Budi Santoso, Siti Rahma, Rudi Hartono (nilai kosong `—` di awal) |
 
-- Konfigurasi kolom (visibilitas) yang diubah spec ini tersimpan di browser; hook `after` menghapus preferensi kolom di browser (dinyatakan di `suite.md`; kemampuan disediakan tim FE).
+- Konfigurasi kolom (visibilitas) yang diubah spec ini tersimpan di browser dan dipulihkan dengan langkah eksplisit di akhir spec (langkah 41); hook `after` menghapus preferensi kolom di browser (dinyatakan di `suite.md`; kemampuan disediakan tim FE).
 - Hook dan kemampuan suite (dinyatakan sekali di `suite.md`): fixture BE pemulih Pre-setup #26; pemulihan konfigurasi kolom.
 
 ## Test Steps
@@ -90,10 +90,11 @@ coverage:
 38. Verifikasi urutan klik 2 `↓`: Rudi Hartono, Andi Pratama, Siti Rahma, Budi Santoso, Dewi Lestari (nilai kosong `—` di awal)
 39. Klik header kolom `Temporary Until` sekali lagi
 40. Verifikasi urutan kembali ke default: Rudi Hartono, Dewi Lestari, Andi Pratama, Siti Rahma, Budi Santoso
+41. Klik header kolom Actions `⋯`, lalu hilangkan centang `TAG`, `Activation Status`, `Temporary User`, dan `Temporary Until` pada overlay Column Visibility
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: mengosongkan Search di akhir tiap blok (S-09) dan mengubah visibilitas kolom lewat overlay Column Visibility yang diterapkan langsung tanpa `[Save]`. Kolom `TAG`, `Activation Status`, `Temporary User`, dan `Temporary Until` yang ditampilkan pada TC-FA-LIC-267 dan TC-FA-LIC-514 tetap tampil untuk TC-FA-LIC-515 dan TC-FA-LIC-516, sehingga langkah "Tampilkan kolom" milik kedua TC itu sudah tercakup.
+- Langkah penghubung tanpa `Verifikasi`: mengosongkan Search di akhir tiap blok (S-09) dan mengubah visibilitas kolom lewat overlay Column Visibility yang diterapkan langsung tanpa `[Save]`. Kolom `TAG`, `Activation Status`, `Temporary User`, dan `Temporary Until` yang ditampilkan pada TC-FA-LIC-267 dan TC-FA-LIC-514 tetap tampil untuk TC-FA-LIC-515 dan TC-FA-LIC-516, sehingga langkah "Tampilkan kolom" milik kedua TC itu sudah tercakup. Langkah 41 menyembunyikan kembali keempat kolom itu (bagian 8b butir 14, S-03); hook `after` hanya cadangan.
 - Blok ulang: langkah 29 sampai 34 dijalankan 3 kali (spec ini melewati sekitar 35 langkah, nominal dan setelah ekspansi). Alasan: seluruh blok memakai kolom Curated yang harus ditampilkan lewat Column Visibility pada satu tabel, satu dataset Pre-setup #26, dan satu kelas harness (fungsional), dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Search tidak diganti antar-TC lewat navigasi sidebar karena kolom yang ditampilkan perlu dipertahankan.
 - Temuan untuk QA: pada TC-FA-LIC-266 butir b, Expected bersyarat ("empty state `No results found` bila tidak ada kolom lain yang cocok"). Pada data Pre-setup #26 tidak ada kolom lain yang memuat `198.51.100`, sehingga spec mengasersi empty state. TC-FA-LIC-515 dan TC-FA-LIC-516 berjudul Sort tetapi dikelompokkan di spec ini karena memakai kolom Curated yang harus ditampilkan lewat Column Visibility.

@@ -25,6 +25,7 @@ coverage:
 - Penutup Setup Column (TC-FA-LIC-212, parameter langkah 23 sampai 30): `(×)` dan Esc.
 - Kemampuan teknis: viewport browser disempitkan sehingga tabel Subscription History dapat digeser horizontal (pilihan spec; TC hanya menulis "geser tabel horizontal"), dan dipulihkan pada langkah 38. Pengamatan posisi kolom saat tabel digeser (sticky) disediakan tim FE.
 - State yang diubah dan dipulihkan: Pin, visibilitas, dan urutan kolom Setup Column (tiap iterasi memulihkan pada langkah 15; TC-FA-LIC-211 mengakhiri dengan susunan default tersimpan; didaftarkan di `suite.md`) dan viewport.
+- Kemampuan teknis (disediakan tim FE): seret-dan-lepas kolom (langkah 17), tombol `Esc` (langkah 25, iterasi penutup `Esc`), dan hover pada checkbox kolom (langkah 35).
 
 ## Test Steps
 

@@ -42,9 +42,9 @@ coverage:
 Untuk setiap baris tabel "Anggota sort per kelas kolom" (langkah 2 sampai 7):
 
 2. Klik header kolom baris tabel sekali (Ascending)
-3. Verifikasi urutan baris sesuai kolom `Klik 1 (Ascending)` baris tabel
+3. Verifikasi indikator `↑` dan urutan baris sesuai kolom `Klik 1 (Ascending)` baris tabel
 4. Klik header kolom baris tabel sekali lagi (Descending)
-5. Verifikasi urutan baris sesuai kolom `Klik 2 (Descending)` baris tabel
+5. Verifikasi indikator `↓` dan urutan baris sesuai kolom `Klik 2 (Descending)` baris tabel
 6. Klik header kolom baris tabel sekali lagi (netral)
 7. Verifikasi urutan baris kembali ke urutan default: SUBS-20270101-00001, SUBS-20260101-00001, SUBS-20250101-00001, SUBS-20241201-00001
 

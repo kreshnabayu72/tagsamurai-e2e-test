@@ -26,14 +26,14 @@ coverage:
 | Role | Akun | Env password | TC |
 |---|---|---|---|
 | Total Control (akun pertama, login di hook `before`) | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TC_PASSWORD` (terdaftar) | TC-FA-COA-98, 104, 99, 100, 103 (blok akhir) |
-| Manage accounting – Delete | `manageAccountingDelete_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_MACC_DELETE_PASSWORD` (belum terdaftar di `spectra.config.ts` dan `.env.example`; perlu didaftarkan tim FE) | TC-FA-COA-102 |
+| Manage accounting – Delete | `manageAccountingDelete_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_MACC_DELETE_PASSWORD` (terdaftar di `spectra.config.ts` dan `.env.example`) | TC-FA-COA-102 |
 | Read Only | `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_RO_PASSWORD` (terdaftar) | TC-FA-COA-103 |
 
 - Login akun pertama (Total Control) di hook `before` spec ini. Pengecualian atas hook `beforeEach` suite: layar web tidak berlaku di Android, sehingga spec membuka layar Chart of Accounts sendiri lewat langkah spec. Hook `after` spec mengembalikan sesi ke akun default suite. Password tidak ditulis di spec atau fixture.
 - Data Pre-setup (hanya dibaca, tidak diubah): akun P1 `5-6001 – Depreciation Expense – Admin` sampai P5 `CAP-6100 – Capitalization Clearing – Repairs`.
 - Flag Guided Tooltip halaman Chart of Accounts disetel true oleh hook suite `before` untuk akun aktor yang dipakai (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed dan pemulihan akun Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
-- Identitas data Pre-setup dibaca dari `fixtures/settings-chart-of-accounts.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
+- Identitas data Pre-setup dibaca dari `Fixture.settingsChartOfAccounts.<kunci>` (fixture belum ada, disediakan tim FE; nama kunci ditetapkan tim FE).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -99,7 +99,7 @@ coverage:
 - Mode: FE+BE.
 - Role Matrix Android (bagian 3a): blok Total Control (TC-FA-COA-98, 104, 99, 100), Manage accounting – Delete (TC-FA-COA-102), lalu Read Only dan Total Control kembali (TC-FA-COA-103). Spec ditulis per blok role karena ganti akun menuntut Step eksplisit dan langkah per role berbeda.
 - Urutan: TC-FA-COA-104 diletakkan tepat sesudah TC-FA-COA-98 agar absence tur diamati segera setelah halaman dibuka (bagian 8b butir 5).
-- Langkah penghubung (S-03): langkah 8 dan 10 (membuka dan menutup menu `[⋯]`); langkah 14 dan 19 (menutup bottom sheet; formulir tidak diisi atau tidak diubah sehingga tidak dirty); langkah 15 dan 24 (Search untuk menampilkan card target; R-16, bagian 8b butir 12); langkah 20 dan 29 (menutup Search dan mereset daftar, S-09); langkah 21 sampai 23, 30 sampai 32, dan 34 sampai 36 (ganti akun eksplisit, S-07); langkah 28 (menutup menu ⋯ card).
+- Langkah penghubung (S-03): langkah 8 dan 10 (membuka dan menutup menu `[⋯]`); langkah 14 dan 19 (menutup bottom sheet; formulir tidak diisi atau tidak diubah sehingga tidak dirty); langkah 15 dan 24 (Search untuk menampilkan card target; R-16, bagian 8b butir 13); langkah 20 dan 29 (menutup Search dan mereset daftar, S-09); langkah 21 sampai 23, 30 sampai 32, dan 34 sampai 36 (ganti akun eksplisit, S-07); langkah 28 (menutup menu ⋯ card).
 - Asersi tambahan di luar Expected TC (S-03): absence Hidden dan tidak tampil pada langkah 4, 5, 6, 27, dan 33 memakai langkah tampil di blok yang sama (card list, ikon Changelog, Delete, atau card list) sebagai anchor permukaan (bagian 8b butir 2).
 - Ukuran spec 37 langkah, melewati sekitar 35 langkah hanya tipis karena sembilan langkah ganti akun eksplisit dan Expected dipecah per klausa (S-01). Seluruh blok satu kelas (mobile Android) dan satu layar tanpa aksi tulis; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:

@@ -31,6 +31,7 @@ coverage:
 - Data: Pre-setup #12: Divisi IT beralokasi 100 (Maximum Quota 300 = alokasi 100 + Remaining Kantor Pusat 200).
 - Data: Semua blok memblokir Save (validasi) dan tidak mengubah data; tidak ada perubahan Pre-setup #12.
 - Kemampuan teknis: Intercept jaringan mencatat jumlah request ke endpoint Edit Allocation (asersi nol request pada Save yang diblokir).
+- Kemampuan teknis (disediakan tim FE): mengisi nilai lewat paste/tempel ke field (langkah 11).
 
 ## Test Steps
 

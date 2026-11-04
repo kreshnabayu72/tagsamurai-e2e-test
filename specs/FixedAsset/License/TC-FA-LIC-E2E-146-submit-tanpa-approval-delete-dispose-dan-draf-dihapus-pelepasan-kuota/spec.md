@@ -27,25 +27,25 @@ coverage:
 - Password tidak ditulis di spec atau fixture; `Spectra.env.FA_TC_PASSWORD` didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example` (dinyatakan di `suite.md`).
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Suite berjalan serial (`parallel: false`): hierarki, alokasi grup, kuota, dan status aset dipakai bersama dan diubah spec ini; hook `after` memulihkannya.
-- Data Pre-setup: #12 (License Summary Used 4320, Reserved 15; Divisi IT) dan #20 (draf aset di Divisi IT; aset Active di Divisi IT untuk Delete dan Dispose). Kondisi per blok (diatur fixture BE): blok TC-FA-LIC-400 satu draf aset di Divisi IT; blok TC-FA-LIC-398 approval OFF dan satu draf aset di Divisi IT; blok TC-FA-LIC-399 sekurangnya dua aset Active di Divisi IT.
+- Data Pre-setup: #12 (License Summary Used 4320, Reserved 15; Divisi IT) dan #20 (draf aset di Divisi IT; aset Active di Divisi IT untuk Delete dan Dispose). Kondisi per blok (diatur fixture BE): blok TC-FA-LIC-400 draf ke-1 Pre-setup #20 di Divisi IT; blok TC-FA-LIC-398 approval OFF dan draf ke-1 Pre-setup #20 di Divisi IT; blok TC-FA-LIC-399 sekurangnya dua aset Active di Divisi IT.
 - Pengecualian S-06 `[KEPUTUSAN 2026-10-30]`: target aksi tulis adalah grup dan aset Pre-setup #12 dan #20 bernama literal karena hierarki dan kuotanya tidak dapat dimiliki spec (nama, urutan, dan nilai kuota menjadi objek asersi). Pemulihan ke Pre-setup #12 dan #20 dijamin fixture BE pemulih yang disediakan tim FE/BE (dinyatakan di `suite.md`), dijalankan di hook `before` dan `after` serta sebagai langkah penghubung antar blok. Efek: Used, Reserved, dan Remaining, status aset, dan Last Updated berubah; fixture memulihkannya. Fixture `Fixture.fixedAssetLicense` belum ada dan disediakan tim FE.
 
 ## Test Steps
 
 ### TC-FA-LIC-400: Draf yang dihapus tidak menahan kuota
 
-1. Jalankan fixture BE pemulih Pre-setup #12 dan #20 dengan satu draf aset di Divisi IT hingga tersimpan
+1. Jalankan fixture BE pemulih Pre-setup #12 dan #20 dengan draf ke-1 Pre-setup #20 di Divisi IT hingga tersimpan
 2. Buka License > All License; catat Used, Reserved, dan Remaining pada License Summary kolom Asset
-3. Hapus draf aset di Fixed Asset > Asset Registration
+3. Hapus draf ke-1 Pre-setup #20 di Fixed Asset > Asset Registration
 4. Tunggu aksi selesai
-5. Buka License > All License
+5. Muat ulang License > All License
 6. Verifikasi Used, Reserved, dan Remaining tidak berubah dibanding nilai pada langkah 2
 
 ### TC-FA-LIC-398: Submit tanpa approval langsung menambah Used tanpa Reserved
 
-7. Jalankan fixture BE pemulih Pre-setup #12 dan #20 dengan approval OFF dan satu draf aset di Divisi IT hingga tersimpan
+7. Jalankan fixture BE pemulih Pre-setup #12 dan #20 dengan approval OFF dan draf ke-1 Pre-setup #20 di Divisi IT hingga tersimpan
 8. Buka License > All License; catat Used dan Reserved pada License Summary kolom Asset
-9. Submit draf aset di Divisi IT di Fixed Asset > Asset Registration
+9. Submit draf ke-1 Pre-setup #20 di Divisi IT di Fixed Asset > Asset Registration
 10. Verifikasi aset langsung berstatus `Active`
 11. Buka License > All License
 12. Verifikasi Used naik 1 dibanding nilai pada langkah 8
@@ -76,4 +76,5 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-LIC-394 sampai TC-FA-LIC-396 ada di spec 119 dan TC-FA-LIC-397 di spec 153.
 - Temuan untuk QA:
   - TC-FA-LIC-398 dan TC-FA-LIC-400 tidak menyebut label tombol Submit dan Hapus; spec mengikuti kalimat TC.
+  - TC-FA-LIC-398, TC-FA-LIC-399, dan TC-FA-LIC-400 merujuk draf dan aset Pre-setup #20 tanpa nama; Search nama baris sebelum aksi pada tabel yang dapat memuat lebih dari satu halaman (8b.13) tidak dapat ditulis dengan nama literal, sehingga spec merujuk draf ke-1 Pre-setup #20 dan aset Active Pre-setup #20 yang disediakan fixture BE.
   - TC-FA-LIC-399 tidak menyebut tahap-tahap flow Disposal; spec menulis "selesaikan flow Disposal" sesuai TC.

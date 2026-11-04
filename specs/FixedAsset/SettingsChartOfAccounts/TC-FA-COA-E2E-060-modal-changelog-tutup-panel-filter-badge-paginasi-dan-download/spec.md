@@ -81,7 +81,7 @@ coverage:
 ## Notes
 
 - Urutan TC-335 dan TC-336 (tanpa Filter) dijalankan lebih dulu, lalu TC-216, TC-217, dan TC-219 yang memakai Filter Action = Edit yang sama secara berurutan.
-- TC-217 langkah 1 sampai 2 (Filter Action = Edit ter-Apply) dipenuhi oleh keadaan akhir TC-216 pada langkah 16; TC-219 langkah 1 sampai 2 dipenuhi oleh keadaan akhir TC-217 (Action = Edit ter-Apply, panel terbuka pada langkah 25).
+- Penghematan langkah (S-10): langkah 1 sampai 2 TC-217 (Filter Action = Edit ter-Apply) tidak ditulis ulang karena keadaan itu sama dengan keadaan akhir TC-216 pada langkah 16; demikian pula langkah 1 sampai 2 TC-219 (Action = Edit ter-Apply, panel terbuka pada langkah 25) sama dengan keadaan akhir TC-217.
 - Asersi absence toast pada langkah 11 diletakkan segera setelah pemicu sebelum asersi berkas; berkas terunduh (langkah 12) menjadi bukti positif bahwa respons sudah diproses (8b.11).
 - P-10: TC-336 mengasersi UI (toast) dan isi berkas (nama berkas, kolom, baris) pada alur unduh yang sama; klausa isi berkas diletakkan setelah klausa UI dan `Verifikasi` isi berkas satu per klausa.
 - Spec ini sedikit melewati 35 langkah karena satu kelas dan satu dataset read-only (riwayat Modal Changelog): TC-216, TC-217, dan TC-219 sengaja berurutan karena memakai keadaan Filter Action = Edit yang sama, sedangkan TC-335 dan TC-336 berdiri sendiri tanpa Filter.

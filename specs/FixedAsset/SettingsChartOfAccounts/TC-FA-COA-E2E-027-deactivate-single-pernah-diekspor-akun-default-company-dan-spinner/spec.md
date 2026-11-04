@@ -30,8 +30,9 @@ coverage:
   | P88 | `5-6107 – Depreciation Expense – Spinner Deactivate` | Active, Used By 0; sekali pakai | TC-286 |
   | P113 | `4-7114 – Default Gain – Deactivate Allowed` | Active, Used By 0, nilai Default Gain on Disposal (`SET-05`) di Settings > Accounting > Preferences; sekali pakai | TC-164 |
 
-- State global: nilai `SET-05` = P113 diset lewat fixture BE sebelum spec dan dipulihkan di hook `after`; mekanisme disediakan tim FE/BE.
-- Kemampuan teknis: `Spectra.intercept()` untuk menunda respons request Deactivate (TC-286) di atas backend nyata; endpoint ditetapkan tim FE sesuai PRD/LLD, intercept dilepas pada langkah "Lepas tahanan respons".
+- Pengecualian A-18 (butir "Data bersama" di `suite.md`): akun sekali pakai P46, P47, P88, dan P113 dinonaktifkan spec ini dan dipakai spec ini saja. Seed idempotent dan pemulihan ke kondisi awal (termasuk status dan Last Updated) dijalankan fixture backend (disediakan tim FE/BE) di hook `before` dan `after` spec ini; suite berjalan serial. P2 hanya dibaca.
+- State global: nilai `SET-05` = P113 diset lewat fixture BE di hook `before` dan dipulihkan di hook `after`; mekanisme disediakan tim FE/BE.
+- Kemampuan teknis: `Spectra.intercept()` untuk menunda respons request Deactivate (TC-286) di atas backend nyata; endpoint ditetapkan tim FE sesuai PRD/LLD, intercept dilepas pada langkah "Lepas tahanan respons". Kemampuan menghitung jumlah request Deactivate yang dikirim browser selama respons ditahan (TC-286, langkah 24) disediakan tim FE (pencatat request jaringan di atas `Spectra.intercept()`).
 - Tabel akun memuat lebih dari satu halaman (ukuran halaman default 10); baris target dibuka lewat Search.
 - Flag Guided Tooltip halaman Chart of Accounts disetel true oleh hook suite `before` (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed akun Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
@@ -97,6 +98,8 @@ coverage:
 - Spec 38 langkah, di atas ambang 35 langkah. Alasan: seluruh blok satu topik aksi (Deactivate single) dengan akun sekali pakai milik blok masing-masing; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (S-03, R-16): Search Account Code untuk membuka baris target (langkah 1, 6, 12, 18, 28); `[Cancel]` pada langkah 5 menutup dialog TC-48; "Tunggu toast lama hilang otomatis" (langkah 13, 32) mencegah toast sebelumnya dengan teks sama lolos sebagai asersi.
 - Urutan TC-286: asersi spinner (langkah 22) ditaruh sebelum klik kedua dan sebelum respons dilepas karena state sementara (8b.5). Status terkini pada langkah 27 adalah Inactive menurut Post Condition TC-286. Toast sesudah respons dilepas tidak diasersi karena tidak ada di Expected TC.
+- Urutan blok: TC-164 sesudah TC-286 (berbeda dari urutan `sourceTc`). Alasan: TC-164 adalah satu-satunya blok yang bergantung pada state global `SET-05` (akun nilai default company) dan membuka form Edit lebih dulu, sehingga diletakkan di akhir setelah seluruh blok Deactivate biasa (TC-48, TC-49, TC-50, TC-286) selesai (S-10).
+- `A-18`: P46 (TC-49), P47 (TC-50), P88 (TC-286), dan P113 (TC-164) menjadi target ubah status sekali pakai; syarat A-18 dinyatakan di `## Prerequisites`.
 - Asersi tidak ada pencatatan atau log tidak ada di spec ini (S-05).
 - Temuan untuk QA:
   - Post Condition TC-49 dan TC-164 (log L-03 tiga surface, Last Used tidak berubah, dampak modul lain) dan TC-50 (Status Inactive sudah tercakup Expected) tidak punya langkah observasi di TC sehingga log tidak diasersi.

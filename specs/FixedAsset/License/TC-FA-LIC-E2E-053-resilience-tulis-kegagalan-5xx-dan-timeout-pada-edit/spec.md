@@ -87,36 +87,39 @@ coverage:
 ### TC-FA-LIC-177: Force Logout timeout
 
 38. Klik tab `Concurrent User`
-39. Klik `[Force Logout]` pada baris Budi Santoso
-40. Pasang intercept jaringan: request Force Logout di-timeout dan pencatat request GET daftar sesi
-41. Klik `[Confirm Logout]`
-42. Verifikasi toast `Connection problem. Please try again.` tanpa tombol aksi
-43. Verifikasi dialog tetap terbuka
-44. Tutup toast `Connection problem. Please try again.`
+39. Ketik Search `Budi Santoso`, tekan Enter
+40. Klik `[Force Logout]` pada baris Budi Santoso
+41. Pasang intercept jaringan: request Force Logout di-timeout dan pencatat request GET daftar sesi
+42. Klik `[Confirm Logout]`
+43. Verifikasi toast `Connection problem. Please try again.` tanpa tombol aksi
+44. Verifikasi dialog tetap terbuka
+45. Tutup toast `Connection problem. Please try again.`
 
 ### TC-FA-LIC-176: Force Logout gagal 5xx
 
-45. Ganti intercept jaringan: request Force Logout digagalkan 500
-46. Klik `[Confirm Logout]`
-47. Verifikasi toast error `Error, failed to log out user.`
-48. Tunggu 5 detik
-49. Verifikasi toast error tidak hilang otomatis
-50. Tutup toast `Error, failed to log out user.`
-51. Verifikasi dialog `Force Logout User` tetap terbuka
-52. Verifikasi `[Confirm Logout]` enabled kembali
-53. Verifikasi daftar tidak di-refresh (tidak ada request GET daftar sesi baru dan baris Budi Santoso tetap ada)
-54. Lepas intercept jaringan
-55. Klik `[Confirm Logout]`
-56. Verifikasi pengulangan berhasil: toast sukses `Success, user session has been terminated.`
+46. Ganti intercept jaringan: request Force Logout digagalkan 500
+47. Klik `[Confirm Logout]`
+48. Verifikasi toast error `Error, failed to log out user.`
+49. Tunggu 5 detik
+50. Verifikasi toast error tidak hilang otomatis
+51. Tutup toast `Error, failed to log out user.`
+52. Verifikasi dialog `Force Logout User` tetap terbuka
+53. Verifikasi `[Confirm Logout]` enabled kembali
+54. Verifikasi daftar tidak di-refresh (tidak ada request GET daftar sesi baru dan baris Budi Santoso tetap ada)
+55. Lepas intercept jaringan
+56. Klik `[Confirm Logout]`
+57. Verifikasi pengulangan berhasil: toast sukses `Success, user session has been terminated.`
+58. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): `Tutup toast` membuang toast `Connection problem` dan toast error persisten (TC-FA-LIC-149, 165, dan 176) sebelum toast berikutnya diasersi (R-12); `Tunggu 5 detik` menunggu lewatnya durasi auto-hide toast; `Lepas intercept` dan `Ganti intercept` mengatur kegagalan tiap blok; `[Clear Field]` dan menutup modal dirty (`[×]`, dialog `Unsaved Changes`, `[Leave]`, S-08).
+- Baris Budi Santoso di tabel Active Sessions (18 sesi, lebih dari satu halaman) dibuka lewat Search sebagai langkah penghubung (R-16, bagian 8b butir 13): langkah 39 mengetik Search sebelum intercept dipasang dan langkah 58 membersihkannya dengan `(←)` (S-09).
 - Urutan TC: TC-FA-LIC-150 lalu TC-FA-LIC-149 memakai modal yang sama dan tetap terbuka dengan `600` (S-04); TC-FA-LIC-165 pada Divisi IT; TC-FA-LIC-177 lalu TC-FA-LIC-176 memakai dialog Force Logout yang sama (S-10).
 - Hasil sukses TC-FA-LIC-149 (Divisi Logistik 600) dan TC-FA-LIC-176 (Budi Santoso diakhiri) dipulihkan fixture BE pemulih (hook `after`).
 - Temuan untuk QA:
   - TC-FA-LIC-176: `daftar tidak di-refresh` tidak punya cara observasi di TC; spec mengasersinya lewat tidak adanya request GET daftar sesi baru dan baris Budi Santoso yang tetap ada.
   - TC-FA-LIC-150 dan TC-FA-LIC-177: TC tidak menyebut apakah toast `Connection problem` persisten; spec menutupnya sebelum blok berikutnya.
   - TC-FA-LIC-149 butir c dan TC-FA-LIC-176 butir c menulis pengulangan berhasil tanpa teks toast; spec memakai `Success, group license quota updated.` (teks toast sukses Edit Allocation pada TC-FA-LIC-118) dan `Success, user session has been terminated.` (teks toast sukses Force Logout pada TC-FA-LIC-171).
-- Alasan di atas sekitar 35 langkah (56 langkah): semua blok satu kelas harness (resilience tulis, intercept 5xx dan timeout) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah tambahan hanya memasang dan melepas intercept.
+- Alasan di atas sekitar 35 langkah (58 langkah): semua blok satu kelas harness (resilience tulis, intercept 5xx dan timeout) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna; langkah tambahan hanya memasang dan melepas intercept.

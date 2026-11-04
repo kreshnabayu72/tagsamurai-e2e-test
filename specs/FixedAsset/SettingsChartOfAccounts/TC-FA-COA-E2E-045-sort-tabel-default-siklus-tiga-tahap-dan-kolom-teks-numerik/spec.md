@@ -19,33 +19,34 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Tidak ada ganti akun di tengah spec.
-- Data Pre-setup (hanya dibaca, tidak diubah; disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
+- Data milik spec (di-seed hook `before` lewat API, dihapus hook `before` dan `after`; kemampuan seed dan hapus, termasuk Asset Class pemakai akun untuk Used By, disediakan tim FE/BE, butir "Seed dan pemulihan lewat API" di `suite.md`). Tujuh akun padanan P1 sampai P7 pada precondition TC-FA-COA-80, 174, 175, dan 182. Account Code maksimal 15 karakter sehingga bernilai literal dan memuat nomor spec; Account Name bersuffix `{runId}-045`. Asset Class pemakai akun (nama bersuffix `{runId}-045`) dihapus lebih dulu, lalu akun:
 
-  | Akun | Account Code | Account Name | Function | Status | Used By |
+  | Padanan | Account Code | Account Name | Function | Status | Used By |
   |---|---|---|---|---|---|
-  | P1 | `5-6001` | Depreciation Expense – Admin | Depreciation Expense | Active | 0 |
-  | P2 | `6-2001` | Repairs & Maintenance Expense | Capitalization Offset | Active | 0 |
-  | P3 | `4-7001` | Gain on Disposal | Gain on Disposal | Inactive | 0 |
-  | P4 | `1-1002` | Equipment – Legacy Code | Asset Cost | Inactive | 0 |
-  | P5 | `CAP-6100` | Capitalization Clearing – Repairs | Capitalization Offset | Active | 0 |
-  | P6 | `5-6002` | Depreciation Expense – Warehouse | Depreciation Expense | Active | 1 |
-  | P7 | `4-7002` | Gain and Loss on Disposal | Loss on Disposal | Active | 2 |
+  | P4 | `DID045A` | `Sort Equipment {runId}-045` | Asset Cost | Inactive | 0 |
+  | P3 | `DID045B` | `Sort Gain {runId}-045` | Gain on Disposal | Inactive | 0 |
+  | P1 | `DID045C` | `Sort Depresiasi {runId}-045` | Depreciation Expense | Active | 0 |
+  | P2 | `DID045D` | `Sort Repairs {runId}-045` | Capitalization Offset | Active | 0 |
+  | P5 | `DID045E` | `Sort Clearing {runId}-045` | Capitalization Offset | Active | 0 |
+  | P6 | `DID045F` | `Sort Warehouse {runId}-045` | Depreciation Expense | Active | 1 |
+  | P7 | `DID045G` | `Sort Loss {runId}-045` | Loss on Disposal | Active | 2 |
 
-- Tabel client default berisi akun P1 sampai P7 dan akun hasil seed lainnya (lebih dari 10 akun). Tiap kolom yang di-sort punya sedikitnya dua nilai distinct pada akun P yang diasersi (S-11). Asersi urutan memakai urutan relatif akun P yang disebut di langkah, bukan posisi baris di halaman; ukuran halaman diubah ke 100 pada langkah 1 agar akun P terlihat di satu halaman, dan dipulihkan ke 10 pada langkah 39.
-- Urutan relatif yang diasersi (diturunkan dari data di atas): Account Code A-Z P4, P3, P1, P2, P5; Account Name A-Z P5, P1, P4, P3, P2; Used By naik P1, P6, P7.
-- State yang diubah spec: ukuran halaman (langkah 1, dipulihkan langkah 39) dan sort kolom (tiap siklus berakhir netral). Tidak ada data yang ditulis. Hook `after` menghapus preferensi tabel di browser sebagai cadangan (kemampuan disediakan tim FE).
+- Pengecualian A-18 (butir "Pengecualian A-18" di `suite.md`): Account Code literal `DID045A` sampai `DID045G` hanya dipakai spec ini; seed idempotent dan penghapusan sisa akun dijalankan di hook `before` dan `after`.
+- Search `{runId}-045` (langkah 1) membatasi tabel pada tujuh akun milik spec sehingga semuanya tampil di halaman 1 (10 baris per halaman) dan urutan relatif tidak bergantung pada jumlah akun Pre-setup (S-14, R-23). Tiap kolom yang di-sort punya sedikitnya dua nilai distinct pada akun yang diasersi (S-11). Label P1 sampai P7 pada langkah menunjuk akun padanan di atas.
+- Urutan relatif yang diasersi: Account Code A-Z P4, P3, P1, P2, P5; Account Name A-Z P5, P1, P4, P3, P2; Used By naik P1, P6, P7.
+- State yang diubah spec: isi kotak Search (dikosongkan langkah 39) dan sort kolom (tiap siklus berakhir netral). Ukuran halaman tidak diubah. Hook `after` menghapus preferensi tabel di browser sebagai cadangan (kemampuan disediakan tim FE).
 - Flag Guided Tooltip halaman Chart of Accounts di-set true oleh hook suite `before` untuk akun aktor (lihat `suite.md`).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
 
-### Persiapan tampilan
+### Persiapan data tampilan
 
-1. Ubah jumlah baris per halaman menjadi 100
+1. Ketik Search `{runId}-045`, tekan Enter
 
 ### TC-FA-COA-80: Sort default Account Code A-Z dan siklus sort tiga tahap pada kolom
 
-2. Verifikasi urutan default Account Code A-Z: baris akun P4 `1-1002`, P3 `4-7001`, P1 `5-6001`, P2 `6-2001`, P5 `CAP-6100` tampil berurutan
+2. Verifikasi urutan default Account Code A-Z: baris akun P4 `DID045A`, P3 `DID045B`, P1 `DID045C`, P2 `DID045D`, P5 `DID045E` tampil berurutan
 3. Klik header Account Name satu kali
 4. Verifikasi baris berurut naik menurut Account Name: P5, P1, P4, P3, P2
 5. Klik header Account Name kedua kali
@@ -94,15 +95,16 @@ coverage:
 
 ### Pemulihan
 
-39. Ubah jumlah baris per halaman kembali menjadi 10
+39. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Alasan spec di atas sekitar 35 langkah (39 langkah): empat blok sort satu kelas (Sort), satu dataset, tiap blok berupa siklus tiga klik yang berdiri sendiri dan berakhir netral, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; Expected indikator dan urutan dipecah satu `Verifikasi` per klausa (S-01).
-- Langkah penghubung (S-03, S-09): langkah 1 (ukuran halaman 100 agar akun P terlihat bersama) dan langkah 39 (memulihkan ukuran halaman). Tiap siklus sort berakhir netral sehingga tidak ada langkah reset tambahan.
-- Asersi urutan memakai urutan relatif akun P yang diturunkan dari data Pre-setup (nama, kode, status, Used By); TC-FA-COA-80 hanya menulis "urut naik/turun/netral".
+- Langkah penghubung (S-03, S-09): langkah 1 (Search `{runId}-045` supaya hanya tujuh akun milik spec tampil; R-16, R-23, 8b.13) dan langkah 39 (mengosongkan Search). Kotak Search tetap berisi `{runId}-045` selama keempat siklus sort; klik header sort tidak mengubah isinya. Tiap siklus sort berakhir netral sehingga tidak ada langkah reset tambahan.
+- `A-18`: TC-FA-COA-182 memakai Account Code `DID045A` sampai `DID045E` sebagai objek asersi urutan (akun milik spec, Name bersuffix `{runId}-045`); seed idempotent dan penghapusan sisa di hook `before` dan `after`.
+- Asersi urutan memakai urutan relatif akun yang diturunkan dari data seed spec (nama, kode, status, Used By); TC-FA-COA-80 hanya menulis "urut naik/turun/netral".
 - Tidak ada asersi pencatatan/log di spec ini (aksi sort tidak menghasilkan log).
 - Temuan untuk QA:
-  - TC-FA-COA-80, 174, 175, 182 tidak menyebut ukuran halaman. Dengan total akun Pre-setup P1 sampai P115 (lebih dari 100 baris) akun P mungkin tidak seluruhnya berada di halaman 1 pada sort Active atau Used By; spec memakai ukuran halaman 100 dan mengasumsikan akun P terlihat bersama; perlu konfirmasi tim FE tentang urutan baris seed.
-  - TC-FA-COA-80 butir b tidak menyebut data uji urutan Account Name; urutan relatif P5, P1, P4, P3, P2 diturunkan dari nama Pre-setup.
-  - TC-FA-COA-182 butir b menyebut "tanpa membedakan huruf besar-kecil" tetapi data P1 sampai P5 tidak memuat kode huruf kecil; asersi hanya mengonfirmasi urutan relatif.
+  - TC-FA-COA-80, 174, 175, 182 menyebut P1 sampai P7 di antara lebih dari seratus akun Pre-setup (P1 sampai P117), sedangkan ukuran halaman default 10 dan tabel tidak menjamin akun P berada di satu halaman pada sort Name, Code Z-A, Active, atau Used By; spec memakai tujuh akun padanan milik spec dan Search awalan nama bersama tanpa mengubah Expected TC. Used By 1 dan 2 membutuhkan Asset Class pemakai akun yang di-seed hook (kemampuan disediakan tim FE/BE).
+  - TC-FA-COA-80 butir b tidak menyebut data uji urutan Account Name; urutan relatif P5, P1, P4, P3, P2 diturunkan dari nama seed spec.
+  - TC-FA-COA-182 butir b menyebut "tanpa membedakan huruf besar-kecil" tetapi data tidak memuat kode huruf kecil; asersi hanya mengonfirmasi urutan relatif.

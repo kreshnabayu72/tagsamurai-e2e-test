@@ -20,14 +20,14 @@ coverage:
 
 | Role | Akun | Env password | TC |
 |---|---|---|---|
-| Group Manager tanpa Manage accounting (akun pertama, login di hook `before`) | `groupManagerFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_GMNOACC_PASSWORD` (belum terdaftar di `spectra.config.ts` dan `.env.example`; perlu didaftarkan tim FE. `FA_GM_PASSWORD` sudah terdaftar untuk akun Group Manager lain sehingga tidak dipakai) | TC-FA-COA-12 |
+| Group Manager tanpa Manage accounting (akun pertama, login di hook `before`) | `groupManagerFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_GMNOACC_PASSWORD` (terdaftar di `spectra.config.ts` dan `.env.example`. `FA_GM_PASSWORD` terdaftar untuk akun Group Manager lain sehingga tidak dipakai) | TC-FA-COA-12 |
 | Read Only | `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_RO_PASSWORD` (terdaftar) | TC-FA-COA-163 |
 
 - Login akun pertama (Group Manager) di hook `before` spec ini. Pengecualian atas hook `beforeEach` suite: akun Group Manager tidak punya akses ke tab Chart of Accounts, sehingga spec membuka Fixed Asset > Settings sendiri (langkah 1) dan membuka layar Chart of Accounts untuk blok Read Only lewat langkah spec (langkah 9). Hook `after` spec mengembalikan sesi ke akun default suite (Total Control, `Spectra.env.FA_TC_PASSWORD`). Password tidak ditulis di spec atau fixture.
 - Data Pre-setup (hanya dibaca, tidak diubah): akun P1 `5-6001 – Depreciation Expense – Admin` (Active).
 - Kemampuan teknis: keyboard (Tab); membuka URL langsung tab Chart of Accounts di browser.
 - Seed dan pemulihan akun Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
-- Identitas data Pre-setup dibaca dari `fixtures/settings-chart-of-accounts.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
+- Identitas data Pre-setup dibaca dari `Fixture.settingsChartOfAccounts.<kunci>` (fixture belum ada, disediakan tim FE; nama kunci ditetapkan tim FE).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -63,4 +63,4 @@ coverage:
   - TC-FA-COA-12 tidak menyatakan apakah entri sidebar `Accounting` tampil bagi Group Manager tanpa Manage accounting; spec mengasumsikan tampil dan sedikitnya satu tab lain pada tab bar.
   - TC-FA-COA-12 butir b ("403") tidak menyebut bentuk penolakan di browser; spec mengasersi 403 pada akses URL langsung.
   - TC-FA-COA-163 menyebut Switch Status Disabled menerima fokus keyboard; elemen berstatus disabled lazimnya tidak dapat difokus, sehingga cara fokus (atribut `aria-disabled` atau lainnya) perlu dikonfirmasi tim FE.
-  - Akun Group Manager tanpa Manage accounting adalah asumsi tabel Pre-setup TC; nama env password usulan `FA_GMNOACC_PASSWORD`.
+  - Akun Group Manager tanpa Manage accounting adalah asumsi tabel Pre-setup TC; akun ini memakai env password `FA_GMNOACC_PASSWORD`.

@@ -20,13 +20,13 @@ coverage:
 
 | Role | Akun | Env password | TC |
 |---|---|---|---|
-| Manage accounting – Delete (login di hook `before`) | `manageAccountingDelete_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_MACC_DELETE_PASSWORD` (belum terdaftar di `spectra.config.ts` dan `.env.example`; perlu didaftarkan tim FE) | TC-FA-COA-267, 268 |
+| Manage accounting – Delete (login di hook `before`) | `manageAccountingDelete_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_MACC_DELETE_PASSWORD` (terdaftar di `spectra.config.ts` dan `.env.example`) | TC-FA-COA-267, 268 |
 
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` spec mengembalikan sesi ke akun default suite (Total Control, `Spectra.env.FA_TC_PASSWORD`). Password tidak ditulis di spec atau fixture.
-- Data Pre-setup (target hapus sekali pakai; seed idempotent mengembalikannya sebelum run berikutnya): P78 `CAP-8208 – Capitalization Clearing – Delete Only Single`, P79 `CAP-8209 – Capitalization Clearing – Delete Only Bulk A`, dan P80 `CAP-8210 – Capitalization Clearing – Delete Only Bulk B`; seluruhnya Function Capitalization Offset, Active, Used By 0, Last Used in Journal kosong, belum pernah diekspor, dan bukan nilai default company.
+- Data Pre-setup (target hapus sekali pakai; identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>`; fixture belum ada, disediakan tim FE): P78 `CAP-8208 – Capitalization Clearing – Delete Only Single`, P79 `CAP-8209 – Capitalization Clearing – Delete Only Bulk A`, dan P80 `CAP-8210 – Capitalization Clearing – Delete Only Bulk B`; seluruhnya Function Capitalization Offset, Active, Used By 0, Last Used in Journal kosong, belum pernah diekspor, dan bukan nilai default company.
+- Pengecualian A-18 (butir "Data bersama" di `suite.md`): P78 sampai P80 dan Account Code literalnya dipakai spec ini saja. Seed idempotent dan pemulihan P78 sampai P80 (akun dibuat ulang ke kondisi awal) dijalankan fixture backend (disediakan tim FE/BE) di hook `before` dan `after` spec ini; suite berjalan serial.
 - Flag Guided Tooltip halaman Chart of Accounts disetel true oleh hook suite `before` untuk akun aktor yang dipakai, termasuk akun role di tabel (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed dan pemulihan akun Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
-- Identitas data Pre-setup dibaca dari `fixtures/settings-chart-of-accounts.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -54,7 +54,8 @@ coverage:
 - Sumber: `fixed-asset/settings-chart-of-accounts/TestCases/tc-settings-chart-of-accounts.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Mode: FE+BE.
 - Role Matrix positif (bagian 3a, `[KEPUTUSAN 2026-11-02]`): satu spec memuat dua aksi (Delete single dan Bulk Delete) dengan polaritas seragam dan satu role (Manage accounting – Delete); aksi hapus di akhir spec (S-10), Delete single lebih dulu lalu Bulk Delete.
-- Langkah penghubung (S-03): langkah 1 dan 6 (Search untuk menampilkan akun target sebelum aksi pada baris itu; R-16, bagian 8b butir 9 dan 12); langkah 12 (menutup Search dan mereset tabel, S-09). Pembukaan menu ⋯ untuk row action `Delete` ditulis dalam langkah 2.
+- Langkah penghubung (S-03): langkah 1 dan 6 (Search untuk menampilkan akun target sebelum aksi pada baris itu; R-16, bagian 8b butir 9 dan 13); langkah 12 (menutup Search dan mereset tabel, S-09). Pembukaan menu ⋯ untuk row action `Delete` ditulis dalam langkah 2.
+- `A-18`: P78 sampai P80 menjadi target hapus sekali pakai (TC-FA-COA-267 dan 268); syarat A-18 (seed idempotent, pemulihan di hook `before` dan `after`, suite serial, satu akun dan satu Code satu spec) dinyatakan di `## Prerequisites`.
 - Asersi absence "hilang dari tabel" (langkah 5 dan 11) memakai toast sukses hapus (langkah 4 dan 10) sebagai anchor (bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-FA-COA-267 dan 268 Post Condition ("dihapus permanen; log L-04 tercatat") tidak punya langkah observasi untuk log; hanya toast dan hilangnya baris yang diasersi.

@@ -19,7 +19,7 @@ coverage:
 
 - Mode: FE+BE (intercept parsial di atas backend nyata; respons Create dan Save Edit dipaksa lewat `Spectra.intercept()`, sedangkan state akun P1 dan tabel dibaca dari backend nyata).
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
-- Data Pre-setup (disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`): akun P1 `Fixture.settingsChartOfAccounts.p1` (Account Code `5-6001`, Account Name `Depreciation Expense – Admin`, Function Depreciation Expense, Active, Used By 0, belum pernah diekspor). P1 hanya dibaca; semua aksi tulis di spec ini digagalkan sehingga P1 tidak berubah.
+- Data Pre-setup (disediakan tim FE lewat `Fixture.settingsChartOfAccounts.<kunci>` (fixture belum ada; nama kunci ditetapkan tim FE); seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`): akun P1 `Fixture.settingsChartOfAccounts.p1` (Account Code `5-6001`, Account Name `Depreciation Expense – Admin`, Function Depreciation Expense, Active, Used By 0, belum pernah diekspor). P1 hanya dibaca; semua aksi tulis di spec ini digagalkan sehingga P1 tidak berubah.
 - Data Dinamis (tidak ada yang tersimpan; nama dipakai sebagai input form): Account Name `Depreciation Expense – Failure Test {runId}-066` (Code `5-6600`), `Depreciation Expense – Timeout {runId}-066` (Code `5-6910`), `Depreciation Expense – Admin Failure {runId}-066`, `Depreciation Expense – Admin Timeout {runId}-066`. Account Code maksimal 15 karakter sehingga Code tidak dapat bersuffix `{runId}`; suffix dipasang pada Name dan Code literal dibersihkan di hook `before` dan `after` spec ini (R-13).
 - Kebutuhan intercept (kelas b, fault injection; `Spectra.intercept()`, tanpa endpoint karangan):
   - TC-FA-COA-32: respons Create dipaksa 5xx.
@@ -28,6 +28,7 @@ coverage:
   - TC-FA-COA-303: respons Save Edit tidak diberikan (timeout).
   Intercept dilepas segera setelah pemicu diasersi dan dipulihkan di hook `after` bila spec gagal di tengah.
 - Hook `before` dan `after` spec ini menghapus akun dengan Code `5-6600` dan `5-6910` bila ada (pembersihan lewat API, disediakan tim FE).
+- Pengecualian A-18 (S-06 dan S-12; butir "Pengecualian A-18" di `suite.md`): Account Code literal `5-6600` dan `5-6910` tanpa suffix `{runId}` (batas 15 karakter); Create selalu digagalkan sehingga tidak ada akun yang tersimpan. Pemulihan (tidak ada akun ber-Code itu) dijalankan di hook `before` dan `after` spec ini (kemampuan disediakan tim FE).
 - Suite berjalan serial (`parallel: false`).
 - Env var `FA_TC_PASSWORD` sudah terdaftar di `executionConfig.environmentVariables` dan `.env.example`.
 
@@ -98,7 +99,7 @@ coverage:
 52. Klik ikon ✕ pada modal Edit Account
 53. Verifikasi dialog `Unsaved Changes` tampil
 54. Klik `[Leave]`
-55. Verifikasi baris akun P1 menampilkan Account Name `Depreciation Expense – Admin` (tidak ada perubahan tersimpan oleh TC-FA-COA-41 maupun TC-FA-COA-303)
+55. Verifikasi baris akun P1 menampilkan Account Name `Fixture.settingsChartOfAccounts.p1.name` (tidak ada perubahan tersimpan oleh TC-FA-COA-41 maupun TC-FA-COA-303)
 56. Klik `(←)` pada kotak Search
 
 ## Notes
@@ -106,10 +107,10 @@ coverage:
 - Mode: FE+BE (kelas b, fault injection). Empat TC berdiri sendiri dan satu kelas harness; jumlah langkah (56) melewati sekitar 35 langkah karena Expected dipecah satu klausa per `Verifikasi` (S-01) dan tiap blok memuat pemicu intercept, pemulihan form dirty (✕, `Unsaved Changes`, `[Leave]`, S-08), serta pelepasan intercept.
 - Langkah penghubung (S-03, S-09): langkah 11, 25, 40, 51 (melepas intercept agar tidak bocor ke blok berikutnya); langkah 12-14, 26-28, 41-43, 52-54 (menutup form dirty secara deterministik); langkah 29 dan 31 (Search sufiks `{runId}-066` untuk memeriksa akun tidak terbentuk, lalu kosongkan); langkah 32 dan 56 (Search nama P1 sebagai penemu baris target, R-16, R-23, lalu kosongkan).
 - Langkah 30 mencakup Expected c TC-FA-COA-32 dan TC-FA-COA-302 sekaligus karena kedua Name berakhiran `{runId}-066`. Langkah 55 mencakup Expected c TC-FA-COA-41 dan TC-FA-COA-303.
-- Klausa "tidak ada log" pada Expected c keempat TC tidak diasersi di spec ini (S-05). Asersi absence log berada di spec absence (kelas g); rujukan: TC-FA-COA-51 dan TC-FA-COA-52 di spec 083, yang tidak memuat TC-FA-COA-32, 302, 41, 303.
+- Pembagian TC lintas spec (S-05): klausa "tidak ada log" pada Expected c TC-FA-COA-32 dan TC-FA-COA-302 diasersi di spec 098, dan pada TC-FA-COA-41 dan TC-FA-COA-303 di spec 101; kedua spec absence memuat pemicu yang sama dengan baseline sendiri. Spec ini tidak mengasersi log.
 - Hook `after` melepas intercept yang tersisa dan menghapus akun Code `5-6600` dan `5-6910` bila ada.
+- A-18: Account Code literal `5-6600` (TC-32) dan `5-6910` (TC-302) tanpa suffix `{runId}`; Create selalu digagalkan sehingga akun tidak tersimpan, dan hook `before` dan `after` menghapus akun ber-Code itu bila ada. Kedua Code juga dipicu spec 098 (Create gagal tanpa state).
 - Temuan untuk QA:
-  - Klausa "tidak ada log" pada Expected c TC-FA-COA-32, 302, 41, 303 tidak punya spec absence yang memuatnya (spec 083 hanya memuat TC-FA-COA-51, 52, 96, 118); perlu keputusan apakah dipindah atau cukup tercatat di sini.
   - Search dengan sufiks `{runId}-066` mengasumsikan Search mencocokkan sebagian Account Name; perlu dikonfirmasi tim FE.
-  - TC-FA-COA-32 dan 302 memakai Code literal `5-6600` dan `5-6910` yang tidak dapat bersuffix run (maksimal 15 karakter); dibersihkan di hook `before` dan `after`.
+  - TC-FA-COA-32 dan 302 memakai Code literal `5-6600` dan `5-6910` yang tidak dapat bersuffix run (maksimal 15 karakter).
   - TC-FA-COA-32, 302, 41, 303 tidak menyebut cara menutup modal setelah kegagalan; spec memakai ✕, `Unsaved Changes`, `[Leave]` sebagai langkah penghubung.

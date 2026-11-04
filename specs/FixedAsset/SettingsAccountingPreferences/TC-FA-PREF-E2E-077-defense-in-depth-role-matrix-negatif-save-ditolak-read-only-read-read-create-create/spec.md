@@ -95,7 +95,6 @@ coverage:
 - Pelaku kedua (sesi API Total Control untuk membaca ulang nilai pada TC-511 sampai 514) hanya mengamati state; bukan konteks kedua kelas c (bagian 3 P-2).
 - Post Condition semua TC ("tidak ada perubahan data maupun log") dicakup Expected butir b dan diasersi pada langkah nilai tersimpan dan jumlah baris log.
 - Temuan untuk QA:
-  - TC-FA-PREF-230 tidak mencatat jumlah baris log pada Precondition padahal Post Condition meminta "tidak ada entri log baru"; spec menambah pencatatan dan penghitungan ulang (S-12).
   - TC-FA-PREF-230 dan TC-FA-PREF-512 menguji aktor dan Expected yang sama (Read Only, In-service Date Source = Manual by Accounting); perbedaannya hanya seri fixture (PB-1 dan PC-1) dan cara membaca ulang (UI atau API).
   - TC-FA-PREF-511 sampai 514 tidak menyebut nama env var password aktor; nama `FA_RO_PASSWORD`, `FA_MAR_PASSWORD`, `FA_MARC_PASSWORD`, dan `FA_MAC_PASSWORD` diusulkan spec dan perlu keputusan tim.
   - TC-FA-PREF-511 sampai 514 menyebut "klien HTTP dengan sesi aktor" tanpa endpoint; endpoint disediakan tim FE/BE (S-13).

@@ -94,6 +94,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Pengecualian K-1: spec defense-in-depth (kelas a) dengan Expected respons API. Request langsung tidak melewati browser; asersi penolakan ada pada langkah Verifikasi respons.
+- Spec ini 36 langkah (di atas smell 35 langkah) karena tujuh TC defense-in-depth berbagi satu baseline log dan satu tahap pemulihan; memecahnya menggandakan baseline tanpa memperjelas asersi.
 - Baseline log (langkah 1) dicatat sekali; penolakan tidak mengubah jumlah baris log sehingga hitung ulang tiap TC dibandingkan dengan jumlah awal yang sama (S-12).
 - Post Condition semua TC ("... tidak berubah") dicakup Expected butir b dan diasersi pada langkah nilai tersimpan dan jumlah baris log.
 - Temuan untuk QA:

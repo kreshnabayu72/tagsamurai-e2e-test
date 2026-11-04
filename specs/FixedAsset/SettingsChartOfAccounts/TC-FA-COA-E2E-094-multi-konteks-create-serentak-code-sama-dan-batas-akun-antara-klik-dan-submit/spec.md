@@ -17,7 +17,7 @@ coverage:
 
 - Mode: FE+BE (backend nyata; tanpa intercept).
 - Akun aktor sesi A: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
-- Akun sesi B pada TC-FA-COA-281 (konteks browser kedua yang hasilnya diasersi): Default User `defaultUserFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_DU_PASSWORD` (nama env usulan, perlu didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`). Default User adalah Total Control permanen (asumsi Pre-setup TC, lihat Temuan untuk QA). Login sesi B ditulis sebagai langkah eksplisit (S-07).
+- Akun sesi B pada TC-FA-COA-281 (konteks browser kedua yang hasilnya diasersi): Default User `defaultUserFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_DU_PASSWORD` (terdaftar di `spectra.config.ts` dan `.env.example`). Default User adalah Total Control permanen (asumsi Pre-setup TC, lihat Temuan untuk QA). Login sesi B ditulis sebagai langkah eksplisit (S-07).
 - Sesi API aktor: pelaku kedua pada TC-FA-COA-160 (membuat akun hingga jumlah 1000) memakai sesi API sesuai butir "Sesi API aktor" di `suite.md`.
 - Seed dan pemulihan lewat API: mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`.
 - Flag Guided Tooltip halaman Chart of Accounts: di-set true oleh hook `before` suite (lihat `suite.md`), termasuk untuk akun Total Control pada client P25.
@@ -29,7 +29,7 @@ coverage:
   - TC-FA-COA-160: Code `CAP-7000`, Name `Capitalization Clearing – Race {runId}-094`, Function Capitalization Offset (tidak tersimpan); akun pengisi slot terakhir Code `CAP-7001`, Name `Race Filler {runId}-094`, Function Capitalization Offset (dibuat sesi API, dihapus langkah 35).
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): membuat dan menghapus akun lewat sesi API; membersihkan akun `CAP-8400`, `CAP-7000`, dan `CAP-7001` di hook `before` dan `after`; memulihkan hitungan 999 akun pada client P25.
 - Suite berjalan serial (`parallel: false`): spec memakai satu slot terakhir Master Data Count Limit pada client P25 dan Account Code literal.
-- Env var yang dipakai: `FA_TC_PASSWORD` (terdaftar), `FA_DU_PASSWORD` (belum terdaftar, perlu didaftarkan tim FE).
+- Env var yang dipakai: `FA_TC_PASSWORD` (terdaftar), `FA_DU_PASSWORD` (terdaftar).
 
 ## Test Steps
 
@@ -78,8 +78,8 @@ coverage:
 
 - Mode: FE+BE (kelas c, multi-konteks). Dua blok berdiri sendiri dan satu kelas harness (konflik dua sesi dan perubahan state antara dialog dan Submit); jumlah langkah 35.
 - Pelaku kedua pada TC-FA-COA-160 adalah sesi API yang hanya memicu perubahan state; sesi UI kedua dipakai hanya pada TC-FA-COA-281 karena penolakan di sesi B ikut diasersi.
-- Langkah penghubung (S-03, S-09): langkah 10 dan 32 (Search untuk menemukan akun target, R-16, butir 8b.12) serta 13 dan 34 (mengosongkan Search); langkah 7, 8, 9, 29, 30, 31 (menutup form dirty dengan `✕`, `Unsaved Changes`, `[Leave]`, S-08); langkah 14 dan 35 (membersihkan akun yang dibuat dan memulihkan hitungan slot); langkah 15 (menutup konteks kedua); langkah 1 dan 16 (ganti akun eksplisit, S-07).
-- Pemenang tidak dapat ditentukan sebelumnya (nondeterministik); langkah 5 sampai 12 memakai istilah "sesi pemenang" (sesi yang menerima toast sukses) dan "sesi kalah" (sesi A atau B). Pencarian pada langkah 10 selalu di sesi A, sesudah form sesi kalah dipulihkan pada langkah 7 sampai 9.
+- Langkah penghubung (S-03, S-09): langkah 10 dan 32 (Search untuk menemukan akun target, R-16, butir 8b.13) serta 13 dan 34 (mengosongkan Search); langkah 7, 8, 9, 29, 30, 31 (menutup form dirty dengan `✕`, `Unsaved Changes`, `[Leave]`, S-08); langkah 14 dan 35 (membersihkan akun yang dibuat dan memulihkan hitungan slot); langkah 15 (menutup konteks kedua); langkah 1 dan 16 (ganti akun eksplisit, S-07).
+- Pemenang tidak dapat ditentukan sebelumnya (nondeterministik); langkah 5 sampai 12 memakai istilah "sesi pemenang" (sesi yang menerima toast sukses) dan "sesi kalah" (sesi A atau B), idiom race tak deterministik butir 8b.15 yang dipakai TC-FA-COA-281. Pencarian pada langkah 10 selalu di sesi A, sesudah form sesi kalah dipulihkan pada langkah 7 sampai 9.
 - Asersi absence: "tidak ada toast tambahan" (langkah 23) didahului dialog sebagai anchor positif (butir 8b.2 dan 8b.11); "akun `CAP-7000` tidak dibuat" (langkah 33) memakai empty state `No results found` hasil Search sebagai anchor. Post Condition "tidak ada log L-01 untuk `CAP-7000`" (TC-FA-COA-160) dan "satu entri L-01 per surface" (TC-FA-COA-281) tidak punya langkah observasi di TC sehingga tidak diasersi.
 - Temuan untuk QA:
   - TC-FA-COA-281 menulis "Account Name dan Account Function valid" tanpa nilai; spec memilih Name berbeda per sesi (`Race Code A/B {runId}-094`) agar penolakan hanya berasal dari Account Code dan Function Capitalization Offset.

@@ -20,6 +20,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup #1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (Rudi Hartono), client PT Sejahtera plan Paid (General Settings `dd/MM/yy`, `HH:mm`), password dari `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Nama env `FA_TC_PASSWORD` didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
+- Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Hook suite (sesi API aktor, fixture BE pemulih Pre-setup): dinyatakan sekali di `suite.md`; spec ini merujuknya.
 - Data Pre-setup (hook `before` dan `after` memulihkannya lewat fixture BE pemulih riwayat): riwayat Changelog Concurrent User #31 (4 entri) lewat `Fixture.fixedAssetLicense.changelogConcurrentUser` (fixture belum ada, disediakan tim FE); sesi aktif Pre-setup #14 (Dewi Lestari dan Rudi Hartono memiliki sesi aktif tanpa entri Force Logout atas namanya).
 
@@ -37,8 +38,9 @@ coverage:
   | User Name | Andi Pratama, Budi Santoso, Siti Rahma | `Siti Rahma` | 29/09/26 14:20, 27/09/26 16:05 |
   | Modified By | Dewi L, Rudi H | `Rudi H` | 30/09/26 11:15, 28/09/26 09:40 |
 
-- Data untuk blok paginasi (TC-FA-LIC-581, langkah 32 sampai 42): riwayat Changelog Concurrent User ditambah sampai 25 entri Force Logout lewat fixture BE (disediakan tim FE/BE; entri Pre-setup #31 termasuk di dalamnya). Pemulihan ke Pre-setup #31 oleh fixture BE pemulih riwayat di hook `after`.
+- Data untuk blok paginasi (TC-FA-LIC-581, langkah 33 sampai 47): riwayat Changelog Concurrent User 25 entri Force Logout: 4 entri Pre-setup #31 ditambah 21 entri fixture bertanggal sebelum 27/09/26 16:05 (Pre-setup #43, fixture BE disediakan tim FE/BE; Action `Force Logout`, Field `Session Status`, Old Value `Active`, New Value `Force Logged Out`). Pemulihan ke Pre-setup #31 oleh fixture BE pemulih riwayat di hook `after`.
 - Spec ini tidak mengubah state global.
+- Pengecualian S-12 [KEPUTUSAN 2026-11-02]: Urutan dan jumlah entri Changelog (langkah 11, 14, 16, 23, 25, 31, dan 46) diasersi absolut (tanpa baseline) karena fixture BE pemulih riwayat Pre-setup #31 juga menghapus entri baru (dinyatakan di `suite.md`); asersi tidak diubah.
 
 ## Test Steps
 
@@ -69,48 +71,50 @@ Untuk setiap baris tabel "Data Uji Filter per dropdown" (langkah 13 sampai 17):
 17. Klik `[Clear Field]`, klik `[Apply]`
 
 18. Buka dropdown `User Name`
-19. Verifikasi `Dewi Lestari` dan `Rudi Hartono` tidak menjadi opsi User Name (opsi `Andi Pratama`, `Budi Santoso`, dan `Siti Rahma` tampil)
-20. Tutup dropdown `User Name`
+19. Verifikasi opsi `Andi Pratama`, `Budi Santoso`, dan `Siti Rahma` tampil pada dropdown User Name
+20. Verifikasi `Dewi Lestari` dan `Rudi Hartono` tidak menjadi opsi User Name
+21. Tutup dropdown `User Name`
 
 ### TC-FA-LIC-574: Dua opsi dalam satu field memakai OR, antar-field memakai AND
 
-21. Pada `User Name` centang `Andi Pratama` dan `Budi Santoso`, klik `[Apply]`
-22. Verifikasi `User Name` = `Andi Pratama` atau `Budi Santoso` (OR) menampilkan: 30/09/26 11:15, 28/09/26 09:40
-23. Pada `Modified By` centang `Dewi L`, klik `[Apply]`
-24. Verifikasi penambahan `Modified By` = `Dewi L` (AND) menampilkan empty state `No results found`
-25. Klik `[Clear Field]`, klik `[Apply]`
+22. Pada `User Name` centang `Andi Pratama` dan `Budi Santoso`, klik `[Apply]`
+23. Verifikasi `User Name` = `Andi Pratama` atau `Budi Santoso` (OR) menampilkan: 30/09/26 11:15, 28/09/26 09:40
+24. Pada `Modified By` centang `Dewi L`, klik `[Apply]`
+25. Verifikasi penambahan `Modified By` = `Dewi L` (AND) menampilkan empty state `No results found`
+26. Klik `[Clear Field]`, klik `[Apply]`
 
 ### TC-FA-LIC-575: Filter date range picker (inklusif)
 
-26. Verifikasi placeholder field Date `Select date`
-27. Pada `Date` pilih rentang 28/09/26–29/09/26
-28. Verifikasi teks tanggal terpilih mengikuti Date Format General Settings (`dd/MM/yy`)
-29. Klik `[Apply]`
-30. Verifikasi Date 28/09/26–29/09/26 menampilkan: 29/09/26 14:20, 28/09/26 09:40
-31. Klik `[Clear Field]`, klik `[Apply]`
+27. Verifikasi placeholder field Date `Select date`
+28. Pada `Date` pilih rentang 28/09/26–29/09/26
+29. Verifikasi teks tanggal terpilih mengikuti Date Format General Settings (`dd/MM/yy`)
+30. Klik `[Apply]`
+31. Verifikasi Date 28/09/26–29/09/26 menampilkan: 29/09/26 14:20, 28/09/26 09:40
+32. Klik `[Clear Field]`, klik `[Apply]`
 
 ### TC-FA-LIC-581: Paginasi default 10 per halaman, pilihan 10/25/50/100, input nomor halaman
 
-32. Tutup modal dengan `[×]`
-33. Tambah entri Force Logout lewat fixture BE sampai riwayat berisi 25 entri
-34. Klik ikon Changelog pada toolbar
-35. Verifikasi default 10 baris per halaman
-36. Ketik nomor halaman 2 pada input, tekan Enter
-37. Verifikasi input nomor halaman 2 langsung membuka halaman 2
+33. Tutup modal dengan `[×]`
+34. Jalankan fixture BE Pre-setup #43 (menambah 21 entri Force Logout) sampai riwayat berisi 25 entri
+35. Klik ikon Changelog pada toolbar
+36. Verifikasi default 10 baris per halaman
+37. Verifikasi halaman 1 menampilkan 10 baris
 38. Buka pilihan page size
 39. Verifikasi pilihan page size 10, 25, 50, 100 (tanpa opsi All)
-40. Pilih 25
-41. Verifikasi seluruh 25 baris tampil dalam satu halaman
-42. Verifikasi tabel kembali ke halaman 1
+40. Tutup pilihan page size tanpa memilih (klik di luar daftar)
+41. Verifikasi page size tetap 10
+42. Ketik nomor halaman 2 pada input, tekan Enter
+43. Verifikasi input nomor halaman 2 langsung membuka halaman 2 pada page size 10
+44. Verifikasi halaman 2 menampilkan 10 baris (baris ke-11 sampai ke-20)
+45. Buka pilihan page size, pilih 25
+46. Verifikasi seluruh 25 baris tampil dalam satu halaman
+47. Verifikasi tabel kembali ke halaman 1
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC.
-- Langkah penghubung (tanpa `Verifikasi`): langkah 12, 17, 25, dan 31 membersihkan Search dan filter antar kasus (S-09); langkah 20 menutup dropdown; langkah 32 sampai 34 menutup modal, menambah entri, dan membuka kembali modal supaya 25 entri terbaca.
+- Langkah penghubung (tanpa `Verifikasi`): langkah 12, 17, 26, dan 32 membersihkan Search dan filter antar kasus (S-09); langkah 21 menutup dropdown; langkah 33 sampai 35 menutup modal, menambah entri, dan membuka kembali modal supaya 25 entri terbaca; langkah 40 menutup pilihan page size tanpa memilih.
 - Langkah yang diulang per baris tabel Data Uji Filter: langkah 13 sampai 17 (2 iterasi) (bagian 8b butir 7).
-- Perubahan urutan di TC-FA-LIC-581: lompat ke halaman 2 (langkah 36 dan 37) dilakukan sebelum mengganti page size ke 25, karena dengan 25 entri dan page size 25 halaman 2 tidak ada. TC menulis lompat sesudah ganti page size dengan frasa "bila tersedia".
-- Spec di atas 35 langkah (42 langkah nominal dan sekitar 47 langkah dengan ekspansi): alasan dipertahankan, seluruh blok adalah Filter Panel dan paginasi modal Changelog Concurrent User yang sama dengan dataset yang sama, dan berdiri sendiri; tiap blok diakhiri `[Clear Field]` dan `[Apply]`, dan blok 25 entri berada di akhir sehingga kegagalannya tidak menutupi blok lain.
+- Spec di atas 35 langkah (47 langkah nominal dan sekitar 52 langkah dengan ekspansi): alasan dipertahankan, seluruh blok adalah Filter Panel dan paginasi modal Changelog Concurrent User yang sama dengan dataset yang sama, dan berdiri sendiri; tiap blok diakhiri `[Clear Field]` dan `[Apply]`, dan blok 25 entri berada di akhir sehingga kegagalannya tidak menutupi blok lain.
 - Temuan untuk QA:
   - TC-FA-LIC-574 butir b menyebut penambahan `Modified By` = `Dewi L` menghasilkan empty state; hasil ini berasal dari irisan `User Name` {Andi Pratama, Budi Santoso} dengan entri `Dewi L` (Siti Rahma saja) dan spec mengikuti TC.
-  - TC-FA-LIC-581 komposisi 24 entri tambahan tidak didefinisikan; spec hanya mensyaratkan total 25 entri.
-  - TC-FA-LIC-581 langkah 4 dan 5 membuat halaman 2 tidak tersedia pada page size 25 dengan 25 entri; butir d memakai frasa "(bila tersedia)".

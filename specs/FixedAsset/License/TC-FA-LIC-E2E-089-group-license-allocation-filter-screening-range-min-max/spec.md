@@ -22,7 +22,7 @@ coverage:
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Data Pre-setup #12 (data kuota dan hierarki PT Sejahtera, dipulihkan fixture BE di hook `before`): client Paid Pre-setup #1 dengan `License allocation per group` ON; hierarki Produksi, Kantor Pusat (Divisi Logistik, Divisi IT, Divisi Keuangan belum beralokasi `Allocated Quota —` dan `Remaining Quota —`), Cabang Surabaya, Cabang Medan. Tabel Group License Allocation pada node All Groups menampilkan empat baris level 1. Identitas dan nilai data dirujuk lewat `Fixture.fixedAssetLicense.kuotaHierarki` (belum ada, disiapkan tim FE); nilai pada langkah dan tabel di bawah adalah nilai fixture itu.
 - Data Dinamis: tidak ada. Spec ini hanya membaca tabel.
-- Tabel "Filter range Min-Max" (parameter langkah 10 sampai 13); `kosong` berarti field tidak diisi:
+- Tabel "Filter range Min-Max" (parameter langkah 19 sampai 24); `kosong` berarti field tidak diisi:
 
   | Field | Min | Max | Baris yang tampil |
   |---|---|---|---|
@@ -48,29 +48,42 @@ coverage:
 2. Klik ikon Filter pada toolbar
 3. Verifikasi ikon Filter berubah gelap
 4. Verifikasi panel Filter tampil di bawah toolbar
-5. Verifikasi field berurutan (maksimal 4 per baris), seluruhnya field range Min-Max dengan placeholder `Min / Max`: Allocated Quota, Allocated to Subgroups, Used by This Group, Reserved by This Group, Remaining Quota, + Audit, + Tracking, + Maintenance Routine, + Repair Ticketing, + Maps, + IT Inventory
-6. Verifikasi tombol `[Clear Field]` di kiri (text)
-7. Verifikasi tombol `[Apply]` di kanan (filled)
+5. Verifikasi field berurutan (maksimal 4 per baris): Allocated Quota, Allocated to Subgroups, Used by This Group, Reserved by This Group, Remaining Quota, + Audit, + Tracking, + Maintenance Routine, + Repair Ticketing, + Maps, + IT Inventory
+6. Verifikasi field Allocated Quota: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+7. Verifikasi field Allocated to Subgroups: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+8. Verifikasi field Used by This Group: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+9. Verifikasi field Reserved by This Group: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+10. Verifikasi field Remaining Quota: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+11. Verifikasi field + Audit: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+12. Verifikasi field + Tracking: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+13. Verifikasi field + Maintenance Routine: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+14. Verifikasi field + Repair Ticketing: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+15. Verifikasi field + Maps: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+16. Verifikasi field + IT Inventory: field range Min-Max, placeholder `Min` (input kiri) dan `Max` (input kanan)
+17. Verifikasi tombol `[Clear Field]` di kiri (text)
+18. Verifikasi tombol `[Apply]` di kanan (filled)
 
 ### TC-FA-LIC-313 dan TC-FA-LIC-513: Filter per kelas field range Min-Max (inklusif, salah satu batas boleh kosong)
 
-8. Klik field `Allocated Quota`
-9. Verifikasi placeholder kedua input `Min` dan `Max`
-10. Untuk setiap baris tabel "Filter range Min-Max" (langkah 10 sampai 13): isi Min dan Max field pada baris itu (kosongkan input bila nilainya `kosong`)
-11. Klik `[Apply]`
-12. Verifikasi tabel menampilkan tepat hasil pada kolom "Baris yang tampil" untuk baris tabel itu
-13. Klik `[Clear Field]`, lalu klik `[Apply]`
+19. Untuk setiap baris tabel "Filter range Min-Max" (langkah 19 sampai 24): lihat field pada baris itu
+20. Verifikasi placeholder input kiri `Min` dan input kanan `Max` pada field itu
+21. Isi Min dan Max field pada baris itu (kosongkan input bila nilainya `kosong`)
+22. Klik `[Apply]`
+23. Verifikasi tabel menampilkan tepat hasil pada kolom "Baris yang tampil" untuk baris tabel itu
+24. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-FA-LIC-314: Filter range pada kolom kuota, baris bernilai `—` tersaring keluar
 
-14. Klik node `Kantor Pusat` pada Sidebar
-15. Buka Filter Panel, isi `Allocated Quota` Min `0`, klik `[Apply]`
-16. Verifikasi Divisi Logistik dan Divisi IT tampil
-17. Verifikasi Divisi Keuangan (Allocated `—`) tidak tampil
-18. Klik `[Clear Field]`, lalu klik `[Apply]`
+25. Klik ikon Filter untuk menutup panel
+26. Klik node `Kantor Pusat` pada Sidebar
+27. Buka Filter Panel, isi `Allocated Quota` Min `0`, klik `[Apply]`
+28. Verifikasi Divisi Logistik dan Divisi IT tampil
+29. Verifikasi Divisi Keuangan (Allocated `—`) tidak tampil
+30. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: `[Clear Field]` lalu `[Apply]` di akhir tiap iterasi dan di akhir TC-FA-LIC-314 (S-09), serta membuka node `Kantor Pusat` pada TC-FA-LIC-314.
-- Blok ulang: langkah 10 sampai 13 dijalankan 11 kali (7 field TC-FA-LIC-313 dan 4 field TC-FA-LIC-513). Setelah ekspansi spec ini melewati sekitar 35 langkah. Alasan: seluruh blok adalah Filter satu tabel dengan satu dataset Pre-setup #12 dan satu kelas harness, dan kegagalan satu field tidak membuat field lain kehilangan makna.
-- Temuan untuk QA: TC-FA-LIC-312 menulis placeholder field range `Min / Max`, sedangkan TC-FA-LIC-313 butir a menulis placeholder kedua input `Min` dan `Max`; spec mengasersi keduanya pada keadaan masing-masing (field belum diklik dan sesudah diklik) dan menandai kemungkinan kontradiksi. TC-FA-LIC-313 data Reserved by This Group `1–10` dan Remaining Quota `None–45` dibaca sebagai salah satu batas kosong.
+- Langkah penghubung tanpa `Verifikasi`: `[Clear Field]` lalu `[Apply]` di akhir tiap iterasi dan di akhir TC-FA-LIC-314 (S-09), menutup Filter Panel sebelum berpindah node (langkah 25), serta membuka node `Kantor Pusat` pada TC-FA-LIC-314. Filter Panel tetap terbuka sesudah `[Apply]` (prd-conventions.md §9.8), sehingga iterasi berikutnya tidak membuka panel lagi.
+- Blok ulang: langkah 19 sampai 24 dijalankan 11 kali (7 field TC-FA-LIC-313 dan 4 field TC-FA-LIC-513). Spec di atas 35 langkah (30 langkah nominal; 90 langkah setelah ekspansi). Alasan: seluruh blok adalah Filter satu tabel dengan satu dataset Pre-setup #12 dan satu kelas harness, dan kegagalan satu field tidak membuat field lain kehilangan makna.
+- Asersi di luar Expected TC (S-03): `Verifikasi` placeholder `Min` (input kiri) dan `Max` (input kanan) pada langkah 20 berasal dari Expected a TC-FA-LIC-313 untuk tujuh field; untuk empat field TC-FA-LIC-513 (`+ Tracking`, `+ Maintenance Routine`, `+ Repair Ticketing`, `+ Maps`) langkah yang sama diulang karena langkah loop tanpa percabangan, dengan klausa yang sama seperti TC-FA-LIC-312.
+- Temuan untuk QA: TC-FA-LIC-313 data Reserved by This Group `1–10` dan Remaining Quota `None–45` dibaca sebagai salah satu batas kosong. TC-FA-LIC-312, 313, 314, dan 513 tidak menyebut Post Condition (`-`); tidak ada yang diasersi.

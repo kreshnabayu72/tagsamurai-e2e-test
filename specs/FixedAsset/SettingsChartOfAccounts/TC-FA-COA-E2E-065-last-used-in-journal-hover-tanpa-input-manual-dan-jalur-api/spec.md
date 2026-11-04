@@ -19,7 +19,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Tidak ada ganti akun di tengah spec.
-- Akun Pre-setup (kunci fixture `Fixture.settingsChartOfAccounts.<kunci>` ditetapkan tim FE):
+- Akun Pre-setup (identitas dibaca dari `Fixture.settingsChartOfAccounts.p<N>`: `.code` Account Code dan `.name` Account Name; kunci ditetapkan tim FE; fixture belum ada):
 
   | Akun | Account Code | Kondisi | Dipakai di |
   |---|---|---|---|
@@ -28,10 +28,11 @@ coverage:
   | P112 | `5-6118` | Active, Last Used in Journal kosong, belum pernah diekspor, bukan nilai default company; Account Name `Depreciation Expense – Last Used Advance` | TC-117 (diubah; Last Used maju ke `Sep 2026`) |
   | P4 | `1-1002` | Inactive, Last Used in Journal `Mar 2025` | TC-120 (hanya dibaca) |
 
-- General Settings: Date Format `dd/MM/yy` dan Time Format 24 jam (TC-106).
+- General Settings (state global, TC-106): hook `before` spec ini men-set Date Format `dd/MM/yy` dan Time Format 24 jam; hook `after` memulihkan nilai awal. Kemampuan set dan pulih disediakan tim FE/BE; suite berjalan serial (`parallel: false`).
 - Jalur API J-06 (ekspor Journal) belum ada (NC-04, modul Export Journal belum disusun); TC-106 (bagian ekspor nyata), TC-117, dan TC-120 bertanda `[DEFERRED]`. Kemampuan memicu permintaan langsung J-06 lewat sesi API aktor (suite.md, Sesi API aktor) dan akun P2 yang sudah terekspor disediakan tim FE/BE; tanpa endpoint karangan (S-13).
 - Kemampuan teknis: membaca jumlah entri Changelog Chart of Accounts, System Log pada Detail User aktor, dan Activity Log FAMS lewat BE sebelum aksi (8b.10, S-12); disediakan tim FE/BE.
-- State yang diubah spec: Last Used in Journal akun P112 maju ke `Sep 2026` dan audit trail bertambah permanen; pemulihan nilai P112 dan seed ulang disediakan tim FE/BE (S-06).
+- Pengecualian A-18 (S-06 dan S-12; butir "Pengecualian A-18" di `suite.md`): akun sekali pakai P112 dengan Account Code literal tanpa suffix `{runId}`. Seed idempotent dan pemulihan ke keadaan awal dijalankan di hook `before` dan `after` spec ini; akun dan Code itu hanya dipakai spec ini.
+- State yang diubah spec: Last Used in Journal akun P112 maju ke `Sep 2026` dan audit trail bertambah permanen; hook `before` dan `after` memulihkan akun P112 ke keadaan awal (Last Used in Journal kosong; kemampuan disediakan tim FE/BE).
 - Flag Guided Tooltip halaman Chart of Accounts di-set true oleh hook suite `before` untuk akun aktor (lihat `suite.md`).
 - Suite berjalan serial (`parallel: false`).
 
@@ -43,7 +44,7 @@ coverage:
 2. Verifikasi field Account Code tampil pada form Add Account
 3. Verifikasi form Add Account tidak memuat field Last Used in Journal
 4. Tutup modal Add Account dengan `✕`
-5. Ketik Search `5-6001`, tekan Enter
+5. Ketik Search `Fixture.settingsChartOfAccounts.p1.code`, tekan Enter
 6. Klik row action `Edit` pada baris akun P1
 7. Verifikasi field Account Code tampil pada form Edit Account
 8. Verifikasi form Edit Account tidak memuat field Last Used in Journal
@@ -54,7 +55,7 @@ coverage:
 10. Arahkan kursor ke sel Last Used in Journal baris akun P1
 11. Verifikasi sel baris P1 tampil `—`
 12. Verifikasi sel baris P1 tidak memiliki hover
-13. Ganti isi kotak search dengan `6-2001`, tekan Enter
+13. Ganti isi kotak search dengan `Fixture.settingsChartOfAccounts.p2.code`, tekan Enter
 14. Arahkan kursor ke sel Last Used in Journal baris akun P2
 15. Verifikasi sel baris P2 tampil `Aug 2026`
 16. Verifikasi hover sel baris P2 menampilkan "Last exported 22/10/26, 09:15 by Rina Pratama"
@@ -64,7 +65,7 @@ coverage:
 
 18. Catat jumlah entri Changelog Chart of Accounts, System Log pada Detail User aktor, dan Activity Log FAMS sebagai baseline TC-117
 19. Kirim permintaan langsung J-06 untuk periode Sep 2026 dengan akun P112 lewat sesi API aktor hingga ekspor tersimpan
-20. Ketik Search `5-6118`, tekan Enter
+20. Ketik Search `Fixture.settingsChartOfAccounts.p112.code`, tekan Enter
 21. Verifikasi kolom Last Used in Journal baris akun P112 tampil `Sep 2026`
 22. Klik ikon Changelog di toolbar
 23. Verifikasi jumlah entri Changelog bertambah satu dari baseline
@@ -80,20 +81,22 @@ coverage:
 ### TC-FA-COA-120: [DEFERRED] Export ulang tanpa akun P4 tidak mengosongkan nilai tersimpan
 
 32. Buka Fixed Asset > Settings > Accounting > Chart of Accounts
-33. Ketik Search `1-1002`, tekan Enter
+33. Ketik Search `Fixture.settingsChartOfAccounts.p4.code`, tekan Enter
 34. Verifikasi kolom Last Used in Journal baris akun P4 tampil `Mar 2025`
 35. Kirim permintaan langsung J-06 tanpa akun P4 lewat sesi API aktor hingga ekspor tersimpan
 36. Muat ulang halaman
-37. Ketik Search `1-1002`, tekan Enter
+37. Ganti isi kotak search dengan `Fixture.settingsChartOfAccounts.p4.code`, tekan Enter
 38. Verifikasi kolom Last Used in Journal baris akun P4 tetap `Mar 2025`
 
 ## Notes
 
-- Alasan spec di atas sekitar 35 langkah (38 langkah): empat TC berdiri sendiri pada satu kolom (Last Used in Journal) dengan akun milik masing-masing, dan sebagian besar langkah adalah blok baca-log berpola di tiga surface (TC-117) serta Search untuk membuka baris target (8b.12).
+- Alasan spec di atas sekitar 35 langkah (38 langkah): empat TC berdiri sendiri pada satu kolom (Last Used in Journal) dengan akun milik masing-masing, dan sebagian besar langkah adalah blok baca-log berpola di tiga surface (TC-117) serta Search untuk membuka baris target (8b.13).
 - TC-117 dan TC-120 `[DEFERRED]` (NC-04, J-06 belum ada); TC-106 bagian ekspor nyata juga `[DEFERRED]` dan P2 sudah terekspor sebagai precondition. Spec tetap ditulis lengkap dan kebutuhan jalur J-06 ada di Prerequisites.
 - Permintaan langsung pada langkah 19 dan 35 adalah pelaku kedua lewat sesi API (suite.md, Sesi API aktor) yang hanya memicu perubahan state; asersi memakai UI dan tiga surface log, bukan respons permintaan (8b.1).
 - Cara baca entri baru (S-14): setelah selisih jumlah dari baseline dibuktikan, entri baru dibaca pada baris teratas urutan default Date Newest First.
-- Langkah penghubung (S-03): langkah 4 dan 9 (menutup modal), langkah 5, 13, 20, 33, dan 37 (Search untuk menemukan baris target, R-16), langkah 17 (Search dikosongkan), langkah 32 (navigasi kembali ke modul asal setelah membaca log, S-14), langkah 36 (muat ulang halaman).
+- Langkah penghubung (S-03): langkah 4 dan 9 (menutup modal), langkah 5, 13, 20, dan 33 (Search untuk menemukan baris target, R-16), langkah 37 (mengganti isi kotak search yang dipertahankan muat ulang, 8b.9), langkah 17 (Search dikosongkan), langkah 32 (navigasi kembali ke modul asal setelah membaca log, S-14), langkah 36 (muat ulang halaman).
+- Urutan blok TC (TC-119, TC-106, TC-117, TC-120) berbeda dari `sourceTc`: TC-119 hanya membuka form tanpa menulis data sehingga di awal (screening), TC-106 hanya membaca, dan TC-117 yang mengubah Last Used P112 mendahului TC-120.
+- A-18: TC-117 memakai akun sekali pakai P112 dengan Account Code literal `5-6118` tanpa suffix `{runId}`; akun dan Code itu hanya dipakai spec ini, dan seed idempotent dipulihkan di hook `before` dan `after`.
 - Asersi "tidak ada pencatatan/log" tidak ada di spec ini (S-05); TC-120 tidak mengasersi ketiadaan log dan hanya nilai kolom P4.
 - Temuan untuk QA:
   - TC-117 butir b mensyaratkan Modified By = user yang mengekspor (NC-06) tanpa menyebut akun pengekspor; spec memakai aktor sesi API (user yang memicu J-06). Atribut Modified By pada System Log tidak diasersi karena TC tidak menyebut kolomnya pada surface itu.

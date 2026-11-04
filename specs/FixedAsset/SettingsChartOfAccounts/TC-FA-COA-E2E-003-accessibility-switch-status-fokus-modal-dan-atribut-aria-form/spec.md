@@ -24,7 +24,7 @@ coverage:
 - Kemampuan teknis: keyboard (Tab, Space, Esc); pembacaan atribut DOM `aria-label`, `aria-required`, dan `aria-describedby` dari elemen yang diperiksa.
 - Flag Guided Tooltip halaman Chart of Accounts disetel true oleh hook suite `before` (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed dan pemulihan akun Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
-- Identitas data Pre-setup dibaca dari `fixtures/settings-chart-of-accounts.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
+- Identitas data Pre-setup dibaca dari `Fixture.settingsChartOfAccounts.<kunci>` (fixture belum ada, disediakan tim FE; nama kunci ditetapkan tim FE).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -93,7 +93,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-chart-of-accounts/TestCases/tc-settings-chart-of-accounts.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Mode: FE+BE.
-- Langkah penghubung (S-03): langkah 1, 13, 35 (Search untuk menemukan baris P1 atau P7 sebelum aksi pada baris itu; bagian 8b butir 12, R-16); langkah 12, 25, 48 (menutup Search dan mereset tabel, S-09); langkah 34 (menutup modal Add Account setelah `[Submit]` ditolak validasi; form tidak diisi sehingga tidak dirty dan dialog `Unsaved Changes` tidak diharapkan, tidak ada kasus bersyarat); langkah 45 sampai 47 (S-08: form Edit dirty setelah `[Clear Field]` ditutup lewat `✕`, `Verifikasi` dialog `Unsaved Changes`, `[Leave]`).
+- Langkah penghubung (S-03): langkah 1, 13, 35 (Search untuk menemukan baris P1 atau P7 sebelum aksi pada baris itu; bagian 8b butir 13, R-16); langkah 12, 25, 48 (menutup Search dan mereset tabel, S-09); langkah 34 (menutup modal Add Account setelah `[Submit]` ditolak validasi; form tidak diisi sehingga tidak dirty dan dialog `Unsaved Changes` tidak diharapkan, tidak ada kasus bersyarat); langkah 45 sampai 47 (S-08: form Edit dirty setelah `[Clear Field]` ditutup lewat `✕`, `Verifikasi` dialog `Unsaved Changes`, `[Leave]`).
 - Asersi tambahan di luar Expected TC (S-03): langkah 19 menjadi anchor positif untuk langkah 20 (absence dialog `Unsaved Changes`, bagian 8b butir 2).
 - Atribut ARIA diperiksa per field (S-01): `aria-required` pada Account Code, Account Name, dan Account Function (langkah 27 sampai 29 dan 37 sampai 39); `aria-describedby` pada tiap field yang menampilkan caption error (langkah 31 sampai 33 dan 42 sampai 44). Kosongnya ketiga field setelah `[Submit]` atau `[Clear Field]` lalu `[Save]` diasumsikan menampilkan caption error pada ketiganya.
 - Ukuran spec 48 langkah, melewati sekitar 35 langkah karena Expected dipecah per klausa (S-01), terutama atribut ARIA per field. Seluruh blok satu topik (aksesibilitas keyboard dan ARIA halaman Chart of Accounts), satu dataset (P1 dan P7), tanpa aksi tulis ke data, dan tiap blok berdiri sendiri (form dan dialog ditutup di akhir blok); kegagalan satu blok tidak membuat blok lain kehilangan makna.

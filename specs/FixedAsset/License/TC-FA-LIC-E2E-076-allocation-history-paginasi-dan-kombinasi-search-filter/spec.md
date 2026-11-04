@@ -19,9 +19,11 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control Pre-setup #1 (`Fixture.fixedAssetLicense.akunTotalControl`; pola email `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`), kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite. Spec tidak mengganti akun. Password tidak ditulis di spec atau fixture.
 - Guided Tooltip: flag seen diatur dan dipulihkan hook suite (dinyatakan sekali di `suite.md`).
-- Data Pre-setup #13 (Allocation History, hanya dibaca): enam alokasi lewat `Fixture.fixedAssetLicense.riwayat` (fixture belum ada; disediakan tim FE/BE): LALC-20260801-00004, LALC-20260720-00003, LALC-20260515-00002, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001 (urutan default Last Updated terbaru lebih dulu; Plan Owner seluruhnya PT Maju Bersama (Distributor); LALC-20250210-00001 berstatus Expired, SUBS-20250101-00001; Quantity LALC-20260101-00001 = 3000 dan LALC-20260312-00002 = +1500).
-- Data Dinamis (milik spec, dibuat di hook `before` oleh fixture BE yang disediakan tim FE/BE dan dihapus di hook `after`): 19 baris Allocation History tambahan sehingga total tabel 25 baris (6 alokasi Pre-setup #13 + 19; TC menulis "tabel berisi 25 baris (fixture)"). Seluruh baris tambahan berpola License Type `Addon (Audit)`, Status `Active`, dan Plan Owner `PT Uji Lain {runId}-076`. Pola ini dipilih spec agar Search `Addon` dan Filter Status `Active` menghasilkan lebih dari 10 baris (TC-FA-LIC-259) tanpa mengubah hasil Search `Asset License` dengan Filter Status `Active` (TC-FA-LIC-260).
-- State yang diubah dan dipulihkan: page size (dikembalikan ke 10 pada langkah 11 dan 20), Sort `Allocation ID` dan `Plan Owner` (dinetralkan pada langkah 19 dan 51), Search dan Filter (dibersihkan pada langkah 27 dan sesudahnya).
+- Data Pre-setup #13 (Allocation History, hanya dibaca): tujuh alokasi lewat `Fixture.fixedAssetLicense.riwayat` (fixture belum ada; disediakan tim FE/BE): LALC-20260801-00004, LALC-20260720-00003, LALC-20260515-00002, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001, LALC-20241205-00001 (urutan default Last Updated terbaru lebih dulu; enam alokasi pertama ber-Plan Owner PT Maju Bersama (Distributor), LALC-20241205-00001 ber-Plan Owner PT ABC (Principal); LALC-20250210-00001 berstatus Expired, SUBS-20250101-00001; LALC-20241205-00001 `Addon (Audit)` berstatus Expired, SUBS-20241201-00001; Quantity LALC-20260101-00001 = 3000 dan LALC-20260312-00002 = +1500).
+- Data Pre-setup #39 (Allocation History 25 baris; dipakai TC-FA-LIC-257, 258, dan 259): 7 alokasi Pre-setup #13 ditambah 18 alokasi fixture berstatus Expired milik term SUBS-20250101-00001 (End Date 31/12/25 sama dengan End Date term itu, Plan Owner `PT Maju Bersama (Distributor)`, License Type `Asset License` atau `Addon (Audit)`; Allocation ID berformat `LALC-YYYYMMDD-XXXXX`), tanpa mengubah Total Asset License maupun ledger Add-on. Fixture BE (disediakan tim FE/BE; nama usulan `Fixture.fixedAssetLicense.riwayatPaginasi`) memasang 18 alokasi itu di hook `before`, memulihkan riwayat ke 7 alokasi Pre-setup #13 pada langkah 32 (TC-FA-LIC-260 memakai 7 alokasi Pre-setup #13; Pre-setup #39 hanya berlaku pada TC yang merujuknya), dan memulihkannya lagi di hook `after`.
+- Test Data TC-FA-LIC-259 (nilai default Pre-setup #39): Search `Maju` (hasil 24 baris: 6 alokasi Pre-setup #13 ber-Plan Owner `PT Maju Bersama (Distributor)` ditambah 18 alokasi fixture, lebih dari 10 baris) dan Filter Status = `Expired`.
+- State yang diubah dan dipulihkan: page size (dikembalikan ke 10 pada langkah 14, 23, dan 72), Sort `Allocation ID` (dinetralkan pada langkah 22) dan Sort `License Type` (pada langkah 71), Search dan Filter (dibersihkan pada langkah 30, 31, 66, dan 70), serta riwayat Allocation (fixture Pre-setup #39 dipulihkan ke Pre-setup #13 pada langkah 32 dan hook `after`).
+- Kemampuan teknis (disediakan tim FE): mengirim tombol `Esc` ke browser (langkah 6).
 
 ## Test Steps
 
@@ -29,80 +31,100 @@ coverage:
 
 ### TC-FA-LIC-257: Default 10 per halaman, pilihan page size, dan input nomor halaman
 
-2. Verifikasi tabel menampilkan 10 baris per halaman secara default
-3. Buka pilihan page size
-4. Verifikasi pilihan page size 10, 25, 50, 100 (tanpa opsi All)
-5. Tutup pilihan page size dengan Esc
-6. Ketik nomor halaman `2` pada input nomor halaman, tekan Enter
-7. Verifikasi input nomor halaman 2 langsung membuka halaman 2
-8. Buka pilihan page size, lalu pilih `25`
-9. Verifikasi seluruh 25 baris tampil dalam satu halaman
-10. Verifikasi tabel kembali ke halaman 1
-11. Buka pilihan page size, lalu pilih `10`
+2. Verifikasi footer menampilkan page size 10 secara default
+3. Verifikasi halaman 1 menampilkan 10 baris
+4. Buka pilihan page size
+5. Verifikasi pilihan page size 10, 25, 50, 100 (tanpa opsi All)
+6. Tutup pilihan page size dengan Esc
+7. Verifikasi page size tetap 10
+8. Ketik nomor halaman `2` pada input nomor halaman, tekan Enter
+9. Verifikasi input nomor halaman 2 langsung membuka halaman 2
+10. Verifikasi halaman 2 menampilkan 10 baris (baris ke-11 sampai ke-20)
+11. Buka pilihan page size, lalu pilih `25`
+12. Verifikasi seluruh 25 baris tampil dalam satu halaman
+13. Verifikasi tabel kembali ke halaman 1
+14. Buka pilihan page size, lalu pilih `10`
 
 ### TC-FA-LIC-258: Nomor halaman tidak valid, ganti sort, dan ganti page size
 
-12. Pindah ke halaman 2
+15. Pindah ke halaman 2
 
-Untuk setiap nilai pada daftar `0`, `99`, `abc` (langkah 13 sampai 14):
+Untuk setiap nilai pada daftar `0`, `99`, `abc` (langkah 16 sampai 17):
 
-13. Ketik nilai pada input nomor halaman, tekan Enter
-14. Verifikasi input tidak valid diabaikan dan tabel tetap di halaman 2
+16. Ketik nilai pada input nomor halaman, tekan Enter
+17. Verifikasi input tidak valid diabaikan dan tabel tetap di halaman 2
 
-15. Klik header kolom `Allocation ID` untuk sort
-16. Verifikasi mengganti sort tetap di halaman 2
-17. Ganti page size menjadi `25`
-18. Verifikasi mengganti page size kembali ke halaman 1
-19. Klik header kolom `Allocation ID` dua kali lagi hingga netral
-20. Buka pilihan page size, lalu pilih `10`
+18. Klik header kolom `Allocation ID` untuk sort
+19. Verifikasi mengganti sort tetap di halaman 2
+20. Ganti page size menjadi `25`
+21. Verifikasi mengganti page size kembali ke halaman 1
+22. Klik header kolom `Allocation ID` dua kali lagi hingga netral
+23. Buka pilihan page size, lalu pilih `10`
 
 ### TC-FA-LIC-259: Search dan Apply Filter di halaman lebih dari 1 mereset ke halaman 1
 
-21. Pindah ke halaman 2
-22. Ketik Search `Addon`, tekan Enter
-23. Verifikasi setelah Search tabel kembali ke halaman 1
-24. Pindah ke halaman 2 lagi
-25. Klik ikon Filter, pada field `Status` centang `Active`, lalu klik `[Apply]`
-26. Verifikasi setelah Apply Filter tabel kembali ke halaman 1
-27. Klik `[Clear Field]`, lalu klik `[Apply]`
-28. Klik ikon Filter untuk menutup panel, lalu klik `(←)` pada kotak Search
+24. Pindah ke halaman 2
+25. Ketik Search `Maju`, tekan Enter
+26. Verifikasi setelah Search tabel kembali ke halaman 1
+27. Pindah ke halaman 2 lagi
+28. Klik ikon Filter, pada field `Status` centang `Expired`, lalu klik `[Apply]`
+29. Verifikasi setelah Apply Filter tabel kembali ke halaman 1
+30. Klik `[Clear Field]`, lalu klik `[Apply]`
+31. Klik ikon Filter untuk menutup panel, lalu klik `(←)` pada kotak Search
 
 ### TC-FA-LIC-260: Kombinasi Search, Filter, Sort, dan paginasi
 
-29. Ketik Search `Asset License`, tekan Enter
-30. Klik ikon Filter, pada field `Status` centang `Active`, lalu klik `[Apply]`
-31. Klik header kolom `Allocation ID` sekali
-32. Ubah page size menjadi `25`
-33. Verifikasi Search, Filter, Sort, dan page size berlaku bersamaan: tabel menampilkan LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001
-34. Klik header kolom `Plan Owner` sekali
-35. Verifikasi mengganti kolom sort tidak mereset Search dan Filter: kata kunci `Asset License` tetap aktif dan tabel tetap menampilkan LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001
-36. Klik `[Clear Field]`, lalu klik `[Apply]`
-37. Verifikasi Clear Filter tidak mereset Search dan Sort: kata kunci `Asset License` dan Sort `Plan Owner` tetap aktif, tabel menampilkan LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001
-38. Pada field `Status` centang `Active`, lalu klik `[Apply]`
-39. Klik `(←)` pada kotak Search
-40. Verifikasi mengosongkan Search tidak mereset Filter dan Sort: Filter Status `Active` dan Sort `Plan Owner` tetap aktif, tabel menampilkan baris berstatus `Active` pada halaman 1
-41. Klik `[Clear Field]`, lalu klik `[Apply]`
-42. Ketik Search `Asset License`, tekan Enter
-43. Pada field `Plan Owner` centang `PT Uji Lain {runId}-076`, lalu klik `[Apply]`
-44. Verifikasi hasil kosong dari irisan Search dan Filter: tabel menampilkan empty state `No results found`
-45. Klik `[Clear Field]`, lalu klik `[Apply]`
-46. Verifikasi tabel pulih saat Filter dilepas: LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001
-47. Pada field `Plan Owner` centang `PT Uji Lain {runId}-076`, lalu klik `[Apply]`
-48. Klik `(←)` pada kotak Search
-49. Verifikasi tabel pulih saat Search dilepas: tabel menampilkan baris milik `PT Uji Lain {runId}-076` pada halaman 1
-50. Klik `[Clear Field]`, lalu klik `[Apply]`
-51. Klik header kolom `Plan Owner` dua kali lagi hingga netral
-52. Klik ikon Filter untuk menutup panel
+32. Pulihkan riwayat Allocation ke 7 alokasi Pre-setup #13 (hapus 18 alokasi fixture Pre-setup #39) lewat fixture BE hingga berhasil tersimpan
+33. Muat ulang halaman (F5)
+34. Klik sub-tab `Allocation History`
+35. Verifikasi tabel menampilkan tujuh alokasi Pre-setup #13: LALC-20260801-00004, LALC-20260720-00003, LALC-20260515-00002, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001, LALC-20241205-00001
+36. Ketik Search `Asset License`, tekan Enter
+37. Verifikasi tabel menampilkan: LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001
+38. Klik ikon Filter, pada field `Status` centang `Active`, lalu klik `[Apply]`
+39. Verifikasi tabel menampilkan: LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001
+40. Verifikasi Filter Panel tetap terbuka
+41. Klik header kolom `Quantity` dua kali
+42. Ubah page size menjadi `25`
+43. Verifikasi tabel menampilkan: LALC-20260101-00001, LALC-20260312-00002, LALC-20260720-00003
+44. Verifikasi indikator Descending pada `Quantity`
+45. Verifikasi page size 25
+46. Verifikasi Search `Asset License` tidak berubah
+47. Verifikasi Filter Status `Active` tidak berubah
+48. Klik header kolom `License Type` sekali
+49. Verifikasi tabel menampilkan: LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001
+50. Verifikasi `Quantity` kembali netral
+51. Verifikasi indikator Ascending pada `License Type`
+52. Verifikasi Search `Asset License` tidak berubah
+53. Verifikasi Filter Status `Active` tidak berubah
+54. Pada Filter Panel yang masih terbuka, klik `[Clear Field]`, lalu klik `[Apply]`
+55. Verifikasi tabel menampilkan: LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001
+56. Verifikasi Search `Asset License` tetap aktif
+57. Verifikasi Sort `License Type` tetap aktif
+58. Pada field `Status` centang lagi `Active`, lalu klik `[Apply]`
+59. Kosongkan isi kotak search, tekan Enter
+60. Verifikasi tabel menampilkan: LALC-20260515-00002, LALC-20260801-00004, LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001
+61. Verifikasi LALC-20250210-00001 dan LALC-20241205-00001 tidak tampil
+62. Verifikasi Filter tetap aktif
+63. Verifikasi Sort `License Type` Ascending tetap aktif
+64. Ketik Search `Expired`, tekan Enter
+65. Verifikasi empty state dengan Title `No results found` dan Description `Try adjusting your search or filter.`
+66. Kosongkan isi kotak search, tekan Enter
+67. Verifikasi tabel pulih otomatis menampilkan: LALC-20260515-00002, LALC-20260801-00004, LALC-20260720-00003, LALC-20260312-00002, LALC-20260101-00001
+68. Verifikasi Filter tetap aktif
+69. Verifikasi Sort `License Type` Ascending tetap aktif
+70. Klik `[Clear Field]`, lalu klik `[Apply]`
+71. Klik header kolom `License Type` dua kali lagi hingga netral
+72. Ubah page size menjadi `10`
+73. Klik ikon Filter untuk menutup panel
 
 ## Notes
 
 - Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC. Tidak ada TC hanya-BE.
-- Urutan TC dalam spec: 257, 258, 259, 260. Pada TC-FA-LIC-257 langkah memasukkan nomor halaman 2 dilakukan sebelum memilih page size 25 (TC menulis sebaliknya), karena halaman 2 hanya ada saat page size 10 (25 baris pada page size 25 menjadi satu halaman); page size dikembalikan ke 10 sesudahnya.
-- Spec ini di atas 35 langkah (52 langkah nominal; 56 langkah setelah ekspansi). Alasan: seluruh blok satu topik (paginasi dan kontrol tabel Allocation History), satu dataset (enam alokasi Pre-setup #13 ditambah 19 baris milik spec), tiap blok berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna), dan langkah 13 sampai 14 diulang untuk tiga nilai input nomor halaman dengan satu `Verifikasi` per iterasi.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1 (klik sub-tab sebagai aksi deterministik), langkah 11 dan 20 (mengembalikan page size ke 10; S-09), langkah 19 dan 51 (menetralkan sort; S-09), serta langkah pembersih Search dan Filter di akhir tiap blok (S-09).
-- Asersi di luar Expected TC (S-03): pada TC-FA-LIC-259, kata kunci `Addon` dan Filter Status `Active` dipilih spec agar hasil melebihi 10 baris; pada TC-FA-LIC-260, kolom sort `Allocation ID`, kolom pengganti `Plan Owner`, page size 25, dan irisan kosong Search `Asset License` dengan Filter Plan Owner `PT Uji Lain {runId}-076` dipilih spec. Pengamatan Clear Filter dan pengosongan Search pada TC-FA-LIC-260 dilakukan dengan Filter dipasang ulang sebelum Search dikosongkan.
+- Urutan TC dalam spec: 257, 258, 259, 260 (sesuai `sourceTc`).
+- Spec ini di atas 35 langkah (73 langkah nominal; 77 langkah setelah ekspansi). Alasan: seluruh blok satu topik (paginasi dan kontrol tabel Allocation History), satu klien dengan riwayat Pre-setup #13 (hanya dibaca; fixture Pre-setup #39 dipasang dan dipulihkan fixture BE), tiap blok berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna), dan langkah 16 sampai 17 diulang untuk tiga nilai input nomor halaman dengan satu `Verifikasi` per iterasi.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1 (klik sub-tab sebagai aksi deterministik), langkah 14 dan 23 (mengembalikan page size ke 10; S-09), langkah 22 (menetralkan sort; S-09), langkah 30 (membersihkan Filter; S-09) dan 31 (menutup panel dan mengosongkan Search; S-09), langkah 32 sampai 34 (memulihkan riwayat ke Pre-setup #13 sebelum TC-FA-LIC-260, lalu membuka kembali sub-tab), serta langkah 70 sampai 73 (memulihkan Filter, Sort `License Type`, page size, dan panel; S-09). Filter Panel tetap terbuka sesudah `[Apply]` (prd-conventions.md §9.8), sehingga mengubah Filter dari panel itu tidak didahului membuka panel.
+- Asersi di luar Expected TC (S-03): pada TC-FA-LIC-259 hasil Search `Maju` dan Filter Status = `Expired` dihitung lebih dari 10 baris dari Pre-setup #13 dan #39 (nilai Test Data TC); pada TC-FA-LIC-258 kolom sort `Allocation ID` dan page size `25` dipilih spec (TC menulis "klik header kolom untuk sort"); `Verifikasi` tujuh alokasi Pre-setup #13 sesudah pemulihan fixture (langkah 35) membuktikan precondition TC-FA-LIC-260.
 - Temuan untuk QA:
-  - TC-FA-LIC-257 (langkah TC 5) meminta nomor halaman 2 setelah page size 25 dengan 25 baris (hanya satu halaman); Expected "bila tersedia" tidak deterministik. Spec menukar urutan seperti dijelaskan di atas.
-  - TC-FA-LIC-260 menulis "Clear Filter; kemudian kosongkan Search" sehingga klausa "mengosongkan Search tidak mereset Filter" tidak teramati (Filter sudah dilepas); spec memasang ulang Filter sebelum mengosongkan Search.
-  - TC-FA-LIC-260 menulis "Klik sort pada satu kolom; ubah page size" tanpa menyebut kolom dan nilai page size.
+  - TC-FA-LIC-260 memuat precondition 7 alokasi Pre-setup #13, sedangkan TC-FA-LIC-257, 258, dan 259 memuat 25 baris (Pre-setup #39); spec memulihkan riwayat ke 7 alokasi lewat fixture BE sebelum TC-FA-LIC-260. Pre-setup #39 menyebut License Type fixture `Asset License` atau `Addon (Audit)` tanpa komposisi pasti; hasil Search `Asset License` TC-FA-LIC-260 hanya cocok bila 18 alokasi itu tidak ikut tampil, sehingga pemulihan wajib.
+  - TC-FA-LIC-260 mengasersi urutan Sort `Quantity` dan `License Type` tanpa menyebut nilai Quantity tiap baris dan tie-break; spec mengasersi urutan persis seperti Expected TC.
   - TC-FA-LIC-257, 258, 259, dan 260 tidak menyebut Post Condition (`-`); tidak ada yang diasersi.

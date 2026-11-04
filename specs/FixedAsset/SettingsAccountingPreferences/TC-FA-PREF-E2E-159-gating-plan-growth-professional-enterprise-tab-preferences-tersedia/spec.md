@@ -23,12 +23,12 @@ coverage:
 
   | Company | Plan | Total Control | TC |
   |---|---|---|---|
-  | PA-15 (Growth) | Growth | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` | TC-FA-PREF-115 |
-  | PA-15 (Professional) | Professional | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` | TC-FA-PREF-116 |
-  | PA-15 (Enterprise) | Enterprise | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` | TC-FA-PREF-117 |
+  | PA-15 (Growth) | Growth | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_GROWTH_PASSWORD` | TC-FA-PREF-115 |
+  | PA-15 (Professional) | Professional | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PROFESSIONAL_PASSWORD` | TC-FA-PREF-116 |
+  | PA-15 (Enterprise) | Enterprise | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_ENTERPRISE_PASSWORD` | TC-FA-PREF-117 |
 
-  `{namaCompany}` ketiga company belum tertulis di TC; disediakan tim FE (lihat Temuan untuk QA). Password: `Spectra.env.FA_TC_PASSWORD`.
-- Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture. Nama diusulkan mengikuti `<APP>_<ROLE>_PASSWORD` (perlu dikonfirmasi tim FE).
+  `{namaCompany}` ketiga company belum tertulis di TC; disediakan tim FE (lihat Temuan untuk QA). Password per company lewat env var terpisah (kolom Total Control).
+- Env var `FA_TC_GROWTH_PASSWORD`, `FA_TC_PROFESSIONAL_PASSWORD`, dan `FA_TC_ENTERPRISE_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture. Nama diusulkan mengikuti skema `FA_<ROLE>_PASSWORD` dengan akhiran plan company (perlu dikonfirmasi tim FE).
 - Data: Preferences ketiga company bernilai awal PA-2 (In-service Date Source Activation date, tidak terkunci, semua setting wajib terisi), hasil seed (butir "Seed dan pemulihan lewat API" di `suite.md`, disediakan tim FE/BE).
 - State yang diubah spec: tidak ada yang disimpan. Spec mengubah In-service Date Source di form tanpa Save dan mengembalikannya ke "Activation date" (langkah 7, 16, 25).
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true untuk setiap akun aktor yang dipakai dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
@@ -50,7 +50,7 @@ coverage:
 ### TC-FA-PREF-116: Company plan Professional memiliki tab Preferences dengan akses penuh
 
 8. Logout dari akun Total Control company plan Growth
-9. Login sebagai Total Control company plan Professional (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PASSWORD`)
+9. Login sebagai Total Control company plan Professional (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PROFESSIONAL_PASSWORD`)
 10. Buka Settings > Accounting
 11. Klik Tab "Preferences"
 12. Verifikasi Tab "Preferences" tersedia dan terbuka
@@ -62,7 +62,7 @@ coverage:
 ### TC-FA-PREF-117: Company plan Enterprise memiliki tab Preferences dengan akses penuh
 
 17. Logout dari akun Total Control company plan Professional
-18. Login sebagai Total Control company plan Enterprise (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_PASSWORD`)
+18. Login sebagai Total Control company plan Enterprise (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC_ENTERPRISE_PASSWORD`)
 19. Buka Settings > Accounting
 20. Klik Tab "Preferences"
 21. Verifikasi Tab "Preferences" tersedia dan terbuka
@@ -74,6 +74,7 @@ coverage:
 ## Notes
 
 - Kelas h (bagian 3 prinsip 13h): verifikasi baca state plan tiga company; ganti akun memakai langkah eksplisit karena tiap plan adalah company berbeda.
+- Nama env password dipisah per company karena tiap company adalah akun berbeda; bila tim FE menetapkan satu password Total Control lintas company, ketiga nama dapat disatukan.
 - Langkah penghubung (S-03): langkah 7, 8, 9, 16, 17, 18, 25 (pemulihan nilai form dan ganti akun). Pemulihan nilai form ditulis tanpa `Verifikasi` agar form tidak berakhir dirty (S-09).
 - Langkah bersifat berulang per company (langkah 1 sampai 7, 10 sampai 16, 19 sampai 25) dengan parameter tabel company di Prerequisites; Verifikasi tetap satu per klausa (S-01).
 - Temuan untuk QA:

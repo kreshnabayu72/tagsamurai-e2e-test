@@ -73,7 +73,7 @@ coverage:
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): "Tutup modal Changelog lewat `✕`, lalu klik ikon View history" membuka ulang modal bersih untuk tiap TC.
 - Langkah 4 diulang untuk setiap kolom pada tabel "Urutan geser" (tujuh iterasi; 8b.7); tanpa langkah bersyarat. Jumlah langkah dengan ekspansi sekitar 34.
-- Pemulihan Setup Column (8b.13, R-24): tiga langkah di akhir TC-FA-PREF-336 ("Klik header kolom Actions (⋯), lalu klik item Setup Column...", "Klik `[Reset to Default]`", "Klik `[Save]`") memulihkan urutan kolom ke default sebelum TC-FA-PREF-338; TC-FA-PREF-338 berakhir pada urutan bawaan; TC-FA-PREF-339 tidak menyimpan perubahan.
+- Pemulihan Setup Column (8b.14, R-24): tiga langkah di akhir TC-FA-PREF-336 ("Klik header kolom Actions (⋯), lalu klik item Setup Column...", "Klik `[Reset to Default]`", "Klik `[Save]`") memulihkan urutan kolom ke default sebelum TC-FA-PREF-338; TC-FA-PREF-338 berakhir pada urutan bawaan; TC-FA-PREF-339 tidak menyimpan perubahan.
 - Langkah TC-FA-PREF-338 "geser kolom Date ke posisi terakhir" disalin apa adanya (8b.13).
 - Temuan untuk QA:
   - Nama env var password tidak disebut TC-FA-PREF-336, 338, dan 339; `FA_TC_PASSWORD` mengikuti spec lain di suite dan perlu keputusan tim.

@@ -20,8 +20,8 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
-- Akun pengamat TC-82 (user lain di jendela privat, hanya membaca): Read Only `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_RO_PASSWORD` (terdaftar). Login pada langkah 17; jendela privat ditutup pada langkah 20.
-- Data: tabel Chart of Accounts client default berisi akun Pre-setup P1 sampai P5 dan akun lain hasil seed (lihat Seed dan pemulihan di `suite.md`); spec hanya memakai kolom tabel.
+- Akun pengamat TC-82 (user lain di jendela privat, hanya membaca): Read Only `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_RO_PASSWORD` (terdaftar). Hook `before` spec ini hanya login pengamat dan membuka jendela privat tanpa membuka halaman Chart of Accounts (halaman dibuka pada langkah 17 sesudah perubahan disimpan); jendela privat ditutup di hook `after` (P-6). Kemampuan sesi kedua (jendela privat dengan sesi login terpisah) disediakan tim FE.
+- Data: tabel Chart of Accounts client default berisi akun Pre-setup dan akun lain hasil seed (lihat Seed dan pemulihan di `suite.md`); spec hanya mengamati kolom tabel dan tidak menyebut akun tertentu.
 - Konfigurasi kolom awal: default modul (Active, Account Code, Account Name, Function, Used By, Last Used in Journal tampil; Modified By dan Last Updated hidden; tanpa kolom terpin).
 - State yang diubah spec: konfigurasi kolom tersimpan lewat `[Save]` (langkah 4, 14, 23, 26, 36). Dipulihkan dengan langkah eksplisit 9 sampai 10, 21 sampai 23, dan 34 sampai 36 (kembali ke default modul). Hook `after` menghapus preferensi kolom di browser sebagai cadangan (kemampuan disediakan tim FE).
 - Flag Guided Tooltip halaman Chart of Accounts di-set true oleh hook suite `before` untuk akun aktor dan akun Read Only (lihat `suite.md`).
@@ -50,10 +50,10 @@ coverage:
 14. Klik `[Save]`
 15. Muat ulang halaman (F5)
 16. Verifikasi kolom Modified By dan Last Updated tampil setelah reload pada browser yang sama
-17. Buka jendela privat baru, login sebagai Read Only, lalu buka Fixed Asset > Settings > Accounting > Chart of Accounts
+17. Di jendela privat pengamat Read Only, buka halaman Fixed Asset > Settings > Accounting > Chart of Accounts
 18. Verifikasi sedikitnya satu kolom data lain (Account Code) tampil pada tabel
 19. Verifikasi kolom Modified By dan Last Updated tetap hidden pada jendela privat user lain
-20. Tutup jendela privat dan kembali ke jendela utama
+20. Kembali ke jendela utama
 21. Klik header Actions ⋯ > `Setup Column...`
 22. Hapus centang kolom Modified By dan Last Updated
 23. Klik `[Save]`
@@ -104,8 +104,8 @@ coverage:
 
 - Alasan spec di atas sekitar 35 langkah (56 langkah): seluruh blok memakai satu tabel, satu popup Setup Column, dan satu kelas harness (fungsional Setup Column); tiap TC memulai dan mengakhiri dari konfigurasi default modul sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Pasangan TC-195 dan TC-196 identik kecuali cara menutup popup.
 - TC-83 dijalankan lebih dulu, lalu TC-82, TC-192, TC-195, dan TC-196; setiap TC yang menyimpan konfigurasi dikembalikan ke default modul sebelum TC berikutnya (S-09).
-- Langkah penghubung (S-03): langkah 9 dan 10, 21 sampai 23 (pemulihan Setup Column eksplisit, R-24 dan 8b.13); langkah 24 sampai 26 (menyiapkan precondition c TC-192); langkah 20 (menutup jendela privat).
-- Pengamat TC-82 (jendela privat dengan user Read Only) hanya membaca tabel dan tidak berinteraksi, satu TC; TC sumber menyebut "user lain atau browser lain" tanpa menentukan akunnya, sehingga akun Read Only dipilih (perlu dikonfirmasi tim FE).
+- Langkah penghubung (S-03): langkah 9 dan 10, 21 sampai 23 (pemulihan Setup Column eksplisit, R-24 dan 8b.14); langkah 24 sampai 26 (menyiapkan precondition c TC-192); langkah 17 (membuka halaman Chart of Accounts di jendela pengamat sesudah `[Save]` langkah 14, agar asersi hidden pada langkah 19 menguji persistensi lintas browser; membuka halaman bukan interaksi, P-6) dan langkah 20 (kembali ke jendela utama); login dan penutupan jendela pengamat ada di hook `before` dan `after`.
+- P-6: pengamat TC-82 (jendela privat dengan user Read Only; login di hook `before`, ditutup di hook `after`) hanya membuka halaman dan membaca tabel tanpa interaksi (langkah 17 sampai 19), satu TC di spec ini; TC sumber menyebut "user lain atau browser lain" tanpa menentukan akunnya, sehingga akun Read Only dipilih (perlu dikonfirmasi tim FE).
 - TC-192 langkah 35 dan 36 (`Reset to Default` lalu `[Save]`) adalah langkah TC itu sendiri dan sekaligus memulihkan konfigurasi.
 - Temuan untuk QA:
   - TC-82 tidak menyebut akun atau browser "lain" yang dipakai; spec memakai user Read Only di jendela privat.

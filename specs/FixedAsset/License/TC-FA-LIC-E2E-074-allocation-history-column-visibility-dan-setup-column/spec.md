@@ -41,13 +41,14 @@ coverage:
 10. Verifikasi tombol `(×)` pada header
 11. Verifikasi body memuat daftar kolom dengan checkbox, drag handle, dan ikon Pin
 12. Verifikasi body memuat Live Preview tabel
-13. Verifikasi footer memuat `[Reset to Default]` dan `[Save]`
-14. Verifikasi footer tidak memuat `[Cancel]`
-15. Klik `(×)` untuk menutup popup
+13. Verifikasi footer memuat `[Reset to Default]`
+14. Verifikasi footer memuat `[Save]`
+15. Verifikasi footer tidak memuat `[Cancel]`
+16. Klik `(×)` untuk menutup popup
 
 ## Notes
 
 - Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC. Tidak ada TC hanya-BE. Ceklis per kolom (TC-FA-LIC-251) ada di spec `TC-FA-LIC-E2E-150` dan geser per kolom (TC-FA-LIC-252) di spec `TC-FA-LIC-E2E-151`.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1 (klik sub-tab sebagai aksi deterministik), langkah 6 dan 15 (menutup overlay dan popup).
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1 (klik sub-tab sebagai aksi deterministik), langkah 6 dan 16 (menutup overlay dan popup).
 - Temuan untuk QA:
   - TC-FA-LIC-249 dan 250 tidak menyebut Post Condition (`-`); tidak ada yang diasersi.

@@ -71,13 +71,13 @@ coverage:
 
 ### TC-FA-PREF-428: J-01 yang gagal dicoba ulang pada putaran berikutnya sampai berhasil
 
-15. Bentuk kondisi PC-13 dan PC-16 lewat seed: modul akuntansi PT Contoh Konstruksi sudah aktif tetapi belum memiliki baris Preferences (precondition TC, tidak diasersi)
+15. Bentuk kondisi PC-13 dan PC-16 lewat seed: modul akuntansi PT Contoh Konstruksi sudah aktif tetapi belum memiliki baris Preferences (precondition TC, tidak diasersi); catat jumlah entri log Create Preferences company sebagai baseline (dibaca lewat kemampuan baca BE)
 16. Atur kegagalan pembuatan Preferences pada putaran pertama job lewat fixture BE untuk sesi ini
 17. Jalankan job rekonsiliasi J-01 (lewat penjadwal platform atau pemicu manual tim BE) hingga putaran pertama selesai (putaran pertama, gagal)
 18. Verifikasi putaran pertama job J-01 berstatus gagal (dibaca lewat kemampuan baca BE)
 19. Buka Settings > Accounting > Preferences dan amati ketersediaan tab
 20. Verifikasi tidak ada baris Preferences tersimpan setelah putaran pertama (dibaca lewat kemampuan baca BE)
-21. Verifikasi tidak ada entri log Create tersimpan setelah putaran pertama (dibaca lewat kemampuan baca BE)
+21. Verifikasi jumlah entri log Create sama dengan baseline langkah 15 setelah putaran pertama, tidak ada entri log Create baru (dibaca lewat kemampuan baca BE)
 22. Lepaskan kegagalan buatan lewat fixture BE
 23. Jalankan putaran job J-01 berikutnya hingga putaran selesai
 24. Buka Settings > Accounting > Preferences dan amati nilai semua setting

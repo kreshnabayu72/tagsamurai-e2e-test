@@ -32,6 +32,7 @@ coverage:
 - Data: Fixture BE penyetel Unallocated Pool tepat 1 (Total Allocated 4.999 dari Total Asset Capacity 5.000) pada langkah yang disebut.
 - Pengecualian S-06 `[KEPUTUSAN 2026-10-30]`: target aksi tulis adalah grup Pre-setup #12 bernama literal karena hierarki dan kuotanya tidak dapat dimiliki spec (nama, urutan, dan nilai kuota menjadi objek asersi). Pemulihan ke Pre-setup #12 dijamin fixture BE pemulih yang disediakan tim FE/BE (dinyatakan di `suite.md`), dijalankan di hook `before` dan `after` serta sebagai langkah penghubung antar blok. Efek: Last Updated baris alokasi, entri `Changelog: Allocation Quota`, System Log aktor, dan Activity Log bertambah. Fixture `Fixture.fixedAssetLicense` belum ada dan disediakan tim FE.
 - Kemampuan teknis: Intercept jaringan (`Spectra.intercept()`) di atas backend nyata menunda respons Save 3 detik, dilepas segera setelah asersi Saving selesai (S-09). Menahan respons hanya untuk mengamati state UI, bukan kegagalan.
+- Kemampuan teknis (disediakan tim FE): tombol keyboard `Tab` (langkah 25) dan hover untuk membaca state hover tombol (langkah 6).
 
 ## Test Steps
 

@@ -20,7 +20,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Tidak ada ganti akun di tengah spec.
-- Data Pre-setup yang hanya dibaca dan tidak diubah (disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
+- Data Pre-setup yang hanya dibaca dan tidak diubah (identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
   - P1 `Fixture.settingsChartOfAccounts.p1` (Account Code `5-6001`, Depreciation Expense, Active, Used By 0, Last Used in Journal kosong, Last Updated hari ini).
   - P2 `Fixture.settingsChartOfAccounts.p2` (Account Code `6-2001`, Function Capitalization Offset, Active, Used By 0, Last Used in Journal `Aug 2026`).
   - P3 `Fixture.settingsChartOfAccounts.p3` (Account Code `4-7001`, Function Gain on Disposal, Inactive).
@@ -50,8 +50,8 @@ coverage:
 11. Klik ikon Filter di toolbar
 12. Verifikasi placeholder `Min` dan `Max` pada field Used By
 13. Isi Used By Min `0` dan Max `0`, klik `[Apply]`
-14. Verifikasi tabel memuat akun berstatus Used By 0 (baris P1 dan P2 tampil)
-15. Verifikasi nilai Used By ditampilkan sebagai "0" teks biasa (bukan link)
+14. Verifikasi tabel memuat akun berstatus Used By 0 (sedikitnya satu baris akun tampil pada halaman 1)
+15. Verifikasi nilai Used By pada setiap baris di halaman 1 adalah "0" dan ditampilkan sebagai teks biasa (bukan link)
 16. Klik `Clear all`
 
 ### TC-FA-COA-181: Filter Last Updated, date range dengan placeholder "Select date"
@@ -91,7 +91,8 @@ coverage:
 
 - Spec melewati sekitar 35 langkah (40 langkah). Alasan: satu kelas harness (fungsional Filter), satu halaman, satu dataset read-only (P1 sampai P5); lima TC berurutan pada Filter Panel yang sama; Expected bermajemuk dipecah satu Verifikasi per klausa (S-01); tiap blok berdiri sendiri dan diakhiri `Clear all`.
 - Langkah penghubung (S-03): langkah 4, 8, 13, 20, 27, 33 (klik `[Apply]`, TC tidak selalu menuliskannya tetapi Expected membutuhkan tabel terfilter); langkah 10, 16, 24, 31, 39 (`Clear all` membersihkan filter sebelum TC berikutnya, S-09); langkah 40 (`(←)` menutup kotak Search dan mereset tabel); langkah 1, 11, 17, 25, 32 (membuka Filter Panel).
-- Langkah 5, 14, 21, dan 35 memverifikasi baris yang harus tampil sebelum asersi absence (8b.2).
+- Langkah 5, 21, dan 35 memverifikasi baris yang harus tampil sebelum asersi absence (8b.2).
+- Langkah 14 dan 15: filter Used By 0 meloloskan sekitar 96 akun (10 baris per halaman, urut Account Code A-Z); P1 (sekitar posisi 22) dan P2 (sekitar posisi 45) tidak dijamin di halaman 1, jadi spec mengasersi pembanding generik halaman 1 (sedikitnya satu baris tampil) lalu nilai Used By `0` pada setiap baris halaman 1 (S-14, R-23).
 - Temuan untuk QA:
   - TC-FA-COA-77, 78, 181, dan 323 tidak menyebut klik `[Apply]` padahal Expected membutuhkan tabel terfilter; spec menambahkannya.
   - TC-FA-COA-77 butir c ("akun dengan Last Used kosong tidak tampil") tidak menyebut akun sasaran; spec memakai P1 (Last Used in Journal kosong).

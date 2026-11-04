@@ -54,7 +54,7 @@ coverage:
 ### TC-FA-LIC-453: Payload Allocated Quota non-bilangan-bulat via API ditolak server tanpa mengubah data
 
 8. Untuk setiap nilai pada tabel (`12.5`, `-5`, `abc`, `1e3`; langkah 8 sampai 9 diulang per nilai): kirim request Edit Allocation dengan nilai itu memakai token Pre-setup #1
-9. Verifikasi request ditolak server
+9. Verifikasi request ditolak server dengan respons error 4xx
 10. Verifikasi Allocated Quota tidak berubah lewat fixture BE
 
 ### TC-FA-LIC-544: Request langsung Edit Allocation di bawah Minimum Quota saat parent tidak lagi beralokasi ditolak karena precondition parent
@@ -85,7 +85,7 @@ coverage:
 ## Notes
 
 - K-1: TC kelas a (defense-in-depth) dengan Expected respons API tetap masuk spec FE+BE walau tumpang tindih dengan TC backend, karena tiap TC granular tepat satu spec. Spec hanya mengasersi status respons dan state data (bagian 8b butir 1), bukan perilaku FE.
-- Pembagian TC lintas spec: klausa "tidak ada entri System Log atau Activity Log" pada Expected TC-FA-LIC-445 b dan "tidak ada entri log" pada TC-FA-LIC-453 a diasersi di spec absence 111 (request langsung ini sebagai pemicu, user dan baseline sendiri); spec ini hanya mengasersi status respons dan state data (S-05).
+- Pembagian TC lintas spec: klausa "tidak ada entri System Log atau Activity Log" pada Expected TC-FA-LIC-445 b dan "jumlah entri tidak berubah dibanding baseline sebelum request" (Changelog: Allocation Quota, System Log akun Total Control Pre-setup #1, dan Activity Log Fixed Asset) pada TC-FA-LIC-453 a diasersi di spec absence 111 (request langsung ini sebagai pemicu, user dan baseline sendiri); spec ini hanya mengasersi status respons dan state data (S-05).
 - Urutan blok: blok request langsung (TC-FA-LIC-445, 451, 453, 544) lebih dulu dan TC-FA-LIC-446 terakhir karena memakai akun Read Only. TC-FA-LIC-452 dan 454 ada di spec `TC-FA-LIC-E2E-167`.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 19 "Pulihkan Pre-setup #12" dan "Buka Tab `Allocation Quota`, lalu klik node `Kantor Pusat`" setelah ganti akun (langkah 21).
 - Temuan untuk QA:

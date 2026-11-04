@@ -24,6 +24,7 @@ coverage:
 - Data Pre-setup (hanya dibaca; fixture BE pemulih riwayat memulihkannya di hook `before` dan `after`): riwayat Changelog Allocation Quota #27 (6 entri) lewat `Fixture.fixedAssetLicense.changelogAllocationQuota` (fixture belum ada, disediakan tim FE). Kolom default (urutan awal, semua tercentang): Date, Action, Group Name, Field, Old Value, New Value, Modified By.
 - Tabel kolom Setup Column (dipakai langkah 3 sampai 13): Date, Action, Group Name, Field, Old Value, New Value, Modified By.
 - Kemampuan teknis: viewport browser disempitkan pada langkah 2 sehingga tabel Changelog dapat digeser horizontal (pilihan spec; TC hanya menulis "geser tabel horizontal") dan dipulihkan pada langkah 14; disediakan tim FE untuk asersi pembekuan kolom.
+- Kemampuan teknis: seret-dan-lepas (drag and drop) item pada daftar kolom popup Setup Column (langkah 16) dan mengirim tombol `Esc` ke browser (langkah 29), disediakan tim FE.
 - State yang diubah spec: konfigurasi kolom tersimpan (pin, visibilitas, urutan); dipulihkan per iterasi (Unpin) dan oleh blok `[Reset to Default]` serta hook `after`. Suite berjalan serial (`parallel: false`).
 
 ## Test Steps

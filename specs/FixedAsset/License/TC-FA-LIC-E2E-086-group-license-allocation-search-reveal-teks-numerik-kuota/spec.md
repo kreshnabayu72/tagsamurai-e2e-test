@@ -20,9 +20,9 @@ coverage:
 - Mode: FE+BE (backend nyata, tanpa mock).
 - Akun: Total Control Pre-setup #1 `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (Rudi Hartono), password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
-- Data Pre-setup #12 (data kuota dan hierarki PT Sejahtera, dipulihkan fixture BE di hook `before`): client Paid Pre-setup #1 dengan `License allocation per group` ON; Total Asset License 5.000; hierarki Produksi, Kantor Pusat (Divisi Logistik (Gudang A), Divisi IT, Divisi Keuangan), Cabang Surabaya, Cabang Medan. Tabel Group License Allocation pada node All Groups menampilkan empat baris level 1 (urutan default Used by This Group tertinggi): Produksi, Cabang Medan, Cabang Surabaya, Kantor Pusat. Identitas dan nilai data dirujuk lewat `Fixture.fixedAssetLicense.*` (berkas fixture belum ada, disiapkan tim FE); nilai pada langkah dan tabel di bawah adalah nilai fixture itu.
+- Data Pre-setup #12 (data kuota dan hierarki PT Sejahtera, dipulihkan fixture BE di hook `before`): client Paid Pre-setup #1 dengan `License allocation per group` ON; Total Asset License 5.000; hierarki Produksi, Kantor Pusat (Divisi Logistik (Gudang A), Divisi IT, Divisi Keuangan), Cabang Surabaya, Cabang Medan. Tabel Group License Allocation pada node All Groups menampilkan empat baris level 1 (urutan default Used by This Group tertinggi): Produksi, Cabang Medan, Cabang Surabaya, Kantor Pusat. Identitas dan nilai data dirujuk lewat `Fixture.fixedAssetLicense.kuotaHierarki` (berkas fixture belum ada, disiapkan tim FE); nilai pada langkah dan tabel di bawah adalah nilai fixture itu.
 - Data Dinamis: tidak ada. Spec ini hanya membaca tabel.
-- Tabel "Search per kelas kolom" (parameter langkah 25 sampai 27):
+- Tabel "Search per kelas kolom" (parameter langkah 26 sampai 28):
 
   | TC | Kolom | Kata kunci | Baris yang tampil |
   |---|---|---|---|
@@ -64,18 +64,19 @@ coverage:
 20. Ketik kata kunci `medan` pada kotak Search tanpa menekan Enter
 21. Klik icon panah `(←)` di kiri toolbar
 22. Verifikasi kotak Search menutup
-23. Verifikasi keyword dikosongkan
-24. Verifikasi tabel langsung kembali ke semua baris: Produksi, Cabang Medan, Cabang Surabaya, Kantor Pusat
+23. Verifikasi tabel langsung kembali ke semua baris: Produksi, Cabang Medan, Cabang Surabaya, Kantor Pusat
+24. Klik ikon Search pada toolbar
+25. Verifikasi keyword dikosongkan
 
 ### TC-FA-LIC-300, TC-FA-LIC-301, dan TC-FA-LIC-302: Search per kelas kolom (teks, numerik kuota, numerik addon)
 
-25. Untuk setiap baris tabel "Search per kelas kolom" (langkah 25 sampai 27): ketik Search kata kunci pada baris itu, tekan Enter
-26. Verifikasi tabel menampilkan tepat baris yang tercantum pada kolom "Baris yang tampil" untuk baris tabel itu
-27. Kosongkan isi kotak search, tekan Enter
+26. Untuk setiap baris tabel "Search per kelas kolom" (langkah 26 sampai 28): ketik Search kata kunci pada baris itu, tekan Enter
+27. Verifikasi tabel menampilkan tepat baris yang tercantum pada kolom "Baris yang tampil" untuk baris tabel itu
+28. Kosongkan isi kotak search, tekan Enter
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: langkah 27 (mengosongkan Search antar iterasi, S-09). Search untuk menemukan baris target tidak dipakai.
-- Blok ulang: langkah 25 sampai 27 dijalankan 9 kali (2 kolom teks TC-FA-LIC-300, 4 kolom kuota TC-FA-LIC-301, 3 kolom addon TC-FA-LIC-302). Setelah ekspansi spec ini melewati sekitar 35 langkah. Alasan: seluruh blok adalah Search satu tabel dengan satu dataset Pre-setup #12 dan satu kelas harness, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
+- Langkah penghubung tanpa `Verifikasi`: langkah 24 (membuka kembali kotak Search untuk mengamati keyword kosong) dan langkah 28 (mengosongkan Search antar iterasi, S-09). Search untuk menemukan baris target tidak dipakai.
+- Blok ulang: langkah 26 sampai 28 dijalankan 9 kali (2 kolom teks TC-FA-LIC-300, 4 kolom kuota TC-FA-LIC-301, 3 kolom addon TC-FA-LIC-302). Setelah ekspansi spec ini melewati sekitar 35 langkah. Alasan: seluruh blok adalah Search satu tabel dengan satu dataset Pre-setup #12 dan satu kelas harness, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
 - Hover ikon Search dilakukan sesudah kotak terbuka karena TC tidak menyebut urutan pasti antara hover dan klik ikon.
-- Temuan untuk QA: TC-FA-LIC-299 butir a menyebut tooltip `Search` saat hover ikon, tetapi langkah TC tidak memuat langkah hover; spec menambahkannya sebagai langkah penghubung. TC-FA-LIC-299 langkah 3 menulis "Ketik 1 karakter" tanpa menyebut karakternya; spec memakai `m`.
+- Temuan untuk QA: TC-FA-LIC-299 butir a menyebut tooltip `Search` saat hover ikon, tetapi langkah TC tidak memuat langkah hover; spec menambahkannya sebagai langkah penghubung. TC-FA-LIC-299 langkah 3 menulis "Ketik 1 karakter" tanpa menyebut karakternya; spec memakai `m`. TC-FA-LIC-299 butir f menyebut keyword dikosongkan oleh `(←)` tanpa cara mengamatinya; spec membuka kembali kotak Search untuk mengamati keyword kosong (langkah 24 dan 25).

@@ -7,6 +7,7 @@ status: draft
 sourceTc:
   - TC-FA-LIC-97
   - TC-FA-LIC-98
+  - TC-FA-LIC-620
 coverage:
   web: automated
 ---
@@ -24,9 +25,9 @@ coverage:
 | TC-FA-LIC-97 | Total Control (Pre-setup #1) | `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TC_PASSWORD` |
 | TC-FA-LIC-97 | Manage global license (Pre-setup #3) | `manageGlobalLicense_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_MGL_PASSWORD` |
 | TC-FA-LIC-97 | Default User (Pre-setup #7) | `defaultUser_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_DU_PASSWORD` |
-| TC-FA-LIC-98 | Read Only (Pre-setup #2) | `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_RO_PASSWORD` |
+| TC-FA-LIC-98, TC-FA-LIC-620 | Read Only (Pre-setup #2) | `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_RO_PASSWORD` |
 
-- Data Pre-setup #12 (`Fixture.fixedAssetLicense.kuotaHierarki`): hierarki Produksi, Kantor Pusat (Divisi Logistik (Gudang A), Divisi IT, Divisi Keuangan), Cabang Surabaya, Cabang Medan dengan alokasi, Used, dan Reserved sesuai Example Data PRD §4.1.3; disediakan tim FE/BE.
+- Data Pre-setup #12 (`Fixture.fixedAssetLicense.kuotaHierarki`): hierarki Produksi, Kantor Pusat (Divisi Logistik (Gudang A), Divisi IT (beralokasi 100 tanpa subgroup), Divisi Keuangan), Cabang Surabaya, Cabang Medan dengan alokasi, Used, dan Reserved sesuai Example Data PRD §4.1.3; disediakan tim FE/BE.
 - Spec hanya mengamati tombol dan tooltip; tidak ada data yang diubah.
 - Hook dan kemampuan suite (fixture BE penyetel state, sesi API aktor, flag Guided Tooltip): dinyatakan sekali di `suite.md`.
 - Suite serial (`parallel: false`, lihat `suite.md`).
@@ -66,10 +67,15 @@ coverage:
 26. Verifikasi Group Quota Summary Kantor Pusat tampil
 27. Verifikasi tidak ada tombol `[Edit]` di samping Total
 
+### TC-FA-LIC-620: Tombol Edit Hidden pada baris Divisi IT untuk Read Only
+
+28. Verifikasi Section 2 node `Kantor Pusat` memuat baris `Divisi IT`
+29. Verifikasi tombol `[Edit]` Hidden pada baris `Divisi IT` (modal Edit Allocation tidak dapat dibuka dan field Allocated Quota tidak dapat dikosongkan)
+
 ## Notes
 
 - Spec Role Matrix (bagian 3a konvensi) atas tombol Edit yang memuat dua polaritas (Show dan Hidden); ditulis per blok role karena ganti akun menuntut Step eksplisit (akun pertama login di hook `before`).
 - Langkah penghubung: "Buka Tab `Allocation Quota`" setelah ganti akun; hook `beforeEach` suite membuka halaman License saja.
-- Asersi `[Edit]` Hidden (TC-FA-LIC-98) didahului `Verifikasi` baris grup atau Group Quota Summary tampil sebagai anchor positif. Kesimpulan "modal Edit Allocation tidak dapat dibuka dan field tidak dapat dikosongkan" tidak teramati terpisah dan menjadi bagian dari `Verifikasi` tombol `[Edit]` Hidden.
+- Asersi `[Edit]` Hidden (TC-FA-LIC-98 dan TC-FA-LIC-620) didahului `Verifikasi` baris grup atau Group Quota Summary tampil sebagai anchor positif. Kesimpulan "modal Edit Allocation tidak dapat dibuka dan field tidak dapat dikosongkan" tidak teramati terpisah dan menjadi bagian dari `Verifikasi` tombol `[Edit]` Hidden. TC-FA-LIC-620 berjalan pada sesi Read Only dan node `Kantor Pusat` yang sama dengan langkah 25; baris `Divisi IT` ada di Section 2 node tersebut, sehingga tidak ada langkah navigasi tambahan.
 - Temuan untuk QA:
   - TC-FA-LIC-97 menyebut tombol Edit "di samping Total pada Group Quota Summary tiap node" tetapi langkahnya hanya membuka node Kantor Pusat dan Divisi Logistik; spec mengasersi dua node itu.

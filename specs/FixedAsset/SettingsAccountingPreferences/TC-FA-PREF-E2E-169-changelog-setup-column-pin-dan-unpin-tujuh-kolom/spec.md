@@ -49,7 +49,7 @@ coverage:
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah 3 sampai 12 diulang untuk setiap kolom pada tabel "Kolom yang diuji" (tujuh iterasi; 8b.7); tanpa langkah bersyarat; `Verifikasi` tetap satu per klausa (S-01).
 - Alasan melewati sekitar 35 langkah (dihitung dengan ekspansi, sekitar 71): spec ini memuat satu TC (TC-FA-PREF-337) dengan tujuh iterasi identik; satu TC tepat satu spec sehingga tidak dapat dipecah. TC-FA-PREF-340 dan 341 ada di spec 112.
-- Pemulihan Setup Column (8b.13, R-24): tiap iterasi di-unpin dan disimpan sebelum iterasi berikutnya, sehingga tidak ada kolom yang tetap ter-Pin.
+- Pemulihan Setup Column (8b.14, R-24): tiap iterasi di-unpin dan disimpan sebelum iterasi berikutnya, sehingga tidak ada kolom yang tetap ter-Pin.
 - Temuan untuk QA:
   - Nama env var password tidak disebut TC-FA-PREF-337; `FA_TC_PASSWORD` mengikuti spec lain di suite dan perlu keputusan tim.
   - TC-FA-PREF-337 mensyaratkan tabel yang dapat digeser horizontal tetapi tidak menyebut lebar viewport atau jumlah kolom yang melebihi lebar modal; kemampuan itu dicatat sebagai kebutuhan tim FE.

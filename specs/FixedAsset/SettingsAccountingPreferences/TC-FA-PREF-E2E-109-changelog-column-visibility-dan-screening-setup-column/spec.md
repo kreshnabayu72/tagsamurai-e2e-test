@@ -67,7 +67,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): "Tutup modal Changelog lewat `✕`, lalu klik ikon View history" membuka ulang modal bersih untuk tiap TC.
-- Pemulihan Setup Column (8b.13, R-24): langkah "centang kembali kolom Field" memulihkan perubahan Column Visibility TC-FA-PREF-333; "Klik ikon `✕` pada modal Setup Column" di akhir TC-FA-PREF-334 menutup modal tanpa menyimpan.
+- Pemulihan Setup Column (8b.14, R-24): langkah "centang kembali kolom Field" memulihkan perubahan Column Visibility TC-FA-PREF-333; "Klik ikon `✕` pada modal Setup Column" di akhir TC-FA-PREF-334 menutup modal tanpa menyimpan.
 - Asersi tambahan (S-03): "Verifikasi kolom Date tampil pada tabel" pada TC-FA-PREF-333 adalah anchor positif untuk asersi absence kolom Field sesudah muat ulang (8b.2); TC tidak memuatnya.
 - Temuan untuk QA:
   - Nama env var password tidak disebut TC-FA-PREF-332 sampai 334; `FA_TC_PASSWORD` mengikuti spec lain di suite dan perlu keputusan tim.

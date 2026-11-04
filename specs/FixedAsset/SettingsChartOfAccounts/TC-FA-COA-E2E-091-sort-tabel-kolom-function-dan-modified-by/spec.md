@@ -16,19 +16,21 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Tidak ada ganti akun di tengah spec.
-- Data Pre-setup (hanya dibaca, tidak diubah; disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
+- Data milik spec (di-seed hook `before` lewat API, dihapus hook `before` dan `after`; kemampuan seed dan hapus disediakan tim FE/BE, butir "Seed dan pemulihan lewat API" di `suite.md`). Empat akun Active, Used By 0, dengan Function berbeda sebagai padanan P4, P3, P1, dan P2 pada precondition c TC-FA-COA-173. Account Code maksimal 15 karakter sehingga bernilai literal dan memuat nomor spec; urutan Account Code A-Z sama dengan urutan default yang diasersi (padanan P4, P3, P1, P2). Account Name bersuffix `{runId}-091`:
 
-  | Akun | Account Code | Account Name | Function |
-  |---|---|---|---|
-  | P1 | `5-6001` | Depreciation Expense – Admin | Depreciation Expense |
-  | P2 | `6-2001` | Repairs & Maintenance Expense | Capitalization Offset |
-  | P3 | `4-7001` | Gain on Disposal | Gain on Disposal |
-  | P4 | `1-1002` | Equipment – Legacy Code | Asset Cost |
+  | Akun | Account Code | Account Name | Function | Modified By |
+  |---|---|---|---|---|
+  | Padanan P4 | `DID091A` | `Sort Aset {runId}-091` | Asset Cost | user pengubah A |
+  | Padanan P3 | `DID091B` | `Sort Gain {runId}-091` | Gain on Disposal | user pengubah B |
+  | Padanan P1 | `DID091C` | `Sort Depresiasi {runId}-091` | Depreciation Expense | user pengubah A |
+  | Padanan P2 | `DID091D` | `Sort Offset {runId}-091` | Capitalization Offset | user pengubah B |
 
-- Kolom Modified By tidak tampil secara default dan ditampilkan lewat Setup Column pada langkah 2 sampai 3 (precondition TC-FA-COA-173); langkah 22 sampai 23 memulihkannya (R-24).
-- Nilai Modified By akun P1 sampai P4: sedikitnya dua user pengubah dengan nama lengkap berbeda (S-11). Identitas user pengubah tidak tertulis di Pre-setup TC (lihat Temuan untuk QA); disediakan tim FE.
-- Urutan relatif yang diasersi pada sort Function (label): Asset Cost (P4), Capitalization Offset (P2), Depreciation Expense (P1), Gain on Disposal (P3). Ukuran halaman diubah ke 100 pada langkah 1 agar akun P terlihat di satu halaman dan dipulihkan ke 10 pada langkah 24.
-- State yang diubah spec: ukuran halaman, kolom Modified By (ditampilkan lalu disembunyikan lagi), dan sort (tiap siklus berakhir netral). Tidak ada data yang ditulis. Hook `after` menghapus preferensi kolom dan tabel di browser sebagai cadangan (kemampuan disediakan tim FE).
+- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan, S-13): seed akun dengan dua user pengubah berbeda yang nama lengkapnya berbeda (S-11); identitas user pengubah tidak tertulis di Pre-setup TC (lihat Temuan untuk QA).
+- Pengecualian A-18 (butir "Pengecualian A-18" di `suite.md`): Account Code literal `DID091A` sampai `DID091D` hanya dipakai spec ini; seed idempotent dan penghapusan sisa akun dijalankan di hook `before` dan `after`.
+- Search `{runId}-091` dipakai agar hanya empat akun milik spec yang tampil pada tabel; urutan relatif diasersi atas empat baris itu, tidak bergantung pada ukuran halaman.
+- Kolom Modified By tidak tampil secara default dan ditampilkan lewat Setup Column pada langkah 1 sampai 2 (precondition TC-FA-COA-173); langkah 22 sampai 23 memulihkannya (R-24).
+- Urutan relatif yang diasersi pada sort Function (label): Asset Cost (`DID091A`), Capitalization Offset (`DID091D`), Depreciation Expense (`DID091C`), Gain on Disposal (`DID091B`).
+- State yang diubah spec: kolom Modified By (ditampilkan lalu disembunyikan lagi), isi kotak Search (dikosongkan langkah 24), dan sort (tiap siklus berakhir netral). Hook `after` menghapus preferensi kolom dan tabel di browser sebagai cadangan (kemampuan disediakan tim FE).
 - Flag Guided Tooltip halaman Chart of Accounts di-set true oleh hook suite `before` untuk akun aktor (lihat `suite.md`).
 - Suite berjalan serial (`parallel: false`).
 
@@ -36,18 +38,18 @@ coverage:
 
 ### TC-FA-COA-173: Sort siklus tiga tahap pada kolom Function dan Modified By
 
-1. Ubah jumlah baris per halaman menjadi 100
-2. Klik header Actions ⋯ > `Setup Column...`
-3. Centang kolom `Modified By`, klik `[Save]`
+1. Klik header Actions ⋯ > `Setup Column...`
+2. Centang kolom `Modified By`, klik `[Save]`
+3. Ketik Search `{runId}-091`, tekan Enter
 4. Klik header Function satu kali
 5. Verifikasi indikator naik (↑) aktif pada header Function
-6. Verifikasi baris urut A-Z menurut label: Asset Cost (P4), Capitalization Offset (P2), Depreciation Expense (P1), Gain on Disposal (P3)
+6. Verifikasi baris urut A-Z menurut label: Asset Cost (`DID091A`), Capitalization Offset (`DID091D`), Depreciation Expense (`DID091C`), Gain on Disposal (`DID091B`)
 7. Klik header Function kedua kali
 8. Verifikasi indikator turun (↓) aktif pada header Function
-9. Verifikasi urutan Z-A: Gain on Disposal (P3), Depreciation Expense (P1), Capitalization Offset (P2), Asset Cost (P4)
+9. Verifikasi urutan Z-A: Gain on Disposal (`DID091B`), Depreciation Expense (`DID091C`), Capitalization Offset (`DID091D`), Asset Cost (`DID091A`)
 10. Klik header Function ketiga kali
 11. Verifikasi indikator header Function netral
-12. Verifikasi urutan kembali ke default Account Code A-Z: urutan relatif P4, P3, P1, P2
+12. Verifikasi urutan kembali ke default Account Code A-Z: urutan relatif `DID091A`, `DID091B`, `DID091C`, `DID091D`
 13. Klik header Modified By satu kali
 14. Verifikasi indikator naik (↑) aktif pada header Modified By
 15. Verifikasi baris urut A-Z tanpa membedakan huruf besar-kecil menurut nama lengkap user pengubah (nama yang mendasari tampilan `[First Name] [Last Initial]`)
@@ -56,18 +58,20 @@ coverage:
 18. Verifikasi urutan Z-A menurut nama lengkap user pengubah
 19. Klik header Modified By ketiga kali
 20. Verifikasi indikator header Modified By netral
-21. Verifikasi urutan kembali ke default Account Code A-Z: urutan relatif P4, P3, P1, P2
+21. Verifikasi urutan kembali ke default Account Code A-Z: urutan relatif `DID091A`, `DID091B`, `DID091C`, `DID091D`
 22. Klik header Actions ⋯ > `Setup Column...`
 23. Hilangkan centang kolom `Modified By`, klik `[Save]`
-24. Ubah jumlah baris per halaman kembali menjadi 10
+24. Klik `(←)` pada kotak Search
 
 ## Notes
 
-- Langkah penghubung (S-03, S-09): langkah 1 dan 24 (ukuran halaman 100 agar akun P terlihat bersama, lalu dipulihkan); langkah 2 dan 3 (menampilkan kolom Modified By, precondition d TC-FA-COA-173); langkah 22 dan 23 (pemulihan Setup Column eksplisit, R-24 dan 8b.13).
+- Langkah penghubung (S-03, S-09): langkah 1 dan 2 (menampilkan kolom Modified By, precondition d TC-FA-COA-173); langkah 3 (Search `{runId}-091` supaya hanya empat akun milik spec tampil dan urutan relatif tidak bergantung pada ukuran halaman; R-16, R-23, 8b butir 13); langkah 22 dan 23 (pemulihan Setup Column eksplisit, R-24 dan 8b.14); langkah 24 (`(←)` mengosongkan Search dan mereset tabel).
+- Kotak Search tetap berisi `{runId}-091` selama kedua siklus sort sehingga tidak diulang sebelum siklus Modified By; klik header sort tidak mengubah isi kotak Search.
+- `A-18`: TC-FA-COA-173 memakai Account Code literal `DID091A` sampai `DID091D` (akun milik spec, Name bersuffix `{runId}-091`); seed idempotent dan penghapusan sisa di hook `before` dan `after`. Akun ini dipakai sebagai padanan P1 sampai P4 pada precondition c TC (Function sama, urutan Account Code sama).
 - Tiap siklus sort berakhir netral sehingga tidak ada langkah reset sort tambahan.
 - Kolom Modified By ditampilkan `[First Name] [Last Initial]` (R-14); sortingnya menurut nama lengkap sesuai Expected d TC-FA-COA-173, sehingga langkah 15 dan 18 mengasersi urutan menurut nama lengkap.
 - Spec ini hanya memuat TC-FA-COA-173.
 - Temuan untuk QA:
-  - TC-FA-COA-173 tidak menyebut ukuran halaman ataupun identitas user pengubah akun P1 sampai P4; spec memakai ukuran halaman 100 dan mengasumsikan sedikitnya dua nama lengkap berbeda tersedia (S-11).
+  - TC-FA-COA-173 precondition c menyebut P1 sampai P4 yang berada di antara lebih dari seratus akun Pre-setup; spec memakai empat akun milik spec sebagai padanan agar keempat akun pasti tampil bersama, tanpa mengubah Expected TC.
+  - TC-FA-COA-173 tidak menyebut identitas user pengubah akun; spec mengasumsikan dua user pengubah dengan nama lengkap berbeda tersedia (S-11).
   - Butir d dan e TC-FA-COA-173 tidak memberi urutan konkret nama; spec mengasersi urutan menurut nama lengkap tanpa nama literal.
-  - Dengan akun Pre-setup lebih dari 100 baris, akun P1 sampai P4 mungkin tidak seluruhnya berada di halaman 1 pada sort Modified By; perlu konfirmasi tim FE tentang urutan baris seed.

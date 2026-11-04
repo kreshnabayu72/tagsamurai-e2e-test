@@ -47,7 +47,7 @@ coverage:
 ### TC-FA-LIC-307: Sort default, Used by This Group tertinggi lebih dulu
 
 1. Klik tab Allocation Quota di node All Groups
-2. Verifikasi urutan awal tanpa mengklik header: Produksi, Cabang Medan, Cabang Surabaya, Kantor Pusat
+2. Verifikasi urutan awal tanpa mengklik header (Used by This Group tertinggi lebih dulu): Produksi (1450), Cabang Medan (880), Cabang Surabaya (780), Kantor Pusat (700)
 3. Verifikasi indikator sort aktif pada kolom `Used by This Group`
 
 ### TC-FA-LIC-303: Spasi tepi di-trim saat Enter, spasi tengah dipertahankan, tidak case-sensitive
@@ -93,5 +93,5 @@ coverage:
 ## Notes
 
 - Langkah penghubung tanpa `Verifikasi`: langkah 14 (mengosongkan Search antar iterasi, S-09), mengosongkan Search di akhir TC-FA-LIC-304 dan TC-FA-LIC-308, dan mengembalikan sort ke netral di akhir TC-FA-LIC-308. Pada TC-FA-LIC-303 dan TC-FA-LIC-304 kotak Search masih terbuka dari langkah sebelumnya sehingga isinya diganti, bukan dibuka ulang.
-- Blok ulang: langkah 12 sampai 14 dijalankan 4 kali dan langkah 15 sampai 20 2 kali. Setelah ekspansi spec ini melewati sekitar 35 langkah. Alasan: seluruh blok adalah Search atau Sort satu tabel dengan satu dataset Pre-setup #12 dan satu kelas harness, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Temuan untuk QA: TC-FA-LIC-307 menamai sort default "terbaru lebih dulu" padahal kolomnya numerik (Used by This Group tertinggi lebih dulu). TC-FA-LIC-308 tidak menyebut hasil tabel setelah Search `GRP-`; spec mengasersi kotak Search tetap berisi `GRP-` dan tabel tetap tersaring tanpa daftar baris.
+- Blok ulang: langkah 12 sampai 14 dijalankan 4 kali dan langkah 15 sampai 20 2 kali. Spec di atas 35 langkah (28 langkah nominal; 43 langkah setelah ekspansi). Alasan: seluruh blok adalah Search atau Sort satu tabel dengan satu dataset Pre-setup #12 dan satu kelas harness, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Temuan untuk QA: TC-FA-LIC-308 tidak menyebut hasil tabel setelah Search `GRP-`; spec mengasersi kotak Search tetap berisi `GRP-` dan tabel tetap tersaring tanpa daftar baris.

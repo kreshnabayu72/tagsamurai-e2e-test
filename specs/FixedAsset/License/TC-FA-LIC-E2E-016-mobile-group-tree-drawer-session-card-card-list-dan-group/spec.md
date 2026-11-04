@@ -20,7 +20,7 @@ coverage:
 - Mode: FE+BE
 - Akun aktor: Total Control Pre-setup #1 `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (client PT Sejahtera, plan Professional (Paid), `License allocation per group` ON; General Settings `dd/MM/yy`, `HH:mm`; kredensial `Spectra.env.FA_TC_PASSWORD`). Login di hook `before` spec ini; halaman Fixed Asset > License (Tab All License) dibuka hook `beforeEach` suite pada viewport desktop. Hook `after` mengembalikan sesi ke akun default suite dan memulihkan viewport desktop.
 - Data Pre-setup: kuota dan hierarki #12 (Kantor Pusat), riwayat #13, sesi aktif #14 (Budi Santoso: `Chrome on Windows`, Login Time 29/09/26 06:40, Last Activity 29/09/26 07:05); hanya dibaca, tidak diubah. Nilai dibaca dari `Fixture.fixedAssetLicense.*`; berkas fixture belum ada, disediakan tim FE.
-- State sisi klien yang diubah spec: ukuran viewport diubah ke mobile pada langkah 1 dan dipulihkan ke desktop pada langkah 22; hook `after` memulihkannya bila spec gagal di tengah. Kemampuan mengubah dan memulihkan viewport disediakan tim FE.
+- State sisi klien yang diubah spec: ukuran viewport diubah ke mobile pada langkah 1 dan dipulihkan ke desktop pada langkah 24; hook `after` memulihkannya bila spec gagal di tengah. Kemampuan mengubah dan memulihkan viewport disediakan tim FE.
 - Hook dan kemampuan suite (flag Guided Tooltip seen, sesi API aktor, fixture BE): dinyatakan sekali di suite.md.
 - Suite serial: `parallel: false` (lihat suite.md).
 
@@ -56,14 +56,17 @@ coverage:
 ### TC-FA-LIC-81: Active Sessions menjadi Session Card
 
 19. Klik Tab `Concurrent User`
-20. Verifikasi kartu Budi Santoso: avatar dan `Budi Santoso`, email, `Chrome on Windows`, `Login Time: 29/09/26 06:40`, `Last Activity: 29/09/26 07:05`
-21. Verifikasi tombol `[Force Logout]` lebar penuh dengan severity danger
-22. Pulihkan viewport ke ukuran desktop
+20. Ketik Search `Budi Santoso`, tekan Enter
+21. Verifikasi kartu Budi Santoso: avatar dan `Budi Santoso`, email, `Chrome on Windows`, `Login Time: 29/09/26 06:40`, `Last Activity: 29/09/26 07:05`
+22. Verifikasi tombol `[Force Logout]` lebar penuh dengan severity danger
+23. Klik `(←)` pada kotak Search
+24. Pulihkan viewport ke ukuran desktop
 
 ## Notes
 
 - Sumber: `fixed-asset/license/TestCases/tc-license.md` (TC-FA-LIC-80, 81, 82, 522). Tidak ada TC hanya-BE di spec ini.
 - Urutan TC diubah dari urutan nomor: TC-82 (Tab All License) di awal, TC-80 dan TC-522 berurutan di Tab Allocation Quota, TC-81 terakhir, sehingga tab tidak dibuka berulang (S-10). Langkah 2 TC-522 ("Ketuk node `Kantor Pusat` lewat tombol `Groups`") dipenuhi oleh langkah 9 dan 11.
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 1 (mengubah viewport sesuai Precondition), langkah 15 (menutup modal Edit Allocation), langkah 22 (memulihkan viewport), serta klik tab pada langkah 5 dan 19. Modal Edit Allocation ditutup tanpa perubahan sehingga dialog `Unsaved Changes` tidak muncul (form tidak dirty).
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 1 (mengubah viewport sesuai Precondition), langkah 15 (menutup modal Edit Allocation), langkah 24 (memulihkan viewport), serta klik tab pada langkah 5 dan 19. Langkah 20 (Search `Budi Santoso`, karena Active Sessions dapat memuat lebih dari satu halaman; 8b.13, R-16) dan langkah 23 (menutup input Search supaya tabel kembali penuh, S-09) adalah langkah penghubung. Modal Edit Allocation ditutup tanpa perubahan sehingga dialog `Unsaved Changes` tidak muncul (form tidak dirty).
 - Temuan untuk QA:
+  - Search di layout mobile tab Concurrent User (langkah 20 dan 23) tidak disebut TC dan belum terbukti di UI; spec mengasumsikannya, konfirmasi tim FE.
   - TC-82 Expected d menyebut tabel License Summary scroll horizontal tanpa menyebut tab; spec mengasersinya di Tab `All License` sebelum membuka Tab `Allocation Quota`.

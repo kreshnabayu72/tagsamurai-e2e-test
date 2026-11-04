@@ -51,44 +51,45 @@ coverage:
 11. Klik dropdown Account Function
 12. Verifikasi enam opsi: Asset Cost, Accumulated Depreciation, Depreciation Expense, Gain on Disposal, Loss on Disposal, Capitalization Offset
 13. Verifikasi tidak ada opsi kosong ("None")
-14. Verifikasi opsi dropdown tidak memiliki tooltip per opsi
-15. Klik `[✕]` di header modal
-16. Ketik Search `5-6001`, tekan Enter
-17. Arahkan kursor ke badge Function pada baris P1 (`5-6001`)
-18. Verifikasi badge Function pada tabel tidak menampilkan tooltip saat di-hover
-19. Klik `(←)` pada kotak Search
+14. Arahkan kursor ke salah satu opsi dropdown Account Function
+15. Verifikasi opsi dropdown tidak memiliki tooltip per opsi
+16. Klik `[✕]` di header modal
+17. Ketik Search `5-6001`, tekan Enter
+18. Arahkan kursor ke badge Function pada baris P1 (`5-6001`)
+19. Verifikasi badge Function pada tabel tidak menampilkan tooltip saat di-hover
+20. Klik `(←)` pada kotak Search
 
 ### TC-FA-COA-16: Popover `[ℹ]` Account Function
 
-20. Klik `+ Account` di toolbar
-21. Klik ikon `[ℹ]` di label Account Function
-22. Verifikasi penjelasan Asset Cost: "Where the asset's acquisition cost is recorded on the balance sheet."
-23. Verifikasi penjelasan Accumulated Depreciation: "Reduces the asset's value on the balance sheet; increases every month."
-24. Verifikasi penjelasan Depreciation Expense: "Monthly depreciation expense on the income statement."
-25. Verifikasi penjelasan Gain on Disposal: "Gain when an asset is sold above its book value."
-26. Verifikasi penjelasan Loss on Disposal: "Loss on disposal, write-off, lost assets, and the value of replaced components."
-27. Verifikasi penjelasan Capitalization Offset: "The account where the cost is currently recorded, before FAMS moves it to the asset."
-28. Tekan `Esc`
-29. Verifikasi field Account Function tetap belum terpilih (placeholder "Select account function")
-30. Verifikasi popover tertutup
-31. Verifikasi modal Add Account tetap terbuka
+21. Klik `+ Account` di toolbar
+22. Klik ikon `[ℹ]` di label Account Function
+23. Verifikasi penjelasan Asset Cost: "Where the asset's acquisition cost is recorded on the balance sheet."
+24. Verifikasi penjelasan Accumulated Depreciation: "Reduces the asset's value on the balance sheet; increases every month."
+25. Verifikasi penjelasan Depreciation Expense: "Monthly depreciation expense on the income statement."
+26. Verifikasi penjelasan Gain on Disposal: "Gain when an asset is sold above its book value."
+27. Verifikasi penjelasan Loss on Disposal: "Loss on disposal, write-off, lost assets, and the value of replaced components."
+28. Verifikasi penjelasan Capitalization Offset: "The account where the cost is currently recorded, before FAMS moves it to the asset."
+29. Tekan `Esc`
+30. Verifikasi field Account Function tetap belum terpilih (placeholder "Select account function")
+31. Verifikasi popover tertutup
+32. Verifikasi modal Add Account tetap terbuka
 
 ### TC-FA-COA-18: Clear Field mengosongkan seluruh field
 
-32. Isi Account Code `5-6300`, Account Name `Depreciation Expense – Clear Test`, dan pilih Account Function Depreciation Expense
-33. Klik `[Clear Field]`
-34. Verifikasi Account Code kosong
-35. Verifikasi Account Name kosong
-36. Verifikasi Account Function kembali ke placeholder "Select account function"
-37. Verifikasi modal Add Account tetap terbuka
-38. Klik `[✕]` di header modal
+33. Isi Account Code `5-6300`, Account Name `Depreciation Expense – Clear Test`, dan pilih Account Function Depreciation Expense
+34. Klik `[Clear Field]`
+35. Verifikasi Account Code kosong
+36. Verifikasi Account Name kosong
+37. Verifikasi Account Function kembali ke placeholder "Select account function"
+38. Verifikasi modal Add Account tetap terbuka
+39. Klik `[✕]` di header modal
 
 ## Notes
 
-- Spec ini lebih dari 35 langkah (38): tiga dari empat blok adalah screening satu modal Add Account yang sama (dropdown, popover, Clear Field) tanpa submit, berurutan, dan tiap Expected dipecah satu `Verifikasi` per klausa (S-01): TC-13 saja enam butir Expected menjadi sembilan `Verifikasi`, TC-16 delapan butir menjadi sembilan. Tidak ada langkah yang diulang; satu kelas (fungsional form Create) dan kegagalan satu blok tidak menghilangkan makna blok lain (bagian 3, 8b butir 7).
-- Langkah penghubung (S-03): langkah 15 (tutup modal agar badge Function di tabel dapat di-hover, form belum diisi sehingga tidak ada dialog Unsaved Changes), langkah 19 (kosongkan Search, 8b butir 9), langkah 20 (buka form baru), dan langkah 38 (tutup modal; form kosong setelah `[Clear Field]` sehingga tidak ada dialog Unsaved Changes). Langkah 16 (Search `5-6001`) membuka baris P1 target hover (R-16).
-- Langkah 17 dan 18: hover pada badge sendiri menjadi anchor untuk asersi tidak adanya tooltip (8b butir 2).
+- Spec ini lebih dari 35 langkah (39): tiga dari empat blok adalah screening satu modal Add Account yang sama (dropdown, popover, Clear Field) tanpa submit, berurutan, dan tiap Expected dipecah satu `Verifikasi` per klausa (S-01): TC-13 saja enam butir Expected menjadi sembilan `Verifikasi`, TC-16 delapan butir menjadi sembilan. Tidak ada langkah yang diulang; satu kelas (fungsional form Create) dan kegagalan satu blok tidak menghilangkan makna blok lain (bagian 3, 8b butir 7).
+- Langkah penghubung (S-03): langkah 14 (hover pada salah satu opsi dropdown Account Function sebagai anchor asersi tidak adanya tooltip pada langkah 15, 8b butir 2; TC-15 tidak memuat langkah hover, lihat Temuan untuk QA), langkah 16 (tutup modal agar badge Function di tabel dapat di-hover, form belum diisi sehingga tidak ada dialog Unsaved Changes), langkah 20 (kosongkan Search, 8b butir 9), langkah 21 (buka form baru), dan langkah 39 (tutup modal; form kosong setelah `[Clear Field]` sehingga tidak ada dialog Unsaved Changes). Langkah 17 (Search `5-6001`) membuka baris P1 target hover (R-16).
+- Langkah 18 dan 19: hover pada badge sendiri menjadi anchor untuk asersi tidak adanya tooltip (8b butir 2).
 - Asersi tidak ada pencatatan atau log tidak ada di spec ini (S-05).
 - Temuan untuk QA:
-  - TC-15 Expected (c) "Opsi dropdown tidak memiliki tooltip per opsi" tidak menyebut aksi hover pada opsi; spec mengasersinya tanpa hover pada langkah 14.
-  - TC-16 langkah 3 menyebut "Tekan Esc" tanpa menyebut elemen terfokus; spec menekan `Esc` langsung sesudah popover dibuka (langkah 28).
+  - TC-15 Expected (c) "Opsi dropdown tidak memiliki tooltip per opsi" tidak menyebut aksi hover pada opsi dan TC-15 tidak memuat langkah hover (temuan sumber T-2, TC belum diubah); spec menambah langkah hover 14 sebagai anchor sebelum asersi pada langkah 15.
+  - TC-16 langkah 3 menyebut "Tekan Esc" tanpa menyebut elemen terfokus; spec menekan `Esc` langsung sesudah popover dibuka (langkah 29).

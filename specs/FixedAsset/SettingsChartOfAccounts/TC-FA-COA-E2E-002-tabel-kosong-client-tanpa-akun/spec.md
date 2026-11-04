@@ -20,7 +20,7 @@ coverage:
 - Data: client tanpa akun (tidak ada identitas Pre-setup di TC); disediakan tim FE, kunci fixture ditetapkan tim FE. Spec hanya membaca; tidak membuat atau mengubah data.
 - Flag Guided Tooltip halaman Chart of Accounts disetel true oleh hook suite `before` untuk akun aktor yang dipakai, termasuk akun client kosong (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed dan pemulihan client uji lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
-- Identitas client kosong dibaca dari `fixtures/settings-chart-of-accounts.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
+- Identitas client kosong dibaca dari `Fixture.settingsChartOfAccounts.<kunci>` (fixture belum ada, disediakan tim FE; nama kunci ditetapkan tim FE).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps

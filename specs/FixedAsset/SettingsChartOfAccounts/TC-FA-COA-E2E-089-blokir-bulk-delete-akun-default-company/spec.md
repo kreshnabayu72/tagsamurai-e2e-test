@@ -17,7 +17,7 @@ coverage:
 
 - Mode: FE+BE.
 - Login di hook `before` spec ini sebagai Total Control (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`); halaman Chart of Accounts dibuka hook `beforeEach` suite. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup, seluruhnya hanya dibaca dan tidak berubah karena Bulk Delete selalu diblokir guard (identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>`; fixture belum ada, disediakan tim FE):
+- Data Pre-setup, seluruhnya hanya dibaca dan tidak berubah karena Bulk Delete selalu diblokir guard (identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>`; fixture belum ada, disediakan tim FE; kunci `code` memuat Account Code dan kunci `label` memuat teks `<Account Code> – <Account Name>` seperti tampil pada bullet dialog):
 
   | Kode | Akun | Kondisi | Dipakai |
   |---|---|---|---|
@@ -36,15 +36,15 @@ coverage:
 
 ### TC-FA-COA-168: Bulk Delete seluruh akun terpilih adalah akun default company menampilkan D-12 kelompok default company
 
-1. Ketik Search `4-7020`, tekan Enter
-2. Centang akun P29 (`4-7020`)
-3. Ganti isi kotak search dengan `CAP-7010`, tekan Enter
-4. Centang akun P30 (`CAP-7010`)
+1. Ketik Search `Fixture.settingsChartOfAccounts.p29.code`, tekan Enter
+2. Centang akun P29 (`Fixture.settingsChartOfAccounts.p29.code`)
+3. Ganti isi kotak search dengan `Fixture.settingsChartOfAccounts.p30.code`, tekan Enter
+4. Centang akun P30 (`Fixture.settingsChartOfAccounts.p30.code`)
 5. Klik Bulk `Delete`
 6. Verifikasi dialog "Cannot Delete Accounts" (D-12)
 7. Verifikasi kelompok default company diawali kalimat pengantar "The following are default company accounts and cannot be deleted:"
-8. Verifikasi kelompok default company memuat `• 4-7020 – Default Gain and Loss – Shared` diikuti "This account is the default company account for Default Gain on Disposal, Default Loss on Disposal in Settings > Accounting > Preferences. Change the default there before deleting it."
-9. Verifikasi kelompok default company memuat `• CAP-7010 – Default Capitalization Offset – Main` diikuti "This account is the default company account for Default Capitalization Offset in Settings > Accounting > Preferences. Change the default there before deleting it."
+8. Verifikasi kelompok default company memuat `• ` diikuti `Fixture.settingsChartOfAccounts.p29.label` lalu "This account is the default company account for Default Gain on Disposal, Default Loss on Disposal in Settings > Accounting > Preferences. Change the default there before deleting it."
+9. Verifikasi kelompok default company memuat `• ` diikuti `Fixture.settingsChartOfAccounts.p30.label` lalu "This account is the default company account for Default Capitalization Offset in Settings > Accounting > Preferences. Change the default there before deleting it."
 10. Verifikasi bagian "The following were last used in a journal and cannot be deleted:" dan "The following are in use and cannot be deleted:" tidak tampil
 11. Verifikasi dialog hanya memuat tombol `[OK]`
 12. Klik `[OK]`
@@ -54,21 +54,23 @@ coverage:
 
 14. Atur Default Gain on Disposal (`SET-05`) ke akun P28 dan Found Asset Credit Account (`SET-09`) ke akun P32 lewat fixture BE hingga tersimpan
 15. Muat ulang halaman (F5)
-16. Ketik Search `5-6970`, tekan Enter
-17. Centang akun P32 (`5-6970`)
-18. Ganti isi kotak search dengan `4-7010`, tekan Enter
-19. Centang akun P28 (`4-7010`)
+16. Ganti isi kotak search dengan `Fixture.settingsChartOfAccounts.p32.code`, tekan Enter
+17. Centang akun P32 (`Fixture.settingsChartOfAccounts.p32.code`)
+18. Ganti isi kotak search dengan `Fixture.settingsChartOfAccounts.p28.code`, tekan Enter
+19. Centang akun P28 (`Fixture.settingsChartOfAccounts.p28.code`)
 20. Klik Bulk `Delete`
 21. Verifikasi dialog "Cannot Delete Accounts" (D-12) dengan tombol `[OK]`
-22. Verifikasi "The following are in use and cannot be deleted:" memuat `• 5-6970 – Depreciation Expense – Used Default`
+22. Verifikasi "The following are in use and cannot be deleted:" memuat `• ` diikuti `Fixture.settingsChartOfAccounts.p32.label`
 23. Verifikasi dua alasan berurutan di bawah bullet itu: kalimat cabang (a) "This account is used by 1 Asset Class and cannot be deleted." lalu satu kalimat cabang (b) "This account is the default company account for Found Asset Credit Account in Settings > Accounting > Preferences. Change the default there before deleting it."
-24. Verifikasi kelompok default company diawali kalimat pengantar "The following are default company accounts and cannot be deleted:" lalu memuat `• 4-7010 – Default Gain – Disposal` diikuti "This account is the default company account for Default Gain on Disposal in Settings > Accounting > Preferences. Change the default there before deleting it."
+24. Verifikasi kelompok default company diawali kalimat pengantar "The following are default company accounts and cannot be deleted:" lalu memuat `• ` diikuti `Fixture.settingsChartOfAccounts.p28.label` lalu "This account is the default company account for Default Gain on Disposal in Settings > Accounting > Preferences. Change the default there before deleting it."
 25. Verifikasi akun P32 tidak diulang di kelompok default company
 26. Klik `[OK]`
 
 ## Notes
 
-- Langkah penghubung (S-03, R-16): Search Account Code untuk membuka tiap baris target; langkah 14 mengganti nilai Preferences untuk TC-355; "Muat ulang halaman (F5)" (langkah 15) membersihkan seleksi dan Search; `[OK]` (langkah 26) menutup dialog di akhir spec.
+- Langkah penghubung (S-03, R-16): Search Account Code untuk membuka tiap baris target; langkah 14 mengganti nilai Preferences untuk TC-355; "Muat ulang halaman (F5)" (langkah 15) membersihkan seleksi (Search dipertahankan); `[OK]` (langkah 26) menutup dialog di akhir spec.
+- Langkah 16 mengganti isi kotak search karena muat ulang halaman (langkah 15) mempertahankan Search (8b butir 9).
+- `A-18`: seluruh akun Pre-setup spec ini (P28, P29, P30, P32) hanya dibaca; Bulk Delete selalu diblokir guard sehingga tidak ada data yang diubah. Nilai Preferences yang diubah langkah 14 dipulihkan hook `after` (state global, bukan data akun).
 - Asumsi: seleksi baris bertahan saat isi Search diganti (lihat Temuan untuk QA).
 - Asersi tidak ada pencatatan atau log tidak ada di spec ini (S-05).
 - Temuan untuk QA:

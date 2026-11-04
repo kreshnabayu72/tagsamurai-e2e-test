@@ -35,31 +35,37 @@ coverage:
 3. Verifikasi server menolak permintaan karena tipe Decimal hanya menerima angka
 4. Baca ulang nilai Preferences tersimpan dan hitung ulang jumlah baris Changelog, System Log, dan Activity Log FAMS
 5. Verifikasi nilai Preferences tersimpan tidak berubah (Default Capitalization Threshold tetap 5.000.000)
-6. Verifikasi jumlah baris ketiga surface sama dengan jumlah awal
-7. Buka modal Changelog: Preferences
-8. Verifikasi modal Changelog: Preferences tampil dengan baris entri yang sudah ada
-9. Verifikasi modal Changelog: Preferences tidak memuat teks "abc"
-10. Tutup modal Changelog: Preferences
+6. Verifikasi jumlah baris Changelog sama dengan jumlah awal
+7. Verifikasi jumlah baris System Log sama dengan jumlah awal
+8. Verifikasi jumlah baris Activity Log FAMS sama dengan jumlah awal
+9. Buka modal Changelog: Preferences
+10. Verifikasi modal Changelog: Preferences tampil dengan baris entri yang sudah ada
+11. Verifikasi modal Changelog: Preferences tidak memuat teks "abc"
+12. Tutup modal Changelog: Preferences
 
 ### TC-FA-PREF-530: Request langsung Default Capitalization Threshold berisi teks <script>alert(1)</script> ditolak server
 
-11. Kirim request langsung Save Preferences menggunakan sesi Total Control Rina Anggraini, mengisi Default Capitalization Threshold <script>alert(1)</script>
-12. Verifikasi server menolak permintaan karena tipe Decimal hanya menerima angka
-13. Baca ulang nilai Preferences tersimpan dan hitung ulang jumlah baris Changelog, System Log, dan Activity Log FAMS
-14. Verifikasi nilai Preferences tersimpan tidak berubah (Default Capitalization Threshold tetap 5.000.000)
-15. Verifikasi jumlah baris ketiga surface sama dengan jumlah awal
-16. Buka modal Changelog: Preferences
-17. Verifikasi modal Changelog: Preferences tampil dengan baris entri yang sudah ada
-18. Verifikasi modal Changelog: Preferences tidak memuat teks "<script>alert(1)</script>"
+13. Catat ulang jumlah baris Changelog, System Log, dan Activity Log FAMS sebagai baseline TC-FA-PREF-530
+14. Kirim request langsung Save Preferences menggunakan sesi Total Control Rina Anggraini, mengisi Default Capitalization Threshold <script>alert(1)</script>
+15. Verifikasi server menolak permintaan karena tipe Decimal hanya menerima angka
+16. Baca ulang nilai Preferences tersimpan dan hitung ulang jumlah baris Changelog, System Log, dan Activity Log FAMS
+17. Verifikasi nilai Preferences tersimpan tidak berubah (Default Capitalization Threshold tetap 5.000.000)
+18. Verifikasi jumlah baris Changelog sama dengan jumlah awal
+19. Verifikasi jumlah baris System Log sama dengan jumlah awal
+20. Verifikasi jumlah baris Activity Log FAMS sama dengan jumlah awal
+21. Buka modal Changelog: Preferences
+22. Verifikasi modal Changelog: Preferences tampil dengan baris entri yang sudah ada
+23. Verifikasi modal Changelog: Preferences tidak memuat teks "<script>alert(1)</script>"
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Pengecualian K-1: spec defense-in-depth (kelas a) dengan Expected respons API. Request langsung tidak melewati browser; asersi penolakan ada pada langkah Verifikasi respons.
-- Asersi absence pada langkah 9 dan 18 didahului langkah anchor positif (langkah 8 dan 17: modal tampil dengan baris entri yang ada, 8b butir 2).
-- Langkah penghubung (S-03): langkah 10 (menutup modal Changelog sebelum TC berikutnya, S-09).
-- Baseline log (langkah 1) dicatat sekali; penolakan tidak mengubah jumlah baris log sehingga hitung ulang TC-530 dibandingkan dengan jumlah awal yang sama (S-12).
-- Post Condition ("Default Capitalization Threshold tidak berubah") dicakup Expected butir b dan diasersi pada langkah 5 dan 14.
+- Asersi absence pada langkah 11 dan 23 didahului langkah anchor positif (langkah 10 dan 22: modal tampil dengan baris entri yang ada, 8b butir 2).
+- Langkah penghubung (S-03): langkah 12 (menutup modal Changelog sebelum TC berikutnya, S-09), langkah 13 (catat ulang baseline untuk TC berikutnya, S-12).
+- Baseline log dicatat per TC (S-12): langkah 1 untuk TC-FA-PREF-529 dan langkah 13 untuk TC-FA-PREF-530; hitung ulang pada langkah 4 dan 16 dibandingkan dengan baseline TC masing-masing.
+- Asersi jumlah baris tiga surface sama dengan baseline, satu Verifikasi per surface (langkah 6 sampai 8 dan 18 sampai 20) atas request langsung yang ditolak adalah asersi jumlah ber-baseline yang sah di spec kelas a (konvensi bagian 3 prinsip 13 butir g); S-05 (absence log kelas g) tidak berlaku untuk asersi jumlah, dan asersi "tidak memuat teks" pada Changelog (langkah 11 dan 23) ikut aturan yang sama.
+- Post Condition ("Default Capitalization Threshold tidak berubah") dicakup Expected butir b dan diasersi pada langkah 5 dan 17.
 - Temuan untuk QA:
   - TC-FA-PREF-529 dan 530 tidak menyebut kode respons atau pesan penolakan; spec mengasersi alasan penolakan sesuai Expected ("tipe Decimal hanya menerima angka").
   - Precondition TC-FA-PREF-529 dan 530 menyebut jumlah baris awal dicatat penguji; spec mencatat pada langkah 1.

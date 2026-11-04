@@ -22,7 +22,7 @@ coverage:
 - Akun: Total Control Pre-setup #1 `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (Rudi Hartono), password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Data Pre-setup #12 (data kuota dan hierarki PT Sejahtera, dipulihkan fixture BE di hook `before`): client Paid Pre-setup #1 dengan `License allocation per group` ON; hierarki Produksi, Kantor Pusat (Divisi Logistik (Allocated 500, Used 350), Divisi IT (Allocated 100, Used 60), Divisi Keuangan (belum beralokasi `—`, Used 0)), Cabang Surabaya, Cabang Medan. Tabel Group License Allocation pada node All Groups menampilkan empat baris level 1; urutan default Used by This Group tertinggi: Produksi (Used 1450, Allocated Quota 1.500), Cabang Medan, Cabang Surabaya, Kantor Pusat (Used 700, Allocated Quota 1.500). Identitas dan nilai data dirujuk lewat `Fixture.fixedAssetLicense.kuotaHierarki` (belum ada, disiapkan tim FE); nilai pada langkah dan tabel di bawah adalah nilai fixture itu.
-- Data untuk TC-FA-LIC-311: variasi Pre-setup #12 dengan node Kantor Pusat memiliki 12 child (fixture), kode grup berawalan `GRP-`, sehingga tabel child Kantor Pusat punya halaman kedua. Penerapan dan pemulihan variasi ini mengikuti pernyataan fixture BE pemulih Pre-setup #12 di `suite.md` dan dilakukan lewat langkah penghubung.
+- Data Pre-setup #41 untuk TC-FA-LIC-311 (hierarki paginasi T-FALIC-03): Pre-setup #12 ditambah 9 grup child fixture tanpa alokasi (Used 0, Reserved 0, Group Code berawalan `GRP-`) di bawah Kantor Pusat, sehingga Kantor Pusat memiliki 12 child langsung (Divisi Logistik, Divisi IT, Divisi Keuangan, dan 9 grup fixture) dan tabel child punya halaman kedua; node `All Groups` tetap empat grup level 1 (tanpa halaman kedua); Allocated to Subgroups dan Remaining Kantor Pusat tidak berubah. Penerapan variasi ini lewat langkah penghubung (langkah 26) dan pemulihannya ke Pre-setup #12 di hook `after` mengikuti pernyataan fixture BE pemulih Pre-setup #12 di `suite.md` (disediakan tim FE/BE).
 - Data Dinamis: tidak ada. Spec ini hanya membaca tabel.
 - Tabel "Sort numerik per kolom" (parameter langkah 2 sampai 7); klik 3 selalu kembali ke urutan default Produksi, Cabang Medan, Cabang Surabaya, Kantor Pusat:
 
@@ -80,31 +80,30 @@ coverage:
 24. Klik header `Allocated Quota` sekali lagi
 25. Verifikasi klik 3 urutan default Used by This Group tertinggi: Divisi Logistik (350), Divisi IT (60), Divisi Keuangan (0)
 
-### Pindah ke variasi Pre-setup #12 dengan 12 child pada Kantor Pusat
+### Pindah ke hierarki Pre-setup #41 dengan 12 child pada Kantor Pusat
 
-26. Terapkan variasi Pre-setup #12 dengan 12 child pada node Kantor Pusat
+26. Terapkan Pre-setup #41 (9 grup child fixture di bawah Kantor Pusat) lewat fixture BE hingga berhasil tersimpan
 27. Klik menu License pada sidebar, lalu tab Allocation Quota di node All Groups
 
 ### TC-FA-LIC-311: Ganti node Sidebar mereset Search, Filter, Sort, dan paginasi
 
-28. Ketik Search `GRP-`, tekan Enter
-29. Klik header `Allocated Quota` sekali
-30. Klik node `Kantor Pusat` pada Sidebar
-31. Verifikasi setelah ganti node kotak Search kosong
-32. Verifikasi setelah ganti node tidak ada filter yang aktif (ikon Filter tanpa badge titik)
-33. Verifikasi setelah ganti node Sort kembali ke Used by This Group Highest first
-34. Verifikasi setelah ganti node tabel di halaman 1
-35. Ketik Search `GRP-`, tekan Enter
-36. Klik header `Allocated Quota` sekali
-37. Pindah ke halaman 2
-38. Klik node `All Groups` pada Sidebar
-39. Verifikasi state tidak terbawa saat kembali ke All Groups: kotak Search kosong
-40. Verifikasi state tidak terbawa saat kembali ke All Groups: tidak ada filter yang aktif
-41. Verifikasi state tidak terbawa saat kembali ke All Groups: Sort Used by This Group Highest first
-42. Verifikasi state tidak terbawa saat kembali ke All Groups: tabel di halaman 1
+28. Klik node `Kantor Pusat` pada Sidebar
+29. Ketik Search `GRP-`, tekan Enter
+30. Klik header `Allocated Quota` sekali
+31. Pindah ke halaman 2
+32. Klik node `All Groups` pada Sidebar
+33. Verifikasi setelah ganti ke node `All Groups` kotak Search kosong
+34. Verifikasi setelah ganti ke node `All Groups` tidak ada filter yang aktif (ikon Filter tanpa badge titik)
+35. Verifikasi setelah ganti ke node `All Groups` Sort kembali ke Used by This Group Highest first
+36. Verifikasi setelah ganti ke node `All Groups` tabel di halaman 1 menampilkan empat grup level 1
+37. Klik node `Kantor Pusat` pada Sidebar kembali
+38. Verifikasi state langkah sebelumnya tidak terbawa setelah kembali ke node `Kantor Pusat`: kotak Search kosong
+39. Verifikasi state langkah sebelumnya tidak terbawa setelah kembali ke node `Kantor Pusat`: tidak ada filter yang aktif
+40. Verifikasi state langkah sebelumnya tidak terbawa setelah kembali ke node `Kantor Pusat`: Sort Used by This Group Highest first
+41. Verifikasi state langkah sebelumnya tidak terbawa setelah kembali ke node `Kantor Pusat`: tabel di halaman 1
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: mengembalikan sort ke netral di akhir TC-FA-LIC-310 (S-09), membuka node `Kantor Pusat`, dan blok "Pindah ke variasi Pre-setup #12 dengan 12 child pada Kantor Pusat" (menerapkan variasi lalu membuka ulang tab lewat sidebar yang mereset Search, Sort, dan Filter).
-- Blok ulang: langkah 2 sampai 7 dijalankan 10 kali. Setelah ekspansi spec ini melewati sekitar 35 langkah. Alasan: seluruh blok adalah Sort satu tabel dengan satu dataset Pre-setup #12 dan satu kelas harness, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
-- Temuan untuk QA: (1) TC-FA-LIC-311 menyuruh "pindah ke halaman 2 jika ada" pada node All Groups yang hanya berisi empat baris; langkah bersyarat dilarang, sehingga spec membangun state halaman 2 pada node Kantor Pusat dengan 12 child. (2) TC-FA-LIC-310 butir a menambah "urutan deterministik antar halaman" tanpa data dua halaman; tidak diasersi.
+- Langkah penghubung tanpa `Verifikasi`: mengembalikan sort ke netral di akhir TC-FA-LIC-310 (S-09), membuka node `Kantor Pusat`, dan blok "Pindah ke hierarki Pre-setup #41 dengan 12 child pada Kantor Pusat" (menerapkan fixture lalu membuka ulang tab lewat sidebar yang mereset Search, Sort, dan Filter).
+- Blok ulang: langkah 2 sampai 7 dijalankan 10 kali. Spec di atas 35 langkah (41 langkah nominal; 95 langkah setelah ekspansi). Alasan: seluruh blok adalah Sort satu tabel dengan satu dataset Pre-setup #12 dan satu kelas harness, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
+- Temuan untuk QA: TC-FA-LIC-306, 309, 310, 311, dan 512 tidak menyebut Post Condition (`-`); tidak ada yang diasersi.

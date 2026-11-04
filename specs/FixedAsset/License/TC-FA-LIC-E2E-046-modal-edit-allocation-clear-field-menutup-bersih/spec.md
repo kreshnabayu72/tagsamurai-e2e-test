@@ -29,6 +29,7 @@ coverage:
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Suite berjalan serial (`parallel: false`): hierarki dan alokasi grup dipakai bersama dan diubah spec ini; hook `after` memulihkannya.
 - Data: Pre-setup #12: Divisi Logistik beralokasi 500 (Minimum Quota 450). Semua blok menutup tanpa Save; tidak ada perubahan Pre-setup #12.
+- Kemampuan teknis (disediakan tim FE): mengirim tombol `Esc` ke browser (langkah 7, 25, 27, dan 29).
 
 ## Test Steps
 

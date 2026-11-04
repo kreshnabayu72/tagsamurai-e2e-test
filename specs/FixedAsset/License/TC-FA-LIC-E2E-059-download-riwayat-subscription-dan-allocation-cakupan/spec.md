@@ -20,10 +20,10 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control Pre-setup #1 (`Fixture.fixedAssetLicense.akunTotalControl`; pola email `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`), kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite. Spec tidak mengganti akun. Password tidak ditulis di spec atau fixture.
 - Guided Tooltip: flag seen diatur dan dipulihkan hook suite (dinyatakan sekali di `suite.md`).
-- Data Pre-setup #13 (hanya dibaca): 4 term Subscription (SUBS-20270101-00001, SUBS-20260101-00001, SUBS-20250101-00001, SUBS-20241201-00001) dan 6 alokasi (LALC-20260801-00004, LALC-20260720-00003, LALC-20260515-00002, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001), lewat `Fixture.fixedAssetLicense.riwayat` (fixture belum ada; disediakan tim FE/BE).
+- Data Pre-setup #13 (hanya dibaca): 4 term Subscription (SUBS-20270101-00001, SUBS-20260101-00001, SUBS-20250101-00001, SUBS-20241201-00001) dan 7 alokasi (LALC-20260801-00004, LALC-20260720-00003, LALC-20260515-00002, LALC-20260312-00002, LALC-20260101-00001, LALC-20250210-00001, LALC-20241205-00001), lewat `Fixture.fixedAssetLicense.riwayat` (fixture belum ada; disediakan tim FE/BE).
 - Data Dinamis (milik spec, dibuat di hook `before` oleh fixture BE yang disediakan tim FE/BE, dihapus di hook `after`):
   - 25 baris Subscription History tambahan: 22 baris dengan Plan Owner `PT Uji Lain {runId}-059` dan 3 baris dengan Plan Owner `PT Uji Tiga {runId}-059`. Total baris Subscription History 29 (4 + 25). Search `PT Uji Tiga {runId}-059` menyisakan tepat 3 baris (kata kunci dipilih spec karena TC hanya menulis "Search/Filter yang menyisakan 3 baris").
-  - 25 baris Allocation History tambahan dengan pola yang sama (22 baris `PT Uji Lain {runId}-059`, 3 baris `PT Uji Tiga {runId}-059`). Total baris Allocation History 31 (6 + 25).
+  - 25 baris Allocation History tambahan dengan pola yang sama (22 baris `PT Uji Lain {runId}-059`, 3 baris `PT Uji Tiga {runId}-059`). Total baris Allocation History 32 (7 + 25).
 - Kemampuan teknis (dinyatakan di `suite.md`, dirujuk satu baris): membaca isi berkas unduhan CSV dan XLSX (nama berkas, baris header, jumlah baris); berkas tiap unduhan ditangkap ke direktori bersih; pemulihan preferensi kolom di browser di hook `after`.
 - State yang diubah dan dipulihkan: Search tiap tabel (dibersihkan pada langkah 13 dan 34) dan visibilitas kolom `Plan Owner` (dipulihkan pada langkah 18 dan 39).
 
@@ -63,7 +63,7 @@ coverage:
 24. Verifikasi tidak ada toast sukses
 25. Verifikasi berkas `License-Allocation-History.csv` terunduh
 26. Buka isi berkas yang terunduh
-27. Verifikasi berkas memuat seluruh 31 baris data (bukan hanya 10 baris halaman aktif)
+27. Verifikasi berkas memuat seluruh 32 baris data (bukan hanya 10 baris halaman aktif)
 28. Ketik Search `PT Uji Tiga {runId}-059`, tekan Enter
 29. Verifikasi tabel menampilkan tiga baris
 30. Klik ikon Download pada toolbar tabel, lalu pilih `Download as CSV`

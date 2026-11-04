@@ -32,7 +32,8 @@ coverage:
   | P81 | `CAP-8211 – Capitalization Clearing – Trim Edit`, Function Capitalization Offset | Active, Used By 0, Last Used in Journal kosong; sekali pakai | TC-259 |
   | P27 | `CAP-6800 – Capitalization Clearing – Edit Function`, Function Capitalization Offset | Active, Used By 0, belum pernah diekspor; sekali pakai | TC-144 |
 
-- Akun sekali pakai (P45, P63, P81, P27) diubah spec ini; kondisi awalnya disediakan ulang (seed/pemulihan) oleh tim FE/BE di hook `before` dan `after`, termasuk Last Updated. Nilai Account Code literal dengan batas 15 karakter tidak memakai suffix `{runId}`.
+- Pengecualian A-18 (butir "Data bersama" di `suite.md`): akun sekali pakai P45, P63, P81, dan P27 diubah spec ini. Seed idempotent dan pemulihan ke kondisi awal (termasuk Last Updated dan Function) dijalankan fixture backend (disediakan tim FE/BE) di hook `before` dan `after` spec ini; suite berjalan serial. Account Code literal (batas 15 karakter) tidak memakai suffix `{runId}`.
+- Kondisi awal P27 (`CAP-6800`): Function Capitalization Offset, Active, Used By 0, belum pernah diekspor; fixture memulihkan P27 ke kondisi awal itu di hook `before` dan `after` spec ini. P27 hanya dipakai spec ini.
 - Kemampuan teknis: kemampuan baca jumlah entri Changelog sebelum aksi (TC-144), disediakan tim FE/BE (8b.10).
 - Jam server dan jam browser disinkronkan; tidak ada asersi waktu pada spec ini.
 - Tabel akun memuat lebih dari satu halaman (ukuran halaman default 10); baris target dibuka lewat Search.
@@ -117,6 +118,7 @@ coverage:
 - Langkah penghubung (S-03, R-16): Search Account Code untuk membuka baris target (langkah 1, 15, 22, 29, 37); "Tunggu toast lama hilang otomatis" (langkah 23, 30, 38) mencegah toast sebelumnya dengan teks sama lolos sebagai asersi (R-12); langkah 7 sampai 9 menutup form dirty TC-40 deterministik (S-08); langkah 39 mencatat baseline Changelog sebelum aksi pemicu (S-12) dan Changelog ditutup sebelum membuka form Edit; langkah 50 menutup Changelog.
 - Cara baca Changelog TC-144 (S-14): entri baru dibaca pada baris teratas urutan default Date terbaru setelah selisih satu dari baseline dibuktikan (langkah 48).
 - Asersi "tidak ada perubahan tersimpan" TC-40 (langkah 10) dibaca dari baris P1 sesudah modal ditutup lewat `[Leave]`.
+- `A-18`: P45 (TC-37), P63 (TC-39), P81 (TC-259), dan P27 (TC-144) menjadi target tulis sekali pakai; syarat A-18 dinyatakan di `## Prerequisites`. P27 hanya dipakai spec ini; kondisi awalnya (Function Capitalization Offset) dinyatakan di `## Prerequisites`.
 - Asersi tidak ada pencatatan atau log tidak ada di spec ini (S-05).
 - Temuan untuk QA:
   - Post Condition TC-37 (Name tersimpan, log L-02 satu baris Account Name, dampak di Asset Class dan Preferences), TC-38 ("Tidak ada entri log"), TC-39 (log L-02 Old `CAP-8106` New `cap-8106`), TC-259 (nilai ter-trim di log L-02), dan TC-144 butir b (log di System Log dan Activity Log) tidak punya langkah observasi di TC sehingga tidak diasersi; hanya Changelog TC-144 yang punya Expected (butir d).

@@ -82,7 +82,7 @@ coverage:
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Baris seed Changelog disebut "baris N" mengikuti tabel PB-C1 di Prerequisites; Modified By ditulis `Budi S` dan `Rina A` sesuai format kolom (R-14).
 - Langkah penghubung (S-03): "Tutup modal Changelog lewat `✕`, lalu klik ikon View history" membuka ulang modal bersih untuk tiap TC; "Klik `[Clear Field]`, lalu klik `[Apply]`" setelah blok TC-FA-PREF-316 dan TC-FA-PREF-317 mengosongkan filter (S-09).
-- Pemulihan Setup Column (8b.13, R-24): langkah "centang kembali kolom Action" memulihkan perubahan Column Visibility TC-FA-PREF-317 (diterapkan langsung tanpa `[Save]`); "Klik `(←)` pada kotak Search" dan "Klik header kolom Action dua kali" memulihkan Search dan Sort TC-FA-PREF-320 (S-09).
+- Pemulihan Setup Column (8b.14, R-24): langkah "centang kembali kolom Action" memulihkan perubahan Column Visibility TC-FA-PREF-317 (diterapkan langsung tanpa `[Save]`); "Klik `(←)` pada kotak Search" dan "Klik header kolom Action dua kali" memulihkan Search dan Sort TC-FA-PREF-320 (S-09).
 - Langkah "Verifikasi baris lain (contoh: baris 1) tidak tampil" pada TC-FA-PREF-317 adalah klausa "hanya baris 9" Expected a; didahului Verifikasi baris 9 tampil (8b.2).
 - Temuan untuk QA:
   - Nama env var password tidak disebut TC-FA-PREF-316, 317, dan 320; `FA_TC_PASSWORD` mengikuti spec lain di suite dan perlu keputusan tim.

@@ -31,6 +31,7 @@ coverage:
   | 26/09/26 11:20 | Edit | Divisi Keuangan | Allocated Quota | — | 50 | Dewi L |
   | 25/09/26 08:45 | Remove Allocation | Divisi IT | Allocated Quota | 100 | — | Rudi H |
 
+- Pengecualian S-12 `[KEPUTUSAN 2026-11-02]`: fixture BE pemulih riwayat Pre-setup #27 dijalankan di hook `before` sebelum asersi absolut; suite serial (`parallel: false`); jumlah entri Changelog Allocation Quota (6 baris, langkah 7) dan baris hasil filter (langkah 9, 15, dan 18) diasersi absolut tanpa baseline dan hanya valid tepat setelah pemulihan itu, karena fixture juga menghapus entri baru yang ditambahkan spec lain (A-17, dinyatakan di `suite.md`).
 - Spec ini hanya membaca data dan tidak mengubah state global.
 
 ## Test Steps

@@ -91,5 +91,4 @@ coverage:
 - Post Condition ("Preferences company belum berubah dan tidak ada entri log baru") dicakup Expected butir b dan diasersi pada langkah nilai tersimpan dan jumlah baris log.
 - Temuan untuk QA:
   - TC-FA-PREF-235 (payload 100.123, 3 desimal) menyebut pesan "Capitalization threshold is too large" untuk pelanggaran V-03, sedangkan TC-FA-PREF-528 (payload 100.001) hanya menyebut "lebih dari 2 desimal (V-03)" tanpa teks pesan; keduanya menguji kelas yang sama. Pesan "too large" untuk 3 desimal perlu dikonfirmasi terhadap PRD.
-  - TC-FA-PREF-233 sampai 235 tidak mencatat jumlah baris log pada Precondition padahal Post Condition meminta "tidak ada entri log baru"; spec menambah pencatatan baseline (S-12).
   - TC-FA-PREF-526 sampai 528 menyebut "sesi Total Control Rina Anggraini" tanpa menyatakan UI atau API; spec memakai sesi API.

@@ -23,7 +23,7 @@ coverage:
 - Pengecualian atas butir Flag Guided Tooltip di `suite.md`: spec ini mengatur flag `guided_tooltip_seen_fa-settings-chart-of-accounts` sendiri sesudah hook (menghapus flag dengan langkah eksplisit sebelum tiap blok yang membutuhkan kunjungan pertama); kemampuan menghapus flag disediakan tim FE/BE. Hook suite `after` memulihkan flag ke true. Spec membuka layar sendiri sesudah flag dihapus (pengecualian atas hook `beforeEach` suite).
 - Kemampuan teknis: viewport desktop; tombol `[Skip]`, `[Next]`, `[Done]`, dan `[?]`. Flag tidak dibaca langsung; persistensi diamati lewat muat ulang halaman.
 - Seed dan pemulihan akun Pre-setup lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
-- Identitas data Pre-setup dibaca dari `fixtures/settings-chart-of-accounts.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
+- Identitas data Pre-setup dibaca dari `Fixture.settingsChartOfAccounts.<kunci>` (fixture belum ada, disediakan tim FE; nama kunci ditetapkan tim FE).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps

@@ -19,12 +19,12 @@ coverage:
 - Mode: FE+BE (backend nyata, tanpa mock).
 - Akun: Total Control Pre-setup #1 `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` (Rudi Hartono), password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
-- Data Pre-setup #26 (fixture tabel sesi, dipulihkan fixture BE di hook `before`): tepat lima sesi cuplikan Rudi Hartono, Dewi Lestari, Andi Pratama, Siti Rahma, Budi Santoso pada client Paid Pre-setup #1; Online Users 5/25. Kolom Curated Hidden secara default. Identitas dan nilai data dirujuk lewat `Fixture.fixedAssetLicense.*` (berkas fixture belum ada, disiapkan tim FE).
+- Data Pre-setup #26 (fixture tabel sesi, dipulihkan fixture BE di hook `before`): tepat lima sesi cuplikan Rudi Hartono, Dewi Lestari, Andi Pratama, Siti Rahma, Budi Santoso pada client Paid Pre-setup #1; Online Users 5/25. Kolom Curated Hidden secara default. Identitas dan nilai data dirujuk lewat `Fixture.fixedAssetLicense.sesiTabel` (berkas fixture belum ada, disiapkan tim FE).
 - Data Dinamis: tidak ada.
-- Tabel "Kolom Curated Hidden default" (parameter langkah 2 sampai 12, 13 sampai 20, dan 22 sampai 30): `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`.
-- Konfigurasi kolom: spec ini menyimpan Setup Column di browser. Tiap iterasi memulihkan kolom ke Hidden dan hook `after` menghapus preferensi kolom di browser, bukan `[Reset to Default]` (dinyatakan di `suite.md`; kemampuan disediakan tim FE).
+- Tabel "Kolom Curated Hidden default" (parameter langkah 2 sampai 12, 13 sampai 20, dan 23 sampai 31): `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`.
+- Konfigurasi kolom: spec ini menyimpan Setup Column di browser. Tiap iterasi memulihkan kolom ke Hidden, langkah 21 memulihkan urutan kolom hasil seretan lewat `[Reset to Default]` lalu `[Save]`, dan hook `after` menghapus preferensi kolom di browser, bukan `[Reset to Default]` (dinyatakan di `suite.md`; kemampuan disediakan tim FE).
 - Hook dan kemampuan suite (dinyatakan sekali di `suite.md`): fixture BE pemulih Pre-setup #26; pemulihan konfigurasi kolom. Kemampuan teknis: seret-dan-lepas item daftar kolom, mengatur lebar viewport agar tabel dapat digeser horizontal, membaca isi Live Preview dan urutan kolom tabel.
-- State yang diubah dan dipulihkan: viewport browser disempitkan pada langkah 21 agar tabel dapat digeser horizontal (pilihan spec; TC hanya menulis "geser tabel horizontal") dan dipulihkan pada langkah 31.
+- State yang diubah dan dipulihkan: viewport browser disempitkan pada langkah 22 agar tabel dapat digeser horizontal (pilihan spec; TC hanya menulis "geser tabel horizontal") dan dipulihkan pada langkah 32.
 
 ## Test Steps
 
@@ -53,23 +53,24 @@ coverage:
 18. Muat ulang halaman (F5)
 19. Verifikasi urutan kolom di tabel bertahan setelah F5: kolom itu di posisi pertama
 20. Buka Popup Setup Column, hilangkan centang kolom itu, dan klik `[Save]`
+21. Buka Popup Setup Column, klik `[Reset to Default]`, lalu klik `[Save]`
 
 ### TC-FA-LIC-289: Pin dan Unpin kolom Curated Hidden default
 
-21. Sempitkan viewport browser sehingga tabel dapat digeser horizontal
-22. Untuk setiap kolom pada tabel "Kolom Curated Hidden default" (langkah 22 sampai 30): buka Popup Setup Column lewat header kolom Actions `⋯` lalu `Setup Column...`
-23. Centang kolom itu, klik ikon Pin kolom itu, lalu klik `[Save]`
-24. Geser tabel secara horizontal
-25. Verifikasi kolom itu membeku (sticky) di kiri saat scroll horizontal
-26. Muat ulang halaman (F5), lalu geser tabel secara horizontal
-27. Verifikasi kolom itu tetap membeku (sticky) di kiri setelah F5
-28. Buka Popup Setup Column, klik ikon Pin kolom itu untuk Unpin, lalu klik `[Save]`
-29. Verifikasi kolom itu tidak lagi membeku (sticky) setelah Unpin
-30. Buka Popup Setup Column, hilangkan centang kolom itu, dan klik `[Save]`
-31. Pulihkan viewport browser ke ukuran semula
+22. Sempitkan viewport browser sehingga tabel dapat digeser horizontal
+23. Untuk setiap kolom pada tabel "Kolom Curated Hidden default" (langkah 23 sampai 31): buka Popup Setup Column lewat header kolom Actions `⋯` lalu `Setup Column...`
+24. Centang kolom itu, klik ikon Pin kolom itu, lalu klik `[Save]`
+25. Geser tabel secara horizontal
+26. Verifikasi kolom itu membeku (sticky) di kiri saat scroll horizontal
+27. Muat ulang halaman (F5), lalu geser tabel secara horizontal
+28. Verifikasi kolom itu tetap membeku (sticky) di kiri setelah F5
+29. Buka Popup Setup Column, klik ikon Pin kolom itu untuk Unpin, lalu klik `[Save]`
+30. Verifikasi kolom itu tidak lagi membeku (sticky) setelah Unpin
+31. Buka Popup Setup Column, hilangkan centang kolom itu, dan klik `[Save]`
+32. Pulihkan viewport browser ke ukuran semula
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: mencentang dan menyimpan kolom Curated di awal iterasi, memulihkan kolom ke Hidden, urutan, dan Pin di akhir iterasi (S-09), serta menyempitkan viewport (langkah 21) dan memulihkannya (langkah 31) agar tabel dapat digeser horizontal pada TC-FA-LIC-289 (S-14). Setup Column tidak memakai "Tunggu aksi selesai" karena aksi sisi klien (butir 8 bagian 8b).
-- Blok ulang: ketiga blok (langkah 2 sampai 12, 13 sampai 20, dan 22 sampai 30) dijalankan 4 kali masing-masing. Setelah ekspansi spec ini melewati sekitar 35 langkah. Alasan: seluruh blok adalah Setup Column kolom Curated pada satu tabel dengan satu dataset dan satu kelas harness, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
-- Temuan untuk QA: TC-FA-LIC-287 menyebut "hilangkan centang lalu Save" untuk kolom yang Hidden secara default, dan TC-FA-LIC-288 dan TC-FA-LIC-289 menyeret dan mem-Pin kolom itu tanpa menyebut langkah menampilkannya; spec mencentang kolom itu lebih dulu. Urutan hasil iterasi geser TC-FA-LIC-288 tidak dipulihkan antar iterasi selain kolom Curated disembunyikan kembali.
+- Langkah penghubung tanpa `Verifikasi`: mencentang dan menyimpan kolom Curated di awal iterasi, memulihkan kolom ke Hidden, urutan, dan Pin di akhir iterasi (S-09), langkah 21 memulihkan urutan kolom hasil seretan di akhir blok TC-FA-LIC-288 lewat `[Reset to Default]` lalu `[Save]` (bagian 8b butir 14), serta menyempitkan viewport (langkah 22) dan memulihkannya (langkah 32) agar tabel dapat digeser horizontal pada TC-FA-LIC-289 (S-14). Setup Column tidak memakai "Tunggu aksi selesai" karena aksi sisi klien (butir 8 bagian 8b).
+- Blok ulang: ketiga blok (langkah 2 sampai 12, 13 sampai 20, dan 23 sampai 31) dijalankan 4 kali masing-masing. Setelah ekspansi spec ini melewati sekitar 35 langkah. Alasan: seluruh blok adalah Setup Column kolom Curated pada satu tabel dengan satu dataset dan satu kelas harness, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
+- Temuan untuk QA: TC-FA-LIC-287 menyebut "hilangkan centang lalu Save" untuk kolom yang Hidden secara default, dan TC-FA-LIC-288 dan TC-FA-LIC-289 menyeret dan mem-Pin kolom itu tanpa menyebut langkah menampilkannya; spec mencentang kolom itu lebih dulu. Urutan kolom hasil seretan TC-FA-LIC-288 tidak dipulihkan antar iterasi selain kolom Curated disembunyikan kembali; pemulihan urutan dilakukan sekali di akhir blok (langkah 21).

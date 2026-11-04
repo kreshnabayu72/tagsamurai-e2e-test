@@ -32,7 +32,7 @@ coverage:
 
 - Client Paid (PT Sejahtera, plan Professional). Data Pre-setup #12 (`Fixture.fixedAssetLicense.kuotaHierarki`), #13 (`Fixture.fixedAssetLicense.riwayat`), #14 (`Fixture.fixedAssetLicense.sesiAktif`, profil Curated dengan Activation Status dan Temporary User), dan #15 (banner Notice, N = 30: tanggal fixture hari ini `01/12/26`) dibaca tanpa diubah selain tanggal fixture; disediakan tim FE/BE.
 - Tanggal fixture hari ini diatur lewat fixture BE (jam server tidak digeser) dan dipulihkan di hook `after`.
-- Setup Column: TC-FA-LIC-485 menyimpan konfigurasi kolom Tab Concurrent User untuk Read Only; hook `after` menghapus preferensi kolom di browser (bukan `[Reset to Default]`), kemampuan disediakan tim FE (dinyatakan di `suite.md`).
+- Setup Column: TC-FA-LIC-485 menyimpan konfigurasi kolom Tab Concurrent User untuk Read Only; spec memulihkannya pada langkah 39 sampai 42 (nonaktifkan kembali Activation Status dan Temporary User, `[Save]`), dan hook `after` hanya cadangan dengan menghapus preferensi kolom di browser (bukan `[Reset to Default]`), kemampuan disediakan tim FE (dinyatakan di `suite.md`).
 - Hook dan kemampuan suite (fixture BE penyetel state, sesi API aktor, flag Guided Tooltip): dinyatakan sekali di `suite.md`.
 - Suite serial (`parallel: false`, lihat `suite.md`).
 
@@ -87,13 +87,17 @@ coverage:
 36. Klik `[Save]`
 37. Verifikasi kolom Activation Status dan Temporary User tampil dengan nilai penuh untuk semua baris
 38. Verifikasi kolom Email tampil penuh (client-wide)
+39. Klik header kolom Column Visibility (⋯)
+40. Klik item `Setup Column...`
+41. Nonaktifkan kembali kolom Activation Status dan Temporary User pada Popup Setup Column
+42. Klik `[Save]`
 
 ## Notes
 
 - Spec Role Matrix (bagian 3a konvensi) atas visibilitas elemen baca; ditulis per blok role karena ganti akun menuntut Step eksplisit (akun pertama login di hook `before`). Urutan akun Total Control, Manage global license, Manage asset license, Group Manager, lalu Read Only dipilih supaya blok Read Only (TC-FA-LIC-92, 109, 485) berjalan pada sesi Read Only yang sama tanpa ganti akun tambahan.
 - Pembagian TC: TC-FA-LIC-91 (elemen Tab, License Summary, dan banner) dan TC-FA-LIC-108 (banner Notice tampil untuk kelima akun) dijalankan dalam satu putaran akun; satu `Verifikasi` per akun memuat daftar elemen yang disebut utuh pada Expected kedua TC.
-- Langkah penghubung (aksi tanpa `Verifikasi`): penyetelan tanggal fixture dan "Buka License > All License" setelah ganti akun.
-- Spec di atas 35 langkah (38 langkah): seluruh blok adalah visibilitas baca per role pada satu halaman, setiap akun berdiri sendiri; sekitar 16 langkah adalah ganti akun dan pembukaan halaman.
+- Langkah penghubung (aksi tanpa `Verifikasi`): penyetelan tanggal fixture dan "Buka License > All License" setelah ganti akun; langkah 39 sampai 42 memulihkan kolom Activation Status dan Temporary User ke tersembunyi (8b.14, S-03).
+- Spec di atas 35 langkah (42 langkah): seluruh blok adalah visibilitas baca per role pada satu halaman, setiap akun berdiri sendiri; sekitar 16 langkah adalah ganti akun dan pembukaan halaman.
 - Temuan untuk QA:
   - TC-FA-LIC-109 Expected "tanpa pembatasan baris" tidak menyebut jumlah baris acuan; spec mengasersinya sebagai data client-wide terbaca.
   - TC-FA-LIC-485 Expected tidak menyatakan daftar sel yang dibandingkan; spec mengasersi nilai penuh sesuai Expected.

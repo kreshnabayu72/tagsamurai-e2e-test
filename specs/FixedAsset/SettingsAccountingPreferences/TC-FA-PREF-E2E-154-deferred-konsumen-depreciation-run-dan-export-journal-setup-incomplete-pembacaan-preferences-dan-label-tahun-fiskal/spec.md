@@ -22,6 +22,7 @@ coverage:
 - Mode: FE+BE.
 - Kelas harness: fungsional (alur lintas modul; TC `[DEFERRED]` pada modul konsumen yang belum disusun).
 - Akun aktor: Total Control (PC-8: Rina Anggraini, tampil "Rina A") `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD` (nama env sama dengan spec lain di suite; perlu dikonfirmasi tim FE sebelum didaftarkan di `executionConfig.environmentVariables` dan `.env.example`).
+- Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas, dasar hitungan "13 accounting periods will be rebuilt."; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences).
 - Data Pre-setup: Preferences nilai awal PC-1; Asset Class PC-6; 3 pelepasan belum diposting (PC-7); varian Preferences per TC (dibentuk lewat seed):
   - TC-FA-PREF-504 dan 505: In-service Date Source tersimpan kosong sehingga banner Setup Incomplete tampil (PC-12).

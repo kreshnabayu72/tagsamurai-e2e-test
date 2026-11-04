@@ -79,21 +79,23 @@ coverage:
 28. Jalankan fixture BE pemulih Pre-setup #12 dan #20 dengan aset Waiting for Approval pada plan Paid hingga tersimpan
 29. Buka License > All License; catat Used, Reserved, dan Remaining pada License Summary kolom Asset
 30. Approve aset di Fixed Asset > Approvals
-31. Buka License > All License (langsung muat ulang)
-32. Verifikasi Used naik 1, Reserved turun 1, dan Remaining sama dibanding nilai pada langkah 29, tanpa jeda
-33. Catat Used dan Remaining pada License Summary kolom Asset
-34. Delete satu aset Active
-35. Muat ulang halaman License
-36. Verifikasi Used turun 1 dan Remaining naik 1 dibanding nilai pada langkah 33, tanpa jeda
-37. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
+31. Tunggu aksi selesai
+32. Buka License > All License (langsung muat ulang)
+33. Verifikasi Used naik 1, Reserved turun 1, dan Remaining sama dibanding nilai pada langkah 29, tanpa jeda
+34. Catat Used dan Remaining pada License Summary kolom Asset
+35. Delete satu aset Active
+36. Tunggu aksi selesai
+37. Muat ulang halaman License
+38. Verifikasi Used turun 1 dan Remaining naik 1 dibanding nilai pada langkah 34, tanpa jeda
+39. Jalankan fixture BE pemulih Pre-setup #12 hingga tersimpan
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, aksi tanpa `Verifikasi`): langkah 1, 6, 12, 17, 22, 28, dan 37 (fixture BE pemulih dan penyetel state), langkah 4, 13, 23, dan 35 (muat ulang License), langkah 9, 18, 20, 29, dan 33 (mencatat baseline, S-12), serta navigasi License.
+- Langkah penghubung (S-03, aksi tanpa `Verifikasi`): langkah 1, 6, 12, 17, 22, 28, dan 39 (fixture BE pemulih dan penyetel state), langkah 4, 13, 23, dan 37 (muat ulang License), langkah 9, 18, 20, 29, dan 34 (mencatat baseline, S-12), langkah 31 dan 36 (Tunggu aksi selesai sesudah Approve dan Delete, 8b.8), serta navigasi License.
 - Urutan TC diubah dari urutan nomor: TC-FA-LIC-401, TC-FA-LIC-402, dan TC-FA-LIC-403 berurutan karena TC-FA-LIC-403 mengubah ketiga aset TC-FA-LIC-402 menjadi Active; TC-FA-LIC-493 sebelum TC-FA-LIC-404 yang menghapus aset (S-10).
 - TC-FA-LIC-402 dan TC-FA-LIC-403 menyebut "(sisi tampilan dengan data seed)": spec hanya mengasersi tampilan License atas data seed fixture, tidak menjalankan aksi Manage.
-- Alasan di atas sekitar 35 langkah (37 langkah): semua blok satu topik (konsistensi Used, Reserved, dan Unmanaged pada License Summary) dan berdiri sendiri dengan fixture sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Alasan di atas sekitar 35 langkah (39 langkah): semua blok satu topik (konsistensi Used, Reserved, dan Unmanaged pada License Summary) dan berdiri sendiri dengan fixture sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - TC-FA-LIC-402, TC-FA-LIC-403, dan TC-FA-LIC-493 bergantung pada penanda transisi Manage yang belum ditetapkan `asset/` (Open Item #1); pada kondisi sekarang nilai Expected memang tidak tercapai (TC-FA-LIC-612).
   - TC-FA-LIC-403 tidak menyebut nilai absolut; spec membandingkan dengan nilai langkah 8 dan 9.

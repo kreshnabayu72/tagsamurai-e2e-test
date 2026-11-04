@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD` (terdaftar). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Satu ganti akun eksplisit di langkah 8 dan 9 (TC-358, client uji P110); hook `after` mengembalikan sesi ke akun default suite.
 - Akun client uji P110 (tabel 25 akun, plan Growth, akun P1 termasuk): `totalControlFixedAsset_automated_{namaCompanyP110}@qwertysystem.net`, password dari `Spectra.env.FA_TC_PASSWORD`; disediakan tim FE/BE (lihat Seed dan pemulihan di `suite.md`); email akun ini tidak tertulis di Pre-setup TC (lihat Temuan untuk QA).
-- Akun Pre-setup client default (hanya dibaca dan tidak diubah; kunci fixture `Fixture.settingsChartOfAccounts.<kunci>` ditetapkan tim FE): P1 (`5-6001`, Account Name tanpa koma dan tanda kutip), P42 (satu akun dengan Account Name memuat koma dan tanda kutip ganda; asumsi pre-setup, bukan data PRD), dan P2 sampai P5.
+- Akun Pre-setup client default (hanya dibaca dan tidak diubah; kunci fixture `Fixture.settingsChartOfAccounts.<kunci>` ditetapkan tim FE): P1 (`5-6001`, Account Name tanpa koma dan tanda kutip), P42 (Account Code `7-1002`, satu akun dengan Account Name memuat koma dan tanda kutip ganda; asumsi pre-setup, bukan data PRD), dan P2 sampai P5.
 - Akun P1 di client P110 terakhir diubah user A (Pre-setup P40; asumsi pre-setup).
 - General Settings client P110 untuk TC-358: Date Format `dd/MM/yy` dan Time Format 24 jam; mekanisme mengubah dan mengembalikannya disediakan tim FE/BE (langkah 10 dan 24).
 - Kemampuan teknis: membaca byte awal dan isi berkas CSV dan daftar sheet berkas XLSX yang terunduh; disediakan tim FE.
@@ -66,7 +66,7 @@ coverage:
 
 - P-10: TC-221, TC-222, dan TC-358 sebagian besar mengasersi isi berkas (kelas f) pada alur tombol Download; TC-358 juga mengasersi 10 baris halaman (langkah 14) dan tidak adanya toast (langkah 16) sebagai klausa UI, ditaruh sebelum klausa isi berkas. Spec ini memuat TC yang objek ujinya isi berkas bersama TC UI sejenis pada tombol dan tabel yang sama, sehingga satu spec dengan pengecualian P-10; `Verifikasi` isi berkas satu per klausa.
 - Asersi absence toast pada langkah 16 diletakkan segera setelah pemicu sebelum asersi berkas; berkas terunduh yang diamati pada langkah 17 menjadi bukti positif bahwa respons sudah diproses (8b.11).
-- Langkah penghubung (S-03): langkah 8 dan 9 (ganti akun ke client P110), langkah 10 (mengatur General Settings, precondition e TC-358), langkah 11 sampai 13 (menampilkan kolom, langkah TC-358), langkah 21 sampai 24 (pemulihan Setup Column eksplisit, R-24 dan 8b.13, dan General Settings).
+- Langkah penghubung (S-03): langkah 8 dan 9 (ganti akun ke client P110), langkah 10 (mengatur General Settings, precondition e TC-358), langkah 11 sampai 13 (menampilkan kolom, langkah TC-358), langkah 21 sampai 24 (pemulihan Setup Column eksplisit, R-24 dan 8b.14, dan General Settings).
 - Pembagian kelas harness: tidak ada TC kelas lain; ganti akun pada langkah 8 dan 9 bukan konteks kedua.
 - Temuan untuk QA:
   - TC-221 langkah 1 meminta "Search akun P42 dan P1 (tampilkan keduanya)" tanpa menyebut nilai Search yang menampilkan keduanya; spec mengunduh tanpa Search sehingga berkas memuat seluruh akun, termasuk P42 dan P1.

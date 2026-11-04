@@ -39,106 +39,111 @@ coverage:
 ### TC-FA-LIC-447: Entitas Suspended/Expired: Force Logout ditolak 403 dengan toast baku (Suspended)
 
 2. Buka License > Concurrent User
-3. Klik `[Force Logout]` pada sesi Budi Santoso
-4. Klik `[Confirm Logout]`
-5. Verifikasi server menolak dengan `403 Forbidden`
-6. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-7. Verifikasi tidak ada redirect
-8. Verifikasi dialog `Force Logout User` (D-FALIC-01) ditutup dan tidak dibuka kembali (tanpa retry pada dialog yang sama)
-9. Verifikasi daftar sesi dan `Online Users` di-refresh
-10. Verifikasi tampilan baca tidak berubah
-11. Verifikasi tidak ada perubahan data: sesi Budi Santoso tetap aktif lewat fixture BE
+3. Ketik Search `Budi Santoso`, tekan Enter
+4. Klik `[Force Logout]` pada sesi Budi Santoso
+5. Klik `[Confirm Logout]`
+6. Verifikasi server menolak dengan `403 Forbidden`
+7. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+8. Verifikasi tidak ada redirect
+9. Verifikasi dialog `Force Logout User` (D-FALIC-01) ditutup dan tidak dibuka kembali (tanpa retry pada dialog yang sama)
+10. Verifikasi daftar sesi dan `Online Users` di-refresh
+11. Verifikasi tampilan baca tidak berubah
+12. Verifikasi tidak ada perubahan data: sesi Budi Santoso tetap aktif lewat fixture BE
+13. Klik `(←)` pada kotak Search
 
 ### TC-FA-LIC-448: Entitas Suspended/Expired: Edit Allocation ditolak 403 dengan toast baku (Suspended)
 
-12. Buka Tab `Allocation Quota`, lalu klik node `Kantor Pusat`
-13. Klik `[Edit]` pada `Divisi IT`
-14. Isi New Allocated Quota `120`
-15. Klik `[Save]`
-16. Verifikasi server menolak dengan `403 Forbidden`
-17. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-18. Verifikasi tidak ada redirect
-19. Verifikasi modal Edit Allocation ditutup dan input `120` dibuang tanpa retry pada modal yang sama
-20. Klik `[Edit]` pada `Divisi IT` lagi
-21. Verifikasi modal Edit Allocation menampilkan nilai tersimpan 100
-22. Tutup modal Edit Allocation dengan `[×]`
-23. Verifikasi Section 1 dan Section 2 Tab Allocation Quota di-refresh
-24. Verifikasi tampilan baca tidak berubah
-25. Verifikasi tidak ada perubahan data: Allocated Quota Divisi IT tetap 100 lewat fixture BE
+14. Buka Tab `Allocation Quota`, lalu klik node `Kantor Pusat`
+15. Klik `[Edit]` pada `Divisi IT`
+16. Isi New Allocated Quota `120`
+17. Klik `[Save]`
+18. Verifikasi server menolak dengan `403 Forbidden`
+19. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+20. Verifikasi tidak ada redirect
+21. Verifikasi modal Edit Allocation ditutup dan input `120` dibuang tanpa retry pada modal yang sama
+22. Klik `[Edit]` pada `Divisi IT` lagi
+23. Verifikasi modal Edit Allocation menampilkan nilai tersimpan 100
+24. Tutup modal Edit Allocation dengan `[×]`
+25. Verifikasi Section 1 dan Section 2 Tab Allocation Quota di-refresh
+26. Verifikasi tampilan baca tidak berubah
+27. Verifikasi tidak ada perubahan data: Allocated Quota Divisi IT tetap 100 lewat fixture BE
 
 ### TC-FA-LIC-449: Entitas Suspended/Expired: Remove Allocation ditolak 403 dengan toast baku (Suspended)
 
-26. Klik `[Edit]` pada `Divisi IT`
-27. Klik `[Clear Field]`
-28. Klik `[Save]`
-29. Verifikasi server menolak dengan `403 Forbidden`
-30. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-31. Verifikasi tidak ada redirect
-32. Verifikasi modal Edit Allocation ditutup dan input kosong dibuang tanpa retry pada modal yang sama
-33. Klik `[Edit]` pada `Divisi IT` lagi
-34. Verifikasi modal Edit Allocation menampilkan nilai tersimpan 100
-35. Tutup modal Edit Allocation dengan `[×]`
-36. Verifikasi Section 1 dan Section 2 Tab Allocation Quota di-refresh
-37. Verifikasi tampilan baca tidak berubah
-38. Verifikasi tidak ada perubahan data: Allocated Quota Divisi IT tetap 100 lewat fixture BE
+28. Klik `[Edit]` pada `Divisi IT`
+29. Klik `[Clear Field]`
+30. Klik `[Save]`
+31. Verifikasi server menolak dengan `403 Forbidden`
+32. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+33. Verifikasi tidak ada redirect
+34. Verifikasi modal Edit Allocation ditutup dan input kosong dibuang tanpa retry pada modal yang sama
+35. Klik `[Edit]` pada `Divisi IT` lagi
+36. Verifikasi modal Edit Allocation menampilkan nilai tersimpan 100
+37. Tutup modal Edit Allocation dengan `[×]`
+38. Verifikasi Section 1 dan Section 2 Tab Allocation Quota di-refresh
+39. Verifikasi tampilan baca tidak berubah
+40. Verifikasi tidak ada perubahan data: Allocated Quota Divisi IT tetap 100 lewat fixture BE
 
 ### Client Expired
 
-39. Ganti akun: Logout
-40. Login sebagai Total Control client Expired Pre-setup #18 (`Spectra.env.FA_EXPIRED_TC_PASSWORD`)
-41. Ubah status Client menjadi Expired lewat fixture BE (sesi aktor sudah dibuka sebelum status berubah)
+41. Ganti akun: Logout
+42. Login sebagai Total Control client Expired Pre-setup #18 (`Spectra.env.FA_EXPIRED_TC_PASSWORD`)
+43. Ubah status Client menjadi Expired lewat fixture BE (sesi aktor sudah dibuka sebelum status berubah)
 
 ### TC-FA-LIC-447: Entitas Suspended/Expired: Force Logout ditolak 403 dengan toast baku (Expired)
 
-42. Buka License > Concurrent User
-43. Klik `[Force Logout]` pada sesi Budi Santoso
-44. Klik `[Confirm Logout]`
-45. Verifikasi server menolak dengan `403 Forbidden`
-46. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-47. Verifikasi tidak ada redirect
-48. Verifikasi dialog `Force Logout User` (D-FALIC-01) ditutup dan tidak dibuka kembali (tanpa retry pada dialog yang sama)
-49. Verifikasi daftar sesi dan `Online Users` di-refresh
-50. Verifikasi tampilan baca tidak berubah
-51. Verifikasi tidak ada perubahan data: sesi Budi Santoso tetap aktif lewat fixture BE
+44. Buka License > Concurrent User
+45. Ketik Search `Budi Santoso`, tekan Enter
+46. Klik `[Force Logout]` pada sesi Budi Santoso
+47. Klik `[Confirm Logout]`
+48. Verifikasi server menolak dengan `403 Forbidden`
+49. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+50. Verifikasi tidak ada redirect
+51. Verifikasi dialog `Force Logout User` (D-FALIC-01) ditutup dan tidak dibuka kembali (tanpa retry pada dialog yang sama)
+52. Verifikasi daftar sesi dan `Online Users` di-refresh
+53. Verifikasi tampilan baca tidak berubah
+54. Verifikasi tidak ada perubahan data: sesi Budi Santoso tetap aktif lewat fixture BE
+55. Klik `(←)` pada kotak Search
 
 ### TC-FA-LIC-448: Entitas Suspended/Expired: Edit Allocation ditolak 403 dengan toast baku (Expired)
 
-52. Buka Tab `Allocation Quota`, lalu klik node `Kantor Pusat`
-53. Klik `[Edit]` pada `Divisi IT`
-54. Isi New Allocated Quota `120`
-55. Klik `[Save]`
-56. Verifikasi server menolak dengan `403 Forbidden`
-57. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-58. Verifikasi tidak ada redirect
-59. Verifikasi modal Edit Allocation ditutup dan input `120` dibuang tanpa retry pada modal yang sama
-60. Klik `[Edit]` pada `Divisi IT` lagi
-61. Verifikasi modal Edit Allocation menampilkan nilai tersimpan 100
-62. Tutup modal Edit Allocation dengan `[×]`
-63. Verifikasi Section 1 dan Section 2 Tab Allocation Quota di-refresh
-64. Verifikasi tampilan baca tidak berubah
-65. Verifikasi tidak ada perubahan data: Allocated Quota Divisi IT tetap 100 lewat fixture BE
+56. Buka Tab `Allocation Quota`, lalu klik node `Kantor Pusat`
+57. Klik `[Edit]` pada `Divisi IT`
+58. Isi New Allocated Quota `120`
+59. Klik `[Save]`
+60. Verifikasi server menolak dengan `403 Forbidden`
+61. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+62. Verifikasi tidak ada redirect
+63. Verifikasi modal Edit Allocation ditutup dan input `120` dibuang tanpa retry pada modal yang sama
+64. Klik `[Edit]` pada `Divisi IT` lagi
+65. Verifikasi modal Edit Allocation menampilkan nilai tersimpan 100
+66. Tutup modal Edit Allocation dengan `[×]`
+67. Verifikasi Section 1 dan Section 2 Tab Allocation Quota di-refresh
+68. Verifikasi tampilan baca tidak berubah
+69. Verifikasi tidak ada perubahan data: Allocated Quota Divisi IT tetap 100 lewat fixture BE
 
 ### TC-FA-LIC-449: Entitas Suspended/Expired: Remove Allocation ditolak 403 dengan toast baku (Expired)
 
-66. Klik `[Edit]` pada `Divisi IT`
-67. Klik `[Clear Field]`
-68. Klik `[Save]`
-69. Verifikasi server menolak dengan `403 Forbidden`
-70. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-71. Verifikasi tidak ada redirect
-72. Verifikasi modal Edit Allocation ditutup dan input kosong dibuang tanpa retry pada modal yang sama
-73. Klik `[Edit]` pada `Divisi IT` lagi
-74. Verifikasi modal Edit Allocation menampilkan nilai tersimpan 100
-75. Tutup modal Edit Allocation dengan `[×]`
-76. Verifikasi Section 1 dan Section 2 Tab Allocation Quota di-refresh
-77. Verifikasi tampilan baca tidak berubah
-78. Verifikasi tidak ada perubahan data: Allocated Quota Divisi IT tetap 100 lewat fixture BE
+70. Klik `[Edit]` pada `Divisi IT`
+71. Klik `[Clear Field]`
+72. Klik `[Save]`
+73. Verifikasi server menolak dengan `403 Forbidden`
+74. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+75. Verifikasi tidak ada redirect
+76. Verifikasi modal Edit Allocation ditutup dan input kosong dibuang tanpa retry pada modal yang sama
+77. Klik `[Edit]` pada `Divisi IT` lagi
+78. Verifikasi modal Edit Allocation menampilkan nilai tersimpan 100
+79. Tutup modal Edit Allocation dengan `[×]`
+80. Verifikasi Section 1 dan Section 2 Tab Allocation Quota di-refresh
+81. Verifikasi tampilan baca tidak berubah
+82. Verifikasi tidak ada perubahan data: Allocated Quota Divisi IT tetap 100 lewat fixture BE
 
 ## Notes
 
 - Spec kelas h (state tenant, bagian 3 prinsip 13); perubahan status Client oleh fixture BE hanya memicu kondisi yang diuji.
-- Langkah penghubung (aksi tanpa `Verifikasi`): ubah status Client (langkah 1 dan 41), ganti akun (langkah 39 dan 40), "Buka Tab `Allocation Quota`, lalu klik node `Kantor Pusat`", dan "Tutup modal Edit Allocation dengan `[×]`" setelah memverifikasi nilai tersimpan (modal tidak dirty).
-- Spec di atas 35 langkah (78 langkah): alasan dipertahankan, TC-FA-LIC-447, 448, dan 449 menurut Precondition TC dijalankan dua kali (client Suspended lalu client Expired), tiap client memuat tiga blok aksi tulis yang berbagi state yang sama, dan penolakan tiap aksi berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok client Expired mengulang blok client Suspended dengan akun dan fixture berbeda (langkah 42 sampai 78 mengulang langkah 2 sampai 38).
+- Search `Budi Santoso` sebelum `[Force Logout]` dan `(←)` sesudah blok TC-FA-LIC-447 adalah langkah penghubung (tabel Active Sessions dapat memuat lebih dari satu halaman; 8b.13, R-16, S-09).
+- Langkah penghubung (aksi tanpa `Verifikasi`): ubah status Client (langkah 1 dan 43), ganti akun (langkah 41 dan 42), "Buka Tab `Allocation Quota`, lalu klik node `Kantor Pusat`", dan "Tutup modal Edit Allocation dengan `[×]`" setelah memverifikasi nilai tersimpan (modal tidak dirty).
+- Spec di atas 35 langkah (82 langkah): alasan dipertahankan, TC-FA-LIC-447, 448, dan 449 menurut Precondition TC dijalankan dua kali (client Suspended lalu client Expired), tiap client memuat tiga blok aksi tulis yang berbagi state yang sama, dan penolakan tiap aksi berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok client Expired mengulang blok client Suspended dengan akun dan fixture berbeda (langkah 44 sampai 82 mengulang langkah 2 sampai 40).
 - Temuan untuk QA:
   - TC-FA-LIC-447, 448, dan 449 menulis precondition login Total Control Pre-setup #1, sedangkan Pre-setup #18 adalah dua client lain dengan akun sendiri; spec mengikuti Pre-setup #18 (akun Suspended dan Expired).
   - Kontrak fixture pengubah status Client tidak tertulis di TC; disediakan tim FE/BE.

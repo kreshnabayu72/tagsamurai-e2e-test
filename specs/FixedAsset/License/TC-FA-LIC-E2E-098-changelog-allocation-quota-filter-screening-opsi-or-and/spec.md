@@ -41,6 +41,7 @@ coverage:
   | Field | Allocated Quota, Quota Alert Level | `Quota Alert Level` | 30/09/26 11:15 |
   | Modified By | Dewi L, Rudi H, System | `Dewi L` | 28/09/26 15:30, 26/09/26 11:20 |
 
+- Pengecualian S-12 `[KEPUTUSAN 2026-11-02]`: fixture BE pemulih riwayat Pre-setup #27 dijalankan di hook `before` sebelum asersi absolut; suite serial (`parallel: false`); opsi dropdown dan baris hasil Changelog Allocation Quota (langkah 13, 15, 18, 20, dan 29) diasersi absolut tanpa baseline dan hanya valid tepat setelah pemulihan itu, karena fixture juga menghapus entri baru yang ditambahkan spec lain (A-17, dinyatakan di `suite.md`).
 - Spec ini hanya membaca data dan tidak mengubah state global.
 
 ## Test Steps

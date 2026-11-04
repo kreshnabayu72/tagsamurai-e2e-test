@@ -18,6 +18,7 @@ coverage:
 - Akun aktor: Total Control (Pre-setup, company `PT Contoh Konstruksi`): `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences). Hook `after` mengembalikan sesi ke akun default suite.
 - Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture.
 - Data Pre-setup PC-1 (Preferences nilai awal; belum ada posting penyusutan, semua periode Open; bulan berjalan Oktober 2026) dan PC-8 (akun pengguna).
+- Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas, dasar hitungan "13 accounting periods will be rebuilt."; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
 - Seed dan pemulihan lewat API (Preferences ke nilai awal, Asset Class, pelepasan, akun Chart of Accounts, penguncian) disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`); tiap TC dijalankan dari keadaan awal yang dinyatakan di Precondition TC-nya.
 - Identitas data Pre-setup dibaca dari `fixtures/settings-accounting-preferences.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE). Nama akun dan Asset Class ditulis seperti di TC.
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
@@ -35,7 +36,7 @@ coverage:
 4. Verifikasi dialog D-01 berjudul "Save Changes" tampil (severity warning)
 5. Verifikasi body dialog memuat daftar bullet: "13 accounting periods will be rebuilt."; "Tax year start also follows Fiscal Year Start."
 6. Verifikasi body dialog ditutup pertanyaan "Are you sure you want to save these changes?"
-7. Verifikasi footer dialog memuat tombol [Cancel] (variant text, severity contrast) dan [Save]
+7. Verifikasi footer dialog memuat tombol [Cancel] dan [Save]
 8. Sesi B: lewat sesi API (fixture BE), ubah status periode Mar 2026 menjadi Soft Closed hingga status tersimpan
 9. Sesi A: klik [Save] pada dialog Save Changes
 10. Verifikasi dialog "Cannot Save Preferences" tampil

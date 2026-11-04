@@ -23,6 +23,7 @@ coverage:
 - Akun aktor: Total Control (Pre-setup #1): `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, kata sandi `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control, Pre-setup #1). Password tidak ditulis di spec atau fixture; nama env `FA_TC_PASSWORD` didaftarkan di `executionConfig.environmentVariables` dan `.env.example`.
 - Data Pre-setup #15 (`Fixture.fixedAssetLicense.banner`): term live Active milik PT Sejahtera, Plan Owner `PT Maju Bersama` (Distributor), End Date 31/12/26, konfigurasi Client Lifecycle 30/7/1 (nilai bawaan), Grace End 30/01/27. Tanggal "hari ini" dan status term diatur lewat fixture BE (disediakan tim FE/BE, endpoint tidak dikarang); jam server tidak digeser. Fixture `fixedAssetLicense` adalah fixture baru yang isinya ditetapkan tim FE.
 - Status term live Grace atau Expired diatur lewat fixture BE per blok; Grace End term live untuk TC-FA-LIC-617 diubah menjadi 20/01/27 lalu 25/01/27 lewat fixture BE (Lifecycle Settings tidak memuat durasi Grace).
+- Kemampuan teknis: mengirim tombol `Esc` (langkah 26 dan 33).
 - Jam browser (klien) dikendalikan lewat fake timer untuk melewati jeda muat ulang banner 60 detik (disediakan tim FE); jam server tidak digeser.
 - TC-FA-LIC-471: sesi produk akun aktor dibuka sebelum term menjadi Expired (hook `before`), seat existing grandfathered.
 - State global: tanggal fixture hari ini, status term, Plan Owner, dan konfigurasi Client Lifecycle dipulihkan ke Pre-setup #15 di hook `after` (tetap jalan walau spec gagal di tengah).
@@ -67,30 +68,34 @@ coverage:
 
 21. Atur tanggal fixture hari ini ke `30/12/26` (stage Final) lewat fixture BE
 22. Buka License > All License
-23. Verifikasi tidak ada tombol `[×]` pada banner stage Final
-24. Tekan `Esc`
-25. Verifikasi banner stage Final tetap tampil (`Esc` tidak menutup banner)
-26. Atur tanggal fixture hari ini ke `10/01/27` dan status term live `Grace` (Grace End 30/01/27) lewat fixture BE (stage Expired)
-27. Buka License > All License
-28. Verifikasi tidak ada tombol `[×]` pada banner stage Expired
-29. Tekan `Esc`
-30. Verifikasi banner stage Expired tetap tampil (`Esc` tidak menutup banner)
+23. Verifikasi banner stage Final tampil
+24. Verifikasi Title banner stage Final `Subscription expires tomorrow`
+25. Verifikasi tidak ada tombol `[×]` pada banner stage Final
+26. Tekan `Esc`
+27. Verifikasi banner stage Final tetap tampil (`Esc` tidak menutup banner)
+28. Atur tanggal fixture hari ini ke `10/01/27` dan status term live `Grace` (Grace End 30/01/27) lewat fixture BE (stage Expired)
+29. Buka License > All License
+30. Verifikasi banner stage Expired tampil
+31. Verifikasi Title banner stage Expired `Subscription expired`
+32. Verifikasi tidak ada tombol `[×]` pada banner stage Expired
+33. Tekan `Esc`
+34. Verifikasi banner stage Expired tetap tampil (`Esc` tidak menutup banner)
 
 ### TC-FA-LIC-617: Banner Expired: sisa hari Grace dihitung dari field Grace End pada data Subscription term live
 
-31. Atur tanggal fixture hari ini ke `10/01/27`, status term live `Grace`, dan field Grace End term live `20/01/27` lewat fixture BE
-32. Buka License > All License
-33. Verifikasi Body banner `Your account is read-only. Renew within 10 days to restore full access. Contact PT Maju Bersama.` (Grace End 20/01/27 − 10/01/27 = 10 hari)
-34. Ubah field Grace End term live menjadi `25/01/27` lewat fixture BE
-35. Majukan jam browser 61 detik lewat fake timer
-36. Klik Tab `Allocation Quota`
-37. Verifikasi Body banner `Your account is read-only. Renew within 15 days to restore full access. Contact PT Maju Bersama.` (Grace End 25/01/27 − 10/01/27 = 15 hari)
+35. Atur tanggal fixture hari ini ke `10/01/27`, status term live `Grace`, dan field Grace End term live `20/01/27` lewat fixture BE
+36. Buka License > All License
+37. Verifikasi Body banner `Your account is read-only. Renew within 10 days to restore full access. Contact PT Maju Bersama.` (Grace End 20/01/27 − 10/01/27 = 10 hari)
+38. Ubah field Grace End term live menjadi `25/01/27` lewat fixture BE
+39. Majukan jam browser 61 detik lewat fake timer
+40. Klik Tab `Allocation Quota`
+41. Verifikasi Body banner `Your account is read-only. Renew within 15 days to restore full access. Contact PT Maju Bersama.` (Grace End 25/01/27 − 10/01/27 = 15 hari)
 
 ## Notes
 
-- Langkah penghubung (aksi tanpa `Verifikasi`): penyetelan tanggal fixture, status term, dan Grace End; "Majukan jam browser 61 detik" (TC menulis "setelah lebih dari 60 detik", dipenuhi dengan fake timer, bukan menunggu); "Klik Tab `Allocation Quota`" pada langkah 33 memindahkan Tab setelah jeda 60 detik sehingga banner dimuat ulang tanpa reload manual.
+- Langkah penghubung (aksi tanpa `Verifikasi`): penyetelan tanggal fixture, status term, dan Grace End; "Majukan jam browser 61 detik" (TC menulis "setelah lebih dari 60 detik", dipenuhi dengan fake timer, bukan menunggu); "Klik Tab `Allocation Quota`" pada langkah 40 memindahkan Tab setelah jeda 60 detik sehingga banner dimuat ulang tanpa reload manual.
 - TC-FA-LIC-481: TC menyebut tanggal Final 30/12/26 dan Expired 10/01/27; status term untuk tanggal kedua mengikuti TC-FA-LIC-76 (Grace, Grace End 30/01/27).
-- Spec di atas 35 langkah (37 langkah): seluruh blok adalah stage banner yang sama pada halaman yang sama, setiap blok menyetel tanggal dan status term sendiri dan berdiri sendiri.
+- Spec di atas 35 langkah (41 langkah): seluruh blok adalah stage banner yang sama pada halaman yang sama, setiap blok menyetel tanggal dan status term sendiri dan berdiri sendiri.
 - Temuan untuk QA:
   - TC-FA-LIC-76 sampai 78 dan 471 memuat langkah 3 (klik Tab `Allocation Quota` lalu Tab `Concurrent User`) tanpa Expected untuk banner di kedua tab; spec hanya menjalankannya.
   - TC-FA-LIC-481 Expected tidak menyebut Title/Body; hanya ketiadaan `[×]` dan perilaku `Esc` yang diasersi.

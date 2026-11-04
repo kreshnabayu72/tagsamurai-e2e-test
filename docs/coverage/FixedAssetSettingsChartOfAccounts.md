@@ -2,7 +2,7 @@
 
 Sumber: `fixed-asset/settings-chart-of-accounts/TestCases/tc-settings-chart-of-accounts.md` (365 TC `TC-FA-COA-1`–`367`, semua aktif; id 116 dan 139 tidak dipakai). Suite: `specs/FixedAsset/SettingsChartOfAccounts/`. Prefix: `FA` + `COA` (`TC-FA-COA-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-chart-of-accounts-backend.md`.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 365 TC aktif masuk 94 spec (83 nomor rencana `001`–`083` ditambah nomor cadangan `084`–`094`), tidak ada TC hanya-BE. Setiap TC terpetakan ke tepat satu spec; tabel di bawah dibangkitkan dari frontmatter `sourceTc`.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 365 TC aktif masuk 103 spec (83 nomor rencana `001`–`083`, nomor cadangan `084`–`094`, dan spec absence `095`–`103`), tidak ada TC hanya-BE. Setiap TC terpetakan ke tepat satu spec, kecuali 22 TC yang terbelah antara spec asal dan satu spec absence (S-05, lihat bagian Pembagian TC lintas spec); tabel di bawah dibangkitkan dari frontmatter `sourceTc`.
 
 ## Cakupan
 
@@ -30,32 +30,54 @@ Penulis memecah spec yang melewati ~35 langkah ke nomor cadangan. Nomor rencana 
 | 093 | TC-203 | 059 |
 | 094 | TC-281, TC-160 | 073 |
 
+## Spec absence (095–103)
+
+Spec kelas g yang memuat asersi "tidak ada log" untuk klausa yang sebelumnya tanpa rumah (temuan a, diputuskan D1 opsi 1). Nomor `095`–`100` dari rencana; `101` dan `102` adalah nomor cadangan slice 1 yang dipakai karena `098` (empat TC, 54 langkah) dan `100` (empat TC, 48 langkah) melewati ~35 langkah bila digabung; `103` memuat klausa "tanpa log" TC-56 dan TC-350.
+
+| Spec absence | TC | Spec asal |
+|---|---|---|
+| 095 | TC-269, 270, 271 | 070 |
+| 096 | TC-36, 124, 272 | 071 (TC-36, 124), 072 (TC-272) |
+| 097 | TC-273, 274, 275 | 072 |
+| 098 | TC-32, 302 | 066 |
+| 099 | TC-65, 305, 71 | 068 |
+| 100 | TC-304, 361 | 067 |
+| 101 | TC-41, 303 | 066 |
+| 102 | TC-300, 301 | 069 |
+| 103 | TC-56, 350 | 029 (TC-56), 028 (TC-350) |
+
 ## Pembagian TC lintas spec
 
-- Spec absence `083` memuat asersi "tidak ada log" hanya untuk TC-51, 52, 96, 118 (aksi no-op dan item bulk yang dilewati).
-- Spec multi-konteks `073`–`078` menulis asersi "tidak ada log" lewat baseline di spec asal; spec `066`–`072` tidak (lihat temuan terbuka a).
+- 22 TC ada di `sourceTc` dua spec, spec asal dan spec absence (S-05 `[KEPUTUSAN 2026-11-02]`; `check-suite.py` C2 melaporkannya `[REVIEW]`): TC-32, 36, 41, 56, 65, 71, 124, 269–275, 300–305, 350, 361. Spec asal (`028`, `029`, `066`–`072`) hanya mengasersi tampilan, respons server, dan state data, dan menulis rujukan di `## Notes`; spec absence memuat pemicu yang sama dengan baseline Changelog, System Log aktor, dan Activity Log sendiri per TC.
+- Spec absence `083` memuat asersi "tidak ada log" untuk TC-51, 52, 96, 118 (aksi no-op dan item bulk yang dilewati).
+- Spec multi-konteks `073`–`078` dan `075` menulis asersi "tidak ada log" lewat baseline di spec asal (butir `P-1`).
 
 ## Kebutuhan lingkungan (tim FE)
 
-- Env var password terdaftar yang dipakai: `FA_TC_PASSWORD`, `FA_RO_PASSWORD`, `FA_DU_PASSWORD` (Default User), `FA_GM_PASSWORD`. Belum terdaftar di `spectra.config.ts` dan `.env.example` (nama usulan, perlu didaftarkan tim FE): `FA_MACC_READ_PASSWORD`, `FA_MACC_CREATE_PASSWORD`, `FA_MACC_UPDATE_PASSWORD`, `FA_MACC_DELETE_PASSWORD`, `FA_MACC_UPDDEL_PASSWORD`, `FA_GMNOACC_PASSWORD`. `FA_GM_PASSWORD` terdaftar sebagai Group Manager Gedung A (Activity Log); pemakaian di suite ini (Group Manager untuk TC-153) perlu dikonfirmasi tim FE.
+- Env var password terdaftar yang dipakai: `FA_TC_PASSWORD`, `FA_RO_PASSWORD`, `FA_DU_PASSWORD` (Default User), `FA_GM_PASSWORD`. Sudah terdaftar di `spectra.config.ts` dan `.env.example` dengan nilai kosong (2026-11-04; tim FE mengisi nilainya): `FA_MACC_READ_PASSWORD`, `FA_MACC_CREATE_PASSWORD`, `FA_MACC_UPDATE_PASSWORD`, `FA_MACC_DELETE_PASSWORD`, `FA_MACC_UPDDEL_PASSWORD`, `FA_GMNOACC_PASSWORD`. `FA_GM_PASSWORD` terdaftar sebagai Group Manager Gedung A (Activity Log); pemakaian di suite ini (Group Manager untuk TC-153) perlu dikonfirmasi tim FE.
 - Fixture `fixtures/settings-chart-of-accounts.json` (belum ada; nama kunci ditetapkan tim FE) serta seed dan pemulihan akun lewat API.
 - Kemampuan teknis lain mengikuti butir di `suite.md`.
 
-## Temuan yang masih terbuka (belum diputuskan)
+## Temuan dan keputusan
 
-a. Klausa "tidak ada log" tanpa spec rumah (antara lain TC-32, 36, 41, 64, 65, 124, 302–305, 361). Spec absence `083` hanya memuat 51, 52, 96, 118; spec `073`–`078` menegaskannya lewat baseline di spec asal, sedangkan `066`–`072` tidak.
-b. S-06: target Pre-setup bersama untuk permintaan langsung yang ditolak (TC-36, 110, 111, 124, 272, 273, 277–280, 137, 349, 66) belum ditetapkan.
-c. Lampiran A tidak memuat butir untuk batas literal 15 karakter pada Account Code (Code tidak dapat membawa `{runId}`).
-d. Spec jauh di atas ~35 langkah: 046 (67), 050 (58), 053 (56), 066 (56), 069 (55), 064 (54), 042 (51), 063 (51), dan lainnya; total 43 spec di atas 35 langkah, alasan tiap spec ada di Notes.
-e. Fixture dan env yang perlu disediakan tim FE (lihat bagian kebutuhan lingkungan).
-f. Jalur ekspor (J-06) ditunda.
+Diputuskan pengguna pada run ini:
+
+a. Klausa "tidak ada log" tanpa spec rumah: D1 opsi 1. Spec absence `095`–`103` ditambahkan (lihat bagian Spec absence); spec `028`, `029`, dan `066`–`072` tidak lagi memuat klausa itu.
+b. Target Pre-setup bersama untuk permintaan langsung ditolak: D2 opsi 1. Spec `070`, `071`, `072`, `075`, `079`, dan spec absence men-seed akun miliknya (Code `DID<NNN>x`) di hook `before` dan membersihkannya di `after`.
+c. Batas literal 15 karakter pada Account Code (Lampiran A tidak memuatnya): D3 opsi 1. Code literal maksimal 15 karakter, memuat nomor spec untuk akun milik spec; alasannya ditulis di `## Prerequisites`. Nilai Code dari TC untuk Create yang selalu gagal atau ditolak dipertahankan. Konvensi tidak diubah di run ini; usulan butir Lampiran A menunggu batch konvensi sesudah loop suite.
+d. Spec di atas ~35 langkah: D4 opsi 1. 44 spec dipertahankan, alasan tiap spec ada di Notes (046 (67), 050 (56), 053 (56), 064 (60), 042 (51), 063 (50), dan lainnya); `066` (56) dan `069` (58) tetap di atas 35 langkah.
+
+Masih terbuka:
+
+e. Ditunda dengan syarat (keputusan pengguna 2026-11-04; bukan keputusan terbuka, melainkan ketergantungan ke tim FE/BE; spec belum bisa dijalankan sampai terpenuhi, permintaan: `prd-harness/work-items/settings-chart-of-accounts/permintaan-fe-be.md`). Fixture dan env yang perlu disediakan tim FE (lihat bagian kebutuhan lingkungan), termasuk kemampuan seed pada client Suspended (spec `079`), penyetelan nilai default company lewat seed (spec `072`, `097`), dan kemampuan baca jumlah entri Changelog, System Log aktor, dan Activity Log per Account Code (spec absence).
+f. Jalur ekspor (J-06): ditunda dengan syarat (keputusan pengguna 2026-11-04). Syarat: tim BE menyediakan fixture ekspor Journal J-06; spec yang butuh akun terekspor aktif (antara lain `032`, `071`, `096`) dilengkapi setelah itu.
 - Detail temuan TC-sumber per spec ada di Notes "Temuan untuk QA".
 
 ## TC granular → spec e2e
 
 | Spec | Judul | Mode | Langkah | TC sumber |
 |---|---|:---:|:---:|---|
-| TC-FA-COA-E2E-001-screening-halaman-chart-of-accounts-tab-tabel-loading-dan-search-kosong | Screening Halaman Chart of Accounts: Tab, Tabel, Loading, dan Search Kosong | FE+BE | 33 | 1, 3, 4, 138 |
+| TC-FA-COA-E2E-001-screening-halaman-chart-of-accounts-tab-tabel-loading-dan-search-kosong | Screening Halaman Chart of Accounts: Tab, Tabel, Loading, dan Search Kosong | FE+BE | 34 | 1, 3, 4, 138 |
 | TC-FA-COA-E2E-002-tabel-kosong-client-tanpa-akun | Tabel Kosong Client Tanpa Akun | FE+BE | 3 | 2 |
 | TC-FA-COA-E2E-003-accessibility-switch-status-fokus-modal-dan-atribut-aria-form | Accessibility: Switch Status, Fokus Modal, dan Atribut ARIA Form | FE+BE | 48 | 161, 162, 291, 292 |
 | TC-FA-COA-E2E-004-role-matrix-visibilitas-elemen-role-read-per-role | Role Matrix: Visibilitas Elemen Role Read per Role | FE+BE | 39 | 6, 7, 8, 9 |
@@ -67,7 +89,7 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-E2E-010-guided-tooltip-mulai-ulang-back-next-dan-keyboard | Guided Tooltip: Mulai Ulang, Back Next, dan Keyboard | FE+BE | 22 | 338, 339, 342 |
 | TC-FA-COA-E2E-011-mobile-android-card-list-toolbar-bottom-sheet-role | Mobile Android: Card List, Toolbar, Bottom Sheet, Role | FE+BE | 37 | 98, 99, 100, 102, 103, 104 |
 | TC-FA-COA-E2E-012-mobile-android-selection-mode-popup-used-by-dan-switch-disabled | Mobile Android: Selection Mode, Popup Used By, dan Switch Disabled | FE+BE | 31 | 101, 366, 344, 345 |
-| TC-FA-COA-E2E-013-add-account-screening-modal-dropdown-function-popover-dan-clear-field | Add Account: Screening Modal, Dropdown Function, Popover, dan Clear Field | FE+BE | 38 | 13, 15, 16, 18 |
+| TC-FA-COA-E2E-013-add-account-screening-modal-dropdown-function-popover-dan-clear-field | Add Account: Screening Modal, Dropdown Function, Popover, dan Clear Field | FE+BE | 39 | 13, 15, 16, 18 |
 | TC-FA-COA-E2E-014-add-account-validasi-wajib-spasi-karakter-dan-emoji | Add Account: Validasi Wajib, Spasi, Karakter, dan Emoji | FE+BE | 31 | 19, 20, 21, 22, 24, 27 |
 | TC-FA-COA-E2E-015-add-account-validasi-batas-panjang-dan-whitelist-account-code | Add Account: Validasi Batas Panjang dan Whitelist Account Code | FE+BE | 38 | 23, 25, 26, 359, 360 |
 | TC-FA-COA-E2E-016-add-account-validasi-duplikat-code-dan-create-dengan-search-dan-filter | Add Account: Validasi Duplikat Code dan Create dengan Search dan Filter Aktif | FE+BE | 35 | 28, 29, 143 |
@@ -82,29 +104,29 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-E2E-025-edit-account-refresh-sidebar-dan-esc-pada-form-dirty | Edit Account: Refresh, Sidebar, dan Esc pada Form Dirty | FE+BE | 34 | 251, 252, 357 |
 | TC-FA-COA-E2E-026-activate-deactivate-single-dialog-cancel-no-op-dan-double-click | Activate Deactivate Single: Dialog, Cancel, No-Op, dan Double Click | FE+BE | 18 | 46, 47, 285 |
 | TC-FA-COA-E2E-027-deactivate-single-pernah-diekspor-akun-default-company-dan-spinner | Deactivate Single: Pernah Diekspor, Akun Default Company, dan Spinner | FE+BE | 38 | 48, 49, 50, 164, 286 |
-| TC-FA-COA-E2E-028-bulk-activate-seleksi-campuran-dan-collapse-single | Bulk Activate: Seleksi, Campuran, dan Collapse Single | FE+BE | 42 | 53, 54, 298, 350 |
+| TC-FA-COA-E2E-028-bulk-activate-seleksi-campuran-dan-collapse-single | Bulk Activate: Seleksi, Campuran, dan Collapse Single | FE+BE | 43 | 53, 54, 298, 350 |
 | TC-FA-COA-E2E-029-bulk-deactivate-semua-eligible-campuran-collapse-dan-d-03-satu-akun | Bulk Deactivate: Semua Eligible, Campuran, Collapse, dan D-03 Satu Akun | FE+BE | 40 | 55, 56, 299, 354 |
-| TC-FA-COA-E2E-030-cancel-dialog-bulk-activate-deactivate-dan-delete | Cancel Dialog Bulk Activate, Deactivate, dan Delete | FE+BE | 33 | 293, 294, 296 |
-| TC-FA-COA-E2E-031-blokir-deactivate-akun-dipakai-asset-class | Blokir Deactivate: Akun Dipakai Asset Class | FE+BE | 41 | 125, 126, 127, 128, 156 |
+| TC-FA-COA-E2E-030-cancel-dialog-bulk-activate-deactivate-dan-delete | Cancel Dialog Bulk Activate, Deactivate, dan Delete | FE+BE | 36 | 293, 294, 296 |
+| TC-FA-COA-E2E-031-blokir-deactivate-akun-dipakai-asset-class | Blokir Deactivate: Akun Dipakai Asset Class | FE+BE | 43 | 125, 126, 127, 128, 156 |
 | TC-FA-COA-E2E-032-blokir-delete-single-akun-terekspor-dan-dipakai-asset-class | Blokir Delete Single: Akun Terekspor dan Dipakai Asset Class | FE+BE | 34 | 59, 60, 129, 130, 136 |
 | TC-FA-COA-E2E-033-blokir-delete-single-akun-default-company | Blokir Delete Single: Akun Default Company | FE+BE | 35 | 165, 166, 167 |
 | TC-FA-COA-E2E-034-blokir-bulk-delete-seluruh-seleksi-diblokir | Blokir Bulk Delete: Seluruh Seleksi Diblokir | FE+BE | 20 | 70, 131 |
-| TC-FA-COA-E2E-035-bulk-delete-campuran-akun-eligible-dihapus-akun-terekspor-atau-dipakai | Bulk Delete Campuran: Akun Eligible Dihapus, Akun Terekspor atau Dipakai Asset Class Dilewati | FE+BE | 34 | 69, 115, 132 |
+| TC-FA-COA-E2E-035-bulk-delete-campuran-akun-eligible-dihapus-akun-terekspor-atau-dipakai | Bulk Delete Campuran: Akun Eligible Dihapus, Akun Terekspor atau Dipakai Asset Class Dilewati | FE+BE | 35 | 69, 115, 132 |
 | TC-FA-COA-E2E-036-bulk-delete-campuran-dengan-akun-default-company | Bulk Delete Campuran dengan Akun Default Company | FE+BE | 23 | 169, 170 |
-| TC-FA-COA-E2E-037-popup-used-by-daftar-asset-class-urutan-dan-loading | Popup Used By: Daftar Asset Class, Urutan, dan Loading | FE+BE | 43 | 133, 134, 135, 154, 155, 287 |
-| TC-FA-COA-E2E-038-used-by-berubah-saat-asset-class-memakai-atau-melepas-akun | Used By Berubah Saat Asset Class Memakai atau Melepas Akun | FE+BE | 45 | 157, 158 |
-| TC-FA-COA-E2E-039-delete-single-dan-bulk-delete-berhasil | Delete Single dan Bulk Delete Berhasil | FE+BE | 38 | 61, 62, 63, 67, 68, 284 |
-| TC-FA-COA-E2E-040-search-tabel-per-kolom-hidden-dan-used-by | Search Tabel: Per Kolom, Hidden, dan Used By | FE+BE | 29 | 72, 73, 74, 183, 320 |
+| TC-FA-COA-E2E-037-popup-used-by-daftar-asset-class-urutan-dan-loading | Popup Used By: Daftar Asset Class, Urutan, dan Loading | FE+BE | 45 | 133, 134, 135, 154, 155, 287 |
+| TC-FA-COA-E2E-038-used-by-berubah-saat-asset-class-memakai-atau-melepas-akun | Used By Berubah Saat Asset Class Memakai atau Melepas Akun | FE+BE | 47 | 157, 158 |
+| TC-FA-COA-E2E-039-delete-single-dan-bulk-delete-berhasil | Delete Single dan Bulk Delete Berhasil | FE+BE | 39 | 61, 62, 63, 67, 68, 284 |
+| TC-FA-COA-E2E-040-search-tabel-per-kolom-hidden-dan-used-by | Search Tabel: Per Kolom, Hidden, dan Used By | FE+BE | 31 | 72, 73, 74, 183, 320 |
 | TC-FA-COA-E2E-041-search-tabel-perilaku-kotak-search-dan-trim-spasi | Search Tabel: Perilaku Kotak Search dan Trim Spasi | FE+BE | 34 | 229, 316, 317, 318, 319 |
 | TC-FA-COA-E2E-042-filter-panel-tabel-struktur-opsi-dan-multi-select | Filter Panel Tabel: Struktur, Opsi, dan Multi-Select | FE+BE | 51 | 75, 76, 180, 186, 322 |
 | TC-FA-COA-E2E-043-filter-panel-tabel-periode-date-range-used-by-dan-kombinasi-and | Filter Panel Tabel: Periode, Date Range, Used By, dan Kombinasi AND | FE+BE | 40 | 77, 78, 181, 323, 324 |
-| TC-FA-COA-E2E-044-filter-panel-tabel-tutup-panel-badge-indikator-chip-dan-dropdown | Filter Panel Tabel: Tutup Panel, Badge Indikator, Chip, dan Dropdown | FE+BE | 38 | 214, 215, 218, 329, 330, 331 |
+| TC-FA-COA-E2E-044-filter-panel-tabel-tutup-panel-badge-indikator-chip-dan-dropdown | Filter Panel Tabel: Tutup Panel, Badge Indikator, Chip, dan Dropdown | FE+BE | 42 | 214, 215, 218, 329, 330, 331 |
 | TC-FA-COA-E2E-045-sort-tabel-default-siklus-tiga-tahap-dan-kolom-teks-numerik | Sort Tabel: Default, Siklus Tiga Tahap pada Account Name, Account Code, Active, dan Used By | FE+BE | 39 | 80, 182, 174, 175 |
 | TC-FA-COA-E2E-046-sort-tabel-last-used-last-updated-kolom-tanpa-sort-pindah-kolom-dan-tie | Sort Tabel: Last Used in Journal, Last Updated, Kolom Tanpa Sort, Pindah Kolom, dan Tie-Breaker | FE+BE | 67 | 176, 177, 178, 179, 220 |
 | TC-FA-COA-E2E-047-kombinasi-search-filter-sort-paginasi-pada-tabel | Kombinasi Search, Filter, Sort, dan Paginasi pada Tabel | FE+BE | 38 | 79, 325, 326, 327 |
-| TC-FA-COA-E2E-048-paginasi-tabel-dan-hapus-baris-terakhir | Paginasi Tabel: Reset Halaman, Input Halaman Tidak Valid, Ukuran Halaman, dan Hapus Baris Terakhir | FE+BE | 40 | 81, 225, 227, 228, 226 |
+| TC-FA-COA-E2E-048-paginasi-tabel-dan-hapus-baris-terakhir | Paginasi Tabel: Reset Halaman, Input Halaman Tidak Valid, Ukuran Halaman, dan Hapus Baris Terakhir | FE+BE | 44 | 81, 225, 227, 228, 226 |
 | TC-FA-COA-E2E-049-list-state-dan-independensi-filter-dari-column-visibility | List State dan Independensi Filter dari Column Visibility | FE+BE | 44 | 231, 232, 233, 234 |
-| TC-FA-COA-E2E-050-row-action-dan-bulk-action-bar-seleksi-select-all-dan-clear | Row Action dan Bulk Action Bar: Seleksi, Select All, dan Clear | FE+BE | 58 | 306, 307, 308, 309, 310, 328 |
+| TC-FA-COA-E2E-050-row-action-dan-bulk-action-bar-seleksi-select-all-dan-clear | Row Action dan Bulk Action Bar: Seleksi, Select All, dan Clear | FE+BE | 56 | 306, 307, 308, 309, 310, 328 |
 | TC-FA-COA-E2E-051-setup-column-tabel-quick-panel-popup-dan-kolom-default-hidden | Setup Column Tabel: Quick Panel, Popup, dan Kolom Default Hidden | FE+BE | 35 | 187, 188, 189, 193 |
 | TC-FA-COA-E2E-052-setup-column-tabel-reorder-pin-dan-guard-pin-keempat | Setup Column Tabel: Reorder, Pin, dan Guard Pin Keempat | FE+BE | 39 | 190, 194, 332, 333 |
 | TC-FA-COA-E2E-053-setup-column-tabel-pin-hidden-reset-to-default-dan-tutup-tanpa-save | Setup Column Tabel: Pin Hidden, Reset to Default, dan Tutup Tanpa Save | FE+BE | 56 | 82, 83, 192, 195, 196 |
@@ -113,25 +135,25 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-E2E-056-download-tabel-format-csv-bom-xlsx-sheet1-dan-lintas-halaman | Download Tabel: Format CSV BOM, XLSX Sheet1, dan Lintas Halaman | FE+BE | 24 | 221, 222, 358 |
 | TC-FA-COA-E2E-057-modal-changelog-screening-loading-kosong-dan-sort | Modal Changelog: Screening, Loading, Kosong, dan Sort | FE+BE | 34 | 88, 89, 91, 197, 198, 199, 288 |
 | TC-FA-COA-E2E-058-modal-changelog-search-per-kolom | Modal Changelog: Search per Kolom | FE+BE | 30 | 200, 201, 230, 321 |
-| TC-FA-COA-E2E-059-modal-changelog-struktur-filter-opsi-date-range-dan-multi-select | Modal Changelog: Struktur Filter, Date Range, dan Multi-Select | FE+BE | 35 | 90, 202, 204, 205 |
+| TC-FA-COA-E2E-059-modal-changelog-struktur-filter-opsi-date-range-dan-multi-select | Modal Changelog: Struktur Filter, Date Range, dan Multi-Select | FE+BE | 40 | 90, 202, 204, 205 |
 | TC-FA-COA-E2E-060-modal-changelog-tutup-panel-filter-badge-paginasi-dan-download | Modal Changelog: Tutup Panel Filter, Badge, Paginasi, dan Download | FE+BE | 36 | 216, 217, 219, 335, 336 |
 | TC-FA-COA-E2E-061-modal-changelog-setup-column-quick-panel-popup-checkbox-dan-guard | Modal Changelog: Setup Column Quick Panel, Popup, Checkbox, dan Guard | FE+BE | 29 | 206, 207, 208, 213 |
 | TC-FA-COA-E2E-062-modal-changelog-setup-column-reorder-pin-reset-dan-tutup | Modal Changelog: Setup Column Reorder, Pin, Reset, dan Tutup | FE+BE | 36 | 209, 210, 211, 212 |
-| TC-FA-COA-E2E-063-audit-log-create-dan-snapshot-tie-breaker-changelog | Audit Log: Create dan Snapshot, Tie-Breaker Changelog | FE+BE | 51 | 92, 97, 235 |
-| TC-FA-COA-E2E-064-audit-log-edit-account-code-activate-deactivate-dan-delete | Audit Log: Edit Account Code, Activate Deactivate, dan Delete | FE+BE | 54 | 93, 94, 95 |
+| TC-FA-COA-E2E-063-audit-log-create-dan-snapshot-tie-breaker-changelog | Audit Log: Create dan Snapshot, Tie-Breaker Changelog | FE+BE | 50 | 92, 97, 235 |
+| TC-FA-COA-E2E-064-audit-log-edit-account-code-activate-deactivate-dan-delete | Audit Log: Edit Account Code, Activate Deactivate, dan Delete | FE+BE | 60 | 93, 94, 95 |
 | TC-FA-COA-E2E-065-last-used-in-journal-hover-tanpa-input-manual-dan-jalur-api | Last Used in Journal: Hover, Tanpa Input Manual, dan Jalur API | FE+BE | 38 | 106, 117, 119, 120 |
 | TC-FA-COA-E2E-066-resilience-create-dan-edit-gagal-5xx-dan-timeout | Resilience Create dan Edit Account: Respons 5xx dan Timeout Mempertahankan Modal dan Input | FE+BE | 56 | 32, 302, 41, 303 |
 | TC-FA-COA-E2E-067-resilience-activate-dan-deactivate-single-gagal-dan-timeout | Resilience Activate dan Deactivate Single: Respons 5xx dan Timeout Mengembalikan Switch dan Mempertahankan Dialog | FE+BE | 36 | 57, 58, 304, 361 |
 | TC-FA-COA-E2E-068-resilience-delete-single-dan-bulk-delete-gagal-dan-timeout | Resilience Delete Single dan Bulk Delete: Respons 5xx dan Timeout Mempertahankan Dialog dan Data | FE+BE | 32 | 65, 305, 71 |
-| TC-FA-COA-E2E-069-resilience-bulk-gagal-timeout-dan-load-error-tabel | Resilience Bulk Activate dan Deactivate Gagal, Timeout, dan Error State Tabel | FE+BE | 55 | 5, 300, 301, 362 |
+| TC-FA-COA-E2E-069-resilience-bulk-gagal-timeout-dan-load-error-tabel | Resilience Bulk Activate dan Deactivate Gagal, Timeout, dan Error State Tabel | FE+BE | 58 | 5, 300, 301, 362 |
 | TC-FA-COA-E2E-070-defense-in-depth-akses-langsung-per-role-ditolak-server | Defense-in-Depth: Akses Langsung per Role Ditolak Server | FE+BE | 36 | 107, 108, 153, 269, 270, 271 |
 | TC-FA-COA-E2E-071-defense-in-depth-akses-langsung-atas-akun-terkunci-dan-lintas-client | Defense-in-Depth: Akses Langsung atas Akun Terkunci dan Lintas Client | FE+BE | 16 | 36, 109, 110, 111, 124 |
 | TC-FA-COA-E2E-072-defense-in-depth-akses-langsung-atas-akun-terpakai-dan-default-company | Defense-in-Depth: Akses Langsung atas Akun Terpakai dan Default Company, serta Nama Berisi HTML | FE+BE | 23 | 121, 272, 273, 274, 275 |
 | TC-FA-COA-E2E-073-multi-konteks-edit-serentak-kunci-berubah-dan-last-write-wins | Multi-Konteks: Edit Akun saat Kunci Berubah oleh Sesi Lain dan Edit Serentak Dua Sesi (Last-Write-Wins) | FE+BE | 31 | 43, 44, 45 |
-| TC-FA-COA-E2E-074-multi-konteks-aksi-single-atas-akun-yang-berubah-oleh-sesi-lain | Multi-Konteks: Aksi Single (Save Edit, Activate, Deactivate) atas Akun yang Dihapus atau Sudah Berubah Status oleh Sesi Lain | FE+BE | 42 | 146, 147, 148, 150, 151 |
+| TC-FA-COA-E2E-074-multi-konteks-aksi-single-atas-akun-yang-berubah-oleh-sesi-lain | Multi-Konteks: Aksi Single (Save Edit, Activate, Deactivate) atas Akun yang Dihapus atau Sudah Berubah Status oleh Sesi Lain | FE+BE | 44 | 146, 147, 148, 150, 151 |
 | TC-FA-COA-E2E-075-multi-konteks-delete-dan-guard-berubah-antara-dialog-dan-confirm | Multi-Konteks: Delete Single dan Guard Berubah antara Dialog Dibuka dan Confirm (Akun Dihapus, Diekspor, atau Dipakai Asset Class) | FE+BE | 34 | 64, 66, 137, 349 |
-| TC-FA-COA-E2E-076-multi-konteks-bulk-aksi-atas-akun-sudah-dihapus-atau-sudah-berubah | Multi-Konteks: Bulk Activate dan Deactivate saat Seluruh Akun Terpilih Sudah Dihapus atau Sudah Berstatus Target oleh Sesi Lain | FE+BE | 39 | 149, 152, 351, 352 |
-| TC-FA-COA-E2E-077-multi-konteks-bulk-sebagian-dihapus-sesi-lain | Multi-Konteks: Bulk Deactivate, Activate, dan Delete saat Sebagian Akun Terpilih Dihapus Sesi Lain, Akun Lain Tetap Diproses | FE+BE | 48 | 114, 171, 172, 353 |
+| TC-FA-COA-E2E-076-multi-konteks-bulk-aksi-atas-akun-sudah-dihapus-atau-sudah-berubah | Multi-Konteks: Bulk Activate dan Deactivate saat Seluruh Akun Terpilih Sudah Dihapus atau Sudah Berstatus Target oleh Sesi Lain | FE+BE | 41 | 149, 152, 351, 352 |
+| TC-FA-COA-E2E-077-multi-konteks-bulk-sebagian-dihapus-sesi-lain | Multi-Konteks: Bulk Deactivate, Activate, dan Delete saat Sebagian Akun Terpilih Dihapus Sesi Lain, Akun Lain Tetap Diproses | FE+BE | 52 | 114, 171, 172, 353 |
 | TC-FA-COA-E2E-078-multi-konteks-bulk-guard-berubah-antara-dialog-dan-confirm | Multi-Konteks: Bulk Deactivate dan Bulk Delete saat Guard Berubah antara Dialog Dibuka dan Confirm (Dipakai Asset Class atau Diekspor) | FE+BE | 43 | 346, 347, 348 |
 | TC-FA-COA-E2E-079-state-tenant-suspended-expired-dan-plan-starter | State Tenant: Client Suspended atau Expired Menolak Aksi Tulis dan Plan Starter Menonaktifkan Menu Accounting | FE+BE | 40 | 112, 113, 277, 278, 279, 280, 142 |
 | TC-FA-COA-E2E-080-batas-jumlah-akun-master-data-count-limit | Batas Jumlah Akun: Master Data Count Limit Memblokir Penambahan Akun | FE+BE | 28 | 31, 159, 282 |
@@ -140,15 +162,24 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-E2E-083-absence-log-aksi-no-op-dan-item-bulk-yang-dilewati | Absence Log: Aksi No-Op dan Item Bulk yang Dilewati Tidak Menulis Log | FE+BE | 49 | 51, 52, 96, 118 |
 | TC-FA-COA-E2E-084-mobile-android-selection-mode-setelah-bulk-commit-cancel-dan-dialog-blok | Mobile Android: Selection Mode Setelah Bulk Commit, Cancel, dan Dialog Blok | FE+BE | 22 | 367 |
 | TC-FA-COA-E2E-085-role-matrix-visibilitas-elemen-update-delete-dan-default-user | Role Matrix: Visibilitas Elemen Update + Delete dan Default User | FE+BE | 34 | 363, 364 |
-| TC-FA-COA-E2E-086-add-account-klik-ganda-submit-dan-saving-state | Add Account: Klik Ganda Submit dan Saving State | FE+BE | 15 | 33, 289 |
+| TC-FA-COA-E2E-086-add-account-klik-ganda-submit-dan-saving-state | Add Account: Klik Ganda Submit dan Saving State | FE+BE | 17 | 33, 289 |
 | TC-FA-COA-E2E-087-edit-account-tooltip-kunci-function-used-by-dan-last-used-in-journal | Edit Account: Tooltip Kunci Function karena Used By dan Last Used in Journal | FE+BE | 19 | 122, 123, 343 |
 | TC-FA-COA-E2E-088-cancel-dialog-bulk-deactivate-dan-delete-campuran | Cancel Dialog Bulk Deactivate dan Delete Campuran (D-03 dan D-09) | FE+BE | 25 | 295, 297 |
 | TC-FA-COA-E2E-089-blokir-bulk-delete-akun-default-company | Blokir Bulk Delete: Seluruh Seleksi Akun Default Company | FE+BE | 26 | 168, 355 |
-| TC-FA-COA-E2E-090-search-tabel-modified-by-dan-guard-negatif | Search Tabel: Modified By dan Guard Negatif | FE+BE | 25 | 184, 185 |
+| TC-FA-COA-E2E-090-search-tabel-modified-by-dan-guard-negatif | Search Tabel: Modified By dan Guard Negatif | FE+BE | 29 | 184, 185 |
 | TC-FA-COA-E2E-091-sort-tabel-kolom-function-dan-modified-by | Sort Tabel: Siklus Tiga Tahap pada Kolom Function dan Modified By | FE+BE | 24 | 173 |
 | TC-FA-COA-E2E-092-setup-column-tabel-pin-dan-unpin-kolom-default-visible | Setup Column Tabel: Pin dan Unpin Kolom Default Visible | FE+BE | 10 | 191 |
-| TC-FA-COA-E2E-093-modal-changelog-isi-opsi-dropdown-filter | Modal Changelog: Isi Opsi Dropdown Filter | FE+BE | 21 | 203 |
+| TC-FA-COA-E2E-093-modal-changelog-isi-opsi-dropdown-filter | Modal Changelog: Isi Opsi Dropdown Filter | FE+BE | 24 | 203 |
 | TC-FA-COA-E2E-094-multi-konteks-create-serentak-code-sama-dan-batas-akun-antara-klik-dan-submit | Multi-Konteks: Create Serentak Dua Sesi dengan Account Code Sama dan Batas Jumlah Akun Tercapai antara Klik dan Submit | FE+BE | 35 | 281, 160 |
+| TC-FA-COA-E2E-095-absence-log-permintaan-langsung-ditolak-role-create-update-dan-delete | Absence Log: Permintaan Langsung Ditolak Role Create, Update, dan Delete Tidak Menulis Log | FE+BE | 25 | 269, 270, 271 |
+| TC-FA-COA-E2E-096-absence-log-permintaan-langsung-atas-akun-terkunci-dan-akun-dipakai-asset-class-ditolak | Absence Log: Permintaan Langsung atas Akun Terekspor dan Akun Dipakai Asset Class Ditolak Tidak Menulis Log | FE+BE | 18 | 36, 124, 272 |
+| TC-FA-COA-E2E-097-absence-log-permintaan-langsung-atas-akun-default-company-dan-bulk-campuran-ditolak | Absence Log: Permintaan Langsung Delete Akun Terpakai, Akun Default Company, dan Bulk Deactivate Campuran Tidak Menulis Log untuk Akun Terblokir | FE+BE | 18 | 273, 274, 275 |
+| TC-FA-COA-E2E-098-absence-log-create-gagal-5xx-atau-timeout | Absence Log: Create Account Gagal 5xx atau Timeout Tidak Menulis Log | FE+BE | 26 | 32, 302 |
+| TC-FA-COA-E2E-099-absence-log-delete-single-dan-bulk-delete-gagal-5xx-atau-timeout | Absence Log: Delete Single dan Bulk Delete Gagal 5xx atau Timeout Tidak Menulis Log | FE+BE | 35 | 65, 305, 71 |
+| TC-FA-COA-E2E-100-absence-log-activate-dan-deactivate-single-gagal-5xx-atau-timeout | Absence Log: Activate dan Deactivate Single Timeout Tidak Menulis Log | FE+BE | 22 | 304, 361 |
+| TC-FA-COA-E2E-101-absence-log-edit-gagal-5xx-atau-timeout | Absence Log: Save Edit Gagal 5xx atau Timeout Tidak Menulis Log | FE+BE | 28 | 41, 303 |
+| TC-FA-COA-E2E-102-absence-log-bulk-activate-dan-deactivate-gagal-5xx | Absence Log: Bulk Activate dan Bulk Deactivate Gagal 5xx Tidak Menulis Log | FE+BE | 28 | 300, 301 |
+| TC-FA-COA-E2E-103-absence-log-bulk-activate-dan-deactivate-seleksi-campuran | Absence Log: Bulk Deactivate dan Bulk Activate Seleksi Campuran Tidak Menulis Log untuk Akun yang Dilewati | FE+BE | 39 | 56, 350 |
 
 ## Lapisan per TC
 
@@ -185,16 +216,16 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-29 | TC-FA-COA-E2E-016 | FE+BE |
 | TC-FA-COA-30 | TC-FA-COA-E2E-017 | FE+BE |
 | TC-FA-COA-31 | TC-FA-COA-E2E-080 | FE+BE |
-| TC-FA-COA-32 | TC-FA-COA-E2E-066 | FE+BE |
+| TC-FA-COA-32 | TC-FA-COA-E2E-066, TC-FA-COA-E2E-098 | FE+BE |
 | TC-FA-COA-33 | TC-FA-COA-E2E-086 | FE+BE |
 | TC-FA-COA-34 | TC-FA-COA-E2E-020 | FE+BE |
 | TC-FA-COA-35 | TC-FA-COA-E2E-020 | FE+BE |
-| TC-FA-COA-36 | TC-FA-COA-E2E-071 | FE+BE |
+| TC-FA-COA-36 | TC-FA-COA-E2E-071, TC-FA-COA-E2E-096 | FE+BE |
 | TC-FA-COA-37 | TC-FA-COA-E2E-022 | FE+BE |
 | TC-FA-COA-38 | TC-FA-COA-E2E-022 | FE+BE |
 | TC-FA-COA-39 | TC-FA-COA-E2E-022 | FE+BE |
 | TC-FA-COA-40 | TC-FA-COA-E2E-022 | FE+BE |
-| TC-FA-COA-41 | TC-FA-COA-E2E-066 | FE+BE |
+| TC-FA-COA-41 | TC-FA-COA-E2E-066, TC-FA-COA-E2E-101 | FE+BE |
 | TC-FA-COA-42 | TC-FA-COA-E2E-020 | FE+BE |
 | TC-FA-COA-43 | TC-FA-COA-E2E-073 | FE+BE |
 | TC-FA-COA-44 | TC-FA-COA-E2E-073 | FE+BE |
@@ -209,7 +240,7 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-53 | TC-FA-COA-E2E-028 | FE+BE |
 | TC-FA-COA-54 | TC-FA-COA-E2E-028 | FE+BE |
 | TC-FA-COA-55 | TC-FA-COA-E2E-029 | FE+BE |
-| TC-FA-COA-56 | TC-FA-COA-E2E-029 | FE+BE |
+| TC-FA-COA-56 | TC-FA-COA-E2E-029, TC-FA-COA-E2E-103 | FE+BE |
 | TC-FA-COA-57 | TC-FA-COA-E2E-067 | FE+BE |
 | TC-FA-COA-58 | TC-FA-COA-E2E-067 | FE+BE |
 | TC-FA-COA-59 | TC-FA-COA-E2E-032 | FE+BE |
@@ -218,13 +249,13 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-62 | TC-FA-COA-E2E-039 | FE+BE |
 | TC-FA-COA-63 | TC-FA-COA-E2E-039 | FE+BE |
 | TC-FA-COA-64 | TC-FA-COA-E2E-075 | FE+BE |
-| TC-FA-COA-65 | TC-FA-COA-E2E-068 | FE+BE |
+| TC-FA-COA-65 | TC-FA-COA-E2E-068, TC-FA-COA-E2E-099 | FE+BE |
 | TC-FA-COA-66 | TC-FA-COA-E2E-075 | FE+BE |
 | TC-FA-COA-67 | TC-FA-COA-E2E-039 | FE+BE |
 | TC-FA-COA-68 | TC-FA-COA-E2E-039 | FE+BE |
 | TC-FA-COA-69 | TC-FA-COA-E2E-035 | FE+BE |
 | TC-FA-COA-70 | TC-FA-COA-E2E-034 | FE+BE |
-| TC-FA-COA-71 | TC-FA-COA-E2E-068 | FE+BE |
+| TC-FA-COA-71 | TC-FA-COA-E2E-068, TC-FA-COA-E2E-099 | FE+BE |
 | TC-FA-COA-72 | TC-FA-COA-E2E-040 | FE+BE |
 | TC-FA-COA-73 | TC-FA-COA-E2E-040 | FE+BE |
 | TC-FA-COA-74 | TC-FA-COA-E2E-040 | FE+BE |
@@ -276,7 +307,7 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-121 | TC-FA-COA-E2E-072 | FE+BE |
 | TC-FA-COA-122 | TC-FA-COA-E2E-087 | FE+BE |
 | TC-FA-COA-123 | TC-FA-COA-E2E-087 | FE+BE |
-| TC-FA-COA-124 | TC-FA-COA-E2E-071 | FE+BE |
+| TC-FA-COA-124 | TC-FA-COA-E2E-071, TC-FA-COA-E2E-096 | FE+BE |
 | TC-FA-COA-125 | TC-FA-COA-E2E-031 | FE+BE |
 | TC-FA-COA-126 | TC-FA-COA-E2E-031 | FE+BE |
 | TC-FA-COA-127 | TC-FA-COA-E2E-031 | FE+BE |
@@ -420,13 +451,13 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-266 | TC-FA-COA-E2E-006 | FE+BE |
 | TC-FA-COA-267 | TC-FA-COA-E2E-007 | FE+BE |
 | TC-FA-COA-268 | TC-FA-COA-E2E-007 | FE+BE |
-| TC-FA-COA-269 | TC-FA-COA-E2E-070 | FE+BE |
-| TC-FA-COA-270 | TC-FA-COA-E2E-070 | FE+BE |
-| TC-FA-COA-271 | TC-FA-COA-E2E-070 | FE+BE |
-| TC-FA-COA-272 | TC-FA-COA-E2E-072 | FE+BE |
-| TC-FA-COA-273 | TC-FA-COA-E2E-072 | FE+BE |
-| TC-FA-COA-274 | TC-FA-COA-E2E-072 | FE+BE |
-| TC-FA-COA-275 | TC-FA-COA-E2E-072 | FE+BE |
+| TC-FA-COA-269 | TC-FA-COA-E2E-070, TC-FA-COA-E2E-095 | FE+BE |
+| TC-FA-COA-270 | TC-FA-COA-E2E-070, TC-FA-COA-E2E-095 | FE+BE |
+| TC-FA-COA-271 | TC-FA-COA-E2E-070, TC-FA-COA-E2E-095 | FE+BE |
+| TC-FA-COA-272 | TC-FA-COA-E2E-072, TC-FA-COA-E2E-096 | FE+BE |
+| TC-FA-COA-273 | TC-FA-COA-E2E-072, TC-FA-COA-E2E-097 | FE+BE |
+| TC-FA-COA-274 | TC-FA-COA-E2E-072, TC-FA-COA-E2E-097 | FE+BE |
+| TC-FA-COA-275 | TC-FA-COA-E2E-072, TC-FA-COA-E2E-097 | FE+BE |
 | TC-FA-COA-276 | TC-FA-COA-E2E-081 | FE+BE |
 | TC-FA-COA-277 | TC-FA-COA-E2E-079 | FE+BE |
 | TC-FA-COA-278 | TC-FA-COA-E2E-079 | FE+BE |
@@ -451,12 +482,12 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-297 | TC-FA-COA-E2E-088 | FE+BE |
 | TC-FA-COA-298 | TC-FA-COA-E2E-028 | FE+BE |
 | TC-FA-COA-299 | TC-FA-COA-E2E-029 | FE+BE |
-| TC-FA-COA-300 | TC-FA-COA-E2E-069 | FE+BE |
-| TC-FA-COA-301 | TC-FA-COA-E2E-069 | FE+BE |
-| TC-FA-COA-302 | TC-FA-COA-E2E-066 | FE+BE |
-| TC-FA-COA-303 | TC-FA-COA-E2E-066 | FE+BE |
-| TC-FA-COA-304 | TC-FA-COA-E2E-067 | FE+BE |
-| TC-FA-COA-305 | TC-FA-COA-E2E-068 | FE+BE |
+| TC-FA-COA-300 | TC-FA-COA-E2E-069, TC-FA-COA-E2E-102 | FE+BE |
+| TC-FA-COA-301 | TC-FA-COA-E2E-069, TC-FA-COA-E2E-102 | FE+BE |
+| TC-FA-COA-302 | TC-FA-COA-E2E-066, TC-FA-COA-E2E-098 | FE+BE |
+| TC-FA-COA-303 | TC-FA-COA-E2E-066, TC-FA-COA-E2E-101 | FE+BE |
+| TC-FA-COA-304 | TC-FA-COA-E2E-067, TC-FA-COA-E2E-100 | FE+BE |
+| TC-FA-COA-305 | TC-FA-COA-E2E-068, TC-FA-COA-E2E-099 | FE+BE |
 | TC-FA-COA-306 | TC-FA-COA-E2E-050 | FE+BE |
 | TC-FA-COA-307 | TC-FA-COA-E2E-050 | FE+BE |
 | TC-FA-COA-308 | TC-FA-COA-E2E-050 | FE+BE |
@@ -501,7 +532,7 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-347 | TC-FA-COA-E2E-078 | FE+BE |
 | TC-FA-COA-348 | TC-FA-COA-E2E-078 | FE+BE |
 | TC-FA-COA-349 | TC-FA-COA-E2E-075 | FE+BE |
-| TC-FA-COA-350 | TC-FA-COA-E2E-028 | FE+BE |
+| TC-FA-COA-350 | TC-FA-COA-E2E-028, TC-FA-COA-E2E-103 | FE+BE |
 | TC-FA-COA-351 | TC-FA-COA-E2E-076 | FE+BE |
 | TC-FA-COA-352 | TC-FA-COA-E2E-076 | FE+BE |
 | TC-FA-COA-353 | TC-FA-COA-E2E-077 | FE+BE |
@@ -512,7 +543,7 @@ f. Jalur ekspor (J-06) ditunda.
 | TC-FA-COA-358 | TC-FA-COA-E2E-056 | FE+BE |
 | TC-FA-COA-359 | TC-FA-COA-E2E-015 | FE+BE |
 | TC-FA-COA-360 | TC-FA-COA-E2E-015 | FE+BE |
-| TC-FA-COA-361 | TC-FA-COA-E2E-067 | FE+BE |
+| TC-FA-COA-361 | TC-FA-COA-E2E-067, TC-FA-COA-E2E-100 | FE+BE |
 | TC-FA-COA-362 | TC-FA-COA-E2E-069 | FE+BE |
 | TC-FA-COA-363 | TC-FA-COA-E2E-085 | FE+BE |
 | TC-FA-COA-364 | TC-FA-COA-E2E-085 | FE+BE |

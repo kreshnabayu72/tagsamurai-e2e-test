@@ -61,7 +61,7 @@ coverage:
 25. Catat jumlah entri Changelog Preferences, System Log milik Rina Anggraini, dan Activity Log FAMS sebagai baseline (lewat kemampuan baca BE)
 26. Kosongkan Select Default Gain on Disposal hingga placeholder "Select account" tampil
 27. Klik `[Save changes]`
-28. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "2 asset classes use the default account." dan "3 unposted disposals will use the new account.", lalu pertanyaan "Are you sure you want to save these changes?", tombol `[Cancel]` dan `[Save]`
+28. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "2 asset classes use the default account. 3 unposted disposals will use the new account." lalu pertanyaan "Are you sure you want to save these changes?", tombol `[Cancel]` dan `[Save]`
 29. Klik `[Save]` pada dialog Save Changes
 30. Catat waktu sesudah Save (untuk asersi kolom Date)
 31. Verifikasi toast "Success, accounting preferences have been saved." tampil

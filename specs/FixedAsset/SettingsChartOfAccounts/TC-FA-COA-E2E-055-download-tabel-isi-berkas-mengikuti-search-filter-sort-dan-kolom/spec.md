@@ -105,7 +105,7 @@ coverage:
 - P-10: TC-84, TC-85, TC-223, TC-224, dan TC-334 mencampur asersi UI (tombol, toast, empty state) dengan isi berkas (kelas f) pada alur unduh yang sama; alur klik Download lalu membaca berkas tidak dapat dipisah dari asersi UI. Klausa isi berkas ditaruh setelah klausa UI dan `Verifikasi` isi berkas satu per klausa.
 - P-5: TC-86 adalah satu objek uji ringan kelas b (respons Download dipaksa gagal) pada permukaan yang sama (Download); intercept dilepas pada langkah 18.
 - Asersi absence toast pada langkah 4, 25, dan 42 diletakkan segera setelah pemicu (klik pilihan format) sebelum asersi berkas; berkas terunduh (langkah 5, 26, 43) menjadi bukti positif bahwa respons sudah diproses (8b.11).
-- Langkah penghubung (S-03): langkah 1 dan 10 (Filter dipasang dan dibersihkan), langkah 11 dan 28 (Search `zzz` dibuat dan dikosongkan), langkah 19 sampai 21 (menyiapkan precondition c TC-224), langkah 27 (pemulihan Setup Column eksplisit, R-24 dan 8b.13), langkah 35 sampai 40 (hide lalu unhide, langkah TC-334).
+- Langkah penghubung (S-03): langkah 1 dan 10 (Filter dipasang dan dibersihkan), langkah 11 dan 28 (Search `zzz` dibuat dan dikosongkan), langkah 19 sampai 21 (menyiapkan precondition c TC-224), langkah 27 (pemulihan Setup Column eksplisit, R-24 dan 8b.14), langkah 35 sampai 40 (hide lalu unhide, langkah TC-334).
 - Temuan untuk QA:
   - TC-84 butir b ("hanya baris Active") tidak menyebut jumlah baris; spec mengasersi dengan baris pembanding P1 (ada) dan P3 (tidak ada).
   - TC-224 mensyaratkan Search `zzz` pada langkah 1 dengan state Used By disembunyikan sebagai precondition; spec mempertahankan Search `zzz` dari TC-85 (langkah 11) dan menyembunyikan Used By pada langkah 20 sampai 21.

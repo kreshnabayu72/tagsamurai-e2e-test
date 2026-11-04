@@ -94,6 +94,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 12, 23, 30 (seed ulang saat seri fixture berganti dari PB-1 ke PC-1, PC-3, PC-4).
 - Post Condition semua TC ("tidak ada perubahan Preferences dan tidak ada entri log baru") dicakup Expected butir b dan diasersi pada langkah nilai tersimpan dan jumlah baris log. Frasa Expected butir b TC-524 dan 525 mengulang ketiga surface log; diasersi pada langkah jumlah baris.
 - Temuan untuk QA:
-  - TC-FA-PREF-236 dan 237 membaca ulang lewat tab Preferences pada konteks "Baca ulang Preferences", sedangkan Precondition tidak mencatat jumlah baris log padahal Post Condition meminta "tidak ada entri log baru"; spec menambah pencatatan baseline (S-12).
+  - TC-FA-PREF-236 dan 237 membaca ulang lewat tab Preferences pada konteks "Baca ulang Preferences".
   - TC-FA-PREF-236, 237, 524, dan 525 menguji batas dan pesan yang sama pada seri PB dan PC; perbedaan hanya seri fixture.
   - TC-FA-PREF-522 dan 523 tidak menyebut kode respons HTTP; spec hanya mengasersi pesan penolakan.

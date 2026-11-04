@@ -53,7 +53,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): "Tutup modal Changelog lewat `✕`, lalu klik ikon View history" membuka ulang modal bersih untuk tiap TC.
-- Pemulihan Setup Column (8b.13, R-24): perubahan kolom kedua TC tidak pernah disimpan; langkah "Klik ikon `✕` pada modal Setup Column" di akhir TC-FA-PREF-341 membuang perubahan yang belum disimpan. Tidak ada `[Save]` di spec ini.
+- Pemulihan Setup Column (8b.14, R-24): perubahan kolom kedua TC tidak pernah disimpan; langkah "Klik ikon `✕` pada modal Setup Column" di akhir TC-FA-PREF-341 membuang perubahan yang belum disimpan. Tidak ada `[Save]` di spec ini.
 - Urutan Verifikasi TC-FA-PREF-341: tooltip diasersi sebelum klik berikutnya karena state hover bersifat sementara (8b.5); karena itu butir Expected b ditulis sebelum butir a.
 - Pembagian TC lintas spec: TC-FA-PREF-337 (Pin dan unpin) ada di spec 169.
 - Temuan untuk QA:

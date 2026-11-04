@@ -18,7 +18,7 @@ coverage:
 
 - Mode: FE+BE (intercept parsial di atas backend nyata; respons Delete dipaksa lewat `Spectra.intercept()`, keberadaan akun dibaca dari backend nyata).
 - Akun aktor: Total Control `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
-- Data Pre-setup (disediakan tim FE lewat `fixtures/settings-chart-of-accounts.json`, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
+- Data Pre-setup (identitas dibaca dari `Fixture.settingsChartOfAccounts.<kunci>` yang disediakan tim FE, nama kunci ditetapkan tim FE; seeding mengikuti butir "Seed dan pemulihan lewat API" di `suite.md`):
   - Akun P3 `Fixture.settingsChartOfAccounts.p3` (Account Code `4-7001`, Account Name `Gain on Disposal`, Inactive, Used By 0, Last Used kosong).
   - Akun P5 `Fixture.settingsChartOfAccounts.p5` (Account Code `CAP-6100`, Account Name `Capitalization Clearing – Repairs`, Used By 0, Last Used kosong; dipilih bersama P3 pada Bulk Delete TC-FA-COA-71).
   Kedua akun hanya dibaca; semua Delete digagalkan sehingga akun tidak terhapus dan tidak ada data Dinamis yang dibuat.
@@ -78,9 +78,8 @@ coverage:
 - Mode: FE+BE (kelas b, fault injection). Tiga TC berdiri sendiri dalam satu kelas harness; 32 langkah berada di bawah sekitar 35.
 - Langkah penghubung (S-03, S-09): langkah 1 dan 32 (Search nama P3 sebagai penemu baris target, R-16, R-23, lalu kosongkan); langkah 2 dan 10 (membuka dialog D-07 lewat row action `Delete`, precondition TC-FA-COA-65 dan 305); langkah 18-21 (memilih P3 dan P5 sebagai precondition TC-FA-COA-71; Search diganti antar pemilihan sesuai 8b.9); langkah 8, 16, 29 (melepas intercept); langkah 9, 17, 30 (menutup dialog dengan `[Cancel]`); langkah 31 (melepas seleksi, S-09).
 - Langkah 27 diamati lewat pengamatan permintaan daftar akun pada intercept jaringan; endpoint mengikuti halaman, tanpa endpoint karangan.
-- Klausa "tidak ada entri log" pada Expected c TC-FA-COA-65 dan 305, serta Post Condition TC-FA-COA-71, tidak diasersi di spec ini (S-05). Asersi absence log berada di spec absence (kelas g); rujukan: TC-FA-COA-51 dan TC-FA-COA-52 di spec 083.
+- Pembagian TC lintas spec (S-05): klausa "tidak ada entri log" pada Expected c TC-FA-COA-65 dan TC-FA-COA-305, serta Post Condition TC-FA-COA-71, diasersi di spec 099, yang memuat pemicu Delete yang sama dengan baseline sendiri. Spec ini tidak mengasersi log.
 - Post Condition TC-FA-COA-71 ("sebagian akun mungkin sudah terhapus") tidak diasersi karena respons dipaksa 5xx oleh intercept sehingga tidak ada penghapusan sebagian di backend.
 - Temuan untuk QA:
   - TC-FA-COA-71 menyebut P3 dan P5 "eligible", sedangkan Pre-setup mencatat P5 Active; bila Delete hanya untuk akun Inactive, bulk Delete akan terblokir sebelum dialog D-08. Spec mengikuti TC.
   - TC-FA-COA-71 tidak menjelaskan bagaimana kedua akun dipilih pada tabel multi-halaman; spec memakai Search per akun dengan asumsi seleksi bertahan saat Search diganti (perlu dikonfirmasi tim FE).
-  - Klausa "tidak ada entri log" pada TC-FA-COA-65 dan 305 tidak punya spec absence yang memuatnya (spec 083 hanya memuat TC-FA-COA-51, 52, 96, 118).
