@@ -48,7 +48,7 @@ coverage:
 - Sumber: `fixed-asset/activity-log/TestCases/tc-activity-log.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Mode: FE+BE.
 - Langkah penghubung (S-03): langkah 6, 13 (menutup kalender field Date).
-- TC-FA-FAAL-73 dan TC-FA-FAAL-74 (Filter Date hanya tanggal mulai atau akhir) ada di spec 024.
+- TC-FA-FAAL-73 dan TC-FA-FAAL-74 (Filter Date satu tanggal dan field Date tunggal) ada di spec 024.
 - Temuan untuk QA:
   - TC-FA-FAAL-75 Expected c ("Tidak ada pesan error karena pilihan tidak tersedia") berlaku untuk kedua tab; spec mengasersinya pada tiap tab sesudah Expected a atau b.
   - TC sumber tidak menyatakan apakah Filter Panel terbuka sesudah pindah tab; spec membukanya dengan klik icon Filter sesudah pindah tab (TC langkah 4).

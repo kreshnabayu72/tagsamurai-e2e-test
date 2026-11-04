@@ -46,7 +46,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 227 TC aktif masuk spec, 0 TC
 | TC-GS-ACTLOG-E2E-036-pola-entri-user-action-create-edit-delete-dan-satu-save-banyak-field | Pola Entri User Action: Create, Edit, Delete, dan Satu Save Banyak Field | FE+BE | 29 | 141, 142, 143, 144 |
 | TC-GS-ACTLOG-E2E-037-aksi-relasi-hardware-user-action-pair-assign-dan-add-access | Aksi Relasi Hardware di User Action: Pair/Unpair TAG, Assign/Unassign Handheld, Add/Remove Access, Audit TAG | FE+BE | 28 | 145, 148, 206 |
 | TC-GS-ACTLOG-E2E-038-aksi-lain-user-action-permission-system-role-activate-dan-import | Aksi Lain di User Action: Edit Permission System Role, Activate/Deactivate, Import | FE+BE | 20 | 146, 147, 149 |
-| TC-GS-ACTLOG-E2E-039-filter-date-batas-inklusif-rentang-terbalik-dan-sebagian-terisi | Filter Date Kedua Tab: Batas Inklusif, Rentang Terbalik, Sebagian Terisi | FE+BE | 27 | 74, 76, 77 |
+| TC-GS-ACTLOG-E2E-039-filter-date-batas-inklusif-rentang-terbalik-dan-satu-tanggal | Filter Date Kedua Tab: Batas Inklusif, Rentang Terbalik, Satu Tanggal | FE+BE | 25 | 74, 76, 77 |
 | TC-GS-ACTLOG-E2E-040-format-tanggal-dan-zona-waktu-mengikuti-general-settings | Format Tanggal dan Zona Waktu Mengikuti General Settings | FE+BE | 40 | 75, 191, 192, 193, 194 |
 | TC-GS-ACTLOG-E2E-041-kombinasi-search-filter-sort-dan-page-size-kedua-tab | Kombinasi Search, Filter, Sort, dan Page Size Kedua Tab | FE+BE | 54 | 104, 105, 106, 107 |
 | TC-GS-ACTLOG-E2E-042-no-result-state-dan-kontrol-filter-panel-kedua-tab | No-result State dan Kontrol Filter Panel Kedua Tab | FE+BE | 51 | 6, 7, 108, 109, 110 |

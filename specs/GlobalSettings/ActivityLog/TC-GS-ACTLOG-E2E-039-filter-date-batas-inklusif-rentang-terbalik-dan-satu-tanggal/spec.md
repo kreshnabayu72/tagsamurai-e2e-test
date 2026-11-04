@@ -1,6 +1,6 @@
 ---
-id: TC-GS-ACTLOG-E2E-039-filter-date-batas-inklusif-rentang-terbalik-dan-sebagian-terisi
-title: "Filter Date Kedua Tab: Batas Inklusif, Rentang Terbalik, Sebagian Terisi"
+id: TC-GS-ACTLOG-E2E-039-filter-date-batas-inklusif-rentang-terbalik-dan-satu-tanggal
+title: "Filter Date Kedua Tab: Batas Inklusif, Rentang Terbalik, Satu Tanggal"
 priority: High
 caseType: Edge
 status: draft
@@ -12,7 +12,7 @@ coverage:
   web: automated
 ---
 
-# Filter Date Kedua Tab: Batas Inklusif, Rentang Terbalik, Sebagian Terisi
+# Filter Date Kedua Tab: Batas Inklusif, Rentang Terbalik, Satu Tanggal
 
 ## Prerequisites
 
@@ -59,32 +59,30 @@ coverage:
 
 14. Tutup Filter Panel tanpa [Apply]
 
-### TC-GS-ACTLOG-77: Filter Date dengan hanya tanggal mulai atau hanya tanggal akhir
+### TC-GS-ACTLOG-77: Filter Date satu tanggal menjadi rentang satu hari dan tanpa input tanggal akhir terpisah
 
-15. Klik tab "Session", klik icon Filter, isi hanya tanggal mulai `14 Jul 2026`, klik [Apply]
-16. Verifikasi baris E2 dan E3 (`14 Jul 2026`) serta E6 (`18 Jul 2026`) tampil di Tab Session
-17. Verifikasi baris E5 (`10 Jul 2026`) tidak tampil di Tab Session
-18. Klik icon Filter, kosongkan tanggal mulai, isi hanya tanggal akhir `14 Jul 2026`, klik [Apply]
-19. Verifikasi baris E5 (`10 Jul 2026`) serta E2 dan E3 (`14 Jul 2026`) tampil di Tab Session
-20. Verifikasi baris E6 (`18 Jul 2026`) tidak tampil di Tab Session
-21. Klik tab "User Action", klik icon Filter, isi hanya tanggal mulai `14 Jul 2026`, klik [Apply]
-22. Verifikasi baris E2 dan E3 (`14 Jul 2026`) serta E6 (`18 Jul 2026`) tampil di Tab User Action
-23. Verifikasi baris E5 (`10 Jul 2026`) tidak tampil di Tab User Action
-24. Klik icon Filter, kosongkan tanggal mulai, isi hanya tanggal akhir `14 Jul 2026`, klik [Apply]
-25. Verifikasi baris E5 (`10 Jul 2026`) serta E2 dan E3 (`14 Jul 2026`) tampil di Tab User Action
-26. Verifikasi baris E6 (`18 Jul 2026`) tidak tampil di Tab User Action
+15. Klik tab "Session", klik icon Filter
+16. Verifikasi Filter Panel Tab Session hanya memiliki satu field Date (date range picker) tanpa input tanggal akhir terpisah
+17. Klik satu tanggal `14 Jul 2026` di picker, klik [Apply]
+18. Verifikasi baris E2 dan E3 (`14 Jul 2026`) tampil di Tab Session
+19. Verifikasi baris E5 (`10 Jul 2026`) dan E6 (`18 Jul 2026`) tidak tampil di Tab Session
+20. Klik tab "User Action", klik icon Filter
+21. Verifikasi Filter Panel Tab User Action hanya memiliki satu field Date (date range picker) tanpa input tanggal akhir terpisah
+22. Klik satu tanggal `14 Jul 2026` di picker, klik [Apply]
+23. Verifikasi baris E2 dan E3 (`14 Jul 2026`) tampil di Tab User Action
+24. Verifikasi baris E5 (`10 Jul 2026`) dan E6 (`18 Jul 2026`) tidak tampil di Tab User Action
 
 ### Pemulihan state akhir
 
-27. Klik menu Activity Log di sidebar sehingga kedua tab kembali ke default
+25. Klik menu Activity Log di sidebar sehingga kedua tab kembali ke default
 
 ## Notes
 
 - Sumber TC: `global-settings/activity-log/TestCases/tc-activity-log.md`. Urutan TC-GS-ACTLOG-74, 76, 77 dipertahankan.
 - Subjudul `###` memetakan langkah ke id TC untuk report per langkah.
-- Langkah penghubung tanpa awalan `Verifikasi`: langkah 1 dan 5 (Search `{runId}-039` menyempitkan tabel ke entri seed milik spec; ditambahkan agar asersi tidak bercampur dengan baris lain; Search dipertahankan per tab sampai langkah 27), langkah pemulihan 9, 14, dan 27, serta langkah 12 yang menutup panel sebelum pindah tab.
-- Asersi absence (langkah 4, 8, 17, 20, 23, 26) didahului `Verifikasi` baris lain pada tabel yang sama yang tampil (langkah 3, 7, 16, 19, 22, 25).
-- Entri seed TC-GS-ACTLOG-77 (`10`, `14`, `18 Jul 2026`) memakai himpunan E1 sampai E6 yang sama dengan TC-GS-ACTLOG-74; entri E1 dan E4 ikut tampil atau tersaring sesuai rentang dan tidak diasersi pada TC-GS-ACTLOG-77.
+- Langkah penghubung tanpa awalan `Verifikasi`: langkah 1 dan 5 (Search `{runId}-039` menyempitkan tabel ke entri seed milik spec; ditambahkan agar asersi tidak bercampur dengan baris lain; Search dipertahankan per tab sampai langkah 25), langkah pemulihan 9, 14, dan 25, serta langkah 12 yang menutup panel sebelum pindah tab.
+- Asersi absence (langkah 4, 8, 19, 24) didahului `Verifikasi` baris lain pada tabel yang sama yang tampil (langkah 3, 7, 18, 23).
+- Entri seed TC-GS-ACTLOG-77 (`10`, `14`, `18 Jul 2026`) memakai himpunan E1 sampai E6 yang sama dengan TC-GS-ACTLOG-74; entri E1 dan E4 tersaring oleh rentang satu hari `14 Jul 2026` dan tidak diasersi pada TC-GS-ACTLOG-77.
 - TC-GS-ACTLOG-75 (zona waktu) ada di spec 040.
 - Temuan untuk QA:
   - TC-77 tidak menyebut Date Format, Time Format, dan Time Zone; spec memakai nilai yang diatur pada Precondition TC-74.

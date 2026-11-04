@@ -35,7 +35,7 @@ Setelah e2e-audit, TC sumber diedit (anchor positif, total baseline `Z0`, dan Fi
 | TC-FA-FAAL-E2E-021-search-tab-session-date-tanpa-hasil-tersembunyi-dan-trim | Search Tab Session: Date, Tanpa Hasil, dan Kolom Tersembunyi | FE+BE | 26 | 65-67 |
 | TC-FA-FAAL-E2E-022-volume-5001-baris-search-dan-download | Volume 5.000 dan 5.001 Baris: Download Ambang 5.000 serta Browsing dan Search Tanpa Loading Screen | FE+BE | 24 | 69, 182 |
 | TC-FA-FAAL-E2E-023-filter-date-tab-session | Filter Date Tab Session: Screening Panel, Satu Hari, dan Rentang | FE+BE | 23 | 70-72 |
-| TC-FA-FAAL-E2E-024-filter-date-hanya-mulai-atau-akhir-kedua-tab | Filter Date Hanya Tanggal Mulai atau Hanya Tanggal Akhir di Kedua Tab | FE+BE | 27 | 73, 74 |
+| TC-FA-FAAL-E2E-024-filter-date-satu-tanggal-dan-field-date-tunggal-kedua-tab | Filter Date Satu Tanggal dan Field Date Tunggal di Kedua Tab | FE+BE | 18 | 73, 74 |
 | TC-FA-FAAL-E2E-025-filter-date-batas-hari-zona-waktu-staf | Filter Date pada Batas Hari, Zona Waktu Staf, dan Tie-Breaker Sort | FE+BE | 35 | 76, 106, 128, 208 |
 | TC-FA-FAAL-E2E-026-filter-position-division-note-dan-opsi-dropdown | Filter Tab Session: Position, Division, Note, dan Opsi Dropdown | FE+BE | 25 | 77, 78 |
 | TC-FA-FAAL-E2E-027-filter-user-tab-session-dan-search-internal | Filter User Tab Session: Opsi per Nama Lengkap, Dua Pengguna Bernama Sama, dan Search Internal | FE+BE | 22 | 81-83 |

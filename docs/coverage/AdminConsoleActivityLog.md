@@ -44,7 +44,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 184 TC masuk 55 spec, 2 TC di
 | TC-AC-ACAL-E2E-031-sort-tab-user-action-kolom-modified-by-dan-tipe-campuran | Sort Tab User Action: Kolom, Modified By, dan Tipe Campuran | FE+BE | 30 | 100, 101, 102, 103 |
 | TC-AC-ACAL-E2E-032-setup-column-tab-user-action-overlay-popup-sembunyikan-dan-kolom-terakhir | Setup Column Tab User Action: Overlay, Popup, Sembunyikan, Cancel, dan Kolom Terakhir | FE+BE | 52 | 104, 105, 106, 110, 111 |
 | TC-AC-ACAL-E2E-033-setup-column-tab-user-action-urutan-pin-batas-tiga-dan-reset | Setup Column Tab User Action: Urutan, Pin, Batas Tiga Kolom, dan Reset | FE+BE | 35 | 107, 108, 109 |
-| TC-AC-ACAL-E2E-034-filter-date-batas-inklusif-satu-sisi-dan-rentang-terbalik-kedua-tab | Filter Date: Batas Inklusif, Satu Sisi, dan Rentang Terbalik Kedua Tab | FE+BE | 28 | 59, 61, 62, 63, 99 |
+| TC-AC-ACAL-E2E-034-filter-date-batas-inklusif-satu-tanggal-dan-rentang-terbalik-kedua-tab | Filter Date: Batas Inklusif, Satu Tanggal, dan Rentang Terbalik Kedua Tab | FE+BE | 29 | 59, 61, 62, 63, 99 |
 | TC-AC-ACAL-E2E-035-kontrol-filter-panel-pencarian-opsi-chip-overflow-clear-dan-indikator | Kontrol Filter Panel: Pencarian Opsi, Chip, Overflow, Tutup Tanpa Apply, Clear, dan Indikator | FE+BE | 59 | 64, 65, 66, 67, 68, 69, 70 |
 | TC-AC-ACAL-E2E-036-kontrol-filter-panel-kolom-hidden-sumber-kosong-keyboard-dan-loading-opsi | Kontrol Filter Panel: Kolom Hidden, Sumber Kosong, Keyboard, dan Loading Opsi | FE+BE | 39 | 71, 72, 73, 167 |
 | TC-AC-ACAL-E2E-037-format-tanggal-dan-zona-waktu-general-settings-entitas-staf-login | Format Tanggal dan Zona Waktu Mengikuti General Settings Entitas Staf Login | FE+BE | 31 | 60, 135, 136 |
