@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control Principal PT Arunika Prima, `totalControlSku_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.AC_DS_TC_PASSWORD` (Pre-setup #1). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Data Pre-setup #29 (SKU Principal inti; nilai kosong `—` pada Hardware Type, Range Type, dan TAG Type sesuai tabel #29) dan #30 (`SEED-001` sampai `SEED-119`, TAG Type `Object`; total 129 SKU Principal, 13 halaman pada 10 baris per halaman): hanya dibaca, tidak diubah. Dipasang idempoten oleh seeding di hook `before`. Setiap kolom curated yang diuji memiliki sedikitnya dua nilai distinct di data itu.
-- Preferensi kolom List: langkah 5 sampai 7 menampilkan kolom curated (tersimpan di cache browser). Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
+- Preferensi kolom List: langkah 5 sampai 7 menampilkan kolom curated (tersimpan di cache browser) dan langkah 34 sampai 36 menyembunyikannya kembali. Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
 - Nilai data diacu lewat `Fixture.deviceSku.<kunci>`; berkas fixture disediakan tim FE (lihat Temuan untuk QA).
 - Tidak ada state global yang diubah dan tidak ada entitas yang dibuat.
 
@@ -70,10 +70,18 @@ coverage:
 32. Klik header kolom TAG Type dua kali
 33. Verifikasi enam baris pertama bernilai `—` (`BLE-KIN-GW1`, `HHR-ARC-100`, `HHR-ARC-200`, `HHR-BIG-01`, `SFR-VEL-4P`, `SFR-ZERO-01`), disusul `User` (`TAG-ARC-USR`), lalu `Object`
 
+### Pemulihan state akhir
+
+34. Klik header kolom Actions (⋯), lalu hilangkan centang `Hardware Type` pada Overlay Column Visibility
+35. Klik header kolom Actions (⋯), lalu hilangkan centang `Range Type` pada Overlay Column Visibility
+36. Klik header kolom Actions (⋯), lalu hilangkan centang `TAG Type` pada Overlay Column Visibility
+
 ## Notes
 
 - Urutan blok: TC-AC-DS-341 dikerjakan lebih dulu karena tidak membutuhkan kolom curated dan asersi urutan tidak berubah memakai default SKU A-Z; sumber memuat 339, 340, lalu 341.
 - Langkah penghubung (S-03, S-14): langkah 5 sampai 7 menampilkan kolom curated; langkah 10, 14, 19, 21, 24, 26, 29, dan 31 memindahkan halaman karena mengganti arah sort tetap di halaman yang sama; tanpa asersi.
+- Langkah penghubung pemulihan (tanpa `Verifikasi`, S-03, S-09): langkah 34 sampai 36 menyembunyikan kembali kolom curated yang ditampilkan pada langkah 5 sampai 7; hook `after` tetap menghapus preferensi kolom sebagai cadangan.
+- Alasan melewati sekitar 35 langkah (36 langkah): tiga blok TC berbagi tiga kolom curated yang sama dan satu dataset 129 SKU; tiga langkah pemulihan kolom (langkah 34 sampai 36) menambah di atas batas, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah 11 adalah anchor positif tambahan (bukan Expected TC) untuk asersi universal langkah 12. Langkah 16 mengasersi baris yang tampil sesudah tiga baris pertama pada halaman 1 sebagai pengamatan atas "diikuti seluruh baris bernilai `—`".
 - Temuan untuk QA:
   - S-12: asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `BLE-KIN-GW1`, `SEED-001`, total 129 SKU, 13 halaman). Lampiran A tidak memuat butir modul ini. Spec mengikuti TC dengan seeding idempoten dan suite serial; keputusan pengecualian nama literal masih terbuka.

@@ -56,15 +56,16 @@ coverage:
 13. Verifikasi kolom tersebut membeku di kiri ketika tabel digulir
 14. Klik header kolom Actions (⋯) pada popup, klik `Setup Column...`, klik ikon Pin pada kolom tersebut (unpin), klik `[Save]`, gulir tabel Usage secara horizontal
 15. Verifikasi kolom tersebut kembali bergerak setelah unpin
+16. Klik header kolom Actions (⋯) pada popup, klik `Setup Column...`, seret kolom `Total Stock` ke posisi tepat di bawah `Entity Type`, lalu klik `[Save]`
 
 ### Pemulihan state akhir
 
-16. Tutup popup `Device SKU Detail` dengan ikon close `[✕]`
+17. Tutup popup `Device SKU Detail` dengan ikon close `[✕]`
 
 ## Notes
 
-- Langkah 6 dan 7 diulang per baris tabel "Pemindahan kolom" (3 iterasi, ekspansi 6 langkah) dan langkah 11 sampai 15 per baris tabel "Kolom yang di-pin" (3 iterasi, ekspansi 15 langkah); total ekspansi spec sekitar 34 langkah. Semua langkah satu kelas (Setup Column popup Usage) dan tiap iterasi berdiri sendiri.
-- Langkah penghubung tanpa `Verifikasi`: langkah 16 (S-03).
+- Langkah 6 dan 7 diulang per baris tabel "Pemindahan kolom" (3 iterasi, ekspansi 6 langkah) dan langkah 11 sampai 15 per baris tabel "Kolom yang di-pin" (3 iterasi, ekspansi 15 langkah); total ekspansi spec sekitar 35 langkah. Semua langkah satu kelas (Setup Column popup Usage) dan tiap iterasi berdiri sendiri.
+- Langkah penghubung tanpa `Verifikasi`: langkah 16 mengembalikan urutan kolom bawaan `Company, Entity Type, Total Stock` yang disimpan pada langkah 8, dan langkah 17 menutup popup (S-03, S-09); hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Temuan untuk QA:
   - S-15: TC 457 hanya menyebut "posisi lain" tanpa posisi tujuan; spec memilih posisi deterministik. Expected 457 menyebut urutan "pada preview dan tabel" dengan satu `[Save]` di akhir; preview per kolom (langkah 7), tabel setelah Save (langkah 9).
   - S-14: Expected 458 mensyaratkan tabel Usage yang dapat digulir horizontal; tiga kolom bisa muat tanpa gulir. TC tidak menyebut viewport; kemampuan dicatat di Prerequisites.

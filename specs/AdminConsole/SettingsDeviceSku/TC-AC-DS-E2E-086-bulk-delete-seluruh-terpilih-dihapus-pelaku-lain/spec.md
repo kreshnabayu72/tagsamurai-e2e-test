@@ -82,13 +82,15 @@ coverage:
 35. Verifikasi tabel Activity Log menampilkan sedikitnya satu entri
 36. Verifikasi Activity Log tidak memuat entri Delete baru oleh `Jane S` (jumlah entri oleh `Jane S` sama dengan baseline langkah 1); entri Delete `SEED-001` dan `SEED-002` yang baru berasal dari `Budi K`
 37. Buka Settings > Device > Device SKU
+38. Ubah jumlah data per halaman menjadi 10
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-device-sku/TestCases/tc-settings-device-sku.md`; subjudul `###` memetakan langkah ke id TC granular.
 - P-1: asersi absence log (Expected TC) ditulis di spec ini dengan baseline jumlah entri (langkah 1) karena aksi yang diuji ada di spec yang sama dan tidak ada spec absence dengan aksi nyata untuk TC itu (S-05); surface dan anchor positif ditulis sebelum tiap asersi absence (bagian 8b butir 2). Membuka System Log dan Activity Log serta kembali ke Device SKU adalah langkah penghubung. Expected log TC-547 dan TC-574 diasersi sekali di akhir spec karena tidak ada aksi sesi pertama di kedua blok yang menulis log.
-- Alasan di atas sekitar 35 langkah (bagian 3, prinsip 13): semua blok memakai satu kelas harness (dialog Bulk Delete pada data seed yang sama), berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; kelebihannya berasal dari pemecahan Expected per klausa (S-01) dan pembersihan seleksi antar blok (S-09). Langkah: 37.
+- Alasan di atas sekitar 35 langkah (bagian 3, prinsip 13): semua blok memakai satu kelas harness (dialog Bulk Delete pada data seed yang sama), berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; kelebihannya berasal dari pemecahan Expected per klausa (S-01) dan pembersihan seleksi antar blok (S-09). Langkah: 38.
 - Pelaku kedua memakai sesi API (bukan konteks kedua kelas c), sehingga tanpa butir `P-2`. Langkah pemicu ditulis "... hingga ... tersimpan" (R-20). Search pada langkah 2 menemukan `SEED-001` dan `SEED-002` di halaman 1; langkah 11 membuat ulang keduanya (S-09, S-06). Atur 100 baris per halaman dan pindah ke halaman 2 menjadikan `SFR-VEL-4P` dapat dicentang tanpa Search.
+- Langkah penghubung akhir: langkah 38 memulihkan jumlah data per halaman ke 10 setelah diubah menjadi 100 (S-09).
 - Temuan untuk QA: TC-547 dan TC-574 diberi Automation Manual Only (dua sesi paralel) di TC; pelaku kedua dijalankan lewat sesi API di spec ini. Post Condition TC-547 dan TC-574 kosong.
 - Temuan untuk QA (S-12): Lampiran A tidak punya butir untuk modul ini, padahal asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `HHR-ARC-200`, `SEED-001`, total 129 SKU). Spec memakai nama literal itu sesuai TC; syarat seeding idempotent, cleanup oleh spec, dan suite serial dipenuhi lewat Pemulihan di Prerequisites. Pengecualian S-12 dan S-06 untuk modul ini belum diputuskan; suite.md belum menyatakan fixture pemulihan Pre-setup.
 - Temuan untuk QA (fixture): `fixtures/settings-device-sku.json`, akun Pre-setup #1 dan #2, dan env `AC_DS_*` belum terverifikasi ada di environment; ketersediaannya dipastikan tim FE.

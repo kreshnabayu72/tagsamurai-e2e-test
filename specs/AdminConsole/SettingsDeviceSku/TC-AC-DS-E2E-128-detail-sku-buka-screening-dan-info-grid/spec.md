@@ -57,23 +57,24 @@ coverage:
 
 ### TC-AC-DS-429: Info Grid Popup Detail menampilkan SKU, Device Name, Brand, dan Model/Type
 
-20. Klik SKU `SFR-VEL-4P`
-21. Verifikasi Info Grid memuat SKU `SFR-VEL-4P`
-22. Verifikasi Info Grid memuat Device Name `4-Port Fixed Reader`
-23. Verifikasi Info Grid memuat Brand `Veltrix`
-24. Verifikasi Info Grid memuat Model/Type `SF-4`
+20. Ketik Search `SFR-VEL-4P`, tekan Enter
+21. Klik SKU `SFR-VEL-4P`
+22. Verifikasi Info Grid memuat SKU `SFR-VEL-4P`
+23. Verifikasi Info Grid memuat Device Name `4-Port Fixed Reader`
+24. Verifikasi Info Grid memuat Brand `Veltrix`
+25. Verifikasi Info Grid memuat Model/Type `SF-4`
 
 ### Pemulihan state akhir
 
-25. Tutup popup dengan ikon close `[✕]`
+26. Tutup popup dengan ikon close `[✕]`
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: langkah 3 dan 25 (S-03). Pada TC-AC-DS-426 langkah 3 menutup popup sebelum jalur buka kedua.
-- Langkah 1, 20 dibuka dari List yang dibuka hook `beforeEach`; tidak ada Search yang dipakai untuk menemukan baris (kedua SKU tampil di halaman pertama List pada urutan bawaan).
+- Langkah penghubung tanpa `Verifikasi`: langkah 3 dan 26 (S-03), serta langkah 20 (Search untuk menemukan baris `SFR-VEL-4P`, R-16). Pada TC-AC-DS-426 langkah 3 menutup popup sebelum jalur buka kedua.
+- Langkah 1 membuka `HHR-ARC-100` dari List yang dibuka hook `beforeEach` tanpa Search (baris tampil di halaman pertama pada urutan bawaan); `SFR-VEL-4P` berada di sekitar baris ke-124 pada urutan bawaan sehingga ditemukan lewat Search (langkah 20) sebelum diklik (langkah 21).
 - Expected 427 butir a.i dipecah menjadi langkah 6 sampai 8; butir b.ii menjadi langkah 10 dan 11; butir b.iii langkah 12 dan 13 (kolom disebut utuh, row action dipisah).
 - TC-AC-DS-428 butir a ditulis langkah 17 dan butir b langkah 19 (anchor: List Device SKU tampil).
 - Temuan untuk QA:
-  - S-14: TC 426 dan 429 tidak menyebut Search untuk menemukan baris `HHR-ARC-100` dan `SFR-VEL-4P`; spec mengandalkan keduanya tampil di halaman pertama List (urutan bawaan). Bila tidak, perlu langkah Search.
+  - S-14: TC 426 tidak menyebut Search untuk menemukan baris `HHR-ARC-100`; spec mengandalkan baris itu tampil di halaman pertama List (urutan bawaan). TC 429 tidak menyebut Search untuk `SFR-VEL-4P` (bukan di halaman 1); spec menambah langkah penghubung Search (langkah 20).
   - Fixture rancangan Pre-setup #32 dan #24 belum terverifikasi ada di environment; fixture `settingsDeviceSku` dan 23 env var `AC_DS_*` (termasuk `AC_DS_TC_PASSWORD`) belum terdaftar di `spectra.config.ts` dan `.env.example` (disediakan tim FE).
   - Walkthrough tooltip Settings > Device dimiliki modul lain; flag-nya belum dinyatakan di `suite.md`.

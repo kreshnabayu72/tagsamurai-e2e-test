@@ -19,12 +19,11 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control Principal PT Arunika Prima, `totalControlSku_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.AC_DS_TC_PASSWORD` (Pre-setup #1). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
-- Data Pre-setup (hanya dibaca, tidak diubah): #29 (SKU Principal inti, termasuk `BLE-KIN-GW1` Brand `Kinetia`, `HHR-ARC-200` Model/Type `H200`, `SFR-VEL-4P`, `SFR-ZERO-01`) dan #30 (`SEED-001` sampai `SEED-119`; total 129 SKU Principal), dipasang idempoten oleh seeding di hook `before`. Pohon Category, Device Name, dan Brand (#25, #26, #27) dibaca untuk form Register. File foto `foto-a.jpg` (#37).
+- Data Pre-setup (hanya dibaca, tidak diubah): #29 (SKU Principal inti, termasuk `BLE-KIN-GW1` Brand `Kinetia`, `HHR-ARC-200` Model/Type `H200`, `SFR-VEL-4P`, `SFR-ZERO-01`) dan #30 (`SEED-001` sampai `SEED-119`; total 129 SKU Principal), dipasang idempoten oleh seeding di hook `before`. Data khusus TC #44: SKU `SCH-334-01` (Device Name `Asset TAG`, Category `Asset TAG`, Brand `Arcturus`, Model/Type `H334`, stok 0, 1 foto) dipakai TC-AC-DS-334 dan ditulis literal sesuai TC (pengecualian S-12 A-11); Edit di langkah 28 mengubah Model/Type-nya menjadi `H335`, dan SKU itu dipulihkan atau dihapus oleh automation baseline (seed atau fixture BE disediakan tim FE/BE) sesuai tabel Pre-setup TC. Pohon Category, Device Name, dan Brand (#25, #26, #27) dibaca untuk form Register. File foto `foto-a.jpg` (#37).
 - Data Dinamis milik spec (S-06, S-12), dibuat dan dihapus oleh spec ini:
-  - SKU hasil Register di langkah 18: `FLT-NEW-01-{runId}-094` (Category `Asset TAG`, Device Name `Asset TAG`, Brand `Arcturus`, Model/Type `T-F1`, foto `foto-a.jpg`). Device Name tidak disebut TC; nilai `Asset TAG` dipilih dari Pre-setup #26 (lihat Temuan untuk QA).
-  - SKU target Edit: `EDT-094-{runId}`, di-seed lewat API di hook `before` (Category `Asset TAG`, Device Name `Asset TAG`, Brand `Arcturus`, Model/Type `H200`, 1 foto).
+  - SKU hasil Register di langkah 18: `FLT-NEW-01-{runId}-094` (Category `Asset TAG`, Device Name `Asset TAG`, Brand `Arcturus`, Model/Type `T-F1`, foto `foto-a.jpg`). Device Name `Asset TAG` disebut eksplisit oleh TC-AC-DS-333 (Pre-setup #26).
 - Preferensi kolom List: langkah 1 dan 5 mengubah visibilitas kolom (tersimpan di cache browser). Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
-- Hook `after` menghapus kedua SKU milik spec lewat API tanpa mengasumsikan seeding atau Register berhasil penuh. Pemulihan jumlah SKU (129) dan Changelog (35 entri) ke keadaan awal dilakukan baseline data uji yang disediakan tim FE/BE (lihat Temuan untuk QA).
+- Hook `after` menghapus SKU hasil Register milik spec lewat API tanpa mengasumsikan Register berhasil penuh. Pemulihan jumlah SKU (129), Model/Type `SCH-334-01` (`H334`), dan entri Changelog buatan spec ke keadaan awal dilakukan baseline data uji yang disediakan tim FE/BE (lihat Temuan untuk QA).
 - Nilai data diacu lewat `Fixture.deviceSku.<kunci>`; berkas fixture disediakan tim FE.
 
 ## Test Steps
@@ -65,21 +64,20 @@ coverage:
 
 ### TC-AC-DS-334: Edit yang membuat baris tidak cocok dengan Search aktif
 
-26. Ketik Search `H200`, tekan Enter
-27. Verifikasi baris `HHR-ARC-200` dan `EDT-094-{runId}` tampil (Model/Type `H200`)
-28. Klik `⋯` baris `EDT-094-{runId}`, pilih `Edit`, ubah Model/Type menjadi `H250`, lalu klik `[Save]`
+26. Ketik Search `H334`, tekan Enter
+27. Verifikasi baris `SCH-334-01` tampil (Model/Type `H334`)
+28. Klik `⋯` baris `SCH-334-01`, pilih `Edit`, ubah Model/Type menjadi `H335`, lalu klik `[Save]`
 29. Verifikasi muncul toast sukses: "Success, device SKU has been updated."
-30. Verifikasi baris `EDT-094-{runId}` hilang dari tampilan karena Model/Type baru tidak cocok dengan kata kunci `H200`
+30. Verifikasi baris `SCH-334-01` hilang dari tampilan karena Model/Type baru `H335` tidak cocok dengan kata kunci `H334`
 31. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Langkah penghubung (S-03, S-09, R-16): langkah 9, 15, dan 22 melepas filter; langkah 23 mencari baris `FLT-NEW-01-{runId}-094` karena tabel memuat lebih dari satu halaman; langkah 25 dan 31 menutup Search; tanpa asersi tambahan.
-- Asersi tambahan (S-03): langkah 20 dan 27 membuktikan baris pembanding tampil pada surface yang sama sebagai anchor positif absence di langkah 21 dan 30; bukan Expected TC.
-- Data Edit TC-AC-DS-334 memakai SKU milik spec (`EDT-094-{runId}`) dan bukan `HHR-ARC-200`, agar data Pre-setup bersama tidak berubah (S-06); asersi tetap atas Model/Type `H200` menjadi `H250`.
+- Asersi tambahan (S-03): langkah 20 membuktikan baris pembanding tampil pada surface yang sama sebagai anchor positif absence di langkah 21; langkah 27 membuktikan baris target tampil sebelum Edit dan toast sukses langkah 29 menjadi anchor absence di langkah 30; bukan Expected TC.
+- Data Edit TC-AC-DS-334 memakai SKU data khusus TC `SCH-334-01` (Pre-setup #44), bukan SKU inti #29, sehingga data Pre-setup bersama tidak berubah; asersi atas Model/Type `H334` menjadi `H335` sesuai TC.
 - Temuan untuk QA:
-  - S-12: asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `BLE-KIN-GW1`, `SFR-VEL-4P`, Brand `Kinetia`). Lampiran A tidak memuat butir modul ini. Spec mengikuti TC dengan seeding idempoten dan suite serial; keputusan pengecualian nama literal dan suffix `{runId}` untuk kode SKU hasil Register masih terbuka (aturan panjang dan format kode SKU tidak diketahui spec).
-  - TC-AC-DS-333 tidak menyebut Device Name SKU yang didaftarkan; spec memakai `Asset TAG` dari Pre-setup #26. TC-AC-DS-334 menyebut `HHR-ARC-200` (data Pre-setup); spec memakai SKU milik spec.
+  - S-12: asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `BLE-KIN-GW1`, `SFR-VEL-4P`, Brand `Kinetia`). Pengecualian S-12 A-11 (`suite.md`) berlaku untuk nama literal Pre-setup; spec mengikuti TC dengan seeding idempoten dan suite serial, dan kode SKU hasil Register diberi suffix `{runId}-094`.
   - TC-AC-DS-325 langkah 7 "buka Filter Panel" tidak menyatakan apakah panel masih terbuka setelah `[Apply]`; spec menutup lalu membuka panel di langkah 6.
-  - Pemulihan Changelog 35 entri dan total 129 SKU setelah Register, Edit, dan hapus oleh spec ini bergantung pada baseline data uji (kemampuan disediakan tim FE/BE, belum tertulis di suite).
+  - Pemulihan entri Changelog buatan spec, total 129 SKU, dan Model/Type `SCH-334-01` setelah Register, Edit, dan hapus oleh spec ini bergantung pada baseline data uji (kemampuan disediakan tim FE/BE, belum tertulis di suite).
   - Env `AC_DS_TC_PASSWORD` dan berkas fixture `Fixture.deviceSku` belum terdaftar di `spectra.config.ts`, `.env.example`, dan `fixtures/`; disediakan tim FE. Walkthrough tooltip Settings > Device dimiliki modul lain; cara menyetel flag-nya belum ditetapkan.

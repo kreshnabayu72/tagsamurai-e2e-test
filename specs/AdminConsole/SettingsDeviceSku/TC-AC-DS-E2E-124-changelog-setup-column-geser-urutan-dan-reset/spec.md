@@ -70,13 +70,16 @@ coverage:
 
 ### Pemulihan state akhir
 
-25. Tutup modal Changelog
+25. Klik header kolom Actions (⋯) pada modal, klik `Setup Column...`
+26. Klik `[Reset to Default]`
+27. Klik `[Save]`
+28. Tutup modal Changelog
 
 ## Notes
 
 - Langkah 17 dan 18 diulang per baris tabel "Pemindahan kolom" (7 iterasi, ekspansi 14 langkah; total ekspansi spec sekitar 35 langkah). Semua langkah satu kelas (Setup Column modal Changelog) dan tiap pemindahan berdiri sendiri.
 - Urutan TC dalam spec: TC-AC-DS-417 lebih dulu karena butuh konfigurasi bawaan dan tidak meninggalkan perubahan; TC-AC-DS-415 menyimpan urutan baru sehingga ditaruh di akhir (S-10, S-09). Hook `after` menghapus preferensi kolom di browser.
-- Langkah penghubung tanpa `Verifikasi`: langkah 7 dan 8 (menyiapkan perubahan sebelum Reset sesuai TC), langkah 22 (menutup dan membuka kembali modal sesuai TC), dan langkah 25 (S-03).
+- Langkah penghubung tanpa `Verifikasi`: langkah 7 dan 8 (menyiapkan perubahan sebelum Reset sesuai TC), langkah 22 (menutup dan membuka kembali modal sesuai TC), dan langkah 25 sampai 28 (S-03, S-09): langkah 25 sampai 27 mengembalikan urutan kolom ke bawaan lewat Reset to Default dan menyimpannya, langkah 28 menutup modal; hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Temuan untuk QA:
   - S-15: TC 415 hanya menyebut "posisi lain" tanpa posisi tujuan; spec memilih posisi tujuan deterministik (tabel di Prerequisites). TC 415 Expected a sampai g menyebut urutan "pada preview dan tabel", sedangkan hanya ada satu `[Save]` di akhir; tabel diasersi setelah Save (langkah 21 dan 24), preview per kolom (langkah 18).
   - TC 417 langkah 8 ("geser Date ke posisi akhir") tidak menyebut Expected pada langkah itu; hanya hasil setelah Reset yang diasersi.

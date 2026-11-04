@@ -28,40 +28,41 @@ coverage:
 
 ### TC-AC-DS-498: Edit Brand, Model/Type, dan Photo tercermin pada Stock List dan Stock Detail
 
-1. Klik ⋯ pada baris `HHR-ARC-200` lalu pilih `Edit`
-2. Ubah Brand menjadi `Veltrix`
-3. Ubah Model/Type menjadi `H-SY2`
-4. Ganti foto dengan `foto-c.jpeg`
-5. Klik `[Save]`
-6. Tunggu aksi selesai (popup Edit tertutup)
-7. Buka Hardware Stock > Stock List tanpa memuat ulang manual, ketik Search `HHR-ARC-200`, tekan Enter
-8. Verifikasi baris `HHR-ARC-200` di Stock List menampilkan Brand `Veltrix`
-9. Verifikasi baris `HHR-ARC-200` di Stock List menampilkan Model/Type `H-SY2`
-10. Klik ⋯ pada baris `HHR-ARC-200` lalu pilih `Detail`
-11. Verifikasi SKU Info Header Stock Detail menampilkan foto default `foto-c.jpeg`
-12. Verifikasi SKU Info Header Stock Detail menampilkan Brand `Veltrix`
-13. Verifikasi SKU Info Header Stock Detail menampilkan Model `H-SY2`
-14. Pulihkan `HHR-ARC-200` ke keadaan awal Pre-setup lewat fixture BE, lalu buka halaman `Settings > Device > Device SKU`
+1. Ketik Search `HHR-ARC-200`, tekan Enter
+2. Klik ⋯ pada baris `HHR-ARC-200` lalu pilih `Edit`
+3. Ubah Brand menjadi `Veltrix`
+4. Ubah Model/Type menjadi `H-SY2`
+5. Ganti foto dengan `foto-c.jpeg`
+6. Klik `[Save]`
+7. Tunggu aksi selesai (popup Edit tertutup)
+8. Buka Hardware Stock > Stock List tanpa memuat ulang manual, ketik Search `HHR-ARC-200`, tekan Enter
+9. Verifikasi baris `HHR-ARC-200` di Stock List menampilkan Brand `Veltrix`
+10. Verifikasi baris `HHR-ARC-200` di Stock List menampilkan Model/Type `H-SY2`
+11. Klik ⋯ pada baris `HHR-ARC-200` lalu pilih `Detail`
+12. Verifikasi SKU Info Header Stock Detail menampilkan foto default `foto-c.jpeg`
+13. Verifikasi SKU Info Header Stock Detail menampilkan Brand `Veltrix`
+14. Verifikasi SKU Info Header Stock Detail menampilkan Model `H-SY2`
+15. Pulihkan `HHR-ARC-200` ke keadaan awal Pre-setup lewat fixture BE, lalu buka halaman `Settings > Device > Device SKU`
 
 ### TC-AC-DS-499: Edit Device Name pada SKU stok 0 tercermin pada Stock List dan opsi filter Device Name
 
-15. Klik ⋯ pada baris `HHR-ARC-200` lalu pilih `Edit`
-16. Ubah Device Name menjadi `UHF Handheld Reader Pro`
-17. Klik `[Save]`
-18. Tunggu aksi selesai (popup Edit tertutup)
-19. Buka Hardware Stock > Stock List, ketik Search `HHR-ARC-200`, tekan Enter
-20. Verifikasi baris `HHR-ARC-200` di Stock List menampilkan Device Name `UHF Handheld Reader Pro`
-21. Klik ikon Filter lalu klik field Device Name
-22. Verifikasi opsi filter Device Name memuat `UHF Handheld Reader Pro`
-23. Pilih `UHF Handheld Reader` lalu klik `[Apply]`
-24. Verifikasi setelah filter `UHF Handheld Reader` diterapkan baris `HHR-ARC-200` tidak tampil
+16. Klik ⋯ pada baris `HHR-ARC-200` lalu pilih `Edit`
+17. Ubah Device Name menjadi `UHF Handheld Reader Pro`
+18. Klik `[Save]`
+19. Tunggu aksi selesai (popup Edit tertutup)
+20. Buka Hardware Stock > Stock List, ketik Search `HHR-ARC-200`, tekan Enter
+21. Verifikasi baris `HHR-ARC-200` di Stock List menampilkan Device Name `UHF Handheld Reader Pro`
+22. Klik ikon Filter lalu klik field Device Name
+23. Verifikasi opsi filter Device Name memuat `UHF Handheld Reader Pro`
+24. Pilih `UHF Handheld Reader` lalu klik `[Apply]`
 25. Verifikasi setelah filter `UHF Handheld Reader` diterapkan baris `HHR-ARC-100` tampil
-26. Pulihkan `HHR-ARC-200` ke keadaan awal Pre-setup lewat fixture BE; kosongkan filter Stock List; buka halaman `Settings > Device > Device SKU`
+26. Verifikasi setelah filter `UHF Handheld Reader` diterapkan baris `HHR-ARC-200` tidak tampil
+27. Pulihkan `HHR-ARC-200` ke keadaan awal Pre-setup lewat fixture BE; kosongkan filter Stock List; buka halaman `Settings > Device > Device SKU`
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: langkah 14 dan 26 (pemulihan data dan pembersihan filter agar blok berikutnya tidak bergantung pada state sebelumnya, S-09), langkah Search `HHR-ARC-200` di Stock List (menemukan baris target, R-16), dan langkah menunggu aksi selesai sebelum berpindah surface (8b butir 8).
-- Expected 498 butir a dipecah per kolom (Brand, Model/Type) dan butir b per elemen header (foto default, Brand, Model). Expected 499 butir c dipecah menjadi absence `HHR-ARC-200` dan presence `HHR-ARC-100`; anchor absence: baris `HHR-ARC-100` pada hasil filter yang sama.
+- Langkah penghubung tanpa `Verifikasi`: langkah 15 dan 27 (pemulihan data dan pembersihan filter agar blok berikutnya tidak bergantung pada state sebelumnya, S-09), langkah 1 (Search `HHR-ARC-200` di List Device SKU sebelum Edit TC-AC-DS-498) dan langkah Search `HHR-ARC-200` di Stock List (menemukan baris target, R-16), dan langkah menunggu aksi selesai sebelum berpindah surface (8b butir 8).
+- Expected 498 butir a dipecah per kolom (Brand, Model/Type) dan butir b per elemen header (foto default, Brand, Model). Expected 499 butir c dipecah menjadi presence `HHR-ARC-100` (langkah 25, anchor positif) lalu absence `HHR-ARC-200` (langkah 26) pada hasil filter yang sama.
 - Temuan untuk QA:
   - TC 499 langkah 6 sampai 8 membuka Filter Panel Stock List Hardware Stock, bukan List Device SKU; spec mengikuti TC.
   - S-12/S-06: TC memakai nama literal Pre-setup (mis. `HHR-ARC-200`) dan kode SKU Data Dinamis literal sebagai target aksi tulis; konvensi meminta data bersuffix dan data milik spec. Lampiran A tidak memuat butir modul ini; spec mengikuti TC dengan pembersihan kode literal di hook `before` (R-13) dan membutuhkan keputusan pengecualian (seeding idempotent, suite serial).

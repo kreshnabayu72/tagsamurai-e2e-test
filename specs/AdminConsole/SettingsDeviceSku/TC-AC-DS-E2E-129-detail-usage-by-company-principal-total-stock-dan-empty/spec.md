@@ -51,52 +51,54 @@ coverage:
 
 ### TC-AC-DS-431, TC-AC-DS-435: Usage `SFR-VEL-4P`
 
-12. Klik SKU `SFR-VEL-4P`
-13. Verifikasi Popup `Device SKU Detail` tampil
-14. Verifikasi baris `PT Arunika Prima` dengan Entity Type `Principal` menampilkan Total Stock `20` (unit tercatat Principal untuk `SFR-VEL-4P`)
-15. Verifikasi Total Stock `20` bukan kuota alokasi
-16. Verifikasi baris dan Total Stock tidak berubah walau Category `Portal Reader` memiliki kuota alokasi untuk `PT Cakra Distribusi` di Device Allocation: `PT Arunika Prima` 20 dan `PT Cakra Distribusi` 16
+12. Ketik Search `SFR-VEL-4P`, tekan Enter
+13. Klik SKU `SFR-VEL-4P`
+14. Verifikasi Popup `Device SKU Detail` tampil
+15. Verifikasi baris `PT Arunika Prima` dengan Entity Type `Principal` menampilkan Total Stock `20` (unit tercatat Principal untuk `SFR-VEL-4P`)
+16. Verifikasi Total Stock `20` bukan kuota alokasi
+17. Verifikasi baris dan Total Stock tidak berubah walau Category `Portal Reader` memiliki kuota alokasi untuk `PT Cakra Distribusi` di Device Allocation: `PT Arunika Prima` 20 dan `PT Cakra Distribusi` 16
 
 ### Pemulihan state antar TC
 
-17. Tutup popup dengan ikon close `[✕]`
+18. Tutup popup dengan ikon close `[✕]`
+19. Klik `(←)` pada kotak Search
 
 ### TC-AC-DS-438: Empty state Usage by Company
 
-18. Klik SKU `HHR-ARC-200`
-19. Verifikasi area tabel menampilkan ilustrasi dengan judul "No usage data yet" dan deskripsi "Company usage details will appear here."
-20. Verifikasi toolbar popup tetap tampil
+20. Klik SKU `HHR-ARC-200`
+21. Verifikasi area tabel menampilkan ilustrasi dengan judul "No usage data yet" dan deskripsi "Company usage details will appear here."
+22. Verifikasi toolbar popup tetap tampil
 
 ### Pemulihan state antar TC
 
-21. Tutup popup dengan ikon close `[✕]`
+23. Tutup popup dengan ikon close `[✕]`
 
 ### TC-AC-DS-441: Popup Detail tanpa kolom tanggal
 
-22. Klik SKU `HHR-ARC-100`
-23. Verifikasi Popup `Device SKU Detail` tampil
-24. Verifikasi Info Grid dan tabel Usage tidak memuat kolom atau label bertanggal sehingga format General Settings tidak relevan pada surface ini
+24. Klik SKU `HHR-ARC-100`
+25. Verifikasi Popup `Device SKU Detail` tampil
+26. Verifikasi Info Grid dan tabel Usage tidak memuat kolom atau label bertanggal sehingga format General Settings tidak relevan pada surface ini
 
 ### Pemulihan state antar TC
 
-25. Tutup popup dengan ikon close `[✕]`
+27. Tutup popup dengan ikon close `[✕]`
 
 ### TC-AC-DS-442: Total Stock Usage mengikuti perubahan stok setelah popup dibuka kembali
 
-26. Tambahkan 2 unit `HHR-ARC-100` untuk `PT Cakra Distribusi` lewat Add Stock hingga perubahan stok tersimpan
-27. Klik SKU `HHR-ARC-100`
-28. Verifikasi baris `PT Cakra Distribusi` menampilkan Total Stock `27`
-29. Tutup popup dengan ikon close `[✕]`
-30. Verifikasi Current Stock `HHR-ARC-100` pada List `122`
+28. Tambahkan 2 unit `HHR-ARC-100` untuk `PT Cakra Distribusi` lewat Add Stock hingga perubahan stok tersimpan
+29. Klik SKU `HHR-ARC-100`
+30. Verifikasi baris `PT Cakra Distribusi` menampilkan Total Stock `27`
+31. Tutup popup dengan ikon close `[✕]`
+32. Verifikasi Current Stock `HHR-ARC-100` pada List `122`
 
 ## Notes
 
 - Pengelompokan: TC-AC-DS-430, 432, 433, 434 memakai popup `HHR-ARC-100` yang dibuka sekali (langkah 1) karena membaca tabel Usage yang sama; TC-AC-DS-431 dan 435 memakai popup `SFR-VEL-4P`. Urutan TC-AC-DS-442 di akhir karena menulis data stok (S-10).
-- Langkah penghubung tanpa `Verifikasi`: langkah 11, 17, 21, 25, dan 29 (menutup popup, S-03); langkah 26 adalah pemicu aksi tulis TC-AC-DS-442 dengan "hingga ... tersimpan" (R-20).
-- Langkah 1, 12, 18, 22, 27 membuka baris dari List yang dibuka hook `beforeEach` tanpa Search.
+- Langkah penghubung tanpa `Verifikasi`: langkah 11, 18, 23, 27, dan 31 (menutup popup, S-03), langkah 12 (Search untuk menemukan baris `SFR-VEL-4P`, R-16), dan langkah 19 (menutup Search agar baris `HHR-ARC-200` tampil kembali); langkah 28 adalah pemicu aksi tulis TC-AC-DS-442 dengan "hingga ... tersimpan" (R-20).
+- Langkah 1, 20, 24, 29 membuka baris dari List yang dibuka hook `beforeEach` tanpa Search (baris tampil di halaman pertama pada urutan bawaan); `SFR-VEL-4P` berada di sekitar baris ke-124 sehingga ditemukan lewat Search (langkah 12) sebelum diklik (langkah 13).
 - Temuan untuk QA:
-  - S-14: TC tidak menyebut Search untuk menemukan baris `HHR-ARC-100`, `HHR-ARC-200`, dan `SFR-VEL-4P`; spec mengandalkan ketiganya tampil di halaman pertama List.
-  - S-15: TC 442 menyebut Add Stock tanpa menyebut modul/jalur UI; List Current Stock `122` pada langkah 30 mungkin membutuhkan muat ulang; TC tidak menyatakannya. Pemulihan stok disebut hanya sebagai kegiatan automation baseline.
+  - S-14: TC tidak menyebut Search untuk menemukan baris `HHR-ARC-100` dan `HHR-ARC-200`; spec mengandalkan keduanya tampil di halaman pertama List. TC 431 dan 435 juga tidak menyebut Search untuk `SFR-VEL-4P` (bukan di halaman 1); spec menambah langkah penghubung Search.
+  - S-15: TC 442 menyebut Add Stock tanpa menyebut modul/jalur UI; List Current Stock `122` pada langkah 32 mungkin membutuhkan muat ulang; TC tidak menyatakannya. Pemulihan stok disebut hanya sebagai kegiatan automation baseline.
   - S-15: Expected TC 433 butir b ("7 unit BYO tidak ikut dihitung") tidak punya langkah observasi selain nilai Total Stock; langkah 10 mengasersi `15` bukan `22`.
   - Fixture rancangan Pre-setup #32, #24, #40 belum terverifikasi ada di environment; fixture `settingsDeviceSku` dan 23 env var `AC_DS_*` (termasuk `AC_DS_TC_PASSWORD`) belum terdaftar di `spectra.config.ts` dan `.env.example` (disediakan tim FE).
   - Walkthrough tooltip Settings > Device dimiliki modul lain; flag-nya belum dinyatakan di `suite.md`.

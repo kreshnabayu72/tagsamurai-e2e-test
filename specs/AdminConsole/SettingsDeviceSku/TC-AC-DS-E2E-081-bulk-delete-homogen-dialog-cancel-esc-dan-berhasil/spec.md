@@ -85,13 +85,15 @@ coverage:
 35. Klik `[Delete]` dua kali dengan cepat
 36. Verifikasi tombol `[Delete]` disabled setelah klik pertama
 37. Verifikasi hanya satu toast sukses "Success, device SKU has been deleted." yang tampil
+38. Ubah jumlah data per halaman menjadi 10
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-device-sku/TestCases/tc-settings-device-sku.md`; subjudul `###` memetakan langkah ke id TC granular.
-- Alasan di atas sekitar 35 langkah (bagian 3, prinsip 13): semua blok memakai satu kelas harness (dialog Bulk Delete pada data seed yang sama), berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; kelebihannya berasal dari pemecahan Expected per klausa (S-01) dan pembersihan seleksi antar blok (S-09). Langkah: 37.
+- Alasan di atas sekitar 35 langkah (bagian 3, prinsip 13): semua blok memakai satu kelas harness (dialog Bulk Delete pada data seed yang sama), berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; kelebihannya berasal dari pemecahan Expected per klausa (S-01) dan pembersihan seleksi antar blok (S-09). Langkah: 38.
 - Langkah penghubung: Search `SEED` pada langkah 1 dan 25 baris per halaman membuat `SEED-001` sampai `SEED-025` tampil bersama di halaman 1; ikon `(✕)` pada bar, menghilangkan centang `SEED-003`, dan memilih kembali `SEED-003` mengatur seleksi antar blok (S-09).
 - Penyimpangan urutan: TC-297 (aksi menghapus data) dijalankan paling akhir bersama TC-284 (S-10).
+- Langkah penghubung akhir: langkah 38 memulihkan jumlah data per halaman ke 10 setelah diubah menjadi 25 (S-09).
 - Temuan untuk QA: TC-281 mengharapkan 25 bullet `SEED-001` sampai `SEED-025`; urutan bullet mengikuti default sort SKU A-Z. Post Condition TC-284 dan TC-297 (SKU terhapus permanen; entri Delete per SKU tiap surface log) tidak diasersi karena TC tidak memberi langkah observasinya.
 - Temuan untuk QA (S-12): Lampiran A tidak punya butir untuk modul ini, padahal asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `HHR-ARC-200`, `SEED-001`, total 129 SKU). Spec memakai nama literal itu sesuai TC; syarat seeding idempotent, cleanup oleh spec, dan suite serial dipenuhi lewat Pemulihan di Prerequisites. Pengecualian S-12 dan S-06 untuk modul ini belum diputuskan; suite.md belum menyatakan fixture pemulihan Pre-setup.
 - Temuan untuk QA (fixture): `fixtures/settings-device-sku.json`, akun Pre-setup #1 dan #2, dan env `AC_DS_*` belum terverifikasi ada di environment; ketersediaannya dipastikan tim FE.

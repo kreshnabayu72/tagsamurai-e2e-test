@@ -20,7 +20,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control Principal PT Arunika Prima, `totalControlSku_automated_{namaCompany}@qwertysystem.net` (nama tampil `Jane Setiawan`, Modified By `Jane S`), `Spectra.env.AC_DS_TC_PASSWORD` (Pre-setup #1). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
-- Data Pre-setup (hanya dibaca, tidak diubah): #29 (SKU Principal inti, termasuk `SFR-VEL-4P`) dan #30 (`SEED-001` sampai `SEED-119`; total 129 SKU Principal), dipasang idempoten oleh seeding di hook `before`. Riwayat Changelog Principal (#33): 35 entri, 4 halaman pada 10 baris per halaman, termasuk Edit `SFR-VEL-4P` Field `Photo — Set as default` (`Photo 1` menjadi `Photo 2`) oleh `Budi K` (nama tampil `Budi Kurniawan`, Pre-setup #2) dan Delete `UHF Handheld Reader (HHR-ARC-300)` pada 03/10/26 14:20 sebagai entri pertama. Riwayat Changelog Distributor PT Cakra Distribusi (#34): 3 entri Create `LOC-NOR-01`, `LOC-NOR-02`, `LOC-NOR-03` oleh `Dewi L` (disiapkan lewat seed). Keadaan awal 35 entri dipulihkan baseline data uji yang disediakan tim FE/BE (lihat Temuan untuk QA).
+- Data Pre-setup (hanya dibaca, tidak diubah): #29 (SKU Principal inti, termasuk `SFR-VEL-4P`) dan #30 (`SEED-001` sampai `SEED-119`; total 129 SKU Principal), dipasang idempoten oleh seeding di hook `before`. Riwayat Changelog Principal (#33): seed 35 entri bertanggal 01/09/26 sampai 03/10/26 (total pada modal dapat lebih besar karena entri yang ditulis spec lain; spec ini tidak memakai jumlah absolut), termasuk Edit `SFR-VEL-4P` Field `Photo — Set as default` (`Photo 1` menjadi `Photo 2`) oleh `Budi K` (nama tampil `Budi Kurniawan`, Pre-setup #2) dan Delete `UHF Handheld Reader (HHR-ARC-300)` pada 03/10/26 14:20. Riwayat Changelog Distributor PT Cakra Distribusi (#34): 3 entri Create `LOC-NOR-01`, `LOC-NOR-02`, `LOC-NOR-03` oleh `Dewi L` (disiapkan lewat seed). Entri buatan spec lain dipulihkan baseline data uji yang disediakan tim FE/BE (lihat Temuan untuk QA).
 - Konfigurasi General Settings (Pre-setup #35): Date Format `dd/MM/yy`, Time Format 24 jam, Time Zone Asia/Jakarta; hanya dibaca, tidak diubah.
 - Nilai data diacu lewat `Fixture.deviceSku.<kunci>`; berkas fixture disediakan tim FE.
 - Tidak ada state global yang diubah dan tidak ada entitas yang dibuat.
@@ -55,19 +55,21 @@ coverage:
 15. Ganti isi kotak search modal dengan `LOC-NOR`, tekan Enter
 16. Verifikasi kata kunci `LOC-NOR` tidak menemukan entri: tampil "No results found"
 17. Klik `(←)` pada kotak Search modal
-18. Verifikasi modal hanya memuat entri SKU Principal: 4 halaman pada 10 baris per halaman (35 entri) tanpa entri SKU Distributor
+18. Verifikasi tabel modal kembali memuat entri SKU Principal
+19. Verifikasi entri SKU Distributor (Create `LOC-NOR-01`, `LOC-NOR-02`, `LOC-NOR-03` oleh `Dewi L`) tidak ikut dalam modal
 
 ### TC-AC-DS-390: Snapshot SKU yang sudah dihapus
 
-19. Verifikasi entri Delete tetap tampil dengan SKU `UHF Handheld Reader (HHR-ARC-300)` walau SKU sudah tidak ada di List
-20. Klik ikon close `[✕]`
+20. Ketik Search pada modal `HHR-ARC-300`, tekan Enter
+21. Verifikasi entri Delete tetap tampil dengan SKU `UHF Handheld Reader (HHR-ARC-300)` walau SKU sudah tidak ada di List
+22. Klik ikon close `[✕]`
 
 ## Notes
 
-- Langkah penghubung (S-03, R-16): langkah 5 mencari baris Edit `SFR-VEL-4P` yang tidak berada di 10 entri pertama; langkah 17 mengosongkan Search agar tabel kembali ke 35 entri; langkah 20 menutup modal; tanpa asersi tambahan.
-- Asersi absence langkah 16 memakai empty state "No results found" sebagai anchor; langkah 12 didahului langkah 11 yang membuktikan baris itu tampil.
+- Langkah penghubung (S-03, R-16): langkah 5 mencari baris Edit `SFR-VEL-4P` yang tidak berada di 10 entri pertama; langkah 17 mengosongkan Search agar tabel kembali memuat seluruh entri; langkah 20 mencari entri Delete `HHR-ARC-300` (TC-AC-DS-390 "Cari entri Delete"); langkah 22 menutup modal; tanpa asersi tambahan.
+- Asersi absence langkah 16 memakai empty state "No results found" sebagai anchor; langkah 12 didahului langkah 11 yang membuktikan baris itu tampil; langkah 18 (tabel kembali memuat entri SKU Principal, asersi tambahan S-03) menjadi anchor positif absence langkah 19.
 - Temuan untuk QA:
-  - S-12: Pre-setup #33 menetapkan total 35 entri (4 halaman) sebagai angka absolut; konvensi menyatakan total audit trail tidak boleh absolut karena tiap spec menambah entri. Spec mengikuti TC dan menggantungkan keadaan awal pada baseline data uji; keputusan pengecualian masih terbuka. Asersi juga bergantung pada nama literal Pre-setup #29 dan #30; Lampiran A tidak memuat butir modul ini.
+  - S-12: asersi bergantung pada nama literal Pre-setup #29, #30, dan #33 (pengecualian S-12 A-11, `suite.md`); TC-AC-DS-388 tidak menyebut jumlah entri, sehingga spec tidak mengasersi jumlah halaman.
   - Fixture rancangan belum diverifikasi ada di environment: riwayat Changelog Distributor (#34) dan nama tampil `Jane Setiawan` dan `Budi Kurniawan`.
   - TC-AC-DS-390 menyebut "walau SKU sudah tidak ada di List" tanpa langkah observasi atas List; spec hanya mengasersi entri Delete di modal (HHR-ARC-300 tidak ada pada Pre-setup #29).
   - TC-AC-DS-384 Expected b ("tidak ada nilai mentah seperti nama slot teknis") tidak menyebut nilai mentah yang dimaksud; spec mengasersi bahwa Old Value dan New Value hanya `Photo 1` dan `Photo 2`.

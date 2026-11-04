@@ -23,7 +23,7 @@ coverage:
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
 - Data Pre-setup (hanya dibaca kecuali disebut lain): pohon Category (#25), Device Name (#26), Brand Principal (#27), SKU inti dan seed (#29, #30), file foto (#37). Konfigurasi General Settings (#35).
 - Data Dinamis: SKU `XSS-01` (Data Dinamis #33) dibuat TC 530; hook `before` menghapus sisa kode itu bila ada dan hook `after` menghapusnya. Payload TC 526 (SKU `ABC_123 #1`) tidak boleh tersimpan.
-- Kemampuan teknis (disediakan tim FE/BE): klien HTTP untuk request langsung ke server dengan token akun #1 (sesi API aktor); ID record SKU dibaca lewat fixture BE. Sesi API aktor (login API password, tidak dihitung sesi web) disediakan tim BE/FE sesuai `suite.md`.
+- Kemampuan teknis (disediakan tim FE/BE): pembacaan jumlah entri Changelog Principal lewat BE sebelum dan sesudah Register TC 530 (audit trail permanen; S-12); klien HTTP untuk request langsung ke server dengan token akun #1 (sesi API aktor); ID record SKU dibaca lewat fixture BE. Sesi API aktor (login API password, tidak dihitung sesi web) disediakan tim BE/FE sesuai `suite.md`.
 - State global: tidak ada yang diubah. Suite berjalan serial (`parallel: false`).
 - Nilai data dibaca dari fixture `settingsDeviceSku` (berkas fixture belum ada; disediakan tim FE).
 
@@ -64,27 +64,30 @@ coverage:
 
 ### TC-AC-DS-530: Payload script pada Model/Type dirender sebagai teks pada List, Popup Detail, dan Changelog
 
-22. Klik tombol `[+ SKU]` pada toolbar
-23. Klik field Category; expand `TAG` lalu `NFC`, pilih node `Asset TAG`, lalu klik `[Select]`
-24. Klik field Device Name lalu pilih `Asset TAG`
-25. Klik field Brand lalu pilih `Arcturus`
-26. Ketik `<script>alert(1)</script>` pada field Model/Type
-27. Ketik `XSS-01` pada field SKU
-28. Unggah `foto-a.jpg` pada field Photo
-29. Klik `[Submit]`
-30. Ketik Search `XSS-01`, tekan Enter
-31. Verifikasi badge Model/Type pada baris `XSS-01` menampilkan teks `<script>alert(1)</script>` apa adanya dan tidak ada script yang dijalankan
-32. Klik SKU `XSS-01`
-33. Verifikasi Info Grid Popup Detail menampilkan teks `<script>alert(1)</script>` sebagai teks biasa
-34. Tutup popup lalu buka modal Changelog dan cari entri `XSS-01`
-35. Verifikasi Changelog menampilkan teks `<script>alert(1)</script>` apa adanya pada kolom yang memuat Model/Type
+22. Catat baseline jumlah entri Changelog Principal lewat kemampuan baca BE
+23. Klik tombol `[+ SKU]` pada toolbar
+24. Klik field Category; expand `TAG` lalu `NFC`, pilih node `Asset TAG`, lalu klik `[Select]`
+25. Klik field Device Name lalu pilih `Asset TAG`
+26. Klik field Brand lalu pilih `Arcturus`
+27. Ketik `<script>alert(1)</script>` pada field Model/Type
+28. Ketik `XSS-01` pada field SKU
+29. Unggah `foto-a.jpg` pada field Photo
+30. Klik `[Submit]`
+31. Ketik Search `XSS-01`, tekan Enter
+32. Verifikasi badge Model/Type pada baris `XSS-01` menampilkan teks `<script>alert(1)</script>` apa adanya dan tidak ada script yang dijalankan
+33. Klik SKU `XSS-01`
+34. Verifikasi Info Grid Popup Detail menampilkan teks `<script>alert(1)</script>` sebagai teks biasa
+35. Tutup popup lalu buka modal Changelog dan cari entri `XSS-01`
+36. Verifikasi jumlah entri Changelog Principal bertambah tepat 1 dari baseline langkah 22 (entri Create `XSS-01`)
+37. Verifikasi Changelog menampilkan teks `<script>alert(1)</script>` apa adanya pada kolom yang memuat Model/Type
 
 ## Notes
 
 - `K-1`: TC 526 dan 589 (kelas a, Expected respons API) tetap masuk spec FE+BE; langkah request langsung hanya mengasersi status respons, pesan error, dan state data (8b butir 1). TC 309, 530, dan 531 mengasersi perilaku FE atas payload di browser.
-- Langkah penghubung tanpa `Verifikasi`: pengosongan Search (R-16), Search `HHR-ARC-200` di langkah 18 (menemukan baris target), submit Register tanpa asersi (TC 530 tidak mengasersi toast), dan pembukaan Changelog dengan pencarian entri `XSS-01`.
+- Langkah penghubung tanpa `Verifikasi`: langkah 22 (baseline jumlah entri Changelog sebelum Register, S-12), pengosongan Search (R-16), Search `HHR-ARC-200` di langkah 18 (menemukan baris target), submit Register tanpa asersi (TC 530 tidak mengasersi toast), dan pembukaan Changelog dengan pencarian entri `XSS-01`.
 - Spec berada di atas sekitar 35 langkah (35 langkah); alasan: semua blok satu kelas harness (a) dan berdiri sendiri, kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
+  - TC 530 Expected butir c meminta Changelog menampilkan teks payload pada kolom yang memuat Model/Type, sedangkan PRD hanya mencatat Field `SKU` pada entri Create; spec tetap mengikuti TC (langkah 37) dan butir ini menunggu keputusan QA. Entri baru dibaca lewat selisih +1 dari baseline (langkah 22 dan 36).
   - TC 530 mengasersi Changelog tanpa langkah pencarian rinci ("cari entri XSS-01") dan TC 309 serta 531 menyebut hasil "No results found" tanpa kata kunci bantu; spec mengikuti TC. TC 531 Expected "129 SKU Principal tampil normal" memakai jumlah Pre-setup tetap, bukan total audit trail.
   - S-12/S-06: TC memakai nama literal Pre-setup (mis. `HHR-ARC-200`) dan kode SKU Data Dinamis literal sebagai target aksi tulis; konvensi meminta data bersuffix dan data milik spec. Lampiran A tidak memuat butir modul ini; spec mengikuti TC dengan pembersihan kode literal di hook `before` (R-13) dan membutuhkan keputusan pengecualian (seeding idempotent, suite serial).
   - S-11/S-13: fixture `settingsDeviceSku`, 23 env var `AC_DS_*` (termasuk yang dipakai spec ini), dan fixture rancangan Pre-setup yang dirujuk belum terverifikasi ada di environment atau belum terdaftar di `spectra.config.ts` dan `.env.example` (disediakan tim FE).

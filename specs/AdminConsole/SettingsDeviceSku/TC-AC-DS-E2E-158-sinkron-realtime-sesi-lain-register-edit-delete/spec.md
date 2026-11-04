@@ -57,6 +57,7 @@ coverage:
 - Pelaku kedua memakai sesi API karena hanya memicu perubahan state; hasil diasersi di sesi pertama (keputusan 2026-10-21 dan 2026-10-30), sehingga tidak ada butir `P-2`. Langkah pemicu ditulis "... hingga ... tersimpan" (R-20).
 - Langkah penghubung tanpa `Verifikasi`: Search untuk menemukan baris target (R-16) dan langkah 14 (pemulihan data dan penutupan Search, S-09).
 - Temuan untuk QA:
+  - TC 509 Expected tidak dapat diobservasi seperti ditulis: `SSE-NEW-01` berada di sekitar halaman 13 dari 129 SKU (urutan bawaan SKU A-Z, 10 baris per halaman), sedangkan TC tidak menyebut Search atau halaman; langkah 3 dan 4 mengikuti TC apa adanya dan perlu perbaikan TC (menyusul di TC).
   - TC 509 Expected menyebut "tanpa mengubah posisi halaman, Search, atau Filter yang aktif" tetapi langkah TC tidak menyetel halaman, Search, atau Filter aktif; spec memakai keadaan default (halaman 1, tanpa Search dan Filter) sehingga asersi "tidak berubah" lemah.
   - TC 509 sampai 511 diberi Automation Manual Only (d) di TC (dua sesi paralel); spec menjalankannya sebagai FE+BE dengan pelaku kedua lewat sesi API.
   - Absence 511 memakai Verifikasi baris tampil sebelum pemicu sebagai anchor.

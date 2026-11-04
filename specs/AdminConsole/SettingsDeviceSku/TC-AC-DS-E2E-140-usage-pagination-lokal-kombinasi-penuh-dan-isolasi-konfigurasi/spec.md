@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control Principal PT Arunika Prima (Jane Setiawan, Modified By `Jane S`) `totalControlSku_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.AC_DS_TC_PASSWORD` (Pre-setup #1). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
 - Data Pre-setup (hanya dibaca, tidak diubah): SKU inti `TAG-ARC-USR` dan `HHR-ARC-100` serta seed (#29, #30); data Usage `TAG-ARC-USR` 13 baris (`PT Arunika Prima` Principal dan 12 Client `PT Klien Uji 01` sampai `PT Klien Uji 12`) dan Usage `HHR-ARC-100` (#32, #24). Nilai dibaca dari `Fixture.settingsDeviceSku` (berkas fixture belum ada; disediakan tim FE).
-- Data Dinamis: tidak ada. Spec menyembunyikan kolom `Total Stock` Usage lewat overlay (langkah 26); preferensi kolom dihapus di hook `after`.
+- Data Dinamis: tidak ada. Spec menyembunyikan kolom `Total Stock` Usage lewat overlay (langkah 26) dan menampilkannya kembali (langkah 28); preferensi kolom dihapus di hook `after` sebagai cadangan.
 - Kemampuan teknis (disediakan tim FE): menghapus preferensi kolom Usage, List, dan Changelog di browser (hook `before` agar ketiganya pada konfigurasi bawaan, dan hook `after`), bukan lewat [Reset to Default].
 - State global: tidak ada yang diubah. Suite berjalan serial (`parallel: false`).
 - Walkthrough tooltip Settings > Device dimiliki modul lain; cara menyetel flag agar tidak menutupi layar disediakan tim FE (lihat Temuan untuk QA).
@@ -67,28 +67,29 @@ coverage:
 25. Verifikasi Overlay Column Visibility popup tampil
 26. Hilangkan centang `Total Stock` pada overlay popup
 27. Verifikasi kolom `Total Stock` hilang dari tabel Usage
-28. Tekan Esc
-29. Verifikasi Overlay Column Visibility tertutup
-30. Verifikasi Popup `Device SKU Detail` tetap tampil
-31. Tekan Esc lagi
-32. Verifikasi Popup `Device SKU Detail` tertutup
-33. Klik header kolom Actions (⋯) pada List
-34. Verifikasi Overlay Column Visibility List memuat `Photo`, `Device Name`, `SKU`, `Category`, `Brand`, `Model/Type`, `Current Stock`, dan `Last Modified` tercentang
-35. Verifikasi Overlay Column Visibility List memuat `Hardware Type`, `Range Type`, dan `TAG Type` tidak tercentang
-36. Tutup overlay List, lalu klik ikon Changelog
-37. Klik header kolom Actions (⋯) pada modal
-38. Verifikasi Overlay Column Visibility modal Changelog memuat ketujuh kolom `Date`, `Action`, `SKU`, `Field`, `Old Value`, `New Value`, dan `Modified By` tercentang
+28. Centang `Total Stock` kembali pada overlay popup
+29. Tekan Esc
+30. Verifikasi Overlay Column Visibility tertutup
+31. Verifikasi Popup `Device SKU Detail` tetap tampil
+32. Tekan Esc lagi
+33. Verifikasi Popup `Device SKU Detail` tertutup
+34. Klik header kolom Actions (⋯) pada List
+35. Verifikasi Overlay Column Visibility List memuat `Photo`, `Device Name`, `SKU`, `Category`, `Brand`, `Model/Type`, `Current Stock`, dan `Last Modified` tercentang
+36. Verifikasi Overlay Column Visibility List memuat `Hardware Type`, `Range Type`, dan `TAG Type` tidak tercentang
+37. Tutup overlay List, lalu klik ikon Changelog
+38. Klik header kolom Actions (⋯) pada modal
+39. Verifikasi Overlay Column Visibility modal Changelog memuat ketujuh kolom `Date`, `Action`, `SKU`, `Field`, `Old Value`, `New Value`, dan `Modified By` tercentang
 
 ### Pemulihan state akhir
 
-39. Tutup overlay modal, lalu tutup modal Changelog
-40. Klik `(←)` pada kotak Search List
+40. Tutup overlay modal, lalu tutup modal Changelog
+41. Klik `(←)` pada kotak Search List
 
 ## Notes
 
-- Spec berisi 40 langkah nominal, sedikit di atas sekitar 35 langkah, karena tiga blok TC berdiri sendiri pada permukaan Usage yang sama (pagination, kombinasi kontrol, isolasi konfigurasi); kegagalan satu blok tidak membuat blok lain kehilangan makna. Langkah 20 dan 39 hanya pemulihan (langkah 40 mengosongkan Search List).
+- Spec berisi 41 langkah nominal, sedikit di atas sekitar 35 langkah, karena tiga blok TC berdiri sendiri pada permukaan Usage yang sama (pagination, kombinasi kontrol, isolasi konfigurasi); kegagalan satu blok tidak membuat blok lain kehilangan makna. Langkah 20, 28, dan 40 hanya pemulihan (langkah 41 mengosongkan Search List).
 - Urutan TC dalam spec: 462, 586, 585 (bukan urutan nomor); TC-AC-DS-585 terakhir karena menyembunyikan kolom Usage, sedangkan dua TC lain membutuhkan kolom bawaan (S-10).
-- Langkah penghubung tanpa `Verifikasi`: langkah 1 dan 21 (Search List untuk menemukan baris `TAG-ARC-USR` dan `HHR-ARC-100`, R-16), langkah 9, 20, 36, 39, dan 40 (S-03, S-09).
+- Langkah penghubung tanpa `Verifikasi`: langkah 1 dan 21 (Search List untuk menemukan baris `TAG-ARC-USR` dan `HHR-ARC-100`, R-16), langkah 9, 20, 28, 37, 40, dan 41 (S-03, S-09); langkah 28 menampilkan kembali kolom `Total Stock` Usage yang disembunyikan pada langkah 26.
 - Expected 585 butir c ("cache tersimpan terpisah") adalah kesimpulan dari butir a dan b dan tidak teramati terpisah; tidak diberi `Verifikasi` sendiri (S-03).
 - Expected 586 butir c dicatat satu `Verifikasi` (langkah 19, daftar keempat kontrol disebut utuh).
 - Temuan untuk QA:

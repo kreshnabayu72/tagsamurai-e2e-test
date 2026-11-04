@@ -63,11 +63,13 @@ coverage:
 21. Verifikasi `SEED-010` tetap ada karena berstok
 22. Verifikasi bar bulk hilang
 23. Verifikasi seleksi direset ke 0
+24. Ubah jumlah data per halaman menjadi 10
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-device-sku/TestCases/tc-settings-device-sku.md`; subjudul `###` memetakan langkah ke id TC granular.
 - Pelaku kedua memakai sesi API (bukan konteks kedua kelas c), sehingga tanpa butir `P-2`. Langkah pemicu ditulis "... hingga ... tersimpan" (R-20). Search pada langkah 1 dan Search `SEED` menemukan baris target di luar halaman 1 (default sort SKU A-Z, Pre-setup #29 dan #30); seleksi `HHR-ARC-100` dipertahankan saat Search diganti (TC-280).
+- Langkah penghubung tanpa `Verifikasi` (S-03, S-09): langkah 24 mengembalikan jumlah data per halaman ke 10 setelah diubah pada langkah 14.
 - Temuan untuk QA: TC-293 dan TC-294 diberi Automation Manual Only (dua sesi paralel) di TC; pemicu dijalankan lewat fixture BE dan sesi API di spec ini. TC-293 tidak menyebut Selection Limit untuk seleksi lintas Search. Post Condition TC-293 dan TC-294 kosong.
 - Temuan untuk QA (S-12): Lampiran A tidak punya butir untuk modul ini, padahal asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `HHR-ARC-200`, `SEED-001`, total 129 SKU). Spec memakai nama literal itu sesuai TC; syarat seeding idempotent, cleanup oleh spec, dan suite serial dipenuhi lewat Pemulihan di Prerequisites. Pengecualian S-12 dan S-06 untuk modul ini belum diputuskan; suite.md belum menyatakan fixture pemulihan Pre-setup.
 - Temuan untuk QA (fixture): `fixtures/settings-device-sku.json`, akun Pre-setup #1 dan #2, dan env `AC_DS_*` belum terverifikasi ada di environment; ketersediaannya dipastikan tim FE.

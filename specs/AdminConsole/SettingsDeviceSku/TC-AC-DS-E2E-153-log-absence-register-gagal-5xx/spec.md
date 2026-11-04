@@ -62,7 +62,7 @@ coverage:
 
 - `P-5`: spec absence (kelas g); pemicu kegagalan 5xx (kelas b) hanya membentuk kondisi yang diasersi tidak tercatat dan bukan objek uji.
 - Langkah penghubung tanpa `Verifikasi`: langkah 1 sampai 7 (baseline tiga surface log dan membuka kembali halaman, S-12), langkah 19 (intercept dilepas segera setelah pemicu, S-09), dan langkah 20 (`[Clear Field]` lalu `[✕]`).
-- Expected butir c dipecah menjadi jumlah entri Changelog sama dengan baseline dan tidak ada entri Create `NEW-LOG5XX` (angka absolut 35 pada TC diganti baseline, S-12); butir d dipecah per surface dengan anchor jumlah entri sama dengan baseline; anchor positif: toast error sudah diverifikasi.
+- Expected butir c dipecah menjadi jumlah entri Changelog sama dengan baseline dan tidak ada entri Create `NEW-LOG5XX` (TC mencatat jumlah total pada info pagination sebagai N pada langkah 2 dan membandingkannya pada langkah 13, sesuai S-12); butir d dipecah per surface dengan anchor jumlah entri sama dengan baseline; anchor positif: toast error sudah diverifikasi.
 - Temuan untuk QA:
   - S-12/S-06: TC memakai nama literal Pre-setup (mis. `HHR-ARC-200`) dan kode SKU Data Dinamis literal sebagai target aksi tulis; konvensi meminta data bersuffix dan data milik spec. Lampiran A tidak memuat butir modul ini; spec mengikuti TC dengan pembersihan kode literal di hook `before` (R-13) dan membutuhkan keputusan pengecualian (seeding idempotent, suite serial).
   - S-11/S-13: fixture `settingsDeviceSku`, 23 env var `AC_DS_*` (termasuk yang dipakai spec ini), dan fixture rancangan Pre-setup yang dirujuk belum terverifikasi ada di environment atau belum terdaftar di `spectra.config.ts` dan `.env.example` (disediakan tim FE).

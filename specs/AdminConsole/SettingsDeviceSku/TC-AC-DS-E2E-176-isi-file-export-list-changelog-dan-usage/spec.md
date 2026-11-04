@@ -22,7 +22,7 @@ coverage:
 - Data Pre-setup (hanya dibaca): SKU inti dan seed (#29, #30), Usage by Company (#32), riwayat Changelog Principal (#33), General Settings (#35).
 - Data Dinamis: tidak ada.
 - Kemampuan teknis (disediakan tim FE/BE): membaca berkas XLSX unduhan (tipe sel, nilai sel, header).
-- State global: pilihan kolom List (Hardware Type, Range Type, TAG Type) disimpan sebagai preferensi kolom di browser; preferensi dihapus di hook `after` (bukan `[Reset to Default]`, kemampuan disediakan tim FE, bagian 4). Suite berjalan serial (`parallel: false`).
+- State global: pilihan kolom List (Hardware Type, Range Type, TAG Type) disimpan sebagai preferensi kolom di browser dan disembunyikan kembali pada langkah 28 sampai 30; preferensi dihapus di hook `after` (bukan `[Reset to Default]`, kemampuan disediakan tim FE, bagian 4). Suite berjalan serial (`parallel: false`).
 - Nilai data dibaca dari fixture `settingsDeviceSku` (berkas fixture belum ada; disediakan tim FE).
 
 ## Test Steps
@@ -63,9 +63,15 @@ coverage:
 26. Verifikasi Total Stock baris `PT Mitra Lintas Nusa` ditulis sebagai sel angka 20 tanpa pemisah ribuan
 27. Tutup Popup Device SKU Detail lalu klik `(←)` pada kotak Search
 
+### Pemulihan state akhir
+
+28. Klik header kolom Actions (⋯) lalu hilangkan centang `Hardware Type` pada Overlay Column Visibility
+29. Klik header kolom Actions (⋯) lalu hilangkan centang `Range Type` pada Overlay Column Visibility
+30. Klik header kolom Actions (⋯) lalu hilangkan centang `TAG Type` pada Overlay Column Visibility
+
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: Search `HHR-ARC-100` pada langkah 22 (menemukan baris target, R-16) dan penutupan modal serta popup.
+- Langkah penghubung tanpa `Verifikasi`: Search `HHR-ARC-100` pada langkah 22 (menemukan baris target, R-16) dan penutupan modal serta popup; langkah 28 sampai 30 (S-03, S-09) menyembunyikan kembali kolom curated yang dicentang pada langkah 1 sampai 3, dengan hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Expected 374 butir c dipecah per field (Brand dan Model/Type), butir f satu `Verifikasi` karena nilai kosong lintas kolom disebut utuh dalam satu butir TC; Expected 423 butir c dipecah menjadi kolom SKU dan nilai kosong.
 - Temuan untuk QA:
   - TC 423 butir a ("Header kolom sesuai kolom modal yang tampil") tidak merinci nama kolom; spec mengasersi kesesuaian dengan kolom modal.

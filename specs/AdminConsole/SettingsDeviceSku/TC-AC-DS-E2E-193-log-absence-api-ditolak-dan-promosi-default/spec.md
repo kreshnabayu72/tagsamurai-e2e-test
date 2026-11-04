@@ -126,7 +126,7 @@ coverage:
 66. Tunggu aksi selesai: Popup Edit SKU tertutup
 67. Klik ikon Changelog
 68. Verifikasi modal "Changelog: Device SKU" tampil dengan satu entri Field `Photo` (Old Value `—`, New Value `—`) untuk aksi hapus foto yang dilakukan pengguna (jumlah entri bertambah tepat 1 dari baseline langkah 60)
-69. Verifikasi tidak ada entri `Photo — Set as default` untuk promosi otomatis foto tersisa
+69. Verifikasi di antara entri baru (satu baris teratas sesuai selisih +1 langkah 68) tidak ada entri `Photo — Set as default` untuk promosi otomatis foto tersisa
 
 ### Pemulihan state akhir
 
@@ -141,6 +141,7 @@ coverage:
 - Pembagian TC lintas spec (S-05): TC-AC-DS-206, 482, dan 484 (absence atas Edit tanpa perubahan dan field terkunci) ada di spec 151. TC-AC-DS-515 (Expected butir a dan b: status respons dan state data), TC-AC-DS-520 (Expected butir a dan b), dan TC-AC-DS-523 (Expected butir a) diasersi di spec 160, 161, dan 162; Expected log (515 butir c, 520 butir c, 523 butir b) diasersi di spec ini dengan request penolakan, user, dan baseline sendiri.
 - Pengecualian S-12 A-11: `HHR-ARC-100` dan `TAG-ARC-OBJ` adalah SKU Pre-setup bernama literal tanpa suffix (dinyatakan di `suite.md`); `HHR-ARC-100` dipulihkan fixture BE setelah TC-AC-DS-478. `API-LOG-02` mengikuti kode literal TC dan tidak pernah tersimpan.
 - Spec melebihi sekitar 35 langkah (70 langkah); alasan: semua blok satu kelas harness (g, absence log) dan berdiri sendiri karena state dipulihkan antar blok, kegagalan satu blok tidak membuat blok lain kehilangan makna; tiap blok punya pemicu, akun, dan baseline log sendiri, dan sebagian besar langkah adalah blok baca-log berpola (buka surface, `Verifikasi` jumlah entri).
+- Langkah 69 dibatasi pada entri baru (selisih +1 dari baseline langkah 60, dibaca pada baris teratas), bukan seluruh Changelog, karena Pre-setup #33 sudah memuat entri `Photo — Set as default` (seed lama).
 - Temuan untuk QA:
   - S-15: Expected TC 495 butir b menyebut "tidak ada entri baru" pada System Log `Rina Wijaya` tanpa anchor positif yang dijamin (log akun Read Only mungkin kosong); spec memakai tab System Log tampil dan selisih jumlah entri terhadap baseline.
   - S-15: TC 495 langkah 4, TC 515 langkah 4, dan TC 523 langkah 2 menyebut "sesi pengamat" Total Control; spec memakai sesi default suite (Jane Setiawan, Pre-setup #1) tanpa ganti akun.
