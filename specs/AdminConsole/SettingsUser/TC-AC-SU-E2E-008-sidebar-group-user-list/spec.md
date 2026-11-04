@@ -92,7 +92,7 @@ coverage:
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 8 (Expand All agar seluruh node terlihat; kondisi awal tree tidak disebut TC), langkah 12 (Search atas suffix spec, R-16), langkah 18 (Search untuk menemukan baris Default User, R-16), langkah 20 (kembali ke Search suffix), langkah 21 (batalkan pilihan node sebelum TC-AC-SU-27, S-09), langkah 30 (pulihkan sidebar expanded, S-09), langkah 31 (reset Search; sesudah F5 Search sudah kosong sehingga langkah ini menutup input). Layar awal dibuka hook `beforeEach` suite.
+- Langkah penghubung (S-03): langkah 8 (Expand All agar seluruh node terlihat; kondisi awal tree tidak disebut TC), langkah 12 (Search atas suffix spec, R-16), langkah 18 (Search untuk menemukan baris Default User, R-16), langkah 20 (kembali ke Search suffix), langkah 21 (batalkan pilihan node sebelum TC-AC-SU-27, S-09), langkah 30 (pulihkan sidebar expanded, S-09), langkah 31 (reset Search; sesudah F5 Search dipulihkan sesuai PRD sehingga kotak Search masih berisi `{runId}-008`, dan langkah ini menutup input serta mereset tabel). Layar awal dibuka hook `beforeEach` suite.
 - Temuan untuk QA:
   - TC-AC-SU-25 butir b "seluruh node entitas" diasersi atas node seed milik spec; node group Pre-setup lain dan urutan seluruh tree tidak diasersi karena group Pre-setup tidak diubah dan jumlahnya tidak tetap.
   - TC-AC-SU-26 mengharapkan Default User tampil sebagai "TC permanen"; spec mengasersinya lewat Search atas email Pre-setup #1 pada node terpilih yang sama.

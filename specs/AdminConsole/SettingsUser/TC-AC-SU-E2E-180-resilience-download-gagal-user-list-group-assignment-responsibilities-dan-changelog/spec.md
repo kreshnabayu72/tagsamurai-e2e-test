@@ -24,10 +24,10 @@ coverage:
 
 | Kode | Name | Email | State awal |
 |---|---|---|---|
-| A | `Jane Smith {runId}-180A` | `janesmith+{runId}-180a@qwertysystem.net` | Activated |
+| A | `Jane Smith {runId}-180A` | `janesmith+{runId}-180a@qwertysystem.net` | Activated, tepat 1 Pending Approval milik A pada Tab Responsibilities (label tab `Responsibilities (1)`) |
 | B | `Budi Santoso {runId}-180B` | `budisantoso+{runId}-180b@qwertysystem.net` | Activated, tanpa tier, bukan Group Manager, "Manage distributor" aktif di Region A (Region A dari Group Tree Pre-setup, tidak diubah) |
 
-- Kemampuan teknis (kelas b): `Spectra.intercept()` pada respons HTTP request Download dengan 5xx; endpoint tidak disebut TC, PRD, atau LLD, sehingga pola request disediakan tim FE/BE tanpa endpoint karangan di spec; pemantauan event unduhan browser untuk memastikan tidak ada berkas terunduh. Nama berkas pada toast mengikuti nama user bersuffix dengan spasi diganti tanda hubung (lihat Temuan untuk QA). Intercept dilepas segera setelah asersi toast (S-09).
+- Kemampuan teknis (kelas b): seed Pending Approval milik A disediakan tim FE/BE; `Spectra.intercept()` pada respons HTTP request Download dengan 5xx; endpoint tidak disebut TC, PRD, atau LLD, sehingga pola request disediakan tim FE/BE tanpa endpoint karangan di spec; pemantauan event unduhan browser untuk memastikan tidak ada berkas terunduh. Nama berkas pada toast mengikuti nama user bersuffix dengan spasi diganti tanda hubung (lihat Temuan untuk QA). Intercept dilepas segera setelah asersi toast (S-09).
 - Suite berjalan serial (`parallel: false`). Env var yang dipakai sudah terdaftar di `executionConfig.environmentVariables` dan `.env.example` oleh pemilik repo (lihat suite.md).
 
 ## Test Steps
@@ -45,7 +45,7 @@ coverage:
 9. Verifikasi toast error `"Error, failed to download Group-Assignment-Budi-Santoso-{runId}-180B-Manage-distributor."`
 10. Verifikasi popup Detail Group Assignment tetap terbuka
 ### TC-AC-SU-366: Download Tab Responsibilities gagal
-11. Lepas intercept sebelumnya, tutup popup, klik menu Settings > User di sidebar, ketik Search `Jane Smith {runId}-180A`, tekan Enter, klik Name baris A, lalu klik tab `Responsibilities (N)`
+11. Lepas intercept sebelumnya, tutup popup, klik menu Settings > User di sidebar, ketik Search `Jane Smith {runId}-180A`, tekan Enter, klik Name baris A, lalu klik tab `Responsibilities (1)`
 12. Atur intercept: respons request Download Tab Responsibilities dikembalikan 5xx
 13. Klik icon Download, lalu klik `Download as CSV`
 14. Verifikasi toast error `"Error, failed to download Pending-Approvals-Jane-Smith-{runId}-180A."`
@@ -61,6 +61,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung tanpa Verifikasi (S-03): pemasangan dan pelepasan intercept, Search baris target dan pembukaan Detail (R-16), menutup popup, dan menunggu toast lama hilang (R-12). Popup Detail Group Assignment tidak dirty sehingga ditutup lewat langkah penghubung tanpa dialog.
+- Urutan blok: TC-320 (User List, tanpa Detail), TC-248 (Detail user B, sub-tab Group Role), lalu TC-366 dan TC-402 (Tab Responsibilities lalu Tab Changelog pada satu Detail user A); urutan mengikuti layar yang dipakai, bukan urutan nomor TC (S-05).
 - Asersi "tidak ada berkas terunduh" didahului toast error pada surface yang sama sebagai anchor positif (bagian 8b butir 2 dan butir 11).
 - TC-AC-SU-424, TC-AC-SU-440, TC-AC-SU-478, dan TC-AC-SU-647 (download gagal System Log, User Log, Popup Changelog: User, dan Modal Changelog Group Role) ada di spec 181.
 - Temuan untuk QA:

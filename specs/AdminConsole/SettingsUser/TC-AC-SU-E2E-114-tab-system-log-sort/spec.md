@@ -42,41 +42,44 @@ coverage:
 
 ### TC-AC-SU-409: Sort 3-state kelas tanggal
 
-1. Cari `Jane Smith {runId}-114` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `System Log`
-3. Klik header `Date` untuk pertama kalinya
-4. Verifikasi urutan baris Oldest First
-5. Verifikasi ikon sort `↑` tampil
-6. Klik header `Date` untuk kedua kalinya
-7. Verifikasi urutan baris Newest First
-8. Verifikasi ikon sort `↓` tampil
-9. Klik header `Date` untuk ketiga kalinya
-10. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+1. Ketik Search `Jane Smith {runId}-114`, tekan Enter
+2. Klik Name `Jane Smith {runId}-114`
+3. Klik tab `System Log`
+4. Verifikasi tabel menampilkan sedikitnya dua baris data uji
+5. Klik header `Date` untuk pertama kalinya
+6. Verifikasi urutan baris Oldest First
+7. Verifikasi ikon sort `↑` tampil
+8. Klik header `Date` untuk kedua kalinya
+9. Verifikasi urutan baris Newest First
+10. Verifikasi ikon sort `↓` tampil
+11. Klik header `Date` untuk ketiga kalinya
+12. Verifikasi urutan baris kembali ke sort default (Date Newest First)
 
 ### TC-AC-SU-410: Header kolom teks Tab System Log sortable 3-state
 
-11. Klik header kolom pada baris tabel 'Kolom sort teks'
-12. Verifikasi urutan baris A–Z menurut nilai distinct kolom itu
-13. Verifikasi ikon sort `↑` tampil
-14. Klik header kolom yang sama untuk kedua kalinya
-15. Verifikasi urutan baris Z–A menurut nilai distinct kolom itu
-16. Verifikasi ikon sort `↓` tampil
-17. Klik header kolom yang sama untuk ketiga kalinya
-18. Verifikasi urutan baris kembali ke sort default (Date Newest First)
-19. Klik header `Old Value` untuk pertama kalinya
-20. Verifikasi nilai kosong `—` berada di akhir saat ascending
-21. Klik header `Old Value` untuk kedua kalinya
-22. Verifikasi nilai kosong `—` berada di awal saat descending
-23. Klik header `Old Value` untuk ketiga kalinya
-24. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+13. Untuk setiap baris tabel "Kolom sort teks" di Prerequisites, lakukan langkah 14 sampai 21
+14. Klik header kolom pada baris tabel 'Kolom sort teks'
+15. Verifikasi urutan baris A–Z menurut nilai distinct kolom itu
+16. Verifikasi ikon sort `↑` tampil
+17. Klik header kolom yang sama untuk kedua kalinya
+18. Verifikasi urutan baris Z–A menurut nilai distinct kolom itu
+19. Verifikasi ikon sort `↓` tampil
+20. Klik header kolom yang sama untuk ketiga kalinya
+21. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+22. Klik header `Old Value` untuk pertama kalinya
+23. Verifikasi nilai kosong `—` berada di akhir saat ascending
+24. Klik header `Old Value` untuk kedua kalinya
+25. Verifikasi nilai kosong `—` berada di awal saat descending
+26. Klik header `Old Value` untuk ketiga kalinya
+27. Verifikasi urutan baris kembali ke sort default (Date Newest First)
 
 ## Notes
 
-- Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
-- Klik header kolom diulang per baris tabel 'Kolom sort teks': langkah 11 sampai 18 (4 kolom). Klik ketiga tiap kolom mengembalikan sort ke default sehingga kolom berikutnya mulai dari keadaan yang sama (S-09).
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Klik header kolom diulang per baris tabel 'Kolom sort teks': langkah 14 sampai 21 (4 kolom). Klik ketiga tiap kolom mengembalikan sort ke default sehingga kolom berikutnya mulai dari keadaan yang sama (S-09).
 - Temuan untuk QA:
   - TC-409 klik 2 (Newest First) dan klik 3 (kembali ke default Date Newest First) menghasilkan urutan baris yang sama; pembeda keadaan header (ikon sort) pada klik 3 tidak dinyatakan. Spec hanya mengasersi urutan baris pada klik 3.
   - TC-410 butir b mengasersi urutan kolom `Old Value` hanya untuk nilai kosong `—`; tidak dinyatakan urutan nilai lain, sehingga spec tidak mengasersinya.
   - Cara men-seed entri System Log (Date, Action, Object, Name, Field, Old Value, New Value, aktor, termasuk snapshot full path untuk Object `Group`) tidak dinyatakan di TC, PRD, atau LLD; kemampuan ini ditulis 'disediakan tim FE/BE' tanpa endpoint karangan (S-13).
   - Nama target `Jane Smith` pada TC dipakai sebagai nama bersuffix `Jane Smith {runId}-NNN` per run (S-12); asersi spec memakai nilai kolom log, bukan urutan atau Search atas nama user.
-- Spec ini melewati sekitar 35 langkah (24 langkah nominal, sekitar 48 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini melewati sekitar 35 langkah (27 langkah nominal, sekitar 51 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.

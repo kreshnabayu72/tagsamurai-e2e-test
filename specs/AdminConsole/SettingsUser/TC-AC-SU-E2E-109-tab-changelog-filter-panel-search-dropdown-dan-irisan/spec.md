@@ -28,48 +28,49 @@ coverage:
 
 ### TC-AC-SU-389: Search di dalam dropdown Action
 
-1. Cari `Jane Smith {runId}-109` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `Changelog`
-3. Klik icon Filter
-4. Buka dropdown `Action`
-5. Ketik `rem` di kotak search dropdown
-6. Verifikasi opsi `Remove` tampil
-7. Verifikasi opsi yang tidak memuat `rem` (`Assign`, `Edit`, `Activate`) tidak tampil
-8. Ganti isi kotak search dropdown dengan `zzqx`
-9. Verifikasi dropdown menampilkan state tidak ada opsi cocok
-10. Kosongkan kotak search dropdown, lalu tutup dropdown
-11. Klik icon Filter untuk menutup Filter Panel
+1. Ketik Search `Jane Smith {runId}-109`, tekan Enter
+2. Klik Name `Jane Smith {runId}-109`
+3. Klik tab `Changelog`
+4. Klik icon Filter
+5. Buka dropdown `Action`
+6. Ketik `rem` di kotak search dropdown
+7. Verifikasi opsi `Remove` tampil
+8. Verifikasi opsi yang tidak memuat `rem` (`Assign`, `Edit`, `Activate`) tidak tampil
+9. Ganti isi kotak search dropdown dengan `zzqx`
+10. Verifikasi dropdown menampilkan state tidak ada opsi cocok
+11. Kosongkan kotak search dropdown, lalu tutup dropdown
+12. Klik icon Filter untuk menutup Filter Panel
 
 ### TC-AC-SU-390: Search lalu Filter, hasil irisan
 
-12. Ketik Search `Manage`, tekan Enter
-13. Klik icon Filter
-14. Pilih `Edit` di field `Action`
-15. Klik `[Apply]`
-16. Verifikasi sedikitnya satu baris tampil
-17. Verifikasi setiap baris yang tampil memuat `Manage` dan memiliki Action `Edit`
-18. Verifikasi keyword Search `Manage` tetap terisi
-19. Klik icon Filter
-20. Klik `[Clear Field]`, lalu klik `[Apply]`
-21. Klik icon `(←)` pada kotak Search
+13. Ketik Search `Manage`, tekan Enter
+14. Klik icon Filter
+15. Pilih `Edit` di field `Action`
+16. Klik `[Apply]`
+17. Verifikasi sedikitnya satu baris tampil
+18. Verifikasi setiap baris yang tampil memuat `Manage` dan memiliki Action `Edit`
+19. Verifikasi keyword Search `Manage` tetap terisi
+20. Klik icon Filter
+21. Klik `[Clear Field]`, lalu klik `[Apply]`
+22. Klik icon `(←)` pada kotak Search
 
 ### TC-AC-SU-391: Filter lalu Search, hasil irisan
 
-22. Klik icon Filter
-23. Pilih `Edit` di field `Action`
-24. Klik `[Apply]`
-25. Ketik Search `Manage`, tekan Enter
-26. Verifikasi sedikitnya satu baris tampil
-27. Verifikasi setiap baris yang tampil memiliki Action `Edit` dan memuat `Manage`
-28. Klik icon `(←)` pada search bar
-29. Verifikasi baris Action `Edit` yang tidak memuat `Manage` tampil kembali
-30. Verifikasi setiap baris yang tampil memiliki Action `Edit` (filter Action `Edit` tetap aktif)
-31. Klik icon Filter
-32. Klik `[Clear Field]`, lalu klik `[Apply]`
+23. Klik icon Filter
+24. Pilih `Edit` di field `Action`
+25. Klik `[Apply]`
+26. Ketik Search `Manage`, tekan Enter
+27. Verifikasi sedikitnya satu baris tampil
+28. Verifikasi setiap baris yang tampil memiliki Action `Edit` dan memuat `Manage`
+29. Klik icon `(←)` pada search bar
+30. Verifikasi baris Action `Edit` yang tidak memuat `Manage` tampil kembali
+31. Verifikasi setiap baris yang tampil memiliki Action `Edit` (filter Action `Edit` tetap aktif)
+32. Klik icon Filter
+33. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
-- Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
 - `[Clear Field]` lalu `[Apply]` pada akhir blok adalah langkah penghubung yang mengosongkan Filter (S-09); klik icon Filter sebelum tiap pengaturan Filter membuka panel.
 - Mengosongkan kotak search dropdown, menutup panel, dan klik `(←)` adalah langkah penghubung yang membersihkan state (S-09).
 - Verifikasi 'baris Action `Edit` yang tidak memuat `Manage` tampil kembali' pada TC-391 menjadi bukti bahwa filter tetap menyaring setelah search ditutup; ia diturunkan dari Expected b TC-391 dengan entri (5) sebagai pembanding.

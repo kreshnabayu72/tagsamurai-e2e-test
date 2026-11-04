@@ -27,36 +27,37 @@ coverage:
 
 ### TC-AC-SU-420: Search lalu Filter, hasil irisan
 
-1. Cari `Jane Smith {runId}-118` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `System Log`
-3. Ketik Search `John`, tekan Enter
-4. Klik icon Filter
-5. Pilih `User` di field `Object`
-6. Klik `[Apply]`
-7. Verifikasi sedikitnya satu baris tampil
-8. Verifikasi setiap baris yang tampil memuat `John` dan memiliki Object `User`
-9. Verifikasi keyword Search `John` tetap terisi
-10. Klik icon Filter
-11. Klik `[Clear Field]`, lalu klik `[Apply]`
-12. Klik icon `(←)` pada kotak Search
+1. Ketik Search `Jane Smith {runId}-118`, tekan Enter
+2. Klik Name `Jane Smith {runId}-118`
+3. Klik tab `System Log`
+4. Ketik Search `John`, tekan Enter
+5. Klik icon Filter
+6. Pilih `User` di field `Object`
+7. Klik `[Apply]`
+8. Verifikasi sedikitnya satu baris tampil
+9. Verifikasi setiap baris yang tampil memuat `John` dan memiliki Object `User`
+10. Verifikasi keyword Search `John` tetap terisi
+11. Klik icon Filter
+12. Klik `[Clear Field]`, lalu klik `[Apply]`
+13. Klik icon `(←)` pada kotak Search
 
 ### TC-AC-SU-421: Filter lalu Search, hasil irisan
 
-13. Klik icon Filter
-14. Pilih `User` di field `Object`
-15. Klik `[Apply]`
-16. Ketik Search `John`, tekan Enter
-17. Verifikasi sedikitnya satu baris tampil
-18. Verifikasi setiap baris yang tampil memiliki Object `User` dan memuat `John`
-19. Klik icon `(←)` pada search bar
-20. Verifikasi baris Object `User` yang tidak memuat `John` tampil kembali
-21. Verifikasi setiap baris yang tampil memiliki Object `User` (filter Object `User` tetap aktif)
-22. Klik icon Filter
-23. Klik `[Clear Field]`, lalu klik `[Apply]`
+14. Klik icon Filter
+15. Pilih `User` di field `Object`
+16. Klik `[Apply]`
+17. Ketik Search `John`, tekan Enter
+18. Verifikasi sedikitnya satu baris tampil
+19. Verifikasi setiap baris yang tampil memiliki Object `User` dan memuat `John`
+20. Klik icon `(←)` pada search bar
+21. Verifikasi baris Object `User` yang tidak memuat `John` tampil kembali
+22. Verifikasi setiap baris yang tampil memiliki Object `User` (filter Object `User` tetap aktif)
+23. Klik icon Filter
+24. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
-- Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
 - `[Clear Field]` lalu `[Apply]` pada akhir blok adalah langkah penghubung yang mengosongkan Filter (S-09); klik icon Filter sebelum tiap pengaturan Filter membuka panel. Klik `(←)` adalah langkah penghubung yang mengosongkan Search.
 - Verifikasi 'baris Object `User` yang tidak memuat `John` tampil kembali' pada TC-421 menjadi bukti bahwa filter tetap menyaring setelah search ditutup; ia diturunkan dari Expected b TC-421 dengan entri (3) sebagai pembanding.
 - Temuan untuk QA:

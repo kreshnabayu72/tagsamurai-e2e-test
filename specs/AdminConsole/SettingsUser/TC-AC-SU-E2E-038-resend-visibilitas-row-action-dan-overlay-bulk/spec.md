@@ -87,5 +87,5 @@ coverage:
 - Urutan TC di spec: 138, 139, 155, 159, 141. TC-141 memakai akun Pre-setup (Default User) sebagai target dan ditaruh terakhir supaya status akun itu hanya diubah di akhir.
 - Di TC-155 overlay terbuka bukan anchor yang cukup bagi absence `Resend Activation Email` (bagian 8b butir 2); anchor-nya opsi `Deactivate` yang tampil di overlay untuk seleksi `John Doe {runId}-038` (Activated, Active). Langkah 19 mengikuti Expected TC-155 (opsi `Deactivate` tampil); TC-159 memakai `Deactivate` sebagai anchor menurut Expected TC.
 - Temuan untuk QA:
-  - TC-141 mensyaratkan Default User Pending Email Confirmation, sedangkan akun Default User Pre-setup #1 dipakai login suite; spec mengubah status akun itu lewat Fixture BE lalu memulihkannya (S-06; pengecualian untuk TC-140/141 sudah tertulis di suite.md). Perlu keputusan QA: user Default User terpisah atau pengecualian tertulis.
+  - TC-141 mensyaratkan Default User Pending Email Confirmation, sedangkan akun Default User Pre-setup #1 dipakai login suite; spec mengubah status akun itu lewat Fixture BE lalu memulihkannya (S-06; pengecualian untuk TC-140/141 sudah tertulis di suite.md).
   - Post Condition TC-155 ("tidak ada email terkirim", "tidak ada entri log") tidak punya langkah observasi dan tidak diasersi.

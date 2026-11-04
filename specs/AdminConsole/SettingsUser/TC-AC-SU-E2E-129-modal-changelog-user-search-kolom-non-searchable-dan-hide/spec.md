@@ -38,32 +38,31 @@ coverage:
 
 ### TC-AC-SU-454: Search Modal Changelog: User, kolom non-searchable tidak ikut dicari
 
-### TC-AC-SU-454: Kolom non-searchable tidak ikut dicari
-
-2. Ketik Search `15 Jun 2026`, tekan Enter
-3. Verifikasi tabel menampilkan empty state `No results found` (nilai kolom Date tidak dicocokkan oleh Search)
-4. Klik icon `(←)` pada kotak Search
-5. Klik icon Filter
-6. Verifikasi Filter Panel memuat field `Date` (penyaringan kolom Date tersedia lewat Filter Panel)
-7. Klik icon Filter lagi untuk menutup Filter Panel
+2. Verifikasi kolom `Date` menampilkan `15 Jun 2026` pada baris `John Doe {runId}-129`
+3. Ketik Search `15 Jun 2026`, tekan Enter
+4. Verifikasi tabel menampilkan empty state `No results found` (nilai kolom Date tidak dicocokkan oleh Search)
+5. Klik icon `(←)` pada kotak Search
+6. Klik icon Filter
+7. Verifikasi Filter Panel memuat field `Date` (penyaringan kolom Date tersedia lewat Filter Panel)
+8. Klik icon Filter lagi untuk menutup Filter Panel
 
 ### TC-AC-SU-455: Search Modal Changelog: User, kolom yang di-hide tidak ikut dicari lalu kembali searchable saat di-unhide
 
-8. Klik header `⋯`
-9. Uncheck kolom `User Name` pada overlay Column Visibility
-10. Ketik Search `John Doe {runId}-129`, tekan Enter
-11. Verifikasi tabel menampilkan empty state `No results found` (keyword tidak mencocokkan baris saat `User Name` di-hide)
-12. Klik `(←)` pada kotak Search
-13. Klik header `⋯`
-14. Check kolom `User Name` pada overlay Column Visibility
-15. Ketik Search `John Doe {runId}-129`, tekan Enter
-16. Verifikasi tabel menampilkan baris yang memuat `John Doe {runId}-129`
-17. Klik `(←)` pada kotak Search
+9. Klik header `⋯`
+10. Uncheck kolom `User Name` pada overlay Column Visibility
+11. Ketik Search `John Doe {runId}-129`, tekan Enter
+12. Verifikasi tabel menampilkan empty state `No results found` (keyword tidak mencocokkan baris saat `User Name` di-hide)
+13. Klik `(←)` pada kotak Search
+14. Klik header `⋯`
+15. Check kolom `User Name` pada overlay Column Visibility
+16. Ketik Search `John Doe {runId}-129`, tekan Enter
+17. Verifikasi tabel menampilkan baris yang memuat `John Doe {runId}-129`
+18. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): menutup input Search lewat `(←)` (langkah 12 dan 17) dan menutup Filter Panel di TC-AC-SU-454. TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).
+- Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): menutup input Search lewat `(←)` (langkah 13 dan 18) dan menutup Filter Panel di TC-AC-SU-454. TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).
 - Kolom `User Name` dikembalikan ke visible di TC-AC-SU-455 sendiri (check kembali), sehingga tidak ada state kolom yang tersisa.
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
 - Temuan untuk QA: (1) TC-AC-SU-454 butir b ("Penyaringan kolom ini hanya tersedia lewat Filter Panel (bila Filterable)") berbentuk pernyataan; spec mengamatinya sebagai keberadaan field `Date` di Filter Panel. (2) TC-AC-SU-454 mengasumsikan format tampilan `15 Jun 2026`, sedangkan format tanggal ditentukan General Settings; spec menyatakan format itu di Prerequisites. (3) Nama literal `John Doe` pada TC-AC-SU-455 ditulis bersuffix sehingga keyword Search unik per run.

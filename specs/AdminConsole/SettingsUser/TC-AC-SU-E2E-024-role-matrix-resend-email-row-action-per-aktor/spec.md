@@ -65,63 +65,67 @@ coverage:
 
 8. Logout dari akun aktor saat ini
 9. Login sebagai Manage user and role (Update, U=true) (`manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_UPDATE_PASSWORD`)
-10. Ketik Search `{runId}-024`, tekan Enter
-11. Klik (⋯) baris `Sarah Lee {runId}-024`
-12. Verifikasi Manage user and role (U=true): menu `Sarah Lee {runId}-024` berisi `Resend Activation Email`
-13. Tutup menu row action dengan Esc
-14. Klik (⋯) baris `Rina Putri {runId}-024`
-15. Verifikasi Manage user and role (U=true): menu `Rina Putri {runId}-024` berisi `Resend Confirmation Email`
-16. Tutup menu row action dengan Esc
-17. Klik (⋯) baris `Dewi Lestari {runId}-024`
-18. Verifikasi `Resend Confirmation Email` pada menu `Dewi Lestari {runId}-024` tampil dan enabled
-19. Tutup menu row action dengan Esc
-20. Atur email aktor menjadi Pending Email Confirmation lewat Fixture BE
-21. Muat ulang halaman dengan F5
-22. Ketik Search `manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, tekan Enter
-23. Klik (⋯) baris aktor sendiri
-24. Verifikasi menu aktor sendiri: `Detail | Resend Confirmation Email`
-25. Verifikasi switch Active baris aktor sendiri tetap disabled
-26. Tutup menu row action dengan Esc
-27. Pulihkan email aktor ke keadaan awal lewat Fixture BE
+10. Buka Settings > User lewat sidebar
+11. Ketik Search `{runId}-024`, tekan Enter
+12. Klik (⋯) baris `Sarah Lee {runId}-024`
+13. Verifikasi Manage user and role (U=true): menu `Sarah Lee {runId}-024` berisi `Resend Activation Email`
+14. Tutup menu row action dengan Esc
+15. Klik (⋯) baris `Rina Putri {runId}-024`
+16. Verifikasi Manage user and role (U=true): menu `Rina Putri {runId}-024` berisi `Resend Confirmation Email`
+17. Tutup menu row action dengan Esc
+18. Klik (⋯) baris `Dewi Lestari {runId}-024`
+19. Verifikasi `Resend Confirmation Email` pada menu `Dewi Lestari {runId}-024` tampil dan enabled
+20. Tutup menu row action dengan Esc
+21. Atur email aktor menjadi Pending Email Confirmation lewat Fixture BE
+22. Muat ulang halaman dengan F5
+23. Ganti isi kotak search dengan `manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, tekan Enter
+24. Klik (⋯) baris aktor sendiri
+25. Verifikasi menu aktor sendiri: `Detail | Resend Confirmation Email`
+26. Verifikasi switch Active baris aktor sendiri tetap disabled
+27. Tutup menu row action dengan Esc
+28. Pulihkan email aktor ke keadaan awal lewat Fixture BE
 
 ### TC-AC-SU-71, 152: Resend Email row action, aktor Read Only
 
-28. Logout dari akun aktor saat ini
-29. Login sebagai Read Only (`readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_RO_PASSWORD`)
-30. Ketik Search `{runId}-024`, tekan Enter
-31. Klik (⋯) baris `Sarah Lee {runId}-024`
-32. Verifikasi Read Only: menu `Sarah Lee {runId}-024` hanya berisi `Detail`
-33. Tutup menu row action dengan Esc
-34. Klik (⋯) baris `Rina Putri {runId}-024`
-35. Verifikasi Read Only: menu `Rina Putri {runId}-024` hanya berisi `Detail`
-36. Tutup menu row action dengan Esc
-37. Klik (⋯) baris `Mike Tan {runId}-024`
-38. Verifikasi row action `Mike Tan {runId}-024` hanya `Detail` (Resend Hidden)
-39. Tutup menu row action dengan Esc
-40. Buka Detail `Mike Tan {runId}-024` dengan klik Name
-41. Verifikasi Breadcrumb Detail tampil
-42. Verifikasi header Detail tanpa tombol Resend
-43. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+29. Logout dari akun aktor saat ini
+30. Login sebagai Read Only (`readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_RO_PASSWORD`)
+31. Buka Settings > User lewat sidebar
+32. Ketik Search `{runId}-024`, tekan Enter
+33. Klik (⋯) baris `Sarah Lee {runId}-024`
+34. Verifikasi Read Only: menu `Sarah Lee {runId}-024` hanya berisi `Detail`
+35. Tutup menu row action dengan Esc
+36. Klik (⋯) baris `Rina Putri {runId}-024`
+37. Verifikasi Read Only: menu `Rina Putri {runId}-024` hanya berisi `Detail`
+38. Tutup menu row action dengan Esc
+39. Klik (⋯) baris `Mike Tan {runId}-024`
+40. Verifikasi row action `Mike Tan {runId}-024` hanya `Detail` (Resend Hidden)
+41. Tutup menu row action dengan Esc
+42. Buka Detail `Mike Tan {runId}-024` dengan klik Name
+43. Verifikasi Breadcrumb `Settings > User > Detail` tampil
+44. Verifikasi header Detail tanpa tombol Resend
+45. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
 
 ### TC-AC-SU-71, 153: Resend Email row action, aktor Manage user and role (U=false)
 
-44. Logout dari akun aktor saat ini
-45. Login sebagai Manage user and role (Read saja, U=false) (`manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_READ_PASSWORD`)
-46. Ketik Search `{runId}-024`, tekan Enter
-47. Klik (⋯) baris `Sarah Lee {runId}-024`
-48. Verifikasi Manage user and role (U=false): menu `Sarah Lee {runId}-024` hanya berisi `Detail`
-49. Tutup menu row action dengan Esc
-50. Klik (⋯) baris `Rina Putri {runId}-024`
-51. Verifikasi Manage user and role (U=false): menu `Rina Putri {runId}-024` hanya berisi `Detail`
+46. Logout dari akun aktor saat ini
+47. Login sebagai Manage user and role (Read saja, U=false) (`manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_READ_PASSWORD`)
+48. Buka Settings > User lewat sidebar
+49. Ketik Search `{runId}-024`, tekan Enter
+50. Klik (⋯) baris `Sarah Lee {runId}-024`
+51. Verifikasi Manage user and role (U=false): menu `Sarah Lee {runId}-024` hanya berisi `Detail`
 52. Tutup menu row action dengan Esc
-53. Klik (⋯) baris `Mike Tan {runId}-024`
-54. Verifikasi menu `Mike Tan {runId}-024` hanya berisi `Detail` (Resend Hidden)
+53. Klik (⋯) baris `Rina Putri {runId}-024`
+54. Verifikasi Manage user and role (U=false): menu `Rina Putri {runId}-024` hanya berisi `Detail`
+55. Tutup menu row action dengan Esc
+56. Klik (⋯) baris `Mike Tan {runId}-024`
+57. Verifikasi menu `Mike Tan {runId}-024` hanya berisi `Detail` (Resend Hidden)
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), semua langkah "Tutup menu row action dengan Esc" (termasuk 4), langkah 20 (pengaturan precondition TC-AC-SU-140), langkah 27 (pemulihan state, S-09), serta langkah kembali ke daftar. Langkah 40 dan 41 (buka Detail dan Breadcrumb Detail tampil) adalah langkah penghubung dan anchor positif tambahan (S-03, dasar 8b.2) bagi absence tombol Resend pada langkah 42.
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), semua langkah "Tutup menu row action dengan Esc" (termasuk 4), langkah 10, 31, 48 (buka Settings > User lewat sidebar sesudah login ulang), langkah 21 (pengaturan precondition TC-AC-SU-140), langkah 28 (pemulihan state, S-09), serta langkah kembali ke daftar. Langkah 43 dan 44 (buka Detail dan Breadcrumb `Settings > User > Detail` tampil) adalah langkah penghubung dan anchor positif tambahan (S-03, dasar 8b.2) bagi absence tombol Resend pada langkah 45.
 - Alasan blok per akun (bagian 3a, `[KEPUTUSAN 2026-10-30]`): ganti akun menuntut Step eksplisit; empat akun dipakai berurutan, masing-masing satu kali. Subjudul memetakan langkah ke id TC.
-- Ukuran spec (54 langkah, di atas smell sekitar 35 langkah): Role Matrix satu permukaan (row action Resend) dengan empat akun dan pola identik per akun (buka, `Verifikasi`, tutup); tiap blok akun berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Ukuran spec (57 langkah, di atas smell sekitar 35 langkah): Role Matrix satu permukaan (row action Resend) dengan empat akun dan pola identik per akun (buka, `Verifikasi`, tutup); tiap blok akun berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini matriks visibilitas per role (bagian 3a): memuat asersi tampil (Total Control, Manage user and role U=true) dan Hidden (Read Only, Manage user and role U=false) dalam satu spec; `caseType` Positive mengikuti bagian 8.
 - Temuan untuk QA:
   - TC-AC-SU-140 mensyaratkan email aktor berstatus Pending Email Confirmation; aktor adalah akun Pre-setup #4, sehingga pengecualian S-06 dipakai lewat Fixture BE (pengecualian untuk TC-140/141 sudah tertulis di `suite.md`).
   - TC-AC-SU-71, 72, 140 memakai nama aktor atau target yang tidak dipetakan ke Pre-setup; spec memakai akun Pre-setup #2, #3, #4, #5.

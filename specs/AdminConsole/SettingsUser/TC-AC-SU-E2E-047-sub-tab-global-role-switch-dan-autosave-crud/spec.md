@@ -35,51 +35,59 @@ coverage:
 1. Ketik Search `Budi Santoso {runId}-047`, tekan Enter
 2. Klik nama `Budi Santoso {runId}-047` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 3. Klik switch baris `Manage language`
-4. Verifikasi switch `Manage language` berubah ON
-5. Verifikasi tidak ada popup
-6. Verifikasi checkbox R baris `Manage language` tercentang dan disabled
-7. Verifikasi checkbox C, U, D baris `Manage language` unchecked dan enabled (yang applicable)
-8. Verifikasi muncul toast sukses: "Success, role has been updated."
-9. Tunggu toast lama hilang otomatis
+4. Verifikasi muncul toast sukses: "Success, role has been updated."
+5. Verifikasi switch `Manage language` berubah ON
+6. Verifikasi tidak ada popup
+7. Verifikasi checkbox R baris `Manage language` tercentang dan disabled
+8. Verifikasi checkbox C baris `Manage language` unchecked dan enabled (yang applicable)
+9. Verifikasi checkbox U baris `Manage language` unchecked dan enabled (yang applicable)
+10. Verifikasi checkbox D baris `Manage language` unchecked dan enabled (yang applicable)
+11. Tunggu toast lama hilang otomatis
 
 ### TC-AC-SU-174: Switch Global Role ON ke OFF mengunci CRUD dan menyimpan nilai inactive
 
-10. Klik switch baris `Manage group`
-11. Verifikasi switch `Manage group` berubah OFF
-12. Verifikasi C/R/U/D baris `Manage group` tampil `[─]` terkunci (disabled)
-13. Verifikasi muncul toast sukses: "Success, role has been updated."
-14. Tunggu toast lama hilang otomatis
+12. Klik switch baris `Manage group`
+13. Verifikasi switch `Manage group` berubah OFF
+14. Verifikasi C/R/U/D baris `Manage group` tampil `[─]` terkunci (disabled)
+15. Verifikasi muncul toast sukses: "Success, role has been updated."
+16. Tunggu toast lama hilang otomatis
 
 ### TC-AC-SU-175: Switch Global Role OFF ke ON kembali memulihkan CRUD sebelumnya
 
-15. Klik switch baris `Manage group`
-16. Verifikasi switch `Manage group` ON tanpa popup
-17. Verifikasi CRUD kembali ke C `[☐]`, R `[☑]` disabled, U `[☑]`, D `[☑]` (bukan default R saja)
+17. Klik switch baris `Manage group`
 18. Verifikasi muncul toast sukses: "Success, role has been updated."
-19. Tunggu toast lama hilang otomatis
+19. Verifikasi switch `Manage group` ON tanpa popup
+20. Verifikasi checkbox C baris `Manage group` kembali `[☐]`
+21. Verifikasi checkbox R baris `Manage group` kembali `[☑]` disabled
+22. Verifikasi checkbox U baris `Manage group` kembali `[☑]`
+23. Verifikasi checkbox D baris `Manage group` kembali `[☑]` (bukan default R saja)
+24. Tunggu toast lama hilang otomatis
 
 ### TC-AC-SU-177: Autosave centang Create pada Global Role aktif
 
-20. Centang C baris `Manage device master data`
-21. Verifikasi checkbox C baris `Manage device master data` tercentang tanpa tombol Save
-22. Verifikasi muncul toast sukses: "Success, permissions have been updated."
-23. Muat ulang halaman dengan F5
-24. Verifikasi checkbox C baris `Manage device master data` tetap tercentang
+25. Centang C baris `Manage device master data`
+26. Verifikasi checkbox C baris `Manage device master data` tercentang tanpa tombol Save
+27. Verifikasi muncul toast sukses: "Success, permissions have been updated."
+28. Muat ulang halaman dengan F5
+29. Verifikasi checkbox C baris `Manage device master data` tetap tercentang
 
 ### TC-AC-SU-178: Autosave uncheck Update dan Delete satu per satu pada Global Role aktif
 
-25. Uncheck U baris `Manage group`
-26. Verifikasi muncul toast sukses: "Success, permissions have been updated."
-27. Tunggu toast lama hilang otomatis
-28. Uncheck D baris `Manage group`
-29. Verifikasi muncul toast sukses: "Success, permissions have been updated." (satu toast per perubahan)
-30. Verifikasi U dan D baris `Manage group` tampil `[☐]`
+30. Uncheck U baris `Manage group`
+31. Verifikasi muncul toast sukses: "Success, permissions have been updated."
+32. Tunggu toast lama hilang otomatis
+33. Uncheck D baris `Manage group`
+34. Verifikasi muncul toast sukses: "Success, permissions have been updated." (satu toast per perubahan)
+35. Verifikasi U baris `Manage group` tampil `[☐]`
+36. Verifikasi D baris `Manage group` tampil `[☐]`
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, R-16): langkah 1, 9, 14, 19, 23, 27 (pencarian baris target lewat Search, penutupan menu atau dialog, pemulihan state, dan kembali ke User List); tanpa `Verifikasi` dan tanpa klaim keadaan.
+- Langkah penghubung (S-03, R-16): langkah 1, 11, 16, 24, 28, 32 (pencarian baris target lewat Search, penutupan menu atau dialog, pemulihan state, dan kembali ke User List); tanpa `Verifikasi` dan tanpa klaim keadaan.
+- Verifikasi toast sukses diletakkan tepat sesudah klik switch (langkah 4 dan 18), sebelum asersi switch, popup, dan checkbox, supaya toast yang bersifat sementara tertangkap; "Tunggu toast lama hilang otomatis" tetap di akhir blok.
 - Mode: FE+BE. Sumber: `admin-console/settings-user/TestCases/tc-settings-user.md`.
+- Ukuran spec (36 langkah, di atas smell sekitar 35 langkah): satu sub-tab Global Role pada satu user seed; lima TC berurutan pada `Manage group` (TC-175 dan TC-178 bergantung pada TC-174) dan tiap checkbox C, R, U, D diasersi satu `Verifikasi` per klausa (S-01), sehingga langkah bertambah tanpa pindah permukaan.
 - TC-175 bergantung pada TC-174 (Dependensi TC); keduanya berurutan pada role `Manage group`. TC-178 mengandalkan `Manage group` ON dengan U dan D tercentang, yang dipulihkan TC-175.
 - TC-177 butir Post "refresh halaman: C tetap tercentang" punya langkah observasi di TC dan diasersi lewat F5 (muat ulang sesi tanpa form dirty).
 - Temuan untuk QA:

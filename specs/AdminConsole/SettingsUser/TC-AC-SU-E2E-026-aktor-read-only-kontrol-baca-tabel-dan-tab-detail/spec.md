@@ -26,8 +26,8 @@ coverage:
 
 | TC | Nama TC | Nama seed | Email seed | State |
 |---|---|---|---|---|
-| TC-AC-SU-76 | `John Doe` | `John Doe {runId}-026` | `johndoe+{runId}-026@qwertysystem.net` | Activated, Active |
-| TC-AC-SU-367, 403 | `Jane Smith` | `Jane Smith {runId}-026` | `janesmith+{runId}-026@qwertysystem.net` | sedikitnya satu Pending Approval (Tab Responsibilities terisi) dan sedikitnya satu entri Changelog |
+| TC-AC-SU-76 | `John Doe` | `John Doe {runId}-026` | `johndoe+{runId}-026@qwertysystem.net` | Activated, Active; tanpa Pending Approval (label tab `Responsibilities (0)`) |
+| TC-AC-SU-367, 403 | `Jane Smith` | `Jane Smith {runId}-026` | `janesmith+{runId}-026@qwertysystem.net` | tepat satu Pending Approval (Tab Responsibilities terisi, label tab `Responsibilities (1)`) dan sedikitnya satu entri Changelog |
 
 - Data user lain di entitas (Pre-setup, lebih dari 10 baris) dipakai TC-AC-SU-75 untuk pagination next. Baris Default User (Pre-setup #1) dicari lewat Search atas emailnya. Seeding Pending Approval dan entri Changelog lewat Fixture BE (mekanisme tidak disebut TC; disediakan tim FE/BE).
 - Seeding di hook `before`, penghapusan data milik spec di hook `after`.
@@ -51,57 +51,62 @@ coverage:
 11. Tutup overlay Column Visibility dengan Esc
 12. Klik pagination next
 13. Verifikasi Pagination tampil dan berfungsi (halaman 2 terbuka)
-14. Verifikasi icon Download dan icon Changelog tampil
-15. Klik (⋯) satu baris
-16. Verifikasi row action (⋯) tampil dengan opsi `Detail`
-17. Tutup menu row action dengan Esc
+14. Verifikasi icon Download tampil
+15. Verifikasi icon Changelog tampil
+16. Klik (⋯) satu baris
+17. Verifikasi row action (⋯) tampil dengan opsi `Detail`
+18. Tutup menu row action dengan Esc
 
 ### TC-AC-SU-76: Seluruh tab Detail User tampil untuk Read Only
 
-18. Ketik Search `John Doe {runId}-026`, tekan Enter
-19. Klik Name `John Doe {runId}-026`
-20. Klik Tab `Role`
-21. Verifikasi Tab `Role` tampil dan terbuka
-22. Klik Tab `Responsibilities (N)`
-23. Verifikasi Tab `Responsibilities (N)` tampil dan terbuka
-24. Klik Tab `Changelog`
-25. Verifikasi Tab `Changelog` tampil dan terbuka
-26. Klik Tab `System Log`
-27. Verifikasi Tab `System Log` tampil dan terbuka
-28. Klik Tab `User Log`
-29. Verifikasi Tab `User Log` tampil dan terbuka
-30. Verifikasi tidak ada state disabled pada tab
-31. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+19. Ketik Search `John Doe {runId}-026`, tekan Enter
+20. Klik Name `John Doe {runId}-026`
+21. Klik Tab `Role`
+22. Verifikasi Tab `Role` tampil dan terbuka
+23. Klik Tab `Responsibilities (0)`
+24. Verifikasi Tab `Responsibilities (0)` tampil dan terbuka
+25. Klik Tab `Changelog`
+26. Verifikasi Tab `Changelog` tampil dan terbuka
+27. Klik Tab `System Log`
+28. Verifikasi Tab `System Log` tampil dan terbuka
+29. Klik Tab `User Log`
+30. Verifikasi Tab `User Log` tampil dan terbuka
+31. Verifikasi tidak ada state disabled pada tab
+32. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
 
 ### TC-AC-SU-80: Prioritas tooltip aktor Read Only terhadap baris Default User
 
-32. Ganti isi kotak search dengan `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
-33. Hover switch Active baris Default User
-34. Verifikasi switch Active baris Default User tetap tampil (visible) ON namun disabled
-35. Verifikasi tampil satu tooltip `Read Only access cannot modify data.`
-36. Verifikasi tooltip `Default User cannot be modified.` tidak tampil
+33. Ganti isi kotak search dengan `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
+34. Hover switch Active baris Default User
+35. Verifikasi switch Active baris Default User tetap tampil (visible) ON namun disabled
+36. Verifikasi tampil satu tooltip `Read Only access cannot modify data.`
+37. Verifikasi tooltip `Default User cannot be modified.` tidak tampil
 
 ### TC-AC-SU-367: Tab Responsibilities tetap tampil untuk aktor Read Only
 
-37. Ganti isi kotak search dengan `Jane Smith {runId}-026`, tekan Enter
-38. Klik Name `Jane Smith {runId}-026`
-39. Klik Tab `Responsibilities (N)`
-40. Verifikasi Tab `Responsibilities (N)` tampil dan tabel terisi
-41. Verifikasi toolbar Search, Filter, dan Download aktif
-42. Verifikasi tidak ada kontrol Disabled di tab ini
+38. Ganti isi kotak search dengan `Jane Smith {runId}-026`, tekan Enter
+39. Klik Name `Jane Smith {runId}-026`
+40. Klik Tab `Responsibilities (1)`
+41. Verifikasi Tab `Responsibilities (1)` tampil dan tabel terisi
+42. Verifikasi toolbar Search aktif
+43. Verifikasi toolbar Filter aktif
+44. Verifikasi toolbar Download aktif
+45. Verifikasi tidak ada kontrol Disabled di tab ini
 
 ### TC-AC-SU-403: Tab Changelog dapat dibuka aktor Read Only
 
-43. Klik Tab `Changelog`
-44. Verifikasi Tab Changelog tampil dengan data
-45. Verifikasi Search, Filter, dan Download aktif
+46. Klik Tab `Changelog`
+47. Verifikasi Tab Changelog tampil dengan data
+48. Verifikasi Search aktif
+49. Verifikasi Filter aktif
+50. Verifikasi Download aktif
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 3, 6, 11, dan 17 (reset kontrol yang dibuka, S-09), langkah 31 (kembali ke daftar); Search untuk menemukan baris target adalah penghubung (R-16). Layar awal dibuka hook `beforeEach` suite.
-- Ukuran spec (45 langkah, di atas smell sekitar 35 langkah): satu akun (Read Only) pada satu halaman; lima blok TC berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna) dengan tiap kontrol atau tab diasersi setelah aksinya (S-01).
+- Langkah penghubung (S-03): langkah 3, 6, 11, dan 18 (reset kontrol yang dibuka, S-09), langkah 32 (kembali ke daftar); Search untuk menemukan baris target adalah penghubung (R-16). Layar awal dibuka hook `beforeEach` suite.
+- Ukuran spec (50 langkah, di atas smell sekitar 35 langkah): satu akun (Read Only) pada satu halaman; lima blok TC berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna) dengan tiap kontrol atau tab diasersi setelah aksinya (S-01).
 - Temuan untuk QA:
   - TC-AC-SU-75 butir a menyebut Download dan Changelog "tampil dan berfungsi" tetapi langkah TC tidak mengklik keduanya; spec mengasersi Download dan Changelog tampil dan tidak menjalankannya.
   - TC-AC-SU-367 dan TC-AC-SU-403 mensyaratkan Pending Approval dan entri Changelog pada `Jane Smith` tanpa cara membuatnya; disediakan tim FE/BE.
-  - Label tab `Responsibilities (N)` ditulis dengan placeholder `N` sesuai TC (nilai N tidak diasersi di spec ini).
+  - TC menulis label tab `Responsibilities (N)` tanpa nilai; spec menurunkan N dari seeding: `John Doe {runId}-026` tanpa Pending Approval (0) dan `Jane Smith {runId}-026` dengan tepat satu Pending Approval (1).
   - Nama user TC (`John Doe`, `Jane Smith`) dipakai sebagai nama bersuffix `{runId}-026` sesuai S-12 (Lampiran A tidak memuat pengecualian modul Settings > User).

@@ -44,7 +44,7 @@ coverage:
 5. Verifikasi toast sukses `"Success, user has been deactivated."`
 6. Verifikasi list di-refresh dan switch Active baris U1 bernilai OFF
 ### TC-AC-SU-634: Deactivate request lama adalah no-op
-7. Ketik Search `Jane Smith {runId}-184E`, tekan Enter sehingga baris U5 tampil Active
+7. Ganti isi kotak Search dengan `Jane Smith {runId}-184E`, tekan Enter sehingga baris U5 tampil Active
 8. Aktor B men-deactivate U5 lewat sesi API hingga status Inactive tersimpan
 9. Catat jumlah entri U5 pada Popup Changelog: User sebagai N5 (Search `Jane Smith {runId}-184E`), lalu tutup popup
 10. Klik switch Active baris U5 dari ON ke OFF di layar aktor A, lalu klik `[Deactivate]`
@@ -53,7 +53,7 @@ coverage:
 13. Buka Popup Changelog: User, ketik Search `Jane Smith {runId}-184E`, tekan Enter
 14. Verifikasi jumlah entri U5 sama dengan N5 (tidak ada entri baru)
 ### TC-AC-SU-625: Activate oleh dua aktor bersamaan
-15. Tutup popup, ketik Search `Jane Smith {runId}-184B`, tekan Enter sehingga baris U2 tampil Inactive
+15. Tutup popup, ganti isi kotak Search dengan `Jane Smith {runId}-184B`, tekan Enter sehingga baris U2 tampil Inactive
 16. Klik switch Active baris U2 sehingga dialog Activate User tampil (belum dikonfirmasi)
 17. Aktor B meng-activate U2 lewat sesi API hingga status Active tersimpan
 18. Catat jumlah entri Changelog U2 sebagai N2 lewat Fixture BE (dialog Activate User tetap terbuka)
@@ -64,7 +64,7 @@ coverage:
 23. Buka Popup Changelog: User, ketik Search `Jane Smith {runId}-184B`, tekan Enter
 24. Verifikasi jumlah entri U2 sama dengan N2 (request aktor A no-op, tanpa entri log tambahan)
 ### TC-AC-SU-627: Switch role target Total Control diubah aktor lain saat dialog Auto-Revert terbuka
-25. Tutup popup, ketik Search `Rina Putri {runId}-184D`, tekan Enter, klik Name baris U4, klik Tab Role, lalu sub-tab Global Role
+25. Tutup popup, ganti isi kotak Search dengan `Rina Putri {runId}-184D`, tekan Enter, klik Name baris U4, klik Tab Role, lalu sub-tab Global Role
 26. Uncheck Delete pada "Manage group" sehingga dialog Remove Total Control tampil
 27. Aktor B mengedit role U4 hingga Auto-Revert dan konfirmasi tersimpan lewat sesi API
 28. Klik `[Remove]`
@@ -75,20 +75,22 @@ coverage:
 33. Verifikasi Tab Changelog memuat tepat 1 entri Auto-Revert untuk U4 (tidak ada entri Auto-Revert kedua)
 ### TC-AC-SU-626: Save Assign Group Role dua aktor memakai last-write-wins
 34. Klik menu Settings > User di sidebar, ketik Search `Mike Tan {runId}-184C`, tekan Enter, klik Name baris U3, klik Tab Role, lalu sub-tab Group Role
-35. Buka konteks kedua (jendela privat), login sebagai Default User, buka Detail U3 (Search nama, klik Name, Tab Role, sub-tab Group Role), lalu klik `[Assign Group]` pada baris "Manage partner"
-36. Aktor A: klik `[Assign Group]` pada baris "Manage partner", klik `[+ Assign Group]`, centang Region B, klik `[Select]`, lalu klik `[Save]`
-37. Verifikasi toast sukses di sesi aktor A
-38. Aktor B (popup dibuka sebelum aktor A menyimpan): hapus baris Region A, klik `[+ Assign Group]`, centang Branch 1, klik `[Select]`, lalu klik `[Save]`
-39. Verifikasi toast sukses di sesi aktor B
-40. Verifikasi tidak ada dialog konflik di kedua sesi
-41. Tutup konteks kedua dan hapus sesi loginnya, lalu muat ulang Detail U3 di sesi aktor A dan buka sub-tab Group Role
-42. Verifikasi kolom Group baris "Manage partner" bernilai hasil Save aktor B (`Branch 1`)
+35. Buka konteks kedua (jendela privat), login sebagai Default User
+36. Buka Settings > User lewat sidebar di sesi aktor B
+37. Buka Detail U3 (Search nama, klik Name, Tab Role, sub-tab Group Role), lalu klik `[Assign Group]` pada baris "Manage partner"
+38. Aktor A: klik `[Assign Group]` pada baris "Manage partner", klik `[+ Assign Group]`, centang Region B, klik `[Select]`, lalu klik `[Save]`
+39. Verifikasi toast sukses di sesi aktor A
+40. Aktor B (popup dibuka sebelum aktor A menyimpan): hapus baris Region A, klik `[+ Assign Group]`, centang Branch 1, klik `[Select]`, lalu klik `[Save]`
+41. Verifikasi toast sukses di sesi aktor B
+42. Verifikasi tidak ada dialog konflik di kedua sesi
+43. Tutup konteks kedua dan hapus sesi loginnya, lalu muat ulang Detail U3 di sesi aktor A dan buka sub-tab Group Role
+44. Verifikasi kolom Group baris "Manage partner" bernilai hasil Save aktor B (`Branch 1`)
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): Search baris target (R-16), pencatatan jumlah entri awal (langkah 9, 18), pembukaan konteks kedua dan login (langkah 35), menutup popup dan konteks kedua. Aktor B pada TC-102, TC-634, TC-625, dan TC-627 memakai sesi API (pelaku kedua hanya memicu perubahan state, `P-2` tidak dipakai); aktor B TC-626 memakai sesi UI karena toast di sesi B diasersi.
+- Langkah penghubung tanpa Verifikasi (S-03): Search baris target (R-16), pencatatan jumlah entri awal (langkah 9, 18), pembukaan konteks kedua dan login (langkah 35), pembukaan Settings > User lewat sidebar di sesi aktor B (langkah 36), menutup popup dan konteks kedua. Aktor B pada TC-102, TC-634, TC-625, dan TC-627 memakai sesi API (pelaku kedua hanya memicu perubahan state, `P-2` tidak dipakai); aktor B TC-626 memakai sesi UI karena toast di sesi B diasersi.
 - Urutan: TC-102, TC-634, TC-625, TC-627, TC-626. TC-626 terakhir karena memakai konteks UI kedua. Asersi "tanpa entri log tambahan" memakai selisih jumlah entri terhadap baseline (bukan absence kelas g). TC-AC-SU-102 pasangan topik dengan TC-AC-SU-634 (sama-sama Deactivate pada user yang sudah Inactive) dan keduanya tetap di spec ini.
-- Lima blok kelas c berpola sama (layar aktor A dimuat, aktor B memicu state, aktor A bertindak) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna, sehingga 42 langkah (di atas smell 35 langkah) dipertahankan.
+- Lima blok kelas c berpola sama (layar aktor A dimuat, aktor B memicu state, aktor A bertindak) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna, sehingga 44 langkah (di atas smell 35 langkah) dipertahankan.
 - Temuan untuk QA:
   - TC-102, TC-625, TC-627, dan TC-634 tidak menyatakan apakah aktor B memakai sesi UI atau API; spec memakai sesi API untuk pelaku yang hanya memicu dan sesi UI kedua hanya pada TC-626.
   - Post Condition TC-102 ("Hanya 1 entri log Deactivate (milik aktor B)") tidak punya langkah observasi di TC dan tidak diasersi; TC-634 butir c ("tidak ada entri log baru") diasersi lewat selisih jumlah entri.

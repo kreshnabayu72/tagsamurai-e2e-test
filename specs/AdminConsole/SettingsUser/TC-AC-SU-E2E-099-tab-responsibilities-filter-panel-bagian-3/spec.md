@@ -48,37 +48,38 @@ coverage:
 10. Ganti ketikan dengan `zzqx`
 11. Verifikasi dropdown menampilkan state tidak ada opsi cocok
 12. Tutup dropdown
+13. Klik icon Filter untuk menutup Filter Panel
 
 ### TC-AC-SU-354: Search lalu Filter, hasil irisan
 
-13. Klik icon Search
-14. Ketik Search `2026`, tekan Enter
-15. Klik icon Filter
-16. Pilih `Device Allocation` di field `Transaction`
-17. Klik `[Apply]`
-18. Verifikasi baris `ID-HALC` (memuat `2026`, Device Allocation) tampil
-19. Verifikasi baris `ID-LALC` dan `ID-WLT` tidak tampil
-20. Verifikasi keyword Search `2026` tetap terisi
-21. Klik `[Clear Field]`, klik `[Apply]`
-22. Klik `(←)` pada kotak Search
+14. Klik icon Search
+15. Ketik Search `2026`, tekan Enter
+16. Klik icon Filter
+17. Pilih `Device Allocation` di field `Transaction`
+18. Klik `[Apply]`
+19. Verifikasi baris `ID-HALC` (memuat `2026`, Device Allocation) tampil
+20. Verifikasi baris `ID-LALC` dan `ID-WLT` tidak tampil
+21. Verifikasi keyword Search `2026` tetap terisi
+22. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
+23. Klik `(←)` pada kotak Search
 
 ### TC-AC-SU-355: Filter lalu Search, hasil irisan
 
-23. Klik icon Filter
-24. Pilih `Device Allocation` di field `Transaction`
-25. Klik `[Apply]`
-26. Klik icon Search
-27. Ketik Search `2026`, tekan Enter
-28. Verifikasi baris `ID-HALC` (Device Allocation, memuat `2026`) tampil
-29. Verifikasi baris `ID-LALC` dan `ID-WLT` tidak tampil
-30. Klik `(←)` pada kotak Search
-31. Verifikasi baris `ID-HALC` tampil (filter Transaction `Device Allocation` tetap aktif)
-32. Verifikasi baris `ID-LALC` dan `ID-WLT` tidak tampil
-33. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
+24. Klik icon Filter
+25. Pilih `Device Allocation` di field `Transaction`
+26. Klik `[Apply]`
+27. Klik icon Search
+28. Ketik Search `2026`, tekan Enter
+29. Verifikasi baris `ID-HALC` (Device Allocation, memuat `2026`) tampil
+30. Verifikasi baris `ID-LALC` dan `ID-WLT` tidak tampil
+31. Klik `(←)` pada kotak Search
+32. Verifikasi baris `ID-HALC` tampil (filter Transaction `Device Allocation` tetap aktif)
+33. Verifikasi baris `ID-LALC` dan `ID-WLT` tidak tampil
+34. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
 
 ## Notes
 
-- Langkah penghubung (S-03): Search lalu klik Name membuka Detail target (R-16); `[Clear Field]` lalu `[Apply]` dan `(←)` di akhir tiap TC mereset state (S-09).
+- Langkah penghubung (S-03): Search lalu klik Name membuka Detail target (R-16); Filter Panel ditutup sesudah TC-353 (toggle icon Filter) agar `Klik icon Filter` berikutnya membukanya; `[Apply]` menutup panel, sehingga `[Clear Field]` sesudah Apply diawali `Klik icon Filter`; `[Clear Field]` lalu `[Apply]` dan `(←)` di akhir tiap TC mereset state (S-09).
 - Spec ini memakai empat Pending Approval (satu `TAG Stock` tambahan) agar opsi `Transaction` lebih dari 3 nilai sesuai precondition TC-353.
 - Temuan untuk QA:
   - TC menulis nama data DS-UL secara literal (nama user, email, position, division). Spec memakai nama bersuffix ` {runId}-099` (S-12) dan mengasersi baris milik spec; klaim "hanya X yang tampil" pada TC tidak dapat diasersi atas seluruh tabel karena baris Pre-setup bernama sama ikut ada di entitas Principal.

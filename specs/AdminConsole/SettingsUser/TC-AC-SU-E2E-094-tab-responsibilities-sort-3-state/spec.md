@@ -24,7 +24,7 @@ coverage:
 | `ID-HALC` (format `HALC-2026-NNNN`) | Device Allocation | `Budi Santoso {runId}-094` | 08 Jun 2026 |
 | `ID-LALC` (format `LALC-2026-NNNN`) | License Allocation | `Rina Putri {runId}-094` | 02 Jun 2026 |
 | `ID-WLT` (format `WLT-2026-NNNN`) | Wallet Top-Up | `PT Maju Bersama {runId}-094` | 05 Jun 2026 |
-- Tabel sort TC-338 (parameter langkah 5 sampai 10):
+- Tabel sort TC-338 (parameter langkah 5 sampai 12):
 | No | Kolom | Urutan baris klik 1 (A-Z, ikon ↑) | Urutan baris klik 2 (Z-A, ikon ↓) |
 |---|---|---|---|
 | 1 | ID | `ID-HALC`, `ID-LALC`, `ID-WLT` | `ID-WLT`, `ID-LALC`, `ID-HALC` |
@@ -45,23 +45,25 @@ coverage:
 4. Klik tab `Responsibilities (3)`
 5. Klik header kolom pada kolom "Kolom" tabel sort TC-338 (klik 1)
 6. Verifikasi urutan baris pada kolom "Urutan baris klik 1" tabel sort TC-338
-7. Klik header kolom yang sama (klik 2)
-8. Verifikasi urutan baris pada kolom "Urutan baris klik 2" tabel sort TC-338
-9. Klik header kolom yang sama (klik 3)
-10. Verifikasi urutan kembali ke default Submission Date Oldest First (`ID-LALC`, `ID-WLT`, `ID-HALC`)
+7. Verifikasi ikon sort `↑` tampil pada header kolom itu
+8. Klik header kolom yang sama (klik 2)
+9. Verifikasi urutan baris pada kolom "Urutan baris klik 2" tabel sort TC-338
+10. Verifikasi ikon sort `↓` tampil pada header kolom itu
+11. Klik header kolom yang sama (klik 3)
+12. Verifikasi urutan kembali ke default Submission Date Oldest First (`ID-LALC`, `ID-WLT`, `ID-HALC`)
 
 ### TC-AC-SU-339: Sort 3-state Tab Responsibilities kelas tanggal
 
-11. Klik header Submission Date (klik 1)
-12. Verifikasi urutan baris `ID-LALC`, `ID-WLT`, `ID-HALC` (Oldest First, ikon ↑)
-13. Klik header Submission Date (klik 2)
-14. Verifikasi urutan baris `ID-HALC`, `ID-WLT`, `ID-LALC` (Newest First, ikon ↓)
-15. Klik header Submission Date (klik 3)
-16. Verifikasi urutan kembali ke default Submission Date Oldest First
+13. Klik header Submission Date (klik 1)
+14. Verifikasi urutan baris `ID-LALC`, `ID-WLT`, `ID-HALC` (Oldest First, ikon ↑)
+15. Klik header Submission Date (klik 2)
+16. Verifikasi urutan baris `ID-HALC`, `ID-WLT`, `ID-LALC` (Newest First, ikon ↓)
+17. Klik header Submission Date (klik 3)
+18. Verifikasi urutan kembali ke default Submission Date Oldest First
 
 ## Notes
 
-- Langkah 5 sampai 10 diulang untuk tiap baris tabel sort TC-338 (8b butir 7); parameter ada di Prerequisites.
+- Langkah 5 sampai 12 diulang untuk tiap baris tabel sort TC-338 (8b butir 7); parameter ada di Prerequisites.
 - Langkah penghubung (S-03): Search lalu klik Name membuka Detail target (R-16).
 - Alasan di atas ±35 langkah (ekspansi): kedua TC adalah Sort Tab Responsibilities dengan dataset sama; berdiri sendiri.
 - Temuan untuk QA:

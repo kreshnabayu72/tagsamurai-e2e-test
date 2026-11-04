@@ -35,7 +35,7 @@ coverage:
 | 6 | Edit | Manage distributor — Region A {runId}-149 | Update | Inactive | Active | Admin U |
 | 7 | Edit | Manage distributor — Region A {runId}-149 | Update | Inactive | Active | Admin U |
 
-- Baris seed nomor 5, 6, dan 7 ber-Date eksplisit pada bulan berjalan: tanggal 02, 05, dan 08. Date Format General Settings entitas Principal tidak diubah spec ini. Role Name tersedia sebagai opsi: `Manage distributor` dan `Manage partner`; Group Name: `Region A {runId}-149` dan `Region B {runId}-149`.
+- Baris seed nomor 5, 6, dan 7 ber-Date relatif terhadap hari uji: T-10, T-7, dan T-4 (T-N berarti N hari sebelum hari uji). Date Format General Settings entitas Principal tidak diubah spec ini. Role Name tersedia sebagai opsi: `Manage distributor` dan `Manage partner`; Group Name: `Region A {runId}-149` dan `Region B {runId}-149`.
 
 | Field uji Filter | Opsi |
 |---|---|
@@ -86,11 +86,11 @@ coverage:
 
 26. Klik icon Filter
 27. Klik field `Date` (placeholder `"Select date"`)
-28. Pilih tanggal awal 02 dan tanggal akhir 05
+28. Pilih tanggal awal T-10 dan tanggal akhir T-7
 29. Verifikasi isi field `Date` tampil sesuai Date Format General Settings
 30. Klik `[Apply]`
-31. Verifikasi tabel menampilkan baris seed ber-Date tanggal 02 dan 05 (baris seed nomor 5 dan 6), batas inklusif
-32. Verifikasi baris seed ber-Date tanggal 08 (baris seed nomor 7) tidak tampil
+31. Verifikasi tabel menampilkan baris seed ber-Date T-10 dan T-7 (baris seed nomor 5 dan 6), batas inklusif
+32. Verifikasi baris seed ber-Date T-4 (baris seed nomor 7) tidak tampil
 33. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
@@ -101,4 +101,4 @@ coverage:
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
 - Alasan ekspansi di atas ±35 langkah (33 langkah nominal, sekitar 49 dengan ekspansi blok berulang): semua TC berada di satu surface (Modal Changelog: User > Group Role (Filter Panel)), satu akun, satu dataset; tiap TC berdiri sendiri dan diakhiri `[Clear Field]` lalu `[Apply]` sehingga kegagalan satu TC tidak membuat TC lain kehilangan makna.
 - Langkah penghubung (tanpa `Verifikasi`; S-03, R-16): Search untuk menemukan baris target sebelum membuka Detail (langkah 1); baris user seed tidak dijamin berada di halaman pertama User List.
-- Temuan untuk QA: (1) TC-AC-SU-515 mensyaratkan entri `Manage distributor — Region A` dan `Manage partner — Region B`; opsi `Role Name` dan `Group Name` diamati tepat dua nilai karena data user seed milik spec. (2) TC-AC-SU-518 memakai tanggal 02, 05, dan 08 bulan berjalan; pada awal bulan tanggal 05 dan 08 berada di masa depan sehingga seeding Date eksplisit dan pemilih tanggal Filter dapat menolaknya; TC tidak menyebut perilaku ini.
+- Temuan untuk QA: (1) TC-AC-SU-515 mensyaratkan entri `Manage distributor — Region A` dan `Manage partner — Region B`; opsi `Role Name` dan `Group Name` diamati tepat dua nilai karena data user seed milik spec.

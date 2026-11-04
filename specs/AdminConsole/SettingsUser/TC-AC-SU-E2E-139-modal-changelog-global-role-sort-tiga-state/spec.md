@@ -54,46 +54,47 @@ coverage:
 
 ### TC-AC-SU-485: Sort 3-state kelas teks
 
-3. Untuk setiap kolom pada tabel "Kolom uji Sort kelas teks" di Prerequisites (`Action`, `Role Name`, `Field`, `Modified By`), lakukan langkah 4 sampai 11
-4. Klik header `<kolom pada iterasi>` (klik 1)
-5. Verifikasi kolom `<kolom pada iterasi>` terurut A–Z
-6. Verifikasi kolom `<kolom pada iterasi>` menampilkan ikon sort ↑
-7. Klik header `<kolom pada iterasi>` lagi (klik 2)
-8. Verifikasi kolom `<kolom pada iterasi>` terurut Z–A
-9. Verifikasi kolom `<kolom pada iterasi>` menampilkan ikon sort ↓
-10. Klik header `<kolom pada iterasi>` lagi (klik 3)
-11. Verifikasi tabel kembali ke sort default (Date Newest First)
+3. Verifikasi tabel menampilkan sedikitnya dua baris data uji
+4. Untuk setiap kolom pada tabel "Kolom uji Sort kelas teks" di Prerequisites (`Action`, `Role Name`, `Field`, `Modified By`), lakukan langkah 5 sampai 12
+5. Klik header `<kolom pada iterasi>` (klik 1)
+6. Verifikasi kolom `<kolom pada iterasi>` terurut A–Z
+7. Verifikasi kolom `<kolom pada iterasi>` menampilkan ikon sort ↑
+8. Klik header `<kolom pada iterasi>` lagi (klik 2)
+9. Verifikasi kolom `<kolom pada iterasi>` terurut Z–A
+10. Verifikasi kolom `<kolom pada iterasi>` menampilkan ikon sort ↓
+11. Klik header `<kolom pada iterasi>` lagi (klik 3)
+12. Verifikasi tabel kembali ke sort default (Date Newest First)
 
 ### TC-AC-SU-486: Sort 3-state kelas campuran
 
-12. Untuk setiap kolom pada tabel "Kolom uji Sort kelas campuran" di Prerequisites (`Old Value`, `New Value`), lakukan langkah 13 sampai 22
-13. Klik header `<kolom pada iterasi>` (klik 1)
-14. Verifikasi kolom `<kolom pada iterasi>` terurut numerik dulu lalu teks
-15. Verifikasi nilai kosong pada kolom `<kolom pada iterasi>` berada di akhir
-16. Verifikasi kolom `<kolom pada iterasi>` menampilkan ikon sort ↑
-17. Klik header `<kolom pada iterasi>` lagi (klik 2)
-18. Verifikasi kolom `<kolom pada iterasi>` terurut kebalikannya
-19. Verifikasi nilai kosong pada kolom `<kolom pada iterasi>` berada di awal
-20. Verifikasi kolom `<kolom pada iterasi>` menampilkan ikon sort ↓
-21. Klik header `<kolom pada iterasi>` lagi (klik 3)
-22. Verifikasi tabel kembali ke sort default (Date Newest First)
+13. Untuk setiap kolom pada tabel "Kolom uji Sort kelas campuran" di Prerequisites (`Old Value`, `New Value`), lakukan langkah 14 sampai 23
+14. Klik header `<kolom pada iterasi>` (klik 1)
+15. Verifikasi kolom `<kolom pada iterasi>` terurut numerik dulu lalu teks
+16. Verifikasi nilai kosong pada kolom `<kolom pada iterasi>` berada di akhir
+17. Verifikasi kolom `<kolom pada iterasi>` menampilkan ikon sort ↑
+18. Klik header `<kolom pada iterasi>` lagi (klik 2)
+19. Verifikasi kolom `<kolom pada iterasi>` terurut kebalikannya
+20. Verifikasi nilai kosong pada kolom `<kolom pada iterasi>` berada di awal
+21. Verifikasi kolom `<kolom pada iterasi>` menampilkan ikon sort ↓
+22. Klik header `<kolom pada iterasi>` lagi (klik 3)
+23. Verifikasi tabel kembali ke sort default (Date Newest First)
 
 ### TC-AC-SU-487: Sort 3-state kelas tanggal
 
-23. Klik header `Date` (klik 1)
-24. Verifikasi kolom `Date` terurut Oldest First
-25. Verifikasi kolom `Date` menampilkan ikon sort ↑
-26. Klik header `Date` lagi (klik 2)
-27. Verifikasi kolom `Date` terurut Newest First
-28. Verifikasi kolom `Date` menampilkan ikon sort ↓
-29. Klik header `Date` lagi (klik 3)
-30. Verifikasi tabel kembali ke sort default (Date Newest First)
+24. Klik header `Date` (klik 1)
+25. Verifikasi kolom `Date` terurut Oldest First
+26. Verifikasi kolom `Date` menampilkan ikon sort ↑
+27. Klik header `Date` lagi (klik 2)
+28. Verifikasi kolom `Date` terurut Newest First
+29. Verifikasi kolom `Date` menampilkan ikon sort ↓
+30. Klik header `Date` lagi (klik 3)
+31. Verifikasi tabel kembali ke sort default (Date Newest First)
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Langkah yang diulang per kolom: langkah 4 sampai 11 (kelas teks, tabel "Kolom uji Sort kelas teks") dan langkah 13 sampai 22 (kelas campuran, tabel "Kolom uji Sort kelas campuran"); `Verifikasi` tiap klik tetap satu per klausa. Membuka Detail, tab `Role`, dan sub-tab `Global Role` dijadikan satu langkah penghubung bersama klik icon `[📋]` (S-03).
+- Langkah yang diulang per kolom: langkah 5 sampai 12 (kelas teks, tabel "Kolom uji Sort kelas teks") dan langkah 14 sampai 23 (kelas campuran, tabel "Kolom uji Sort kelas campuran"); `Verifikasi` tiap klik tetap satu per klausa. Membuka Detail, tab `Role`, dan sub-tab `Global Role` dijadikan satu langkah penghubung bersama klik icon `[📋]` (S-03).
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
-- Alasan ekspansi di atas ±35 langkah (30 langkah nominal, sekitar 64 dengan ekspansi blok berulang): semua TC berada di satu surface (Modal Changelog: User > Global Role (Sort)), satu akun, satu dataset; tiap TC berdiri sendiri dan tiap iterasi kolom diakhiri kembali ke sort default sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Alasan ekspansi di atas ±35 langkah (31 langkah nominal, sekitar 65 dengan ekspansi blok berulang): semua TC berada di satu surface (Modal Changelog: User > Global Role (Sort)), satu akun, satu dataset; tiap TC berdiri sendiri dan tiap iterasi kolom diakhiri kembali ke sort default sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (tanpa `Verifikasi`; S-03, R-16): Search untuk menemukan baris target sebelum membuka Detail (langkah 1); baris user seed tidak dijamin berada di halaman pertama User List.
 - Temuan untuk QA: TC-AC-SU-487: klik 2 menghasilkan Newest First (ikon ↓) dan klik 3 "kembali ke sort default (Date Newest First)", sehingga urutan klik 2 dan klik 3 sama dan hanya ikon yang membedakan; spec mengikuti TC. Pelaku seed `Budi K` dan `Citra M` pada kolom Modified By tidak terpetakan ke akun mana pun di Pre-setup; nilai dipakai apa adanya sebagai data seed, bukan akun login.

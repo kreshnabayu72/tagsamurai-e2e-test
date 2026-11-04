@@ -31,7 +31,7 @@ coverage:
 | 4 | Assign | Mike Tan {runId}-131 | Group | - | Manager | Citra M |
 
 - Seed untuk TC-AC-SU-458: user `Sarah Lee {runId}-131` punya entri nomor 3 lalu App Access Admin Console-nya dicabut di Global Settings (dilakukan fixture BE di hook `before`, dipakai sebagai precondition TC, tidak diasersi); user `Andi Wijaya {runId}-131` ada di User List tanpa entri Changelog.
-- Seed untuk TC-AC-SU-460: tiga entri tambahan ber-Date eksplisit pada bulan berjalan: tanggal 02 (`Rina Putri {runId}-131`, Action `Edit`), tanggal 05 (`Budi Santoso {runId}-131`, Action `Edit`), dan tanggal 08 (`Dewi Lestari {runId}-131`, Action `Edit`), masing-masing Field `Tier`, Modified By `Admin U`.
+- Seed untuk TC-AC-SU-460: tiga entri tambahan ber-Date relatif terhadap hari uji (T-N berarti N hari sebelum hari uji): T-10 (`Rina Putri {runId}-131`, Action `Edit`), T-7 (`Budi Santoso {runId}-131`, Action `Edit`), dan T-4 (`Dewi Lestari {runId}-131`, Action `Edit`), masing-masing Field `Tier`, Modified By `Admin U`.
 - Date Format General Settings entitas Principal tidak diubah spec ini.
 
 | Field uji Filter | Opsi |
@@ -72,18 +72,19 @@ coverage:
 
 17. Klik icon Filter
 18. Klik field `Date` (placeholder `"Select date"`)
-19. Pilih tanggal awal 02 dan tanggal akhir 05
+19. Pilih tanggal awal T-10 dan tanggal akhir T-7
 20. Verifikasi isi field `Date` tampil sesuai Date Format General Settings
-21. Klik `[Apply]`
-22. Verifikasi tabel menampilkan baris seed ber-Date tanggal 02 dan 05 (`Rina Putri {runId}-131` dan `Budi Santoso {runId}-131`), batas inklusif
-23. Verifikasi baris seed ber-Date tanggal 08 (`Dewi Lestari {runId}-131`) tidak tampil
-24. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+21. Pilih opsi `Rina Putri {runId}-131`, `Budi Santoso {runId}-131`, dan `Dewi Lestari {runId}-131` pada field `User Name`
+22. Klik `[Apply]`
+23. Verifikasi tabel menampilkan baris seed ber-Date T-10 dan T-7 (`Rina Putri {runId}-131` dan `Budi Santoso {runId}-131`), batas inklusif
+24. Verifikasi baris seed ber-Date T-4 (`Dewi Lestari {runId}-131`) tidak tampil
+25. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Langkah yang diulang per field: langkah 9 sampai 16 (iterasi dari tabel "Field uji Filter" di Prerequisites); `Verifikasi` tetap satu per klausa.
-- Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): menutup dropdown dan Filter Panel, serta membersihkan Filter di langkah 24. TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).
+- Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): menutup dropdown dan Filter Panel, serta memilih user seed pada field `User Name` sebagai Filter pembatas di langkah 21 (agar asersi Date tidak bercampur entri run lain pada audit trail se-entitas, S-14), serta membersihkan Filter di langkah 25. TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
 - Entitas Principal punya audit trail permanen yang tumbuh: entri seed spec ini ditulis dengan Date terbaru sehingga berada di halaman pertama (Newest First), dan tidak ada total entri yang diasersi sebagai angka absolut (S-12, S-14).
-- Temuan untuk QA: (1) TC-AC-SU-458 menyebut pencabutan App Access sebagai precondition tanpa menyebut cara; spec menyerahkannya ke fixture BE (disediakan tim FE/BE). (2) TC-AC-SU-460 memakai tanggal 02, 05, dan 08 pada bulan berjalan; pada awal bulan tanggal 05 dan 08 berada di masa depan sehingga seeding Date eksplisit dan pemilih tanggal Filter dapat menolaknya; TC tidak menyebut perilaku ini. (3) TC-AC-SU-460 tidak menyebut user pemilik baris tanggal 02, 05, dan 08; spec memakai user Pre-setup lain (`Rina Putri`, `Budi Santoso`, `Dewi Lestari`) bersuffix agar baris dapat diidentifikasi.
+- Temuan untuk QA: (1) TC-AC-SU-458 menyebut pencabutan App Access sebagai precondition tanpa menyebut cara; spec menyerahkannya ke fixture BE (disediakan tim FE/BE). (2) TC-AC-SU-460 tidak menyebut user pemilik baris T-10, T-7, dan T-4; spec memakai user Pre-setup lain (`Rina Putri`, `Budi Santoso`, `Dewi Lestari`) bersuffix agar baris dapat diidentifikasi.

@@ -32,7 +32,7 @@ coverage:
 
 Isi seed di atas tidak diasersi (bukan precondition TC); hanya memastikan Modal Changelog: User > Global Role memiliki entri.
 
-- Konfigurasi kolom disimpan di browser: hook `before` menghapus preferensi kolom Modal Changelog: User > Global Role dan hook `after` menghapusnya lagi (bukan `[Reset to Default]`; kemampuan disediakan tim FE). Konfigurasi default pada awal spec; TC-AC-SU-501 dan 502 tidak menyimpan konfigurasi.
+- Konfigurasi kolom Modal Changelog: User > Global Role default pada awal spec; TC-AC-SU-501 dan 502 tidak menyimpan konfigurasi.
 - Changelog adalah audit trail permanen: entri seed tidak dapat dihapus; hook `after` hanya menonaktifkan/menghapus user seed milik spec ini. Total entri tidak diasersi sebagai angka absolut (S-12).
 
 ## Test Steps
@@ -60,15 +60,16 @@ Isi seed di atas tidak diasersi (bukan precondition TC); hanya memastikan Modal 
 15. Buka popup Setup Column (klik header `⋯`, lalu klik `[Setup Column]`)
 16. Uncheck satu per satu kolom `Action`, `Role Name`, `Field`, `Old Value`, `New Value`, `Modified By`
 17. Hover checkbox `Date`
-18. Verifikasi checkbox `Date` tetap tampil, checked, dan disabled
-19. Verifikasi tooltip `At least one column must remain visible.` tampil
-20. Klik icon `(X)` pada popup
+18. Verifikasi checkbox `Date` tampil
+19. Verifikasi checkbox `Date` checked
+20. Verifikasi checkbox `Date` disabled
+21. Verifikasi tooltip `At least one column must remain visible.` tampil
+22. Klik icon `(X)` pada popup
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): langkah 2 membuka Detail, tab `Role`, sub-tab `Global Role`, lalu klik icon `[📋]` Changelog; penutupan popup memakai `(X)` atau `Esc` sesuai TC.
-- Suite perlu mendaftarkan penghapusan preferensi kolom Modal Changelog: User > Global Role di hook `after` suite (bagian 4 konvensi).
 - Nama literal TC (mis. `Jane Smith`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis.
 - Pembagian TC Modal Changelog Global Role Setup Column: TC-AC-SU-499 dan 500 di spec 143, TC-AC-SU-501 dan 502 di spec ini.
 - Langkah penghubung (tanpa `Verifikasi`; S-03, R-16): Search untuk menemukan baris target sebelum membuka Detail (langkah 1); baris user seed tidak dijamin berada di halaman pertama User List.

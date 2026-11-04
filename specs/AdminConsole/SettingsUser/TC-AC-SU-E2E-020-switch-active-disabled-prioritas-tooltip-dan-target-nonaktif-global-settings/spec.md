@@ -26,7 +26,7 @@ coverage:
 | TC | Nama TC | Nama seed | Email seed | State |
 |---|---|---|---|---|
 | TC-AC-SU-100 | `Rudi Hartono` | `Rudi Hartono {runId}-020` | `rudihartono+{runId}-020@qwertysystem.net` | switch per-produk ON lalu dinonaktifkan di Global Settings |
-| TC-AC-SU-101 | `Rudi Hartono` | `Rudi Hartono {runId}-020-T101` | `rudihartono+{runId}-020-T101@qwertysystem.net` | switch per-produk OFF, nonaktif di Global Settings (diaktifkan kembali di Global Settings oleh spec) |
+| TC-AC-SU-101 | `Rudi Hartono` | `Rudi Hartono T101 {runId}-020` | `rudihartono+{runId}-020-T101@qwertysystem.net` | switch per-produk OFF, nonaktif di Global Settings (diaktifkan kembali di Global Settings oleh spec) |
 
 - Baris Default User (Pre-setup #1) dan baris aktor sendiri dicari lewat Search atas email akun masing-masing; keduanya tidak diubah. Mengaktifkan kembali user di Global Settings (TC-AC-SU-101) dijalankan lewat Fixture BE (disediakan tim FE/BE).
 - Seeding di hook `before`, penghapusan data milik spec di hook `after`.
@@ -65,10 +65,10 @@ coverage:
 
 ### TC-AC-SU-101: Target diaktifkan kembali di Global Settings, switch interaktif di posisi yang sama
 
-20. Aktifkan kembali `Rudi Hartono {runId}-020-T101` di Global Settings lewat Fixture BE
+20. Aktifkan kembali `Rudi Hartono T101 {runId}-020` di Global Settings lewat Fixture BE
 21. Muat ulang halaman Settings > User dengan F5
-22. Ketik Search `Rudi Hartono {runId}-020-T101`, tekan Enter
-23. Amati switch baris `Rudi Hartono {runId}-020-T101`
+22. Ganti isi kotak search dengan `Rudi Hartono T101 {runId}-020`, tekan Enter
+23. Amati switch baris `Rudi Hartono T101 {runId}-020`
 24. Verifikasi switch kembali enabled di posisi OFF (tidak di-reset ke ON)
 25. Klik switch
 26. Verifikasi dialog `Activate User` terbuka
@@ -81,5 +81,5 @@ coverage:
 - Temuan untuk QA:
   - TC-AC-SU-77 memakai aktor `Dewi Lestari`; spec memakai akun Total Control Pre-setup #2 dan baris self dicari lewat emailnya.
   - TC-AC-SU-100 Post Condition "Status per-produk tidak berubah" dan TC-AC-SU-101 langkah 1 ("Aktifkan kembali di Global Settings > User") tidak punya langkah observasi/mekanisme di TC; Post Condition tidak diasersi (S-01) dan pengaktifan kembali memakai Fixture BE.
-  - TC-AC-SU-101 memakai user dengan state berbeda dari TC-AC-SU-100 (per-produk OFF); spec membuat dua record terpisah (suffix `-T101`).
+  - TC-AC-SU-101 memakai user dengan state berbeda dari TC-AC-SU-100 (per-produk OFF); spec membuat dua record terpisah (penanda `T101` pada nama, ditaruh sebelum `{runId}-020` agar nama seed tidak saling mengandung).
   - Nama user TC (`Rudi Hartono`) dipakai sebagai nama bersuffix `{runId}-020` sesuai S-12 (Lampiran A tidak memuat pengecualian modul Settings > User).

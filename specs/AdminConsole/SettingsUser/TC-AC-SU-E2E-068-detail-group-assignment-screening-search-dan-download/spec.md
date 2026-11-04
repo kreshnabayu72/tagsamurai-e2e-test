@@ -88,6 +88,7 @@ coverage:
 - Nama berkas memakai nama user bersuffix yang dinormalisasi (spasi menjadi `-`); Bagian `{runId}-068` pada nama berkas diisi nilai runId aktif.
 - Asersi tidak ada toast sukses (langkah 34) diletakkan tepat setelah klik Download dan sebelum Verifikasi berkas (bagian 8b butir 11); klik pilihan format menjadi anchor positif yang buktinya menyusul pada langkah 35.
 - Pembagian TC: TC-AC-SU-657 dan 662 ada di spec 069.
+- P-10: TC-247 mencampur asersi UI popup (Search dan hasil tersaring) dengan isi berkas unduhan (langkah 36, baris `Branch 1 {runId}-068` saja). Alur unduh mengikuti hasil Search pada popup yang sama sehingga tidak dapat dipisah dari asersi UI; klausa isi berkas diletakkan sesudah klausa UI TC itu dan diasersi satu per klausa.
 - Pembanding hasil Search TC-247 ("hanya `Branch 1`") adalah baris `Region A {runId}-068` yang tampil di tabel yang sama sebelum Search (data seed yang sama dengan TC-245).
 - Temuan untuk QA:
   - Expected TC-247 butir a menyebut "hanya `Branch 1` tampil" tanpa pembanding; spec memakai `Region A {runId}-068` dari tabel sebelum Search sebagai pembanding implisit.

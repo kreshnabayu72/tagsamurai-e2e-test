@@ -51,7 +51,7 @@ coverage:
 12. Ketik Search `Sarah Lee {runId}-187B` pada Popup Changelog: User, tekan Enter; tutup dan buka ulang popup tiap 5 detik sampai entri muncul (batas tunggu 30 detik)
 13. Verifikasi hanya 1 entri log baru untuk B (Action `Resend Activation Email`)
 ### TC-AC-SU-631: Double-submit Save popup Assign Group Role
-14. Tutup popup, ketik Search `Mike Tan {runId}-187C`, tekan Enter, klik Name baris C, klik Tab Role, lalu sub-tab Group Role
+14. Tutup popup, ganti isi kotak search dengan `Mike Tan {runId}-187C`, tekan Enter, klik Name baris C, klik Tab Role, lalu sub-tab Group Role
 15. Klik `[Assign Group]` pada baris "Manage partner", klik `[+ Assign Group]`, centang Region B, lalu klik `[Select]`
 16. Tahan respons request Save assignment, lalu klik `[Save]` dua kali secepatnya
 17. Verifikasi tombol `[Save]` masuk state loading atau disabled setelah klik pertama

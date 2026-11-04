@@ -26,50 +26,48 @@ coverage:
 
 ### TC-AC-SU-323: State List dipertahankan saat kembali dari Detail via breadcrumb
 
-1. Klik icon Search
-2. Ketik Search `a`, tekan Enter
-3. Klik icon Filter
-4. Pilih Status `Active`, klik `[Apply]`
-5. Klik header Email
-6. Ubah page size ke 25
-7. Klik Name `John Doe {runId}-203` untuk membuka Detail User
-8. Klik segmen `User` di breadcrumb
-9. Verifikasi keyword Search `a` tetap terisi
-10. Verifikasi Filter Status `Active` tetap aktif
-11. Verifikasi sort Email A-Z tetap berlaku
-12. Verifikasi page size 25
-13. Verifikasi halaman aktif sama seperti sebelum membuka Detail
-14. Klik header Email dua kali sampai sort kembali ke default Name A-Z
-15. Klik `[Clear Field]`, klik `[Apply]`
-16. Klik `(←)` pada kotak Search
-17. Ubah page size ke 10
+1. Ketik Search `a`, tekan Enter
+2. Klik icon Filter
+3. Pilih Status `Active`, klik `[Apply]`
+4. Klik header Email
+5. Ubah page size ke 25
+6. Klik Name `John Doe {runId}-203` untuk membuka Detail User
+7. Klik segmen `User` di breadcrumb
+8. Verifikasi keyword Search `a` tetap terisi
+9. Verifikasi Filter Status `Active` tetap aktif
+10. Verifikasi sort Email A-Z tetap berlaku
+11. Verifikasi page size 25
+12. Verifikasi halaman aktif sama seperti sebelum membuka Detail
+13. Klik header Email dua kali sampai sort kembali ke default Name A-Z
+14. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
+15. Klik `(←)` pada kotak Search
+16. Ubah page size ke 10
 
 ### TC-AC-SU-324: State List termasuk node Sidebar Group dipertahankan setelah F5
 
-18. Klik node Sidebar Group `Region A {runId}-203`
-19. Klik icon Search
-20. Ketik Search `a`, tekan Enter
-21. Klik icon Filter
-22. Pilih Status `Active`, klik `[Apply]`
-23. Klik header Email
-24. Klik next agar berada di halaman 2
-25. Tekan F5
-26. Verifikasi node Sidebar Group `Region A {runId}-203` tetap terpilih
-27. Verifikasi keyword Search `a` tetap terisi
-28. Verifikasi Filter Status `Active` tetap aktif
-29. Verifikasi sort Email A-Z tetap berlaku
-30. Verifikasi tabel tetap berada di halaman 2
+17. Klik node Sidebar Group `Region A {runId}-203`
+18. Ketik Search `a`, tekan Enter
+19. Klik icon Filter
+20. Pilih Status `Active`, klik `[Apply]`
+21. Klik header Email
+22. Klik next agar berada di halaman 2
+23. Tekan F5
+24. Verifikasi node Sidebar Group `Region A {runId}-203` tetap terpilih
+25. Verifikasi keyword Search `a` tetap terisi
+26. Verifikasi Filter Status `Active` tetap aktif
+27. Verifikasi sort Email A-Z tetap berlaku
+28. Verifikasi tabel tetap berada di halaman 2
 
 ### TC-AC-SU-325: Klik ulang menu sidebar mereset state List
 
-31. Klik menu sidebar Settings > User
-32. Verifikasi List kembali ke default: tanpa Search dan tanpa Filter
-33. Verifikasi sort Name A-Z
-34. Verifikasi halaman 1
+29. Klik menu sidebar Settings > User
+30. Verifikasi List kembali ke default: tanpa Search dan tanpa Filter
+31. Verifikasi sort Name A-Z
+32. Verifikasi halaman 1
 
 ## Notes
 
-- Langkah penghubung (S-03): `[Clear Field]` lalu `[Apply]`, menutup Search, mengembalikan sort dan page size ke default di akhir TC-323 (S-09); TC-324 membiarkan state tersisa karena langkah terakhir TC-325 mereset seluruhnya dengan klik ulang menu sidebar.
+- Langkah penghubung (S-03): `Klik icon Filter` lalu `[Clear Field]` dan `[Apply]` (Apply menutup panel), menutup Search, mengembalikan sort dan page size ke default di akhir TC-323 (S-09); TC-324 membiarkan state tersisa karena langkah terakhir TC-325 mereset seluruhnya dengan klik ulang menu sidebar.
 - TC-325 mengandalkan state dari TC-324 (Search `a`, Filter Status `Active`, node Sidebar Group, sort Email) dan tidak membuat state baru; klik ulang menu sidebar mereset state List. Ketiga TC berada di spec yang sama karena itu.
 - Pembagian TC User List Pagination dan retensi state: TC-AC-SU-321 dan 322 di spec 090; TC-AC-SU-323, 324, dan 325 di spec ini.
 - Temuan untuk QA:

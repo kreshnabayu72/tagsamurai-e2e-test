@@ -48,17 +48,21 @@ Isi seed di atas tidak diasersi (bukan precondition TC); hanya memastikan Modal 
 8. Buka popup Setup Column pada tab `Changelog` (klik header `⋯`, lalu klik `[Setup Column]`)
 9. Uncheck kolom `Modified By`, lalu klik `[Save]`
 10. Verifikasi tab `Changelog` tetap menampilkan kolom `Field`
-11. Buka Settings > User lewat sidebar
-12. Klik icon Changelog di toolbar User List
-13. Verifikasi Modal Changelog: User tetap menampilkan kolom `Modified By`
-14. Verifikasi Modal Changelog: User tetap menyembunyikan kolom `Field`
-15. Tutup modal dengan klik icon `[×]`
+11. Buka popup Setup Column pada tab `Changelog` (klik header `⋯`, lalu klik `[Setup Column]`)
+12. Check kembali kolom `Modified By`, lalu klik `[Save]`
+13. Buka Settings > User lewat sidebar
+14. Klik icon Changelog di toolbar User List
+15. Verifikasi Modal Changelog: User tetap menampilkan kolom `Modified By`
+16. Verifikasi Modal Changelog: User tetap menyembunyikan kolom `Field`
+17. Buka popup Setup Column (klik header `⋯`, lalu klik `[Setup Column]`)
+18. Check kembali kolom `Field`, lalu klik `[Save]`
+19. Tutup modal dengan klik icon `[×]`
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec ini berdiri sendiri karena TC-AC-SU-475 melibatkan dua surface (Modal Changelog: User dan tab Changelog Detail user) dengan dua konfigurasi kolom tersimpan.
-- Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): menutup modal, membuka Detail dan tab `Changelog`, kembali ke User List lewat sidebar; pemulihan konfigurasi kolom dilakukan hook `after`, bukan langkah spec. Urutan `Verifikasi` mengikuti urutan state: kolom tab `Changelog` diamati segera setelah `Modified By` disembunyikan (langkah 10), baru modal dibuka kembali.
+- Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): menutup modal, membuka Detail dan tab `Changelog`, kembali ke User List lewat sidebar; langkah 11, 12, 17, dan 18 memulihkan centang kolom `Modified By` dan `Field` sebelum spec berakhir; hook `after` menghapus preferensi kolom sebagai pengaman. Urutan `Verifikasi` mengikuti urutan state: kolom tab `Changelog` diamati segera setelah `Modified By` disembunyikan (langkah 10), baru dipulihkan (langkah 11 dan 12) dan modal dibuka kembali.
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
 - Langkah penghubung (tanpa `Verifikasi`; S-03, R-16): Search untuk menemukan baris target sebelum membuka Detail (langkah 5); baris user seed tidak dijamin berada di halaman pertama User List.
 - Temuan untuk QA: TC-AC-SU-475 langkah 4 menyebut "Buka Detail Jane Smith > tab Changelog" tanpa menyebut bahwa tab itu memiliki Setup Column sendiri; spec mengikuti Expected (cache terpisah per tabel, PRD 4.1.8). TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).

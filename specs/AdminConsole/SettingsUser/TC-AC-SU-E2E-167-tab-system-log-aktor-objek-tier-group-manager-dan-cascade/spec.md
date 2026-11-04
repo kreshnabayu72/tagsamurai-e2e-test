@@ -46,44 +46,59 @@ coverage:
 ### TC-AC-SU-568: Object `Total Control` dan `Read Only`
 1. Jalankan pemicu A sampai F (tabel Prerequisites) lewat sesi API Default User hingga keenam entri tersimpan
 2. Ketik Search nama tampil Default User, tekan Enter, klik Name baris Default User untuk membuka Detail, klik Tab System Log, lalu ketik Search `Mike Tan {runId}-167` pada tab, tekan Enter
-3. Verifikasi baris Action `Assign`: Object `Total Control`, Name `Mike Tan {runId}-167A`, Field `Access Level`, Old Value `—`, New Value `Total Control`
-4. Verifikasi baris Action `Remove`: Object `Total Control`, Name `Mike Tan {runId}-167B`, Field `Access Level`, Old Value `Total Control`, New Value `—`
-5. Verifikasi baris Action `Auto-Revert`: Object `Total Control`, Name `Mike Tan {runId}-167C`, Field `Access Level`, Old Value `Total Control`, New Value `—`
-6. Verifikasi baris Action `Assign`: Object `Read Only`, Name `Mike Tan {runId}-167D`, Field `Access Level`, Old Value `—`, New Value `Read Only`
-7. Verifikasi baris Action `Remove`: Object `Read Only`, Name `Mike Tan {runId}-167E`, Field `Access Level`, Old Value `Read Only`, New Value `—`
-8. Verifikasi baris Action `Auto-Revert`: Object `Read Only`, Name `Mike Tan {runId}-167F`, Field `Access Level`, Old Value `Read Only`, New Value `—`
+3. Verifikasi tepat 1 baris Action `Assign`: Object `Total Control`, Name `Mike Tan {runId}-167A`, Field `Access Level`, Old Value `—`, New Value `Total Control`
+4. Verifikasi tepat 1 baris Action `Remove`: Object `Total Control`, Name `Mike Tan {runId}-167B`, Field `Access Level`, Old Value `Total Control`, New Value `—`
+5. Verifikasi tepat 1 baris Action `Auto-Revert`: Object `Total Control`, Name `Mike Tan {runId}-167C`, Field `Access Level`, Old Value `Total Control`, New Value `—`
+6. Verifikasi tepat 1 baris Action `Assign`: Object `Read Only`, Name `Mike Tan {runId}-167D`, Field `Access Level`, Old Value `—`, New Value `Read Only`
+7. Verifikasi tepat 1 baris Action `Remove`: Object `Read Only`, Name `Mike Tan {runId}-167E`, Field `Access Level`, Old Value `Read Only`, New Value `—`
+8. Verifikasi tepat 1 baris Action `Auto-Revert`: Object `Read Only`, Name `Mike Tan {runId}-167F`, Field `Access Level`, Old Value `Read Only`, New Value `—`
 9. Verifikasi tabel Tab System Log tidak memiliki kolom Modified By
 10. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-167` pada Popup Changelog: User, tekan Enter
-11. Verifikasi Popup Changelog: User memuat baris `Assign` untuk A, `Remove` untuk B, `Auto-Revert` untuk C dengan Field `Access Level` dan Old/New Value yang sama dengan Tab System Log (Total Control)
-12. Verifikasi Popup Changelog: User memuat baris `Assign` untuk D, `Remove` untuk E, `Auto-Revert` untuk F dengan Field `Access Level` dan Old/New Value yang sama dengan Tab System Log (Read Only)
+11. Verifikasi Popup Changelog: User memuat baris `Assign` untuk A dengan Field `Access Level` dan Old/New Value yang sama dengan Tab System Log (Total Control)
+12. Verifikasi Popup Changelog: User memuat baris `Remove` untuk B dengan Field `Access Level` dan Old/New Value yang sama dengan Tab System Log (Total Control)
+13. Verifikasi Popup Changelog: User memuat baris `Auto-Revert` untuk C dengan Field `Access Level` dan Old/New Value yang sama dengan Tab System Log (Total Control)
+14. Verifikasi Popup Changelog: User memuat baris `Assign` untuk D dengan Field `Access Level` dan Old/New Value yang sama dengan Tab System Log (Read Only)
+15. Verifikasi Popup Changelog: User memuat baris `Remove` untuk E dengan Field `Access Level` dan Old/New Value yang sama dengan Tab System Log (Read Only)
+16. Verifikasi Popup Changelog: User memuat baris `Auto-Revert` untuk F dengan Field `Access Level` dan Old/New Value yang sama dengan Tab System Log (Read Only)
 ### TC-AC-SU-569: Object `Group Manager`
-13. Tutup popup, jalankan pemicu G, H, I, dan K (tabel Prerequisites) lewat sesi API Default User hingga keempat entri tersimpan
-14. Buka Detail Default User (Search nama tampil Default User, klik Name baris), klik Tab System Log, lalu ketik Search `Mike Tan {runId}-167` pada tab, tekan Enter
-15. Verifikasi baris Action `Assign`: Object `Group Manager`, Name `Mike Tan {runId}-167G`, Field `Group Manager — Region A`, Old Value `—`, New Value `Assigned`
-16. Verifikasi baris Action `Remove`: Object `Group Manager`, Name `Mike Tan {runId}-167H`, Field `Group Manager — Region A`, Old Value `Assigned`, New Value `—`
-17. Verifikasi baris Action `Auto-Revert`: Object `Group Manager`, Name `Mike Tan {runId}-167I`, Field `Group Manager — Region A`, Old Value `Assigned`, New Value `—`
-18. Verifikasi baris Action `Remove`: Object `Group Manager (Group Deleted)`, Name `Mike Tan {runId}-167K`, Field `Group Manager — Region C {runId}-167`, Old Value `Assigned`, New Value `—`
-19. Verifikasi tabel Tab System Log tidak memiliki kolom Modified By
-20. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-167` pada Popup Changelog: User, tekan Enter
-21. Verifikasi Popup Changelog: User memuat baris `Assign` untuk G, `Remove` untuk H, `Auto-Revert` untuk I, dan `Remove (Group Deleted)` untuk K dengan Field dan Old/New Value yang sama dengan Tab System Log
+17. Tutup popup, jalankan pemicu G, H, I, dan K (tabel Prerequisites) lewat sesi API Default User hingga keempat entri tersimpan
+18. Buka Detail Default User (Search nama tampil Default User, klik Name baris), klik Tab System Log, lalu ketik Search `Mike Tan {runId}-167` pada tab, tekan Enter
+19. Ubah page size Tab System Log menjadi 100
+20. Verifikasi tepat 1 baris Action `Assign`: Object `Group Manager`, Name `Mike Tan {runId}-167G`, Field `Group Manager — Region A`, Old Value `—`, New Value `Assigned`
+21. Verifikasi tepat 1 baris Action `Remove`: Object `Group Manager`, Name `Mike Tan {runId}-167H`, Field `Group Manager — Region A`, Old Value `Assigned`, New Value `—`
+22. Verifikasi tepat 1 baris Action `Auto-Revert`: Object `Group Manager`, Name `Mike Tan {runId}-167I`, Field `Group Manager — Region A`, Old Value `Assigned`, New Value `—`
+23. Verifikasi tepat 1 baris Action `Remove`: Object `Group Manager (Group Deleted)`, Name `Mike Tan {runId}-167K`, Field `Group Manager — Region C {runId}-167`, Old Value `Assigned`, New Value `—`
+24. Verifikasi tabel Tab System Log tidak memiliki kolom Modified By
+25. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-167` pada Popup Changelog: User, tekan Enter
+26. Ubah page size Popup Changelog: User menjadi 100
+27. Verifikasi Popup Changelog: User memuat baris `Assign` untuk G dengan Field dan Old/New Value yang sama dengan Tab System Log
+28. Verifikasi Popup Changelog: User memuat baris `Remove` untuk H dengan Field dan Old/New Value yang sama dengan Tab System Log
+29. Verifikasi Popup Changelog: User memuat baris `Auto-Revert` untuk I dengan Field dan Old/New Value yang sama dengan Tab System Log
+30. Verifikasi Popup Changelog: User memuat baris `Remove (Group Deleted)` untuk K dengan Field dan Old/New Value yang sama dengan Tab System Log
 ### TC-AC-SU-570: Cascade Total Control dan Read Only
-22. Tutup popup, jalankan pemicu L1, L2, L3, dan L4 (tabel Prerequisites) lewat sesi API Default User hingga seluruh entri cascade tersimpan
-23. Buka Detail Default User (Search nama tampil Default User, klik Name baris), klik Tab System Log, lalu ketik Search `Mike Tan {runId}-167L` pada tab, tekan Enter
-24. Verifikasi baris Action `Assign (via Total Control)` untuk L1: 1 baris Object `Global Role` per Global Role terdampak dan 1 baris Object `Group Role` per Group Role per group, Name `Mike Tan {runId}-167L1`
-25. Verifikasi baris Action `Assign (via Read Only)` untuk L2: 1 baris Object `Global Role` per Global Role terdampak dan 1 baris Object `Group Role` per Group Role per group, Name `Mike Tan {runId}-167L2`
-26. Verifikasi baris Action `Remove (via Total Control)` untuk L3: 1 baris Object `Global Role` per Global Role terdampak dan 1 baris Object `Group Role` per Group Role per group, Name `Mike Tan {runId}-167L3`
-27. Verifikasi baris Action `Remove (via Read Only)` untuk L4: 1 baris Object `Global Role` per Global Role terdampak dan 1 baris Object `Group Role` per Group Role per group, Name `Mike Tan {runId}-167L4`
-28. Verifikasi tabel Tab System Log tidak memiliki kolom Modified By
-29. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-167L` pada Popup Changelog: User, tekan Enter
-30. Verifikasi Popup Changelog: User memuat baris cascade Action `Assign (via Total Control)` untuk L1 dengan Field `[Role] — Access` (Global Role) atau `[Role] — [Group Name] — Access` (Group Role), Old Value `—`, New Value `Assigned`, identik dengan Tab System Log
-31. Verifikasi Popup Changelog: User memuat baris cascade Action `Assign (via Read Only)` untuk L2 dengan format Field dan Old/New Value yang sama, identik dengan Tab System Log
-32. Verifikasi Popup Changelog: User memuat baris cascade Action `Remove (via Total Control)` untuk L3 dengan Old Value `Assigned`, New Value `—`, identik dengan Tab System Log
-33. Verifikasi Popup Changelog: User memuat baris cascade Action `Remove (via Read Only)` untuk L4 dengan Old Value `Assigned`, New Value `—`, identik dengan Tab System Log
+31. Tutup popup, jalankan pemicu L1, L2, L3, dan L4 (tabel Prerequisites) lewat sesi API Default User hingga seluruh entri cascade tersimpan
+32. Buka Detail Default User (Search nama tampil Default User, klik Name baris), klik Tab System Log, lalu ketik Search `Mike Tan {runId}-167L` pada tab, tekan Enter
+33. Ubah page size Tab System Log menjadi 100
+34. Verifikasi tepat 1 baris Action `Assign (via Total Control)` untuk L1 dengan Object `Global Role` per Global Role terdampak, Name `Mike Tan {runId}-167L1`
+35. Verifikasi tepat 1 baris Action `Assign (via Total Control)` untuk L1 dengan Object `Group Role` per Group Role per group, Name `Mike Tan {runId}-167L1`
+36. Verifikasi tepat 1 baris Action `Assign (via Read Only)` untuk L2 dengan Object `Global Role` per Global Role terdampak, Name `Mike Tan {runId}-167L2`
+37. Verifikasi tepat 1 baris Action `Assign (via Read Only)` untuk L2 dengan Object `Group Role` per Group Role per group, Name `Mike Tan {runId}-167L2`
+38. Verifikasi tepat 1 baris Action `Remove (via Total Control)` untuk L3 dengan Object `Global Role` per Global Role terdampak, Name `Mike Tan {runId}-167L3`
+39. Verifikasi tepat 1 baris Action `Remove (via Total Control)` untuk L3 dengan Object `Group Role` per Group Role per group, Name `Mike Tan {runId}-167L3`
+40. Verifikasi tepat 1 baris Action `Remove (via Read Only)` untuk L4 dengan Object `Global Role` per Global Role terdampak, Name `Mike Tan {runId}-167L4`
+41. Verifikasi tepat 1 baris Action `Remove (via Read Only)` untuk L4 dengan Object `Group Role` per Group Role per group, Name `Mike Tan {runId}-167L4`
+42. Verifikasi tabel Tab System Log tidak memiliki kolom Modified By
+43. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-167L` pada Popup Changelog: User, tekan Enter
+44. Ubah page size Popup Changelog: User menjadi 100
+45. Verifikasi Popup Changelog: User memuat baris cascade Action `Assign (via Total Control)` untuk L1 dengan Field `[Role] — Access` (Global Role) atau `[Role] — [Group Name] — Access` (Group Role), Old Value `—`, New Value `Assigned`, identik dengan Tab System Log
+46. Verifikasi Popup Changelog: User memuat baris cascade Action `Assign (via Read Only)` untuk L2 dengan format Field dan Old/New Value yang sama, identik dengan Tab System Log
+47. Verifikasi Popup Changelog: User memuat baris cascade Action `Remove (via Total Control)` untuk L3 dengan Old Value `Assigned`, New Value `—`, identik dengan Tab System Log
+48. Verifikasi Popup Changelog: User memuat baris cascade Action `Remove (via Read Only)` untuk L4 dengan Old Value `Assigned`, New Value `—`, identik dengan Tab System Log
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): pemicu lewat sesi API (langkah 1 dan serupa; R-20), pembukaan Detail aktor, Tab System Log, dan Search nama target (langkah 2 dan langkah serupa, R-16), menutup popup, serta Search nama target pada Popup Changelog: User (langkah 10 dan langkah serupa; user bernama unik sehingga baseline entri nol).
-- Tiga blok TC berpola sama (pemicu, Tab System Log aktor, padanan Popup Changelog: User) untuk kelas Object berbeda dan berdiri sendiri; 33 langkah dipertahankan karena kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung tanpa Verifikasi (S-03): pemicu lewat sesi API (langkah 1 dan serupa; R-20), pembukaan Detail aktor, Tab System Log, dan Search nama target (langkah 2 dan langkah serupa, R-16), menutup popup, serta Search nama target pada Popup Changelog: User (langkah 10 dan langkah serupa; user bernama unik sehingga baseline entri nol, dan "tepat 1 baris" menjadi asersi jumlah pada hasil Search nama unik), serta mengubah page size Tab System Log dan Popup Changelog: User menjadi 100 sesudah Search berprefix agar seluruh baris (termasuk cascade) tampil dalam satu halaman sebelum asersi (langkah 19, 26, 33, 44; S-14).
+- Tiga blok TC berpola sama (pemicu, Tab System Log aktor, padanan Popup Changelog: User) untuk kelas Object berbeda dan berdiri sendiri; 48 langkah (di atas smell 35 langkah) dipertahankan karena kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - TC-570 butir b meminta entri cascade identik dengan baris di Popup Changelog: User, sedangkan TC-541 sampai TC-544 butir b menyatakan Popup Changelog: User tidak memuat baris cascade (cascade hanya di modal Global Role dan Group Role). Spec mengikuti TC-570 apa adanya; asersi Popup untuk cascade akan bertentangan dengan spec 158 dan 159 bila TC-541 benar.
   - TC-568 sampai TC-570 menyebut satu target `Mike Tan` untuk semua Action padahal state awal tiap Action berbeda (tier, Group Manager); spec memakai user terpisah bernama berprefix sama.

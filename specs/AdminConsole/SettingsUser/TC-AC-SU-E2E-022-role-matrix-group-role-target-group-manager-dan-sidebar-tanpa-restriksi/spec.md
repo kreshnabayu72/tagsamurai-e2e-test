@@ -73,7 +73,7 @@ coverage:
 19. Muat ulang halaman dengan F5
 20. Verifikasi semua node Sidebar Group tampil
 21. Verifikasi semua node Sidebar Group dapat diklik
-22. Ketik Search `{runId}-022`, tekan Enter
+22. Ganti isi kotak search dengan `{runId}-022`, tekan Enter
 23. Klik node `Region A {runId}-022`
 24. Verifikasi `Jane Smith {runId}-022` (Group Role di `Branch 1 {runId}-022`, descendant `Region A {runId}-022`) tampil
 25. Verifikasi `John Doe {runId}-022` (Group Role di `Region B {runId}-022`) tidak tampil
@@ -85,19 +85,21 @@ coverage:
 
 29. Logout dari akun aktor saat ini
 30. Login sebagai Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_TC_PASSWORD`)
-31. Ketik Search `Dedi Kurnia {runId}-022`, tekan Enter
-32. Klik Name `Dedi Kurnia {runId}-022`
-33. Klik Tab Role
-34. Klik sub-tab Group Role
-35. Verifikasi tabel Group Role tidak punya kolom Active
-36. Verifikasi tabel Group Role tidak punya switch di tiap baris
-37. Verifikasi `[Assign Group]` dan `[Detail]` enabled, termasuk baris `Manage allocation`
+31. Buka Settings > User lewat sidebar
+32. Ketik Search `Dedi Kurnia {runId}-022`, tekan Enter
+33. Klik Name `Dedi Kurnia {runId}-022`
+34. Klik Tab Role
+35. Klik sub-tab Group Role
+36. Verifikasi tabel Group Role tidak punya kolom Active
+37. Verifikasi tabel Group Role tidak punya switch di tiap baris
+38. Verifikasi `[Assign Group]` dan `[Detail]` enabled, termasuk baris `Manage allocation`
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk Search sesudahnya), langkah 13 dan 16 (tutup popup), langkah 17 (kembali ke daftar), langkah 18 (pengaturan aktor sebagai precondition TC-AC-SU-78), langkah 26 (pulihkan state, S-09).
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk Search sesudahnya), langkah 13 dan 16 (tutup popup), langkah 17 (kembali ke daftar), langkah 18 (pengaturan aktor sebagai precondition TC-AC-SU-78), langkah 26 (pulihkan state, S-09), langkah 31 (buka Settings > User lewat sidebar sesudah login ulang).
+- Spec ini matriks visibilitas per aktor dan target (bagian 3a): memuat asersi tampil dan enabled (`[Assign Group]`, `[Detail]`, Sidebar Group, baris `Region B {runId}-022`) bersama disabled (CRUD dan `[🗑]` baris `Region A {runId}-022`) dan tidak ada (switch, kolom Active, `John Doe {runId}-022` pada daftar terfilter) dalam satu spec; polaritas campuran disengaja; `caseType` Positive mengikuti bagian 8.
 - Alasan blok per akun (bagian 3a, `[KEPUTUSAN 2026-10-30]`): ganti akun menuntut Step eksplisit; aktor Manage user and role dipakai untuk TC-AC-SU-66 dan 78 berurutan sebelum ganti akun ke Total Control.
-- Ukuran spec (37 langkah, di atas smell sekitar 35 langkah): Role Matrix satu permukaan (Group Role / Sidebar) dengan dua akun; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Ukuran spec (38 langkah, di atas smell sekitar 35 langkah): Role Matrix satu permukaan (Group Role / Sidebar) dengan dua akun; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - TC-AC-SU-66 langkah 4 ("Tutup popup, klik `[Assign Group]` baris `Manage partner`") dan TC-AC-SU-67 butir "termasuk baris `Manage allocation`": TC tidak menyebut cara menutup popup; spec memakai `✕`.
   - TC-AC-SU-78 mensyaratkan aktor Manage user and role yang Group Role-nya hanya di `Region B`; spec mengatur ulang Group Role akun Pre-setup #4 lewat Fixture BE dan memulihkannya (lihat Prerequisites).

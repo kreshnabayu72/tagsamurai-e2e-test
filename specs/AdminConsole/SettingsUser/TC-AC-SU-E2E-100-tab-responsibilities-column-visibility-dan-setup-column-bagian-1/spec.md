@@ -74,28 +74,31 @@ coverage:
 28. Klik `[Save]`
 29. Verifikasi kolom `Transaction` tidak tampil di tabel
 30. Tekan F5
-31. Verifikasi kolom `Transaction` tetap tersembunyi
-32. Klik header `⋯`, klik `[Setup Column]`, klik `[Reset to Default]`, klik `[Save]`
+31. Klik tab `Responsibilities (3)`
+32. Verifikasi kolom `Transaction` tetap tersembunyi
+33. Klik header `⋯`, klik `[Setup Column]`, klik `[Reset to Default]`, klik `[Save]`
 
 ### TC-AC-SU-359: Setup Column drag reorder kolom lalu Save
 
-33. Klik header `⋯`
-34. Klik `[Setup Column]`
-35. Drag `Submission Date` ke posisi pertama
-36. Drag `ID` ke posisi terakhir
-37. Verifikasi Live Preview memuat `Submission Date` di posisi pertama
-38. Verifikasi Live Preview memuat `ID` di posisi terakhir
-39. Klik `[Save]`
-40. Verifikasi tabel memakai urutan baru
-41. Tekan F5
-42. Verifikasi tabel tetap memakai urutan baru
-43. Klik header `⋯`, klik `[Setup Column]`, klik `[Reset to Default]`, klik `[Save]`
+34. Klik header `⋯`
+35. Klik `[Setup Column]`
+36. Drag `Submission Date` ke posisi pertama
+37. Drag `ID` ke posisi terakhir
+38. Verifikasi Live Preview memuat `Submission Date` di posisi pertama
+39. Verifikasi Live Preview memuat `ID` di posisi terakhir
+40. Klik `[Save]`
+41. Verifikasi tabel memakai urutan baru
+42. Tekan F5
+43. Klik tab `Responsibilities (3)`
+44. Verifikasi tabel tetap memakai urutan baru
+45. Klik header `⋯`, klik `[Setup Column]`, klik `[Reset to Default]`, klik `[Save]`
 
 ## Notes
 
 - Langkah 23 sampai 26 diulang untuk tiap kolom pada tabel kolom TC-358 (8b butir 7); parameter ada di Prerequisites.
-- Langkah penghubung (S-03): Search lalu klik Name membuka Detail target (R-16); Esc menutup overlay Column Visibility; `[Reset to Default]` lalu `[Save]` di akhir TC-358 dan TC-359 memulihkan konfigurasi (S-09); hook `after` memulihkan juga.
+- Langkah penghubung (S-03): Search lalu klik Name membuka Detail target (R-16); Esc menutup overlay Column Visibility; `[Reset to Default]` lalu `[Save]` di akhir TC-358 dan TC-359 memulihkan konfigurasi (S-09); hook `after` memulihkan juga; langkah 31 dan 43 (klik tab `Responsibilities (3)` sesudah F5, karena PRD tidak menyatakan tab Detail yang aktif sesudah muat ulang).
 - Alasan di atas ±35 langkah: keempat TC adalah Column Visibility dan Setup Column Tab Responsibilities dengan dataset sama; berdiri sendiri.
 - Temuan untuk QA:
   - TC menulis nama data DS-UL secara literal (nama user, email, position, division). Spec memakai nama bersuffix ` {runId}-100` (S-12) dan mengasersi baris milik spec; klaim "hanya X yang tampil" pada TC tidak dapat diasersi atas seluruh tabel karena baris Pre-setup bernama sama ikut ada di entitas Principal.
   - TC-358 langkah 3 menyebut ID, Transaction, Requester tetapi tidak Submission Date; spec mengikuti TC.
+  - PRD tidak menyatakan tab Detail User mana yang aktif sesudah F5; spec mengklik tab `Responsibilities (3)` sesudah tiap F5 sebelum asersi tabel.

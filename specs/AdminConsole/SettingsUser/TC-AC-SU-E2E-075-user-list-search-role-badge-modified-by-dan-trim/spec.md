@@ -23,6 +23,7 @@ coverage:
 - Hook suite: flag Guided Tooltip `guided_tooltip_seen_ac-settings-user` dan kemampuan Fixture BE mengikuti `suite.md`. Suite berjalan serial (`parallel: false`).
 - Data Dinamis (di-seed hook `before` lewat Fixture BE; nama bersuffix `{runId}-075`): `John Doe {runId}-075` (Global Role `Manage group` aktif, Activated, Active, Custom Field `Office Location` = `Jakarta HQ`), `Jane Smith {runId}-075` (Global Role `Manage group` dengan switch OFF, Activated), `Dewi Lestari {runId}-075` dan `Rina Putri {runId}-075` (Total Control; `Rina Putri {runId}-075` Pending Email Confirmation), `Budi Santoso {runId}-075` (Pending Email Confirmation), `Andi Wijaya {runId}-075` (Read Only, Temporary User `Yes`), `Mike Tan {runId}-075` (Modified By `Budi Hartono {runId}-075`, tampil `Budi H`), `Rudi Hartono {runId}-075` (kolom Name memuat `hartono`). Baris Default User Principal (Pre-setup #1, `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`) dipakai apa adanya dan tidak diubah.
 - Custom Field Pre-setup `Office Location` (Text) berstatus Active (Pre-setup #10); spec hanya mengisi nilai pada user milik spec dan tidak mengubah field.
+- Fixture `Fixture.settingsUser` (berkas fixture belum ada; disediakan tim FE) memuat identitas data Pre-setup: `defaultUserName` (nama tampil baris Default User Principal, Pre-setup #1).
 - Hook `after` menghapus data yang di-seed hook `before` spec ini lewat Fixture BE; pembersihan tidak berasumsi seeding berhasil penuh.
 - Pemulihan Setup Column: preferensi kolom yang disimpan spec ini dihapus di hook `after` dengan menghapus preferensi kolom di browser (bukan `[Reset to Default]`); kemampuan ini disediakan tim FE.
 
@@ -37,7 +38,7 @@ coverage:
 5. Verifikasi baris `Dewi Lestari {runId}-075` (Total Control) tidak tampil karena peran termaterialisasi tidak dicocokkan
 6. Klik `✕` pada Search
 7. Ketik Search `total control`, tekan Enter
-8. Verifikasi baris Default User, `Dewi Lestari {runId}-075`, dan `Rina Putri {runId}-075` tampil
+8. Verifikasi baris `Fixture.settingsUser.defaultUserName`, `Dewi Lestari {runId}-075`, dan `Rina Putri {runId}-075` tampil
 9. Klik `✕` pada Search
 10. Ketik Search `3 roles`, tekan Enter
 11. Verifikasi empty state dengan ilustrasi, judul `No results found`, dan deskripsi `Try adjusting your search or filter.`

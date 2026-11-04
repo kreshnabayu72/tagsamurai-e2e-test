@@ -65,46 +65,49 @@ coverage:
 
 12. Logout dari akun aktor saat ini
 13. Login sebagai Manage user and role (Read saja, U=false) (`manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_READ_PASSWORD`)
-14. Ketik Search `{runId}-019`, tekan Enter
-15. Hover switch Active baris `Rudi Hartono {runId}-019`
-16. Verifikasi switch Active baris `Rudi Hartono {runId}-019` tampil namun disabled dengan tooltip `You don't have permission to edit.`
-17. Ganti isi kotak search dengan `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
-18. Hover switch Active baris Default User
-19. Verifikasi switch Active baris Default User tampil namun disabled dengan tooltip `You don't have permission to edit.`
+14. Buka Settings > User lewat sidebar
+15. Ketik Search `{runId}-019`, tekan Enter
+16. Hover switch Active baris `Rudi Hartono {runId}-019`
+17. Verifikasi switch Active baris `Rudi Hartono {runId}-019` tampil namun disabled dengan tooltip `You don't have permission to edit.`
+18. Ganti isi kotak search dengan `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
+19. Hover switch Active baris Default User
+20. Verifikasi switch Active baris Default User tampil namun disabled dengan tooltip `You don't have permission to edit.`
 
 ### TC-AC-SU-61: Switch Active header Detail User mengikuti aturan baris List
 
-20. Logout dari akun aktor saat ini
-21. Login sebagai Manage user and role (Update, U=true) (`manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_UPDATE_PASSWORD`)
-22. Ketik Search `Dewi Lestari {runId}-019`, tekan Enter
-23. Klik Name `Dewi Lestari {runId}-019`
-24. Hover switch Active di header Detail
-25. Verifikasi switch header `Dewi Lestari {runId}-019` tampil namun disabled dengan tooltip `You don't have permission to edit.`
-26. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
-27. Ganti isi kotak search dengan `Rudi Hartono {runId}-019`, tekan Enter
-28. Klik Name `Rudi Hartono {runId}-019`
-29. Verifikasi switch header `Rudi Hartono {runId}-019` enabled
-30. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
-31. Ganti isi kotak search dengan `manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, tekan Enter
-32. Klik Name baris aktor sendiri
-33. Hover switch Active di header Detail
-34. Verifikasi switch header aktor sendiri tampil namun disabled dengan tooltip `You can't manage your own account from here.`
-35. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+21. Logout dari akun aktor saat ini
+22. Login sebagai Manage user and role (Update, U=true) (`manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_UPDATE_PASSWORD`)
+23. Buka Settings > User lewat sidebar
+24. Ketik Search `Dewi Lestari {runId}-019`, tekan Enter
+25. Klik Name `Dewi Lestari {runId}-019`
+26. Hover switch Active di header Detail
+27. Verifikasi switch header `Dewi Lestari {runId}-019` tampil namun disabled dengan tooltip `You don't have permission to edit.`
+28. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+29. Ganti isi kotak search dengan `Rudi Hartono {runId}-019`, tekan Enter
+30. Klik Name `Rudi Hartono {runId}-019`
+31. Verifikasi switch header `Rudi Hartono {runId}-019` enabled
+32. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+33. Ganti isi kotak search dengan `manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, tekan Enter
+34. Klik Name baris aktor sendiri
+35. Hover switch Active di header Detail
+36. Verifikasi switch header aktor sendiri tampil namun disabled dengan tooltip `You can't manage your own account from here.`
+37. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
 
 ### TC-AC-SU-79: Prioritas tooltip saat target nonaktif di Global Settings sekaligus Total Control
 
-36. Ganti isi kotak search dengan `Fajar Nugroho {runId}-019`, tekan Enter
-37. Hover switch Active baris `Fajar Nugroho {runId}-019`
-38. Verifikasi switch Active baris `Fajar Nugroho {runId}-019` tetap tampil (visible) namun disabled
-39. Verifikasi tampil satu tooltip `This user is inactive in Global Settings. Contact a Global Settings admin to reactivate.`
-40. Verifikasi tooltip `You don't have permission to edit.` tidak tampil
-41. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+38. Ganti isi kotak search dengan `Fajar Nugroho {runId}-019`, tekan Enter
+39. Hover switch Active baris `Fajar Nugroho {runId}-019`
+40. Verifikasi switch Active baris `Fajar Nugroho {runId}-019` tetap tampil (visible) namun disabled
+41. Verifikasi tampil satu tooltip `This user is inactive in Global Settings. Contact a Global Settings admin to reactivate.`
+42. Verifikasi tooltip `You don't have permission to edit.` tidak tampil
+43. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), langkah 26 dan langkah kembali ke daftar lain (kembali ke Settings > User), langkah 41 (reset Search). Layar awal dibuka hook `beforeEach` suite.
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), langkah 14 dan 23 (buka Settings > User lewat sidebar sesudah login ulang), langkah 28 dan langkah kembali ke daftar lain (kembali ke Settings > User), langkah 43 (reset Search). Layar awal dibuka hook `beforeEach` suite.
 - Alasan blok per akun (bagian 3a, `[KEPUTUSAN 2026-10-30]`): ganti akun menuntut Step eksplisit; tiga akun (Read Only, Manage user and role Read saja, Manage user and role Update) dipakai berurutan, masing-masing satu kali. Tooltip diasersi segera sesudah hover (bagian 8b butir 5).
-- Ukuran spec (41 langkah, di atas smell sekitar 35 langkah): Role Matrix dengan tiga akun dan empat TC; tiap blok akun berdiri sendiri (login eksplisit di awal blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Ukuran spec (43 langkah, di atas smell sekitar 35 langkah): Role Matrix dengan tiga akun dan empat TC; tiap blok akun berdiri sendiri (login eksplisit di awal blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini matriks visibilitas per role (bagian 3a): memuat asersi enabled dan disabled dalam satu spec, tergantung role dan target; `caseType` Positive mengikuti bagian 8.
 - Temuan untuk QA:
   - TC-AC-SU-59, 60, 61 memakai nama aktor `Andi Wijaya`, `Yoga Pratama`, dan `Mike Tan` yang tidak dipetakan ke Pre-setup; spec memakai akun Pre-setup #3, #5, dan #4.
   - TC-AC-SU-79 butir c memakai kata "Must NOT"; diasersi sebagai tooltip tidak tampil, anchor positif adalah tooltip yang benar (butir b) pada surface yang sama.

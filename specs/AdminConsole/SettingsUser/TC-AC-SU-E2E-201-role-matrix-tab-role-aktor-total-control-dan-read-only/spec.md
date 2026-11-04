@@ -18,7 +18,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup #2) `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Akun aktor: Read Only (Pre-setup #3) `readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_RO_PASSWORD`.
-- Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite. Ganti akun ke Read Only dilakukan eksplisit pada langkah 16. Hook `after` memulihkan sesi ke Default User.
+- Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite. Ganti akun ke Read Only dilakukan eksplisit pada langkah 16 dan 17. Hook `after` memulihkan sesi ke Default User.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-settings-user` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Role yang diuji:
 
@@ -65,21 +65,22 @@ coverage:
 
 16. Logout dari akun aktor saat ini
 17. Login sebagai Read Only (`readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_RO_PASSWORD`)
-18. Ketik Search `Rudi Hartono {runId}-201`, tekan Enter
-19. Klik Name `Rudi Hartono {runId}-201`
-20. Hover switch dan checkbox C/U/D baris `Manage group` pada sub-tab Global Role
-21. Verifikasi switch dan C/U/D Global Role tampil namun disabled dengan tooltip `Read Only access cannot modify data.`
-22. Klik sub-tab Group Role
-23. Amati kolom Actions baris `Manage allocation`
-24. Verifikasi kolom Actions: `[Detail]` tampil enabled
-25. Verifikasi sub-tab Group Role tidak punya switch
-26. Verifikasi kolom Actions: `[Assign Group]` tidak dirender
-27. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
-28. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+18. Buka Settings > User lewat sidebar
+19. Ketik Search `Rudi Hartono {runId}-201`, tekan Enter
+20. Klik Name `Rudi Hartono {runId}-201`
+21. Hover switch dan checkbox C/U/D baris `Manage group` pada sub-tab Global Role
+22. Verifikasi switch dan C/U/D Global Role tampil namun disabled dengan tooltip `Read Only access cannot modify data.`
+23. Klik sub-tab Group Role
+24. Amati kolom Actions baris `Manage allocation`
+25. Verifikasi kolom Actions: `[Detail]` tampil enabled
+26. Verifikasi sub-tab Group Role tidak punya switch
+27. Verifikasi kolom Actions: `[Assign Group]` tidak dirender
+28. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+29. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): Search untuk menemukan baris target (R-16; berlaku untuk semua Search di spec ini), semua langkah kembali ke daftar lewat Breadcrumb, langkah 28 (reset Search). Layar awal dibuka hook `beforeEach` suite; sub-tab Global Role aktif secara default pada Tab Role.
+- Langkah penghubung (S-03): Search untuk menemukan baris target (R-16; berlaku untuk semua Search di spec ini), semua langkah kembali ke daftar lewat Breadcrumb, langkah 18 (buka Settings > User lewat sidebar sesudah login Read Only), langkah 29 (reset Search). Layar awal dibuka hook `beforeEach` suite; sub-tab Global Role aktif secara default pada Tab Role.
 - Alasan blok per akun (bagian 3a, `[KEPUTUSAN 2026-10-30]`): ganti akun menuntut Step eksplisit dan langkah tiap role berbeda target.
 - Pembagian TC Role Matrix Tab Role: TC-AC-SU-62 di spec 021, TC-AC-SU-63 dan 64 di spec ini, TC-AC-SU-65 di spec 202.
 - Temuan untuk QA:

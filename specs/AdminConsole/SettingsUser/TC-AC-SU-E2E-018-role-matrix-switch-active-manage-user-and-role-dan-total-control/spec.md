@@ -77,23 +77,25 @@ coverage:
 
 21. Logout dari akun aktor saat ini
 22. Login sebagai Total Control (`totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_TC_PASSWORD`)
-23. Ketik Search `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
-24. Hover switch Active baris Default User
-25. Verifikasi switch Active baris Default User tampil namun disabled dengan tooltip `Default User cannot be modified.`
-26. Ganti isi kotak search dengan `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
-27. Hover switch Active baris aktor sendiri (self)
-28. Verifikasi switch Active baris aktor sendiri (self) tampil namun disabled dengan tooltip `You can't manage your own account from here.`
-29. Ganti isi kotak search dengan `{runId}-018`, tekan Enter
-30. Verifikasi switch Active baris `Andi Wijaya {runId}-018` enabled
-31. Verifikasi switch Active baris `Fajar Nugroho {runId}-018` enabled
-32. Verifikasi switch Active baris `Dedi Kurnia {runId}-018` enabled
-33. Verifikasi switch Active baris `Rudi Hartono {runId}-018` enabled
-34. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+23. Buka Settings > User lewat sidebar
+24. Ketik Search `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
+25. Hover switch Active baris Default User
+26. Verifikasi switch Active baris Default User tampil namun disabled dengan tooltip `Default User cannot be modified.`
+27. Ganti isi kotak search dengan `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
+28. Hover switch Active baris aktor sendiri (self)
+29. Verifikasi switch Active baris aktor sendiri (self) tampil namun disabled dengan tooltip `You can't manage your own account from here.`
+30. Ganti isi kotak search dengan `{runId}-018`, tekan Enter
+31. Verifikasi switch Active baris `Andi Wijaya {runId}-018` enabled
+32. Verifikasi switch Active baris `Fajar Nugroho {runId}-018` enabled
+33. Verifikasi switch Active baris `Dedi Kurnia {runId}-018` enabled
+34. Verifikasi switch Active baris `Rudi Hartono {runId}-018` enabled
+35. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), langkah 34 (reset Search). Layar awal dibuka hook `beforeEach` suite.
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), langkah 23 (buka Settings > User lewat sidebar sesudah login ulang), langkah 35 (reset Search). Layar awal dibuka hook `beforeEach` suite.
 - Alasan blok per akun (bagian 3a, `[KEPUTUSAN 2026-10-30]`): ganti akun menuntut Step eksplisit dan langkah tiap role berbeda target; blok aktor Total Control berdiri sendiri sesudah ganti akun. Tooltip diasersi segera sesudah hover (bagian 8b butir 5); "tampil namun disabled, tooltip X" adalah satu elemen komposit (S-01).
+- Spec ini matriks visibilitas per role (bagian 3a): memuat asersi enabled dan disabled dalam satu spec, tergantung role dan target; `caseType` Positive mengikuti bagian 8.
 - Perubahan urutan TC (S-05): 56, 99, 57 agar aktor Manage user and role dipakai berurutan sebelum ganti akun ke Total Control.
 - Temuan untuk QA:
   - TC-AC-SU-56 memakai `Mike Tan` sebagai aktor dan TC-AC-SU-57 memakai `Dewi Lestari` sebagai aktor; nama aktor tidak dipetakan ke Pre-setup. Spec memakai akun Pre-setup #4 dan #2 dan mengidentifikasi baris self lewat email aktor.

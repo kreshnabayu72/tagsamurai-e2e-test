@@ -40,48 +40,50 @@ coverage:
 
 ### TC-AC-SU-374: Sort 3-state kelas teks
 
-1. Cari `Jane Smith {runId}-104` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `Changelog`
-3. Klik header kolom pada baris tabel 'Kolom sort kelas teks'
-4. Verifikasi urutan baris A–Z menurut nilai seeding kolom itu
-5. Verifikasi ikon sort `↑` tampil
-6. Klik header kolom yang sama untuk kedua kalinya
-7. Verifikasi urutan baris Z–A menurut nilai seeding kolom itu
-8. Verifikasi ikon sort `↓` tampil
-9. Klik header kolom yang sama untuk ketiga kalinya
-10. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+1. Ketik Search `Jane Smith {runId}-104`, tekan Enter
+2. Klik Name `Jane Smith {runId}-104` untuk membuka Detail User
+3. Klik tab `Changelog`
+4. Klik header kolom pada baris tabel 'Kolom sort kelas teks'
+5. Verifikasi tabel Changelog menampilkan sedikitnya dua baris data uji
+6. Verifikasi urutan baris A–Z menurut nilai seeding kolom itu
+7. Verifikasi ikon sort `↑` tampil
+8. Klik header kolom yang sama untuk kedua kalinya
+9. Verifikasi urutan baris Z–A menurut nilai seeding kolom itu
+10. Verifikasi ikon sort `↓` tampil
+11. Klik header kolom yang sama untuk ketiga kalinya
+12. Verifikasi urutan baris kembali ke sort default (Date Newest First)
 
 ### TC-AC-SU-375: Sort 3-state kelas campuran
 
-11. Klik header kolom pada baris tabel 'Kolom sort kelas campuran'
-12. Verifikasi nilai numerik tampil lebih dulu lalu nilai teks
-13. Verifikasi nilai kosong `—` berada di akhir
-14. Verifikasi ikon sort `↑` tampil
-15. Klik header kolom yang sama untuk kedua kalinya
-16. Verifikasi urutan kebalikannya dengan nilai kosong `—` berada di awal
-17. Verifikasi ikon sort `↓` tampil
-18. Klik header kolom yang sama untuk ketiga kalinya
-19. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+13. Klik header kolom pada baris tabel 'Kolom sort kelas campuran'
+14. Verifikasi nilai numerik tampil lebih dulu lalu nilai teks
+15. Verifikasi nilai kosong `—` berada di akhir
+16. Verifikasi ikon sort `↑` tampil
+17. Klik header kolom yang sama untuk kedua kalinya
+18. Verifikasi urutan kebalikannya dengan nilai kosong `—` berada di awal
+19. Verifikasi ikon sort `↓` tampil
+20. Klik header kolom yang sama untuk ketiga kalinya
+21. Verifikasi urutan baris kembali ke sort default (Date Newest First)
 
 ### TC-AC-SU-376: Sort 3-state kelas tanggal
 
-20. Klik header `Date` untuk pertama kalinya
-21. Verifikasi urutan baris Oldest First
-22. Verifikasi ikon sort `↑` tampil
-23. Klik header `Date` untuk kedua kalinya
-24. Verifikasi urutan baris Newest First
-25. Verifikasi ikon sort `↓` tampil
-26. Klik header `Date` untuk ketiga kalinya
-27. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+22. Klik header `Date` untuk pertama kalinya
+23. Verifikasi urutan baris Oldest First
+24. Verifikasi ikon sort `↑` tampil
+25. Klik header `Date` untuk kedua kalinya
+26. Verifikasi urutan baris Newest First
+27. Verifikasi ikon sort `↓` tampil
+28. Klik header `Date` untuk ketiga kalinya
+29. Verifikasi urutan baris kembali ke sort default (Date Newest First)
 
 ## Notes
 
 - Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
-- Langkah klik header kolom dilakukan per baris pada tabel Prerequisites ('Kolom sort kelas teks' dan 'Kolom sort kelas campuran'): langkah 3 sampai 10 (3 kolom) dan langkah 11 sampai 19 (2 kolom). Klik ketiga tiap kolom mengembalikan sort ke default sehingga kolom berikutnya mulai dari keadaan yang sama (S-09).
+- Langkah klik header kolom dilakukan per baris pada tabel Prerequisites ('Kolom sort kelas teks' dan 'Kolom sort kelas campuran'): langkah 4 sampai 12 (3 kolom) dan langkah 13 sampai 21 (2 kolom). Klik ketiga tiap kolom mengembalikan sort ke default sehingga kolom berikutnya mulai dari keadaan yang sama (S-09).
 - Temuan untuk QA:
   - Pada TC-376 klik 2 (Newest First) dan klik 3 (kembali ke sort default Date Newest First) menghasilkan urutan baris yang sama; pembeda keadaan header (ikon sort) pada klik 3 tidak dinyatakan. Spec hanya mengasersi urutan baris pada klik 3.
   - Tie-breaker antara dua entri bernilai sama pada kolom yang di-sort tidak dinyatakan di TC; spec mengasersi urutan nilai distinct, bukan urutan antar-baris bernilai sama.
   - Pelaku `Admin U` (nama lengkap `Admin Utama`) tidak terpetakan ke akun mana pun di Tabel Data Uji Pre-setup (#1-#7 hanya email aktor, #8 hanya target user). Spec memakai pelaku seeding bernama depan `Admin` dan belakang `Utama`; suffix `{runId}` ditaruh di email pelaku, bukan di nama, karena format Modified By [First Name] [Last Initial] tidak dapat memuat suffix.
   - Cara men-seed entri audit trail (Date, Action, Field, Old Value, New Value, pelaku) tidak dinyatakan di TC, PRD, atau LLD; kemampuan ini ditulis 'disediakan tim FE/BE' tanpa endpoint karangan (S-13).
   - Nama target `Jane Smith` pada TC dipakai sebagai nama bersuffix `Jane Smith {runId}-NNN` per run (S-12); asersi spec memakai nilai kolom log, bukan urutan atau Search atas nama user.
-- Spec ini melewati sekitar 35 langkah (27 langkah nominal, sekitar 52 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini melewati sekitar 35 langkah (29 langkah nominal, sekitar 53 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.

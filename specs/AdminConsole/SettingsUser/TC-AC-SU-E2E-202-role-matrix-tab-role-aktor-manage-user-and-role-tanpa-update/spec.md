@@ -43,16 +43,17 @@ coverage:
 1. Ketik Search `Rudi Hartono {runId}-202`, tekan Enter
 2. Klik Name `Rudi Hartono {runId}-202`
 3. Hover switch dan checkbox C/U/D baris `Manage group` pada sub-tab Global Role
-4. Verifikasi switch dan C/U/D tampil namun disabled dengan tooltip `You don't have permission to edit.`
-5. Klik sub-tab Group Role
-6. Verifikasi `[Detail]` tampil
-7. Verifikasi `[Assign Group]` tidak dirender
-8. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
-9. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+4. Verifikasi switch dan C/U/D tampil
+5. Verifikasi switch dan C/U/D disabled dengan tooltip `You don't have permission to edit.`
+6. Klik sub-tab Group Role
+7. Verifikasi `[Detail]` tampil
+8. Verifikasi `[Assign Group]` tidak dirender
+9. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+10. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16), langkah kembali ke daftar lewat Breadcrumb, langkah 9 (reset Search). Layar awal dibuka hook `beforeEach` suite; sub-tab Global Role aktif secara default pada Tab Role.
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16), langkah kembali ke daftar lewat Breadcrumb, langkah 10 (reset Search). Layar awal dibuka hook `beforeEach` suite; sub-tab Global Role aktif secara default pada Tab Role.
 - Pembagian TC Role Matrix Tab Role: TC-AC-SU-62 di spec 021, TC-AC-SU-63 dan 64 di spec 201, TC-AC-SU-65 di spec ini.
 - Temuan untuk QA:
   - TC-AC-SU-65 mensyaratkan `Rudi Hartono` punya Group Role `Manage allocation` aktif di `Region A`; spec men-seed record itu.

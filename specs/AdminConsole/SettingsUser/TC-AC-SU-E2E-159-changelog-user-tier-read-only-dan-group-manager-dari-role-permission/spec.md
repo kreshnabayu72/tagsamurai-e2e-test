@@ -27,7 +27,7 @@ coverage:
 | U2 | `Dedi Kurnia {runId}-159B` | `dedikurnia+{runId}-159b@qwertysystem.net` | Activated, tanpa tier |
 | U3 | `Dedi Kurnia {runId}-159C` | `dedikurnia+{runId}-159c@qwertysystem.net` | Activated, Group Manager di Region A |
 
-- Kemampuan teknis: Fixture BE (seeding user, tier, dan Group Manager). Tanpa intercept, klien HTTP, dan jam server. Modified By yang diasersi adalah `Default User`.
+- Kemampuan teknis: Fixture BE (seeding user, tier, dan Group Manager). Tanpa intercept, klien HTTP, dan jam server. Modified By yang diasersi adalah `Default U` (format `[First Name] [Last Initial]` dari nama tampil akun aktor Default User, seperti tertulis di Expected TC).
 - Suite berjalan serial (`parallel: false`). Env var yang dipakai sudah terdaftar di `executionConfig.environmentVariables` dan `.env.example` oleh pemilik repo (lihat suite.md).
 
 ## Test Steps
@@ -38,7 +38,7 @@ coverage:
 3. Tunggu aksi selesai, lalu klik menu Settings > User di sidebar
 4. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
 5. Ketik Search `Budi Santoso {runId}-159A` pada Popup Changelog: User, tekan Enter
-6. Verifikasi tepat 1 baris untuk U1: Action `Remove`, Field `Access Level`, Old Value `Read Only`, New Value `—`, Modified By `Default User`
+6. Verifikasi tepat 1 baris untuk U1: Action `Remove`, Field `Access Level`, Old Value `Read Only`, New Value `—`, Modified By `Default U`
 7. Verifikasi tidak ada baris cascade dengan Action `Remove (via Total Control)` atau `Remove (via Read Only)` untuk U1
 ### TC-AC-SU-545: Assign Group Manager dari Settings > Role & Permission
 8. Tutup Popup Changelog: User, klik menu Settings > Role & Permission di sidebar, lalu klik Tab Group Manager
@@ -46,7 +46,7 @@ coverage:
 10. Tunggu aksi selesai, lalu klik menu Settings > User di sidebar
 11. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
 12. Ketik Search `Dedi Kurnia {runId}-159B` pada Popup Changelog: User, tekan Enter
-13. Verifikasi tepat 1 baris untuk U2: Action `Assign`, Field `Group Manager — Region A`, Old Value `—`, New Value `Assigned`, Modified By `Default User`
+13. Verifikasi tepat 1 baris untuk U2: Action `Assign`, Field `Group Manager — Region A`, Old Value `—`, New Value `Assigned`, Modified By `Default U`
 14. Verifikasi Field memuat nama group `Region A` dan bukan `Access Level`
 ### TC-AC-SU-650: Remove Group Manager manual dari Settings > Role & Permission
 15. Tutup Popup Changelog: User, klik menu Settings > Role & Permission di sidebar, lalu klik Tab Group Manager
@@ -54,7 +54,7 @@ coverage:
 17. Tunggu aksi selesai, lalu klik menu Settings > User di sidebar
 18. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
 19. Ketik Search `Dedi Kurnia {runId}-159C` pada Popup Changelog: User, tekan Enter
-20. Verifikasi tepat 1 baris untuk U3: Action `Remove`, Field `Group Manager — Region A`, Old Value `Assigned`, New Value `—`, Modified By `Default User`
+20. Verifikasi tepat 1 baris untuk U3: Action `Remove`, Field `Group Manager — Region A`, Old Value `Assigned`, New Value `—`, Modified By `Default U`
 21. Verifikasi Action baris itu bukan `Remove (Group Deleted)` dan bukan `Auto-Revert`
 
 ## Notes

@@ -70,12 +70,14 @@ coverage:
 ### TC-AC-SU-58: Switch Active per target (lanjutan, target lain)
 
 23. Ganti isi kotak search dengan `{runId}-015`, tekan Enter
-24. Verifikasi switch Active baris `Dewi Lestari {runId}-015`, `Andi Wijaya {runId}-015`, dan `Rudi Hartono {runId}-015` enabled
-25. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+24. Verifikasi switch Active baris `Dewi Lestari {runId}-015` enabled
+25. Verifikasi switch Active baris `Andi Wijaya {runId}-015` enabled
+26. Verifikasi switch Active baris `Rudi Hartono {runId}-015` enabled
+27. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya, termasuk 14 dan 23), langkah 8 (tutup menu), langkah 13 (kembali ke daftar), langkah 25 (reset Search).
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya, termasuk 14 dan 23), langkah 8 (tutup menu), langkah 13 (kembali ke daftar), langkah 27 (reset Search).
 - Perubahan urutan TC (S-05): blok TC-AC-SU-58 dipecah di dua tempat dan TC-AC-SU-114 disisipkan di antaranya karena baris Default User sendiri dicari lewat email, sedangkan target lain dicari lewat suffix; urutan: 50, 58 (Default User sendiri), 114, 58 (target lain). Subjudul memetakan langkah ke id TC.
 - Temuan untuk QA:
   - TC-AC-SU-58: target `Dewi Lestari`, `Andi Wijaya`, dan `Rudi Hartono` di-seed sebagai user milik spec bersuffix; baris Default User dicari lewat email Pre-setup #1.

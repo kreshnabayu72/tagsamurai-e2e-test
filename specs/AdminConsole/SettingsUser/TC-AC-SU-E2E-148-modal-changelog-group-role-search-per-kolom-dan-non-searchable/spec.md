@@ -60,12 +60,13 @@ coverage:
 
 ### TC-AC-SU-514: Kolom non-searchable tidak ikut dicari
 
-9. Ketik Search `11 Jun 2026`, tekan Enter
-10. Verifikasi tabel menampilkan empty state `No results found` (nilai kolom Date tidak dicocokkan oleh Search)
-11. Klik icon `(←)` pada kotak Search
-12. Klik icon Filter
-13. Verifikasi Filter Panel memuat field `Date` (penyaringan kolom Date tersedia lewat Filter Panel)
-14. Klik icon Filter lagi untuk menutup Filter Panel
+9. Verifikasi kolom `Date` menampilkan `11 Jun 2026` pada baris `Manage partner — Region B {runId}-148` dengan Action `Remove`
+10. Ketik Search `11 Jun 2026`, tekan Enter
+11. Verifikasi tabel menampilkan empty state `No results found` (nilai kolom Date tidak dicocokkan oleh Search)
+12. Klik icon `(←)` pada kotak Search
+13. Klik icon Filter
+14. Verifikasi Filter Panel memuat field `Date` (penyaringan kolom Date tersedia lewat Filter Panel)
+15. Klik icon Filter lagi untuk menutup Filter Panel
 
 ## Notes
 
@@ -73,6 +74,6 @@ coverage:
 - Langkah yang diulang per kolom: langkah 4 sampai 8 (iterasi dari tabel "Kolom uji Search" di Prerequisites); `Verifikasi` tetap satu per keyword. Klik `(←)` pada kotak Search di akhir iterasi adalah langkah penghubung yang mereset tabel (S-03, S-09).
 - Langkah penghubung (tanpa `Verifikasi`; S-03): membuka Detail, tab `Role`, dan sub-tab `Group Role` dijadikan satu langkah bersama klik icon `[📋]`. TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
-- Alasan ekspansi di atas ±35 langkah (14 langkah nominal, sekitar 39 dengan ekspansi blok berulang): semua TC berada di satu surface (Modal Changelog: User > Group Role (Search)), satu akun, satu dataset; tiap TC berdiri sendiri dan tiap iterasi kolom diakhiri `(←)` yang mereset tabel sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Alasan ekspansi di atas ±35 langkah (15 langkah nominal, sekitar 40 dengan ekspansi blok berulang): semua TC berada di satu surface (Modal Changelog: User > Group Role (Search)), satu akun, satu dataset; tiap TC berdiri sendiri dan tiap iterasi kolom diakhiri `(←)` yang mereset tabel sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (tanpa `Verifikasi`; S-03, R-16): Search untuk menemukan baris target sebelum membuka Detail (langkah 1); baris user seed tidak dijamin berada di halaman pertama User List.
 - Temuan untuk QA: (1) TC-AC-SU-514 butir b ("Penyaringan kolom ini hanya tersedia lewat Filter Panel (bila Filterable)") berbentuk pernyataan; spec mengamatinya sebagai keberadaan field `Date` di Filter Panel. (2) TC-AC-SU-514 mengasumsikan format tampilan `11 Jun 2026` yang ditentukan General Settings; spec menyatakannya di Prerequisites. (3) Pada TC-AC-SU-513 nilai kolom `Role Name — Group Name` memuat nama grup bersuffix; keyword `region a` tetap cocok sebagai substring.

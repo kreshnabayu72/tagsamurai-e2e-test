@@ -39,62 +39,64 @@ coverage:
 2. Klik nama `Rina Putri {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 3. Verifikasi banner `"This user has Total Control access."` tampil
 4. Hover switch baris `Manage group`
-5. Hover checkbox C baris `Manage group`
-6. Verifikasi seluruh switch dan CRUD Global Role tampil namun disabled
+5. Verifikasi tooltip `"You don't have permission to edit."`
+6. Hover checkbox C baris `Manage group`
 7. Verifikasi tooltip `"You don't have permission to edit."`
-8. Klik switch baris `Manage group`
-9. Verifikasi klik tidak memicu dialog
-10. Verifikasi klik tidak memicu toast
-11. Klik Breadcrumb Settings > User untuk kembali ke User List
+8. Verifikasi seluruh switch dan CRUD Global Role tampil namun disabled
+9. Klik switch baris `Manage group`
+10. Verifikasi klik tidak memicu dialog
+11. Verifikasi klik tidak memicu toast
+12. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-186: Aktor Manage user and role pada target Read Only: Global Role terkunci
 
-12. Ketik Search `Andi Wijaya {runId}-049`, tekan Enter
-13. Klik nama `Andi Wijaya {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
-14. Hover switch baris `Manage group`
-15. Verifikasi banner `"This user has Read Only access."` tampil
-16. Verifikasi switch dan CRUD Global Role tampil namun disabled
-17. Verifikasi tooltip `"You don't have permission to edit."`
-18. Klik Breadcrumb Settings > User untuk kembali ke User List
+13. Ganti isi kotak Search dengan `Andi Wijaya {runId}-049`, tekan Enter
+14. Klik nama `Andi Wijaya {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
+15. Hover switch baris `Manage group`
+16. Verifikasi banner `"This user has Read Only access."` tampil
+17. Verifikasi switch dan CRUD Global Role tampil namun disabled
+18. Verifikasi tooltip `"You don't have permission to edit."`
+19. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-187: Aktor Manage user and role mengedit Global Role target standar sampai sukses
 
-19. Ketik Search `Budi Santoso {runId}-049`, tekan Enter
-20. Klik nama `Budi Santoso {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
-21. Centang C baris `Manage group`
-22. Verifikasi muncul toast sukses: "Success, permissions have been updated."
-23. Tunggu toast lama hilang otomatis
-24. Klik switch baris `Manage language` ke ON
-25. Verifikasi muncul toast sukses: "Success, role has been updated."
-26. Verifikasi tidak ada dialog Auto-Revert
-27. Klik Breadcrumb Settings > User untuk kembali ke User List
+20. Ganti isi kotak Search dengan `Budi Santoso {runId}-049`, tekan Enter
+21. Klik nama `Budi Santoso {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
+22. Centang C baris `Manage group`
+23. Verifikasi muncul toast sukses: "Success, permissions have been updated."
+24. Tunggu toast lama hilang otomatis
+25. Klik switch baris `Manage language` ke ON
+26. Verifikasi muncul toast sukses: "Success, role has been updated."
+27. Verifikasi tidak ada dialog Auto-Revert
+28. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-188: Aktor Manage user and role pada target Group Manager: Global Role tetap bisa diedit
 
-28. Ketik Search `Dedi Kurnia {runId}-049`, tekan Enter
-29. Klik nama `Dedi Kurnia {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
-30. Verifikasi banner `"This user is a Group Manager for: Region A {runId}-049."` tampil
-31. Verifikasi switch dan CRUD Global Role enabled
-32. Centang C baris `Manage group`
-33. Verifikasi muncul toast sukses: "Success, permissions have been updated."
-34. Verifikasi tidak ada dialog Auto-Revert
+29. Ganti isi kotak Search dengan `Dedi Kurnia {runId}-049`, tekan Enter
+30. Klik nama `Dedi Kurnia {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
+31. Verifikasi banner `"This user is a Group Manager for: Region A {runId}-049."` tampil
+32. Verifikasi switch dan CRUD Global Role enabled
+33. Centang C baris `Manage group`
+34. Verifikasi muncul toast sukses: "Success, permissions have been updated."
+35. Verifikasi tidak ada dialog Auto-Revert
 
 ### TC-AC-SU-190: Aktor Manage user and role tanpa Update membuka Sub-tab Global Role
 
-35. Logout dari akun Manage user and role (Update aktif)
-36. Login sebagai Manage user and role (Read saja, U=false) (`manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_READ_PASSWORD`)
-37. Buka Settings > User lewat sidebar
-38. Ketik Search `Budi Santoso {runId}-049`, tekan Enter
-39. Klik nama `Budi Santoso {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
-40. Hover switch sebuah baris Global Role
-41. Verifikasi switch dan CRUD Global Role tampil namun disabled
-42. Verifikasi tooltip `"You don't have permission to edit."`
-43. Logout dari akun Manage user and role (Read saja) dan login kembali sebagai akun default suite (Total Control)
+36. Logout dari akun Manage user and role (Update aktif)
+37. Login sebagai Manage user and role (Read saja, U=false) (`manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_READ_PASSWORD`)
+38. Buka Settings > User lewat sidebar
+39. Ketik Search `Budi Santoso {runId}-049`, tekan Enter
+40. Klik nama `Budi Santoso {runId}-049` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
+41. Hover switch sebuah baris Global Role
+42. Verifikasi switch dan CRUD Global Role tampil namun disabled
+43. Verifikasi tooltip `"You don't have permission to edit."`
+44. Logout dari akun Manage user and role (Read saja) dan login kembali sebagai akun default suite (Total Control)
 
 ## Notes
 
+- Spec ini matriks visibilitas per aktor dan target (bagian 3a): memuat asersi terkunci (disabled dengan tooltip untuk target Total Control, Read Only, dan aktor Read saja) bersama enabled dan toast sukses (target standar dan Group Manager) dalam satu spec; polaritas campuran disengaja; `caseType` Negative mengikuti bagian 8.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, R-16): langkah 1, 11, 12, 18, 19, 23, 27, 28, 38, 43 (pencarian baris target lewat Search, penutupan menu atau dialog, pemulihan state, dan kembali ke User List); tanpa `Verifikasi` dan tanpa klaim keadaan.
+- Langkah penghubung (S-03, R-16): langkah 1, 12, 13, 19, 20, 24, 28, 29, 39, 44 (pencarian baris target lewat Search, penutupan menu atau dialog, pemulihan state, dan kembali ke User List); tanpa `Verifikasi` dan tanpa klaim keadaan.
 - Mode: FE+BE. Sumber: `admin-console/settings-user/TestCases/tc-settings-user.md`.
 - Ganti akun eksplisit di TC-190: dua akun aktor MUR berbeda (Update aktif dan Read saja); perulangan role tidak dipakai karena langkah tiap target berbeda (bagian 3a).
 - Hook `after` mengembalikan sesi ke akun default suite (Total Control) bila spec berhenti sebelum langkah pemulihan terakhir.

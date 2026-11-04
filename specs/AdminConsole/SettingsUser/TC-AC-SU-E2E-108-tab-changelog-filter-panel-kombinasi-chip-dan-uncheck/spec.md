@@ -37,60 +37,61 @@ coverage:
 
 ### TC-AC-SU-386: OR di dalam satu field, AND antar field
 
-1. Cari `Jane Smith {runId}-108` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `Changelog`
-3. Klik icon Filter
-4. Pilih `Assign` dan `Remove` di field `Action`
-5. Klik `[Apply]`
-6. Verifikasi sedikitnya satu baris tampil
-7. Verifikasi setiap baris yang tampil memiliki Action `Assign` atau `Remove`
-8. Klik icon Filter
-9. Tambah `Admin U` di field `Modified By`
-10. Klik `[Apply]`
-11. Verifikasi sedikitnya satu baris tampil
-12. Verifikasi setiap baris yang tampil memiliki Action `Assign` atau `Remove` dan Modified By `Admin U`
-13. Klik icon Filter
-14. Klik `[Clear Field]`, lalu klik `[Apply]`
+1. Ketik Search `Jane Smith {runId}-108`, tekan Enter
+2. Klik Name `Jane Smith {runId}-108`
+3. Klik tab `Changelog`
+4. Klik icon Filter
+5. Pilih `Assign` dan `Remove` di field `Action`
+6. Klik `[Apply]`
+7. Verifikasi sedikitnya satu baris tampil
+8. Verifikasi setiap baris yang tampil memiliki Action `Assign` atau `Remove`
+9. Klik icon Filter
+10. Tambah `Admin U` di field `Modified By`
+11. Klik `[Apply]`
+12. Verifikasi sedikitnya satu baris tampil
+13. Verifikasi setiap baris yang tampil memiliki Action `Assign` atau `Remove` dan Modified By `Admin U`
+14. Klik icon Filter
+15. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-AC-SU-387: Chip opsi terpilih dan hapus via (X) chip
 
-15. Klik icon Filter
-16. Pilih `Assign` lalu `Remove` di field `Action`
-17. Verifikasi chip `Assign` lalu chip `Remove` muncul berdampingan di dalam field `Action`
-18. Klik `(X)` pada chip `Assign` tanpa membuka dropdown
-19. Verifikasi chip `Assign` hilang
-20. Verifikasi chip `Remove` tetap tampil
-21. Buka dropdown field `Action`
-22. Verifikasi checkbox `Assign` ter-uncheck
-23. Verifikasi checkbox `Remove` tetap tercentang
-24. Klik `[Apply]`
-25. Verifikasi sedikitnya satu baris tampil
-26. Verifikasi setiap baris yang tampil memiliki Action `Remove`
-27. Klik icon Filter
-28. Klik `[Clear Field]`, lalu klik `[Apply]`
+16. Klik icon Filter
+17. Pilih `Assign` lalu `Remove` di field `Action`
+18. Verifikasi chip `Assign` lalu chip `Remove` muncul berdampingan di dalam field `Action`
+19. Klik `(X)` pada chip `Assign` tanpa membuka dropdown
+20. Verifikasi chip `Assign` hilang
+21. Verifikasi chip `Remove` tetap tampil
+22. Buka dropdown field `Action`
+23. Verifikasi checkbox `Assign` ter-uncheck
+24. Verifikasi checkbox `Remove` tetap tercentang
+25. Klik `[Apply]`
+26. Verifikasi sedikitnya satu baris tampil
+27. Verifikasi setiap baris yang tampil memiliki Action `Remove`
+28. Klik icon Filter
+29. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-AC-SU-388: Hapus opsi lewat uncheck di dalam dropdown
 
-29. Klik icon Filter
-30. Pilih `Assign` lalu `Remove` di field `Action`
-31. Buka dropdown `Action`, uncheck `Remove`
-32. Tutup dropdown
-33. Verifikasi chip `Remove` hilang dari field
-34. Verifikasi chip `Assign` tetap tampil
-35. Klik `[Apply]`
-36. Verifikasi sedikitnya satu baris tampil
-37. Verifikasi setiap baris yang tampil memiliki Action `Assign`
-38. Klik icon Filter
-39. Klik `[Clear Field]`, lalu klik `[Apply]`
+30. Klik icon Filter
+31. Pilih `Assign` lalu `Remove` di field `Action`
+32. Buka dropdown `Action`, uncheck `Remove`
+33. Tutup dropdown
+34. Verifikasi chip `Remove` hilang dari field
+35. Verifikasi chip `Assign` tetap tampil
+36. Klik `[Apply]`
+37. Verifikasi sedikitnya satu baris tampil
+38. Verifikasi setiap baris yang tampil memiliki Action `Assign`
+39. Klik icon Filter
+40. Klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
-- Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
 - `[Clear Field]` lalu `[Apply]` pada akhir blok adalah langkah penghubung yang mengosongkan Filter (S-09); klik icon Filter sebelum tiap pengaturan Filter membuka panel.
 - Temuan untuk QA:
   - Perilaku Filter Panel setelah `[Apply]` (tetap terbuka atau menutup) tidak dinyatakan di TC. Spec mengasumsikan panel menutup setelah Apply dan membukanya lagi dengan klik icon Filter.
-  - TC-387 langkah 5 meminta 'Buka dropdown field' tanpa menyebut field; spec membuka dropdown `Action`.
+  - TC-387 langkah 6 meminta 'Buka dropdown field' tanpa menyebut field; spec membuka dropdown `Action`.
   - Pelaku `Admin U` (nama lengkap `Admin Utama`) tidak terpetakan ke akun mana pun di Tabel Data Uji Pre-setup (#1-#7 hanya email aktor, #8 hanya target user). Spec memakai pelaku seeding bernama depan `Admin` dan belakang `Utama`; suffix `{runId}` ditaruh di email pelaku, bukan di nama, karena format Modified By [First Name] [Last Initial] tidak dapat memuat suffix.
   - Cara men-seed entri audit trail (Date, Action, Field, Old Value, New Value, pelaku) tidak dinyatakan di TC, PRD, atau LLD; kemampuan ini ditulis 'disediakan tim FE/BE' tanpa endpoint karangan (S-13).
   - Nama target `Jane Smith` pada TC dipakai sebagai nama bersuffix `Jane Smith {runId}-NNN` per run (S-12); asersi spec memakai nilai kolom log, bukan urutan atau Search atas nama user.
-- Spec ini melewati sekitar 35 langkah (39 langkah nominal, sekitar 39 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini melewati sekitar 35 langkah (40 langkah nominal, sekitar 40 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.

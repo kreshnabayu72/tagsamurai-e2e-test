@@ -87,12 +87,13 @@ coverage:
 
 ### TC-AC-SU-490: Kolom non-searchable tidak ikut dicari
 
-32. Ketik Search `12 Jun 2026`, tekan Enter
-33. Verifikasi tabel menampilkan empty state `No results found` (nilai kolom Date tidak dicocokkan oleh Search)
-34. Klik icon `(←)` pada kotak Search
-35. Klik icon Filter
-36. Verifikasi Filter Panel memuat field `Date` (penyaringan kolom Date tersedia lewat Filter Panel)
-37. Klik icon Filter lagi untuk menutup Filter Panel
+32. Verifikasi kolom `Date` menampilkan `12 Jun 2026` pada baris `Manage user and role`
+33. Ketik Search `12 Jun 2026`, tekan Enter
+34. Verifikasi tabel menampilkan empty state `No results found` (nilai kolom Date tidak dicocokkan oleh Search)
+35. Klik icon `(←)` pada kotak Search
+36. Klik icon Filter
+37. Verifikasi Filter Panel memuat field `Date` (penyaringan kolom Date tersedia lewat Filter Panel)
+38. Klik icon Filter lagi untuk menutup Filter Panel
 
 ## Notes
 

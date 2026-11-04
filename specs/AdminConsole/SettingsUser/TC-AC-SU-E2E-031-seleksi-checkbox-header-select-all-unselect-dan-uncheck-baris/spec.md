@@ -64,17 +64,18 @@ coverage:
 ### TC-AC-SU-112: Uncheck 1 baris dari kondisi 100% terseleksi, tombol kembali Select All
 
 23. Kembali ke halaman 1
-24. Klik `[Select All (12 records)]`
-25. Batalkan centang 1 baris
-26. Verifikasi Bulk Action Bar tetap tampil
-27. Verifikasi tombol kembali `[Select All (12 records)]`
-28. Verifikasi counter `11 Users selected` (N - 1)
-29. Klik icon `×` pada Bulk Action Bar untuk membatalkan seleksi
-30. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+24. Centang 1 baris
+25. Klik `[Select All (12 records)]`
+26. Batalkan centang 1 baris
+27. Verifikasi Bulk Action Bar tetap tampil
+28. Verifikasi tombol kembali `[Select All (12 records)]`
+29. Verifikasi counter `11 Users selected` (N - 1)
+30. Klik icon `×` pada Bulk Action Bar untuk membatalkan seleksi
+31. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 dan 12 (Search untuk membatasi baris, R-16; 1 memunculkan akun aktor Pre-setup termasuk Default User dan self), langkah 23 (kembali ke halaman 1 karena TC-AC-SU-111 berakhir di halaman 2), langkah 29 dan 30 (batalkan seleksi dan reset Search, S-09).
+- Langkah penghubung (S-03): langkah 1 dan 12 (Search untuk membatasi baris, R-16; 1 memunculkan akun aktor Pre-setup termasuk Default User dan self), langkah 23 (kembali ke halaman 1 karena TC-AC-SU-111 berakhir di halaman 2), langkah 24 (centang 1 baris agar `[Select All (12 records)]` tampil; seleksi TC-AC-SU-111 sudah dibatalkan di langkah 20 dan Bulk Action Bar tertutup), langkah 30 dan 31 (batalkan seleksi dan reset Search, S-09).
 - Temuan untuk QA:
   - TC-AC-SU-110 butir b menuntut baris Default User dan self terlihat pada halaman aktif; spec membatasi tabel dengan Search atas email akun aktor Pre-setup supaya kedua baris tampil, bukan dengan 12 user seed.
   - TC-AC-SU-111 dan TC-AC-SU-112 menyebut "≥12 user" tanpa nama; spec men-seed 12 user generik bersuffix (N = 12) dan memakai Search atas suffix.

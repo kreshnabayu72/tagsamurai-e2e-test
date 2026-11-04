@@ -26,23 +26,24 @@ coverage:
 
 ### TC-AC-SU-438: Download Tab User Log sebagai CSV tanpa search atau filter
 
-1. Cari `Jane Smith {runId}-124` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `User Log`
-3. Catat jumlah total sesi User Log user target lewat kemampuan baca Fixture BE (N)
-4. Verifikasi tabel menampilkan lebih dari 1 halaman data
-5. Hover icon Download
-6. Verifikasi tooltip `Download` tampil
-7. Klik icon Download
-8. Verifikasi overlay menampilkan `Download as CSV` dan `Download as XLSX`
-9. Klik `Download as CSV`
-10. Verifikasi tidak ada toast sukses
-11. Verifikasi file `User-Log-Jane-Smith-{runId}-124.csv` terunduh
-12. Verifikasi file berisi seluruh baris Tab User Log dari semua halaman (jumlah baris data sama dengan N)
-13. Verifikasi kolom pada file sesuai kolom yang visible pada tabel
+1. Ketik Search `Jane Smith {runId}-124`, tekan Enter
+2. Klik Name `Jane Smith {runId}-124`
+3. Klik tab `User Log`
+4. Catat jumlah total sesi User Log user target lewat kemampuan baca Fixture BE (N)
+5. Verifikasi tabel menampilkan lebih dari 1 halaman data
+6. Hover icon Download
+7. Verifikasi tooltip `Download` tampil
+8. Klik icon Download
+9. Verifikasi overlay menampilkan `Download as CSV` dan `Download as XLSX`
+10. Klik `Download as CSV`
+11. Verifikasi tidak ada toast sukses
+12. Verifikasi file `User-Log-Jane-Smith-{runId}-124.csv` terunduh
+13. Verifikasi file berisi seluruh baris Tab User Log dari semua halaman (jumlah baris data sama dengan N)
+14. Verifikasi kolom pada file sesuai kolom yang visible pada tabel
 
 ## Notes
 
-- Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
 - Asersi absence toast sukses diletakkan segera setelah pemicu `Download as CSV` dan sebelum asersi berkas (bagian 8b butir 11); berkas yang terunduh adalah anchor positif bahwa respons sudah diproses.
 - TC-439 (XLSX dengan search atau filter aktif) ada di spec 195 karena Expected-nya memuat nilai sel berkas.
 - Temuan untuk QA:

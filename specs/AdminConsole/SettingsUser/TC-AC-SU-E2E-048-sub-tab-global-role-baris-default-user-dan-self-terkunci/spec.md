@@ -42,11 +42,11 @@ coverage:
 11. Verifikasi klik tidak mengubah apa pun
 12. Verifikasi tidak ada dialog Auto-Revert
 13. Verifikasi tidak ada toast
-14. Klik Breadcrumb Settings > User untuk kembali ke User List
+14. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-184: Aktor membuka Tab Role miliknya sendiri: edit Global Role terkunci
 
-15. Ketik Search `Fixture.settingsUser.totalControlName`, tekan Enter
+15. Ganti isi kotak Search dengan `Fixture.settingsUser.totalControlName`, tekan Enter
 16. Klik nama akun sendiri di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 17. Hover switch sebuah baris Global Role
 18. Verifikasi switch Global Role tetap tampil namun disabled

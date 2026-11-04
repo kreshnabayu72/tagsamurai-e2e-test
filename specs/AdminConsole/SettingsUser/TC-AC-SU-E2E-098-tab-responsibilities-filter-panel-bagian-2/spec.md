@@ -43,42 +43,45 @@ coverage:
 7. Klik `[Apply]`
 8. Verifikasi baris `ID-HALC` (Device Allocation) dan `ID-WLT` (Wallet Top-Up) tampil
 9. Verifikasi baris `ID-LALC` (License Allocation) tidak tampil
-10. Tambah `Budi Santoso {runId}-098` di field `Requester`
-11. Klik `[Apply]`
-12. Verifikasi baris `ID-HALC` (Device Allocation, Requester `Budi Santoso {runId}-098`) tampil
-13. Verifikasi baris `ID-WLT` (Requester `PT Maju Bersama {runId}-098`) tidak tampil
-14. Klik `[Clear Field]`, klik `[Apply]`
+10. Klik icon Filter
+11. Tambah `Budi Santoso {runId}-098` di field `Requester`
+12. Klik `[Apply]`
+13. Verifikasi baris `ID-HALC` (Device Allocation, Requester `Budi Santoso {runId}-098`) tampil
+14. Verifikasi baris `ID-WLT` (Requester `PT Maju Bersama {runId}-098`) tidak tampil
+15. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
 
 ### TC-AC-SU-351: Chip opsi terpilih dan hapus via `(X)` chip
 
-15. Pilih `Device Allocation` lalu `Wallet Top-Up` di field `Transaction`
-16. Verifikasi chip `Device Allocation` lalu chip `Wallet Top-Up` muncul berdampingan di dalam field `Transaction`
-17. Klik `(X)` pada chip `Device Allocation` tanpa membuka dropdown
-18. Verifikasi chip `Device Allocation` hilang
-19. Verifikasi chip `Wallet Top-Up` tetap
-20. Buka dropdown field `Transaction`
-21. Verifikasi checkbox `Device Allocation` ter-uncheck
-22. Verifikasi checkbox `Wallet Top-Up` tetap tercentang
-23. Klik `[Apply]`
-24. Verifikasi baris `ID-WLT` (Wallet Top-Up) tampil
-25. Verifikasi baris `ID-HALC` (Device Allocation) tidak tampil
-26. Klik `[Clear Field]`, klik `[Apply]`
+16. Klik icon Filter
+17. Pilih `Device Allocation` lalu `Wallet Top-Up` di field `Transaction`
+18. Verifikasi chip `Device Allocation` lalu chip `Wallet Top-Up` muncul berdampingan di dalam field `Transaction`
+19. Klik `(X)` pada chip `Device Allocation` tanpa membuka dropdown
+20. Verifikasi chip `Device Allocation` hilang
+21. Verifikasi chip `Wallet Top-Up` tetap
+22. Buka dropdown field `Transaction`
+23. Verifikasi checkbox `Device Allocation` ter-uncheck
+24. Verifikasi checkbox `Wallet Top-Up` tetap tercentang
+25. Klik `[Apply]`
+26. Verifikasi baris `ID-WLT` (Wallet Top-Up) tampil
+27. Verifikasi baris `ID-HALC` (Device Allocation) tidak tampil
+28. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
 
 ### TC-AC-SU-352: Hapus opsi lewat uncheck di dalam dropdown
 
-27. Pilih `Device Allocation` lalu `Wallet Top-Up` di field `Transaction`
-28. Buka dropdown `Transaction`, hapus centang `Wallet Top-Up`
-29. Tutup dropdown
-30. Verifikasi chip `Wallet Top-Up` hilang dari field
-31. Verifikasi chip `Device Allocation` tetap
-32. Klik `[Apply]`
-33. Verifikasi baris `ID-HALC` (Device Allocation) tampil
-34. Verifikasi baris `ID-WLT` (Wallet Top-Up) tidak tampil
-35. Klik `[Clear Field]`, klik `[Apply]`
+29. Klik icon Filter
+30. Pilih `Device Allocation` lalu `Wallet Top-Up` di field `Transaction`
+31. Buka dropdown `Transaction`, hapus centang `Wallet Top-Up`
+32. Tutup dropdown
+33. Verifikasi chip `Wallet Top-Up` hilang dari field
+34. Verifikasi chip `Device Allocation` tetap
+35. Klik `[Apply]`
+36. Verifikasi baris `ID-HALC` (Device Allocation) tampil
+37. Verifikasi baris `ID-WLT` (Wallet Top-Up) tidak tampil
+38. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
 
 ## Notes
 
-- Langkah penghubung (S-03): Search lalu klik Name membuka Detail target (R-16); `[Clear Field]` lalu `[Apply]` di akhir tiap TC melepas filter (S-09).
+- Langkah penghubung (S-03): Search lalu klik Name membuka Detail target (R-16); `[Apply]` menutup Filter Panel, sehingga tiap perubahan Filter sesudah Apply diawali `Klik icon Filter`; `[Clear Field]` lalu `[Apply]` di akhir tiap TC melepas filter (S-09).
 - Alasan di atas ±35 langkah: ketiga TC adalah Filter Tab Responsibilities dengan dataset sama; berdiri sendiri.
 - Temuan untuk QA:
   - TC menulis nama data DS-UL secara literal (nama user, email, position, division). Spec memakai nama bersuffix ` {runId}-098` (S-12) dan mengasersi baris milik spec; klaim "hanya X yang tampil" pada TC tidak dapat diasersi atas seluruh tabel karena baris Pre-setup bernama sama ikut ada di entitas Principal.

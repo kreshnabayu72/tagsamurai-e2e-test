@@ -42,27 +42,27 @@ coverage:
 6. Verifikasi seluruh Group Role aktif dengan group ter-assign
 7. Verifikasi `[Detail]` tampil pada kolom Actions
 8. Verifikasi `[Assign Group]` Hidden (tidak dirender)
-9. Klik Breadcrumb Settings > User untuk kembali ke User List
+9. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-207: Self: Assign Group Hidden dan Detail tampil
 
-10. Ketik Search `Fixture.settingsUser.totalControlName`, tekan Enter
+10. Ganti isi kotak Search dengan `Fixture.settingsUser.totalControlName`, tekan Enter
 11. Klik nama akun sendiri di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 12. Klik Sub-tab [Group Role]
 13. Amati kolom Actions
 14. Verifikasi `[Detail]` tampil dan enabled
 15. Verifikasi `[Assign Group]` Hidden
-16. Klik Breadcrumb Settings > User untuk kembali ke User List
+16. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-205: Group Role tanpa group assignment diperlakukan server tanpa akses
 
-17. Ketik Search `Sarah Lee {runId}-054`, tekan Enter
+17. Ganti isi kotak Search dengan `Sarah Lee {runId}-054`, tekan Enter
 18. Klik nama `Sarah Lee {runId}-054` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 19. Klik Sub-tab [Group Role]
 20. Amati baris `Manage partner`
 21. Verifikasi kolom Group baris `Manage partner` = `—`
 22. Verifikasi baris `Manage partner` tanpa switch
-23. Klik Breadcrumb Settings > User untuk kembali ke User List
+23. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 24. Verifikasi kolom Role baris `Sarah Lee {runId}-054` tidak menghitung `Manage partner` (menampilkan `0 roles`)
 
 ### TC-AC-SU-633: EC-18: Group Role tanpa group assignment diperlakukan tanpa akses

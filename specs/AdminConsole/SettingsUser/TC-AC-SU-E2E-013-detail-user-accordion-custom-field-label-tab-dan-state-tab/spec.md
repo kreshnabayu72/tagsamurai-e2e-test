@@ -59,42 +59,43 @@ coverage:
 13. Verifikasi awal: hanya header `Custom Field` dengan icon `▶`
 14. Klik header `Custom Field`
 15. Verifikasi icon `▼`
-16. Verifikasi tampil key-value read-only `Blood Type {runId}-013: O` dan `Emergency Phone {runId}-013: +62 81234567890`
-17. Klik header `Custom Field` lagi
-18. Verifikasi accordion `Custom Field` kembali collapsed
-19. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+16. Verifikasi tampil key-value read-only `Blood Type {runId}-013: O`
+17. Verifikasi tampil key-value read-only `Emergency Phone {runId}-013: +62 81234567890`
+18. Klik header `Custom Field` lagi
+19. Verifikasi accordion `Custom Field` kembali collapsed
+20. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
 
 ### TC-AC-SU-48: Label Tab Responsibilities menampilkan jumlah
 
-20. Ganti isi kotak search dengan `Dewi Lestari {runId}-013`, tekan Enter
-21. Klik Name `Dewi Lestari {runId}-013`
-22. Verifikasi label tab `Responsibilities (3)` pada Detail `Dewi Lestari {runId}-013`
-23. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
-24. Ganti isi kotak search dengan `Sarah Lee {runId}-013`, tekan Enter
-25. Klik Name `Sarah Lee {runId}-013`
-26. Verifikasi label tab `Responsibilities (0)` pada Detail `Sarah Lee {runId}-013`
-27. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+21. Ganti isi kotak search dengan `Dewi Lestari {runId}-013`, tekan Enter
+22. Klik Name `Dewi Lestari {runId}-013`
+23. Verifikasi label tab `Responsibilities (3)` pada Detail `Dewi Lestari {runId}-013`
+24. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+25. Ganti isi kotak search dengan `Sarah Lee {runId}-013`, tekan Enter
+26. Klik Name `Sarah Lee {runId}-013`
+27. Verifikasi label tab `Responsibilities (0)` pada Detail `Sarah Lee {runId}-013`
+28. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
 
 ### TC-AC-SU-49: Pindah tab Detail User tidak mereset state tab lain
 
-28. Ganti isi kotak search dengan `Jane Smith {runId}-013`, tekan Enter
-29. Klik Name `Jane Smith {runId}-013`
-30. Klik Tab Changelog
-31. Ketik Search `Assign`, tekan Enter
-32. Klik Tab Role
-33. Klik sub-tab Group Role
-34. Klik Tab Changelog
-35. Verifikasi keyword `Assign` tetap di kotak Search Tab Changelog
-36. Verifikasi hasil `Assign` tetap tampil di Tab Changelog
-37. Klik Tab Role
-38. Verifikasi sub-tab Group Role tetap aktif
-39. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
-40. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+29. Ganti isi kotak search dengan `Jane Smith {runId}-013`, tekan Enter
+30. Klik Name `Jane Smith {runId}-013`
+31. Klik Tab Changelog
+32. Ketik Search `Assign`, tekan Enter
+33. Klik Tab Role
+34. Klik sub-tab Group Role
+35. Klik Tab Changelog
+36. Verifikasi keyword `Assign` tetap di kotak Search Tab Changelog
+37. Verifikasi hasil `Assign` tetap tampil di Tab Changelog
+38. Klik Tab Role
+39. Verifikasi sub-tab Group Role tetap aktif
+40. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+41. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), langkah 10 (reset Search dan Sort lewat klik sidebar), langkah 19, 39, dan kembali ke daftar lainnya, langkah 40 (reset Search).
-- Ukuran spec (40 langkah, di atas smell sekitar 35 langkah): empat blok TC pada halaman List dan Detail yang sama dengan seed terpisah per blok; tiap blok berdiri sendiri (dimulai dan diakhiri di List) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), langkah 10 (reset Search dan Sort lewat klik sidebar), langkah 20, 40, dan kembali ke daftar lainnya, langkah 41 (reset Search).
+- Ukuran spec (41 langkah, di atas smell sekitar 35 langkah): empat blok TC pada halaman List dan Detail yang sama dengan seed terpisah per blok; tiap blok berdiri sendiri (dimulai dan diakhiri di List) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - TC-AC-SU-38: keyword `Jane` memuat juga user Pre-setup `Jane Smith`; spec mengklik baris `Jane Smith {runId}-013`. Data bervariasi >10 baris dipenuhi oleh data Pre-setup.
   - TC-AC-SU-46: Custom Field `Blood Type` dan `Emergency Phone` tidak ada di Tabel Pre-setup; spec membuatnya bersuffix `{runId}-013` lewat Fixture BE, sehingga key-value diasersi dengan nama bersuffix.

@@ -24,9 +24,9 @@ coverage:
 - Data Dinamis (di-seed hook `before` lewat Fixture BE; nama bersuffix `{runId}-097`): target `Jane Smith {runId}-097` dengan 3 Pending Approval; target `John Doe {runId}-097` dengan 1 Pending Approval TAG Stock tanpa pemohon; requester `Budi Santoso {runId}-097`, `Rina Putri {runId}-097`, dan `PT Maju Bersama {runId}-097`.
 | ID (hasil seeding) | Transaction | Requester | Submission Date |
 |---|---|---|---|
-| `ID-HALC` (format `HALC-2026-NNNN`) | Device Allocation | `Budi Santoso {runId}-097` | 08 Jun 2026 |
-| `ID-LALC` (format `LALC-2026-NNNN`) | License Allocation | `Rina Putri {runId}-097` | 02 Jun 2026 |
-| `ID-WLT` (format `WLT-2026-NNNN`) | Wallet Top-Up | `PT Maju Bersama {runId}-097` | 05 Jun 2026 |
+| `ID-HALC` (format `HALC-2026-NNNN`) | Device Allocation | `Budi Santoso {runId}-097` | T-4 (4 hari sebelum hari uji) |
+| `ID-LALC` (format `LALC-2026-NNNN`) | License Allocation | `Rina Putri {runId}-097` | T-10 (10 hari sebelum hari uji) |
+| `ID-WLT` (format `WLT-2026-NNNN`) | Wallet Top-Up | `PT Maju Bersama {runId}-097` | T-7 (7 hari sebelum hari uji) |
 - Tabel filter TC-348 (parameter langkah 18 sampai 24):
 | No | Field | Opsi | Baris yang tampil | Baris yang tidak tampil |
 |---|---|---|---|---|
@@ -76,11 +76,11 @@ coverage:
 
 25. Klik icon Filter
 26. Klik field `Submission Date`
-27. Pilih tanggal awal 02 Jun 2026 dan tanggal akhir 05 Jun 2026
-28. Klik `[Apply]`
-29. Verifikasi isi field `Submission Date` tampil sesuai Date Format General Settings
-30. Verifikasi baris `ID-LALC` (02 Jun 2026) dan `ID-WLT` (05 Jun 2026) tampil (batas inklusif)
-31. Verifikasi baris `ID-HALC` (08 Jun 2026) tidak tampil
+27. Pilih tanggal awal T-10 dan tanggal akhir T-7
+28. Verifikasi isi field `Submission Date` tampil sesuai Date Format General Settings
+29. Klik `[Apply]`
+30. Verifikasi baris `ID-LALC` (T-10) dan `ID-WLT` (T-7) tampil (batas inklusif)
+31. Verifikasi baris `ID-HALC` (T-4) tidak tampil
 32. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
 
 ### TC-AC-SU-658: Requester `—` untuk sub-menu tanpa kolom pemohon
@@ -94,7 +94,7 @@ coverage:
 ## Notes
 
 - Langkah 18 sampai 24 diulang untuk tiap baris tabel filter TC-348 (8b butir 7); parameter ada di Prerequisites.
-- Langkah penghubung (S-03): langkah 17 menutup dropdown `Requester` dan Filter Panel, dan langkah 18 membukanya kembali, agar tiap iterasi langkah 18 sampai 24 identik (asumsi kerja: `[Apply]` menutup panel; PRD §9.8 tidak menyatakan keadaan panel sesudah Apply); Search lalu klik Name membuka Detail target (R-16); membuka lalu mengosongkan Filter Panel di akhir tiap TC melepas kriteria (S-09); TC-658 memakai target lain (`John Doe {runId}-097`) di akhir karena Pending Approval TAG Stock tanpa pemohon.
+- Langkah penghubung (S-03): langkah 17 menutup dropdown `Requester` dan Filter Panel, dan langkah 18 membukanya kembali, agar tiap iterasi langkah 18 sampai 24 identik (`[Apply]` menutup panel); Search lalu klik Name membuka Detail target (R-16); membuka lalu mengosongkan Filter Panel di akhir tiap TC melepas kriteria (S-09); TC-658 memakai target lain (`John Doe {runId}-097`) di akhir karena Pending Approval TAG Stock tanpa pemohon.
 - Alasan di atas ±35 langkah (ekspansi): kelima TC adalah Filter Tab Responsibilities dengan dataset sama dan berdiri sendiri.
 - Temuan untuk QA:
   - TC menulis nama data DS-UL secara literal (nama user, email, position, division). Spec memakai nama bersuffix ` {runId}-097` (S-12) dan mengasersi baris milik spec; klaim "hanya X yang tampil" pada TC tidak dapat diasersi atas seluruh tabel karena baris Pre-setup bernama sama ikut ada di entitas Principal.

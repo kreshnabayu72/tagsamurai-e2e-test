@@ -56,8 +56,8 @@ coverage:
 16. Verifikasi baris `Manage allocation` tidak punya switch
 17. Verifikasi kolom Group baris `Manage allocation` = `—`
 18. Hover `[Detail]` baris `Manage allocation`
-19. Hover `[Assign Group]` baris `Manage allocation`
-20. Verifikasi `[Detail]` tampil dan enabled, tanpa tooltip
+19. Verifikasi `[Detail]` tampil dan enabled, tanpa tooltip
+20. Hover `[Assign Group]` baris `Manage allocation`
 21. Verifikasi `[Assign Group]` tampil dan enabled, tanpa tooltip
 22. Klik `[Detail]` baris `Manage allocation`
 23. Verifikasi popup Group Assignment (read-only) terbuka dengan subtitle `Manage allocation`

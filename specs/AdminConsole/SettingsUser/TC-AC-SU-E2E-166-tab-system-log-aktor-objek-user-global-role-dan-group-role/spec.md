@@ -38,42 +38,42 @@ coverage:
 ### TC-AC-SU-565: Object `User`
 1. Jalankan pemicu A, B, C, dan D (tabel Prerequisites) lewat sesi API Default User hingga keempat entri tersimpan
 2. Ketik Search nama tampil Default User, tekan Enter, klik Name baris Default User untuk membuka Detail, klik Tab System Log, lalu ketik Search `Mike Tan {runId}-166` pada tab, tekan Enter
-3. Verifikasi baris Action `Activate`: Object `User`, Name `Mike Tan {runId}-166A`, Field `Status`, Old Value `Inactive`, New Value `Active`
-4. Verifikasi baris Action `Deactivate`: Object `User`, Name `Mike Tan {runId}-166B`, Field `Status`, Old Value `Active`, New Value `Inactive`
-5. Verifikasi baris Action `Resend Activation Email`: Object `User`, Name `Mike Tan {runId}-166C`, Field `Activation Email`, Old Value `—`, New Value `miketan+{runId}-166c@qwertysystem.net`
-6. Verifikasi baris Action `Resend Confirmation Email`: Object `User`, Name `Mike Tan {runId}-166D`, Field `Confirmation Email`, Old Value `—`, New Value `miketan+{runId}-166d@qwertysystem.net`
+3. Verifikasi tepat 1 baris Action `Activate`: Object `User`, Name `Mike Tan {runId}-166A`, Field `Status`, Old Value `Inactive`, New Value `Active`
+4. Verifikasi tepat 1 baris Action `Deactivate`: Object `User`, Name `Mike Tan {runId}-166B`, Field `Status`, Old Value `Active`, New Value `Inactive`
+5. Verifikasi tepat 1 baris Action `Resend Activation Email`: Object `User`, Name `Mike Tan {runId}-166C`, Field `Activation Email`, Old Value `—`, New Value `miketan+{runId}-166c@qwertysystem.net`
+6. Verifikasi tepat 1 baris Action `Resend Confirmation Email`: Object `User`, Name `Mike Tan {runId}-166D`, Field `Confirmation Email`, Old Value `—`, New Value `miketan+{runId}-166d@qwertysystem.net`
 7. Verifikasi tabel Tab System Log tidak memiliki kolom Modified By
 8. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-166` pada Popup Changelog: User, tekan Enter
-9. Verifikasi Popup Changelog: User memuat baris `Activate` untuk A dengan Field `Status`, Old Value `Inactive`, New Value `Active` (identik dengan Tab System Log)
-10. Verifikasi Popup Changelog: User memuat baris `Deactivate` untuk B dengan Field `Status`, Old Value `Active`, New Value `Inactive` (identik dengan Tab System Log)
-11. Verifikasi Popup Changelog: User memuat baris `Resend Activation Email` untuk C dengan Field `Activation Email`, Old Value `—`, New Value `miketan+{runId}-166c@qwertysystem.net` (identik dengan Tab System Log)
-12. Verifikasi Popup Changelog: User memuat baris `Resend Confirmation Email` untuk D dengan Field `Confirmation Email`, Old Value `—`, New Value `miketan+{runId}-166d@qwertysystem.net` (identik dengan Tab System Log)
+9. Verifikasi Popup Changelog: User memuat tepat 1 baris `Activate` untuk A dengan Field `Status`, Old Value `Inactive`, New Value `Active` (identik dengan Tab System Log)
+10. Verifikasi Popup Changelog: User memuat tepat 1 baris `Deactivate` untuk B dengan Field `Status`, Old Value `Active`, New Value `Inactive` (identik dengan Tab System Log)
+11. Verifikasi Popup Changelog: User memuat tepat 1 baris `Resend Activation Email` untuk C dengan Field `Activation Email`, Old Value `—`, New Value `miketan+{runId}-166c@qwertysystem.net` (identik dengan Tab System Log)
+12. Verifikasi Popup Changelog: User memuat tepat 1 baris `Resend Confirmation Email` untuk D dengan Field `Confirmation Email`, Old Value `—`, New Value `miketan+{runId}-166d@qwertysystem.net` (identik dengan Tab System Log)
 ### TC-AC-SU-566: Object `Global Role`
 13. Tutup popup, jalankan pemicu E (Assign, Edit, Remove "Manage group") lewat sesi API Default User hingga ketiga entri tersimpan
 14. Buka Detail Default User (Search nama tampil Default User, klik Name baris), klik Tab System Log, lalu ketik Search `Mike Tan {runId}-166E` pada tab, tekan Enter
-15. Verifikasi baris Action `Assign`: Object `Global Role`, Name `Mike Tan {runId}-166E`, Field `Manage group — Access`, Old Value `—`, New Value `Assigned`
-16. Verifikasi baris Action `Edit`: Object `Global Role`, Name `Mike Tan {runId}-166E`, Field `Manage group — Update`, Old Value `Inactive`, New Value `Active`
-17. Verifikasi baris Action `Remove`: Object `Global Role`, Name `Mike Tan {runId}-166E`, Field `Manage group — Access`, Old Value `Assigned`, New Value `—`
+15. Verifikasi tepat 1 baris Action `Assign`: Object `Global Role`, Name `Mike Tan {runId}-166E`, Field `Manage group — Access`, Old Value `—`, New Value `Assigned`
+16. Verifikasi tepat 1 baris Action `Edit`: Object `Global Role`, Name `Mike Tan {runId}-166E`, Field `Manage group — Update`, Old Value `Inactive`, New Value `Active`
+17. Verifikasi tepat 1 baris Action `Remove`: Object `Global Role`, Name `Mike Tan {runId}-166E`, Field `Manage group — Access`, Old Value `Assigned`, New Value `—`
 18. Verifikasi tabel Tab System Log tidak memiliki kolom Modified By
 19. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-166E` pada Popup Changelog: User, tekan Enter
-20. Verifikasi Popup Changelog: User memuat baris `Assign` dengan Field `Manage group — Access`, Old Value `—`, New Value `Assigned` (identik dengan Tab System Log)
-21. Verifikasi Popup Changelog: User memuat baris `Edit` dengan Field `Manage group — Update`, Old Value `Inactive`, New Value `Active` (identik dengan Tab System Log)
-22. Verifikasi Popup Changelog: User memuat baris `Remove` dengan Field `Manage group — Access`, Old Value `Assigned`, New Value `—` (identik dengan Tab System Log)
+20. Verifikasi Popup Changelog: User memuat tepat 1 baris `Assign` dengan Field `Manage group — Access`, Old Value `—`, New Value `Assigned` (identik dengan Tab System Log)
+21. Verifikasi Popup Changelog: User memuat tepat 1 baris `Edit` dengan Field `Manage group — Update`, Old Value `Inactive`, New Value `Active` (identik dengan Tab System Log)
+22. Verifikasi Popup Changelog: User memuat tepat 1 baris `Remove` dengan Field `Manage group — Access`, Old Value `Assigned`, New Value `—` (identik dengan Tab System Log)
 ### TC-AC-SU-567: Object `Group Role`
 23. Tutup popup, jalankan pemicu F (Assign Region B, Edit Create Region A, Remove Region B pada "Manage partner") lewat sesi API Default User hingga ketiga entri tersimpan
 24. Buka Detail Default User (Search nama tampil Default User, klik Name baris), klik Tab System Log, lalu ketik Search `Mike Tan {runId}-166F` pada tab, tekan Enter
-25. Verifikasi baris Action `Assign`: Object `Group Role`, Name `Mike Tan {runId}-166F`, Field `Manage partner — Region B — Access`, Old Value `—`, New Value `Assigned`
-26. Verifikasi baris Action `Edit`: Object `Group Role`, Name `Mike Tan {runId}-166F`, Field `Manage partner — Region A — Create`, Old Value `Inactive`, New Value `Active`
-27. Verifikasi baris Action `Remove`: Object `Group Role`, Name `Mike Tan {runId}-166F`, Field `Manage partner — Region B — Access`, Old Value `Assigned`, New Value `—`
+25. Verifikasi tepat 1 baris Action `Assign`: Object `Group Role`, Name `Mike Tan {runId}-166F`, Field `Manage partner — Region B — Access`, Old Value `—`, New Value `Assigned`
+26. Verifikasi tepat 1 baris Action `Edit`: Object `Group Role`, Name `Mike Tan {runId}-166F`, Field `Manage partner — Region A — Create`, Old Value `Inactive`, New Value `Active`
+27. Verifikasi tepat 1 baris Action `Remove`: Object `Group Role`, Name `Mike Tan {runId}-166F`, Field `Manage partner — Region B — Access`, Old Value `Assigned`, New Value `—`
 28. Verifikasi tabel Tab System Log tidak memiliki kolom Modified By
 29. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-166F` pada Popup Changelog: User, tekan Enter
-30. Verifikasi Popup Changelog: User memuat baris `Assign` dengan Field `Manage partner — Region B — Access`, Old Value `—`, New Value `Assigned` (identik dengan Tab System Log)
-31. Verifikasi Popup Changelog: User memuat baris `Edit` dengan Field `Manage partner — Region A — Create`, Old Value `Inactive`, New Value `Active` (identik dengan Tab System Log)
-32. Verifikasi Popup Changelog: User memuat baris `Remove` dengan Field `Manage partner — Region B — Access`, Old Value `Assigned`, New Value `—` (identik dengan Tab System Log)
+30. Verifikasi Popup Changelog: User memuat tepat 1 baris `Assign` dengan Field `Manage partner — Region B — Access`, Old Value `—`, New Value `Assigned` (identik dengan Tab System Log)
+31. Verifikasi Popup Changelog: User memuat tepat 1 baris `Edit` dengan Field `Manage partner — Region A — Create`, Old Value `Inactive`, New Value `Active` (identik dengan Tab System Log)
+32. Verifikasi Popup Changelog: User memuat tepat 1 baris `Remove` dengan Field `Manage partner — Region B — Access`, Old Value `Assigned`, New Value `—` (identik dengan Tab System Log)
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): pemicu lewat sesi API (langkah 1 dan serupa; R-20), pembukaan Detail aktor, Tab System Log, dan Search nama target (langkah 2 dan langkah serupa, R-16), menutup popup, serta Search nama target pada Popup Changelog: User (langkah 8 dan langkah serupa; user bernama unik sehingga baseline entri nol).
+- Langkah penghubung tanpa Verifikasi (S-03): pemicu lewat sesi API (langkah 1 dan serupa; R-20), pembukaan Detail aktor, Tab System Log, dan Search nama target (langkah 2 dan langkah serupa, R-16), menutup popup, serta Search nama target pada Popup Changelog: User (langkah 8 dan langkah serupa; user bernama unik sehingga baseline entri nol dan "tepat 1 baris" per Action pada Tab System Log maupun Popup menjadi asersi jumlah pada hasil Search nama unik, bukan pembacaan baris teratas, S-14).
 - Tiga blok TC berpola sama (pemicu, Tab System Log aktor, padanan Popup Changelog: User) untuk kelas Object berbeda; 32 langkah wajar karena tiap blok berdiri sendiri dengan user seeding sendiri.
 - Temuan untuk QA:
   - Precondition TC-565 menyebut aktor telah menjalankan keempat Action terhadap satu target `Mike Tan`, padahal Activate, Deactivate, Resend Activation Email, dan Resend Confirmation Email butuh status awal berbeda; spec memakai empat user bernama berprefix sama.

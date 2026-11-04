@@ -31,8 +31,8 @@ coverage:
 | TC-AC-SU-122, 124, 128 | `Jane Smith` | `Jane Smith {runId}-035` | `janesmith+{runId}-035@qwertysystem.net` | Activated, Inactive |
 | TC-AC-SU-124 | `Budi Santoso` | `Budi Santoso {runId}-035` | `budisantoso+{runId}-035@qwertysystem.net` | Activated, Inactive |
 | TC-AC-SU-126 | `Rudi Hartono` | `Rudi Hartono {runId}-035` | `rudihartono+{runId}-035@qwertysystem.net` | switch per-produk OFF dan nonaktif di Global Settings |
-| TC-AC-SU-126 | `Jane Smith` | `Jane Smith {runId}-035-T126` | `janesmith+{runId}-035-T126@qwertysystem.net` | Activated, Inactive |
-| TC-AC-SU-126 | `Budi Santoso` | `Budi Santoso {runId}-035-T126` | `budisantoso+{runId}-035-T126@qwertysystem.net` | Activated, Inactive |
+| TC-AC-SU-126 | `Jane Smith` | `Jane Smith T126 {runId}-035` | `janesmith+{runId}-035-T126@qwertysystem.net` | Activated, Inactive |
+| TC-AC-SU-126 | `Budi Santoso` | `Budi Santoso T126 {runId}-035` | `budisantoso+{runId}-035-T126@qwertysystem.net` | Activated, Inactive |
 
 - Seeding di hook `before`, penghapusan data milik spec di hook `after`.
 - Kemampuan teknis: Fixture BE (seeding dan pemulihan data milik spec) dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`).
@@ -80,7 +80,7 @@ coverage:
 ### TC-AC-SU-126: Bulk Activate, target nonaktif di Global Settings masuk kelompok skipped
 
 26. Ganti isi kotak search dengan `{runId}-035`, tekan Enter
-27. Centang `Rudi Hartono {runId}-035`, `Jane Smith {runId}-035-T126`, dan `Budi Santoso {runId}-035-T126`
+27. Centang `Rudi Hartono {runId}-035`, `Jane Smith T126 {runId}-035`, dan `Budi Santoso T126 {runId}-035`
 28. Klik `[Bulk Action ▾]` lalu pilih `Activate`
 29. Verifikasi kelompok skipped berisi `Rudi Hartono {runId}-035`
 30. Klik `[Continue]`
@@ -94,5 +94,5 @@ coverage:
 - Temuan untuk QA:
   - TC-AC-SU-124 langkah 3 "Verifikasi dialog" dan TC-AC-SU-126 langkah 3 diperlakukan sebagai bagian aksi dan diasersi lewat Expected (isi dialog, kelompok skipped).
   - TC-AC-SU-122, 124, 126: Post Condition (log, status akhir) tidak punya langkah observasi di TC dan tidak diasersi (S-01).
-  - TC-AC-SU-126 memakai `Jane Smith` dan `Budi Santoso` yang sudah Active setelah TC-AC-SU-124; spec memakai seed terpisah (suffix `-T126`).
+  - TC-AC-SU-126 memakai `Jane Smith` dan `Budi Santoso` yang sudah Active setelah TC-AC-SU-124; spec memakai seed terpisah (penanda `T126` pada nama, ditaruh sebelum `{runId}-035` agar nama seed tidak saling mengandung).
   - Nama user TC (`John Doe`, `Rina Putri`, `Jane Smith`, `Budi Santoso`, `Rudi Hartono`) dipakai sebagai nama bersuffix `{runId}-035` sesuai S-12 (Lampiran A tidak memuat pengecualian modul Settings > User).
