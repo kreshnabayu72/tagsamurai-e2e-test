@@ -183,6 +183,7 @@ Sumber: `fixed-asset/settings-asset-labeling/PRD/settings-asset-labeling.md` · 
 | `FALB:FI-06` | `TC-FA-LBL-E2E-008` | FE+BE |
 | `FALB:FI-07` | `TC-FA-LBL-E2E-009` | FE+BE |
 | `FALB:component-states/label-chip-badge` | `TC-FA-LBL-E2E-030` | FE+BE |
+| `FALB:component-states/label-chip-badge` | `TC-FA-LBL-E2E-043` | FE+BE |
 | `FALB:component-states/buttons` | `TC-FA-LBL-E2E-037` | FE+BE |
 | `FALB:component-states/disabled-vs-hidden` | `TC-FA-LBL-E2E-037` | FE+BE |
 | `FALB:component-states/disabled-vs-hidden` | `TC-FA-LBL-E2E-058` | FE+BE |
@@ -375,6 +376,7 @@ Sumber: `fixed-asset/settings-asset-labeling/PRD/settings-asset-labeling.md` · 
 | `F-FALB-05.k4` | IGAP-0042,IGAP-0044 | Kondisi menunjuk E-FALB-22 yang ditahan; ditahan planner (S-15) |
 | `FALB:obl/page-asset-master-tab-labels/refresh-state` | baru: PRD tidak menyatakan retensi state tab Labels setelah F5 | PRD §4.2 dan §4.1 hanya merujuk prd-conventions.md §27.1 (breadcrumb dan route per tab); `refs` kewajiban ini hanya §9.8. Pertanyaan: apakah Search, Sort, Filter ter-Apply, dan halaman Labels List dipertahankan setelah F5 menurut prd-conventions.md §27.1c (List State Preservation)? Rekomendasi: tambahkan pointer ke §27.1c di PRD §4.2, lalu kewajiban ini ditulis |
 | `FALB:obl/page-asset-master-tab-labels/menu-reset` | baru: PRD tidak menyatakan reset state saat klik ulang menu Asset Master | Sama dengan refresh-state: apakah klik ulang menu mereset Search, Sort, Filter, dan halaman menurut §27.1c? Rekomendasi sama |
+| `FALB:obl/T-ALB-02/empty-value/FLD-24` | baru: kondisi Label kosong tidak dapat dicapai di Drawer Tagged Asset; PRD diam | Drawer hanya memuat aset pemakai label yang dibuka, dan kolom Label memuat seluruh label aset termasuk label Drawer itu (PRD §4.1.1 Tabel 2, kolom Catatan FLD-24), sehingga sel Label tidak pernah kosong dan klausa `Tampil —` tidak teramati. Pertanyaan: apakah klausa itu dihapus dari PRD atau ada kondisi yang membuat Label kosong? Rujukan: butir Notes spec 043 |
 
 ## Tidak berlaku
 
@@ -425,7 +427,7 @@ Sumber: `fixed-asset/settings-asset-labeling/PRD/settings-asset-labeling.md` · 
 | `TC-FA-LBL-E2E-039-labels-list-setup-column-pin-dan-reset-to-default` | FE+BE | 22 | `FALB:obl/T-ALB-01/setup-column/pin`, `FALB:obl/T-ALB-01/setup-column/reset` |
 | `TC-FA-LBL-E2E-041-drawer-tagged-asset-screening-format-sel-nilai-kosong-hover-dan-keyboard` | FE+BE | 35 | `FALB:obl/T-ALB-02/screening`, `FALB:obl/T-ALB-02/cell-format`, `FALB:obl/T-ALB-02/hover/FLD-25`, `FALB:obl/T-ALB-02/hover/FLD-21`, `FALB:obl/T-ALB-02/hover/FLD-22`, `FALB:obl/T-ALB-02/empty-value/FLD-25`, `FALB:obl/T-ALB-02/empty-value/FLD-21`, `FALB:obl/T-ALB-02/empty-value/FLD-22`, `FALB:defaults-ordering-spec/tampilan-nilai-kosong`, `FALB:obl/T-ALB-02/keyboard` |
 | `TC-FA-LBL-E2E-042-drawer-tagged-asset-setup-column-sembunyikan-tampilkan-geser-dan-reset-to-default` | FE+BE | 25 | `FALB:obl/T-ALB-02/setup-column/hide-show`, `FALB:obl/T-ALB-02/setup-column/reorder`, `FALB:obl/T-ALB-02/setup-column/reset` |
-| `TC-FA-LBL-E2E-043-drawer-tagged-asset-isi-kolom-curated-format-sel-popover-labels-nilai-kosong-dan-hover` | FE+BE | 24 | `FALB:obl/T-ALB-02/cell-format`, `FALB:obl/T-ALB-02/link/FLD-24`, `FALB:obl/T-ALB-02/empty-value/FLD-28`, `FALB:obl/T-ALB-02/empty-value/FLD-29`, `FALB:obl/T-ALB-02/empty-value/FLD-30`, `FALB:obl/T-ALB-02/hover/FLD-30` |
+| `TC-FA-LBL-E2E-043-drawer-tagged-asset-isi-kolom-curated-format-sel-popover-labels-nilai-kosong-dan-hover` | FE+BE | 25 | `FALB:component-states/label-chip-badge`, `FALB:obl/T-ALB-02/cell-format`, `FALB:obl/T-ALB-02/link/FLD-24`, `FALB:obl/T-ALB-02/empty-value/FLD-28`, `FALB:obl/T-ALB-02/empty-value/FLD-29`, `FALB:obl/T-ALB-02/empty-value/FLD-30`, `FALB:obl/T-ALB-02/hover/FLD-30` |
 | `TC-FA-LBL-E2E-044-drawer-tagged-asset-sel-no-access-bagi-pemegang-view-tagged-assets-di-luar-group` | FE+BE | 27 | `FALB:obl/T-ALB-02/empty-value/FLD-29`, `FALB:obl/T-ALB-02/empty-value/FLD-30`, `FALB:obl/T-ALB-02/hover/FLD-30`, `FALB:obl/T-ALB-02/sort/FLD-29`, `FALB:obl/T-ALB-02/sort/FLD-30`, `FALB:obl/T-ALB-02/search/FLD-29` |
 | `TC-FA-LBL-E2E-045-drawer-tagged-asset-search-per-kolom-dan-siklus-search` | FE+BE | 33 | `FALB:obl/T-ALB-02/search-cycle`, `FALB:obl/T-ALB-02/search/FLD-07`, `FALB:obl/T-ALB-02/search/FLD-06`, `FALB:obl/T-ALB-02/search/FLD-25`, `FALB:obl/T-ALB-02/search/FLD-21`, `FALB:obl/T-ALB-02/search/FLD-22` |
 | `TC-FA-LBL-E2E-046-drawer-tagged-asset-filter-multi-select-per-kolom` | FE+BE | 34 | `FALB:defaults-ordering-spec/default-filter-tabel`, `FALB:obl/T-ALB-02/filter/FLD-07`, `FALB:obl/T-ALB-02/filter/FLD-25`, `FALB:obl/T-ALB-02/filter/FLD-21`, `FALB:obl/T-ALB-02/filter/FLD-22`, `FALB:obl/T-ALB-02/filter-panel` |
@@ -458,5 +460,6 @@ Sumber: `fixed-asset/settings-asset-labeling/PRD/settings-asset-labeling.md` · 
 - Temuan PRD, retensi state tab Labels setelah F5 dan reset saat klik ulang menu: PRD diam (hanya merujuk prd-conventions.md §27.1, bukan §27.1c); `FALB:obl/page-asset-master-tab-labels/refresh-state` dan `/menu-reset` ditahan (keputusan user "Tahan sebagai Temuan").
 - Temuan PRD tanpa spec (keputusan user "Catat sebagai Temuan"): pencatatan Create, Edit, Delete di Changelog, System Log, dan Activity Log (tiga surface) tidak punya aturan ber-ID di PRD ini; alur Import `[Create Missing Labels]` tidak ada di PRD ini; gerbang akses sel milik `asset/` (`AST-LOGIC-10`) di luar klausa sel yang dinyatakan PRD ini.
 - Temuan PRD, fokus kembali ke pemicu dan focus trap (Modal Create/Edit, Drawer Tagged Asset, Modal Changelog), serta Hover dan Active tombol dan Color Swatch Trigger (hanya deskripsi kualitatif): dicatat sebagai butir Notes spec 036, 037, 041, 053.
+- Temuan PRD, klausa Submit Disabled selama inline error `V-08` (`FALB:component-states/disabled-vs-hidden`): PRD tidak memberi jalur UI untuk memicu `V-08` karena emoji diblok filter keystroke dan paste; klausa tidak diasersi, dicatat sebagai butir Notes spec 037 (keputusan user "Jadikan Temuan PRD").
 - Delete single 5xx atau timeout: klausa sama dengan `E-FALB-23` yang ditahan (IGAP-0042); butir Notes spec 065.
 - Env akun yang perlu dipastikan tim FE tersedia sebelum run: `FA_DU_EMAIL`/`FA_DU_PASSWORD` (DU-63), `FA_GMNOCAP_EMAIL`/`FA_GMNOCAP_PASSWORD` (DU-64), `FA_GMCRUD_EMAIL`/`FA_GMCRUD_PASSWORD` (DU-65).
