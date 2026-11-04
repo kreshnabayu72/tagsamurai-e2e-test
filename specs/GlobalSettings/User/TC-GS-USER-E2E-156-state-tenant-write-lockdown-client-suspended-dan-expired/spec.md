@@ -26,8 +26,8 @@ coverage:
 
   | Urutan | Role | Email | Environment variable password |
   |---|---|---|---|
-  | 1 | Total Control Client Suspended (disediakan tim FE) | `totalControlGlobalSettings_automated_{namaCompanySuspended}@qwertysystem.net` | `GS_CLIENTSUSP_TC_PASSWORD` |
-  | 2 | Total Control Client Expired (disediakan tim FE) | `totalControlGlobalSettings_automated_{namaCompanyExpired}@qwertysystem.net` | `GS_CLIENTEXP_TC_PASSWORD` |
+  | 1 | Total Control Client Suspended (disediakan tim FE) | akun disediakan tim FE | `GS_CLIENTSUSP_TC_PASSWORD` |
+  | 2 | Total Control Client Expired (disediakan tim FE) | akun disediakan tim FE | `GS_CLIENTEXP_TC_PASSWORD` |
 
   Login akun 1 di hook `before` lalu membuka Global Settings > User > User List (sub-tab Login User); hook `after` mengembalikan sesi ke akun default suite (Total Control Client A, `Spectra.env.GS_TC_PASSWORD`). Password tidak ditulis di spec atau fixture.
 - Env var: `GS_CLIENTSUSP_TC_PASSWORD`, `GS_CLIENTEXP_TC_PASSWORD`, `GS_TC_PASSWORD`.
@@ -65,51 +65,52 @@ coverage:
 ### Client Suspended: aksi tulis tidak diproses dan data tetap terbaca (TC-GS-USER-984)
 
 23. Kembali ke User List dengan klik Back
-24. Klik `[+ User]`
-25. Verifikasi Popup Create User tidak terbuka
-26. Klik switch Active baris `Dewi Lestari`
-27. Verifikasi tidak ada dialog konfirmasi Deactivate yang tampil
-28. Verifikasi switch Active baris `Dewi Lestari` tetap ON
-29. Klik `⋯` pada baris `Dewi Lestari`, lalu klik opsi `Edit`
-30. Verifikasi Popup Edit User tidak terbuka
-31. Klik opsi `Delete`
-32. Verifikasi tidak ada dialog `Delete User` yang tampil
-33. Tekan Esc untuk menutup overlay (⋯)
-34. Verifikasi baris `Dewi Lestari` tampil di tabel User List
-35. Klik Name `Dewi Lestari`
-36. Verifikasi Detail `Dewi Lestari` tampil
-37. Klik Tab `Changelog`
-38. Verifikasi Tab Changelog memuat sedikitnya satu baris log
-39. Kembali ke User List dengan klik Back
+24. Verifikasi baris `Dewi Lestari` tampil di tabel User List
+25. Klik `[+ User]`
+26. Verifikasi Popup Create User tidak terbuka
+27. Klik switch Active baris `Dewi Lestari`
+28. Verifikasi tidak ada dialog konfirmasi Deactivate yang tampil
+29. Verifikasi switch Active baris `Dewi Lestari` tetap ON
+30. Klik `⋯` pada baris `Dewi Lestari`, lalu klik opsi `Edit`
+31. Verifikasi Popup Edit User tidak terbuka
+32. Klik opsi `Delete`
+33. Verifikasi tidak ada dialog `Delete User` yang tampil
+34. Tekan Esc untuk menutup overlay (⋯)
+35. Verifikasi baris `Dewi Lestari` tampil di tabel User List
+36. Klik Name `Dewi Lestari`
+37. Verifikasi Detail `Dewi Lestari` tampil
+38. Klik Tab `Changelog`
+39. Verifikasi Tab Changelog memuat sedikitnya satu baris log
+40. Kembali ke User List dengan klik Back
 
 ### Client Suspended: request langsung ditolak (TC-GS-USER-1025)
 
-40. Catat Last Update baris `Dewi Lestari` sebagai `{lu}`
-41. Tangkap token sesi Total Control Client Suspended, lalu kirim request Edit user `Dewi Lestari` langsung ke server tanpa lewat UI
-42. Verifikasi server menolak dengan `403`
-43. Muat ulang halaman User List
-44. Klik icon Search, ketik `Dewi Lestari`, tekan Enter
-45. Verifikasi Last Update baris `Dewi Lestari` sama dengan `{lu}` (data tidak berubah)
+41. Catat Last Update baris `Dewi Lestari` sebagai `{lu}`
+42. Tangkap token sesi Total Control Client Suspended, lalu kirim request Edit user `Dewi Lestari` langsung ke server tanpa lewat UI
+43. Verifikasi server menolak dengan `403`
+44. Muat ulang halaman User List
+45. Klik icon Search, ketik `Dewi Lestari`, tekan Enter
+46. Verifikasi Last Update baris `Dewi Lestari` sama dengan `{lu}` (data tidak berubah)
 
 ### Client Expired: kontrol tulis sama dengan Suspended (TC-GS-USER-1026)
 
-46. Ganti akun: logout, lalu login sebagai Total Control Client Expired (`totalControlGlobalSettings_automated_{namaCompanyExpired}@qwertysystem.net`) dengan `Spectra.env.GS_CLIENTEXP_TC_PASSWORD`, lalu buka Global Settings > User > User List
-47. Klik icon Search, ketik `Dewi Lestari`, tekan Enter
-48. Verifikasi `[+ User]` dan switch Active baris `Dewi Lestari` tampil
-49. Verifikasi `[+ User]` dan switch Active baris `Dewi Lestari` disabled
-50. Hover `[+ User]`
-51. Verifikasi tooltip `"You don't have permission to edit."` tampil pada `[+ User]`
-52. Hover switch Active baris `Dewi Lestari`
-53. Verifikasi tooltip `"You don't have permission to edit."` tampil pada switch Active baris `Dewi Lestari`
+47. Ganti akun: logout, lalu login sebagai Total Control Client Expired (akun disediakan tim FE) dengan `Spectra.env.GS_CLIENTEXP_TC_PASSWORD`, lalu buka Global Settings > User > User List
+48. Klik icon Search, ketik `Dewi Lestari`, tekan Enter
+49. Verifikasi `[+ User]` dan switch Active baris `Dewi Lestari` tampil
+50. Verifikasi `[+ User]` dan switch Active baris `Dewi Lestari` disabled
+51. Hover `[+ User]`
+52. Verifikasi tooltip `"You don't have permission to edit."` tampil pada `[+ User]`
+53. Hover switch Active baris `Dewi Lestari`
+54. Verifikasi tooltip `"You don't have permission to edit."` tampil pada switch Active baris `Dewi Lestari`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`. Kelas state tenant (prinsip 13h): write-lockdown Client Suspended dan Expired pada akun Total Control Client yang statusnya sudah ditetapkan; TC-GS-USER-1025 (request langsung ke server) adalah penolakan server atas write-lockdown tenant dan diasersi sebagai bagian kelas ini.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Urutan TC sumber diubah: TC-GS-USER-1021, 1022, 1023, 1024 (screening tooltip, tanpa aksi) lebih dulu, lalu TC-GS-USER-984 (klik pada kontrol Disabled), TC-GS-USER-1025 (request langsung), dan TC-GS-USER-1026 (akun Client Expired) paling akhir karena membutuhkan ganti akun eksplisit (langkah 46); state tooltip diasersi tepat sesudah hover (bagian 8b butir 5).
-- Spec melewati sekitar 35 langkah (53 langkah). Alasan: tujuh TC semuanya satu kelas (13h) dan satu layar, tiap TC mengasersi tampil, disabled, dan tooltip sebagai klausa terpisah pada beberapa kontrol (`[+ User]`, switch Active, opsi Edit dan Delete, icon inline edit; S-01), dan blok tiap kontrol berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 44, 47 (Search); langkah 10, 13, 15, 17, 18, 21, 29, 31, 33 (membuka dan menutup overlay, Detail, dan hover); langkah 2, 6, 50, 52 (hover untuk tooltip); langkah 23, 39 (Back ke User List); langkah 24, 26, 35, 37 (klik pada kontrol yang diuji TC-GS-USER-984); langkah 40 (mencatat Last Update sebagai pembanding langkah 45); langkah 43 (memuat ulang); langkah 46 (ganti akun). Langkah 34 adalah anchor positif bagi `Verifikasi` aksi tidak diproses.
-- Asersi tambahan di luar Expected TC: langkah 25, 27, 28, 30, 32 membuktikan "tidak ada aksi tulis yang berhasil diproses" pada Expected a TC-GS-USER-984 dengan mengamati bahwa form atau dialog tidak muncul dan status tidak berubah; langkah 45 adalah state data untuk Expected c TC-GS-USER-1025.
+- Urutan TC sumber diubah: TC-GS-USER-1021, 1022, 1023, 1024 (screening tooltip, tanpa aksi) lebih dulu, lalu TC-GS-USER-984 (klik pada kontrol Disabled), TC-GS-USER-1025 (request langsung), dan TC-GS-USER-1026 (akun Client Expired) paling akhir karena membutuhkan ganti akun eksplisit (langkah 47); state tooltip diasersi tepat sesudah hover (bagian 8b butir 5).
+- Spec melewati sekitar 35 langkah (54 langkah). Alasan: tujuh TC semuanya satu kelas (13h) dan satu layar, tiap TC mengasersi tampil, disabled, dan tooltip sebagai klausa terpisah pada beberapa kontrol (`[+ User]`, switch Active, opsi Edit dan Delete, icon inline edit; S-01), dan blok tiap kontrol berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 45, 48 (Search); langkah 10, 13, 15, 17, 18, 21, 30, 32, 34 (membuka dan menutup overlay, Detail, dan hover); langkah 2, 6, 51, 53 (hover untuk tooltip); langkah 23, 40 (Back ke User List); langkah 25, 27, 36, 38 (klik pada kontrol yang diuji TC-GS-USER-984); langkah 41 (mencatat Last Update sebagai pembanding langkah 46); langkah 44 (memuat ulang); langkah 47 (ganti akun). Langkah 24 (`Verifikasi` baris `Dewi Lestari` tampil di User List sesudah Back) adalah anchor positif bagi `Verifikasi` aksi tidak diproses pada langkah 26, 28, 29, 31, dan 33 (bagian 8b butir 2); langkah 35 mengonfirmasi baris tetap tampil sesudah semua aksi.
+- Asersi tambahan di luar Expected TC: langkah 26, 28, 29, 31, 33 membuktikan "tidak ada aksi tulis yang berhasil diproses" pada Expected a TC-GS-USER-984 dengan mengamati bahwa form atau dialog tidak muncul dan status tidak berubah; langkah 46 adalah state data untuk Expected c TC-GS-USER-1025.
 - Pembagian TC: aksi tulis lewat UI saat Client Suspended atau Expired (Create, Edit, Delete, Toggle Active) tidak diuji dengan memicu server karena kontrolnya Disabled; penolakan server diasersi hanya lewat TC-GS-USER-1025.
 - Tidak ada TC yang terbelah lintas spec.
 - Temuan untuk QA:

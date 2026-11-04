@@ -59,10 +59,10 @@ coverage:
 18. Verifikasi icon inline edit Custom Field enabled
 19. Klik Tab `Role`
 20. Verifikasi keenam switch Active Tab Role ON
-21. Hover switch Active Tab Role
-22. Verifikasi switch Active Tab Role tampil namun disabled
-23. Verifikasi tooltip switch Active Tab Role "Default User cannot be modified."
-24. Verifikasi checkbox CRUD Tab Role disabled
+21. Hover switch Active Tab Role pada tiap dari keenam baris, satu per satu
+22. Verifikasi switch Active Tab Role tampil namun disabled pada tiap dari keenam baris
+23. Verifikasi tooltip switch Active Tab Role "Default User cannot be modified." pada tiap dari keenam baris
+24. Verifikasi seluruh checkbox CRUD Tab Role pada keenam baris disabled
 
 ### TC-GS-USER-75: Kontrol header dan section target Self untuk aktor Total Control
 
@@ -216,9 +216,9 @@ coverage:
 157. Verifikasi `Scan TAG`/`Unpair` Hidden
 158. Klik Tab `Role`
 159. Verifikasi keenam switch Active Tab Role ON
-160. Hover switch Active Tab Role
-161. Verifikasi switch Active Tab Role tampil namun disabled
-162. Verifikasi tooltip switch Active Tab Role "Default User cannot be modified."
+160. Hover switch Active Tab Role pada tiap dari keenam baris, satu per satu
+161. Verifikasi switch Active Tab Role tampil namun disabled pada tiap dari keenam baris
+162. Verifikasi tooltip switch Active Tab Role "Default User cannot be modified." pada tiap dari keenam baris
 
 ## Notes
 
@@ -233,7 +233,7 @@ coverage:
 - Temuan untuk QA:
   - TC-GS-USER-74 c ("Button `Reset Authenticator` (bila Enrolled)") dan TC-GS-USER-75 c tidak menyebut status MFA aktor/target di precondition; spec mensyaratkan Hendra Gunawan (Pre-setup No. 1) dan Siti Nurhaliza berstatus Enrolled.
   - TC-GS-USER-74 d dan TC-GS-USER-75 tidak menyebut kondisi TAG target (`Unpair` hanya relevan bila TAG terpasang, `Scan TAG` bila belum); TC-GS-USER-74 d mengharapkan `Scan TAG`/`Unpair` keduanya tampil dan enabled tanpa precondition TAG; spec mengasersi seperti tertulis.
-  - TC-GS-USER-74 f menyebut "checkbox CRUD disabled" tanpa tooltip, sedangkan keenam switch Active disebut bertooltip; spec mengasersi tooltip hanya pada switch Active. TC-GS-USER-75 e, 76 e, 77 e, dan 79 d menyebut "Switch Active dan checkbox Tab Role" tanpa menunjuk baris; spec memakai baris pertama Tab Role.
+  - TC-GS-USER-74 f menyebut "checkbox CRUD disabled" tanpa tooltip, sedangkan keenam switch Active disebut bertooltip; spec mengasersi tooltip hanya pada switch Active. Untuk TC-GS-USER-74 f dan TC-GS-USER-80 e, disabled dan tooltip diasersi pada tiap dari keenam switch Active (bukan satu baris), dan checkbox CRUD TC-GS-USER-74 f diasersi pada keenam baris. TC-GS-USER-75 e, 76 e, 77 e, dan 79 d menyebut "Switch Active dan checkbox Tab Role" tanpa menunjuk baris; spec memakai baris pertama Tab Role.
   - TC-GS-USER-78 e mensyaratkan Dewi Lestari belum punya assignment (seluruh switch Active Tab Role OFF); Tabel Pre-setup No. 12 tidak menyebutnya.
   - TC-GS-USER-76 c menyebut `Resend Activation/Confirmation Email` Hidden tanpa menyebut status target (Andi Wijaya) yang membuat Resend relevan; asersi Hidden mengikuti TC.
   - TC-GS-USER-74 e dan TC-GS-USER-75 d menyebut "Icon inline edit Custom Field" tanpa menyebut field mana; spec memakai `Blood Type` (Pre-setup No. 24).

@@ -28,7 +28,7 @@ coverage:
 - Env var: `GS_TC_PASSWORD`, `GS_FULLCRUD_PASSWORD`.
 - Data Pre-setup yang dipakai (hanya dibaca, tidak diubah; S-06): Position `Staff`, `Supervisor`, `Finance Manager`, dan `Internal Auditor` (Tabel Data Uji Pre-setup No. 22) dan Client PT Maju Bersama dengan subscription Fixed Asset + Supply Asset (No. 26). John Doe (No. 18) yang disebut TC tidak dipakai: riwayat Changelog-nya tidak dijamin memuat sedikitnya dua nilai distinct pada kolom yang diuji (S-11) dan data Pre-setup tidak diubah (S-06), sehingga spec memakai user uji milik spec.
 - Data Dinamis (user uji milik spec, seeding lewat API di hook `before`; kemampuan seeding user lewat API disediakan tim FE/BE, endpoint tidak disebut di TC dan PRD):
-  - User uji: Name `Log User {runId}-090`, Email `loguser+{runId}-090@qwertysystem.net`, Position `Staff`, Employee ID `{empId1}`, Access `Fixed Asset`, Active. `{empId1}`, `{empId2}`, `{empId3}` adalah tiga Employee ID numerik murni, naik berurutan (`{empId1}` < `{empId2}` < `{empId3}`), unik per run, dibuat hook dari waktu run (tanpa suffix `{runId}` karena nilainya harus numerik murni).
+  - User uji: Name `Log User {runId}-090`, Email `loguser+{runId}-090@qwertysystem.net`, Position `Staff`, Employee ID `{empId1}`, Access `Fixed Asset`, Active. `{empId1}`, `{empId2}`, `{empId3}` adalah tiga Employee ID numerik, naik berurutan (`{empId1}` < `{empId2}` < `{empId3}`), unik per run, diturunkan dari `{runId}` (hanya digit timestamp) dan memuat nomor spec (S-12): `{empId1}` = `{runId}0901`, `{empId2}` = `{runId}0902`, `{empId3}` = `{runId}0903`.
   - Entri Changelog base (12 entri, urutan seeding = urutan waktu, dari terlama ke terbaru; Modified By tampil `[First Name] [Last Initial]`):
     - a. `Create` | `Name` | `—` | `Log User {runId}-090` | `Siti N`
     - b. `Edit` | `Position` | `Staff` | `Supervisor` | `Siti N`
@@ -72,18 +72,18 @@ coverage:
 15. Verifikasi baris tabel tidak memiliki row action
 16. Verifikasi pagination default 10 baris per halaman (halaman 1 memuat 10 baris)
 
-### TC-GS-USER-551: Siklus Search: reveal, Enter, clear ×, collapse ←
+### TC-GS-USER-551: Siklus Search: reveal, Enter, clear (✕), collapse ←
 
 17. Klik icon Search
 18. Verifikasi input Search melebar
 19. Verifikasi kursor auto-focus pada input Search
 20. Ketik `deactivate` pada input Search
 21. Verifikasi tabel belum tersaring (baris Action `Add Access` masih tampil)
-22. Verifikasi icon × muncul
+22. Verifikasi icon (✕) muncul
 23. Tekan Enter
 24. Verifikasi baris Action `Deactivate` tampil
 25. Verifikasi tabel tersaring (baris Action `Add Access` tidak tampil)
-26. Klik icon ×
+26. Klik icon (✕)
 27. Verifikasi input Search kosong
 28. Verifikasi tabel tetap hasil terakhir (baris Action `Deactivate` tampil)
 29. Verifikasi tabel tetap hasil terakhir (baris Action `Add Access` tidak tampil)
@@ -108,26 +108,26 @@ coverage:
 42. Ganti isi kotak search dengan `deact`, tekan Enter
 43. Verifikasi kolom Action: baris dengan Action `Deactivate` tampil
 44. Verifikasi baris Action `Add Access` tidak tampil
-45. Klik icon ×, lalu tekan Enter pada input kosong
+45. Klik icon (✕), lalu tekan Enter pada input kosong
 46. Isi Search dengan `emplo`, tekan Enter
 47. Verifikasi kolom Field: baris dengan Field `Employee ID` tampil
 48. Verifikasi baris Action `Add Access` tidak tampil
-49. Klik icon ×, lalu tekan Enter pada input kosong
+49. Klik icon (✕), lalu tekan Enter pada input kosong
 50. Isi Search dengan `fajar`, tekan Enter
 51. Verifikasi kolom Modified By: baris dengan Modified By `Fajar N` tampil
 52. Verifikasi baris Action `Add Access` (Modified By `Siti N`) tidak tampil
-53. Klik icon ×, lalu tekan Enter pada input kosong
+53. Klik icon (✕), lalu tekan Enter pada input kosong
 
 ### TC-GS-USER-554: Search menemukan substring pada kolom kelas nilai campuran
 
 54. Isi Search dengan `Staff`, tekan Enter
 55. Verifikasi kolom Old Value: baris dengan Old Value `Staff` tampil
 56. Verifikasi baris Action `Add Access` tidak tampil
-57. Klik icon ×, lalu tekan Enter pada input kosong
+57. Klik icon (✕), lalu tekan Enter pada input kosong
 58. Isi Search dengan `Supply`, tekan Enter
 59. Verifikasi kolom New Value: baris dengan New Value `Supply Asset` tampil
 60. Verifikasi baris Action `Activate` tidak tampil
-61. Klik icon ×, lalu tekan Enter pada input kosong
+61. Klik icon (✕), lalu tekan Enter pada input kosong
 
 ### TC-GS-USER-555: Kolom non-searchable tidak tercakup Search
 
@@ -140,7 +140,7 @@ coverage:
 
 66. Ganti isi kotak search dengan `zzzqqq`, tekan Enter
 67. Verifikasi empty filtered state tampil: ilustrasi, `No results found`, dan `Try adjusting your search or filter.`
-68. Klik icon ×, lalu tekan Enter pada input kosong
+68. Klik icon (✕), lalu tekan Enter pada input kosong
 
 ### TC-GS-USER-556: Search tidak mencocokkan kolom yang di-hide, kembali cocok setelah unhide
 
@@ -153,7 +153,7 @@ coverage:
 75. Verifikasi kolom `Modified By` tampil kembali
 76. Tekan Enter lagi pada input Search
 77. Verifikasi setelah unhide: baris dengan Modified By `Fajar N` tampil
-78. Klik icon ×, lalu tekan Enter pada input kosong
+78. Klik icon (✕), lalu tekan Enter pada input kosong
 
 ## Notes
 
@@ -161,7 +161,7 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: TC-GS-USER-405, 551, 552, 553, 554, 555, 557, 556. Alasan: TC-GS-USER-405 hanya mengamati (screening di awal, bagian 3 konvensi); TC-GS-USER-557 sebelum TC-GS-USER-556 karena TC-GS-USER-556 mengubah visibilitas kolom dan ditaruh paling akhir supaya TC lain memakai 6 kolom tampil. Detail user dan Tab `Changelog` dibuka sekali di langkah 1 sampai 3 untuk kedelapan TC.
 - Langkah 1 sampai 3 (mencari user uji lewat Search User List, lalu klik Name dan Tab `Changelog`) adalah langkah penghubung tanpa `Verifikasi`; TC menulis "Klik Name `John Doe`" tanpa cara menemukan baris, dan user uji milik spec menggantikan John Doe (lihat Prerequisites).
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): membersihkan Search (Klik icon ×, lalu Enter pada input kosong) setelah tiap kata kunci TC-GS-USER-553, 554, 557, dan 556 supaya kata kunci berikutnya mulai dari tabel penuh; langkah 36 membuka kembali Search yang ditutup ← di TC-GS-USER-551 (langkah berikutnya memeriksa keyword kosong); langkah 69 dan 74 menyembunyikan lalu menampilkan kembali `Modified By` lewat overlay Column Visibility tanpa Save.
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): membersihkan Search (Klik icon (✕), lalu Enter pada input kosong) setelah tiap kata kunci TC-GS-USER-553, 554, 557, dan 556 supaya kata kunci berikutnya mulai dari tabel penuh; langkah 36 membuka kembali Search yang ditutup ← di TC-GS-USER-551 (langkah berikutnya memeriksa keyword kosong); langkah 69 dan 74 menyembunyikan lalu menampilkan kembali `Modified By` lewat overlay Column Visibility tanpa Save.
 - Langkah baru di TC-GS-USER-405 (S-03 dan S-09): membuka Search lalu menutupnya dengan `(←)`, membuka overlay Download lalu menutupnya dengan Esc, adalah langkah penghubung tanpa `Verifikasi` untuk mengamati placeholder Search dan opsi Download (Expected a); `Verifikasi toolbar tidak memuat icon Changelog` didahului `Verifikasi` toolbar `Search`, `Filter`, dan `Download` (langkah 4) sebagai anchor (bagian 8b butir 2).
 - Asersi tambahan di luar Expected TC (S-03): `Verifikasi` baris Action `Add Access` tampil/tidak tampil adalah anchor untuk "belum tersaring" dan "tersaring" (bagian 8b butir 2); pada TC-GS-USER-553 dan 554 satu `Verifikasi` ketiadaan baris `Add Access` atau `Activate` membuktikan penyaringan nyata, bukan sekadar baris cocok tampil. Baris `Add Access` (entri f) berada di halaman 1 (10 entri terbaru) sehingga dapat diamati tanpa pindah halaman; entri `Create` (entri a) berada di halaman 2.
 - Pembagian TC Tab Changelog di User Detail: Search di spec 090; Filter Panel di spec 091; kombinasi Search dan Filter di spec 092; Sort dan Pagination di spec 093; Setup Column di spec 094; Download di spec 095. TC-GS-USER-405 diverifikasi di spec 090.

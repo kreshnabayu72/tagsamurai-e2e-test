@@ -72,17 +72,17 @@ coverage:
 17. Verifikasi sel Device / Browser baris IP Address `172.16.9.3` bernilai `—`
 18. Verifikasi enam baris lain berformat `[Browser] on [OS]`: `Chrome on Windows` (2 baris) dan `Firefox on macOS` (4 baris)
 
-### TC-GS-USER-631: Siklus Search: reveal, Enter, clear ×, collapse ←
+### TC-GS-USER-631: Siklus Search: reveal, Enter, clear (✕), collapse ←
 
 19. Klik icon Search
 20. Verifikasi Search bar melebar
 21. Verifikasi kursor auto-focus di input Search
 22. Ketik `Logout` pada kotak Search
-23. Verifikasi icon `×` muncul di dalam input
+23. Verifikasi icon `(✕)` muncul di dalam input
 24. Verifikasi tabel belum tersaring (tetap 7 baris)
 25. Tekan Enter
 26. Verifikasi tabel tersaring: 2 baris, Activity `Logout`
-27. Klik icon `×`
+27. Klik icon `(✕)`
 28. Verifikasi input Search kosong
 29. Verifikasi tabel tetap menampilkan hasil search terakhir (2 baris Activity `Logout`)
 30. Tekan Enter pada input kosong
@@ -118,7 +118,7 @@ coverage:
 
 ### TC-GS-USER-635: Kolom non-searchable tidak tercakup Search
 
-51. Klik icon `×`
+51. Klik icon `(✕)`
 52. Tekan Enter pada input kosong
 53. Verifikasi tabel menampilkan 7 baris (data pembanding sebelum Search tanggal)
 54. Salin teks tanggal pada sel Date baris pertama (format yang tampil di kolom itu)
@@ -127,7 +127,7 @@ coverage:
 
 ### TC-GS-USER-636: Search tidak mencocokkan kolom hidden, cocok kembali setelah unhide
 
-57. Klik icon `×`
+57. Klik icon `(✕)`
 58. Tekan Enter pada input kosong
 59. Klik header Column Visibility (⋯)
 60. Hilangkan centang kolom `Device / Browser`
@@ -160,7 +160,7 @@ coverage:
 - Pemilik log: TC sumber memakai `John Doe` (Pre-setup No. 18) dan `Lukman Hakim` tanpa suffix. Isi User Log `John Doe` Pre-setup bergantung pada riwayat login lingkungan, sehingga spec memakai user milik spec dengan riwayat event yang diketahui (S-06, S-11) dan nama bersuffix per run (S-12).
 - Urutan TC dalam spec: TC-GS-USER-409, 412, 631, 632, 633, 634, 635, 636, 637, lalu 411. TC-GS-USER-411 membuka user lain (Lukman Hakim) sehingga ditaruh terakhir dan memakai satu pembukaan ulang (langkah 71), menghindari dua kali navigasi bolak-balik. Urutan `sourceTc`: 409, 411, 412, 631 sampai 637. TC-GS-USER-412 diasersi tepat sesudah TC-GS-USER-409 karena memakai layar yang sama.
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 (mencari user di User List agar Name dapat diklik), langkah 7 sampai 9 (membuka Search hanya untuk mengamati placeholder lalu menutupnya) dan langkah 10 sampai 12 (membuka lalu menutup overlay Download tanpa memilih opsi), sebagai langkah menuju keadaan yang diasersi (S-14) untuk Expected a TC-GS-USER-409, langkah 51 sampai 52 dan 57 sampai 58 (mengosongkan Search sebelum Search tanggal dan sebelum hide kolom), langkah 59 sampai 65 (hide dan unhide `Device / Browser` bagian TC-GS-USER-636), langkah 70 (menutup Search), dan langkah 71 (memuat ulang User List lewat menu User tanpa Search, agar Search user lain dimulai dari tabel segar). Langkah 36 sampai 37 (membuka Search kembali dan memastikan kosong) adalah observasi untuk Expected f "keyword kosong" pada TC-GS-USER-631 (S-14).
-- Asersi tambahan (dicatat sesuai S-03): langkah 4 (tabel memuat 7 baris) dan pencantuman jumlah baris pada Expected Search adalah konkretisasi untuk data seed yang diketahui; langkah sesudah `×` pada TC-GS-USER-635 dan 636 (tabel 7 baris) adalah data pembanding sebelum asersi absence (8b butir 2). TC-GS-USER-631 tidak menyebut cara mengamati "tabel belum tersaring" atau "tersaring"; spec memakai jumlah baris (7 lalu 2).
+- Asersi tambahan (dicatat sesuai S-03): langkah 4 (tabel memuat 7 baris) dan pencantuman jumlah baris pada Expected Search adalah konkretisasi untuk data seed yang diketahui; langkah sesudah `(✕)` pada TC-GS-USER-635 dan 636 (tabel 7 baris) adalah data pembanding sebelum asersi absence (8b butir 2). TC-GS-USER-631 tidak menyebut cara mengamati "tabel belum tersaring" atau "tersaring"; spec memakai jumlah baris (7 lalu 2).
 - Kata kunci TC-GS-USER-633 dan 634 memakai potongan nilai yang hanya muncul pada kolom yang diuji: `ogou` (Activity `Logout`), `ucces` (Status `Success`), `Invalid` (Note `Invalid password`), `Firefox` (Device / Browser `Firefox on macOS`), dan `10.0` (IP Address `10.0.0.11`). Langkah "lalu clear" pada TC-GS-USER-633 dan 634 dipenuhi dengan mengganti isi kotak search (bagian 8b butir 9) dan mengosongkan Search di langkah 51 sampai 52.
 - Spec melewati sekitar 35 langkah (75 langkah) karena sepuluh TC memakai permukaan tab yang sama dan tiap klausa Expected menjadi satu `Verifikasi` (S-01). Semua blok satu kelas (screening dan Search Tab User Log, baca saja), satu akun, satu dataset (U-1), dan tiap blok berdiri sendiri karena Search dikosongkan atau diganti di tiap blok; satu-satunya pembukaan layar kedua (langkah 71) khusus TC-GS-USER-411.
 - Pembagian TC lintas spec: Filter Panel TC-GS-USER-638 sampai 646 diverifikasi di spec 103; kombinasi Search dan Filter TC-GS-USER-647 sampai 651 di spec 104; Sort, Pagination, dan kombinasi TC-GS-USER-652 sampai 654, 669, 670 di spec 105; Setup Column TC-GS-USER-655 sampai 663 di spec 106; Download TC-GS-USER-410 dan 664 sampai 668 di spec 107. Pencatatan event Login, Logout, dan Change Password ke User Log (TC-GS-USER-933 sampai 941) diverifikasi di spec 148.

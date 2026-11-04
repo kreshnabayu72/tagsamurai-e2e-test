@@ -33,6 +33,7 @@ coverage:
   - Mengatur jam server dan jam browser bersama ke waktu absolut dalam zona waktu client (bukan geseran relatif) dan memulihkannya ke waktu nyata; keduanya diatur bersama karena asersi memakai tampilan UI.
   - Memicu job terjadwal auto-deactivate Temporary (job 00.00) secara eksplisit dan mengetahui job selesai.
   - Mengubah dan memulihkan General Settings Timezone entitas.
+- Jam (langkah 7, 18, dan 22): jam server dan jam browser diatur bersama ke nilai absolut dan dibekukan (tidak berjalan), sehingga tidak ada selisih waktu nyata yang menggeser nilai. Margin terhadap batas hari (00.00 UTC+7): langkah 7 pukul 23.30 (30 menit), langkah 18 pukul 23.59 (1 menit, aman karena jam berhenti), langkah 22 tepat pukul 00.00 (batas eksak yang diuji, jam berhenti di nilai itu sampai dipulihkan di langkah 25). Kemampuan membekukan jam disediakan tim FE/BE.
 - State global yang diubah: jam server dan jam browser, General Settings Timezone entitas (`Asia/Jakarta` ke `Asia/Jayapura` dan kembali), status F-1 dan N-1 oleh job. Pemulihan jam dan Timezone ditulis sebagai langkah aksi (langkah 17 dan 25) sebelum akun aktor membuka Activity Log atau User Log; hook `after` memulihkan jam, Timezone, dan menghapus F-1 dan N-1 sebagai cadangan (tetap jalan walau spec gagal). Suite berjalan serial (`parallel: false`).
 - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus F-1 dan N-1 lewat API, pulihkan jam dan Timezone.
 - Admin pembanding untuk Tab System Log (TC-GS-USER-907 butir c "beberapa admin"): Siti Nurhaliza dan Hendra Gunawan (Default User). Entri System Log milik kedua admin yang menjadi pembanding disediakan tim FE (TC tidak menyebutnya).
@@ -50,7 +51,7 @@ coverage:
 ### TC-GS-USER-1014: Validasi Temporary Until 'besok' memakai zona waktu client General Settings
 
 6. Atur General Settings Timezone entitas menjadi `Asia/Jayapura` (UTC+9)
-7. Atur jam server dan jam browser bersama ke tanggal D pukul 23.30 UTC+7
+7. Atur jam server dan jam browser bersama ke tanggal D pukul 23.30 UTC+7 dan bekukan
 8. Klik `[+ User]` di Table Tools
 9. Isi First Name `Papua`, Last Name `Uji {runId}-049`, Division `Finance`, Email `papuauji+{runId}-049@qwertysystem.net`, pilih Access `Fixed Asset`
 10. Centang `Set as Temporary User`
@@ -64,14 +65,14 @@ coverage:
 
 ### TC-GS-USER-1012: Temporary Until hari ini, user masih Active sampai akhir hari
 
-18. Atur jam server dan jam browser bersama ke tanggal D pukul 23.59 UTC+7
+18. Atur jam server dan jam browser bersama ke tanggal D pukul 23.59 UTC+7 dan bekukan
 19. Muat ulang halaman User List
 20. Klik icon Search, ketik `{runId}-049`, tekan Enter
 21. Verifikasi switch Active baris `Fikri Ramadhan {runId}-049` ON
 
 ### Job terjadwal 00.00 hari berikutnya
 
-22. Atur jam server dan jam browser bersama ke tanggal D + 1 pukul 00.00 UTC+7
+22. Atur jam server dan jam browser bersama ke tanggal D + 1 pukul 00.00 UTC+7 dan bekukan
 23. Picu job terjadwal auto-inactive Temporary
 24. Tunggu job terjadwal selesai
 25. Pulihkan jam server dan jam browser ke waktu nyata
@@ -89,7 +90,7 @@ coverage:
 31. Klik icon Search, ketik `{runId}-049`, tekan Enter
 32. Verifikasi switch Active baris `Fikri Ramadhan {runId}-049` OFF
 33. Verifikasi Modified By baris `Fikri Ramadhan {runId}-049` `System`
-34. Verifikasi Last Update baris `Fikri Ramadhan {runId}-049` sama dengan waktu job (tanggal D + 1 pukul 00.00 zona waktu client)
+34. Verifikasi Last Update baris `Fikri Ramadhan {runId}-049` sama dengan waktu job (tanggal D + 1 pukul 00.00 zona waktu client, toleransi 1 menit)
 35. Catat nilai Last Update baris `Fikri Ramadhan {runId}-049` sebagai L1
 36. Klik icon Changelog pada Table Tools
 37. Klik icon Search pada Modal Changelog, ketik `Fikri Ramadhan {runId}-049`, tekan Enter

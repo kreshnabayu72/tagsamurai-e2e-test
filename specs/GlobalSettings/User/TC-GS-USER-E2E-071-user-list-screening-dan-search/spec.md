@@ -55,18 +55,18 @@ coverage:
 6. Verifikasi Pagination tidak menampilkan baris
 7. Klik icon panah `(←)` untuk menutup Search dan mereset tabel
 
-### TC-GS-USER-413: Siklus Search: reveal, Enter, clear ×, collapse ←
+### TC-GS-USER-413: Siklus Search: reveal, Enter, clear (✕), collapse ←
 
 8. Klik icon Search
 9. Verifikasi input Search melebar
 10. Verifikasi kursor auto-focus di input Search
 11. Ketik `Gandhi` pada kotak Search
-12. Verifikasi icon `×` muncul di dalam input
+12. Verifikasi icon `(✕)` muncul di dalam input
 13. Verifikasi tabel belum tersaring: baris `Gandhi Pranoto {runId}-071` dan baris `Hesti Maharani {runId}-071` sama-sama tampil
 14. Tekan Enter
 15. Verifikasi tabel tersaring: baris `Gandhi Pranoto {runId}-071` tampil
 16. Verifikasi baris `Hesti Maharani {runId}-071` tidak tampil
-17. Klik icon `×`
+17. Klik icon `(✕)`
 18. Verifikasi input Search kosong
 19. Verifikasi tabel tetap menampilkan hasil search terakhir: baris `Gandhi Pranoto {runId}-071` tampil dan baris `Hesti Maharani {runId}-071` tidak tampil
 20. Tekan Enter pada input kosong
@@ -89,49 +89,49 @@ coverage:
 31. Ganti isi kotak search dengan `Gandhi Pra`, tekan Enter
 32. Verifikasi kolom Name: baris `Gandhi Pranoto {runId}-071` tampil (nilai Name memuat `Gandhi Pra`)
 33. Verifikasi kolom Name: baris `Hesti Maharani {runId}-071` tidak tampil
-34. Klik icon `×`
+34. Klik icon `(✕)`
 35. Isi Search dengan `ndhipranoto`, tekan Enter
 36. Verifikasi kolom Email: baris `Gandhi Pranoto {runId}-071` tampil (nilai Email memuat `ndhipranoto`)
 37. Verifikasi kolom Email: baris `Hesti Maharani {runId}-071` tidak tampil
-38. Klik icon `×`
+38. Klik icon `(✕)`
 39. Isi Search dengan `Superv`, tekan Enter
 40. Verifikasi kolom Position: baris `Gandhi Pranoto {runId}-071` tampil (nilai Position memuat `Superv`)
 41. Verifikasi kolom Position: baris `Hesti Maharani {runId}-071` tidak tampil
-42. Klik icon `×`
+42. Klik icon `(✕)`
 43. Isi Search dengan `Logis`, tekan Enter
 44. Verifikasi kolom Division: baris `Gandhi Pranoto {runId}-071` tampil (nilai Division memuat `Logis`)
 45. Verifikasi kolom Division: baris `Hesti Maharani {runId}-071` tidak tampil
-46. Klik icon `×`
+46. Klik icon `(✕)`
 47. Isi Search dengan `EMPA`, tekan Enter
 48. Verifikasi kolom Employee ID: baris `Gandhi Pranoto {runId}-071` tampil (nilai Employee ID memuat `EMPA`)
 49. Verifikasi kolom Employee ID: baris `Hesti Maharani {runId}-071` tidak tampil
-50. Klik icon `×`
+50. Klik icon `(✕)`
 51. Isi Search dengan `Siti N`, tekan Enter
 52. Verifikasi kolom Modified By: baris `Gandhi Pranoto {runId}-071` tampil (nilai Modified By memuat `Siti N`)
 53. Verifikasi kolom Modified By: baris `Hesti Maharani {runId}-071` tidak tampil
-54. Klik icon `×`
+54. Klik icon `(✕)`
 
 ### TC-GS-USER-416: Search menemukan substring pada kolom kelas chip produk
 
 55. Isi Search dengan `Fixed`, tekan Enter
 56. Verifikasi kolom Access: baris `Gandhi Pranoto {runId}-071` tampil (nilai Access memuat `Fixed`)
 57. Verifikasi kolom Access: baris `Hesti Maharani {runId}-071` tidak tampil
-58. Klik icon `×`
+58. Klik icon `(✕)`
 
 ### TC-GS-USER-1034: Search pada kolom Active exact match terhadap teks Active/Inactive
 
 59. Isi Search dengan `Inactive`, tekan Enter
 60. Verifikasi keyword `Inactive`: baris `Jane Smith` dan baris `Budi Hartono` (Inactive) tampil
 61. Verifikasi keyword `Inactive`: baris `Dewi Lestari` (Active) tidak tampil
-62. Klik icon `×`
+62. Klik icon `(✕)`
 63. Isi Search dengan `Active`, tekan Enter
 64. Verifikasi keyword `Active`: baris `Dewi Lestari` (Active) tampil
 65. Verifikasi keyword `Active`: baris `Jane Smith` dan baris `Budi Hartono` (Inactive) tidak tampil (exact match, bukan substring dari `Inactive`)
-66. Klik icon `×`
+66. Klik icon `(✕)`
 67. Isi Search dengan `active`, tekan Enter
 68. Verifikasi keyword `active` (huruf kecil): baris `Dewi Lestari` tampil
 69. Verifikasi keyword `active` (huruf kecil): baris `Jane Smith` dan baris `Budi Hartono` tidak tampil (hasil sama dengan keyword `Active`)
-70. Klik icon `×`
+70. Klik icon `(✕)`
 
 ### TC-GS-USER-417: Search menemukan substring pada kolom kelas curated (setelah ditampilkan)
 
@@ -145,15 +145,15 @@ coverage:
 78. Isi Search dengan `Pending`, tekan Enter
 79. Verifikasi kolom Activation Status: baris `Gandhi Pranoto {runId}-071` tampil (nilai Activation Status memuat `Pending`)
 80. Verifikasi kolom Activation Status: baris `John Doe` (Activated) tidak tampil
-81. Klik icon `×`
+81. Klik icon `(✕)`
 82. Isi Search dengan `Yes`, tekan Enter
 83. Verifikasi kolom Temporary User: baris `Gandhi Pranoto {runId}-071` tampil (nilai Temporary User memuat `Yes`)
 84. Verifikasi kolom Temporary User: baris `Hesti Maharani {runId}-071` tidak tampil
-85. Klik icon `×`
+85. Klik icon `(✕)`
 86. Isi Search dengan `4F7K2`, tekan Enter
 87. Verifikasi kolom TAG: baris `John Doe` tampil (nilai TAG memuat `4F7K2`)
 88. Verifikasi kolom TAG: baris `Gandhi Pranoto {runId}-071` tidak tampil
-89. Klik icon `×`
+89. Klik icon `(✕)`
 
 ### TC-GS-USER-418: Kolom bertipe tanggal tidak tercakup Search
 
@@ -203,7 +203,7 @@ coverage:
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: 10, 413, 414, 415, 416, 1034, 417, 418, 419, 420. TC-GS-USER-1034 ditaruh sebelum TC-GS-USER-417 karena Search `Active` pada kolom Active harus dijalankan selagi kolom Activation Status masih hidden (nilai Activation Status memuat `Activated`; bila kolomnya sudah tampil, keyword `Active` ikut mencocokkan baris itu). Urutan di `tc-user.md`: 10, 413 sampai 418, 1034, 419, 420.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (ukuran halaman 100 agar baris seed dan baris Pre-setup berada di halaman yang sama), langkah 7 dan 113 (menutup Search dan mereset tabel), langkah 26 (membuka kembali Search untuk TC-GS-USER-414; sekaligus dipakai mengamati keyword kosong, Expected f TC-GS-USER-413), tiap `Klik icon ×` sesudah blok kolom (TC-GS-USER-415 sampai 417 meminta clear), langkah 71 sampai 76 (menampilkan kolom curated lewat Overlay Column Visibility sebelum TC-GS-USER-417), langkah 92 (membaca teks tanggal untuk TC-GS-USER-418), serta langkah 114 sampai 120 (memulihkan konfigurasi kolom dan ukuran halaman). Langkah `Klik kotak Search` sesudah Overlay ditutup mengembalikan fokus ke input Search.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (ukuran halaman 100 agar baris seed dan baris Pre-setup berada di halaman yang sama), langkah 7 dan 113 (menutup Search dan mereset tabel), langkah 26 (membuka kembali Search untuk TC-GS-USER-414; sekaligus dipakai mengamati keyword kosong, Expected f TC-GS-USER-413), tiap `Klik icon (✕)` sesudah blok kolom (TC-GS-USER-415 sampai 417 meminta clear), langkah 71 sampai 76 (menampilkan kolom curated lewat Overlay Column Visibility sebelum TC-GS-USER-417), langkah 92 (membaca teks tanggal untuk TC-GS-USER-418), serta langkah 114 sampai 120 (memulihkan konfigurasi kolom dan ukuran halaman). Langkah `Klik kotak Search` sesudah Overlay ditutup mengembalikan fokus ke input Search.
 - Asersi pembanding (S-03, bagian 8b butir 2): tiap `Verifikasi` ketiadaan baris didahului `Verifikasi` baris pembanding yang tampil pada tabel yang sama; langkah yang menyatakan "tidak tampil" untuk U-2 memakai U-1 yang tampil sebagai anchor. TC-GS-USER-419: langkah pembanding sebelum kolom di-hide (baris dengan Modified By `System` tampil) membuktikan keyword mencocokkan kolom itu; hasil kosong sesudah hide berasal dari kolom hidden, bukan dari keyword yang salah.
 - Spec melewati sekitar 35 langkah karena sepuluh TC Search berbagi satu layar, satu dataset (U-1, U-2, dan Pre-setup), dan satu kelas harness (fungsional, baca saja). Tiap blok kolom berdiri sendiri dan memakai Search yang sama; memisahkannya mengulang login, seeding, dan pembukaan layar yang sama. Tiap `Verifikasi` dipecah per klausa (S-01) dan tiap kolom memuat dua `Verifikasi` (baris cocok tampil dan baris pembanding tidak tampil).
 - Pembagian TC lintas spec: TC-GS-USER-6 (retensi Search dan Sort saat pindah tab) dan TC-GS-USER-1043 (Modified By Default User seed) diverifikasi di spec 001; TC-GS-USER-421 sampai 429 (Filter Panel) di spec 072; TC-GS-USER-430 sampai 434, 463, 464 (kombinasi Search dan Filter) di spec 073; Sort, Pagination, dan kombinasi di spec 074; Setup Column di spec 075; Download di spec 076 dan 077.

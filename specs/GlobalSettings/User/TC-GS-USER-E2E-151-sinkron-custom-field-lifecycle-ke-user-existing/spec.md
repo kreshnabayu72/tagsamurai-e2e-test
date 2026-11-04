@@ -31,6 +31,7 @@ coverage:
   - Login User `Rahmat Hidayat {runId}-151`, email `rahmathidayat+{runId}-151@qwertysystem.net`, Activated, Active, Access `Fixed Asset`, tanpa nilai `Skills {runId}-151` (untuk Expected TC-GS-USER-955), nilai `Blood Type {runId}-151` = `B` (untuk Expected TC-GS-USER-954 "semua user").
 - Data Dinamis yang dibuat spec lewat UI: Custom Field `Shirt Size {runId}-151` (Data Type Dropdown, Dropdown Values `S` dan `M`, Active) pada TC-GS-USER-950, dihapus pada TC-GS-USER-953. Nilai `Shirt Size {runId}-151` = `M` untuk `Dewi Lestari {runId}-151` diisi lewat API pada langkah 14.
 - Cleanup (hook `after`, tidak berasumsi seeding atau langkah berhasil penuh): hapus lewat API Login User `dewilestari+{runId}-151@qwertysystem.net` dan `rahmathidayat+{runId}-151@qwertysystem.net`, lalu Custom Field `Skills {runId}-151`, `Blood Type {runId}-151`, dan `Shirt Size {runId}-151` bila masih ada.
+- Kemampuan teknis (disediakan tim FE/BE; TC, PRD, dan LLD tidak menyebut mekanismenya): membaca nilai Custom Field user dari BE untuk Expected TC-GS-USER-951 (nilai `Skills {runId}-151` `Dewi Lestari {runId}-151` tetap `Excel` selagi field disembunyikan).
 - Tidak ada state global yang diubah.
 
 ## Test Steps

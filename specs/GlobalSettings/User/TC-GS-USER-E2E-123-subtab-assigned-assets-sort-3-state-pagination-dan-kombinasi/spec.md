@@ -36,7 +36,7 @@ coverage:
 - Data uji per TC: TC-GS-USER-774 enam kolom kelas teks (Transaction ID, Name, Asset ID, Brand, Model / Type, PIC); TC-GS-USER-790 page size 25 dan 10 (27 baris, lebih dari 21 baris); TC-GS-USER-791 keyword `{runId}-123` (mencocokkan K2 sampai K27), Filter PIC `Bambang Susanto {runId}-123` dan `Sinta Dewi {runId}-123` (18 baris), Sort Brand descending, page size 25.
 - Urutan yang diasersi: nilai Transaction ID dan Asset ID memuat `{runId}-123` (runId tidak berformat tetap), sehingga urutan kolom itu diasersi sebagai terurut ascending atau descending tanpa menyebut baris tertentu; kolom Name, Brand, Model / Type, dan PIC diasersi dengan komposisi baris yang tetap.
 - Kemampuan teknis: seeding Assigned Assets (HK8) (disediakan tim FE/BE); membaca indikator sort pada header dan nilai kolom 10 baris halaman 1; mengubah page size lewat Pagination; mengetik nomor halaman.
-- State yang diubah dan dipulihkan: Sort kembali ke default (klik ketiga tiap kolom), Search, Filter, dan page size (dikembalikan pada langkah 71 sampai 76); hook `after` sebagai cadangan. Suite berjalan serial (`parallel: false`).
+- State yang diubah dan dipulihkan: Sort kembali ke default (klik ketiga tiap kolom), Search, Filter, dan page size (dikembalikan pada langkah 70 sampai 75); hook `after` sebagai cadangan. Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
 
@@ -86,9 +86,9 @@ coverage:
 38. Klik header Model / Type
 39. Verifikasi klik 3 kembali ke default sort tabel: 10 baris halaman 1 terurut Name A-Z dengan baris pertama `Company Vehicle B1234XY`
 40. Klik header PIC
-41. Verifikasi klik 1: halaman 1 terurut ascending (A-Z) menurut PIC: 10 baris `Bambang Susanto {runId}-123`
+41. Verifikasi klik 1: halaman 1 terurut ascending (A-Z) menurut PIC: 10 baris `Bambang S`
 42. Klik header PIC
-43. Verifikasi klik 2: halaman 1 terurut descending (Z-A) menurut PIC: `Sinta Dewi {runId}-123` (8 baris) lalu `Rudi Hartanto {runId}-123` (2 baris)
+43. Verifikasi klik 2: halaman 1 terurut descending (Z-A) menurut PIC: `Sinta D` (8 baris) lalu `Rudi H` (2 baris)
 44. Klik header PIC
 45. Verifikasi klik 3 kembali ke default sort tabel: 10 baris halaman 1 terurut Name A-Z dengan baris pertama `Company Vehicle B1234XY`
 
@@ -119,24 +119,24 @@ coverage:
 65. Verifikasi halaman 1 terurut descending (Z-A) menurut Brand: `Honda` (3 baris), `Epson` (5 baris), lalu `Dell` (2 baris)
 66. Ubah page size ke 25
 67. Verifikasi kotak Search tetap berisi `{runId}-123`
-68. Verifikasi Filter tetap aktif: icon Filter berwarna gelap
-69. Verifikasi header Brand tetap descending (Z-A)
-70. Verifikasi 18 baris tampil dalam satu halaman terurut Brand descending: `Honda` (3 baris), `Epson` (5 baris), `Dell` (5 baris), lalu `Canon` (5 baris)
-71. Klik icon panah `(←)` di kiri toolbar
-72. Klik icon Filter
-73. Klik `[Clear Field]`
-74. Klik `[Apply]`
-75. Klik header Brand
-76. Ubah page size kembali ke 10
+68. Verifikasi header Brand tetap descending (Z-A)
+69. Verifikasi 18 baris tampil dalam satu halaman terurut Brand descending: `Honda` (3 baris), `Epson` (5 baris), `Dell` (5 baris), lalu `Canon` (5 baris)
+70. Klik icon panah `(←)` di kiri toolbar
+71. Klik icon Filter
+72. Klik `[Clear Field]`
+73. Klik `[Apply]`
+74. Klik header Brand
+75. Ubah page size kembali ke 10
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Dataset 27 baris (lebih dari 21 baris) dipenuhi spec lewat seeding di hook `before`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: 775, 774, 790, 791. TC-GS-USER-775 (Negative, tanpa aksi pengubah state) ditaruh di awal mengikuti prinsip screening di awal; urutan di `tc-user.md`: 774, 775, 790, 791.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 4 (pembukaan layar bersama untuk Ahmad Fauzi), klik header ketiga tiap kolom pada TC-GS-USER-774 (mengembalikan sort ke default; hasilnya tetap diasersi), langkah 71 sampai 76 (menutup Search, mengosongkan Filter, mengembalikan Sort dan page size), serta pengembalian page size ke 10 di TC-GS-USER-790 (langkah Uji 5).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 4 (pembukaan layar bersama untuk Ahmad Fauzi), klik header ketiga tiap kolom pada TC-GS-USER-774 (mengembalikan sort ke default; hasilnya tetap diasersi), langkah 70 sampai 75 (menutup Search, mengosongkan Filter, mengembalikan Sort dan page size), serta pengembalian page size ke 10 di TC-GS-USER-790 (langkah Uji 5).
+- Format PIC: kolom PIC di tabel menampilkan `[First Name] [Last Initial]` (contoh `Sinta D`), bukan nama lengkap (PRD user.md §4.1.3). Format teks opsi pada dropdown filter PIC ditetapkan PRD §4.1.3; spec tidak memutuskannya.
 - Anchor positif (bagian 8b butir 2): verifikasi indikator sort pada header Name mendahului asersi ketiadaan ikon sort pada header Photo (TC-GS-USER-775).
-- Spec melewati sekitar 35 langkah (76 langkah) karena TC-GS-USER-774 menguji enam kolom dengan blok identik (klik 3 kali, amati tiap klik) ditambah tiga TC yang berbagi satu layar, satu dataset 27 baris, dan satu kelas harness (fungsional). Tiap blok kolom berdiri sendiri dan kembali ke default sort; TC-GS-USER-791 memakai Search, Filter, Sort, dan page size yang dibentuk berurutan, sehingga memisahkannya mengulang login, seeding, dan pembukaan layar yang sama.
+- Spec melewati sekitar 35 langkah (75 langkah) karena TC-GS-USER-774 menguji enam kolom dengan blok identik (klik 3 kali, amati tiap klik) ditambah tiga TC yang berbagi satu layar, satu dataset 27 baris, dan satu kelas harness (fungsional). Tiap blok kolom berdiri sendiri dan kembali ke default sort; TC-GS-USER-791 memakai Search, Filter, Sort, dan page size yang dibentuk berurutan, sehingga memisahkannya mengulang login, seeding, dan pembukaan layar yang sama.
 - Pembagian TC lintas spec: TC-GS-USER-390, 391, 755 sampai 760 ada di spec 120; TC-GS-USER-761 sampai 768 ada di spec 121; TC-GS-USER-769 sampai 773 ada di spec 122; TC-GS-USER-776 sampai 784 ada di spec 124; TC-GS-USER-392 dan 785 sampai 789 ada di spec 125.
 - Temuan untuk QA:
   - TC-GS-USER-774: `default sort tabel` adalah Name A-Z (TC-GS-USER-390 butir b), sehingga klik 1 dan klik 3 pada kolom Name menghasilkan urutan yang sama; keduanya dibedakan lewat langkah klik yang bernomor. Urutan antar baris bernilai sama (tie) tidak ditentukan TC, sehingga hanya komposisi nilai per halaman yang diasersi.

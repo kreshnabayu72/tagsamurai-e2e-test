@@ -73,35 +73,37 @@ coverage:
 33. Verifikasi kolom Users `Manage TAG` sama dengan n - 1
 34. Klik icon Search, ketik `Manage TAG`, tekan Enter
 35. Klik Name `Manage TAG` untuk membuka Detail role
-36. Klik icon Search, ketik `Ahmad Fauzi {runId}-162`, tekan Enter
-37. Verifikasi empty state `No results found` tampil dan `Ahmad Fauzi {runId}-162` tidak tampil di Detail `Manage TAG`
+36. Verifikasi Detail `Manage TAG` memuat sedikitnya satu baris user lain (selain `Ahmad Fauzi {runId}-162`)
+37. Klik icon Search, ketik `Ahmad Fauzi {runId}-162`, tekan Enter
+38. Verifikasi empty state `No results found` tampil
+39. Verifikasi `Ahmad Fauzi {runId}-162` tidak tampil di Detail `Manage TAG`
 
 ### TC-GS-USER-1093: Switch ON memulihkan role inactive-retained dengan nilai tersimpan tanpa popup
 
-38. Klik menu User di sidebar Global Settings
-39. Klik icon Search, ketik `Ahmad Fauzi {runId}-162`, tekan Enter
-40. Klik Name `Ahmad Fauzi {runId}-162` di User List
-41. Klik Tab `Role`
-42. Nyalakan switch Active baris `Manage TAG`
-43. Verifikasi toast sukses "Success, role has been updated."
-44. Verifikasi tidak ada popup atau dialog
-45. Verifikasi switch Active baris `Manage TAG` ON
-46. Verifikasi checkbox Read baris `Manage TAG` tercentang dan disabled
-47. Verifikasi checkbox Update baris `Manage TAG` tercentang
-48. Buka Global Settings > Role & Permission > System
-49. Klik icon Search, ketik `Manage TAG`, tekan Enter
-50. Klik Name `Manage TAG` untuk membuka Detail role
-51. Klik icon Search, ketik `Ahmad Fauzi {runId}-162`, tekan Enter
-52. Verifikasi `Ahmad Fauzi {runId}-162` tampil di Detail `Manage TAG` dengan Read dan Update tercentang
+40. Klik menu User di sidebar Global Settings
+41. Klik icon Search, ketik `Ahmad Fauzi {runId}-162`, tekan Enter
+42. Klik Name `Ahmad Fauzi {runId}-162` di User List
+43. Klik Tab `Role`
+44. Nyalakan switch Active baris `Manage TAG`
+45. Verifikasi toast sukses "Success, role has been updated."
+46. Verifikasi tidak ada popup atau dialog
+47. Verifikasi switch Active baris `Manage TAG` ON
+48. Verifikasi checkbox Read baris `Manage TAG` tercentang dan disabled
+49. Verifikasi checkbox Update baris `Manage TAG` tercentang
+50. Buka Global Settings > Role & Permission > System
+51. Klik icon Search, ketik `Manage TAG`, tekan Enter
+52. Klik Name `Manage TAG` untuk membuka Detail role
+53. Klik icon Search, ketik `Ahmad Fauzi {runId}-162`, tekan Enter
+54. Verifikasi `Ahmad Fauzi {runId}-162` tampil di Detail `Manage TAG` dengan Read dan Update tercentang
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`.
-- Spec melewati sekitar 35 langkah (52 langkah) karena empat TC berada di satu kelas harness (fungsional, aksi tulis pada user milik spec), satu aktor, dan satu layar utama (Tab Role User Detail). Blok TC-GS-USER-1106 dan TC-GS-USER-1100 berdiri sendiri; TC-GS-USER-1093 sengaja memakai state hasil TC-GS-USER-1092 pada user seed yang sama (S-04), sehingga langkah itu berurutan dan tidak bisa dibalik. Banyak langkah berasal dari satu `Verifikasi` per klausa Expected (S-01).
+- Spec melewati sekitar 35 langkah (54 langkah) karena empat TC berada di satu kelas harness (fungsional, aksi tulis pada user milik spec), satu aktor, dan satu layar utama (Tab Role User Detail). Blok TC-GS-USER-1106 dan TC-GS-USER-1100 berdiri sendiri; TC-GS-USER-1093 sengaja memakai state hasil TC-GS-USER-1092 pada user seed yang sama (S-04), sehingga langkah itu berurutan dan tidak bisa dibalik. Banyak langkah berasal dari satu `Verifikasi` per klausa Expected (S-01).
 - Urutan TC sumber diubah: TC-GS-USER-1106 dan TC-GS-USER-1100 (UI Only, tooltip dan Column Visibility) mendahului TC-GS-USER-1092 dan TC-GS-USER-1093 (aksi tulis) sesuai bagian 3; TC-GS-USER-1092 mendahului TC-GS-USER-1093 karena precondition TC-GS-USER-1093 adalah hasil TC-GS-USER-1092 (S-04). Langkah 1 sampai 3 TC-GS-USER-1100 dipenuhi langkah 2 sampai 3.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 36, 39, dan 51 (Search nama target sebelum Klik Name, R-16), 34 dan 49 (Search role `Manage TAG`), 17 (mencatat posisi switch), 25 (menutup Column Visibility), 26 (mencatat n), 32 dan 48 (membuka Role & Permission), 38 (kembali ke User List).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 37, 41, dan 53 (Search nama target sebelum Klik Name, R-16), 34 dan 51 (Search role `Manage TAG`), 17 (mencatat posisi switch), 25 (menutup Column Visibility), 26 (mencatat n), 32 dan 50 (membuka Role & Permission), 40 (kembali ke User List).
 - Pemulihan Column Visibility (bagian 8b butir 13): langkah 22 mengembalikan kolom `Active` pada TC yang sama; Column Visibility Tab Role tidak memiliki `[Save]`.
-- Anchor dan asersi tambahan (bagian 8b butir 2; tidak ada di TC, hanya sebagai anchor): langkah 20 (kolom `Role Name` tampil, anchor untuk "kolom `Active` hilang"); langkah 28 (toast sukses menjadi anchor untuk langkah 29, absence dialog); langkah 43 (anchor untuk langkah 44); langkah 37 memakai empty state `No results found` hasil Search sebagai anchor absence.
+- Anchor dan asersi tambahan (bagian 8b butir 2; tidak ada di TC, hanya sebagai anchor): langkah 20 (kolom `Role Name` tampil, anchor untuk "kolom `Active` hilang"); langkah 28 (toast sukses menjadi anchor untuk langkah 29, absence dialog); langkah 45 (anchor untuk langkah 46); langkah 36 (Detail `Manage TAG` memuat sedikitnya satu baris user lain, anchor positif sebelum Search pada langkah 37; mengandaikan role `Manage TAG` masih punya anggota lain sesudah `Ahmad Fauzi {runId}-162` dinonaktifkan) dan langkah 38 (empty state `No results found`, anchor untuk asersi absence pada langkah 39).
 - TC-GS-USER-1106 Expected c ("tooltip hilang") diasersi pada langkah 15 sampai 16 setelah langkah 14 (checkbox enabled) yang menjadi anchor.
 - Temuan untuk QA:
   - TC-GS-USER-1100 Expected b ("Selama kolom Active hidden, nilai switch tidak berubah") tidak mungkin diamati selama kolom tersembunyi; spec membandingkan posisi switch sebelum hide (S0, langkah 17) dengan sesudah unhide (langkah 24).
@@ -109,5 +111,5 @@ coverage:
   - TC-GS-USER-1106 Expected a menulis checkbox `Manage master reference` inactive-retained "tidak tercentang" walau nilai tersimpan ada; spec mengikuti TC.
   - TC-GS-USER-1106 langkah 4 "Klik salah satu checkbox itu" tidak menyebut checkbox mana; spec memilih Delete baris `Manage files`.
   - TC-GS-USER-1093 (P-10): precondition menyebut "hasil TC-GS-USER-1092"; spec membangunnya berurutan pada user seed yang sama.
-  - TC-GS-USER-1092 Post Condition ("baris Manage TAG inactive-retained") tanpa langkah observasi tersendiri; diverifikasi sebagian lewat langkah 45 sampai 47.
+  - TC-GS-USER-1092 Post Condition ("baris Manage TAG inactive-retained") tanpa langkah observasi tersendiri; diverifikasi sebagian lewat langkah 47 sampai 49.
   - TC-GS-USER-1106, 1100, 1092, 1093 memakai user Pre-setup (Ahmad Fauzi); spec memakai seed milik spec (S-06).

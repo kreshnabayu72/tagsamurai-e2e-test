@@ -29,7 +29,7 @@ coverage:
 
 1. Klik icon Search, ketik `Dewi`, tekan Enter pada sub-tab Login User
 2. Verifikasi `Dewi Lestari` tampil di tabel sub-tab Login User
-3. Kosongkan Search
+3. Kosongkan Search lewat `(✕)`, tekan Enter
 4. Klik sub-tab `Non-Login User`
 5. Verifikasi `Agus Prasetyo` tampil di tabel sub-tab Non-Login User
 6. Klik icon Search, ketik `Dewi`, tekan Enter
@@ -37,7 +37,7 @@ coverage:
 
 ### TC-GS-USER-993: Persistensi Setup Column sub-tab Login User terpisah dari Non-Login User
 
-8. Kosongkan Search
+8. Kosongkan Search lewat `(✕)`, tekan Enter
 9. Klik sub-tab `Login User`
 10. Buka Setup Column dari header kolom Actions `⋯` > `Setup Column...`
 11. Hapus centang kolom `Email`, klik `[Save]`

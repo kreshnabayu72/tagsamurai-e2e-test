@@ -37,7 +37,7 @@ coverage:
   - Seeding minimal (S-11): U-1 dan U-2 membawa nilai berbeda pada kolom yang difilter; U-3 dan U-4 hanya untuk asersi AND (TC-GS-USER-429).
   - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus U-1 sampai U-4 lewat API, lalu hapus Position `Posisi Kosong {runId}-072` dan Division `Divisi Kosong {runId}-072`.
 - Data uji: Status `Active` dan `Inactive`; Position `Supervisor`; Division `Logistics`; Access `Fixed Asset`; Modified By `Siti N`; Activation Status `Pending Activation`; Temporary User `Yes`; rentang tanggal `{tanggal hari uji}` (bagian tanggal sel Last Update U-1) dan `{tanggal TU}` (bagian tanggal sel Temporary Until U-1), keduanya dibaca dari tabel pada langkah 7.
-- State yang diubah dan dipulihkan: ukuran halaman 100 (langkah 1) dikembalikan ke 10 (langkah 173); kolom `Activation Status`, `Temporary User`, `Temporary Until` ditampilkan (langkah 2 sampai 6) dan disembunyikan lagi (langkah 168 sampai 172); Filter dikosongkan di akhir tiap blok dan di langkah 165. Hook `after` sebagai cadangan mengembalikan konfigurasi kolom ke default (Setup Column > `[Reset to Default]`, `[Save]`, atau penghapusan preferensi kolom User List di browser; mekanisme disediakan tim FE/BE).
+- State yang diubah dan dipulihkan: ukuran halaman 100 (langkah 1) dikembalikan ke 10 (langkah 180); kolom `Activation Status`, `Temporary User`, `Temporary Until` ditampilkan (langkah 2 sampai 6) dan disembunyikan lagi (langkah 175 sampai 179); Filter dikosongkan di akhir tiap blok dan di langkah 172. Hook `after` sebagai cadangan mengembalikan konfigurasi kolom ke default (Setup Column > `[Reset to Default]`, `[Save]`, atau penghapusan preferensi kolom User List di browser; mekanisme disediakan tim FE/BE).
 - Hook `beforeEach`: kembali ke layar Global Settings > User > User List (sub-tab Login User).
 - Suite berjalan serial (`parallel: false`).
 - Kemampuan teknis: memilih rentang tanggal pada date range picker Filter Panel; membaca teks sel tabel dan teks input date range; mengetik pada pencarian di dalam dropdown filter.
@@ -100,161 +100,168 @@ coverage:
 
 44. Pilih opsi `Inactive` pada Status
 45. Klik `[Apply]`
-46. Verifikasi field Status: baris `Jane Smith` (nilai terpilih) tampil
-47. Verifikasi field Status: baris `Dewi Lestari` (nilai lain) tidak tampil
-48. Verifikasi field Status: icon Filter berubah gelap
+46. Verifikasi field Status: badge titik tampil pada icon Filter
+47. Verifikasi field Status: baris `Jane Smith` (nilai terpilih) tampil
+48. Verifikasi field Status: baris `Dewi Lestari` (nilai lain) tidak tampil
 49. Klik icon Filter
-50. Klik `[Clear Field]`
-51. Klik `[Apply]`
-52. Klik icon Filter
-53. Pilih opsi `Supervisor` pada Position
-54. Klik `[Apply]`
-55. Verifikasi field Position: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
-56. Verifikasi field Position: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
-57. Verifikasi field Position: icon Filter berubah gelap
-58. Klik icon Filter
-59. Klik `[Clear Field]`
-60. Klik `[Apply]`
-61. Klik icon Filter
-62. Pilih opsi `Logistics` pada Division
-63. Klik `[Apply]`
-64. Verifikasi field Division: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
-65. Verifikasi field Division: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
-66. Verifikasi field Division: icon Filter berubah gelap
-67. Klik icon Filter
-68. Klik `[Clear Field]`
-69. Klik `[Apply]`
-70. Klik icon Filter
-71. Pilih opsi `Fixed Asset` pada Access
+50. Verifikasi field Status: icon Filter berubah gelap
+51. Klik `[Clear Field]`
+52. Klik `[Apply]`
+53. Klik icon Filter
+54. Pilih opsi `Supervisor` pada Position
+55. Klik `[Apply]`
+56. Verifikasi field Position: badge titik tampil pada icon Filter
+57. Verifikasi field Position: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
+58. Verifikasi field Position: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
+59. Klik icon Filter
+60. Verifikasi field Position: icon Filter berubah gelap
+61. Klik `[Clear Field]`
+62. Klik `[Apply]`
+63. Klik icon Filter
+64. Pilih opsi `Logistics` pada Division
+65. Klik `[Apply]`
+66. Verifikasi field Division: badge titik tampil pada icon Filter
+67. Verifikasi field Division: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
+68. Verifikasi field Division: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
+69. Klik icon Filter
+70. Verifikasi field Division: icon Filter berubah gelap
+71. Klik `[Clear Field]`
 72. Klik `[Apply]`
-73. Verifikasi field Access: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
-74. Verifikasi field Access: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
-75. Verifikasi field Access: icon Filter berubah gelap
-76. Klik icon Filter
-77. Klik `[Clear Field]`
-78. Klik `[Apply]`
+73. Klik icon Filter
+74. Pilih opsi `Fixed Asset` pada Access
+75. Klik `[Apply]`
+76. Verifikasi field Access: badge titik tampil pada icon Filter
+77. Verifikasi field Access: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
+78. Verifikasi field Access: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
 79. Klik icon Filter
-80. Pilih opsi `Siti N` pada Modified By
-81. Klik `[Apply]`
-82. Verifikasi field Modified By: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
-83. Verifikasi field Modified By: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
-84. Verifikasi field Modified By: icon Filter berubah gelap
-85. Klik icon Filter
-86. Klik `[Clear Field]`
-87. Klik `[Apply]`
-88. Klik icon Filter
-89. Pilih opsi `Pending Activation` pada Activation Status
-90. Klik `[Apply]`
-91. Verifikasi field Activation Status: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
-92. Verifikasi field Activation Status: baris `John Doe` (nilai lain) tidak tampil
-93. Verifikasi field Activation Status: icon Filter berubah gelap
-94. Klik icon Filter
-95. Klik `[Clear Field]`
-96. Klik `[Apply]`
-97. Klik icon Filter
-98. Pilih opsi `Yes` pada Temporary User
-99. Klik `[Apply]`
-100. Verifikasi field Temporary User: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
-101. Verifikasi field Temporary User: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
-102. Verifikasi field Temporary User: icon Filter berubah gelap
+80. Verifikasi field Access: icon Filter berubah gelap
+81. Klik `[Clear Field]`
+82. Klik `[Apply]`
+83. Klik icon Filter
+84. Pilih opsi `Siti N` pada Modified By
+85. Klik `[Apply]`
+86. Verifikasi field Modified By: badge titik tampil pada icon Filter
+87. Verifikasi field Modified By: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
+88. Verifikasi field Modified By: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
+89. Klik icon Filter
+90. Verifikasi field Modified By: icon Filter berubah gelap
+91. Klik `[Clear Field]`
+92. Klik `[Apply]`
+93. Klik icon Filter
+94. Pilih opsi `Pending Activation` pada Activation Status
+95. Klik `[Apply]`
+96. Verifikasi field Activation Status: badge titik tampil pada icon Filter
+97. Verifikasi field Activation Status: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
+98. Verifikasi field Activation Status: baris `John Doe` (nilai lain) tidak tampil
+99. Klik icon Filter
+100. Verifikasi field Activation Status: icon Filter berubah gelap
+101. Klik `[Clear Field]`
+102. Klik `[Apply]`
 103. Klik icon Filter
-104. Klik `[Clear Field]`
+104. Pilih opsi `Yes` pada Temporary User
 105. Klik `[Apply]`
+106. Verifikasi field Temporary User: badge titik tampil pada icon Filter
+107. Verifikasi field Temporary User: baris `Gandhi Pranoto {runId}-072` (nilai terpilih) tampil
+108. Verifikasi field Temporary User: baris `Hesti Maharani {runId}-072` (nilai lain) tidak tampil
+109. Klik icon Filter
+110. Verifikasi field Temporary User: icon Filter berubah gelap
+111. Klik `[Clear Field]`
+112. Klik `[Apply]`
 
 ### TC-GS-USER-424: 2 opsi dalam satu field filter digabung OR
 
-106. Klik icon Filter
-107. Pilih opsi `Active` pada Status
-108. Pilih opsi `Inactive` pada Status
-109. Klik `[Apply]`
-110. Verifikasi baris dengan Status `Active` (`Dewi Lestari`) tampil
-111. Verifikasi baris dengan Status `Inactive` (`Jane Smith`) tampil
-112. Klik icon Filter
-113. Klik `[Clear Field]`
-114. Klik `[Apply]`
+113. Klik icon Filter
+114. Pilih opsi `Active` pada Status
+115. Pilih opsi `Inactive` pada Status
+116. Klik `[Apply]`
+117. Verifikasi baris dengan Status `Active` (`Dewi Lestari`) tampil
+118. Verifikasi baris dengan Status `Inactive` (`Jane Smith`) tampil
+119. Klik icon Filter
+120. Klik `[Clear Field]`
+121. Klik `[Apply]`
 
 ### TC-GS-USER-425: Search di dalam dropdown filter mempersempit opsi
 
-115. Klik icon Filter
-116. Buka dropdown Status
-117. Verifikasi dropdown Status menampilkan opsi `Active` dan `Inactive` sebelum diketik
-118. Ketik `NACT` pada pencarian di dalam dropdown Status
-119. Verifikasi opsi `Inactive` tampil (substring, tanpa membedakan huruf besar/kecil)
-120. Verifikasi opsi `Active` tidak tampil
-121. Ganti isi pencarian di dalam dropdown Status dengan `zzz`
-122. Verifikasi tidak ada opsi yang cocok di dropdown Status
-123. Kosongkan pencarian di dalam dropdown Status, lalu tutup dropdown Status
+122. Klik icon Filter
+123. Buka dropdown Status
+124. Verifikasi dropdown Status menampilkan opsi `Active` dan `Inactive` sebelum diketik
+125. Ketik `NACT` pada pencarian di dalam dropdown Status
+126. Verifikasi opsi `Inactive` tampil (substring, tanpa membedakan huruf besar/kecil)
+127. Verifikasi opsi `Active` tidak tampil
+128. Ganti isi pencarian di dalam dropdown Status dengan `zzz`
+129. Verifikasi tidak ada opsi yang cocok di dropdown Status
+130. Kosongkan pencarian di dalam dropdown Status, lalu tutup dropdown Status
 
 ### TC-GS-USER-426: Hapus chip filter via (X) meng-uncheck opsi
 
-124. Pilih opsi `Active` pada Status
-125. Pilih opsi `Inactive` pada Status
-126. Klik (X) pada chip pertama (`Active`)
-127. Verifikasi chip `Active` hilang
-128. Verifikasi chip `Inactive` tetap tampil
-129. Buka dropdown Status
-130. Verifikasi checkbox opsi `Active` di dropdown Status tidak tercentang
-131. Tutup dropdown Status
-132. Klik `[Clear Field]`
+131. Pilih opsi `Active` pada Status
+132. Pilih opsi `Inactive` pada Status
+133. Klik (X) pada chip pertama (`Active`)
+134. Verifikasi chip `Active` hilang
+135. Verifikasi chip `Inactive` tetap tampil
+136. Buka dropdown Status
+137. Verifikasi checkbox opsi `Active` di dropdown Status tidak tercentang
+138. Tutup dropdown Status
+139. Klik `[Clear Field]`
 
 ### TC-GS-USER-427: Uncheck opsi di dropdown menghapus chip
 
-133. Pilih opsi `Active` pada Status
-134. Pilih opsi `Inactive` pada Status
-135. Buka dropdown Status
-136. Hilangkan centang opsi kedua (`Inactive`) di dropdown Status
-137. Verifikasi chip `Inactive` hilang
-138. Verifikasi chip `Active` tetap tampil
-139. Tutup dropdown Status
-140. Klik `[Clear Field]`
+140. Pilih opsi `Active` pada Status
+141. Pilih opsi `Inactive` pada Status
+142. Buka dropdown Status
+143. Hilangkan centang opsi kedua (`Inactive`) di dropdown Status
+144. Verifikasi chip `Inactive` hilang
+145. Verifikasi chip `Active` tetap tampil
+146. Tutup dropdown Status
+147. Klik `[Clear Field]`
 
 ### TC-GS-USER-428: Filter date range per field
 
-141. Pilih rentang tanggal `{tanggal hari uji}` sampai `{tanggal hari uji}` pada Last Update
-142. Verifikasi input Last Update menampilkan rentang tanggal berformat Date Format General Settings (`DD/MM/YY`)
-143. Klik `[Apply]`
-144. Verifikasi field Last Update: baris `Gandhi Pranoto {runId}-072` dan baris `Hesti Maharani {runId}-072` (Last Update dalam rentang) tampil
-145. Verifikasi field Last Update: baris `Dewi Lestari` (Last Update di luar rentang) tidak tampil
-146. Klik icon Filter
-147. Klik `[Clear Field]`
-148. Klik `[Apply]`
-149. Klik icon Filter
-150. Pilih rentang tanggal `{tanggal TU}` sampai `{tanggal TU}` pada Temporary Until
-151. Verifikasi input Temporary Until menampilkan rentang tanggal berformat Date Format General Settings (`DD/MM/YY`)
-152. Klik `[Apply]`
-153. Verifikasi field Temporary Until: baris `Gandhi Pranoto {runId}-072` (Temporary Until dalam rentang) tampil
-154. Verifikasi field Temporary Until: baris `Hesti Maharani {runId}-072` dan baris `Dewi Lestari` (Temporary Until di luar rentang atau kosong) tidak tampil
-155. Klik icon Filter
-156. Klik `[Clear Field]`
-157. Klik `[Apply]`
+148. Pilih rentang tanggal `{tanggal hari uji}` sampai `{tanggal hari uji}` pada Last Update
+149. Verifikasi input Last Update menampilkan rentang tanggal berformat Date Format General Settings (`DD/MM/YY`)
+150. Klik `[Apply]`
+151. Verifikasi field Last Update: baris `Gandhi Pranoto {runId}-072` dan baris `Hesti Maharani {runId}-072` (Last Update dalam rentang) tampil
+152. Verifikasi field Last Update: baris `Dewi Lestari` (Last Update di luar rentang) tidak tampil
+153. Klik icon Filter
+154. Klik `[Clear Field]`
+155. Klik `[Apply]`
+156. Klik icon Filter
+157. Pilih rentang tanggal `{tanggal TU}` sampai `{tanggal TU}` pada Temporary Until
+158. Verifikasi input Temporary Until menampilkan rentang tanggal berformat Date Format General Settings (`DD/MM/YY`)
+159. Klik `[Apply]`
+160. Verifikasi field Temporary Until: baris `Gandhi Pranoto {runId}-072` (Temporary Until dalam rentang) tampil
+161. Verifikasi field Temporary Until: baris `Hesti Maharani {runId}-072` dan baris `Dewi Lestari` (Temporary Until di luar rentang atau kosong) tidak tampil
+162. Klik icon Filter
+163. Klik `[Clear Field]`
+164. Klik `[Apply]`
 
 ### TC-GS-USER-429: Kombinasi 2 field filter digabung AND
 
-158. Klik icon Filter
-159. Pilih opsi `Supervisor` pada Position
-160. Pilih opsi `Logistics` pada Division
-161. Klik `[Apply]`
-162. Verifikasi baris `Gandhi Pranoto {runId}-072` (Position `Supervisor`, Division `Logistics`) tampil
-163. Verifikasi baris `Indra Wibowo {runId}-072` (hanya Position `Supervisor`) tidak tampil
-164. Verifikasi baris `Kartika Ayu {runId}-072` (hanya Division `Logistics`) tidak tampil
+165. Klik icon Filter
+166. Pilih opsi `Supervisor` pada Position
+167. Pilih opsi `Logistics` pada Division
+168. Klik `[Apply]`
+169. Verifikasi baris `Gandhi Pranoto {runId}-072` (Position `Supervisor`, Division `Logistics`) tampil
+170. Verifikasi baris `Indra Wibowo {runId}-072` (hanya Position `Supervisor`) tidak tampil
+171. Verifikasi baris `Kartika Ayu {runId}-072` (hanya Division `Logistics`) tidak tampil
 
 ### Pemulihan state
 
-165. Klik icon Filter
-166. Klik `[Clear Field]`
-167. Klik `[Apply]`
-168. Klik header kolom Column Visibility (⋯)
-169. Hilangkan centang `Activation Status`
-170. Hilangkan centang `Temporary User`
-171. Hilangkan centang `Temporary Until`
-172. Tekan Esc untuk menutup Overlay Column Visibility
-173. Pilih 10 baris per halaman pada Pagination
+172. Klik icon Filter
+173. Klik `[Clear Field]`
+174. Klik `[Apply]`
+175. Klik header kolom Column Visibility (⋯)
+176. Hilangkan centang `Activation Status`
+177. Hilangkan centang `Temporary User`
+178. Hilangkan centang `Temporary Until`
+179. Tekan Esc untuk menutup Overlay Column Visibility
+180. Pilih 10 baris per halaman pada Pagination
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Urutan TC sumber (421 sampai 429) dipertahankan; TC-GS-USER-421 (screening tanpa aksi) berada di awal.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (ukuran halaman 100 agar seluruh baris seed dan Pre-setup berada di halaman yang sama), langkah 2 sampai 6 (menampilkan kolom curated lewat Overlay Column Visibility agar nilai Activation Status, Temporary User, dan Temporary Until terbaca), langkah 7 dan 8 (membaca tanggal dan kumpulan nilai kolom dari tabel), `Klik icon Filter`, `Klik [Clear Field]`, `Klik [Apply]` di akhir tiap blok (mengosongkan Filter, S-09), `Tutup dropdown`, `Klik [Clear Field]` di antara TC-GS-USER-425 sampai 427 (mengembalikan Filter Panel ke keadaan kosong), serta langkah 165 sampai 173 (memulihkan Filter, kolom, dan ukuran halaman).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (ukuran halaman 100 agar seluruh baris seed dan Pre-setup berada di halaman yang sama), langkah 2 sampai 6 (menampilkan kolom curated lewat Overlay Column Visibility agar nilai Activation Status, Temporary User, dan Temporary Until terbaca), langkah 7 dan 8 (membaca tanggal dan kumpulan nilai kolom dari tabel), `Klik icon Filter`, `Klik [Clear Field]`, `Klik [Apply]` di akhir tiap blok (mengosongkan Filter, S-09), `Tutup dropdown`, `Klik [Clear Field]` di antara TC-GS-USER-425 sampai 427 (mengembalikan Filter Panel ke keadaan kosong), serta langkah 172 sampai 180 (memulihkan Filter, kolom, dan ukuran halaman).
 - Panel Filter menutup sesudah `[Apply]`; karena itu tiap pengosongan Filter diawali `Klik icon Filter`. Filter Panel yang masih terbuka dari TC-GS-USER-421 dipakai TC-GS-USER-422 dan field pertama TC-GS-USER-423.
 - Asersi pembanding (S-03, bagian 8b butir 2): tiap `Verifikasi` ketiadaan baris didahului `Verifikasi` baris yang tampil pada tabel yang sama; `Verifikasi` ketiadaan opsi dropdown (Position dan Division) didahului `Verifikasi` kesamaan opsi dengan nilai tabel.
 - TC-GS-USER-422: asersi "hanya nilai yang genuinely muncul di baris tabel" ditulis sebagai kesamaan opsi dropdown dengan kumpulan nilai kolom yang dibaca dari tabel (langkah 8); untuk Position dan Division ditambah `Verifikasi` bahwa nilai master tanpa baris (`Posisi Kosong {runId}-072`, `Divisi Kosong {runId}-072`) tidak menjadi opsi.

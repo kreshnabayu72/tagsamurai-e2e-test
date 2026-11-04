@@ -52,10 +52,10 @@ coverage:
 5. Klik icon Download
 6. Verifikasi overlay opsi `Download as CSV` dan `Download as XLSX`
 7. Klik `Download as CSV`
-8. Verifikasi file `Assigned-Assets-Ahmad-Fauzi.csv` terunduh
-9. Buka isi berkas `Assigned-Assets-Ahmad-Fauzi.csv` yang diunduh
-10. Verifikasi berkas memuat semua 27 baris data (tidak dibatasi 10 baris halaman 1)
-11. Verifikasi tidak ada toast sukses
+8. Verifikasi tidak ada toast sukses
+9. Verifikasi file `Assigned-Assets-Ahmad-Fauzi.csv` terunduh
+10. Buka isi berkas `Assigned-Assets-Ahmad-Fauzi.csv` yang diunduh
+11. Verifikasi berkas memuat semua 27 baris data (tidak dibatasi 10 baris halaman 1)
 
 ### TC-GS-USER-789: Nilai kosong ditulis `-` di file export
 
@@ -65,8 +65,8 @@ coverage:
 
 13. Klik icon Download
 14. Klik `Download as CSV`
-15. Verifikasi file `Assigned-Assets-Ahmad-Fauzi.csv` terunduh
-16. Verifikasi tidak ada toast sukses
+15. Verifikasi tidak ada toast sukses
+16. Verifikasi file `Assigned-Assets-Ahmad-Fauzi.csv` terunduh
 
 ### TC-GS-USER-786: Download XLSX
 
@@ -93,10 +93,10 @@ coverage:
 31. Verifikasi kolom `PIC` tidak tampil di tabel
 32. Klik icon Download
 33. Klik `Download as CSV`
-34. Buka isi berkas `Assigned-Assets-Ahmad-Fauzi.csv` yang diunduh
-35. Verifikasi header berkas memuat kolom `Transaction ID`, `Name`, `Asset ID`, `Brand`, dan `Model / Type`
-36. Verifikasi header berkas tidak memuat kolom `PIC`
-37. Verifikasi tidak ada toast peringatan
+34. Verifikasi tidak ada toast peringatan
+35. Buka isi berkas `Assigned-Assets-Ahmad-Fauzi.csv` yang diunduh
+36. Verifikasi header berkas memuat kolom `Transaction ID`, `Name`, `Asset ID`, `Brand`, dan `Model / Type`
+37. Verifikasi header berkas tidak memuat kolom `PIC`
 38. Klik header kolom Actions (⋯)
 39. Centang kembali kolom `PIC` pada Overlay Column Visibility
 40. Tutup Overlay Column Visibility dengan menekan Esc
@@ -109,7 +109,7 @@ coverage:
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Kelas harness binary buffer (prinsip 13f): isi berkas CSV dan XLSX dipisah dari kegagalan ekspor. Dataset 27 baris (lebih dari satu halaman) dipenuhi spec lewat seeding di hook `before`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Urutan TC dalam spec: 785, 789, 392, 786, 787, 788. TC-GS-USER-789 membaca berkas hasil unduhan TC-GS-USER-785 (langkah 9, tanpa unduh ulang) karena state tabel keduanya identik (tanpa Search dan Filter, semua kolom, 27 baris); TC-GS-USER-785 didahulukan sebelum TC-GS-USER-392 karena memuat verifikasi overlay Download. TC-GS-USER-787 dan 788 yang mengubah state tabel (Search, kolom hidden) berada di akhir. Urutan di `tc-user.md`: 392, 785, 786, 787, 788, 789.
+- Urutan TC dalam spec: 785, 789, 392, 786, 787, 788. TC-GS-USER-789 membaca berkas hasil unduhan TC-GS-USER-785 (langkah 10, tanpa unduh ulang) karena state tabel keduanya identik (tanpa Search dan Filter, semua kolom, 27 baris); TC-GS-USER-785 didahulukan sebelum TC-GS-USER-392 karena memuat verifikasi overlay Download. TC-GS-USER-787 dan 788 yang mengubah state tabel (Search, kolom hidden) berada di akhir. Urutan di `tc-user.md`: 392, 785, 786, 787, 788, 789.
 - TC-GS-USER-392 dan 785 melakukan unduhan sendiri karena Expected keduanya menyangkut perilaku layar saat klik (nama berkas dan tidak ada toast sukses).
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 4 (pembukaan layar bersama untuk Ahmad Fauzi), langkah membuka isi berkas unduhan, langkah 27 (menutup Search dan mereset tabel), serta menutup overlay Column Visibility dengan Esc. Langkah 39 memulihkan visibilitas kolom `PIC`. Langkah membuka isi berkas termasuk blok baca berpola.
 - Spec melewati sekitar 35 langkah (44 langkah) karena enam TC Download memakai satu layar, satu dataset 27 baris, dan satu kelas harness (binary buffer). Blok 785, 392, 786, 787, dan 788 mengunduh berkas sendiri dan berdiri sendiri; blok 789 membaca berkas hasil blok 785. Langkah membaca isi berkas termasuk blok baca berpola.

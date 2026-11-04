@@ -114,7 +114,7 @@ coverage:
 ### TC-GS-USER-754: Kombinasi Search, Filter, Sort, dan Pagination berjalan bersamaan
 
 63. Klik icon Search, ketik `{runId}-117`, tekan Enter
-64. Verifikasi hasil Search: baris `Laptop 1 {runId}-117`, `Proyektor 1 {runId}-117`, dan `Kamera 1 {runId}-117` tampil
+64. Verifikasi hasil Search: baris `Laptop 1 {runId}-117` tampil pada halaman 1 (page size 10, 26 baris hasil Search)
 65. Klik icon Filter
 66. Buka dropdown PIC, pilih opsi `Andi Wijaya`
 67. Klik `[Apply]`
@@ -140,6 +140,7 @@ coverage:
 - Data target: TC sumber memakai `Ahmad Fauzi`; spec memakai `Joko Susilo` (Tabel Pre-setup No. 19) dengan populasi aset pinjaman milik spec (lebih dari satu halaman), sehingga asersi memakai nilai seed bersuffix.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (mencari user target di User List); langkah 5 (100 baris per halaman supaya seluruh baris berada di satu halaman dan urutan teramati utuh); langkah 77 (mengosongkan Search); langkah 78, 79, 80 (mengosongkan Filter); langkah 81 (mengembalikan sort ke default); langkah 82 (memulihkan page size 10). Urutan sort diasersi pada seluruh baris dengan page size 100 karena `B0` tidak diketahui; arah urutan teramati bila kolom punya sedikitnya dua nilai distinct (S-11).
 - Asersi tambahan (S-03): langkah 6 dan 72 (sedikitnya satu baris tampil) adalah pembanding bagi asersi universal "seluruh baris" pada langkah sesudahnya (bagian 8b butir 2); langkah 7 memverifikasi default sort sebelum klik pertama, sebagai pembanding bagi "kembali ke default sort tabel" (klik 3) tiap kolom; klik 1 Due Return Date (Oldest First) menghasilkan urutan yang sama dengan default karena default sort tabel adalah Due Return Date ascending.
+- Langkah 64 hanya mengasersi baris halaman 1: pada page size 10 hasil Search (26 baris) terurut default `Due Return Date` ascending, sehingga delapan baris grup Laptop (hari uji + 10) menempati halaman 1; baris `Proyektor 1` dan `Kamera 1` berada di halaman berikutnya dan tidak diasersi di langkah ini. TC-GS-USER-754 tidak menyebut page size sebelum langkah 70.
 - Search `{runId}-117` pada TC-GS-USER-754 dipilih sebagai keyword karena Name seed memuat suffix itu (Search mencocokkan Name, Brand, dan Model / Type); hasil Search = 26 baris seed tanpa baris `B0`, sehingga irisan dengan Filter PIC `Andi Wijaya` = 16 baris (grup Laptop dan Kamera) dan seluruhnya muat dalam page size 25.
 - Spec melewati sekitar 35 langkah (82 langkah) karena TC-GS-USER-736 menguji enam kolom dengan blok identik (klik 1, 2, 3 beserta `Verifikasi` tiap klik); semuanya satu kelas harness (fungsional, baca saja) pada satu layar dan satu dataset seed, dan tiap blok kolom berdiri sendiri.
 - Pembagian TC lintas spec: TC-GS-USER-387, 388, 716 sampai 721 ada di spec 114; TC-GS-USER-722 sampai 730 ada di spec 115; TC-GS-USER-731 sampai 735 ada di spec 116; TC-GS-USER-739 sampai 747 ada di spec 118; TC-GS-USER-389 dan 748 sampai 752 ada di spec 119.

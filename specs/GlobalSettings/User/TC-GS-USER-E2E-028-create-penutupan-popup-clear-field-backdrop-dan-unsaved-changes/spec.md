@@ -25,7 +25,15 @@ coverage:
 - Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2). Pada mode mock sesi aktor dipasang hook `before` sebagai sesi mock tanpa login ke backend nyata (mekanisme disediakan tim FE); hook `after` memulihkan sesi ke akun default suite.
 - Env var: tidak ada (tidak ada login ke backend nyata, tidak ada password).
 - Layar awal: hook `beforeEach` mengembalikan layar ke Global Settings > User > User List, sub-tab Login User.
-- Kebutuhan mock (seluruh API di-mock; Endpoint yang di-mock mengacu `global-settings/user/API/user-crud.yaml`: `POST /v2/iam/users/list` untuk daftar User Login, `POST /v2/iam/users` untuk Create yang dipantau; sumber opsi Division, Access, dan Position tidak ada di `user-crud.yaml`, ditentukan tim FE di tahap script):
+- Kebutuhan mock (seluruh API di-mock; API yang di-mock mengacu `global-settings/user/API/user-crud.yaml`; API pendukung disediakan tim FE):
+  | method path (yaml:baris) | respons dipaksa |
+  |---|---|
+  | `POST /v2/iam/users/list` (11) | daftar User Login, sedikitnya satu baris tetap |
+  | `POST /v2/iam/users` (334) | Create; dipantau tanpa dijawab, nol request |
+
+  Sumber opsi dropdown Division, Access, dan Position form Create disediakan tim FE.
+
+  Rincian respons:
   - Respons daftar User Login: sedikitnya satu baris, jumlah baris tetap selama spec.
   - Respons opsi form Create: Division (`Finance`), opsi Access (`Fixed Asset`), dan Position; Custom Field aktif tidak diperlukan.
   - Endpoint Create user dipantau tanpa dijawab dan harus menerima nol request selama spec ini.
@@ -120,3 +128,4 @@ coverage:
   - TC-GS-USER-1005 dan TC-GS-USER-1062 mengutip `prd-conventions.md` §24.1c; TC-GS-USER-1005 tidak menyebut cara klik backdrop (posisi klik di luar Popup); spec mengklik area backdrop di luar Popup.
   - TC-GS-USER-141 Expected c menyebut warna sebagai `severity`/`variant` komponen (`text`, `contrast`, `filled`, `warning`); spec mengasersi atribut komponen, bukan warna piksel.
   - TC-GS-USER-139, 141, 142, 143, 1005, 1062 memakai data `Budi Santoso` tanpa suffix; karena tidak ada data tercipta, spec tidak menambah suffix pada nilai yang diketik.
+  - Sumber opsi dropdown form tidak disebut di TC dan PRD; endpoint `POST /v2/iam/users/options` adalah opsi filter User List, bukan sumber dropdown form, sehingga tidak dipakai di spec ini dan sumber opsi disediakan tim FE (inferensi, diterima 2026-11-03; temuan sumber untuk pemilik PRD §4.1.3).

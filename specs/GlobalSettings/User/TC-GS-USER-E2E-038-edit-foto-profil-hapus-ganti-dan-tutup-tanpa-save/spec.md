@@ -95,3 +95,4 @@ coverage:
   - TC-GS-USER-206 menyebut deleter `System` untuk foto lama sedangkan TC-GS-USER-205 menyebut actor = admin yang login untuk foto yang dihapus lewat Delete; spec mengikuti masing-masing TC.
   - TC-GS-USER-206 menyebut `john2.png` tanpa menyebut ketersediaannya sebagai fixture; disediakan tim FE.
 - Spec melewati sekitar 35 langkah (40 langkah) karena memuat satu kelas (Edit foto profil) pada satu user seed yang keadaannya dipakai berurutan, dan tiap blok TC berdiri sendiri; sebagian langkah adalah navigasi ke File Manager dan Recycle Bin.
+- REVIEW C19 diterima (2026-11-03): langkah 25 menghitung toast dari aksi yang sama dengan toast yang baru diverifikasi satu langkah sebelumnya; tidak ada toast lama yang tersisa, dan langkah "Tunggu toast lama hilang" justru membuat toast yang dihitung ikut hilang sebelum diasersi.

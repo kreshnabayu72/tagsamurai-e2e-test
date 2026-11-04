@@ -29,6 +29,7 @@ coverage:
   - User `Dewi Lestari {runId}-045`: email `dewilestari+{runId}-045@qwertysystem.net`, Activated, tanpa email pending. Email baru uji: `dewilestari.new+{runId}-045@qwertysystem.net`.
   - User `Rina Putri {runId}-045`: email `rinaputri+{runId}-045@qwertysystem.net`, Activated, dengan email pending `rinaputri.new+{runId}-045@qwertysystem.net` (Confirmation Email pertama terkirim ke alamat itu). Email pending kedua uji: `rina.second+{runId}-045@qwertysystem.net`.
 - Kemampuan teknis:
+  - Menunggu ±500 ms nyata untuk debounce validasi (jeda pendek; langkah 17, 24, dan 79).
   - Mail-catcher yang dapat dibaca per alamat email dan link konfirmasi dapat dibuka dari tab baru (disediakan tim FE); email dicari berdasarkan alamat tujuan.
   - Membuka link konfirmasi di tab baru pada sesi aktor lalu menutup tab itu.
   - Mencatat jumlah entri Tab Changelog sebagai baseline (S-12).
@@ -163,3 +164,4 @@ coverage:
   - TC-GS-USER-230 menyebut "link konfirmasi pertama dari mail-catcher" tanpa baseline jumlah email; spec mengambil link dari email tujuan alamat pending pertama.
   - TC-GS-USER-235 Expected b "entri log" tidak menyebut surface log; spec memakai jumlah entri Tab Changelog berbaseline.
   - TC-GS-USER-228 sampai 234 dan 1080 sampai 1082 menyebut Dewi Lestari dan Rina Putri Pre-setup (No. 12, No. 15); spec memakai user seed bersuffix agar data Pre-setup tidak diubah (S-06).
+- REVIEW C19 diterima (2026-11-03): langkah 7 menghitung toast dari aksi yang sama dengan toast yang baru diverifikasi satu langkah sebelumnya; tidak ada toast lama yang tersisa, dan langkah "Tunggu toast lama hilang" justru membuat toast yang dihitung ikut hilang sebelum diasersi.

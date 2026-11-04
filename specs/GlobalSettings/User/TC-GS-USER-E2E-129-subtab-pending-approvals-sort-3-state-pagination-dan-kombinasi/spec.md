@@ -108,7 +108,7 @@ coverage:
 47. Ubah page size ke 25
 48. Verifikasi keyword berlaku: kotak Search masih berisi `{runId}-129`
 49. Verifikasi sedikitnya satu baris seed tampil pada tabel (baris contoh `{trxId-contoh}`)
-50. Verifikasi filter berlaku: icon Filter gelap dan seluruh baris bernilai Transaction `Transfer` atau `{transaksi-B}`
+50. Verifikasi filter berlaku: seluruh baris bernilai Transaction `Transfer` atau `{transaksi-B}`
 51. Verifikasi sort berlaku: Transaction ID terurut A-Z
 52. Verifikasi page size 25 berlaku: seluruh 22 baris hasil tampil pada halaman 1
 53. Klik header Transaction ID

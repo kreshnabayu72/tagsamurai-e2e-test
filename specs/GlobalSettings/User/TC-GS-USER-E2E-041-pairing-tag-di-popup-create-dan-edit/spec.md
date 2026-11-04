@@ -31,7 +31,8 @@ coverage:
   - `TAG-USR-0001` (TAG user, aktif, bebas; hook `before` memastikan tidak terpasang ke user mana pun), `TAG-4F7K2XQ9` (terpasang ke John Doe), `TAG-OBJ-0001` (object TAG), `TAG-NEW-0001` (belum diaktivasi).
   - `TAG-EXT-9999` bukan produk TAG Samurai (tidak terdaftar di TAG Registry).
   - John Doe (No. 18): Activated, TAG `TAG-4F7K2XQ9`. John Doe diedit spec ini (unpair lalu re-pair `TAG-USR-0001`) karena TC mengunci TAG dan user ini (S-06); hook `after` memulihkan pairing `TAG-4F7K2XQ9` ke John Doe dan membebaskan `TAG-USR-0001`. Efek yang tidak dapat dipulihkan: kolom Last Update dan Modified By baris John Doe berubah.
-- Data Dinamis: Name `Pairing Tester {runId}-041` (hanya diketik di Popup Create, tidak pernah di-submit; tidak ada data tercipta).
+- Pemulihan pairing John Doe merujuk fixture pemulihan di `suite.md` ("Pemulihan data Pre-setup yang ditulis spec").
+- Data Dinamis: First Name `Pairing` dan Last Name `Tester {runId}-041` (nama gabungan `Pairing Tester {runId}-041`; hanya diketik di Popup Create, tidak pernah di-submit; tidak ada data tercipta).
 - Kemampuan teknis (disediakan tim FE/BE):
   - Simulasi scan TAG: perangkat RFID reader dianggap tersambung dan ID TAG disuntikkan ke aplikasi seolah-olah dipindai (`TAG-NEW-0001`, `TAG-4F7K2XQ9`, `TAG-OBJ-0001`, `TAG-EXT-9999`, `TAG-USR-0001`); simulasi menahan hasil scan sampai langkah "Scan ..." dijalankan sehingga indikator loading tombol `Scan TAG` teramati.
   - Pemulihan pairing John Doe di hook `after` lewat API (nama endpoint ditentukan tim FE di tahap script).
@@ -92,10 +93,10 @@ coverage:
 
 ### TC-GS-USER-136: Unpair TAG yang baru di-scan di form mengembalikan badge Unverified
 
-33. Isi Name dengan `Pairing Tester {runId}-041`
+33. Isi First Name `Pairing` dan Last Name `Tester {runId}-041`
 34. Klik `Unpair`
 35. Verifikasi dialog Title `Unpair TAG`
-36. Verifikasi body dialog memuat bullet nama `Pairing Tester {runId}-041`
+36. Verifikasi body dialog memuat bullet nama sesuai First Name dan Last Name yang diisi (`Pairing Tester {runId}-041`)
 37. Verifikasi body dialog memuat `This will unpair the TAG from this user.` dan `Are you sure you want to unpair it?`
 38. Verifikasi dialog memuat tombol `[Cancel]` dan `[Unpair]`
 39. Klik `[Unpair]` pada dialog
@@ -140,13 +141,14 @@ coverage:
 - Spec melewati sekitar 35 langkah (66 langkah) karena sembilan TC berada di satu kelas harness (pairing TAG dengan simulasi scan); blok Create (TC-GS-USER-131 sampai 136) memakai satu pembukaan Popup Create dan blok Edit (TC-GS-USER-210, 209, 211) memakai pembukaan Popup Edit sendiri, sehingga tiap blok berdiri sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Urutan TC sumber diubah: TC-GS-USER-210 mendahului TC-GS-USER-209 dalam satu pembukaan Popup Edit (Cancel Unpair, lalu Unpair dikonfirmasi dan di-Save), karena aksi Unpair TC-GS-USER-209 menghapus TAG yang dibutuhkan TC-GS-USER-210. TC-GS-USER-211 berada sesudah TC-GS-USER-209 karena John Doe sudah tidak memegang TAG. Blok Create mendahului blok Edit karena TC-GS-USER-132 mengasersi `TAG-4F7K2XQ9` masih terpasang ke John Doe.
 - TC-GS-USER-136 langkah 2 (scan `TAG-USR-0001`) dipenuhi oleh scan TC-GS-USER-135 pada Popup Create yang sama (langkah 27).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 (pembukaan), 7, 13, 19, 24 (menunggu toast hilang agar asersi toast berikutnya tidak tercampur), 33 (mengisi Name agar bullet nama dialog Unpair terisi), 42 sampai 44 (menutup Popup Create dirty lewat `✕`, dialog `Unsaved Changes`, `[Leave]`, S-08), 45 (Search John Doe), 46 dan 66 (menampilkan dan menyembunyikan kolom `TAG` yang default tersembunyi).
-- Popup Create hanya berisi Name dan TAG yang di-stage; tidak ada submit, sehingga tidak ada user baru tercipta.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 (pembukaan), 7, 13, 19, 24 (menunggu toast hilang agar asersi toast berikutnya tidak tercampur), 33 (mengisi First Name dan Last Name agar bullet nama dialog Unpair terisi), 42 sampai 44 (menutup Popup Create dirty lewat `✕`, dialog `Unsaved Changes`, `[Leave]`, S-08), 45 (Search John Doe), 46 dan 66 (menampilkan dan menyembunyikan kolom `TAG` yang default tersembunyi).
+- Popup Create hanya berisi First Name, Last Name, dan TAG yang di-stage; tidak ada submit, sehingga tidak ada user baru tercipta.
 - Langkah 5, 11, 17 menjadi anchor positif untuk absence `Unpair` (langkah 6, 12, 18): badge `Unverified` dan tombol `Scan TAG` tampil di surface yang sama.
 - Temuan untuk QA:
   - TC-GS-USER-131 sampai 136 berstatus `Manual Only` di TC (butuh RFID reader); spec memintanya dijalankan lewat simulasi scan yang disediakan tim FE/BE.
-  - TC-GS-USER-136 tidak mengisi Name pada Popup Create sedangkan Expected a menyebut "body bullet nama"; spec mengisi Name `Pairing Tester {runId}-041` sebelum Unpair.
+  - TC-GS-USER-136 tidak mengisi nama pada Popup Create sedangkan Expected a menyebut "body bullet nama"; Form Create hanya punya First Name dan Last Name (tidak ada field Name; langkah spec sebelumnya menulis "Isi Name"); spec mengisi First Name `Pairing` dan Last Name `Tester {runId}-041` sebelum Unpair, dan bullet nama dialog diasumsikan menampilkan nama gabungan keduanya (format bullet tidak disebut TC).
   - TC-GS-USER-209 Post Condition "TAG-4F7K2XQ9 tersedia lagi di TAG Registry" tidak punya langkah observasi; tidak diasersi (S-01).
   - TC-GS-USER-209 menyebut kolom TAG John Doe `—` padahal kolom curated `TAG` default tersembunyi (TC-GS-USER-1); spec menampilkannya lewat Setup Column.
   - TC-GS-USER-209 mengubah John Doe (Pre-setup No. 18) dan TC-GS-USER-211 memasang `TAG-USR-0001`; tidak ada user Pre-setup lain yang memegang `TAG-4F7K2XQ9`, sehingga pemulihan di `after` disediakan tim FE/BE.
   - TC-GS-USER-131 sampai 133 menyebut "Button `Unpair` tidak muncul" tanpa menyebut keadaan awal sebelum scan; spec mengasersinya sesudah scan ditolak.
+- REVIEW C19 diterima (2026-11-03): langkah 23 dan 57 menghitung toast dari aksi yang sama dengan toast yang baru diverifikasi satu langkah sebelumnya; tidak ada toast lama yang tersisa, dan langkah "Tunggu toast lama hilang" justru membuat toast yang dihitung ikut hilang sebelum diasersi.

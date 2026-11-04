@@ -32,7 +32,7 @@ coverage:
 - Kemampuan teknis: drag and drop elemen daftar kolom; hover icon pin dan checkbox yang disabled (tooltip); mengatur lebar viewport sehingga tabel Changelog dapat di-scroll horizontal (TC tidak menyebut lebar viewport; viewport diperkecil sampai overflow horizontal); scroll horizontal tabel; membaca dan menghapus key `localStorage` browser.
 - Precondition TC-GS-USER-494 sampai 502: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User).
 - Suite serial (`parallel: false`). Changelog bersifat append-only dan dipakai bersama spec lain: asersi memakai pola baris (nilai bersuffix `{runId}-082`), bukan jumlah baris total, kecuali dinyatakan lain. Spec ini tidak mengubah atau menghapus data Pre-setup (S-06).
-- State global yang diubah: konfigurasi kolom Modal Changelog User (visibilitas, urutan, pin) dan lebar viewport. Spec memulihkannya di langkah 132 sampai 206 dan di hook `after`.
+- State global yang diubah: konfigurasi kolom Modal Changelog User (visibilitas, urutan, pin) dan lebar viewport. Spec memulihkannya di langkah 139 sampai 213 dan di hook `after`.
 
 ## Test Steps
 
@@ -46,7 +46,7 @@ coverage:
 ### TC-GS-USER-495: Screening Popup Setup Column
 7. Klik item `Setup Column...` pada overlay
 8. Verifikasi Header: Title `Setup Column`
-9. Verifikasi Header: deskripsi panduan tampil
+9. Verifikasi Header: deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`
 10. Verifikasi Header: icon `[✕]`
 11. Verifikasi Body: daftar kolom dengan checkbox
 12. Verifikasi Body: drag handle
@@ -80,186 +80,194 @@ coverage:
 36. Verifikasi kolom `Date`: tersimpan setelah Save (kolom `Date` tidak tampil di tabel)
 37. Muat ulang halaman (F5)
 38. Klik icon Changelog di Table Tools
-39. Verifikasi kolom `Date`: bertahan setelah F5 (kolom `Date` tetap tidak tampil)
-40. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Date`, lalu hilangkan centang `Action`
-41. Verifikasi kolom `Action`: perubahan tampil di preview tabel popup (kolom `Action` tidak tampil)
-42. Klik `[Save]`
-43. Verifikasi kolom `Action`: tersimpan setelah Save (kolom `Action` tidak tampil di tabel)
-44. Muat ulang halaman (F5)
-45. Klik icon Changelog di Table Tools
-46. Verifikasi kolom `Action`: bertahan setelah F5 (kolom `Action` tetap tidak tampil)
-47. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Action`, lalu hilangkan centang `User Name`
-48. Verifikasi kolom `User Name`: perubahan tampil di preview tabel popup (kolom `User Name` tidak tampil)
-49. Klik `[Save]`
-50. Verifikasi kolom `User Name`: tersimpan setelah Save (kolom `User Name` tidak tampil di tabel)
-51. Muat ulang halaman (F5)
-52. Klik icon Changelog di Table Tools
-53. Verifikasi kolom `User Name`: bertahan setelah F5 (kolom `User Name` tetap tidak tampil)
-54. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `User Name`, lalu hilangkan centang `Field`
-55. Verifikasi kolom `Field`: perubahan tampil di preview tabel popup (kolom `Field` tidak tampil)
-56. Klik `[Save]`
-57. Verifikasi kolom `Field`: tersimpan setelah Save (kolom `Field` tidak tampil di tabel)
-58. Muat ulang halaman (F5)
-59. Klik icon Changelog di Table Tools
-60. Verifikasi kolom `Field`: bertahan setelah F5 (kolom `Field` tetap tidak tampil)
-61. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Field`, lalu hilangkan centang `Old Value`
-62. Verifikasi kolom `Old Value`: perubahan tampil di preview tabel popup (kolom `Old Value` tidak tampil)
-63. Klik `[Save]`
-64. Verifikasi kolom `Old Value`: tersimpan setelah Save (kolom `Old Value` tidak tampil di tabel)
-65. Muat ulang halaman (F5)
-66. Klik icon Changelog di Table Tools
-67. Verifikasi kolom `Old Value`: bertahan setelah F5 (kolom `Old Value` tetap tidak tampil)
-68. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Old Value`, lalu hilangkan centang `New Value`
-69. Verifikasi kolom `New Value`: perubahan tampil di preview tabel popup (kolom `New Value` tidak tampil)
-70. Klik `[Save]`
-71. Verifikasi kolom `New Value`: tersimpan setelah Save (kolom `New Value` tidak tampil di tabel)
-72. Muat ulang halaman (F5)
-73. Klik icon Changelog di Table Tools
-74. Verifikasi kolom `New Value`: bertahan setelah F5 (kolom `New Value` tetap tidak tampil)
-75. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `New Value`, lalu hilangkan centang `Modified By`
-76. Verifikasi kolom `Modified By`: perubahan tampil di preview tabel popup (kolom `Modified By` tidak tampil)
-77. Klik `[Save]`
-78. Verifikasi kolom `Modified By`: tersimpan setelah Save (kolom `Modified By` tidak tampil di tabel)
-79. Muat ulang halaman (F5)
-80. Klik icon Changelog di Table Tools
-81. Verifikasi kolom `Modified By`: bertahan setelah F5 (kolom `Modified By` tetap tidak tampil)
-82. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Modified By`, lalu klik `[Save]`
+39. Verifikasi kolom lain (`Action`) tampil di tabel setelah F5
+40. Verifikasi kolom `Date`: bertahan setelah F5 (kolom `Date` tetap tidak tampil)
+41. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Date`, lalu hilangkan centang `Action`
+42. Verifikasi kolom `Action`: perubahan tampil di preview tabel popup (kolom `Action` tidak tampil)
+43. Klik `[Save]`
+44. Verifikasi kolom `Action`: tersimpan setelah Save (kolom `Action` tidak tampil di tabel)
+45. Muat ulang halaman (F5)
+46. Klik icon Changelog di Table Tools
+47. Verifikasi kolom lain (`Date`) tampil di tabel setelah F5
+48. Verifikasi kolom `Action`: bertahan setelah F5 (kolom `Action` tetap tidak tampil)
+49. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Action`, lalu hilangkan centang `User Name`
+50. Verifikasi kolom `User Name`: perubahan tampil di preview tabel popup (kolom `User Name` tidak tampil)
+51. Klik `[Save]`
+52. Verifikasi kolom `User Name`: tersimpan setelah Save (kolom `User Name` tidak tampil di tabel)
+53. Muat ulang halaman (F5)
+54. Klik icon Changelog di Table Tools
+55. Verifikasi kolom lain (`Date`) tampil di tabel setelah F5
+56. Verifikasi kolom `User Name`: bertahan setelah F5 (kolom `User Name` tetap tidak tampil)
+57. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `User Name`, lalu hilangkan centang `Field`
+58. Verifikasi kolom `Field`: perubahan tampil di preview tabel popup (kolom `Field` tidak tampil)
+59. Klik `[Save]`
+60. Verifikasi kolom `Field`: tersimpan setelah Save (kolom `Field` tidak tampil di tabel)
+61. Muat ulang halaman (F5)
+62. Klik icon Changelog di Table Tools
+63. Verifikasi kolom lain (`Date`) tampil di tabel setelah F5
+64. Verifikasi kolom `Field`: bertahan setelah F5 (kolom `Field` tetap tidak tampil)
+65. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Field`, lalu hilangkan centang `Old Value`
+66. Verifikasi kolom `Old Value`: perubahan tampil di preview tabel popup (kolom `Old Value` tidak tampil)
+67. Klik `[Save]`
+68. Verifikasi kolom `Old Value`: tersimpan setelah Save (kolom `Old Value` tidak tampil di tabel)
+69. Muat ulang halaman (F5)
+70. Klik icon Changelog di Table Tools
+71. Verifikasi kolom lain (`Date`) tampil di tabel setelah F5
+72. Verifikasi kolom `Old Value`: bertahan setelah F5 (kolom `Old Value` tetap tidak tampil)
+73. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Old Value`, lalu hilangkan centang `New Value`
+74. Verifikasi kolom `New Value`: perubahan tampil di preview tabel popup (kolom `New Value` tidak tampil)
+75. Klik `[Save]`
+76. Verifikasi kolom `New Value`: tersimpan setelah Save (kolom `New Value` tidak tampil di tabel)
+77. Muat ulang halaman (F5)
+78. Klik icon Changelog di Table Tools
+79. Verifikasi kolom lain (`Date`) tampil di tabel setelah F5
+80. Verifikasi kolom `New Value`: bertahan setelah F5 (kolom `New Value` tetap tidak tampil)
+81. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `New Value`, lalu hilangkan centang `Modified By`
+82. Verifikasi kolom `Modified By`: perubahan tampil di preview tabel popup (kolom `Modified By` tidak tampil)
+83. Klik `[Save]`
+84. Verifikasi kolom `Modified By`: tersimpan setelah Save (kolom `Modified By` tidak tampil di tabel)
+85. Muat ulang halaman (F5)
+86. Klik icon Changelog di Table Tools
+87. Verifikasi kolom lain (`Date`) tampil di tabel setelah F5
+88. Verifikasi kolom `Modified By`: bertahan setelah F5 (kolom `Modified By` tetap tidak tampil)
+89. Klik header Column Visibility (⋯), klik `Setup Column...`, centang kembali `Modified By`, lalu klik `[Save]`
 ### TC-GS-USER-497: Drag reorder kolom kelas Hideable
-83. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Date` ke posisi pertama
-84. Verifikasi kolom `Date`: perubahan tampil di preview tabel popup (kolom `Date` di posisi pertama)
-85. Klik `[Save]`
-86. Verifikasi kolom `Date`: tersimpan setelah Save (kolom `Date` berada di posisi pertama tabel)
-87. Muat ulang halaman (F5)
-88. Klik icon Changelog di Table Tools
-89. Verifikasi kolom `Date`: bertahan setelah F5 (kolom `Date` tetap di posisi pertama)
-90. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Action` ke posisi pertama
-91. Verifikasi kolom `Action`: perubahan tampil di preview tabel popup (kolom `Action` di posisi pertama)
+90. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Date` ke posisi pertama
+91. Verifikasi kolom `Date`: perubahan tampil di preview tabel popup (kolom `Date` di posisi pertama)
 92. Klik `[Save]`
-93. Verifikasi kolom `Action`: tersimpan setelah Save (kolom `Action` berada di posisi pertama tabel)
+93. Verifikasi kolom `Date`: tersimpan setelah Save (kolom `Date` berada di posisi pertama tabel)
 94. Muat ulang halaman (F5)
 95. Klik icon Changelog di Table Tools
-96. Verifikasi kolom `Action`: bertahan setelah F5 (kolom `Action` tetap di posisi pertama)
-97. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `User Name` ke posisi pertama
-98. Verifikasi kolom `User Name`: perubahan tampil di preview tabel popup (kolom `User Name` di posisi pertama)
+96. Verifikasi kolom `Date`: bertahan setelah F5 (kolom `Date` tetap di posisi pertama)
+97. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Action` ke posisi pertama
+98. Verifikasi kolom `Action`: perubahan tampil di preview tabel popup (kolom `Action` di posisi pertama)
 99. Klik `[Save]`
-100. Verifikasi kolom `User Name`: tersimpan setelah Save (kolom `User Name` berada di posisi pertama tabel)
+100. Verifikasi kolom `Action`: tersimpan setelah Save (kolom `Action` berada di posisi pertama tabel)
 101. Muat ulang halaman (F5)
 102. Klik icon Changelog di Table Tools
-103. Verifikasi kolom `User Name`: bertahan setelah F5 (kolom `User Name` tetap di posisi pertama)
-104. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Field` ke posisi pertama
-105. Verifikasi kolom `Field`: perubahan tampil di preview tabel popup (kolom `Field` di posisi pertama)
+103. Verifikasi kolom `Action`: bertahan setelah F5 (kolom `Action` tetap di posisi pertama)
+104. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `User Name` ke posisi pertama
+105. Verifikasi kolom `User Name`: perubahan tampil di preview tabel popup (kolom `User Name` di posisi pertama)
 106. Klik `[Save]`
-107. Verifikasi kolom `Field`: tersimpan setelah Save (kolom `Field` berada di posisi pertama tabel)
+107. Verifikasi kolom `User Name`: tersimpan setelah Save (kolom `User Name` berada di posisi pertama tabel)
 108. Muat ulang halaman (F5)
 109. Klik icon Changelog di Table Tools
-110. Verifikasi kolom `Field`: bertahan setelah F5 (kolom `Field` tetap di posisi pertama)
-111. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Old Value` ke posisi pertama
-112. Verifikasi kolom `Old Value`: perubahan tampil di preview tabel popup (kolom `Old Value` di posisi pertama)
+110. Verifikasi kolom `User Name`: bertahan setelah F5 (kolom `User Name` tetap di posisi pertama)
+111. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Field` ke posisi pertama
+112. Verifikasi kolom `Field`: perubahan tampil di preview tabel popup (kolom `Field` di posisi pertama)
 113. Klik `[Save]`
-114. Verifikasi kolom `Old Value`: tersimpan setelah Save (kolom `Old Value` berada di posisi pertama tabel)
+114. Verifikasi kolom `Field`: tersimpan setelah Save (kolom `Field` berada di posisi pertama tabel)
 115. Muat ulang halaman (F5)
 116. Klik icon Changelog di Table Tools
-117. Verifikasi kolom `Old Value`: bertahan setelah F5 (kolom `Old Value` tetap di posisi pertama)
-118. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `New Value` ke posisi pertama
-119. Verifikasi kolom `New Value`: perubahan tampil di preview tabel popup (kolom `New Value` di posisi pertama)
+117. Verifikasi kolom `Field`: bertahan setelah F5 (kolom `Field` tetap di posisi pertama)
+118. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Old Value` ke posisi pertama
+119. Verifikasi kolom `Old Value`: perubahan tampil di preview tabel popup (kolom `Old Value` di posisi pertama)
 120. Klik `[Save]`
-121. Verifikasi kolom `New Value`: tersimpan setelah Save (kolom `New Value` berada di posisi pertama tabel)
+121. Verifikasi kolom `Old Value`: tersimpan setelah Save (kolom `Old Value` berada di posisi pertama tabel)
 122. Muat ulang halaman (F5)
 123. Klik icon Changelog di Table Tools
-124. Verifikasi kolom `New Value`: bertahan setelah F5 (kolom `New Value` tetap di posisi pertama)
-125. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Modified By` ke posisi pertama
-126. Verifikasi kolom `Modified By`: perubahan tampil di preview tabel popup (kolom `Modified By` di posisi pertama)
+124. Verifikasi kolom `Old Value`: bertahan setelah F5 (kolom `Old Value` tetap di posisi pertama)
+125. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `New Value` ke posisi pertama
+126. Verifikasi kolom `New Value`: perubahan tampil di preview tabel popup (kolom `New Value` di posisi pertama)
 127. Klik `[Save]`
-128. Verifikasi kolom `Modified By`: tersimpan setelah Save (kolom `Modified By` berada di posisi pertama tabel)
+128. Verifikasi kolom `New Value`: tersimpan setelah Save (kolom `New Value` berada di posisi pertama tabel)
 129. Muat ulang halaman (F5)
 130. Klik icon Changelog di Table Tools
-131. Verifikasi kolom `Modified By`: bertahan setelah F5 (kolom `Modified By` tetap di posisi pertama)
+131. Verifikasi kolom `New Value`: bertahan setelah F5 (kolom `New Value` tetap di posisi pertama)
+132. Klik header Column Visibility (⋯), klik `Setup Column...`, seret `Modified By` ke posisi pertama
+133. Verifikasi kolom `Modified By`: perubahan tampil di preview tabel popup (kolom `Modified By` di posisi pertama)
+134. Klik `[Save]`
+135. Verifikasi kolom `Modified By`: tersimpan setelah Save (kolom `Modified By` berada di posisi pertama tabel)
+136. Muat ulang halaman (F5)
+137. Klik icon Changelog di Table Tools
+138. Verifikasi kolom `Modified By`: bertahan setelah F5 (kolom `Modified By` tetap di posisi pertama)
 ### TC-GS-USER-498: Pin dan unpin kolom kelas Hideable
-132. Klik header Column Visibility (⋯), klik `Setup Column...`, klik `[Reset to Default]`, lalu klik `[Save]`
-133. Perkecil lebar viewport hingga tabel Changelog dapat di-scroll horizontal
-134. Klik header Column Visibility (⋯), klik `Setup Column...`, klik icon pin pada `Date`
-135. Verifikasi kolom `Date`: perubahan tampil di preview tabel popup (kolom `Date` ter-pin)
-136. Klik `[Save]`
-137. Scroll tabel Changelog secara horizontal
-138. Verifikasi kolom `Date`: tersimpan setelah Save (kolom `Date` membeku saat scroll horizontal)
-139. Muat ulang halaman (F5)
-140. Klik icon Changelog di Table Tools
-141. Scroll tabel Changelog secara horizontal
-142. Verifikasi kolom `Date`: bertahan setelah F5 (kolom `Date` tetap membeku saat scroll horizontal)
-143. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Date`, lalu klik icon pin pada `Action`
-144. Verifikasi kolom `Action`: perubahan tampil di preview tabel popup (kolom `Action` ter-pin)
-145. Klik `[Save]`
-146. Scroll tabel Changelog secara horizontal
-147. Verifikasi kolom `Action`: tersimpan setelah Save (kolom `Action` membeku saat scroll horizontal)
-148. Muat ulang halaman (F5)
-149. Klik icon Changelog di Table Tools
-150. Scroll tabel Changelog secara horizontal
-151. Verifikasi kolom `Action`: bertahan setelah F5 (kolom `Action` tetap membeku saat scroll horizontal)
-152. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Action`, lalu klik icon pin pada `User Name`
-153. Verifikasi kolom `User Name`: perubahan tampil di preview tabel popup (kolom `User Name` ter-pin)
-154. Klik `[Save]`
-155. Scroll tabel Changelog secara horizontal
-156. Verifikasi kolom `User Name`: tersimpan setelah Save (kolom `User Name` membeku saat scroll horizontal)
-157. Muat ulang halaman (F5)
-158. Klik icon Changelog di Table Tools
-159. Scroll tabel Changelog secara horizontal
-160. Verifikasi kolom `User Name`: bertahan setelah F5 (kolom `User Name` tetap membeku saat scroll horizontal)
-161. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `User Name`, lalu klik icon pin pada `Field`
-162. Verifikasi kolom `Field`: perubahan tampil di preview tabel popup (kolom `Field` ter-pin)
-163. Klik `[Save]`
-164. Scroll tabel Changelog secara horizontal
-165. Verifikasi kolom `Field`: tersimpan setelah Save (kolom `Field` membeku saat scroll horizontal)
-166. Muat ulang halaman (F5)
-167. Klik icon Changelog di Table Tools
-168. Scroll tabel Changelog secara horizontal
-169. Verifikasi kolom `Field`: bertahan setelah F5 (kolom `Field` tetap membeku saat scroll horizontal)
-170. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Field`, lalu klik icon pin pada `Old Value`
-171. Verifikasi kolom `Old Value`: perubahan tampil di preview tabel popup (kolom `Old Value` ter-pin)
-172. Klik `[Save]`
-173. Scroll tabel Changelog secara horizontal
-174. Verifikasi kolom `Old Value`: tersimpan setelah Save (kolom `Old Value` membeku saat scroll horizontal)
-175. Muat ulang halaman (F5)
-176. Klik icon Changelog di Table Tools
-177. Scroll tabel Changelog secara horizontal
-178. Verifikasi kolom `Old Value`: bertahan setelah F5 (kolom `Old Value` tetap membeku saat scroll horizontal)
-179. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Old Value`, lalu klik icon pin pada `New Value`
-180. Verifikasi kolom `New Value`: perubahan tampil di preview tabel popup (kolom `New Value` ter-pin)
-181. Klik `[Save]`
-182. Scroll tabel Changelog secara horizontal
-183. Verifikasi kolom `New Value`: tersimpan setelah Save (kolom `New Value` membeku saat scroll horizontal)
-184. Muat ulang halaman (F5)
-185. Klik icon Changelog di Table Tools
-186. Scroll tabel Changelog secara horizontal
-187. Verifikasi kolom `New Value`: bertahan setelah F5 (kolom `New Value` tetap membeku saat scroll horizontal)
-188. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `New Value`, lalu klik icon pin pada `Modified By`
-189. Verifikasi kolom `Modified By`: perubahan tampil di preview tabel popup (kolom `Modified By` ter-pin)
-190. Klik `[Save]`
-191. Scroll tabel Changelog secara horizontal
-192. Verifikasi kolom `Modified By`: tersimpan setelah Save (kolom `Modified By` membeku saat scroll horizontal)
-193. Muat ulang halaman (F5)
-194. Klik icon Changelog di Table Tools
-195. Scroll tabel Changelog secara horizontal
-196. Verifikasi kolom `Modified By`: bertahan setelah F5 (kolom `Modified By` tetap membeku saat scroll horizontal)
-197. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Modified By`, lalu klik `[Save]`
+139. Klik header Column Visibility (⋯), klik `Setup Column...`, klik `[Reset to Default]`, lalu klik `[Save]`
+140. Perkecil lebar viewport hingga tabel Changelog dapat di-scroll horizontal
+141. Klik header Column Visibility (⋯), klik `Setup Column...`, klik icon pin pada `Date`
+142. Verifikasi kolom `Date`: perubahan tampil di preview tabel popup (kolom `Date` ter-pin)
+143. Klik `[Save]`
+144. Scroll tabel Changelog secara horizontal
+145. Verifikasi kolom `Date`: tersimpan setelah Save (kolom `Date` membeku saat scroll horizontal)
+146. Muat ulang halaman (F5)
+147. Klik icon Changelog di Table Tools
+148. Scroll tabel Changelog secara horizontal
+149. Verifikasi kolom `Date`: bertahan setelah F5 (kolom `Date` tetap membeku saat scroll horizontal)
+150. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Date`, lalu klik icon pin pada `Action`
+151. Verifikasi kolom `Action`: perubahan tampil di preview tabel popup (kolom `Action` ter-pin)
+152. Klik `[Save]`
+153. Scroll tabel Changelog secara horizontal
+154. Verifikasi kolom `Action`: tersimpan setelah Save (kolom `Action` membeku saat scroll horizontal)
+155. Muat ulang halaman (F5)
+156. Klik icon Changelog di Table Tools
+157. Scroll tabel Changelog secara horizontal
+158. Verifikasi kolom `Action`: bertahan setelah F5 (kolom `Action` tetap membeku saat scroll horizontal)
+159. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Action`, lalu klik icon pin pada `User Name`
+160. Verifikasi kolom `User Name`: perubahan tampil di preview tabel popup (kolom `User Name` ter-pin)
+161. Klik `[Save]`
+162. Scroll tabel Changelog secara horizontal
+163. Verifikasi kolom `User Name`: tersimpan setelah Save (kolom `User Name` membeku saat scroll horizontal)
+164. Muat ulang halaman (F5)
+165. Klik icon Changelog di Table Tools
+166. Scroll tabel Changelog secara horizontal
+167. Verifikasi kolom `User Name`: bertahan setelah F5 (kolom `User Name` tetap membeku saat scroll horizontal)
+168. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `User Name`, lalu klik icon pin pada `Field`
+169. Verifikasi kolom `Field`: perubahan tampil di preview tabel popup (kolom `Field` ter-pin)
+170. Klik `[Save]`
+171. Scroll tabel Changelog secara horizontal
+172. Verifikasi kolom `Field`: tersimpan setelah Save (kolom `Field` membeku saat scroll horizontal)
+173. Muat ulang halaman (F5)
+174. Klik icon Changelog di Table Tools
+175. Scroll tabel Changelog secara horizontal
+176. Verifikasi kolom `Field`: bertahan setelah F5 (kolom `Field` tetap membeku saat scroll horizontal)
+177. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Field`, lalu klik icon pin pada `Old Value`
+178. Verifikasi kolom `Old Value`: perubahan tampil di preview tabel popup (kolom `Old Value` ter-pin)
+179. Klik `[Save]`
+180. Scroll tabel Changelog secara horizontal
+181. Verifikasi kolom `Old Value`: tersimpan setelah Save (kolom `Old Value` membeku saat scroll horizontal)
+182. Muat ulang halaman (F5)
+183. Klik icon Changelog di Table Tools
+184. Scroll tabel Changelog secara horizontal
+185. Verifikasi kolom `Old Value`: bertahan setelah F5 (kolom `Old Value` tetap membeku saat scroll horizontal)
+186. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Old Value`, lalu klik icon pin pada `New Value`
+187. Verifikasi kolom `New Value`: perubahan tampil di preview tabel popup (kolom `New Value` ter-pin)
+188. Klik `[Save]`
+189. Scroll tabel Changelog secara horizontal
+190. Verifikasi kolom `New Value`: tersimpan setelah Save (kolom `New Value` membeku saat scroll horizontal)
+191. Muat ulang halaman (F5)
+192. Klik icon Changelog di Table Tools
+193. Scroll tabel Changelog secara horizontal
+194. Verifikasi kolom `New Value`: bertahan setelah F5 (kolom `New Value` tetap membeku saat scroll horizontal)
+195. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `New Value`, lalu klik icon pin pada `Modified By`
+196. Verifikasi kolom `Modified By`: perubahan tampil di preview tabel popup (kolom `Modified By` ter-pin)
+197. Klik `[Save]`
+198. Scroll tabel Changelog secara horizontal
+199. Verifikasi kolom `Modified By`: tersimpan setelah Save (kolom `Modified By` membeku saat scroll horizontal)
+200. Muat ulang halaman (F5)
+201. Klik icon Changelog di Table Tools
+202. Scroll tabel Changelog secara horizontal
+203. Verifikasi kolom `Modified By`: bertahan setelah F5 (kolom `Modified By` tetap membeku saat scroll horizontal)
+204. Klik header Column Visibility (⋯), klik `Setup Column...`, unpin `Modified By`, lalu klik `[Save]`
 ### TC-GS-USER-499: Setup Column Reset to Default
-198. Klik header Column Visibility (⋯), klik `Setup Column...`, hilangkan centang `Modified By`, seret `Field` ke posisi pertama, lalu klik `[Save]`
-199. Klik header Column Visibility (⋯), lalu klik `Setup Column...`
-200. Klik `[Reset to Default]`
-201. Klik `[Save]`
-202. Verifikasi susunan kolom kembali default: tujuh kolom tampil dengan urutan `Date`, `Action`, `User Name`, `Field`, `Old Value`, `New Value`, `Modified By`
-203. Muat ulang halaman (F5)
-204. Klik icon Changelog di Table Tools
-205. Verifikasi susunan kolom default bertahan setelah F5 (tujuh kolom tampil dengan urutan `Date`, `Action`, `User Name`, `Field`, `Old Value`, `New Value`, `Modified By`)
-206. Pulihkan lebar viewport ke ukuran semula
+205. Klik header Column Visibility (⋯), klik `Setup Column...`, hilangkan centang `Modified By`, seret `Field` ke posisi pertama, lalu klik `[Save]`
+206. Klik header Column Visibility (⋯), lalu klik `Setup Column...`
+207. Klik `[Reset to Default]`
+208. Klik `[Save]`
+209. Verifikasi susunan kolom kembali default: tujuh kolom tampil dengan urutan `Date`, `Action`, `User Name`, `Field`, `Old Value`, `New Value`, `Modified By`
+210. Muat ulang halaman (F5)
+211. Klik icon Changelog di Table Tools
+212. Verifikasi susunan kolom default bertahan setelah F5 (tujuh kolom tampil dengan urutan `Date`, `Action`, `User Name`, `Field`, `Old Value`, `New Value`, `Modified By`)
+213. Pulihkan lebar viewport ke ukuran semula
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: TC-GS-USER-494, 495, 501, 502, 500, 496, 497, 498, 499. Alasan: dua TC screening (494, 495) di awal; TC yang dibatalkan tanpa menyimpan (501, 502, 500) sebelum TC yang menyimpan konfigurasi (496, 497, 498); TC-GS-USER-499 (reset) di akhir karena mengembalikan konfigurasi yang diubah TC sebelumnya (bagian 3 konvensi). Modal Changelog dibuka di langkah 1 dan dibuka kembali setelah tiap muat ulang halaman.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah menutup popup (`[✕]`) sesudah screening dan TC yang dibatalkan; langkah 132 (reset ke default sebelum TC-GS-USER-498, sehingga urutan hasil seret TC-GS-USER-497 tidak terbawa) dan langkah sesudahnya (memperkecil viewport agar scroll horizontal teramati); `Klik icon Changelog` sesudah tiap F5 (muat ulang menutup modal); langkah terakhir pada blok TC-GS-USER-496 (centang kembali `Modified By`) dan TC-GS-USER-498 (unpin `Modified By`); langkah 206 (memulihkan viewport). Pada TC-GS-USER-496 dan 498, centang kembali atau unpin kolom sebelumnya dilakukan pada langkah pertama popup kolom berikutnya.
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah menutup popup (`[✕]`) sesudah screening dan TC yang dibatalkan; langkah 139 (reset ke default sebelum TC-GS-USER-498, sehingga urutan hasil seret TC-GS-USER-497 tidak terbawa) dan langkah sesudahnya (memperkecil viewport agar scroll horizontal teramati); `Klik icon Changelog` sesudah tiap F5 (muat ulang menutup modal); langkah terakhir pada blok TC-GS-USER-496 (centang kembali `Modified By`) dan TC-GS-USER-498 (unpin `Modified By`); langkah 213 (memulihkan viewport). Pada TC-GS-USER-496 dan 498, centang kembali atau unpin kolom sebelumnya dilakukan pada langkah pertama popup kolom berikutnya.
+- Anchor positif (bagian 8b butir 2): pada TC-GS-USER-496, `Verifikasi kolom lain tampil di tabel setelah F5` mendahului tiap `Verifikasi` absence kolom yang di-hide sesudah F5 (langkah 39, 47, 55, 63, 71, 79, 87), sehingga kolom yang hilang tidak lolos karena tabel gagal dimuat.
 - Langkah membuka popup (klik header Column Visibility lalu `Setup Column...`) digabung dalam langkah aksi pertama di popup tersebut, karena `[Save]` menutup popup dan tabel diamati sesudahnya.
 - Tafsiran TC-GS-USER-496: langkah "uncheck lalu check, Save, refresh F5" dibaca sebagai hilangkan centang, `[Save]`, F5, lalu centang kembali (pada popup berikutnya); tiap klausa Expected (preview, tersimpan setelah Save, bertahan setelah F5) mendapat `Verifikasi`.
 - Pembagian TC Setup Column: Setup Column tabel User List ada di spec 075. Setup Column Modal Changelog Role ada di spec 088 dan Tab Changelog Detail ada di spec 094.
-- Spec melewati sekitar 35 langkah (206 langkah) karena TC-GS-USER-496, 497, dan 498 masing-masing menguji tujuh kolom dengan tiga `Verifikasi` per kolom (S-01); semua blok satu layar (Setup Column Modal Changelog User), satu akun aktor, dan satu dataset seed, serta tiap kolom berdiri sendiri karena perubahan dibuang (TC-GS-USER-500 sampai 502), diakumulasi tanpa saling bergantung (TC-GS-USER-497), atau dikembalikan di kolom berikutnya (TC-GS-USER-496 dan 498).
-- Temuan untuk QA: (1) TC-GS-USER-494 Expected b menyebut kolom Curated unchecked & enabled; tabel Modal Changelog User tidak punya kolom Curated (PRD user.md §4.1.8), sehingga bagian itu tidak diasersi. (2) TC-GS-USER-495 menyebut "deskripsi panduan" tanpa teksnya; spec hanya mengasersi deskripsi tampil. (3) TC-GS-USER-497 langkah kolom `Date` menyeret `Date` ke posisi pertama padahal `Date` sudah di posisi pertama pada konfigurasi default; Expected tidak membedakannya dari kolom lain. (4) TC-GS-USER-498 tidak menyebut lebar viewport atau cara membuat tabel overflow agar scroll horizontal teramati. (5) TC-GS-USER-500 tidak menyebut konfigurasi yang diubah; spec menghilangkan centang `Field`. (6) TC-GS-USER-502 tidak menyebut tiga kolom yang di-pin; spec memakai `Date`, `Action`, dan `User Name`, dengan kolom keempat `Field`. (7) TC-GS-USER-499 tidak menyebut perubahan yang dilakukan sebelum reset; spec menghilangkan centang `Modified By` dan menyeret `Field` ke posisi pertama. (8) TC-GS-USER-501 tidak menyebut kolom yang tersisa; spec menyisakan `Modified By`.
+- Spec melewati sekitar 35 langkah (213 langkah) karena TC-GS-USER-496, 497, dan 498 masing-masing menguji tujuh kolom dengan tiga `Verifikasi` per kolom (S-01); semua blok satu layar (Setup Column Modal Changelog User), satu akun aktor, dan satu dataset seed, serta tiap kolom berdiri sendiri karena perubahan dibuang (TC-GS-USER-500 sampai 502), diakumulasi tanpa saling bergantung (TC-GS-USER-497), atau dikembalikan di kolom berikutnya (TC-GS-USER-496 dan 498).
+- Temuan untuk QA: (1) TC-GS-USER-494 Expected b menyebut kolom Curated unchecked & enabled; tabel Modal Changelog User tidak punya kolom Curated (PRD user.md §4.1.8), sehingga bagian itu tidak diasersi. (2) TC-GS-USER-495 menyebut "deskripsi panduan" tanpa teksnya; spec memakai teks deskripsi dari prd-conventions §9.3. (3) TC-GS-USER-497 langkah kolom `Date` menyeret `Date` ke posisi pertama padahal `Date` sudah di posisi pertama pada konfigurasi default; Expected tidak membedakannya dari kolom lain. (4) TC-GS-USER-498 tidak menyebut lebar viewport atau cara membuat tabel overflow agar scroll horizontal teramati. (5) TC-GS-USER-500 tidak menyebut konfigurasi yang diubah; spec menghilangkan centang `Field`. (6) TC-GS-USER-502 tidak menyebut tiga kolom yang di-pin; spec memakai `Date`, `Action`, dan `User Name`, dengan kolom keempat `Field`. (7) TC-GS-USER-499 tidak menyebut perubahan yang dilakukan sebelum reset; spec menghilangkan centang `Modified By` dan menyeret `Field` ke posisi pertama. (8) TC-GS-USER-501 tidak menyebut kolom yang tersisa; spec menyisakan `Modified By`.

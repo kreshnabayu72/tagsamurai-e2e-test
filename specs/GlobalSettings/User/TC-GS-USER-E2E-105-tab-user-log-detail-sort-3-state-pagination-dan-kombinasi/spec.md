@@ -36,7 +36,7 @@ coverage:
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API U-1, serta sisa user bersuffix `-105` dari run lama. Entri User Log tidak bisa dihapus.
 - Kemampuan teknis (disediakan tim FE/BE; TC, PRD, dan LLD tidak menyebut mekanisme maupun endpoint): (a) seeding user berstatus Activated lewat API dengan password `Spectra.env.USER_PASSWORD`; (b) memicu event Login (Success dan Failed), Logout, dan Change Password (Success) untuk user uji dengan IP Address dan User-Agent tertentu, berurutan sesuai daftar dan bercap waktu hari uji. Hook `before` memicu Event 1 sampai 4, menunggu sampai menit berganti (maksimum 60 detik, konvensi bagian 6), lalu memicu Event 5 sampai 27; dengan begitu Event 1 sampai 4 dan Event 5 sampai 27 berbeda menit. Asersi urutan Date hanya memakai pasangan baris yang berbeda menit (baris Event 27 dan baris Event 1); urutan antar-event dalam menit yang sama tidak diasersi.
 - Kemampuan teknis lain: membaca indikator sort pada header kolom; mengubah page size dan mengetik nomor halaman pada Pagination; mengetik di kotak Search; memilih opsi dropdown filter.
-- State yang diubah dan dipulihkan: page size diubah ke 100 di langkah 4 (agar seluruh 27 baris teramati pada satu halaman saat Sort) dan dikembalikan ke 10 di langkah 78; Search, Filter, dan Sort dikembalikan ke default di akhir spec (langkah 72 sampai 78); hook `after` sebagai cadangan. Suite berjalan serial (`parallel: false`).
+- State yang diubah dan dipulihkan: page size diubah ke 100 di langkah 4 (agar seluruh 27 baris teramati pada satu halaman saat Sort) dan dikembalikan ke 10 di langkah 77; Search, Filter, dan Sort dikembalikan ke default di akhir spec (langkah 71 sampai 77); hook `after` sebagai cadangan. Suite berjalan serial (`parallel: false`).
 - Precondition TC-GS-USER-652, 653, 654, 669, 670: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User).
 
 ## Test Steps
@@ -124,15 +124,14 @@ coverage:
 67. Ubah page size ke 25
 68. Verifikasi halaman 1 memuat 13 baris: baris 1 sampai 11 `Chrome on Windows`, baris 12 `Firefox on macOS`, baris 13 `—` (Search, Filter, Sort, dan page size berlaku bersamaan)
 69. Verifikasi kotak Search tetap berisi `Success`
-70. Verifikasi icon Filter tetap gelap (Filter Activity `Login` tetap aktif)
-71. Verifikasi indikator sort Device / Browser ascending tetap aktif
-72. Klik icon `←`
-73. Klik icon Filter
-74. Klik `[Clear Field]`
-75. Klik `[Apply]`
+70. Verifikasi indikator sort Device / Browser ascending tetap aktif
+71. Klik icon `←`
+72. Klik icon Filter
+73. Klik `[Clear Field]`
+74. Klik `[Apply]`
+75. Klik header Device / Browser
 76. Klik header Device / Browser
-77. Klik header Device / Browser
-78. Ubah page size kembali ke 10
+77. Ubah page size kembali ke 10
 
 ## Notes
 
@@ -140,8 +139,8 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Pemilik log: TC sumber memakai `John Doe` (Pre-setup No. 18). Isi User Log-nya bergantung pada riwayat login lingkungan, sehingga spec memakai user milik spec dengan riwayat event yang diketahui (S-06, S-11).
 - Urutan TC dalam spec mengikuti `sourceTc` (652, 653, 654, 669, 670); TC-GS-USER-670 yang mengubah Search, Filter, Sort, dan page size ditaruh terakhir.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 (mencari user di User List agar Name dapat diklik); langkah 4 (page size 100 agar 27 baris teramati pada satu halaman sehingga posisi baris dapat diasersi; TC-GS-USER-652 sampai 654 tidak menyebut page size); langkah 72 sampai 78 (mengembalikan Search, Filter, Sort, dan page size ke default).
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 (mencari user di User List agar Name dapat diklik); langkah 4 (page size 100 agar 27 baris teramati pada satu halaman sehingga posisi baris dapat diasersi; TC-GS-USER-652 sampai 654 tidak menyebut page size); langkah 71 sampai 77 (mengembalikan Search, Filter, Sort, dan page size ke default).
 - Asersi tambahan (dicatat sesuai S-03): langkah 5 (tabel memuat 27 baris) adalah anchor jumlah seed sebelum Sort. Posisi baris pada Expected Sort (misal "baris 2 sampai 15 `Login`") adalah konkretisasi untuk data seed yang diketahui. Klik 3 pada tiap kolom mengembalikan sort ke default (Date Newest First), diamati lewat pasangan baris event terbaru (Event 27) dan event terlama (Event 1) yang berbeda menit; posisi absolut baris pertama dan terakhir tidak diasersi karena event dalam menit yang sama tidak punya urutan pasti (konvensi bagian 6). Nilai `—` pada Status dan Note diasersi di akhir pada klik 1 dan di awal pada klik 2; nilai `—` pada Device / Browser diasersi di akhir pada klik 1 dan klik 2, sesuai Expected TC-GS-USER-653.
-- Spec melewati sekitar 35 langkah (78 langkah) karena lima TC memakai tab dan dataset (U-1) yang sama dalam satu kelas harness (fungsional), dan tiap blok berdiri sendiri karena tiap kolom diklik tiga kali sehingga kembali ke default sort. Sort enam kolom tiga klik dengan masing-masing klik diamati (S-01) merupakan blok identik.
+- Spec melewati sekitar 35 langkah (77 langkah) karena lima TC memakai tab dan dataset (U-1) yang sama dalam satu kelas harness (fungsional), dan tiap blok berdiri sendiri karena tiap kolom diklik tiga kali sehingga kembali ke default sort. Sort enam kolom tiga klik dengan masing-masing klik diamati (S-01) merupakan blok identik.
 - Pembagian TC lintas spec: Screening dan Search TC-GS-USER-409, 411, 412, 631 sampai 637 diverifikasi di spec 102; Filter Panel TC-GS-USER-638 sampai 646 di spec 103; kombinasi Search dan Filter TC-GS-USER-647 sampai 651 di spec 104; Setup Column TC-GS-USER-655 sampai 663 di spec 106; Download TC-GS-USER-410 dan 664 sampai 668 di spec 107.
 - Temuan untuk QA: (1) TC-GS-USER-652 sampai 654, 669, dan 670 memakai `John Doe` Pre-setup sebagai pemilik log; spec memakai user seed milik spec. (2) Mekanisme memicu event Login, Logout, dan Change Password dengan IP Address dan User-Agent tertentu tidak disebut di TC, PRD, dan LLD; disediakan tim FE/BE. (3) TC-GS-USER-652 sampai 654: default sort tabel adalah Date Newest First sehingga klik 2 dan klik 3 pada Date menghasilkan urutan yang sama; keduanya dibedakan lewat langkah klik bernomor. (4) TC-GS-USER-653 tidak menyebut cara mengamati "kembali ke default sort tabel" selain urutan baris; spec memakai pasangan baris Event 27 dan Event 1 pada default sort (Date Newest First). (5) TC-GS-USER-669 Data Uji menyebut tabel berisi 25 baris (fixture BE) sedangkan Expected a ("maksimal 25 baris") tidak membedakan 25 dari jumlah baris total; spec men-seed 27 baris sehingga halaman 1 berisi tepat 25 dan terdapat halaman kedua. (6) TC-GS-USER-670 langkah 4 ("Terapkan filter bila tersedia") bersyarat; spec menerapkan filter Activity `Login` karena Filter Panel tersedia (TC-GS-USER-638). (7) TC-GS-USER-653 menyebut sort A-Z kolom Note dan Device / Browser tanpa nilai; spec memakai dua nilai Note non-kosong dan dua nilai Device / Browser terparse (S-11). (8) Mekanisme menandai Guided Tooltip sebagai sudah dilihat tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE.

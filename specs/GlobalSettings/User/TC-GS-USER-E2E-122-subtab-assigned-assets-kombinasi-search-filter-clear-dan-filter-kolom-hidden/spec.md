@@ -35,7 +35,7 @@ coverage:
   - Nama literal tanpa suffix hanya K1 (Pre-setup); seluruh nilai Name, Transaction ID, Asset ID, dan PIC milik spec bersuffix `{runId}-122`. Nama Brand dan Model / Type adalah nilai master tanpa suffix.
 - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus aset seed K2 sampai K27 lewat kemampuan seeding yang sama; data Pre-setup (K1 dan record user) tidak diubah. Seeding aset tidak mengubah record user Ahmad Fauzi.
 - Data uji per TC: TC-GS-USER-769 keyword `Vehicle` dan Filter Brand `Toyota`; TC-GS-USER-770 Filter PIC `Sinta Dewi {runId}-122` dan keyword `Printer`; TC-GS-USER-771 Sort kolom Brand; TC-GS-USER-772 Filter Brand `Lenovo` dan kolom Brand di-hide; TC-GS-USER-773 keyword `Printer` dan Filter Brand `Toyota` (tidak beririsan dengan hasil search).
-- Kemampuan teknis: seeding Assigned Assets (HK8) (disediakan tim FE/BE); membaca status gelap icon Filter dan indikator sort pada header.
+- Kemampuan teknis: seeding Assigned Assets (HK8) (disediakan tim FE/BE); membaca indikator sort pada header.
 - State yang diubah dan dipulihkan: Search (ditutup lewat `(←)`), Filter (dikosongkan lewat `[Clear Field]` dan `[Apply]`), Sort kolom Brand (dikembalikan ke default pada langkah 32 dan 33), dan visibilitas kolom `Brand` (dipulihkan pada langkah 48); hook `after` mengembalikan visibilitas kolom sub-tab Assigned Assets ke default sebagai cadangan. Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -64,66 +64,65 @@ coverage:
 16. Klik icon Filter
 17. Pilih opsi `Sinta Dewi {runId}-122` pada dropdown PIC
 18. Klik `[Apply]`
-19. Verifikasi tabel tersaring: 8 baris dengan PIC `Sinta Dewi {runId}-122` (pembanding sebelum Search)
+19. Verifikasi tabel tersaring: 8 baris dengan PIC `Sinta D` (pembanding sebelum Search)
 20. Klik icon Search, ketik `Printer`, tekan Enter
 21. Verifikasi hasil = Filter dan Search: tepat 5 baris, yaitu `Printer P1 {runId}-122` sampai `Printer P5 {runId}-122`
-22. Verifikasi Filter tetap aktif: icon Filter berwarna gelap
 
 ### TC-GS-USER-771: Clear filter saat Search dan Sort aktif
 
-23. Klik header Brand
-24. Klik icon Filter
-25. Klik `[Clear Field]`
-26. Klik `[Apply]`
-27. Verifikasi Filter terlepas: icon Filter tidak berwarna gelap
-28. Verifikasi baris dengan PIC `Bambang Susanto {runId}-122` (`Printer P6 {runId}-122` sampai `Printer P10 {runId}-122`) tampil kembali
-29. Verifikasi keyword tetap aktif: kotak Search berisi `Printer` dan 10 baris tampil dengan Name memuat `Printer`
-30. Verifikasi arah sort tetap aktif: header Brand ascending dan baris terurut `Canon` (5 baris) lalu `Epson` (5 baris)
+22. Klik header Brand
+23. Klik icon Filter
+24. Klik `[Clear Field]`
+25. Klik `[Apply]`
+26. Verifikasi baris dengan PIC `Bambang S` (`Printer P6 {runId}-122` sampai `Printer P10 {runId}-122`) tampil kembali
+27. Verifikasi keyword tetap aktif: kotak Search berisi `Printer` dan 10 baris tampil dengan Name memuat `Printer`
+28. Verifikasi arah sort tetap aktif: header Brand ascending dan baris terurut `Canon` (5 baris) lalu `Epson` (5 baris)
 
 ### TC-GS-USER-772: Filter tetap tersedia untuk kolom yang di-hide
 
-31. Klik icon panah `(←)` di kiri toolbar
-32. Klik header Brand
-33. Klik header Brand
-34. Klik icon Filter
-35. Pilih opsi `Lenovo` pada dropdown Brand
-36. Klik `[Apply]`
-37. Verifikasi tabel tersaring: 5 baris dengan Brand `Lenovo`
-38. Klik header kolom Actions (⋯)
-39. Hilangkan centang kolom `Brand` pada Overlay Column Visibility
-40. Tutup Overlay Column Visibility dengan menekan Esc
-41. Verifikasi kolom `Brand` tidak tampil di tabel
-42. Verifikasi Filter tetap aktif menyaring: tabel tetap menampilkan 5 baris `Laptop L6 {runId}-122` sampai `Laptop L10 {runId}-122`
-43. Klik icon Filter
-44. Verifikasi field `Brand` tetap ada di Filter Panel
-45. Klik `[Clear Field]`
-46. Klik `[Apply]`
-47. Klik header kolom Actions (⋯)
-48. Centang kembali kolom `Brand` pada Overlay Column Visibility
-49. Tutup Overlay Column Visibility dengan menekan Esc
+29. Klik icon panah `(←)` di kiri toolbar
+30. Klik header Brand
+31. Klik header Brand
+32. Klik icon Filter
+33. Pilih opsi `Lenovo` pada dropdown Brand
+34. Klik `[Apply]`
+35. Verifikasi tabel tersaring: 5 baris dengan Brand `Lenovo`
+36. Klik header kolom Actions (⋯)
+37. Hilangkan centang kolom `Brand` pada Overlay Column Visibility
+38. Tutup Overlay Column Visibility dengan menekan Esc
+39. Verifikasi kolom `Brand` tidak tampil di tabel
+40. Verifikasi Filter tetap aktif menyaring: tabel tetap menampilkan 5 baris `Laptop L6 {runId}-122` sampai `Laptop L10 {runId}-122`
+41. Klik icon Filter
+42. Verifikasi field `Brand` tetap ada di Filter Panel
+43. Klik `[Clear Field]`
+44. Klik `[Apply]`
+45. Klik header kolom Actions (⋯)
+46. Centang kembali kolom `Brand` pada Overlay Column Visibility
+47. Tutup Overlay Column Visibility dengan menekan Esc
 
 ### TC-GS-USER-773: Kombinasi Search dan Filter menghasilkan 0 baris lalu pulih saat Filter dilepas
 
-50. Klik icon Search, ketik `Printer`, tekan Enter
-51. Verifikasi tabel menampilkan 10 baris dengan Name memuat `Printer` (pembanding sebelum Filter)
-52. Klik icon Filter
-53. Pilih opsi `Toyota` pada dropdown Brand
-54. Klik `[Apply]`
-55. Verifikasi empty filtered state: ilustrasi, `No results found`, dan `Try adjusting your search or filter.`
-56. Klik icon Filter
-57. Klik `[Clear Field]`
-58. Klik `[Apply]`
-59. Verifikasi baris hasil search tampil kembali: 10 baris dengan Name memuat `Printer`
-60. Klik icon panah `(←)` di kiri toolbar
+48. Klik icon Search, ketik `Printer`, tekan Enter
+49. Verifikasi tabel menampilkan 10 baris dengan Name memuat `Printer` (pembanding sebelum Filter)
+50. Klik icon Filter
+51. Pilih opsi `Toyota` pada dropdown Brand
+52. Klik `[Apply]`
+53. Verifikasi empty filtered state: ilustrasi, `No results found`, dan `Try adjusting your search or filter.`
+54. Klik icon Filter
+55. Klik `[Clear Field]`
+56. Klik `[Apply]`
+57. Verifikasi baris hasil search tampil kembali: 10 baris dengan Name memuat `Printer`
+58. Klik icon panah `(←)` di kiri toolbar
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Dataset 27 baris (lebih dari satu halaman) dipenuhi spec lewat seeding di hook `before`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber (769 sampai 773) dipertahankan.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 4 (pembukaan layar bersama untuk Ahmad Fauzi), langkah 12 beserta tiga langkah sesudahnya (menutup Search dan mengosongkan Filter dari TC-GS-USER-769 sebelum TC-GS-USER-770), langkah 31, 32, dan 33 (menutup Search dan mengembalikan Sort Brand ke default sebelum TC-GS-USER-772), tiga langkah pengosongan Filter dan dua langkah pemulihan kolom `Brand` di akhir TC-GS-USER-772, serta langkah terakhir (menutup Search).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 4 (pembukaan layar bersama untuk Ahmad Fauzi), langkah 12 beserta tiga langkah sesudahnya (menutup Search dan mengosongkan Filter dari TC-GS-USER-769 sebelum TC-GS-USER-770), langkah 29, 30, dan 31 (menutup Search dan mengembalikan Sort Brand ke default sebelum TC-GS-USER-772), tiga langkah pengosongan Filter dan dua langkah pemulihan kolom `Brand` di akhir TC-GS-USER-772, serta langkah terakhir (menutup Search).
+- Format PIC: kolom PIC di tabel menampilkan `[First Name] [Last Initial]` (contoh `Sinta D`), bukan nama lengkap (PRD user.md §4.1.3). Format teks opsi pada dropdown filter PIC ditetapkan PRD §4.1.3; spec tidak memutuskannya.
 - Anchor positif (bagian 8b butir 2): verifikasi 7 baris hasil Search `Vehicle` (TC-GS-USER-769), 8 baris hasil Filter PIC (TC-GS-USER-770), dan 10 baris hasil Search `Printer` (TC-GS-USER-773) mendahului asersi irisan dan empty filtered state pada surface yang sama. Verifikasi kolom `Brand` tidak tampil mendahului asersi Filter Panel pada kolom hidden (S-14).
 - State dipakai ulang antar TC: langkah Uji 6 TC-GS-USER-771 (`Terapkan filter lalu [Clear Field] + [Apply]`) memakai Filter PIC `Sinta Dewi {runId}-122` dan Search `Printer` yang masih aktif dari TC-GS-USER-770; langkah pembersihnya adalah `[Clear Field]` + `[Apply]` yang dinilai Expected b.
-- Spec melewati sekitar 35 langkah (60 langkah) karena lima TC berbagi satu layar, satu dataset 27 baris, dan satu kelas harness (fungsional); blok kombinasi saling melanjutkan state Search, Filter, dan Sort sehingga memisahkannya mengulang login, seeding, dan pembukaan layar yang sama.
+- Spec melewati sekitar 35 langkah (58 langkah) karena lima TC berbagi satu layar, satu dataset 27 baris, dan satu kelas harness (fungsional); blok kombinasi saling melanjutkan state Search, Filter, dan Sort sehingga memisahkannya mengulang login, seeding, dan pembukaan layar yang sama.
 - Pembagian TC lintas spec: TC-GS-USER-390, 391, 755 sampai 760 ada di spec 120; TC-GS-USER-761 sampai 768 (Filter Panel) ada di spec 121; TC-GS-USER-774, 775, 790, 791 ada di spec 123; TC-GS-USER-776 sampai 784 ada di spec 124; TC-GS-USER-392 dan 785 sampai 789 ada di spec 125.
 - Temuan untuk QA:
   - TC-GS-USER-769 sampai 773: Data Uji kosong dan langkah menyebut `keyword` dan `filter` tanpa nilai; spec menetapkan keyword dan opsi filter dari dataset spec. TC-GS-USER-771 menyebut `Sort salah satu kolom`; spec memakai Brand.

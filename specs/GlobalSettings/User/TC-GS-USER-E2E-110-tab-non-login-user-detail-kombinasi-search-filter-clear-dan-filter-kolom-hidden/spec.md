@@ -47,7 +47,7 @@ coverage:
 - Preferensi kolom tersimpan di browser (PRD prd-conventions.md §9.3); hook `after` mengembalikan preferensi kolom Tab Non-Login User ke default.
 - State yang diubah dan dipulihkan: Filter Panel dikosongkan dengan `[Clear Field]` dan `[Apply]`, Search ditutup dengan icon ←, sort Name dikembalikan ke default, kolom `Division` dicentang kembali (langkah 56 sampai 58); hook `after` sebagai cadangan.
 - Suite berjalan serial (`parallel: false`, lihat `suite.md`). Spec tidak mengubah data Pre-setup bersama (S-06).
-- Kemampuan teknis: membaca warna icon Filter (gelap saat filter aktif); menekan Esc untuk menutup Overlay Column Visibility.
+- Kemampuan teknis: menekan Esc untuk menutup Overlay Column Visibility.
 
 ## Test Steps
 
@@ -77,81 +77,79 @@ coverage:
 18. Verifikasi tabel hanya menampilkan 4 baris dengan Division `Legal`: `Eka Wulandari {runId}-110`, `Galih Permadi {runId}-110`, `Lina Marlina {runId}-110`, `Wahyu Hidayat {runId}-110`
 19. Klik icon Search, ketik `Supervisor`, tekan Enter
 20. Verifikasi hasil = Filter ∩ Search: tabel hanya menampilkan baris `Wahyu Hidayat {runId}-110`
-21. Verifikasi filter tetap aktif: icon Filter berwarna gelap
-22. Klik icon Filter
-23. Klik `[Clear Field]`
-24. Klik `[Apply]`
-25. Klik icon ←
+21. Klik icon Filter
+22. Klik `[Clear Field]`
+23. Klik `[Apply]`
+24. Klik icon ←
 
 ### TC-GS-USER-689: Clear filter saat Search dan Sort aktif
 
-26. Klik icon Search, ketik `Staff`, tekan Enter
-27. Verifikasi tabel hanya menampilkan 4 baris dengan Position `Staff`: `Bagas Santoso {runId}-110`, `Dimas Pranoto {runId}-110`, `Galih Permadi {runId}-110`, `Nadia Rahma {runId}-110`
+25. Klik icon Search, ketik `Staff`, tekan Enter
+26. Verifikasi tabel hanya menampilkan 4 baris dengan Position `Staff`: `Bagas Santoso {runId}-110`, `Dimas Pranoto {runId}-110`, `Galih Permadi {runId}-110`, `Nadia Rahma {runId}-110`
+27. Klik header kolom Name
 28. Klik header kolom Name
-29. Klik header kolom Name
-30. Verifikasi sort Name Z-A: urutan baris `Nadia Rahma {runId}-110`, `Galih Permadi {runId}-110`, `Dimas Pranoto {runId}-110`, `Bagas Santoso {runId}-110`
-31. Klik icon Filter
-32. Pilih opsi `Legal` pada dropdown Division
-33. Klik `[Apply]`
-34. Verifikasi hasil = Search ∩ Filter: tabel hanya menampilkan baris `Galih Permadi {runId}-110`
-35. Klik icon Filter
-36. Klik `[Clear Field]`
-37. Klik `[Apply]`
-38. Verifikasi keyword tetap aktif: kotak Search tetap berisi `Staff`
-39. Verifikasi arah sort tetap aktif: urutan baris Z-A `Nadia Rahma {runId}-110`, `Galih Permadi {runId}-110`, `Dimas Pranoto {runId}-110`, `Bagas Santoso {runId}-110`
-40. Verifikasi filter terlepas: icon Filter tidak berwarna gelap
-41. Klik icon ←
-42. Klik header kolom Name
+29. Verifikasi sort Name Z-A: urutan baris `Nadia Rahma {runId}-110`, `Galih Permadi {runId}-110`, `Dimas Pranoto {runId}-110`, `Bagas Santoso {runId}-110`
+30. Klik icon Filter
+31. Pilih opsi `Legal` pada dropdown Division
+32. Klik `[Apply]`
+33. Verifikasi hasil = Search ∩ Filter: tabel hanya menampilkan baris `Galih Permadi {runId}-110`
+34. Klik icon Filter
+35. Klik `[Clear Field]`
+36. Klik `[Apply]`
+37. Verifikasi keyword tetap aktif: kotak Search tetap berisi `Staff`
+38. Verifikasi arah sort tetap aktif: urutan baris Z-A `Nadia Rahma {runId}-110`, `Galih Permadi {runId}-110`, `Dimas Pranoto {runId}-110`, `Bagas Santoso {runId}-110`
+39. Klik icon ←
+40. Klik header kolom Name
 
 ### TC-GS-USER-690: Filter tetap tersedia untuk kolom yang di-hide
 
-43. Klik icon Filter
-44. Pilih opsi `Finance` pada dropdown Division
-45. Klik `[Apply]`
-46. Verifikasi tabel hanya menampilkan 4 baris dengan Division `Finance`: `Agus Prasetyo {runId}-110`, `Citra Dewanti {runId}-110`, `Fitri Handayani {runId}-110`, `Nadia Rahma {runId}-110`
-47. Klik header kolom Column Visibility (⋯)
-48. Hilangkan centang kolom `Division`
-49. Tutup Overlay Column Visibility dengan menekan Esc
-50. Verifikasi kolom `Division` tidak tampil di tabel
-51. Verifikasi filter tetap aktif menyaring: tabel tetap hanya menampilkan `Agus Prasetyo {runId}-110`, `Citra Dewanti {runId}-110`, `Fitri Handayani {runId}-110`, `Nadia Rahma {runId}-110`
-52. Klik icon Filter
-53. Verifikasi field `Division` tetap ada di Filter Panel
-54. Klik `[Clear Field]`
-55. Klik `[Apply]`
-56. Klik header kolom Column Visibility (⋯)
-57. Centang kolom `Division`
-58. Tutup Overlay Column Visibility dengan menekan Esc
+41. Klik icon Filter
+42. Pilih opsi `Finance` pada dropdown Division
+43. Klik `[Apply]`
+44. Verifikasi tabel hanya menampilkan 4 baris dengan Division `Finance`: `Agus Prasetyo {runId}-110`, `Citra Dewanti {runId}-110`, `Fitri Handayani {runId}-110`, `Nadia Rahma {runId}-110`
+45. Klik header kolom Column Visibility (⋯)
+46. Hilangkan centang kolom `Division`
+47. Tutup Overlay Column Visibility dengan menekan Esc
+48. Verifikasi kolom `Division` tidak tampil di tabel
+49. Verifikasi filter tetap aktif menyaring: tabel tetap hanya menampilkan `Agus Prasetyo {runId}-110`, `Citra Dewanti {runId}-110`, `Fitri Handayani {runId}-110`, `Nadia Rahma {runId}-110`
+50. Klik icon Filter
+51. Verifikasi field `Division` tetap ada di Filter Panel
+52. Klik `[Clear Field]`
+53. Klik `[Apply]`
+54. Klik header kolom Column Visibility (⋯)
+55. Centang kolom `Division`
+56. Tutup Overlay Column Visibility dengan menekan Esc
 
 ### TC-GS-USER-691: Kombinasi Search + Filter menghasilkan 0 baris lalu pulih saat salah satu dilepas
 
-59. Klik icon Search, ketik `Auditor`, tekan Enter
-60. Verifikasi tabel hanya menampilkan baris `Fitri Handayani {runId}-110` (Position `Internal Auditor`, Division `Finance`)
-61. Klik icon Filter
-62. Pilih opsi `Legal` pada dropdown Division
-63. Klik `[Apply]`
-64. Verifikasi ilustrasi empty filtered state tampil
-65. Verifikasi judul empty filtered state `No results found`
-66. Verifikasi deskripsi empty filtered state `Try adjusting your search or filter.`
-67. Klik icon Filter
-68. Klik `[Clear Field]`
-69. Klik `[Apply]`
-70. Verifikasi setelah filter dilepas, baris hasil search tampil kembali: `Fitri Handayani {runId}-110`
-71. Klik icon ←
+57. Klik icon Search, ketik `Auditor`, tekan Enter
+58. Verifikasi tabel hanya menampilkan baris `Fitri Handayani {runId}-110` (Position `Internal Auditor`, Division `Finance`)
+59. Klik icon Filter
+60. Pilih opsi `Legal` pada dropdown Division
+61. Klik `[Apply]`
+62. Verifikasi ilustrasi empty filtered state tampil
+63. Verifikasi judul empty filtered state `No results found`
+64. Verifikasi deskripsi empty filtered state `Try adjusting your search or filter.`
+65. Klik icon Filter
+66. Klik `[Clear Field]`
+67. Klik `[Apply]`
+68. Verifikasi setelah filter dilepas, baris hasil search tampil kembali: `Fitri Handayani {runId}-110`
+69. Klik icon ←
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Holder dan 12 Non-Login User dipenuhi spec ini lewat seeding di hook `before`; spec tidak menumpang spec lain.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber (687 sampai 691) dipertahankan.
-- Langkah penghubung (aksi tanpa `Verifikasi`): pembukaan Tab (langkah 1 sampai 3); `Klik icon Filter`, `[Clear Field]`, dan `[Apply]` sesudah tiap `Verifikasi` hasil filter, serta `Klik icon ←` (menutup Search dan mereset tabel), supaya TC berikutnya mulai tanpa Search dan Filter aktif; klik header Name ketiga sesudah TC-GS-USER-689 (mengembalikan sort ke default); langkah 56 sampai 58 (membuka Overlay Column Visibility, mencentang kolom `Division`, menutup overlay). Penutupan Overlay Column Visibility memakai Esc.
+- Langkah penghubung (aksi tanpa `Verifikasi`): pembukaan Tab (langkah 1 sampai 3); `Klik icon Filter`, `[Clear Field]`, dan `[Apply]` sesudah tiap `Verifikasi` hasil filter, serta `Klik icon ←` (menutup Search dan mereset tabel), supaya TC berikutnya mulai tanpa Search dan Filter aktif; klik header Name ketiga sesudah TC-GS-USER-689 (mengembalikan sort ke default); langkah 54 sampai 56 (membuka Overlay Column Visibility, mencentang kolom `Division`, menutup overlay). Penutupan Overlay Column Visibility memakai Esc.
 - Langkah `Klik icon Filter` dituliskan sebelum `[Clear Field]` sesudah tiap `[Apply]`: panel Filter ditutup oleh `[Apply]` dan icon Filter dipakai untuk membukanya kembali.
 - Urutan klik pada TC-GS-USER-689: sort Name diklik dua kali (Z-A) sebelum Filter diterapkan supaya arah sort teramati pada empat baris hasil Search dan tetap teramati setelah Filter dilepas. Sort default tabel adalah Name A-Z (PRD user.md §4.1.4), sehingga klik pertama (A-Z) tidak mengubah urutan dan tidak diasersi.
 - Anchor positif (S-03, bagian 8b butir 2): `Verifikasi` hasil Search (TC-GS-USER-687, 689, 691) dan hasil Filter (TC-GS-USER-688, 690) mendahului asersi irisan; `Verifikasi` baris hasil search sebelum Filter pada TC-GS-USER-691 mendahului asersi empty filtered state.
 - Pembagian TC lintas spec: TC-GS-USER-400 sampai 403 (screening Tab, navigasi) dan 671 sampai 677 (Search) ada di spec 108; TC-GS-USER-678 sampai 686 (Filter Panel) ada di spec 109; TC-GS-USER-692 sampai 696, 714, dan 715 (Sort, Pagination, kombinasi empat kontrol) ada di spec 111; TC-GS-USER-697 sampai 708 (Setup Column) ada di spec 112; TC-GS-USER-404 dan 709 sampai 713 (Download) ada di spec 113.
-- Spec melewati sekitar 35 langkah (71 langkah) karena lima TC kombinasi berbagi satu layar (Tab Non-Login User), satu dataset (12 Non-Login User milik spec), dan satu kelas harness (fungsional). Tiap blok memakai Search dan Filter pada Tab yang sama dan berdiri sendiri (kegagalan satu blok tidak menghapus makna blok lain); memisahkannya mengulang login, seeding 13 user, dan pembukaan Tab. Langkah `Klik icon Filter`, `[Clear Field]`, `[Apply]` yang berulang adalah prefix pembersihan.
+- Spec melewati sekitar 35 langkah (69 langkah) karena lima TC kombinasi berbagi satu layar (Tab Non-Login User), satu dataset (12 Non-Login User milik spec), dan satu kelas harness (fungsional). Tiap blok memakai Search dan Filter pada Tab yang sama dan berdiri sendiri (kegagalan satu blok tidak menghapus makna blok lain); memisahkannya mengulang login, seeding 13 user, dan pembukaan Tab. Langkah `Klik icon Filter`, `[Clear Field]`, `[Apply]` yang berulang adalah prefix pembersihan.
 - Temuan untuk QA:
   - TC-GS-USER-687 sampai 691 menyebut tabel dan Name tanpa suffix; spec memakai holder dan Non-Login User milik spec bersuffix (S-06, S-11).
   - TC-GS-USER-687 sampai 691: TC menyebut "keyword" dan "filter" tanpa nilai; spec memakai keyword dan opsi pada bagian Data uji per TC di Prerequisites.
-  - TC-GS-USER-688 Expected b: "Filter tetap aktif" tidak menyebut cara mengamati; spec mengasersi icon Filter berwarna gelap (sama dengan TC-GS-USER-680 di spec 109).
+  - TC-GS-USER-688 Expected b: "Filter tetap aktif" tidak menyebut cara mengamati; spec mengasersi baris hasil Filter (icon Filter tidak diasersi karena TC tidak menyebutnya).
   - TC-GS-USER-689: TC tidak menyebut kolom Sort; spec memakai kolom Name (sort default A-Z, dua klik menghasilkan Z-A).
   - TC-GS-USER-690: TC tidak menyatakan apakah Filter Panel menutup sesudah `[Apply]`; spec membuka kembali lewat icon Filter.
   - Cara menutup Overlay Column Visibility tidak didefinisikan di TC maupun PRD; spec memakai Esc.

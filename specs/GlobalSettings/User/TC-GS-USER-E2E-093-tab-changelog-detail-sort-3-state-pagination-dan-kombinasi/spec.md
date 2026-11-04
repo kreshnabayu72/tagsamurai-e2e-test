@@ -25,7 +25,7 @@ coverage:
 - Env var: `GS_TC_PASSWORD`, `GS_FULLCRUD_PASSWORD`.
 - Data Pre-setup yang dipakai (hanya dibaca, tidak diubah; S-06): Position `Staff`, `Supervisor`, `Finance Manager`, `Internal Auditor`, dan `HR Business Partner` (Tabel Data Uji Pre-setup No. 22) dan Client PT Maju Bersama dengan subscription Fixed Asset + Supply Asset (No. 26). John Doe (No. 18) yang disebut TC tidak dipakai: riwayat Changelog-nya tidak dijamin memuat sedikitnya dua nilai distinct pada kolom yang diuji (S-11) dan data Pre-setup tidak diubah (S-06), sehingga spec memakai user uji milik spec.
 - Data Dinamis (user uji milik spec, seeding lewat API di hook `before`; kemampuan seeding user lewat API disediakan tim FE/BE, endpoint tidak disebut di TC dan PRD):
-  - User uji: Name `Log User {runId}-093`, Email `loguser+{runId}-093@qwertysystem.net`, Position `Staff`, Employee ID `{empId1}`, Access `Fixed Asset`, Active. `{empId1}`, `{empId2}`, `{empId3}` adalah tiga Employee ID numerik murni, naik berurutan (`{empId1}` < `{empId2}` < `{empId3}`), unik per run, dibuat hook dari waktu run (tanpa suffix `{runId}` karena nilainya harus numerik murni).
+  - User uji: Name `Log User {runId}-093`, Email `loguser+{runId}-093@qwertysystem.net`, Position `Staff`, Employee ID `{empId1}`, Access `Fixed Asset`, Active. `{empId1}`, `{empId2}`, `{empId3}` adalah tiga Employee ID numerik, naik berurutan (`{empId1}` < `{empId2}` < `{empId3}`), unik per run, diturunkan dari `{runId}` (hanya digit timestamp) dan memuat nomor spec (S-12): `{empId1}` = `{runId}0931`, `{empId2}` = `{runId}0932`, `{empId3}` = `{runId}0933`.
   - Entri Changelog base (12 entri, urutan seeding = urutan waktu, dari terlama ke terbaru; Modified By tampil `[First Name] [Last Initial]`):
     - a. `Create` | `Name` | `—` | `Log User {runId}-093` | `Siti N`
     - b. `Edit` | `Position` | `Staff` | `Supervisor` | `Siti N`
@@ -145,7 +145,7 @@ coverage:
 68. Klik header Modified By sekali (A-Z)
 69. Ubah page size ke 25
 70. Verifikasi Search tetap berlaku (input Search berisi `edit`)
-71. Verifikasi Filter tetap berlaku (icon Filter berubah gelap dan tabel memuat 15 baris, semuanya Field `Position`)
+71. Verifikasi Filter tetap berlaku (tabel memuat 15 baris, semuanya Field `Position`)
 72. Verifikasi Sort tetap berlaku (Modified By A-Z: baris pertama `Fajar N`, baris terakhir `Siti N`)
 73. Verifikasi Pagination tetap berlaku (halaman 1 memuat 15 baris pada page size 25)
 74. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`

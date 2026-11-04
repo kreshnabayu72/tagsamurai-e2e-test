@@ -22,7 +22,7 @@ coverage:
 
   | Urutan | Role | Email | Environment variable password |
   |---|---|---|---|
-  | 1 | Total Control Client Suspended (disediakan tim FE) | `totalControlGlobalSettings_automated_{namaCompanySuspended}@qwertysystem.net` | `GS_CLIENTSUSP_TC_PASSWORD` |
+  | 1 | Total Control Client Suspended (disediakan tim FE) | akun disediakan tim FE | `GS_CLIENTSUSP_TC_PASSWORD` |
   | 2 | Read Only Client Suspended (disediakan tim FE; email akun ini tidak tertulis di Pre-setup TC, lihat Temuan untuk QA) | disediakan tim FE | `GS_CLIENTSUSP_RO_PASSWORD` (belum terdaftar di `executionConfig.environmentVariables` dan `.env.example`; didaftarkan tim FE) |
 
   Login akun 1 di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control Client A, `Spectra.env.GS_TC_PASSWORD`). Password tidak ditulis di spec atau fixture.

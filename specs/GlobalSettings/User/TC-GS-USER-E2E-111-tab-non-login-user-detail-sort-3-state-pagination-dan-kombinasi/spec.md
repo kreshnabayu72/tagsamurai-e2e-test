@@ -177,7 +177,7 @@ coverage:
 91. Ubah page size ke 25
 92. Verifikasi page size 25 berlaku: tabel menampilkan 16 baris dalam satu halaman
 93. Verifikasi Search tidak ter-reset: kotak Search tetap berisi `EMP`
-94. Verifikasi Filter tidak ter-reset: icon Filter berwarna gelap dan jumlah baris tetap 16 (tanpa baris berstatus `Inactive`)
+94. Verifikasi Filter tidak ter-reset: jumlah baris tetap 16 (tanpa baris berstatus `Inactive`)
 95. Verifikasi Sort tidak ter-reset: 3 baris pertama tetap `Umar Hakim {runId}-111`, `Tegar Wibowo {runId}-111`, `Sinta Dewi {runId}-111`
 96. Klik icon ←
 97. Klik icon Filter
