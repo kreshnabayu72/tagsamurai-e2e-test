@@ -32,11 +32,11 @@ coverage:
   - Opsi `SQL {runId}-031` pada Custom Field Pre-setup `Skills` (TC-GS-USER-156; dihapus oleh sesi pemicu). Opsi `Excel` Pre-setup tidak diubah.
   - Position `Supervisor {runId}-031` (TC-GS-USER-157; di-rename oleh sesi pemicu menjadi `Team Supervisor {runId}-031`).
   - Penambahan dan penghapusan opsi pada Custom Field `Blood Type` dan `Skills` mengubah Last Updated kedua Custom Field Pre-setup itu; efek ini disengaja karena opsi Pre-setup `AB` dan `SQL` tidak boleh dihapus (S-06).
-- Field form Create yang dipakai tiap TC: First Name `Budi`, Last Name `Santoso {runId}-031`, Email `budisantoso+{runId}-031@qwertysystem.net`, Division `Finance`, Access `Fixed Asset`; Position dan Custom Field sebagaimana disebut di langkah.
+- Field form Create yang dipakai tiap TC: First Name `Budi`, Last Name `Santoso {runId}-031`, Email `budisantoso+{runId}-031@qwertysystem.net`, Division `Finance`, Access `Fixed Asset`, Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`); Position dan Custom Field sebagaimana disebut di langkah.
 - Pesan inline error mengikuti TC dengan nilai bersuffix: `"This position no longer exists. Please select another."`, `"This division no longer exists. Please select another."`, `"This blood type no longer exists. Please select another."`, `"SQL {runId}-031 no longer exists. Please select another."`.
 - Kemampuan teknis (disediakan tim FE/BE): sesi API pemicu (menghapus Position, Division, opsi Custom Field; me-rename Position); membaca jumlah user Login pada entitas lewat API (baseline).
 - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus lewat API user bersuffix `{runId}-031`, Position `Internal Auditor`/`Supervisor`/`Team Supervisor` bersuffix, Division `Legal` bersuffix, dan opsi `AB {runId}-031` serta `SQL {runId}-031` bila masih ada.
-- State global yang diubah: Last Updated Custom Field `Blood Type` dan `Skills` (lihat di atas). Spec membuat data dalam suite serial; form Create dibuka satu kali.
+- State global yang diubah: Last Updated Custom Field `Blood Type` dan `Skills` (lihat di atas); Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif; TC-GS-USER-153 sampai 157 tetap mengisinya pada langkah 3 sesuai TC, dan TC-GS-USER-157 mengharapkan Create sukses; status Required nonaktif tetap dipertahankan sesuai kesepakatan). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah. Spec membuat data dalam suite serial; form Create dibuka satu kali.
 
 ## Test Steps
 
@@ -44,7 +44,7 @@ coverage:
 
 1. Catat baseline jumlah user Login pada entitas (lewat API)
 2. Klik `[+ User]` di Table Tools
-3. Isi First Name `Budi`, Last Name `Santoso {runId}-031`, Division `Finance`, Email `budisantoso+{runId}-031@qwertysystem.net`, pilih Access `Fixed Asset`
+3. Isi First Name `Budi`, Last Name `Santoso {runId}-031`, Division `Finance`, Email `budisantoso+{runId}-031@qwertysystem.net`, pilih Access `Fixed Asset`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`)
 
 ### TC-GS-USER-153: Position dihapus sesi lain sebelum Submit ditolak di field
 
@@ -57,7 +57,7 @@ coverage:
 10. Verifikasi opsi `Staff` tampil di dropdown Position
 11. Verifikasi opsi `Internal Auditor {runId}-031` tidak ada di dropdown Position
 12. Klik kembali field Position untuk menutup dropdown
-13. Verifikasi field lain tetap terisi: First Name `Budi`, Last Name `Santoso {runId}-031`, Division `Finance`, Email `budisantoso+{runId}-031@qwertysystem.net`, Access `Fixed Asset` terpilih
+13. Verifikasi field lain tetap terisi: First Name `Budi`, Last Name `Santoso {runId}-031`, Division `Finance`, Email `budisantoso+{runId}-031@qwertysystem.net`, Access `Fixed Asset` terpilih, Emergency Phone `🇮🇩 +62` `81234567890`
 14. Verifikasi jumlah user Login pada entitas sama dengan baseline (user tidak dibuat)
 
 ### TC-GS-USER-154: Division dihapus sesi lain sebelum Submit ditolak di field
@@ -71,7 +71,7 @@ coverage:
 21. Verifikasi opsi `Finance` tampil di dropdown Division
 22. Verifikasi opsi `Legal {runId}-031` tidak ada di dropdown Division
 23. Klik kembali field Division untuk menutup dropdown
-24. Verifikasi field lain tetap terisi: First Name `Budi`, Last Name `Santoso {runId}-031`, Email `budisantoso+{runId}-031@qwertysystem.net`, Access `Fixed Asset` terpilih
+24. Verifikasi field lain tetap terisi: First Name `Budi`, Last Name `Santoso {runId}-031`, Email `budisantoso+{runId}-031@qwertysystem.net`, Access `Fixed Asset` terpilih, Emergency Phone `🇮🇩 +62` `81234567890`
 25. Verifikasi jumlah user Login pada entitas sama dengan baseline (user tidak dibuat)
 26. Pilih Division `Finance`
 
@@ -115,7 +115,7 @@ coverage:
 - Temuan untuk QA:
   - TC-GS-USER-153 sampai 157 memakai Position `Internal Auditor`, `Supervisor`, Division `Legal`, opsi `AB` dan `SQL` Pre-setup sebagai target hapus atau rename. Spec memakai Master Data seed milik spec bersuffix agar data Pre-setup tidak diubah (S-06), sehingga pesan TC-GS-USER-156 memuat nama opsi bersuffix.
   - TC-GS-USER-156 Expected a menyebut pesan `"SQL no longer exists. Please select another."`; nama opsi pada pesan diasumsikan memuat nama opsi apa adanya (dengan suffix pada spec ini).
-  - TC-GS-USER-153 sampai 157: Tabel Pre-setup No. 24 menandai Custom Field `Emergency Phone` sebagai Required; langkah TC tidak mengisinya. Spec mengikuti TC; bila field itu wajib, Submit ditolak validasi required sebelum pengecekan referensi stale. Konfigurasi entitas uji disediakan tim FE.
+  - TC-GS-USER-153 sampai 157: langkah 2 TC mengisi `Emergency Phone` (`🇮🇩 +62`, `81234567890`) dan spec mengisinya pada langkah 3; Tabel Pre-setup No. 24 menyatakan Required hanya aktif untuk TC-GS-USER-158 dan 349, sehingga Required tetap nonaktif selama spec (lihat Prerequisites, State global).
   - TC-GS-USER-153, 154, 155, 156: Expected "opsinya dimuat ulang" (153, 154) tidak menyebut kapan pemuatan ulang terjadi; spec mengasersi isi dropdown sesudah Submit ditolak.
   - TC-GS-USER-155 Expected a memakai nama field "blood type" huruf kecil; spec mengikuti teks TC.
   - TC-GS-USER-153 sampai 157 menyebut "tab lain" tanpa menyebut akun yang bertindak; spec memakai sesi API akun Total Control yang sama.

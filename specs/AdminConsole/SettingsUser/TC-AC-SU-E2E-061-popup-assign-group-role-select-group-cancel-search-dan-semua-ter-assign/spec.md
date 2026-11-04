@@ -68,8 +68,8 @@ coverage:
 
 ### TC-AC-SU-221: Semua node sudah ter-assign: tree tetap tampil dan Select disabled
 
-28. Klik Breadcrumb Settings > User untuk kembali ke User List
-29. Ketik Search `Dewi Lestari {runId}-061`, tekan Enter
+28. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
+29. Ganti isi kotak Search dengan `Dewi Lestari {runId}-061`, tekan Enter
 30. Klik nama `Dewi Lestari {runId}-061` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 31. Klik Sub-tab [Group Role]
 32. Klik `[Assign Group]` baris `Manage partner`

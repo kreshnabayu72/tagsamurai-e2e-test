@@ -23,7 +23,7 @@ coverage:
 
 | TC | Nama TC | Nama seed | Email seed | State |
 |---|---|---|---|---|
-| TC-AC-SU-37, 40 | `John Doe` | `John Doe {runId}-011` | `johndoe+{runId}-011@qwertysystem.net` | Activated, Active, tanpa foto; Employee ID `EMP-001-{runId}-011`, Position `Finance Manager`, Division `Finance`, bukan Temporary User, TAG `—`; Custom Field aktif Pre-setup (`Office Location`, `Shift`, `Join Date`) tidak diubah |
+| TC-AC-SU-37, 40 | `John Doe` | `John Doe {runId}-011` | `johndoe+{runId}-011@qwertysystem.net` | Activated, Active, tanpa foto; Employee ID `EMP-001-{runId}-011`, Position `Finance Manager`, Division `Finance`, bukan Temporary User, TAG `—`; Custom Field aktif Pre-setup (`Office Location`, `Shift`, `Join Date`) tidak diubah; tanpa Responsibility (label tab `Responsibilities (0)`) |
 | TC-AC-SU-40 | `Rina Putri` | `Rina Putri {runId}-011` | `rinaputri+{runId}-011@qwertysystem.net` | punya foto profil di Global Settings |
 
 - Custom Field Pre-setup (#10) aktif sehingga accordion `Custom Field` tampil; spec tidak mengubahnya. Foto profil `Rina Putri` di-seed lewat Fixture BE.
@@ -51,7 +51,7 @@ coverage:
 14. Verifikasi Body: Baris 2 General Information berisi `TAG`
 15. Verifikasi Body: field Temporary Until hidden
 16. Verifikasi Body: accordion `Custom Field` collapsed
-17. Verifikasi Body: Tab `Role (aktif) | Responsibilities (N) | Changelog | System Log | User Log`
+17. Verifikasi Body: Tab `Role (aktif) | Responsibilities (0) | Changelog | System Log | User Log`
 18. Verifikasi Body: Sub-tab `Global Role (aktif) | Group Role`
 19. Verifikasi tidak ada aksi Edit Profile, Delete, atau edit foto
 
@@ -75,6 +75,6 @@ coverage:
 - Detail `John Doe {runId}-011` dipakai bersama oleh TC-AC-SU-37 dan butir John Doe TC-AC-SU-40 (kunjungan yang sama, tanpa membuka ulang): langkah "Buka Detail `John Doe`" TC-AC-SU-40 dipenuhi oleh Detail yang sudah terbuka dari TC-AC-SU-37 supaya halaman yang sama tidak dibuka dua kali.
 - Temuan untuk QA:
   - TC-AC-SU-37: nilai Employee ID `EMP-001` dipakai sebagai `EMP-001-{runId}-011` (bersuffix); Position `Finance Manager` dan Division `Finance` adalah nilai master data yang tidak ada di Tabel Pre-setup, disediakan tim FE/BE.
-  - TC-AC-SU-37 menyebut "≥1 Custom Field aktif" dan Tab `Responsibilities (N)` tanpa nilai N; spec mengasersi label tab tanpa nilai N (nilai N diasersi di spec lain).
+  - TC-AC-SU-37 menyebut "≥1 Custom Field aktif" dan Tab `Responsibilities (N)` tanpa nilai N; spec men-seed `John Doe {runId}-011` tanpa Responsibility sehingga N = 0 diturunkan dari seeding dan label diasersi `Responsibilities (0)`.
   - TC-AC-SU-40: foto profil `Rina Putri` "di Global Settings" di-seed lewat Fixture BE (mekanisme tidak disebut TC).
   - Nama user TC (`John Doe`, `Rina Putri`) dipakai sebagai nama bersuffix `{runId}-011` sesuai S-12 (Lampiran A tidak memuat pengecualian modul Settings > User).

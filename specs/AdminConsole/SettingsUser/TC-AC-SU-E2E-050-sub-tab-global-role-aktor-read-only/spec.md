@@ -33,9 +33,10 @@ coverage:
 3. Verifikasi Tab Role tampil
 4. Verifikasi Sub-tab Global Role tampil
 5. Hover switch baris `Manage group`
-6. Hover checkbox C baris `Manage group`
-7. Verifikasi switch dan CRUD Global Role tampil namun disabled
+6. Verifikasi tooltip `"Read Only access cannot modify data."`
+7. Hover checkbox C baris `Manage group`
 8. Verifikasi tooltip `"Read Only access cannot modify data."`
+9. Verifikasi switch dan CRUD Global Role tampil namun disabled
 
 ## Notes
 

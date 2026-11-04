@@ -37,26 +37,29 @@ coverage:
 2. Switch "Manage group" OFF ke ON
 3. Verifikasi toast `"Success, role has been updated."`
 4. Klik menu Settings > Role & Permission di sidebar, lalu buka Detail role "Manage group" tanpa memuat ulang halaman
-5. Verifikasi U1 tampil di tabel user Detail Role "Manage group" dengan R checked
+5. Ketik Search `Mike Tan {runId}-171A` pada Detail Role "Manage group", tekan Enter
+6. Verifikasi U1 tampil di tabel user Detail Role "Manage group" dengan R checked
 ### TC-AC-SU-589: CRUD dari Role & Permission tercermin di Tab Role
-6. Klik menu Settings > Role & Permission di sidebar, lalu buka Detail role "Manage group"
-7. Centang Update untuk U2 (`Mike Tan {runId}-171B`)
-8. Tunggu aksi selesai, klik menu Settings > User di sidebar, buka Detail U2 lewat Search nama, klik Tab Role, lalu sub-tab Global Role
-9. Verifikasi checkbox Update "Manage group" ter-centang
-10. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-171B` pada Popup Changelog: User, tekan Enter
-11. Verifikasi Popup Changelog: User memuat tepat 1 entri Edit dengan Field `Manage group — Update`
-12. Tutup popup, klik menu Settings > Role & Permission di sidebar, buka Detail role "Manage group", lalu klik icon Changelog
-13. Verifikasi Changelog: Role & Permission > Manage group memuat entri Edit yang sama untuk U2 (Field `Update`)
+7. Klik menu Settings > Role & Permission di sidebar, lalu buka Detail role "Manage group"
+8. Ketik Search `Mike Tan {runId}-171B` pada Detail Role "Manage group", tekan Enter
+9. Centang Update untuk U2 (`Mike Tan {runId}-171B`)
+10. Tunggu aksi selesai, klik menu Settings > User di sidebar, buka Detail U2 lewat Search nama, klik Tab Role, lalu sub-tab Global Role
+11. Verifikasi checkbox Update "Manage group" ter-centang
+12. Klik menu Settings > User di sidebar, klik icon Changelog di toolbar, lalu ketik Search `Mike Tan {runId}-171B` pada Popup Changelog: User, tekan Enter
+13. Verifikasi Popup Changelog: User memuat tepat 1 entri Edit dengan Field `Manage group — Update`
+14. Tutup popup, klik menu Settings > Role & Permission di sidebar, buka Detail role "Manage group", lalu klik icon Changelog
+15. Ketik Search `Mike Tan {runId}-171B` pada modal Changelog: Role & Permission, tekan Enter
+16. Verifikasi Changelog: Role & Permission > Manage group memuat tepat 1 entri Edit untuk U2 (Field `Update`)
 ### TC-AC-SU-590: Assign Group Role dari Role & Permission tercermin di sub-tab Group Role
-14. Tutup modal Changelog, buka Detail role "Manage partner" di Settings > Role & Permission
-15. Assign U3 (`Mike Tan {runId}-171C`) ke Region A pada Detail role "Manage partner"
-16. Tunggu aksi selesai, klik menu Settings > User di sidebar, buka Detail U3 lewat Search nama, klik Tab Role, lalu sub-tab Group Role
-17. Verifikasi baris "Manage partner" tampil aktif karena memiliki sedikitnya 1 group, tanpa switch
-18. Verifikasi kolom Group baris "Manage partner" menampilkan badge `Region A`
+17. Tutup modal Changelog, buka Detail role "Manage partner" di Settings > Role & Permission
+18. Assign U3 (`Mike Tan {runId}-171C`) ke Region A pada Detail role "Manage partner"
+19. Tunggu aksi selesai, klik menu Settings > User di sidebar, buka Detail U3 lewat Search nama, klik Tab Role, lalu sub-tab Group Role
+20. Verifikasi baris "Manage partner" tampil aktif karena memiliki sedikitnya 1 group, tanpa switch
+21. Verifikasi kolom Group baris "Manage partner" menampilkan badge `Region A`
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): navigasi sidebar, Search nama target dan pembukaan Detail (R-16), Search nama user di Popup Changelog: User (user bernama unik sehingga baseline entri nol), serta menutup popup dan modal.
+- Langkah penghubung tanpa Verifikasi (S-03): navigasi sidebar, Search nama target dan pembukaan Detail (R-16), Search nama user di Detail Role dan di Popup Changelog: User dan modal Changelog: Role & Permission (user bernama unik sehingga baseline entri nol dan "tepat 1 entri" menjadi asersi jumlah, S-14, S-12), serta menutup popup dan modal.
 - Tiga blok TC dengan aktor sama dan permukaan sinkronisasi yang sama; user seeding sendiri per blok.
 - Temuan untuk QA:
   - TC-589 butir b menyebut entri Edit "satu entri, juga tampil di Changelog: Role & Permission > Manage group"; TC tidak menyebut kolom yang diasersi di surface Role & Permission; spec mengasersi Field `Update` dan user target.

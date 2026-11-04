@@ -103,7 +103,7 @@ coverage:
 ### TC-AC-ACAL-69: [Clear Field] lalu [Apply] mengembalikan semua data
 
 50. Catat jumlah total entri `Z` pada pagination tab Session tanpa filter
-51. Klik icon Filter, buka dropdown User, centang `John Doe`, isi hanya tanggal mulai `1 Jan 2020` pada field Date, klik [Apply]
+51. Klik icon Filter, buka dropdown User, centang `John Doe`, klik satu tanggal `1 Jan 2020` pada field Date, klik [Apply]
 52. Klik icon Filter, klik [Clear Field]
 53. Verifikasi field Date kembali ke placeholder `Select date`
 54. Verifikasi field User kembali ke placeholder `All users`
@@ -125,7 +125,7 @@ coverage:
   - TC-AC-ACAL-64 Expected b tidak menyebut teks atau tampilan saat tidak ada opsi cocok; spec hanya mengasersi tidak ada opsi.
   - TC-AC-ACAL-65, 66, 68: TC tidak menyebut apakah [Apply] menutup Filter Panel; langkah "klik icon Filter" sesudah [Apply] (langkah 38 dan 41) mengikuti pola TC dan bergantung pada panel tertutup sesudah [Apply]. PRD `prd-conventions.md` §9.8 tidak menetapkannya.
   - TC-AC-ACAL-67 menyebut enam user `John Doe`, `Jane Smith`, `John Dalton`, `John Davis`, `Ani`, dan `Budi Santoso` serta kondisi viewport (lebar diatur sehingga enam chip tidak muat dalam satu baris); spec mengikuti keduanya. Nilai lebar viewport ditetapkan tim FE (langkah 29); bila enam chip muat seluruhnya `+N more` tidak muncul dan langkah 31 gagal.
-  - TC-AC-ACAL-69 tidak menyebut nilai filter User dan Date yang aktif; spec memakai `John Doe` dan tanggal mulai `1 Jan 2020`. TC menyebut placeholder tanpa teks; teks diambil dari PRD §4.1.1.
+  - TC-AC-ACAL-69 tidak menyebut nilai filter User dan Date yang aktif; spec memakai `John Doe` dan satu tanggal `1 Jan 2020`. TC menyebut placeholder tanpa teks; teks diambil dari PRD §4.1.1.
   - TC-AC-ACAL-70 langkah 2 ("Clear satu field") tidak menyebut cara; spec menghapus chip `Marketing` lewat `✕`.
   - Post Condition ketujuh TC bernilai `-`; tidak diasersi.
   - `AC_TC_PASSWORD` terdaftar di `.env.example` dan `spectra.config.ts`; Pre-setup TC memakai placeholder `{namaCompany}` pada email akun, nilainya ditetapkan tim FE.

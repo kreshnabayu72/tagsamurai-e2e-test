@@ -1,17 +1,17 @@
 # Coverage E2E — Fixed Asset > Settings > Groups
 
-Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (1068 TC granular aktif). Berkas `tc-settings-groups-backend.md` tidak ada (0 TC hanya-BE).
+Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md` (1072 TC granular aktif). Berkas `tc-settings-groups-backend.md` tidak ada (0 TC hanya-BE).
 Suite: `specs/FixedAsset/SettingsGroups/`.
 Prefix Modul: `FA` + `GRP` (`TC-FA-GRP-E2E-*`).
 Status semua spec: `draft`.
 
-Catatan penomoran: spec 001 sampai 276 mengikuti rencana (`plan-e2e-generate-spec.md`); tujuh nomor cadangan terpakai untuk pemecahan spec (277, 278, 279, 281, 282, 283, 284), sedangkan nomor cadangan 280 tidak dipakai. Total 283 spec atomik.
+Catatan penomoran: spec 001 sampai 276 mengikuti rencana (`plan-e2e-generate-spec.md`); tujuh nomor cadangan terpakai untuk pemecahan spec (277, 278, 279, 281, 282, 283, 284), sedangkan nomor cadangan 280 tidak dipakai. Spec 285 sampai 289 menambah cakupan baris pola Group Role dan Transaction Role Total Control/Read Only (TC-FA-GRP-1289 sampai 1292); nomor cadangan 290 dan 291 tidak dipakai. Total 288 spec atomik.
 
 Kolom Mode dibaca dari butir `Mode:` pada `## Prerequisites` tiap spec. Kolom Langkah adalah jumlah langkah bernomor nominal pada `## Test Steps` (perulangan atas tabel Prerequisites belum diekspansi). Spec berlabel `mock` berjumlah 0; seluruh spec lain memakai backend nyata (`FE+BE`), termasuk spec fault injection yang hanya mencegat sebagian respons di atas backend nyata.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (283 Spec Atomik)
+## 1. Pemetaan TC Granular → Spec E2E (288 Spec Atomik)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -34,7 +34,7 @@ Kolom Mode dibaca dari butir `Mode:` pada `## Prerequisites` tiap spec. Kolom La
 | TC-FA-GRP-E2E-017-role-matrix-negatif-menu-groups-hidden-dan-akses-url-langsung | Role Matrix Negatif: Menu Settings > Groups Hidden dan Direct URL Ditolak untuk Role Tanpa Capability Manage Group | FE+BE | 15 | TC-FA-GRP-53, TC-FA-GRP-54, TC-FA-GRP-55 |
 | TC-FA-GRP-E2E-018-group-manager-scope-region-west-sidebar-ancestor-context-dan-metrik-exact-match | Group Manager Scope Region West: Sidebar Scope + Ancestor Context, Ancestor Tidak Bisa Dipilih, Metrik Exact-Match, dan Node di Luar Scope | FE+BE | 19 | TC-FA-GRP-56, TC-FA-GRP-57, TC-FA-GRP-61, TC-FA-GRP-74 |
 | TC-FA-GRP-E2E-019-aktor-scoped-variasi-scope-guided-tooltip-all-groups-level-1-empty-dan-union-scope | Aktor Scoped Variasi Scope: Guided Tooltip Tanpa [+] Group, All Groups Level 1 Ter-assign, Empty State Tanpa Node, Dan Node Terpilih Keluar Scope | FE+BE | 27 | TC-FA-GRP-40, TC-FA-GRP-58, TC-FA-GRP-59, TC-FA-GRP-1062 |
-| TC-FA-GRP-E2E-020-role-matrix-positif-create-subgroup-dan-group-level-1-manage-group-rc-group-manager-default-user | Role Matrix Positif Create: Add Subgroup oleh Manage Group R+C dan Group Manager, [+] Group oleh Default User, Auto-Assign Creator | FE+BE | 47 | TC-FA-GRP-64, TC-FA-GRP-68, TC-FA-GRP-72, TC-FA-GRP-132, TC-FA-GRP-890 |
+| TC-FA-GRP-E2E-020-role-matrix-positif-create-subgroup-dan-group-level-1-manage-group-rc-group-manager-default-user | Role Matrix Positif Create: Add Subgroup oleh Manage Group R+C dan Group Manager, [+] Group oleh Default User, Auto-Assign Creator | FE+BE | 55 | TC-FA-GRP-64, TC-FA-GRP-68, TC-FA-GRP-72, TC-FA-GRP-132, TC-FA-GRP-890 |
 | TC-FA-GRP-E2E-021-role-matrix-positif-edit-manage-group-ru-dan-group-manager | Role Matrix Positif Edit: Edit Branch West 1 (R+U), Ubah Function (R+U), dan Edit Room 301 (Group Manager) | FE+BE | 26 | TC-FA-GRP-65, TC-FA-GRP-69, TC-FA-GRP-947 |
 | TC-FA-GRP-E2E-022-role-matrix-positif-delete-manage-group-rd-dan-group-manager | Role Matrix Positif Delete: Delete Node Kosong dan Bulk Delete Dua Node (R+D) serta Delete oleh Group Manager | FE+BE | 20 | TC-FA-GRP-66, TC-FA-GRP-67, TC-FA-GRP-70 |
 | TC-FA-GRP-E2E-023-role-matrix-gating-checkbox-bulk-aktor-d-parsial-dan-tanpa-d | Role Matrix Gating Checkbox: Disabled pada Node Tanpa D, Kolom Checkbox Hidden Tanpa D, dan Baris Disabled Tidak Ikut Select All | FE+BE | 16 | TC-FA-GRP-62, TC-FA-GRP-63, TC-FA-GRP-1123 |
@@ -214,12 +214,12 @@ Kolom Mode dibaca dari butir `Mode:` pada `## Prerequisites` tiap spec. Kolom La
 | TC-FA-GRP-E2E-197-log-marked-restored-excess-wizard-isi-baris-changelog-system-log-activity-log | Pencatatan Log Excess via Wizard: Marked as Excess dan Restored from Excess | FE+BE | 35 | TC-FA-GRP-877, TC-FA-GRP-878 |
 | TC-FA-GRP-E2E-198-log-marked-restored-excess-fallback-t0-plan-naik-dan-delete-isi-baris | Pencatatan Log Excess: Marked as Excess (Fallback T-0), Restored from Excess (Plan Naik), dan Restored from Excess (Delete) | FE+BE | 45 | TC-FA-GRP-879, TC-FA-GRP-880, TC-FA-GRP-881 |
 | TC-FA-GRP-E2E-199-log-multi-field-edit-snapshot-immutability-nama-terhapus-dan-modified-by-setelah-excess | Pencatatan Log: Edit Multi-Field Tidak Hilang/Duplikat, Snapshot Immutability Setelah Rename Dua Kali, Nama Group Terhapus Tetap Terbaca, dan Modified By/Last Updated Berubah Setelah Excess | FE+BE | 36 | TC-FA-GRP-884, TC-FA-GRP-886, TC-FA-GRP-887, TC-FA-GRP-892 |
-| TC-FA-GRP-E2E-200-log-pencabutan-assignment-saat-delete-di-log-user-dan-tanpa-notifikasi-in-app | Pencatatan Log Pencabutan Assignment Saat Delete (di Log User, Bukan Changelog Group) dan Tanpa Notifikasi In-App | FE+BE | 33 | TC-FA-GRP-889, TC-FA-GRP-895 |
+| TC-FA-GRP-E2E-200-log-pencabutan-assignment-saat-delete-di-log-user-dan-tanpa-notifikasi-in-app | Pencatatan Log Pencabutan Assignment Saat Delete (di Log User, Bukan Changelog Group) dan Tanpa Notifikasi In-App | FE+BE | 42 | TC-FA-GRP-889, TC-FA-GRP-895 |
 | TC-FA-GRP-E2E-201-absence-log-edit-no-op-aksi-batal-dan-kegagalan-tulis-log-rollback | Absence Log: Edit No-Op dan Aksi Batal Tidak Menulis Baris, dan Kegagalan Tulis Activity Log Me-Rollback Mutasi | FE+BE | 41 | TC-FA-GRP-885, TC-FA-GRP-891 |
 | TC-FA-GRP-E2E-202-function-berubah-efek-ke-dropdown-register-asset-transfer-dan-disposal-enam-transisi | Perubahan Function (Enam Transisi) dan Efeknya ke Dropdown Register Asset, Transfer, dan Disposal | FE+BE | 23 | TC-FA-GRP-896, TC-FA-GRP-897, TC-FA-GRP-898, TC-FA-GRP-899, TC-FA-GRP-900, TC-FA-GRP-901 |
 | TC-FA-GRP-E2E-203-node-excess-di-dropdown-konsumen-import-ditolak-dan-transaksi-berjalan-tetap-selesai | Node Excess di Modul Konsumen: Tampil Tidak Dapat Dipilih, Tetap Dapat Dipilih di Scope Role/Lisensi/Reader/Home Group, Import Parent Excess Ditolak, dan Transaksi Berjalan Tetap Selesai | FE+BE | 54 | TC-FA-GRP-902, TC-FA-GRP-903, TC-FA-GRP-992, TC-FA-GRP-993, TC-FA-GRP-994 |
 | TC-FA-GRP-E2E-204-post-create-edit-delete-tercermin-di-modul-konsumen-reader-group-home-group-dan-scope-role | Post-Create/Edit/Delete Tercermin di Modul Konsumen: Dropdown, Reader Group, Home Group/Lisensi, Aset Disposed/Deleted, dan Scope Role & Permission | FE+BE | 63 | TC-FA-GRP-904, TC-FA-GRP-905, TC-FA-GRP-906, TC-FA-GRP-907, TC-FA-GRP-908, TC-FA-GRP-909, TC-FA-GRP-910 |
-| TC-FA-GRP-E2E-205-group-hasil-import-edit-delete-tanpa-auto-assign-creator-dan-nama-reserved-ditolak | Group Hasil Import: Edit dan Delete Identik dengan Group Manual, Tanpa Auto-Assign Creator, dan Import dengan Nama All Groups Ditolak | FE+BE | 30 | TC-FA-GRP-911, TC-FA-GRP-912, TC-FA-GRP-913, TC-FA-GRP-1026 |
+| TC-FA-GRP-E2E-205-group-hasil-import-edit-delete-tanpa-auto-assign-creator-dan-nama-reserved-ditolak | Group Hasil Import: Edit dan Delete Identik dengan Group Manual, Tanpa Auto-Assign Creator, dan Import dengan Nama All Groups Ditolak | FE+BE | 40 | TC-FA-GRP-911, TC-FA-GRP-912, TC-FA-GRP-913, TC-FA-GRP-1026 |
 | TC-FA-GRP-E2E-206-format-tanggal-mengikuti-general-settings-groups-list-modal-changelog-dan-popup-detail | Format Tanggal Mengikuti General Settings: Groups List, Modal Changelog, Popup Detail Group (Tab Assets dan Tab Users) | FE+BE | 30 | TC-FA-GRP-914, TC-FA-GRP-915, TC-FA-GRP-916 |
 | TC-FA-GRP-E2E-207-sync-tab-assets-policy-transaksi-tag-last-scanned-dan-custom-field-berubah | Sinkron Lintas Modul ke Tab Assets: Policy Transaksi, Pairing/Pelepasan TAG, Pemindaian Audit, dan Nilai/Scope/Status Custom Field | FE+BE | 45 | TC-FA-GRP-1250, TC-FA-GRP-1251, TC-FA-GRP-1252, TC-FA-GRP-1253 |
 | TC-FA-GRP-E2E-208-defense-in-depth-bypass-api-capability-scope-dan-baca-detail-di-luar-scope | Defense-in-Depth: Request Langsung ke API oleh Aktor Tanpa Capability atau di Luar Scope (Create, Add Subgroup, Edit, Delete, Baca Detail) | FE+BE | 4 | TC-FA-GRP-917, TC-FA-GRP-918, TC-FA-GRP-919, TC-FA-GRP-920, TC-FA-GRP-921, TC-FA-GRP-922, TC-FA-GRP-923, TC-FA-GRP-924, TC-FA-GRP-925 |
@@ -298,12 +298,17 @@ Kolom Mode dibaca dari butir `Mode:` pada `## Prerequisites` tiap spec. Kolom La
 | TC-FA-GRP-E2E-282-wizard-pagination-default-page-size-navigasi-dan-centang-lintas-halaman | Wizard: Pagination Step Group Consolidation (Default dan Pilihan Page Size, Navigasi, Reset ke Halaman 1, Centang dan Counter Lintas Halaman) | FE+BE | 36 | TC-FA-GRP-1065, TC-FA-GRP-1066 |
 | TC-FA-GRP-E2E-283-modal-changelog-filter-tetap-berlaku-saat-kolom-action-di-hide | Modal Changelog Filter: Tetap Tersedia dan Tetap Berlaku Saat Kolom Action Di-Hide | FE+BE | 23 | TC-FA-GRP-1119 |
 | TC-FA-GRP-E2E-284-groups-list-kombinasi-search-filter-sort-pagination-dan-clear-filter-saat-search-sort-aktif | Groups List Kombinasi: Search + Filter + Sort + Pagination dan Clear Filter Saat Search/Sort Aktif | FE+BE | 23 | TC-FA-GRP-375, TC-FA-GRP-376 |
+| TC-FA-GRP-E2E-285-create-group-level-1-dan-subgroup-baris-pola-group-role-dan-transaction-role-tc-ro-serta-log-assign-home-group-constraint | Create Group Level 1 dan Subgroup: Baris Pola Group Role dan Transaction Role Total Control/Read Only Terbentuk, Mengabaikan Home Group Constraint, dan Log Assign per Baris | FE+BE | 35 | TC-FA-GRP-1289, TC-FA-GRP-1291 |
+| TC-FA-GRP-E2E-286-delete-group-baris-pola-group-role-dan-transaction-role-tc-ro-terhapus-log-remove-per-baris | Delete Group: Baris Pola Group Role dan Transaction Role Total Control/Read Only pada Node dan Descendant Terhapus dalam Satu Transaksi dengan Log Remove (Group Deleted) per Baris | FE+BE | 17 | TC-FA-GRP-1290 |
+| TC-FA-GRP-E2E-287-group-hasil-import-baris-pola-group-role-dan-transaction-role-tc-ro-user-non-tc-ro-tidak-diturunkan | Group Hasil Import: Baris Pola Group Role dan Transaction Role Total Control/Read Only Terbentuk dengan Log Assign per Baris, User Non-TC/RO Tidak Diturunkan | FE+BE | 21 | TC-FA-GRP-1292 |
+| TC-FA-GRP-E2E-288-absence-pola-group-role-tc-ro-tanpa-auto-revert-dan-tanpa-notifikasi-in-app-saat-create | Absence Pola Group Role TC/RO: Tanpa Entri Auto-Revert saat Create Group Level 1 dan Subgroup, serta Tanpa Notifikasi In-App ke User Total Control/Read Only | FE+BE | 31 | TC-FA-GRP-1289, TC-FA-GRP-1291 |
+| TC-FA-GRP-E2E-289-absence-import-group-pola-tanpa-notifikasi-in-app-dan-kegagalan-tulis-baris-pola-me-rollback-group | Absence Import Group: Tanpa Notifikasi In-App ke User Total Control/Read Only, dan Kegagalan Penulisan Baris Pola Me-Rollback Group (Group Tidak Terbentuk) | FE+BE | 19 | TC-FA-GRP-1292 |
 
 ---
 
 ## 2. Daftar TC Hanya-BE (Excluded dari E2E — 0 TC)
 
-Tidak ada. `tc-settings-groups-backend.md` tidak ada dan seluruh 1068 TC granular terpetakan ke minimal satu spec E2E.
+Tidak ada. `tc-settings-groups-backend.md` tidak ada dan seluruh 1072 TC granular terpetakan ke minimal satu spec E2E.
 
 
 ---
@@ -1380,6 +1385,10 @@ Tidak ada. `tc-settings-groups-backend.md` tidak ada dan seluruh 1068 TC granula
 | TC-FA-GRP-1286 | E2E | TC-FA-GRP-E2E-259-tab-assets-asset-value-commercial-dan-fiscal-dua-kolom-tetap-not-depreciated-gerbang-dan-sort-filter | FE+BE |
 | TC-FA-GRP-1287 | E2E | TC-FA-GRP-E2E-259-tab-assets-asset-value-commercial-dan-fiscal-dua-kolom-tetap-not-depreciated-gerbang-dan-sort-filter | FE+BE |
 | TC-FA-GRP-1288 | E2E | TC-FA-GRP-E2E-259-tab-assets-asset-value-commercial-dan-fiscal-dua-kolom-tetap-not-depreciated-gerbang-dan-sort-filter | FE+BE |
+| TC-FA-GRP-1289 | E2E | TC-FA-GRP-E2E-285-create-group-level-1-dan-subgroup-baris-pola-group-role-dan-transaction-role-tc-ro-serta-log-assign-home-group-constraint, TC-FA-GRP-E2E-288-absence-pola-group-role-tc-ro-tanpa-auto-revert-dan-tanpa-notifikasi-in-app-saat-create | FE+BE |
+| TC-FA-GRP-1290 | E2E | TC-FA-GRP-E2E-286-delete-group-baris-pola-group-role-dan-transaction-role-tc-ro-terhapus-log-remove-per-baris | FE+BE |
+| TC-FA-GRP-1291 | E2E | TC-FA-GRP-E2E-285-create-group-level-1-dan-subgroup-baris-pola-group-role-dan-transaction-role-tc-ro-serta-log-assign-home-group-constraint, TC-FA-GRP-E2E-288-absence-pola-group-role-tc-ro-tanpa-auto-revert-dan-tanpa-notifikasi-in-app-saat-create | FE+BE |
+| TC-FA-GRP-1292 | E2E | TC-FA-GRP-E2E-287-group-hasil-import-baris-pola-group-role-dan-transaction-role-tc-ro-user-non-tc-ro-tidak-diturunkan, TC-FA-GRP-E2E-289-absence-import-group-pola-tanpa-notifikasi-in-app-dan-kegagalan-tulis-baris-pola-me-rollback-group | FE+BE |
 
 ---
 
@@ -1393,6 +1402,8 @@ Tabel dan daftar di atas dibangkitkan dari frontmatter spec; bagian ini ditulis 
 - Semua nama env tersebut belum ada. Pemilik script wajib mendaftarkannya di `executionConfig.environmentVariables` dan `.env.example` sebelum spec dapat dijalankan.
 - Email beberapa akun aktor (Group Manager seed, user kedua pembuat batch, akun client khusus) tidak tertulis di Pre-setup TC; spec memakai pola Pre-setup dan menandainya di Notes. Akun tersebut disediakan tim FE.
 - Kemampuan teknis berikut disediakan tim FE/BE tanpa endpoint karangan: fixture BE (seeding dan pemulihan data, pembacaan state agregat, status Client, plan, limit platform, hook uji T-0, penulisan Activity Log yang disimulasikan gagal), sesi API aktor, klien HTTP, penyetelan flag Guided Tooltip, serta alamat URL halaman Settings > Groups.
+
+- Spec 285 sampai 289 memakai fixture dan kemampuan baru yang disediakan tim FE/BE: user Total Control dan Read Only dengan Home Group constraint (`Fixture.groupsPola.tcHome.email`, `Fixture.groupsPola.roHome.email`), user Standard (`Fixture.groupsPola.standard.email`), berkas Import Group `Fixture.groupsImport.branchPola`, `branchAbsen`, dan `branchGagal`, pembacaan tab Group Role dan Transaction Role per node, pembacaan jumlah notifikasi in-app per penerima, dan pemicu kegagalan penulisan baris pola (spec 289; mekanismenya tidak ada di TC, PRD, atau LLD).
 
 ### 4.2 Hook suite yang belum lengkap
 
@@ -1414,7 +1425,7 @@ Seluruh spec ini menulis alasan di `## Notes`. Pola alasannya sama: satu kelas d
 | TC-FA-GRP-E2E-005-sidebar-group-tree-screening-tooltip-urutan-az-node-excess-dan-aksesibilitas | 50 | Spec melewati sekitar 35 langkah (50 langkah): seluruh blok adalah satu kelas (sidebar Group Tree) pada dataset yang sama, tiap blok berdiri sendiri, dan memisahnya hanya menggandakan login, hook, dan cleanup tanpa alur baru. Blok TC-FA-GRP-967 yang mengubah data milik spec berada paling akhir … |
 | TC-FA-GRP-E2E-011-refresh-f5-dan-sinkron-seleksi-node-terpilih-setelah-hapus-dan-klik-ulang-menu | 38 | Spec melewati sekitar 35 langkah (38 langkah): seluruh blok adalah satu kelas (sinkron seleksi node di Groups List) pada dataset milik spec, tiap blok berdiri sendiri, dan blok yang menghapus data (TC-FA-GRP-32 dan 33) berada paling |
 | TC-FA-GRP-E2E-012-guided-tooltip-groups-konten-tiga-step-done-skip-dan-tombol-replay | 46 | Spec melewati sekitar 35 langkah (46 langkah): seluruh blok adalah satu kelas (Guided Tooltip halaman Groups) pada layar yang sama, tiap blok berdiri sendiri dengan flag diatur ulang di awal blok (langkah 1, 15, 25), dan perulangan [Next]-[Next]-[Done] tidak dapat diringkas karena tiap klik adalah … |
-| TC-FA-GRP-E2E-020-role-matrix-positif-create-subgroup-dan-group-level-1-manage-group-rc-group-manager-default-user | 47 | Spec melewati sekitar 35 langkah (47 langkah): seluruh blok adalah satu kelas (Role Matrix positif Create) pada dataset Region West yang sama, tiap blok berdiri sendiri (satu role per blok, data dibuat dan dihapus sendiri), dan memisahkannya hanya menggandakan login, hook, dan |
+| TC-FA-GRP-E2E-020-role-matrix-positif-create-subgroup-dan-group-level-1-manage-group-rc-group-manager-default-user | 55 | Spec melewati sekitar 35 langkah (55 langkah): seluruh blok adalah satu kelas (Role Matrix positif Create) pada dataset Region West yang sama, tiap blok berdiri sendiri (satu role per blok, data dibuat dan dihapus sendiri), dan memisahkannya hanya menggandakan login, hook, dan |
 | TC-FA-GRP-E2E-024-role-matrix-aksi-baris-descendant-baca-saja-dan-node-excess-per-role | 46 | Spec melewati sekitar 35 langkah (46 langkah): seluruh blok adalah satu kelas (Role Matrix aksi baris, hanya membaca menu dan popup tanpa aksi tulis) pada dataset Region West yang sama, tiap blok berdiri sendiri (satu role per blok), dan memisahkannya hanya menggandakan login, hook, dan |
 | TC-FA-GRP-E2E-025-popup-detail-group-buka-via-nama-dan-row-action-screening-header-dan-node-excess | 38 | Spec melewati sekitar 35 langkah (38 langkah): seluruh blok adalah satu kelas (screening Popup Detail Group, hanya membaca) pada dataset Tabel A yang sama, tiap blok berdiri sendiri, dan memisahkannya hanya menggandakan login, hook, dan |
 | TC-FA-GRP-E2E-026-popup-detail-group-tutup-esc-backdrop-refleksi-edit-tab-awal-dan-node-dihapus-404 | 52 | Spec melewati sekitar 35 langkah setelah ekspansi (langkah nominal 52; ekspansi 3 iterasi langkah 45 sampai 52 menjadi 24 langkah sehingga total ekspansi 68): seluruh blok adalah satu kelas (perilaku Popup Detail Group) pada layar dan dataset Tabel A yang sama, perulangan TC-FA-GRP-986 per node … |
@@ -1515,7 +1526,7 @@ Alasan umum pemecahan: spec asal terlalu panjang atau memuat dua kelas pengujian
 
 ### 4.6 Temuan untuk QA (masalah pada sumber TC)
 
-283 spec memuat butir `Temuan untuk QA` di `## Notes`; rincian per TC ada di spec terkait. Pola yang berulang:
+288 spec memuat butir `Temuan untuk QA` di `## Notes`; rincian per TC ada di spec terkait. Pola yang berulang:
 
 - Data uji yang disebut TC tidak ada di tabel Data Uji (Pre-setup/Dinamis), misalnya group 120 karakter pada TC-FA-GRP-3 dan 1093, atau email akun peran tertentu.
 - Teks Expected atau nama elemen tidak disebut (misalnya teks tooltip nama aksi ikon, mekanisme penyimpanan preferensi sidebar), sehingga spec mengasersi nama ikon atau perilaku yang terlihat saja.

@@ -69,19 +69,20 @@ coverage:
 21. Lewat sesi API aktor, tetapkan Budi Santoso pada `Manage files` di `Head Office` dan `IT Infrastructure`, tetapkan Endah Susanti pada `Manage accounting`, lalu matikan peran `Manage accounting` milik Endah Susanti (inactive-retained) hingga tersimpan; muat ulang Tab `System`
 22. Verifikasi kolom Users baris `Manage files` bertambah 1 dari baseline (Budi Santoso dengan dua penugasan group dihitung 1 user)
 23. Verifikasi kolom Users baris `Manage accounting` sama dengan baseline (Endah Susanti inactive-retained tidak dihitung)
-24. Verifikasi kolom Users baris Group Role yang tidak punya penugasan eksplisit menampilkan `0`
+24. Verifikasi kolom Users baris Group Role selain `Manage user & role` mencakup user Total Control, Read Only, dan Default User pemegang baris pola Group Role (dihitung per user distinct, bukan per baris)
+25. Verifikasi tidak ada baris Group Role selain `Manage user & role` yang menampilkan `0` pada company yang memiliki Default User (`Manage user & role` dikecualikan dari pola, `FARP-LOGIC-04b`/`24`, dan hanya menghitung penugasan individual)
 
 ### TC-FA-RP-74: Screening overlay Column Visibility tabel Tab Total Control
 
-25. Klik Tab `Total Control`
-26. Arahkan kursor ke header kolom Column Visibility `(⋯)`
-27. Verifikasi tooltip header `Column Visibility`
-28. Klik header kolom Column Visibility `(⋯)`
-29. Verifikasi overlay Column Visibility memuat item `Setup Column...` di bagian bawah
-30. Verifikasi daftar kolom `Name`, `Position`, `Division`, `Status`, `Modified By`, `Last Updated` berstatus centang aktif
-31. Verifikasi kolom curated `Email`, `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`, dan `[Custom Field aktif]` berstatus tidak tercentang
-32. Verifikasi drag handle tampil pada overlay
-33. Tutup overlay dengan Esc
+26. Klik Tab `Total Control`
+27. Arahkan kursor ke header kolom Column Visibility `(⋯)`
+28. Verifikasi tooltip header `Column Visibility`
+29. Klik header kolom Column Visibility `(⋯)`
+30. Verifikasi overlay Column Visibility memuat item `Setup Column...` di bagian bawah
+31. Verifikasi daftar kolom `Name`, `Position`, `Division`, `Status`, `Modified By`, `Last Updated` berstatus centang aktif
+32. Verifikasi kolom curated `Email`, `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`, dan `[Custom Field aktif]` berstatus tidak tercentang
+33. Verifikasi drag handle tampil pada overlay
+34. Tutup overlay dengan Esc
 
 ## Notes
 
@@ -92,6 +93,6 @@ coverage:
 - Menu `[⋯]` TC-FA-RP-73 diamati pada baris pertama tiap section (sampel); TC menyebut "tiap baris".
 - Temuan untuk QA:
   - TC-FA-RP-14 merujuk Pre-setup #23 (`Company Volume`, 120 pengguna) walau langkahnya memakai Budi Santoso dan Endah Susanti dari #15; spec tidak memakai #23.
-  - TC-FA-RP-14 expected c tidak menyebut baris Group Role yang tidak punya penugasan eksplisit; spec memakai baris mana pun yang tidak punya penugasan (nama baris ditetapkan tim FE).
+  - TC-FA-RP-14 expected c tidak menyebut angka jumlah user pemegang baris pola Group Role; langkah 24 dan 25 mengikuti teks TC (mencakup user pola, tidak ada baris selain `Manage user & role` berhitung `0`) tanpa angka absolut. Expected c diberi tanda "selaraskan setelah PRD final" di TC.
   - TC-FA-RP-14 langkah 2 mematikan peran lewat Settings > User; spec memakai sesi API aktor (S-04: dijalankan lewat seeding API).
   - Post Condition TC-FA-RP-12, 13, 14, 73, dan 74 tidak memberi langkah observasi tambahan; tidak diasersi.

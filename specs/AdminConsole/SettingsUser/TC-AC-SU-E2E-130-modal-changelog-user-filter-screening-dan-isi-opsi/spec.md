@@ -49,22 +49,25 @@ coverage:
 
 9. Klik icon Filter
 10. Buka dropdown `User Name`
-11. Verifikasi opsi dropdown `User Name` memuat `John Doe {runId}-130` dan `Jane Smith {runId}-130`
-12. Verifikasi opsi `John Doe {runId}-130` muncul satu kali meski punya dua entri (DISTINCT)
-13. Verifikasi opsi `Andi Wijaya {runId}-130` tidak muncul (user tanpa entri di tabel)
-14. Tutup dropdown `User Name`
-15. Buka dropdown `Action`
-16. Verifikasi opsi dropdown `Action` memuat `Deactivate` dan `Activate` (nilai Action yang tercatat)
-17. Tutup dropdown `Action`
-18. Buka dropdown `Modified By`
-19. Verifikasi opsi dropdown `Modified By` memuat `Admin U` (aktor yang tercatat)
-20. Tutup dropdown `Modified By`
-21. Klik icon Filter lagi untuk menutup Filter Panel
+11. Ketik `{runId}-130` pada kotak search dropdown `User Name`
+12. Verifikasi opsi dropdown `User Name` memuat `John Doe {runId}-130` dan `Jane Smith {runId}-130`
+13. Verifikasi opsi `John Doe {runId}-130` muncul satu kali meski punya dua entri (DISTINCT)
+14. Verifikasi opsi `Andi Wijaya {runId}-130` tidak muncul (user tanpa entri di tabel)
+15. Tutup dropdown `User Name`
+16. Buka dropdown `Action`
+17. Ketik `activate` pada kotak search dropdown `Action`
+18. Verifikasi opsi dropdown `Action` memuat `Deactivate` dan `Activate` (nilai Action yang tercatat)
+19. Tutup dropdown `Action`
+20. Buka dropdown `Modified By`
+21. Ketik `Admin U` pada kotak search dropdown `Modified By`
+22. Verifikasi opsi dropdown `Modified By` memuat `Admin U` (aktor yang tercatat)
+23. Tutup dropdown `Modified By`
+24. Klik icon Filter lagi untuk menutup Filter Panel
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Langkah penghubung (tanpa `Verifikasi`; S-03): menutup dropdown dan Filter Panel. TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).
+- Langkah penghubung (tanpa `Verifikasi`; S-03): menutup dropdown dan Filter Panel, serta mengetik keyword pada kotak search dropdown (`{runId}-130`, `activate`, `Admin U`) agar daftar opsi tersaring ke nilai seed sebelum diverifikasi; keyword `{runId}-130` juga mencocokkan `Andi Wijaya {runId}-130`, sehingga ketidakhadirannya tetap bermakna. TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
 - Entitas Principal punya audit trail permanen yang tumbuh: entri seed spec ini ditulis dengan Date terbaru sehingga berada di halaman pertama (Newest First), dan tidak ada total entri yang diasersi sebagai angka absolut (S-12, S-14).
 - Temuan untuk QA: (1) TC-AC-SU-457 menuntut opsi sama dengan nilai DISTINCT seluruh baris tabel dan "nilai yang tidak ada di baris tabel tidak muncul"; karena Changelog entitas permanen dan lintas spec, spec hanya mengasersi nilai seed hadir, user tanpa entri tidak hadir, dan opsi tidak duplikat. TC tidak menyebut nilai pembanding yang pasti tidak tercatat untuk `Action` dan `Modified By`, sehingga absence untuk kedua dropdown itu tidak diasersi. (2) TC tidak menyebut apakah pembuatan user seed menghasilkan entri Changelog; spec mengandalkan fixture BE yang membuat user tanpa entri.

@@ -40,7 +40,7 @@ coverage:
 | `Range Type` | tepat di bawah `TAG Type` |
 | `TAG Type` | tepat di atas `Hardware Type` |
 
-- Preferensi kolom List: langkah 6 dan 16 menyimpan konfigurasi kolom di cache browser. Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
+- Preferensi kolom List: langkah 6 dan 16 menyimpan konfigurasi kolom di cache browser dan langkah 21 sampai 25 memulihkannya ke urutan dan kolom bawaan. Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
 - Nilai data diacu lewat `Fixture.deviceSku.<kunci>`; berkas fixture disediakan tim FE (lihat Temuan untuk QA).
 - Tidak ada state global lain yang diubah dan tidak ada entitas yang dibuat.
 
@@ -73,10 +73,19 @@ coverage:
 19. Verifikasi urutan tersimpan dan tetap berlaku setelah muat ulang
 20. Verifikasi tidak ada kolom yang posisinya terkunci
 
+### Pemulihan state akhir
+
+21. Klik header kolom Actions (⋯), lalu klik `Setup Column...`
+22. Seret kolom `Last Modified` ke posisi tepat di bawah `Current Stock` pada daftar
+23. Seret kolom `TAG Type` ke posisi tepat di bawah `Range Type` pada daftar
+24. Hilangkan centang kolom `Hardware Type`, `Range Type`, dan `TAG Type` pada popup
+25. Klik `[Save]`
+
 ## Notes
 
-- Langkah 4 sampai 5 diulang untuk delapan baris tabel "Geser Hideable" dan langkah 14 sampai 15 untuk tiga baris tabel "Geser Curated" (ekspansi 16 dan 6 langkah; total spec 36 langkah dengan ekspansi). Parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat.
+- Langkah 4 sampai 5 diulang untuk delapan baris tabel "Geser Hideable" dan langkah 14 sampai 15 untuk tiga baris tabel "Geser Curated" (ekspansi 16 dan 6 langkah; total spec 41 langkah dengan ekspansi). Parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat.
 - Alasan melewati sekitar 35 langkah: kedua blok memakai popup Setup Column yang sama dan satu dataset; iterasi per kolom identik dan berdiri sendiri, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
+- Langkah penghubung pemulihan (tanpa `Verifikasi`, S-03, S-09): langkah 21 sampai 25 memindahkan `Last Modified` dan `TAG Type` kembali ke posisi awal, menyembunyikan kembali kolom curated, lalu menyimpan; hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Langkah penghubung (S-03, S-14): langkah 1 sampai 2 dan 11 membuka overlay dan popup; langkah 12 mencentang kolom curated agar urutannya teramati di preview dan tabel (TC-AC-DS-352 tidak memuat langkah ini); tanpa asersi tambahan.
 - Temuan untuk QA:
   - TC-AC-DS-349 dan TC-AC-DS-352 menyebut "ke posisi lain" tanpa menetapkan posisi tujuan; posisi pada tabel Prerequisites adalah pilihan spec. Expected "tidak ada kolom yang posisinya terkunci" diasersi melalui seluruh kolom yang dapat diseret.

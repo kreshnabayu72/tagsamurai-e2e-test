@@ -39,20 +39,21 @@ coverage:
 4. Klik row action (⋯) baris A lagi
 5. Verifikasi opsi Resend Activation Email tetap enabled untuk retry
 ### TC-AC-SU-635: Resend gagal di Layanan email tidak memulai cooldown
-6. Tutup menu row action, lalu ketik Search `Sarah Lee {runId}-177B`, tekan Enter dan tunggu toast error lama hilang otomatis
+6. Tutup menu row action, lalu ganti isi kotak search dengan `Sarah Lee {runId}-177B`, tekan Enter dan tunggu toast error lama hilang otomatis
 7. Buka row action (⋯) baris B, lalu klik Resend Activation Email
 8. Verifikasi toast error `"Error, failed to send email."`
-9. Verifikasi tombol Resend Activation Email baris B tetap enabled untuk retry
+9. Klik row action (⋯) baris B lagi
+10. Verifikasi tombol Resend Activation Email baris B tetap enabled untuk retry
 ### TC-AC-SU-158: Bulk Resend gagal menyeluruh (5xx)
-10. Pulihkan Layanan email, atur intercept: respons request Bulk Resend dikembalikan 500, lalu tunggu toast error lama hilang otomatis
-11. Ketik Search `{runId}-177`, tekan Enter, lalu centang baris A dan baris B
-12. Klik `[Bulk Action ▾]`, lalu pilih `Resend Activation Email`
-13. Verifikasi toast error `"Error, failed to send email."`
+11. Pulihkan Layanan email, atur intercept: respons request Bulk Resend dikembalikan 500, lalu tunggu toast error lama hilang otomatis
+12. Ganti isi kotak search dengan `{runId}-177`, tekan Enter, lalu centang baris A dan baris B
+13. Klik `[Bulk Action ▾]`, lalu pilih `Resend Activation Email`
+14. Verifikasi toast error `"Error, failed to send email."`
 ### TC-AC-SU-160: Kegagalan menulis log Resend tidak membatalkan pengiriman email
-14. Lepas intercept, klik icon `×` pada Bulk Action Bar, lalu aktifkan kegagalan penulisan log
-15. Ketik Search `Mike Tan {runId}-177A`, tekan Enter dan tunggu toast error lama hilang otomatis
-16. Buka row action (⋯) baris A, lalu klik Resend Activation Email
-17. Verifikasi toast sukses `"Success, email has been sent."`
+15. Lepas intercept, klik icon `×` pada Bulk Action Bar, lalu aktifkan kegagalan penulisan log
+16. Ganti isi kotak search dengan `Mike Tan {runId}-177A`, tekan Enter dan tunggu toast error lama hilang otomatis
+17. Buka row action (⋯) baris A, lalu klik Resend Activation Email
+18. Verifikasi toast sukses `"Success, email has been sent."`
 
 ## Notes
 

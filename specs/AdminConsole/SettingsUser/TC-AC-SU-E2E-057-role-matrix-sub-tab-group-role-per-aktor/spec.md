@@ -19,8 +19,8 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor pertama: Manage user and role (Update aktif), `manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_MUR_UPDATE_PASSWORD`.
-- Akun kedua (ganti akun eksplisit): un aktor pertama: Read Only, `readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_RO_PASSWORD`.
-- Akun ketiga (ganti akun eksplisit): un aktor pertama: Manage user and role (Read saja, U=false), `manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_MUR_READ_PASSWORD`.
+- Akun kedua (ganti akun eksplisit): Read Only, `readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_RO_PASSWORD`.
+- Akun ketiga (ganti akun eksplisit): Manage user and role (Read saja, U=false), `manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_MUR_READ_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-settings-user` disetel `seen` oleh hook `before` suite dan dipulihkan hook `after` suite (suite.md).
 - Data milik spec (seed lewat Fixture BE): `Rina Putri {runId}-057` (tingkat akses Total Control, TC-208 dan TC-261), `Budi Santoso {runId}-057` tanpa tingkat akses dan bukan Group Manager dengan `Manage active client` aktif di `Region A {runId}-057` (TC-210, TC-211).

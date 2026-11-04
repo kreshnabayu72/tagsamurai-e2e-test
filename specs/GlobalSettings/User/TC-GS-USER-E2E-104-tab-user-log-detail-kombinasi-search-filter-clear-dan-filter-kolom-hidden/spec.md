@@ -71,78 +71,76 @@ coverage:
 22. Verifikasi hasil Filter saja: 2 baris dengan Activity `Logout`
 23. Klik icon Search, ketik `Chrome`, tekan Enter
 24. Verifikasi hasil adalah irisan Filter dan Search: 1 baris dengan Activity `Logout` dan Device / Browser `Chrome on Windows`
-25. Verifikasi icon Filter tetap gelap (Filter tetap aktif)
-26. Klik icon `←`
-27. Klik icon Filter
-28. Klik `[Clear Field]`
-29. Klik `[Apply]`
+25. Klik icon `←`
+26. Klik icon Filter
+27. Klik `[Clear Field]`
+28. Klik `[Apply]`
 
 ### TC-GS-USER-649: Clear filter saat Search dan Sort aktif
 
-30. Klik icon Search, ketik `Firefox`, tekan Enter
-31. Verifikasi hasil Search saja: 4 baris dengan Device / Browser `Firefox on macOS`
-32. Klik header Activity (sort ascending)
-33. Verifikasi indikator sort Activity ascending aktif dan 4 baris berurutan A-Z: `Change Password`, `Login`, `Login`, `Logout`
-34. Klik icon Filter
-35. Buka dropdown Status
-36. Pilih opsi `Success`
-37. Klik area kosong di Filter Panel untuk menutup dropdown Status
-38. Klik `[Apply]`
-39. Verifikasi hasil adalah irisan Search dan Filter: 2 baris berurutan Activity `Change Password`, `Login`
-40. Klik icon Filter
-41. Klik `[Clear Field]`
-42. Klik `[Apply]`
-43. Verifikasi kotak Search tetap berisi `Firefox`
-44. Verifikasi indikator sort Activity ascending tetap aktif dan 4 baris berurutan A-Z: `Change Password`, `Login`, `Login`, `Logout`
-45. Verifikasi Filter terlepas: icon Filter tidak gelap
-46. Klik icon `←`
-47. Klik header Activity (sort descending)
-48. Klik header Activity (kembali ke default sort tabel)
+29. Klik icon Search, ketik `Firefox`, tekan Enter
+30. Verifikasi hasil Search saja: 4 baris dengan Device / Browser `Firefox on macOS`
+31. Klik header Activity (sort ascending)
+32. Verifikasi indikator sort Activity ascending aktif dan 4 baris berurutan A-Z: `Change Password`, `Login`, `Login`, `Logout`
+33. Klik icon Filter
+34. Buka dropdown Status
+35. Pilih opsi `Success`
+36. Klik area kosong di Filter Panel untuk menutup dropdown Status
+37. Klik `[Apply]`
+38. Verifikasi hasil adalah irisan Search dan Filter: 2 baris berurutan Activity `Change Password`, `Login`
+39. Klik icon Filter
+40. Klik `[Clear Field]`
+41. Klik `[Apply]`
+42. Verifikasi kotak Search tetap berisi `Firefox`
+43. Verifikasi indikator sort Activity ascending tetap aktif dan 4 baris berurutan A-Z: `Change Password`, `Login`, `Login`, `Logout`
+44. Klik icon `←`
+45. Klik header Activity (sort descending)
+46. Klik header Activity (kembali ke default sort tabel)
 
 ### TC-GS-USER-650: Filter tetap tersedia untuk kolom yang di-hide
 
-49. Klik icon Filter
-50. Buka dropdown Status
-51. Pilih opsi `Failed`
-52. Klik area kosong di Filter Panel untuk menutup dropdown Status
-53. Klik `[Apply]`
-54. Verifikasi hasil Filter saja: 1 baris dengan Note `Invalid password`
-55. Klik header Column Visibility (⋯)
-56. Hilangkan centang kolom `Status`
-57. Verifikasi kolom `Status` tidak tampil di tabel
-58. Verifikasi Filter tetap aktif menyaring: tabel tetap 1 baris dengan Note `Invalid password` dan icon Filter tetap gelap
-59. Klik icon Filter
-60. Verifikasi field `Status` tetap ada di Filter Panel dengan chip `Failed`
-61. Klik `[Clear Field]`
-62. Klik `[Apply]`
-63. Klik header Column Visibility (⋯)
-64. Centang kembali kolom `Status`
+47. Klik icon Filter
+48. Buka dropdown Status
+49. Pilih opsi `Failed`
+50. Klik area kosong di Filter Panel untuk menutup dropdown Status
+51. Klik `[Apply]`
+52. Verifikasi hasil Filter saja: 1 baris dengan Note `Invalid password`
+53. Klik header Column Visibility (⋯)
+54. Hilangkan centang kolom `Status`
+55. Verifikasi kolom `Status` tidak tampil di tabel
+56. Verifikasi Filter tetap aktif menyaring: tabel tetap 1 baris dengan Note `Invalid password` 
+57. Klik icon Filter
+58. Verifikasi field `Status` tetap ada di Filter Panel dengan chip `Failed`
+59. Klik `[Clear Field]`
+60. Klik `[Apply]`
+61. Klik header Column Visibility (⋯)
+62. Centang kembali kolom `Status`
 
 ### TC-GS-USER-651: Kombinasi Search dan Filter menghasilkan 0 baris, pulih saat Filter dilepas
 
-65. Klik icon Search, ketik `Chrome`, tekan Enter
-66. Verifikasi hasil Search saja: 2 baris dengan Device / Browser `Chrome on Windows`
-67. Klik icon Filter
-68. Buka dropdown Status
-69. Pilih opsi `Failed`
-70. Klik area kosong di Filter Panel untuk menutup dropdown Status
-71. Klik `[Apply]`
-72. Verifikasi empty filtered state tampil dengan pesan `No results found`
-73. Klik icon Filter
-74. Klik `[Clear Field]`
-75. Klik `[Apply]`
-76. Verifikasi 2 baris dengan Device / Browser `Chrome on Windows` kembali tampil
-77. Klik icon `←`
+63. Klik icon Search, ketik `Chrome`, tekan Enter
+64. Verifikasi hasil Search saja: 2 baris dengan Device / Browser `Chrome on Windows`
+65. Klik icon Filter
+66. Buka dropdown Status
+67. Pilih opsi `Failed`
+68. Klik area kosong di Filter Panel untuk menutup dropdown Status
+69. Klik `[Apply]`
+70. Verifikasi empty filtered state tampil dengan pesan `No results found`
+71. Klik icon Filter
+72. Klik `[Clear Field]`
+73. Klik `[Apply]`
+74. Verifikasi 2 baris dengan Device / Browser `Chrome on Windows` kembali tampil
+75. Klik icon `←`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Pemilik log: TC sumber memakai `John Doe` (Pre-setup No. 18). Isi User Log-nya bergantung pada riwayat login lingkungan, sehingga spec memakai user milik spec dengan riwayat event yang diketahui (S-06, S-11).
-- Urutan TC dalam spec mengikuti `sourceTc` (647 sampai 651). TC-GS-USER-650 (hide kolom) ditaruh sebelum TC-GS-USER-651 dan dipulihkan di langkah 64 supaya TC-GS-USER-651 memakai konfigurasi kolom default.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 (mencari user di User List agar Name dapat diklik); langkah "Klik area kosong di Filter Panel untuk menutup dropdown" (menutup dropdown multi-select); langkah "Klik icon `←`" sesudah tiap TC dan langkah "Klik icon Filter, Klik `[Clear Field]`, Klik `[Apply]`" yang mengikutinya (membersihkan Search dan Filter sebelum TC berikutnya: langkah 13, 26, 46, 77); langkah 46 sampai 48 (mengembalikan sort Activity ke default); langkah 55 sampai 64 (hide dan unhide kolom `Status` bagian TC-GS-USER-650); langkah 61 (membersihkan Filter sebelum kolom dicentang kembali). Filter Panel diasumsikan menutup sesudah `[Apply]` sehingga dibuka lagi lewat icon Filter.
+- Urutan TC dalam spec mengikuti `sourceTc` (647 sampai 651). TC-GS-USER-650 (hide kolom) ditaruh sebelum TC-GS-USER-651 dan dipulihkan di langkah 62 supaya TC-GS-USER-651 memakai konfigurasi kolom default.
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 (mencari user di User List agar Name dapat diklik); langkah "Klik area kosong di Filter Panel untuk menutup dropdown" (menutup dropdown multi-select); langkah "Klik icon `←`" sesudah tiap TC dan langkah "Klik icon Filter, Klik `[Clear Field]`, Klik `[Apply]`" yang mengikutinya (membersihkan Search dan Filter sebelum TC berikutnya: langkah 13, 25, 44, 75); langkah 44 sampai 46 (mengembalikan sort Activity ke default); langkah 53 sampai 62 (hide dan unhide kolom `Status` bagian TC-GS-USER-650); langkah 59 (membersihkan Filter sebelum kolom dicentang kembali). Filter Panel diasumsikan menutup sesudah `[Apply]` sehingga dibuka lagi lewat icon Filter.
 - Asersi tambahan (dicatat sesuai S-03): `Verifikasi` hasil Search saja atau Filter saja sebelum kombinasi adalah anchor positif untuk membuktikan irisan lebih sempit dari masing-masing (8b butir 2), dan khusus TC-GS-USER-651 untuk empty filtered state; jumlah baris pada Expected adalah konkretisasi untuk data seed yang diketahui. Data uji tiap kombinasi dipilih agar irisan tidak sama dengan Search saja maupun Filter saja: TC-GS-USER-647 (Search `Firefox` 4 baris, Filter `Login` 4 baris, irisan 2 baris), TC-GS-USER-648 (Filter `Logout` 2 baris, Search `Chrome` 2 baris, irisan 1 baris), TC-GS-USER-651 (Search `Chrome` dan Filter Status `Failed` tidak beririsan).
-- TC-GS-USER-649: keyword dan arah sort diverifikasi sesudah `[Clear Field]` dan `[Apply]` (langkah 40 sampai 42) dan Filter terlepas diamati lewat icon Filter tidak gelap.
-- Spec melewati sekitar 35 langkah (77 langkah) karena lima TC memakai tab, Filter Panel, dan dataset (U-1) yang sama dalam satu kelas harness (fungsional), dan tiap blok berdiri sendiri karena Search dan Filter dibersihkan di akhir tiap blok. Langkah membuka dan membersihkan Filter yang berulang termasuk prefix berulang.
+- TC-GS-USER-649: keyword dan arah sort diverifikasi sesudah `[Clear Field]` dan `[Apply]` (langkah 39 sampai 41) dan Filter terlepas diamati lewat 4 baris yang kembali tampil (langkah 43).
+- Spec melewati sekitar 35 langkah (75 langkah) karena lima TC memakai tab, Filter Panel, dan dataset (U-1) yang sama dalam satu kelas harness (fungsional), dan tiap blok berdiri sendiri karena Search dan Filter dibersihkan di akhir tiap blok. Langkah membuka dan membersihkan Filter yang berulang termasuk prefix berulang.
 - Pembagian TC lintas spec: Screening dan Search TC-GS-USER-409, 411, 412, 631 sampai 637 diverifikasi di spec 102; Filter Panel TC-GS-USER-638 sampai 646 di spec 103; Sort, Pagination, dan kombinasi TC-GS-USER-652 sampai 654, 669, 670 di spec 105; Setup Column TC-GS-USER-655 sampai 663 di spec 106; Download TC-GS-USER-410 dan 664 sampai 668 di spec 107.
-- Temuan untuk QA: (1) TC-GS-USER-647 sampai 651 memakai `John Doe` Pre-setup sebagai pemilik log; spec memakai user seed milik spec. (2) Mekanisme memicu event Login, Logout, dan Change Password dengan IP Address dan User-Agent tertentu tidak disebut di TC, PRD, dan LLD; disediakan tim FE/BE. (3) TC-GS-USER-647 sampai 651 menyebut "keyword", "filter", dan "sort salah satu kolom" tanpa nilai; spec memakai nilai yang tercantum di langkah. (4) TC-GS-USER-650 Expected a ("Filter tetap aktif menyaring") tidak menyatakan cara mengamati saat kolom yang difilter tidak tampil; spec memakai jumlah baris dan kolom lain (Note) serta icon Filter gelap. (5) TC-GS-USER-649 dan 647 tidak menyatakan tampilan Search sesudah `[Apply]`; spec mengasersi isi kotak Search. (6) Mekanisme menandai Guided Tooltip sebagai sudah dilihat dan mengosongkan preferensi Setup Column tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE.
+- Temuan untuk QA: (1) TC-GS-USER-647 sampai 651 memakai `John Doe` Pre-setup sebagai pemilik log; spec memakai user seed milik spec. (2) Mekanisme memicu event Login, Logout, dan Change Password dengan IP Address dan User-Agent tertentu tidak disebut di TC, PRD, dan LLD; disediakan tim FE/BE. (3) TC-GS-USER-647 sampai 651 menyebut "keyword", "filter", dan "sort salah satu kolom" tanpa nilai; spec memakai nilai yang tercantum di langkah. (4) TC-GS-USER-650 Expected a ("Filter tetap aktif menyaring") tidak menyatakan cara mengamati saat kolom yang difilter tidak tampil; spec memakai jumlah baris dan kolom lain (Note). (5) TC-GS-USER-649 dan 647 tidak menyatakan tampilan Search sesudah `[Apply]`; spec mengasersi isi kotak Search. (6) Mekanisme menandai Guided Tooltip sebagai sudah dilihat dan mengosongkan preferensi Setup Column tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE.

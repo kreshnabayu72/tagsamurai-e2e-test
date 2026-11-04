@@ -21,7 +21,7 @@ coverage:
 - Akun aktor: Total Control Principal PT Arunika Prima, `totalControlSku_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.AC_DS_TC_PASSWORD` (Pre-setup #1). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Data Pre-setup #29 (SKU Principal inti; `HHR-ARC-100` TAG Type `—`, `TAG-ARC-USR` TAG Type `User`) dan #30 (`SEED-001` sampai `SEED-119`; total 129 SKU Principal): hanya dibaca, tidak diubah. Dipasang idempoten oleh seeding di hook `before`. Riwayat Changelog Pre-setup #33 dibaca untuk membuka modal Changelog.
 - Lebar viewport cukup sempit sehingga tabel dapat digulir horizontal; ukuran viewport disediakan tim FE.
-- Preferensi kolom List: langkah 2, 4, 15, dan 22 mengubah konfigurasi kolom List (tersimpan di cache browser). Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
+- Preferensi kolom List: langkah 2, 4, 15, dan 22 mengubah konfigurasi kolom List (tersimpan di cache browser); langkah 27 dan 28 memulihkannya. Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
 - Nilai data diacu lewat `Fixture.settingsDeviceSku.<kunci>`; berkas fixture disediakan tim FE (lihat Temuan untuk QA).
 - Tidak ada state global lain yang diubah dan tidak ada entitas yang dibuat.
 
@@ -65,9 +65,15 @@ coverage:
 25. Verifikasi kolom lain tidak bergeser
 26. Klik `(←)` pada kotak Search
 
+### Pemulihan state akhir
+
+27. Klik header kolom Actions (⋯), lalu hilangkan centang `TAG Type`, centang `Model/Type` dan `Brand` pada overlay
+28. Klik header kolom Actions (⋯), lalu seret `Brand` ke posisi tepat di bawah `Category` pada overlay
+
 ## Notes
 
 - Langkah penghubung (S-03, R-16): langkah 12 dan 20 menutup popup dan modal; langkah 23 mencari baris `TAG-ARC-USR` dan `HHR-ARC-100` karena keduanya tidak berada pada halaman 1 default; langkah 26 menutup Search; tanpa asersi tambahan, kecuali langkah 10.
+- Langkah penghubung pemulihan (tanpa `Verifikasi`, S-03, S-09): langkah 27 menyembunyikan kembali `TAG Type` serta menampilkan kembali `Model/Type` dan `Brand`; langkah 28 memindahkan `Brand` kembali ke posisi awal; hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Langkah 10 adalah asersi tambahan di luar Expected TC (S-03): baris kolom lain pada popup yang sama tampil sebagai pembanding sebelum asersi absence Checkbox dan Actions (langkah 11), supaya popup yang belum terisi tidak meloloskan absence (8b butir 2).
 - Langkah 20 menutup overlay dan modal agar langkah 21 mengamati tabel List; TC-AC-DS-360 tidak menyebut cara mengamati Expected b ("cache terpisah"); spec mengasersinya lewat keadaan kolom List dan Changelog yang berbeda.
 - Temuan untuk QA:

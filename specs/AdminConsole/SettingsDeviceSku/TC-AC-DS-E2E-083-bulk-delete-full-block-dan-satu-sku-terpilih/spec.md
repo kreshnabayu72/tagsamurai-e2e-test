@@ -85,13 +85,15 @@ coverage:
 34. Verifikasi tombol `[Cancel]` dan `[Delete]`
 35. Verifikasi bukan dialog bulk dua kelompok
 36. Klik `[Cancel]`
+37. Ubah jumlah data per halaman menjadi 10
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-device-sku/TestCases/tc-settings-device-sku.md`; subjudul `###` memetakan langkah ke id TC granular.
-- Alasan di atas sekitar 35 langkah (bagian 3, prinsip 13): semua blok memakai satu kelas harness (dialog Bulk Delete pada data seed yang sama), berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; kelebihannya berasal dari pemecahan Expected per klausa (S-01) dan pembersihan seleksi antar blok (S-09). Langkah: 36.
+- Alasan di atas sekitar 35 langkah (bagian 3, prinsip 13): semua blok memakai satu kelas harness (dialog Bulk Delete pada data seed yang sama), berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna; kelebihannya berasal dari pemecahan Expected per klausa (S-01) dan pembersihan seleksi antar blok (S-09). Langkah: 37.
 - Penyimpangan urutan: TC-290 dan TC-556 memakai dua SKU (`HHR-ARC-100`, `SFR-VEL-4P`) yang diturunkan dari seleksi tiga SKU TC-289 dengan menghilangkan centang `TAG-ARC-USR`; TC-291 dan TC-285 menyusul. Atur 100 baris per halaman (langkah 1) dan pindah ke halaman 2 menjadikan `SFR-VEL-4P` dan `TAG-ARC-USR` (di luar halaman 1 pada default sort SKU A-Z) dapat dicentang tanpa Search; seleksi dipertahankan antar halaman (TC-280).
 - Langkah penghubung: `[OK]` dan ikon `(✕)` serta `[Cancel]` menutup dialog dan membersihkan seleksi antar blok (S-09).
+- Langkah penghubung akhir: langkah 37 memulihkan jumlah data per halaman ke 10 setelah diubah menjadi 100 (S-09).
 - Temuan untuk QA: TC-289 sampai TC-291 dan TC-556 tidak menyebut cara menjangkau `SFR-VEL-4P` dan `TAG-ARC-USR` yang tidak berada di halaman 1. Post Condition TC-285 sampai TC-291 dan TC-556 kosong.
 - Temuan untuk QA (S-12): Lampiran A tidak punya butir untuk modul ini, padahal asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `HHR-ARC-200`, `SEED-001`, total 129 SKU). Spec memakai nama literal itu sesuai TC; syarat seeding idempotent, cleanup oleh spec, dan suite serial dipenuhi lewat Pemulihan di Prerequisites. Pengecualian S-12 dan S-06 untuk modul ini belum diputuskan; suite.md belum menyatakan fixture pemulihan Pre-setup.
 - Temuan untuk QA (fixture): `fixtures/settings-device-sku.json`, akun Pre-setup #1 dan #2, dan env `AC_DS_*` belum terverifikasi ada di environment; ketersediaannya dipastikan tim FE.

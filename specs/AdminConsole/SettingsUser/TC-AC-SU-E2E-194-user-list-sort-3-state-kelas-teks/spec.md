@@ -24,8 +24,8 @@ coverage:
 | `Budi Santoso {runId}-194` | `c.budi@{runId}-194.qwertysystem.net` | `Manager` | `Finance` | `EMP-3-{runId}-194` | `E2801{runId}2` |
 | `Citra Dewi {runId}-194` | `b.citra@{runId}-194.qwertysystem.net` | `Clerk` | `Marketing` | `EMP-2-{runId}-194` | `E2801{runId}3` |
 | `Dedi Kurnia {runId}-194` | `a.dedi@{runId}-194.qwertysystem.net` | (kosong) | `Audit` | (kosong) | (kosong) |
-- Asersi urutan memakai urutan relatif antar keempat baris milik spec; baris Pre-setup ikut tampil dan tidak diasersi.
-- Tabel urutan TC-294 (parameter langkah 7 sampai 12; nama baris disingkat dengan nama depan):
+- Asersi urutan memakai urutan relatif antar keempat baris milik spec; Search `{runId}-194` menyaring baris Pre-setup dari tabel sebelum loop sort, sehingga keempat baris berada di satu halaman.
+- Tabel urutan TC-294 (parameter langkah 8 sampai 13; nama baris disingkat dengan nama depan):
 | No | Kolom | Urutan relatif klik 1 (A-Z, ikon ↑) | Urutan relatif klik 2 (Z-A, ikon ↓) |
 |---|---|---|---|
 | 1 | Name | anisa, Budi, Citra, Dedi | Dedi, Citra, Budi, anisa |
@@ -35,7 +35,7 @@ coverage:
 | 5 | Employee ID | Citra, Budi, anisa, Dedi (kosong `—` di akhir) | Dedi (kosong `—` di awal), anisa, Budi, Citra |
 | 6 | TAG | anisa, Budi, Citra, Dedi (kosong `—` di akhir) | Dedi (kosong `—` di awal), Citra, Budi, anisa |
 - Hook `after` menghapus data yang di-seed hook `before` spec ini lewat Fixture BE; pembersihan tidak berasumsi seeding berhasil penuh.
-- Pemulihan Setup Column: preferensi kolom yang disimpan spec ini dihapus di hook `after` dengan menghapus preferensi kolom di browser (bukan `[Reset to Default]`); kemampuan ini disediakan tim FE.
+- Pemulihan Setup Column: kolom `TAG` yang dicentang di langkah 3 dikembalikan di langkah 14 sampai 17; hook `after` menghapus preferensi kolom di browser sebagai pengaman (kemampuan disediakan tim FE).
 
 ## Test Steps
 
@@ -45,19 +45,24 @@ coverage:
 2. Klik `[Setup Column]`
 3. Centang kolom `TAG` pada Setup Column
 4. Klik `[Save]`
-5. Amati urutan awal tabel
-6. Verifikasi urutan awal Name A-Z case-insensitive: baris `anisa rahma {runId}-194` sebelum `Budi Santoso {runId}-194`
-7. Klik header kolom pada kolom "Kolom" tabel urutan TC-294 (klik 1)
-8. Verifikasi urutan relatif baris pada kolom "Urutan relatif klik 1" tabel urutan TC-294
-9. Klik header kolom yang sama (klik 2)
-10. Verifikasi urutan relatif baris pada kolom "Urutan relatif klik 2" tabel urutan TC-294
-11. Klik header kolom yang sama (klik 3)
-12. Verifikasi urutan kembali ke default Name A-Z (anisa, Budi, Citra, Dedi)
+5. Ketik Search `{runId}-194`, tekan Enter
+6. Amati urutan awal tabel
+7. Verifikasi urutan awal Name A-Z case-insensitive: baris `anisa rahma {runId}-194` sebelum `Budi Santoso {runId}-194`
+8. Klik header kolom pada kolom "Kolom" tabel urutan TC-294 (klik 1)
+9. Verifikasi urutan relatif baris pada kolom "Urutan relatif klik 1" tabel urutan TC-294
+10. Klik header kolom yang sama (klik 2)
+11. Verifikasi urutan relatif baris pada kolom "Urutan relatif klik 2" tabel urutan TC-294
+12. Klik header kolom yang sama (klik 3)
+13. Verifikasi urutan kembali ke default Name A-Z (anisa, Budi, Citra, Dedi)
+14. Klik `⋯` pada header Actions
+15. Klik `[Setup Column]`
+16. Uncheck kolom `TAG` pada Setup Column
+17. Klik `[Save]`
 
 ## Notes
 
-- Langkah 7 sampai 12 diulang untuk tiap baris tabel urutan TC-294 (8b butir 7); parameter ada di Prerequisites, `Verifikasi` tetap satu per klausa.
-- Langkah penghubung (S-03): Setup Column menampilkan kolom TAG sebelum disortir (langkah 1 TC); konfigurasi kolom dipulihkan hook `after`.
+- Langkah 8 sampai 13 diulang untuk tiap baris tabel urutan TC-294 (8b butir 7); parameter ada di Prerequisites, `Verifikasi` tetap satu per klausa.
+- Langkah penghubung (S-03): Setup Column menampilkan kolom TAG sebelum disortir (langkah 1 sampai 4, langkah 1 TC), Ketik Search `{runId}-194` (langkah 5) membatasi tabel ke keempat baris seed sebelum loop; langkah 14 sampai 17 memulihkan konfigurasi kolom (uncheck `TAG`, `[Save]`).
 - Alasan di atas ±35 langkah (ekspansi): satu TC dengan enam kolom yang langkahnya identik; berdiri sendiri.
 - TC-295 sampai TC-297 dan TC-656 (sort lain) ada di spec 083.
 - Temuan untuk QA:

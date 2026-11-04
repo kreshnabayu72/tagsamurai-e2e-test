@@ -18,7 +18,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor blok TC-181, TC-182, dan TC-231: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_TC_PASSWORD`. Akun aktor blok TC-262: Default User `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_DU_PASSWORD`. Login Total Control di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; ganti akun ke Default User dilakukan eksplisit pada langkah 20; hook `after` memulihkan sesi ke Default User.
+- Akun aktor blok TC-181, TC-182, dan TC-231: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_TC_PASSWORD`. Akun aktor blok TC-262: Default User `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_DU_PASSWORD`. Login Total Control di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; ganti akun ke Default User dilakukan eksplisit pada langkah 20 dan 21; hook `after` memulihkan sesi ke Default User.
 - Data Dinamis di-seed di hook `before` lewat Fixture BE (disediakan tim FE/BE) dan dihapus atau dipulihkan di hook `after`; nama dan email bersuffix `{runId}-NNN` (S-12), baseline entri audit trail nol karena nama unik. Data Pre-setup bersama tidak diubah. Satu user per kebutuhan state (kegagalan server tidak mengubah state). Region A dari Group Tree Pre-setup hanya menjadi target assignment dan tidak diubah:
 
 | Kode | Name | Email | State awal |
@@ -55,18 +55,20 @@ coverage:
 19. Klik `[Leave]`
 ### TC-AC-SU-262: Auto-Revert gagal 5xx
 20. Lakukan Logout dari akun Total Control
-21. Login sebagai Default User, ketik Search `Rina Putri {runId}-178B`, tekan Enter, klik Name baris B, lalu pastikan Tab Role aktif
-22. Atur intercept: respons request simpan permission dikembalikan 5xx
-23. Uncheck D pada baris `Manage TAG stock`
-24. Klik `[Remove]` pada dialog Remove Total Control
-25. Verifikasi D kembali `[☑]` (rollback)
-26. Verifikasi toast error `"Error, failed to update permissions."`
-27. Verifikasi banner Total Control tetap tampil
-28. Lepas intercept
+21. Login sebagai Default User
+22. Buka Settings > User lewat sidebar
+23. Ketik Search `Rina Putri {runId}-178B`, tekan Enter, klik Name baris B, lalu pastikan Tab Role aktif
+24. Atur intercept: respons request simpan permission dikembalikan 5xx
+25. Uncheck D pada baris `Manage TAG stock`
+26. Klik `[Remove]` pada dialog Remove Total Control
+27. Verifikasi D kembali `[☑]` (rollback)
+28. Verifikasi toast error `"Error, failed to update permissions."`
+29. Verifikasi banner Total Control tetap tampil
+30. Lepas intercept
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): pemasangan dan pelepasan intercept, Search baris target (R-16), pemilihan sub-tab, dan menunggu toast lama hilang (R-12). Ganti akun eksplisit pada langkah 20 karena TC-262 mensyaratkan Default User sedangkan TC-181, TC-182, dan TC-231 mensyaratkan Total Control. Form dirty pada TC-231 ditutup deterministik lewat `✕`, dialog `Unsaved Changes`, dan `[Leave]` (S-08).
+- Langkah penghubung tanpa Verifikasi (S-03): pemasangan dan pelepasan intercept, Search baris target (R-16), pemilihan sub-tab, dan menunggu toast lama hilang (R-12). Ganti akun eksplisit pada langkah 20 dan 21 (login Default User), disusul langkah 22 (Buka Settings > User lewat sidebar), karena TC-262 mensyaratkan Default User sedangkan TC-181, TC-182, dan TC-231 mensyaratkan Total Control. Form dirty pada TC-231 ditutup deterministik lewat `✕`, dialog `Unsaved Changes`, dan `[Leave]` (S-08).
 - Post Condition TC-181 ("Permission Create tetap false"), TC-182, TC-231, dan TC-262 (tingkat akses tetap Total Control; tidak ada entri log) tidak punya langkah observasi di TC dan tidak diasersi, kecuali yang sama dengan Expected TC (banner Total Control TC-262).
 - Empat blok kelas b berpola sama dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna, namun TC-262 memakai akun berbeda sehingga ditaruh terakhir.
 - Temuan untuk QA:

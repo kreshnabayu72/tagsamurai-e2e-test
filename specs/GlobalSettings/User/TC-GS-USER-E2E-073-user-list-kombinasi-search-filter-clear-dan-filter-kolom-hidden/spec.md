@@ -32,10 +32,10 @@ coverage:
   - Seeding minimal (S-11): U-1 dan U-2 sama-sama memuat `Indra` dengan Division berbeda (irisan Search dan Filter); U-3 memuat Division `Finance` tanpa `Indra` (dikecualikan oleh Search). Nama U-1 dan U-2 membuat urutan Name ascending (Saputra, Wibowo) berbeda dari urutan Division ascending (Finance, Logistics) pada TC-GS-USER-432.
   - U-4 dibuat lewat UI oleh spec (TC-GS-USER-464): Name `Lukas Budiman {runId}-073`, Email `lukasbudiman+{runId}-073@qwertysystem.net`, Division `Logistics`, Access `Fixed Asset`, Emergency Phone sama dengan seed. Dihapus di hook `after` lewat API menurut Email.
   - Cleanup di hook `after` (tidak berasumsi seeding atau Create berhasil penuh): hapus U-1 sampai U-4 lewat API.
-- State yang diubah dan dipulihkan: ukuran halaman 100 (langkah 1) dikembalikan ke 10 (langkah 90); Search ditutup dan Filter dikosongkan di akhir tiap blok (langkah 10, 31, 45, 62, 72, 86); sort Division dikembalikan ke default (langkah 31 dan sesudahnya); kolom `Division` di-hide lalu dicentang kembali (TC-GS-USER-433); kolom `Blood Type` dicentang lewat Setup Column lalu dihilangkan lewat Overlay (TC-GS-USER-463). Hook `after` sebagai cadangan mengembalikan konfigurasi kolom ke default (Setup Column > `[Reset to Default]`, `[Save]`, atau penghapusan preferensi kolom User List di browser; mekanisme disediakan tim FE/BE).
+- State yang diubah dan dipulihkan: ukuran halaman 100 (langkah 1) dikembalikan ke 10 (langkah 88); Search ditutup di langkah 10, 31, dan 60, dan Filter dikosongkan lewat `[Clear Field]` di langkah 12, 23, 43, 57, 70, dan 85; sort Division dikembalikan ke default (langkah 31 dan sesudahnya); kolom `Division` di-hide lalu dicentang kembali (TC-GS-USER-433); kolom `Blood Type` dicentang lewat Setup Column lalu dihilangkan lewat Overlay (TC-GS-USER-463). Hook `after` sebagai cadangan mengembalikan konfigurasi kolom ke default (Setup Column > `[Reset to Default]`, `[Save]`, atau penghapusan preferensi kolom User List di browser; mekanisme disediakan tim FE/BE).
 - Hook `beforeEach`: kembali ke layar Global Settings > User > User List (sub-tab Login User).
 - Suite berjalan serial (`parallel: false`).
-- Kemampuan teknis: mengisi field Phone Custom Field (Country Code dan Number) pada modal Create; membaca state sort pada header kolom; membaca warna icon Filter (aktif atau tidak).
+- Kemampuan teknis: mengisi field Phone Custom Field (Country Code dan Number) pada modal Create; membaca state sort pada header kolom.
 
 ## Test Steps
 
@@ -67,100 +67,98 @@ coverage:
 18. Verifikasi hasil adalah irisan Filter dan Search: baris `Indra Wibowo {runId}-073` tampil
 19. Verifikasi baris `Indra Saputra {runId}-073` tidak tampil
 20. Verifikasi baris `Kirana Dewanti {runId}-073` tidak tampil
-21. Verifikasi Filter tetap aktif: icon Filter berwarna gelap
 
 ### TC-GS-USER-432: Clear filter saat Search dan Sort aktif
 
-22. Klik header Division
-23. Klik icon Filter
-24. Klik `[Clear Field]`
-25. Klik `[Apply]`
-26. Verifikasi kotak Search tetap berisi `Indra`
-27. Verifikasi sort Division ascending tetap aktif
-28. Verifikasi urutan mengikuti sort Division ascending: baris `Indra Wibowo {runId}-073` (Finance) berada di atas baris `Indra Saputra {runId}-073` (Logistics)
-29. Verifikasi Filter terlepas: icon Filter tidak lagi berwarna gelap
-30. Verifikasi Filter terlepas: baris `Indra Saputra {runId}-073` (Logistics) tampil kembali
-31. Klik header Division
-32. Klik header Division
-33. Klik icon panah `(←)` untuk menutup Search dan mereset tabel
+21. Klik header Division
+22. Klik icon Filter
+23. Klik `[Clear Field]`
+24. Klik `[Apply]`
+25. Verifikasi kotak Search tetap berisi `Indra`
+26. Verifikasi sort Division ascending tetap aktif
+27. Verifikasi urutan mengikuti sort Division ascending: baris `Indra Wibowo {runId}-073` (Finance) berada di atas baris `Indra Saputra {runId}-073` (Logistics)
+28. Verifikasi Filter terlepas: baris `Indra Saputra {runId}-073` (Logistics) tampil kembali
+29. Klik header Division
+30. Klik header Division
+31. Klik icon panah `(←)` untuk menutup Search dan mereset tabel
 
 ### TC-GS-USER-433: Filter tetap tersedia untuk kolom yang di-hide
 
-34. Klik icon Filter
-35. Pilih opsi `Finance` pada Division
-36. Klik `[Apply]`
-37. Klik header kolom Column Visibility (⋯)
-38. Hilangkan centang `Division`
-39. Tekan Esc untuk menutup Overlay Column Visibility
-40. Verifikasi kolom `Division` tidak tampil di tabel
-41. Verifikasi Filter tetap aktif menyaring: baris `Indra Wibowo {runId}-073` dan baris `Kirana Dewanti {runId}-073` (Division `Finance`) tampil
-42. Verifikasi Filter tetap aktif menyaring: baris `Indra Saputra {runId}-073` (Division `Logistics`) tidak tampil
-43. Klik icon Filter
-44. Verifikasi field filter `Division` tetap ada di Filter Panel
-45. Klik `[Clear Field]`
-46. Klik `[Apply]`
-47. Klik header kolom Column Visibility (⋯)
-48. Centang `Division`
-49. Tekan Esc untuk menutup Overlay Column Visibility
+32. Klik icon Filter
+33. Pilih opsi `Finance` pada Division
+34. Klik `[Apply]`
+35. Klik header kolom Column Visibility (⋯)
+36. Hilangkan centang `Division`
+37. Tekan Esc untuk menutup Overlay Column Visibility
+38. Verifikasi kolom `Division` tidak tampil di tabel
+39. Verifikasi Filter tetap aktif menyaring: baris `Indra Wibowo {runId}-073` dan baris `Kirana Dewanti {runId}-073` (Division `Finance`) tampil
+40. Verifikasi Filter tetap aktif menyaring: baris `Indra Saputra {runId}-073` (Division `Logistics`) tidak tampil
+41. Klik icon Filter
+42. Verifikasi field filter `Division` tetap ada di Filter Panel
+43. Klik `[Clear Field]`
+44. Klik `[Apply]`
+45. Klik header kolom Column Visibility (⋯)
+46. Centang `Division`
+47. Tekan Esc untuk menutup Overlay Column Visibility
 
 ### TC-GS-USER-434: Kombinasi Search + Filter menghasilkan 0 baris lalu pulih saat salah satu dilepas
 
-50. Klik icon Search, ketik `Kirana`, tekan Enter
-51. Verifikasi baris `Kirana Dewanti {runId}-073` tampil
-52. Klik icon Filter
-53. Pilih opsi `Logistics` pada Division
-54. Klik `[Apply]`
-55. Verifikasi tabel menampilkan ilustrasi no result
-56. Verifikasi tabel menampilkan teks `No results found`
-57. Verifikasi tabel menampilkan teks `Try adjusting your search or filter.`
-58. Klik icon Filter
-59. Klik `[Clear Field]`
-60. Klik `[Apply]`
-61. Verifikasi setelah filter dilepas: baris hasil search `Kirana Dewanti {runId}-073` tampil kembali
-62. Klik icon panah `(←)` untuk menutup Search dan mereset tabel
+48. Klik icon Search, ketik `Kirana`, tekan Enter
+49. Verifikasi baris `Kirana Dewanti {runId}-073` tampil
+50. Klik icon Filter
+51. Pilih opsi `Logistics` pada Division
+52. Klik `[Apply]`
+53. Verifikasi tabel menampilkan ilustrasi no result
+54. Verifikasi tabel menampilkan teks `No results found`
+55. Verifikasi tabel menampilkan teks `Try adjusting your search or filter.`
+56. Klik icon Filter
+57. Klik `[Clear Field]`
+58. Klik `[Apply]`
+59. Verifikasi setelah filter dilepas: baris hasil search `Kirana Dewanti {runId}-073` tampil kembali
+60. Klik icon panah `(←)` untuk menutup Search dan mereset tabel
 
 ### TC-GS-USER-463: Custom Field aktif muncul sebagai kolom curated dan filter sesuai tipe
 
-63. Klik header kolom Column Visibility (⋯)
-64. Klik `Setup Column...`
-65. Centang `Blood Type`
-66. Klik `[Save]`
-67. Verifikasi kolom `Blood Type` tampil di tabel
-68. Klik icon Filter
-69. Verifikasi filter `Blood Type` tersedia di Filter Panel
-70. Verifikasi filter `Blood Type` bertipe multi-select
-71. Verifikasi filter `Blood Type` memiliki placeholder `All blood types`
-72. Klik `[Clear Field]`
-73. Klik `[Apply]`
-74. Klik header kolom Column Visibility (⋯)
-75. Hilangkan centang `Blood Type`
-76. Tekan Esc untuk menutup Overlay Column Visibility
+61. Klik header kolom Column Visibility (⋯)
+62. Klik `Setup Column...`
+63. Centang `Blood Type`
+64. Klik `[Save]`
+65. Verifikasi kolom `Blood Type` tampil di tabel
+66. Klik icon Filter
+67. Verifikasi filter `Blood Type` tersedia di Filter Panel
+68. Verifikasi filter `Blood Type` bertipe multi-select
+69. Verifikasi filter `Blood Type` memiliki placeholder `All blood types`
+70. Klik `[Clear Field]`
+71. Klik `[Apply]`
+72. Klik header kolom Column Visibility (⋯)
+73. Hilangkan centang `Blood Type`
+74. Tekan Esc untuk menutup Overlay Column Visibility
 
 ### TC-GS-USER-464: Create user yang tidak cocok filter aktif tidak muncul di tabel terfilter
 
-77. Klik icon Filter
-78. Pilih opsi `Finance` pada Division
-79. Klik `[Apply]`
-80. Verifikasi baris `Indra Wibowo {runId}-073` (Division `Finance`) tampil
-81. Klik `[+ User]` di Table Tools
-82. Isi First Name `Lukas`, Last Name `Budiman {runId}-073`, Division `Logistics`, Email `lukasbudiman+{runId}-073@qwertysystem.net`, centang Access `Fixed Asset`, isi Emergency Phone dengan Country Code `🇮🇩 +62` dan Number `81234567890`
-83. Klik `[Submit]`
-84. Verifikasi toast sukses: "Success, user has been created."
-85. Verifikasi user baru `Lukas Budiman {runId}-073` tidak tampil di tabel selama filter Division `Finance` aktif
-86. Klik icon Filter
-87. Klik `[Clear Field]`
-88. Klik `[Apply]`
-89. Verifikasi setelah filter dilepas: baris `Lukas Budiman {runId}-073` tampil di tabel (user baru memang tercipta)
+75. Klik icon Filter
+76. Pilih opsi `Finance` pada Division
+77. Klik `[Apply]`
+78. Verifikasi baris `Indra Wibowo {runId}-073` (Division `Finance`) tampil
+79. Klik `[+ User]` di Table Tools
+80. Isi First Name `Lukas`, Last Name `Budiman {runId}-073`, Division `Logistics`, Email `lukasbudiman+{runId}-073@qwertysystem.net`, centang Access `Fixed Asset`, isi Emergency Phone dengan Country Code `🇮🇩 +62` dan Number `81234567890`
+81. Klik `[Submit]`
+82. Verifikasi toast sukses: "Success, user has been created."
+83. Verifikasi user baru `Lukas Budiman {runId}-073` tidak tampil di tabel selama filter Division `Finance` aktif
+84. Klik icon Filter
+85. Klik `[Clear Field]`
+86. Klik `[Apply]`
+87. Verifikasi setelah filter dilepas: baris `Lukas Budiman {runId}-073` tampil di tabel (user baru memang tercipta)
 
 ### Pemulihan state
 
-90. Pilih 10 baris per halaman pada Pagination
+88. Pilih 10 baris per halaman pada Pagination
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Urutan TC sumber (430, 431, 432, 433, 434, 463, 464) dipertahankan; TC-GS-USER-464 (membuat data) berada paling akhir.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (ukuran halaman 100 agar baris seed berada di halaman yang sama); sesudah tiap blok: menutup Search lewat `(←)` dan mengosongkan Filter lewat `Klik icon Filter`, `Klik [Clear Field]`, `Klik [Apply]` (S-09); langkah 31 sampai 32 (dua klik header Division mengembalikan sort ke default); `Klik [Clear Field]`, `Klik [Apply]` dan pencentangan kembali `Division` pada TC-GS-USER-433; pembersihan Filter dan penghilangan centang `Blood Type` pada TC-GS-USER-463; langkah 90 (ukuran halaman 10).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (ukuran halaman 100 agar baris seed berada di halaman yang sama); sesudah tiap blok: menutup Search lewat `(←)` dan mengosongkan Filter lewat `Klik icon Filter`, `Klik [Clear Field]`, `Klik [Apply]` (S-09); langkah 29 sampai 30 (dua klik header Division mengembalikan sort ke default); `Klik [Clear Field]`, `Klik [Apply]` dan pencentangan kembali `Division` pada TC-GS-USER-433; pembersihan Filter dan penghilangan centang `Blood Type` pada TC-GS-USER-463; langkah 88 (ukuran halaman 10).
 - Langkah 1 TC-GS-USER-432 ("Search keyword, Enter") dipenuhi state Search `Indra` dari TC-GS-USER-431; "Terapkan filter" dipenuhi Filter `Division = Finance` dari TC-GS-USER-431, sehingga hanya sort (Division) dan pengosongan Filter yang ditulis ulang.
 - Asersi tambahan (S-03, dicatat alasannya): TC-GS-USER-433 memuat `Verifikasi` kolom `Division` tidak tampil sebagai anchor bahwa aksi hide berhasil sebelum Filter diasersi; TC-GS-USER-464 memuat `Verifikasi` toast sukses dan `Verifikasi` user baru tampil sesudah Filter dilepas sebagai anchor positif bahwa user tercipta (8b butir 2); TC-GS-USER-432 memuat `Verifikasi` urutan Division ascending supaya arah sort teramati (urutan Name ascending berbeda); TC-GS-USER-431 dan 430 memuat `Verifikasi` baris U-3 tidak tampil supaya irisan (bukan hanya Search atau Filter) teramati.
 - Label menu Setup Column: TC-GS-USER-463 menyebut "Buka Setup Column" tanpa label; spec memakai item `Setup Column...` di Overlay Column Visibility sesuai TC-GS-USER-441 dan 442.

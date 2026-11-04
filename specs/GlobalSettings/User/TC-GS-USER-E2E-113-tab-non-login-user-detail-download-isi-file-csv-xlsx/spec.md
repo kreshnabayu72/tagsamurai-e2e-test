@@ -62,8 +62,8 @@ coverage:
 
 4. Klik icon Download
 5. Klik `Download as CSV`
-6. Verifikasi file `Non-Login-User-Ahmad-Fauzi-{runId}-113.csv` terunduh
-7. Verifikasi tidak ada toast sukses
+6. Verifikasi tidak ada toast sukses
+7. Verifikasi file `Non-Login-User-Ahmad-Fauzi-{runId}-113.csv` terunduh
 
 ### TC-GS-USER-709: Download CSV seluruh data tanpa toast sukses
 
@@ -71,10 +71,10 @@ coverage:
 9. Verifikasi overlay menampilkan opsi `Download as CSV`
 10. Verifikasi overlay menampilkan opsi `Download as XLSX`
 11. Klik `Download as CSV`
-12. Verifikasi file `Non-Login-User-Ahmad-Fauzi-{runId}-113.csv` terunduh
-13. Buka isi file `Non-Login-User-Ahmad-Fauzi-{runId}-113.csv` yang diunduh
-14. Verifikasi file memuat seluruh 12 baris data, termasuk baris halaman 2 (`Rizky Fadillah {runId}-113`, `Wahyu Hidayat {runId}-113`) dan bukan hanya 10 baris halaman 1
-15. Verifikasi tidak ada toast sukses
+12. Verifikasi tidak ada toast sukses
+13. Verifikasi file `Non-Login-User-Ahmad-Fauzi-{runId}-113.csv` terunduh
+14. Buka isi file `Non-Login-User-Ahmad-Fauzi-{runId}-113.csv` yang diunduh
+15. Verifikasi file memuat seluruh 12 baris data, termasuk baris halaman 2 (`Rizky Fadillah {runId}-113`, `Wahyu Hidayat {runId}-113`) dan bukan hanya 10 baris halaman 1
 
 ### TC-GS-USER-710: Download XLSX
 
@@ -97,10 +97,10 @@ coverage:
 26. Verifikasi kolom `Division` tidak tampil di tabel
 27. Klik icon Download
 28. Klik `Download as CSV`
-29. Buka isi file `Non-Login-User-Ahmad-Fauzi-{runId}-113.csv` yang diunduh
-30. Verifikasi file pertama memuat kolom `Name`, `Email`, `Employee ID`, `Position`, `Active`, dan `Last Update`
-31. Verifikasi file pertama tanpa kolom `Division`
-32. Verifikasi tidak ada toast peringatan
+29. Verifikasi tidak ada toast peringatan
+30. Buka isi file `Non-Login-User-Ahmad-Fauzi-{runId}-113.csv` yang diunduh
+31. Verifikasi file pertama memuat kolom `Name`, `Email`, `Employee ID`, `Position`, `Active`, dan `Last Update`
+32. Verifikasi file pertama tanpa kolom `Division`
 33. Klik header kolom Column Visibility (⋯)
 34. Centang kolom `Division`
 35. Tutup Overlay Column Visibility dengan menekan Esc

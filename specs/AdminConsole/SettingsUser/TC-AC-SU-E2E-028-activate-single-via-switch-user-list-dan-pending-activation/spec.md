@@ -29,7 +29,7 @@ coverage:
 | TC-AC-SU-96 | `Region A` | `Region A {runId}-028` | - | Group |
 | TC-AC-SU-96 | `Branch 1` | `Branch 1 {runId}-028` | - | Group |
 | TC-AC-SU-87, 88, 89 | `Jane Smith` | `Jane Smith {runId}-028` | `janesmith+{runId}-028@qwertysystem.net` | Inactive, sudah aktivasi, 2 role aktif tersimpan |
-| TC-AC-SU-96 | `Jane Smith` | `Jane Smith {runId}-028-T96` | `janesmith+{runId}-028-T96@qwertysystem.net` | Inactive, sudah aktivasi, 2 Group Role tersimpan: `Manage allocation` di `Region A {runId}-028`, `Manage partner` di `Branch 1 {runId}-028` |
+| TC-AC-SU-96 | `Jane Smith` | `Jane Smith T96 {runId}-028` | `janesmith+{runId}-028-T96@qwertysystem.net` | Inactive, sudah aktivasi, 2 Group Role tersimpan: `Manage allocation` di `Region A {runId}-028`, `Manage partner` di `Branch 1 {runId}-028` |
 | TC-AC-SU-97 | `Mike Tan` | `Mike Tan {runId}-028` | `miketan+{runId}-028@qwertysystem.net` | Pending Activation, Active |
 | TC-AC-SU-97 | `Sarah Lee` | `Sarah Lee {runId}-028` | `sarahlee+{runId}-028@qwertysystem.net` | Pending Activation, Inactive |
 
@@ -71,16 +71,16 @@ coverage:
 19. Verifikasi switch baris `Jane Smith {runId}-028` ON
 20. Verifikasi kolom Role baris `Jane Smith {runId}-028` tetap `2 roles`
 21. Muat ulang halaman dengan F5
-22. Ketik Search `Jane Smith {runId}-028`, tekan Enter
+22. Ganti isi kotak search dengan `Jane Smith {runId}-028`, tekan Enter
 23. Verifikasi status `Jane Smith {runId}-028` Active (switch ON) tetap setelah refresh
 
 ### TC-AC-SU-96: Activate ulang user yang pernah di-deactivate, role dan group assignment berlaku lagi
 
-24. Ganti isi kotak search dengan `Jane Smith {runId}-028-T96`, tekan Enter
-25. Klik switch Active baris `Jane Smith {runId}-028-T96`
+24. Ganti isi kotak search dengan `Jane Smith T96 {runId}-028`, tekan Enter
+25. Klik switch Active baris `Jane Smith T96 {runId}-028`
 26. Klik `[Activate]` pada dialog Activate User
 27. Verifikasi toast sukses: "Success, user has been activated."
-28. Klik Name `Jane Smith {runId}-028-T96`
+28. Klik Name `Jane Smith T96 {runId}-028`
 29. Klik Tab Role
 30. Klik sub-tab Group Role
 31. Verifikasi 2 Group Role tampil aktif dengan group yang sama seperti sebelum deactivate: `Manage allocation` di `Region A {runId}-028` dan `Manage partner` di `Branch 1 {runId}-028`
@@ -103,6 +103,6 @@ coverage:
 - Ukuran spec (39 langkah, di atas smell sekitar 35 langkah): satu dialog (Activate User) pada satu halaman dengan empat user seed terpisah; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - TC-AC-SU-88 Post Condition b ("Role dan group assignment sama seperti sebelum dinonaktifkan") dan c (log) tidak punya langkah observasi di TC dan tidak diasersi (S-01); butir a (persist setelah refresh) diasersi.
-  - TC-AC-SU-96 memakai user `Jane Smith` yang sama dengan TC-AC-SU-88 yang sudah menjadi Active setelah TC-AC-SU-88; spec memakai seed terpisah (suffix `-T96`).
+  - TC-AC-SU-96 memakai user `Jane Smith` yang sama dengan TC-AC-SU-88 yang sudah menjadi Active setelah TC-AC-SU-88; spec memakai seed terpisah (penanda `T96` pada nama, ditaruh sebelum `{runId}-028` agar nama seed tidak saling mengandung).
   - TC-AC-SU-97 butir b: "Sarah Lee enabled; muncul toast sukses" diasersi sebagai dua `Verifikasi`; Post Condition "Sarah Lee Active + Pending Activation" diasersi lewat badge yang tetap tampil.
   - Nama user TC (`Jane Smith`, `Mike Tan`, `Sarah Lee`, `Region A`, `Branch 1`) dipakai sebagai nama bersuffix `{runId}-028` sesuai S-12 (Lampiran A tidak memuat pengecualian modul Settings > User).

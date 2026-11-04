@@ -52,15 +52,18 @@ coverage:
 17. Verifikasi baris Group Role `Manage user & role` tidak tampil lagi di Sub-tab Group Role
 18. Klik Sub-tab Global Role
 19. Verifikasi switch Global Role Manage global user & role Nanda Pratama ON sebagai bagian cascade Total Control
+20. Klik Sub-tab Group Role
+21. Verifikasi baris Group Role seluruh role × group tampil dengan CRUD penuh (Create, Read, Update, Delete tercentang), kecuali Manage user & role yang tidak dirender
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC untuk report per langkah.
-- Langkah penghubung tanpa awalan `Verifikasi`: langkah 1 dan 5 (Search untuk menemukan baris target, R-16), langkah 4, 8, 10, dan 14 (membuka halaman atau sub-tab), langkah 12 (memulihkan Nanda lewat seed API), langkah 18 (membuka sub-tab).
+- Langkah penghubung tanpa awalan `Verifikasi`: langkah 1 dan 5 (Search untuk menemukan baris target, R-16), langkah 4, 8, 10, dan 14 (membuka halaman atau sub-tab), langkah 12 (memulihkan Nanda lewat seed API), langkah 18 dan 20 (membuka sub-tab).
 - Asersi tambahan di luar Expected TC: langkah 15 adalah anchor positif bagi asersi absence langkah 17 (bagian 8b butir 2).
 - Temuan untuk QA:
   - Langkah Uji TC-FA-SU-190 dan TC-FA-SU-1055 ("Matikan Manage accounting di Role & Permission", "Assign Total Control kepada Nanda") tidak merinci UI Role & Permission; spec menulis satu langkah dan UI-nya diuji di suite Settings Role & Permission.
+  - Expected d TC-FA-SU-1055 (cascade menulis baris Group Role seluruh role × group dengan CRUD penuh) tidak menyebut sub-tab atau langkah pengamatannya; spec mengamatinya di Sub-tab Group Role Nanda Pratama sesudah cascade (langkah 20 dan 21).
   - Langkah Uji 3 TC-FA-SU-1055 ("Buka Tab Changelog Nanda Pratama") tidak punya Expected; tidak diasersi dan tidak ditulis sebagai langkah (S-01).
   - Expected c TC-FA-SU-1055 ("switch OFF kembali tidak memulihkan grup") tidak punya langkah OFF di Langkah Uji; pernyataan yang sama diasersi di spec 055 (TC-FA-SU-187), sehingga tidak diasersi lagi.
   - Expected b TC-FA-SU-190 ("tanpa reload manual") dipenuhi dengan membuka halaman Detail Gita sesudah perubahan; TC tidak menyebut sesi Detail User yang sudah terbuka.

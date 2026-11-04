@@ -25,7 +25,7 @@ coverage:
 |---|---|---|---|
 | Total Control (Siti Rahmawati) | #2 | `totalControl_automated_{namaCompany}@qwertysystem.net` (`Fixture.fixedAssetRolePermission.akun.totalControl.email`) | `Spectra.env.FA_TC_PASSWORD` |
 
-- Data Pre-setup (Company Alpha): #39 (Detail Role Group Role `Manage files`, enam baris: Ahmad Fauzi (Asset Custodian, Logistics) di `Data Center`; Budi Santoso (Warehouse Staff, Logistics) di `Helpdesk`; Citra Lestari (HR Officer, HR) di `Head Office`; Dimas Pranata (IT Support, IT Operations) di `Data Center`; Endah Susanti (Procurement Officer, Procurement) di `Rack A1`; Fitri Handayani (Finance Officer, Finance, Pending Email Confirmation, Temporary User Yes dengan Temporary Until terisi) di `Dock 1`; Detail Role Global Role `Manage Open API` dan `Manage accounting` terisi Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata) dan #18 (pohon group). Tidak diubah spec ini.
+- Data Pre-setup (Company Alpha): #39 (Detail Role Group Role `Manage files`, 41 baris: 6 baris non-pola dan 35 baris pola Group Role. Baris non-pola: Ahmad Fauzi (Asset Custodian, Logistics) di `Data Center`; Budi Santoso (Warehouse Staff, Logistics) di `Helpdesk`; Citra Lestari (HR Officer, HR) di `Head Office`; Dimas Pranata (IT Support, IT Operations) di `Data Center`; Endah Susanti (Procurement Officer, Procurement) di `Rack A1`; Fitri Handayani (Finance Officer, Finance, Pending Email Confirmation, Temporary User Yes dengan Temporary Until terisi) di `Dock 1`; Detail Role Global Role `Manage Open API` dan `Manage accounting` terisi Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata. Baris pola `Manage files` ada pada tujuh group Pre-setup #18 untuk lima user pola: Admin Utama (System Administrator, IT Operations), Siti Rahmawati (Finance Officer, Accounting & Tax), Rina Wulandari (`Operations Manager, Region 1`, `Asset Management "North"`), Dewi Anggraini (Internal Auditor, Internal Audit), Maya Anggraeni (Compliance Analyst, Legal)) dan #18 (pohon group). Tidak diubah spec ini.
 - Fixture `Fixture.fixedAssetRolePermission` belum ada; kunci akun, nama pengguna, group, dan nilai kolom yang diasersi ditambahkan tim FE.
 - Kemampuan teknis (disediakan tim FE/BE): pembaca berkas unduhan CSV dan XLSX (nama berkas, kolom header, jumlah dan isi baris); hapus preferensi kolom di browser (hook `after`); seret (drag and drop), hover, dan scroll horizontal pada tabel.
 - Pemulihan: preferensi Setup Column tabel yang disimpan spec ini dihapus di hook `after` (hapus preferensi kolom di browser, bukan `[Reset to Default]`; kemampuan disediakan tim FE); Pre-setup bersama tidak diubah kecuali dinyatakan di atas. Pemulihan ini belum terdaftar di `suite.md` (lihat Temuan untuk QA).
@@ -43,7 +43,7 @@ coverage:
 7. Buka file
 8. Verifikasi berkas `Role-Permission-Manage-Files.csv` terunduh
 9. Verifikasi berkas memuat kolom Name, Group, Position, Division, Create, Read, Update, Delete
-10. Verifikasi berkas memuat seluruh 6 baris Detail Role `Manage files` pada `All Groups` (Pre-setup #39)
+10. Verifikasi berkas memuat seluruh 41 baris Detail Role `Manage files` pada `All Groups` (6 baris non-pola dan 35 baris pola Group Role, Pre-setup #39)
 
 ### TC-FA-RP-662: Download Detail Role: Search dan Filter aktif hanya mengekspor baris yang cocok
 
@@ -54,7 +54,7 @@ coverage:
 15. Klik ikon Download lalu `Download as XLSX`
 16. Buka file
 17. Verifikasi berkas `Role-Permission-Manage-Files.xlsx` terunduh
-18. Verifikasi berkas hanya memuat baris Fitri Handayani dan Citra Lestari
+18. Verifikasi berkas hanya memuat baris Fitri Handayani, Citra Lestari, dan tujuh baris pola Siti Rahmawati (Position `Finance Officer`, satu per group; Pre-setup #39)
 19. Lepas Filter: klik ikon Filter, klik `[Clear Field]` lalu `[Apply]`, kemudian tutup panel dengan klik ikon Filter
 20. Klik `(←)` pada kotak Search
 

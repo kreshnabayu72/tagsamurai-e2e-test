@@ -83,16 +83,18 @@ coverage:
 26. Verifikasi Live Preview menampilkan kembali kolom `<kolom pada iterasi>`
 27. Uncheck kolom `Action`
 28. Klik `[Save]`
-29. Verifikasi kolom `Action` tidak tampil di tabel
-30. Muat ulang halaman dengan F5
-31. Klik icon Changelog di toolbar User List
-32. Verifikasi kolom `Action` tetap tersembunyi di tabel (konfigurasi tetap setelah F5)
-33. Buka popup Setup Column, klik `[Reset to Default]`, lalu klik `[Save]`
+29. Verifikasi kolom `Date`, `User Name`, `Field`, `Old Value`, dan `New Value` tetap tampil di tabel
+30. Verifikasi kolom `Action` tidak tampil di tabel
+31. Muat ulang halaman dengan F5
+32. Klik icon Changelog di toolbar User List
+33. Verifikasi kolom `Date`, `User Name`, `Field`, `Old Value`, dan `New Value` tetap tampil di tabel
+34. Verifikasi kolom `Action` tetap tersembunyi di tabel (konfigurasi tetap setelah F5)
+35. Buka popup Setup Column, klik `[Reset to Default]`, lalu klik `[Save]`
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): pemulihan konfigurasi kolom lewat `[Reset to Default]` lalu `[Save]` sebelum TC berikutnya, pembukaan ulang modal sesudah F5, dan penutupan overlay atau panel lewat klik ulang icon/header (TC tidak menyatakan cara menutupnya).
-- Konfigurasi tersimpan lewat `[Save]` di TC-AC-SU-469 dikembalikan lewat `[Reset to Default]` dan `[Save]` di langkah 33. Suite perlu mendaftarkan penghapusan preferensi kolom Modal Changelog: User di hook `after` suite (bagian 4 konvensi).
+- Konfigurasi tersimpan lewat `[Save]` di TC-AC-SU-469 dikembalikan lewat `[Reset to Default]` dan `[Save]` di langkah 35. Suite perlu mendaftarkan penghapusan preferensi kolom Modal Changelog: User di hook `after` suite (bagian 4 konvensi).
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
 - Temuan untuk QA: (1) TC-AC-SU-467 menyebut "Hover header kolom Actions ⋯" sedangkan kolom itu berjudul Column Visibility (⋯); spec memakai header `⋯`. (2) TC-AC-SU-469 butir a mengasersi Live Preview tiap kolom yang di-toggle; spec mengulang langkah per kolom dari tabel Prerequisites. (3) TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).

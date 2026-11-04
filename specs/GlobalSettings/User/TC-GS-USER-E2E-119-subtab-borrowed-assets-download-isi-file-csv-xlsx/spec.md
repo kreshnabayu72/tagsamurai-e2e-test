@@ -47,8 +47,8 @@ coverage:
 4. Klik sub-tab `Borrowed Assets`
 5. Klik icon Download
 6. Klik `Download as CSV`
-7. Verifikasi file `Borrowed-Assets-Joko-Susilo.csv` terunduh
-8. Verifikasi tidak ada toast sukses
+7. Verifikasi tidak ada toast sukses
+8. Verifikasi file `Borrowed-Assets-Joko-Susilo.csv` terunduh
 
 ### TC-GS-USER-748: Download CSV seluruh data tanpa toast sukses
 
@@ -56,8 +56,8 @@ coverage:
 10. Verifikasi overlay opsi menampilkan `Download as CSV`
 11. Verifikasi overlay opsi menampilkan `Download as XLSX`
 12. Klik `Download as CSV`
-13. Verifikasi file `Borrowed-Assets-Joko-Susilo.csv` terunduh
-14. Verifikasi tidak ada toast sukses
+13. Verifikasi tidak ada toast sukses
+14. Verifikasi file `Borrowed-Assets-Joko-Susilo.csv` terunduh
 15. Buka isi file `Borrowed-Assets-Joko-Susilo.csv` hasil unduhan langkah 12
 16. Verifikasi file memuat 26 baris data aset seed (`Laptop 1 {runId}-119` sampai `Laptop 8`, `Proyektor 1` sampai `Proyektor 10`, dan `Kamera 1` sampai `Kamera 8`)
 17. Verifikasi jumlah baris data file sama dengan jumlah baris tabel, yaitu `B0` + 26, lebih banyak dari 10 baris satu halaman (tidak dibatasi halaman)
@@ -89,10 +89,10 @@ coverage:
 31. Hilangkan centang kolom `Brand` pada Overlay Column Visibility
 32. Klik icon Download
 33. Klik `Download as CSV`
-34. Buka isi file `Borrowed-Assets-Joko-Susilo.csv` hasil unduhan ini
-35. Verifikasi file memuat kolom `Name`
-36. Verifikasi file tanpa kolom `Brand`
-37. Verifikasi tidak ada toast peringatan
+34. Verifikasi tidak ada toast peringatan
+35. Buka isi file `Borrowed-Assets-Joko-Susilo.csv` hasil unduhan ini
+36. Verifikasi file memuat kolom `Name`
+37. Verifikasi file tanpa kolom `Brand`
 38. Klik header kolom Column Visibility (⋯)
 39. Centang kembali kolom `Brand` pada Overlay Column Visibility
 40. Klik icon Download
@@ -106,7 +106,7 @@ coverage:
 - Data target: TC sumber memakai `Ahmad Fauzi` dan nama berkas `Borrowed-Assets-Ahmad-Fauzi`; spec memakai `Joko Susilo` (Tabel Pre-setup No. 19) dengan populasi aset pinjaman milik spec, sehingga nama berkas `Borrowed-Assets-Joko-Susilo` (format `Borrowed-Assets-[User-Name]`, PRD user.md §4.1.3).
 - Urutan TC dalam spec: 389, 748, 752, 749, 750, 751. TC-GS-USER-752 membaca berkas hasil unduhan TC-GS-USER-748 (langkah 12) tanpa unduh ulang karena state tabel keduanya identik (tanpa Search dan Filter, semua kolom); TC-GS-USER-750 (Search aktif) dan 751 (kolom hidden) mengubah state tabel sehingga diletakkan sesudah TC yang membutuhkan tabel tanpa Search dan kolom penuh. Urutan di `tc-user.md` adalah 389, 748, 749, 750, 751, 752.
 - TC-GS-USER-389 dan 748 memuat Expected nama berkas dan tanpa toast sukses yang sama; keduanya diasersi pada unduhannya masing-masing (unduhan pada langkah 6 untuk TC-GS-USER-389 dan langkah 12 untuk TC-GS-USER-748).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (mencari user target di User List); langkah 15, 26, 34, 42 (membaca isi berkas unduhan); langkah 29 (menutup Search). Langkah membaca isi berkas termasuk blok baca berpola.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (mencari user target di User List); langkah 15, 26, 35, 42 (membaca isi berkas unduhan); langkah 29 (menutup Search). Langkah membaca isi berkas termasuk blok baca berpola.
 - Spec melewati sekitar 35 langkah (43 langkah) karena enam TC Download berbagi satu layar, satu dataset seed, dan satu kelas harness (binary buffer); tiap blok mengunduh berkas sendiri kecuali TC-GS-USER-752 yang membaca berkas TC-GS-USER-748. Pembukaan layar (empat langkah pertama) dan langkah membaca isi berkas tidak dihitung ke batas.
 - Pembagian TC lintas spec: TC-GS-USER-387, 388, 716 sampai 721 ada di spec 114; TC-GS-USER-722 sampai 730 ada di spec 115; TC-GS-USER-731 sampai 735 ada di spec 116; TC-GS-USER-736, 737, 738, 753, 754 ada di spec 117; TC-GS-USER-739 sampai 747 ada di spec 118. Kegagalan ekspor sub-tab (bila ada TC-nya) bukan bagian spec ini.
 - Temuan untuk QA:

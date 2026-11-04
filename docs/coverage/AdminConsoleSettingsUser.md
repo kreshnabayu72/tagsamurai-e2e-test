@@ -33,34 +33,34 @@ Tiga baris bertanda **N/A, retired** di `tc-settings-user.md` (force logout tida
 | TC-AC-SU-E2E-009-guided-tooltip-user-list-step-next-back-dan-skip | Guided Tooltip User List: Step 1, Step 2 sampai 4 dan Done, Back, serta Skip via Tombol | FE+BE | 39 | 29–32 |
 | TC-AC-SU-E2E-010-guided-tooltip-user-list-skip-overlay-replay-resize-dan-keyboard | Guided Tooltip User List: Skip via Overlay, Replay lewat [?], Penutupan karena Resize atau Navigasi, dan Navigasi Keyboard | FE+BE | 35 | 33–36 |
 | TC-AC-SU-E2E-011-screening-detail-user-header-field-dan-avatar | Screening Detail User: Tiga Zona Header, Body, dan Avatar Read-only dengan atau tanpa Foto | FE+BE | 30 | 37, 40 |
-| TC-AC-SU-E2E-012-screening-detail-user-user-type-temporary-until-dan-tag | Detail User: Badge User Type per Kondisi Role, Field Temporary Until, dan Field TAG | FE+BE | 40 | 42–45 |
-| TC-AC-SU-E2E-013-detail-user-accordion-custom-field-label-tab-dan-state-tab | Detail User: Accordion Custom Field, Label Tab Responsibilities, State Tab, dan Breadcrumb Mempertahankan State List | FE+BE | 40 | 38, 46, 48, 49 |
+| TC-AC-SU-E2E-012-screening-detail-user-user-type-temporary-until-dan-tag | Detail User: Badge User Type per Kondisi Role, Field Temporary Until, dan Field TAG | FE+BE | 41 | 42–45 |
+| TC-AC-SU-E2E-013-detail-user-accordion-custom-field-label-tab-dan-state-tab | Detail User: Accordion Custom Field, Label Tab Responsibilities, State Tab, dan Breadcrumb Mempertahankan State List | FE+BE | 41 | 38, 46, 48, 49 |
 | TC-AC-SU-E2E-014-entitas-baru-tanpa-user-lain-dan-tanpa-custom-field | Entitas Baru: Hanya Default User di User List dan Detail User tanpa Section Custom Field | FE+BE | 13 | 18, 47 |
-| TC-AC-SU-E2E-015-aktor-default-user-tanpa-aksi-create-edit-delete | Aktor Default User: Tanpa Aksi Create, Edit, atau Delete serta Switch dan Checkbox Baris Default User Disabled | FE+BE | 25 | 50, 58, 114 |
+| TC-AC-SU-E2E-015-aktor-default-user-tanpa-aksi-create-edit-delete | Aktor Default User: Tanpa Aksi Create, Edit, atau Delete serta Switch dan Checkbox Baris Default User Disabled | FE+BE | 27 | 50, 58, 114 |
 | TC-AC-SU-E2E-016-role-matrix-menu-settings-user-dan-akses-langsung-per-aktor | Role Matrix: Menu Settings > User per Aktor, Akses Langsung via URL, dan Row Scope Seluruh User Entitas | FE+BE | 42 | 51–53, 55 |
 | TC-AC-SU-E2E-017-entitas-distributor-isolasi-data-dan-baris-global-role | Entitas Distributor: Isolasi Data User Antar Entitas dan Baris Global Role Manage TAG Stock serta Manage Hardware Stock | FE+BE | 16 | 54, 192 |
-| TC-AC-SU-E2E-018-role-matrix-switch-active-manage-user-and-role-dan-total-control | Role Matrix: Switch Active per Target untuk Aktor Manage user and role (Update) dan Total Control | FE+BE | 34 | 56, 57, 99 |
-| TC-AC-SU-E2E-019-role-matrix-switch-active-read-only-manage-user-and-role-tanpa-update | Role Matrix: Switch Active untuk Aktor Read Only dan Manage user and role, Switch Header Detail, serta Prioritas Tooltip | FE+BE | 41 | 59–61, 79 |
+| TC-AC-SU-E2E-018-role-matrix-switch-active-manage-user-and-role-dan-total-control | Role Matrix: Switch Active per Target untuk Aktor Manage user and role (Update) dan Total Control | FE+BE | 35 | 56, 57, 99 |
+| TC-AC-SU-E2E-019-role-matrix-switch-active-read-only-manage-user-and-role-tanpa-update | Role Matrix: Switch Active untuk Aktor Read Only dan Manage user and role, Switch Header Detail, serta Prioritas Tooltip | FE+BE | 43 | 59–61, 79 |
 | TC-AC-SU-E2E-020-switch-active-disabled-prioritas-tooltip-dan-target-nonaktif-global-settings | Switch Active Disabled: Tooltip Self pada Detail, Baris Default User, dan Target Nonaktif di Global Settings | FE+BE | 28 | 77, 98, 100, 101 |
-| TC-AC-SU-E2E-021-role-matrix-tab-role-global-role-per-aktor-dan-target | Role Matrix: Tab Role Global Role, Aktor Manage user and role (Update) per Target | FE+BE | 28 | 62 |
-| TC-AC-SU-E2E-022-role-matrix-group-role-target-group-manager-dan-sidebar-tanpa-restriksi | Role Matrix: Group Role Target Group Manager untuk Manage user and role dan Total Control serta Sidebar Group tanpa Restriksi Node | FE+BE | 37 | 66, 67, 78 |
-| TC-AC-SU-E2E-023-role-matrix-assign-group-hidden-disabled-enabled | Role Matrix: Assign Group Hidden untuk Default User dan Self, Disabled untuk Target Total Control atau Read Only, serta Enabled pada Role tanpa Group | FE+BE | 40 | 68–70 |
-| TC-AC-SU-E2E-024-role-matrix-resend-email-row-action-per-aktor | Role Matrix: Row Action Resend Activation Email dan Resend Confirmation Email per Aktor | FE+BE | 54 | 71, 72, 140, 152, 153 |
-| TC-AC-SU-E2E-025-role-matrix-kolom-checkbox-dan-bulk-action-bar-per-aktor | Role Matrix: Kolom Checkbox dan Bulk Action Bar per Aktor | FE+BE | 34 | 73, 74, 136, 137 |
-| TC-AC-SU-E2E-026-aktor-read-only-kontrol-baca-tabel-dan-tab-detail | Aktor Read Only: Kontrol Baca Tabel, Seluruh Tab Detail User, Tab Responsibilities, Tab Changelog, dan Prioritas Tooltip | FE+BE | 45 | 75, 76, 80, 367, 403 |
-| TC-AC-SU-E2E-027-deactivate-single-via-switch-user-list-dialog-dan-hasil | Deactivate Single via Switch User List: Dialog Konfirmasi, Cancel, Penutupan, dan Hasil Confirm | FE+BE | 43 | 81–86 |
+| TC-AC-SU-E2E-021-role-matrix-tab-role-global-role-per-aktor-dan-target | Role Matrix: Tab Role Global Role, Aktor Manage user and role (Update) per Target | FE+BE | 46 | 62 |
+| TC-AC-SU-E2E-022-role-matrix-group-role-target-group-manager-dan-sidebar-tanpa-restriksi | Role Matrix: Group Role Target Group Manager untuk Manage user and role dan Total Control serta Sidebar Group tanpa Restriksi Node | FE+BE | 38 | 66, 67, 78 |
+| TC-AC-SU-E2E-023-role-matrix-assign-group-hidden-disabled-enabled | Role Matrix: Assign Group Hidden untuk Default User dan Self, Disabled untuk Target Total Control atau Read Only, serta Enabled pada Role tanpa Group | FE+BE | 42 | 68–70 |
+| TC-AC-SU-E2E-024-role-matrix-resend-email-row-action-per-aktor | Role Matrix: Row Action Resend Activation Email dan Resend Confirmation Email per Aktor | FE+BE | 57 | 71, 72, 140, 152, 153 |
+| TC-AC-SU-E2E-025-role-matrix-kolom-checkbox-dan-bulk-action-bar-per-aktor | Role Matrix: Kolom Checkbox dan Bulk Action Bar per Aktor | FE+BE | 38 | 73, 74, 136, 137 |
+| TC-AC-SU-E2E-026-aktor-read-only-kontrol-baca-tabel-dan-tab-detail | Aktor Read Only: Kontrol Baca Tabel, Seluruh Tab Detail User, Tab Responsibilities, Tab Changelog, dan Prioritas Tooltip | FE+BE | 50 | 75, 76, 80, 367, 403 |
+| TC-AC-SU-E2E-027-deactivate-single-via-switch-user-list-dialog-dan-hasil | Deactivate Single via Switch User List: Dialog Konfirmasi, Cancel, Penutupan, dan Hasil Confirm | FE+BE | 44 | 81–86 |
 | TC-AC-SU-E2E-028-activate-single-via-switch-user-list-dan-pending-activation | Activate Single via Switch User List: Dialog, Cancel, Confirm, Aktivasi Ulang, dan Switch Pending Activation | FE+BE | 39 | 87–89, 96, 97 |
 | TC-AC-SU-E2E-029-activate-deactivate-dari-switch-header-detail-user | Activate dan Deactivate dari Switch Header Detail User: Dialog, Toast, Label, Badge, dan Sinkron ke User List | FE+BE | 21 | 90, 91 |
-| TC-AC-SU-E2E-030-bulk-action-bar-screening-counter-dan-overlay-bulk-action | Bulk Action Bar: Screening, Overlay Bulk Action per Komposisi Seleksi, dan Counter Realtime | FE+BE | 33 | 105–109 |
-| TC-AC-SU-E2E-031-seleksi-checkbox-header-select-all-unselect-dan-uncheck-baris | Seleksi Checkbox: Checkbox Header, Select All Lintas Halaman, Unselect All, dan Uncheck Satu Baris | FE+BE | 30 | 110–112 |
-| TC-AC-SU-E2E-032-seleksi-bertahan-saat-pindah-halaman-search-filter-dan-sort | Seleksi Checkbox Bertahan saat Pindah Halaman, Search, Filter, dan Sort | FE+BE | 25 | 134, 326, 327 |
+| TC-AC-SU-E2E-030-bulk-action-bar-screening-counter-dan-overlay-bulk-action | Bulk Action Bar: Screening, Overlay Bulk Action per Komposisi Seleksi, dan Counter Realtime | FE+BE | 35 | 105–109 |
+| TC-AC-SU-E2E-031-seleksi-checkbox-header-select-all-unselect-dan-uncheck-baris | Seleksi Checkbox: Checkbox Header, Select All Lintas Halaman, Unselect All, dan Uncheck Satu Baris | FE+BE | 31 | 110–112 |
+| TC-AC-SU-E2E-032-seleksi-bertahan-saat-pindah-halaman-search-filter-dan-sort | Seleksi Checkbox Bertahan saat Pindah Halaman, Search, Filter, dan Sort | FE+BE | 28 | 134, 326, 327 |
 | TC-AC-SU-E2E-033-selection-limit-lifecycle-settings | Selection Limit: Live-block Checkbox ke-(Limit+1) dan Select All yang Melebihi Limit di-cap Otomatis | FE+BE | 20 | 115, 116 |
 | TC-AC-SU-E2E-034-bulk-activate-deactivate-seleksi-eligible-cancel-dan-confirm | Bulk Activate dan Bulk Deactivate: Seleksi Semua Eligible, Dialog, Cancel Mempertahankan Seleksi, dan Confirm | FE+BE | 29 | 117–121 |
 | TC-AC-SU-E2E-035-bulk-activate-deactivate-seleksi-campuran-dan-collapse-dialog-single | Bulk Activate dan Bulk Deactivate: Dialog Dua Kelompok untuk Seleksi Campuran, Skipped, dan Collapse ke Dialog Single | FE+BE | 32 | 122, 124, 126–128 |
 | TC-AC-SU-E2E-036-bulk-activate-deactivate-satu-eligible-tanpa-eligible-dan-toast-partial | Bulk Activate dan Bulk Deactivate: Satu Baris Eligible, Tanpa Baris Eligible (Dialog Blok), dan Toast Partial | FE+BE | 33 | 123, 129, 652 |
 | TC-AC-SU-E2E-037-bulk-oleh-manage-user-and-role-default-user-self-target-tier-dan-log-partial | Bulk oleh Manage user and role (Update): Default User dan Self Dikecualikan, Target Total Control atau Read Only Skipped, dan Log Partial | FE+BE | 47 | 113, 125, 576, 651 |
 | TC-AC-SU-E2E-038-resend-visibilitas-row-action-dan-overlay-bulk | Resend Email: Visibilitas Row Action dan Overlay Bulk Action | FE+BE | 31 | 138, 139, 141, 155, 159 |
-| TC-AC-SU-E2E-039-resend-activation-email-row-action-dan-cooldown | Resend Activation Email: Row Action dan Cooldown 60 Detik | FE+BE | 31 | 142, 146–148 |
+| TC-AC-SU-E2E-039-resend-activation-email-row-action-dan-cooldown | Resend Activation Email: Row Action dan Cooldown 60 Detik | FE+BE | 32 | 142, 146–148 |
 | TC-AC-SU-E2E-040-resend-confirmation-email-row-action-dan-header-detail | Resend Email: Row Action Confirmation dan Tombol Header Detail User | FE+BE | 19 | 143–145 |
 | TC-AC-SU-E2E-041-bulk-resend-sukses-cooldown-dan-semua-cooldown | Bulk Resend Activation Email: Sukses, Sebagian Cooldown, dan Semua Cooldown | FE+BE | 19 | 154, 156, 157 |
 | TC-AC-SU-E2E-042-entitas-suspended-tampilan-kontrol | Entitas Suspended: Tampilan Kontrol Tulis di User List dan Detail User | FE+BE | 43 | 161–164, 191, 212 |
@@ -68,10 +68,10 @@ Tiga baris bertanda **N/A, retired** di `tc-settings-user.md` (force logout tida
 | TC-AC-SU-E2E-044-entitas-suspended-transisi-dan-request-langsung-bagian-2 | Entitas Suspended: Sesi Aktor MUR Distributor, Pemulihan Otomatis, dan Request Activate Langsung | FE+BE | 31 | 603, 604, 623 |
 | TC-AC-SU-E2E-045-sub-tab-global-role-screening-toolbar-dan-sort | Sub-tab Global Role: Screening, Tooltip Changelog, dan Header Tidak Bisa Di-sort | FE+BE | 26 | 170–172 |
 | TC-AC-SU-E2E-046-sub-tab-global-role-guard-checkbox-dan-dimensi-tidak-applicable | Sub-tab Global Role: Checkbox Terkunci, Read Mandatory, dan Dimensi Tidak Applicable | FE+BE | 16 | 176, 179, 180 |
-| TC-AC-SU-E2E-047-sub-tab-global-role-switch-dan-autosave-crud | Sub-tab Global Role: Switch dan Autosave CRUD | FE+BE | 30 | 173–175, 177, 178 |
+| TC-AC-SU-E2E-047-sub-tab-global-role-switch-dan-autosave-crud | Sub-tab Global Role: Switch dan Autosave CRUD | FE+BE | 36 | 173–175, 177, 178 |
 | TC-AC-SU-E2E-048-sub-tab-global-role-baris-default-user-dan-self-terkunci | Sub-tab Global Role: Detail Default User dan Akun Sendiri Terkunci | FE+BE | 24 | 183, 184 |
-| TC-AC-SU-E2E-049-sub-tab-global-role-aktor-manage-user-and-role-per-target | Sub-tab Global Role: Aktor Manage user and role per Target (Total Control, Read Only, Standar, Group Manager) | FE+BE | 43 | 185–188, 190 |
-| TC-AC-SU-E2E-050-sub-tab-global-role-aktor-read-only | Sub-tab Global Role: Aktor Read Only Melihat Kontrol Disabled | FE+BE | 8 | 189 |
+| TC-AC-SU-E2E-049-sub-tab-global-role-aktor-manage-user-and-role-per-target | Sub-tab Global Role: Aktor Manage user and role per Target (Total Control, Read Only, Standar, Group Manager) | FE+BE | 44 | 185–188, 190 |
+| TC-AC-SU-E2E-050-sub-tab-global-role-aktor-read-only | Sub-tab Global Role: Aktor Read Only Melihat Kontrol Disabled | FE+BE | 9 | 189 |
 | TC-AC-SU-E2E-051-sub-tab-group-role-screening-dan-sort-group | Sub-tab Group Role: Screening Kolom dan Sort Kolom Group | FE+BE | 24 | 194, 666 |
 | TC-AC-SU-E2E-052-sub-tab-group-role-sort-role-name-dan-badge-group | Sub-tab Group Role: Sort Role Name dan Group Summary Badge | FE+BE | 23 | 195–197 |
 | TC-AC-SU-E2E-053-sub-tab-group-role-all-groups-empty-state-dan-kolom | Sub-tab Group Role: All Groups, Role Tanpa Group, dan Kolom Tanpa Switch | FE+BE | 30 | 198–200, 645 |
@@ -99,135 +99,135 @@ Tiga baris bertanda **N/A, retired** di `tc-settings-user.md` (force logout tida
 | TC-AC-SU-E2E-075-user-list-search-role-badge-modified-by-dan-trim | User List Search: Kolom Role, Badge, Modified By, Custom Field, dan Trim Query | FE+BE | 48 | 265–268, 271 |
 | TC-AC-SU-E2E-076-user-list-search-kolom-hidden-non-searchable-dan-status | User List Search: Kolom Hidden, Kolom Non-Searchable, Status Active/Inactive, dan Custom Field Date | FE+BE | 39 | 269, 270, 648, 659 |
 | TC-AC-SU-E2E-077-user-list-filter-panel-screening-dan-isi-opsi | User List Filter Panel: Screening dan Isi Opsi Dropdown dari Data Tabel | FE+BE | 16 | 272, 273 |
-| TC-AC-SU-E2E-078-user-list-filter-panel-role-date-range-or-and-chip | User List Filter Panel: Role, Date Range, OR dan AND, Hapus Chip, dan Activation Status | FE+BE | 48 | 275–278, 649 |
-| TC-AC-SU-E2E-079-user-list-filter-panel-uncheck-search-dropdown-dan-clear | User List Filter Panel: Uncheck di Dropdown, Search Dropdown, Clear Field, dan Custom Field Dropdown | FE+BE | 29 | 279–282 |
+| TC-AC-SU-E2E-078-user-list-filter-panel-role-date-range-or-and-chip | User List Filter Panel: Role, Date Range, OR dan AND, Hapus Chip, dan Activation Status | FE+BE | 56 | 275–278, 649 |
+| TC-AC-SU-E2E-079-user-list-filter-panel-uncheck-search-dropdown-dan-clear | User List Filter Panel: Uncheck di Dropdown, Search Dropdown, Clear Field, dan Custom Field Dropdown | FE+BE | 31 | 279–282 |
 | TC-AC-SU-E2E-080-user-list-sidebar-group-digabung-search-dan-filter | User List Sidebar Group: Filter Node Beserta Descendant, Digabung dengan Search dan Filter, dan Collapse Persisten | FE+BE | 31 | 283–285 |
 | TC-AC-SU-E2E-081-user-list-kombinasi-search-filter-sort-bagian-1 | User List Kombinasi Search, Filter, Sort, dan Page Size (bagian 1) | FE+BE | 43 | 286–289 |
-| TC-AC-SU-E2E-082-user-list-kombinasi-search-filter-sort-bagian-2 | User List Kombinasi Search, Filter, Sort, dan Page Size (bagian 2) | FE+BE | 43 | 290–293 |
-| TC-AC-SU-E2E-083-user-list-sort-role-active-tanggal-dan-tie-breaker | User List Sort: Kolom Role, Active, Kelas Tanggal, dan Tie-Breaker Nilai Sama | FE+BE | 35 | 295–297, 656 |
-| TC-AC-SU-E2E-084-user-list-sort-badge-modified-by-custom-field-dan-guard | User List Sort: Kolom Badge, Modified By, Custom Field Text, dan Guard Kolom Tanpa Sort | FE+BE | 35 | 298–302 |
+| TC-AC-SU-E2E-082-user-list-kombinasi-search-filter-sort-bagian-2 | User List Kombinasi Search, Filter, Sort, dan Page Size (bagian 2) | FE+BE | 47 | 290–293 |
+| TC-AC-SU-E2E-083-user-list-sort-role-active-tanggal-dan-tie-breaker | User List Sort: Kolom Role, Active, Kelas Tanggal, dan Tie-Breaker Nilai Sama | FE+BE | 39 | 295–297, 656 |
+| TC-AC-SU-E2E-084-user-list-sort-badge-modified-by-custom-field-dan-guard | User List Sort: Kolom Badge, Modified By, Custom Field Text, dan Guard Kolom Tanpa Sort | FE+BE | 37 | 298–302 |
 | TC-AC-SU-E2E-085-user-list-column-visibility-dan-setup-column-default-visible | User List Column Visibility dan Setup Column: Kolom Default Visible | FE+BE | 52 | 303–307 |
 | TC-AC-SU-E2E-086-user-list-setup-column-kolom-curated-hidden | User List Setup Column: Kolom Curated Hidden (Ceklis, Drag Reorder, Pin dan Unpin) | FE+BE | 36 | 308–310 |
 | TC-AC-SU-E2E-087-user-list-setup-column-guard-reset-discard-dan-cache | User List Setup Column: Guard Satu Kolom, Reset to Default, Discard, dan Independensi Cache dengan Modal Changelog | FE+BE | 36 | 311–314 |
 | TC-AC-SU-E2E-088-user-list-download-csv-xlsx-dan-konteks | User List Download: Overlay, CSV, XLSX dengan Search, Filter, Node Sidebar Group, dan Kolom Tampil | FE+BE | 35 | 315–318, 661 |
 | TC-AC-SU-E2E-089-user-list-download-isi-berkas-per-tipe-kolom | User List Download: Isi Berkas XLSX (Nilai Sel per Tipe Kolom dan Keanggotaan Baris, Binary Buffer) | FE+BE | 30 | 317, 319, 661 |
 | TC-AC-SU-E2E-090-user-list-pagination-dan-retensi-state | User List Pagination: Navigasi Halaman dan Reset Halaman saat Search atau Filter Berubah | FE+BE | 27 | 321, 322 |
-| TC-AC-SU-E2E-091-perubahan-custom-field-global-settings-terhadap-user-list-bagian-1 | Perubahan Custom Field di Global Settings terhadap User List dan Detail User (bagian 1) | FE+BE | 61 | 328–330, 608, 667 |
+| TC-AC-SU-E2E-091-perubahan-custom-field-global-settings-terhadap-user-list-bagian-1 | Perubahan Custom Field di Global Settings terhadap User List dan Detail User (bagian 1) | FE+BE | 59 | 328–330, 608, 667 |
 | TC-AC-SU-E2E-092-perubahan-custom-field-global-settings-terhadap-user-list-bagian-2 | Perubahan Custom Field di Global Settings terhadap User List dan Detail User (bagian 2) | FE+BE | 67 | 609–613 |
 | TC-AC-SU-E2E-093-tab-responsibilities-screening-state-dan-display-only | Tab Responsibilities: Screening, Sort Default, Display-Only, Search Kosong, Loading, dan Label 0 Pending Approvals | FE+BE | 35 | 331–334, 336, 337 |
-| TC-AC-SU-E2E-094-tab-responsibilities-sort-3-state | Tab Responsibilities: Sort 3-State Kelas Teks dan Kelas Tanggal | FE+BE | 16 | 338, 339 |
+| TC-AC-SU-E2E-094-tab-responsibilities-sort-3-state | Tab Responsibilities: Sort 3-State Kelas Teks dan Kelas Tanggal | FE+BE | 18 | 338, 339 |
 | TC-AC-SU-E2E-095-tab-responsibilities-search-bagian-1 | Tab Responsibilities Search: Siklus Interaksi Search Box dan Search Kelas Teks dan Badge | FE+BE | 33 | 340–342 |
 | TC-AC-SU-E2E-096-tab-responsibilities-search-bagian-2 | Tab Responsibilities Search: Kolom Non-Searchable, Trim Query, dan Kolom Hidden | FE+BE | 27 | 343–345 |
 | TC-AC-SU-E2E-097-tab-responsibilities-filter-panel-bagian-1 | Tab Responsibilities Filter Panel: Screening, Isi Opsi, Satu Opsi per Field, Date Range, dan Requester Kosong | FE+BE | 37 | 346–349, 658 |
-| TC-AC-SU-E2E-098-tab-responsibilities-filter-panel-bagian-2 | Tab Responsibilities Filter Panel: OR dan AND, Chip Opsi, dan Uncheck di Dropdown | FE+BE | 35 | 350–352 |
-| TC-AC-SU-E2E-099-tab-responsibilities-filter-panel-bagian-3 | Tab Responsibilities Filter Panel: Search di Dropdown, Search lalu Filter, dan Filter lalu Search | FE+BE | 33 | 353–355 |
-| TC-AC-SU-E2E-100-tab-responsibilities-column-visibility-dan-setup-column-bagian-1 | Tab Responsibilities Column Visibility dan Setup Column: Screening, Ceklis, dan Drag Reorder | FE+BE | 43 | 356–359 |
-| TC-AC-SU-E2E-101-tab-responsibilities-column-visibility-dan-setup-column-bagian-2 | Tab Responsibilities Column Visibility dan Setup Column: Pin, Reset to Default, Discard, dan Guard Satu Kolom | FE+BE | 44 | 360–363 |
+| TC-AC-SU-E2E-098-tab-responsibilities-filter-panel-bagian-2 | Tab Responsibilities Filter Panel: OR dan AND, Chip Opsi, dan Uncheck di Dropdown | FE+BE | 38 | 350–352 |
+| TC-AC-SU-E2E-099-tab-responsibilities-filter-panel-bagian-3 | Tab Responsibilities Filter Panel: Search di Dropdown, Search lalu Filter, dan Filter lalu Search | FE+BE | 34 | 353–355 |
+| TC-AC-SU-E2E-100-tab-responsibilities-column-visibility-dan-setup-column-bagian-1 | Tab Responsibilities Column Visibility dan Setup Column: Screening, Ceklis, dan Drag Reorder | FE+BE | 45 | 356–359 |
+| TC-AC-SU-E2E-101-tab-responsibilities-column-visibility-dan-setup-column-bagian-2 | Tab Responsibilities Column Visibility dan Setup Column: Pin, Reset to Default, Discard, dan Guard Satu Kolom | FE+BE | 48 | 360–363 |
 | TC-AC-SU-E2E-102-tab-responsibilities-download | Tab Responsibilities Download: CSV Seluruh Baris dan XLSX dengan Search dan Filter Aktif | FE+BE | 21 | 364, 365 |
-| TC-AC-SU-E2E-103-tab-changelog-screening-dan-state | Tab Changelog: Screening, Search Kosong, Tie-breaker Auto-Revert, Loading, dan Empty State | FE+BE | 32 | 368–371, 373, 377 |
-| TC-AC-SU-E2E-104-tab-changelog-sort | Tab Changelog: Sort 3-state Kelas Teks, Campuran, dan Tanggal | FE+BE | 27 | 374–376 |
-| TC-AC-SU-E2E-105-tab-changelog-search-siklus-dan-per-kolom | Tab Changelog: Siklus Search Box dan Search per Kolom Teks | FE+BE | 31 | 378, 379 |
-| TC-AC-SU-E2E-106-tab-changelog-search-kolom-non-searchable-dan-hidden | Tab Changelog: Search Kolom Non-searchable dan Kolom Hidden | FE+BE | 19 | 380, 381 |
-| TC-AC-SU-E2E-107-tab-changelog-filter-panel-screening-opsi-dan-satu-opsi | Tab Changelog: Filter Panel (Screening, Isi Opsi, Satu Opsi per Field, Date Inklusif) | FE+BE | 36 | 382–385 |
-| TC-AC-SU-E2E-108-tab-changelog-filter-panel-kombinasi-chip-dan-uncheck | Tab Changelog: Filter Panel (Kombinasi OR/AND, Chip, dan Uncheck Opsi) | FE+BE | 39 | 386–388 |
-| TC-AC-SU-E2E-109-tab-changelog-filter-panel-search-dropdown-dan-irisan | Tab Changelog: Search dalam Dropdown Filter dan Irisan Search dengan Filter | FE+BE | 32 | 389–391 |
-| TC-AC-SU-E2E-110-tab-changelog-column-visibility-dan-setup-column-bagian-1 | Tab Changelog: Column Visibility dan Setup Column (Screening, Toggle Kolom, Reorder) | FE+BE | 43 | 392–395 |
-| TC-AC-SU-E2E-111-tab-changelog-column-visibility-dan-setup-column-bagian-2 | Tab Changelog: Setup Column (Pin, Reset to Default, Tutup tanpa Save, Satu Kolom Tersisa) | FE+BE | 47 | 396–399 |
-| TC-AC-SU-E2E-112-tab-changelog-download-csv | Tab Changelog: Download CSV tanpa Search atau Filter | FE+BE | 13 | 400 |
-| TC-AC-SU-E2E-113-tab-system-log-screening-dan-state | Tab System Log: Screening, Search Kosong, Loading, Hover Snapshot Group, dan Empty State | FE+BE | 38 | 404–406, 408, 654 |
-| TC-AC-SU-E2E-114-tab-system-log-sort | Tab System Log: Sort 3-state Kolom Tanggal dan Kolom Teks | FE+BE | 24 | 409, 410 |
-| TC-AC-SU-E2E-115-tab-system-log-search-siklus-dan-kolom-non-searchable | Tab System Log: Siklus Search Box dan Kolom Non-searchable | FE+BE | 32 | 411, 413 |
-| TC-AC-SU-E2E-116-tab-system-log-filter-panel-screening-opsi-dan-kombinasi | Tab System Log: Filter Panel (Screening dan Isi Opsi Dropdown) | FE+BE | 18 | 414, 415 |
-| TC-AC-SU-E2E-117-tab-system-log-filter-panel-chip-uncheck-dan-date-range | Tab System Log: Filter Panel (Chip, Uncheck Opsi, dan Date Range Inklusif) | FE+BE | 36 | 418, 419, 653 |
-| TC-AC-SU-E2E-118-tab-system-log-search-dan-filter-irisan | Tab System Log: Irisan Search dengan Filter | FE+BE | 23 | 420, 421 |
-| TC-AC-SU-E2E-119-tab-system-log-download-csv | Tab System Log: Download CSV tanpa Search atau Filter | FE+BE | 13 | 422 |
-| TC-AC-SU-E2E-120-tab-user-log-screening-dan-state | Tab User Log: Screening, Isolasi Sesi, Search Kosong, Loading, dan Empty State | FE+BE | 30 | 425–429, 431 |
-| TC-AC-SU-E2E-121-tab-user-log-sort | Tab User Log: Sort 3-state Kolom Tanggal dan Kolom Teks | FE+BE | 34 | 432, 433 |
-| TC-AC-SU-E2E-122-tab-user-log-search-siklus-dan-per-kolom | Tab User Log: Siklus Search Box dan Search per Kolom Teks | FE+BE | 31 | 434, 435 |
-| TC-AC-SU-E2E-123-tab-user-log-filter-panel-dan-date-range | Tab User Log: Filter Panel Hanya Field Date dan Date Range Inklusif | FE+BE | 15 | 436, 437 |
-| TC-AC-SU-E2E-124-tab-user-log-download-csv | Tab User Log: Download CSV tanpa Search atau Filter | FE+BE | 13 | 438 |
-| TC-AC-SU-E2E-125-detail-user-pagination-dan-retensi-state-lintas-tab | Detail User: Pagination Empat Tab dan Retensi Search atau Filter Lintas Tab | FE+BE | 30 | 441, 442 |
+| TC-AC-SU-E2E-103-tab-changelog-screening-dan-state | Tab Changelog: Screening, Search Kosong, Tie-breaker Auto-Revert, Loading, dan Empty State | FE+BE | 34 | 368–371, 373, 377 |
+| TC-AC-SU-E2E-104-tab-changelog-sort | Tab Changelog: Sort 3-state Kelas Teks, Campuran, dan Tanggal | FE+BE | 29 | 374–376 |
+| TC-AC-SU-E2E-105-tab-changelog-search-siklus-dan-per-kolom | Tab Changelog: Siklus Search Box dan Search per Kolom Teks | FE+BE | 33 | 378, 379 |
+| TC-AC-SU-E2E-106-tab-changelog-search-kolom-non-searchable-dan-hidden | Tab Changelog: Search Kolom Non-searchable dan Kolom Hidden | FE+BE | 21 | 380, 381 |
+| TC-AC-SU-E2E-107-tab-changelog-filter-panel-screening-opsi-dan-satu-opsi | Tab Changelog: Filter Panel (Screening, Isi Opsi, Satu Opsi per Field, Date Inklusif) | FE+BE | 40 | 382–385 |
+| TC-AC-SU-E2E-108-tab-changelog-filter-panel-kombinasi-chip-dan-uncheck | Tab Changelog: Filter Panel (Kombinasi OR/AND, Chip, dan Uncheck Opsi) | FE+BE | 40 | 386–388 |
+| TC-AC-SU-E2E-109-tab-changelog-filter-panel-search-dropdown-dan-irisan | Tab Changelog: Search dalam Dropdown Filter dan Irisan Search dengan Filter | FE+BE | 33 | 389–391 |
+| TC-AC-SU-E2E-110-tab-changelog-column-visibility-dan-setup-column-bagian-1 | Tab Changelog: Column Visibility dan Setup Column (Screening, Toggle Kolom, Reorder) | FE+BE | 46 | 392–395 |
+| TC-AC-SU-E2E-111-tab-changelog-column-visibility-dan-setup-column-bagian-2 | Tab Changelog: Setup Column (Pin, Reset to Default, Tutup tanpa Save, Satu Kolom Tersisa) | FE+BE | 48 | 396–399 |
+| TC-AC-SU-E2E-112-tab-changelog-download-csv | Tab Changelog: Download CSV tanpa Search atau Filter | FE+BE | 14 | 400 |
+| TC-AC-SU-E2E-113-tab-system-log-screening-dan-state | Tab System Log: Screening, Search Kosong, Loading, Hover Snapshot Group, dan Empty State | FE+BE | 41 | 404–406, 408, 654 |
+| TC-AC-SU-E2E-114-tab-system-log-sort | Tab System Log: Sort 3-state Kolom Tanggal dan Kolom Teks | FE+BE | 27 | 409, 410 |
+| TC-AC-SU-E2E-115-tab-system-log-search-siklus-dan-kolom-non-searchable | Tab System Log: Siklus Search Box dan Kolom Non-searchable | FE+BE | 35 | 411, 413 |
+| TC-AC-SU-E2E-116-tab-system-log-filter-panel-screening-opsi-dan-kombinasi | Tab System Log: Filter Panel (Screening dan Isi Opsi Dropdown) | FE+BE | 20 | 414, 415 |
+| TC-AC-SU-E2E-117-tab-system-log-filter-panel-chip-uncheck-dan-date-range | Tab System Log: Filter Panel (Chip, Uncheck Opsi, dan Date Range Inklusif) | FE+BE | 37 | 418, 419, 653 |
+| TC-AC-SU-E2E-118-tab-system-log-search-dan-filter-irisan | Tab System Log: Irisan Search dengan Filter | FE+BE | 24 | 420, 421 |
+| TC-AC-SU-E2E-119-tab-system-log-download-csv | Tab System Log: Download CSV tanpa Search atau Filter | FE+BE | 14 | 422 |
+| TC-AC-SU-E2E-120-tab-user-log-screening-dan-state | Tab User Log: Screening, Isolasi Sesi, Search Kosong, Loading, dan Empty State | FE+BE | 32 | 425–429, 431 |
+| TC-AC-SU-E2E-121-tab-user-log-sort | Tab User Log: Sort 3-state Kolom Tanggal dan Kolom Teks | FE+BE | 38 | 432, 433 |
+| TC-AC-SU-E2E-122-tab-user-log-search-siklus-dan-per-kolom | Tab User Log: Siklus Search Box dan Search per Kolom Teks | FE+BE | 33 | 434, 435 |
+| TC-AC-SU-E2E-123-tab-user-log-filter-panel-dan-date-range | Tab User Log: Filter Panel Hanya Field Date dan Date Range Inklusif | FE+BE | 16 | 436, 437 |
+| TC-AC-SU-E2E-124-tab-user-log-download-csv | Tab User Log: Download CSV tanpa Search atau Filter | FE+BE | 14 | 438 |
+| TC-AC-SU-E2E-125-detail-user-pagination-dan-retensi-state-lintas-tab | Detail User: Pagination Empat Tab dan Retensi Search atau Filter Lintas Tab | FE+BE | 32 | 441, 442 |
 | TC-AC-SU-E2E-126-modal-changelog-user-screening-isi-dan-state | Modal Changelog User: Screening, Isi Lintas User, Loading, Empty Search, dan Empty State | FE+BE | 25 | 443–446, 448 |
 | TC-AC-SU-E2E-127-modal-changelog-user-sort-tiga-state | Modal Changelog User: Sort 3-State Kelas Teks, Campuran, dan Tanggal | FE+BE | 25 | 449–451 |
 | TC-AC-SU-E2E-128-modal-changelog-user-search-siklus-dan-per-kolom | Modal Changelog User: Siklus Search Box dan Search per Kolom Kelas Teks | FE+BE | 30 | 452, 453 |
-| TC-AC-SU-E2E-129-modal-changelog-user-search-kolom-non-searchable-dan-hide | Modal Changelog User: Search atas Kolom Non-Searchable dan Kolom yang Di-hide | FE+BE | 17 | 454, 455 |
-| TC-AC-SU-E2E-130-modal-changelog-user-filter-screening-dan-isi-opsi | Modal Changelog User: Screening Filter Panel dan Isi Opsi Dropdown Filter | FE+BE | 21 | 456, 457 |
-| TC-AC-SU-E2E-131-modal-changelog-user-filter-user-sudah-dicabut-satu-opsi-dan-rentang-date | Modal Changelog User: Filter User Name Akses Dicabut, Satu Opsi per Field, dan Rentang Date | FE+BE | 24 | 458–460 |
+| TC-AC-SU-E2E-129-modal-changelog-user-search-kolom-non-searchable-dan-hide | Modal Changelog User: Search atas Kolom Non-Searchable dan Kolom yang Di-hide | FE+BE | 18 | 454, 455 |
+| TC-AC-SU-E2E-130-modal-changelog-user-filter-screening-dan-isi-opsi | Modal Changelog User: Screening Filter Panel dan Isi Opsi Dropdown Filter | FE+BE | 24 | 456, 457 |
+| TC-AC-SU-E2E-131-modal-changelog-user-filter-user-sudah-dicabut-satu-opsi-dan-rentang-date | Modal Changelog User: Filter User Name Akses Dicabut, Satu Opsi per Field, dan Rentang Date | FE+BE | 25 | 458–460 |
 | TC-AC-SU-E2E-132-modal-changelog-user-filter-or-and-chip-dan-uncheck | Modal Changelog User: Filter OR dalam Field, AND antar Field, Chip, dan Uncheck Opsi | FE+BE | 34 | 461–463 |
 | TC-AC-SU-E2E-133-modal-changelog-user-filter-search-dropdown-dan-irisan-search-filter | Modal Changelog User: Search di Dropdown Filter serta Irisan Search dan Filter | FE+BE | 28 | 464–466 |
-| TC-AC-SU-E2E-134-modal-changelog-user-column-visibility-screening-popup-dan-toggle-kolom | Modal Changelog User: Screening Column Visibility, Popup Setup Column, dan Toggle Kolom | FE+BE | 33 | 467–469 |
+| TC-AC-SU-E2E-134-modal-changelog-user-column-visibility-screening-popup-dan-toggle-kolom | Modal Changelog User: Screening Column Visibility, Popup Setup Column, dan Toggle Kolom | FE+BE | 35 | 467–469 |
 | TC-AC-SU-E2E-135-modal-changelog-user-setup-column-drag-pin-dan-reset | Modal Changelog User: Setup Column Drag Reorder, Pin, dan Reset to Default | FE+BE | 41 | 470–472 |
 | TC-AC-SU-E2E-136-modal-changelog-user-setup-column-tutup-tanpa-save-dan-kolom-minimal | Modal Changelog User: Setup Column Tutup Tanpa Save dan Satu Kolom Tersisa | FE+BE | 19 | 473, 474 |
 | TC-AC-SU-E2E-137-modal-changelog-user-download-csv-dan-pagination | Modal Changelog User: Download CSV tanpa Search dan Filter serta Pagination | FE+BE | 25 | 476, 479 |
 | TC-AC-SU-E2E-138-modal-changelog-global-role-screening-isi-dan-state | Modal Changelog Global Role: Screening, Cakupan Entri, Search Kosong, Loading, dan Empty State | FE+BE | 29 | 480–482, 484, 504 |
-| TC-AC-SU-E2E-139-modal-changelog-global-role-sort-tiga-state | Modal Changelog Global Role: Sort 3-State Kelas Teks, Campuran, dan Tanggal | FE+BE | 30 | 485–487 |
-| TC-AC-SU-E2E-140-modal-changelog-global-role-search-siklus-per-kolom-dan-non-searchable | Modal Changelog Global Role: Search Box, Search per Kolom, dan Kolom Non-Searchable | FE+BE | 37 | 488–490 |
+| TC-AC-SU-E2E-139-modal-changelog-global-role-sort-tiga-state | Modal Changelog Global Role: Sort 3-State Kelas Teks, Campuran, dan Tanggal | FE+BE | 31 | 485–487 |
+| TC-AC-SU-E2E-140-modal-changelog-global-role-search-siklus-per-kolom-dan-non-searchable | Modal Changelog Global Role: Search Box, Search per Kolom, dan Kolom Non-Searchable | FE+BE | 38 | 488–490 |
 | TC-AC-SU-E2E-141-modal-changelog-global-role-filter-panel | Modal Changelog Global Role: Screening Filter Panel, Satu Opsi per Field, Rentang Date, dan OR/AND | FE+BE | 36 | 491–494 |
 | TC-AC-SU-E2E-142-modal-changelog-global-role-column-visibility-popup-toggle-dan-drag | Modal Changelog Global Role: Column Visibility, Popup Setup Column, Toggle Kolom, dan Drag Reorder | FE+BE | 46 | 495–498 |
 | TC-AC-SU-E2E-143-modal-changelog-global-role-setup-column-pin-reset-tutup-dan-kolom-minimal | Modal Changelog Global Role: Setup Column Pin dan Reset to Default | FE+BE | 32 | 499, 500 |
 | TC-AC-SU-E2E-144-modal-changelog-global-role-pagination-dan-download-csv | Modal Changelog Global Role: Pagination dan Download CSV | FE+BE | 11 | 503, 646 |
 | TC-AC-SU-E2E-145-modal-changelog-group-role-screening-search-kosong-loading-dan-empty-state | Modal Changelog Group Role: Screening, Search Kosong, Loading, dan Empty State | FE+BE | 25 | 505, 506, 508, 530 |
-| TC-AC-SU-E2E-146-modal-changelog-group-role-sort-tiga-state | Modal Changelog Group Role: Sort 3-State Kelas Teks, Campuran, dan Tanggal | FE+BE | 30 | 509–511 |
+| TC-AC-SU-E2E-146-modal-changelog-group-role-sort-tiga-state | Modal Changelog Group Role: Sort 3-State Kelas Teks, Campuran, dan Tanggal | FE+BE | 31 | 509–511 |
 | TC-AC-SU-E2E-147-modal-changelog-group-role-search-siklus-interaksi-search-box | Modal Changelog Group Role: Siklus Interaksi Search Box | FE+BE | 25 | 512 |
-| TC-AC-SU-E2E-148-modal-changelog-group-role-search-per-kolom-dan-non-searchable | Modal Changelog Group Role: Search per Kolom Kelas Teks dan Kolom Non-Searchable | FE+BE | 14 | 513, 514 |
+| TC-AC-SU-E2E-148-modal-changelog-group-role-search-per-kolom-dan-non-searchable | Modal Changelog Group Role: Search per Kolom Kelas Teks dan Kolom Non-Searchable | FE+BE | 15 | 513, 514 |
 | TC-AC-SU-E2E-149-modal-changelog-group-role-filter-panel-dua-field-and-dan-satu-opsi | Modal Changelog Group Role: Filter Panel Role Name dan Group Name, AND, Satu Opsi per Field, dan Rentang Date | FE+BE | 33 | 515–518 |
 | TC-AC-SU-E2E-150-modal-changelog-group-role-filter-chip-dan-uncheck-group-name | Modal Changelog Group Role: Filter Chip Opsi Group Name dan Hapus Opsi lewat Uncheck | FE+BE | 25 | 519, 520 |
 | TC-AC-SU-E2E-151-modal-changelog-group-role-column-visibility-popup-dan-toggle-kolom | Modal Changelog Group Role: Column Visibility, Popup Setup Column, dan Toggle Kolom | FE+BE | 36 | 521–523 |
 | TC-AC-SU-E2E-152-modal-changelog-group-role-setup-column-drag-pin-dan-reset | Modal Changelog Group Role: Setup Column Drag Reorder, Pin, dan Reset to Default | FE+BE | 42 | 524–526 |
 | TC-AC-SU-E2E-153-modal-changelog-group-role-setup-column-tutup-tanpa-save-dan-kolom-minimal | Modal Changelog Group Role: Setup Column Tutup Tanpa Save dan Satu Kolom Tersisa | FE+BE | 20 | 527, 528 |
 | TC-AC-SU-E2E-154-modal-changelog-group-role-pagination | Modal Changelog Group Role: Pagination | FE+BE | 5 | 529 |
-| TC-AC-SU-E2E-155-changelog-user-aksi-status-dan-resend | Popup Changelog: User dan Tab Changelog Detail Mencatat Aksi Activate, Deactivate, Resend Activation Email, dan Resend Confirmation Email dari Settings > User | FE+BE | 37 | 531–534 |
-| TC-AC-SU-E2E-156-changelog-user-aksi-global-role | Popup Changelog User Mencatat Aksi Assign, Remove, dan Edit Permission Global Role dari Settings > User | FE+BE | 33 | 535–537 |
-| TC-AC-SU-E2E-157-changelog-user-aksi-group-role | Popup Changelog User Mencatat Aksi Assign, Edit Permission, dan Remove Group Role per Group dari Settings > User | FE+BE | 37 | 538–540 |
+| TC-AC-SU-E2E-155-changelog-user-aksi-status-dan-resend | Popup Changelog: User dan Tab Changelog Detail Mencatat Aksi Activate, Deactivate, Resend Activation Email, dan Resend Confirmation Email dari Settings > User | FE+BE | 41 | 531–534 |
+| TC-AC-SU-E2E-156-changelog-user-aksi-global-role | Popup Changelog User Mencatat Aksi Assign, Remove, dan Edit Permission Global Role dari Settings > User | FE+BE | 36 | 535–537 |
+| TC-AC-SU-E2E-157-changelog-user-aksi-group-role | Popup Changelog User Mencatat Aksi Assign, Edit Permission, dan Remove Group Role per Group dari Settings > User | FE+BE | 49 | 538–540 |
 | TC-AC-SU-E2E-158-changelog-user-tier-total-control-dan-read-only-dari-role-permission | Popup Changelog User Mencatat Assign dan Remove Total Control serta Assign Read Only yang Dipicu dari Settings > Role & Permission | FE+BE | 21 | 541–543 |
 | TC-AC-SU-E2E-159-changelog-user-tier-read-only-dan-group-manager-dari-role-permission | Popup Changelog User Mencatat Remove Read Only serta Assign dan Remove Group Manager yang Dipicu dari Settings > Role & Permission | FE+BE | 21 | 544, 545, 650 |
-| TC-AC-SU-E2E-160-changelog-user-auto-revert-dengan-tie-breaker | Popup Changelog User Mencatat Pasangan Edit dan Auto-Revert Total Control, Read Only, dan Group Manager dengan Urutan Tie-Breaker | FE+BE | 38 | 547–549 |
+| TC-AC-SU-E2E-160-changelog-user-auto-revert-dengan-tie-breaker | Popup Changelog User Mencatat Pasangan Edit dan Auto-Revert Total Control, Read Only, dan Group Manager dengan Urutan Tie-Breaker | FE+BE | 43 | 547–549 |
 | TC-AC-SU-E2E-161-pelepasan-group-manager-akibat-delete-group | Hapus Group di Settings > Group Dicatat sebagai Remove (Group Deleted), Dicatat di Tab System Log dan Activity Log, dan Memperbarui Banner Group Manager tanpa Notifikasi | FE+BE | 23 | 546, 602, 640 |
 | TC-AC-SU-E2E-162-modal-changelog-global-role-mencatat-aksi | Modal Changelog User > Global Role Mencatat Assign, Remove, dan Edit | FE+BE | 18 | 550–552 |
 | TC-AC-SU-E2E-163-modal-changelog-group-role-mencatat-aksi | Modal Changelog User > Group Role Mencatat Assign, Edit, dan Remove per Group | FE+BE | 18 | 557–559 |
-| TC-AC-SU-E2E-164-pencatatan-edge-snapshot-dua-permission-save-tanpa-perubahan-dan-save-nol-group | Pencatatan Edge Changelog User, Snapshot Entri Lama, Dua Permission Sekaligus, Save Popup Assign Group Role tanpa Perubahan, dan Save 0 Group | FE+BE | 34 | 564, 572–574 |
-| TC-AC-SU-E2E-165-resend-dan-bulk-resend-entri-log-changelog | Resend Activation Email Menulis Entri Changelog di Background dan Bulk Resend Hanya Mencatat Baris yang Diproses | FE+BE | 14 | 575, 578 |
+| TC-AC-SU-E2E-164-pencatatan-edge-snapshot-dua-permission-save-tanpa-perubahan-dan-save-nol-group | Pencatatan Edge Changelog User, Snapshot Entri Lama, Dua Permission Sekaligus, Save Popup Assign Group Role tanpa Perubahan, dan Save 0 Group | FE+BE | 38 | 564, 572–574 |
+| TC-AC-SU-E2E-165-resend-dan-bulk-resend-entri-log-changelog | Resend Activation Email Menulis Entri Changelog di Background dan Bulk Resend Hanya Mencatat Baris yang Diproses | FE+BE | 15 | 575, 578 |
 | TC-AC-SU-E2E-166-tab-system-log-aktor-objek-user-global-role-dan-group-role | Tab System Log Aktor Menampilkan Entri Object User, Global Role, dan Group Role dengan Name Target dan Isi Identik Popup Changelog | FE+BE | 32 | 565–567 |
-| TC-AC-SU-E2E-167-tab-system-log-aktor-objek-tier-group-manager-dan-cascade | Tab System Log Aktor Menampilkan Entri Object Total Control, Read Only, Group Manager, dan Cascade Tier dengan Name Target dan Isi Identik Popup Changelog | FE+BE | 33 | 568–570 |
-| TC-AC-SU-E2E-168-activity-log-entri-identik-system-log-ditambah-modified-by | Activity Log Memuat Entri Identik Tab System Log Aktor untuk Tiap Kelas Object Ditambah Kolom Modified By | FE+BE | 14 | 571, 642 |
-| TC-AC-SU-E2E-169-notifikasi-in-app-view-only-ke-target | Notifikasi In-App View-Only ke Target untuk Event Remove dan Auto-Revert Tier atau Group Manager | FE+BE | 33 | 579–584, 641 |
+| TC-AC-SU-E2E-167-tab-system-log-aktor-objek-tier-group-manager-dan-cascade | Tab System Log Aktor Menampilkan Entri Object Total Control, Read Only, Group Manager, dan Cascade Tier dengan Name Target dan Isi Identik Popup Changelog | FE+BE | 48 | 568–570 |
+| TC-AC-SU-E2E-168-activity-log-entri-identik-system-log-ditambah-modified-by | Activity Log Memuat Entri Identik Tab System Log Aktor untuk Tiap Kelas Object Ditambah Kolom Modified By | FE+BE | 23 | 571, 642 |
+| TC-AC-SU-E2E-169-notifikasi-in-app-view-only-ke-target | Notifikasi In-App View-Only ke Target untuk Event Remove dan Auto-Revert Tier atau Group Manager | FE+BE | 40 | 579–584, 641 |
 | TC-AC-SU-E2E-170-tidak-ada-notifikasi-in-app-untuk-event-tertentu | Tidak Ada Notifikasi In-App ke Target untuk Event Deactivate dan Assign Total Control | FE+BE | 12 | 585, 587 |
-| TC-AC-SU-E2E-171-sinkron-role-permission-ke-tab-role | Sinkron Dua Arah Antara Tab Role Settings > User dan Settings > Role & Permission untuk Switch Global Role, CRUD, dan Assign Group Role | FE+BE | 18 | 588–590 |
+| TC-AC-SU-E2E-171-sinkron-role-permission-ke-tab-role | Sinkron Dua Arah Antara Tab Role Settings > User dan Settings > Role & Permission untuk Switch Global Role, CRUD, dan Assign Group Role | FE+BE | 21 | 588–590 |
 | TC-AC-SU-E2E-172-sinkron-role-permission-tier-dan-banner | Sinkron Tier Total Control, Read Only, dan Group Manager dari Settings > Role & Permission ke Banner, Badge Role, dan Tab Role | FE+BE | 26 | 591–594 |
 | TC-AC-SU-E2E-173-sinkron-global-settings-foto-nama-dan-email-pending | Sinkron dari Global Settings ke Detail User untuk Foto, Nama, Email Pending, dan Pembatalan Email Pending tanpa Entri Changelog | FE+BE | 27 | 595–597 |
 | TC-AC-SU-E2E-174-sinkron-global-settings-nonaktif-app-access-dan-hapus-user | Sinkron dari Global Settings untuk Nonaktif User, Aktif Kembali, Cabut App Access Admin Console, dan Hapus User | FE+BE | 35 | 598–600, 643 |
 | TC-AC-SU-E2E-175-format-tanggal-dan-waktu-general-settings | Format Tanggal dan Waktu General Settings Berlaku di User List, Popup Changelog, dan Tab Detail User | FE+BE | 32 | 7, 605–607 |
 | TC-AC-SU-E2E-176-resilience-activate-deactivate-dan-bulk-gagal-server | Resilience Activate, Deactivate, dan Bulk Activate atau Deactivate Gagal Server (5xx atau Timeout) Mengembalikan Switch dan Menampilkan Toast Error | FE+BE | 27 | 92, 93, 130–132 |
-| TC-AC-SU-E2E-177-resilience-resend-gagal-dan-kegagalan-penulisan-log | Resilience Resend Email Gagal Layanan Email atau Server dan Kegagalan Penulisan Log tidak Membatalkan Pengiriman | FE+BE | 17 | 151, 158, 160, 635 |
-| TC-AC-SU-E2E-178-resilience-tab-role-autosave-popup-assign-group-dan-auto-revert-gagal | Resilience Autosave Checkbox, Switch Global Role, Save Popup Assign Group Role, dan Auto-Revert Gagal 5xx Mengembalikan State dan Menampilkan Toast Error | FE+BE | 28 | 181, 182, 231, 262 |
-| TC-AC-SU-E2E-179-resilience-error-load-user-list-dan-tab-detail | Resilience Error Load User List dan Tab Responsibilities, Changelog, System Log, dan User Log Menampilkan Pesan Error dengan Try Again | FE+BE | 26 | 20, 335, 372, 407, 430 |
+| TC-AC-SU-E2E-177-resilience-resend-gagal-dan-kegagalan-penulisan-log | Resilience Resend Email Gagal Layanan Email atau Server dan Kegagalan Penulisan Log tidak Membatalkan Pengiriman | FE+BE | 18 | 151, 158, 160, 635 |
+| TC-AC-SU-E2E-178-resilience-tab-role-autosave-popup-assign-group-dan-auto-revert-gagal | Resilience Autosave Checkbox, Switch Global Role, Save Popup Assign Group Role, dan Auto-Revert Gagal 5xx Mengembalikan State dan Menampilkan Toast Error | FE+BE | 30 | 181, 182, 231, 262 |
+| TC-AC-SU-E2E-179-resilience-error-load-user-list-dan-tab-detail | Resilience Error Load User List dan Tab Responsibilities, Changelog, System Log, dan User Log Menampilkan Pesan Error dengan Try Again | FE+BE | 36 | 20, 335, 372, 407, 430 |
 | TC-AC-SU-E2E-180-resilience-download-gagal-user-list-group-assignment-responsibilities-dan-changelog | Resilience Download Gagal 5xx pada User List, Detail Group Assignment, Tab Responsibilities, dan Tab Changelog Menampilkan Toast Error tanpa Berkas | FE+BE | 21 | 248, 320, 366, 402 |
 | TC-AC-SU-E2E-181-resilience-download-gagal-system-log-user-log-dan-modal-changelog | Resilience Download Gagal 5xx pada Tab System Log, Tab User Log, Popup Changelog User, dan Modal Changelog Group Role Menampilkan Toast Error tanpa Berkas | FE+BE | 21 | 424, 440, 478, 647 |
 | TC-AC-SU-E2E-182-defense-in-depth-request-tulis-ditolak-server-isolasi-entitas-dan-proteksi-target | Defense-in-Depth Request Langsung ke Server Ditolak untuk Isolasi Entitas, Mutasi Default User, Mutasi Role Diri Sendiri, Target Total Control, Group di Group Manager, dan Target Nonaktif Global Settings | FE+BE | 18 | 614–619 |
 | TC-AC-SU-E2E-183-defense-in-depth-cooldown-resend-read-only-dan-payload-script | Defense-in-Depth Request Langsung Ditolak untuk Group Role tanpa Assignment, Cooldown Resend, Aksi Read Only, dan Target Total Control, serta Payload Script Dirender sebagai Teks | FE+BE | 25 | 620–622, 624, 665 |
-| TC-AC-SU-E2E-184-konkurensi-dua-aktor-last-write-wins-dan-request-lama-no-op | Konkurensi Dua Aktor Memakai Last-Write-Wins dan Request Lama Menjadi No-Op pada Deactivate, Activate, Save Assign Group Role, dan Dialog Auto-Revert | FE+BE | 42 | 102, 625–627, 634 |
-| TC-AC-SU-E2E-185-konkurensi-deactivate-user-login-dua-aktor-cooldown-dan-request-lama | Konkurensi Deactivate User Sedang Login, Dua Aktor Mengubah Status, Resend Saat Cooldown Aktor Lain, dan Switch Role Request Lama | FE+BE | 30 | 94, 104, 150, 577 |
+| TC-AC-SU-E2E-184-konkurensi-dua-aktor-last-write-wins-dan-request-lama-no-op | Konkurensi Dua Aktor Memakai Last-Write-Wins dan Request Lama Menjadi No-Op pada Deactivate, Activate, Save Assign Group Role, dan Dialog Auto-Revert | FE+BE | 44 | 102, 625–627, 634 |
+| TC-AC-SU-E2E-185-konkurensi-deactivate-user-login-dua-aktor-cooldown-dan-request-lama | Konkurensi Deactivate User Sedang Login, Dua Aktor Mengubah Status, Resend Saat Cooldown Aktor Lain, dan Switch Role Request Lama | FE+BE | 37 | 94, 104, 150, 577 |
 | TC-AC-SU-E2E-186-double-click-dan-double-submit-deactivate-dan-bulk | Double-Click dan Double-Submit pada Dialog Deactivate, Bulk Deactivate, dan Bulk Activate Hanya Memproses Satu Request | FE+BE | 28 | 103, 135, 628, 629 |
 | TC-AC-SU-E2E-187-double-click-dan-double-submit-checkbox-resend-dan-save-group-role | Double-Click dan Double-Submit pada Checkbox CRUD, Resend Activation Email, dan Save Popup Assign Group Role Hanya Memproses Satu Request | FE+BE | 30 | 193, 630–632 |
-| TC-AC-SU-E2E-188-mobile-android-aturan-khusus-mobile | Mobile Android Snackbar Kontrol Disabled, Countdown Cooldown Resend, Selection Mode Bulk, dan Bottom Sheet Auto-Revert | FE+BE | 23 | 636–639 |
+| TC-AC-SU-E2E-188-mobile-android-aturan-khusus-mobile | Mobile Android Snackbar Kontrol Disabled, Countdown Cooldown Resend, Selection Mode Bulk, dan Bottom Sheet Auto-Revert | FE+BE | 30 | 636–639 |
 | TC-AC-SU-E2E-189-row-action-menu-per-status-aktivasi-dan-ikon-severity | User List: Isi Row Action Menu per Status Aktivasi serta Ikon dan Severity Row Actions | FE+BE | 33 | 10, 663 |
 | TC-AC-SU-E2E-190-badge-status-header-detail-user-dan-field-email-pending | Detail User: Badge Status Header per Kondisi dan Field Email saat Pending Email Confirmation | FE+BE | 23 | 39, 41 |
 | TC-AC-SU-E2E-191-resend-activation-email-tanpa-batas-harian | Resend Activation Email: Pengiriman Berulang Tanpa Batas Harian | FE+BE | 12 | 149 |
 | TC-AC-SU-E2E-192-popup-assign-group-role-clear-field-save-dan-changelog-remove | Popup Assign Group Role: Clear Field Lalu Save Melepas Role dan Mencatat Remove per Group | FE+BE | 16 | 229 |
-| TC-AC-SU-E2E-193-user-list-filter-panel-kelas-multi-select-satu-opsi | User List Filter Panel: Filter Kelas Multi-Select Satu Opsi per Field | FE+BE | 5 | 274 |
-| TC-AC-SU-E2E-194-user-list-sort-3-state-kelas-teks | User List Sort: Sort 3-State Kelas Teks dengan Nilai Kosong di Akhir dan di Awal | FE+BE | 12 | 294 |
+| TC-AC-SU-E2E-193-user-list-filter-panel-kelas-multi-select-satu-opsi | User List Filter Panel: Filter Kelas Multi-Select Satu Opsi per Field | FE+BE | 7 | 274 |
+| TC-AC-SU-E2E-194-user-list-sort-3-state-kelas-teks | User List Sort: Sort 3-State Kelas Teks dengan Nilai Kosong di Akhir dan di Awal | FE+BE | 17 | 294 |
 | TC-AC-SU-E2E-195-tab-log-download-xlsx-nilai-sel | Tab Changelog, System Log, User Log, dan Responsibilities: Download XLSX dan Nilai Sel | FE+BE | 56 | 365, 401, 423, 439 |
-| TC-AC-SU-E2E-196-tab-system-log-search-per-kolom | Tab System Log: Search per Kolom Teks | FE+BE | 8 | 412 |
-| TC-AC-SU-E2E-197-modal-changelog-user-download-xlsx-hasil-filter-dan-nilai-sel | Modal Changelog User: Download XLSX dengan Filter Aktif dan Nilai Sel Berkas | FE+BE | 15 | 477 |
-| TC-AC-SU-E2E-198-modal-changelog-user-cache-setup-column-independen-dari-tab-changelog | Modal Changelog User: Cache Setup Column Independen dari Tab Changelog Detail User | FE+BE | 15 | 475 |
+| TC-AC-SU-E2E-196-tab-system-log-search-per-kolom | Tab System Log: Search per Kolom Teks | FE+BE | 7 | 412 |
+| TC-AC-SU-E2E-197-modal-changelog-user-download-xlsx-hasil-filter-dan-nilai-sel | Modal Changelog User: Download XLSX dengan Filter Aktif dan Nilai Sel Berkas | FE+BE | 16 | 477 |
+| TC-AC-SU-E2E-198-modal-changelog-user-cache-setup-column-independen-dari-tab-changelog | Modal Changelog User: Cache Setup Column Independen dari Tab Changelog Detail User | FE+BE | 19 | 475 |
 | TC-AC-SU-E2E-199-hapus-group-tanpa-notifikasi-dan-assignment-group-role-terakhir | Hapus Group Tidak Mengirim Notifikasi ke Group Manager yang Dilepas dan Menonaktifkan Group Role pada Assignment Terakhir | FE+BE | 18 | 586, 601 |
 | TC-AC-SU-E2E-200-resilience-error-load-modal-changelog | Resilience Error Load Modal Changelog User, Global Role, dan Group Role Menampilkan Pesan Error dengan Try Again | FE+BE | 17 | 447, 483, 507 |
-| TC-AC-SU-E2E-201-role-matrix-tab-role-aktor-total-control-dan-read-only | Role Matrix: Tab Role, Aktor Total Control dan Read Only | FE+BE | 28 | 63, 64 |
-| TC-AC-SU-E2E-202-role-matrix-tab-role-aktor-manage-user-and-role-tanpa-update | Role Matrix: Tab Role, Aktor Manage user and role tanpa Update | FE+BE | 9 | 65 |
-| TC-AC-SU-E2E-203-user-list-retensi-state-breadcrumb-f5-dan-klik-ulang-sidebar | User List Retensi State: Breadcrumb dari Detail, F5 dengan Node Sidebar Group, dan Klik Ulang Sidebar | FE+BE | 34 | 323–325 |
-| TC-AC-SU-E2E-204-tab-system-log-filter-panel-satu-opsi-per-field | Tab System Log: Filter Panel, Filter Satu Opsi per Field Multi-select | FE+BE | 12 | 416 |
+| TC-AC-SU-E2E-201-role-matrix-tab-role-aktor-total-control-dan-read-only | Role Matrix: Tab Role, Aktor Total Control dan Read Only | FE+BE | 29 | 63, 64 |
+| TC-AC-SU-E2E-202-role-matrix-tab-role-aktor-manage-user-and-role-tanpa-update | Role Matrix: Tab Role, Aktor Manage user and role tanpa Update | FE+BE | 10 | 65 |
+| TC-AC-SU-E2E-203-user-list-retensi-state-breadcrumb-f5-dan-klik-ulang-sidebar | User List Retensi State: Breadcrumb dari Detail, F5 dengan Node Sidebar Group, dan Klik Ulang Sidebar | FE+BE | 32 | 323–325 |
+| TC-AC-SU-E2E-204-tab-system-log-filter-panel-satu-opsi-per-field | Tab System Log: Filter Panel, Filter Satu Opsi per Field Multi-select | FE+BE | 13 | 416 |
 | TC-AC-SU-E2E-205-tab-system-log-filter-panel-or-dalam-field-dan-antar-field | Tab System Log: Filter Panel, OR di dalam Satu Field dan AND antar Field | FE+BE | 14 | 417 |
-| TC-AC-SU-E2E-206-modal-changelog-global-role-setup-column-tutup-tanpa-save-dan-kolom-minimal | Modal Changelog Global Role: Setup Column Tutup Tanpa Save dan Satu Kolom Tersisa | FE+BE | 20 | 501, 502 |
+| TC-AC-SU-E2E-206-modal-changelog-global-role-setup-column-tutup-tanpa-save-dan-kolom-minimal | Modal Changelog Global Role: Setup Column Tutup Tanpa Save dan Satu Kolom Tersisa | FE+BE | 22 | 501, 502 |
 | TC-AC-SU-E2E-207-absence-changelog-user-request-langsung-ditolak-server | Absence Changelog: User untuk Request Langsung yang Ditolak Server pada Mutasi Default User, Role Diri Sendiri, Edit Role Target Total Control, Group Role tanpa Assignment, Cooldown Resend, dan Deactivate Target Total Control | FE+BE | 43 | 615–617, 620, 621, 665 |
 | TC-AC-SU-E2E-208-modal-changelog-global-role-mencatat-cascade-total-control-dan-read-only | Modal Changelog User > Global Role Mencatat Assign dan Remove via Total Control atau Read Only (Cascade) | FE+BE | 28 | 553–556 |
 | TC-AC-SU-E2E-209-modal-changelog-group-role-mencatat-cascade-total-control-dan-read-only | Modal Changelog User > Group Role Mencatat Assign dan Remove via Total Control atau Read Only per Group (Cascade) | FE+BE | 36 | 560–563 |
@@ -240,12 +240,12 @@ Spec 188 memakai `coverage.mobile: automated` saja (aplikasi native Android); 20
 - Spec 189–200 memuat TC berikut: 189 (TC-10, 663), 190 (TC-39, 41), 191 (TC-149), 192 (TC-229), 193 (TC-274), 194 (TC-294), 195 (TC-365, 401, 423, 439), 196 (TC-412), 197 (TC-477), 198 (TC-475), 199 (TC-586, 601), 200 (TC-447, 483, 507).
 - Spec 207–209 memuat TC berikut: 207 (TC-615, 616, 617, 620, 621, 665), 208 (TC-553, 554, 555, 556), 209 (TC-560, 561, 562, 563). Spec 162 menyisakan TC-550, 551, 552 dan spec 163 menyisakan TC-557, 558, 559; tiap TC memakai user seed sendiri.
 - Spec 201–206 memuat TC berikut: 201 (TC-63, 64), 202 (TC-65), 203 (TC-323, 324, 325), 204 (TC-416), 205 (TC-417), 206 (TC-501, 502). Spec asal mempertahankan sisa TC-nya: 021 (TC-62), 090 (TC-321, 322), 116 (TC-414, 415), 143 (TC-499, 500).
-- Spec 024 (54 langkah) tidak dibagi: TC-AC-SU-71 memuat keempat blok akun (Total Control, Manage user and role Update, Read Only, Manage user and role Read saja), sehingga membagi per akun membelah satu TC.
+- Spec 024 (57 langkah) tidak dibagi: TC-AC-SU-71 memuat keempat blok akun (Total Control, Manage user and role Update, Read Only, Manage user and role Read saja), sehingga membagi per akun membelah satu TC.
 - Asersi absence log murni (kelas g) berada di spec absence 207; spec fungsional (182, 183) mencatat rujukan di `## Notes` masing-masing.
 
 ## Kebutuhan lingkungan (tim FE)
 
-- Env var password yang dipakai spec (jumlah spec pemakai): `AC_DIST_MUR_PASSWORD` (4), `AC_DIST_TC_PASSWORD` (4), `AC_DU_PASSWORD` (21), `AC_E1_DU_PASSWORD` (1), `AC_E1_TC_PASSWORD` (1), `AC_GM_PASSWORD` (1), `AC_MUR_READ_PASSWORD` (7), `AC_MUR_UPDATE_PASSWORD` (16), `AC_RO_PASSWORD` (11), `AC_SU_SEEDED_PASSWORD` (6), `AC_TC_PASSWORD` (146), `AC_TS_PASSWORD` (1). Di `spectra.config.ts` dan `.env.example` baru `AC_TC_PASSWORD` yang terdaftar dari daftar ini; nama lain belum didaftarkan dan berkas itu tidak diubah oleh generate spec. `AC_DU_PASSWORD` dan `AC_RO_PASSWORD` dipakai juga oleh spec Admin Console lain tetapi belum terdaftar di `spectra.config.ts`. Password user seed memakai satu nama, `AC_SU_SEEDED_PASSWORD` (spec 054, 161, 169, 170, 185, 199).
+- Env var password yang dipakai spec (jumlah spec pemakai): `AC_DIST_MUR_PASSWORD` (4), `AC_DIST_TC_PASSWORD` (3), `AC_DU_PASSWORD` (23), `AC_E1_DU_PASSWORD` (1), `AC_E1_TC_PASSWORD` (1), `AC_GM_PASSWORD` (1), `AC_MUR_READ_PASSWORD` (7), `AC_MUR_UPDATE_PASSWORD` (17), `AC_RO_PASSWORD` (11), `AC_SU_SEEDED_PASSWORD` (6), `AC_TC_PASSWORD` (147), `AC_TS_PASSWORD` (1). Di `spectra.config.ts` dan `.env.example` baru `AC_TC_PASSWORD` yang terdaftar dari daftar ini; nama lain belum didaftarkan dan berkas itu tidak diubah oleh generate spec. `AC_DU_PASSWORD` dan `AC_RO_PASSWORD` dipakai juga oleh spec Admin Console lain tetapi belum terdaftar di `spectra.config.ts`. Password user seed memakai satu nama, `AC_SU_SEEDED_PASSWORD` (spec 054, 161, 169, 170, 185, 199).
 - Akun di luar Tabel Pre-setup TC (email disediakan tim FE): Manage user and role (Update) dan (Read saja), Group Manager tanpa akses modul, Manage TAG stock saja (`Rudi Hartono`), Total Control dan Manage user and role (Update) entitas Distributor Nusantara, serta Default User dan Total Control entitas baru E1.
 - Fixture BE: seeding dan pemulihan user (status aktivasi, Active/Inactive, role, tier, Group Manager), group tree, Group Role, Custom Field User, entri System Log, Changelog, User Log, dan notifikasi, flag Guided Tooltip `guided_tooltip_seen_ac-settings-user`, Selection Limit, status Suspended entitas, General Settings (Date Format, Time Format, Timezone), status email aktor; pembacaan state BE yang tidak terlihat di UI; penghapusan preferensi kolom Setup Column di browser.
 - Kemampuan teknis: klien HTTP (request langsung, kelas a), intercept jaringan (5xx, timeout, respons ditahan), dua konteks browser, sesi API aktor, jam server dan jam browser (spec 039, 041, 165, 183, 185, 188, 191), mail-catcher untuk jumlah email per alamat (hanya spec 183), penangkap unduhan CSV/XLSX, drag and drop, lebar viewport, dan perangkat Android (spec 188).
@@ -255,9 +255,9 @@ Spec 188 memakai `coverage.mobile: automated` saja (aplikasi native Android); 20
 
 ## Temuan yang masih terbuka
 
-Temuan TC sumber (ambigu, kontradiktif, kurang precondition) dicatat per spec di `## Notes` butir "Temuan untuk QA" (200 spec memilikinya). Yang melintasi banyak spec:
+Temuan TC sumber (ambigu, kontradiktif, kurang precondition) dicatat per spec di `## Notes` butir "Temuan untuk QA" (203 spec memilikinya). Yang melintasi banyak spec:
 
-- Spec melewati batas ±35 langkah (54 spec; alasan tertulis di `## Notes` tiap spec: 009 (39), 012 (40), 013 (40), 016 (42), 019 (41), 022 (37), 023 (40), 024 (54), 026 (45), 027 (43), 028 (39), 037 (47), 042 (43), 043 (38), 049 (43), 058 (40), 061 (36), 062 (40), 064 (38), 065 (36), 068 (39), 071 (38), 075 (48), 076 (39), 078 (48), 081 (43), 082 (43), 085 (52), 086 (36), 087 (36), 091 (61), 092 (67), 097 (37), 100 (43), 101 (44), 107 (36), 108 (39), 110 (43), 111 (47), 113 (38), 117 (36), 135 (41), 140 (37), 141 (36), 142 (46), 151 (36), 152 (42), 155 (37), 157 (37), 160 (38), 184 (42), 195 (56), 207 (43), 209 (36)). Spec 204 hanya 12 langkah nominal tetapi sekitar 42 dengan ekspansi empat field (satu TC, TC-AC-SU-416, tidak dibelah).
+- Spec melewati batas ±35 langkah (67 spec; alasan tertulis di `## Notes` tiap spec: 009 (39), 012 (41), 013 (41), 016 (42), 019 (43), 021 (46), 022 (38), 023 (42), 024 (57), 025 (38), 026 (50), 027 (44), 028 (39), 037 (47), 042 (43), 043 (38), 047 (36), 049 (44), 058 (40), 061 (36), 062 (40), 064 (38), 065 (36), 068 (39), 071 (38), 075 (48), 076 (39), 078 (56), 081 (43), 082 (47), 083 (39), 084 (37), 085 (52), 086 (36), 087 (36), 091 (59), 092 (67), 097 (37), 098 (38), 100 (45), 101 (48), 107 (40), 108 (40), 110 (46), 111 (48), 113 (41), 117 (37), 121 (38), 135 (41), 140 (38), 141 (36), 142 (46), 151 (36), 152 (42), 155 (41), 156 (36), 157 (49), 160 (43), 164 (38), 167 (48), 169 (40), 179 (36), 184 (44), 185 (37), 195 (56), 207 (43), 209 (36)). Spec 204 hanya 13 langkah nominal tetapi sekitar 46 dengan ekspansi blok berulang (satu TC, TC-AC-SU-416, tidak dibelah). Spec 193 dan 194 juga melewati batas dengan ekspansi enam field atau kolom yang langkahnya identik; alasan ada di `## Notes` masing-masing.
 - Akun Pre-setup yang tidak punya email atau password di TC (Total Control dan Manage user and role entitas Distributor Nusantara, entitas E1, Manage TAG stock saja) disediakan tim FE; nama env var ditetapkan penulis spec.
 - Spec 038 memakai akun Default User Pre-setup #1 sebagai target status Pending Email Confirmation lewat Fixture BE (TC-141); alternatifnya user Default User terpisah, menunggu keputusan pemilik.
 - TC yang memakai nama Pre-setup sebagai target tulis atau hapus (Custom Field `Office Location`, `Shift`, `Blood Type`, `Shirt Size`, `Locker No`, Region B, Region C, Dedi Kurnia) dipetakan ke padanan seed bersuffix (S-06, S-12); Expected TC yang memuat nama itu memakai nama bersuffix.

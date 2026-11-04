@@ -29,7 +29,7 @@ coverage:
   - Aksi seed oleh Aktor Log, berurutan, dengan jeda antar-aksi yang cukup agar urutan Date deterministik (resolusi tampilan Date tidak disebut TC maupun PRD; jeda disediakan tim FE/BE): (1) Create `Target Alfa` (Field `Name`, Old Value `—`); (2) Create `Target Beta`; (3) Edit Position `Target Alfa` dari `Staff` menjadi `Supervisor`; (4) Edit Employee ID `Target Alfa` dari `{empId1}` menjadi `{empId2}`; (5) 18 kali Edit Position `Target Alfa` bergantian `Supervisor` ke `Staff` dan `Staff` ke `Supervisor` (berakhir `Supervisor`); (6) Deactivate `Target Alfa` (Field `Status (Global)`, `Active` menjadi `Inactive`); (7) Activate `Target Alfa` (`Inactive` menjadi `Active`); (8) Delete `Target Beta` (Field `Name`, New Value `—`); (9) Assign Total Control ke `Target Alfa` (Object `Total Control`, Field `Access Level`, New Value `Total Control`). Entri ke-9 menjadi entri terbaru dan entri ke-1 menjadi entri tertua.
   - Hasil: 26 entri (TC-GS-USER-629 menyebut tabel berisi 25 baris (fixture BE, Pre-setup No. 29); 26 baris membuat halaman 1 berisi tepat 25 baris pada page size 25 dan halaman 3 berisi 6 baris pada page size 10). Kolom Action memuat `Activate`, `Assign`, `Create`, `Deactivate`, `Delete`, `Edit`; kolom Object memuat `Total Control` dan `User`; kolom Name memuat `Target Alfa` dan `Target Beta`; kolom Field memuat `Access Level`, `Employee ID`, `Name`, `Position`, `Status (Global)`; kolom Old Value memuat numerik (`{empId1}`), teks, dan `—`; kolom New Value memuat numerik (`{empId2}`), teks, dan `—` (sedikitnya dua nilai distinct per kolom, S-11). Search `alfa` mencocokkan 24 entri (semua kecuali Create dan Delete `Target Beta`); Filter Action `Edit` mencocokkan 20 entri (19 Edit Position dan 1 Edit Employee ID).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API `Target Alfa` (cabut tier Total Control lebih dulu bila diperlukan), `Target Beta` bila masih ada, dan `Aktor Log`; hapus sisa user bersuffix `-099` dari run lama. Entri log tidak bisa dihapus.
-- Kemampuan teknis: klik header kolom sort; mengubah page size (10, 25, 100); mengetik nomor halaman di input Pagination; mengamati state icon Filter aktif (berubah gelap).
+- Kemampuan teknis: klik header kolom sort; mengubah page size (10, 25, 100); mengetik nomor halaman di input Pagination.
 - State global yang diubah: tidak ada (sort, filter, dan page size hanya state tampilan tab). Suite berjalan serial (`parallel: false`).
 - Precondition TC-GS-USER-612, 613, 614, 629, 630: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User). TC-GS-USER-629: tabel berisi 25 baris atau lebih.
 
@@ -44,86 +44,87 @@ coverage:
 
 ### TC-GS-USER-612: Sort 3-state kolom kelas tanggal
 
-5. Klik header Date
-6. Verifikasi Date Oldest First (baris pertama Action `Create`)
-7. Klik header Date
-8. Verifikasi Date Newest First (baris pertama Action `Assign`)
-9. Klik header Date
-10. Verifikasi Date kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
+5. Verifikasi tabel memuat sedikitnya dua baris data uji
+6. Klik header Date
+7. Verifikasi Date Oldest First (baris pertama Action `Create`)
+8. Klik header Date
+9. Verifikasi Date Newest First (baris pertama Action `Assign`)
+10. Klik header Date
+11. Verifikasi Date kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
 
 ### TC-GS-USER-613: Sort 3-state kolom kelas teks A-Z
 
-11. Klik header Action
-12. Verifikasi Action ascending A-Z (baris pertama Action `Activate`, baris terakhir Action `Edit`)
-13. Klik header Action
-14. Verifikasi Action descending Z-A (baris pertama Action `Edit`, baris terakhir Action `Activate`)
-15. Klik header Action
-16. Verifikasi Action kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
-17. Klik header Object
-18. Verifikasi Object ascending A-Z (baris pertama Object `Total Control`, baris terakhir Object `User`)
-19. Klik header Object
-20. Verifikasi Object descending Z-A (baris pertama Object `User`, baris terakhir Object `Total Control`)
-21. Klik header Object
-22. Verifikasi Object kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
-23. Klik header Name
-24. Verifikasi Name ascending A-Z (baris pertama Name `Target Alfa {runId}-099`, baris terakhir Name `Target Beta {runId}-099`)
-25. Klik header Name
-26. Verifikasi Name descending Z-A (baris pertama Name `Target Beta {runId}-099`, baris terakhir Name `Target Alfa {runId}-099`)
-27. Klik header Name
-28. Verifikasi Name kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
-29. Klik header Field
-30. Verifikasi Field ascending A-Z (baris pertama Field `Access Level`, baris terakhir Field `Status (Global)`)
-31. Klik header Field
-32. Verifikasi Field descending Z-A (baris pertama Field `Status (Global)`, baris terakhir Field `Access Level`)
-33. Klik header Field
-34. Verifikasi Field kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
+12. Klik header Action
+13. Verifikasi Action ascending A-Z (baris pertama Action `Activate`, baris terakhir Action `Edit`)
+14. Klik header Action
+15. Verifikasi Action descending Z-A (baris pertama Action `Edit`, baris terakhir Action `Activate`)
+16. Klik header Action
+17. Verifikasi Action kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
+18. Klik header Object
+19. Verifikasi Object ascending A-Z (baris pertama Object `Total Control`, baris terakhir Object `User`)
+20. Klik header Object
+21. Verifikasi Object descending Z-A (baris pertama Object `User`, baris terakhir Object `Total Control`)
+22. Klik header Object
+23. Verifikasi Object kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
+24. Klik header Name
+25. Verifikasi Name ascending A-Z (baris pertama Name `Target Alfa {runId}-099`, baris terakhir Name `Target Beta {runId}-099`)
+26. Klik header Name
+27. Verifikasi Name descending Z-A (baris pertama Name `Target Beta {runId}-099`, baris terakhir Name `Target Alfa {runId}-099`)
+28. Klik header Name
+29. Verifikasi Name kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
+30. Klik header Field
+31. Verifikasi Field ascending A-Z (baris pertama Field `Access Level`, baris terakhir Field `Status (Global)`)
+32. Klik header Field
+33. Verifikasi Field descending Z-A (baris pertama Field `Status (Global)`, baris terakhir Field `Access Level`)
+34. Klik header Field
+35. Verifikasi Field kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
 
 ### TC-GS-USER-614: Sort 3-state kolom kelas nilai campuran
 
-35. Klik header Old Value
-36. Verifikasi Old Value klik 1: baris pertama Old Value `{empId1}` (numerik lebih dulu)
-37. Verifikasi Old Value klik 1: baris kedua Old Value `Active` (teks sesudah numerik)
-38. Verifikasi Old Value klik 1: baris terakhir Old Value `—` (kosong di akhir)
-39. Klik header Old Value
-40. Verifikasi Old Value klik 2: baris pertama Old Value `—` (kosong di awal)
-41. Verifikasi Old Value klik 2: baris Old Value `Target Beta {runId}-099` (teks) berada sebelum baris Old Value `{empId1}` (numerik)
-42. Verifikasi Old Value klik 2: baris terakhir Old Value `{empId1}` (numerik di akhir)
-43. Klik header Old Value
-44. Verifikasi Old Value kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
-45. Klik header New Value
-46. Verifikasi New Value klik 1: baris pertama New Value `{empId2}` (numerik lebih dulu)
-47. Verifikasi New Value klik 1: baris kedua New Value `Active` (teks sesudah numerik)
-48. Verifikasi New Value klik 1: baris terakhir New Value `—` (kosong di akhir)
-49. Klik header New Value
-50. Verifikasi New Value klik 2: baris pertama New Value `—` (kosong di awal)
-51. Verifikasi New Value klik 2: baris New Value `Total Control` (teks) berada sebelum baris New Value `{empId2}` (numerik)
-52. Verifikasi New Value klik 2: baris terakhir New Value `{empId2}` (numerik di akhir)
-53. Klik header New Value
-54. Verifikasi New Value kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
+36. Klik header Old Value
+37. Verifikasi Old Value klik 1: baris pertama Old Value `{empId1}` (numerik lebih dulu)
+38. Verifikasi Old Value klik 1: baris kedua Old Value `Active` (teks sesudah numerik)
+39. Verifikasi Old Value klik 1: baris terakhir Old Value `—` (kosong di akhir)
+40. Klik header Old Value
+41. Verifikasi Old Value klik 2: baris pertama Old Value `—` (kosong di awal)
+42. Verifikasi Old Value klik 2: baris Old Value `Target Beta {runId}-099` (teks) berada sebelum baris Old Value `{empId1}` (numerik)
+43. Verifikasi Old Value klik 2: baris terakhir Old Value `{empId1}` (numerik di akhir)
+44. Klik header Old Value
+45. Verifikasi Old Value kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
+46. Klik header New Value
+47. Verifikasi New Value klik 1: baris pertama New Value `{empId2}` (numerik lebih dulu)
+48. Verifikasi New Value klik 1: baris kedua New Value `Active` (teks sesudah numerik)
+49. Verifikasi New Value klik 1: baris terakhir New Value `—` (kosong di akhir)
+50. Klik header New Value
+51. Verifikasi New Value klik 2: baris pertama New Value `—` (kosong di awal)
+52. Verifikasi New Value klik 2: baris New Value `Total Control` (teks) berada sebelum baris New Value `{empId2}` (numerik)
+53. Verifikasi New Value klik 2: baris terakhir New Value `{empId2}` (numerik di akhir)
+54. Klik header New Value
+55. Verifikasi New Value kembali ke default sort tabel Newest First (baris pertama Action `Assign`)
 
 ### TC-GS-USER-629: Pagination ubah page size dan input nomor halaman
 
-55. Ubah page size ke 25
-56. Verifikasi halaman 1 memuat 25 baris (maksimal 25 baris)
-57. Ubah page size ke 10
-58. Ketik nomor halaman `2` di input nomor halaman, tekan Enter
-59. Verifikasi langsung berada di halaman 2
-60. Klik next
-61. Verifikasi berpindah ke halaman 3
-62. Klik prev
-63. Verifikasi berpindah kembali ke halaman 2
+56. Ubah page size ke 25
+57. Verifikasi halaman 1 memuat 25 baris (maksimal 25 baris)
+58. Ubah page size ke 10
+59. Ketik nomor halaman `2` di input nomor halaman, tekan Enter
+60. Verifikasi langsung berada di halaman 2
+61. Klik next
+62. Verifikasi berpindah ke halaman 3
+63. Klik prev
+64. Verifikasi berpindah kembali ke halaman 2
 
 ### TC-GS-USER-630: Kombinasi Search, Filter, Sort, dan Pagination berjalan bersamaan
 
-64. Klik icon Search, ketik `alfa`, tekan Enter
-65. Klik icon Filter, pilih Action `Edit`, klik `[Apply]`
-66. Klik header Field
-67. Ubah page size ke 25
-68. Verifikasi Search tetap berlaku (input Search berisi `alfa`)
-69. Verifikasi icon Filter gelap (Filter tetap berlaku)
-70. Verifikasi semua baris bernilai Action `Edit` (Filter tetap berlaku)
-71. Verifikasi Sort tetap berlaku (Field ascending A-Z, baris pertama Field `Employee ID`)
-72. Verifikasi Pagination tetap berlaku (halaman 1 memuat 20 baris pada page size 25)
+65. Klik icon Search, ketik `alfa`, tekan Enter
+66. Klik icon Filter, pilih Action `Edit`, klik `[Apply]`
+67. Klik header Field
+68. Ubah page size ke 25
+69. Verifikasi Search tetap berlaku (input Search berisi `alfa`)
+70. Verifikasi sedikitnya satu baris tampil di tabel
+71. Verifikasi semua baris bernilai Action `Edit` (Filter tetap berlaku)
+72. Verifikasi Sort tetap berlaku (Field ascending A-Z, baris pertama Field `Employee ID`)
+73. Verifikasi Pagination tetap berlaku (halaman 1 memuat 20 baris pada page size 25)
 
 ## Notes
 
@@ -131,8 +132,10 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Pemilik log: TC sumber memakai `Siti Nurhaliza` sebagai pemilik System Log; isi log user itu bergantung pada aksi spec lain. Spec memakai user milik spec (`Aktor Log`) dengan aksi seed yang diketahui (S-06, S-11).
 - Urutan TC dalam spec mengikuti `sourceTc` (612, 613, 614, 629, 630). TC-GS-USER-630 di akhir karena memasang Search, Filter, dan Sort yang tidak dilepas; state tampilan tab tidak tersimpan.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-14): langkah 1 sampai 3 (membuka User Detail; Name dicari di User List) dan langkah 4 (page size 100 agar seluruh 26 baris tampil pada satu halaman dan baris terakhir dapat diamati pada TC-GS-USER-612 sampai 614). TC-GS-USER-629 mengubah page size ke 25 dan kembali ke 10 sesuai langkah TC (langkah 55 dan 57).
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-14): langkah 1 sampai 3 (membuka User Detail; Name dicari di User List) dan langkah 4 (page size 100 agar seluruh 26 baris tampil pada satu halaman dan baris terakhir dapat diamati pada TC-GS-USER-612 sampai 614). TC-GS-USER-629 mengubah page size ke 25 dan kembali ke 10 sesuai langkah TC (langkah 56 dan 58).
 - Sort 3-state: klik 3 pada tiap kolom mengembalikan sort ke default tabel Newest First, yang sama dengan klik 2 pada kolom Date; kedua kondisi dibedakan oleh langkah klik yang bernomor, bukan oleh urutan baris. Asersi sort memakai nilai baris pertama dan baris terakhir yang tidak bergantung pada urutan antar-entri bernilai sama.
-- Spec melewati sekitar 35 langkah (72 langkah) karena TC-GS-USER-613 dan 614 menguji enam kolom, masing-masing tiga klik dan tiga `Verifikasi` (S-01). Semua blok satu kelas (Sort, Pagination, dan kombinasi pada Tab System Log), satu akun, satu dataset, dan tiap blok berdiri sendiri karena sort dikembalikan ke default pada klik ketiga.
+- Spec melewati sekitar 35 langkah (73 langkah) karena TC-GS-USER-613 dan 614 menguji enam kolom, masing-masing tiga klik dan tiga `Verifikasi` (S-01). Semua blok satu kelas (Sort, Pagination, dan kombinasi pada Tab System Log), satu akun, satu dataset, dan tiap blok berdiri sendiri karena sort dikembalikan ke default pada klik ketiga.
+- Anchor positif (bagian 8b butir 2): langkah 70 (`Verifikasi sedikitnya satu baris tampil di tabel`) mendahului asersi "semua baris" Action `Edit` pada langkah 71.
+- Langkah 5 (`Verifikasi tabel memuat sedikitnya dua baris data uji`) adalah asersi tambahan (S-03) yang mendahului asersi sort pertama (langkah 7, baris pertama Date Oldest First); urutan hanya bermakna bila tabel memuat sedikitnya dua baris (26 baris seed, page size 100).
 - Pembagian TC lintas spec: Search saja di spec 096; Filter saja di spec 097; kombinasi Search dan Filter dengan Clear di spec 098.
-- Temuan untuk QA: (1) TC-GS-USER-612 dan 613 "default sort tabel" dibaca sebagai Date Newest First (PRD user.md §4.1.6). (2) TC-GS-USER-629 Data Uji menyebut tabel berisi 25 baris (fixture BE) pada `Siti Nurhaliza` tanpa cara menyiapkan; spec menyiapkan 26 entri lewat aksi seed pada user milik spec (S-06). (3) TC-GS-USER-630 langkah 4 "Terapkan filter bila tersedia" bersyarat; spec menerapkan Filter Action `Edit` tanpa syarat karena Filter Panel tersedia. (4) TC-GS-USER-614 menyebut nilai numerik tanpa contoh; spec memakai Employee ID `{empId1}` menjadi `{empId2}` sebagai satu-satunya nilai numerik. (5) Resolusi tampilan Date tidak disebut TC maupun PRD; urutan antar-entri yang dibuat dalam menit yang sama bergantung pada jeda seeding.
+- Temuan untuk QA: (1) TC-GS-USER-612 dan 613 "default sort tabel" dibaca sebagai Date Newest First (PRD user.md §4.1.6). (2) TC-GS-USER-629 Data Uji menyebut tabel berisi 25 baris (fixture BE) pada `Siti Nurhaliza` tanpa cara menyiapkan; spec menyiapkan 26 entri lewat aksi seed pada user milik spec (S-06). (3) TC-GS-USER-630 langkah 3 "Search keyword" tidak menyebut kata kunci; spec memakai kata kunci yang disebut di langkah spec, dan langkah 4 TC ("Terapkan filter pada Action (1 opsi)") diikuti apa adanya dengan Filter Action `Edit`. (4) TC-GS-USER-614 menyebut nilai numerik tanpa contoh; spec memakai Employee ID `{empId1}` menjadi `{empId2}` sebagai satu-satunya nilai numerik. (5) Resolusi tampilan Date tidak disebut TC maupun PRD; urutan antar-entri yang dibuat dalam menit yang sama bergantung pada jeda seeding.

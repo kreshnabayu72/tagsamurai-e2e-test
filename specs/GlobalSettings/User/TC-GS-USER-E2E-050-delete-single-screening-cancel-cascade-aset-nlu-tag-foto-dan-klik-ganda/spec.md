@@ -41,7 +41,7 @@ coverage:
   - U-N: user baru yang dibuat langkah 41 sampai 46: Name `Tag Baru {runId}-050`, email `tagbaru+{runId}-050@qwertysystem.net`.
 - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus R-1, A-1, N-1, J-1, T-1, P-1, R-2, R-3, R-4, dan U-N lewat API bila masih ada; lepaskan TAG `TAG-USR-0001`.
 - Kemampuan teknis: simulasi scan TAG (`TAG-USR-0001`) pada form Create; klik ganda cepat pada tombol dialog; membuka Fixed Asset > Borrow, File Manager (list dan Recycle Bin) dengan akun Total Control; mengetahui proses purge foto selesai (polling idiom bagian 6: muat ulang tiap 5 detik, batas tunggu 2 menit; purge tidak menunggu 30 hari).
-- State global yang diubah: tidak ada. Suite berjalan serial; spec ini menghapus data milik spec saja.
+- State global yang diubah: Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif; pembuatan user U-N pada langkah 41 sampai 46 tidak mengisinya dan mengharapkan Create sukses). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah. Suite berjalan serial; spec ini menghapus data milik spec saja.
 
 ## Test Steps
 

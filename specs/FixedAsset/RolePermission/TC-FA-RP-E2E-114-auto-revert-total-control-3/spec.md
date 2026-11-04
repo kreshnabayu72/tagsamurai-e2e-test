@@ -19,7 +19,7 @@ coverage:
 - Akun aktor awal: Total Control (Siti Rahmawati, Pre-setup #2) `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control).
 - Akun aktor kedua (langkah 11 dan 12, ganti akun eksplisit): Manage global user & role dengan Update (Hendra Wijaya, Pre-setup #6) `murGlobal_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_MUR_GLOBAL_PASSWORD`. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Hook suite (flag Guided Tooltip, pemulihan Pre-setup bersama, sesi API aktor) berlaku seperti di `suite.md` bagian "Hook suite"; spec ini tidak mengubahnya. Pelaku kedua pada TC-FA-RP-393 hanya memicu perubahan state dan memakai sesi API Total Control kedua (Rina Wulandari, Pre-setup #3, `Spectra.env.FA_TC2_PASSWORD`); kemampuan sesi API disediakan tim BE/FE.
-- Data Pre-setup (identitas dirujuk lewat fixture `fixtures/fixedAssetRolePermission.json` yang belum ada dan disediakan tim FE): #3 (Rina Wulandari, seluruh Global Role CRUD penuh; baris Group Role eksplisit `Manage files` Read di `Data Center`), #15 (Ahmad Fauzi, Standard), #6, #18.
+- Data Pre-setup (identitas dirujuk lewat fixture `fixtures/fixedAssetRolePermission.json` yang belum ada dan disediakan tim FE): #3 (Rina Wulandari, seluruh Global Role CRUD penuh; baris pola Group Role Total Control pada `Manage files` di `Data Center`), #15 (Ahmad Fauzi, Standard), #6, #18.
 - Data Dinamis: tidak ada data yang dibuat spec.
 - Kemampuan teknis: membaca nilai tersimpan checkbox Create (disediakan tim FE/BE tanpa endpoint karangan).
 - State yang diubah dan pemulihannya: tingkat akses Total Control Rina Wulandari dilepas (TC-FA-RP-1137) dan Ahmad Fauzi dijadikan Total Control (TC-FA-RP-393). Hook `after` memulihkan Pre-setup #3 dan #15 lewat fixture backend yang disediakan tim FE/BE.
@@ -38,7 +38,7 @@ coverage:
 7. Buka Detail Role Group Role `Manage files`
 8. Klik node `Data Center` pada Sidebar Group Tree
 9. Ketik Search `Rina Wulandari`, tekan Enter
-10. Verifikasi baris Rina Wulandari tetap ada di Detail Role `Manage files` pada `Data Center`
+10. Verifikasi baris Rina Wulandari tetap ada di Detail Role `Manage files` pada `Data Center` (baris pola Group Role menjadi baris reguler setelah tier lepas)
 
 ### TC-FA-RP-393: Status target berubah antara render dan submit, aktor non-Total Control ditolak
 

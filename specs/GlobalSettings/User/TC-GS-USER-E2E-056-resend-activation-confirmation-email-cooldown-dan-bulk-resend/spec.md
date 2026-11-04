@@ -43,6 +43,7 @@ coverage:
   - `T_L` = waktu terbit Activation Email awal `Lukman Hakim {runId}-056`, dibaca dari mail-catcher.
   - `T_1` = waktu terbit email hasil Resend `Mike Tan {runId}-056` di TC-GS-USER-305, dibaca dari mail-catcher.
   - `F0` = nilai jam server saat jam dibekukan sebelum `[Save]` di TC-GS-USER-238.
+  - Langkah 81 (`F0` + 75 detik) dan langkah 90 (`F0` + 150 detik) diatur absolut dan dibekukan, margin 15 detik terhadap batas cooldown (lihat Notes).
   - Tiap "atur jam ke X" berarti jam server dan jam browser diatur bersama ke X absolut; "bekukan" berarti jam berhenti di nilai itu sampai diatur lagi.
 - State global yang diubah: jam server dan jam browser. Suite berjalan serial (`parallel: false`, lihat `suite.md`). Jam dipulihkan ke waktu nyata lewat langkah eksplisit sebelum Modal Changelog User dibuka (S-09) dan di hook `after` yang tetap berjalan walau spec gagal di tengah.
 - Cleanup di hook `after`: pulihkan jam, hapus `Mike Tan {runId}-056`, `Andre Kurniawan {runId}-056`, `Rina Putri {runId}-056`, dan `Lukman Hakim {runId}-056` lewat API tanpa mengandalkan setup berhasil penuh.
@@ -158,7 +159,7 @@ coverage:
 78. Buka Modal Changelog User
 79. Catat baseline: jumlah baris `Resend Activation Email` untuk `Andre Kurniawan {runId}-056` dan jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-056`
 80. Tutup Modal Changelog User dengan klik `✕`
-81. Atur jam ke `F0` + 60 detik, sehingga cooldown `Andre Kurniawan {runId}-056` berakhir dan cooldown `Mike Tan {runId}-056` (sampai `F0` + 90 detik) masih berjalan
+81. Atur jam ke `F0` + 75 detik dan bekukan, sehingga cooldown `Andre Kurniawan {runId}-056` (berakhir `F0` + 60 detik) sudah berakhir dan cooldown `Mike Tan {runId}-056` (berakhir `F0` + 90 detik) masih berjalan
 82. Centang baris `Mike Tan {runId}-056` dan `Andre Kurniawan {runId}-056`
 83. Bulk Action → `Resend Activation Email`
 84. Verifikasi toast: "Success, activation email has been sent. Some items were skipped (cooldown not finished)."
@@ -167,15 +168,15 @@ coverage:
 87. Verifikasi jumlah baris `Resend Activation Email` untuk `Andre Kurniawan {runId}-056` bertambah 1 dari baseline
 88. Verifikasi jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-056` sama dengan baseline
 89. Tutup Modal Changelog User dengan klik `✕`
-90. Klik `Unselect All` pada Bulk Action Bar
 
 ### TC-GS-USER-302: Bulk Resend Activation Email, semua terkirim
 
-91. Atur jam ke `F0` + 120 detik, sehingga cooldown kedua user berakhir
-92. Centang baris `Mike Tan {runId}-056` dan `Andre Kurniawan {runId}-056`
-93. Bulk Action → `Resend Activation Email`
-94. Verifikasi toast sukses: "Success, activation email has been sent."
-95. Verifikasi Bulk Action Bar hilang
+90. Atur jam ke `F0` + 150 detik dan bekukan, sehingga cooldown kedua user berakhir (Andre Kurniawan di-resend pada `F0` + 75 detik di TC-GS-USER-303, cooldown-nya berakhir `F0` + 135 detik; Mike Tan berakhir `F0` + 90 detik)
+91. Centang baris `Mike Tan {runId}-056` dan `Andre Kurniawan {runId}-056`
+92. Bulk Action → `Resend Activation Email`
+93. Verifikasi toast sukses: "Success, activation email has been sent."
+94. Verifikasi Bulk Action Bar hilang
+95. Pulihkan jam server dan jam browser ke waktu nyata
 
 ## Notes
 
@@ -183,8 +184,8 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec melewati sekitar 35 langkah (95 langkah). Alasan: seluruh blok satu kelas harness (d: mail-catcher dan jam) dan satu layar (User List dan Detail), serta state cooldown Mike Tan dan Andre Kurniawan dibangun berurutan dari blok ke blok dan tidak bisa diulang tanpa biaya besar (P-3): cooldown Mike Tan dari TC-GS-USER-238 menjadi precondition TC-GS-USER-239 dan TC-GS-USER-303, dan cooldown Andre Kurniawan dari TC-GS-USER-311 menjadi precondition TC-GS-USER-303 dan TC-GS-USER-302. Tiap blok tetap diawali keadaan data yang ditulis di langkah pembuka blok.
 - Urutan TC sumber diubah: TC-GS-USER-312 (screening tanpa aksi) di awal; TC-GS-USER-307 (butuh Create dan cooldown berjalan) sebelum jam diubah; TC-GS-USER-309 dan TC-GS-USER-238 sebelum TC-GS-USER-311 dan TC-GS-USER-239 supaya cooldown Mike Tan dan Andre Kurniawan berbeda waktu mulai; TC-GS-USER-303 sebelum TC-GS-USER-302, karena TC-GS-USER-303 membutuhkan Mike Tan dalam cooldown dan Andre Kurniawan sudah lewat, sedangkan TC-GS-USER-302 membutuhkan keduanya lewat.
-- Rumus waktu TC-GS-USER-303: Mike Tan disimpan ulang pada `F0` + 30 detik (TC-GS-USER-239), jadi cooldown-nya berakhir `F0` + 90 detik; Andre Kurniawan di-resend pada `F0` (TC-GS-USER-311), jadi cooldown-nya berakhir `F0` + 60 detik. Jam diatur absolut ke `F0` + 60 detik. State "Mike Tan baru di-resend" pada TC-GS-USER-303 dibentuk oleh Edit email (TC-GS-USER-239) yang juga mengirim Activation Email dan memulai cooldown.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): Esc menutup menu row action, Back ke User List, "Tunggu aksi selesai", membaca `T_L`, `T_1`, dan tautan aktivasi lama dari mail-catcher, mengatur, membekukan, dan memulihkan jam, mencatat baseline, menutup tab dan Modal Changelog User, dan `Unselect All`. Verifikasi User Detail `Dewi Lestari` tampil adalah anchor positif untuk asersi ketiadaan Button Resend (bagian 8b butir 1).
+- Rumus waktu TC-GS-USER-303: Mike Tan disimpan ulang pada `F0` + 30 detik (TC-GS-USER-239), jadi cooldown-nya berakhir `F0` + 90 detik; Andre Kurniawan di-resend pada `F0` (TC-GS-USER-311), jadi cooldown-nya berakhir `F0` + 60 detik. Jam diatur absolut ke `F0` + 75 detik dan dibekukan (margin 15 detik terhadap kedua batas, jam tidak berjalan sehingga tidak ada selisih δ). Rumus waktu TC-GS-USER-302: Andre Kurniawan di-resend oleh Bulk Resend pada `F0` + 75 detik, jadi cooldown-nya berakhir `F0` + 135 detik; jam diatur absolut ke `F0` + 150 detik dan dibekukan (margin 15 detik), supaya kedua user terkirim dan toast sukses tanpa "Some items were skipped". Jam dipulihkan ke waktu nyata di langkah 95. State "Mike Tan baru di-resend" pada TC-GS-USER-303 dibentuk oleh Edit email (TC-GS-USER-239) yang juga mengirim Activation Email dan memulai cooldown.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): Esc menutup menu row action, Back ke User List, "Tunggu aksi selesai", membaca `T_L`, `T_1`, dan tautan aktivasi lama dari mail-catcher, mengatur, membekukan, dan memulihkan jam, mencatat baseline, serta menutup tab dan Modal Changelog User. Verifikasi User Detail `Dewi Lestari` tampil adalah anchor positif untuk asersi ketiadaan Button Resend (bagian 8b butir 1).
 - Jam dipulihkan ke waktu nyata sebelum Modal Changelog User dibuka (S-09). Log yang dibuat saat jam digeser bercap waktu masa depan, sehingga asersi Changelog memakai selisih jumlah baris terhadap baseline per user (nama user bersuffix), bukan posisi teratas (S-12). Asersi "Mike Tan sama dengan baseline" adalah asersi jumlah, bukan asersi absence kelas g.
 - Email aktivasi lama TC-GS-USER-238 diidentifikasi sebagai email terbaru di alamat lama sebelum Edit (hasil Resend di TC-GS-USER-305).
 - Tooltip "Please wait {X} seconds before resending." ditulis persis seperti Expected TC, termasuk tanda kutip ganda. Pada nama bersuffix, toast TC-GS-USER-309 memuat nama lengkap `Rina Putri {runId}-056`.

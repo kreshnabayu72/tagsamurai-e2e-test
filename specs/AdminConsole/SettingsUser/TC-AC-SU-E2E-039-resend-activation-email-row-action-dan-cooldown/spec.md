@@ -41,43 +41,44 @@ coverage:
 6. Verifikasi opsi `Resend Activation Email` disabled dengan label tetap
 7. Hover opsi `Resend Activation Email`
 8. Verifikasi tooltip `"Please wait [Seconds] seconds before resending."`
-9. Atur jam server dan jam browser maju 10 detik
-10. Hover opsi `Resend Activation Email`
-11. Verifikasi angka `[Seconds]` pada tooltip menurun dibanding pembacaan pertama
-12. Tutup menu `(⋯)` dengan Esc
+9. Catat angka `[Seconds]` pada tooltip sebagai pembacaan pertama
+10. Atur jam server dan jam browser maju 10 detik
+11. Hover opsi `Resend Activation Email`
+12. Verifikasi angka `[Seconds]` pada tooltip menurun dibanding angka yang dicatat pada langkah 9
+13. Tutup menu `(⋯)` dengan Esc
 
 ### TC-AC-SU-146: Cooldown: 1 detik sebelum berakhir tombol masih disabled
 
-13. Atur jam server dan jam browser ke T0 + 59 detik (T0 = waktu terbit pengiriman Resend `Mike Tan {runId}-039`)
-14. Klik `(⋯)` baris `Mike Tan {runId}-039`
-15. Hover opsi `Resend Activation Email`
-16. Verifikasi opsi `Resend Activation Email` masih disabled
-17. Verifikasi tooltip `"Please wait 1 seconds before resending."`
+14. Atur jam server dan jam browser ke T0 + 59 detik (T0 = waktu terbit pengiriman Resend `Mike Tan {runId}-039`)
+15. Klik `(⋯)` baris `Mike Tan {runId}-039`
+16. Hover opsi `Resend Activation Email`
+17. Verifikasi opsi `Resend Activation Email` masih disabled
+18. Verifikasi tooltip `"Please wait 1 seconds before resending."`
 
 ### TC-AC-SU-147: Cooldown berakhir tepat 60 detik: tombol kembali enabled dan bisa kirim lagi
 
-18. Atur jam server dan jam browser ke T0 + 60 detik tanpa memuat ulang halaman
-19. Hover opsi `Resend Activation Email`
-20. Verifikasi opsi `Resend Activation Email` otomatis enabled
-21. Verifikasi tooltip cooldown hilang
-22. Klik `Resend Activation Email`
-23. Verifikasi muncul toast sukses: "Success, email has been sent."
-24. Klik `(⋯)` baris `Mike Tan {runId}-039`
-25. Verifikasi cooldown baru dimulai: opsi `Resend Activation Email` disabled
-26. Tutup menu `(⋯)` dengan Esc
+19. Atur jam server dan jam browser ke T0 + 60 detik tanpa memuat ulang halaman
+20. Hover opsi `Resend Activation Email`
+21. Verifikasi opsi `Resend Activation Email` otomatis enabled
+22. Verifikasi tooltip cooldown hilang
+23. Klik `Resend Activation Email`
+24. Verifikasi muncul toast sukses: "Success, email has been sent."
+25. Klik `(⋯)` baris `Mike Tan {runId}-039`
+26. Verifikasi cooldown baru dimulai: opsi `Resend Activation Email` disabled
+27. Tutup menu `(⋯)` dengan Esc
 
 ### TC-AC-SU-148: Cooldown terpisah per user
 
-27. Klik `(⋯)` baris `Sarah Lee {runId}-039` (Pending Activation, belum di-resend; `Mike Tan {runId}-039` dalam cooldown)
-28. Verifikasi opsi `Resend Activation Email` baris `Sarah Lee {runId}-039` enabled
-29. Klik `Resend Activation Email`
-30. Verifikasi muncul toast sukses: "Success, email has been sent."
-31. Pulihkan jam server dan jam browser ke waktu nyata
+28. Klik `(⋯)` baris `Sarah Lee {runId}-039` (Pending Activation, belum di-resend; `Mike Tan {runId}-039` dalam cooldown)
+29. Verifikasi opsi `Resend Activation Email` baris `Sarah Lee {runId}-039` enabled
+30. Klik `Resend Activation Email`
+31. Verifikasi muncul toast sukses: "Success, email has been sent."
+32. Pulihkan jam server dan jam browser ke waktu nyata
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, R-16): langkah 1, 9, 12, 13, 18, 26, 31 (pencarian baris target lewat Search, penutupan menu atau dialog, pemulihan state, dan kembali ke User List); tanpa `Verifikasi` dan tanpa klaim keadaan.
+- Langkah penghubung (S-03, R-16): langkah 1, 10, 13, 14, 19, 27, 32 (pencarian baris target lewat Search, penutupan menu atau dialog, pemulihan state, dan kembali ke User List); tanpa `Verifikasi` dan tanpa klaim keadaan.
 - Mode: FE+BE. Sumber: `admin-console/settings-user/TestCases/tc-settings-user.md`.
 - TC-146 dan TC-147 bergantung pada pengiriman TC-142 (Dependensi TC): TC-142 dijalankan lebih dulu, T0 adalah waktu terbit pengiriman itu. Waktu T0 + 59 dan T0 + 60 diset absolut (bagian 8b butir 3), bukan ditunggu.
 - TC-148 berjalan sesudah TC-147: `Mike Tan {runId}-039` dalam cooldown seperti prasyarat TC.

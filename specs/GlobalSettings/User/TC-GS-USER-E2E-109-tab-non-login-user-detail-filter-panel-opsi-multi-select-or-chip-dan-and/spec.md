@@ -51,7 +51,7 @@ coverage:
 - Date Format General Settings default environment (`DD/MM/YY`); spec tidak mengubahnya.
 - State yang diubah dan dipulihkan: Filter Panel dikosongkan lewat `[Clear Field]` dan `[Apply]` di akhir tiap TC yang menerapkan filter; hook `after` sebagai cadangan.
 - Suite berjalan serial (`parallel: false`, lihat `suite.md`). Spec tidak mengubah data Pre-setup bersama (S-06).
-- Kemampuan teknis: memilih rentang tanggal pada date range picker Filter Panel; mengetik di kotak pencarian dalam dropdown; membaca warna icon Filter (gelap saat filter aktif).
+- Kemampuan teknis: memilih rentang tanggal pada date range picker Filter Panel; mengetik di kotak pencarian dalam dropdown; membaca warna icon Filter (gelap saat panel terbuka) dan badge titik pada icon Filter.
 
 ## Test Steps
 
@@ -90,124 +90,127 @@ coverage:
 24. Pilih opsi `Internal Auditor` pada dropdown Position
 25. Klik `[Apply]`
 26. Verifikasi field Position: tabel hanya menampilkan baris `Fitri Handayani {runId}-109`
-27. Verifikasi field Position: icon Filter berwarna gelap
+27. Verifikasi field Position: badge titik tampil pada icon Filter
 28. Klik icon Filter
-29. Klik `[Clear Field]`
-30. Klik `[Apply]`
-31. Klik icon Filter
-32. Pilih opsi `Legal` pada dropdown Division
-33. Klik `[Apply]`
-34. Verifikasi field Division: tabel hanya menampilkan 4 baris dengan Division `Legal`: `Eka Wulandari {runId}-109`, `Galih Permadi {runId}-109`, `Lina Marlina {runId}-109`, `Wahyu Hidayat {runId}-109`
-35. Verifikasi field Division: icon Filter berwarna gelap
-36. Klik icon Filter
-37. Klik `[Clear Field]`
-38. Klik `[Apply]`
-39. Klik icon Filter
-40. Pilih opsi `Inactive` pada dropdown Status
-41. Klik `[Apply]`
-42. Verifikasi field Status: tabel hanya menampilkan 2 baris berstatus `Inactive`: `Lina Marlina {runId}-109`, `Rizky Fadillah {runId}-109`
-43. Verifikasi field Status: icon Filter berwarna gelap
-44. Klik icon Filter
-45. Klik `[Clear Field]`
-46. Klik `[Apply]`
-47. Klik icon Filter
-48. Pilih opsi `Yes` pada dropdown Temporary User
+29. Verifikasi field Position: icon Filter gelap (panel terbuka)
+30. Klik `[Clear Field]`
+31. Klik `[Apply]`
+32. Klik icon Filter
+33. Pilih opsi `Legal` pada dropdown Division
+34. Klik `[Apply]`
+35. Verifikasi field Division: tabel hanya menampilkan 4 baris dengan Division `Legal`: `Eka Wulandari {runId}-109`, `Galih Permadi {runId}-109`, `Lina Marlina {runId}-109`, `Wahyu Hidayat {runId}-109`
+36. Verifikasi field Division: badge titik tampil pada icon Filter
+37. Klik icon Filter
+38. Verifikasi field Division: icon Filter gelap (panel terbuka)
+39. Klik `[Clear Field]`
+40. Klik `[Apply]`
+41. Klik icon Filter
+42. Pilih opsi `Inactive` pada dropdown Status
+43. Klik `[Apply]`
+44. Verifikasi field Status: tabel hanya menampilkan 2 baris berstatus `Inactive`: `Lina Marlina {runId}-109`, `Rizky Fadillah {runId}-109`
+45. Verifikasi field Status: badge titik tampil pada icon Filter
+46. Klik icon Filter
+47. Verifikasi field Status: icon Filter gelap (panel terbuka)
+48. Klik `[Clear Field]`
 49. Klik `[Apply]`
-50. Verifikasi field Temporary User: tabel hanya menampilkan 2 baris dengan Temporary User `Yes`: `Citra Dewanti {runId}-109`, `Fitri Handayani {runId}-109`
-51. Verifikasi field Temporary User: icon Filter berwarna gelap
-52. Klik icon Filter
-53. Klik `[Clear Field]`
-54. Klik `[Apply]`
+50. Klik icon Filter
+51. Pilih opsi `Yes` pada dropdown Temporary User
+52. Klik `[Apply]`
+53. Verifikasi field Temporary User: tabel hanya menampilkan 2 baris dengan Temporary User `Yes`: `Citra Dewanti {runId}-109`, `Fitri Handayani {runId}-109`
+54. Verifikasi field Temporary User: badge titik tampil pada icon Filter
+55. Klik icon Filter
+56. Verifikasi field Temporary User: icon Filter gelap (panel terbuka)
+57. Klik `[Clear Field]`
+58. Klik `[Apply]`
 
 ### TC-GS-USER-681: Dua opsi dalam satu field digabung OR
 
-55. Klik icon Filter
-56. Pilih opsi `Internal Auditor` pada dropdown Position
-57. Pilih opsi `Supervisor` pada dropdown Position
-58. Klik `[Apply]`
-59. Verifikasi tabel menampilkan baris dengan Position `Internal Auditor` ATAU `Supervisor`: 4 baris `Citra Dewanti {runId}-109`, `Fitri Handayani {runId}-109`, `Hana Kusuma {runId}-109`, `Wahyu Hidayat {runId}-109`
-60. Verifikasi baris dengan Position lain, mis. `Agus Prasetyo {runId}-109` dan `Bagas Santoso {runId}-109`, tidak tampil
-61. Klik icon Filter
-62. Klik `[Clear Field]`
-63. Klik `[Apply]`
+59. Klik icon Filter
+60. Pilih opsi `Internal Auditor` pada dropdown Position
+61. Pilih opsi `Supervisor` pada dropdown Position
+62. Klik `[Apply]`
+63. Verifikasi tabel menampilkan baris dengan Position `Internal Auditor` ATAU `Supervisor`: 4 baris `Citra Dewanti {runId}-109`, `Fitri Handayani {runId}-109`, `Hana Kusuma {runId}-109`, `Wahyu Hidayat {runId}-109`
+64. Verifikasi baris dengan Position lain, mis. `Agus Prasetyo {runId}-109` dan `Bagas Santoso {runId}-109`, tidak tampil
+65. Klik icon Filter
+66. Klik `[Clear Field]`
+67. Klik `[Apply]`
 
 ### TC-GS-USER-682: Search di dalam dropdown filter mempersempit opsi
 
-64. Klik icon Filter
-65. Buka dropdown Position
-66. Ketik `PERVIS` pada kotak pencarian dropdown Position
-67. Verifikasi opsi tersaring substring tanpa membedakan huruf besar kecil: hanya opsi `Supervisor` tampil
-68. Ganti isi kotak pencarian dropdown Position dengan `zzz`
-69. Verifikasi tidak ada opsi yang cocok dengan `zzz` (dropdown menampilkan `No results found`)
-70. Hapus isi kotak pencarian dropdown Position
+68. Klik icon Filter
+69. Buka dropdown Position
+70. Ketik `PERVIS` pada kotak pencarian dropdown Position
+71. Verifikasi opsi tersaring substring tanpa membedakan huruf besar kecil: hanya opsi `Supervisor` tampil
+72. Ganti isi kotak pencarian dropdown Position dengan `zzz`
+73. Verifikasi tidak ada opsi yang cocok dengan `zzz` (dropdown menampilkan `No results found`)
+74. Hapus isi kotak pencarian dropdown Position
 
 ### TC-GS-USER-683: Hapus chip filter via (X) meng-uncheck opsi
 
-71. Pilih opsi `Finance Manager` pada dropdown Position
-72. Pilih opsi `Staff` pada dropdown Position
-73. Verifikasi chip `Finance Manager` dan chip `Staff` tampil di field Position
-74. Klik (X) pada chip `Finance Manager`
-75. Verifikasi chip `Finance Manager` hilang
-76. Verifikasi chip `Staff` tetap tampil
-77. Buka dropdown Position
-78. Verifikasi checkbox opsi `Finance Manager` di dropdown Position ter-uncheck
+75. Pilih opsi `Finance Manager` pada dropdown Position
+76. Pilih opsi `Staff` pada dropdown Position
+77. Verifikasi chip `Finance Manager` dan chip `Staff` tampil di field Position
+78. Klik (X) pada chip `Finance Manager`
+79. Verifikasi chip `Finance Manager` hilang
+80. Verifikasi chip `Staff` tetap tampil
+81. Buka dropdown Position
+82. Verifikasi checkbox opsi `Finance Manager` di dropdown Position ter-uncheck
 
 ### TC-GS-USER-684: Uncheck opsi di dropdown menghapus chip
 
-79. Klik `[Clear Field]`
-80. Pilih opsi `Finance Manager` pada dropdown Position
-81. Pilih opsi `Staff` pada dropdown Position
-82. Buka dropdown Position, hilangkan centang opsi kedua `Staff`
-83. Verifikasi chip `Staff` hilang
-84. Verifikasi chip `Finance Manager` tetap tampil
+83. Klik `[Clear Field]`
+84. Pilih opsi `Finance Manager` pada dropdown Position
+85. Pilih opsi `Staff` pada dropdown Position
+86. Buka dropdown Position, hilangkan centang opsi kedua `Staff`
+87. Verifikasi chip `Staff` hilang
+88. Verifikasi chip `Finance Manager` tetap tampil
 
 ### TC-GS-USER-685: Filter date range per field
 
-85. Klik `[Clear Field]`
-86. Pilih rentang tanggal `{L1}` sampai `{L1}` pada field `Last Update`
-87. Verifikasi input field `Last Update` menampilkan tanggal dalam Date Format General Settings (`DD/MM/YY`)
-88. Klik `[Apply]`
-89. Verifikasi field Last Update: tabel hanya menampilkan 6 baris dalam rentang: `Agus Prasetyo {runId}-109`, `Bagas Santoso {runId}-109`, `Citra Dewanti {runId}-109`, `Dimas Pranoto {runId}-109`, `Eka Wulandari {runId}-109`, `Fitri Handayani {runId}-109`
-90. Klik icon Filter
-91. Klik `[Clear Field]`
+89. Klik `[Clear Field]`
+90. Pilih rentang tanggal `{L1}` sampai `{L1}` pada field `Last Update`
+91. Verifikasi input field `Last Update` menampilkan tanggal dalam Date Format General Settings (`DD/MM/YY`)
 92. Klik `[Apply]`
-93. Klik icon Filter
-94. Pilih rentang tanggal `{U1}` sampai `{U1}` pada field `Temporary Until`
-95. Verifikasi input field `Temporary Until` menampilkan tanggal dalam Date Format General Settings (`DD/MM/YY`)
+93. Verifikasi field Last Update: tabel hanya menampilkan 6 baris dalam rentang: `Agus Prasetyo {runId}-109`, `Bagas Santoso {runId}-109`, `Citra Dewanti {runId}-109`, `Dimas Pranoto {runId}-109`, `Eka Wulandari {runId}-109`, `Fitri Handayani {runId}-109`
+94. Klik icon Filter
+95. Klik `[Clear Field]`
 96. Klik `[Apply]`
-97. Verifikasi field Temporary Until: tabel hanya menampilkan baris dalam rentang: `Citra Dewanti {runId}-109`
-98. Klik icon Filter
-99. Klik `[Clear Field]`
+97. Klik icon Filter
+98. Pilih rentang tanggal `{U1}` sampai `{U1}` pada field `Temporary Until`
+99. Verifikasi input field `Temporary Until` menampilkan tanggal dalam Date Format General Settings (`DD/MM/YY`)
 100. Klik `[Apply]`
+101. Verifikasi field Temporary Until: tabel hanya menampilkan baris dalam rentang: `Citra Dewanti {runId}-109`
+102. Klik icon Filter
+103. Klik `[Clear Field]`
+104. Klik `[Apply]`
 
 ### TC-GS-USER-686: Kombinasi 2 field filter digabung AND
 
-101. Klik icon Filter
-102. Pilih opsi `Staff` pada dropdown Position
-103. Pilih opsi `Finance` pada dropdown Division
-104. Klik `[Apply]`
-105. Verifikasi tabel hanya menampilkan baris yang memenuhi Position `Staff` DAN Division `Finance`: `Nadia Rahma {runId}-109`
-106. Verifikasi baris yang hanya memenuhi satu kriteria, mis. `Bagas Santoso {runId}-109` (Staff, General Affairs) dan `Agus Prasetyo {runId}-109` (Finance Manager, Finance), tidak tampil
-107. Klik icon Filter
-108. Klik `[Clear Field]`
-109. Klik `[Apply]`
+105. Klik icon Filter
+106. Pilih opsi `Staff` pada dropdown Position
+107. Pilih opsi `Finance` pada dropdown Division
+108. Klik `[Apply]`
+109. Verifikasi tabel hanya menampilkan baris yang memenuhi Position `Staff` DAN Division `Finance`: `Nadia Rahma {runId}-109`
+110. Verifikasi baris yang hanya memenuhi satu kriteria, mis. `Bagas Santoso {runId}-109` (Staff, General Affairs) dan `Agus Prasetyo {runId}-109` (Finance Manager, Finance), tidak tampil
+111. Klik icon Filter
+112. Klik `[Clear Field]`
+113. Klik `[Apply]`
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Holder dan 12 Non-Login User dipenuhi spec ini lewat seeding di hook `before`; spec tidak menumpang spec lain.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber (678 sampai 686) dipertahankan; screening 678 dan 679 di awal sebelum TC yang menerapkan filter.
-- Langkah penghubung (aksi tanpa `Verifikasi`): pembukaan Tab (langkah 1 sampai 3); `Klik icon Filter`, `[Clear Field]`, dan `[Apply]` di akhir tiap TC yang menerapkan filter (langkah 28 sampai 30 dan blok sejenis sesudah tiap kasus) supaya TC berikutnya mulai tanpa filter aktif; `Hapus isi kotak pencarian dropdown Position` sebelum TC-GS-USER-683; `[Clear Field]` sebelum TC-GS-USER-684 dan 685 (mengosongkan pilihan yang belum di-Apply).
+- Langkah penghubung (aksi tanpa `Verifikasi`): pembukaan Tab (langkah 1 sampai 3); `Klik icon Filter`, `[Clear Field]`, dan `[Apply]` di akhir tiap TC yang menerapkan filter (langkah 28 sampai 31 dan blok sejenis sesudah tiap kasus) supaya TC berikutnya mulai tanpa filter aktif; `Hapus isi kotak pencarian dropdown Position` sebelum TC-GS-USER-683; `[Clear Field]` sebelum TC-GS-USER-684 dan 685 (mengosongkan pilihan yang belum di-Apply).
 - Langkah `Klik icon Filter` dituliskan sebelum `[Clear Field]` sesudah tiap `[Apply]`: panel Filter ditutup oleh `[Apply]` dan icon Filter dipakai untuk membukanya kembali.
 - Anchor positif (S-03, bagian 8b butir 2): TC-GS-USER-679 memverifikasi opsi yang ada sebelum ketiadaan `HR Business Partner` dan `Logistics`; TC-GS-USER-681 dan 686 memverifikasi baris yang cocok sebelum ketiadaan baris lain; TC-GS-USER-682 memverifikasi opsi `Supervisor` tampil sebelum `zzz`.
 - Nilai dan cakupan: TC-GS-USER-682 memakai `PERVIS` untuk membuktikan substring dan tidak case-sensitive sekaligus (cocok dengan `Supervisor`). TC-GS-USER-683 dan 684 memilih `Finance Manager` lalu `Staff`; chip pertama dan kedua mengikuti urutan pemilihan.
 - Pembagian TC lintas spec: TC-GS-USER-400 sampai 403 (screening Tab, state kosong, navigasi) ada di spec 108 dan TC-GS-USER-404 (Download) ada di spec 113; TC-GS-USER-671 sampai 677 (Search) ada di spec 108; TC-GS-USER-687 sampai 691 (kombinasi Search dan Filter) ada di spec 110; TC-GS-USER-692 sampai 696, 714, dan 715 (Sort dan Pagination) ada di spec 111; TC-GS-USER-697 sampai 708 (Setup Column) ada di spec 112; TC-GS-USER-709 sampai 713 (Download) ada di spec 113.
-- Spec melewati sekitar 35 langkah (109 langkah) karena sembilan TC berbagi satu layar (Filter Panel Tab Non-Login User), satu dataset (12 Non-Login User milik spec), dan satu kelas harness (fungsional). TC-GS-USER-680 menguji empat field dengan pola identik (pilih opsi, `[Apply]`, dua `Verifikasi`, kosongkan filter), TC-GS-USER-685 dua field tanggal. Blok 678 dan 679 (screening) serta 680 sampai 686 berdiri sendiri dan memakai Tab yang sama; memisahkannya mengulang login, seeding 13 user, dan pembukaan Tab.
+- Spec melewati sekitar 35 langkah (113 langkah) karena sembilan TC berbagi satu layar (Filter Panel Tab Non-Login User), satu dataset (12 Non-Login User milik spec), dan satu kelas harness (fungsional). TC-GS-USER-680 menguji empat field dengan pola identik (pilih opsi, `[Apply]`, tiga `Verifikasi`, kosongkan filter), TC-GS-USER-685 dua field tanggal. Blok 678 dan 679 (screening) serta 680 sampai 686 berdiri sendiri dan memakai Tab yang sama; memisahkannya mengulang login, seeding 13 user, dan pembukaan Tab.
 - Temuan untuk QA:
   - TC-GS-USER-678 sampai 686 menyebut tabel dan Name tanpa suffix; spec memakai holder dan Non-Login User milik spec bersuffix (S-06, S-11).
   - TC-GS-USER-678: PRD user.md §4.1.4 menyebut filter Custom Field aktif (curated) di Filter Panel tab ini; spec hanya mengasersi enam field yang disebut Expected TC dan tidak mengasersi ketiadaan field lain.
   - TC-GS-USER-679: TC tidak menyebut apakah dropdown yang terbuka tertutup saat dropdown berikutnya dibuka; spec membuka dropdown berurutan tanpa menutup.
   - TC-GS-USER-679: dropdown Status dan Temporary User hanya memuat dua nilai (Active/Inactive dan Yes/No) yang semuanya muncul di tabel, sehingga ketiadaan nilai tanpa baris tidak teramati pada kedua dropdown itu.
-  - TC-GS-USER-680: Expected "icon Filter berubah gelap saat aktif" bertentangan secara tekstual dengan prd-conventions.md §9.8 ("gelap saat panel aktif/terbuka"); spec mengasersi icon gelap sesudah `[Apply]` dengan panel tertutup.
   - TC-GS-USER-680 dan 685: TC tidak menyatakan apakah Filter Panel menutup sesudah `[Apply]`; spec membuka kembali lewat icon Filter sebelum `[Clear Field]`.
   - TC-GS-USER-682: teks `No results found` di dalam dropdown diambil dari prd-conventions.md §9.8 (No Match); TC hanya menyebut "tidak ada opsi cocok".
   - TC-GS-USER-683 dan 684: TC tidak menyebut urutan chip; spec mengikuti urutan pemilihan opsi.

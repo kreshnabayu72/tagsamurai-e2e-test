@@ -22,6 +22,7 @@ coverage:
 - Data Dinamis (di-seed hook `before` lewat Fixture BE; nama bersuffix `{runId}-089`): group tree `Region A {runId}-089` > `Branch 1 {runId}-089` > `Floor 1 {runId}-089`; `Region A {runId}-089` > `Branch 3 {runId}-089`; `Region B {runId}-089`. User: `Jane Smith {runId}-089` (Inactive, 2 role aktif, dengan foto, Group Role aktif di `Floor 1 {runId}-089`), `Mike Tan {runId}-089` (Active, Group Role aktif di `Branch 3 {runId}-089`), `Rudi Hartono {runId}-089` (hanya Global Role), `Sarah Lee {runId}-089` (tanpa Position, Employee ID, dan TAG; Pending Activation; Temporary User `No`; Group Role tanpa group assignment), `Dedi Kurnia {runId}-089` (Group Manager `Region A {runId}-089`), `Dewi Lestari {runId}-089` (Total Control) dan `Rina Putri {runId}-089` (Total Control), `Andi Wijaya {runId}-089` (Read Only, Temporary User `Yes`, TAG `E2801{runId}`), `John Doe {runId}-089` (Group Role aktif di `Region B {runId}-089`, Active). Baris Default User Principal (Pre-setup #1, Total Control permanen) dipakai apa adanya.
 - General Settings Date Format dan Time Format mengikuti nilai entitas (tidak diubah); nilai pembanding Last Updated dibaca dari tampilan tabel.
 - Kemampuan teknis: membaca isi berkas XLSX (nilai sel, tipe sel, dan keanggotaan baris) dan menghapus preferensi kolom di browser, disediakan tim FE.
+- Fixture `Fixture.settingsUser` (berkas fixture belum ada; disediakan tim FE) memuat identitas data Pre-setup: `defaultUserName` (nama tampil baris Default User Principal, Pre-setup #1).
 - Hook `after` menghapus data yang di-seed hook `before` spec ini lewat Fixture BE; pembersihan tidak berasumsi seeding berhasil penuh.
 - Pemulihan Setup Column: preferensi kolom yang disimpan spec ini dihapus di hook `after` dengan menghapus preferensi kolom di browser (bukan `[Reset to Default]`); kemampuan ini disediakan tim FE.
 
@@ -62,7 +63,7 @@ coverage:
 25. Klik icon Download, klik `Download as XLSX`
 26. Verifikasi tidak ada toast sukses
 27. Verifikasi berkas `User.xlsx` terunduh
-28. Verifikasi `User.xlsx` hanya memuat user dalam `Region A {runId}-089` dan descendant-nya: `Jane Smith {runId}-089`, `Mike Tan {runId}-089`, `Dedi Kurnia {runId}-089`, `Dewi Lestari {runId}-089`, `Rina Putri {runId}-089`, `Andi Wijaya {runId}-089`, dan Default User
+28. Verifikasi `User.xlsx` hanya memuat user dalam `Region A {runId}-089` dan descendant-nya: `Jane Smith {runId}-089`, `Mike Tan {runId}-089`, `Dedi Kurnia {runId}-089`, `Dewi Lestari {runId}-089`, `Rina Putri {runId}-089`, `Andi Wijaya {runId}-089`, dan `Fixture.settingsUser.defaultUserName`
 29. Verifikasi `User.xlsx` tidak memuat `Rudi Hartono {runId}-089`, `Sarah Lee {runId}-089`, dan `John Doe {runId}-089`
 30. Klik node `Region A {runId}-089` agar ter-deselect
 

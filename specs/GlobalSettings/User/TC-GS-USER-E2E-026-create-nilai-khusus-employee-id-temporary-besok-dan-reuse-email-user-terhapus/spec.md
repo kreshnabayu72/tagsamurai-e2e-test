@@ -36,11 +36,12 @@ coverage:
     - U-138a: First Name `Andre`, Last Name `Kurniawan {runId}-026`, Email `andrekurniawan+{runId}-026@qwertysystem.net`, Division `Logistics`.
     - U-138b: First Name `Maya`, Last Name `Anggraini {runId}-026`, Email `mayaanggraini+{runId}-026@qwertysystem.net`, Division `Finance`, Access `Supply Asset`, Position `HR Business Partner`.
     - U-138c: First Name `Rudi`, Last Name `Hakim 138 {runId}-026`, Email `rudihakim138+{runId}-026@qwertysystem.net`, Division `General Affairs`, Access `Global Settings`.
-  - Emergency Phone (Required, No. 24) diisi pada setiap Create: Country Code `🇮🇩 +62`, Number `81234567890`.
+  - Emergency Phone (No. 24) diisi pada setiap Create mengikuti TC: Country Code `🇮🇩 +62`, Number `81234567890`.
   - Nama tampil di User List: `{First Name} {Last Name}`.
 - Tanggal "besok" (TC-GS-USER-125): dihitung dari jam browser pada zona waktu client General Settings (NC-06: Temporary Until adalah hari aktif terakhir). Format tanggal pada Detail mengikuti format tanggal General Settings client.
 - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus lewat API UT-1 dan semua user bersuffix `{runId}-026`.
-- State global yang diubah: tidak ada. Spec membuat data dan berjalan dalam suite serial; form Create dibuka sekali dengan checkbox `Stay on this form after submitting`.
+- State global yang diubah: Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah. Spec membuat data dan berjalan dalam suite serial; form Create dibuka sekali dengan checkbox `Stay on this form after submitting`.
+- Kemampuan teknis (disediakan tim FE/BE bila belum ada): menunggu ±500 ms nyata untuk debounce validasi real-time (jeda pendek, langkah 5, 11, dan 22).
 
 ## Test Steps
 
@@ -139,4 +140,4 @@ coverage:
   - TC-GS-USER-138 langkah 2 menyebut checkbox `Stay on this form`, sedangkan PRD dan TC-GS-USER-139 menyebut `Stay on this form after submitting`; spec memakai label yang kedua.
   - TC-GS-USER-138 tidak menyebut Email, Last Name pembeda, dan field wajib lain untuk ketiga user; spec memakai nilai bersuffix di Prerequisites.
   - TC-GS-USER-138 Post Condition "3 user populasi tersedia untuk TC Search/Filter/Delete" tidak punya langkah observasi dan tidak diasersi. User spec ini dibersihkan di hook `after` dan tidak dipakai TC lain (S-06).
-  - TC-GS-USER-109, 113, 115, 116, 125, 138: TC mengisi Emergency Phone (Required, Pre-setup No. 24) pada langkah 2 TC kecuali TC-GS-USER-113 yang menulis "Isi field wajib"; spec mengisi Emergency Phone pada semua Create dengan Country Code `🇮🇩 +62` dan Number `81234567890`.
+  - TC-GS-USER-109, 113, 115, 116, 125, 138: TC mengisi Emergency Phone (Pre-setup No. 24; Required nonaktif untuk TC ini) pada langkah 2 TC kecuali TC-GS-USER-113 yang menulis "Isi field wajib"; spec mengisi Emergency Phone pada semua Create dengan Country Code `🇮🇩 +62` dan Number `81234567890`.

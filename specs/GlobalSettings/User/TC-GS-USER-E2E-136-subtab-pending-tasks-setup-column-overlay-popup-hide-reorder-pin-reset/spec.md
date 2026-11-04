@@ -60,7 +60,7 @@ coverage:
 
 10. Klik item `Setup Column...`
 11. Verifikasi Header: Title `Setup Column`
-12. Verifikasi Header: deskripsi panduan tampil
+12. Verifikasi Header: deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`
 13. Verifikasi Header: icon `[✕]`
 14. Verifikasi Body: daftar kolom dengan checkbox
 15. Verifikasi Body: drag handle pada tiap kolom
@@ -403,7 +403,7 @@ coverage:
 - Pembagian TC lintas spec: TC-GS-USER-396, 397, dan 830 sampai 836 ada di spec 132 (Search terhadap kolom hidden: TC-GS-USER-835); TC-GS-USER-837 sampai 846 ada di spec 133; TC-GS-USER-847 sampai 851 (Filter terhadap kolom hidden: TC-GS-USER-850) ada di spec 134; TC-GS-USER-852 sampai 854, 869, dan 870 ada di spec 135; TC-GS-USER-398 dan 864 sampai 868 (Download terhadap kolom hidden: TC-GS-USER-867) ada di spec 137. TC Setup Column sub-tab Pending Approvals ada di spec 130.
 - Spec melewati sekitar 35 langkah (321 langkah) karena sembilan TC Setup Column menguji delapan kolom dengan blok identik (hide, reorder, pin) pada satu popup, satu layar, satu dataset, dan satu kelas harness (fungsional). Tiap blok TC berdiri sendiri: konfigurasi dikembalikan ke default oleh langkah akhir blok atau oleh TC-GS-USER-860, sehingga satu kegagalan tidak membuat blok lain kehilangan makna. Langkah muat ulang dan pembukaan kembali sub-tab sesudah F5 serta pembukaan popup adalah prefix berulang.
 - Temuan untuk QA:
-  - TC-GS-USER-856 Expected a: "deskripsi panduan" tidak ditulis literal di TC; spec hanya mengasersi deskripsi tampil.
+  - TC-GS-USER-856 Expected a: "deskripsi panduan" tidak ditulis teksnya di TC; spec memakai teks deskripsi dari prd-conventions §9.3.
   - TC-GS-USER-858: langkah kedua menggeser `Transaction` ke posisi pertama padahal `Transaction` sudah pertama sesudah `Transaction ID` dipindah ke posisi terakhir; Expected tidak membedakannya dari kolom lain.
   - TC-GS-USER-859: TC tidak menyebut cara membuat tabel dapat di-scroll horizontal; spec menyempitkan viewport. Expected "bertahan setelah F5" untuk pin ditulis dengan scroll horizontal setelah F5.
   - TC-GS-USER-860 dan 861: "Ubah urutan dan visibility kolom" dan "ubah konfigurasi" tidak konkret; spec memakai hide `PIC` dengan seret `Total Asset` (860) dan hide `Group` (861).

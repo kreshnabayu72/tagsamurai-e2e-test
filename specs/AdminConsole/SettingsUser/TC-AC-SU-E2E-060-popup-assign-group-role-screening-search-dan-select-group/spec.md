@@ -79,7 +79,7 @@ coverage:
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, R-16): langkah 1, 18, 34 (pencarian baris target lewat Search, penutupan menu atau dialog, pemulihan state, dan kembali ke User List); tanpa `Verifikasi` dan tanpa klaim keadaan.
+- Langkah penghubung (S-03, R-16): langkah 1, 18, 28, 34 (pencarian baris target lewat Search, penutupan menu atau dialog termasuk `[Cancel]` Popup Select Group, pemulihan state, dan kembali ke User List); tanpa `Verifikasi` dan tanpa klaim keadaan.
 - Mode: FE+BE. Sumber: `admin-console/settings-user/TestCases/tc-settings-user.md`.
 - Pembagian TC: TC-AC-SU-218 sampai 221 ada di spec 061.
 - Search `branch` pada TC-215 hanya cocok dengan `Branch 3 {runId}-060`; nama uji tidak memuat kata `branch` lain (R-13). Pembanding "sedikitnya satu baris" untuk asersi hasil tersaring dipenuhi `Verifikasi` baris `Region A {runId}-060` dan `Branch 3 {runId}-060` pada TC-214 (data yang sama).

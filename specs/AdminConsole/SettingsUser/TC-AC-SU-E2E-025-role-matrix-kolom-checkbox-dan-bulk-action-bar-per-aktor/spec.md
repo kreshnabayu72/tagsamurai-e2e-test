@@ -61,42 +61,48 @@ coverage:
 
 8. Logout dari akun aktor saat ini
 9. Login sebagai Manage user and role (Update, U=true) (`manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_UPDATE_PASSWORD`)
-10. Verifikasi Manage user and role (U=true): kolom Checkbox tampil
-11. Ketik Search `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
-12. Hover checkbox baris Default User
-13. Verifikasi checkbox Default User tampil namun disabled dengan tooltip `Default User cannot be modified.`
-14. Ganti isi kotak search dengan `manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, tekan Enter
-15. Hover checkbox baris aktor sendiri
-16. Verifikasi checkbox self tampil namun disabled dengan tooltip `You can't manage your own account from here.`
-17. Ganti isi kotak search dengan `Dewi Lestari {runId}-025`, tekan Enter
-18. Centang checkbox `Dewi Lestari {runId}-025`
-19. Verifikasi checkbox `Dewi Lestari {runId}-025` enabled
-20. Verifikasi checkbox `Dewi Lestari {runId}-025` tercentang
-21. Verifikasi Bulk Action Bar muncul
-22. Batalkan centang `Dewi Lestari {runId}-025`
+10. Buka Settings > User lewat sidebar
+11. Verifikasi Manage user and role (U=true): kolom Checkbox tampil
+12. Ketik Search `defaultUserAdminConsole_automated_{namaCompany}@qwertysystem.net`, tekan Enter
+13. Hover checkbox baris Default User
+14. Verifikasi checkbox Default User tampil namun disabled dengan tooltip `Default User cannot be modified.`
+15. Ganti isi kotak search dengan `manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, tekan Enter
+16. Hover checkbox baris aktor sendiri
+17. Verifikasi checkbox self tampil namun disabled dengan tooltip `You can't manage your own account from here.`
+18. Ganti isi kotak search dengan `Dewi Lestari {runId}-025`, tekan Enter
+19. Centang checkbox `Dewi Lestari {runId}-025`
+20. Verifikasi checkbox `Dewi Lestari {runId}-025` enabled
+21. Verifikasi checkbox `Dewi Lestari {runId}-025` tercentang
+22. Verifikasi Bulk Action Bar muncul
+23. Batalkan centang `Dewi Lestari {runId}-025`
 
 ### TC-AC-SU-73 dan TC-AC-SU-136: Kolom Checkbox dan Bulk Action Bar, aktor Read Only
 
-23. Logout dari akun aktor saat ini
-24. Login sebagai Read Only (`readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_RO_PASSWORD`)
-25. Amati tabel User List
-26. Verifikasi Read Only: kolom Checkbox tidak dirender (header maupun body)
-27. Verifikasi Bulk Action Bar tidak bisa muncul
-28. Verifikasi kolom Name dan kolom lain tetap tampil
+24. Logout dari akun aktor saat ini
+25. Login sebagai Read Only (`readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_RO_PASSWORD`)
+26. Buka Settings > User lewat sidebar
+27. Amati tabel User List
+28. Verifikasi Read Only: kolom Checkbox tidak dirender (header maupun body)
+29. Verifikasi Bulk Action Bar tidak bisa muncul
+30. Verifikasi kolom Name dan kolom lain tetap tampil
 
 ### TC-AC-SU-73 dan TC-AC-SU-137: Kolom Checkbox dan Bulk Action Bar, aktor Manage user and role (U=false)
 
-29. Logout dari akun aktor saat ini
-30. Login sebagai Manage user and role (Read saja, U=false) (`manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_READ_PASSWORD`)
-31. Amati tabel User List
-32. Verifikasi Manage user and role (U=false): kolom Checkbox tidak dirender
-33. Verifikasi kolom Checkbox Hidden
-34. Verifikasi Bulk Action Bar tidak bisa muncul
+31. Logout dari akun aktor saat ini
+32. Login sebagai Manage user and role (Read saja, U=false) (`manageUserRoleRead_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_READ_PASSWORD`)
+33. Buka Settings > User lewat sidebar
+34. Amati tabel User List
+35. Verifikasi kolom Name dan kolom lain tetap tampil
+36. Verifikasi Manage user and role (U=false): kolom Checkbox tidak dirender
+37. Verifikasi kolom Checkbox Hidden
+38. Verifikasi Bulk Action Bar tidak bisa muncul
 
 ## Notes
 
-- Langkah penghubung (S-03): Search atas email Pre-setup (menemukan baris Default User dan self) dan Search atas suffix spec (R-16), serta langkah 22 (pulihkan seleksi, S-09).
+- Langkah penghubung (S-03): Search atas email Pre-setup (menemukan baris Default User dan self) dan Search atas suffix spec (R-16), serta langkah 10, 26, 33 (buka Settings > User lewat sidebar sesudah login ulang), langkah 23 (pulihkan seleksi, S-09), dan langkah 35 (anchor positif kolom Name dan kolom lain tampil, dasar 8b.2, sebelum absence kolom Checkbox pada TC-AC-SU-137).
 - Alasan blok per akun (bagian 3a, `[KEPUTUSAN 2026-10-30]`): ganti akun menuntut Step eksplisit; empat akun dipakai berurutan, masing-masing satu kali. Subjudul memetakan langkah ke id TC.
+- Spec ini matriks visibilitas per role (bagian 3a): memuat asersi tampil (Total Control, Manage user and role U=true) dan Hidden (Read Only, Manage user and role U=false) dalam satu spec; `caseType` Positive mengikuti bagian 8.
+- Ukuran spec (38 langkah, di atas smell sekitar 35 langkah): Role Matrix satu permukaan (kolom Checkbox dan Bulk Action Bar) dengan empat akun; tiap blok akun berdiri sendiri (login eksplisit di awal blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - TC-AC-SU-136 butir b dan TC-AC-SU-137 butir b ("Bulk Action Bar tidak bisa muncul") tidak menyebut cara cek karena kolom Checkbox tidak dirender; spec mengasersi Bulk Action Bar tidak tampil pada tabel.
   - TC-AC-SU-73 butir b menyebut "header maupun body" untuk Read Only; diasersi sebagai satu `Verifikasi` (satu elemen kolom Checkbox).

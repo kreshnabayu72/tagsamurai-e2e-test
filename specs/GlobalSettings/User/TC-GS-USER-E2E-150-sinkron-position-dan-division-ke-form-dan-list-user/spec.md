@@ -62,7 +62,7 @@ coverage:
 21. Buka dropdown Division, gulir daftar opsi hingga opsi `Procurement {runId}-150` terlihat
 22. Verifikasi opsi `Procurement {runId}-150` tampil pada dropdown Division
 23. Klik `✕` di header form Create User
-24. Kosongkan Search
+24. Kosongkan Search lewat `(✕)`, tekan Enter
 
 ### Hapus master data (TC-GS-USER-946, 949)
 
@@ -89,7 +89,7 @@ coverage:
 42. Verifikasi opsi `Senior Staff {runId}-150` tampil pada dropdown Position form Edit
 43. Verifikasi opsi `Procurement Officer {runId}-150` tidak ada pada daftar opsi dropdown Position form Edit
 44. Klik `✕` di header form Edit User
-45. Kosongkan Search
+45. Kosongkan Search lewat `(✕)`, tekan Enter
 
 ## Notes
 

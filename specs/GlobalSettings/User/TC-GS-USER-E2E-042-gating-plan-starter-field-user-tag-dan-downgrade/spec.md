@@ -76,22 +76,23 @@ coverage:
 23. Buka Modal Changelog User, cari `John Doe {runId}-042`
 24. Verifikasi jumlah baris `Unpair TAG` untuk `John Doe {runId}-042` sama dengan baseline (tidak ada baris `Unpair TAG` baru)
 25. Tutup Modal Changelog User
-26. Klik Name `John Doe {runId}-042` di User List
-27. Verifikasi General Information User Detail tampil
-28. Verifikasi sub-section User TAG tidak ada di General Information
-29. Klik menu User di sidebar Global Settings
-30. Klik header kolom Column Visibility (⋯) → `Setup Column...`
-31. Verifikasi daftar kolom Setup Column memuat kolom `Name` (pembanding)
-32. Verifikasi kolom curated `TAG` tidak tersedia di Setup Column
-33. Tutup modal Setup Column dengan `✕`
+26. Ketik Search `John Doe {runId}-042`, tekan Enter
+27. Klik Name `John Doe {runId}-042` di User List
+28. Verifikasi General Information User Detail tampil
+29. Verifikasi sub-section User TAG tidak ada di General Information
+30. Klik menu User di sidebar Global Settings
+31. Klik header kolom Column Visibility (⋯) → `Setup Column...`
+32. Verifikasi daftar kolom Setup Column memuat kolom `Name` (pembanding)
+33. Verifikasi kolom curated `TAG` tidak tersedia di Setup Column
+34. Tutup modal Setup Column dengan `✕`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`. Kelas harness h (state tenant: plan Starter dan perubahan plan tier); semua TC di spec ini berkelas itu.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec memuat 33 langkah, di bawah batas sekitar 35.
+- Spec memuat 34 langkah, di bawah batas sekitar 35.
 - Dua konteks client dipakai berurutan dengan langkah ganti akun eksplisit (langkah 15 dan 16); blok TC-GS-USER-324 tetap bermakna walau blok Client plan Starter gagal.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 dan 17 (pembukaan), 6 dan 11 (menutup popup tanpa perubahan), 7 (Search user seed), 15 sampai 16 (ganti akun), 19 dan 20 (baseline jumlah baris `Unpair TAG` lalu menutup modal), 21 dan 22 (pemicu downgrade lalu refresh), 25, 29 sampai 30, dan 33.
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 dan 17 (pembukaan), 6 dan 11 (menutup popup tanpa perubahan), 7 (Search user seed), 15 sampai 16 (ganti akun), 19 dan 20 (baseline jumlah baris `Unpair TAG` lalu menutup modal), 21 dan 22 (pemicu downgrade lalu refresh), 25, 26 (Search nama baris persis `John Doe {runId}-042` sebelum Klik Name, supaya baris terlihat walau tabel lebih dari satu halaman), 30 sampai 31, dan 34.
 - Urutan langkah di TC-GS-USER-152: butir b (field lain tampil normal) diasersi sebelum butir a (field `User TAG` dan `Scan TAG` tidak dirender) agar absence punya anchor positif pada surface yang sama (8b butir 2).
 - TC-GS-USER-324 memakai asersi jumlah berbaseline (jumlah baris `Unpair TAG` John Doe sebelum dan sesudah downgrade), bukan asersi absence log (kelas g, S-05).
 - Temuan untuk QA:

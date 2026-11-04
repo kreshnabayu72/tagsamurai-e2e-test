@@ -38,42 +38,45 @@ coverage:
 3. Klik Tab Role, lalu sub-tab Global Role
 4. Switch "Manage group" OFF ke ON, lalu catat waktu aksi
 5. Tunggu aksi selesai, lalu klik Tab Changelog
-6. Verifikasi Tab Changelog menampilkan entri teratas: Action `Assign`, Field `Manage group — Access`, Old Value `—`, New Value `Assigned`, Modified By nama aktor format singkat
+6. Verifikasi Tab Changelog menampilkan tepat 1 entri dengan Action `Assign`, Field `Manage group — Access`, Old Value `—`, New Value `Assigned`, Modified By nama aktor format singkat
 7. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
 8. Klik menu Settings > User di sidebar
 9. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
-10. Verifikasi baris teratas: Action `Assign`, User Name `Mike Tan {runId}-156A`, Field `Manage group — Access`, Old Value `—`, New Value `Assigned`, Modified By nama aktor format singkat
-11. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
+10. Ketik Search `Mike Tan {runId}-156A` pada Popup Changelog: User, tekan Enter
+11. Verifikasi tepat 1 baris: Action `Assign`, User Name `Mike Tan {runId}-156A`, Field `Manage group — Access`, Old Value `—`, New Value `Assigned`, Modified By nama aktor format singkat
+12. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
 ### TC-AC-SU-536: Remove Global Role
-12. Tutup Popup Changelog: User, ketik Search `Mike Tan {runId}-156B`, tekan Enter
-13. Klik Name baris U2 untuk membuka Detail
-14. Klik Tab Role, lalu sub-tab Global Role
-15. Switch "Manage group" ON ke OFF, lalu catat waktu aksi
-16. Tunggu aksi selesai, lalu klik Tab Changelog
-17. Verifikasi Tab Changelog menampilkan entri teratas: Action `Remove`, Field `Manage group — Access`, Old Value `Assigned`, New Value `—`, Modified By nama aktor format singkat
-18. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
-19. Klik menu Settings > User di sidebar
-20. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
-21. Verifikasi baris teratas: Action `Remove`, User Name `Mike Tan {runId}-156B`, Field `Manage group — Access`, Old Value `Assigned`, New Value `—`, Modified By nama aktor format singkat
-22. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
+13. Tutup Popup Changelog: User, ketik Search `Mike Tan {runId}-156B`, tekan Enter
+14. Klik Name baris U2 untuk membuka Detail
+15. Klik Tab Role, lalu sub-tab Global Role
+16. Switch "Manage group" ON ke OFF, lalu catat waktu aksi
+17. Tunggu aksi selesai, lalu klik Tab Changelog
+18. Verifikasi Tab Changelog menampilkan tepat 1 entri dengan Action `Remove`, Field `Manage group — Access`, Old Value `Assigned`, New Value `—`, Modified By nama aktor format singkat
+19. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
+20. Klik menu Settings > User di sidebar
+21. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
+22. Ketik Search `Mike Tan {runId}-156B` pada Popup Changelog: User, tekan Enter
+23. Verifikasi tepat 1 baris: Action `Remove`, User Name `Mike Tan {runId}-156B`, Field `Manage group — Access`, Old Value `Assigned`, New Value `—`, Modified By nama aktor format singkat
+24. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
 ### TC-AC-SU-537: Edit permission Global Role
-23. Tutup Popup Changelog: User, ketik Search `Mike Tan {runId}-156C`, tekan Enter
-24. Klik Name baris U3 untuk membuka Detail
-25. Klik Tab Role, lalu sub-tab Global Role
-26. Centang checkbox Update pada "Manage group", lalu catat waktu aksi
-27. Tunggu aksi selesai, lalu klik Tab Changelog
-28. Verifikasi Tab Changelog menampilkan entri teratas: Action `Edit`, Field `Manage group — Update`, Old Value `Inactive`, New Value `Active`, Modified By nama aktor format singkat
-29. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
-30. Klik menu Settings > User di sidebar
-31. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
-32. Verifikasi baris teratas: Action `Edit`, User Name `Mike Tan {runId}-156C`, Field `Manage group — Update`, Old Value `Inactive`, New Value `Active`, Modified By nama aktor format singkat
-33. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
+25. Tutup Popup Changelog: User, ketik Search `Mike Tan {runId}-156C`, tekan Enter
+26. Klik Name baris U3 untuk membuka Detail
+27. Klik Tab Role, lalu sub-tab Global Role
+28. Centang checkbox Update pada "Manage group", lalu catat waktu aksi
+29. Tunggu aksi selesai, lalu klik Tab Changelog
+30. Verifikasi Tab Changelog menampilkan tepat 1 entri dengan Action `Edit`, Field `Manage group — Update`, Old Value `Inactive`, New Value `Active`, Modified By nama aktor format singkat
+31. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
+32. Klik menu Settings > User di sidebar
+33. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
+34. Ketik Search `Mike Tan {runId}-156C` pada Popup Changelog: User, tekan Enter
+35. Verifikasi tepat 1 baris: Action `Edit`, User Name `Mike Tan {runId}-156C`, Field `Manage group — Update`, Old Value `Inactive`, New Value `Active`, Modified By nama aktor format singkat
+36. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): Search dan pembukaan Detail (langkah 1, 12, 23, R-16), menutup popup, kembali ke daftar lewat sidebar, dan pencatatan waktu aksi. Langkah 8 mereset Search, sehingga Popup Changelog dibuka dari daftar tanpa filter.
-- Urutan: Expected TC menempatkan Tab Changelog Detail (butir c) sesudah Popup Changelog; spec memverifikasi Tab Changelog lebih dulu karena Detail sudah terbuka saat aksi (S-10). Baris target dicari sebagai baris teratas (Newest First) karena aksi baru saja dilakukan (S-14).
-- Spec berisi tiga blok TC independen berpola sama dengan user seeding sendiri; 33 langkah dipertahankan karena kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung tanpa Verifikasi (S-03): Search dan pembukaan Detail (langkah 1, 13, 25, R-16), Search nama unik pada Popup Changelog: User (langkah 10, 22, 34), menutup popup, kembali ke daftar lewat sidebar, dan pencatatan waktu aksi. Langkah 8 mereset Search, sehingga Popup Changelog dibuka dari daftar tanpa filter.
+- Urutan: Expected TC menempatkan Tab Changelog Detail (butir c) sesudah Popup Changelog; spec memverifikasi Tab Changelog lebih dulu karena Detail sudah terbuka saat aksi (S-10). Tab Changelog Detail dan Popup Changelog: User sama-sama diasersi "tepat 1" entri atau baris; Popup dicari dengan Search nama bersuffix unik dan baseline entri nol, sehingga keduanya asersi jumlah, bukan pembacaan baris teratas (S-14).
+- Spec berisi tiga blok TC independen berpola sama dengan user seeding sendiri; 36 langkah (di atas smell 35 langkah) dipertahankan karena kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - Post Condition TC-535 sampai TC-537 (Tab System Log aktor dan Activity Log dicatat) tidak punya langkah observasi di TC; tidak diasersi di spec ini. System Log diasersi pada spec 166 sampai 168.
   - TC-535 sampai TC-537 menyebut nama literal `Mike Tan` dan satu user untuk ketiganya dengan state awal berbeda; spec memakai tiga user bersuffix (S-12).

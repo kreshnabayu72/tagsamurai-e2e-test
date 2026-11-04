@@ -23,7 +23,16 @@ coverage:
 
 - Mode: mock. Seluruh API di-mock (integration test FE tanpa backend nyata); spec ini hanya menguji tampilan dan perilaku Popup Edit User di browser.
 - Hook suite: flag Guided Tooltip `gs-user` = seen (lihat `suite.md`).
-- Kebutuhan mock (Endpoint yang di-mock mengacu `global-settings/user/API/user-crud.yaml`: `POST /v2/iam/users/list` (daftar), `GET /v2/iam/users/{userId}` (detail untuk Popup Edit), `PATCH /v2/iam/users/{userId}` (Edit; tidak boleh terpanggil). Sumber opsi Position, Division, dan Access tidak ada di `user-crud.yaml`, ditentukan tim FE di tahap script; tidak ada endpoint yang dikarang):
+- Kebutuhan mock (API yang di-mock mengacu `global-settings/user/API/user-crud.yaml`; API pendukung disediakan tim FE):
+  | method path (yaml:baris) | respons dipaksa |
+  |---|---|
+  | `POST /v2/iam/users/list` (11) | daftar User yang memuat Dewi Lestari |
+  | `GET /v2/iam/users/{userId}` (444) | detail Dewi Lestari untuk Popup Edit |
+  | `PATCH /v2/iam/users/{userId}` (525) | Edit; dipantau, tidak boleh terpanggil |
+
+  Sumber opsi dropdown Position, Division, dan Access untuk Popup Edit disediakan tim FE.
+
+  Rincian respons:
   - Sesi dan payload izin akun Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` dengan Access Level Total Control (Tabel Data Uji Pre-setup No. 2). Login dilakukan sekali di hook `before` (environment variable `GS_TC_PASSWORD` untuk run non-mock; tidak ditulis di spec).
   - Respons daftar User yang memuat baris Dewi Lestari: First Name `Dewi`, Last Name `Lestari`, Position `Staff`, Division `Finance`, Access `Fixed Asset` dan `Global Settings`.
   - Respons opsi Position (memuat `Staff` dan `Supervisor`), Division, dan produk Access yang dibutuhkan Popup Edit.
@@ -114,3 +123,4 @@ coverage:
   - TC-GS-USER-186 butir c ("data tersimpan tidak berubah sampai Save") tidak menyebut cara memeriksa; spec memeriksa baris tabel setelah form ditutup.
   - TC-GS-USER-190 langkah 3 tidak menyebut bahwa `Esc` pada form dirty memunculkan dialog Unsaved Changes; spec mengikuti TC dan tidak mengasersi dialog tersebut sebelum `[Cancel]`.
 - Spec melewati sekitar 35 langkah (40 langkah) karena memuat satu kelas (penutupan Popup Edit, mode mock), satu layar, tiga pembukaan form yang dipakai bersama sesuai keadaan dirty-nya, dan tiap blok TC berdiri sendiri.
+  - Sumber opsi dropdown form tidak disebut di TC dan PRD; endpoint `POST /v2/iam/users/options` adalah opsi filter User List, bukan sumber dropdown form, sehingga tidak dipakai di spec ini dan sumber opsi disediakan tim FE (inferensi, diterima 2026-11-03; temuan sumber untuk pemilik PRD §4.1.3).

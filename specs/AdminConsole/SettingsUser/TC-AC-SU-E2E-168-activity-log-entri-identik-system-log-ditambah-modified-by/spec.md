@@ -40,23 +40,32 @@ coverage:
 1. Jalankan pemicu U0 (Deactivate `John Doe {runId}-168`) lewat sesi API Default User hingga entri tersimpan
 2. Klik menu Admin Console > Activity Log di sidebar, lalu ketik Search `John Doe {runId}-168`, tekan Enter
 3. Verifikasi kolom tabel Activity Log berurutan: Date, Action, Object, Name, Field, Old Value, New Value, Modified By
-4. Verifikasi baris Action `Deactivate`: Object `User`, Name `John Doe {runId}-168`, Field `Status`, Old Value `Active`, New Value `Inactive`, Modified By `Default User`
+4. Verifikasi baris Action `Deactivate`: Object `User`, Name `John Doe {runId}-168`, Field `Status`, Old Value `Active`, New Value `Inactive`, Modified By `Default U`
 ### TC-AC-SU-642: Entri tiap kelas Object di Activity Log
 5. Jalankan pemicu A sampai G (tabel Prerequisites) lewat sesi API Default User hingga seluruh entri tersimpan
-6. Ketik Search `Mike Tan {runId}-168` pada Activity Log, tekan Enter
-7. Verifikasi Object `User`: baris Activate untuk A, dan Resend Activation Email untuk B, dengan Modified By `Default User`
-8. Verifikasi Object `Global Role`: baris Assign, Edit, dan Remove untuk C dengan Modified By `Default User`
-9. Verifikasi Object `Group Role`: baris Assign, Edit, dan Remove untuk D dengan Modified By `Default User`
-10. Verifikasi Object `Total Control`: baris Assign, Remove, dan Auto-Revert untuk E dengan Modified By aktor
-11. Verifikasi Object `Read Only`: baris Assign, Remove, dan Auto-Revert untuk F dengan Modified By aktor
-12. Verifikasi Object `Group Manager`: baris Assign, Remove, dan Auto-Revert untuk G dengan Modified By aktor
-13. Buka Detail Default User (Search nama tampil Default User, klik Name baris), klik Tab System Log, lalu ketik Search `Mike Tan {runId}-168` pada tab, tekan Enter
-14. Verifikasi Field, Old Value, dan New Value tiap baris Activity Log pada keenam kelas Object identik dengan baris yang sama di Tab System Log aktor
+6. Ganti isi kotak search Activity Log dengan `Mike Tan {runId}-168`, tekan Enter
+7. Ubah page size Activity Log menjadi 100
+8. Verifikasi Object `User`: baris Activate untuk A
+9. Verifikasi Object `User`: baris Resend Activation Email untuk B
+10. Verifikasi Modified By baris Object `User` untuk A dan B `Default U`
+11. Verifikasi Object `Global Role`: baris Assign, Edit, dan Remove untuk C
+12. Verifikasi Modified By baris Object `Global Role` untuk C `Default U`
+13. Verifikasi Object `Group Role`: baris Assign, Edit, dan Remove untuk D
+14. Verifikasi Modified By baris Object `Group Role` untuk D `Default U`
+15. Verifikasi Object `Total Control`: baris Assign, Remove, dan Auto-Revert untuk E
+16. Verifikasi Modified By baris Object `Total Control` untuk E nama aktor
+17. Verifikasi Object `Read Only`: baris Assign, Remove, dan Auto-Revert untuk F
+18. Verifikasi Modified By baris Object `Read Only` untuk F nama aktor
+19. Verifikasi Object `Group Manager`: baris Assign, Remove, dan Auto-Revert untuk G
+20. Verifikasi Modified By baris Object `Group Manager` untuk G nama aktor
+21. Klik menu Settings > User di sidebar, buka Detail Default User (Search nama tampil Default User, klik Name baris), klik Tab System Log, lalu ketik Search `Mike Tan {runId}-168` pada tab, tekan Enter
+22. Ubah page size Tab System Log menjadi 100
+23. Verifikasi Field, Old Value, dan New Value tiap baris Activity Log pada keenam kelas Object identik dengan baris yang sama di Tab System Log aktor
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): pemicu lewat sesi API (langkah 1 dan serupa; R-20), Search nama target di Activity Log dan Tab System Log (langkah 2, 6, 13, R-16; user bernama unik sehingga baseline entri nol), dan pembukaan Detail aktor.
-- Kolom Modified By diasersi `Default User` sesuai Expected TC; format `[First Name] [Last Initial]` (R-14) tidak diterapkan karena TC menyebut nama aktor tanpa inisial.
+- Langkah penghubung tanpa Verifikasi (S-03): pemicu lewat sesi API (langkah 1 dan serupa; R-20), Search nama target di Activity Log dan Tab System Log (langkah 2, 6, 21, R-16; user bernama unik sehingga baseline entri nol), pembukaan Detail aktor, serta mengubah page size Activity Log dan Tab System Log menjadi 100 sesudah Search berprefix agar ketujuh target tampil dalam satu halaman sebelum asersi (langkah 7 dan 22; S-14).
+- Kolom Modified By diasersi `Default U` sesuai Expected TC (format `[First Name] [Last Initial]`, R-14) untuk baris yang dipicu Default User; baris Object `Total Control`, `Read Only`, dan `Group Manager` mengikuti TC ("Modified By aktor") dengan nama aktor yang sama.
 - Temuan untuk QA:
   - TC-642 mengharapkan "Filter Name `Mike Tan`"; spec memakai Search nama berprefix karena target dibuat per State dengan nama bersuffix, dan keberadaan Search di Activity Log tidak ditegaskan TC.
   - TC-642 mensyaratkan aksi Default User untuk tiap kelas Object terhadap satu target `Mike Tan` tanpa menyebut Dependensi; spec men-seed pemicu lewat sesi API aktor dengan user terpisah per state (S-04).

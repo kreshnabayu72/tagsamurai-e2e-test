@@ -33,53 +33,55 @@ coverage:
 
 ### TC-AC-SU-368: Screening Tab Changelog
 
-1. Cari `Jane Smith {runId}-103` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `Changelog`
-3. Verifikasi toolbar menampilkan `Search`, `Filter`, dan `Download`
-4. Verifikasi toolbar tidak memuat icon Changelog terpisah
-5. Verifikasi header kolom berurutan `Date`, `Action`, `Field`, `Old Value`, `New Value`, `Modified By`, `Column Visibility (⋯)`
-6. Verifikasi kolom `Date`, `Action`, `Field`, `Old Value`, `New Value`, dan `Modified By` sortable
-7. Verifikasi header `Column Visibility (⋯)` unsortable, berfungsi sebagai overlay Column Visibility, dan tanpa row action
-8. Verifikasi tidak ada kolom User Name
-9. Verifikasi default sort Date Newest First (entri seeding terbaru berada di baris teratas)
-10. Verifikasi footer menampilkan pagination standar
+1. Ketik Search `Jane Smith {runId}-103`, tekan Enter
+2. Klik Name `Jane Smith {runId}-103` untuk membuka Detail User
+3. Klik tab `Changelog`
+4. Verifikasi toolbar menampilkan `Search`, `Filter`, dan `Download`
+5. Verifikasi toolbar tidak memuat icon Changelog terpisah
+6. Verifikasi header kolom berurutan `Date`, `Action`, `Field`, `Old Value`, `New Value`, `Modified By`, `Column Visibility (⋯)`
+7. Verifikasi kolom `Date`, `Action`, `Field`, `Old Value`, `New Value`, dan `Modified By` sortable
+8. Verifikasi header `Column Visibility (⋯)` unsortable, berfungsi sebagai overlay Column Visibility, dan tanpa row action
+9. Verifikasi tidak ada kolom User Name
+10. Verifikasi default sort Date Newest First (entri seeding terbaru berada di baris teratas)
+11. Verifikasi footer menampilkan pagination standar
 
 ### TC-AC-SU-369: Modified By di Tab Changelog, hover menampilkan nama lengkap
 
-11. Hover sel Modified By `Admin U`
-12. Verifikasi tooltip menampilkan nama lengkap `Admin Utama`
+12. Hover sel Modified By `Admin U`
+13. Verifikasi tooltip menampilkan nama lengkap `Admin Utama`
 
 ### TC-AC-SU-373: Empty state hasil Search Tab Changelog tanpa kecocokan
 
-13. Verifikasi sedikitnya satu baris data tampil pada tabel
-14. Ketik Search `zzqx-tidak-ada`, tekan Enter
-15. Verifikasi tabel menampilkan illustration dengan Title `No results found` dan Description `Try adjusting your search or filter.`
-16. Klik icon `(←)` pada kotak Search
+14. Verifikasi sedikitnya satu baris data tampil pada tabel
+15. Ketik Search `zzqx-tidak-ada`, tekan Enter
+16. Verifikasi tabel menampilkan illustration dengan Title `No results found` dan Description `Try adjusting your search or filter.`
+17. Klik icon `(←)` pada kotak Search
 
 ### TC-AC-SU-377: Entri pemicu dan entri Auto-Revert bertimestamp sama
 
-17. Verifikasi pada sort default (Newest First), entri `Auto-Revert` tampil di atas entri `Edit` pemicunya
-18. Klik header `Date` satu kali (Oldest First)
-19. Verifikasi entri `Edit` pemicu tampil di atas entri `Auto-Revert`
-20. Klik header `Date` dua kali sampai kembali ke sort default Date Newest First
+18. Verifikasi pada sort default (Newest First), entri `Auto-Revert` tampil di atas entri `Edit` pemicunya
+19. Klik header `Date` satu kali (Oldest First)
+20. Verifikasi entri `Edit` pemicu tampil di atas entri `Auto-Revert`
+21. Klik header `Date` dua kali sampai kembali ke sort default Date Newest First
 
 ### TC-AC-SU-371: Loading state Tab Changelog
 
-21. Pasang tahanan respons 3000 ms pada request data tabel tab Changelog
-22. Muat ulang halaman Detail dengan F5
-23. Klik tab `Changelog`
-24. Verifikasi tabel menampilkan 5 skeleton rows sesuai layout kolom
-25. Lepas tahanan respons setelah 3000 ms
-26. Verifikasi baris data menggantikan skeleton rows
-27. Lepas intercept request data tabel tab Changelog
+22. Pasang tahanan respons 3000 ms pada request data tabel tab Changelog
+23. Muat ulang halaman Detail dengan F5
+24. Klik tab `Changelog`
+25. Verifikasi tabel menampilkan 5 skeleton rows sesuai layout kolom
+26. Lepas tahanan respons setelah 3000 ms
+27. Verifikasi baris data menggantikan skeleton rows
+28. Lepas intercept request data tabel tab Changelog
 
 ### TC-AC-SU-370: Empty state Tab Changelog saat belum ada data
 
-28. Buka Settings > User lewat sidebar
-29. Cari `Rina Putri {runId}-103` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-30. Klik tab `Changelog`
-31. Verifikasi tabel menampilkan illustration dengan Title `No changelog yet` dan Description `Activities and changes will appear here.`
-32. Verifikasi pagination tidak menampilkan baris data
+29. Buka Settings > User lewat sidebar
+30. Ketik Search `Rina Putri {runId}-103`, tekan Enter
+31. Klik Name `Rina Putri {runId}-103` untuk membuka Detail User
+32. Klik tab `Changelog`
+33. Verifikasi tabel menampilkan illustration dengan Title `No changelog yet` dan Description `Activities and changes will appear here.`
+34. Verifikasi pagination tidak menampilkan baris data
 
 ## Notes
 

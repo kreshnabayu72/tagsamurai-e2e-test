@@ -30,7 +30,7 @@ coverage:
   - Opsi Custom Field Blood Type `AB {runId}-040` dan opsi Custom Field Skills `SQL {runId}-040` (opsi `Excel` Pre-setup hanya dipilih, tidak diubah).
   - Seeding tidak melewati Master Data Count Limit environment.
 - Kemampuan teknis: pemicu "tab lain" memakai sesi API admin (P-2): menghapus Position, menghapus Division, menghapus opsi Custom Field, dan me-rename Division; nama endpoint ditentukan tim FE di tahap script. Popup Edit di UI tetap terbuka selama pemicu berjalan. Tidak ada sesi UI kedua.
-- State global: tidak ada.
+- State global yang diubah: Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif; user seed memiliki Emergency Phone kosong dan TC-GS-USER-217 mengharapkan Save sukses). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah.
 - Cleanup (`after`, tidak mengandalkan seeding berhasil penuh): hapus user `Dewi Lestari {runId}-040`, Position, Division (termasuk hasil rename), dan opsi Custom Field yang di-seed.
 
 ## Test Steps
@@ -50,7 +50,7 @@ coverage:
 8. Buka dropdown Position
 9. Verifikasi dropdown Position memuat opsi `Staff` (pembanding)
 10. Verifikasi dropdown Position tidak memuat opsi `Internal Auditor {runId}-040`
-11. Tutup dropdown Position dengan menekan Esc
+11. Tutup dropdown Position dengan mengklik Title Popup `Edit User`
 12. Verifikasi field lain tetap: Name `Dewi Lestari {runId}-040` dan Blood Type `A`
 13. Klik `✕` pada header Popup Edit
 14. Verifikasi dialog `Unsaved Changes`
@@ -68,7 +68,7 @@ coverage:
 23. Buka dropdown Division
 24. Verifikasi dropdown Division memuat opsi `Logistics {runId}-040` (pembanding)
 25. Verifikasi dropdown Division tidak memuat opsi `Legal {runId}-040`
-26. Tutup dropdown Division dengan menekan Esc
+26. Tutup dropdown Division dengan mengklik Title Popup `Edit User`
 27. Verifikasi field lain tetap: Name `Dewi Lestari {runId}-040` dan Position `Staff`
 28. Klik `✕` pada header Popup Edit
 29. Verifikasi dialog `Unsaved Changes`
@@ -115,11 +115,12 @@ coverage:
 - P-2 (pemicu bukan objek uji): pemicu "di tab lain" memakai sesi API admin, bukan sesi UI kedua; yang diasersi hanya Popup Edit di sesi UI aktor.
 - Data Pre-setup diganti data milik spec (S-06): Position `Internal Auditor`, Division `Legal` dan `Logistics`, opsi Blood Type `AB`, dan opsi Skills `SQL` di TC sumber adalah data bersama, sehingga spec memakai padanan bersuffix. Nama opsi bersuffix muncul pada teks error TC-GS-USER-216.
 - Langkah buka layar User List tidak ditulis di Test Steps: dibuka oleh `beforeEach` suite (`suite.md`). Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 (Search user seed), 8 dan 23 (membuka dropdown untuk membuktikan opsi dimuat ulang), 11 dan 26 (menutup dropdown), 13, 28, 37, dan 46 (menutup Popup Edit dirty lewat `✕`, dialog `Unsaved Changes`, `[Leave]`, S-08).
+- Langkah 11 dan 26 menutup dropdown dengan klik Title Popup `Edit User`, bukan `Esc`: Popup dalam keadaan dirty, sehingga `Esc` dapat memicu dialog `Unsaved Changes` alih-alih menutup dropdown (aksi penghubung, tanpa `Verifikasi`).
 - Asersi tambahan di luar Expected TC (dicatat sesuai S-03): langkah 16 dan 31 membuktikan Expected "Data tidak tersimpan" TC-GS-USER-213 dan TC-GS-USER-214 lewat sel Position dan Division yang tidak berubah; langkah 9 dan 24 adalah pembanding (anchor) untuk absence opsi (8b butir 2).
 - Temuan untuk QA:
   - TC-GS-USER-213 dan TC-GS-USER-214 Expected c "Field lain tetap" tidak merinci field; spec memeriksa Name dan field yang bernilai (Blood Type pada 213, Position pada 214).
   - TC-GS-USER-213 dan TC-GS-USER-214 Expected b "opsi dimuat ulang" tidak merinci cara observasi; spec membuktikannya lewat isi dropdown.
   - TC-GS-USER-215 hanya punya Expected inline error (tanpa "field dikosongkan" dan "data tidak tersimpan" seperti TC-GS-USER-213 dan TC-GS-USER-214); spec mengasersi hanya inline error.
   - TC-GS-USER-216 menulis pesan `"SQL no longer exists. Please select another."` dengan nama opsi `SQL`; spec memakai nama opsi bersuffix pada pesan, dengan asumsi pesan memuat nama opsi apa adanya.
-  - Tabel Data Uji Pre-setup No. 24 menandai Emergency Phone `Required` sedangkan Dewi Lestari (No. 12) kosong dan TC-GS-USER-217 mengharapkan Save sukses; spec mengikuti TC (Emergency Phone tidak diisi).
+  - Dewi Lestari (No. 12) kosong dan TC-GS-USER-217 mengharapkan Save sukses; Tabel Data Uji Pre-setup No. 24 menyatakan Required hanya aktif untuk TC-GS-USER-158 dan 349. Spec mengikuti TC (Emergency Phone tidak diisi); Required nonaktif selama spec (lihat Prerequisites, State global).
   - TC-GS-USER-213 sampai 217 menyebut "tab lain" tanpa mekanisme; spec memakai sesi API admin (P-2), dan nama endpoint ditentukan tim FE.

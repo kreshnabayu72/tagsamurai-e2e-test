@@ -42,7 +42,7 @@ coverage:
   - `Rudi Hakim {runId}-014`: di-seed lewat API, Normal tanpa aset dan approval (target TC-GS-USER-70).
   - `Tono Wijaya {runId}-014` dan `Rani Lestari {runId}-014`: di-seed lewat API, Normal tanpa aset dan approval (target TC-GS-USER-72).
 - Kemampuan teknis (disediakan tim FE/BE; TC dan PRD tidak menyebut nama endpoint): seeding dan penghapusan user lewat API dengan status Active, Inactive, dan Pending Activation; memajukan jam server dan jam browser bersama (cooldown Resend 60 detik pada TC-GS-USER-71; countdown UI berjalan di jam browser).
-- State global yang diubah: jam server dan jam browser (dimajukan di langkah 33 dan dipulihkan di langkah 39; hook `after` memulihkan sebagai cadangan). Suite berjalan serial (`parallel: false`).
+- State global yang diubah: Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif; TC-GS-USER-67 tidak mengisinya dan mengharapkan Create sukses). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah. Selain itu jam server dan jam browser (dimajukan di langkah 33 dan dipulihkan di langkah 39; hook `after` memulihkan sebagai cadangan). Suite berjalan serial (`parallel: false`).
 - Cleanup (hook `after`, tidak berasumsi seeding atau langkah UI berhasil penuh): hapus lewat API semua user dengan suffix `{runId}-014` yang masih ada (termasuk `Wulan Sari {runId}-014`), pulihkan jam, lalu pulihkan sesi ke akun default suite.
 
 ## Test Steps

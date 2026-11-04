@@ -34,57 +34,64 @@ coverage:
 | U6 | `Dedi Kurnia {runId}-169F` | `dedikurnia+{runId}-169f@qwertysystem.net` | Group Manager di Region A dengan full CRUD pada "Manage distributor" (TC-584) |
 | U7 | `Dedi Kurnia {runId}-169G` | `dedikurnia+{runId}-169g@qwertysystem.net` | Group Manager di Region A (TC-641) |
 
-- Kemampuan teknis: Fixture BE (seeding user, tier, dan Group Manager); konteks browser kedua. Tanggal pada Body notifikasi adalah tanggal aksi dalam format General Settings yang berlaku (tidak diubah spec ini). Tanpa intercept, klien HTTP, dan jam server.
+- Kemampuan teknis: Fixture BE (seeding user, tier, dan Group Manager); konteks browser kedua. Tanggal pada Body notifikasi adalah tanggal waktu aksi yang dicatat pada langkah `Catat waktu aksi` tiap blok, dalam format General Settings yang berlaku (tidak diubah spec ini). Tanpa intercept, klien HTTP, dan jam server.
 - Suite berjalan serial (`parallel: false`). Env var yang dipakai sudah terdaftar di `executionConfig.environmentVariables` dan `.env.example` oleh pemilik repo (lihat suite.md).
 
 ## Test Steps
 
 ### TC-AC-SU-579: Remove Total Control
 1. Klik menu Settings > Role & Permission di sidebar, klik Tab Total Control, lalu remove U1 (`Rina Putri {runId}-169A`) dari Total Control
-2. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U1, lalu klik lonceng notifikasi navbar
-3. Verifikasi notifikasi baru: Title "Your Total Control access was removed", Body "Default User removed your Total Control access on [tanggal aksi]."
-4. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
+2. Catat waktu aksi
+3. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U1, lalu klik lonceng notifikasi navbar
+4. Verifikasi notifikasi baru: Title "Your Total Control access was removed", Body "Default User removed your Total Control access on [tanggal aksi]."
+5. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
 ### TC-AC-SU-580: Remove Read Only
-5. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > Role & Permission di sidebar, klik Tab Read Only, lalu remove U2 (`Budi Santoso {runId}-169B`) dari Read Only
-6. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U2, lalu klik lonceng notifikasi navbar
-7. Verifikasi notifikasi baru: Title "Your Read Only access was removed", Body "Default User removed your Read Only access on [tanggal aksi]."
-8. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
+6. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > Role & Permission di sidebar, klik Tab Read Only, lalu remove U2 (`Budi Santoso {runId}-169B`) dari Read Only
+7. Catat waktu aksi
+8. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U2, lalu klik lonceng notifikasi navbar
+9. Verifikasi notifikasi baru: Title "Your Read Only access was removed", Body "Default User removed your Read Only access on [tanggal aksi]."
+10. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
 ### TC-AC-SU-581: Auto-Revert Total Control
-9. Tutup konteks kedua dan hapus sesi loginnya, buka Detail U3 (`Rina Putri {runId}-169C`) lewat Search nama, klik Tab Role, lalu sub-tab Global Role
-10. Uncheck Delete pada "Manage group", lalu klik `[Remove]` pada dialog Remove Total Control
-11. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U3, lalu klik lonceng notifikasi navbar
-12. Verifikasi notifikasi baru: Title "Your Total Control access was removed", Body "Your Total Control access was automatically removed after Default User edited your role on [tanggal aksi]."
-13. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
+11. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > User di sidebar, buka Detail U3 (`Rina Putri {runId}-169C`) lewat Search nama, klik Tab Role, lalu sub-tab Global Role
+12. Uncheck Delete pada "Manage group", lalu klik `[Remove]` pada dialog Remove Total Control
+13. Catat waktu aksi
+14. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U3, lalu klik lonceng notifikasi navbar
+15. Verifikasi notifikasi baru: Title "Your Total Control access was removed", Body "Your Total Control access was automatically removed after Default User edited your role on [tanggal aksi]."
+16. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
 ### TC-AC-SU-582: Auto-Revert Read Only
-14. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > User di sidebar, buka Detail U4 (`Budi Santoso {runId}-169D`) lewat Search nama, klik Tab Role, lalu sub-tab Global Role
-15. Centang Create pada "Manage group", lalu klik `[Remove]` pada dialog Remove Read Only
-16. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U4, lalu klik lonceng notifikasi navbar
-17. Verifikasi notifikasi baru: Title "Your Read Only access was removed", Body "Your Read Only access was automatically removed after Default User edited your role on [tanggal aksi]."
-18. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
-### TC-AC-SU-583: Remove Group Manager
-19. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > Role & Permission di sidebar, klik Tab Group Manager, lalu remove Group Manager Region A dari U5 (`Dedi Kurnia {runId}-169E`)
-20. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U5, lalu klik lonceng notifikasi navbar
-21. Verifikasi notifikasi baru: Title "You are no longer Group Manager for Region A", Body "Default User removed your Group Manager status for Region A on [tanggal aksi]."
+17. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > User di sidebar, buka Detail U4 (`Budi Santoso {runId}-169D`) lewat Search nama, klik Tab Role, lalu sub-tab Global Role
+18. Centang Create pada "Manage group", lalu klik `[Remove]` pada dialog Remove Read Only
+19. Catat waktu aksi
+20. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U4, lalu klik lonceng notifikasi navbar
+21. Verifikasi notifikasi baru: Title "Your Read Only access was removed", Body "Your Read Only access was automatically removed after Default User edited your role on [tanggal aksi]."
 22. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
-### TC-AC-SU-584: Auto-Revert Group Manager
-23. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > User di sidebar, buka Detail U6 (`Dedi Kurnia {runId}-169F`) lewat Search nama, klik Tab Role, lalu sub-tab Group Role
-24. Klik `[Assign Group]` pada baris "Manage distributor" (Group Manager Region A dengan full CRUD), uncheck Delete pada baris Region A, klik `[Save]`, lalu klik `[Remove]` pada dialog Remove Group Manager
-25. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U6, lalu klik lonceng notifikasi navbar
-26. Verifikasi notifikasi baru: Title "You are no longer Group Manager for Region A", Body "Your Group Manager status for Region A was automatically removed after Default User edited your role on [tanggal aksi]."
+### TC-AC-SU-583: Remove Group Manager
+23. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > Role & Permission di sidebar, klik Tab Group Manager, lalu remove Group Manager Region A dari U5 (`Dedi Kurnia {runId}-169E`)
+24. Catat waktu aksi
+25. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U5, lalu klik lonceng notifikasi navbar
+26. Verifikasi notifikasi baru: Title "You are no longer Group Manager for Region A", Body "Default User removed your Group Manager status for Region A on [tanggal aksi]."
 27. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
+### TC-AC-SU-584: Auto-Revert Group Manager
+28. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > User di sidebar, buka Detail U6 (`Dedi Kurnia {runId}-169F`) lewat Search nama, klik Tab Role, lalu sub-tab Group Role
+29. Klik `[Assign Group]` pada baris "Manage distributor" (Group Manager Region A dengan full CRUD), uncheck Delete pada baris Region A, klik `[Save]`, lalu klik `[Remove]` pada dialog Remove Group Manager
+30. Catat waktu aksi
+31. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U6, lalu klik lonceng notifikasi navbar
+32. Verifikasi notifikasi baru: Title "You are no longer Group Manager for Region A", Body "Your Group Manager status for Region A was automatically removed after Default User edited your role on [tanggal aksi]."
+33. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
 ### TC-AC-SU-641: Group Manager dilepas saat target diberi Total Control
-28. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > Role & Permission di sidebar, klik Tab Total Control, lalu assign U7 (`Dedi Kurnia {runId}-169G`) ke Total Control
-29. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U7, lalu klik lonceng notifikasi navbar
-30. Verifikasi notifikasi baru: Title "You are no longer Group Manager for Region A", Body "Default User removed your Group Manager status for Region A on [tanggal aksi]."
-31. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
-32. Tutup konteks kedua, klik menu Settings > User di sidebar, buka Detail U7 lewat Search nama, lalu klik Tab Role
-33. Verifikasi banner Tab Role `"This user has Total Control access."`
+34. Tutup konteks kedua dan hapus sesi loginnya, klik menu Settings > Role & Permission di sidebar, klik Tab Total Control, lalu assign U7 (`Dedi Kurnia {runId}-169G`) ke Total Control
+35. Catat waktu aksi
+36. Tunggu aksi selesai, buka konteks kedua (jendela privat), login sebagai U7, lalu klik lonceng notifikasi navbar
+37. Verifikasi notifikasi baru: Title "You are no longer Group Manager for Region A", Body "Default User removed your Group Manager status for Region A on [tanggal aksi]."
+38. Verifikasi notifikasi hanya memiliki tombol `[Mark as Read]` dan tidak memiliki tombol `[Detail]`
+39. Tutup konteks kedua, klik menu Settings > User di sidebar, buka Detail U7 lewat Search nama, lalu klik Tab Role
+40. Verifikasi banner Tab Role `"This user has Total Control access."`
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): navigasi sidebar, Search nama target dan pembukaan Detail (R-16), pembukaan konteks kedua dan login target (langkah 2 dan langkah serupa), menutup konteks kedua beserta sesi loginnya (S-09), dan pemilihan tab.
+- Langkah penghubung tanpa Verifikasi (S-03): navigasi sidebar, Search nama target dan pembukaan Detail (R-16), pencatatan waktu aksi, pembukaan konteks kedua dan login target (langkah 3 dan langkah serupa), menutup konteks kedua beserta sesi loginnya (S-09), dan pemilihan tab.
 - Konteks kedua target adalah objek asersi (notifikasi diamati di sesi target), sehingga spec ini kelas c dan bukan `P-2`; satu konteks kedua per blok, ditutup sebelum blok berikutnya. Pemicu perubahan tier atau Group Manager dilakukan Default User di konteks utama.
-- Tujuh blok TC berpola sama (pemicu, konteks target, dua asersi notifikasi) dan berdiri sendiri dengan user seeding sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Tujuh blok TC berpola sama (pemicu, konteks target, dua asersi notifikasi) dan berdiri sendiri dengan user seeding sendiri; 40 langkah (di atas smell 35 langkah) dipertahankan karena kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - Body notifikasi memuat `[Date]` tanpa pola tegas; spec mengasersi tanggal aksi dalam format General Settings. Nilai `[Admin Name]` diasersi `Default User` sesuai Expected TC.
   - TC-579 sampai TC-584 dan TC-641 tidak menyebut jumlah notifikasi lain yang sudah ada milik target; spec mengasersi notifikasi dengan Title dan Body yang disebut tanpa asersi jumlah.

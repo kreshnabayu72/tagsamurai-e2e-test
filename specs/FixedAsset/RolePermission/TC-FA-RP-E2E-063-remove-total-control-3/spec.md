@@ -18,7 +18,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup #2, Siti Rahmawati), email `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control). Hook `after` mengembalikan sesi ke akun default suite (Total Control, `FA_TC_PASSWORD`).
-- Data Pre-setup: #15 (Ahmad Fauzi), #18 (pohon group), #21 (Ahmad Fauzi memegang `Manage asset & TAG` Create, Read, Update di `Head Office`), #39 (Ahmad Fauzi `Manage files` Read di `Data Center`). Pada TC-FA-RP-1131 Ahmad Fauzi di-seed berstatus Total Control dengan Group Role `Manage files` Read di `Data Center` dan `Helpdesk` (seed API) serta `Manage asset & TAG` Create, Read, Update di `Head Office`; pada TC-FA-RP-1133 Ahmad Fauzi Total Control dengan Group Role `Manage files` Read di `Data Center`.
+- Data Pre-setup: #15 (Ahmad Fauzi), #18 (pohon group), #21 (Ahmad Fauzi memegang `Manage asset & TAG` Create, Read, Update di `Head Office`), #39 (Ahmad Fauzi `Manage files` Read di `Data Center`). Pada TC-FA-RP-1131 Ahmad Fauzi di-seed berstatus Total Control dengan baris pola Group Role CRUD penuh sesuai kolom berlaku pada setiap group (termasuk `Manage files` di `Data Center` dan `Helpdesk` serta `Manage asset & TAG` di `Head Office`; `FARP-LOGIC-04b`); pada TC-FA-RP-1133 Ahmad Fauzi Total Control dengan baris pola Group Role CRUD penuh pada setiap group, termasuk `Manage files` di `Data Center`.
 - Navigasi lintas modul: Settings > User > Detail User > Tab Role sub-tab Group Role (TC-FA-RP-1131).
 - Flag Guided Tooltip, halaman awal, sesi API aktor, dan pemulihan Pre-setup bersama: lihat `suite.md` bagian "Hook suite".
 - Data Pre-setup dirujuk lewat fixture `fixtures/fixedAssetRolePermission.json` (belum ada; disediakan tim FE). Email data pengguna berformat `[namalengkaptanpaspasi]@qwertysystem.net`.
@@ -44,7 +44,7 @@ coverage:
 
 ### TC-FA-RP-1133: Setelah Remove Total Control, user kembali eligible di popup Assign User ke Role Group Role dan penugasan baru dimulai dari baseline Read
 
-13. Tetapkan ulang Ahmad Fauzi sebagai Total Control dengan Group Role `Manage files` Read di `Data Center` lewat seeding API
+13. Tetapkan ulang Ahmad Fauzi sebagai Total Control dengan baris pola Group Role CRUD penuh pada setiap group, termasuk `Manage files` di `Data Center`, lewat seeding API
 14. Buka Fixed Asset > Settings > Role & Permission > System lalu Detail Role Group Role `Manage files` dan klik node `Data Center` di Sidebar Group Tree
 15. Klik `[+ Assign]`, ketik Search `Ahmad Fauzi`, tekan Enter
 16. Verifikasi Ahmad Fauzi tidak ada di daftar (Total Control dikecualikan; empty state hasil Search)
@@ -66,5 +66,5 @@ coverage:
 - Asersi absence pada TC-FA-RP-1131 memakai empty state hasil Search sebagai anchor positif (butir 8b.2).
 - Baseline kolom Users dicatat sebagai langkah TC (langkah pertama TC-FA-RP-1131) dan asersi memakai selisih 1 terhadap baseline (S-12).
 - Temuan untuk QA:
-  - TC-FA-RP-1131 precondition c merujuk Pre-setup #15, #18, #21, #39; Group Role `Manage files` Read di `Helpdesk` untuk Ahmad Fauzi tidak ada di Pre-setup dan di-seed lewat seeding API sesuai TC.
+  - TC-FA-RP-1131 precondition c merujuk Pre-setup #15, #18, #21, #39; baris pola Group Role `Manage files` di `Helpdesk` untuk Ahmad Fauzi tidak ada di Pre-setup dan di-seed lewat seeding API sesuai TC.
   - TC-FA-RP-1133 Expected c memakai `Create/Update` `—` pada `Manage files` (kolom tidak berlaku); sesuai TC-FA-RP-247.

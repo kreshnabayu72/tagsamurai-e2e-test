@@ -39,7 +39,7 @@ coverage:
 2. Tunggu aksi selesai, lalu klik menu Settings > User di sidebar
 3. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
 4. Ketik Search `Dedi Kurnia {runId}-161A` pada Popup Changelog: User, tekan Enter
-5. Verifikasi 1 baris untuk U1: Action `Remove (Group Deleted)`, User Name `Dedi Kurnia {runId}-161A`, Field `Group Manager — Region C {runId}-161A`, Old Value `Assigned`, New Value `—`, Modified By `Default User`
+5. Verifikasi 1 baris untuk U1: Action `Remove (Group Deleted)`, User Name `Dedi Kurnia {runId}-161A`, Field `Group Manager — Region C {runId}-161A`, Old Value `Assigned`, New Value `—`, Modified By `Default U`
 6. Verifikasi tidak ada baris lain untuk U1 (pelepasan assignment Group Role di G1 tidak dicatat)
 ### TC-AC-SU-640: Tab System Log dan Activity Log mencatat pelepasan Group Manager
 7. Tutup Popup Changelog: User, klik menu Settings > Group di sidebar, lalu hapus group G2 (`Region C {runId}-161B`)
@@ -49,7 +49,7 @@ coverage:
 11. Verifikasi 1 baris: Action `Remove`, Object `Group Manager (Group Deleted)`, Name `Dedi Kurnia {runId}-161B`, Field `Group Manager — Region C {runId}-161B`, Old Value `Assigned`, New Value `—`
 12. Verifikasi tidak ada baris lain untuk `Dedi Kurnia {runId}-161B` (pelepasan assignment Group Role di G2 tidak dicatat)
 13. Klik menu Admin Console > Activity Log di sidebar, lalu ketik Search `Dedi Kurnia {runId}-161B`, tekan Enter
-14. Verifikasi baris Activity Log yang sama (Action `Remove`, Object `Group Manager (Group Deleted)`, Name `Dedi Kurnia {runId}-161B`, Field `Group Manager — Region C {runId}-161B`, Old Value `Assigned`, New Value `—`) dengan Modified By `Default User`
+14. Verifikasi baris Activity Log yang sama (Action `Remove`, Object `Group Manager (Group Deleted)`, Name `Dedi Kurnia {runId}-161B`, Field `Group Manager — Region C {runId}-161B`, Old Value `Assigned`, New Value `—`) dengan Modified By `Default U`
 ### TC-AC-SU-602: Banner Group Manager diperbarui dan tanpa notifikasi in-app
 15. Klik menu Settings > Group di sidebar, lalu hapus group G3 (`Region C {runId}-161C`)
 16. Tunggu aksi selesai, lalu klik menu Settings > User di sidebar

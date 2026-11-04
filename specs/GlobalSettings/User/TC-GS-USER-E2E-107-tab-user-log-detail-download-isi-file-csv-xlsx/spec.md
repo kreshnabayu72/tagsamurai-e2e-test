@@ -34,6 +34,7 @@ coverage:
     - Event 5 sampai 12: 4 pasang Login (Status `Success`, Note `—`) lalu Logout (Status `—`, Note `—`), seluruhnya IP Address `10.0.0.11`, Device / Browser `Chrome on Windows`.
     - Event 13 (terbaru): Activity `Login`, Status `Success`, Note `—`, IP Address `172.16.9.3`, Device / Browser `—` (User-Agent tidak dikenal, tidak terparse).
   - Hasil pada tabel (13 baris): Activity memuat `Login` (7 baris), `Logout` (5), dan `Change Password` (1); IP Address memuat `10.0.0.11` (8), `192.168.5.7` (4), dan `172.16.9.3` (1); Device / Browser memuat `Chrome on Windows` (8), `Firefox on macOS` (4), dan `—` (1). Halaman 1 menampilkan 10 baris.
+- Baseline audit trail (S-12, bagian 8b butir 10): user `U-1` (`John Doe {runId}-107`) dibuat baru oleh hook `before` dengan nama dan email bersuffix `-107`, sehingga sebelum seeding Tab User Log belum memuat entri apa pun; baseline = 0 dicatat eksplisit di hook `before` tepat sebelum seeding. Jumlah baris total yang diasersi adalah selisih terhadap baseline itu (baseline 0 + 13 entri seed), bukan total absolut tabel. Bila baseline perlu dibaca, kemampuan baca total entri disediakan tim FE/BE (TC, PRD, dan LLD tidak menyebut caranya).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API U-1, serta sisa user bersuffix `-107` dari run lama. Entri User Log tidak bisa dihapus. Berkas unduhan dihapus di hook `after`.
 - Kemampuan teknis (disediakan tim FE/BE; TC, PRD, dan LLD tidak menyebut mekanisme maupun endpoint): (a) seeding user berstatus Activated lewat API dengan password `Spectra.env.USER_PASSWORD`; (b) memicu event Login (Success dan Failed), Logout, dan Change Password (Success) untuk user uji dengan IP Address dan User-Agent tertentu, berurutan dengan jeda sedikitnya satu detik antar-event supaya cap waktu tiap event berbeda. Event dipicu berurutan sesuai daftar dan bercap waktu hari uji.
 - Kemampuan teknis (kelas binary buffer, prinsip 13f konvensi): menangkap berkas unduhan browser (event download) ke direktori bersih per unduhan supaya nama berkas yang sama (mis. `User-Log-John-Doe-{runId}-107.csv`) tidak tertimpa atau diberi akhiran `(1)`; membaca isi berkas CSV (nama kolom, jumlah baris, nilai sel). Penyetelan visibilitas kolom lewat Overlay Column Visibility dan pengetikan di kotak Search.
@@ -49,18 +50,18 @@ coverage:
 3. Klik Tab `User Log`
 4. Klik icon Download
 5. Klik `Download as XLSX`
-6. Verifikasi file `User-Log-John-Doe-{runId}-107.xlsx` terunduh
-7. Verifikasi tidak ada toast
+6. Verifikasi tidak ada toast
+7. Verifikasi file `User-Log-John-Doe-{runId}-107.xlsx` terunduh
 
 ### TC-GS-USER-664: Download CSV seluruh data tanpa toast sukses
 
 8. Klik icon Download
 9. Verifikasi overlay menampilkan opsi `Download as CSV` dan `Download as XLSX`
 10. Klik `Download as CSV`
-11. Verifikasi file `User-Log-John-Doe-{runId}-107.csv` terunduh
-12. Buka isi file `User-Log-John-Doe-{runId}-107.csv` yang diunduh
-13. Verifikasi file memuat seluruh 13 baris data (tidak dibatasi 10 baris per halaman)
-14. Verifikasi tidak ada toast sukses
+11. Verifikasi tidak ada toast sukses
+12. Verifikasi file `User-Log-John-Doe-{runId}-107.csv` terunduh
+13. Buka isi file `User-Log-John-Doe-{runId}-107.csv` yang diunduh
+14. Verifikasi file memuat seluruh baris: selisih 13 baris data terhadap baseline 0 entri (13 event seed, tidak dibatasi 10 baris per halaman)
 
 ### TC-GS-USER-668: Nilai kosong ditulis `-` di file export
 
@@ -81,10 +82,10 @@ coverage:
 23. Verifikasi kolom `Note` tidak tampil di tabel
 24. Klik icon Download
 25. Klik `Download as CSV`
-26. Buka isi file `User-Log-John-Doe-{runId}-107.csv` yang diunduh
-27. Verifikasi file memuat kolom `Date`, `Activity`, `Status`, `IP Address`, dan `Device / Browser`
-28. Verifikasi kolom `Note` tidak ikut diekspor
-29. Verifikasi tidak ada toast peringatan
+26. Verifikasi tidak ada toast peringatan
+27. Buka isi file `User-Log-John-Doe-{runId}-107.csv` yang diunduh
+28. Verifikasi file memuat kolom `Date`, `Activity`, `Status`, `IP Address`, dan `Device / Browser`
+29. Verifikasi kolom `Note` tidak ikut diekspor
 30. Klik header Column Visibility (⋯)
 31. Centang kembali kolom `Note`
 32. Klik icon Download
@@ -109,8 +110,9 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Pemilik log: TC sumber memakai `John Doe` (Pre-setup No. 18) dan nama berkas `User-Log-John-Doe`. Isi User Log-nya bergantung pada riwayat login lingkungan, sehingga spec memakai user milik spec dengan riwayat event yang diketahui (S-06, S-11) dan nama bersuffix per run (S-12); nama berkas mengikuti Name user seed.
 - Urutan TC dalam spec: TC-GS-USER-410, 664, 668, 665, 667, 666. Urutan `sourceTc`: 410, 664, 665, 666, 667, 668. TC-GS-USER-668 membaca berkas CSV hasil unduhan TC-GS-USER-664 (langkah 10) tanpa unduh ulang karena state tabel keduanya identik (tanpa Search dan Filter, semua kolom), sehingga ditaruh tepat sesudahnya. TC-GS-USER-666 (Search aktif) di akhir karena Search harus ditutup sesudahnya, sedangkan TC-GS-USER-665 dan 667 memerlukan tabel tanpa Search.
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 (mencari user di User List agar Name dapat diklik); langkah "Buka isi file ... yang diunduh" (12, 15, dan sesudah tiap unduhan CSV; membaca isi berkas); langkah 21 sampai 31 (hide dan unhide kolom `Note` bagian TC-GS-USER-667); langkah 43 (menutup Search).
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): langkah 1 (mencari user di User List agar Name dapat diklik); langkah "Buka isi file ... yang diunduh" (13, 15, dan sesudah tiap unduhan CSV; membaca isi berkas); langkah 21 sampai 31 (hide dan unhide kolom `Note` bagian TC-GS-USER-667); langkah 43 (menutup Search).
 - Asersi tambahan (dicatat sesuai S-03): TC-GS-USER-664 `Verifikasi` overlay opsi `Download as CSV` dan `Download as XLSX` mengikuti Expected a; jumlah baris 13 pada berkas adalah konkretisasi "semua baris (tidak dibatasi halaman)" untuk data seed yang diketahui. TC-GS-USER-666: `Verifikasi` 4 baris hasil Search pada tabel adalah anchor positif sebelum asersi baris lain tidak ikut diekspor (8b butir 2). TC-GS-USER-665 dan 410 hanya mengasersi nama berkas XLSX; isi XLSX tidak diasersi karena Expected TC tidak menyebutnya.
 - Spec melewati sekitar 35 langkah (43 langkah) karena enam TC Download memakai tab, dataset (U-1), dan satu kelas harness (binary buffer) yang sama; langkah membaca isi berkas termasuk blok baca berpola dan unduhan CSV yang berulang merupakan prefix berulang. Tiap blok berdiri sendiri kecuali TC-GS-USER-668 yang membaca berkas hasil TC-GS-USER-664.
 - Pembagian TC lintas spec: Screening dan Search TC-GS-USER-409, 411, 412, 631 sampai 637 diverifikasi di spec 102; Filter Panel TC-GS-USER-638 sampai 646 di spec 103; kombinasi Search dan Filter TC-GS-USER-647 sampai 651 di spec 104; Sort, Pagination, dan kombinasi TC-GS-USER-652 sampai 654, 669, 670 di spec 105; Setup Column TC-GS-USER-655 sampai 663 di spec 106.
+- Total entri Tab User Log tidak diasersi sebagai angka absolut (S-12, bagian 8b butir 10): asersi jumlah baris total memakai selisih 13 terhadap baseline 0 yang ditulis eksplisit di Prerequisites (user seed bersuffix `-107` dibuat baru, jadi baseline nol). Hitungan hasil Search atau Filter bersuffix dan isi per halaman tidak berubah.
 - Temuan untuk QA: (1) TC-GS-USER-410 dan 664 sampai 668 memakai `John Doe` Pre-setup dan nama berkas `User-Log-John-Doe.xlsx`/`.csv`; spec memakai user seed bersuffix sehingga nama berkas `User-Log-John-Doe-{runId}-107`, dengan asumsi spasi pada Name ditulis `-` (PRD hanya menyebut `User-Log-[User-Name]`). (2) Mekanisme memicu event Login, Logout, dan Change Password dengan IP Address dan User-Agent tertentu tidak disebut di TC, PRD, dan LLD; disediakan tim FE/BE. (3) TC-GS-USER-410 dan 665 memakai `Download → XLSX`/`Download as XLSX`, sedangkan Division memakai `Download XLSX`; spec memakai `Download as CSV`/`Download as XLSX` mengikuti TC-GS-USER-664. (4) TC-GS-USER-664, 666, 667, dan 668 tidak menyebut cara menangkap berkas unduhan dan membaca isinya; kemampuan tersebut disediakan tim FE (Prerequisites). (5) TC-GS-USER-668 tidak menyebut kolom mana yang berisi sel kosong; spec mengasersi Status/Note baris Logout, Note baris Login Success, dan Device / Browser tidak terparse (padanan `—` di tabel). (6) TC-GS-USER-667 tidak menyebut kolom yang di-hide; spec memakai `Note`. (7) TC-GS-USER-666 tidak menyebut keyword; spec memakai `Firefox`. (8) TC-GS-USER-410 dan 665 hanya mengharapkan nama berkas XLSX; isi XLSX tidak diasersi. (9) Mekanisme menandai Guided Tooltip sebagai sudah dilihat tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE.

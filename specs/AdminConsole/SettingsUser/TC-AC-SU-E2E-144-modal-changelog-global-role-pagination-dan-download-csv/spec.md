@@ -24,7 +24,7 @@ coverage:
 - User target Detail: `Jane Smith {runId}-144` (user seed milik spec ini; satu-satunya entri Changelog adalah 15 entri Global Role di bawah).
 - Data Dinamis: 15 entri Global Role untuk `Jane Smith {runId}-144` (Action, Role Name, Field, Old Value, New Value, dan Modified By beragam; Date berbeda) dan tanpa Filter atau Search aktif.
 - Nama berkas unduhan diturunkan dari nama user seed: spasi pada nama menjadi tanda hubung (`Changelog-Jane-Smith-{runId}-144-Global-Role.csv`).
-- Changelog adalah audit trail permanen: entri seed tidak dapat dihapus; hook `after` hanya menonaktifkan/menghapus user seed milik spec ini. Hitungan 15 entri dan 5 entri sisa pada halaman 2 deterministik karena user adalah milik spec ini dan modal hanya memuat entri user ini, sehingga hitungan itu diasersi (S-12 tidak berlaku).
+- Changelog adalah audit trail permanen: entri seed tidak dapat dihapus; hook `after` hanya menonaktifkan/menghapus user seed milik spec ini. Hitungan 15 entri dan 5 entri sisa pada halaman 2 deterministik karena user adalah milik spec ini dan modal hanya memuat entri user ini, sehingga baseline entri adalah nol dan hitungan itu diasersi sebagai jumlah absolut, bukan selisih terhadap N yang dibaca.
 
 ## Test Steps
 

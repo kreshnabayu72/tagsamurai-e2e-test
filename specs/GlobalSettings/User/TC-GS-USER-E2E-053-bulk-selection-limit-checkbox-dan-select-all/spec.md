@@ -61,24 +61,25 @@ coverage:
 ### TC-GS-USER-284: Selection Limit dibaca live dari System Limits tanpa hardcode
 
 22. Di tab Admin Console (Lifecycle Settings > System Limits) ubah Selection Limit menjadi 4
-23. Kembali ke tab User List
-24. Muat ulang halaman User List
-25. Klik icon Search, ketik `{runId}-053`, tekan Enter
-26. Centang baris ke-1
-27. Centang baris ke-2
-28. Centang baris ke-3
-29. Centang baris ke-4
-30. Verifikasi baris ke-4 tercentang
-31. Verifikasi checkbox baris ke-5 disabled
-32. Hover checkbox baris ke-5
-33. Verifikasi tooltip `You've reached the maximum selection of 4 rows.`
-34. Klik icon `×` pada Bulk Action Bar
+23. Tunggu aksi selesai
+24. Kembali ke tab User List
+25. Muat ulang halaman User List
+26. Ganti isi kotak search dengan `{runId}-053`, tekan Enter
+27. Centang baris ke-1
+28. Centang baris ke-2
+29. Centang baris ke-3
+30. Centang baris ke-4
+31. Verifikasi baris ke-4 tercentang
+32. Verifikasi checkbox baris ke-5 disabled
+33. Hover checkbox baris ke-5
+34. Verifikasi tooltip `You've reached the maximum selection of 4 rows.`
+35. Klik icon `×` pada Bulk Action Bar
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`. Kelas harness e (bagian 3 prinsip 13e): TC-GS-USER-282, 283, dan 284 bergantung pada nilai Selection Limit.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (aksi tanpa `Verifikasi`): 1 dan 25 (Search), 10, 20, dan 34 (membersihkan seleksi), 11 (mencentang satu baris supaya Bulk Action Bar dengan tombol `Select All (9 records)` tampil), 17 dan 19 (membuka dan menutup dropdown `Bulk Action`), 21 (menutup toast persist), 22 sampai 24 (mengubah Selection Limit di tab Admin Console, kembali, dan memuat ulang).
+- Langkah penghubung (aksi tanpa `Verifikasi`): 1 dan 26 (Search), 10, 20, dan 35 (membersihkan seleksi), 11 (mencentang satu baris supaya Bulk Action Bar dengan tombol `Select All (9 records)` tampil), 17 dan 19 (membuka dan menutup dropdown `Bulk Action`), 21 (menutup toast persist), 22 sampai 25 (mengubah Selection Limit di tab Admin Console, `Tunggu aksi selesai` di langkah 23 supaya penyimpanan selesai sebelum kembali dan memuat ulang, R-16, kembali, dan memuat ulang).
 - Asersi tambahan: langkah 14 (baris ke-4 sampai ke-9 tidak tercentang) menegaskan "hanya 3 baris pertama terselect" (TC-GS-USER-283 butir a); langkah 18 adalah bentuk konkret "bar tetap bisa dipakai" (butir c), ditulis sebagai aksi `Delete` tersedia di dropdown tanpa menekannya.
 - Teks tooltip diasersi tanpa tanda petik; TC menuliskannya dalam tanda petik.
 - Tidak ada aksi yang mengubah atau menghapus data user di spec ini.

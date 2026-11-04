@@ -27,7 +27,15 @@ coverage:
 - Hook suite: flag Guided Tooltip `gs-user` = seen (lihat `suite.md`). Pada mode mock, status flag ini disajikan oleh data mock yang disediakan tim FE.
 - Akun aktor: Total Control (Siti Nurhaliza) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2; kredensial `Spectra.env.GS_TC_PASSWORD`). Pada mode mock, sesi login Total Control disajikan oleh mock; password tidak ditulis di spec atau fixture.
 - Env var: `GS_TC_PASSWORD` (akun default suite; didaftarkan di `executionConfig.environmentVariables`).
-- Kebutuhan mock: seluruh API di-mock (spec dijalankan tim FE sebagai integration test tanpa backend nyata). Endpoint yang di-mock mengacu `global-settings/user/API/user-crud.yaml`: `POST /v2/iam/users/check-availability` (jawaban V-07/V-08) dan `POST /v2/iam/users` (Create; dipantau, nol request). Sumber opsi Division, Access, dan Custom Field form Create tidak ada di `user-crud.yaml`; endpoint-nya ditentukan tim FE di tahap script dan tidak dikarang di sini. Data yang disajikan mock:
+- Kebutuhan mock: seluruh API di-mock (spec dijalankan tim FE sebagai integration test tanpa backend nyata). API yang di-mock mengacu `global-settings/user/API/user-crud.yaml` (API pendukung disediakan tim FE):
+  | method path (yaml:baris) | respons dipaksa |
+  |---|---|
+  | `POST /v2/iam/users/check-availability` (277) | jawaban V-07/V-08: "belum dipakai" untuk semua nilai yang diketik spec |
+  | `POST /v2/iam/users` (334) | Create; dipantau, nol request diterima |
+
+  Sumber opsi dropdown Division, Access, dan Custom Field form Create disediakan tim FE, sesuai data yang disajikan mock di bawah.
+
+  Data yang disajikan mock:
   - Opsi dropdown Division memuat `Finance`.
   - Opsi Access memuat `Fixed Asset`, `Global Settings`, dan `Supply Asset`.
   - Custom Field user disajikan tanpa field Required (TC tidak mengisi Custom Field).
@@ -170,3 +178,4 @@ coverage:
   - TC-GS-USER-97 sampai 100 tidak menyebut karakter yang diketik; spec memakai huruf `a` berulang (Email: 103 huruf `a` + `@qwertysystem.net`).
   - TC-GS-USER-96 Expected tidak menyebut posisi error (di bawah field); spec mengikuti pola TC-GS-USER-91 sampai 95 (di bawah field).
   - Tabel Pre-setup No. 24 mendefinisikan Custom Field `Emergency Phone` sebagai Required, sedangkan TC-GS-USER-91 sampai 100 tidak mengisi Custom Field dan Expected TC-GS-USER-96 tidak memuat error `Emergency phone must not be empty`; pada mode mock, data Custom Field disajikan tanpa field Required (disediakan tim FE) dan spec hanya mengasersi error yang disebut TC.
+  - Sumber opsi dropdown form tidak disebut di TC dan PRD; endpoint `POST /v2/iam/users/options` adalah opsi filter User List, bukan sumber dropdown form, sehingga tidak dipakai di spec ini dan sumber opsi disediakan tim FE (inferensi, diterima 2026-11-03; temuan sumber untuk pemilik PRD §4.1.3).

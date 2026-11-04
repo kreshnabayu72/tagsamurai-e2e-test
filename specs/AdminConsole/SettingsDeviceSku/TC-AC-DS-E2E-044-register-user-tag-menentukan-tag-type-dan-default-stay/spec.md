@@ -20,7 +20,7 @@ coverage:
 - Hook suite (`suite.md`): `before` login akun default, `beforeEach` membuka Settings > Device > Device SKU, `after` memulihkan state global; suite serial (`parallel: false`).
 - Data Pre-setup (tetap di environment, nilai ditulis literal sesuai TC): pohon Category #25 (`TAG > NFC > Asset TAG`); Device Name #26 (`Asset TAG`); Brand Principal #27 (`Arcturus`); File foto uji #37 (`foto-a.jpg`, 200 KB); kolom `TAG Type` pada List berstatus Hidden secara default; SKU inti #29 dipakai sebagai precondition TC, tidak diasersi.
 - Data Dinamis: SKU `NEW-UTAG-1-{runId}-044` (This is User TAG dicentang) dan `NEW-UTAG-2-{runId}-044` (tidak dicentang), dibuat oleh TC-AC-DS-152. Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus lewat API SKU bersuffix `{runId}-044` milik Principal.
-- State yang diubah: kolom `TAG Type` pada List di-unhide lewat Column Visibility oleh langkah 19. Pemulihan di hook `after` dengan menghapus preferensi kolom di browser (bukan `[Reset to Default]`); kemampuan itu disediakan tim FE.
+- State yang diubah: kolom `TAG Type` pada List di-unhide lewat Column Visibility oleh langkah 19 dan dipulihkan eksplisit oleh langkah 24. Pemulihan di hook `after` dengan menghapus preferensi kolom di browser (bukan `[Reset to Default]`); kemampuan itu disediakan tim FE.
 - Fixture `Fixture.settingsDeviceSku` (`fixtures/settings-device-sku.json`) belum ada dan disediakan pada tahap script; memuat email akun dan nilai Pre-setup yang dipakai. Nilai Pre-setup yang menjadi teks UI yang diasersi ditulis literal sesuai TC.
 
 ## Test Steps
@@ -54,12 +54,17 @@ coverage:
 22. Verifikasi baris `NEW-UTAG-2-{runId}-044` menampilkan TAG Type `Object`
 23. Klik `(←)` pada kotak Search
 
+### Pemulihan state akhir
+
+24. Klik header kolom Actions `(⋯)`, lalu hilangkan centang `TAG Type` pada Column Visibility
+
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-device-sku/TestCases/tc-settings-device-sku.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa Verifikasi, S-03): langkah 15 menunggu toast pertama hilang (R-12); langkah 19 adalah bagian TC-AC-DS-152 (langkah 13 TC); langkah 20 dan 23 (Search untuk menemukan baris target lalu menutup Search, R-16). Popup tertutup sendiri sesudah Submit sukses. Pada TC-AC-DS-153 popup ditutup dengan `[✕]` dari form bersih sehingga tidak ada dialog Unsaved Changes (TC-AC-DS-153 langkah 4).
 - Urutan TC diubah: TC-AC-DS-153 (screening tanpa Submit) dijalankan sebelum TC-AC-DS-152 (S-10); Model/Type `T-UT2` pada pendaftaran kedua dipilih spec karena TC hanya menyebut "Asset TAG tanpa mencentang checkbox".
 - Pembagian TC lintas spec: TC-AC-DS-160 (Stay tercentang mereset semua field) ada di spec 186.
+- Langkah penghubung pemulihan (tanpa `Verifikasi`, S-03, S-09): langkah 24 menyembunyikan kembali kolom `TAG Type` yang di-unhide pada langkah 19; hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Temuan untuk QA:
   - Nama env `Spectra.env.AC_DS_*` yang dipakai spec ini dan fixture `fixtures/settings-device-sku.json` belum terdaftar di `spectra.config.ts`, `.env.example`, dan `fixtures/`; disediakan tim FE.
   - S-12: Lampiran A tidak memuat butir modul ini sehingga pengecualian nama literal Pre-setup (#25, #26, #27, #29, #31) belum diputuskan; spec memakai nama Pre-setup apa adanya untuk asersi dan memberi suffix `{runId}-044` pada data Dinamis yang disimpan.

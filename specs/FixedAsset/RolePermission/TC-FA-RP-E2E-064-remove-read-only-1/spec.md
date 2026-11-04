@@ -21,7 +21,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup #2, Siti Rahmawati), email `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control). Hook `after` mengembalikan sesi ke akun default suite (Total Control, `FA_TC_PASSWORD`).
-- Data Pre-setup: #15 (Ahmad Fauzi di-seed berstatus Read Only dengan seluruh Global Role selaras dan Group Role `Manage files` Read di `Data Center` untuk TC-FA-RP-212), #1 (Admin Utama), #2 (Siti Rahmawati aktor), #37 (Tab Read Only terisi: Dewi Anggraini, Maya Anggraeni, Yoga Pratama, Gilang Prakoso), #39 (Detail Role `Manage files` terisi, termasuk Dimas Pranata di `Data Center`).
+- Data Pre-setup: #15 (Ahmad Fauzi di-seed berstatus Read Only dengan seluruh Global Role selaras dan baris pola Group Role Read saja pada setiap group (pola tier Read Only, termasuk `Manage files` di `Data Center`) untuk TC-FA-RP-212), #1 (Admin Utama), #2 (Siti Rahmawati aktor), #37 (Tab Read Only terisi: Dewi Anggraini, Maya Anggraeni, Yoga Pratama, Gilang Prakoso), #39 (Detail Role `Manage files` terisi, termasuk Dimas Pranata di `Data Center`).
 - Sesi kedua: sesi API Total Control kedua (Pre-setup #3, Rina Wulandari, `Spectra.env.FA_TC2_PASSWORD`) untuk TC-FA-RP-214 dan 215; sesi UI kedua tidak dipakai karena hasil di sesi itu tidak diasersi.
 - Kemampuan baca state lewat fixture BE (disediakan tim FE/BE, tanpa endpoint karangan): tingkat akses dan penugasan user dicatat sebagai baseline untuk Expected "tidak berubah oleh sesi 1".
 - Flag Guided Tooltip, halaman awal, sesi API aktor, dan pemulihan Pre-setup bersama: lihat `suite.md` bagian "Hook suite".
@@ -97,7 +97,7 @@ coverage:
 - TC-FA-RP-214 dan 215 memakai dua sesi (Manual Only (d) di TC): sesi 2 adalah pelaku kedua yang hanya memicu perubahan state sehingga memakai sesi API (suite.md; langkah ditulis "... hingga ... tersimpan", R-20), bukan konteks kedua kelas c. Langkah klik tab ganda pada TC-FA-RP-215 dan 216 memuat ulang data tabel setelah seeding (TC langkah 1 "membuka tab dan melihat baris").
 - Absence baris pada TC-FA-RP-212 didahului `Verifikasi` baris lain pada tabel yang sama (butir 8b.2); absence pada TC-FA-RP-216 memakai empty state hasil Search sebagai anchor positif.
 - Temuan untuk QA:
-  - TC-FA-RP-212 precondition d memuat Group Role `Manage files` Read di `Data Center` untuk Ahmad Fauzi; precondition c hanya merujuk Pre-setup #15.
+  - TC-FA-RP-212 precondition d memuat baris pola Group Role Read saja pada setiap group untuk Ahmad Fauzi; precondition c hanya merujuk Pre-setup #15.
   - TC-FA-RP-214 dan 215 Expected b "tingkat akses dan penugasan tidak berubah oleh sesi 1" tidak punya langkah observasi di TC; spec mengasersinya lewat baseline yang dicatat sesudah sesi 2.
-  - Post Condition TC-FA-RP-212 (log `Remove` dan notifikasi in-app ke Ahmad Fauzi) tidak punya langkah observasi dan tidak diasersi.
+  - Post Condition TC-FA-RP-212 (log `Remove` dan notifikasi in-app ke Ahmad Fauzi, satu entri `Remove (via Read Only)` per baris Group Role) tidak punya langkah observasi di TC dan tidak diasersi; pencatatan per baris diasersi TC-FA-RP-1135 di spec `TC-FA-RP-E2E-247-changelog-detail-role-global-role-3`.
 - Ukuran spec (43 langkah, di atas smell sekitar 35 langkah): semua blok berkelas fungsional, memakai permukaan dan dataset Pre-setup yang sama, dan tiap blok TC menyiapkan state sendiri lewat seeding sehingga kegagalan satu blok tidak menghilangkan makna blok lain; langkah membengkak karena tiap klausa Expected menjadi satu `Verifikasi` (S-01). Tidak dipecah lagi (konvensi bagian 3, batas ukuran).

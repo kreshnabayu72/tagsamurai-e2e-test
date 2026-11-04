@@ -40,12 +40,12 @@ coverage:
 7. Klik `[Save]`
 8. Verifikasi kolom Group `Manage partner` menampilkan badge `Region B {runId}-059`, menandai role aktif
 9. Verifikasi muncul toast sukses: "Success, group role has been assigned."
-10. Klik Breadcrumb Settings > User untuk kembali ke User List
+10. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-244: Aktor Manage user and role mengedit baris non-GM pada target Group Manager sampai sukses
 
 11. Tunggu toast lama hilang otomatis
-12. Ketik Search `Dedi Kurnia {runId}-059`, tekan Enter
+12. Ganti isi kotak Search dengan `Dedi Kurnia {runId}-059`, tekan Enter
 13. Klik nama `Dedi Kurnia {runId}-059` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 14. Klik Sub-tab [Group Role]
 15. Klik `[Assign Group]` baris `Manage partner`

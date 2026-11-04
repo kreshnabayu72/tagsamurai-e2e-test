@@ -83,12 +83,11 @@ coverage:
 
 ## Notes
 
-- Langkah penghubung (S-03): `[Clear Field]` lalu `[Apply]`, menutup Search, mengembalikan page size ke 10, dan mengembalikan sort ke default Name A-Z di antara TC mereset state List (S-09; klik sidebar tidak dipakai karena mereset Search, Sort, dan Filter sekaligus).
+- Langkah penghubung (S-03): `[Apply]` menutup Filter Panel, sehingga langkah 7, 28, dan 38 diawali `Klik icon Filter` sebelum `[Clear Field]`; `[Clear Field]` lalu `[Apply]`, menutup Search, mengembalikan page size ke 10, dan mengembalikan sort ke default Name A-Z di antara TC mereset state List (S-09; klik sidebar tidak dipakai karena mereset Search, Sort, dan Filter sekaligus).
 - Langkah 28 sampai 35 mengembalikan state ke awal (filter dilepas, sort default, page size 10, Search ditutup) lalu membangun state TC-289 dengan urutan aksi yang ditulis TC-289 (Search, sort Email, lalu Filter); state akhir TC-288 tidak diteruskan karena dibangun dengan urutan berbeda (Search, Filter, lalu sort).
 - Langkah 36 dan 37 adalah asersi tambahan (S-03, dasar 8b.2): langkah 36 menjadi anchor positif bagi absence baris `Jane Smith {runId}-081` pada langkah 37, basis perbandingan langkah 41.
 - Alasan di atas ±35 langkah: keempat TC adalah kombinasi Search/Filter/Sort User List kelas fungsional dengan dataset yang sama; berdiri sendiri.
 - Temuan untuk QA:
   - TC menulis nama data DS-UL secara literal (nama user, email, position, division). Spec memakai nama bersuffix ` {runId}-081` (S-12) dan mengasersi baris milik spec; klaim "hanya X yang tampil" pada TC tidak dapat diasersi atas seluruh tabel karena baris Pre-setup bernama sama ikut ada di entitas Principal.
   - TC-288 mengasersi "hasil irisan terurut Email A-Z" tanpa data; spec memberi prefix huruf pada Email seed (`a.`, `b.`, `c.`, `d.`) agar urutan Email berbeda dari urutan Name.
-  - PRD §9.8 tidak menyatakan keadaan Filter Panel sesudah `[Apply]`; spec berasumsi `[Apply]` menutup panel, sehingga langkah 7, 28, dan 38 diawali `Klik icon Filter` sebelum `[Clear Field]`.
   - TC-289 langkah 4 melepas kriteria Status tetapi Expected tidak menyebut baris yang kembali tampil; spec memakai `Jane Smith {runId}-081` (Inactive) sebagai bukti kriteria dilepas.

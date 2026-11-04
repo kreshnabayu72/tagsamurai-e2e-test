@@ -63,21 +63,24 @@ coverage:
 
 ### TC-AC-DS-507: Perubahan Time Zone General Settings menggeser tampilan Last Modified dan Date Changelog
 
-26. Ketik Search `HHR-ARC-100`, tekan Enter
-27. Catat Last Modified `HHR-ARC-100` sebagai T1
-28. Klik ikon Changelog lalu catat Date entri pertama Changelog sebagai C1, lalu tutup modal
-29. Buka General Settings, buka dropdown Time Zone, pilih opsi pertama pada daftar yang bukan opsi `Asia/Jakarta`, catat offset `(UTC±HH:MM)` pada labelnya sebagai offset O, lalu simpan
-30. Muat ulang halaman Device SKU, ketik Search `HHR-ARC-100`, tekan Enter
-31. Verifikasi Last Modified `HHR-ARC-100` menampilkan instan yang sama dengan T1 pada offset O: T1 ditambah selisih (O dikurangi UTC+07:00)
-32. Klik ikon Changelog
-33. Verifikasi Date entri pertama Changelog sama dengan C1 ditambah selisih yang sama
-34. Verifikasi format tanggal tetap `dd/MM/yy` dan 24 jam
-35. Tutup modal Changelog lalu pulihkan Time Zone General Settings menjadi Asia/Jakarta
+26. Buka Settings > Device > Device SKU
+27. Ketik Search `HHR-ARC-100`, tekan Enter
+28. Catat Last Modified `HHR-ARC-100` sebagai T1
+29. Klik ikon Changelog lalu catat Date entri pertama Changelog sebagai C1, lalu tutup modal
+30. Buka General Settings, buka dropdown Time Zone, pilih opsi pertama pada daftar yang bukan opsi `Asia/Jakarta`, catat offset `(UTC±HH:MM)` pada labelnya sebagai offset O, lalu simpan
+31. Muat ulang halaman Device SKU, ketik Search `HHR-ARC-100`, tekan Enter
+32. Verifikasi Last Modified `HHR-ARC-100` menampilkan instan yang sama dengan T1 pada offset O: T1 ditambah selisih (O dikurangi UTC+07:00)
+33. Klik ikon Changelog
+34. Verifikasi Date entri pertama Changelog sama dengan C1 ditambah selisih yang sama
+35. Verifikasi format tanggal tetap `dd/MM/yy` dan 24 jam
+36. Tutup modal Changelog lalu pulihkan Time Zone General Settings menjadi Asia/Jakarta
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: langkah 35, 19, dan 25 (membersihkan Search/Filter/popup dan memulihkan nama master agar blok berikutnya tidak bergantung pada state sebelumnya, S-09), langkah Search untuk menemukan baris target (R-16), serta langkah 7 dan 15 (membuka Filter Panel dan field untuk membaca opsi, lihat Temuan).
-- Last Modified `HHR-ARC-100` (T1, langkah 27) dan Date entri pertama Changelog (C1, langkah 28) dibaca saat run, bukan literal Pre-setup, karena nilai Last Modified Pre-setup bergantung pada pemulihan fixture BE antar spec (A-11); asersi memakai selisih offset (TC 507 Expected butir a).
+- Langkah penghubung tanpa `Verifikasi`: langkah 36, 19, dan 25 (membersihkan Search/Filter/popup dan memulihkan nama master agar blok berikutnya tidak bergantung pada state sebelumnya, S-09), langkah Search untuk menemukan baris target (R-16), serta langkah 7 dan 15 (membuka Filter Panel dan field untuk membaca opsi, lihat Temuan).
+- Spec berisi 36 langkah, melewati sekitar 35 langkah. Alasan: empat TC satu kelas (sinkron master) dan berdiri sendiri; tiap blok memuat rename, pemulihan, dan pembacaan surface yang tidak dapat digabung; kegagalan satu TC tidak membuat TC lain kehilangan makna.
+- Langkah 26 adalah langkah penghubung (kembali ke Device SKU setelah langkah 25 memulihkan nama Category di modul Category, S-14).
+- Last Modified `HHR-ARC-100` (T1, langkah 28) dan Date entri pertama Changelog (C1, langkah 29) dibaca saat run, bukan literal Pre-setup, karena nilai Last Modified Pre-setup bergantung pada pemulihan fixture BE antar spec (A-11); asersi memakai selisih offset (TC 507 Expected butir a).
 - Expected 504 butir c dipecah menjadi memuat `Wearable TAG Pro` dan tidak memuat `Wearable TAG` (opsi yang sama persis; `Wearable TAG Pro` bukan padanan opsi `Wearable TAG`); anchor absence: opsi `Wearable TAG Pro` pada daftar opsi yang sama. Expected 505 butir b dipecah per surface (opsi filter, dropdown form).
 - Pengecualian S-12 A-11: SKU Pre-setup `TAG-ARC-USR`, `BLE-KIN-GW1`, `TAG-ARC-OBJ`, dan `HHR-ARC-100` serta nama master `Wearable TAG` (Device Name), `Kinetia` (Brand), dan `Asset TAG` (Category) bernama literal tanpa suffix; nama master yang di-rename dipulihkan sebagai langkah penghubung per blok dan di hook `after`, dan pemulihan Pre-setup dijamin fixture BE (dinyatakan di `suite.md`).
 - Temuan untuk QA:

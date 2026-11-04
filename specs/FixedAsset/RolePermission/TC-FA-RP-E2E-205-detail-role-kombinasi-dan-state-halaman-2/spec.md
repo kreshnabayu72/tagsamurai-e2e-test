@@ -24,7 +24,7 @@ coverage:
 |---|---|---|---|
 | Total Control (Siti Rahmawati) | #2 | `totalControl_automated_{namaCompany}@qwertysystem.net` (`Fixture.fixedAssetRolePermission.akun.totalControl.email`) | `Spectra.env.FA_TC_PASSWORD` |
 
-- Data Pre-setup (Company Alpha): #39 (Detail Role Group Role `Manage files`, enam baris: Ahmad Fauzi (Asset Custodian, Logistics) di `Data Center`; Budi Santoso (Warehouse Staff, Logistics) di `Helpdesk`; Citra Lestari (HR Officer, HR) di `Head Office`; Dimas Pranata (IT Support, IT Operations) di `Data Center`; Endah Susanti (Procurement Officer, Procurement) di `Rack A1`; Fitri Handayani (Finance Officer, Finance, Pending Email Confirmation, Temporary User Yes dengan Temporary Until terisi) di `Dock 1`; Detail Role Global Role `Manage Open API` dan `Manage accounting` terisi Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata) dan #18 (pohon group). Tidak diubah spec ini.
+- Data Pre-setup (Company Alpha): #39 (Detail Role Group Role `Manage files`, 41 baris: 6 baris non-pola dan 35 baris pola Group Role. Baris non-pola: Ahmad Fauzi (Asset Custodian, Logistics) di `Data Center`; Budi Santoso (Warehouse Staff, Logistics) di `Helpdesk`; Citra Lestari (HR Officer, HR) di `Head Office`; Dimas Pranata (IT Support, IT Operations) di `Data Center`; Endah Susanti (Procurement Officer, Procurement) di `Rack A1`; Fitri Handayani (Finance Officer, Finance, Pending Email Confirmation, Temporary User Yes dengan Temporary Until terisi) di `Dock 1`; Detail Role Global Role `Manage Open API` dan `Manage accounting` terisi Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata. Baris pola `Manage files` ada pada tujuh group Pre-setup #18 untuk lima user pola: Admin Utama (System Administrator, IT Operations), Siti Rahmawati (Finance Officer, Accounting & Tax), Rina Wulandari (`Operations Manager, Region 1`, `Asset Management "North"`), Dewi Anggraini (Internal Auditor, Internal Audit), Maya Anggraeni (Compliance Analyst, Legal)) dan #18 (pohon group). Tidak diubah spec ini.
 - Fixture `Fixture.fixedAssetRolePermission` belum ada; kunci akun, nama pengguna, group, dan nilai kolom yang diasersi ditambahkan tim FE.
 - Kemampuan teknis (disediakan tim FE/BE): mengamati kembali isi Search dan node Sidebar Group Tree setelah muat ulang halaman.
 - Pemulihan: preferensi Setup Column tabel yang disimpan spec ini dihapus di hook `after` (hapus preferensi kolom di browser, bukan `[Reset to Default]`; kemampuan disediakan tim FE); Pre-setup bersama tidak diubah kecuali dinyatakan di atas. Pemulihan ini belum terdaftar di `suite.md` (lihat Temuan untuk QA).
@@ -37,7 +37,7 @@ coverage:
 2. Klik Role Name `Manage files` pada section Group Role
 3. Klik `All Groups` di Sidebar Group Tree
 4. Klik node `Data Center`
-5. Verifikasi tabel menampilkan baris Ahmad Fauzi dan Dimas Pranata di `Data Center`
+5. Verifikasi tabel menampilkan baris Ahmad Fauzi dan Dimas Pranata di `Data Center` beserta lima baris pola Group Role `Manage files` (Admin Utama, Siti Rahmawati, Rina Wulandari, Dewi Anggraini, Maya Anggraeni; Pre-setup #39) di `Data Center`
 6. Ketik Search `dimas`, tekan Enter
 7. Verifikasi tabel menampilkan hanya baris Dimas Pranata (Search tetap aktif)
 8. Klik node `Head Office`
@@ -55,8 +55,8 @@ coverage:
 
 ### TC-FA-RP-1025: Detail Role Group Role: kolom Group tidak pernah kosong pada setiap baris
 
-17. Klik `All Groups` di Sidebar Group Tree
-18. Verifikasi kolom Group tampil dengan badge group tempat penugasan pada setiap baris: Ahmad Fauzi `Data Center`, Budi Santoso `Helpdesk`, Citra Lestari `Head Office`, Dimas Pranata `Data Center`, Endah Susanti `Rack A1`, Fitri Handayani `Dock 1`
+17. Klik `All Groups` di Sidebar Group Tree, lalu ubah ukuran halaman menjadi 50
+18. Verifikasi kolom Group tampil dengan badge group tempat penugasan pada seluruh 41 baris (6 non-pola dan 35 baris pola, Pre-setup #39): Ahmad Fauzi `Data Center`, Budi Santoso `Helpdesk`, Citra Lestari `Head Office`, Dimas Pranata `Data Center`, Endah Susanti `Rack A1`, Fitri Handayani `Dock 1`; setiap baris pola (lima user pola pada tujuh group) berisi badge group tempat baris itu berada
 19. Verifikasi tidak ada sel kolom Group yang kosong atau berisi `—`
 
 ## Notes

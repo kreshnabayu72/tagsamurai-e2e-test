@@ -33,7 +33,7 @@ coverage:
 
 ## Test Steps
 
-1. Cari `Jane Smith {runId}-205` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
+1. Ketik Search `Jane Smith {runId}-205` pada User List, tekan Enter, lalu buka Detail user tersebut
 2. Klik tab `System Log`
 
 ### TC-AC-SU-417: OR di dalam satu field, AND antar field

@@ -34,44 +34,46 @@ coverage:
 
 ### TC-AC-SU-441: Pagination Tab Responsibilities, Changelog, System Log, User Log
 
-1. Cari `Jane Smith {runId}-125` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab pada baris tabel 'Tab uji'
-3. Verifikasi tab menampilkan 10 baris secara default
-4. Klik halaman 2
-5. Verifikasi halaman 2 menampilkan baris ke-11 sampai ke-20
-6. Ubah page size menjadi 25
-7. Verifikasi tab menampilkan 25 baris
-8. Klik halaman 2
-9. Ketik Search keyword pada kolom 'Keyword Search' baris tabel itu, tekan Enter
-10. Verifikasi tab kembali ke halaman 1
-11. Klik icon `(←)` pada kotak Search
-12. Ubah page size kembali menjadi 10
+1. Ketik Search `Jane Smith {runId}-125`, tekan Enter
+2. Klik Name `Jane Smith {runId}-125`
+3. Untuk setiap baris tabel "Tab uji" di Prerequisites, lakukan langkah 4 sampai 14
+4. Klik tab pada baris tabel 'Tab uji'
+5. Verifikasi tab menampilkan 10 baris secara default
+6. Klik halaman 2
+7. Verifikasi halaman 2 menampilkan baris ke-11 sampai ke-20
+8. Ubah page size menjadi 25
+9. Verifikasi tab menampilkan 25 baris
+10. Klik halaman 2
+11. Ketik Search keyword pada kolom 'Keyword Search' baris tabel itu, tekan Enter
+12. Verifikasi tab kembali ke halaman 1
+13. Klik icon `(←)` pada kotak Search
+14. Ubah page size kembali menjadi 10
 
 ### TC-AC-SU-442: Pindah tab Detail tidak me-reset search atau filter tab lain
 
-13. Klik tab `Changelog`
-14. Ketik Search `Assign`, tekan Enter
-15. Klik tab `System Log`
-16. Klik icon Filter
-17. Pilih `User` di field `Object`
-18. Klik `[Apply]`
-19. Klik tab `Changelog`
-20. Verifikasi keyword Search `Assign` tetap terisi pada Tab Changelog
-21. Verifikasi sedikitnya satu baris tampil pada Tab Changelog
-22. Verifikasi Tab Changelog menampilkan hasil Search `Assign` (setiap baris yang tampil memuat `Assign`)
-23. Klik tab `System Log`
-24. Verifikasi badge titik pada icon Filter masih tampil pada Tab System Log
-25. Verifikasi sedikitnya satu baris tampil pada Tab System Log
-26. Verifikasi Tab System Log masih menampilkan filter Object `User` (setiap baris yang tampil memiliki Object `User`)
-27. Klik icon Filter
-28. Klik `[Clear Field]`, lalu klik `[Apply]`
-29. Klik tab `Changelog`
-30. Klik icon `(←)` pada kotak Search
+15. Klik tab `Changelog`
+16. Ketik Search `Assign`, tekan Enter
+17. Klik tab `System Log`
+18. Klik icon Filter
+19. Pilih `User` di field `Object`
+20. Klik `[Apply]`
+21. Klik tab `Changelog`
+22. Verifikasi keyword Search `Assign` tetap terisi pada Tab Changelog
+23. Verifikasi sedikitnya satu baris tampil pada Tab Changelog
+24. Verifikasi Tab Changelog menampilkan hasil Search `Assign` (setiap baris yang tampil memuat `Assign`)
+25. Klik tab `System Log`
+26. Verifikasi badge titik pada icon Filter masih tampil pada Tab System Log
+27. Verifikasi sedikitnya satu baris tampil pada Tab System Log
+28. Verifikasi Tab System Log masih menampilkan filter Object `User` (setiap baris yang tampil memiliki Object `User`)
+29. Klik icon Filter
+30. Klik `[Clear Field]`, lalu klik `[Apply]`
+31. Klik tab `Changelog`
+32. Klik icon `(←)` pada kotak Search
 
 ## Notes
 
-- Langkah pembuka TC-441 yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
-- Langkah per tab diulang per baris tabel 'Tab uji': langkah 2 sampai 12 (4 tab). Klik halaman 2 setelah mengubah page size menjadi 25, serta mengubah page size kembali menjadi 10 dan klik `(←)`, adalah langkah penghubung (halaman 2 dibutuhkan agar Search dijalankan dari halaman selain halaman 1; page size dikembalikan agar tab berikutnya mulai dari 10 baris).
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Langkah per tab diulang per baris tabel 'Tab uji': langkah 4 sampai 14 (4 tab). Klik halaman 2 setelah mengubah page size menjadi 25, serta mengubah page size kembali menjadi 10 dan klik `(←)`, adalah langkah penghubung (halaman 2 dibutuhkan agar Search dijalankan dari halaman selain halaman 1; page size dikembalikan agar tab berikutnya mulai dari 10 baris).
 - Pada TC-442 klik `[Clear Field]` lalu `[Apply]` dan klik `(←)` di akhir spec adalah langkah penghubung yang mengosongkan state (S-09).
 - Temuan untuk QA:
   - TC-441 tidak menyebut keyword Search per tab; spec memakai nilai seeding. Kolom dan keyword Search tab Responsibilities tidak dinyatakan di TC ini; spec memakai prefix ID seeding `HALC-2026`.
@@ -79,4 +81,4 @@ coverage:
   - TC-441 butir a menyebut 'default 10 baris' dan 'halaman 2 = baris 11–20' tanpa menyatakan apakah page size bertahan antar tab; spec mengembalikan page size ke 10 pada akhir tiap iterasi.
   - Cara men-seed entri audit trail (Date, Action, Field, Old Value, New Value, pelaku) tidak dinyatakan di TC, PRD, atau LLD; kemampuan ini ditulis 'disediakan tim FE/BE' tanpa endpoint karangan (S-13).
   - Nama target `Jane Smith` pada TC dipakai sebagai nama bersuffix `Jane Smith {runId}-NNN` per run (S-12); asersi spec memakai nilai kolom log, bukan urutan atau Search atas nama user.
-- Spec ini melewati sekitar 35 langkah (30 langkah nominal, sekitar 63 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini melewati sekitar 35 langkah (32 langkah nominal, sekitar 65 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.

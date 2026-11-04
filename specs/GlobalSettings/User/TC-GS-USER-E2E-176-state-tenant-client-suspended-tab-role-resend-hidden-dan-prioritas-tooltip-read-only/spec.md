@@ -22,7 +22,7 @@ coverage:
 
   | Urutan | Role | Email | Environment variable password |
   |---|---|---|---|
-  | 1 | Total Control Client Suspended (disediakan tim FE) | `totalControlGlobalSettings_automated_{namaCompanySuspended}@qwertysystem.net` | `GS_CLIENTSUSP_TC_PASSWORD` |
+  | 1 | Total Control Client Suspended (disediakan tim FE) | akun disediakan tim FE | `GS_CLIENTSUSP_TC_PASSWORD` |
   | 2 | Read Only Client Suspended (disediakan tim FE; email akun ini tidak tertulis di Pre-setup TC, lihat Temuan untuk QA) | disediakan tim FE | `GS_CLIENTSUSP_RO_PASSWORD` (belum terdaftar di `executionConfig.environmentVariables` dan `.env.example`; didaftarkan tim FE) |
 
   Login akun 1 di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control Client A, `Spectra.env.GS_TC_PASSWORD`). Password tidak ditulis di spec atau fixture.
@@ -89,7 +89,6 @@ coverage:
 - Urutan Verifikasi pada TC-GS-USER-1134 diubah dari Expected: kontrol tulis lain (Expected b) ditulis lebih dulu sebagai anchor positif untuk asersi Hidden (Expected a).
 - Pembagian TC lintas spec: kontrol tulis lain pada Client Suspended dan Expired (Create, Edit, Delete, Toggle Active, request langsung) diverifikasi di spec 156; spec ini memuat TC-GS-USER-1102, 1134, dan 1130 seluruhnya.
 - Temuan untuk QA:
-  - TC-GS-USER-1102, 1134, dan 1130 menulis tooltip `"Entity is suspended."`, sedangkan TC-GS-USER-1021 sampai 1024 (spec 156) menulis tooltip `"You don't have permission to edit."` untuk kontrol tulis pada Client Suspended; teks tooltip Client Suspended perlu dikonfirmasi. Spec ini mengikuti TC sumbernya.
   - TC-GS-USER-1102 dan 1130: precondition "Client berstatus suspended" tidak menyebut Client, akun, dan cara menyiapkan data; disediakan tim FE sebagai Client tetap dengan salinan data Pre-setup (S-13).
   - TC-GS-USER-1130 membutuhkan akun Read Only di Client Suspended yang tidak ada di Tabel Pre-setup maupun `.env.example`; spec memakai akun `GS_CLIENTSUSP_RO_PASSWORD` yang disediakan tim FE (alternatif: menyuspend Client A sementara, state tenant global; perlu keputusan). Email akun tidak tertulis di Pre-setup TC.
   - TC-GS-USER-1102 langkah 2 menyebut "checkbox baris `Manage TAG`" tanpa menyebut checkbox yang di-hover; spec memakai checkbox Update (mengikuti TC-GS-USER-1000).

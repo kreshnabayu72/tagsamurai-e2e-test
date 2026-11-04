@@ -69,11 +69,11 @@ coverage:
 25. Klik Sub-tab [Group Role]
 26. Verifikasi `[Detail]` tampil pada kolom Actions Group Role
 27. Verifikasi `[Assign Group]` tidak tampil pada kolom Actions Group Role
-28. Klik Breadcrumb Settings > User untuk kembali ke User List
+28. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-191: Entitas suspended: switch dan CRUD Global Role terkunci
 
-29. Ketik Search `Budi Santoso {runId}-042`, tekan Enter
+29. Ganti isi kotak Search dengan `Budi Santoso {runId}-042`, tekan Enter
 30. Klik nama `Budi Santoso {runId}-042` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 31. Hover switch sebuah baris Global Role
 32. Verifikasi switch Global Role tampil namun disabled

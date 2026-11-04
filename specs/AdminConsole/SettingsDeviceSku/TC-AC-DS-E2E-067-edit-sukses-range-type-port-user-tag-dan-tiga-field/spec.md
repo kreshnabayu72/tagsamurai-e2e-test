@@ -26,7 +26,7 @@ coverage:
 
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook suite (`before`, `beforeEach`, `after`) dinyatakan di `suite.md`; hook `after` mengembalikan sesi ke akun default suite (Total Control Principal).
 - Data Pre-setup: SKU inti dan seed (#29, #30), pohon Category (#25), Device Name (#26), Brand (#27), file foto (#37).
-- Pemulihan: hook `before` menyiapkan secara idempotent (dilewati bila sudah ada) dan hook `after` memulihkan ke keadaan awal Pre-setup lewat fixture BE yang disediakan tim FE/BE: baris `HHR-ARC-200` (Range Type `Short Range`), `SFR-ZERO-01` (Port `9090`), `SFR-VEL-4P` (Port `8080`, stok 36), dan `TAG-ARC-OBJ` (TAG Type `Object`) ke nilai Pre-setup #29; preferensi kolom List (Range Type dan TAG Type di-unhide) dihapus dari browser di hook `after` (kemampuan disediakan tim FE). Efek yang tidak dapat dipulihkan: entri audit trail (Changelog, System Log, Activity Log) bertambah permanen.
+- Pemulihan: hook `before` menyiapkan secara idempotent (dilewati bila sudah ada) dan hook `after` memulihkan ke keadaan awal Pre-setup lewat fixture BE yang disediakan tim FE/BE: baris `HHR-ARC-200` (Range Type `Short Range`), `SFR-ZERO-01` (Port `9090`), `SFR-VEL-4P` (Port `8080`, stok 36), dan `TAG-ARC-OBJ` (TAG Type `Object`) ke nilai Pre-setup #29; preferensi kolom List (Range Type dan TAG Type di-unhide pada langkah 6 dan 32, disembunyikan kembali pada langkah 34 dan 35) dihapus dari browser di hook `after` sebagai cadangan (kemampuan disediakan tim FE). Efek yang tidak dapat dipulihkan: entri audit trail (Changelog, System Log, Activity Log) bertambah permanen.
 - Suite berjalan serial (`parallel: false`) karena spec memakai data SKU bersama dan nama literal Pre-setup (lihat Notes).
 - Sumber nilai data: Pre-setup TC (#25 sampai #43); berkas `fixtures/settings-device-sku.json` belum ada dan disediakan tim FE dengan kunci mengikuti Pre-setup #29 dan #30 (ditandai di Notes).
 
@@ -78,10 +78,15 @@ coverage:
 32. Klik header kolom Actions `(⋯)`, lalu centang `TAG Type` pada Column Visibility
 33. Verifikasi baris `TAG-ARC-OBJ` menampilkan badge `User` pada kolom TAG Type
 
+### Pemulihan state akhir
+
+34. Klik header kolom Actions `(⋯)`, lalu hilangkan centang `Range Type` pada Column Visibility
+35. Klik header kolom Actions `(⋯)`, lalu hilangkan centang `TAG Type` pada Column Visibility
+
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-device-sku/TestCases/tc-settings-device-sku.md`; subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung: Search pada langkah 8, 17, dan 26 menemukan baris target di luar halaman 1 (default sort SKU A-Z, Pre-setup #29 dan #30); "Klik `✕`" setelah verifikasi Port menutup popup bersih. Langkah membuka Column Visibility mengikuti Expected TC-196 dan TC-199 (kolom Hidden secara default).
+- Langkah penghubung: Search pada langkah 8, 17, dan 26 menemukan baris target di luar halaman 1 (default sort SKU A-Z, Pre-setup #29 dan #30); "Klik `✕`" setelah verifikasi Port menutup popup bersih. Langkah membuka Column Visibility mengikuti Expected TC-196 dan TC-199 (kolom Hidden secara default). Langkah 34 dan 35 (tanpa `Verifikasi`, S-03, S-09) menyembunyikan kembali kedua kolom.
 - Post Condition "perubahan tersimpan" dan "entri log tercatat di Changelog, System Log aktor, dan Activity Log" tidak diasersi di spec ini karena TC tidak memberi langkah observasinya; pencatatan log diuji di spec log tiga surface.
 - Temuan untuk QA: TC-196 dan TC-199 mensyaratkan kolom di-unhide tetapi tidak menyatakan pemulihan preferensi kolom; spec memulihkannya di hook `after` (bagian 4).
 - Temuan untuk QA (S-12): Lampiran A tidak punya butir untuk modul ini, padahal asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `HHR-ARC-200`, `SEED-001`, total 129 SKU). Spec memakai nama literal itu sesuai TC; syarat seeding idempotent, cleanup oleh spec, dan suite serial dipenuhi lewat Pemulihan di Prerequisites. Pengecualian S-12 dan S-06 untuk modul ini belum diputuskan; suite.md belum menyatakan fixture pemulihan Pre-setup.

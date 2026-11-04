@@ -89,16 +89,18 @@ coverage:
 37. Verifikasi `←` kembali ke Step 1
 38. Tekan `Esc`
 39. Verifikasi `Esc` menutup walkthrough
+40. Muat ulang halaman (F5)
+41. Verifikasi walkthrough tidak muncul otomatis lagi (sama seperti efek `[Skip]`, TC-GS-USER-34)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec melewati sekitar 35 langkah (39 langkah) karena tujuh TC Guided Tooltip berada di satu kelas harness (fungsional, state flag Guided Tooltip akun aktor). TC-GS-USER-29, 30, 36, 31, 32, dan 33 dijalankan berurutan dalam satu walkthrough (Step 1 sampai Step 5) supaya tidak membuka ulang halaman tiga kali; TC-GS-USER-39 berdiri sendiri dengan reset flag dan pembukaan ulang sendiri.
+- Spec melewati sekitar 35 langkah (41 langkah) karena tujuh TC Guided Tooltip berada di satu kelas harness (fungsional, state flag Guided Tooltip akun aktor). TC-GS-USER-29, 30, 36, 31, 32, dan 33 dijalankan berurutan dalam satu walkthrough (Step 1 sampai Step 5) supaya tidak membuka ulang halaman tiga kali; TC-GS-USER-39 berdiri sendiri dengan reset flag dan pembukaan ulang sendiri.
 - Urutan TC sumber diubah: TC-GS-USER-36 (Back dari Step 2 ke Step 1) diasersi sebelum TC-GS-USER-31, 32, dan 33 karena walkthrough bergerak maju satu arah. Klik `[Next]` di langkah 8 dipakai bersama oleh TC-GS-USER-30 dan TC-GS-USER-36 (langkah 2 kedua TC identik); langkah 16 mengulang `[Next]` ke Step 2 sebagai langkah penghubung menuju Step 3 untuk TC-GS-USER-31.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 dan 32 (reset flag lewat API sebagai precondition "flag belum tercatat"), 16 (kembali maju ke Step 2), dan 33 (muat ulang untuk kunjungan pertama berikutnya).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 dan 32 (reset flag lewat API sebagai precondition "flag belum tercatat"), 16 (kembali maju ke Step 2), 33 (muat ulang untuk kunjungan pertama berikutnya), dan 40 (muat ulang sebagai penutup efek `[Skip]` pada `Esc`).
 - Perilaku `[Skip]`, `[Done]`, penyimpanan flag, replay `[?]`, dan navigasi keluar diuji di spec TC-GS-USER-E2E-006-guided-tooltip-flag-skip-done-replay-dan-navigasi-keluar. Klik `[Done]` pada Step 5 tidak dilakukan di spec ini.
 - Temuan untuk QA:
-  - TC-GS-USER-39 Expected c menyebut `Esc` menutup walkthrough "sama seperti Skip" tanpa menyatakan apakah flag `gs-user` tercatat; spec hanya mengasersi walkthrough tertutup.
+  - TC-GS-USER-39 Expected c menyebut `Esc` menutup walkthrough "sama seperti Skip" tanpa menyatakan apakah flag `gs-user` tercatat; spec mengasersi walkthrough tertutup (langkah 39) lalu, sebagai penutup klausa "sama seperti Skip" (TC-GS-USER-34 b: tidak muncul otomatis sesudah refresh), memuat ulang halaman dan mengasersi walkthrough tidak muncul lagi (langkah 40-41); TC-GS-USER-39 sendiri tidak menyebut langkah refresh ini, dan flag `gs-user` yang tercatat sesudahnya perlu direset ulang bila ada blok lain sesudahnya.
   - Cara menghapus flag `gs-user` tidak didefinisikan di TC dan PRD; disediakan tim FE/BE.
   - TC-GS-USER-30, 31, 32, dan 33 bertanda FE Test `UI Only` sedangkan precondition-nya mensyaratkan flag belum tercatat; spec menjalankannya terhadap backend nyata dalam satu walkthrough bersama TC-GS-USER-29.

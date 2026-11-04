@@ -65,7 +65,7 @@ coverage:
 19. Klik Tab `System Log`
 20. Verifikasi empty state tampil: ilustrasi, `No system logs recorded`, dan `Security and audit trail records will appear here.`
 
-### TC-GS-USER-591: Siklus Search: reveal, Enter, clear ×, collapse ←
+### TC-GS-USER-591: Siklus Search: reveal, Enter, clear (✕), collapse ←
 
 21. Kembali ke Global Settings > User > User List (sub-tab Login User)
 22. Klik icon Search, ketik `Aktor Log {runId}-096`, tekan Enter
@@ -76,11 +76,11 @@ coverage:
 27. Verifikasi kursor auto-focus pada input Search
 28. Ketik `edit` pada input Search
 29. Verifikasi tabel belum tersaring (baris Action `Create` masih tampil)
-30. Verifikasi icon `×` muncul
+30. Verifikasi icon `(✕)` muncul
 31. Tekan Enter
 32. Verifikasi baris Action `Edit` tampil
 33. Verifikasi tabel tersaring (baris Action `Create` tidak tampil)
-34. Klik icon `×`
+34. Klik icon `(✕)`
 35. Verifikasi input Search kosong
 36. Verifikasi baris Action `Edit` tetap tampil (tabel tetap hasil terakhir)
 37. Verifikasi baris Action `Create` tetap tidak tampil (tabel tidak di-reset)
@@ -103,30 +103,30 @@ coverage:
 
 49. Ganti isi kotak search dengan `eat`, tekan Enter
 50. Verifikasi Action: baris Action `Create` (memuat `eat`) tampil
-51. Klik icon `×`
+51. Klik icon `(✕)`
 52. Tekan Enter pada input kosong
 53. Isi Search dengan `otal`, tekan Enter
 54. Verifikasi Object: baris Object `Total Control` (memuat `otal`) tampil
-55. Klik icon `×`
+55. Klik icon `(✕)`
 56. Tekan Enter pada input kosong
 57. Isi Search dengan `lfa`, tekan Enter
 58. Verifikasi Name: baris Name `Target Alfa {runId}-096` (memuat `lfa`) tampil
-59. Klik icon `×`
+59. Klik icon `(✕)`
 60. Tekan Enter pada input kosong
 61. Isi Search dengan `osit`, tekan Enter
 62. Verifikasi Field: baris Field `Position` (memuat `osit`) tampil
-63. Klik icon `×`
+63. Klik icon `(✕)`
 64. Tekan Enter pada input kosong
 
 ### TC-GS-USER-594: Search menemukan substring pada kolom kelas nilai campuran
 
 65. Isi Search dengan `Staf`, tekan Enter
 66. Verifikasi Old Value: baris Old Value `Staff` (memuat `Staf`) tampil
-67. Klik icon `×`
+67. Klik icon `(✕)`
 68. Tekan Enter pada input kosong
 69. Isi Search dengan `Super`, tekan Enter
 70. Verifikasi New Value: baris New Value `Supervisor` (memuat `Super`) tampil
-71. Klik icon `×`
+71. Klik icon `(✕)`
 72. Tekan Enter pada input kosong
 
 ### TC-GS-USER-595: Kolom non-searchable tidak tercakup Search
@@ -134,7 +134,7 @@ coverage:
 73. Salin teks tanggal pada kolom Date salah satu baris yang tampil (format yang tampil di kolom itu)
 74. Isi Search dengan teks tanggal yang disalin, tekan Enter
 75. Verifikasi pesan `No results found`
-76. Klik icon `×`
+76. Klik icon `(✕)`
 77. Tekan Enter pada input kosong
 
 ### TC-GS-USER-596: Search tidak mencocokkan kolom yang di-hide, cocok kembali setelah unhide
@@ -147,7 +147,7 @@ coverage:
 83. Verifikasi kolom `Field` tampil kembali di tabel
 84. Tekan Enter pada input Search yang masih berisi `Position`
 85. Verifikasi baris Field `Position` kembali cocok (tampil)
-86. Klik icon `×`
+86. Klik icon `(✕)`
 87. Tekan Enter pada input kosong
 
 ### TC-GS-USER-597: Empty filtered state

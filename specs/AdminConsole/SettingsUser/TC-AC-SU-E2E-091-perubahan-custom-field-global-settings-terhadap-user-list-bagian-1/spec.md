@@ -93,26 +93,25 @@ coverage:
 48. Hapus (Delete) `Shift {runId}-091`, klik konfirmasi
 49. Tunggu aksi selesai
 50. Buka Settings > User
-51. Verifikasi kriteria `Shift {runId}-091` dilepas
-52. Ketik Search `{runId}-091`, tekan Enter
-53. Verifikasi tabel memuat ulang tanpa kriteria itu (baris `John Doe {runId}-091` ikut tampil)
-54. Klik icon Filter
-55. Verifikasi field filter `Status` ada di Filter Panel
-56. Verifikasi field filter `Shift {runId}-091` tidak ada di Filter Panel
-57. Verifikasi kolom `Name` tampil di tabel User List
-58. Klik `⋯` pada header Actions, klik `[Setup Column]`
-59. Verifikasi `Blood Type {runId}-091` ada di daftar kolom Popup Setup Column
-60. Verifikasi kolom `Shift {runId}-091` tidak ada di tabel
-61. Verifikasi kolom `Shift {runId}-091` tidak ada di Popup Setup Column
+51. Ketik Search `{runId}-091`, tekan Enter
+52. Klik icon Filter
+53. Verifikasi field filter `Status` ada di Filter Panel
+54. Verifikasi field filter `Shift {runId}-091` tidak ada di Filter Panel
+55. Verifikasi kolom `Name` tampil di tabel User List
+56. Klik `⋯` pada header Actions, klik `[Setup Column]`
+57. Verifikasi `Blood Type {runId}-091` ada di daftar kolom Popup Setup Column
+58. Verifikasi kolom `Shift {runId}-091` tidak ada di tabel
+59. Verifikasi kolom `Shift {runId}-091` tidak ada di Popup Setup Column
 
 ## Notes
 
 - Urutan spec: TC-330 langsung sesudah TC-328 karena TC-330 bergantung pada hasil TC-328 (Dependensi TC); TC-329 (menghapus field) di akhir (S-10).
 - Langkah penghubung (S-03): mem-pin dan menampilkan `Office Location {runId}-091` pada TC-328 memenuhi precondition ("kolomnya sudah ditampilkan" dan "di-pin"); icon (X) menutup popup tanpa menyimpan; klik breadcrumb `User` kembali ke List; `(←)` pada kotak Search menutup input dan mereset tabel sebelum Filter karena Search `Mike Tan {runId}-091` dari TC-608 masih aktif sesudah kembali dari Detail (S-09, R-16).
-- Langkah penghubung (S-03, R-16): "Ketik Search `{runId}-091`, tekan Enter" (langkah 29 dan 52) membatasi User List ke empat user seed milik spec (keyword hanya cocok dengan nama bersuffix seed) sebelum verifikasi sel dan baris; Search langkah 29 tetap aktif sampai langkah 37, sehingga langkah 38 memakai "Ganti isi kotak Search dengan `Mike Tan {runId}-091`, tekan Enter" untuk menemukan baris target sebelum Buka Detail; langkah 52 memakai "Ketik Search" karena kotak bersih sesudah navigasi sidebar; "Tunggu aksi selesai" setelah tiap aksi konfirmasi Global Settings (Deactivate, Activate, Delete) memberi waktu aksi selesai sebelum pindah ke Settings > User (bagian 8b butir 8); tanpa `Verifikasi`.
+- Langkah penghubung (S-03, R-16): "Ketik Search `{runId}-091`, tekan Enter" (langkah 29 dan 51) membatasi User List ke empat user seed milik spec (keyword hanya cocok dengan nama bersuffix seed) sebelum verifikasi sel dan baris; Search langkah 29 tetap aktif sampai langkah 37, sehingga langkah 38 memakai "Ganti isi kotak Search dengan `Mike Tan {runId}-091`, tekan Enter" untuk menemukan baris target sebelum Buka Detail; langkah 51 memakai "Ketik Search" karena kotak bersih sesudah navigasi sidebar; "Tunggu aksi selesai" setelah tiap aksi konfirmasi Global Settings (Deactivate, Activate, Delete) memberi waktu aksi selesai sebelum pindah ke Settings > User (bagian 8b butir 8); tanpa `Verifikasi`.
 - Tiap asersi absence (kolom, opsi Setup Column, field filter) didahului `Verifikasi` pembanding pada surface yang sama: kolom `Name`, `Shift {runId}-091`, `Status`, dan `Blood Type {runId}-091` yang masih ada (bagian 8b butir 2).
 - Alasan di atas ±35 langkah: kelima TC adalah dampak Custom Field User terhadap User List, dataset sama; TC-609 sampai TC-613 ada di spec 092.
 - Temuan untuk QA:
   - TC menulis nama data DS-UL secara literal (nama user, email, position, division). Spec memakai nama bersuffix ` {runId}-091` (S-12) dan mengasersi baris milik spec; klaim "hanya X yang tampil" pada TC tidak dapat diasersi atas seluruh tabel karena baris Pre-setup bernama sama ikut ada di entitas Principal.
   - TC-328 dan TC-329 memakai Custom Field `Office Location` dan `Shift` Pre-setup; spec memakai field milik spec bernama bersuffix karena menonaktifkan atau menghapus field Pre-setup melanggar S-06.
+  - TC-329 mengharapkan kriteria filter `Shift` dilepas dan tabel dimuat ulang tanpa kriteria itu, tetapi spec kembali ke Settings > User lewat sidebar dan sidebar mereset Search, Sort, dan Filter; retensi Filter lintas navigasi sidebar belum dikonfirmasi FE dan TC-329 ambigu, sehingga kedua asersi tersebut tidak ditulis. Asersi absence field/kolom `Shift {runId}-091` tetap berlaku.
   - TC-330 precondition b menyebut `Office Location` "di-pin" tetapi TC-328 hanya menampilkan; spec mem-pin pada TC-328.

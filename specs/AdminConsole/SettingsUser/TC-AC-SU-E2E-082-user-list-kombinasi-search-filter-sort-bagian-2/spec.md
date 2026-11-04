@@ -34,56 +34,61 @@ coverage:
 4. Klik icon Search
 5. Ketik Search `john`, tekan Enter
 6. Klik `✕` pada Search, tekan Enter
-7. Verifikasi baris `Mike Tan {runId}-082` tampil sebelum `John Doe {runId}-082` (sort Name Z-A tetap)
-8. Verifikasi baris `John Doe {runId}-082` dan `Mike Tan {runId}-082` (Active) tampil
-9. Verifikasi baris `Jane Smith {runId}-082` (Inactive) tidak tampil (filter Active tetap)
-10. Klik header Name sekali sampai sort kembali ke default Name A-Z
-11. Klik `[Clear Field]`, klik `[Apply]`
-12. Klik `(←)` pada kotak Search
+7. Klik pagination next sampai baris `Mike Tan {runId}-082` dan `John Doe {runId}-082` keduanya teramati di tabel
+8. Verifikasi baris `Mike Tan {runId}-082` tampil sebelum `John Doe {runId}-082` (sort Name Z-A tetap; keduanya dibaca lintas halaman)
+9. Verifikasi baris `John Doe {runId}-082` dan `Mike Tan {runId}-082` (Active) tampil
+10. Verifikasi baris `Jane Smith {runId}-082` (Inactive) tidak tampil (filter Active tetap)
+11. Klik header Name sekali sampai sort kembali ke default Name A-Z
+12. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
+13. Klik `(←)` pada kotak Search
 
 ### TC-AC-SU-291: Ganti target sort saat Search dan Filter aktif
 
-13. Klik icon Search
-14. Ketik Search `a`, tekan Enter
-15. Klik icon Filter
-16. Pilih Status `Active`, klik `[Apply]`
-17. Klik header Email
-18. Klik header Position
-19. Verifikasi baris `Mike Tan {runId}-082` (Position `Analyst`) tampil sebelum `John Doe {runId}-082` (Position `Staff`) (sort pindah ke Position A-Z)
-20. Verifikasi ikon sort Email kembali netral
-21. Verifikasi keyword search tetap `a`
-22. Verifikasi baris `Jane Smith {runId}-082` (Inactive) tidak tampil (filter Active tetap)
-23. Klik header Position dua kali sampai sort kembali ke default Name A-Z
-24. Klik `[Clear Field]`, klik `[Apply]`
-25. Klik `(←)` pada kotak Search
+14. Klik icon Search
+15. Ketik Search `a`, tekan Enter
+16. Klik icon Filter
+17. Pilih Status `Active`, klik `[Apply]`
+18. Klik header Email
+19. Klik header Position
+20. Klik pagination next sampai baris `Mike Tan {runId}-082` dan `John Doe {runId}-082` keduanya teramati di tabel
+21. Verifikasi baris `Mike Tan {runId}-082` (Position `Analyst`) tampil sebelum `John Doe {runId}-082` (Position `Staff`) (sort pindah ke Position A-Z)
+22. Verifikasi ikon sort Email kembali netral
+23. Verifikasi keyword search tetap `a`
+24. Verifikasi baris `Jane Smith {runId}-082` (Inactive) tidak tampil (filter Active tetap)
+25. Klik header Position dua kali sampai sort kembali ke default Name A-Z
+26. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
+27. Klik `(←)` pada kotak Search
 
 ### TC-AC-SU-292: Pemulihan dari empty state kombinasi Search dan Filter
 
-26. Klik icon Search
-27. Ketik Search `john`, tekan Enter
-28. Klik icon Filter
-29. Pilih Status `Inactive`, klik `[Apply]`
-30. Verifikasi empty state dengan ilustrasi, judul `No results found`, dan deskripsi `Try adjusting your search or filter.`
-31. Klik `✕` pada Search, tekan Enter
-32. Verifikasi baris `Jane Smith {runId}-082` (Inactive) tampil kembali
-33. Klik `[Clear Field]`, klik `[Apply]`
-34. Klik `(←)` pada kotak Search
+28. Klik icon Search
+29. Ketik Search `john`, tekan Enter
+30. Klik icon Filter
+31. Pilih Status `Inactive`, klik `[Apply]`
+32. Verifikasi empty state dengan ilustrasi, judul `No results found`, dan deskripsi `Try adjusting your search or filter.`
+33. Klik `✕` pada Search, tekan Enter
+34. Verifikasi baris `Jane Smith {runId}-082` (Inactive) tampil kembali
+35. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
+36. Klik `(←)` pada kotak Search
 
 ### TC-AC-SU-293: Mutasi saat tabel terfilter, user yang dinonaktifkan keluar dari hasil filter Active
 
-35. Klik icon Filter
-36. Pilih Status `Active`, klik `[Apply]`
-37. Verifikasi baris `John Doe {runId}-082` tampil
-38. Klik switch Active baris `John Doe {runId}-082`
-39. Verifikasi dialog `Deactivate User` tampil
-40. Klik `[Deactivate]`
-41. Verifikasi toast `Success, user has been deactivated.`
-42. Verifikasi baris `John Doe {runId}-082` tidak tampil di hasil filter Active
-43. Klik `[Clear Field]`, klik `[Apply]`
+37. Klik icon Filter
+38. Pilih Status `Active`, klik `[Apply]`
+39. Klik icon Search
+40. Ketik Search `John Doe {runId}-082`, tekan Enter
+41. Verifikasi baris `John Doe {runId}-082` tampil
+42. Klik switch Active baris `John Doe {runId}-082`
+43. Verifikasi dialog `Deactivate User` tampil
+44. Klik `[Deactivate]`
+45. Verifikasi toast `Success, user has been deactivated.`
+46. Verifikasi baris `John Doe {runId}-082` tidak tampil di hasil filter Active
+47. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
 
 ## Notes
 
-- Langkah penghubung (S-03): mengembalikan sort ke default, `[Clear Field]` lalu `[Apply]`, dan menutup Search di akhir TC mereset state List (S-09). TC-293 (aksi mengubah data) ditaruh paling akhir (S-10).
+- Langkah penghubung (S-03): langkah 39 dan 40 (Search `John Doe {runId}-082` agar baris yang diklik pasti tampil, karena Search ditutup di akhir TC sebelumnya), mengembalikan sort ke default, `Klik icon Filter` lalu `[Clear Field]` dan `[Apply]` (Apply menutup panel), dan menutup Search di akhir TC mereset state List (S-09). TC-293 (aksi mengubah data) ditaruh paling akhir (S-10).
+- Cara membaca urutan (S-14): pada User List penuh baris seed bersuffix berada di antara baris Pre-setup dan bisa berbeda halaman; langkah 7 dan 20 membuka halaman berikutnya sampai kedua baris teramati, lalu urutan dibandingkan menurut sort aktif (baris di halaman lebih awal berarti lebih atas).
 - Alasan di atas ±35 langkah: keempat TC kombinasi Search/Filter/Sort kelas fungsional, dataset sama, berdiri sendiri.
 - Temuan untuk QA:
   - TC menulis nama data DS-UL secara literal (nama user, email, position, division). Spec memakai nama bersuffix ` {runId}-082` (S-12) dan mengasersi baris milik spec; klaim "hanya X yang tampil" pada TC tidak dapat diasersi atas seluruh tabel karena baris Pre-setup bernama sama ikut ada di entitas Principal.

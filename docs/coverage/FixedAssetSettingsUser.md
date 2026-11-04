@@ -1,13 +1,13 @@
 # Coverage E2E — Fixed Asset > Settings > User
 
-Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md` (1069 TC granular aktif); tidak ada `tc-settings-user-backend.md`, jadi tidak ada TC hanya-BE.
+Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md` (1080 TC granular aktif); tidak ada `tc-settings-user-backend.md`, jadi tidak ada TC hanya-BE.
 Suite: `specs/FixedAsset/SettingsUser/`.
 Prefix Modul: `FA` + `SU` (`TC-FA-SU-E2E-*`).
 Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (377 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (386 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -66,7 +66,7 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-053-auto-revert-read-only-banner-tier-banner-group-manager-dan-tier-dilepas-aktor-lain | Auto-Revert Read Only, Banner Tier, Banner Group Manager, dan Tier Dilepas Aktor Lain | FE+BE. | 41 | TC-FA-SU-176, TC-FA-SU-179, TC-FA-SU-180, TC-FA-SU-181 |
 | TC-FA-SU-E2E-054-kunci-global-role-default-user-diri-sendiri-tier-aktor-ber-scope-grup-dan-aktor-tanpa | Kunci Global Role: Default User, Diri Sendiri, Tier, Aktor Ber-scope Grup, dan Aktor Tanpa Izin | FE+BE. | 37 | TC-FA-SU-182, TC-FA-SU-184, TC-FA-SU-185 |
 | TC-FA-SU-E2E-055-eksklusivitas-global-role-manage-global-user-dan-role-vs-group-role-manage-user-dan | Eksklusivitas Global Role Manage global user & role vs Group Role Manage user & role | FE+BE. | 27 | TC-FA-SU-186, TC-FA-SU-187, TC-FA-SU-1054 |
-| TC-FA-SU-E2E-056-cascade-total-control-terhadap-group-role-manage-user-dan-role-dan-sinkronisasi-dua | Cascade Total Control terhadap Group Role Manage user & role dan Sinkronisasi Dua Arah Global Role | FE+BE. | 19 | TC-FA-SU-189, TC-FA-SU-190, TC-FA-SU-1055 |
+| TC-FA-SU-E2E-056-cascade-total-control-terhadap-group-role-manage-user-dan-role-dan-sinkronisasi-dua | Cascade Total Control terhadap Group Role Manage user & role dan Sinkronisasi Dua Arah Global Role | FE+BE. | 21 | TC-FA-SU-189, TC-FA-SU-190, TC-FA-SU-1055 |
 | TC-FA-SU-E2E-057-cooldown-resend-pengiriman-berulang-dan-pemisahan-per-pengguna-dan-jenis-email | Cooldown Resend: Pengiriman Berulang dan Pemisahan per Pengguna dan Jenis Email | FE+BE. | 29 | TC-FA-SU-140, TC-FA-SU-141, TC-FA-SU-142 |
 | TC-FA-SU-E2E-058-visibilitas-aksi-resend-menurut-status-pengguna-di-menu-baris-dan-header-detail | Visibilitas Aksi Resend Menurut Status Pengguna di Menu Baris dan Header Detail | FE+BE. | 21 | TC-FA-SU-147 |
 | TC-FA-SU-E2E-059-screening-sub-tab-group-role-dan-popup-assign-group-role | Screening Sub-tab Group Role dan Popup Assign Group Role | FE+BE. | 26 | TC-FA-SU-192, TC-FA-SU-193, TC-FA-SU-194, TC-FA-SU-195 |
@@ -76,7 +76,7 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-063-dialog-unsaved-changes-dan-backdrop-popup-assign-group-role | Dialog Unsaved Changes dan Backdrop Popup Assign Group Role | FE+BE. | 21 | TC-FA-SU-207, TC-FA-SU-208 |
 | TC-FA-SU-E2E-064-resilience-group-role-save-popup-assign-gagal-karena-server-error | Resilience Group Role: Save Popup Assign Gagal karena Server Error | FE+BE. | 14 | TC-FA-SU-211 |
 | TC-FA-SU-E2E-065-group-manager-pada-group-role-dialog-remove-konfirmasi-dan-cancel | Group Manager pada Group Role: Dialog Remove, Konfirmasi, dan Cancel | FE+BE. | 29 | TC-FA-SU-212, TC-FA-SU-213, TC-FA-SU-214 |
-| TC-FA-SU-E2E-066-group-manager-save-0-grup-auto-revert-beberapa-grup-dan-auto-revert-tier-dari-popup | Group Manager: Save 0 Grup, Auto-Revert Beberapa Grup, dan Auto-Revert Tier dari Popup | FE+BE. | 28 | TC-FA-SU-215, TC-FA-SU-216, TC-FA-SU-217 |
+| TC-FA-SU-E2E-066-group-manager-save-0-grup-auto-revert-beberapa-grup-dan-auto-revert-tier-dari-popup | Group Manager: Save 0 Grup, Auto-Revert Beberapa Grup, dan Auto-Revert Tier dari Popup | FE+BE. | 53 | TC-FA-SU-215, TC-FA-SU-216, TC-FA-SU-217 |
 | TC-FA-SU-E2E-067-kunci-baris-group-role-target-group-manager-default-user-dan-aktor-ber-scope-grup | Kunci Baris Group Role: Target Group Manager, Default User, dan Aktor Ber-scope Grup | FE+BE. | 36 | TC-FA-SU-218, TC-FA-SU-219, TC-FA-SU-220, TC-FA-SU-221 |
 | TC-FA-SU-E2E-068-detail-group-assignment-dan-group-dihapus-di-settings-groups | Detail Group Assignment dan Group Dihapus di Settings Groups | FE+BE. | 27 | TC-FA-SU-224, TC-FA-SU-225 |
 | TC-FA-SU-E2E-069-screening-sub-tab-transaction-role-dan-modal-assign-transaction-role | Screening Sub-tab Transaction Role dan Modal Assign Transaction Role | FE+BE. | 43 | TC-FA-SU-228, TC-FA-SU-229, TC-FA-SU-230, TC-FA-SU-231, TC-FA-SU-232 |
@@ -95,7 +95,7 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-082-remove-satu-baris-transaction-role-cancel-dialog-dan-empty-state-berganti | Remove Satu Baris Transaction Role, Cancel Dialog, dan Empty State Berganti | FE+BE. | 28 | TC-FA-SU-265, TC-FA-SU-266, TC-FA-SU-1050 |
 | TC-FA-SU-E2E-083-bulk-remove-transaction-role-counter-dialog-plural-singular-dan-cancel-bulk | Bulk Remove Transaction Role: Counter, Dialog Plural, Singular, dan Cancel Bulk | FE+BE. | 26 | TC-FA-SU-267, TC-FA-SU-268, TC-FA-SU-1048 |
 | TC-FA-SU-E2E-084-kunci-transaction-role-bagi-aktor-ber-scope-grup-dan-target-tier | Kunci Transaction Role bagi Aktor Ber-scope Grup dan Target Tier | FE+BE. | 26 | TC-FA-SU-271, TC-FA-SU-273, TC-FA-SU-1060 |
-| TC-FA-SU-E2E-085-transaction-role-selection-limit-5-tanpa-auto-revert-tier-dan-read-only-hidden | Transaction Role: Selection Limit 5, Tanpa Auto-Revert Tier, dan Read Only Hidden | FE+BE. | 20 | TC-FA-SU-270, TC-FA-SU-274, TC-FA-SU-275 |
+| TC-FA-SU-E2E-085-transaction-role-selection-limit-5-tanpa-auto-revert-tier-dan-read-only-hidden | Transaction Role: Selection Limit 5, Auto-Revert Tier dari Remove Baris Pola, dan Read Only Hidden | FE+BE. | 33 | TC-FA-SU-270, TC-FA-SU-274, TC-FA-SU-275 |
 | TC-FA-SU-E2E-086-transaction-role-sinkronisasi-role-dan-permission-dan-katalog-tanpa-gating-addon | Transaction Role: Sinkronisasi Role & Permission dan Katalog Tanpa Gating Addon | FE+BE. | 15 | TC-FA-SU-277, TC-FA-SU-279 |
 | TC-FA-SU-E2E-087-penugasan-grup-ganda-dan-grup-dihapus-sebelum-save-popup-assign-group-role | Penugasan Grup Ganda dan Grup Dihapus Sebelum Save pada Popup Assign Group Role | FE+BE. | 24 | TC-FA-SU-209, TC-FA-SU-210 |
 | TC-FA-SU-E2E-088-sinkronisasi-dua-arah-group-role-dan-group-role-tanpa-switch | Sinkronisasi Dua Arah Group Role dan Group Role Tanpa Switch | FE+BE. | 14 | TC-FA-SU-226, TC-FA-SU-227 |
@@ -388,6 +388,15 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-375-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-7 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 7) | FE+BE. | 30 | TC-FA-SU-365, TC-FA-SU-734 |
 | TC-FA-SU-E2E-376-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-8 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 8) | FE+BE. | 31 | TC-FA-SU-638, TC-FA-SU-836 |
 | TC-FA-SU-E2E-377-kolom-dan-field-tag-tidak-tersedia-pada-plan-starter-dan-tersedia-pada-plan-professional | Kolom dan Field TAG: Tidak Tersedia pada Plan Starter dan Tersedia pada Plan Professional | FE+BE. | 14 | TC-FA-SU-367 |
+| TC-FA-SU-E2E-378-auto-revert-tier-total-control-dari-popup-assign-group-role-edit-centang-crud | Auto-Revert Tier Total Control dari Popup Assign Group Role: Edit Centang CRUD | FE+BE. | 36 | TC-FA-SU-1076 |
+| TC-FA-SU-E2E-379-auto-revert-tier-dari-popup-assign-group-role-tambah-grup-yang-menyimpangkan-pola | Auto-Revert Tier dari Popup Assign Group Role: Tambah Grup yang Menyimpangkan Pola | FE+BE. | 39 | TC-FA-SU-1078 |
+| TC-FA-SU-E2E-380-auto-revert-tier-total-control-dari-modal-assign-transaction-role-cancel-remove-baris-pola-dan-turun-tangga | Auto-Revert Tier Total Control dari Modal Assign Transaction Role: Cancel Remove Baris Pola dan Turun Tangga | FE+BE. | 43 | TC-FA-SU-1073, TC-FA-SU-1070 |
+| TC-FA-SU-E2E-381-screening-banner-tier-dan-baris-pola-sub-tab-transaction-role-dan-group-role-total-control-dan-read-only | Screening Banner Tier dan Baris Pola Sub-tab Transaction Role dan Group Role: Total Control dan Read Only | FE+BE. | 33 | TC-FA-SU-1072, TC-FA-SU-1080 |
+| TC-FA-SU-E2E-382-tab-transaction-admin-log-user-total-control-tanpa-transaksi-empty-state | Tab Transaction Admin Log User Total Control Tanpa Transaksi: Empty State | FE+BE. | 14 | TC-FA-SU-1075 |
+| TC-FA-SU-E2E-383-auto-revert-tier-read-only-dari-popup-assign-group-role-hapus-grup | Auto-Revert Tier Read Only dari Popup Assign Group Role: Hapus Grup | FE+BE. | 32 | TC-FA-SU-1077 |
+| TC-FA-SU-E2E-384-cancel-dialog-auto-revert-dari-popup-assign-group-role-popup-kembali-utuh | Cancel Dialog Auto-Revert dari Popup Assign Group Role: Popup Kembali dengan Isi Utuh | FE+BE. | 50 | TC-FA-SU-1079 |
+| TC-FA-SU-E2E-385-auto-revert-tier-read-only-dari-modal-assign-transaction-role-naik-tangga | Auto-Revert Tier Read Only dari Modal Assign Transaction Role: Naik Tangga | FE+BE. | 22 | TC-FA-SU-1071 |
+| TC-FA-SU-E2E-386-banner-group-manager-per-sub-tab-role-tidak-tampil-di-transaction-role | Banner Group Manager per Sub-tab Role: Tidak Tampil di Transaction Role | FE+BE. | 19 | TC-FA-SU-1074 |
 
 ---
 
@@ -1522,6 +1531,17 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-1067 | E2E | TC-FA-SU-E2E-337-absence-log-request-ditolak-tier-deactivate-dan-activate-target-total-control-dan | FE+BE. |
 | TC-FA-SU-1068 | E2E | TC-FA-SU-E2E-105-edit-home-group-aktor-manage-global-user-dan-role-kunci-baris-group-manager-dan-dialog-gabungan | FE+BE. |
 | TC-FA-SU-1069 | E2E | TC-FA-SU-E2E-106-edit-home-group-target-total-control-dan-read-only-oleh-default-user-dan-manage-global-user-dan-role | FE+BE. |
+| TC-FA-SU-1070 | E2E | TC-FA-SU-E2E-380-auto-revert-tier-total-control-dari-modal-assign-transaction-role-cancel-remove-baris-pola-dan-turun-tangga | FE+BE. |
+| TC-FA-SU-1071 | E2E | TC-FA-SU-E2E-385-auto-revert-tier-read-only-dari-modal-assign-transaction-role-naik-tangga | FE+BE. |
+| TC-FA-SU-1072 | E2E | TC-FA-SU-E2E-381-screening-banner-tier-dan-baris-pola-sub-tab-transaction-role-dan-group-role-total-control-dan-read-only | FE+BE. |
+| TC-FA-SU-1073 | E2E | TC-FA-SU-E2E-380-auto-revert-tier-total-control-dari-modal-assign-transaction-role-cancel-remove-baris-pola-dan-turun-tangga | FE+BE. |
+| TC-FA-SU-1074 | E2E | TC-FA-SU-E2E-386-banner-group-manager-per-sub-tab-role-tidak-tampil-di-transaction-role | FE+BE. |
+| TC-FA-SU-1075 | E2E | TC-FA-SU-E2E-382-tab-transaction-admin-log-user-total-control-tanpa-transaksi-empty-state | FE+BE. |
+| TC-FA-SU-1076 | E2E | TC-FA-SU-E2E-378-auto-revert-tier-total-control-dari-popup-assign-group-role-edit-centang-crud | FE+BE. |
+| TC-FA-SU-1077 | E2E | TC-FA-SU-E2E-383-auto-revert-tier-read-only-dari-popup-assign-group-role-hapus-grup | FE+BE. |
+| TC-FA-SU-1078 | E2E | TC-FA-SU-E2E-379-auto-revert-tier-dari-popup-assign-group-role-tambah-grup-yang-menyimpangkan-pola | FE+BE. |
+| TC-FA-SU-1079 | E2E | TC-FA-SU-E2E-384-cancel-dialog-auto-revert-dari-popup-assign-group-role-popup-kembali-utuh | FE+BE. |
+| TC-FA-SU-1080 | E2E | TC-FA-SU-E2E-381-screening-banner-tier-dan-baris-pola-sub-tab-transaction-role-dan-group-role-total-control-dan-read-only | FE+BE. |
 
 ---
 

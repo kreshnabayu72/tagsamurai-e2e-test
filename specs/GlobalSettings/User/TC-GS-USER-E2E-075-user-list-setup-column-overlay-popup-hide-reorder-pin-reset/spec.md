@@ -28,7 +28,12 @@ coverage:
 - Mode: mock. Seluruh API di-mock (spec dijalankan tim FE sebagai integration test, tanpa backend nyata). Spec tidak mengubah data Pre-setup.
 - Hook suite: flag Guided Tooltip `gs-user` = seen (lihat `suite.md`).
 - Akun aktor: Total Control (Siti Nurhaliza), `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup No. 2). Sesi, profil, dan izin Total Control disediakan oleh payload mock; tidak ada login ke backend, sehingga spec tidak memakai env var password.
-- Kebutuhan mock (Endpoint yang di-mock mengacu `global-settings/user/API/user-crud.yaml`: `POST /v2/iam/users/list`; endpoint profil, izin, Guided Tooltip, Custom Field aktif, dan preferensi kolom tidak ada di `user-crud.yaml` dan ditentukan tim FE di tahap script): respons daftar User (sub-tab Login User) berisi sedikitnya tiga baris yang meniru user Pre-setup (mis. `Dewi Lestari`, `Budi Hartono`, `John Doe`) dengan nilai terisi pada seluruh 13 kolom (`Active`, `Name`, `Email`, `Position`, `Division`, `Access`, `Employee ID`, `Modified By`, `Last Update`, `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`); respons Custom Field aktif kosong, sehingga Overlay dan Popup memuat 13 kolom itu saja (TC-GS-USER-441); respons lain yang dibutuhkan layar User List (profil, izin, Guided Tooltip) memakai payload default. Bila FE menyimpan preferensi kolom lewat API, endpoint-nya ikut di-mock; bila disimpan di sisi klien, tidak ada kebutuhan mock tambahan.
+- Kebutuhan mock (API yang di-mock mengacu `global-settings/user/API/user-crud.yaml`; API pendukung (profil, izin, Guided Tooltip, Custom Field aktif, preferensi kolom) disediakan tim FE):
+  | method path (yaml:baris) | respons dipaksa |
+  |---|---|
+  | `POST /v2/iam/users/list` (11) | respons daftar User (rincian di bawah) |
+
+  Rincian respons: daftar User (sub-tab Login User) berisi sedikitnya tiga baris yang meniru user Pre-setup (mis. `Dewi Lestari`, `Budi Hartono`, `John Doe`) dengan nilai terisi pada seluruh 13 kolom (`Active`, `Name`, `Email`, `Position`, `Division`, `Access`, `Employee ID`, `Modified By`, `Last Update`, `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`); respons Custom Field aktif kosong, sehingga Overlay dan Popup memuat 13 kolom itu saja (TC-GS-USER-441); respons lain yang dibutuhkan layar User List (profil, izin, Guided Tooltip) disediakan tim FE. Bila FE menyimpan preferensi kolom lewat API, endpoint-nya ikut di-mock; bila disimpan di sisi klien, tidak ada kebutuhan mock tambahan.
 - Data Pre-setup (Tabel Data Uji Pre-setup No. 10-22 dan Custom Field aktif No. 24) dirujuk oleh payload mock saja; spec tidak membaca atau mengubah data backend.
 - Data Dinamis: tidak ada.
 - Preferensi kolom (visibilitas, urutan, pin) bertahan setelah `[Save]` dan setelah muat ulang halaman (F5) pada konteks browser yang sama (`foundation/process/prd-process/prd-conventions.md` §9.3); mock tetap aktif sesudah muat ulang halaman.
@@ -51,7 +56,7 @@ coverage:
 
 6. Klik item `Setup Column...`
 7. Verifikasi Header: Title `Setup Column`
-8. Verifikasi Header: deskripsi panduan tampil
+8. Verifikasi Header: deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`
 9. Verifikasi Header: icon `[✕]` tampil
 10. Verifikasi Body: daftar kolom dengan checkbox tampil
 11. Verifikasi Body: drag handle tampil pada tiap kolom
@@ -473,7 +478,7 @@ coverage:
 - Temuan untuk QA:
   - TC-GS-USER-441: daftar kolom Overlay tidak memuat Custom Field aktif (`Blood Type`, `Skills`, `Emergency Phone`, Tabel Pre-setup No. 24), sedangkan TC-GS-USER-463, 1061, dan 1078 menyatakan Custom Field aktif muncul sebagai kolom di Setup Column. Spec 075 memakai payload mock tanpa Custom Field aktif supaya sesuai daftar TC-GS-USER-441.
   - TC-GS-USER-441 dan 442 menyebut item `Setup Column...`, sedangkan TC-GS-USER-1061, 1078, dan 1079 menyebut `[Setup Column]` dan header `Actions (⋯)`. Spec memakai `Setup Column...` dan header `Column Visibility (⋯)`.
-  - TC-GS-USER-442: "deskripsi panduan" tidak disebut literal; spec hanya mengasersi deskripsi tampil.
+  - TC-GS-USER-442: "deskripsi panduan" tidak disebut teksnya di TC; spec memakai teks deskripsi dari prd-conventions §9.3 (sumber yang dirujuk kolom Referensi TC).
   - TC-GS-USER-443: langkah "uncheck lalu check, Save, refresh F5" menghasilkan konfigurasi akhir sama dengan awal, sehingga Save dan F5 tidak membedakan konfigurasi tersimpan dari default. Spec mengasersi keadaan "tidak tampil" setelah Save dan setelah F5 dan memulihkan kolom dengan centang kembali pada popup berikutnya.
   - TC-GS-USER-446 sampai 448: kolom Curated default tersembunyi, sehingga "uncheck lalu check" tidak dapat dijalankan literal; spec mencentang kolom (tampil), lalu mengasersi tersimpan dan bertahan.
   - TC-GS-USER-445 dan 448: TC tidak menyebut ukuran viewport; tim FE menetapkan viewport yang membuat tabel dapat discroll horizontal. TC juga tidak menyebut posisi kolom yang beku (kiri); spec mengasersi kolom tetap terlihat saat scroll horizontal.

@@ -47,11 +47,11 @@ coverage:
 11. Verifikasi label tombol tetap `"Resend Activation Email"`
 12. Hover tombol `Resend Activation Email`
 13. Verifikasi tooltip countdown `"Please wait [Seconds] seconds before resending."`
-14. Klik Breadcrumb Settings > User untuk kembali ke User List
+14. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-145: Resend Confirmation Email dari header Detail User
 
-15. Ketik Search `{runId}-040`, tekan Enter
+15. Ganti isi kotak Search dengan `{runId}-040`, tekan Enter
 16. Klik nama `Dewi Lestari {runId}-040` di User List, Settings > User > Detail terbuka
 17. Klik tombol `Resend Confirmation Email` di header
 18. Verifikasi muncul toast sukses: "Success, email has been sent."

@@ -34,7 +34,7 @@ coverage:
   - 6. Fajar N: centang Update `Manage hardware` -> `Edit | Manage hardware | Update | Inactive | Active | Fajar N`.
   - Nilai distinct (S-11): Action 3 (`Assign`, `Edit`, `Remove`), Role 3, Field 2 (`Access`, `Update`), Modified By 2 (`Siti N`, `Fajar N`).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus user seed lewat API; pulihkan visibilitas kolom Modal Changelog Role ke default (7 kolom tampil) lewat penghapusan key `localStorage` tabel itu (nama key disediakan tim FE). Entri Changelog tidak bisa dihapus.
-- Kemampuan teknis: mengetik kotak Search modal; membaca state icon Filter (aktif gelap) dan arah sort; membaca dan menghapus key `localStorage`.
+- Kemampuan teknis: mengetik kotak Search modal; membaca arah sort; membaca dan menghapus key `localStorage`.
 - Precondition TC-GS-USER-527 sampai 531: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User); data pre-setup User tersedia; riwayat Changelog Role user seed terisi.
 - Suite serial (`parallel: false`), lihat `suite.md`.
 - State global yang dipulihkan: visibilitas kolom Modal Changelog Role (default).
@@ -43,28 +43,28 @@ coverage:
 
 ### TC-GS-USER-527: Search lalu Filter menghasilkan irisan
 
-1. Klik Name `Ahmad Fauzi {runId}-086` di User List
-2. Klik Tab `Role`
-3. Klik icon Changelog di toolbar Tab Role
-4. Klik icon Search, ketik `assign`, tekan Enter
-5. Verifikasi baris Action `Assign` Role `Manage TAG` Modified By `Siti N` tampil (pembanding hasil Search saja)
-6. Klik icon Filter, pilih opsi Modified By `Fajar N`, klik `[Apply]`
-7. Verifikasi hasil = Search ∩ Filter (baris Action `Assign` Role `Manage files` Modified By `Fajar N` tampil)
-8. Verifikasi baris Action `Assign` Role `Manage TAG` Modified By `Siti N` tidak tampil
-9. Verifikasi baris Action `Edit` Role `Manage hardware` Modified By `Fajar N` tidak tampil
-10. Verifikasi keyword tidak ter-reset (isi Search tetap `assign`)
-11. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
-12. Klik icon `(×)`, lalu tekan Enter pada input kosong
+1. Ketik Search `Ahmad Fauzi {runId}-086`, tekan Enter
+2. Klik Name `Ahmad Fauzi {runId}-086` di User List
+3. Klik Tab `Role`
+4. Klik icon Changelog di toolbar Tab Role
+5. Klik icon Search, ketik `assign`, tekan Enter
+6. Verifikasi baris Action `Assign` Role `Manage TAG` Modified By `Siti N` tampil (pembanding hasil Search saja)
+7. Klik icon Filter, pilih opsi Modified By `Fajar N`, klik `[Apply]`
+8. Verifikasi hasil = Search ∩ Filter (baris Action `Assign` Role `Manage files` Modified By `Fajar N` tampil)
+9. Verifikasi baris Action `Assign` Role `Manage TAG` Modified By `Siti N` tidak tampil
+10. Verifikasi baris Action `Edit` Role `Manage hardware` Modified By `Fajar N` tidak tampil
+11. Verifikasi keyword tidak ter-reset (isi Search tetap `assign`)
+12. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+13. Klik icon `(×)`, lalu tekan Enter pada input kosong
 
 ### TC-GS-USER-528: Filter lalu Search menghasilkan irisan
 
-13. Klik icon Filter, pilih opsi Action `Edit`, klik `[Apply]`
-14. Verifikasi baris Action `Edit` Role `Manage TAG` tampil (pembanding hasil Filter saja)
-15. Isi Search dengan `hardw`, tekan Enter
-16. Verifikasi hasil = Filter ∩ Search (baris Action `Edit` Role `Manage hardware` tampil)
-17. Verifikasi baris Action `Edit` Role `Manage TAG` tidak tampil
-18. Verifikasi Filter tetap aktif (baris Action `Assign` Role `Manage hardware` tidak tampil)
-19. Verifikasi icon Filter berubah gelap
+14. Klik icon Filter, pilih opsi Action `Edit`, klik `[Apply]`
+15. Verifikasi baris Action `Edit` Role `Manage TAG` tampil (pembanding hasil Filter saja)
+16. Isi Search dengan `hardw`, tekan Enter
+17. Verifikasi hasil = Filter ∩ Search (baris Action `Edit` Role `Manage hardware` tampil)
+18. Verifikasi baris Action `Edit` Role `Manage TAG` tidak tampil
+19. Verifikasi Filter tetap aktif (baris Action `Assign` Role `Manage hardware` tidak tampil)
 20. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 21. Klik icon `(×)`, lalu tekan Enter pada input kosong
 
@@ -110,10 +110,10 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`.
-- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Modal Changelog Role dibuka sekali di langkah 1 sampai 3 untuk semua TC.
+- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Modal Changelog Role dibuka sekali di langkah 2 sampai 4 untuk semua TC.
 - Urutan TC dalam spec: TC-GS-USER-527, 528, 531, 529, 530. Alasan: TC-GS-USER-531 (empty state, lalu pulih) memakai Search dan Filter tanpa Sort sehingga ditaruh sebelum TC-GS-USER-529 yang mengubah sort; TC-GS-USER-530 di akhir karena mengubah visibilitas kolom (preferensi di `localStorage`) dan memulihkannya di langkah 51.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 11, 20, 27, 36, dan 50 (`[Clear Field]` + `[Apply]` untuk melepas filter), langkah 12, 21, 29, dan 41 (mengosongkan Search dan mereset tabel), langkah 40 (mengembalikan sort Action ke default), dan langkah 45 dan 51 (membuka dan menutup overlay Column Visibility; hide dan unhide adalah aksi TC).
-- Langkah 5, 14, 23, 32, 34, 43 adalah anchor positif untuk asersi ketiadaan baris (S-03, bagian 8b butir 2). Pada TC-GS-USER-527 dan 528, pasangan nilai baris dipilih sehingga satu baris cocok dengan Search tetapi tidak dengan Filter, dan satu baris sebaliknya; ketiadaannya membuktikan tiap kontrol tetap berlaku.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (Search nama baris persis sebelum Klik Name, karena User List bisa lebih dari satu halaman; akhiran runId saja tidak cukup), langkah 12, 20, 27, 36, dan 50 (`[Clear Field]` + `[Apply]` untuk melepas filter), langkah 13, 21, 29, dan 41 (mengosongkan Search dan mereset tabel), langkah 40 (mengembalikan sort Action ke default), dan langkah 45 dan 51 (membuka dan menutup overlay Column Visibility; hide dan unhide adalah aksi TC).
+- Langkah 6, 15, 23, 32, 34, 43 adalah anchor positif untuk asersi ketiadaan baris (S-03, bagian 8b butir 2). Pada TC-GS-USER-527 dan 528, pasangan nilai baris dipilih sehingga satu baris cocok dengan Search tetapi tidak dengan Filter, dan satu baris sebaliknya; ketiadaannya membuktikan tiap kontrol tetap berlaku.
 - Pada TC-GS-USER-530 kolom yang difilter dan di-hide adalah Modified By; baris diidentifikasi lewat kolom Action dan Role yang tetap tampil.
 - Spec melewati sekitar 35 langkah (51 langkah) karena tiap Expected bermajemuk TC-GS-USER-527, 528, 529, dan 531 menjadi satu `Verifikasi` per klausa (S-01) dan tiap TC perlu pembersihan filter dan Search di akhir. Semua blok satu kelas harness (kombinasi Search dan Filter satu Modal Changelog Role), satu akun, satu dataset, dan tiap blok berdiri sendiri karena Search dan Filter dilepas di akhir blok; modal dibuka sekali.
 - TC terbagi lintas spec: screening dan opsi Filter Panel ada di spec 085; Sort dan Pagination serta kombinasi empat kontrol (TC-GS-USER-550) ada di spec 087.

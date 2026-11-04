@@ -51,7 +51,7 @@ coverage:
 12. Tunggu aksi selesai
 13. Tutup tab kedua dan kembali ke tab pertama (User List)
 14. Muat ulang halaman User List
-15. Klik icon Search, ketik `{runId}-152`, tekan Enter
+15. Ganti isi kotak search dengan `{runId}-152`, tekan Enter
 16. Verifikasi baris `Rina Susanti {runId}-152` tampil di tabel
 17. Verifikasi baris `Tomi Wijaya {runId}-152` tampil di tabel (tabel memuat baris tanpa kriteria `L`)
 18. Verifikasi kolom `Shirt Size {runId}-152` tidak tampil di tabel
@@ -73,7 +73,7 @@ coverage:
 31. Tunggu aksi selesai
 32. Tutup tab kedua dan kembali ke tab pertama (User List)
 33. Muat ulang halaman User List
-34. Klik icon Search, ketik `{runId}-152`, tekan Enter
+34. Ganti isi kotak search dengan `{runId}-152`, tekan Enter
 35. Verifikasi baris `Rina Susanti {runId}-152` tampil di tabel
 36. Verifikasi kolom `Shirt Size {runId}-152` tidak tampil di tabel
 37. Buka Setup Column dari header kolom Actions `⋯` > `Setup Column...`
@@ -99,7 +99,7 @@ coverage:
 51. Tunggu aksi selesai
 52. Tutup tab kedua dan kembali ke tab pertama (User List)
 53. Muat ulang halaman User List
-54. Klik icon Search, ketik `{runId}-152`, tekan Enter
+54. Ganti isi kotak search dengan `{runId}-152`, tekan Enter
 55. Verifikasi baris `Rina Susanti {runId}-152` tampil di tabel
 56. Verifikasi baris `Tomi Wijaya {runId}-152` tampil di tabel (tabel memuat baris tanpa kriteria `O`)
 57. Verifikasi kolom `Blood Type {runId}-152` tidak tampil di tabel

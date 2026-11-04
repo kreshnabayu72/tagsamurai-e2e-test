@@ -21,7 +21,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan di spec): seeding user dan entri Changelog beserta Date, Modified By, Old Value, dan New Value; pembacaan jumlah baris sumber; pembersihan user seed.
 - User target Detail: `Jane Smith {runId}-154` (user seed milik spec ini; satu-satunya entri Changelog adalah 15 entri Group Role di bawah).
 - Data Dinamis: 15 entri Group Role untuk `Jane Smith {runId}-154` (Action, Role Name — Group Name, Field, Old Value, New Value, dan Modified By beragam; Date berbeda) dan tanpa Filter atau Search aktif.
-- Changelog adalah audit trail permanen: entri seed tidak dapat dihapus; hook `after` hanya menonaktifkan/menghapus user seed milik spec ini. Hitungan 15 entri dan 5 entri sisa pada halaman 2 deterministik karena user adalah milik spec ini dan modal hanya memuat entri user ini, sehingga hitungan itu diasersi (S-12 tidak berlaku).
+- Changelog adalah audit trail permanen: entri seed tidak dapat dihapus; hook `after` hanya menonaktifkan/menghapus user seed milik spec ini. Hitungan 15 entri dan 5 entri sisa pada halaman 2 deterministik karena user adalah milik spec ini dan modal hanya memuat entri user ini, sehingga baseline entri adalah nol dan hitungan itu diasersi sebagai jumlah absolut, bukan selisih terhadap N yang dibaca.
 
 ## Test Steps
 

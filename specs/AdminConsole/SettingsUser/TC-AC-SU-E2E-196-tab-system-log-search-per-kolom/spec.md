@@ -36,19 +36,18 @@ coverage:
 
 ### TC-AC-SU-412: Search Tab System Log per kolom kelas teks
 
-1. Cari `Jane Smith {runId}-196` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
+1. Ketik Search `Jane Smith {runId}-196` pada User List, tekan Enter, lalu buka Detail user tersebut
 2. Klik tab `System Log`
-3. Klik icon Search
-4. Ganti isi kotak Search dengan keyword huruf kecil pada baris tabel 'Search per kolom', tekan Enter
-5. Verifikasi tabel menampilkan baris yang memuat nilai pada kolom 'Nilai yang cocok' baris tabel itu
-6. Ganti isi kotak Search dengan keyword huruf kapital pada baris tabel yang sama, tekan Enter
-7. Verifikasi tabel menampilkan baris yang memuat nilai pada kolom 'Nilai yang cocok' baris tabel itu
-8. Klik icon `(←)` pada kotak Search
+3. Ketik Search keyword huruf kecil pada baris tabel 'Search per kolom', tekan Enter
+4. Verifikasi tabel menampilkan baris yang memuat nilai pada kolom 'Nilai yang cocok' baris tabel itu
+5. Ganti isi kotak search dengan keyword huruf kapital pada baris tabel yang sama, tekan Enter
+6. Verifikasi tabel menampilkan baris yang memuat nilai pada kolom 'Nilai yang cocok' baris tabel itu
+7. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
-- Langkah Search per kolom diulang per baris tabel 'Search per kolom': langkah 4 sampai 7 (6 kolom, tiap kolom dua keyword). Klik icon Search sebelum iterasi pertama dan klik `(←)` sesudah iterasi terakhir adalah langkah penghubung. Pembagian TC lintas spec: TC-411 dan TC-413 ada di spec 115.
+- Langkah Search per kolom diulang per baris tabel 'Search per kolom': langkah 3 sampai 7 (6 kolom, tiap kolom dua keyword). Klik `(←)` pada kotak Search (langkah 7) menutup input dan mereset tabel sehingga tiap iterasi mulai dari kotak kosong; langkah itu adalah langkah penghubung. Pembagian TC lintas spec: TC-411 dan TC-413 ada di spec 115.
 - Temuan untuk QA:
   - Search diterapkan pada seluruh kolom searchable, sehingga keyword seperti `acti` juga dapat cocok dengan kolom lain (mis. `Activation Email` bila ada); TC tidak menyatakan apakah hasil hanya dari kolom yang disebut. Spec hanya mengasersi bahwa baris yang memuat nilai kolom itu tampil.
   - Cara men-seed entri System Log (Date, Action, Object, Name, Field, Old Value, New Value, aktor, termasuk snapshot full path untuk Object `Group`) tidak dinyatakan di TC, PRD, atau LLD; kemampuan ini ditulis 'disediakan tim FE/BE' tanpa endpoint karangan (S-13).

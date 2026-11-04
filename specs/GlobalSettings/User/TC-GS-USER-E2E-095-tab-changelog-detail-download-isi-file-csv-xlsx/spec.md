@@ -26,7 +26,7 @@ coverage:
 - Env var: `GS_TC_PASSWORD`, `GS_FULLCRUD_PASSWORD`.
 - Data Pre-setup yang dipakai (hanya dibaca, tidak diubah; S-06): Position `Staff`, `Supervisor`, `Finance Manager`, dan `Internal Auditor` (Tabel Data Uji Pre-setup No. 22) dan Client PT Maju Bersama dengan subscription Fixed Asset + Supply Asset (No. 26). John Doe (No. 18) yang disebut TC tidak dipakai: riwayat Changelog-nya tidak dijamin memuat sedikitnya dua nilai distinct pada kolom yang diuji (S-11) dan data Pre-setup tidak diubah (S-06), sehingga spec memakai user uji milik spec.
 - Data Dinamis (user uji milik spec, seeding lewat API di hook `before`; kemampuan seeding user lewat API disediakan tim FE/BE, endpoint tidak disebut di TC dan PRD):
-  - User uji: Name `Log User {runId}-095`, Email `loguser+{runId}-095@qwertysystem.net`, Position `Staff`, Employee ID `{empId1}`, Access `Fixed Asset`, Active. `{empId1}`, `{empId2}`, `{empId3}` adalah tiga Employee ID numerik murni, naik berurutan (`{empId1}` < `{empId2}` < `{empId3}`), unik per run, dibuat hook dari waktu run (tanpa suffix `{runId}` karena nilainya harus numerik murni).
+  - User uji: Name `Log User {runId}-095`, Email `loguser+{runId}-095@qwertysystem.net`, Position `Staff`, Employee ID `{empId1}`, Access `Fixed Asset`, Active. `{empId1}`, `{empId2}`, `{empId3}` adalah tiga Employee ID numerik, naik berurutan (`{empId1}` < `{empId2}` < `{empId3}`), unik per run, diturunkan dari `{runId}` (hanya digit timestamp) dan memuat nomor spec (S-12): `{empId1}` = `{runId}0951`, `{empId2}` = `{runId}0952`, `{empId3}` = `{runId}0953`.
   - Entri Changelog base (12 entri, urutan seeding = urutan waktu, dari terlama ke terbaru; Modified By tampil `[First Name] [Last Initial]`):
     - a. `Create` | `Name` | `—` | `Log User {runId}-095` | `Siti N`
     - b. `Edit` | `Position` | `Staff` | `Supervisor` | `Siti N`
@@ -44,6 +44,7 @@ coverage:
 - Kemampuan teknis yang disediakan tim FE/BE (TC, PRD, dan LLD tidak memberi cara): memberi cap waktu pada entri seed sehingga setiap entri berjarak sedikitnya 1 menit dari entri sebelumnya mengikuti urutan huruf di atas, dan entri a (`Create`) bercap tanggal hari uji dikurangi 2 hari (H-2) sedangkan entri lain bercap hari uji. Cap waktu ini membuat urutan Date deterministik (entri terbaru di atas) dan memberi dua nilai distinct pada kolom Date.
 - Kemampuan teknis (kelas binary buffer, prinsip 13f): menangkap berkas unduhan browser ke direktori bersih terpisah per unduhan; membaca isi berkas CSV dan XLSX (nama berkas, header kolom, jumlah dan isi baris data); membaca total entri Changelog user uji sebagai pembanding jumlah baris.
 - Konfigurasi kolom Tab Changelog akun Total Control dalam keadaan default (6 kolom tampil, tanpa pin) saat spec dimulai; hook `before` mengosongkan konfigurasi kolom Tab Changelog bila perlu (mekanisme disediakan tim FE).
+- Baseline audit trail (S-12, bagian 8b butir 10): user uji `Log User {runId}-095` dibuat baru oleh hook `before` dengan nama dan email bersuffix `-095`, sehingga sebelum seeding Tab Changelog belum memuat entri apa pun; baseline = 0 dicatat eksplisit di hook `before` tepat sebelum seeding. Jumlah baris total yang diasersi adalah selisih terhadap baseline itu (baseline 0 + 12 entri seed), bukan total absolut tabel. Bila baseline perlu dibaca, kemampuan baca total entri disediakan tim FE/BE (TC, PRD, dan LLD tidak menyebut caranya).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus user uji `Log User {runId}-095` lewat API; hapus berkas unduhan. Entri Changelog tidak bisa dihapus.
 - Precondition TC-GS-USER-406, 584, 585, 586, 587, 588: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User); data Pre-setup (Tabel Data Uji Pre-setup No. 10 sampai 22) tersedia; user uji punya riwayat Changelog.
 - Suite serial (`parallel: false`) karena spec membaca dan mengubah konfigurasi kolom Tab Changelog di browser yang sama dengan spec lain.
@@ -62,7 +63,7 @@ coverage:
 7. Klik `Download as CSV`
 8. Verifikasi tidak ada toast sukses
 9. Verifikasi file `Changelog-Log-User-{runId}-095.csv` terunduh
-10. Verifikasi file memuat semua baris (12 baris data, sama dengan total entri Changelog user uji dan lebih dari 10 baris halaman)
+10. Verifikasi file memuat semua baris: selisih 12 baris data terhadap baseline 0 entri (12 entri seed Changelog user uji, lebih dari 10 baris halaman)
 
 ### TC-GS-USER-588: Nilai kosong ditulis `—` di file export
 
@@ -79,7 +80,7 @@ coverage:
 
 16. Buka isi file `Changelog-Log-User-{runId}-095.xlsx` yang terunduh pada langkah 13
 17. Verifikasi file `Changelog-Log-User-{runId}-095.xlsx` terunduh
-18. Verifikasi jumlah baris data di file XLSX sama dengan total entri Changelog user uji (12 baris)
+18. Verifikasi jumlah baris data di file XLSX sama dengan selisih entri Changelog user uji terhadap baseline 0 (12 baris)
 19. Verifikasi nilai kolom `Date`, `Action`, `Field`, `Old Value`, `New Value`, dan `Modified By` pada baris yang tampil di halaman 1 tabel sama dengan baris yang bersesuaian di file XLSX
 
 ### TC-GS-USER-586: Download mengikuti Search aktif
@@ -116,5 +117,6 @@ coverage:
 - Asersi tambahan di luar Expected TC (S-03): `Verifikasi` jumlah baris data 7 pada TC-GS-USER-586 (semua baris Action `Edit`) dan 12 pada TC-GS-USER-584 (total entri) membuktikan cakupan Search dan "semua baris"; `Verifikasi` kolom `Old Value` tidak tampil di tabel pada TC-GS-USER-587 adalah anchor sebelum unduhan.
 - Pembagian TC Tab Changelog di User Detail: Download di spec 095. TC-GS-USER-406 diverifikasi di spec 095; TC-GS-USER-405 (screening toolbar `Download`) di spec 090.
 - Spec berjalan sekitar 35 langkah (33 langkah), semua blok satu kelas harness (isi berkas export Tab Changelog), satu akun, satu dataset.
+- Total entri Tab Changelog tidak diasersi sebagai angka absolut (S-12, bagian 8b butir 10): asersi jumlah baris total memakai selisih 12 terhadap baseline 0 yang ditulis eksplisit di Prerequisites (user seed bersuffix `-095` dibuat baru, jadi baseline nol). Hitungan hasil Search atau Filter bersuffix dan isi per halaman tidak berubah.
 - Temuan untuk QA: (1) Cap waktu entri Changelog (entri `Create` H-2, jarak sedikitnya 1 menit antar entri) tidak punya cara di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE (S-13). (2) Label Field Changelog untuk perubahan Employee ID tidak disebut eksplisit (PRD user.md §8.3 hanya menulis `[Field]`); spec memakai `Employee ID`. (3) TC-GS-USER-584 Expected b "semua baris" tidak menyebut cara mengetahui total entri; spec membandingkan jumlah baris data berkas dengan total entri user uji (12) yang dibaca tim FE/BE. (4) TC-GS-USER-588 Expected "sel kosong ditulis `—`" (em dash), sedangkan TC-GS-USER-507 dan 548 menulis `-` dan prd-conventions.md §9.9 menetapkan `-` di berkas; spec mengikuti teks TC-GS-USER-588. (5) TC-GS-USER-406 dan 585 menguji unduhan XLSX yang sama; keduanya tetap ditulis sesuai TC. (6) TC-GS-USER-587 Expected "tanpa toast peringatan" tidak menyebut kolom yang disembunyikan; spec memakai `Old Value`. (7) TC-GS-USER-586 tidak menyebut keyword; spec memakai `edit`. (8) TC-GS-USER-585 Expected "jumlah dan nilai baris di file sama dengan baris tabel" tidak menyebut perlakuan paginasi (tabel menampilkan 10 baris, berkas memuat 12); spec membandingkan jumlah baris berkas dengan total entri user uji (12) dan nilai baris halaman 1 dengan baris yang bersesuaian di berkas.
 

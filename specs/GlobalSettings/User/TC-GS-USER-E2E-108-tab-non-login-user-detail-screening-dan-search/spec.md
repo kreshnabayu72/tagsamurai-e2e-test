@@ -51,7 +51,7 @@ coverage:
 - Data uji per TC: TC-GS-USER-671 keyword `Agus`; TC-GS-USER-672 `  AGUS  `; TC-GS-USER-673 `Prasetyo`, `nlu03`, `EMP-DMS`, `Auditor`, `General`; TC-GS-USER-674 `active`, `Inactive`, `Ye`; TC-GS-USER-675 teks Last Update dan Temporary Until baris `Citra Dewanti` yang dibaca dari tabel; TC-GS-USER-676 `General`; TC-GS-USER-677 `zzzqqq`.
 - Date Format General Settings default environment (`DD/MM/YY`); spec tidak mengubahnya.
 - Kolom `Temporary User` dan `Temporary Until` adalah Curated (default unchecked, PRD user.md §4.1.4) sehingga tidak tampil di awal spec; keduanya ditampilkan lewat Overlay Column Visibility pada TC-GS-USER-674 dan disembunyikan kembali sebelum TC-GS-USER-401. Preferensi kolom tersimpan di browser (PRD prd-conventions.md §9.3); hook `after` mengembalikan preferensi kolom Tab Non-Login User ke default.
-- State yang diubah dan dipulihkan: visibilitas kolom Temporary User dan Temporary Until (dikembalikan tersembunyi di langkah 101 sampai 104), Search (ditutup dengan icon ←); hook `after` sebagai cadangan.
+- State yang diubah dan dipulihkan: visibilitas kolom Temporary User dan Temporary Until (dikembalikan tersembunyi di langkah 104 sampai 107), Search (ditutup dengan icon ←); hook `after` sebagai cadangan.
 - Suite berjalan serial (`parallel: false`, lihat `suite.md`). Spec tidak mengubah data Pre-setup bersama (S-06).
 - Kemampuan teknis: membaca teks sel tabel; menekan Esc untuk menutup Overlay Column Visibility; membaca jumlah baris dan jumlah halaman pada footer pagination.
 
@@ -82,136 +82,141 @@ coverage:
 18. Verifikasi baris `Lina Marlina {runId}-108` menampilkan Employee ID `—`
 19. Verifikasi baris `Lina Marlina {runId}-108` menampilkan Position `—`
 20. Verifikasi baris `Lina Marlina {runId}-108` berbadge `Inactive`
-
-### TC-GS-USER-671: Siklus Search: reveal, Enter, clear ×, collapse ←
-
 21. Klik icon Search
-22. Verifikasi Search bar melebar
-23. Verifikasi kursor auto-focus di input Search
-24. Ketik `Agus` pada kotak Search
-25. Verifikasi tabel belum tersaring (12 baris: halaman 1 berisi 10 baris, total 2 halaman)
-26. Verifikasi icon × muncul di dalam input
-27. Tekan Enter
-28. Verifikasi tabel hanya menampilkan baris `Agus Prasetyo {runId}-108`
-29. Klik icon ×
-30. Verifikasi input Search kosong
-31. Verifikasi tabel tetap menampilkan hasil search terakhir (hanya baris `Agus Prasetyo {runId}-108`)
-32. Tekan Enter pada input kosong
-33. Verifikasi tabel kembali menampilkan seluruh data (12 baris, total 2 halaman)
-34. Isi Search dengan `Agus`, tekan Enter
-35. Klik icon ←
-36. Verifikasi Search bar menutup menjadi icon Search biasa
-37. Verifikasi tabel langsung kembali menampilkan seluruh data tanpa menekan Enter (12 baris, total 2 halaman)
-38. Klik icon Search
-39. Verifikasi input Search kosong (keyword dikosongkan)
+22. Verifikasi input Search kosong dengan placeholder `Search name, email, or employee ID...`
+23. Klik icon (←)
+
+### TC-GS-USER-671: Siklus Search: reveal, Enter, clear (✕), collapse ←
+
+24. Klik icon Search
+25. Verifikasi Search bar melebar
+26. Verifikasi kursor auto-focus di input Search
+27. Ketik `Agus` pada kotak Search
+28. Verifikasi tabel belum tersaring (12 baris: halaman 1 berisi 10 baris, total 2 halaman)
+29. Verifikasi icon (✕) muncul di dalam input
+30. Tekan Enter
+31. Verifikasi tabel hanya menampilkan baris `Agus Prasetyo {runId}-108`
+32. Klik icon (✕)
+33. Verifikasi input Search kosong
+34. Verifikasi tabel tetap menampilkan hasil search terakhir (hanya baris `Agus Prasetyo {runId}-108`)
+35. Tekan Enter pada input kosong
+36. Verifikasi tabel kembali menampilkan seluruh data (12 baris, total 2 halaman)
+37. Isi Search dengan `Agus`, tekan Enter
+38. Klik icon ←
+39. Verifikasi Search bar menutup menjadi icon Search biasa
+40. Verifikasi tabel langsung kembali menampilkan seluruh data tanpa menekan Enter (12 baris, total 2 halaman)
+41. Klik icon Search
+42. Verifikasi input Search kosong (keyword dikosongkan)
 
 ### TC-GS-USER-672: Query Search di-trim dan tidak case-sensitive
 
-40. Isi Search dengan `  AGUS  `, tekan Enter
-41. Verifikasi tabel hanya menampilkan baris `Agus Prasetyo {runId}-108` (spasi diabaikan, huruf besar/kecil tidak dibedakan)
-42. Verifikasi isi kotak Search tetap `  AGUS  ` apa adanya
+43. Isi Search dengan `  AGUS  `, tekan Enter
+44. Verifikasi tabel hanya menampilkan baris `Agus Prasetyo {runId}-108` (spasi diabaikan, huruf besar/kecil tidak dibedakan)
+45. Verifikasi isi kotak Search tetap `  AGUS  ` apa adanya
 
 ### TC-GS-USER-673: Search menemukan substring pada kolom kelas teks
 
-43. Ganti isi kotak search dengan `Prasetyo`, tekan Enter
-44. Verifikasi kolom Name: tabel hanya menampilkan baris `Agus Prasetyo {runId}-108` (Name memuat `Prasetyo`)
-45. Klik icon ×
-46. Isi Search dengan `nlu03`, tekan Enter
-47. Verifikasi kolom Email: tabel hanya menampilkan baris `Citra Dewanti {runId}-108` (Email `nlu03+{runId}-108@qwertysystem.net` memuat `nlu03`)
-48. Klik icon ×
-49. Isi Search dengan `EMP-DMS`, tekan Enter
-50. Verifikasi kolom Employee ID: tabel hanya menampilkan baris `Dimas Pranoto {runId}-108` (Employee ID memuat `EMP-DMS`)
-51. Klik icon ×
-52. Isi Search dengan `Auditor`, tekan Enter
-53. Verifikasi kolom Position: tabel hanya menampilkan baris `Fitri Handayani {runId}-108` (Position `Internal Auditor` memuat `Auditor`)
-54. Klik icon ×
-55. Isi Search dengan `General`, tekan Enter
-56. Verifikasi kolom Division: tabel hanya menampilkan 4 baris dengan Division `General Affairs`: `Bagas Santoso {runId}-108`, `Dimas Pranoto {runId}-108`, `Hana Kusuma {runId}-108`, `Rizky Fadillah {runId}-108`
-57. Klik icon ×
+46. Ganti isi kotak search dengan `Prasetyo`, tekan Enter
+47. Verifikasi kolom Name: tabel hanya menampilkan baris `Agus Prasetyo {runId}-108` (Name memuat `Prasetyo`)
+48. Klik icon (✕)
+49. Isi Search dengan `nlu03`, tekan Enter
+50. Verifikasi kolom Email: tabel hanya menampilkan baris `Citra Dewanti {runId}-108` (Email `nlu03+{runId}-108@qwertysystem.net` memuat `nlu03`)
+51. Klik icon (✕)
+52. Isi Search dengan `EMP-DMS`, tekan Enter
+53. Verifikasi kolom Employee ID: tabel hanya menampilkan baris `Dimas Pranoto {runId}-108` (Employee ID memuat `EMP-DMS`)
+54. Klik icon (✕)
+55. Isi Search dengan `Auditor`, tekan Enter
+56. Verifikasi kolom Position: tabel hanya menampilkan baris `Fitri Handayani {runId}-108` (Position `Internal Auditor` memuat `Auditor`)
+57. Klik icon (✕)
+58. Isi Search dengan `General`, tekan Enter
+59. Verifikasi kolom Division: tabel hanya menampilkan 4 baris dengan Division `General Affairs`: `Bagas Santoso {runId}-108`, `Dimas Pranoto {runId}-108`, `Hana Kusuma {runId}-108`, `Rizky Fadillah {runId}-108`
+60. Klik icon (✕)
 
 ### TC-GS-USER-674: Search kolom Active exact match dan kolom Temporary User substring
 
-58. Isi Search dengan `active`, tekan Enter
-59. Verifikasi kolom Active exact match tidak case-sensitive: tabel menampilkan 10 baris berstatus Active dalam satu halaman
-60. Verifikasi baris Inactive `Lina Marlina {runId}-108` dan `Rizky Fadillah {runId}-108` tidak tampil
-61. Klik icon ×
-62. Isi Search dengan `Inactive`, tekan Enter
-63. Verifikasi keyword `Inactive` hanya menampilkan baris Inactive: `Lina Marlina {runId}-108` dan `Rizky Fadillah {runId}-108`
-64. Klik icon ×
-65. Klik header kolom Column Visibility (⋯)
-66. Centang kolom `Temporary User`
-67. Centang kolom `Temporary Until`
-68. Tutup Overlay Column Visibility dengan menekan Esc
-69. Isi Search dengan `Ye`, tekan Enter
-70. Verifikasi kolom Temporary User: tabel hanya menampilkan baris dengan Temporary User `Yes`: `Citra Dewanti {runId}-108` dan `Fitri Handayani {runId}-108`
-71. Klik icon ×
+61. Isi Search dengan `active`, tekan Enter
+62. Verifikasi kolom Active exact match tidak case-sensitive: tabel menampilkan 10 baris berstatus Active dalam satu halaman
+63. Verifikasi baris Inactive `Lina Marlina {runId}-108` dan `Rizky Fadillah {runId}-108` tidak tampil
+64. Klik icon (✕)
+65. Isi Search dengan `Inactive`, tekan Enter
+66. Verifikasi keyword `Inactive` hanya menampilkan baris Inactive: `Lina Marlina {runId}-108` dan `Rizky Fadillah {runId}-108`
+67. Klik icon (✕)
+68. Klik header kolom Column Visibility (⋯)
+69. Centang kolom `Temporary User`
+70. Centang kolom `Temporary Until`
+71. Tutup Overlay Column Visibility dengan menekan Esc
+72. Isi Search dengan `Ye`, tekan Enter
+73. Verifikasi kolom Temporary User: tabel hanya menampilkan baris dengan Temporary User `Yes`: `Citra Dewanti {runId}-108` dan `Fitri Handayani {runId}-108`
+74. Klik icon (✕)
 
 ### TC-GS-USER-675: Kolom non-searchable tidak tercakup Search
 
-72. Verifikasi baris `Citra Dewanti {runId}-108` tampil di tabel
-73. Baca teks Last Update dan teks Temporary Until pada baris `Citra Dewanti {runId}-108`
-74. Isi Search dengan teks Last Update tersebut, tekan Enter
-75. Verifikasi kolom Last Update: tabel menampilkan no result state `No results found`
-76. Klik icon ×
-77. Tekan Enter pada input kosong
-78. Verifikasi tabel kembali menampilkan seluruh data (12 baris, total 2 halaman)
-79. Isi Search dengan teks Temporary Until tersebut, tekan Enter
-80. Verifikasi kolom Temporary Until: tabel menampilkan no result state `No results found`
-81. Klik icon ×
+75. Verifikasi baris `Citra Dewanti {runId}-108` tampil di tabel
+76. Baca teks Last Update dan teks Temporary Until pada baris `Citra Dewanti {runId}-108`
+77. Isi Search dengan teks Last Update tersebut, tekan Enter
+78. Verifikasi kolom Last Update: tabel menampilkan no result state `No results found`
+79. Klik icon (✕)
+80. Tekan Enter pada input kosong
+81. Verifikasi tabel kembali menampilkan seluruh data (12 baris, total 2 halaman)
+82. Isi Search dengan teks Temporary Until tersebut, tekan Enter
+83. Verifikasi kolom Temporary Until: tabel menampilkan no result state `No results found`
+84. Klik icon (✕)
 
 ### TC-GS-USER-676: Search tidak mencocokkan kolom yang di-hide, cocok kembali setelah unhide
 
-82. Isi Search dengan `General`, tekan Enter
-83. Verifikasi baris dengan Division `General Affairs` tampil: `Bagas Santoso {runId}-108`, `Dimas Pranoto {runId}-108`, `Hana Kusuma {runId}-108`, `Rizky Fadillah {runId}-108`
-84. Klik header kolom Column Visibility (⋯)
-85. Hilangkan centang kolom `Division`
-86. Tutup Overlay Column Visibility dengan menekan Esc
-87. Klik input Search, tekan Enter
-88. Verifikasi saat Division hidden: tabel menampilkan no result state `No results found`
-89. Klik header kolom Column Visibility (⋯)
-90. Centang kolom `Division`
-91. Tutup Overlay Column Visibility dengan menekan Esc
-92. Klik input Search, tekan Enter
-93. Verifikasi setelah Division di-unhide: 4 baris dengan Division `General Affairs` kembali cocok: `Bagas Santoso {runId}-108`, `Dimas Pranoto {runId}-108`, `Hana Kusuma {runId}-108`, `Rizky Fadillah {runId}-108`
-94. Klik icon ←
+85. Isi Search dengan `General`, tekan Enter
+86. Verifikasi baris dengan Division `General Affairs` tampil: `Bagas Santoso {runId}-108`, `Dimas Pranoto {runId}-108`, `Hana Kusuma {runId}-108`, `Rizky Fadillah {runId}-108`
+87. Klik header kolom Column Visibility (⋯)
+88. Hilangkan centang kolom `Division`
+89. Tutup Overlay Column Visibility dengan menekan Esc
+90. Klik input Search, tekan Enter
+91. Verifikasi saat Division hidden: tabel menampilkan no result state `No results found`
+92. Klik header kolom Column Visibility (⋯)
+93. Centang kolom `Division`
+94. Tutup Overlay Column Visibility dengan menekan Esc
+95. Klik input Search, tekan Enter
+96. Verifikasi setelah Division di-unhide: 4 baris dengan Division `General Affairs` kembali cocok: `Bagas Santoso {runId}-108`, `Dimas Pranoto {runId}-108`, `Hana Kusuma {runId}-108`, `Rizky Fadillah {runId}-108`
+97. Klik icon ←
 
 ### TC-GS-USER-677: Empty filtered state
 
-95. Verifikasi tabel menampilkan seluruh data (12 baris, total 2 halaman) sebelum Search
-96. Klik icon Search, ketik `zzzqqq`, tekan Enter
-97. Verifikasi ilustrasi empty filtered state tampil
-98. Verifikasi judul empty filtered state `No results found`
-99. Verifikasi deskripsi empty filtered state `Try adjusting your search or filter.`
-100. Klik icon ←
-101. Klik header kolom Column Visibility (⋯)
-102. Hilangkan centang kolom `Temporary User`
-103. Hilangkan centang kolom `Temporary Until`
-104. Tutup Overlay Column Visibility dengan menekan Esc
+98. Verifikasi tabel menampilkan seluruh data (12 baris, total 2 halaman) sebelum Search
+99. Klik icon Search, ketik `zzzqqq`, tekan Enter
+100. Verifikasi ilustrasi empty filtered state tampil
+101. Verifikasi judul empty filtered state `No results found`
+102. Verifikasi deskripsi empty filtered state `Try adjusting your search or filter.`
+103. Klik icon ←
+104. Klik header kolom Column Visibility (⋯)
+105. Hilangkan centang kolom `Temporary User`
+106. Hilangkan centang kolom `Temporary Until`
+107. Tutup Overlay Column Visibility dengan menekan Esc
 
 ### TC-GS-USER-401: Klik Name di Tab Non-Login User membuka Detail Non-Login User
 
-105. Klik Name `Agus Prasetyo {runId}-108`
-106. Verifikasi navigasi ke Detail Non-Login User `Agus Prasetyo {runId}-108`
+108. Klik icon Search, ketik `Agus Prasetyo {runId}-108`, tekan Enter
+109. Klik Name `Agus Prasetyo {runId}-108`
+110. Verifikasi navigasi ke Detail Non-Login User `Agus Prasetyo {runId}-108`
 
 ### TC-GS-USER-403: Tab Non-Login User tidak muncul di Detail Non-Login User
 
-107. Buka Global Settings > User > User List (sub-tab Login User)
-108. Klik sub-tab `Non-Login User`
-109. Klik icon Search, ketik `Agus Prasetyo {runId}-108`, tekan Enter
-110. Klik Name `Agus Prasetyo {runId}-108`
-111. Verifikasi halaman Detail Non-Login User `Agus Prasetyo {runId}-108` tampil
-112. Verifikasi Tab `Non-Login User` tidak dirender
+111. Buka Global Settings > User > User List (sub-tab Login User)
+112. Klik sub-tab `Non-Login User`
+113. Klik icon Search, ketik `Agus Prasetyo {runId}-108`, tekan Enter
+114. Klik Name `Agus Prasetyo {runId}-108`
+115. Verifikasi halaman Detail Non-Login User `Agus Prasetyo {runId}-108` tampil
+116. Verifikasi Tab `Non-Login User` tidak dirender
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Holder dan 12 Non-Login User dipenuhi spec ini lewat seeding di hook `before`; spec tidak menumpang spec lain.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: 402 (empty state, memakai user Pre-setup lain), 400 (screening), 671 sampai 677 (Search, satu pembukaan Tab), lalu 401 dan 403 di akhir karena keduanya berpindah ke Detail Non-Login User dan meninggalkan Tab. Urutan di `tc-user.md`: 400, 401, 402, 403, 671 sampai 677.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 7 dan 107 (membuka ulang User List supaya Search User List dalam keadaan awal; retensi Search saat kembali ke list belum diputuskan PRD, Open Item Filter Persistence), pencarian holder di User List pada tiap pembukaan, langkah 65 sampai 68 dan 101 sampai 104 (menampilkan dan menyembunyikan kolom curated), langkah membaca teks Last Update dan Temporary Until, serta penutupan Search dengan icon × dan ← di antara kasus.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 7 dan 111 (membuka ulang User List supaya Search User List dalam keadaan awal; retensi Search saat kembali ke list belum diputuskan PRD, Open Item Filter Persistence), pencarian holder di User List pada tiap pembukaan, langkah 68 sampai 71 dan 104 sampai 107 (menampilkan dan menyembunyikan kolom curated), langkah membaca teks Last Update dan Temporary Until, serta penutupan Search dengan icon (✕) dan ← di antara kasus, dan langkah 21 dan 23 (membuka dan menutup Search untuk memverifikasi placeholder TC-GS-USER-400).
+- Langkah 108 (mencari ulang `Agus Prasetyo {runId}-108` lewat Search sebelum Klik Name pada TC-GS-USER-401) adalah langkah penghubung tanpa `Verifikasi` (R-16): Search sudah ditutup dengan icon ← pada langkah 103, sedangkan baris `Agus Prasetyo {runId}-108` tidak dijamin berada pada halaman 1 (12 baris, page size 10).
 - Anchor positif (S-03, bagian 8b butir 2): `Verifikasi` baris `Citra Dewanti {runId}-108` tampil mendahului asersi `No results found` pada TC-GS-USER-675; `Verifikasi` 12 baris kembali mendahului asersi Temporary Until pada TC-GS-USER-675 dan asersi `No results found` pada TC-GS-USER-677; `Verifikasi` baris Active mendahului asersi ketiadaan baris Inactive pada TC-GS-USER-674. Anchor ini tidak ada di Expected TC.
 - Keyword dan nilai: kolom Temporary User dicari dengan `Ye` (potongan `Yes`); kolom Name dengan `Prasetyo`. Sel Last Update dan Temporary Until dibaca dari baris `Citra Dewanti`, satu-satunya baris yang memuat Temporary Until pada kumpulan baris hasil `Ye`.
 - Pembagian TC lintas spec: TC-GS-USER-404 dan 709 sampai 713 (Download) ada di spec 113; TC-GS-USER-678 sampai 686 (Filter Panel) ada di spec 109; TC-GS-USER-687 sampai 691 (kombinasi Search dan Filter) ada di spec 110; TC-GS-USER-692 sampai 696, 714, dan 715 (Sort dan Pagination) ada di spec 111; TC-GS-USER-697 sampai 708 (Setup Column) ada di spec 112.
-- Spec melewati sekitar 35 langkah (112 langkah) karena sebelas TC berbagi satu layar (Tab Non-Login User di Detail), satu dataset (12 Non-Login User milik spec), dan satu kelas harness (fungsional). Blok Search 671 sampai 677 berdiri sendiri (kegagalan satu blok tidak menghapus makna blok lain) dan memakai kotak Search yang sama, sehingga satu pembukaan Tab dipakai bersama; memisahkannya mengulang login, seeding 13 user, dan pembukaan Tab. Blok 673 menguji lima kolom dengan pola identik (keyword, `Verifikasi`, clear).
+- Spec melewati sekitar 35 langkah (116 langkah) karena sebelas TC berbagi satu layar (Tab Non-Login User di Detail), satu dataset (12 Non-Login User milik spec), dan satu kelas harness (fungsional). Blok Search 671 sampai 677 berdiri sendiri (kegagalan satu blok tidak menghapus makna blok lain) dan memakai kotak Search yang sama, sehingga satu pembukaan Tab dipakai bersama; memisahkannya mengulang login, seeding 13 user, dan pembukaan Tab. Blok 673 menguji lima kolom dengan pola identik (keyword, `Verifikasi`, clear).
 - Temuan untuk QA:
   - TC-GS-USER-400 Expected a: badge count `2` mengacu ke data Pre-setup (`Agus Prasetyo` Active dan `Lina Marlina` Inactive). Holder milik spec mewakili 12 Non-Login User (10 Active, 2 Inactive), sehingga spec mengasersi `12`.
   - TC-GS-USER-400, 401, 403 menyebut Name `Ahmad Fauzi` dan `Agus Prasetyo` tanpa suffix; spec memakai holder dan Non-Login User milik spec bersuffix (S-06, S-11).

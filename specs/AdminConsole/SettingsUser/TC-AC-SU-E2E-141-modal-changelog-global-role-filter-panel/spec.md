@@ -35,7 +35,7 @@ coverage:
 | 6 | Edit | Manage partner | Update | Inactive | Active | Citra M |
 | 7 | Edit | Manage partner | Update | Inactive | Active | Citra M |
 
-- Baris seed nomor 5, 6, dan 7 ber-Date eksplisit pada bulan berjalan: tanggal 02, 05, dan 08. Date Format General Settings entitas Principal tidak diubah spec ini.
+- Baris seed nomor 5, 6, dan 7 ber-Date relatif terhadap hari uji: T-10, T-7, dan T-4 (T-N berarti N hari sebelum hari uji). Date Format General Settings entitas Principal tidak diubah spec ini.
 
 | Field uji Filter | Opsi |
 |---|---|
@@ -77,11 +77,11 @@ coverage:
 
 19. Klik icon Filter
 20. Klik field `Date` (placeholder `"Select date"`)
-21. Pilih tanggal awal 02 dan tanggal akhir 05
+21. Pilih tanggal awal T-10 dan tanggal akhir T-7
 22. Verifikasi isi field `Date` tampil sesuai Date Format General Settings
 23. Klik `[Apply]`
-24. Verifikasi tabel menampilkan baris seed ber-Date tanggal 02 dan 05 (baris seed nomor 5 dan 6), batas inklusif
-25. Verifikasi baris seed ber-Date tanggal 08 (baris seed nomor 7) tidak tampil
+24. Verifikasi tabel menampilkan baris seed ber-Date T-10 dan T-7 (baris seed nomor 5 dan 6), batas inklusif
+25. Verifikasi baris seed ber-Date T-4 (baris seed nomor 7) tidak tampil
 26. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 
 ### TC-AC-SU-494: Filter OR di dalam satu field, AND antar field
@@ -104,5 +104,5 @@ coverage:
 - Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): membuka Detail, tab `Role`, dan sub-tab `Global Role` dijadikan satu langkah bersama klik icon `[📋]`; menutup Filter Panel; membersihkan Filter di langkah 26 dan di akhir TC. TC tidak menyatakan cara menutup Filter Panel atau overlay Column Visibility; spec memakai klik ulang icon Filter atau header `⋯` sebagai langkah penghubung (S-03).
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
 - Langkah penghubung (tanpa `Verifikasi`; S-03, R-16): Search untuk menemukan baris target sebelum membuka Detail (langkah 1); baris user seed tidak dijamin berada di halaman pertama User List.
-- Temuan untuk QA: (1) TC-AC-SU-493 memakai tanggal 02, 05, dan 08 bulan berjalan; pada awal bulan tanggal 05 dan 08 berada di masa depan sehingga seeding Date eksplisit dan pemilih tanggal Filter dapat menolaknya; TC tidak menyebut perilaku ini. (2) Nilai `Assign (via Total Control)` pada TC-AC-SU-492 adalah satu nilai Action utuh; TC-AC-SU-494 memakai `Assign` dan `Remove` sebagai nilai terpisah, sehingga seed memuat kedua bentuk Action. Pelaku seed `Budi K` dan `Citra M` pada kolom Modified By tidak terpetakan ke akun mana pun di Pre-setup; nilai dipakai apa adanya sebagai data seed, bukan akun login.
+- Temuan untuk QA: (1) Nilai `Assign (via Total Control)` pada TC-AC-SU-492 adalah satu nilai Action utuh; TC-AC-SU-494 memakai `Assign` dan `Remove` sebagai nilai terpisah, sehingga seed memuat kedua bentuk Action. Pelaku seed `Budi K` dan `Citra M` pada kolom Modified By tidak terpetakan ke akun mana pun di Pre-setup; nilai dipakai apa adanya sebagai data seed, bukan akun login.
 - Jumlah langkah 36 (di atas smell 35 langkah; sekitar 60 dengan ekspansi iterasi): langkah 11 sampai 18 adalah iterasi per field dari tabel "Field uji Filter" yang ditulis sebagai satu daftar, dan langkah 1 (Search) adalah langkah penghubung tanpa `Verifikasi`. Semua TC berada di satu surface (Modal Changelog: User > Global Role (Filter Panel)), satu akun, satu dataset; tiap TC berdiri sendiri dan diakhiri `[Clear Field]` lalu `[Apply]` sehingga kegagalan satu TC tidak membuat TC lain kehilangan makna, sedangkan pemecahan menggandakan seeding dan pembukaan Detail.

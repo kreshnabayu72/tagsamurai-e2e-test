@@ -45,37 +45,40 @@ coverage:
 5. Verifikasi counter `2 Users selected`
 6. Ganti isi kotak search dengan `Seleksi`, tekan Enter
 7. Verifikasi counter `2 Users selected`
-8. Klik header Name
+8. Klik header Name (urutan Name berubah dari A-Z ke Z-A)
 9. Verifikasi counter `2 Users selected`
-10. Klik icon `×` pada Bulk Action Bar untuk membatalkan seleksi, lalu ganti isi kotak search dengan `{runId}-032`, tekan Enter
+10. Klik icon `×` pada Bulk Action Bar untuk membatalkan seleksi
 
 ### TC-AC-SU-327: Sort tidak mereset seleksi
 
-11. Centang `John Doe {runId}-032`
-12. Klik header Email
-13. Verifikasi `John Doe {runId}-032` tetap tercentang
-14. Verifikasi counter `1 User selected`
-15. Klik icon `×` pada Bulk Action Bar untuk membatalkan seleksi
+11. Ganti isi kotak search dengan `John Doe {runId}-032`, tekan Enter
+12. Centang `John Doe {runId}-032`
+13. Klik header Email (urutan Email A-Z)
+14. Verifikasi `John Doe {runId}-032` tetap tercentang
+15. Klik header Email dua kali lagi sampai indikator sort netral
+16. Verifikasi counter `1 User selected`
+17. Klik icon `×` pada Bulk Action Bar untuk membatalkan seleksi
 
 ### TC-AC-SU-326: Seleksi checkbox bertahan saat Search/Filter berubah dan lintas halaman
 
-16. Centang `John Doe {runId}-032` dan `Jane Smith {runId}-032`
-17. Ganti isi kotak search dengan `mike`, tekan Enter
-18. Verifikasi counter `2 Users selected` meski baris tidak tampil
-19. Klik `✕` pada Search, tekan Enter
-20. Ketik Search `{runId}-032`, tekan Enter
-21. Verifikasi checkbox `John Doe {runId}-032` dan `Jane Smith {runId}-032` tetap tercentang setelah Search dikosongkan
-22. Pindah ke halaman 2 lalu kembali ke halaman 1
-23. Verifikasi checkbox `John Doe {runId}-032` dan `Jane Smith {runId}-032` tetap tercentang setelah pindah halaman
-24. Klik icon `×` pada Bulk Action Bar untuk membatalkan seleksi
-25. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+18. Ganti isi kotak search dengan `{runId}-032`, tekan Enter
+19. Centang `John Doe {runId}-032` dan `Jane Smith {runId}-032`
+20. Ganti isi kotak search dengan `mike`, tekan Enter
+21. Verifikasi counter `2 Users selected` meski baris tidak tampil
+22. Klik `✕` pada Search, tekan Enter
+23. Ketik Search `{runId}-032`, tekan Enter
+24. Verifikasi checkbox `John Doe {runId}-032` dan `Jane Smith {runId}-032` tetap tercentang setelah Search dikosongkan
+25. Pindah ke halaman 2 lalu kembali ke halaman 1
+26. Verifikasi checkbox `John Doe {runId}-032` dan `Jane Smith {runId}-032` tetap tercentang setelah pindah halaman
+27. Klik icon `×` pada Bulk Action Bar untuk membatalkan seleksi
+28. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search atas suffix spec, R-16), langkah 10, 15, dan 24 (batalkan seleksi sebelum TC berikutnya, S-09), langkah 20 (Search atas suffix supaya baris target terlihat, S-14), langkah 25 (reset Search).
+- Langkah penghubung (S-03): langkah 1 (Search atas suffix spec, R-16), langkah 10, 17, dan 27 (batalkan seleksi sebelum TC berikutnya, S-09), langkah 11 (Search nama `John Doe {runId}-032` sebelum mencentang, supaya baris target tampil di halaman 1 untuk arah sort Name A-Z maupun Z-A, S-14), langkah 15 (header Email diklik dua kali lagi sampai sort netral, supaya blok TC-326 tidak bergantung arah klik pertama), langkah 18 (Search atas suffix sebelum mencentang; urutan netral menaruh `Jane Smith` dan `John Doe` di halaman 1), langkah 23 (Search atas suffix supaya baris target terlihat, S-14), langkah 28 (reset Search).
 - Urutan TC dalam spec: 134, 327, 326 (TC-AC-SU-326 memakai Search dan pindah halaman; TC-AC-SU-327 hanya sort), tidak ada ketergantungan data antar blok.
 - Temuan untuk QA:
   - TC-AC-SU-134 langkah 3 menyebut "keyword yang tidak memuat 2 baris itu" tanpa nilai; spec memakai `Seleksi`, kata yang tidak ada pada nama, email, atau suffix `Jane Smith` dan `John Doe`.
   - TC-AC-SU-326 judul menyebut Search/Filter; langkah hanya menggunakan Search, Filter tidak diasersi.
-  - TC-AC-SU-326 langkah 3 (`✕` → Enter) tidak menyebut apakah daftar menampilkan kedua baris; spec menambahkan Search atas suffix sebelum mengasersi checkbox (langkah 20, S-14).
+  - TC-AC-SU-326 langkah 3 (`✕` → Enter) tidak menyebut apakah daftar menampilkan kedua baris; spec menambahkan Search atas suffix sebelum mengasersi checkbox (langkah 23, S-14).
   - Nama user TC (`Jane Smith`, `John Doe`, `Mike Tan`) dipakai sebagai nama bersuffix `{runId}-032` sesuai S-12 (Lampiran A tidak memuat pengecualian modul Settings > User).

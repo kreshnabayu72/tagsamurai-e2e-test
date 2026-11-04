@@ -38,9 +38,9 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE; TC, PRD, dan LLD tidak memberi cara):
   - Mail-catcher: membaca email per alamat (waktu terbit dan tautan di badan email) dan membuka tautan aktivasi; spec hanya membaca email aktivasi terbaru dan tidak mengasersi jumlah email.
   - Manipulasi jam: jam server dan jam browser diatur bersama ke waktu absolut dan dipulihkan ke waktu nyata (TC-GS-USER-989). `T_N` = waktu terbit email aktivasi `Lukman Hakim Dua {runId}-157`, dibaca dari mail-catcher; jam diatur ke `T_N` + 25 jam. Masa berlaku link aktivasi 24 jam (Auth, TC-AUTH-ACT-86 dan 124), sehingga margin terhadap batas 1 jam (lebih dari 5 menit).
-  - Membaca jumlah notifikasi in-app user dari BE (TC-GS-USER-991 Expected b).
+  - Membaca jumlah notifikasi in-app user dari BE (TC-GS-USER-991 Expected b). Jendela tunggu absence: 5 detik tanpa memuat ulang halaman sesudah Deactivate diproses, sebelum jumlah dibaca ulang (langkah 29).
   - Jendela privat browser untuk konteks tanpa sesi login (Lukman, Dewi).
-- State global yang diubah: jam server dan jam browser (langkah 32 sampai 36). Pemulihan jam ditulis sebagai langkah aksi (langkah 36) sebelum akun aktor membuka User List (S-09); hook `after` memulihkan jam sebagai cadangan dan tetap jalan walau spec gagal di tengah. Suite berjalan serial (`parallel: false`, lihat `suite.md`).
+- State global yang diubah: jam server dan jam browser (langkah 32 sampai 37). Pemulihan jam ditulis sebagai langkah aksi (langkah 37) sebelum akun aktor membuka User List (S-09); hook `after` memulihkan jam sebagai cadangan dan tetap jalan walau spec gagal di tengah. Suite berjalan serial (`parallel: false`, lihat `suite.md`).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): pulihkan jam; hapus lewat API Login User `lukmanhakim+{runId}-157@qwertysystem.net`, `lukmanhakimdua+{runId}-157@qwertysystem.net`, `jokosusilo+{runId}-157@qwertysystem.net`, dan `dewilestari+{runId}-157@qwertysystem.net`; kembalikan sesi ke akun 1.
 
 ## Test Steps
@@ -55,7 +55,7 @@ coverage:
 6. Tunggu aksi selesai (halaman Activation Success tampil)
 7. Tutup jendela privat
 8. Muat ulang halaman User List
-9. Klik icon Search, ketik `{runId}-157`, tekan Enter
+9. Ganti isi kotak search dengan `{runId}-157`, tekan Enter
 10. Verifikasi badge `Pending Activation` baris `Lukman Hakim Dua {runId}-157` tampil
 11. Verifikasi badge `Pending Activation` baris `Lukman Hakim {runId}-157` hilang
 12. Verifikasi kolom Activation Status baris `Lukman Hakim {runId}-157` `Activated`
@@ -81,7 +81,7 @@ coverage:
 26. Tunggu aksi selesai
 27. Buka jendela privat baru (tanpa sesi login), buka Auth > Login, isi email `dewilestari+{runId}-157@qwertysystem.net` dan password `Spectra.env.USER_PASSWORD`, selesaikan reCAPTCHA, lalu klik `[Log in]`
 28. Verifikasi dialog `Account Deactivated` milik Auth tampil dan login diblok
-29. Verifikasi jumlah notifikasi in-app `Dewi Lestari {runId}-157` dari BE sama dengan `{n0}` (tidak ada notifikasi Deactivate)
+29. Tunggu 5 detik tanpa memuat ulang halaman, lalu verifikasi jumlah notifikasi in-app `Dewi Lestari {runId}-157` dari BE sama dengan `{n0}` (tidak ada notifikasi Deactivate)
 30. Tutup jendela privat
 
 ### TC-GS-USER-989: Link aktivasi kedaluwarsa ditangani modul Auth
@@ -90,25 +90,27 @@ coverage:
 32. Atur jam server dan jam browser bersama ke `T_N` + 25 jam
 33. Buka jendela privat baru (tanpa sesi login), lalu buka tautan aktivasi `Lukman Hakim Dua {runId}-157`
 34. Verifikasi halaman link kedaluwarsa milik Auth tampil dengan Title "Activation Link Expired"
-35. Tutup jendela privat
-36. Pulihkan jam server dan jam browser ke waktu nyata
-37. Muat ulang halaman User List
-38. Klik icon Search, ketik `{runId}-157`, tekan Enter
-39. Verifikasi badge `Pending Activation` baris `Lukman Hakim Dua {runId}-157` tetap tampil
+35. Verifikasi halaman link kedaluwarsa milik Auth memuat teks `This activation link has expired. Activation links are valid for 24 hours. Please contact your administrator to receive a new activation email.`
+36. Tutup jendela privat
+37. Pulihkan jam server dan jam browser ke waktu nyata
+38. Muat ulang halaman User List
+39. Ganti isi kotak search dengan `{runId}-157`, tekan Enter
+40. Verifikasi badge `Pending Activation` baris `Lukman Hakim Dua {runId}-157` tetap tampil
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/user/TestCases/tc-user.md`. Kelas harness d (prinsip 13d): TC-GS-USER-988, 989, 990, 991 membuka halaman Auth (aktivasi dan login) dan mail-catcher; TC-GS-USER-989 mengatur jam.
-- Spec melewati sekitar 35 langkah (39 langkah) karena empat blok TC berada di satu kelas harness (kelas d: halaman Auth, mail-catcher, jam). Tiap blok memakai user seed dan jendela privatnya sendiri, ditutup di akhir blok, dan hanya TC-GS-USER-989 mengubah state global (jam) sehingga diletakkan paling akhir; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec melewati sekitar 35 langkah (40 langkah) karena empat blok TC berada di satu kelas harness (kelas d: halaman Auth, mail-catcher, jam). Tiap blok memakai user seed dan jendela privatnya sendiri, ditutup di akhir blok, dan hanya TC-GS-USER-989 mengubah state global (jam) sehingga diletakkan paling akhir; kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Urutan TC sumber diubah: TC-GS-USER-989 paling akhir karena mengatur jam server dan jam browser (state global); jam dipulihkan lewat langkah 36 sebelum akun aktor membuka User List (S-09). TC-GS-USER-990 dan 991 berurutan dengan ganti akun eksplisit (langkah 17 dan 22); TC-GS-USER-991 (Deactivate) sesudah TC-GS-USER-990.
-- Tiap jendela privat (langkah 3, 27, 33) ditutup di akhir blok TC-nya (langkah 7, 30, 35; S-09).
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 8, 9, 24, 37, 38 (Search dan muat ulang); langkah 2, 31 (membaca email di mail-catcher); langkah 3 sampai 7 (Lukman membuka tautan dan set password, aksi TC-GS-USER-988); langkah 6 dan 26 (menunggu aksi selesai); langkah 13 dan 16 (membuka dan menutup overlay (⋯)); langkah 18 dan 20 (membuka produk); langkah 23 (baseline); langkah 32 dan 36 (mengatur dan memulihkan jam).
+- Urutan TC sumber diubah: TC-GS-USER-989 paling akhir karena mengatur jam server dan jam browser (state global); jam dipulihkan lewat langkah 37 sebelum akun aktor membuka User List (S-09). TC-GS-USER-990 dan 991 berurutan dengan ganti akun eksplisit (langkah 17 dan 22); TC-GS-USER-991 (Deactivate) sesudah TC-GS-USER-990.
+- Tiap jendela privat (langkah 3, 27, 33) ditutup di akhir blok TC-nya (langkah 7, 30, 36; S-09).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 8, 9, 24, 38, 39 (Search dan muat ulang; langkah 9 dan 39 mengganti isi kotak search yang masih berisi sesudah muat ulang); langkah 2, 31 (membaca email di mail-catcher); langkah 3 sampai 7 (Lukman membuka tautan dan set password, aksi TC-GS-USER-988); langkah 6 dan 26 (menunggu aksi selesai); langkah 13 dan 16 (membuka dan menutup overlay (⋯)); langkah 18 dan 20 (membuka produk); langkah 23 (baseline); langkah 32 dan 37 (mengatur dan memulihkan jam).
+- Asersi absence notifikasi (langkah 29) memakai anchor positif langkah 28 (dialog `Account Deactivated` tampil, membuktikan Deactivate sudah diproses server) dan jendela tunggu 5 detik tanpa memuat ulang halaman (Prerequisites).
 - Asersi tambahan di luar Expected TC: langkah 10 adalah anchor positif untuk `Verifikasi` badge hilang (langkah 11; bagian 8b butir 2); langkah 14 adalah anchor positif untuk `Verifikasi` opsi `Resend Activation Email` tidak ada (langkah 15). Expected b TC-GS-USER-991 diasersi sebagai jumlah notifikasi in-app sama dengan baseline (asersi jumlah, bukan absence kelas g).
 - Tidak ada TC yang terbelah lintas spec.
 - Temuan untuk QA:
   - TC-GS-USER-988, 989, 990, 991: kolom Automation bernilai Manual Only; spec memasukkannya (bagian 2 konvensi) dengan mail-catcher, jam, dan jendela privat yang disediakan tim FE/BE.
-  - TC-GS-USER-989: TC tidak menyebut masa berlaku link dan cara membuatnya kedaluwarsa; spec memakai masa berlaku 24 jam dari modul Auth dan jam absolut `T_N` + 25 jam. TC menyebut "halaman link kedaluwarsa milik Auth" tanpa teks; spec mengasersi Title "Activation Link Expired" dari spec Auth Account Activation. Status "tetap Pending Activation" diasersi lewat badge di User List.
+  - TC-GS-USER-989: TC tidak menyebut masa berlaku link dan cara membuatnya kedaluwarsa; spec memakai masa berlaku 24 jam dari modul Auth dan jam absolut `T_N` + 25 jam. TC menyebut halaman milik Auth dengan judul `Activation Link Expired` dan teks isi persis; spec mengasersi judul (langkah 34) dan teks isi (langkah 35) sesuai Expected TC. Status "tetap Pending Activation" diasersi lewat badge di User List.
   - TC-GS-USER-990: TC tidak menyebut bentuk tampilan "tidak dapat beraksi di Supply Asset" (halaman ditolak atau kontrol tulis disabled) dan cara mengatur toggle per-produk OFF; spec men-seed toggle lewat API dan bentuk asersi ditentukan bersama tim FE di tahap script.
   - TC-GS-USER-991: Expected b ("Tidak ada notifikasi in-app Deactivate") tidak menyebut penerima dan lokasi notifikasi; spec membaca jumlah notifikasi in-app Dewi dari BE sebelum dan sesudah Deactivate. TC juga tidak menyebut teks dialog `Account Deactivated`; spec mengasersi judul dialog.
   - TC-GS-USER-988: TC tidak menyebut password yang diset Lukman dan Activation Status pada kolom mana; spec memakai `Spectra.env.USER_PASSWORD` dan kolom Activation Status User List.

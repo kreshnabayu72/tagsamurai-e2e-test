@@ -48,16 +48,17 @@ coverage:
 9. Verifikasi tidak ada toast sukses
 10. Verifikasi berkas `Changelog-User.xlsx` terunduh
 11. Verifikasi berkas memuat sedikitnya satu baris data
-12. Verifikasi berkas hanya memuat baris ber-Action `Deactivate` dengan jumlah baris data sama dengan N
-13. Verifikasi nilai Date pada berkas mengikuti format General Settings
-14. Verifikasi nilai kosong `—` pada tabel tertulis `-` pada berkas
-15. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+12. Verifikasi berkas hanya memuat baris ber-Action `Deactivate`
+13. Verifikasi jumlah baris data pada berkas sama dengan N
+14. Verifikasi nilai Date pada berkas mengikuti format General Settings
+15. Verifikasi nilai kosong `—` pada tabel tertulis `-` pada berkas
+16. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Spec ini berdiri sendiri karena Expected butir b mengasersi nilai sel berkas (format tanggal dan nilai kosong), yaitu kelas binary buffer (bagian 3 prinsip 13f); nama berkas, kolom, dan jumlah baris termasuk asersi fungsional.
-- Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): mencatat N dan membersihkan Filter di langkah 15. Filter dipakai sebagai kondisi "search/filter aktif"; TC tidak membatasi bentuknya.
+- Langkah penghubung (tanpa `Verifikasi`; S-03, S-09): mencatat N dan membersihkan Filter di langkah 16. Filter dipakai sebagai kondisi "search/filter aktif"; TC tidak membatasi bentuknya.
 - Nama literal TC (mis. `John Doe`, `Jane Smith`, `Mike Tan`) ditulis bersuffix `{runId}-NNN` sesuai keputusan nama Data Dinamis; asersi yang bergantung pada nama persis memakai nama bersuffix itu.
 - Entitas Principal punya audit trail permanen yang tumbuh: entri seed spec ini ditulis dengan Date terbaru sehingga berada di halaman pertama (Newest First), dan tidak ada total entri yang diasersi sebagai angka absolut (S-12, S-14).
 - Temuan untuk QA: (1) TC-AC-SU-477 menyebut "filter/search" tanpa memilih salah satu; spec memakai Filter Action. (2) Format tanggal berkas "mengikuti format General Settings" tanpa menyebut nilai format; spec membandingkannya dengan format tampil tabel.

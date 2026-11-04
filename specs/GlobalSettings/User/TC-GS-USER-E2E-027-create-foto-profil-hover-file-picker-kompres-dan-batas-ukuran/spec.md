@@ -33,7 +33,7 @@ coverage:
   - Memantau request jaringan ke server selama langkah Delete foto (TC-GS-USER-127).
   - Membaca ukuran berkas foto tersimpan milik user hasil TC-GS-USER-128, jumlah user Login pada entitas, dan jumlah berkas foto tersimpan di penyimpanan (TC-GS-USER-128 dan 130).
 - Cleanup di hook `after` (tidak berasumsi alur berhasil penuh): hapus lewat API user bersuffix `{runId}-027` beserta berkas fotonya.
-- State global yang diubah: tidak ada. Spec membuat data dalam suite serial.
+- State global yang diubah: Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif; TC-GS-USER-128 tidak mengisinya dan mengharapkan Create sukses). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah. Spec membuat data dalam suite serial.
 
 ## Test Steps
 
@@ -112,4 +112,4 @@ coverage:
   - TC-GS-USER-130 Expected b: TC tidak mengisi field wajib sehingga user tidak mungkin dibuat walau Popup ditutup tanpa dialog; spec mengasersi jumlah user dan berkas foto sama dengan baseline.
   - TC-GS-USER-1040 Expected c "field lain tidak berubah" tidak bermakna bila tidak ada field terisi; spec mengisi field wajib sebelum memilih `huge.jpg` (langkah 20).
   - TC-GS-USER-1040 langkah 3 "Amati avatar dan toast" tidak menyebut nama berkas yang dihasilkan; `huge.jpg` 12 MB disediakan tim FE.
-  - TC-GS-USER-128: Tabel Pre-setup No. 24 menandai Custom Field `Emergency Phone` sebagai Required; langkah TC tidak mengisinya. Spec mengikuti TC; bila field itu wajib, Submit ditolak validasi required. Konfigurasi entitas uji disediakan tim FE.
+  - TC-GS-USER-128: langkah TC tidak mengisi `Emergency Phone`; Tabel Pre-setup No. 24 menyatakan Required hanya aktif untuk TC-GS-USER-158 dan 349. Spec mengikuti TC; Required nonaktif selama spec (lihat Prerequisites, State global).

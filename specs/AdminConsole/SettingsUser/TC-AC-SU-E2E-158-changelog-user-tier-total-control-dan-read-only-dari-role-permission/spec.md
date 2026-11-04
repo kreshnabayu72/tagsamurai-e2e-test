@@ -27,7 +27,7 @@ coverage:
 | U2 | `Rina Putri {runId}-158B` | `rinaputri+{runId}-158b@qwertysystem.net` | Activated, bertier Total Control (dibutuhkan agar Remove Total Control bermakna, lihat Temuan untuk QA) |
 | U3 | `Budi Santoso {runId}-158C` | `budisantoso+{runId}-158c@qwertysystem.net` | Activated, tanpa tier |
 
-- Kemampuan teknis: Fixture BE (seeding user dan tier). Tanpa intercept, klien HTTP, dan jam server. Modified By yang diasersi adalah `Default User` (nama tampil akun aktor, seperti tertulis di Expected TC).
+- Kemampuan teknis: Fixture BE (seeding user dan tier). Tanpa intercept, klien HTTP, dan jam server. Modified By yang diasersi adalah `Default U` (format `[First Name] [Last Initial]` dari nama tampil akun aktor Default User, seperti tertulis di Expected TC).
 - Suite berjalan serial (`parallel: false`). Env var yang dipakai sudah terdaftar di `executionConfig.environmentVariables` dan `.env.example` oleh pemilik repo (lihat suite.md).
 
 ## Test Steps
@@ -38,7 +38,7 @@ coverage:
 3. Tunggu aksi selesai, lalu klik menu Settings > User di sidebar
 4. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
 5. Ketik Search `Rina Putri {runId}-158A` pada Popup Changelog: User, tekan Enter
-6. Verifikasi tepat 1 baris untuk U1: Action `Assign`, Field `Access Level`, Old Value `—`, New Value `Total Control`, Modified By `Default User`
+6. Verifikasi tepat 1 baris untuk U1: Action `Assign`, Field `Access Level`, Old Value `—`, New Value `Total Control`, Modified By `Default U`
 7. Verifikasi tidak ada baris cascade dengan Action `Assign (via Total Control)` atau `Assign (via Read Only)` untuk U1
 ### TC-AC-SU-542: Remove Total Control dari Settings > Role & Permission
 8. Tutup Popup Changelog: User, klik menu Settings > Role & Permission di sidebar, lalu klik Tab Total Control
@@ -46,7 +46,7 @@ coverage:
 10. Tunggu aksi selesai, lalu klik menu Settings > User di sidebar
 11. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
 12. Ketik Search `Rina Putri {runId}-158B` pada Popup Changelog: User, tekan Enter
-13. Verifikasi tepat 1 baris untuk U2: Action `Remove`, Field `Access Level`, Old Value `Total Control`, New Value `—`, Modified By `Default User`
+13. Verifikasi tepat 1 baris untuk U2: Action `Remove`, Field `Access Level`, Old Value `Total Control`, New Value `—`, Modified By `Default U`
 14. Verifikasi tidak ada baris cascade dengan Action `Remove (via Total Control)` atau `Remove (via Read Only)` untuk U2
 ### TC-AC-SU-543: Assign Read Only dari Settings > Role & Permission
 15. Tutup Popup Changelog: User, klik menu Settings > Role & Permission di sidebar, lalu klik Tab Read Only
@@ -54,7 +54,7 @@ coverage:
 17. Tunggu aksi selesai, lalu klik menu Settings > User di sidebar
 18. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
 19. Ketik Search `Budi Santoso {runId}-158C` pada Popup Changelog: User, tekan Enter
-20. Verifikasi tepat 1 baris untuk U3: Action `Assign`, Field `Access Level`, Old Value `—`, New Value `Read Only`, Modified By `Default User`
+20. Verifikasi tepat 1 baris untuk U3: Action `Assign`, Field `Access Level`, Old Value `—`, New Value `Read Only`, Modified By `Default U`
 21. Verifikasi tidak ada baris cascade dengan Action `Assign (via Total Control)` atau `Assign (via Read Only)` untuk U3
 
 ## Notes

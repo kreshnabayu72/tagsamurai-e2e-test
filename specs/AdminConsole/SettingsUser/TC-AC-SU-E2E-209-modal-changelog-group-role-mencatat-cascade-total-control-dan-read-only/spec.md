@@ -43,7 +43,7 @@ coverage:
 6. Tutup modal, klik menu Settings > User di sidebar, buka Detail Default User lewat Search email Default User, lalu klik Tab System Log
 7. Ketik Search `Mike Tan {runId}-209A`, tekan Enter
 8. Ubah page size Tab System Log menjadi 100
-9. Verifikasi Tab System Log aktor memuat baris cascade Object `Group Role`, Action `Assign (via Total Control)`, Name `Mike Tan {runId}-209A`, Field `Manage partner — Region A — Access`
+9. Verifikasi Tab System Log aktor memuat baris cascade Object `Group Role`, Action `Assign (via Total Control)`, Name `Mike Tan {runId}-209A`, Field `Manage partner — Region A — Access`, Old Value `—`, New Value `Assigned`
 ### TC-AC-SU-562: Remove (via Total Control)
 10. Klik menu Settings > Role & Permission di sidebar, klik Tab Total Control, lalu remove U2 dari Total Control
 11. Tunggu aksi selesai, klik menu Settings > User di sidebar, buka Detail U2 lewat Search nama, klik Tab Role, sub-tab Group Role, lalu klik icon Changelog di toolbar
@@ -53,7 +53,7 @@ coverage:
 15. Tutup modal, klik menu Settings > User di sidebar, buka Detail Default User lewat Search email Default User, lalu klik Tab System Log
 16. Ketik Search `Mike Tan {runId}-209B`, tekan Enter
 17. Ubah page size Tab System Log menjadi 100
-18. Verifikasi Tab System Log aktor memuat baris cascade Object `Group Role`, Action `Remove (via Total Control)`, Name `Mike Tan {runId}-209B`, Field `Manage partner — Region A — Access`
+18. Verifikasi Tab System Log aktor memuat baris cascade Object `Group Role`, Action `Remove (via Total Control)`, Name `Mike Tan {runId}-209B`, Field `Manage partner — Region A — Access`, Old Value `Assigned`, New Value `—`
 ### TC-AC-SU-561: Assign (via Read Only)
 19. Klik menu Settings > Role & Permission di sidebar, klik Tab Read Only, lalu assign U3 ke Read Only
 20. Tunggu aksi selesai, klik menu Settings > User di sidebar, buka Detail U3 lewat Search nama, klik Tab Role, sub-tab Group Role, lalu klik icon Changelog di toolbar
@@ -63,7 +63,7 @@ coverage:
 24. Tutup modal, klik menu Settings > User di sidebar, buka Detail Default User lewat Search email Default User, lalu klik Tab System Log
 25. Ketik Search `Mike Tan {runId}-209C`, tekan Enter
 26. Ubah page size Tab System Log menjadi 100
-27. Verifikasi Tab System Log aktor memuat baris cascade Object `Group Role`, Action `Assign (via Read Only)`, Name `Mike Tan {runId}-209C`, Field `Manage partner — Region A — Access`
+27. Verifikasi Tab System Log aktor memuat baris cascade Object `Group Role`, Action `Assign (via Read Only)`, Name `Mike Tan {runId}-209C`, Field `Manage partner — Region A — Access`, Old Value `—`, New Value `Assigned`
 ### TC-AC-SU-563: Remove (via Read Only)
 28. Klik menu Settings > Role & Permission di sidebar, klik Tab Read Only, lalu remove U4 dari Read Only
 29. Tunggu aksi selesai, klik menu Settings > User di sidebar, buka Detail U4 lewat Search nama, klik Tab Role, sub-tab Group Role, lalu klik icon Changelog di toolbar
@@ -73,7 +73,7 @@ coverage:
 33. Tutup modal, klik menu Settings > User di sidebar, buka Detail Default User lewat Search email Default User, lalu klik Tab System Log
 34. Ketik Search `Mike Tan {runId}-209D`, tekan Enter
 35. Ubah page size Tab System Log menjadi 100
-36. Verifikasi Tab System Log aktor memuat baris cascade Object `Group Role`, Action `Remove (via Read Only)`, Name `Mike Tan {runId}-209D`, Field `Manage partner — Region A — Access`
+36. Verifikasi Tab System Log aktor memuat baris cascade Object `Group Role`, Action `Remove (via Read Only)`, Name `Mike Tan {runId}-209D`, Field `Manage partner — Region A — Access`, Old Value `Assigned`, New Value `—`
 
 ## Notes
 

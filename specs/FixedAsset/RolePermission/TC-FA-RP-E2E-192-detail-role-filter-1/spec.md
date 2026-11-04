@@ -25,7 +25,7 @@ coverage:
 |---|---|---|---|
 | Total Control (Siti Rahmawati) | #2 | `totalControl_automated_{namaCompany}@qwertysystem.net` (`Fixture.fixedAssetRolePermission.akun.totalControl.email`) | `Spectra.env.FA_TC_PASSWORD` |
 
-- Data Pre-setup (Company Alpha): #39 (Detail Role Group Role `Manage files`, enam baris: Ahmad Fauzi (Asset Custodian, Logistics) di `Data Center`; Budi Santoso (Warehouse Staff, Logistics) di `Helpdesk`; Citra Lestari (HR Officer, HR) di `Head Office`; Dimas Pranata (IT Support, IT Operations) di `Data Center`; Endah Susanti (Procurement Officer, Procurement) di `Rack A1`; Fitri Handayani (Finance Officer, Finance, Pending Email Confirmation, Temporary User Yes dengan Temporary Until terisi) di `Dock 1`; Detail Role Global Role `Manage Open API` dan `Manage accounting` terisi Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata) dan #18 (pohon group). Tidak diubah spec ini.
+- Data Pre-setup (Company Alpha): #39 (Detail Role Group Role `Manage files`, 41 baris: 6 baris non-pola dan 35 baris pola Group Role. Baris non-pola: Ahmad Fauzi (Asset Custodian, Logistics) di `Data Center`; Budi Santoso (Warehouse Staff, Logistics) di `Helpdesk`; Citra Lestari (HR Officer, HR) di `Head Office`; Dimas Pranata (IT Support, IT Operations) di `Data Center`; Endah Susanti (Procurement Officer, Procurement) di `Rack A1`; Fitri Handayani (Finance Officer, Finance, Pending Email Confirmation, Temporary User Yes dengan Temporary Until terisi) di `Dock 1`; Detail Role Global Role `Manage Open API` dan `Manage accounting` terisi Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata. Baris pola `Manage files` ada pada tujuh group Pre-setup #18 untuk lima user pola: Admin Utama (System Administrator, IT Operations), Siti Rahmawati (Finance Officer, Accounting & Tax), Rina Wulandari (`Operations Manager, Region 1`, `Asset Management "North"`), Dewi Anggraini (Internal Auditor, Internal Audit), Maya Anggraeni (Compliance Analyst, Legal)) dan #18 (pohon group). Tidak diubah spec ini.
 - Pre-setup #22 (Custom Field aktif `Cost Center` `CC-100`/`CC-200`, `Joined Date`, `Badge No`; Ahmad Fauzi `CC-100`, 10/01/26, `BN-77`; Budi Santoso `CC-200`, 15/02/26, `BN-88`).
 - Pilihan Filter TC-FA-RP-626:
 
@@ -74,10 +74,10 @@ coverage:
 
 20. Klik ikon Filter
 21. Buka dropdown field `Position`
-22. Verifikasi opsi Position: `Asset Custodian`, `Finance Officer`, `HR Officer`, `IT Support`, `Procurement Officer`, `Warehouse Staff`
+22. Verifikasi opsi Position (dari baris non-pola dan baris pola, Pre-setup #39): `Asset Custodian`, `Compliance Analyst`, `Finance Officer`, `HR Officer`, `Internal Auditor`, `IT Support`, `Operations Manager, Region 1`, `Procurement Officer`, `System Administrator`, `Warehouse Staff`
 23. Tutup dropdown dengan Esc
 24. Buka dropdown field `Division`
-25. Verifikasi opsi Division: `Finance`, `HR`, `IT Operations`, `Logistics`, `Procurement`
+25. Verifikasi opsi Division: `Accounting & Tax`, `Asset Management "North"`, `Finance`, `HR`, `Internal Audit`, `IT Operations`, `Legal`, `Logistics`, `Procurement`
 26. Tutup dropdown dengan Esc
 27. Buka dropdown field `Activation Status`
 28. Verifikasi opsi Activation Status: `Activated`, `Pending Email Confirmation`

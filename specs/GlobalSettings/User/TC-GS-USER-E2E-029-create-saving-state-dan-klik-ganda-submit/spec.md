@@ -22,13 +22,13 @@ coverage:
 - Layar awal: hook `beforeEach` mengembalikan layar ke Global Settings > User > User List, sub-tab Login User.
 - Data Pre-setup (hanya dibaca): Division `Finance` (No. 23); opsi Access `Fixed Asset` (No. 26).
 - Data Dinamis (dibuat oleh TC lewat UI; tidak ada seeding), semua bersuffix `{runId}-029`, Division `Finance`, Access `Fixed Asset`:
-  - Emergency Phone (Required, No. 24) diisi pada kedua Create: Country Code `🇮🇩 +62`, Number `81234567890`.
+  - Emergency Phone (No. 24) diisi pada kedua Create mengikuti TC: Country Code `🇮🇩 +62`, Number `81234567890`.
   - U-144: First Name `Budi`, Last Name `Santoso 144 {runId}-029`, Email `budisantoso144+{runId}-029@qwertysystem.net`.
   - U-145: First Name `Budi`, Last Name `Santoso 145 {runId}-029`, Email `budisantoso145+{runId}-029@qwertysystem.net`.
 - Kebutuhan intercept (`Spectra.intercept()`) untuk TC-GS-USER-144: respons Create user ditahan (tidak dijawab) sampai dilepas lewat langkah eksplisit. Nama endpoint ditentukan tim FE di tahap script. Intercept dilepas segera setelah state saving diamati; hook `after` melepas intercept walau spec gagal di tengah.
 - Kemampuan teknis: hover elemen; membaca state tombol (loading, disabled); menghitung request Create user dan toast "Success, user has been created." yang muncul selama double-click (disediakan tim FE).
 - Cleanup di hook `after` (tidak berasumsi alur berhasil penuh): hapus lewat API user bersuffix `{runId}-029`.
-- State global yang diubah: tidak ada. Spec membuat data dalam suite serial; form Create dibuka dua kali.
+- State global yang diubah: Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah. Spec membuat data dalam suite serial; form Create dibuka dua kali.
 
 ## Test Steps
 
@@ -69,5 +69,5 @@ coverage:
   - TC-GS-USER-144 precondition c "Response Create ditahan (network throttle)" tidak menyebut cara menahan respons ataupun durasi; spec menahan respons lewat intercept sampai dilepas lewat langkah 9. Nama endpoint ditentukan tim FE.
   - TC-GS-USER-144 Expected a "state hover tombol" tidak menyebut perubahan visual yang diharapkan; spec mengasersi tombol dalam state hover sebagaimana dibaca runner.
   - TC-GS-USER-144 Expected b "loading dan disabled sampai response diterima" tidak punya observasi sesudah response diterima (Popup menutup); spec tidak mengasersi akhir state saving (8b butir 8).
-  - TC-GS-USER-144 dan 145 mengisi Emergency Phone (Required, Pre-setup No. 24) dengan Country Code `🇮🇩 +62` dan Number `81234567890`; spec mengikuti TC.
+  - TC-GS-USER-144 dan 145 mengisi Emergency Phone (Pre-setup No. 24; Required nonaktif untuk TC ini) dengan Country Code `🇮🇩 +62` dan Number `81234567890`; spec mengikuti TC.
   - TC-GS-USER-145 tidak menyebut cara menghitung request dan toast; kemampuan disediakan tim FE.

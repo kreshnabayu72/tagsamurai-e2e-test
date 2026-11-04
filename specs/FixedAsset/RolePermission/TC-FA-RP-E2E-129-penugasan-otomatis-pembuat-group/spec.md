@@ -49,7 +49,7 @@ coverage:
 9. Buka Fixed Asset > Settings > Role & Permission > System, buka Detail Role `Manage group`, lalu klik node `IT Infrastructure`.
 10. Verifikasi sedikitnya satu baris tampil pada `Manage group` di node `IT Infrastructure`.
 11. Klik node `DU Created {runId}-129`.
-12. Verifikasi tidak ada baris Admin Utama pada `Manage group` di node `DU Created {runId}-129`.
+12. Verifikasi tidak ada baris penugasan khusus pembuat pada `Manage group` di node `DU Created {runId}-129`: Admin Utama hanya tampil sebagai baris pola Default User (CRUD penuh sesuai kolom berlaku, sama seperti Default User di node lain).
 
 ### Verifikasi penugasan otomatis dan pembuat Total Control
 
@@ -76,11 +76,12 @@ coverage:
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1, 3, 5, 6, 8, 9, 11, 14, 17, 19, 20, 22, 24 (navigasi atau menunggu aksi selesai tanpa Verifikasi); langkah 10 dan 21 adalah pembanding absence (8b butir 2) untuk langkah 12 dan 23.
+- Langkah penghubung (S-03): langkah 1, 3, 5, 6, 8, 9, 11, 14, 17, 19, 20, 22, 24 (navigasi atau menunggu aksi selesai tanpa Verifikasi); langkah 21 adalah pembanding absence (8b butir 2) untuk langkah 23; langkah 10 membuktikan tabel `Manage group` termuat sebelum langkah 12 (langkah 12 bukan absence karena Admin Utama tampil sebagai baris pola Default User).
 - Urutan TC berubah: TC 442 dan 443 diverifikasi sesudah TC 445 supaya tiga aktor pembuat (Group Manager, pemegang Manage group, Default User) berganti akun satu kali tiap aktor; TC 442 dan 443 butuh Total Control untuk membaca Detail Role, TC 445 diperiksa langsung oleh Default User (Admin Utama) yang membuatnya. TC 446 sesudah TC 442 karena memakai baris Fajar Nugroho hasil TC 442.
-- TC 444 dan TC 445 hanya punya Expected absence atas baris Detail Role (bukan absence log), sehingga tetap di spec fungsional ini.
+- TC 444 hanya punya Expected absence atas baris Detail Role dan TC 445 Expected atas baris Detail Role (bukan absence log), sehingga tetap di spec fungsional ini.
 - Temuan untuk QA:
   - Post Condition TC 442 ("log `Assign` tercatat, lihat Section 5") tidak punya langkah observasi di TC dan tidak diasersi.
   - TC 443 precondition c (Gita Maharani memegang `Manage group` Create di `IT Infrastructure`) tidak ada di Pre-setup #1 sampai #44; baris itu ditulis disediakan tim FE.
   - TC 446 mengedit CRUD baris pembuat yang berstatus Group Manager (di `IT Infrastructure`, node induk `Server Room`); TC 460 menunjukkan bahwa unchecklist pada baris Group Manager bisa memunculkan dialog D-05 (auto-revert), sedangkan TC 446 mengharapkan toast sukses langsung. Perlu konfirmasi QA apakah baris di node turunan berbeda perilakunya.
+  - TC 445 Expected a membedakan baris pola Default User dari "penugasan khusus pembuat" tanpa indikator di UI untuk membedakannya; langkah 12 mengasersi tampilan baris Admin Utama sesuai teks TC. Bagian Role Transaksi dan penyalinan baris dari `IT Infrastructure` (Expected a akhir dan b) tidak punya langkah di spec ini.
   - Data Dinamis TC menamai Subgroup `Server Room {n}` dengan `{n}` = nomor TC; spec memakai suffix `{runId}-129` agar unik per run (S-12).

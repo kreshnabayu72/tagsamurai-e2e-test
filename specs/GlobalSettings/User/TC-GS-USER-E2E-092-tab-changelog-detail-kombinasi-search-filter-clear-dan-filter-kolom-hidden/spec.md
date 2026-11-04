@@ -25,7 +25,7 @@ coverage:
 - Env var: `GS_TC_PASSWORD`, `GS_FULLCRUD_PASSWORD`.
 - Data Pre-setup yang dipakai (hanya dibaca, tidak diubah; S-06): Position `Staff`, `Supervisor`, `Finance Manager`, dan `Internal Auditor` (Tabel Data Uji Pre-setup No. 22) dan Client PT Maju Bersama dengan subscription Fixed Asset + Supply Asset (No. 26). John Doe (No. 18) yang disebut TC tidak dipakai: riwayat Changelog-nya tidak dijamin memuat sedikitnya dua nilai distinct pada kolom yang diuji (S-11) dan data Pre-setup tidak diubah (S-06), sehingga spec memakai user uji milik spec.
 - Data Dinamis (user uji milik spec, seeding lewat API di hook `before`; kemampuan seeding user lewat API disediakan tim FE/BE, endpoint tidak disebut di TC dan PRD):
-  - User uji: Name `Log User {runId}-092`, Email `loguser+{runId}-092@qwertysystem.net`, Position `Staff`, Employee ID `{empId1}`, Access `Fixed Asset`, Active. `{empId1}`, `{empId2}`, `{empId3}` adalah tiga Employee ID numerik murni, naik berurutan (`{empId1}` < `{empId2}` < `{empId3}`), unik per run, dibuat hook dari waktu run (tanpa suffix `{runId}` karena nilainya harus numerik murni).
+  - User uji: Name `Log User {runId}-092`, Email `loguser+{runId}-092@qwertysystem.net`, Position `Staff`, Employee ID `{empId1}`, Access `Fixed Asset`, Active. `{empId1}`, `{empId2}`, `{empId3}` adalah tiga Employee ID numerik, naik berurutan (`{empId1}` < `{empId2}` < `{empId3}`), unik per run, diturunkan dari `{runId}` (hanya digit timestamp) dan memuat nomor spec (S-12): `{empId1}` = `{runId}0921`, `{empId2}` = `{runId}0922`, `{empId3}` = `{runId}0923`.
   - Entri Changelog base (12 entri, urutan seeding = urutan waktu, dari terlama ke terbaru; Modified By tampil `[First Name] [Last Initial]`):
     - a. `Create` | `Name` | `—` | `Log User {runId}-092` | `Siti N`
     - b. `Edit` | `Position` | `Staff` | `Supervisor` | `Siti N`
@@ -71,15 +71,15 @@ coverage:
 14. Isi Search dengan `position`, tekan Enter
 15. Verifikasi tabel hanya memuat baris Field `Position` dengan Modified By `Fajar N` (irisan Filter dan Search)
 16. Verifikasi baris Field `Employee ID` dengan Modified By `Fajar N` tidak tampil
-17. Verifikasi filter tetap aktif (icon Filter berubah gelap)
-18. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
-19. Klik icon ×, lalu tekan Enter pada input kosong
+17. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
+18. Klik icon ×, lalu tekan Enter pada input kosong
 
 ### TC-GS-USER-569: Clear filter saat Search dan Sort aktif
 
-20. Isi Search dengan `edit`, tekan Enter
-21. Klik header Modified By sekali (A-Z)
-22. Klik icon Filter, pilih opsi `Position` pada Field, lalu klik `[Apply]`
+19. Isi Search dengan `edit`, tekan Enter
+20. Klik header Modified By sekali (A-Z)
+21. Klik icon Filter, pilih opsi `Position` pada Field, lalu klik `[Apply]`
+22. Verifikasi sedikitnya satu baris tampil di tabel
 23. Verifikasi tabel hanya memuat baris Field `Position`
 24. Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`
 25. Verifikasi keyword tetap aktif (input Search berisi `edit`)
@@ -117,8 +117,8 @@ coverage:
 - Urutan TC dalam spec mengikuti TC sumber (567, 568, 569, 570, 571). TC-GS-USER-570 mengubah visibilitas kolom dan dikembalikan di langkah terakhir blok itu sebelum TC-GS-USER-571. Detail user dan Tab `Changelog` dibuka sekali di langkah 1 sampai 3.
 - Langkah 1 sampai 3 (mencari user uji lewat Search User List, lalu klik Name dan Tab `Changelog`) adalah langkah penghubung tanpa `Verifikasi`; TC menulis "Klik Name `John Doe`" tanpa cara menemukan baris, dan user uji milik spec menggantikan John Doe (lihat Prerequisites).
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03 dan S-09): "Klik icon Filter, klik `[Clear Field]`, lalu klik `[Apply]`" dan "Klik icon ×, lalu tekan Enter pada input kosong" di akhir TC-GS-USER-567 dan 568 serta "Klik icon ×, lalu tekan Enter pada input kosong" di akhir TC-GS-USER-569 dan 571 membersihkan filter dan Search antar-TC; klik header Modified By dua kali di TC-GS-USER-569 mengembalikan sort ke default; menyembunyikan (langkah 32) dan menampilkan kembali `Modified By` pada TC-GS-USER-570 lewat overlay Column Visibility tanpa Save. Pembersihan filter di langkah 24 adalah langkah TC-GS-USER-569 ("`[Clear Field]` + `[Apply]`").
-- Asersi tambahan di luar Expected TC (S-03): `Verifikasi` baris pembanding sebelum dan sesudah penerapan (baris `Employee ID` oleh `Siti N`, baris `Employee ID` oleh `Fajar N`, baris `Add Access`, baris `Deactivate`) membuktikan irisan dan pelepasan nyata (bagian 8b butir 2). Entri yang dipakai berada di halaman 1 (10 entri terbaru) kecuali bila disebut lain.
+- Asersi tambahan di luar Expected TC (S-03): `Verifikasi` baris pembanding sebelum dan sesudah penerapan (baris `Employee ID` oleh `Siti N`, baris `Employee ID` oleh `Fajar N`, baris `Add Access`, baris `Deactivate`) membuktikan irisan dan pelepasan nyata (bagian 8b butir 2). Langkah 22 (`Verifikasi sedikitnya satu baris tampil di tabel`) adalah anchor positif sebelum asersi "hanya" pada TC-GS-USER-569. Entri yang dipakai berada di halaman 1 (10 entri terbaru) kecuali bila disebut lain.
 - Pembagian TC Tab Changelog di User Detail: kombinasi Search dan Filter di spec 092; Search di spec 090; Filter Panel di spec 091; kombinasi dengan Sort dan Pagination (TC-GS-USER-590) di spec 093.
 - Spec melewati sekitar 35 langkah (45 langkah) karena lima TC memakai Search dan Filter Tab Changelog pada dataset dan layar yang sama dan tiap klausa Expected menjadi satu `Verifikasi` (S-01); semua blok satu kelas harness (kombinasi Search dan Filter Tab Changelog), satu akun, satu dataset, dan tiap blok berdiri sendiri karena Search dan filter dibersihkan di akhir tiap blok.
-- Temuan untuk QA: (1) Cap waktu entri Changelog (entri `Create` H-2, jarak sedikitnya 1 menit antar entri) tidak punya cara di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE (S-13). (2) Label Field Changelog untuk perubahan Employee ID tidak disebut eksplisit (PRD user.md §8.3 hanya menulis `[Field]`); spec memakai `Employee ID`. (3) TC-GS-USER-567 sampai 571 menulis "Search keyword", "Terapkan filter", dan "Filter yang tidak beririsan" tanpa nilai; spec memakai `edit` dan Modified By `Fajar N` (567), Modified By `Fajar N` dan `position` (568), `edit` dan Field `Position` (569), Modified By `Fajar N` (570), `deactivate` dan Action `Create` (571). (4) TC-GS-USER-569 tidak menyebut kolom sort; spec memakai Modified By. (5) TC-GS-USER-570 "Hide kolom via Column Visibility" tidak menyebut apakah overlay menerapkan seketika; spec memakai overlay tanpa Save (prd-conventions.md §9.3). (6) TC-GS-USER-568 Expected b "Filter tetap aktif" tidak menyebut cara mengamati; spec mengasersi state aktif icon Filter. (7) TC-GS-USER-571 Expected a tidak menyebut teks empty filtered state; spec memakai teks dari TC-GS-USER-557.
+- Temuan untuk QA: (1) Cap waktu entri Changelog (entri `Create` H-2, jarak sedikitnya 1 menit antar entri) tidak punya cara di TC, PRD, atau LLD; spec menuliskannya sebagai kemampuan yang disediakan tim FE/BE (S-13). (2) Label Field Changelog untuk perubahan Employee ID tidak disebut eksplisit (PRD user.md §8.3 hanya menulis `[Field]`); spec memakai `Employee ID`. (3) TC-GS-USER-567 sampai 571 menulis "Search keyword", "Terapkan filter", dan "Filter yang tidak beririsan" tanpa nilai; spec memakai `edit` dan Modified By `Fajar N` (567), Modified By `Fajar N` dan `position` (568), `edit` dan Field `Position` (569), Modified By `Fajar N` (570), `deactivate` dan Action `Create` (571). (4) TC-GS-USER-569 tidak menyebut kolom sort; spec memakai Modified By. (5) TC-GS-USER-570 "Hide kolom via Column Visibility" tidak menyebut apakah overlay menerapkan seketika; spec memakai overlay tanpa Save (prd-conventions.md §9.3). (6) TC-GS-USER-568 Expected b "Filter tetap aktif" tidak menyebut cara mengamati; spec mengasersi baris hasil Filter dan Search (icon Filter tidak diasersi karena TC tidak menyebutnya). (7) TC-GS-USER-571 Expected a tidak menyebut teks empty filtered state; spec memakai teks dari TC-GS-USER-557.
 

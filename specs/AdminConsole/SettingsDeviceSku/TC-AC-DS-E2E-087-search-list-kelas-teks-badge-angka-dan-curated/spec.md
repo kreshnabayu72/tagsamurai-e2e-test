@@ -26,7 +26,7 @@ coverage:
 
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook suite (`before`, `beforeEach`, `after`) dinyatakan di `suite.md`; hook `after` mengembalikan sesi ke akun default suite (Total Control Principal).
 - Data Pre-setup: SKU inti dan seed (#29, #30), pohon Category (#25), Device Name (#26), Brand (#27), file foto (#37).
-- Pemulihan: hook `before` menyiapkan secara idempotent (dilewati bila sudah ada) dan hook `after` memulihkan ke keadaan awal Pre-setup lewat fixture BE yang disediakan tim FE/BE: tidak ada data tersimpan yang berubah; pemulihan konfigurasi kolom List yang diubah spec dilakukan dengan menghapus preferensi kolom di browser pada hook `after` (kemampuan disediakan tim FE, bagian 4). Spec ini tidak menyimpan perubahan data.
+- Pemulihan: hook `before` menyiapkan secara idempotent (dilewati bila sudah ada) dan hook `after` memulihkan ke keadaan awal Pre-setup lewat fixture BE yang disediakan tim FE/BE: tidak ada data tersimpan yang berubah; pemulihan konfigurasi kolom List yang diubah spec dilakukan pada langkah 31 sampai 33 dan, sebagai cadangan, dengan menghapus preferensi kolom di browser pada hook `after` (kemampuan disediakan tim FE, bagian 4). Spec ini tidak menyimpan perubahan data.
 - Suite berjalan serial (`parallel: false`) karena spec memakai data SKU bersama dan nama literal Pre-setup (lihat Notes).
 - Sumber nilai data: Pre-setup TC (#25 sampai #43); berkas `fixtures/settings-device-sku.json` belum ada dan disediakan tim FE dengan kunci mengikuti Pre-setup #29 dan #30 (ditandai di Notes).
 
@@ -75,10 +75,17 @@ coverage:
 29. Verifikasi baris `TAG-ARC-USR` tampil
 30. Verifikasi hasil Search hanya memuat baris `TAG-ARC-USR`
 
+### Pemulihan state akhir
+
+31. Klik header kolom Actions `(⋯)`, lalu hilangkan centang `Hardware Type` pada Column Visibility
+32. Klik header kolom Actions `(⋯)`, lalu hilangkan centang `Range Type` pada Column Visibility
+33. Klik header kolom Actions `(⋯)`, lalu hilangkan centang `TAG Type` pada Column Visibility
+
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-device-sku/TestCases/tc-settings-device-sku.md`; subjudul `###` memetakan langkah ke id TC granular.
 - Asersi "hanya menampilkan baris" adalah asersi universal: tiap Search didahului Verifikasi yang membuktikan baris target tampil sebagai pembanding (bagian 8b butir 2). Search kedua dan seterusnya memakai "ganti isi kotak search" (bagian 8b butir 9).
+- Langkah penghubung pemulihan (tanpa `Verifikasi`, S-03, S-09): langkah 31 sampai 33 menyembunyikan kembali kolom curated yang di-unhide pada langkah 19 sampai 21; hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Temuan untuk QA: TC-298 sampai TC-301 menyebut hasil "hanya" baris tertentu bergantung pada data seed 129 SKU yang tidak mengandung kata kunci yang sama; Post Condition TC-298 sampai TC-301 kosong.
 - Temuan untuk QA (S-12): Lampiran A tidak punya butir untuk modul ini, padahal asersi bergantung pada nama literal Pre-setup #29 dan #30 (mis. `HHR-ARC-200`, `SEED-001`, total 129 SKU). Spec memakai nama literal itu sesuai TC; syarat seeding idempotent, cleanup oleh spec, dan suite serial dipenuhi lewat Pemulihan di Prerequisites. Pengecualian S-12 dan S-06 untuk modul ini belum diputuskan; suite.md belum menyatakan fixture pemulihan Pre-setup.
 - Temuan untuk QA (fixture): `fixtures/settings-device-sku.json`, akun Pre-setup #1 dan #2, dan env `AC_DS_*` belum terverifikasi ada di environment; ketersediaannya dipastikan tim FE.

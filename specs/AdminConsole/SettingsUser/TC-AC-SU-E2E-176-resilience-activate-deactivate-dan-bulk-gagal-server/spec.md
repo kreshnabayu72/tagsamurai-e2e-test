@@ -43,13 +43,13 @@ coverage:
 5. Verifikasi switch Active baris A rollback ke ON
 ### TC-AC-SU-93: Activate gagal karena timeout
 6. Lepas intercept sebelumnya, lalu atur intercept: respons request Activate tidak dijawab sampai timeout
-7. Ketik Search `Jane Smith {runId}-176C`, tekan Enter, lalu klik switch Active baris C
+7. Ganti isi kotak Search dengan `Jane Smith {runId}-176C`, tekan Enter, lalu klik switch Active baris C
 8. Klik `[Activate]`
 9. Verifikasi toast error `"Error, failed to activate user."`
 10. Verifikasi switch Active baris C rollback ke OFF
 ### TC-AC-SU-130: Bulk Deactivate gagal menyeluruh di server
 11. Lepas intercept sebelumnya, atur intercept: respons request Bulk Deactivate dikembalikan 5xx, lalu tunggu toast error lama hilang otomatis
-12. Ketik Search `{runId}-176`, tekan Enter, lalu centang baris A dan baris B
+12. Ganti isi kotak Search dengan `{runId}-176`, tekan Enter, lalu centang baris A dan baris B
 13. Klik `[Bulk Action ▾]`, lalu pilih `Deactivate`
 14. Klik `[Deactivate]` pada dialog
 15. Verifikasi toast error `"Error, failed to deactivate user."`

@@ -19,7 +19,7 @@ coverage:
 - Akun aktor pertama: Total Control, `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_ac-settings-user` disetel `seen` oleh hook `before` suite dan dipulihkan hook `after` suite (suite.md).
-- Data milik spec (seed lewat Fixture BE; tanpa tingkat akses dan bukan Group Manager): `Budi Santoso {runId}-064` (`Manage partner` aktif di `Region A {runId}-064`, TC-230), `Budi Santoso {runId}-064 B` (`Manage partner` aktif di `Region A {runId}-064`, TC-660).
+- Data milik spec (seed lewat Fixture BE; tanpa tingkat akses dan bukan Group Manager): `Budi Santoso {runId}-064` (`Manage partner` aktif di `Region A {runId}-064`, TC-230), `Budi Santoso B {runId}-064` (`Manage partner` aktif di `Region A {runId}-064`, TC-660).
 - Group Tree milik spec (seed lewat Fixture BE; setiap nama bersuffix `{runId}-064`): `Region A {runId}-064` > `Branch 1 {runId}-064` > `Floor 1 {runId}-064`; `Region A {runId}-064` > `Branch 3 {runId}-064`; `Region B {runId}-064`.
 - Email user seed: `<nama huruf kecil dipisah titik>+{runId}-064@qwertysystem.net`; user pada User List dikenali lewat nama bersuffix dan Search atas suffix `{runId}-064`.
 - Pelaku kedua (aktor Total Control kedua pada TC) memakai sesi API Total Control untuk assign group dan hapus group; langkah pemicu ditulis "... hingga ... tersimpan".
@@ -47,13 +47,13 @@ coverage:
 13. Klik `✕` pada popup
 14. Verifikasi dialog `"You have unsaved changes. Are you sure you want to leave?"` dengan tombol `[Cancel]` `[Leave]`
 15. Klik `[Leave]`
-16. Klik Breadcrumb Settings > User untuk kembali ke User List
+16. Klik segmen `User` pada Breadcrumb untuk kembali ke User List
 
 ### TC-AC-SU-660: Group dihapus di Settings > Group sebelum Save: seluruh Save ditolak, baris stale dibersihkan
 
 17. Tunggu toast lama hilang otomatis
-18. Ketik Search `Budi Santoso {runId}-064 B`, tekan Enter
-19. Klik nama `Budi Santoso {runId}-064 B` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
+18. Ganti isi kotak Search dengan `Budi Santoso B {runId}-064`, tekan Enter
+19. Klik nama `Budi Santoso B {runId}-064` di User List, Settings > User > Detail terbuka dengan Tab Role aktif
 20. Klik Sub-tab [Group Role]
 21. Klik `[Assign Group]` baris `Manage partner`
 22. Tambah `Region B {runId}-064` via Select Group

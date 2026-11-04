@@ -33,6 +33,7 @@ coverage:
   - Mengatur jam server dan jam browser bersama ke waktu absolut dalam zona waktu client (bukan geseran relatif) dan memulihkannya ke waktu nyata; keduanya diatur bersama karena asersi memakai tampilan UI.
   - Memicu job terjadwal auto-deactivate Temporary (job 00.00) secara eksplisit dan mengetahui job selesai.
   - Mengubah dan memulihkan General Settings Timezone entitas.
+- Jam (langkah 7, 18, dan 22): jam server dan jam browser diatur bersama ke nilai absolut dan dibekukan (tidak berjalan), sehingga tidak ada selisih waktu nyata yang menggeser nilai. Margin terhadap batas hari (00.00 UTC+7): langkah 7 pukul 23.30 (30 menit), langkah 18 pukul 23.59 (1 menit, aman karena jam berhenti), langkah 22 tepat pukul 00.00 (batas eksak yang diuji, jam berhenti di nilai itu sampai dipulihkan di langkah 25). Kemampuan membekukan jam disediakan tim FE/BE.
 - State global yang diubah: jam server dan jam browser, General Settings Timezone entitas (`Asia/Jakarta` ke `Asia/Jayapura` dan kembali), status F-1 dan N-1 oleh job. Pemulihan jam dan Timezone ditulis sebagai langkah aksi (langkah 17 dan 25) sebelum akun aktor membuka Activity Log atau User Log; hook `after` memulihkan jam, Timezone, dan menghapus F-1 dan N-1 sebagai cadangan (tetap jalan walau spec gagal). Suite berjalan serial (`parallel: false`).
 - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus F-1 dan N-1 lewat API, pulihkan jam dan Timezone.
 - Admin pembanding untuk Tab System Log (TC-GS-USER-907 butir c "beberapa admin"): Siti Nurhaliza dan Hendra Gunawan (Default User). Entri System Log milik kedua admin yang menjadi pembanding disediakan tim FE (TC tidak menyebutnya).
@@ -50,7 +51,7 @@ coverage:
 ### TC-GS-USER-1014: Validasi Temporary Until 'besok' memakai zona waktu client General Settings
 
 6. Atur General Settings Timezone entitas menjadi `Asia/Jayapura` (UTC+9)
-7. Atur jam server dan jam browser bersama ke tanggal D pukul 23.30 UTC+7
+7. Atur jam server dan jam browser bersama ke tanggal D pukul 23.30 UTC+7 dan bekukan
 8. Klik `[+ User]` di Table Tools
 9. Isi First Name `Papua`, Last Name `Uji {runId}-049`, Division `Finance`, Email `papuauji+{runId}-049@qwertysystem.net`, pilih Access `Fixed Asset`
 10. Centang `Set as Temporary User`
@@ -64,14 +65,14 @@ coverage:
 
 ### TC-GS-USER-1012: Temporary Until hari ini, user masih Active sampai akhir hari
 
-18. Atur jam server dan jam browser bersama ke tanggal D pukul 23.59 UTC+7
+18. Atur jam server dan jam browser bersama ke tanggal D pukul 23.59 UTC+7 dan bekukan
 19. Muat ulang halaman User List
-20. Klik icon Search, ketik `{runId}-049`, tekan Enter
+20. Ganti isi kotak search dengan `{runId}-049`, tekan Enter
 21. Verifikasi switch Active baris `Fikri Ramadhan {runId}-049` ON
 
 ### Job terjadwal 00.00 hari berikutnya
 
-22. Atur jam server dan jam browser bersama ke tanggal D + 1 pukul 00.00 UTC+7
+22. Atur jam server dan jam browser bersama ke tanggal D + 1 pukul 00.00 UTC+7 dan bekukan
 23. Picu job terjadwal auto-inactive Temporary
 24. Tunggu job terjadwal selesai
 25. Pulihkan jam server dan jam browser ke waktu nyata
@@ -85,11 +86,11 @@ coverage:
 
 ### TC-GS-USER-259, TC-GS-USER-1013, dan TC-GS-USER-1088: Auto-inactive setelah Temporary Until terlewati, Modified By dan Last Update
 
-30. Muat ulang halaman User List
-31. Klik icon Search, ketik `{runId}-049`, tekan Enter
+30. Klik sub-tab `Login User`
+31. Ganti isi kotak search dengan `{runId}-049`, tekan Enter
 32. Verifikasi switch Active baris `Fikri Ramadhan {runId}-049` OFF
 33. Verifikasi Modified By baris `Fikri Ramadhan {runId}-049` `System`
-34. Verifikasi Last Update baris `Fikri Ramadhan {runId}-049` sama dengan waktu job (tanggal D + 1 pukul 00.00 zona waktu client)
+34. Verifikasi Last Update baris `Fikri Ramadhan {runId}-049` sama dengan waktu job (tanggal D + 1 pukul 00.00 zona waktu client, toleransi 1 menit)
 35. Catat nilai Last Update baris `Fikri Ramadhan {runId}-049` sebagai L1
 36. Klik icon Changelog pada Table Tools
 37. Klik icon Search pada Modal Changelog, ketik `Fikri Ramadhan {runId}-049`, tekan Enter
@@ -127,7 +128,7 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Spec melewati sekitar 35 langkah (61 langkah) karena semua TC berada di satu kelas harness (jam server dan browser serta job auto-deactivate) dan memakai seed F-1 yang sama: TC-GS-USER-259, 1013, 1088, dan 907 mengamati hasil satu eksekusi job pada F-1 (precondition identik: Temporary Until terlewati, job dijalankan), sehingga memecahnya mengulang seeding, penggeseran jam, dan pemicu job. Tiap blok berdiri sendiri pada surface sendiri (User List, Non-Login User, Modal Changelog, Tab Changelog, Activity Log, Tab System Log). Langkah 48 sampai 61 adalah pembacaan Tab System Log dua admin (blok baca-log berpola).
 - Urutan TC sumber diubah: TC-GS-USER-1014 (validasi yang diblokir) dan TC-GS-USER-1012 (kondisi sebelum job) mendahului pemicu job; TC-GS-USER-259, 1013, dan 1088 digabung pada pengamatan pascajob yang sama (Expected 259 a sama dengan Expected 1013 a; Expected 259 b sama dengan Expected 1013 b dan 907 a); TC-GS-USER-1088 membaca Last Update dan Tab Changelog sesudah TC-GS-USER-259; TC-GS-USER-260 ditaruh sebelum pembacaan Login User karena memakai sub-tab lain dan dibuka lewat muat ulang; TC-GS-USER-907 paling akhir karena membuka Activity Log dan Tab System Log (bagian 3 prinsip 3). Ketergantungan TC-GS-USER-1088 pada TC-GS-USER-1012 dipenuhi oleh F-1 yang sama yang diamati Active pada langkah 21 sebelum job.
-- Langkah penghubung (aksi tanpa `Verifikasi`): 1 sampai 5 (Search dan baseline J0 dan T0 sebelum jam digeser), 6, 7, 17, 18, 22, 25 (mengatur dan memulihkan Timezone serta jam), 14 dan 16 (menutup form dirty lewat `✕` dan `[Leave]`, S-08), 19, 20, 26 sampai 28, 30, 31 (muat ulang dan Search), 23 dan 24 (pemicu dan penantian job), 35 (mencatat nilai), 36 sampai 37, 40 sampai 42, 45, 46, 48 sampai 51, 53, 55 sampai 58, 60 (membuka surface dan mencari).
+- Langkah penghubung (aksi tanpa `Verifikasi`): 1 sampai 5 (Search dan baseline J0 dan T0 sebelum jam digeser), 6, 7, 17, 18, 22, 25 (mengatur dan memulihkan Timezone serta jam), 14 dan 16 (menutup form dirty lewat `✕` dan `[Leave]`, S-08), 19, 20, 26 sampai 28 (muat ulang, sub-tab `Non-Login User`, dan Search), 30 (kembali ke sub-tab `Login User`; muat ulang di sini dibuang karena langkah 26 sudah memuat ulang sesudah job dan muat ulang mempertahankan sub-tab `Non-Login User`, sedangkan langkah 32 sampai 44 membaca baris Login User; R-16), 31 (Search), 23 dan 24 (pemicu dan penantian job), 35 (mencatat nilai), 36 sampai 37, 40 sampai 42, 45, 46, 48 sampai 51, 53, 55 sampai 58, 60 (membuka surface dan mencari).
 - Asersi tambahan: langkah 15 (dialog `Unsaved Changes`) adalah bagian penutupan form dirty menurut S-08 dan tidak ada di Expected TC-GS-USER-1014; langkah 38 adalah perbandingan jumlah entri terhadap baseline J0 (S-12) untuk "baris baru"; langkah 52 dan 59 adalah pembanding sebelum asersi absence (bagian 8b butir 2).
 - P-1: TC-GS-USER-907 butir c ("tidak ada baris Auto-Deactivate di System Log admin mana pun") diasersi di spec ini (langkah 52 sampai 61) karena konteksnya bergantung pada state berat yang baru dibangun langkah sebelumnya (jam digeser dan job dijalankan) dan tidak ada spec absence yang memuat aksi nyata untuk TC itu (S-05). Baseline: penanda waktu nyata T0 dan jumlah entri J0 dicatat di langkah 4 sebelum jam digeser; karena log Auto-Deactivate bercap waktu job (D + 1 00.00), asersi mencari baris berdasarkan Note `Auto-Deactivate` dan Name, bukan posisi teratas (S-12).
 - Jam server dan jam browser diatur bersama dan dipulihkan lewat langkah 25 sebelum akun aktor membuka Activity Log, User Log, atau Tab System Log (S-09). Langkah 7 mengatur keduanya bersama ke tanggal D pukul 23.30 UTC+7 sehingga tanggal Asia/Jayapura (UTC+9) sudah D + 1.

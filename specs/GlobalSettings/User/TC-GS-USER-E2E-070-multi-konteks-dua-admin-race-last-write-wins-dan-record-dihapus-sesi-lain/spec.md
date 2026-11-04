@@ -145,9 +145,9 @@ coverage:
 76. [Sesi A] Klik switch Active baris `Rudi Hakim B {runId}-070` tanpa refresh
 77. [Sesi A] Klik `[Deactivate]`
 78. [Sesi A] Verifikasi toast netral: "This user is no longer available."
-79. [Sesi A] Verifikasi baris `Dewi Lestari {runId}-070` tampil di User List (pembanding)
-80. [Sesi A] Verifikasi User List ter-refresh tanpa baris `Rudi Hakim B {runId}-070`
-81. [Sesi A] Tutup dialog Deactivate dengan klik `[Cancel]`
+79. [Sesi A] Verifikasi dialog Deactivate tertutup
+80. [Sesi A] Verifikasi baris `Dewi Lestari {runId}-070` tampil di User List (pembanding)
+81. [Sesi A] Verifikasi User List ter-refresh tanpa baris `Rudi Hakim B {runId}-070`
 
 ### TC-GS-USER-1015: Delete user yang sudah dihapus sesi lain, toast netral
 
@@ -178,7 +178,7 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Penanda `[Sesi A]` dan `[Sesi B]` menunjuk sesi UI, `[API Admin B]` menunjuk sesi API Admin B.
 - Spec melewati sekitar 35 langkah (98 langkah). Alasan: kesembilan TC berada di satu kelas harness (c, dua admin pada entitas yang sama), tiap blok memakai user seed bersuffix sendiri sehingga blok berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Jumlah langkah muncul dari satu baris per aksi per sesi dan satu `Verifikasi` per klausa Expected.
 - Urutan TC sumber diubah: TC-GS-USER-1006 dan 195 dan 353 dan 237 lebih dulu (aksi yang mengubah atau membuat data), TC-GS-USER-985 sesudah TC-GS-USER-195 dan 353 karena menonaktifkan `Dewi Lestari {runId}-070` yang dipakai kedua TC itu, dan TC-GS-USER-1010, 1011, 1015, serta 1016 (aksi yang menghapus data) paling akhir (bagian 3 prinsip 5). Sesi B UI hanya dipakai di TC-GS-USER-1006 dan 985.
-- Langkah penghubung (aksi tanpa `Verifikasi`): Search `{runId}-070`, membaca tautan konfirmasi dari mail-catcher, menutup tab tautan, `✕` yang menutup Popup Edit (form tidak berubah sehingga tidak memunculkan `Unsaved Changes`), `Klik menu User` dan Search ulang setelah inline edit, membuka dan menutup Modal Changelog untuk baseline J0, "Tunggu aksi selesai" setelah `[Deactivate]` Sesi A, dan mengganti isi kotak search, menutup dialog Deactivate dengan `[Cancel]` sesudah TC-GS-USER-1011 (S-09), dan mengembalikan ukuran halaman ke 10 baris di akhir spec (S-09, S-03; state UI yang diubah langkah persiapan). Pelaku kedua `[API Admin B]` ditulis "hingga ... tersimpan" (R-20). Verifikasi "Modal Changelog User memuat entri" adalah anchor positif sebelum Search, dan verifikasi baris `Dewi Lestari {runId}-070` adalah anchor positif untuk asersi ketiadaan baris di User List (bagian 8b butir 1).
+- Langkah penghubung (aksi tanpa `Verifikasi`): Search `{runId}-070`, membaca tautan konfirmasi dari mail-catcher, menutup tab tautan, `✕` yang menutup Popup Edit (form tidak berubah sehingga tidak memunculkan `Unsaved Changes`), `Klik menu User` dan Search ulang setelah inline edit, membuka dan menutup Modal Changelog untuk baseline J0, "Tunggu aksi selesai" setelah `[Deactivate]` Sesi A, dan mengganti isi kotak search, dan mengembalikan ukuran halaman ke 10 baris di akhir spec (S-09, S-03; state UI yang diubah langkah persiapan). Pelaku kedua `[API Admin B]` ditulis "hingga ... tersimpan" (R-20). Verifikasi "Modal Changelog User memuat entri" adalah anchor positif sebelum Search, dan verifikasi baris `Dewi Lestari {runId}-070` adalah anchor positif untuk asersi ketiadaan baris di User List (bagian 8b butir 1).
 - TC-GS-USER-237 ditulis tanpa jeda antara klik `[Cancel Change]` dan pembukaan tautan; toast sukses Cancel Change tidak diasersi di blok ini (bukan Expected TC-GS-USER-237).
 - Asersi "tidak ada entri Changelog kedua" TC-GS-USER-985 ditulis sebagai jumlah entri sama dengan baseline J0 + 1, yaitu asersi jumlah dengan baseline (S-12), bukan asersi absence kelas g.
 - Pembagian TC lintas spec: membuka tautan konfirmasi lama sesudah Cancel Change dengan jeda (TC-GS-USER-234) diverifikasi di spec 045; Create sukses di spec 024, Edit sukses di spec 035, Toggle Active sukses di spec 047, inline edit Custom Field sukses di spec 060, dan Bulk Delete sukses di spec 055.
@@ -188,6 +188,6 @@ coverage:
   - TC-GS-USER-353 Expected a ("Save diterima tanpa reject") tidak menyebut observasinya; spec mengasersi toast sukses `Success, Blood Type has been updated.` (teks mengikuti inline edit sukses di TC-GS-USER-346).
   - TC-GS-USER-237 berstatus Manual Only tetapi tetap ditulis (bagian 2 konvensi); "Segera" tidak punya batas waktu, dan tautan konfirmasi dibaca dari mail-catcher yang tidak punya mekanisme di TC, PRD, atau LLD (disediakan tim FE/BE). Perbedaannya dengan TC-GS-USER-234 hanya tidak adanya jeda.
   - TC-GS-USER-1006 hanya menyebut Email; spec mengisi First Name, Last Name, Division, dan Access (field wajib TC-GS-USER-117) di kedua sesi supaya submit pertama sukses.
-  - TC-GS-USER-1010, 1011, 1015, dan 1016 menulis "sesi lain" atau "Total Control lain"; spec memakai Admin B sesi API. TC-GS-USER-1011 tidak menyebut apakah dialog Deactivate tertutup setelah toast netral; spec menutupnya dengan langkah penghubung `[Cancel]` (S-09) sebelum TC berikutnya.
+  - TC-GS-USER-1010, 1011, 1015, dan 1016 menulis "sesi lain" atau "Total Control lain"; spec memakai Admin B sesi API. TC-GS-USER-1011 tidak menyebut apakah dialog Deactivate tertutup setelah toast netral; spec mengasersi dialog tertutup (keputusan user, konsisten dengan TC-GS-USER-1010 dan 1015) dan tidak memakai langkah `[Cancel]`.
   - TC-GS-USER-195, 985, 1010, 1011, 1015, dan 1016 menyebut Dewi Lestari, Rudi Hakim, Tono Wijaya, dan Rani Lestari tanpa suffix; spec memakai user seed bersuffix `{runId}-070` milik spec (S-06).
   - TC-GS-USER-985 Expected b ("tidak ada entri Changelog kedua") mengandaikan satu Deactivate menghasilkan tepat satu entri; spec mengasersi selisih jumlah entri sebesar 1 terhadap baseline J0.

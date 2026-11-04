@@ -38,11 +38,11 @@ coverage:
   - Ringkasan: Name 27 nilai distinct; Brand 6 nilai (Toyota 4 baris, Honda 3, Dell 5, Lenovo 5, Canon 5, Epson 5); PIC 4 nilai (Citra Wulandari 1 baris, Rudi Hartanto 8, Sinta Dewi 8, Bambang Susanto 10); baris ber-Name memuat `Vehicle`: 7 (K1 sampai K7). Nilai distinct pada kolom yang di-sort, di-search, dan di-filter dipenuhi (S-11).
   - Nama literal tanpa suffix hanya K1 (Pre-setup); seluruh nilai Name, Transaction ID, Asset ID, dan PIC milik spec bersuffix `{runId}-124`. Nama Brand dan Model / Type adalah nilai master tanpa suffix.
 - Cleanup di hook `after` (tidak berasumsi seeding berhasil penuh): hapus aset seed K2 sampai K27 lewat kemampuan seeding yang sama; data Pre-setup (K1 dan record user) tidak diubah. Seeding aset tidak mengubah record user Ahmad Fauzi.
-- Data uji: tujuh kolom `Photo`, `Transaction ID`, `Name`, `Asset ID`, `Brand`, `Model / Type`, `PIC` (semua Hideable, default tampil); TC-GS-USER-778 dikelompokkan menjadi dua siklus (`Photo`, `Transaction ID`, `Asset ID`, `Brand` lalu `Name`, `Model / Type`, `PIC`) supaya selalu ada kolom yang tampil; TC-GS-USER-780 dikelompokkan menjadi tiga siklus pin (`Photo`, `Transaction ID`, `Name`; `Asset ID`, `Brand`, `Model / Type`; `PIC`) karena maksimal 3 kolom ter-pin sekaligus.
+- Data uji: tujuh kolom `Photo`, `Transaction ID`, `Name`, `Asset ID`, `Brand`, `Model / Type`, `PIC` (semua Hideable, default tampil); TC-GS-USER-778 dan 779 dijalankan per kolom (satu `[Save]` dan satu F5 per kolom); TC-GS-USER-780 dikelompokkan menjadi tiga siklus pin (`Photo`, `Transaction ID`, `Name`; `Asset ID`, `Brand`, `Model / Type`; `PIC`) karena maksimal 3 kolom ter-pin sekaligus.
 - Preferensi kolom (visibilitas, urutan, pin) sub-tab Assigned Assets tersimpan per user dan menjadi permanen setelah `[Save]` (prd-conventions.md §9.3); "muat ulang halaman" dilakukan pada konteks browser yang sama supaya penyimpanan tetap ada. Overlay Column Visibility langsung berlaku.
-- Lebar konten tabel harus melebihi lebar viewport (overflow horizontal) supaya scroll horizontal pada TC-GS-USER-780 teramati. Viewport disempitkan pada langkah 95 dan dikembalikan pada langkah 140; ukuran viewport dipilih tim FE karena TC tidak menyebutnya.
+- Lebar konten tabel harus melebihi lebar viewport (overflow horizontal) supaya scroll horizontal pada TC-GS-USER-780 teramati. Viewport disempitkan pada langkah 178 dan dikembalikan pada langkah 223; ukuran viewport dipilih tim FE karena TC tidak menyebutnya.
 - Kemampuan teknis: seeding Assigned Assets (HK8) (disediakan tim FE/BE); drag and drop item kolom pada Popup Setup Column; mengatur viewport; scroll horizontal tabel; mengarahkan kursor ke checkbox dan icon Pin disabled untuk membaca tooltip; membaca dan menghapus preferensi kolom di penyimpanan browser; setelah F5 sub-tab Assigned Assets user yang sama tetap terbuka.
-- State yang diubah dan dipulihkan: preferensi Setup Column sub-tab Assigned Assets dikembalikan ke default (susunan `Photo | Transaction ID | Name | Asset ID | Brand | Model / Type | PIC`, semua tampil, tanpa pin) oleh blok TC-GS-USER-781 di akhir spec (langkah 141 sampai 150); hook `after` (tetap jalan walau spec gagal di tengah) mengembalikannya lewat `[Reset to Default]` atau penghapusan preferensi kolom sub-tab Assigned Assets di browser, serta mengembalikan viewport ke ukuran awal. Suite berjalan serial (`parallel: false`).
+- State yang diubah dan dipulihkan: preferensi Setup Column sub-tab Assigned Assets dikembalikan ke default (susunan `Photo | Transaction ID | Name | Asset ID | Brand | Model / Type | PIC`, semua tampil, tanpa pin) oleh blok TC-GS-USER-781 di akhir spec (langkah 224 sampai 233); hook `after` (tetap jalan walau spec gagal di tengah) mengembalikannya lewat `[Reset to Default]` atau penghapusan preferensi kolom sub-tab Assigned Assets di browser, serta mengembalikan viewport ke ukuran awal. Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
 
@@ -63,7 +63,7 @@ coverage:
 
 10. Klik `Setup Column...`
 11. Verifikasi Header: Title `Setup Column`
-12. Verifikasi Header: deskripsi panduan tampil
+12. Verifikasi Header: deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`
 13. Verifikasi Header: icon `[✕]` tampil
 14. Verifikasi Body: daftar kolom dengan checkbox
 15. Verifikasi Body: drag handle pada tiap kolom
@@ -109,138 +109,221 @@ coverage:
 
 44. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
 45. Hilangkan centang `Photo`
-46. Hilangkan centang `Transaction ID`
-47. Hilangkan centang `Asset ID`
-48. Hilangkan centang `Brand`
-49. Verifikasi preview tidak memuat kolom `Photo`, `Transaction ID`, `Asset ID`, `Brand`
-50. Klik `[Save]`
-51. Verifikasi tabel tidak memuat kolom `Photo`, `Transaction ID`, `Asset ID`, `Brand`
-52. Muat ulang halaman (F5)
-53. Verifikasi kolom `Photo`, `Transaction ID`, `Asset ID`, `Brand` tetap tidak tampil setelah F5
-54. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-55. Centang kembali `Photo`
-56. Centang kembali `Transaction ID`
-57. Centang kembali `Asset ID`
-58. Centang kembali `Brand`
+46. Verifikasi preview tidak memuat kolom `Photo`
+47. Klik `[Save]`
+48. Verifikasi tabel tidak memuat kolom `Photo` setelah Save
+49. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+50. Verifikasi kolom `Transaction ID` tampil di tabel setelah F5
+51. Verifikasi kolom `Photo` tetap tidak tampil setelah F5
+52. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+53. Centang kembali `Photo`
+54. Klik `[Save]`
+55. Verifikasi tabel memuat kembali kolom `Photo`
+56. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+57. Hilangkan centang `Transaction ID`
+58. Verifikasi preview tidak memuat kolom `Transaction ID`
 59. Klik `[Save]`
-60. Verifikasi tabel memuat kembali kolom `Photo`, `Transaction ID`, `Asset ID`, `Brand`
-61. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-62. Hilangkan centang `Name`
-63. Hilangkan centang `Model / Type`
-64. Hilangkan centang `PIC`
-65. Verifikasi preview tidak memuat kolom `Name`, `Model / Type`, `PIC`
+60. Verifikasi tabel tidak memuat kolom `Transaction ID` setelah Save
+61. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+62. Verifikasi kolom `Name` tampil di tabel setelah F5
+63. Verifikasi kolom `Transaction ID` tetap tidak tampil setelah F5
+64. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+65. Centang kembali `Transaction ID`
 66. Klik `[Save]`
-67. Verifikasi tabel tidak memuat kolom `Name`, `Model / Type`, `PIC`
-68. Muat ulang halaman (F5)
-69. Verifikasi kolom `Name`, `Model / Type`, `PIC` tetap tidak tampil setelah F5
-70. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-71. Centang kembali `Name`
-72. Centang kembali `Model / Type`
-73. Centang kembali `PIC`
-74. Klik `[Save]`
-75. Verifikasi tabel memuat kembali kolom `Name`, `Model / Type`, `PIC`
+67. Verifikasi tabel memuat kembali kolom `Transaction ID`
+68. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+69. Hilangkan centang `Name`
+70. Verifikasi preview tidak memuat kolom `Name`
+71. Klik `[Save]`
+72. Verifikasi tabel tidak memuat kolom `Name` setelah Save
+73. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+74. Verifikasi kolom `Transaction ID` tampil di tabel setelah F5
+75. Verifikasi kolom `Name` tetap tidak tampil setelah F5
+76. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+77. Centang kembali `Name`
+78. Klik `[Save]`
+79. Verifikasi tabel memuat kembali kolom `Name`
+80. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+81. Hilangkan centang `Asset ID`
+82. Verifikasi preview tidak memuat kolom `Asset ID`
+83. Klik `[Save]`
+84. Verifikasi tabel tidak memuat kolom `Asset ID` setelah Save
+85. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+86. Verifikasi kolom `Transaction ID` tampil di tabel setelah F5
+87. Verifikasi kolom `Asset ID` tetap tidak tampil setelah F5
+88. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+89. Centang kembali `Asset ID`
+90. Klik `[Save]`
+91. Verifikasi tabel memuat kembali kolom `Asset ID`
+92. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+93. Hilangkan centang `Brand`
+94. Verifikasi preview tidak memuat kolom `Brand`
+95. Klik `[Save]`
+96. Verifikasi tabel tidak memuat kolom `Brand` setelah Save
+97. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+98. Verifikasi kolom `Transaction ID` tampil di tabel setelah F5
+99. Verifikasi kolom `Brand` tetap tidak tampil setelah F5
+100. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+101. Centang kembali `Brand`
+102. Klik `[Save]`
+103. Verifikasi tabel memuat kembali kolom `Brand`
+104. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+105. Hilangkan centang `Model / Type`
+106. Verifikasi preview tidak memuat kolom `Model / Type`
+107. Klik `[Save]`
+108. Verifikasi tabel tidak memuat kolom `Model / Type` setelah Save
+109. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+110. Verifikasi kolom `Transaction ID` tampil di tabel setelah F5
+111. Verifikasi kolom `Model / Type` tetap tidak tampil setelah F5
+112. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+113. Centang kembali `Model / Type`
+114. Klik `[Save]`
+115. Verifikasi tabel memuat kembali kolom `Model / Type`
+116. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+117. Hilangkan centang `PIC`
+118. Verifikasi preview tidak memuat kolom `PIC`
+119. Klik `[Save]`
+120. Verifikasi tabel tidak memuat kolom `PIC` setelah Save
+121. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+122. Verifikasi kolom `Transaction ID` tampil di tabel setelah F5
+123. Verifikasi kolom `PIC` tetap tidak tampil setelah F5
+124. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+125. Centang kembali `PIC`
+126. Klik `[Save]`
+127. Verifikasi tabel memuat kembali kolom `PIC`
 
 ### TC-GS-USER-779: Setup Column drag reorder kelas Hideable
 
-76. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-77. Seret `Photo` ke posisi pertama
-78. Verifikasi preview menempatkan `Photo` di posisi pertama
-79. Seret `Transaction ID` ke posisi pertama
-80. Verifikasi preview menempatkan `Transaction ID` di posisi pertama
-81. Seret `Name` ke posisi pertama
-82. Verifikasi preview menempatkan `Name` di posisi pertama
-83. Seret `Asset ID` ke posisi pertama
-84. Verifikasi preview menempatkan `Asset ID` di posisi pertama
-85. Seret `Brand` ke posisi pertama
-86. Verifikasi preview menempatkan `Brand` di posisi pertama
-87. Seret `Model / Type` ke posisi pertama
-88. Verifikasi preview menempatkan `Model / Type` di posisi pertama
-89. Seret `PIC` ke posisi pertama
-90. Verifikasi preview menempatkan `PIC` di posisi pertama
-91. Klik `[Save]`
-92. Verifikasi tabel berurutan `PIC | Model / Type | Brand | Asset ID | Name | Transaction ID | Photo`
-93. Muat ulang halaman (F5)
-94. Verifikasi urutan tabel tetap `PIC | Model / Type | Brand | Asset ID | Name | Transaction ID | Photo` setelah F5
+128. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+129. Seret `Photo` ke posisi terakhir
+130. Verifikasi preview menempatkan `Photo` di posisi terakhir
+131. Klik `[Save]`
+132. Verifikasi kolom `Photo` berada di posisi terakhir tabel setelah Save
+133. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+134. Verifikasi kolom `Photo` tetap di posisi terakhir tabel setelah F5
+135. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+136. Seret `Transaction ID` ke posisi pertama
+137. Verifikasi preview menempatkan `Transaction ID` di posisi pertama
+138. Klik `[Save]`
+139. Verifikasi kolom `Transaction ID` berada di posisi pertama tabel setelah Save
+140. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+141. Verifikasi kolom `Transaction ID` tetap di posisi pertama tabel setelah F5
+142. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+143. Seret `Name` ke posisi pertama
+144. Verifikasi preview menempatkan `Name` di posisi pertama
+145. Klik `[Save]`
+146. Verifikasi kolom `Name` berada di posisi pertama tabel setelah Save
+147. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+148. Verifikasi kolom `Name` tetap di posisi pertama tabel setelah F5
+149. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+150. Seret `Asset ID` ke posisi pertama
+151. Verifikasi preview menempatkan `Asset ID` di posisi pertama
+152. Klik `[Save]`
+153. Verifikasi kolom `Asset ID` berada di posisi pertama tabel setelah Save
+154. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+155. Verifikasi kolom `Asset ID` tetap di posisi pertama tabel setelah F5
+156. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+157. Seret `Brand` ke posisi pertama
+158. Verifikasi preview menempatkan `Brand` di posisi pertama
+159. Klik `[Save]`
+160. Verifikasi kolom `Brand` berada di posisi pertama tabel setelah Save
+161. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+162. Verifikasi kolom `Brand` tetap di posisi pertama tabel setelah F5
+163. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+164. Seret `Model / Type` ke posisi pertama
+165. Verifikasi preview menempatkan `Model / Type` di posisi pertama
+166. Klik `[Save]`
+167. Verifikasi kolom `Model / Type` berada di posisi pertama tabel setelah Save
+168. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+169. Verifikasi kolom `Model / Type` tetap di posisi pertama tabel setelah F5
+170. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+171. Seret `PIC` ke posisi pertama
+172. Verifikasi preview menempatkan `PIC` di posisi pertama
+173. Klik `[Save]`
+174. Verifikasi kolom `PIC` berada di posisi pertama tabel setelah Save
+175. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+176. Verifikasi kolom `PIC` tetap di posisi pertama tabel setelah F5
+177. Verifikasi urutan tabel tetap `PIC | Model / Type | Brand | Asset ID | Name | Transaction ID | Photo` setelah F5
 
 ### TC-GS-USER-780: Setup Column pin/unpin kelas Hideable
 
-95. Sempitkan viewport sehingga tabel dapat di-scroll horizontal
-96. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-97. Klik icon Pin pada `Photo`
-98. Klik icon Pin pada `Transaction ID`
-99. Klik icon Pin pada `Name`
-100. Verifikasi preview menampilkan kolom `Photo`, `Transaction ID`, `Name` ter-pin
-101. Klik `[Save]`
-102. Scroll tabel secara horizontal
-103. Verifikasi kolom `Photo`, `Transaction ID`, `Name` membeku (sticky) saat scroll horizontal
-104. Muat ulang halaman (F5)
-105. Scroll tabel secara horizontal
-106. Verifikasi kolom `Photo`, `Transaction ID`, `Name` tetap membeku setelah F5
-107. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-108. Klik icon Pin pada `Photo` untuk unpin
-109. Klik icon Pin pada `Transaction ID` untuk unpin
-110. Klik icon Pin pada `Name` untuk unpin
-111. Klik `[Save]`
-112. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-113. Klik icon Pin pada `Asset ID`
-114. Klik icon Pin pada `Brand`
-115. Klik icon Pin pada `Model / Type`
-116. Verifikasi preview menampilkan kolom `Asset ID`, `Brand`, `Model / Type` ter-pin
-117. Klik `[Save]`
-118. Scroll tabel secara horizontal
-119. Verifikasi kolom `Asset ID`, `Brand`, `Model / Type` membeku (sticky) saat scroll horizontal
-120. Muat ulang halaman (F5)
-121. Scroll tabel secara horizontal
-122. Verifikasi kolom `Asset ID`, `Brand`, `Model / Type` tetap membeku setelah F5
-123. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-124. Klik icon Pin pada `Asset ID` untuk unpin
-125. Klik icon Pin pada `Brand` untuk unpin
-126. Klik icon Pin pada `Model / Type` untuk unpin
-127. Klik `[Save]`
-128. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-129. Klik icon Pin pada `PIC`
-130. Verifikasi preview menampilkan kolom `PIC` ter-pin
-131. Klik `[Save]`
-132. Scroll tabel secara horizontal
-133. Verifikasi kolom `PIC` membeku (sticky) saat scroll horizontal
-134. Muat ulang halaman (F5)
-135. Scroll tabel secara horizontal
-136. Verifikasi kolom `PIC` tetap membeku setelah F5
-137. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-138. Klik icon Pin pada `PIC` untuk unpin
-139. Klik `[Save]`
-140. Kembalikan viewport ke ukuran awal
+178. Sempitkan viewport sehingga tabel dapat di-scroll horizontal
+179. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+180. Klik icon Pin pada `Photo`
+181. Klik icon Pin pada `Transaction ID`
+182. Klik icon Pin pada `Name`
+183. Verifikasi preview menampilkan kolom `Photo`, `Transaction ID`, `Name` ter-pin
+184. Klik `[Save]`
+185. Scroll tabel secara horizontal
+186. Verifikasi kolom `Photo`, `Transaction ID`, `Name` membeku (sticky) saat scroll horizontal setelah Save
+187. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+188. Scroll tabel secara horizontal
+189. Verifikasi kolom `Photo`, `Transaction ID`, `Name` tetap membeku setelah F5
+190. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+191. Klik icon Pin pada `Photo` untuk unpin
+192. Klik icon Pin pada `Transaction ID` untuk unpin
+193. Klik icon Pin pada `Name` untuk unpin
+194. Klik `[Save]`
+195. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+196. Klik icon Pin pada `Asset ID`
+197. Klik icon Pin pada `Brand`
+198. Klik icon Pin pada `Model / Type`
+199. Verifikasi preview menampilkan kolom `Asset ID`, `Brand`, `Model / Type` ter-pin
+200. Klik `[Save]`
+201. Scroll tabel secara horizontal
+202. Verifikasi kolom `Asset ID`, `Brand`, `Model / Type` membeku (sticky) saat scroll horizontal setelah Save
+203. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+204. Scroll tabel secara horizontal
+205. Verifikasi kolom `Asset ID`, `Brand`, `Model / Type` tetap membeku setelah F5
+206. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+207. Klik icon Pin pada `Asset ID` untuk unpin
+208. Klik icon Pin pada `Brand` untuk unpin
+209. Klik icon Pin pada `Model / Type` untuk unpin
+210. Klik `[Save]`
+211. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+212. Klik icon Pin pada `PIC`
+213. Verifikasi preview menampilkan kolom `PIC` ter-pin
+214. Klik `[Save]`
+215. Scroll tabel secara horizontal
+216. Verifikasi kolom `PIC` membeku (sticky) saat scroll horizontal setelah Save
+217. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+218. Scroll tabel secara horizontal
+219. Verifikasi kolom `PIC` tetap membeku setelah F5
+220. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+221. Klik icon Pin pada `PIC` untuk unpin
+222. Klik `[Save]`
+223. Kembalikan viewport ke ukuran awal
 
 ### TC-GS-USER-781: Setup Column Reset to Default
 
-141. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-142. Hilangkan centang `Brand`
-143. Klik `[Save]`
-144. Verifikasi tabel tanpa kolom `Brand` dengan urutan hasil perubahan `PIC | Model / Type | Asset ID | Name | Transaction ID | Photo`
-145. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
-146. Klik `[Reset to Default]`
-147. Klik `[Save]`
-148. Verifikasi susunan kolom kembali default: `Photo | Transaction ID | Name | Asset ID | Brand | Model / Type | PIC`
-149. Muat ulang halaman (F5)
-150. Verifikasi susunan default tetap bertahan setelah F5: `Photo | Transaction ID | Name | Asset ID | Brand | Model / Type | PIC`
+224. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+225. Hilangkan centang `Brand`
+226. Klik `[Save]`
+227. Verifikasi tabel tanpa kolom `Brand` dengan urutan hasil perubahan `PIC | Model / Type | Asset ID | Name | Transaction ID | Photo`
+228. Buka Popup Setup Column lewat header Column Visibility (⋯) lalu `Setup Column...`
+229. Klik `[Reset to Default]`
+230. Klik `[Save]`
+231. Verifikasi susunan kolom kembali default: `Photo | Transaction ID | Name | Asset ID | Brand | Model / Type | PIC`
+232. Muat ulang halaman (F5), lalu klik Tab `Responsibilities` dan sub-tab `Assigned Assets`
+233. Verifikasi susunan default tetap bertahan setelah F5: `Photo | Transaction ID | Name | Asset ID | Brand | Model / Type | PIC`
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE (preferensi kolom disimpan di browser; tabel dimuat dari backend nyata). Dataset 27 baris (lebih dari satu halaman) dipenuhi spec lewat seeding di hook `before`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: 776, 777 (screening), 782, 783, 784 (batal dan guard tanpa Save), 778, 779, 780 (perubahan yang disimpan), lalu 781 (Reset to Default) di akhir. TC-GS-USER-782, 783, dan 784 tidak menyimpan perubahan sehingga ditaruh sebelum TC yang menyimpan; TC-GS-USER-781 ditaruh terakhir karena sekaligus memulihkan preferensi kolom ke default. Urutan di `tc-user.md`: 776 sampai 784 berurutan.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 4 (pembukaan layar bersama untuk Ahmad Fauzi), langkah 34 dan 43 (menutup popup tanpa Save supaya perubahan checkbox dan pin tidak tersimpan; hook `after` sebagai cadangan), langkah 95 dan 140 (menyempitkan dan mengembalikan viewport), serta unpin dan centang kembali yang memulihkan state pada TC-GS-USER-778 dan 780. Langkah pembuka popup yang berulang merupakan prefix berulang. TC-GS-USER-782 memakai popup yang masih terbuka dari TC-GS-USER-777 sehingga langkah Uji 4 TC-GS-USER-782 (`Buka Setup Column`) dipenuhi langkah pembuka TC-GS-USER-777.
-- Pengelompokan kolom (diizinkan karena ketujuh kolom berkelas Hideable dengan perilaku identik): TC-GS-USER-778, 779, dan 780 pada TC sumber memuat siklus Save dan F5 per kolom. Spec menjalankan siklus Save dan F5 per kelompok kolom (778: dua kelompok; 780: tiga kelompok, batas 3 kolom ter-pin; 779: satu sesi tujuh seretan kumulatif dengan satu Save dan satu F5). Setiap kolom tetap punya `Verifikasi` sendiri (daftar kolom yang disebut utuh pada satu `Verifikasi`, S-01; di TC-GS-USER-779 satu `Verifikasi` preview per kolom).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 sampai 4 (pembukaan layar bersama untuk Ahmad Fauzi), langkah 34 dan 43 (menutup popup tanpa Save supaya perubahan checkbox dan pin tidak tersimpan; hook `after` sebagai cadangan), langkah 178 dan 223 (menyempitkan dan mengembalikan viewport), serta unpin dan centang kembali yang memulihkan state pada TC-GS-USER-778 dan 780. Langkah muat ulang halaman (F5) sekaligus membuka kembali Tab `Responsibilities` dan sub-tab `Assigned Assets` (F5 tidak dijamin mempertahankan Tab dan sub-tab; penetapan PRD menjadi tindak lanjut). Langkah pembuka popup yang berulang merupakan prefix berulang. TC-GS-USER-782 memakai popup yang masih terbuka dari TC-GS-USER-777 sehingga langkah Uji 4 TC-GS-USER-782 (`Buka Setup Column`) dipenuhi langkah pembuka TC-GS-USER-777.
+- Siklus per kolom: TC-GS-USER-778 dan 779 pada TC sumber memuat siklus Save dan F5 per kolom; spec menjalankannya per kolom (satu `[Save]` dan satu F5 per kolom, tujuh kali) dengan `Verifikasi` preview, tabel setelah Save, dan persistensi setelah F5 untuk tiap kolom. TC-GS-USER-780: pin dikelompokkan menjadi tiga siklus (`Photo`, `Transaction ID`, `Name`; `Asset ID`, `Brand`, `Model / Type`; `PIC`) karena maksimal 3 kolom ter-pin sekaligus; tiap siklus punya Save, scroll, F5, dan `Verifikasi` sticky sesudah Save dan sesudah F5.
 - Langkah Uji TC-GS-USER-778 `uncheck lalu check, Save, refresh F5` dibaca sebagai hide, Save, F5, lalu unhide, Save: uncheck yang langsung dibatalkan sebelum Save tidak mengubah konfigurasi tersimpan.
-- Urutan seretan TC-GS-USER-779 mengikuti urutan kolom TC (`Photo`, `Transaction ID`, `Name`, `Asset ID`, `Brand`, `Model / Type`, `PIC`), sehingga urutan akhir adalah kebalikannya. Seret `Photo` ke posisi pertama tidak mengubah susunan bila `Photo` sudah berada di posisi pertama.
-- Anchor positif dan state: verifikasi preview tidak memuat `Brand` (TC-GS-USER-782) dan verifikasi tiga kolom ter-pin (TC-GS-USER-784) mendahului asersi yang bergantung pada state itu (S-14); verifikasi footer `[Reset to Default]` dan `[Save]` mendahului asersi ketiadaan `[Cancel]`.
-- Spec melewati sekitar 35 langkah (150 langkah) karena sembilan TC berbagi satu popup Setup Column, satu layar, satu dataset 27 baris, dan satu kelas harness (fungsional). Blok 778, 779, dan 780 menguji tujuh kolom dengan blok identik (buka popup, ubah, Save, cek, F5) dan tiap blok berdiri sendiri; blok 781 memakai susunan hasil 779 dan 780 (Reset to Default). Langkah pembuka popup yang berulang dan pasangan klik per kolom merupakan prefix berulang.
+- Urutan seretan TC-GS-USER-779 mengikuti TC: `Photo` ke posisi terakhir, lalu `Transaction ID`, `Name`, `Asset ID`, `Brand`, `Model / Type`, `PIC` ke posisi pertama satu per satu, masing-masing dengan `[Save]` dan F5, sehingga urutan akhir `PIC | Model / Type | Brand | Asset ID | Name | Transaction ID | Photo`. Seret `Transaction ID` ke posisi pertama tidak mengubah susunan karena sudah pertama sesudah `Photo` dipindah ke posisi terakhir (lihat Temuan untuk QA).
+- Anchor positif dan state: verifikasi preview tidak memuat `Brand` (TC-GS-USER-782) dan verifikasi tiga kolom ter-pin (TC-GS-USER-784) mendahului asersi yang bergantung pada state itu (S-14); verifikasi footer `[Reset to Default]` dan `[Save]` mendahului asersi ketiadaan `[Cancel]`. Pada TC-GS-USER-778, tiap `Verifikasi` kolom hide `tetap tidak tampil setelah F5` didahului `Verifikasi` kolom lain tampil setelah F5 sebagai anchor positif (`Transaction ID`, atau `Name` untuk kolom `Transaction ID`; bagian 8b butir 2).
+- Spec melewati sekitar 35 langkah (233 langkah) karena sembilan TC berbagi satu popup Setup Column, satu layar, satu dataset 27 baris, dan satu kelas harness (fungsional). Blok 778, 779, dan 780 menguji tujuh kolom dengan blok identik (buka popup, ubah, Save, cek, F5) dan tiap blok berdiri sendiri; blok 781 memakai susunan hasil 779 dan 780 (Reset to Default). Langkah pembuka popup yang berulang dan pasangan klik per kolom merupakan prefix berulang.
 - Pembagian TC lintas spec: TC-GS-USER-390, 391, 755 sampai 760 (termasuk Search terhadap kolom hidden) ada di spec 120; TC-GS-USER-761 sampai 768 ada di spec 121; TC-GS-USER-769 sampai 773 ada di spec 122; TC-GS-USER-774, 775, 790, 791 ada di spec 123; TC-GS-USER-392 dan 785 sampai 789 (Download terhadap kolom hidden) ada di spec 125.
 - Temuan untuk QA:
   - TC-GS-USER-776 butir a vs TC-GS-USER-390 butir b: urutan kolom berbeda. Overlay: `Photo | Name | Asset ID | Transaction ID | Brand | Model / Type | PIC`; tabel: `Photo | Transaction ID | Name | Asset ID | Brand | Model / Type | PIC`. Spec mengikuti masing-masing TC (overlay di langkah verifikasi overlay, tabel di langkah verifikasi urutan default TC-GS-USER-781).
   - TC-GS-USER-776 butir b: `kolom Curated unchecked & enabled`, tetapi daftar kolom TC tidak memuat kolom Curated apa pun (ketujuh kolom Hideable dan default tampil); butir Curated tidak diasersi.
-  - TC-GS-USER-777: `deskripsi panduan` tidak disebut teksnya; spec hanya mengasersi deskripsi tampil.
-  - TC-GS-USER-778, 779, 780: siklus Save dan F5 per kolom dipadatkan per kelompok (lihat butir Pengelompokan kolom); `uncheck lalu check` ambigu (lihat butir pembacaan langkah). TC-GS-USER-780 tidak menyebut ukuran viewport dan perilaku `kolom beku` untuk tabel yang tidak overflow; disediakan tim FE.
+  - TC-GS-USER-777: `deskripsi panduan` tidak disebut teksnya; spec memakai teks deskripsi dari prd-conventions §9.3 (sumber yang dirujuk kolom Referensi TC).
+  - TC-GS-USER-778, 779, 780: `uncheck lalu check` ambigu (lihat butir pembacaan langkah). TC-GS-USER-779 langkah Uji kedua (`Transaction ID` ke posisi pertama) tidak mengubah susunan karena sudah pertama sesudah `Photo` dipindah ke posisi terakhir; Expected tidak membedakannya dari kolom lain. TC-GS-USER-780 tidak menyebut ukuran viewport dan perilaku `kolom beku` untuk tabel yang tidak overflow; disediakan tim FE.
   - TC-GS-USER-781: Langkah Uji 4 (`Ubah urutan dan visibility kolom, Save`) tidak menyebut kolom dan urutan; spec memakai susunan hasil TC-GS-USER-779 dan menyembunyikan `Brand`.
   - TC-GS-USER-784: `kolom keempat` ambigu (urutan daftar popup vs urutan tabel); spec memakai `Brand` sebagai kolom yang belum ter-pin sesudah tiga kolom ter-pin.
-  - Mekanisme menandai Guided Tooltip sebagai sudah dilihat, menyiapkan data FAMS, dan menghapus preferensi kolom di browser tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE. TC tidak menyatakan apakah F5 mempertahankan Tab dan sub-tab yang terbuka; spec mengasumsikan sub-tab Assigned Assets user yang sama tetap terbuka.
+  - Mekanisme menandai Guided Tooltip sebagai sudah dilihat, menyiapkan data FAMS, dan menghapus preferensi kolom di browser tidak didefinisikan di TC, PRD, atau LLD; disediakan tim FE/BE. TC tidak menyatakan apakah F5 mempertahankan Tab dan sub-tab yang terbuka; spec membuka kembali Tab `Responsibilities` dan sub-tab `Assigned Assets` sesudah tiap F5 (keputusan audit #2).

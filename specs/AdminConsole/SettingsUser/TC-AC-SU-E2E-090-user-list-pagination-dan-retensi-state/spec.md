@@ -53,12 +53,12 @@ coverage:
 23. Verifikasi tabel tetap berada di halaman 2
 24. Verifikasi urutan baris di halaman 2 mengikuti Email A-Z
 25. Klik header Email dua kali sampai sort kembali ke default Name A-Z
-26. Klik `[Clear Field]`, klik `[Apply]`
+26. Klik icon Filter, klik `[Clear Field]`, klik `[Apply]`
 27. Klik `(←)` pada kotak Search
 
 ## Notes
 
-- Langkah penghubung (S-03): `[Clear Field]` lalu `[Apply]`, menutup Search, dan mengembalikan sort ke default di akhir TC-322 (S-09).
+- Langkah penghubung (S-03): `Klik icon Filter` lalu `[Clear Field]` dan `[Apply]` (Apply menutup panel), menutup Search, dan mengembalikan sort ke default di akhir TC-322 (S-09).
 - Pembagian TC User List Pagination dan retensi state: TC-AC-SU-321 dan 322 di spec ini; TC-AC-SU-323, 324, dan 325 di spec 203, yang memakai dataset dan akun yang sama dengan seeding sendiri.
 - Temuan untuk QA:
   - TC menulis nama data DS-UL secara literal (nama user, email, position, division). Spec memakai nama bersuffix ` {runId}-090` (S-12) dan mengasersi baris milik spec; klaim "hanya X yang tampil" pada TC tidak dapat diasersi atas seluruh tabel karena baris Pre-setup bernama sama ikut ada di entitas Principal.

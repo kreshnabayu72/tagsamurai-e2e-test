@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup #2, Siti Rahmawati), email `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control). Hook `after` mengembalikan sesi ke akun default suite (Total Control, `FA_TC_PASSWORD`).
-- Data Pre-setup: #12 (Maya Anggraeni Read Only; seluruh Global Role hanya Read), #15 (Ahmad Fauzi), #21 (Ahmad Fauzi `Manage asset & TAG` Create, Read, Update di `Head Office`), #39 (Ahmad Fauzi `Manage files` Read di `Data Center`; Detail Role `Manage Open API` terisi), #37 (Tab Read Only terisi). Pada TC-FA-RP-1132 Ahmad Fauzi di-seed berstatus Read Only dengan Group Role `Manage files` Read di `Data Center` dan `Helpdesk` (seed API) serta `Manage asset & TAG` Create, Read, Update di `Head Office`.
+- Data Pre-setup: #12 (Maya Anggraeni Read Only; seluruh Global Role hanya Read), #15 (Ahmad Fauzi), #21 (Ahmad Fauzi `Manage asset & TAG` Create, Read, Update di `Head Office`), #39 (Ahmad Fauzi `Manage files` Read di `Data Center`; Detail Role `Manage Open API` terisi), #37 (Tab Read Only terisi). Pada TC-FA-RP-1132 Ahmad Fauzi di-seed berstatus Read Only dengan baris pola Group Role Read saja pada setiap group (termasuk `Manage files` di `Data Center` dan `Helpdesk` serta `Manage asset & TAG` di `Head Office`; `FARP-LOGIC-04b`).
 - Navigasi lintas modul: Settings > User > Detail User > Tab Role sub-tab Global Role atau Group Role (TC-FA-RP-1128 dan 1132).
 - Flag Guided Tooltip, halaman awal, sesi API aktor, dan pemulihan Pre-setup bersama: lihat `suite.md` bagian "Hook suite".
 - Data Pre-setup dirujuk lewat fixture `fixtures/fixedAssetRolePermission.json` (belum ada; disediakan tim FE). Email data pengguna berformat `[namalengkaptanpaspasi]@qwertysystem.net`.
@@ -59,7 +59,7 @@ coverage:
 
 ### TC-FA-RP-1132: Confirm Remove Read Only mengosongkan seluruh penugasan Group Role di semua group: baris hilang dari Detail Role dan kolom Users berkurang
 
-24. Tetapkan Ahmad Fauzi sebagai Read Only dengan Group Role `Manage files` Read di `Data Center` dan `Helpdesk` serta `Manage asset & TAG` Create, Read, Update di `Head Office` lewat seeding API
+24. Tetapkan Ahmad Fauzi sebagai Read Only dengan baris pola Group Role Read saja pada setiap group (termasuk `Manage files` di `Data Center` dan `Helpdesk` serta `Manage asset & TAG` di `Head Office`) lewat seeding API
 25. Buka Fixed Asset > Settings > Role & Permission > System lalu catat kolom Users baris Group Role `Manage files` dan `Manage asset & TAG` sebagai baseline
 26. Buka Tab Read Only, klik `[⋯]` baris Ahmad Fauzi lalu `Remove`, klik `[Remove]`
 27. Verifikasi toast sukses `Success, Read Only has been removed.`
@@ -81,5 +81,5 @@ coverage:
 - Asersi absence memakai empty state hasil Search sebagai anchor positif (butir 8b.2). Baseline kolom Users dicatat sebagai langkah TC dan asersi memakai selisih 1 (S-12).
 - Temuan untuk QA:
   - TC-FA-RP-218 dan 1128 menggunakan Maya Anggraeni (Pre-setup #12); TC-FA-RP-1128 mensyaratkan Maya Anggraeni kembali Read Only dengan Global Role selaras sesudah TC-FA-RP-218 menghapusnya; spec memulihkannya lewat seeding API di antara blok.
-  - TC-FA-RP-1132 precondition d memuat Group Role `Manage files` Read di `Helpdesk` untuk Ahmad Fauzi yang tidak ada di Pre-setup; di-seed lewat seeding API sesuai TC.
+  - TC-FA-RP-1132 precondition d memuat baris pola Group Role `Manage files` di `Helpdesk` untuk Ahmad Fauzi yang tidak ada di Pre-setup; di-seed lewat seeding API sesuai TC.
 - Ukuran spec (36 langkah, di atas smell sekitar 35 langkah): semua blok berkelas fungsional, memakai permukaan dan dataset Pre-setup yang sama, dan tiap blok TC menyiapkan state sendiri lewat seeding sehingga kegagalan satu blok tidak menghilangkan makna blok lain; langkah membengkak karena tiap klausa Expected menjadi satu `Verifikasi` (S-01). Tidak dipecah lagi (konvensi bagian 3, batas ukuran).

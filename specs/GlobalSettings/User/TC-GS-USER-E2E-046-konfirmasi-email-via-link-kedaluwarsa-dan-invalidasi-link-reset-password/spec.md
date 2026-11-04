@@ -48,7 +48,7 @@ coverage:
 6. Buka tab baru, buka link konfirmasi email `Rina Putri A {runId}-046` (email ke `rinaputri.a.new+{runId}-046@qwertysystem.net`) dari mail-catcher
 7. Tutup tab link konfirmasi
 8. Kembali ke User List, refresh
-9. Klik icon Search, ketik `Rina Putri A {runId}-046`, tekan Enter
+9. Ganti isi kotak search dengan `Rina Putri A {runId}-046`, tekan Enter
 10. Verifikasi kolom Email baris `Rina Putri A {runId}-046` berubah ke `rinaputri.a.new+{runId}-046@qwertysystem.net`
 11. Verifikasi badge `Pending Email Confirmation` hilang dari baris `Rina Putri A {runId}-046`
 12. Buka jendela privat baru, buka link reset password lama (langkah 4)
@@ -62,7 +62,7 @@ coverage:
 17. Verifikasi halaman link menampilkan `"This confirmation link has expired or was already used."`
 18. Tutup tab link konfirmasi
 19. Kembali ke User List, refresh
-20. Klik icon Search, ketik `Rina Putri C {runId}-046`, tekan Enter
+20. Ganti isi kotak search dengan `Rina Putri C {runId}-046`, tekan Enter
 21. Verifikasi kolom Email baris `Rina Putri C {runId}-046` tetap `rinaputri.c+{runId}-046@qwertysystem.net`
 
 ### TC-GS-USER-232: Link konfirmasi kedaluwarsa tidak menghapus email pending
@@ -73,7 +73,7 @@ coverage:
 25. Pulihkan jam server ke waktu nyata
 26. Tutup tab link konfirmasi
 27. Kembali ke User List, refresh
-28. Klik icon Search, ketik `Rina Putri B {runId}-046`, tekan Enter
+28. Ganti isi kotak search dengan `Rina Putri B {runId}-046`, tekan Enter
 29. Verifikasi badge `Pending Email Confirmation` tetap pada baris `Rina Putri B {runId}-046`
 
 ## Notes

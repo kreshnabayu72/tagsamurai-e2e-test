@@ -71,21 +71,22 @@ coverage:
 24. Verifikasi tidak ada pesan "SKU already exists"
 25. Klik `[Save]`
 26. Verifikasi muncul toast info "No changes to save."
+27. Verifikasi Popup Edit SKU tertutup
 
 ### TC-AC-DS-221: spasi tepi Model/Type dibuang
 
-27. Klik `⋯` pada baris `EDT-{runId}-063`, lalu pilih `Edit`
-28. Ganti Model/Type dengan `  H203  ` (dua spasi di awal dan akhir)
-29. Klik `[Save]`
-30. Verifikasi muncul toast sukses "Success, device SKU has been updated."
-31. Verifikasi badge Model/Type baris `EDT-{runId}-063` menampilkan `H203` tanpa spasi tepi
+28. Klik `⋯` pada baris `EDT-{runId}-063`, lalu pilih `Edit`
+29. Ganti Model/Type dengan `  H203  ` (dua spasi di awal dan akhir)
+30. Klik `[Save]`
+31. Verifikasi muncul toast sukses "Success, device SKU has been updated."
+32. Verifikasi badge Model/Type baris `EDT-{runId}-063` menampilkan `H203` tanpa spasi tepi
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/settings-device-sku/TestCases/tc-settings-device-sku.md`; subjudul `###` memetakan langkah ke id TC granular.
 - Penyimpangan urutan: validasi yang diblokir (TC-217, TC-220, TC-222) mendahului TC-218 dan TC-221 (S-10); nilai tersimpan TC-217 diasersi setelah popup ditutup. Format SKU (TC-220) dan Model/Type (TC-222) diketik pada form yang sama sebelum ditutup.
 - Langkah penghubung: langkah 1 (Search untuk menemukan baris milik spec, R-16) dan langkah 17 sampai 19 (menutup form dirty, S-08). Anchor positif TC-218: langkah 23 memastikan field SKU berisi kode SKU milik spec sebelum asersi absence pesan "SKU already exists" (bagian 8b butir 2).
-- Temuan untuk QA: TC-218 tidak menyatakan apakah popup menutup setelah toast "No changes to save."; spec mengasumsikan menutup seperti TC-207 sehingga langkah 27 membuka popup lagi. TC-217 menyebut "sekitar 500 ms" tanpa toleransi; spec menunggu 1 detik sesuai langkah TC.
+- Temuan untuk QA: TC-218 Expected c menyatakan Popup Edit tertutup setelah toast "No changes to save." (langkah 27), sehingga langkah 28 membuka popup lagi. TC-217 menyebut "sekitar 500 ms" tanpa toleransi; spec menunggu 1 detik sesuai langkah TC.
 - Post Condition "perubahan tersimpan" dan "entri log tercatat di Changelog, System Log aktor, dan Activity Log" tidak diasersi di spec ini karena TC tidak memberi langkah observasinya; pencatatan log diuji di spec log tiga surface.
 - Temuan untuk QA (S-06/S-12): TC-217, TC-218, TC-220, TC-221, dan TC-222 menulis ke SKU Pre-setup `HHR-ARC-200`; spec memakai SKU milik spec `EDT-{runId}-063` berkonfigurasi sama (pengecualian S-12 A-11: spec 062, 063, dan 064 memakai SKU milik spec bersuffix untuk `[Save]`). Pada TC-218 kode yang diketik ulang adalah kode SKU milik spec, sehingga tidak dianggap duplikat terhadap dirinya sendiri. `HHR-ARC-100` pada TC-217 (nama literal Pre-setup, pengecualian S-12 A-11) hanya diketik dan tidak pernah tersimpan.
 - Temuan untuk QA (fixture): `fixtures/settings-device-sku.json`, akun Pre-setup #1 dan #2, dan env `AC_DS_*` belum terverifikasi ada di environment; ketersediaannya dipastikan tim FE.

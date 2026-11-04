@@ -39,7 +39,7 @@ coverage:
   | 1 | Read Only, Yudi Pratomo (No. 3) | `readOnlyGlobalSettings_automated_{namaCompany}@qwertysystem.net` | `GS_RO_PASSWORD` |
   | 2 | Manage user and role (Update-Only: R+U), Bayu Saputra (No. 6) | `manageUserUpdate_automated_{namaCompany}@qwertysystem.net` | `GS_UPDATE_PASSWORD` |
   | 3 | Manage user and role (Full CRUD), Fajar Nugroho (No. 4) | `manageUserFullCrud_automated_{namaCompany}@qwertysystem.net` | `GS_FULLCRUD_PASSWORD` |
-  | 4 | Total Control Client tanpa subscription Supply Asset (disediakan tim FE, tidak ada di Tabel Pre-setup) | `totalControlGlobalSettings_automated_{namaCompanyTanpaSupplyAsset}@qwertysystem.net` | `GS_NOSUPPLY_TC_PASSWORD` |
+  | 4 | Total Control Client tanpa subscription Supply Asset (disediakan tim FE, tidak ada di Tabel Pre-setup) | akun disediakan tim FE | `GS_NOSUPPLY_TC_PASSWORD` |
   | 5 | Total Control Client A, Siti Nurhaliza (No. 2), akun default suite | `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` | `GS_TC_PASSWORD` |
 
   Login akun 1 di hook `before` lalu membuka Global Settings > User > User List (sub-tab Login User); hook `after` mengembalikan sesi ke akun default suite (akun 5). Password tidak ditulis di spec atau fixture.
@@ -94,7 +94,7 @@ coverage:
 
 ### Akun 4, Client tanpa subscription Supply Asset (TC-GS-USER-980)
 
-26. Ganti akun: logout, lalu login sebagai Total Control Client tanpa subscription Supply Asset (`totalControlGlobalSettings_automated_{namaCompanyTanpaSupplyAsset}@qwertysystem.net`) dengan `Spectra.env.GS_NOSUPPLY_TC_PASSWORD`, lalu buka Global Settings > User > User List
+26. Ganti akun: logout, lalu login sebagai Total Control Client tanpa subscription Supply Asset (akun disediakan tim FE) dengan `Spectra.env.GS_NOSUPPLY_TC_PASSWORD`, lalu buka Global Settings > User > User List
 27. Kirim request Create user dengan email `supplyuser+{runId}-155@qwertysystem.net` dan Access `Supply Asset` langsung ke server
 28. Verifikasi server menolak request
 29. Verifikasi (dibaca lewat fixture BE) user `supplyuser+{runId}-155@qwertysystem.net` tidak dibuat
@@ -133,7 +133,7 @@ coverage:
 56. Ganti isi kotak search dengan `%' OR 1=1 --`, tekan Enter
 57. Verifikasi state No result tampil pada tabel
 58. Verifikasi tidak ada toast error atau pesan error pada halaman
-59. Kosongkan Search
+59. Kosongkan Search lewat `(✕)`, tekan Enter
 
 ### Payload script (TC-GS-USER-981)
 
@@ -146,7 +146,7 @@ coverage:
 66. Verifikasi Name tampil sebagai teks literal `<script>alert(1)</script> XSS {runId}-155` di Detail
 67. Verifikasi tidak ada script yang dieksekusi dan tidak ada dialog browser di Detail
 68. Kembali ke User List dengan klik Back
-69. Kosongkan Search
+69. Kosongkan Search lewat `(✕)`, tekan Enter
 
 ## Notes
 

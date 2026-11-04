@@ -79,31 +79,33 @@ coverage:
 
 24. Logout dari akun aktor saat ini
 25. Login sebagai Read Only (`readOnlyAdminConsole_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_RO_PASSWORD`)
-26. Ketik Search `Rudi Hartono {runId}-023`, tekan Enter
-27. Klik Name `Rudi Hartono {runId}-023`
-28. Klik sub-tab Group Role
-29. Verifikasi Read Only: `[Detail]` tampil dan enabled
-30. Verifikasi Read Only: `[Assign Group]` tidak dirender
-31. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+26. Buka Settings > User lewat sidebar
+27. Ketik Search `Rudi Hartono {runId}-023`, tekan Enter
+28. Klik Name `Rudi Hartono {runId}-023`
+29. Klik sub-tab Group Role
+30. Verifikasi Read Only: `[Detail]` tampil dan enabled
+31. Verifikasi Read Only: `[Assign Group]` tidak dirender
+32. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
 
 ### TC-AC-SU-69: Assign Group disabled untuk target Total Control bagi Manage user and role
 
-32. Logout dari akun aktor saat ini
-33. Login sebagai Manage user and role (Update, U=true) (`manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_UPDATE_PASSWORD`)
-34. Ketik Search `Dewi Lestari {runId}-023`, tekan Enter
-35. Klik Name `Dewi Lestari {runId}-023`
-36. Klik sub-tab Group Role
-37. Hover `[Assign Group]`
-38. Verifikasi `[Assign Group]` tetap tampil namun disabled dengan tooltip `You don't have permission to edit.`
-39. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
-40. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+33. Logout dari akun aktor saat ini
+34. Login sebagai Manage user and role (Update, U=true) (`manageUserRoleUpdate_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.AC_MUR_UPDATE_PASSWORD`)
+35. Buka Settings > User lewat sidebar
+36. Ketik Search `Dewi Lestari {runId}-023`, tekan Enter
+37. Klik Name `Dewi Lestari {runId}-023`
+38. Klik sub-tab Group Role
+39. Hover `[Assign Group]`
+40. Verifikasi `[Assign Group]` tetap tampil namun disabled dengan tooltip `You don't have permission to edit.`
+41. Klik segmen `User` pada Breadcrumb untuk kembali ke Settings > User
+42. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), langkah 8, 23, 39 dan langkah kembali ke daftar lain, langkah 40 (reset Search).
+- Langkah penghubung (S-03): langkah 1 (Search untuk menemukan baris target, R-16; berlaku juga untuk semua Search sesudahnya), langkah 8, 23, 41 dan langkah kembali ke daftar lain, langkah 26 dan 35 (buka Settings > User lewat sidebar sesudah login ulang), langkah 42 (reset Search).
+- Spec ini matriks visibilitas per aktor dan target (bagian 3a): memuat asersi tampil dan enabled (`[Detail]`, `[Assign Group]` untuk Total Control dan role tanpa group), disabled (`[Assign Group]` untuk Manage user and role pada target Total Control), dan tidak dirender (`[Assign Group]` untuk Default User, self, dan Read Only) dalam satu spec; polaritas campuran disengaja; `caseType` Positive mengikuti bagian 8.
 - Alasan blok per akun (bagian 3a, `[KEPUTUSAN 2026-10-30]`): ganti akun menuntut Step eksplisit; tiga akun dipakai berurutan, masing-masing satu kali. Urutan TC (S-05): 68, 70 (Total Control), 70 (Read Only), 69, agar akun Total Control dipakai berurutan.
-- Ukuran spec (40 langkah, di atas smell sekitar 35 langkah): Role Matrix satu permukaan (sub-tab Group Role) dengan tiga akun; tiap blok akun berdiri sendiri (login eksplisit di awal blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Ukuran spec (42 langkah, di atas smell sekitar 35 langkah): Role Matrix satu permukaan (sub-tab Group Role) dengan tiga akun; tiap blok akun berdiri sendiri (login eksplisit di awal blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
-  - TC-AC-SU-68 mensyaratkan Default User dan aktor memiliki Group Role aktif; keduanya data Pre-setup, sehingga S-06 pengecualian dipakai lewat Fixture BE dan `suite.md` belum menyatakannya. Perlu keputusan pemilik.
   - TC-AC-SU-68 memakai nama aktor `Fajar Nugroho`; spec memakai akun Total Control Pre-setup #2 dan baris self dicari lewat emailnya.
   - Nama user TC (`Region A`, `Rudi Hartono`, `Dewi Lestari`) dipakai sebagai nama bersuffix `{runId}-023` sesuai S-12 (Lampiran A tidak memuat pengecualian modul Settings > User).

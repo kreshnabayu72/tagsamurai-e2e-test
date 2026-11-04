@@ -72,25 +72,27 @@ coverage:
 
 ### TC-AC-DS-483: Perubahan kapitalisasi Model/Type dicatat sebagai Edit nyata
 
-33. Ketik Search `HHR-ARC-200`, tekan Enter
-34. Klik ⋯ pada baris `HHR-ARC-200`, pilih `Edit`
-35. Verifikasi Popup Edit SKU tampil dengan field terisi
-36. Ubah Model/Type dari `H200` menjadi `h200`
-37. Klik `[Save]`
-38. Verifikasi tidak ada toast "No changes to save."
-39. Klik ikon Changelog
-40. Verifikasi modal "Changelog: Device SKU" tampil dengan entri Edit baru Field `Model/Type`, Old Value `H200`, New Value `h200` di baris pertama
+33. Catat baseline jumlah entri Changelog Principal
+34. Ketik Search `HHR-ARC-200`, tekan Enter
+35. Klik ⋯ pada baris `HHR-ARC-200`, pilih `Edit`
+36. Verifikasi Popup Edit SKU tampil dengan field terisi
+37. Ubah Model/Type dari `H200` menjadi `h200`
+38. Klik `[Save]`
+39. Verifikasi tidak ada toast "No changes to save."
+40. Klik ikon Changelog
+41. Verifikasi jumlah entri Changelog bertambah tepat 1 dari baseline langkah 33
+42. Verifikasi modal "Changelog: Device SKU" tampil dengan entri Edit baru Field `Model/Type`, Old Value `H200`, New Value `h200` di baris pertama
 
 ### Pemulihan state akhir
 
-41. Tutup modal Changelog; pulihkan Model/Type `HHR-ARC-200` menjadi `H200` lewat fixture BE
+43. Tutup modal Changelog; pulihkan Model/Type `HHR-ARC-200` menjadi `H200` lewat fixture BE
 
 ## Notes
 
-- Spec berisi 41 langkah nominal, melewati sekitar 35 langkah. Alasan: tiga TC satu kelas (pencatatan log) dan berdiri sendiri; sebagian besar langkah adalah blok baca-log berpola (buka surface, cari entri, `Verifikasi` kolom log; langkah 8 sampai 14 dan 24 sampai 31) yang menurut bagian 3 prinsip 13 tidak dihitung sebagai langkah smell. Kegagalan satu TC tidak membuat TC lain kehilangan makna.
+- Spec berisi 43 langkah nominal, melewati sekitar 35 langkah. Alasan: tiga TC satu kelas (pencatatan log) dan berdiri sendiri; sebagian besar langkah adalah blok baca-log berpola (buka surface, cari entri, `Verifikasi` kolom log; langkah 8 sampai 14 dan 24 sampai 31) yang menurut bagian 3 prinsip 13 tidak dihitung sebagai langkah smell. Kegagalan satu TC tidak membuat TC lain kehilangan makna.
 - Urutan TC dalam spec: 476, 477, 483; pemulihan foto di langkah 15 dan 32 menjaga keadaan awal TC-AC-DS-477 (foto kedua default).
-- Langkah penghubung tanpa `Verifikasi`: langkah 1 dan 16 (baseline, S-12), langkah 2, 17, 33 (Search untuk menemukan baris target, R-16), langkah 23 (mencatat waktu aksi), langkah 15, 32, 41 (S-03, S-09).
-- Absence toast "No changes to save." (langkah 38) diletakkan segera setelah pemicu `[Save]` dan sebelum asersi entri Changelog (8b butir 11); entri Edit baru pada langkah 40 adalah anchor positif.
+- Langkah penghubung tanpa `Verifikasi`: langkah 1, 16, dan 33 (baseline, S-12), langkah 2, 17, 34 (Search untuk menemukan baris target, R-16), langkah 23 (mencatat waktu aksi), langkah 15, 32, 43 (S-03, S-09).
+- Absence toast "No changes to save." (langkah 39) diletakkan segera setelah pemicu `[Save]` dan sebelum asersi entri Changelog (8b butir 11); selisih +1 entri (langkah 41) dan entri Edit baru pada langkah 42 adalah anchor positif. Entri baru pada TC-AC-DS-483 diidentifikasi lewat selisih jumlah terhadap baseline (langkah 33), lalu dibaca di baris pertama.
 - Expected 476 butir a dipecah menjadi langkah 9 dan 10; butir b menjadi langkah 12 dan 14. Post Condition TC-AC-DS-483 ("tidak ada entri log ganda") tanpa langkah observasi di TC (hanya Changelog yang dibuka): tidak diasersi.
 - Temuan untuk QA:
   - S-12: nilai literal Pre-setup (`HHR-ARC-100`, `HHR-ARC-200`, `H200`) mengikuti TC tanpa suffix; pengecualian modul belum ada di Lampiran A (butuh keputusan).

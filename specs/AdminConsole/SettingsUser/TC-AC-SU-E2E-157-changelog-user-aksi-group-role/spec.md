@@ -40,44 +40,56 @@ coverage:
 5. Klik `[+ Assign Group]`, centang Region B, klik `[Select]`
 6. Klik `[Save]`, lalu catat waktu aksi
 7. Tunggu aksi selesai, lalu klik Tab Changelog
-8. Verifikasi Tab Changelog menampilkan entri teratas: Action `Assign`, Field `Manage partner — Region B — Access`, Old Value `—`, New Value `Assigned`, Modified By nama aktor format singkat
-9. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
-10. Klik menu Settings > User di sidebar
-11. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
-12. Verifikasi baris teratas: Action `Assign`, User Name `Mike Tan {runId}-157A`, Field `Manage partner — Region B — Access`, Old Value `—`, New Value `Assigned`, Modified By nama aktor format singkat
-13. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
+8. Verifikasi Tab Changelog menampilkan tepat 1 entri
+9. Verifikasi entri tersebut memiliki Action `Assign`, Field `Manage partner — Region B — Access`, Old Value `—`, New Value `Assigned`, Modified By nama aktor format singkat
+10. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
+11. Klik menu Settings > User di sidebar
+12. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
+13. Ketik Search `Mike Tan {runId}-157A` pada Popup Changelog: User, tekan Enter
+14. Verifikasi Popup Changelog: User menampilkan tepat 1 baris
+15. Verifikasi baris tersebut memiliki Action `Assign`, User Name `Mike Tan {runId}-157A`, Field `Manage partner — Region B — Access`, Old Value `—`, New Value `Assigned`, Modified By nama aktor format singkat
+16. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit)
+17. Verifikasi Date baris berformat mengikuti General Settings
 ### TC-AC-SU-539: Edit permission Group Role per group
-14. Tutup Popup Changelog: User, ketik Search `Mike Tan {runId}-157B`, tekan Enter
-15. Klik Name baris U2 untuk membuka Detail
-16. Klik Tab Role, lalu sub-tab Group Role
-17. Klik `[Assign Group]` pada baris "Manage partner", centang Create pada baris Region A
-18. Klik `[Save]`, lalu catat waktu aksi
-19. Tunggu aksi selesai, lalu klik Tab Changelog
-20. Verifikasi Tab Changelog menampilkan entri teratas: Action `Edit`, Field `Manage partner — Region A — Create`, Old Value `Inactive`, New Value `Active`, Modified By nama aktor format singkat
-21. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
-22. Klik menu Settings > User di sidebar
-23. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
-24. Verifikasi baris teratas: Action `Edit`, User Name `Mike Tan {runId}-157B`, Field `Manage partner — Region A — Create`, Old Value `Inactive`, New Value `Active`, Modified By nama aktor format singkat
-25. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
+18. Tutup Popup Changelog: User, ketik Search `Mike Tan {runId}-157B`, tekan Enter
+19. Klik Name baris U2 untuk membuka Detail
+20. Klik Tab Role, lalu sub-tab Group Role
+21. Klik `[Assign Group]` pada baris "Manage partner", centang Create pada baris Region A
+22. Klik `[Save]`, lalu catat waktu aksi
+23. Tunggu aksi selesai, lalu klik Tab Changelog
+24. Verifikasi Tab Changelog menampilkan tepat 1 entri
+25. Verifikasi entri tersebut memiliki Action `Edit`, Field `Manage partner — Region A — Create`, Old Value `Inactive`, New Value `Active`, Modified By nama aktor format singkat
+26. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
+27. Klik menu Settings > User di sidebar
+28. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
+29. Ketik Search `Mike Tan {runId}-157B` pada Popup Changelog: User, tekan Enter
+30. Verifikasi Popup Changelog: User menampilkan tepat 1 baris
+31. Verifikasi baris tersebut memiliki Action `Edit`, User Name `Mike Tan {runId}-157B`, Field `Manage partner — Region A — Create`, Old Value `Inactive`, New Value `Active`, Modified By nama aktor format singkat
+32. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit)
+33. Verifikasi Date baris berformat mengikuti General Settings
 ### TC-AC-SU-540: Remove Group Role per group
-26. Tutup Popup Changelog: User, ketik Search `Mike Tan {runId}-157C`, tekan Enter
-27. Klik Name baris U3 untuk membuka Detail
-28. Klik Tab Role, lalu sub-tab Group Role
-29. Klik `[Assign Group]` pada baris "Manage partner", klik `[🗑]` pada baris Region B
-30. Klik `[Save]`, lalu catat waktu aksi
-31. Tunggu aksi selesai, lalu klik Tab Changelog
-32. Verifikasi Tab Changelog menampilkan entri teratas: Action `Remove`, Field `Manage partner — Region B — Access`, Old Value `Assigned`, New Value `—`, Modified By nama aktor format singkat
-33. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
-34. Klik menu Settings > User di sidebar
-35. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
-36. Verifikasi baris teratas: Action `Remove`, User Name `Mike Tan {runId}-157C`, Field `Manage partner — Region B — Access`, Old Value `Assigned`, New Value `—`, Modified By nama aktor format singkat
-37. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit) dan berformat mengikuti General Settings
+34. Tutup Popup Changelog: User, ketik Search `Mike Tan {runId}-157C`, tekan Enter
+35. Klik Name baris U3 untuk membuka Detail
+36. Klik Tab Role, lalu sub-tab Group Role
+37. Klik `[Assign Group]` pada baris "Manage partner", klik `[🗑]` pada baris Region B
+38. Klik `[Save]`, lalu catat waktu aksi
+39. Tunggu aksi selesai, lalu klik Tab Changelog
+40. Verifikasi Tab Changelog menampilkan tepat 1 entri
+41. Verifikasi entri tersebut memiliki Action `Remove`, Field `Manage partner — Region B — Access`, Old Value `Assigned`, New Value `—`, Modified By nama aktor format singkat
+42. Verifikasi tabel Tab Changelog tidak memiliki kolom User Name
+43. Klik menu Settings > User di sidebar
+44. Klik icon Changelog di toolbar sehingga Popup Changelog: User terbuka
+45. Ketik Search `Mike Tan {runId}-157C` pada Popup Changelog: User, tekan Enter
+46. Verifikasi Popup Changelog: User menampilkan tepat 1 baris
+47. Verifikasi baris tersebut memiliki Action `Remove`, User Name `Mike Tan {runId}-157C`, Field `Manage partner — Region B — Access`, Old Value `Assigned`, New Value `—`, Modified By nama aktor format singkat
+48. Verifikasi Date baris sama dengan waktu aksi (toleransi satu menit)
+49. Verifikasi Date baris berformat mengikuti General Settings
 
 ## Notes
 
-- Langkah penghubung tanpa Verifikasi (S-03): Search dan pembukaan Detail (langkah 1, 14, 26, R-16), menutup popup, kembali ke daftar lewat sidebar, dan pencatatan waktu aksi.
-- Urutan: Expected TC menempatkan Tab Changelog Detail (butir c) sesudah Popup Changelog; spec memverifikasi Tab Changelog lebih dulu karena Detail sudah terbuka saat aksi (S-10). Baris target dicari sebagai baris teratas (Newest First) karena aksi baru saja dilakukan (S-14).
-- Spec berisi tiga blok TC independen berpola sama dengan user seeding sendiri; 37 langkah (di atas smell 35 langkah) dipertahankan karena kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung tanpa Verifikasi (S-03): Search dan pembukaan Detail (langkah 1, 18, 34, R-16), Search nama unik pada Popup Changelog: User (langkah 13, 29, 45), menutup popup, kembali ke daftar lewat sidebar, dan pencatatan waktu aksi.
+- Urutan: Expected TC menempatkan Tab Changelog Detail (butir c) sesudah Popup Changelog; spec memverifikasi Tab Changelog lebih dulu karena Detail sudah terbuka saat aksi (S-10). Tab Changelog Detail dan Popup Changelog: User sama-sama diasersi "tepat 1" entri atau baris; Popup dicari dengan Search nama bersuffix unik dan baseline entri nol, sehingga keduanya asersi jumlah, bukan pembacaan baris teratas (S-14).
+- Spec berisi tiga blok TC independen berpola sama dengan user seeding sendiri; 49 langkah (di atas smell 35 langkah) dipertahankan karena kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - Post Condition TC-538 sampai TC-540 (Tab System Log aktor dan Activity Log dicatat) tidak punya langkah observasi di TC; tidak diasersi di spec ini. System Log diasersi pada spec 166 sampai 168.
   - TC tidak menyatakan apakah popup Assign Group Role menutup sendiri sesudah `[Save]`; spec menunggu aksi selesai lalu berpindah ke Tab Changelog.

@@ -21,7 +21,6 @@ coverage:
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control). Hook `after` mengembalikan sesi ke akun default suite (Total Control, `FA_TC_PASSWORD`).
 - Data Pre-setup: #15 (kolam pengguna Standard: Ahmad Fauzi, Budi Santoso, Budi Setiawan, Citra Lestari, Dimas Pranata, Endah Susanti; Citra Lestari memegang Global Role `Import data` Read saja, `Manage Open API` Read dan Update, `Manage accounting` CRUD penuh) dan #36 (Tab Total Control terisi).
 - Waktu: jam server dan jam browser sinkron untuk asersi Last Updated (S-12); waktu dicatat sesudah `[Assign]` dan Last Updated dibandingkan dengan toleransi satu menit.
-- Kemampuan baca state lewat fixture BE (disediakan tim FE/BE, tanpa endpoint karangan): daftar penugasan Group Role Citra Lestari dicatat sebagai baseline di hook `before` untuk TC-FA-RP-189 Expected e.
 - Flag Guided Tooltip, halaman awal, sesi API aktor, dan pemulihan Pre-setup bersama: lihat `suite.md` bagian "Hook suite".
 - Data Pre-setup dirujuk lewat fixture `fixtures/fixedAssetRolePermission.json` (belum ada; disediakan tim FE). Email data pengguna berformat `[namalengkaptanpaspasi]@qwertysystem.net`.
 - Seeding dan pemulihan: kondisi Precondition tiap TC (tingkat akses, penugasan, group) dibuat lewat seeding API (kemampuan disediakan tim FE/BE, tanpa endpoint karangan) di hook `before` dan sebagai langkah penghubung antar blok TC; Pre-setup dipulihkan ke Tabel Data Uji Pre-setup TC di hook `after` (Catatan TC "Pemulihan fixture destruktif"). Spec tidak membuat data Dinamis. Suite berjalan serial (`parallel: false`).
@@ -76,7 +75,7 @@ coverage:
 37. Verifikasi baris Citra Lestari: Create, Read, Update, dan Delete aktif
 38. Buka Detail Role Group Role `Manage files` lalu klik `All Groups`
 39. Ketik Search `Citra Lestari`, tekan Enter
-40. Verifikasi jumlah baris Citra Lestari pada Detail Role `Manage files` sama dengan baseline hook `before` (tidak ada baris baru; Group Role tidak ikut cascade)
+40. Verifikasi pada setiap group baris Citra Lestari tampil di Detail Role `Manage files` dengan Read dan Delete aktif (CRUD penuh sesuai kolom berlaku; Group Role ikut cascade pola tier, `FARP-LOGIC-17a`)
 
 ## Notes
 
@@ -86,6 +85,7 @@ coverage:
 - TC-FA-RP-187 Post Condition a sampai d, TC-FA-RP-189 Post Condition a dan b, dan Post Condition TC-FA-RP-188 tidak punya langkah observasi di TC sehingga tidak diasersi; entri log dan refleksi Tab Role Settings > User tidak diklaim teruji (S-01, S-15).
 - Langkah Search pada Tab Total Control (langkah 7, 19, 21) menemukan baris yang baru ditambahkan karena tabel berisi lebih banyak baris daripada satu halaman (R-16).
 - Temuan untuk QA:
-  - TC-FA-RP-189 Expected e (tidak ada baris baru untuk Citra Lestari di Group Role `Manage files`) tidak punya baseline; Pre-setup #39 memuat Citra Lestari di `Head Office` pada `Manage files`. Spec memakai jumlah baris Citra Lestari yang dibaca sebelum Assign sebagai baseline dan mengasersi jumlah yang sama (S-12), bukan "tidak ada baris".
-  - TC-FA-RP-189 precondition hanya merujuk Pre-setup #15, padahal Expected e memerlukan pembanding pada Detail Role `Manage files`; Search `Citra Lestari` memberi anchor (baris Citra Lestari atau empty state hasil Search).
+  - TC-FA-RP-189 Expected e memuat klausa entri Changelog per Role × Group (`Assign (via Total Control)` dan `Edit`) tanpa langkah observasi di TC; klausa itu hanya dirujuk ke TC-FA-RP-860 yang diasersi dengan aksi nyata di spec `TC-FA-RP-E2E-258-pencatatan-lintas-surface-cascade-atomik-dan-konsistensi-entri-1` (S-05, S-15), sehingga langkah 40 hanya mengasersi baris Citra Lestari di Detail Role `Manage files`.
+  - TC-FA-RP-189 Expected e menyebut "setiap group" tanpa daftar group; langkah 40 mengamati baris Citra Lestari pada hasil Search `All Groups` untuk seluruh group pohon Pre-setup #18.
+  - Post Condition b TC-FA-RP-189 (kolom Users Tab System Global Role dan Group Role bertambah) tidak punya langkah observasi di TC; tidak diasersi.
 - Ukuran spec (40 langkah, di atas smell sekitar 35 langkah): semua blok berkelas fungsional, memakai permukaan dan dataset Pre-setup yang sama, dan ketiga blok (TC-FA-RP-187, 188, 189) berurutan pada popup Assign Total Control di Tab Total Control dengan user dan Pre-setup yang sama, kondisi awalnya dibuat seeding di hook `before` dan Pre-setup dipulihkan di hook `after`, sehingga memecahnya hanya menggandakan login, hook, dan pembukaan popup yang sama tanpa membuat blok lebih mandiri; langkah membengkak karena tiap klausa Expected menjadi satu `Verifikasi` (S-01). Tidak dipecah lagi (konvensi bagian 3, batas ukuran).

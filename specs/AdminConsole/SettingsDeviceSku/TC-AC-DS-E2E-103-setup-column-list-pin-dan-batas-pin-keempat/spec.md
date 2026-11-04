@@ -20,7 +20,7 @@ coverage:
 - Data Pre-setup #29 (SKU Principal inti) dan #30 (`SEED-001` sampai `SEED-119`; total 129 SKU Principal): hanya dibaca, tidak diubah. Dipasang idempoten oleh seeding di hook `before`.
 - Tabel "Kolom Hideable" untuk langkah 2 sampai 7: `Photo`, `Device Name`, `SKU`, `Category`, `Brand`, `Model/Type`, `Current Stock`, `Last Modified`.
 - Lebar viewport cukup sempit sehingga tabel dapat digulir horizontal pada kolom bawaan; ukuran viewport disediakan tim FE.
-- Preferensi kolom List: langkah 2 sampai 7 dan 8 menyimpan status pin di cache browser. Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
+- Preferensi kolom List: langkah 2 sampai 7 dan 8 menyimpan status pin di cache browser; langkah 19 meng-unpin `Photo`. Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
 - Nilai data diacu lewat `Fixture.deviceSku.<kunci>`; berkas fixture disediakan tim FE (lihat Temuan untuk QA).
 - Tidak ada state global lain yang diubah dan tidak ada entitas yang dibuat.
 
@@ -50,11 +50,16 @@ coverage:
 17. Verifikasi ikon Pin kolom `Category` kembali aktif
 18. Klik ikon close `[✕]` pada popup
 
+### Pemulihan state akhir
+
+19. Klik header kolom Actions (⋯), klik `Setup Column...`, klik ikon Pin pada kolom `Photo` untuk unpin, lalu klik `[Save]`
+
 ## Notes
 
-- Langkah 2 sampai 7 diulang untuk delapan baris tabel "Kolom Hideable" (ekspansi 48 langkah; total spec 59 langkah dengan ekspansi). Parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat; Save menutup popup sehingga tiap pin dan unpin membuka popup kembali.
+- Langkah 2 sampai 7 diulang untuk delapan baris tabel "Kolom Hideable" (ekspansi 48 langkah; total spec 60 langkah dengan ekspansi). Parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat; Save menutup popup sehingga tiap pin dan unpin membuka popup kembali.
 - Alasan melewati sekitar 35 langkah: kedua blok memakai popup Setup Column yang sama dan satu dataset; iterasi per kolom identik dan berdiri sendiri, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna; blok pin keempat memerlukan pin yang sama.
 - Langkah penghubung (S-03): langkah 12 melengkapi tiga pin (kolom `Photo` ter-pin dari langkah 8 dan disimpan); langkah 18 menutup popup tanpa Save sehingga perubahan tidak tersimpan; tanpa asersi tambahan.
+- Langkah penghubung pemulihan (tanpa `Verifikasi`, S-03, S-09): langkah 19 meng-unpin `Photo` yang di-pin dan disimpan pada langkah 8; hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Temuan untuk QA:
   - TC-AC-DS-358 langkah 4 memin `Photo`, `Device Name`, dan `SKU` dari keadaan awal; spec melanjutkan dari `Photo` yang sudah ter-pin di langkah 8 dan memin `Device Name` dan `SKU` sehingga tiga kolom ter-pin. TC menulis "kolom lain" kembali aktif tanpa menyebut kolom yang di-unpin; spec meng-unpin `SKU`.
   - TC-AC-DS-350 langkah 12 menyebut "pin satu kolom" tanpa menyebut kolomnya; spec memakai `Photo`.

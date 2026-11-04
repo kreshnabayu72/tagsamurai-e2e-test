@@ -46,51 +46,55 @@ coverage:
 
 ### TC-AC-SU-432: Sort 3-state kelas tanggal
 
-1. Cari `Jane Smith {runId}-121` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `User Log`
-3. Klik header `Date` untuk pertama kalinya
-4. Verifikasi urutan baris Oldest First
-5. Verifikasi ikon sort `↑` tampil
-6. Klik header `Date` untuk kedua kalinya
-7. Verifikasi urutan baris Newest First
-8. Verifikasi ikon sort `↓` tampil
-9. Klik header `Date` untuk ketiga kalinya
-10. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+1. Ketik Search `Jane Smith {runId}-121`, tekan Enter
+2. Klik Name `Jane Smith {runId}-121`
+3. Klik tab `User Log`
+4. Verifikasi tabel menampilkan sedikitnya dua baris data uji
+5. Klik header `Date` untuk pertama kalinya
+6. Verifikasi urutan baris Oldest First
+7. Verifikasi ikon sort `↑` tampil
+8. Klik header `Date` untuk kedua kalinya
+9. Verifikasi urutan baris Newest First
+10. Verifikasi ikon sort `↓` tampil
+11. Klik header `Date` untuk ketiga kalinya
+12. Verifikasi urutan baris kembali ke sort default (Date Newest First)
 
 ### TC-AC-SU-433: Header kolom teks Tab User Log sortable 3-state
 
-11. Klik header kolom pada baris tabel 'Kolom sort dengan nilai distinct'
-12. Verifikasi urutan baris A–Z menurut nilai distinct kolom itu
-13. Verifikasi ikon sort `↑` tampil
-14. Klik header kolom yang sama untuk kedua kalinya
-15. Verifikasi urutan baris Z–A menurut nilai distinct kolom itu
-16. Verifikasi ikon sort `↓` tampil
-17. Klik header kolom yang sama untuk ketiga kalinya
-18. Verifikasi urutan baris kembali ke sort default (Date Newest First)
-19. Klik header `Device / Browser` untuk pertama kalinya
-20. Verifikasi urutan baris A–Z menurut nilai distinct kolom `Device / Browser`
-21. Verifikasi ikon sort `↑` tampil
-22. Verifikasi nilai `—` berada di akhir
-23. Klik header `Device / Browser` untuk kedua kalinya
-24. Verifikasi urutan baris Z–A menurut nilai distinct kolom `Device / Browser`
-25. Verifikasi ikon sort `↓` tampil
-26. Verifikasi nilai `—` berada di awal
-27. Klik header `Device / Browser` untuk ketiga kalinya
-28. Verifikasi urutan baris kembali ke sort default (Date Newest First)
-29. Klik header kolom pada baris tabel 'Kolom sort tanpa nilai distinct'
-30. Verifikasi ikon sort `↑` tampil
-31. Klik header kolom yang sama untuk kedua kalinya
-32. Verifikasi ikon sort `↓` tampil
-33. Klik header kolom yang sama untuk ketiga kalinya
-34. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+13. Untuk setiap baris tabel "Kolom sort dengan nilai distinct" di Prerequisites, lakukan langkah 14 sampai 21
+14. Klik header kolom pada baris tabel 'Kolom sort dengan nilai distinct'
+15. Verifikasi urutan baris A–Z menurut nilai distinct kolom itu
+16. Verifikasi ikon sort `↑` tampil
+17. Klik header kolom yang sama untuk kedua kalinya
+18. Verifikasi urutan baris Z–A menurut nilai distinct kolom itu
+19. Verifikasi ikon sort `↓` tampil
+20. Klik header kolom yang sama untuk ketiga kalinya
+21. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+22. Klik header `Device / Browser` untuk pertama kalinya
+23. Verifikasi urutan baris A–Z menurut nilai distinct kolom `Device / Browser`
+24. Verifikasi ikon sort `↑` tampil
+25. Verifikasi nilai `—` berada di akhir
+26. Klik header `Device / Browser` untuk kedua kalinya
+27. Verifikasi urutan baris Z–A menurut nilai distinct kolom `Device / Browser`
+28. Verifikasi ikon sort `↓` tampil
+29. Verifikasi nilai `—` berada di awal
+30. Klik header `Device / Browser` untuk ketiga kalinya
+31. Verifikasi urutan baris kembali ke sort default (Date Newest First)
+32. Untuk setiap baris tabel "Kolom sort tanpa nilai distinct" di Prerequisites, lakukan langkah 33 sampai 38
+33. Klik header kolom pada baris tabel 'Kolom sort tanpa nilai distinct'
+34. Verifikasi ikon sort `↑` tampil
+35. Klik header kolom yang sama untuk kedua kalinya
+36. Verifikasi ikon sort `↓` tampil
+37. Klik header kolom yang sama untuk ketiga kalinya
+38. Verifikasi urutan baris kembali ke sort default (Date Newest First)
 
 ## Notes
 
-- Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
-- Klik header kolom diulang per baris tabel: langkah 11 sampai 18 (2 kolom dengan nilai distinct) dan langkah 29 sampai 34 (2 kolom tanpa nilai distinct). Klik ketiga tiap kolom mengembalikan sort ke default sehingga kolom berikutnya mulai dari keadaan yang sama (S-09).
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Klik header kolom diulang per baris tabel: langkah 14 sampai 21 (2 kolom dengan nilai distinct) dan langkah 33 sampai 38 (2 kolom tanpa nilai distinct). Klik ketiga tiap kolom mengembalikan sort ke default sehingga kolom berikutnya mulai dari keadaan yang sama (S-09).
 - Temuan untuk QA:
   - Kolom `Activity` (semua `Session`) dan `Status` (semua `—`) pada TC-425 tidak memiliki dua nilai distinct, sehingga urutan A–Z dan Z–A tidak dapat diasersi (S-14, S-11); untuk keduanya spec hanya mengasersi ikon sort dan kembali ke default.
   - TC-432 klik 2 (Newest First) dan klik 3 (kembali ke default Date Newest First) menghasilkan urutan baris yang sama; pembeda keadaan header pada klik 3 tidak dinyatakan.
   - Cara men-seed sesi User Log (Date, Note, IP Address, user agent, asal Admin Console atau Global Settings, user pemilik sesi) tidak dinyatakan di TC, PRD, atau LLD; kemampuan ini ditulis 'disediakan tim FE/BE' tanpa endpoint karangan (S-13).
   - Nama target `Jane Smith` pada TC dipakai sebagai nama bersuffix `Jane Smith {runId}-NNN` per run (S-12); asersi spec memakai nilai kolom log, bukan urutan atau Search atas nama user.
-- Spec ini melewati sekitar 35 langkah (34 langkah nominal, sekitar 48 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini melewati sekitar 35 langkah (38 langkah nominal, sekitar 52 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.

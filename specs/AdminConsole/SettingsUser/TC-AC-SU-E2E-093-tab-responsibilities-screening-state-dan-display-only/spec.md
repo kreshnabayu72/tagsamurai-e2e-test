@@ -60,30 +60,30 @@ coverage:
 14. Klik salah satu baris pada kolom ID
 15. Verifikasi klik baris tidak melakukan navigasi apa pun
 16. Hover baris
-17. Verifikasi tidak ada row action atau tombol Approve/Reject di baris
-18. Verifikasi tidak ada tombol Approve/Reject di toolbar
+17. Verifikasi baris tabel Responsibilities tampil (`ID-LALC`, `ID-WLT`, `ID-HALC`)
+18. Verifikasi tidak ada row action atau tombol Approve/Reject di baris
+19. Verifikasi tidak ada tombol Approve/Reject di toolbar
 
 ### TC-AC-SU-336: Empty state hasil Search tanpa kecocokan
 
-19. Klik icon Search
-20. Ketik Search `zzqx-tidak-ada`, tekan Enter
-21. Verifikasi empty state dengan ilustrasi, judul `No results found`, dan deskripsi `Try adjusting your search or filter.`
-22. Klik `(←)` pada kotak Search
+20. Klik icon Search
+21. Ketik Search `zzqx-tidak-ada`, tekan Enter
+22. Verifikasi empty state dengan ilustrasi, judul `No results found`, dan deskripsi `Try adjusting your search or filter.`
+23. Klik `(←)` pada kotak Search
 
 ### TC-AC-SU-334: Loading state Tab Responsibilities
 
-23. Klik tab `Role`
-24. Tahan respons data tabel Tab Responsibilities selama 3000 ms (`Spectra.intercept()`)
-25. Klik tab `Responsibilities (3)`
-26. Verifikasi tabel menampilkan 5 skeleton rows sesuai layout kolom
-27. Lepas tahanan respons
-28. Verifikasi baris data (`ID-LALC`, `ID-WLT`, `ID-HALC`) menggantikan skeleton
+24. Klik tab `Role`
+25. Tahan respons data tabel Tab Responsibilities selama 3000 ms (`Spectra.intercept()`)
+26. Klik tab `Responsibilities (3)`
+27. Verifikasi tabel menampilkan 5 skeleton rows sesuai layout kolom
+28. Lepas tahanan respons
+29. Verifikasi baris data (`ID-LALC`, `ID-WLT`, `ID-HALC`) menggantikan skeleton
 
 ### TC-AC-SU-333: Label tab Responsibilities saat 0 Pending Approvals
 
-29. Klik segmen `User` di breadcrumb
-30. Klik icon Search
-31. Ketik Search `Mike Tan {runId}-093`, tekan Enter
+30. Klik segmen `User` di breadcrumb
+31. Ganti isi kotak Search dengan `Mike Tan {runId}-093`, tekan Enter
 32. Klik Name `Mike Tan {runId}-093` untuk membuka Detail User
 33. Klik tab `Responsibilities (0)`
 34. Verifikasi label tab `Responsibilities (0)`
@@ -91,7 +91,7 @@ coverage:
 
 ## Notes
 
-- Langkah penghubung (S-03): mencari lalu membuka Detail target lewat Search dan klik Name (R-16); klik tab `Role` sebelum menahan respons memastikan tab Responsibilities dimuat ulang saat diklik; `(←)` menutup Search.
+- Langkah penghubung (S-03): mencari lalu membuka Detail target lewat Search dan klik Name (R-16); klik tab `Role` sebelum menahan respons memastikan tab Responsibilities dimuat ulang saat diklik; `(←)` menutup Search tab Responsibilities (bukan Search User List).
 - Urutan spec: TC-337 (sort default) segera sesudah screening sebelum interaksi sort; TC-333 memakai target lain (`Mike Tan {runId}-093`) karena state 0 Pending Approvals bertentangan dengan 3 Pending Approval `Jane Smith {runId}-093`.
 - TC-335 (error load) ada di spec lain; menahan respons pada TC-334 hanya mengamati Loading dan bukan kelas fault injection.
 - Temuan untuk QA:

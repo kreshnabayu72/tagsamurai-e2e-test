@@ -55,7 +55,7 @@ Tidak ada. TC kelas a yang Expected-nya berupa respons API (TC 233–236, 238, 3
 | TC-AC-DS-E2E-041-register-foto-wajib-dan-aria-error | Register SKU: Foto Wajib Diisi, Hapus Semua Foto, dan Aria Error Foto | FE+BE | 28 | 139, 141, 145 |
 | TC-AC-DS-E2E-042-register-range-type-port-wajib-dan-batas-bawah | Register SKU: Range Type Wajib, Port Wajib, dan Port 0 Diblokir | FE+BE | 36 | 146, 147, 148 |
 | TC-AC-DS-E2E-043-register-port-batas-minimum-maksimum-dan-digit | Register SKU: Port Batas 1 dan 65535, 65536 Diblokir, dan Hanya Digit | FE+BE | 31 | 149, 150, 151 |
-| TC-AC-DS-E2E-044-register-user-tag-menentukan-tag-type-dan-default-stay | Register SKU: Checkbox This is User TAG Menentukan TAG Type dan Default Checkbox Stay on this form | FE+BE | 23 | 152, 153 |
+| TC-AC-DS-E2E-044-register-user-tag-menentukan-tag-type-dan-default-stay | Register SKU: Checkbox This is User TAG Menentukan TAG Type dan Default Checkbox Stay on this form | FE+BE | 24 | 152, 153 |
 | TC-AC-DS-E2E-045-register-stay-on-form-dua-sku-berturut-turut | Register SKU: Register Berturut-turut dengan Stay on this form Menghasilkan Dua SKU | FE+BE | 26 | 161 |
 | TC-AC-DS-E2E-046-register-sukses-handheld-reader-dan-smart-fixed-reader | Register SKU Berhasil: Handheld Reader (Long Range) dan Smart Fixed Reader (Port 8080) | FE+BE | 41 | 154, 155 |
 | TC-AC-DS-E2E-047-register-sukses-ble-gateway-dan-tag-user | Register SKU Berhasil: BLE Gateway dan TAG dengan This is User TAG | FE+BE | 40 | 156, 157 |
@@ -65,7 +65,7 @@ Tidak ada. TC kelas a yang Expected-nya berupa respons API (TC 233–236, 238, 3
 | TC-AC-DS-E2E-051-register-penutupan-popup-ikon-esc-dan-unsaved | Register SKU: Penutupan Popup Kosong dan Terisi, Esc, dan Dialog Unsaved Changes | FE+BE | 33 | 166, 167, 168 |
 | TC-AC-DS-E2E-052-register-refresh-route-dan-leave-cancel | Register SKU: Refresh Browser, Berpindah Route, Leave, dan Guard Dilepas Setelah Submit Sukses | FE+BE | 41 | 171, 172, 173, 572 |
 | TC-AC-DS-E2E-053-aksesibilitas-popup-register-dan-edit | Aksesibilitas Popup Register dan Edit: Focus Trap, Esc, dan Atribut Aria | FE+BE | 21 | 174, 254 |
-| TC-AC-DS-E2E-054-register-referensi-stale-category-device-name-brand | Register SKU: Referensi Category, Device Name, dan Brand Dihapus Pelaku Lain sebelum Submit | FE+BE | 42 | 177, 178, 179 |
+| TC-AC-DS-E2E-054-register-referensi-stale-category-device-name-brand | Register SKU: Referensi Category, Device Name, dan Brand Dihapus Pelaku Lain sebelum Submit | FE+BE | 43 | 177, 178, 179 |
 | TC-AC-DS-E2E-055-register-distributor-brand-suggestion-dan-sku-lokal | Register SKU Distributor: Dropdown Brand, Suggestion Model/Type, dan Register SKU Lokal | FE+BE | 30 | 100, 102, 159 |
 | TC-AC-DS-E2E-056-register-keunikan-kode-sku-lintas-scope | Register SKU: Keunikan Kode SKU Lintas Scope Principal dan Distributor | FE+BE | 35 | 119, 120, 121 |
 | TC-AC-DS-E2E-057-edit-screening-popup-dan-field-stok-nol | Edit SKU: Screening Popup, Category Read-only, Stok 0 Semua Field Editable, dan Device Name Read-only Stok Berisi | FE+BE | 35 | 181, 182, 183, 187, 188 |
@@ -74,11 +74,11 @@ Tidak ada. TC kelas a yang Expected-nya berupa respons API (TC 233–236, 238, 3
 | TC-AC-DS-E2E-060-edit-distributor-brand-suggestion-dan-duplikat-principal | Edit SKU oleh Distributor: Dropdown Brand, Suggestion Model/Type, dan Kode Duplikat SKU Principal | FE+BE | 27 | 219, 582 |
 | TC-AC-DS-E2E-061-edit-validasi-kosong-model-sku-foto-dan-clear-field | Edit SKU: Validasi Model/Type, SKU, Foto Kosong, dan Clear Field Lalu Save | FE+BE | 31 | 209, 210, 211, 212 |
 | TC-AC-DS-E2E-062-edit-validasi-batas-120-model-type-dan-sku | Edit SKU: Model/Type dan SKU Batas 120 dan 121 Karakter | FE+BE | 25 | 213, 214, 215, 216 |
-| TC-AC-DS-E2E-063-edit-validasi-duplikat-format-sku-trim-dan-emoji | Edit SKU: Duplikat SKU, SKU Sendiri, Format SKU, Trim Model/Type, dan Emoji | FE+BE | 30 | 217, 218, 220, 221, 222 |
+| TC-AC-DS-E2E-063-edit-validasi-duplikat-format-sku-trim-dan-emoji | Edit SKU: Duplikat SKU, SKU Sendiri, Format SKU, Trim Model/Type, dan Emoji | FE+BE | 32 | 217, 218, 220, 221, 222 |
 | TC-AC-DS-E2E-064-edit-validasi-port | Edit SKU: Validasi Port Kosong, 0, 65536, 65535, dan Hanya Digit | FE+BE | 26 | 223, 224, 225 |
-| TC-AC-DS-E2E-065-edit-validasi-foto | Edit SKU: Validasi Foto Batas Dua, Resize di Atas 1 MB, dan Format File Picker | FE+BE | 16 | 226, 227, 228 |
+| TC-AC-DS-E2E-065-edit-validasi-foto | Edit SKU: Validasi Foto Batas Dua, Resize di Atas 1 MB, dan Format File Picker | FE+BE | 17 | 226, 227, 228 |
 | TC-AC-DS-E2E-066-edit-sukses-model-brand-device-name-dan-sku | Edit SKU Berhasil: Model/Type, Brand, Device Name, dan Kode SKU | FE+BE | 27 | 192, 193, 194, 195 |
-| TC-AC-DS-E2E-067-edit-sukses-range-type-port-user-tag-dan-tiga-field | Edit SKU Berhasil: Range Type, Port pada Stok 0 dan Stok Berisi, serta User TAG | FE+BE | 33 | 196, 197, 198, 199 |
+| TC-AC-DS-E2E-067-edit-sukses-range-type-port-user-tag-dan-tiga-field | Edit SKU Berhasil: Range Type, Port pada Stok 0 dan Stok Berisi, serta User TAG | FE+BE | 35 | 196, 197, 198, 199 |
 | TC-AC-DS-E2E-068-edit-foto-ganti-tambah-hapus-dan-default | Edit SKU Berhasil: Tiga Field Sekaligus, Ganti Foto Default, dan Tambah Foto Kedua | FE+BE | 31 | 200, 201, 202 |
 | TC-AC-DS-E2E-069-edit-foto-tanda-default-dan-hapus-default | Edit SKU Berhasil: Hapus Foto Bukan Default, Ganti Tanda Default, dan Hapus Foto Default Menaikkan Foto Tersisa | FE+BE | 28 | 203, 204, 205 |
 | TC-AC-DS-E2E-070-edit-nilai-dikembalikan-dan-kapitalisasi | Edit SKU: Mengubah Lalu Mengembalikan Nilai Dianggap Tanpa Perubahan dan Perubahan Kapitalisasi Dicatat | FE+BE | 23 | 207, 208 |
@@ -92,13 +92,13 @@ Tidak ada. TC kelas a yang Expected-nya berupa respons API (TC 233–236, 238, 3
 | TC-AC-DS-E2E-078-delete-single-berhasil-klik-ganda-dan-riwayat-transaksi | Delete SKU Single Berhasil: Klik Ganda Satu Penghapusan dan Riwayat Transaksi Tetap Terbaca | FE+BE | 31 | 256, 270, 271 |
 | TC-AC-DS-E2E-079-bulk-delete-bar-counter-dan-checkbox-header | Bulk Action Bar: Screening, Counter Realtime, Checkbox Header, dan Indeterminate | FE+BE | 25 | 272, 273, 274 |
 | TC-AC-DS-E2E-080-bulk-delete-select-all-unselect-all-dan-retensi-seleksi | Bulk Action Bar: Select All Lintas Halaman, Unselect All, dan Seleksi Dipertahankan | FE+BE | 30 | 275, 276, 280 |
-| TC-AC-DS-E2E-081-bulk-delete-homogen-dialog-cancel-esc-dan-berhasil | Bulk Delete Homogen: Dialog dengan Daftar Scroll, Cancel, Esc, Klik Ganda, dan Berhasil | FE+BE | 37 | 281, 282, 283, 284, 297 |
+| TC-AC-DS-E2E-081-bulk-delete-homogen-dialog-cancel-esc-dan-berhasil | Bulk Delete Homogen: Dialog dengan Daftar Scroll, Cancel, Esc, Klik Ganda, dan Berhasil | FE+BE | 38 | 281, 282, 283, 284, 297 |
 | TC-AC-DS-E2E-082-bulk-delete-campuran-dialog-dua-kelompok-dan-continue | Bulk Delete Campuran: Dialog Dua Kelompok, Cancel, Esc, dan Continue Melewati SKU Berstok | FE+BE | 29 | 286, 287, 288, 555 |
-| TC-AC-DS-E2E-083-bulk-delete-full-block-dan-satu-sku-terpilih | Bulk Delete Full-block dan Satu SKU Terpilih: Dialog Blok, OK, Esc, dan Dialog Single | FE+BE | 36 | 285, 289, 290, 291, 556 |
+| TC-AC-DS-E2E-083-bulk-delete-full-block-dan-satu-sku-terpilih | Bulk Delete Full-block dan Satu SKU Terpilih: Dialog Blok, OK, Esc, dan Dialog Single | FE+BE | 37 | 285, 289, 290, 291, 556 |
 | TC-AC-DS-E2E-084-bulk-delete-preview-berubah-sebelum-confirm | Bulk Delete: Seluruh SKU Terpilih Menjadi Berstok sebelum Confirm Menampilkan Dialog Blok Tanpa Toast | FE+BE | 22 | 292 |
 | TC-AC-DS-E2E-085-sku-dihapus-pelaku-lain-sebelum-save-confirm-dan-bulk | SKU Dihapus Pelaku Lain sebelum Save, Confirm Delete, dan Bulk Delete (Sebagian) | FE+BE | 33 | 544, 545, 546 |
-| TC-AC-DS-E2E-086-bulk-delete-seluruh-terpilih-dihapus-pelaku-lain | Bulk Delete: Seluruh SKU Terpilih Dihapus Pelaku Lain dan Satu Terhapus Sisanya Berstok | FE+BE | 37 | 547, 574 |
-| TC-AC-DS-E2E-087-search-list-kelas-teks-badge-angka-dan-curated | Search List: Pencocokan per Kelas Teks, Badge, Angka, dan Kolom Curated | FE+BE | 30 | 298, 299, 300, 301 |
+| TC-AC-DS-E2E-086-bulk-delete-seluruh-terpilih-dihapus-pelaku-lain | Bulk Delete: Seluruh SKU Terpilih Dihapus Pelaku Lain dan Satu Terhapus Sisanya Berstok | FE+BE | 38 | 547, 574 |
+| TC-AC-DS-E2E-087-search-list-kelas-teks-badge-angka-dan-curated | Search List: Pencocokan per Kelas Teks, Badge, Angka, dan Kolom Curated | FE+BE | 33 | 298, 299, 300, 301 |
 | TC-AC-DS-E2E-088-search-list-kolom-hidden-tanggal-photo-trim-dan-reset-paginasi | Search List: Kolom Hidden, Kolom Tanggal dan Photo Tidak Dapat Dicari, Trim Spasi, dan Reset Paginasi | FE+BE | 29 | 302, 303, 304, 308, 310 |
 | TC-AC-DS-E2E-089-search-list-siklus-interaksi-case-dan-substring | Search List: Siklus Interaksi, Tidak Membedakan Huruf Besar-Kecil, dan Substring | FE+BE | 31 | 305, 306, 307 |
 | TC-AC-DS-E2E-090-filter-list-screening-opsi-pencarian-dropdown-dan-tutup-tanpa-apply | Filter List: Screening Panel, Isi Opsi Dropdown, Pencarian di Dalam Dropdown, dan Tutup Tanpa Apply | FE+BE | 35 | 311, 312, 313, 322 |
@@ -110,37 +110,37 @@ Tidak ada. TC kelas a yang Expected-nya berupa respons API (TC 233–236, 238, 3
 | TC-AC-DS-E2E-096-kombinasi-search-filter-sort-pagination-list-bagian-1 | Kombinasi List: Search Lalu Filter, Filter Lalu Search, dan Kombinasi Penuh dengan Sort dan Pagination | FE+BE | 23 | 327, 328, 329 |
 | TC-AC-DS-E2E-097-kombinasi-search-filter-sort-pagination-list-bagian-2 | Kombinasi List: Melepas Search, Ganti Sort, serta Tanpa Hasil Lalu Pulih | FE+BE | 26 | 330, 331, 332 |
 | TC-AC-DS-E2E-098-sort-list-alfabetis-tiga-tahap-dan-current-stock-numerik | Sort List: Alfabetis Tiga Tahap dan Current Stock Numerik | FE+BE | 25 | 336, 337 |
-| TC-AC-DS-E2E-099-sort-list-kolom-curated-dan-photo | Sort List: Kolom Curated Ascending dan Descending serta Kolom Photo Tanpa Ikon Sort | FE+BE | 33 | 339, 340, 341 |
+| TC-AC-DS-E2E-099-sort-list-kolom-curated-dan-photo | Sort List: Kolom Curated Ascending dan Descending serta Kolom Photo Tanpa Ikon Sort | FE+BE | 36 | 339, 340, 341 |
 | TC-AC-DS-E2E-100-sort-list-default-tie-breaker-dan-pergantian-kolom | Sort List: Default SKU A-Z, Tie-breaker Deterministik, Pergantian Kolom, dan Tetap di Halaman yang Sama | FE+BE | 16 | 342, 343, 344, 345 |
 | TC-AC-DS-E2E-101-setup-column-list-screening-dan-sc-a-ceklis | Setup Column List: Screening Overlay dan Popup serta Ceklis Kelas SC-A Hideable | FE+BE | 23 | 346, 347, 348 |
-| TC-AC-DS-E2E-102-setup-column-list-geser-urutan | Setup Column List: Geser Urutan Kolom Kelas SC-A Hideable dan SC-B Curated | FE+BE | 20 | 349, 352 |
-| TC-AC-DS-E2E-103-setup-column-list-pin-dan-batas-pin-keempat | Setup Column List: Pin dan Unpin Kelas SC-A Hideable serta Pin Keempat Diblok | FE+BE | 18 | 350, 358 |
-| TC-AC-DS-E2E-104-setup-column-list-ceklis-curated-dan-pin-curated | Setup Column List: Ceklis Kelas SC-B Curated dan Pin atau Unpin Kelas SC-B Curated | FE+BE | 23 | 351, 353 |
+| TC-AC-DS-E2E-102-setup-column-list-geser-urutan | Setup Column List: Geser Urutan Kolom Kelas SC-A Hideable dan SC-B Curated | FE+BE | 25 | 349, 352 |
+| TC-AC-DS-E2E-103-setup-column-list-pin-dan-batas-pin-keempat | Setup Column List: Pin dan Unpin Kelas SC-A Hideable serta Pin Keempat Diblok | FE+BE | 19 | 350, 358 |
+| TC-AC-DS-E2E-104-setup-column-list-ceklis-curated-dan-pin-curated | Setup Column List: Ceklis Kelas SC-B Curated dan Pin atau Unpin Kelas SC-B Curated | FE+BE | 24 | 351, 353 |
 | TC-AC-DS-E2E-105-setup-column-list-reset-tutup-dan-kolom-terakhir | Setup Column List: Reset to Default, Tutup Tanpa Save, dan Kolom Terakhir Tidak Dapat Di-uncheck | FE+BE | 29 | 354, 355, 356 |
-| TC-AC-DS-E2E-106-setup-column-list-panel-cepat-kolom-tetap-dan-isolasi | Setup Column List: Panel Cepat Tanpa Save, Kolom Checkbox dan Actions Tetap Pinned, Isolasi Konfigurasi, dan Kolom Curated Tampil | FE+BE | 25 | 357, 359, 360, 361 |
+| TC-AC-DS-E2E-106-setup-column-list-panel-cepat-kolom-tetap-dan-isolasi | Setup Column List: Panel Cepat Tanpa Save, Kolom Checkbox dan Actions Tetap Pinned, Isolasi Konfigurasi, dan Kolom Curated Tampil | FE+BE | 28 | 357, 359, 360, 361 |
 | TC-AC-DS-E2E-107-pagination-list-ukuran-halaman-dan-input-nomor | Pagination List: Default 10 per Halaman, Opsi Ukuran, Input Nomor Halaman, dan Reset ke Halaman 1 | FE+BE | 21 | 362, 363, 364, 365 |
 | TC-AC-DS-E2E-108-state-list-refresh-reset-menu-dan-hapus-halaman-terakhir | State List: Refresh F5, Klik Ulang Menu Settings, Isolasi Sub-tab, dan Hapus Semua Baris Halaman Terakhir | FE+BE | 34 | 366, 367, 368, 369 |
 | TC-AC-DS-E2E-109-download-list-cakupan-baris-kolom-dan-sidebar | Download List: Seluruh Baris, Mengikuti Search dan Filter, Kolom Tampil, dan Sidebar Category | FE+BE | 28 | 370, 371, 372, 602 |
 | TC-AC-DS-E2E-110-download-list-nama-file-nol-baris-dan-distributor | Download List: Nama File dan Ekstensi, Nol Baris, Tanpa Toast Sukses, dan Download oleh Distributor | FE+BE | 30 | 373, 375, 377, 579 |
-| TC-AC-DS-E2E-111-changelog-screening-modal-format-sel-dan-buka-tutup | Modal Changelog: Screening, Buka dan Tutup, serta Format Sel Date, Action, SKU, Old Value, dan New Value | FE+BE | 33 | 380, 381, 382 |
-| TC-AC-DS-E2E-112-changelog-modified-by-photo-snapshot-dan-no-result | Modal Changelog: Modified By Format Singkat, Entri Photo Set as Default, Snapshot SKU Dihapus, Principal, dan No Result | FE+BE | 20 | 383, 384, 386, 388, 390 |
+| TC-AC-DS-E2E-111-changelog-screening-modal-format-sel-dan-buka-tutup | Modal Changelog: Screening, Buka dan Tutup, serta Format Sel Date, Action, SKU, Old Value, dan New Value | FE+BE | 34 | 380, 381, 382 |
+| TC-AC-DS-E2E-112-changelog-modified-by-photo-snapshot-dan-no-result | Modal Changelog: Modified By Format Singkat, Entri Photo Set as Default, Snapshot SKU Dihapus, Principal, dan No Result | FE+BE | 22 | 383, 384, 386, 388, 390 |
 | TC-AC-DS-E2E-113-changelog-empty-state-dan-scope-distributor | Modal Changelog: Empty State Principal Tanpa SKU dan Scope Distributor Hanya Entri Miliknya | FE+BE | 13 | 385, 389 |
-| TC-AC-DS-E2E-114-changelog-search-kelas-teks-campuran-dan-date | Search Changelog: Kelas Teks, Campuran Old/New Value, dan Kolom Date Tidak Dapat Dicari | FE+BE | 23 | 391, 392, 393 |
-| TC-AC-DS-E2E-115-changelog-search-siklus-interaksi-case-dan-reset-paginasi | Search Changelog: Siklus Interaksi, Tidak Membedakan Huruf Besar-Kecil, Substring, dan Reset Paginasi | FE+BE | 28 | 394, 395, 396 |
+| TC-AC-DS-E2E-114-changelog-search-kelas-teks-campuran-dan-date | Search Changelog: Kelas Teks, Campuran Old/New Value, dan Kolom Date Tidak Dapat Dicari | FE+BE | 27 | 391, 392, 393 |
+| TC-AC-DS-E2E-115-changelog-search-siklus-interaksi-case-dan-reset-paginasi | Search Changelog: Siklus Interaksi, Tidak Membedakan Huruf Besar-Kecil, Substring, dan Reset Paginasi | FE+BE | 29 | 394, 395, 396 |
 | TC-AC-DS-E2E-116-changelog-filter-screening-opsi-dan-pencarian-dropdown | Filter Changelog: Screening Panel, Isi Opsi dari Data Tabel, dan Pencarian di Dalam Dropdown | FE+BE | 19 | 397, 398, 565 |
-| TC-AC-DS-E2E-117-changelog-filter-multi-select-date-range-dan-satu-hari | Filter Changelog: Multi-select Action, SKU, Field, Modified By, Date Range Inklusif, dan Satu Hari | FE+BE | 19 | 399, 400, 599 |
+| TC-AC-DS-E2E-117-changelog-filter-multi-select-date-range-dan-satu-hari | Filter Changelog: Multi-select Action, SKU, Field, Modified By, Date Range Inklusif, dan Satu Hari | FE+BE | 20 | 399, 400, 599 |
 | TC-AC-DS-E2E-118-changelog-filter-logika-or-and-dan-chip | Filter Changelog: Logika OR dan AND serta Penghapusan Chip dan Un-check Opsi | FE+BE | 25 | 401, 402, 403 |
 | TC-AC-DS-E2E-119-changelog-filter-kombinasi-search-clear-dan-tanpa-hasil | Filter Changelog: Kombinasi Search dan Filter Dua Arah, Clear Field, dan Tanpa Hasil Lalu Pulih | FE+BE | 30 | 404, 405, 406, 407 |
-| TC-AC-DS-E2E-120-changelog-kombinasi-penuh-dan-kosongkan-search | Changelog: Kombinasi Penuh Search, Filter, Sort, Pagination dan Mengosongkan Search saat Filter dan Sort Aktif | FE+BE | 26 | 566, 567 |
-| TC-AC-DS-E2E-121-changelog-sort-alfabetis-dan-date | Sort Changelog: Alfabetis Action, SKU, Field dan Date Default Newest First Tiga Tahap | FE+BE | 28 | 408, 409 |
-| TC-AC-DS-E2E-122-changelog-sort-old-new-value-dan-modified-by | Sort Changelog: Old/New Value Angka Sebelum Teks dan Modified By Memakai Nama Lengkap | FE+BE | 33 | 410, 411 |
+| TC-AC-DS-E2E-120-changelog-kombinasi-penuh-dan-kosongkan-search | Changelog: Kombinasi Penuh Search, Filter, Sort, Pagination dan Mengosongkan Search saat Filter dan Sort Aktif | FE+BE | 28 | 566, 567 |
+| TC-AC-DS-E2E-121-changelog-sort-alfabetis-dan-date | Sort Changelog: Alfabetis Action, SKU, Field dan Date Default Newest First Tiga Tahap | FE+BE | 34 | 408, 409 |
+| TC-AC-DS-E2E-122-changelog-sort-old-new-value-dan-modified-by | Sort Changelog: Old/New Value Angka Sebelum Teks dan Modified By Memakai Nama Lengkap | FE+BE | 39 | 410, 411 |
 | TC-AC-DS-E2E-123-changelog-setup-column-screening-overlay-dan-popup | Setup Column Changelog: Screening Overlay dan Popup | FE+BE | 21 | 412, 413 |
-| TC-AC-DS-E2E-124-changelog-setup-column-geser-urutan-dan-reset | Setup Column Changelog: Geser Urutan Kolom dan Reset to Default | FE+BE | 25 | 415, 417 |
+| TC-AC-DS-E2E-124-changelog-setup-column-geser-urutan-dan-reset | Setup Column Changelog: Geser Urutan Kolom dan Reset to Default | FE+BE | 28 | 415, 417 |
 | TC-AC-DS-E2E-125-changelog-setup-column-pin-dan-batas-pin-keempat | Setup Column Changelog: Pin dan Unpin Kolom serta Pin Keempat Diblok | FE+BE | 18 | 416, 568 |
 | TC-AC-DS-E2E-126-changelog-setup-column-tutup-kolom-terakhir-dan-isolasi | Setup Column Changelog: Tutup Tanpa Save, Kolom Terakhir Tidak Dapat Di-uncheck, dan Isolasi dari Konfigurasi List | FE+BE | 32 | 418, 419, 420 |
-| TC-AC-DS-E2E-127-changelog-pagination-download-dan-kolom-tampil | Changelog: Pagination, Download Tanpa dan Dengan Filter, Nol Baris, dan Mengikuti Kolom Tampil | FE+BE | 35 | 421, 422, 425, 597 |
-| TC-AC-DS-E2E-128-detail-sku-buka-screening-dan-info-grid | Popup Device SKU Detail: Jalur Buka, Screening, Backdrop, dan Info Grid | FE+BE | 25 | 426, 427, 428, 429 |
-| TC-AC-DS-E2E-129-detail-usage-by-company-principal-total-stock-dan-empty | Usage by Company Principal: Seluruh Baris, Total Stock per Peran, Dua Badge, Kuota Alokasi, Empty State, dan Pembaruan Stok | FE+BE | 30 | 430, 431, 432, 433, 434, 435, 438, 441, 442 |
+| TC-AC-DS-E2E-127-changelog-pagination-download-dan-kolom-tampil | Changelog: Pagination, Download Tanpa dan Dengan Filter, Nol Baris, dan Mengikuti Kolom Tampil | FE+BE | 36 | 421, 422, 425, 597 |
+| TC-AC-DS-E2E-128-detail-sku-buka-screening-dan-info-grid | Popup Device SKU Detail: Jalur Buka, Screening, Backdrop, dan Info Grid | FE+BE | 26 | 426, 427, 428, 429 |
+| TC-AC-DS-E2E-129-detail-usage-by-company-principal-total-stock-dan-empty | Usage by Company Principal: Seluruh Baris, Total Stock per Peran, Dua Badge, Kuota Alokasi, Empty State, dan Pembaruan Stok | FE+BE | 32 | 430, 431, 432, 433, 434, 435, 438, 441, 442 |
 | TC-AC-DS-E2E-130-detail-usage-by-company-scope-distributor | Usage by Company Distributor: Baris Sendiri dan Client dalam Rantai serta Local Registration Nonaktif | FE+BE | 22 | 436, 437, 569 |
 | TC-AC-DS-E2E-131-usage-search-kelas-teks-badge-angka-dan-siklus | Search Usage: Kelas Teks dan Badge, Angka Total Stock, dan Siklus Interaksi | FE+BE | 28 | 443, 444, 445 |
 | TC-AC-DS-E2E-132-usage-filter-screening-entity-type-dan-total-stock | Filter Usage: Screening, Opsi Entity Type, Entity Type Dua Badge, dan OR | FE+BE | 21 | 446, 447, 448, 560 |
@@ -149,26 +149,26 @@ Tidak ada. TC kelas a yang Expected-nya berupa respons API (TC 233–236, 238, 3
 | TC-AC-DS-E2E-135-usage-filter-kombinasi-and-search-dan-tanpa-hasil | Usage: Filter AND, Search Lalu Filter dan Sebaliknya, serta Empty State Tanpa Hasil | FE+BE | 32 | 439, 561, 562, 563 |
 | TC-AC-DS-E2E-136-usage-kosongkan-search-dan-ganti-sort-saat-filter-aktif | Usage: Mengosongkan Search dan Mengganti Kolom Sort saat Search dan Filter Aktif | FE+BE | 31 | 587, 588 |
 | TC-AC-DS-E2E-137-usage-setup-column-screening-dan-ceklis | Setup Column Usage: Screening Overlay dan Popup serta Ceklis dan Unceklis Kolom | FE+BE | 27 | 454, 455, 456 |
-| TC-AC-DS-E2E-138-usage-setup-column-geser-urutan-dan-pin | Setup Column Usage: Geser Urutan Kolom serta Pin dan Unpin | FE+BE | 16 | 457, 458 |
+| TC-AC-DS-E2E-138-usage-setup-column-geser-urutan-dan-pin | Setup Column Usage: Geser Urutan Kolom serta Pin dan Unpin | FE+BE | 17 | 457, 458 |
 | TC-AC-DS-E2E-139-usage-setup-column-reset-tutup-dan-kolom-terakhir | Setup Column Usage: Reset to Default, Tutup Tanpa Save, dan Kolom Terakhir Tidak Dapat Di-uncheck | FE+BE | 26 | 459, 460, 461 |
-| TC-AC-DS-E2E-140-usage-pagination-lokal-kombinasi-penuh-dan-isolasi-konfigurasi | Usage: Pagination Lokal 13 Baris, Kombinasi Penuh Search/Filter/Sort, dan Isolasi Konfigurasi Kolom dari List dan Changelog | FE+BE | 37 | 462, 585, 586 |
+| TC-AC-DS-E2E-140-usage-pagination-lokal-kombinasi-penuh-dan-isolasi-konfigurasi | Usage: Pagination Lokal 13 Baris, Kombinasi Penuh Search/Filter/Sort, dan Isolasi Konfigurasi Kolom dari List dan Changelog | FE+BE | 41 | 462, 585, 586 |
 | TC-AC-DS-E2E-141-usage-download-cakupan-baris-nol-baris-dan-kolom-tampil | Download Usage: Nama File, Ekstensi, Cakupan Baris, Nol Baris, dan Mengikuti Kolom Tampil | FE+BE | 28 | 463, 466, 598 |
 | TC-AC-DS-E2E-142-log-tiga-surface-create-dan-edit-kode-device-name | Log Tiga Surface: Create SKU serta Edit Kode SKU dan Device Name | FE+BE | 49 | 467, 468, 469 |
 | TC-AC-DS-E2E-143-log-tiga-surface-edit-brand-model-range-type | Log Tiga Surface: Edit Brand, Model/Type, dan Range Type | FE+BE | 18 | 470, 471, 472 |
 | TC-AC-DS-E2E-144-log-tiga-surface-edit-port-user-tag-dan-photo | Log Tiga Surface: Edit Port, User TAG, dan Photo Satu Foto | FE+BE | 51 | 473, 474, 475 |
-| TC-AC-DS-E2E-145-log-tiga-surface-photo-dua-foto-default-dan-kapitalisasi | Log Tiga Surface: Photo Dua Foto, Set as Default, dan Perubahan Kapitalisasi Model/Type | FE+BE | 41 | 476, 477, 483 |
+| TC-AC-DS-E2E-145-log-tiga-surface-photo-dua-foto-default-dan-kapitalisasi | Log Tiga Surface: Photo Dua Foto, Set as Default, dan Perubahan Kapitalisasi Model/Type | FE+BE | 43 | 476, 477, 483 |
 | TC-AC-DS-E2E-146-log-tiga-surface-delete-bulk-delete-dan-edit-multi-field | Log Tiga Surface: Delete Single, Bulk Delete, dan Edit Beberapa Field Sekaligus | FE+BE | 47 | 479, 480, 481 |
 | TC-AC-DS-E2E-147-log-system-log-aktor-create-edit-dan-delete | System Log Aktor: Create, Edit per Field, dan Delete | FE+BE | 34 | 485, 486, 487 |
 | TC-AC-DS-E2E-148-log-activity-log-principal-distributor-dan-edit | Activity Log: Aksi SKU Principal sebagai Objek Non-entitas, Distributor Entity-bound, dan Edit per Field | FE+BE | 35 | 488, 489, 490 |
-| TC-AC-DS-E2E-149-log-snapshot-immutability-dan-filter-identitas-sku | Log Snapshot: Device Name Rename, Edit Kode Dua Kali, dan Filter All SKUs Berkunci Identitas SKU | FE+BE | 42 | 491, 492, 493 |
+| TC-AC-DS-E2E-149-log-snapshot-immutability-dan-filter-identitas-sku | Log Snapshot: Device Name Rename, Edit Kode Dua Kali, dan Filter All SKUs Berkunci Identitas SKU | FE+BE | 47 | 491, 492, 493 |
 | TC-AC-DS-E2E-150-log-request-api-langsung-aktor-berhak | Request API Langsung oleh Aktor Berhak Menulis Log Tiga Surface yang Sama dengan Form | FE+BE | 37 | 494, 583, 584 |
 | TC-AC-DS-E2E-151-log-absence-tanpa-perubahan-ditolak-dan-promosi-default | Absence Log: Edit Tanpa Perubahan dan Edit Field Terkunci yang Ditolak Tidak Menulis Log | FE+BE | 34 | 206, 482, 484 |
 | TC-AC-DS-E2E-152-log-absence-register-kode-duplikat-ditolak | Absence Log: Register Kode Duplikat yang Ditolak Tidak Menulis Log | FE+BE | 27 | 553 |
 | TC-AC-DS-E2E-153-log-absence-register-gagal-5xx | Absence Log: Register Gagal 5xx Tidak Menulis Log | FE+BE | 29 | 554 |
 | TC-AC-DS-E2E-154-sinkron-modul-stok-register-sku-hardware-dan-tag | Sinkron Modul Stok: Register SKU Hardware dan TAG Menjadi Pilihan Add Stock dan Baris Stock List | FE+BE | 30 | 496, 497 |
-| TC-AC-DS-E2E-155-sinkron-modul-stok-edit-brand-model-photo-dan-device-name | Sinkron Modul Stok: Edit Brand, Model/Type, Photo, dan Device Name Tercermin pada Stock List dan Stock Detail Hardware Stock | FE+BE | 26 | 498, 499 |
+| TC-AC-DS-E2E-155-sinkron-modul-stok-edit-brand-model-photo-dan-device-name | Sinkron Modul Stok: Edit Brand, Model/Type, Photo, dan Device Name Tercermin pada Stock List dan Stock Detail Hardware Stock | FE+BE | 27 | 498, 499 |
 | TC-AC-DS-E2E-156-sinkron-modul-stok-delete-dan-kunci-field | Sinkron Modul Stok: Delete dan Bulk Delete Menghilangkan Pilihan Stok serta Add Stock Mengaktifkan Kunci Field SKU | FE+BE | 26 | 501, 502, 503 |
-| TC-AC-DS-E2E-157-sinkron-master-rename-dan-time-zone | Sinkron Master Data: Rename Device Name, Brand, Category dan Perubahan Time Zone General Settings | FE+BE | 35 | 504, 505, 506, 507 |
+| TC-AC-DS-E2E-157-sinkron-master-rename-dan-time-zone | Sinkron Master Data: Rename Device Name, Brand, Category dan Perubahan Time Zone General Settings | FE+BE | 36 | 504, 505, 506, 507 |
 | TC-AC-DS-E2E-158-sinkron-realtime-sesi-lain-register-edit-delete | Sinkron Realtime: Register, Edit, dan Delete oleh Sesi Lain Tercermin pada List tanpa Muat Ulang | FE+BE | 14 | 509, 510, 511 |
 | TC-AC-DS-E2E-159-defense-gate-entitas-capability-dan-detail-lintas-scope-via-api | Defense-in-Depth: Partner, Principal Tanpa Capability, Local Registration Nonaktif, dan Detail SKU Distributor Ditolak lewat API | FE+BE | 37 | 512, 513, 514, 519, 522, 603, 604 |
 | TC-AC-DS-E2E-160-defense-tier-role-menulis-via-api | Defense-in-Depth: Read Only, Create-Only, Update-Only, dan Delete-Only Menulis lewat API Ditolak | FE+BE | 39 | 515, 516, 517, 518 |
@@ -176,18 +176,18 @@ Tidak ada. TC kelas a yang Expected-nya berupa respons API (TC 233–236, 238, 3
 | TC-AC-DS-E2E-162-defense-validasi-server-field-terkunci-device-name-dan-kondisional | Defense-in-Depth: Server Menolak Field Terkunci, Device Name Category Lain, dan Field Kondisional Tidak Sesuai Ancestry | FE+BE | 30 | 523, 524, 525 |
 | TC-AC-DS-E2E-163-defense-manipulasi-dom-field-terkunci-pada-edit | Defense-in-Depth: Manipulasi DOM Field SKU, Range Type, User TAG, dan Device Name Terkunci Ditolak Seluruhnya | FE+BE | 10 | 233, 234, 235, 236 |
 | TC-AC-DS-E2E-164-defense-device-name-category-lain-emoji-dan-delete-berstok | Defense-in-Depth: Device Name Category Lain pada Edit, Emoji Lolos Filter FE, dan Delete SKU Berstok lewat API | FE+BE | 39 | 238, 527, 529, 590 |
-| TC-AC-DS-E2E-165-defense-injeksi-xss-sql-dan-karakter-invalid-sku | Defense-in-Depth: Payload Script, Injeksi Basis Data, dan Karakter Invalid pada SKU lewat API | FE+BE | 35 | 309, 526, 530, 531, 589 |
+| TC-AC-DS-E2E-165-defense-injeksi-xss-sql-dan-karakter-invalid-sku | Defense-in-Depth: Payload Script, Injeksi Basis Data, dan Karakter Invalid pada SKU lewat API | FE+BE | 37 | 309, 526, 530, 531, 589 |
 | TC-AC-DS-E2E-166-resilience-baca-error-load-list-changelog-dan-usage | Resilience Baca: Error Load List, Changelog, dan Usage by Company dengan Try Again | FE+BE | 19 | 32, 387, 440 |
 | TC-AC-DS-E2E-167-resilience-download-gagal-list-changelog-dan-usage | Resilience Download: Kegagalan Download List, Changelog, dan Usage by Company Menampilkan Toast Error | FE+BE | 20 | 376, 424, 465 |
 | TC-AC-DS-E2E-168-resilience-register-5xx-dan-timeout | Resilience Register: Kegagalan Server 5xx dan Timeout Jaringan Mempertahankan Input | FE+BE | 35 | 175, 176 |
 | TC-AC-DS-E2E-169-resilience-upload-foto-staging-gagal-register-dan-edit | Resilience Upload Foto: Upload ke Staging Gagal pada Register dan Edit Menampilkan Error Inline | FE+BE | 21 | 142, 229 |
 | TC-AC-DS-E2E-170-resilience-edit-dan-delete-5xx-timeout | Resilience Edit dan Delete: Kegagalan Server 5xx dan Timeout Jaringan Mempertahankan Input dan Dialog | FE+BE | 34 | 252, 253, 268, 269 |
-| TC-AC-DS-E2E-171-resilience-bulk-delete-5xx-timeout-dan-kegagalan-parsial | Resilience Bulk Delete: 5xx, Timeout, dan Kegagalan Tak Terduga Mempertahankan Item yang Sudah Terhapus | FE+BE | 29 | 295, 296, 548 |
+| TC-AC-DS-E2E-171-resilience-bulk-delete-5xx-timeout-dan-kegagalan-parsial | Resilience Bulk Delete: 5xx, Timeout, dan Kegagalan Tak Terduga Mempertahankan Item yang Sudah Terhapus | FE+BE | 31 | 295, 296, 548 |
 | TC-AC-DS-E2E-172-resilience-submit-gagal-setelah-foto-staging-tidak-permanen | Resilience Foto Staging: Submit atau Save Gagal setelah Foto di Staging Tidak Membuat Foto Permanen | FE+BE | 26 | 143, 230 |
 | TC-AC-DS-E2E-173-multi-konteks-dua-sesi-register-kode-sama-dan-edit-last-write-wins | Multi-konteks: Dua Sesi Register Kode Sama Ditolak Duplikat dan Dua Sesi Edit Last-write-wins | FE+BE | 41 | 180, 542, 543 |
 | TC-AC-DS-E2E-174-volume-selection-limit-dan-select-all-distributor | Volume Data: Selection Limit 100, Select All Melebihi Limit, dan Basis Hitung SKU Milik Distributor | FE+BE | 39 | 82, 277, 278, 279, 595 |
 | TC-AC-DS-E2E-175-volume-download-di-atas-5000-baris-dan-tepat-5000 | Volume Data: Download 5.001 Baris Memakai Loading Screen dan Tepat 5.000 Baris Tanpa Loading | FE+BE | 13 | 378, 379 |
-| TC-AC-DS-E2E-176-isi-file-export-list-changelog-dan-usage | Isi File Export: Nilai Sel List, Changelog, dan Usage by Company | FE+BE | 27 | 374, 423, 464 |
+| TC-AC-DS-E2E-176-isi-file-export-list-changelog-dan-usage | Isi File Export: Nilai Sel List, Changelog, dan Usage by Company | FE+BE | 30 | 374, 423, 464 |
 | TC-AC-DS-E2E-177-state-tenant-baca-dan-download-suspended-expired | State Tenant: Suspended dan Expired Tetap Dapat Membaca List dan Download | FE+BE | 20 | 35, 577, 578 |
 | TC-AC-DS-E2E-178-state-tenant-register-ditolak-suspended-expired | State Tenant: Register SKU oleh Distributor Suspended, Distributor Expired, dan Principal Expired Ditolak | FE+BE | 28 | 532, 536, 540 |
 | TC-AC-DS-E2E-179-state-tenant-edit-ditolak-suspended-expired | State Tenant: Edit SKU oleh Distributor Suspended dan Expired Ditolak | FE+BE | 18 | 533, 537 |
@@ -197,12 +197,12 @@ Tidak ada. TC kelas a yang Expected-nya berupa respons API (TC 233–236, 238, 3
 | TC-AC-DS-E2E-183-capability-dicabut-saat-form-terbuka | Capability atau Local Registration Dicabut saat Form atau Dialog Terbuka: Aksi Ditolak dan Form Tetap Terbuka | FE+BE | 33 | 549, 550, 551, 552 |
 | TC-AC-DS-E2E-186-register-stay-on-form-mereset-field-dan-popup-tetap-terbuka | Register SKU: Submit dengan Stay on this form Mereset Semua Field termasuk Foto dan Popup Tetap Terbuka | FE+BE | 19 | 160 |
 | TC-AC-DS-E2E-187-register-backdrop-dan-perubahan-dikembalikan-dianggap-bersih | Register SKU: Klik Backdrop Tidak Menutup Popup dan Perubahan yang Dikembalikan ke Nilai Awal Dianggap Bersih | FE+BE | 12 | 169, 170 |
-| TC-AC-DS-E2E-188-edit-saving-state-dan-klik-ganda-save | Edit SKU: Saving State pada Tombol Save dan Klik Ganda Cepat Menghasilkan Satu Perubahan | FE+BE | 16 | 250, 251 |
-| TC-AC-DS-E2E-189-bulk-delete-hasil-aktual-menentukan-toast-preview-berubah | Bulk Delete: Hasil Aktual Menentukan Toast saat Preview Campuran Menjadi Homogen dan Homogen Menjadi Campuran | FE+BE | 23 | 293, 294 |
+| TC-AC-DS-E2E-188-edit-saving-state-dan-klik-ganda-save | Edit SKU: Saving State pada Tombol Save dan Klik Ganda Cepat Menghasilkan Satu Perubahan | FE+BE | 17 | 250, 251 |
+| TC-AC-DS-E2E-189-bulk-delete-hasil-aktual-menentukan-toast-preview-berubah | Bulk Delete: Hasil Aktual Menentukan Toast saat Preview Campuran Menjadi Homogen dan Homogen Menjadi Campuran | FE+BE | 24 | 293, 294 |
 | TC-AC-DS-E2E-190-kombinasi-list-opsi-filter-hilang-dari-data | Kombinasi List: Opsi Filter yang Dipakai Filter Aktif Hilang dari Data | FE+BE | 13 | 335 |
 | TC-AC-DS-E2E-191-sort-list-last-modified-oldest-dan-newest-first | Sort List: Last Modified Oldest First dan Newest First | FE+BE | 6 | 338 |
 | TC-AC-DS-E2E-192-changelog-setup-column-ceklis-dan-unceklis-kolom | Setup Column Changelog: Ceklis dan Unceklis Tujuh Kolom | FE+BE | 17 | 414 |
-| TC-AC-DS-E2E-193-log-absence-api-ditolak-dan-promosi-default | Absence Log: Request API Ditolak dan Promosi Default Otomatis Tidak Menulis Log | FE+BE | 26 | 478, 495 |
+| TC-AC-DS-E2E-193-log-absence-api-ditolak-dan-promosi-default | Absence Log: Request API Ditolak dan Promosi Default Otomatis Tidak Menulis Log | FE+BE | 70 | 478, 495 |
 | TC-AC-DS-E2E-194-sinkron-modul-stok-edit-kode-sku-range-type-dan-user-tag | Sinkron Modul Stok: Edit Kode SKU, Range Type, dan User TAG Tercermin pada Stock List Hardware Stock dan TAG Stock | FE+BE | 14 | 500 |
 | TC-AC-DS-E2E-195-sinkron-sku-principal-read-only-di-distributor | Sinkron Modul Stok: SKU Principal yang Baru Didaftarkan Terlihat Read-only pada List Distributor | FE+BE | 14 | 508 |
 

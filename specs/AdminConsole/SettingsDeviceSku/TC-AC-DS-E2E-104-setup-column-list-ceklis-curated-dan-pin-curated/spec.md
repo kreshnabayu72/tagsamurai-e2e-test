@@ -20,7 +20,7 @@ coverage:
 - Data Pre-setup #29 (SKU Principal inti) dan #30 (`SEED-001` sampai `SEED-119`; total 129 SKU Principal): hanya dibaca, tidak diubah. Dipasang idempoten oleh seeding di hook `before`.
 - Tabel "Kolom Curated" untuk langkah 4 sampai 7 dan langkah 15 sampai 20: `Hardware Type`, `Range Type`, `TAG Type` (ketiganya Hidden secara default).
 - Lebar viewport cukup sempit sehingga tabel dapat digulir horizontal; ukuran viewport disediakan tim FE.
-- Preferensi kolom List: langkah 8, 13, 15 sampai 21 menyimpan konfigurasi kolom di cache browser. Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
+- Preferensi kolom List: langkah 8, 13, 15 sampai 21 menyimpan konfigurasi kolom di cache browser; langkah 24 memulihkannya (unpin dan sembunyikan kolom curated). Hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`.
 - Nilai data diacu lewat `Fixture.deviceSku.<kunci>`; berkas fixture disediakan tim FE (lihat Temuan untuk QA).
 - Tidak ada state global lain yang diubah dan tidak ada entitas yang dibuat.
 
@@ -55,11 +55,16 @@ coverage:
 22. Muat ulang halaman dengan F5
 23. Verifikasi status pin tersimpan dan tetap berlaku setelah muat ulang: kolom `Hardware Type` membeku di sisi kiri
 
+### Pemulihan state akhir
+
+24. Klik header kolom Actions (⋯), klik `Setup Column...`, klik ikon Pin pada kolom `Hardware Type` untuk unpin, hilangkan centang kolom `Hardware Type`, `Range Type`, dan `TAG Type`, lalu klik `[Save]`
+
 ## Notes
 
-- Langkah 4 sampai 7 diulang untuk tiga baris tabel "Kolom Curated" dan langkah 15 sampai 20 untuk tiga baris yang sama (ekspansi 12 dan 18 langkah; total spec 41 langkah dengan ekspansi). Parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat; Save menutup popup sehingga tiap pin dan unpin membuka popup kembali.
+- Langkah 4 sampai 7 diulang untuk tiga baris tabel "Kolom Curated" dan langkah 15 sampai 20 untuk tiga baris yang sama (ekspansi 12 dan 18 langkah; total spec 42 langkah dengan ekspansi). Parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat; Save menutup popup sehingga tiap pin dan unpin membuka popup kembali.
 - Alasan melewati sekitar 35 langkah: kedua blok memakai popup Setup Column yang sama dan satu dataset; iterasi per kolom identik dan berdiri sendiri, dan kegagalan satu kolom tidak membuat kolom lain kehilangan makna.
 - Langkah penghubung (S-03, S-14): langkah 1 sampai 2 membuka overlay dan popup; langkah 13 membuat kolom curated tampil di tabel sebelum di-pin; tanpa asersi tambahan. Langkah 9 adalah anchor positif tambahan (bukan Expected TC) untuk asersi absence di langkah 10.
+- Langkah penghubung pemulihan (tanpa `Verifikasi`, S-03, S-09): langkah 24 meng-unpin `Hardware Type` dan menyembunyikan kembali ketiga kolom curated yang disimpan pada langkah 13 dan 21; hook `after` tetap menghapus preferensi kolom sebagai cadangan.
 - Temuan untuk QA:
   - TC-AC-DS-351 menyuruh "hilangkan centang" kolom curated lebih dulu, padahal ketiganya tidak tercentang secara default (TC-AC-DS-346); spec mencentang lebih dulu lalu menghilangkan centang. Expected "ceklis menampilkannya kembali" ditulis sebagai kolom tampil di preview sesudah dicentang. Expected e ("anggota yang menjadi satu-satunya kolom tampil tidak berlaku") tidak punya langkah dan tidak diasersi.
   - TC-AC-DS-353 langkah 7 menyebut "pin satu kolom" tanpa menyebut kolomnya; spec memakai `Hardware Type`.

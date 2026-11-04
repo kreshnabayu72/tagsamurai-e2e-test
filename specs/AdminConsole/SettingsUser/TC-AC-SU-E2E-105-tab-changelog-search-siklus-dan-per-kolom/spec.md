@@ -36,49 +36,51 @@ coverage:
 
 ### TC-AC-SU-378: Siklus interaksi Search box Tab Changelog
 
-1. Cari `Jane Smith {runId}-105` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `Changelog`
-3. Hover icon Search
-4. Verifikasi tooltip `Search` tampil
-5. Klik icon Search
-6. Verifikasi input Search melebar
-7. Verifikasi kursor auto-focus di input Search
-8. Verifikasi placeholder input Search `Search action, field, or value...`
-9. Ketik `Assign` di input Search tanpa menekan Enter
-10. Verifikasi icon `(✕)` muncul
-11. Verifikasi tabel belum tersaring (jumlah baris sama dengan sebelum mengetik)
-12. Tekan Enter
-13. Verifikasi sedikitnya satu baris tampil
-14. Verifikasi setiap baris yang tampil memuat `Assign`
-15. Klik icon `(✕)`
-16. Verifikasi input Search kosong
-17. Verifikasi search bar tetap terbuka
-18. Verifikasi tabel tetap menampilkan hasil search terakhir
-19. Tekan Enter pada input kosong
-20. Verifikasi tabel kembali menampilkan semua data (jumlah baris sama dengan sebelum Search)
-21. Ketik Search `Assign`, tekan Enter
-22. Klik icon `(←)`
-23. Verifikasi search bar collapse ke icon
-24. Verifikasi keyword Search kosong
-25. Verifikasi tabel langsung kembali menampilkan semua data
+1. Ketik Search `Jane Smith {runId}-105`, tekan Enter
+2. Klik Name `Jane Smith {runId}-105`
+3. Klik tab `Changelog`
+4. Hover icon Search
+5. Verifikasi tooltip `Search` tampil
+6. Klik icon Search
+7. Verifikasi input Search melebar
+8. Verifikasi kursor auto-focus di input Search
+9. Verifikasi placeholder input Search `Search action, field, or value...`
+10. Catat jumlah baris tabel Changelog
+11. Ketik `Assign` di input Search tanpa menekan Enter
+12. Verifikasi icon `(✕)` muncul
+13. Verifikasi tabel belum tersaring (jumlah baris sama dengan jumlah yang dicatat sebelum mengetik)
+14. Tekan Enter
+15. Verifikasi sedikitnya satu baris tampil
+16. Verifikasi setiap baris yang tampil memuat `Assign`
+17. Klik icon `(✕)`
+18. Verifikasi input Search kosong
+19. Verifikasi search bar tetap terbuka
+20. Verifikasi tabel tetap menampilkan hasil search terakhir
+21. Tekan Enter pada input kosong
+22. Verifikasi tabel kembali menampilkan semua data (jumlah baris sama dengan jumlah yang dicatat)
+23. Ketik Search `Assign`, tekan Enter
+24. Klik icon `(←)`
+25. Verifikasi search bar collapse ke icon
+26. Verifikasi keyword Search kosong
+27. Verifikasi tabel langsung kembali menampilkan semua data
 
 ### TC-AC-SU-379: Search Tab Changelog per kolom kelas teks
 
-26. Klik icon Search
-27. Ganti isi kotak Search dengan keyword huruf kecil pada baris tabel 'Search per kolom', tekan Enter
-28. Verifikasi tabel menampilkan baris yang memuat nilai pada kolom 'Nilai yang cocok' baris tabel itu
-29. Ganti isi kotak Search dengan keyword huruf kapital pada baris tabel yang sama, tekan Enter
+28. Untuk setiap baris tabel "Search per kolom" di Prerequisites, lakukan langkah 29 sampai 33
+29. Ketik Search keyword huruf kecil pada baris tabel 'Search per kolom', tekan Enter
 30. Verifikasi tabel menampilkan baris yang memuat nilai pada kolom 'Nilai yang cocok' baris tabel itu
-31. Klik icon `(←)` pada kotak Search
+31. Ganti isi kotak Search dengan keyword huruf kapital pada baris tabel yang sama, tekan Enter
+32. Verifikasi tabel menampilkan baris yang memuat nilai pada kolom 'Nilai yang cocok' baris tabel itu
+33. Klik icon `(←)` pada kotak Search
 
 ## Notes
 
-- Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
-- Langkah Search per kolom diulang per baris tabel 'Search per kolom': langkah 27 sampai 30 (5 kolom, tiap kolom dua keyword). Search tidak dibersihkan antar-iterasi karena iterasi berikutnya mengganti isi kotak.
-- Klik icon Search sebelum iterasi pertama dan klik `(←)` sesudah iterasi terakhir adalah langkah penghubung; Verifikasi tiap iterasi mengasersi baris yang memuat nilai kolom itu tampil.
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Langkah Search per kolom diulang per baris tabel 'Search per kolom': langkah 29 sampai 33 (5 kolom, tiap kolom dua keyword).
+- Klik `(←)` pada akhir tiap iterasi menutup dan mengosongkan Search sehingga iterasi berikutnya mulai dari kotak kosong; langkah itu adalah langkah penghubung, sedangkan Verifikasi tiap iterasi mengasersi baris yang memuat nilai kolom itu tampil.
 - Temuan untuk QA:
   - Search diterapkan pada seluruh kolom searchable, sehingga keyword seperti `assi` juga dapat cocok dengan kolom lain (New Value `Assigned`); TC tidak menyatakan apakah hasil harus hanya dari kolom yang disebut. Spec hanya mengasersi bahwa baris yang memuat nilai kolom itu tampil.
   - Pelaku `Admin U` (nama lengkap `Admin Utama`) tidak terpetakan ke akun mana pun di Tabel Data Uji Pre-setup (#1-#7 hanya email aktor, #8 hanya target user). Spec memakai pelaku seeding bernama depan `Admin` dan belakang `Utama`; suffix `{runId}` ditaruh di email pelaku, bukan di nama, karena format Modified By [First Name] [Last Initial] tidak dapat memuat suffix.
   - Cara men-seed entri audit trail (Date, Action, Field, Old Value, New Value, pelaku) tidak dinyatakan di TC, PRD, atau LLD; kemampuan ini ditulis 'disediakan tim FE/BE' tanpa endpoint karangan (S-13).
   - Nama target `Jane Smith` pada TC dipakai sebagai nama bersuffix `Jane Smith {runId}-NNN` per run (S-12); asersi spec memakai nilai kolom log, bukan urutan atau Search atas nama user.
-- Spec ini melewati sekitar 35 langkah (31 langkah nominal, sekitar 47 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Spec ini melewati sekitar 35 langkah (33 langkah nominal, sekitar 53 dengan ekspansi blok berulang). Alasan pertahanan: seluruh blok berada pada satu permukaan, satu kelas harness (fungsional biasa), memakai dataset seeding yang sama, dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.

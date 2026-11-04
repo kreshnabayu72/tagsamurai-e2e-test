@@ -27,32 +27,34 @@ coverage:
 
 ### TC-AC-SU-380: Kolom non-searchable tidak ikut dicari
 
-1. Cari `Jane Smith {runId}-106` di Search pada User List, tekan Enter, lalu buka Detail user tersebut
-2. Klik tab `Changelog`
-3. Verifikasi sedikitnya satu baris data tampil pada tabel
-4. Ketik Search `12 Jun 2026`, tekan Enter
-5. Verifikasi tabel menampilkan empty state `No results found`
-6. Klik icon `(←)` pada kotak Search
-7. Klik icon Filter
-8. Verifikasi Filter Panel memuat field `Date`
-9. Klik icon Filter untuk menutup Filter Panel
+1. Ketik Search `Jane Smith {runId}-106`, tekan Enter
+2. Klik Name `Jane Smith {runId}-106`
+3. Klik tab `Changelog`
+4. Verifikasi sedikitnya satu baris data tampil pada tabel
+5. Verifikasi kolom `Date` menampilkan `12 Jun 2026` pada salah satu baris
+6. Ketik Search `12 Jun 2026`, tekan Enter
+7. Verifikasi tabel menampilkan empty state `No results found`
+8. Klik icon `(←)` pada kotak Search
+9. Klik icon Filter
+10. Verifikasi Filter Panel memuat field `Date`
+11. Klik icon Filter untuk menutup Filter Panel
 
 ### TC-AC-SU-381: Kolom yang di-hide tidak ikut dicari lalu kembali searchable saat di-unhide
 
-10. Klik header `⋯`, hilangkan centang kolom `Field` pada overlay Column Visibility
-11. Verifikasi kolom `Field` tidak tampil pada tabel
-12. Ketik Search `Manage group`, tekan Enter
-13. Verifikasi tabel menampilkan empty state `No results found`
-14. Klik icon `(←)` pada kotak Search
-15. Klik header `⋯`, centang kembali kolom `Field` pada overlay Column Visibility
-16. Verifikasi kolom `Field` tampil pada tabel
-17. Ketik Search `Manage group`, tekan Enter
-18. Verifikasi baris yang memuat `Manage group` tampil
-19. Klik icon `(←)` pada kotak Search
+12. Klik header `⋯`, hilangkan centang kolom `Field` pada overlay Column Visibility
+13. Verifikasi kolom `Field` tidak tampil pada tabel
+14. Ketik Search `Manage group`, tekan Enter
+15. Verifikasi tabel menampilkan empty state `No results found`
+16. Klik icon `(←)` pada kotak Search
+17. Klik header `⋯`, centang kembali kolom `Field` pada overlay Column Visibility
+18. Verifikasi kolom `Field` tampil pada tabel
+19. Ketik Search `Manage group`, tekan Enter
+20. Verifikasi baris yang memuat `Manage group` tampil
+21. Klik icon `(←)` pada kotak Search
 
 ## Notes
 
-- Langkah pembuka yang mencari user target lewat Search pada User List lalu membuka Detail adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
+- Langkah 1 dan 2 (Ketik Search nama user target, lalu Klik Name untuk membuka Detail) adalah langkah penghubung (R-16, S-03); kotak Search User List tidak dipakai sebagai objek uji.
 - Klik `(←)` setelah tiap Search adalah langkah penghubung yang mengosongkan Search (S-09). Klik icon Filter, Verifikasi field `Date`, lalu menutup panel mengasersi Expected b TC-380 (penyaringan kolom Date hanya lewat Filter Panel) dan diturunkan dari TC-382 yang menyatakan `Date` ada di Filter Panel Tab Changelog.
 - Temuan untuk QA:
   - Expected b TC-380 ('hanya tersedia lewat Filter Panel (bila Filterable)') bersifat penjelasan bersyarat dan tidak memiliki hasil teramati sendiri; spec mengasersinya lewat keberadaan field `Date` di Filter Panel.
