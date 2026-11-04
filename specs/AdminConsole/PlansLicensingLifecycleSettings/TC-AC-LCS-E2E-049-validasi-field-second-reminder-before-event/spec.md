@@ -62,11 +62,10 @@ coverage:
 21. Pilih seluruh isi field Second Reminder Before Event lalu ketik `1234`
 22. Verifikasi field menampilkan `123`: karakter ke-4 tidak dapat diketik
 23. Verifikasi tidak ada pesan error rentang nilai (nilai `123` berada dalam rentang)
+24. Ubah Second Reminder Before Event kembali menjadi `7` lalu klik area kosong di luar field (blur)
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 1, 15, 20 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
+- Langkah penghubung (S-03, S-09): langkah 1 membuka tab Client Lifecycle (hook `beforeEach` suite membuka tab Trial Settings); langkah 15, 20, dan 24 memulihkan nilai Second Reminder Before Event ke `7` lalu blur, sehingga form tidak berakhir dirty dan blok berikutnya tidak mewarisi nilai uji; tanpa `Verifikasi`.
 - Temuan untuk QA:
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).

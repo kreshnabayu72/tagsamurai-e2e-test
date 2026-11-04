@@ -105,6 +105,7 @@ coverage:
 - Spec melewati sekitar 35 langkah; alasan: semua blok satu kelas harness (job lifecycle dengan jam server) dan data berbeda per TC, kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (S-03): `(←)` pada kotak Search, pemilihan sub-tab, dan muat ulang List adalah pemulihan/penghubung tanpa asersi.
 - Temuan untuk QA
+  - F-10: Asersi langkah 34 (sesudah langkah 32, "tunggu job terjadwal berjalan lewat polling") dan langkah 18 (sesudah langkah 15, "picu eksekusi job lifecycle berikutnya") bergantung pada job latar yang tidak punya sinyal selesai; menunggu kemampuan "kueri fixture status job" (bagian 6 konvensi) dari tim BE/FE; diterima user 2026-11-03 (laporan e2e-audit F-10).
   - TC-AC-ACC-669: kadens job `bukan spesifikasi PRD Client`; langkah `Tunggu eksekusi job lifecycle berikutnya` tidak punya interval; spec memakai pemicu eksekusi berikutnya disediakan tim FE/BE.
   - TC-AC-ACC-670: nilai R hanya tersedia di keluaran skrip seed; spec membaca R dari keluaran itu (disediakan tim FE).
   - TC-AC-ACC-964: End predecessor (E) dibaca dari Subscription Details; batas waktu `pukul 23:59` dan `pukul 01:00` mengikuti Langkah TC.

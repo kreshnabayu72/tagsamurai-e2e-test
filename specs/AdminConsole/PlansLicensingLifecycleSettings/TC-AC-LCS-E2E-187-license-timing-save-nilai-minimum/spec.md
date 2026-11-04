@@ -29,9 +29,9 @@ coverage:
 
 ### TC-AC-LCS-161: Save tab License Timing dengan nilai minimum yang valid
 
-2. Ubah Managed Transition Time menjadi `1`
-3. Ubah Managed Action Retry Delay menjadi `1`
-4. Ubah Addon Reactivation Delay menjadi `1`
+2. Ubah Managed Transition Time menjadi `1`, lalu klik area kosong di luar field (blur)
+3. Ubah Managed Action Retry Delay menjadi `1`, lalu klik area kosong di luar field (blur)
+4. Ubah Addon Reactivation Delay menjadi `1`, lalu klik area kosong di luar field (blur)
 5. Verifikasi tidak ada pesan error pada seluruh field yang diisi
 6. Klik `[Save]`
 7. Verifikasi toast sukses "Success, license timing settings have been saved."
@@ -40,10 +40,9 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah 1 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
 - TC-AC-LCS-161 berada di spec terpisah dari TC dirty state dan Save License Timing lainnya (spec 045) sebagai fakta pembagian TC lintas spec.
+- Langkah 2 sampai 4 menyertakan blur sesuai TC-AC-LCS-161 langkah 1 sampai 3 ("lalu blur") sebelum asersi absence pada langkah 5, karena validasi rentang muncul saat blur (bagian 8b butir 2).
 - Temuan untuk QA:
   - Post Condition TC-AC-LCS-161 (nilai License Timing tersimpan sesuai Data Uji) setara dengan `Verifikasi` nilai tersimpan; tidak ada asersi tambahan.
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).

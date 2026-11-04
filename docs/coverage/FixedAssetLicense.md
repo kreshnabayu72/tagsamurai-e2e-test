@@ -2,7 +2,7 @@
 
 Sumber: `fixed-asset/license/TestCases/tc-license.md` (610 TC aktif, ID `TC-FA-LIC-1`–`617` tidak kontigu; ID 40-44, 502, dan 610 dihapus atau retired). Suite: `specs/FixedAsset/License/`. Prefix: `FA` + `LIC` (`TC-FA-LIC-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-license-backend.md`; kontrak REST murni tidak dipetakan di halaman ini.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 610 TC aktif masuk 153 spec; tidak ada TC yang dikeluarkan sebagai TC khusus backend. Setiap TC terpetakan ke tepat satu spec primer. Enam TC (440, 441, 445, 453, 549, 614) juga tercantum di `sourceTc` spec absence log penolakan request (S-05, lihat bagian Pengecualian S-05); spec absence itu tidak punya TC primer. Seluruh spec bermode `FE+BE`; tidak ada `Mode: mock`. Kegagalan 5xx dan timeout dipaksa lewat `Spectra.intercept()` di atas backend nyata. Semua spec memakai `coverage.web: automated`.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 610 TC aktif masuk 159 spec; tidak ada TC yang dikeluarkan sebagai TC khusus backend. Setiap TC terpetakan ke tepat satu spec primer. Enam TC (440, 441, 445, 453, 549, 614) juga tercantum di `sourceTc` spec absence log penolakan request (S-05, lihat bagian Pengecualian S-05); spec absence itu tidak punya TC primer. Seluruh spec bermode `FE+BE`; tidak ada `Mode: mock`. Kegagalan 5xx dan timeout dipaksa lewat `Spectra.intercept()` di atas backend nyata. Semua spec memakai `coverage.web: automated`.
 
 ## TC granular → spec e2e
 
@@ -35,7 +35,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 610 TC aktif masuk 153 spec; 
 | TC-FA-LIC-E2E-025-sinkron-konfigurasi-banner-terhadap-renewal-di-admin | Sinkron Konfigurasi Banner terhadap Renewal di Admin Console, Lifecycle Settings, dan T-0 | FE+BE | 34 | TC-FA-LIC-417, TC-FA-LIC-418, TC-FA-LIC-419, TC-FA-LIC-611 |
 | TC-FA-LIC-E2E-026-role-matrix-visibilitas-menu-license-dan-direct-url | Role Matrix: Visibilitas Menu License dan Akses URL Langsung per Role | FE+BE | 20 | TC-FA-LIC-88, TC-FA-LIC-89, TC-FA-LIC-90 |
 | TC-FA-LIC-E2E-027-role-matrix-elemen-baca-license-tab-toolbar-banner-data | Role Matrix: Elemen Baca License (Tab, Toolbar, Banner, dan Data) per Role | FE+BE | 38 | TC-FA-LIC-91, TC-FA-LIC-92, TC-FA-LIC-108, TC-FA-LIC-109, TC-FA-LIC-485 |
-| TC-FA-LIC-E2E-028-role-matrix-force-logout-show-hidden-dan-eksekusi-per-role | Role Matrix: Force Logout Show, Hidden, dan Eksekusi per Role | FE+BE | 44 | TC-FA-LIC-93, TC-FA-LIC-94, TC-FA-LIC-95, TC-FA-LIC-96, TC-FA-LIC-110, TC-FA-LIC-596 |
+| TC-FA-LIC-E2E-028-role-matrix-visibilitas-force-logout-show-hidden-dan-disabled-per-role | Role Matrix: Visibilitas Force Logout Show, Hidden, dan Disabled per Role | FE+BE | 31 | TC-FA-LIC-93, TC-FA-LIC-94, TC-FA-LIC-110, TC-FA-LIC-596 |
 | TC-FA-LIC-E2E-029-role-matrix-tombol-edit-show-disabled-hidden-per-role | Role Matrix: Tombol Edit Show dan Hidden per Role | FE+BE | 27 | TC-FA-LIC-97, TC-FA-LIC-98 |
 | TC-FA-LIC-E2E-030-role-matrix-scope-edit-descendant-manage-asset-license | Role Matrix: Scope Edit Descendant untuk Manage Asset License dan Group Manager | FE+BE | 41 | TC-FA-LIC-99, TC-FA-LIC-100, TC-FA-LIC-101, TC-FA-LIC-530 |
 | TC-FA-LIC-E2E-031-role-matrix-edit-allocation-dieksekusi-per-role | Role Matrix: Edit Allocation Dieksekusi Sukses per Role | FE+BE | 23 | TC-FA-LIC-102, TC-FA-LIC-104, TC-FA-LIC-105 |
@@ -81,7 +81,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 610 TC aktif masuk 153 spec; 
 | TC-FA-LIC-E2E-071-allocation-history-search-non-searchable-trim-terikat | Allocation History: Search Guard Kolom Tanggal, Trim Spasi Tepi, dan Terikat Visibilitas Kolom | FE+BE | 17 | TC-FA-LIC-233, TC-FA-LIC-234, TC-FA-LIC-235 |
 | TC-FA-LIC-E2E-072-allocation-history-filter-screening-opsi-or-and-chip | Allocation History: Filter Panel (Screening, Opsi per Kelas Dropdown, OR dan AND, serta Chip) | FE+BE | 46 | TC-FA-LIC-241, TC-FA-LIC-242, TC-FA-LIC-243, TC-FA-LIC-244, TC-FA-LIC-245 |
 | TC-FA-LIC-E2E-073-allocation-history-sort-default-filter-date-range-dan-min | Allocation History: Sort Default, Berpindah Kolom Sort, Filter Date Range, dan Range Min-Max Quantity | FE+BE | 32 | TC-FA-LIC-239, TC-FA-LIC-240, TC-FA-LIC-246, TC-FA-LIC-247, TC-FA-LIC-248 |
-| TC-FA-LIC-E2E-074-allocation-history-column-visibility-dan-setup-column | Allocation History: Overlay Column Visibility, Popup Setup Column, serta Ceklis dan Geser per Kolom | FE+BE | 34 | TC-FA-LIC-249, TC-FA-LIC-250, TC-FA-LIC-251, TC-FA-LIC-252 |
+| TC-FA-LIC-E2E-074-allocation-history-column-visibility-dan-setup-column | Allocation History: Screening Overlay Column Visibility dan Popup Setup Column | FE+BE | 15 | TC-FA-LIC-249, TC-FA-LIC-250 |
 | TC-FA-LIC-E2E-075-allocation-history-setup-column-pin-reset-x-esc-satu | Allocation History: Setup Column (Pin dan Unpin per Kolom, Reset to Default, X atau Esc, dan Satu Kolom Tersisa) | FE+BE | 38 | TC-FA-LIC-253, TC-FA-LIC-254, TC-FA-LIC-255, TC-FA-LIC-256 |
 | TC-FA-LIC-E2E-076-allocation-history-paginasi-dan-kombinasi-search-filter | Allocation History: Paginasi dan Kombinasi Search, Filter, Sort, serta Paginasi | FE+BE | 52 | TC-FA-LIC-257, TC-FA-LIC-258, TC-FA-LIC-259, TC-FA-LIC-260 |
 | TC-FA-LIC-E2E-077-active-sessions-search-reveal-per-kelas-kolom-non | Active Sessions: Search Reveal, Per Kelas Kolom, Kolom Tanggal Non-Searchable, dan Trim Spasi | FE+BE | 31 | TC-FA-LIC-262, TC-FA-LIC-263, TC-FA-LIC-264, TC-FA-LIC-265 |
@@ -98,7 +98,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 610 TC aktif masuk 153 spec; 
 | TC-FA-LIC-E2E-088-group-license-allocation-sort-numerik-nilai-kosong-baris | Group License Allocation: Sort Numerik, Nilai Kosong, Baris Bernilai Sama, dan Reset State Saat Ganti Node | FE+BE | 42 | TC-FA-LIC-306, TC-FA-LIC-309, TC-FA-LIC-310, TC-FA-LIC-311, TC-FA-LIC-512 |
 | TC-FA-LIC-E2E-089-group-license-allocation-filter-screening-range-min-max | Group License Allocation: Filter Panel Screening, Range Min-Max per Kolom, dan Baris Bernilai Kosong | FE+BE | 18 | TC-FA-LIC-312, TC-FA-LIC-313, TC-FA-LIC-314, TC-FA-LIC-513 |
 | TC-FA-LIC-E2E-090-group-license-allocation-column-visibility-dan-setup | Group License Allocation: Screening Column Visibility dan Setup Column, serta Ceklis dan Unceklis Kolom Hideable Visible | FE+BE | 20 | TC-FA-LIC-315, TC-FA-LIC-316, TC-FA-LIC-317 |
-| TC-FA-LIC-E2E-091-group-license-allocation-setup-column-geser-pin-dan-unpin | Group License Allocation: Setup Column Geser (Drag), Pin, dan Unpin Kolom Hideable Visible Default | FE+BE | 17 | TC-FA-LIC-318, TC-FA-LIC-319 |
+| TC-FA-LIC-E2E-091-group-license-allocation-setup-column-geser-drag | Group License Allocation: Setup Column Geser (Drag) Kolom Hideable Visible Default | FE+BE | 9 | TC-FA-LIC-318 |
 | TC-FA-LIC-E2E-092-group-license-allocation-setup-column-reset-x-esc-satu | Group License Allocation: Setup Column Satu Kolom Tersisa, X atau Esc, Reset to Default, dan Guard Tabel Summary | FE+BE | 30 | TC-FA-LIC-320, TC-FA-LIC-321, TC-FA-LIC-322, TC-FA-LIC-363 |
 | TC-FA-LIC-E2E-093-group-license-allocation-paginasi-dan-kombinasi-search | Group License Allocation: Kombinasi Search, Filter, Sort, dan Page Size serta Paginasi | FE+BE | 47 | TC-FA-LIC-323, TC-FA-LIC-324, TC-FA-LIC-325, TC-FA-LIC-326 |
 | TC-FA-LIC-E2E-094-changelog-allocation-quota-screening-popup-tutup-isi | Modal Changelog Allocation Quota: Screening Popup, Penutupan, Isi Entri, Opsi Filter, dan Format Tanggal | FE+BE | 38 | TC-FA-LIC-328, TC-FA-LIC-329, TC-FA-LIC-330, TC-FA-LIC-348, TC-FA-LIC-362 |
@@ -126,13 +126,13 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 610 TC aktif masuk 153 spec; 
 | TC-FA-LIC-E2E-116-registrasi-aset-terhadap-kuota-grup-ditolak-penuh-leluhur | Registrasi Aset terhadap Kuota Grup: Ditolak Saat Penuh, Memakai Remaining Leluhur, dan Sisa Pool Organisasi | FE+BE | 39 | TC-FA-LIC-384, TC-FA-LIC-385, TC-FA-LIC-386, TC-FA-LIC-387 |
 | TC-FA-LIC-E2E-117-registrasi-massal-all-or-nothing-import-dan-used | Registrasi Massal dan Import: Pemeriksaan Kuota Sekali, All-or-Nothing, dan Batas Tepat Remaining | FE+BE | 48 | TC-FA-LIC-388, TC-FA-LIC-389, TC-FA-LIC-390, TC-FA-LIC-488 |
 | TC-FA-LIC-E2E-118-transfer-ke-grup-penuh-edit-remove-allocation-membuka | Transfer ke Grup Penuh Ditolak, Edit dan Remove Allocation Membuka Kembali Penerimaan Aset | FE+BE | 51 | TC-FA-LIC-391, TC-FA-LIC-490, TC-FA-LIC-534, TC-FA-LIC-392, TC-FA-LIC-393 |
-| TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-reject-auto | Approval Registrasi Aset: Submit Menahan Reserved, Approve, Reject, dan Auto-cancel | FE+BE | 32 | TC-FA-LIC-394, TC-FA-LIC-395, TC-FA-LIC-396, TC-FA-LIC-397 |
+| TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-dan-reject | Approval Registrasi Aset: Submit Menahan Reserved, Approve, dan Reject | FE+BE | 23 | TC-FA-LIC-394, TC-FA-LIC-395, TC-FA-LIC-396 |
 | TC-FA-LIC-E2E-120-unmanaged-transisi-manage-dan-konsistensi-used | Aset Unmanaged, Transisi Manage, dan Konsistensi Used pada License Summary | FE+BE | 37 | TC-FA-LIC-401, TC-FA-LIC-402, TC-FA-LIC-403, TC-FA-LIC-404, TC-FA-LIC-493 |
 | TC-FA-LIC-E2E-121-check-group-quota-saat-plan-starter-dan-toggle-off | check_group_quota pada Plan Paid, Plan Starter, dan License allocation per group OFF | FE+BE | 36 | TC-FA-LIC-489, TC-FA-LIC-505, TC-FA-LIC-609, TC-FA-LIC-613 |
 | TC-FA-LIC-E2E-122-aksi-manage-aset-unmanaged-kuota-grup-batas-sisa-slot | Aksi Manage Aset Unmanaged terhadap Kuota Grup: Batas Sisa Slot, Ditolak Seluruhnya, dan Reserved | FE+BE | 53 | TC-FA-LIC-497, TC-FA-LIC-498, TC-FA-LIC-499, TC-FA-LIC-500, TC-FA-LIC-501 |
-| TC-FA-LIC-E2E-123-aksi-manage-grup-tanpa-alokasi-over-used-gagal-diproses | Aksi Manage: Grup Tanpa Alokasi, Over-used, Gagal Diproses, dan Jeda managed_transition_time | FE+BE | 57 | TC-FA-LIC-503, TC-FA-LIC-504, TC-FA-LIC-506, TC-FA-LIC-507, TC-FA-LIC-508 |
-| TC-FA-LIC-E2E-124-perhitungan-edge-remaining-0-saat-over-used-dan-minimum | Perhitungan Edge: Remaining Ditampilkan 0 Saat Over-used, Tingkat Full, dan Minimum Quota dengan Reserved | FE+BE | 54 | TC-FA-LIC-410, TC-FA-LIC-494, TC-FA-LIC-495, TC-FA-LIC-510, TC-FA-LIC-612 |
-| TC-FA-LIC-E2E-125-peringatan-kuota-tenant-ambang-low-dan-full-transisi | Peringatan Kuota Tenant: Ambang Low dan Full serta Transisi Penanda Tingkat | FE+BE | 31 | TC-FA-LIC-423, TC-FA-LIC-424, TC-FA-LIC-425, TC-FA-LIC-426, TC-FA-LIC-427 |
+| TC-FA-LIC-E2E-123-aksi-manage-grup-tanpa-alokasi-over-used-gagal-diproses | Aksi Manage: Grup Tanpa Alokasi, Over-used, dan Gagal Diproses | FE+BE | 44 | TC-FA-LIC-503, TC-FA-LIC-504, TC-FA-LIC-506, TC-FA-LIC-507 |
+| TC-FA-LIC-E2E-124-perhitungan-edge-remaining-0-saat-over-used-dan-minimum | Perhitungan Edge: Remaining Ditampilkan 0 Saat Over-used dan Minimum Quota dengan Reserved | FE+BE | 46 | TC-FA-LIC-410, TC-FA-LIC-494, TC-FA-LIC-510, TC-FA-LIC-612 |
+| TC-FA-LIC-E2E-125-peringatan-kuota-tenant-ambang-low-dan-full-transisi | Peringatan Kuota Tenant: Ambang Low dan Full serta Transisi Penanda Tingkat | FE+BE | 48 | TC-FA-LIC-423, TC-FA-LIC-424, TC-FA-LIC-425, TC-FA-LIC-426, TC-FA-LIC-427, TC-FA-LIC-495 |
 | TC-FA-LIC-E2E-126-peringatan-kuota-tenant-job-per-jam-penilaian-pasca | Peringatan Kuota Tenant: Job Per Jam, Penilaian Pasca-commit, dan Pencatatan oleh System | FE+BE | 64 | TC-FA-LIC-429, TC-FA-LIC-430, TC-FA-LIC-491, TC-FA-LIC-492, TC-FA-LIC-546, TC-FA-LIC-547 |
 | TC-FA-LIC-E2E-127-peringatan-kuota-tenant-penerima-nonaktif-starter-total-0 | Peringatan Kuota Tenant: Cakupan Penerima, Penerima Nonaktif, Plan Starter, dan Penilaian Dilewati | FE+BE | 50 | TC-FA-LIC-431, TC-FA-LIC-432, TC-FA-LIC-433, TC-FA-LIC-434, TC-FA-LIC-487, TC-FA-LIC-533, TC-FA-LIC-548 |
 | TC-FA-LIC-E2E-128-peringatan-kuota-tenant-starter-tanpa-ledger-perubahan | Peringatan Kuota Tenant: Aksi Manage, Starter Tanpa Ledger, Perubahan Cap Plan, dan Term Trial | FE+BE | 34 | TC-FA-LIC-509, TC-FA-LIC-603, TC-FA-LIC-604, TC-FA-LIC-605 |
@@ -156,6 +156,12 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 610 TC aktif masuk 153 spec; 
 | TC-FA-LIC-E2E-146-submit-tanpa-approval-delete-dispose-dan-draf-dihapus-pelepasan-kuota | Submit Tanpa Approval, Delete dan Dispose Aset, serta Draf Dihapus terhadap Used dan Reserved | FE+BE | 23 | TC-FA-LIC-398, TC-FA-LIC-399, TC-FA-LIC-400 |
 | TC-FA-LIC-E2E-147-state-tenant-plan-starter-paid-kuota-grup-dan-total-asset-capacity | State Tenant: Plan Turun ke Starter, Kembali ke Paid, dan Total Asset Capacity Lebih Kecil dari Total Allocated | FE+BE | 29 | TC-FA-LIC-406, TC-FA-LIC-407, TC-FA-LIC-408, TC-FA-LIC-409, TC-FA-LIC-411 |
 | TC-FA-LIC-E2E-148-role-matrix-tombol-edit-disabled-manage-asset-license | Role Matrix: Tombol Edit Disabled untuk Manage Asset License | FE+BE | 20 | TC-FA-LIC-106, TC-FA-LIC-597 |
+| TC-FA-LIC-E2E-149-role-matrix-force-logout-dieksekusi-sukses-manage-global-license-dan-default-user | Role Matrix Positif: Force Logout Dieksekusi Sukses oleh Manage Global License dan Default User | FE+BE | 14 | TC-FA-LIC-95, TC-FA-LIC-96 |
+| TC-FA-LIC-E2E-150-allocation-history-ceklis-dan-unceklis-per-kolom-setup-column | Allocation History: Setup Column Ceklis dan Unceklis per Kolom Hideable Visible Default | FE+BE | 12 | TC-FA-LIC-251 |
+| TC-FA-LIC-E2E-151-allocation-history-geser-per-kolom-setup-column | Allocation History: Setup Column Geser (Drag) per Kolom Hideable Visible Default | FE+BE | 9 | TC-FA-LIC-252 |
+| TC-FA-LIC-E2E-152-group-license-allocation-setup-column-pin-dan-unpin | Group License Allocation: Setup Column Pin dan Unpin Kolom Hideable Visible Default | FE+BE | 11 | TC-FA-LIC-319 |
+| TC-FA-LIC-E2E-153-state-tenant-auto-cancel-approval-saat-plan-diturunkan-dan-downgrade-berlaku | State Tenant: Auto-cancel Sistem Saat Plan Kehilangan Approval Workflow Melepas Reserved | FE+BE | 9 | TC-FA-LIC-397 |
+| TC-FA-LIC-E2E-154-time-travel-jeda-managed-transition-time-reserved-menjadi-used | Time-travel: Jeda managed_transition_time, Reserved Ditahan Selama Jeda dan Menjadi Used Saat Aset Managed Kembali | FE+BE | 13 | TC-FA-LIC-508 |
 | TC-FA-LIC-E2E-167-defense-in-depth-markup-tampil-teks-dan-injeksi-dom-field-quota | Defense-in-Depth: Nama Bermarkup Tampil sebagai Teks dan Injeksi Karakter Terlarang ke Field Allocated Quota | FE+BE | 23 | TC-FA-LIC-452, TC-FA-LIC-454 |
 | TC-FA-LIC-E2E-168-konkurensi-dua-sesi-registrasi-aset-remove-dan-pool-organisasi | Konkurensi Dua Sesi Total Control: Registrasi Aset, Remove Allocation, dan Pool Organisasi | FE+BE | 32 | TC-FA-LIC-457, TC-FA-LIC-459, TC-FA-LIC-616 |
 | TC-FA-LIC-E2E-169-sesi-lain-online-users-force-logout-ganda-dan-pelepasan-seat | Concurrent User dengan Sesi Lain: Online Users Sinkron, Force Logout Ganda, dan Pelepasan Seat | FE+BE | 29 | TC-FA-LIC-87, TC-FA-LIC-173, TC-FA-LIC-460 |
@@ -280,10 +286,10 @@ Spec absence memuat klausa absence log (tanpa entri) dengan penolakan request se
 | TC-FA-LIC-90 | TC-FA-LIC-E2E-026-role-matrix-visibilitas-menu-license-dan-direct-url | FE+BE |
 | TC-FA-LIC-91 | TC-FA-LIC-E2E-027-role-matrix-elemen-baca-license-tab-toolbar-banner-data | FE+BE |
 | TC-FA-LIC-92 | TC-FA-LIC-E2E-027-role-matrix-elemen-baca-license-tab-toolbar-banner-data | FE+BE |
-| TC-FA-LIC-93 | TC-FA-LIC-E2E-028-role-matrix-force-logout-show-hidden-dan-eksekusi-per-role | FE+BE |
-| TC-FA-LIC-94 | TC-FA-LIC-E2E-028-role-matrix-force-logout-show-hidden-dan-eksekusi-per-role | FE+BE |
-| TC-FA-LIC-95 | TC-FA-LIC-E2E-028-role-matrix-force-logout-show-hidden-dan-eksekusi-per-role | FE+BE |
-| TC-FA-LIC-96 | TC-FA-LIC-E2E-028-role-matrix-force-logout-show-hidden-dan-eksekusi-per-role | FE+BE |
+| TC-FA-LIC-93 | TC-FA-LIC-E2E-028-role-matrix-visibilitas-force-logout-show-hidden-dan-disabled-per-role | FE+BE |
+| TC-FA-LIC-94 | TC-FA-LIC-E2E-028-role-matrix-visibilitas-force-logout-show-hidden-dan-disabled-per-role | FE+BE |
+| TC-FA-LIC-95 | TC-FA-LIC-E2E-149-role-matrix-force-logout-dieksekusi-sukses-manage-global-license-dan-default-user | FE+BE |
+| TC-FA-LIC-96 | TC-FA-LIC-E2E-149-role-matrix-force-logout-dieksekusi-sukses-manage-global-license-dan-default-user | FE+BE |
 | TC-FA-LIC-97 | TC-FA-LIC-E2E-029-role-matrix-tombol-edit-show-disabled-hidden-per-role | FE+BE |
 | TC-FA-LIC-98 | TC-FA-LIC-E2E-029-role-matrix-tombol-edit-show-disabled-hidden-per-role | FE+BE |
 | TC-FA-LIC-99 | TC-FA-LIC-E2E-030-role-matrix-scope-edit-descendant-manage-asset-license | FE+BE |
@@ -297,7 +303,7 @@ Spec absence memuat klausa absence log (tanpa entri) dengan penolakan request se
 | TC-FA-LIC-107 | TC-FA-LIC-E2E-032-role-matrix-remove-allocation-dengan-mengosongkan-field | FE+BE |
 | TC-FA-LIC-108 | TC-FA-LIC-E2E-027-role-matrix-elemen-baca-license-tab-toolbar-banner-data | FE+BE |
 | TC-FA-LIC-109 | TC-FA-LIC-E2E-027-role-matrix-elemen-baca-license-tab-toolbar-banner-data | FE+BE |
-| TC-FA-LIC-110 | TC-FA-LIC-E2E-028-role-matrix-force-logout-show-hidden-dan-eksekusi-per-role | FE+BE |
+| TC-FA-LIC-110 | TC-FA-LIC-E2E-028-role-matrix-visibilitas-force-logout-show-hidden-dan-disabled-per-role | FE+BE |
 | TC-FA-LIC-111 | TC-FA-LIC-E2E-004-plan-starter-tab-summary-concurrent-user-dan-akses-read | FE+BE |
 | TC-FA-LIC-112 | TC-FA-LIC-E2E-037-modal-edit-allocation-screening-grup-child-level-1-belum | FE+BE |
 | TC-FA-LIC-113 | TC-FA-LIC-E2E-037-modal-edit-allocation-screening-grup-child-level-1-belum | FE+BE |
@@ -438,8 +444,8 @@ Spec absence memuat klausa absence log (tanpa entri) dengan penolakan request se
 | TC-FA-LIC-248 | TC-FA-LIC-E2E-073-allocation-history-sort-default-filter-date-range-dan-min | FE+BE |
 | TC-FA-LIC-249 | TC-FA-LIC-E2E-074-allocation-history-column-visibility-dan-setup-column | FE+BE |
 | TC-FA-LIC-250 | TC-FA-LIC-E2E-074-allocation-history-column-visibility-dan-setup-column | FE+BE |
-| TC-FA-LIC-251 | TC-FA-LIC-E2E-074-allocation-history-column-visibility-dan-setup-column | FE+BE |
-| TC-FA-LIC-252 | TC-FA-LIC-E2E-074-allocation-history-column-visibility-dan-setup-column | FE+BE |
+| TC-FA-LIC-251 | TC-FA-LIC-E2E-150-allocation-history-ceklis-dan-unceklis-per-kolom-setup-column | FE+BE |
+| TC-FA-LIC-252 | TC-FA-LIC-E2E-151-allocation-history-geser-per-kolom-setup-column | FE+BE |
 | TC-FA-LIC-253 | TC-FA-LIC-E2E-075-allocation-history-setup-column-pin-reset-x-esc-satu | FE+BE |
 | TC-FA-LIC-254 | TC-FA-LIC-E2E-075-allocation-history-setup-column-pin-reset-x-esc-satu | FE+BE |
 | TC-FA-LIC-255 | TC-FA-LIC-E2E-075-allocation-history-setup-column-pin-reset-x-esc-satu | FE+BE |
@@ -505,8 +511,8 @@ Spec absence memuat klausa absence log (tanpa entri) dengan penolakan request se
 | TC-FA-LIC-315 | TC-FA-LIC-E2E-090-group-license-allocation-column-visibility-dan-setup | FE+BE |
 | TC-FA-LIC-316 | TC-FA-LIC-E2E-090-group-license-allocation-column-visibility-dan-setup | FE+BE |
 | TC-FA-LIC-317 | TC-FA-LIC-E2E-090-group-license-allocation-column-visibility-dan-setup | FE+BE |
-| TC-FA-LIC-318 | TC-FA-LIC-E2E-091-group-license-allocation-setup-column-geser-pin-dan-unpin | FE+BE |
-| TC-FA-LIC-319 | TC-FA-LIC-E2E-091-group-license-allocation-setup-column-geser-pin-dan-unpin | FE+BE |
+| TC-FA-LIC-318 | TC-FA-LIC-E2E-091-group-license-allocation-setup-column-geser-drag | FE+BE |
+| TC-FA-LIC-319 | TC-FA-LIC-E2E-152-group-license-allocation-setup-column-pin-dan-unpin | FE+BE |
 | TC-FA-LIC-320 | TC-FA-LIC-E2E-092-group-license-allocation-setup-column-reset-x-esc-satu | FE+BE |
 | TC-FA-LIC-321 | TC-FA-LIC-E2E-092-group-license-allocation-setup-column-reset-x-esc-satu | FE+BE |
 | TC-FA-LIC-322 | TC-FA-LIC-E2E-092-group-license-allocation-setup-column-reset-x-esc-satu | FE+BE |
@@ -581,10 +587,10 @@ Spec absence memuat klausa absence log (tanpa entri) dengan penolakan request se
 | TC-FA-LIC-391 | TC-FA-LIC-E2E-118-transfer-ke-grup-penuh-edit-remove-allocation-membuka | FE+BE |
 | TC-FA-LIC-392 | TC-FA-LIC-E2E-118-transfer-ke-grup-penuh-edit-remove-allocation-membuka | FE+BE |
 | TC-FA-LIC-393 | TC-FA-LIC-E2E-118-transfer-ke-grup-penuh-edit-remove-allocation-membuka | FE+BE |
-| TC-FA-LIC-394 | TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-reject-auto | FE+BE |
-| TC-FA-LIC-395 | TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-reject-auto | FE+BE |
-| TC-FA-LIC-396 | TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-reject-auto | FE+BE |
-| TC-FA-LIC-397 | TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-reject-auto | FE+BE |
+| TC-FA-LIC-394 | TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-dan-reject | FE+BE |
+| TC-FA-LIC-395 | TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-dan-reject | FE+BE |
+| TC-FA-LIC-396 | TC-FA-LIC-E2E-119-approval-submit-menahan-reserved-approve-dan-reject | FE+BE |
+| TC-FA-LIC-397 | TC-FA-LIC-E2E-153-state-tenant-auto-cancel-approval-saat-plan-diturunkan-dan-downgrade-berlaku | FE+BE |
 | TC-FA-LIC-398 | TC-FA-LIC-E2E-146-submit-tanpa-approval-delete-dispose-dan-draf-dihapus-pelepasan-kuota | FE+BE |
 | TC-FA-LIC-399 | TC-FA-LIC-E2E-146-submit-tanpa-approval-delete-dispose-dan-draf-dihapus-pelepasan-kuota | FE+BE |
 | TC-FA-LIC-400 | TC-FA-LIC-E2E-146-submit-tanpa-approval-delete-dispose-dan-draf-dihapus-pelepasan-kuota | FE+BE |
@@ -686,7 +692,7 @@ Spec absence memuat klausa absence log (tanpa entri) dengan penolakan request se
 | TC-FA-LIC-492 | TC-FA-LIC-E2E-126-peringatan-kuota-tenant-job-per-jam-penilaian-pasca | FE+BE |
 | TC-FA-LIC-493 | TC-FA-LIC-E2E-120-unmanaged-transisi-manage-dan-konsistensi-used | FE+BE |
 | TC-FA-LIC-494 | TC-FA-LIC-E2E-124-perhitungan-edge-remaining-0-saat-over-used-dan-minimum | FE+BE |
-| TC-FA-LIC-495 | TC-FA-LIC-E2E-124-perhitungan-edge-remaining-0-saat-over-used-dan-minimum | FE+BE |
+| TC-FA-LIC-495 | TC-FA-LIC-E2E-125-peringatan-kuota-tenant-ambang-low-dan-full-transisi | FE+BE |
 | TC-FA-LIC-496 | TC-FA-LIC-E2E-050-remove-allocation-sukses-tanpa-dialog-remaining-leluhur | FE+BE |
 | TC-FA-LIC-497 | TC-FA-LIC-E2E-122-aksi-manage-aset-unmanaged-kuota-grup-batas-sisa-slot | FE+BE |
 | TC-FA-LIC-498 | TC-FA-LIC-E2E-122-aksi-manage-aset-unmanaged-kuota-grup-batas-sisa-slot | FE+BE |
@@ -698,7 +704,7 @@ Spec absence memuat klausa absence log (tanpa entri) dengan penolakan request se
 | TC-FA-LIC-505 | TC-FA-LIC-E2E-121-check-group-quota-saat-plan-starter-dan-toggle-off | FE+BE |
 | TC-FA-LIC-506 | TC-FA-LIC-E2E-123-aksi-manage-grup-tanpa-alokasi-over-used-gagal-diproses | FE+BE |
 | TC-FA-LIC-507 | TC-FA-LIC-E2E-123-aksi-manage-grup-tanpa-alokasi-over-used-gagal-diproses | FE+BE |
-| TC-FA-LIC-508 | TC-FA-LIC-E2E-123-aksi-manage-grup-tanpa-alokasi-over-used-gagal-diproses | FE+BE |
+| TC-FA-LIC-508 | TC-FA-LIC-E2E-154-time-travel-jeda-managed-transition-time-reserved-menjadi-used | FE+BE |
 | TC-FA-LIC-509 | TC-FA-LIC-E2E-128-peringatan-kuota-tenant-starter-tanpa-ledger-perubahan | FE+BE |
 | TC-FA-LIC-510 | TC-FA-LIC-E2E-124-perhitungan-edge-remaining-0-saat-over-used-dan-minimum | FE+BE |
 | TC-FA-LIC-511 | TC-FA-LIC-E2E-087-group-license-allocation-search-numerik-trim-sort | FE+BE |
@@ -787,7 +793,7 @@ Spec absence memuat klausa absence log (tanpa entri) dengan penolakan request se
 | TC-FA-LIC-593 | TC-FA-LIC-E2E-018-state-tenant-toggle-license-allocation-per-group-off | FE+BE |
 | TC-FA-LIC-594 | TC-FA-LIC-E2E-018-state-tenant-toggle-license-allocation-per-group-off | FE+BE |
 | TC-FA-LIC-595 | TC-FA-LIC-E2E-008-license-summary-setup-column-baris-unmanaged-dan-used | FE+BE |
-| TC-FA-LIC-596 | TC-FA-LIC-E2E-028-role-matrix-force-logout-show-hidden-dan-eksekusi-per-role | FE+BE |
+| TC-FA-LIC-596 | TC-FA-LIC-E2E-028-role-matrix-visibilitas-force-logout-show-hidden-dan-disabled-per-role | FE+BE |
 | TC-FA-LIC-597 | TC-FA-LIC-E2E-148-role-matrix-tombol-edit-disabled-manage-asset-license | FE+BE |
 | TC-FA-LIC-598 | TC-FA-LIC-E2E-134-edit-allocation-save-tanpa-perubahan-pemakaian-melampaui-alokasi | FE+BE |
 | TC-FA-LIC-599 | TC-FA-LIC-E2E-140-active-sessions-nilai-device-os-dan-browser-apa-adanya | FE+BE |

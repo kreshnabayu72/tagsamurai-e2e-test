@@ -74,11 +74,11 @@ coverage:
 32. Muat ulang Tab `Subscription` sub-tab `FAMS` tiap 5 detik sampai indikator "Preparing access" tidak tampil (batas tunggu 2 menit)
 33. Verifikasi indikator "Preparing access" dan "Access setup failed" tidak tampil
 34. Verifikasi badge term tetap `Active`
-35. Kembali ke List, klik `[Changelog]` di toolbar, ketik Search modal `PT Retry Akses Manual {runId}-222`, tekan Enter
-36. Verifikasi Modal Changelog memuat tepat satu baris Action `Retry Access Setup`, Client Name "PT Retry Akses Manual {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`, dan Modified By user Total Control yang menekan `[Retry]` (bukan `System`)
-37. Tutup modal Changelog, lalu buka Settings > User > Detail akun aktor > Tab System Log, klik ikon Search, ketik `PT Retry Akses Manual {runId}-222`, tekan Enter
-38. Verifikasi System Log akun aktor memuat tepat satu baris Action `Retry Access Setup`, Object `Client`, Name "PT Retry Akses Manual {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`
-39. Pulihkan waktu sistem ke waktu nyata
+35. Pulihkan waktu sistem ke waktu nyata
+36. Kembali ke List, klik `[Changelog]` di toolbar, ketik Search modal `PT Retry Akses Manual {runId}-222`, tekan Enter
+37. Verifikasi Modal Changelog memuat tepat satu baris Action `Retry Access Setup`, Client Name "PT Retry Akses Manual {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`, dan Modified By user Total Control yang menekan `[Retry]` (bukan `System`)
+38. Tutup modal Changelog, lalu buka Settings > User > Detail akun aktor > Tab System Log, klik ikon Search, ketik `PT Retry Akses Manual {runId}-222`, tekan Enter
+39. Verifikasi System Log akun aktor memuat tepat satu baris Action `Retry Access Setup`, Object `Client`, Name "PT Retry Akses Manual {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`
 
 ### TC-AC-ACC-1004: Retry manual penyediaan akses produk yang gagal lagi
 
@@ -100,18 +100,20 @@ coverage:
 55. Muat ulang Tab `Subscription` sub-tab `FAMS`
 56. Verifikasi indikator berganti "Access setup failed" dengan tombol `[Retry]`
 57. Verifikasi badge term tetap `Active`
-58. Kembali ke List, klik `[Changelog]` di toolbar, ketik Search modal `PT Retry Gagal Lagi {runId}-222`, tekan Enter
-59. Verifikasi Modal Changelog memuat tepat satu baris Action `Retry Access Setup`, Client Name "PT Retry Gagal Lagi {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`, dan Modified By user Total Control yang menekan `[Retry]` (bukan `System`)
-60. Tutup modal Changelog, lalu buka Admin Console > Activity Log dan cari baris Action `Retry Access Setup`
-61. Verifikasi Activity Log memuat baris Action `Retry Access Setup` dengan Object `Client`, Name "PT Retry Gagal Lagi {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`, dan Modified By user Total Control yang menekan `[Retry]`
-62. Buka Settings > User > Detail akun aktor > Tab System Log, klik ikon Search, ketik `PT Retry Gagal Lagi {runId}-222`, tekan Enter
-63. Verifikasi System Log akun aktor memuat tepat satu baris Action `Retry Access Setup`, Object `Client`, Name "PT Retry Gagal Lagi {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`
-64. Klik `[Mark as Read]` pada notifikasi uji, lalu pulihkan waktu sistem ke waktu nyata
+58. Pulihkan waktu sistem ke waktu nyata
+59. Kembali ke List, klik `[Changelog]` di toolbar, ketik Search modal `PT Retry Gagal Lagi {runId}-222`, tekan Enter
+60. Verifikasi Modal Changelog memuat tepat satu baris Action `Retry Access Setup`, Client Name "PT Retry Gagal Lagi {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`, dan Modified By user Total Control yang menekan `[Retry]` (bukan `System`)
+61. Tutup modal Changelog, lalu buka Admin Console > Activity Log dan cari baris Action `Retry Access Setup`
+62. Verifikasi Activity Log memuat baris Action `Retry Access Setup` dengan Object `Client`, Name "PT Retry Gagal Lagi {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`, dan Modified By user Total Control yang menekan `[Retry]`
+63. Buka Settings > User > Detail akun aktor > Tab System Log, klik ikon Search, ketik `PT Retry Gagal Lagi {runId}-222`, tekan Enter
+64. Verifikasi System Log akun aktor memuat tepat satu baris Action `Retry Access Setup`, Object `Client`, Name "PT Retry Gagal Lagi {runId}-222", Field `Product`, Old Value `—`, New Value `FAMS`
+65. Klik `[Mark as Read]` pada notifikasi uji
 
 ## Notes
 
 - Spec ini melewati sekitar 35 langkah. Alasan: seluruh blok satu kelas harness (kegagalan penyediaan akses dengan pemajuan jam server), tiap blok memakai Client sendiri dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Langkah penghubung (S-03, R-16): polling "muat ulang tiap 5 detik, batas tunggu 2 menit" (idiom bagian 6) pada langkah 11, 23, 32, 44, dan 51. Langkah 7 dan 9 (N2 = N1, N3 = N1 setelah pemajuan 1 dan 5 menit) tidak memiliki anchor teramati bahwa antrean sudah berjalan sehingga masih menunggu keputusan QA.
+- Langkah penghubung (S-03, R-16): polling "muat ulang tiap 5 detik, batas tunggu 2 menit" (idiom bagian 6) pada langkah 11, 23, 32, 44, dan 51.
 - Langkah Search nama Client sebelum membuka Detail adalah langkah penghubung untuk menemukan baris target (List berpaginasi 10 baris dan memuat fixture residen lain).
-- Baris "tepat satu baris" pada Changelog dan System Log memakai nama Client bersuffix unik sehingga baseline nol (S-12). Jam server dipulihkan di antara blok dan di hook `after` sebelum akun aktor membuka Activity Log atau System Log (S-09). N1 dan N2 pada TC-244 dan TC-1004 dicatat sebagai baseline hitungan notifikasi (S-12).
+- Baris "tepat satu baris" pada Changelog dan System Log memakai nama Client bersuffix unik sehingga baseline nol (S-12). Jam server dipulihkan di antara blok (langkah 19, 35, dan 58) dan di hook `after`; pada TC-992 dan TC-1004 pemulihan dilakukan sebelum akun aktor membuka Changelog, Activity Log, atau System Log (S-09). N1 dan N2 pada TC-244 dan TC-1004 dicatat sebagai baseline hitungan notifikasi (S-12).
+- Temuan untuk QA (F-10): Asersi langkah 8 dan 10 (N2 = N1, N3 = N1) sesudah langkah 7 dan 9 ("tunggu antrean percobaan ulang berjalan") bergantung pada job latar yang tidak punya sinyal selesai; menunggu kemampuan "kueri fixture status job" (bagian 6 konvensi) dari tim BE/FE; diterima user 2026-11-03 (laporan e2e-audit F-10).
 - Temuan untuk QA (S-15): TC-244 Langkah 6 dan 7 menyebut Modified By "user Total Control yang menekan [Retry]" tanpa nama user; spec memakai akun aktor Total Control. TC-244, TC-992, dan TC-1004 bergantung simulasi kegagalan penyediaan dan pemajuan jam (alasan Manual Only (b)) yang disediakan tim FE/BE. Jeda percobaan ulang 1, 5, 15 menit berasal dari data uji TC (PRD menyebut "satu menit/lima menit/lima belas menit"). Post Condition seluruh TC dipenuhi hook `after`.

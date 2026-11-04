@@ -20,16 +20,17 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (`Andi Wijaya`), password `Spectra.env.AC_TC_PASSWORD`; login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Plans & Licensing > Lifecycle Settings, tab Trial Settings aktif).
 - Konfigurasi ketujuh tab pada nilai default (Pre-setup 7) dipulihkan lewat Fixture BE di hook `beforeEach` dan `after` suite (kemampuan disediakan tim FE/BE).
-- Hook `before` mengosongkan Changelog tab pada tabel parameter lewat Fixture BE (precondition TC: tab belum pernah di-Save; kemampuan disediakan tim FE/BE); hook `after` mengembalikan dataset Changelog ke keadaan awal.
+- Kemampuan teknis (disediakan tim FE/BE): Fixture BE untuk menimpa atau mengosongkan riwayat Changelog per tab, idempotent (Lampiran A-15; dinyatakan di `suite.md`).
+- Hook `before` mengosongkan Changelog tab pada tabel parameter lewat Fixture BE (precondition TC: tab belum pernah di-Save); hook `after` mengembalikan dataset Changelog ke keadaan awal.
 - Parameter tab (diulang di langkah 2 sampai 6):
-  | Tab | Title modal |
-  |---|---|
-  | Client Lifecycle | Changelog: Lifecycle Settings > Client Lifecycle |
-  | Recycle Bin | Changelog: Lifecycle Settings > Recycle Bin |
-  | Approval Settings | Changelog: Lifecycle Settings > Approval Settings |
-  | System Limits | Changelog: Lifecycle Settings > System Limits |
+  | TC | Tab | Title modal |
+  |---|---|---|
+  | TC-AC-LCS-362 | Client Lifecycle | Changelog: Lifecycle Settings > Client Lifecycle |
+  | TC-AC-LCS-364 | Recycle Bin | Changelog: Lifecycle Settings > Recycle Bin |
+  | TC-AC-LCS-366 | Approval Settings | Changelog: Lifecycle Settings > Approval Settings |
+  | TC-AC-LCS-368 | System Limits | Changelog: Lifecycle Settings > System Limits |
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini).
-- Data uji mengacu ke fixture `Fixture.plansLicensingLifecycleSettings` (nilai default tiap tab dan dataset Changelog); fixture belum ada dan disediakan tim FE/BE.
+- Data uji mengacu ke `Fixture.lifecycleSettings.<kunci>` (`fixtures/lifecycle-settings.json`: nilai default tiap tab dan dataset Changelog).
 - Konfigurasi Lifecycle Settings bersifat platform-wide dan Changelog bersifat permanen; suite berjalan serial (`parallel: false`).
 - Env var: `AC_TC_PASSWORD` (password Total Control Admin Console, satu nama satu arti).
 
@@ -47,3 +48,4 @@ coverage:
 - Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
 - Langkah yang diulang per tab: langkah 2 sampai 6 (4 tab: Client Lifecycle, Recycle Bin, Approval Settings, System Limits); parameter ada di tabel "Parameter tab" pada Prerequisites.
 - Langkah penghubung: langkah 2 (pindah tab) dan langkah 6 (menutup modal).
+- Pengecualian A-15: empty state diasersi karena riwayat tiap tab dikosongkan lewat Fixture BE di hook `before` sebelum modal dibuka; hook `after` mengembalikan dataset Changelog.

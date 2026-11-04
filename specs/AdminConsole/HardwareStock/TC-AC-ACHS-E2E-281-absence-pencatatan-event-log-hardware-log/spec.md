@@ -21,7 +21,7 @@ coverage:
 
 - Mode: FE+BE (backend nyata, seeding via API).
 - Akun aktor: Total Control Principal `Fixture.hardwareStock.account.p01.totalControl.fullName` `Fixture.hardwareStock.account.p01.totalControl.email` (Pre-setup #1), kata sandi `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman Admin Console > Hardware > Stock dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
-- Hook suite: flag Guided Tooltip halaman Stock List dan Approvals diatur hook suite `before` dan dipulihkan `after`; seeding Population Stock Pre-setup #16 sampai #22 dan #27; suite serial `parallel: false` (lihat suite.md).
+- Hook suite: flag Guided Tooltip halaman Stock List, Approvals, dan Activity Log (dibuka langkah 63) disetel hook `before` spec ini dan dipulihkan hook `after` spec ini; seeding Population Stock Pre-setup #16 sampai #22 dan #27; suite serial `parallel: false` (lihat suite.md).
 - Pemicu (`P-5` butir a, tiap TC punya baseline sendiri): Approve Register Duplicate `{snApr}` (TC-519), Reject Register Duplicate `{snRej}` dan Delete unit `{snDel}` (TC-551), Add Stock Sync yang ditolak atau dibatalkan (TC-594), pemicu Client yang menghapus atau mengganti perangkat BLE Gateway (TC-558, lewat sesi API Client; kemampuan disediakan tim BE/FE), serta request langsung Add Stock manual dan Submit Add Stock Sync di atas limit yang ditolak (TC-595 dan TC-596). Keputusan, Delete, dan request langsung dijalankan lewat klien HTTP dengan token sesi API aktor Total Control (login API password, token tidak dihitung sebagai sesi web; kemampuan disediakan tim BE/FE, bukan konteks kedua). Add Stock Sync memakai simulator reader USB Handheld Reader (service driver mock, Pre-setup #25, kemampuan disediakan tim FE); simulator hanya memicu keadaan dan bukan objek asersi (`P-11`, TC-594).
 - Data seed milik spec (S-06; hook `before` spec ini lewat sesi API aktor Total Control, kemampuan seed disediakan tim BE/FE): unit Waiting for Approval `{snApr}` dengan Subject Register Duplicate pending (target Approve TC-519), Subject Register Duplicate pending `{snRej}` (target Reject TC-551), unit Available `{snDel}` pada SKU `{skuLong}` (target Delete TC-551), dan perangkat BLE Gateway In Use `BLE-{runId}-281` pada SKU `{skuBle}` milik Client `Fixture.hardwareStock.p23.client[4].name` (pemicu TC-558). Hook `after` menghapus keempat data seed itu dan unit lain yang dibuat spec ini (idempotent, dilewati bila sudah tidak ada; R-08).
 - State global yang diubah (R-08): System Limit `register_asset_bulk_limit` (Pre-setup #26) diubah ke 100 untuk TC-595 dan TC-596 oleh pelaku yang disediakan tim FE/BE, dipulihkan ke 1.000 di langkah penghubung (langkah 50) dan di hook `after`. Suite berjalan serial.
@@ -46,7 +46,7 @@ Parameter `{snApr}`, `{snRej}`, `{snDel}` adalah data seed milik spec (bukan Pre
 ### TC-AC-ACHS-519: Event Log tidak memuat keputusan
 
 1. Approve Register Duplicate `{snApr}` lewat sesi API hingga keputusan tersimpan; tunggu aksi selesai
-2. Klik menu Hardware > Stock di sidebar, lalu klik row action `Detail` pada SKU `Fixture.hardwareStock.p16.a[4].sku`
+2. Klik menu Hardware > Stock di sidebar, ketik Search `Fixture.hardwareStock.p16.a[4].sku`, tekan Enter, lalu klik row action `Detail` pada SKU `Fixture.hardwareStock.p16.a[4].sku`
 3. Klik Tab `Available`
 4. Klik icon `[Event Log]` di toolbar
 5. Verifikasi sedikitnya satu sesi `Add Stock` atau `Delete Stock` tampil di popup Event Log (pembanding)
@@ -60,7 +60,7 @@ Parameter `{snApr}`, `{snRej}`, `{snDel}` adalah data seed milik spec (bukan Pre
 ### TC-AC-ACHS-594: Event Log tidak mencatat Add Stock yang ditolak atau dibatalkan
 
 12. Klik icon `[Event Log]` dan catat info jumlah entri pada footer, lalu tutup popup
-13. Klik opsi `Add Stock` pada toolbar Tab Available
+13. Klik `[Add Stock]` pada toolbar Tab Available
 14. Sync `Fixture.hardwareStock.p17.e[19].serialNumber` (unit Available SKU yang sama) dan `SN-ZEBRA-RFD40-{runId}-281a` (OK) lewat simulator reader USB
 15. Klik `[Submit]`, lalu klik `[Continue]`
 16. Verifikasi Submit pertama ditolak dengan error banner `Serial number Fixture.hardwareStock.p17.e[19].serialNumber already exists in the system`
@@ -68,7 +68,7 @@ Parameter `{snApr}`, `{snRej}`, `{snDel}` adalah data seed milik spec (bukan Pre
 18. Klik `[Cancel]` halaman
 19. Verifikasi dialog `Unsaved Changes` tampil dengan tombol `[Cancel]` dan `[Leave]`
 20. Klik `[Leave]`
-21. Klik opsi `Add Stock` lagi
+21. Klik `[Add Stock]` lagi
 22. Sync `Fixture.hardwareStock.p27.fx[1].serialNumber` (Waiting for Approval) dan `SN-ZEBRA-RFD40-{runId}-281b` (OK) lewat simulator reader USB
 23. Klik `[Submit]`, lalu klik `[Cancel]` pada dialog D-02
 24. Verifikasi dialog D-02 tertutup dan halaman Add Stock masih terbuka (Submit kedua dibatalkan lewat `[Cancel]` pada D-02)
@@ -84,7 +84,7 @@ Parameter `{snApr}`, `{snRej}`, `{snDel}` adalah data seed milik spec (bukan Pre
 ### TC-AC-ACHS-595: Event Log tidak mencatat request Add Stock manual di atas limit yang ditolak
 
 33. Ubah System Limit `register_asset_bulk_limit` menjadi 100 lewat pelaku yang disediakan tim FE/BE; tunggu aksi selesai
-34. Klik menu Hardware > Stock di sidebar, lalu klik `(⋯)` pada baris SKU `Fixture.hardwareStock.p16.a[3].sku` dan klik row action `Detail`
+34. Klik menu Hardware > Stock di sidebar, ketik Search `Fixture.hardwareStock.p16.a[3].sku`, tekan Enter, lalu klik `(⋯)` pada baris SKU `Fixture.hardwareStock.p16.a[3].sku` dan klik row action `Detail`
 35. Klik icon `[Event Log]` dan catat info jumlah entri pada footer sebagai baseline, lalu tutup popup
 36. Kirim request langsung Add Stock manual untuk SKU `Fixture.hardwareStock.p16.a[3].sku` dengan 101 Serial Number `SN-DIR-{runId}-281-0001` sampai `SN-DIR-{runId}-281-0101` memakai token sesi API Total Control hingga respons diterima; tunggu aksi selesai
 37. Verifikasi respons menolak seluruh request dengan error validasi V-03 (pemicu ditolak, anchor absence)
@@ -95,7 +95,7 @@ Parameter `{snApr}`, `{snRej}`, `{snDel}` adalah data seed milik spec (bukan Pre
 
 ### TC-AC-ACHS-596: Event Log tidak mencatat request Submit Add Stock Sync di atas limit yang ditolak
 
-42. Klik segmen breadcrumb `Stock`, lalu klik `(⋯)` pada baris SKU `Fixture.hardwareStock.p16.a[4].sku` dan klik row action `Detail`
+42. Klik segmen breadcrumb `Stock`, ganti isi kotak search dengan `Fixture.hardwareStock.p16.a[4].sku`, tekan Enter, lalu klik `(⋯)` pada baris SKU `Fixture.hardwareStock.p16.a[4].sku` dan klik row action `Detail`
 43. Klik icon `[Event Log]` dan catat info jumlah entri pada footer sebagai baseline, lalu tutup popup
 44. Kirim request langsung Submit Add Stock Sync untuk SKU `Fixture.hardwareStock.p16.a[4].sku` dengan 101 unit `SN-DIRS-{runId}-281-0001` sampai `SN-DIRS-{runId}-281-0101` beserta nilai Min/Max/Current Power memakai token sesi API Total Control hingga respons diterima; tunggu aksi selesai
 45. Verifikasi respons menolak seluruh request dengan error validasi V-18 (pemicu ditolak, anchor absence)
@@ -142,6 +142,8 @@ Parameter `{snApr}`, `{snRej}`, `{snDel}` adalah data seed milik spec (bukan Pre
 - Baseline Event Log (S-12): TC-594, TC-595, dan TC-596 masing-masing mencatat jumlah entri footer Event Log sendiri sebelum pemicu (langkah 12, 35, dan 43) dan mengasersi selisih nol; TC-558 mencatat jumlah entri Activity Log `Device Released` sendiri (langkah 64) dan mengasersi selisih nol (langkah 69); tidak ada total absolut.
 - Langkah penghubung (aksi tanpa `Verifikasi`, S-03): langkah 1, 36, 44, 51 (pemicu lewat sesi API, "Tunggu aksi selesai", R-20), 33 dan 50 (mengubah dan memulihkan System Limit, state global), 2, 3, 4, 11, 12, 13, 21, 29, 32, 34, 35, 38, 41, 42, 43, 46, 49, 59 (navigasi dan membuka/menutup popup), 6, 54, 56, 60 (Search untuk menemukan baris target, R-16), 8, 58, 62 (mengosongkan Search lewat `(←)`), 18, 26 (`[Cancel]` halaman) dan 20, 28 (`[Leave]`; dialog `Unsaved Changes` diverifikasi pada langkah 19 dan 27), 52, 67 (memuat ulang), 63, 64, 65 (membuka Activity Log dengan Filter, baseline, dan pemicu Client lewat sesi API, "Tunggu aksi selesai", R-20). Klik `[Cancel]` pada dialog D-02 (langkah 23) adalah bagian aksi TC.
 - Anchor positif asersi absence (butir 8b nomor 2): langkah 5 untuk langkah 7, langkah 53 untuk langkah 55 dan 57, langkah 30 untuk langkah 31, langkah 39 untuk langkah 40, langkah 47 untuk langkah 48, langkah 66 dan 68 untuk langkah 69; Expected b TC-551 diasersi pada langkah 61 (keputusan Reject terlihat di Tab History). Activity Log diperiksa di spec ini hanya untuk TC-558 (langkah 63 sampai 69); isi entri Activity Log diuji di spec 276.
+- Search disisipkan di dalam langkah 2, 34, dan 42 sebelum klik row action `Detail` pada baris SKU (Stock List 10 baris per halaman; 8b.13, R-16); langkah 42 memakai "ganti isi kotak search" karena kotak Search mempertahankan nilai langkah 34 sesudah kembali lewat Breadcrumb (8b.9).
+- Langkah 13 dan 21 menulis `[Add Stock]` (konvensi S-02, label tombol), sama dengan TC-594 langkah 4 dan 7.
 - Langkah 24 menambah `Verifikasi` dialog D-02 tertutup dan halaman Add Stock masih terbuka sebagai hasil teramati dari `[Cancel]` pada D-02 (TC hanya menulis "dibatalkan lewat `[Cancel]` pada D-02"; S-03).
 - Spec ini 69 langkah, di atas sekitar 35 langkah. Alasan: enam TC satu kelas g (absence) yang masing-masing butuh pemicu, anchor positif, dan baseline sendiri; semua blok satu kelas dan berdiri sendiri, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:

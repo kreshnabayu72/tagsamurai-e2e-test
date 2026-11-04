@@ -51,34 +51,37 @@ coverage:
 14. Verifikasi Section Purchase History License menampilkan Search dengan placeholder "Search by subscription, plan, or item...", Filter, dan Download
 15. Verifikasi tabel Purchase History License berkolom 11 kolom + ⋯ dengan kolom Subscription berisi Subscription ID
 16. Verifikasi Pagination default 10
-17. Verifikasi opsi page size 10/25/50/100
+17. Buka Overlay Page Size pada footer tabel
+18. Verifikasi Overlay Page Size memuat opsi page size 10/25/50/100
+19. Pilih 10 pada Overlay Page Size untuk menutup overlay dan mempertahankan page size 10
 
 ### TC-AC-ACC-259: Teks info banner Tab Subscription
 
-18. Baca info banner pada Tab `Subscription`
-19. Verifikasi teks info banner "This tab is read-only. To add, renew, or cancel a subscription, use Manage in Client Subscription."
+20. Baca info banner pada Tab `Subscription`
+21. Verifikasi teks info banner "This tab is read-only. To add, renew, or cancel a subscription, use Manage in Client Subscription."
 
 ### TC-AC-ACC-257: Tab Subscription tidak memiliki aksi write
 
-20. Periksa seluruh Tab `Subscription`
-21. Verifikasi tidak ada tombol Add/Renew/Cancel/edit; tidak ada elipsis aksi pada ringkasan
+22. Periksa seluruh Tab `Subscription`
+23. Verifikasi tidak ada tombol Add/Renew/Cancel/edit; tidak ada elipsis aksi pada ringkasan
 
 ### TC-AC-ACC-802: Subscription Details tampil sebagai kartu ringkas tanpa kolom dan tanpa Column Visibility
 
-22. Lihat Section "Subscription Details"
-23. Verifikasi Section "Subscription Details" menampilkan satu kartu berisi Subscription ID (format `SUBS-YYYYMMDD-XXXXX`), Plan, Status badge, Start, dan End
-24. Verifikasi kartu tidak memiliki header kolom dan tidak memiliki ikon ⋯ Column Visibility
-25. Lihat header tabel License Quota
-26. Verifikasi tabel License Quota memiliki ikon ⋯ pada header kolom paling kanan
+24. Lihat Section "Subscription Details"
+25. Verifikasi Section "Subscription Details" menampilkan satu kartu berisi Subscription ID (format `SUBS-YYYYMMDD-XXXXX`), Plan, Status badge, Start, dan End
+26. Verifikasi kartu tidak memiliki header kolom dan tidak memiliki ikon ⋯ Column Visibility
+27. Lihat header tabel License Quota
+28. Verifikasi tabel License Quota memiliki ikon ⋯ pada header kolom paling kanan
 
 ### TC-AC-ACC-258: Link Manage in Client Subscription navigasi ter-filter ke Client
 
-27. Klik link `Manage in Client Subscription →`
-28. Verifikasi halaman Admin Console > Client Subscription > List Subscriptions terbuka
-29. Verifikasi List Subscriptions ter-filter ke "PT Sejahtera Abadi"
+29. Klik link `Manage in Client Subscription →`
+30. Verifikasi halaman Admin Console > Client Subscription > List Subscriptions terbuka
+31. Verifikasi List Subscriptions ter-filter ke "PT Sejahtera Abadi"
 
 ## Notes
 
 - Langkah Search nama Client sebelum membuka Detail adalah langkah penghubung untuk menemukan baris target (List berpaginasi 10 baris dan memuat fixture residen lain).
+- Langkah "Buka Overlay Page Size pada footer tabel" (langkah 2 TC-256) dan "Pilih 10 pada Overlay Page Size untuk menutup overlay" adalah langkah penghubung (S-03): yang pertama membuka overlay sebelum opsi diverifikasi, yang kedua menutup overlay tanpa mengubah page size 10 sehingga TC-259, TC-257, TC-802, dan TC-258 berjalan pada kondisi yang sama.
 - Urutan: TC-258 (navigasi keluar halaman) diletakkan paling akhir agar TC lain tetap pada Tab `Subscription`; TC-259 dan TC-257 dijalankan sesudah screening tanpa membuka ulang halaman (S-10).
 - Temuan untuk QA (S-15): Post Condition seluruh TC `-` sehingga tidak diasersi. TC-256 menyebut "tabel 11 kolom + ⋯" tanpa menyebut nama kolom lengkap pada butir itu (nama kolom diverifikasi di TC-280 spec lain); spec memverifikasi jumlah kolom sesuai Expected.

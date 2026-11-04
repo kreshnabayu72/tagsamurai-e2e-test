@@ -55,9 +55,9 @@ coverage:
 23. Verifikasi deskripsi "Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns."
 24. Verifikasi footer memuat [Reset to Default] dan [Save] tanpa [Cancel]
 25. Hapus centang kolom Reader ID
-26. Verifikasi kolom Reader ID masih tampil pada tabel Station List di balik modal sebelum [Save] (perubahan baru berlaku setelah [Save], D-008)
+26. Verifikasi kolom Reader ID masih tampil pada tabel Station List di balik modal sebelum [Save] (perubahan baru berlaku setelah [Save], D-065)
 27. Tutup modal dengan tombol ✕
-28. Verifikasi kolom Reader ID tetap tampil pada tabel Station List setelah modal ditutup tanpa Save (perubahan dibuang, D-008)
+28. Verifikasi kolom Reader ID tetap tampil pada tabel Station List setelah modal ditutup tanpa Save (perubahan dibuang, D-065)
 29. Klik ⋯ pada header tabel Station List lalu klik "Setup Column..."
 30. Hapus centang kolom Reader ID lalu klik [Save]
 31. Muat ulang halaman Detail (F5) lalu klik Tab Asset Control
@@ -69,5 +69,5 @@ coverage:
 - Sumber: `admin-console/client/TestCases/tc-client.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03, R-16, S-09): langkah 1 (Search dan buka Detail Client; hook suite hanya membuka List Client); langkah 12 (membuka Tablet List agar panel Tablet List teramati); langkah 18 sampai 20 (mencentang kembali kolom, Post Condition TC-AC-ACC-821); langkah 33 (pemulihan Post Condition TC-AC-ACC-825); preferensi kolom dihapus di hook `after`.
 - Temuan untuk QA:
-  - TC-AC-ACC-825 Expected b meminta kolom Reader ID sudah hilang dari tabel Station List di balik modal sebelum [Save], dan Expected c meminta kolom "tampil kembali" setelah ✕. Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-008 (tabel di balik popup tidak berubah sampai [Save]; menutup popup tanpa Save membuang perubahan): langkah 26 mengasersi kolom masih tampil dan langkah 28 kolom tetap tampil. TC tidak diubah. TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview. Perubahan diasersi sesudah [Save] (langkah 32). TC-AC-ACC-821 memakai panel Column Visibility (bukan popup) yang berlaku langsung dan tidak terdampak.
+  - TC-AC-ACC-825: TC sudah diselaraskan pada 2026-11-03 sesuai `docs/spec-decisions.md` D-065 (tabel di balik popup tidak berubah sampai [Save]; menutup popup tanpa Save membuang perubahan); spec dan TC sama. langkah 26 mengasersi kolom masih tampil dan langkah 28 kolom tetap tampil. TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview. Perubahan diasersi sesudah [Save] (langkah 32). TC-AC-ACC-821 memakai panel Column Visibility (bukan popup) yang berlaku langsung dan tidak terdampak. Sisa konflik hanya `prd-conventions.md` §9.3 (di luar scope suite, dilaporkan ke pemilik foundation).
   - TC-AC-ACC-821 mengikuti PRD §4.1.5: tabel Station Quota, Station List, dan Tablet List punya Column Visibility masing-masing; TC tidak menyebut kolom yang tidak boleh disembunyikan (bukan temuan).

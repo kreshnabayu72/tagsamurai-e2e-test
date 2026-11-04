@@ -67,8 +67,8 @@ coverage:
 
 ### TC-AC-LCS-201: Save Purge Warning Email pada nilai maksimum 999
 
-24. Ubah Archive Period Duration menjadi `999`
-25. Ubah Purge Warning Email menjadi `999`
+24. Ubah Archive Period Duration menjadi `999`, lalu klik area kosong di luar field (blur)
+25. Ubah Purge Warning Email menjadi `999`, lalu klik area kosong di luar field (blur)
 26. Verifikasi tidak ada pesan error rentang pada Purge Warning Email saat nilai `999` diisi
 27. Klik `[Save]`
 28. Verifikasi toast sukses "Success, client lifecycle settings have been saved."
@@ -78,10 +78,9 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah 1, 15, 20 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
 - Validasi yang diblokir berada sebelum aksi sukses: urutan mengikuti nomor TC dan TC Save nilai maksimum berada di akhir spec (S-10).
+- Langkah 24 dan 25 menyertakan blur sesuai TC-AC-LCS-201 langkah 1 dan 2 ("lalu blur") sebelum asersi absence pada langkah 26, karena validasi rentang muncul saat blur (bagian 8b butir 2).
 - Temuan untuk QA:
   - Post Condition TC-AC-LCS-201 (nilai tersimpan) setara dengan `Verifikasi` nilai sesudah F5 pada langkah 31; tidak ada asersi tambahan.
   - TC-AC-LCS-201 mengubah Archive Period Duration menjadi `999` sebagai langkah pertama, tetapi Data Uji dan Expected hanya menyebut Purge Warning Email `999`; spec mengikuti langkah TC tanpa asersi atas Archive Period Duration.

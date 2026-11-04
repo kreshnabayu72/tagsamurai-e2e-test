@@ -20,6 +20,7 @@ coverage:
 - Akun aktor: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (nama tampil `Andi Wijaya`), password dari `Spectra.env.AC_TC_PASSWORD` (akun default suite). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control). Permintaan langsung memakai login API password akun yang sama (sesi API aktor, disediakan tim BE/FE).
 - Data Pre-setup dan Dinamis yang dipakai: nilai tersimpan non-default per tab dan Changelog satu entri per tab diatur lewat Fixture BE sebagai precondition TC (nama user `Andi Wijaya`); Changelog bersifat permanen sehingga asersi memakai baseline jumlah entri sebelum aksi (S-12) dan dataset dikembalikan lewat Fixture BE di hook `after` suite.
 - Kemampuan teknis (disediakan tim FE/BE; tidak ada endpoint yang dikarang): klien HTTP/Fixture BE untuk mengirim permintaan langsung ke server tanpa melalui UI dan membaca status respons; Fixture BE untuk memulihkan ketujuh tab ke nilai default atau mengisi satu tab dengan nilai non-default. Field payload selain yang disebut langkah memakai nilai tersimpan tab itu. Fixture BE juga membaca antrean job (Countdown Reset Job, Recalculate Job, recalculation timer).
+- Kemampuan teknis tambahan (Lampiran A-15; dinyatakan di `suite.md`, disediakan tim FE/BE): Fixture BE untuk menimpa atau mengosongkan riwayat Changelog per tab, idempotent; riwayat dibentuk sebelum modal Changelog dibuka dan dikembalikan ke keadaan awal oleh hook `after` suite; suite berjalan serial (`parallel: false`).
 - State global: konfigurasi tab Lifecycle Settings diubah lewat Fixture BE atau permintaan langsung; dipulihkan di hook `beforeEach` dan `after` suite lewat Fixture BE; suite berjalan serial.
 - Hook suite (`suite.md`): `beforeEach` memulihkan ketujuh tab Lifecycle Settings ke nilai default, jam server dan jam browser, General Settings (Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC), dan intercept, lalu membuka Plans & Licensing > Lifecycle Settings; flag Guided Tooltip halaman ini diset true oleh hook `before` suite; hook `after` suite memulihkan state global. Suite berjalan serial (`parallel: false`).
 - Data Pre-setup (akun aktor, nilai default tujuh tab, dataset Changelog, daftar client; tanpa password) dirujuk lewat `Fixture.lifecycleSettings.<kunci>` (`fixtures/lifecycle-settings.json`); nilai uji yang diketik atau dikirim di langkah sama dengan TC (S-02).
@@ -61,13 +62,11 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Kelas harness a.
-- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - `K-1`: TC defense-in-depth (kelas a) dengan Expected respons API tetap masuk spec FE+BE walau isinya tumpang tindih dengan `tc-plans-licensing-lifecycle-settings-backend.md`; TC granular tetap sumber dan tiap TC tepat satu spec.
 - Urutan TC mengikuti urutan nomor kolom `sourceTc`.
-- Asersi jumlah Changelog `1–1 of 1` bukan kelas g: asersi jumlah dengan baseline (bagian 3 prinsip 13).
+- Asersi jumlah Changelog `1–1 of 1` bukan kelas g. Pengecualian A-15: total absolut diasersi karena riwayat tiap tab ditimpa lewat Fixture BE menjadi tepat 1 entri pada langkah penghubung 1, 9, dan 17 sebelum modal dibuka; hook `after` suite mengembalikan dataset Changelog. Baseline dan selisih 0 tetap diasersi (S-12).
 - Temuan untuk QA:
-  - TC 644 sampai 650 mengasersi `1–1 of 1` sebagai angka absolut dengan precondition "berisi tepat 1 entri"; S-12 melarang total entri absolut pada audit trail permanen, sehingga spec mengasersi label `1–1 of 1` bersama selisih terhadap baseline 0 dengan dataset diatur Fixture BE.
+  - TC 644 sampai 650 mengasersi `1–1 of 1` sebagai angka absolut dengan precondition "berisi tepat 1 entri"; total absolut diperbolehkan oleh pengecualian A-15 karena riwayat tab ditimpa lewat Fixture BE; spec mengasersi label `1–1 of 1` bersama selisih terhadap baseline 0 dengan dataset diatur Fixture BE.
   - TC 644 sampai 650 langkah 2 mengurutkan muat ulang, buka tab, dan klik icon Changelog dalam satu langkah; spec mengasersi nilai field sesudah modal Changelog terbuka karena field tetap ada pada halaman di belakang modal.
   - TC tidak merinci nilai field lain pada payload permintaan langsung; spec memakai nilai tersimpan tab untuk field lain tanpa mengarang struktur payload (S-13).
   - Post Condition seluruh TC ("Tidak ada perubahan data") tanpa langkah observasi tidak diasersi.

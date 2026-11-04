@@ -19,10 +19,11 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (`Andi Wijaya`), password `Spectra.env.AC_TC_PASSWORD`; login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Plans & Licensing > Lifecycle Settings, tab Trial Settings aktif).
 - Konfigurasi ketujuh tab pada nilai default (Pre-setup 7) dipulihkan lewat Fixture BE di hook `beforeEach` dan `after` suite (kemampuan disediakan tim FE/BE).
+- Kemampuan teknis (disediakan tim FE/BE): Fixture BE untuk menimpa atau mengosongkan riwayat Changelog per tab, idempotent (Lampiran A-15; dinyatakan di `suite.md`).
 - Hook `before` men-seed dataset Changelog kecil (3 entri, Pre-setup 9: 10, 11, 12 May 26; John Doe dan Sarah Thompson) untuk tab Trial Settings, Free Plan Settings, dan Recycle Bin lewat Fixture BE; hook `after` mengembalikan dataset ke keadaan awal.
 - Hook `before` men-seed Dataset L (27 entri Changelog tab Client Lifecycle, Pre-setup 8: entri ke-n pada n May 26 pukul 10:00, Action Edit, Old Value 5n, New Value 5n+3, Modified By berputar John Doe, Sarah Thompson, Budi Santoso) lewat Fixture BE (kemampuan disediakan tim FE/BE; menimpa riwayat tab itu); hook `after` mengembalikan dataset ke keadaan awal.
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini).
-- Data uji mengacu ke fixture `Fixture.plansLicensingLifecycleSettings` (nilai default tiap tab dan dataset Changelog); fixture belum ada dan disediakan tim FE/BE.
+- Data uji mengacu ke `Fixture.lifecycleSettings.<kunci>` (`fixtures/lifecycle-settings.json`: nilai default tiap tab dan dataset Changelog).
 - Konfigurasi Lifecycle Settings bersifat platform-wide dan Changelog bersifat permanen; suite berjalan serial (`parallel: false`).
 - Env var: `AC_TC_PASSWORD` (password Total Control Admin Console, satu nama satu arti).
 
@@ -71,4 +72,5 @@ coverage:
 
 - Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung: menutup modal dengan `[✕]` dan berpindah tab antar TC; pembukaan modal kedua pada TC-AC-LCS-370 adalah langkah TC itu sendiri.
+- Pengecualian A-15: total absolut `1–10 of 27` dan `1–3 of 3` diasersi karena riwayat tab ditimpa lewat Fixture BE di hook `before` sebelum modal dibuka; hook `after` mengembalikan dataset Changelog.
 - Dataset kecil Trial Settings, Free Plan Settings, dan Recycle Bin dipakai TC-AC-LCS-369 dan TC-AC-LCS-371; Dataset L dipakai TC-AC-LCS-370 dan TC-AC-LCS-371.

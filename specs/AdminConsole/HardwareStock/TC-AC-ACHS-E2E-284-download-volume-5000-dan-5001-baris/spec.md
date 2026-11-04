@@ -30,16 +30,16 @@ coverage:
 
 ## Test Steps
 
-1. Klik row action `Detail` pada SKU `Fixture.hardwareStock.p30.sku`
+1. Ketik Search `Fixture.hardwareStock.p30.sku`, tekan Enter, lalu klik row action `Detail` pada SKU `Fixture.hardwareStock.p30.sku`
 2. Klik icon Filter
-3. Terapkan Filter Registered By = `Fixture.hardwareStock.account.p01.totalControl.shortName` (5.000 baris tersisa)
+3. Terapkan Filter Registered By = `Fixture.hardwareStock.account.p01.totalControl.shortName`
 4. Klik icon Download, pilih `Download as CSV`
 5. Verifikasi berkas CSV terunduh sinkron untuk 5.000 baris
-6. Klik icon Filter, lalu hapus Filter Registered By (5.001 baris)
+6. Klik icon Filter, lalu hapus Filter Registered By
 7. Klik icon Download, pilih `Download as CSV`
 8. Verifikasi loading screen tampil sampai berkas siap
-9. Verifikasi berkas CSV langsung terunduh dengan 5.001 baris data
-10. Verifikasi tidak ada toast informasional
+9. Verifikasi tidak ada toast informasional
+10. Verifikasi berkas CSV langsung terunduh dengan 5.001 baris data
 11. Tunggu 5 detik tanpa memuat ulang halaman
 12. Verifikasi tidak ada notifikasi in-app
 13. Verifikasi tidak ada jendela kedaluwarsa
@@ -48,7 +48,7 @@ coverage:
 
 - Sumber: `admin-console/hardware-stock/TestCases/tc-hardware-stock.md` (TC-579). Tidak ada TC hanya-BE di spec ini.
 - Kelas e (volume data khusus 5.000 dan 5.001 baris); isi berkas dibaca hanya untuk jumlah baris (asersi fungsional); isi sel dan BOM adalah kelas f (spec 286, 138, 168, 188, 208, 228).
-- Langkah penghubung (aksi tanpa `Verifikasi`, S-03): langkah 1, 2, 3, 6 (navigasi dan Filter), 4, 7 (membuka menu Download), 11 (jendela tunggu 5 detik sebelum asersi absence notifikasi in-app pada langkah 12, butir 8b). Asersi absence langkah 10, 12, dan 13 didahului pemicu unduhan (langkah 7) dan `Verifikasi` berkas terunduh (langkah 9) sebagai anchor positif (butir 8b nomor 11).
+- Langkah penghubung (aksi tanpa `Verifikasi`, S-03): langkah 1 (Search SKU lalu `Detail`), 2, 3, 6 (navigasi dan Filter), 4, 7 (membuka menu Download), 11 (jendela tunggu 5 detik sebelum asersi absence notifikasi in-app pada langkah 12, butir 8b). Asersi absence toast langkah 9 diletakkan segera sesudah pemicu unduhan (langkah 7) dan sebelum `Verifikasi` berkas terunduh (langkah 10); pemicu menjadi anchor positif yang buktinya menyusul pada langkah 10 (butir 8b nomor 11). Asersi absence langkah 12 dan 13 didahului pemicu unduhan (langkah 7) dan `Verifikasi` berkas terunduh (langkah 10) sebagai anchor positif. Search pada langkah 1 menemukan SKU sebelum klik row action `Detail` (R-16, 8b.13).
 - Temuan untuk QA:
   - Expected a ("berkas terunduh sinkron") tidak menyebut cara membedakan sinkron dari loading screen; spec mengasersi berkas terunduh tanpa memeriksa ketiadaan loading screen pada 5.000 baris.
   - Expected b menyebut "5.001 baris data" tanpa menyebut baris header; spec menghitung baris data tanpa header.

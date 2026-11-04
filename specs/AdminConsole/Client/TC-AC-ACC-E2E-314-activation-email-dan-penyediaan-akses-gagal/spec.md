@@ -95,6 +95,7 @@ coverage:
 - Spec melewati sekitar 35 langkah; alasan: semua blok satu kelas harness (kegagalan email/penyediaan + jam) dan data berbeda per TC, kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Langkah penghubung (S-03, R-16): Langkah 31 `Tunggu aksi selesai (...)` menunggu hasil aksi tulis selesai sebelum muat ulang atau pindah halaman; tanpa asersi.
 - Temuan untuk QA
+  - F-10: Asersi langkah 16 dan 18 (N2 = N1, N3 = N1) sesudah langkah 15 dan 17 ("tunggu antrean percobaan ulang berjalan lewat polling"), serta langkah 43 (N3 = N2) sesudah langkah 42 ("tunggu antrean percobaan ulang berjalan lewat polling"), bergantung pada job latar yang tidak punya sinyal selesai; menunggu kemampuan "kueri fixture status job" (bagian 6 konvensi) dari tim BE/FE; diterima user 2026-11-03 (laporan e2e-audit F-10).
   - TC-AC-ACC-464: Langkah 2 `Paksa email service gagal (mock 5xx)` tidak menyebut mekanisme; Expected hanya menyebut toast ke aktor pemicu.
   - TC-AC-ACC-963 dan TC-AC-ACC-983: jeda percobaan ulang (1, 5, 15 menit) berasal dari ACC-LOGIC-10 yang ditulis PRD dengan kata; Data Uji TC memuat angka.
   - TC-AC-ACC-983: Expected butir (e) menyebut `[Retry]` Hidden karena ACC-LOGIC-04.7; `Verifikasi` ini memakai Detail sub-tab FAMS sebagai anchor positif (badge Active tampil).

@@ -19,7 +19,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (nama tampil `Andi Wijaya`), password dari `Spectra.env.AC_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Plans & Licensing > Lifecycle Settings, tab Trial Settings aktif); hook `after` spec mengembalikan sesi ke akun default suite (Total Control). Tidak ada ganti akun di tengah spec.
-- Data: konfigurasi ketujuh tab Lifecycle Settings pada nilai default (Pre-setup 7: Trial 30, 50, 10, OFF, 7, 1; Free Plan 365; License Timing 24, 2, 2; Client Lifecycle 45, 30, 7, 1, 30, 30, 10, 2, 730; Recycle Bin 30; Approval 3; System Limits 1000, 1000, 1000, 50, 10000, 20) dipulihkan hook `beforeEach` suite dan hook `after` suite lewat Fixture BE. Berkas fixture data modul belum ada (disediakan tim FE); spec menulis nilai uji sesuai TC dan merujuk `Fixture.<berkas>.<kunci>` setelah berkas itu tersedia.
+- Data: konfigurasi ketujuh tab Lifecycle Settings pada nilai default (Pre-setup 7: Trial 30, 50, 10, OFF, 7, 1; Free Plan 365; License Timing 24, 2, 2; Client Lifecycle 45, 30, 7, 1, 30, 30, 10, 2, 730; Recycle Bin 30; Approval 3; System Limits 1000, 1000, 1000, 50, 10000, 20) dipulihkan hook `beforeEach` suite dan hook `after` suite lewat Fixture BE. Data Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` (`fixtures/lifecycle-settings.json`); nilai uji yang diketik atau dikirim di langkah sama dengan TC (S-02).
 - Flag Guided Tooltip halaman Lifecycle Settings disetel true oleh hook suite `before` dan dipulihkan hook `after` (lihat `suite.md`).
 - Suite berjalan serial (`parallel: false`).
 - Kemampuan teknis (disediakan tim FE/BE): Fixture BE untuk memulihkan konfigurasi tab ke nilai default (dipakai hook suite). Endpoint tidak ditulis di spec ini.
@@ -55,31 +55,32 @@ coverage:
 
 ### TC-AC-LCS-289: Klik ganda cepat pada [Save] tab System Limits hanya memproses satu permintaan
 
-16. Tahan respons Save tab System Limits (intercept)
-17. Ubah Bulk Transaction Row Limit dari `1000` menjadi `1001`
-18. Klik dua kali cepat pada `[Save]`
-19. Verifikasi `[Save]` menampilkan loading
-20. Verifikasi `[Save]` disabled setelah klik pertama
-21. Verifikasi tepat satu permintaan Save terkirim ke server
-22. Lepas tahanan respons Save
-23. Verifikasi satu toast sukses "Success, system limits settings have been saved."
-24. Verifikasi Bulk Transaction Row Limit bernilai `1001`
+16. Tunggu toast sebelumnya hilang otomatis
+17. Tahan respons Save tab System Limits (intercept)
+18. Ubah Bulk Transaction Row Limit dari `1000` menjadi `1001`
+19. Klik dua kali cepat pada `[Save]`
+20. Verifikasi `[Save]` menampilkan loading
+21. Verifikasi `[Save]` disabled setelah klik pertama
+22. Verifikasi tepat satu permintaan Save terkirim ke server
+23. Lepas tahanan respons Save
+24. Verifikasi satu toast sukses "Success, system limits settings have been saved."
+25. Verifikasi Bulk Transaction Row Limit bernilai `1001`
 
 ### TC-AC-LCS-290: Klik ganda cepat pada [Reset to Default] tab System Limits hanya memproses satu permintaan
 
-25. Atur nilai tersimpan tab System Limits ke nilai non-default lewat Fixture BE: Bulk Transaction Row Limit `2000`, Selection Limit `1500`, Register Asset Bulk Limit `2500`, Hierarchy Depth Limit `60`, Master Data Count Limit `20000`, Max Visible Columns `25`
-26. Muat ulang halaman dengan F5, lalu buka tab System Limits
-27. Tahan respons Reset tab System Limits (intercept)
-28. Klik dua kali cepat pada `[Reset to Default]`
-29. Verifikasi `[Reset to Default]` menampilkan loading
-30. Verifikasi `[Reset to Default]` disabled setelah klik pertama
-31. Verifikasi tepat satu permintaan Reset terkirim ke server
-32. Lepas tahanan respons Reset
-33. Verifikasi satu toast sukses "Success, system limits settings have been reset to default."
+26. Atur nilai tersimpan tab System Limits ke nilai non-default lewat Fixture BE: Bulk Transaction Row Limit `2000`, Selection Limit `1500`, Register Asset Bulk Limit `2500`, Hierarchy Depth Limit `60`, Master Data Count Limit `20000`, Max Visible Columns `25`
+27. Muat ulang halaman dengan F5, lalu buka tab System Limits
+28. Tahan respons Reset tab System Limits (intercept)
+29. Klik dua kali cepat pada `[Reset to Default]`
+30. Verifikasi `[Reset to Default]` menampilkan loading
+31. Verifikasi `[Reset to Default]` disabled setelah klik pertama
+32. Verifikasi tepat satu permintaan Reset terkirim ke server
+33. Lepas tahanan respons Reset
+34. Verifikasi satu toast sukses "Success, system limits settings have been reset to default."
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: langkah 1, 25 (mengatur nilai tersimpan non-default sebagai precondition TC), langkah 2, 9, 26 (memuat ulang halaman agar tab membaca nilai dari server), langkah 16, 27 (menahan respons), dan langkah 22, 32 (melepas tahanan respons).
+- Langkah penghubung tanpa `Verifikasi`: langkah 1, 26 (mengatur nilai tersimpan non-default sebagai precondition TC), langkah 2, 9, 27 (memuat ulang halaman agar tab membaca nilai dari server), langkah 16 (menunggu toast sebelumnya hilang otomatis supaya asersi satu toast sukses tidak terpenuhi toast lama), langkah 17, 28 (menahan respons), dan langkah 23, 33 (melepas tahanan respons).
 - Urutan di spec: TC-AC-LCS-286, TC-AC-LCS-287, lalu klik ganda (Reset sebelum klik ganda mengikuti bagian 3); urutan sama dengan nomor TC kecuali TC klik ganda ditempatkan sesudah kedua TC Reset.
 - Asersi toast sukses sesudah klik ganda ditulis setelah respons dilepas karena toast hasil belum dapat muncul selama respons ditahan (bagian 8b butir 11).
 - Asersi absence dialog konfirmasi ditulis segera setelah klik `[Reset to Default]`; toast sukses sesudahnya menjadi anchor positif (bagian 8b butir 11).

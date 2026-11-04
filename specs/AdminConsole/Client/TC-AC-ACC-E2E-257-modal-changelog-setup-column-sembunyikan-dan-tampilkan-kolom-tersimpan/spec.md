@@ -36,7 +36,7 @@ coverage:
 1. Untuk setiap baris tabel "Modal Changelog" (langkah 1 sampai 11): buka modal sesuai kolom "Cara buka"
 2. Untuk setiap kolom pada kolom "Kolom Hideable" baris itu (langkah 2 sampai 10): klik header kolom Actions (⋯) pada tabel modal lalu klik "Setup Column..."
 3. Hapus centang kolom itu
-4. Verifikasi kolom masih tampil di tabel di balik modal setelah centang dilepas, sebelum [Save] (perubahan baru berlaku setelah [Save], D-008)
+4. Verifikasi kolom masih tampil di tabel di balik modal setelah centang dilepas, sebelum [Save] (perubahan baru berlaku setelah [Save], D-065)
 5. Klik [Save], tekan F5, lalu buka kembali modal yang sama sesuai kolom "Cara buka"
 6. Verifikasi kolom tetap hilang setelah [Save], F5, dan pembukaan ulang modal
 7. Klik header kolom Actions (⋯) pada tabel modal lalu klik "Setup Column..."
@@ -52,5 +52,5 @@ coverage:
 - Langkah 2 sampai 9 diulang untuk 7 kolom pada tiap modal (8 langkah x 7 x 3 = 168 langkah setelah ekspansi, ditambah pembukaan modal dan penutupan).
 - Spec ini melewati sekitar 35 langkah setelah ekspansi. Alasan: semua iterasi satu kelas harness (UI Only, Setup Column pada tiga modal Changelog dengan akun yang sama), parameter tiap iterasi ada di tabel Prerequisites, tanpa langkah bersyarat, dan tiap kolom dikembalikan ke tampil di akhir putaran sehingga kegagalan satu putaran tidak membuat putaran lain kehilangan makna.
 - Temuan untuk QA:
-  - TC-AC-ACC-743 Expected a sampai i meminta kolom hilang langsung dari tabel di balik modal saat centang dilepas, sebelum [Save]. Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-008 (tabel di balik popup tidak berubah sampai [Save]): langkah 4 mengasersi kolom masih tampil sebelum [Save] dan hilangnya kolom diasersi setelah [Save] (langkah 6). TC tidak diubah. TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview.
+  - TC-AC-ACC-743: TC sudah diselaraskan pada 2026-11-03 sesuai `docs/spec-decisions.md` D-065 (tabel di balik popup tidak berubah sampai [Save]); spec dan TC sama. langkah 4 mengasersi kolom masih tampil sebelum [Save] dan hilangnya kolom diasersi setelah [Save] (langkah 6). TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview. Sisa konflik hanya `prd-conventions.md` §9.3 (di luar scope suite, dilaporkan ke pemilik foundation).
   - TC-AC-ACC-743 Expected memuat sembilan kelas Hideable (Client Name hanya di Changelog: Client, Subscription hanya di Changelog: Subscription, Object hanya di Changelog: Asset Control); spec mengikuti pemetaan per modal pada tabel Prerequisites.

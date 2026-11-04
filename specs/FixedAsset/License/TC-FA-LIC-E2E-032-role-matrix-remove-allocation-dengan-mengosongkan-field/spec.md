@@ -55,6 +55,7 @@ coverage:
 ## Notes
 
 - Spec Role Matrix positif (bagian 3a konvensi) atas pengosongan field Allocated Quota; ganti akun menuntut Step eksplisit (akun pertama login di hook `before`). TC-FA-LIC-103, 528, dan 529 ada di spec `TC-FA-LIC-E2E-170`.
+- Alasan tidak dipisah per polaritas (bagian 3a): TC-FA-LIC-107 adalah satu TC yang memuat eksekusi sukses (Total Control, Manage global license) dan visibilitas tombol `[Edit]` (Read Only). Memecahnya ke dua spec membuat satu TC tercakup di dua spec non-mock (temuan C2), yang tidak diizinkan konvensi; pemisahan menunggu TC-107 dipecah di sumber.
 - Langkah penghubung (aksi tanpa `Verifikasi`): "Buka Tab `Allocation Quota`, lalu klik node `Kantor Pusat`" setelah ganti akun. Modal dengan field yang dikosongkan ditutup deterministik lewat `[×]`, dialog `Unsaved Changes`, dan `[Leave]` (S-08); TC menulis "tutup tanpa Save".
 - Asersi `[Edit]` Hidden pada Read Only didahului `Verifikasi baris Divisi IT tampil` sebagai anchor positif.
 - Temuan untuk QA:

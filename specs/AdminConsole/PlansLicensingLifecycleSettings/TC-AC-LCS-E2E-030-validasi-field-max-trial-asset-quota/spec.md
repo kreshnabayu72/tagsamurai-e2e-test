@@ -21,7 +21,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (nama tampil `Andi Wijaya`), password dari `Spectra.env.AC_TC_PASSWORD` (akun default suite).
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Plans & Licensing > Lifecycle Settings, tab Trial Settings aktif). Tidak ada ganti akun di tengah spec.
-- Data: konfigurasi ketujuh tab Lifecycle Settings pada nilai default (Pre-setup 7: Trial Settings 30, 50, 10, OFF, 7, 1; Free Plan Settings 365; License Timing 24, 2, 2; Client Lifecycle 45, 30, 7, 1, 30, 30, 10, 2, 730; Recycle Bin 30; Approval Settings 3; System Limits 1000, 1000, 1000, 50, 10000, 20); General Settings Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC. Hook `beforeEach` suite memulihkan semuanya lewat Fixture BE dan hook `after` suite memulihkannya sekali lagi (kemampuan Fixture BE disediakan tim FE/BE). Berkas `fixtures/<modul>.json` untuk modul ini belum ada; nilai default dan nilai uji pada langkah dirujuk lewat `Fixture.lifecycleSettings.<kunci>` setelah tim FE menyediakannya.
+- Data: konfigurasi ketujuh tab Lifecycle Settings pada nilai default (Pre-setup 7: Trial Settings 30, 50, 10, OFF, 7, 1; Free Plan Settings 365; License Timing 24, 2, 2; Client Lifecycle 45, 30, 7, 1, 30, 30, 10, 2, 730; Recycle Bin 30; Approval Settings 3; System Limits 1000, 1000, 1000, 50, 10000, 20); General Settings Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC. Hook `beforeEach` suite memulihkan semuanya lewat Fixture BE dan hook `after` suite memulihkannya sekali lagi (kemampuan Fixture BE disediakan tim FE/BE). Nilai default dan nilai uji pada langkah dirujuk lewat `Fixture.lifecycleSettings.<kunci>` (`fixtures/lifecycle-settings.json`).
 - Flag Guided Tooltip halaman ini disetel true oleh hook `before` suite (lihat `suite.md`); spec ini tidak mengubahnya.
 - Kemampuan teknis: Fixture BE (pemulihan konfigurasi per tab dan General Settings, disediakan tim FE/BE).
 - State global: ketujuh tab adalah satu set pengaturan platform-wide dan suite berjalan serial (`parallel: false`); konfigurasi dan Changelog dipulihkan sebagaimana tertulis pada baris Data. Entri Changelog permanen dan tidak dapat dihapus lewat UI.
@@ -64,7 +64,7 @@ coverage:
 
 ### TC-AC-LCS-104: Save Max Trial Asset Quota pada nilai maksimum 999,999
 
-22. Ubah Max Trial Asset Quota menjadi `999999`
+22. Ubah Max Trial Asset Quota menjadi `999999`, lalu klik area kosong di luar field (blur)
 23. Verifikasi Tidak ada pesan error rentang pada Max Trial Asset Quota saat nilai `999999` diisi
 24. Klik `[Save]`
 25. Verifikasi Toast sukses: "Success, trial settings have been saved."
@@ -79,3 +79,4 @@ coverage:
 - Langkah penghubung (S-03, S-09): langkah "Kembalikan ... ke nilai tersimpan" (bila ada) membersihkan error inline yang identik sebelum TC berikutnya (R-12); klik tab Trial Settings sesudah F5 adalah langkah "buka kembali tab" TC (tab tetap Trial Settings menurut route, sehingga klik ini tidak mengubah tab).
 - Temuan untuk QA: Post Condition "tersimpan" pada TC Save tidak punya langkah observasi sendiri selain Expected butir c (nilai sesudah F5); spec mengasersi nilai tersimpan sesudah F5 sesuai Expected, bukan dari Post Condition. TC "buka kembali tab" tidak menyebut tab mana; spec memakai tab Trial Settings.
 - Mekanisme Fixture BE (pemulihan konfigurasi per tab dan General Settings) tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint karangan (S-13, R-19).
+- Langkah 22 menyertakan blur sesuai TC ("lalu blur") sebelum asersi absence pada langkah 23, karena validasi rentang muncul saat blur (bagian 8b butir 2).

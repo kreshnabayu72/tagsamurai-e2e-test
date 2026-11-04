@@ -23,7 +23,8 @@ coverage:
 - Konfigurasi ketujuh tab pada nilai default (Pre-setup 7) dipulihkan lewat Fixture BE di hook `beforeEach` dan `after` suite (kemampuan disediakan tim FE/BE).
 - Hook `before` men-seed dataset Changelog kecil (3 entri, Pre-setup 9: 10, 11, 12 May 26; John Doe dan Sarah Thompson) untuk tab Trial Settings dan Free Plan Settings lewat Fixture BE; hook `after` mengembalikan dataset ke keadaan awal.
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini).
-- Data uji mengacu ke fixture `Fixture.plansLicensingLifecycleSettings` (nilai default tiap tab dan dataset Changelog); fixture belum ada dan disediakan tim FE/BE.
+- Pengecualian A-15: Fixture BE menyediakan kemampuan overwrite dan clear riwayat Changelog per tab (disediakan tim FE/BE, idempotent); total absolut Changelog (footer `1-N of N`, jumlah baris, empty state) diasersi pada riwayat yang dibentuk di hook `before` spec ini dan dikembalikan di hook `after` suite; suite berjalan serial (`parallel: false`).
+- Data uji mengacu ke berkas `fixtures/lifecycle-settings.json` (`Fixture.lifecycleSettings`: nilai default tiap tab dan dataset Changelog).
 - Konfigurasi Lifecycle Settings bersifat platform-wide dan Changelog bersifat permanen; suite berjalan serial (`parallel: false`).
 - Env var: `AC_TC_PASSWORD` (password Total Control Admin Console, satu nama satu arti).
 
@@ -76,5 +77,6 @@ coverage:
 - Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung: klik `(←)` pada kotak Search sesudah tiap TC Search (menutup input dan mereset tabel, S-09) dan menutup modal sebelum berpindah tab.
 - Filter tab dengan satu nilai Field (Free Plan Settings, Recycle Bin, Approval Settings) tidak menampilkan field filter Field (NC-18); asersi absence field Field memakai panel yang sudah termuat (field Date dan Modified By tampil) sebagai anchor.
+- Pengecualian A-15: total absolut Changelog (footer, jumlah baris, empty state) diasersi pada riwayat hasil overwrite lewat Fixture BE di hook `before`; spec tidak mereset riwayat di tengah langkah.
 - Temuan untuk QA:
   - Post Condition seluruh TC ("Tidak ada perubahan data") tidak punya langkah observasi dan tidak diasersi.

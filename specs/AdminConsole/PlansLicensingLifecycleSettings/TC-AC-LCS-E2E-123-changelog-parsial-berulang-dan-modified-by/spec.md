@@ -23,7 +23,7 @@ coverage:
 - Kemampuan teknis: Fixture BE memulihkan ketujuh tab ke default antara TC-AC-LCS-475 dan TC-AC-LCS-476 (precondition TC-AC-LCS-476 meminta Free Plan Duration `365`).
 - Data uji: Grace Period Duration `20`, Post-Purge Retention `800`; Free Plan Duration `365` ke `400` ke `500` (TC-AC-LCS-475) dan `365` ke `400` (TC-AC-LCS-476). Nama user aktor `Andi Wijaya`, tampil `Andi W`.
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini).
-- Data uji mengacu ke fixture `Fixture.plansLicensingLifecycleSettings` (nilai default tiap tab dan dataset Changelog); fixture belum ada dan disediakan tim FE/BE.
+- Data uji mengacu ke `Fixture.lifecycleSettings.<kunci>` dari `fixtures/lifecycle-settings.json` (nilai default tiap tab dan dataset Changelog).
 - Konfigurasi Lifecycle Settings bersifat platform-wide dan Changelog bersifat permanen; suite berjalan serial (`parallel: false`).
 - Env var: `AC_TC_PASSWORD` (password Total Control Admin Console, satu nama satu arti).
 
@@ -57,26 +57,30 @@ coverage:
 21. Klik `[Save]` dan tunggu toast sukses
 22. Klik icon Changelog di pojok kanan atas panel tab Free Plan Settings
 23. Verifikasi footer menunjukkan total entri baseline N0 ditambah 2 (tepat 2 entri baru)
-24. Verifikasi baris 1 (terbaru): Field `Free Plan Duration`, Old Value `400`, New Value `500`
-25. Verifikasi baris 2: Field `Free Plan Duration`, Old Value `365`, New Value `400` (tidak ter-overwrite oleh Save kedua)
+24. Verifikasi salah satu dari dua baris teratas: Field `Free Plan Duration`, Old Value `400`, New Value `500`
+25. Verifikasi baris lainnya dari dua baris teratas: Field `Free Plan Duration`, Old Value `365`, New Value `400` (tidak ter-overwrite oleh Save kedua)
 
 ### TC-AC-LCS-476: Modified By pada Changelog menampilkan format singkat dan tooltip nama lengkap saat hover
 
 26. Pulihkan ketujuh tab ke nilai default lewat Fixture BE
 27. Muat ulang halaman dengan F5
 28. Klik tab Free Plan Settings
-29. Ubah Free Plan Duration dari `365` menjadi `400`
-30. Klik `[Save]` dan tunggu toast sukses
-31. Klik icon Changelog di pojok kanan atas panel tab Free Plan Settings
-32. Verifikasi Modified By pada baris 1 tampil `Andi W` sebagai plain text (bukan badge)
-33. Hover nilai Modified By pada baris 1
-34. Verifikasi tooltip `Andi Wijaya` tampil
+29. Klik icon Changelog di pojok kanan atas panel tab Free Plan Settings
+30. Catat total entri pada footer modal sebagai baseline N0 (tab Free Plan Settings)
+31. Tutup modal dengan `[✕]`
+32. Ubah Free Plan Duration dari `365` menjadi `400`
+33. Klik `[Save]` dan tunggu toast sukses
+34. Klik icon Changelog di pojok kanan atas panel tab Free Plan Settings
+35. Verifikasi footer menunjukkan total entri baseline N0 ditambah 1 (tepat 1 entri baru)
+36. Verifikasi Modified By pada baris 1 tampil `Andi W` sebagai plain text (bukan badge)
+37. Hover nilai Modified By pada baris 1
+38. Verifikasi tooltip `Andi Wijaya` tampil
 
 ## Notes
 
-- Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung: membaca baseline N0 lalu menutup modal (S-12), menutup modal sebelum pindah tab, serta pemulihan ketujuh tab dan muat ulang halaman antara TC-AC-LCS-475 dan TC-AC-LCS-476 (S-09).
-- Entri baru dicari di antara baris teratas urutan Newest First; urutan antar entri dengan cap waktu menit yang sama tidak diasersi karena TC tidak menyebutnya.
+- Langkah penghubung: membaca baseline N0 lalu menutup modal (S-12) pada langkah 1 sampai 4, 14 sampai 17, dan 28 sampai 31 (baseline TC-AC-LCS-476 dibaca sesudah pemulihan dan muat ulang), menutup modal sebelum pindah tab, serta pemulihan ketujuh tab dan muat ulang halaman antara TC-AC-LCS-475 dan TC-AC-LCS-476 (S-09).
+- Entri baru dicari di antara baris teratas urutan Newest First. Pada TC-AC-LCS-475 dua baris teratas dinilai sebagai himpunan tanpa urutan karena kedua Save dapat berada pada menit yang sama (S-14); pada TC-AC-LCS-474 dan TC-AC-LCS-476 urutan antar entri dengan cap waktu menit yang sama tidak diasersi karena TC tidak menyebutnya.
 - Temuan untuk QA:
   - Expected TC (footer `1–N of N` dengan N sama dengan jumlah entri baru) mengandaikan Changelog tab kosong; Changelog bersifat permanen sehingga spec mengasersi total entri sebagai baseline N0 ditambah jumlah entri baru (S-12) dan memeriksa entri baru di baris teratas urutan Newest First.
   - Post Condition TC berupa nilai field tersimpan tidak punya langkah observasi sendiri di TC dan tidak diasersi; entri Changelog yang tercatat diasersi lewat Expected.
+- Alasan di atas sekitar 35 langkah (38 langkah): ketiga blok TC memakai modal Changelog yang sama dengan pola yang sama (baca baseline N0, Save, baca entri baru). TC-AC-LCS-474 berada di tab Client Lifecycle, sedangkan TC-AC-LCS-475 dan TC-AC-LCS-476 berada di tab Free Plan Settings. Baseline N0 TC-AC-LCS-474 dibaca tanpa pemulihan; pemulihan ketujuh tab dan muat ulang halaman dengan F5 dilakukan satu kali, di antara TC-AC-LCS-475 dan TC-AC-LCS-476, agar baseline N0 TC-AC-LCS-476 dibaca dari state default. Memecah menjadi spec terpisah hanya mengulang pemulihan ketujuh tab dan muat ulang tersebut.

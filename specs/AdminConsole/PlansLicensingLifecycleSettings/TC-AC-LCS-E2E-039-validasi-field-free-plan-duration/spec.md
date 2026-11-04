@@ -67,7 +67,7 @@ coverage:
 
 ### TC-AC-LCS-133: Save Free Plan Duration pada nilai maksimum 9,999
 
-24. Ubah Free Plan Duration menjadi `9999`
+24. Ubah Free Plan Duration menjadi `9999`, lalu klik area kosong di luar field (blur)
 25. Verifikasi tidak ada pesan error rentang pada Free Plan Duration saat nilai `9999` diisi
 26. Klik `[Save]`
 27. Verifikasi toast sukses "Success, free plan settings have been saved."
@@ -77,11 +77,10 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah 1, 18, 23 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
 - Validasi yang diblokir berada sebelum aksi sukses: urutan mengikuti nomor TC dan TC Save nilai maksimum berada di akhir spec (S-10).
 - Temuan untuk QA:
   - Post Condition TC-AC-LCS-133 (nilai tersimpan) setara dengan `Verifikasi` nilai sesudah F5 pada langkah 30; tidak ada asersi tambahan.
   - TC-AC-LCS-132 mengetik `10000` (lima karakter) dan mengharapkan error rentang "Value must be between 1 and 9,999", sedangkan batas maksimum 9,999 berbentuk empat digit dan TC-AC-LCS-209 menunjukkan field memotong input pada jumlah karakter maksimum; bila field memiliki hard cap empat karakter, nilai menjadi `1000` dan error tidak tampil (kemungkinan kontradiktif). Spec mengikuti TC.
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).
+- Langkah 24 menyertakan blur sesuai TC ("lalu blur") sebelum asersi absence pada langkah 25, karena validasi rentang muncul saat blur (bagian 8b butir 2).

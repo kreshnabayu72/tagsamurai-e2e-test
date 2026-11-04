@@ -45,7 +45,7 @@ coverage:
 3. Verifikasi menu `Client` tidak tersedia (Hidden)
 4. Buka URL Admin Console > Client langsung
 5. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-6. Verifikasi tidak ada toast error `You don't have permission to do this.`
+6. Verifikasi tidak ada toast error
 7. Verifikasi data Client tidak tampil
 
 ### TC-AC-ACC-453: Tenant isolation: Default User tenant Client tidak dapat mengakses Admin Console
@@ -62,25 +62,25 @@ coverage:
 14. Verifikasi menu `Client` tidak tampil
 15. Buka URL Admin Console > Client langsung
 16. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-17. Verifikasi tidak ada toast error `You don't have permission to do this.`
+17. Verifikasi tidak ada toast error
 
 ### TC-AC-ACC-60: Akses langsung URL Detail Client oleh aktor tanpa Read: 403 untuk setiap ID
 
 18. Buka URL Detail dengan ID Client `PT Timur Perkasa` (Active) langsung
 19. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-20. Verifikasi tidak ada toast error `You don't have permission to do this.`
+20. Verifikasi tidak ada toast error
 21. Verifikasi data Client `PT Timur Perkasa` tidak tampil
 22. Buka URL Detail dengan ID Client `PT Sejahtera Abadi` (Active) langsung
 23. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-24. Verifikasi tidak ada toast error `You don't have permission to do this.`
+24. Verifikasi tidak ada toast error
 25. Verifikasi data Client `PT Sejahtera Abadi` tidak tampil
 26. Buka URL Detail dengan ID Client `PT Karya Abadi` (Archived) langsung
 27. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-28. Verifikasi tidak ada toast error `You don't have permission to do this.`
+28. Verifikasi tidak ada toast error
 29. Verifikasi data Client `PT Karya Abadi` tidak tampil
 30. Buka URL Detail dengan ID Client yang tidak terdaftar langsung
 31. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-32. Verifikasi tidak ada toast error `You don't have permission to do this.`
+32. Verifikasi tidak ada toast error
 33. Verifikasi data Client tidak tampil
 34. Verifikasi halaman no-access untuk ID tidak terdaftar sama dengan halaman no-access untuk ketiga Client terdaftar, bukan toast netral `This client is no longer available.`
 35. Logout dari akun Tanpa-Capability-Client
@@ -93,7 +93,7 @@ coverage:
 39. Verifikasi menu `Client` tidak tampil (role Manage allocation tidak memberi akses List dan Detail Client)
 40. Buka URL Admin Console > Client langsung
 41. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-42. Verifikasi tidak ada toast error `You don't have permission to do this.`
+42. Verifikasi tidak ada toast error
 43. Buka Admin Console > Client Subscription
 44. Verifikasi Client Subscription menampilkan tabel client beserta subscription-nya
 
@@ -109,7 +109,7 @@ coverage:
 - Pembagian TC lintas spec: akses URL Detail aktor dengan capability tetapi di luar scope atau role penaung berbeda ada di spec 026 dan 027.
 - Ukuran spec (44 langkah, melewati sekitar 35 langkah): Role Matrix per blok role (tiga role, langkah berbeda); tiap blok dimulai dengan langkah ganti akun eksplisit dan tidak bergantung pada hasil blok sebelumnya; langkah membengkak karena tiap klausa Expected menjadi satu `Verifikasi` (S-01) dan TC-AC-ACC-60 mengulang pola URL untuk empat ID dengan parameter tertera tiap langkah.
 - Temuan untuk QA:
-  - Selisih dengan D-015 dan keputusan user 2026-11-02: Expected TC-AC-ACC-42, 43, 44, 60 menyebut toast `You don't have permission to do this.` tanpa redirect untuk akses URL langsung tanpa capability (juga PRD client §9.3); TC tidak diubah. Spec mengasersi halaman no-access tampil tanpa toast dan tanpa data Client (D-015). QA perlu menyelaraskan Expected TC dan PRD §9.3. Teks atau elemen halaman no-access belum diketahui; script memakai asersi yang sama dengan spec Brand.
+  - Sudah selaras (2026-11-03, temuan T-1 e2e-audit): Expected TC-AC-ACC-42, 43, 44, 60 dan PRD client §9.3 (butir 1 dan 3, EC-80, EC-88) kini menyebut halaman no-access tampil tanpa toast error untuk akses URL langsung tanpa capability, sama dengan D-015. Spec mengasersi halaman no-access tampil tanpa toast dan tanpa data Client. Teks atau elemen halaman no-access belum diketahui; script memakai asersi yang sama dengan spec Brand.
   - TC-AC-ACC-453: Expected hanya "Akses ditolak" tanpa bentuk penolakan (toast, redirect, atau halaman); spec mengasersi List tidak termuat dan data Client tidak tampil, bukan bentuk tertentu. TC-453 duplikat langkah TC-42 butir 2.
   - TC-AC-ACC-42, 43, 44: Expected "Menu Client Hidden" tidak menyebut item menu pembanding; spec memakai anchor "sedikitnya satu item menu lain" (bagian 8b butir 2). Bila beranda produk Client Default User tidak menampilkan navigasi Admin Console, QA perlu menyebut anchor lain.
   - TC-AC-ACC-44: Expected butir b menyebut "List/Detail" sedangkan langkah hanya membuka URL List; spec mengasersi URL List.

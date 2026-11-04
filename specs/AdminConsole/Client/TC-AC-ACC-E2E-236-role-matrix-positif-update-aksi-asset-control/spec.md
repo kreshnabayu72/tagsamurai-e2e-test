@@ -24,7 +24,8 @@ coverage:
 | Active-Update-Only A-06 (Manage active client: Update + Read) | `activeUpdateJakarta_automated_qaTeam1@qwertysystem.net` | `Spectra.env.AC_CLIENT_ACTIVE_UPDATE_PASSWORD` (nama env baru, didaftarkan di `executionConfig.environmentVariables` dan `.env.example` pada tahap script) | Hanya node Area Jakarta (exact-match) |
 
 - Login di hook `before` spec ini; halaman List Client dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control).
-- Data fixture Tabel A3 (skrip seed, bukan lewat UI; di-seed ulang lewat reset data uji karena Deactivate dan Revoke permanen): C-ROL-12 "PT Stasiun Uji" (Active; Asset Control Total 4 / Used 2 / Available 2; Station "Gerbang Uji A" Active dengan Tablet "Tablet Uji A1" dan "Tablet Uji A2"; Station "Gerbang Uji B" Active dengan Tablet "Tablet Uji B1"; SFR Asset Control "Reader Uji" tanpa station aktif).
+- Data Dinamis milik spec (kembaran fixture; skrip seed di hook `before`, bukan lewat UI; dihapus di hook `after`; Generate Enrollment QR, Revoke, dan Deactivate permanen sehingga spec tidak memakai C-ROL-12 bersama [S-06]; Company Name bersuffix `{runId}-236`, atribut setara baris fixture asal di Tabel A3 (Partner CV Mitra Sejati; Group Area Jakarta; FAMS Active), nama SFR, Station, dan Tablet di dalam kembaran sama dengan fixture asal karena terlingkup pada Client kembaran):
+  - "PT Stasiun Uji {runId}-236" (kembaran C-ROL-12, TC-AC-ACC-614, 615, 616): Active; Asset Control Total 4 / Used 2 / Available 2; Station "Gerbang Uji A" Active dengan Tablet "Tablet Uji A1" dan "Tablet Uji A2"; Station "Gerbang Uji B" Active dengan Tablet "Tablet Uji B1"; SFR Asset Control "Reader Uji" tanpa station aktif; tanpa token Enrollment QR Active.
 - Kemampuan teknis: jam server uji dapat dimajukan (token Active hasil TC-AC-ACC-614 dikembalikan ke Expired dengan memajukan jam server 15 menit di hook `after`; jam dipulihkan).
 - Sesi UI dan sesi API aktor tetap valid selama jam digeser (suite.md > Kemampuan teknis > Sesi tetap valid saat jam digeser)
 - State global: jam server dimajukan lalu dipulihkan di hook `after`; suite berjalan serial (`parallel: false`); flag Guided Tooltip halaman Detail diatur hook suite.
@@ -32,7 +33,7 @@ coverage:
 
 ## Test Steps
 
-1. Ketik Search "PT Stasiun Uji" di List Client, tekan Enter, klik Company Name "PT Stasiun Uji", lalu klik Tab Asset Control
+1. Ketik Search "PT Stasiun Uji {runId}-236" di List Client, tekan Enter, klik Company Name "PT Stasiun Uji {runId}-236", lalu klik Tab Asset Control
 
 ### TC-AC-ACC-614: Generate Enrollment QR oleh pemegang Update
 
@@ -69,5 +70,6 @@ coverage:
 - Langkah penghubung (S-03, R-16): langkah 1 (Search dan buka Detail Client; hook suite hanya membuka List Client), langkah 7 (menutup dialog Enrollment QR), langkah 8 dan 18 (expand row agar Tablet List teramati).
 - Urutan TC di spec (614, 616, 615) berbeda dari urutan nomor TC agar aksi yang menghabisi data (Deactivate Station) berada paling akhir (prinsip 3 butir 5); tiap TC memakai Station yang berbeda sehingga nilai kuota TC-AC-ACC-615 (Used 2 menjadi 1) tetap sesuai Expected.
 - Kombinasi role x aksi lain (Read-saja, Create-saja, Delete-saja) tidak punya TC sumber untuk aksi Asset Control di slice ini; spec negatif Read ada di spec 237.
+- Replika S-06 [KEPUTUSAN 2026-11-03]: Generate, Revoke, dan Deactivate menulis data, sehingga spec memakai kembaran C-ROL-12 bersuffix `{runId}-236` pada Group Area Jakarta agar tetap terjangkau assignment A-06 (seed di `before`, cleanup di `after`).
 - Temuan untuk QA:
   - TC-AC-ACC-614 sampai TC-AC-ACC-616 menyebut Post Condition seed ulang C-ROL-12 tanpa menyebut token Active hasil TC-AC-ACC-614; spec memulihkannya lewat memajukan jam server di hook `after`.

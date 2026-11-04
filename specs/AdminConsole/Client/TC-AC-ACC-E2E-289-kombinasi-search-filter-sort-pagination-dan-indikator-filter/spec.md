@@ -29,6 +29,7 @@ coverage:
 - Flag Guided Tooltip halaman List dan Detail diset true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan sekali di `suite.md`).
 - Fixture residen A3 C-LST-1 sampai C-LST-3 (`PT Sortir Alfa` SRT-301 Healthcare, `PT Sortir Beta` SRT-100 Retail, `PT Sortir Gamma` SRT-200 Manufacturing) dan C-14 `PT Uji Halaman 01` sampai `PT Uji Halaman 30` (30 baris untuk pagination) tersedia dan hanya dibaca.
 - Client Code Pre-setup yang diasersi: `GNM-013` (`PT Ganti Mitra`), `LJR-010` (`PT Lintas Jaringan`), `SJA-001` (`PT Sejahtera Abadi`), `SNR-011` (`PT Sinar Distributor`), `TMP-012` (`PT Timur Perkasa`).
+- Kebutuhan data TC-AC-ACC-392: fixture residen A3 C-W3LST-7 (`PT Uji Halaman FAMS 01` sampai `06`, FAMS `Active`) tersedia dan hanya dibaca, sehingga hasil Search `PT` dengan Filter FAMS `Active` melebihi 10 baris (ukuran halaman default) dan halaman 2 berisi baris.
 - Tidak butuh klien HTTP, intercept, atau jam server.
 
 ## Test Steps
@@ -113,13 +114,14 @@ coverage:
 61. Klik Filter, pilih FAMS `Active`, lalu klik [Apply]
 62. Klik header kolom Company Name dua kali (Company Name Z-A)
 63. Pindah ke halaman 2
-64. Verifikasi hasil memenuhi semua kontrol (AND): baris pada halaman 2 mengandung `PT`, FAMS `Active`, urutan Company Name Z-A
-65. Verifikasi Pagination mengikuti hasil (halaman 2 aktif)
-66. Klik Filter, klik [Clear Field], klik [Apply], dan klik header kolom Company Name sampai indikator sort nonaktif, lalu klik `(←)` pada kotak Search
-67. Pindah ke halaman 2 (30+ baris)
-68. Ketik Search `Uji`, tekan Enter
-69. Verifikasi paginasi kembali ke halaman 1
-70. Klik `(←)` pada kotak Search
+64. Verifikasi halaman 2 memuat sedikitnya satu baris data (hasil Search `PT` dengan FAMS `Active` melebihi ukuran halaman 10)
+65. Verifikasi hasil memenuhi semua kontrol (AND): baris pada halaman 2 mengandung `PT`, FAMS `Active`, urutan Company Name Z-A
+66. Verifikasi Pagination mengikuti hasil (halaman 2 aktif)
+67. Klik Filter, klik [Clear Field], klik [Apply], dan klik header kolom Company Name sampai indikator sort nonaktif, lalu klik `(←)` pada kotak Search
+68. Pindah ke halaman 2 (30+ baris)
+69. Ketik Search `Uji`, tekan Enter
+70. Verifikasi paginasi kembali ke halaman 1
+71. Klik `(←)` pada kotak Search
 
 ## Notes
 
@@ -128,5 +130,5 @@ coverage:
 - Sort `Client Code Z-A` pada TC-AC-ACC-391 diwujudkan sebagai dua klik header Client Code (ascending lalu descending) mengikuti siklus 3 state.
 - Temuan untuk QA
   - TC-AC-ACC-391: Langkah 1 menulis `Search PT, sort Client Code Z-A, terapkan filter` tanpa nilai filter; spec memakai FAMS `Active`. Expected tidak menyebut sort/search diverifikasi lewat baris mana; spec memakai kolom Client Code descending dan Search `PT` sebagai petunjuk.
-  - TC-AC-ACC-392: Data Uji kosong dan Expected hanya `Hasil memenuhi semua kontrol (AND)`; spec menurunkan verifikasi dari Langkah (Search `PT`, FAMS `Active`, Company Name Z-A, halaman 2). Halaman 2 membutuhkan hasil filter lebih dari 10 baris yang tidak dijamin Tabel A.
+  - TC-AC-ACC-392: Data Uji kosong dan Expected hanya `Hasil memenuhi semua kontrol (AND)`; spec menurunkan verifikasi dari Langkah (Search `PT`, FAMS `Active`, Company Name Z-A, halaman 2). Kebutuhan data halaman 2 kini dijamin Precondition d TC-AC-ACC-392 (fixture residen C-W3LST-7); spec ini mengikuti Precondition tersebut.
   - TC-AC-ACC-393: `Pindah ke halaman 2 (30+ baris)` bergantung pada C-14 (30 baris `PT Uji Halaman`); precondition TC tidak menyebut C-14 secara eksplisit.

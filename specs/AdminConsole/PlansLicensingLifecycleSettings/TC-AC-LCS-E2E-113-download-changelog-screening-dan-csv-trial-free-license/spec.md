@@ -20,7 +20,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control `totalControlAdminConsole_automated_{namaCompany}@qwertysystem.net` (`Andi Wijaya`), password `Spectra.env.AC_TC_PASSWORD`; login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Plans & Licensing > Lifecycle Settings, tab Trial Settings aktif).
 - Konfigurasi ketujuh tab pada nilai default (Pre-setup 7) dipulihkan lewat Fixture BE di hook `beforeEach` dan `after` suite (kemampuan disediakan tim FE/BE).
-- Hook `before` men-seed dataset Changelog kecil (3 entri, Pre-setup 9: 10, 11, 12 May 26; John Doe dan Sarah Thompson) untuk tab pada tabel "Parameter tab" lewat Fixture BE (kemampuan disediakan tim FE/BE; menimpa riwayat tab itu); hook `after` mengembalikan dataset ke keadaan awal.
+- Hook `before` men-seed dataset Changelog kecil (3 entri, Pre-setup 9: 10, 11, 12 May 26; John Doe dan Sarah Thompson) untuk tab Client Lifecycle (TC-AC-LCS-415) dan tab pada tabel "Parameter tab" lewat Fixture BE (kemampuan disediakan tim FE/BE; menimpa riwayat tab itu); hook `after` mengembalikan dataset ke keadaan awal.
 - Spec hanya memeriksa nama berkas dan overlay Download; isi berkas diperiksa spec lain (binary buffer).
 - Parameter tab (diulang di langkah 10 sampai 16):
   | Tab | Nama file |
@@ -29,7 +29,8 @@ coverage:
   | Free Plan Settings | Changelog-Lifecycle-Settings-Free-Plan-Settings.csv |
   | License Timing | Changelog-Lifecycle-Settings-License-Timing.csv |
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini).
-- Data uji mengacu ke fixture `Fixture.plansLicensingLifecycleSettings` (nilai default tiap tab dan dataset Changelog); fixture belum ada dan disediakan tim FE/BE.
+- Pengecualian A-15: Fixture BE menyediakan kemampuan overwrite dan clear riwayat Changelog per tab (disediakan tim FE/BE, idempotent); total absolut Changelog (footer `1-N of N`, jumlah baris, empty state) diasersi pada riwayat yang dibentuk di hook `before` spec ini dan dikembalikan di hook `after` suite; suite berjalan serial (`parallel: false`).
+- Data uji mengacu ke berkas `fixtures/lifecycle-settings.json` (`Fixture.lifecycleSettings`: nilai default tiap tab dan dataset Changelog).
 - Konfigurasi Lifecycle Settings bersifat platform-wide dan Changelog bersifat permanen; suite berjalan serial (`parallel: false`).
 - Env var: `AC_TC_PASSWORD` (password Total Control Admin Console, satu nama satu arti).
 
@@ -63,6 +64,7 @@ coverage:
 - Langkah yang diulang per tab: langkah 10 sampai 16 (3 tab: Trial Settings, Free Plan Settings, License Timing); parameter tiap iterasi ada di tabel "Parameter tab" pada Prerequisites.
 - Langkah penghubung: langkah 10 (pindah tab), menutup overlay Download dan menutup modal.
 - Urutan langkah pada tiap blok: asersi absence toast (state sementara) ditulis tepat sesudah pemicu dan sebelum asersi berkas terunduh yang menjadi anchor-nya (bagian 8b butir 11), berbeda dari urutan butir Expected TC.
+- Pengecualian A-15: total absolut Changelog (footer, jumlah baris, empty state) diasersi pada riwayat hasil overwrite lewat Fixture BE di hook `before`; spec tidak mereset riwayat di tengah langkah.
 - Temuan untuk QA:
   - TC-AC-LCS-415 menyebut Dataset L tersedia pada modal Client Lifecycle, sedangkan TC-AC-LCS-419 (spec 114) memakai dataset kecil Client Lifecycle; screening overlay Download tidak bergantung jumlah entri sehingga spec ini memakai dataset kecil dan tidak mengasersi jumlah entri.
   - Post Condition seluruh TC ("Tidak ada perubahan data") tidak punya langkah observasi dan tidak diasersi.

@@ -39,7 +39,7 @@ coverage:
 4. Klik header kolom Actions (⋯) pada tabel modal lalu klik "Setup Column..." lalu klik [Reset to Default]
 5. Verifikasi daftar kolom: 7 kolom tercentang dengan urutan default pada kolom tabel "Urutan default setelah Reset"
 6. Verifikasi tidak ada kolom terpin
-7. Verifikasi tabel di balik modal masih menampilkan konfigurasi kustom hasil langkah 3 (kolom Field tidak tampil) sebelum [Save] (Reset baru berlaku setelah [Save], D-008)
+7. Verifikasi tabel di balik modal masih menampilkan konfigurasi kustom hasil langkah 3 (kolom Field tidak tampil) sebelum [Save] (Reset baru berlaku setelah [Save], D-065)
 8. Klik [Save], tekan F5, lalu buka kembali modal yang sama sesuai kolom "Cara buka"
 9. Verifikasi konfigurasi default tersimpan setelah [Save] dan F5 (7 kolom dengan urutan default, tanpa kolom terpin)
 10. Tutup modal Changelog
@@ -51,4 +51,4 @@ coverage:
 - Langkah 1 sampai 10 diulang untuk 3 modal (30 langkah setelah ekspansi, 10 langkah nominal bila Cara buka dihitung satu).
 - Spec ini mendekati sekitar 35 langkah setelah ekspansi; semua iterasi satu kelas harness (UI Only) dengan akun yang sama dan tiap modal dibuka dari awal.
 - Temuan untuk QA:
-  - TC-AC-ACC-746 Expected a sampai c meminta konfigurasi default tampil di daftar kolom dan tabel di balik modal sebelum [Save]. Keputusan user 2026-11-02: spec mengikuti `docs/spec-decisions.md` D-008 (tabel di balik popup tidak berubah sampai [Save]): daftar kolom di popup diasersi langkah 5 dan 6, langkah 7 mengasersi tabel di balik modal masih memakai konfigurasi kustom, dan konfigurasi default diasersi setelah [Save] dan F5 (langkah 9). TC tidak diubah. TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview.
+  - TC-AC-ACC-746: TC sudah diselaraskan pada 2026-11-03 sesuai `docs/spec-decisions.md` D-065 (tabel di balik popup tidak berubah sampai [Save]); spec dan TC sama. daftar kolom di popup diasersi langkah 5 dan 6, langkah 7 mengasersi tabel di balik modal masih memakai konfigurasi kustom, dan konfigurasi default diasersi setelah [Save] dan F5 (langkah 9). TC tidak menyebut Preview Table di popup, sehingga spec tidak mengasersi preview. Sisa konflik hanya `prd-conventions.md` §9.3 (di luar scope suite, dilaporkan ke pemilik foundation).

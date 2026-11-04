@@ -39,11 +39,11 @@ coverage:
 3. Verifikasi Detail `PT Karya Abadi` terbuka
 4. Buka URL Detail dengan ID Client `PT Sejahtera Abadi` (Active, Group `Area Jakarta`) langsung
 5. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-6. Verifikasi tidak ada toast error `You don't have permission to do this.`
+6. Verifikasi tidak ada toast error
 7. Verifikasi data Client `PT Sejahtera Abadi` tidak tampil
 8. Buka URL Detail dengan ID Client `PT Wahana Nusantara` (Suspended, Group `Area Jakarta`) langsung
 9. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-10. Verifikasi tidak ada toast error `You don't have permission to do this.`
+10. Verifikasi tidak ada toast error
 11. Verifikasi data Client `PT Wahana Nusantara` tidak tampil
 
 ### TC-AC-ACC-953: Aktor Manage archived client berhak membuka Detail Client Archived di luar scope group: 404 netral
@@ -66,4 +66,4 @@ coverage:
 - Keputusan pemilik (klik, 2026-11-02): spec mengikuti `docs/spec-decisions.md` D-015 (menggantikan pilihan Q1 sebelumnya). Akses URL langsung tanpa capability diarahkan ke halaman no-access, tanpa toast `You don't have permission to do this.`, berlaku app-wide. Teks atau elemen pasti halaman no-access belum tercatat (spec Brand TC-GS-BRAND-E2E-010 dan D-015 hanya menyebut "halaman no-access tampil"); spec mengasersi dengan cara yang sama: halaman no-access tampil sebagai anchor positif, lalu tidak ada toast dan tidak ada data Client termuat. Toast untuk aksi atau request yang ditolak di halaman yang boleh dibuka tidak berubah. Langkah "Tunggu toast lama hilang otomatis" setelah blok no-access dihapus karena tidak ada toast.
 - Pembagian TC lintas spec: akses URL Detail aktor Active-Read (TC-AC-ACC-951, 954, 965, 61, 564, 565) di spec 026.
 - Temuan untuk QA:
-  - Selisih dengan D-015 dan keputusan user 2026-11-02: Expected TC-AC-ACC-952 menyebut toast `You don't have permission to do this.` tanpa redirect untuk akses URL langsung tanpa capability (juga PRD client §9.3); TC tidak diubah. Spec mengasersi halaman no-access tampil tanpa toast dan tanpa data Client (D-015). QA perlu menyelaraskan Expected TC dan PRD §9.3. Teks atau elemen halaman no-access belum diketahui; script memakai asersi yang sama dengan spec Brand.
+  - Sudah selaras (2026-11-03, temuan T-1 e2e-audit): Expected TC-AC-ACC-952 dan PRD client §9.3 (butir 1 dan 3, EC-80, EC-88) kini menyebut halaman no-access tampil tanpa toast error untuk akses URL langsung tanpa capability, sama dengan D-015. Spec mengasersi halaman no-access tampil tanpa toast dan tanpa data Client. Teks atau elemen halaman no-access belum diketahui; script memakai asersi yang sama dengan spec Brand.

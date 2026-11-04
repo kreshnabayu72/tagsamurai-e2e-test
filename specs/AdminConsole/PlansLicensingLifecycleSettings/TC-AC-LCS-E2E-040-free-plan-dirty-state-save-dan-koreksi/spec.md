@@ -64,7 +64,7 @@ coverage:
 
 ### TC-AC-LCS-136: Save tab Free Plan Settings dengan nilai minimum yang valid
 
-25. Ubah Free Plan Duration menjadi `1`
+25. Ubah Free Plan Duration menjadi `1`, lalu klik area kosong di luar field (blur)
 26. Verifikasi tidak ada pesan error pada seluruh field yang diisi
 27. Klik `[Save]`
 28. Verifikasi toast sukses "Success, free plan settings have been saved."
@@ -73,11 +73,10 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 134, 143, 135, 136 (validasi yang diblokir dan perbaikannya sebelum Save sukses, S-10).
 - Langkah penghubung (S-03): langkah 1 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
 - Temuan untuk QA:
   - Post Condition TC-AC-LCS-135 (entri Changelog `Edit` per field) tidak punya langkah observasi di TC sehingga tidak diasersi di spec ini (S-01).
   - TC-AC-LCS-143 menyebut "pesan error rentang" tanpa teks pesan; spec mengasersi keberadaan pesan tanpa mengutip teksnya (S-02).
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).
+- Langkah 25 menyertakan blur sesuai TC ("lalu blur") sebelum asersi absence pada langkah 26, karena validasi rentang muncul saat blur (bagian 8b butir 2).

@@ -73,7 +73,7 @@ coverage:
 - Langkah penghubung (S-03, aksi tanpa `Verifikasi`): langkah 1, 7, 14, dan 26 (fixture BE pemulih dan penyetel state), langkah 18 dan 22 (muat ulang License), langkah 24 (membuka daftar aset), serta navigasi License. Langkah 4, 17, dan 21 menunggu aksi selesai sebelum berpindah surface atau memuat ulang (bagian 8b butir 8). Langkah 2, 8, 15 mencatat nilai License Summary sebagai baseline (S-12).
 - Urutan TC diubah dari urutan nomor: TC-FA-LIC-400 dan TC-FA-LIC-398 lebih dulu, TC-FA-LIC-399 (Delete dan Dispose) di akhir karena menghapus data (S-10).
 - Expected TC-FA-LIC-399 "tidak dihitung Used" untuk aset Disposed diasersi oleh penurunan Used pada langkah 23.
-- Pembagian TC lintas spec: TC-FA-LIC-394 sampai TC-FA-LIC-397 ada di spec 119.
+- Pembagian TC lintas spec: TC-FA-LIC-394 sampai TC-FA-LIC-396 ada di spec 119 dan TC-FA-LIC-397 di spec 153.
 - Temuan untuk QA:
   - TC-FA-LIC-398 dan TC-FA-LIC-400 tidak menyebut label tombol Submit dan Hapus; spec mengikuti kalimat TC.
   - TC-FA-LIC-399 tidak menyebut tahap-tahap flow Disposal; spec menulis "selesaikan flow Disposal" sesuai TC.

@@ -67,7 +67,7 @@ coverage:
 
 ### TC-AC-LCS-178: Save First Reminder Before Event pada nilai maksimum 999
 
-24. Ubah First Reminder Before Event menjadi `999`
+24. Ubah First Reminder Before Event menjadi `999`, lalu klik area kosong di luar field (blur)
 25. Verifikasi tidak ada pesan error rentang pada First Reminder Before Event saat nilai `999` diisi
 26. Klik `[Save]`
 27. Verifikasi toast sukses "Success, client lifecycle settings have been saved."
@@ -77,10 +77,9 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah 1, 15, 20 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
 - Validasi yang diblokir berada sebelum aksi sukses: urutan mengikuti nomor TC dan TC Save nilai maksimum berada di akhir spec (S-10).
 - Temuan untuk QA:
   - Post Condition TC-AC-LCS-178 (nilai tersimpan) setara dengan `Verifikasi` nilai sesudah F5 pada langkah 30; tidak ada asersi tambahan.
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).
+- Langkah 24 menyertakan blur sesuai TC ("lalu blur") sebelum asersi absence pada langkah 25, karena validasi rentang muncul saat blur (bagian 8b butir 2).

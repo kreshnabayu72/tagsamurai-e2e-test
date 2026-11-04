@@ -58,11 +58,11 @@ coverage:
 
 ### TC-AC-LCS-121: Save tab Trial Settings dengan nilai minimum yang valid
 
-20. Ubah Max Trial Duration menjadi `1`
-21. Ubah Max Trial Asset Quota menjadi `1`
-22. Ubah Max Trial Concurrent User Quota menjadi `1`
-23. Ubah First Notification menjadi `2`
-24. Ubah Second Notification menjadi `1`
+20. Ubah Max Trial Duration menjadi `1`, lalu klik area kosong di luar field (blur)
+21. Ubah Max Trial Asset Quota menjadi `1`, lalu klik area kosong di luar field (blur)
+22. Ubah Max Trial Concurrent User Quota menjadi `1`, lalu klik area kosong di luar field (blur)
+23. Ubah First Notification menjadi `2`, lalu klik area kosong di luar field (blur)
+24. Ubah Second Notification menjadi `1`, lalu klik area kosong di luar field (blur)
 25. Verifikasi tidak ada pesan error pada seluruh field yang diisi
 26. Klik `[Save]`
 27. Verifikasi toast sukses "Success, trial settings have been saved."
@@ -71,11 +71,10 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 292, 293, 294, 121 (screening Switch tanpa Save di awal; Save ON lalu OFF berurutan; Save nilai minimum di akhir).
 - Precondition TC-AC-LCS-294 (Require Approval for Trial Activation tersimpan `On`) dipenuhi oleh state yang disimpan TC-AC-LCS-293 di spec yang sama; TC-AC-LCS-121 berjalan sesudah Switch kembali `OFF` (nilai default), sehingga precondition defaultnya terpenuhi.
 - Temuan untuk QA:
   - Post Condition TC-AC-LCS-293 dan TC-AC-LCS-294 (Require Approval for Trial Activation tersimpan `On` atau `Off`) setara dengan `Verifikasi` Switch sesudah F5; tidak ada asersi tambahan.
   - TC-AC-LCS-294 menyebut "Muat ulang halaman dengan F5" tanpa langkah membuka kembali tab; spec mengikuti TC dan tidak menambah klik tab.
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).
+- Langkah 20 sampai 24 (TC-AC-LCS-121) masing-masing menyertakan blur sesudah `Ubah ... menjadi`, sesuai TC ("lalu blur"), sebelum asersi absence pada langkah 25 (bagian 8b butir 2).

@@ -70,8 +70,6 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`. Kelas harness a.
-- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - `K-1`: TC defense-in-depth (kelas a) dengan Expected respons API tetap masuk spec FE+BE walau isinya tumpang tindih dengan `tc-plans-licensing-lifecycle-settings-backend.md`; TC granular tetap sumber dan tiap TC tepat satu spec.
 - Urutan TC dikelompokkan per entitas (Distributor 600 dan 601, Partner 603 dan 604, Client 606 dan 607) sesuai urutan nomor TC; TC 602, 605, dan 608 (Reset) ada di spec 172.
 - Langkah TC "Login sbg Role: Total Control dan buka tab Trial Settings" dipenuhi sesi UI Total Control dari hook `before` dan `beforeEach` suite; spec hanya memuat ulang halaman Lifecycle Settings sebelum membaca tab (S-07).
@@ -79,4 +77,4 @@ coverage:
   - TC 600 sampai 607 menulis "Login sbg Role: Distributor/Partner/Client" sebagai precondition tetapi aksinya permintaan langsung; spec memakai login API password akun entitas tanpa sesi UI untuk akun tersebut.
   - TC tidak merinci nilai field lain pada payload permintaan langsung; spec memakai nilai tersimpan tab untuk field lain tanpa mengarang struktur payload (S-13).
   - Post Condition seluruh TC ("Tidak ada perubahan data") tanpa langkah observasi tidak diasersi.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): langkah .
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`; pemulihan state, pembukaan tab, pengaturan data lewat Fixture BE, dan ganti akun): tidak ada selain langkah TC.

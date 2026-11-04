@@ -65,7 +65,7 @@ coverage:
 
 ### TC-AC-LCS-148: Save Managed Transition Time pada nilai maksimum 999
 
-22. Ubah Managed Transition Time menjadi `999`
+22. Ubah Managed Transition Time menjadi `999`, lalu klik area kosong di luar field (blur)
 23. Verifikasi tidak ada pesan error rentang pada Managed Transition Time saat nilai `999` diisi
 24. Klik `[Save]`
 25. Verifikasi toast sukses "Success, license timing settings have been saved."
@@ -75,10 +75,9 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah 1, 18 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
 - Validasi yang diblokir berada sebelum aksi sukses: urutan mengikuti nomor TC dan TC Save nilai maksimum berada di akhir spec (S-10).
 - Temuan untuk QA:
   - Post Condition TC-AC-LCS-148 (nilai tersimpan) setara dengan `Verifikasi` nilai sesudah F5 pada langkah 28; tidak ada asersi tambahan.
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).
+- Langkah 22 menyertakan blur sesuai TC ("lalu blur") sebelum asersi absence pada langkah 23, karena validasi rentang muncul saat blur (bagian 8b butir 2).

@@ -23,9 +23,10 @@ coverage:
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini). Jam server dan jam browser tidak digeser.
 - Data: user `Andi Wijaya` (Total Control) memiliki Detail user dengan tab System Log. Changelog tab yang diuji diseed lewat Fixture BE dengan tepat 1 entri Edit sebagai precondition TC (dipakai sebagai precondition TC, tidak diasersi selain lewat footer); entri System Log dan Activity Log bersifat permanen sehingga spec memakai baseline jumlah entri sebelum aksi (S-12).
 - Kemampuan teknis (disediakan tim FE/BE): Fixture BE untuk menyimpan nilai non-default per tab, menyeed satu entri Changelog tab, dan memulihkan ketujuh tab ke nilai default; kemampuan membaca jumlah entri System Log aktor dan Activity Log Admin Console sebelum aksi.
+- Kemampuan teknis tambahan (Lampiran A-15; dinyatakan di `suite.md`, disediakan tim FE/BE): Fixture BE untuk menimpa atau mengosongkan riwayat Changelog per tab, idempotent; riwayat dibentuk sebelum modal Changelog dibuka dan dikembalikan ke keadaan awal oleh hook `after` suite; suite berjalan serial (`parallel: false`).
 - Pemulihan: ketujuh tab dipulihkan ke nilai default oleh langkah penghubung antar TC dan hook `after` suite; entri log yang ditulis spec ini permanen dan tidak dihapus.
 - Suite berjalan serial (`parallel: false`) karena spec ini memakai state global yang disebut pada butir pemulihan.
-- Fixture `fixtures/lifecycleSettings.json` belum ada dan disediakan tim FE; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` setelah tersedia.
+- Data uji mengacu ke berkas `fixtures/lifecycle-settings.json` (`Fixture.lifecycleSettings.<kunci>`: nilai default tiap tab dan dataset Changelog).
 
 ## Test Steps
 
@@ -95,7 +96,8 @@ coverage:
 
 - Langkah penghubung tanpa `Verifikasi`: "Atur lewat Fixture BE ... lalu muat ulang" (precondition TC: nilai non-default dan satu entri Changelog), "Klik tab", "Catat jumlah entri ... sebagai baseline" (S-12), dan "Pulihkan ketujuh tab ... lalu buka Plans & Licensing > Lifecycle Settings" antar TC (S-03, S-09).
 - Satu `Verifikasi` per surface memuat seluruh baris atau entri hasil satu aksi Reset yang disebut utuh pada butir Expected TC (satu baris per field); urutan antar baris dengan waktu sama tidak diasumsikan (S-01).
-- Footer Changelog dihitung dari 1 entri seed ditambah baris baru, sesuai precondition TC "Changelog berisi tepat 1 entri" yang diseed spec; bukan total absolut audit trail (S-12).
+- Footer Changelog dihitung dari 1 entri seed ditambah baris baru, sesuai precondition TC "Changelog berisi tepat 1 entri" yang diseed spec; footer Changelog diasersi sebagai total absolut berdasarkan pengecualian A-15 (butir berikut). Jumlah entri System Log dan Activity Log tetap memakai baseline dan selisih (S-12).
+- Pengecualian A-15: footer `1-7 of 7`, `1-2 of 2`, `1-4 of 4`, dan `1-10 of 10` diasersi sebagai angka absolut karena riwayat tiap tab ditimpa lewat Fixture BE menjadi tepat 1 entri seed pada langkah penghubung 1, 13, 26, dan 39 sebelum modal Changelog dibuka; hook `after` suite mengembalikan dataset Changelog.
 - Temuan untuk QA: TC tidak menyebut cara membaca jumlah entri System Log dan Activity Log sebelum aksi; spec memakai kemampuan baca yang disediakan tim FE/BE (S-13).
 - Temuan untuk QA: Post Condition TC (entri log Edit baru pada ketiga surface) sama dengan Expected butir b sampai d dan tidak diasersi terpisah (S-01).
 - Alasan lebih dari sekitar 35 langkah: empat blok memakai pola yang sama (Reset satu tab lalu membaca tiga surface log), semuanya satu kelas pencatatan log, dan tiap blok dimulai dari state yang diseed ulang sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.

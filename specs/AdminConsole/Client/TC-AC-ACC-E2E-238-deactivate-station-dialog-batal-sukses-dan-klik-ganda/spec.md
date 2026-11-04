@@ -23,7 +23,10 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Active-Full A-15 `activeFullJakarta_automated_qaTeam1@qwertysystem.net` (Manage active client C/R/U/D pada Area Jakarta dan Cabang Menteng), password `Spectra.env.AC_CLIENT_ACTIVE_FULL_PASSWORD` (nama env baru, didaftarkan di `executionConfig.environmentVariables` dan `.env.example` pada tahap script). Login di hook `before` spec ini; halaman List Client dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Data Pre-setup (hanya dibaca, dialog dibatalkan): C-01 "PT Sejahtera Abadi" dengan Station "Gerbang Gudang A" (Active) dan "Gerbang Lama" (Deactivated) untuk TC-AC-ACC-324, 326, 327.
-- Data fixture Tabel A3 (skrip seed, bukan lewat UI; Deactivate permanen sehingga di-seed ulang lewat reset data uji): C-AST-7 "PT Uji Aksi Asset Control" (Asset Control Total 10 / Used 6; Station Active "Stasiun Klik Ganda Deactivate" dengan Tablet "Tablet Klik Ganda Deactivate 1" Active; Station Inactive "Stasiun Inactive Uji" dengan satu Tablet "Tablet Inactive Uji 1" Inactive) untuk TC-AC-ACC-902 dan 917; C-AST-43 "PT Uji Deactivate Satu" (Total 3 / Used 2 / Available 1; Station "Gerbang Uji Satu" Active dengan Tablet "Tablet Uji Satu 1" Active dan "Tablet Uji Satu 2" Inactive; Station "Gerbang Uji Satu Pendamping" Inactive) untuk TC-AC-ACC-325; C-AST-44 "PT Uji Deactivate Dua" (Total 3 / Used 2 / Available 1; Station "Gerbang Uji Dua" Inactive dengan Tablet "Tablet Uji Dua 1" Inactive, dibuat dari token Used; Station "Gerbang Uji Dua Pendamping" Active; tanpa token Active) untuk TC-AC-ACC-328.
+- Data Dinamis milik spec (kembaran fixture; skrip seed di hook `before`, bukan lewat UI; dihapus di hook `after`; Deactivate permanen sehingga spec tidak memakai C-AST-7, C-AST-43, dan C-AST-44 bersama [S-06]; Company Name bersuffix `{runId}-238`, atribut setara baris fixture asal di Tabel A3 (Partner CV Mitra Sejati; Group Area Jakarta; FAMS Active), nama SFR, Station, dan Tablet di dalam kembaran sama dengan fixture asal karena terlingkup pada Client kembaran):
+  - "PT Uji Aksi Asset Control {runId}-238" (kembaran C-AST-7, TC-AC-ACC-902 dan 917): Asset Control Total 10 / Used 6 (nilai awal sama dengan fixture asal; asersi memakai selisih relatif terhadap nilai yang dicatat); Station Active "Stasiun Klik Ganda Deactivate" dengan Tablet "Tablet Klik Ganda Deactivate 1" Active; Station Inactive "Stasiun Inactive Uji" dengan satu Tablet "Tablet Inactive Uji 1" Inactive.
+  - "PT Uji Deactivate Satu {runId}-238" (kembaran C-AST-43, TC-AC-ACC-325): Total 3 / Used 2 / Available 1; Station "Gerbang Uji Satu" Active dengan Tablet "Tablet Uji Satu 1" Active dan "Tablet Uji Satu 2" Inactive; Station "Gerbang Uji Satu Pendamping" Inactive dengan Tablet "Tablet Pendamping Satu" Inactive; setiap Station dibuat dari token Enrollment Used.
+  - "PT Uji Deactivate Dua {runId}-238" (kembaran C-AST-44, TC-AC-ACC-328): Total 3 / Used 2 / Available 1; Station "Gerbang Uji Dua" Inactive dengan Tablet "Tablet Uji Dua 1" Inactive; Station "Gerbang Uji Dua Pendamping" Active dengan Tablet "Tablet Dua Pendamping" Active; setiap Station dibuat dari token Enrollment Used; tanpa token Active.
 - Kemampuan teknis: baca jumlah baris Changelog Asset Control lewat Search di modal (baseline, S-12); jam server uji dapat dimajukan (token Active hasil TC-AC-ACC-328 dikembalikan ke Expired dengan memajukan jam server 15 menit di langkah penghubung 73 dan di hook `after`; jam dipulihkan).
 - State global: jam server dimajukan lalu dipulihkan; suite berjalan serial (`parallel: false`); flag Guided Tooltip halaman Detail diatur hook suite.
 - Env var `AC_CLIENT_ACTIVE_FULL_PASSWORD` didaftarkan di `executionConfig.environmentVariables` dan `.env.example`.
@@ -59,7 +62,7 @@ coverage:
 
 ### TC-AC-ACC-902: Deactivate Station berstatus Inactive: kuota dan Changelog Asset Control
 
-19. Klik breadcrumb "Client", ketik Search "PT Uji Aksi Asset Control", tekan Enter, klik Company Name "PT Uji Aksi Asset Control", lalu klik Tab Asset Control
+19. Klik breadcrumb "Client", ketik Search "PT Uji Aksi Asset Control {runId}-238", tekan Enter, klik Company Name "PT Uji Aksi Asset Control {runId}-238", lalu klik Tab Asset Control
 20. Catat Station Quota (Used U1 dan Available A1)
 21. Klik ikon Changelog di Tab Asset Control, ubah ukuran halaman modal menjadi 100 baris, ketik Search "Stasiun Inactive Uji", tekan Enter, catat jumlah baris (L1), lalu tutup modal
 22. Buka ⋯ pada "Stasiun Inactive Uji" lalu pilih Deactivate
@@ -96,7 +99,7 @@ coverage:
 
 ### TC-AC-ACC-325: Deactivate Station: Deactivated permanen, kuota kembali, kedua tablet Revoked
 
-50. Klik breadcrumb "Client", ketik Search "PT Uji Deactivate Satu", tekan Enter, klik Company Name "PT Uji Deactivate Satu", lalu klik Tab Asset Control
+50. Klik breadcrumb "Client", ketik Search "PT Uji Deactivate Satu {runId}-238", tekan Enter, klik Company Name "PT Uji Deactivate Satu {runId}-238", lalu klik Tab Asset Control
 51. Catat Station Quota
 52. Buka ⋯ pada Station "Gerbang Uji Satu", klik Deactivate, lalu klik [Deactivate] pada dialog
 53. Verifikasi toast sukses: "Success, station has been deactivated."
@@ -113,7 +116,7 @@ coverage:
 
 ### TC-AC-ACC-328: Slot kembali Available setelah Station dengan token Used di-Deactivate
 
-64. Klik breadcrumb "Client", ketik Search "PT Uji Deactivate Dua", tekan Enter, klik Company Name "PT Uji Deactivate Dua", lalu klik Tab Asset Control
+64. Klik breadcrumb "Client", ketik Search "PT Uji Deactivate Dua {runId}-238", tekan Enter, klik Company Name "PT Uji Deactivate Dua {runId}-238", lalu klik Tab Asset Control
 65. Verifikasi Station Quota: Total 3, Used 2, Available 1
 66. Buka ⋯ pada Station "Gerbang Uji Dua", klik Deactivate, lalu klik [Deactivate] pada dialog
 67. Verifikasi Station Quota: Used 1 dan Available 2 (Total 3)
@@ -127,11 +130,12 @@ coverage:
 ## Notes
 
 - Sumber: `admin-console/client/TestCases/tc-client.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, R-16): langkah 1, 19, 50, 64 (Search dan buka Detail Client; hook suite hanya membuka List Client); langkah 4 (menutup dialog setelah verifikasi), 18, 29, 57 (menutup menu), 13, 37 dan 48 (menutup modal Changelog); langkah 73 (memulihkan token Active menjadi Expired, melayani Post Condition seed ulang C-AST-44).
+- Langkah penghubung (S-03, R-16): langkah 1, 19, 50, 64 (Search dan buka Detail Client; hook suite hanya membuka List Client); langkah 4 (menutup dialog setelah verifikasi), 18, 29, 57 (menutup menu), 13, 37 dan 48 (menutup modal Changelog); langkah 73 (memulihkan token Active menjadi Expired, melayani Post Condition seed ulang C-AST-44 pada kembarannya).
 - Baseline (S-12): TC-AC-ACC-326 menyebut Changelog Asset Control pada Expected tetapi langkahnya tidak mencatat jumlah baris; TC-AC-ACC-902 dan 917 juga tidak mencatat jumlah baris Changelog; langkah 5, 20, 21, 38, 39 menambahkan baseline agar "tidak ada baris baru Deactivate Station" (langkah 11 sampai 13), "baris baru" dan "tidak ada baris Revoke Tablet" teruji dengan selisih terhadap baseline. Search di modal dan ukuran halaman 100 agar baris yang dihitung berada di halaman teramati (S-14).
 - Urutan TC di spec: dialog dan batal (324, 326, 327) di awal, TC yang menghabisi data kemudian. TC-AC-ACC-902 dan 917 memakai Client C-AST-7 dengan Station yang berbeda sehingga tidak saling bergantung.
 - Spec ini melewati batas 35 langkah (73 langkah). Alasan: semua blok satu topik aksi (Deactivate Station) dengan Active-Full tanpa ganti akun, tiap blok memakai Station atau Client sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Pembagian TC lintas spec: asersi tanpa toast dan tanpa baris log `Deactivate Station` untuk Cancel (TC-AC-ACC-326) dibuktikan di spec ini dengan baseline (langkah 5 dan 11 sampai 13; TC terbelah presence/absence menurut S-05, spec 272 tidak memuat TC-326); Revoke Tablet ada di spec 239; kegagalan Global Settings di spec 240; dua sesi (stale 409) di spec 247; pencatatan lintas surface Deactivate di spec 270.
+- Replika S-06 [KEPUTUSAN 2026-11-03]: Deactivate menghabisi Station, sehingga TC-AC-ACC-902, 917, 325, dan 328 memakai kembaran C-AST-7, C-AST-43, dan C-AST-44 bersuffix `{runId}-238` (seed di `before`, cleanup di `after`); C-01 "PT Sejahtera Abadi" hanya dibaca (dialog dibatalkan).
 - Temuan untuk QA:
   - TC-AC-ACC-324 dan TC-AC-ACC-326 tidak menyebut Station target selain "Station Active"; spec memakai "Gerbang Gudang A" (Pre-setup C-01).
   - TC-AC-ACC-328 Post Condition "seed ulang C-AST-44" tidak menyebut token Active hasil langkah Generate; spec memulihkannya lewat memajukan jam server.

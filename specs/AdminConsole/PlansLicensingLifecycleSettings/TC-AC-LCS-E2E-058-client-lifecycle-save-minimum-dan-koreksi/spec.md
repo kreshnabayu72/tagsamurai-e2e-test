@@ -41,15 +41,15 @@ coverage:
 
 ### TC-AC-LCS-214: Save tab Client Lifecycle dengan nilai minimum yang valid
 
-10. Ubah Notify Plan Owner Before Event menjadi `1`
-11. Ubah First Reminder Before Event menjadi `3`
-12. Ubah Second Reminder Before Event menjadi `2`
-13. Ubah Final Reminder Before Event menjadi `1`
-14. Ubah Grace Period Duration menjadi `1`
-15. Ubah Archive Period Duration menjadi `2`
-16. Ubah Purge Warning Email menjadi `2`
-17. Ubah Purge Urgent Warning Email menjadi `1`
-18. Ubah Post-Purge Retention menjadi `1`
+10. Ubah Notify Plan Owner Before Event menjadi `1`, lalu klik area kosong di luar field (blur)
+11. Ubah First Reminder Before Event menjadi `3`, lalu klik area kosong di luar field (blur)
+12. Ubah Second Reminder Before Event menjadi `2`, lalu klik area kosong di luar field (blur)
+13. Ubah Final Reminder Before Event menjadi `1`, lalu klik area kosong di luar field (blur)
+14. Ubah Grace Period Duration menjadi `1`, lalu klik area kosong di luar field (blur)
+15. Ubah Archive Period Duration menjadi `2`, lalu klik area kosong di luar field (blur)
+16. Ubah Purge Warning Email menjadi `2`, lalu klik area kosong di luar field (blur)
+17. Ubah Purge Urgent Warning Email menjadi `1`, lalu klik area kosong di luar field (blur)
+18. Ubah Post-Purge Retention menjadi `1`, lalu klik area kosong di luar field (blur)
 19. Verifikasi tidak ada pesan error pada seluruh field yang diisi
 20. Klik `[Save]`
 21. Verifikasi toast sukses "Success, client lifecycle settings have been saved."
@@ -58,10 +58,9 @@ coverage:
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC: 221, 214 (koreksi nilai salah yang diblokir sebelum Save nilai minimum yang sukses, S-10).
 - Langkah penghubung (S-03): langkah 1 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
+- Langkah 10 sampai 18 menyertakan blur sesuai TC-AC-LCS-214 langkah 1 sampai 9 ("lalu blur") sebelum asersi absence pada langkah 19, karena validasi rentang muncul saat blur (bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-AC-LCS-221 menyebut "pesan error rentang" tanpa teks pesan; spec mengasersi keberadaan pesan tanpa mengutip teksnya (S-02).
   - Post Condition TC-AC-LCS-214 (nilai Client Lifecycle tersimpan sesuai Data Uji) setara dengan `Verifikasi` nilai tersimpan; tidak ada asersi tambahan.

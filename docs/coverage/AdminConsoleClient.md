@@ -15,8 +15,8 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-003-isi-sel-kolom-company-managed-by-modified-by | Isi Sel Kolom List Client: Company Name, Managed By, Modified By, dan Kolom Opsional | FE+BE | 60 | 9, 10, 16, 17, 929 |
 | TC-AC-ACC-E2E-004-isi-sel-badge-produk-fams-sams-siem | Isi Sel Badge Produk FAMS, SAMS, dan SIEM pada List Client | FE+BE | 56 | 12, 13, 14, 629, 630 |
 | TC-AC-ACC-E2E-005-badge-produk-client-active-term-terakhir-archive | Badge Produk Client Active untuk Produk dengan Term Live yang Sudah Tidak Ada | FE+BE | 7 | 467 |
-| TC-AC-ACC-E2E-006-sel-group-badge-primary-truncate-dan-hover-hierarki | Sel Group List Client: Badge Primary, Truncate 25 Karakter, dan Hover Hierarki Penuh | FE+BE | 14 | 11 |
-| TC-AC-ACC-E2E-007-sel-pic-name-panjang-tidak-dipotong | Sel PIC Name 100 Karakter Tampil Utuh dan Client Code Teks Biasa pada List Client | FE+BE | 13 | 18 |
+| TC-AC-ACC-E2E-006-sel-group-badge-primary-truncate-dan-hover-hierarki | Sel Group List Client: Badge Primary, Truncate 25 Karakter, dan Hover Hierarki Penuh | FE+BE | 13 | 11 |
+| TC-AC-ACC-E2E-007-sel-pic-name-panjang-tidak-dipotong | Sel PIC Name 100 Karakter Tampil Utuh dan Client Code Teks Biasa pada List Client | FE+BE | 11 | 18 |
 | TC-AC-ACC-E2E-008-empty-state-genuinely-kosong-tiga-sub-tab | Empty State Genuinely Kosong pada Tiga Sub-tab List Client | FE+BE | 10 | 20, 21, 22 |
 | TC-AC-ACC-E2E-009-state-loading-dan-error-list-client | State Loading dan Error pada List Client | FE+BE | 13 | 25, 26 |
 | TC-AC-ACC-E2E-010-sidebar-group-tree-screening-dan-interaksi | Sidebar Group Tree: Screening, Klik Node, Search Groups, Hierarchy Toggle, dan Collapse | FE+BE | 45 | 27, 28, 29, 30, 31, 32 |
@@ -91,16 +91,16 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-111-change-partner-screening-opsi-badge-callout | Dialog Change Partner: Screening, Opsi [+ Add Partner], Badge Status Partner, dan Callout Group | FE+BE | 54 | 174, 508, 595, 596, 597, 995 |
 | TC-AC-ACC-E2E-112-change-partner-penutupan-dialog-unsaved-changes | Dialog Change Partner: Penutupan lewat [✕] dan Esc, Dialog Unsaved Changes, dan Status [Confirm] | FE+BE | 46 | 180, 955, 956, 957 |
 | TC-AC-ACC-E2E-113-change-partner-clear-field-select-group-wajib-drag | Dialog Change Partner: Select Group Wajib Setelah Partner Terakhir di-Remove, Partner Ketiga, Aturan Drag, dan [Clear Field] | FE+BE | 51 | 179, 456, 457, 985 |
-| TC-AC-ACC-E2E-114-change-partner-role-terbatas-tree-select-group-dan-sukses | Change Partner oleh Pemegang Update Manage Active Client dan Group Manager: Tree Select Group dan Add Partner Sukses | FE+BE | 44 | 590, 591, 594 |
-| TC-AC-ACC-E2E-115-change-partner-oleh-distributor | Change Partner oleh Distributor: Relasi Distributor-langsung, Tree Select Group, Tambah Partner, Remove Anchor, dan Partner Terakhir Jaringan | FE+BE | 50 | 182, 592, 593, 601, 958 |
-| TC-AC-ACC-E2E-116-change-partner-tambah-partner-principal-double-klik | Change Partner oleh Principal: Tambah Partner Tidak Mengubah Group, Relasi Suspended Tetap, dan Double-klik [Confirm] | FE+BE | 42 | 175, 598, 639 |
+| TC-AC-ACC-E2E-114-change-partner-role-terbatas-tree-select-group-dan-sukses | Change Partner oleh Pemegang Update Manage Active Client dan Group Manager: Tree Select Group dan Add Partner Sukses | FE+BE | 40 | 590, 591, 594 |
+| TC-AC-ACC-E2E-115-change-partner-oleh-distributor | Change Partner oleh Distributor: Relasi Distributor-langsung, Tree Select Group, Tambah Partner, Remove Anchor, dan Partner Terakhir Jaringan | FE+BE | 47 | 182, 592, 593, 601, 958 |
+| TC-AC-ACC-E2E-116-change-partner-tambah-partner-principal-double-klik | Change Partner oleh Principal: Tambah Partner Tidak Mengubah Group, Relasi Suspended Tetap, dan Double-klik [Confirm] | FE+BE | 38 | 175, 598, 639 |
 | TC-AC-ACC-E2E-117-change-partner-remove-anchor-dan-urutan-drag | Change Partner oleh Principal: Remove Anchor Memindahkan Group Otomatis dan Urutan List Menentukan Anchor | FE+BE | 40 | 176, 178, 599, 600 |
 | TC-AC-ACC-E2E-118-change-partner-partner-terakhir-dan-ganti-partner-plan-owner | Change Partner oleh Principal: Remove Partner Terakhir Menjadi Direct dan Penggantian Partner Tidak Mengubah Plan Owner | FE+BE | 27 | 177, 185 |
-| TC-AC-ACC-E2E-119-change-partner-kondisi-berubah-oleh-pelaku-lain | Change Partner: Group Dihapus, Dialog Tidak Ter-refresh, dan Client Dihapus oleh Pelaku Lain Sebelum Confirm | FE+BE | 31 | 188, 627, 638 |
+| TC-AC-ACC-E2E-119-change-partner-kondisi-berubah-oleh-pelaku-lain | Change Partner: Group Dihapus, Dialog Tidak Ter-refresh, dan Client Dihapus oleh Pelaku Lain Sebelum Confirm | FE+BE | 30 | 188, 627, 638 |
 | TC-AC-ACC-E2E-120-resend-activation-email-hidden-dan-sukses | Resend Activation Email: Hidden pada Client Tanpa Subscription Aktif, Archived, Activated, dan Sukses pada Active, Grace, Expired | FE+BE | 58 | 167, 168, 169, 663, 664, 665 |
-| TC-AC-ACC-E2E-121-toggle-byo-dialog-apply-dan-default | Toggle Allow Self-Purchased Device Activation: Default Disabled, Dialog Enable, Cancel, Disable Tanpa Dialog, dan Nilai Sama | FE+BE | 38 | 246, 247, 248, 249, 251, 254 |
+| TC-AC-ACC-E2E-121-toggle-byo-dialog-apply-dan-default | Toggle Allow Self-Purchased Device Activation: Default Disabled, Dialog Enable, Cancel, Disable Tanpa Dialog, dan Nilai Sama | FE+BE | 37 | 246, 247, 248, 249, 251, 254 |
 | TC-AC-ACC-E2E-122-toggle-byo-disabled-aktivasi-jalur-b-ditolak | Toggle BYO Disabled: Aktivasi Device Jalur B di Global Settings Hardware Ditolak dan Jalur A Tetap Berhasil | FE+BE | 7 | 255 |
-| TC-AC-ACC-E2E-123-role-matrix-positif-resend-dan-toggle-byo | Role Matrix Positif: Resend Activation Email dan Toggle BYO oleh Pemegang Update, Distributor, dan Partner | FE+BE | 36 | 607, 608, 609, 617 |
+| TC-AC-ACC-E2E-123-role-matrix-positif-resend-dan-toggle-byo | Role Matrix Positif: Resend Activation Email dan Toggle BYO oleh Pemegang Update, Distributor, dan Partner | FE+BE | 31 | 607, 608, 609, 617 |
 | TC-AC-ACC-E2E-124-double-klik-suspend-unsuspend-tunggal-dan-bulk | Double-klik Konfirmasi Suspend dan Unsuspend (Tunggal dan Bulk) Hanya Memproses Satu Kali | FE+BE | 77 | 647, 648, 649, 650 |
 | TC-AC-ACC-E2E-125-double-klik-resend-toggle-byo-dan-delete | Double-klik Resend Activation Email, [Enable] Toggle BYO, dan [Delete] Hanya Memproses Satu Kali | FE+BE | 40 | 659, 660, 666 |
 | TC-AC-ACC-E2E-126-double-klik-konfirmasi-lintas-aksi-tulis | Double-klik Tombol Konfirmasi Aksi Tulis (Suspend, Resend, Save, Delete) Tidak Memproses Ganda | FE+BE | 31 | 458 |
@@ -116,7 +116,7 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-136-suspend-unsuspend-pengamatan-sub-tab-dan-menu-bulk | Pengamatan Total Control: Grace dan Expired Tetap di Sub-tab Active, Tanpa Aksi Archive, Archived Tanpa Bulk, dan Dialog Bulk Suspend 25 Client | FE+BE | 46 | 215, 640, 641, 642 |
 | TC-AC-ACC-E2E-137-bulk-action-bar-seleksi-dan-bulk-suspend-batal | Bulk Action Bar sub-tab Active: Screening, Counter, Checkbox Header, Menu Campuran, Cancel Bulk Suspend, dan Seleksi Dibersihkan Setelah Aksi | FE+BE | 45 | 202, 203, 204, 210, 216, 217 |
 | TC-AC-ACC-E2E-138-bulk-suspend-unsuspend-semua-terpilih | Bulk Suspend dan Bulk Unsuspend: Dialog Gabungan Tanpa Jumlah, Toast Sukses, Badge Subscription Tidak Berubah, dan Changelog | FE+BE | 70 | 208, 209 |
-| TC-AC-ACC-E2E-139-bulk-suspend-client-derived-campuran-dan-blok | Bulk Suspend dengan Client Derived: Dialog Campuran dengan [Continue] dan Dialog Blok D-15 Tanpa Toast Sukses | FE+BE | 46 | 212, 213 |
+| TC-AC-ACC-E2E-139-bulk-suspend-client-derived-campuran-dan-blok | Bulk Suspend dengan Client Derived: Dialog Campuran dengan [Continue] dan Dialog Blok D-15 Tanpa Toast Sukses | FE+BE | 45 | 212, 213 |
 | TC-AC-ACC-E2E-140-bulk-selection-limit-dan-select-all-lintas-halaman | Bulk Selection: Select All Lintas Halaman Menjadi Unselect All dan Selection Limit 100 (Live-block dan Cap Select All) | FE+BE | 43 | 205, 206, 207 |
 | TC-AC-ACC-E2E-141-role-matrix-positif-suspend-unsuspend | Role Matrix Positif: Suspend, Unsuspend, dan Bulk Suspend oleh Pemegang Update Manage Active Client dan Group Manager | FE+BE | 52 | 602, 603, 604, 605 |
 | TC-AC-ACC-E2E-142-suspend-subscription-tetap-bergulir-ke-expired | Subscription Tetap Bergulir ke Expired Selama Client Suspended (Job Scheduler Lifecycle dan Pengaturan Jam) | FE+BE | 17 | 195 |
@@ -135,16 +135,16 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-172-header-detail-badge-tab-dan-client-derived | Header Detail Client: Tab, Sub-tab Awal, Client Derived, Badge Status, dan Badge Default User | FE+BE | 62 | 234, 235, 236, 239, 240 |
 | TC-AC-ACC-E2E-173-section-parent-pengelola-dan-default-user | Section Parent / Pengelola dan Section Default User pada Detail Client | FE+BE | 36 | 798, 799 |
 | TC-AC-ACC-E2E-174-default-user-tanpa-kontrol-nonaktif | Default User Tidak Dapat Dinonaktifkan dan Detail Client Tanpa Kontrolnya | FE+BE | 12 | 241, 459 |
-| TC-AC-ACC-E2E-175-edit-client-default-user-activated-tidak-tertimpa | Edit Client dengan Default User Activated: Section Default User Tidak Tampil dan Nilai Tidak Tertimpa | FE+BE | 14 | 800 |
+| TC-AC-ACC-E2E-175-edit-client-default-user-activated-tidak-tertimpa | Edit Client dengan Default User Activated: Section Default User Tidak Tampil dan Nilai Tidak Tertimpa | FE+BE | 15 | 800 |
 | TC-AC-ACC-E2E-176-client-derived-mengikuti-perubahan-partner-induk | Client Derived Mengikuti Perubahan Partner Induk: Address, Company Name, dan PIC Name | FE+BE | 24 | 237, 801 |
 | TC-AC-ACC-E2E-177-default-user-detail-mengikuti-perubahan-global-settings | Default User di Detail Client Mengikuti Perubahan Global Settings Tanpa Muat Ulang | FE+BE | 13 | 238 |
 | TC-AC-ACC-E2E-178-role-matrix-parent-pengelola-per-viewer | Role Matrix: Section Parent / Pengelola pada Detail Client per Viewer | FE+BE | 31 | 1010, 1011, 1030, 1031 |
 | TC-AC-ACC-E2E-179-isolasi-tab-subscription-partner-cv-mitra-timur | Isolasi Plan Owner: Tab dan Sub-tab Subscription bagi Partner CV Mitra Timur | FE+BE | 25 | 275, 864, 865 |
 | TC-AC-ACC-E2E-180-isolasi-sub-tab-subscription-per-viewer-lintas-jaringan | Isolasi Plan Owner: Sub-tab Subscription, Changelog, dan Empty State per Viewer | FE+BE | 36 | 276, 277, 278, 279, 989, 990 |
 | TC-AC-ACC-E2E-181-role-matrix-link-dan-banner-tab-subscription | Role Matrix: Link dan Banner Tab Subscription per Role | FE+BE | 28 | 610, 611, 612, 613 |
-| TC-AC-ACC-E2E-182-tab-subscription-screening-banner-dan-link | Tab Subscription: Screening FAMS, Banner Read-only, Tanpa Aksi Write, dan Link Manage in Client Subscription | FE+BE | 29 | 256, 257, 258, 259, 802 |
+| TC-AC-ACC-E2E-182-tab-subscription-screening-banner-dan-link | Tab Subscription: Screening FAMS, Banner Read-only, Tanpa Aksi Write, dan Link Manage in Client Subscription | FE+BE | 31 | 256, 257, 258, 259, 802 |
 | TC-AC-ACC-E2E-183-tab-subscription-license-quota-nilai-dan-sort | Tab Subscription: License Quota per Sub-tab, Nilai Ledger, Tanpa Baris Storage, dan Sort | FE+BE | 32 | 260, 261, 262, 809 |
-| TC-AC-ACC-E2E-184-tab-subscription-feature-entitlement-platform-core | Tab Subscription: Feature Entitlement per Sub-tab, Platform Core Client Free, dan Column Visibility | FE+BE | 39 | 263, 265, 266, 267, 803, 804, 805 |
+| TC-AC-ACC-E2E-184-tab-subscription-feature-entitlement-platform-core | Tab Subscription: Feature Entitlement per Sub-tab, Platform Core Client Free, dan Column Visibility | FE+BE | 38 | 263, 265, 266, 267, 803, 804, 805 |
 | TC-AC-ACC-E2E-185-tab-subscription-feature-entitlement-source-plan | Tab Subscription: Source Feature Entitlement Plan Default dan Custom Plan | FE+BE | 22 | 264, 808 |
 | TC-AC-ACC-E2E-186-tab-subscription-details-status-term-aktif-sampai-expired | Tab Subscription: Subscription Details untuk Status Active, Waiting for Approval, Pending, Grace, dan Expired | FE+BE | 31 | 268, 661 |
 | TC-AC-ACC-E2E-187-tab-subscription-term-terakhir-archive-purge-deleted-dan-ditolak | Tab Subscription: Term Terakhir Archive, Purge, Deleted dan Client dengan Term Rejected atau Canceled | FE+BE | 24 | 936, 937 |
@@ -182,8 +182,8 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-219-loading-state-tabel-tab-detail | Loading State saat Data Tabel Tab Subscription, TAG, Hardware, Asset Control, dan Storage Diambil | FE+BE | 22 | 857 |
 | TC-AC-ACC-E2E-220-tabel-kuota-dan-feature-entitlement-tanpa-search-dan-filter | Tabel Kuota, Feature Entitlement, Station Quota, dan Tablet List Tanpa Ikon Search dan Tombol Filter | FE+BE | 33 | 826 |
 | TC-AC-ACC-E2E-221-aktivasi-term-pertama-preparing-access-dan-pending-ke-active | Aktivasi Term Pertama: Indikator Preparing Access dan Term Pending Menjadi Active pada Tanggal Mulai | FE+BE | 20 | 243, 245 |
-| TC-AC-ACC-E2E-222-kegagalan-penyediaan-akses-notifikasi-dan-retry-manual | Kegagalan Penyediaan Akses Produk: Notifikasi setelah Percobaan Ketiga dan Retry Manual Berhasil atau Gagal Lagi | FE+BE | 64 | 244, 992, 1004 |
-| TC-AC-ACC-E2E-223-notifikasi-kegagalan-penyediaan-akses-per-plan-owner | Notifikasi Kegagalan Penyediaan Akses per Plan Owner: Distributor Pemilik Plan Menerima, Read Only dan Distributor Luar Jaringan Tidak | FE+BE | 26 | 1006, 1032 |
+| TC-AC-ACC-E2E-222-kegagalan-penyediaan-akses-notifikasi-dan-retry-manual | Kegagalan Penyediaan Akses Produk: Notifikasi setelah Percobaan Ketiga dan Retry Manual Berhasil atau Gagal Lagi | FE+BE | 65 | 244, 992, 1004 |
+| TC-AC-ACC-E2E-223-notifikasi-kegagalan-penyediaan-akses-per-plan-owner | Notifikasi Kegagalan Penyediaan Akses per Plan Owner: Distributor Pemilik Plan Menerima, Read Only dan Distributor Luar Jaringan Tidak | FE+BE | 28 | 1006, 1032 |
 | TC-AC-ACC-E2E-224-retry-akses-dari-tampilan-basi-dua-sesi | Retry Akses dari Tampilan Basi: Server Idempoten, Tidak Ada Rangkaian Kedua dan Tidak Ada Baris Log Baru | FE+BE | 14 | 1035 |
 | TC-AC-ACC-E2E-225-role-matrix-retry-akses-tersembunyi-selain-total-control | Role Matrix: Tombol Retry pada Indikator Access Setup Failed Hidden untuk Read Only dan Active-Full | FE+BE | 12 | 993 |
 | TC-AC-ACC-E2E-226-request-retry-akses-langsung-ditolak-server | Request Retry Akses Langsung Ditolak Server: Aktor Non-Total Control dan Aktor di Luar Jaringan Plan Owner | FE+BE | 12 | 1039 |
@@ -218,7 +218,7 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-255-modal-changelog-asset-control-filter-dan-sort | Modal Changelog: Asset Control: Filter Panel, Filter per Kolom dan Rentang Date, serta Sort Date, Teks, dan Nilai Kosong | FE+BE | 37 | 736, 737, 738, 739, 740 |
 | TC-AC-ACC-E2E-256-modal-changelog-column-visibility-setup-column-dan-loading-state | Tiga Modal Changelog: Screening Column Visibility dan Setup Column, Tutup tanpa Save, Kolom Terakhir Disabled, dan Loading State | FE+BE | 35 | 741, 742, 747, 748, 858 |
 | TC-AC-ACC-E2E-257-modal-changelog-setup-column-sembunyikan-dan-tampilkan-kolom-tersimpan | Tiga Modal Changelog: Ceklis dan Unceklis Kolom lalu Save, Muat Ulang, dan Tampilkan Kembali | FE+BE | 11 | 743 |
-| TC-AC-ACC-E2E-258-modal-changelog-setup-column-drag-and-drop-urutan-kolom | Tiga Modal Changelog: Drag and Drop Urutan Kolom lalu Save dan Muat Ulang | FE+BE | 7 | 744 |
+| TC-AC-ACC-E2E-258-modal-changelog-setup-column-drag-and-drop-urutan-kolom | Tiga Modal Changelog: Drag and Drop Urutan Kolom lalu Save dan Muat Ulang | FE+BE | 9 | 744 |
 | TC-AC-ACC-E2E-259-modal-changelog-setup-column-pin-dan-unpin-kolom | Tiga Modal Changelog: Pin dan Unpin Kolom Membekukan Kolom saat Scroll Horizontal | FE+BE | 12 | 745 |
 | TC-AC-ACC-E2E-260-modal-changelog-setup-column-reset-to-default | Tiga Modal Changelog: Reset to Default pada Modal Setup Column | FE+BE | 10 | 746 |
 | TC-AC-ACC-E2E-261-modal-changelog-empty-state-genuinely-kosong-dan-hasil-search-kosong | Tiga Modal Changelog: Empty State Genuinely Kosong dan Hasil Search Kosong | FE+BE | 19 | 340, 345, 350 |
@@ -242,15 +242,15 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-286-filter-status-produk-fams-sams-siem | Filter Client List: Placeholder dan Opsi Status FAMS, SAMS, SIEM Mengikuti Data Sub-tab, serta Hasil Filter | FE+BE | 44 | 378, 379, 380, 387 |
 | TC-AC-ACC-E2E-287-filter-chip-dan-checkbox-sinkron | Filter Client List: Sinkronisasi Chip dan Centang Opsi pada Dropdown Multi-select | FE+BE | 14 | 714, 715 |
 | TC-AC-ACC-E2E-288-filter-distributor-partner-semantik-principal | Filter Client List oleh Principal: Semantik Distributor (Transitif) dan Partner (Langsung), Relasi Transferred, Kombinasi AND dan OR | FE+BE | 52 | 389, 390, 618, 619, 620, 708, 933, 934, 969 |
-| TC-AC-ACC-E2E-289-kombinasi-search-filter-sort-pagination-dan-indikator-filter | Client List: Kombinasi Search, Filter, Sort, dan Pagination, Indikator Tombol Filter, serta Independensi Pelepasan Kontrol | FE+BE | 70 | 391, 392, 393, 678, 679, 709, 710, 711, 712 |
+| TC-AC-ACC-E2E-289-kombinasi-search-filter-sort-pagination-dan-indikator-filter | Client List: Kombinasi Search, Filter, Sort, dan Pagination, Indikator Tombol Filter, serta Independensi Pelepasan Kontrol | FE+BE | 71 | 391, 392, 393, 678, 679, 709, 710, 711, 712 |
 | TC-AC-ACC-E2E-290-distributor-filter-sort-sel-tanda-hubung | Client List oleh Distributor: Filter SAMS dan SIEM Tidak Mencocokkan Sel Tanda Hubung, dan Sort FAMS-SAMS-SIEM Menempatkan Tanda Hubung | FE+BE | 26 | 405, 686, 931 |
 | TC-AC-ACC-E2E-291-opsi-filter-industry-diperbarui-setelah-edit | Filter Client List: Opsi Dropdown Industry Diperbarui Setelah Client Diedit Tanpa Reload | FE+BE | 13 | 716 |
 | TC-AC-ACC-E2E-292-sort-tiga-state-kolom-default | Sort Client List: Siklus Tiga State Ascending, Descending, dan Nonaktif pada Kolom Default dan Managed By | FE+BE | 43 | 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 986 |
 | TC-AC-ACC-E2E-293-sort-tujuh-kolom-hidden-default | Sort Client List: Siklus Tiga State pada Tujuh Kolom Curated Setelah Di-unhide | FE+BE | 11 | 404 |
-| TC-AC-ACC-E2E-294-column-visibility-overlay-dan-guard-setup-column | Column Visibility Overlay dan Modal Setup Column Client List: Screening, Batas Pin, Penutupan Tanpa Simpan, Kolom Terakhir, Independensi Changelog, dan Reset to Default | FE+BE | 70 | 406, 407, 408, 687, 694, 695, 696, 697 |
+| TC-AC-ACC-E2E-294-column-visibility-overlay-dan-guard-setup-column | Column Visibility Overlay dan Modal Setup Column Client List: Screening, Batas Pin, Penutupan Tanpa Simpan, Kolom Terakhir, Independensi Changelog, dan Reset to Default | FE+BE | 71 | 406, 407, 408, 687, 694, 695, 696, 697 |
 | TC-AC-ACC-E2E-295-setup-column-centang-kolom-hideable | Setup Column Client List: Centang dan Hapus Centang Sepuluh Kolom Hideable, Simpan, dan Refresh | FE+BE | 9 | 688 |
 | TC-AC-ACC-E2E-296-setup-column-centang-kolom-curated | Setup Column Client List: Centang dan Hapus Centang Tujuh Kolom Curated, Simpan, dan Refresh | FE+BE | 10 | 689 |
-| TC-AC-ACC-E2E-297-setup-column-drag-and-drop-urutan-kolom | Setup Column Client List: Drag and Drop Urutan Kolom Hideable dan Curated, Simpan, dan Refresh | FE+BE | 13 | 690, 691 |
+| TC-AC-ACC-E2E-297-setup-column-drag-and-drop-urutan-kolom | Setup Column Client List: Drag and Drop Urutan Kolom Hideable dan Curated, Simpan, dan Refresh | FE+BE | 15 | 690, 691 |
 | TC-AC-ACC-E2E-298-setup-column-pin-kolom-membeku-saat-scroll | Setup Column Client List: Pin dan Unpin Kolom Hideable dan Curated Membekukan Kolom Saat Scroll Horizontal | FE+BE | 17 | 692, 693 |
 | TC-AC-ACC-E2E-299-download-nama-berkas-format-header-kolom | Download Client List: Nama Berkas CSV dan XLSX, Tanpa Toast Sukses, serta Header Kolom Mengikuti Column Visibility | FE+BE | 23 | 409, 414, 698, 700, 701 |
 | TC-AC-ACC-E2E-300-download-isi-sel-berkas-list | Download Client List: Isi Sel Berkas CSV (Baris Sub-tab Aktif, Filter, Managed By, Group, Status Produk, Nilai Kosong, Last Updated) | FE+BE | 30 | 413, 699, 702, 703, 704, 705, 706 |

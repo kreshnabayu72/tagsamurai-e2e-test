@@ -64,19 +64,19 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 609 TC aktif masuk 115 spec d
 | TC-AC-ACHS-E2E-206-pagination-dan-kombinasi-approvals-tab-history | Pagination dan Kombinasi Empat Kontrol Approvals > Hardware Stock Tab History | FE+BE | 48 | 455, 456, 457, 458, 459 |
 | TC-AC-ACHS-E2E-207-download-approvals-tab-history-nama-berkas-cakupan-dan-kolom-hidden | Download Approvals > Hardware Stock Tab History: Nama Berkas, Cakupan, dan Kolom Hidden | FE+BE | 53 | 460, 461, 462, 465 |
 | TC-AC-ACHS-E2E-208-download-approvals-tab-history-isi-berkas-csv-xlsx | Download Approvals > Hardware Stock Tab History: Isi Berkas XLSX per Tipe Kolom | FE+BE | 10 | 464 |
-| TC-AC-ACHS-E2E-220-search-popup-event-log | Search Popup Event Log | FE+BE | 60 | 466, 467, 468, 469, 470, 471, 472 |
-| TC-AC-ACHS-E2E-221-filter-popup-event-log-screening-opsi-dan-apply-per-field | Filter Popup Event Log: Screening, Opsi, dan Apply per Field | FE+BE | 38 | 473, 474, 475, 476 |
+| TC-AC-ACHS-E2E-220-search-popup-event-log | Search Popup Event Log | FE+BE | 61 | 466, 467, 468, 469, 470, 471, 472 |
+| TC-AC-ACHS-E2E-221-filter-popup-event-log-screening-opsi-dan-apply-per-field | Filter Popup Event Log: Screening, Opsi, dan Apply per Field | FE+BE | 39 | 473, 474, 475, 476 |
 | TC-AC-ACHS-E2E-222-filter-popup-event-log-kombinasi-chip-and-or-dan-indikator | Filter Popup Event Log: Kombinasi Chip, AND/OR, dan Indikator | FE+BE | 76 | 477, 478, 479, 480, 481, 482, 483, 484, 485, 486 |
 | TC-AC-ACHS-E2E-223-sort-popup-event-log | Sort Popup Event Log | FE+BE | 27 | 487, 488, 489, 490, 491, 492, 493 |
 | TC-AC-ACHS-E2E-224-column-visibility-dan-setup-column-popup-event-log | Column Visibility dan Setup Column Popup Event Log | FE+BE | 65 | 494, 495, 496, 497, 498 |
 | TC-AC-ACHS-E2E-225-setup-column-popup-event-log-guard-reset-dan-tutup | Setup Column Popup Event Log: Guard, Reset, dan Tutup Popup | FE+BE | 59 | 499, 500, 501, 502 |
-| TC-AC-ACHS-E2E-226-pagination-dan-kombinasi-popup-event-log | Pagination dan Kombinasi Empat Kontrol Popup Event Log | FE+BE | 48 | 503, 504, 505, 506, 507 |
+| TC-AC-ACHS-E2E-226-pagination-dan-kombinasi-popup-event-log | Pagination dan Kombinasi Empat Kontrol Popup Event Log | FE+BE | 49 | 503, 504, 505, 506, 507 |
 | TC-AC-ACHS-E2E-227-download-popup-event-log-nama-berkas-cakupan-dan-kolom-hidden | Download Popup Event Log: Nama Berkas, Cakupan, dan Kolom Hidden | FE+BE | 54 | 508, 509, 510, 513 |
 | TC-AC-ACHS-E2E-228-download-popup-event-log-isi-berkas-csv-xlsx | Download Popup Event Log: Isi Berkas XLSX per Tipe Kolom | FE+BE | 11 | 512 |
 | TC-AC-ACHS-E2E-240-isi-sel-stock-list-badge-hitungan-link-sku-dan-placeholder-foto | Isi Sel Stock List: Badge, Hitungan, Link SKU, dan Placeholder Foto | FE+BE | 93 | 3, 4, 5, 6, 7, 8, 9, 11, 599, 605, 609 |
 | TC-AC-ACHS-E2E-241-screening-stock-detail-tab-in-use | Screening Stock Detail Tab In Use: Layout, Badge Status, Row Action Read-Only, dan Status Null | FE+BE | 32 | 42, 43, 44, 45 |
 | TC-AC-ACHS-E2E-242-format-tanggal-waktu-general-settings-di-semua-surface | Format Tanggal dan Waktu General Settings di Semua Surface Hardware Stock | FE+BE | 38 | 567, 568, 569 |
-| TC-AC-ACHS-E2E-243-defense-in-depth-request-langsung-dan-markup-serial-number | Defense-in-Depth: Request Langsung Ditolak dan Serial Number Berisi Markup | FE+BE | 83 | 570, 571, 572, 573, 574, 575, 576, 577, 595, 596, 597, 598 |
+| TC-AC-ACHS-E2E-243-defense-in-depth-request-langsung-dan-markup-serial-number | Defense-in-Depth: Request Langsung Ditolak dan Serial Number Berisi Markup | FE+BE | 103 | 570, 571, 572, 573, 574, 575, 576, 577, 595, 596, 597, 598 |
 | TC-AC-ACHS-E2E-244-tidak-ada-plan-gating-add-stock-per-tier | Tidak Ada Plan Gating: Add Stock Identik pada Tiap Tier Plan | FE+BE | 9 | 578 |
 | TC-AC-ACHS-E2E-245-state-tenant-suspended-expired-write-lockdown | State Tenant Suspended dan Expired: Write Lockdown Add Stock, Sync, Delete, dan Approvals | FE+BE | 67 | 108, 109, 158, 168, 199, 200 |
 | TC-AC-ACHS-E2E-246-screening-add-stock-manual-dan-live-counter | Screening Add Stock Manual dan Live Counter Serial Numbers | FE+BE | 41 | 76, 77, 78, 79, 115 |
@@ -97,27 +97,27 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 609 TC aktif masuk 115 spec d
 | TC-AC-ACHS-E2E-261-sync-blokir-kondisi-data-serial-aktif-dan-sku-dihapus | Sync Diblokir Kondisi Data: Serial Aktif dan SKU Dihapus | FE+BE | 31 | 142, 152 |
 | TC-AC-ACHS-E2E-262-sync-klik-ganda-dan-badge-basi-akibat-sesi-lain | Sync: Klik Ganda Submit dan Badge Basi Akibat Sesi Lain | FE+BE | 37 | 151, 154, 155 |
 | TC-AC-ACHS-E2E-263-tutup-form-add-stock-sync-unsaved-changes | Tutup Form Add Stock Sync dan Dialog Unsaved Changes | FE+BE | 20 | 156, 157 |
-| TC-AC-ACHS-E2E-264-dialog-dan-sukses-delete-unit | Dialog dan Sukses Delete Unit | FE+BE | 64 | 161, 162, 163, 167, 172, 173, 174 |
+| TC-AC-ACHS-E2E-264-dialog-dan-sukses-delete-unit | Dialog dan Sukses Delete Unit | FE+BE | 76 | 161, 162, 163, 167, 172, 173, 174 |
 | TC-AC-ACHS-E2E-265-role-matrix-positif-delete-unit | Role Matrix Positif: Delete Unit | FE+BE | 26 | 169, 170, 171 |
 | TC-AC-ACHS-E2E-266-blokir-kondisi-data-delete-unit-sudah-in-use | Blokir Kondisi Data: Delete Unit yang Sudah In Use | FE+BE | 12 | 165 |
-| TC-AC-ACHS-E2E-267-dialog-detail-approval-screening-validasi-cancel-dan-tumpukan-dialog | Dialog Detail Approval: Screening, Validasi, Cancel, dan Tumpukan Dialog | FE+BE | 74 | 175, 176, 177, 178, 179, 189, 582 |
+| TC-AC-ACHS-E2E-267-dialog-detail-approval-screening-validasi-cancel-dan-tumpukan-dialog | Dialog Detail Approval: Screening, Validasi, Cancel, dan Tumpukan Dialog | FE+BE | 87 | 175, 176, 177, 178, 179, 189, 582 |
 | TC-AC-ACHS-E2E-268-approve-reject-register-duplicate | Approve dan Reject Register Duplicate | FE+BE | 48 | 180, 182, 195 |
 | TC-AC-ACHS-E2E-269-approve-reject-activation-collision-state-submitting-dan-klik-ganda | Approve dan Reject Activation Collision, State Submitting, dan Klik Ganda | FE+BE | 47 | 183, 184, 591, 604 |
 | TC-AC-ACHS-E2E-270-blokir-kondisi-data-approve-konflik-keunikan-aktif | Blokir Kondisi Data: Approve Ditolak karena Konflik Keunikan Aktif | FE+BE | 11 | 181 |
 | TC-AC-ACHS-E2E-271-multi-konteks-race-keputusan-approval | Multi-Konteks: Race Keputusan Approval | FE+BE | 29 | 190, 191, 192, 193, 194 |
-| TC-AC-ACHS-E2E-272-multi-konteks-race-add-stock-dan-delete | Multi-Konteks: Race Add Stock dan Delete | FE+BE | 39 | 99, 153, 166, 585 |
-| TC-AC-ACHS-E2E-273-resilience-tulis-add-stock-delete-approve-reject | Resilience Tulis: Add Stock, Delete, Approve, dan Reject | FE+BE | 58 | 101, 102, 149, 150, 164, 185, 186, 187, 188 |
-| TC-AC-ACHS-E2E-274-event-log-screening-isi-detail-snapshot-dan-scope | Event Log: Screening, Isi, Detail, Snapshot, dan Scope | FE+BE | 83 | 514, 515, 516, 517, 518, 520, 521, 523, 524, 525, 586, 587 |
-| TC-AC-ACHS-E2E-275-activity-log-add-stock-dan-delete | Activity Log: Pencatatan Add Stock dan Delete | FE+BE | 27 | 532, 533, 534, 544 |
-| TC-AC-ACHS-E2E-276-activity-log-approval-waiting-approved-rejected-activation | Activity Log: Waiting for Approval, Approved, Rejected, dan Aktivasi | FE+BE | 34 | 535, 536, 537, 538, 539, 540, 541 |
-| TC-AC-ACHS-E2E-277-system-log-changelog-tidak-ada-dan-snapshot-immutability | System Log, Changelog Tidak Ada, dan Snapshot Immutability | FE+BE | 46 | 542, 543, 545, 564 |
-| TC-AC-ACHS-E2E-278-hardware-log-event-registered-waiting-approved | Hardware Log: Event Registered, Waiting for Approval, dan Approved | FE+BE | 29 | 546, 547, 548, 549, 550 |
-| TC-AC-ACHS-E2E-279-lintas-modul-status-unit-aktivasi-pelepasan-global-settings | Lintas Modul: Status Unit, Aktivasi, dan Pelepasan dari Global Settings | FE+BE | 48 | 555, 556, 557, 558, 559 |
-| TC-AC-ACHS-E2E-280-sse-real-time-banner-unit-pindah-tab-dan-opsi-filter | SSE Real-Time: Banner, Unit Pindah Tab, dan Opsi Filter | FE+BE | 37 | 553, 554, 603 |
+| TC-AC-ACHS-E2E-272-multi-konteks-race-add-stock-dan-delete | Multi-Konteks: Race Add Stock dan Delete | FE+BE | 55 | 99, 153, 166, 585 |
+| TC-AC-ACHS-E2E-273-resilience-tulis-add-stock-delete-approve-reject | Resilience Tulis: Add Stock, Delete, Approve, dan Reject | FE+BE | 90 | 101, 102, 149, 150, 164, 185, 186, 187, 188 |
+| TC-AC-ACHS-E2E-274-event-log-screening-isi-detail-snapshot-dan-scope | Event Log: Screening, Isi, Detail, Snapshot, dan Scope | FE+BE | 101 | 514, 515, 516, 517, 518, 520, 521, 523, 524, 525, 586, 587 |
+| TC-AC-ACHS-E2E-275-activity-log-add-stock-dan-delete | Activity Log: Pencatatan Add Stock dan Delete | FE+BE | 28 | 532, 533, 534, 544 |
+| TC-AC-ACHS-E2E-276-activity-log-approval-waiting-approved-rejected-activation | Activity Log: Waiting for Approval, Approved, Rejected, dan Aktivasi | FE+BE | 42 | 535, 536, 537, 538, 539, 540, 541 |
+| TC-AC-ACHS-E2E-277-system-log-changelog-tidak-ada-dan-snapshot-immutability | System Log, Changelog Tidak Ada, dan Snapshot Immutability | FE+BE | 49 | 542, 543, 545, 564 |
+| TC-AC-ACHS-E2E-278-hardware-log-event-registered-waiting-approved | Hardware Log: Event Registered, Waiting for Approval, dan Approved | FE+BE | 32 | 546, 547, 548, 549, 550 |
+| TC-AC-ACHS-E2E-279-lintas-modul-status-unit-aktivasi-pelepasan-global-settings | Lintas Modul: Status Unit, Aktivasi, dan Pelepasan dari Global Settings | FE+BE | 54 | 555, 556, 557, 558, 559 |
+| TC-AC-ACHS-E2E-280-sse-real-time-banner-unit-pindah-tab-dan-opsi-filter | SSE Real-Time: Banner, Unit Pindah Tab, dan Opsi Filter | FE+BE | 42 | 553, 554, 603 |
 | TC-AC-ACHS-E2E-281-absence-pencatatan-event-log-hardware-log | Absence Pencatatan Event Log dan Hardware Log | FE+BE | 69 | 519, 551, 558, 594, 595, 596 |
-| TC-AC-ACHS-E2E-282-activation-collision-lintas-modul-deteksi-cancel | Activation Collision Lintas Modul: Deteksi dan Cancel Request | FE+BE | 35 | 560, 561, 562 |
+| TC-AC-ACHS-E2E-282-activation-collision-lintas-modul-deteksi-cancel | Activation Collision Lintas Modul: Deteksi dan Cancel Request | FE+BE | 37 | 560, 561, 562 |
 | TC-AC-ACHS-E2E-283-lintas-modul-device-allocation-dan-asersi-negatif | Lintas Modul: Device Allocation dan Asersi Negatif | FE+BE | 32 | 563, 583, 584 |
-| TC-AC-ACHS-E2E-284-download-volume-5000-dan-5001-baris | Download Volume: 5.000 dan 5.001 Baris | FE+BE | 12 | 579 |
+| TC-AC-ACHS-E2E-284-download-volume-5000-dan-5001-baris | Download Volume: 5.000 dan 5.001 Baris | FE+BE | 13 | 579 |
 | TC-AC-ACHS-E2E-285-filter-stock-list-kombinasi-chip-and-or-dan-indikator | Filter Stock List: Kombinasi Chip, OR dan AND, Search, Draft, Indikator, Kolom Tersembunyi, Overflow Chip, dan Opsi Sumber Hilang | FE+BE | 92 | 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 607, 608 |
 | TC-AC-ACHS-E2E-286-download-stock-list-isi-berkas-csv-xlsx | Download Stock List: Isi Berkas CSV dan XLSX (Transformasi Sel per Tipe Kolom dan Aturan Teknis Berkas) | FE+BE | 22 | 255, 261 |
 | TC-AC-ACHS-E2E-287-filter-tab-available-kombinasi-chip-and-or-dan-indikator | Filter Stock Detail Tab Available: Kombinasi Chip, OR dan AND, Search, Draft, Indikator, Kolom Tersembunyi, dan Opsi Waiting for Approval | FE+BE | 85 | 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 316 |

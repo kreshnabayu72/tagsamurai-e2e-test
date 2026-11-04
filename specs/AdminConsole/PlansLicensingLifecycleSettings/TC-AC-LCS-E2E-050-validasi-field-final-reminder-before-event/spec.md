@@ -60,11 +60,10 @@ coverage:
 19. Pilih seluruh isi field Final Reminder Before Event lalu ketik `1234`
 20. Verifikasi field menampilkan `123`: karakter ke-4 tidak dapat diketik
 21. Verifikasi tidak ada pesan error rentang nilai (nilai `123` berada dalam rentang)
+22. Ubah Final Reminder Before Event kembali menjadi `1` lalu klik area kosong di luar field (blur)
 
 ## Notes
 
-- Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
-- Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 1, 18 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
+- Langkah penghubung (S-03, S-09): langkah 1 membuka tab Client Lifecycle (hook `beforeEach` suite membuka tab Trial Settings); langkah 18 dan 22 memulihkan nilai Final Reminder Before Event ke `1` lalu blur, sehingga form tidak berakhir dirty dan blok berikutnya tidak mewarisi nilai uji; tanpa `Verifikasi`.
 - Temuan untuk QA:
   - Fixture BE untuk memulihkan konfigurasi tab, menyimpan nilai non-default, dan menyiapkan precondition tidak didefinisikan di TC, PRD, atau LLD; ditulis sebagai kemampuan yang disediakan tim FE/BE tanpa endpoint (S-13, R-19).

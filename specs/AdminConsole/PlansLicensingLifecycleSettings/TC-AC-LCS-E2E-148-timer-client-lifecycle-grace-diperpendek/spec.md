@@ -24,7 +24,7 @@ coverage:
 - Data: subscription PT Maju Jaya (`Fixture.lifecycleSettings.clientMajuJaya`) berstatus `Grace` pada hari masa tenggang yang diatur per TC lewat Fixture BE (precondition TC, dibuat dan dibuang per TC). Hari dihitung sebagai hari kalender UTC dan job lifecycle berjalan satu kali sehari pada 00:00 UTC.
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan, S-13): Fixture BE untuk mengatur tanggal data uji, memajukan jam server dan jam browser, memicu eksekusi job, membaca log job, dan memulihkan ketujuh tab ke nilai default.
 - Waktu: tanggal data uji diatur lewat Fixture BE; jam server tidak digeser kecuali disebut pada langkah. Jam yang dimajukan dipulihkan lewat Fixture BE sesudah tiap TC dan di hook `after` suite (S-09); suite berjalan serial (`parallel: false`) karena spec ini memakai state global (jam, job, konfigurasi tab).
-- Fixture `fixtures/lifecycleSettings.json` belum ada dan disediakan tim FE; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` setelah tersedia.
+- Fixture `fixtures/lifecycle-settings.json`; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>`.
 
 ## Test Steps
 
@@ -36,55 +36,61 @@ coverage:
 4. Klik `[Save]` dan tunggu toast sukses
 5. Picu eksekusi job lifecycle lewat Fixture BE
 6. Buka Allocation > Client Subscription > List Subscriptions
-7. Verifikasi status subscription PT Maju Jaya tetap `Grace` (sisa masa tenggang mengikuti durasi baru)
+7. Ketik Search `PT Maju Jaya`, tekan Enter
+8. Verifikasi status subscription PT Maju Jaya tetap `Grace` (sisa masa tenggang mengikuti durasi baru)
 
 ### TC-AC-LCS-520: Grace Period Duration diperpendek hingga timer terlewati: transisi ke Archive pada eksekusi job berikutnya
 
-8. Pulihkan ketujuh tab, jam server dan jam browser, serta data uji TC sebelumnya lewat Fixture BE, lalu atur: subscription PT Maju Jaya berstatus `Grace` pada hari ke-20 masa tenggang (Grace Period Duration `30`)
-9. Klik tab `Client Lifecycle`
-10. Ubah Grace Period Duration dari `30` menjadi `15`
-11. Klik `[Save]` dan tunggu toast sukses
-12. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil segera tanpa menunggu job
-13. Picu eksekusi job lifecycle lewat Fixture BE
-14. Buka Allocation > Client Subscription > List Subscriptions
-15. Verifikasi status subscription PT Maju Jaya `Archive`
+9. Pulihkan ketujuh tab, jam server dan jam browser, serta data uji TC sebelumnya lewat Fixture BE, lalu atur: subscription PT Maju Jaya berstatus `Grace` pada hari ke-20 masa tenggang (Grace Period Duration `30`), lalu buka Plans & Licensing > Lifecycle Settings
+10. Klik tab `Client Lifecycle`
+11. Ubah Grace Period Duration dari `30` menjadi `15`
+12. Klik `[Save]` dan tunggu toast sukses
+13. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil segera tanpa menunggu job
+14. Picu eksekusi job lifecycle lewat Fixture BE
+15. Buka Allocation > Client Subscription > List Subscriptions
+16. Ketik Search `PT Maju Jaya`, tekan Enter
+17. Verifikasi status subscription PT Maju Jaya `Archive`
 
 ### TC-AC-LCS-521: Dua fase terlewati sekaligus: satu fase per eksekusi job
 
-16. Pulihkan ketujuh tab, jam server dan jam browser, serta data uji TC sebelumnya lewat Fixture BE, lalu atur: subscription PT Maju Jaya berstatus `Grace` pada hari ke-20 masa tenggang dengan nilai tersimpan Archive Period Duration `30`, Purge Warning Email `10`, dan Purge Urgent Warning Email `2`
-17. Klik tab `Client Lifecycle`
-18. Ubah Grace Period Duration menjadi `15`, Archive Period Duration menjadi `2`, Purge Warning Email menjadi `2`, dan Purge Urgent Warning Email menjadi `1`
-19. Klik `[Save]` dan tunggu toast sukses
-20. Picu eksekusi job lifecycle pertama lewat Fixture BE
-21. Buka Allocation > Client Subscription > List Subscriptions
-22. Verifikasi status subscription PT Maju Jaya `Archive` (bukan `Purge` dan bukan `Deleted`)
-23. Picu eksekusi job lifecycle kedua lewat Fixture BE
-24. Muat ulang halaman List Subscriptions
-25. Verifikasi status subscription PT Maju Jaya `Purge`
+18. Pulihkan ketujuh tab, jam server dan jam browser, serta data uji TC sebelumnya lewat Fixture BE, lalu atur: subscription PT Maju Jaya berstatus `Grace` pada hari ke-20 masa tenggang dengan nilai tersimpan Archive Period Duration `30`, Purge Warning Email `10`, dan Purge Urgent Warning Email `2`, lalu buka Plans & Licensing > Lifecycle Settings
+19. Klik tab `Client Lifecycle`
+20. Ubah Grace Period Duration menjadi `15`, Archive Period Duration menjadi `2`, Purge Warning Email menjadi `2`, dan Purge Urgent Warning Email menjadi `1`
+21. Klik `[Save]` dan tunggu toast sukses
+22. Picu eksekusi job lifecycle pertama lewat Fixture BE
+23. Buka Allocation > Client Subscription > List Subscriptions
+24. Ketik Search `PT Maju Jaya`, tekan Enter
+25. Verifikasi status subscription PT Maju Jaya `Archive` (bukan `Purge` dan bukan `Deleted`)
+26. Picu eksekusi job lifecycle kedua lewat Fixture BE
+27. Muat ulang halaman List Subscriptions
+28. Ketik Search `PT Maju Jaya`, tekan Enter
+29. Verifikasi status subscription PT Maju Jaya `Purge`
 
 ### TC-AC-LCS-522: Grace Period Duration diperpendek: langganan tepat pada hari ke-15 masa tenggang bertransisi ke Archive
 
-26. Pulihkan ketujuh tab, jam server dan jam browser, serta data uji TC sebelumnya lewat Fixture BE, lalu atur: subscription PT Maju Jaya berstatus `Grace` pada hari ke-15 masa tenggang tepat (hari dihitung sebagai hari kalender UTC dan job lifecycle berjalan satu kali sehari pada 00:00 UTC)
-27. Klik tab `Client Lifecycle`
-28. Ubah Grace Period Duration dari `30` menjadi `15`
-29. Klik `[Save]` dan tunggu toast sukses
-30. Picu eksekusi job lifecycle lewat Fixture BE
-31. Buka Allocation > Client Subscription > List Subscriptions
-32. Verifikasi status subscription PT Maju Jaya `Archive` (batas yang tercapai pada hari ke-15 dianggap terlewati)
+30. Pulihkan ketujuh tab, jam server dan jam browser, serta data uji TC sebelumnya lewat Fixture BE, lalu atur: subscription PT Maju Jaya berstatus `Grace` pada hari ke-15 masa tenggang tepat (hari dihitung sebagai hari kalender UTC dan job lifecycle berjalan satu kali sehari pada 00:00 UTC), lalu buka Plans & Licensing > Lifecycle Settings
+31. Klik tab `Client Lifecycle`
+32. Ubah Grace Period Duration dari `30` menjadi `15`
+33. Klik `[Save]` dan tunggu toast sukses
+34. Picu eksekusi job lifecycle lewat Fixture BE
+35. Buka Allocation > Client Subscription > List Subscriptions
+36. Ketik Search `PT Maju Jaya`, tekan Enter
+37. Verifikasi status subscription PT Maju Jaya `Archive` (batas yang tercapai pada hari ke-15 dianggap terlewati)
 
 ### TC-AC-LCS-523: Grace Period Duration diperpendek: langganan pada hari ke-14 masa tenggang tetap Grace
 
-33. Pulihkan ketujuh tab, jam server dan jam browser, serta data uji TC sebelumnya lewat Fixture BE, lalu atur: subscription PT Maju Jaya berstatus `Grace` pada hari ke-14 masa tenggang (hari dihitung sebagai hari kalender UTC dan job lifecycle berjalan satu kali sehari pada 00:00 UTC)
-34. Klik tab `Client Lifecycle`
-35. Ubah Grace Period Duration dari `30` menjadi `15`
-36. Klik `[Save]` dan tunggu toast sukses
-37. Picu eksekusi job lifecycle lewat Fixture BE
-38. Buka Allocation > Client Subscription > List Subscriptions
-39. Verifikasi status subscription PT Maju Jaya tetap `Grace` (batas 15 hari belum tercapai)
+38. Pulihkan ketujuh tab, jam server dan jam browser, serta data uji TC sebelumnya lewat Fixture BE, lalu atur: subscription PT Maju Jaya berstatus `Grace` pada hari ke-14 masa tenggang (hari dihitung sebagai hari kalender UTC dan job lifecycle berjalan satu kali sehari pada 00:00 UTC), lalu buka Plans & Licensing > Lifecycle Settings
+39. Klik tab `Client Lifecycle`
+40. Ubah Grace Period Duration dari `30` menjadi `15`
+41. Klik `[Save]` dan tunggu toast sukses
+42. Picu eksekusi job lifecycle lewat Fixture BE
+43. Buka Allocation > Client Subscription > List Subscriptions
+44. Ketik Search `PT Maju Jaya`, tekan Enter
+45. Verifikasi status subscription PT Maju Jaya tetap `Grace` (batas 15 hari belum tercapai)
 
 ## Notes
 
-- Langkah penghubung tanpa `Verifikasi`: "Atur lewat Fixture BE ..." (precondition TC), "Klik tab", "Picu eksekusi job ...", "Muat ulang halaman List Subscriptions", dan "Pulihkan ..." antar TC (S-03, S-09).
+- Langkah penghubung tanpa `Verifikasi`: "Atur lewat Fixture BE ..." (precondition TC), "Klik tab", "Picu eksekusi job ...", "Muat ulang halaman List Subscriptions", "Ketik Search `PT Maju Jaya`, tekan Enter" sebelum tiap `Verifikasi` status baris (langkah 7, 16, 24, 28, 36, 44; R-16, bagian 8b butir 13, R-23), dan "Pulihkan ..." antar TC, yang pada langkah 9, 18, 30, 38 diakhiri "lalu buka Plans & Licensing > Lifecycle Settings" karena layar terakhir adalah List Subscriptions (S-03, S-07, S-09).
 - Alasan lebih dari sekitar 35 langkah: lima blok memakai pola yang sama (state subscription diseed, Grace Period Duration diubah, job dipicu, status dibaca), semuanya satu kelas harness yang sama, dan tiap blok diseed ulang sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA: TC-AC-LCS-520 menulis "Amati status sebelum job berikutnya berjalan" dan Expected "toast sukses tampil segera"; spec mengasersi toast sebelum job dipicu dan tidak menambah asersi status sebelum job (S-02). Mekanisme memicu job lifecycle dan mengatur hari masa tenggang tidak didefinisikan di TC, PRD, atau LLD (S-13).
 - Temuan untuk QA: Post Condition TC "Tidak ada perubahan data" tidak diasersi (S-01).

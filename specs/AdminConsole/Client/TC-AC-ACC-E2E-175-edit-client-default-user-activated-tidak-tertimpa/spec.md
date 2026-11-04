@@ -40,12 +40,13 @@ coverage:
 6. Verifikasi Section "Default User" menampilkan Position "Operations Head"
 7. Verifikasi Section "Default User" menampilkan badge "Activated"
 8. Klik `[Edit]`
-9. Verifikasi popup "Edit Client" tidak memuat Section Default User
-10. Ubah Fax menjadi `0215550123`
-11. Klik `[Save]`
-12. Verifikasi toast "Success, client has been updated."
-13. Verifikasi Detail menampilkan Fax `0215550123`
-14. Verifikasi Name "Rini Hartono", Email "rini.hartono+{runId}-175@ptujitabeldetail.test", Division "Operations", dan Position "Operations Head" Default User tetap seperti sebelum Edit
+9. Verifikasi popup "Edit Client" tampil dengan field Fax
+10. Verifikasi popup "Edit Client" tidak memuat Section Default User
+11. Ubah Fax menjadi `0215550123`
+12. Klik `[Save]`
+13. Verifikasi toast "Success, client has been updated."
+14. Verifikasi Detail menampilkan Fax `0215550123`
+15. Verifikasi Name "Rini Hartono", Email "rini.hartono+{runId}-175@ptujitabeldetail.test", Division "Operations", dan Position "Operations Head" Default User tetap seperti sebelum Edit
 
 ## Notes
 

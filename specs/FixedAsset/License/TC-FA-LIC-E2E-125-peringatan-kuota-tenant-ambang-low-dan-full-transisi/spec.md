@@ -10,6 +10,7 @@ sourceTc:
   - TC-FA-LIC-425
   - TC-FA-LIC-426
   - TC-FA-LIC-427
+  - TC-FA-LIC-495
 coverage:
   web: automated
 ---
@@ -30,9 +31,9 @@ coverage:
 - Password tidak ditulis di spec atau fixture; `Spectra.env.FA_TC_PASSWORD` dan `Spectra.env.FA_MGL_PASSWORD` didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example` (dinyatakan di `suite.md`).
 - Flag Guided Tooltip `guided_tooltip_seen_fa-license` untuk akun aktor disetel true oleh hook `before` suite dan dipulihkan hook `after` suite (dinyatakan di `suite.md`).
 - Suite berjalan serial (`parallel: false`): Total Asset License, Used, Reserved, penanda tingkat peringatan kuota, dan status aset dipakai bersama dan diubah spec ini; hook `after` memulihkannya.
-- Data Pre-setup: #16 (tenant peringatan kuota Total Asset License 100, variasi 105; penanda tingkat Normal; Used dan Reserved diatur fixture BE; approval OFF dengan sekurangnya 60 draf aset siap Submit; penerima #3 dan #1). Kondisi per blok (diatur fixture BE): blok TC-FA-LIC-423 dan TC-FA-LIC-424 Used 85 dan Reserved 4 (Remaining 11); blok TC-FA-LIC-425 Total 105, Used 94, Reserved 0 (Remaining 11); blok TC-FA-LIC-426 penanda Low sudah tercatat dan Remaining 1; blok TC-FA-LIC-427 Used 85, Reserved 4 (Remaining 11), dan 11 draf aset.
+- Data Pre-setup: #16 (tenant peringatan kuota Total Asset License 100, variasi 105; penanda tingkat Normal; Used dan Reserved diatur fixture BE; approval OFF dengan sekurangnya 60 draf aset siap Submit; penerima #3 dan #1). Kondisi per blok (diatur fixture BE): blok TC-FA-LIC-423 dan TC-FA-LIC-424 Used 85 dan Reserved 4 (Remaining 11); blok TC-FA-LIC-425 Total 105, Used 94, Reserved 0 (Remaining 11); blok TC-FA-LIC-426 penanda Low sudah tercatat dan Remaining 1; blok TC-FA-LIC-427 Used 85, Reserved 4 (Remaining 11), dan 11 draf aset; blok TC-FA-LIC-495 Used 95 dan Reserved 10 (Remaining rumus −5), penanda Normal.
 - Pengecualian S-06 `[KEPUTUSAN 2026-10-30]`: target aksi tulis adalah tenant Pre-setup #16 bernama literal karena Total Asset License, Used, dan penanda tingkat tidak dapat dimiliki spec. Pemulihan ke Pre-setup #16 dijamin fixture BE pemulih yang disediakan tim FE/BE (dinyatakan di `suite.md`), dijalankan di hook `before` dan `after` serta sebagai langkah penghubung antar blok. Efek: Used, Reserved, Remaining, penanda tingkat, status aset, dan entri Changelog dan Activity Log (audit trail permanen) bertambah. Fixture `Fixture.fixedAssetLicense` belum ada dan disediakan tim FE.
-- Kemampuan teknis: kemampuan membaca daftar notifikasi akun penerima Pre-setup #3 lewat fixture BE (disediakan tim FE/BE; endpoint tidak dikarang); kemampuan membaca jumlah entri Changelog: Allocation Quota dan Activity Log sebagai baseline (audit trail permanen sehingga asersi memakai selisih jumlah entri, S-12). Kemampuan menggeser jam fixture sampai job penilaian per jam berjalan (TC-FA-LIC-425 langkah 2); penilaian lainnya dipicu pasca-commit oleh registrasi dan Delete aset.
+- Kemampuan teknis: kemampuan membaca daftar notifikasi akun penerima Pre-setup #3 lewat fixture BE (disediakan tim FE/BE; endpoint tidak dikarang); kemampuan membaca jumlah entri Changelog: Allocation Quota dan Activity Log sebagai baseline (audit trail permanen sehingga asersi memakai selisih jumlah entri, S-12). Kemampuan menggeser jam fixture sampai job penilaian per jam berjalan (TC-FA-LIC-425 langkah 25 dan TC-FA-LIC-495 langkah 44); penilaian lainnya dipicu pasca-commit oleh registrasi dan Delete aset.
   - Asersi absence notifikasi in-app didahului anchor positif dan langkah `Tunggu 5 detik tanpa memuat ulang halaman` (jendela standar pilihan spec, bukan nilai TC atau PRD).
 
 ## Test Steps
@@ -91,13 +92,25 @@ coverage:
 38. Verifikasi tidak ada notifikasi baru `license_quota_low` (`Asset license quota is running low`) dibanding langkah 34
 39. Jalankan fixture BE pemulih Pre-setup #16 hingga tersimpan
 
+### TC-FA-LIC-495: Used + Reserved tenant melampaui Total, Remaining ditampilkan 0 dan tingkat Full
+
+40. Jalankan fixture BE pemulih Pre-setup #16 dengan Used `95`, Reserved `10`, dan penanda tingkat Normal hingga tersimpan
+41. Buka License > All License
+42. Verifikasi Remaining tenant ditampilkan `0`, bukan `-5`
+43. Catat jumlah notifikasi `Asset license quota is full` dan `Asset license quota is running low` pada Bell Notification akun Pre-setup #1 dan daftar notifikasi akun Pre-setup #3
+44. Geser jam fixture sampai penilaian berjalan
+45. Tunggu 5 detik tanpa memuat ulang halaman
+46. Verifikasi Bell Notification akun Pre-setup #1 dan daftar notifikasi akun Pre-setup #3 masing-masing memuat tepat satu notifikasi baru `Asset license quota is full` dibanding langkah 43
+47. Verifikasi tidak ada notifikasi baru `Asset license quota is running low` dibanding langkah 43
+48. Pulihkan jam fixture lalu jalankan fixture BE pemulih Pre-setup #16 hingga tersimpan
+
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/license/TestCases/tc-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Spec ini berkelas d (peringatan kuota tenant dan penanda tingkat oleh `assess_license_quota_alert()`); blok di spec ini dipicu pasca-commit oleh registrasi dan Delete aset, kecuali TC-FA-LIC-425 yang menggeser jam fixture sampai job penilaian per jam berjalan; blok yang memerlukan job per jam dan top-up Total lainnya ada di spec 126, 127, 128, dan 145.
-- Langkah penghubung (S-03, aksi tanpa `Verifikasi`): langkah 1, 9, 20, 29, 33, dan 39 (fixture BE pemulih dan penyetel state), langkah 17 (menutup modal Changelog), langkah 24 (memulihkan Remaining) dan 25 (menggeser jam fixture), langkah `Tunggu 5 detik tanpa memuat ulang halaman` sebelum asersi absence notifikasi, serta pencatatan baseline pada langkah 2, 10, 21, 30, dan 34 (S-12). Pada TC-FA-LIC-424 asersi "tidak ada entri baru" berupa asersi jumlah dengan baseline langkah 10, bukan asersi absence kelas g (bagian 3 prinsip 13).
-- Urutan TC mengikuti urutan nomor; pembagian TC lintas spec: TC-FA-LIC-428 dan TC-FA-LIC-532 (penanda turun setelah top-up) ada di spec 145.
+- Spec ini berkelas d (peringatan kuota tenant dan penanda tingkat oleh `assess_license_quota_alert()`); blok di spec ini dipicu pasca-commit oleh registrasi dan Delete aset, kecuali TC-FA-LIC-425 dan TC-FA-LIC-495 yang menggeser jam fixture sampai job penilaian per jam berjalan; blok yang memerlukan job per jam dan top-up Total lainnya ada di spec 126, 127, 128, dan 145.
+- Langkah penghubung (S-03, aksi tanpa `Verifikasi`): langkah 1, 9, 20, 29, 33, 39, dan 40 (fixture BE pemulih dan penyetel state), langkah 17 (menutup modal Changelog), langkah 24 (memulihkan Remaining), 25 dan 44 (menggeser jam fixture), langkah 48 (memulihkan jam fixture dan state), langkah `Tunggu 5 detik tanpa memuat ulang halaman` sebelum asersi absence notifikasi, serta pencatatan baseline pada langkah 2, 10, 21, 30, 34, dan 43 (S-12). Pada TC-FA-LIC-424 asersi "tidak ada entri baru" berupa asersi jumlah dengan baseline langkah 10, bukan asersi absence kelas g (bagian 3 prinsip 13).
+- Urutan TC mengikuti urutan nomor (TC-FA-LIC-495 di akhir); pembagian TC lintas spec: TC-FA-LIC-428 dan TC-FA-LIC-532 (penanda turun setelah top-up) ada di spec 145.
 - Temuan untuk QA:
-  - TC-FA-LIC-424 dan TC-FA-LIC-426 sampai TC-FA-LIC-427 tidak menyebut akun yang periksa Bell pada beberapa langkah; spec mengasersi akun Pre-setup #1 dan daftar notifikasi akun Pre-setup #3 sesuai Precondition Pre-setup #16.
+  - TC-FA-LIC-424, TC-FA-LIC-426, TC-FA-LIC-427, dan TC-FA-LIC-495 tidak menyebut akun yang periksa Bell pada beberapa langkah; spec mengasersi akun Pre-setup #1 dan daftar notifikasi akun Pre-setup #3 sesuai Precondition Pre-setup #16.
   - TC-FA-LIC-424 mengasersi tidak ada entri baru pada Changelog dan Activity Log; spec membandingkan jumlah entri dengan baseline.
-- Alasan di atas 35 langkah (39 langkah): semua blok satu topik (ambang peringatan kuota Low dan Full) dan berdiri sendiri; langkah di atas 35 berasal dari pemicu job penilaian, anchor positif, dan jeda 5 detik; kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Alasan di atas 35 langkah (48 langkah): semua blok satu topik (ambang peringatan kuota Low dan Full) dan berdiri sendiri; langkah di atas 35 berasal dari pemicu job penilaian, anchor positif, dan jeda 5 detik; kegagalan satu blok tidak membuat blok lain kehilangan makna.

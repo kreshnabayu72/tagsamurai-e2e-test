@@ -29,7 +29,7 @@ coverage:
 ### TC-AC-LCS-673: Tempel teks campuran ke field Max Trial Duration hanya memasukkan digitnya
 
 1. Klik field Max Trial Duration lalu pilih seluruh isinya
-2. Tempel teks `12abc` dari clipboard
+2. Tempel teks `12abc` dari clipboard, lalu klik area kosong di luar field (blur)
 3. Verifikasi field menampilkan `12` (karakter `a`, `b`, `c` tidak masuk)
 4. Verifikasi tidak ada pesan error
 5. Verifikasi `[Save]` enabled (nilai `12` berbeda dari nilai tersimpan `30`)
@@ -46,7 +46,7 @@ coverage:
 
 11. Klik tab License Timing
 12. Klik field Managed Transition Time lalu pilih seluruh isinya
-13. Tempel teks `12345` dari clipboard
+13. Tempel teks `12345` dari clipboard, lalu klik area kosong di luar field (blur)
 14. Verifikasi field menampilkan `123` (hard cap 3 karakter)
 15. Verifikasi tidak ada pesan error
 16. Verifikasi `[Save]` enabled (nilai `123` berbeda dari nilai tersimpan `24`)
@@ -57,6 +57,7 @@ coverage:
 - Mode: FE+BE. Sumber: `admin-console/plans-licensing-lifecycle-settings/TestCases/tc-plans-licensing-lifecycle-settings.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah 6, 11, 17 (pembukaan tab, pemulihan atau penyiapan state, dan pemuatan ulang halaman; tanpa `Verifikasi`).
+- Asersi absence "tidak ada pesan error" (langkah 4 dan 15) didahului blur pada langkah Tempel (langkah 2 dan 13) agar validasi yang berjalan saat blur sudah terpicu; anchor positifnya `Verifikasi` nilai field pada langkah 3 dan 14 (S-03, bagian 8b butir 2).
 - Pindah dari tab Trial Settings ke tab License Timing dilakukan sesudah Max Trial Duration dikembalikan ke nilai tersimpan, sehingga dialog `Unsaved Changes` tidak muncul; langkah terakhir mengembalikan Managed Transition Time ke nilai tersimpan agar form tidak berakhir dirty (S-09).
 - Temuan untuk QA:
   - TC-AC-LCS-685 (field Managed Transition Time di tab License Timing) berada di section TC Trial Settings; spec menempatkannya bersama TC input angka sejenis.

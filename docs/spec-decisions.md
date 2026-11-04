@@ -576,3 +576,47 @@ Aturan:
 - **Karena:** keputusan owner atas iam #97 (2026-11-02): rumus §5.1 dipertahankan dan `users.last_logout_at` tidak dipakai.
 - **Keputusan:** tiap user login sekali lalu logout di browser A saat seeding, lalu riwayat sesi tenant digeser dengan `ageTime` (`sessions`, `users`) sehingga logout web terakhir berumur 31, 30, dan 29 hari. Jam server tidak dibekukan dan `last_logout_at` tidak di-seed. Batas TC-AUTH-MFA-27 diuji pada umur 30 hari ditambah detik berjalannya run (tetap ≥30 hari), bukan tepat 30 hari 0 detik.
 - **Diterapkan di:** skrip MFA 021 (Prerequisites).
+
+## D-065 Baseline Changelog File Manager 062 dibaca sesudah setup, bukan nol (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-FILEMGR-E2E-062` Prerequisites "Baseline log" dan langkah 21–22 (Log Suspended), serta langkah Log Expired yang sama.
+- **Spec meminta:** baseline nol untuk file bersuffix `{runId}-062` di Changelog File Manager; langkah 22 memverifikasi tidak ada entri baru dengan empty state "No results found".
+- **Kenyataannya:** `legacy-photo-{runId}-062.jpeg` masuk Recycle Bin lewat Delete File Manager yang nyata (satu-satunya jalan ke Recycle Bin), dan Delete itu menulis satu baris Changelog `Delete` untuk file tersebut. Sesudah setup, pencarian `{runId}-062` sudah memuat satu baris, sehingga baseline nol tidak bisa terpenuhi. Ketiga aksi tulis saat Suspended tetap ditolak dan tidak menulis baris baru.
+- **Karena:** state disusun seperti terjadinya di produk (aturan owner); maksud langkah 22 adalah "tidak ada entri baru". Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** baseline adalah jumlah baris Changelog untuk pencarian `{runId}-062` yang dibaca sesudah setup (baris Delete dari setup sudah tercatat) dan sebelum aksi tulis saat Suspended. Langkah 22 memverifikasi jumlah baris sama dengan baseline (tidak ada entri baru dari aksi yang ditolak), bukan empty state.
+- **Diterapkan di:** skrip File Manager 062.
+
+## D-066 FILEMGR 024 gambar tidak tersedia mengikuti aturan galeri in-page (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-FILEMGR-E2E-024`, TC-53, langkah 5–8.
+- **Spec meminta:** gambar yang tidak tersedia dibuka di tab baru, tanpa toast.
+- **Kenyataannya:** PRD file-manager, aturan preview in-page (l.399) dan V-11: gambar dibuka di galeri in-page, bukan tab baru.
+- **Karena:** keputusan koordinator (didelegasikan owner) 2026-11-02, dicatat sebagai G21 di tagsamurai-slicing `plans/_program/gs-triage/ui-items.md`.
+- **Keputusan:** perilaku galeri in-page berlaku untuk gambar yang tidak tersedia: galeri menutup, toast T-13 tampil, dan daftar di-refetch. Tidak ada tab baru.
+- **Diterapkan di:** skrip File Manager 024 (sudah meng-assert perilaku ini, commit e0e7272f di feat/connect-api-b).
+
+## D-067 Klik backdrop tidak menutup modal Changelog (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-DIV-E2E-053` TC-GS-DIV-211 langkah 39–40.
+- **Spec meminta:** klik area gelap di luar modal menutup modal Changelog: Division.
+- **Kenyataannya:** modal Changelog tetap terbuka setelah klik backdrop. Spec lain untuk modal Changelog yang sama meminta hal sebaliknya dan lolos: `TC-GS-POS-E2E-038` TC-GS-POS-203 langkah 44–45 dan `TC-GS-FILEMGR-E2E-044` TC-GS-FILEMGR-174.
+- **Karena:** `prd-conventions.md` §9.10 Changelog Modal (l.1720): "**Klik backdrop (area di luar modal) tidak menutup modal** — menutup hanya lewat icon `[✕]` atau `Esc`." PRD division §5 Global Table Rules (l.672) merujuk modal "Changelog: Division" ke §9.10; §24.5 (l.2631) berlaku untuk semua modal. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** langkah 40 memverifikasi modal Changelog tetap terbuka setelah klik backdrop, lalu modal ditutup lewat icon `[✕]`.
+- **Diterapkan di:** skrip Division 053 (TC-GS-DIV-211).
+
+## D-068 ACTLOG 031 Object Role mengikuti nama tab role (2026-11-02)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-031` TC-GS-ACTLOG-174, `spec.md` l.37 dan l.53 (tagsamurai-slicing `apps/e2e/specs/GlobalSettings/ActivityLog/TC-GS-ACTLOG-E2E-031-*`).
+- **Spec meminta:** Role `Role {runId}-031` yang di-seed oleh Sari Dewi tercatat di Activity Log dengan Object `Role & Permission`; opsi filter Object memuat `Role & Permission`.
+- **Kenyataannya:** PRD role (`global-settings/role/PRD/role.md`): `object_path` = "`Total Control` · `Read Only` · `System Role` (nilai kolom Object §8.5–§8.6)" (l.1885) dan "memakai nama tab ..., bukan nama menu `Role & Permission`" (l.1891). Global Settings juga tidak punya operasi create role: baris role fixed dan tidak ada +Add (`role.md` l.1238, l.2144 "hardcoded di kode"), dan API role (`API/low-level-design.md`) hanya memuat list/options/export serta Assign/Remove user dan access level, tanpa route create role. Role `Role {runId}-031` tidak bisa dibuat lewat produk.
+- **Karena:** PRD menang atas spec. Keputusan koordinator (didelegasikan owner) 2026-11-02.
+- **Keputusan:** skrip meng-assert Object `Total Control` untuk Role yang di-seed, mengikuti nama tab di PRD, bukan `Role & Permission`.
+- **Diterapkan di:** skrip Activity Log 031 (TC-GS-ACTLOG-174), commit 26e7dbbc di feat/connect-api-b (tagsamurai-slicing-b).
+## D-065 Setup Column Client berlaku setelah Save: tabel di balik modal tidak berubah sebelum [Save] (2026-11-03)
+
+- **Spec / langkah:** `TC-AC-ACC-E2E-245`, `257`, `258`, `260`, `294`, `295`, `296`, `297` (TC-AC-ACC-825, 743, 744, 746, 696, 407, 688, 689, 690, 691).
+- **Spec meminta:** TC menulis kolom yang dicentang/dilepas, diseret, atau di-reset di modal Setup Column langsung terlihat pada tabel di balik modal sebelum `[Save]`, mengutip `prd-conventions.md` §9.3.
+- **Kenyataannya:** tabel di balik modal tidak berubah sampai `[Save]`; menutup modal dengan `[✕]` atau `Esc` tanpa Save membuang perubahan. Sama seperti D-008. Teks `prd-conventions.md` §9.3 ("di-preview langsung di tabel (tabel di balik modal merefleksikan state sementara ini secara real-time)") berbeda dari perilaku ini dan belum diubah (berlaku untuk modul lain juga).
+- **Karena:** keputusan user 2026-11-03 (jalur "UI tidak preview") atas temuan F-1 `report-e2e-audit.md` (`prd-harness/work-items/ac-client`), selaras dengan keputusan user 2026-11-02 yang sudah tertulis di Notes spec-spec ini.
+- **Keputusan:** spec Client mengikuti UI: kolom masih tampil/urutan tidak berubah di tabel di balik modal sampai `[Save]`. Live Preview di dalam popup tetap terpisah.
+- **Diterapkan di:** Notes dan asersi spec 245, 257, 258, 260, 294, 295, 296, 297 (sudah sesuai). `tc-client.md` (10 TC) dan `prd-conventions.md` §9.3 belum diselaraskan: menunggu keputusan cakupan, lihat `report-e2e-audit.md` F-1.

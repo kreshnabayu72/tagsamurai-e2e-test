@@ -100,7 +100,7 @@ coverage:
 45. Verifikasi Detail `PT Sejahtera Abadi` terbuka
 46. Buka URL Detail dengan ID Client `PT Karya Abadi` (Archived) langsung
 47. Verifikasi halaman no-access tampil (tanpa redirect ke halaman lain yang bukan no-access)
-48. Verifikasi tidak ada toast error `You don't have permission to do this.`
+48. Verifikasi tidak ada toast error
 49. Verifikasi data Client `PT Karya Abadi` tidak tampil
 
 ## Notes
@@ -114,6 +114,6 @@ coverage:
 - Pembagian TC lintas spec: akses URL untuk aktor Archived-Read (TC-AC-ACC-952, 953) di spec 027; aktor tanpa capability di spec 025; Distributor dan Partner di spec 016 dan 018.
 - Ukuran spec (49 langkah, melewati sekitar 35 langkah): satu akun (Active-Read), satu topik (akses URL Detail), tanpa aksi tulis, dan tiap blok TC dimulai dengan membuka URL eksplisit sehingga kegagalan satu blok tidak menghilangkan makna blok lain; langkah membengkak karena tiap klausa Expected menjadi satu `Verifikasi` (S-01).
 - Temuan untuk QA:
-  - Selisih dengan D-015 dan keputusan user 2026-11-02: Expected TC-AC-ACC-951 menyebut toast `You don't have permission to do this.` tanpa redirect untuk akses URL langsung tanpa capability (juga PRD client §9.3); TC tidak diubah. Spec mengasersi halaman no-access tampil tanpa toast dan tanpa data Client (D-015). QA perlu menyelaraskan Expected TC dan PRD §9.3. Teks atau elemen halaman no-access belum diketahui; script memakai asersi yang sama dengan spec Brand.
+  - Sudah selaras (2026-11-03, temuan T-1 e2e-audit): Expected TC-AC-ACC-951 dan PRD client §9.3 (butir 1 dan 3, EC-80, EC-88) kini menyebut halaman no-access tampil tanpa toast error untuk akses URL langsung tanpa capability, sama dengan D-015. Spec mengasersi halaman no-access tampil tanpa toast dan tanpa data Client. Teks atau elemen halaman no-access belum diketahui; script memakai asersi yang sama dengan spec Brand.
   - TC-AC-ACC-61, 564, 565, 954, 965: kata "kembali ke List" tidak menyebut sub-tab yang dituju; spec mengasersi halaman List tampil.
   - TC-AC-ACC-954: langkah 3 TC menyebut aktor dapat membuka Detail Suspended dalam scope (`PT Wahana Nusantara`); spec mengikuti urutan TC.

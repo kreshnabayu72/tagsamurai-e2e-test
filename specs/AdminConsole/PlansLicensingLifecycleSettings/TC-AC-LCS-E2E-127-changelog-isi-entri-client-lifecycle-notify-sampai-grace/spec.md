@@ -22,10 +22,10 @@ coverage:
 - Hook suite (`suite.md`): `beforeEach` memulihkan ketujuh tab ke nilai default (Trial 30, 50, 10, OFF, 7, 1; Free 365; License Timing 24, 2, 2; Client Lifecycle 45, 30, 7, 1, 30, 30, 10, 2, 730; Recycle Bin 30; Approval 3; System Limits 1000, 1000, 1000, 50, 10000, 20), jam server dan jam browser, General Settings (Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC), dan intercept, lalu membuka Plans & Licensing > Lifecycle Settings dengan tab Trial Settings aktif; hook `before` suite menyetel flag Guided Tooltip halaman ini true dan menyatakan sesi API aktor.
 - Changelog tab `Client Lifecycle` kosong saat tiap TC dimulai: dikosongkan lewat Fixture BE di hook `before` spec ini dan di langkah penghubung antar TC. Entri Changelog permanen dan tidak dapat dihapus lewat UI.
 - General Settings: Date Format `dd MMM yy`, Time Format 24 jam, Time Zone UTC (tidak diubah spec ini). Jam server dan jam browser sinkron; waktu aksi dicatat sesudah klik `[Save]` dan kolom Date dibandingkan dengan waktu itu dengan toleransi satu menit (kolom Date berketelitian menit).
-- Kemampuan teknis (disediakan tim FE/BE): Fixture BE untuk memulihkan ketujuh tab ke nilai default dan mengosongkan Changelog satu tab.
+- Kemampuan teknis (disediakan tim FE/BE, Lampiran A-15; dinyatakan juga di `suite.md`): Fixture BE untuk memulihkan ketujuh tab ke nilai default dan menimpa atau mengosongkan riwayat Changelog per tab (idempotent).
 - Pemulihan: ketujuh tab dikembalikan ke nilai default dan dataset Changelog ke keadaan awal oleh hook `after` suite; nilai yang diubah tiap TC dipulihkan oleh langkah penghubung antar TC.
 - Suite berjalan serial (`parallel: false`) karena spec ini memakai state global yang disebut pada butir pemulihan.
-- Fixture `fixtures/lifecycleSettings.json` belum ada dan disediakan tim FE; nilai Pre-setup dirujuk lewat `Fixture.lifecycleSettings.<kunci>` setelah tersedia.
+- Nilai Pre-setup dan state Changelog dirujuk lewat `Fixture.lifecycleSettings.<kunci>` dari `fixtures/lifecycle-settings.json`.
 
 ## Test Steps
 
@@ -35,51 +35,57 @@ coverage:
 2. Ubah Notify Plan Owner Before Event dari `45` menjadi `46`
 3. Klik `[Save]`
 4. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil
-5. Klik icon Changelog di pojok kanan atas panel tab `Client Lifecycle`
-6. Verifikasi footer modal Changelog menampilkan `1–1 of 1`
-7. Verifikasi baris 1: Date tanggal dan jam saat Save sesuai General Settings, Action `Edit`, Field `Notify Plan Owner Before Event`, Old Value `45`, New Value `46`, Modified By `Andi W`
-8. Verifikasi tidak ada baris untuk field lain
-9. Pulihkan ketujuh tab ke nilai default dan kosongkan Changelog tab `Client Lifecycle` lewat Fixture BE, lalu muat ulang halaman Lifecycle Settings
+5. Catat waktu sesudah toast sukses sebagai waktu Save
+6. Klik icon Changelog di pojok kanan atas panel tab `Client Lifecycle`
+7. Verifikasi footer modal Changelog menampilkan `1–1 of 1`
+8. Verifikasi baris 1: Date tanggal dan jam saat Save sesuai General Settings, Action `Edit`, Field `Notify Plan Owner Before Event`, Old Value `45`, New Value `46`, Modified By `Andi W`
+9. Verifikasi tidak ada baris untuk field lain
+10. Pulihkan ketujuh tab ke nilai default dan kosongkan Changelog tab `Client Lifecycle` lewat Fixture BE, lalu muat ulang halaman Lifecycle Settings
 
 ### TC-AC-LCS-449: Save perubahan First Reminder Before Event mencatat satu entri Edit pada Changelog Client Lifecycle
 
-10. Klik tab `Client Lifecycle`
-11. Ubah First Reminder Before Event dari `30` menjadi `31`
-12. Klik `[Save]`
-13. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil
-14. Klik icon Changelog di pojok kanan atas panel tab `Client Lifecycle`
-15. Verifikasi footer modal Changelog menampilkan `1–1 of 1`
-16. Verifikasi baris 1: Date tanggal dan jam saat Save sesuai General Settings, Action `Edit`, Field `First Reminder Before Event`, Old Value `30`, New Value `31`, Modified By `Andi W`
-17. Verifikasi tidak ada baris untuk field lain
-18. Pulihkan ketujuh tab ke nilai default dan kosongkan Changelog tab `Client Lifecycle` lewat Fixture BE, lalu muat ulang halaman Lifecycle Settings
+11. Klik tab `Client Lifecycle`
+12. Ubah First Reminder Before Event dari `30` menjadi `31`
+13. Klik `[Save]`
+14. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil
+15. Catat waktu sesudah toast sukses sebagai waktu Save
+16. Klik icon Changelog di pojok kanan atas panel tab `Client Lifecycle`
+17. Verifikasi footer modal Changelog menampilkan `1–1 of 1`
+18. Verifikasi baris 1: Date tanggal dan jam saat Save sesuai General Settings, Action `Edit`, Field `First Reminder Before Event`, Old Value `30`, New Value `31`, Modified By `Andi W`
+19. Verifikasi tidak ada baris untuk field lain
+20. Pulihkan ketujuh tab ke nilai default dan kosongkan Changelog tab `Client Lifecycle` lewat Fixture BE, lalu muat ulang halaman Lifecycle Settings
 
 ### TC-AC-LCS-450: Save perubahan Second Reminder Before Event mencatat satu entri Edit pada Changelog Client Lifecycle
 
-19. Klik tab `Client Lifecycle`
-20. Ubah Second Reminder Before Event dari `7` menjadi `8`
-21. Klik `[Save]`
-22. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil
-23. Klik icon Changelog di pojok kanan atas panel tab `Client Lifecycle`
-24. Verifikasi footer modal Changelog menampilkan `1–1 of 1`
-25. Verifikasi baris 1: Date tanggal dan jam saat Save sesuai General Settings, Action `Edit`, Field `Second Reminder Before Event`, Old Value `7`, New Value `8`, Modified By `Andi W`
-26. Verifikasi tidak ada baris untuk field lain
-27. Pulihkan ketujuh tab ke nilai default dan kosongkan Changelog tab `Client Lifecycle` lewat Fixture BE, lalu muat ulang halaman Lifecycle Settings
+21. Klik tab `Client Lifecycle`
+22. Ubah Second Reminder Before Event dari `7` menjadi `8`
+23. Klik `[Save]`
+24. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil
+25. Catat waktu sesudah toast sukses sebagai waktu Save
+26. Klik icon Changelog di pojok kanan atas panel tab `Client Lifecycle`
+27. Verifikasi footer modal Changelog menampilkan `1–1 of 1`
+28. Verifikasi baris 1: Date tanggal dan jam saat Save sesuai General Settings, Action `Edit`, Field `Second Reminder Before Event`, Old Value `7`, New Value `8`, Modified By `Andi W`
+29. Verifikasi tidak ada baris untuk field lain
+30. Pulihkan ketujuh tab ke nilai default dan kosongkan Changelog tab `Client Lifecycle` lewat Fixture BE, lalu muat ulang halaman Lifecycle Settings
 
 ### TC-AC-LCS-451: Save perubahan Final Reminder Before Event mencatat satu entri Edit pada Changelog Client Lifecycle
 
-28. Klik tab `Client Lifecycle`
-29. Ubah Final Reminder Before Event dari `1` menjadi `2`
-30. Klik `[Save]`
-31. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil
-32. Klik icon Changelog di pojok kanan atas panel tab `Client Lifecycle`
-33. Verifikasi footer modal Changelog menampilkan `1–1 of 1`
-34. Verifikasi baris 1: Date tanggal dan jam saat Save sesuai General Settings, Action `Edit`, Field `Final Reminder Before Event`, Old Value `1`, New Value `2`, Modified By `Andi W`
-35. Verifikasi tidak ada baris untuk field lain
+31. Klik tab `Client Lifecycle`
+32. Ubah Final Reminder Before Event dari `1` menjadi `2`
+33. Klik `[Save]`
+34. Verifikasi toast sukses "Success, client lifecycle settings have been saved." tampil
+35. Catat waktu sesudah toast sukses sebagai waktu Save
+36. Klik icon Changelog di pojok kanan atas panel tab `Client Lifecycle`
+37. Verifikasi footer modal Changelog menampilkan `1–1 of 1`
+38. Verifikasi baris 1: Date tanggal dan jam saat Save sesuai General Settings, Action `Edit`, Field `Final Reminder Before Event`, Old Value `1`, New Value `2`, Modified By `Andi W`
+39. Verifikasi tidak ada baris untuk field lain
 
 ## Notes
 
 - Langkah penghubung tanpa `Verifikasi`: "Pulihkan ketujuh tab ... lalu muat ulang halaman Lifecycle Settings" antar TC (memulihkan nilai default dan Changelog kosong sebagai precondition TC berikutnya, S-03, S-09) dan "Klik tab" (precondition TC: user berada di tab terkait).
 - Expected "Tidak ada baris untuk field lain" adalah asersi jumlah dan state (footer `1–1 of 1` dengan Changelog kosong sebelum aksi), bukan asersi absence kelas g.
 - Satu `Verifikasi` baris Changelog memuat seluruh kolom satu entri (Date, Action, Field, Old Value, New Value, Modified By) karena diamati dari satu baris (S-01).
-- Temuan untuk QA: TC mensyaratkan "Changelog tab kosong" sedangkan Changelog permanen; cara mengosongkan hanya lewat Fixture BE yang tidak didefinisikan di TC, PRD, atau LLD (S-13).
+- Pengecualian A-15: total entri Changelog (footer `1–1 of 1`) diasersi sebagai angka absolut karena riwayat tab dikosongkan lewat Fixture BE di hook `before` spec dan di langkah penghubung antar TC, lalu dikembalikan di hook `after`; suite berjalan serial.
+- Langkah "Catat waktu sesudah toast sukses sebagai waktu Save" adalah langkah penghubung sebagai pembanding kolom Date (S-12).
 - Temuan untuk QA: Post Condition TC (nilai tersimpan dan satu entri tercatat) tidak punya langkah observasi sendiri; nilai tersimpan teramati lewat kolom New Value baris Changelog dan Post Condition tidak diasersi terpisah (S-01).
+- Alasan di atas sekitar 35 langkah: keempat blok TC (448 sampai 451) memakai pola yang sama (Save satu field tab Client Lifecycle lalu membaca baris Changelog), semuanya satu kelas harness, dan tiap blok dimulai dari state default dan Changelog kosong yang dipulihkan langkah penghubung; memecahnya hanya mengulang pemulihan ketujuh tab dan muat ulang yang sama, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.

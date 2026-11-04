@@ -82,7 +82,8 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - `K-1`: TC defense-in-depth (kelas a) dengan Expected respons API tetap masuk spec FE+BE walau isinya tumpang tindih dengan `tc-plans-licensing-lifecycle-settings-backend.md`; TC granular tetap sumber dan tiap TC tepat satu spec.
 - Urutan TC mengikuti urutan nomor kolom `sourceTc`.
-- Expected c "Tidak ada entri Changelog baru" TC 586, 588, 590 diasersi di spec absence (kelas g, nomor 137 sampai 140) dengan permintaan tersebut sebagai pemicu, user dan baseline sendiri (S-05, `P-5` butir a); id TC tetap di `sourceTc` spec ini dan spec ini hanya mengasersi status respons dan state data (bagian 8b butir 1).
+- Expected c "Tidak ada entri Changelog baru" TC-AC-LCS-586, TC-AC-LCS-588, TC-AC-LCS-590 diasersi di spec absence `TC-AC-LCS-E2E-137` (kelas g) dengan permintaan tersebut sebagai pemicu, user dan baseline sendiri (S-05, `P-5` butir a); id TC tetap di `sourceTc` spec ini dan spec ini hanya mengasersi status respons dan state data (bagian 8b butir 1).
+- Pemisahan dari 169 dan 170: satu spec per kelompok tab (Trial Settings, Free Plan Settings, License Timing) agar alur otorisasi Read Only tiap kelompok berdiri sendiri.
 - Temuan untuk QA:
   - TC 586 sampai 591 mensyaratkan sesi Read Only untuk permintaan langsung; spec memakai login API password akun Read Only (sesi API aktor).
   - TC tidak merinci nilai field lain pada payload permintaan langsung; spec memakai nilai tersimpan tab untuk field lain tanpa mengarang struktur payload (S-13).

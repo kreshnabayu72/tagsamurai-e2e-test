@@ -43,6 +43,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung (S-03, R-16): langkah 4 dan 12 (Ketik Search "PT Opsi Dinamis", tekan Enter) menemukan baris `PT Opsi Dinamis` karena sub-tab Active memuat lebih dari 10 Client; langkah 11 menutup panel Filter; langkah terakhir memulihkan Industry (Post Condition TC); hook `after` menjadi cadangan.
+- Pengecualian S-06 (diterima user 2026-11-03): Client target Edit tetap fixture A3 C-LST-4 `PT Opsi Dinamis` dan tidak direplika. Alasan objektif dari TC-AC-ACC-716 Precondition d dan Tabel A3: Industry `Oil & Gas` dan `Telecommunications` hanya dipakai C-LST-4; asersi langkah 3 dan 10 (opsi hilang atau muncul) hanya benar bila tidak ada Client lain ber-Industry itu, sehingga replika bersuffix dengan Industry yang sama akan membuat C-LST-4 menahan opsi `Telecommunications` dan langkah 10 gagal. Pemulihan Industry di langkah 13 dan hook `after` dipertahankan.
 - Temuan untuk QA
   - TC-AC-ACC-716: Langkah 2 `Buka menu ⋯ baris PT Opsi Dinamis` tidak menyebut cara menemukan baris (Search/halaman); spec menambah langkah penghubung Search `PT Opsi Dinamis` sebelum membuka menu `⋯`. Perlu diperjelas.
   - TC-AC-ACC-716: Langkah pemulihan Industry tidak diberi toast Expected; spec tidak mengasersinya.
