@@ -44,7 +44,7 @@ coverage:
 3. Klik Tab `Responsibilities`
 4. Klik sub-tab `Borrowed Assets`
 5. Pilih 100 baris per halaman pada Pagination
-6. Verifikasi sedikitnya satu baris tampil pada tabel (baris seed `Laptop 1 {runId}-117`)
+6. Verifikasi tabel memuat sedikitnya dua baris data uji (baris seed `Laptop 1 {runId}-117` dan `Laptop 2 {runId}-117`)
 7. Verifikasi urutan awal tabel adalah default sort: seluruh baris terurut `Due Return Date` ascending
 8. Klik header Transaction ID
 9. Verifikasi kolom Transaction ID terurut ascending A-Z pada seluruh baris (klik 1)
@@ -139,7 +139,7 @@ coverage:
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber (736, 737, 738, 753, 754) dipertahankan.
 - Data target: TC sumber memakai `Ahmad Fauzi`; spec memakai `Joko Susilo` (Tabel Pre-setup No. 19) dengan populasi aset pinjaman milik spec (lebih dari satu halaman), sehingga asersi memakai nilai seed bersuffix.
 - Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (mencari user target di User List); langkah 5 (100 baris per halaman supaya seluruh baris berada di satu halaman dan urutan teramati utuh); langkah 77 (mengosongkan Search); langkah 78, 79, 80 (mengosongkan Filter); langkah 81 (mengembalikan sort ke default); langkah 82 (memulihkan page size 10). Urutan sort diasersi pada seluruh baris dengan page size 100 karena `B0` tidak diketahui; arah urutan teramati bila kolom punya sedikitnya dua nilai distinct (S-11).
-- Asersi tambahan (S-03): langkah 6 dan 72 (sedikitnya satu baris tampil) adalah pembanding bagi asersi universal "seluruh baris" pada langkah sesudahnya (bagian 8b butir 2); langkah 7 memverifikasi default sort sebelum klik pertama, sebagai pembanding bagi "kembali ke default sort tabel" (klik 3) tiap kolom; klik 1 Due Return Date (Oldest First) menghasilkan urutan yang sama dengan default karena default sort tabel adalah Due Return Date ascending.
+- Asersi tambahan (S-03): langkah 6 (sedikitnya dua baris tampil, mendahului asersi urutan pertama pada langkah 7 karena urutan hanya bermakna bila ada dua baris atau lebih) dan langkah 72 (sedikitnya satu baris tampil) adalah pembanding bagi asersi universal "seluruh baris" pada langkah sesudahnya (bagian 8b butir 2); langkah 7 memverifikasi default sort sebelum klik pertama, sebagai pembanding bagi "kembali ke default sort tabel" (klik 3) tiap kolom; klik 1 Due Return Date (Oldest First) menghasilkan urutan yang sama dengan default karena default sort tabel adalah Due Return Date ascending.
 - Langkah 64 hanya mengasersi baris halaman 1: pada page size 10 hasil Search (26 baris) terurut default `Due Return Date` ascending, sehingga delapan baris grup Laptop (hari uji + 10) menempati halaman 1; baris `Proyektor 1` dan `Kamera 1` berada di halaman berikutnya dan tidak diasersi di langkah ini. TC-GS-USER-754 tidak menyebut page size sebelum langkah 70.
 - Search `{runId}-117` pada TC-GS-USER-754 dipilih sebagai keyword karena Name seed memuat suffix itu (Search mencocokkan Name, Brand, dan Model / Type); hasil Search = 26 baris seed tanpa baris `B0`, sehingga irisan dengan Filter PIC `Andi Wijaya` = 16 baris (grup Laptop dan Kamera) dan seluruhnya muat dalam page size 25.
 - Spec melewati sekitar 35 langkah (82 langkah) karena TC-GS-USER-736 menguji enam kolom dengan blok identik (klik 1, 2, 3 beserta `Verifikasi` tiap klik); semuanya satu kelas harness (fungsional, baca saja) pada satu layar dan satu dataset seed, dan tiap blok kolom berdiri sendiri.

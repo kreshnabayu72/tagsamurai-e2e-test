@@ -22,7 +22,6 @@ coverage:
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control). Hook `after` mengembalikan sesi ke akun default suite (Total Control, `FA_TC_PASSWORD`).
 - Data Pre-setup: #15 (Ahmad Fauzi, Budi Santoso, Budi Setiawan, Citra Lestari, Dimas Pranata, Endah Susanti; Citra Lestari memegang `Import data` Read saja, `Manage Open API` Read dan Update, `Manage accounting` CRUD penuh), #12 (Maya Anggraeni Read Only), #3 (Rina Wulandari Total Control kedua), #1 (Admin Utama Default User).
 - Waktu: jam server dan jam browser sinkron untuk asersi Last Updated (S-12); waktu dicatat sesudah `[Assign]`, toleransi satu menit.
-- Kemampuan baca state lewat fixture BE (disediakan tim FE/BE, tanpa endpoint karangan): daftar penugasan Group Role Citra Lestari dicatat sebagai baseline sebelum TC-FA-RP-195.
 - Flag Guided Tooltip, halaman awal, sesi API aktor, dan pemulihan Pre-setup bersama: lihat `suite.md` bagian "Hook suite".
 - Data Pre-setup dirujuk lewat fixture `fixtures/fixedAssetRolePermission.json` (belum ada; disediakan tim FE). Email data pengguna berformat `[namalengkaptanpaspasi]@qwertysystem.net`.
 - Seeding dan pemulihan: kondisi Precondition tiap TC (tingkat akses, penugasan, group) dibuat lewat seeding API (kemampuan disediakan tim FE/BE, tanpa endpoint karangan) di hook `before` dan sebagai langkah penghubung antar blok TC; Pre-setup dipulihkan ke Tabel Data Uji Pre-setup TC di hook `after` (Catatan TC "Pemulihan fixture destruktif"). Spec tidak membuat data Dinamis. Suite berjalan serial (`parallel: false`).
@@ -93,7 +92,7 @@ coverage:
 50. Verifikasi baris Citra Lestari: hanya Read aktif
 51. Buka Detail Role Group Role `Manage files` lalu klik `All Groups`
 52. Ketik Search `Citra Lestari`, tekan Enter
-53. Verifikasi jumlah baris Citra Lestari pada Detail Role `Manage files` sama dengan baseline (tidak ada baris baru; Group Role tidak ikut cascade)
+53. Verifikasi pada setiap group baris Citra Lestari tampil di Detail Role `Manage files` dengan Read aktif saja (Delete tidak aktif; Group Role ikut cascade pola tier, `FARP-LOGIC-17b`)
 
 ## Notes
 
@@ -104,6 +103,7 @@ coverage:
 - Langkah Search pada Tab Read Only (R-16) menemukan baris yang baru ditambahkan karena tabel memuat lebih banyak baris daripada satu halaman.
 - Post Condition TC-FA-RP-193 (a sampai d) dan TC-FA-RP-195 (a, b) tidak punya langkah observasi dan tidak diasersi (S-01, S-15).
 - Temuan untuk QA:
-  - TC-FA-RP-195 Expected e: Pre-setup #39 memuat Citra Lestari di `Head Office` pada `Manage files`; "tidak ada baris baru" diasersi sebagai jumlah baris sama dengan baseline (S-12).
+  - TC-FA-RP-195 Expected e memuat klausa entri Changelog per Role × Group (`Assign (via Read Only)` dan `Edit`) tanpa langkah observasi di TC dan tanpa TC rujukan; klausa itu tidak diasersi (S-15), langkah 53 hanya mengasersi baris Citra Lestari di Detail Role `Manage files`.
+  - TC-FA-RP-195 Expected e menyebut "setiap group" tanpa daftar group; langkah 53 mengamati baris Citra Lestari pada hasil Search `All Groups` untuk seluruh group pohon Pre-setup #18.
   - TC-FA-RP-195 Expected b menyebut "Update yang tadi aktif menjadi tidak aktif" (nilai sebelum Assign, didasarkan Pre-setup #15); spec mengasersi keadaan sesudah Assign (Update tidak aktif).
 - Ukuran spec (53 langkah, di atas smell sekitar 35 langkah): semua blok berkelas fungsional, memakai permukaan dan dataset Pre-setup yang sama, dan keempat blok (TC-FA-RP-196, 193, 194, 195) berurutan pada popup Assign Read Only di Tab Read Only dengan user dan Pre-setup yang sama, kondisi awalnya dibuat seeding di hook `before` dan urutannya terikat (TC-FA-RP-196 harus lebih dulu karena aksi sukses mengubah status user), sehingga memecahnya hanya menggandakan login, hook, dan pembukaan popup yang sama; langkah membengkak karena tiap klausa Expected menjadi satu `Verifikasi` (S-01). Tidak dipecah lagi (konvensi bagian 3, batas ukuran).

@@ -193,28 +193,30 @@ coverage:
 
 ### TC-GS-USER-401: Klik Name di Tab Non-Login User membuka Detail Non-Login User
 
-108. Klik Name `Agus Prasetyo {runId}-108`
-109. Verifikasi navigasi ke Detail Non-Login User `Agus Prasetyo {runId}-108`
+108. Klik icon Search, ketik `Agus Prasetyo {runId}-108`, tekan Enter
+109. Klik Name `Agus Prasetyo {runId}-108`
+110. Verifikasi navigasi ke Detail Non-Login User `Agus Prasetyo {runId}-108`
 
 ### TC-GS-USER-403: Tab Non-Login User tidak muncul di Detail Non-Login User
 
-110. Buka Global Settings > User > User List (sub-tab Login User)
-111. Klik sub-tab `Non-Login User`
-112. Klik icon Search, ketik `Agus Prasetyo {runId}-108`, tekan Enter
-113. Klik Name `Agus Prasetyo {runId}-108`
-114. Verifikasi halaman Detail Non-Login User `Agus Prasetyo {runId}-108` tampil
-115. Verifikasi Tab `Non-Login User` tidak dirender
+111. Buka Global Settings > User > User List (sub-tab Login User)
+112. Klik sub-tab `Non-Login User`
+113. Klik icon Search, ketik `Agus Prasetyo {runId}-108`, tekan Enter
+114. Klik Name `Agus Prasetyo {runId}-108`
+115. Verifikasi halaman Detail Non-Login User `Agus Prasetyo {runId}-108` tampil
+116. Verifikasi Tab `Non-Login User` tidak dirender
 
 ## Notes
 
 - Sumber TC: `global-settings/user/TestCases/tc-user.md`. Mode: FE+BE. Holder dan 12 Non-Login User dipenuhi spec ini lewat seeding di hook `before`; spec tidak menumpang spec lain.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: 402 (empty state, memakai user Pre-setup lain), 400 (screening), 671 sampai 677 (Search, satu pembukaan Tab), lalu 401 dan 403 di akhir karena keduanya berpindah ke Detail Non-Login User dan meninggalkan Tab. Urutan di `tc-user.md`: 400, 401, 402, 403, 671 sampai 677.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 7 dan 110 (membuka ulang User List supaya Search User List dalam keadaan awal; retensi Search saat kembali ke list belum diputuskan PRD, Open Item Filter Persistence), pencarian holder di User List pada tiap pembukaan, langkah 68 sampai 71 dan 104 sampai 107 (menampilkan dan menyembunyikan kolom curated), langkah membaca teks Last Update dan Temporary Until, serta penutupan Search dengan icon (✕) dan ← di antara kasus, dan langkah 21 dan 23 (membuka dan menutup Search untuk memverifikasi placeholder TC-GS-USER-400).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 7 dan 111 (membuka ulang User List supaya Search User List dalam keadaan awal; retensi Search saat kembali ke list belum diputuskan PRD, Open Item Filter Persistence), pencarian holder di User List pada tiap pembukaan, langkah 68 sampai 71 dan 104 sampai 107 (menampilkan dan menyembunyikan kolom curated), langkah membaca teks Last Update dan Temporary Until, serta penutupan Search dengan icon (✕) dan ← di antara kasus, dan langkah 21 dan 23 (membuka dan menutup Search untuk memverifikasi placeholder TC-GS-USER-400).
+- Langkah 108 (mencari ulang `Agus Prasetyo {runId}-108` lewat Search sebelum Klik Name pada TC-GS-USER-401) adalah langkah penghubung tanpa `Verifikasi` (R-16): Search sudah ditutup dengan icon ← pada langkah 103, sedangkan baris `Agus Prasetyo {runId}-108` tidak dijamin berada pada halaman 1 (12 baris, page size 10).
 - Anchor positif (S-03, bagian 8b butir 2): `Verifikasi` baris `Citra Dewanti {runId}-108` tampil mendahului asersi `No results found` pada TC-GS-USER-675; `Verifikasi` 12 baris kembali mendahului asersi Temporary Until pada TC-GS-USER-675 dan asersi `No results found` pada TC-GS-USER-677; `Verifikasi` baris Active mendahului asersi ketiadaan baris Inactive pada TC-GS-USER-674. Anchor ini tidak ada di Expected TC.
 - Keyword dan nilai: kolom Temporary User dicari dengan `Ye` (potongan `Yes`); kolom Name dengan `Prasetyo`. Sel Last Update dan Temporary Until dibaca dari baris `Citra Dewanti`, satu-satunya baris yang memuat Temporary Until pada kumpulan baris hasil `Ye`.
 - Pembagian TC lintas spec: TC-GS-USER-404 dan 709 sampai 713 (Download) ada di spec 113; TC-GS-USER-678 sampai 686 (Filter Panel) ada di spec 109; TC-GS-USER-687 sampai 691 (kombinasi Search dan Filter) ada di spec 110; TC-GS-USER-692 sampai 696, 714, dan 715 (Sort dan Pagination) ada di spec 111; TC-GS-USER-697 sampai 708 (Setup Column) ada di spec 112.
-- Spec melewati sekitar 35 langkah (115 langkah) karena sebelas TC berbagi satu layar (Tab Non-Login User di Detail), satu dataset (12 Non-Login User milik spec), dan satu kelas harness (fungsional). Blok Search 671 sampai 677 berdiri sendiri (kegagalan satu blok tidak menghapus makna blok lain) dan memakai kotak Search yang sama, sehingga satu pembukaan Tab dipakai bersama; memisahkannya mengulang login, seeding 13 user, dan pembukaan Tab. Blok 673 menguji lima kolom dengan pola identik (keyword, `Verifikasi`, clear).
+- Spec melewati sekitar 35 langkah (116 langkah) karena sebelas TC berbagi satu layar (Tab Non-Login User di Detail), satu dataset (12 Non-Login User milik spec), dan satu kelas harness (fungsional). Blok Search 671 sampai 677 berdiri sendiri (kegagalan satu blok tidak menghapus makna blok lain) dan memakai kotak Search yang sama, sehingga satu pembukaan Tab dipakai bersama; memisahkannya mengulang login, seeding 13 user, dan pembukaan Tab. Blok 673 menguji lima kolom dengan pola identik (keyword, `Verifikasi`, clear).
 - Temuan untuk QA:
   - TC-GS-USER-400 Expected a: badge count `2` mengacu ke data Pre-setup (`Agus Prasetyo` Active dan `Lina Marlina` Inactive). Holder milik spec mewakili 12 Non-Login User (10 Active, 2 Inactive), sehingga spec mengasersi `12`.
   - TC-GS-USER-400, 401, 403 menyebut Name `Ahmad Fauzi` dan `Agus Prasetyo` tanpa suffix; spec memakai holder dan Non-Login User milik spec bersuffix (S-06, S-11).

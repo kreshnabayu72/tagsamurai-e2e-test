@@ -43,24 +43,24 @@ coverage:
 2. Hover `[+ User]`
 3. Verifikasi `[+ User]` tampil
 4. Verifikasi `[+ User]` disabled
-5. Verifikasi tooltip `"You don't have permission to edit."` tampil pada `[+ User]`
+5. Verifikasi tooltip `"Entity is suspended."` tampil pada `[+ User]`
 6. Hover switch Active baris `Dewi Lestari`
 7. Verifikasi switch Active baris `Dewi Lestari` tampil
 8. Verifikasi switch Active baris `Dewi Lestari` disabled
-9. Verifikasi tooltip `"You don't have permission to edit."` tampil pada switch Active baris `Dewi Lestari`
+9. Verifikasi tooltip `"Entity is suspended."` tampil pada switch Active baris `Dewi Lestari`
 10. Klik `⋯` pada baris `Dewi Lestari`
 11. Verifikasi opsi `Edit` dan `Delete` di overlay (⋯) tampil
 12. Verifikasi opsi `Edit` dan `Delete` di overlay (⋯) disabled
 13. Hover opsi `Edit`
-14. Verifikasi tooltip `"You don't have permission to edit."` tampil pada opsi `Edit`
+14. Verifikasi tooltip `"Entity is suspended."` tampil pada opsi `Edit`
 15. Hover opsi `Delete`
-16. Verifikasi tooltip `"You don't have permission to edit."` tampil pada opsi `Delete`
+16. Verifikasi tooltip `"Entity is suspended."` tampil pada opsi `Delete`
 17. Tekan Esc untuk menutup overlay (⋯)
 18. Klik Name `Dewi Lestari`
 19. Verifikasi icon inline edit Custom Field `Blood Type` di Detail tampil
 20. Verifikasi icon inline edit Custom Field `Blood Type` di Detail disabled
 21. Hover icon inline edit Custom Field `Blood Type`
-22. Verifikasi tooltip `"You don't have permission to edit."` tampil pada icon inline edit Custom Field `Blood Type`
+22. Verifikasi tooltip `"Entity is suspended."` tampil pada icon inline edit Custom Field `Blood Type`
 
 ### Client Suspended: aksi tulis tidak diproses dan data tetap terbaca (TC-GS-USER-984)
 
@@ -89,7 +89,7 @@ coverage:
 42. Tangkap token sesi Total Control Client Suspended, lalu kirim request Edit user `Dewi Lestari` langsung ke server tanpa lewat UI
 43. Verifikasi server menolak dengan `403`
 44. Muat ulang halaman User List
-45. Klik icon Search, ketik `Dewi Lestari`, tekan Enter
+45. Ganti isi kotak search dengan `Dewi Lestari`, tekan Enter
 46. Verifikasi Last Update baris `Dewi Lestari` sama dengan `{lu}` (data tidak berubah)
 
 ### Client Expired: kontrol tulis sama dengan Suspended (TC-GS-USER-1026)
@@ -99,9 +99,9 @@ coverage:
 49. Verifikasi `[+ User]` dan switch Active baris `Dewi Lestari` tampil
 50. Verifikasi `[+ User]` dan switch Active baris `Dewi Lestari` disabled
 51. Hover `[+ User]`
-52. Verifikasi tooltip `"You don't have permission to edit."` tampil pada `[+ User]`
+52. Verifikasi tooltip `"Entity is suspended."` tampil pada `[+ User]`
 53. Hover switch Active baris `Dewi Lestari`
-54. Verifikasi tooltip `"You don't have permission to edit."` tampil pada switch Active baris `Dewi Lestari`
+54. Verifikasi tooltip `"Entity is suspended."` tampil pada switch Active baris `Dewi Lestari`
 
 ## Notes
 
@@ -118,4 +118,3 @@ coverage:
   - TC-GS-USER-984: Langkah Uji "coba klik" kontrol Disabled tidak menyebut hasil terlihat selain "tidak ada aksi tulis yang berhasil diproses"; spec mengasersi form atau dialog tidak muncul dan status tidak berubah. Expected b ("Data tetap dapat dibaca (List, Detail, log)") tidak menyebut log mana; spec memakai Tab Changelog pada Detail dan mengasumsikan Dewi punya sedikitnya satu entri Changelog.
   - TC-GS-USER-1025: Expected b (toast error `"Changes can't be saved while this workspace is suspended or expired."`) adalah perilaku FE untuk request langsung; tidak diasersi di spec ini (bagian 8b butir 1). TC juga tidak menyebut payload Edit; spec mengirim request Edit untuk Dewi dan membandingkan Last Update.
   - TC-GS-USER-1026: Langkah Uji menyebut "Hover `[+ User]` dan switch Active" tanpa menyebut baris; spec memakai baris `Dewi Lestari`. TC tidak menyebut perilaku opsi overlay, icon inline edit, dan request langsung pada Client Expired; spec hanya mengasersi dua kontrol yang disebut.
-  - TC-GS-USER-1021 sampai 1024, 1026: tooltip `"You don't have permission to edit."` tertulis dengan tanda kutip ganda; tidak jelas apakah tanda kutip bagian dari teks tooltip atau pembatas.

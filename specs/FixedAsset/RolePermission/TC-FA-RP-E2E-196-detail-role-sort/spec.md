@@ -25,29 +25,30 @@ coverage:
 |---|---|---|---|
 | Total Control (Siti Rahmawati) | #2 | `totalControl_automated_{namaCompany}@qwertysystem.net` (`Fixture.fixedAssetRolePermission.akun.totalControl.email`) | `Spectra.env.FA_TC_PASSWORD` |
 
-- Data Pre-setup (Company Alpha): #39 (Detail Role Group Role `Manage files`, enam baris: Ahmad Fauzi (Asset Custodian, Logistics) di `Data Center`; Budi Santoso (Warehouse Staff, Logistics) di `Helpdesk`; Citra Lestari (HR Officer, HR) di `Head Office`; Dimas Pranata (IT Support, IT Operations) di `Data Center`; Endah Susanti (Procurement Officer, Procurement) di `Rack A1`; Fitri Handayani (Finance Officer, Finance, Pending Email Confirmation, Temporary User Yes dengan Temporary Until terisi) di `Dock 1`; Detail Role Global Role `Manage Open API` dan `Manage accounting` terisi Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata) dan #18 (pohon group). Tidak diubah spec ini.
+- Data Pre-setup (Company Alpha): #39 (Detail Role Group Role `Manage files`, 41 baris: 6 baris non-pola dan 35 baris pola Group Role. Baris non-pola: Ahmad Fauzi (Asset Custodian, Logistics) di `Data Center`; Budi Santoso (Warehouse Staff, Logistics) di `Helpdesk`; Citra Lestari (HR Officer, HR) di `Head Office`; Dimas Pranata (IT Support, IT Operations) di `Data Center`; Endah Susanti (Procurement Officer, Procurement) di `Rack A1`; Fitri Handayani (Finance Officer, Finance, Pending Email Confirmation, Temporary User Yes dengan Temporary Until terisi) di `Dock 1`; Detail Role Global Role `Manage Open API` dan `Manage accounting` terisi Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata. Baris pola `Manage files` ada pada tujuh group Pre-setup #18 untuk lima user pola: Admin Utama (System Administrator, IT Operations), Siti Rahmawati (Finance Officer, Accounting & Tax), Rina Wulandari (`Operations Manager, Region 1`, `Asset Management "North"`), Dewi Anggraini (Internal Auditor, Internal Audit), Maya Anggraeni (Compliance Analyst, Legal)) dan #18 (pohon group). Tidak diubah spec ini.
 - Pre-setup #22 (Custom Field aktif `Cost Center` `CC-100`/`CC-200`, `Joined Date`, `Badge No`; Ahmad Fauzi `CC-100`, 10/01/26, `BN-77`; Budi Santoso `CC-200`, 15/02/26, `BN-88`).
+- Ukuran halaman diubah menjadi 50 pada langkah 3 sehingga seluruh 41 baris tampil pada satu halaman; urutan antar baris bernilai sama pada kolom yang diurutkan tidak di-assert.
 - Urutan ascending TC-FA-RP-642:
 
 | Kolom | Urutan ascending |
 |---|---|
-| Name | Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata, Endah Susanti, Fitri Handayani |
-| Group | `Data Center` (Ahmad Fauzi, Dimas Pranata), `Dock 1` (Fitri Handayani), `Head Office` (Citra Lestari), `Helpdesk` (Budi Santoso), `Rack A1` (Endah Susanti), berdasarkan nama group |
-| Position | Asset Custodian (Ahmad), Finance Officer (Fitri), HR Officer (Citra), IT Support (Dimas), Procurement Officer (Endah), Warehouse Staff (Budi) |
-| Division | Finance (Fitri), HR (Citra), IT Operations (Dimas), Logistics (Ahmad, Budi), Procurement (Endah) |
+| Name | Admin Utama (7 baris pola, satu per group), Ahmad Fauzi, Budi Santoso, Citra Lestari, Dewi Anggraini (7), Dimas Pranata, Endah Susanti, Fitri Handayani, Maya Anggraeni (7), Rina Wulandari (7), Siti Rahmawati (7) |
+| Group | berdasarkan nama group: `Data Center` (Ahmad Fauzi, Dimas Pranata, lima baris pola), `Dock 1` (Fitri Handayani, lima baris pola), `Head Office` (Citra Lestari, lima baris pola), `Helpdesk` (Budi Santoso, lima baris pola), `IT Infrastructure` (lima baris pola), `Logistics Warehouse` (lima baris pola), `Rack A1` (Endah Susanti, lima baris pola) |
+| Position | Asset Custodian (Ahmad), Compliance Analyst (Maya Anggraeni, 7 baris pola), Finance Officer (Fitri; Siti Rahmawati, 7), HR Officer (Citra), Internal Auditor (Dewi Anggraini, 7), IT Support (Dimas), `Operations Manager, Region 1` (Rina Wulandari, 7), Procurement Officer (Endah), System Administrator (Admin Utama, 7), Warehouse Staff (Budi) |
+| Division | `Accounting & Tax` (Siti Rahmawati, 7 baris pola), `Asset Management "North"` (Rina Wulandari, 7), Finance (Fitri), HR (Citra), Internal Audit (Dewi Anggraini, 7), IT Operations (Dimas; Admin Utama, 7), Legal (Maya Anggraeni, 7), Logistics (Ahmad, Budi), Procurement (Endah) |
 
 - Urutan ascending TC-FA-RP-1079:
 
 | Kolom | Label klik 1 dan 2 | Urutan ascending |
 |---|---|---|
-| Email | ascending, descending | Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata, Endah Susanti, Fitri Handayani |
-| Activation Status | ascending, descending | `Activated` (lima baris) lalu `Pending Email Confirmation` (Fitri Handayani) |
-| Temporary User | ascending, descending | `No` (lima baris) sebelum `Yes` (Fitri Handayani) |
-| Temporary Until | ascending (Oldest First), descending (Newest First) | Fitri Handayani lebih dulu lalu lima baris tanpa nilai di akhir |
-| TAG | ascending, descending | Ahmad Fauzi (`TAG-1001`) lebih dulu lalu lima baris tanpa nilai di akhir |
-| Cost Center | ascending, descending | Ahmad Fauzi (`CC-100`), Budi Santoso (`CC-200`), lalu empat baris tanpa nilai di akhir |
-| Joined Date | ascending (Oldest First), descending (Newest First) | Ahmad Fauzi, Budi Santoso, lalu empat baris tanpa nilai di akhir |
-| Badge No | ascending, descending | Ahmad Fauzi (`BN-77`), Budi Santoso (`BN-88`), lalu empat baris tanpa nilai di akhir |
+| Email | ascending, descending | urutan relatif baris non-pola: Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata, Endah Susanti, Fitri Handayani; baris pola ikut terurut menurut nilai Email-nya |
+| Activation Status | ascending, descending | `Activated` (lima baris non-pola dan seluruh 35 baris pola) lalu `Pending Email Confirmation` (Fitri Handayani) |
+| Temporary User | ascending, descending | `No` (lima baris non-pola dan seluruh 35 baris pola) sebelum `Yes` (Fitri Handayani) |
+| Temporary Until | ascending (Oldest First), descending (Newest First) | Fitri Handayani lebih dulu lalu lima baris non-pola dan 35 baris pola tanpa nilai di akhir |
+| TAG | ascending, descending | Ahmad Fauzi (`TAG-1001`) lebih dulu lalu lima baris non-pola dan 35 baris pola tanpa nilai di akhir |
+| Cost Center | ascending, descending | Ahmad Fauzi (`CC-100`), Budi Santoso (`CC-200`), lalu empat baris non-pola dan 35 baris pola tanpa nilai di akhir |
+| Joined Date | ascending (Oldest First), descending (Newest First) | Ahmad Fauzi, Budi Santoso, lalu empat baris non-pola dan 35 baris pola tanpa nilai di akhir |
+| Badge No | ascending, descending | Ahmad Fauzi (`BN-77`), Budi Santoso (`BN-88`), lalu empat baris non-pola dan 35 baris pola tanpa nilai di akhir |
 
 - Fixture `Fixture.fixedAssetRolePermission` belum ada; kunci akun, nama pengguna, group, dan nilai kolom yang diasersi ditambahkan tim FE.
 - Kemampuan teknis (disediakan tim FE/BE): hapus preferensi kolom di browser (hook `after`); seret (drag and drop), hover, dan scroll horizontal pada tabel.
@@ -59,8 +60,8 @@ coverage:
 
 1. Klik Tab `System`
 2. Klik Role Name `Manage files` pada section Group Role
-3. Klik `All Groups` di Sidebar Group Tree
-4. Verifikasi tabel terurut Name A-Z: Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata, Endah Susanti, Fitri Handayani
+3. Klik `All Groups` di Sidebar Group Tree, lalu ubah ukuran halaman menjadi 50
+4. Verifikasi tabel terurut Name A-Z pada 41 baris (6 non-pola dan 35 baris pola): Admin Utama (7 baris pola, satu per group), Ahmad Fauzi, Budi Santoso, Citra Lestari, Dewi Anggraini (7), Dimas Pranata, Endah Susanti, Fitri Handayani, Maya Anggraeni (7), Rina Wulandari (7), Siti Rahmawati (7); urutan antar baris ber-Name sama tidak di-assert
 
 ### TC-FA-RP-642: Sort Detail Role siklus tiga state kelas teks
 
@@ -80,7 +81,7 @@ coverage:
 15. Klik header kolom Checkbox sekali lagi untuk membatalkan seleksi baris
 16. Klik header kolom matriks CRUD
 17. Klik header kolom Actions
-18. Verifikasi klik pada header ketiga kolom tidak mengubah urutan (urutan Name A-Z: Ahmad Fauzi, Budi Santoso, Citra Lestari, Dimas Pranata, Endah Susanti, Fitri Handayani)
+18. Verifikasi klik pada header ketiga kolom tidak mengubah urutan (urutan Name A-Z: Admin Utama (7 baris pola, satu per group), Ahmad Fauzi, Budi Santoso, Citra Lestari, Dewi Anggraini (7), Dimas Pranata, Endah Susanti, Fitri Handayani, Maya Anggraeni (7), Rina Wulandari (7), Siti Rahmawati (7))
 
 ### TC-FA-RP-1079: Sort Detail Role siklus tiga state kolom curated
 

@@ -59,7 +59,11 @@ Spec hanya-FE dikelompokkan per layar atau topik UI (contoh: "Setup Column", "To
 
 **Ditahan:** aturan berstatus `held` di rules JSON (disentuh temuan terbuka `prd-internal-gap-check`, mis. `IGAP-0012`, atau temuan dependensi `DEP-n`) tidak ditulis ke spec dan dicantumkan di tabel "Ditahan" beserta temuannya. Aturan yang menurut penulis ambigu atau kontradiktif ditahan juga (S-15). Aturan lain dalam modul tetap ditulis. Aturan keluar dari "Ditahan" pada run berikutnya sesudah temuannya ditutup di PRD.
 
-**Tidak masuk spec selain dua kelompok di atas:** tidak ada. Permutasi data yang tidak menambah alur baru digabung (bagian 3); itu penggabungan, bukan pengecualian: aturannya tetap dikutip `sourceRules`.
+**K-2, kewajiban turunan `[KEPUTUSAN 2026-11-04]`:** rules JSON memuat tiga lapis selain aturan ber-ID PRD, agar suite sama lengkap dengan alur yang memakai TC tanpa ada TC: (1) baris matriks dan butir UI standar PRD (`<PFX>:<section>/<baris>`: UI Visibility per Role, Action Visibility, Global Table Rules, Defaults & Ordering, Action Resilience, Sync Matrix, Data Visibility, Plan Gating, Component States, Interaction Patterns, Aksesibilitas, Mobile Layout); (2) kewajiban uji yang diturunkan dari struktur PRD menurut pilar `foundation/testcase-conventions.md` P0 sampai P21 (`<PFX>:obl/<surface>/<kewajiban>`, `obligation: true`): per tabel Setup Column screening, format sel, Search, Filter, dan Sort per kolom, siklus Search, Filter Panel, siklus dan urutan default sort, Setup Column (sembunyikan, geser, reset, pin, kolom curated), Pagination, Download, klik, hover, dan nilai kosong per kolom; per heading `Page:` screening, F5, dan klik ulang menu; per heading `Modal:` screening, keyboard, form kotor, dan klik ganda Submit; per dialog `D-nn` bertombol `[Cancel]` penutupan tanpa efek; (3) aturan ber-ID PRD seperti biasa. Katalog dan pemetaan pilar: `prd-harness/.harness/reference/e2e-prd-obligations.md`. Lapis 1 dan 2 diperlakukan seperti aturan leaf (K-1): dikutip spec, "Di luar E2E", atau "Ditahan". Isi yang diasersi untuk kewajiban turunan diambil dari baris PRD yang ditunjuknya (kolom Setup Column, §5, §9.5) dan dari bagian `prd-conventions.md` yang dirujuk PRD (`refs` di rules JSON); kewajiban turunan tidak pernah mengarang perilaku yang tidak dinyatakan keduanya.
+
+**Tidak berlaku `[KEPUTUSAN 2026-11-04]`:** kewajiban turunan (`obligation: true`, hanya lapis 2) yang dikesampingkan PRD sendiri (mis. tabel tanpa Pagination karena PRD membatasi jumlah baris, tabel read-only tanpa Download) dicantumkan di tabel "Tidak berlaku" halaman coverage dengan rujukan baris `L<n>` atau § PRD yang menyatakannya (T11). Aturan PRD (lapis 1 dan 3) tidak pernah "Tidak berlaku". Kewajiban yang PRD-nya diam bukan "Tidak berlaku": tulis spec dengan perilaku `prd-conventions.md` yang dirujuk, atau tahan dengan Temuan PRD (S-15).
+
+**Tidak masuk spec selain kelompok di atas:** tidak ada. Permutasi data yang tidak menambah alur baru digabung (bagian 3); itu penggabungan, bukan pengecualian: aturannya tetap dikutip `sourceRules`.
 
 **Klausa global:** klausa foundation (mis. `prd-conventions.md`) yang dirujuk PRD modul diasersi di bawah aturan PRD yang merujuknya. ID foundation tidak masuk `sourceRules`; hanya ID dari rules JSON yang dikutip.
 
@@ -295,15 +299,18 @@ Field `status`: `draft` saat spec.md selesai, `ready-for-automation` setelah dir
   | Aturan | Alasan | Rujukan tc-backend |
   ## Ditahan
   | Aturan | Temuan | Catatan |
+  ## Tidak berlaku
+  | Kewajiban | Alasan (rujukan PRD) |
   ## Spec
   | Spec | Mode | Langkah | Aturan |
   ## Catatan
   ```
 
-- `<N>` = jumlah semua aturan leaf di rules JSON (dikutip, di luar E2E, dan ditahan); `<M>` = jumlah folder spec di suite. PRD sha256 = 16 hex pertama sha256 PRD inti saat halaman ditulis.
+- `<N>` = jumlah semua aturan leaf di rules JSON, termasuk kewajiban turunan (dikutip, di luar E2E, ditahan, dan tidak berlaku); `<M>` = jumlah folder spec di suite. PRD sha256 = 16 hex pertama sha256 PRD inti saat halaman ditulis.
 - **Aturan → spec:** satu baris per aturan yang dikutip; kolom Spec mendaftar ID semua spec yang mengutipnya, kolom Mode `FE+BE`, `mock`, atau keduanya (nilai baris `Mode:` spec, bagian 2).
 - **Di luar E2E:** satu baris per aturan; Alasan salah satu dari tiga alasan bagian 2, tidak kosong; Rujukan tc-backend berisi ID case `tc-[modul]-backend.md` (contoh `TC-ACDS-BE-041`) bila ada, atau `-`. Aturan di tabel ini tidak dikutip spec mana pun (T4).
 - **Ditahan:** satu baris per aturan ditahan; Temuan berisi ID temuan (`IGAP-0012`, `DEP-3`) atau `baru: <ringkasan>` untuk Temuan PRD yang belum tercatat (S-15); Catatan bebas. Aturan di tabel ini tidak dikutip spec mana pun (T5).
+- **Tidak berlaku:** satu baris per kewajiban turunan (`<PFX>:obl/...`) yang dikesampingkan PRD; Alasan memuat rujukan `L<n>` atau § PRD. Kewajiban di tabel ini tidak dikutip spec mana pun (T11).
 - **Spec:** satu baris per spec (ID spec lengkap, sama dengan nama folder); Langkah = jumlah langkah bernomor; Aturan = daftar ID di `sourceRules` spec itu.
 - **Catatan:** keterangan suite (Temuan PRD lintas spec, ketergantungan run serial), tanpa narasi proses.
 
@@ -333,7 +340,7 @@ Berasal dari audit Account Activation (2026-10-08) dan audit sesudahnya. Ditulis
 14. **Pemulihan Setup Column `[KEPUTUSAN 2026-11-02]`.** Perubahan kolom yang diuji aturan Setup Column (uncheck atau check, geser, Pin) dipulihkan dengan langkah eksplisit tanpa `Verifikasi` dalam spec yang sama (check kembali lalu `[Save]`, geser kembali, Unpin), dicatat satu butir `## Notes` (S-03). Hook `after` hanya cadangan (S-09), bukan satu-satunya pemulihan. Pemindahan kolom yang dinyatakan aturan (mis. kolom pertama ke posisi terakhir) ditulis apa adanya. `[KEPUTUSAN 2026-11-03]` Kolom yang hanya dicentang sebagai precondition Search, Filter, atau Sort (bukan objek uji aturan) cukup dipulihkan oleh hook `after`.
 15. **Asersi urutan sort, Date seed, opsi dropdown, dan jumlah baris data uji `[KEPUTUSAN 2026-11-03]`.** (a) Asersi urutan hasil sort atau posisi baris pada tabel penuh memakai Search `{runId}` atau langkah pindah halaman eksplisit; tidak bergantung pada baris Pre-setup atau data bawaan. (b) Nilai Date seed diverifikasi tampil di tabel sebelum asersi kolom non-searchable atau Search per kolom Date. (c) Opsi dropdown filter yang searchable pada surface audit trail permanen (Changelog, System Log, User Log) diasersi sesudah mengetik di kotak search dropdown, bukan hanya membuka dropdown; daftar opsi per-user yang kecil dan diasersi sebagai "opsi = nilai distinct" atau "jumlah opsi sama" dikecualikan karena mengetik menyempitkan daftar. (d) Asersi sort sebagai `Verifikasi` pertama di surface itu didahului `Verifikasi` bahwa tabel memuat sedikitnya dua baris data uji.
 
-Pemeriksaan mekanis butir di atas dan keterlacakan dilakukan `python scripts/check-suite-prd.py <suite> --rules <rules-e2e-prd.json> [--coverage <page>] [--data <file>] [--tc-backend <file>]` (T1 sampai T10, C4 sampai C6, C9, C11 sampai C21; pemetaan butir ke kode ada di bagian 10a). Salinan skill `.claude/skills` dan `.agents/skills` dijaga sama dengan `python scripts/sync-skills.py --check`.
+Pemeriksaan mekanis butir di atas dan keterlacakan dilakukan `python scripts/check-suite-prd.py <suite> --rules <rules-e2e-prd.json> [--coverage <page>] [--data <file>] [--tc-backend <file>]` (T1 sampai T11, C4 sampai C6, C9, C11 sampai C21; pemetaan butir ke kode ada di bagian 10a). Salinan skill `.claude/skills` dan `.agents/skills` dijaga sama dengan `python scripts/sync-skills.py --check`.
 
 ## 9. Aturan Kode
 

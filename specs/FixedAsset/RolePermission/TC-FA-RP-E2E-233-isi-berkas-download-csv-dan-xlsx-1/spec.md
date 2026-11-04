@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE
 - Akun: Total Control (Pre-setup #2, Siti Rahmawati, `totalControl_automated_{namaCompany}@qwertysystem.net`), `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite pada tab awal Total Control.
 - Flag Guided Tooltip, sesi API aktor, dan pemulihan Pre-setup bersama mengikuti pernyataan "Hook suite" di `suite.md`.
-- Data Pre-setup (identitas dirujuk lewat `Fixture.fixedAssetRolePermission.<kunci>`; berkas fixture belum ada dan disediakan tim FE): #36 (Tab Total Control terisi sembilan baris; Rina Wulandari dengan Position `Operations Manager, Region 1` dan Division `Asset Management "North"`), #38 (Tab Group Manager terisi enam baris), dan #39 (Detail Role Group Role `Manage files` terisi enam baris). Pre-setup #37 dan #18 disebut Precondition TC dan dipakai sebagai precondition TC, tidak diasersi. Spec ini tidak mengubah data; Pre-setup di-seed ulang di hook `before` dan dipulihkan di hook `after`.
+- Data Pre-setup (identitas dirujuk lewat `Fixture.fixedAssetRolePermission.<kunci>`; berkas fixture belum ada dan disediakan tim FE): #36 (Tab Total Control terisi sembilan baris; Rina Wulandari dengan Position `Operations Manager, Region 1` dan Division `Asset Management "North"`), #38 (Tab Group Manager terisi enam baris), dan #39 (Detail Role Group Role `Manage files` terisi 41 baris: 6 baris non-pola dan 35 baris pola Group Role pada tujuh group Pre-setup #18 untuk lima user pola Admin Utama, Siti Rahmawati, Rina Wulandari, Dewi Anggraini, Maya Anggraeni). Pre-setup #37 dan #18 disebut Precondition TC dan dipakai sebagai precondition TC, tidak diasersi. Spec ini tidak mengubah data; Pre-setup di-seed ulang di hook `before` dan dipulihkan di hook `after`.
 - Kemampuan teknis (kelas binary buffer): pembaca isi berkas unduhan CSV dan XLSX (encoding, BOM, escape, sheet, nilai sel, dan urutan baris); disediakan tim FE/BE.
 
 ## Test Steps
@@ -63,7 +63,7 @@ coverage:
 29. Verifikasi nilai CSV yang berisi koma atau tanda kutip di-escape.
 30. Verifikasi XLSX memuat satu sheet bernama `Sheet1`.
 31. Verifikasi sel kosong ditulis `-` pada CSV dan XLSX.
-32. Verifikasi urutan baris CSV mengikuti Sort aktif (Position ascending): Ahmad Fauzi (Asset Custodian), Fitri Handayani (Finance Officer), Citra Lestari (HR Officer), Dimas Pranata (IT Support), Endah Susanti (Procurement Officer), Budi Santoso (Warehouse Staff).
+32. Verifikasi urutan baris CSV mengikuti Sort aktif (Position ascending): Ahmad Fauzi (Asset Custodian), Maya Anggraeni x7 (Compliance Analyst), Fitri Handayani dan Siti Rahmawati x7 (Finance Officer), Citra Lestari (HR Officer), Dewi Anggraini x7 (Internal Auditor), Dimas Pranata (IT Support), Rina Wulandari x7 (`Operations Manager, Region 1`), Endah Susanti (Procurement Officer), Admin Utama x7 (System Administrator), Budi Santoso (Warehouse Staff); x7 = baris pola pada tujuh group (Pre-setup #39); urutan antar baris ber-Position sama tidak di-assert.
 33. Verifikasi urutan baris XLSX sama dengan urutan CSV pada langkah 32.
 
 ## Notes
@@ -71,7 +71,7 @@ coverage:
 - Langkah penghubung (S-03): langkah 10 dan 21 (mengembalikan sort ke default antar TC, sesuai S-09), 11 dan 22 sampai 24 (berpindah tab dan memilih surface sesuai Precondition TC; Tab `Total Control` dibuka hook `beforeEach` suite sehingga langkah TC `Klik Tab Total Control` tidak diulang).
 - Kelas f (binary buffer): spec hanya memuat TC yang mengasersi isi berkas.
 - Temuan untuk QA:
-  - Data Pre-setup #38 dan #39 tidak memuat nilai yang berisi koma atau tanda kutip, sehingga asersi escape pada langkah 16 dan 29 hanya terasersi pada data #36 (langkah 5).
+  - Data Pre-setup #38 tidak memuat nilai yang berisi koma atau tanda kutip, sehingga asersi escape pada langkah 16 hanya terasersi pada data #36 (langkah 5); pada Detail Role (langkah 29) baris pola Rina Wulandari memuat Position `Operations Manager, Region 1` dan Division `Asset Management "North"`, tetapi TC 667 tidak menyebut baris itu pada Expected escape.
   - TC 525, 573, dan 667 mengasersi urutan file tanpa menyebut urutan XLSX terpisah; spec mengasersi urutan XLSX sama dengan CSV (Expected "urutan baris berkas").
   - TC 667 menyebut precondition `User berada di ... System`; spec menambah langkah 22 karena halaman awal adalah Tab `Total Control`.
   - `caseType` spec ini `Edge` karena seluruh TC sumber bertipe Edge Case.

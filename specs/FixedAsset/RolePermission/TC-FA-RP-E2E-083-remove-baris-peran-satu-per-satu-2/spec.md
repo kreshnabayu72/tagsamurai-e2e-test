@@ -22,8 +22,8 @@ coverage:
 - Environment variable: `FA_TC_PASSWORD`, `FA_TC2_PASSWORD`. Password tidak ditulis di spec atau fixture; semua nama env didaftarkan di `executionConfig.environmentVariables` dan `.env.example` (lihat suite.md).
 - Sesi API aktor: login API untuk pelaku kedua dan pembacaan state lewat fixture BE mengikuti pernyataan di suite.md.
 - Pelaku kedua (Sesi 2) pada TC-FA-RP-283: Total Control kedua Rina Wulandari (Pre-setup #3), `totalControlSecond_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TC2_PASSWORD`, lewat sesi API (hanya memicu perubahan state, bukan konteks UI kedua).
-- Data Pre-setup: pool #15 (Budi Santoso, Endah Susanti) dan #18. Budi Santoso memegang Global Role `Manage Open API`; Endah Susanti satu-satunya pemegang Group Role `View asset value` di `Data Center`. Disiapkan lewat seed API di hook `before` dan sebagai langkah penghubung (langkah 10).
-- Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): pulihkan data Pre-setup yang diubah spec ini ke kondisi Tabel Data Uji Pre-setup TC (penugasan Budi Santoso `Manage Open API` dan Endah Susanti `View asset value` di `Data Center`), mengikuti catatan "Pemulihan fixture destruktif" di TC; pemulihan dijamin fixture backend yang disediakan tim FE/BE (lihat suite.md).
+- Data Pre-setup: pool #15 (Budi Santoso, Endah Susanti) dan #18. Budi Santoso memegang Global Role `Manage Open API`; Endah Susanti satu-satunya pemegang Group Role `Manage user & role` di `Data Center` (role ini tidak memuat baris pola Total Control, Read Only, atau Default User, `FARP-LOGIC-04b`/`24`, sehingga tabel dapat benar-benar kosong). Disiapkan lewat seed API di hook `before` dan sebagai langkah penghubung (langkah 10).
+- Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): pulihkan data Pre-setup yang diubah spec ini ke kondisi Tabel Data Uji Pre-setup TC (penugasan Budi Santoso `Manage Open API` dan Endah Susanti `Manage user & role` di `Data Center`), mengikuti catatan "Pemulihan fixture destruktif" di TC; pemulihan dijamin fixture backend yang disediakan tim FE/BE (lihat suite.md).
 
 ## Test Steps
 
@@ -39,21 +39,22 @@ coverage:
 8. Verifikasi Detail Role `Manage Open API` termuat: judul Detail Role dan header tabel tampil
 9. Verifikasi tabel Sesi 1 tidak memuat baris Budi Santoso
 
-### TC-FA-RP-1016: Remove baris terakhir menuju empty state dan Assign keluar dari empty state
+### TC-FA-RP-1016: Remove baris terakhir menuju empty state dan Assign keluar dari empty state pada Detail Role Group Role tanpa baris pola (`Manage user & role`)
 
-10. Pulihkan state lewat seed API: role `View asset value` hanya memiliki satu penugasan, Endah Susanti di `Data Center`
-11. Klik Tab `System`, klik Role Name `View asset value` pada section Group Role
+10. Pulihkan state lewat seed API: role `Manage user & role` hanya memiliki satu penugasan, Endah Susanti di `Data Center`
+11. Klik Tab `System`, klik Role Name `Manage user & role` pada section Group Role
 12. Klik `All Groups` di Sidebar Group Tree
 13. Klik `[⋯]` baris Endah Susanti lalu `Remove`, klik `[Remove]`
 14. Verifikasi muncul toast sukses: `Success, user has been removed.`
 15. Verifikasi tabel menampilkan empty state: Title `No users assigned` dan Description `Assign users to grant them access with this capability.`
 16. Klik `[+ Assign]`, pilih group `Data Center`
 17. Centang Endah Susanti, klik `[Assign]`
-18. Verifikasi muncul toast sukses: `Success, View asset value has been assigned.`
+18. Verifikasi muncul toast sukses: `Success, Manage user & role has been assigned.`
 19. Verifikasi empty state hilang
 20. Verifikasi baris Endah Susanti tampil dengan badge Group `Data Center`
 21. Verifikasi Read tercentang Disabled
-22. Verifikasi Create, Update, dan Delete menampilkan `—`
+22. Verifikasi Update tidak tercentang
+23. Verifikasi Create dan Delete menampilkan `—`
 
 ## Notes
 

@@ -82,130 +82,132 @@ coverage:
 18. Pasang intercept pada respons perubahan status user: jawab 5xx untuk semua request
 19. Centang baris `Jane Smith {runId}-067` dan `Budi Santoso {runId}-067`
 20. Bulk Action → `Activate`
-21. Klik `[Activate]` pada dialog konfirmasi
-22. Verifikasi toast error: "Error, failed to activate user."
-23. Verifikasi toast ringkasan "Success, user has been activated. Some items failed." tidak tampil
-24. Lepas intercept respons perubahan status user
-25. Verifikasi switch Active baris `Jane Smith {runId}-067` dan `Budi Santoso {runId}-067` tetap OFF
-26. Klik `[Cancel]` pada dialog Activate
-27. Klik icon `×` pada Bulk Action Bar
+21. Tunggu toast lama hilang otomatis
+22. Klik `[Activate]` pada dialog konfirmasi
+23. Verifikasi toast error: "Error, failed to activate user."
+24. Verifikasi toast ringkasan "Success, user has been activated. Some items failed." tidak tampil
+25. Lepas intercept respons perubahan status user
+26. Verifikasi switch Active baris `Jane Smith {runId}-067` dan `Budi Santoso {runId}-067` tetap OFF
+27. Klik `[Cancel]` pada dialog Activate
+28. Klik icon `×` pada Bulk Action Bar
 
 ### TC-GS-USER-1049: Bulk Deactivate dengan seluruh baris gagal server memakai toast gagal Deactivate
 
-28. Pasang intercept pada respons perubahan status user: jawab 5xx untuk semua request
-29. Centang baris `Dewi Lestari {runId}-067` dan `Joko Susilo {runId}-067`
-30. Bulk Action → `Deactivate`
-31. Klik `[Deactivate]` pada dialog konfirmasi
-32. Verifikasi toast error: "Error, failed to deactivate user."
-33. Verifikasi toast ringkasan "Success, user has been deactivated. Some items failed." tidak tampil
-34. Lepas intercept respons perubahan status user
-35. Verifikasi switch Active baris `Dewi Lestari {runId}-067` dan `Joko Susilo {runId}-067` tetap ON
-36. Klik `[Cancel]` pada dialog Deactivate
-37. Klik icon `×` pada Bulk Action Bar
+29. Pasang intercept pada respons perubahan status user: jawab 5xx untuk semua request
+30. Centang baris `Dewi Lestari {runId}-067` dan `Joko Susilo {runId}-067`
+31. Bulk Action → `Deactivate`
+32. Tunggu toast lama hilang otomatis
+33. Klik `[Deactivate]` pada dialog konfirmasi
+34. Verifikasi toast error: "Error, failed to deactivate user."
+35. Verifikasi toast ringkasan "Success, user has been deactivated. Some items failed." tidak tampil
+36. Lepas intercept respons perubahan status user
+37. Verifikasi switch Active baris `Dewi Lestari {runId}-067` dan `Joko Susilo {runId}-067` tetap ON
+38. Klik `[Cancel]` pada dialog Deactivate
+39. Klik icon `×` pada Bulk Action Bar
 
 ### TC-GS-USER-294: Bulk Activate dengan sebagian gagal server, toast ringkasan melaporkan baris gagal
 
-38. Pasang intercept pada respons perubahan status user untuk baris `Citra Dewanti {runId}-067`: jawab 5xx, request baris lain diteruskan
-39. Centang baris `Jane Smith {runId}-067`, `Budi Santoso {runId}-067`, dan `Citra Dewanti {runId}-067`
-40. Bulk Action → `Activate`
-41. Klik `[Activate]` pada dialog konfirmasi
-42. Verifikasi toast: "Success, user has been activated. Some items failed."
-43. Lepas intercept respons perubahan status user
+40. Pasang intercept pada respons perubahan status user untuk baris `Citra Dewanti {runId}-067`: jawab 5xx, request baris lain diteruskan
+41. Centang baris `Jane Smith {runId}-067`, `Budi Santoso {runId}-067`, dan `Citra Dewanti {runId}-067`
+42. Bulk Action → `Activate`
+43. Klik `[Activate]` pada dialog konfirmasi
+44. Verifikasi toast: "Success, user has been activated. Some items failed."
+45. Lepas intercept respons perubahan status user
 
 ### Persiapan Resend: baseline Changelog dan jam
 
-44. Klik icon Changelog di Table Tools
-45. Verifikasi Modal Changelog User memuat entri (pembanding sebelum Search)
-46. Klik icon Search pada Modal Changelog, ketik `{runId}-067`, tekan Enter
-47. Catat jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-067`, `Andre Kurniawan {runId}-067`, `Maya Anggraini {runId}-067`, dan `Rahmat Hidayat {runId}-067` sebagai baseline B_Mike, B_Andre, B_Maya, dan B_Rahmat
-48. Tutup Modal Changelog User dengan klik `✕`
-49. Baca `T_s` dari mail-catcher untuk alamat seed (waktu terbit terbesar)
-50. Atur jam server dan jam browser ke `F1` = `T_s` + 120 detik dan bekukan
+46. Klik icon Changelog di Table Tools
+47. Verifikasi Modal Changelog User memuat entri (pembanding sebelum Search)
+48. Klik icon Search pada Modal Changelog, ketik `{runId}-067`, tekan Enter
+49. Catat jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-067`, `Andre Kurniawan {runId}-067`, `Maya Anggraini {runId}-067`, dan `Rahmat Hidayat {runId}-067` sebagai baseline B_Mike, B_Andre, B_Maya, dan B_Rahmat
+50. Tutup Modal Changelog User dengan klik `✕`
+51. Baca `T_s` dari mail-catcher untuk alamat seed (waktu terbit terbesar)
+52. Atur jam server dan jam browser ke `F1` = `T_s` + 120 detik dan bekukan
 
 ### TC-GS-USER-308: Resend Activation Email gagal tidak memulai cooldown
 
-51. Pasang intercept pada respons Resend Activation Email: jawab 5xx
-52. Klik (⋯) baris `Mike Tan {runId}-067` → `Resend Activation Email`
-53. Verifikasi toast error: "Error, failed to send activation email to Mike Tan {runId}-067."
-54. Lepas intercept respons Resend Activation Email
-55. Klik (⋯) baris `Mike Tan {runId}-067` lagi
-56. Hover opsi `Resend Activation Email`
-57. Verifikasi opsi `Resend Activation Email` enabled (cooldown tidak dimulai)
-58. Tekan Esc untuk menutup menu row action
+53. Pasang intercept pada respons Resend Activation Email: jawab 5xx
+54. Klik (⋯) baris `Mike Tan {runId}-067` → `Resend Activation Email`
+55. Verifikasi toast error: "Error, failed to send activation email to Mike Tan {runId}-067."
+56. Lepas intercept respons Resend Activation Email
+57. Klik (⋯) baris `Mike Tan {runId}-067` lagi
+58. Hover opsi `Resend Activation Email`
+59. Verifikasi opsi `Resend Activation Email` enabled (cooldown tidak dimulai)
+60. Tekan Esc untuk menutup menu row action
 
 ### TC-GS-USER-310: Resend Confirmation Email gagal
 
-59. Pasang intercept pada respons Resend Confirmation Email: jawab 5xx
-60. Klik (⋯) baris `Rina Putri {runId}-067` → `Resend Confirmation Email`
-61. Verifikasi toast error: "Error, failed to send confirmation email to Rina Putri {runId}-067."
-62. Lepas intercept respons Resend Confirmation Email
+61. Pasang intercept pada respons Resend Confirmation Email: jawab 5xx
+62. Klik (⋯) baris `Rina Putri {runId}-067` → `Resend Confirmation Email`
+63. Verifikasi toast error: "Error, failed to send confirmation email to Rina Putri {runId}-067."
+64. Lepas intercept respons Resend Confirmation Email
 
 ### TC-GS-USER-1037: Bulk Resend Activation Email, semua baris gagal server menampilkan toast error
 
-63. Pasang intercept pada respons Resend Activation Email: jawab 5xx untuk semua request
-64. Centang baris `Mike Tan {runId}-067` dan `Andre Kurniawan {runId}-067`
-65. Bulk Action → `Resend Activation Email`
-66. Verifikasi toast error: "Error, failed to send activation email."
-67. Lepas intercept respons Resend Activation Email
-68. Klik icon `×` pada Bulk Action Bar
-69. Klik (⋯) baris `Mike Tan {runId}-067`
-70. Hover opsi `Resend Activation Email`
-71. Verifikasi opsi `Resend Activation Email` enabled (cooldown Mike Tan tidak dimulai)
-72. Tekan Esc untuk menutup menu row action
-73. Klik (⋯) baris `Andre Kurniawan {runId}-067`
-74. Hover opsi `Resend Activation Email`
-75. Verifikasi opsi `Resend Activation Email` enabled (cooldown Andre Kurniawan tidak dimulai)
-76. Tekan Esc untuk menutup menu row action
-77. Pulihkan jam server dan jam browser ke waktu nyata
-78. Klik icon Changelog di Table Tools
-79. Verifikasi Modal Changelog User memuat entri (pembanding sebelum Search)
-80. Klik icon Search pada Modal Changelog, ketik `{runId}-067`, tekan Enter
-81. Verifikasi jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-067` sama dengan B_Mike (tidak ada baris baru)
-82. Verifikasi jumlah baris `Resend Activation Email` untuk `Andre Kurniawan {runId}-067` sama dengan B_Andre (tidak ada baris baru)
-83. Tutup Modal Changelog User dengan klik `✕`
+65. Pasang intercept pada respons Resend Activation Email: jawab 5xx untuk semua request
+66. Centang baris `Mike Tan {runId}-067` dan `Andre Kurniawan {runId}-067`
+67. Bulk Action → `Resend Activation Email`
+68. Verifikasi toast error: "Error, failed to send activation email."
+69. Lepas intercept respons Resend Activation Email
+70. Klik icon `×` pada Bulk Action Bar
+71. Klik (⋯) baris `Mike Tan {runId}-067`
+72. Hover opsi `Resend Activation Email`
+73. Verifikasi opsi `Resend Activation Email` enabled (cooldown Mike Tan tidak dimulai)
+74. Tekan Esc untuk menutup menu row action
+75. Klik (⋯) baris `Andre Kurniawan {runId}-067`
+76. Hover opsi `Resend Activation Email`
+77. Verifikasi opsi `Resend Activation Email` enabled (cooldown Andre Kurniawan tidak dimulai)
+78. Tekan Esc untuk menutup menu row action
+79. Pulihkan jam server dan jam browser ke waktu nyata
+80. Klik icon Changelog di Table Tools
+81. Verifikasi Modal Changelog User memuat entri (pembanding sebelum Search)
+82. Klik icon Search pada Modal Changelog, ketik `{runId}-067`, tekan Enter
+83. Verifikasi jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-067` sama dengan B_Mike (tidak ada baris baru)
+84. Verifikasi jumlah baris `Resend Activation Email` untuk `Andre Kurniawan {runId}-067` sama dengan B_Andre (tidak ada baris baru)
+85. Tutup Modal Changelog User dengan klik `✕`
 
 ### TC-GS-USER-1038: Bulk Resend Activation Email, sebagian baris gagal server menampilkan toast partial
 
-84. Atur jam server dan jam browser ke `F1` dan bekukan
-85. Pasang intercept pada respons Resend Activation Email untuk baris `Andre Kurniawan {runId}-067`: jawab 5xx, request baris lain diteruskan
-86. Centang baris `Mike Tan {runId}-067`, `Andre Kurniawan {runId}-067`, dan `Maya Anggraini {runId}-067`
-87. Bulk Action → `Resend Activation Email`
-88. Verifikasi toast: "Success, activation email has been sent. Some items failed."
-89. Lepas intercept respons Resend Activation Email
-90. Pulihkan jam server dan jam browser ke waktu nyata
-91. Klik icon Changelog di Table Tools
-92. Verifikasi Modal Changelog User memuat entri (pembanding sebelum Search)
-93. Klik icon Search pada Modal Changelog, ketik `{runId}-067`, tekan Enter
-94. Verifikasi jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-067` bertambah 1 dari B_Mike
-95. Verifikasi jumlah baris `Resend Activation Email` untuk `Maya Anggraini {runId}-067` bertambah 1 dari B_Maya
-96. Verifikasi jumlah baris `Resend Activation Email` untuk `Andre Kurniawan {runId}-067` sama dengan B_Andre (tidak ada baris baru)
-97. Tutup Modal Changelog User dengan klik `✕`
+86. Atur jam server dan jam browser ke `F1` dan bekukan
+87. Pasang intercept pada respons Resend Activation Email untuk baris `Andre Kurniawan {runId}-067`: jawab 5xx, request baris lain diteruskan
+88. Centang baris `Mike Tan {runId}-067`, `Andre Kurniawan {runId}-067`, dan `Maya Anggraini {runId}-067`
+89. Bulk Action → `Resend Activation Email`
+90. Verifikasi toast: "Success, activation email has been sent. Some items failed."
+91. Lepas intercept respons Resend Activation Email
+92. Pulihkan jam server dan jam browser ke waktu nyata
+93. Klik icon Changelog di Table Tools
+94. Verifikasi Modal Changelog User memuat entri (pembanding sebelum Search)
+95. Klik icon Search pada Modal Changelog, ketik `{runId}-067`, tekan Enter
+96. Verifikasi jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-067` bertambah 1 dari B_Mike
+97. Verifikasi jumlah baris `Resend Activation Email` untuk `Maya Anggraini {runId}-067` bertambah 1 dari B_Maya
+98. Verifikasi jumlah baris `Resend Activation Email` untuk `Andre Kurniawan {runId}-067` sama dengan B_Andre (tidak ada baris baru)
+99. Tutup Modal Changelog User dengan klik `✕`
 
 ### TC-GS-USER-1050: Bulk Resend Activation Email dengan baris cooldown dan baris gagal server sekaligus
 
-98. Atur jam server dan jam browser ke `F1` dan bekukan, sehingga cooldown `Mike Tan {runId}-067` dari TC-GS-USER-1038 masih berjalan sedangkan cooldown `Andre Kurniawan {runId}-067` dan `Rahmat Hidayat {runId}-067` sudah lewat
-99. Pasang intercept pada respons Resend Activation Email untuk baris `Rahmat Hidayat {runId}-067`: jawab 5xx, request baris lain diteruskan
-100. Centang baris `Mike Tan {runId}-067`, `Andre Kurniawan {runId}-067`, dan `Rahmat Hidayat {runId}-067`
-101. Bulk Action → `Resend Activation Email`
-102. Verifikasi toast: "Success, activation email has been sent. Some items failed."
-103. Verifikasi toast "Success, activation email has been sent. Some items were skipped (cooldown not finished)." tidak tampil
-104. Lepas intercept respons Resend Activation Email
-105. Pulihkan jam server dan jam browser ke waktu nyata
-106. Klik icon Changelog di Table Tools
-107. Verifikasi Modal Changelog User memuat entri (pembanding sebelum Search)
-108. Klik icon Search pada Modal Changelog, ketik `{runId}-067`, tekan Enter
-109. Verifikasi jumlah baris `Resend Activation Email` untuk `Andre Kurniawan {runId}-067` bertambah 1 dari B_Andre
-110. Verifikasi jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-067` sama dengan B_Mike + 1 (hanya baris dari TC-GS-USER-1038, tidak ada baris baru dari Bulk Resend ini)
-111. Verifikasi jumlah baris `Resend Activation Email` untuk `Rahmat Hidayat {runId}-067` sama dengan B_Rahmat (tidak ada baris baru)
-112. Tutup Modal Changelog User dengan klik `✕`
+100. Atur jam server dan jam browser ke `F1` dan bekukan, sehingga cooldown `Mike Tan {runId}-067` dari TC-GS-USER-1038 masih berjalan sedangkan cooldown `Andre Kurniawan {runId}-067` dan `Rahmat Hidayat {runId}-067` sudah lewat
+101. Pasang intercept pada respons Resend Activation Email untuk baris `Rahmat Hidayat {runId}-067`: jawab 5xx, request baris lain diteruskan
+102. Centang baris `Mike Tan {runId}-067`, `Andre Kurniawan {runId}-067`, dan `Rahmat Hidayat {runId}-067`
+103. Bulk Action → `Resend Activation Email`
+104. Verifikasi toast: "Success, activation email has been sent. Some items failed."
+105. Verifikasi toast "Success, activation email has been sent. Some items were skipped (cooldown not finished)." tidak tampil
+106. Lepas intercept respons Resend Activation Email
+107. Pulihkan jam server dan jam browser ke waktu nyata
+108. Klik icon Changelog di Table Tools
+109. Verifikasi Modal Changelog User memuat entri (pembanding sebelum Search)
+110. Klik icon Search pada Modal Changelog, ketik `{runId}-067`, tekan Enter
+111. Verifikasi jumlah baris `Resend Activation Email` untuk `Andre Kurniawan {runId}-067` bertambah 1 dari B_Andre
+112. Verifikasi jumlah baris `Resend Activation Email` untuk `Mike Tan {runId}-067` sama dengan B_Mike + 1 (hanya baris dari TC-GS-USER-1038, tidak ada baris baru dari Bulk Resend ini)
+113. Verifikasi jumlah baris `Resend Activation Email` untuk `Rahmat Hidayat {runId}-067` sama dengan B_Rahmat (tidak ada baris baru)
+114. Tutup Modal Changelog User dengan klik `✕`
 
 ## Notes
 
 - Mode: FE+BE (intercept parsial, kelas harness b: fault injection; bagian 6 konvensi). Sumber: `global-settings/user/TestCases/tc-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec melewati sekitar 35 langkah (112 langkah). Alasan: kesepuluh TC berada di satu kelas harness (b, kegagalan 5xx aksi tulis status dan Resend), satu akun, dan satu layar (User List); tiap blok TC berdiri sendiri (intercept sendiri, dilepas di dalam blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Penambah langkah terbesar adalah pembacaan Changelog per blok Resend dan pemulihan jam sebelum Modal Changelog dibuka (S-09).
+- Spec melewati sekitar 35 langkah (114 langkah). Alasan: kesepuluh TC berada di satu kelas harness (b, kegagalan 5xx aksi tulis status dan Resend), satu akun, dan satu layar (User List); tiap blok TC berdiri sendiri (intercept sendiri, dilepas di dalam blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Penambah langkah terbesar adalah pembacaan Changelog per blok Resend dan pemulihan jam sebelum Modal Changelog dibuka (S-09).
 - Urutan TC sumber diubah: TC-GS-USER-294 ditaruh sesudah TC-GS-USER-1048 dan TC-GS-USER-1049 karena TC-GS-USER-294 mengaktifkan dua user (aksi yang mengubah data), sedangkan TC-GS-USER-1048 dan 1049 memakai user yang sama dan membutuhkan keadaan awal tidak berubah. Blok Resend (TC-GS-USER-308, 310, 1037, 1038, 1050) mengikuti blok status; TC-GS-USER-1050 paling akhir karena cooldown Mike Tan dibentuk oleh TC-GS-USER-1038 (user dan jam dipakai berurutan).
-- Langkah penghubung (aksi tanpa `Verifikasi`): pembukaan layar dan Search `{runId}-067`, memasang dan melepas intercept, `[Cancel]` yang menutup dialog konfirmasi, klik icon `×` pada Bulk Action Bar, Esc menutup menu row action, hover opsi, mencatat baseline Changelog, membaca `T_s`, dan mengatur, membekukan, serta memulihkan jam. Verifikasi "Modal Changelog User memuat entri" adalah anchor positif sebelum Search (bagian 8b butir 2).
+- Langkah penghubung (aksi tanpa `Verifikasi`): `Tunggu toast lama hilang otomatis` sebelum `[Activate]` bulk (langkah 21) dan `[Deactivate]` bulk (langkah 32) agar toast gagal Activate/Deactivate pada langkah 14 dan 7 tidak dibaca ulang sebagai toast bulk, pembukaan layar dan Search `{runId}-067`, memasang dan melepas intercept, `[Cancel]` yang menutup dialog konfirmasi, klik icon `×` pada Bulk Action Bar, Esc menutup menu row action, hover opsi, mencatat baseline Changelog, membaca `T_s`, dan mengatur, membekukan, serta memulihkan jam. Verifikasi "Modal Changelog User memuat entri" adalah anchor positif sebelum Search (bagian 8b butir 2).
 - Jam dipulihkan ke waktu nyata sebelum Modal Changelog User dibuka (S-09). Log yang dibuat saat jam digeser bercap waktu di luar waktu nyata, sehingga asersi Changelog memakai selisih jumlah baris terhadap baseline per user (nama user bersuffix), bukan posisi teratas (S-12). Asersi "sama dengan baseline" adalah asersi jumlah, bukan asersi absence kelas g.
 - P-1: asersi "tidak ada baris log `Resend Activation Email` baru" TC-GS-USER-1037 (Expected b) dan "log hanya untuk baris yang terkirim" TC-GS-USER-1038 dan TC-GS-USER-1050 (Expected b) ditulis di spec ini sebagai selisih jumlah baris terhadap baseline, karena konteksnya bergantung pada state berat (user Pending Activation seed, jam dibekukan, cooldown yang dibentuk blok sebelumnya, dan intercept per baris) dan tidak ada spec absence yang memuat aksi nyata untuk TC-GS-USER-1037.
 - Pembagian TC lintas spec: Toggle Active sukses diverifikasi di spec 047, Bulk Activate dan Deactivate sukses di spec 054, Resend sukses, cooldown, dan Bulk Resend di spec 056; spec ini hanya memuat jalur kegagalan.

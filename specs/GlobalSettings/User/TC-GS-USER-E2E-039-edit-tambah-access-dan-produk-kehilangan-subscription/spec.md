@@ -47,7 +47,7 @@ coverage:
 
 ### TC-GS-USER-197: Produk yang kehilangan subscription
 
-10. Klik icon Search, ketik `Joko Susilo {runId}-039`, tekan Enter
+10. Ganti isi kotak search dengan `Joko Susilo {runId}-039`, tekan Enter
 11. Buka row action baris `Joko Susilo {runId}-039` lalu klik `Edit`
 12. Verifikasi Access `Supply Asset` tampil terpilih
 13. Hapus pilihan Access `Supply Asset`

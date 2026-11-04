@@ -116,9 +116,9 @@ coverage:
 57. Ubah Position `Supervisor {runId}-139` menjadi `Finance Manager`
 58. Klik `[Save]`
 59. Tunggu aksi selesai (Popup Edit tertutup)
-60. Buka Detail `Dewi Lestari Posisi {runId}-139` > Tab `Changelog`, urutkan Oldest First
-61. Verifikasi Tab Changelog Detail `Dewi Lestari Posisi {runId}-139`: baris pertama tetap Action `Edit`, Field `Position`, Old Value `Staff`, New Value `Supervisor {runId}-139`
-62. Verifikasi Tab Changelog Detail `Dewi Lestari Posisi {runId}-139`: baris kedua Action `Edit`, Field `Position`, Old Value `Supervisor {runId}-139`, New Value `Finance Manager`
+60. Buka Detail `Dewi Lestari Posisi {runId}-139` > Tab `Changelog`
+61. Verifikasi Tab Changelog Detail `Dewi Lestari Posisi {runId}-139`: ada baris Action `Edit`, Field `Position`, Old Value `Staff`, New Value `Supervisor {runId}-139` (baris dicari lewat nilai, bukan posisi baris)
+62. Verifikasi Tab Changelog Detail `Dewi Lestari Posisi {runId}-139`: ada baris Action `Edit`, Field `Position`, Old Value `Supervisor {runId}-139`, New Value `Finance Manager` (baris dicari lewat nilai, bukan posisi baris)
 
 ### TC-GS-USER-922: Rename Position tidak mengubah entri Changelog User lama
 
@@ -177,6 +177,6 @@ coverage:
   - TC-GS-USER-916: Langkah Uji 2 ("Buka Tab Changelog, System Log aktor, Activity Log") tidak menyebut nama Detail dan format baris System Log dan Activity Log; spec memakai Detail user seed dan format TC-GS-USER-873 sampai 877.
   - TC-GS-USER-917: judul menyebut "Edit/Delete foto dari Detail" sedangkan Langkah Uji hanya menghapus foto lewat hover Avatar; spec hanya menghapus.
   - TC-GS-USER-918: Langkah Uji tidak menyebut cara memilih foto aktif di File Manager dan dialog konfirmasi hapus bila ada; spec menulis aksi Delete apa adanya tanpa langkah konfirmasi. "Modified By = admin pelaku" ditulis `Siti N`.
-  - TC-GS-USER-921: "Baris pertama" dan "Baris kedua" tidak menyebut urutan sort; spec memakai Oldest First. TC-GS-USER-922: cara rename Position di tab Position tidak disebut (spec memakai Edit pada baris Position), dan Position `Supervisor` Pre-setup (No. 22) adalah data bersama sehingga spec memakai Position seed bersuffix (S-06).
+  - TC-GS-USER-921: "Baris pertama" dan "Baris kedua" tidak menyebut urutan sort dan tidak menyebut baris `Create` dari seeding; kedua Edit terjadi dalam menit yang sama sehingga posisi baris tidak dapat diandalkan. Cara baca di spec (langkah 61 dan 62): baris dicari lewat nilai Action `Edit`, Field `Position`, Old Value, dan New Value (`Staff` ke `Supervisor {runId}-139`, lalu `Supervisor {runId}-139` ke `Finance Manager`), tanpa mengasersi posisi atau sort; urutan "pertama/kedua" TC tidak diasersi. TC perlu memperjelas urutan atau sort dan keberadaan baris `Create`. TC-GS-USER-922: cara rename Position di tab Position tidak disebut (spec memakai Edit pada baris Position), dan Position `Supervisor` Pre-setup (No. 22) adalah data bersama sehingga spec memakai Position seed bersuffix (S-06).
   - TC-GS-USER-1076: format tanggal `[tanggal +30 hari]` dan `[tanggal +45 hari]` tidak disebut; spec memakai Date Format General Settings client.
   - Asumsi seeding: seeding user dan data pendukung lewat API hanya menghasilkan entri log aksi `Create`; spec tidak mengandalkan entri Update atau Delete dari seeding (diterima 2026-11-03).

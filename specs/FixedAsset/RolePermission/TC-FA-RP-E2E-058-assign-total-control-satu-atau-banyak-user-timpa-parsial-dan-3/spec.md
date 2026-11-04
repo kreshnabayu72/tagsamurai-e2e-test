@@ -18,7 +18,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup #2, Siti Rahmawati), email `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control). Hook `after` mengembalikan sesi ke akun default suite (Total Control, `FA_TC_PASSWORD`).
-- Data Pre-setup: #15 (Budi Santoso memegang Global Role `Manage accounting` inactive-retained dengan Create dan Update aktif, Delete tidak aktif; Citra Lestari dan lainnya), #12 (Maya Anggraeni Read Only: seluruh Global Role hanya Read; Group Role `Manage files` Read di `Data Center`), #24 (Company Changelog), #18 (pohon group).
+- Data Pre-setup: #15 (Budi Santoso memegang Global Role `Manage accounting` inactive-retained dengan Create dan Update aktif, Delete tidak aktif; Citra Lestari dan lainnya), #12 (Maya Anggraeni Read Only: seluruh Global Role hanya Read; baris pola Group Role Read saja pada setiap group, termasuk `Manage files` di `Data Center`), #24 (Company Changelog), #18 (pohon group).
 - Kemampuan baca state lewat fixture BE (disediakan tim FE/BE, tanpa endpoint karangan): jumlah entri Changelog Detail Role `Manage accounting` dan daftar penugasan Group Role Maya Anggraeni dicatat sebagai baseline sebelum aksi.
 - Urutan default Changelog: entri terbaru di atas (asumsi, tidak disebut TC; lihat Temuan untuk QA). Asersi isi Changelog hanya atas entri terbaru karena audit trail permanen tumbuh (S-14).
 - Flag Guided Tooltip, halaman awal, sesi API aktor, dan pemulihan Pre-setup bersama: lihat `suite.md` bagian "Hook suite".
@@ -47,7 +47,7 @@ coverage:
 15. Verifikasi jumlah entri Changelog bertambah tepat 2 dari baseline, sehingga tidak ada entri `Edit` untuk Create dan Update karena nilai tersimpannya sudah sama
 16. Tutup modal
 
-### TC-FA-RP-1139: Assign Total Control ke user Read Only menyelaraskan seluruh Global Role ke CRUD penuh dan tidak menyentuh Group Role
+### TC-FA-RP-1139: Assign Total Control ke user Read Only menyelaraskan seluruh Global Role dan seluruh baris pola Group Role ke CRUD penuh
 
 17. Klik Tab `Total Control`
 18. Klik `[+ Assign]` di Tab Total Control
@@ -65,8 +65,8 @@ coverage:
 30. Buka Detail Role `Manage Open API`
 31. Verifikasi baris Maya Anggraeni: Read dan Update aktif
 32. Buka Detail Role Group Role `Manage files`, klik node `Data Center`, lalu cari Maya Anggraeni
-33. Verifikasi baris Maya Anggraeni pada `Manage files` di `Data Center` tetap ada dengan Read saja aktif seperti sebelum Assign
-34. Verifikasi daftar penugasan Group Role Maya Anggraeni (lewat fixture BE) sama dengan baseline: tidak ada baris Group Role yang hilang atau bertambah
+33. Verifikasi baris Maya Anggraeni pada `Manage files` di `Data Center` kini Read dan Delete aktif (CRUD penuh sesuai kolom yang berlaku)
+34. Verifikasi daftar penugasan Group Role Maya Anggraeni (lewat fixture BE): jumlah baris sama dengan baseline (baris pola sudah ada, tidak bertambah dan tidak hilang) dan setiap baris kini CRUD penuh sesuai kolom yang berlaku
 
 ## Notes
 
@@ -77,4 +77,4 @@ coverage:
 - Langkah Search pada Tab (R-16) menemukan baris yang baru ditambahkan; langkah "cari Maya Anggraeni" pada Detail Role mengikuti TC (langkah 5 TC-FA-RP-1139).
 - Temuan untuk QA:
   - TC-FA-RP-1085: baseline jumlah entri Changelog Detail Role `Manage accounting` tidak dinyatakan TC; spec mencatat baseline sebelum Assign (S-12) dan mengandalkan urutan default terbaru di atas untuk entri yang diasersi (tidak disebut TC).
-  - TC-FA-RP-1139 precondition merujuk Pre-setup #12 dan #18 dan menyebut baris `Manage files` Maya Anggraeni di `Data Center`; "tidak ada baris Group Role yang hilang atau bertambah" hanya terbatas pada `Manage files` jika diamati lewat UI; spec membandingkan seluruh Group Role Maya Anggraeni lewat fixture BE (kemampuan disediakan tim FE/BE).
+  - TC-FA-RP-1139 precondition merujuk Pre-setup #12 dan #18 dan menyebut baris `Manage files` Maya Anggraeni di `Data Center`; kesetaraan CRUD penuh pada seluruh baris pola Group Role hanya teramati sebagian lewat UI (`Manage files` di `Data Center`); spec membandingkan seluruh Group Role Maya Anggraeni lewat fixture BE (kemampuan disediakan tim FE/BE).

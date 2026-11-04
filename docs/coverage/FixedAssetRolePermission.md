@@ -1,18 +1,18 @@
 # Coverage E2E — Fixed Asset > Settings > Role & Permission
 
-Sumber: `fixed-asset/settings-role-permission/TestCases/tc-settings-role-permission.md` (1131 TC granular aktif); tidak ada `tc-settings-role-permission-backend.md`, jadi tidak ada TC hanya-BE.
+Sumber: `fixed-asset/settings-role-permission/TestCases/tc-settings-role-permission.md` (1165 TC granular aktif); tidak ada `tc-settings-role-permission-backend.md`, jadi tidak ada TC hanya-BE.
 Suite: `specs/FixedAsset/RolePermission/`.
 Prefix Modul: `FA` + `RP` (`TC-FA-RP-E2E-*`).
 Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (313 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (338 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
 | TC-FA-RP-E2E-001-screening-tab-total-control-read-only-group-manager-system-1 | Screening Tab Total Control, Read Only, Group Manager, System, dan loading state (1/2) | FE+BE | 38 | TC-FA-RP-1, TC-FA-RP-2, TC-FA-RP-4, TC-FA-RP-5, TC-FA-RP-6 |
-| TC-FA-RP-E2E-002-screening-tab-total-control-read-only-group-manager-system-2 | Screening Tab Total Control, Read Only, Group Manager, System, dan loading state (2/2) | FE+BE | 33 | TC-FA-RP-12, TC-FA-RP-13, TC-FA-RP-14, TC-FA-RP-73, TC-FA-RP-74 |
+| TC-FA-RP-E2E-002-screening-tab-total-control-read-only-group-manager-system-2 | Screening Tab Total Control, Read Only, Group Manager, System, dan loading state (2/2) | FE+BE | 34 | TC-FA-RP-12, TC-FA-RP-13, TC-FA-RP-14, TC-FA-RP-73, TC-FA-RP-74 |
 | TC-FA-RP-E2E-003-screening-tab-transaction-role-dan-panel-sub-tab-1 | Screening Tab Transaction Role dan panel sub-tab (1/2) | FE+BE | 24 | TC-FA-RP-7, TC-FA-RP-8, TC-FA-RP-9 |
 | TC-FA-RP-E2E-004-screening-tab-transaction-role-dan-panel-sub-tab-2 | Screening Tab Transaction Role dan panel sub-tab (2/2) | FE+BE | 23 | TC-FA-RP-10, TC-FA-RP-11, TC-FA-RP-63 |
 | TC-FA-RP-E2E-005-screening-detail-role-matriks-crud-global-role-dan-group-role-1 | Screening Detail Role: matriks CRUD Global Role dan Group Role (1/4) | FE+BE | 13 | TC-FA-RP-16, TC-FA-RP-17, TC-FA-RP-18 |
@@ -24,7 +24,7 @@ Status semua spec: `draft`.
 | TC-FA-RP-E2E-011-screening-popup-assign-dan-mekanik-table-user-picker-dasar-1 | Screening popup Assign dan mekanik Table User Picker dasar (1/3) | FE+BE | 30 | TC-FA-RP-35, TC-FA-RP-36, TC-FA-RP-37, TC-FA-RP-38 |
 | TC-FA-RP-E2E-012-screening-popup-assign-dan-mekanik-table-user-picker-dasar-2 | Screening popup Assign dan mekanik Table User Picker dasar (2/3) | FE+BE | 31 | TC-FA-RP-39, TC-FA-RP-40, TC-FA-RP-41, TC-FA-RP-42 |
 | TC-FA-RP-E2E-013-screening-popup-assign-dan-mekanik-table-user-picker-dasar-3 | Screening popup Assign dan mekanik Table User Picker dasar (3/3) | FE+BE | 28 | TC-FA-RP-43, TC-FA-RP-44, TC-FA-RP-45 |
-| TC-FA-RP-E2E-014-empty-state-genuinely-pada-client-tanpa-data | Empty state genuinely pada client tanpa data | FE+BE | 21 | TC-FA-RP-15, TC-FA-RP-46, TC-FA-RP-48, TC-FA-RP-49, TC-FA-RP-50, TC-FA-RP-51, TC-FA-RP-53, TC-FA-RP-54 |
+| TC-FA-RP-E2E-014-empty-state-genuinely-pada-client-tanpa-data | Empty state genuinely pada client tanpa data | FE+BE | 22 | TC-FA-RP-15, TC-FA-RP-46, TC-FA-RP-48, TC-FA-RP-49, TC-FA-RP-50, TC-FA-RP-51, TC-FA-RP-53, TC-FA-RP-54 |
 | TC-FA-RP-E2E-015-empty-state-hasil-pencarian-kosong-per-permukaan-1 | Empty state hasil pencarian kosong per permukaan (1/2) | FE+BE | 23 | TC-FA-RP-47, TC-FA-RP-55, TC-FA-RP-56, TC-FA-RP-57, TC-FA-RP-58 |
 | TC-FA-RP-E2E-016-empty-state-hasil-pencarian-kosong-per-permukaan-2 | Empty state hasil pencarian kosong per permukaan (2/2) | FE+BE | 21 | TC-FA-RP-59, TC-FA-RP-60, TC-FA-RP-61, TC-FA-RP-62 |
 | TC-FA-RP-E2E-017-resilience-baca-error-load-dan-try-again-per-permukaan-1 | Resilience baca: Error load dan Try Again per permukaan (1/2) | FE+BE | 36 | TC-FA-RP-64, TC-FA-RP-65, TC-FA-RP-66, TC-FA-RP-67, TC-FA-RP-68 |
@@ -63,7 +63,7 @@ Status semua spec: `draft`.
 | TC-FA-RP-E2E-050-role-matrix-positif-eksekusi-aksi-sampai-sukses-oleh-manage-2 | Role Matrix Positif: eksekusi aksi sampai sukses oleh Manage user & role (Group, Update) (2/2) | FE+BE | 20 | TC-FA-RP-175, TC-FA-RP-176, TC-FA-RP-177, TC-FA-RP-178 |
 | TC-FA-RP-E2E-051-role-matrix-positif-eksekusi-aksi-sampai-sukses-oleh-group-1 | Role Matrix Positif: eksekusi aksi sampai sukses oleh Group Manager (1/2) | FE+BE | 35 | TC-FA-RP-179, TC-FA-RP-180, TC-FA-RP-181, TC-FA-RP-182 |
 | TC-FA-RP-E2E-052-role-matrix-positif-eksekusi-aksi-sampai-sukses-oleh-group-2 | Role Matrix Positif: eksekusi aksi sampai sukses oleh Group Manager (2/2) | FE+BE | 20 | TC-FA-RP-183, TC-FA-RP-184, TC-FA-RP-185, TC-FA-RP-186 |
-| TC-FA-RP-E2E-053-aktor-ganda-group-manager-dan-manage-user-dan-role-pada-scope | Role Matrix: Aktor ganda Group Manager dan Manage user & role pada scope berbeda | FE+BE | 11 | TC-FA-RP-1026 |
+| TC-FA-RP-E2E-053-aktor-ganda-group-manager-dan-manage-user-dan-role-pada-scope | Role Matrix: Aktor ganda Group Manager dan Manage user & role pada scope berbeda | FE+BE | 13 | TC-FA-RP-1026 |
 | TC-FA-RP-E2E-054-changelog-dan-download-entri-remove-group-deleted-per-cakupan-1 | Changelog dan Download entri Remove (Group Deleted) per cakupan aktor (1/3) | FE+BE | 22 | TC-FA-RP-1111, TC-FA-RP-1115 |
 | TC-FA-RP-E2E-055-changelog-dan-download-entri-remove-group-deleted-per-cakupan-2 | Changelog dan Download entri Remove (Group Deleted) per cakupan aktor (2/3) | FE+BE | 37 | TC-FA-RP-1112, TC-FA-RP-1116, TC-FA-RP-1120 |
 | TC-FA-RP-E2E-056-assign-total-control-satu-atau-banyak-user-timpa-parsial-dan-1 | Assign Total Control: satu atau banyak user, timpa parsial, dan upgrade dari Read Only (1/3) | FE+BE | 40 | TC-FA-RP-187, TC-FA-RP-188, TC-FA-RP-189 |
@@ -93,7 +93,7 @@ Status semua spec: `draft`.
 | TC-FA-RP-E2E-080-edit-matriks-crud-detail-role-2 | Edit matriks CRUD Detail Role (2/3) | FE+BE | 45 | TC-FA-RP-269, TC-FA-RP-270, TC-FA-RP-271, TC-FA-RP-272, TC-FA-RP-273 |
 | TC-FA-RP-E2E-081-edit-matriks-crud-detail-role-3 | Edit matriks CRUD Detail Role (3/3) | FE+BE | 15 | TC-FA-RP-277, TC-FA-RP-278 |
 | TC-FA-RP-E2E-082-remove-baris-peran-satu-per-satu-1 | Remove baris peran satu per satu (1/2) | FE+BE | 25 | TC-FA-RP-279, TC-FA-RP-280, TC-FA-RP-281, TC-FA-RP-282 |
-| TC-FA-RP-E2E-083-remove-baris-peran-satu-per-satu-2 | Remove baris peran satu per satu (2/2) | FE+BE | 22 | TC-FA-RP-283, TC-FA-RP-1016 |
+| TC-FA-RP-E2E-083-remove-baris-peran-satu-per-satu-2 | Remove baris peran satu per satu (2/2) | FE+BE | 23 | TC-FA-RP-283, TC-FA-RP-1016 |
 | TC-FA-RP-E2E-084-checkbox-seleksi-baris-terlindungi | Checkbox seleksi baris terlindungi | FE+BE | 20 | TC-FA-RP-292, TC-FA-RP-293, TC-FA-RP-294 |
 | TC-FA-RP-E2E-085-bulk-remove-dialog-hasil-dan-cancel-1 | Bulk Remove: dialog, hasil, dan Cancel (1/2) | FE+BE | 47 | TC-FA-RP-295, TC-FA-RP-296, TC-FA-RP-297, TC-FA-RP-298, TC-FA-RP-301 |
 | TC-FA-RP-E2E-086-bulk-remove-dialog-hasil-dan-cancel-2 | Bulk Remove: dialog, hasil, dan Cancel (2/2) | FE+BE | 28 | TC-FA-RP-304, TC-FA-RP-1010 |
@@ -123,10 +123,10 @@ Status semua spec: `draft`.
 | TC-FA-RP-E2E-110-persetujuan-registrasi-aset-d-09-saat-uncheck-update-dan-1 | Persetujuan registrasi aset: D-09 saat uncheck Update dan Remove pemegang Update (1/2) | FE+BE | 27 | TC-FA-RP-374, TC-FA-RP-375, TC-FA-RP-376 |
 | TC-FA-RP-E2E-111-persetujuan-registrasi-aset-d-09-saat-uncheck-update-dan-2 | Persetujuan registrasi aset: D-09 saat uncheck Update dan Remove pemegang Update (2/2) | FE+BE | 33 | TC-FA-RP-377, TC-FA-RP-378, TC-FA-RP-379 |
 | TC-FA-RP-E2E-112-auto-revert-total-control-1 | Auto-Revert Total Control (1/3) | FE+BE | 29 | TC-FA-RP-380, TC-FA-RP-381, TC-FA-RP-382 |
-| TC-FA-RP-E2E-113-auto-revert-total-control-2 | Auto-Revert Total Control (2/3) | FE+BE | 44 | TC-FA-RP-383, TC-FA-RP-384, TC-FA-RP-390, TC-FA-RP-394 |
+| TC-FA-RP-E2E-113-auto-revert-total-control-2 | Auto-Revert Total Control (2/3) | FE+BE | 48 | TC-FA-RP-383, TC-FA-RP-384, TC-FA-RP-390, TC-FA-RP-394 |
 | TC-FA-RP-E2E-114-auto-revert-total-control-3 | Auto-Revert Total Control (3/3) | FE+BE | 19 | TC-FA-RP-393, TC-FA-RP-1137 |
 | TC-FA-RP-E2E-115-auto-revert-read-only-1 | Auto-Revert Read Only (1/2) | FE+BE | 29 | TC-FA-RP-385, TC-FA-RP-386, TC-FA-RP-387 |
-| TC-FA-RP-E2E-116-auto-revert-read-only-2 | Auto-Revert Read Only (2/2) | FE+BE | 24 | TC-FA-RP-388, TC-FA-RP-389 |
+| TC-FA-RP-E2E-116-auto-revert-read-only-2 | Auto-Revert Read Only (2/2) | FE+BE | 28 | TC-FA-RP-388, TC-FA-RP-389 |
 | TC-FA-RP-E2E-117-auto-revert-group-manager-dan-pola-subset-baris-eksplisit-1 | Auto-Revert Group Manager dan pola subset baris eksplisit (1/2) | FE+BE | 41 | TC-FA-RP-395, TC-FA-RP-396, TC-FA-RP-397, TC-FA-RP-398 |
 | TC-FA-RP-E2E-118-auto-revert-group-manager-dan-pola-subset-baris-eksplisit-2 | Auto-Revert Group Manager dan pola subset baris eksplisit (2/2) | FE+BE | 39 | TC-FA-RP-399, TC-FA-RP-400, TC-FA-RP-401, TC-FA-RP-1042 |
 | TC-FA-RP-E2E-119-home-group-constraint-dialog-d-10-dan-pencabutan-assignment-1 | Home Group constraint: dialog D-10 dan pencabutan assignment (1/3) | FE+BE | 42 | TC-FA-RP-402, TC-FA-RP-403, TC-FA-RP-404, TC-FA-RP-405, TC-FA-RP-406 |
@@ -189,8 +189,8 @@ Status semua spec: `draft`.
 | TC-FA-RP-E2E-176-tab-system-search-setup-column-download-dan-state-4 | Tab System: Search, Setup Column, Download, dan state (4/4) | FE+BE | 26 | TC-FA-RP-588, TC-FA-RP-589, TC-FA-RP-590, TC-FA-RP-592 |
 | TC-FA-RP-E2E-177-tabel-role-transaksi-search-filter-dan-sort-1 | Tabel Role Transaksi: Search, Filter, dan Sort (1/4) | FE+BE | 34 | TC-FA-RP-593, TC-FA-RP-594, TC-FA-RP-595 |
 | TC-FA-RP-E2E-178-tabel-role-transaksi-search-filter-dan-sort-2 | Tabel Role Transaksi: Search, Filter, dan Sort (2/4) | FE+BE | 21 | TC-FA-RP-596, TC-FA-RP-597, TC-FA-RP-598, TC-FA-RP-599 |
-| TC-FA-RP-E2E-179-tabel-role-transaksi-search-filter-dan-sort-3 | Tabel Role Transaksi: Search, Filter, dan Sort (3/4) | FE+BE | 12 | TC-FA-RP-1071, TC-FA-RP-1072 |
-| TC-FA-RP-E2E-180-tabel-role-transaksi-search-filter-dan-sort-4 | Tabel Role Transaksi: Search, Filter, dan Sort (4/4) | FE+BE | 18 | TC-FA-RP-1073, TC-FA-RP-1106 |
+| TC-FA-RP-E2E-179-tabel-role-transaksi-search-filter-dan-sort-3 | Tabel Role Transaksi: Search, Filter, dan Sort (3/4) | FE+BE | 16 | TC-FA-RP-1071, TC-FA-RP-1072 |
+| TC-FA-RP-E2E-180-tabel-role-transaksi-search-filter-dan-sort-4 | Tabel Role Transaksi: Search, Filter, dan Sort (4/4) | FE+BE | 21 | TC-FA-RP-1073, TC-FA-RP-1106 |
 | TC-FA-RP-E2E-181-tabel-role-transaksi-setup-column-1 | Tabel Role Transaksi: Setup Column (1/5) | FE+BE | 36 | TC-FA-RP-600, TC-FA-RP-601, TC-FA-RP-602, TC-FA-RP-603 |
 | TC-FA-RP-E2E-182-tabel-role-transaksi-setup-column-2 | Tabel Role Transaksi: Setup Column (2/5) | FE+BE | 28 | TC-FA-RP-604, TC-FA-RP-605 |
 | TC-FA-RP-E2E-183-tabel-role-transaksi-setup-column-3 | Tabel Role Transaksi: Setup Column (3/5) | FE+BE | 33 | TC-FA-RP-606, TC-FA-RP-607, TC-FA-RP-608 |
@@ -257,7 +257,7 @@ Status semua spec: `draft`.
 | TC-FA-RP-E2E-244-changelog-tab-total-control-read-only-dan-group-manager-2 | Changelog Tab Total Control, Read Only, dan Group Manager (2/2) | FE+BE | 34 | TC-FA-RP-802, TC-FA-RP-803, TC-FA-RP-804, TC-FA-RP-805 |
 | TC-FA-RP-E2E-245-changelog-detail-role-global-role-1 | Changelog Detail Role Global Role (1/3) | FE+BE | 31 | TC-FA-RP-806, TC-FA-RP-807, TC-FA-RP-808, TC-FA-RP-809, TC-FA-RP-810 |
 | TC-FA-RP-E2E-246-changelog-detail-role-global-role-2 | Changelog Detail Role Global Role (2/3) | FE+BE | 41 | TC-FA-RP-811, TC-FA-RP-812, TC-FA-RP-813, TC-FA-RP-814, TC-FA-RP-1130 |
-| TC-FA-RP-E2E-247-changelog-detail-role-global-role-3 | Changelog Detail Role Global Role (3/3) | FE+BE | 47 | TC-FA-RP-1134, TC-FA-RP-1135, TC-FA-RP-1136 |
+| TC-FA-RP-E2E-247-changelog-detail-role-global-role-3 | Changelog Detail Role Global Role (3/3) | FE+BE | 44 | TC-FA-RP-1134, TC-FA-RP-1135, TC-FA-RP-1136 |
 | TC-FA-RP-E2E-248-changelog-detail-role-group-role | Changelog Detail Role Group Role | FE+BE | 38 | TC-FA-RP-815, TC-FA-RP-816, TC-FA-RP-817, TC-FA-RP-818, TC-FA-RP-819 |
 | TC-FA-RP-E2E-249-changelog-tab-system-dan-approval-config-1 | Changelog Tab System dan Approval Config (1/2) | FE+BE | 35 | TC-FA-RP-820, TC-FA-RP-821, TC-FA-RP-822, TC-FA-RP-823, TC-FA-RP-824 |
 | TC-FA-RP-E2E-250-changelog-tab-system-dan-approval-config-2 | Changelog Tab System dan Approval Config (2/2) | FE+BE | 33 | TC-FA-RP-825, TC-FA-RP-826, TC-FA-RP-827, TC-FA-RP-828, TC-FA-RP-829 |
@@ -268,7 +268,7 @@ Status semua spec: `draft`.
 | TC-FA-RP-E2E-255-system-log-dan-activity-log-assign-remove-dan-edit-4 | System Log dan Activity Log: Assign, Remove, dan Edit (4/5) | FE+BE | 43 | TC-FA-RP-849, TC-FA-RP-850, TC-FA-RP-851, TC-FA-RP-852, TC-FA-RP-853 |
 | TC-FA-RP-E2E-256-system-log-dan-activity-log-assign-remove-dan-edit-5 | System Log dan Activity Log: Assign, Remove, dan Edit (5/5) | FE+BE | 9 | TC-FA-RP-854 |
 | TC-FA-RP-E2E-257-system-log-dan-activity-log-konfigurasi-approval-dan-modified | System Log dan Activity Log: konfigurasi approval dan Modified By | FE+BE | 50 | TC-FA-RP-855, TC-FA-RP-856, TC-FA-RP-857, TC-FA-RP-1055, TC-FA-RP-1056, TC-FA-RP-1057, TC-FA-RP-1058 |
-| TC-FA-RP-E2E-258-pencatatan-lintas-surface-cascade-atomik-dan-konsistensi-entri-1 | Pencatatan lintas surface: cascade, atomik, dan konsistensi entri (1/5) | FE+BE | 29 | TC-FA-RP-858, TC-FA-RP-859, TC-FA-RP-860, TC-FA-RP-862 |
+| TC-FA-RP-E2E-258-pencatatan-lintas-surface-cascade-atomik-dan-konsistensi-entri-1 | Pencatatan lintas surface: cascade, atomik, dan konsistensi entri (1/5) | FE+BE | 32 | TC-FA-RP-858, TC-FA-RP-859, TC-FA-RP-860, TC-FA-RP-862 |
 | TC-FA-RP-E2E-259-pencatatan-lintas-surface-cascade-atomik-dan-konsistensi-entri-2 | Pencatatan lintas surface: cascade, atomik, dan konsistensi entri (2/5) | FE+BE | 27 | TC-FA-RP-866, TC-FA-RP-869, TC-FA-RP-870, TC-FA-RP-871 |
 | TC-FA-RP-E2E-260-pencatatan-lintas-surface-cascade-atomik-dan-konsistensi-entri-3 | Pencatatan lintas surface: cascade, atomik, dan konsistensi entri (3/5) | FE+BE | 29 | TC-FA-RP-865, TC-FA-RP-1035 |
 | TC-FA-RP-E2E-261-absence-log-aksi-yang-tidak-menulis-entri-log | Absence log: aksi yang tidak menulis entri log | FE+BE | 38 | TC-FA-RP-867, TC-FA-RP-868, TC-FA-RP-873 |
@@ -322,8 +322,33 @@ Status semua spec: `draft`.
 | TC-FA-RP-E2E-313-aksesibilitas-dialog-konfirmasi-fokus-terkunci-dan-esc-setara-cancel | Aksesibilitas dialog konfirmasi: fokus terkunci dan Esc setara Cancel | FE+BE | 24 | TC-FA-RP-1009 |
 | TC-FA-RP-E2E-314-changelog-tab-read-only-dan-group-manager-assign-remove-dan-auto-revert | Changelog Tab Read Only dan Group Manager: Assign, Remove, dan Auto-Revert | FE+BE | 29 | TC-FA-RP-798, TC-FA-RP-799, TC-FA-RP-800, TC-FA-RP-801 |
 | TC-FA-RP-E2E-315-pencatatan-lintas-surface-cascade-atomik-dan-konsistensi-entri-4 | Pencatatan lintas surface: cascade, atomik, dan konsistensi entri (4/5) | FE+BE | 32 | TC-FA-RP-861, TC-FA-RP-863, TC-FA-RP-864, TC-FA-RP-874 |
-| TC-FA-RP-E2E-316-pencatatan-lintas-surface-cascade-atomik-dan-konsistensi-entri-5 | Pencatatan lintas surface: cascade, atomik, dan konsistensi entri (5/5) | FE+BE | 29 | TC-FA-RP-872, TC-FA-RP-1140 |
+| TC-FA-RP-E2E-316-pencatatan-lintas-surface-cascade-atomik-dan-konsistensi-entri-5 | Pencatatan lintas surface: cascade, atomik, dan konsistensi entri (5/5) | FE+BE | 31 | TC-FA-RP-872, TC-FA-RP-1140 |
 | TC-FA-RP-E2E-317-state-tenant-plan-tier-dan-approval-workflow-2 | State tenant: plan tier dan Approval Workflow (2/2) | FE+BE | 26 | TC-FA-RP-994 |
+| TC-FA-RP-E2E-318-assign-total-control-dan-read-only-menulis-baris-pola-transaction-role | Assign Total Control dan Read Only menulis baris pola Transaction Role pada semua Jenis Transaksi × Group | FE+BE | 35 | TC-FA-RP-1145, TC-FA-RP-1146 |
+| TC-FA-RP-E2E-319-assign-total-control-dan-read-only-menulis-baris-pola-group-role | Assign Total Control ke user Standard menulis baris pola Group Role pada semua group dengan CRUD penuh sesuai kolom berlaku | FE+BE | 28 | TC-FA-RP-1169 |
+| TC-FA-RP-E2E-320-remove-total-control-dan-read-only-menghapus-baris-pola-transaction-role | Remove Total Control dan Read Only menghapus baris pola Transaction Role pada semua sub-tab dan node | FE+BE | 22 | TC-FA-RP-1148, TC-FA-RP-1149 |
+| TC-FA-RP-E2E-321-role-matrix-gating-remove-baris-pola-transaction-role-per-peran | Role Matrix: gating Remove baris pola Transaction Role per peran | FE+BE | 33 | TC-FA-RP-1150 |
+| TC-FA-RP-E2E-322-auto-revert-group-role-pola-lewat-edit-crud-dan-remove-baris | Auto-revert tier lewat edit CRUD dan Remove baris pola Group Role: dialog D-04, tier lepas, role lain utuh | FE+BE | 32 | TC-FA-RP-1171, TC-FA-RP-1172 |
+| TC-FA-RP-E2E-323-bulk-remove-baris-group-role-target-total-control-dan-read-only | Bulk Remove baris Group Role target Total Control dan Read Only: dialog D-07 dengan anotasi tier, Confirm melepas kedua tier | FE+BE | 19 | TC-FA-RP-1173 |
+| TC-FA-RP-E2E-324-auto-revert-role-transaksi-remove-baris-pola-target-total-control-dan-read-only | Auto-Revert Role Transaksi: Remove Baris Pola Target Total Control | FE+BE | 32 | TC-FA-RP-1151 |
+| TC-FA-RP-E2E-325-auto-revert-role-transaksi-turun-dan-naik-tangga-dari-popup-assign | Auto-Revert Role Transaksi: Turun dan Naik Tangga dari Popup Assign | FE+BE | 34 | TC-FA-RP-1152, TC-FA-RP-1153 |
+| TC-FA-RP-E2E-326-auto-revert-role-transaksi-submit-campuran-dua-dialog-berurutan | Auto-Revert Role Transaksi: Submit Campuran Dua Dialog Berurutan | FE+BE | 29 | TC-FA-RP-1154 |
+| TC-FA-RP-E2E-327-pengecualian-dialog-role-transaksi-default-user-dan-d-09-pada-remove-approver-pola | Pengecualian Dialog Role Transaksi: Default User dan D-09 pada Remove Approver Pola | FE+BE | 23 | TC-FA-RP-1155, TC-FA-RP-1160 |
+| TC-FA-RP-E2E-328-efek-deactivate-dan-app-access-pada-baris-pola-transaction-role | Efek Deactivate user Total Control pada baris pola Transaction Role | FE+BE | 23 | TC-FA-RP-1156 |
+| TC-FA-RP-E2E-329-sub-tab-addon-tanpa-dan-dengan-lisensi-baris-pola-tidak-dihitung | Sub-tab Addon tanpa dan dengan lisensi, baris pola tidak dihitung | FE+BE | 24 | TC-FA-RP-1161, TC-FA-RP-1162 |
+| TC-FA-RP-E2E-330-group-baru-subgroup-level-one-dan-import-menulis-baris-pola | Group baru (Subgroup, level 1, dan hasil Import) menulis baris pola Transaction Role Total Control dan Read Only | FE+BE | 31 | TC-FA-RP-1157, TC-FA-RP-1158 |
+| TC-FA-RP-E2E-331-home-group-constraint-diabaikan-untuk-total-control-dan-read-only | Home Group constraint diabaikan untuk Total Control dan Read Only | FE+BE | 19 | TC-FA-RP-1175 |
+| TC-FA-RP-E2E-332-delete-group-menghapus-baris-pola-transaction-role-dan-group-role | Delete Group menghapus baris pola Transaction Role dan Group Role pada node dan descendant dengan log Remove (Group Deleted) per baris | FE+BE | 33 | TC-FA-RP-1159, TC-FA-RP-1176 |
+| TC-FA-RP-E2E-333-detail-role-group-role-checkbox-pagination-dan-select-all-baris-pola | Detail Role Group Role: pagination 41 baris All Groups dan checkbox serta Select All dengan baris pola | FE+BE | 46 | TC-FA-RP-1177, TC-FA-RP-1178 |
+| TC-FA-RP-E2E-334-header-section-role-transaksi-menghitung-baris-pola-saat-baris-melebihi-10 | Header section Role Transaksi menghitung seluruh baris termasuk baris pola saat jumlah baris melebihi 10, dan seluruh baris tampil tanpa pagination | FE+BE | 26 | TC-FA-RP-1167 |
+| TC-FA-RP-E2E-335-changelog-transaction-role-per-baris-pola-assign-remove-dan-auto-revert | Changelog Transaction Role per baris pola: Assign, Remove, dan Auto-Revert Total Control | FE+BE | 31 | TC-FA-RP-1163 |
+| TC-FA-RP-E2E-336-multi-konteks-notifikasi-auto-revert-varian-role-transaksi | Multi-konteks: notifikasi auto-revert varian Role Transaksi untuk Total Control dan Read Only | FE+BE | 22 | TC-FA-RP-1164 |
+| TC-FA-RP-E2E-337-assign-total-control-ke-user-standard-pemegang-peran-tangga-lama | Assign Total Control ke user Standard pemegang peran tangga lama: peran lama diganti baris pola tanpa duplikat | FE+BE | 28 | TC-FA-RP-1147 |
+| TC-FA-RP-E2E-338-assign-read-only-menulis-baris-pola-group-role-dan-changelog-user | Assign Read Only ke user Standard menulis baris pola Group Role pada semua group dengan Read saja | FE+BE | 35 | TC-FA-RP-1170 |
+| TC-FA-RP-E2E-341-auto-revert-role-transaksi-remove-baris-pola-target-read-only | Auto-Revert Role Transaksi: Remove Baris Pola Target Read Only | FE+BE | 26 | TC-FA-RP-1165 |
+| TC-FA-RP-E2E-342-submit-campuran-cancel-dialog-kedua-membatalkan-seluruh-submit | Auto-Revert Role Transaksi: Cancel Dialog Kedua Membatalkan Seluruh Submit | FE+BE | 32 | TC-FA-RP-1168 |
+| TC-FA-RP-E2E-343-app-access-dicabut-baris-pola-dormant-dan-group-baru-tetap-dibuatkan-baris | App Access FAMS dicabut, baris pola dormant dan Group baru tetap dibuatkan baris | FE+BE | 34 | TC-FA-RP-1166 |
+| TC-FA-RP-E2E-345-group-baru-menulis-baris-pola-group-role-detail-role-changelog-dan-notifikasi | Group baru (Subgroup, level 1, dan hasil Import) menulis baris pola Group Role dengan log Assign biasa dan tanpa notifikasi | FE+BE | 21 | TC-FA-RP-1174 |
 
 ---
 
@@ -1468,6 +1493,40 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-RP-1142 | E2E | TC-FA-RP-E2E-076-assign-user-ke-group-role-di-detail-role-4 | FE+BE |
 | TC-FA-RP-1143 | E2E | TC-FA-RP-E2E-277-defense-in-depth-penolakan-server-atas-permintaan-langsung-9 | FE+BE |
 | TC-FA-RP-1144 | E2E | TC-FA-RP-E2E-306-identitas-user-dihapus-permanen-cascade-tanpa-entri-log-group-manager | FE+BE |
+| TC-FA-RP-1145 | E2E | TC-FA-RP-E2E-318-assign-total-control-dan-read-only-menulis-baris-pola-transaction-role | FE+BE |
+| TC-FA-RP-1146 | E2E | TC-FA-RP-E2E-318-assign-total-control-dan-read-only-menulis-baris-pola-transaction-role | FE+BE |
+| TC-FA-RP-1147 | E2E | TC-FA-RP-E2E-337-assign-total-control-ke-user-standard-pemegang-peran-tangga-lama | FE+BE |
+| TC-FA-RP-1148 | E2E | TC-FA-RP-E2E-320-remove-total-control-dan-read-only-menghapus-baris-pola-transaction-role | FE+BE |
+| TC-FA-RP-1149 | E2E | TC-FA-RP-E2E-320-remove-total-control-dan-read-only-menghapus-baris-pola-transaction-role | FE+BE |
+| TC-FA-RP-1150 | E2E | TC-FA-RP-E2E-321-role-matrix-gating-remove-baris-pola-transaction-role-per-peran | FE+BE |
+| TC-FA-RP-1151 | E2E | TC-FA-RP-E2E-324-auto-revert-role-transaksi-remove-baris-pola-target-total-control-dan-read-only | FE+BE |
+| TC-FA-RP-1152 | E2E | TC-FA-RP-E2E-325-auto-revert-role-transaksi-turun-dan-naik-tangga-dari-popup-assign | FE+BE |
+| TC-FA-RP-1153 | E2E | TC-FA-RP-E2E-325-auto-revert-role-transaksi-turun-dan-naik-tangga-dari-popup-assign | FE+BE |
+| TC-FA-RP-1154 | E2E | TC-FA-RP-E2E-326-auto-revert-role-transaksi-submit-campuran-dua-dialog-berurutan | FE+BE |
+| TC-FA-RP-1155 | E2E | TC-FA-RP-E2E-327-pengecualian-dialog-role-transaksi-default-user-dan-d-09-pada-remove-approver-pola | FE+BE |
+| TC-FA-RP-1156 | E2E | TC-FA-RP-E2E-328-efek-deactivate-dan-app-access-pada-baris-pola-transaction-role | FE+BE |
+| TC-FA-RP-1157 | E2E | TC-FA-RP-E2E-330-group-baru-subgroup-level-one-dan-import-menulis-baris-pola | FE+BE |
+| TC-FA-RP-1158 | E2E | TC-FA-RP-E2E-330-group-baru-subgroup-level-one-dan-import-menulis-baris-pola | FE+BE |
+| TC-FA-RP-1159 | E2E | TC-FA-RP-E2E-332-delete-group-menghapus-baris-pola-transaction-role-dan-group-role | FE+BE |
+| TC-FA-RP-1160 | E2E | TC-FA-RP-E2E-327-pengecualian-dialog-role-transaksi-default-user-dan-d-09-pada-remove-approver-pola | FE+BE |
+| TC-FA-RP-1161 | E2E | TC-FA-RP-E2E-329-sub-tab-addon-tanpa-dan-dengan-lisensi-baris-pola-tidak-dihitung | FE+BE |
+| TC-FA-RP-1162 | E2E | TC-FA-RP-E2E-329-sub-tab-addon-tanpa-dan-dengan-lisensi-baris-pola-tidak-dihitung | FE+BE |
+| TC-FA-RP-1163 | E2E | TC-FA-RP-E2E-335-changelog-transaction-role-per-baris-pola-assign-remove-dan-auto-revert | FE+BE |
+| TC-FA-RP-1164 | E2E | TC-FA-RP-E2E-336-multi-konteks-notifikasi-auto-revert-varian-role-transaksi | FE+BE |
+| TC-FA-RP-1165 | E2E | TC-FA-RP-E2E-341-auto-revert-role-transaksi-remove-baris-pola-target-read-only | FE+BE |
+| TC-FA-RP-1166 | E2E | TC-FA-RP-E2E-343-app-access-dicabut-baris-pola-dormant-dan-group-baru-tetap-dibuatkan-baris | FE+BE |
+| TC-FA-RP-1167 | E2E | TC-FA-RP-E2E-334-header-section-role-transaksi-menghitung-baris-pola-saat-baris-melebihi-10 | FE+BE |
+| TC-FA-RP-1168 | E2E | TC-FA-RP-E2E-342-submit-campuran-cancel-dialog-kedua-membatalkan-seluruh-submit | FE+BE |
+| TC-FA-RP-1169 | E2E | TC-FA-RP-E2E-319-assign-total-control-dan-read-only-menulis-baris-pola-group-role | FE+BE |
+| TC-FA-RP-1170 | E2E | TC-FA-RP-E2E-338-assign-read-only-menulis-baris-pola-group-role-dan-changelog-user | FE+BE |
+| TC-FA-RP-1171 | E2E | TC-FA-RP-E2E-322-auto-revert-group-role-pola-lewat-edit-crud-dan-remove-baris | FE+BE |
+| TC-FA-RP-1172 | E2E | TC-FA-RP-E2E-322-auto-revert-group-role-pola-lewat-edit-crud-dan-remove-baris | FE+BE |
+| TC-FA-RP-1173 | E2E | TC-FA-RP-E2E-323-bulk-remove-baris-group-role-target-total-control-dan-read-only | FE+BE |
+| TC-FA-RP-1174 | E2E | TC-FA-RP-E2E-345-group-baru-menulis-baris-pola-group-role-detail-role-changelog-dan-notifikasi | FE+BE |
+| TC-FA-RP-1175 | E2E | TC-FA-RP-E2E-331-home-group-constraint-diabaikan-untuk-total-control-dan-read-only | FE+BE |
+| TC-FA-RP-1176 | E2E | TC-FA-RP-E2E-332-delete-group-menghapus-baris-pola-transaction-role-dan-group-role | FE+BE |
+| TC-FA-RP-1177 | E2E | TC-FA-RP-E2E-333-detail-role-group-role-checkbox-pagination-dan-select-all-baris-pola | FE+BE |
+| TC-FA-RP-1178 | E2E | TC-FA-RP-E2E-333-detail-role-group-role-checkbox-pagination-dan-select-all-baris-pola | FE+BE |
 
 ---
 
@@ -1478,3 +1537,4 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 - TC yang sengaja ada di dua spec (spec asal dan spec absence kelas g, S-05): 283, 300, 357, 413, 461, 913, 957, 961, 973, 974, 975, 976, 977, 978, 979, 980, 981, 982, 983, 1041, 1098. `check-suite.py` menandai ini sebagai C2; itu disengaja.
 - Spec yang melewati 35 langkah memuat alasan di Notes (C6); sebagian besar karena ekspansi blok berulang per kolom atau per data.
 - Fixture `Fixture.*` untuk modul ini, akun tenant khusus dan nama env password baru belum ada; ditandai di Prerequisites tiap spec sebagai disediakan tim FE/BE dan dicatat di Temuan untuk QA.
+- Spec 318-338, 341-343, dan 345 ditambahkan untuk TC-FA-RP-1145 sampai 1178 (Group Role dan Transaction Role masuk pola tier Total Control/Read Only). Nomor cadangan dipakai untuk memecah spec yang melewati sekitar 35 langkah (337, 338, 341, 342, 343, 345); nomor 339, 340, 344, 346 sampai 350 tidak dipakai. Setiap TC baru muncul di tepat satu spec.

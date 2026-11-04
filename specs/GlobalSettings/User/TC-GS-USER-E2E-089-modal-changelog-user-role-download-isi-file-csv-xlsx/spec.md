@@ -34,6 +34,7 @@ coverage:
   - 6. Fajar N: centang Update `Manage hardware` -> `Edit | Manage hardware | Update | Inactive | Active | Fajar N`.
   - 7 sampai 12. Siti N: 6 kali mengubah centang bergantian Create, Update, dan Delete pada `Manage TAG` (tiap perubahan satu baris `Edit`).
   - Nilai distinct (S-11): Action 3 (`Assign`, `Edit`, `Remove`), Role 3, Field 4 (`Access`, `Create`, `Delete`, `Update`), Modified By 2 (`Siti N`, `Fajar N`); Old Value dan New Value kosong (`—`) pada baris `Assign` dan `Remove`.
+- Baseline audit trail (S-12, bagian 8b butir 10): user seed `Ahmad Fauzi {runId}-089` dibuat baru oleh hook `before` dengan nama dan email bersuffix `-089`, sehingga sebelum seeding Modal Changelog Role belum memuat entri apa pun; baseline = 0 dicatat eksplisit di hook `before` tepat sebelum seeding. Jumlah baris total yang diasersi adalah selisih terhadap baseline itu (baseline 0 + 12 entri seed), bukan total absolut tabel. Bila baseline perlu dibaca, kemampuan baca total entri disediakan tim FE/BE (TC, PRD, dan LLD tidak menyebut caranya).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus user seed lewat API; hapus berkas unduhan; pulihkan visibilitas kolom Modal Changelog Role ke default (7 kolom tampil) lewat penghapusan key `localStorage` tabel itu (nama key disediakan tim FE). Entri Changelog tidak bisa dihapus.
 - Kemampuan teknis (kelas binary buffer, prinsip 13f): menangkap berkas unduhan browser ke direktori bersih per unduhan; membaca isi berkas CSV dan XLSX (nama berkas, kolom header, jumlah baris data, nilai sel); membaca ada atau tidaknya toast.
 - Precondition TC-GS-USER-544 sampai 548: login sebagai Total Control dan berada di Global Settings > User > User List (sub-tab Login User); data pre-setup User tersedia; riwayat Changelog Role user seed terisi.
@@ -53,7 +54,7 @@ coverage:
 7. Klik `Download as CSV`
 8. Verifikasi tidak ada toast sukses
 9. Verifikasi file `Changelog-Ahmad-Fauzi-{runId}-089-Global-Role.csv` terunduh
-10. Verifikasi file memuat semua baris (12 baris data, melebihi satu halaman 10 baris, tidak dibatasi halaman)
+10. Verifikasi file memuat semua baris: selisih 12 baris data terhadap baseline 0 entri (12 entri seed, melebihi satu halaman 10 baris, tidak dibatasi halaman)
 
 ### TC-GS-USER-545: Download XLSX
 
@@ -95,4 +96,5 @@ coverage:
 - Langkah 16 dan 23 adalah asersi pembanding tambahan (S-03): langkah 16 memastikan Search sudah menyaring sebelum Download, langkah 23 memastikan berkas pertama berisi kolom lain sebelum asersi ketiadaan `Modified By` di langkah 24 (bagian 8b butir 2).
 - Pada TC-GS-USER-546 Expected hanya menuntut isi berkas; jumlah baris hasil search (2) berasal dari seeding (entri 5 dan 6 dengan Role `Manage hardware`).
 - TC terbagi lintas spec: perilaku kolom hidden pada Search diverifikasi di spec 084 dan pada Filter di spec 086.
+- Total entri Modal Changelog Role tidak diasersi sebagai angka absolut (S-12, bagian 8b butir 10): asersi jumlah baris total memakai selisih 12 terhadap baseline 0 yang ditulis eksplisit di Prerequisites (user seed bersuffix `-089` dibuat baru, jadi baseline nol). Hitungan hasil Search atau Filter bersuffix dan isi per halaman tidak berubah.
 - Temuan untuk QA: (1) TC-GS-USER-544 dan 545 menyebut nama berkas `Changelog-Ahmad-Fauzi-Global-Role.csv` dan `.xlsx`; spec memakai user seed bersuffix sehingga nama berkas memuat suffix (`Changelog-Ahmad-Fauzi-{runId}-089-Global-Role.csv`). Penulisan spasi nama user sebagai tanda hubung disimpulkan dari contoh TC. (2) TC-GS-USER-544 Expected b "semua baris" tidak menyebut cara mengetahui total entri; spec memakai jumlah entri hasil seeding (12). (3) TC-GS-USER-545 tidak punya Expected tentang isi berkas XLSX; spec hanya mengasersi nama berkas. (4) TC-GS-USER-548 "buka file" tidak menyebut aplikasi atau pembaca; spec membaca isi berkas lewat kemampuan tim FE. (5) TC-GS-USER-547 Expected a "tanpa toast peringatan" tidak menyebut teks toast; spec mengasersi ketiadaan toast. (6) TC-GS-USER-546 menyebut contoh keyword `Manage TAG` (cocok dengan delapan dari dua belas entri) dan TC-GS-USER-547 "1 kolom" tanpa nilai; spec memakai `hardw` supaya hasil search tepat dua baris, dan `Modified By`.

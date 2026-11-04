@@ -6,12 +6,12 @@ Spec merujuk data hanya lewat `DU-nn`. Akun memakai env `FA_<ROLE>_EMAIL` / `FA_
 
 | ID | Data | Nilai | Sumber | Lifecycle | Dipakai spec |
 |---|---|---|---|---|---|
-| `DU-01` | Akun Total Control Fixed Asset | env FA_TC_EMAIL, FA_TC_PASSWORD | PRD §2 matriks role | pre-setup | 001, 002, 003, 004, 005, 006, 007, 008, 009, 010, 011, 012, 013, 016, 017, 018, 019, 020, 021, 023, 024, 026 |
-| `DU-02` | Akun Read Only | env FA_RO_EMAIL, FA_RO_PASSWORD | PRD §2 matriks role | pre-setup | 005, 006 |
-| `DU-03` | Akun Create Only (Permission Create pada Manage Asset Master Data) | env FA_CO_EMAIL, FA_CO_PASSWORD | PRD §2 matriks role | pre-setup | 006 |
-| `DU-04` | Akun Update Only (Permission Update pada Manage Asset Master Data) | env FA_UO_EMAIL, FA_UO_PASSWORD | PRD §2 matriks role | pre-setup | 006 |
-| `DU-05` | Akun Delete Only (Permission Delete pada Manage Asset Master Data) | env FA_DO_EMAIL, FA_DO_PASSWORD | PRD §2 matriks role | pre-setup | 006 |
-| `DU-06` | Akun Role Lain tanpa capability | env FA_NOROLE_EMAIL, FA_NOROLE_PASSWORD | PRD §2 matriks role | pre-setup | 006 |
+| `DU-01` | Akun Total Control Fixed Asset | env FA_TC_EMAIL, FA_TC_PASSWORD | PRD §2 matriks role | pre-setup | 001, 002, 003, 004, 005, 006, 007, 008, 009, 010, 011, 012, 013, 016, 017, 018, 019, 020, 021, 023, 024, 026, 029, 030, 031, 032, 033, 034, 035, 036, 037, 038, 041, 042, 043, 045, 046, 047, 048, 049, 050, 053, 054, 055, 056, 057, 058, 059, 060, 061, 062, 063, 064, 065, 066, 067 |
+| `DU-02` | Akun Read Only | env FA_RO_EMAIL, FA_RO_PASSWORD | PRD §2 matriks role | pre-setup | 005, 006, 059, 060, 061 |
+| `DU-03` | Akun Create Only (Permission Create pada Manage Asset Master Data) | env FA_CO_EMAIL, FA_CO_PASSWORD | PRD §2 matriks role | pre-setup | 006, 059 |
+| `DU-04` | Akun Update Only (Permission Update pada Manage Asset Master Data) | env FA_UO_EMAIL, FA_UO_PASSWORD | PRD §2 matriks role | pre-setup | 006, 059 |
+| `DU-05` | Akun Delete Only (Permission Delete pada Manage Asset Master Data) | env FA_DO_EMAIL, FA_DO_PASSWORD | PRD §2 matriks role | pre-setup | 006, 059 |
+| `DU-06` | Akun Role Lain tanpa capability | env FA_NOROLE_EMAIL, FA_NOROLE_PASSWORD | PRD §2 matriks role | pre-setup | 006, 059 |
 | `DU-07` | Population Labels List 6 baris (Total Asset: High Priority 45, Finance Department 120, Audit Ready 82, Executive Asset 14, Maintenance Due 28, Seasonal Event 0) | High Priority #EF4444; Finance Department #3B82F6; Audit Ready #10B981; Executive Asset #8B5CF6; Maintenance Due #F59E0B; Seasonal Event #EC4899 | PRD §4.1.1 Example Data | pre-setup | 001 |
 | `DU-08` | Kata kunci Search tanpa hasil | zzz-{runId}-001 | turunan planner | dinamis | 001 |
 | `DU-09` | Warna uji preset dan kanvas | Swatch preset pertama = `#EF4444` (palet preset baris 1 kolom 1); titik kanvas custom = klik di tengah area Kanvas Warna Kustom (50% lebar, 50% tinggi dari pojok kiri atas), hex hasilnya dibaca dari kolom Hex dan harus berbeda dari `#EF4444` | PRD §4.3 Palet Preset (swatch pertama, L505); turunan planner (titik kanvas) | pre-setup | 002 |
@@ -36,7 +36,7 @@ Spec merujuk data hanya lewat `DU-nn`. Akun memakai env `FA_<ROLE>_EMAIL` / `FA_
 | `DU-28` | Himpunan aset untuk Bulk Remove campuran | sebagian aset berelasi default, sebagian manual untuk label yang sama | E-FALB-06 | dinamis | 010, 012 |
 | `DU-29` | Aset manual untuk skenario label manual sebelum dijadikan Default Label | aset Active dari Asset Name `{runId}-010-29` tanpa Default Label, dengan label seed `DU-54` menempel manual; Asset Name itu lalu menetapkan `DU-54` sebagai Default Label (bukan nama label) | E-FALB-13 | dinamis | 010 |
 | `DU-30` | Nama baru label untuk uji refleksi | Critical-{runId}-011; nama baru yang diketik pada Edit, nama awal seed ada di `DU-49` | E-FALB-11 | dinamis | 011 |
-| `DU-31` | Akun Total Control kedua (pelaku kedua) | env FA_TC2_EMAIL, FA_TC2_PASSWORD | turunan planner | pre-setup | 013, 026 |
+| `DU-31` | Akun Total Control kedua (pelaku kedua) | env FA_TC2_EMAIL, FA_TC2_PASSWORD | turunan planner | pre-setup | 013, 026, 029, 053, 054, 055, 056, 057, 067 |
 | `DU-32` | Nama label sama untuk dua pembuat serentak | Race-{runId}-013 (dua pembuat serentak, E-FALB-19) | E-FALB-19 | dinamis | 013 |
 | `DU-33` | Akun Total Control client Suspended | env FA_SUSP_TC_EMAIL, FA_SUSP_TC_PASSWORD | turunan planner | pre-setup | 014 |
 | `DU-34` | Akun Total Control client Expired | env FA_EXP_TC_EMAIL, FA_EXP_TC_PASSWORD | turunan planner | pre-setup | 025 |
@@ -51,8 +51,8 @@ Spec merujuk data hanya lewat `DU-nn`. Akun memakai env `FA_<ROLE>_EMAIL` / `FA_
 | `DU-43` | Label bersih beserta aset berstatus Deleted yang masih menyimpan relasi | label seed, 1 aset Deleted berelasi label | E-FALB-24 | dinamis | 019 |
 | `DU-44` | Label yang dihapus admin lain saat dialog terbuka | label seed dihapus lewat sesi API setelah D-01 dibuka | E-FALB-12 | dinamis | 019 |
 | `DU-45` | Label campuran bersih dan dipakai | 2 label bersih + 1 label dipakai aset (bersuffix) | E-FALB-27 | dinamis | 020 |
-| `DU-46` | Group, departemen, dan divisi kedua | satu group kedua beserta departemen dan divisi sendiri, berbeda dari group, departemen, dan divisi pertama milik `DU-01`, `DU-20`, dan `DU-21`; disiapkan tim FE/BE di client uji | turunan planner | pre-setup | 004, 007 |
-| `DU-47` | Akun Read Only di group, departemen, dan divisi kedua `DU-46` | env FA_G2RO_EMAIL, FA_G2RO_PASSWORD | turunan planner | pre-setup | 004 |
+| `DU-46` | Group, departemen, dan divisi kedua | satu group kedua beserta departemen dan divisi sendiri, berbeda dari group, departemen, dan divisi pertama milik `DU-01`, `DU-20`, dan `DU-21`; disiapkan tim FE/BE di client uji | turunan planner | pre-setup | 004, 007, 044 |
+| `DU-47` | Akun Read Only di group, departemen, dan divisi kedua `DU-46` | env FA_G2RO_EMAIL, FA_G2RO_PASSWORD | turunan planner | pre-setup | 004, 044 |
 | `DU-48` | Aset seed Active di group kedua (di luar cakupan group `DU-20`) | 1 aset Active milik spec di group kedua `DU-46`, tanpa label | turunan planner | dinamis | 007 |
 | `DU-49` | Nama awal label seed yang di-Edit | pola `Urgent-{runId}-NNN` dengan NNN = nomor spec pemakai (008, 009, 011, 013, 023; di 013 hasil Edit memakai sufiks `-A` / `-B`), warna `#3B82F6` kecuali spec 009 (`#A1B2C3`); dibuat lewat API di hook `before`, dihapus di hook `after`; nama itu diketik ulang di Search, bukan nama hasil Edit | turunan planner | dinamis | 008, 009, 011, 013, 023 |
 | `DU-50` | Label seed untuk penugasan ke aset (tidak di-Edit) | pola `Assign-{runId}-NNN` dengan NNN = nomor spec pemakai (012, 026), warna `#3B82F6`; dibuat lewat API di hook `before`, dihapus di hook `after` | turunan planner | dinamis | 012, 026 |
@@ -61,3 +61,21 @@ Spec merujuk data hanya lewat `DU-nn`. Akun memakai env `FA_<ROLE>_EMAIL` / `FA_
 | `DU-53` | Label seed utama spec 010 | pola `Seed-{runId}-010`, warna `#3B82F6`; Default Label Asset Name `DU-27`; ditempel manual pada aset manual `DU-28` | turunan planner | dinamis | 010 |
 | `DU-54` | Label seed manual spec 010 (skenario E-FALB-13) | pola `Manual-{runId}-010`, warna `#3B82F6`; menempel manual pada aset `DU-29` sebelum dijadikan Default Label | turunan planner | dinamis | 010 |
 | `DU-55` | Label hapus-dulu bersih spec 017 | label seed bersih bersuffix `{runId}-017`; dihapus lewat sesi API sebelum permintaan attach dikirim | E-FALB-14 | dinamis | 017 |
+| `DU-56` | Dataset Labels List: 12 label bersuffix | pola `Lst-{runId}-NNN-01` sampai `-12` (NNN = nomor spec pemakai), warna berbeda dari palet preset, Total Asset 0 sampai 3 (aset Active bersuffix dilabeli lewat API), Modified By dari dua aktor (DU-01 dan DU-31 lewat sesi API), dua kelompok Last Updated dipisah pergantian menit (maksimum 60 detik di hook, bagian 6) | turunan planner | dinamis | 029, 031, 032, 033, 034, 035, 061, 067 |
+| `DU-57` | Label uji chip dan kontras | tiga label bersuffix `Chip-{runId}-030-nn`: satu bernama 120 karakter, satu berwarna terang dan satu berwarna gelap (warna dari palet preset §4.3) | turunan planner | dinamis | 030 |
+| `DU-58` | Kata kunci Search tanpa hasil | `zzz-{runId}-NNN` (NNN = nomor spec pemakai) | turunan planner | dinamis | 032, 045, 055 |
+| `DU-59` | Dataset Drawer Tagged Asset: satu label dan 12 aset Active | label `Tagged-{runId}-NNN` dengan 12 aset Active bersuffix (lebih dari satu halaman), minimal dua Asset Name, dua Brand dan Model/Type, dua Group, tag RFID, QR, NFC, sebagian tanpa tag, Brand, dan Model/Type; dibuat lewat API di hook `before` | turunan planner | dinamis | 041, 042, 043, 044, 045, 046, 047, 048, 049, 050, 062, 067 |
+| `DU-60` | Atribut curated pada aset DU-59 | Measurement (Symbol UoM), Last Scanned (sebagian belum pernah dipindai), Asset Value Commercial dan Fiscal (ada dan belum ada nilai), Warranty Expiry (lewat, segera habis, belum diisi); nilai Date berbeda menit | turunan planner | dinamis | 042, 043, 044, 046, 047, 049 |
+| `DU-61` | Aset dengan lebih dari satu label | sebagian aset DU-59 menempel pada lebih dari 2 label (label tambahan bersuffix) agar sel Label menampilkan `+N more` | turunan planner | dinamis | 043, 046, 049 |
+| `DU-62` | Dataset Changelog: Labels | label bersuffix `Log-{runId}-NNN-nn` dengan entri Create, Edit Label Name, Edit Color, dan Delete oleh dua aktor (DU-01 dan DU-31, sesi API), lebih dari 10 entri total; Old Value dan New Value berisi teks, kode hex, dan `—` | turunan planner | dinamis | 053, 054, 055, 056, 057, 062, 067 |
+| `DU-63` | Akun Default User | env FA_DU_EMAIL, FA_DU_PASSWORD | PRD §2 matriks role | pre-setup | 058 |
+| `DU-64` | Akun Group Manager tanpa capability "Manage Asset Master Data" | env FA_GMNOCAP_EMAIL, FA_GMNOCAP_PASSWORD | PRD §2 matriks role | pre-setup | 058 |
+| `DU-65` | Akun Group Manager dengan capability "Manage Asset Master Data" (Permission Create, Update, Delete) | env FA_GMCRUD_EMAIL, FA_GMCRUD_PASSWORD | PRD §2 matriks role | pre-setup | 058 |
+| `DU-66` | Perangkat Android dan aplikasi native TAG Samurai | emulator atau perangkat dengan aplikasi terpasang; login memakai akun DU-01 dan DU-02 (tanpa password literal) | turunan planner | pre-setup | 061, 062 |
+| `DU-67` | Label seed untuk Modal Create/Edit | pola `Mdl-{runId}-NNN` (NNN = nomor spec pemakai 036, 037, 038), warna `#3B82F6`; dibuat lewat API di hook `before`, dihapus di hook `after` | turunan planner | dinamis | 036, 037, 038 |
+| `DU-68` | Nama label klik ganda Submit | `Dbl-{runId}-036`; satu label tercipta oleh dua klik cepat | turunan planner | dibuat spec 036 | 036 |
+| `DU-69` | Nama uji Live Preview per karakter | `Preview-{runId}-038` diketik karakter demi karakter | turunan planner | dinamis | 038 |
+| `DU-70` | Label seed untuk uji konsumen lintas modul | label `Sync-{runId}-NNN` (nama awal dan nama baru `SyncRenamed-{runId}-NNN`, warna awal dan warna baru dari palet preset), aset Active berlabel, dan Asset Name untuk opsi Default Label; dua label bersih tambahan untuk Bulk Delete | turunan planner | dinamis | 063, 064 |
+| `DU-71` | Label bersih, label dipakai aset, dan Default Label untuk uji visibilitas aksi | tiga label bersuffix `Act-{runId}-060-nn`: Total Asset 0 dan bukan Default Label (D-01), Total Asset lebih dari 0, dan dijadikan Default Label (D-02) | turunan planner | dinamis | 060 |
+| `DU-72` | Label bersih untuk Delete pessimistic | `Res-{runId}-065`, Total Asset 0, bukan Default Label | turunan planner | dinamis | 065 |
+| `DU-73` | Asset Name dengan Default Label dan aset untuk uji provenance | Asset Name `Prov-{runId}-066` dengan label seed sebagai Default Label, satu aset dari template (source `default`) dan satu aset yang ditempel manual lewat Asset Detail (source `manual`) | turunan planner | dinamis | 066 |

@@ -20,6 +20,9 @@ Keterlacakan PRD → spec:
   T10 butir Notes «Klausa di luar E2E»: [FINDING] tanpa ID aturan, atau menyebut aturan yang tidak ada di sourceRules
       spec itu; [REVIEW] bila alasannya berupa hambatan data, akun, atau celah PRD (bagian 2 dan S-01 hanya mengizinkan
       klausa yang efeknya murni server; script tidak bisa menilai itu, hanya menampakkan alasan yang jelas bukan)
+  T11 [FINDING] baris «Tidak berlaku» di coverage: aturan itu aturan PRD (bukan kewajiban turunan `obligation`),
+      alasannya tanpa rujukan baris `L<n>` atau § PRD, atau aturan itu sekaligus dikutip spec. T1 juga menerima
+      kewajiban turunan yang tercantum di «Tidak berlaku»
 Gaya spec (sama dengan check-suite.py, tidak bergantung TC):
   C4 id frontmatter != nama folder · C5 tanpa `- Mode:` · C6 > 35 langkah tanpa alasan · C9 [REVIEW] absence tanpa
   anchor · C11 butir pertama Prerequisites bukan `- Mode:` · C12 "→ … tampil" di langkah aksi · C13 "Kosongkan
@@ -309,7 +312,7 @@ def main(argv=None):
                 if du not in data_ids:
                     out("FINDING", "T9", f"{folder}: {du} tidak ada di {Path(a.data).name}")
 
-    outside, ditahan = {}, {}
+    outside, ditahan, not_applicable = {}, {}, {}
     cov_text = read(a.coverage) if a.coverage and Path(a.coverage).is_file() else ""
     backend_text = read(a.tc_backend) if a.tc_backend and Path(a.tc_backend).is_file() else None
     if cov_text:
@@ -339,6 +342,22 @@ def main(argv=None):
                 ditahan[rid] = cells
                 if rid not in rules:
                     out("FINDING", "T2", f"Ditahan: {rid} tidak ada di PRD")
+        # T11: an obligation derived from the PRD structure (`obligation: true`) that the PRD itself rules out
+        for cells in table_rows(section(sections, "Tidak berlaku")):
+            rid = first_id(cells[0]) if cells else ""
+            if not rid:
+                continue
+            not_applicable[rid] = cells
+            reason = cells[1].strip() if len(cells) > 1 else ""
+            if rid not in rules:
+                out("FINDING", "T2", f"Tidak berlaku: {rid} tidak ada di PRD")
+            elif not rules[rid].get("obligation"):
+                out("FINDING", "T11", f"Tidak berlaku: {rid} aturan PRD, bukan kewajiban turunan; kutip di spec, "
+                                      "Di luar E2E, atau Ditahan")
+            if not re.search(r"\bL\d+\b|§\s?\d", reason):
+                out("FINDING", "T11", f"Tidak berlaku: {rid} tanpa rujukan baris atau § PRD pada alasan")
+            if rid in cited:
+                out("FINDING", "T11", f"Tidak berlaku: {rid} sekaligus dikutip {', '.join(cited[rid])}")
         header = cov_text.split("\n## ", 1)[0]
         m = re.search(r"(\d+)\s+aturan leaf", header)
         if m and int(m.group(1)) != len(rules):
@@ -367,11 +386,13 @@ def main(argv=None):
         if rid in rules and cov_text and rid not in ditahan:
             out("FINDING", "T5", f"{rid} ditahan temuan {', '.join(held[rid])} tetapi tidak tercantum di Ditahan")
     for rid in rules:
-        if rid not in cited and rid not in outside and rid not in ditahan:
-            out("FINDING", "T1", f"{rid} tidak tercakup spec mana pun, tidak di Di luar E2E, tidak di Ditahan")
+        if rid not in cited and rid not in outside and rid not in ditahan and rid not in not_applicable:
+            out("FINDING", "T1", f"{rid} tidak tercakup spec mana pun, tidak di Di luar E2E, tidak di Ditahan"
+                                 + (", tidak di Tidak berlaku" if rules[rid].get("obligation") else ""))
 
-    print(f"\n{len(specs)} spec, {len(rules)} aturan leaf, {len(cited)} tercakup spec, {len(outside)} di luar E2E, "
-          f"{len(ditahan)} ditahan, {findings} temuan")
+    obligations = sum(1 for r in rules.values() if r.get("obligation"))
+    print(f"\n{len(specs)} spec, {len(rules)} aturan leaf ({obligations} kewajiban turunan), {len(cited)} tercakup spec, "
+          f"{len(outside)} di luar E2E, {len(ditahan)} ditahan, {len(not_applicable)} tidak berlaku, {findings} temuan")
     if per_code:
         order = lambda item: (item[0][0], int(item[0][1:]))
         print("per kode: " + ", ".join(f"{c} {n}" for c, n in sorted(per_code.items(), key=order)))

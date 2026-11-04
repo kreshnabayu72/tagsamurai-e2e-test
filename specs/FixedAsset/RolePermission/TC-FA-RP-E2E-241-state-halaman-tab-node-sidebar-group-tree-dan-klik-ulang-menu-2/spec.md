@@ -20,7 +20,7 @@ coverage:
 - Akun aktor: Total Control (Siti Rahmawati, Pre-setup #2) `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control).
 - Hook suite (flag Guided Tooltip, pemulihan Pre-setup bersama, sesi API aktor) berlaku seperti di `suite.md` bagian "Hook suite"; spec ini tidak mengubahnya.
-- Data Pre-setup: #18 (pohon group), #19 (seed Role Transaksi), #38 (Tab Group Manager terisi), #39 (Detail Role `Manage files` terisi: pada `Data Center` Ahmad Fauzi dan Dimas Pranata). Identitas data dirujuk lewat fixture `fixtures/fixedAssetRolePermission.json` (belum ada; disediakan tim FE). Email data pengguna berformat `[namalengkaptanpaspasi]@qwertysystem.net`.
+- Data Pre-setup: #18 (pohon group), #19 (seed Role Transaksi), #38 (Tab Group Manager terisi), #39 (Detail Role `Manage files` terisi: pada `Data Center` Ahmad Fauzi dan Dimas Pranata beserta lima baris pola Group Role Admin Utama, Siti Rahmawati, Rina Wulandari, Dewi Anggraini, Maya Anggraeni). Identitas data dirujuk lewat fixture `fixtures/fixedAssetRolePermission.json` (belum ada; disediakan tim FE). Email data pengguna berformat `[namalengkaptanpaspasi]@qwertysystem.net`.
 - Data Dinamis: tidak ada data yang dibuat spec.
 - Kemampuan teknis: Muat ulang halaman (F5), klik Breadcrumb, dan klik Back; pembaca berkas unduhan CSV (baris dan kolom), disediakan tim FE/BE.
 - State yang diubah dan pemulihannya: Tidak ada state backend yang diubah; Search yang diketik hanya state UI.
@@ -50,8 +50,8 @@ coverage:
 14. Klik node `Data Center`
 15. Klik ikon Download
 16. Klik `Download as CSV`
-17. Verifikasi berkas memuat baris Ahmad Fauzi dan Dimas Pranata (penugasan langsung pada node `Data Center`)
-18. Verifikasi berkas tidak memuat baris selain penugasan langsung pada node `Data Center`
+17. Verifikasi berkas memuat baris Ahmad Fauzi dan Dimas Pranata (penugasan langsung pada node `Data Center`) beserta lima baris pola Group Role `Manage files` (Admin Utama, Siti Rahmawati, Rina Wulandari, Dewi Anggraini, Maya Anggraeni; Pre-setup #39) pada node itu
+18. Verifikasi berkas tidak memuat baris node lain (selain penugasan langsung dan lima baris pola pada node `Data Center`)
 
 ### TC-FA-RP-1029: Tab Transaction Role: sub-tab awal Borrowing & Assignment, sub-tab aktif dan node group dipertahankan setelah F5 dan Back dari Detail Role
 

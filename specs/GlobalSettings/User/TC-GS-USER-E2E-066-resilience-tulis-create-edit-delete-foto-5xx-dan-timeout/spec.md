@@ -72,90 +72,92 @@ coverage:
 16. Pasang intercept pada respons Create user: jawab 5xx
 17. Hover avatar Photo lalu klik `[Edit]`
 18. Pilih file `budi.png`
-19. Klik `[Submit]`
-20. Verifikasi toast error: "Error, failed to create user."
-21. Lepas intercept respons Create user
-22. Verifikasi popup Create tetap terbuka
-23. Verifikasi input First Name, Last Name, Division, Email, dan Access utuh seperti yang diisi pada TC-GS-USER-146
-24. Klik `✕` pada header Popup Create
-25. Verifikasi dialog `Unsaved Changes` tampil
-26. Klik `[Leave]`
-27. Buka Global Settings > File Manager
-28. Verifikasi jumlah file di File Manager sama dengan baseline F0 (tidak ada file `budi.png` baru)
+19. Tunggu toast lama hilang otomatis
+20. Klik `[Submit]`
+21. Verifikasi toast error: "Error, failed to create user."
+22. Lepas intercept respons Create user
+23. Verifikasi popup Create tetap terbuka
+24. Verifikasi input First Name, Last Name, Division, Email, dan Access utuh seperti yang diisi pada TC-GS-USER-146
+25. Klik `✕` pada header Popup Create
+26. Verifikasi dialog `Unsaved Changes` tampil
+27. Klik `[Leave]`
+28. Buka Global Settings > File Manager
+29. Verifikasi jumlah file di File Manager sama dengan baseline F0 (tidak ada file `budi.png` baru)
 
 ### TC-GS-USER-194: Edit gagal 5xx, form tetap terbuka dengan perubahan dipertahankan
 
-29. Buka Global Settings > User > User List (sub-tab Login User)
-30. Klik icon Search, ketik `{runId}-066`, tekan Enter
-31. Pasang intercept pada respons Edit user: jawab 5xx
-32. Klik (⋯) baris `Dewi Lestari {runId}-066` → `Edit`
-33. Ubah Position ke `Supervisor`
-34. Klik `[Save]`
-35. Verifikasi toast error: "Error, failed to update user."
-36. Lepas intercept respons Edit user
-37. Verifikasi popup Edit tetap terbuka
-38. Verifikasi Position tetap `Supervisor`
-39. Verifikasi tombol `[Save]` enabled
-40. Klik `✕` pada header Popup Edit
-41. Verifikasi dialog `Unsaved Changes` tampil
-42. Klik `[Leave]`
+30. Buka Global Settings > User > User List (sub-tab Login User)
+31. Klik icon Search, ketik `{runId}-066`, tekan Enter
+32. Pasang intercept pada respons Edit user: jawab 5xx
+33. Klik (⋯) baris `Dewi Lestari {runId}-066` → `Edit`
+34. Ubah Position ke `Supervisor`
+35. Klik `[Save]`
+36. Verifikasi toast error: "Error, failed to update user."
+37. Lepas intercept respons Edit user
+38. Verifikasi popup Edit tetap terbuka
+39. Verifikasi Position tetap `Supervisor`
+40. Verifikasi tombol `[Save]` enabled
+41. Klik `✕` pada header Popup Edit
+42. Verifikasi dialog `Unsaved Changes` tampil
+43. Klik `[Leave]`
 
 ### TC-GS-USER-208: Edit dengan foto, kegagalan simpan foto me-rollback seluruh perubahan
 
-43. Catat sumber gambar avatar baris `John Doe {runId}-066` sebagai baseline avatar
-44. Pasang intercept pada respons File Manager saat Save Edit user: jawab 5xx
-45. Klik (⋯) baris `John Doe {runId}-066` → `Edit`
-46. Hover avatar lalu klik `[Edit]`
-47. Pilih file `john2.png`
-48. Ubah Position ke `Supervisor`
-49. Klik `[Save]`
-50. Verifikasi toast error: "Error, failed to update user."
-51. Lepas intercept respons File Manager
-52. Klik `✕` pada header Popup Edit
-53. Verifikasi dialog `Unsaved Changes` tampil
-54. Klik `[Leave]`
-55. Verifikasi kolom Position baris `John Doe {runId}-066` tetap `Staff`
-56. Verifikasi sumber gambar avatar baris `John Doe {runId}-066` sama dengan baseline avatar (foto tidak berubah)
-57. Buka Global Settings > File Manager > Recycle Bin
-58. Verifikasi jumlah file di Recycle Bin sama dengan baseline R0 (foto lama `john-{runId}-066.png` tidak masuk Recycle Bin)
+44. Catat sumber gambar avatar baris `John Doe {runId}-066` sebagai baseline avatar
+45. Pasang intercept pada respons File Manager saat Save Edit user: jawab 5xx
+46. Klik (⋯) baris `John Doe {runId}-066` → `Edit`
+47. Hover avatar lalu klik `[Edit]`
+48. Pilih file `john2.png`
+49. Ubah Position ke `Supervisor`
+50. Klik `[Save]`
+51. Verifikasi toast error: "Error, failed to update user."
+52. Lepas intercept respons File Manager
+53. Klik `✕` pada header Popup Edit
+54. Verifikasi dialog `Unsaved Changes` tampil
+55. Klik `[Leave]`
+56. Verifikasi kolom Position baris `John Doe {runId}-066` tetap `Staff`
+57. Verifikasi sumber gambar avatar baris `John Doe {runId}-066` sama dengan baseline avatar (foto tidak berubah)
+58. Buka Global Settings > File Manager > Recycle Bin
+59. Verifikasi jumlah file di Recycle Bin sama dengan baseline R0 (foto lama `john-{runId}-066.png` tidak masuk Recycle Bin)
 
 ### TC-GS-USER-271: Delete gagal 5xx, user tetap ada
 
-59. Buka Global Settings > User > User List (sub-tab Login User)
-60. Klik icon Search, ketik `{runId}-066`, tekan Enter
-61. Pasang intercept pada respons Delete user: jawab 5xx
-62. Klik (⋯) baris `Rudi Hakim {runId}-066` → `Delete`
-63. Klik `[Delete]` pada dialog konfirmasi
-64. Verifikasi toast error: "Error, failed to delete user."
-65. Lepas intercept respons Delete user
-66. Verifikasi baris `Rudi Hakim {runId}-066` tetap ada di User List
-67. Verifikasi dialog Delete tetap terbuka
-68. Verifikasi tombol `[Delete]` enabled
-69. Klik `[Cancel]` pada dialog Delete
+60. Buka Global Settings > User > User List (sub-tab Login User)
+61. Klik icon Search, ketik `{runId}-066`, tekan Enter
+62. Pasang intercept pada respons Delete user: jawab 5xx
+63. Klik (⋯) baris `Rudi Hakim {runId}-066` → `Delete`
+64. Klik `[Delete]` pada dialog konfirmasi
+65. Verifikasi toast error: "Error, failed to delete user."
+66. Lepas intercept respons Delete user
+67. Verifikasi baris `Rudi Hakim {runId}-066` tetap ada di User List
+68. Verifikasi dialog Delete tetap terbuka
+69. Verifikasi tombol `[Delete]` enabled
+70. Klik `[Cancel]` pada dialog Delete
 
 ### TC-GS-USER-987: Retry Create setelah timeout tidak menggandakan user
 
-70. Pasang intercept pada respons Create user: request diteruskan ke backend, respons ke browser ditahan sampai timeout
-71. Klik `[+ User]` di Table Tools
-72. Isi First Name `Budi`, Last Name `Santoso {runId}-066`, Division `Finance`, Email `budisantoso+{runId}-066@qwertysystem.net`, centang Access `Fixed Asset`
-73. Klik `[Submit]`
-74. Verifikasi toast error: "Connection problem. Please try again."
-75. Lepas intercept respons Create user
-76. Klik `[Submit]` lagi
-77. Verifikasi inline error `Email already exists` pada field Email
-78. Klik `✕` pada header Popup Create
-79. Verifikasi dialog `Unsaved Changes` tampil
-80. Klik `[Leave]`
-81. Ganti isi kotak search dengan `Budi Santoso {runId}-066`, tekan Enter
-82. Verifikasi tabel memuat tepat 1 baris `Budi Santoso {runId}-066`
+71. Pasang intercept pada respons Create user: request diteruskan ke backend, respons ke browser ditahan sampai timeout
+72. Klik `[+ User]` di Table Tools
+73. Isi First Name `Budi`, Last Name `Santoso {runId}-066`, Division `Finance`, Email `budisantoso+{runId}-066@qwertysystem.net`, centang Access `Fixed Asset`
+74. Klik `[Submit]`
+75. Verifikasi toast error: "Connection problem. Please try again."
+76. Lepas intercept respons Create user
+77. Tunggu toast lama hilang otomatis
+78. Klik `[Submit]` lagi
+79. Verifikasi inline error `Email already exists` pada field Email
+80. Klik `✕` pada header Popup Create
+81. Verifikasi dialog `Unsaved Changes` tampil
+82. Klik `[Leave]`
+83. Ganti isi kotak search dengan `Budi Santoso {runId}-066`, tekan Enter
+84. Verifikasi tabel memuat tepat 1 baris `Budi Santoso {runId}-066`
 
 ## Notes
 
 - Mode: FE+BE (intercept parsial, kelas harness b: fault injection; bagian 6 konvensi). Sumber: `global-settings/user/TestCases/tc-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Spec melewati sekitar 35 langkah (82 langkah). Alasan: keenam TC berada di satu kelas harness (b, kegagalan atau timeout aksi tulis pada User List), satu akun, dan satu layar; tiap blok TC berdiri sendiri (intercept dan user seed sendiri, intercept dilepas di dalam blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian besar langkah adalah penutupan form dirty deterministik (S-08), navigasi ke File Manager dan Recycle Bin, dan pencarian ulang setelah berpindah layar.
+- Spec melewati sekitar 35 langkah (84 langkah). Alasan: keenam TC berada di satu kelas harness (b, kegagalan atau timeout aksi tulis pada User List), satu akun, dan satu layar; tiap blok TC berdiri sendiri (intercept dan user seed sendiri, intercept dilepas di dalam blok) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian besar langkah adalah penutupan form dirty deterministik (S-08), navigasi ke File Manager dan Recycle Bin, dan pencarian ulang setelah berpindah layar.
 - Urutan TC sumber diubah: TC-GS-USER-147 ditaruh tepat sesudah TC-GS-USER-146 dan memakai Popup Create yang sama (input TC-GS-USER-146 dipertahankan setelah kegagalan, lalu foto `budi.png` dipilih), sehingga hanya satu pembukaan dan satu penutupan form untuk keduanya; TC-GS-USER-194 dan TC-GS-USER-208 mengikuti. TC-GS-USER-271 tidak menghapus data karena digagalkan intercept, sehingga tidak ditaruh paling akhir; TC-GS-USER-987 berada paling akhir karena membuat satu user yang tersimpan.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah persiapan (membuka File Manager dan Recycle Bin, mencatat baseline F0, R0, dan sumber gambar avatar), membuka User List dan Search `{runId}-066`, memasang dan melepas intercept, `Klik ✕` dan `[Leave]` pada penutupan form dirty (S-08), `[Cancel]` yang menutup dialog Delete, dan Search ulang di akhir TC-GS-USER-987. Verifikasi dialog `Unsaved Changes` adalah bagian penutupan deterministik S-08 dan tidak ada di Expected TC.
+- Langkah penghubung (aksi tanpa `Verifikasi`): `Tunggu toast lama hilang otomatis` sebelum `[Submit]` kedua pada teks toast sama (langkah 19 dan 77; toast error "Error, failed to create user." dan "Connection problem. Please try again." dari percobaan sebelumnya harus hilang agar asersi toast berikutnya tidak lolos oleh toast lama), langkah persiapan (membuka File Manager dan Recycle Bin, mencatat baseline F0, R0, dan sumber gambar avatar), membuka User List dan Search `{runId}-066`, memasang dan melepas intercept, `Klik ✕` dan `[Leave]` pada penutupan form dirty (S-08), `[Cancel]` yang menutup dialog Delete, dan Search ulang di akhir TC-GS-USER-987. Verifikasi dialog `Unsaved Changes` adalah bagian penutupan deterministik S-08 dan tidak ada di Expected TC.
 - Asersi "tidak ada file foto yatim" (TC-GS-USER-147) dan "Recycle Bin tidak memuat foto lama" (TC-GS-USER-208) ditulis sebagai jumlah file sama dengan baseline (F0 dan R0), bukan sebagai asersi ketiadaan nama berkas, karena `budi.png` adalah berkas fixture dengan nama yang sama di setiap run. Jumlah file yang sama membuktikan tidak ada file baru dan tidak ada foto lama yang berpindah.
 - Pembagian TC lintas spec: Create sukses diverifikasi di spec 024, Edit sukses di spec 035, ganti foto Edit di spec 038, dan Delete sukses di spec 050; spec ini hanya memuat jalur kegagalan.
 - Temuan untuk QA:

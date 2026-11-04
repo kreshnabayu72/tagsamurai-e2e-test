@@ -102,7 +102,27 @@ class CheckSuitePrdTests(unittest.TestCase):
     def test_a_complete_suite_is_clean(self):
         rc, out = self.run_check()
         self.assertEqual(rc, 0, out)
-        self.assertIn("5 aturan leaf, 3 tercakup spec, 1 di luar E2E, 1 ditahan, 0 temuan", out)
+        self.assertIn("5 aturan leaf (0 kewajiban turunan), 3 tercakup spec, 1 di luar E2E, 1 ditahan, "
+                      "0 tidak berlaku, 0 temuan", out)
+
+    def test_not_applicable_accepts_only_obligations_with_a_prd_reference(self):
+        rules = json.loads(json.dumps(RULES))
+        rules["rules"] += [{"qid": "DEMO:obl/T-DEMO-01/pagination", "obligation": True, "priority": "P2"},
+                           {"qid": "DEMO:obl/T-DEMO-01/download", "obligation": True, "priority": "P2"}]
+        self.rules.write_text(json.dumps(rules), encoding="utf-8")
+        rc, out = self.run_check()
+        self.assertIn("[FINDING] T1 DEMO:obl/T-DEMO-01/pagination tidak tercakup spec mana pun, tidak di Di luar E2E, "
+                      "tidak di Ditahan, tidak di Tidak berlaku", out)
+        block = ("\n## Tidak berlaku\n\n| Kewajiban | Alasan (rujukan PRD) |\n|---|---|\n"
+                 "| `DEMO:obl/T-DEMO-01/pagination` | §5 L40: tabel memuat paling banyak 5 baris |\n"
+                 "| `DEMO:obl/T-DEMO-01/download` | tidak ada tombol |\n"
+                 "| `DEMO-LOGIC-01a` | §4 L12 |\n")
+        self.coverage.write_text(COVERAGE.replace("\n## Spec", block + "\n## Spec"), encoding="utf-8")
+        rc, out = self.run_check()
+        self.assertNotIn("T1 DEMO:obl/T-DEMO-01/pagination", out)
+        self.assertIn("[FINDING] T11 Tidak berlaku: DEMO:obl/T-DEMO-01/download tanpa rujukan baris atau § PRD", out)
+        self.assertIn("[FINDING] T11 Tidak berlaku: DEMO-LOGIC-01a aturan PRD, bukan kewajiban turunan", out)
+        self.assertIn("(2 kewajiban turunan)", out)
 
     def test_uncovered_unknown_parent_and_held_rules(self):
         self.write_spec(["F-DEMO-02a1", "DEMO:V-02", "F-DEMO-02", "DEMO:V-99"])

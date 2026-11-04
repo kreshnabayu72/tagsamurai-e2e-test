@@ -29,8 +29,8 @@ coverage:
   - U-3 (TC-GS-USER-102): First Name `Budi`, Last Name `  Santoso {runId}-025-102  ` (spasi di awal dan akhir), Email `budisantoso+{runId}-025-102@qwertysystem.net`.
   - U-4 (TC-GS-USER-103): First Name `Budi`, Last Name `Santoso {runId}-025-103`, Employee ID `  EMP-0099-{runId}-025  ` (spasi di awal dan akhir), Email `budisantoso+{runId}-025-103@qwertysystem.net`.
   - U-5 (TC-GS-USER-104): First Name `Budi`, Last Name `Santoso {runId}-025-104`, Email `  budisantoso+{runId}-025-104@qwertysystem.net  ` (spasi di awal dan akhir).
-  - Setiap user memakai Division `Finance` dan Access `Fixed Asset`.
-- State global yang diubah: Custom Field `Emergency Phone` tidak Required selama spec ini (TC-GS-USER-137 dan 101 sampai 104 tidak mengisi Custom Field; Tabel Pre-setup No. 24 mendefinisikannya Required). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah. Suite berjalan serial.
+  - Setiap user memakai Division `Finance`, Access `Fixed Asset`, dan Emergency Phone (`🇮🇩 +62`, `81234567890`).
+- State global yang diubah: Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif; TC-GS-USER-137 dan 101 sampai 104 tetap mengisinya sesuai TC; status Required nonaktif tetap dipertahankan sesuai kesepakatan). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah. Suite berjalan serial.
 - Kemampuan teknis (disediakan tim FE/BE bila belum ada): mengetik nilai dengan spasi di awal dan akhir ke field; Search di User List menurut Name (kolom yang dicari ditentukan tim FE); membaca teks Detail apa adanya (tanpa normalisasi spasi) untuk membedakan nilai ber-spasi tepi dan ter-trim.
 
 ## Test Steps
@@ -42,7 +42,7 @@ coverage:
 
 ### TC-GS-USER-137: Create dengan Stay on this form, Popup tetap terbuka dan form ter-reset
 
-3. Isi First Name `Budi`, Last Name `Santoso {runId}-025-137`, Division `Finance`, Email `budisantoso+{runId}-025-137@qwertysystem.net`, pilih Access `Fixed Asset`
+3. Isi First Name `Budi`, Last Name `Santoso {runId}-025-137`, Division `Finance`, Email `budisantoso+{runId}-025-137@qwertysystem.net`, pilih Access `Fixed Asset`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`)
 4. Centang `Stay on this form after submitting`
 5. Klik `[Submit]`
 6. Verifikasi toast sukses: "Success, user has been created."
@@ -53,19 +53,19 @@ coverage:
 
 ### TC-GS-USER-101, 102, 103, 104: pembuatan user dengan spasi tepi (Popup tetap terbuka karena Stay on this form)
 
-11. Isi First Name `  Budi  `, Last Name `Santoso {runId}-025-101`, Division `Finance`, Email `budisantoso+{runId}-025-101@qwertysystem.net`, pilih Access `Fixed Asset`
+11. Isi First Name `  Budi  `, Last Name `Santoso {runId}-025-101`, Division `Finance`, Email `budisantoso+{runId}-025-101@qwertysystem.net`, pilih Access `Fixed Asset`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`)
 12. Tunggu toast sukses hilang otomatis
 13. Klik `[Submit]`
 14. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-101)
-15. Isi First Name `Budi`, Last Name `  Santoso {runId}-025-102  `, Division `Finance`, Email `budisantoso+{runId}-025-102@qwertysystem.net`, pilih Access `Fixed Asset`
+15. Isi First Name `Budi`, Last Name `  Santoso {runId}-025-102  `, Division `Finance`, Email `budisantoso+{runId}-025-102@qwertysystem.net`, pilih Access `Fixed Asset`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`)
 16. Tunggu toast sukses hilang otomatis
 17. Klik `[Submit]`
 18. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-102)
-19. Isi First Name `Budi`, Last Name `Santoso {runId}-025-103`, Division `Finance`, Email `budisantoso+{runId}-025-103@qwertysystem.net`, pilih Access `Fixed Asset`, Employee ID `  EMP-0099-{runId}-025  `
+19. Isi First Name `Budi`, Last Name `Santoso {runId}-025-103`, Division `Finance`, Email `budisantoso+{runId}-025-103@qwertysystem.net`, pilih Access `Fixed Asset`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`), Employee ID `  EMP-0099-{runId}-025  `
 20. Tunggu toast sukses hilang otomatis
 21. Klik `[Submit]`
 22. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-103)
-23. Isi First Name `Budi`, Last Name `Santoso {runId}-025-104`, Division `Finance`, pilih Access `Fixed Asset`, Email `  budisantoso+{runId}-025-104@qwertysystem.net  `
+23. Isi First Name `Budi`, Last Name `Santoso {runId}-025-104`, Division `Finance`, pilih Access `Fixed Asset`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`), Email `  budisantoso+{runId}-025-104@qwertysystem.net  `
 24. Tunggu toast sukses hilang otomatis
 25. Klik `[Submit]`
 26. Verifikasi toast sukses: "Success, user has been created." (TC-GS-USER-104)
@@ -112,4 +112,4 @@ coverage:
   - TC-GS-USER-101 sampai 104 menyebut "Buka Detail user baru" dan Expected "tersimpan tanpa spasi awal/akhir" tanpa menyebut elemen Detail yang diperiksa dan tanpa cara membedakan spasi (HTML menormalkan spasi saat dirender). Spec mengasersi teks Detail apa adanya: nama lengkap (First Name dan Last Name), Employee ID, dan Email; kemampuan membaca teks apa adanya disediakan tim FE.
   - TC-GS-USER-101 Langkah Uji mengisi First Name `Budi` lalu mengisinya lagi dengan `  Budi  `; spec mengisi `  Budi  ` sekali (hasil akhir sama). Hal yang sama berlaku untuk TC-GS-USER-102, 103, dan 104.
   - TC-GS-USER-137 Expected d menyebut baris muncul "di belakang popup" tanpa menyebut halaman tabel; spec memilih 100 baris per halaman.
-  - Tabel Pre-setup No. 24 mendefinisikan `Emergency Phone` Required, sedangkan TC-GS-USER-137 dan 101 sampai 104 tidak mengisi Custom Field; spec mensyaratkan status Required dimatikan selama spec (disediakan tim FE/BE).
+  - TC-GS-USER-137 dan 101 sampai 104 mengisi `Emergency Phone` (`🇮🇩 +62`, `81234567890`) pada Langkah Uji dan spec mengisinya; Tabel Pre-setup No. 24 menyatakan Required hanya aktif untuk TC-GS-USER-158 dan 349, sehingga Required tetap nonaktif selama spec (disediakan tim FE/BE).

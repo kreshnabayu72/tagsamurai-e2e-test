@@ -31,7 +31,7 @@ coverage:
 
 ## Test Steps
 
-### TC-FA-SU-942: Pencabutan App Access FAMS di Global Settings: pengguna hilang dari User List dan seluruh penugasan FAMS dibersihkan
+### TC-FA-SU-942: Pencabutan App Access FAMS di Global Settings: pengguna hilang dari User List; penugasan Transaction Role tetap tersimpan, penugasan FAMS lainnya dibersihkan
 
 1. Ketik Search `Wawan Setiawan {runId}-305`, tekan Enter, klik nama Wawan Setiawan {runId}-305, lalu catat URL Detail
 2. Principal Automation mencabut App Access FAMS dari Wawan Setiawan {runId}-305 di Global Settings hingga pencabutan tersimpan
@@ -99,7 +99,7 @@ coverage:
 - Klausa "tanpa entri log" TC-FA-SU-941 ditulis sebagai asersi jumlah dengan baseline (S-12) dengan anchor positif (pengguna sudah tampil di User List dan header kolom surface termuat), bukan asersi absence kelas g (bagian 3 prinsip 13, "Asersi jumlah atau state"); langkah baca-log berpola tidak dihitung menurut Smell: 11 dari 50 langkah.
 - Pengguna milik spec bernama sama dengan Pre-setup TC dengan suffix `{runId}-305` (S-06); data dinamis `Pengguna Baru` tidak ditentukan namanya oleh TC.
 - Temuan untuk QA (S-15):
-  - TC-FA-SU-942 butir a menyebut Filter dan Download, dan butir b menyebut login FAMS diblokir, tetapi Langkah Uji hanya memuat Search, URL Detail, dan Detail Role; spec mengasersi yang punya langkah. Butir c (penugasan Global Role, Group Role tingkat akses, Group Manager, Home Group dibersihkan, riwayat Changelog tetap tersimpan) hanya teramati lewat Detail Role Manage files (Group Role); sisanya tidak punya langkah observasi dan tidak diasersi, dan Post Condition tidak punya langkah observasi.
+  - TC-FA-SU-942 butir a menyebut Filter dan Download, dan butir b menyebut login FAMS diblokir, tetapi Langkah Uji hanya memuat Search, URL Detail, dan Detail Role; spec mengasersi yang punya langkah. Butir c (penugasan Global Role, Group Role, tingkat akses, Group Manager, Home Group dibersihkan; baris Transaction Role termasuk baris pola tier tetap tersimpan sesuai `E-FARP-49`; riwayat Changelog tetap tersimpan) hanya teramati lewat Detail Role Manage files (Group Role); sisanya, termasuk baris Transaction Role yang tetap tersimpan, tidak punya langkah observasi (Detail pengguna tidak dapat dibuka setelah pencabutan) dan tidak diasersi, dan Post Condition tidak punya langkah observasi.
   - TC-FA-SU-943 butir b (penugasan lama tidak dipulihkan, riwayat Changelog lama tetap tersimpan) memerlukan riwayat awal; TC tidak menyebut seed riwayat Wawan Setiawan, jadi spec mensyaratkannya di Prerequisites.
   - TC-FA-SU-941 menyebut Last Updated "sama dengan waktu pemberian App Access" tanpa toleransi; spec memakai toleransi satu menit (S-12). Butir d memerlukan password pengguna baru dan inbox email yang disediakan tim FE; Post Condition butir b (tidak ada entri log) sudah menjadi butir c.
   - Hint `g` TC-FA-SU-941 (asersi absence) ditulis sebagai asersi jumlah dengan baseline di spec ini; rujukan silang ke spec absence kelas g diputuskan pemilik proses.

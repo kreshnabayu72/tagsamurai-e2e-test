@@ -27,15 +27,15 @@ coverage:
   - Custom Field aktif `Blood Type` (Dropdown A/B/O/AB), `Skills` (Multi-Dropdown Excel/SQL), `Emergency Phone` (Phone) (No. 24).
   - TAG `TAG-USR-0001` (user, aktif, bebas, belum dipasang) (No. 25).
 - Data Dinamis (dibuat lewat UI oleh spec; tidak di-seed). Seluruhnya dihapus di hook `after` lewat API menurut Email, tanpa mengandalkan Submit berhasil penuh:
-  - U-1 (TC-GS-USER-117): Name `Budi Santoso {runId}-024-117`, Email `budisantoso+{runId}-024-117@qwertysystem.net`.
+  - U-1 (TC-GS-USER-117): Name `Budi Santoso {runId}-024-117`, Email `budisantoso+{runId}-024-117@qwertysystem.net`, Emergency Phone (`🇮🇩 +62`, `81234567890`).
   - U-2 (TC-GS-USER-118): Name `Budi Santoso {runId}-024-118`, Email `budisantoso+{runId}-024-118@qwertysystem.net`, Position `Finance Manager`, Employee ID `EMP-0101-{runId}-024`, TAG `TAG-USR-0001`, Temporary Until hari ini + 30 hari, Blood Type `O`, Skills `Excel`, Emergency Phone `081234567890`, Photo `budi.png`.
-  - U-3 (TC-GS-USER-119): Name `Sari Wulandari {runId}-024-119`, Email `sariwulandari+{runId}-024-119@qwertysystem.net`, Division `Logistics`.
-  - U-4 (TC-GS-USER-120): Name `Sari Wulandari {runId}-024-120`, Email `sariwulandari+{runId}-024-120@qwertysystem.net`, Division `Logistics`.
+  - U-3 (TC-GS-USER-119): Name `Sari Wulandari {runId}-024-119`, Email `sariwulandari+{runId}-024-119@qwertysystem.net`, Division `Logistics`, Emergency Phone (`🇮🇩 +62`, `81234567890`).
+  - U-4 (TC-GS-USER-120): Name `Sari Wulandari {runId}-024-120`, Email `sariwulandari+{runId}-024-120@qwertysystem.net`, Division `Logistics`, Emergency Phone (`🇮🇩 +62`, `81234567890`).
 - Berkas foto `budi.png` (fixture unggahan, disediakan tim FE).
 - Pemulihan data Pre-setup yang ditulis spec ini (TAG `TAG-USR-0001`, status Required `Emergency Phone`) merujuk fixture pemulihan di `suite.md` ("Pemulihan data Pre-setup yang ditulis spec").
 - State global yang diubah:
   - TAG `TAG-USR-0001` dipasang ke U-2 (TC-GS-USER-118). Hook `after` memastikan TAG itu kembali bebas dan belum dipasang (lewat penghapusan U-2 atau Unpair); mekanisme pelepasan TAG tidak disebut di TC dan PRD, disediakan tim FE/BE.
-  - Custom Field `Emergency Phone` tidak Required selama spec ini (TC-GS-USER-117, 119, 120 tidak mengisi Custom Field). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah.
+  - Custom Field `Emergency Phone` tidak Required selama spec ini (Tabel Pre-setup No. 24: Required hanya aktif untuk TC-GS-USER-158 dan 349, TC Create dan Edit lain dijalankan saat Required nonaktif; TC-GS-USER-117, 119, 120 tetap mengisinya sesuai TC, dan TC-GS-USER-118 mengisinya `081234567890`; status Required nonaktif tetap dipertahankan sesuai kesepakatan). Pengubahan dan pemulihan status Required disediakan tim FE/BE; hook `before` mencatat status awal, hook `after` memulihkannya walau spec gagal di tengah.
   - Suite berjalan serial.
 - Kemampuan teknis (disediakan tim FE/BE bila belum ada): simulasi scan TAG `TAG-USR-0001` pada tombol `Scan TAG` (TC tidak menyebut mekanismenya); unggah berkas ke Photo; memilih tanggal Temporary Until; membaca Timezone dan Date Format client (General Settings) untuk menghitung dan memformat "hari ini + 30 hari"; Search di User List menurut Name (kolom yang dicari ditentukan tim FE).
 
@@ -45,7 +45,7 @@ coverage:
 
 1. Buka Global Settings > User > User List (sub-tab Login User)
 2. Klik `[+ User]` di Table Tools
-3. Isi First Name `Budi`, Last Name `Santoso {runId}-024-117`, Division `Finance`, Email `budisantoso+{runId}-024-117@qwertysystem.net`, pilih Access `Fixed Asset`
+3. Isi First Name `Budi`, Last Name `Santoso {runId}-024-117`, Division `Finance`, Email `budisantoso+{runId}-024-117@qwertysystem.net`, pilih Access `Fixed Asset`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`)
 4. Klik `[Submit]`
 5. Verifikasi Popup tertutup
 6. Verifikasi toast sukses: "Success, user has been created."
@@ -66,9 +66,9 @@ coverage:
 
 ### TC-GS-USER-119: Create dengan Access Global Settings saja
 
-21. Buka Global Settings > User > User List (sub-tab Login User)
+21. Buka Global Settings > User > User List lewat sidebar (sub-tab Login User)
 22. Klik `[+ User]` di Table Tools
-23. Isi First Name `Sari`, Last Name `Wulandari {runId}-024-119`, Division `Logistics`, Email `sariwulandari+{runId}-024-119@qwertysystem.net`
+23. Isi First Name `Sari`, Last Name `Wulandari {runId}-024-119`, Division `Logistics`, Email `sariwulandari+{runId}-024-119@qwertysystem.net`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`)
 24. Pilih Access `Global Settings` saja
 25. Klik `[Submit]`
 26. Verifikasi toast sukses: "Success, user has been created."
@@ -82,9 +82,9 @@ coverage:
 
 ### TC-GS-USER-120: Create dengan Access Fixed Asset dan Supply Asset tanpa Global Settings
 
-34. Buka Global Settings > User > User List (sub-tab Login User)
+34. Buka Global Settings > User > User List lewat sidebar (sub-tab Login User)
 35. Klik `[+ User]` di Table Tools
-36. Isi First Name `Sari`, Last Name `Wulandari {runId}-024-120`, Division `Logistics`, Email `sariwulandari+{runId}-024-120@qwertysystem.net`
+36. Isi First Name `Sari`, Last Name `Wulandari {runId}-024-120`, Division `Logistics`, Email `sariwulandari+{runId}-024-120@qwertysystem.net`, isi Emergency Phone (Country Code `🇮🇩 +62`, Number `81234567890`)
 37. Pilih Access `Fixed Asset` dan `Supply Asset`
 38. Klik `[Submit]`
 39. Verifikasi toast sukses: "Success, user has been created."
@@ -134,7 +134,7 @@ coverage:
 - TC-GS-USER-117 Expected c memeriksa baris User List dengan ketujuh kolom disebut utuh; tiap kolom memiliki `Verifikasi` sendiri (S-01).
 - Post Condition tanpa langkah observasi di TC tidak diasersi (S-01, S-15): TC-GS-USER-117 (role default User Basic di Fixed Asset, Activation Email dikirim dan cooldown resend 60 detik, dampak ke Fixed Asset > Settings > User dan modul Auth) dan TC-GS-USER-118 (dampak ke TAG Registry dan Hardware > Handheld > Detail).
 - Temuan untuk QA:
-  - TC-GS-USER-117, 119, 120 submit tanpa Custom Field, sedangkan Tabel Pre-setup No. 24 mendefinisikan `Emergency Phone` Required; kombinasi ini tidak dapat sukses. Spec mensyaratkan `Emergency Phone` tidak Required selama spec (disediakan tim FE/BE).
+  - TC-GS-USER-117, 119, 120 mengisi `Emergency Phone` (`🇮🇩 +62`, `81234567890`) pada Langkah Uji dan spec mengisinya; Tabel Pre-setup No. 24 menyatakan Required hanya aktif untuk TC-GS-USER-158 dan 349, sehingga Required tetap nonaktif selama spec (disediakan tim FE/BE). Langkah Uji TC-GS-USER-120 menulis pengisian `Emergency Phone` di tengah kalimat pemilihan Access ("pilih Access `Fixed Asset`, isi Emergency Phone ... dan `Supply Asset`"); spec mengisinya bersama field wajib pada langkah 36.
   - TC-GS-USER-117 dan 118 memakai Email `budisantoso@qwertysystem.net` yang sama; Email unik global, sehingga kedua user tidak dapat ada bersamaan. Spec memakai suffix `{runId}-024-<TC>` per user; hal yang sama berlaku untuk TC-GS-USER-119 dan 120 (`sariwulandari@qwertysystem.net`).
   - TC-GS-USER-118 Expected c menyebut "Switch Active ON" tanpa menyebut permukaannya (User List atau Detail); spec memeriksa baris User List.
   - TC-GS-USER-118 Expected b menyebut "Avatar foto" dan "info `Temporary until [tanggal]`" tanpa format tanggal; spec memakai Date Format General Settings client.

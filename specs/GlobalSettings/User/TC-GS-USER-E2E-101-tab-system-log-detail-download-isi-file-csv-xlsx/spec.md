@@ -29,6 +29,7 @@ coverage:
   - Target aksi `Target Alfa {runId}-101` (email `targetalfa+{runId}-101@qwertysystem.net`, Position `Staff`) dan `Target Beta {runId}-101` (email `targetbeta+{runId}-101@qwertysystem.net`).
   - Aksi seed oleh Aktor Log, berurutan (hanya data yang dipakai `Verifikasi`, S-11): (1) Create `Target Alfa` (Field `Name`, Old Value `—`); (2) Create `Target Beta`; (3) Edit Position `Target Alfa` dari `Staff` menjadi `Supervisor`; (4) empat kali Edit Position `Target Alfa` bergantian `Supervisor` ke `Staff` dan `Staff` ke `Supervisor`; (5) Deactivate `Target Alfa` (Field `Status (Global)`, `Active` menjadi `Inactive`); (6) Activate `Target Alfa`; (7) Delete `Target Beta` (Field `Name`, New Value `—`); (8) Assign Total Control ke `Target Alfa` (Object `Total Control`, Field `Access Level`, New Value `Total Control`).
   - Hasil: 11 entri (lebih dari 10 baris per halaman, sehingga berkas yang memuat seluruh baris dapat dibedakan dari satu halaman tabel). Search `alfa` mencocokkan 9 entri (semua kecuali Create dan Delete `Target Beta`). Entri Create memiliki Old Value kosong dan entri Delete memiliki New Value kosong (nilai kosong di berkas, TC-GS-USER-628).
+- Baseline audit trail (S-12, bagian 8b butir 10): aktor `Aktor Log {runId}-101` dibuat baru oleh hook `before` dengan nama dan email bersuffix `-101`, sehingga sebelum seeding Tab System Log belum memuat entri apa pun; baseline = 0 dicatat eksplisit di hook `before` tepat sebelum seeding. Jumlah baris total yang diasersi adalah selisih terhadap baseline itu (baseline 0 + 11 entri seed), bukan total absolut tabel. Bila baseline perlu dibaca, kemampuan baca total entri disediakan tim FE/BE (TC, PRD, dan LLD tidak menyebut caranya).
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API `Target Alfa` (cabut tier Total Control lebih dulu bila diperlukan), `Target Beta` bila masih ada, dan `Aktor Log`; hapus sisa user bersuffix `-101` dari run lama; hapus berkas unduhan. Entri log tidak bisa dihapus.
 - Kemampuan teknis (kelas binary buffer, prinsip 13f konvensi): menangkap berkas unduhan browser ke direktori bersih per unduhan supaya nama berkas yang sama tidak tertimpa atau diberi akhiran `(1)`; membaca isi berkas CSV dan XLSX (nama kolom, jumlah baris data, nilai sel). Nama berkas mengikuti `System-Log-[User-Name]` dengan spasi diganti `-` (PRD user.md §4.1; TC-GS-USER-408 `System-Log-John-Doe`).
 - State global yang diubah dan dipulihkan: visibilitas kolom `Field` pada tabel System Log (di-hide pada langkah 32 lalu dicentang kembali pada langkah 40); hook `before` mengosongkan preferensi Setup Column tab ini (tempat penyimpanan preferensi tidak disebut TC User; disediakan tim FE) dan hook `after` memulihkannya sebagai cadangan. Suite berjalan serial (`parallel: false`).
@@ -50,7 +51,7 @@ coverage:
 7. Verifikasi tidak ada toast sukses
 8. Verifikasi file `System-Log-Aktor-Log-{runId}-101.csv` terunduh
 9. Buka isi file `System-Log-Aktor-Log-{runId}-101.csv`
-10. Verifikasi file memuat semua 11 baris data (lebih dari 10 baris, tidak dibatasi halaman)
+10. Verifikasi file memuat semua baris: selisih 11 baris data terhadap baseline 0 entri (11 entri seed, lebih dari 10 baris, tidak dibatasi halaman)
 
 ### TC-GS-USER-408: Download Tab System Log memakai nama file per user
 
@@ -62,12 +63,12 @@ coverage:
 ### TC-GS-USER-625: Download XLSX
 
 15. Ubah page size ke 100
-16. Verifikasi tabel menampilkan 11 baris
+16. Verifikasi tabel menampilkan selisih 11 baris terhadap baseline 0 entri
 17. Klik icon Download
 18. Klik `Download as XLSX`
 19. Verifikasi file `System-Log-Aktor-Log-{runId}-101.xlsx` terunduh
 20. Buka isi file `System-Log-Aktor-Log-{runId}-101.xlsx`
-21. Verifikasi file memuat 11 baris data, sama dengan jumlah baris tabel
+21. Verifikasi file memuat selisih 11 baris data terhadap baseline 0 entri, sama dengan jumlah baris tabel
 22. Verifikasi nilai kolom `Action`, `Object`, `Name`, `Field`, `Old Value`, dan `New Value` tiap baris pada file sama dengan baris tabel
 23. Ubah page size ke 10
 
@@ -119,4 +120,5 @@ coverage:
 - Isi berkas export dipisah dari kegagalan export (kelas binary buffer, prinsip 13f); kegagalan unduhan seluruh permukaan tabel ada di spec 069.
 - Asersi pada berkas memakai pola baris dan kolom (bukan urutan), sehingga entri log dari run atau spec lain tidak memengaruhi hasil.
 - Pembagian TC lintas spec: Search, Filter, Sort, Pagination Tab System Log di spec 096 sampai 099; Setup Column di spec 100.
+- Total entri Tab System Log tidak diasersi sebagai angka absolut (S-12, bagian 8b butir 10): asersi jumlah baris total memakai selisih 11 terhadap baseline 0 yang ditulis eksplisit di Prerequisites (user seed bersuffix `-101` dibuat baru, jadi baseline nol). Hitungan hasil Search atau Filter bersuffix dan isi per halaman tidak berubah.
 - Temuan untuk QA: (1) TC-GS-USER-408 dan 625 mengasersi hal yang sama (unduhan XLSX bernama `System-Log-[User-Name]`); spec menjalankan keduanya pada user yang sama. (2) TC-GS-USER-626 judul "Search/Filter aktif" tetapi langkah dan Expected hanya memuat Search; Filter tidak diuji di spec ini. (3) TC-GS-USER-628 tidak menyebut sel yang diamati; spec memakai Old Value baris Create dan New Value baris Delete. (4) TC-GS-USER-627 "Hide 1 kolom" tidak menyebut kolom; spec memakai `Field`. (5) TC-GS-USER-626 "keyword" tidak disebut; spec memakai `alfa`. (6) TC-GS-USER-624 "semua baris" tidak menyebut cara mengetahui total entri; spec membandingkan dengan 11 entri seed (lebih dari 10 baris halaman). (7) TC-GS-USER-625 "sama dengan baris tabel" tidak menyebut halaman tabel yang dibandingkan; spec menaikkan page size ke 100 sehingga seluruh 11 baris tampil di tabel.
