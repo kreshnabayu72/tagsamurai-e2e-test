@@ -1,8 +1,8 @@
 # Coverage E2E — Global Settings > Import
 
-Sumber: `global-settings/import/TestCases/tc-import.md` (964 TC unik, `TC-GS-IMPORT-1`–`971` tanpa 483–485 dan 772–775; 968 baris karena ID 868–871 dipakai dua kali). Suite: `specs/GlobalSettings/Import/`. Prefix: `GS` + `IMPORT` (`TC-GS-IMPORT-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Rencana: `work-items/gs-import/plan-e2e-generate-spec.md`.
+Sumber: `global-settings/import/TestCases/tc-import.md` (966 TC unik, `TC-GS-IMPORT-1`–`973` tanpa 483–485 dan 772–775; 970 baris karena ID 868–871 dipakai dua kali). Suite: `specs/GlobalSettings/Import/`. Prefix: `GS` + `IMPORT` (`TC-GS-IMPORT-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Rencana: `work-items/gs-import/plan-e2e-generate-spec.md`.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: seluruh 968 baris TC masuk spec; 0 TC dikeluarkan sebagai hanya-BE. 216 spec (216 FE+BE, 0 mock). Setiap baris TC terpetakan ke tepat satu spec.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: seluruh 970 baris TC masuk spec; 0 TC dikeluarkan sebagai hanya-BE. 218 spec (218 FE+BE, 0 mock). Setiap baris TC terpetakan ke tepat satu spec.
 
 ## TC granular → spec e2e
 
@@ -10,9 +10,9 @@ Kolom TC sumber memuat nomor `TC-GS-IMPORT-<n>`. Entri berbentuk `n@Lbaris` adal
 
 | Spec | Judul | Mode | Langkah | TC sumber |
 |---|---|:---:|:---:|---|
-| TC-GS-IMPORT-E2E-001-screening-halaman-import-dengan-draft-brand-sub-tab-default-skeleton | Screening Halaman Import dengan Draft Brand, Sub-Tab Default, Skeleton Loading, dan Unsaved Banner Dibaca Admin Kedua | FE+BE | 58 | 7, 8, 17, 20 |
+| TC-GS-IMPORT-E2E-001-screening-halaman-import-dengan-draft-brand-sub-tab-default-skeleton | Screening Halaman Import dengan Draft Brand, Sub-Tab Default, Skeleton Loading, dan Unsaved Banner Dibaca Admin Kedua | FE+BE | 57 | 7, 8, 17, 20 |
 | TC-GS-IMPORT-E2E-002-routing-import-route-per-tab-route-tanpa-tab-refresh-riwayat-back | Routing Import: Route per Tab, Route Tanpa Tab, Refresh, Riwayat Back, Breadcrumb Non-Klik, dan Detail Notifikasi | FE+BE | 50 | 9, 10, 11, 12, 13, 14 |
-| TC-GS-IMPORT-E2E-003-screening-state-belum-ada-draft-tab-brand-dan-keenam-sub-tab-identik | Screening State Belum Ada Draft: Tab Brand dan Keenam Sub-Tab Identik | FE+BE | 54 | 15, 16 |
+| TC-GS-IMPORT-E2E-003-screening-state-belum-ada-draft-tab-brand-dan-keenam-sub-tab-identik | Screening State Belum Ada Draft: Tab Brand dan Keenam Sub-Tab Identik | FE+BE | 51 | 15, 16 |
 | TC-GS-IMPORT-E2E-004-unsaved-banner-pada-client-c-tampil-bersama-draft-division-tanggal | Unsaved Banner pada Client C: Tampil Bersama Draft Division, Tanggal Tetap Setelah Edit dan Append, Tidak Tampil Setelah Confirm Mapping, dan Draft Kurang dari 24 Jam Dibuang Tanpa Discard | FE+BE | 71 | 19, 21, 876, 884 |
 | TC-GS-IMPORT-E2E-005-guided-tooltip-otomatis-selesai-sampai-done-keluar-halaman-di-tengah | Guided Tooltip Otomatis: Selesai Sampai Done, Keluar Halaman di Tengah, Replay, dan Keluar Tidak Menandai Ulang | FE+BE | 46 | 24, 590, 593 |
 | TC-GS-IMPORT-E2E-006-guided-tooltip-otomatis-ditutup-lewat-skip-klik-overlay-dan-esc-lalu | Guided Tooltip Otomatis Ditutup Lewat Skip, Klik Overlay, dan Esc Lalu Ditandai Sudah Dilihat | FE+BE | 42 | 587, 588, 589 |
@@ -28,7 +28,7 @@ Kolom TC sumber memuat nomor `TC-GS-IMPORT-<n>`. Entri berbentuk `n@Lbaris` adal
 | TC-GS-IMPORT-E2E-016-reupload-file-di-modal-column-mapping-berkas-pengganti-dan-berkas | Reupload File di Modal Column Mapping: Berkas Pengganti dan Berkas Tersaring | FE+BE | 21 | 60, 61 |
 | TC-GS-IMPORT-E2E-017-menutup-modal-column-mapping-dialog-unsaved-changes-cancel-leave-esc | Menutup Modal Column Mapping: Dialog Unsaved Changes (Cancel, Leave, Esc) dan Tutup Bersih (Cancel, Icon Close) | FE+BE | 40 | 62, 63, 64, 65, 66, 67 |
 | TC-GS-IMPORT-E2E-018-append-ke-draft-yang-sudah-ada-dialog-confirm-append-cancel-leave | Append ke Draft yang Sudah Ada: Dialog Confirm Append (Cancel, Leave, Append Records), Row Lanjut, dan Nama Lebih dari 120 Karakter Menjadi Error dengan Badge AI | FE+BE | 61 | 68, 71, 72, 73, 74 |
-| TC-GS-IMPORT-E2E-019-entri-upload-drag-and-drop-tombol-browse-file-dan-dua-berkas-sekaligus | Entri Upload: Drag-and-Drop, Tombol Browse File, dan Dua Berkas Sekaligus | FE+BE | 22 | 69, 70, 563 |
+| TC-GS-IMPORT-E2E-019-entri-upload-drag-and-drop-tombol-browse-file-dan-dua-berkas-sekaligus | Entri Upload: Drag-and-Drop, Tombol Upload File di Dropzone, dan Dua Berkas Sekaligus | FE+BE | 22 | 69, 70, 563 |
 | TC-GS-IMPORT-E2E-020-client-e-upload-setelah-commit-tuntas-membuat-draft-baru-dan-confirm | Client E: Upload Setelah Commit Tuntas Membuat Draft Baru, dan Confirm Mapping User Login dan User Non Login dengan Referensi Valid | FE+BE | 27 | 76, 759, 760 |
 | TC-GS-IMPORT-E2E-021-penyaringan-berkas-senyap-xlsx-sheet-kosong-format-selain-csv-xlsx | Penyaringan Berkas Senyap: XLSX Sheet Kosong, Format Selain CSV/XLSX, Hanya Header, Enkoding Rusak, 0 Byte, dan Header Plus Baris Kosong | FE+BE | 43 | 89, 90, 93, 95, 96, 582 |
 | TC-GS-IMPORT-E2E-022-berkas-lolos-penyaringan-csv-utf-8-tanpa-dengan-bom-xlsx-sheet-pertama | Berkas Lolos Penyaringan: CSV UTF-8 Tanpa dan Dengan BOM, XLSX Sheet Pertama, Sheet Lain Diabaikan, dan Berkas Tidak Tersimpan di File Manager Permanen | FE+BE | 38 | 85, 86, 87, 88, 97 |
@@ -71,10 +71,10 @@ Kolom TC sumber memuat nomor `TC-GS-IMPORT-<n>`. Entri berbentuk `n@Lbaris` adal
 | TC-GS-IMPORT-E2E-059-plan-gating-import-free-disabled-total-dengan-chip-upgrade-growth | Plan Gating Import: Free Disabled Total dengan Chip Upgrade; Growth, Professional, dan Enterprise Aktif Penuh | FE+BE | 14 | 45, 46, 608, 609 |
 | TC-GS-IMPORT-E2E-060-client-suspended-aksi-tulis-ditolak-403-dengan-toast-khusus-ui-aksi | Client Suspended: Aksi Tulis Ditolak 403 dengan Toast Khusus (UI), Aksi Baca Tetap Jalan; Permintaan Langsung dan Create Missing Options Ditolak 403 | FE+BE | 48 | 47, 816, 932 |
 | TC-GS-IMPORT-E2E-061-client-expired-discard-draft-ditolak-403-dengan-toast-khusus-confirm | Client Expired: Discard Draft Ditolak 403 dengan Toast Khusus; Permintaan Langsung dan Create Missing Options Ditolak 403 | FE+BE | 43 | 48, 817 |
-| TC-GS-IMPORT-E2E-062-android-guided-tooltip-melewati-step-1-download-template-masuk-bottom | Android: Guided Tooltip Melewati Step 1 (Download Template Masuk Bottom Sheet) | FE+BE | 6 | 25 |
+| TC-GS-IMPORT-E2E-062-android-guided-tooltip-melewati-step-1-download-template-masuk-bottom | Android: Guided Tooltip Saat Ada Draft Melewati Step 1 (Download Template Masuk Bottom Sheet) | FE+BE | 6 | 25 |
 | TC-GS-IMPORT-E2E-063-role-matrix-visibilitas-dan-state-elemen-halaman-import-untuk-total | Role Matrix: Visibilitas dan State Elemen Halaman Import untuk Total Control, Default User, dan Import data (Create) | FE+BE | 29 | 27, 28, 31 |
 | TC-GS-IMPORT-E2E-064-role-matrix-elemen-disabled-hidden-untuk-read-only-dan-import-data-read | Role Matrix: Elemen Disabled dan Hidden untuk Read Only dan Import data (Read Only) pada Halaman Import | FE+BE | 34 | 29, 30 |
-| TC-GS-IMPORT-E2E-065-role-matrix-state-belum-ada-draft-untuk-read-only-dan-import-data-read | Role Matrix: State Belum Ada Draft untuk Read Only dan Import data (Read Only) (Import (0), Upload, Dropzone Disabled, Berkas yang Diseret Tidak Diproses) | FE+BE | 18 | 32, 34, 594 |
+| TC-GS-IMPORT-E2E-065-role-matrix-state-belum-ada-draft-untuk-read-only-dan-import-data-read | Role Matrix: State Belum Ada Draft untuk Read Only dan Import data (Read Only) (Import (0), Upload, Download Template, Dropzone Disabled, Berkas yang Diseret Tidak Diproses) | FE+BE | 20 | 32, 34, 594 |
 | TC-GS-IMPORT-E2E-066-defense-in-depth-staging-permintaan-save-diulang-langsung-ditolak-409 | Defense-in-depth Staging: Permintaan Save Diulang Langsung Ditolak 409 dan Nilai Melebihi Batas yang Disuntikkan Melewati Validasi FE Tidak Tersimpan | FE+BE | 21 | 667, 677 |
 | TC-GS-IMPORT-E2E-067-resilience-staging-save-remove-bulk-delete-delete-all-rows-dan-discard | Resilience Staging: Save, Remove, Bulk Delete, Delete All Rows, dan Discard Draft Gagal 5xx atau Tanpa Respons (Timeout atau Jaringan Putus) | FE+BE | 136 | 218, 219, 234, 261, 273, 283, 579, 681, 682, 683, 684, 685 |
 | TC-GS-IMPORT-E2E-068-konflik-kunci-sesi-edit-pintu-masuk-admin-kedua-ditolak-409-dialog | Konflik Kunci Sesi Edit: Pintu Masuk Admin Kedua Ditolak 409 dengan Dialog Draft Is Being Edited, Baca Tetap Diizinkan, dan UI Tidak Menerima Status Kunci | FE+BE | 53 | 237, 248, 249, 679, 680 |
@@ -226,6 +226,8 @@ Kolom TC sumber memuat nomor `TC-GS-IMPORT-<n>`. Entri berbentuk `n@Lbaris` adal
 | TC-GS-IMPORT-E2E-214-client-e-custom-field-nonaktif-dihapus-sebelum-import-tetap-terkomit | Client E: Custom Field nonaktif/dihapus sebelum Import tetap terkomit, nilai ditulis ke User; record hasil commit muncul di modul Brand, Division, form Create User | FE+BE | 59 | 528, 801, 802, 954 |
 | TC-GS-IMPORT-E2E-215-client-e-refleksi-perubahan-master-data-division-position-dihapus-di | Client E: refleksi perubahan master data (Division/Position dihapus, di-rename, dibuat; Represented By dinonaktifkan) pada baris draft | FE+BE | 58 | 522, 523, 524, 525, 527, 807, 808 |
 | TC-GS-IMPORT-E2E-216-draft-dibagikan-ke-seluruh-admin-berkapabilitas-dalam-organisasi-yang | Draft dibagikan ke seluruh admin berkapabilitas dalam organisasi yang sama (Import data Create dan Total Control melihat draft yang sama) | FE+BE | 14 | 535 |
+| TC-GS-IMPORT-E2E-217-toolbar-menggantikan-dropzone-setelah-draft-terbentuk-dari-upload-pertama | Toolbar Menggantikan Dropzone Setelah Draft Terbentuk dari Upload Pertama | FE+BE | 13 | 973 |
+| TC-GS-IMPORT-E2E-218-android-dropzone-memuat-download-template-dan-upload-file-langsung | Android: Dropzone Memuat Download Template dan Upload File Langsung, Guided Tooltip Step 1 Tampil | FE+BE | 9 | 972 |
 
 ## TC hanya-BE dan alasannya
 
@@ -1235,3 +1237,5 @@ Temuan TC sumber (ambigu, kontradiktif, precondition kurang) ditulis per spec di
 | TC-GS-IMPORT-969 | TC-GS-IMPORT-E2E-081 | FE+BE |
 | TC-GS-IMPORT-970 | TC-GS-IMPORT-E2E-100 | FE+BE |
 | TC-GS-IMPORT-971 | TC-GS-IMPORT-E2E-105 | FE+BE |
+| TC-GS-IMPORT-972 | TC-GS-IMPORT-E2E-218 | FE+BE |
+| TC-GS-IMPORT-973 | TC-GS-IMPORT-E2E-217 | FE+BE |

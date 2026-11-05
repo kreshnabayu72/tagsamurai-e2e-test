@@ -39,7 +39,7 @@ coverage:
 ### TC-GS-IMPORT-914: Opsi sudah dibuat admin lain tepat sebelum klik
 
 1. Buka Tab User Login pada halaman Import
-2. Klik [Upload File] di toolbar dan pilih berkas user-login-shift-lembur.csv
+2. Klik [Upload File] di Dropzone dan pilih berkas user-login-shift-lembur.csv
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Tunggu aksi selesai (Modal Column Mapping tertutup)
 5. Admin kedua Client C (sesi API) menambahkan opsi `Lembur` ke Custom Field `Shift` hingga tersimpan
@@ -53,7 +53,7 @@ coverage:
 
 ### TC-GS-IMPORT-915: Halaman basi setelah Custom Field dinonaktifkan atau dihapus (varian 1 dan varian 2)
 
-13. Klik [Upload File] di toolbar dan pilih berkas user-login-shift-lembur.csv
+13. Klik [Upload File] di Dropzone dan pilih berkas user-login-shift-lembur.csv
 14. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 15. Tunggu aksi selesai (Modal Column Mapping tertutup)
 16. Varian 1: Admin kedua Client C (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan
@@ -70,7 +70,7 @@ coverage:
 27. Verifikasi Custom Field `Shift` berstatus Inactive
 28. Verifikasi Value Setting `Shift` tetap `Pagi, Siang, Malam`
 29. Pulihkan state: aktifkan kembali Custom Field `Shift` dan hapus draft Client C lewat fixture, lalu buka Tab User Login pada halaman Import
-30. Klik [Upload File] di toolbar dan pilih berkas user-login-shift-lembur.csv
+30. Klik [Upload File] di Dropzone dan pilih berkas user-login-shift-lembur.csv
 31. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 32. Tunggu aksi selesai (Modal Column Mapping tertutup)
 33. Varian 2: Admin kedua Client C (sesi API) menghapus Custom Field `Shift` hingga tersimpan
@@ -88,7 +88,7 @@ coverage:
 
 ### TC-GS-IMPORT-916: Bulk Create Missing Options saat baris sumber dihapus admin lain
 
-45. Klik [Upload File] di toolbar dan pilih berkas user-login-shift-two.csv
+45. Klik [Upload File] di Dropzone dan pilih berkas user-login-shift-two.csv
 46. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 47. Tunggu aksi selesai (Modal Column Mapping tertutup)
 48. Admin kedua Client C (sesi API) menghapus baris #2 hingga tersimpan
@@ -102,7 +102,7 @@ coverage:
 
 ### TC-GS-IMPORT-917: Create Missing Options per-baris pada baris yang sudah dihapus admin lain
 
-56. Klik [Upload File] di toolbar dan pilih berkas user-login-shift-same.csv
+56. Klik [Upload File] di Dropzone dan pilih berkas user-login-shift-same.csv
 57. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 58. Klik `⋯` pada baris #1 (jangan muat ulang halaman setelahnya)
 59. Admin kedua Client C (sesi API) menghapus baris #1 hingga tersimpan
@@ -116,7 +116,7 @@ coverage:
 
 ### TC-GS-IMPORT-929: Opsi hasil Create Missing Options tetap ada setelah Discard Draft
 
-67. Klik [Upload File] di toolbar dan pilih berkas user-login-shift-lembur.csv
+67. Klik [Upload File] di Dropzone dan pilih berkas user-login-shift-lembur.csv
 68. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 69. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout
 70. Tunggu aksi selesai (permintaan mendapat respons)

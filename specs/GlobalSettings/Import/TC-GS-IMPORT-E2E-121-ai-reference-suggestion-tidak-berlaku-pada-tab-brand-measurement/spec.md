@@ -36,7 +36,7 @@ coverage:
 ### TC-GS-IMPORT-319: Tab Brand tidak memakai AI Reference Suggestion
 
 1. Pilih sub-tab Brand
-2. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+2. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi sel Brand Name baris #1 menampilkan badge "AI suggestion: 'Samsung Electronics Indonesia'?"
 5. Verifikasi sel Brand Name baris #1 tidak menampilkan badge "Did you mean"
@@ -45,7 +45,7 @@ coverage:
 ### TC-GS-IMPORT-713: Tab Measurement tidak memakai AI Reference Suggestion
 
 7. Pilih sub-tab Measurement
-8. Klik [Upload File] di toolbar dan pilih berkas `ai-measurement-long.csv`
+8. Klik [Upload File] di Dropzone dan pilih berkas `ai-measurement-long.csv`
 9. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 10. Verifikasi sel Unit Name baris #1 menampilkan badge "AI suggestion: 'Kilogram per Square Meter'?"
 11. Verifikasi sel Unit Name baris #1 tidak menampilkan badge "Did you mean"
@@ -54,7 +54,7 @@ coverage:
 ### TC-GS-IMPORT-714: Tab Position tidak memakai AI Reference Suggestion
 
 13. Pilih sub-tab Position
-14. Klik [Upload File] di toolbar dan pilih berkas `ai-position-long.csv`
+14. Klik [Upload File] di Dropzone dan pilih berkas `ai-position-long.csv`
 15. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 16. Verifikasi sel Position Name baris #1 menampilkan badge "AI suggestion: 'Senior Regional Operations Coordinator'?"
 17. Verifikasi sel Position Name baris #1 tidak menampilkan badge "Did you mean"
@@ -63,7 +63,7 @@ coverage:
 ### TC-GS-IMPORT-715: Tab Division tidak memakai AI Reference Suggestion
 
 19. Pilih sub-tab Division
-20. Klik [Upload File] di toolbar dan pilih berkas `ai-division-long.csv`
+20. Klik [Upload File] di Dropzone dan pilih berkas `ai-division-long.csv`
 21. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 22. Verifikasi sel Division Name baris #1 menampilkan badge "AI suggestion: 'Corporate Strategy and Business Development'?"
 23. Verifikasi sel Division Name baris #1 tidak menampilkan badge "Did you mean"
@@ -73,7 +73,7 @@ coverage:
 
 25. Pilih sub-tab User Login
 26. Catat jumlah permintaan yang diterima mock layanan AI
-27. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+27. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-lembur.csv`
 28. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 29. Verifikasi baris pesan "Shift: Invalid option" pada Error Summary Callout memuat `[Create Missing Options]`
 30. Verifikasi sel Shift baris #1 dan #2 tidak menampilkan badge saran AI maupun `[Accept]`/`[Dismiss]`

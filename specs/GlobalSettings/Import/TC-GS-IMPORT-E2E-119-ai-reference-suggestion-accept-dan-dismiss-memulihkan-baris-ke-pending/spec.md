@@ -40,7 +40,7 @@ coverage:
 ### TC-GS-IMPORT-311: Accept kandidat peringkat 1 pada sel Division Tab User Login
 
 1. Buka Import > User Login
-2. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudng.csv`
+2. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-gudng.csv`
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 5. Klik `[Accept]` pada badge `Did you mean 'Gudang'?` di sel Division baris #1
@@ -56,7 +56,7 @@ coverage:
 ### TC-GS-IMPORT-706: Accept kandidat peringkat 1 pada sel Position Tab User Login
 
 14. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
-15. Klik [Upload File] di toolbar dan pilih berkas `user-login-pos-develper.csv`
+15. Klik [Upload File] di Dropzone dan pilih berkas `user-login-pos-develper.csv`
 16. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 17. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 18. Klik `[Accept]` pada badge `Did you mean 'Senior Developer'?` di sel Position baris #1
@@ -72,7 +72,7 @@ coverage:
 ### TC-GS-IMPORT-312: Dismiss menghilangkan badge dan baris tetap error
 
 27. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
-28. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudng.csv`
+28. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-gudng.csv`
 29. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 30. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 31. Klik `[Dismiss]` pada badge saran sel Division baris #1
@@ -88,7 +88,7 @@ coverage:
 ### TC-GS-IMPORT-709: Save menyimpan sel yang di-Dismiss lalu disunting menjadi nilai yang tidak ditemukan
 
 40. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
-41. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudng.csv`
+41. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-gudng.csv`
 42. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 43. Klik `[Dismiss]` pada badge saran sel Division baris #1
 44. Verifikasi badge saran hilang dari sel Division baris #1
@@ -107,7 +107,7 @@ coverage:
 ### TC-GS-IMPORT-707: Accept kandidat peringkat 1 pada sel Division Tab User Non Login
 
 56. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Non Login
-57. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-div-enginering.csv`
+57. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-div-enginering.csv`
 58. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 59. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 60. Klik `[Accept]` pada badge `Did you mean 'Engineering'?` di sel Division baris #1
@@ -123,7 +123,7 @@ coverage:
 ### TC-GS-IMPORT-708: Accept kandidat peringkat 1 pada sel Position Tab User Non Login
 
 69. Reset draft Client C Tab User Non Login lewat skrip reset, lalu muat ulang halaman Import > User Non Login
-70. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-pos-supervsor.csv`
+70. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-pos-supervsor.csv`
 71. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 72. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 73. Klik `[Accept]` pada badge `Did you mean 'Supervisor'?` di sel Position baris #1

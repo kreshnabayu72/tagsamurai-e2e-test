@@ -36,7 +36,7 @@ coverage:
 ### TC-GS-IMPORT-322: Baris yang gagal FK saat commit tetap menampilkan opsi AI Reference Suggestion
 
 1. Reset Client E ke tanpa draft Tab User Login (D-47), pastikan Division `Gudang` dan `Engineering` ada dan mock AI mode normal (D-40, D-42), lalu muat ulang halaman Import > User Login
-2. Klik [Upload File] di toolbar dan pilih berkas user-login-gudang-engineering.csv
+2. Klik [Upload File] di Dropzone dan pilih berkas user-login-gudang-engineering.csv
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi Staging Table menampilkan 2 baris `pending`
 5. Verifikasi Footer menampilkan `[Import (2)]`

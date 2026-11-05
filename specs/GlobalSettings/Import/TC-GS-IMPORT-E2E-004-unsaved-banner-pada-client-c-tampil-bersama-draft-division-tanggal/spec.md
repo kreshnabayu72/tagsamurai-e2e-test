@@ -73,7 +73,7 @@ coverage:
 ### TC-GS-IMPORT-876: Unsaved Banner tidak tampil tepat setelah Confirm Mapping pertama
 
 32. Reset draft Brand Client C ke tanpa draft (Kontrak Fixture R1), muat ulang halaman Import > Brand
-33. Klik `[Upload File]` di toolbar
+33. Klik `[Upload File]` di Dropzone
 34. Pilih berkas `brand-6.csv` di file picker
 35. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
 36. Verifikasi muncul toast sukses "Success, row has been added."

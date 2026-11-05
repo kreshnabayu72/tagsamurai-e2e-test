@@ -34,7 +34,7 @@ coverage:
 
 ### TC-GS-IMPORT-338: Create Missing Divisions bulk ditolak (konflik kunci sesi)
 
-1. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+1. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 2. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 3. Tunggu aksi selesai (Modal Column Mapping tertutup)
 4. Admin kedua Client C (sesi API): mulai sesi edit baris #4 hingga kunci edit tersimpan
@@ -51,7 +51,7 @@ coverage:
 ### TC-GS-IMPORT-725: Create Missing Divisions per-baris ditolak (konflik kunci sesi)
 
 14. Lepas kunci edit Admin kedua, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-15. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+15. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 16. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 17. Tunggu aksi selesai (Modal Column Mapping tertutup)
 18. Admin kedua Client C (sesi API): mulai sesi edit baris #4 hingga kunci edit tersimpan
@@ -69,7 +69,7 @@ coverage:
 ### TC-GS-IMPORT-726: Create Missing Positions per-baris ditolak (konflik kunci sesi)
 
 29. Lepas kunci edit Admin kedua, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-30. Klik [Upload File] di toolbar dan pilih berkas `user-login-store-supervisor-3.csv`
+30. Klik [Upload File] di Dropzone dan pilih berkas `user-login-store-supervisor-3.csv`
 31. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 32. Tunggu aksi selesai (Modal Column Mapping tertutup)
 33. Admin kedua Client C (sesi API): mulai sesi edit baris #3 hingga kunci edit tersimpan
@@ -87,7 +87,7 @@ coverage:
 ### TC-GS-IMPORT-727: Create Missing Positions bulk ditolak (konflik kunci sesi)
 
 44. Lepas kunci edit Admin kedua, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-45. Klik [Upload File] di toolbar dan pilih berkas `user-login-store-supervisor-3.csv`
+45. Klik [Upload File] di Dropzone dan pilih berkas `user-login-store-supervisor-3.csv`
 46. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 47. Tunggu aksi selesai (Modal Column Mapping tertutup)
 48. Admin kedua Client C (sesi API): mulai sesi edit baris #3 hingga kunci edit tersimpan
@@ -104,7 +104,7 @@ coverage:
 ### TC-GS-IMPORT-919: Create Missing Options bulk dan per-baris ditolak (konflik kunci sesi)
 
 58. Lepas kunci edit Admin kedua, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-59. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+59. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-lembur.csv`
 60. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 61. Tunggu aksi selesai (Modal Column Mapping tertutup)
 62. Admin kedua Client C (sesi API): mulai sesi edit baris #3 hingga kunci edit tersimpan

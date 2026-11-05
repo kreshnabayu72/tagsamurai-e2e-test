@@ -47,7 +47,7 @@ coverage:
 #### TC-GS-IMPORT-307: badge pada sel Division tidak ditemukan
 
 1. Buka Import > User Login
-2. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudng.csv`
+2. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-gudng.csv`
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi baris #1 berstatus `error`
 5. Verifikasi Error Summary Callout memuat "Division not found" dengan badge "1 row"
@@ -59,7 +59,7 @@ coverage:
 #### TC-GS-IMPORT-308: badge pada sel Position tidak ditemukan
 
 10. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
-11. Klik [Upload File] di toolbar dan pilih berkas `user-login-pos-develper.csv`
+11. Klik [Upload File] di Dropzone dan pilih berkas `user-login-pos-develper.csv`
 12. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 13. Verifikasi baris #1 berstatus `error`
 14. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "1 row"
@@ -71,7 +71,7 @@ coverage:
 #### TC-GS-IMPORT-313: tiga kandidat memenuhi ambang, badge hanya peringkat 1
 
 19. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
-20. Klik [Upload File] di toolbar
+20. Klik [Upload File] di Dropzone
 21. Pilih berkas `user-login-div-gudg.csv` di file picker
 22. Biarkan seluruh dropdown File Column pada nilai auto-match
 23. Klik [Confirm Mapping]
@@ -84,7 +84,7 @@ coverage:
 
 28. Reset draft Client C Tab User Login lewat skrip reset
 29. Buat Division `alpha team` dan `Beta Team` di Client C lewat sesi API hingga tersimpan (D-43), lalu muat ulang halaman Import > User Login
-30. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-alpa.csv`
+30. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-alpa.csv`
 31. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 32. Perhatikan sel Division baris #1
 33. Verifikasi sel Division baris #1 menampilkan badge inline "Did you mean 'alpha team'?" disertai `[Accept]` dan `[Dismiss]`
@@ -93,7 +93,7 @@ coverage:
 #### TC-GS-IMPORT-315: tanpa kandidat berkemiripan 0,8 atau lebih, tanpa badge
 
 35. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
-36. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-xyz.csv`
+36. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-xyz.csv`
 37. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 38. Verifikasi baris #1 berstatus `error`
 39. Verifikasi Error Summary Callout memuat "Division not found" dengan badge "1 row"
@@ -103,7 +103,7 @@ coverage:
 #### TC-GS-IMPORT-317: tanpa kandidat memadai, Create Missing tersedia di Callout dan menu row action
 
 42. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
-43. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-logistik.csv`
+43. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-logistik.csv`
 44. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 45. Perhatikan sel Division baris #1 dan Error Summary Callout
 46. Verifikasi sel Division baris #1 tidak menampilkan badge saran
@@ -115,7 +115,7 @@ coverage:
 #### TC-GS-IMPORT-710: kemiripan tepat 0,8 ditampilkan sebagai saran
 
 51. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
-52. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudn.csv`
+52. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-gudn.csv`
 53. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 54. Verifikasi baris #1 berstatus `error`
 55. Perhatikan sel Division baris #1
@@ -126,7 +126,7 @@ coverage:
 #### TC-GS-IMPORT-309: badge pada sel Division tidak ditemukan
 
 57. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Non Login
-58. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-div-enginering.csv`
+58. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-div-enginering.csv`
 59. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 60. Verifikasi baris #1 berstatus `error`
 61. Verifikasi Error Summary Callout memuat "Division not found" dengan badge "1 row"
@@ -138,7 +138,7 @@ coverage:
 #### TC-GS-IMPORT-310: badge pada sel Position tidak ditemukan
 
 66. Reset draft Client C Tab User Non Login lewat skrip reset, lalu muat ulang halaman Import > User Non Login
-67. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-pos-supervsor.csv`
+67. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-pos-supervsor.csv`
 68. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 69. Verifikasi baris #1 berstatus `error`
 70. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "1 row"
@@ -153,7 +153,7 @@ coverage:
 
 75. Reset draft Client C Tab User Non Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 76. Atur mock layanan AI ke mode tunda 3 detik (D-40)
-77. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudng.csv`
+77. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-gudng.csv`
 78. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 79. Tunggu 4 detik (jeda nyata pendek sesuai batas TC)
 80. Perhatikan sel Division baris #1
@@ -164,7 +164,7 @@ coverage:
 
 83. Reset draft Client C Tab User Login lewat skrip reset, lalu muat ulang halaman Import > User Login
 84. Atur mock layanan AI ke mode kandidat berskor (D-71)
-85. Klik [Upload File] di toolbar
+85. Klik [Upload File] di Dropzone
 86. Pilih berkas `user-login-div-gudx.csv` di file picker
 87. Biarkan seluruh dropdown File Column pada nilai auto-match
 88. Klik [Confirm Mapping]

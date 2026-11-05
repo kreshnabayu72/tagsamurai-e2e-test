@@ -34,7 +34,7 @@ coverage:
 ### TC-GS-IMPORT-327: Bulk Create Missing Divisions dari Error Summary Callout melakukan dedup nama identik
 
 1. Pilih sub-tab User Login
-2. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+2. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi Error Summary Callout memuat "Division not found" dengan badge "4 rows"
 5. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
@@ -51,7 +51,7 @@ coverage:
 ### TC-GS-IMPORT-329: Dedup nama tidak peka huruf besar-kecil dan trim spasi tepi, ejaan kemunculan pertama menurut Row #
 
 15. Buka Import dan pilih sub-tab User Login
-16. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-case.csv`
+16. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-case.csv`
 17. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 18. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
 19. Verifikasi toast sukses: "Success, division has been created."
@@ -66,7 +66,7 @@ coverage:
 ### TC-GS-IMPORT-328: Bulk Create Missing Positions dari Callout untuk 3 baris yang merujuk Position sama
 
 27. Buka Import dan pilih sub-tab User Login
-28. Klik [Upload File] di toolbar dan pilih berkas `user-login-store-supervisor-3.csv`
+28. Klik [Upload File] di Dropzone dan pilih berkas `user-login-store-supervisor-3.csv`
 29. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 30. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "3 rows"
 31. Klik `[Create Missing Positions]` pada baris pesan "Position not found" di Error Summary Callout
@@ -81,7 +81,7 @@ coverage:
 ### TC-GS-IMPORT-717: Bulk Create Missing Divisions dari Callout Tab User Non Login melakukan dedup nama identik
 
 39. Buka Import dan pilih sub-tab User Non Login
-40. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-logistik-3.csv`
+40. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-logistik-3.csv`
 41. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 42. Verifikasi Error Summary Callout memuat "Division not found" dengan badge "3 rows"
 43. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
@@ -97,7 +97,7 @@ coverage:
 ### TC-GS-IMPORT-718: Bulk Create Missing Positions dari Callout Tab User Non Login melakukan dedup nama identik
 
 52. Buka Import dan pilih sub-tab User Non Login
-53. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-store-supervisor-3.csv`
+53. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-store-supervisor-3.csv`
 54. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 55. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "3 rows"
 56. Klik `[Create Missing Positions]` pada baris pesan "Position not found" di Error Summary Callout
@@ -113,7 +113,7 @@ coverage:
 ### TC-GS-IMPORT-345: Record hasil Create Missing tetap ada setelah Discard Draft
 
 65. Buka Import dan pilih sub-tab User Login
-66. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+66. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 67. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 68. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
 69. Tunggu aksi selesai (permintaan mendapat respons)

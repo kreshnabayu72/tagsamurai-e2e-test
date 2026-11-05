@@ -37,7 +37,7 @@ coverage:
 
 ### TC-GS-IMPORT-335: Position dibuat pihak lain tepat sebelum klik ditolak sebagai duplicate
 
-1. Klik [Upload File] di toolbar
+1. Klik [Upload File] di Dropzone
 2. Pilih berkas `user-login-store-supervisor-1.csv` di file picker
 3. Biarkan seluruh dropdown File Column pada nilai auto-match
 4. Klik [Confirm Mapping]
@@ -61,7 +61,7 @@ coverage:
 19. Catat angka total pada teks Pagination (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state)
 20. Tutup modal Changelog Division
 21. Buka Import > User Login
-22. Klik [Upload File] di toolbar
+22. Klik [Upload File] di Dropzone
 23. Pilih berkas `user-login-logistik-4.csv` di file picker
 24. Biarkan seluruh dropdown File Column pada nilai auto-match
 25. Klik [Confirm Mapping]
@@ -84,7 +84,7 @@ coverage:
 ### TC-GS-IMPORT-735: Position dibuat pihak lain membuat baris pulih ke pending pada pembacaan berikutnya
 
 41. Hapus Division `Logistik` lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-42. Klik [Upload File] di toolbar dan pilih berkas `user-login-store-supervisor-1.csv`
+42. Klik [Upload File] di Dropzone dan pilih berkas `user-login-store-supervisor-1.csv`
 43. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 44. Verifikasi baris #1 berstatus `error`
 45. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "1 row"

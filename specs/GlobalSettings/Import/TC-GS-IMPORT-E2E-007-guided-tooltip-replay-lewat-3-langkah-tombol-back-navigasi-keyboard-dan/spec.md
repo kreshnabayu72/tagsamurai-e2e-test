@@ -36,11 +36,11 @@ coverage:
 2. Verifikasi tooltip hover "Show guide" tampil
 3. Klik tombol `[?]`
 4. Perhatikan Step 1
-5. Verifikasi Step 1 of 3 menyorot `[Download Template]` dengan Title "Download Template"
+5. Verifikasi Step 1 of 3 menyorot `[Download Template]` di Dropzone dengan Title "Download Template"
 6. Verifikasi Description Step 1 "Get a template for the selected import type so your file uses the expected columns."
 7. Klik `[Next]`
 8. Perhatikan Step 2
-9. Verifikasi Step 2 of 3 menyorot `[Upload File]` dengan Title "Upload File"
+9. Verifikasi Step 2 of 3 menyorot `[Upload File]` di Dropzone dengan Title "Upload File"
 10. Verifikasi Description Step 2 "Upload a CSV or XLSX file and map its columns. Nothing is imported until you review the staged rows."
 11. Klik `[Next]`
 12. Perhatikan Step 3
@@ -89,10 +89,10 @@ coverage:
 46. Buka menu Import dari sidebar (User berada di Import > Brand)
 47. Klik tombol `[?]`
 48. Perhatikan Step 1
-49. Verifikasi Step 1 menyorot `[Download Template]` yang tampil aktif
+49. Verifikasi Step 1 menyorot `[Download Template]` di Dropzone yang tampil aktif
 50. Klik `[Next]`
 51. Perhatikan Step 2
-52. Verifikasi Step 2 menyorot `[Upload File]` yang tampil Disabled
+52. Verifikasi Step 2 menyorot `[Upload File]` di Dropzone yang tampil Disabled
 53. Klik `[Next]`
 54. Perhatikan Step 3
 55. Verifikasi Step 3 menyorot Staging Metric Cards

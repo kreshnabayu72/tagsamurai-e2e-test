@@ -30,7 +30,7 @@ coverage:
 ### TC-GS-IMPORT-457: Download Template tidak membuat draft atau mengubah state halaman
 
 1. Reset draft Brand Client B ke tanpa draft lewat fixture (R1), lalu muat ulang halaman Import > Brand
-2. Klik `[Download Template]` pada state belum ada draft
+2. Klik `[Download Template]` di Dropzone pada state belum ada draft
 3. Tunggu berkas template terunduh
 4. Verifikasi halaman tetap menampilkan Dropzone
 5. Verifikasi tidak ada Unsaved Banner
@@ -80,5 +80,4 @@ coverage:
   - TC-GS-IMPORT-455 dan 456: isi berkas template (3 baris contoh: Kilogram/kg, Meter/m, Piece/pcs untuk Measurement; Acme Corp, Lenovo, Zebra Technologies untuk Brand) dan nama kolom Sheet 2 tidak ada di Data Dinamis atau Pre-setup; hanya di Expected TC.
   - TC-GS-IMPORT-455: Expected b menulis toast sukses "Success, row has been added."; spec mengikuti TC.
   - TC-GS-IMPORT-455, 456, dan 457: kolom Post Condition kosong ("-"); tidak ada Post Condition yang diasersi.
-  - TC-GS-IMPORT-457: Expected a menyebut "kartu Total Rows 0 dan `[Import (0)]` Disabled" pada state belum ada draft; PRD §7.1 menampilkan Dropzone pada state ini sehingga keberadaan kartu tidak jelas (temuan serupa pada TC-GS-IMPORT-195).
   - TC-GS-IMPORT-455 dan 456: tidak ada Expected tentang toast atau berkas terunduh; spec hanya menunggu berkas terunduh sebagai langkah penghubung, bukan asersi.

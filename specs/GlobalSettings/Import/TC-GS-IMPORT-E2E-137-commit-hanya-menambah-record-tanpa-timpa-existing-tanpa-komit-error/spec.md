@@ -34,7 +34,7 @@ coverage:
 ### TC-GS-IMPORT-301: Saran tidak pernah diterapkan otomatis termasuk saat commit berjalan
 
 1. Reset Client E ke tanpa draft Tab Brand (D-47) dan pastikan mock AI mode normal (D-40), lalu muat ulang halaman Import > Brand
-2. Klik [Upload File] di toolbar dan pilih berkas brand-ai-commit.csv
+2. Klik [Upload File] di Dropzone dan pilih berkas brand-ai-commit.csv
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi Footer menampilkan `[Import (2)]`
 5. Verifikasi baris #3 berstatus `error`
@@ -55,7 +55,7 @@ coverage:
 ### TC-GS-IMPORT-343: Tidak ada Division atau Position dibuat otomatis saat commit
 
 19. Reset Client E ke tanpa draft Tab User Login (D-47), lalu muat ulang halaman Import > User Login
-20. Klik [Upload File] di toolbar dan pilih berkas user-login-commit-logistik.csv
+20. Klik [Upload File] di Dropzone dan pilih berkas user-login-commit-logistik.csv
 21. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 22. Verifikasi Footer menampilkan `[Import (1)]`
 23. Verifikasi Error Summary Callout memuat "Division not found"
@@ -134,7 +134,7 @@ coverage:
 ### TC-GS-IMPORT-930: Tidak ada opsi Custom Field dibuat otomatis saat commit
 
 86. Reset Client E ke tanpa draft Tab User Login (D-47), lalu buka Import > User Login
-87. Klik [Upload File] di toolbar dan pilih berkas user-login-commit-shift.csv
+87. Klik [Upload File] di Dropzone dan pilih berkas user-login-commit-shift.csv
 88. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 89. Verifikasi Footer menampilkan `[Import (1)]`
 90. Verifikasi Error Summary Callout memuat "Shift: Invalid option"

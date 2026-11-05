@@ -31,7 +31,7 @@ coverage:
 
 1. [Sesi A] Reset Client C ke tanpa draft pada Sub-Tab Brand (aksi fixture); pastikan mock AI mode normal
 2. [Sesi A] Muat ulang halaman Import > Brand
-3. [Sesi A] Klik `[Upload File]` di toolbar dan pilih berkas `ai-brand-long.csv`
+3. [Sesi A] Klik `[Upload File]` di Dropzone dan pilih berkas `ai-brand-long.csv`
 4. [Sesi A] Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 5. [Sesi A] Tunggu aksi selesai (Modal Column Mapping tertutup)
 6. [Sesi B] Buka Global Settings > Import, pilih Sub-Tab Brand

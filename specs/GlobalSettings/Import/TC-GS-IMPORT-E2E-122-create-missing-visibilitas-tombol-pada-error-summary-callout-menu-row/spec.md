@@ -35,7 +35,7 @@ coverage:
 ### TC-GS-IMPORT-733: Error Summary Callout Tab Brand tidak memiliki tombol Create Missing
 
 1. Pilih sub-tab Brand
-2. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+2. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi Error Summary Callout memuat baris pesan "Brand Name: Max. 120 characters" dengan badge "1 row"
 5. Verifikasi baris pesan "Brand Name: Max. 120 characters" memuat `[View Data]` dan `[Delete All Rows]`
@@ -45,7 +45,7 @@ coverage:
 ### TC-GS-IMPORT-349: Create Missing hanya tampil pada baris pesan Division atau Position tidak ditemukan di Tab User Login
 
 8. Pilih sub-tab User Login
-9. Klik [Upload File] di toolbar dan pilih berkas `user-login-first-long-logistik.csv`
+9. Klik [Upload File] di Dropzone dan pilih berkas `user-login-first-long-logistik.csv`
 10. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 11. Verifikasi baris pesan "First Name: Max. 120 characters" pada Error Summary Callout dengan badge "1 row"
 12. Verifikasi baris pesan "First Name: Max. 120 characters" memuat `[View Data]` dan `[Delete All Rows]`
@@ -68,7 +68,7 @@ Draft pada langkah 9-10 dipakai ulang karena TC-GS-IMPORT-349 dan 734 memakai be
 ### TC-GS-IMPORT-344: Create Missing tidak tersedia di Bulk Action Bar
 
 23. Muat ulang halaman Import > User Login
-24. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+24. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 25. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 26. Centang kotak pada baris #1
 27. Verifikasi Bulk Action Bar menampilkan "1 Row selected"
@@ -80,7 +80,7 @@ Draft pada langkah 9-10 dipakai ulang karena TC-GS-IMPORT-349 dan 734 memakai be
 ### TC-GS-IMPORT-924: Create Missing Options hanya pada baris pesan dan baris error Dropdown tidak ditemukan, berdampingan dengan Create Missing Divisions
 
 32. Muat ulang halaman Import > User Login
-33. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-mixed.csv`
+33. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-mixed.csv`
 34. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 35. Verifikasi Error Summary Callout memuat tiga baris pesan berurutan: "First Name: Max. 120 characters" (badge "1 row"), "Division not found" (badge "1 row"), dan "Shift: Invalid option" (badge "2 rows")
 36. Verifikasi baris pesan "First Name: Max. 120 characters" hanya memuat `[View Data]` dan `[Delete All Rows]`
@@ -100,7 +100,7 @@ Draft pada langkah 9-10 dipakai ulang karena TC-GS-IMPORT-349 dan 734 memakai be
 ### TC-GS-IMPORT-925: Custom Field Shift dinonaktifkan: kolom tampil seperti field Active tanpa Create Missing Options, tombol kembali bila diaktifkan lagi
 
 49. Muat ulang halaman Import > User Login
-50. Total Control Client C: klik [Upload File] di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+50. Total Control Client C: klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-lembur.csv`
 51. Total Control Client C: biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 52. Total Control Client C: Tunggu aksi selesai (Modal Column Mapping tertutup)
 53. Admin kedua Client C (sesi API): nonaktifkan Custom Field `Shift` hingga tersimpan

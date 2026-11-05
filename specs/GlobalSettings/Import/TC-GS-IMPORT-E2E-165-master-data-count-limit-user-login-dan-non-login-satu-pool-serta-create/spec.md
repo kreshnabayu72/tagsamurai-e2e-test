@@ -39,7 +39,7 @@ coverage:
 
 1. Reset Client Limit lewat skrip fixture: tanpa draft User Login, Master Data Count Limit Division 1000 dengan 999 Division tersimpan (sisa 1 slot); pastikan mock AI mode normal
 2. Muat ulang halaman Import > User Login
-3. Klik `[Upload File]` di toolbar
+3. Klik `[Upload File]` di Dropzone
 4. Pilih berkas `user-login-division-cap.csv` di file picker
 5. Biarkan seluruh dropdown File Column pada nilai auto-match
 6. Klik `[Confirm Mapping]`
@@ -61,7 +61,7 @@ coverage:
 
 20. Reset Client Limit lewat skrip fixture: tanpa draft User Login, Master Data Count Limit Position 1000 dengan 999 Position tersimpan (sisa 1 slot)
 21. Buka Global Settings > Import, pilih Sub-Tab User Login
-22. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-position-cap.csv`
+22. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-position-cap.csv`
 23. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 24. Tunggu aksi selesai (Modal Column Mapping tertutup)
 25. Klik `[Create Missing Positions]` pada baris pesan "Position not found" di Error Summary Callout

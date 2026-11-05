@@ -40,7 +40,7 @@ coverage:
 1. Reset Client E (D-47) ke tanpa draft; pastikan mock AI mode normal
 2. Muat ulang halaman Import > Brand
 3. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-4. Klik `[Upload File]` di toolbar dan pilih berkas `brand-ai-commit.csv`
+4. Klik `[Upload File]` di Dropzone dan pilih berkas `brand-ai-commit.csv`
 5. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 6. Klik `[Import (2)]`
 7. Verifikasi footer `[Import (2)]` tampil Disabled
@@ -56,7 +56,7 @@ coverage:
 14. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
 15. Pilih Sub-Tab User Login
 16. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-17. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-logistik.csv`
+17. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-commit-logistik.csv`
 18. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 19. Klik `[Import (1)]`
 20. Verifikasi footer `[Import (1)]` tampil Disabled
@@ -74,7 +74,7 @@ coverage:
 29. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
 30. Muat ulang halaman Import > User Login
 31. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-32. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-store-supervisor.csv`
+32. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-commit-store-supervisor.csv`
 33. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 34. Klik `[Import (1)]`
 35. Verifikasi footer `[Import (1)]` tampil Disabled

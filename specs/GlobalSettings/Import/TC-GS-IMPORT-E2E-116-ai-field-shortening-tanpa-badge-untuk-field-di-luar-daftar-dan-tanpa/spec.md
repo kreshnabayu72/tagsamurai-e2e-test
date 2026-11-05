@@ -46,7 +46,7 @@ coverage:
 ### TC-GS-IMPORT-299: Tanpa saran memadai (mode kosong), tidak ada badge
 
 1. Atur mock layanan AI ke mode kosong (D-40)
-2. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+2. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi baris #1 berstatus `error`
 5. Verifikasi Error Summary Callout memuat "Brand Name: Max. 120 characters"
@@ -56,7 +56,7 @@ coverage:
 ### TC-GS-IMPORT-300: Field Symbol di luar daftar tidak memakai AI Field Shortening
 
 8. Atur mock layanan AI ke mode normal (D-40); reset draft Client C pada Tab Brand lewat skrip reset; muat ulang halaman Import > Measurement
-9. Klik [Upload File] di toolbar dan pilih berkas `measurement-symbol-11.csv`
+9. Klik [Upload File] di Dropzone dan pilih berkas `measurement-symbol-11.csv`
 10. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 11. Verifikasi baris #1 berstatus `error`
 12. Verifikasi Error Summary Callout memuat "Symbol: Max. 10 characters"
@@ -67,7 +67,7 @@ coverage:
 ### TC-GS-IMPORT-698: Field Employee ID di luar daftar tidak memakai AI Field Shortening
 
 16. Reset draft Client C pada Tab Measurement lewat skrip reset; muat ulang halaman Import > User Login
-17. Klik [Upload File] di toolbar dan pilih berkas `ai-ul-empid-long.csv`
+17. Klik [Upload File] di Dropzone dan pilih berkas `ai-ul-empid-long.csv`
 18. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 19. Verifikasi baris #1 berstatus `error`
 20. Verifikasi Error Summary Callout memuat "Employee ID: Max. 120 characters"
@@ -77,7 +77,7 @@ coverage:
 ### TC-GS-IMPORT-699: Field Code Division di luar daftar tidak memakai AI Field Shortening
 
 23. Reset draft Client C pada Tab User Login lewat skrip reset; muat ulang halaman Import > Division
-24. Klik [Upload File] di toolbar dan pilih berkas `ai-division-code-16.csv`
+24. Klik [Upload File] di Dropzone dan pilih berkas `ai-division-code-16.csv`
 25. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 26. Verifikasi baris #1 berstatus `error`
 27. Verifikasi Error Summary Callout memuat "Code: Max. 15 characters"
@@ -87,7 +87,7 @@ coverage:
 ### TC-GS-IMPORT-703: Respons AI dalam 3 detik tetap menampilkan badge saran
 
 30. Reset draft Client C pada Tab Division lewat skrip reset; muat ulang halaman Import > Brand; atur mock layanan AI ke mode tunda 3 detik (D-40)
-31. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+31. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 32. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 33. Tunggu 4 detik
 34. Verifikasi sel Brand Name baris #1 menampilkan badge inline "AI suggestion: 'Samsung Electronics Indonesia'?" disertai `[Accept]` dan `[Dismiss]`
@@ -96,7 +96,7 @@ coverage:
 ### TC-GS-IMPORT-866: Batas 5 detik per permintaan saran, dua sel keduanya bersaran
 
 36. Reset draft Client C pada Tab Brand lewat skrip reset (mock tetap mode tunda 3 detik), lalu muat ulang halaman Import > Brand
-37. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long-2.csv`
+37. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long-2.csv`
 38. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 39. Verifikasi modal Confirm Mapping tertutup
 40. Verifikasi Staging Table menampilkan baris #1 dan #2 berstatus `error`

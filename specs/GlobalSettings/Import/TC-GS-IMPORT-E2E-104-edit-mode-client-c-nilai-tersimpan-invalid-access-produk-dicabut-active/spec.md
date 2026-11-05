@@ -37,7 +37,7 @@ coverage:
 
 ### TC-GS-IMPORT-905: Tombol Create Missing Options Disabled
 
-1. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+1. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-shift-lembur.csv`
 2. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 3. Klik `⋯` pada baris #3, pilih `Edit`
 4. Arahkan kursor ke tombol `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout
@@ -118,7 +118,7 @@ coverage:
 
 ### TC-GS-IMPORT-904: Opsi Shift ditambahkan admin lain saat sesi edit berjalan
 
-70. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+70. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-shift-lembur.csv`
 71. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 72. Klik `⋯` pada baris #3, pilih `Edit`
 73. Klik sel Shift baris #3

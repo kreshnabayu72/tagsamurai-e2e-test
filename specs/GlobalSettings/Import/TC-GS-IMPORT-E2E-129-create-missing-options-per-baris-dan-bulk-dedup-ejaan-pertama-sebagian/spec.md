@@ -36,7 +36,7 @@ coverage:
 
 ### TC-GS-IMPORT-909: Create Missing Options per-baris menambah opsi di akhir daftar
 
-1. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+1. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-lembur.csv`
 2. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 3. Verifikasi baris #1 dan #2 berstatus `error` dan baris #3 berstatus `pending`
 4. Verifikasi sel Shift baris #1 berpesan "Lembur is not a valid option for shift"
@@ -57,7 +57,7 @@ coverage:
 ### TC-GS-IMPORT-910: Create Missing Options per-baris pada Tab User Non Login
 
 18. Hapus opsi `Lembur` dari Custom Field Shift Client C lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Non Login
-19. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-shift-lembur.csv`
+19. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-shift-lembur.csv`
 20. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 21. Verifikasi kedua baris berstatus `error`
 22. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "2 rows"
@@ -73,7 +73,7 @@ coverage:
 ### TC-GS-IMPORT-911: Bulk Create Missing Options melakukan dedup nama dan mempertahankan ejaan pertama
 
 31. Hapus opsi `Lembur` dari Custom Field Shift Client C lewat API, reset draft Tab User Non Login Client C ke tanpa draft, lalu buka Import > User Login
-32. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-bulk.csv`
+32. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-bulk.csv`
 33. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 34. Verifikasi baris #1, #2, dan #3 berstatus `error` dan baris #4 berstatus `pending`
 35. Verifikasi Error Summary Callout memuat "Shift: Invalid option" dengan badge "3 rows"
@@ -91,7 +91,7 @@ coverage:
 ### TC-GS-IMPORT-912: Bulk Create Missing Options dengan satu nama melebihi 120 karakter
 
 46. Hapus opsi `Lembur` dan `Piket` dari Custom Field Shift Client C lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-47. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-3names.csv`
+47. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-3names.csv`
 48. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 49. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout
 50. Verifikasi toast sukses sebagian "Success, option has been created. Some items were skipped."
@@ -109,7 +109,7 @@ coverage:
 ### TC-GS-IMPORT-913: Seluruh nama Create Missing Options gagal
 
 61. Hapus opsi `Lembur` dan `Piket` dari Custom Field Shift Client C lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-62. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-longname.csv`
+62. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-longname.csv`
 63. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 64. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout
 65. Verifikasi toast error "Error, failed to create option."
@@ -122,7 +122,7 @@ coverage:
 ### TC-GS-IMPORT-926: Tombol Create Missing Options Disabled dengan spinner selama request berjalan
 
 71. Reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-72. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+72. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-lembur.csv`
 73. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 74. Atur intercept jaringan agar respons permintaan Create Missing ditunda 3 detik dan hitung jumlah permintaan yang terkirim
 75. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout

@@ -82,7 +82,7 @@ coverage:
 
 ### Opsi ditambahkan manual (TC-GS-IMPORT-934)
 
-34. Total Control Client C: klik `[Upload File]` di toolbar dan pilih `user-login-shift-lembur.csv` (D-79)
+34. Total Control Client C: klik `[Upload File]` di Dropzone dan pilih `user-login-shift-lembur.csv` (D-79)
 35. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 36. Tunggu aksi selesai (permintaan mendapat respons)
 37. Admin kedua Client C (sesi API) menambahkan opsi `Lembur` ke Custom Field `Shift` hingga tersimpan
@@ -95,7 +95,7 @@ coverage:
 
 ### Custom Field Deactivated, opsi tidak valid (TC-GS-IMPORT-963)
 
-44. Total Control Client C: klik `[Upload File]` di toolbar dan pilih `user-login-shift-lembur.csv` (D-79)
+44. Total Control Client C: klik `[Upload File]` di Dropzone dan pilih `user-login-shift-lembur.csv` (D-79)
 45. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 46. Tunggu aksi selesai (permintaan mendapat respons)
 47. Admin kedua Client C (sesi API) menonaktifkan Custom Field `Shift` hingga tersimpan

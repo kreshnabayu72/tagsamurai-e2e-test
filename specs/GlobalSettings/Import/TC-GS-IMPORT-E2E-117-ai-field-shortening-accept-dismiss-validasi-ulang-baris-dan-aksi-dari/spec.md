@@ -43,7 +43,7 @@ coverage:
 
 ### TC-GS-IMPORT-293: Accept memperbarui sel dan memvalidasi ulang baris tanpa sesi edit
 
-1. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+1. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 2. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 3. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 4. Klik `[Accept]` pada badge saran sel Brand Name baris #1
@@ -60,7 +60,7 @@ coverage:
 ### TC-GS-IMPORT-295: Dismiss menghilangkan badge dan baris tetap error
 
 14. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
-15. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+15. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 16. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 17. Tunggu sampai toast `Success, row has been added.` tidak tampil lagi
 18. Klik `[Dismiss]` pada badge saran sel Brand Name baris #1
@@ -76,7 +76,7 @@ coverage:
 ### TC-GS-IMPORT-296: Save diblokir saat sel yang di-Dismiss diedit ke nilai lain yang masih melebihi batas
 
 27. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
-28. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+28. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 29. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 30. Klik `[Dismiss]` pada badge saran sel Brand Name baris #1
 31. Verifikasi badge saran hilang dari sel Brand Name baris #1
@@ -95,7 +95,7 @@ coverage:
 ### TC-GS-IMPORT-851: Accept dari halaman basi ditolak bila nilai sel sudah diubah admin lain
 
 43. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
-44. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+44. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 45. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 46. Verifikasi badge saran tampil pada sel Brand Name baris #1
 47. Admin kedua Client C (sesi API): ubah Brand Name baris #1 menjadi `Brand Revisi Satu` hingga tersimpan
@@ -109,7 +109,7 @@ coverage:
 ### TC-GS-IMPORT-852: Dismiss dari halaman basi tidak berefek bila nilai sel sudah diubah admin lain
 
 54. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Brand
-55. Klik [Upload File] di toolbar dan pilih berkas `ai-brand-long.csv`
+55. Klik [Upload File] di Dropzone dan pilih berkas `ai-brand-long.csv`
 56. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 57. Verifikasi badge saran tampil pada sel Brand Name baris #1
 58. Admin kedua Client C (sesi API): ubah Brand Name baris #1 menjadi `Brand Revisi Dua` hingga tersimpan
@@ -127,7 +127,7 @@ coverage:
 ### TC-GS-IMPORT-294: Accept pada baris dengan pelanggaran lain, baris tetap error
 
 69. Reset draft Client C Tab Brand lewat skrip reset, lalu muat ulang halaman Import > Division
-70. Klik [Upload File] di toolbar dan pilih berkas `ai-division-long-code-eng.csv`
+70. Klik [Upload File] di Dropzone dan pilih berkas `ai-division-long-code-eng.csv`
 71. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 72. Verifikasi baris #1 berstatus `error`
 73. Verifikasi Error Summary Callout memuat "Division Name: Max. 120 characters" dengan badge "1 row"
@@ -141,7 +141,7 @@ coverage:
 ### TC-GS-IMPORT-302: Saran Division Name dicek ulang terhadap keunikan
 
 80. Reset draft Client C Tab Division lewat skrip reset, lalu muat ulang halaman Import > Division
-81. Klik [Upload File] di toolbar dan pilih berkas `ai-division-dup.csv`
+81. Klik [Upload File] di Dropzone dan pilih berkas `ai-division-dup.csv`
 82. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 83. Klik `[Accept]` pada badge saran sel Division Name baris #1
 84. Verifikasi sel Division Name baris #1 berisi `Engineering`
@@ -153,7 +153,7 @@ coverage:
 ### TC-GS-IMPORT-700: Dua badge AI pada baris yang sama dievaluasi terpisah per field
 
 89. Reset draft Client C Tab Division lewat skrip reset, lalu muat ulang halaman Import > User Login
-90. Klik [Upload File] di toolbar dan pilih berkas `ai-ul-first-long-div-typo.csv`
+90. Klik [Upload File] di Dropzone dan pilih berkas `ai-ul-first-long-div-typo.csv`
 91. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 92. Verifikasi sel First Name menampilkan badge "AI suggestion: 'Muhammad Abdurrahman Nurrahman'?" disertai `[Accept]` dan `[Dismiss]`
 93. Verifikasi sel Division menampilkan badge "Did you mean 'Engineering'?" disertai `[Accept]` dan `[Dismiss]`

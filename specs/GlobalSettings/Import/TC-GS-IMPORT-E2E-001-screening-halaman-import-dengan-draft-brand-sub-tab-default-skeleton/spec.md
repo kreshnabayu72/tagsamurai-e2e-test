@@ -90,29 +90,28 @@ coverage:
 44. Verifikasi skeleton tampil pada Staging DataTable
 45. Verifikasi Header tetap tampil
 46. Verifikasi Sub-Tab tetap tampil
-47. Verifikasi toolbar tetap tampil
-48. Tunggu respons tiba
-49. Lepas intercept
-50. Verifikasi skeleton diganti Staging Metric Cards
-51. Verifikasi Staging DataTable berisi 12 baris draft Brand
+47. Tunggu respons tiba
+48. Lepas intercept
+49. Verifikasi skeleton diganti Staging Metric Cards
+50. Verifikasi Staging DataTable berisi 12 baris draft Brand
 
 ### TC-GS-IMPORT-20: Unsaved Banner dibaca admin kedua pada draft bersama
 
-52. Ganti akun: logout dari Total Control Client A
-53. Login sebagai Admin kedua Client A dengan `Spectra.env.GS_TC2_PASSWORD`
-54. Buka menu Import dari sidebar
-55. Klik Sub-Tab Division
-56. Perhatikan Unsaved Banner
-57. Verifikasi Unsaved Banner tampil untuk akun Admin kedua Client A pada draft yang dibuat akun Total Control
-58. Verifikasi tanggal pada banner adalah tanggal tiga hari sebelum hari uji menurut format tanggal General Settings
+51. Ganti akun: logout dari Total Control Client A
+52. Login sebagai Admin kedua Client A dengan `Spectra.env.GS_TC2_PASSWORD`
+53. Buka menu Import dari sidebar
+54. Klik Sub-Tab Division
+55. Perhatikan Unsaved Banner
+56. Verifikasi Unsaved Banner tampil untuk akun Admin kedua Client A pada draft yang dibuat akun Total Control
+57. Verifikasi tanggal pada banner adalah tanggal tiga hari sebelum hari uji menurut format tanggal General Settings
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC: 7, 8, 17, 20. TC-GS-IMPORT-8 klik Sub-Tab Division sehingga TC-GS-IMPORT-17 membuka menu Import ulang (halaman kembali ke Sub-Tab Brand); TC-GS-IMPORT-20 ditaruh terakhir karena ganti akun ke Admin kedua.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset dan seed lewat skrip fixture sinkron, tanpa penanda tunggu; muat ulang halaman karena draft diganti sesudah layar awal dibuka), langkah 2, 26, 28 (mengamati/memperhatikan elemen sesuai Langkah Uji TC), langkah 42, 49 (lepas intercept, S-09), dan langkah 52 sampai 55 (ganti akun dan navigasi).
-- Spec melewati sekitar 35 langkah (58 langkah). Seluruhnya screening baca halaman Import tanpa aksi yang mengubah data; tiap blok TC berdiri sendiri dan kegagalan satu blok tidak menghilangkan makna blok lain. Pemecahan hanya menambah login dan pembukaan halaman tanpa menambah kelas harness; satu-satunya blok pada akun lain (TC-GS-IMPORT-20) berada di akhir dengan langkah ganti akun eksplisit.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (reset dan seed lewat skrip fixture sinkron, tanpa penanda tunggu; muat ulang halaman karena draft diganti sesudah layar awal dibuka), langkah 2, 26, 28 (mengamati/memperhatikan elemen sesuai Langkah Uji TC), langkah 42, 48 (lepas intercept, S-09), dan langkah 51 sampai 54 (ganti akun dan navigasi).
+- Spec melewati sekitar 35 langkah (57 langkah). Seluruhnya screening baca halaman Import tanpa aksi yang mengubah data; tiap blok TC berdiri sendiri dan kegagalan satu blok tidak menghilangkan makna blok lain. Pemecahan hanya menambah login dan pembukaan halaman tanpa menambah kelas harness; satu-satunya blok pada akun lain (TC-GS-IMPORT-20) berada di akhir dengan langkah ganti akun eksplisit.
 - Penahanan respons 3 detik pada TC-GS-IMPORT-17 hanya untuk mengamati skeleton (bukan kelas fault injection, konvensi bagian 3 prinsip 13 butir b).
 - Temuan untuk QA:
   - TC-GS-IMPORT-7, 17, dan 20 menyebut draft dan hook umur (D-76) tanpa mendefinisikan skrip seed/reset dan hook backdate; mekanismenya disediakan tim FE/BE dan tidak dikarang di spec (S-13).

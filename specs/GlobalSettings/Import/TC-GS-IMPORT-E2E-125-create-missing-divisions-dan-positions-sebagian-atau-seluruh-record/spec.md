@@ -35,7 +35,7 @@ coverage:
 
 ### TC-GS-IMPORT-330: Bulk Create Missing, 2 nama valid dan 1 nama tidak valid
 
-1. Klik [Upload File] di toolbar
+1. Klik [Upload File] di Dropzone
 2. Pilih berkas `user-login-division-partial.csv` di file picker
 3. Biarkan seluruh dropdown File Column pada nilai auto-match
 4. Klik [Confirm Mapping]
@@ -54,7 +54,7 @@ coverage:
 ### TC-GS-IMPORT-331: Seluruh record Division gagal
 
 16. Hapus Division `Logistik` dan `Pengadaan` lewat API, reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-17. Klik [Upload File] di toolbar dan pilih berkas `user-login-division-emoji.csv`
+17. Klik [Upload File] di Dropzone dan pilih berkas `user-login-division-emoji.csv`
 18. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 19. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
 20. Verifikasi toast error "Error, failed to create division."
@@ -66,7 +66,7 @@ coverage:
 ### TC-GS-IMPORT-333: Seluruh record Position gagal
 
 25. Reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-26. Klik [Upload File] di toolbar dan pilih berkas `user-login-position-emoji.csv`
+26. Klik [Upload File] di Dropzone dan pilih berkas `user-login-position-emoji.csv`
 27. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 28. Klik `[Create Missing Positions]` pada baris pesan "Position not found" di Error Summary Callout
 29. Verifikasi toast error "Error, failed to create position."
@@ -78,7 +78,7 @@ coverage:
 ### TC-GS-IMPORT-334: Bulk Create Missing Positions, sebagian record dilewati
 
 34. Reset draft Tab User Login Client C ke tanpa draft, lalu buka Import > User Login
-35. Klik [Upload File] di toolbar dan pilih berkas `user-login-position-partial.csv`
+35. Klik [Upload File] di Dropzone dan pilih berkas `user-login-position-partial.csv`
 36. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 37. Klik `[Create Missing Positions]` pada baris pesan "Position not found" di Error Summary Callout
 38. Verifikasi toast sukses "Success, position has been created. Some items were skipped."
