@@ -33,15 +33,15 @@ coverage:
 ### Akun `readOnlyLic` (TC-AC-LA-70)
 
 1. Ketik Search Allocation ID seed `Waiting for Approval` (`Fixture.license-allocation-license.seed41`), tekan Enter
-2. Verifikasi `[+ Allocation]` Hidden pada toolbar tab Current
-3. Verifikasi ikon Download dan ikon Changelog Show
+2. Verifikasi ikon Download dan ikon Changelog Show
+3. Verifikasi `[+ Allocation]` Hidden pada toolbar tab Current
 4. Klik ikon `⋯` pada baris `Waiting for Approval`
 5. Verifikasi row action `Allocation Log` Show
 6. Verifikasi row action `Edit` dan `Cancel Allocation` Hidden
 7. Verifikasi opsi Approve dan Reject tidak tersedia pada menu `⋯`
 8. Klik `Allocation Log`
 9. Verifikasi modal `Allocation Log` terbuka
-10. Tutup modal dengan `[✕]`, lalu klik `(←)` pada kotak Search
+10. Tutup modal dengan `[×]`, lalu klik `(←)` pada kotak Search
 11. Klik tab `History`, lalu ketik Search Allocation ID seed `Canceled` (`Fixture.license-allocation-license.seed48`), tekan Enter
 12. Klik ikon `⋯` pada baris `Canceled`
 13. Verifikasi row action `Allocation Log` Show
@@ -49,7 +49,7 @@ coverage:
 
 ### Akun `readOnlyDistLic` (TC-AC-LA-71)
 
-15. Ganti akun: Logout lalu login sebagai Read Only Distributor (`readOnlyDistLic`)
+15. Ganti akun: Logout lalu login sebagai Read Only Distributor (`readOnlyDistLic`), lalu buka Allocation > License Allocation tab Current
 16. Verifikasi sedikitnya satu baris data dalam jaringan Distributor tampil pada tab Current
 17. Verifikasi `[+ Allocation]` Hidden pada toolbar tab Current
 18. Ketik Search Allocation ID seed `Waiting for Approval` (`Fixture.license-allocation-license.seed41`), tekan Enter
@@ -58,14 +58,17 @@ coverage:
 21. Verifikasi row action `Edit` dan `Cancel Allocation` Hidden
 22. Klik `(←)` pada kotak Search, lalu klik tab `History`, lalu ketik Search Allocation ID seed `Canceled` (`Fixture.license-allocation-license.seed48`), tekan Enter
 23. Klik ikon `⋯` pada baris `Canceled`
-24. Verifikasi row action `Resubmit` Hidden
+24. Verifikasi row action `Allocation Log` Show pada menu `⋯` baris `Canceled` (anchor menu terbuka)
+25. Verifikasi row action `Resubmit` Hidden
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah membuka menu `⋯`, penutupan modal, dan ganti akun eksplisit (S-07).
+- Langkah penghubung (S-03): pembukaan Allocation > License Allocation tab Current di dalam langkah Ganti akun, karena halaman landing akun tidak diandaikan (S-07).
 - Role Matrix: ditulis per blok role karena ganti akun menuntut Step eksplisit (bagian 3a, 2026-10-30) dan tiap blok akun berdiri sendiri; hasil berbeda per role.
+- Asersi tambahan (S-03): langkah 24 (`Allocation Log` Show) adalah anchor positif sebelum asersi `Resubmit` Hidden bagi `readOnlyDistLic`, selaras dengan anchor langkah 20 dan 13; alasannya bagian 8b butir 2 dan keputusan 2026-11-04.
 - Spec negatif: aksi tulis tidak tersedia bagi access level Read Only; anchor absence berupa row action `Allocation Log` yang tampil pada menu `⋯` yang sama (bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-AC-LA-71 Expected a (`Data dalam jaringan Distributor tampil`) tidak merinci data; spec mengasersi sedikitnya satu baris tampil.

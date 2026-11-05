@@ -31,53 +31,55 @@ coverage:
 
 1. Ketik Search `LALC-20260105-00001`, tekan Enter
 2. Amati warna teks Allocation ID pada baris `LALC-20260105-00001`
-3. Verifikasi warna teks Allocation ID default netral seperti teks body tabel, tanpa garis bawah
-4. Arahkan kursor ke Allocation ID `LALC-20260105-00001`
-5. Verifikasi saat hover warna teks berubah menjadi warna primary Admin Console (merah), tanpa garis bawah
-6. Klik Allocation ID `LALC-20260105-00001`
-7. Verifikasi modal `Allocation Log` terbuka untuk Allocation ID `LALC-20260105-00001`
-8. Verifikasi tab dan List di belakang modal tidak berubah
-9. Tutup modal dengan `[✕]`
+3. Verifikasi warna teks Allocation ID default netral seperti teks body tabel
+4. Verifikasi teks Allocation ID default tanpa garis bawah
+5. Arahkan kursor ke Allocation ID `LALC-20260105-00001`
+6. Verifikasi saat hover warna teks berubah menjadi warna primary Admin Console (merah)
+7. Verifikasi saat hover teks Allocation ID tanpa garis bawah
+8. Klik Allocation ID `LALC-20260105-00001`
+9. Verifikasi modal `Allocation Log` terbuka untuk Allocation ID `LALC-20260105-00001`
+10. Verifikasi tab dan List di belakang modal tidak berubah
+11. Tutup modal dengan `[×]`
 
 ### TC-AC-LA-5: Klik nama Client membuka Client Detail
 
-10. Catat nilai kolom baris `LALC-20260105-00001` sebelum klik nama Client
-11. Klik nama Client `PT Sejahtera` pada baris alokasi
-12. Verifikasi halaman Client Detail `PT Sejahtera` terbuka pada tab browser yang sama (bukan tab baru)
-13. Kembali ke List dengan tombol Back browser
-14. Verifikasi nilai kolom baris `LALC-20260105-00001` sama dengan yang dicatat sebelum klik (List tidak mengubah data)
+12. Catat nilai kolom baris `LALC-20260105-00001` sebelum klik nama Client
+13. Klik nama Client `PT Sejahtera` pada baris alokasi
+14. Verifikasi halaman Client Detail `PT Sejahtera` terbuka pada tab browser yang sama (bukan tab baru)
+15. Kembali ke List dengan tombol Back browser
+16. Verifikasi nilai kolom baris `LALC-20260105-00001` sama dengan yang dicatat sebelum klik (List tidak mengubah data)
 
 ### TC-AC-LA-6: Format Allocated By dan tooltip nama lengkap
 
-15. Ganti isi kotak search dengan Allocation ID seed alokasi `Dewi Anggraini` (`Fixture.license-allocation-license.seedDewiAnggraini`), tekan Enter
-16. Amati kolom Allocated By pada baris itu
-17. Verifikasi kolom Allocated By menampilkan teks biasa `Dewi A` (nama depan utuh, inisial nama belakang)
-18. Verifikasi nilai Allocated By tidak berupa badge
-19. Hover nilai Allocated By `Dewi A`
-20. Verifikasi tooltip nama lengkap `Dewi Anggraini`
+17. Ganti isi kotak search dengan Allocation ID seed alokasi `Dewi Anggraini` (`Fixture.license-allocation-license.seedDewiAnggraini`), tekan Enter
+18. Amati kolom Allocated By pada baris itu
+19. Verifikasi kolom Allocated By menampilkan teks biasa `Dewi A` (nama depan utuh, inisial nama belakang)
+20. Verifikasi nilai Allocated By tidak berupa badge
+21. Hover nilai Allocated By `Dewi A`
+22. Verifikasi tooltip nama lengkap `Dewi Anggraini`
 
 ### TC-AC-LA-7: Badge Status pada List
 
-21. Ganti isi kotak search dengan Allocation ID seed `Waiting for Approval` (Pre-setup #41), tekan Enter
-22. Verifikasi badge Status `Waiting for Approval`: severity warning
-23. Ganti isi kotak search dengan Allocation ID seed `Pending` (Pre-setup #46), tekan Enter
-24. Verifikasi badge Status `Pending`: severity warning
-25. Ganti isi kotak search dengan Allocation ID seed `Active` (Pre-setup #47), tekan Enter
-26. Verifikasi badge Status `Active`: severity success
-27. Klik `(←)` pada kotak Search
-28. Klik tab `History`
-29. Ketik Search Allocation ID seed `Expired` (Pre-setup #51), tekan Enter
-30. Verifikasi badge Status `Expired`: severity danger
-31. Ganti isi kotak search dengan Allocation ID seed `Rejected` (Pre-setup #50), tekan Enter
-32. Verifikasi badge Status `Rejected`: severity danger
-33. Ganti isi kotak search dengan Allocation ID seed `Canceled` (Pre-setup #48), tekan Enter
-34. Verifikasi badge Status `Canceled`: severity danger
-35. Klik `(←)` pada kotak Search
-36. Verifikasi sedikitnya satu baris tampil pada tab History
-37. Verifikasi tidak ada baris dengan label badge `Completed` pada tab History
-38. Klik tab `Current`
-39. Verifikasi sedikitnya satu baris tampil pada tab Current
-40. Verifikasi tidak ada baris dengan label badge `Completed` pada tab Current
+23. Ganti isi kotak search dengan Allocation ID seed `Waiting for Approval` (Pre-setup #41), tekan Enter
+24. Verifikasi badge Status `Waiting for Approval`: severity warning
+25. Ganti isi kotak search dengan Allocation ID seed `Pending` (Pre-setup #46), tekan Enter
+26. Verifikasi badge Status `Pending`: severity warning
+27. Ganti isi kotak search dengan Allocation ID seed `Active` (Pre-setup #47), tekan Enter
+28. Verifikasi badge Status `Active`: severity success
+29. Klik `(←)` pada kotak Search
+30. Klik tab `History`
+31. Ketik Search Allocation ID seed `Expired` (Pre-setup #51), tekan Enter
+32. Verifikasi badge Status `Expired`: severity danger
+33. Ganti isi kotak search dengan Allocation ID seed `Rejected` (Pre-setup #50), tekan Enter
+34. Verifikasi badge Status `Rejected`: severity danger
+35. Ganti isi kotak search dengan Allocation ID seed `Canceled` (Pre-setup #48), tekan Enter
+36. Verifikasi badge Status `Canceled`: severity danger
+37. Klik `(←)` pada kotak Search
+38. Verifikasi sedikitnya satu baris tampil pada tab History
+39. Verifikasi tidak ada baris dengan label badge `Completed` pada tab History
+40. Klik tab `Current`
+41. Verifikasi sedikitnya satu baris tampil pada tab Current
+42. Verifikasi tidak ada baris dengan label badge `Completed` pada tab Current
 
 ## Notes
 

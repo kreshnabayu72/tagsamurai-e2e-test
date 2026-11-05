@@ -74,18 +74,19 @@ coverage:
 ### TC-AC-LA-59: Entity Gate menang atas role
 
 23. Tetapkan capability Manage allocation pada group Client uji ke akun `clientUserLic` lewat fixture backend
-24. Muat ulang aplikasi lalu periksa sidebar
-25. Verifikasi sedikitnya satu item menu lain tampil pada sidebar
-26. Verifikasi menu `License Allocation` tetap tidak tampil
-27. Baca daftar alokasi dengan sesi API akun `clientUserLic` lewat fixture BE
-28. Verifikasi tidak ada data alokasi yang dapat dibaca akun ini
-29. Cabut capability Manage allocation dari akun `clientUserLic` lewat fixture backend
+24. Tunggu aksi selesai
+25. Muat ulang aplikasi lalu periksa sidebar
+26. Verifikasi sedikitnya satu item menu lain tampil pada sidebar
+27. Verifikasi menu `License Allocation` tetap tidak tampil
+28. Baca daftar alokasi dengan sesi API akun `clientUserLic` lewat fixture BE
+29. Verifikasi tidak ada data alokasi yang dapat dibaca akun ini
+30. Cabut capability Manage allocation dari akun `clientUserLic` lewat fixture backend
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah `Buka dashboard Admin Console` (precondition tiap TC), langkah `Periksa sidebar`, langkah menetapkan dan mencabut capability, dan ganti akun eksplisit (S-07).
+- Langkah penghubung (S-03): langkah `Buka dashboard Admin Console` (precondition tiap TC), langkah `Periksa sidebar`, langkah menetapkan dan mencabut capability, langkah `Tunggu aksi selesai` (24, 8b butir 8; capability ditulis lewat fixture backend sebelum muat ulang), dan ganti akun eksplisit (S-07).
 - Spec ditulis per blok role karena ganti akun menuntut Step eksplisit (bagian 3a, 2026-10-30); langkah tiap entitas identik dengan hasil berbeda.
 - Absence menu pada Client diawali `Verifikasi` item menu lain tampil pada sidebar yang sama (bagian 8b butir 2).
 - Temuan untuk QA:

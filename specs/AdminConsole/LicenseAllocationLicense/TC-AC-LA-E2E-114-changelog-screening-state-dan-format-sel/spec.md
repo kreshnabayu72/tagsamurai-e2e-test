@@ -64,7 +64,7 @@ coverage:
 
 25. Klik area backdrop
 26. Verifikasi modal tidak tertutup
-27. Klik `[✕]`
+27. Klik `[×]`
 28. Verifikasi modal tertutup
 29. Klik ikon Changelog
 30. Tekan `Esc`
@@ -77,7 +77,7 @@ coverage:
 34. Verifikasi Illustration tampil
 35. Verifikasi Title `No changelog yet`
 36. Verifikasi Description `Activities and changes will appear here.`
-37. Klik `[✕]` pada Modal Changelog
+37. Klik `[×]` pada Modal Changelog
 38. Lepas intercept respons list Changelog
 
 ## Notes

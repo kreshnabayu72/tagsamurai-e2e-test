@@ -102,7 +102,7 @@ coverage:
 55. Buka Popup Setup Column
 56. Hapus centang `Field`
 57. Klik `[Save]`
-58. Klik `[✕]` pada Modal Changelog
+58. Klik `[×]` pada Modal Changelog
 59. Verifikasi kolom List tidak berubah: sepuluh kolom Hideable `Allocation ID`, `License Type`, `Product`, `Client`, `Subscription ID`, `Quantity`, `Plan Owner`, `Allocated By`, `Status`, dan `Last Updated` tampil
 
 ## Notes

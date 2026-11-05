@@ -57,7 +57,7 @@ coverage:
 
 ### Field tidak berubah dan record lain tidak nyasar (TC-AC-LA-416)
 
-18. Ganti isi kotak search dengan `{idOne}`, tekan Enter
+18. Ketik Search `{idOne}`, tekan Enter
 19. Klik row action `Edit` pada baris `{idOne}`
 20. Ubah Additional Quantity dari `5` menjadi `8`
 21. Klik `[Save]`

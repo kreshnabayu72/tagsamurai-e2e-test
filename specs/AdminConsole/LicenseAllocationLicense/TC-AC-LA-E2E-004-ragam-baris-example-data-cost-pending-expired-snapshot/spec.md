@@ -60,36 +60,41 @@ coverage:
 ### TC-AC-LA-26: Baris Expired di tab History dengan Last Updated saat transisi
 
 19. Klik tab `History`
-20. Ketik Search Allocation ID seed `Expired` Concurrent User +3 PT Abadi Jaya (`Fixture.license-allocation-license.seed51`), tekan Enter
-21. Verifikasi Status baris: `Expired` dengan severity danger
-22. Verifikasi Last Updated baris memuat waktu transisi Auto-Expire
-23. Klik tab `Current`
-24. Ketik Search Allocation ID seed `Expired` (`Fixture.license-allocation-license.seed51`), tekan Enter
-25. Verifikasi empty state `No results found` tampil pada tab Current (anchor hasil Search)
-26. Verifikasi baris `Expired` Concurrent User +3 PT Abadi Jaya tidak tampil pada tab Current
+20. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+21. Ketik Search Allocation ID seed `Expired` Concurrent User +3 PT Abadi Jaya (`Fixture.license-allocation-license.seed51`), tekan Enter
+22. Verifikasi Status baris: `Expired` dengan severity danger
+23. Verifikasi Last Updated baris memuat waktu transisi Auto-Expire
+24. Klik tab `Current`
+25. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+26. Ketik Search Allocation ID seed `Expired` (`Fixture.license-allocation-license.seed51`), tekan Enter
+27. Verifikasi empty state `No results found` tampil pada tab Current (anchor hasil Search)
+28. Verifikasi baris `Expired` Concurrent User +3 PT Abadi Jaya tidak tampil pada tab Current
 
 ### TC-AC-LA-27: Plan snapshot, Client dan Product relasi live
 
-27. Ganti isi kotak search dengan Allocation ID seed `Active` Plan snapshot `Professional` (`Fixture.license-allocation-license.seedActiveProfessional`), tekan Enter
-28. Verifikasi kolom Plan baris tersebut menampilkan nilai awal `Professional`
-29. Ubah nama Client `PT Sejahtera` menjadi `PT Sejahtera Makmur` di Client Detail
-30. Ubah Plan term Client `PT Sejahtera Makmur` lewat Push Update Plans & Features
-31. Klik menu `License Allocation` di sidebar
-32. Ketik Search Allocation ID seed `Active` Plan snapshot `Professional` (`Fixture.license-allocation-license.seedActiveProfessional`), tekan Enter
-33. Verifikasi kolom Plan tetap menampilkan nilai snapshot `Professional` (tidak ikut berubah)
-34. Verifikasi kolom Client menampilkan `PT Sejahtera Makmur` (relasi live)
-35. Pulihkan nama Client menjadi `PT Sejahtera` dan Plan term ke nilai awal lewat fixture backend
+29. Ganti isi kotak search dengan Allocation ID seed `Active` Plan snapshot `Professional` (`Fixture.license-allocation-license.seedActiveProfessional`), tekan Enter
+30. Verifikasi kolom Plan baris tersebut menampilkan nilai awal `Professional`
+31. Ubah nama Client `PT Sejahtera` menjadi `PT Sejahtera Makmur` di Client Detail
+32. Ubah Plan term Client `PT Sejahtera Makmur` lewat Push Update Plans & Features
+33. Tunggu aksi selesai
+34. Klik menu `License Allocation` di sidebar
+35. Ketik Search Allocation ID seed `Active` Plan snapshot `Professional` (`Fixture.license-allocation-license.seedActiveProfessional`), tekan Enter
+36. Verifikasi kolom Plan tetap menampilkan nilai snapshot `Professional` (tidak ikut berubah)
+37. Verifikasi kolom Client menampilkan `PT Sejahtera Makmur` (relasi live)
+38. Pulihkan nama Client menjadi `PT Sejahtera` dan Plan term ke nilai awal lewat fixture backend
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah Setup Column (tanpa `Verifikasi`), langkah `Catat saldo`, pindah tab, `(←)` pada kotak Search, dan langkah pemulihan nama Client dan Plan term di akhir.
+- Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah Setup Column (tanpa `Verifikasi`), langkah `Catat saldo`, pindah tab, `(←)` pada kotak Search, langkah `Kosongkan kotak search` (20 dan 25), langkah `Tunggu aksi selesai` (33, 8b butir 8), dan langkah pemulihan nama Client dan Plan term di akhir.
 - Kolom Plan dan Cost ditampilkan sekali di awal spec lewat Setup Column dan dipakai TC-AC-LA-23 sampai TC-AC-LA-27 (langkah 1 TC-AC-LA-24, TC-AC-LA-25, dan TC-AC-LA-27 yang berbunyi `Tampilkan kolom ... lewat Setup Column` dipenuhi oleh langkah awal itu).
-- Search tidak dibawa antar tab (ACLA-LOGIC-12d): setelah pindah tab Current di langkah 23, langkah 24 mengetik Search baru; langkah 25 (empty state `No results found`) menjadi anchor hasil Search sebelum absence langkah 26.
+- Spec tidak mengandalkan apakah kotak Search terbawa setelah pindah tab: setelah pindah tab History (langkah 19) dan tab Current (langkah 24), langkah 20 dan 25 mengosongkan kotak search lewat `✕` lalu Enter sebelum Search baru diketik. Langkah 27 (empty state `No results found`) menjadi anchor hasil Search sebelum absence langkah 28.
 - Klik menu `License Allocation` di sidebar pada TC-AC-LA-27 mereset Search dan membuka tab Current (bagian 4).
+- Spec ini di atas 35 langkah. Alasannya: semua blok satu topik (ragam baris Example Data pada List), memakai seed baca-saja dan kolom Setup Column yang sama, sehingga TC-AC-LA-23 sampai TC-AC-LA-27 tidak perlu membangun ulang state; langkah di atas 35 hanya langkah penghubung (pengosongan kotak search dan tunggu aksi selesai).
 - Temuan untuk QA:
   - TC-AC-LA-24 Expected c (`Saldo kantong Distributor tidak berkurang`) tidak memberi cara membaca saldo; spec memakai kemampuan baca saldo yang disediakan tim FE/BE (S-11, S-13).
   - TC-AC-LA-26 Expected c (`Last Updated memuat waktu transisi Auto-Expire`) tidak menyebut nilai yang dibandingkan; spec mengasersi isi kolom Last Updated tanpa nilai pembanding.
   - TC-AC-LA-27 tidak menyebut Allocation ID baris Active dengan Plan snapshot `Professional`, tidak menyebut Plan tujuan Push Update Plans & Features, dan tidak menyebut cara mengubah nama Client dan Plan term selain lewat Client Detail; baris dibaca dari fixture seed dan perubahan dilakukan lewat kemampuan fixture FE/BE.
   - TC-AC-LA-24, TC-AC-LA-25, dan TC-AC-LA-26 tidak menyebut Allocation ID baris yang dicari (kecuali Subscription ID di TC-AC-LA-25); baris dibaca dari fixture seed.
+  - PRD ACLA-LOGIC-12d (state tab sebelumnya tidak dibawa) bertentangan dengan TC-AC-LA-35 Expected a (Search, Filter, Sort, dan halaman dipulihkan saat kembali ke tab); spec tidak mengandalkan salah satunya dan mengosongkan kotak search secara eksplisit sebelum Search baru di tab yang dimasuki lagi.

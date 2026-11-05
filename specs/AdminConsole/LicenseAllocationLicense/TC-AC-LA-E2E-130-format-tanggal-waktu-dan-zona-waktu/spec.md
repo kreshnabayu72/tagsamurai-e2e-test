@@ -69,22 +69,24 @@ coverage:
 ### Changelog setelah Time Format diubah ke 12 jam (TC-AC-LA-382)
 
 20. Ubah Time Format General Settings menjadi 12 jam (Date Format tetap `dd MMM yy`)
-21. Klik ikon `Changelog` pada List
-22. Verifikasi kolom Date memakai Date Format `dd MMM yy` dan Time Format 12 jam sesuai konfigurasi aktif
-23. Tutup modal Changelog
+21. Tunggu aksi selesai (Time Format 12 jam tersimpan)
+22. Klik ikon `Changelog` pada List
+23. Verifikasi kolom Date memakai Date Format `dd MMM yy` dan Time Format 12 jam sesuai konfigurasi aktif
+24. Tutup modal Changelog
 
 ### Surface 1: Last Updated dan filter List, konfigurasi baru (TC-AC-LA-420 butir b)
 
-24. Ubah Date Format General Settings menjadi `dd/MM/yy` (Time Format tetap 12 jam)
-25. Muat ulang halaman
-26. Verifikasi kolom Last Updated memakai Date Format `dd/MM/yy` dan Time Format 12 jam
-27. Pilih rentang tanggal pada filter Last Updated
-28. Verifikasi teks input date picker memakai Date Format `dd/MM/yy` dan Time Format 12 jam
+25. Ubah Date Format General Settings menjadi `dd/MM/yy` (Time Format tetap 12 jam)
+26. Tunggu aksi selesai (Date Format `dd/MM/yy` tersimpan)
+27. Muat ulang halaman
+28. Verifikasi kolom Last Updated memakai Date Format `dd/MM/yy` dan Time Format 12 jam
+29. Pilih rentang tanggal pada filter Last Updated
+30. Verifikasi teks input date picker memakai Date Format `dd/MM/yy` dan Time Format 12 jam
 
 ## Notes
 
 - Urutan blok berbeda dari urutan sourceTc agar General Settings hanya diubah dua kali: konfigurasi awal dipakai untuk TC-AC-LA-421, 422, 424, dan TC-AC-LA-420 butir a; Time Format 12 jam untuk TC-AC-LA-382; Date Format `dd/MM/yy` untuk TC-AC-LA-420 butir b. TC-AC-LA-382 langkah 1 ("Buka Changelog dan amati kolom Date") sama dengan langkah 2 pada konfigurasi awal.
-- Langkah penghubung (S-03, R-16): langkah 6, 10, dan 13 (Search baris atau entri berdasarkan Allocation ID), langkah 16 (mengosongkan Search dengan `(←)`), langkah 5, 9, 15, dan 23 (menutup modal), langkah 20 dan 24 (mengubah General Settings), langkah 25 (muat ulang).
+- Langkah penghubung (S-03, R-16): langkah 6, 10, dan 13 (Search baris atau entri berdasarkan Allocation ID), langkah 16 (mengosongkan Search dengan `(←)`), langkah 5, 9, 15, dan 24 (menutup modal), langkah 20 dan 25 (mengubah General Settings), langkah 27 (muat ulang), langkah 21 dan 26 (menunggu aksi selesai karena langkah berikutnya membuka surface lain atau memuat ulang, 8b butir 8).
 - Temuan untuk QA:
   - TC-AC-LA-420 sampai 424 dan 382 tidak menyebut halaman, akun, maupun mekanisme pengubahan General Settings; spec memakai kemampuan "disediakan tim FE/BE".
   - TC-AC-LA-420 butir a tidak menyebut contoh nilai tampil; spec mengasersi format konfigurasi aktif tanpa nilai literal. TC-AC-LA-420 langkah 3 mengubah Date Format dan 12 jam sekaligus, sedangkan TC-AC-LA-382 mengubah hanya Time Format; spec memisahkannya menjadi dua perubahan berurutan.

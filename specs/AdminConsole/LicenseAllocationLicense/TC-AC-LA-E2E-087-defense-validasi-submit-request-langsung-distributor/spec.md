@@ -78,4 +78,5 @@ coverage:
   - TC-AC-LA-443, 446, 447, 448, 449, 456 tidak menyebut status HTTP penolakan kecuali TC-AC-LA-456 (`403` atau `404`); spec mengasersi penolakan dan pesan sesuai TC.
   - TC-AC-LA-449 Langkah 1 menyebut Type Station untuk Client Free tanpa menyebut Quantity; spec memakai payload yang disediakan tim FE.
   - TC-AC-LA-456 menyebut "Allocation ID milik Distributor lain" tanpa data Pre-setup; alokasi tersebut disediakan tim FE. Gap Spec G22 (403 atau 404 belum ditetapkan) dicatat di TC.
+  - TC-AC-LA-456 Expected b memuat klausa "Allocation Log tidak terbuka" yang merupakan perilaku FE pada request langsung (8b butir 1); spec tidak menyalinnya dan hanya mengasersi respons server pada langkah 18 dan 19 (usulan: hapus klausa dari TC atau pindahkan ke TC jalur UI).
   - TC-AC-LA-448 Langkah 1 menyebut "Target FAMS" tanpa ID Subscription; spec memakai `SUBS-20260101-A1B2C`.

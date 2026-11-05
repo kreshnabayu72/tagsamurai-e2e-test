@@ -22,6 +22,7 @@ coverage:
 - Data Pre-setup (hanya dibaca): PT Sejahtera (#19), kantong wallet (#33), Product Price (#34), toggle Require Approval for Allocation ON (#38), Approval Timeout 3 hari (#40), Dewi A sebagai requester seed (#4).
 - Data Dinamis (seeding per blok lewat langkah penghubung pada fixture backend yang disediakan tim FE/BE, bukan di hook `before`, supaya job time-travel blok TC-AC-LA-465 tidak membatalkan seed blok TC-AC-LA-485; milik spec ini, bentuknya sama dengan Pre-setup #41): satu alokasi `Waiting for Approval` Concurrent User +5 ke `SUBS-20260101-A1B2C` PT Sejahtera oleh `Dewi A` (Cost $150.00 di-Reserve) per blok, untuk TC-AC-LA-465 dan TC-AC-LA-485. Allocation ID dan waktu Submit (T0) tiap seed dibaca dari hasil seeding. Hook `after` membersihkan seed yang tersisa.
 - Kemampuan teknis (disediakan tim FE/BE): fixture waktu untuk mengatur jam server dan jam browser ke nilai absolut (T0 + durasi, margin terhadap batas di bawah 5 menit: batas SLA T0 + 3 hari, selisih 1 menit), menunggu satu siklus job. Jam dipulihkan sebelum membuka log (S-09) dan di hook `after`.
+- Kemampuan baca saldo kantong (Balance, Reserved, Available) Distributor PT Maju Bersama (disediakan tim FE/BE; TC dan PRD tidak menyebut halaman atau endpointnya) dipakai untuk baseline Balance sebelum job berjalan.
 - State global yang diubah: jam server dan jam browser; dipulihkan di hook `after`. Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -43,37 +44,42 @@ coverage:
 13. Verifikasi Allocation Log memuat entri `Allocation approved` (anchor)
 14. Verifikasi tidak ada entri `Allocation auto-canceled`
 15. Verifikasi status seed 465 tetap `Active`
-16. Buka Wallet
-17. Verifikasi tidak ada Release atas Reserve seed 465
+16. Tutup modal Allocation Log
+17. Buka Wallet
+18. Verifikasi Capture atas Reserve seed 465 masih tampil pada Wallet (anchor)
+19. Verifikasi tidak ada Release atas Reserve seed 465
 
 ### TC-AC-LA-485: Approve setelah Timeout Auto-Cancel menampilkan dialog Request No Longer Available
 
-18. Seed alokasi `Waiting for Approval` Concurrent User +5 ke `SUBS-20260101-A1B2C` PT Sejahtera oleh `Dewi A` (seed 485, Cost $150.00 di-Reserve) lewat fixture backend hingga tersimpan, lalu baca Allocation ID dan T0 Submit
-19. Buka Approvals > License Allocation
-20. Klik `[Review]` pada alokasi seed 485 dan pilih Approve sebelum SLA 3 hari terlewati
-21. Atur jam server dan jam browser ke T0 seed 485 + 3 hari 1 menit
-22. Tunggu satu siklus job Timeout Auto-Cancel
-23. Pulihkan jam server dan jam browser ke waktu nyata
-24. Klik Submit keputusan Approve
-25. Verifikasi dialog `Request No Longer Available` tampil
-26. Verifikasi keputusan tidak diproses
-27. Klik `[OK]` untuk menutup dialog `Request No Longer Available`
-28. Buka Allocation > License Allocation tab History, ketik Search Allocation ID seed 485, tekan Enter
-29. Verifikasi status seed 485 tetap `Canceled` oleh sistem
-30. Buka Wallet
-31. Verifikasi tidak ada Capture atas Reserve seed 485
-32. Verifikasi Reserve sudah dilepas oleh Timeout (Balance tidak berubah)
+20. Seed alokasi `Waiting for Approval` Concurrent User +5 ke `SUBS-20260101-A1B2C` PT Sejahtera oleh `Dewi A` (seed 485, Cost $150.00 di-Reserve) lewat fixture backend hingga tersimpan, lalu baca Allocation ID dan T0 Submit
+21. Catat Balance kantong Distributor PT Maju Bersama (dibaca lewat kemampuan baca saldo kantong)
+22. Buka Approvals > License Allocation
+23. Klik `[Review]` pada alokasi seed 485 dan pilih Approve sebelum SLA 3 hari terlewati
+24. Atur jam server dan jam browser ke T0 seed 485 + 3 hari 1 menit
+25. Tunggu satu siklus job Timeout Auto-Cancel
+26. Pulihkan jam server dan jam browser ke waktu nyata
+27. Klik Submit keputusan Approve
+28. Verifikasi dialog `Request No Longer Available` tampil
+29. Verifikasi keputusan tidak diproses
+30. Klik `[OK]` untuk menutup dialog `Request No Longer Available`
+31. Buka Allocation > License Allocation tab History, ketik Search Allocation ID seed 485, tekan Enter
+32. Verifikasi status seed 485 tetap `Canceled` oleh sistem
+33. Buka Wallet
+34. Verifikasi Reserve sudah dilepas oleh Timeout (Balance sama dengan Balance yang dicatat sebelum job berjalan)
+35. Verifikasi tidak ada Capture atas Reserve seed 485
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 1 dan 18 (seed per blok lewat fixture backend: job time-travel satu blok tidak boleh membatalkan seed blok lain, S-09), 2 dan 19 (membuka Approvals), 11 dan 23 (memulihkan jam sebelum membuka log atau menekan Submit, S-09), 7 (membuka Wallet sebelum asersi Capture seed 465), 12, 16, 28, 30 (membuka surface dan Search untuk menemukan baris target, R-16), 27 (menutup dialog `Request No Longer Available` dengan `[OK]` sebelum membuka surface lain, S-09).
-- Langkah 23 memulihkan jam sebelum Submit; tampilan dialog Review tetap terbuka karena tidak ada penghitung mundur UI yang diasersi.
-- Langkah 14 adalah asersi absence dengan anchor positif pada langkah 13 (entri `Allocation approved` pada surface yang sama); langkah 17 beranchor Verifikasi Wallet pada langkah 8.
-- P-1: asersi tidak ada entri `Allocation auto-canceled` (langkah 14) dan tidak ada Release (langkah 17) bergantung pada state berat time-travel yang dibangun di spec yang sama; keduanya beranchor positif.
+- Langkah penghubung (S-03): langkah 21 (Catat baseline Balance kantong sebelum job berjalan), langkah 1 dan 20 (seed per blok lewat fixture backend: job time-travel satu blok tidak boleh membatalkan seed blok lain, S-09), 2 dan 22 (membuka Approvals), 11 dan 26 (memulihkan jam sebelum membuka log atau menekan Submit, S-09), 7 (membuka Wallet sebelum asersi Capture seed 465), 12, 17, 31, 33 (membuka surface dan Search untuk menemukan baris target, R-16), 30 (menutup dialog `Request No Longer Available` dengan `[OK]` sebelum membuka surface lain, S-09).
+- Langkah 26 memulihkan jam sebelum Submit; tampilan dialog Review tetap terbuka karena tidak ada penghitung mundur UI yang diasersi.
+- Langkah 14 adalah asersi absence dengan anchor positif pada langkah 13 (entri `Allocation approved` pada surface yang sama); langkah 19 beranchor langkah 18 (Capture atas Reserve seed 465 masih tampil pada Wallet yang dibuka pada langkah 17).
+- Langkah 16 (menutup modal Allocation Log sebelum membuka Wallet, S-09) adalah langkah penghubung; langkah 18 adalah anchor positif tambahan (8b butir 2) untuk asersi tidak ada Release pada langkah 19.
+- Langkah 34 dan 35 menukar urutan butir Expected b dan c TC-AC-LA-485: Reserve dilepas oleh Timeout (data pembanding pada Wallet yang sama) diasersi lebih dulu sebagai anchor positif asersi absence Capture (8b butir 2).
+- P-1: asersi tidak ada entri `Allocation auto-canceled` (langkah 14) dan tidak ada Release (langkah 19) bergantung pada state berat time-travel yang dibangun di spec yang sama; keduanya beranchor positif.
 - Temuan untuk QA:
   - TC-AC-LA-465 Langkah 2 ("Klik Submit saat waktu server masih 2 hari 23 jam 59 menit") dan TC-AC-LA-485 Langkah 1 tidak menyebut jam browser; keduanya diatur bersama jam server.
   - TC-AC-LA-465 Expected b ("tidak ada Release") tidak menyebut cara pengamatan; spec memakai Wallet dan Allocation Log.
-  - TC-AC-LA-485 tidak menyebut tombol penutup dialog `Request No Longer Available`; langkah 27 memakai `[OK]` sesuai bentuk D-01 pada TC-AC-LA-225.
+  - TC-AC-LA-485 tidak menyebut tombol penutup dialog `Request No Longer Available`; langkah 30 memakai `[OK]` sesuai bentuk D-01 pada TC-AC-LA-225.
   - TC-AC-LA-465 dan TC-AC-LA-485 berbagi Pre-setup #41 tanpa seed per TC; spec membuat seed per blok.
   - TC-AC-LA-485 Expected b ("tidak ada Capture") dan c tidak menyebut cara membedakan Reserve dilepas dari Capture selain Balance; spec memakai Wallet.

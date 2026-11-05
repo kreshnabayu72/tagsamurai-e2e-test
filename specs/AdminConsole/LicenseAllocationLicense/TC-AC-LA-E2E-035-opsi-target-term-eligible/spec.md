@@ -79,7 +79,7 @@ coverage:
 29. Pilih Target `Client-wide`
 30. Buka dropdown Type
 31. Verifikasi dropdown Type hanya memuat `Asset Control Station` dan `Storage`
-32. Klik `[✕]` pada header
+32. Klik `[×]` pada header
 33. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 34. Klik `[Leave]`
 

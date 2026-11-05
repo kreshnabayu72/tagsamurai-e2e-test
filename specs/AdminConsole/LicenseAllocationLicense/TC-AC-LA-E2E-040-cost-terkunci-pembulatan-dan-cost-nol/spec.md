@@ -67,20 +67,23 @@ coverage:
 26. Verifikasi kolom Cost baris baru `$5.75`
 27. Buka Allocation Log baris tersebut
 28. Verifikasi entri `Allocation created by Dewi A` memuat baris `Cost: $5.75 (Wallet)`
-29. Ganti akun: logout `Dewi A`, login sebagai `Fajar Nugroho` dengan `Spectra.env.AC_LA_TC_DIST_PASSWORD`
-30. Buka Approvals > License Allocation dan Approve alokasi tersebut
-31. Tunggu aksi selesai, lalu buka Allocation > License Allocation tab Current
-32. Verifikasi Balance kantong berkurang `$5.75` dan Reserved turun `$5.75` terhadap langkah 19 (Capture tepat `$5.75` tanpa hitung ulang)
-33. Verifikasi kolom Cost baris tersebut tetap `$5.75`
-34. Buka Allocation Log baris tersebut
-35. Verifikasi baris Cost Allocation Log tetap `$5.75`
+29. Tutup modal Allocation Log
+30. Ganti akun: logout `Dewi A`, login sebagai `Fajar Nugroho` dengan `Spectra.env.AC_LA_TC_DIST_PASSWORD`
+31. Buka Approvals > License Allocation dan Approve alokasi tersebut
+32. Tunggu aksi selesai, lalu buka Allocation > License Allocation tab Current
+33. Pastikan kolom Cost tampil: klik ikon `⋯` pada header kolom, klik `Setup Column...`, centang kolom Cost, lalu klik `[Save]`
+34. Verifikasi Balance kantong berkurang `$5.75` terhadap langkah 19 (Capture tepat `$5.75` tanpa hitung ulang)
+35. Verifikasi Reserved kantong turun `$5.75` terhadap nilai sesudah Submit (langkah 25)
+36. Verifikasi kolom Cost baris tersebut tetap `$5.75`
+37. Buka Allocation Log baris tersebut
+38. Verifikasi baris Cost Allocation Log tetap `$5.75`
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 3 kali, kejadian menutup 3 (modal tertutup oleh Submit sukses di langkah 6, 16, dan 23).
-- Spec 35 langkah, tiga blok satu topik (Cost terkunci) yang berdiri sendiri. Setup Column tidak diulang setelah ganti akun di langkah 29: konfigurasi kolom tersimpan di `localStorage` browser dan tidak hilang saat logout.
+- Spec 38 langkah, di atas smell 35 langkah; tiga blok satu topik (Cost terkunci) yang berdiri sendiri. Setup Column diulang setelah ganti akun (langkah 33) karena kolom Cost tersembunyi secara bawaan dan tidak diandaikan tetap tampil sesudah ganti akun.
 - Penyimpangan urutan (S-05, S-10): TC-AC-LA-151 dan TC-AC-LA-513 sama-sama memakai toggle ON, sehingga toggle hanya dialihkan sekali (langkah 10) dan tidak bolak-balik; TC-AC-LA-143 (toggle OFF) dijalankan lebih dahulu.
-- Langkah penghubung (S-03): langkah 1 (menampilkan kolom Cost lewat Setup Column, tanpa `Verifikasi`; kolom Cost tersembunyi secara bawaan, TC-AC-LA-1 butir b.ii), langkah 2, 11, dan 19 (baseline), langkah 7 dan 31 (menunggu aksi selesai), langkah 10 dan 19 (mengatur toggle dan jam), langkah 27 dan 34 (membuka Allocation Log), dan ganti akun pada langkah 29 (S-07).
+- Langkah penghubung (S-03): langkah 1 dan 33 (menampilkan kolom Cost lewat Setup Column, tanpa `Verifikasi`; kolom Cost tersembunyi secara bawaan, TC-AC-LA-1 butir b.ii), langkah 2, 11, dan 19 (baseline), langkah 7 dan 32 (menunggu aksi selesai), langkah 10 dan 19 (mengatur toggle dan jam), langkah 27 dan 37 (membuka Allocation Log), langkah 29 (menutup modal Allocation Log sebelum ganti akun), dan ganti akun pada langkah 30 (S-07).
 - Temuan untuk QA:
   - TC-AC-LA-143 Langkah 7 "Buka kolom Cost di List" tidak menyatakan bahwa kolom Cost tersembunyi atau tampil secara bawaan; spec menampilkan kolom Cost lewat Setup Column pada langkah 1 (kemampuan disediakan tim FE).
   - TC-AC-LA-143 Expected b dan TC-AC-LA-513 Expected b sampai d membaca saldo kantong (Balance, Reserved, Available) yang tidak tampil di halaman License Allocation; pembacaan saldo memakai kemampuan baca yang disediakan tim FE/BE tanpa endpoint karangan (S-13).

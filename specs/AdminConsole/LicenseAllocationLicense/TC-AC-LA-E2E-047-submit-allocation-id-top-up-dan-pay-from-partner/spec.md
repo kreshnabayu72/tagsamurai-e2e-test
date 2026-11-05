@@ -22,7 +22,7 @@ coverage:
 - Hook suite: `beforeEach` suite menjadi jaring pengaman S-09 dan flag Guided Tooltip diset `seen` oleh hook suite, sesuai `suite.md`.
 - `Fixture.license-allocation-license` belum ada (disediakan tim FE): memuat identitas akun, nama Client, ID Subscription, dan harga.
 - Data Pre-setup: PT Sejahtera (#19, `SUBS-20260101-A1B2C`), PT Abadi Jaya (#25, `SUBS-20260110-C1D2E`), kantong wallet (#33), Product Price (#34: Concurrent User $365 per unit per tahun). Toggle Require Approval for Allocation OFF (#39), diatur fixture backend (disediakan tim FE/BE) di hook `before` dan dipulihkan di hook `after`.
-- Jam (nilai absolut, disediakan tim FE/BE): tanggal server uji 22 Dec 2026 di hook `before`; digeser ke 23 Dec 2026 pada langkah 10 dan tetap sampai akhir spec. Jam server dan jam browser diatur bersama dan dipulihkan di hook `after`. Counter harian Allocation ID untuk 22 Dec 2026 dan 23 Dec 2026 dalam keadaan nol (direset baseline automation sebelum spec; lihat Temuan untuk QA).
+- Jam (nilai absolut, disediakan tim FE/BE): tanggal server uji 22 Dec 2026 di hook `before`; digeser ke 23 Dec 2026 pada langkah 9 dan tetap sampai akhir spec. Jam server dan jam browser diatur bersama dan dipulihkan di hook `after`. Counter harian Allocation ID untuk 22 Dec 2026 dan 23 Dec 2026 dalam keadaan nol (direset baseline automation sebelum spec; lihat Temuan untuk QA).
 - Data Dinamis: tiga alokasi Concurrent User +1 ke PT Sejahtera (dua pada 22 Dec 2026, satu pada 23 Dec 2026), dua top-up +5 ke PT Sejahtera, dan satu alokasi +2 ke PT Abadi Jaya (Pay From `PT ABC (Principal)`). Alokasi tidak dapat dihapus (tanpa Delete); saldo kantong dan ledger kuota dipulihkan oleh baseline automation dan fixture backend di hook `after`.
 - Baseline: daftar Allocation ID baris di halaman pertama tab Current dan saldo kantong dicatat sebelum tiap blok.
 - Kemampuan teknis: membaca saldo kedua kantong sumber Partner (disediakan tim FE/BE); menampilkan kolom Paid From lewat Setup Column (pemulihan preferensi kolom di hook `after`, disediakan tim FE).
@@ -57,8 +57,8 @@ coverage:
 20. Verifikasi Current Quota form kedua menampilkan saldo kumulatif term (naik 5 dari nilai langkah 15)
 21. Isi Additional Quantity `5`
 22. Klik `[Submit]`
-23. Verifikasi alokasi kedua tercatat sebagai baris baru dengan Allocation ID berbeda (tidak ada pada baseline langkah 17)
-24. Verifikasi tidak ada penolakan duplikat (tidak ada pesan galat atau toast galat)
+23. Verifikasi tidak ada penolakan duplikat (tidak ada pesan galat atau toast galat)
+24. Verifikasi alokasi kedua tercatat sebagai baris baru dengan Allocation ID berbeda (tidak ada pada baseline langkah 17)
 
 ### TC-AC-LA-171: Partner dengan beberapa kantong mendebit kantong yang dipilih pada Pay From
 

@@ -54,19 +54,20 @@ coverage:
 ### TC-AC-LA-76: Create+Read tanpa Update tidak melihat Edit dan Cancel dan ditolak server
 
 17. Ganti akun: logout `Yuni L`, login sebagai `Doni Prasetyo` dengan `Spectra.env.AC_LA_DIST_CREATE_PASSWORD`
-18. Buka menu `⋯` pada baris `Waiting for Approval` milik sendiri
-19. Verifikasi menu `⋯` hanya berisi `Allocation Log`
-20. Kirim request Edit langsung ke server dengan akun ini
-21. Verifikasi respons server menolak dengan penolakan akses
-22. Kirim request Cancel langsung ke server dengan akun ini
-23. Verifikasi respons server menolak dengan penolakan akses
-24. Verifikasi status alokasi milik `Doni P` tetap `Waiting for Approval`
+18. Buka Allocation > License Allocation (tab Current)
+19. Buka menu `⋯` pada baris `Waiting for Approval` milik sendiri
+20. Verifikasi menu `⋯` hanya berisi `Allocation Log`
+21. Kirim request Edit langsung ke server dengan akun ini
+22. Verifikasi respons server menolak dengan penolakan akses
+23. Kirim request Cancel langsung ke server dengan akun ini
+24. Verifikasi respons server menolak dengan penolakan akses
+25. Verifikasi status alokasi milik `Doni P` tetap `Waiting for Approval`
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Urutan TC diubah dari urutan nomor agar semua TC akun Yuni berurutan sebelum satu kali ganti akun ke Doni.
 - K-1: TC kelas a yang Expected-nya respons API tetap masuk spec FE+BE walau tumpang tindih dengan TC backend; modul ini tidak punya TC backend. TC-AC-LA-75, 76, 77 juga memuat bagian UI (visibilitas row action dan tombol) yang diasersi di browser.
-- Langkah penghubung (S-03): langkah 1 (baseline S-12), 4 dan 10 (membuka tab dan menu, R-16 tidak diperlukan karena baris dikenali dari seed), 17 (ganti akun). Asersi request langsung hanya respons server dan state data (8b butir 1).
+- Langkah penghubung (S-03): langkah 1 (baseline S-12), 4 dan 10 (membuka tab dan menu, R-16 tidak diperlukan karena baris dikenali dari seed), 17 (ganti akun), 18 (membuka List sesudah ganti akun, S-07). Asersi request langsung hanya respons server dan state data (8b butir 1).
 - Asersi absence `Hidden` (langkah 3, 6) beranchor Table Tools dan menu `⋯` yang tampil (8b butir 2); langkah 9 berbaseline.
 - Temuan untuk QA:
   - TC-AC-LA-75, 76, 77 menyebut "penolakan akses (forbidden)" tanpa status HTTP; spec mengasersi penolakan tanpa kode.

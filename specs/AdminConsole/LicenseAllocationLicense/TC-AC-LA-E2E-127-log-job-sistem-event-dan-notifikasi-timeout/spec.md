@@ -49,69 +49,73 @@ coverage:
 ### Allocation Log Allocation expired (TC-AC-LA-408, TC-AC-LA-526 butir a)
 
 4. Klik tab `History`
-5. Ketik Search `{idExpire}`, tekan Enter
-6. Klik row action `Allocation Log` pada baris `{idExpire}`
-7. Verifikasi judul entri `Allocation expired` tanpa `by [PIC]`
-8. Verifikasi Description entri `Reason: Subscription term ended`
-9. Verifikasi entri memuat Date & Time sesuai General Settings
-10. Verifikasi baris judul berupa teks biasa, bukan badge
-11. Verifikasi jumlah entri Allocation Log `{idExpire}` bertambah satu terhadap `{nLogExpire}`
-12. Tutup modal Allocation Log
+5. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+6. Ketik Search `{idExpire}`, tekan Enter
+7. Klik row action `Allocation Log` pada baris `{idExpire}`
+8. Verifikasi judul entri `Allocation expired` tanpa `by [PIC]`
+9. Verifikasi Description entri `Reason: Subscription term ended`
+10. Verifikasi entri memuat Date & Time sesuai General Settings
+11. Verifikasi baris judul berupa teks biasa, bukan badge
+12. Verifikasi jumlah entri Allocation Log `{idExpire}` bertambah satu terhadap `{nLogExpire}`
+13. Tutup modal Allocation Log
 
 ### Allocation Log Allocation activated (TC-AC-LA-525 butir a)
 
-13. Klik tab `Current`
-14. Ganti isi kotak search dengan `{idActivate}`, tekan Enter
-15. Klik row action `Allocation Log` pada baris `{idActivate}`
-16. Verifikasi judul entri `Allocation activated` tanpa `by [PIC]`
-17. Verifikasi jumlah entri Allocation Log `{idActivate}` bertambah satu terhadap `{nLogActivate}`
-18. Tutup modal Allocation Log
+14. Klik tab `Current`
+15. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+16. Ketik Search `{idActivate}`, tekan Enter
+17. Klik row action `Allocation Log` pada baris `{idActivate}`
+18. Verifikasi judul entri `Allocation activated` tanpa `by [PIC]`
+19. Verifikasi jumlah entri Allocation Log `{idActivate}` bertambah satu terhadap `{nLogActivate}`
+20. Tutup modal Allocation Log
 
 ### Allocation Log Allocation auto-canceled (TC-AC-LA-412 butir a)
 
-19. Klik tab `History`
-20. Ganti isi kotak search dengan `{idTimeout}`, tekan Enter
-21. Klik row action `Allocation Log` pada baris `{idTimeout}`
-22. Verifikasi judul entri `Allocation auto-canceled` tanpa `by [PIC]`
-23. Verifikasi jumlah entri Allocation Log `{idTimeout}` bertambah satu terhadap `{nLogTimeout}`
-24. Tutup modal Allocation Log
+21. Klik tab `History`
+22. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+23. Ketik Search `{idTimeout}`, tekan Enter
+24. Klik row action `Allocation Log` pada baris `{idTimeout}`
+25. Verifikasi judul entri `Allocation auto-canceled` tanpa `by [PIC]`
+26. Verifikasi jumlah entri Allocation Log `{idTimeout}` bertambah satu terhadap `{nLogTimeout}`
+27. Tutup modal Allocation Log
+28. Klik tab `Current`
 
 ### Changelog dan Activity Log dengan Modified By System (TC-AC-LA-412 butir b, TC-AC-LA-525 butir b, TC-AC-LA-526 butir b)
 
-25. Klik ikon `Changelog` pada List
-26. Ketik Search `{idTimeout}`, tekan Enter
-27. Verifikasi Changelog memuat entri Modified By `System` untuk `{idTimeout}`
-28. Ganti isi kotak search dengan `{idActivate}`, tekan Enter
-29. Verifikasi Changelog memuat entri Modified By `System` untuk `{idActivate}`
-30. Ganti isi kotak search dengan `{idExpire}`, tekan Enter
-31. Verifikasi Changelog memuat entri Modified By `System` untuk `{idExpire}`
-32. Tutup modal Changelog
-33. Buka Activity Log Admin Console
-34. Ketik Search `{idTimeout}`, tekan Enter
-35. Verifikasi Activity Log memuat entri Modified By `System` untuk `{idTimeout}`
-36. Ganti isi kotak search dengan `{idActivate}`, tekan Enter
-37. Verifikasi Activity Log memuat entri Modified By `System` untuk `{idActivate}`
-38. Ganti isi kotak search dengan `{idExpire}`, tekan Enter
-39. Verifikasi Activity Log memuat entri Modified By `System` untuk `{idExpire}`
+29. Klik ikon `Changelog` pada List
+30. Ketik Search `{idTimeout}`, tekan Enter
+31. Verifikasi Changelog memuat entri Modified By `System` untuk `{idTimeout}`
+32. Ganti isi kotak search dengan `{idActivate}`, tekan Enter
+33. Verifikasi Changelog memuat entri Modified By `System` untuk `{idActivate}`
+34. Ganti isi kotak search dengan `{idExpire}`, tekan Enter
+35. Verifikasi Changelog memuat entri Modified By `System` untuk `{idExpire}`
+36. Tutup modal Changelog
+37. Buka Activity Log Admin Console
+38. Ketik Search `{idTimeout}`, tekan Enter
+39. Verifikasi Activity Log memuat entri Modified By `System` untuk `{idTimeout}`
+40. Ganti isi kotak search dengan `{idActivate}`, tekan Enter
+41. Verifikasi Activity Log memuat entri Modified By `System` untuk `{idActivate}`
+42. Ganti isi kotak search dengan `{idExpire}`, tekan Enter
+43. Verifikasi Activity Log memuat entri Modified By `System` untuk `{idExpire}`
 
 ### Notifikasi Timeout Auto-Cancel (TC-AC-LA-437)
 
-40. Ganti akun: Logout dari Hendra Wijaya
-41. Login sebagai Fajar Nugroho (`totalControlDistLic`, password `Spectra.env.AC_LA_TC_DIST_PASSWORD`)
-42. Buka daftar notifikasi in-app
-43. Verifikasi notifikasi approver aktif dengan Title `License allocation canceled automatically` dan Body `{idTimeout} · Concurrent User · PT Sejahtera`
-44. Verifikasi jumlah notifikasi berjudul `License allocation canceled automatically` pada akun Fajar Nugroho bertambah satu terhadap `{nNotifFajar}`
-45. Ganti akun: Logout dari Fajar Nugroho
-46. Login sebagai Dewi Anggraini (`dewiFullLic`, password `Spectra.env.AC_LA_DIST_FULL_PASSWORD`)
-47. Buka daftar notifikasi in-app
-48. Verifikasi notifikasi requester dengan Title `License allocation canceled automatically` dan Body `Your request has expired after 3 days without a decision and has been automatically canceled. Please resubmit if still needed.`
-49. Verifikasi jumlah notifikasi berjudul `License allocation canceled automatically` pada akun Dewi Anggraini bertambah satu terhadap `{nNotifDewi}`
+44. Ganti akun: Logout dari Hendra Wijaya
+45. Login sebagai Fajar Nugroho (`totalControlDistLic`, password `Spectra.env.AC_LA_TC_DIST_PASSWORD`)
+46. Buka daftar notifikasi in-app
+47. Verifikasi notifikasi approver aktif dengan Title `License allocation canceled automatically` dan Body `{idTimeout} · Concurrent User · PT Sejahtera`
+48. Verifikasi jumlah notifikasi berjudul `License allocation canceled automatically` pada akun Fajar Nugroho bertambah satu terhadap `{nNotifFajar}`
+49. Ganti akun: Logout dari Fajar Nugroho
+50. Login sebagai Dewi Anggraini (`dewiFullLic`, password `Spectra.env.AC_LA_DIST_FULL_PASSWORD`)
+51. Buka daftar notifikasi in-app
+52. Verifikasi notifikasi requester dengan Title `License allocation canceled automatically` dan Body `Your request has expired after 3 days without a decision and has been automatically canceled. Please resubmit if still needed.`
+53. Verifikasi jumlah notifikasi berjudul `License allocation canceled automatically` pada akun Dewi Anggraini bertambah satu terhadap `{nNotifDewi}`
 
 ## Notes
 
 - Alasan di atas sekitar 35 langkah: seluruh blok satu kelas harness (job sistem dan pergeseran jam) dan satu topik (jejak log dan notifikasi dari job), berdiri sendiri pada tiga record seed. Satu pergeseran jam dan satu siklus job melayani ketiga record; blok baca-log berpola (buka surface, cari entri, `Verifikasi` kolom log) tidak dihitung pada ambang smell.
-- Penggabungan: TC-AC-LA-408 dan TC-AC-LA-526 memakai record `{idExpire}` yang sama; judul entri `Allocation expired` tanpa `by [PIC]` (langkah 7) memenuhi Expected kedua TC, dan Modified By `System` pada langkah 31 dan 39 memenuhi TC-AC-LA-526 butir b. TC-AC-LA-412 dan TC-AC-LA-437 memakai record `{idTimeout}` yang sama, dan TC-AC-LA-525 memakai `{idActivate}`.
-- Langkah penghubung (S-03, R-16): langkah 1 dan 3 (mengatur dan memulihkan jam), langkah 2 (menunggu siklus job lewat kueri fixture status job), langkah 5, 14, 20, 26, 28, 30, 34, 36, dan 38 (Search baris atau entri berdasarkan Allocation ID), langkah 4, 13, dan 19 (pindah tab), langkah 12, 18, 24, dan 32 (menutup modal), langkah 40 sampai 42 dan langkah 45 sampai 47 (ganti akun dan membuka notifikasi).
+- Penggabungan: TC-AC-LA-408 dan TC-AC-LA-526 memakai record `{idExpire}` yang sama; judul entri `Allocation expired` tanpa `by [PIC]` (langkah 8) memenuhi Expected kedua TC, dan Modified By `System` pada langkah 35 dan 43 memenuhi TC-AC-LA-526 butir b. TC-AC-LA-412 dan TC-AC-LA-437 memakai record `{idTimeout}` yang sama, dan TC-AC-LA-525 memakai `{idActivate}`.
+- Langkah penghubung (S-03, R-16): langkah 1 dan 3 (mengatur dan memulihkan jam), langkah 2 (menunggu siklus job lewat kueri fixture status job), langkah 6, 16, 23, 30, 32, 34, 38, 40, dan 42 (Search baris atau entri berdasarkan Allocation ID), langkah 4, 14, 21, dan 28 (pindah tab; langkah 28 kembali ke tab Current karena ikon `Changelog` pada List tidak dirender di tab History), langkah 5, 15, dan 22 (mengosongkan kotak search tab tujuan secara eksplisit: klik `✕` pada Search lalu Enter; spec tidak mengandalkan apakah kotak Search terbawa atau ter-reset sesudah pindah tab), langkah 13, 20, 27, dan 36 (menutup modal), langkah 44 sampai 46 dan langkah 49 sampai 51 (ganti akun dan membuka notifikasi).
 - Pembagian TC lintas spec: log Timeout Auto-Cancel, Auto-Expire, dan Auto-Activate pada Changelog, Activity Log, dan System Log serta Allocation Log `Allocation auto-canceled` dan `Allocation activated` (TC-AC-LA-395, 396, 398, 406, 407) ada di spec 126.
 - Temuan untuk QA:
   - TC-AC-LA-408, 412, 525, dan 526 ber-Precondition "Tidak ada aktor login" dan tidak menyebut cara menemukan entri di Changelog dan Activity Log; spec memakai Hendra Wijaya (Pre-setup #1, sesuai TC-AC-LA-408) dan Search dengan Allocation ID.

@@ -69,32 +69,33 @@ coverage:
 
 ### TC-AC-LA-358: Empty filtered, loading, dan error load pada Modal Changelog
 
-27. Klik ikon `Changelog` untuk membuka Modal Changelog
-28. Ketik Search `zzzzqqqq` di Search Changelog, tekan Enter
-29. Verifikasi Title `No results found` dan Description `Try adjusting your search or filter.`
-30. Tutup Modal Changelog
-31. Pasang intercept GET Changelog: respons ditahan
-32. Buka Modal Changelog
-33. Verifikasi komponen DataTable Loading tampil
-34. Lepas intercept GET Changelog dan tutup Modal Changelog
-35. Pasang intercept GET Changelog: respons pertama 500, respons berikutnya 200
-36. Buka Modal Changelog
-37. Verifikasi `Unable to load this data.` dengan `[Try Again]` tampil
-38. Klik `[Try Again]`
-39. Verifikasi `[Try Again]` memuat ulang data Changelog
-40. Lepas intercept GET Changelog dan tutup Modal Changelog
+27. Klik tab `Current`
+28. Klik ikon `Changelog` untuk membuka Modal Changelog
+29. Ketik Search `zzzzqqqq` di Search Changelog, tekan Enter
+30. Verifikasi Title `No results found` dan Description `Try adjusting your search or filter.`
+31. Tutup Modal Changelog
+32. Pasang intercept GET Changelog: respons ditahan
+33. Buka Modal Changelog
+34. Verifikasi komponen DataTable Loading tampil
+35. Lepas intercept GET Changelog dan tutup Modal Changelog
+36. Pasang intercept GET Changelog: respons pertama 500, respons berikutnya 200
+37. Buka Modal Changelog
+38. Verifikasi `Unable to load this data.` dengan `[Try Again]` tampil
+39. Klik `[Try Again]`
+40. Verifikasi `[Try Again]` memuat ulang data Changelog
+41. Lepas intercept GET Changelog dan tutup Modal Changelog
 
 ### TC-AC-LA-381: Download Changelog gagal menampilkan toast error
 
-41. Pasang intercept permintaan Download Changelog: respons 500
-42. Buka Modal Changelog dan klik `Download as CSV`
-43. Verifikasi toast error "Error, failed to download Changelog-License-Allocation."
-44. Lepas intercept permintaan Download Changelog dan tutup Modal Changelog
+42. Pasang intercept permintaan Download Changelog: respons 500
+43. Buka Modal Changelog dan klik `Download as CSV`
+44. Verifikasi toast error "Error, failed to download Changelog-License-Allocation."
+45. Lepas intercept permintaan Download Changelog dan tutup Modal Changelog
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 1, 5, 6, 12, 13, 18, 19, 26, 31, 34, 35, 40, 41, 44 (memasang dan melepas intercept, S-09), 22 (dismiss toast sebelum asersi toast berikutnya, R-12), 23 dan 27 (membuka tab dan Modal Changelog), 30 (menutup modal), 28 (Search Changelog, R-16).
+- Langkah penghubung (S-03): langkah 1, 5, 6, 12, 13, 18, 19, 26, 32, 35, 36, 41, 42, 45 (memasang dan melepas intercept, S-09), 22 (dismiss toast sebelum asersi toast berikutnya, R-12), 23, 27, dan 28 (membuka tab dan Modal Changelog; langkah 27 mengembalikan ke tab `Current` karena ikon `Changelog` hanya ada di tab Current, S-14), 31 (menutup modal), 29 (Search Changelog, R-16).
 - Spec melewati sekitar 35 langkah. Alasan pertahanan: seluruh blok satu kelas harness (fault injection pada baca) dengan pola pasang-intercept, amati, lepas, dan tiap blok berdiri sendiri; langkah pasang dan lepas intercept adalah langkah penghubung.
 - Temuan untuk QA:
   - TC-AC-LA-14 sampai 381 tidak menyebut endpoint yang di-intercept; disediakan tim FE (S-13).

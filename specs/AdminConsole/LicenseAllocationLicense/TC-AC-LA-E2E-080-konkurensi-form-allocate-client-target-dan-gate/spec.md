@@ -50,7 +50,7 @@ coverage:
 11. Verifikasi opsi Client dimuat ulang
 12. Verifikasi Target dan Type ikut di-reset
 13. Verifikasi Additional Quantity `3` dipertahankan
-14. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+14. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
 
 ### TC-AC-LA-462 dan TC-AC-LA-463: Gate Paid Active gugur sesi lain (Station V-09, Storage V-11)
 
@@ -64,7 +64,7 @@ Untuk setiap baris tabel parameter (langkah 15 sampai 24):
 20. Verifikasi Target dikosongkan
 21. Verifikasi Type di-reset
 22. Verifikasi Client `Klinik Harapan Bunda` dan Additional Quantity dari tabel dipertahankan
-23. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+23. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
 24. Pulihkan Subscription Klinik Harapan Bunda lewat fixture backend hingga tersimpan
 
 ### TC-AC-LA-464: Asset Control App ganda saat Submit serentak
@@ -74,17 +74,18 @@ Untuk setiap baris tabel parameter (langkah 15 sampai 24):
 27. Pilih Target Subscription tanpa App, Type `Asset Control App`, dan isi field wajib lain
 28. Pelaku kedua (sesi API) mengalokasikan Asset Control App ke Subscription yang sama hingga tersimpan
 29. Tunggu aksi selesai
-30. Klik `[Submit]` di sesi pertama
-31. Verifikasi pesan `Asset Control App is already active for this subscription.`
-32. Verifikasi alokasi tidak dibuat oleh sesi pertama
-33. Verifikasi field lain dipertahankan
-34. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
-35. Pulihkan Subscription Bengkel Cahaya Motor lewat fixture backend hingga tersimpan
+30. Catat jumlah baris tab Current sebagai baseline (Search tidak aktif)
+31. Klik `[Submit]` di sesi pertama
+32. Verifikasi pesan `Asset Control App is already active for this subscription.`
+33. Verifikasi alokasi tidak dibuat oleh sesi pertama (jumlah baris tab Current sama dengan baseline)
+34. Verifikasi field lain dipertahankan
+35. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+36. Pulihkan Subscription Bengkel Cahaya Motor lewat fixture backend hingga tersimpan
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. TC-AC-LA-462 dan TC-AC-LA-463 memakai langkah yang sama (8b butir 7); langkah 15 sampai 23 diulang dua kali (satu kali per baris tabel parameter) dengan parameter pada tabel Prerequisites.
-- Langkah penghubung (S-03): langkah 7, 17, 29 (menunggu aksi selesai karena langkah berikutnya berganti sesi, 8b butir 8), 24 dan 35 (memulihkan data Pre-setup lewat fixture backend), langkah dialog `Unsaved Changes` (S-08).
+- Langkah penghubung (S-03): langkah 30 (Catat baseline jumlah baris tab Current tanpa Search, sesudah alokasi pelaku kedua tersimpan dan sebelum `[Submit]` sesi pertama, S-12), langkah 7, 17, 29 (menunggu aksi selesai karena langkah berikutnya berganti sesi, 8b butir 8), 24 dan 36 (memulihkan data Pre-setup lewat fixture backend), langkah dialog `Unsaved Changes` (S-08).
 - Penyimpangan data (S-06): TC-AC-LA-461 menghapus PT Sejahtera (Pre-setup #19); spec memakai Client seed milik spec dengan bentuk yang sama agar Pre-setup bersama tidak berubah.
 - Langkah 16, 28 (pelaku kedua sesi API) tidak memakai butir `P-2` (sesi API bukan konteks kedua, bagian 3).
 - Spec melewati sekitar 35 langkah. Alasan pertahanan: seluruh blok satu kelas harness (multi-konteks dengan pelaku kedua sesi API) dan satu pola alur (form Allocate terbuka lalu sesi lain mengubah state); langkah blok 462 dan 463 diulang per baris tabel (8b butir 7).

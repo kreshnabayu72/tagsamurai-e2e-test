@@ -34,7 +34,7 @@ coverage:
 3. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, isi Additional Quantity `10`
 4. Tunggu preview Cost dimuat (skeleton hilang)
 5. Verifikasi baris Cost `Cost: $10.00 (10 × $365/unit × 1 days remaining ÷ 365)` dengan faktor hari 1 (minimum 1 hari)
-6. Klik `[✕]` pada header
+6. Klik `[×]` pada header
 7. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 8. Klik `[Leave]`
 
@@ -47,7 +47,7 @@ coverage:
 13. Tunggu preview Cost dimuat (skeleton hilang)
 14. Verifikasi faktor hari dihitung 10 (tanggal Submit 22 Dec 2026 pada zona waktu Plan Owner), bukan 11
 15. Verifikasi Cost `$100.00`
-16. Klik `[✕]` pada header
+16. Klik `[×]` pada header
 17. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 18. Klik `[Leave]`
 

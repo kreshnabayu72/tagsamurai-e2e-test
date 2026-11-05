@@ -23,7 +23,7 @@ coverage:
 - Email dan identitas data Pre-setup dirujuk lewat `Fixture.license-allocation-license` (belum ada; disediakan tim FE). Nama env var password di atas adalah usulan: belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`, didaftarkan tim FE.
 - Kemampuan teknis (disediakan tim FE/BE): baca, hapus, dan setel flag `guided_tooltip_seen_ac-license-allocation-license` per akun; atur ukuran viewport browser. Flag disimpan per akun dan dibaca lewat kemampuan itu.
 - Kemampuan teknis tambahan: `Spectra.intercept()` atas respons list License Allocation di atas backend nyata (respons kosong untuk TC-AC-LA-52); endpoint list tidak tertulis di TC dan ditulis tim FE (S-13). Intercept dilepas segera sesudah TC-AC-LA-52 (S-09).
-- TC-AC-LA-54: flag seen halaman License Allocation untuk akun `totalControlDistLic` bernilai true sesuai hook `before` suite (tidak diubah spec).
+- TC-AC-LA-54: flag seen halaman License Allocation untuk akun `totalControlDistLic` bernilai true sesuai hook `before` suite; spec ini menghapusnya di langkah 32 (kemampuan hapus flag per akun di atas) supaya walkthrough List bisa muncul bila page_key List terpakai di Approvals; hook `after` memulihkan nilai awal flag.
 - page_key walkthrough List: `ac-license-allocation-license`. Hook `after` memulihkan nilai awal flag dan ukuran viewport.
 - Tabel parameter Target Step (langkah yang diulang per baris tabel pada TC-AC-LA-52):
 
@@ -81,9 +81,10 @@ coverage:
 ### TC-AC-LA-54: Walkthrough hanya untuk halaman List
 
 31. Ganti akun: Logout lalu login sebagai Total Control Distributor (`totalControlDistLic`)
-32. Buka Admin Console > Approvals > License Allocation
-33. Verifikasi halaman Approvals > License Allocation terbuka
-34. Verifikasi walkthrough License Allocation tidak berjalan di halaman Approvals
+32. Hapus flag `guided_tooltip_seen_ac-license-allocation-license` akun `totalControlDistLic` (keadaan belum ada)
+33. Buka Admin Console > Approvals > License Allocation
+34. Verifikasi halaman Approvals > License Allocation terbuka
+35. Verifikasi walkthrough License Allocation tidak berjalan di halaman Approvals
 
 ## Notes
 
@@ -97,4 +98,5 @@ coverage:
   - TC-AC-LA-52 mensyaratkan tabel kosong (empty state), sedangkan seed Pre-setup #54 men-seed minimal 30 alokasi pada scope akun; spec memakai respons list yang di-intercept kosong.
   - TC-AC-LA-51 Expected a (`Walkthrough tertutup saat resize tanpa menyimpan flag seen`) tidak memberi cara mengamati flag; spec memakai kemampuan baca flag yang disediakan tim FE/BE.
   - TC-AC-LA-51 langkah 2 tidak menyebut ukuran viewport tujuan; spec mengubah ukuran viewport dan memulihkannya sebagai langkah penghubung.
+  - TC-AC-LA-54 Precondition (`Flag seen ... sudah true`) membuat Expected (walkthrough tidak berjalan di Approvals) tidak dapat gagal; spec tetap mengikuti TC dan menambah langkah 32 (hapus flag) sebagai langkah penghubung supaya asersi bermakna. TC perlu diubah (flag License Allocation belum ada, flag Approvals dinyatakan).
   - TC-AC-LA-54 langkah 1 tidak menyebut cara menuju Admin Console > Approvals > License Allocation; spec memakai menu sidebar Approvals.

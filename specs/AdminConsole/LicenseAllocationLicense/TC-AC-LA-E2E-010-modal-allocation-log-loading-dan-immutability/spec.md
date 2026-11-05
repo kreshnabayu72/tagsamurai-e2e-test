@@ -47,7 +47,7 @@ coverage:
 14. Verifikasi server menolak request hapus entri log
 15. Baca jumlah dan isi entri Allocation Log record lewat fixture BE
 16. Verifikasi jumlah dan isi entri sama dengan baseline (log record tetap utuh)
-17. Tutup modal dengan `[✕]`
+17. Tutup modal dengan `[×]`
 
 ## Notes
 

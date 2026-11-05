@@ -77,7 +77,7 @@ coverage:
 30. Klik `[+ Allocation]`
 31. Buka dropdown Client dan cari `Kafe Baru`
 32. Verifikasi Client `Kafe Baru` muncul sebagai opsi setelah punya data Client Subscription
-33. Klik `✕` pada form Allocate
+33. Klik `[×]` pada form Allocate
 
 ### Rename Client tercermin di dropdown dan kolom Client (TC-AC-LA-528)
 
@@ -91,7 +91,7 @@ coverage:
 41. Verifikasi opsi `Toko Serba Ada` tampil di dropdown Client
 42. Verifikasi dropdown Client menampilkan opsi `PT Sejahtera Makmur`
 43. Verifikasi dropdown Client tidak lagi menampilkan opsi `PT Sejahtera`
-44. Klik `✕` pada form Allocate
+44. Klik `[×]` pada form Allocate
 45. Ketik Search `{idRename}`, tekan Enter
 46. Verifikasi kolom Client pada baris `{idRename}` menampilkan `PT Sejahtera Makmur`
 47. Pulihkan nama Client menjadi `PT Sejahtera` lewat fixture backend

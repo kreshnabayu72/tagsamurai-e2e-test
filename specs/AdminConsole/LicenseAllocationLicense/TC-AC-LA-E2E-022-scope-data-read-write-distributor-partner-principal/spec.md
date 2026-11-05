@@ -50,7 +50,7 @@ coverage:
 8. Verifikasi `PT Sejahtera` muncul pada opsi Client
 9. Cari `PT Abadi Jaya` pada dropdown Client
 10. Verifikasi `PT Abadi Jaya` tidak muncul pada opsi Client
-11. Tutup form dengan `[✕]`
+11. Tutup form dengan `[×]`
 
 ### TC-AC-LA-97: Changelog dan hasil Download mengikuti row scope READ
 
@@ -59,24 +59,24 @@ coverage:
 14. Verifikasi Changelog memuat entri alokasi Client binaan `PT Sejahtera`
 15. Ganti isi kotak search modal Changelog dengan `PT Abadi Jaya`, tekan Enter
 16. Verifikasi Changelog memuat entri alokasi Client Partner `PT Abadi Jaya` dalam jaringan
-17. Tutup modal Changelog dengan `[✕]`
+17. Tutup modal Changelog dengan `[×]`
 18. Klik Download as CSV pada tab Current
 19. Verifikasi jumlah baris data berkas sama dengan N baris tab Current dalam scope READ Distributor
 
 ### TC-AC-LA-88: Partner hanya melihat baris Client yang dipegang
 
-20. Ganti akun: Logout lalu login sebagai Partner satu kantong (`partnerFullLic`)
+20. Ganti akun: Logout lalu login sebagai Partner satu kantong (`partnerFullLic`), lalu buka Allocation > License Allocation tab Current
 21. Ketik Search `PT Abadi Jaya`, tekan Enter
 22. Verifikasi baris `PT Abadi Jaya` tampil
 23. Ganti isi kotak search dengan `PT Sejahtera`, tekan Enter
 24. Verifikasi empty state `No results found` tampil dan baris `PT Sejahtera` tidak tampil
 25. Klik `(←)` pada kotak Search, lalu klik `[+ Allocation]` dan buka dropdown Client
 26. Verifikasi dropdown Client hanya memuat `PT Abadi Jaya`
-27. Tutup form dengan `[✕]`
+27. Tutup form dengan `[×]`
 
 ### TC-AC-LA-89: Principal melihat dan memilih Client dalam irisan scope
 
-28. Ganti akun: Logout lalu login sebagai Total Control Principal (`totalControlLic`)
+28. Ganti akun: Logout lalu login sebagai Total Control Principal (`totalControlLic`), lalu buka Allocation > License Allocation tab Current
 29. Ketik Search `PT Sejahtera`, tekan Enter
 30. Verifikasi baris Client dalam scope group `PT Sejahtera` tampil
 31. Ganti isi kotak search dengan `Klinik Medika Jaya`, tekan Enter
@@ -87,7 +87,7 @@ coverage:
 36. Klik `(←)` pada kotak Search, lalu klik `[+ Allocation]` dan buka dropdown Client
 37. Verifikasi opsi Client memuat `PT Sejahtera` dan `Klinik Medika Jaya`
 38. Verifikasi Client di luar scope group tidak muncul pada opsi Client
-39. Tutup form dengan `[✕]`, lalu klik ikon Filter dan buka filter Client
+39. Tutup form dengan `[×]`, lalu klik ikon Filter dan buka filter Client
 40. Verifikasi opsi filter Client memuat `PT Sejahtera` dan `Klinik Medika Jaya`
 41. Verifikasi Client di luar scope group tidak muncul pada opsi filter Client
 
@@ -96,6 +96,7 @@ coverage:
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah `Klik (←)` pada kotak Search, penutupan form dan modal, dan ganti akun eksplisit (S-07).
+- Langkah penghubung (S-03): pembukaan Allocation > License Allocation tab Current di dalam langkah Ganti akun, karena halaman landing akun tidak diandaikan (S-07).
 - Role Matrix: ditulis per blok role karena ganti akun menuntut Step eksplisit (bagian 3a, 2026-10-30) dan tiap blok akun berdiri sendiri; hasil dan data berbeda per role.
 - Spec ini di atas 35 langkah. Alasannya: semua blok satu topik (scope data READ dan WRITE per entitas) dan satu kelas harness (Role Matrix), dan tiap blok akun berdiri sendiri dengan data milik sendiri; kegagalan satu akun tidak membuat blok akun lain kehilangan makna.
 - TC-AC-LA-97 (Changelog dan Download) memakai asersi jumlah baris dan nama pada Changelog (kelas f: isi sel berkas tidak diasersi, bagian 3 prinsip 13f 2026-10-30); urutan dalam TC-AC-LA-87 diubah dari TC (cari `PT Abadi Jaya` dulu) menjadi cari `PT Sejahtera` dulu supaya absence `PT Abadi Jaya` punya anchor positif (bagian 8b butir 2).
@@ -103,5 +104,5 @@ coverage:
 - Temuan untuk QA:
   - TC-AC-LA-89 Expected a menyebut `Client di luar scope group tidak tampil` tanpa menyebut Client mana yang di luar scope, sedangkan Pre-setup TC hanya memuat Client dalam scope; spec memakai Client di luar scope yang disediakan tim FE.
   - TC-AC-LA-97 Expected b (`berkas ... tidak memuat Client di luar scope`) adalah asersi isi sel berkas (kelas f); spec hanya mengasersi jumlah baris.
-  - TC-AC-LA-87 dan TC-AC-LA-88 tidak menyebut apakah form `[+ Allocation]` dengan dropdown yang dibuka dan dicari dianggap dirty; spec menutup form dengan `[✕]` tanpa dialog Unsaved Changes.
+  - TC-AC-LA-87 dan TC-AC-LA-88 tidak menyebut apakah form `[+ Allocation]` dengan dropdown yang dibuka dan dicari dianggap dirty; spec menutup form dengan `[×]` tanpa dialog Unsaved Changes.
   - TC-AC-LA-97 langkah 1 menyebut `cari entri Client PT Abadi Jaya` pada Changelog tanpa menyebut kolom Changelog yang dicari; spec memakai Search modal Changelog.

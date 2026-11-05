@@ -45,12 +45,12 @@ coverage:
 7. Verifikasi Status baris: `Canceled`
 8. Klik row action `Allocation Log` pada baris itu
 9. Verifikasi entri Allocation Log: `Allocation canceled by Rian H`
-10. Tutup modal dengan `[✕]`
+10. Tutup modal dengan `[×]`
 11. Verifikasi Reserve kantong Distributor berkurang $3,650.00 dari baseline (Reserve dilepas)
 
 ### TC-AC-LA-79: Total Control Distributor membatalkan alokasi Pending milik orang lain
 
-12. Ganti akun: Logout lalu login sebagai Total Control Distributor (`totalControlDistLic`)
+12. Ganti akun: Logout lalu login sebagai Total Control Distributor (`totalControlDistLic`), lalu buka Allocation > License Allocation tab Current
 13. Ketik Search Allocation ID alokasi `Pending` milik spec (`Fixture.license-allocation-license.ownPending79`), tekan Enter
 14. Klik row action `Cancel Allocation` pada baris `Pending` milik `Dewi A`
 15. Klik `[Cancel Request]`
@@ -59,7 +59,7 @@ coverage:
 18. Verifikasi Status baris: `Canceled`
 19. Klik row action `Allocation Log` pada baris itu
 20. Verifikasi entri Allocation Log: `Allocation canceled by Fajar N`
-21. Tutup modal dengan `[✕]`
+21. Tutup modal dengan `[×]`
 
 ### TC-AC-LA-81: Additional Approver menyetujui dari Approvals
 
@@ -77,6 +77,7 @@ coverage:
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah baseline Reserve, langkah `Tunggu aksi selesai`, penutupan modal, pindah tab, dan ganti akun eksplisit (S-07).
+- Langkah penghubung (S-03): pembukaan Allocation > License Allocation tab Current di dalam langkah Ganti akun, karena halaman landing akun tidak diandaikan (S-07).
 - Role Matrix: ditulis per blok role karena ganti akun menuntut Step eksplisit (bagian 3a, 2026-10-30) dan tiap blok akun berdiri sendiri; hasil dan data berbeda per role.
 - Aksi Cancel dan Approve memakai record milik spec yang menyerupai Pre-setup #46 dan #41; Pre-setup bersama tidak diubah (S-06).
 - Temuan untuk QA:

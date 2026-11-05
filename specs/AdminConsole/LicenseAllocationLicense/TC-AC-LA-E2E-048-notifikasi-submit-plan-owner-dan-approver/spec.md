@@ -25,6 +25,7 @@ coverage:
 - Toggle Require Approval for Allocation: OFF (#39) untuk TC-AC-LA-174 dan TC-AC-LA-505 (diatur di hook `before`), ON (#38) untuk TC-AC-LA-175 (diatur lewat langkah 15); diatur fixture backend dan dipulihkan ke keadaan awal di hook `after`.
 - Data Dinamis: tiga alokasi Concurrent User +1 ke PT Sejahtera: oleh Sari P (Completed Active Free), oleh Dewi A (Completed Active Wallet), dan oleh Dewi A (Waiting for Approval). Notifikasi yang dihasilkan diidentifikasi lewat Allocation ID pada Body, sehingga baseline notifikasi nol per ID. Alokasi dan notifikasi tidak dapat dihapus; saldo kantong dipulihkan oleh baseline automation dan fixture backend di hook `after`.
 - Baseline: daftar Allocation ID baris di halaman pertama tab Current dan saldo kantong Distributor dicatat sebelum tiap blok.
+- Jendela amat notifikasi: asersi absence notifikasi in-app didahului langkah "Tunggu 5 detik tanpa memuat ulang halaman" (pilihan spec, bukan nilai TC atau PRD; bagian 6).
 - Kemampuan teknis: membuka notifikasi in-app tiap akun; membaca saldo kantong (disediakan tim FE/BE); menampilkan kolom Payment lewat Setup Column (pemulihan preferensi kolom di hook `after`, disediakan tim FE).
 - Suite berjalan serial (`parallel: false`).
 
@@ -63,20 +64,21 @@ coverage:
 23. Verifikasi notifikasi `License allocated` dengan Body `ID-A · Concurrent User · PT Sejahtera` (nilai ID-A langkah 6) diterima Plan Owner PT Maju Bersama karena entitas requester (Principal) berbeda dari entitas Plan Owner
 24. Verifikasi notifikasi `Waiting for your approval` dengan Body `ID-C · Concurrent User · PT Sejahtera` dan tombol `[Detail]`
 25. Verifikasi `Fajar Nugroho` (Total Control dan Additional Approver) menerima tepat satu notifikasi untuk ID-C
-26. Verifikasi tidak ada notifikasi `License allocated` dengan Body `ID-B · Concurrent User · PT Sejahtera` (entitas requester sama dengan entitas Plan Owner)
-27. Ganti akun: logout `Fajar N`, login sebagai `Rian Hartono` dengan `Spectra.env.AC_LA_GM_APPROVE_PASSWORD`
-28. Buka notifikasi
-29. Verifikasi notifikasi `Waiting for your approval` dengan Body `ID-C · Concurrent User · PT Sejahtera` dan tombol `[Detail]`
-30. Ganti akun: logout `Rian H`, login sebagai `Maya Tanjung` dengan `Spectra.env.AC_LA_ADD_APPROVER_PASSWORD`
-31. Buka notifikasi
-32. Verifikasi notifikasi `Waiting for your approval` dengan Body `ID-C · Concurrent User · PT Sejahtera` dan tombol `[Detail]`
+26. Tunggu 5 detik tanpa memuat ulang halaman
+27. Verifikasi tidak ada notifikasi `License allocated` dengan Body `ID-B · Concurrent User · PT Sejahtera` (entitas requester sama dengan entitas Plan Owner)
+28. Ganti akun: logout `Fajar N`, login sebagai `Rian Hartono` dengan `Spectra.env.AC_LA_GM_APPROVE_PASSWORD`
+29. Buka notifikasi
+30. Verifikasi notifikasi `Waiting for your approval` dengan Body `ID-C · Concurrent User · PT Sejahtera` dan tombol `[Detail]`
+31. Ganti akun: logout `Rian H`, login sebagai `Maya Tanjung` dengan `Spectra.env.AC_LA_ADD_APPROVER_PASSWORD`
+32. Buka notifikasi
+33. Verifikasi notifikasi `Waiting for your approval` dengan Body `ID-C · Concurrent User · PT Sejahtera` dan tombol `[Detail]`
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 3 kali, kejadian menutup 3 (modal tertutup oleh Submit di langkah 5, 12, dan 19).
-- Penyimpangan urutan (S-05, S-10): pembacaan notifikasi `Fajar Nugroho` untuk TC-AC-LA-174 dan TC-AC-LA-505 (Langkah 7 dan Langkah 2 TC) dilakukan di langkah 22 sampai 26 pada sesi yang sama dengan TC-AC-LA-175 supaya ganti akun ke `Fajar Nugroho` hanya satu kali. Notifikasi dibedakan lewat Allocation ID pada Body (ID-A, ID-B, ID-C), sehingga urutan pembacaan tidak memengaruhi hasil.
-- Langkah penghubung (S-03): langkah 1 (menampilkan kolom Payment lewat Setup Column, tanpa `Verifikasi`; kolom Payment tersembunyi secara bawaan, TC-AC-LA-1 butir b.ii), langkah 2, 9, dan 16 (baseline; langkah 16 menjadi pembanding ID-C), langkah 15 (mengatur toggle), langkah 20 (menunggu aksi selesai dan mencatat ID-C), langkah 22, 28, dan 31 (membuka notifikasi).
-- Asersi absence langkah 26 didahului Verifikasi notifikasi lain pada surface yang sama (langkah 23 sampai 25; bagian 8b butir 2).
+- Penyimpangan urutan (S-05, S-10): pembacaan notifikasi `Fajar Nugroho` untuk TC-AC-LA-174 dan TC-AC-LA-505 (Langkah 7 dan Langkah 2 TC) dilakukan di langkah 22 sampai 27 pada sesi yang sama dengan TC-AC-LA-175 supaya ganti akun ke `Fajar Nugroho` hanya satu kali. Notifikasi dibedakan lewat Allocation ID pada Body (ID-A, ID-B, ID-C), sehingga urutan pembacaan tidak memengaruhi hasil.
+- Langkah penghubung (S-03): langkah 1 (menampilkan kolom Payment lewat Setup Column, tanpa `Verifikasi`; kolom Payment tersembunyi secara bawaan, TC-AC-LA-1 butir b.ii), langkah 2, 9, dan 16 (baseline; langkah 16 menjadi pembanding ID-C), langkah 15 (mengatur toggle), langkah 20 (menunggu aksi selesai dan mencatat ID-C), langkah 22, 29, dan 32 (membuka notifikasi), langkah 26 (menunggu 5 detik tanpa memuat ulang halaman sebelum asersi absence notifikasi, bagian 6).
+- Asersi absence langkah 27 didahului Verifikasi notifikasi lain pada surface yang sama (langkah 23 sampai 25; bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-AC-LA-174 Expected b ("Payment `Free` tanpa mutasi wallet") untuk Principal tidak punya cara mengamati "mutasi wallet" (Principal tidak punya wallet); hanya Payment `Free` yang diasersi.
   - TC-AC-LA-174 dan TC-AC-LA-505 Data Uji menyebut entitas Plan Owner PT Maju Bersama tetapi tidak menyebut cara membuktikan penerima notifikasi selain akun `Fajar Nugroho`; spec memakai akun itu.

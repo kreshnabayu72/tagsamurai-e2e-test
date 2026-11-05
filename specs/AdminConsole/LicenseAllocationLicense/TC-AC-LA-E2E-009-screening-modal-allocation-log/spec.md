@@ -66,7 +66,7 @@ coverage:
 
 26. Klik area backdrop di luar modal
 27. Verifikasi modal tidak tertutup
-28. Klik `[✕]`
+28. Klik `[×]`
 29. Verifikasi modal tertutup
 30. Klik ikon `⋯` pada baris itu, lalu klik row action `Allocation Log`
 31. Tekan `Esc`
@@ -79,14 +79,14 @@ coverage:
 35. Verifikasi daftar berisi minimal satu entri `Allocation created by Sari P`
 36. Verifikasi `Paid From:` menampilkan `—`
 37. Verifikasi tidak ada empty state pada modal
-38. Tutup modal dengan `[✕]`
+38. Tutup modal dengan `[×]`
 39. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah membuka row action `Allocation Log`, langkah `Amati`, langkah `Tunggu 3 detik`, dan langkah menutup modal. TC-AC-LA-43 dijalankan sebelum TC-AC-LA-42 supaya modal riwayat lengkap (#55) tetap terbuka untuk TC-AC-LA-39 sampai TC-AC-LA-41 dan penutupan modal diuji sekali; reopen modal dengan row action `Allocation Log` sesudah `[✕]` (S-10).
+- Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah membuka row action `Allocation Log`, langkah `Amati`, langkah `Tunggu 3 detik`, dan langkah menutup modal. TC-AC-LA-43 dijalankan sebelum TC-AC-LA-42 supaya modal riwayat lengkap (#55) tetap terbuka untuk TC-AC-LA-39 sampai TC-AC-LA-41 dan penutupan modal diuji sekali; reopen modal dengan row action `Allocation Log` sesudah `[×]` (S-10).
 - TC-AC-LA-40, TC-AC-LA-41, dan TC-AC-LA-43 bergantung pada TC-AC-LA-39 (modal Allocation Log terbuka); modal itu tidak ditutup sampai TC-AC-LA-43, sehingga langkah pembukaan TC-AC-LA-39 menjadi langkah dependensi bersama (S-04).
 - Spec ini di atas 35 langkah. Alasannya: semua blok satu topik (modal Allocation Log) dan satu dataset seed baca-saja, dengan modal yang sama dipakai berurutan oleh TC-AC-LA-39, TC-AC-LA-40, TC-AC-LA-41, dan TC-AC-LA-43.
 - Temuan untuk QA:

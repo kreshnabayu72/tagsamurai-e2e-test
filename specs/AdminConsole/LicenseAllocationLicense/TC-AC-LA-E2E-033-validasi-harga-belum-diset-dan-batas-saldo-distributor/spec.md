@@ -41,20 +41,22 @@ coverage:
 
 7. Pilih Client `Klinik Harapan Bunda`, Target `Client-wide`, Type `Asset Control Station`, isi Additional Quantity `999999999999999`
 8. Tunggu preview Cost dimuat (skeleton hilang)
-9. Verifikasi tidak ada error `Max. 15 characters` pada Additional Quantity
-10. Verifikasi Alert severity danger berawalan `Insufficient balance in your pocket. Available: $10,000.00. Required:` diikuti nominal Cost hasil hitung (999999999999999 × $50.00)
-11. Verifikasi tombol `[Submit]` disabled
-12. Klik `[✕]` pada header
-13. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
-14. Klik `[Leave]`
-15. Verifikasi sedikitnya satu baris tampil pada tab Current
-16. Verifikasi daftar Allocation ID baris di halaman pertama tab Current sama dengan baseline langkah 1 (tidak ada record dari TC-AC-LA-510)
+9. Verifikasi field Additional Quantity menampilkan nilai `999999999999999` utuh (anchor)
+10. Verifikasi tidak ada error `Max. 15 characters` pada Additional Quantity
+11. Verifikasi Alert severity danger berawalan `Insufficient balance in your pocket. Available: $10,000.00. Required:` diikuti nominal Cost hasil hitung (999999999999999 × $50.00)
+12. Verifikasi tombol `[Submit]` disabled
+13. Klik `[×]` pada header
+14. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
+15. Klik `[Leave]`
+16. Verifikasi sedikitnya satu baris tampil pada tab Current
+17. Verifikasi daftar Allocation ID baris di halaman pertama tab Current sama dengan baseline langkah 1 (tidak ada record dari TC-AC-LA-510)
 
 ## Notes
 
-- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 1 kali, kejadian menutup 1 (langkah 12 sampai 14).
+- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 1 kali, kejadian menutup 1 (langkah 13 sampai 15).
 - Kelas harness: blokir kondisi data (prinsip 12); kondisi penolak disiapkan milik spec dan submit diblokir lalu cek tidak ada record.
-- Langkah penghubung (S-03): langkah 1 (baseline), langkah 8 (menunggu preview Cost), langkah 12 sampai 14 (menutup form dirty, S-08). Langkah 15 adalah anchor positif untuk asersi langkah 16 (bagian 8b butir 2). Mengganti Client pada langkah 7 mereset Target, Type, dan Current Quota (TC-AC-LA-136) sehingga TC-AC-LA-510 dimulai dari state yang setara dengan form baru; Additional Quantity `1` dari langkah 3 ditimpa.
+- Langkah penghubung (S-03): langkah 1 (baseline), langkah 8 (menunggu preview Cost), langkah 13 sampai 15 (menutup form dirty, S-08). Langkah 16 adalah anchor positif untuk asersi langkah 17 (bagian 8b butir 2). Mengganti Client pada langkah 7 mereset Target, Type, dan Current Quota (TC-AC-LA-136) sehingga TC-AC-LA-510 dimulai dari state yang setara dengan form baru; Additional Quantity `1` dari langkah 3 ditimpa.
+- Asersi tambahan (S-03): langkah 9 (field Additional Quantity menampilkan nilai utuh) adalah anchor positif pada form yang sama sebelum asersi absence error `Max. 15 characters` pada langkah 10 (bagian 8b butir 2, keputusan 2026-11-04).
 - Temuan untuk QA:
   - TC-AC-LA-510 Expected b hanya menyebut awalan Alert dan "nominal Cost hasil hitung"; 999999999999999 × $50.00 = $49,999,999,999,999,950.00 melebihi bilangan bulat aman JavaScript (2^53), sehingga nominal persis dapat tergeser; TC tidak menyatakan nilai persis dan spec tidak mengasersi nominal persis.
   - TC-AC-LA-146 dan TC-AC-LA-510 memakai Post Condition "Tidak ada record" tanpa langkah observasi; spec membandingkan daftar dengan baseline dan tidak mengasersi log.
