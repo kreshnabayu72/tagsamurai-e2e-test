@@ -87,7 +87,7 @@ coverage:
 - Langkah penghubung (S-03): langkah 1, 9, 18, 24, 26, 28–29, 45. Akun aktor pertama sudah login di hook `before` (S-07).
 - Search untuk menemukan baris target (R-16): langkah 12, 14, 16, 22, 43.
 - Langkah Search pada Tab (R-16) menemukan baris yang baru ditambahkan; absence di picker dan Tab Group Manager memakai empty state hasil Search sebagai anchor positif (butir 8b.2).
-- Post Condition TC-FA-RP-198 (pelepasan GM, log `Remove`, notifikasi in-app per group) tidak punya langkah observasi dan tidak diasersi (S-01, S-15). Rina Wulandari dipulihkan ke Total Control di hook `after`.
+- Post Condition TC-FA-RP-198 (pelepasan GM beserta baris pola GM-nya sebelum baris pola tier ditulis, log `Remove`, notifikasi in-app per group) tidak punya langkah observasi dan tidak diasersi (S-01, S-15). Rina Wulandari dipulihkan ke Total Control di hook `after`.
 - Temuan untuk QA:
   - TC-FA-RP-197: Search per user lalu centang ketiganya; TC tidak menyatakan apakah seleksi bertahan antar Search, jadi Search dikosongkan sebelum mencentang.
 - Ukuran spec (45 langkah, di atas smell sekitar 35 langkah): semua blok berkelas fungsional, memakai permukaan dan dataset Pre-setup yang sama, dan ketiga blok (TC-FA-RP-197, 198, 200) berurutan pada popup Assign Read Only dan Tab Read Only dengan user dan Pre-setup yang sama, kondisi awalnya dibuat seeding di hook `before` dan Rina Wulandari dipulihkan di hook `after`, sehingga memecahnya hanya menggandakan login, hook, dan pembukaan popup yang sama; langkah membengkak karena tiap klausa Expected menjadi satu `Verifikasi` (S-01). Tidak dipecah lagi (konvensi bagian 3, batas ukuran).

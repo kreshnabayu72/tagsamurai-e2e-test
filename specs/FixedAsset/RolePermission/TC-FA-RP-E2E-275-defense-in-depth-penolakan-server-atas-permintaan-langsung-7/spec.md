@@ -45,16 +45,16 @@ coverage:
 5. Verifikasi respons status `422` dengan pesan `Gunawan Halim is no longer eligible. Please select another.` (copy `V-09`, tanpa copy khusus Home Group constraint)
 6. Verifikasi lewat fixture BE tidak ada baris baru untuk Gunawan Halim pada `Manage files` di `Helpdesk`
 
-### TC-FA-RP-953: Assign Approver untuk user di luar afiliasi group ditolak server
+### TC-FA-RP-953: Assign Approver untuk user ber-Home Group constraint pada node di luar constraint ditolak server
 
-7. Kirim request langsung ke server (bukan lewat UI) untuk meng-Assign Hesti Rahma (Home Group `Logistics Warehouse`) sebagai Approver pada `IT Infrastructure` sub-tab Disposal
-8. Verifikasi respons status `422` dengan pesan `Hesti Rahma is no longer eligible. Please select another.` (copy `V-09`, tanpa copy khusus afiliasi group)
+7. Kirim request langsung ke server (bukan lewat UI) untuk meng-Assign Hesti Rahma (Home Group `Logistics Warehouse`) sebagai Approver pada `IT Infrastructure` sub-tab Disposal (node di luar constraint, `V-17`/`V-18`)
+8. Verifikasi respons status `422` dengan pesan `Hesti Rahma is no longer eligible. Please select another.` (copy `V-09`, tanpa copy khusus Home Group constraint)
 9. Verifikasi lewat fixture BE tidak ada penugasan baru
 
-### TC-FA-RP-954: Assign Asset Admin, Monitoring & Report, atau Staff untuk user di luar afiliasi ditolak server
+### TC-FA-RP-954: Assign Asset Admin, Monitoring & Report, atau Staff untuk user ber-Home Group constraint pada node di luar constraint ditolak server
 
-10. Kirim request langsung ke server (bukan lewat UI) untuk meng-Assign Hesti Rahma sebagai Asset Admin, Monitoring & Report, dan Staff pada `IT Infrastructure` sub-tab Disposal (tiga request)
-11. Verifikasi respons status `422` pada ketiga request dengan pesan `Hesti Rahma is no longer eligible. Please select another.` (copy `V-09`, tanpa copy khusus afiliasi group)
+10. Kirim request langsung ke server (bukan lewat UI) untuk meng-Assign Hesti Rahma sebagai Asset Admin, Monitoring & Report, dan Staff pada `IT Infrastructure` sub-tab Disposal (node di luar constraint; tiga request)
+11. Verifikasi respons status `422` pada ketiga request dengan pesan `Hesti Rahma is no longer eligible. Please select another.` (copy `V-09`, tanpa copy khusus Home Group constraint)
 12. Verifikasi lewat fixture BE tidak ada penugasan baru
 
 ### TC-FA-RP-955: Assign Approver untuk user Read Only ditolak server
@@ -82,6 +82,7 @@ coverage:
 - `K-1` (TC defense-in-depth dengan Expected respons API): TC kelas a ini tetap masuk spec FE+BE walau tumpang tindih dengan TC backend karena TC granular tetap sumber dan tiap TC tepat satu spec; Expected berupa status respons dan state data lewat fixture BE (BE mencatatnya pada tingkat endpoint).
 - Langkah penghubung (S-03): ganti akun (bila ada) dan pencatatan state awal. Seluruh langkah "Kirim request langsung" tidak melewati browser; perilaku FE untuk respons yang sama tidak diasersi di spec ini (bagian 8b butir 1).
 - TC-FA-RP-958 diletakkan terakhir karena membutuhkan ganti akun ke tenant `Client Addon Off` (Step eksplisit, S-07); hook `after` mengembalikan sesi ke akun default suite.
+- TC-FA-RP-953 dan 954 (V-17/V-18, E-FARP-10): penolakan karena node penugasan `IT Infrastructure` berada di luar constraint Home Group Hesti Rahma (`Logistics Warehouse`; `IT Infrastructure` adalah ancestor/sibling, bukan Home Group atau descendant-nya), bukan karena afiliasi.
 - Copy `(copy usulan, PRD 12 #1)` pada TC-FA-RP-952 sampai 955 (keputusan NC-02) diasersi literal sesuai TC; asersi bergantung pada persetujuan PM atas copy itu, dan bila PM mengubahnya TC dan spec terkait diperbarui.
 - Temuan untuk QA:
   - Akun Total Control `Client Addon Off` tidak tertulis di Pre-setup TC (#31 hanya menyebut tenant). Precondition TC-FA-RP-958 merujuk #15 dan #18 tetapi aksinya terjadi di tenant `Client Addon Off` (#31); spec memakai akun tenant itu.

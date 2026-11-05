@@ -40,7 +40,7 @@ coverage:
 9. Ketik Search `Rina Wulandari`, tekan Enter
 10. Verifikasi baris Rina Wulandari tetap ada di Detail Role `Manage files` pada `Data Center` (baris pola Group Role menjadi baris reguler setelah tier lepas)
 
-### TC-FA-RP-393: Status target berubah antara render dan submit, aktor non-Total Control ditolak
+### TC-FA-RP-393: Status target berubah antara render dan submit, aktor selain Default User dan Total Control ditolak
 
 11. Logout dari akun Total Control
 12. Login sebagai Manage global user & role dengan Update (Hendra Wijaya)

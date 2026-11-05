@@ -51,7 +51,7 @@ coverage:
 
 ### TC-FA-RP-1124: Default User tidak muncul di picker Assign Role Transaksi pada keempat role
 
-22. Pulihkan state lewat seed API: Admin Utama (Default User) tanpa Home Group sehingga memenuhi syarat afiliasi di group mana pun
+22. Pulihkan state lewat seed API: Admin Utama (Default User) tanpa Home Group (constraint) sehingga lolos gate Home Group di group mana pun, dan tetap dikecualikan karena Default User
 23. Klik node `IT Infrastructure` di Sidebar Group Tree, lalu klik sub-tab `Disposal`
 24. Klik `[+ Assign]` pada section Asset Admin
 25. Ketik Search `Admin Utama`, tekan Enter
@@ -85,6 +85,6 @@ coverage:
 - Asersi absence kandidat memakai empty state `No results found` hasil Search sebagai anchor positif (bagian 8b butir 2); pembanding positif adalah Ahmad Fauzi pada section yang sama (TC-FA-RP-1124) atau kandidat lain yang ada (TC-FA-RP-1123).
 - Pembagian TC lintas spec: TC-FA-RP-318 (aktor pemegang Manage user & role) ada di spec 301; TC-FA-RP-317 dan TC-FA-RP-1121 sampai TC-FA-RP-1122 ada di spec 096.
 - Temuan untuk QA:
-  - TC-FA-RP-1124 menyebut Admin Utama tanpa Home Group lewat seed API sebagai pemenuhan syarat afiliasi; spec memakai seed itu sebagai precondition dan tidak mengasersinya.
+  - TC-FA-RP-1124 menyebut Admin Utama tanpa Home Group (constraint) lewat seed API sehingga lolos gate Home Group di group mana pun dan tetap dikecualikan karena Default User; spec memakai seed itu sebagai precondition dan tidak mengasersinya.
   - TC-FA-RP-1123 Expected c menyebut Nadia Putri "role tangga" sebagai penjelasan; hanya keberadaan di daftar yang diasersi.
 - Spec ini 47 langkah, di atas smell 35 langkah. Alasan: dua blok satu kelas pada popup Assign Role Transaksi yang sama, semuanya baca-saja (langkah Search kandidat berulang per baris data, bagian 8b butir 7); tiap blok berdiri sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna.

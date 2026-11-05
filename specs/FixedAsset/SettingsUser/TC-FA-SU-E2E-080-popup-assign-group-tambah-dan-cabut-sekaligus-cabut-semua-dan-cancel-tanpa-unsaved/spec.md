@@ -24,6 +24,7 @@ coverage:
 - Data uji: Finance & Accounting dicabut dan IT Infrastructure ditambahkan pada Disposal × Staff (TC-FA-SU-260); seluruh grup dicabut (TC-FA-SU-261); IT Infrastructure dicentang lalu dibatalkan (TC-FA-SU-262).
 - Kemampuan teknis: seed API untuk memulihkan Transaction Role Mira Anggraini ke Pre-setup #39 (disediakan tim FE/BE); pembacaan jumlah entri Tab Changelog target sebelum aksi sebagai baseline (disediakan tim FE/BE, bagian 8b butir 10). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
 - State global yang diubah: Transaction Role Mira Anggraini; dipulihkan ke Pre-setup #39 lewat seed API pada langkah penghubung dan di hook `after`.
+- Target tanpa Home Group (Pre-setup #50, `FaUserNoHG`; Catatan TC: TC penugasan Tab Role Section 3d, 3e, 4c, 8, dan 9 yang memilih node bebas dijalankan pada varian tanpa Home Group, FI-32), diterapkan per target: Home Group Mira Anggraini (Finance & Accounting pada Pre-setup #43) dikosongkan lewat seed API di hook `before` supaya node IT Infrastructure (langkah 3, 22, dan 25) tidak Disabled oleh gate Home Group constraint; Home Group Mira Anggraini dipulihkan ke Finance & Accounting di hook `after`. Seed per target disediakan tim FE/BE.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
 ## Test Steps
@@ -73,6 +74,7 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 19 dan 20. Pemulihan lewat seed API memulihkan baris Disposal × Staff yang dihapus TC-FA-SU-261 sebelum TC-FA-SU-262 mengandalkannya (S-09); baseline log mengikuti S-12.
 - Langkah pola baca-log: langkah 10 sampai 12, 28 dan 29. Search `Mira Anggraini` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - TC-FA-SU-262: klausa "tidak ada entri log" pada aksi yang dibatalkan ditulis sebagai asersi jumlah dengan baseline (bagian 3 prinsip 13 butir g, S-12); popup menutup tanpa perubahan menjadi anchor positif.
+- Pre-setup #50 diterapkan hanya pada Mira Anggraini (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih IT Infrastructure (langkah 3, 22, dan 25); Home Group Mira Anggraini dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
 - Temuan untuk QA:
   - TC-FA-SU-261 langkah 4 menyebut `[Remove]` pada dialog tanpa Expected untuk isi dialog; spec tidak mengasersi isi dialog pada TC-FA-SU-261. Post Condition TC-FA-SU-261 (entri `Remove` per grup, Settings > Role & Permission) dan TC-FA-SU-260 (tiga permukaan log) tidak punya langkah observasi tambahan di TC dan tidak diasersi.
   - TC-FA-SU-261 mencabut "seluruh grup" tanpa menyebut bahwa hasil TC-FA-SU-260 meninggalkan IT Infrastructure sebagai satu-satunya grup; spec memakai urutan TC apa adanya.

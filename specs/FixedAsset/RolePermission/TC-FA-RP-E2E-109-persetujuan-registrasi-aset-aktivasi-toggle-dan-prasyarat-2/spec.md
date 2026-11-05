@@ -48,7 +48,7 @@ coverage:
 
 12. Klik node `IT Infrastructure` pada Sidebar Group Tree
 13. Aktifkan toggle `Require Approval for Registration`
-14. Verifikasi dialog blok severity warning dengan Title `Cannot Require Approval`, Body `Grant Update access on Manage asset & TAG to at least one user in this group before enabling approval.`, dan satu tombol `[OK]`
+14. Verifikasi dialog blok severity warning dengan Title `Cannot Require Approval`, Body `Grant Update access on Manage asset & TAG to at least one user in this group, or assign a Group Manager to it, before enabling approval.`, dan satu tombol `[OK]`
 15. Klik `[OK]`
 16. Verifikasi toggle `Require Approval for Registration` kembali OFF
 
@@ -58,7 +58,7 @@ coverage:
 18. Ubah Status Dimas Pranata menjadi Inactive lewat sesi API hingga tersimpan
 19. Klik node `Rack A1` pada Sidebar Group Tree
 20. Aktifkan toggle `Require Approval for Registration`
-21. Verifikasi dialog blok severity warning dengan Title `Cannot Require Approval`, Body `Grant Update access on Manage asset & TAG to at least one user in this group before enabling approval.`, dan satu tombol `[OK]`
+21. Verifikasi dialog blok severity warning dengan Title `Cannot Require Approval`, Body `Grant Update access on Manage asset & TAG to at least one user in this group, or assign a Group Manager to it, before enabling approval.`, dan satu tombol `[OK]`
 22. Klik `[OK]`
 23. Verifikasi toggle `Require Approval for Registration` kembali OFF
 24. Ubah Status Dimas Pranata menjadi Active lewat sesi API hingga tersimpan
@@ -74,7 +74,7 @@ coverage:
 31. Tutup toast yang tampil
 32. Tetapkan Dimas Pranata sebagai Read Only lewat sesi API hingga tersimpan
 33. Aktifkan toggle `Require Approval for Registration`
-34. Verifikasi dialog blok severity warning dengan Title `Cannot Require Approval`, Body `Grant Update access on Manage asset & TAG to at least one user in this group before enabling approval.`, dan satu tombol `[OK]`
+34. Verifikasi dialog blok severity warning dengan Title `Cannot Require Approval`, Body `Grant Update access on Manage asset & TAG to at least one user in this group, or assign a Group Manager to it, before enabling approval.`, dan satu tombol `[OK]`
 35. Klik `[OK]`
 36. Verifikasi toggle `Require Approval for Registration` kembali OFF
 

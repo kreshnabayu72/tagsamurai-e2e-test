@@ -17,11 +17,11 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Default User Ahmad Dahlan (Pre-setup #2) `defaultUser_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_DU_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Hook suite (`suite.md`): flag Guided Tooltip `seen`, sesi API aktor, dan pemulihan Pre-setup bersama dirujuk tanpa diulang di sini.
-- Client `FaUserMain` (Pre-setup #20) dengan penugasan (Pre-setup #23) dan Transaction Role (Pre-setup #39).
+- Client `FaUserMain` (Pre-setup #20) dengan penugasan (Pre-setup #23) dan Transaction Role (Pre-setup #39). Citra Lestari ber-Home Group General Affairs (Pre-setup #43/#48), sehingga Finance & Accounting di luar constraint dan Disabled di pemilih Group (tooltip S-45); sesuai Catatan TC (Home Group constraint FI-32), target tanpa Home Group memakai seed `FaUserNoHG` (Pre-setup #50), diterapkan per target: hanya Home Group Citra Lestari yang dikosongkan lewat seed API di hook `before`; penugasan lain tidak berubah. Seed `FaUserNoHG` wajib disediakan tim FE/BE sebelum eksekusi.
 - Pengguna target: Citra Lestari, Read Only (Pre-setup #3 dan #23) dengan baris pola Monitoring & Report.
 - Data uji: Transfer pada Finance & Accounting: Monitoring & Report ke Asset Admin (naik tangga).
-- Kemampuan teknis (disediakan tim FE/BE): seed API untuk memulihkan penugasan Citra Lestari ke Pre-setup #23 dan #39; pembacaan jumlah entri Tab Changelog target, Tab System Log aktor, Activity Log, dan jumlah notifikasi in-app Citra Lestari sebelum aksi sebagai baseline (bagian 8b butir 10); jalur navigasi ke Tab System Log aktor dan Activity Log (tidak disebut TC). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
-- State global yang diubah: penugasan Transaction Role dan tier Read Only Citra Lestari; dipulihkan ke Pre-setup #23 dan #39 lewat seed API pada langkah penghubung dan di hook `after`. Suite berjalan serial.
+- Kemampuan teknis (disediakan tim FE/BE): seed API untuk mengosongkan Home Group Citra Lestari (Pre-setup #50 per target) di hook `before` dan memulihkan penugasan serta Home Group Citra Lestari ke Pre-setup #23, #39, dan #43; pembacaan jumlah entri Tab Changelog target, Tab System Log aktor, Activity Log, dan jumlah notifikasi in-app Citra Lestari sebelum aksi sebagai baseline (bagian 8b butir 10); jalur navigasi ke Tab System Log aktor dan Activity Log (tidak disebut TC). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
+- State global yang diubah: penugasan Transaction Role, tier Read Only, dan Home Group (dikosongkan di hook `before`) Citra Lestari; dipulihkan ke Pre-setup #23, #39, dan #43 lewat seed API pada langkah penghubung dan di hook `after`. Suite berjalan serial.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
 ## Test Steps
@@ -49,16 +49,17 @@ coverage:
 19. Buka Activity Log
 20. Verifikasi entri `Assign` dan entri `Auto-Revert` tercatat (selisih baseline) di Activity Log
 21. Verifikasi jumlah notifikasi in-app ke Citra Lestari bertambah sesuai baseline
-22. Pulihkan penugasan Citra Lestari ke Pre-setup #23 dan #39 lewat seed API
+22. Pulihkan penugasan dan Home Group Citra Lestari ke Pre-setup #23, #39, dan #43 lewat seed API
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 2, 15, 17, 19 dan 22. Search `Citra Lestari` pada langkah 2 dan 15 adalah langkah penghubung untuk menemukan baris target (R-16, R-23). Baseline log mengikuti S-12; pemulihan lewat seed API memulihkan Pre-setup #23 dan #39 (S-06, S-09).
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 2, 15, 17, 19 dan 22. Search `Citra Lestari` pada langkah 2 dan 15 adalah langkah penghubung untuk menemukan baris target (R-16, R-23). Baseline log mengikuti S-12; pemulihan lewat seed API memulihkan Pre-setup #23, #39, dan #43 (S-06, S-09).
 - Langkah pola baca-log: langkah 15 sampai 20.
 - TC-FA-SU-1070 dan TC-FA-SU-1073 (target Total Control) ada di spec 380.
 - Temuan untuk QA:
+  - TC-FA-SU-1071 Precondition tidak menyebut Pre-setup #50 sedangkan Citra Lestari ber-Home Group, sehingga Finance & Accounting akan Disabled (S-45) dan penugasan ditolak 422 V-09; spec mengikuti Catatan TC (Home Group constraint FI-32) dan memakai seed `FaUserNoHG` (Pre-setup #50) per target, bukan seluruh 25 pengguna. Mohon dikonfirmasi bila #50 harus diterapkan penuh atau Precondition TC diperbarui.
   - Copy dialog D-05b varian Role Transaksi bertanda "copy usulan, perlu persetujuan PM" (PRD 12 #1 `settings-role-permission`); spec tidak mengasersi kalimat Body, hanya Title, penutup, dan tombol.
   - TC-FA-SU-1071 menyebut `#20` pada ACC (id Client `FaUserMain`, bukan nomor akun); aktor diambil dari langkah "Login sebagai Ahmad Dahlan (Default User)". Mohon dikonfirmasi.
   - TC-FA-SU-1071 Expected butir b ("baris Transaction Role lain tidak direset") tidak menyebut baris pembanding; spec membandingkan terhadap Pre-setup #39 dan #23.

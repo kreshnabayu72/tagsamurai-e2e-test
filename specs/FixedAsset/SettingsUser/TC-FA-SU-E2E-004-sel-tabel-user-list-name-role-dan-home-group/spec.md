@@ -41,7 +41,7 @@ coverage:
 ### TC-FA-SU-10: Sel Role: label jumlah, badge tier, dan Popup Role Count tidak berlaku untuk 0 roles
 
 11. Verifikasi Lina Marlina menampilkan badge `Total Control` pada kolom Role
-12. Verifikasi Oscar Pranata tidak menampilkan badge atau label Group Manager pada kolom Role
+12. Verifikasi Oscar Pranata tidak menampilkan badge atau label Group Manager pada kolom Role dan menampilkan label jumlah numerik berupa link (bukan `0 roles`; baris pola Group Manager dihitung sebagai assignment aktif biasa)
 13. Klik halaman 1 pada pagination
 14. Verifikasi kolom Role: Budi Santoso `4 roles`, Eka Wulandari `3 roles`, Gita Permata `3 roles`, Indra Wijaya `1 role`, Doni Prasetyo dan Hana Kusuma `0 roles`
 15. Verifikasi Ahmad Dahlan badge `Total Control` dan Citra Lestari badge `Read Only`
@@ -75,5 +75,5 @@ coverage:
 - Temuan untuk QA:
   - TC-FA-SU-11 Expected a menyebut pengguna tanpa Home Group menampilkan `—`, tetapi Pre-setup #43 memberi Home Group untuk ke-25 pengguna; tidak ada pengguna Pre-setup tanpa Home Group. Spec memakai pengguna dinamis tanpa Home Group (Data Dinamis).
   - TC-FA-SU-11 Langkah Uji 3 menyebut "varian Pre-setup #46" tanpa cara membentuknya; spec membentuknya lewat seed API (kemampuan disediakan tim BE/FE).
-  - TC-FA-SU-10 Expected d ("Status Group Manager tidak punya badge atau label dan tidak dihitung") tidak menyebut pengguna acuan; spec memakai Oscar Pranata (Group Manager, Pre-setup #9 dan #23) dan mengasersi tidak ada badge atau label Group Manager.
+  - TC-FA-SU-10 Expected d: status Group Manager tidak punya badge atau label, sedangkan baris pola Group Manager (Group Role dan Transaction Role) dihitung sebagai assignment aktif biasa (Oscar Pranata `48 roles`, Qori Akbar `25 roles`; TC-FA-SU-1096). Angka itu turunan dan Open Item 3 PM belum diputuskan; spec memakai Oscar Pranata (Pre-setup #9, #23) dan mengasersi longgar: label jumlah numerik berupa link, bukan `0 roles`, tanpa badge atau label Group Manager; angka pasti tidak diasersi.
   - TC-FA-SU-11 Expected b menyebut hover hierarki `[Parent] > [Child]` untuk badge `Finance & Accounting` tanpa menyebut parent-nya; spec mengasersi format.

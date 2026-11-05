@@ -27,7 +27,7 @@ coverage:
 | Total Control (Siti Rahmawati) | #2 | `totalControl_automated_{namaCompany}@qwertysystem.net` (`Fixture.fixedAssetRolePermission.akun.totalControl.email`) | `Spectra.env.FA_TC_PASSWORD` |
 
 - Data Pre-setup (Company Alpha): #18 (pohon group; node `IT Infrastructure`), #19 dan #40 (tabel Role Transaksi `IT Infrastructure` sub-tab `Disposal`: Asset Admin Nadia Putri, Ahmad Fauzi, Dimas Pranata; Monitoring & Report Oscar Pratama; Staff Putri Wulandari; Approver Pandu Wijaya). Tidak diubah spec ini.
-- Pre-setup #43 (Fajar Nugroho Group Manager di `IT Infrastructure`; Total Control Siti Rahmawati dan Rina Wulandari) dipakai TC-FA-RP-1013.
+- Pre-setup #43 (Fajar Nugroho Group Manager di `IT Infrastructure` dan memegang baris Approver pola GM pada node itu; Total Control Admin Utama, Siti Rahmawati, dan Rina Wulandari; Read Only Dewi Anggraini dan Maya Anggraeni tanpa Approver pola) dipakai TC-FA-RP-1013. Baris pola GM milik Group Manager lain yang menaungi node (mis. Lina Marlina) tidak diasersi.
 - Pre-setup #21 (pemegang Update `Manage asset & TAG`; Detail Role `Manage asset & TAG`, node `IT Infrastructure` dengan toggle `Require Approval for Registration` OFF) dipakai TC-FA-RP-1027. Toggle diaktifkan lalu dimatikan kembali oleh spec; nilai akhirnya OFF dan dipulihkan juga di hook `after`.
 - Fixture `Fixture.fixedAssetRolePermission` belum ada; kunci akun, nama pengguna, group, dan nilai kolom yang diasersi ditambahkan tim FE.
 - Kemampuan teknis (disediakan tim FE/BE): hover pada ikon info dan avatar; membaca nilai toggle `Require Approval for Registration` untuk pemulihan di hook `after`.
@@ -63,10 +63,10 @@ coverage:
 18. Verifikasi Search `nadia` pada section `Asset Admin` sub-tab `Disposal` tetap terpasang (state tiap sub-tab dipulihkan)
 19. Klik `(←)` pada kotak Search section `Asset Admin`
 
-### TC-FA-RP-1013: Tabel Approver tidak memuat Group Manager dan Total Control serta tanpa kolom Type
+### TC-FA-RP-1013: Tabel Approver memuat Approver manual, baris pola Total Control, dan baris pola Group Manager, tanpa Read Only serta tanpa kolom Type
 
-20. Verifikasi tabel section `Approver` memuat baris Pandu Wijaya (Approver manual) sebagai satu-satunya baris
-21. Verifikasi Fajar Nugroho (Group Manager) serta Siti Rahmawati dan Rina Wulandari (Total Control) tidak tampil sebagai baris
+20. Verifikasi tabel section `Approver` memuat Pandu Wijaya (Approver manual), baris Approver pola Total Control (Admin Utama, Siti Rahmawati, Rina Wulandari), dan baris Approver pola Group Manager Fajar Nugroho sebagai baris biasa
+21. Verifikasi Dewi Anggraini dan Maya Anggraeni (Read Only, tanpa Approver pola) tidak tampil sebagai baris
 22. Verifikasi header kolom `Name`, `Position`, `Division` tanpa kolom `Type`
 
 ### TC-FA-RP-1027: Keterangan approver registrasi berupa tooltip pada ikon info

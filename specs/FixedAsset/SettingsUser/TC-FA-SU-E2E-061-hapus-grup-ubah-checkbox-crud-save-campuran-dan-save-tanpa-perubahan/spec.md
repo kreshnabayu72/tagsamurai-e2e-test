@@ -21,7 +21,7 @@ coverage:
 - Akun aktor: Total Control Lina Marlina (Pre-setup #1) `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Hook suite (`suite.md`): flag Guided Tooltip `seen`, sesi API aktor, dan pemulihan Pre-setup bersama dirujuk tanpa diulang di sini.
 - Client `FaUserMain` (Pre-setup #20) dengan pohon grup (Pre-setup #21) dan penugasan (Pre-setup #23).
-- Pengguna target: Wawan Setiawan; Group Role `Manage files` pada IT Infrastructure (Read dan Delete tercentang) dan Branch Surabaya (Read tercentang, Delete tidak tercentang).
+- Pengguna target: Wawan Setiawan tanpa Home Group (Pre-setup #50 `FaUserNoHG`, varian `FaUserMain` dengan Home Group dikosongkan); Group Role `Manage files` pada IT Infrastructure (Read dan Delete tercentang) dan Branch Surabaya (Read tercentang, Delete tidak tercentang).
 - Data uji: grup yang dihapus Branch Surabaya (TC-FA-SU-200); permission Delete pada Branch Surabaya diubah dari Inactive menjadi Active (TC-FA-SU-201); grup yang ditambahkan General Affairs (TC-FA-SU-202).
 - Kemampuan teknis: seed API untuk memulihkan penugasan Group Role `Manage files` Wawan Setiawan ke Pre-setup #23 (disediakan tim FE/BE); pembacaan jumlah entri tiga permukaan log (Tab Changelog target, Tab System Log aktor, Activity Log) sebelum aksi sebagai baseline (disediakan tim FE/BE, bagian 8b butir 10). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
 - State global yang diubah: penugasan Group Role `Manage files` milik Wawan Setiawan; dipulihkan ke Pre-setup #23 lewat seed API pada langkah penghubung antar TC dan di hook `after`. Last Updated Wawan Setiawan berubah dan tidak dipulihkan.
@@ -97,6 +97,7 @@ coverage:
 - Langkah pola baca-log: langkah 14, 15, 23, 24, 32 sampai 35 dan 43 sampai 48. Search `Wawan Setiawan` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - TC-FA-SU-203: klausa "tidak ada entri log baru" pada Save no-op ditulis sebagai asersi jumlah dengan baseline di spec fungsional (bagian 3 prinsip 13 butir g, S-12); toast "No changes to save." menjadi anchor positif (bagian 8b butir 2).
 - Jumlah langkah 48, di atas smell 35 langkah hanya karena blok baca-log berpola (14 langkah: buka surface, cari entri, `Verifikasi` kolom log) yang tidak dihitung pada smell (bagian 3 prinsip 13); di luar blok itu 34 langkah, seluruhnya satu topik (Group Role Manage files Wawan Setiawan) dan satu kelas harness.
+- Home Group: spec ini menambah General Affairs lewat popup Select Group (langkah 28) pada Wawan Setiawan; pada Pre-setup #43 Home Group Wawan adalah Finance & Accounting sehingga gate Home Group (FI-32) men-Disabled node di luar constraint. Sesuai Catatan TC (TC penugasan Section 3d dijalankan pada varian tanpa Home Group), spec memakai Pre-setup #50; Precondition TC-FA-SU-200 sampai 202 tidak memuat #50 dan perlu disesuaikan.
 - Temuan untuk QA:
   - TC-FA-SU-200 butir a ("tanpa request") tidak punya cara observasi di UI; spec mengasersi baris hilang di popup dan tidak tersimpan setelah popup dibuka ulang.
   - TC-FA-SU-201 butir a ("hanya mengubah state lokal sampai Save") tidak punya cara observasi langsung; spec mengasersi tidak ada toast tersimpan sebelum `[Save]`.

@@ -65,12 +65,13 @@ coverage:
 16. Klik node Region West di sidebar
 17. Klik (⋯) pada baris `West Temp 2 {runId}-022`
 18. Klik `Delete`
-19. Klik [Delete] pada dialog konfirmasi
-20. Verifikasi toast sukses `Success, group has been deleted.`
+19. Verifikasi dialog dengan title "Delete Group", bullet `West Temp 2 {runId}-022`, isi "Are you sure you want to delete it? This action cannot be undone." (bukan varian warning D-15; baris pola Group Manager aktor pada node kosong tidak dihitung kondisi 5)
+20. Klik [Delete] pada dialog konfirmasi
+21. Verifikasi toast sukses `Success, group has been deleted.`
 
 ## Notes
 
-- Spec 20 langkah, di bawah batas sekitar 35 langkah. Aksi hapus berada di akhir tiap blok (S-10).
+- Spec 21 langkah, di bawah batas sekitar 35 langkah. Aksi hapus berada di akhir tiap blok (S-10).
 - Langkah penghubung (S-03): langkah 1 dan 16 (memilih Region West agar baris target tampil), langkah 13 sampai 15 (ganti akun eksplisit).
 - Absence baris pada langkah 6 dan 12 memakai toast sukses Delete sebagai anchor (8b butir 2).
 - Pembagian TC lintas spec: Role Matrix positif Create ada di spec 020 dan Edit di spec 021; gating checkbox bulk di spec 023.

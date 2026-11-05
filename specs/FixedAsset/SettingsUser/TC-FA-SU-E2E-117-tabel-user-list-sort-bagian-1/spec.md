@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor untuk pelaku kedua, dan pemulihan Pre-setup bersama lewat seed API.
-- Data Pre-setup: Client `FaUserMain` (#20, plan Enterprise, 25 pengguna). Nama pengguna dan nilai Pre-setup dirujuk lewat `Fixture.fa-settings-user.<kunci>` (berkas `fixtures/fa-settings-user.json` belum ada dan disediakan tim FE).
+- Data Pre-setup: Client `FaUserMain` (#20, plan Enterprise, 25 pengguna) dan atribut User List (#43). Nama pengguna dan nilai Pre-setup dirujuk lewat `Fixture.fa-settings-user.<kunci>` (berkas `fixtures/fa-settings-user.json` belum ada dan disediakan tim FE).
 - Spec ini hanya membaca data Pre-setup dan tidak mengubahnya; suite berjalan serial (`parallel: false`).
 - Urutan default (netral) Name ascending: `Ahmad Dahlan`, `Budi Santoso`, `Citra Lestari`, `Doni Prasetyo`, `Eka Wulandari`.
 - Tabel `Sort Teks Non-Eksak`:
@@ -61,7 +61,7 @@ coverage:
 16. Klik header `Role` satu kali
 17. Verifikasi `Role` ascending (↑): `Doni Prasetyo`, `Fajar Nugroho`, `Hana Kusuma`, `Kartika Sari`, `Indra Wijaya`
 18. Klik header `Role` kedua kali
-19. Verifikasi `Role` descending (↓): `Ahmad Dahlan`, `Lina Marlina`, `Citra Lestari`, `Yuda Pratama`, `Wawan Setiawan`
+19. Verifikasi `Role` descending (↓): `Ahmad Dahlan`, `Lina Marlina`, `Citra Lestari`, `Oscar Pranata` (48), `Qori Akbar` (25)
 20. Klik header `Role` ketiga kali
 21. Verifikasi `Role` netral kembali ke default: `Ahmad Dahlan`, `Budi Santoso`, `Citra Lestari`, `Doni Prasetyo`, `Eka Wulandari`
 
@@ -70,5 +70,5 @@ coverage:
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 7 dan 8 (menampilkan kolom `Activation Status` lewat Setup Column).
 - Langkah yang diulang: langkah 10 sampai 15 (empat kolom), parameter pada tabel Prerequisites.
-- Temuan untuk QA (S-15): (1) Daftar nama pada Expected TC berupa baris teratas hasil (kurang dari jumlah baris yang disebut atau dari ukuran halaman); spec mengasersi daftar nama itu dan jumlah baris sebagaimana tertulis.
+- Temuan untuk QA (S-15): (1) Daftar nama pada Expected TC berupa baris teratas hasil (kurang dari jumlah baris yang disebut atau dari ukuran halaman); spec mengasersi daftar nama itu dan jumlah baris sebagaimana tertulis. (2) Angka `48` dan `25` pada Expected TC-FA-SU-333 (label Role Oscar Pranata dan Qori Akbar) diturunkan dari baris pola Group Manager dan perilaku hitung belum diputuskan PM (Open Item 3 PRD settings-user); spec mengasersi urutan nama beserta angka sesuai TC.
 - Alasan di atas sekitar 35 langkah (ekspansi perulangan dihitung): seluruh blok berkelas fungsional yang sama pada halaman, akun, dan dataset Pre-setup #20 yang sama tanpa mengubah data; langkah berulang per kolom atau field berpola identik (langkah 10 sampai 15) dan kegagalan satu iterasi tidak membuat iterasi lain kehilangan makna; bagian 3 konvensi menetapkan Setup Column, Bulk Action Bar, dan Search, Filter, Sort tetap satu spec selama dataset dan harness sama, sedangkan pemecahan hanya menambah login, hook, dan pembukaan halaman.
