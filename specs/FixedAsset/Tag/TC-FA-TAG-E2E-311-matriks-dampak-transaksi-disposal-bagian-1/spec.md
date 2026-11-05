@@ -46,50 +46,51 @@ coverage:
 ### TC-FA-TAG-1188: Request pada kondisi T2
 
 1. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T2 {runId}-311`
-2. Jalankan langkah "Request" sampai selesai
-3. Verifikasi langkah "Request" pada Disposal berjalan normal sampai selesai
-4. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+2. Jalankan langkah "Request"
+3. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+4. Lanjutkan langkah "Request" sampai selesai
+5. Verifikasi langkah "Request" pada Disposal berjalan normal sampai selesai
 
 ### TC-FA-TAG-1189: Request kondisi T3 dengan metode Clearance
 
-5. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T3 Clearance {runId}-311`
-6. Jalankan langkah "Request"
-7. Pilih metode disposal Clearance
-8. Verifikasi langkah "Request" pada Disposal berjalan normal untuk metode Clearance tanpa pesan blok
-9. Verifikasi Disposal Request metode Clearance diizinkan pada aset Permanently Missing kondisi T3
+6. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T3 Clearance {runId}-311`
+7. Jalankan langkah "Request"
+8. Pilih metode disposal Clearance
+9. Verifikasi langkah "Request" pada Disposal berjalan normal untuk metode Clearance tanpa pesan blok
+10. Verifikasi Disposal Request metode Clearance diizinkan pada aset Permanently Missing kondisi T3
 
 ### TC-FA-TAG-1190: Request kondisi T3 dengan metode selain Clearance
 
-10. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T3 Sale {runId}-311`
-11. Jalankan langkah "Request"
-12. Pilih metode disposal Sale (selain Clearance)
-13. Verifikasi tombol `[I can't scan the TAG]` tersedia
-14. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-15. Verifikasi bidang "Foto aset" bertanda wajib (*)
-16. Unggah Foto aset dan selesaikan transaksi
-17. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-18. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
+11. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T3 Sale {runId}-311`
+12. Jalankan langkah "Request"
+13. Pilih metode disposal Sale (selain Clearance)
+14. Verifikasi tombol `[I can't scan the TAG]` tersedia
+15. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+16. Verifikasi bidang "Foto aset" bertanda wajib (*)
+17. Unggah Foto aset dan selesaikan transaksi
+18. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+19. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
 
 ### TC-FA-TAG-1191: Request kondisi T4 dengan metode Clearance
 
-19. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T4 Clearance {runId}-311`
-20. Jalankan langkah "Request"
-21. Pilih metode disposal Clearance
-22. Verifikasi langkah "Request" pada Disposal berjalan normal untuk metode Clearance tanpa pesan blok
-23. Verifikasi Disposal Request metode Clearance diizinkan pada kondisi T4
+20. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T4 Clearance {runId}-311`
+21. Jalankan langkah "Request"
+22. Pilih metode disposal Clearance
+23. Verifikasi langkah "Request" pada Disposal berjalan normal untuk metode Clearance tanpa pesan blok
+24. Verifikasi Disposal Request metode Clearance diizinkan pada kondisi T4
 
 ### TC-FA-TAG-1192: Request kondisi T4 dengan metode selain Clearance
 
-24. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T4 Sale {runId}-311`
-25. Jalankan langkah "Request"
-26. Pilih metode disposal Sale (selain Clearance)
-27. Verifikasi tombol `[I can't scan the TAG]` tersedia
-28. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-29. Verifikasi bidang "Foto aset" bertanda wajib (*)
-30. Verifikasi tidak ada Tag untuk dipilih
-31. Unggah Foto aset dan selesaikan transaksi
-32. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-33. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
+25. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T4 Sale {runId}-311`
+26. Jalankan langkah "Request"
+27. Pilih metode disposal Sale (selain Clearance)
+28. Verifikasi tombol `[I can't scan the TAG]` tersedia
+29. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+30. Verifikasi bidang "Foto aset" bertanda wajib (*)
+31. Verifikasi tidak ada Tag untuk dipilih
+32. Unggah Foto aset dan selesaikan transaksi
+33. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+34. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
 
 ## Notes
 

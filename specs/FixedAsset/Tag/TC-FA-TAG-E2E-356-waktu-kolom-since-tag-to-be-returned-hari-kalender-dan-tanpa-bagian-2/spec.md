@@ -26,6 +26,7 @@ coverage:
 - Data (tanpa suffix `{runId}` karena asersi bergantung pada kode persis): Tag [RFID] RF-00071 (Last Asset Excavator 20 Ton - 2, Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.) berstatus To Be Returned. Umur masuk diatur per TC: 15 hari (TC-FA-TAG-1357), 30 hari (TC-FA-TAG-1358 dan TC-FA-TAG-1360), dan 20 Sep 2026 23:50 menurut zona waktu client Asia/Jakarta (TC-FA-TAG-1359).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan jam, Tag RF-00071 ke keadaan awal lewat fixture backend.
 - State global: jam server dan jam browser (dipulihkan seperti di atas). Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 2, 8, 14, 19) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -73,8 +74,8 @@ coverage:
 - Langkah penghubung (tanpa awalan `Verifikasi`): 1, 3, 9, 16, 20 (membuka dan memuat ulang halaman), 6 dan 12 (hover), 18 (memulihkan jam, S-09), 23 dan 25 (navigasi dan membuka menu).
 - Asersi tooltip memakai hover (langkah 6 dan 12) karena TC menyebut "Hover atau fokus keyboard"; spec memilih hover.
 - Anchor positif absence (bagian 8b butir 2): langkah 21 untuk langkah 22 dan 24 (baris RF-00071 tampil).
+- A-15: nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 2, 8, 14, 19) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-1359 menyebut "waktu sekarang 21 Sep 2026 00:10" tanpa menyebut jam mana yang diatur; spec mengatur jam server dan jam browser bersama (bagian 6).
   - TC-FA-TAG-1360 tidak menyebut cara membuka Global Settings > TAG selain "Periksa Global Settings > TAG"; spec memakai navigasi menu pada langkah 25.
   - TC-FA-TAG-1357 dan TC-FA-TAG-1358 tidak punya Post Condition; tidak ada yang diasersi di luar Expected.
-  - Nilai literal Pre-setup (kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

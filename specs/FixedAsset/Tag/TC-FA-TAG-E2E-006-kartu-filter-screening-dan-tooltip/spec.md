@@ -32,6 +32,7 @@ coverage:
   Nilai kartu turunan: `Reported` 3, `Non-standard` 8, `Not Paired Yet` 4.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -69,6 +70,6 @@ coverage:
 
 - Langkah 1 adalah langkah penghubung (mengamati area kartu), tanpa asersi (S-03).
 - Langkah 5 adalah asersi absence atas state kartu; anchor positif adalah Verifikasi tiga kartu tampil (langkah 2) (bagian 8b butir 2).
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-25 Expected b menyebut nilai kartu sebagai "jumlah aset atas seluruh baris grup dalam scope"; nilai 3, 8, dan 4 adalah jumlah dari kolom Reported, Non-standard, dan Not Paired Yet empat baris Pre-setup. Spec mengasersi nilai itu apa adanya.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

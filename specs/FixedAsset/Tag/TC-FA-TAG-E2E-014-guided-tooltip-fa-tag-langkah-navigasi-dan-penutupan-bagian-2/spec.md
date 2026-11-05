@@ -23,6 +23,7 @@ coverage:
 - Data Pre-setup tab Paired (dipakai sebagai latar; hanya dibaca, tidak diubah): grup Excavator 20 Ton / Plant A, Excavator 20 Ton / Plant B, Laptop Pro 14 / HQ, Forklift Manual / Plant A.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena data Pre-setup yang sama dipakai spec lain (suite.md).
 - State global yang diubah: flag Guided Tooltip akun Total Control dan ukuran viewport (dipulihkan di hook `after`); suite berjalan serial.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Data Pre-setup hanya dibaca; satu-satunya perubahan adalah flag Guided Tooltip `guided_tooltip_seen_fa-tag` akun Total Control dan ukuran viewport browser (diubah di langkah 21, dipulihkan di langkah 26) lewat fixture (hapus flag: langkah 1, 7, 19; disetel kembali oleh walkthrough: langkah 16, 26), dipulihkan di hook `after`; tidak ada entri Changelog, Event Log, TAG Log, atau batch QR.
 
 ## Test Steps
 
@@ -66,9 +67,9 @@ coverage:
 - Langkah 1, 7, 19 (menghapus flag) dan 26 (memulihkan viewport dan menutup walkthrough) adalah langkah penghubung, tanpa asersi (S-03). Flag diatur belum ada oleh hook `before` untuk langkah 2.
 - Langkah 9 diletakkan sebelum Enter karena Tooltip box harus sudah menerima fokus saat walkthrough terbuka; Expected TC-FA-TAG-70 butir e disusun mengikuti urutan state (bagian 8b butir 5).
 - TC-FA-TAG-62 sampai 68 ada di spec 013, TC-FA-TAG-71 dan 72 ada di spec 015, TC-FA-TAG-73 dan 75 ada di spec 019.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut data tab Paired yang sama dengan spec lain; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Data Pre-setup hanya dibaca; satu-satunya perubahan adalah flag Guided Tooltip `guided_tooltip_seen_fa-tag` akun Total Control dan ukuran viewport browser (diubah di langkah 21, dipulihkan di langkah 26) lewat fixture (hapus flag: langkah 1, 7, 19; disetel kembali oleh walkthrough: langkah 16, 26), dipulihkan di hook `after`; tidak ada entri Changelog, Event Log, TAG Log, atau batch QR.
 - Temuan untuk QA:
   - TC-FA-TAG-70 Expected e ("Tooltip box menerima fokus keyboard") tidak menyebut kapan fokus diamati; spec mengasersinya saat walkthrough baru terbuka.
   - TC-FA-TAG-70 Post Condition ("Flag seen tersimpan pada akun") diasersi lewat langkah 18 karena sudah ada pada Expected d; mekanisme pembacaan flag tidak didefinisikan di TC, PRD, atau LLD.
   - TC-FA-TAG-74 Expected a ("tanpa menetapkan flag seen") membutuhkan pembacaan flag; langkah 23 memakai kemampuan baca flag yang disediakan tim FE/BE, dan muat ulang pada langkah 24 menjadi bukti tak langsung (Expected b).
   - TC-FA-TAG-74 tidak menyebut ukuran viewport target saat diubah; spec menyerahkannya ke tahap script.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut data tab Paired yang sama dengan spec lain, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

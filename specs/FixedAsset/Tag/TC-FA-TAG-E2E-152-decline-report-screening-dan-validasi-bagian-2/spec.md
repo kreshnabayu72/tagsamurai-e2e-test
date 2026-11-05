@@ -35,6 +35,7 @@ coverage:
 | Aset 'Excavator 20 Ton - 44' dengan dua Tag RFID | AST-0044, Group Plant B; dua Tag RFID Paired `RF-00132` (laporan terbuka Missing) dan `RF-00133` (laporan terbuka Damaged) | `aset44DuaRfid` |
 
 - State yang diubah dan pemulihannya: laporan yang diatur ulang pada langkah 11 dipulihkan lewat fixture backend di hook `after`; tidak ada laporan yang ditutup oleh spec ini.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 11) hanya menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -68,7 +69,7 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-640, 1485). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: screening dan validasi Reason Decline Report ada di spec 151 (TC-FA-TAG-636 s.d. 639).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 8 sampai 10 (menutup form dirty: ikon close, `Verifikasi` dialog "Unsaved Changes", [Leave]), 11 (mengatur ulang state laporan lewat fixture backend), dan 18 (menutup dialog yang belum diisi).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 11) hanya menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-640 ("Kedua laporan tetap terbuka") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

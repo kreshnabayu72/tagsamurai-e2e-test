@@ -34,6 +34,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed idempotent dan pemulihan aset dan Tag lewat fixture backend (lihat `suite.md`).
 - Pemulihan di hook `after`: kembalikan data Pre-setup tab Paired ke keadaan awal bila seeding mengubahnya. Spec ini tidak mengubah data bisnis.
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -82,7 +83,7 @@ coverage:
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular. Blok TC-FA-TAG-211 ditulis sebagai blok role tersendiri karena ganti akun menuntut langkah eksplisit (bagian 3a).
 - Langkah penghubung (tanpa awalan `Verifikasi`): 4 dan 7 (pindah halaman untuk memeriksa halaman lain), 9 (membersihkan seleksi, S-09), 14 (menutup Popup Detail sesudah `Unselect All`), 19 dan 22 (menutup kebab), 23 (ganti akun).
 - Asersi tambahan di luar Expected TC (S-03): langkah 5 (baris halaman 2 tampil sebagai anchor untuk "tidak tercentang" langkah 6, bagian 8b butir 2); langkah 15 (baris grup tampil sebagai anchor untuk absence langkah 16). Langkah 21: Expected TC-FA-TAG-210 "hanya memuat Detail" sudah memuat `Detail` sebagai anchor positif.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-206 Expected a ("baris halaman lain tidak tercentang") tidak menyebut apakah seleksi bertahan saat pindah halaman; spec mengasersi baris halaman 2 tidak tercentang setelah halaman 1 dicentang (langkah 6).
   - TC-FA-TAG-206 dan TC-FA-TAG-207 tidak menyebut Popup Detail dibuka dari grup mana selain "baris Plant B"; spec memakai grup Excavator 20 Ton / Plant B (20 aset).
-  - Nilai literal Pre-setup (Asset Name, ID aset) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

@@ -31,6 +31,7 @@ coverage:
 | Dataset Paired | Grup 'Excavator 20 Ton' / Plant A / RFID / Total Assets 20 / Reported 0 / Non-standard 0 / Not Paired Yet 2; 'Excavator 20 Ton' / Plant B / RFID / 20 / 2 / 5 / 0; 'Laptop Pro 14' / HQ / NFC, QR / 25 / 1 / 0 / 2; 'Forklift Manual' / Plant A / Non TAG / 10 / 0 / 3 / 0 | `datasetPaired` |
 
 - State yang diubah dan pemulihannya: konfigurasi kolom tabel grup di cache browser (kolom Not Paired Yet disembunyikan dan disimpan di TC-FA-TAG-754); penghapusan preferensi kolom Setup Column di browser oleh hook `after` spec ini.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 10).
 
 ## Test Steps
 
@@ -54,32 +55,33 @@ coverage:
 10. Klik `[Save]`
 11. Verifikasi Popup Setup Column tertutup
 12. Muat ulang halaman
-13. Verifikasi kolom Not Paired Yet tidak tampil setelah muat ulang (cache browser)
+13. Verifikasi kolom Asset Name tetap tampil setelah muat ulang
+14. Verifikasi kolom Not Paired Yet tidak tampil setelah muat ulang (cache browser)
 
 ### TC-FA-TAG-755
 
-14. Klik header kolom terakhir `⋯` pada tabel grup
-15. Klik `Setup Column...`
-16. Hilangkan centang kolom Reported
-17. Klik ikon close pada Popup Setup Column
-18. Verifikasi Popup Setup Column tertutup
-19. Verifikasi kolom Reported tetap tampil
+15. Klik header kolom terakhir `⋯` pada tabel grup
+16. Klik `Setup Column...`
+17. Hilangkan centang kolom Reported
+18. Klik ikon close pada Popup Setup Column
+19. Verifikasi Popup Setup Column tertutup
+20. Verifikasi kolom Reported tetap tampil
 
 ### TC-FA-TAG-756
 
-20. Klik header kolom terakhir `⋯` pada tabel grup
-21. Klik `Setup Column...`
-22. Hilangkan centang kolom Reported
-23. Tekan Esc
-24. Verifikasi Popup Setup Column tertutup
-25. Verifikasi kolom Reported tetap tampil
+21. Klik header kolom terakhir `⋯` pada tabel grup
+22. Klik `Setup Column...`
+23. Hilangkan centang kolom Reported
+24. Tekan Esc
+25. Verifikasi Popup Setup Column tertutup
+26. Verifikasi kolom Reported tetap tampil
 
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-752, TC-FA-TAG-753, TC-FA-TAG-754, TC-FA-TAG-755, TC-FA-TAG-756). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik Popup Setup Column tabel grup ada di spec 183 (TC-FA-TAG-752 s.d. 756), spec 192 (TC-FA-TAG-757), dan spec 184 (TC-FA-TAG-758 s.d. 759).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 10).
 - Temuan untuk QA:
   - TC-FA-TAG-753 dan TC-FA-TAG-754 dimulai dengan aksi yang sama (membuka Setup Column dan menghilangkan centang Not Paired Yet); `[Save]` TC-FA-TAG-754 dilakukan pada popup yang sama dengan pratinjau TC-FA-TAG-753 tanpa membukanya ulang.
   - TC-FA-TAG-753 butir b ("Belum tersimpan sampai `[Save]`") tidak memberi cara mengamati keadaan belum tersimpan; spec mengasersi popup masih terbuka dan `[Save]` belum diklik.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -25,8 +25,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE):
   - Simulator reader RFID/NFC USB: satu reader tersambung, driver terpasang, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader.
   - Dialog cetak browser (tingkat OS) yang teramati dan ditutup oleh harness.
-  - Pembersihan kode QR yang dibuat Start Print pada langkah 9 dari registri Global lewat fixture backend.
-- State global yang dipulihkan: dua kode QR yang dibuat langkah 9 dihapus dari registri Global di hook `after`.
+- Nilai literal Pre-setup (`Label Printer - 72`, AST-0172, `QR-00290`, `QR-00700`) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: batch kode QR dari `Start Print` (sebanyak Quantity, terdaftar `Available` di registri Global) beserta data cetak (langkah 9).
 
 ## Test Steps
 
@@ -62,16 +61,16 @@ coverage:
 21. Verifikasi slot `QR TAG` menampilkan `QR-00700`.
 22. Verifikasi slot `QR TAG` berbadge `Verified`.
 23. Klik ikon close (✕) pada Dialog Replace TAG.
-24. Verifikasi dialog `Unsaved Changes` tampil.
-25. Klik [Leave].
+24. Verifikasi dialog `Discard Replacement` dengan body "Discard this replacement? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil.
+25. Klik [Discard].
 26. Tutup Popup Detail.
 
 ## Notes
 
-- Urutan TC diubah menjadi TC-506, TC-505, TC-503: TC-506 dan TC-505 memakai Dialog Replace TAG yang belum terisi, sedangkan TC-503 memindai `QR-00700` sehingga dialog menjadi dirty dan harus ditutup lewat `Unsaved Changes` di akhir (S-10). Langkah 1 dan 2 dipakai ketiga TC dengan satu pembukaan Popup Detail dan Dialog Replace TAG.
+- Urutan TC diubah menjadi TC-506, TC-505, TC-503: TC-506 dan TC-505 memakai Dialog Replace TAG yang belum terisi, sedangkan TC-503 memindai `QR-00700` sehingga dialog menjadi dirty dan harus ditutup lewat konfirmasi `Discard Replacement` (D-09) di akhir (S-10). Langkah 1 dan 2 dipakai ketiga TC dengan satu pembukaan Popup Detail dan Dialog Replace TAG.
 - Langkah penghubung: langkah 6 dan 18 menutup Dialog Print QR; langkah 11 menutup dialog cetak browser; langkah 23 sampai 26 menutup Dialog Replace TAG yang dirty dan Popup Detail.
 - Pembagian TC lintas spec: TC-504 ada di spec 140; TC-507 dan TC-1443 ada di spec 126.
+- A-15: nilai literal Pre-setup (`Label Printer - 72`, AST-0172, `QR-00290`, `QR-00700`) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: batch kode QR dari `Start Print` (sebanyak Quantity, terdaftar `Available` di registri Global) beserta data cetak (langkah 9).
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`Label Printer - 72`, AST-0172, `QR-00290`, `QR-00700`) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - TC-505: Precondition tidak menyebut isian apa pun pada Dialog Replace TAG, sehingga "isian utuh" pada Expected b ambigu; spec memverifikasi sesuai kalimat TC.
-  - Post Condition TC-505 ("Dua kode QR dibuat backend") tidak punya langkah observasi di TC dan tidak diasersi. TC-505 diberi label Manual Only karena dialog cetak browser tingkat OS.
+  - Post Condition TC-505 ("Dua kode QR dibuat backend") tidak punya langkah observasi di TC dan tidak diasersi.

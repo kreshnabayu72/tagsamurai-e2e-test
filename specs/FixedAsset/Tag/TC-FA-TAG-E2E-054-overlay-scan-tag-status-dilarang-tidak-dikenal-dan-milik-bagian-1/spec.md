@@ -35,6 +35,7 @@ coverage:
   - `QR-00700` QR berstatus Available (dibuat backend saat Start Print sebelumnya, belum Paired)
 - Pemulihan di hook `after`: kembalikan status Tag di atas ke keadaan awal bila seeding mengubahnya. Spec ini tidak menekan `[Submit]` dan tidak mengubah data bisnis.
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -98,8 +99,8 @@ coverage:
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular. Tujuh TC memakai blok yang sama dengan parameter kode Tag dan status di Prerequisites; TC-FA-TAG-253 sampai TC-FA-TAG-256 ada di spec 055.
 - Langkah penghubung (tanpa awalan `Verifikasi`): 5, 10, 15, 20, 25, dan 30 (menutup dialog blok lewat `[OK]`).
 - Absence (langkah 4, 9, 14, 19, 24, 29, dan 34) didahului Verifikasi dialog blok yang tampil (langkah 3, 8, 13, 18, 23, 28, dan 33) sebagai anchor positif (bagian 8b butir 2).
+- A-15: nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-250 memakai Tag `RF-00071` berstatus To be Returned; kode itu juga dipakai sebagai Tag To be Returned pada TC-FA-TAG-4 (Pre-setup tab To Be Returned). Spec membaca kode itu sebagai data Pre-setup yang sama.
   - Tidak ada Post Condition TC yang punya langkah observasi pada spec ini ("Tidak ada data yang berubah" tidak diasersi).
   - TC-FA-TAG-252 menyebut kode QR hasil Start Print "dibuat backend saat Start Print sebelumnya"; spec menuliskan pembuatannya sebagai seed lewat fixture BE karena Start Print bukan bagian langkah TC.
-  - Nilai literal Pre-setup (kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada kode persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

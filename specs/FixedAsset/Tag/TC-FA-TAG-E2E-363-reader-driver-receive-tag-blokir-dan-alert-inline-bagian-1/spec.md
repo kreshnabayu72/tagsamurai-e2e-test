@@ -35,6 +35,7 @@ coverage:
 | TC-FA-TAG-555 | Reader terbaca tetapi Serial Number belum diaktivasi (Sync belum dijalankan) | This reader is not activated. Activate it in Global Settings > Handheld Reader first. |
 
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan kondisi reader ke normal. Spec ini tidak mengubah state global lain. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -79,7 +80,7 @@ Untuk setiap baris Tabel 1 (langkah 14 sampai 21):
 - Langkah penghubung (tanpa awalan `Verifikasi`): 1 (membuka tab), 2, 8, 10, 14 (mengatur kondisi reader), 3 (hover), 13 (menutup dialog yang tidak dirty).
 - Anchor positif absence (bagian 8b butir 2): langkah 4 dan 5 untuk langkah 7; langkah 17 untuk langkah 18 dan 19.
 - Pembagian TC lintas spec: TC-FA-TAG-556 sampai TC-FA-TAG-560 ada di spec 364, TC-FA-TAG-561 dan TC-FA-TAG-562 di spec 365.
+- A-15: nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-550 dan TC-FA-TAG-551 berlabel Manual Only (kondisi hardware reader dan driver USB fisik); spec tetap ditulis dengan emulator driver reader sebagai kemampuan yang disediakan tim FE/BE.
   - TC-FA-TAG-552 sampai TC-FA-TAG-555 menyebut "tidak ada perubahan data" dalam butir yang sama dengan "dialog Receive TAG tidak terbuka" tanpa cara observasi; spec mengobservasinya lewat isi tab To Be Returned (langkah 19).
-  - Nilai literal Pre-setup (kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

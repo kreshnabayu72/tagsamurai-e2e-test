@@ -26,7 +26,7 @@ coverage:
 | SA_NOTAG | Staff Auditor (tidak memegang Manage asset & TAG) | `staffAuditorTidakMemegangManageAssetTag_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_SA_NOTAG_PASSWORD` |
 | TC | Total Control | `totalControl_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TC_PASSWORD` |
 
-- Akun aktor pertama: Staff Auditor (tidak memegang Manage asset & TAG) [SA_NOTAG]. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > TAG > Paired). Aksi spec ini dijalankan dari modul Audit, sehingga langkah pertama berpindah ke modul Audit. Langkah ganti akun ditulis eksplisit (Logout lalu Login). Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor pertama: Staff Auditor (tidak memegang Manage asset & TAG) [SA_NOTAG]. Login di hook `before` spec ini; halaman dibuka di langkah pertama (hook suite `beforeEach` dikecualikan, lihat `suite.md`). Aksi spec ini dijalankan dari modul Audit, sehingga langkah pertama berpindah ke modul Audit. Langkah ganti akun ditulis eksplisit (Logout lalu Login). Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Password tidak ditulis di spec atau fixture; nama env didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_fa-tag` true untuk akun aktor yang dipakai dan hook suite `after` memulihkannya (lihat `suite.md`).
 - Suite serial: `parallel: false` (lihat `suite.md`).
@@ -43,6 +43,7 @@ coverage:
 | Laporan oleh pelaku kedua | Laporan Missing dengan Note "Hilang" pada `RF-00130` | `laporan130MissingB` |
 
 - State yang diubah dan pemulihannya: laporan terbuka pada `RF-00130` (dibuat pelaku kedua, hasil seeding, dan hasil submit langkah 23 sampai 28) dibatalkan dan data dipulihkan lewat fixture backend di hook `after`; spec selesai di akun Total Control (akun default suite).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 5, 27). Aksi tulis pada langkah 6 ditolak dan tidak menambah entri. Jumlah entri Changelog dibaca sebagai baseline pada langkah 23; log itu permanen dan tidak dipulihkan fixture, dan asersi entri baru memakai selisih terhadap baseline: butir A-18.
 
 ## Test Steps
 
@@ -102,11 +103,11 @@ coverage:
 - Pengecualian pengguna kedua (TC-FA-TAG-618): pelaku kedua memakai sesi API; bukan konteks kedua kelas c dan tidak memakai `P-2`; langkah pemicunya ditulis "... hingga ... tersimpan" (langkah 5).
 - Urutan TC di dalam spec: TC-618, TC-620, TC-621, TC-1377, TC-1459. TC-1459 diletakkan terakhir karena menutup dengan ganti akun ke Total Control; seluruh TC akun Staff Auditor berurutan sebelum ganti akun.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 8 sampai 10 (menutup form dirty), 11, 16, dan 22 (mengatur ulang state laporan `RF-00130` lewat fixture backend; muat ulang halaman juga menghilangkan toast sebelumnya), 12 dan 19 (membuka modul tujuan), 15 (menutup dialog yang belum diisi), 23 (baseline Changelog), 28 (menunggu aksi selesai), dan 29 (ganti akun eksplisit).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 5, 27). Aksi tulis pada langkah 6 ditolak dan tidak menambah entri.
 - Temuan untuk QA:
-  - Hook suite `beforeEach` membuka Fixed Asset > TAG untuk akun aktor pertama, sedangkan Staff Auditor tanpa Manage asset & TAG tidak berhak atas halaman itu; hook perlu dikecualikan untuk spec ini di tahap script.
+  - Hook suite `beforeEach` membuka Fixed Asset > TAG untuk akun aktor pertama, sedangkan Staff Auditor tanpa Manage asset & TAG tidak berhak atas halaman itu; spec ini dikecualikan di `suite.md` bagian Hook sehingga halaman yang diuji dibuka di langkahnya sendiri.
   - TC tidak menyatakan apakah satu-satunya Tag yang terpilih otomatis membuat dialog dianggap terisi saat ditutup; spec menutup dialog yang belum diisi pengguna dengan [Cancel] atau [Keep Report] tanpa dialog Unsaved Changes, mengikuti TC-FA-TAG-666 dan TC-FA-TAG-675.
   - TC-FA-TAG-618 menulis dua pengguna tanpa menyebut akun pengguna B selain "akses Report TAG di modul Audit"; spec menulisnya sebagai akun kedua yang disediakan tim FE lewat sesi API.
   - TC-FA-TAG-620 dan TC-FA-TAG-621 tidak menyebut halaman asal row action "Report TAG" di Borrow selain "transaksi aset"; spec membukanya dari transaksi aset yang dibuka.
   - Post Condition TC-FA-TAG-618 ("RF-00130 hanya punya satu laporan terbuka") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

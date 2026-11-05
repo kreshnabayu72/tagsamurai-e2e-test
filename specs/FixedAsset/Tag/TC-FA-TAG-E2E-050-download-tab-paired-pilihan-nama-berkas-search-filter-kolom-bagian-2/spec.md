@@ -34,6 +34,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): pembaca berkas unduhan CSV (nama berkas, header kolom, jumlah baris, urutan baris); seed idempotent lewat fixture backend (lihat `suite.md`).
 - Pemulihan di hook `after`: kembalikan data Pre-setup tab Paired ke keadaan awal bila seeding mengubahnya. Sort kolom Total Assets dikembalikan pada langkah 5 dan Search dikosongkan pada langkah 13. Spec ini tidak mengubah data bisnis.
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -76,8 +77,8 @@ coverage:
 - Langkah penghubung (tanpa awalan `Verifikasi`): 5 (mengembalikan Sort), 13 (mengosongkan Search lewat `(←)`), 14 dan 18 (ganti akun).
 - Absence toast (langkah 11) diletakkan sesudah pemicu klik pilihan format dan sebelum Verifikasi berkas (langkah 12); pemicu menjadi anchor positif (bagian 8b butir 11).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-228 Expected ("urutan baris file mengikuti urutan detail yang aktif") tidak menyebut arah urut (ascending atau descending) ataupun urutan Total Assets antar aset di file; Total Assets adalah nilai tingkat grup sedangkan file berisi satu baris per aset. Spec mengasersi apa adanya tanpa menambah arah urut.
   - TC-FA-TAG-229 Expected b ("hanya baris header kolom yang tampil") tidak menyebut kolom yang dipakai; spec memakai kolom yang tampil pada T-TAG-02.
   - TC-FA-TAG-228 dan TC-FA-TAG-229 tidak menyebut cara mengembalikan Sort dan Search; spec menambah langkah penghubung 5 dan 13.
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

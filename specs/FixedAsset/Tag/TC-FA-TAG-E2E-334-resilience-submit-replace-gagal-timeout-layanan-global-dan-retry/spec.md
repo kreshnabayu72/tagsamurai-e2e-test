@@ -26,10 +26,11 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset Replace | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) dengan satu Tag RFID `RF-00130` Paired | `aset220` |
+| Aset Replace | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) dengan satu Tag RFID `RF-00330` Paired | `aset220` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
-- State yang diubah dan pemulihannya: langkah 25 menyimpan penggantian `RF-00130` menjadi `RF-00412` pada AST-0220; hook `after` memulihkan AST-0220 ke `RF-00130` Paired, `RF-00412` ke Available, entri Changelog dan TAG Log hasil penggantian, serta melepas semua intercept.
+- State yang diubah dan pemulihannya: langkah 25 menyimpan penggantian `RF-00330` menjadi `RF-00412` pada AST-0220; hook `after` memulihkan AST-0220 ke `RF-00330` Paired, `RF-00412` ke Available, entri Changelog dan TAG Log hasil penggantian, serta melepas semua intercept.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 25); entri TAG Log Global (langkah 25). Aksi tulis pada langkah 5, 12, 17, 22 ditolak dan tidak menambah entri.
 
 ## Test Steps
 
@@ -78,9 +79,9 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-1340 s.d. 1343). Tidak ada TC hanya-BE.
 - Urutan TC di dalam spec: TC-1340, TC-1341, TC-1343, lalu TC-1342, karena TC-1342 berakhir dengan Submit yang berhasil dan menutup dialog, sedangkan ketiga TC lain mensyaratkan dialog tetap terbuka dengan slot `RFID TAG` terisi `RF-00412`. TC-1341 dan TC-1343 memakai dialog yang masih terbuka dari TC sebelumnya (Tag `RF-00412` sudah terpindai di langkah 3) dan hanya mengganti jenis intercept; tidak ada pembukaan ulang dialog di antara TC.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 10, 15, dan 20 (mengganti jenis intercept), 11, 16, 21, dan 24 (menunggu toast lama hilang agar toast berikutnya adalah toast baru, R-12).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 25); entri TAG Log Global (langkah 25). Aksi tulis pada langkah 5, 12, 17, 22 ditolak dan tidak menambah entri.
 - Temuan untuk QA:
-  - Post Condition TC-FA-TAG-1340 s.d. 1343 (Tag `RF-00130` tetap Paired, `RF-00412` tetap Available atau Paired, entri Changelog dan TAG Log) tanpa langkah observasi di TC tidak diasersi. Judul TC-FA-TAG-1343 ("tanpa mutasi sebagian") tidak punya langkah observasi pasangannya.
+  - Post Condition TC-FA-TAG-1340 s.d. 1343 (Tag `RF-00330` tetap Paired, `RF-00412` tetap Available atau Paired, entri Changelog dan TAG Log) tanpa langkah observasi di TC tidak diasersi. Judul TC-FA-TAG-1343 ("tanpa mutasi sebagian") tidak punya langkah observasi pasangannya.
   - TC-FA-TAG-1342 Post Condition ("hanya satu entri Changelog Replace") tanpa langkah observasi tidak diasersi.
   - TC-FA-TAG-1343 tidak menyebut cara membuat layanan Global tidak terjangkau; spec menuliskannya sebagai kemampuan intercept yang disediakan tim FE/BE.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

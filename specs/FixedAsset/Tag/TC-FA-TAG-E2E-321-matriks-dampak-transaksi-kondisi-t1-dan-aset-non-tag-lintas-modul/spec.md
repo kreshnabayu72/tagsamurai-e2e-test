@@ -20,9 +20,9 @@ coverage:
 
 - Mode: FE+BE (backend nyata).
 - Akun aktor pertama: Asset Admin (berhak menjalankan langkah ini di modul Assignment), `assetAdminBerhakMenjalankanLangkahIniDiModulAssignment_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TAG_AA_ASG_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
-- Akun berikutnya (ganti akun eksplisit, login pada langkah 11): Asset Admin (berhak menjalankan langkah ini di modul Transfer), `assetAdminBerhakMenjalankanLangkahIniDiModulTransfer_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TAG_AA_TRF_PASSWORD`.
-- Akun berikutnya (ganti akun eksplisit, login pada langkah 17): Asset Admin (berhak menjalankan langkah ini di modul Disposal), `assetAdminBerhakMenjalankanLangkahIniDiModulDisposal_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TAG_AA_DSP_PASSWORD`.
-- Akun berikutnya (ganti akun eksplisit, login pada langkah 23): Asset Admin (berhak menjalankan langkah ini di modul Stock opname), `assetAdminBerhakMenjalankanLangkahIniDiModulStockOpname_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TAG_AA_OPN_PASSWORD`.
+- Akun berikutnya (ganti akun eksplisit, login pada langkah 12): Asset Admin (berhak menjalankan langkah ini di modul Transfer), `assetAdminBerhakMenjalankanLangkahIniDiModulTransfer_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TAG_AA_TRF_PASSWORD`.
+- Akun berikutnya (ganti akun eksplisit, login pada langkah 19): Asset Admin (berhak menjalankan langkah ini di modul Disposal), `assetAdminBerhakMenjalankanLangkahIniDiModulDisposal_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TAG_AA_DSP_PASSWORD`.
+- Akun berikutnya (ganti akun eksplisit, login pada langkah 26): Asset Admin (berhak menjalankan langkah ini di modul Stock opname), `assetAdminBerhakMenjalankanLangkahIniDiModulStockOpname_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TAG_AA_OPN_PASSWORD`.
 - Nama env password didaftarkan di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example` oleh tim FE.
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before` untuk akun aktor, lihat `suite.md`; spec ini tidak mengubahnya.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (kunci fixture ditandai untuk tim FE); data aset dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE).
@@ -49,53 +49,57 @@ coverage:
 ### TC-FA-TAG-1155: Assign / serah ke pemegang baru pada kondisi T1
 
 1. Buka layar transaksi Assignment untuk aset `Aset Matriks Assign T1 {runId}-321`
-2. Jalankan langkah "Assign / serah ke pemegang baru" sampai selesai
-3. Verifikasi langkah "Assign / serah ke pemegang baru" pada Assignment berjalan normal sampai selesai
-4. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+2. Jalankan langkah "Assign / serah ke pemegang baru"
+3. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+4. Lanjutkan langkah "Assign / serah ke pemegang baru" sampai selesai
+5. Verifikasi langkah "Assign / serah ke pemegang baru" pada Assignment berjalan normal sampai selesai
 
 ### TC-FA-TAG-1482: Assign pada aset Asset Name Non-TAG tanpa Tag Paired berjalan normal dan bukan kondisi T4
 
-5. Buka layar transaksi Assignment untuk aset `Aset Matriks Assign Non-TAG {runId}-321`
-6. Jalankan langkah "Assign / serah ke pemegang baru"
-7. Verifikasi langkah "Assign / serah ke pemegang baru" berjalan normal sampai selesai
-8. Verifikasi pesan blok "This asset can't be assigned until its TAG is replaced. Ask a TAG administrator of Plant A." tidak tampil karena aset bukan T4 (Asset Name Non-TAG tidak menuntut Tag yang dikelola menu TAG)
-9. Verifikasi tombol `[Report TAG]` dan tombol `[Replace TAG]` tidak tampil
+6. Buka layar transaksi Assignment untuk aset `Aset Matriks Assign Non-TAG {runId}-321`
+7. Jalankan langkah "Assign / serah ke pemegang baru"
+8. Verifikasi langkah "Assign / serah ke pemegang baru" berjalan normal sampai selesai
+9. Verifikasi pesan blok "This asset can't be assigned until its TAG is replaced. Ask a TAG administrator of Plant A." tidak tampil karena aset bukan T4 (Asset Name Non-TAG tidak menuntut Tag yang dikelola menu TAG)
+10. Verifikasi tombol `[Report TAG]` dan tombol `[Replace TAG]` tidak tampil
 
 ### TC-FA-TAG-1179: Load (mulai In Transfer Process) pada kondisi T1
 
-10. Ganti akun: Logout dari akun yang sedang aktif
-11. Login sebagai Asset Admin (berhak menjalankan langkah ini di modul Transfer) dengan `assetAdminBerhakMenjalankanLangkahIniDiModulTransfer_automated_{namaCompany}@qwertysystem.net` dan `Spectra.env.FA_TAG_AA_TRF_PASSWORD`
-12. Buka layar transaksi Transfer untuk aset `Aset Matriks Load T1 {runId}-321`
-13. Jalankan langkah "Load (mulai In Transfer Process)" sampai selesai
-14. Verifikasi langkah "Load (mulai In Transfer Process)" pada Transfer berjalan normal sampai selesai
+11. Ganti akun: Logout dari akun yang sedang aktif
+12. Login sebagai Asset Admin (berhak menjalankan langkah ini di modul Transfer) dengan `assetAdminBerhakMenjalankanLangkahIniDiModulTransfer_automated_{namaCompany}@qwertysystem.net` dan `Spectra.env.FA_TAG_AA_TRF_PASSWORD`
+13. Buka layar transaksi Transfer untuk aset `Aset Matriks Load T1 {runId}-321`
+14. Jalankan langkah "Load (mulai In Transfer Process)"
 15. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+16. Lanjutkan langkah "Load (mulai In Transfer Process)" sampai selesai
+17. Verifikasi langkah "Load (mulai In Transfer Process)" pada Transfer berjalan normal sampai selesai
 
 ### TC-FA-TAG-1187: Request pada kondisi T1
 
-16. Ganti akun: Logout dari akun yang sedang aktif
-17. Login sebagai Asset Admin (berhak menjalankan langkah ini di modul Disposal) dengan `assetAdminBerhakMenjalankanLangkahIniDiModulDisposal_automated_{namaCompany}@qwertysystem.net` dan `Spectra.env.FA_TAG_AA_DSP_PASSWORD`
-18. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T1 {runId}-321`
-19. Jalankan langkah "Request" sampai selesai
-20. Verifikasi langkah "Request" pada Disposal berjalan normal sampai selesai
-21. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+18. Ganti akun: Logout dari akun yang sedang aktif
+19. Login sebagai Asset Admin (berhak menjalankan langkah ini di modul Disposal) dengan `assetAdminBerhakMenjalankanLangkahIniDiModulDisposal_automated_{namaCompany}@qwertysystem.net` dan `Spectra.env.FA_TAG_AA_DSP_PASSWORD`
+20. Buka layar transaksi Disposal untuk aset `Aset Matriks Request T1 {runId}-321`
+21. Jalankan langkah "Request"
+22. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+23. Lanjutkan langkah "Request" sampai selesai
+24. Verifikasi langkah "Request" pada Disposal berjalan normal sampai selesai
 
 ### TC-FA-TAG-1197: Scan aset (found) pada kondisi T1
 
-22. Ganti akun: Logout dari akun yang sedang aktif
-23. Login sebagai Asset Admin (berhak menjalankan langkah ini di modul Stock opname) dengan `assetAdminBerhakMenjalankanLangkahIniDiModulStockOpname_automated_{namaCompany}@qwertysystem.net` dan `Spectra.env.FA_TAG_AA_OPN_PASSWORD`
-24. Buka layar transaksi Stock opname untuk aset `Aset Matriks Opname T1 {runId}-321`
-25. Jalankan langkah "Scan aset (found)" sampai selesai
-26. Verifikasi langkah "Scan aset (found)" pada Stock opname berjalan normal sampai selesai
-27. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+25. Ganti akun: Logout dari akun yang sedang aktif
+26. Login sebagai Asset Admin (berhak menjalankan langkah ini di modul Stock opname) dengan `assetAdminBerhakMenjalankanLangkahIniDiModulStockOpname_automated_{namaCompany}@qwertysystem.net` dan `Spectra.env.FA_TAG_AA_OPN_PASSWORD`
+27. Buka layar transaksi Stock opname untuk aset `Aset Matriks Opname T1 {runId}-321`
+28. Jalankan langkah "Scan aset (found)"
+29. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+30. Lanjutkan langkah "Scan aset (found)" sampai selesai
+31. Verifikasi langkah "Scan aset (found)" pada Stock opname berjalan normal sampai selesai
 
 ## Notes
 
 - Mode: FE+BE.
 - TC-FA-TAG-1156 sampai 1161 ada di spec 305, TC-FA-TAG-1180 sampai 1185 di spec 309, TC-FA-TAG-1188 sampai 1192 di spec 311, dan TC-FA-TAG-1198 sampai 1202 di spec 313.
-- Langkah penghubung (tanpa awalan `Verifikasi`): 10, 11, 16, 17, 22, 23 (penyiapan ulang kondisi aset lewat fixture BE, penutupan popup, pembukaan menu, penggantian akun, dan penantian aksi selesai sesuai isi langkah).
-- Ganti akun pada langkah 10 sampai 11, 16 sampai 17, dan 22 sampai 23 mengikuti Role di precondition TC masing-masing (Asset Admin per modul); akun pertama (Assignment) login di hook `before`.
+- Langkah penghubung (tanpa awalan `Verifikasi`): 11, 12, 18, 19, 25, 26 (penyiapan ulang kondisi aset lewat fixture BE, penutupan popup, pembukaan menu, penggantian akun, dan penantian aksi selesai sesuai isi langkah).
+- Ganti akun pada langkah 11 sampai 12, 18 sampai 19, dan 25 sampai 26 mengikuti Role di precondition TC masing-masing (Asset Admin per modul); akun pertama (Assignment) login di hook `before`.
 - Temuan untuk QA:
   - Langkah "Jalankan langkah ..." di TC tidak menjabarkan layar, field, dan urutan klik transaksi; spec menulisnya sebagai satu langkah dan penjabarannya diserahkan ke tahap script.
   - TC tidak menyebut Group aset kondisi T1 dan T2; spec memakai Group Plant B seperti aset kondisi T3 dan T4.
-  - TC-FA-TAG-1155, 1179, 1187, dan 1197 (kondisi T1) menuliskan peringatan dan pesan blok "tidak tampil"; asersinya hanya berarti bila langkah berjalan normal terverifikasi lebih dulu, sehingga spec mengasersi keduanya berurutan.
+  - TC-FA-TAG-1155, 1179, 1187, dan 1197 (kondisi T1) menuliskan peringatan dan pesan blok "tidak tampil"; peringatan muncul pada Langkah Mulai (PRD tag.md §7 S-25), sehingga spec mengasersi ketiadaannya tepat sesudah langkah dijalankan dan sebelum dilanjutkan sampai selesai (bagian 8b butir 5 dan 11); pemicunya menjadi anchor positif yang buktinya menyusul pada `Verifikasi` berjalan normal sampai selesai.
   - Kolom Post Condition semua TC di spec ini bernilai `-`; tidak ada Post Condition yang perlu diasersi.

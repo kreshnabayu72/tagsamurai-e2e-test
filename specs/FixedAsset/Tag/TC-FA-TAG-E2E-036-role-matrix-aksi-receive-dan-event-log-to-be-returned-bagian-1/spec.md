@@ -34,11 +34,12 @@ Role yang diuji:
 - Password tidak ditulis di spec atau fixture; nama env bersifat usulan dan didaftarkan tim FE di `spectra.config.ts` dan `.env.example`.
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite (lihat `suite.md`).
 - Fixture: `fixtures/fixed-asset-tag.json` belum ada (disediakan tim FE); nilai Pre-setup ditulis literal seperti di TC.
-- Data: Pre-setup Tag To Be Returned: [RFID] RF-00071 (Last Asset Excavator 20 Ton - 2, Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); [RFID] RF-00088 (Excavator 20 Ton - 5, Disposal Center, Dedi K.); [NFC] NF-00092 (Laptop Pro 14 - 8, HQ Warehouse, Rina T.).
+- Data: Pre-setup Tag To Be Returned (himpunan minimum; jumlah total tidak diasersi): [RFID] RF-00071 (Last Asset Excavator 20 Ton - 2, Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); [RFID] RF-00088 (Excavator 20 Ton - 5, Disposal Center, Dedi K.); [NFC] NF-00092 (Laptop Pro 14 - 8, HQ Warehouse, Rina T.).
 - Data: Untuk blok 5: Tag RF-00071 (Return Group Disposal Center), Tag RF-00099 (Return Group anak dari Disposal Center), Tag NF-00092 (Return Group HQ Warehouse, di luar scope).
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - State global: tidak ada state global yang diubah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -61,7 +62,7 @@ Role yang diuji:
 12. Centang baris RF-00071
 13. Verifikasi Bulk Action `Receive Manually` tidak tersedia
 14. Verifikasi Search, Filter, Download, dan `Event Log` tampil serta aktif
-15. Verifikasi seluruh 3 baris Tag (RF-00071, RF-00088, NF-00092) terlihat (seluruh scope client)
+15. Verifikasi sedikitnya baris Tag RF-00071, RF-00088, dan NF-00092 terlihat (seluruh scope client)
 16. Klik tombol `Event Log`
 17. Verifikasi modal `Event Log: To Be Returned` terbuka
 18. Tutup modal Event Log
@@ -104,9 +105,9 @@ Role yang diuji:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 7, 18, 19, 29, 30, 37.
 - Pembagian TC lintas spec: TC-FA-TAG-168 sampai 170, 1489, dan 1490 ada di spec `TC-FA-TAG-E2E-037-role-matrix-aksi-receive-dan-event-log-to-be-returned-bagian-2`.
 - Spec di atas smell 35 langkah (40 langkah). Alasan: semua blok satu topik (aksi Receive dan Event Log di tab To Be Returned) dengan dataset yang sama; tiap blok role berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
   - TC-164 butir c ("Search, Filter, Download, dan Event Log Show serta aktif") tidak menyebut cara menilai aktif; spec mengasersi tampil dan aktif tanpa interaksi tambahan.
   - TC-165 dan TC-167 memakai Role `Manage asset & TAG (Read)` dengan catatan `scope group` dan `assign group` (Disposal Center) yang masing-masing punya baris Pre-setup sendiri; spec memakai baris itu.
-  - TC-167 menyebut Tag RF-00099 (Return Group anak dari Disposal Center) yang tidak ada di Pre-setup Tag To Be Returned TC lain; spec membuatnya lewat seeding.
+  - TC-167 menyebut Tag RF-00099 (Return Group anak dari Disposal Center) yang tidak ada di Pre-setup Tag To Be Returned TC lain; spec membuatnya lewat seeding. Karena RF-00099 di-seed untuk blok 5, himpunan Tag To Be Returned saat run dapat memuat lebih dari tiga baris; langkah 15 (TC-FA-TAG-164) mengasersi sedikitnya tiga baris Pre-setup, bukan jumlah total (keputusan user 2026-11-04, bagian 8b butir 10).

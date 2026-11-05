@@ -24,8 +24,9 @@ coverage:
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before`, lihat `suite.md`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada; nilai literal TC pada langkah diberi kunci fixture oleh tahap script (akan disediakan).
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB satu reader tersambung, driver terpasang, reader aktif, sudah disinkronkan di Global Settings > Handheld Reader (lihat `suite.md`); pembacaan atribut aksesibilitas elemen (`aria-live`, label aksesibilitas) dan urutan fokus keyboard; seed idempotent aset dan stok Tag lewat fixture backend.
-- Data (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00130` berstatus Paired; AST-0051 'Excavator 20 Ton - 51' (Group Plant A, TAG Type Asset Name RFID saja) belum punya Tag Paired (Not Paired Yet). Stok Global: Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` berstatus Available. Tag `RF-09999` tidak terdaftar (kode tidak dikenal).
+- Data (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00330` berstatus Paired; AST-0051 'Excavator 20 Ton - 51' (Group Plant A, TAG Type Asset Name RFID saja) belum punya Tag Paired (Not Paired Yet). Stok Global: Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` berstatus Available. Tag `RF-09999` tidak terdaftar (kode tidak dikenal).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan stok Tag dan kondisi reader ke keadaan awal lewat fixture backend. Spec ini tidak menekan [Submit] dan tidak mengubah state global. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -40,7 +41,7 @@ coverage:
 
 ### TC-FA-TAG-323: label aksesibilitas ikon tipe Tag
 
-7. Verifikasi ikon tipe Tag pada baris atas blok info memiliki label aksesibilitas `RFID · RF-00130`
+7. Verifikasi ikon tipe Tag pada baris atas blok info memiliki label aksesibilitas `RFID · RF-00330`
 
 ### TC-FA-TAG-322: aria-live assertive pada pindaian gagal
 
@@ -52,8 +53,8 @@ coverage:
 10. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
 11. Verifikasi area hasil ButtonScan memiliki atribut `aria-live="polite"`
 12. Klik `✕` pada Dialog Replace TAG
-13. Verifikasi dialog `Unsaved Changes` tampil
-14. Klik [Leave]
+13. Verifikasi dialog `Discard Replacement` dengan body "Discard this replacement? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil
+14. Klik [Discard]
 
 ### TC-FA-TAG-319: focus trap Dialog Pair TAG
 
@@ -76,8 +77,8 @@ coverage:
 - Urutan TC di dalam spec: 318, 323, 322, 321, 319, 320 (TC-FA-TAG-322 sebelum TC-FA-TAG-321 supaya pindaian gagal mendahului pindaian sukses pada slot yang sama dan dialog hanya dirty sekali; dialog Replace, Pair, dan Print QR dibuka berurutan).
 - Langkah penghubung (tanpa awalan `Verifikasi`): 1 dan 2 (membuka Popup Detail dan dialog), 12 sampai 14 (menutup form dirty, S-08), 15 sampai 16 (membuka daftar Not Paired Yet dan Dialog Pair TAG), 19 (menutup dialog yang tidak dirty), 20 (menutup popup agar toolbar dapat diklik).
 - Anchor positif: asersi fokus (langkah 4, 18, 23) memuat daftar elemen dialog yang sama-sama tampil; tidak ada asersi absence yang berdiri sendiri.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-318 mencantumkan "checkbox" sebagai elemen dialog tanpa menyebut checkbox apa; spec mengikuti teks TC.
   - TC-FA-TAG-321 dan TC-FA-TAG-322 tidak menyebut perilaku slot setelah pindaian sukses berikutnya pada slot yang sama; spec memindai RF-00412 sesudah RF-09999 pada slot `RFID TAG`.
   - TC-FA-TAG-319 dan TC-FA-TAG-320 tidak menyebut apakah fokus kembali ke elemen pertama; spec mengasersi sesuai Expected TC saja.
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

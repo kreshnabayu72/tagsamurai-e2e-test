@@ -37,6 +37,7 @@ coverage:
 | Aset 'Excavator 20 Ton - 44' dengan laporan | AST-0044, Group Plant B; Tag RFID `RF-00132` laporan terbuka Missing dan Tag QR `QR-00232` laporan terbuka Unreadable | `aset44Laporan` |
 
 - State yang diubah dan pemulihannya: tidak ada laporan yang ditutup oleh spec ini; data dipulihkan lewat fixture backend di hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -80,7 +81,7 @@ coverage:
 - Pembagian TC lintas spec: topik Unsaved Changes dan penutupan dialog Decline Report ada juga di spec 156 (TC-FA-TAG-651 s.d. 654) dan spec 157 (TC-FA-TAG-655 s.d. 657).
 - Satu dialog "Decline Report" pada AST-0044 dengan Reason "Tag masih terbaca" dipakai berurutan oleh TC-648 sampai TC-650 (precondition dan isian identik); dialog "Unsaved Changes" ditutup dengan [Cancel] antar-TC supaya isian terpertahankan (S-09), dan [Leave] pada langkah 21 menutup form dirty di akhir spec. TC-647 memakai dialog AST-0020 yang belum diisi.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 6 (menutup dialog yang belum diisi dengan [Cancel]), 13, dan 17 (menutup dialog "Unsaved Changes" dengan [Cancel]) serta 21 (menutup form dirty dengan [Leave]).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-648 s.d. 650 ("Kedua laporan tetap terbuka") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

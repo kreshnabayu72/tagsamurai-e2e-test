@@ -35,6 +35,7 @@ Role yang diuji:
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - State global: tidak ada state global yang diubah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -67,8 +68,8 @@ Role yang diuji:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 4, 7, 9, 12, 17.
 - Pembagian TC lintas spec: TC-FA-TAG-97 sampai 102, 115, dan 116 ada di spec `TC-FA-TAG-E2E-023-role-matrix-positif-aksi-tulis-total-control-dan-manage-read-bagian-1`.
 - Urutan TC-FA-TAG-117 dan TC-FA-TAG-118 disusun ulang (Popup Detail Plant B dahulu, lalu Plant A) supaya popup tidak dibuka dua kali; Expected tiap TC tetap diasersi.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
   - TC-117 sampai TC-120 memakai Role `Manage asset & TAG (Read + Update)` tanpa menyebut group Update, sedangkan TC-119 mensyaratkan akses Update pada Disposal Center; spec menganggap akun itu memegang Update pada Plant A, Plant B, dan Disposal Center.
   - TC-117 (langkah TC ke-3) membuka kebab aset Not Paired Yet tanpa menyebut filter `Show` di samping `Not Paired Yet`; spec menambah langkah penghubung itu.

@@ -26,13 +26,14 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset sesi 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A), Tag RFID `RF-00130` Paired | `aset220` |
+| Aset sesi 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A), Tag RFID `RF-00330` Paired | `aset220` |
 | Aset sesi 2 | 'Excavator 20 Ton - 221' (AST-0221, Group Plant A), Tag RFID `RF-00140` Paired | `aset221` |
 | Aset sesi 3 | 'Excavator 20 Ton - 23' (AST-0023, Group Plant A), Tag RFID `RF-00141` Paired | `aset23` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, `RF-00416` | `stokRfid` |
-| Laporan terbuka | satu laporan terbuka pada Tag `RF-00130` (TC-FA-TAG-391) | `laporan130` |
+| Laporan terbuka | satu laporan terbuka pada Tag `RF-00330` (TC-FA-TAG-391) | `laporan330` |
 
-- State yang diubah dan pemulihannya: Tag Paired aset sesi 1 sampai 3 dan stok Available berubah oleh Submit & next; fixture backend memulihkannya antar blok dan hook `after` memulihkan keadaan awal (Tag `RF-00130`, `RF-00140`, `RF-00141` Paired; stok Available seperti awal; laporan `RF-00130` dikembalikan).
+- State yang diubah dan pemulihannya: Tag Paired aset sesi 1 sampai 3 dan stok Available berubah oleh Submit & next; fixture backend memulihkannya antar blok dan hook `after` memulihkan keadaan awal (Tag `RF-00330`, `RF-00140`, `RF-00141` Paired; stok Available seperti awal; laporan `RF-00330` dikembalikan).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 16, 25, 28); entri TAG Log Global (langkah 16, 25, 28).
 
 ## Test Steps
 
@@ -64,7 +65,7 @@ coverage:
 
 ### Ringkasan akhir Done, Skipped, dan laporan ditutup (TC-FA-TAG-391)
 
-21. Pulihkan Tag `RF-00130` Paired pada 'Excavator 20 Ton - 220' dengan laporan terbuka, isi ulang stok Available `RF-00412`, `RF-00415`, `RF-00416`, lalu muat ulang halaman TAG (F5) dan klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
+21. Pulihkan Tag `RF-00330` Paired pada 'Excavator 20 Ton - 220' dengan laporan terbuka, isi ulang stok Available `RF-00412`, `RF-00415`, `RF-00416`, lalu muat ulang halaman TAG (F5) dan klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
 22. Centang baris 'Excavator 20 Ton - 220', 'Excavator 20 Ton - 221', dan 'Excavator 20 Ton - 23'
 23. Klik Bulk `Batch Replace TAG`
 24. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
@@ -85,10 +86,10 @@ coverage:
 - Pembagian TC lintas spec: topik sesi Batch Replace dilanjutkan di spec 090 (TC-FA-TAG-392 s.d. 394), spec 091 (TC-FA-TAG-395 s.d. 397), dan spec 092 (TC-FA-TAG-398, 399, 1473).
 - Urutan TC di dalam spec: TC-388 dan TC-390 berbagi satu sesi (langkah 1 sampai 11) karena TC-390 hanya melewati aset tanpa mengubah apa pun; sesudahnya TC-389 yang menyimpan, lalu TC-391 yang membutuhkan keadaan awal dipulihkan.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 10 dan 11 (mengakhiri sesi tanpa mengubah data), 12 dan 21 (memuat ulang halaman supaya tabel dan popup dibuka dari keadaan bersih), 19, 20, dan 34 (menutup sesi dan ringkasan). Langkah 21 juga memulihkan data lewat fixture backend hingga tersimpan.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 16, 25, 28); entri TAG Log Global (langkah 16, 25, 28).
 - Temuan untuk QA:
   - TC-FA-TAG-390 tidak menyebut cara mengakhiri sesi; spec mengakhirinya dengan ikon close (perilaku di TC-FA-TAG-398).
   - TC-FA-TAG-389 dan TC-FA-TAG-391: sesi tidak diselesaikan sampai ringkasan di TC-389; spec menutup sesinya dengan ikon close dan [Close] sebagai langkah penghubung.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-389, 390, dan 391 tanpa langkah observasi di TC (Tag Paired, tidak ada entri Changelog baru) tidak diasersi.

@@ -25,13 +25,14 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset Replace | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00130` berstatus Paired | `aset220` |
-| Aset Batch Replace | 'Excavator 20 Ton - 220' (`RF-00130`) dan 'Excavator 20 Ton - 221' (`RF-00140`), keduanya Group Plant A dengan satu Tag RFID Paired | `aset221` |
+| Aset Replace | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00330` berstatus Paired | `aset220` |
+| Aset Batch Replace | 'Excavator 20 Ton - 220' (`RF-00330`) dan 'Excavator 20 Ton - 221' (`RF-00140`), keduanya Group Plant A dengan satu Tag RFID Paired | `aset221` |
 | Aset Pair | 'Excavator 20 Ton - 51' (AST-0051, Group Plant A, TAG Type Asset Name RFID saja), Not Paired Yet | `aset51` |
 | Stok Global | Tag RFID `RF-00412` dan `RF-00415` berstatus Available, Tag NFC `NF-00500` berstatus Available | `stokAvailable` |
 | Halaman 2 tab Paired | Pada Search `Excavator`, Filter TAG Type `RFID`, dan Sort Asset Name Z-A (page size 10) tab Paired memuat lebih dari 10 grup, dan grup Excavator 20 Ton / Plant A berada di halaman 2 | `grupHalaman2` |
 
 - State yang diubah dan pemulihannya: Tag pada aset 220 dan 221, `RF-00412` (Available menjadi Paired), serta aset 51 (Not Paired Yet menjadi Paired). Langkah 13 dan 22 memulihkan semuanya lewat fixture backend sebelum blok berikutnya; hook `after` memulihkan keadaan awal walau spec gagal di tengah.
+- Nilai literal Pre-setup (nama aset, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 7, 30); entri Changelog `Pair TAG` per Tag (langkah 18); entri TAG Log Global (langkah 7, 18, 30).
 
 ## Test Steps
 
@@ -83,6 +84,7 @@ coverage:
 
 - Urutan TC pada spec: TC-FA-TAG-978, 979, 977. Search `Excavator` dan Sort Asset Name Z-A diatur pada langkah 1 dan 2 (TC-FA-TAG-978) dan dipertahankan tabel, terbukti pada langkah 11, 12, 20, dan 21. Karena itu langkah Search dan Sort milik TC-FA-TAG-979 (langkah 1 dan 2) dan TC-FA-TAG-977 (langkah 1 dan 3) tidak diketik ulang; TC-FA-TAG-977 menambah Filter dan halaman 2 (langkah 23 sampai 26). Tiap TC tetap dimulai dari data yang dipulihkan langkah 13 dan 22 (S-10).
 - Langkah penghubung (S-03): langkah 13 dan 22 (pemulihan data lewat fixture backend, karena `RF-00412` dan Tag aset 220 dipakai bergantian oleh ketiga TC) dan langkah 26 (TC-FA-TAG-977 langkah 4: "pindah ke halaman 2 jika tersedia" ditulis tanpa syarat karena Prerequisites menjamin halaman 2).
+- A-15: nilai literal Pre-setup (nama aset, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 7, 30); entri Changelog `Pair TAG` per Tag (langkah 18); entri TAG Log Global (langkah 7, 18, 30).
 - Temuan untuk QA:
   - TC-FA-TAG-977 langkah 4 "Pindah ke halaman 2 jika tersedia" adalah langkah bersyarat; Precondition f ("memuat lebih dari 10 grup") tidak menyebut Search, Filter, dan Sort yang berlaku maupun grup mana yang berada di halaman 2. Spec menetapkan data di Prerequisites (`grupHalaman2`).
   - TC-FA-TAG-977, 978, dan 979 tidak menyebut apakah Popup Detail masih terbuka setelah aksi selesai. Spec mengasumsikan popup tertutup dan tabel Paired terlihat (Expected "tabel dimuat ulang"), sehingga langkah berikutnya membuka popup lagi tanpa langkah penutup; QA perlu menegaskan.

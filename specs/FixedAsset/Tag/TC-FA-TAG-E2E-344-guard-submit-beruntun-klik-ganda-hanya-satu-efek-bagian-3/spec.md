@@ -25,10 +25,11 @@ coverage:
 | Data | Nilai | Kunci |
 |---|---|---|
 | Aset Not Paired Yet | 'Excavator 20 Ton - 51' (AST-0051, Group Plant A, TAG Type Asset Name RFID saja, belum punya Tag Paired) | `aset51` |
-| Dua aset Paired | 'Excavator 20 Ton - 220' (`RF-00130`) dan 'Excavator 20 Ton - 221' (`RF-00140`), Group Plant A, masing-masing satu Tag RFID Paired | `asetBatch` |
+| Dua aset Paired | 'Excavator 20 Ton - 220' (`RF-00330`) dan 'Excavator 20 Ton - 221' (`RF-00140`), Group Plant A, masing-masing satu Tag RFID Paired | `asetBatch` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
-- State yang diubah dan pemulihannya: langkah 7 memasangkan `RF-00412` ke AST-0051 dan dipulihkan lewat fixture backend di langkah 12; langkah 19 mengganti Tag 'Excavator 20 Ton - 220' dari `RF-00130` menjadi `RF-00412`. Hook `after` memulihkan AST-0051 ke Not Paired Yet, AST-0220 ke `RF-00130`, `RF-00412` ke Available, dan melepas intercept walau spec gagal di tengah.
+- State yang diubah dan pemulihannya: langkah 7 memasangkan `RF-00412` ke AST-0051 dan dipulihkan lewat fixture backend di langkah 12; langkah 19 mengganti Tag 'Excavator 20 Ton - 220' dari `RF-00330` menjadi `RF-00412`. Hook `after` memulihkan AST-0051 ke Not Paired Yet, AST-0220 ke `RF-00330`, `RF-00412` ke Available, dan melepas intercept walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*, QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 19); entri Changelog `Pair TAG` per Tag (langkah 7); entri TAG Log Global (langkah 7, 19).
 
 ## Test Steps
 
@@ -68,8 +69,8 @@ coverage:
 - Pembagian TC lintas spec: klik ganda pada pindaian, Start Print, dan Receive (TC-FA-TAG-257, 494, 566) ada di spec 342; Submit Decline Report dan Submit Replace (TC-FA-TAG-646, 1344) ada di spec 343; Submit Report TAG dan Cancel Report (TC-FA-TAG-619, 669) ada di spec 351; Submit Receive Manually (TC-FA-TAG-587) ada di spec 383.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 5 dan 18 (memasang intercept penahan respons), 6 (menunggu toast lama hilang otomatis sebelum hitungan toast), 9 dan 22 (melepas tahanan respons dan intercept), 12 (memulihkan AST-0051 dan `RF-00412`, karena TC-FA-TAG-1349 memakai `RF-00412` yang sama), 13 dan 24 (muat ulang halaman untuk menutup dialog dan membersihkan seleksi).
 - Langkah 20 (hanya satu request) dan langkah 21 (Disabled dengan state loading) diasersi sebelum header sesi diverifikasi di langkah 23, mengikuti urutan state (bagian 8b butir 5): header berganti hanya sesudah respons dilepas.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*, QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 19); entri Changelog `Pair TAG` per Tag (langkah 7); entri TAG Log Global (langkah 7, 19).
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-1348 ("Hanya satu entri Changelog Pair TAG dan satu TAG Log Paired untuk `RF-00412`") dan TC-FA-TAG-1349 ("Hanya satu entri Changelog Replace untuk 'Excavator 20 Ton - 220'") tanpa langkah observasi di TC tidak diasersi.
   - TC-FA-TAG-1349 memakai `RF-00412` sebagai Tag pengganti sedangkan TC-FA-TAG-1348 memasangkan `RF-00412` ke AST-0051; spec memulihkan `RF-00412` ke Available di antara keduanya.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*, QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -32,6 +32,7 @@ coverage:
 | Event Log | 27 Okt 2026 14:15 [RFID] RF-00093, 'Excavator 20 Ton - 5', Disposal Center, Dedi K., Budi S., Assigned, Paired; 26 Okt 2026 10:02 [RFID] RF-00071, Last Asset 'Excavator 20 Ton - 2', Return Group Disposal Center, Handed Over By Dedi K., Received By Budi S., Method Scan, Final Status Available; 26 Okt 2026 09:40 [NFC] NF-00092, 'Laptop Pro 14 - 8', HQ Warehouse, Rina T., Sari W., Manual, Damaged/Missing | `eventLog` |
 
 - State yang diubah dan pemulihannya: intercept 5xx dipasang di langkah 1, 8, 16, dan 23 dan dilepas di langkah 6, 13, dan 21; intercept terakhir (langkah 23) dilepas hook `after`, yang juga melepas semua intercept walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -68,8 +69,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-230, 970, 1026, 1069). Tidak ada TC hanya-BE.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 6, 13, 21 (melepas intercept), 9, 17, 24 (menunggu toast sebelumnya hilang agar toast berikutnya adalah toast baru, R-12), 14 (menutup Modal Changelog).
 - Langkah 5 memakai pembaca berkas unduhan untuk Expected "Tidak ada file terunduh" sesudah `Verifikasi` toast sebagai anchor positif; TC-FA-TAG-970, 1026, dan 1069 tidak menulis Expected itu sehingga tidak diasersi.
+- A-15: nilai literal Pre-setup (Asset Name, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-970, 1026, dan 1069 tidak menyebut format unduhan lain; spec memakai `Download as CSV` sesuai langkah TC.
   - TC-FA-TAG-1026 dan TC-FA-TAG-1069 menulis langkah memasang kegagalan sebagai "Gagalkan request download dengan respons 5xx" tanpa mekanisme; spec memakai intercept 5xx.
-  - Nama dan kode literal Pre-setup (Asset Name, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -33,6 +33,7 @@ coverage:
 - Data grup Excavator 20 Ton / Plant B (20 aset): lima aset acuan `AST-0011`, `AST-0020`, `AST-0021`, `AST-0043`, `AST-0044`; Non-standard 5 aset.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -80,7 +81,7 @@ coverage:
 - Langkah 4 dan 8 adalah asersi absence atas baris tabel; anchor positif adalah Verifikasi satu aset Reported tampil (langkah 3) dan Verifikasi label tombol (langkah 6) pada popup yang sama (bagian 8b butir 2).
 - Langkah 22 dan 23 adalah asersi absence atas isi Search dan indikator Filter; anchor positif adalah Verifikasi tabel popup tetap terfilter (langkah 24) dan Popup Detail yang sudah termuat.
 - TC-FA-TAG-50 sampai 55 ada di spec 010.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-58 Langkah 3 ("Search dan Filter Panel pada Table Tools halaman") ambigu: popup Detail menutupi Table Tools halaman dan tabel T-TAG-02 punya Table Tools sendiri. Spec memeriksa Table Tools popup; mohon QA mengonfirmasi.
   - TC-FA-TAG-57 tidak menyebut jumlah baris yang tampil per halaman saat "20 aset"; spec mengasersi jumlah total aset 20 dan menyerahkan cara pengamatan ke tahap script.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

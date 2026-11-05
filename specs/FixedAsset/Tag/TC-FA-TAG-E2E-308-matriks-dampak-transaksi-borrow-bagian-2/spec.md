@@ -46,47 +46,50 @@ coverage:
 ### TC-FA-TAG-1174: Extend pada kondisi T4
 
 1. Buka layar transaksi Borrow untuk aset `Aset Matriks Extend T4 {runId}-308`
-2. Jalankan langkah "Extend" sampai selesai
-3. Verifikasi langkah "Extend" pada Borrow berjalan normal sampai selesai
-4. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+2. Jalankan langkah "Extend"
+3. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+4. Lanjutkan langkah "Extend" sampai selesai
+5. Verifikasi langkah "Extend" pada Borrow berjalan normal sampai selesai
 
 ### TC-FA-TAG-1175: Check-in pada kondisi T1
 
-5. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-in T1 {runId}-308`
-6. Jalankan langkah "Check-in" sampai selesai
-7. Verifikasi langkah "Check-in" pada Borrow berjalan normal sampai selesai
+6. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-in T1 {runId}-308`
+7. Jalankan langkah "Check-in"
 8. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+9. Lanjutkan langkah "Check-in" sampai selesai
+10. Verifikasi langkah "Check-in" pada Borrow berjalan normal sampai selesai
 
 ### TC-FA-TAG-1176: Check-in pada kondisi T2
 
-9. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-in T2 {runId}-308`
-10. Jalankan langkah "Check-in" sampai selesai
-11. Verifikasi langkah "Check-in" pada Borrow berjalan normal sampai selesai
-12. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+11. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-in T2 {runId}-308`
+12. Jalankan langkah "Check-in"
+13. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+14. Lanjutkan langkah "Check-in" sampai selesai
+15. Verifikasi langkah "Check-in" pada Borrow berjalan normal sampai selesai
 
 ### TC-FA-TAG-1177: Check-in pada kondisi T3
 
-13. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-in T3 {runId}-308`
-14. Jalankan langkah "Check-in"
-15. Verifikasi tombol `[I can't scan the TAG]` tersedia
-16. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-17. Verifikasi bidang "Foto aset" bertanda wajib (*)
-18. Unggah Foto aset dan selesaikan transaksi
-19. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-20. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
-21. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
+16. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-in T3 {runId}-308`
+17. Jalankan langkah "Check-in"
+18. Verifikasi tombol `[I can't scan the TAG]` tersedia
+19. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+20. Verifikasi bidang "Foto aset" bertanda wajib (*)
+21. Unggah Foto aset dan selesaikan transaksi
+22. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+23. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
+24. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
 
 ### TC-FA-TAG-1178: Check-in pada kondisi T4
 
-22. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-in T4 {runId}-308`
-23. Jalankan langkah "Check-in"
-24. Verifikasi tombol `[I can't scan the TAG]` tersedia
-25. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-26. Verifikasi bidang "Foto aset" bertanda wajib (*)
-27. Verifikasi tidak ada Tag untuk dipilih
-28. Unggah Foto aset dan selesaikan transaksi
-29. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-30. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
+25. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-in T4 {runId}-308`
+26. Jalankan langkah "Check-in"
+27. Verifikasi tombol `[I can't scan the TAG]` tersedia
+28. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+29. Verifikasi bidang "Foto aset" bertanda wajib (*)
+30. Verifikasi tidak ada Tag untuk dipilih
+31. Unggah Foto aset dan selesaikan transaksi
+32. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+33. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
 
 ## Notes
 

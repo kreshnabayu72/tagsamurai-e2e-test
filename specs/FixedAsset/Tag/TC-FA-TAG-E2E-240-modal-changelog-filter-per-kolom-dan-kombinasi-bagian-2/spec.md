@@ -34,6 +34,8 @@ coverage:
 
   Kunci fixture: `changelogE1E6`.
 - State yang diubah: hanya state Search, Filter, dan Sort modal; semuanya dikosongkan oleh langkah 7 sampai 9, 17 sampai 20, dan 22. Tidak ada perubahan data bisnis.
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
+- Nilai literal Pre-setup (nama aset, kode Tag, Modified By) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -75,7 +77,6 @@ coverage:
 - Langkah penghubung (S-03): langkah 7 sampai 9 (mengosongkan Filter dan menutup panel), 17 sampai 20 (mengosongkan Filter, mengembalikan sort ke netral, dan menutup input Search lewat `(←)` supaya TC-FA-TAG-965 mulai dari enam entri), dan 24 (menutup modal). Filter Panel dianggap tetap terbuka sesudah `[Apply]` (urutan "`[Clear Field]` lalu `[Apply]`" tanpa membuka ulang panel mengikuti TC-FA-TAG-696).
 - Pembagian TC lintas spec: screening Filter Panel dan Filter per kolom (TC-FA-TAG-957 sampai TC-FA-TAG-962) ada di spec 239.
 - Temuan untuk QA:
-  - Judul TC-FA-TAG-965 menyebut "Mengosongkan Search atau Clear Field", tetapi langkah dan Expected hanya memuat Search; jalur `[Clear Field]` tidak diuji pada TC ini.
   - TC-FA-TAG-964 Expected tidak membedakan urutan E1 dan E2 (Name sama); spec tidak mengasersi urutan di antaranya.
   - Post Condition TC ("tidak ada perubahan data bisnis") tidak punya langkah observasi dan tidak diasersi.
   - Changelog adalah audit trail permanen; asersi "hanya baris Ex tampil" bergantung pada Changelog yang hanya memuat E1 sampai E6, yang dijamin fixture backend (tim FE/BE).

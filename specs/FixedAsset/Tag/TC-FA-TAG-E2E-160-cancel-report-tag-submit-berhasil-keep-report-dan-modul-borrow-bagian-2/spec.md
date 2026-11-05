@@ -26,12 +26,13 @@ coverage:
 | SA_NOTAG | Staff Auditor (tidak memegang Manage asset & TAG) | `staffAuditorTidakMemegangManageAssetTag_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_SA_NOTAG_PASSWORD` |
 | ABR | Administrator Borrow dengan hak aksi Cancel Report | `administratorBorrowDenganHakAksiCancelReport_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_ABR_PASSWORD` |
 
-- Akun aktor pertama: Staff Auditor (tidak memegang Manage asset & TAG) [SA_NOTAG]. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > TAG > Paired). Aksi spec ini dijalankan dari modul Audit, sehingga langkah pertama berpindah ke modul Audit. Langkah ganti akun ditulis eksplisit (Logout lalu Login). Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor pertama: Staff Auditor (tidak memegang Manage asset & TAG) [SA_NOTAG]. Login di hook `before` spec ini; halaman dibuka di langkah pertama (hook suite `beforeEach` dikecualikan, lihat `suite.md`). Aksi spec ini dijalankan dari modul Audit, sehingga langkah pertama berpindah ke modul Audit. Langkah ganti akun ditulis eksplisit (Logout lalu Login). Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Password tidak ditulis di spec atau fixture; nama env didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_fa-tag` true untuk akun aktor yang dipakai dan hook suite `after` memulihkannya (lihat `suite.md`).
 - Suite serial: `parallel: false` (lihat `suite.md`).
 - Sesi API aktor: pelaku kedua memakai login API (password) yang tidak dihitung sebagai sesi web (lihat `suite.md`), tanpa asersi di sesinya; akun Staff Auditor kedua disediakan tim FE (akun pelaku tidak tertulis di Pre-setup TC).
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk aset, Tag per status registri, task Existence Audit, serta laporan Tag (laporan terbuka Damaged, Missing, atau Unreadable dan pembatalan laporan); tidak ada endpoint yang dikarang di spec ini.
+- Kemampuan teknis (disediakan tim FE/BE): pembacaan status laporan Tag (terbuka atau ditutup) dari backend lewat fixture backend; dipakai hanya untuk Verifikasi "baca lewat fixture backend" pada butir Expected semua-atau-tidak, tanpa endpoint yang dikarang.
 - Kemampuan teknis (disediakan tim FE/BE): transaksi Borrow milik spec dengan aset AST-0020 berstatus TAG Issue (seed lewat fixture backend).
 - Data Pre-setup (kunci fixture `Fixture.fixedAssetTag.<kunci>` belum ada; ditandai untuk dibuat tim FE):
 
@@ -43,6 +44,7 @@ coverage:
 | Transaksi Borrow | Transaksi milik spec dengan aset AST-0020 berstatus TAG Issue dan Tag `RF-00130` laporan terbuka Damaged | `borrowAst20TagIssue` |
 
 - State yang diubah dan pemulihannya: laporan yang dibatalkan pelaku kedua, laporan yang diatur ulang, dan transaksi Borrow dipulihkan lewat fixture backend di hook `after`; spec selesai di akun ABR dan hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Cancel Report` per Tag (langkah 11, 22, 35). Aksi tulis pada langkah 12 dan 23 ditolak dan tidak menambah entri. Perubahan status transaksi Borrow akibat langkah 35 tidak dinyatakan PRD tag.md atau TC; jejak transaksi di modul Borrow tidak terpulihkan. Pengaturan ulang lewat fixture backend (langkah 18, 30) memulihkan state dan membuat laporan terbuka; entri Changelog `Report TAG` per Tag dari laporan itu tidak terpulihkan (langkah 18, 30; A-20, kemampuan jalur bisnis fixture disediakan tim FE/BE dan belum dikonfirmasi).
 
 ## Test Steps
 
@@ -104,9 +106,9 @@ coverage:
 - Pengecualian pelaku kedua: pelaku kedua memakai sesi API; bukan konteks kedua kelas c dan tidak memakai `P-2`; langkah pemicunya ditulis "... hingga ... tersimpan" (langkah 11 dan 22). Hasil di sesi pelaku kedua tidak diasersi.
 - Urutan TC di dalam spec: TC-1440, TC-667, TC-1458, TC-1471, TC-670. TC-670 terakhir karena menutup dengan ganti akun ke ABR; seluruh TC akun Staff Auditor berurutan sebelum ganti akun. TC-1440 dan TC-667 memakai dialog yang sama (aset dan state identik).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 15 sampai 17 dan 27 sampai 29 (menutup form dirty), 18 dan 30 (mengatur ulang state laporan dan transaksi lewat fixture backend), serta 31 (ganti akun eksplisit).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Cancel Report` per Tag (langkah 11, 22, 35). Aksi tulis pada langkah 12 dan 23 ditolak dan tidak menambah entri. Perubahan status transaksi Borrow akibat langkah 35 tidak dinyatakan PRD tag.md atau TC; jejak transaksi di modul Borrow tidak terpulihkan. Pengaturan ulang lewat fixture backend (langkah 18, 30) memulihkan state dan membuat laporan terbuka; entri Changelog `Report TAG` per Tag dari laporan itu tidak terpulihkan (langkah 18, 30; A-20, kemampuan jalur bisnis fixture disediakan tim FE/BE dan belum dikonfirmasi).
 - Temuan untuk QA:
-  - Hook suite `beforeEach` membuka Fixed Asset > TAG untuk akun aktor pertama, sedangkan Staff Auditor tanpa Manage asset & TAG tidak berhak atas halaman itu; hook perlu dikecualikan untuk spec ini di tahap script.
+  - Hook suite `beforeEach` membuka Fixed Asset > TAG untuk akun aktor pertama, sedangkan Staff Auditor tanpa Manage asset & TAG tidak berhak atas halaman itu; spec ini dikecualikan di `suite.md` bagian Hook sehingga halaman yang diuji dibuka di langkahnya sendiri.
   - TC-FA-TAG-670 menulis "Isi alasan pembatalan" tanpa nilai di kolom Data Uji dan tanpa teks dialog Borrow; spec memakai kalimat langkah apa adanya dan nilai alasan ditentukan tahap script.
   - Post Condition TC-FA-TAG-1440, 1458, 1471, dan 670 (laporan tetap terbuka atau Canceled, Changelog satu entri, status Tag Reported dicabut) tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

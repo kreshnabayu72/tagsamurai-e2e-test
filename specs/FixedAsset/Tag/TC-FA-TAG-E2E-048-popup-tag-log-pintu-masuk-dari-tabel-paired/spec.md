@@ -37,6 +37,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed idempotent aset dan Tag (RF-00101, QR-00232, RF-00132) lewat fixture backend (lihat `suite.md`); navigasi keyboard (Tab dan Enter).
 - Pemulihan di hook `after`: kembalikan data Pre-setup tab Paired ke keadaan awal bila seeding mengubahnya. Spec ini tidak mengubah data bisnis.
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -103,9 +104,9 @@ TC-FA-TAG-218:
 - Perubahan urutan (S-05): urutan TC sumber 212, 213, 214, 215, 216, 217, 218 menjadi 212, 213, 214, 215, 218, 216, 217. Alasan: TC Total Control (212 sampai 215 dan 218) dikumpulkan sebelum ganti akun ke Read Only dan Manage asset & TAG (Read) supaya ganti akun terjadi dua kali.
 - Langkah penghubung (tanpa awalan `Verifikasi`): 5, 8, 11, 19, 24, dan 29 (menutup Popup TAG Log dan Popup Detail), 25 dan 30 (ganti akun), 1, 26, dan 31 (membuka Popup Detail).
 - Langkah 28 dan 33: id TC ditulis di dalam langkah karena blok role tidak memakai subjudul per TC.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-212 Expected a menyebut Popup TAG Log "Global, read-only"; isi popup (kolom dan entri) tidak disebut di Expected TC mana pun pada spec ini, sehingga spec hanya mengasersi popup terbuka untuk Tag yang diklik dan hanya punya ikon close.
   - TC-FA-TAG-214 Expected ("tabel yang sama") tidak menyebut isi tabel yang dibandingkan; spec mengasersi Popup Detail tetap terbuka.
   - TC-FA-TAG-218 mengharapkan fokus pada popup (focus trap) tanpa menyebut elemen yang menerima fokus; spec mengasersi popup menerima fokus.
   - AST-0044 punya dua Tag (QR-00232 dan RF-00132) menurut TC-FA-TAG-213, sedangkan Data Uji TC-FA-TAG-190 menyebut AST-0044 hanya bertag QR-00232 (lihat spec 044).
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

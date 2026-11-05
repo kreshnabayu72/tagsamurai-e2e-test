@@ -31,6 +31,7 @@ coverage:
 | Note | Tag rusak saat serah terima | `noteReceiveManually` |
 
 - State yang diubah dan pemulihannya: entitas Client berstatus Suspended dari awal spec (diatur hook `before`) dan menjadi Expired di langkah 22; semua commit ditolak sehingga Tag tidak berubah status. Hook `after` memulihkan status entitas Client ke Active walau spec gagal di tengah.
+- Nilai literal Pre-setup (kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 3, 10, 17, 25 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 22) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -82,8 +83,8 @@ coverage:
 - Pembagian TC lintas spec: Submit Replace, Pair, dan Batch saat Suspended atau Expired (TC-FA-TAG-1285 sampai 1288) ada di spec 348 dan 385; Report TAG dan Cancel Report (TC-FA-TAG-1299, 1300, 1302) ada di spec 350; Decline Report dan halaman baca-saja (TC-FA-TAG-1301, 1317) ada di spec 385.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 7, 14, 21, dan 29 (muat ulang halaman untuk menutup dialog; dialog `beforeunload` ditangani sesuai Prerequisites), 8, 15, dan 23 (membuka tab To Be Returned sesudah muat ulang halaman), 22 (mengubah status entitas, pemicu pelaku kedua lewat sesi API).
 - Pesan pada langkah 4, 11, 18, dan 26 diasersi sebagai teks tampil tanpa menentukan jenis elemen (toast atau pesan inline) karena TC hanya menyebut "Pesan"; langkah 13, 20, dan 28 (tidak ada toast sukses) didahului `Verifikasi` pesan penolakan sebagai anchor positif.
+- A-15: nilai literal Pre-setup (kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 3, 10, 17, 25 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 22) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-1289 ("Tidak ada kode QR yang dibuat") dan TC-FA-TAG-1296 sampai 1298 ("Tag RF-00071 tetap To Be Returned; tidak ada entri Event Log, TAG Log, maupun Changelog baru") tanpa langkah observasi di TC tidak diasersi.
   - TC-FA-TAG-1289 menyebut reader tersambung sebagai precondition padahal Print QR tidak memindai Tag; spec tidak memakainya.
-  - Nama dan kode literal Pre-setup (kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

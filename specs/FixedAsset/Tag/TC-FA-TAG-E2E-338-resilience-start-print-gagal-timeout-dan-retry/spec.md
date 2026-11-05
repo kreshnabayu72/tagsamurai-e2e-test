@@ -77,5 +77,4 @@ coverage:
   - Post Condition TC-FA-TAG-495 dan 496 ("Tidak ada kode QR yang dibuat") dan TC-FA-TAG-497 ("Satu batch kode QR dibuat dari percobaan kedua") tanpa langkah observasi di TC tidak diasersi.
   - Batch kode QR yang dibuat langkah 27 (TC-FA-TAG-497) tidak punya cara pemulihan di TC; spec tidak menghapusnya.
   - TC-FA-TAG-496 dan TC-FA-TAG-497 tidak mengisi `Quantity`; spec mengikuti TC (nilai bawaan dialog).
-  - Nama dan kode literal Pre-setup tidak dipakai di spec ini; Lampiran A belum memuat butir modul ini.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; spec ini tidak memakai kunci fixture.

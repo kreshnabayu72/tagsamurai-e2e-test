@@ -33,6 +33,7 @@ coverage:
 | Aset acuan grup 'Excavator 20 Ton' / Plant B | 20 aset, memuat AST-0011, AST-0020, AST-0021, AST-0043, AST-0044 | `asetAcuanPlantB` |
 
 - State yang diubah dan pemulihannya: grup tambahan dibuat sebelum TC-FA-TAG-689 dan dihapus sesudahnya; hook `after` menghapusnya bila masih ada.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 14, 20) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -89,8 +90,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-686, TC-FA-TAG-687, TC-FA-TAG-688, TC-FA-TAG-689, TC-FA-TAG-690, TC-FA-TAG-691). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik Search toolbar halaman ada di spec 170 (TC-FA-TAG-680 s.d. 685) dan spec 171 (TC-FA-TAG-686 s.d. 691).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 14, 20, 26, 30 (seeding dan penghapusan grup tambahan, menutup Popup Detail, dan mereset input Search).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 14, 20) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-689 mensyaratkan lebih dari 10 baris grup, sedangkan TC-FA-TAG-686 s.d. 688 dan TC-FA-TAG-690 menegaskan empat baris grup; spec menambah grup hanya untuk TC-FA-TAG-689 dan menghapusnya sebelum TC-FA-TAG-690. Jumlah grup tambahan (delapan) dan cara pembuatannya tidak disebut TC.
   - TC-FA-TAG-689 tidak menyebut kata kunci yang menghasilkan lebih dari satu halaman; spec memakai `Excavator` sesuai langkah TC sehingga halaman 1 hasil pencarian berisi dua baris.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

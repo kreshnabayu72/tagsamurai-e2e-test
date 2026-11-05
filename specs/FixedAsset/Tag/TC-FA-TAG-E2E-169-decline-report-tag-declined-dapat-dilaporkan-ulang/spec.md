@@ -35,6 +35,7 @@ coverage:
 | Aset 'Excavator 20 Ton - 20' dengan laporan | AST-0020, Group Plant B; Tag tunggal RFID `RF-00130` punya laporan terbuka Damaged dari Staff Auditor | `aset20Laporan` |
 
 - State yang diubah dan pemulihannya: laporan Declined dan laporan baru Missing pada `RF-00130` dipulihkan lewat fixture backend di hook `after`; spec selesai di akun Staff Auditor dan hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 12); entri Changelog `Decline Report` per Tag (langkah 5).
 
 ## Test Steps
 
@@ -57,7 +58,7 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-644). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: Decline Report satu pengguna ada di spec 151 sampai 153 dan konflik pengguna lain di spec 154.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 6 (menunggu aksi selesai sebelum ganti akun) dan 7 (ganti akun eksplisit).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 12); entri Changelog `Decline Report` per Tag (langkah 5).
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-644 ("Laporan baru Missing terbuka untuk RF-00130 dan laporan lama tetap berstatus Declined") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -31,6 +31,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, `RF-00416` | `stokRfid` |
 
 - State yang diubah dan pemulihannya: Tag combined `NF-00810` / `QR-00810` dipasangkan pada 'Laptop Pro 14 - 9' pada TC-FA-TAG-1445; hook `after` memulihkan aset ke Not Paired Yet dan Tag combined ke Available lewat fixture backend.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 26); entri TAG Log Global (langkah 26).
 
 ## Test Steps
 
@@ -78,10 +79,10 @@ coverage:
 - Pembagian TC lintas spec: topik sesi Pair beberapa aset ada juga di spec 110 s.d. 114 (TC-FA-TAG-459 s.d. 466, 469 s.d. 472, 1383).
 - Urutan TC di dalam spec: TC-1446 (aset 1 di-Skip), TC-1487 (aset RFID lain, semua Skipped, tanpa perubahan data), lalu TC-1445 yang menyimpan perubahan; sehingga tidak ada pemulihan data di antaranya.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 10 dan 21 (memuat ulang halaman, yang juga mengakhiri sesi sebelumnya, dan membuka popup dari keadaan bersih).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 26); entri TAG Log Global (langkah 26).
 - Temuan untuk QA:
   - TC-FA-TAG-1487 butir c (toast T-20 dan T-19 tidak tampil) diasersi setelah ringkasan menutup (langkah 19) sebagai anchor positif bahwa respons sudah diproses; TC tidak memberi anchor lain.
   - TC-FA-TAG-1445 dan TC-FA-TAG-1446 tidak memberi cara menutup sesi di akhir; spec mengandalkan F5.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-1445, 1446, dan 1487 (aset Done/Skipped, "tidak ada entri Changelog Pair TAG") tanpa langkah observasi di TC tidak diasersi.

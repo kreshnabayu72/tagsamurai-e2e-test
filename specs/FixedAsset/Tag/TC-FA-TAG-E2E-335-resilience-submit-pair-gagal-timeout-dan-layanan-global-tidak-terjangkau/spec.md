@@ -31,6 +31,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: intercept dipasang di langkah 7, 18, dan 29 dan dilepas di langkah 12, 22, dan 32; hook `after` melepas semua intercept dan memastikan ketiga aset Not Paired Yet dan ketiga Tag Available.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 8, 19, 30 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 
 ## Test Steps
 
@@ -74,13 +75,14 @@ coverage:
 30. Klik [Submit]
 31. Verifikasi toast "Error, failed to pair TAG."
 32. Lepas intercept
+33. Muat ulang halaman (F5)
 
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-1345 s.d. 1347). Tidak ada TC hanya-BE.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 12, 22, dan 32 (melepas intercept), 13 dan 23 (muat ulang halaman untuk menutup dialog dirty dan Popup Detail; dialog `beforeunload` ditangani sesuai Prerequisites).
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 12, 22, dan 32 (melepas intercept), 13, 23, dan 33 (muat ulang halaman untuk menutup dialog dirty dan Popup Detail; dialog `beforeunload` ditangani sesuai Prerequisites).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 8, 19, 30 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-1345 s.d. 1347 (aset tetap Not Paired Yet, Tag tetap Available, tidak ada pairing sebagian) tanpa langkah observasi di TC tidak diasersi.
   - TC-FA-TAG-1347 tidak menyebut cara membuat layanan Global tidak terjangkau; spec menuliskannya sebagai kemampuan intercept yang disediakan tim FE/BE. Expected TC hanya toast; dialog tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -35,6 +35,7 @@ coverage:
 | Aset 'Excavator 20 Ton - 20' dengan laporan | AST-0020, Group Plant B; Tag tunggal RFID `RF-00130` punya laporan terbuka Damaged dari Staff Auditor | `aset20Laporan` |
 
 - State yang diubah dan pemulihannya: laporan `RF-00130` yang ditutup (Declined) oleh spec ini dan yang diatur ulang dipulihkan lewat fixture backend di hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Decline Report` per Tag (langkah 16, 25). Aksi tulis pada langkah 6 ditolak dan tidak menambah entri.
 
 ## Test Steps
 
@@ -81,8 +82,8 @@ coverage:
 - Pembagian TC lintas spec: Reason yang hanya berisi spasi pada dialog Decline Report (TC-FA-TAG-1395) ada di spec 166.
 - Urutan TC di dalam spec: TC-1393, TC-1392, TC-1394. Validasi yang diblokir dijalankan sebelum Submit yang berhasil; laporan `RF-00130` diatur ulang sebelum TC-1394 karena TC-1392 sudah menutupnya (langkah 19).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9 sampai 11 (menutup form dirty: ikon close, `Verifikasi` dialog "Unsaved Changes", [Leave]) dan 19 (mengatur ulang state laporan lewat fixture backend; muat ulang halaman juga menghilangkan toast sebelumnya).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Decline Report` per Tag (langkah 16, 25). Aksi tulis pada langkah 6 ditolak dan tidak menambah entri.
 - Temuan untuk QA:
   - Panjang teks dihitung setelah trim sesuai Expected TC; nilai 360 dan 361 karakter ditulis tepat sebagai huruf `a` yang diulang tanpa suffix karena asersi bergantung pada panjang persis.
   - Post Condition TC-FA-TAG-1392 s.d. 1394 (laporan RF-00130 berstatus Declined atau tetap terbuka) tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

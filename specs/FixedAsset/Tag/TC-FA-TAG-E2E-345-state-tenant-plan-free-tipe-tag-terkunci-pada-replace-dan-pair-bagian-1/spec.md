@@ -25,17 +25,18 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset Paired | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) dengan satu Tag RFID `RF-00130` Paired | `aset220` |
+| Aset Paired | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) dengan satu Tag RFID `RF-00330` Paired | `aset220` |
 | Stok Global Available | Tag RFID `RF-00412` dan `RF-00415`, Tag NFC `NF-00500` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: Client berada di Free plan sepanjang spec (diatur hook `before`); langkah 6 mengosongkan stok Tag RFID Available dan dipulihkan di langkah 12. Hook `after` memulihkan plan awal Client dan stok Tag RFID walau spec gagal di tengah. Tidak ada data aset yang berubah (semua aksi ditolak atau hanya membaca).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 6, 12) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
 ### TC-FA-TAG-245: Scan Tag saat seluruh tipe pengganti terkunci plan (D-12)
 
 1. Klik tombol scan `Replace TAG` di toolbar tab Paired
-2. Pindai Tag `RF-00130`
+2. Pindai Tag `RF-00330`
 3. Verifikasi dialog judul "Cannot Replace TAG", body "This TAG type is not available on your plan.", tombol [OK]
 4. Verifikasi Dialog Replace TAG tidak terbuka
 5. Klik [OK]
@@ -44,7 +45,7 @@ coverage:
 
 6. Kosongkan stok Tag RFID berstatus Available di registri Global lewat fixture BE hingga tersimpan
 7. Klik tombol scan `Replace TAG` di toolbar tab Paired
-8. Pindai Tag `RF-00130`
+8. Pindai Tag `RF-00330`
 9. Verifikasi dialog judul "Cannot Replace TAG", body "No available RFID TAG in stock. Activate TAG in Global Settings > TAG.", tombol [OK]
 10. Verifikasi dialog D-12 dengan body "This TAG type is not available on your plan." tidak tampil
 11. Klik [OK]
@@ -66,7 +67,7 @@ coverage:
 - Pembagian TC lintas spec: kasus Free plan lain (TC-FA-TAG-376, 383, 1154, 1314, 1315) ada di spec 346; kasus plan yang mengunci Tag NFC (TC-FA-TAG-307, 308, 365) ada di spec 347 dan (TC-FA-TAG-425, 1476) di spec 384.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 5 dan 11 (menutup dialog dengan [OK]), 6 dan 12 (mengosongkan dan memulihkan stok Tag RFID lewat fixture BE).
 - Langkah 4 (Dialog Replace TAG tidak terbuka) didahului `Verifikasi` dialog "Cannot Replace TAG" di langkah 3 sebagai anchor positif; langkah 10 didahului langkah 9 dan langkah 18 didahului langkah 15 dan 16.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 6, 12) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-245 ("Tidak ada data yang berubah") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

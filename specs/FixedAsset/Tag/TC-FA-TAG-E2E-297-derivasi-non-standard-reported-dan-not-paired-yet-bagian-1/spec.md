@@ -32,7 +32,7 @@ coverage:
 - Data tambahan (TC, tanpa suffix): aset AST-0043 dengan satu Tag QR `QR-00231` Paired (Excavator 20 Ton / Plant B, RFID); aset AST-0300 dengan dua Tag QR Paired pada Excavator 20 Ton (RFID); aset AST-0044 dengan `RF-00132` (RFID, sesuai) dan `QR-00232` (tidak sesuai); Asset Name `Beacon Unit` (BLE saja) dengan aset ber-Tag RFID Paired; Asset Name `Tracker Unit` (RFID dan BLE) dengan aset ber-Tag NFC Paired.
 - Kemampuan teknis (disediakan tim FE/BE): membaca state backend (status Tag dan laporan) tanpa UI hanya untuk butir Expected TC yang menyebutnya (S-11).
 - Baseline nilai Non-standard baris grup dan kartu `Non-standard` dibaca lewat kemampuan baca (disediakan tim FE/BE) di hook `before` (S-12).
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 7); entri TAG Log Global (langkah 7). Aksi lain lewat sesi API (langkah 2) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan TAG Type Asset Name, aset, Tag, laporan, dan sesi ke akun default suite lewat fixture backend.
 - State global yang diubah spec ini: TAG Type Asset Name, data aset/Tag/laporan Pre-setup. Suite serial (`parallel: false`).
 
@@ -99,6 +99,7 @@ coverage:
 - Mode: FE+BE.
 - Langkah penghubung (S-03): 1, 6, 11, 15, 17, 21, 25 dan 29 (mencatat nilai awal, memulihkan data lewat fixture antar TC dan menutup popup, S-09; memuat ulang halaman setelah fixture).
 - Pemicu TC-FA-TAG-143 dan 1316 memakai pelaku kedua lewat sesi API karena hanya memicu perubahan state dan tidak diasersi di sesinya (R-20).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 7); entri TAG Log Global (langkah 7). Aksi lain lewat sesi API (langkah 2) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1319 menyebut baris grup tanpa menyebut Asset Name dan Group; AST-0300 juga dipakai TC-FA-TAG-1111 sebagai aset Not Paired Yet dengan TAG Type RFID. Spec memakai grup Excavator 20 Ton / Plant A dan data aset dari fixture.
   - TC-FA-TAG-1322 dan 1323 menyebut Asset Name Beacon Unit dan Tracker Unit tanpa Group; TC-FA-TAG-1481 memakai Beacon Unit / Plant A dengan tipe BLE dan GPS. Spec memakai Group dari fixture.

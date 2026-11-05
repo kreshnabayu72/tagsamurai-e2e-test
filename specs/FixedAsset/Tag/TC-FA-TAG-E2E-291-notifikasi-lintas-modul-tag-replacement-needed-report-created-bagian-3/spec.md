@@ -24,7 +24,7 @@ coverage:
 - Pelaku kedua memakai sesi API (token tidak dihitung sebagai sesi web; kemampuan disediakan tim BE/FE, lihat `suite.md`); langkah pemicunya tidak memuat asersi di sesi itu.
 - Data (Pre-setup TC, tanpa suffix): aset AST-0020 ('Excavator 20 Ton - 20', Plant B) dengan Tag tunggal `RF-00130` dan laporan terbuka Damaged dari Staff Auditor; notifikasi "TAG reported" RF-00130 yang belum dibaca milik Budi S. (precondition TC, tidak diasersi).
 - Kemampuan teknis (disediakan tim FE/BE): membaca status notifikasi tiap akun.
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: entri Changelog `Decline Report` per Tag (langkah 2).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan TAG Type Asset Name, aset, Tag, laporan, dan sesi ke akun default suite lewat fixture backend.
 - State global yang diubah spec ini: status laporan Tag RF-00130 dan status baca notifikasi. Suite serial (`parallel: false`).
 
@@ -43,5 +43,6 @@ coverage:
 - Mode: FE+BE.
 - Langkah penghubung (S-03): 1 dan 3 (menyiapkan laporan dan notifikasi lewat fixture, memuat ulang halaman).
 - Pemicu memakai pelaku kedua lewat sesi API karena hanya memicu penutupan laporan dan tidak diasersi di sesinya (R-20).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Decline Report` per Tag (langkah 2).
 - Temuan untuk QA:
   - TC-FA-TAG-1254 langkah TC ke-7 ('Login sbg Budi S.') adalah pengamat; spec memakai sesi UI Budi S. sejak hook `before` dan memicu Decline Report lewat sesi API.

@@ -36,6 +36,7 @@ coverage:
 - Kemampuan teknis: pengaturan ukuran viewport browser (dipersempit pada langkah 9, dipulihkan pada langkah 15); pembacaan atribut label aksesibilitas (`aria-label`) ikon (TC-FA-TAG-22); navigasi fokus keyboard (Tab, Enter, Space).
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah selain ukuran viewport (dipulihkan pada langkah 15 dan di hook `after`).
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -97,8 +98,8 @@ coverage:
 - Langkah 10 membuka menu dari sidebar karena TC-FA-TAG-20 menguji tampilan tabel setelah halaman dibuka pada viewport sempit.
 - Langkah 20 dan 21: TC-FA-TAG-21 Expected c ("focus trap: Tab tidak keluar dari popup") tidak punya langkah di TC; langkah 20 adalah aksi tambahan untuk mengamatinya (S-03).
 - Langkah 33 mengasumsikan baris AST-0044 berada di halaman pertama Popup Detail (urutan Last Updated terbaru di atas; AST-0044 paling baru) (S-14).
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-20 Expected b berbunyi "Kolom terakhir Not Paired Yet dapat dijangkau dengan scroll tanpa memotong isi", sedangkan kolom terakhir tabel menurut TC-FA-TAG-1 adalah `Column Visibility (⋯)`; spec mengikuti teks TC.
   - TC-FA-TAG-21 Langkah 3 ("Asset Name lain") tidak menyebut baris yang dimaksud; spec memakai baris grup kedua.
   - TC-FA-TAG-22 tidak menyebut cara membaca atribut label aksesibilitas (mis. `aria-label`); spec menyerahkannya ke tahap script.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

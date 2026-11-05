@@ -31,6 +31,7 @@ coverage:
 | Tag Supply Asset | Tag `SA-00020` terdaftar di produk Supply Asset (stok dan SKU) | `tagSupplyAsset20` |
 
 - State yang diubah dan pemulihannya: spec tidak mengubah data (semua pindaian ditolak atau dibuang dengan [Discard]).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*/SA-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -75,10 +76,10 @@ coverage:
 - Pembagian TC lintas spec: topik penolakan scan Pair TAG ada di spec 098 (TC-FA-TAG-419 s.d. 423), spec 099 (TC-FA-TAG-424, 426 s.d. 429), dan spec 100 (TC-FA-TAG-430 s.d. 434).
 - Urutan TC di dalam spec: TC-1462 (tanpa isian tersimpan) dahulu, lalu TC-1453, lalu TC-1454; dialog TC-1453 yang berisi `RF-00412` ditutup dengan `✕`, verifikasi dialog `Unsaved Changes` setara `Discard Pairing`, dan [Discard] sebelum TC-1454 dimulai dari slot kosong (S-08).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 14, 16, 24, dan 26 (menutup dialog yang berisi pindaian) serta 17 (membuka ulang dialog Pair TAG pada popup yang masih terbuka).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*/SA-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1462 butir b tidak memberi anchor selain butir a; pesan V-07 tidak tampil diasersi sesudah pesan Supply Asset tampil pada slot yang sama.
   - TC-FA-TAG-1453 dan TC-FA-TAG-1454 menulis "Tag `RF-00412` dipindai di slot lalu dipindai ulang"; spec memakai kode persis.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*/SA-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-1453, 1454, dan 1462 ("Tidak ada Tag yang dipasangkan; aset tetap Not Paired Yet") tanpa langkah observasi di TC tidak diasersi.

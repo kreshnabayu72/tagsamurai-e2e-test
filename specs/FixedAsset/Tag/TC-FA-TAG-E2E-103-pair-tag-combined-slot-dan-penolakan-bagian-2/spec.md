@@ -34,6 +34,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: spec tidak menyimpan perubahan (semua dialog dibuang dengan [Discard] atau penolakan); hook `after` memastikan Tag di atas tetap Available lewat fixture backend.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 7 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 
 ## Test Steps
 
@@ -85,9 +86,9 @@ coverage:
 - Pembagian TC lintas spec: topik Tag combined pada Pair TAG ada juga di spec 102 (TC-FA-TAG-435 s.d. 439).
 - Urutan TC di dalam spec: TC-443 mendahului TC-442 pada dialog 'Laptop Pro 14 - 9' yang sama (pindaian yang ditolak tidak mengisi slot sehingga TC-442 mulai dari slot kosong). TC-440 dan TC-441 memakai dialog 'Server Rack 42U - 101' secara berurutan dan dibuang dengan [Discard] di antaranya (S-08).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9, 11, 17, 19, 31, dan 33 (menutup dialog yang berisi pindaian dengan ikon close dan [Discard]), langkah 12 (membuka ulang dialog pada popup yang masih terbuka), serta langkah 20 (menutup Popup Detail sebelum membuka popup grup lain).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 7 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 - Temuan untuk QA:
   - TC-FA-TAG-441 menempatkan combined `RF-00811` (RFID+QR) di slot `QR TAG` sementara RFID sudah terisi; TC tidak menyebut apakah slot `QR TAG` tetap `Not scanned` sesudah penolakan, sehingga hal itu tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-440 ("Aset tetap Not Paired Yet") tanpa langkah observasi di TC tidak diasersi.

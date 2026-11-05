@@ -25,11 +25,12 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset Paired | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID, Tag RFID `RF-00130` Paired) dan 'Excavator 20 Ton - 221' (AST-0221, Group Plant A, `RF-00140` Paired) | `asetPaired` |
+| Aset Paired | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID, Tag RFID `RF-00330` Paired) dan 'Excavator 20 Ton - 221' (AST-0221, Group Plant A, `RF-00140` Paired) | `asetPaired` |
 | Aset Not Paired Yet | 'Excavator 20 Ton - 51' (AST-0051, Group Plant A, TAG Type Asset Name RFID saja) | `aset51` |
 | Stok Global Available | Tag RFID `RF-00412` dan `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: entitas Client berstatus Suspended sepanjang spec (diatur hook `before`); semua Submit ditolak sehingga tidak ada data aset yang berubah. Hook `after` memulihkan status entitas Client ke Active walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*, QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5, 17, 25 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Jumlah entri Changelog dibaca sebagai baseline pada langkah 1; log itu permanen dan tidak dipulihkan fixture, dan asersi entri baru memakai selisih terhadap baseline: butir A-18.
 
 ## Test Steps
 
@@ -41,7 +42,7 @@ coverage:
 4. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
 5. Klik [Submit]
 6. Verifikasi pesan "Changes can't be saved while this workspace is suspended or expired." tampil
-7. Verifikasi (lewat fixture BE) Tag `RF-00130` tetap Paired
+7. Verifikasi (lewat fixture BE) Tag `RF-00330` tetap Paired
 8. Muat ulang halaman (F5)
 9. Klik tombol `Changelog`
 10. Verifikasi Modal Changelog Paired TAG terbuka
@@ -67,7 +68,7 @@ coverage:
 24. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
 25. Klik [Submit & next]
 26. Verifikasi pesan "Changes can't be saved while this workspace is suspended or expired." tampil
-27. Verifikasi (lewat fixture BE) aset 'Excavator 20 Ton - 220' tidak tersimpan dan tetap ber-Tag `RF-00130`
+27. Verifikasi (lewat fixture BE) aset 'Excavator 20 Ton - 220' tidak tersimpan dan tetap ber-Tag `RF-00330`
 28. Muat ulang halaman (F5)
 
 ## Notes
@@ -76,9 +77,10 @@ coverage:
 - Pembagian TC lintas spec: Submit Replace saat entitas Expired (TC-FA-TAG-1286) ada di spec 385; Start Print, Receive TAG, dan Receive Manually saat Suspended atau Expired (TC-FA-TAG-1289, 1296 s.d. 1298) ada di spec 349; Report TAG dan Cancel Report (TC-FA-TAG-1299, 1300, 1302) ada di spec 350; Decline Report dan halaman baca-saja (TC-FA-TAG-1301, 1317) ada di spec 385.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1 (baseline Changelog, S-12), 8, 20, dan 28 (muat ulang halaman untuk menutup dialog yang berisi isian; dialog `beforeunload` ditangani sesuai Prerequisites), 12 (menutup Modal Changelog).
 - Pesan pada langkah 6, 18, dan 26 diasersi sebagai teks tampil tanpa menentukan jenis elemen (toast atau pesan inline) karena TC hanya menyebut "Pesan".
+- Asersi tidak ada entri log baru (langkah 11, TC-FA-TAG-1285 butir c) memakai pengecualian kelas h (S-05, prinsip 13g): objek uji TC state tenant ini adalah penolakan aksi tulis, sehingga asersi berada di spec ini sendiri dengan `Verifikasi` selisih jumlah entri Changelog Paired TAG terhadap baseline langkah 1 (S-12, satu surface log).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*, QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5, 17, 25 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 - Temuan untuk QA:
-  - Expected TC-FA-TAG-1285 butir b ("Tag `RF-00130` tetap Paired"), TC-FA-TAG-1287 butir b, dan TC-FA-TAG-1288 ("aset tidak tersimpan") tidak punya langkah observasi di UI pada TC; spec mengasersinya lewat pembacaan state data fixture BE (S-11).
+  - Expected TC-FA-TAG-1285 butir b ("Tag `RF-00330` tetap Paired"), TC-FA-TAG-1287 butir b, dan TC-FA-TAG-1288 ("aset tidak tersimpan") tidak punya langkah observasi di UI pada TC; spec mengasersinya lewat pembacaan state data fixture BE (S-11).
   - Changelog tidak memuat entri baru (TC-FA-TAG-1285 butir c): Changelog adalah audit trail permanen sehingga spec memakai baseline jumlah entri (S-12).
   - Post Condition TC-FA-TAG-1285 ("Tidak ada perubahan data dan tidak ada log"), TC-FA-TAG-1287, dan TC-FA-TAG-1288 tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*, QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

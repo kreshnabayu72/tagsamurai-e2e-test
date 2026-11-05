@@ -26,6 +26,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB satu reader tersambung, driver terpasang, reader aktif, sudah disinkronkan di Global Settings > Handheld Reader (lihat `suite.md`); pembacaan atribut aksesibilitas elemen (`aria-live`) dan urutan fokus keyboard; seed idempotent aset, Tag, task Existence Audit, dan laporan Tag lewat fixture backend.
 - Data (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): aset AST-0221 'Excavator 20 Ton - 221' (Group Plant A) punya Tag RFID `RF-00140` berstatus Paired (Tag yang dipindai pada langkah 4); Tag `RF-09999` tidak terdaftar (kode tidak dikenal). Task Existence Audit dengan item AST-0044 'Excavator 20 Ton - 44' (group Plant B) berstatus In Audit; Tag [RFID] RF-00132 dan [QR] QR-00232 keduanya Paired tanpa laporan terbuka. Item AST-0020 'Excavator 20 Ton - 20' pada task yang sama dengan Tag tunggal RF-00130 yang punya laporan terbuka Damaged dari Staff Auditor.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan kondisi reader, task Existence Audit, dan laporan Tag ke keadaan awal lewat fixture backend, lalu kembalikan sesi ke akun default suite. Spec ini tidak menekan [Submit] atau [Cancel Report], jadi data tidak berubah. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -36,7 +37,7 @@ coverage:
 3. Verifikasi pesan galat diumumkan dengan `aria-live="assertive"`
 4. Pindai Tag `RF-00140` (pemindaian sukses)
 5. Verifikasi pesan sukses diumumkan dengan `aria-live="polite"`
-6. Tutup overlay scan atau dialog yang terbuka lewat `✕`
+6. Klik `✕` pada Dialog Replace TAG
 
 ### Ganti akun
 
@@ -61,11 +62,11 @@ coverage:
 ## Notes
 
 - Spec aksesibilitas: teknologi bantu diamati lewat atribut `aria-live` dan urutan fokus keyboard; kelas fungsional.
-- Urutan di dalam spec: pindaian gagal (langkah 2) sebelum pindaian sukses (langkah 4) agar overlay scan yang sama masih terbuka saat pesan galat diperiksa; urutan di TC-FA-TAG-24 terbalik (sukses lebih dulu).
-- Langkah penghubung (tanpa awalan `Verifikasi`): 6 (menutup overlay atau dialog), 7 dan 8 (ganti akun), 9 (navigasi), 13 (menutup dialog yang tidak dirty).
+- Urutan di dalam spec mengikuti TC-FA-TAG-24: pindaian gagal (langkah 2) sebelum pindaian sukses (langkah 4) agar overlay scan yang sama masih terbuka saat pesan galat diperiksa; pindaian sukses membuka Dialog Replace TAG di akhir TC (langkah 6 menutupnya).
+- Langkah penghubung (tanpa awalan `Verifikasi`): 6 (menutup Dialog Replace TAG yang belum berisi Tag pengganti; menutup langsung tanpa konfirmasi, A-16 butir iv), 7 dan 8 (ganti akun), 9 (navigasi), 13 (menutup dialog yang tidak dirty).
 - Anchor positif: asersi fokus memuat daftar elemen dialog yang sama-sama tampil; tidak ada asersi absence yang berdiri sendiri.
+- A-15: nilai literal Pre-setup (ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-24 berlabel Manual Only (interaksi hardware reader); spec tetap ditulis dengan simulator reader sebagai kemampuan yang disediakan tim FE/BE.
-  - TC-FA-TAG-24 tidak menyebut Tag yang dipindai pada pemindaian sukses dan gagal serta hasil setelah pemindaian sukses di overlay scan; spec memakai `RF-00140` (sukses) dan `RF-09999` (gagal) dan menutup lewat langkah 6.
+  - TC-FA-TAG-24 tidak menyebut Tag yang dipindai pada pemindaian sukses dan gagal; Post Condition TC menyatakan Dialog Replace TAG terbuka pada akhir TC (tanpa langkah observasi, tidak diasersi); spec memakai `RF-00140` (sukses) dan `RF-09999` (gagal) dan menutup lewat langkah 6.
   - TC-FA-TAG-24 menyebut precondition "Reader terhubung" dengan Role Manage asset & TAG (Read + Update); TC-FA-TAG-635 dan TC-FA-TAG-1448 memakai Role Staff Auditor (tidak memegang Manage asset & TAG) tanpa menyebut tab In Audit untuk TC-FA-TAG-1448; spec memakai tab yang sama dengan TC-FA-TAG-635.
-  - Nilai literal Pre-setup (ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

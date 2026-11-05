@@ -25,12 +25,13 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset sesi 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A), Tag RFID `RF-00130` Paired | `aset220` |
+| Aset sesi 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A), Tag RFID `RF-00330` Paired | `aset220` |
 | Aset sesi 2 | 'Excavator 20 Ton - 221' (AST-0221, Group Plant A), Tag RFID `RF-00140` Paired | `aset221` |
 | Aset sesi 3 | 'Excavator 20 Ton - 23' (AST-0023, Group Plant A), Tag RFID `RF-00141` Paired | `aset23` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, `RF-00416` | `stokRfid` |
 
-- State yang diubah dan pemulihannya: Tag aset 'Excavator 20 Ton - 220' diganti oleh Submit & next pada TC-FA-TAG-396; hook `after` memulihkan Tag `RF-00130` Paired dan stok Available seperti awal lewat fixture backend.
+- State yang diubah dan pemulihannya: Tag aset 'Excavator 20 Ton - 220' diganti oleh Submit & next pada TC-FA-TAG-396; hook `after` memulihkan Tag `RF-00330` Paired dan stok Available seperti awal lewat fixture backend.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 16); entri TAG Log Global (langkah 16).
 
 ## Test Steps
 
@@ -46,7 +47,7 @@ coverage:
 8. Klik [Close]
 9. Verifikasi ringkasan menutup
 10. Verifikasi tabel Paired dimuat ulang
-11. Verifikasi toast T-02 ("Success, asset has been replaced.") tidak tampil
+11. Verifikasi toast "Success, asset has been replaced." (T-02) tidak tampil
 
 ### Retry skipped and failed (TC-FA-TAG-396)
 
@@ -71,10 +72,9 @@ coverage:
 - Pembagian TC lintas spec: topik sesi Batch Replace dilanjutkan di spec 089 (TC-FA-TAG-388 s.d. 391), spec 090 (TC-FA-TAG-392 s.d. 394), dan spec 092 (TC-FA-TAG-398, 399, 1473).
 - Urutan TC di dalam spec: TC-397 dan TC-395 berbagi satu sesi (langkah 1 sampai 11) karena langkah TC-395 adalah tiga kali [Skip] diikuti [Close] dan TC-397 berhenti sebelum [Close]; urutan Expected mengikuti urutan keadaan layar (butir tombol Retry sebelum [Close]). TC-396 menyimpan perubahan sehingga ditaruh terakhir.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 12 (memuat ulang halaman supaya tabel dan popup dibuka dari keadaan bersih), 21 (Skip untuk mengamati aset berikutnya yang dibuka Retry), 24 dan 25 (menutup sesi).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 16); entri TAG Log Global (langkah 16).
 - Temuan untuk QA:
-  - TC-FA-TAG-395 menyebut toast "T-02" tanpa teks; teksnya diambil dari Expected TC-FA-TAG-394 ("Success, asset has been replaced.").
   - TC-FA-TAG-396 butir b ("aset yang `Done` tidak dibuka lagi") tidak memberi cara teramati selain urutan dialog; spec mengasersinya sebagai tertulis.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-395 ("Tidak ada Tag yang berubah") dan TC-396 ("Tidak ada perubahan tambahan") tanpa langkah observasi tidak diasersi.

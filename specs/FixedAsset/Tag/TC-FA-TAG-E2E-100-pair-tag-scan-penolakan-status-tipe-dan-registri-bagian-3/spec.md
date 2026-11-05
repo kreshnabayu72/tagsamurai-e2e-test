@@ -45,6 +45,7 @@ coverage:
 | TBR Return Group di luar scope | Tag RFID `RF-00073` To be Returned, Return Group 'Plant C' di luar scope user blok 3 | `tbr73` |
 
 - State yang diubah dan pemulihannya: aset 51 dipasangkan `RF-00071` (blok 1) dan dipulihkan lewat fixture sebelum blok 2; `RF-00412` dipasangkan ke aset lain oleh pelaku kedua; hook `after` memulihkan aset 51 ke Not Paired Yet, `RF-00071`, `RF-00072`, `RF-00073` ke To be Returned dengan Return Group semula, `RF-00412` ke Available, dan sesi ke akun default suite.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 7, 14); entri TAG Log Global (langkah 7, 14); entri Event Log To Be Returned (Method `Assigned`) (langkah 14). Aksi tulis pada langkah 8 ditolak dan tidak menambah entri.
 
 ## Test Steps
 
@@ -97,10 +98,10 @@ coverage:
 - Urutan TC di dalam spec: TC-430, TC-434, TC-431, TC-432, TC-433, sehingga seluruh TC akun Total Control berurutan sebelum ganti akun (bagian 3 butir "Step ganti akun eksplisit") dan TC-431 yang menyimpan perubahan ada di akhir blok 1. Blok 1 satu dialog: TC-430 dan TC-434 ditolak tanpa menyimpan, slot kembali `Not scanned` sebelum TC-431. Bagian sesudah ganti akun tetap bermakna walau bagian sebelumnya gagal (keputusan ganti akun eksplisit, 2026-10-21).
 - Pelaku kedua memakai sesi API (keputusan 2026-10-21/30): bukan konteks kedua kelas c dan tidak memakai `P-2`; langkah pemicunya ditulis "... hingga ... tersimpan" (langkah 7).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 16 (memulihkan data lewat fixture backend hingga tersimpan dan Logout), 18 dan 27 (membuka halaman sesudah login akun lain), 24 dan 33 (menutup dialog tanpa isian dengan [Cancel], tanpa konfirmasi D-11), serta 25 (menutup popup dan Logout).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 7, 14); entri TAG Log Global (langkah 7, 14); entri Event Log To Be Returned (Method `Assigned`) (langkah 14). Aksi tulis pada langkah 8 ditolak dan tidak menambah entri.
 - Temuan untuk QA:
   - TC-FA-TAG-434 menulis "dipasangkan ke aset lain oleh pengguna lain setelah dialog dibuka" tanpa urutan terhadap pindaian; spec memindai `RF-00412` dulu, lalu pelaku kedua memasangkannya, lalu [Submit] (konsisten dengan TC-FA-TAG-408). TC juga tidak menyebut aset tujuan dan akun pelaku.
   - Tabel Pre-setup TC memuat dua akun yang hampir kembar ("Update di group Plant A dan Read di group Plant B" dan "Update pada Group Plant A dan hanya Read pada Group Plant B"); TC-432 memakai nama kedua dan spec mengikutinya.
   - Post Condition TC-431 butir b dan c ("Tag `RF-00071` hilang dari tab To Be Returned", "Event Log To Be Returned memuat satu entri `RF-00071` Method `Assigned` Final Status `Paired`") dan Post Condition TC-432, TC-433, TC-434 tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.

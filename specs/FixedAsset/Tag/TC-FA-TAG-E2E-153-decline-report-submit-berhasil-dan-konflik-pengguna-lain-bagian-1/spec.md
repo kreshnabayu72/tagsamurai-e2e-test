@@ -36,6 +36,7 @@ coverage:
 | Aset 'Excavator 20 Ton - 44' dengan laporan | AST-0044, Group Plant B; Tag RFID `RF-00132` laporan terbuka Missing dan Tag QR `QR-00232` laporan terbuka Unreadable | `aset44Laporan` |
 
 - State yang diubah dan pemulihannya: laporan yang ditutup (Declined) oleh spec ini dan laporan yang diatur ulang dipulihkan lewat fixture backend di hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Decline Report` per Tag (langkah 5, 15, 24).
 
 ## Test Steps
 
@@ -79,7 +80,7 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-641 s.d. 643). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: konflik dengan pengguna lain pada Decline Report ada di spec 154 (TC-FA-TAG-1457, 1470) dan Tag Declined dilaporkan ulang di spec 169 (TC-FA-TAG-644).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9 dan 18 (mengatur ulang dua laporan terbuka pada AST-0044 lewat fixture backend; muat ulang halaman juga menghilangkan toast sebelumnya).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Decline Report` per Tag (langkah 5, 15, 24).
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-641 (laporan Declined, Tag tetap Paired, kartu Reported, row action "Decline Report" hilang, modul terdampak notification dan Audit), TC-FA-TAG-642, dan TC-FA-TAG-643 tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

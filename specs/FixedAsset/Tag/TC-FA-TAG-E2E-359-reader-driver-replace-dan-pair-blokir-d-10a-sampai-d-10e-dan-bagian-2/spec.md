@@ -23,8 +23,9 @@ coverage:
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before`, lihat `suite.md`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada; nilai literal TC pada langkah diberi kunci fixture oleh tahap script (akan disediakan).
 - Kemampuan teknis (disediakan tim FE/BE): emulator driver reader (simulator reader USB, lihat `suite.md`) yang mengatur kondisi reader: driver reader lokal tidak terdeteksi; driver terpasang tetapi reader mati; dua reader tersambung bersamaan; reader terbaca tetapi Serial Number belum diaktivasi ([Sync] belum dijalankan) di Global Settings > Handheld Reader; kondisi normal (satu reader RFID/NFC tersambung, driver terpasang, reader aktif, sudah disinkronkan). Seed idempotent aset lewat fixture backend.
-- Data aset (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00130` berstatus Paired; AST-0051 'Excavator 20 Ton - 51' (Group Plant A, TAG Type Asset Name RFID saja) belum punya Tag Paired (Not Paired Yet). Spec ini tidak mengubah data aset.
+- Data aset (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00330` berstatus Paired; AST-0051 'Excavator 20 Ton - 51' (Group Plant A, TAG Type Asset Name RFID saja) belum punya Tag Paired (Not Paired Yet). Spec ini tidak mengubah data aset.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan kondisi reader ke normal. Spec ini tidak mengubah state global lain. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -64,9 +65,9 @@ coverage:
 26. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
 27. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 220'
 28. Ubah kondisi reader: driver reader lokal tidak terdeteksi
-29. Klik ButtonScan `Scan RFID` pada baris `RF-00130`
+29. Klik ButtonScan `Scan RFID` pada baris `RF-00330`
 30. Verifikasi Alert error inline pada dialog berisi "USB driver not detected. Please install the reader driver software."
-31. Verifikasi tidak ada kode yang terbaca dan baris `RF-00130` tetap berbadge `Not scanned`
+31. Verifikasi tidak ada kode yang terbaca dan baris `RF-00330` tetap berbadge `Not scanned`
 32. Verifikasi dialog blok tidak tampil
 
 ## Notes
@@ -75,8 +76,8 @@ coverage:
 - Langkah penghubung (tanpa awalan `Verifikasi`): 1, 10, 15, 20, 24, 28 (mengatur kondisi reader), 2, 3, 8 (membuka popup, memilih dan melepas baris), 9 (menampilkan daftar Not Paired Yet), 7, 14, 19, 23 (menutup dialog blok lewat [OK]), 25 dan 26 (menutup dan membuka kembali Popup Detail).
 - Anchor positif absence (bagian 8b butir 2): langkah 5 untuk langkah 6; langkah 12 untuk 13; langkah 17 untuk 18; langkah 22 tanpa asersi dialog Pair tidak terbuka (tidak ada di Expected TC); langkah 30 untuk langkah 31 dan 32.
 - Pembagian TC lintas spec: TC-FA-TAG-508 sampai TC-FA-TAG-514 ada di spec 358, TC-FA-TAG-520 sampai TC-FA-TAG-523 di spec 360, TC-FA-TAG-524 sampai TC-FA-TAG-528 di spec 361, TC-FA-TAG-529 dan TC-FA-TAG-530 di spec 362.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-516 sampai TC-FA-TAG-518 mengulang langkah buka `Show` di samping `Not Paired Yet` per TC; spec membukanya sekali (langkah 9) karena daftar tetap tampil di antara TC.
   - TC-FA-TAG-518 tidak menyebut Dialog Pair TAG tidak terbuka (hanya judul, body, dan [OK]) seperti TC-FA-TAG-516 dan TC-FA-TAG-517; spec mengikuti TC dan tidak mengasersinya.
   - TC-FA-TAG-515 sampai TC-FA-TAG-519 menyebut "Tidak ada perubahan data" sebagai Post Condition (TC-FA-TAG-519) tanpa langkah observasi; tidak diasersi.
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

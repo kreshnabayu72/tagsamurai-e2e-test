@@ -30,6 +30,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701`; stok RFID 0 pada bagian TC-452 | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: status reader, Asset Status aset 51, dan stok Available RFID diatur per bagian lewat fixture; hook `after` memulihkan reader tersambung, Asset Status normal, dan stok seperti awal.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 9, 17, 25) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -83,8 +84,8 @@ coverage:
 - Pembagian TC lintas spec: topik tooltip Disabled Pair TAG dilanjutkan di spec 107 (TC-FA-TAG-454 s.d. 458), spec 108 (TC-FA-TAG-1455, 1491 s.d. 1493), dan spec 109 (TC-FA-TAG-1494). TC-FA-TAG-453 (row action tetap Enabled bila hanya sebagian tipe stok 0) ada di spec 116.
 - Urutan TC di dalam spec mengikuti keadaan reader dan Asset Status agar perubahan state seminimal mungkin: reader tidak tersambung (TC-449), lalu reader tersambung dengan Asset Status In Disposal Process (TC-450), Disposed (TC-451), dan stok 0 (TC-452).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1, 9, 17, dan 25 (mengatur reader, Asset Status, dan stok lewat fixture backend serta menutup Popup Detail). Popup Detail dibuka ulang sesudah tiap perubahan state supaya state terbaru terbaca.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 9, 17, 25) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-452 butir b menulis tooltip "No available RFID TAG in stock." sedangkan TC-FA-TAG-372 untuk Replace menulis "No available RFID TAG in stock. Activate TAG in Global Settings > TAG."; spec mengikuti teks tiap TC.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme mengatur reader tersambung atau tidak tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.

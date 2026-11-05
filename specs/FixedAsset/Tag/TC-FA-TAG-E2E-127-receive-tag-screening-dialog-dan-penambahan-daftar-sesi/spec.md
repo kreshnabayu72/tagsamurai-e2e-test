@@ -26,6 +26,7 @@ coverage:
   - Tag To Be Returned `RF-00071` (RFID, Last Asset `Excavator 20 Ton - 2`, Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.), `RF-00088` (RFID, `Excavator 20 Ton - 5`, Disposal Center, Dedi K.), dan `NF-00092` (NFC, `Laptop Pro 14 - 8`, HQ Warehouse, Rina T.).
   - Tag `RF-00099` To Be Returned dengan Return Group anak dari Disposal Center (untuk akun kedua).
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB (satu reader tersambung, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader); memindai Tag di dialog tidak mengubah status Tag, jadi tidak ada state global yang berubah.
+- Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, `RF-00099`, nama aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -82,6 +83,6 @@ coverage:
 
 - Langkah penghubung: langkah 1 dan 2 membuka tab dan dialog (TC menulis "Buka Fixed Asset > TAG > To Be Returned" sedangkan halaman dibuka hook `beforeEach`); langkah 21 dan 22 membersihkan daftar sesi sebelum TC-534 (S-09); langkah 26 dan 33 menutup dialog.
 - Langkah 27 adalah ganti akun eksplisit; akun pertama login di hook `before`.
+- A-15: nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, `RF-00099`, nama aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, `RF-00099`, nama aset) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - TC-535 tidak menyebut nama aset, tipe, dan Current Holder `RF-00099`; Expected hanya masuk daftar dan penghitung.

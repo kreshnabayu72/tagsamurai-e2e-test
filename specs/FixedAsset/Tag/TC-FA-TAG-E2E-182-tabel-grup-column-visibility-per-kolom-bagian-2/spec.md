@@ -30,6 +30,7 @@ coverage:
 | Dataset Paired | Grup 'Excavator 20 Ton' / Plant A / RFID / Total Assets 20 / Reported 0 / Non-standard 0 / Not Paired Yet 2; 'Excavator 20 Ton' / Plant B / RFID / 20 / 2 / 5 / 0; 'Laptop Pro 14' / HQ / NFC, QR / 25 / 1 / 0 / 2; 'Forklift Manual' / Plant A / Non TAG / 10 / 0 / 3 / 0 | `datasetPaired` |
 
 - State yang diubah dan pemulihannya: konfigurasi kolom tabel grup di cache browser (tujuh kolom terakhir diubah menjadi satu kolom); penghapusan preferensi kolom Setup Column di browser oleh hook `after` spec ini.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 2, 5, 9, 12, 16, 19, 23, 24, 25, 26, 27, 28), dipulihkan hook `after` (lihat `suite.md`).
 
 ## Test Steps
 
@@ -81,8 +82,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-748, TC-FA-TAG-749, TC-FA-TAG-750, TC-FA-TAG-751). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik Column Visibility tabel grup ada di spec 181 (TC-FA-TAG-743 s.d. 747) dan spec 182 (TC-FA-TAG-748 s.d. 751).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 7, 14, 21 (menutup overlay Column Visibility dengan Esc sebelum TC berikutnya).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 2, 5, 9, 12, 16, 19, 23, 24, 25, 26, 27, 28), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
   - Langkah TC-FA-TAG-748 s.d. 751 dimulai dengan klik header `⋯`; overlay dari TC sebelumnya ditutup lebih dulu lewat Esc agar klik header membuka overlay.
   - TC-FA-TAG-751 tidak menyebut kolom mana yang tersisa; spec menyisakan `Asset Name` (enam kolom lain dihilangkan centangnya satu per satu).
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

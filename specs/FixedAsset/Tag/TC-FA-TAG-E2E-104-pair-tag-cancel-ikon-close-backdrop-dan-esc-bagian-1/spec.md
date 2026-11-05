@@ -30,6 +30,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: spec tidak menyimpan perubahan (dialog dibuang dengan [Discard]).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -59,17 +60,18 @@ coverage:
 ### Konfirmasi D-11 dengan [Discard] (TC-FA-TAG-447)
 
 15. Klik [Cancel] pada dialog Pair TAG
-16. Klik [Discard]
-17. Verifikasi dialog konfirmasi dan Dialog Pair TAG menutup
+16. Verifikasi dialog `Discard Pairing` dengan body "Discard this pairing? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil
+17. Klik [Discard]
+18. Verifikasi dialog konfirmasi dan Dialog Pair TAG menutup
 
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-444 s.d. 447). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik penutupan Dialog Pair TAG dilanjutkan di spec 105 (TC-FA-TAG-448, 1439, 1442).
-- Urutan TC di dalam spec: TC-445, TC-446, dan TC-447 berbagi satu dialog Pair TAG yang berisi `RF-00412` (precondition dan langkah pembuka identik), sehingga langkah 9 sampai 11 menjadi keadaan awal TC-446 dan langkah 12 sampai 14 menjadi keadaan awal TC-447 (langkah 15 adalah langkah TC-447 yang memunculkan konfirmasi D-11 yang sama dengan langkah 10).
+- Urutan TC di dalam spec: TC-445, TC-446, dan TC-447 berbagi satu dialog Pair TAG yang berisi `RF-00412` (precondition dan langkah pembuka identik), sehingga langkah 9 sampai 11 menjadi keadaan awal TC-446 dan langkah 12 sampai 14 menjadi keadaan awal TC-447 (langkah 15 adalah langkah TC-447 yang memunculkan konfirmasi D-11 yang sama dengan langkah 10). Langkah 16 (Verifikasi dialog `Discard Pairing` sebelum [Discard]) adalah asersi tambahan di luar Expected TC (S-03).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 7 (membuka ulang dialog Pair TAG pada popup yang masih terbuka sesudah TC-444).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-444 ("Aset tetap Not Paired Yet") dan TC-447 ("Aset tetap Not Paired Yet", "Tag `RF-00412` tetap Available") tanpa langkah observasi di TC tidak diasersi.

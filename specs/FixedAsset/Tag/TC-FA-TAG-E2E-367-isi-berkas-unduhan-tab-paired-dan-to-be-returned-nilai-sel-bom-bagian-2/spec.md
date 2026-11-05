@@ -24,8 +24,9 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): pembaca berkas unduhan XLSX dan CSV (tipe sel, isi sel, nama berkas); penanganan unduhan file di browser; seed idempotent aset, Tag, dan Asset Value; penghapusan preferensi kolom Setup Column di browser pada hook `after` (Setup Column disimpan pada langkah 3, 11, dan 19).
 - Data Pre-setup tab Paired (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): grup Excavator 20 Ton / Plant A / RFID / Total 20 / Reported 0 / Non-standard 0 / Not Paired Yet 2; Excavator 20 Ton / Plant B / RFID / 20 / 2 / 5 / 0; Laptop Pro 14 / HQ / NFC, QR / 25 / 1 / 0 / 2; Forklift Manual / Plant A / Non TAG / 10 / 0 / 3 / 0. AST-0011 'Excavator 20 Ton - 11' (Group Plant B) punya Asset Value (Commercial) 125000000, Transactional Policy Borrow `On` dan Assign `On` (policy lain `Off`), dan Category Heavy Equipment > Excavator (Heavy Equipment adalah root).
 - Data Pre-setup Tag To Be Returned: [RFID] RF-00071 (Last Asset Excavator 20 Ton - 2, Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); [RFID] RF-00088 (Excavator 20 Ton - 5, Disposal Center, Dedi K.); [NFC] NF-00092 (Laptop Pro 14 - 8, HQ Warehouse, Rina T.); Current Holder Dedi K. bernama lengkap Dedi Kurniawan.
-- Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom Setup Column di browser dan kembalikan data seed ke keadaan awal. Spec ini hanya membaca data (aksi hanya membaca).
+- Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom Setup Column di browser dan kembalikan data seed ke keadaan awal. Spec ini tidak menjalankan aksi bisnis TAG; satu-satunya penyimpanan adalah preferensi kolom lewat `[Save]` Setup Column (langkah 3, 11, 19).
 - State global: preferensi kolom Setup Column pada browser (dipulihkan seperti di atas). Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 3, 11, 19), dipulihkan hook `after` (lihat `suite.md`).
 
 ## Test Steps
 
@@ -74,7 +75,7 @@ coverage:
 - Spec isi berkas (kelas f, binary buffer). Nama berkas adalah asersi fungsional; tipe sel dan isi sel dibaca lewat pembaca berkas.
 - Langkah penghubung (tanpa awalan `Verifikasi`): 1 sampai 4, 9 sampai 12, 17 sampai 20 (menampilkan kolom lewat Setup Column), 24 (navigasi).
 - Setup Column disimpan sisi klien tanpa request tulis ke server, sehingga tidak ada langkah "Tunggu aksi selesai" sesudah `[Save]`.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 3, 11, 19), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
   - Hook suite pada `suite.md` yang menghapus preferensi kolom Setup Column tidak mencantumkan spec ini; spec memulihkannya sendiri di hook `after`.
   - TC-FA-TAG-1434 dan TC-FA-TAG-1437 tidak menyebut Post Condition selain "aksi hanya membaca"; tidak diasersi.
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

@@ -25,46 +25,48 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID), satu Tag RFID `RF-00130` Paired | `aset220` |
+| Aset 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID), satu Tag RFID `RF-00330` Paired | `aset220` |
 | Aset 2 | 'Excavator 20 Ton - 22' (AST-0022, Group Plant A), Tag RFID `RF-00142` Paired, Asset Status In Disposal Process | `aset22` |
 | Aset 3 | 'Excavator 20 Ton - 42' (AST-0042, Group Plant A, TAG Type Asset Name RFID), satu Tag QR `QR-00230` Paired (Non-standard) | `aset42` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500` (bagian TC-382 dan TC-384 tidak memerlukannya sebagai asersi) | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: status reader, stok Available RFID, dan Asset Status 'Excavator 20 Ton - 22' diatur per bagian lewat fixture; hook `after` memulihkan reader tersambung, stok seperti awal, dan Asset Status aset.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 6) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
 ### Stok tipe yang dibutuhkan 0 (TC-FA-TAG-381)
 
-1. Sambungkan reader (driver terpasang, aktif, sudah disinkronkan), hapus semua Tag RFID Available dari stok Global, dan pastikan 'Excavator 20 Ton - 220' punya satu Tag RFID `RF-00130` Paired lewat fixture backend hingga tersimpan
+1. Sambungkan reader (driver terpasang, aktif, sudah disinkronkan), hapus semua Tag RFID Available dari stok Global, dan pastikan 'Excavator 20 Ton - 220' punya satu Tag RFID `RF-00330` Paired lewat fixture backend hingga tersimpan
 2. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
 3. Centang baris 'Excavator 20 Ton - 220'
-4. Verifikasi Bulk Action Bar tidak memuat `Batch Replace TAG` (Hidden)
+4. Verifikasi Bulk Action Bar tampil dengan jumlah terpilih 1
+5. Verifikasi Bulk Action Bar tidak memuat `Batch Replace TAG` (Hidden)
 
 ### Aset terpilih In Disposal Process (TC-FA-TAG-382)
 
-5. Hapus centang baris 'Excavator 20 Ton - 220', tutup Popup Detail, isi stok Global dengan Tag RFID `RF-00412` dan `RF-00415` serta Tag NFC `NF-00500` Available, dan atur 'Excavator 20 Ton - 22' berstatus In Disposal Process dengan Tag RFID `RF-00142` Paired lewat fixture backend hingga tersimpan
-6. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
-7. Centang baris 'Excavator 20 Ton - 220' dan baris 'Excavator 20 Ton - 22'
-8. Verifikasi Bulk Action Bar tidak memuat `Batch Replace TAG` (Hidden)
+6. Hapus centang baris 'Excavator 20 Ton - 220', tutup Popup Detail, isi stok Global dengan Tag RFID `RF-00412` dan `RF-00415` serta Tag NFC `NF-00500` Available, dan atur 'Excavator 20 Ton - 22' berstatus In Disposal Process dengan Tag RFID `RF-00142` Paired lewat fixture backend hingga tersimpan
+7. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
+8. Centang baris 'Excavator 20 Ton - 220' dan baris 'Excavator 20 Ton - 22'
+9. Verifikasi Bulk Action Bar tampil dengan jumlah terpilih 2
+10. Verifikasi Bulk Action Bar tidak memuat `Batch Replace TAG` (Hidden)
 
 ### Aksi grup Replace non-standard TAGs saat reader tidak terhubung (TC-FA-TAG-384)
 
-9. Hapus centang kedua baris, tutup Popup Detail, dan putuskan reader dari komputer lewat simulator reader (Tag QR `QR-00230` Paired pada 'Excavator 20 Ton - 42')
-10. Klik kebab di ujung baris grup Excavator 20 Ton Plant A
-11. Arahkan kursor ke aksi `Replace non-standard TAGs`
-12. Verifikasi aksi `Replace non-standard TAGs` tetap tampil namun Disabled
-13. Verifikasi tooltip "Connect a TAG reader to replace."
+11. Hapus centang kedua baris, tutup Popup Detail, dan putuskan reader dari komputer lewat simulator reader (Tag QR `QR-00230` Paired pada 'Excavator 20 Ton - 42')
+12. Klik kebab di ujung baris grup Excavator 20 Ton Plant A
+13. Arahkan kursor ke aksi `Replace non-standard TAGs`
+14. Verifikasi aksi `Replace non-standard TAGs` tetap tampil namun Disabled
+15. Verifikasi tooltip "Connect a TAG reader to replace."
 
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-381, 382, 384). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: TC-FA-TAG-330, 331, 371 s.d. 374, dan 380 (topik yang sama) ada di spec `TC-FA-TAG-E2E-086-replace-tooltip-disabled-dan-hidden-row-action-dan-bulk-bagian-1`.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1, 5, dan 9 (mengatur reader, stok, dan Asset Status lewat fixture backend, menghapus centang, menutup Popup Detail). Popup Detail dibuka ulang sesudah tiap perubahan state supaya state terbaru terbaca.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1, 6, dan 11 (mengatur reader, stok, dan Asset Status lewat fixture backend, menghapus centang, menutup Popup Detail). Popup Detail dibuka ulang sesudah tiap perubahan state supaya state terbaru terbaca.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 6) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-382 tidak menyebut stok Tag; spec mengisi stok Available agar Hidden hanya bisa berasal dari aset In Disposal Process (bukan stok 0 seperti TC-381).
-  - TC-FA-TAG-381 dan 382 mengharapkan Bulk `Batch Replace TAG` Hidden tanpa anchor positif di TC; spec tidak menambah asersi anchor.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme mengatur tersambung atau tidak tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC tanpa langkah observasi tidak diasersi.

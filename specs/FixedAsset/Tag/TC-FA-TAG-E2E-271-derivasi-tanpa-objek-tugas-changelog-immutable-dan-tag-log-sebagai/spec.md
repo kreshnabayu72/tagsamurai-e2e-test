@@ -28,7 +28,8 @@ coverage:
 - Seed dan pemulihan idempotent lewat fixture backend (disediakan tim FE/BE, lihat `suite.md`): aset, Tag per status registri, stok Tag per tipe, laporan Tag, dan entri log.
 - Data (Pre-setup TC, tanpa suffix): grup Excavator 20 Ton / Plant A dan Plant B, Laptop Pro 14 / HQ, Forklift Manual / Plant A (Non TAG); Tag RF-00900 (Available), RF-00901 (Damaged/Missing), RF-00902 (Retired) di registri Global; RF-00101 Paired pada AST-0011 dan terakhir dipindai pada sesi audit aset AST-0020; Changelog memuat entri Replace (seed) serta entri Report TAG untuk `Excavator 20 Ton - 201` (Plant A) dan `Excavator 20 Ton - 20` (Plant B).
 - Baseline jumlah baris Approvals dan Change Document dibaca lewat kemampuan baca (disediakan tim FE/BE) di hook `before`, sebelum aksi pemicu (S-12).
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Urutan seed Changelog Paired TAG (fixture backend, dibuat di hook `before` tiap run): entri Replace (seed) lebih dulu, lalu entri Report TAG untuk `Excavator 20 Ton - 20` (Plant B), lalu entri Report TAG untuk `Excavator 20 Ton - 201` (Plant A) paling akhir, sehingga ketiganya berada pada baris teratas urutan default Date terbaru di halaman pertama Modal Changelog; langkah yang membaca entri seed (blok TC-FA-TAG-1073 dan TC-FA-TAG-1074) hanya membaca halaman pertama itu (S-14).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: notifikasi in-app `tag_replacement_needed` ke pemegang Update scope dari perubahan TAG Type Asset Name yang disimpan lewat `[Save]` di Settings > Asset Name (langkah 1; PRD tag.md §9.7). Spec ini tidak menjalankan aksi bisnis TAG lain (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR). TAG Type dikembalikan lewat fixture backend (langkah 7); PRD tag.md dan TC tidak menyatakan efek tak terpulihkan lain untuk penyimpanan itu.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): TAG Type 'Excavator 20 Ton' kembali RFID dan data seed dipulihkan lewat fixture backend.
 - State global: TAG Type Asset Name 'Excavator 20 Ton' diubah pada TC-FA-TAG-1072. Suite serial (`parallel: false`).
 
@@ -70,24 +71,26 @@ coverage:
 20. Verifikasi Popup TAG Log (milik all-tags) terbuka
 21. Tutup Popup TAG Log dan Popup Detail
 22. Klik tombol `Changelog`
-23. Verifikasi Modal Changelog tidak menampilkan riwayat status per Tag
-24. Tutup Modal Changelog, lalu ganti akun: logout dari akun Total Control
-25. Login dengan akun Manage asset & TAG (Read + Update) (Update: Plant A) [MU_PA] lalu buka Fixed Asset > TAG tab Paired
+23. Verifikasi Modal Changelog Paired TAG memuat sedikitnya satu entri Replace
+24. Verifikasi Modal Changelog tidak menampilkan riwayat status per Tag
+25. Tutup Modal Changelog, lalu ganti akun: logout dari akun Total Control
+26. Login dengan akun Manage asset & TAG (Read + Update) (Update: Plant A) [MU_PA] lalu buka Fixed Asset > TAG tab Paired
 
 ### TC-FA-TAG-1074: Changelog Report TAG sesuai scope group
 
-26. Klik tombol `Changelog`
-27. Verifikasi entri Report TAG untuk `Excavator 20 Ton - 201` (Plant A) tampil
-28. Verifikasi entri Report TAG dengan Name persis `Excavator 20 Ton - 20` (Plant B, bukan `Excavator 20 Ton - 201`) tidak tampil
+27. Klik tombol `Changelog`
+28. Verifikasi entri Report TAG untuk `Excavator 20 Ton - 201` (Plant A) tampil
+29. Verifikasi entri Report TAG dengan Name persis `Excavator 20 Ton - 20` (Plant B, bukan `Excavator 20 Ton - 201`) tidak tampil
 
 ## Notes
 
 - Mode: FE+BE.
-- Langkah penghubung (S-03): 2, 7, 11, 15, 21, 24 dan 25 (menunggu aksi selesai, mengembalikan TAG Type, menutup popup dan modal, mereset Search, ganti akun).
+- Langkah penghubung (S-03): 2, 7, 11, 15, 25 dan 26 (menunggu aksi selesai, mengembalikan TAG Type, menutup modal, mereset Search, ganti akun). Langkah 21 (menutup Popup TAG Log dan Popup Detail) berasal dari langkah 3 TC-FA-TAG-1077 sehingga bukan langkah penghubung.
 - Urutan TC-FA-TAG-1074 diletakkan terakhir karena butuh akun MU_PA (ganti akun eksplisit, S-07); TC-FA-TAG-1077 melanjutkan Popup Detail yang dibuka pada TC-FA-TAG-1076.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: notifikasi in-app `tag_replacement_needed` ke pemegang Update scope dari perubahan TAG Type Asset Name yang disimpan lewat `[Save]` di Settings > Asset Name (langkah 1; PRD tag.md §9.7). Spec ini tidak menjalankan aksi bisnis TAG lain (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR). TAG Type dikembalikan lewat fixture backend (langkah 7); PRD tag.md dan TC tidak menyatakan efek tak terpulihkan lain untuk penyimpanan itu.
 - Temuan untuk QA:
   - TC-FA-TAG-1072 sampai 1077 Post Condition ('Tidak ada perubahan data bisnis') tidak punya langkah observasi; tidak diasersi.
   - TC-FA-TAG-1072 Expected ('Tidak ada tugas, dokumen, atau approval baru') tidak menyebut cara membuktikan tidak adanya; spec memakai jumlah baris Approvals dan Change Document terhadap baseline.
   - TC-FA-TAG-1075 Expected b ('hanya status Paired dan To Be Returned yang tampil di FAMS') adalah kesimpulan; langkah TC hanya mencari di tab Paired, tab To Be Returned tidak dicari. Spec mengasersinya sebagai satu `Verifikasi` tanpa langkah tambahan.
-  - TC-FA-TAG-1077 Expected ('riwayat status per Tag tidak ditampilkan di Modal Changelog') tidak punya langkah membuka Changelog; spec menambah langkah penghubung menutup popup dan membuka Changelog (S-14).
   - TC-FA-TAG-1074 menyebut Name `Excavator 20 Ton - 20` dan `Excavator 20 Ton - 201`; yang pertama adalah awalan yang kedua, sehingga asersi absence memakai kecocokan nama persis (R-13).
+  - Changelog Paired TAG adalah audit trail permanen dan TC-FA-TAG-1073 serta TC-FA-TAG-1074 tidak memberi Filter Date maupun urutan seed; asersi atas entri seed hanya terjamin bila fixture backend men-seed entri itu sebagai entri terbaru pada hook `before` (butir A-18 iii).

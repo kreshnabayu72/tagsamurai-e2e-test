@@ -38,14 +38,15 @@ coverage:
 |---|---|---|
 | Aset In Disposal Process | 'Excavator 20 Ton - 22' (AST-0022, Group Plant A, Asset Status In Disposal Process) dengan Tag RFID `RF-00142` Paired | `aset22` |
 | Aset Disposed | 'Excavator 20 Ton - 56' (AST-0056, Group Plant A, TAG Type RFID, Asset Status Disposed), Not Paired Yet | `aset56` |
-| Aset Replace | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) dengan Tag RFID `RF-00130` Paired | `aset220` |
-| Aset NFC | 'Laptop Pro 14 - 8' (AST-0108, Group Plant A, TAG Type NFC dan QR) dengan Tag NFC `NF-00092` Paired | `aset108` |
+| Aset Replace | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) dengan Tag RFID `RF-00330` Paired | `aset220` |
+| Aset NFC | 'Laptop Pro 14 - 8' (AST-0108, Group Plant A, TAG Type NFC dan QR) dengan Tag NFC `NF-00292` Paired | `aset108` |
 | Aset Pair | 'Excavator 20 Ton - 51' (AST-0051, Group Plant A, TAG Type Asset Name RFID saja), Not Paired Yet | `aset51` |
 | Stok Available | Tag RFID `RF-00412`, Tag NFC `NF-00500` | `stokAvailable` |
 | Tag Reserved | Tag RFID `RF-00601` berstatus Reserved | `tagReserved601` |
 | Tag To be Returned Plant B | Tag RFID `RF-00072` To be Returned, Return Group 'Plant B' yang hanya dipegang Read oleh user blok 2 | `tbr72` |
 
 - State yang diubah dan pemulihannya: stok Global (tidak ada Tag RFID Available) diatur di langkah 9 dan dipulihkan di langkah 18; plan Client yang mengunci Tag NFC diatur di langkah 18 dan dipulihkan di langkah 23. Hook `after` memulihkan stok per tipe, plan Client, dan status Tag ke keadaan awal walau spec gagal di tengah, serta mengembalikan sesi ke akun default suite.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 1, 5, 10, 14, 19, 25 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 9, 18, 23) hanya menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -64,14 +65,14 @@ coverage:
 11. Verifikasi server menolak pairing
 12. Verifikasi (lewat fixture BE) AST-0051 tetap Not Paired Yet
 13. Verifikasi (lewat fixture BE) `RF-00601` tetap Reserved
-14. Kirim request langsung ke server lewat klien HTTP: Submit penggantian Tag `RF-00130` dengan Tag baru `RF-00601` pada aset AST-0220
+14. Kirim request langsung ke server lewat klien HTTP: Submit penggantian Tag `RF-00330` dengan Tag baru `RF-00601` pada aset AST-0220
 15. Verifikasi server menolak penggantian
-16. Verifikasi (lewat fixture BE) Tag `RF-00130` tetap Paired pada AST-0220
+16. Verifikasi (lewat fixture BE) Tag `RF-00330` tetap Paired pada AST-0220
 17. Verifikasi (lewat fixture BE) `RF-00601` tetap Reserved
 18. Atur plan Client lewat fixture BE ke plan yang mengunci Tag NFC, dan pulihkan stok Global (Tag RFID `RF-00412` Available)
-19. Kirim request langsung ke server lewat klien HTTP: Submit penggantian Tag `NF-00092` dengan Tag baru NFC `NF-00500` pada aset AST-0108
+19. Kirim request langsung ke server lewat klien HTTP: Submit penggantian Tag `NF-00292` dengan Tag baru NFC `NF-00500` pada aset AST-0108
 20. Verifikasi server menolak penggantian
-21. Verifikasi (lewat fixture BE) Tag `NF-00092` tetap Paired
+21. Verifikasi (lewat fixture BE) Tag `NF-00292` tetap Paired
 22. Verifikasi (lewat fixture BE) `NF-00500` tetap Available
 23. Pulihkan plan Client ke plan awal lewat fixture BE
 
@@ -90,9 +91,9 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-TAG-1268 s.d. 1274 ada di spec 325 (request langsung ditolak 403 untuk role tanpa hak).
 - Urutan TC di dalam spec: TC-1275, TC-1276, TC-1277, TC-1278, TC-1279 (akun Total Control), lalu TC-1280 di akun lain. TC-1277 sesudah TC-1275 dan TC-1276 karena TC-1275 dan TC-1276 memakai Tag `RF-00412` Available sedangkan TC-1277 mensyaratkan tidak ada Tag RFID Available di stok Global.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9 dan 18 (mengatur stok dan plan lewat fixture BE sebagai precondition TC-1277 dan TC-1279), 23 (memulihkan plan), 24 (ganti akun).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 1, 5, 10, 14, 19, 25 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 9, 18, 23) hanya menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-1277 menyebut `RF-00601` Reserved dan tidak ada Tag RFID Available; spec mengatur stok lewat fixture BE (kemampuan ganti stok Global disediakan tim FE/BE).
   - TC-FA-TAG-1279 mensyaratkan "plan yang mengunci Tag NFC" tanpa menyebut nama plan; spec memakai fixture ganti plan Client yang disediakan tim FE/BE.
   - Post Condition "Tidak ada perubahan data bisnis" mengikuti Expected yang sudah diasersi; tidak ada asersi tambahan.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

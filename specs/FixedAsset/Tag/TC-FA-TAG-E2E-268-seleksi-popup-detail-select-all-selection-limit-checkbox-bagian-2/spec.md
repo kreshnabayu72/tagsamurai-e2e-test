@@ -24,6 +24,7 @@ coverage:
 - Data Pre-setup tab Paired (tanpa suffix `{runId}`; kunci `Fixture.fixedAssetTag.pairedGrup`): grup Excavator 20 Ton / Plant A (RFID, 20 aset), Excavator 20 Ton / Plant B (RFID, 20 aset; target Popup Detail, 10 baris per halaman sehingga 2 halaman; memuat aset AST-0011 dan AST-0021), Laptop Pro 14 / HQ (NFC dan QR, 25 aset), dan Forklift Manual / Plant A (Non TAG, 10 aset).
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk grup dan aset tab Paired; tidak ada endpoint yang dikarang di spec ini.
 - State global: tidak ada. Spec ini tidak mengubah Selection Limit dan tidak mengubah data bisnis; seleksi dan sort dikembalikan ke netral pada akhir kasus.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -64,9 +65,9 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-TAG-1400 s.d. 1404 ada di spec 267; TC-FA-TAG-1371 s.d. 1376 ada di spec 264; TC-FA-TAG-1408 s.d. 1413 ada di spec 265 dan 266.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 15, 21 (membatalkan seleksi lewat ikon `×` pada Bulk Action Bar); 20 (mengembalikan sort kolom Name ke netral); 22 (menutup Popup Detail).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1407 menyebut baris AST-0011 dan AST-0021 tanpa menyebut halaman tempat keduanya berada pada urutan awal; spec mengasersi keduanya tetap tercentang pada posisi barunya tanpa menyebut halaman.
   - TC-FA-TAG-1405 s.d. 1407 tidak menyebut cara membatalkan seleksi antar kasus; spec memakai ikon `×` pada Bulk Action Bar seperti pada TC-FA-TAG-1408.
   - TC-FA-TAG-1406 tidak menyebut baris mana yang dicentang; spec mencentang dua baris pada halaman 1 dan satu baris pada halaman 2 tanpa menyebut barisnya.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
