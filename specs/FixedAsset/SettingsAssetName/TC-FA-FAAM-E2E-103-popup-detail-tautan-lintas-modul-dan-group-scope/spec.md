@@ -32,9 +32,9 @@ coverage:
 
 1. Ketik Search `Dell Latitude`, tekan Enter
 2. Klik nama `Dell Latitude`
-3. Klik tab `Total Assets (42)`
-4. Klik tautan `Open in Asset List ↗`
-5. Verifikasi navigasi ke Asset List terjadi di tab yang sama
+3. Klik tab `Linked Custom Fields (3)`
+4. Klik tautan `Open in Custom Fields ↗`
+5. Verifikasi navigasi ke Custom Fields terjadi di tab yang sama
 6. Buka Fixed Asset > Settings > Asset Master > Asset Name
 
 ### TC-FA-FAAM-309: Tautan lintas modul Hidden bagi pemegang tanpa akses modul tujuan
@@ -46,30 +46,27 @@ coverage:
 11. Klik tab `Linked Custom Fields (3)`
 12. Verifikasi tabel Linked Custom Fields dengan kolom `Field Name`, `Data Type`, `Global Value` tampil
 13. Verifikasi tautan `Open in Custom Fields ↗` Hidden
-14. Klik tab `Total Assets (42)`
-15. Verifikasi tab `Total Assets (42)` aktif dan tabel aset tampil
-16. Verifikasi tautan `Open in Asset List ↗` Hidden
-17. Klik icon `[✕]`
+14. Klik icon `[✕]`
 
 ### TC-FA-FAAM-310: Daftar aset dan jumlah di Detail client-wide tanpa pembatasan Group scope
 
-18. Ganti akun: logout, lalu login sebagai Permission Read dengan Group scope terbatas di modul asset (Pre-setup #26b)
-19. Buka Fixed Asset > Settings > Asset Master > Asset Name
-20. Ketik Search `Dell Latitude`, tekan Enter
-21. Klik nama `Dell Latitude`
-22. Verifikasi label tab `Total Assets (42)` memuat jumlah seluruh aset client
-23. Klik tab `Total Assets (42)`
-24. Verifikasi daftar aset memuat aset dari semua Group (`Head Office`, `Finance`, dan `Warehouse`)
-25. Klik icon `[✕]`
+15. Ganti akun: logout, lalu login sebagai Permission Read dengan Group scope terbatas di modul asset (Pre-setup #26b)
+16. Buka Fixed Asset > Settings > Asset Master > Asset Name
+17. Ketik Search `Dell Latitude`, tekan Enter
+18. Klik nama `Dell Latitude`
+19. Verifikasi label tab `Total Assets (42)` memuat jumlah seluruh aset client
+20. Klik tab `Total Assets (42)`
+21. Verifikasi daftar aset memuat aset dari semua Group (`Head Office`, `Finance`, dan `Warehouse`)
+22. Klik icon `[✕]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-asset-name/TestCases/tc-settings-asset-name.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (aksi tanpa `Verifikasi`): Search untuk menemukan baris target (R-16, langkah 1, 9, 20), kembali ke halaman Asset Name (langkah 6), membuka halaman Asset Name sesudah login akun baru (langkah 8, 19), dan `[✕]` menutup popup (langkah 17, 25).
-- TC-FA-FAAM-308 Expected b ("pemegang tanpa akses modul tujuan melihat tautan Hidden") diasersi pada langkah 13 dan 16 milik TC-FA-FAAM-309 karena TC-FA-FAAM-308 hanya memiliki aktor Total Control.
-- Asersi Hidden pada langkah 13 dan 16 memakai tabel dan tab aktif yang sudah diasersi (langkah 12 dan 15) sebagai anchor (bagian 8b butir 2).
+- Langkah penghubung (aksi tanpa `Verifikasi`): Search untuk menemukan baris target (R-16, langkah 1, 9, 17), kembali ke halaman Asset Name (langkah 6), membuka halaman Asset Name sesudah login akun baru (langkah 8, 16), dan `[✕]` menutup popup (langkah 14, 22).
+- TC-FA-FAAM-308 Expected b ("pemegang tanpa akses modul tujuan melihat tautan Hidden") diasersi pada langkah 13 milik TC-FA-FAAM-309 karena TC-FA-FAAM-308 hanya memiliki aktor Total Control.
+- Asersi Hidden pada langkah 13 memakai tabel yang sudah diasersi (langkah 12) sebagai anchor (bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-FA-FAAM-310 memakai aktor Permission Read dengan Group scope terbatas (Pre-setup #26b) yang belum punya baris akun lengkap (email) di Tabel Pre-setup.
   - TC-FA-FAAM-309 Precondition c menyebut aktor "tidak memiliki akses modul asset dan custom fields" tanpa menyebut apakah akun Pre-setup #3 memenuhinya; spec memakai Permission Read Pre-setup #3.
   - TC-FA-FAAM-310 Expected tidak menyebut jumlah baris per Group; spec mengasersi jumlah pada label tab (42) dan kehadiran ketiga Group pada daftar.
-  - TC-FA-FAAM-308 Expected a ("tab yang sama") tidak menyebut cara teramati; spec memeriksa bahwa halaman Asset List terbuka tanpa tab baru.
+  - TC-FA-FAAM-308 Expected a ("tab yang sama") tidak menyebut cara teramati; spec memeriksa bahwa halaman Custom Fields terbuka tanpa tab baru.
