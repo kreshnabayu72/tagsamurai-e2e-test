@@ -42,14 +42,14 @@ coverage:
 7. Verifikasi form tetap terbuka dengan input `6` dipertahankan
 8. Verifikasi `[Save]` aktif kembali
 9. Lepas intercept submit Edit
-10. Klik `✕`
+10. Klik `[×]`
 11. Verifikasi dialog `Unsaved Changes`
 12. Klik `[Leave]`
 13. Verifikasi data alokasi seed 197 tidak berubah (Quantity tetap `5`)
 
 ### TC-AC-LA-224: Cancel gagal 5xx menampilkan toast error dan status tidak berubah
 
-14. Ketik Search Allocation ID seed 224 di tab Current, tekan Enter
+14. Ganti isi kotak search dengan Allocation ID seed 224 di tab Current, tekan Enter
 15. Pasang intercept Cancel: respons 500
 16. Klik row action `Cancel Allocation` pada baris seed 224, lalu klik `[Cancel Request]`
 17. Verifikasi toast error "Error, failed to cancel license allocation."
@@ -69,7 +69,7 @@ coverage:
 28. Verifikasi toast error "Error, failed to resubmit license allocation."
 29. Verifikasi form tetap terbuka dengan input pre-filled utuh
 30. Lepas intercept submit Resubmit
-31. Klik `✕`
+31. Klik `[×]`
 32. Verifikasi dialog `Unsaved Changes`
 33. Klik `[Leave]`
 
@@ -96,7 +96,7 @@ coverage:
 49. Verifikasi form tetap terbuka
 50. Verifikasi `[Submit]` aktif kembali untuk retry manual
 51. Lepas intercept submit Allocate
-52. Klik `✕`
+52. Klik `[×]`
 53. Verifikasi dialog `Unsaved Changes`
 54. Klik `[Leave]`
 
@@ -114,11 +114,12 @@ coverage:
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 1, 14, 24 (Search dan tab untuk menemukan baris target, R-16), 4, 9, 15, 18, 26, 30, 38, 45, 46, 51, 57, 61 (memasang dan melepas intercept, S-09), 20 (membuka surface), 23 dan 35 (membuka ulang List sesudah Wallet dan sesudah mengatur toggle, sehingga tab Current aktif dan Search sebelumnya bersih; `[+ Allocation]` dan baseline jumlah baris tab Current berjalan di List yang bersih), 36 (baseline S-12), 22 dan 34 (mengatur toggle), 55 (ganti akun), 10 sampai 12, 31 sampai 33, dan 52 sampai 54 (menutup form dirty ✕, dialog `Unsaved Changes`, `[Leave]`, S-08).
+- Langkah penghubung (S-03): langkah 1, 14, 24 (Search dan tab untuk menemukan baris target, R-16), 4, 9, 15, 18, 26, 30, 38, 45, 46, 51, 57, 61 (memasang dan melepas intercept, S-09), 20 (membuka surface), 23 dan 35 (membuka ulang List sesudah Wallet dan sesudah mengatur toggle, sehingga tab Current aktif dan Search sebelumnya bersih; `[+ Allocation]` dan baseline jumlah baris tab Current berjalan di List yang bersih), 36 (baseline S-12), 22 dan 34 (mengatur toggle), 55 (ganti akun), 10 sampai 12, 31 sampai 33, dan 52 sampai 54 (menutup form dirty `[×]`, dialog `Unsaved Changes`, `[Leave]`, S-08).
 - Spec melewati sekitar 35 langkah (62 langkah). Alasan pertahanan: seluruh blok satu kelas harness (fault injection pada aksi tulis) dengan pola pasang-intercept, aksi, amati, lepas, dan tiap blok berdiri sendiri dengan seed sendiri.
 - Asersi tidak ada record baru dan tidak ada mutasi wallet pada TC-AC-LA-471 (langkah 43 dan 44) berbaseline (langkah 36). 
 - Pembagian TC lintas spec: TC-AC-LA-419 (tidak ada entri log baru saat Cancel gagal) dan klausa log TC-AC-LA-471 c (tidak ada log saat Allocate gagal) ada di spec 094 (absence log).
 - Temuan untuk QA:
+  - Penutup form dirty ditulis `[×]` sesuai S-08 (keputusan 2026-11-02); TC-AC-LA-177 dan PRD §4.4 menulis `[✕]`, spec mengikuti konvensi.
   - TC-AC-LA-197, 224, 236, 471, 472, 249 tidak menyebut endpoint yang di-intercept; disediakan tim FE (S-13).
   - TC-AC-LA-472 Langkah 1 ("respons tidak pernah kembali") tidak menyebut batas waktu tunggu klien; spec mengasersi toast `Connection problem. Please try again.` sesudah timeout terjadi.
   - TC-AC-LA-472 melanjutkan form pada TC-AC-LA-471 (form belum ditutup); spec memakai form yang sama karena precondition identik (P-3 tidak diperlukan, form yang sama tanpa state berat).

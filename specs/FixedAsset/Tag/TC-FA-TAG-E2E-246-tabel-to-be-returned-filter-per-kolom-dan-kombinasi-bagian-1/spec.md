@@ -34,6 +34,7 @@ coverage:
 
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned (kode, Last Asset, Reason, Return Group, Current Holder, Since) dan Return Group; tidak ada endpoint yang dikarang di spec ini.
 - Pemulihan di hook `after`: dataset To Be Returned dikembalikan ke keadaan Pre-setup empat Tag lewat fixture backend bila seeding mengubahnya. Filter dikosongkan di akhir tiap kasus.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -93,8 +94,8 @@ coverage:
 - Panel Filter tetap terbuka sesudah [Apply]; kasus berikutnya dimulai dari panel yang sama sesudah Filter dikosongkan.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 12, 17, 24, 33 (mengosongkan Filter lewat [Clear Field]); 13, 18, 25, 34 (menerapkan Filter kosong lewat [Apply]).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-993 dan 996 menulis Expected dengan dua klausa (baris yang tampil; NF-00092 tidak tampil); spec memecahnya menjadi dua `Verifikasi` dan klausa absence mengikuti `Verifikasi` baris yang tampil sebagai anchor.
   - TC-FA-TAG-995 Expected "opsi pada field Reason hanya Disposal" tidak menyebut kapan daftar dibuka; spec membuka daftar sebelum memilih opsi.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

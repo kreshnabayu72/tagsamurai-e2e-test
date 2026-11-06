@@ -30,7 +30,7 @@ coverage:
 - Pelaku aksi pada TC adalah pengguna login dengan nama tampil 'Budi S.'; kolom Modified By diasersi berformat [First Name] [Last Initial].
 - Data (Pre-setup TC, tanpa suffix): Asset Name 'Excavator 20 Ton' (RFID) dengan 40 aset Active dalam scope client (Plant A 20 dan Plant B 20; 33 patuh sebelum perubahan: 18 aset Plant A dan 15 aset Plant B, 5 aset Plant B Non-standard); pada TC-FA-TAG-1152: 39 aset ber-Tag RFID dan 'Excavator 20 Ton - 42' (Plant A) ber-Tag QR `QR-00230` (Non-standard); Asset Name `Drill Press` dengan 1 aset ber-Tag QR; `Multi Type Item` (RFID dan NFC) dengan 4 aset Active (aset 1 ber-Tag Paired RFID dan NFC; aset 2 hanya RFID; aset 3 Not Paired Yet; aset 4 RFID, NFC, dan QR dengan QR Non-standard); `Non-TAG Pallet` (Non-TAG) dengan 3 aset Active (aset 1 dan 2 tanpa Tag; aset 3 ber-Tag Paired QR); `GPS Only Unit` (GPS saja) dengan 2 aset Active (aset 1 tanpa Tag; aset 2 ber-Tag Paired RFID).
 - Stok Global (precondition TC): Tag RFID `RF-00412`, `RF-00415`, `RF-00420`, Tag NFC `NF-00500`, Tag QR `QR-00701` berstatus Available.
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 16); entri TAG Log Global (langkah 16). Aksi lain lewat sesi API (langkah 5, 9) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan TAG Type Asset Name, aset, Tag, laporan, dan sesi ke akun default suite lewat fixture backend.
 - State global yang diubah spec ini: TAG Type Asset Name 'Excavator 20 Ton' dan 'Drill Press'. Suite serial (`parallel: false`).
 
@@ -60,38 +60,40 @@ coverage:
 14. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 42'
 15. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
 16. Klik [Submit]
-17. Buka Fixed Asset > Settings > Asset Name
-18. Klik nama Asset Name `Excavator 20 Ton` untuk membuka Detail Asset Name
-19. Verifikasi progres kepatuhan TAG Type menampilkan `40 / 40 assets match the TAG type`: `[N]` = 40 menghitung seluruh aset Active Asset Name itu dalam scope client (Plant A dan Plant B), tidak dipotong per group
+17. Tunggu aksi selesai (dialog "Replace TAG" tertutup dan tombol aktif kembali)
+18. Buka Fixed Asset > Settings > Asset Name
+19. Klik nama Asset Name `Excavator 20 Ton` untuk membuka Detail Asset Name
+20. Verifikasi progres kepatuhan TAG Type menampilkan `40 / 40 assets match the TAG type`: `[N]` = 40 menghitung seluruh aset Active Asset Name itu dalam scope client (Plant A dan Plant B), tidak dipotong per group
 
 ### TC-FA-TAG-1497: aset patuh hanya bila tidak Non-standard dan memiliki Tag Paired untuk setiap tipe yang dituntut
 
-20. Tutup popup Detail Asset Name
-21. Klik nama Asset Name `Multi Type Item` untuk membuka Detail Asset Name
-22. Verifikasi progres kepatuhan TAG Type tampil `1 / 4 assets match the TAG type`
-23. Verifikasi aset 2 (hanya sebagian tipe yang dituntut), aset 3 (Not Paired Yet), dan aset 4 (ber-Tag Non-standard) tidak terhitung patuh
+21. Tutup popup Detail Asset Name
+22. Klik nama Asset Name `Multi Type Item` untuk membuka Detail Asset Name
+23. Verifikasi progres kepatuhan TAG Type tampil `1 / 4 assets match the TAG type`
+24. Verifikasi aset 2 (hanya sebagian tipe yang dituntut), aset 3 (Not Paired Yet), dan aset 4 (ber-Tag Non-standard) tidak terhitung patuh
 
 ### TC-FA-TAG-1498: Asset Name Non-TAG, aset tanpa Tag patuh dan aset ber-Tag Paired tidak
 
-24. Tutup popup Detail Asset Name
-25. Klik nama Asset Name `Non-TAG Pallet` untuk membuka Detail Asset Name
-26. Verifikasi progres kepatuhan TAG Type tampil `2 / 3 assets match the TAG type`
-27. Verifikasi aset 3 tidak terhitung karena Tag Paired pada Asset Name Non-TAG Non-standard
-28. Verifikasi aset 1 dan aset 2 terhitung walau tanpa Tag karena Asset Name tidak menuntut tipe Tag
+25. Tutup popup Detail Asset Name
+26. Klik nama Asset Name `Non-TAG Pallet` untuk membuka Detail Asset Name
+27. Verifikasi progres kepatuhan TAG Type tampil `2 / 3 assets match the TAG type`
+28. Verifikasi aset 3 tidak terhitung karena Tag Paired pada Asset Name Non-TAG Non-standard
+29. Verifikasi aset 1 dan aset 2 terhitung walau tanpa Tag karena Asset Name tidak menuntut tipe Tag
 
 ### TC-FA-TAG-1499: Asset Name yang hanya bertipe GPS
 
-29. Tutup popup Detail Asset Name
-30. Klik nama Asset Name `GPS Only Unit` untuk membuka Detail Asset Name
-31. Verifikasi progres kepatuhan TAG Type tampil `2 / 2 assets match the TAG type`
-32. Verifikasi aset 2 terhitung karena tipe GPS belum dievaluasi sehingga Tag RFID-nya tidak Non-standard
-33. Verifikasi aset 1 terhitung karena Asset Name tidak menuntut tipe yang dikelola menu TAG
+30. Tutup popup Detail Asset Name
+31. Klik nama Asset Name `GPS Only Unit` untuk membuka Detail Asset Name
+32. Verifikasi progres kepatuhan TAG Type tampil `2 / 2 assets match the TAG type`
+33. Verifikasi aset 2 terhitung karena tipe GPS belum dievaluasi sehingga Tag RFID-nya tidak Non-standard
+34. Verifikasi aset 1 terhitung karena Asset Name tidak menuntut tipe yang dikelola menu TAG
 
 ## Notes
 
 - Mode: FE+BE.
-- Langkah penghubung (S-03): 4, 8, 12, 20, 24 dan 29 (menutup popup Detail Asset Name, memulihkan data lewat fixture antar TC, S-09).
+- Langkah penghubung (S-03): 4, 8, 12, 17, 21, 25 dan 30 (menutup popup Detail Asset Name, memulihkan data lewat fixture antar TC, S-09). Langkah 17 adalah "Tunggu aksi selesai" (bagian 8b butir 8) karena sesudahnya terjadi pindah surface.
 - TC-FA-TAG-1500 ada di spec 296.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 16); entri TAG Log Global (langkah 16). Aksi lain lewat sesi API (langkah 5, 9) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1137 dan 1138 langkah TC ke-1 mengubah TAG Type lewat Modul Asset Name; spec memicunya lewat sesi API karena objek uji adalah progres kepatuhan, bukan form Asset Name.
   - TC-FA-TAG-1152 Expected menulis '(sebelumnya 39 / 40)' sebagai keterangan; spec tidak mengasersi nilai sebelumnya (tidak ada langkah observasi di TC).

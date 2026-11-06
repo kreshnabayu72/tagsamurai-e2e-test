@@ -16,7 +16,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE
-- Login di hook `before` spec ini sebagai Maya Tanjung (akun pertama tabel "Role yang diuji"); halaman License Allocation dibuka hook `beforeEach` suite (tab Current), dan spec ini berpindah ke Approvals sebagai langkah pertama. Ganti akun ke Hendra Wijaya dilakukan eksplisit pada langkah 14 dan 15; hook `after` mengembalikan sesi ke akun default suite.
+- Login di hook `before` spec ini sebagai Maya Tanjung (akun pertama tabel "Role yang diuji"); hook `beforeEach` suite tidak membuka License Allocation untuk akun ini karena menu `License Allocation` Hidden bagi Maya Tanjung (langkah 13); spec ini membuka Approvals sebagai langkah pertama. Ganti akun ke Hendra Wijaya dilakukan eksplisit pada langkah 14 dan 15; hook `after` mengembalikan sesi ke akun default suite.
 - Role yang diuji:
 
 | Role | Pre-setup | Email | Env password | Blok TC |
@@ -65,8 +65,8 @@ coverage:
 24. Klik `[Review]` pada alokasi `{idFree}`
 25. Pilih Approve
 26. Klik Submit
-27. Verifikasi alokasi `{idFree}` `Completed` berstatus `Active` tanpa Capture
-28. Verifikasi tidak ada transaksi wallet baru: saldo kantong Principal sama dengan baseline
+27. Verifikasi alokasi `{idFree}` `Completed` berstatus lisensi `Active`
+28. Verifikasi tidak ada transaksi wallet baru (tanpa Capture): saldo kantong Principal sama dengan baseline
 
 ## Notes
 

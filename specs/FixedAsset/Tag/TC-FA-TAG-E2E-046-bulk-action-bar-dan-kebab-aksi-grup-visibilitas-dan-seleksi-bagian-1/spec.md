@@ -29,6 +29,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed idempotent dan pemulihan aset dan Tag lewat fixture backend (lihat `suite.md`).
 - Pemulihan di hook `after`: kembalikan data Pre-setup tab Paired ke keadaan awal bila seeding mengubahnya. Spec ini tidak mengubah data bisnis.
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -79,8 +80,8 @@ coverage:
 - Langkah penghubung (tanpa awalan `Verifikasi`): 6, 16, dan 19 (membersihkan seleksi lewat `×`, S-09), 9 dan 32 (membersihkan seleksi lewat `×` lalu menutup Popup Detail), 26 (menutup Popup Detail).
 - Perubahan urutan (S-05): urutan TC sumber 199, 200, 201, 202, 203, 204, 205 menjadi 199, 200, 204, 201, 202, 205, 203. Alasan: TC-FA-TAG-199 dan TC-FA-TAG-200 memakai Popup Detail Plant A; TC-FA-TAG-204 (Bulk Action Bar belum tampil) harus lebih dulu sebelum ada aset yang dicentang di Popup Detail Plant B; TC-FA-TAG-203 memakai Popup Detail HQ sehingga ditaruh terakhir.
 - Asersi tambahan di luar Expected TC (S-03): langkah 11 (tabel memuat baris sebagai anchor absence langkah 12, bagian 8b butir 2); langkah 29 (Bulk Action Bar tampil sebagai anchor absence langkah 30 dan 31). Absence langkah 5 didahului langkah 4 (anchor), dan absence langkah 15 didahului langkah 14.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-199 dan TC-FA-TAG-200 menyebut "aset Not Paired Yet" tanpa ID aset; spec memilih dua baris Not Paired Yet pada Popup Detail Plant A.
   - TC-FA-TAG-203 menyebut satu aset ber-Tag dan satu aset Not Paired Yet tanpa ID; spec memilih baris mana pun yang tampil bersama pada Popup Detail HQ.
   - TC-FA-TAG-205 Expected a menyebut jumlah terpilih 2 dan ikon `×` dalam satu butir; spec memisahnya menjadi dua langkah Verifikasi (21 dan 22).
-  - Nilai literal Pre-setup (Asset Name, ID aset AST-*) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

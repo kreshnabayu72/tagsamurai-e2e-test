@@ -20,7 +20,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor untuk pelaku kedua, dan pemulihan Pre-setup bersama lewat seed API.
-- Data Pre-setup: Client `FaUserMain` (#20, plan Enterprise, 25 pengguna). Nama pengguna dan nilai Pre-setup dirujuk lewat `Fixture.fa-settings-user.<kunci>` (berkas `fixtures/fa-settings-user.json` belum ada dan disediakan tim FE).
+- Data Pre-setup: Client `FaUserMain` (#20, plan Enterprise, 25 pengguna) dan penugasan peran (#23). Nama pengguna dan nilai Pre-setup dirujuk lewat `Fixture.fa-settings-user.<kunci>` (berkas `fixtures/fa-settings-user.json` belum ada dan disediakan tim FE).
 - Spec ini hanya membaca data Pre-setup dan tidak mengubahnya; suite berjalan serial (`parallel: false`).
 - Kolom `TAG` tersedia pada plan Enterprise; kolom ditampilkan lewat Setup Column pada langkah 18.
 - Tabel `Ikon Table Tools`:
@@ -82,7 +82,7 @@ coverage:
 ### TC-FA-SU-323: Search kelas role
 
 24. Ketik Search `Approver` (kolom Role), tekan Enter
-25. Verifikasi tabel menyisakan `Eka Wulandari`, `Lukman Hakim`, `Mira Anggraini`, `Yuda Pratama` (4 baris)
+25. Verifikasi tabel menyisakan `Eka Wulandari`, `Lukman Hakim`, `Mira Anggraini`, `Oscar Pranata`, `Qori Akbar`, `Yuda Pratama` (6 baris; Oscar Pranata dan Qori Akbar lewat baris pola Approver Group Manager yang dihitung sebagai penugasan aktif biasa)
 26. Klik `(←)` pada kotak Search
 
 ## Notes
@@ -90,5 +90,5 @@ coverage:
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 7, 16, 23, 26 (menutup Search), 9 dan 11 (membuka dan menutup overlay Column Visibility), 17 dan 18 (menampilkan kolom `TAG` lewat Setup Column).
 - Langkah yang diulang: langkah 3 sampai 4 (empat ikon) dan langkah 21 sampai 22 (enam keyword), dengan parameter pada tabel Prerequisites.
-- Temuan untuk QA (S-15): (1) Daftar nama pada Expected TC berupa baris teratas hasil (kurang dari jumlah baris yang disebut atau dari ukuran halaman); spec mengasersi daftar nama itu dan jumlah baris sebagaimana tertulis. (2) Expected a TC-FA-SU-322 (Name `Budi`) menyebut 8 baris tetapi hanya enam nama; TC-FA-SU-328 dan 330 memuat enam nama yang sama tanpa jumlah baris.
+- Temuan untuk QA (S-15): (1) Daftar nama pada Expected TC berupa baris teratas hasil (kurang dari jumlah baris yang disebut atau dari ukuran halaman); spec mengasersi daftar nama itu dan jumlah baris sebagaimana tertulis. (2) Expected a TC-FA-SU-322 (Name `Budi`) menyebut 8 baris tetapi hanya enam nama; TC-FA-SU-328 dan 330 memuat enam nama yang sama tanpa jumlah baris. (3) Expected TC-FA-SU-323 menghitung Oscar Pranata dan Qori Akbar lewat baris pola Approver Group Manager; perilaku Search atas baris pola belum diputuskan PM (Open Item 3 PRD settings-user) dan spec mengasersi sesuai TC.
 - Alasan di atas sekitar 35 langkah (ekspansi perulangan dihitung): seluruh blok berkelas fungsional yang sama pada halaman, akun, dan dataset Pre-setup #20 yang sama tanpa mengubah data; langkah berulang per kolom atau field berpola identik (langkah 3 sampai 4, langkah 21 sampai 22) dan kegagalan satu iterasi tidak membuat iterasi lain kehilangan makna; bagian 3 konvensi menetapkan Setup Column, Bulk Action Bar, dan Search, Filter, Sort tetap satu spec selama dataset dan harness sama, sedangkan pemecahan hanya menambah login, hook, dan pembukaan halaman.

@@ -25,7 +25,7 @@ coverage:
 |---|---|---|---|
 | Total Control (Siti Rahmawati) | #2 | `totalControl_automated_{namaCompany}@qwertysystem.net` (`Fixture.fixedAssetRolePermission.akun.totalControl.email`) | `Spectra.env.FA_TC_PASSWORD` |
 
-- Data Pre-setup (Company Alpha): #18 (pohon group; node `IT Infrastructure`), #19 dan #40 (tabel Role Transaksi `IT Infrastructure` sub-tab `Disposal`: Asset Admin Nadia Putri, Ahmad Fauzi, Dimas Pranata; Monitoring & Report Oscar Pratama; Staff Putri Wulandari; Approver Pandu Wijaya). Tidak diubah spec ini kecuali penugasan Indra Kusuma di bawah.
+- Data Pre-setup (Company Alpha): #18 (pohon group; node `IT Infrastructure`), #19 dan #40 (tabel Role Transaksi `IT Infrastructure` sub-tab `Disposal`: Asset Admin Nadia Putri, Ahmad Fauzi, Dimas Pranata; Monitoring & Report Oscar Pratama; Staff Putri Wulandari; Approver Pandu Wijaya; ditambah baris pola Transaction Role: Asset Admin dan Approver untuk Admin Utama, Siti Rahmawati, Rina Wulandari, Monitoring & Report untuk Dewi Anggraini dan Maya Anggraeni; hitungan header berlaku tanpa seed Group Manager Pre-setup #5, #11, #13, #14, #43). Tidak diubah spec ini kecuali penugasan Indra Kusuma di bawah.
 - Pre-setup #17 (Indra Kusuma, tanpa Home Group; Active, Activated). Data Dinamis: penugasan Indra Kusuma sebagai Asset Admin pada `IT Infrastructure` sub-tab `Disposal` dibuat lewat sesi API aktor pada langkah 15 (precondition TC-FA-RP-1052, tidak diasersi) dan dicabut lewat sesi API aktor pada langkah 27; hook `after` mencabutnya bila masih ada.
 - Fixture `Fixture.fixedAssetRolePermission` belum ada; kunci akun, nama pengguna, group, dan nilai kolom yang diasersi ditambahkan tim FE.
 - Kemampuan teknis (disediakan tim FE/BE): sesi API aktor (lihat `suite.md`) untuk menetapkan dan mencabut penugasan Role Transaksi; hover pada avatar.
@@ -46,26 +46,26 @@ coverage:
 
 ### TC-FA-RP-1051: Header section menampilkan jumlah assignment node terpilih
 
-9. Verifikasi header `Asset Admin` memuat `3 users`
-10. Verifikasi header `Monitoring & Report` memuat `1 user`
+9. Verifikasi header `Asset Admin` memuat `6 users`
+10. Verifikasi header `Monitoring & Report` memuat `3 users`
 11. Verifikasi header `Staff` memuat `1 user`
-12. Verifikasi header `Approver` memuat `1 user`
+12. Verifikasi header `Approver` memuat `4 users`
 13. Klik node `Data Center`
-14. Verifikasi keempat header memuat `0 users` (bentuk jamak untuk nol)
+14. Verifikasi header `Asset Admin` memuat `3 users`, `Monitoring & Report` `2 users`, `Staff` `0 users` (bentuk jamak untuk nol), dan `Approver` `3 users` (hanya baris pola)
 
 ### TC-FA-RP-1052: Avatar stack tiga user pertama urut Name A-Z dengan +N dan hover nama lengkap
 
 15. Lewat sesi API aktor, tetapkan Indra Kusuma sebagai Asset Admin pada `IT Infrastructure` sub-tab `Disposal` hingga tersimpan
 16. Muat ulang halaman (F5) lalu buka kembali Tab `Transaction Role`, sub-tab `Disposal`, dan node `IT Infrastructure`
-17. Verifikasi avatar stack pada header `Asset Admin` memuat tiga user pertama urut Name A-Z (Ahmad Fauzi, Dimas Pranata, Indra Kusuma)
-18. Verifikasi avatar stack pada header `Asset Admin` memuat penanda `+1`
-19. Arahkan kursor ke avatar Ahmad Fauzi
-20. Verifikasi hover avatar menampilkan nama lengkap `Ahmad Fauzi`
-21. Arahkan kursor ke avatar Dimas Pranata
-22. Verifikasi hover avatar menampilkan nama lengkap `Dimas Pranata`
-23. Arahkan kursor ke avatar Indra Kusuma
-24. Verifikasi hover avatar menampilkan nama lengkap `Indra Kusuma`
-25. Verifikasi header `Monitoring & Report` memuat satu avatar (Oscar Pratama)
+17. Verifikasi avatar stack pada header `Asset Admin` memuat tiga user pertama urut Name A-Z (Admin Utama, Ahmad Fauzi, Dimas Pranata)
+18. Verifikasi avatar stack pada header `Asset Admin` memuat penanda `+4`
+19. Arahkan kursor ke avatar Admin Utama
+20. Verifikasi hover avatar menampilkan nama lengkap `Admin Utama`
+21. Arahkan kursor ke avatar Ahmad Fauzi
+22. Verifikasi hover avatar menampilkan nama lengkap `Ahmad Fauzi`
+23. Arahkan kursor ke avatar Dimas Pranata
+24. Verifikasi hover avatar menampilkan nama lengkap `Dimas Pranata`
+25. Verifikasi header `Monitoring & Report` memuat tiga avatar (Dewi Anggraini, Maya Anggraeni, Oscar Pratama)
 26. Verifikasi header `Monitoring & Report` tanpa penanda `+N`
 27. Lewat sesi API aktor, cabut penugasan Indra Kusuma sebagai Asset Admin pada `IT Infrastructure` sub-tab `Disposal` hingga tersimpan
 28. Muat ulang halaman (F5) lalu buka kembali Tab `Transaction Role`, sub-tab `Disposal`, dan node `IT Infrastructure`
@@ -74,15 +74,15 @@ coverage:
 
 29. Ketik Search `nadia` pada section `Asset Admin`, tekan Enter
 30. Verifikasi tabel section `Asset Admin` tersaring satu baris (Nadia Putri)
-31. Verifikasi header `Asset Admin` tetap `3 users`
+31. Verifikasi header `Asset Admin` tetap `6 users`
 32. Verifikasi header `Asset Admin` tetap memuat tiga avatar
 33. Klik `(←)` pada kotak Search section `Asset Admin`
 34. Klik `[+ Assign]` pada section `Asset Admin`
 35. Centang Indra Kusuma pada popup, klik `[Assign]`
-36. Verifikasi header `Asset Admin` berubah seketika menjadi `4 users` tanpa muat ulang halaman
+36. Verifikasi header `Asset Admin` berubah seketika menjadi `7 users` tanpa muat ulang halaman
 37. Verifikasi avatar stack pada header `Asset Admin` memuat Indra Kusuma
 38. Klik `[⋯]` pada baris Indra Kusuma, pilih `Remove`, klik `[Remove]`
-39. Verifikasi header `Asset Admin` kembali `3 users`
+39. Verifikasi header `Asset Admin` kembali `6 users`
 
 ## Notes
 
@@ -93,4 +93,5 @@ coverage:
 - Temuan untuk QA:
   - TC-FA-RP-1052 menulis precondition "Indra Kusuma ditugaskan sebagai Asset Admin" tanpa menyebut cara; spec memakai sesi API aktor (S-04) dan mencabutnya sebelum TC-FA-RP-1053 yang menugaskan Indra Kusuma lewat UI.
   - TC tidak menyatakan posisi Tab, node, dan sub-tab setelah F5 pada Tab Transaction Role; spec menulis langkah penghubung yang membuka kembali Tab, node, dan sub-tab sebelum asersi lanjutan.
-  - TC-FA-RP-1051 menyebut header `Approver` memuat `1 user` (Pandu Wijaya) sedangkan TC-FA-RP-1013 menyatakan Group Manager dan Total Control tidak tampil sebagai baris; spec mengasersi nilai header sesuai TC masing-masing.
+  - TC-FA-RP-1051 sampai 1053 menghitung baris manual ditambah baris pola (Asset Admin 6, Monitoring & Report 3, Staff 1, Approver 4 pada `IT Infrastructure`; 3/2/0/3 pada `Data Center`); angka ini berlaku tanpa seed Group Manager (Pre-setup #19), spec mengasersi nilai sesuai TC.
+  - TC-FA-RP-1053 Expected b menulis avatar stack header `Asset Admin` memuat Indra Kusuma setelah Assign, padahal urut Name A-Z dengan tujuh user Indra Kusuma berada di luar tiga avatar pertama (Admin Utama, Ahmad Fauzi, Dimas Pranata, penanda `+4`); langkah 37 tetap mengikuti teks TC dan perlu dikonfirmasi QA.

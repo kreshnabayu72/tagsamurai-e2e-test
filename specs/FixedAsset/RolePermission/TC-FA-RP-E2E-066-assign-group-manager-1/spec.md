@@ -92,7 +92,7 @@ coverage:
 - Urutan (S-10): blok validasi TC-FA-RP-221 berada sesudah blok TC-FA-RP-219 yang sukses karena mengikuti urutan TC sumber; langkah 13 memulihkan state sebelum blok berikutnya sehingga validasi tidak bergantung pada hasil sukses.
 - Pembukaan popup untuk TC-FA-RP-221 memakai Sidebar `All Groups` (precondition d TC-FA-RP-221); langkah 'Klik `All Groups`' pada TC-FA-RP-220 meninggalkan Sidebar pada keadaan itu.
 - Absence "tidak ada toast" pada TC-FA-RP-221 didahului `Verifikasi` error field-level yang membuktikan respons validasi sudah tampil (butir 8b.2).
-- Post Condition TC-FA-RP-219 (penugasan hanya pada node `Data Center`, wewenang dinamis atas `Rack A1`, tanpa notifikasi) tidak punya langkah observasi dan tidak diasersi (S-01, S-15).
+- Post Condition TC-FA-RP-219 (penugasan hanya pada node `Data Center` tanpa penugasan per descendant, wewenang dinamis atas `Rack A1` dan baris pola GM bukan sumber wewenang, baris pola GM ditulis pada `Data Center` dan `Rack A1` dalam transaksi yang sama, tanpa notifikasi) tidak punya langkah observasi dan tidak diasersi (S-01, S-15).
 - Temuan untuk QA:
   - TC-FA-RP-219 tidak menyatakan node Sidebar awal; spec mengikuti urutan TC (group dipilih sebelum user dicentang) dan mengandalkan Sidebar pada node yang field Group-nya sudah terisi. TC-FA-RP-220 dan 221 menyatakan Table User Picker kosong dan Disabled sampai Group dipilih pada Sidebar `All Groups`. TC-FA-RP-221 langkah 2 (mencentang user tanpa memilih group pada Sidebar `All Groups`) bertentangan dengan Disabled pada TC-FA-RP-220; spec mengikuti teks TC.
   - TC-FA-RP-221 Expected b "tidak ada penugasan tersimpan" dan "tidak ada toast" tidak punya baseline di TC; spec memakai baseline penugasan Group Manager lewat fixture BE (S-12).

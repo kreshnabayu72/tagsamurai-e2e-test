@@ -56,7 +56,7 @@ coverage:
 
 16. Reset Client Limit lewat skrip fixture: tanpa draft Tab User Login, 999 Division tersimpan dan Master Data Count Limit Division 1000 (D-46); hapus Division `Legal`, `Logistik`, dan `Pengadaan` hasil TC-410 bila ada
 17. [Sesi A] Buka Global Settings > Import, pilih Sub-Tab User Login
-18. [Sesi A] Klik `[Upload File]` di toolbar dan pilih berkas `user-login-division-cap.csv`
+18. [Sesi A] Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-division-cap.csv`
 19. [Sesi A] Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 20. [Sesi A] Klik `⋯` pada baris #1 (`Pengadaan`)
 21. [Sesi B] Buka Global Settings > Import, pilih Sub-Tab User Login

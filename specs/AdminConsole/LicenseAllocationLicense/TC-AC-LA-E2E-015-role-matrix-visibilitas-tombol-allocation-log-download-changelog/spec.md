@@ -53,7 +53,7 @@ coverage:
 
 ### Akun `createOnlyLic`, `totalControlDistLic`, dan `gmApproveOnlyLic` (TC-AC-LA-63, TC-AC-LA-64, TC-AC-LA-69; `gmApproveOnlyLic` juga TC-AC-LA-44)
 
-12. Ganti akun: Logout lalu login sebagai akun baris tabel berikutnya (urutan `createOnlyLic`, `totalControlDistLic`, `gmApproveOnlyLic`; langkah 12 sampai 23 diulang tiga kali)
+12. Ganti akun: Logout lalu login sebagai akun baris tabel berikutnya (urutan `createOnlyLic`, `totalControlDistLic`, `gmApproveOnlyLic`; langkah 12 sampai 23 diulang tiga kali), lalu buka Allocation > License Allocation tab Current
 13. Ketik Search Allocation ID seed `Waiting for Approval` (`Fixture.license-allocation-license.seed41`), tekan Enter
 14. Verifikasi `[+ Allocation]` pada toolbar tab Current sesuai kolom `[+ Allocation] tab Current` baris tabel akun itu
 15. Verifikasi ikon Download dan ikon Changelog Show dan aktif
@@ -71,11 +71,11 @@ coverage:
 24. Ketik Search Allocation ID seed `Waiting for Approval` (`Fixture.license-allocation-license.seed41`), tekan Enter
 25. Klik Allocation ID baris `Waiting for Approval`
 26. Verifikasi modal `Allocation Log` terbuka untuk record itu
-27. Tutup modal dengan `[✕]`
+27. Tutup modal dengan `[×]`
 28. Ganti isi kotak search dengan Allocation ID seed `Active` (`Fixture.license-allocation-license.seed47`), tekan Enter
 29. Klik ikon `⋯` baris `Active`, lalu klik `Allocation Log`
 30. Verifikasi modal `Allocation Log` terbuka untuk record `Active`
-31. Tutup modal dengan `[✕]`, lalu klik `(←)` pada kotak Search
+31. Tutup modal dengan `[×]`, lalu klik `(←)` pada kotak Search
 
 ### Akun `additionalApproverLic` dan `noCapabilityLic` (TC-AC-LA-63 butir f, TC-AC-LA-64 butir b, TC-AC-LA-69 butir b)
 
@@ -89,6 +89,7 @@ coverage:
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah `(←)` pada kotak Search, pindah tab, dan ganti akun eksplisit (S-07). Urutan akun disusun supaya `gmApproveOnlyLic` tepat sebelum blok TC-AC-LA-44.
+- Langkah penghubung (S-03): pembukaan Allocation > License Allocation tab Current di dalam langkah Ganti akun, karena halaman landing akun tidak diandaikan (S-07).
 - Role Matrix: ditulis per blok role karena ganti akun menuntut Step eksplisit (bagian 3a, 2026-10-30) dan tiap blok akun berdiri sendiri; hasil berbeda per role.
 - Spec ini di atas 35 langkah. Alasannya: semua blok satu topik (visibilitas tombol dan row action pada List per role) dan satu kelas harness (Role Matrix), data seed baca-saja yang sama, dan tiap blok akun berdiri sendiri; kegagalan satu akun tidak membuat blok akun lain kehilangan makna.
 - Langkah 12 sampai 23 diulang tiga kali (ekspansi 36 langkah) dan langkah 32 sampai 35 dua kali; parameter tiap iterasi ada di tabel `Role yang diuji`.

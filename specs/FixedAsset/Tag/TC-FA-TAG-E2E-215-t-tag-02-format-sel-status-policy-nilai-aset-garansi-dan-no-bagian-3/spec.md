@@ -36,6 +36,7 @@ Role yang diuji:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`; penghapusan preferensi kolom tabel T-TAG-02 di browser (cache browser tempat konfigurasi Setup Column disimpan) dipakai di hook `after` dan sebagai langkah penghubung bila tertulis.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom di browser (bukan lewat `[Reset to Default]`) dan kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global selain preferensi kolom di browser.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 3, 12, 22), dipulihkan hook `after` (lihat `suite.md`).
 
 ## Test Steps
 
@@ -56,7 +57,7 @@ Role yang diuji:
 10. Klik Asset Name `Excavator 20 Ton` pada baris Plant B
 11. Ubah page size menjadi 25
 12. Tampilkan kolom `Warranty Expiry` lewat Setup Column (header `⋯`, `Setup Column...`, centang kolom, `[Save]`)
-13. Verifikasi Sel menampilkan `—`
+13. Verifikasi Sel Warranty Expiry AST-0020 menampilkan `—`
 
 ### TC-FA-TAG-862: Kolom Last Updated mengikuti format General Settings
 
@@ -85,9 +86,9 @@ Role yang diuji:
 - Popup Detail Excavator 20 Ton / Plant B dibuka pada TC pertama dan tetap terbuka bila TC berikutnya memakai popup yang sama (langkah "Klik Asset Name" TC berikutnya tidak diulang; halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - Urutan TC diatur menurut akun: akun Manage asset & TAG (Read) (Read: Plant B tanpa akses Manage purchase) lebih dulu, lalu Total Control.
 - Preferensi kolom dihapus di browser sebelum ganti akun dan sebelum TC-FA-TAG-864 supaya langkah menampilkan kolom bersifat deterministik.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 3, 12, 22), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
-  - Spec ini menyimpan konfigurasi kolom lewat Setup Column dan hook `after` spec ini menghapus preferensi kolom di browser; nomor spec ini belum tercantum pada daftar pemulihan kolom di `suite.md`.
+  - Spec ini menyimpan konfigurasi kolom lewat Setup Column dan hook `after` spec ini menghapus preferensi kolom di browser; nomor spec ini tercantum pada daftar pemulihan kolom di `suite.md`.
   - TC-FA-TAG-864 mensyaratkan seluruh kolom curated ditampilkan tetapi Langkah Uji tidak memuat langkahnya; spec menambah langkah penghubung Setup Column.
   - TC-FA-TAG-863 menyebut Asset Name 81 karakter dengan increment 1 pada baris Plant B; Asset Name itu tidak termasuk dataset dasar TC dan disediakan fixture BE.
   - Post Condition TC ("Tidak ada perubahan data bisnis (aksi hanya membaca)" dan "Konfigurasi kolom tersimpan di cache browser ...") tidak punya langkah observasi di TC; tidak diasersi.

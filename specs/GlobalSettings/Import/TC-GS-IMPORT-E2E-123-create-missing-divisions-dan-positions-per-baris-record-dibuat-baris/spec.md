@@ -36,7 +36,7 @@ coverage:
 ### TC-GS-IMPORT-323: Create Missing Divisions per-baris dari Actions membuat satu Division dan baris pulih ke pending
 
 1. Pilih sub-tab User Login
-2. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+2. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi Staging Table menampilkan 4 baris `error`
 5. Verifikasi Error Summary Callout memuat "Division not found" dengan badge "4 rows"
@@ -55,7 +55,7 @@ coverage:
 ### TC-GS-IMPORT-325: Create Missing Divisions per-baris pada Tab User Non Login
 
 17. Buka Import dan pilih sub-tab User Non Login
-18. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-logistik-1.csv`
+18. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-logistik-1.csv`
 19. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 20. Verifikasi baris #1 berstatus `error`
 21. Verifikasi Error Summary Callout memuat "Division not found" dengan badge "1 row"
@@ -75,7 +75,7 @@ coverage:
 TC-GS-IMPORT-350 dan 351 memiliki precondition, berkas, dan aksi pemicu yang sama (`[Create Missing Divisions]` dari Callout pada `user-login-logistik-4.csv`); satu alur menjalankan Expected keduanya.
 
 32. Buka Import dan pilih sub-tab User Login
-33. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+33. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 34. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 35. Verifikasi Staging Metric Cards: Total Rows 4, Ready to Import 0, Errors 4
 36. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
@@ -90,7 +90,7 @@ TC-GS-IMPORT-350 dan 351 memiliki precondition, berkas, dan aksi pemicu yang sam
 ### TC-GS-IMPORT-346: Tombol Create Missing Disabled dengan spinner selama request berjalan
 
 44. Buka Import dan pilih sub-tab User Login
-45. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+45. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 46. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 47. Atur intercept jaringan agar respons permintaan Create Missing ditunda 3 detik dan hitung jumlah permintaan yang terkirim
 48. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
@@ -106,7 +106,7 @@ TC-GS-IMPORT-350 dan 351 memiliki precondition, berkas, dan aksi pemicu yang sam
 ### TC-GS-IMPORT-324: Create Missing Positions per-baris membuat Position dan baris pulih ke pending
 
 57. Buka Import dan pilih sub-tab User Login
-58. Klik [Upload File] di toolbar dan pilih berkas `user-login-store-supervisor-1.csv`
+58. Klik [Upload File] di Dropzone dan pilih berkas `user-login-store-supervisor-1.csv`
 59. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 60. Verifikasi baris #1 berstatus `error`
 61. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "1 row"
@@ -124,7 +124,7 @@ TC-GS-IMPORT-350 dan 351 memiliki precondition, berkas, dan aksi pemicu yang sam
 ### TC-GS-IMPORT-326: Create Missing Positions per-baris pada Tab User Non Login
 
 72. Buka Import dan pilih sub-tab User Non Login
-73. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-store-supervisor-1.csv`
+73. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-store-supervisor-1.csv`
 74. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 75. Verifikasi baris #1 berstatus `error`
 76. Verifikasi Error Summary Callout memuat "Position not found" dengan badge "1 row"
@@ -142,7 +142,7 @@ TC-GS-IMPORT-350 dan 351 memiliki precondition, berkas, dan aksi pemicu yang sam
 ### TC-GS-IMPORT-336: Create Missing Divisions menulis ke modul Division tanpa melalui staging Tab Division
 
 87. Buka Import dan pilih sub-tab User Login
-88. Klik [Upload File] di toolbar dan pilih berkas `user-login-regional-sales.csv`
+88. Klik [Upload File] di Dropzone dan pilih berkas `user-login-regional-sales.csv`
 89. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 90. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
 91. Verifikasi toast sukses: "Success, division has been created."

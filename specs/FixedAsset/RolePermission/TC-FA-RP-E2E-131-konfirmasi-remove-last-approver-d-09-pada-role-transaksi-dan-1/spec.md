@@ -22,15 +22,15 @@ coverage:
 - Mode: FE+BE
 - Akun: Total Control pada client `Company Isolated` (Pre-setup #35; akun disediakan tim FE, email tidak tertulis di Pre-setup TC), `Spectra.env.FA_ISOLATED_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip, sesi API aktor, dan pemulihan Pre-setup bersama mengikuti pernyataan "Hook suite" di `suite.md`.
-- Data Pre-setup: #18 (struktur Group `Company Isolated` sama dengan Company Alpha), #35 (Approver Pandu Wijaya pada sub-tab `Disposal` di `IT Infrastructure`; tanpa Group Manager; Require Approval OFF di semua node), #15 (Ahmad Fauzi untuk TC 453).
-- Tiap blok TC menyiapkan state sendiri lewat seeding API (langkah "Siapkan state"): toggle `Require Approval for Disposal`, Approver, Group Manager (Kevin Susanto di `Data Center`), sesuai precondition d TC. Hook `after` memulihkan state `Company Isolated` ke Pre-setup #35 lewat fixture backend yang disediakan tim FE/BE.
+- Data Pre-setup: #18 (struktur Group `Company Isolated` sama dengan Company Alpha), #35 (Approver Pandu Wijaya pada sub-tab `Disposal` di `IT Infrastructure`, mencakup descendant `Data Center`, `Helpdesk`, dan `Rack A1` pada `Disposal`; sub-tab `Damaged` tanpa Approver manual; tanpa Group Manager; Require Approval OFF di semua node), #15 (Ahmad Fauzi untuk TC 453).
+- Tiap blok TC menyiapkan state sendiri lewat seeding API (langkah "Siapkan state"): toggle `Require Approval for Disposal`, Approver, Group Manager (Kevin Susanto di `Data Center`), sesuai precondition d TC. Pada TC 450 sampai 454 toggle `Disposal` node descendant (`Data Center`, `Helpdesk`, `Rack A1`) tetap OFF supaya daftar group pada D-09 hanya memuat `IT Infrastructure`; TC 455 memakai sub-tab `Damaged` (tanpa Approver manual yang mencakup). Hook `after` memulihkan state `Company Isolated` ke Pre-setup #35 lewat fixture backend yang disediakan tim FE/BE.
 - Kemampuan teknis: seeding API Pre-setup per blok; pemulihan fixture.
 
 ## Test Steps
 
 ### Remove Approver terakhir saat Require Approval ON tanpa Group Manager (TC 450)
 
-1. Siapkan state: toggle `Require Approval for Disposal` ON di `IT Infrastructure` dengan Pandu Wijaya sebagai satu-satunya Approver, tanpa Group Manager, hingga tersimpan.
+1. Siapkan state: toggle `Require Approval for Disposal` ON di `IT Infrastructure` dengan Pandu Wijaya sebagai satu-satunya Approver, tanpa Group Manager, toggle `Disposal` node descendant (`Data Center`, `Helpdesk`, `Rack A1`) OFF, hingga tersimpan.
 2. Buka Tab Transaction Role, klik node `IT Infrastructure`, lalu sub-tab `Disposal`.
 3. Klik `[⋯]` pada baris Pandu Wijaya, lalu pilih `Remove`.
 4. Verifikasi dialog severity danger: Title `Remove Last Approver`; Body `• Pandu W` lalu `IT Infrastructure will have no approver other than Total Control while approval is required.` dan `Are you sure you want to remove it?`; tombol `[Cancel]` dan `[Remove]`.
@@ -77,15 +77,15 @@ coverage:
 
 ### Remove Group Manager fallback non-Total Control terakhir (TC 455)
 
-33. Siapkan state: Kevin Susanto Group Manager di `Data Center`; toggle `Require Approval for Disposal` ON di `Data Center`; tanpa Approver manual, tanpa pemegang Update, tanpa Group Manager lain, hingga tersimpan.
+33. Siapkan state: Kevin Susanto Group Manager di `Data Center`; toggle `Require Approval for Damaged` ON di `Data Center`; tanpa Approver manual yang mencakup (Pandu Wijaya hanya pada `Disposal`), tanpa pemegang Update, tanpa Group Manager lain; baris pola GM `Manage asset & TAG` dengan Update aktif milik Kevin Susanto tidak dihitung sebagai pemegang Update, hingga tersimpan.
 34. Muat ulang halaman (F5), buka Tab Group Manager, lalu klik node `Data Center`.
 35. Klik `[⋯]` pada baris Kevin Susanto, lalu pilih `Remove`.
-36. Verifikasi dialog severity danger: Title `Remove Last Approver`; Body `• Kevin S` lalu `Data Center will have no approver other than Total Control while approval is required.`, lalu `Their role assignments in Data Center will also be removed permanently.` dan `Are you sure you want to remove it?`; tombol `[Cancel]` dan `[Remove]`.
+36. Verifikasi dialog severity danger: Title `Remove Last Approver`; Body `• Kevin S` lalu `Data Center will have no approver other than Total Control while approval is required.`, lalu `Their role assignments in Data Center and its sub-groups will also be removed permanently.` dan `Are you sure you want to remove it?`; tombol `[Cancel]` dan `[Remove]`.
 37. Verifikasi dialog D-02 `Remove Group Manager` tidak tampil.
 38. Klik `[Remove]`.
 39. Verifikasi toast sukses `Success, Group Manager has been removed.`
-40. Buka Tab Transaction Role, klik node `Data Center`, lalu sub-tab `Disposal`.
-41. Verifikasi toggle `Require Approval for Disposal` di `Data Center` tetap ON.
+40. Buka Tab Transaction Role, klik node `Data Center`, lalu sub-tab `Damaged`.
+41. Verifikasi toggle `Require Approval for Damaged` di `Data Center` tetap ON.
 
 ## Notes
 
@@ -93,6 +93,7 @@ coverage:
 - Langkah penghubung (S-03): 1, 2, 3, 6, 10, 11, 15, 16, 17, 20 sampai 23, 26 sampai 29, 32 sampai 35, 38, 40. Muat ulang (F5) sesudah seeding API memastikan UI membaca state terbaru. Langkah 20, 26, dan 32 menutup dialog supaya blok berikutnya tidak mewarisi dialog terbuka (S-09). Langkah 40 membuka Tab Transaction Role karena TC 455 tidak memberi langkah observasi toggle.
 - Langkah 5, 19, 25, 31, dan 37 adalah asersi absence dialog; pembanding positifnya adalah dialog lain yang tampil pada langkah sebelumnya (langkah 4, 18, 24, 30, 36) dan langkah 4 untuk 5.
 - Copy bertanda `copy usulan, PRD 12 #1` (TC 455: Body dialog D-09 untuk Group Manager) di-assert literal sesuai TC dan bergantung pada persetujuan PM.
+- Sub-tab TC 455 memakai `Damaged` karena Approver Pandu Wijaya pada `Disposal` di `IT Infrastructure` kini mencakup `Data Center`; toggle descendant `Disposal` pada TC 450 sampai 454 dijaga OFF agar daftar group D-09 tetap satu nama.
 - Temuan untuk QA:
   - Tenant: seluruh TC di spec ini mensyaratkan login pada `Company Isolated` (Pre-setup #35); akun Total Control tenant itu tidak tertulis di Pre-setup #1 sampai #11 dan disediakan tim FE.
   - TC 450 sampai 454 tidak menulis Post Condition dan tidak menyebut apakah state diakhiri dengan Remove; TC 451 mengeksekusi Remove sehingga state Approver dipulihkan lewat seeding di blok berikutnya.

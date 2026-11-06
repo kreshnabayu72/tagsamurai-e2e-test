@@ -56,7 +56,7 @@ coverage:
 
 ### TC-AC-LA-481: Create-only menyelesaikan Resubmit dari record Canceled miliknya
 
-15. Ganti akun: Logout lalu login sebagai Distributor Create+Read (`createOnlyLic`)
+15. Ganti akun: Logout lalu login sebagai Distributor Create+Read (`createOnlyLic`), lalu buka Allocation > License Allocation tab Current
 16. Pastikan kolom Payment tampil: klik ikon `⋯` pada header kolom, klik `Setup Column...`, centang kolom Payment, lalu klik `[Save]`
 17. Catat baseline Allocation ID baris di halaman pertama tab Current
 18. Klik tab `History`, lalu ketik Search Allocation ID alokasi `Canceled` milik `Doni P` (`Fixture.license-allocation-license.ownCanceledDoni`), tekan Enter
@@ -76,6 +76,7 @@ coverage:
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah Setup Column, langkah `Klik (←)` pada kotak Search dan pindah tab, dan ganti akun eksplisit (S-07). Record baru hasil Resubmit adalah baris di halaman pertama tab Current yang Allocation ID-nya tidak ada pada baseline langkah 17 (S-12).
+- Langkah penghubung (S-03): pembukaan Allocation > License Allocation tab Current di dalam langkah Ganti akun, karena halaman landing akun tidak diandaikan (S-07).
 - Role Matrix: ditulis per blok role karena ganti akun menuntut Step eksplisit (bagian 3a, 2026-10-30) dan tiap blok akun berdiri sendiri; hasil dan data berbeda per role.
 - Aksi Edit, Cancel, dan Resubmit memakai record milik spec yang dibuat saat akun masih punya capability yang diperlukan (Pre-setup #43 dan #59 sebagai pola); Pre-setup bersama tidak diubah (S-06).
 - Temuan untuk QA:

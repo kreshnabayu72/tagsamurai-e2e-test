@@ -29,6 +29,7 @@ coverage:
 - Tab To Be Returned memuat Tag `RF-00071`, `RF-00088`, dan `NF-00092` (dipakai TC-FA-TAG-13 sebagai baris yang dibuka kebab aksinya).
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -69,6 +70,6 @@ coverage:
 - Langkah 7, 13, 17, 18, 25, dan 29 adalah langkah penghubung (menutup menu, melepas seleksi, menutup Popup Detail), tanpa asersi (S-03). Langkah 1 dan 4 mengikuti langkah 1 TC-FA-TAG-13 per permukaan yang diperiksa.
 - Langkah 3, 6, 12, 16, 21, 24, dan 28 adalah asersi absence atas elemen UI; anchor positif adalah Verifikasi elemen lain pada permukaan yang sama tepat sebelumnya (langkah 2, 5, 9 dan 11, 15, 20, 23, 27) (bagian 8b butir 2).
 - TC-FA-TAG-1 sampai 3 ada di spec 001, TC-FA-TAG-4 sampai 7 ada di spec 018, dan TC-FA-TAG-8 sampai 12 ada di spec 002.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-13 menyebut "Bulk Action" tetapi Bulk Action Bar baru tampil setelah baris dicentang; spec mencentang baris pertama untuk memunculkannya. Isi aksi row action Popup Detail dan tab To Be Returned tidak disebut di TC ini, sehingga spec hanya mengasersi "sedikitnya satu aksi" sebagai anchor.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

@@ -25,9 +25,10 @@ coverage:
 - Simulator reader RFID/NFC USB (disediakan tim FE/BE, lihat `suite.md`): satu reader tersambung, driver terpasang, reader aktif, dan sudah disinkronkan di Global Settings > Handheld Reader; langkah "Pindai" memakai simulator itu sebagai langkah rutin.
 - Seed dan pemulihan idempotent lewat fixture backend (disediakan tim FE/BE, lihat `suite.md`): aset, Tag per status registri, stok Tag per tipe, laporan Tag, dan entri log.
 - Pelaku aksi pada TC adalah pengguna login dengan nama tampil 'Budi S.'; kolom Modified By diasersi berformat [First Name] [Last Initial].
-- Data (Pre-setup TC, tanpa suffix): 'Excavator 20 Ton - 51' (AST-0051, Plant A, RFID saja) Not Paired Yet; 'Excavator 20 Ton - 220' (AST-0220, Plant A, RFID) dengan Tag RFID `RF-00130` Paired (pada TC-FA-TAG-1151 dengan laporan terbuka Damaged).
+- Data (Pre-setup TC, tanpa suffix): 'Excavator 20 Ton - 51' (AST-0051, Plant A, RFID saja) Not Paired Yet; 'Excavator 20 Ton - 220' (AST-0220, Plant A, RFID) dengan Tag RFID `RF-00330` Paired (pada TC-FA-TAG-1151 dengan laporan terbuka Damaged).
 - Stok Global (precondition TC): Tag RFID `RF-00412`, `RF-00415`, `RF-00420`, Tag NFC `NF-00500`, Tag QR `QR-00701` berstatus Available.
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Baseline jumlah entri Replace pada Changelog Asset Detail aset 'Excavator 20 Ton - 220' dibaca pada langkah 10 lewat kemampuan baca (disediakan tim FE/BE) sesudah pemulihan fixture dan sebelum pemicu langkah 14; Changelog bersifat permanen dan tidak dipulihkan fixture, dan asersi entri baru memakai selisih terhadap baseline: butir A-18 (S-12, S-14).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 14, 32); entri Changelog `Pair TAG` per Tag (langkah 5, 24); entri TAG Log Global (langkah 5, 14, 24, 32).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan aset, Tag, laporan, stok Tag per tipe di registri Global, dan TAG Type Asset Name ke keadaan awal lewat fixture backend.
 - State global yang diubah spec ini: stok Tag per tipe di registri Global, status Tag, dan data aset/laporan Pre-setup. Suite serial (`parallel: false`).
 
@@ -47,42 +48,44 @@ coverage:
 ### TC-FA-TAG-1149: Asset Detail menampilkan Tag baru dan Changelog Replace
 
 9. Pulihkan aset, Tag, dan stok lewat fixture backend, lalu buka Fixed Asset > TAG tab Paired
-10. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
-11. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 220'
-12. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
-13. Klik [Submit]
-14. Buka Asset > Asset List > Detail aset 'Excavator 20 Ton - 220' > tab TAG
-15. Verifikasi tab TAG memuat `RF-00412` dan tidak memuat `RF-00130`
-16. Klik tombol `Changelog` di Asset Detail
-17. Verifikasi Changelog Asset Detail memuat entri Replace dengan Old Value `[RFID] RF-00130` dan New Value `[RFID] RF-00412`
+10. Catat jumlah entri Replace pada Changelog Asset Detail aset 'Excavator 20 Ton - 220' sebagai baseline (dibaca lewat kemampuan baca, disediakan tim FE/BE)
+11. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
+12. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 220'
+13. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
+14. Klik [Submit]
+15. Buka Asset > Asset List > Detail aset 'Excavator 20 Ton - 220' > tab TAG
+16. Verifikasi tab TAG memuat `RF-00412` dan tidak memuat `RF-00330`
+17. Klik tombol `Changelog` di Asset Detail
+18. Verifikasi Changelog Asset Detail memuat satu entri Replace baru (selisih jumlah entri Replace terhadap baseline langkah 10) dengan Old Value `[RFID] RF-00330` dan New Value `[RFID] RF-00412`
 
 ### TC-FA-TAG-1150: Tagging aset berubah dari Not Paired Yet menjadi Paired
 
-18. Pulihkan aset, Tag, dan stok lewat fixture backend, lalu buka Fixed Asset > TAG tab Paired
-19. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A
-20. Klik `Show` di samping `Not Paired Yet`
-21. Klik row action `Pair TAG` pada baris 'Excavator 20 Ton - 51'
-22. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
-23. Klik [Submit]
-24. Buka Asset > Asset List > Detail aset 'Excavator 20 Ton - 51'
-25. Verifikasi status Tagging aset `Paired` dan tab TAG memuat `RF-00412`
-26. Verifikasi badge `Not Paired Yet` tidak lagi tampil
+19. Pulihkan aset, Tag, dan stok lewat fixture backend, lalu buka Fixed Asset > TAG tab Paired
+20. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A
+21. Klik `Show` di samping `Not Paired Yet`
+22. Klik row action `Pair TAG` pada baris 'Excavator 20 Ton - 51'
+23. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
+24. Klik [Submit]
+25. Buka Asset > Asset List > Detail aset 'Excavator 20 Ton - 51'
+26. Verifikasi status Tagging aset `Paired` dan tab TAG memuat `RF-00412`
+27. Verifikasi badge `Not Paired Yet` tidak lagi tampil
 
 ### TC-FA-TAG-1151: status Tag Reported dicabut setelah Replace menutup laporan
 
-27. Pulihkan aset, Tag, dan stok lewat fixture backend, lalu buka Fixed Asset > TAG tab Paired dengan laporan terbuka (Report Type Damaged) pada Tag `RF-00130`
-28. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
-29. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 220'
-30. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
-31. Klik [Submit]
-32. Buka Asset > Asset List > Detail aset 'Excavator 20 Ton - 220'
-33. Verifikasi badge `Tag Reported` tidak tampil pada status aset
+28. Pulihkan aset, Tag, dan stok lewat fixture backend, lalu buka Fixed Asset > TAG tab Paired dengan laporan terbuka (Report Type Damaged) pada Tag `RF-00330`
+29. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
+30. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 220'
+31. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
+32. Klik [Submit]
+33. Buka Asset > Asset List > Detail aset 'Excavator 20 Ton - 220'
+34. Verifikasi status Tagging aset `Paired` tampil pada status aset
+35. Verifikasi badge `Tag Reported` tidak tampil pada status aset
 
 ## Notes
 
 - Mode: FE+BE.
-- Langkah penghubung (S-03): 9, 18 dan 27 (memulihkan data dan stok lewat fixture, kembali ke halaman TAG antar TC, S-09).
-- Absence TC-FA-TAG-1151 (badge `Tag Reported` tidak tampil) dan TC-FA-TAG-1150 (badge `Not Paired Yet` tidak tampil): didahului `Verifikasi` status Tagging `Paired` pada Asset Detail yang sama sebagai anchor positif. Pada TC-FA-TAG-1151 anchor positifnya adalah halaman Asset Detail aset yang dibuka (bagian 8b butir 2).
+- Langkah penghubung (S-03): 9, 10, 19 dan 28 (memulihkan data dan stok lewat fixture, kembali ke halaman TAG antar TC, S-09). Langkah 10 adalah Catat jumlah baseline (butir A-18).
+- Absence TC-FA-TAG-1151 (badge `Tag Reported` tidak tampil) dan TC-FA-TAG-1150 (badge `Not Paired Yet` tidak tampil): didahului `Verifikasi` status Tagging `Paired` pada Asset Detail yang sama sebagai anchor positif. Pada TC-FA-TAG-1151 anchor positifnya adalah Expected butir a TC (status Tagging `Paired` tampil pada status aset; langkah 34, bagian 8b butir 2).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 14, 32); entri Changelog `Pair TAG` per Tag (langkah 5, 24); entri TAG Log Global (langkah 5, 14, 24, 32).
 - Temuan untuk QA:
-  - TC-FA-TAG-1151 Expected hanya absence badge `Tag Reported`; TC tidak memberi anchor positif di Asset Detail, sehingga spec memakai halaman Asset Detail yang termuat sebagai anchor permukaan.
   - TC-FA-TAG-1148 sampai 1151 tidak punya Post Condition yang perlu diasersi di luar Expected.

@@ -21,8 +21,9 @@ coverage:
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before`, lihat `suite.md`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada; nilai literal TC pada langkah diberi kunci fixture oleh tahap script (akan disediakan).
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB satu reader tersambung, driver terpasang, reader aktif, sudah disinkronkan di Global Settings > Handheld Reader (lihat `suite.md`); sesi API pelaku kedua yang mengubah aset menjadi In Disposal Process dan memasangkan Tag ke aset; seed dan pemulihan idempotent aset serta stok Tag lewat fixture backend.
-- Data (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00130` berstatus Paired; AST-0051 'Excavator 20 Ton - 51' (Group Plant A, TAG Type Asset Name RFID saja) belum punya Tag Paired (Not Paired Yet). Stok Global: Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` berstatus Available.
+- Data (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00330` berstatus Paired; AST-0051 'Excavator 20 Ton - 51' (Group Plant A, TAG Type Asset Name RFID saja) belum punya Tag Paired (Not Paired Yet). Stok Global: Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` berstatus Available.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan AST-0220, AST-0051, dan stok Tag ke keadaan awal lewat fixture backend. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 16); entri TAG Log Global (langkah 16). Aksi tulis pada langkah 5, 17 ditolak dan tidak menambah entri. Aksi lain lewat sesi API (langkah 4) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -37,8 +38,8 @@ coverage:
 7. Verifikasi tidak ada mutasi dari Submit: Toast "Success, TAG has been replaced." tidak tampil
 8. Klik [OK]
 9. Klik `✕` pada Dialog Replace TAG
-10. Verifikasi dialog `Unsaved Changes` tampil
-11. Klik [Leave]
+10. Verifikasi dialog `Discard Replacement` dengan body "Discard this replacement? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil
+11. Klik [Discard]
 12. Pulihkan AST-0220 ke keadaan awal lewat fixture backend
 
 ### TC-FA-TAG-1351: Pair saat aset sudah dipasangkan pengguna lain
@@ -51,8 +52,8 @@ coverage:
 18. Verifikasi Toast "Error, failed to pair TAG."
 19. Verifikasi Dialog Pair TAG tetap terbuka
 20. Klik `✕` pada Dialog Pair TAG
-21. Verifikasi dialog `Unsaved Changes` tampil
-22. Klik [Leave]
+21. Verifikasi dialog `Discard Pairing` dengan body "Discard this pairing? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil
+22. Klik [Discard]
 23. Tutup Popup Detail
 24. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
 25. Verifikasi baris 'Excavator 20 Ton - 51' memuat Tag `RF-00415` dari pengguna lain
@@ -64,8 +65,8 @@ coverage:
 - Langkah penghubung (tanpa awalan `Verifikasi`): 1 dan 2, 13 dan 14 (membuka popup, daftar Not Paired Yet, dan dialog), 9 sampai 11 dan 20 sampai 22 (menutup form dirty, S-08), 12 (memulihkan state lewat fixture, S-09), 23 dan 24 (menutup dan membuka kembali popup agar daftar dimuat ulang).
 - Asersi "tidak ada mutasi" pada langkah 7 diamati sebagai Toast sukses penggantian tidak tampil setelah dialog blok tampil (langkah 6 menjadi anchor positif); TC tidak memberi cara observasi lain (S-03). Langkah 25 (baris memuat `RF-00415`) mendahului langkah 26 sebagai anchor positif absence (bagian 8b butir 2).
 - Pembagian TC lintas spec: TC-FA-TAG-1332 sampai TC-FA-TAG-1335 ada di spec 374, TC-FA-TAG-1336, TC-FA-TAG-1337, dan TC-FA-TAG-1338 di spec 375.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 16); entri TAG Log Global (langkah 16). Aksi tulis pada langkah 5, 17 ditolak dan tidak menambah entri. Aksi lain lewat sesi API (langkah 4) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1339 berlabel Manual Only (dua sesi pengguna paralel); spec tetap ditulis dengan pelaku kedua lewat sesi API.
   - TC-FA-TAG-1351 tidak menyebut cara mengamati "Tag `RF-00412` tidak dipasang ke aset"; spec mengamatinya lewat baris aset di Popup Detail setelah dimuat ulang (langkah 23 sampai 26).
-  - TC-FA-TAG-1339 dan TC-FA-TAG-1351 menyebut Post Condition ("Tag `RF-00130` tetap Paired", "Aset tetap memiliki Tag `RF-00415`") tanpa langkah observasi tersendiri; hanya yang setara dengan Expected diasersi.
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+  - TC-FA-TAG-1339 dan TC-FA-TAG-1351 menyebut Post Condition ("Tag `RF-00330` tetap Paired", "Aset tetap memiliki Tag `RF-00415`") tanpa langkah observasi tersendiri; hanya yang setara dengan Expected diasersi.

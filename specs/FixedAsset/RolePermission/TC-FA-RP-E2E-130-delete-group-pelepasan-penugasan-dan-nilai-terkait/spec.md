@@ -82,7 +82,7 @@ coverage:
 - Temuan untuk QA:
   - TC 448, 449, 469, dan 470 menamai group `Data Center` dan `Rack A1` (Pre-setup #18, dipakai bersama spec lain); spec memakai subtree milik spec bersuffix (Prerequisites) dan menulis nama subtree itu pada langkah dan Expected supaya tidak menghapus group Pre-setup bersama (S-06). Perilaku yang diasersi sama dengan TC.
   - TC 448 precondition c tidak menyebut user Asset Admin pada group yang dihapus; spec memakai satu user kolam #15 pilihan tim FE.
-  - TC 448 Post Condition a (entri `Remove (Group Deleted)` per penugasan dan tidak ada notifikasi) dan Post Condition TC 449 serta TC 470 untuk log tidak punya langkah observasi di TC dan tidak diasersi.
+  - TC 448 Post Condition a (entri `Remove (Group Deleted)` per penugasan, termasuk baris pola GM pada node itu (lihat TC-FA-RP-1201), dan tidak ada notifikasi) dan Post Condition TC 449 serta TC 470 untuk log tidak punya langkah observasi di TC dan tidak diasersi.
   - TC 470 Expected "tanpa entri log dan tanpa notifikasi" tidak menyebut surface log maupun akun pengamat notifikasi Gunawan Halim dan tidak punya langkah observasi; hanya klausa Home Group kosong yang diasersi sampai QA menetapkan surface.
   - TC 469 precondition menyebut Pre-setup #24 (`Company Changelog`), sedangkan TC lain di blok ini memakai Company Alpha (#18, #19); spec berjalan pada Company Alpha dan memakai baseline jumlah entri Changelog (bukan data #24).
   - TC 449 butuh login Kevin Susanto, tetapi email dan nama env passwordnya tidak ada di Pre-setup TC maupun `suite.md`; didaftarkan tim FE.

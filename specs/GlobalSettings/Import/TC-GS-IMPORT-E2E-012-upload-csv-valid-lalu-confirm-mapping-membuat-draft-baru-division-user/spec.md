@@ -42,7 +42,7 @@ coverage:
 5. Klik `[Apply]`
 6. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline Division
 7. Tutup modal Changelog
-8. Klik `[Upload File]` di toolbar
+8. Klik `[Upload File]` di Dropzone
 9. Pilih berkas `division-6.csv` di file picker
 10. Perhatikan Modal Column Mapping yang terbuka
 11. Verifikasi Modal Column Mapping berjudul `Column Mapping: Division`
@@ -78,7 +78,7 @@ coverage:
 38. Klik `[Apply]`
 39. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline User Login
 40. Tutup modal Changelog
-41. Klik `[Upload File]` di toolbar
+41. Klik `[Upload File]` di Dropzone
 42. Pilih berkas `user-login-8.csv` di file picker
 43. Perhatikan Modal Column Mapping yang terbuka
 44. Verifikasi Modal Column Mapping berjudul `Column Mapping: User Login`
@@ -115,7 +115,7 @@ coverage:
 72. Klik `[Apply]`
 73. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline User Non Login
 74. Tutup modal Changelog
-75. Klik `[Upload File]` di toolbar
+75. Klik `[Upload File]` di Dropzone
 76. Pilih berkas `user-non-login-5.csv` di file picker
 77. Perhatikan Modal Column Mapping yang terbuka
 78. Verifikasi Modal Column Mapping berjudul `Column Mapping: User Non Login`

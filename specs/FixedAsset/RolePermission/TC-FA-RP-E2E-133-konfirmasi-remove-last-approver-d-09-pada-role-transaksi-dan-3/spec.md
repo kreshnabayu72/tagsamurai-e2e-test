@@ -21,8 +21,8 @@ coverage:
 - Mode: FE+BE
 - Akun: Total Control pada client `Company Isolated` (Pre-setup #35; akun disediakan tim FE, email tidak tertulis di Pre-setup TC), `Spectra.env.FA_ISOLATED_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip, sesi API aktor, dan pemulihan Pre-setup bersama mengikuti pernyataan "Hook suite" di `suite.md`.
-- Data Pre-setup: #18 (struktur Group), #35 (`Manage asset & TAG` Read dan Update atas nama Dimas Pranata hanya di `Rack A1`, Budi Setiawan dan Endah Susanti hanya di `Dock 1`; toggle registrasi ON di `Rack A1` dan `Dock 1`; tanpa Group Manager; Approver Pandu Wijaya), #15 (Dimas Pranata, Budi Setiawan, Endah Susanti).
-- Tiap blok TC menyiapkan state sendiri lewat seeding API (langkah "Siapkan state") sesuai precondition d TC (termasuk Kevin Susanto Group Manager di `Data Center`, toggle `Require Approval for Disposal` di `Data Center` dan `Rack A1`, dan Dimas Pranata berstatus Total Control untuk TC 1138). Hook `after` memulihkan state `Company Isolated` ke Pre-setup #35 lewat fixture backend yang disediakan tim FE/BE; blok TC 1138 menghapus baris Group Role Dimas Pranata sehingga pemulihannya wajib lewat fixture itu.
+- Data Pre-setup: #18 (struktur Group), #35 (`Manage asset & TAG` Read dan Update atas nama Dimas Pranata hanya di `Rack A1`, Budi Setiawan dan Endah Susanti hanya di `Dock 1`; toggle registrasi ON di `Rack A1` dan `Dock 1`; tanpa Group Manager; Approver Pandu Wijaya pada `Disposal` di `IT Infrastructure`, mencakup descendant pada `Disposal`; sub-tab `Damaged` tanpa Approver manual), #15 (Dimas Pranata, Budi Setiawan, Endah Susanti).
+- Tiap blok TC menyiapkan state sendiri lewat seeding API (langkah "Siapkan state") sesuai precondition d TC (termasuk Kevin Susanto Group Manager di `Data Center`, toggle `Require Approval for Damaged` di `Data Center` dan `Rack A1` untuk TC 1012 dan TC 1096, dan Dimas Pranata berstatus Total Control untuk TC 1138). Hook `after` memulihkan state `Company Isolated` ke Pre-setup #35 lewat fixture backend yang disediakan tim FE/BE; blok TC 1138 menghapus baris Group Role Dimas Pranata sehingga pemulihannya wajib lewat fixture itu.
 - Kemampuan teknis: seeding API Pre-setup per blok; pemulihan fixture.
 
 ## Test Steps
@@ -44,7 +44,7 @@ coverage:
 
 ### Cancel pada D-09 untuk Remove Group Manager (TC 1012)
 
-13. Siapkan state: Kevin Susanto Group Manager di `Data Center`; toggle `Require Approval for Disposal` ON di `Data Center`; tanpa Approver manual, tanpa pemegang Update, tanpa Group Manager lain, hingga tersimpan.
+13. Siapkan state: Kevin Susanto Group Manager di `Data Center`; toggle `Require Approval for Damaged` ON di `Data Center`; tanpa Approver manual yang mencakup (Pandu Wijaya hanya pada `Disposal`), tanpa pemegang Update, tanpa Group Manager lain, hingga tersimpan.
 14. Muat ulang halaman (F5), buka Tab Group Manager, lalu klik node `Data Center`.
 15. Klik `[⋯]` pada baris Kevin Susanto, lalu pilih `Remove`.
 16. Verifikasi dialog D-09 `Remove Last Approver` menggantikan D-02 dengan Body `• Kevin S` lalu `Data Center will have no approver other than Total Control while approval is required.` dan `Their role assignments in Data Center will also be removed permanently.`
@@ -52,8 +52,8 @@ coverage:
 18. Verifikasi dialog tertutup.
 19. Verifikasi tidak ada toast.
 20. Verifikasi baris Kevin Susanto tetap ada di Tab Group Manager.
-21. Buka Tab Transaction Role, klik node `Data Center`, lalu sub-tab `Disposal`.
-22. Verifikasi toggle `Require Approval for Disposal` di `Data Center` tetap ON.
+21. Buka Tab Transaction Role, klik node `Data Center`, lalu sub-tab `Damaged`.
+22. Verifikasi toggle `Require Approval for Damaged` di `Data Center` tetap ON.
 
 ### Bulk Remove pemegang Update terakhir pada lebih dari satu group (TC 1095)
 
@@ -69,11 +69,11 @@ coverage:
 
 ### Remove Group Manager fallback terakhir pada node dan descendant (TC 1096)
 
-32. Siapkan state: Kevin Susanto Group Manager di `Data Center`; toggle `Require Approval for Disposal` ON di `Data Center` dan `Rack A1` tanpa Approver, pemegang Update, maupun Group Manager lain, hingga tersimpan.
+32. Siapkan state: Kevin Susanto Group Manager di `Data Center`; toggle `Require Approval for Damaged` ON di `Data Center` dan `Rack A1` tanpa Approver manual yang mencakup, pemegang Update, maupun Group Manager lain, hingga tersimpan.
 33. Muat ulang halaman (F5), buka Tab Group Manager, lalu klik `[⋯]` pada baris Kevin Susanto di `Data Center`, lalu pilih `Remove`.
 34. Verifikasi dialog D-09 menggantikan D-02: Title `Remove Last Approver`; bullet `• Kevin S`.
 35. Verifikasi kalimat group terdampak memuat kedua nama group `Data Center` dan `Rack A1` dipisah koma diikuti `will have no approver other than Total Control while approval is required.`
-36. Verifikasi `Their role assignments in Data Center will also be removed permanently.` dan `Are you sure you want to remove it?`
+36. Verifikasi `Their role assignments in Data Center and its sub-groups will also be removed permanently.` dan `Are you sure you want to remove it?`
 37. Klik `[Cancel]`.
 
 ### Remove Total Control tidak memicu D-09 (TC 1138)
@@ -97,6 +97,7 @@ coverage:
 - Langkah 9 dan 19 adalah asersi absence toast sesudah `[Cancel]`; pembanding positifnya adalah dialog tertutup (langkah 8 dan 18).
 - Langkah 41 adalah asersi absence dialog D-09 dan D-11 dengan pembanding dialog D-01 pada langkah 40; langkah 46 adalah absence baris dengan pembanding toast sukses langkah 43.
 - Copy bertanda `copy usulan, PRD 12 #1` (TC 1012 dan TC 1096: Body D-09 untuk Group Manager) di-assert literal sesuai TC dan bergantung pada persetujuan PM.
+- Sub-tab TC 1012 dan TC 1096 memakai `Damaged` karena Approver Pandu Wijaya pada `Disposal` di `IT Infrastructure` kini mencakup `Data Center` dan `Rack A1`.
 - Temuan untuk QA:
   - Seluruh TC di spec ini mensyaratkan login pada `Company Isolated` (Pre-setup #35); akun Total Control tenant itu tidak tertulis di Pre-setup #1 sampai #11 dan disediakan tim FE.
   - TC 1138 menyebut Dimas Pranata "berstatus Total Control (seed)" sekaligus pemegang Group Role di `Rack A1` (Pre-setup #35 menulisnya sebagai pemegang `Manage asset & TAG` tanpa status Total Control); spec menyiapkan status Total Control lewat seeding.

@@ -27,6 +27,7 @@ coverage:
 | Note | Tag rusak saat serah terima | `noteReceiveManually` |
 
 - State yang diubah dan pemulihannya: langkah 6 menandai `RF-00071` sebagai Damaged/Missing (keluar dari To Be Returned). Hook `after` memulihkan `RF-00071` ke To Be Returned lewat fixture backend dan melepas intercept walau spec gagal di tengah.
+- Nilai literal Pre-setup (kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 6); entri TAG Log Global `Marked Damaged/Missing` (langkah 6). Jumlah entri Event Log dibaca sebagai baseline pada langkah 4; log itu permanen dan tidak dipulihkan fixture, dan asersi entri baru memakai selisih terhadap baseline: butir A-18.
 
 ## Test Steps
 
@@ -51,9 +52,9 @@ coverage:
 - Pembagian TC lintas spec: klik ganda pada pindaian, Start Print, dan Receive (TC-FA-TAG-257, 494, 566) ada di spec 342; Submit Decline Report dan Submit Replace (TC-FA-TAG-646, 1344) ada di spec 343; Submit Pair dan Submit & next sesi Batch (TC-FA-TAG-1348, 1349) ada di spec 344; Submit Report TAG dan Cancel Report (TC-FA-TAG-619, 669) ada di spec 351. Receive Manually gagal (TC-FA-TAG-583 s.d. 585) ada di spec 340.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1 (membuka tab To Be Returned), 4 (baseline Event Log, S-12), 5 (memasang intercept penahan respons), 9 (melepas tahanan respons dan intercept), 12 (menutup Modal Event Log).
 - Langkah 8 (hanya satu request) diasersi sebelum respons dilepas, mengikuti urutan state (bagian 8b butir 5).
+- A-15: nilai literal Pre-setup (kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 6); entri TAG Log Global `Marked Damaged/Missing` (langkah 6).
 - Temuan untuk QA:
   - TC-FA-TAG-587 menyebut Event Log memuat "tepat satu entri untuk RF-00071"; Event Log adalah audit trail permanen sehingga spec mengasersi tepat satu entri baru terhadap baseline (S-12).
   - TC-FA-TAG-587 tidak menyebut respons Submit ditahan, padahal Expected butir a (Disabled dengan state loading) hanya teramati saat respons tertahan; spec menahan respons.
   - Post Condition TC-FA-TAG-587 ("Tepat satu entri TAG Log Global "Marked Damaged/Missing" untuk RF-00071") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

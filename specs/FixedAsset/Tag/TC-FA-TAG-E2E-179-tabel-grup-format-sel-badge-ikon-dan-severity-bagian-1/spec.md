@@ -38,6 +38,7 @@ coverage:
 | Grup bernama panjang | Group 'Regional Distribution Center Jakarta' (lebih dari 25 karakter) yang dipakai satu baris grup milik spec, bersuffix `{runId}-179` pada Asset Name baris itu; dibuat sebelum TC-FA-TAG-733 | `grupNamaPanjang` |
 
 - State yang diubah dan pemulihannya: grup dan baris dengan Group 'Regional Distribution Center Jakarta' dibuat sebelum TC-FA-TAG-733 dan dihapus di hook `after`; tidak ada perubahan lain.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 9) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -103,8 +104,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-731, TC-FA-TAG-732, TC-FA-TAG-733, TC-FA-TAG-734, TC-FA-TAG-735, TC-FA-TAG-736, TC-FA-TAG-737, TC-FA-TAG-738, TC-FA-TAG-739, TC-FA-TAG-740, TC-FA-TAG-741). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik format sel tabel grup ada di spec 179 (TC-FA-TAG-731 s.d. 741) dan spec 180 (TC-FA-TAG-742).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 5, 9 (menutup Popup Detail dan seeding baris dengan Group bernama panjang lewat fixture backend).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 9) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - Langkah TC-FA-TAG-737 s.d. 741 hanya berupa pengamatan tanpa aksi; spec menuliskannya sebagai Verifikasi langsung tanpa langkah aksi.
   - TC-FA-TAG-733 tidak menyebut cara membentuk baris dengan Group bernama panjang (aset atau grup); spec memintanya dari fixture backend tim FE/BE.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

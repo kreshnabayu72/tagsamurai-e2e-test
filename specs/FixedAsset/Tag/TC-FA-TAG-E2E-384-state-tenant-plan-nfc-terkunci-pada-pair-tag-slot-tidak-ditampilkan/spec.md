@@ -29,6 +29,7 @@ coverage:
 | Stok Global Available | Tag NFC `NF-00500` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: Client berada di plan yang mengunci Tag NFC sepanjang spec (diatur hook `before`). Hook `after` memulihkan plan awal Client walau spec gagal di tengah. Tidak ada data aset yang berubah (tidak ada Pair yang tersimpan).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 13 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 
 ## Test Steps
 
@@ -59,7 +60,7 @@ coverage:
 - Pembagian TC lintas spec: kasus plan yang mengunci Tag NFC pada Dialog Replace TAG dan Tag combined (TC-FA-TAG-307, 308, 365) ada di spec 347; kasus Free plan ada di spec 345 dan 346.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 6 dan 15 (muat ulang halaman untuk menutup Dialog Pair TAG dan Popup Detail; dialog `beforeunload` ditangani sesuai Prerequisites).
 - Langkah 5 (slot `NFC TAG` tidak ditampilkan) didahului `Verifikasi` Alert info di langkah 4 sebagai anchor positif; langkah 11 didahului langkah 10.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 13 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-1476 ("Aset 'Laptop Pro 14 - 35' tetap Not Paired Yet") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

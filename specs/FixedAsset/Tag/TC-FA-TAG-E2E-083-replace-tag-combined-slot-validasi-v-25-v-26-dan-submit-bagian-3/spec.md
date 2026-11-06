@@ -23,6 +23,7 @@ coverage:
 - Data: aset 'Excavator 20 Ton - 60' (AST-0060, Group Plant A, TAG Type Asset Name RFID dan QR) dengan satu Tag combined Paired RFID `RF-00800` + QR `QR-00800`; 'Excavator 20 Ton - 61' (AST-0061, TAG Type Asset Name RFID, NFC, dan QR) dengan Tag combined Paired RFID `RF-00801` + QR `QR-00801` dan Tag NFC `NF-00096` Paired.
 - Fixture: `Fixture.fixedAssetTag` belum ada (disediakan tim FE); nilai data pada langkah dibaca dari TC dan dipetakan ke fixture itu oleh tahap script.
 - State global: tidak ada Replace yang di-submit sehingga status Tag tidak berubah; fixture backend tetap memulihkan data di hook `before` dan `after`. Suite berjalan serial (`parallel: false`).
+- Nilai literal Pre-setup (nama aset, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -43,7 +44,7 @@ coverage:
 10. Pindai Tag `RF-00800` dengan reader
 11. Verifikasi setiap komponen Tag combined yang ada di daftar lepas ditandai `Scanned`
 
-### TC-FA-TAG-370: Memilih satu komponen Tag lama combined mencentang semua komponen, membatalkan membatalkan semuanya
+### TC-FA-TAG-370: Memilih satu komponen Tag lama combined mencentang semua komponen, dan membatalkannya membatalkan semuanya
 
 12. Klik [Cancel] pada dialog Replace TAG
 13. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 61'
@@ -60,9 +61,8 @@ coverage:
 - Langkah penghubung (S-03): [Cancel] menutup dialog Replace TAG antar-TC (langkah 7, 12, dan 19); TC-FA-TAG-370 berurutan dengan TC-FA-TAG-366 dan 369 karena memakai Popup 'Excavator 20 Ton'; Popup Detail ditutup pada langkah 20.
 - Pembagian TC lintas spec: TC-FA-TAG-355 sampai 364 ada di spec 081 dan 082; TC-FA-TAG-367 dan 368 ada di spec 382.
 - Data literal Pre-setup (kode aset AST-*, Asset Name, kode Tag) dipakai persis seperti di TC tanpa suffix `{runId}`, karena asersi bergantung pada nama dan kode itu; seeding idempotent dan pemulihan dijamin fixture backend (suite.md).
+- A-15: nilai literal Pre-setup (nama aset, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC tidak menyatakan apakah Popup Detail Assets tetap terbuka di bawah Dialog Replace TAG sesudah dialog ditutup; spec menganggapnya tetap terbuka dan menutupnya lewat langkah penghubung hanya saat berganti Asset Name atau di akhir.
   - TC tidak menyatakan apakah dialog yang hanya berisi Tag lama terpindai (tanpa Tag pengganti) memunculkan konfirmasi D-09 saat [Cancel]; spec menganggap dialog itu belum terisi dan tertutup langsung (selaras TC-FA-TAG-311).
-  - Judul TC-FA-TAG-370 memuat pengulangan kata ('membatalkan membatalkan'); spec mengikuti judul sebagai nama blok.
-  - Expected TC-FA-TAG-370 merujuk 'Setelah langkah 2' dan 'Setelah langkah 3' padahal aksi centang dan hapus centang adalah langkah 3 dan 4 di TC; spec memetakan asersi ke aksi yang bersesuaian.
   - Tidak ada Post Condition pada TC-FA-TAG-366, 369, dan 370.

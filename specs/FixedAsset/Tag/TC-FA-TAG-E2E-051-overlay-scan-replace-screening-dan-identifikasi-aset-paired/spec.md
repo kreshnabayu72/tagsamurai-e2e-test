@@ -25,13 +25,14 @@ coverage:
 - Fixture `fixtures/fixed-asset-tag.json` belum ada; nilai literal TC pada langkah diberi kunci fixture oleh tahap script.
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB (lihat `suite.md`) dalam keadaan satu reader tersambung, driver terpasang, reader aktif, dan sudah disinkronkan di Global Settings > Handheld Reader; langkah "Pindai" memakai simulator itu sebagai langkah rutin. Seed idempotent aset dan Tag per status registri lewat fixture backend.
 - Data aset dan Tag (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis):
-  - AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID): satu Tag RFID `RF-00130` berstatus Paired.
+  - AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID): satu Tag RFID `RF-00330` berstatus Paired.
   - AST-0060 'Excavator 20 Ton - 60' (Group Plant A, TAG Type Asset Name RFID dan QR): satu Tag combined Paired, RFID `RF-00800` dan QR `QR-00800` (satu unit).
   - AST-0221 'Excavator 20 Ton - 221' (Group Plant A, Asset Status In Transfer Process, TAG Type Asset Name RFID): satu Tag RFID `RF-00140` berstatus Paired.
   - AST-0042 'Excavator 20 Ton - 42' (Group Plant A, TAG Type Asset Name RFID): satu Tag QR `QR-00230` berstatus Paired (Non-standard).
   - Stok Global: Tag RFID `RF-00412` dan `RF-00415` berstatus Available, Tag NFC `NF-00500` berstatus Available.
 - Pemulihan di hook `after`: kembalikan data aset dan Tag di atas serta stok Global ke keadaan awal bila seeding mengubahnya. Spec ini tidak menekan `[Submit]` sehingga tidak mengubah data bisnis.
 - State global: stok Tag per tipe di registri Global dibaca dari seed (tidak diubah). Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -47,12 +48,12 @@ coverage:
 ### TC-FA-TAG-237: Tag RFID Paired pada aset satu Tag
 
 7. Klik tombol scan `Replace TAG` di toolbar tab Paired
-8. Pindai Tag `RF-00130` dengan simulator reader
+8. Pindai Tag `RF-00330` dengan simulator reader
 9. Verifikasi overlay scan menutup
 10. Verifikasi Dialog Replace TAG terbuka di atas tab Paired dengan judul aset 'Excavator 20 Ton - 220' dan Asset ID AST-0220
-11. Verifikasi bagian `TAG to replace` memuat Tag `RF-00130` tanpa checkbox
-12. Verifikasi Tag `RF-00130` otomatis terpilih
-13. Verifikasi Tag `RF-00130` berlabel `Scanned`
+11. Verifikasi bagian `TAG to replace` memuat Tag `RF-00330` tanpa checkbox
+12. Verifikasi Tag `RF-00330` otomatis terpilih
+13. Verifikasi Tag `RF-00330` berlabel `Scanned`
 14. Verifikasi Dialog Replace TAG tidak memuat langkah Identify
 15. Tutup Dialog Replace TAG tanpa menekan `[Submit]`
 
@@ -93,12 +94,11 @@ coverage:
 - Langkah penghubung (tanpa awalan `Verifikasi`): 6, 15, 20, dan 25 (menutup overlay dan Dialog Replace TAG tanpa Submit).
 - Perubahan urutan Expected (R-03, bagian 8b butir 2): pada TC-FA-TAG-236 butir c (ButtonScan Scanning dan ikon close) ditulis sebelum butir b (overlay tidak memuat pencarian dan unggah foto) sebagai anchor positif untuk absence; pada TC-FA-TAG-237 butir d ditulis sebelum butir c, dengan alasan yang sama.
 - Langkah 29: absence dialog didahului langkah 28 (tab Paired tampil sesudah overlay menutup) sebagai anchor. Langkah 14 dan 24 didahului langkah 10 dan 23 (dialog yang diharapkan tampil).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - TC-FA-TAG-258 Post Condition ("Tag RF-00130 tetap Paired" dan "tidak ada entri Changelog baru") tidak punya langkah observasi di TC; tidak diasersi dan tidak diklaim teruji (S-01, S-05).
+  - TC-FA-TAG-258 Post Condition ("Tag RF-00330 tetap Paired" dan "tidak ada entri Changelog baru") tidak punya langkah observasi di TC; tidak diasersi dan tidak diklaim teruji (S-01, S-05).
   - TC-FA-TAG-236 Expected b memakai kata "Must NOT" untuk dua elemen; spec menuliskannya sebagai tidak memuat kolom pencarian aset manual maupun unggah foto aset.
   - TC-FA-TAG-237 Expected c ("Dialog tidak memuat langkah Identify") tidak menyebut elemen yang menandai langkah Identify; spec mengasersi hanya ketiadaan langkah itu.
   - TC-FA-TAG-237, TC-FA-TAG-238, TC-FA-TAG-239, dan TC-FA-TAG-258 tidak menyebut cara menutup Dialog Replace TAG tanpa Submit dan apakah dialog `Unsaved Changes` muncul; spec menuliskan penutupan sebagai langkah penghubung.
-  - Kode Tag RF-00130 dipakai TC-FA-TAG-191 sebagai Tag AST-0020 (laporan terbuka) dan TC-FA-TAG-237 sebagai Tag Paired AST-0220; satu kode Tag tidak mungkin Paired ke dua aset (lihat spec 044).
   - TC-FA-TAG-239 menyebut Asset Status "In Transfer Process" untuk AST-0221 tanpa cara mengaturnya; spec menuliskannya sebagai seed lewat fixture BE.
   - Simulator reader dipakai sebagai langkah rutin (bukan objek uji); mekanisme simulator tidak didefinisikan di TC maupun PRD yang dibaca.
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

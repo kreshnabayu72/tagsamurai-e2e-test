@@ -72,28 +72,30 @@ coverage:
 ### TC-FA-TAG-1159: Return / unassign pada kondisi T1
 
 16. Buka layar transaksi Assignment untuk aset `Aset Matriks Return T1 {runId}-305`
-17. Jalankan langkah "Return / unassign" sampai selesai
-18. Verifikasi langkah "Return / unassign" pada Assignment berjalan normal sampai selesai
-19. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+17. Jalankan langkah "Return / unassign"
+18. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+19. Lanjutkan langkah "Return / unassign" sampai selesai
+20. Verifikasi langkah "Return / unassign" pada Assignment berjalan normal sampai selesai
 
 ### TC-FA-TAG-1160: Return / unassign pada kondisi T2
 
-20. Buka layar transaksi Assignment untuk aset `Aset Matriks Return T2 {runId}-305`
-21. Jalankan langkah "Return / unassign" sampai selesai
-22. Verifikasi langkah "Return / unassign" pada Assignment berjalan normal sampai selesai
+21. Buka layar transaksi Assignment untuk aset `Aset Matriks Return T2 {runId}-305`
+22. Jalankan langkah "Return / unassign"
 23. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+24. Lanjutkan langkah "Return / unassign" sampai selesai
+25. Verifikasi langkah "Return / unassign" pada Assignment berjalan normal sampai selesai
 
 ### TC-FA-TAG-1161: Return / unassign pada kondisi T3
 
-24. Buka layar transaksi Assignment untuk aset `Aset Matriks Return T3 {runId}-305`
-25. Jalankan langkah "Return / unassign"
-26. Verifikasi tombol `[I can't scan the TAG]` tersedia
-27. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-28. Verifikasi bidang "Foto aset" bertanda wajib (*)
-29. Unggah Foto aset dan selesaikan transaksi
-30. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-31. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
-32. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
+26. Buka layar transaksi Assignment untuk aset `Aset Matriks Return T3 {runId}-305`
+27. Jalankan langkah "Return / unassign"
+28. Verifikasi tombol `[I can't scan the TAG]` tersedia
+29. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+30. Verifikasi bidang "Foto aset" bertanda wajib (*)
+31. Unggah Foto aset dan selesaikan transaksi
+32. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+33. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
+34. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
 
 ## Notes
 

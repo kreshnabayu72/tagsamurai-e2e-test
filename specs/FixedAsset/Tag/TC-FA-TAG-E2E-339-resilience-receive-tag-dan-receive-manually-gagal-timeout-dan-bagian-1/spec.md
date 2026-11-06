@@ -28,6 +28,7 @@ coverage:
 | Tag To Be Returned | [RFID] RF-00071 (Last Asset 'Excavator 20 Ton - 2', Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); [RFID] RF-00088 ('Excavator 20 Ton - 5', Disposal Center, Dedi K.); [NFC] NF-00092 ('Laptop Pro 14 - 8', HQ Warehouse, Rina T.) | `tbr` |
 
 - State yang diubah dan pemulihannya: layanan Global dibuat tidak terjangkau di langkah 19 dan dipulihkan di langkah 26; semua intercept dilepas di langkah 9 dan 17. Tag `RF-00071` dan `RF-00088` tidak berubah status oleh spec ini (semua commit gagal). Hook `after` memulihkan layanan Global, melepas intercept, dan memulihkan Tag ke To Be Returned lewat fixture backend walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5, 14, 22 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 19, 26) hanya menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -72,8 +73,8 @@ coverage:
 - Pembagian TC lintas spec: Receive Manually gagal (TC-FA-TAG-583 s.d. 585) ada di spec 340. Receive TAG ditekan beruntun (TC-FA-TAG-566) ada di spec 342.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9, 17 (melepas intercept), 10, 18, 25 (muat ulang halaman untuk menutup dialog Receive TAG yang berisi daftar sesi; dialog `beforeunload` ditangani sesuai Prerequisites), 1, 11, 20 (membuka tab To Be Returned sesudah muat ulang halaman), 26 (memulihkan layanan Global).
 - Tag RF-00071 dan RF-00088 tetap To Be Returned sepanjang spec karena semua commit gagal, sehingga spec tidak membutuhkan pemulihan antar-TC.
+- A-15: nilai literal Pre-setup (Asset Name, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5, 14, 22 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 19, 26) hanya menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-563 ("Tag RF-00071 dan RF-00088 tetap To Be Returned; tidak ada entri Event Log baru"), TC-FA-TAG-565 ("Tag RF-00071 tetap To Be Returned di FAMS dan Global; tidak ada entri Event Log maupun TAG Log") tanpa langkah observasi di TC tidak diasersi.
   - TC-FA-TAG-565 menyebut layanan Global tidak terjangkau sebagai precondition; bila pemindaian Tag di dialog Receive TAG juga memanggil layanan Global, pemindaian di langkah 21 dapat gagal sebelum [Receive]. TC tidak menyebut urutannya; spec memasang kondisi itu sebelum pemindaian sesuai precondition.
-  - Nama dan kode literal Pre-setup (Asset Name, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

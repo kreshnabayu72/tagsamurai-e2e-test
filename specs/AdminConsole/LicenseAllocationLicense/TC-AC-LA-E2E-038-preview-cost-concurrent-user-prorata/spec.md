@@ -46,18 +46,19 @@ coverage:
 ### TC-AC-LA-142: Target term Pending menghitung hari dari Start Date term Target
 
 9. Pilih Client `Toko Serba Ada`, Target `SUBS-20260819-00001`, Type `Concurrent User`, ganti isi Additional Quantity dengan `10`
-10. Verifikasi baris Cost `Cost: $3,650.00 (10 × $365/unit × 365 days remaining ÷ 365)` dengan hari dihitung dari Start Date term, bukan tanggal Submit
-11. Verifikasi pembagi tetap 365
-12. Klik `[✕]` pada header
-13. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
-14. Klik `[Leave]`
+10. Verifikasi baris Cost `Cost: $3,650.00 (10 × $365/unit × 365 days remaining ÷ 365)`
+11. Verifikasi hari dihitung dari Start Date term, bukan tanggal Submit
+12. Verifikasi pembagi tetap 365
+13. Klik `[×]` pada header
+14. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
+15. Klik `[Leave]`
 
 ## Notes
 
-- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 1 kali, kejadian menutup 1 (langkah 12 sampai 14).
+- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 1 kali, kejadian menutup 1 (langkah 13 sampai 15).
 - Pembagian TC lintas spec: TC-AC-LA-141 (hari terakhir term) dan TC-AC-LA-154 (zona waktu Plan Owner) ada di spec 053 karena membutuhkan tanggal server dan zona waktu yang berbeda dari 22 Dec 2026.
 - Penyimpangan urutan (S-05, S-10): TC-AC-LA-152 dijalankan sebelum TC-AC-LA-142 karena melanjutkan form TC-AC-LA-140 (Additional Quantity 10 diubah menjadi 20), sehingga jumlah buka form tetap 1. Langkah 9 memilih ulang Client agar state awal TC-AC-LA-142 sama dengan form baru.
-- Langkah penghubung (S-03): langkah 3 (menunggu preview) dan langkah 12 sampai 14 (menutup form dirty, S-08).
+- Langkah penghubung (S-03): langkah 3 (menunggu preview) dan langkah 13 sampai 15 (menutup form dirty, S-08).
 - Temuan untuk QA:
   - TC-AC-LA-140 Expected b ("Faktor hari 10") adalah bagian dari rumus pada baris Cost; spec mengasersi faktor hari sebagai klausa terpisah dari teks baris Cost (langkah 5).
   - TC-AC-LA-152 Expected a ("Cost berubah dari `$100.00` menjadi `$200.00`") menyiratkan nilai Cost sebelumnya dari TC-AC-LA-140; spec mengasersi nilai akhir `$200.00` setelah perubahan Additional Quantity dari 10 menjadi 20 pada form yang sama.

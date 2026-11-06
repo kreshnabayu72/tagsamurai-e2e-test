@@ -25,11 +25,12 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset Replace | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) dengan Tag RFID `RF-00130` Paired | `aset220` |
+| Aset Replace | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) dengan Tag RFID `RF-00330` Paired | `aset220` |
 | Aset Pair | 'Excavator 20 Ton - 51' (AST-0051, Group Plant A, TAG Type Asset Name RFID saja), Not Paired Yet | `aset51` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: akses Update dan assign group Plant A pengguna dicabut di langkah 4, 14, dan 24 dan dipulihkan di langkah 9, 18, dan 28; hook `after` memulihkan capability dan assign group pengguna walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5, 15, 25 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 4, 9, 14, 18, 24, 28) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -41,7 +42,7 @@ coverage:
 4. Pelaku kedua (Admin) mencabut akses Update pengguna di Settings > Role & Permission lewat sesi API hingga tersimpan
 5. Klik [Submit]
 6. Verifikasi server menolak penggantian
-7. Verifikasi Tag `RF-00130` tetap Paired pada 'Excavator 20 Ton - 220'
+7. Verifikasi Tag `RF-00330` tetap Paired pada 'Excavator 20 Ton - 220'
 8. Verifikasi jumlah entri Changelog tidak bertambah dibanding baseline
 9. Pelaku kedua memulihkan akses Update pengguna lewat sesi API hingga tersimpan
 10. Muat ulang halaman (F5)
@@ -54,7 +55,7 @@ coverage:
 14. Pelaku kedua (Admin) mencabut assign Group Plant A dari pengguna lewat sesi API hingga tersimpan
 15. Klik [Submit]
 16. Verifikasi server menolak penggantian
-17. Verifikasi Tag `RF-00130` tetap Paired
+17. Verifikasi Tag `RF-00330` tetap Paired
 18. Pelaku kedua memulihkan assign Group Plant A pengguna lewat sesi API hingga tersimpan
 19. Muat ulang halaman (F5)
 
@@ -69,17 +70,18 @@ coverage:
 26. Verifikasi server menolak pairing
 27. Verifikasi AST-0051 tetap Not Paired Yet
 28. Pelaku kedua memulihkan akses Update pengguna lewat sesi API hingga tersimpan
+29. Muat ulang halaman (F5)
 
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-1281 s.d. 1283). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: TC-FA-TAG-1284 dan TC-FA-TAG-1313 ada di spec 352 (izin dicabut saat dialog Print QR dan halaman terbuka); TC-FA-TAG-1303 s.d. 1305 ada di spec 328 (izin dicabut saat dialog Receive, Receive Manually, dan Decline Report terbuka).
 - Pelaku kedua memakai sesi API (keputusan 2026-10-21/30): bukan konteks kedua kelas c dan tidak memakai `P-2`; langkah pemicunya ditulis "... hingga ... tersimpan" (langkah 4, 9, 14, 18, 24, 28). Langkah 5, 15, dan 25 memicu penolakan sesudah pencabutan tersimpan.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9, 18, dan 28 (memulihkan capability atau assign group), 10 dan 19 (muat ulang halaman untuk menutup dialog dirty dan menyegarkan capability di UI; dialog `beforeunload` ditangani sesuai Prerequisites).
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9, 18, dan 28 (memulihkan capability atau assign group), 10, 19, dan 29 (muat ulang halaman untuk menutup dialog dirty dan menyegarkan capability di UI; dialog `beforeunload` ditangani sesuai Prerequisites).
 - Asersi "jumlah entri Changelog tidak bertambah" (langkah 8) ditulis di spec ini dengan baseline (S-12) dan didahului `Verifikasi` respons penolakan dan state Tag sebagai anchor; spec absence kelas g milik modul ini tidak memuat TC-FA-TAG-1281.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5, 15, 25 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 4, 9, 14, 18, 24, 28) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1281 s.d. 1283 tidak menyebut perilaku UI sesudah penolakan (dialog tetap terbuka atau menutup, ada toast atau tidak); spec hanya mengasersi "server menolak" tanpa teks pesan.
   - Post Condition TC-FA-TAG-1283 ("Tag `RF-00412` tetap Available") tanpa langkah observasi di TC tidak diasersi.
   - TC-FA-TAG-1282 mensyaratkan pencabutan assign group tanpa menyebut menu admin; spec menulis aksi seperti di TC lewat sesi API.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

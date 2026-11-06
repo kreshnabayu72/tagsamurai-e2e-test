@@ -32,6 +32,7 @@ coverage:
 | Stok Available | tidak ada Tag RFID, NFC, maupun QR Available pada bagian TC-1455; tidak ada Tag RFID Available pada bagian lain | `stokKosong` |
 
 - State yang diubah dan pemulihannya: status reader, Asset Status aset 51, dan stok Available diatur per bagian lewat fixture; hook `after` memulihkan reader tersambung, Asset Status normal, dan stok seperti awal.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 9, 27) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -87,8 +88,8 @@ coverage:
 - Pembagian TC lintas spec: topik tooltip Disabled Pair TAG ada di spec 106 (TC-FA-TAG-449 s.d. 452), spec 107 (TC-FA-TAG-454 s.d. 458), spec 109 (TC-FA-TAG-1494), dan spec 116 (TC-FA-TAG-453).
 - Urutan TC di dalam spec mengikuti keadaan reader dan Asset Status: reader tersambung (TC-1455, TC-1492), lalu reader terputus (TC-1491, TC-1493).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1, 9, 18, dan 27 (mengatur reader, Asset Status, dan stok lewat fixture backend serta menutup Popup Detail).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 9, 27) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-1492 butir c ("tooltip bukan ...") adalah asersi negatif tanpa anchor tambahan; tooltip yang benar sudah diasersi pada butir b di elemen yang sama.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme mengatur reader tersambung atau tidak tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.

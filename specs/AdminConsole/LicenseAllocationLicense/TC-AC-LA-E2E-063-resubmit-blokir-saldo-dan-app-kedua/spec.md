@@ -40,7 +40,7 @@ coverage:
 7. Verifikasi Alert severity danger `Insufficient balance in your pocket. Available: $20.00. Required: $50.00.`
 8. Verifikasi tombol `[Submit]` disabled
 9. Pulihkan saldo Available kantong serta jam server dan jam browser ke nilai awal
-10. Klik `[✕]`
+10. Klik `[×]`
 11. Verifikasi record asal `{idSaldo}` tetap berstatus `Canceled`
 12. Verifikasi tidak ada record baru yang menunjuk `{idSaldo}`
 
@@ -51,7 +51,7 @@ coverage:
 15. Klik `[Submit]`
 16. Verifikasi pesan `Asset Control App is already active for this subscription.`
 17. Verifikasi form tetap terbuka dengan Client `CV Mitra Sejati` dipertahankan
-18. Klik `[✕]`
+18. Klik `[×]`
 19. Verifikasi record asal `{idApp}` tetap berstatus `Canceled`
 20. Verifikasi tidak ada record baru yang menunjuk `{idApp}`
 
@@ -62,6 +62,6 @@ coverage:
 - Temuan untuk QA:
   - TC-AC-LA-521 dan TC-AC-LA-522 butir "tidak ada record baru dan record asal tetap Canceled" tidak punya langkah observasi di LK; spec memakai Status baris di List dan kemampuan baca state BE (jumlah record yang menunjuk record asal) tanpa endpoint karangan.
   - TC-AC-LA-522 butir a ("field lain dipertahankan") tidak menyebut field mana yang dipertahankan atau dikosongkan (TC-AC-LA-202 dan 203 menyebut Target dikosongkan); spec hanya mengasersi Client `CV Mitra Sejati` tetap terisi.
-  - TC-AC-LA-522 tidak menyebut apakah form Resubmit dalam keadaan dirty sesudah penolakan; spec menutup form lewat `[✕]` tanpa dialog (tidak ada perubahan oleh pengguna).
+  - TC-AC-LA-522 tidak menyebut apakah form Resubmit dalam keadaan dirty sesudah penolakan; spec menutup form lewat `[×]` tanpa dialog (tidak ada perubahan oleh pengguna).
   - Pre-setup #53 menyatakan Subscription `SUBS-20260105-K2L3M` sudah punya Asset Control App Active, sedangkan Pre-setup #44 memakai Subscription yang sama sebagai target dua alokasi App `Waiting for Approval`; TC-AC-LA-522 bergantung pada keadaan #53.
   - TC-AC-LA-521 Data Uji menyebut Cost `$50.00` dengan 10 hari tersisa pada tanggal acuan 22 Dec 2026 dan End Date 31 Dec 2026 (kedua tanggal dihitung); konsisten dengan TC, dicatat sebagai asumsi.

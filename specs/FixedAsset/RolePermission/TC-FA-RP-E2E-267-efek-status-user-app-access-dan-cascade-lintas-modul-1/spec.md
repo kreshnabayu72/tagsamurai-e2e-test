@@ -23,8 +23,8 @@ coverage:
 - Akun aktor: Total Control (Pre-setup #2, Siti Rahmawati), email `totalControl_automated_{namaCompany}@qwertysystem.net` (`Fixture.fixedAssetRolePermission.akun.totalControl.email`), password `Spectra.env.FA_TC_PASSWORD`.
 - Akun ganti (TC-FA-RP-901 dan 902): Total Control pada `Company Isolated` (Pre-setup #35). Email tidak tertulis di Pre-setup TC (lihat Temuan untuk QA); akun disediakan tim FE, password `Spectra.env.FA_ISOLATED_TC_PASSWORD`.
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Role & Permission, Tab Total Control). Hook `after` mengembalikan sesi ke akun default suite (Total Control, `FA_TC_PASSWORD`).
-- Data Pre-setup: #15 (Ahmad Fauzi dan Budi Santoso sebagai Standard), #18 (pohon group Company Alpha), #19 (seed Role Transaksi Disposal pada `IT Infrastructure`; Pandu Wijaya sebagai Approver), #36 (Tab Total Control terisi; Budi Santoso Total Control), #39 (Detail Role `Manage Open API` dan `Manage files` terisi; Budi Santoso), #43 (Kevin Susanto Group Manager di `Data Center`), dan #35 (`Company Isolated`: Pandu Wijaya sebagai Approver pada `Disposal` di `IT Infrastructure`; `Helpdesk` tanpa Group Manager aktif).
-- Kondisi awal TC-FA-RP-905 yang di-seed: Budi Santoso memegang Total Control dan Asset Admin di `IT Infrastructure` (sub-tab `Disposal`), tanpa Group Manager. Kondisi awal TC-FA-RP-901 dan 902 di `Company Isolated`: Kevin Susanto ditugaskan sebagai satu-satunya Group Manager `Helpdesk` lalu dinonaktifkan (901); toggle `Require Approval for Disposal` ON di `IT Infrastructure` dengan satu Approver Pandu Wijaya yang kemudian dinonaktifkan (902).
+- Data Pre-setup: #15 (Ahmad Fauzi dan Budi Santoso sebagai Standard), #18 (pohon group Company Alpha), #19 (seed Role Transaksi Disposal pada `IT Infrastructure`; Pandu Wijaya sebagai Approver; `Data Center` dan `Helpdesk` tanpa baris manual tetapi tercakup penugasan `IT Infrastructure`), #36 (Tab Total Control terisi; Budi Santoso Total Control), #39 (Detail Role `Manage Open API` dan `Manage files` terisi; Budi Santoso), #43 (Kevin Susanto Group Manager di `Data Center`), dan #35 (`Company Isolated`: Pandu Wijaya sebagai Approver pada `Disposal` di `IT Infrastructure` dan tercakup ke `Helpdesk` pada sub-tab `Disposal`; sub-tab `Damaged` tanpa Approver manual di node mana pun, termasuk ancestor; `Helpdesk` tanpa Group Manager aktif).
+- Kondisi awal TC-FA-RP-905 yang di-seed: Budi Santoso memegang Total Control dan Asset Admin di `IT Infrastructure` (sub-tab `Disposal`), tanpa Group Manager. Kondisi awal TC-FA-RP-901 dan 902 di `Company Isolated`: Kevin Susanto ditugaskan sebagai satu-satunya Group Manager `Helpdesk` lalu dinonaktifkan dengan baris pola GM Kevin Susanto termasuk Approver sub-tab `Damaged` tetap tersimpan (901); toggle `Require Approval for Disposal` ON di `IT Infrastructure` dengan satu Approver Pandu Wijaya yang kemudian dinonaktifkan (902).
 - Kemampuan teknis: pengubahan Status pengguna, pencabutan dan pemulihan App Access FAMS, dan penghapusan identitas dikerjakan lewat UI Global Settings > User sesuai langkah TC; pemulihan memakai seeding API (Catatan TC "Pemulihan fixture destruktif"). Hook `after`: Status Budi Santoso, App Access Pandu Wijaya, identitas Budi Santoso beserta penugasannya, dan Ahmad Fauzi dipulihkan ke Tabel Pre-setup TC.
 - Baseline audit trail (S-12): jumlah entri Changelog Tab Total Control dicatat sebelum aksi lewat kemampuan baca yang disediakan tim FE/BE (TC-FA-RP-905).
 - Flag Guided Tooltip, halaman awal, sesi API aktor, dan pemulihan Pre-setup bersama: lihat `suite.md` bagian "Hook suite".
@@ -89,10 +89,10 @@ coverage:
 
 40. Ganti akun: logout lalu login sebagai Total Control pada `Company Isolated` (Pre-setup #35; akun disediakan tim FE, password `Spectra.env.FA_ISOLATED_TC_PASSWORD`)
 41. Buka Fixed Asset > Settings > Role & Permission > Tab Transaction Role
-42. Klik node `Helpdesk` lalu sub-tab `Disposal`
-43. Aktifkan toggle `Require Approval for Disposal`
-44. Verifikasi dialog `Cannot Require Approval` tampil
-45. Verifikasi toggle `Require Approval for Disposal` kembali OFF
+42. Klik node `Helpdesk` lalu sub-tab `Damaged`
+43. Aktifkan toggle `Require Approval for Damaged`
+44. Verifikasi dialog `Cannot Require Approval` tampil (baris Approver pola GM tidak dihitung sebagai approver terdaftar)
+45. Verifikasi toggle `Require Approval for Damaged` kembali OFF
 
 ### TC-FA-RP-902: Approver nonaktif setelah toggle ON: toggle tetap ON dengan Total Control sebagai fallback
 

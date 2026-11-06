@@ -22,6 +22,7 @@ coverage:
   - Tag RFID `RF-00412` Available.
   - Kode QR `QR-00700` berstatus Available (dibuat backend saat Start Print sebelumnya, belum Paired); dipakai sebagai precondition TC, tidak diasersi.
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB (satu reader tersambung, driver terpasang, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader).
+- Nilai literal Pre-setup (`Server Rack 42U - 101`, AST-0101, `RF-00412`, `QR-00700`) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -38,14 +39,14 @@ coverage:
 11. Verifikasi slot `RFID TAG` berbadge `Verified`.
 12. Verifikasi dialog konfirmasi D-11 tidak tampil.
 13. Klik ikon close (✕) pada Dialog Pair TAG.
-14. Verifikasi dialog `Unsaved Changes` tampil.
-15. Klik [Leave].
+14. Verifikasi dialog `Discard Pairing` dengan body "Discard this pairing? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil.
+15. Klik [Discard].
 16. Tutup Popup Detail.
 
 ## Notes
 
 - Langkah penghubung: langkah 13 sampai 16 menutup Dialog Pair TAG yang dirty dan Popup Detail. Langkah 9 menjadi anchor absence langkah 12.
 - Pembagian TC lintas spec: TC-503, TC-505, TC-506 ada di spec 125; TC-507 dan TC-1443 ada di spec 126.
+- A-15: nilai literal Pre-setup (`Server Rack 42U - 101`, AST-0101, `RF-00412`, `QR-00700`) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`Server Rack 42U - 101`, AST-0101, `RF-00412`, `QR-00700`) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - Precondition d TC-504 (`QR-00700`) tidak dipakai pada langkah TC.

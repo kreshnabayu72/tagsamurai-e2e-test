@@ -37,7 +37,7 @@ coverage:
 1. Reset Client C ke tanpa draft pada Sub-Tab Brand (aksi fixture)
 2. Atur mock layanan AI ke mode tunda 6 detik (D-40)
 3. Muat ulang halaman Import > Brand
-4. Klik `[Upload File]` di toolbar dan pilih berkas `ai-brand-long.csv`
+4. Klik `[Upload File]` di Dropzone dan pilih berkas `ai-brand-long.csv`
 5. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 6. Verifikasi baris #1 berstatus `error`
 7. Verifikasi Error Summary Callout memuat "Brand Name: Max. 120 characters" dengan badge "1 row"
@@ -49,7 +49,7 @@ coverage:
 
 11. Reset Client C ke tanpa draft pada Sub-Tab Brand dan User Login (aksi fixture)
 12. Muat ulang halaman Import > User Login
-13. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-div-gudng.csv`
+13. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-div-gudng.csv`
 14. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 15. Verifikasi baris #1 berstatus `error`
 16. Tunggu 8 detik (jeda nyata melampaui batas 5 detik layanan AI)
@@ -61,7 +61,7 @@ coverage:
 
 20. Reset Client C ke tanpa draft pada Sub-Tab Brand dan User Login (aksi fixture)
 21. Muat ulang halaman Import > Brand
-22. Klik `[Upload File]` di toolbar
+22. Klik `[Upload File]` di Dropzone
 23. Pilih berkas `ai-brand-long.csv` di file picker
 24. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
 25. Verifikasi baris #1 berstatus `error`
@@ -81,7 +81,7 @@ coverage:
 36. Reset Client C ke tanpa draft pada Sub-Tab Brand dan User Login (aksi fixture)
 37. Atur mock layanan AI ke mode tunda 6 detik (D-40)
 38. Muat ulang halaman Import > User Login
-39. Klik `[Upload File]` di toolbar
+39. Klik `[Upload File]` di Dropzone
 40. Pilih berkas `user-login-div-gudng.csv` di file picker
 41. Klik `[Confirm Mapping]` tanpa mengubah dropdown File Column dari hasil auto-match
 42. Verifikasi baris #1 berstatus `error`

@@ -24,6 +24,7 @@ coverage:
 - Data uji: grup General Affairs (TC-FA-SU-209) dan grup Logistics Warehouse yang dihapus Admin B di Settings > Groups (TC-FA-SU-210).
 - Kemampuan teknis: seed API untuk memulihkan penugasan Group Role Wawan Setiawan serta grup Logistics Warehouse beserta penugasannya (Pre-setup #21 dan #23) sesudah dihapus (disediakan tim FE/BE); pembacaan jumlah entri Tab Changelog target sebelum aksi sebagai baseline (disediakan tim FE/BE, bagian 8b butir 10).
 - State global yang diubah: penugasan `Manage files` Wawan Setiawan (General Affairs ditambahkan oleh Admin B) dan grup Logistics Warehouse (dihapus); keduanya dipulihkan lewat seed API pada langkah penghubung dan di hook `after`. Suite berjalan serial.
+- Target tanpa Home Group (Pre-setup #50, `FaUserNoHG`; Catatan TC: TC penugasan Tab Role Section 3d, 3e, 4c, 8, dan 9 yang memilih node bebas dijalankan pada varian tanpa Home Group, FI-32), diterapkan per target: Home Group Wawan Setiawan (Finance & Accounting pada Pre-setup #43) dikosongkan lewat seed API di hook `before` supaya node General Affairs (langkah 2 dan penugasan Admin B langkah 3) dan Logistics Warehouse (langkah 13) tidak Disabled oleh gate Home Group constraint dan penugasan Admin B lewat sesi API tidak ditolak `422`; Home Group Wawan Setiawan dipulihkan ke Finance & Accounting di hook `after`. Seed per target disediakan tim FE/BE.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
 ## Test Steps
@@ -67,6 +68,7 @@ coverage:
 - Pelaku kedua dipicu lewat sesi API dan bukan konteks UI kedua, sehingga tidak memakai `P-2` (bagian 3 prinsip 13, `[KEPUTUSAN 2026-10-30]`).
 - Klausa "tidak ada entri log" pada TC-FA-SU-209 dan 210 adalah aksi yang gagal sehingga ditulis sebagai asersi jumlah dengan baseline di spec fungsional (bagian 3 prinsip 13 butir g, S-12); toast error menjadi anchor positif.
 - TC-FA-SU-207 dan 208 (popup yang sama tanpa pelaku kedua) ada di spec 063.
+- Pre-setup #50 diterapkan hanya pada Wawan Setiawan (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih General Affairs (langkah 2 dan penugasan Admin B langkah 3) dan Logistics Warehouse (langkah 13); Home Group Wawan Setiawan dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
 - Temuan untuk QA:
   - TC-FA-SU-209 langkah 1 menyebut "Dua sesi admin menambahkan General Affairs secara berurutan hingga sesi kedua menimpa" tanpa menyebut sesi mana yang memiliki popup yang terbuka; spec memakai aktor UI sebagai sesi kedua yang menekan `[Save]` sesudah Admin B menyimpan.
   - TC-FA-SU-210 butir c ("tidak ada perubahan tersimpan") tidak menyebut cara observasi; spec mengasersi kolom Group baris Manage files setelah popup ditutup dan mengasumsikan popup tidak dirty setelah baris stale dibersihkan (TC-FA-SU-207 butir c).

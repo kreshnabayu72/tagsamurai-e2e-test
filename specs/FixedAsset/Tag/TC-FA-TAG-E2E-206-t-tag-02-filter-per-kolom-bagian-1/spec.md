@@ -22,9 +22,13 @@ coverage:
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before`, lihat `suite.md`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (disediakan tim FE); nilai literal TC pada langkah diberi kunci fixture oleh tahap script.
 - Data Pre-setup tab Paired (grup / Group / Tipe TAG / Total / Reported / Non-standard / Not Paired Yet): Excavator 20 Ton / Plant A / RFID / 20 / 0 / 0 / 2; Excavator 20 Ton / Plant B / RFID / 20 / 2 / 5 / 0; Laptop Pro 14 / HQ / NFC, QR / 25 / 1 / 0 / 2; Forklift Manual / Plant A / Non TAG / 10 / 0 / 3 / 0. Grup Excavator 20 Ton / Plant B (20 aset) memuat lima aset acuan: AST-0011 (Excavator 20 Ton - 11), AST-0020 (- 20), AST-0021 (- 21), AST-0043 (- 43), AST-0044 (- 44); urutan Last Updated terbaru ke terlama: AST-0044, AST-0043, AST-0021, AST-0020, AST-0011; 15 aset lain memakai Asset ID AST-0101 sampai AST-0115 (Brand Volvo, Model EC210, tanpa Label, Last Scanned kosong, Last Updated sebelum 30 Sep 26); Asset Name Excavator 20 Ton di Plant A memakai increment 201 sampai 220.
+- Data TC-FA-TAG-815: Brand: AST-0011 = Caterpillar; AST-0020 = Komatsu; AST-0021 = Caterpillar; AST-0043 = Hitachi; AST-0044 = Komatsu.
+- Data TC-FA-TAG-816: Model/Type: AST-0011 = 320D; AST-0020 = PC200; AST-0021 = 330F; AST-0043 = ZX210; AST-0044 = PC300.
+- Data TC-FA-TAG-817: Measurement seluruh aset = pcs.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`; penghapusan preferensi kolom tabel T-TAG-02 di browser (cache browser tempat konfigurasi Setup Column disimpan) dipakai di hook `after` dan sebagai langkah penghubung bila tertulis.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom di browser (bukan lewat `[Reset to Default]`) dan kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global selain preferensi kolom di browser.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -74,8 +78,8 @@ coverage:
 
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 4, 12, 13, 21, 22, 30.
 - Filter dipasang di toolbar halaman dan dibersihkan antar TC lewat langkah penghubung; Popup Detail ditutup sebelum Filter dibuka kembali karena toolbar tertutup popup.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - TC-FA-TAG-814 tidak menyebut field lain pada Filter Panel; spec memakai field `Brand` (disebut TC-FA-TAG-815) sebagai pembanding positif sebelum asersi absence `Asset ID`.
   - TC tidak menyebut kontrol yang membersihkan Filter; langkah penghubung "Bersihkan Filter" dipakai tanpa nama tombol.
   - Post Condition TC ("Tidak ada perubahan data bisnis (aksi hanya membaca)" dan "Konfigurasi kolom tersimpan di cache browser ...") tidak punya langkah observasi di TC; tidak diasersi.

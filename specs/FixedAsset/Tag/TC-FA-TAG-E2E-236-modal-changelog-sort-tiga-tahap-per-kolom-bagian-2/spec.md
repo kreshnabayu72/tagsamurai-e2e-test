@@ -34,6 +34,8 @@ coverage:
 
   Kunci fixture: `changelogE1E6`.
 - State yang diubah: hanya state sort modal; tiap kolom dikembalikan ke netral oleh klik ketiga. Tidak ada perubahan data bisnis.
+- Nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
 
 ## Test Steps
 
@@ -70,6 +72,7 @@ coverage:
 
 - Langkah penghubung (S-03): langkah 20 (menutup modal). Klik ketiga tiap kolom (langkah 6, 12, 18) mengembalikan sort ke netral, sehingga tiap blok kolom mulai dari urutan bawaan (S-09).
 - Pembagian TC lintas spec: urutan bawaan serta sort kolom Date, Action, Name, dan Field (TC-FA-TAG-941 sampai TC-FA-TAG-945) ada di spec 235.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-947 Expected a hanya menyebut urutan relatif tiga nilai `[RFID]` dan nilai `—` paling akhir (New Value E1 sampai E4); spec mengasersi hanya yang disebut TC.
   - TC-FA-TAG-948 mengurutkan "menurut nama lengkap" tetapi kolom menampilkan `[First Name] [Last Initial]`; spec mengasersi urutan nama yang tampil sesuai Expected TC.

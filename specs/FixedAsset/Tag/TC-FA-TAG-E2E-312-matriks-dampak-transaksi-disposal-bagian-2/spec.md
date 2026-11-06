@@ -44,52 +44,54 @@ coverage:
 ### TC-FA-TAG-1193: Execute pada kondisi T1
 
 1. Buka layar transaksi Disposal untuk aset `Aset Matriks Execute T1 {runId}-312`
-2. Jalankan langkah "Execute" sampai selesai
-3. Verifikasi langkah "Execute" pada Disposal berjalan normal sampai selesai
-4. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+2. Jalankan langkah "Execute"
+3. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+4. Lanjutkan langkah "Execute" sampai selesai
+5. Verifikasi langkah "Execute" pada Disposal berjalan normal sampai selesai
 
 ### TC-FA-TAG-1194: Execute pada kondisi T2
 
-5. Buka layar transaksi Disposal untuk aset `Aset Matriks Execute T2 {runId}-312`
-6. Jalankan langkah "Execute" sampai selesai
-7. Verifikasi langkah "Execute" pada Disposal berjalan normal sampai selesai
+6. Buka layar transaksi Disposal untuk aset `Aset Matriks Execute T2 {runId}-312`
+7. Jalankan langkah "Execute"
 8. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+9. Lanjutkan langkah "Execute" sampai selesai
+10. Verifikasi langkah "Execute" pada Disposal berjalan normal sampai selesai
 
 ### TC-FA-TAG-1195: Execute pada kondisi T3
 
-9. Buka layar transaksi Disposal untuk aset `Aset Matriks Execute T3 {runId}-312`
-10. Jalankan langkah "Execute"
-11. Verifikasi tombol `[I can't scan the TAG]` tersedia
-12. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-13. Verifikasi bidang "Foto aset" bertanda wajib (*)
-14. Unggah Foto aset
-15. Verifikasi konfirmasi saksi wajib: Execute belum dapat diselesaikan sebelum saksi (pengguna lain dalam scope aset) dipilih
-16. Pilih satu pengguna lain dalam scope aset sebagai saksi dan selesaikan langkah Execute
-17. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-18. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
-19. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
-20. Verifikasi nama saksi dan waktu konfirmasi dicatat bersama flag Manual identification (dibaca lewat kemampuan baca state backend)
+11. Buka layar transaksi Disposal untuk aset `Aset Matriks Execute T3 {runId}-312`
+12. Jalankan langkah "Execute"
+13. Verifikasi tombol `[I can't scan the TAG]` tersedia
+14. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+15. Verifikasi bidang "Foto aset" bertanda wajib (*)
+16. Unggah Foto aset
+17. Verifikasi konfirmasi saksi wajib: Execute belum dapat diselesaikan sebelum saksi (pengguna lain dalam scope aset) dipilih
+18. Pilih satu pengguna lain dalam scope aset sebagai saksi dan selesaikan langkah Execute
+19. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+20. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
+21. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
+22. Verifikasi nama saksi dan waktu konfirmasi dicatat bersama flag Manual identification (dibaca lewat kemampuan baca state backend)
 
 ### TC-FA-TAG-1196: Execute pada kondisi T4
 
-21. Buka layar transaksi Disposal untuk aset `Aset Matriks Execute T4 {runId}-312`
-22. Jalankan langkah "Execute"
-23. Verifikasi tombol `[I can't scan the TAG]` tersedia
-24. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-25. Verifikasi bidang "Foto aset" bertanda wajib (*)
-26. Verifikasi tidak ada Tag untuk dipilih
-27. Unggah Foto aset
-28. Verifikasi konfirmasi saksi wajib: Execute belum dapat diselesaikan sebelum saksi (pengguna lain dalam scope aset) dipilih
-29. Pilih satu pengguna lain dalam scope aset sebagai saksi dan selesaikan langkah Execute
-30. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-31. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
-32. Verifikasi nama saksi dan waktu konfirmasi dicatat bersama flag Manual identification (dibaca lewat kemampuan baca state backend)
+23. Buka layar transaksi Disposal untuk aset `Aset Matriks Execute T4 {runId}-312`
+24. Jalankan langkah "Execute"
+25. Verifikasi tombol `[I can't scan the TAG]` tersedia
+26. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+27. Verifikasi bidang "Foto aset" bertanda wajib (*)
+28. Verifikasi tidak ada Tag untuk dipilih
+29. Unggah Foto aset
+30. Verifikasi konfirmasi saksi wajib: Execute belum dapat diselesaikan sebelum saksi (pengguna lain dalam scope aset) dipilih
+31. Pilih satu pengguna lain dalam scope aset sebagai saksi dan selesaikan langkah Execute
+32. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+33. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
+34. Verifikasi nama saksi dan waktu konfirmasi dicatat bersama flag Manual identification (dibaca lewat kemampuan baca state backend)
 
 ## Notes
 
 - Mode: FE+BE.
 - TC-FA-TAG-1187 sampai 1192 ada di spec 311 dan 321.
-- Expected d TC-FA-TAG-1195 dan 1196 memuat dua klausa yang berkaitan (saksi wajib dan Execute tidak dapat diselesaikan tanpa saksi); keduanya ditulis sebagai satu `Verifikasi` (langkah 15 untuk TC-FA-TAG-1195 dan langkah 28 untuk TC-FA-TAG-1196) karena tidak teramati terpisah, sedangkan nama saksi dan waktu konfirmasi diasersi sendiri sesudah Execute selesai.
+- Expected d TC-FA-TAG-1195 dan 1196 memuat dua klausa yang berkaitan (saksi wajib dan Execute tidak dapat diselesaikan tanpa saksi); keduanya ditulis sebagai satu `Verifikasi` (langkah 17 untuk TC-FA-TAG-1195 dan langkah 30 untuk TC-FA-TAG-1196) karena tidak teramati terpisah, sedangkan nama saksi dan waktu konfirmasi diasersi sendiri sesudah Execute selesai.
 - Temuan untuk QA:
   - Langkah "Jalankan langkah ..." di TC tidak menjabarkan layar, field, dan urutan klik transaksi; spec menulisnya sebagai satu langkah dan penjabarannya diserahkan ke tahap script.
   - TC tidak menyebut Group aset kondisi T1 dan T2; spec memakai Group Plant B seperti aset kondisi T3 dan T4.

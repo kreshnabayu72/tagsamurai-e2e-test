@@ -38,8 +38,8 @@ coverage:
 13. Baca penugasan Group Role dan Transaction Role user Standard pada `Induk Pola {runId}-287`
 14. Verifikasi `Induk Pola {runId}-287` memuat penugasan Group Role dan Transaction Role untuk user Standard (anchor: parent punya penugasan yang bisa diturunkan)
 15. Baca penugasan Group Role dan Transaction Role user Standard pada `Branch Pola {runId}-287`
-16. Verifikasi user Standard tidak mendapat penugasan Group Role di `Branch Pola {runId}-287`
-17. Verifikasi user Standard tidak mendapat penugasan Transaction Role di `Branch Pola {runId}-287`
+16. Verifikasi user Standard tidak mendapat baris Group Role tersimpan di `Branch Pola {runId}-287` (tidak ada pewarisan salinan)
+17. Verifikasi user Standard tidak mendapat baris Transaction Role tersimpan di `Branch Pola {runId}-287` (tidak ada pewarisan salinan)
 18. Baca log Role & Permission untuk `Branch Pola {runId}-287`
 19. Verifikasi log memuat satu entri `Assign` biasa per baris pola Group Role dan Transaction Role yang dibaca pada langkah 7 dan 10
 20. Verifikasi Modified By setiap entri `Assign` adalah pelaku Import (format `[First Name] [Last Initial]`)
@@ -48,7 +48,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung (S-03): langkah 3 (tunggu aksi selesai sebelum berpindah surface, 8b butir 8), langkah 4 dan 5 (membuka Groups dan Search untuk menemukan baris target, R-16; client memiliki lebih dari 10 node level 1 sehingga posisi baris di halaman 1 tidak diandalkan), langkah 7, 10, 13, 15, dan 18 (observasi lewat kemampuan baca), dan langkah 21 (menutup Search).
-- Pembagian TC lintas spec: TC-1292 muncul di `sourceTc` spec ini dan spec 289 (absence, S-05). Spec ini mengasersi Expected a, b, dan bagian log `Assign` serta Modified By dari Expected c. Asersi tidak adanya notifikasi in-app (Expected c) dan Expected d (kegagalan penulisan baris pola) ada di spec 289 dengan baseline dan pemicu sendiri.
+- Pembagian TC lintas spec: TC-1292 muncul di `sourceTc` spec ini dan spec 289 (absence, S-05). Spec ini mengasersi Expected a, b, dan bagian log `Assign` serta Modified By dari Expected c. Asersi tidak adanya notifikasi in-app (Expected c) dan Expected d (kegagalan penulisan baris pola) ada di spec 289 dengan baseline dan pemicu sendiri. Klausa Expected b tentang cakupan penugasan Transaction Role ancestor atas group hasil Import (query-time, tanpa baris tambahan) tidak diasersi di spec ini karena precondition TC-1292 tidak menyiapkan ancestor ber-Transaction Role dan klausanya bersyarat "bila ada"; cakupan itu dimiliki TC-1302 di spec 303.
 - Temuan untuk QA:
   - TC-1292 membutuhkan akun importer yang tidak ada di Pre-setup TC. Alur modul Import (menu, berkas, jalan import) tidak dirinci di TC; spec mengikuti teks TC dan menandai berkas Import sebagai fixture yang disediakan tim FE/BE.
   - TC-1292 langkah 2 membaca Settings > Role & Permission dan log oleh aktor importer yang tidak jelas berhak membuka modul itu; spec memakai kemampuan baca yang disediakan tim FE/BE.

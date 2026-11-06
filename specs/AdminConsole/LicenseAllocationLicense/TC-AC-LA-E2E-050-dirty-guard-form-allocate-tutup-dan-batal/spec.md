@@ -32,7 +32,7 @@ coverage:
 ### TC-AC-LA-176: Menutup form bersih lewat tombol silang atau Esc tidak memunculkan dialog
 
 1. Klik `[+ Allocation]`
-2. Klik `[✕]` pada header
+2. Klik `[×]` pada header
 3. Verifikasi form tertutup langsung tanpa dialog D-02
 4. Klik `[+ Allocation]`
 5. Pilih Client `PT Sejahtera`, lalu kosongkan kembali pilihan itu (kembali ke nilai awal) dan tekan `Esc`
@@ -42,14 +42,14 @@ coverage:
 
 7. Klik `[+ Allocation]`
 8. Centang `Stay on this form after submitting` tanpa mengisi field apa pun
-9. Klik `[✕]` pada header
+9. Klik `[×]` pada header
 10. Verifikasi form tertutup langsung tanpa dialog D-02 karena checkbox Stay bukan field data
 
 ### TC-AC-LA-177: Menutup form dirty lewat tombol silang memunculkan D-02 dan Leave membuang input
 
 11. Klik `[+ Allocation]`
 12. Pilih Client `PT Sejahtera`
-13. Klik `[✕]` pada header
+13. Klik `[×]` pada header
 14. Verifikasi dialog D-02: Title `Unsaved Changes`, Body `You have unsaved changes. Are you sure you want to leave?`, tombol `[Leave]` (severity warning) dan `[Cancel]`, tanpa bullet nama item
 15. Klik `[Leave]`
 16. Verifikasi `[Leave]` menutup form
@@ -69,7 +69,7 @@ coverage:
 24. Verifikasi modal tetap terbuka dengan input utuh
 25. Verifikasi dialog D-02 tidak muncul
 26. Verifikasi form tidak punya tombol `[Cancel]` di footer
-27. Klik `[✕]` pada header
+27. Klik `[×]` pada header
 28. Verifikasi dialog D-02 dengan Title `Unsaved Changes` dan tombol `[Leave]` serta `[Cancel]`
 29. Klik `[Leave]`
 

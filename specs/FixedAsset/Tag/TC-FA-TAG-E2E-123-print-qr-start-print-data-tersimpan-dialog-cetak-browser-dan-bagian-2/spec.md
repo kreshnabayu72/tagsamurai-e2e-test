@@ -17,14 +17,12 @@ coverage:
 - Mode: FE+BE
 - Akun aktor: Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`), password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before` untuk akun ini (lihat `suite.md`).
-- Data Dinamis (dibuat di hook `before`, dibersihkan di hook `after`):
-  - Aset Not Paired Yet `Print QR Aset-{runId}-123` (TAG Type Asset Name QR) pada Group milik spec. Precondition TC tidak menyebut aset ini (lihat Temuan untuk QA).
+- Data Pre-setup (precondition TC-498 butir c, pengecualian S-06/S-12 butir A-15): aset 'Label Printer - 71' (AST-0171, Group Plant A, TAG Type Asset Name QR saja) belum punya Tag Paired (Not Paired Yet); dipakai tanpa suffix `{runId}` karena nama aset menjadi objek langkah; aset hanya dibuka di Dialog Pair TAG lalu ditutup lewat Discard Pairing tanpa [Submit], sehingga tidak diubah; seeding idempotent dan pemulihan lewat fixture backend (fixture `fixed-asset-tag.json` belum ada).
 - Kemampuan teknis (disediakan tim FE/BE):
   - Dialog cetak browser (tingkat OS) yang teramati dan dibatalkan oleh harness.
   - Pembacaan kode QR hasil Start Print dari registri Global lewat fixture backend, untuk dipindai pada langkah 11.
   - Simulator reader RFID/NFC USB: satu reader tersambung, driver terpasang, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader.
-  - Pembersihan kode QR hasil cetak dari registri Global lewat fixture backend.
-- State global yang dipulihkan: dua kode QR yang dibuat spec ini dihapus dari registri Global di hook `after`.
+- Efek yang tidak terpulihkan: batch kode QR dari `Start Print` (sebanyak Quantity, terdaftar `Available` di registri Global) beserta data cetak (langkah 3).
 
 ## Test Steps
 
@@ -35,23 +33,22 @@ coverage:
 5. Verifikasi Dialog Print QR menutup.
 6. Verifikasi tombol `Print QR` tampil di toolbar tab Paired.
 7. Verifikasi tidak ada pencetakan ulang otomatis (dialog cetak browser tidak terbuka lagi).
-8. Klik Asset Name `Print QR Aset-{runId}-123` pada baris grupnya untuk membuka Popup Detail.
+8. Klik Asset Name 'Label Printer' pada baris grup Plant A untuk membuka Popup Detail.
 9. Klik `Show` di samping `Not Paired Yet`.
-10. Klik row action `Replace TAG` pada baris aset `Print QR Aset-{runId}-123`.
+10. Klik row action `Pair TAG` pada baris 'Label Printer - 71'.
 11. Klik ButtonScan `Scan QR` pada slot `QR TAG` lalu pindai salah satu kode QR hasil cetak.
-12. Verifikasi kode QR hasil cetak diterima pada slot `QR TAG` sebagai Tag Available.
-13. Klik ikon close (✕) pada Dialog Replace TAG.
-14. Verifikasi dialog `Unsaved Changes` tampil.
-15. Klik [Leave].
-16. Tutup Popup Detail.
+12. Verifikasi slot `QR TAG` pada Dialog Pair TAG menampilkan kode QR hasil cetak.
+13. Verifikasi slot `QR TAG` menampilkan badge `Verified`.
+14. Verifikasi pesan "Error, can't recognize TAG." tidak tampil.
+15. Klik ikon close (✕) pada Dialog Pair TAG.
+16. Verifikasi dialog `Discard Pairing` dengan body "Discard this pairing? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil.
+17. Klik [Discard].
+18. Tutup Popup Detail.
 
 ## Notes
 
-- Langkah penghubung: langkah 13 sampai 16 menutup Dialog Replace TAG yang dirty dan Popup Detail.
+- Langkah penghubung: langkah 15 sampai 18 menutup Dialog Pair TAG yang dirty dan Popup Detail.
 - Anchor positif (S-03): langkah 6 menjadi anchor absence di langkah 7; anchor itu tidak ada di Expected TC.
+- A-15: aset Pre-setup 'Label Printer - 71' dipakai tanpa suffix `{runId}` (nama aset menjadi objek langkah); Pair TAG tidak di-Submit karena Dialog Pair TAG ditutup lewat Discard Pairing, sehingga aset tidak diubah.
 - Temuan untuk QA:
-  - Precondition TC-498 tidak menyebut aset Not Paired Yet, Group, maupun TAG Type Asset Name yang dipakai pada langkah 5 TC; spec memakai aset milik spec dengan TAG Type Asset Name QR (pilihan spec).
-  - Langkah 5 TC memakai row action `Replace TAG` pada aset Not Paired Yet, sedangkan TC lain (TC-504, TC-507) memakai `Pair TAG` untuk aset Not Paired Yet; spec mengikuti TC.
-  - Expected c TC-498 ("diterima sebagai Tag Available pada slot QR") tidak menyebut tampilan slot; spec memverifikasi sesuai kalimat TC.
-  - TC-498 diberi label Manual Only karena dialog cetak browser tingkat OS; spec tetap memuatnya dengan kemampuan di Prerequisites.
   - Post Condition "Kode QR tetap tersimpan di backend" tidak punya langkah observasi di TC (hanya terobservasi lewat penerimaan di slot QR) dan tidak diasersi terpisah.

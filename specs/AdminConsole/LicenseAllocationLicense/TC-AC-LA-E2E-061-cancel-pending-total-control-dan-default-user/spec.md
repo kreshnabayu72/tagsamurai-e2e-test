@@ -16,7 +16,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE
-- Login di hook `before` spec ini sebagai Fajar Nugroho (akun pertama); halaman dibuka hook `beforeEach` suite (tab Current). Ganti akun ke Sari Pratama dilakukan eksplisit pada langkah 12 sampai 14; hook `after` mengembalikan sesi ke akun default suite.
+- Login di hook `before` spec ini sebagai Fajar Nugroho (akun pertama); halaman dibuka hook `beforeEach` suite (tab Current). Ganti akun ke Sari Pratama dilakukan eksplisit pada langkah 14 sampai 16; hook `after` mengembalikan sesi ke akun default suite.
 - Akun yang dipakai:
 
 | Akun | Pre-setup | Peran | Email | Env password |
@@ -38,36 +38,39 @@ coverage:
 1. Ketik Search `{idPending}`, tekan Enter
 2. Klik row action `Cancel Allocation` pada baris Pending milik Dewi Anggraini
 3. Klik `[Cancel Request]`
-4. Klik tab `History`
-5. Ketik Search `{idPending}`, tekan Enter
-6. Verifikasi Status `{idPending}` menjadi `Canceled`
-7. Verifikasi Reserve `$3,650.00` dilepas
-8. Verifikasi Balance kantong tidak berubah (tanpa refund karena dana belum di-Capture)
-9. Klik row action `Allocation Log`
-10. Verifikasi Allocation Log memuat entri `Allocation canceled by Fajar N`
-11. Tutup modal Allocation Log
+4. Tunggu aksi selesai
+5. Klik tab `History`
+6. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+7. Ketik Search `{idPending}`, tekan Enter
+8. Verifikasi Status `{idPending}` menjadi `Canceled`
+9. Verifikasi Reserve `$3,650.00` dilepas
+10. Verifikasi Balance kantong tidak berubah (tanpa refund karena dana belum di-Capture)
+11. Klik row action `Allocation Log`
+12. Verifikasi Allocation Log memuat entri `Allocation canceled by Fajar N`
+13. Tutup modal Allocation Log
 
 ### Cancel oleh Default User Principal untuk alokasi tanpa Reserve
 
-12. Ganti akun: Logout dari Fajar Nugroho
-13. Login sebagai Sari Pratama (`defaultUserLic`, password `Spectra.env.AC_LA_DEFAULT_USER_PASSWORD`)
-14. Buka Allocation > License Allocation pada tab Current
-15. Catat saldo kantong Principal (Balance, Reserved, Available) sebagai baseline
-16. Ketik Search `{idFree}`, tekan Enter
-17. Klik row action `Cancel Allocation`
-18. Klik `[Cancel Request]`
-19. Verifikasi toast sukses: "Success, license allocation has been canceled."
-20. Klik tab `History`
-21. Ketik Search `{idFree}`, tekan Enter
-22. Verifikasi Status `{idFree}` menjadi `Canceled`
-23. Verifikasi tidak ada mutasi wallet: saldo kantong Principal sama dengan baseline
+14. Ganti akun: Logout dari Fajar Nugroho
+15. Login sebagai Sari Pratama (`defaultUserLic`, password `Spectra.env.AC_LA_DEFAULT_USER_PASSWORD`)
+16. Buka Allocation > License Allocation pada tab Current
+17. Catat saldo kantong Principal (Balance, Reserved, Available) sebagai baseline
+18. Ketik Search `{idFree}`, tekan Enter
+19. Klik row action `Cancel Allocation`
+20. Klik `[Cancel Request]`
+21. Verifikasi toast sukses: "Success, license allocation has been canceled."
+22. Klik tab `History`
+23. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+24. Ketik Search `{idFree}`, tekan Enter
+25. Verifikasi Status `{idFree}` menjadi `Canceled`
+26. Verifikasi tidak ada mutasi wallet: saldo kantong Principal sama dengan baseline
 
 ## Notes
 
-- Langkah penghubung (S-03, R-16): langkah 1, 5, 16, dan 21 (Search untuk menemukan baris seed), langkah 4 dan 20 (pindah tab), langkah 11 (menutup modal Allocation Log), langkah 12 sampai 14 (ganti akun dan membuka halaman), langkah 15 (baseline saldo).
+- Langkah penghubung (S-03, R-16): langkah 4 (menunggu aksi selesai karena langkah berikutnya pindah tab), langkah 6 dan 23 (mengosongkan kotak search lewat `✕` dan Enter sesudah pindah tab sebelum Search berikutnya; isi kotak setelah pindah tab tidak diandaikan), langkah 1, 7, 18, dan 24 (Search untuk menemukan baris seed), langkah 5 dan 22 (pindah tab), langkah 13 (menutup modal Allocation Log), langkah 14 sampai 16 (ganti akun dan membuka halaman), langkah 17 (baseline saldo).
 - Urutan TC-AC-LA-227: toast (butir b) diasersi sebelum Status dan saldo (butir a) karena toast adalah state sementara (8b butir 5).
 - Temuan untuk QA:
-  - TC-AC-LA-221 butir a ("Balance kantong tidak berubah", "Reserve dilepas") dan TC-AC-LA-227 butir a ("tanpa mutasi wallet") tidak menyebut halaman atau cara membaca wallet; spec memakai kemampuan baca saldo yang disediakan tim FE/BE, dengan baseline pada langkah 15 untuk kantong Principal.
-  - TC-AC-LA-221 butir b ("Log `Allocation canceled by Fajar N`") tidak menyebut surface log; spec membacanya di Allocation Log record (langkah 9 dan 10).
+  - TC-AC-LA-221 butir a ("Balance kantong tidak berubah", "Reserve dilepas") dan TC-AC-LA-227 butir a ("tanpa mutasi wallet") tidak menyebut halaman atau cara membaca wallet; spec memakai kemampuan baca saldo yang disediakan tim FE/BE, dengan baseline pada langkah 17 untuk kantong Principal.
+  - TC-AC-LA-221 butir b ("Log `Allocation canceled by Fajar N`") tidak menyebut surface log; spec membacanya di Allocation Log record (langkah 11 dan 12).
   - TC-AC-LA-227 tidak menyebut tab asal baris saat Cancel dan tempat membaca Status akhir; spec membaca Status di tab History setelah Cancel.
   - TC-AC-LA-227: kantong yang dibaca untuk "tanpa mutasi wallet" tidak disebut; spec memakai kantong Principal karena Payment `Free` dan requester Default User Principal.

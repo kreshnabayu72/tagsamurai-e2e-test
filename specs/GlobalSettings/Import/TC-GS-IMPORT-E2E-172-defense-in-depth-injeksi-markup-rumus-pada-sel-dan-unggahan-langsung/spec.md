@@ -56,7 +56,7 @@ coverage:
 
 11. Reset Client B ke tanpa draft Tab Brand (aksi fixture)
 12. Muat ulang halaman Import > Brand
-13. Klik `[Upload File]` di toolbar dan pilih berkas `brand-markup.csv`
+13. Klik `[Upload File]` di Dropzone dan pilih berkas `brand-markup.csv`
 14. Klik `[Confirm Mapping]`
 15. Verifikasi Staging Table menampilkan 2 baris
 16. Verifikasi tidak ada dialog alert JavaScript yang muncul
@@ -69,7 +69,7 @@ coverage:
 
 21. Reset Client B ke tanpa draft Tab Brand (aksi fixture)
 22. Muat ulang halaman Import > Brand
-23. Klik `[Upload File]` di toolbar dan pilih berkas `brand-formula.csv`
+23. Klik `[Upload File]` di Dropzone dan pilih berkas `brand-formula.csv`
 24. Klik `[Confirm Mapping]`
 25. Verifikasi keempat baris berstatus `pending`
 26. Verifikasi tidak ada Error Banner

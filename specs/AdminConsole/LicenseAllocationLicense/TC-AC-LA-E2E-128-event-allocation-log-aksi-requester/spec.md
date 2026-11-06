@@ -36,7 +36,7 @@ coverage:
   - `{idCanceled}`: alokasi `Canceled` manual Concurrent User +5 PT Sejahtera, requester Dewi Anggraini (bentuk Pre-setup #48);
   - `{idResub}`, `{idCU}`, `{idOne}`, `{idStation}`, `{idStorage}`, `{idApp}`: Allocation ID hasil Resubmit atau Submit di spec ini.
 - Kemampuan teknis (disediakan tim FE/BE): seeding alokasi dan pembersihannya; fixture waktu untuk jam server dan jam browser dengan nilai absolut; fixture backend untuk menyetel Require Approval for Allocation ON atau OFF; kemampuan membaca jumlah entri Allocation Log `{idCanceled}` (`{nLogCanceled}`), dicatat di hook `before`; fixture backend untuk menonaktifkan alokasi `Active` Asset Control App Pre-setup #53 pada `SUBS-20260105-K2L3M` sebelum blok TC-AC-LA-520 (opsi App ke Subscription yang sama diblokir selama #53 hadir) dan memulihkannya di hook `after`.
-- State global: jam server dan jam browser diatur ke `22 Dec 2026` hanya pada blok TC-AC-LA-401 dan dipulihkan setelah Submit; toggle Require Approval for Allocation diubah ke OFF sesudah blok TC-AC-LA-410 dan dipulihkan di hook `after`; saldo kantong #33 dipulihkan oleh pembersihan record; alokasi Pre-setup #53 dinonaktifkan sebelum blok TC-AC-LA-520 (langkah 95) dan dipulihkan di hook `after` (S-06, pengecualian 2026-10-30; efeknya pada Last Updated dan audit trail #53 dicatat di sini).
+- State global: jam server dan jam browser diatur ke `22 Dec 2026` hanya pada blok TC-AC-LA-401 dan dipulihkan setelah Submit; toggle Require Approval for Allocation diubah ke OFF sesudah blok TC-AC-LA-410 dan dipulihkan di hook `after`; saldo kantong #33 dipulihkan oleh pembersihan record; alokasi Pre-setup #53 dinonaktifkan sebelum blok TC-AC-LA-520 (langkah 107) dan dipulihkan di hook `after` (S-06, pengecualian 2026-10-30; efeknya pada Last Updated dan audit trail #53 dicatat di sini).
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -47,137 +47,149 @@ coverage:
 2. Klik row action `Edit` pada alokasi milik sendiri `{idEdit}`
 3. Ubah Additional Quantity dari `5` menjadi `8`
 4. Klik `[Save]`
-5. Klik row action `Allocation Log` pada baris `{idEdit}`
-6. Verifikasi judul entri `Allocation edited by Dewi A`
-7. Verifikasi Description entri memuat `Product: FAMS`, `License Type: Concurrent User`, `Target: SUBS-20260101-A1B2C`, `Quantity: +8`, `Cost: $240.00 (Wallet)`, tanpa `Resubmitted From`
-8. Verifikasi entri memuat Date & Time sesuai General Settings
-9. Verifikasi baris judul berupa teks biasa, bukan badge
-10. Tutup modal Allocation Log
+5. Tunggu aksi selesai
+6. Klik row action `Allocation Log` pada baris `{idEdit}`
+7. Verifikasi judul entri `Allocation edited by Dewi A`
+8. Verifikasi Description entri memuat `Product: FAMS`, `License Type: Concurrent User`, `Target: SUBS-20260101-A1B2C`, `Quantity: +8`, `Cost: $240.00 (Wallet)`, tanpa `Resubmitted From`
+9. Verifikasi entri memuat Date & Time sesuai General Settings
+10. Verifikasi baris judul berupa teks biasa, bukan badge
+11. Tutup modal Allocation Log
 
 ### Allocation canceled by (TC-AC-LA-405)
 
-11. Ganti isi kotak search dengan `{idCancel}`, tekan Enter
-12. Klik row action `Cancel Allocation` pada alokasi milik sendiri `{idCancel}`
-13. Klik `[Cancel Request]`
-14. Klik tab `History`
-15. Klik row action `Allocation Log` pada baris `{idCancel}`
-16. Verifikasi judul entri `Allocation canceled by Dewi A` tanpa baris Description
-17. Verifikasi entri memuat Date & Time sesuai General Settings
-18. Verifikasi baris judul berupa teks biasa, bukan badge
-19. Tutup modal Allocation Log
-20. Klik tab `Current`, klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama
+12. Ganti isi kotak search dengan `{idCancel}`, tekan Enter
+13. Klik row action `Cancel Allocation` pada alokasi milik sendiri `{idCancel}`
+14. Klik `[Cancel Request]`
+15. Tunggu aksi selesai
+16. Klik tab `History`
+17. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+18. Ketik Search `{idCancel}`, tekan Enter
+19. Klik row action `Allocation Log` pada baris `{idCancel}`
+20. Verifikasi judul entri `Allocation canceled by Dewi A` tanpa baris Description
+21. Verifikasi entri memuat Date & Time sesuai General Settings
+22. Verifikasi baris judul berupa teks biasa, bukan badge
+23. Tutup modal Allocation Log
+24. Klik tab `Current`
+25. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+26. Catat baseline Allocation ID baris di halaman pertama tab Current
 
 ### Entri created hasil Resubmit (TC-AC-LA-410)
 
-21. Klik tab `History`, ketik Search `{idCanceled}`, tekan Enter
-22. Klik row action `Resubmit` pada baris `{idCanceled}`
-23. Klik `[Submit]`
-24. Klik tab `Current`
-25. Klik `(←)` pada kotak Search, lalu catat Allocation ID record baru sebagai `{idResub}` (baris yang tidak ada pada baseline langkah 20; record baru hanya tampil di tab Current)
-26. Ketik Search `{idResub}`, tekan Enter
-27. Klik row action `Allocation Log` pada baris `{idResub}`
-28. Verifikasi Description entri created record baru memuat `Resubmitted From: {idCanceled}`
-29. Tutup modal Allocation Log
-30. Klik tab `History`
-31. Ganti isi kotak search dengan `{idCanceled}`, tekan Enter
-32. Klik row action `Allocation Log` pada baris `{idCanceled}`
-33. Verifikasi jumlah entri Allocation Log record asal `{idCanceled}` sama dengan `{nLogCanceled}` (log record asal tidak berubah)
-34. Tutup modal Allocation Log
-35. Setel Require Approval for Allocation OFF (Pre-setup #39) lewat fixture backend
-36. Klik tab `Current`
-37. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
+27. Klik tab `History`
+28. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+29. Ketik Search `{idCanceled}`, tekan Enter
+30. Klik row action `Resubmit` pada baris `{idCanceled}`
+31. Klik `[Submit]`
+32. Tunggu aksi selesai
+33. Klik tab `Current`
+34. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+35. Catat Allocation ID record baru sebagai `{idResub}` (baris yang tidak ada pada baseline langkah 26; record baru hanya tampil di tab Current)
+36. Ketik Search `{idResub}`, tekan Enter
+37. Klik row action `Allocation Log` pada baris `{idResub}`
+38. Verifikasi Description entri created record baru memuat `Resubmitted From: {idCanceled}`
+39. Tutup modal Allocation Log
+40. Klik tab `History`
+41. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+42. Ketik Search `{idCanceled}`, tekan Enter
+43. Klik row action `Allocation Log` pada baris `{idCanceled}`
+44. Verifikasi jumlah entri Allocation Log record asal `{idCanceled}` sama dengan `{nLogCanceled}` (log record asal tidak berubah)
+45. Tutup modal Allocation Log
+46. Setel Require Approval for Allocation OFF (Pre-setup #39) lewat fixture backend
+47. Klik tab `Current`
+48. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+49. Catat baseline Allocation ID baris di halaman pertama tab Current
 
 ### Allocation created by: Concurrent User (TC-AC-LA-401)
 
-38. Atur jam server dan jam browser ke `22 Dec 2026` (nilai absolut)
-39. Klik `[+ Allocation]`
-40. Pilih Client `PT Sejahtera`
-41. Pilih Target `SUBS-20260101-A1B2C`
-42. Pilih Type `Concurrent User`
-43. Isi Additional Quantity `10`
-44. Klik `[Submit]`
-45. Catat Allocation ID baris baru sebagai `{idCU}` (tidak ada pada baseline langkah 37)
-46. Pulihkan jam server dan jam browser ke waktu nyata
-47. Ketik Search `{idCU}`, tekan Enter
-48. Klik row action `Allocation Log` pada baris `{idCU}`
-49. Verifikasi judul entri `Allocation created by Dewi A`
-50. Verifikasi Description entri memuat `Product: FAMS`, `License Type: Concurrent User`, `Target: SUBS-20260101-A1B2C`, `Quantity: +10`, `Cost: $100.00 (Wallet)`
-51. Verifikasi entri memuat Date & Time sesuai General Settings
-52. Verifikasi baris judul berupa teks biasa, bukan badge
-53. Tutup modal Allocation Log
-54. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
+50. Atur jam server dan jam browser ke `22 Dec 2026` (nilai absolut)
+51. Klik `[+ Allocation]`
+52. Pilih Client `PT Sejahtera`
+53. Pilih Target `SUBS-20260101-A1B2C`
+54. Pilih Type `Concurrent User`
+55. Isi Additional Quantity `10`
+56. Klik `[Submit]`
+57. Catat Allocation ID baris baru sebagai `{idCU}` (tidak ada pada baseline langkah 49)
+58. Pulihkan jam server dan jam browser ke waktu nyata
+59. Ketik Search `{idCU}`, tekan Enter
+60. Klik row action `Allocation Log` pada baris `{idCU}`
+61. Verifikasi judul entri `Allocation created by Dewi A`
+62. Verifikasi Description entri memuat `Product: FAMS`, `License Type: Concurrent User`, `Target: SUBS-20260101-A1B2C`, `Quantity: +10`, `Cost: $100.00 (Wallet)`
+63. Verifikasi entri memuat Date & Time sesuai General Settings
+64. Verifikasi baris judul berupa teks biasa, bukan badge
+65. Tutup modal Allocation Log
+66. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
 
 ### Alokasi Completed langsung hanya punya entri created (TC-AC-LA-409)
 
-55. Klik `[+ Allocation]`
-56. Pilih Client `PT Sejahtera`
-57. Pilih Target `SUBS-20260101-A1B2C`
-58. Pilih Type `Concurrent User`
-59. Isi Additional Quantity `1`
-60. Klik `[Submit]`
-61. Catat Allocation ID baris baru sebagai `{idOne}` (tidak ada pada baseline langkah 54)
-62. Ganti isi kotak search dengan `{idOne}`, tekan Enter
-63. Klik row action `Allocation Log` pada baris `{idOne}`
-64. Verifikasi Allocation Log `{idOne}` memuat tepat satu entri `Allocation created by Dewi A`
-65. Verifikasi Allocation Log `{idOne}` tidak memuat entri `Allocation approved`
-66. Tutup modal Allocation Log
-67. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
+67. Klik `[+ Allocation]`
+68. Pilih Client `PT Sejahtera`
+69. Pilih Target `SUBS-20260101-A1B2C`
+70. Pilih Type `Concurrent User`
+71. Isi Additional Quantity `1`
+72. Klik `[Submit]`
+73. Catat Allocation ID baris baru sebagai `{idOne}` (tidak ada pada baseline langkah 66)
+74. Ketik Search `{idOne}`, tekan Enter
+75. Klik row action `Allocation Log` pada baris `{idOne}`
+76. Verifikasi Allocation Log `{idOne}` memuat tepat satu entri `Allocation created by Dewi A`
+77. Verifikasi Allocation Log `{idOne}` tidak memuat entri `Allocation approved`
+78. Tutup modal Allocation Log
+79. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
 
 ### Allocation created: Asset Control Station dan Storage (TC-AC-LA-519)
 
-68. Klik `[+ Allocation]`
-69. Pilih Client `Klinik Harapan Bunda`
-70. Pilih Target `Client-wide`
-71. Pilih Type `Asset Control Station`
-72. Isi Additional Quantity `10`
-73. Klik `[Submit]`
-74. Catat Allocation ID baris baru sebagai `{idStation}` (tidak ada pada baseline langkah 67)
-75. Ganti isi kotak search dengan `{idStation}`, tekan Enter
-76. Klik row action `Allocation Log` pada baris `{idStation}`
-77. Verifikasi judul entri `Allocation created by Dewi A`
-78. Verifikasi Description entri memuat `License Type: Asset Control Station`, `Target: Client-wide`, `Quantity: +10`, `Cost: $500.00 (Wallet)`
-79. Verifikasi Description entri tidak memuat baris `Product`
-80. Tutup modal Allocation Log
-81. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
-82. Klik `[+ Allocation]`
-83. Pilih Client `Klinik Harapan Bunda`
-84. Pilih Target `Client-wide`
-85. Pilih Type `Storage`
-86. Isi Additional Quantity `50`
-87. Klik `[Submit]`
-88. Catat Allocation ID baris baru sebagai `{idStorage}` (tidak ada pada baseline langkah 81)
-89. Ganti isi kotak search dengan `{idStorage}`, tekan Enter
-90. Klik row action `Allocation Log` pada baris `{idStorage}`
-91. Verifikasi judul entri `Allocation created by Dewi A`
-92. Verifikasi Description entri memuat `License Type: Storage`, `Target: Client-wide`, `Quantity: +50 GB`, `Cost: $100.00 (Wallet)`
-93. Verifikasi Description entri tidak memuat baris `Product`
-94. Tutup modal Allocation Log
+80. Klik `[+ Allocation]`
+81. Pilih Client `Klinik Harapan Bunda`
+82. Pilih Target `Client-wide`
+83. Pilih Type `Asset Control Station`
+84. Isi Additional Quantity `10`
+85. Klik `[Submit]`
+86. Catat Allocation ID baris baru sebagai `{idStation}` (tidak ada pada baseline langkah 79)
+87. Ketik Search `{idStation}`, tekan Enter
+88. Klik row action `Allocation Log` pada baris `{idStation}`
+89. Verifikasi judul entri `Allocation created by Dewi A`
+90. Verifikasi Description entri memuat `License Type: Asset Control Station`, `Target: Client-wide`, `Quantity: +10`, `Cost: $500.00 (Wallet)`
+91. Verifikasi Description entri tidak memuat baris `Product`
+92. Tutup modal Allocation Log
+93. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
+94. Klik `[+ Allocation]`
+95. Pilih Client `Klinik Harapan Bunda`
+96. Pilih Target `Client-wide`
+97. Pilih Type `Storage`
+98. Isi Additional Quantity `50`
+99. Klik `[Submit]`
+100. Catat Allocation ID baris baru sebagai `{idStorage}` (tidak ada pada baseline langkah 93)
+101. Ketik Search `{idStorage}`, tekan Enter
+102. Klik row action `Allocation Log` pada baris `{idStorage}`
+103. Verifikasi judul entri `Allocation created by Dewi A`
+104. Verifikasi Description entri memuat `License Type: Storage`, `Target: Client-wide`, `Quantity: +50 GB`, `Cost: $100.00 (Wallet)`
+105. Verifikasi Description entri tidak memuat baris `Product`
+106. Tutup modal Allocation Log
 
 ### Allocation created: Asset Control App tanpa baris Quantity (TC-AC-LA-520)
 
-95. Nonaktifkan alokasi `Active` Asset Control App Pre-setup #53 pada `SUBS-20260105-K2L3M` lewat fixture backend hingga tersimpan
-96. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
-97. Klik `[+ Allocation]`
-98. Pilih Client `CV Mitra Sejati`
-99. Pilih Target `SUBS-20260105-K2L3M`
-100. Pilih Type `Asset Control App`
-101. Klik `[Submit]`
-102. Catat Allocation ID baris baru sebagai `{idApp}` (tidak ada pada baseline langkah 96)
-103. Ganti isi kotak search dengan `{idApp}`, tekan Enter
-104. Klik row action `Allocation Log` pada baris `{idApp}`
-105. Verifikasi judul entri `Allocation created by Dewi A`
-106. Verifikasi Description entri memuat `Product: SAMS`, `License Type: Addon (Asset Control App)`, `Target: SUBS-20260105-K2L3M`, `Cost: $150.00 (Wallet)`
-107. Verifikasi Description entri tidak memuat baris `Quantity`
-108. Tutup modal Allocation Log
+107. Nonaktifkan alokasi `Active` Asset Control App Pre-setup #53 pada `SUBS-20260105-K2L3M` lewat fixture backend hingga tersimpan
+108. Klik `(←)` pada kotak Search, lalu catat baseline Allocation ID baris di halaman pertama tab Current
+109. Klik `[+ Allocation]`
+110. Pilih Client `CV Mitra Sejati`
+111. Pilih Target `SUBS-20260105-K2L3M`
+112. Pilih Type `Asset Control App`
+113. Klik `[Submit]`
+114. Catat Allocation ID baris baru sebagai `{idApp}` (tidak ada pada baseline langkah 108)
+115. Ketik Search `{idApp}`, tekan Enter
+116. Klik row action `Allocation Log` pada baris `{idApp}`
+117. Verifikasi judul entri `Allocation created by Dewi A`
+118. Verifikasi Description entri memuat `Product: SAMS`, `License Type: Addon (Asset Control App)`, `Target: SUBS-20260105-K2L3M`, `Cost: $150.00 (Wallet)`
+119. Verifikasi Description entri tidak memuat baris `Quantity`
+120. Tutup modal Allocation Log
 
 ## Notes
 
-- Alasan di atas sekitar 35 langkah (108 langkah; enam langkah baseline Allocation ID ikut menambah hitungan): seluruh blok satu topik (isi Allocation Log per event aksi requester Dewi Anggraini), satu kelas harness fungsional, dan masing-masing memakai record sendiri sehingga berdiri sendiri. Langkah yang diulang adalah pengisian form Allocate per Type (lima kali) dan pembukaan modal Allocation Log per record; blok baca-log berpola (buka modal, `Verifikasi` isi entri) tidak dihitung pada ambang smell.
+- Alasan di atas sekitar 35 langkah (120 langkah; enam langkah baseline Allocation ID dan langkah pengosongan kotak search sesudah pindah tab ikut menambah hitungan): seluruh blok satu topik (isi Allocation Log per event aksi requester Dewi Anggraini), satu kelas harness fungsional, dan masing-masing memakai record sendiri sehingga berdiri sendiri. Langkah yang diulang adalah pengisian form Allocate per Type (lima kali) dan pembukaan modal Allocation Log per record; blok baca-log berpola (buka modal, `Verifikasi` isi entri) tidak dihitung pada ambang smell.
 - Urutan blok mengikuti kebutuhan toggle (ON untuk TC-AC-LA-404, 405, dan 410, lalu OFF untuk TC-AC-LA-401, 409, 519, dan 520) dan berbeda dari urutan sourceTc agar toggle hanya diubah satu kali.
-- Asersi absence pada langkah 65, 79, 93, dan 107 adalah elemen Description pada modal yang sudah terbuka dan memuat entri created pada langkah sebelumnya sebagai anchor positif; bukan kelas g.
-- Langkah penghubung (S-03, R-16): langkah 1, 11, 21, 26, 31, 47, 62, 75, 89, dan 103 (Search baris berdasarkan Allocation ID), langkah 10, 19, 29, 34, 53, 66, 80, 94, dan 108 (menutup modal), langkah 14, 24, 30, dan 36 (pindah tab; langkah 24 pindah ke tab Current sebelum mencatat ID Resubmit karena record baru hanya tampil di tab Current), langkah 35 (menyetel toggle), langkah 95 (menonaktifkan #53 untuk blok TC-AC-LA-520), langkah 38 dan 46 (mengatur dan memulihkan jam), langkah 20, 37, 54, 67, 81, dan 96 (baseline Allocation ID baris di halaman pertama tab Current sebelum tiap `[Submit]`, S-12, pola spec 042; Search dikosongkan dengan klik `(←)` pada kotak Search agar baris baru tampil, dan langkah 25 mencatat `{idResub}` pada tab dan kondisi Search yang sama dengan baseline langkah 20, dan baris baru diambil dari Allocation ID yang tidak ada pada baseline).
+- Asersi absence pada langkah 77, 91, 105, dan 119 adalah elemen Description pada modal yang sudah terbuka dan memuat entri created pada langkah sebelumnya sebagai anchor positif; bukan kelas g.
+- Langkah penghubung (S-03, R-16): langkah 5 dan 15 dan 32 (menunggu aksi selesai sesudah `[Save]`, `[Cancel Request]`, dan `[Submit]` Resubmit karena langkah berikutnya membuka modal atau berpindah tab pada List yang sama, 8b butir 8; langkah 5 menjamin entri `Allocation edited` sudah tercatat sebelum Allocation Log dibuka), langkah 1, 12, 18, 29, 36, 42, 59, 74, 87, 101, dan 115 (Search baris berdasarkan Allocation ID), langkah 11, 23, 39, 45, 65, 78, 92, 106, dan 120 (menutup modal), langkah 16, 24, 27, 33, 40, 47 (pindah tab), langkah 17, 25, 28, 34, 41, 48 (mengosongkan kotak search tab tujuan secara eksplisit: klik `✕` pada Search lalu Enter; spec tidak mengandalkan apakah kotak Search terbawa atau ter-reset sesudah pindah tab), langkah 46 (menyetel toggle), langkah 107 (menonaktifkan #53 untuk blok TC-AC-LA-520), langkah 50 dan 58 (mengatur dan memulihkan jam), langkah 26, 49, 66, 79, 93, dan 108 (baseline Allocation ID baris di halaman pertama tab Current sebelum tiap `[Submit]`, S-12, pola spec 042; kotak Search dikosongkan lebih dulu agar baris baru tampil), langkah 35 (mencatat `{idResub}` pada tab dan kondisi Search yang sama dengan baseline langkah 26, dan baris baru diambil dari Allocation ID yang tidak ada pada baseline), dan langkah 57, 73, 86, 100, dan 114 (mencatat Allocation ID baris baru sebagai `{idCU}`, `{idOne}`, `{idStation}`, `{idStorage}`, dan `{idApp}` setelah `[Submit]`; dasar pencatatan adalah baseline langkah sebelumnya).
 - Temuan untuk QA:
-  - TC-AC-LA-520 mengalokasikan Asset Control App ke `SUBS-20260105-K2L3M` CV Mitra Sejati, sedangkan Pre-setup #53 sudah men-seed alokasi `Active` Asset Control App pada Subscription yang sama (opsi App ke Subscription yang sama diblokir); Submit hanya berhasil bila #53 tidak ada. TC tidak menyebut penyingkiran #53; spec menonaktifkannya lewat fixture backend yang disediakan tim FE/BE (langkah 95) dan memulihkannya di hook `after`. Pembacaan #53 sebagai baca-saja di Pre-setup diselesaikan lewat pengecualian S-06 (2026-10-30) yang dicatat di Prerequisites dan State global spec ini.
+  - TC-AC-LA-520 mengalokasikan Asset Control App ke `SUBS-20260105-K2L3M` CV Mitra Sejati, sedangkan Pre-setup #53 sudah men-seed alokasi `Active` Asset Control App pada Subscription yang sama (opsi App ke Subscription yang sama diblokir); Submit hanya berhasil bila #53 tidak ada. TC tidak menyebut penyingkiran #53; spec menonaktifkannya lewat fixture backend yang disediakan tim FE/BE (langkah 107) dan memulihkannya di hook `after`. Pembacaan #53 sebagai baca-saja di Pre-setup diselesaikan lewat pengecualian S-06 (2026-10-30) yang dicatat di Prerequisites dan State global spec ini.
   - TC-AC-LA-404 menyebut Cost snapshot $30.00 per unit sedangkan Product Price Concurrent User adalah $365 per unit per tahun (Pre-setup #34); spec memakai snapshot seed $30.00 per unit sehingga Cost $240.00.
   - TC-AC-LA-401 menyebut `Product: FAMS` tanpa menjelaskan sumbernya; spec mengikuti TC.
   - TC-AC-LA-519 tidak menyebut tanggal acuan server; Cost Station dan Storage bukan prorata sehingga jam tidak diatur pada blok itu.

@@ -55,7 +55,7 @@ coverage:
 23. Verifikasi banner tanpa tombol aksi
 24. Verifikasi tidak ada baris Total Control atau Read Only yang disisipkan ke tabel Global Role maupun Group Role
 25. Klik sub-tab Transaction Role
-26. Verifikasi Sub-tab Transaction Role tidak menampilkan banner
+26. Verifikasi banner "This user has Total Control access." tampil di atas tabel Sub-tab Transaction Role
 27. Klik segmen Breadcrumb `User`
 28. Ganti isi kotak search dengan `Citra Lestari`, tekan Enter
 29. Klik nama `Citra Lestari`
@@ -64,38 +64,42 @@ coverage:
 32. Ganti isi kotak search dengan `Oscar Pranata`, tekan Enter
 33. Klik nama `Oscar Pranata`
 34. Verifikasi banner "This user is a Group Manager for: Accounts Payable, IT Infrastructure." tampil dengan nama grup dipisah koma dan urut A-Z
-35. Klik segmen Breadcrumb `User`
-36. Ganti isi kotak search dengan `Budi Santoso`, tekan Enter
-37. Klik nama `Budi Santoso`
-38. Verifikasi tabel Sub-tab Global Role tampil tanpa banner (tanpa tingkat akses dan bukan Group Manager)
+35. Klik sub-tab Transaction Role
+36. Verifikasi banner "This user is a Group Manager for: Accounts Payable, IT Infrastructure." tampil juga di atas tabel Sub-tab Transaction Role dengan nama grup urut A-Z (FI-20)
+37. Klik segmen Breadcrumb `User`
+38. Ganti isi kotak search dengan `Budi Santoso`, tekan Enter
+39. Klik nama `Budi Santoso`
+40. Verifikasi tabel Sub-tab Global Role tampil tanpa banner (tanpa tingkat akses dan bukan Group Manager)
 
 ### TC-FA-SU-32: Screening Tab Responsibilities: label, sub-tab, dan empty state gabungan
 
-39. Klik tab Responsibilities
-40. Verifikasi label tab `Responsibilities (20)` dan sub-tab `Borrowed Assets (5)`, `Assigned Assets (5)`, `Pending Approvals (5)`, dan `Pending Tasks (5)`
-41. Verifikasi keempat sub-tab tampil
-42. Verifikasi angka tab `20` sama dengan jumlah baris seluruh sub-tab (5+5+5+5)
-43. Klik segmen Breadcrumb `User`
-44. Ganti isi kotak search dengan `Hana Kusuma`, tekan Enter
-45. Klik nama `Hana Kusuma`
-46. Klik tab Responsibilities
-47. Verifikasi label tab `Responsibilities (0)` (angka tampil juga saat 0)
-48. Verifikasi area konten menampilkan empty state "No pending responsibilities" dengan deskripsi "This user has no active custody, pending approvals, or tasks."
-49. Verifikasi empty state menggantikan sub-tab switcher
-50. Verifikasi tidak ada aksi tulis dan tidak ada tautan keluar dari tab Responsibilities
-51. Klik segmen Breadcrumb `User`
-52. Klik `(←)` pada kotak Search
+41. Klik tab Responsibilities
+42. Verifikasi label tab `Responsibilities (20)` dan sub-tab `Borrowed Assets (5)`, `Assigned Assets (5)`, `Pending Approvals (5)`, dan `Pending Tasks (5)`
+43. Verifikasi keempat sub-tab tampil
+44. Verifikasi angka tab `20` sama dengan jumlah baris seluruh sub-tab (5+5+5+5)
+45. Klik segmen Breadcrumb `User`
+46. Ganti isi kotak search dengan `Hana Kusuma`, tekan Enter
+47. Klik nama `Hana Kusuma`
+48. Klik tab Responsibilities
+49. Verifikasi label tab `Responsibilities (0)` (angka tampil juga saat 0)
+50. Verifikasi area konten menampilkan empty state "No pending responsibilities" dengan deskripsi "This user has no active custody, pending approvals, or tasks."
+51. Verifikasi empty state menggantikan sub-tab switcher
+52. Verifikasi tidak ada aksi tulis dan tidak ada tautan keluar dari tab Responsibilities
+53. Klik segmen Breadcrumb `User`
+54. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 17, 27, 31, 35, 43, dan 51 (kembali ke User List lewat Breadcrumb), langkah 18, 28, 32, 36, dan 44 (Search untuk menemukan baris target, R-16), langkah 52 (mengosongkan Search, S-09), langkah 13 dan 15 (centang dan hilangkan centang baris untuk mengamati `[Bulk Remove]`, S-09). Langkah 1, 19, 29, 33, 37, dan 45 membuka Detail; langkah 39 dan 46 membuka Tab Responsibilities.
-- Langkah 1 TC-FA-SU-32 ("Buka Tab Responsibilities pada Budi Santoso") dilanjutkan dari Detail Budi Santoso yang masih terbuka pada langkah 37.
-- Langkah 24 (absence baris Total Control atau Read Only) beranchor banner pada langkah 20 dan 22; langkah 26 beranchor tab Transaction Role yang termuat (langkah 25); langkah 38 beranchor tabel Global Role yang termuat.
-- Spec melewati sekitar 35 langkah (52 langkah). Seluruhnya satu kelas (screening tab Detail User, satu akun, tanpa mengubah data), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 17, 27, 31, 37, 45, dan 53 (kembali ke User List lewat Breadcrumb), langkah 18, 28, 32, 38, dan 46 (Search untuk menemukan baris target, R-16), langkah 54 (mengosongkan Search, S-09), langkah 13 dan 15 (centang dan hilangkan centang baris untuk mengamati `[Bulk Remove]`, S-09). Langkah 1, 19, 29, 33, 39, dan 47 membuka Detail; langkah 41 dan 48 membuka Tab Responsibilities.
+- Langkah 35 (membuka Sub-tab Transaction Role Oscar Pranata) adalah langkah penghubung; langkah 26 dan 36 membuktikan banner tier dan banner Group Manager juga tampil di Sub-tab Transaction Role (TC-FA-SU-31 Expected a, c, d; TC-FA-SU-1074).
+- Langkah 1 TC-FA-SU-32 ("Buka Tab Responsibilities pada Budi Santoso") dilanjutkan dari Detail Budi Santoso yang masih terbuka pada langkah 39.
+- Langkah 24 (absence baris Total Control atau Read Only) beranchor banner pada langkah 20 dan 22; langkah 40 beranchor tabel Global Role yang termuat.
+- Spec melewati sekitar 35 langkah (54 langkah). Seluruhnya satu kelas (screening tab Detail User, satu akun, tanpa mengubah data), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain.
 - Pembagian TC lintas spec: Tab Non-Login User, Changelog, System Log, Transaction Admin Log, dan User Log (TC-FA-SU-33 dan 34) ada di spec 011.
 - Temuan untuk QA:
+  - Versi spec sebelumnya mengasersi Sub-tab Transaction Role Lina Marlina tanpa banner; ini bertentangan dengan TC-FA-SU-31 Expected a dan d terbaru (banner tier dan banner Group Manager tampil juga di Sub-tab Transaction Role). Langkah 26 dikoreksi dan langkah 35 dan 36 ditambahkan.
   - TC-FA-SU-30 Expected d menyebut `[Bulk Remove]` saat ada seleksi, tetapi Pre-setup #39 tidak memberi Transaction Role untuk Budi Santoso; spec mengikuti Langkah Uji TC (Budi Santoso) dan membutuhkan sedikitnya satu baris Transaction Role pada Budi Santoso (langkah 13), yang perlu dijamin seed.
   - TC-FA-SU-30 Expected b menyebut urut Role Name A-Z tanpa nilai; spec mengasersi urutan A-Z pada baris yang tampil (Budi Santoso memiliki lebih dari satu Global Role).
   - TC-FA-SU-31 Expected c menulis banner "Group Manager untuk dua grup" tanpa menyebut grup; spec memakai Oscar Pranata (Group Manager IT Infrastructure dan Accounts Payable, Pre-setup #23) dan nama grup urut A-Z.

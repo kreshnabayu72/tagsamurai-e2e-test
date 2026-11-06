@@ -24,6 +24,7 @@ coverage:
   - Aset `Excavator 20 Ton - 51` (AST-0051, Group Plant A, TAG Type Asset Name RFID) belum punya Tag Paired (Not Paired Yet).
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB (satu reader tersambung, driver terpasang, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader); pemicu Pengguna B lewat sesi API (Receive TAG dan Pair TAG); pembacaan status Tag dari backend untuk Expected status; pemulihan status Tag dan pelepasan pasangan Tag lewat fixture backend.
 - State global yang dipulihkan: Receive mengubah Tag menjadi Available di registri Global dan menambah entri Event Log To Be Returned serta TAG Log Global yang tidak dapat dihapus; Pair TAG memasangkan `RF-00089` ke `Excavator 20 Ton - 51`. Status Tag dan pasangan dipulihkan lewat fixture backend di hook `before` dan `after` serta pada langkah 19; entri log tetap bertambah.
+- Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `RF-00089`, `Excavator 20 Ton - 51`, AST-0051) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -70,8 +71,7 @@ coverage:
 
 - Langkah penghubung: langkah 1 membuka tab (hook `beforeEach` sudah membuka halaman TAG); langkah 18 dan 32 menutup dialog; langkah 19 memulihkan state antar TC (S-09).
 - Pengguna B memakai sesi API sehingga bukan kelas c; langkah pemicu ditulis "... hingga ... tersimpan" (R-20). Urutan Verifikasi TC-1460 menaruh kedua Toast lebih dulu karena state sementara (bagian 8b butir 5). Langkah 26 menjadi anchor absence langkah 27.
+- A-15: nilai literal Pre-setup (`RF-00071`, `RF-00088`, `RF-00089`, `Excavator 20 Ton - 51`, AST-0051) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan tercatat di Prerequisites spec ini.
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `RF-00089`, `Excavator 20 Ton - 51`, AST-0051) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - TC-1460 dan TC-1469 menyebut "Pengguna B" tanpa akun; spec memakai akun "disediakan tim FE".
   - Post Condition TC-1460 dan TC-1469 (Event Log: satu entri `RF-00071` dari Pengguna A, tanpa entri tambahan dari Pengguna A untuk `RF-00088` dan `RF-00089`) tidak punya langkah observasi di TC dan tidak diasersi.
-  - TC-1460 dan TC-1469 diberi label Manual Only karena "dua sesi/pengguna paralel"; spec memakai sesi API untuk Pengguna B.

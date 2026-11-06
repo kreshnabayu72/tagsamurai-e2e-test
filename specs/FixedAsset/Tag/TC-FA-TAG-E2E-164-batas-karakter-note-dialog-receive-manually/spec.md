@@ -36,6 +36,7 @@ coverage:
 | Tag To Be Returned | RFID `RF-00071` (Last Asset Excavator 20 Ton - 2, Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); RFID `RF-00088` (Excavator 20 Ton - 5, Disposal Center, Dedi K.); NFC `NF-00092` (Laptop Pro 14 - 8, HQ Warehouse, Rina T.) | `tbrDedi` |
 
 - State yang diubah dan pemulihannya: Tag `RF-00071` diterima sebagai Damaged/Missing oleh TC-1388 dan TC-1390; langkah 28 mengembalikannya ke To Be Returned dan hook `after` memulihkan `RF-00071` ke To Be Returned.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 25, 33); entri TAG Log Global `Marked Damaged/Missing` (langkah 25, 33). Aksi tulis pada langkah 6, 15 ditolak dan tidak menambah entri.
 
 ## Test Steps
 
@@ -93,9 +94,9 @@ coverage:
 - Pembagian TC lintas spec: dialog Receive Manually (menu, bulk, validasi Note, Cancel, dan Unsaved Changes) ada di spec 135 sampai 139.
 - Urutan TC di dalam spec: TC-1389, TC-1391, TC-1388, TC-1390. Validasi yang diblokir dijalankan sebelum Submit yang berhasil; `RF-00071` diatur ulang sebelum TC-1390 karena TC-1388 sudah menerimanya (langkah 28).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9 sampai 11 (menutup form dirty: ikon close, `Verifikasi` dialog "Unsaved Changes", [Leave]), 19 sampai 20 (memulihkan Note yang hanya berisi spasi dengan mengosongkannya lalu menutup dialog), dan 28 (mengatur ulang state Tag lewat fixture backend).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 25, 33); entri TAG Log Global `Marked Damaged/Missing` (langkah 25, 33). Aksi tulis pada langkah 6, 15 ditolak dan tidak menambah entri.
 - Temuan untuk QA:
   - Panjang teks dihitung setelah trim sesuai Expected TC; nilai 360 dan 361 karakter ditulis tepat sebagai huruf `a` yang diulang tanpa suffix karena asersi bergantung pada panjang persis.
   - Pembukaan tab "To Be Returned" pada langkah 1 bukan dari langkah TC (TC menulis "Buka Fixed Asset > TAG > To Be Returned"); hook suite `beforeEach` membuka Fixed Asset > TAG tab Paired sehingga spec berpindah ke tab itu.
   - Post Condition TC-FA-TAG-1388 s.d. 1391 (status Tag RF-00071, entri TAG Log "Marked Damaged/Missing", Event Log) tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

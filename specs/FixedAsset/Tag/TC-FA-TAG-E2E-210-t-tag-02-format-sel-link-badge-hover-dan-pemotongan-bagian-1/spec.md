@@ -31,6 +31,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -86,8 +87,8 @@ coverage:
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 12, 15, 16, 21.
 - Popup Detail Excavator 20 Ton / Plant B dibuka pada TC pertama dan tetap terbuka bila TC berikutnya memakai popup yang sama (langkah "Klik Asset Name" TC berikutnya tidak diulang; halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - TC-FA-TAG-835 memakai popup grup Plant A; popup Plant B ditutup dan dibuka kembali untuk TC-FA-TAG-836 (langkah penghubung).
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - TC-FA-TAG-833 menyebut aset A dengan Tag QR-00231 dan aset B dengan QR-00231 serta RF-00500, tetapi kode QR-00231 sudah menjadi Tag AST-0043 dan satu kode Tag hanya dapat dipegang satu aset; TC juga tidak menyebut Asset ID aset A dan B. Spec mengikuti TC dan menandai data aset A dan B sebagai disediakan fixture BE.
   - TC-FA-TAG-833 tidak menyebut apakah aset A dan B berada pada grup Excavator 20 Ton / Plant B; spec mengasumsikan keduanya di popup Plant B.
   - Post Condition TC ("Tidak ada perubahan data bisnis (aksi hanya membaca)" dan "Konfigurasi kolom tersimpan di cache browser ...") tidak punya langkah observasi di TC; tidak diasersi.

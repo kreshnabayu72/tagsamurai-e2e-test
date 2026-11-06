@@ -124,7 +124,7 @@ coverage:
 61. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
 62. Muat ulang halaman Import > Brand
 63. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-64. Klik `[Upload File]` di toolbar dan pilih berkas `brand-ai-commit.csv`
+64. Klik `[Upload File]` di Dropzone dan pilih berkas `brand-ai-commit.csv`
 65. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 66. Klik `[Import (2)]`
 67. Tunggu aksi selesai (permintaan mendapat respons)
@@ -139,7 +139,7 @@ coverage:
 73. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
 74. Muat ulang halaman Import > User Login
 75. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-76. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-logistik.csv` (baris #1 Bambang Hartono Division `Engineering`; baris #2 Citra Wulandari dan baris #3 Doni Kurniawan Division `Logistik`; Position kosong)
+76. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-commit-logistik.csv` (baris #1 Bambang Hartono Division `Engineering`; baris #2 Citra Wulandari dan baris #3 Doni Kurniawan Division `Logistik`; Position kosong)
 77. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 78. Klik `[Import (1)]`
 79. Tunggu aksi selesai (permintaan mendapat respons)
@@ -154,7 +154,7 @@ coverage:
 85. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
 86. Buka Global Settings > Import, pilih Sub-Tab User Login
 87. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-88. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-store-supervisor.csv` (baris #1 Bambang Hartono Position kosong; baris #2 Citra Wulandari dan baris #3 Doni Kurniawan Position `Store Supervisor`; Division `Engineering`)
+88. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-commit-store-supervisor.csv` (baris #1 Bambang Hartono Position kosong; baris #2 Citra Wulandari dan baris #3 Doni Kurniawan Position `Store Supervisor`; Division `Engineering`)
 89. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 90. Klik `[Import (1)]`
 91. Tunggu aksi selesai (permintaan mendapat respons)
@@ -169,7 +169,7 @@ coverage:
 97. Reset Client E ke tanpa draft dan pulihkan worker commit (aksi fixture)
 98. Buka Global Settings > Import, pilih Sub-Tab User Login
 99. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-100. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-shift.csv`
+100. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-commit-shift.csv`
 101. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 102. Klik `[Import (1)]`
 103. Verifikasi footer `[Import (1)]` tampil Disabled

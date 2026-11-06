@@ -41,32 +41,35 @@ coverage:
 
 6. Kirim request Reject langsung untuk alokasi milik sendiri dengan Rejection Reason `Tidak sesuai`
 7. Verifikasi respons server menolak oleh self-approval guard (requester tidak boleh memutus permintaannya sendiri)
-8. Buka Allocation Log alokasi itu
-9. Verifikasi status tetap `Waiting for Approval`
-10. Verifikasi Reserve $60.00 utuh
+8. Tutup dialog Review
+9. Buka Allocation > License Allocation tab Current, ketik Search Allocation ID alokasi `Eko S`, tekan Enter
+10. Buka Allocation Log alokasi itu
+11. Verifikasi status tetap `Waiting for Approval`
+12. Verifikasi Reserve $60.00 utuh
+13. Tutup modal Allocation Log
 
 ### TC-AC-LA-254: Approve atau Reject oleh aktor di luar Group Manager, Total Control, dan Additional Approver
 
-11. Ganti akun: logout `Eko S`, login sebagai `Bayu Aditya` dengan `Spectra.env.AC_LA_DIST_READ_PASSWORD`
-12. Kirim request Approve langsung untuk alokasi `Waiting for Approval` milik `Dewi A` dengan akun Read
-13. Verifikasi respons server menolak dengan respons error generik
-14. Kirim request Reject langsung untuk alokasi yang sama dengan akun Read
-15. Verifikasi respons server menolak dengan respons error generik
-16. Verifikasi status alokasi tidak berubah
+14. Ganti akun: logout `Eko S`, login sebagai `Bayu Aditya` dengan `Spectra.env.AC_LA_DIST_READ_PASSWORD`
+15. Kirim request Approve langsung untuk alokasi `Waiting for Approval` milik `Dewi A` dengan akun Read
+16. Verifikasi respons server menolak dengan respons error generik
+17. Kirim request Reject langsung untuk alokasi yang sama dengan akun Read
+18. Verifikasi respons server menolak dengan respons error generik
+19. Verifikasi status alokasi tidak berubah
 
 ### TC-AC-LA-460: Request Approve ke alokasi yang bukan Waiting for Approval ditolak
 
-17. Ganti akun: logout `Bayu A`, login sebagai `Fajar Nugroho` dengan `Spectra.env.AC_LA_TC_DIST_PASSWORD`
-18. Kirim request Approve langsung untuk record `Active`
-19. Verifikasi respons server menolak (status bukan Waiting for Approval)
-20. Verifikasi record `Active` tidak berubah
+20. Ganti akun: logout `Bayu A`, login sebagai `Fajar Nugroho` dengan `Spectra.env.AC_LA_TC_DIST_PASSWORD`
+21. Kirim request Approve langsung untuk record `Active`
+22. Verifikasi respons server menolak (status bukan Waiting for Approval)
+23. Verifikasi record `Active` tidak berubah
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Urutan TC mengikuti kebutuhan satu akun berurutan sebelum ganti akun (253, 482, 254, 460). TC-AC-LA-453, 454, dan 479 ada di spec 095 (pencabutan wewenang approver mengubah state global). 
 - K-1: TC kelas a yang Expected-nya respons API tetap masuk spec FE+BE walau tumpang tindih dengan TC backend; modul ini tidak punya TC backend.
 - Pembagian TC lintas spec: butir c TC-AC-LA-482 (tidak ada entri `Allocation rejected` di Allocation Log, dengan anchor dan baseline) ada di spec 094.
-- Langkah penghubung (S-03): langkah 1 dan 2 (membuka Approvals dan Review sebagai bagian TC-AC-LA-253 Langkah 1), 8 (membuka surface), 11 dan 17 (ganti akun). Asersi request langsung hanya respons server dan state data (8b butir 1).
+- Langkah penghubung (S-03): langkah 1 dan 2 (membuka Approvals dan Review sebagai bagian TC-AC-LA-253 Langkah 1), 8 (menutup dialog Review sebelum pindah surface, S-09), 9 (membuka List tab Current dan Search untuk menemukan baris target, R-16, S-14), 10 (membuka surface), 13 (menutup modal Allocation Log sebelum ganti akun, S-09), 14 dan 20 (ganti akun). Asersi request langsung hanya respons server dan state data (8b butir 1).
 - Temuan untuk QA:
   - TC-AC-LA-253 Langkah 1 menyebut `[Review]` dibuka lalu "request Approve langsung"; perilaku UI di Review tidak diasersi (8b butir 1).
   - TC-AC-LA-254 Langkah 1 mengirim Approve dan Reject dalam satu langkah; spec memecahnya menjadi dua request dengan Verifikasi masing-masing.

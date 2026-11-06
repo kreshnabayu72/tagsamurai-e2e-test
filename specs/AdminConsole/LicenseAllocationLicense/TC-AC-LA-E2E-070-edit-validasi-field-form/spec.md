@@ -68,12 +68,12 @@ coverage:
 
 ### Record tidak berubah
 
-26. Klik `[✕]`
+26. Klik `[×]`
 27. Verifikasi dialog `Unsaved Changes` dengan isi `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 28. Klik `[Leave]`
 29. Klik row action `Edit` pada baris yang sama
 30. Verifikasi Target dan Type pre-filled dengan nilai tersimpan dan Additional Quantity `5` (record tidak berubah oleh keempat validasi)
-31. Klik `[✕]`
+31. Klik `[×]`
 
 ## Notes
 

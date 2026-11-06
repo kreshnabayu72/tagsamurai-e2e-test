@@ -37,6 +37,7 @@ coverage:
 
 - Group: Finance & Accounting (TC-FA-SU-236 dan 238 bagian Nanda), IT Infrastructure (TC-FA-SU-237 dan 238 bagian Mira).
 - State global yang diubah: tidak ada data yang disimpan; isian modal dibuang lewat `[Leave]`.
+- Target tanpa Home Group (Pre-setup #50, `FaUserNoHG`; Catatan TC: TC penugasan Tab Role Section 3d, 3e, 4c, 8, dan 9 yang memilih node bebas dijalankan pada varian tanpa Home Group, FI-32), diterapkan per target: Home Group Mira Anggraini (Finance & Accounting pada Pre-setup #43) dikosongkan lewat seed API di hook `before` supaya node IT Infrastructure (langkah 5 dan 8) tidak Disabled oleh gate Home Group constraint; Home Group Mira Anggraini dipulihkan ke Finance & Accounting di hook `after`. Seed per target disediakan tim FE/BE.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
 ## Test Steps
@@ -80,6 +81,7 @@ coverage:
 - Langkah 6 sampai 7 diulang untuk sembilan baris tabel "Opsi Role per Jenis Transaksi" (bagian 8b butir 7); jumlah langkah bernomor 22, dan dengan ekspansi iterasi (sembilan kali dua langkah) menjadi 38 langkah.
 - Modal Assign Transaction Role dibuka sekali di awal untuk TC-FA-SU-236 sampai 238 bagian Mira Anggraini dan dipakai tanpa dibuka ulang (halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - Jumlah langkah dengan ekspansi 38, di atas smell 35 langkah; semua blok satu topik (opsi pada modal Assign Transaction Role), satu kelas harness, dan baca tanpa menyimpan data.
+- Pre-setup #50 diterapkan hanya pada Mira Anggraini (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih IT Infrastructure (langkah 5 dan 8); Home Group Mira Anggraini dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
 - Temuan untuk QA:
   - TC-FA-SU-238 langkah 5 pindah ke tenant `FaUserTR` tanpa menyebut akun atau cara berpindah; spec menulisnya sebagai kemampuan "disediakan tim FE".
   - TC-FA-SU-236 butir b ("tanpa bergantung lisensi Addon") tidak menyebut tenant tanpa lisensi Addon pada langkah; TC-FA-SU-279 mengujinya pada tenant tanpa Addon, sedangkan spec ini hanya mengasersi kesembilan jenis tampil.

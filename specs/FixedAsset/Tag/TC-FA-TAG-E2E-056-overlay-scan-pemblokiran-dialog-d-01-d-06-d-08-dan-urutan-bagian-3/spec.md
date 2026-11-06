@@ -34,6 +34,7 @@ coverage:
   - Stok Global: Tag RFID `RF-00412` dan `RF-00415` berstatus Available, Tag NFC `NF-00500` berstatus Available (dipakai sebagai precondition TC, tidak diasersi).
 - Pemulihan di hook `after`: kembalikan data aset, Tag, dan Asset Status di atas ke keadaan awal bila seeding mengubahnya. Spec ini tidak menekan `[Submit]`.
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -73,9 +74,9 @@ TC-FA-TAG-243:
 - Perubahan urutan (S-05): urutan TC sumber 242, 243, 261 menjadi 242, 261, 243. Alasan: TC-FA-TAG-242 dan TC-FA-TAG-261 memakai akun MU_UPA sehingga ganti akun terjadi sekali.
 - Langkah penghubung (tanpa awalan `Verifikasi`): 6 dan 11 (menutup dialog blok lewat `[OK]`), 12 (ganti akun).
 - Absence (langkah 4, 5, 10, dan 16): didahului Verifikasi dialog `Access Restricted` yang tampil (langkah 3, 9, dan 15) sebagai anchor positif (bagian 8b butir 2). Dialog D-01 pada langkah 10 dikenali dari teks body yang disebut TC-FA-TAG-240.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-261 memakai AST-0012 dengan Asset Status In Disposal Process tanpa menyebut cara mengaturnya; spec menuliskannya sebagai seed lewat fixture BE.
   - TC-FA-TAG-243 menyebut aset AST-0011 di Group Plant B yang "hanya Read" untuk user; hak parsial per group diasumsikan dari Role di Pre-setup TC dan tidak diatur ulang oleh spec.
   - Tidak ada Post Condition TC yang punya langkah observasi pada spec ini ("Tidak ada data yang berubah" tidak diasersi).
   - Role UP_PA_ROPB (Pre-setup 102) hampir kembar dengan "Update di group Plant A dan Read di group Plant B" (UP_PA_RPB); spec memakai UP_PA_ROPB sesuai teks Role di TC-FA-TAG-243.
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

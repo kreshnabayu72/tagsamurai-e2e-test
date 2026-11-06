@@ -32,8 +32,9 @@ Role yang diuji:
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - Kemampuan teknis (disediakan tim FE/BE): membuat laporan terbuka Damaged untuk Tag RF-00130 sebagai pelaku kedua (sesi API) lewat fixture backend.
 - Kemampuan teknis (disediakan tim FE/BE): satu task Existence Audit milik spec dengan item AST-0020.
-- State global: tidak ada state global yang diubah.
+- State global: tidak ada yang diubah selain efek yang tidak terpulihkan yang tercatat di bawah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 1); entri Changelog `Cancel Report` per Tag (langkah 9).
 
 ## Test Steps
 
@@ -63,8 +64,7 @@ Role yang diuji:
 - TC-FA-TAG-188 mengubah state laporan sehingga dijalankan terakhir; Expected tiap TC tetap diasersi.
 - Laporan terbuka Damaged dibuat lewat fixture backend sebagai pelaku kedua (sesi API) pada langkah penghubung 1.
 - TC-FA-TAG-180 sampai 186 ada di spec `TC-FA-TAG-E2E-040-role-matrix-report-tag-dan-cancel-report-dari-modul-audit`.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 1); entri Changelog `Cancel Report` per Tag (langkah 9).
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
-  - Kode Tag `RF-00130` dipakai TC untuk aset AST-0220 (TC-144 sampai TC-162) dan untuk aset AST-0020 (TC-174 sampai TC-188); kedua dataset tidak dapat ada bersamaan di registri Global. Spec menulis literal sesuai TC dan fixture backend menyiapkan dataset tiap spec.
   - TC-187 dan TC-188 tidak menyebut tab pada Task Detail; spec tidak menyebut tab.

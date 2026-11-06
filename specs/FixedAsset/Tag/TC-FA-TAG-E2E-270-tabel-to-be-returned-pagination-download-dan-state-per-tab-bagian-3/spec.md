@@ -33,6 +33,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): pembaca berkas unduhan CSV/XLSX (nama berkas, ekstensi, header kolom, jumlah baris, isi sel, nama sheet) dan pendeteksi toast pada saat klik pilihan format.
 - Pemulihan di hook `after`: dataset To Be Returned dikembalikan ke keadaan Pre-setup empat Tag lewat fixture backend bila seeding mengubahnya. Kolom Reason dipulihkan pada akhir spec; Filter dikosongkan di akhir spec.
 - Pemulihan preferensi kolom: kolom Reason disembunyikan lewat Column Visibility (tersimpan di browser) dan ditampilkan kembali pada langkah 22.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 9, 22), dipulihkan hook `after` (lihat `suite.md`).
 
 ## Test Steps
 
@@ -73,9 +74,9 @@ coverage:
 - Absence toast sukses diletakkan sesudah pemicu klik pilihan format dan sebelum `Verifikasi` berkas (bagian 8b butir 11); pemicu itu menjadi anchor positif bagi `Verifikasi` berkas terunduh.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 4 (menutup overlay Download); 10 (menutup Column Visibility); 22 (memulihkan kolom Reason); 23 (mengosongkan Filter lewat [Clear Field]); 24 (menerapkan Filter kosong lewat [Apply]).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 9, 22), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
   - TC-FA-TAG-1023 Expected butir c dan d memuat isi sel (hierarki Return Group, nama lengkap, nilai "-") serta pemisah dan encoding berkas, yang menurut bagian 3 prinsip 13 butir f termasuk asersi buffer biner; spec mengikuti TC dan menuliskannya sebagai `Verifikasi` terpisah di spec ini.
   - TC-FA-TAG-1023 Expected butir c "Current Holder ditulis dengan nama lengkap" dan "nilai kosong ditulis -" tidak menyebut nama lengkap yang diharapkan maupun kolom yang bernilai kosong pada tiga baris RFID; spec mengasersi sesuai TC tanpa menambah nilai.
   - TC-FA-TAG-1023 butir b "header kolom yang tampil" tidak menyebut urutan header; spec mengasersi himpunan header tanpa Reason.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -21,7 +21,8 @@ coverage:
 - Data: aset 'Excavator 20 Ton - 44' (AST-0044, Group Plant B, TAG Type Asset Name RFID) dengan Tag RFID `RF-00132` dan Tag QR `QR-00232` (Non-standard) Paired.
 - Stok Global (dipakai sebagai precondition TC, tidak diasersi): Tag RFID `RF-00412` Available.
 - Fixture: `Fixture.fixedAssetTag` belum ada (disediakan tim FE); nilai data pada langkah dibaca dari TC dan dipetakan ke fixture itu oleh tahap script.
-- State global: stok Tag per tipe di registri Global dan status Tag (Paired, Available, Damaged/Missing, keluar dari registri) diubah oleh aksi Replace; fixture backend memulihkannya di hook `before`, di langkah penghubung antar-TC, dan di hook `after` yang tetap jalan walau spec gagal di tengah. Suite berjalan serial (`parallel: false`).
+- State global: tidak ada yang diubah (spec hanya membaca); tidak ada Replace yang di-submit sehingga stok Tag per tipe di registri Global dan status Tag tidak berubah. Suite berjalan serial (`parallel: false`).
+- Nilai literal Pre-setup (nama aset, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -42,6 +43,6 @@ coverage:
 
 - Langkah penghubung (S-03): [Cancel] menutup dialog Replace TAG dan Popup Detail Assets ditutup di akhir spec; langkah Amati adalah aksi pengamatan tanpa asersi.
 - Data literal Pre-setup (kode aset AST-*, Asset Name, kode Tag) dipakai persis seperti di TC tanpa suffix `{runId}`, karena asersi bergantung pada nama dan kode itu; seeding idempotent dan pemulihan dijamin fixture backend (suite.md).
+- A-15: nilai literal Pre-setup (nama aset, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Tag `RF-00132` dan `QR-00232` pada TC-FA-TAG-1449 dipasang di aset AST-0044 (Plant B), sedangkan TC-FA-TAG-271 sampai 282 memasang kode yang sama di AST-0244 (Plant A); satu kode Tag tidak dapat Paired di dua aset sekaligus. Spec mengikuti TC dan fixture BE menyiapkan keduanya terpisah per spec.
   - Tidak ada Post Condition pada TC-FA-TAG-1449; asersi jarak dan kesejajaran bersifat visual (kemampuan ukur layout disediakan tim FE di tahap script).

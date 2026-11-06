@@ -31,6 +31,7 @@ coverage:
 - Tab To Be Returned memuat Tag RF-00071, RF-00088, dan NF-00092 (dipakai hanya sebagai latar; spec ini tidak mengasersi isinya).
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Kemampuan teknis: tidak ada selain fixture seeding di atas. Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup (Excavator 20 Ton, Laptop Pro 14, Forklift Manual) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -79,7 +80,7 @@ coverage:
 - Langkah 22 dan 28 adalah langkah penghubung (mengamati area atas; membuka menu dari sidebar), tanpa asersi (S-03). Halaman TAG sudah dibuka hook `beforeEach` suite untuk TC-FA-TAG-1 dan TC-FA-TAG-2, sehingga langkah "Buka menu Fixed Asset > TAG" pada TC-FA-TAG-1 dan TC-FA-TAG-2 dipenuhi hook; TC-FA-TAG-3 membuka menu lewat sidebar karena objek ujinya adalah tab awal saat masuk.
 - Langkah 12 sampai 13 memenuhi klausa "header ⋯ bertooltip `Column Visibility`" dari Expected TC-FA-TAG-1 butir b.i dengan hover; tooltip yang sama diuji sebagai TC sendiri di spec 002.
 - TC-FA-TAG-4 sampai 7 ada di spec 018 dan TC-FA-TAG-8 sampai 13 ada di spec 002.
+- A-15: nilai literal Pre-setup (Excavator 20 Ton, Laptop Pro 14, Forklift Manual) dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-3 Precondition b ("akun belum membuka halaman TAG pada sesi browser ini") tidak dapat dipenuhi bersama hook suite `beforeEach` yang sudah membuka halaman TAG; spec membuka menu dari sidebar dan tidak mengasersi "kunjungan pertama". Mohon QA mengonfirmasi apakah syarat itu relevan bagi Total Control (pembeda dari kunjungan dengan Guided Tooltip).
-  - Nama dan kode literal Pre-setup (Excavator 20 Ton, Laptop Pro 14, Forklift Manual) tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.
   - TC-FA-TAG-1 Expected b.i menyebut "Column Visibility (⋯)" dengan header bertooltip, sedangkan body kolom itu berupa kebab aksi grup; spec mengikuti TC apa adanya.

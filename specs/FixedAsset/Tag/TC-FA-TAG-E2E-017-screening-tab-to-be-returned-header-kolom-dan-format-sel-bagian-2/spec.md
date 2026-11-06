@@ -34,11 +34,12 @@ coverage:
 - Data tambahan (di-seed lewat fixture BE yang disediakan tim FE/BE; kode Tag tidak disebut di TC, lihat Temuan untuk QA):
   - TC-FA-TAG-81: Return Group `Disposal Center` berada di bawah group induk (hierarki `[Parent] > [Child]`).
   - TC-FA-TAG-82: pengguna `Dedi K.` tersimpan dengan nama lengkap di data user.
-  - TC-FA-TAG-83: satu Tag To Be Returned yang saat dilepas tidak punya pemegang terakhir aset maupun pelaku disposal (snapshot Current Holder kosong).
-  - TC-FA-TAG-84: satu Tag lama hasil Replace RFID/NFC pada Global berstatus Available atau Damaged/Missing, yang tidak berada di tabel To Be Returned.
-  - TC-FA-TAG-89: aset bertag QR (`QR-00232`) yang disposal-nya selesai, dan Tag RFID `RF-00071` dari disposal yang sama.
+  - TC-FA-TAG-83: satu Tag To Be Returned milik spec ini dengan kode `RF-{runId}-017` yang saat dilepas tidak punya pemegang terakhir aset maupun pelaku disposal (snapshot Current Holder kosong).
+  - TC-FA-TAG-84: satu Tag lama hasil Replace NFC milik spec ini dengan kode `NF-{runId}-017` pada Global berstatus Available atau Damaged/Missing, yang tidak berada di tabel To Be Returned.
+  - TC-FA-TAG-89: aset bertag QR (`QR-00433`) yang disposal-nya selesai, dan Tag RFID `RF-00071` dari disposal yang sama.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah (suite.md).
-- Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Tidak ada state global yang diubah. Data tambahan di atas (`RF-{runId}-017`, `NF-{runId}-017`, dan aset bertag QR dengan disposal selesai milik TC-FA-TAG-89) di-seed di hook `before` dan dihapus atau dipulihkan lewat fixture backend di hook `after` (idempotent, tetap jalan walau spec gagal di tengah), supaya tab To Be Returned kembali ke tiga Tag Pre-setup bagi spec lain yang mengasersi tiga baris atau badge `3`.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -55,7 +56,7 @@ coverage:
 
 ### TC-FA-TAG-83: Current Holder kosong tampil dengan tanda "—"
 
-6. Periksa kolom `Current Holder` pada baris Tag yang snapshot Current Holder-nya kosong
+6. Periksa kolom `Current Holder` pada baris Tag `RF-{runId}-017`
 7. Verifikasi sel `Current Holder` menampilkan `—`
 
 ### TC-FA-TAG-84: Kolom Reason hanya bernilai "Disposal"
@@ -63,9 +64,9 @@ coverage:
 8. Periksa seluruh nilai kolom `Reason`
 9. Verifikasi sedikitnya satu baris Tag tampil pada tabel
 10. Verifikasi semua baris menampilkan Reason `Disposal`
-11. Ketik Search kode Tag lama hasil Replace, tekan Enter
+11. Ketik Search `NF-{runId}-017`, tekan Enter
 12. Verifikasi empty state `No results found` tampil
-13. Verifikasi Tag lama hasil Replace tidak muncul di tabel To Be Returned
+13. Verifikasi Tag `NF-{runId}-017` tidak muncul di tabel To Be Returned
 14. Klik `(←)` pada kotak Search
 
 ### TC-FA-TAG-88: Breadcrumb mengikuti tab aktif saat berpindah antar tab
@@ -82,7 +83,7 @@ coverage:
 21. Klik Tab `To Be Returned`
 22. Verifikasi baris `RF-00071` ada pada tabel
 23. Verifikasi tabel hanya memuat Tag RFID atau NFC
-24. Ketik Search `QR-00232`, tekan Enter
+24. Ketik Search `QR-00433`, tekan Enter
 25. Verifikasi empty state `No results found` dan `Try adjusting your search or filter.` tampil
 26. Klik `(←)` pada kotak Search
 
@@ -100,10 +101,10 @@ coverage:
 - Langkah 15 membuka menu dari sidebar karena TC-FA-TAG-88 memulai dari tab Paired yang aktif.
 - Langkah 13, 23, dan 30 adalah asersi absence; anchor positif adalah Verifikasi `No results found` (langkah 12), Verifikasi baris `RF-00071` ada (langkah 22), dan Verifikasi popup memuat riwayat status (langkah 29) pada surface yang sama (bagian 8b butir 2). Langkah 10 dan 23 yang memakai kuantor universal didahului Verifikasi sedikitnya satu baris tampil (langkah 9 dan 22) (bagian 8b butir 2).
 - TC-FA-TAG-76 sampai 80 ada di spec 016. TC-FA-TAG-85 ada di spec 004, TC-FA-TAG-86 di spec 003, dan TC-FA-TAG-87 di spec resilience kelas b.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi kode, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-81 dan 82 tidak menyebut nama group induk `Disposal Center` maupun nama lengkap `Dedi K.`; spec mengasersi tooltip sesuai format TC dan menyerahkan nilai persis ke data seeding.
-  - TC-FA-TAG-83 dan 84 tidak menyebut kode Tag yang dipakai (Tag tanpa Current Holder, Tag lama hasil Replace); spec memakai referensi fixture BE yang disediakan tim FE/BE.
+  - TC-FA-TAG-83 dan 84 tidak menyebut kode Tag yang dipakai (Tag tanpa Current Holder, Tag lama hasil Replace); spec memakai Tag milik spec dengan kode `RF-{runId}-017` dan `NF-{runId}-017` yang dibangkitkan fixture BE (format kode mengikuti validasi registri; disediakan tim FE/BE).
   - TC-FA-TAG-84 Precondition c menyebut Tag lama berstatus Available atau Damaged/Missing sekaligus; spec memakai satu Tag lama saja dan tidak menguji kedua status.
   - TC-FA-TAG-84 Langkah 3 ("Cari Tag lama hasil Replace pada tabel") tidak menyebut cara mencari; spec memakai Search dengan kode Tag itu.
   - TC-FA-TAG-90 Expected b ("riwayat status Tag dari Global Settings") tidak menyebut isi riwayat; spec hanya mengasersi keberadaannya.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi kode, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

@@ -55,46 +55,49 @@ coverage:
 19. Verifikasi popover memuat seluruh grup baris Missing × Approver
 20. Verifikasi baris Disposal × Approver pada seluruh grup menampilkan badge tunggal `All Groups`
 21. Verifikasi kolom Group tidak pernah kosong pada setiap baris
-22. Tutup popover
+22. Verifikasi badge Group tiap baris literal sesuai node penugasan tersimpan: node descendant yang hanya tercakup tidak muncul sebagai badge
+23. Tutup popover
 
 ### TC-FA-SU-230: Empty state Sub-tab Transaction Role tanpa penugasan
 
-23. Buka Detail Hana Kusuma > Tab Role > Sub-tab Transaction Role
-24. Verifikasi ilustrasi dengan Title `No transaction role yet` dan Description `Transaction roles assigned to this user will appear here.`
-25. Verifikasi tombol `[+ Assign]` tetap tampil
+24. Buka Detail Hana Kusuma > Tab Role > Sub-tab Transaction Role
+25. Verifikasi ilustrasi dengan Title `No transaction role yet` dan Description `Transaction roles assigned to this user will appear here.`
+26. Verifikasi tombol `[+ Assign]` tetap tampil
 
 ### TC-FA-SU-231: Screening modal Assign Transaction Role: header, field, placeholder, dan footer
 
-26. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[+ Assign]`
-27. Verifikasi header `Assign Transaction Role` dengan close `[✕]`
-28. Verifikasi field `Group *` berupa TreeSelect multi-select dengan tombol `Select Group`
-29. Verifikasi field `Transaction *` berupa Select dengan placeholder `Select transaction type...`
-30. Verifikasi field `Role *` berupa Select dengan placeholder `Select role...`
-31. Verifikasi checkbox `Stay on this form after submitting` rata kanan dan tidak tercentang
-32. Verifikasi footer `[Clear Field]` (Text, Primary) dan `[Submit]` (Success)
-33. Verifikasi tidak ada tombol `[Cancel]`
-34. Verifikasi field Transaction dan Role Disabled sejak awal
+27. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[+ Assign]`
+28. Verifikasi header `Assign Transaction Role` dengan close `[✕]`
+29. Verifikasi field `Group *` berupa TreeSelect multi-select dengan tombol `Select Group`
+30. Verifikasi field `Transaction *` berupa Select dengan placeholder `Select transaction type...`
+31. Verifikasi field `Role *` berupa Select dengan placeholder `Select role...`
+32. Verifikasi checkbox `Stay on this form after submitting` rata kanan dan tidak tercentang
+33. Verifikasi footer `[Clear Field]` (Text, Primary) dan `[Submit]` (Success)
+34. Verifikasi tidak ada tombol `[Cancel]`
+35. Verifikasi field Transaction dan Role Disabled sejak awal
+36. Verifikasi preview scope belum tampil sebelum ada Group dipilih
 
 ### TC-FA-SU-232: Transaction terkunci sampai Group dipilih dan Role terkunci sampai Transaction dipilih
 
-35. Verifikasi sebelum ada Group terpilih field Transaction Disabled
-36. Verifikasi sebelum Transaction dipilih field Role Disabled
-37. Klik tombol Group, centang Finance & Accounting, klik `[Select]`
-38. Verifikasi field Transaction Enabled
-39. Pilih Transaction Disposal
-40. Verifikasi field Role Enabled
-41. Klik `[✕]` pada modal
-42. Verifikasi dialog `Unsaved Changes`
-43. Klik `[Leave]`
+37. Verifikasi sebelum ada Group terpilih field Transaction Disabled
+38. Verifikasi sebelum Transaction dipilih field Role Disabled
+39. Klik tombol Group, centang Finance & Accounting, klik `[Select]`
+40. Verifikasi field Transaction Enabled
+41. Pilih Transaction Disposal
+42. Verifikasi field Role Enabled
+43. Klik `[✕]` pada modal
+44. Verifikasi dialog `Unsaved Changes`
+45. Klik `[Leave]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan.
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 13, 22 dan 41 sampai 43. Penutupan modal dirty mengikuti S-08.
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 13, 23 dan 43 sampai 45. Penutupan modal dirty mengikuti S-08.
 - Modal Assign Transaction Role dibuka sekali pada TC-FA-SU-231 dan dipakai TC-FA-SU-232 tanpa dibuka ulang (halaman yang sama dipakai berulang, bagian 3 prinsip 13); keadaan awal modal tidak berubah antar kedua TC.
-- Jumlah langkah 43, di atas smell 35 langkah; semua blok satu kelas harness (screening baca tanpa menyimpan data) dan berdiri sendiri, kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Jumlah langkah 45, di atas smell 35 langkah; semua blok satu kelas harness (screening baca tanpa menyimpan data) dan berdiri sendiri, kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:
   - TC-FA-SU-228 butir d ("terpaginasi 10 baris per halaman") tidak dapat diamati pada Mira Anggraini yang hanya memiliki 2 baris Transaction Role; spec mengasersi ukuran halaman default 10 baris per halaman.
   - TC-FA-SU-228 langkah 3 ("buka menu ⋯ baris itu") tidak disertai Expected untuk menu selain isi `Remove`; spec mengasersi sesuai teks Expected.
   - TC-FA-SU-229 butir b menyebut popover `+1 more` "membuka popover seluruh grup" tanpa menyebut isinya; spec mengasersi bahwa popover memuat seluruh grup baris itu (Branch Surabaya, General Affairs, Logistics Warehouse).
+  - TC-FA-SU-229 butir d dan TC-FA-SU-231 butir e diperbarui mengikuti baris TC yang berubah (FI-31): badge Group literal tanpa proyeksi descendant (rincian di TC-FA-SU-1112) dan preview scope belum tampil sebelum Group dipilih. TC tidak menetapkan selektor atau format preview scope (PRD tidak menetapkan copy); spec hanya mengasersi bahwa preview scope belum tampil (selektor perlu dikonfirmasi tim FE). Data Yuda Pratama tidak memuat contoh descendant yang tercakup secara eksplisit; asersi badge literal bergantung pada pohon grup Pre-setup #21.

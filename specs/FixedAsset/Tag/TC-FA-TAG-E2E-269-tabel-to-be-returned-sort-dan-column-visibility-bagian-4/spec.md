@@ -32,6 +32,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned (kode, Last Asset, Reason, Return Group, Current Holder, Since) dan Return Group; tidak ada endpoint yang dikarang di spec ini.
 - Pemulihan preferensi kolom: hook `after` spec ini menghapus preferensi kolom di browser (kemampuan disediakan tim FE; bukan lewat `[Reset to Default]`), sesuai daftar di `suite.md`. Spec ini menyimpan konfigurasi kolom pada TC-FA-TAG-1015 (langkah 12).
 - Pemulihan di hook `after`: dataset To Be Returned dikembalikan ke keadaan Pre-setup empat Tag lewat fixture backend bila seeding mengubahnya.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 12).
 
 ## Test Steps
 
@@ -62,8 +63,8 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-TAG-1005 s.d. 1009 ada di spec 249, TC-FA-TAG-1010 s.d. 1013 ada di spec 250, dan TC-FA-TAG-1016 dan 1017 ada di spec 251.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 6 (memulihkan kolom yang disembunyikan); 7 (menutup Column Visibility); 15 (memulihkan kolom Current Holder).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 12).
 - Temuan untuk QA:
   - TC-FA-TAG-1015 Expected butir c ("kolom tetap tersembunyi") tidak menyebut cara menguji persistensi selain menutup modal; spec mengasersi keadaan sesudah Save tanpa muat ulang.
   - TC-FA-TAG-1014 tidak menyebut cara mengembalikan kolom; spec menambah langkah penghubung.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

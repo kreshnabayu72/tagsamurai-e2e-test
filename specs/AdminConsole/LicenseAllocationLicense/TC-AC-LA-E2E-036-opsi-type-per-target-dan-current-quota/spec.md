@@ -60,8 +60,8 @@ coverage:
 14. Pulihkan alokasi Active Asset Control App Pre-setup #53 pada CV Mitra Sejati lewat fixture backend hingga tersimpan
 15. Pilih Client `PT Sejahtera`, lalu pilih Client `CV Mitra Sejati` dan Target `SUBS-20260105-K2L3M`
 16. Buka dropdown Type
-17. Verifikasi opsi `Asset Control App` tidak tampil
-18. Verifikasi opsi Type lain `Concurrent User` tetap tampil
+17. Verifikasi opsi Type lain `Concurrent User` tetap tampil
+18. Verifikasi opsi `Asset Control App` tidak tampil
 
 ### TC-AC-LA-133: Asset Control App dapat dialokasikan ke term successor
 
@@ -83,7 +83,7 @@ coverage:
 28. Verifikasi Current Quota (Stations) `2` untuk Client
 29. Ganti Type ke `Storage`
 30. Verifikasi Current Quota (GB) `50`
-31. Klik `[✕]` pada header
+31. Klik `[×]` pada header
 32. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 33. Klik `[Leave]`
 
@@ -91,10 +91,10 @@ coverage:
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 1 kali, kejadian menutup 1 (langkah 31 sampai 33). Semua blok satu topik (opsi Type dan Current Quota per Target) dan berdiri sendiri; mengganti Client atau Target mereset Type (TC-AC-LA-136 dan 137).
 - Langkah penghubung (S-03): langkah 3, 7, 11, 16, dan 20 (membuka dropdown Type agar opsi dapat diamati), langkah 14 (memulihkan Pre-setup #53 lewat fixture backend), langkah 15 (memuat ulang opsi dengan mengganti Client), dan langkah 31 sampai 33 (menutup form dirty, S-08).
-- Asersi absence (langkah 5, 9, 13, 17) didahului Verifikasi opsi lain pada dropdown yang sama (langkah 4, 8, 12, 18; bagian 8b butir 2).
+- Asersi absence (langkah 5, 9, 13, 18) didahului Verifikasi opsi lain pada dropdown yang sama (langkah 4, 8, 12, 17; bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-AC-LA-131 ("CV Mitra Sejati tanpa Asset Control App") bertentangan dengan Pre-setup #53 (alokasi Active Asset Control App pada `SUBS-20260105-K2L3M` CV Mitra Sejati) yang dipakai TC-AC-LA-132. Spec membutuhkan pengaturan state oleh fixture backend; pengaturan itu tidak didefinisikan di TC dan disediakan tim FE/BE (S-13).
   - TC-AC-LA-135 Expected a dan b (`2` dan `50`) bertentangan dengan TC-AC-LA-102 dan TC-AC-LA-103 yang mengharapkan `—` untuk Client dan Type yang sama; lihat Temuan spec 027.
-  - TC-AC-LA-132 Expected b ("top-up berulang diizinkan") tidak punya langkah observasi di Langkah Uji; hanya opsi `Concurrent User` yang tetap tampil yang diasersi (langkah 18).
+  - TC-AC-LA-132 Expected b ("top-up berulang diizinkan") tidak punya langkah observasi di Langkah Uji; hanya opsi `Concurrent User` yang tetap tampil yang diasersi (langkah 17).
   - TC-AC-LA-133 Expected b ("Target term Pending tampil sebagai Target App") tidak jelas maksudnya; spec mengasersi field Target menampilkan term Pending terpilih (langkah 22).
   - TC-AC-LA-131 menyebut "Addon FAMS tidak muncul" tanpa daftar Addon; spec mengasersi tidak muncul untuk `Audit`, `Maintenance`, `Tracking`, `Maps`, dan `IT Inventory` (daftar dari TC-AC-LA-129).

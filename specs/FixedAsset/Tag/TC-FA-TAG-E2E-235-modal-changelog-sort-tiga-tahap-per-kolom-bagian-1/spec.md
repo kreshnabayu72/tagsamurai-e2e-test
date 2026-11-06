@@ -36,6 +36,8 @@ coverage:
 
   Kunci fixture: `changelogE1E6`.
 - State yang diubah: hanya state sort modal; tiap kolom dikembalikan ke netral oleh klik ketiga. Tidak ada perubahan data bisnis.
+- Nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
 
 ## Test Steps
 
@@ -85,6 +87,7 @@ coverage:
 
 - Langkah penghubung (S-03): langkah 27 (menutup modal). Klik ketiga tiap kolom (langkah 7, 13, 19, 25) mengembalikan sort ke netral, sehingga tiap blok kolom mulai dari urutan bawaan (S-09).
 - Pembagian TC lintas spec: sort kolom Old Value, New Value, dan Modified By (TC-FA-TAG-946 sampai TC-FA-TAG-948) ada di spec 236.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - Baris dengan nilai kolom sama (misalnya E1 dan E2 pada Date 26/10/26 10:02; E1 sampai E5 pada Action `Replace`) tidak punya urutan pasti menurut TC selain "urutan sama dengan bawaan"; spec mengasersi kelompok nilai, bukan urutan antar baris bernilai sama, kecuali TC menyebut urutannya.
   - TC-FA-TAG-944 Expected a menyebut `Excavator 20 Ton - 20` untuk E3 dan E6 sekaligus; urutan E3 dan E6 dalam kelompok itu tidak ditentukan.

@@ -28,6 +28,7 @@ coverage:
 - Suite serial: `parallel: false` (lihat `suite.md`).
 - Sesi API aktor: pelaku kedua memakai login API (password) yang tidak dihitung sebagai sesi web (lihat `suite.md`), tanpa asersi di sesinya; akun Total Control kedua disediakan tim FE (akun pelaku tidak tertulis di Pre-setup TC).
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk aset, Tag per status registri, task Existence Audit, serta laporan Tag (laporan terbuka Damaged, Missing, atau Unreadable dan pembatalan laporan); tidak ada endpoint yang dikarang di spec ini.
+- Kemampuan teknis (disediakan tim FE/BE): pembacaan status laporan Tag (terbuka atau ditutup) dari backend lewat fixture backend; dipakai hanya untuk Verifikasi "baca lewat fixture backend" pada butir Expected semua-atau-tidak, tanpa endpoint yang dikarang.
 - Data Pre-setup (kunci fixture `Fixture.fixedAssetTag.<kunci>` belum ada; ditandai untuk dibuat tim FE):
 
 | Data | Nilai | Kunci |
@@ -37,6 +38,7 @@ coverage:
 | Pelaku kedua | Pengguna B: akun Total Control kedua, sesi API, disediakan tim FE | `pelakuKeduaTc` |
 
 - State yang diubah dan pemulihannya: laporan yang ditutup pelaku kedua dan laporan yang diatur ulang dipulihkan lewat fixture backend di hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Decline Report` per Tag (langkah 5, 18). Aksi tulis pada langkah 6, 19 ditolak dan tidak menambah entri.
 
 ## Test Steps
 
@@ -78,8 +80,8 @@ coverage:
 - Pembagian TC lintas spec: Decline Report satu pengguna ada di spec 151 sampai 153. Laporan ulang Tag Declined (TC-FA-TAG-644) ada di spec 169.
 - Pengguna B memakai sesi API (keputusan pelaku kedua yang hanya memicu perubahan state): bukan konteks kedua kelas c dan tidak memakai `P-2`; langkah pemicunya ditulis "... hingga ... tersimpan" (langkah 5 dan 18). Hasil di sesi pengguna B tidak diasersi.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9 sampai 11 dan 23 sampai 25 (menutup form dirty) serta 12 (mengatur ulang dua laporan terbuka pada AST-0044 lewat fixture backend).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Decline Report` per Tag (langkah 5, 18). Aksi tulis pada langkah 6, 19 ditolak dan tidak menambah entri.
 - Temuan untuk QA:
   - TC-FA-TAG-1457 dan TC-FA-TAG-1470 menulis dua sesi browser terpisah dengan pengguna B yang melakukan Decline Report "sampai sukses"; TC tidak menyebut akun pengguna B selain Role Total Control, sehingga spec menulisnya sebagai akun kedua yang disediakan tim FE lewat sesi API.
   - Post Condition TC-FA-TAG-1457 dan TC-FA-TAG-1470 (laporan hanya ditutup sekali dan Changelog memuat satu entri Decline Report) tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

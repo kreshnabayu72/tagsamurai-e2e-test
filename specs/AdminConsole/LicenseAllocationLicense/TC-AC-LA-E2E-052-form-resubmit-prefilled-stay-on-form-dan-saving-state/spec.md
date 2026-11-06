@@ -23,7 +23,7 @@ coverage:
 - `Fixture.license-allocation-license` belum ada (disediakan tim FE): memuat identitas akun, nama Client, ID Subscription, dan harga.
 - Data Pre-setup (hanya dibaca): PT Sejahtera (#19, `SUBS-20260101-A1B2C`), kantong wallet Distributor PT Maju Bersama saldo $10,000.00 (#33), Product Price (#34: Concurrent User $365 per unit per tahun). Toggle Require Approval for Allocation OFF (#39), diatur fixture backend (disediakan tim FE/BE) di hook `before` dan dipulihkan di hook `after`.
 - Data Dinamis: alokasi `Canceled` manual Concurrent User +5 ke PT Sejahtera milik `Dewi A`, di-seed lewat API di hook `before` (milik spec ini, bukan baris Pre-setup #48 bersama; Allocation ID dibaca dari hasil seeding); serta tiga alokasi Completed Active Concurrent User +2 ke PT Sejahtera dari TC-AC-LA-185, 186, dan 187. Alokasi tidak dapat dihapus (tanpa Delete); saldo kantong dan ledger kuota dipulihkan oleh baseline automation dan fixture backend di hook `after`.
-- Baseline: daftar Allocation ID baris di halaman pertama tab Current dicatat sebelum tiap `[Submit]` (langkah 11, 22, dan 28).
+- Baseline: daftar Allocation ID baris di halaman pertama tab Current dicatat sebelum tiap `[Submit]` (langkah 11, 26, dan 33).
 - Kemampuan teknis: `Spectra.intercept()` untuk menunda respons submit 5 detik lalu melepasnya; menghitung jumlah request submit yang terkirim.
 - Suite berjalan serial (`parallel: false`).
 
@@ -50,40 +50,47 @@ coverage:
 14. Centang `Stay on this form after submitting`
 15. Klik `[Submit]`
 16. Verifikasi toast sukses "Success, license has been allocated."
-17. Verifikasi form tetap terbuka dengan Client `PT Sejahtera` dan Target `SUBS-20260101-A1B2C` dipertahankan
-18. Verifikasi Type, Current Quota, dan Additional Quantity di-reset dan form kembali pristine
-19. Verifikasi daftar List di belakang modal diperbarui dengan baris baru (Allocation ID tidak ada pada baseline langkah 11)
-20. Tekan `Esc`
-21. Verifikasi form tertutup langsung tanpa dialog D-02 karena sudah pristine
+17. Verifikasi form tetap terbuka
+18. Verifikasi Client `PT Sejahtera` dan Target `SUBS-20260101-A1B2C` dipertahankan
+19. Verifikasi Type di-reset
+20. Verifikasi Current Quota di-reset
+21. Verifikasi Additional Quantity di-reset
+22. Verifikasi form kembali pristine
+23. Verifikasi daftar List di belakang modal diperbarui dengan baris baru (Allocation ID tidak ada pada baseline langkah 11)
+24. Tekan `Esc`
+25. Verifikasi form tertutup langsung tanpa dialog D-02 karena sudah pristine
 
 ### TC-AC-LA-186: Tanpa Stay, setelah Submit sukses modal tertutup dan List diperbarui
 
-22. Catat baseline Allocation ID baris di halaman pertama tab Current
-23. Klik `[+ Allocation]`
-24. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, isi Additional Quantity `2`, dan biarkan Stay tidak dicentang
-25. Klik `[Submit]`
-26. Verifikasi toast sukses "Success, license has been allocated."
-27. Verifikasi modal tertutup dan baris baru tampil di tab Current (Allocation ID tidak ada pada baseline langkah 22)
+26. Catat baseline Allocation ID baris di halaman pertama tab Current
+27. Klik `[+ Allocation]`
+28. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, isi Additional Quantity `2`, dan biarkan Stay tidak dicentang
+29. Klik `[Submit]`
+30. Verifikasi toast sukses "Success, license has been allocated."
+31. Verifikasi modal tertutup
+32. Verifikasi baris baru tampil di tab Current (Allocation ID tidak ada pada baseline langkah 26)
 
 ### TC-AC-LA-187: Tombol Submit disabled dan loading selama request berjalan
 
-28. Catat baseline Allocation ID baris di halaman pertama tab Current
-29. Klik `[+ Allocation]`
-30. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, isi Additional Quantity `2`
-31. Atur intercept: tunda 5 detik respons submit
-32. Klik `[Submit]`
-33. Verifikasi `[Submit]` menampilkan loading dan disabled, serta `[Clear Field]` dan `[✕]` disabled
-34. Klik `[Submit]`, `[Clear Field]`, dan `[✕]` selama menunggu
-35. Lepas tahanan respons submit dan lepas intercept
-36. Verifikasi hanya satu request submit terkirim
-37. Verifikasi hanya satu record tercipta (satu baris baru, Allocation ID tidak ada pada baseline langkah 28)
+33. Catat baseline Allocation ID baris di halaman pertama tab Current
+34. Klik `[+ Allocation]`
+35. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, isi Additional Quantity `2`
+36. Atur intercept: tunda 5 detik respons submit
+37. Klik `[Submit]`
+38. Verifikasi `[Submit]` menampilkan loading
+39. Verifikasi `[Submit]` disabled
+40. Verifikasi `[Clear Field]` dan `[×]` disabled
+41. Klik `[Submit]`, `[Clear Field]`, dan `[×]` selama menunggu
+42. Lepas tahanan respons submit dan lepas intercept
+43. Verifikasi hanya satu request submit terkirim
+44. Verifikasi hanya satu record tercipta (satu baris baru, Allocation ID tidak ada pada baseline langkah 33)
 
 ## Notes
 
-- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 5 kali, kejadian menutup 5 (langkah 4, 7 sampai 9, 20, 25, dan 32 sampai 35).
-- Spec 37 langkah, di atas smell 35 langkah, dengan empat blok satu topik (perilaku form Allocate setelah dan selama Submit, serta Resubmit pre-filled) yang berdiri sendiri: tiap blok memakai state sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna, sehingga tidak dipecah.
+- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 5 kali, kejadian menutup 5 (langkah 4, 7 sampai 9, 24, 29, dan 37 sampai 42).
+- Spec 44 langkah, di atas smell 35 langkah, dengan empat blok satu topik (perilaku form Allocate setelah dan selama Submit, serta Resubmit pre-filled) yang berdiri sendiri: tiap blok memakai state sendiri dan kegagalan satu blok tidak membuat blok lain kehilangan makna, sehingga tidak dipecah.
 - Penyimpangan data (S-06): TC-AC-LA-182 memakai baris Pre-setup #48 bersama; spec memakai seed Canceled milik spec dengan keadaan yang sama agar Pre-setup bersama tidak berubah.
-- Langkah penghubung (S-03): langkah 1 sampai 2 (pindah ke tab History dan Search untuk menemukan baris target, R-16), langkah 10 (mengosongkan Search dan kembali ke tab Current), langkah 11, 22, dan 28 (baseline), langkah 31 dan 35 (menahan dan melepas respons).
+- Langkah penghubung (S-03): langkah 1 sampai 2 (pindah ke tab History dan Search untuk menemukan baris target, R-16), langkah 10 (mengosongkan Search dan kembali ke tab Current), langkah 11, 26, dan 33 (baseline), langkah 36 dan 42 (menahan dan melepas respons).
 - Temuan untuk QA:
   - TC-AC-LA-182 Langkah 2 ("Tekan `Esc` tanpa mengubah apa pun") dan Langkah 3 ("ubah Additional Quantity, tekan `Esc`") tidak menyebut tombol penutup dialog D-02; spec menutup form lewat `[Leave]` sesuai S-08 setelah memverifikasi dialog.
   - TC-AC-LA-185 Expected d ("Daftar List di belakang modal diperbarui") hanya dapat diamati bila daftar terlihat di balik modal; spec mengasersi baris baru pada daftar.

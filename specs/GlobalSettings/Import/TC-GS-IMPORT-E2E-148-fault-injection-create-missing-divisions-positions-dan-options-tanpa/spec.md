@@ -41,7 +41,7 @@ coverage:
 
 1. Reset Client C ke tanpa draft pada Sub-Tab User Login (aksi fixture)
 2. Muat ulang halaman Import > User Login
-3. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-logistik-4.csv`
+3. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 4. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 5. Pasang intercept yang menahan permintaan Create Missing tanpa jawaban sampai batas waktu
 6. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
@@ -76,7 +76,7 @@ coverage:
 
 28. Reset Client C ke tanpa draft pada Sub-Tab User Login (aksi fixture)
 29. Buka Global Settings > Import, pilih Sub-Tab User Login
-30. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-store-supervisor-1.csv`
+30. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-store-supervisor-1.csv`
 31. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 32. Pasang intercept yang menahan permintaan Create Missing tanpa jawaban sampai batas waktu
 33. Klik `⋯` pada baris #1
@@ -113,7 +113,7 @@ coverage:
 
 57. Reset Client C ke tanpa draft pada Sub-Tab User Login (aksi fixture)
 58. Buka Global Settings > Import, pilih Sub-Tab User Login
-59. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-shift-lembur.csv`
+59. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-shift-lembur.csv`
 60. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 61. Pasang intercept yang menahan permintaan Create Missing tanpa jawaban sampai batas waktu
 62. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout

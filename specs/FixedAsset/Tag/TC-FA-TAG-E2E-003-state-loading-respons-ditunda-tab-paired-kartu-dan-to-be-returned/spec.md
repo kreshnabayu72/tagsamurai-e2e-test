@@ -19,10 +19,11 @@ coverage:
 - Mode: FE+BE (backend nyata; `Spectra.intercept` parsial hanya menunda respons, tidak mengubah isinya).
 - Akun: Total Control, `totalControl_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite (lihat suite.md); spec ini tidak mengubahnya.
-- Data Pre-setup (hanya dibaca, tidak diubah): dataset tab Paired (Excavator 20 Ton / Plant A, Excavator 20 Ton / Plant B, Laptop Pro 14 / HQ, Forklift Manual / Plant A) dan tab To Be Returned dengan 3 Tag: [RFID] `RF-00071` (Last Asset `Excavator 20 Ton - 2`, Reason `Disposal`, Return Group `Disposal Center`, Current Holder `Dedi K.`); [RFID] `RF-00088` (`Excavator 20 Ton - 5`, `Disposal Center`, `Dedi K.`); [NFC] `NF-00092` (`Laptop Pro 14 - 8`, `HQ Warehouse`, `Rina T.`).
+- Data Pre-setup (hanya dibaca, tidak diubah): dataset tab Paired (Excavator 20 Ton / Plant A, Excavator 20 Ton / Plant B, Laptop Pro 14 / HQ, Forklift Manual / Plant A) dan tab To Be Returned dengan sedikitnya 3 Tag (himpunan minimum; jumlah total tidak diasersi): [RFID] `RF-00071` (Last Asset `Excavator 20 Ton - 2`, Reason `Disposal`, Return Group `Disposal Center`, Current Holder `Dedi K.`); [RFID] `RF-00088` (`Excavator 20 Ton - 5`, `Disposal Center`, `Dedi K.`); [NFC] `NF-00092` (`Laptop Pro 14 - 8`, `HQ Warehouse`, `Rina T.`).
 - Kemampuan teknis: `Spectra.intercept` untuk menunda respons (tahan lalu lepas) request data tab Paired, request data kartu, dan request daftar To Be Returned. Endpoint tidak didefinisikan di TC maupun PRD yang dibaca; dipilih tahap script (S-13). Tahanan respons dilepas pada langkah 5, 12, dan 17 dan dipastikan terlepas di hook `after` bila spec gagal di tengah.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada kode dan jumlah (suite.md).
 - Tidak ada state global yang diubah selain intercept di atas.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -51,12 +52,14 @@ coverage:
 15. Klik Tab `To Be Returned`
 16. Verifikasi tabel menampilkan loading component selama respons tertunda
 17. Lepas tahanan respons daftar To Be Returned
-18. Verifikasi 3 baris Tag tampil
+18. Verifikasi baris Tag tampil, sedikitnya `RF-00071`, `RF-00088`, dan `NF-00092`
 
 ## Notes
 
 - Langkah 1, 8, dan 14 adalah langkah pemicu (menahan respons) dan langkah 5, 12, 17 adalah pelepasnya; penahanan respons hanya untuk mengamati state UI sehingga bukan kelas b (bagian 3 prinsip 13b). Langkah 10 adalah langkah penghubung tanpa asersi (S-03).
 - Langkah 15 membuka tab To Be Returned dari tab Paired karena request daftar To Be Returned dipicu saat tab dibuka; "Buka Fixed Asset > TAG > To Be Returned" pada TC dipenuhi lewat langkah 2 (halaman) dan 15 (tab).
+- Langkah 18 mengasersi sedikitnya tiga baris Pre-setup (relatif, bukan literal `3`; keputusan user 2026-11-04, bagian 8b butir 10).
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-14, 29, dan 86 menulis "respons ditunda" sebagai kondisi state loading biasa, bukan kegagalan; spec memperlakukannya sebagai fungsional (bagian 3 prinsip 13b) dan bukan kelas b.
   - TC-FA-TAG-14 dan TC-FA-TAG-29 tidak menyebut apakah kartu dan tabel dimuat dari satu request atau dua; spec menahan "respons data tab Paired" untuk TC-FA-TAG-14 dan "respons data kartu" untuk TC-FA-TAG-29, dan pemetaan ke request nyata diserahkan ke tahap script.

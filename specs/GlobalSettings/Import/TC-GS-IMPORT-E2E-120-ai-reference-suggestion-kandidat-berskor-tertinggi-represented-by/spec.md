@@ -34,7 +34,7 @@ coverage:
 ### TC-GS-IMPORT-318: Represented By mirip akun aktif menampilkan saran tanpa Create Missing, Accept memulihkan baris
 
 1. Pilih sub-tab User Non Login
-2. Klik [Upload File] di toolbar dan pilih berkas `user-non-login-rep-typo.csv`
+2. Klik [Upload File] di Dropzone dan pilih berkas `user-non-login-rep-typo.csv`
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Verifikasi baris #1 berstatus `error`
 5. Verifikasi sel Represented By baris #1 menampilkan badge "Did you mean 'budi.manager.c@example.com'?" dengan `[Accept]` dan `[Dismiss]`
@@ -52,7 +52,7 @@ coverage:
 14. Buka Global Settings > User > Division dan catat jumlah item pada pagination
 15. Verifikasi tabel Division menampilkan 5 baris
 16. Buka Import dan pilih sub-tab User Login
-17. Klik [Upload File] di toolbar dan pilih berkas `user-login-div-gudng.csv`
+17. Klik [Upload File] di Dropzone dan pilih berkas `user-login-div-gudng.csv`
 18. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 19. Klik `[Accept]` pada badge `Did you mean 'Gudang'?` di sel Division baris #1
 20. Tunggu aksi selesai (permintaan mendapat respons)
@@ -64,7 +64,7 @@ coverage:
 ### TC-GS-IMPORT-716: Position di-rename setelah staging, baris menjadi error dan menampilkan saran Reference
 
 25. Buka Import > User Login
-26. Klik [Upload File] di toolbar dan pilih berkas `user-login-technician.csv`
+26. Klik [Upload File] di Dropzone dan pilih berkas `user-login-technician.csv`
 27. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 28. Verifikasi baris #1 berstatus `pending`
 29. Verifikasi Staging Metric Cards: Total Rows 1, Ready to Import 1, Errors 0
@@ -79,7 +79,7 @@ coverage:
 ### TC-GS-IMPORT-826: Badge memakai kandidat berskor tertinggi yang memenuhi ambang, Accept menerapkan peringkat 1
 
 37. Atur mock layanan AI ke mode "kandidat dengan skor" (D-71)
-38. Klik [Upload File] di toolbar
+38. Klik [Upload File] di Dropzone
 39. Pilih berkas `user-login-div-gdng.csv` di file picker
 40. Biarkan seluruh dropdown File Column pada nilai auto-match
 41. Klik [Confirm Mapping]
@@ -94,7 +94,7 @@ coverage:
 
 ### TC-GS-IMPORT-827: Lima kandidat memenuhi ambang menghasilkan satu badge kandidat berskor tertinggi, Accept menerapkannya
 
-50. Klik [Upload File] di toolbar
+50. Klik [Upload File] di Dropzone
 51. Pilih berkas `user-login-div-gdn5.csv` di file picker
 52. Biarkan seluruh dropdown File Column pada nilai auto-match
 53. Klik [Confirm Mapping]

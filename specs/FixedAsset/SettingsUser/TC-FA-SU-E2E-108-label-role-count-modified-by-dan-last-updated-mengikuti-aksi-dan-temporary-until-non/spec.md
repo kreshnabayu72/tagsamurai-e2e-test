@@ -19,7 +19,7 @@ coverage:
 - Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor untuk pelaku kedua, dan pemulihan Pre-setup bersama lewat seed API.
 - Data Pre-setup: Client `FaUserMain` (#20, plan Enterprise, 25 pengguna). Nama pengguna dan nilai Pre-setup dirujuk lewat `Fixture.fa-settings-user.<kunci>` (berkas `fixtures/fa-settings-user.json` belum ada dan disediakan tim FE).
-- Data Pre-setup tambahan: pohon grup (#21), penugasan peran (#23), dan Transaction Role (#39). Pengguna yang dibaca tanpa diubah: Wawan Setiawan, Yuda Pratama, dan Oscar Pranata (Data TC-FA-SU-369).
+- Data Pre-setup tambahan: pohon grup (#21), penugasan peran (#23), Transaction Role (#39), dan atribut User List (#43). Pengguna yang dibaca tanpa diubah: Wawan Setiawan, Yuda Pratama, dan Oscar Pranata (Data TC-FA-SU-369; Oscar Pranata memegang baris pola Group Manager pada IT Infrastructure dan Accounts Payable).
 - Pengguna milik spec (seed API di hook `before`, dihapus di hook `after`; S-06): `Gita Permata {runId}-108`, email `gita.permata+{runId}-108@qwertysystem.net`, Active, tanpa Group Role. Grup yang ditambahkan: `Fixture.fa-settings-user.grupTambahan` (node pohon Pre-setup #21).
 
 ## Test Steps
@@ -35,7 +35,7 @@ coverage:
 7. Verifikasi label jumlah Role baris Yuda Pratama dihitung per assignment (Jenis Transaksi × Group × Role)
 8. Verifikasi Global Role OFF milik Yuda Pratama tidak dihitung pada label jumlah Role
 9. Ganti isi kotak search dengan `Oscar`, tekan Enter
-10. Verifikasi status Group Manager milik Oscar Pranata tidak dihitung pada label jumlah Role
+10. Verifikasi kolom Role baris Oscar Pranata menampilkan `48 roles`: status Group Manager tidak dihitung sebagai peran, sedangkan baris pola Group Manager (Group Role dan Transaction Role) dihitung per assignment seperti baris biasa
 11. Klik `(←)` pada kotak Search
 
 ### TC-FA-SU-370: Role Count bertambah dan berkurang mengikuti assignment
@@ -65,4 +65,4 @@ coverage:
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 11, 12, 18, 19, 28, 29 (Search untuk menemukan baris target, R-16, dan menu sidebar yang mereset Search).
 - TC-FA-SU-371 dan TC-FA-SU-372, ada di spec 129.
-- Temuan untuk QA (S-15): (1) TC-FA-SU-369 tidak menyebut jumlah label Role Yuda Pratama dan tidak menyebut pengguna Group Manager; spec mengasersi aturan hitung (per assignment, Global Role OFF dan Group Manager tidak dihitung) tanpa angka, dan memakai Oscar Pranata (disebut di kolom Data TC) sebagai pengguna Group Manager. (2) Langkah 3 TC-FA-SU-369 tidak punya Expected eksplisit untuk isi popup; rincian grup per Group Role pada Expected a diasersi di popup Role Count. (3) TC-FA-SU-370 tidak menyebut Group Role dan grup yang ditambahkan; spec memakai `Manage files` dan grup fixture. Post Condition TC-FA-SU-370 (entri `Assign` Object `Group Role` pada Tab Changelog target, Tab System Log aktor, dan Activity Log) tidak punya langkah observasi sehingga tidak diasersi.
+- Temuan untuk QA (S-15): (1) TC-FA-SU-369 tidak menyebut jumlah label Role Yuda Pratama; spec mengasersi aturan hitung (per assignment, Global Role OFF tidak dihitung) tanpa angka. Angka `48 roles` Oscar Pranata (Expected c) diturunkan dari baris pola Group Manager (6 Group Role katalog × 2 grup + 2 Transaction Role × 9 Jenis Transaksi × 2 grup, lihat TC-FA-SU-1096), bukan dari data seeding spec ini, dan perilaku hitung belum diputuskan PM (Open Item 3 PRD settings-user); spec mengasersi sesuai TC. Klausa "status Group Manager tidak dihitung sebagai peran" tidak teramati terpisah dari angka `48 roles` sehingga ditulis satu `Verifikasi` (S-03). (2) Langkah 3 TC-FA-SU-369 tidak punya Expected eksplisit untuk isi popup; rincian grup per Group Role pada Expected a diasersi di popup Role Count. (3) TC-FA-SU-370 tidak menyebut Group Role dan grup yang ditambahkan; spec memakai `Manage files` dan grup fixture. Post Condition TC-FA-SU-370 (entri `Assign` Object `Group Role` pada Tab Changelog target, Tab System Log aktor, dan Activity Log) tidak punya langkah observasi sehingga tidak diasersi.

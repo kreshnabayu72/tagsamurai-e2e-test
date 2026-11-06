@@ -22,6 +22,7 @@ coverage:
 - Akun aktor: Total Control (`totalControl_automated_{namaCompany}@qwertysystem.net`), password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Flag Guided Tooltip `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before` untuk akun ini (lihat `suite.md`).
 - Data Pre-setup (literal TC, seeding idempotent lewat fixture backend; fixture `fixed-asset-tag.json` belum ada): Tag To Be Returned `RF-00071` (RFID, Last Asset `Excavator 20 Ton - 2`, Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.), `RF-00088` (RFID, `Excavator 20 Ton - 5`, Disposal Center, Dedi K.), dan `NF-00092` (NFC, `Laptop Pro 14 - 8`, HQ Warehouse, Rina T.). Spec tidak menekan [Submit], jadi status Tag tidak berubah.
+- Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, nama aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -80,7 +81,7 @@ coverage:
 
 - Urutan TC diubah: TC-577 dipecah menjadi tiga blok (langkah 18 sampai 20, 25 dan 26, 33 sampai 35) yang disisipi TC-576 dan TC-575, supaya seleksi bertambah satu per satu tanpa membersihkan dan memilih ulang (S-10). Isi tiap Verifikasi tetap sama dengan Expected TC.
 - Langkah penghubung: langkah 1 membuka tab (hook `beforeEach` sudah membuka halaman TAG); langkah 5 menutup menu; langkah 8, 17, 24, dan 32 menutup popup atau dialog. Langkah 3 menjadi anchor langkah 4; langkah 19 dan 20 mendahului langkah 21.
+- A-15: nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, nama aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, nama aset) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - Expected b TC-573 ("TAG Log dibuka lewat klik TAG Code") tidak punya langkah di TC; spec menambahkan klik TAG Code (langkah 6) dan Verifikasi Popup TAG Log terbuka (langkah 7) sebagai langkah observasinya.
   - Expected c TC-575 ("Alert info dan Textarea Note sama dengan dialog row action") ditulis sebagai satu Verifikasi (langkah 31) sesuai butir TC.

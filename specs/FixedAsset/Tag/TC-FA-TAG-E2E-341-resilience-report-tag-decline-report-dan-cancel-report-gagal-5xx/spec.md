@@ -25,7 +25,7 @@ coverage:
 | 2 | Total Control | `totalControl_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TC_PASSWORD` |
 
   Nama env didaftarkan di `executionConfig.environmentVariables` dan `.env.example`.
-- Akun aktor pertama: blok 1 (TC-FA-TAG-617 dan TC-FA-TAG-668 memakai Staff Auditor; TC-FA-TAG-645 memakai Total Control). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Spec selesai di akun blok 2; hook `after` mengembalikan sesi ke akun default suite (Total Control). Langkah ganti akun ditulis eksplisit (Logout lalu Login).
+- Akun aktor pertama: blok 1 (TC-FA-TAG-617 dan TC-FA-TAG-668 memakai Staff Auditor; TC-FA-TAG-645 memakai Total Control). Login di hook `before` spec ini; halaman dibuka di langkah pertama (hook suite `beforeEach` dikecualikan, lihat `suite.md`). Spec selesai di akun blok 2; hook `after` mengembalikan sesi ke akun default suite (Total Control). Langkah ganti akun ditulis eksplisit (Logout lalu Login).
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_fa-tag` true untuk akun aktor yang dipakai dan hook suite `after` memulihkannya (lihat `suite.md`).
 - Suite serial: `parallel: false` (lihat `suite.md`).
 - Kemampuan teknis (disediakan tim FE/BE): (1) `Spectra.intercept` parsial atas request Report TAG, Cancel Report, dan Decline Report: respons 5xx; hook `after` melepas semua intercept; (2) seed dan pemulihan idempotent lewat fixture backend untuk aset, Tag, task Existence Audit, dan laporan Tag terbuka; (3) penanganan dialog `beforeunload` (konfirmasi otomatis saat halaman dimuat ulang dengan dialog dirty terbuka), dipakai untuk menutup dialog dirty lewat muat ulang halaman. Tidak ada endpoint yang dikarang di spec ini.
@@ -40,6 +40,7 @@ coverage:
 | Reason Decline Report | Tag masih terbaca | `reasonDecline` |
 
 - State yang diubah dan pemulihannya: Tag `RF-00130` tanpa laporan terbuka saat spec mulai; langkah 11 membuat laporan terbuka Damaged dari Staff Auditor lewat fixture BE (precondition TC-FA-TAG-645 dan TC-FA-TAG-668) dan semua commit di spec ini gagal sehingga laporan tetap terbuka. Hook `after` menghapus laporan, task Existence Audit, dan melepas intercept walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 6, 15, 27 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 11) hanya menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -86,7 +87,7 @@ coverage:
 - Urutan TC di spec: TC-FA-TAG-617, 668, lalu 645, supaya dua TC Staff Auditor berurutan dan hanya ada satu ganti akun. TC-FA-TAG-668 dan 645 sama-sama mensyaratkan laporan terbuka, sedangkan TC-FA-TAG-617 mensyaratkan Tag tanpa laporan terbuka, sehingga laporan dibuat sesudah TC-FA-TAG-617 (langkah 11).
 - Pembagian TC lintas spec: Report TAG, Decline Report, dan Cancel Report ditekan beruntun (TC-FA-TAG-619, 646, 669) ada di spec 342 dan 343; penolakan state tenant (TC-FA-TAG-1299 s.d. 1302) ada di spec 349 dan 350.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9, 18, 30 (melepas intercept), 10, 19, 31 (muat ulang halaman untuk menutup dialog yang berisi isian; dialog `beforeunload` ditangani sesuai Prerequisites), 11 (membuat laporan terbuka lewat fixture BE hingga tersimpan), 20 dan 21 (ganti akun dan membuka halaman), 22 dan 23 (membuka Popup Detail dan menu aksi baris yang dipakai TC-FA-TAG-645).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 6, 15, 27 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 11) hanya menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-617 ("Tidak ada laporan baru untuk RF-00130 dan aset tidak mendapat status "Tag Reported""), TC-FA-TAG-645 dan TC-FA-TAG-668 ("Laporan RF-00130 tetap terbuka") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

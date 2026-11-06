@@ -61,22 +61,23 @@ coverage:
 
 ### TC-AC-LA-457: Nama Client berisi markup tampil sebagai teks
 
-18. Ketik Search nama Client seed markup di tab Current, tekan Enter
-19. Verifikasi nama Client `<script>alert(1)</script> {runId}-088` tampil sebagai teks biasa pada List
-20. Verifikasi tidak ada dialog alert yang dieksekusi dari nama Client pada List
-21. Klik row action `Allocation Log` pada baris alokasi Client itu
-22. Verifikasi nama Client tampil sebagai teks biasa pada Allocation Log
-23. Verifikasi tidak ada dialog alert yang dieksekusi dari nama Client pada Allocation Log
-24. Tutup modal Allocation Log, lalu buka Changelog dan cari entri Client itu
-25. Verifikasi nama Client tampil sebagai teks biasa pada Changelog
-26. Verifikasi tidak ada dialog alert yang dieksekusi dari nama Client pada Changelog
+18. Buka Allocation > License Allocation (tab Current)
+19. Ketik Search nama Client seed markup di tab Current, tekan Enter
+20. Verifikasi nama Client `<script>alert(1)</script> {runId}-088` tampil sebagai teks biasa pada List
+21. Verifikasi tidak ada dialog alert yang dieksekusi dari nama Client pada List
+22. Klik row action `Allocation Log` pada baris alokasi Client itu
+23. Verifikasi nama Client tampil sebagai teks biasa pada Allocation Log
+24. Verifikasi tidak ada dialog alert yang dieksekusi dari nama Client pada Allocation Log
+25. Tutup modal Allocation Log, lalu buka Changelog dan cari entri Client itu
+26. Verifikasi nama Client tampil sebagai teks biasa pada Changelog
+27. Verifikasi tidak ada dialog alert yang dieksekusi dari nama Client pada Changelog
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - K-1: TC kelas a yang Expected-nya respons API (TC-AC-LA-115, 145, 483, 508) tetap masuk spec FE+BE walau tumpang tindih dengan TC backend; modul ini tidak punya TC backend. TC-AC-LA-457 berpemicu UI.
-- Langkah penghubung (S-03): langkah 1 dan 6 (baseline, S-12), 5 dan 11 (ganti akun), 18 (Search untuk menemukan baris target, R-16), 24 (menutup modal dan membuka Changelog). Asersi hanya respons server dan state data lewat fixture BE (8b butir 1).
-- Asersi absence (langkah 4, 9, 10, 20, 23, 26) berbaseline dan beranchor respons server yang sudah diasersi atau teks nama yang tampil pada surface yang sama.
+- Langkah penghubung (S-03): langkah 1 dan 6 (baseline, S-12), 5 dan 11 (ganti akun), 18 (membuka List sesudah ganti akun, S-07), 19 (Search untuk menemukan baris target, R-16), 25 (menutup modal dan membuka Changelog). Asersi hanya respons server dan state data lewat fixture BE (8b butir 1).
+- Asersi absence (langkah 4, 9, 10, 21, 24, 27) berbaseline dan beranchor respons server yang sudah diasersi atau teks nama yang tampil pada surface yang sama.
 - Temuan untuk QA:
   - TC-AC-LA-115, 145, 483, 508 tidak menyebut status HTTP penolakan; spec mengasersi penolakan dan pesan sesuai TC.
   - TC-AC-LA-145 Expected a tidak menyebut Target dan Type selain Concurrent User +10 pada PT Abadi Jaya; spec memakai Target term Paid Active PT Abadi Jaya.

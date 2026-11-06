@@ -28,6 +28,7 @@ coverage:
 
   Kunci fixture: `changelogE3`, `changelogE4`. Aset yang dibuka: 'Excavator 20 Ton - 20' (AST-0020).
 - State yang diubah: tidak ada; hanya membaca Changelog Asset Detail.
+- Nilai literal Pre-setup (nama aset, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -43,6 +44,7 @@ coverage:
 
 - Langkah penghubung (S-03): langkah 1 sampai 3 (menuju Asset Detail, karena Precondition b TC-FA-TAG-976 berada di Asset Detail sedangkan hook `beforeEach` suite membuka halaman TAG), Search pada langkah 2 untuk menemukan baris target, dan langkah 7 (menutup modal).
 - Pembagian TC lintas spec: TC-FA-TAG-931 sampai TC-FA-TAG-938, TC-FA-TAG-968, dan TC-FA-TAG-975 ada di spec 233.
+- A-15: nilai literal Pre-setup (nama aset, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-976 Precondition b tidak menyebut cara membuka Asset Detail dari daftar aset; spec memakai Asset > Asset List, Search nama aset, lalu klik baris.
   - Judul TC-FA-TAG-976 menyebut Changelog Asset Detail "hanya memuat entri aset itu", tetapi Expected hanya membahas E3 dan E4. Entri E6 (Report TAG, aset 'Excavator 20 Ton - 20') tidak dibahas; spec tidak mengasersinya.

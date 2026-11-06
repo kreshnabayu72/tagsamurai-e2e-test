@@ -50,54 +50,58 @@ coverage:
 ### TC-FA-TAG-1167: Check-out pada kondisi T1
 
 1. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-out T1 {runId}-307`
-2. Jalankan langkah "Check-out" sampai selesai
-3. Verifikasi langkah "Check-out" pada Borrow berjalan normal sampai selesai
-4. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+2. Jalankan langkah "Check-out"
+3. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+4. Lanjutkan langkah "Check-out" sampai selesai
+5. Verifikasi langkah "Check-out" pada Borrow berjalan normal sampai selesai
 
 ### TC-FA-TAG-1168: Check-out pada kondisi T2
 
-5. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-out T2 {runId}-307`
-6. Jalankan langkah "Check-out"
-7. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tampil
-8. Lanjutkan langkah "Check-out" sampai selesai
-9. Verifikasi peringatan tidak memblokir: langkah "Check-out" dapat dilanjutkan sampai selesai
+6. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-out T2 {runId}-307`
+7. Jalankan langkah "Check-out"
+8. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tampil
+9. Lanjutkan langkah "Check-out" sampai selesai
+10. Verifikasi peringatan tidak memblokir: langkah "Check-out" dapat dilanjutkan sampai selesai
 
 ### TC-FA-TAG-1169: Check-out pada kondisi T3
 
-10. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-out T3 {runId}-307`
-11. Jalankan langkah "Check-out"
-12. Verifikasi langkah "Check-out" diblokir dengan pesan "This asset can't be borrowed until its TAG is replaced. Ask a TAG administrator of Plant B."
-13. Verifikasi langkah tidak dapat dilanjutkan dan tidak tersedia identifikasi manual untuk memulai (Policy "Allow manual identification to start" bernilai bawaan OFF)
-14. Verifikasi tombol `[Report TAG]` tampil karena Tag belum dilaporkan
+11. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-out T3 {runId}-307`
+12. Jalankan langkah "Check-out"
+13. Verifikasi langkah "Check-out" diblokir dengan pesan "This asset can't be borrowed until its TAG is replaced. Ask a TAG administrator of Plant B."
+14. Verifikasi langkah tidak dapat dilanjutkan dan tidak tersedia identifikasi manual untuk memulai (Policy "Allow manual identification to start" bernilai bawaan OFF)
+15. Verifikasi tombol `[Report TAG]` tampil karena Tag belum dilaporkan
 
 ### TC-FA-TAG-1170: Check-out pada kondisi T4
 
-15. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-out T4 {runId}-307`
-16. Jalankan langkah "Check-out"
-17. Verifikasi langkah "Check-out" diblokir dengan pesan "This asset can't be borrowed until its TAG is replaced. Ask a TAG administrator of Plant B."
-18. Verifikasi langkah tidak dapat dilanjutkan dan tidak tersedia identifikasi manual untuk memulai (Policy "Allow manual identification to start" bernilai bawaan OFF)
-19. Verifikasi tombol `[Report TAG]` dan tombol `[Replace TAG]` tidak tampil karena aset tanpa Tag Paired tidak punya Tag untuk dilaporkan atau diganti (S-26c, S-26d)
+16. Buka layar transaksi Borrow untuk aset `Aset Matriks Check-out T4 {runId}-307`
+17. Jalankan langkah "Check-out"
+18. Verifikasi langkah "Check-out" diblokir dengan pesan "This asset can't be borrowed until its TAG is replaced. Ask a TAG administrator of Plant B."
+19. Verifikasi langkah tidak dapat dilanjutkan dan tidak tersedia identifikasi manual untuk memulai (Policy "Allow manual identification to start" bernilai bawaan OFF)
+20. Verifikasi tombol `[Report TAG]` dan tombol `[Replace TAG]` tidak tampil karena aset tanpa Tag Paired tidak punya Tag untuk dilaporkan atau diganti (S-26c, S-26d)
 
 ### TC-FA-TAG-1171: Extend pada kondisi T1
 
-20. Buka layar transaksi Borrow untuk aset `Aset Matriks Extend T1 {runId}-307`
-21. Jalankan langkah "Extend" sampai selesai
-22. Verifikasi langkah "Extend" pada Borrow berjalan normal sampai selesai
+21. Buka layar transaksi Borrow untuk aset `Aset Matriks Extend T1 {runId}-307`
+22. Jalankan langkah "Extend"
 23. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+24. Lanjutkan langkah "Extend" sampai selesai
+25. Verifikasi langkah "Extend" pada Borrow berjalan normal sampai selesai
 
 ### TC-FA-TAG-1172: Extend pada kondisi T2
 
-24. Buka layar transaksi Borrow untuk aset `Aset Matriks Extend T2 {runId}-307`
-25. Jalankan langkah "Extend" sampai selesai
-26. Verifikasi langkah "Extend" pada Borrow berjalan normal sampai selesai
-27. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+26. Buka layar transaksi Borrow untuk aset `Aset Matriks Extend T2 {runId}-307`
+27. Jalankan langkah "Extend"
+28. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+29. Lanjutkan langkah "Extend" sampai selesai
+30. Verifikasi langkah "Extend" pada Borrow berjalan normal sampai selesai
 
 ### TC-FA-TAG-1173: Extend pada kondisi T3
 
-28. Buka layar transaksi Borrow untuk aset `Aset Matriks Extend T3 {runId}-307`
-29. Jalankan langkah "Extend" sampai selesai
-30. Verifikasi langkah "Extend" pada Borrow berjalan normal sampai selesai
-31. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+31. Buka layar transaksi Borrow untuk aset `Aset Matriks Extend T3 {runId}-307`
+32. Jalankan langkah "Extend"
+33. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+34. Lanjutkan langkah "Extend" sampai selesai
+35. Verifikasi langkah "Extend" pada Borrow berjalan normal sampai selesai
 
 ## Notes
 

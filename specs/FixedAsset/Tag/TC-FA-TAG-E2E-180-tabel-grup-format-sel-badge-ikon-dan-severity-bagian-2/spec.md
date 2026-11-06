@@ -27,6 +27,7 @@ coverage:
 | Isi grup 'Excavator 20 Ton' / Plant A | 18 aset ber-Tag dan 2 aset Not Paired Yet (Total Assets 20) | `isiPlantA` |
 
 - State yang diubah dan pemulihannya: tidak ada perubahan data bisnis (aksi hanya membaca); data seed tambahan (bila ada) dihapus di hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -44,7 +45,7 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-742). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik format sel tabel grup ada di spec 179 (TC-FA-TAG-731 s.d. 741) dan spec 180 (TC-FA-TAG-742).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 6 (menutup Popup Detail di akhir spec).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-742 menyebut "page size 25" tanpa menyebut nama kontrol; spec menulis "atur page size tabel T-TAG-02 menjadi 25" tanpa mengarang label kontrol.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -44,6 +44,7 @@ Role yang diuji:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`; penghapusan preferensi kolom tabel T-TAG-02 di browser (cache browser tempat konfigurasi Setup Column disimpan) dipakai di hook `after` dan sebagai langkah penghubung bila tertulis.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom di browser (bukan lewat `[Reset to Default]`) dan kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global selain preferensi kolom di browser.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 19, 22, 28), serta melakukan aksi lewat sesi API (langkah 11).
 
 ## Test Steps
 
@@ -86,7 +87,7 @@ Role yang diuji:
 ### TC-FA-TAG-871: Custom Field yang belum diisi menampilkan strip
 
 22. Tampilkan kolom `CF Text` lewat Setup Column (header `⋯`, `Setup Column...`, centang kolom, `[Save]`)
-23. Verifikasi Sel menampilkan `—`
+23. Verifikasi Sel CF Text AST-0020 menampilkan `—`
 24. Tutup Popup Detail
 25. Hapus preferensi kolom di browser
 26. Ganti akun: logout dari akun Total Control [TC], login dengan akun Manage asset & TAG (Read) (Read: Plant B tanpa akses Manage purchase) [MR_PB_NOPUR], lalu buka Fixed Asset > TAG tab Paired
@@ -105,9 +106,9 @@ Role yang diuji:
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 5, 9, 10, 11, 15, 18, 24, 25, 26, 32.
 - Popup Detail Excavator 20 Ton / Plant B dibuka pada TC pertama dan tetap terbuka bila TC berikutnya memakai popup yang sama (langkah "Klik Asset Name" TC berikutnya tidak diulang; halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - Urutan TC diatur menurut akun: Total Control lebih dulu (TC-FA-TAG-865 sampai 869 dan 871), lalu Manage asset & TAG (Read) (Read: Plant B tanpa akses Manage purchase) untuk TC-FA-TAG-870.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 19, 22, 28), serta melakukan aksi lewat sesi API (langkah 11).
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
-  - Spec ini menyimpan konfigurasi kolom lewat Setup Column dan hook `after` spec ini menghapus preferensi kolom di browser; nomor spec ini belum tercantum pada daftar pemulihan kolom di `suite.md`.
+  - Spec ini menyimpan konfigurasi kolom lewat Setup Column dan hook `after` spec ini menghapus preferensi kolom di browser; nomor spec ini tercantum pada daftar pemulihan kolom di `suite.md`.
   - TC-FA-TAG-867 tidak menyebut kapan `CF New` dibuat; spec membuatnya lewat API sebagai langkah penghubung sebelum popup dibuka agar kolom baru ikut dimuat.
   - TC-FA-TAG-869 memakai Expected universal ("seluruh baris") sehingga spec menambah `Verifikasi` pembanding berupa sedikitnya satu baris tampil.
   - Seeding nilai Custom Field pada aset acuan dapat mengubah Last Updated aset itu dan menggeser urutan bawaan Last Updated terbaru yang dipakai TC lain; pemulihan lewat fixture BE di hook `after` perlu mengembalikan Last Updated.

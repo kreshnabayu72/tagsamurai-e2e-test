@@ -20,7 +20,7 @@ coverage:
 - `Fixture.license-allocation-license` belum ada (disediakan tim FE): memuat identitas akun, nama Client, ID Subscription, dan harga.
 - Data Pre-setup: PT Sejahtera (#19, `SUBS-20260101-A1B2C`), kantong wallet Distributor PT Maju Bersama saldo $10,000.00 (#33), Product Price (#34). Harga kelima Addon (Audit, Maintenance, Tracking, Maps, IT Inventory) di-set pada Product Price kantong Distributor oleh fixture backend (disediakan tim FE/BE) di hook `before` dan dipulihkan ke keadaan awal di hook `after` (lihat Temuan untuk QA). Toggle Require Approval for Allocation OFF (#39), diatur fixture backend di hook `before` dan dipulihkan di hook `after`.
 - Data Dinamis: lima alokasi Addon +1 ke PT Sejahtera (Completed, Active). Alokasi tidak dapat dihapus (tanpa Delete); saldo kantong dan ledger kuota dipulihkan oleh baseline automation dan fixture backend di hook `after`.
-- Tabel "Addon" untuk langkah 1 sampai 6:
+- Tabel "Addon" untuk langkah 1 sampai 7:
 
   | Addon (Type) | License Type di List |
   |---|---|
@@ -37,19 +37,20 @@ coverage:
 
 ### TC-AC-LA-158: Submit Addon FAMS ke Target Paid Active
 
-Untuk setiap baris tabel "Addon" (langkah 1 sampai 6):
+Untuk setiap baris tabel "Addon" (langkah 1 sampai 7):
 
 1. Catat baseline Allocation ID baris di halaman pertama tab Current
 2. Klik `[+ Allocation]`
 3. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type sesuai kolom Addon (Type), isi Additional Quantity `1`
 4. Klik `[Submit]`
 5. Verifikasi toast sukses "Success, license has been allocated."
-6. Verifikasi baris baru (Allocation ID tidak ada pada baseline langkah 1) dengan License Type sesuai kolom "License Type di List" dan Status `Active`; lalu tunggu toast hilang otomatis
+6. Verifikasi baris baru (Allocation ID tidak ada pada baseline langkah 1) dengan License Type sesuai kolom "License Type di List" dan Status `Active`
+7. Tunggu toast hilang otomatis
 
 ## Notes
 
-- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Langkah 1 sampai 6 diulang untuk 5 baris tabel (bagian 8b butir 7); ekspansi: 6 langkah × 5 = 30 langkah, di bawah ambang 35 langkah. Buka form 5 kali, kejadian menutup 5 (modal tertutup oleh Submit di tiap iterasi).
-- Langkah penghubung (S-03): langkah 1 (baseline) dan penantian toast hilang pada langkah 6 agar toast iterasi berikutnya dapat diasersi (R-12).
+- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Langkah 1 sampai 7 diulang untuk 5 baris tabel (bagian 8b butir 7); ekspansi: 7 langkah × 5 = 35 langkah, tidak melebihi ambang 35 langkah. Buka form 5 kali, kejadian menutup 5 (modal tertutup oleh Submit di tiap iterasi).
+- Langkah penghubung (S-03): langkah 1 (baseline) dan penantian toast hilang pada langkah 7 agar toast iterasi berikutnya dapat diasersi (R-12).
 - Temuan untuk QA:
   - TC-AC-LA-158 mensyaratkan harga kelima Addon di-set, sedangkan Pre-setup #34 hanya mencantumkan Addon Audit $365 dan Addon IT Inventory $100; Pre-setup #36 men-set Addon Tracking $0 dan #37 membiarkan Addon Maps belum di-set (dipakai TC-AC-LA-146); pengaturan harga antar TC diserahkan ke fixture backend.
   - TC-AC-LA-158 Expected c ("Addon hanya membutuhkan Subscription Paid tanpa gate tambahan") bukan hasil yang dapat diamati terpisah; keberhasilan kelima Submit pada langkah 5 dan 6 menjadi bukti.

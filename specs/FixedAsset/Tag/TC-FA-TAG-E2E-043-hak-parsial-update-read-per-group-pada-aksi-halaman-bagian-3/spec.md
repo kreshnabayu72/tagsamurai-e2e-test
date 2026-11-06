@@ -30,10 +30,11 @@ Role yang diuji:
 - Password tidak ditulis di spec atau fixture; nama env bersifat usulan dan didaftarkan tim FE di `spectra.config.ts` dan `.env.example`.
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite (lihat `suite.md`).
 - Fixture: `fixtures/fixed-asset-tag.json` belum ada (disediakan tim FE); nilai Pre-setup ditulis literal seperti di TC.
-- Data: Aset 'Excavator 20 Ton - 13' (AST-0013, Group Plant B, TAG Type RFID) punya Tag RFID `RF-00103` Paired; aset 'Excavator 20 Ton - 14' (AST-0014, Group Plant B) punya Tag QR `QR-00235` Paired (Non-standard); aset 'Excavator 20 Ton - 55' (AST-0055, Group Plant B, TAG Type RFID) Not Paired Yet; aset 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00130` berstatus Paired; satu reader RFID/NFC tersambung, driver terpasang, reader aktif dan sudah disinkronkan di Global Settings > Handheld Reader.
+- Data: Aset 'Excavator 20 Ton - 13' (AST-0013, Group Plant B, TAG Type RFID) punya Tag RFID `RF-00103` Paired; aset 'Excavator 20 Ton - 14' (AST-0014, Group Plant B) punya Tag QR `QR-00235` Paired (Non-standard); aset 'Excavator 20 Ton - 55' (AST-0055, Group Plant B, TAG Type RFID) Not Paired Yet; aset 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00330` berstatus Paired; satu reader RFID/NFC tersambung, driver terpasang, reader aktif dan sudah disinkronkan di Global Settings > Handheld Reader.
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - State global: tidak ada state global yang diubah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -66,8 +67,8 @@ Role yang diuji:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 5, 10, 15, 21.
 - Pembagian TC lintas spec: TC-FA-TAG-130 dan TC-FA-TAG-162 ada di spec `TC-FA-TAG-E2E-032-hak-parsial-update-read-per-group-pada-aksi-halaman-bagian-2`.
 - Kebab baris dibuka sebagai langkah penghubung pada TC-FA-TAG-157, 159, dan 160 karena aksi baris hanya teramati lewat kebab baris.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
   - TC-160 butir b bersyarat ("bila Non-standard > 0, Replace non-standard TAGs") dan tidak menyebut Non-standard grup Plant A, sedangkan Pre-setup tab Paired menyebut Non-standard 0 untuk Excavator 20 Ton / Plant A. Spec mengasersi tanpa syarat dengan dataset Precondition TC-148 (AST-0042 Non-standard di Plant A).
   - TC-157, TC-159, dan TC-160 tidak punya langkah yang membuka kebab baris; spec menambahnya sebagai langkah penghubung.

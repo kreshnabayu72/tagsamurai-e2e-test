@@ -99,7 +99,7 @@ coverage:
 ### Allocation Log Reject (TC-AC-LA-403)
 
 50. Klik tab `History`
-51. Ganti isi kotak search dengan `{idR}`, tekan Enter
+51. Ketik Search `{idR}`, tekan Enter
 52. Klik row action `Allocation Log` pada baris `{idR}`
 53. Verifikasi entri berjudul `Allocation rejected by Fajar N` dengan Description `Rejection Reason: Kuota tidak sesuai`
 54. Verifikasi entri memuat Date & Time sesuai General Settings

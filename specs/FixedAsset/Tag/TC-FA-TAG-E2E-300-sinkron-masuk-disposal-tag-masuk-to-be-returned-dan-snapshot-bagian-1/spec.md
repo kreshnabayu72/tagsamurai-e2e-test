@@ -28,9 +28,9 @@ coverage:
 - Fixture `fixtures/fixed-asset-tag.json` belum ada; nilai literal TC pada langkah diberi kunci fixture oleh tahap script (kunci disediakan).
 - Seed dan pemulihan idempotent lewat fixture backend (disediakan tim FE/BE, lihat `suite.md`): aset, Tag per status registri, stok Tag per tipe, laporan Tag, dan entri log.
 - Pelaku kedua memakai sesi API (token tidak dihitung sebagai sesi web; kemampuan disediakan tim BE/FE, lihat `suite.md`); langkah pemicunya tidak memuat asersi di sesi itu.
-- Data (Pre-setup TC, tanpa suffix): aset AST-0900 ('Excavator 20 Ton - 2', Plant B, In Disposal Process, Disposal Request disetujui, Disposal Group transaksi Disposal Center); Tag RFID `RF-00071`, NFC `NF-00092`, QR `QR-00232` dipasangkan ke aset itu sesuai TC; pemegang terakhir aset Rina T. (TC-FA-TAG-1238).
+- Data (Pre-setup TC, tanpa suffix): aset AST-0900 ('Excavator 20 Ton - 2', Plant B, In Disposal Process, Disposal Request disetujui, Disposal Group transaksi Disposal Center); Tag RFID `RF-00071`, NFC `NF-00092`, QR `QR-00433` dipasangkan ke aset itu sesuai TC; pemegang terakhir aset Rina T. (TC-FA-TAG-1238).
 - Kemampuan teknis (disediakan tim FE/BE): menjalankan Execute disposal lewat sesi API; baseline jumlah baris dan badge tab To Be Returned dibaca di hook `before` (S-12).
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: entri TAG Log Global dari penyelesaian disposal (Tag masuk To Be Returned) (langkah 1, 7, 12, 18, 25, 30).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan aset AST-0900, Tag, dan daftar To Be Returned ke keadaan awal lewat fixture backend, serta sesi ke akun default suite.
 - State global yang diubah spec ini: status aset AST-0900, status Tag, dan daftar To Be Returned. Suite serial (`parallel: false`).
 
@@ -63,13 +63,13 @@ coverage:
 
 ### TC-FA-TAG-1236: aset dengan Tag RFID dan QR hanya memasukkan Tag RFID
 
-17. Siapkan lewat fixture backend aset AST-0900 dengan Tag RFID RF-00071 dan Tag QR QR-00232 Paired dan pulihkan daftar To Be Returned
-18. Pelaku kedua (Asset Admin pelaku disposal) lewat sesi API menyelesaikan langkah Execute disposal aset AST-0900 ('Excavator 20 Ton - 2', Plant B, In Disposal Process, Disposal Request disetujui, Disposal Group transaksi Disposal Center) dengan Tag RFID RF-00071 dan QR QR-00232 Paired hingga disposal selesai
+17. Siapkan lewat fixture backend aset AST-0900 dengan Tag RFID RF-00071 dan Tag QR QR-00433 Paired dan pulihkan daftar To Be Returned
+18. Pelaku kedua (Asset Admin pelaku disposal) lewat sesi API menyelesaikan langkah Execute disposal aset AST-0900 ('Excavator 20 Ton - 2', Plant B, In Disposal Process, Disposal Request disetujui, Disposal Group transaksi Disposal Center) dengan Tag RFID RF-00071 dan QR QR-00433 Paired hingga disposal selesai
 19. Muat ulang halaman TAG tab Paired (F5)
 20. Buka tab To Be Returned
 21. Verifikasi baris RF-00071 tampil di tab To Be Returned
-22. Ketik Search `QR-00232`, tekan Enter
-23. Verifikasi Illustration `No results found`: pencarian "QR-00232" tidak menemukan Tag QR di To Be Returned
+22. Ketik Search `QR-00433`, tekan Enter
+23. Verifikasi Illustration `No results found`: pencarian "QR-00433" tidak menemukan Tag QR di To Be Returned
 
 ### TC-FA-TAG-1237: Return Group snapshot adalah Disposal Group transaksi
 
@@ -94,6 +94,7 @@ coverage:
 - Disposal dijalankan pelaku kedua lewat sesi API karena hanya memicu masuknya Tag ke To Be Returned dan tidak diasersi di sesinya (R-20); sesi UI akun Total Control mengamati tab To Be Returned.
 - Absence TC-FA-TAG-1236 (Tag QR tidak ada di To Be Returned): memakai empty state `No results found` hasil Search sebagai anchor positif; baris RF-00071 yang tampil sebelumnya menjadi anchor tambahan (bagian 8b butir 2).
 - TC-FA-TAG-1239 sampai 1243 dan 1381 ada di spec 301; TC-FA-TAG-1244 sampai 1247 di spec 302.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri TAG Log Global dari penyelesaian disposal (Tag masuk To Be Returned) (langkah 1, 7, 12, 18, 25, 30).
 - Temuan untuk QA:
   - TC-FA-TAG-1233 sampai 1238 langkah TC ke-1 ('Login sbg Asset Admin lalu buka layar Disposal Execute') dan langkah TC ke-3 ('Login sbg Total Control') berupa dua akun; spec memakai Asset Admin sebagai pelaku kedua lewat sesi API dan Total Control sebagai pengamat UI.
   - TC-FA-TAG-1233 Post Condition (Tag RF-00071 berstatus To be Returned di registri Global; modul terdampak transactions-disposal dan all-tags) tidak punya langkah observasi di TC; tidak diasersi.

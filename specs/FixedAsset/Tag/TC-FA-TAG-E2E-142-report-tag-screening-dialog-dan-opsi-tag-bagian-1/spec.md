@@ -26,7 +26,7 @@ coverage:
 |---|---|---|---|
 | SA_NOTAG | Staff Auditor (tidak memegang Manage asset & TAG) | `staffAuditorTidakMemegangManageAssetTag_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_SA_NOTAG_PASSWORD` |
 
-- Akun aktor pertama: Staff Auditor (tidak memegang Manage asset & TAG) [SA_NOTAG]. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > TAG > Paired). Aksi spec ini dijalankan dari modul Audit, sehingga langkah pertama berpindah ke modul Audit. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
+- Akun aktor pertama: Staff Auditor (tidak memegang Manage asset & TAG) [SA_NOTAG]. Login di hook `before` spec ini; halaman dibuka di langkah pertama (hook suite `beforeEach` dikecualikan, lihat `suite.md`). Aksi spec ini dijalankan dari modul Audit, sehingga langkah pertama berpindah ke modul Audit. Hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Password tidak ditulis di spec atau fixture; nama env didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_fa-tag` true untuk akun aktor yang dipakai dan hook suite `after` memulihkannya (lihat `suite.md`).
 - Suite serial: `parallel: false` (lihat `suite.md`).
@@ -41,6 +41,7 @@ coverage:
 | Aset 'Server Rack 42U - 201' | AST-0201, dua Tag RFID Paired `RF-00201` dan `RF-00202` tanpa laporan terbuka, item di task Existence Audit yang sama | `aset201` |
 
 - State yang diubah dan pemulihannya: laporan terbuka pada `RF-00132` dan `RF-00130` (langkah 23) dibatalkan dan data dipulihkan lewat fixture backend di hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 23) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -99,9 +100,9 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-TAG-604 ada di spec 143.
 - Urutan TC di dalam spec: TC-598, TC-599, TC-602, TC-600, TC-601, TC-603. TC-602 diletakkan sebelum TC-600 dan TC-601 karena ketiganya membutuhkan state laporan berbeda; langkah 23 membangun state TC-600, TC-601, dan TC-603 sekaligus (laporan terbuka pada `RF-00132` dan `RF-00130`) sehingga TC-603 tidak membutuhkan seeding tersendiri.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 23 (mengatur ulang data lewat fixture backend dan memuat ulang halaman) serta semua langkah `Klik [Cancel] pada dialog "Report TAG"` yang menutup dialog sebelum TC berikutnya.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 23) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
-  - Hook suite `beforeEach` membuka Fixed Asset > TAG untuk akun aktor pertama, sedangkan Staff Auditor tanpa Manage asset & TAG tidak berhak atas halaman itu; hook perlu dikecualikan untuk spec ini di tahap script.
+  - Hook suite `beforeEach` membuka Fixed Asset > TAG untuk akun aktor pertama, sedangkan Staff Auditor tanpa Manage asset & TAG tidak berhak atas halaman itu; spec ini dikecualikan di `suite.md` bagian Hook sehingga halaman yang diuji dibuka di langkahnya sendiri.
   - TC tidak menyatakan apakah satu-satunya Tag yang terpilih otomatis membuat dialog dianggap terisi saat ditutup; spec menutup dialog yang belum diisi pengguna dengan [Cancel] atau [Keep Report] tanpa dialog Unsaved Changes, mengikuti TC-FA-TAG-666 dan TC-FA-TAG-675.
   - TC-FA-TAG-598 menulis "dipilih otomatis" untuk satu Tag tanpa checkbox, tetapi TC-FA-TAG-600 menulis opsi "QR" "tercentang awal"; spec mengikuti masing-masing TC (opsi tanpa checkbox terpilih otomatis pada TC-598, checkbox tercentang pada TC-600).
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

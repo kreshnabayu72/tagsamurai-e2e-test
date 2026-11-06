@@ -78,7 +78,7 @@ coverage:
 ### TC-FA-SU-1003: Assign Transaction Role dengan grup stale atau tanpa konfirmasi turun tangga
 
 34. Kirim permintaan langsung ke API assign Disposal × Monitoring & Report pada Finance & Accounting untuk Mira Anggraini (saat ini Staff) tanpa penanda konfirmasi downgrade memakai klien HTTP dengan token sesi Lina Marlina
-35. Verifikasi Save yang menurunkan tangga tanpa membawa konfirmasi downgrade ditolak dengan status 409
+35. Verifikasi Save yang menurunkan tangga pada node yang sama (Finance & Accounting) tanpa membawa konfirmasi downgrade ditolak dengan status 409
 36. Verifikasi seluruh Save dibatalkan: Transaction Role Mira Anggraini pada Disposal × Finance & Accounting tetap Staff (dibaca lewat API)
 37. Kirim permintaan langsung ke API assign Transaction Role dengan grup stale `Grup Uji {runId}-335` untuk Mira Anggraini memakai klien HTTP dengan token sesi Lina Marlina
 38. Verifikasi permintaan dengan grup yang sudah dihapus ditolak dengan status 422
@@ -96,4 +96,5 @@ coverage:
   - TC-FA-SU-1002 dan 1003 tidak menyebut cara menyiapkan grup yang sudah dihapus; spec memakai grup uji yang dibuat lalu dihapus lewat seed API.
   - TC-FA-SU-1002 Expected b memuat klausa "tanpa entri log" tetapi TC ini tidak punya spec absence (kelas g); asersi jumlah dengan baseline dipakai di spec ini. Pemilik proses dapat meminta spec absence tambahan bila ingin kelas g murni.
   - Email dan password Sinta Dewi (#6) dan Qori Akbar (#4) tidak tertulis di Pre-setup TC; disediakan tim FE (S-11, S-13).
+  - TC-FA-SU-1003 butir b diperbarui: guard 409 hanya berlaku bagi penurunan tangga pada node yang sama; Mira Anggraini (Pre-setup #39) hanya memegang Disposal pada Finance & Accounting, sehingga kasus penugasan di ancestor atau descendant (tidak memicu 409) tidak diasersi di sini dan ada di TC-FA-SU-1109 (E2E-422).
   - TC-FA-SU-999 sampai 1003 berkolom FE Test `-`; seluruh langkah adalah permintaan langsung (K-1).

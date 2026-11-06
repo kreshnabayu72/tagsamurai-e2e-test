@@ -64,7 +64,7 @@ coverage:
 19. Buka Detail Role `Manage asset & TAG`
 20. Klik node `Helpdesk` pada Sidebar Group Tree
 21. Aktifkan toggle `Require Approval for Registration`
-22. Verifikasi dialog blok severity warning dengan Title `Cannot Require Approval`, Body `Grant Update access on Manage asset & TAG to at least one user in this group before enabling approval.`, dan satu tombol `[OK]`
+22. Verifikasi dialog blok severity warning dengan Title `Cannot Require Approval`, Body `Grant Update access on Manage asset & TAG to at least one user in this group, or assign a Group Manager to it, before enabling approval.`, dan satu tombol `[OK]`
 23. Klik `[OK]`
 24. Verifikasi toggle `Require Approval for Registration` kembali OFF
 

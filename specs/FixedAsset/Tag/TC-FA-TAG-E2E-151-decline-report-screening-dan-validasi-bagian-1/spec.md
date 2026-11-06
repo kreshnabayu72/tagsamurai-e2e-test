@@ -37,6 +37,7 @@ coverage:
 | Aset 'Excavator 20 Ton - 44' dengan laporan | AST-0044, Group Plant B; Tag RFID `RF-00132` laporan terbuka Missing dan Tag QR `QR-00232` laporan terbuka Unreadable | `aset44Laporan` |
 
 - State yang diubah dan pemulihannya: laporan yang diatur ulang pada langkah 22 dipulihkan lewat fixture backend di hook `after`; tidak ada laporan yang ditutup oleh spec ini.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 11 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 22) hanya menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -88,8 +89,8 @@ coverage:
 - Pembagian TC lintas spec: validasi Decline Report multi-Tag tanpa mencentang Tag (TC-FA-TAG-640) ada di spec 152.
 - Urutan TC di dalam spec: TC-636, TC-639, TC-637, TC-638. TC-639 melanjutkan dialog TC-636 (aset dan state identik) dan dialog ditutup dengan [Cancel] sebelum TC-637; TC-638 diletakkan terakhir karena membutuhkan state laporan berbeda pada AST-0044.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 14, 21, dan 29 (menutup dialog yang belum diisi dengan [Cancel]) serta langkah 22 (mengatur ulang state laporan lewat fixture backend).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 11 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Fixture backend (langkah 22) hanya menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-639 ("Laporan RF-00130 tetap terbuka") tanpa langkah observasi di TC tidak diasersi.
   - TC tidak menyatakan apakah satu-satunya opsi yang terpilih otomatis membuat dialog dianggap terisi saat ditutup; spec menutup dialog yang belum diisi pengguna dengan [Cancel] tanpa dialog Unsaved Changes.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

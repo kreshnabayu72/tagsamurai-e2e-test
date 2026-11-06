@@ -1,6 +1,6 @@
 ---
 id: TC-GS-IMPORT-E2E-019-entri-upload-drag-and-drop-tombol-browse-file-dan-dua-berkas-sekaligus
-title: "Entri Upload: Drag-and-Drop, Tombol Browse File, dan Dua Berkas Sekaligus"
+title: "Entri Upload: Drag-and-Drop, Tombol Upload File di Dropzone, dan Dua Berkas Sekaligus"
 priority: High
 caseType: Positive
 status: draft
@@ -12,7 +12,7 @@ coverage:
   web: automated
 ---
 
-# Entri Upload: Drag-and-Drop, Tombol Browse File, dan Dua Berkas Sekaligus
+# Entri Upload: Drag-and-Drop, Tombol Upload File di Dropzone, dan Dua Berkas Sekaligus
 
 ## Prerequisites
 
@@ -36,9 +36,9 @@ coverage:
 4. Verifikasi tidak ada toast
 5. Klik `[Cancel]` (tutup bersih)
 
-### TC-GS-IMPORT-70: Tombol Browse File di Dropzone membuka file picker
+### TC-GS-IMPORT-70: Tombol Upload File di Dropzone membuka file picker
 
-6. Klik `[Browse File]` di Dropzone
+6. Klik `[Upload File]` di Dropzone
 7. Perhatikan file picker
 8. Verifikasi file picker terbuka
 9. Pilih berkas `brand-12.csv` di file picker

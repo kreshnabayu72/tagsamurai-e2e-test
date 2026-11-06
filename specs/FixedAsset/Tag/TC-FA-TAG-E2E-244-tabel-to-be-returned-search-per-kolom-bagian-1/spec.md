@@ -36,6 +36,7 @@ coverage:
 
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned (kode, Last Asset, Reason, Return Group, Current Holder, Since) dan Return Group; tidak ada endpoint yang dikarang di spec ini.
 - State global: tidak ada. Spec ini tidak mengubah data bisnis; Search dikosongkan pada tiap akhir kasus.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -89,8 +90,8 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-TAG-987 s.d. 991 ada di spec 245 (Search tab To Be Returned, bagian 2).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 7, 10, 13, 16, 19, 23 (mengosongkan Search lewat `(←)` yang menutup input dan mereset tabel).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-981 s.d. 986 tidak menyebut cara mengosongkan Search antar kasus; spec menambah `(←)` sebagai langkah penghubung.
   - TC-FA-TAG-986 Expected tidak menyebut label aksesibilitas ikon tipe yang dicari; spec mengasersi hasil Search "RFID" apa adanya.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

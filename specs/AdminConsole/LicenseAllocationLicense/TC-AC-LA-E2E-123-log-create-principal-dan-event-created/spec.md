@@ -34,49 +34,52 @@ coverage:
 
 ### Log Create oleh Principal pada tiga surface (TC-AC-LA-384)
 
-1. Klik `[+ Allocation]`
-2. Pilih Client `PT Sejahtera`
-3. Pilih Target `SUBS-20260101-A1B2C`
-4. Pilih Type `Concurrent User`
-5. Isi Additional Quantity `3`
-6. Klik `[Submit]`
-7. Catat Allocation ID baris baru sebagai `{idFree3}`
-8. Klik ikon `Changelog` pada List
-9. Ketik Search `{idFree3}`, tekan Enter
-10. Verifikasi Changelog memuat entri dengan Field `Allocation Details`, Old `—`, New `Concurrent User +3 to PT Sejahtera` tanpa teks `Paid via wallet`
-11. Tutup modal Changelog
-12. Buka Detail User `Hendra Wijaya` > tab System Log
-13. Ketik Search `{idFree3}`, tekan Enter
-14. Verifikasi System Log aktor memuat entri dengan Field `Allocation Details`, Old `—`, New `Concurrent User +3 to PT Sejahtera` tanpa teks `Paid via wallet`
-15. Buka Activity Log Admin Console
-16. Ketik Search `{idFree3}`, tekan Enter
-17. Verifikasi Activity Log memuat entri dengan Field `Allocation Details`, Old `—`, New `Concurrent User +3 to PT Sejahtera` tanpa teks `Paid via wallet`
-18. Verifikasi Modified By pada entri Activity Log adalah `Hendra W`
-19. Buka Allocation > License Allocation (tab Current)
+1. Catat baseline Allocation ID baris di halaman pertama tab Current
+2. Klik `[+ Allocation]`
+3. Pilih Client `PT Sejahtera`
+4. Pilih Target `SUBS-20260101-A1B2C`
+5. Pilih Type `Concurrent User`
+6. Isi Additional Quantity `3`
+7. Klik `[Submit]`
+8. Catat Allocation ID baris yang tidak ada di baseline sebagai `{idFree3}`
+9. Klik ikon `Changelog` pada List
+10. Ketik Search `{idFree3}`, tekan Enter
+11. Verifikasi Changelog memuat entri dengan Field `Allocation Details`, Old `—`, New `Concurrent User +3 to PT Sejahtera` tanpa teks `Paid via wallet`
+12. Tutup modal Changelog
+13. Buka Detail User `Hendra Wijaya` > tab System Log
+14. Ketik Search `{idFree3}`, tekan Enter
+15. Verifikasi System Log aktor memuat entri dengan Field `Allocation Details`, Old `—`, New `Concurrent User +3 to PT Sejahtera` tanpa teks `Paid via wallet`
+16. Buka Activity Log Admin Console
+17. Ketik Search `{idFree3}`, tekan Enter
+18. Verifikasi Activity Log memuat entri dengan Field `Allocation Details`, Old `—`, New `Concurrent User +3 to PT Sejahtera` tanpa teks `Paid via wallet`
+19. Verifikasi Modified By pada entri Activity Log adalah `Hendra W`
+20. Buka Allocation > License Allocation (tab Current)
 
 ### Event Allocation created oleh Principal: Cost Free dan Paid From (TC-AC-LA-518)
 
-20. Atur jam server dan jam browser ke `22 Dec 2026` (nilai absolut)
-21. Klik `[+ Allocation]`
-22. Pilih Client `PT Sejahtera`
-23. Pilih Target `SUBS-20260101-A1B2C`
-24. Pilih Type `Concurrent User`
-25. Isi Additional Quantity `4`
-26. Klik `[Submit]`
-27. Catat Allocation ID baris baru sebagai `{idFree4}`
-28. Pulihkan jam server dan jam browser ke waktu nyata
-29. Ketik Search `{idFree4}`, tekan Enter
-30. Klik row action `Allocation Log` pada baris `{idFree4}`
-31. Verifikasi entri Allocation Log berjudul `Allocation created by Hendra W`
-32. Verifikasi Description entri memuat `Product: FAMS`, `License Type: Concurrent User`, `Target: SUBS-20260101-A1B2C`, `Quantity: +4`, `Cost: Free`
-33. Verifikasi header modal `Paid From:` menampilkan `—`
-34. Verifikasi tidak ada baris `Resubmitted From` pada entri
-35. Tutup modal Allocation Log
+21. Atur jam server dan jam browser ke `22 Dec 2026` (nilai absolut)
+22. Catat baseline Allocation ID baris di halaman pertama tab Current
+23. Klik `[+ Allocation]`
+24. Pilih Client `PT Sejahtera`
+25. Pilih Target `SUBS-20260101-A1B2C`
+26. Pilih Type `Concurrent User`
+27. Isi Additional Quantity `4`
+28. Klik `[Submit]`
+29. Catat Allocation ID baris yang tidak ada di baseline sebagai `{idFree4}`
+30. Pulihkan jam server dan jam browser ke waktu nyata
+31. Ketik Search `{idFree4}`, tekan Enter
+32. Klik row action `Allocation Log` pada baris `{idFree4}`
+33. Verifikasi entri Allocation Log berjudul `Allocation created by Hendra W`
+34. Verifikasi Description entri memuat `Product: FAMS`, `License Type: Concurrent User`, `Target: SUBS-20260101-A1B2C`, `Quantity: +4`, `Cost: Free`
+35. Verifikasi header modal `Paid From:` menampilkan `—`
+36. Verifikasi tidak ada baris `Resubmitted From` pada entri
+37. Tutup modal Allocation Log
 
 ## Notes
 
-- Langkah penghubung (S-03, R-16): langkah 9, 13, 16, dan 29 (Search entri atau baris berdasarkan Allocation ID), langkah 11 dan 35 (menutup modal), langkah 19 (kembali ke List), langkah 20 dan 28 (mengatur dan memulihkan jam).
-- Langkah 34 adalah asersi absence atas satu baris pada modal yang sudah terbuka dan memuat entri `{idFree4}`; langkah 31 sampai 33 pada modal yang sama menjadi anchor positifnya.
+- Alasan di atas sekitar 35 langkah (37 langkah; dua langkah baseline Allocation ID ikut menambah hitungan): kedua blok satu topik (pencatatan Create oleh Principal Hendra Wijaya pada tiga surface dan Allocation Log), satu kelas harness fungsional, masing-masing memakai record hasil Submit sendiri sehingga berdiri sendiri; blok baca-log berpola tidak dihitung pada ambang smell.
+- Langkah penghubung (S-03, R-16): langkah 10, 14, 17, dan 31 (Search entri atau baris berdasarkan Allocation ID), langkah 12 dan 37 (menutup modal), langkah 20 (kembali ke List), langkah 21 dan 30 (mengatur dan memulihkan jam), langkah 1 dan 22 (mencatat baseline Allocation ID halaman pertama tab Current sebelum [Submit]; baris baru adalah baris yang tidak ada di baseline).
+- Langkah 36 adalah asersi absence atas satu baris pada modal yang sudah terbuka dan memuat entri `{idFree4}`; langkah 33 sampai 35 pada modal yang sama menjadi anchor positifnya.
 - Temuan untuk QA:
   - TC-AC-LA-384 tidak menyebut cara menemukan entri di tiga surface maupun akun System Log aktor; spec memakai Detail User `Hendra Wijaya` dan Search dengan Allocation ID unik.
   - TC-AC-LA-518 butir b menyebut header modal `Paid From:` bernilai `—` tanpa menyatakan bahwa header itu bagian dari modal Allocation Log yang sama dengan entri; spec membaca header pada modal yang sama.

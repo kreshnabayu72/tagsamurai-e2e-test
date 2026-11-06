@@ -52,7 +52,7 @@ Untuk setiap baris tabel Data Dinamis, urut 286, 287, 288, 289, 290, 291, 292, 6
 
 1. Reset draft Client C pada Tab kolom Tab baris tabel lewat skrip reset
 2. Muat ulang halaman Import > Tab pada kolom Tab baris tabel
-3. Klik [Upload File] di toolbar dan pilih berkas pada kolom Berkas
+3. Klik [Upload File] di Dropzone dan pilih berkas pada kolom Berkas
 4. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 5. Verifikasi modal Confirm Mapping tertutup
 6. Verifikasi Staging Table menampilkan baris #1 berstatus `error`

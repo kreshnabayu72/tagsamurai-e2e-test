@@ -27,6 +27,7 @@ coverage:
 | Changelog Paired TAG | E1 26/10/26 10:02 Replace / Excavator 20 Ton - 50 / TAG / [NFC] NF-00090 / [RFID] RF-00420 / Sari W.; E2 26/10/26 10:02 Replace / Excavator 20 Ton - 50 / TAG / [QR] QR-00240 / — / Sari W.; E3 26/10/26 09:20 Replace / Excavator 20 Ton - 20 / TAG / [RFID] RF-00130 / [RFID] RF-00415 / Budi S.; E4 26/10/26 09:14 Replace / Excavator 20 Ton - 42 / TAG / [QR] QR-00230 / [RFID] RF-00412 / Budi S.; E5 25/10/26 16:40 Replace / Forklift Manual - 61 / TAG / [QR] QR-00251 / — / Dedi K.; E6 25/10/26 08:00 Report TAG / Excavator 20 Ton - 20 / Report Type / — / Damaged / Rina T. | `entriChangelog` |
 
 - State yang diubah dan pemulihannya: konfigurasi kolom tabel Changelog di cache browser; penghapusan preferensi kolom Setup Column di browser oleh hook `after` spec ini. Viewport dipulihkan oleh langkah penghubung.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 6).
 
 ## Test Steps
 
@@ -47,6 +48,6 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-1430). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik Popup Setup Column Modal Changelog ada di spec 189 (TC-FA-TAG-971 s.d. 974 dan 1429) dan spec 190 (TC-FA-TAG-1430).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 1, 9 (mempersempit dan memulihkan viewport).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 6).
 - Temuan untuk QA:
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

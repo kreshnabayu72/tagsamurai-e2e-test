@@ -26,12 +26,13 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset sesi 1 sampai 3 | 'Excavator 20 Ton - 220' (AST-0220, `RF-00130`), 'Excavator 20 Ton - 221' (AST-0221, `RF-00140`), 'Excavator 20 Ton - 23' (AST-0023, `RF-00141`), masing-masing satu Tag RFID Paired, Group Plant A | `aset220`, `aset221`, `aset23` |
+| Aset sesi 1 sampai 3 | 'Excavator 20 Ton - 220' (AST-0220, `RF-00330`), 'Excavator 20 Ton - 221' (AST-0221, `RF-00140`), 'Excavator 20 Ton - 23' (AST-0023, `RF-00141`), masing-masing satu Tag RFID Paired, Group Plant A | `aset220`, `aset221`, `aset23` |
 | Stok TC-404 | hanya Tag RFID `RF-00412` Available; Tag RFID `RF-00601` Reserved | `stokRfid412`, `tagReserved601` |
 | Stok TC-408 dan TC-409 | Tag RFID `RF-00412`, `RF-00415`, `RF-00416` Available | `stokRfid` |
 | Aset tujuan perebutan (TC-408) | satu aset Not Paired Yet dengan TAG Type Asset Name RFID yang menerima `RF-00415` dari pelaku kedua | `asetTujuanRebut` |
 
-- State yang diubah dan pemulihannya: Tag `RF-00130` diganti (TC-404, TC-408, TC-409), `RF-00415` dipasangkan ke aset lain (TC-408), dan `RF-00140` diganti (TC-409); fixture backend memulihkan keadaan awal antar blok dan di hook `after`.
+- State yang diubah dan pemulihannya: Tag `RF-00330` diganti (TC-404, TC-408, TC-409), `RF-00415` dipasangkan ke aset lain (TC-408), dan `RF-00140` diganti (TC-409); fixture backend memulihkan keadaan awal antar blok dan di hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 5, 15, 29, 31); entri Changelog `Pair TAG` per Tag (langkah 17); entri TAG Log Global (langkah 5, 15, 17, 29, 31). Aksi tulis pada langkah 18, 32 ditolak dan tidak menambah entri.
 
 ## Test Steps
 
@@ -50,7 +51,7 @@ coverage:
 
 ### Konflik D-03 (TC-FA-TAG-408)
 
-11. Pulihkan Tag `RF-00130` Paired pada 'Excavator 20 Ton - 220', isi ulang stok Available `RF-00412`, `RF-00415`, `RF-00416`, lalu muat ulang halaman TAG (F5) dan klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
+11. Pulihkan Tag `RF-00330` Paired pada 'Excavator 20 Ton - 220', isi ulang stok Available `RF-00412`, `RF-00415`, `RF-00416`, lalu muat ulang halaman TAG (F5) dan klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
 12. Centang baris 'Excavator 20 Ton - 220', 'Excavator 20 Ton - 221', dan 'Excavator 20 Ton - 23'
 13. Klik Bulk `Batch Replace TAG`
 14. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
@@ -67,7 +68,7 @@ coverage:
 
 ### Konflik D-04 (TC-FA-TAG-409)
 
-25. Pulihkan Tag `RF-00130` dan `RF-00140` Paired, isi ulang stok Available `RF-00412`, `RF-00415`, `RF-00416`, lalu muat ulang halaman TAG (F5) dan klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
+25. Pulihkan Tag `RF-00330` dan `RF-00140` Paired, isi ulang stok Available `RF-00412`, `RF-00415`, `RF-00416`, lalu muat ulang halaman TAG (F5) dan klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
 26. Centang baris 'Excavator 20 Ton - 220', 'Excavator 20 Ton - 221', dan 'Excavator 20 Ton - 23'
 27. Klik Bulk `Batch Replace TAG`
 28. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
@@ -88,12 +89,12 @@ coverage:
 - Pelaku kedua memakai sesi API (keputusan 2026-10-21/30): bukan konteks kedua kelas c dan tidak memakai `P-2`; langkah pemicunya ditulis "... hingga ... tersimpan" (langkah 17 dan 31).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 11 dan 25 (memulihkan data lewat fixture backend hingga tersimpan, memuat ulang halaman, dan membuka popup dari keadaan bersih; F5 juga mengakhiri sesi sebelumnya), 23 dan 36 (menutup aset ke-2 tanpa isian agar ringkasan akhir tampil sehingga status aset 1 `Done` teramati sebagai asersi butir c TC-408 dan TC-409).
 - Spec di atas smell 35 langkah (37 langkah). Alasan: seluruh blok satu topik (sesi Batch Replace dengan kondisi yang berubah di tengah sesi) pada halaman dan reader yang sama, satu kelas (tanpa kelas c karena pelaku kedua memakai sesi API), dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 5, 15, 29, 31); entri Changelog `Pair TAG` per Tag (langkah 17); entri TAG Log Global (langkah 5, 15, 17, 29, 31). Aksi tulis pada langkah 18, 32 ditolak dan tidak menambah entri.
 - Temuan untuk QA:
   - TC-FA-TAG-408 tidak menyebut aset tujuan pemasangan `RF-00415` dan pelaku pengguna lain; spec memakai aset Not Paired Yet milik seed dan pelaku sesi API yang disediakan tim FE.
   - TC-FA-TAG-409 menyebut pelaku Dedi K. yang tidak ada di Tabel Pre-setup TC; akun disediakan tim FE.
   - TC-FA-TAG-408 dan TC-FA-TAG-409 butir "Status aset 1 (`Done`) dipertahankan" hanya teramati pada ringkasan akhir; spec menambah langkah menutup aset ke-2 untuk menampilkan ringkasan sebagai langkah penghubung.
   - TC-FA-TAG-404 tidak menyebut cara menutup sesi di akhir; spec memakai F5 pada langkah 11.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
-  - Post Condition TC-404, 408, dan 409 tanpa langkah observasi di TC (mis. "Tag `RF-00130` pada aset 2 tetap Paired", "Penggantian Dedi K. tidak tertimpa") tidak diasersi.
+  - Post Condition TC-404, 408, dan 409 tanpa langkah observasi di TC (mis. "Tag `RF-00330` pada aset 2 tetap Paired", "Penggantian Dedi K. tidak tertimpa") tidak diasersi.

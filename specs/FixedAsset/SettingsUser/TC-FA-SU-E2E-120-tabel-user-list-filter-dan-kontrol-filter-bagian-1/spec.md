@@ -21,7 +21,7 @@ coverage:
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor untuk pelaku kedua, dan pemulihan Pre-setup bersama lewat seed API.
 - Data Pre-setup: Client `FaUserMain` (#20, plan Enterprise, 25 pengguna). Nama pengguna dan nilai Pre-setup dirujuk lewat `Fixture.fa-settings-user.<kunci>` (berkas `fixtures/fa-settings-user.json` belum ada dan disediakan tim FE).
 - Spec ini hanya membaca data Pre-setup dan tidak mengubahnya; suite berjalan serial (`parallel: false`).
-- Data Pre-setup tambahan: atribut User List (#43) untuk Transaction Role pada filter Role.
+- Data Pre-setup tambahan: atribut User List (#43) dan penugasan peran (#23) untuk Transaction Role pada filter Role.
 - Tabel `Filter Enum`:
 
 | Field | Nilai | Opsi | Hasil |
@@ -62,7 +62,7 @@ coverage:
 19. Verifikasi label jumlah seperti `3 roles` tidak muncul sebagai opsi dropdown Role
 20. Centang `Approver`
 21. Klik `[Apply]`
-22. Verifikasi memilih `Approver` menyisakan pemegang Transaction Role Approver (Pre-setup #43): `Eka Wulandari`, `Lukman Hakim`, `Mira Anggraini`, `Yuda Pratama` (4 baris)
+22. Verifikasi memilih `Approver` menyisakan pemegang Approver (Pre-setup #43 dan #23): `Eka Wulandari`, `Lukman Hakim`, `Mira Anggraini`, `Oscar Pranata`, `Qori Akbar`, `Yuda Pratama` (6 baris; Oscar Pranata dan Qori Akbar lewat baris pola Approver Group Manager)
 23. Verifikasi chip `Approver` tampil di dalam field Role
 24. Klik `[Clear Field]` pada field Role lalu `[Apply]`
 25. Buka dropdown Role, centang `Total Control`
@@ -75,5 +75,5 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah yang diulang: langkah 10 sampai 16 (tiga field enum), parameter pada tabel Prerequisites. Panel Filter tetap terbuka antar blok (langkah `[Clear Field]` lalu `[Apply]` tidak menutup panel).
-- Temuan untuk QA (S-15): (1) Daftar nama pada Expected TC berupa baris teratas hasil (kurang dari jumlah baris yang disebut atau dari ukuran halaman); spec mengasersi daftar nama itu dan jumlah baris sebagaimana tertulis.
+- Temuan untuk QA (S-15): (1) Daftar nama pada Expected TC berupa baris teratas hasil (kurang dari jumlah baris yang disebut atau dari ukuran halaman); spec mengasersi daftar nama itu dan jumlah baris sebagaimana tertulis. (2) Expected b TC-FA-SU-342 menghitung Oscar Pranata dan Qori Akbar lewat baris pola Approver Group Manager; perilaku Filter atas baris pola belum diputuskan PM (Open Item 3 PRD settings-user) dan spec mengasersi sesuai TC.
 - Alasan di atas sekitar 35 langkah (ekspansi perulangan dihitung): seluruh blok berkelas fungsional yang sama pada halaman, akun, dan dataset Pre-setup #20 yang sama tanpa mengubah data; langkah berulang per kolom atau field berpola identik (langkah 10 sampai 16) dan kegagalan satu iterasi tidak membuat iterasi lain kehilangan makna; bagian 3 konvensi menetapkan Setup Column, Bulk Action Bar, dan Search, Filter, Sort tetap satu spec selama dataset dan harness sama, sedangkan pemecahan hanya menambah login, hook, dan pembukaan halaman.

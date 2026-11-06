@@ -24,6 +24,7 @@ coverage:
 - Data uji: Disposal × Approver pada Finance & Accounting (TC-FA-SU-251); Transfer × Asset Admin, turun ke Monitoring & Report, naik kembali ke Asset Admin pada Finance & Accounting (TC-FA-SU-252); Disposal ke Monitoring & Report pada Finance & Accounting dan IT Infrastructure (TC-FA-SU-250).
 - Kemampuan teknis: seed API untuk memulihkan Transaction Role Mira Anggraini dan Putri Anggraeni ke Pre-setup #39 dan #44 (disediakan tim FE/BE); pembacaan jumlah entri Tab Changelog target sebelum aksi sebagai baseline (disediakan tim FE/BE, bagian 8b butir 10). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
 - State global yang diubah: Transaction Role Mira Anggraini dan Putri Anggraeni; dipulihkan lewat seed API di hook `after`. Hook `after` juga mengembalikan sesi ke tenant `FaUserMain`.
+- Target tanpa Home Group (Pre-setup #50, `FaUserNoHG`; Catatan TC: TC penugasan Tab Role Section 3d, 3e, 4c, 8, dan 9 yang memilih node bebas dijalankan pada varian tanpa Home Group, FI-32), diterapkan per target: Home Group Putri Anggraeni (Finance & Accounting pada Pre-setup #43) dikosongkan lewat seed API di hook `before` supaya node IT Infrastructure (langkah 20) tidak Disabled oleh gate Home Group constraint; Home Group Putri Anggraeni dipulihkan ke Finance & Accounting di hook `after`. Seed per target disediakan tim FE/BE.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
 ## Test Steps
@@ -70,6 +71,7 @@ coverage:
 - Urutan TC dalam spec: TC-FA-SU-251, 252, lalu 250, supaya perpindahan tenant ke `FaUserTR` terjadi satu kali di akhir (TC-FA-SU-251 dan 252 memakai `FaUserMain`).
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 18, 19 dan 23. Baseline log mengikuti S-12.
 - Langkah pola baca-log: langkah 6 sampai 8 dan 24 sampai 26. Search nama target pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
+- Pre-setup #50 diterapkan hanya pada Putri Anggraeni (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih IT Infrastructure (langkah 20); Home Group Putri Anggraeni dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
 - Temuan untuk QA:
   - TC-FA-SU-250 tidak menyebut tenant `FaUserTR` pada langkah dan Data Uji tidak menyebut cara berpindah tenant; spec menulisnya sebagai kemampuan "disediakan tim FE".
   - TC-FA-SU-251 butir c ("entri log Assign untuk Approver saja") tidak menyebut permukaan log; spec mengasersi Tab Changelog. TC-FA-SU-252 dan 250 menyebut pasangan entri Remove dan Assign pada Post Condition tanpa langkah observasi; spec mengasersinya pada Tab Changelog sebagai bagian dari Expected butir b TC-FA-SU-250 dan tidak mengasersi Post Condition TC-FA-SU-252 selain yang tercantum di atas.

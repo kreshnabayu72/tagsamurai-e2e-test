@@ -40,7 +40,7 @@ coverage:
 4. Klik `[Apply]`
 5. Catat jumlah entri hasil filter dari teks Pagination (0 bila tabel menampilkan empty state) sebagai baseline Brand
 6. Tutup modal Changelog
-7. Klik `[Upload File]` di toolbar
+7. Klik `[Upload File]` di Dropzone
 8. Pilih berkas `brand-12.csv` di file picker
 9. Perhatikan Modal Column Mapping yang terbuka
 10. Verifikasi Modal Column Mapping berjudul `Column Mapping: Brand`
@@ -79,7 +79,7 @@ coverage:
 40. Klik `[Apply]`
 41. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline Measurement
 42. Tutup modal Changelog
-43. Klik `[Upload File]` di toolbar
+43. Klik `[Upload File]` di Dropzone
 44. Pilih berkas `measurement-6.csv` di file picker
 45. Perhatikan Modal Column Mapping yang terbuka
 46. Verifikasi Modal Column Mapping berjudul `Column Mapping: Measurement`
@@ -115,7 +115,7 @@ coverage:
 73. Klik `[Apply]`
 74. Catat jumlah entri hasil filter dari teks Pagination (0 bila empty state) sebagai baseline Position
 75. Tutup modal Changelog
-76. Klik `[Upload File]` di toolbar
+76. Klik `[Upload File]` di Dropzone
 77. Pilih berkas `position-6.csv` di file picker
 78. Perhatikan Modal Column Mapping yang terbuka
 79. Verifikasi Modal Column Mapping berjudul `Column Mapping: Position`

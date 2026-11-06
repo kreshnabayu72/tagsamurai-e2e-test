@@ -28,6 +28,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, `RF-00416` | `stokRfid` |
 
 - State yang diubah dan pemulihannya: Tag RFID dipasangkan pada aset sesi; fixture backend memulihkan aset ke Not Paired Yet dan stok Available antar blok dan di hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 6, 8, 18); entri TAG Log Global (langkah 6, 8, 18).
 
 ## Test Steps
 
@@ -64,9 +65,9 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-464, 465). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik sesi Pair beberapa aset ada juga di spec 110, 111, 113, 114, dan 115 (TC-FA-TAG-459 s.d. 463, 466, 469 s.d. 472, 1383, 1445, 1446, 1487).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 13 (memulihkan data lewat fixture backend hingga tersimpan, memuat ulang halaman, dan membuka popup dari keadaan bersih).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 6, 8, 18); entri TAG Log Global (langkah 6, 8, 18).
 - Temuan untuk QA:
   - TC-FA-TAG-464 butir "Tabel Paired dimuat ulang" tidak memberi cara mengamatinya; spec mengasersinya sebagaimana tertulis dan cara teknis mengamatinya diminta dari tim FE.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-464 ("Dua aset keluar dari Not Paired Yet") dan TC-465 ("Satu aset keluar dari Not Paired Yet") tanpa langkah observasi di TC tidak diasersi.

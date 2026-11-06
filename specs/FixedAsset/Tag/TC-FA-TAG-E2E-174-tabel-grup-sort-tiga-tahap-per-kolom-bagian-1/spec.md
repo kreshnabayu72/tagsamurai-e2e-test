@@ -30,6 +30,7 @@ coverage:
 | Dataset Paired | Grup 'Excavator 20 Ton' / Plant A / RFID / Total Assets 20 / Reported 0 / Non-standard 0 / Not Paired Yet 2; 'Excavator 20 Ton' / Plant B / RFID / 20 / 2 / 5 / 0; 'Laptop Pro 14' / HQ / NFC, QR / 25 / 1 / 0 / 2; 'Forklift Manual' / Plant A / Non TAG / 10 / 0 / 3 / 0 | `datasetPaired` |
 
 - State yang diubah dan pemulihannya: tidak ada perubahan data bisnis (aksi hanya membaca); tiap TC berakhir pada klik ketiga sehingga sort kembali nonaktif.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -82,8 +83,8 @@ coverage:
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-702, TC-FA-TAG-703, TC-FA-TAG-704, TC-FA-TAG-705, TC-FA-TAG-706). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik sort tiga tahap per kolom ada di spec 174 (TC-FA-TAG-702 s.d. 706) dan spec 175 (TC-FA-TAG-707 s.d. 711).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - Expected tiap tahap sort pada TC-FA-TAG-702 s.d. 706 menggabungkan indikator sort dan urutan baris dalam satu butir; spec menulisnya sebagai satu Verifikasi per butir TC (indikator dan urutan dalam satu pernyataan).
   - TC-FA-TAG-706 menyebut dua baris dengan nilai Reported sama (0) tanpa aturan urutan kedua; spec mengikuti urutan yang tertulis di TC.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

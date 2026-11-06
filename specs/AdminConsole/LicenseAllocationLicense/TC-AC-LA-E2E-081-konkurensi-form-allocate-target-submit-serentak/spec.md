@@ -31,48 +31,50 @@ coverage:
 
 ### TC-AC-LA-139: Term Target berubah status oleh sesi lain, V-07, Target dikosongkan
 
-1. Klik `[+ Allocation]`
-2. Pilih Client `PT Sejahtera {runId}-081`
-3. Pilih Target term FAMS Professional Client itu
-4. Pilih Type `Concurrent User`
-5. Isi Additional Quantity `3`
-6. Pelaku kedua (sesi API) meng-Cancel Subscription term Target hingga tersimpan
-7. Tunggu aksi selesai
-8. Kembali ke form dan klik `[Submit]`
-9. Verifikasi pesan `This target no longer exists. Please select another.`
-10. Verifikasi Target dikosongkan
-11. Verifikasi Type ikut di-reset
-12. Verifikasi opsi Target dimuat ulang
-13. Verifikasi Client dan Additional Quantity `3` dipertahankan
-14. Verifikasi tidak ada record yang dibuat
-15. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+1. Catat jumlah baris tab Current sebagai baseline (Search tidak aktif)
+2. Klik `[+ Allocation]`
+3. Pilih Client `PT Sejahtera {runId}-081`
+4. Pilih Target term FAMS Professional Client itu
+5. Pilih Type `Concurrent User`
+6. Isi Additional Quantity `3`
+7. Pelaku kedua (sesi API) meng-Cancel Subscription term Target hingga tersimpan
+8. Tunggu aksi selesai
+9. Kembali ke form dan klik `[Submit]`
+10. Verifikasi pesan `This target no longer exists. Please select another.`
+11. Verifikasi Target dikosongkan
+12. Verifikasi Type ikut di-reset
+13. Verifikasi opsi Target dimuat ulang
+14. Verifikasi Client dan Additional Quantity `3` dipertahankan
+15. Verifikasi tidak ada record yang dibuat (jumlah baris tab Current sama dengan baseline)
+16. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
 
 ### TC-AC-LA-466: Dua pengajuan serentak menghasilkan Allocation ID berbeda
 
-16. Ganti akun: logout `Hendra W`, login sebagai `Dewi Anggraini` dengan `Spectra.env.AC_LA_DIST_FULL_PASSWORD`
-17. Catat jumlah baris tab Current sebagai baseline
-18. Klik `[+ Allocation]`, pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, dan isi Additional Quantity `1`
-19. Klik `[Submit]` pada detik yang sama dengan sesi API `Dewi Anggraini` mengirim Submit identik hingga tersimpan
-20. Tunggu aksi selesai
-21. Verifikasi jumlah baris tab Current bertambah dua dari baseline
-22. Verifikasi dua record baru memiliki Allocation ID berbeda dan berurutan (counter harian atomik)
+17. Ganti akun: logout `Hendra W`, login sebagai `Dewi Anggraini` dengan `Spectra.env.AC_LA_DIST_FULL_PASSWORD`
+18. Buka Allocation > License Allocation tab Current
+19. Catat jumlah baris tab Current sebagai baseline
+20. Klik `[+ Allocation]`, pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, dan isi Additional Quantity `1`
+21. Klik `[Submit]` pada detik yang sama dengan sesi API `Dewi Anggraini` mengirim Submit identik hingga tersimpan
+22. Tunggu aksi selesai
+23. Verifikasi jumlah baris tab Current bertambah dua dari baseline
+24. Verifikasi dua record baru memiliki Allocation ID berbeda dan berurutan (counter harian atomik)
 
 ### TC-AC-LA-474: Submit dari dua tab dengan form identik menghasilkan dua alokasi terpisah
 
-23. Catat jumlah baris tab Current sebagai baseline
-24. Buka tab browser kedua pada Allocation > License Allocation
-25. Pada tab pertama dan tab kedua, klik `[+ Allocation]`, pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, dan isi Additional Quantity `1` (form identik)
-26. Klik `[Submit]` pada tab pertama
-27. Klik `[Submit]` pada tab kedua
-28. Verifikasi jumlah baris tab Current bertambah dua dari baseline
-29. Verifikasi dua alokasi terpisah memiliki Allocation ID berbeda (top-up diizinkan)
+25. Catat jumlah baris tab Current sebagai baseline
+26. Buka tab browser kedua pada Allocation > License Allocation
+27. Pada tab pertama dan tab kedua, klik `[+ Allocation]`, pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, dan isi Additional Quantity `1` (form identik)
+28. Klik `[Submit]` pada tab pertama
+29. Klik `[Submit]` pada tab kedua
+30. Verifikasi jumlah baris tab Current bertambah dua dari baseline
+31. Verifikasi dua alokasi terpisah memiliki Allocation ID berbeda (top-up diizinkan)
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah 7 dan 20 (menunggu aksi selesai karena berganti sesi atau akun, 8b butir 8), 16 (ganti akun), 17 dan 23 (baseline S-12), 24 (membuka tab kedua), dialog `Unsaved Changes` (langkah 15, S-08).
+- Langkah penghubung (S-03): langkah 1 (Catat baseline jumlah baris tab Current tanpa Search sebelum membuka form, S-12), langkah 8 dan 22 (menunggu aksi selesai karena berganti sesi atau akun, 8b butir 8), 17 (ganti akun), 18 (membuka List tab Current setelah ganti akun, S-07), 19 dan 25 (baseline S-12), 26 (membuka tab kedua), dialog `Unsaved Changes` (langkah 16, S-08).
 - Penyimpangan data (S-06): TC-AC-LA-139 meng-Cancel term PT Sejahtera (Pre-setup #19); spec memakai Client seed milik spec dengan bentuk yang sama.
-- Pelaku kedua lewat sesi API (langkah 6, 19) tidak memakai butir `P-2` (bagian 3). Tab kedua pada langkah 24 sampai 27 adalah objek uji kelas c, bukan pemicu.
+- Pelaku kedua lewat sesi API (langkah 7, 21) tidak memakai butir `P-2` (bagian 3). Tab kedua pada langkah 26 sampai 29 adalah objek uji kelas c, bukan pemicu.
 - Temuan untuk QA:
   - TC-AC-LA-139 tidak menyebut akun dan mekanisme pelaku "sesi lain" yang meng-Cancel Subscription; disediakan tim FE.
   - TC-AC-LA-466 Langkah 1 ("Dua sesi Submit alokasi pada detik yang sama") tidak menyebut akun pengirim kedua dan tidak ada cara deterministik membuat "detik yang sama"; spec memakai sesi API `Dewi Anggraini` dan hasilnya (dua Allocation ID berbeda) yang diasersi.

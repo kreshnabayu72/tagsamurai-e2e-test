@@ -35,7 +35,7 @@ coverage:
 ### TC-GS-IMPORT-435 dan TC-GS-IMPORT-436: Tab Brand
 
 1. Pilih Sub-Tab Brand
-2. Klik `[Download Template]` di toolbar
+2. Klik `[Download Template]` (di Dropzone bila belum ada draft, di toolbar bila ada draft)
 3. Verifikasi berkas `Template-Import-Brand.xlsx` terunduh langsung
 4. Verifikasi tidak ada toast yang tampil
 5. Buka berkas XLSX yang terunduh pada pembaca buffer
@@ -52,7 +52,7 @@ coverage:
 ### TC-GS-IMPORT-437 dan TC-GS-IMPORT-438: Tab Measurement
 
 15. Pilih Sub-Tab Measurement
-16. Klik `[Download Template]` di toolbar
+16. Klik `[Download Template]` (di Dropzone bila belum ada draft, di toolbar bila ada draft)
 17. Verifikasi berkas `Template-Import-Measurement.xlsx` terunduh langsung
 18. Verifikasi tidak ada toast yang tampil
 19. Buka berkas XLSX yang terunduh pada pembaca buffer
@@ -70,7 +70,7 @@ coverage:
 ### TC-GS-IMPORT-439 dan TC-GS-IMPORT-440: Tab Position
 
 30. Pilih Sub-Tab Position
-31. Klik `[Download Template]` di toolbar
+31. Klik `[Download Template]` (di Dropzone bila belum ada draft, di toolbar bila ada draft)
 32. Verifikasi berkas `Template-Import-Position.xlsx` terunduh langsung
 33. Verifikasi tidak ada toast yang tampil
 34. Buka berkas XLSX yang terunduh pada pembaca buffer
@@ -87,7 +87,7 @@ coverage:
 ### TC-GS-IMPORT-441 dan TC-GS-IMPORT-442: Tab Division
 
 44. Pilih Sub-Tab Division
-45. Klik `[Download Template]` di toolbar
+45. Klik `[Download Template]` (di Dropzone bila belum ada draft, di toolbar bila ada draft)
 46. Verifikasi berkas `Template-Import-Division.xlsx` terunduh langsung
 47. Verifikasi tidak ada toast yang tampil
 48. Buka berkas XLSX yang terunduh pada pembaca buffer

@@ -35,6 +35,7 @@ coverage:
 - Data grup Excavator 20 Ton / Plant A: dua aset Not Paired Yet dengan TAG Code `—`, Status `Not Paired Yet`, dan row action `Pair TAG`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -90,7 +91,7 @@ coverage:
 - Langkah 2 TC-FA-TAG-51 dan TC-FA-TAG-53 (klik `Show`) sudah dijalankan oleh langkah 2 dan 10; tombol tetap aktif sampai langkah 7 dan 15 yang memuat klik `Close`. Urutan TC tidak diubah.
 - Langkah 27 adalah asersi absence atas baris tabel; anchor positif adalah Verifikasi dua aset Not Paired Yet tampil (langkah 26) (bagian 8b butir 2).
 - TC-FA-TAG-56 sampai 58 dan 1450 ada di spec 011.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-51 dan TC-FA-TAG-53 Expected "Tabel kembali memuat 20 aset" tidak menyebut cara mengamati 20 baris sedangkan ukuran halaman default 10; spec mengasersi jumlah total aset (indikator total Pagination) dan menyerahkan cara pengamatannya ke tahap script. TC-FA-TAG-59 mengamati 20 baris dengan mengubah page size menjadi 25.
   - TC-FA-TAG-50 dan TC-FA-TAG-52 butir "memuat semua TAG Code-nya" tidak menyebut kode yang dimaksud; spec mengasersinya secara umum (semua Tag aset tampil di sel TAG Code).
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

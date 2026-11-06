@@ -22,6 +22,7 @@ coverage:
 - Data Pre-setup (dipakai sebagai latar; hanya dibaca, tidak diubah): dataset tab Paired (Excavator 20 Ton / Plant A, Excavator 20 Ton / Plant B, Laptop Pro 14 / HQ, Forklift Manual / Plant A).
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena data Pre-setup yang sama dipakai spec lain (suite.md).
 - State global yang diubah: flag Guided Tooltip akun Total Control (dipulihkan di hook `after`); suite berjalan serial.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -45,6 +46,6 @@ coverage:
 - Langkah 6 adalah langkah penghubung (menutup walkthrough hasil replay), tanpa asersi (S-03). Skip menetapkan flag true, yang sama dengan kondisi awal TC-FA-TAG-72.
 - Langkah 9 adalah asersi absence atas overlay dan Tooltip box; anchor positif adalah Verifikasi Breadcrumb tampil pada halaman yang sama (langkah 8) (bagian 8b butir 2).
 - TC-FA-TAG-62 sampai 70 dan 74 ada di spec 013 dan 014; TC-FA-TAG-73 dan 75 ada di spec 019.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut data yang sama dengan spec lain; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-71 Expected c ("Flag seen tidak di-reset") tidak punya langkah observasi di TC; spec membacanya lewat kemampuan baca flag yang mekanismenya tidak didefinisikan di TC, PRD, atau LLD dan disediakan tim FE/BE.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut data yang sama dengan spec lain, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

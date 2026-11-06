@@ -31,33 +31,35 @@ coverage:
 1. Hover `[Import (0)]`
 2. Verifikasi `[Import (0)]` Disabled dengan tooltip "You don't have permission to do this."
 3. Verifikasi tooltip "No rows are ready to import." tidak tampil
-4. Hover `[Upload File]`
+4. Hover `[Upload File]` di Dropzone
 5. Verifikasi `[Upload File]` Disabled dengan tooltip "You don't have permission to do this."
-6. Hover Dropzone
+6. Hover area drag-and-drop Dropzone
 7. Verifikasi Dropzone Disabled dengan tooltip "You don't have permission to do this."
+8. Hover `[Download Template]` di Dropzone
+9. Verifikasi `[Download Template]` Enabled tanpa tooltip izin
 
 ### TC-GS-IMPORT-34: Dropzone Disabled dan berkas diseret tidak diproses (Import data (Read Only))
 
-8. Hover Dropzone
-9. Verifikasi Dropzone tampil Disabled dengan tooltip "You don't have permission to do this."
-10. Seret berkas `brand-12.csv` ke Dropzone
-11. Verifikasi Modal Column Mapping tidak terbuka
-12. Verifikasi halaman tetap menampilkan Dropzone tanpa draft
+10. Hover Dropzone
+11. Verifikasi Dropzone tampil Disabled dengan tooltip "You don't have permission to do this."
+12. Seret berkas `brand-12.csv` ke Dropzone
+13. Verifikasi Modal Column Mapping tidak terbuka
+14. Verifikasi halaman tetap menampilkan Dropzone tanpa draft
 
 ### TC-GS-IMPORT-594: Dropzone Disabled dan berkas diseret tidak diproses (Read Only)
 
-13. Ganti akun: login sebagai Read Only Client B, buka Import > Brand
-14. Hover Dropzone
-15. Verifikasi Dropzone tampil Disabled dengan tooltip "You don't have permission to do this."
-16. Seret berkas `brand-12.csv` ke Dropzone
-17. Verifikasi Modal Column Mapping tidak terbuka
-18. Verifikasi halaman tetap menampilkan Dropzone tanpa draft
+15. Ganti akun: login sebagai Read Only Client B, buka Import > Brand
+16. Hover Dropzone
+17. Verifikasi Dropzone tampil Disabled dengan tooltip "You don't have permission to do this."
+18. Seret berkas `brand-12.csv` ke Dropzone
+19. Verifikasi Modal Column Mapping tidak terbuka
+20. Verifikasi halaman tetap menampilkan Dropzone tanpa draft
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `global-settings/import/TestCases/tc-import.md`. Spec Role Matrix (bagian 3a) untuk dua role pada state belum ada draft.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 13 (ganti akun).
-- Langkah 3 (absence tooltip) memakai tooltip izin langkah 2 sebagai anchor positif pada elemen yang sama; langkah 11 memakai Dropzone Disabled langkah 9 atau 15 sebagai anchor.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 15 (ganti akun).
+- Langkah 3 (absence tooltip) memakai tooltip izin langkah 2 sebagai anchor positif pada elemen yang sama; langkah 13 memakai Dropzone Disabled langkah 11 atau 17 sebagai anchor.
 - Temuan untuk QA:
   - TC-GS-IMPORT-32 Expected a menggabungkan Disabled, tooltip izin, dan tidak adanya tooltip "No rows are ready to import." dalam satu butir; spec memecahnya per klausa.
   - Post Condition "Tidak ada draft Brand pada Client B" pada TC-GS-IMPORT-34 dan 594 setara dengan Expected b.

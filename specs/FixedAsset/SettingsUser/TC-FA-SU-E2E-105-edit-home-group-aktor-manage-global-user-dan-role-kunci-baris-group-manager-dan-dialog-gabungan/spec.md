@@ -17,13 +17,13 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Manage global user & role (Update) Qori Akbar (Pre-setup #4), email akun ini tidak tertulis di Pre-setup TC (disediakan tim FE), kredensial `Spectra.env.FA_MURG_UPD_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite. Hook `after` memulihkan sesi ke akun default suite (Total Control Lina Marlina, `FA_TC_PASSWORD`).
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor untuk pelaku kedua, dan pemulihan Pre-setup bersama lewat seed API.
-- Data Pre-setup: Client `FaUserMain` (#20), pohon grup (#21), penugasan (#23). Pengguna target: Oscar Pranata (Pre-setup #9; Group Manager IT Infrastructure dan Accounts Payable dengan Group Role Manage group C/R/U/D pada kedua grup). Nama pengguna dan grup Pre-setup dirujuk lewat fixture `Fixture.fixedAssetSettingsUser.<kunci>` (berkas `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan tim FE).
-- Kemampuan baca jumlah entri (disediakan tim FE/BE): entri `Edit Home Group` pada Tab Changelog pengguna target, Tab System Log aktor, dan Activity Log, dibaca sebelum dan sesudah aksi. Audit trail bersifat permanen sehingga asersi hanya memakai selisih terhadap baseline (S-12), bukan angka absolut.
-- Kemampuan seed API (disediakan tim BE/FE): memulihkan Home Group dan penugasan peran pengguna Pre-setup ke kondisi Tabel Data Uji Pre-setup TC. Pemulihan dijalankan sebagai langkah penghubung dan di hook `after` (cadangan). Pemulihan Oscar Pranata pada langkah 26 dan di hook `after`. Efek pada Pre-setup: Home Group dan status Group Manager Oscar Pranata berubah (Last Updated, Modified By) dan entri log permanen `Edit Home Group` serta `Auto-Revert` bertambah.
+- Data Pre-setup: Client `FaUserMain` (#20), pohon grup (#21), penugasan (#23). Pengguna target: Oscar Pranata (Pre-setup #9; Group Manager IT Infrastructure dan Accounts Payable; memegang baris pola Group Manager pada kedua grup: Group Role katalog selain Manage user & role dengan CRUD penuh sesuai kolom yang berlaku dan Transaction Role Asset Admin serta Approver pada setiap Jenis Transaksi). Nama pengguna dan grup Pre-setup dirujuk lewat fixture `Fixture.fixedAssetSettingsUser.<kunci>` (berkas `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan tim FE).
+- Kemampuan baca jumlah entri (disediakan tim FE/BE): entri `Edit Home Group` dan `Auto-Revert` pada Tab Changelog pengguna target, Tab System Log aktor, dan Activity Log, serta entri `Remove (via Group Manager)` pada modal Changelog User > Group Role dan modal Changelog User > Transaction Role pengguna target, dibaca sebelum dan sesudah aksi. Audit trail bersifat permanen sehingga asersi hanya memakai selisih terhadap baseline (S-12), bukan angka absolut.
+- Kemampuan seed API (disediakan tim BE/FE): memulihkan Home Group dan penugasan peran pengguna Pre-setup ke kondisi Tabel Data Uji Pre-setup TC. Pemulihan dijalankan sebagai langkah penghubung dan di hook `after` (cadangan). Pemulihan Oscar Pranata pada langkah 31 dan di hook `after`. Efek pada Pre-setup: Home Group, status Group Manager, dan baris pola Group Manager IT Infrastructure Oscar Pranata berubah (Last Updated, Modified By), entri log permanen `Edit Home Group` serta `Auto-Revert` bertambah, dan entri `Remove (via Group Manager)` bertambah di kedua modal Changelog User.
 
 ## Test Steps
 
-1. Catat jumlah entri `Edit Home Group` dan `Auto-Revert` pada Tab Changelog Oscar Pranata, Tab System Log aktor, dan Activity Log sebagai baseline
+1. Catat jumlah entri `Edit Home Group` dan `Auto-Revert` pada Tab Changelog Oscar Pranata, Tab System Log aktor, dan Activity Log, serta jumlah entri `Remove (via Group Manager)` pada modal Changelog User > Group Role dan modal Changelog User > Transaction Role Oscar Pranata sebagai baseline
 
 ### TC-FA-SU-1068: Edit Home Group oleh Manage global user & role
 
@@ -39,9 +39,9 @@ coverage:
 11. Verifikasi aksi `Edit Home Group` tampil pada baris Oscar Pranata
 12. Klik `Edit Home Group`
 13. Klik node Accounts Payable lalu klik `[Select]`
-14. Verifikasi dialog Title `Remove Group Manager` memuat bagian konfirmasi constraint lebih dulu, diikuti `This edit will remove Group Manager status for this group. Their role permissions in this group will remain as edited.` dan `Are you sure you want to remove it?`
-15. Verifikasi tombol `[Cancel]` (Text, Contrast) dan `[Remove]` tampil
-16. Klik `[Remove]`
+14. Verifikasi dialog Title `Role Outside Constraint Will Be Revoked` memuat bullet `• Manage group — IT Infrastructure` dan `• Group Manager — IT Infrastructure`, kalimat `Setting the Home Group constraint to Accounts Payable for Oscar Pranata will revoke these assignments outside this group.` dan `Are you sure you want to revoke them?`
+15. Verifikasi tombol `[Cancel]` (Text, Contrast) dan `[Revoke]` tampil
+16. Klik `[Revoke]`
 17. Verifikasi Home Group Oscar Pranata berubah menjadi Accounts Payable
 18. Verifikasi toast "Success, home group has been updated." tampil
 19. Buka Detail Oscar Pranata > Tab Role
@@ -51,10 +51,15 @@ coverage:
 23. Verifikasi entri `Auto-Revert` / Object `Group Manager` / Field `Group Manager — IT Infrastructure` / Old Value `Assigned` / New Value `—` tercatat
 24. Baca jumlah entri `Edit Home Group` dan `Auto-Revert` pada Tab Changelog Oscar Pranata, Tab System Log aktor, dan Activity Log
 25. Verifikasi jumlah entri `Edit Home Group` dan `Auto-Revert` bertambah masing-masing 1 dibanding baseline pada Tab Changelog Oscar Pranata, Tab System Log aktor, dan Activity Log
-26. Pulihkan Home Group dan status Group Manager Oscar Pranata ke kondisi Pre-setup lewat seed API
+26. Buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role, buka modal Changelog User > Group Role, muat ulang sampai entri tampil, lalu baca jumlah entri `Remove (via Group Manager)`
+27. Verifikasi baris pola Group Manager IT Infrastructure ikut dicabut per baris: jumlah entri `Remove (via Group Manager)` pada modal Changelog User > Group Role bertambah dibanding baseline
+28. Tutup modal dengan `[✕]`, klik Sub-tab Transaction Role, buka modal Changelog User > Transaction Role, muat ulang sampai entri tampil, lalu baca jumlah entri `Remove (via Group Manager)`
+29. Verifikasi baris pola Group Manager IT Infrastructure ikut dicabut per baris: jumlah entri `Remove (via Group Manager)` pada modal Changelog User > Transaction Role bertambah dibanding baseline
+30. Tutup modal dengan `[✕]`
+31. Pulihkan Home Group dan status Group Manager Oscar Pranata ke kondisi Pre-setup lewat seed API
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular. Aktor Manage global user & role (Update) Qori Akbar login di hook `before` (akun pertama spec).
-- Langkah penghubung (tanpa awalan `Verifikasi`): langkah 1 (baseline), menutup kedua popup tanpa perubahan, kembali ke User List, membuka Detail dan Tab Changelog, serta langkah 26 (pemulihan).
-- Temuan untuk QA (S-15): (1) Post Condition TC-FA-SU-1068 butir c (notifikasi in-app view-only terkirim ke pengguna target) tidak punya langkah observasi dan tidak diasersi; notifikasi diasersi pada spec 094 (TC-FA-SU-319). (2) Email akun Qori Akbar tidak tertulis di Pre-setup TC. (3) TC-FA-SU-1068 langkah 6 membuka Tab Changelog pada Detail Oscar Pranata; Post Condition butir b meminta entri pada Tab System Log aktor dan Activity Log, diamati lewat selisih jumlah.
+- Langkah penghubung (tanpa awalan `Verifikasi`): langkah 1 (baseline), menutup kedua popup tanpa perubahan, kembali ke User List, membuka Detail dan Tab Changelog, langkah 26, 28, dan 30 (membuka dan menutup modal Changelog User per Sub-tab, sekaligus membaca jumlah entri `Remove (via Group Manager)` lewat kemampuan baca tim FE/BE), serta langkah 31 (pemulihan).
+- Temuan untuk QA (S-15): (1) Post Condition TC-FA-SU-1068 butir c (notifikasi in-app view-only terkirim ke pengguna target) tidak punya langkah observasi dan tidak diasersi; notifikasi diasersi pada spec 094 (TC-FA-SU-319). (2) Email akun Qori Akbar tidak tertulis di Pre-setup TC. (3) TC-FA-SU-1068 langkah 6 membuka Tab Changelog pada Detail Oscar Pranata; Post Condition butir b meminta entri pada Tab System Log aktor dan Activity Log, diamati lewat selisih jumlah. (4) Expected d TC-FA-SU-1068 menyebut baris pola Group Manager IT Infrastructure "ikut dicabut per baris" tanpa daftar baris dan jumlah; spec mengasersi selisih jumlah entri `Remove (via Group Manager)` pada kedua modal tanpa angka absolut.

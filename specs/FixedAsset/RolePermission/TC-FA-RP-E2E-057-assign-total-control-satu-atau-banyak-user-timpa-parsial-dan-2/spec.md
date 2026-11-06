@@ -100,7 +100,7 @@ coverage:
 - Search untuk menemukan baris target (R-16): langkah 23, 25, 27, 33, 44.
 - Asersi absence di picker (langkah pada TC-FA-RP-190) memakai empty state hasil Search sebagai anchor positif (butir 8b.2); asersi absence di Tab Group Manager dan Tab Read Only memakai empty state hasil Search yang sama.
 - Langkah Search pada Tab (R-16) menemukan baris yang baru ditambahkan karena tabel memuat lebih banyak baris daripada satu halaman.
-- Post Condition TC-FA-RP-192 (pelepasan GM, log `Remove`, notifikasi in-app) dan TC-FA-RP-199 (log `Assign` Old Value `Read Only`, tidak ada notifikasi Remove Read Only) tidak punya langkah observasi dan tidak diasersi (S-01, S-15).
+- Post Condition TC-FA-RP-192 (pelepasan GM beserta baris pola GM-nya sebelum baris pola tier ditulis, log `Remove`, notifikasi in-app) dan TC-FA-RP-199 (log `Assign` Old Value `Read Only`, tidak ada notifikasi Remove Read Only) tidak punya langkah observasi dan tidak diasersi (S-01, S-15).
 - Penyimpangan kecil: TC-FA-RP-191 mencari tiap user satu per satu sebelum mencentang ketiganya; Search dikosongkan di antara pencarian dan pencentangan agar ketiga user terlihat bersamaan.
 - Temuan untuk QA:
   - TC-FA-RP-191: langkah 3 mencentang ketiga user setelah dicari satu per satu; TC tidak menyatakan apakah seleksi bertahan antar Search atau Search harus dikosongkan; spec mengosongkan Search dahulu.

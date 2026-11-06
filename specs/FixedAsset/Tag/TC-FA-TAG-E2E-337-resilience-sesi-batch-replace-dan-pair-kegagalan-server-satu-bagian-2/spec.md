@@ -28,6 +28,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, `RF-00416` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: intercept dipasang di langkah 5 dan dilepas di langkah 14; spec tidak menyimpan pairing (aset 1 gagal di server). Hook `after` memastikan ketiga aset Not Paired Yet dan ketiga Tag Available serta melepas semua intercept.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 7 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 
 ## Test Steps
 
@@ -53,7 +54,7 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-TAG-405 s.d. 407 (kegagalan server pada sesi Batch Replace) ada di spec 336.
 - TC-468 memakai sesi yang sama dengan TC-467: langkah 1 s.d. 7 TC-468 identik dengan langkah 1 s.d. 7 TC-467 (dataset, intercept, dan pindaian sama), sehingga langkah 12 melanjutkan dari dialog TC-467 tanpa membangun sesi ulang.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 14 (melepas intercept), 15 (muat ulang halaman untuk menutup dialog dirty; dialog `beforeunload` ditangani sesuai Prerequisites).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 7 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-467 dan TC-FA-TAG-468 (aset 'Excavator 20 Ton - 51' tetap Not Paired Yet, Tag `RF-00412` tetap Available) tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

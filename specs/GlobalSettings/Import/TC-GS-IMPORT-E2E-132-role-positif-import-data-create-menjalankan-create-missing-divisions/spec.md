@@ -40,7 +40,7 @@ coverage:
 ### TC-GS-IMPORT-348: Import data (Create) menjalankan Create Missing Divisions
 
 1. Buka Tab User Login pada halaman Import
-2. Klik [Upload File] di toolbar dan pilih berkas user-login-logistik-4.csv
+2. Klik [Upload File] di Dropzone dan pilih berkas user-login-logistik-4.csv
 3. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 4. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
 5. Verifikasi toast sukses "Success, division has been created."
@@ -57,7 +57,7 @@ coverage:
 ### TC-GS-IMPORT-920: Import data (Create) menjalankan Create Missing Options
 
 15. Buka Tab User Login pada halaman Import
-16. Klik [Upload File] di toolbar dan pilih berkas user-login-shift-lembur.csv
+16. Klik [Upload File] di Dropzone dan pilih berkas user-login-shift-lembur.csv
 17. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 18. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout
 19. Verifikasi toast sukses "Success, option has been created."

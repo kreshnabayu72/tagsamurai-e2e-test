@@ -72,28 +72,30 @@ coverage:
 ### TC-FA-TAG-1183: Receive di tujuan pada kondisi T1
 
 16. Buka layar transaksi Transfer untuk aset `Aset Matriks Receive T1 {runId}-309`
-17. Jalankan langkah "Receive di tujuan" sampai selesai
-18. Verifikasi langkah "Receive di tujuan" pada Transfer berjalan normal sampai selesai
-19. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+17. Jalankan langkah "Receive di tujuan"
+18. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+19. Lanjutkan langkah "Receive di tujuan" sampai selesai
+20. Verifikasi langkah "Receive di tujuan" pada Transfer berjalan normal sampai selesai
 
 ### TC-FA-TAG-1184: Receive di tujuan pada kondisi T2
 
-20. Buka layar transaksi Transfer untuk aset `Aset Matriks Receive T2 {runId}-309`
-21. Jalankan langkah "Receive di tujuan" sampai selesai
-22. Verifikasi langkah "Receive di tujuan" pada Transfer berjalan normal sampai selesai
+21. Buka layar transaksi Transfer untuk aset `Aset Matriks Receive T2 {runId}-309`
+22. Jalankan langkah "Receive di tujuan"
 23. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+24. Lanjutkan langkah "Receive di tujuan" sampai selesai
+25. Verifikasi langkah "Receive di tujuan" pada Transfer berjalan normal sampai selesai
 
 ### TC-FA-TAG-1185: Receive di tujuan pada kondisi T3
 
-24. Buka layar transaksi Transfer untuk aset `Aset Matriks Receive T3 {runId}-309`
-25. Jalankan langkah "Receive di tujuan"
-26. Verifikasi tombol `[I can't scan the TAG]` tersedia
-27. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-28. Verifikasi bidang "Foto aset" bertanda wajib (*)
-29. Unggah Foto aset dan selesaikan transaksi
-30. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-31. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
-32. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
+26. Buka layar transaksi Transfer untuk aset `Aset Matriks Receive T3 {runId}-309`
+27. Jalankan langkah "Receive di tujuan"
+28. Verifikasi tombol `[I can't scan the TAG]` tersedia
+29. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+30. Verifikasi bidang "Foto aset" bertanda wajib (*)
+31. Unggah Foto aset dan selesaikan transaksi
+32. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+33. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
+34. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
 
 ## Notes
 

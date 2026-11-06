@@ -36,7 +36,7 @@ coverage:
 3. Pilih Client `PT Abadi Jaya`, Target `SUBS-20260110-C1D2E`, Type `Concurrent User`, isi Additional Quantity `2`, biarkan Pay From kosong
 4. Klik `[Submit]`
 5. Verifikasi pesan inline di bawah Pay From `Pay From must not be empty`
-6. Klik `[✕]` pada header
+6. Klik `[×]` pada header
 7. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 8. Klik `[Leave]`
 9. Verifikasi sedikitnya satu baris tampil pada tab Current
@@ -51,7 +51,7 @@ coverage:
 15. Verifikasi Alert severity danger `Insufficient balance in your pocket. Available: $20.00. Required: $100.00.`
 16. Verifikasi Alert tampil real-time setelah preview Cost dimuat, tanpa klik `[Submit]`
 17. Verifikasi tombol `[Submit]` disabled
-18. Klik `[✕]` pada header
+18. Klik `[×]` pada header
 19. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 20. Klik `[Leave]`
 

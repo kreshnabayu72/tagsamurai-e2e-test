@@ -24,7 +24,7 @@ coverage:
 - Pelaku aksi pada TC adalah pengguna login dengan nama tampil 'Budi S.'; kolom Modified By diasersi berformat [First Name] [Last Initial].
 - Data (Pre-setup TC, tanpa suffix): 'Excavator 20 Ton - 42' (AST-0042, Plant A, RFID) dengan Tag QR `QR-00230` Paired (Non-standard).
 - Stok Global (precondition TC): Tag RFID `RF-00412`, `RF-00415`, `RF-00420`, Tag NFC `NF-00500`, Tag QR `QR-00701` berstatus Available.
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 4); entri TAG Log Global (langkah 4).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan aset, Tag, laporan, stok Tag per tipe di registri Global, dan TAG Type Asset Name ke keadaan awal lewat fixture backend.
 - State global yang diubah spec ini: stok Tag per tipe di registri Global, status Tag, dan data aset/laporan Pre-setup. Suite serial (`parallel: false`).
 
@@ -36,16 +36,18 @@ coverage:
 2. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 42'
 3. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
 4. Klik [Submit]
-5. Buka Global Settings > TAG
-6. Ketik Search `QR-00230`, tekan Enter
-7. Verifikasi Illustration `No results found`: pencarian `QR-00230` tidak menemukan Tag di registri
-8. Verifikasi tidak ada entri TAG Log untuk `QR-00230`
+5. Tunggu aksi selesai (dialog "Replace TAG" tertutup dan tombol aktif kembali)
+6. Buka Global Settings > TAG
+7. Ketik Search `QR-00230`, tekan Enter
+8. Verifikasi Illustration `No results found`: pencarian `QR-00230` tidak menemukan Tag di registri
+9. Verifikasi tidak ada entri TAG Log untuk `QR-00230`
 
 ## Notes
 
 - Mode: FE+BE.
-- Tidak ada langkah penghubung; TC-FA-TAG-1098 adalah satu-satunya TC spec ini. TC-FA-TAG-1095 sampai 1097 ada di spec 277.
+- Langkah penghubung (S-03): 5 ("Tunggu aksi selesai", bagian 8b butir 8, karena sesudahnya terjadi pindah surface); selebihnya berasal dari TC. TC-FA-TAG-1098 adalah satu-satunya TC spec ini. TC-FA-TAG-1095 sampai 1097 ada di spec 277.
 - Absence (pencarian `QR-00230` tanpa hasil) memakai empty state `No results found` hasil Search sebagai anchor positif (bagian 8b butir 2).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 4); entri TAG Log Global (langkah 4).
 - Temuan untuk QA:
   - TC-FA-TAG-1098 Expected b ('Tidak ada entri TAG Log untuk QR-00230') tidak punya langkah observasi terpisah dari pencarian registri; spec menuliskannya sebagai satu `Verifikasi` yang bergantung pada hasil pencarian.
   - TC-FA-TAG-1098 Post Condition ('Tag QR lama keluar dari registri bersama riwayatnya') sama dengan Expected a yang diasersi.

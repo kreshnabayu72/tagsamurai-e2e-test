@@ -79,7 +79,7 @@ coverage:
 29. Pilih Type `Concurrent User`
 30. Verifikasi skeleton tampil pada Current Quota setelah Type dipilih
 31. Lepas tahanan respons Current Quota dan lepas intercept
-32. Klik `[✕]` pada header
+32. Klik `[×]` pada header
 33. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 34. Klik `[Leave]`
 

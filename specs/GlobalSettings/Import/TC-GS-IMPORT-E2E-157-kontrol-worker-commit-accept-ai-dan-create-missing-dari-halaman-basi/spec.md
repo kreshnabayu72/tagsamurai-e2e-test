@@ -42,7 +42,7 @@ coverage:
 1. Reset Client E (D-47) ke tanpa draft; pastikan mock AI mode normal
 2. Muat ulang halaman Import > Brand
 3. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-4. Klik `[Upload File]` di toolbar dan pilih berkas `brand-ai-commit.csv`
+4. Klik `[Upload File]` di Dropzone dan pilih berkas `brand-ai-commit.csv`
 5. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 6. Tunggu aksi selesai (modal tertutup)
 7. Mulai commit draft Brand Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (2)]`)
@@ -91,7 +91,7 @@ coverage:
 41. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
 42. Pilih Sub-Tab User Login
 43. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-44. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-logistik.csv`
+44. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-commit-logistik.csv`
 45. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 46. Tunggu aksi selesai (modal tertutup)
 47. Mulai commit draft User Login Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (1)]`)
@@ -111,7 +111,7 @@ coverage:
 58. Reset Client E (D-47) ke tanpa draft dan pulihkan worker commit
 59. Buka Global Settings > Import, pilih Sub-Tab User Login
 60. Aktifkan kontrol worker commit mode 1 (dijeda sebelum job mulai)
-61. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-commit-store-supervisor.csv`
+61. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-commit-store-supervisor.csv`
 62. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 63. Tunggu aksi selesai (modal tertutup)
 64. Mulai commit draft User Login Client E atas nama Admin kedua Client E lewat permintaan Import fixture (sesi API; setara klik `[Import (1)]`)

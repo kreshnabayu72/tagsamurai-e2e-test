@@ -32,7 +32,7 @@ coverage:
 ### TC-GS-IMPORT-443 dan TC-GS-IMPORT-444: Tab User Login
 
 1. Pilih Sub-Tab User Login
-2. Klik `[Download Template]` di toolbar
+2. Klik `[Download Template]` (di Dropzone bila belum ada draft, di toolbar bila ada draft)
 3. Verifikasi berkas `Template-Import-User-Login.xlsx` terunduh langsung
 4. Verifikasi tidak ada toast yang tampil
 5. Buka berkas XLSX yang terunduh pada pembaca buffer
@@ -56,7 +56,7 @@ coverage:
 ### TC-GS-IMPORT-445 dan TC-GS-IMPORT-446: Tab User Non Login
 
 22. Pilih Sub-Tab User Non Login
-23. Klik `[Download Template]` di toolbar
+23. Klik `[Download Template]` (di Dropzone bila belum ada draft, di toolbar bila ada draft)
 24. Verifikasi berkas `Template-Import-User-Non-Login.xlsx` terunduh langsung
 25. Verifikasi tidak ada toast yang tampil
 26. Buka berkas XLSX yang terunduh pada pembaca buffer

@@ -45,7 +45,7 @@ coverage:
 9. Buka Global Settings > Activity Log > tab User Action
 10. Terapkan Filter Action `Create` dan Search Name `Logistik` pada Activity Log (entri Object `Division`), lalu catat angka total pada teks Pagination
 11. Buka Import > User Login
-12. Klik [Upload File] di toolbar dan pilih berkas `user-login-logistik-4.csv`
+12. Klik [Upload File] di Dropzone dan pilih berkas `user-login-logistik-4.csv`
 13. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 14. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
 15. Tunggu aksi selesai (permintaan mendapat respons)
@@ -81,7 +81,7 @@ coverage:
 42. Buka Global Settings > Activity Log > tab User Action
 43. Terapkan Filter Action `Create` dan Search Name `Store Supervisor` pada Activity Log (entri Object `Position`), lalu catat angka total pada teks Pagination
 44. Buka Import > User Login
-45. Klik [Upload File] di toolbar dan pilih berkas `user-login-store-supervisor-1.csv`
+45. Klik [Upload File] di Dropzone dan pilih berkas `user-login-store-supervisor-1.csv`
 46. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 47. Klik `[Create Missing Positions]` pada baris pesan "Position not found" di Error Summary Callout
 48. Tunggu aksi selesai (permintaan mendapat respons)
@@ -111,7 +111,7 @@ coverage:
 69. Terapkan Filter Action `Create` dan Search Name `Logistik` pada Changelog Division, lalu catat angka total pada teks Pagination
 70. Tutup modal Changelog Division
 71. Buka Import > User Login
-72. Klik [Upload File] di toolbar dan pilih berkas `user-login-division-skip.csv`
+72. Klik [Upload File] di Dropzone dan pilih berkas `user-login-division-skip.csv`
 73. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 74. Klik `[Create Missing Divisions]` pada baris pesan "Division not found" di Error Summary Callout
 75. Verifikasi toast sukses "Success, division has been created. Some items were skipped."
@@ -137,7 +137,7 @@ coverage:
 92. Buka Global Settings > Activity Log > tab User Action
 93. Terapkan Filter Action `Edit` dan Search Name `Shift` pada Activity Log (entri Object `Custom Field`), lalu catat angka total pada teks Pagination
 94. Buka Import > User Login
-95. Klik [Upload File] di toolbar dan pilih berkas `user-login-shift-bulk.csv`
+95. Klik [Upload File] di Dropzone dan pilih berkas `user-login-shift-bulk.csv`
 96. Biarkan seluruh dropdown File Column pada nilai auto-match, klik [Confirm Mapping]
 97. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout
 98. Tunggu aksi selesai (permintaan mendapat respons)

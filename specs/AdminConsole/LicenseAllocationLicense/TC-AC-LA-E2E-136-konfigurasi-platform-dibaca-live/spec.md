@@ -44,7 +44,7 @@ coverage:
 5. Pilih Type `Concurrent User`
 6. Isi Additional Quantity `10`
 7. Catat Preview Cost dengan harga awal sebagai `{cost0}` (`$100.00`)
-8. Klik `✕`
+8. Klik `[×]`
 9. Verifikasi dialog `Unsaved Changes` dengan isi `You have unsaved changes. Are you sure you want to leave?`
 10. Klik `[Leave]`
 11. Naikkan harga Concurrent User di Wallet > Product Price menjadi $730 per unit per tahun hingga tersimpan
@@ -54,7 +54,7 @@ coverage:
 15. Pilih Type `Concurrent User`
 16. Isi Additional Quantity `10`
 17. Verifikasi Preview Cost `$200.00` memakai harga baru, berbeda dari `{cost0}` tanpa memuat ulang halaman List
-18. Klik `✕`
+18. Klik `[×]`
 19. Verifikasi dialog `Unsaved Changes` dengan isi `You have unsaved changes. Are you sure you want to leave?`
 20. Klik `[Leave]`
 21. Pastikan kolom Cost tampil: klik ikon `⋯` pada header kolom, klik `Setup Column...`, centang kolom Cost, lalu klik `[Save]`
@@ -109,33 +109,35 @@ coverage:
 64. Catat Allocation ID baris baru sebagai `{idDone}` (tidak ada pada baseline langkah 57)
 65. Verifikasi Status `{idDone}` adalah `Completed`
 66. Setel Require Approval for Allocation ON (Pre-setup #38) lewat Settings > Role & Permission
-67. Buka Allocation > License Allocation (tab Current), lalu catat baseline Allocation ID baris di halaman pertama
-68. Klik `[+ Allocation]`
-69. Pilih Client `PT Sejahtera`
-70. Pilih Target `SUBS-20260101-A1B2C`
-71. Pilih Type `Concurrent User`
-72. Isi Additional Quantity `1`
-73. Klik `[Submit]`
-74. Catat Allocation ID baris baru sebagai `{idWait}` (tidak ada pada baseline langkah 67)
-75. Verifikasi Status `{idWait}` adalah `Waiting for Approval`
-76. Verifikasi Status `{idDone}` tetap `Completed` setelah toggle diubah
+67. Tunggu aksi selesai (toggle ON tersimpan)
+68. Buka Allocation > License Allocation (tab Current), lalu catat baseline Allocation ID baris di halaman pertama
+69. Klik `[+ Allocation]`
+70. Pilih Client `PT Sejahtera`
+71. Pilih Target `SUBS-20260101-A1B2C`
+72. Pilih Type `Concurrent User`
+73. Isi Additional Quantity `1`
+74. Klik `[Submit]`
+75. Catat Allocation ID baris baru sebagai `{idWait}` (tidak ada pada baseline langkah 68)
+76. Verifikasi Status `{idWait}` adalah `Waiting for Approval`
+77. Verifikasi Status `{idDone}` tetap `Completed` setelah toggle diubah
 
 ### Toggle berubah saat alokasi Waiting for Approval (TC-AC-LA-473)
 
-77. Ganti akun: Logout dari Dewi Anggraini
-78. Login sebagai Fajar Nugroho (`totalControlDistLic`, password `Spectra.env.AC_LA_TC_DIST_PASSWORD`)
-79. Ubah toggle Require Approval for Allocation ke OFF di Settings > Role & Permission
-80. Buka Allocation > License Allocation (tab Current)
-81. Ketik Search `{idWfa}`, tekan Enter
-82. Verifikasi Status `{idWfa}` tetap `Waiting for Approval`
-83. Buka Approvals > License Allocation
-84. Verifikasi alokasi `{idWfa}` tetap muncul di Approvals
+78. Ganti akun: Logout dari Dewi Anggraini
+79. Login sebagai Fajar Nugroho (`totalControlDistLic`, password `Spectra.env.AC_LA_TC_DIST_PASSWORD`)
+80. Ubah toggle Require Approval for Allocation ke OFF di Settings > Role & Permission
+81. Tunggu aksi selesai (toggle OFF tersimpan)
+82. Buka Allocation > License Allocation (tab Current)
+83. Ketik Search `{idWfa}`, tekan Enter
+84. Verifikasi Status `{idWfa}` tetap `Waiting for Approval`
+85. Buka Approvals > License Allocation
+86. Verifikasi alokasi `{idWfa}` tetap muncul di Approvals
 
 ## Notes
 
-- Alasan di atas sekitar 35 langkah (84 langkah; lima langkah baseline dan tiga anchor baris baru menambah hitungan): seluruh blok satu topik (konfigurasi platform dibaca live saat aksi alokasi), satu kelas harness fungsional, masing-masing berdiri sendiri pada konfigurasi dan record sendiri. Pengisian form Allocate diulang per Client dan per Subscription pada TC-AC-LA-475 (tiga plan), dan TC-AC-LA-441 memakai dua pembukaan form yang masing-masing ditutup lewat `✕` (S-08).
+- Alasan di atas sekitar 35 langkah (86 langkah; lima langkah baseline dan tiga anchor baris baru menambah hitungan): seluruh blok satu topik (konfigurasi platform dibaca live saat aksi alokasi), satu kelas harness fungsional, masing-masing berdiri sendiri pada konfigurasi dan record sendiri. Pengisian form Allocate diulang per Client dan per Subscription pada TC-AC-LA-475 (tiga plan), dan TC-AC-LA-441 memakai dua pembukaan form yang masing-masing ditutup lewat `[×]` (S-08).
 - Urutan blok berbeda dari urutan sourceTc agar toggle Require Approval for Allocation hanya berganti OFF, ON, OFF dan ganti akun hanya satu kali (S-07): TC-AC-LA-473 terakhir.
-- Langkah penghubung (S-03): langkah 21 (menampilkan kolom Cost lewat `⋯` > `Setup Column...`, centang kolom Cost, `[Save]`, tanpa `Verifikasi`; kolom Cost tersembunyi secara bawaan, TC-AC-LA-1 butir b.ii), langkah 1 dan 24 (mengatur dan memulihkan jam serta harga), langkah 7 (mencatat Preview Cost awal sebagai pembanding, tanpa `Verifikasi`), langkah 11 (mengubah harga), langkah 22 dan 81 (Search baris berdasarkan Allocation ID), langkah 66 dan 79 (menyetel toggle), langkah 77 sampai 80 (ganti akun dan navigasi), langkah 25, 35, 45, 57, dan 67 (baseline Allocation ID baris di halaman pertama tab Current sebelum tiap `[Submit]`, S-12, pola spec 042; langkah 25 mengosongkan Search `{idOld}` lewat klik `(←)` pada kotak Search, sedangkan pada langkah 35, 45, dan 57 tidak ada Search aktif sehingga baseline langsung dicatat; langkah 67 membuka ulang List karena toggle baru disetel), langkah 33, 43, dan 53 (anchor positif baris baru sebelum asersi tidak ada dialog gating, 8b butir 2).
+- Langkah penghubung (S-03): langkah 21 (menampilkan kolom Cost lewat `⋯` > `Setup Column...`, centang kolom Cost, `[Save]`, tanpa `Verifikasi`; kolom Cost tersembunyi secara bawaan, TC-AC-LA-1 butir b.ii), langkah 1 dan 24 (mengatur dan memulihkan jam serta harga), langkah 7 (mencatat Preview Cost awal sebagai pembanding, tanpa `Verifikasi`), langkah 11 (mengubah harga), langkah 22 dan 83 (Search baris berdasarkan Allocation ID), langkah 66 dan 80 (menyetel toggle), langkah 67 dan 81 (menunggu aksi selesai karena langkah berikutnya membuka surface lain, 8b butir 8), langkah 78 sampai 82 (ganti akun dan navigasi), langkah 25, 35, 45, 57, dan 68 (baseline Allocation ID baris di halaman pertama tab Current sebelum tiap `[Submit]`, S-12, pola spec 042; langkah 25 mengosongkan Search `{idOld}` lewat klik `(←)` pada kotak Search, sedangkan pada langkah 35, 45, dan 57 tidak ada Search aktif sehingga baseline langsung dicatat; langkah 68 membuka ulang List karena toggle baru disetel), langkah 33, 43, dan 53 (anchor positif baris baru sebelum asersi tidak ada dialog gating, 8b butir 2).
 - Temuan untuk QA:
   - TC-AC-LA-475 meminta Type `Concurrent User` pada Subscription SIEM Growth Klinik Medika Jaya (Pre-setup #20), sedangkan Pre-setup #20 menyatakan "Type non-SIEM tidak tersedia" (Target Log Source) dan Pre-setup #22 (SAMS Growth) hanya memuat Target Asset Control App, Station, dan Storage. Type `Concurrent User` mungkin tidak tersedia pada dua Subscription itu; spec mengikuti TC dan mencatat kontradiksi ini.
   - TC-AC-LA-475 tidak menyebut Quantity, Target (term), dan bentuk tampilan "gating atau upsell"; spec memakai Quantity `1`, Target dari Pre-setup #19, #20, dan #22, dan asersi tidak adanya dialog atau banner tambahan.
@@ -143,4 +145,4 @@ coverage:
   - TC-AC-LA-442 dan TC-AC-LA-473 tidak menyebut pelaku pengubah toggle di Settings > Role & Permission dan nilai Status awal di List; spec memakai Status `Completed` dan `Waiting for Approval` sesuai teks TC.
   - TC-AC-LA-473 butir b ("Toggle hanya memengaruhi Submit atau Edit berikutnya") adalah pernyataan cakupan; asersinya diwakili butir a.
   - TC-AC-LA-473 Precondition menyatakan toggle ON saat Submit, sedangkan spec menyetel OFF sesudah blok TC-AC-LA-442 menyetel ON; seed `{idWfa}` dibuat saat toggle ON.
-  - TC-AC-LA-442 butir a menyebut Status `Completed` pada List (langkah 65 dan 76), sedangkan TC-AC-LA-7 butir g menyatakan status `Completed` tidak pernah tampil sebagai label badge; spec mengikuti teks TC-AC-LA-442.
+  - TC-AC-LA-442 butir a menyebut Status `Completed` pada List (langkah 65 dan 77), sedangkan TC-AC-LA-7 butir g menyatakan status `Completed` tidak pernah tampil sebagai label badge; spec mengikuti teks TC-AC-LA-442.

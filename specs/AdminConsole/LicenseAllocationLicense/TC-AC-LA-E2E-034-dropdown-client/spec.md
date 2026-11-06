@@ -61,7 +61,7 @@ coverage:
 23. Pilih Client `Gudang Lawas`
 24. Buka dropdown Client dan ganti isi kotak pencarian dengan `Gudang Lawas`
 25. Verifikasi opsi `Gudang Lawas` tetap tampil di dropdown
-26. Klik `[✕]` pada header
+26. Klik `[×]` pada header
 27. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 28. Klik `[Leave]`
 

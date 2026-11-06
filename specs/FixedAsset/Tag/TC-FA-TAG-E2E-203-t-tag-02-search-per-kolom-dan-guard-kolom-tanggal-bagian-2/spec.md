@@ -22,14 +22,15 @@ coverage:
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before`, lihat `suite.md`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (disediakan tim FE); nilai literal TC pada langkah diberi kunci fixture oleh tahap script.
 - Data Pre-setup tab Paired (grup / Group / Tipe TAG / Total / Reported / Non-standard / Not Paired Yet): Excavator 20 Ton / Plant A / RFID / 20 / 0 / 0 / 2; Excavator 20 Ton / Plant B / RFID / 20 / 2 / 5 / 0; Laptop Pro 14 / HQ / NFC, QR / 25 / 1 / 0 / 2; Forklift Manual / Plant A / Non TAG / 10 / 0 / 3 / 0. Grup Excavator 20 Ton / Plant B (20 aset) memuat lima aset acuan: AST-0011 (Excavator 20 Ton - 11), AST-0020 (- 20), AST-0021 (- 21), AST-0043 (- 43), AST-0044 (- 44); urutan Last Updated terbaru ke terlama: AST-0044, AST-0043, AST-0021, AST-0020, AST-0011; 15 aset lain memakai Asset ID AST-0101 sampai AST-0115 (Brand Volvo, Model EC210, tanpa Label, Last Scanned kosong, Last Updated sebelum 30 Sep 26); Asset Name Excavator 20 Ton di Plant A memakai increment 201 sampai 220.
-- Data TC-FA-TAG-801: kata kunci `Hitachi`.
-- Data TC-FA-TAG-802: kata kunci `ZX210`.
+- Data TC-FA-TAG-801: kata kunci `Hitachi`; Brand: AST-0011 = Caterpillar; AST-0020 = Komatsu; AST-0021 = Caterpillar; AST-0043 = Hitachi; AST-0044 = Komatsu.
+- Data TC-FA-TAG-802: kata kunci `ZX210`; Model/Type: AST-0011 = 320D; AST-0020 = PC200; AST-0021 = 330F; AST-0043 = ZX210; AST-0044 = PC300.
 - Data TC-FA-TAG-803: Label: AST-0020 [Urgent]; AST-0021 [Rental, Urgent]; AST-0044 [Audit, Rental, Urgent]; kata kunci `Urgent`.
-- Data TC-FA-TAG-804: kata kunci `tag reported`.
+- Data TC-FA-TAG-804: kata kunci `tag reported`; Status: AST-0011 = Available; AST-0020 = Assigned, Tag Reported; AST-0021 = In Transfer Process; AST-0043 = Available, Tag Reported; AST-0044 = Available.
 - Kolom Brand, Model/Type, dan Status tampil secara bawaan; kolom Label ditampilkan lewat Setup Column sebelum Search TC-FA-TAG-803 (precondition TC: kolom yang dicari ditampilkan).
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`; penghapusan preferensi kolom tabel T-TAG-02 di browser (cache browser tempat konfigurasi Setup Column disimpan) dipakai di hook `after` dan sebagai langkah penghubung bila tertulis.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom di browser (bukan lewat `[Reset to Default]`) dan kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global selain preferensi kolom di browser.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 14), dipulihkan hook `after` (lihat `suite.md`).
 
 ## Test Steps
 
@@ -78,7 +79,7 @@ coverage:
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 6, 12, 13, 14, 15, 21, 27, 28.
 - Search dipakai di toolbar halaman; isi kotak diganti pada TC berikutnya dan Search ditutup di akhir spec.
 - Langkah penghubung sebelum TC-FA-TAG-803 membuka Popup Detail, menampilkan kolom Label, lalu menutup popup agar Search memenuhi precondition TC.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 14), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
-  - Spec ini menyimpan konfigurasi kolom lewat Setup Column dan hook `after` spec ini menghapus preferensi kolom di browser; nomor spec ini belum tercantum pada daftar pemulihan kolom di `suite.md`.
+  - Spec ini menyimpan konfigurasi kolom lewat Setup Column dan hook `after` spec ini menghapus preferensi kolom di browser; nomor spec ini tercantum pada daftar pemulihan kolom di `suite.md`.
   - Post Condition TC ("Tidak ada perubahan data bisnis (aksi hanya membaca)" dan "Konfigurasi kolom tersimpan di cache browser ...") tidak punya langkah observasi di TC; tidak diasersi.

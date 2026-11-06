@@ -50,7 +50,7 @@ coverage:
 ### TC-FA-RP-1040: Confirm D-10 dengan Group Role dan Group Manager
 
 8. Siapkan Gunawan Halim tanpa Home Group memegang `Manage files` di `Helpdesk` dan ditugaskan Group Manager di `Dock 1`, dengan akun login, lewat sesi API hingga tersimpan
-9. Catat jumlah entri Changelog Detail Role `Manage files` dan jumlah notifikasi in-app Gunawan Halim sebagai baseline lewat kemampuan baca
+9. Catat jumlah entri Changelog Detail Role `Manage files` selain entri `Remove (via Group Manager)` dan jumlah notifikasi in-app Gunawan Halim sebagai baseline lewat kemampuan baca
 10. Buka Settings > User > Detail Gunawan Halim
 11. Klik field Home Group lalu pilih `Data Center`, klik `[Select]`
 12. Klik `[Revoke]`
@@ -60,8 +60,8 @@ coverage:
 16. Verifikasi sedikitnya satu baris lain tampil pada Detail Role `Manage files`
 17. Verifikasi baris `Manage files` Gunawan Halim di `Helpdesk` hilang
 18. Buka Changelog Detail Role `Manage files`
-19. Verifikasi modal Changelog tampil dengan sedikitnya satu entri
-20. Verifikasi selisih jumlah entri Changelog Detail Role `Manage files` terhadap baseline langkah 9 nol sehingga tidak ada entri log per baris Group Role itu
+19. Verifikasi modal Changelog memuat entri `Remove (via Group Manager)` untuk baris pola GM Gunawan Halim di `Dock 1` (satu entri per baris, Modified By `Hendra W`)
+20. Verifikasi selisih jumlah entri Changelog Detail Role `Manage files` selain `Remove (via Group Manager)` terhadap baseline langkah 9 nol sehingga tidak ada entri log per baris Group Role itu
 21. Tutup modal Changelog
 22. Buka Tab `Group Manager` pada Settings > Role & Permission
 23. Verifikasi sedikitnya satu baris Group Manager lain tampil di Tab `Group Manager`
@@ -115,4 +115,5 @@ coverage:
 - Temuan untuk QA:
   - Email akun login Gunawan Halim tidak tertulis di Pre-setup #17; akun disediakan tim FE. Nama env `FA_GUNAWAN_PASSWORD` sudah terdaftar di `suite.md`.
   - TC-FA-RP-1097 butir a menyebut dialog tampil "per pengguna" tanpa menjelaskan urutan dan mekanik pergantian dialog; spec menutup dialog pertama dengan `[Cancel]` sebelum mengasersi dialog kedua (langkah 49).
+  - TC-FA-RP-1040 butir b yang baru menyebut entri `Remove (via Group Manager)` per baris pola GM di `Dock 1` tanpa menyebut Object, Field, Old/New Value maupun Role yang memuatnya; spec hanya mengasersi keberadaan entri di Changelog Detail Role `Manage files` dan Modified By aktor (Hendra Wijaya, `Hendra W`; langkah 19), dan memisahkannya dari asersi tidak ada entri log baris Group Role lewat baseline yang mengecualikan entri `Remove (via Group Manager)` (langkah 9 dan 20). Perlu konfirmasi QA.
   - TC-FA-RP-1040 butir d ("hanya satu notifikasi") tidak memberi teks notifikasi Group Manager `Dock 1`; spec mengasersi keberadaan dan jumlahnya saja (langkah 28 dan 29).

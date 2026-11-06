@@ -33,7 +33,7 @@ coverage:
 3. Catat angka total pada teks Pagination Changelog Custom Field (Showing [From] - [To] of [N] items; 0 bila yang tampil adalah empty state) sebagai baseline
 4. Tutup modal Changelog
 5. Buka Global Settings > Import, pilih Sub-Tab User Login
-6. Klik `[Upload File]` di toolbar dan pilih berkas `user-login-shift-longname.csv`
+6. Klik `[Upload File]` di Dropzone dan pilih berkas `user-login-shift-longname.csv`
 7. Biarkan seluruh dropdown File Column pada nilai auto-match, klik `[Confirm Mapping]`
 8. Klik `[Create Missing Options]` pada baris pesan "Shift: Invalid option" di Error Summary Callout
 9. Verifikasi toast error: "Error, failed to create option."
