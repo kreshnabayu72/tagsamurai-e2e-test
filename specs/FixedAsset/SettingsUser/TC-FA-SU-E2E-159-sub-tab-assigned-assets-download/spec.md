@@ -34,7 +34,7 @@ coverage:
 
 ### TC-FA-SU-464: Download Sub-tab Assigned Assets: format CSV dan XLSX, nama file, dan tanpa toast sukses
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Hover icon Download
 4. Verifikasi tooltip `Download` tampil
@@ -91,7 +91,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Asersi "tidak ada toast" diletakkan tepat sesudah pemicu `Pilih Download as CSV` dan sebelum asersi berkas (bagian 8b butir 11).
 - Nilai Search `Printer`, Filter PIC `Citra L`, kolom yang di-hide `Brand`, dan keyword tanpa hasil `zzz-tidak-ada` dipilih spec karena TC-FA-SU-465 tidak menyebut nilainya (kombinasi menyisakan satu baris).
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (50 langkah, 50 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets (Download), satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.

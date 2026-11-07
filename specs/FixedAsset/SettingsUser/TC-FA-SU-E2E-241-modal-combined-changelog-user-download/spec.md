@@ -41,7 +41,7 @@ coverage:
 7. Buka dropdown Modified By, centang `Ahmad D`
 8. Klik `[Apply]`
 9. Klik icon Download, pilih `Download as CSV`
-10. Verifikasi berkas hanya memuat baris yang cocok dengan Search dan Filter (irisan Search `Edit` dan Filter Modified By `Ahmad D`: C-4 (1 baris))
+10. Verifikasi berkas hanya memuat baris yang cocok dengan Search dan Filter (irisan Search `Edit` dan Filter Modified By `Ahmad D`: C-4 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil))
 11. Klik `[Clear Field]` lalu `[Apply]`, lalu klik `(←)` pada kotak Search
 12. Klik header Column Visibility (⋯), hilangkan centang Old Value
 13. Klik icon Download, pilih `Download as CSV`

@@ -26,7 +26,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-555: Kombinasi Search dan Filter dua arah
 
@@ -77,7 +77,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; `[Clear Field]`, `[Apply]`, dan `←` pada Search di awal TC-FA-SU-556 mengosongkan kontrol sisa TC-FA-SU-555 (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13); `[Clear Field]`, `[Apply]`, dan `←` pada Search di awal TC-FA-SU-556 mengosongkan kontrol sisa TC-FA-SU-555 (S-09).
 - Langkah `Verifikasi keyword Printer menyisakan Printer Lantai 5` dan `Verifikasi Filter Division Facility menyisakan Ruang Meeting Anggrek` ditambahkan sebagai anchor positif absence 0 baris (8b butir 2, S-03).
 - TC-FA-SU-557 ada di spec 193.
 - Jumlah langkah: 41 tertulis, 41 dengan ekspansi iterasi.

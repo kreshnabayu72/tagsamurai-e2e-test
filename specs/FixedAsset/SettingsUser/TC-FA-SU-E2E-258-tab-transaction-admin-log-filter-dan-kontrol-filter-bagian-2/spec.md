@@ -84,15 +84,17 @@ coverage:
 49. Klik icon Filter untuk membuka panel
 50. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
 51. Verifikasi badge titik pada icon Filter hilang
-52. Verifikasi dropdown `Group` tidak memiliki opsi untuk nilai kosong
-53. Buka dropdown `Group`, lalu centang `Branch Surabaya`
-54. Klik `[Apply]`
-55. Klik header `⋯`, hilangkan centang `Group`, lalu tutup overlay dengan Esc
-56. Verifikasi field `Group` tetap ada pada panel Filter
-57. Verifikasi Filter Group `Branch Surabaya` tetap berlaku (tabel menyisakan `BRW-20260716-0314`)
-58. Klik header `⋯`, beri centang `Group`, lalu tutup overlay dengan Esc
-59. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
-60. Klik icon Filter untuk menutup panel
+52. Buka dropdown `Group`
+53. Verifikasi dropdown `Group` memuat opsi data: `Branch Surabaya`, `Finance & Accounting`, `General Affairs`, `IT Infrastructure`, `Logistics Warehouse`
+54. Verifikasi dropdown `Group` tidak memiliki opsi untuk nilai kosong
+55. Centang `Branch Surabaya`
+56. Klik `[Apply]`
+57. Klik header `⋯`, hilangkan centang `Group`, lalu tutup overlay dengan Esc
+58. Verifikasi field `Group` tetap ada pada panel Filter
+59. Verifikasi Filter Group `Branch Surabaya` tetap berlaku (tabel menyisakan `BRW-20260716-0314`)
+60. Klik header `⋯`, beri centang `Group`, lalu tutup overlay dengan Esc
+61. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
+62. Klik icon Filter untuk menutup panel
 
 ## Notes
 
@@ -100,4 +102,5 @@ coverage:
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): langkah 1 (mencari pengguna dan membuka sub-tab; pencarian pengguna di User List adalah langkah penghubung, R-16), semua `[Clear Field]` lalu `[Apply]`, pengosongan Search, pemulihan sort, penutupan overlay dan panel Filter (S-09).
 - `Verifikasi` tabel lima baris di awal TC-FA-SU-779 adalah anchor positif untuk asersi "0 baris" (bagian 8b butir 2); asersi itu tambahan atas Expected TC dan dicatat di sini (S-03). Kata kunci tanpa hasil `zzzz` pada TC-FA-SU-780 dipilih spec karena TC tidak menyebut nilainya.
 - Temuan untuk QA (S-15): (1) TC-FA-SU-780 meminta mengganti sort "tanpa mereset Search dan Filter", tetapi Search sudah dikosongkan pada langkah sebelumnya; spec hanya mengasersi Filter tetap berlaku. (2) TC-FA-SU-779 butir d "Tabel kembali ke halaman 1" tidak dapat dibuktikan pada fixture satu halaman; spec mengasersi tabel berada di halaman 1. (3) TC-FA-SU-781 butir c menyebut "menyaring keluar baris yang nilainya kosong", tetapi seed #29 tidak memiliki nilai kosong; hanya ketiadaan opsi nilai kosong yang diasersi. (4) TC-FA-SU-781 butir a tidak menyebut cara mengasersi "nilai ter-Apply terakhir"; spec mengasersi field `Group` kosong karena belum ada filter ter-Apply.
-- Spec ini berjumlah 60 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional baca) pada satu surface yang sama dengan data seed yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Spec ini berjumlah 62 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional baca) pada satu surface yang sama dengan data seed yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Langkah 53 (`Verifikasi` dropdown `Group` memuat opsi data) adalah asersi tambahan di luar Expected TC-FA-SU-781 dan menjadi anchor positif untuk asersi absence opsi nilai kosong pada langkah 54 (bagian 8b butir 2, S-03).

@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE. Backend nyata; tidak ada intercept.
 - Akun aktor: Total Control Company Alpha (Pre-setup #1, Sarah Johnson), `Fixture.assetLabeling.akun.totalControl`, `Spectra.env.FA_LBL_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Asset Master > tab Labels). Tidak ada ganti akun di tengah spec.
 - Ganti akun di tengah spec (TC-FA-LBL-438): Total Control Company Changelog (Pre-setup #17), `Fixture.assetLabeling.akun.totalControlChangelog`, `Spectra.env.FA_TC_CHANGELOG_PASSWORD` (langkah 11 sampai 12). Hook `after` mengembalikan sesi ke akun default suite.
-- Env var: `Spectra.env.FA_LBL_TC_PASSWORD` dan `Spectra.env.FA_TC_CHANGELOG_PASSWORD` terdaftar di `executionConfig.environmentVariables` dan `.env.example`; password tidak ditulis di spec atau fixture.
+- Env var: `Spectra.env.FA_LBL_TC_PASSWORD` dan `Spectra.env.FA_TC_CHANGELOG_PASSWORD` didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`; password tidak ditulis di spec atau fixture.
 - Hook suite (flag Guided Tooltip `seen`, pembukaan tab Labels, pemulihan state global) mengikuti `suite.md`; spec ini tidak menulis ulang isinya.
 - Data Pre-setup (hanya dibaca): #12 katalog Company Alpha (kolom Last Updated Labels List), #13 aset berlabel `Finance Department` (kolom Last Updated Drawer), #17 Company Changelog dengan tujuh baris seed (Date 08 sampai 15 Sep 2026) yang dipisahkan lewat Filter Date `08 Sep 2026` sampai `15 Sep 2026` (kolom Date Modal Changelog; hanya baris seed `Edit High Priority` dan `Delete Old Tag` yang diasersi; entri TC lain bertanggal hari run berada di luar rentang).
 - Nilai General Settings uji (default entitas, TC-FA-LBL-437 sampai 439; `global-settings/general-settings/PRD/general-settings.md` §9.5). Fixture `fixtures/asset-labeling.json` (disediakan tim FE; belum ada, S-12). Kunci yang dipakai spec ini:
@@ -61,7 +61,7 @@ coverage:
 15. Buka Filter Modal Changelog, lalu pilih rentang `08 Sep 2026` sampai `15 Sep 2026` pada `Date` dan klik `[Apply]`
 16. Verifikasi kolom Date baris seed `Edit High Priority` tampil `15/09/26 14:25`
 17. Verifikasi kolom Date baris seed `Delete Old Tag` tampil `08/09/26 13:00`
-18. Buka Filter Modal Changelog, lalu pilih rentang `14 Sep 2026` sampai `15 Sep 2026` pada `Date`
+18. Pilih rentang `14 Sep 2026` sampai `15 Sep 2026` pada `Date` di panel Filter Modal Changelog
 19. Verifikasi kotak input Filter `Date` menampilkan tanggal `14/09/26` dan `15/09/26`
 20. Tutup panel Filter dan Modal Changelog tanpa menerapkan rentang kedua
 
@@ -73,4 +73,5 @@ coverage:
 - Urutan: TC-FA-LBL-439 ditaruh sebelum TC-FA-LBL-438 supaya akun default suite dipakai lebih dulu dan ganti akun ke Company Changelog hanya sekali.
 - Rentang Filter dan contoh tampilan diambil dari Data Uji TC-FA-LBL-437 sampai 439. Rentang pertama `08 Sep 2026` sampai `15 Sep 2026` (langkah 15) di-Apply supaya baris seed dibaca atas hasil Filter Date; rentang kedua `14 Sep 2026` sampai `15 Sep 2026` (langkah 18) tidak diterapkan: TC hanya mengasersi teks tanggal pada kotak input Filter dan kolom tanggal, sehingga panel Filter ditutup tanpa menerapkan rentang kedua (S-09).
 - Temuan untuk QA:
+  - Langkah 18: panel Filter Modal Changelog diasumsikan tetap terbuka sesudah `[Apply]` pada langkah 15 (pola Filter Panel Drawer, bagian 8b butir 9), sehingga ikon Filter tidak diklik lagi; perilaku panel Modal Changelog sesudah `[Apply]` belum dikonfirmasi dan ditanyakan ke tim FE (D-11, F-305).
   - Email akun Total Control Company Changelog tidak tertulis di Pre-setup TC; disediakan tim FE.

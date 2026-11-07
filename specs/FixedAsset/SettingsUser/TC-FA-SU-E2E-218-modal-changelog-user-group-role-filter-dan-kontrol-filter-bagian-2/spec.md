@@ -31,14 +31,14 @@ coverage:
 
 ### TC-FA-SU-655: Pelepasan kontrol
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Group Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Group Role, lalu klik icon Changelog
 2. Ketik Search `Assign`, tekan Enter
 3. Klik icon Filter
 4. Buka dropdown Action, centang `Assign`
 5. Klik `[Apply]`
 6. Klik header Date satu kali
 7. Klik `[Clear Field]` lalu `[Apply]`
-8. Verifikasi Search `Assign` tetap berlaku: GR-1, GR-2, GR-3 (3 baris)
+8. Verifikasi Search `Assign` tetap berlaku: GR-1, GR-2, GR-3 (3 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 9. Verifikasi Sort Date tetap berlaku
 10. Buka dropdown Action, centang `Assign`
 11. Klik `[Apply]`
@@ -53,7 +53,7 @@ coverage:
 20. Ganti isi kotak search dengan `Zzzz`, tekan Enter
 21. Verifikasi kombinasi 0 baris menampilkan `No results found` dengan deskripsi `Try adjusting your search or filter.`
 22. Klik `(←)` pada kotak Search
-23. Verifikasi baris yang cocok pulih: GR-2
+23. Verifikasi baris yang cocok pulih: GR-2 (baris non-seed yang memenuhi kriteria boleh ikut tampil)
 
 ### TC-FA-SU-656: Perilaku Filter Panel
 
@@ -92,9 +92,9 @@ coverage:
 53. Verifikasi hasil adalah gabungan (OR) kedua opsi
 54. Klik ✕ pada satu chip tanpa membuka dropdown
 55. Verifikasi chip itu hilang
-56. Verifikasi checkbox opsi terkait ter-uncheck
-57. Verifikasi chip lain tetap
-58. Buka dropdown Action
+56. Buka dropdown Action
+57. Verifikasi checkbox opsi terkait ter-uncheck
+58. Verifikasi chip lain tetap
 59. Hilangkan centang opsi yang tersisa
 60. Verifikasi chip yang bersangkutan hilang
 61. Centang dua opsi (`Edit` dan `Assign`) lalu hilangkan centang satu opsi
@@ -109,6 +109,8 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
+- Asersi baris seed pada Modal Changelog (audit trail permanen) ditulis relatif terhadap baris seed: urutan relatif dan jumlah baris seed, dengan baris non-seed yang memenuhi kriteria boleh menyisip atau ikut tampil (S-14), mengikuti kualifier Expected TC sumber; TC-FA-SU-655 tidak memuat kualifier sehingga spec menambahkannya karena surface-nya sama.
 - Langkah penghubung tambahan (S-03): langkah 24 (`[Clear Field]` lalu `[Apply]`, lalu menutup panel Filter) melepas Filter Action `Assign` yang masih ter-Apply dari blok Pelepasan kontrol dan menutup panel yang tetap terbuka sesudah `[Apply]`, supaya blok Perilaku Filter Panel mulai dari Filter kosong dan panel tertutup (S-09).
 - Asersi tambahan di luar Expected (S-03): `Verifikasi` pada langkah 39 membuktikan opsi pembanding tampil di dropdown Action sebagai anchor positif sebelum asersi absence opsi nilai kosong (bagian 8b butir 2).
 - Spec ini berjumlah 67 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.

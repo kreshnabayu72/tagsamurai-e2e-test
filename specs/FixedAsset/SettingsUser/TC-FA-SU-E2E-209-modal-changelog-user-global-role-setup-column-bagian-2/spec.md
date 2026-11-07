@@ -42,7 +42,7 @@ coverage:
 
 ### TC-FA-SU-629: Geser (drag reorder) kelas Hideable
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
 2. Buka Setup Column
 3. Untuk setiap baris tabel "Urutan drag kolom Hideable" (langkah 3 sampai 4): drag kolom baris itu satu posisi sesuai kolom "Arah" baris itu
 4. Verifikasi urutan Live Preview sama dengan kolom "Urutan kolom sesudah drag" baris itu
@@ -56,6 +56,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
 - Langkah berulang (idiom bagian 8b butir 7): langkah 3 sampai 4 dijalankan 7 kali, satu iterasi per baris tabel "Urutan drag kolom Hideable" (9 langkah tertulis, 21 dengan ekspansi, di bawah ambang sekitar 35).
 - TC-FA-SU-630 (pin dan unpin modal Global Role) ada di spec 213.
-- Temuan untuk QA (S-15): (1) TC tidak menyebut cara menguji kolom yang menjadi satu-satunya kolom visible; spec menguji lima kolom pertama bersamaan lalu kolom terakhir terpisah setelah kolom lain dicentang kembali. Post Condition preferensi kolom tersimpan per perangkat tidak punya langkah observasi dan tidak diasersi. (2) TC tidak menyebut arah drag; spec menetapkan arah tiap kolom pada tabel "Urutan drag kolom Hideable" (satu posisi, kolom tetangga bertukar tempat) dan mengasersi urutan kumulatif setelah tiap drag, setelah `[Save]`, dan setelah F5, karena tujuh drag berurutan disimpan dengan satu `[Save]` sehingga posisi akhir tiap kolom tidak berdiri sendiri.
+- Temuan untuk QA (S-15): TC tidak menyebut arah drag; spec menetapkan arah tiap kolom pada tabel "Urutan drag kolom Hideable" (satu posisi, kolom tetangga bertukar tempat) dan mengasersi urutan kumulatif setelah tiap drag, setelah `[Save]`, dan setelah F5, karena tujuh drag berurutan disimpan dengan satu `[Save]` sehingga posisi akhir tiap kolom tidak berdiri sendiri.

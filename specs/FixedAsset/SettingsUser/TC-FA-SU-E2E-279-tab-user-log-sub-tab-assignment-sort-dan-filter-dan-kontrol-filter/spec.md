@@ -34,7 +34,7 @@ coverage:
 
 ### TC-FA-SU-846: Sort kelas teks: Transaction ID, Name
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
+1. Ketik Search `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
 2. Klik header Transaction ID satu kali
 3. Verifikasi Transaction ID klik 1 ascending (↑), lima baris pertama: A-5, A-4, A-1, A-3, A-2
 4. Klik header Transaction ID kedua kali
@@ -90,6 +90,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung pencarian baris (S-03, R-16, bagian 8b butir 13): langkah 1 mencari pengguna lewat Search nama persis `Budi Santoso` (nama Pre-setup) sebelum membuka Detail, karena User List dapat memuat lebih dari satu halaman (25 pengguna, 3 halaman) sehingga spec tidak mengandalkan posisi baris di halaman.
 - Panel Filter tetap terbuka sesudah `[Apply]` dan baru tertutup bila icon Filter diklik (keputusan produk); karena itu `[Clear Field]` + `[Apply]` dijalankan tanpa mengklik icon Filter lagi. Langkah 39 (`Klik icon Filter untuk menutup panel`) adalah langkah penghubung yang menutup panel sebelum blok berikutnya (S-03, S-09).
 - Spec ini berjumlah 39 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi isi dan urutan baris seed tanpa Filter pembatas pada surface User Log yang dapat bertambah entri; spec mengikuti TC dan mengandalkan seed #30 yang disediakan ulang di hook `before` dan `after` (S-12, S-14). (2) TC-FA-SU-846 dan TC-FA-SU-847: Expected hanya mendaftar lima baris pertama dari lima baris seed; spec mengasersi lima baris itu. Pada sort Name, A-1 dan A-3 berurutan sama di kedua arah (nilai Name keduanya tidak tertulis di Pre-setup TC); spec mengikuti TC. TC-FA-SU-848 Langkah Uji menyebut "tiap header kolom yang dicantumkan" padahal hanya Activity.

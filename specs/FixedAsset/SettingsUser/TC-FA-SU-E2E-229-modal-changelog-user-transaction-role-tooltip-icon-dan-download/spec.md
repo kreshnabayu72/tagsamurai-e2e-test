@@ -33,7 +33,7 @@ coverage:
 
 ### TC-FA-SU-697: Download format CSV dan XLSX, nama file, tanpa toast sukses
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
 2. Hover icon Download
 3. Verifikasi tooltip ikon `Download`
 4. Klik icon Download
@@ -89,6 +89,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
 - TC-FA-SU-699 (transformasi data Download) ada di spec 372 dan TC-FA-SU-700 (Download gagal) ada di spec 367; TC-FA-SU-702 (empty state, loading, dan error load) ada di spec 363.
 - Spec ini berjumlah 45 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) Klausa Expected d TC-FA-SU-697 (BOM UTF-8, tanda kutip ganda, sheet `Sheet1`) adalah isi berkas (kelas f, binary buffer); spec menulisnya sebagai `Verifikasi` bersama nama berkas dengan kemampuan baca berkas dari tim FE. Mohon konfirmasi bila harus dipindah ke spec kelas f. (2) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). (3) Search `Assign` dan Filter Modified By `Ahmad D` pada TC-FA-SU-698 tidak disertai daftar baris hasil; spec mengasersi irisan kedua kontrol tanpa menyebut baris tertentu.

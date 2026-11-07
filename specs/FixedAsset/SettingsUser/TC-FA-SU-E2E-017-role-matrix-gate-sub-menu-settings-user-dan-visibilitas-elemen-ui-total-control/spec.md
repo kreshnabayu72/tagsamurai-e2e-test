@@ -70,36 +70,39 @@ coverage:
 26. Verifikasi halaman 2 berisi 10 baris
 27. Klik halaman 3 pada pagination
 28. Verifikasi halaman 3 berisi 5 baris, sehingga daftar memuat seluruh 25 pengguna organisasi
-29. Klik halaman 1 pada pagination
+29. Ketik Search `Budi Santoso`, tekan Enter
 30. Verifikasi sakelar Active baris Budi Santoso Enabled
-31. Buka row action menu `⋯` baris Hana Kusuma (Pending Activation)
-32. Verifikasi row action `Resend Activation Email` Show Enabled
-33. Verifikasi row action `Edit Home Group` Show
-34. Tutup row action menu dengan menekan Esc
-35. Buka row action menu `⋯` baris Indra Wijaya (Pending Email Confirmation)
-36. Verifikasi row action `Resend Confirmation Email` Show Enabled
-37. Tutup row action menu dengan menekan Esc
-38. Verifikasi kolom checkbox Show
-39. Centang baris Budi Santoso
-40. Verifikasi Bulk Actions Bar menampilkan `Activate`, `Deactivate`, `Edit Home Group`, dan `Resend Activation Email`
-41. Hapus centang baris Budi Santoso
-42. Buka Detail Budi Santoso lalu Tab Role (Sub-tab Global Role)
-43. Verifikasi switch dan checkbox C/R/U/D Global Role Show Enabled
-44. Buka Sub-tab Group Role
-45. Verifikasi `[Assign Group]` dan `[Detail]` Show
-46. Buka Sub-tab Transaction Role
-47. Verifikasi `[+ Assign]`, `Remove`, `[Assign Group]`, dan `[Bulk Remove]` Show Enabled
-48. Verifikasi Tab Responsibilities, Non-Login User, Changelog, System Log, Transaction Admin Log, User Log, dan ikon Changelog Show
+31. Ganti isi kotak search dengan `Hana Kusuma`, tekan Enter
+32. Buka row action menu `⋯` baris Hana Kusuma (Pending Activation)
+33. Verifikasi row action `Resend Activation Email` Show Enabled
+34. Verifikasi row action `Edit Home Group` Show
+35. Tutup row action menu dengan menekan Esc
+36. Ganti isi kotak search dengan `Indra Wijaya`, tekan Enter
+37. Buka row action menu `⋯` baris Indra Wijaya (Pending Email Confirmation)
+38. Verifikasi row action `Resend Confirmation Email` Show Enabled
+39. Tutup row action menu dengan menekan Esc
+40. Verifikasi kolom checkbox Show
+41. Ganti isi kotak search dengan `Budi Santoso`, tekan Enter
+42. Centang baris Budi Santoso
+43. Verifikasi Bulk Actions Bar menampilkan `Activate`, `Deactivate`, `Edit Home Group`, dan `Resend Activation Email`
+44. Hapus centang baris Budi Santoso
+45. Buka Detail Budi Santoso lalu Tab Role (Sub-tab Global Role)
+46. Verifikasi switch dan checkbox C/R/U/D Global Role Show Enabled
+47. Buka Sub-tab Group Role
+48. Verifikasi `[Assign Group]` dan `[Detail]` Show
+49. Buka Sub-tab Transaction Role
+50. Verifikasi `[+ Assign]`, `Remove`, `[Assign Group]`, dan `[Bulk Remove]` Show Enabled
+51. Verifikasi Tab Responsibilities, Non-Login User, Changelog, System Log, Transaction Admin Log, User Log, dan ikon Changelog Show
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Role Matrix (bagian 3a) ditulis per blok role: langkah tiap aktor identik, tetapi ganti akun menuntut Step eksplisit (akun pertama login di hook `before`). Judul tanpa kata Positif atau Negatif karena spec memuat tampil (Show) dan tersembunyi (Hidden).
-- Spec melewati sekitar 35 langkah (48 langkah). Alasan: seluruh blok satu kelas (fungsional Role Matrix, hanya membaca), TC-FA-SU-50 dan TC-FA-SU-51 berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna), dan tujuh aktor TC-FA-SU-50 menuntut ganti akun eksplisit.
+- Spec melewati sekitar 35 langkah (51 langkah). Alasan: seluruh blok satu kelas (fungsional Role Matrix, hanya membaca), TC-FA-SU-50 dan TC-FA-SU-51 berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna), dan tujuh aktor TC-FA-SU-50 menuntut ganti akun eksplisit.
 - TC-FA-SU-52 sampai TC-FA-SU-54 ada di spec 028.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 34 dan 37 (menutup row action menu), 41 (menghapus centang baris, S-09), langkah 25, 27, dan 29 (pindah halaman pagination supaya jumlah baris tiap halaman dan total 25 pengguna teramati, S-14).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 35 dan 39 (menutup row action menu), 44 (menghapus centang baris, S-09), langkah 25 dan 27 (pindah halaman pagination supaya jumlah baris tiap halaman dan total 25 pengguna teramati, S-14), langkah 29, 31, 36, dan 41 (Search nama baris target sebelum Verifikasi sakelar, membuka `⋯`, atau mencentang baris, R-16, bagian 8b butir 13; langkah 29 "Ketik Search", sisanya "Ganti isi kotak search" karena kotak masih berisi nama sebelumnya, bagian 8b butir 9; Detail Budi Santoso pada langkah 45 memakai Search langkah 41).
 - Langkah 20 adalah anchor positif untuk asersi Hidden langkah 21 (bagian 8b butir 2: item menu lain pada sidebar yang sama sudah tampil).
-- Langkah 24 sampai 28 menyatakan "seluruh pengguna" sebagai 25 pengguna Pre-setup #20 (halaman 1: 10, halaman 2: 10, halaman 3: 5) dengan memeriksa tiap halaman; angka itu berasal dari Pre-setup dan TC-FA-SU-58, bukan dari Expected TC-FA-SU-51 (S-02). Langkah 29 mengembalikan tabel ke halaman 1 supaya baris Budi Santoso, Hana Kusuma, dan Indra Wijaya tampil.
+- Langkah 24 sampai 28 menyatakan "seluruh pengguna" sebagai 25 pengguna Pre-setup #20 (halaman 1: 10, halaman 2: 10, halaman 3: 5) dengan memeriksa tiap halaman; angka itu berasal dari Pre-setup dan TC-FA-SU-58, bukan dari Expected TC-FA-SU-51 (S-02). Langkah 29 mengganti klik halaman 1 dengan Search sehingga baris Budi Santoso, Hana Kusuma, dan Indra Wijaya tampil tanpa bergantung pada halaman.
 - Temuan untuk QA:
   - TC-FA-SU-50 Expected a menyebut Manage user & role Group "dengan maupun tanpa Update", tetapi Data Uji hanya memuat tujuh aktor (#1, #2, #3, #4, #6, #9, #10) tanpa #5 dan #7; spec mengikuti Data Uji (hanya Group Update #6).
   - Email akun #4, #6, #9, dan #10 tidak tertulis di Pre-setup TC; password semua akun selain Total Control tidak diberi nama env di TC.

@@ -35,7 +35,7 @@ coverage:
 
 ### TC-FA-SU-442: Screening Sub-tab Assigned Assets: Table Tools, kolom, dan default sort
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Verifikasi Table Tools `Search`, `Filter`, dan `Download` tampil
 4. Verifikasi Table Tools rata kanan
@@ -89,7 +89,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2), klik header kolom Column Visibility (⋯) dan Esc penutup overlay (langkah 15 dan 17; langkah 16 mengasersi klausa Expected b "header ⋯ membuka overlay Column Visibility"), serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` di User List supaya baris target tidak bergantung posisi halaman (langkah 1, 8b butir 13, R-16), pembukaan Detail dan sub-tab (langkah 1 dan 2), klik header kolom Column Visibility (⋯) dan Esc penutup overlay (langkah 15 dan 17; langkah 16 mengasersi klausa Expected b "header ⋯ membuka overlay Column Visibility"), serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Baris Search dipakai berurutan pada satu pembukaan Detail: kotak Search dikosongkan (langkah pembersih) di antara kata kunci, dan ditutup dengan `(←)` di akhir spec.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (41 langkah, 41 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets, satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.
 - Pembagian TC lintas spec: TC-FA-SU-446 dan 447 ada di spec 151; TC-FA-SU-468 ada di spec 158.

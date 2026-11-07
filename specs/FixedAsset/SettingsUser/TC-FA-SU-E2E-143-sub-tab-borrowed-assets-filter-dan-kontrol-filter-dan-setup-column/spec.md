@@ -27,96 +27,98 @@ coverage:
 
 ### TC-FA-SU-426: Perilaku Filter Panel Sub-tab Borrowed Assets: tutup tanpa Apply, indikator titik, dan nilai kosong
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Borrowed Assets
-2. Klik icon Filter
-3. Buka dropdown Name
-4. Centang `Kamera DSLR`
-5. Klik di luar panel Filter
-6. Klik icon Filter
-7. Verifikasi panel dibuka lagi menampilkan nilai ter-Apply terakhir: field Name kosong dengan placeholder `All assets`
-8. Verifikasi tabel tidak berubah: 5 baris tetap tampil
-9. Buka dropdown Name
-10. Verifikasi dropdown Name tidak memiliki opsi untuk nilai kosong
-11. Centang `Kamera DSLR`
-12. Klik `[Apply]`
-13. Verifikasi memilih opsi menyaring keluar baris yang nilainya kosong: sedikitnya satu baris tampil dan tidak ada baris dengan Name kosong
-14. Klik icon Filter
-15. Verifikasi icon Filter menampilkan badge titik saat panel tertutup
-16. Klik icon Filter
-17. Verifikasi icon Filter menampilkan badge titik saat panel terbuka
-18. Klik header kolom Column Visibility (⋯)
-19. Hapus centang Name pada overlay Column Visibility
-20. Tutup overlay Column Visibility dengan Esc
-21. Verifikasi field Name tetap ada pada panel Filter
-22. Verifikasi filter ter-Apply tetap berlaku: tabel menyisakan 1 baris
-23. Klik header kolom Column Visibility (⋯)
-24. Centang kembali Name pada overlay Column Visibility
-25. Tutup overlay Column Visibility dengan Esc
-26. Klik `[Clear Field]`
-27. Klik `[Apply]`
-28. Verifikasi badge titik pada icon Filter hilang
-29. Tutup panel Filter dengan klik icon Filter
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Borrowed Assets
+3. Klik icon Filter
+4. Buka dropdown Name
+5. Centang `Kamera DSLR`
+6. Klik di luar panel Filter
+7. Klik icon Filter
+8. Verifikasi panel dibuka lagi menampilkan nilai ter-Apply terakhir: field Name kosong dengan placeholder `All assets`
+9. Verifikasi tabel tidak berubah: 5 baris tetap tampil
+10. Buka dropdown Name
+11. Verifikasi dropdown Name tidak memiliki opsi untuk nilai kosong
+12. Centang `Kamera DSLR`
+13. Klik `[Apply]`
+14. Verifikasi memilih opsi menyaring keluar baris yang nilainya kosong: sedikitnya satu baris tampil dan tidak ada baris dengan Name kosong
+15. Klik icon Filter
+16. Verifikasi icon Filter menampilkan badge titik saat panel tertutup
+17. Klik icon Filter
+18. Verifikasi icon Filter menampilkan badge titik saat panel terbuka
+19. Klik header kolom Column Visibility (⋯)
+20. Hapus centang Name pada overlay Column Visibility
+21. Tutup overlay Column Visibility dengan Esc
+22. Verifikasi field Name tetap ada pada panel Filter
+23. Verifikasi filter ter-Apply tetap berlaku: tabel menyisakan 1 baris
+24. Klik header kolom Column Visibility (⋯)
+25. Centang kembali Name pada overlay Column Visibility
+26. Tutup overlay Column Visibility dengan Esc
+27. Klik `[Clear Field]`
+28. Klik `[Apply]`
+29. Verifikasi badge titik pada icon Filter hilang
+30. Tutup panel Filter dengan klik icon Filter
 
 ### TC-FA-SU-427: Chip dan checkbox dropdown Filter Sub-tab Borrowed Assets sinkron dua arah, logika OR dalam field
 
-30. Klik icon Filter
-31. Buka dropdown Name
-32. Centang `Kamera DSLR`
-33. Centang `Laptop - 1`
-34. Klik `[Apply]`
-35. Verifikasi dua chip `Kamera DSLR` dan `Laptop - 1` tampil di dalam field Name
-36. Verifikasi hasil adalah gabungan (OR) kedua opsi: `Laptop - 1` dan `Kamera DSLR`
-37. Klik ✕ pada chip `Kamera DSLR` tanpa membuka dropdown
-38. Verifikasi chip `Kamera DSLR` hilang
-39. Verifikasi checkbox opsi `Kamera DSLR` ter-uncheck
-40. Verifikasi chip `Laptop - 1` tetap tampil
-41. Buka dropdown Name
-42. Centang `Proyektor Portable`
-43. Hapus centang `Laptop - 1`
-44. Verifikasi chip `Laptop - 1` hilang
-45. Verifikasi chip `Proyektor Portable` tetap tampil
-46. Hapus centang `Proyektor Portable`
-47. Ketik `lap` di kotak cari dropdown
-48. Verifikasi pencarian di dalam dropdown mempersempit opsi menjadi `Laptop - 1` dan `Laptop - 2` (substring, tidak case-sensitive)
-49. Ganti isi kotak cari dropdown dengan `zzz`
-50. Verifikasi keyword tanpa hasil menampilkan `No results found`
-51. Tutup dropdown Name dengan Esc
-52. Klik `[Clear Field]`
-53. Klik `[Apply]`
-54. Tutup panel Filter dengan klik icon Filter
+31. Klik icon Filter
+32. Buka dropdown Name
+33. Centang `Kamera DSLR`
+34. Centang `Laptop - 1`
+35. Klik `[Apply]`
+36. Verifikasi dua chip `Kamera DSLR` dan `Laptop - 1` tampil di dalam field Name
+37. Verifikasi hasil adalah gabungan (OR) kedua opsi: `Laptop - 1` dan `Kamera DSLR`
+38. Klik ✕ pada chip `Kamera DSLR` tanpa membuka dropdown
+39. Verifikasi chip `Kamera DSLR` hilang
+40. Verifikasi checkbox opsi `Kamera DSLR` ter-uncheck
+41. Verifikasi chip `Laptop - 1` tetap tampil
+42. Buka dropdown Name
+43. Centang `Proyektor Portable`
+44. Hapus centang `Laptop - 1`
+45. Verifikasi chip `Laptop - 1` hilang
+46. Verifikasi chip `Proyektor Portable` tetap tampil
+47. Hapus centang `Proyektor Portable`
+48. Ketik `lap` di kotak cari dropdown
+49. Verifikasi pencarian di dalam dropdown mempersempit opsi menjadi `Laptop - 1` dan `Laptop - 2` (substring, tidak case-sensitive)
+50. Ganti isi kotak cari dropdown dengan `zzz`
+51. Verifikasi keyword tanpa hasil menampilkan `No results found`
+52. Tutup dropdown Name dengan Esc
+53. Klik `[Clear Field]`
+54. Klik `[Apply]`
+55. Tutup panel Filter dengan klik icon Filter
 
 ### TC-FA-SU-428: Screening Overlay Column Visibility Sub-tab Borrowed Assets
 
-55. Klik header kolom Actions (⋯)
-56. Verifikasi overlay tampil dengan tooltip `Column Visibility` pada header
-57. Verifikasi daftar kolom berurutan Photo, Name, Asset ID, Transaction ID, Brand, Model / Type, Due Return Date, PIC
-58. Verifikasi tiap kolom memiliki checkbox ☑ Hideable terpilih dan enabled
-59. Verifikasi tiap kolom memiliki drag handle
-60. Verifikasi item `Setup Column...` di bagian bawah overlay
-61. Tutup overlay Column Visibility dengan Esc
+56. Klik header kolom Actions (⋯)
+57. Verifikasi overlay tampil dengan tooltip `Column Visibility` pada header
+58. Verifikasi daftar kolom berurutan Photo, Name, Asset ID, Transaction ID, Brand, Model / Type, Due Return Date, PIC
+59. Verifikasi tiap kolom memiliki checkbox ☑ Hideable terpilih dan enabled
+60. Verifikasi tiap kolom memiliki drag handle
+61. Verifikasi item `Setup Column...` di bagian bawah overlay
+62. Tutup overlay Column Visibility dengan Esc
 
 ### TC-FA-SU-429: Screening Popup Setup Column dan Preview Table Sub-tab Borrowed Assets
 
-62. Klik header kolom Actions (⋯)
-63. Klik `Setup Column...`
-64. Verifikasi Title popup `Setup Column`
-65. Verifikasi deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`
-66. Verifikasi icon close ✕ pada header popup
-67. Verifikasi body memuat daftar kolom Photo, Name, Asset ID, Transaction ID, Brand, Model / Type, Due Return Date, PIC
-68. Verifikasi tiap kolom memiliki checkbox
-69. Verifikasi tiap kolom memiliki drag handle
-70. Verifikasi tiap kolom memiliki icon Pin
-71. Verifikasi Live Preview tabel tampil
-72. Verifikasi footer `[Reset to Default]` dan `[Save]` rata kanan
-73. Verifikasi footer tanpa `[Cancel]`
-74. Tutup popup Setup Column dengan ✕
+63. Klik header kolom Actions (⋯)
+64. Klik `Setup Column...`
+65. Verifikasi Title popup `Setup Column`
+66. Verifikasi deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`
+67. Verifikasi icon close ✕ pada header popup
+68. Verifikasi body memuat daftar kolom Photo, Name, Asset ID, Transaction ID, Brand, Model / Type, Due Return Date, PIC
+69. Verifikasi tiap kolom memiliki checkbox
+70. Verifikasi tiap kolom memiliki drag handle
+71. Verifikasi tiap kolom memiliki icon Pin
+72. Verifikasi Live Preview tabel tampil
+73. Verifikasi footer `[Reset to Default]` dan `[Save]` rata kanan
+74. Verifikasi footer tanpa `[Cancel]`
+75. Tutup popup Setup Column dengan ✕
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; urutan blok mengikuti prinsip bagian 3 (screening dan baca di awal, perubahan konfigurasi tersimpan di akhir).
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): menutup overlay Column Visibility, dropdown, dan panel Filter; menutup kotak Search lewat `(←)` atau `✕` + Enter; `[Clear Field]` dan `[Apply]` pemulih, serta mengembalikan sort ke netral dan visibilitas kolom ke semula, supaya blok berikutnya tidak mewarisi state.
+- Langkah penghubung (S-03, R-16): sebelum Detail pengguna dibuka, kotak Search User List diisi nama persis `Budi Santoso` (nama Pre-setup) karena User List memuat 25 pengguna pada 3 halaman dan posisi baris tidak diandalkan (R-23, 8b.13); langkah itu hanya menyaring baris target dan tidak diverifikasi.
 - Asersi tambahan (S-03): TC-FA-SU-427: opsi `Proyektor Portable` dicentang sebelum `Laptop - 1` di-uncheck (langkah penghubung tambahan) supaya klausa c "chip lain tetap" dapat diasersi; keyword `lap` dan `zzz` pada kotak cari dropdown dipilih penulis karena Data Uji TC kosong.
-- Alasan melewati sekitar 35 langkah (74 langkah tertulis, 74 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
+- Alasan melewati sekitar 35 langkah (75 langkah tertulis, 75 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
 - Temuan untuk QA (S-15):
   - TC-FA-SU-426 butir c: Pre-setup #24 tidak memuat baris dengan Name kosong, sehingga "menyaring keluar baris yang nilainya kosong" diasersi sebagai tidak ada baris dengan Name kosong pada hasil.
   - TC-FA-SU-427: Data Uji kosong; butir c "chip lain tetap" tidak teramati bila hanya satu chip tersisa (lihat catatan S-03 di atas).

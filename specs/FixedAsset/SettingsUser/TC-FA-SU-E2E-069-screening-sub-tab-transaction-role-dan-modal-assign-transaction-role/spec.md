@@ -31,7 +31,7 @@ coverage:
 
 ### TC-FA-SU-228: Screening Sub-tab Transaction Role: toolbar, kolom, aksi baris, dan ikon
 
-1. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role
+1. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role
 2. Verifikasi TableTools berisi Search, Filter, tombol `[+ Assign]`, dan ikon Changelog
 3. Verifikasi Bulk Actions Bar dengan `[Bulk Remove]` tidak tampil selama belum ada baris terpilih
 4. Centang satu baris
@@ -47,7 +47,7 @@ coverage:
 
 ### TC-FA-SU-229: Group Summary Badge pada Sub-tab Transaction Role: 1, 2, lebih dari 2 grup, dan All Groups
 
-14. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
+14. Kembali ke User List, ganti isi kotak search dengan `Yuda Pratama`, tekan Enter, lalu buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
 15. Verifikasi baris Borrowing & Assignment × Approver menampilkan 1 badge
 16. Verifikasi baris Transfer × Asset Admin menampilkan 2 badge (Finance & Accounting, IT Infrastructure)
 17. Verifikasi baris Missing × Approver menampilkan 2 badge dan chip `+1 more`
@@ -60,13 +60,13 @@ coverage:
 
 ### TC-FA-SU-230: Empty state Sub-tab Transaction Role tanpa penugasan
 
-24. Buka Detail Hana Kusuma > Tab Role > Sub-tab Transaction Role
+24. Kembali ke User List, ganti isi kotak search dengan `Hana Kusuma`, tekan Enter, lalu buka Detail Hana Kusuma > Tab Role > Sub-tab Transaction Role
 25. Verifikasi ilustrasi dengan Title `No transaction role yet` dan Description `Transaction roles assigned to this user will appear here.`
 26. Verifikasi tombol `[+ Assign]` tetap tampil
 
 ### TC-FA-SU-231: Screening modal Assign Transaction Role: header, field, placeholder, dan footer
 
-27. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[+ Assign]`
+27. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[+ Assign]`
 28. Verifikasi header `Assign Transaction Role` dengan close `[✕]`
 29. Verifikasi field `Group *` berupa TreeSelect multi-select dengan tombol `Select Group`
 30. Verifikasi field `Transaction *` berupa Select dengan placeholder `Select transaction type...`
@@ -96,6 +96,7 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 13, 23 dan 43 sampai 45. Penutupan modal dirty mengikuti S-08.
 - Modal Assign Transaction Role dibuka sekali pada TC-FA-SU-231 dan dipakai TC-FA-SU-232 tanpa dibuka ulang (halaman yang sama dipakai berulang, bagian 3 prinsip 13); keadaan awal modal tidak berubah antar kedua TC.
 - Jumlah langkah 45, di atas smell 35 langkah; semua blok satu kelas harness (screening baca tanpa menyimpan data) dan berdiri sendiri, kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1, 14, 24 dan 27 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-228 butir d ("terpaginasi 10 baris per halaman") tidak dapat diamati pada Mira Anggraini yang hanya memiliki 2 baris Transaction Role; spec mengasersi ukuran halaman default 10 baris per halaman.
   - TC-FA-SU-228 langkah 3 ("buka menu ⋯ baris itu") tidak disertai Expected untuk menu selain isi `Remove`; spec mengasersi sesuai teks Expected.

@@ -18,12 +18,12 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE. Backend nyata; tidak ada intercept.
-- Akun aktor: Total Control Company Alpha (Pre-setup #1, Sarah Johnson) `totalControl_automated_{namaCompany}@qwertysystem.net`, `Fixture.assetLabeling.akun.totalControl`, password `Spectra.env.FA_LBL_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
+- Akun aktor: Total Control Company Alpha (Pre-setup #1, Sarah Johnson) `Fixture.assetLabeling.akun.totalControl`, password `Spectra.env.FA_LBL_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
 - Hook suite: Guided Tooltip, pemulihan state global, dan pembukaan Settings > Asset Master > tab Labels mengikuti hook di `suite.md` dan tidak ditulis ulang di sini.
 - Data Dinamis (milik spec, nama bersuffix `{runId}-130`):
   - Label seed bersih (dibuat lewat fixture BE di hook `before` melalui jalur yang menulis entri Create; Color `Fixture.assetLabeling.warnaSeed`, Total Asset 0, bukan Default Label): `Snap A 404 {runId}-130` (TC-FA-LBL-404), `Snap Del 405 {runId}-130` (TC-FA-LBL-405)
   - Nama sesudah perubahan: `Snap B 404 {runId}-130`, `Snap C 404 {runId}-130` (TC-FA-LBL-404), `Snap Del 405 X {runId}-130` (TC-FA-LBL-405)
-  - Default Label `Imported Label 407 {runId}-130` belum ada di katalog; berkas Import Asset Name berisi Default Label itu disediakan tim FE/BE (Pre-setup #14; TC-FA-LBL-407)
+  - Default Label `Imported Label 407 {runId}-130` belum ada di katalog. Pembuat berkas Import Asset Name per run (kemampuan disediakan tim FE/BE, Pre-setup #14; TC-FA-LBL-407) menyusun berkas yang memuat Asset Name bersuffix `{runId}-130` dengan Default Label `Imported Label 407 {runId}-130`; Import `[Create Missing Labels]` membuat label itu dan relasi Asset Name dengan Default Label (data hasil Import, milik spec ini)
 - Data Pre-setup: Import Asset Name (Pre-setup #14), hanya akun aktor dan berkas Import yang dibaca.
 - Fixture `fixtures/asset-labeling.json` (disediakan tim FE; hanya identitas data, tanpa rahasia). Kunci yang dipakai spec ini:
 
@@ -34,8 +34,8 @@ coverage:
 
 - Kemampuan teknis: fixture BE untuk seeding dan membersihkan label serta membaca jumlah dan isi entri Changelog Labels, System Log aktor, dan Activity Log (disediakan tim FE/BE; endpoint tidak ditulis di TC; S-12). Surface log dibaca lewat UI pada Modal Changelog: Labels, Fixed Asset > Settings > User > Detail pengguna aktor > Tab System Log, dan Fixed Asset > Activity Log; entri dicari berdasarkan nama label bersuffix unik (baseline nol). Kontrol pencarian pada System Log dan Activity Log disediakan tim FE (lihat Temuan untuk QA). Import Asset Name dengan opsi `[Create Missing Labels]` dijalankan lewat UI tab Asset Name (kontrol Import mengikuti TC `import/`; lihat Temuan untuk QA).
 - State global: tidak ada yang diubah. Suite berjalan serial (`parallel: false`).
-- Cleanup: hook `after` menghapus semua label seed dan label yang dibuat spec (nama bersuffix `{runId}-130`, termasuk yang sudah berganti nama) lewat fixture BE berdasarkan ID, tanpa berasumsi seed berhasil penuh. Entri log bersifat permanen dan tidak dihapus.
-- Env var: `Spectra.env.FA_LBL_TC_PASSWORD` terdaftar di `executionConfig.environmentVariables` dan `.env.example`.
+- Cleanup: hook `after` lebih dulu menghapus Asset Name hasil Import (bersuffix `{runId}-130`, beserta relasi Default Label ke `Imported Label 407 {runId}-130`) lewat fixture BE, karena label yang menjadi Default Label dari sebuah Asset Name tidak dapat dihapus; sesudah itu menghapus semua label seed dan label yang dibuat spec (nama bersuffix `{runId}-130`, termasuk yang sudah berganti nama dan label hasil Import) lewat fixture BE berdasarkan ID, tanpa berasumsi seed atau Import berhasil penuh. Entri log bersifat permanen dan tidak dihapus.
+- Env var: `Spectra.env.FA_LBL_TC_PASSWORD` didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
 
 ## Test Steps
 
@@ -122,5 +122,6 @@ coverage:
 - Asersi "tidak ada entri log" untuk aksi yang ditolak, gagal, atau zero-delta ada di spec absence log nomor 132, 133, 134, dan 173 dengan aksi dan baseline masing-masing (S-05).
 - Temuan untuk QA:
   - TC-FA-LBL-404, 405, 407, dan 411: Post Condition tidak ada. TC-FA-LBL-405 menyebut entri Create ada; entri itu hanya ada bila seed memakai jalur yang menulis log Create, sehingga seeding label itu bergantung pada kemampuan fixture BE yang disediakan tim FE/BE.
+  - Cleanup hasil Import TC-FA-LBL-407 (menghapus Asset Name dan relasi Default Label lewat fixture BE sebelum menghapus label) serta kemampuan pembuat berkas Import per run bergantung pada dukungan tim FE/BE; menunggu konfirmasi FE/BE (D-11, F-307).
   - TC-FA-LBL-407 tidak merinci langkah UI Import (halaman, berkas, dan tombol); spec menulis satu langkah aksi Import dan mekanisme rincinya mengikuti TC `import/` yang memilikinya.
   - Cara mencari entri pada System Log dan Activity Log (Search atau Filter) tidak dijelaskan di TC; spec memakai nama label bersuffix unik dan kontrol pencarian yang tersedia di surface itu (disediakan tim FE).

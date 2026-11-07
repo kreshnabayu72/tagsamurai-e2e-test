@@ -43,7 +43,7 @@ coverage:
 
 ### TC-FA-SU-463: Pagination Sub-tab Assigned Assets: page size, navigasi, dan kasus tepi
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Verifikasi default 10 baris per halaman
 4. Klik pilihan page size
@@ -104,21 +104,21 @@ coverage:
 53. Verifikasi Sub-tab Pending Approvals tetap memakai state-nya sendiri: Search `TRF-2026`, Filter Transaction `Transfer`, dan Sort Requester
 54. Klik Sub-tab Assigned Assets
 55. Klik Back breadcrumb ke User List
-56. Klik nama `Budi Santoso` di User List
+56. Ganti isi kotak search dengan `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 57. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 58. Verifikasi state Sub-tab Assigned Assets dipulihkan: Search `Printer`, Filter Brand `Canon`, Sort Model / Type, page size 25
 59. Tekan F5 pada halaman Detail
 60. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 61. Verifikasi state Sub-tab Assigned Assets dipulihkan: Search `Printer`, Filter Brand `Canon`, Sort Model / Type, page size 25
 62. Klik menu Settings > User pada sidebar
-63. Klik nama `Budi Santoso` di User List
+63. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 64. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 65. Verifikasi state Sub-tab Assigned Assets kembali ke default: Search kosong, tanpa Filter, Sort default Name ascending, page size 10
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2; langkah 56 dan 57 serta 63 dan 64 untuk pembukaan ulang, Search dipertahankan sesudah Back breadcrumb sehingga memakai ganti isi kotak search, dan diketik ulang sesudah menu sidebar) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Sub-tab Pending Approvals (Pre-setup #25) dipakai hanya sebagai sub-tab lain pada TC-FA-SU-470; nilai Search `TRF-2026`, Filter Transaction `Transfer`, dan Sort Requester dipilih spec karena TC tidak menyebutnya.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (65 langkah, 65 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets, satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.
 - Pembagian TC lintas spec: TC-FA-SU-466, 467, dan 469 ada di spec 370, 366, dan 361.

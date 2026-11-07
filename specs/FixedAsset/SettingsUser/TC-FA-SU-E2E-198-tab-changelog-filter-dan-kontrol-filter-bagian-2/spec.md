@@ -34,84 +34,87 @@ coverage:
 
 ### TC-FA-SU-591: Pelepasan kontrol
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab Changelog
-2. Ketik Search `Home`, tekan Enter
-3. Klik icon Filter
-4. Buka dropdown Action, centang `Activate`
-5. Klik `[Apply]`
-6. Klik header Date satu kali
-7. Klik `[Clear Field]` lalu `[Apply]`
-8. Verifikasi Search `Home` tetap berlaku: `Home Group` (T-4; 1 baris)
-9. Verifikasi Sort Date tetap berlaku
-10. Buka dropdown Action, centang `Activate`
-11. Klik `[Apply]`
-12. Klik `(←)` pada kotak Search
-13. Verifikasi Filter Action `Activate` tetap berlaku (chip `Activate` tampil)
-14. Verifikasi Sort Date tetap berlaku
-15. Ketik Search `Home`, tekan Enter
-16. Klik header Action
-17. Verifikasi sort pindah ke kolom Action
-18. Verifikasi Search `Home` tidak direset
-19. Verifikasi Filter Action `Activate` tidak direset
-20. Verifikasi kombinasi 0 baris menampilkan `No results found` dengan deskripsi `Try adjusting your search or filter.`
-21. Klik `(←)` pada kotak Search
-22. Verifikasi baris yang cocok pulih: `Status` (T-7)
-23. Klik `[Clear Field]` lalu `[Apply]`, lalu klik icon Filter untuk menutup panel
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail pengguna Budi Santoso lalu klik tab Changelog
+3. Ketik Search `Home`, tekan Enter
+4. Klik icon Filter
+5. Buka dropdown Action, centang `Activate`
+6. Klik `[Apply]`
+7. Klik header Date satu kali
+8. Klik `[Clear Field]` lalu `[Apply]`
+9. Verifikasi Search `Home` tetap berlaku: `Home Group` (T-4; 1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
+10. Verifikasi Sort Date tetap berlaku
+11. Buka dropdown Action, centang `Activate`
+12. Klik `[Apply]`
+13. Klik `(←)` pada kotak Search
+14. Verifikasi Filter Action `Activate` tetap berlaku (chip `Activate` tampil)
+15. Verifikasi Sort Date tetap berlaku
+16. Ketik Search `Home`, tekan Enter
+17. Klik header Action
+18. Verifikasi sort pindah ke kolom Action
+19. Verifikasi Search `Home` tidak direset
+20. Verifikasi Filter Action `Activate` tidak direset
+21. Verifikasi kombinasi 0 baris menampilkan `No results found` dengan deskripsi `Try adjusting your search or filter.`
+22. Klik `(←)` pada kotak Search
+23. Verifikasi baris yang cocok pulih: `Status` (T-7; 1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
+24. Klik `[Clear Field]` lalu `[Apply]`, lalu klik icon Filter untuk menutup panel
 
 ### TC-FA-SU-592: Perilaku Filter Panel
 
-24. Klik icon Filter
-25. Buka dropdown Action, centang `Edit` tanpa `[Apply]`
-26. Klik di luar panel
-27. Klik icon Filter
-28. Verifikasi panel menampilkan nilai ter-Apply terakhir (perubahan dibuang)
-29. Verifikasi tabel tidak berubah
-30. Centang `Activate` pada dropdown Action, klik `[Apply]`
-31. Verifikasi badge titik tampil pada ikon Filter saat panel terbuka
-32. Klik icon Filter untuk menutup panel
-33. Verifikasi badge titik tampil pada ikon Filter saat panel tertutup
-34. Klik icon Filter
-35. Klik `[Clear Field]` lalu `[Apply]`
-36. Verifikasi badge titik hilang
-37. Buka dropdown Action
-38. Verifikasi dropdown Action menampilkan opsi `Activate`, `Edit`, dan `Assign`
-39. Verifikasi dropdown tidak memiliki opsi untuk nilai kosong
-40. Centang `Edit`, klik `[Apply]`
-41. Verifikasi hasil memuat sedikitnya satu baris
-42. Verifikasi tidak ada baris dengan nilai kosong pada hasil
-43. Klik header Column Visibility (⋯), hilangkan centang kolom Action
-44. Klik icon Filter
-45. Verifikasi field filter Action tetap ada di Filter Panel
-46. Verifikasi filter ter-Apply tetap berlaku
-47. Klik `[Clear Field]` lalu `[Apply]`, lalu klik header Column Visibility (⋯) dan centang kembali kolom Action
+25. Klik icon Filter
+26. Buka dropdown Action, centang `Edit` tanpa `[Apply]`
+27. Klik di luar panel
+28. Klik icon Filter
+29. Verifikasi panel menampilkan nilai ter-Apply terakhir (perubahan dibuang)
+30. Verifikasi tabel tidak berubah
+31. Centang `Activate` pada dropdown Action, klik `[Apply]`
+32. Verifikasi badge titik tampil pada ikon Filter saat panel terbuka
+33. Klik icon Filter untuk menutup panel
+34. Verifikasi badge titik tampil pada ikon Filter saat panel tertutup
+35. Klik icon Filter
+36. Klik `[Clear Field]` lalu `[Apply]`
+37. Verifikasi badge titik hilang
+38. Buka dropdown Action
+39. Verifikasi dropdown Action menampilkan opsi `Activate`, `Edit`, dan `Assign`
+40. Verifikasi dropdown tidak memiliki opsi untuk nilai kosong
+41. Centang `Edit`, klik `[Apply]`
+42. Verifikasi hasil memuat sedikitnya satu baris
+43. Verifikasi tidak ada baris dengan nilai kosong pada hasil
+44. Klik header Column Visibility (⋯), hilangkan centang kolom Action
+45. Klik icon Filter
+46. Verifikasi field filter Action tetap ada di Filter Panel
+47. Verifikasi filter ter-Apply tetap berlaku
+48. Klik `[Clear Field]` lalu `[Apply]`, lalu klik header Column Visibility (⋯) dan centang kembali kolom Action
 
 ### TC-FA-SU-593: Chip dan checkbox dropdown Filter
 
-48. Klik icon Filter
-49. Buka dropdown Action
-50. Centang dua opsi (`Edit` dan `Assign`), klik `[Apply]`
-51. Verifikasi dua chip tampil di dalam field
-52. Verifikasi hasil adalah gabungan (OR) kedua opsi
-53. Klik ✕ pada satu chip tanpa membuka dropdown
-54. Verifikasi chip itu hilang
-55. Verifikasi checkbox opsi terkait ter-uncheck
-56. Verifikasi chip lain tetap
-57. Buka dropdown Action
-58. Hilangkan centang opsi yang tersisa
-59. Verifikasi chip yang bersangkutan hilang
-60. Centang dua opsi (`Edit` dan `Assign`) lalu hilangkan centang satu opsi
-61. Verifikasi chip opsi yang di-uncheck hilang
-62. Verifikasi chip lain tetap
-63. Ketik `ass` pada kotak cari dropdown
-64. Verifikasi opsi dipersempit (substring, tidak case-sensitive)
-65. Ganti isi kotak cari dropdown dengan `zzzz`
-66. Verifikasi `No results found` tampil di dropdown
+49. Klik icon Filter
+50. Buka dropdown Action
+51. Centang dua opsi (`Edit` dan `Assign`), klik `[Apply]`
+52. Verifikasi dua chip tampil di dalam field
+53. Verifikasi hasil adalah gabungan (OR) kedua opsi
+54. Klik ✕ pada satu chip tanpa membuka dropdown
+55. Verifikasi chip itu hilang
+56. Buka dropdown Action
+57. Verifikasi checkbox opsi terkait ter-uncheck
+58. Verifikasi chip lain tetap
+59. Hilangkan centang opsi yang tersisa
+60. Verifikasi chip yang bersangkutan hilang
+61. Centang dua opsi (`Edit` dan `Assign`) lalu hilangkan centang satu opsi
+62. Verifikasi chip opsi yang di-uncheck hilang
+63. Verifikasi chip lain tetap
+64. Ketik `ass` pada kotak cari dropdown
+65. Verifikasi opsi dipersempit (substring, tidak case-sensitive)
+66. Ganti isi kotak cari dropdown dengan `zzzz`
+67. Verifikasi `No results found` tampil di dropdown
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
-- Langkah penghubung tambahan (S-03): langkah 23 (`[Clear Field]` lalu `[Apply]`, lalu tutup panel dengan icon Filter) melepas Filter Action `Activate` yang masih ter-Apply dari TC-FA-SU-591 supaya TC-FA-SU-592 tidak mewarisinya (S-09).
-- Asersi tambahan di luar Expected (S-03): langkah 38 (opsi lain tampil di dropdown Action) menjadi anchor positif untuk asersi absence opsi nilai kosong (bagian 8b butir 2).
-- Spec ini berjumlah 66 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
-- Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). (2) Kombinasi Search dan Filter pada Expected tidak menyebut nilai konkret; spec memakai keyword dan filter yang sama dengan TC kombinasi pada surface ini, dan keyword tanpa hasil `Zzzz` (modal) dipilih spec. (3) Expected c ("memilih opsi apa pun menyaring keluar baris yang nilainya kosong") tidak punya baris bernilai kosong pada seed #27; spec memverifikasi bahwa dropdown tidak memuat opsi kosong dan hasil filter tidak memuat baris bernilai kosong, tanpa data kosong khusus.
+- Langkah penghubung tambahan (S-03): langkah 1 (Ketik Search `Budi Santoso`, tekan Enter sebelum membuka Detail, supaya spec tidak mengandalkan posisi baris pada User List 25 pengguna 3 halaman, R-16, bagian 8b butir 13).
+- Langkah penghubung tambahan (S-03): langkah 24 (`[Clear Field]` lalu `[Apply]`, lalu tutup panel dengan icon Filter) melepas Filter Action `Activate` yang masih ter-Apply dari TC-FA-SU-591 supaya TC-FA-SU-592 tidak mewarisinya (S-09).
+- Asersi tambahan di luar Expected (S-03): langkah 39 (opsi lain tampil di dropdown Action) menjadi anchor positif untuk asersi absence opsi nilai kosong (bagian 8b butir 2).
+- Asersi baris seed pada Tab Changelog (audit trail permanen) ditulis relatif terhadap baris seed: jumlah baris seed, dengan baris non-seed yang memenuhi kriteria boleh ikut tampil (S-14); kualifier ini ditambahkan pada langkah 9 dan 23, mengikuti pola TC sibling pada surface ini.
+- Spec ini berjumlah 67 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). (2) Kombinasi Search dan Filter pada Expected tidak menyebut nilai konkret; spec memakai keyword dan filter yang sama dengan TC kombinasi pada surface ini, dan keyword tanpa hasil `Zzzz` (modal) dipilih spec. (3) Expected c ("memilih opsi apa pun menyaring keluar baris yang nilainya kosong") tidak punya baris bernilai kosong pada seed #27; spec memverifikasi bahwa dropdown tidak memuat opsi kosong dan hasil filter tidak memuat baris bernilai kosong, tanpa data kosong khusus. (4) TC-FA-SU-592 dan TC-FA-SU-593 tidak menyebut opsi Action dan keyword dropdown; spec memilih opsi `Activate`, `Edit`, `Assign`, keyword dropdown `ass` dan `zzzz` (Search `Home` dan Filter Action `Activate` pada TC-FA-SU-591 berasal dari Data TC).

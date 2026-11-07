@@ -30,7 +30,7 @@ coverage:
 
 1. Catat jumlah entri Object `Group Role` Wawan Setiawan pada Tab Changelog sebagai baseline
 2. Intercept respons Save popup Assign Group Role menjadi 5xx
-3. Buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role
+3. Ketik Search `Wawan Setiawan`, tekan Enter, lalu buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role
 4. Buka popup Manage files dan centang Delete pada Branch Surabaya
 5. Klik `[Save]`
 6. Verifikasi toast "Error, failed to save group role."
@@ -50,6 +50,7 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 7 dan 10 sampai 12. Intercept dilepas segera setelah toast error tampil (S-09); penutupan popup dirty mengikuti S-08; baseline log mengikuti S-12.
 - Langkah pola baca-log: langkah 13 dan 14. Search `Wawan Setiawan` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - Klausa "tidak ada entri log" ditulis sebagai asersi jumlah dengan baseline pada aksi yang gagal (bagian 3 prinsip 13 butir g, S-12); toast error menjadi anchor positif.
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 3 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-211 tidak menyebut apakah popup yang tetap terbuka masih dirty setelah kegagalan; spec menutupnya lewat `✕`, dialog `Unsaved Changes`, dan `[Leave]` (S-08).
   - Post Condition TC-FA-SU-211 ("tidak ada perubahan tersimpan dan tidak ada entri baru") sudah tercakup oleh asersi jumlah entri log; perubahan tersimpan pada kolom Group tidak diasersi karena tidak ada langkah observasi di TC.

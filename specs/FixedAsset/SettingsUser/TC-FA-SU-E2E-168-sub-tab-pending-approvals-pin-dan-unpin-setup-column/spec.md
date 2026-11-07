@@ -42,7 +42,7 @@ Maksimum tiga kolom di-pin sekaligus, sehingga kolom di-pin per kelompok dan di-
 
 ### TC-FA-SU-492: Pin dan unpin Setup Column Sub-tab Pending Approvals kelas Hideable (default tampil)
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Pending Approvals
 3. Untuk setiap baris tabel parameter "Kelompok Pin" (langkah 3 sampai 16): klik header kolom Actions (⋯)
 4. Klik `Setup Column...`
@@ -71,7 +71,7 @@ Maksimum tiga kolom di-pin sekaligus, sehingga kolom di-pin per kelompok dan di-
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Langkah 3 sampai 16 diulang untuk dua baris tabel parameter "Kelompok Pin" (bagian 8b butir 7); `Verifikasi` memakai "tiap kolom kelompok itu" dan mengasersi setiap kolom kelompok.
 - Langkah pemulihan konfigurasi kolom (23) dan F5 sesudahnya memulihkan tabel ke default (S-09); hook `after` mengulang pemulihan sebagai cadangan.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (39 langkah, 25 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Pending Approvals (Pin), satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.

@@ -26,69 +26,71 @@ coverage:
 
 ### TC-FA-SU-435: Download Sub-tab Borrowed Assets: format CSV dan XLSX, nama file, dan tanpa toast sukses
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Borrowed Assets
-2. Hover icon Download
-3. Verifikasi tooltip `Download`
-4. Klik icon Download
-5. Verifikasi overlay `Download as CSV` dan `Download as XLSX` tampil
-6. Pilih `Download as CSV`
-7. Verifikasi tidak ada toast sukses saat unduhan CSV berhasil
-8. Verifikasi file `Borrowed-Assets-Budi-Santoso.csv` terunduh
-9. Klik icon Download
-10. Pilih `Download as XLSX`
-11. Verifikasi tidak ada toast sukses saat unduhan XLSX berhasil
-12. Verifikasi file `Borrowed-Assets-Budi-Santoso.xlsx` terunduh
-13. Buka berkas CSV hasil unduhan
-14. Verifikasi CSV berencoding UTF-8 dengan BOM
-15. Verifikasi nilai ber-koma, tanda kutip, atau baris baru dibungkus tanda kutip ganda
-16. Buka berkas XLSX hasil unduhan
-17. Verifikasi XLSX satu sheet bernama `Sheet1`
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Borrowed Assets
+3. Hover icon Download
+4. Verifikasi tooltip `Download`
+5. Klik icon Download
+6. Verifikasi overlay `Download as CSV` dan `Download as XLSX` tampil
+7. Pilih `Download as CSV`
+8. Verifikasi tidak ada toast sukses saat unduhan CSV berhasil
+9. Verifikasi file `Borrowed-Assets-Budi-Santoso.csv` terunduh
+10. Klik icon Download
+11. Pilih `Download as XLSX`
+12. Verifikasi tidak ada toast sukses saat unduhan XLSX berhasil
+13. Verifikasi file `Borrowed-Assets-Budi-Santoso.xlsx` terunduh
+14. Buka berkas CSV hasil unduhan
+15. Verifikasi CSV berencoding UTF-8 dengan BOM
+16. Verifikasi nilai ber-koma, tanda kutip, atau baris baru dibungkus tanda kutip ganda
+17. Buka berkas XLSX hasil unduhan
+18. Verifikasi XLSX satu sheet bernama `Sheet1`
 
 ### TC-FA-SU-436: Cakupan baris dan kolom Download Sub-tab Borrowed Assets: Search, Filter, Sort, dan Column Visibility
 
-18. Klik icon Download
-19. Pilih `Download as CSV`
-20. Verifikasi berkas CSV memuat seluruh baris (bukan hanya halaman aktif) dalam urutan sort aktif
-21. Ketik Search `Kamera`, tekan Enter
-22. Klik icon Filter
-23. Buka dropdown Name
-24. Centang `Kamera DSLR`
-25. Klik `[Apply]`
-26. Tutup panel Filter dengan klik icon Filter
-27. Klik icon Download
-28. Pilih `Download as CSV`
-29. Verifikasi dengan Search dan Filter aktif, berkas CSV hanya memuat baris yang cocok (`Kamera DSLR`)
-30. Klik `(←)` pada kotak Search
-31. Klik icon Filter
-32. Klik `[Clear Field]`
-33. Klik `[Apply]`
-34. Tutup panel Filter dengan klik icon Filter
-35. Klik header kolom Column Visibility (⋯)
-36. Hapus centang Brand pada overlay Column Visibility
-37. Tutup overlay Column Visibility dengan Esc
-38. Klik icon Download
-39. Pilih `Download as CSV`
-40. Verifikasi tidak ada toast peringatan saat kolom di-hide
-41. Verifikasi kolom Brand yang di-hide tidak ikut berkas CSV
-42. Klik header kolom Column Visibility (⋯)
-43. Centang kembali Brand pada overlay Column Visibility
-44. Tutup overlay Column Visibility dengan Esc
-45. Klik icon Download
-46. Pilih `Download as CSV`
-47. Verifikasi setelah di-unhide kolom Brand ikut kembali dalam berkas CSV
-48. Ketik Search `zzzz` (keyword tanpa hasil), tekan Enter
-49. Klik icon Download
-50. Pilih `Download as CSV`
-51. Verifikasi unduhan hasil 0 baris tanpa toast
-52. Verifikasi hasil 0 baris tetap dapat diunduh dengan hanya baris header kolom yang visible
-53. Klik `(←)` pada kotak Search
+19. Klik icon Download
+20. Pilih `Download as CSV`
+21. Verifikasi berkas CSV memuat seluruh baris (bukan hanya halaman aktif) dalam urutan sort aktif
+22. Ketik Search `Kamera`, tekan Enter
+23. Klik icon Filter
+24. Buka dropdown Name
+25. Centang `Kamera DSLR`
+26. Klik `[Apply]`
+27. Tutup panel Filter dengan klik icon Filter
+28. Klik icon Download
+29. Pilih `Download as CSV`
+30. Verifikasi dengan Search dan Filter aktif, berkas CSV hanya memuat baris yang cocok (`Kamera DSLR`)
+31. Klik `(←)` pada kotak Search
+32. Klik icon Filter
+33. Klik `[Clear Field]`
+34. Klik `[Apply]`
+35. Tutup panel Filter dengan klik icon Filter
+36. Klik header kolom Column Visibility (⋯)
+37. Hapus centang Brand pada overlay Column Visibility
+38. Tutup overlay Column Visibility dengan Esc
+39. Klik icon Download
+40. Pilih `Download as CSV`
+41. Verifikasi tidak ada toast peringatan saat kolom di-hide
+42. Verifikasi kolom Brand yang di-hide tidak ikut berkas CSV
+43. Klik header kolom Column Visibility (⋯)
+44. Centang kembali Brand pada overlay Column Visibility
+45. Tutup overlay Column Visibility dengan Esc
+46. Klik icon Download
+47. Pilih `Download as CSV`
+48. Verifikasi setelah di-unhide kolom Brand ikut kembali dalam berkas CSV
+49. Ketik Search `zzzz` (keyword tanpa hasil), tekan Enter
+50. Klik icon Download
+51. Pilih `Download as CSV`
+52. Verifikasi unduhan hasil 0 baris tanpa toast
+53. Verifikasi hasil 0 baris tetap dapat diunduh dengan hanya baris header kolom yang visible
+54. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; urutan blok mengikuti prinsip bagian 3 (screening dan baca di awal, perubahan konfigurasi tersimpan di akhir).
 - Pembagian TC lintas spec: TC-FA-SU-437 (transformasi data Download per tipe kolom) ada di spec 370; TC-FA-SU-438 (Download gagal) ada di spec 366.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): menutup overlay Column Visibility, dropdown, dan panel Filter; menutup kotak Search lewat `(←)` atau `✕` + Enter; `[Clear Field]` dan `[Apply]` pemulih, serta mengembalikan sort ke netral dan visibilitas kolom ke semula, supaya blok berikutnya tidak mewarisi state.
-- Alasan melewati sekitar 35 langkah (53 langkah tertulis, 53 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
+- Langkah penghubung (S-03, R-16): sebelum Detail pengguna dibuka, kotak Search User List diisi nama persis `Budi Santoso` (nama Pre-setup) karena User List memuat 25 pengguna pada 3 halaman dan posisi baris tidak diandalkan (R-23, 8b.13); langkah itu hanya menyaring baris target dan tidak diverifikasi.
+- Alasan melewati sekitar 35 langkah (54 langkah tertulis, 54 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
 - Temuan untuk QA (S-15):
   - TC-FA-SU-435 butir d (BOM UTF-8, pembungkusan tanda kutip ganda, nama sheet) adalah asersi isi berkas (kelas f, bagian 3 prinsip 13) yang ditulis di spec ini; membutuhkan kemampuan baca isi berkas CSV/XLSX yang disediakan tim FE. Pre-setup #24 tidak menyebut nilai ber-koma, bertanda kutip, atau berbaris baru, sehingga pembungkusan hanya dapat diasersi bila data itu ada pada baris Budi Santoso.
   - TC-FA-SU-436: keyword tanpa hasil tidak diberi nilai; spec memakai `zzzz`. Kolom yang di-hide tidak disebut; spec memakai Brand. Cakupan baris dan kolom berkas diasersi lewat kemampuan baca isi berkas (tim FE).

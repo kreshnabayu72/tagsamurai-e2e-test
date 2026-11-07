@@ -35,61 +35,63 @@ coverage:
 
 ### TC-FA-SU-583: Sort kelas teks (Action, Field)
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab Changelog
-2. Klik header Action satu kali
-3. Verifikasi urutan lima baris pertama klik 1 ascending (↑): T-7, T-1, T-6, T-2, T-3
-4. Klik header Action kedua kali
-5. Verifikasi urutan lima baris pertama klik 2 descending (↓): T-4, T-2, T-3, T-5, T-1
-6. Klik header Action ketiga kali
-7. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: T-1, T-2, T-3, T-4, T-5
-8. Klik header Field satu kali
-9. Verifikasi urutan lima baris pertama klik 1 ascending (↑): T-4, T-6, T-5, T-1, T-2
-10. Klik header Field kedua kali
-11. Verifikasi urutan lima baris pertama klik 2 descending (↓): T-7, T-3, T-2, T-1, T-5
-12. Klik header Field ketiga kali
-13. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: T-1, T-2, T-3, T-4, T-5
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail pengguna Budi Santoso lalu klik tab Changelog
+3. Klik header Action satu kali
+4. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: T-7, T-1, T-6, T-2, T-3
+5. Klik header Action kedua kali
+6. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: T-4, T-2, T-3, T-5, T-1
+7. Klik header Action ketiga kali
+8. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: T-1, T-2, T-3, T-4, T-5
+9. Klik header Field satu kali
+10. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: T-4, T-6, T-5, T-1, T-2
+11. Klik header Field kedua kali
+12. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: T-7, T-3, T-2, T-1, T-5
+13. Klik header Field ketiga kali
+14. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: T-1, T-2, T-3, T-4, T-5
 
 ### TC-FA-SU-584: Sort kelas mixed (Old Value, New Value)
 
-14. Klik header Old Value satu kali
-15. Verifikasi urutan lima baris pertama klik 1 ascending (↑): T-2, T-3, T-5, T-7, T-4
-16. Klik header Old Value kedua kali
-17. Verifikasi urutan lima baris pertama klik 2 descending (↓): T-1, T-6, T-4, T-5, T-7
-18. Klik header Old Value ketiga kali
-19. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: T-1, T-2, T-3, T-4, T-5
-20. Klik header New Value satu kali
-21. Verifikasi urutan lima baris pertama klik 1 ascending (↑): T-5, T-7, T-1, T-6, T-4
-22. Klik header New Value kedua kali
-23. Verifikasi urutan lima baris pertama klik 2 descending (↓): T-2, T-3, T-4, T-1, T-6
-24. Klik header New Value ketiga kali
-25. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: T-1, T-2, T-3, T-4, T-5
+15. Klik header Old Value satu kali
+16. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: T-2, T-3, T-5, T-7, T-4
+17. Klik header Old Value kedua kali
+18. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: T-1, T-6, T-4, T-5, T-7
+19. Klik header Old Value ketiga kali
+20. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: T-1, T-2, T-3, T-4, T-5
+21. Klik header New Value satu kali
+22. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: T-5, T-7, T-1, T-6, T-4
+23. Klik header New Value kedua kali
+24. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: T-2, T-3, T-4, T-1, T-6
+25. Klik header New Value ketiga kali
+26. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: T-1, T-2, T-3, T-4, T-5
 
 ### TC-FA-SU-585: Sort kelas user (Modified By)
 
-26. Klik header Modified By satu kali
-27. Verifikasi urutan lima baris pertama klik 1 ascending (↑): T-1, T-2, T-3, T-5, T-6
-28. Klik header Modified By kedua kali
-29. Verifikasi urutan lima baris pertama klik 2 descending (↓): T-4, T-1, T-2, T-3, T-5
-30. Klik header Modified By ketiga kali
-31. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: T-1, T-2, T-3, T-4, T-5
+27. Klik header Modified By satu kali
+28. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: T-1, T-2, T-3, T-5, T-6
+29. Klik header Modified By kedua kali
+30. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: T-4, T-1, T-2, T-3, T-5
+31. Klik header Modified By ketiga kali
+32. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: T-1, T-2, T-3, T-4, T-5
 
 ### TC-FA-SU-586: Screening Filter Panel
 
-32. Klik icon Filter
-33. Verifikasi panel terbuka di bawah Table Tools
-34. Verifikasi ikon Filter menjadi gelap
-35. Hover icon Filter
-36. Verifikasi tooltip `Filter`
-37. Verifikasi field ke-1 adalah Date (date range picker) dengan placeholder `Select date`
-38. Verifikasi field ke-2 adalah Action (multi-select searchable) dengan placeholder `All actions`
-39. Verifikasi field ke-3 adalah Field (multi-select searchable) dengan placeholder `All fields`
-40. Verifikasi field ke-4 adalah Modified By (multi-select searchable) dengan placeholder `All users`
-41. Verifikasi footer panel: `[Clear Field]` di kiri dan `[Apply]` di kanan
-42. Verifikasi tidak ada badge titik pada ikon Filter selama belum ada filter ter-Apply
+33. Klik icon Filter
+34. Verifikasi panel terbuka di bawah Table Tools
+35. Verifikasi ikon Filter menjadi gelap
+36. Hover icon Filter
+37. Verifikasi tooltip `Filter`
+38. Verifikasi field ke-1 adalah Date (date range picker) dengan placeholder `Select date`
+39. Verifikasi field ke-2 adalah Action (multi-select searchable) dengan placeholder `All actions`
+40. Verifikasi field ke-3 adalah Field (multi-select searchable) dengan placeholder `All fields`
+41. Verifikasi field ke-4 adalah Modified By (multi-select searchable) dengan placeholder `All users`
+42. Verifikasi footer panel: `[Clear Field]` di kiri dan `[Apply]` di kanan
+43. Verifikasi tidak ada badge titik pada ikon Filter selama belum ada filter ter-Apply
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
-- Spec ini berjumlah 42 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Langkah penghubung tambahan (S-03): langkah 1 (Ketik Search `Budi Santoso`, tekan Enter sebelum membuka Detail, supaya spec tidak mengandalkan posisi baris pada User List 25 pengguna 3 halaman, R-16, bagian 8b butir 13).
+- Spec ini berjumlah 43 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14).

@@ -27,7 +27,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-523: Chip dan checkbox dropdown Filter sinkron dua arah, logika OR dalam field
 
@@ -64,7 +64,7 @@ coverage:
 
 ### TC-FA-SU-525: Screening Popup Setup Column dan Preview Table
 
-29. Klik `Setup Column...`
+29. Klik header kolom Actions (⋯), klik `Setup Column...`
 30. Verifikasi header popup: Title `Setup Column`, deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`, icon close ✕
 31. Verifikasi daftar kolom `Transaction ID`, `Transaction`, `Status`, `Group`, `PIC`, `Total Asset`, `Request Date`, `Last Updated`
 32. Verifikasi checkbox tampil pada tiap kolom
@@ -78,7 +78,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; `Klik icon Filter` menutup panel sebelum TC-FA-SU-524; `Tekan Esc` menutup overlay Column Visibility; `✕` menutup popup Setup Column (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` lalu membuka Detail Budi Santoso (langkah 1); `Klik icon Filter` menutup panel sebelum TC-FA-SU-524; `Tekan Esc` menutup overlay Column Visibility; `✕` menutup popup Setup Column (S-09).
 - Langkah `Ketik assign` dan `Verifikasi opsi dropdown menyempit` pada TC-FA-SU-523 ditambahkan karena Expected d menyebut penyempitan opsi (substring, tidak case-sensitive) sementara langkah TC hanya mengetik keyword tanpa hasil (S-03).
 - Jumlah langkah: 38 tertulis, 38 dengan ekspansi iterasi.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (38 langkah). Seluruh blok berada pada satu surface (satu sub-tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.

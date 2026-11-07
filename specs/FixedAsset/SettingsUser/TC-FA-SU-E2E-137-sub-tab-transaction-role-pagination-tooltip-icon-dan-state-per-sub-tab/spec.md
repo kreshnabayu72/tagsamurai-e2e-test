@@ -25,6 +25,7 @@ coverage:
   | Nilai |
   |---|
   | `0` |
+  | `-1` |
   | `999` |
   | `abc` |
 - Spec tidak mengubah data backend; tidak ada seeding atau cleanup selain pemulihan konfigurasi tampilan yang tidak disimpan.
@@ -33,67 +34,71 @@ coverage:
 
 ### TC-FA-SU-404: Pagination Sub-tab Transaction Role: page size, navigasi, dan kasus tepi
 
-1. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
-2. Verifikasi default 10 baris per halaman
-3. Buka dropdown page size
-4. Verifikasi pilihan page size 10, 25, 50, 100 tanpa opsi All
-5. Tutup dropdown page size dengan Esc
-6. Untuk setiap baris tabel "Nomor halaman tidak valid" di Prerequisites (langkah 6 sampai 7): isi nomor halaman pada baris tabel lalu tekan Enter
-7. Verifikasi nomor halaman diabaikan dan tabel tetap di halaman 1
-8. Ganti page size ke 25
-9. Ganti page size ke 10
-10. Verifikasi mengganti page size tetap menampilkan halaman 1
-11. Klik header kolom Transaction satu kali
-12. Verifikasi mengganti sort tetap menampilkan halaman 1
-13. Klik header kolom Transaction dua kali lagi sampai kembali netral
-14. Ketik Search `Transfer`, tekan Enter
-15. Verifikasi Search yang mengubah hasil tetap menampilkan halaman 1
-16. Klik `(←)` pada kotak Search
+1. Ketik Search `Yuda Pratama`, tekan Enter
+2. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
+3. Verifikasi default 10 baris per halaman
+4. Buka dropdown page size
+5. Verifikasi pilihan page size 10, 25, 50, 100 tanpa opsi All
+6. Tutup dropdown page size dengan Esc
+7. Untuk setiap baris tabel "Nomor halaman tidak valid" di Prerequisites (langkah 7 sampai 8): isi nomor halaman pada baris tabel lalu tekan Enter
+8. Verifikasi nomor halaman diabaikan dan tabel tetap di halaman 1
+9. Ganti page size ke 25
+10. Ganti page size ke 10
+11. Verifikasi mengganti page size tetap menampilkan halaman 1
+12. Klik header kolom Transaction satu kali
+13. Verifikasi mengganti sort tetap menampilkan halaman 1
+14. Klik header kolom Transaction dua kali lagi sampai kembali netral
+15. Ketik Search `Transfer`, tekan Enter
+16. Verifikasi Search yang mengubah hasil tetap menampilkan halaman 1
+17. Klik `(←)` pada kotak Search
 
 ### TC-FA-SU-405: Tooltip icon Table Tools dan header Actions Sub-tab Transaction Role
 
-17. Hover icon Search
-18. Verifikasi tooltip `Search`
-19. Hover icon Filter
-20. Verifikasi tooltip `Filter`
-21. Hover icon Changelog
-22. Verifikasi tooltip `Changelog`
-23. Hover header kolom Actions (⋯)
-24. Verifikasi tooltip `Column Visibility`
+18. Hover icon Search
+19. Verifikasi tooltip `Search`
+20. Hover icon Filter
+21. Verifikasi tooltip `Filter`
+22. Hover icon Changelog
+23. Verifikasi tooltip `Changelog`
+24. Hover header kolom Actions (⋯)
+25. Verifikasi tooltip `Column Visibility`
 
 ### TC-FA-SU-407: State Sub-tab Transaction Role dipertahankan per sub-tab
 
-25. Ketik Search `Transfer`, tekan Enter
-26. Klik icon Filter
-27. Buka dropdown Role
-28. Centang `Asset Admin`
-29. Klik `[Apply]`
-30. Klik header kolom Group satu kali
-31. Ganti page size ke 25
-32. Klik Sub-tab Group Role
-33. Verifikasi Sub-tab Group Role tidak memuat Search, Filter, Sort, dan page size dari Sub-tab Transaction Role
-34. Klik satu header kolom sortable pada Sub-tab Group Role
-35. Klik Sub-tab Transaction Role
-36. Verifikasi state Sub-tab Transaction Role dipulihkan setelah pindah sub-tab: Search `Transfer`, Filter Role `Asset Admin`, Sort Group, dan page size 25
-37. Klik Sub-tab Group Role
-38. Verifikasi sort Sub-tab Group Role tetap sesuai header yang diklik dan tidak terpengaruh state Sub-tab Transaction Role
-39. Klik Sub-tab Transaction Role
-40. Klik Back breadcrumb ke User List
-41. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
-42. Verifikasi state Sub-tab Transaction Role dipulihkan setelah Back breadcrumb: Search, Filter, Sort, dan page size 25
-43. Tekan F5
-44. Verifikasi state Sub-tab Transaction Role dipulihkan setelah refresh F5: Search, Filter, Sort, dan page size 25
-45. Klik menu Settings > User pada sidebar
-46. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
-47. Verifikasi state Sub-tab Transaction Role kembali ke default setelah keluar lewat menu sidebar
+26. Ketik Search `Transfer`, tekan Enter
+27. Klik icon Filter
+28. Buka dropdown Role
+29. Centang `Asset Admin`
+30. Klik `[Apply]`
+31. Klik header kolom Group satu kali
+32. Ganti page size ke 25
+33. Klik Sub-tab Group Role
+34. Verifikasi Sub-tab Group Role tidak memuat Search, Filter, Sort, dan page size dari Sub-tab Transaction Role
+35. Klik satu header kolom sortable pada Sub-tab Group Role
+36. Klik Sub-tab Transaction Role
+37. Verifikasi state Sub-tab Transaction Role dipulihkan setelah pindah sub-tab: Search `Transfer`, Filter Role `Asset Admin`, Sort Group, dan page size 25
+38. Klik Sub-tab Group Role
+39. Verifikasi sort Sub-tab Group Role tetap sesuai header yang diklik dan tidak terpengaruh state Sub-tab Transaction Role
+40. Klik Sub-tab Transaction Role
+41. Klik Back breadcrumb ke User List
+42. Ganti isi kotak search dengan `Yuda Pratama`, tekan Enter
+43. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
+44. Verifikasi state Sub-tab Transaction Role dipulihkan setelah Back breadcrumb: Search, Filter, Sort, dan page size 25
+45. Tekan F5
+46. Verifikasi state Sub-tab Transaction Role dipulihkan setelah refresh F5: Search, Filter, Sort, dan page size 25
+47. Klik menu Settings > User pada sidebar
+48. Ketik Search `Yuda Pratama`, tekan Enter
+49. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
+50. Verifikasi state Sub-tab Transaction Role kembali ke default setelah keluar lewat menu sidebar
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; urutan blok mengikuti prinsip bagian 3 (screening dan baca di awal, perubahan konfigurasi tersimpan di akhir).
 - Pembagian TC lintas spec: TC-FA-SU-406 (empty state, hasil pencarian kosong, loading, dan error load Sub-tab Transaction Role) ada di spec 360.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): menutup overlay Column Visibility, dropdown, dan panel Filter; menutup kotak Search lewat `(←)` atau `✕` + Enter; `[Clear Field]` dan `[Apply]` pemulih, serta mengembalikan sort ke netral dan visibilitas kolom ke semula, supaya blok berikutnya tidak mewarisi state.
-- Rentang langkah 6 sampai 7 diulang untuk tiga nilai pada tabel "Nomor halaman tidak valid" (Prerequisites).
-- Alasan melewati sekitar 35 langkah (47 langkah tertulis, 51 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
+- Langkah penghubung Search (S-03, R-16): langkah 1 dan 48 (Ketik Search `Yuda Pratama`, tekan Enter) serta langkah 42 (ganti isi kotak search, karena kotak Search mempertahankan nilainya sesudah Back breadcrumb, 8b.9) untuk menemukan baris Yuda Pratama di User List 25 pengguna (3 halaman) sebelum membuka Detail.
+- Rentang langkah 7 sampai 8 diulang untuk empat nilai pada tabel "Nomor halaman tidak valid" (Prerequisites).
+- Alasan melewati sekitar 35 langkah (50 langkah tertulis, 56 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
 - Temuan untuk QA (S-15):
-  - TC-FA-SU-404 butir b menyebut nomor halaman negatif, sedangkan Data Uji langkah 3 hanya `0`, `999`, dan `abc`; spec mengikuti langkah. Butir e adalah catatan fixture satu halaman dan tidak diasersi (rujukan TC-FA-SU-359 dan TC-FA-SU-1057).
+  - TC-FA-SU-404 Langkah Uji 3 dan Data Uji memuat `0`, `-1`, `999`, dan `abc`; spec memakai keempatnya. Butir e adalah catatan fixture satu halaman dan tidak diasersi (rujukan TC-FA-SU-359 dan TC-FA-SU-1057).
   - TC-FA-SU-407: "sub-tab lain" dan header yang diklik di sana tidak disebut TC; spec memakai Sub-tab Group Role dan satu header kolom sortable. Nilai Search, Filter, dan Sort Sub-tab Transaction Role dipilih penulis karena Data Uji kosong. Nomor halaman aktif tidak diuji (fixture satu halaman, sesuai TC).

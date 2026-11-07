@@ -32,7 +32,7 @@ coverage:
 
 ### TC-FA-SU-695: Reset to Default, Discard, independensi cache
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
 2. Buka Setup Column, sembunyikan satu kolom dan pin satu kolom
 3. Klik `[Reset to Default]`
 4. Verifikasi visibility, urutan, dan pin kembali ke default modul pada preview
@@ -48,7 +48,7 @@ coverage:
 
 ### TC-FA-SU-696: Pagination
 
-14. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
+14. Kembali ke User List, ganti isi kotak search dengan `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
 15. Verifikasi default 10 baris per halaman
 16. Klik dropdown page size
 17. Verifikasi pilihan page size 10, 25, 50, 100 tanpa opsi All
@@ -75,5 +75,6 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pembukaan dan penutupan dropdown page size, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1 dan 14) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
 - TC-FA-SU-694 (pin dan unpin modal Transaction Role) ada di spec 231.
-- Temuan untuk QA (S-15): (1) Expected e (fixture hanya satu halaman, multi-halaman diuji di TC-FA-SU-359 dan TC-FA-SU-1057) adalah catatan tanpa langkah observasi sehingga tidak diasersi. (2) TC tidak menyebut tabel lain yang dipakai untuk memeriksa independensi cache; spec memilih User List. Post Condition preferensi kolom kembali ke default tidak punya langkah observasi di luar Expected a dan b sehingga tidak diasersi tersendiri.
+- Temuan untuk QA (S-15): (1) Expected e (fixture hanya satu halaman, multi-halaman diuji di TC-FA-SU-359 dan TC-FA-SU-1057) adalah catatan tanpa langkah observasi sehingga tidak diasersi. (2) TC tidak menyebut tabel lain yang dipakai untuk memeriksa independensi cache; spec memilih User List. Post Condition preferensi kolom kembali ke default tidak punya langkah observasi di luar Expected a dan b sehingga tidak diasersi tersendiri. (3) Langkah `[Save]` pada langkah "Buka Setup Column, sembunyikan satu kolom, klik `[Save]`, lalu buka tabel lain" ditambahkan spec tanpa dasar TC: TC-FA-SU-695 langkah 4 dan 5 hanya menutup lewat ✕ atau Esc, dan langkah 6 membandingkan tabel lain tanpa menyebut Save. Save dipilih agar perubahan tersimpan di tabel ini sebelum dibandingkan dengan User List (Expected c); pemilik TC perlu mengonfirmasi atau menyatakan cara lain.

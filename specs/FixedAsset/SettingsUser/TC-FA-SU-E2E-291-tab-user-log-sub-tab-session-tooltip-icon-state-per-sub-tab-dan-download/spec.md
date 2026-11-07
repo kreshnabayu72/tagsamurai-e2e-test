@@ -43,7 +43,7 @@ coverage:
 
 ### TC-FA-SU-888: Download: format CSV dan XLSX, nama file, dan tanpa toast sukses
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Session
+1. Ketik Search `Budi Santoso`, tekan Enter, klik nama Budi Santoso, lalu klik tab User Log, sub-tab Session
 2. Hover icon Download
 3. Verifikasi tooltip ikon `Download`
 4. Klik icon Download
@@ -89,12 +89,13 @@ coverage:
 38. Verifikasi state sub-tab Session (Search, Filter, Sort, page size) dipulihkan setelah Back breadcrumb
 39. Tekan F5 pada halaman Detail
 40. Verifikasi state sub-tab Session dipulihkan setelah refresh F5
-41. Klik menu Settings > User pada sidebar, buka Detail pengguna Budi Santoso lagi, klik tab User Log, sub-tab Session
+41. Klik menu Settings > User pada sidebar, ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso lagi, klik tab User Log, sub-tab Session
 42. Verifikasi state sub-tab Session kembali ke default setelah keluar lewat menu sidebar
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
+- Langkah penghubung tambahan (S-03, R-16, bagian 8b butir 13): langkah 1 dan 41 mengetik Search `Budi Santoso` lalu Enter supaya baris Budi Santoso tampil di User List (25 baris) sebelum nama diklik (langkah 41 "ketik Search" karena sesudah menu sidebar kotak Search kosong).
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
 - Spec ini berjumlah 42 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC-FA-SU-888: klausa BOM UTF-8, tanda kutip ganda, dan sheet `Sheet1` adalah isi berkas (kelas f); spec menulisnya sebagai `Verifikasi` dengan kemampuan baca berkas dari tim FE. TC-FA-SU-894: Langkah Uji 2 menyebut "kontrol berbeda" pada sub-tab lain tanpa nilai; spec memakai Search `Unassigned` dan Sort Date pada sub-tab Assignment, dan nomor halaman aktif tidak diuji (fixture satu halaman).

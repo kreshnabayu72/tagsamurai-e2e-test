@@ -35,60 +35,62 @@ coverage:
 
 ### TC-FA-SU-758: Pagination: page size, navigasi, dan kasus tepi
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab System Log
-2. Verifikasi default 10 baris per halaman
-3. Klik dropdown page size
-4. Verifikasi pilihan page size 10, 25, 50, 100 tanpa opsi All
-5. Tutup dropdown page size dengan Esc
-6. Isi nomor halaman `0`, tekan Enter
-7. Verifikasi tabel tetap di halaman 1
-8. Isi nomor halaman `-1`, tekan Enter
-9. Verifikasi tabel tetap di halaman 1
-10. Isi nomor halaman `999`, tekan Enter
-11. Verifikasi tabel tetap di halaman 1
-12. Isi nomor halaman `abc`, tekan Enter
-13. Verifikasi tabel tetap di halaman 1
-14. Ganti page size ke 25
-15. Verifikasi tabel menampilkan halaman 1
-16. Ganti page size kembali ke 10
-17. Verifikasi tabel menampilkan halaman 1
-18. Klik header Date satu kali
-19. Verifikasi tabel menampilkan halaman 1
-20. Ketik Search `Assign`, tekan Enter
-21. Verifikasi tabel menampilkan halaman 1
-22. Klik `(←)` pada kotak Search
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail pengguna Budi Santoso lalu klik tab System Log
+3. Verifikasi default 10 baris per halaman
+4. Klik dropdown page size
+5. Verifikasi pilihan page size 10, 25, 50, 100 tanpa opsi All
+6. Tutup dropdown page size dengan Esc
+7. Isi nomor halaman `0`, tekan Enter
+8. Verifikasi tabel tetap di halaman 1
+9. Isi nomor halaman `-1`, tekan Enter
+10. Verifikasi tabel tetap di halaman 1
+11. Isi nomor halaman `999`, tekan Enter
+12. Verifikasi tabel tetap di halaman 1
+13. Isi nomor halaman `abc`, tekan Enter
+14. Verifikasi tabel tetap di halaman 1
+15. Ganti page size ke 25
+16. Verifikasi tabel menampilkan halaman 1
+17. Ganti page size kembali ke 10
+18. Verifikasi tabel menampilkan halaman 1
+19. Klik header Date satu kali
+20. Verifikasi tabel menampilkan halaman 1
+21. Ketik Search `Assign`, tekan Enter
+22. Verifikasi tabel menampilkan halaman 1
+23. Klik `(←)` pada kotak Search
 
 ### TC-FA-SU-759: Download format CSV dan XLSX, nama file, dan tanpa toast sukses
 
-23. Hover icon Download
-24. Verifikasi tooltip ikon `Download`
-25. Klik icon Download
-26. Verifikasi overlay `Download as CSV` dan `Download as XLSX` tampil
-27. Pilih `Download as CSV`
-28. Verifikasi tidak ada toast sukses
-29. Verifikasi file `System-Log-Budi-Santoso.csv` terunduh
-30. Klik icon Download, pilih `Download as XLSX`
-31. Verifikasi tidak ada toast sukses
-32. Verifikasi file `System-Log-Budi-Santoso.xlsx` terunduh
-33. Verifikasi CSV berencoding UTF-8 dengan BOM
-34. Verifikasi nilai ber-koma, tanda kutip, atau baris baru pada CSV dibungkus tanda kutip ganda
-35. Verifikasi XLSX satu sheet bernama `Sheet1`
+24. Hover icon Download
+25. Verifikasi tooltip ikon `Download`
+26. Klik icon Download
+27. Verifikasi overlay `Download as CSV` dan `Download as XLSX` tampil
+28. Pilih `Download as CSV`
+29. Verifikasi tidak ada toast sukses
+30. Verifikasi file `System-Log-Budi-Santoso.csv` terunduh
+31. Klik icon Download, pilih `Download as XLSX`
+32. Verifikasi tidak ada toast sukses
+33. Verifikasi file `System-Log-Budi-Santoso.xlsx` terunduh
+34. Verifikasi CSV berencoding UTF-8 dengan BOM
+35. Verifikasi nilai ber-koma, tanda kutip, atau baris baru pada CSV dibungkus tanda kutip ganda
+36. Verifikasi XLSX satu sheet bernama `Sheet1`
 
 ### TC-FA-SU-763: Tooltip icon Table Tools dan header Actions
 
-36. Hover icon Search
-37. Verifikasi tooltip `Search`
-38. Hover icon Filter
-39. Verifikasi tooltip `Filter`
-40. Hover icon Download
-41. Verifikasi tooltip `Download`
-42. Hover header kolom Actions (⋯)
-43. Verifikasi tooltip `Column Visibility`
+37. Hover icon Search
+38. Verifikasi tooltip `Search`
+39. Hover icon Filter
+40. Verifikasi tooltip `Filter`
+41. Hover icon Download
+42. Verifikasi tooltip `Download`
+43. Hover header kolom Actions (⋯)
+44. Verifikasi tooltip `Column Visibility`
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay dan dropdown page size (Esc), pembukaan dropdown page size sebelum asersi pilihannya, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): langkah 1 (Ketik Search `Budi Santoso` di User List untuk menemukan baris target sebelum membuka Detail, R-16, butir 8b.13); User List memuat 25 pengguna pada 3 halaman sehingga posisi baris tidak diandalkan.
 - TC-FA-SU-760 ada di spec 251, TC-FA-SU-761 di spec 373, TC-FA-SU-762 di spec 368, dan TC-FA-SU-764 di spec 364.
-- Spec ini berjumlah 43 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Spec ini berjumlah 44 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #28 yang disediakan ulang di hook `before` dan `after` (S-14). Aksi spec lain terhadap Budi Santoso menambah entri System Log, sehingga penyediaan ulang seed menjadi syarat asersi urutan dan jumlah baris. (2) TC-FA-SU-758 mengisi nomor halaman `0`, `-1`, `999`, dan `abc`; spec mengikuti Langkah Uji dan Data Uji. Butir e (fixture hanya satu halaman, multi-halaman diuji di TC-FA-SU-359 dan TC-FA-SU-1057) adalah catatan tanpa langkah observasi sehingga tidak diasersi. Kata kunci Search `Assign` adalah pilihan spec. (3) Klausa Expected d TC-FA-SU-759 (BOM UTF-8, tanda kutip ganda, sheet `Sheet1`) adalah isi berkas (kelas f, binary buffer); spec menulisnya sebagai `Verifikasi` dengan kemampuan baca berkas dari tim FE. Mohon konfirmasi bila harus dipindah ke spec kelas f.

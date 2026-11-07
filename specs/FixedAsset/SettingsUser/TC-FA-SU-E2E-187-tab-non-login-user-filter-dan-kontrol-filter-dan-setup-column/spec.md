@@ -29,7 +29,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-558: Chip dan checkbox dropdown Filter sinkron dua arah, logika OR dalam field
 
@@ -67,7 +67,7 @@ coverage:
 
 ### TC-FA-SU-560: Screening Popup Setup Column dan Preview Table
 
-30. Klik `Setup Column...`
+30. Klik header kolom Actions (⋯), klik `Setup Column...`
 31. Verifikasi header popup: Title `Setup Column`, deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`, icon close ✕
 32. Verifikasi daftar kolom `Name`, `Email`, `Employee ID`, `Position`, `Division`, `Active`, `Last Update`, `Temporary User`, `Temporary Until`, `Shift`
 33. Verifikasi checkbox tampil pada tiap kolom
@@ -91,7 +91,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; `Klik icon Filter` menutup panel sebelum TC-FA-SU-559; `Tekan Esc` menutup overlay Column Visibility; `✕` menutup popup Setup Column (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13); `Klik icon Filter` menutup panel sebelum TC-FA-SU-559; `Tekan Esc` menutup overlay Column Visibility; `✕` menutup popup Setup Column (S-09).
 - Langkah `Ketik facil` dan `Verifikasi opsi dropdown menyempit` pada TC-FA-SU-558 ditambahkan karena Expected d menyebut penyempitan opsi (substring, tidak case-sensitive) sementara langkah TC hanya mengetik keyword tanpa hasil (S-03).
 - Jumlah langkah: 46 tertulis, 46 dengan ekspansi iterasi.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (46 langkah). Seluruh blok berada pada satu surface (satu tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.

@@ -18,22 +18,21 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Default User Ahmad Dahlan (Pre-setup #2) `defaultUser_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_DU_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control).
-- Akun kedua (ganti akun eksplisit di langkah terakhir): Group Manager Oscar Pranata (Pre-setup #9), email disediakan tim FE (tidak tertulis di Pre-setup TC), kredensial `Spectra.env.FA_GM_PASSWORD`.
 - Hook suite (`suite.md`): flag Guided Tooltip `seen`, sesi API aktor, dan pemulihan Pre-setup bersama dirujuk tanpa diulang di sini.
 - Client `FaUserMain` (Pre-setup #20) dengan pohon grup (Pre-setup #21) dan penugasan (Pre-setup #23).
 - Pengguna target: Oscar Pranata, Group Manager IT Infrastructure dan Accounts Payable dengan Group Role `Manage group` penuh (Create, Read, Update, Delete) pada kedua grup (Pre-setup #9). Popup "baris pola (Manage group)" pada TC adalah role `Manage group`. Baris pola Group Manager (Group Role katalog dan Transaction Role Asset Admin dan Approver) termaterialisasi pada kedua grup dan turunannya (Pre-setup #9, FARP-LOGIC-04i/04j).
 - Data uji: perubahan yang diuji adalah menghapus centang Update pada IT Infrastructure di popup Assign Group Role `Manage group`.
-- Kemampuan teknis: seed API untuk memulihkan status Group Manager dan penugasan Oscar Pranata (disediakan tim FE/BE); pembacaan jumlah entri Tab Changelog target sebelum aksi sebagai baseline (disediakan tim FE/BE, bagian 8b butir 10). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
+- Kemampuan teknis: seed API untuk memulihkan status Group Manager dan penugasan Oscar Pranata (disediakan tim FE/BE); pembacaan jumlah entri Tab Changelog target dan jumlah notifikasi in-app Oscar Pranata sebelum aksi sebagai baseline per penerima (disediakan tim FE/BE, bagian 8b butir 10); jumlah notifikasi sesudah pemicu dibaca lewat kemampuan baca BE yang sama, bukan dari panel notifikasi (maks 5 item). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
 - State global yang diubah: penugasan Group Role dan status Group Manager Oscar Pranata pada IT Infrastructure; dipulihkan ke Pre-setup #9 lewat seed API di hook `after`.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
 ## Test Steps
 
-1. Catat jumlah entri `Auto-Revert`, `Edit`, dan `Remove` Oscar Pranata pada Tab Changelog sebagai baseline
+1. Catat jumlah entri `Auto-Revert`, `Edit`, dan `Remove` Oscar Pranata pada Tab Changelog serta jumlah notifikasi in-app Oscar Pranata sebagai baseline
 
 ### TC-FA-SU-212: Group Manager: Save yang membuat penugasan grup tidak lagi CRUD penuh memunculkan dialog Remove Group Manager
 
-2. Buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role
+2. Kembali ke User List, ketik Search `Oscar Pranata`, tekan Enter, lalu buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role
 3. Buka popup Assign Group Role pada baris pola Manage group
 4. Hapus centang Update pada IT Infrastructure
 5. Klik `[Save]`
@@ -54,7 +53,7 @@ coverage:
 
 ### TC-FA-SU-212 Expected c: dialog yang sama untuk baris pola Group Role mana pun
 
-17. Buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role pada baris pola lain Manage files
+17. Kembali ke User List, ganti isi kotak search dengan `Oscar Pranata`, tekan Enter, lalu buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role pada baris pola lain Manage files
 18. Hapus centang Delete pada IT Infrastructure lalu klik `[Save]`
 19. Verifikasi dialog Title `Remove Group Manager` yang sama tampil untuk baris pola Manage files dengan kalimat `This edit will remove Group Manager status for this group.` dan `Their individual role permissions will remain as edited.`
 20. Klik `[Cancel]`
@@ -63,7 +62,7 @@ coverage:
 
 ### TC-FA-SU-213: Konfirmasi Remove Group Manager: penugasan tersimpan, status GM terlepas, toast T-06b, log Auto-Revert, dan notifikasi
 
-23. Buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role pada baris pola Manage group
+23. Kembali ke User List, ganti isi kotak search dengan `Oscar Pranata`, tekan Enter, lalu buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role pada baris pola Manage group
 24. Hapus centang Update pada IT Infrastructure lalu klik `[Save]`
 25. Klik `[Remove]`
 26. Verifikasi popup menutup
@@ -76,22 +75,23 @@ coverage:
 33. Verifikasi entri `Auto-Revert` / Object `Group Manager` / Field `Group Manager — IT Infrastructure` / Old Value `Assigned` / New Value `—` bertambah satu dibanding baseline pada Tab Changelog
 34. Verifikasi entri `Edit` permission bertambah dibanding baseline pada Tab Changelog
 35. Verifikasi tidak ada entri `Remove (via Group Manager)` per baris pada Tab Changelog Oscar Pranata (Auto-Revert tidak menulis entri per baris pada surface mana pun, TC-FA-SU-1098)
-36. Logout lalu login sebagai Group Manager Oscar Pranata
-37. Buka panel notifikasi
-38. Verifikasi notifikasi in-app view-only diterima Oscar Pranata
+36. Baca jumlah notifikasi in-app Oscar Pranata lewat kemampuan baca BE yang sama dengan baseline langkah 1 hingga jumlah bertambah dibanding baseline
+37. Verifikasi notifikasi in-app view-only diterima Oscar Pranata: jumlah notifikasi bertambah dibanding baseline
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: TC-FA-SU-212, 214, lalu 213. TC-FA-SU-213 dan 214 sama-sama memulai dari dialog yang dibuka TC-FA-SU-212 ("Ulangi perubahan hingga dialog tampil"); `[Cancel]` TC-FA-SU-214 dijalankan pada dialog TC-FA-SU-212 sehingga status Group Manager yang belum berubah dapat diasersi sebelum TC-FA-SU-213 mengubahnya (S-04: langkah dependensi disalin utuh pada TC-FA-SU-213).
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1. Baseline log mengikuti S-12; penutupan popup dirty mengikuti S-08.
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1 dan 36. Baseline log mengikuti S-12; penutupan popup dirty mengikuti S-08.
 - Langkah 17 sampai 19 membuktikan Expected c TC-FA-SU-212 (dialog sama untuk baris pola Group Role mana pun, bukan hanya `Manage group`) dan dijalankan sebelum TC-FA-SU-213; langkah 20 sampai 22 menutup dialog dan popup tanpa menyimpan (S-08), sehingga state Oscar tidak berubah. Langkah 28 membuka Sub-tab Transaction Role (langkah penghubung). Langkah 35 (absence) beranchor entri `Auto-Revert` dan `Edit` pada langkah 33 dan 34. Modal Changelog User > Group Role dan > Transaction Role (Expected d TC-FA-SU-213) tidak dibaca di spec ini; diasersi di spec 403 (TC-FA-SU-1098).
-- Spec ini 38 langkah. Alasan melewati sekitar 35 langkah: satu topik (Remove Group Manager dari popup Assign Group Role) dan satu kelas, dengan blok yang berurutan menurut state (dialog, Cancel, konfirmasi); kegagalan satu blok tidak menghilangkan makna blok lain.
-- Langkah pola baca-log: langkah 15, 16 dan 32 sampai 34. Search `Oscar Pranata` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16). Langkah terakhir spec mengganti akun ke Group Manager Oscar Pranata (ganti akun eksplisit, S-07); hook `after` mengembalikan sesi ke akun default suite.
+- Spec ini 37 langkah. Alasan melewati sekitar 35 langkah: satu topik (Remove Group Manager dari popup Assign Group Role) dan satu kelas, dengan blok yang berurutan menurut state (dialog, Cancel, konfirmasi); kegagalan satu blok tidak menghilangkan makna blok lain.
+- Langkah pola baca-log: langkah 15, 16 dan 32 sampai 34. Search `Oscar Pranata` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - TC-FA-SU-214: klausa "tidak ada entri log" pada aksi yang dibatalkan ditulis sebagai asersi jumlah dengan baseline (bagian 3 prinsip 13 butir g, S-12).
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 2, 17 dan 23 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-212 Expected a dan TC-FA-SU-213 Expected a/d: dialog `Remove Group Manager` memakai copy usulan (perlu persetujuan PM, owner `D-05` `settings-role-permission` Open Item #7d); spec mengasersi apa adanya. Pre-setup tidak merinci penugasan non-pola Oscar Pranata, sehingga klausa "penugasan non-pola tidak berubah" tidak diasersi; spec juga memakai `Manage files` sebagai contoh baris pola lain (Expected c TC-FA-SU-212) dengan asumsi baris pola itu termaterialisasi pada IT Infrastructure.
-  - TC-FA-SU-213 butir e menyebut notifikasi in-app view-only diterima Oscar Pranata; spec hanya mengasersi penerimaan (copy Title dan Body dimiliki modul Notification, Catatan TC).
+  - TC-FA-SU-213 butir e menyebut notifikasi in-app view-only diterima Oscar Pranata; spec hanya mengasersi penerimaan (copy Title dan Body dimiliki modul Notification, Catatan TC) sebagai selisih jumlah terhadap baseline per penerima.
+  - TC-FA-SU-213 langkah 4 membuka panel notifikasi sebagai Oscar Pranata; spec membaca jumlah notifikasi lewat kemampuan baca BE yang sama dengan baseline (bagian 8b butir 10; panel notifikasi hanya memuat 5 item) sehingga tidak ada langkah ganti akun.
   - Post Condition TC-FA-SU-213 butir d (Settings > Role & Permission > Detail Role Group Role) tidak punya langkah observasi di TC dan tidak diasersi.
   - TC-FA-SU-213 Post Condition butir a (label Role Oscar di User List tidak berkurang) tidak punya langkah observasi di Expected dan tidak diasersi di spec ini; diasersi untuk Putri Anggraeni di spec 392 (TC-FA-SU-1082). Kalimat penutup D-05 `Their individual role permissions will remain as edited.` adalah copy usulan (PM, `settings-role-permission` Open Item #7d).

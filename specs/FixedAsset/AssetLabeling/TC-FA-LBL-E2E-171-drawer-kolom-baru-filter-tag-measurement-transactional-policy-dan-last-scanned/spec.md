@@ -24,7 +24,7 @@ coverage:
 - State global: konfigurasi kolom Setup Column Drawer Tagged Asset (preferensi browser) diubah dan dipulihkan oleh langkah spec; hook `after` spec ini menghapus preferensi kolom di browser sebagai cadangan, bukan `[Reset to Default]` (bagian 4). Kemampuan menghapus preferensi itu disediakan tim FE. Tidak ada state global lain yang diubah.
 - Suite berjalan serial (`parallel: false`).
 - Cleanup: spec tidak membuat data. Data Pre-setup hanya dibaca dan tidak diubah (Last Updated tidak berubah).
-- Env var: `Spectra.env.FA_TC_PROBE_PASSWORD`, `Spectra.env.FA_LBL_TC_PASSWORD` terdaftar di `executionConfig.environmentVariables` dan `.env.example`. `FA_LBL_TC_PASSWORD` dipakai hanya oleh hook `after` untuk mengembalikan sesi ke akun default suite.
+- Env var: `Spectra.env.FA_TC_PROBE_PASSWORD`, `Spectra.env.FA_LBL_TC_PASSWORD` didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`. `FA_LBL_TC_PASSWORD` dipakai hanya oleh hook `after` untuk mengembalikan sesi ke akun default suite.
 
 ## Test Steps
 
@@ -34,23 +34,23 @@ coverage:
 2. Klik icon Filter di toolbar Drawer
 3. Pilih `TAG` = `NFC`, lalu klik `[Apply]`
 4. Verifikasi hanya `Probe Asset - 43` tampil
-5. Buka panel Filter lagi, klik `[Clear Field]`, lalu buka dropdown `TAG`
+5. Klik `[Clear Field]`, lalu buka dropdown `TAG`
 6. Verifikasi dropdown `TAG` memuat opsi `NFC`, `QR`, `RFID` (tipe distinct dari data tabel)
 7. Pilih `RFID`, lalu klik `[Apply]`
 8. Verifikasi `Probe Asset - 41` (RFID dan QR) dan `Probe Asset - 44` tampil (OR atas tipe tag aktif)
-9. Buka panel Filter lagi, klik `[Clear Field]`, lalu buka dropdown `Measurement`
+9. Klik `[Clear Field]`, lalu buka dropdown `Measurement`
 10. Verifikasi dropdown `Measurement` memuat opsi `kg` dan `pcs`
 11. Pilih `pcs`, lalu klik `[Apply]`
 12. Verifikasi `Probe Asset - 42` dan `Probe Asset - 44` tampil
-13. Buka panel Filter lagi, klik `[Clear Field]`, lalu buka dropdown `Transactional Policy`
+13. Klik `[Clear Field]`, lalu buka dropdown `Transactional Policy`
 14. Verifikasi dropdown `Transactional Policy` memuat empat opsi tetap `Borrow`, `Self Service Borrow`, `Assign`, `Transfer`
 15. Pilih `Transfer`, lalu klik `[Apply]`
 16. Verifikasi hanya `Probe Asset - 43` tampil
-17. Buka panel Filter lagi, klik `[Clear Field]`, pilih `Transactional Policy` = `Assign`, lalu klik `[Apply]`
+17. Klik `[Clear Field]`, pilih `Transactional Policy` = `Assign`, lalu klik `[Apply]`
 18. Verifikasi `Probe Asset - 41` dan `Probe Asset - 44` tampil
-19. Buka panel Filter lagi, klik `[Clear Field]`, pilih rentang `Last Scanned` `09 Oct 2026` sampai `11 Oct 2026`, lalu klik `[Apply]`
+19. Klik `[Clear Field]`, pilih rentang `Last Scanned` `09 Oct 2026` sampai `11 Oct 2026`, lalu klik `[Apply]`
 20. Verifikasi hanya `Probe Asset - 41` (10 Oct 2026) tampil
-21. Buka panel Filter lagi, klik `[Clear Field]`, lalu tutup panel Filter
+21. Klik `[Clear Field]`, lalu tutup panel Filter dengan klik icon Filter di toolbar Drawer
 22. Tutup Drawer Tagged Asset
 
 ## Notes
@@ -58,5 +58,7 @@ coverage:
 - Sumber: `fixed-asset/settings-asset-labeling/TestCases/tc-settings-asset-labeling.md` section 4c (Drawer Tagged Asset). Subjudul `###` memetakan langkah ke TC granular.
 - Pembagian TC lintas spec: TC-FA-LBL-541 (Filter kolom baru) ada di spec ini; Sort kolom baru (TC-FA-LBL-540, 574) ada di spec 108 dan Filter sumber 0 baris (TC-FA-LBL-542) di spec 109. Ketiganya memakai akun dan data Pre-setup #37 yang sama.
 - Langkah penghubung (S-03): langkah kedua terakhir mengosongkan filter (S-09) dan langkah terakhir menutup Drawer; kolom baru tidak dicentang sehingga tidak ada Pemulihan Setup Column.
+- Filter Panel Drawer tetap terbuka sesudah `[Apply]` (bagian 8b butir 9): langkah 5, 9, 13, 17, dan 19 mengubah filter dari panel yang sama tanpa membuka panel lagi; langkah 21 menutupnya dengan klik icon Filter.
 - Temuan untuk QA:
+  - TC-FA-LBL-541 menulis "Buka panel lagi" pada Langkah Uji 4 sampai 8; spec tidak membuka panel lagi karena panel tetap terbuka sesudah `[Apply]`. Perilaku panel pada Drawer menunggu konfirmasi tim FE.
   - TC-FA-LBL-541 Langkah Uji 3 menyebut `[Apply]` setelah memilih `TAG` = `NFC` tanpa langkah membuka dropdown; spec membuka dropdown `TAG` pada langkah yang memeriksa daftar opsi (Expected b) sesuai urutan TC.

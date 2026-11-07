@@ -24,7 +24,7 @@ coverage:
   - `Budi Santoso {runId}-310`, email `budi.santoso+{runId}-310@qwertysystem.net`: Active; approver permohonan Transfer pada Finance & Accounting; tanpa aset terpinjam atau ter-assign (target TC-FA-SU-952 dan TC-FA-SU-953).
   - Aset milik spec `Aset Uji {runId}-310` dan `Aset Uji {runId}-310-2` (aset sampel yang dapat dipinjam dan di-assign), dihapus lewat seed API di hook `after`.
 - Kemampuan transaksi lintas modul (disediakan tim FE/BE, tanpa endpoint karangan): membuat permohonan Borrow, Return, Assignment, dan Transfer, memproses persetujuan, dan membuat task konfirmasi untuk pengguna target; pelaku kedua (Budi Santoso sebagai approver atau PIC) lewat sesi API, ditulis "... hingga ... tersimpan" (R-20), bukan konteks UI kedua.
-- Akun aktor kedua untuk TC-FA-SU-954: Read Only Citra Lestari (Pre-setup #3), `readOnly_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_RO_PASSWORD` sebagai aktor tanpa wewenang Non-Login User (TC tidak menyebut aktornya, lihat Temuan untuk QA); ganti akun dengan langkah eksplisit 35 dan 36, dan hook `after` mengembalikan sesi ke akun default suite (S-07).
+- Akun aktor kedua untuk TC-FA-SU-954: Read Only Citra Lestari (Pre-setup #3), `readOnly_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_RO_PASSWORD` sebagai aktor tanpa wewenang Non-Login User (TC tidak menyebut aktornya, lihat Temuan untuk QA); ganti akun dengan langkah eksplisit 36 dan 37, dan hook `after` mengembalikan sesi ke akun default suite (S-07).
 - Tidak ada intercept, jam server, atau klien HTTP. State global: tidak ada; suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -64,25 +64,26 @@ coverage:
 
 ### TC-FA-SU-954: Tab Non-Login User adalah reverse-lookup read-only dari Global Settings
 
-28. Ganti isi kotak search dengan `Budi`, tekan Enter, klik nama Budi Santoso (Pre-setup), lalu buka Tab Non-Login User
-29. Verifikasi label tab `Non-Login User (5)` menghitung Non-Login User Active dan Inactive
-30. Verifikasi tabel memuat Non-Login User `Printer Lantai 5` berstatus Inactive
-31. Klik Name `Printer Lantai 5`
-32. Verifikasi Detail Non-Login User `Printer Lantai 5` di Global Settings terbuka
-33. Kembali ke Detail Budi Santoso > Tab Non-Login User
-34. Verifikasi Tab Non-Login User tidak menyediakan aksi tulis
-35. Ganti akun: klik Logout pada akun saat ini
-36. Login sebagai Citra Lestari (`readOnly_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_RO_PASSWORD`) lalu buka Fixed Asset > Settings > User
-37. Ketik Search `Budi`, tekan Enter, klik nama Budi Santoso (Pre-setup), lalu buka Tab Non-Login User
-38. Verifikasi tabel memuat Non-Login User `Printer Lantai 5`
-39. Klik Name `Printer Lantai 5`
-40. Verifikasi Name `Printer Lantai 5` berupa teks biasa dan tidak membuka Detail Non-Login User
+28. Kembali ke User List lewat breadcrumb `User`
+29. Ganti isi kotak search dengan `Budi`, tekan Enter, klik nama Budi Santoso (Pre-setup), lalu buka Tab Non-Login User
+30. Verifikasi label tab `Non-Login User (5)` menghitung Non-Login User Active dan Inactive
+31. Verifikasi tabel memuat Non-Login User `Printer Lantai 5` berstatus Inactive
+32. Klik Name `Printer Lantai 5`
+33. Verifikasi Detail Non-Login User `Printer Lantai 5` di Global Settings terbuka
+34. Kembali ke Detail Budi Santoso > Tab Non-Login User
+35. Verifikasi Tab Non-Login User tidak menyediakan aksi tulis
+36. Ganti akun: klik Logout pada akun saat ini
+37. Login sebagai Citra Lestari (`readOnly_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_RO_PASSWORD`) lalu buka Fixed Asset > Settings > User
+38. Ketik Search `Budi`, tekan Enter, klik nama Budi Santoso (Pre-setup), lalu buka Tab Non-Login User
+39. Verifikasi tabel memuat Non-Login User `Printer Lantai 5`
+40. Klik Name `Printer Lantai 5`
+41. Verifikasi Name `Printer Lantai 5` berupa teks biasa dan tidak membuka Detail Non-Login User
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): 1, 3, 6, 8, 10, 12, 14, 17, 20, 23, 26, 28, 33, 37, 35, 36; langkah baseline jumlah entri (S-12): . Langkah 1, 28, dan 37 juga Search untuk menemukan baris target (R-16); langkah 35 dan 36 adalah ganti akun eksplisit.
-- Alasan di atas sekitar 35 langkah: seluruh TC satu topik (fan-out live dari modul lain ke Responsibilities) dan tiap TC berdiri sendiri; kegagalan satu TC tidak membuat TC lain kehilangan makna (40 langkah).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): 1, 3, 6, 8, 10, 12, 14, 17, 20, 23, 26, 28, 29, 34, 38, 36, 37; langkah baseline jumlah entri (S-12): . Langkah 1, 29, dan 38 juga Search untuk menemukan baris target (R-16); langkah 36 dan 37 adalah ganti akun eksplisit.
+- Alasan di atas sekitar 35 langkah: seluruh TC satu topik (fan-out live dari modul lain ke Responsibilities) dan tiap TC berdiri sendiri; kegagalan satu TC tidak membuat TC lain kehilangan makna (41 langkah).
 - Pengguna dan aset milik spec bernama sama dengan Pre-setup TC dengan suffix `{runId}-310` (S-06); TC-FA-SU-954 hanya membaca Budi Santoso Pre-setup.
 - Temuan untuk QA (S-15):
   - Langkah Uji TC-FA-SU-952 tidak menyebut pembuatan assignment sedangkan Expected butir c mengasersi aset yang baru di-assign di Assigned Assets dan Assignment User Log; spec menambah langkah assign aset kedua. TC-FA-SU-953 butir c (task konfirmasi muncul lalu hilang setelah tuntas) tidak punya langkah pembuatan dan penuntasan task; spec menambahkannya sebagai kemampuan transaksi lintas modul. Isi permohonan Transfer, task, dan jalur menu modul lain tidak ditentukan TC.

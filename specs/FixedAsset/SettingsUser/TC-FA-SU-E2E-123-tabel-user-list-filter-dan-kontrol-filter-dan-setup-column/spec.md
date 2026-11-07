@@ -35,34 +35,36 @@ coverage:
 6. Verifikasi chip `Inactive` hilang dan chip `Active` tetap
 7. Buka dropdown Status
 8. Verifikasi checkbox opsi `Inactive` ter-uncheck
-9. Hapus centang `Active`
-10. Verifikasi chip `Active` hilang
-11. Ketik `ACT` di kotak cari dropdown
-12. Verifikasi opsi dropdown dipersempit secara substring tidak case-sensitive: `Active`, `Inactive`
-13. Ganti isi kotak cari dropdown dengan `zzzzqx`
-14. Verifikasi `No results found` tampil di dropdown
-15. Tutup dropdown, klik `[Clear Field]` lalu `[Apply]`
+9. Centang kembali `Inactive`
+10. Hapus centang `Active`
+11. Verifikasi chip `Active` hilang
+12. Verifikasi chip `Inactive` tetap tampil di dalam field Status
+13. Ketik `ACT` di kotak cari dropdown
+14. Verifikasi opsi dropdown dipersempit secara substring tidak case-sensitive: `Active`, `Inactive`
+15. Ganti isi kotak cari dropdown dengan `zzzzqx`
+16. Verifikasi `No results found` tampil di dropdown
+17. Tutup dropdown, klik `[Clear Field]` lalu `[Apply]`
 
 ### TC-FA-SU-350: Overlay Column Visibility
 
-16. Hover header kolom Actions (⋯)
-17. Verifikasi tooltip `Column Visibility` tampil pada header
-18. Klik header kolom Actions (⋯)
-19. Verifikasi overlay Column Visibility tampil
-20. Verifikasi daftar kolom berurutan `Active`, `Name`, `Email`, `Role`, `Home Group`, `Position`, `Division`, `Employee ID`, `Modified By`, `Last Updated` dengan checkbox ☑ Hideable terpilih dan enabled serta drag handle
-21. Verifikasi item `Setup Column...` di bagian bawah overlay
-22. Verifikasi kolom curated `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`, `Shift` tidak tampil sebagai baris tabel (☐ Curated)
+18. Hover header kolom Actions (⋯)
+19. Verifikasi tooltip `Column Visibility` tampil pada header
+20. Klik header kolom Actions (⋯)
+21. Verifikasi overlay Column Visibility tampil
+22. Verifikasi daftar kolom berurutan `Active`, `Name`, `Email`, `Role`, `Home Group`, `Position`, `Division`, `Employee ID`, `Modified By`, `Last Updated` dengan checkbox ☑ Hideable terpilih dan enabled serta drag handle
+23. Verifikasi item `Setup Column...` di bagian bawah overlay
+24. Verifikasi kolom curated `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`, `Shift` tidak tampil sebagai baris tabel (☐ Curated)
 
 ### TC-FA-SU-351: Screening Popup Setup Column dan Preview Table
 
-23. Klik `Setup Column...`
-24. Verifikasi header: Title `Setup Column`, deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`, dan icon close ✕
-25. Verifikasi body memuat daftar kolom `Active`, `Name`, `Email`, `Role`, `Home Group`, `Position`, `Division`, `Employee ID`, `Modified By`, `Last Updated`, `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`, `Shift` dengan checkbox, drag handle, icon Pin, dan Live Preview tabel
-26. Verifikasi footer `[Reset to Default]` dan `[Save]` rata kanan tanpa `[Cancel]`
-27. Klik `[✕]` pada Setup Column
+25. Klik `Setup Column...`
+26. Verifikasi header: Title `Setup Column`, deskripsi `Drag and drop to reorder columns, check/uncheck to show/hide, or pin columns.`, dan icon close ✕
+27. Verifikasi body memuat daftar kolom `Active`, `Name`, `Email`, `Role`, `Home Group`, `Position`, `Division`, `Employee ID`, `Modified By`, `Last Updated`, `Activation Status`, `Temporary User`, `Temporary Until`, `TAG`, `Shift` dengan checkbox, drag handle, icon Pin, dan Live Preview tabel
+28. Verifikasi footer `[Reset to Default]` dan `[Save]` rata kanan tanpa `[Cancel]`
+29. Klik `[✕]` pada Setup Column
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 15 (membersihkan Filter, S-09) dan 27 (menutup Setup Column).
-- Temuan untuk QA (S-15): (1) TC-FA-SU-349 langkah 3 dan 5 tidak menyebut opsi yang dicentang; spec memakai `Active` dan `Inactive`. Expected d memuat pencarian substring dalam dropdown yang tidak punya langkah; spec menambah langkah mengetik `ACT` sebagai pemicu asersi itu. (2) TC-FA-SU-349 Expected a menyebut hasil gabungan OR tanpa nama baris; spec memakai `Ahmad Dahlan` (Active) dan `Doni Prasetyo` (Inactive) dari TC-FA-SU-1057.
+- Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 17 (membersihkan Filter, S-09), 29 (menutup Setup Column), dan 9 (mencentang kembali `Inactive` agar chip lain tersisa untuk asersi langkah 12).
+- Temuan untuk QA (S-15): (1) TC-FA-SU-349 langkah 3 dan 5 tidak menyebut opsi yang dicentang; spec memakai `Active` dan `Inactive`. Expected d memuat pencarian substring dalam dropdown yang tidak punya langkah; spec menambah langkah mengetik `ACT` sebagai pemicu asersi itu. (2) TC-FA-SU-349 Expected a menyebut hasil gabungan OR tanpa nama baris; spec memakai `Ahmad Dahlan` (Active) dan `Doni Prasetyo` (Inactive) dari TC-FA-SU-1057. (3) Expected c TC-FA-SU-349 menyebut "chip lain tetap", tetapi sesudah langkah TC 4 hanya satu opsi yang tersisa sehingga tidak ada chip lain yang dapat diamati; spec mencentang kembali `Inactive` (langkah 9) dan mengasersi chip `Inactive` tetap tampil sesudah `Active` di-uncheck (langkah 12).

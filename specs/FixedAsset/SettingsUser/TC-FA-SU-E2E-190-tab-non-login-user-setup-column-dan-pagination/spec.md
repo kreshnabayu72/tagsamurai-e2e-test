@@ -38,7 +38,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-566: Pin dan unpin Setup Column kelas Curated
 
@@ -102,7 +102,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; menampilkan kolom curated lewat Setup Column sebelum pin (kolom curated default tersembunyi); `Klik Tab Non-Login User` kembali dari tabel lain sebelum TC-FA-SU-568; langkah 40 (membuka dropdown page size) dan 42 (menutupnya dengan Esc).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13); menampilkan kolom curated lewat Setup Column sebelum pin (kolom curated default tersembunyi); `Klik Tab Non-Login User` kembali dari tabel lain sebelum TC-FA-SU-568; langkah 40 (membuka dropdown page size) dan 42 (menutupnya dengan Esc).
 - Verifikasi pin memuat daftar tiga kolom yang disebut utuh dalam satu butir.
 - Langkah berulang per baris tabel parameter: tabel "Nomor halaman tidak valid" pada langkah 43 sampai 44 (4 iterasi).
 - Jumlah langkah: 51 tertulis, 57 dengan ekspansi iterasi.

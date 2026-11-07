@@ -21,6 +21,7 @@ coverage:
 - Hook suite: lihat `suite.md` (flag Guided Tooltip `seen`, sesi API aktor, pemulihan Pre-setup bersama lewat seed API).
 - Data Pre-setup (Client `FaUserMain`, #20; layanan #37): Hana Kusuma `hana.kusuma@corp.id` (Pending Activation). Cooldown Resend Hana belum berjalan saat spec dimulai dan saat langkah 14 (dipulihkan lewat seed API).
 - Kemampuan teknis (disediakan tim FE/BE): mail-catcher dengan baseline jumlah email per alamat `hana.kusuma@corp.id` (R-11); kemampuan baca jumlah entri log Tab Changelog target; penyelesaian aktivasi Hana lewat tautan email sebagai pengguna target dengan sesi API pengguna itu (tautan aktivasi diambil dari inbox mail-catcher); seed API untuk mengembalikan Hana ke Pending Activation.
+- Baseline log dan email TC-FA-SU-145: hook `before` mencatat jumlah email aktivasi ke `hana.kusuma@corp.id` di mail-catcher dan jumlah entri `Resend Activation Email` Hana Kusuma pada Tab Changelog target (kemampuan baca disediakan tim FE/BE; bagian 8b butir 10) sesudah Hana dipulihkan tanpa cooldown lewat seed API dan sebelum langkah 4; langkah 10 dan 13 memakai selisih terhadap baseline itu (S-12). Baseline TC-FA-SU-149 dicatat pada langkah 20.
 - State global dan pemulihan: status Hana berubah menjadi Activated pada langkah 18 dan dipulihkan lewat seed API di hook `after`; cooldown Resend Hana dipulihkan lewat seed API di hook `after`; entri log Resend bertambah permanen (audit trail). Suite berjalan serial (`parallel: false`).
 
 ## Test Steps

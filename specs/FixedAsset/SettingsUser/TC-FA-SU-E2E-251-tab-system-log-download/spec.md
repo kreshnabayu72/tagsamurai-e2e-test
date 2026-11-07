@@ -33,34 +33,36 @@ coverage:
 
 ### TC-FA-SU-760: Cakupan baris dan kolom Download: Search, Filter, Sort, dan Column Visibility
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab System Log
-2. Klik icon Download, pilih `Download as CSV`
-3. Verifikasi berkas memuat seluruh baris (bukan hanya halaman aktif)
-4. Verifikasi urutan baris pada berkas mengikuti sort aktif
-5. Ketik Search `Assign`, tekan Enter
-6. Klik icon Filter
-7. Buka dropdown Name, centang `Eka Wulandari`
-8. Klik `[Apply]`
-9. Klik icon Download, pilih `Download as CSV`
-10. Verifikasi berkas hanya memuat baris yang cocok dengan Search dan Filter (irisan Search `Assign` dan Filter Name `Eka Wulandari`: S-5, S-6 (2 baris))
-11. Klik `[Clear Field]` lalu `[Apply]`, lalu klik `(←)` pada kotak Search
-12. Klik header Column Visibility (⋯), hilangkan centang Old Value
-13. Klik icon Download, pilih `Download as CSV`
-14. Verifikasi tidak ada toast peringatan
-15. Verifikasi kolom Old Value tidak ikut berkas
-16. Klik header Column Visibility (⋯), centang kembali Old Value
-17. Klik icon Download, pilih `Download as CSV`
-18. Verifikasi kolom Old Value ikut kembali pada berkas
-19. Ketik Search `zzzz` (tidak ada hasil), tekan Enter
-20. Klik icon Download, pilih `Download as CSV`
-21. Verifikasi tidak ada toast
-22. Verifikasi berkas terunduh
-23. Verifikasi berkas hanya memuat baris header kolom yang visible
-24. Klik `(←)` pada kotak Search
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail pengguna Budi Santoso lalu klik tab System Log
+3. Klik icon Download, pilih `Download as CSV`
+4. Verifikasi berkas memuat seluruh baris (bukan hanya halaman aktif)
+5. Verifikasi urutan baris pada berkas mengikuti sort aktif
+6. Ketik Search `Assign`, tekan Enter
+7. Klik icon Filter
+8. Buka dropdown Name, centang `Eka Wulandari`
+9. Klik `[Apply]`
+10. Klik icon Download, pilih `Download as CSV`
+11. Verifikasi berkas hanya memuat baris yang cocok dengan Search dan Filter (irisan Search `Assign` dan Filter Name `Eka Wulandari`: S-5, S-6 (2 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil))
+12. Klik `[Clear Field]` lalu `[Apply]`, lalu klik `(←)` pada kotak Search
+13. Klik header Column Visibility (⋯), hilangkan centang Old Value
+14. Klik icon Download, pilih `Download as CSV`
+15. Verifikasi tidak ada toast peringatan
+16. Verifikasi kolom Old Value tidak ikut berkas
+17. Klik header Column Visibility (⋯), centang kembali Old Value
+18. Klik icon Download, pilih `Download as CSV`
+19. Verifikasi kolom Old Value ikut kembali pada berkas
+20. Ketik Search `zzzz` (tidak ada hasil), tekan Enter
+21. Klik icon Download, pilih `Download as CSV`
+22. Verifikasi tidak ada toast
+23. Verifikasi berkas terunduh
+24. Verifikasi berkas hanya memuat baris header kolom yang visible
+25. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): langkah 1 (Ketik Search `Budi Santoso` di User List untuk menemukan baris target sebelum membuka Detail, R-16, butir 8b.13); User List memuat 25 pengguna pada 3 halaman sehingga posisi baris tidak diandalkan.
 - TC-FA-SU-759 ada di spec 250, TC-FA-SU-761 di spec 373, dan TC-FA-SU-762 di spec 368.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #28 yang disediakan ulang di hook `before` dan `after` (S-14). Aksi spec lain terhadap Budi Santoso menambah entri System Log, sehingga penyediaan ulang seed menjadi syarat asersi urutan dan jumlah baris. (2) TC-FA-SU-760 langkah 3 tidak menyebut kata kunci Search dan opsi Filter; spec memakai Search `Assign` dan Filter Name `Eka Wulandari` (irisan S-5, S-6) serta `zzzz` untuk hasil 0 baris sebagai pilihan sendiri. Hide kolom memakai Old Value.

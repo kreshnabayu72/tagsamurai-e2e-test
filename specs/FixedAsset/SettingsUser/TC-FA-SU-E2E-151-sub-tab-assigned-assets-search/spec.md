@@ -33,7 +33,7 @@ coverage:
 
 ### TC-FA-SU-446: Siklus interaksi Search Sub-tab Assigned Assets: reveal, Enter, clear, collapse
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Klik icon Search
 4. Verifikasi input Search melebar
@@ -80,7 +80,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` di User List supaya baris target tidak bergantung posisi halaman (langkah 1, 8b butir 13, R-16), pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Search hanya menyaring saat Enter (bagian 8b butir 9). Blok TC-FA-SU-447 memakai kotak Search yang masih terbuka dari TC-FA-SU-446 ("ganti isi kotak search"); input diisi ulang tiap kali visibilitas kolom berubah supaya penyaringan dijalankan ulang.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (40 langkah, 40 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets, satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.
 - Pembagian TC lintas spec: TC-FA-SU-442 sampai 445 ada di spec 150.

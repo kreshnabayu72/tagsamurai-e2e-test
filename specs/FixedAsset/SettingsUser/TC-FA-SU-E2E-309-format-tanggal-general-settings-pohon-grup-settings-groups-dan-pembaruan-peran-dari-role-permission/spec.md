@@ -68,34 +68,35 @@ coverage:
 23. Buat grup `Regional Audit {runId}-309` dan ubah nama `General Affairs {runId}-309` menjadi `General Services {runId}-309` di Settings > Groups
 24. Tunggu aksi selesai, lalu buka Fixed Asset > Settings > User tanpa muat ulang manual
 25. Verifikasi Sidebar Group Tree memuat grup `Regional Audit {runId}-309`
-26. Verifikasi badge Group Home Group baris Hana Kusuma {runId}-309 menampilkan nama baru `General Services {runId}-309`
-27. Klik ⋯ pada baris Hana Kusuma {runId}-309 dan klik `Edit Home Group`
-28. Verifikasi popup Select Home Group memuat grup `Regional Audit {runId}-309` dan `General Services {runId}-309`
-29. Tutup popup Select Home Group dengan `[Cancel]`, lalu buka Detail Gita Permata {runId}-309 > Tab Role > Sub-tab Group Role, buka popup Assign Group Role Manage files, dan klik `[+ Assign Group]` untuk membuka popup Select Group
-30. Verifikasi popup Select Group memuat grup `Regional Audit {runId}-309` dan `General Services {runId}-309`
-31. Tutup popup Select Group dengan `[Cancel]` dan popup Assign Group Role dengan `[✕]`, lalu buka Sub-tab Transaction Role dan klik `[+ Assign]`
-32. Verifikasi pohon grup Assign Group Transaction Role memuat grup `Regional Audit {runId}-309` dan `General Services {runId}-309`
-33. Tutup modal Assign Transaction Role dengan `[✕]`
+26. Ketik Search `Hana Kusuma {runId}-309`, tekan Enter
+27. Verifikasi badge Group Home Group baris Hana Kusuma {runId}-309 menampilkan nama baru `General Services {runId}-309`
+28. Klik ⋯ pada baris Hana Kusuma {runId}-309 dan klik `Edit Home Group`
+29. Verifikasi popup Select Home Group memuat grup `Regional Audit {runId}-309` dan `General Services {runId}-309`
+30. Tutup popup Select Home Group dengan `[Cancel]`, lalu ganti isi kotak search dengan `Gita Permata {runId}-309`, tekan Enter, klik nama Gita Permata {runId}-309, dan buka Tab Role > Sub-tab Group Role, buka popup Assign Group Role Manage files, dan klik `[+ Assign Group]` untuk membuka popup Select Group
+31. Verifikasi popup Select Group memuat grup `Regional Audit {runId}-309` dan `General Services {runId}-309`
+32. Tutup popup Select Group dengan `[Cancel]` dan popup Assign Group Role dengan `[✕]`, lalu buka Sub-tab Transaction Role dan klik `[+ Assign]`
+33. Verifikasi pohon grup Assign Group Transaction Role memuat grup `Regional Audit {runId}-309` dan `General Services {runId}-309`
+34. Tutup modal Assign Transaction Role dengan `[✕]`
 
 ### TC-FA-SU-951: Format tanggal dan zona waktu mengikuti General Settings pada kolom Last Updated, Date log, dan Temporary Until
 
-34. Principal Automation mengubah format tanggal di Global Settings > General Settings ke format baru hingga perubahan tersimpan
-35. Tunggu aksi selesai, lalu buka Fixed Asset > Settings > User, klik Setup Column, tampilkan kolom Temporary Until, dan klik `[Save]`
-36. Ketik Search `Fajar Nugroho {runId}-309`, tekan Enter
-37. Verifikasi kolom Last Updated baris Fajar Nugroho {runId}-309 memakai format tanggal baru
-38. Verifikasi kolom Temporary Until baris Fajar Nugroho {runId}-309 memakai format tanggal baru
-39. Klik `(←)` pada kotak Search, lalu klik nama Budi Santoso {runId}-309 dan buka Tab Changelog, muat ulang sampai entri tampil
-40. Verifikasi kolom Date entri Tab Changelog memakai format tanggal baru
-41. Kembali ke User List lewat breadcrumb `User`, lalu klik Download dan pilih `Download as CSV`
-42. Verifikasi format Date pada berkas hasil Download memakai format tanggal baru
-43. Pulihkan format tanggal General Settings ke nilai awal lewat seed API dan hapus preferensi kolom Setup Column di browser
+35. Principal Automation mengubah format tanggal di Global Settings > General Settings ke format baru hingga perubahan tersimpan
+36. Tunggu aksi selesai, lalu buka Fixed Asset > Settings > User, klik Setup Column, tampilkan kolom Temporary Until, dan klik `[Save]`
+37. Ketik Search `Fajar Nugroho {runId}-309`, tekan Enter
+38. Verifikasi kolom Last Updated baris Fajar Nugroho {runId}-309 memakai format tanggal baru
+39. Verifikasi kolom Temporary Until baris Fajar Nugroho {runId}-309 memakai format tanggal baru
+40. Klik `(←)` pada kotak Search, ketik Search `Budi Santoso {runId}-309`, tekan Enter, lalu klik nama Budi Santoso {runId}-309 dan buka Tab Changelog, muat ulang sampai entri tampil
+41. Verifikasi kolom Date entri Tab Changelog memakai format tanggal baru
+42. Kembali ke User List lewat breadcrumb `User`, lalu klik Download dan pilih `Download as CSV`
+43. Verifikasi format Date pada berkas hasil Download memakai format tanggal baru
+44. Pulihkan format tanggal General Settings ke nilai awal lewat seed API dan hapus preferensi kolom Setup Column di browser
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC sumber diubah: TC-FA-SU-961 dan TC-FA-SU-962 dikerjakan lebih dulu, TC-FA-SU-960 sesudahnya, dan TC-FA-SU-951 terakhir karena mengubah format tanggal yang dipakai asersi lain (S-10).
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): 1, 4, 8, 10, 13, 15, 18, 21, 24, 27, 29, 31, 33, 35, 36, 39, 41, 43; langkah baseline jumlah entri (S-12): 2. Langkah 1, 4, 10, 13, 21, dan 36 juga Search untuk menemukan baris target (R-16); langkah 43 adalah pemulihan state (S-09). Langkah 19 adalah anchor positif untuk asersi absence banner pada langkah 20 (8b.2).
-- Alasan di atas sekitar 35 langkah: seluruh TC satu topik (sinkronisasi dari modul lain ke Settings > User) dan tiap TC berdiri sendiri dengan pengguna milik spec; kegagalan satu TC tidak membuat TC lain kehilangan makna (43 langkah).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): 1, 4, 8, 10, 13, 15, 18, 21, 24, 26, 28, 30, 32, 34, 36, 37, 40, 42, 44; langkah baseline jumlah entri (S-12): 2. Langkah 1, 4, 10, 13, 21, 26, 30, 37, dan 40 juga Search untuk menemukan baris target (R-16); langkah 44 adalah pemulihan state (S-09). Langkah 19 adalah anchor positif untuk asersi absence banner pada langkah 20 (8b.2).
+- Alasan di atas sekitar 35 langkah: seluruh TC satu topik (sinkronisasi dari modul lain ke Settings > User) dan tiap TC berdiri sendiri dengan pengguna milik spec; kegagalan satu TC tidak membuat TC lain kehilangan makna (44 langkah).
 - Pengguna dan grup milik spec bernama sama dengan Pre-setup TC dengan suffix `{runId}-309` (S-06); grup `Regional Audit` memakai suffix per run (S-12).
 - Temuan untuk QA (S-15):
   - TC-FA-SU-951 tidak menyebut format baru yang dipilih dan menyebut Temporary Until tanpa lokasinya; spec menampilkan kolom Temporary Until lewat Setup Column pada User List dan mengasersi format pada baris Fajar Nugroho. Butir b (Download) adalah isi berkas (kelas f) dan diasersi lewat kemampuan baca berkas yang disediakan tim FE. Zona waktu pada judul TC tidak punya Expected sendiri dan tidak diasersi.

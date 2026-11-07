@@ -32,35 +32,38 @@ coverage:
 3. Verifikasi badge User Type `Total Control` pada General Information Lina Marlina karena tingkat akses Total Control
 4. Verifikasi Transaction Role tidak dihitung dalam penentuan User Type Lina Marlina
 5. Klik segmen Breadcrumb `User`
-6. Verifikasi User List tidak memuat kolom User Type
-7. Klik `(←)` pada kotak Search
+6. Verifikasi User List termuat dengan baris `Lina Marlina` tampil
+7. Verifikasi User List tidak memuat kolom User Type
+8. Klik `(←)` pada kotak Search
 
 ### TC-FA-SU-24: User Type Detail User: Read Only
 
-8. Ketik Search `Citra Lestari`, tekan Enter
-9. Klik nama `Citra Lestari`
-10. Verifikasi badge User Type `Read Only` pada General Information Citra Lestari karena tingkat akses Read Only
-11. Verifikasi Transaction Role tidak dihitung dalam penentuan User Type Citra Lestari
-12. Klik segmen Breadcrumb `User`
-13. Verifikasi User List tidak memuat kolom User Type
-14. Klik `(←)` pada kotak Search
+9. Ketik Search `Citra Lestari`, tekan Enter
+10. Klik nama `Citra Lestari`
+11. Verifikasi badge User Type `Read Only` pada General Information Citra Lestari karena tingkat akses Read Only
+12. Verifikasi Transaction Role tidak dihitung dalam penentuan User Type Citra Lestari
+13. Klik segmen Breadcrumb `User`
+14. Verifikasi User List termuat dengan baris `Citra Lestari` tampil
+15. Verifikasi User List tidak memuat kolom User Type
+16. Klik `(←)` pada kotak Search
 
 ### TC-FA-SU-25: User Type Detail User: Group Manager
 
-15. Ketik Search `Oscar Pranata`, tekan Enter
-16. Klik nama `Oscar Pranata`
-17. Verifikasi badge User Type `Group Manager` pada General Information Oscar Pranata karena Group Manager pada IT Infrastructure tanpa tingkat akses
-18. Verifikasi Transaction Role tidak dihitung dalam penentuan User Type Oscar Pranata
-19. Klik segmen Breadcrumb `User`
-20. Verifikasi User List tidak memuat kolom User Type
-21. Klik `(←)` pada kotak Search
+17. Ketik Search `Oscar Pranata`, tekan Enter
+18. Klik nama `Oscar Pranata`
+19. Verifikasi badge User Type `Group Manager` pada General Information Oscar Pranata karena Group Manager pada IT Infrastructure tanpa tingkat akses
+20. Verifikasi Transaction Role tidak dihitung dalam penentuan User Type Oscar Pranata
+21. Klik segmen Breadcrumb `User`
+22. Verifikasi User List termuat dengan baris `Oscar Pranata` tampil
+23. Verifikasi User List tidak memuat kolom User Type
+24. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 8, dan 15 (Search untuk menemukan baris target, R-16), langkah 5, 12, dan 19 (kembali ke User List lewat Breadcrumb), langkah 7, 14, dan 21 (mengosongkan Search sebelum TC berikutnya, S-09).
-- Langkah 6, 13, dan 20 mengasersi absence kolom User Type; anchor positifnya adalah User List yang termuat dengan hasil Search yang sama (Table Tools dan baris pengguna tampil sesudah kembali dari Detail).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 9, dan 17 (Search untuk menemukan baris target, R-16), langkah 5, 13, dan 21 (kembali ke User List lewat Breadcrumb), langkah 8, 16, dan 24 (mengosongkan Search sebelum TC berikutnya, S-09).
+- Langkah 7, 15, dan 23 mengasersi absence kolom User Type; anchor positifnya adalah Verifikasi langkah 6, 14, dan 22 (User List termuat dengan baris pengguna hasil Search yang sama tampil sesudah kembali dari Detail), sesuai bagian 8b butir 2.
 - Pembagian TC lintas spec: User Type Admin, Basic, dan prioritas bila beririsan (TC-FA-SU-26 sampai 28) ada di spec 009.
 - Temuan untuk QA:
   - TC-FA-SU-23 sampai 25 Expected b ("Transaction Role tidak dihitung dalam penentuan User Type") tidak menyebut Transaction Role pengguna yang dipakai sebagai pembeda; Pre-setup #39 hanya memberi Transaction Role untuk Lina Marlina, Mira Anggraini, dan Yuda Pratama. Spec mengasersi kalimat Expected TC apa adanya.

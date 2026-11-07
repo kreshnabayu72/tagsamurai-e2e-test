@@ -21,53 +21,54 @@ coverage:
 - Data Dinamis: tidak ada.
 - Kemampuan teknis: tidak ada selain pengamatan UI.
 - State global: tidak ada yang diubah. Suite berjalan serial (`parallel: false`).
-- Tabel parameter "Sub-tab Transaction Admin Log" (dipakai langkah 21 dan 22): `Transfer`, `Disposal`, `Damaged`, `Missing`, `Audit`, `Repair Ticketing`, `Tracking`, `Maintenance Routine`.
+- Tabel parameter "Sub-tab Transaction Admin Log" (dipakai langkah 22 dan 23): `Transfer`, `Disposal`, `Damaged`, `Missing`, `Audit`, `Repair Ticketing`, `Tracking`, `Maintenance Routine`.
 
 ## Test Steps
 
 ### TC-FA-SU-33: Screening Tab Non-Login User, Changelog, dan System Log
 
-1. Klik nama `Budi Santoso` di User List
-2. Klik tab Non-Login User
-3. Verifikasi label tab `Non-Login User (5)` dan kolom `Name`, `Email`, `Employee ID`, `Position`, `Division`, `Active`, dan `Last Update`
-4. Verifikasi kolom Active berupa badge
-5. Verifikasi tab Non-Login User tanpa aksi tulis
-6. Verifikasi kolom Actions (⋯) berfungsi sebagai trigger Column Visibility tanpa row action pada tab Non-Login User
-7. Klik tab Changelog
-8. Verifikasi toolbar tab Changelog tanpa icon Changelog
-9. Verifikasi kolom `Date`, `Action`, `Field`, `Old Value`, `New Value`, dan `Modified By`
-10. Verifikasi default sort Date descending
-11. Verifikasi kolom Actions (⋯) berfungsi sebagai trigger Column Visibility tanpa row action pada tab Changelog
-12. Klik tab System Log
-13. Verifikasi kolom `Date`, `Action`, `Object`, `Name`, `Field`, `Old Value`, dan `New Value`
-14. Verifikasi tab System Log tanpa kolom Modified By
-15. Verifikasi kolom Actions (⋯) berfungsi sebagai trigger Column Visibility tanpa row action pada tab System Log
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Klik nama `Budi Santoso` di User List
+3. Klik tab Non-Login User
+4. Verifikasi label tab `Non-Login User (5)` dan kolom `Name`, `Email`, `Employee ID`, `Position`, `Division`, `Active`, dan `Last Update`
+5. Verifikasi kolom Active berupa badge
+6. Verifikasi tab Non-Login User tanpa aksi tulis
+7. Verifikasi kolom Actions (⋯) berfungsi sebagai trigger Column Visibility tanpa row action pada tab Non-Login User
+8. Klik tab Changelog
+9. Verifikasi toolbar tab Changelog tanpa icon Changelog
+10. Verifikasi kolom `Date`, `Action`, `Field`, `Old Value`, `New Value`, dan `Modified By`
+11. Verifikasi default sort Date descending
+12. Verifikasi kolom Actions (⋯) berfungsi sebagai trigger Column Visibility tanpa row action pada tab Changelog
+13. Klik tab System Log
+14. Verifikasi kolom `Date`, `Action`, `Object`, `Name`, `Field`, `Old Value`, dan `New Value`
+15. Verifikasi tab System Log tanpa kolom Modified By
+16. Verifikasi kolom Actions (⋯) berfungsi sebagai trigger Column Visibility tanpa row action pada tab System Log
 
 ### TC-FA-SU-34: Screening Tab Transaction Admin Log dan Tab User Log
 
-16. Klik tab Transaction Admin Log
-17. Verifikasi sembilan sub-tab `Borrowing & Assignment`, `Transfer`, `Disposal`, `Damaged`, `Missing`, `Audit`, `Repair Ticketing`, `Tracking`, dan `Maintenance Routine`
-18. Verifikasi sub-tab awal `Borrowing & Assignment`
-19. Verifikasi kolom `Transaction ID`, `Group`, `Role`, `Action Taken`, `Date`, dan `Transaction Status` pada sub-tab `Borrowing & Assignment`
-20. Verifikasi default sort Date descending pada sub-tab `Borrowing & Assignment`
-21. Untuk setiap baris tabel parameter "Sub-tab Transaction Admin Log" (langkah 21 sampai 22): klik sub-tab pada baris itu
-22. Verifikasi kolom `Transaction ID`, `Group`, `Role`, `Action Taken`, `Date`, dan `Transaction Status` pada sub-tab itu
-23. Klik tab User Log
-24. Verifikasi sub-tab `Borrow`, `Assignment`, dan `Session`
-25. Verifikasi sub-tab awal `Borrow`
-26. Verifikasi kolom `Date`, `Activity`, `Transaction ID`, `Name`, dan `PIC` pada sub-tab `Borrow`
-27. Klik sub-tab Assignment
-28. Verifikasi kolom `Date`, `Activity`, `Transaction ID`, `Name`, dan `PIC` pada sub-tab `Assignment`
-29. Klik sub-tab Session
-30. Verifikasi kolom `Date`, `Activity`, `Status`, `Note`, `IP Address`, dan `Device/Browser` pada sub-tab `Session`
+17. Klik tab Transaction Admin Log
+18. Verifikasi sembilan sub-tab `Borrowing & Assignment`, `Transfer`, `Disposal`, `Damaged`, `Missing`, `Audit`, `Repair Ticketing`, `Tracking`, dan `Maintenance Routine`
+19. Verifikasi sub-tab awal `Borrowing & Assignment`
+20. Verifikasi kolom `Transaction ID`, `Group`, `Role`, `Action Taken`, `Date`, dan `Transaction Status` pada sub-tab `Borrowing & Assignment`
+21. Verifikasi default sort Date descending pada sub-tab `Borrowing & Assignment`
+22. Untuk setiap baris tabel parameter "Sub-tab Transaction Admin Log" (langkah 22 sampai 23): klik sub-tab pada baris itu
+23. Verifikasi kolom `Transaction ID`, `Group`, `Role`, `Action Taken`, `Date`, dan `Transaction Status` pada sub-tab itu
+24. Klik tab User Log
+25. Verifikasi sub-tab `Borrow`, `Assignment`, dan `Session`
+26. Verifikasi sub-tab awal `Borrow`
+27. Verifikasi kolom `Date`, `Activity`, `Transaction ID`, `Name`, dan `PIC` pada sub-tab `Borrow`
+28. Klik sub-tab Assignment
+29. Verifikasi kolom `Date`, `Activity`, `Transaction ID`, `Name`, dan `PIC` pada sub-tab `Assignment`
+30. Klik sub-tab Session
+31. Verifikasi kolom `Date`, `Activity`, `Status`, `Note`, `IP Address`, dan `Device/Browser` pada sub-tab `Session`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah 21 dan 22 diulang untuk delapan sub-tab tabel parameter (ekspansi 16 langkah dari 2 langkah nominal, bagian 8b butir 7); Verifikasi tetap satu per klausa kolom untuk tiap sub-tab.
-- Spec melewati sekitar 35 langkah bila ekspansi dihitung (44 langkah). Seluruhnya satu kelas (screening tab Detail User, satu akun, tanpa mengubah data), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain.
-- Langkah 1 TC-FA-SU-33 membuka Detail Budi Santoso; TC-FA-SU-34 melanjutkan dari Detail yang sama.
+- Langkah 22 dan 23 diulang untuk delapan sub-tab tabel parameter (ekspansi 16 langkah dari 2 langkah nominal, bagian 8b butir 7); Verifikasi tetap satu per klausa kolom untuk tiap sub-tab.
+- Spec melewati sekitar 35 langkah bila ekspansi dihitung (45 langkah). Seluruhnya satu kelas (screening tab Detail User, satu akun, tanpa mengubah data), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (Search nama baris target sebelum klik nama, R-16). Langkah 2 (klik nama) TC-FA-SU-33 membuka Detail Budi Santoso; TC-FA-SU-34 melanjutkan dari Detail yang sama.
 - Pembagian TC lintas spec: Tab Role dan Tab Responsibilities (TC-FA-SU-30 sampai 32) ada di spec 010.
 - Temuan untuk QA:
   - TC-FA-SU-34 Expected b menyebut kolom untuk Tab Transaction Admin Log tanpa membedakan sub-tab; Pre-setup #29 dan Catatan TC menyatakan delapan sub-tab selain `Borrowing & Assignment` diuji struktur saja tanpa asersi nilai (NC-23), sehingga spec mengasersi kolom tetapi bukan nilai baris.

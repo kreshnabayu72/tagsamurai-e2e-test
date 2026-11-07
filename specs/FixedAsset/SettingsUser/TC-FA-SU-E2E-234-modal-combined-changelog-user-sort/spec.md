@@ -35,47 +35,47 @@ coverage:
 
 1. Klik icon Changelog di Table Tools halaman User List
 2. Klik header Action satu kali
-3. Verifikasi urutan lima baris pertama klik 1 ascending (↑): C-6, C-5, C-2, C-4, C-3
+3. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: C-6, C-5, C-2, C-4, C-3
 4. Klik header Action kedua kali
-5. Verifikasi urutan lima baris pertama klik 2 descending (↓): C-1, C-3, C-4, C-2, C-5
+5. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: C-1, C-3, C-4, C-2, C-5
 6. Klik header Action ketiga kali
-7. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: C-1, C-2, C-3, C-4, C-5
+7. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: C-1, C-2, C-3, C-4, C-5
 8. Klik header User Name satu kali
-9. Verifikasi urutan lima baris pertama klik 1 ascending (↑): C-3, C-5, C-2, C-6, C-4
+9. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: C-3, C-5, C-2, C-6, C-4
 10. Klik header User Name kedua kali
-11. Verifikasi urutan lima baris pertama klik 2 descending (↓): C-1, C-4, C-6, C-2, C-3
+11. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: C-1, C-4, C-6, C-2, C-3
 12. Klik header User Name ketiga kali
-13. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: C-1, C-2, C-3, C-4, C-5
+13. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: C-1, C-2, C-3, C-4, C-5
 14. Klik header Field satu kali
-15. Verifikasi urutan lima baris pertama klik 1 ascending (↑): C-1, C-3, C-5, C-4, C-2
+15. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: C-1, C-3, C-5, C-4, C-2
 16. Klik header Field kedua kali
-17. Verifikasi urutan lima baris pertama klik 2 descending (↓): C-2, C-6, C-4, C-5, C-3
+17. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: C-2, C-6, C-4, C-5, C-3
 18. Klik header Field ketiga kali
-19. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: C-1, C-2, C-3, C-4, C-5
+19. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: C-1, C-2, C-3, C-4, C-5
 
 ### TC-FA-SU-712: Sort kelas mixed (Old Value, New Value)
 
 20. Klik header Old Value satu kali
-21. Verifikasi urutan lima baris pertama klik 1 ascending (↑): C-2, C-4, C-6, C-3, C-1
+21. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: C-2, C-4, C-6, C-3, C-1
 22. Klik header Old Value kedua kali
-23. Verifikasi urutan lima baris pertama klik 2 descending (↓): C-1, C-5, C-3, C-4, C-6
+23. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: C-1, C-5, C-3, C-4, C-6
 24. Klik header Old Value ketiga kali
-25. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: C-1, C-2, C-3, C-4, C-5
+25. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: C-1, C-2, C-3, C-4, C-5
 26. Klik header New Value satu kali
-27. Verifikasi urutan lima baris pertama klik 1 ascending (↑): C-4, C-6, C-5, C-3, C-1
+27. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: C-4, C-6, C-5, C-3, C-1
 28. Klik header New Value kedua kali
-29. Verifikasi urutan lima baris pertama klik 2 descending (↓): C-2, C-1, C-3, C-5, C-4
+29. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: C-2, C-1, C-3, C-5, C-4
 30. Klik header New Value ketiga kali
-31. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: C-1, C-2, C-3, C-4, C-5
+31. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: C-1, C-2, C-3, C-4, C-5
 
 ### TC-FA-SU-713: Sort kelas user (Modified By)
 
 32. Klik header Modified By satu kali
-33. Verifikasi urutan lima baris pertama klik 1 ascending (↑): C-1, C-4, C-5, C-6, C-2
+33. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: C-1, C-4, C-5, C-6, C-2
 34. Klik header Modified By kedua kali
-35. Verifikasi urutan lima baris pertama klik 2 descending (↓): C-3, C-2, C-1, C-4, C-5
+35. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: C-3, C-2, C-1, C-4, C-5
 36. Klik header Modified By ketiga kali
-37. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: C-1, C-2, C-3, C-4, C-5
+37. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: C-1, C-2, C-3, C-4, C-5
 
 ## Notes
 

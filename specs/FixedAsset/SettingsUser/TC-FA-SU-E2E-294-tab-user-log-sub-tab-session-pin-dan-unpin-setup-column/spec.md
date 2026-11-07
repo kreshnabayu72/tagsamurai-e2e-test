@@ -36,7 +36,7 @@ coverage:
 
 ### TC-FA-SU-885: Pin dan unpin Setup Column kelas Hideable (default tampil)
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Session
+1. Ketik Search `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Session
 2. Untuk setiap kolom pada tabel "Kolom Setup Column Hideable" (langkah 3 sampai 9):
 3. Buka Setup Column lalu klik icon Pin pada kolom tersebut
 4. Klik `[Save]`, lalu scroll tabel secara horizontal
@@ -54,6 +54,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung pencarian baris (S-03, R-16, bagian 8b butir 13): langkah 1 mencari pengguna lewat Search nama persis `Budi Santoso` (nama Pre-setup) sebelum membuka Detail, karena User List dapat memuat lebih dari satu halaman (25 pengguna, 3 halaman) sehingga spec tidak mengandalkan posisi baris di halaman.
 - Langkah penghubung tambahan: Hover icon Pin pada kolom lain (langkah 11) sebelum `Verifikasi` tooltip, supaya tooltip muncul.
 - Langkah berulang per kolom (idiom bagian 8b butir 7): langkah 3 sampai 9 dijalankan 6 kali, satu iterasi per kolom di tabel Prerequisites.
 - Spec ini berjumlah 48 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.

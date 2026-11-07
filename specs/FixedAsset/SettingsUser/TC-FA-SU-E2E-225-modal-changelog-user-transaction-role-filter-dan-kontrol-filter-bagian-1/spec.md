@@ -33,37 +33,37 @@ coverage:
 
 ### TC-FA-SU-683: Filter kelas date (Date)
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
 2. Klik icon Filter
 3. Pilih rentang 10/08/26 sampai 11/08/26 pada Date
 4. Klik `[Apply]`
-5. Verifikasi rentang inklusif 10/08/26 sampai 11/08/26 menyisakan TR-3, TR-4, TR-5 (3 baris)
+5. Verifikasi rentang inklusif 10/08/26 sampai 11/08/26 menyisakan TR-3, TR-4, TR-5 (3 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 6. Klik `[Clear Field]` pada field Date, lalu klik `[Apply]`
 
 ### TC-FA-SU-684: Filter kelas enum (Action, Field)
 
 7. Buka dropdown Action
-8. Verifikasi opsi dropdown = DISTINCT data tabel (`Assign`, `Remove`)
+8. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Assign`, `Remove`)
 9. Centang `Assign`
 10. Klik `[Apply]`
-11. Verifikasi memilih `Assign` menyisakan TR-1, TR-3, TR-5 (3 baris)
+11. Verifikasi memilih `Assign` menyisakan TR-1, TR-3, TR-5 (3 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 12. Verifikasi chip `Assign` tampil di dalam field Action
 13. Klik `[Clear Field]` pada field Action, lalu klik `[Apply]`
 14. Buka dropdown Field
-15. Verifikasi opsi dropdown = DISTINCT data tabel (`Damaged — Branch Surabaya — Monitoring & Report`, `Disposal — Logistics Warehouse — Asset Admin`, `Disposal — Logistics Warehouse — Staff`, `Missing — Branch Surabaya — Approver`, `Transfer — Finance & Accounting — Asset Admin`)
+15. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Damaged — Branch Surabaya — Monitoring & Report`, `Disposal — Logistics Warehouse — Asset Admin`, `Disposal — Logistics Warehouse — Staff`, `Missing — Branch Surabaya — Approver`, `Transfer — Finance & Accounting — Asset Admin`)
 16. Centang `Damaged — Branch Surabaya — Monitoring & Report`
 17. Klik `[Apply]`
-18. Verifikasi memilih `Damaged — Branch Surabaya — Monitoring & Report` menyisakan TR-1 (1 baris)
+18. Verifikasi memilih `Damaged — Branch Surabaya — Monitoring & Report` menyisakan TR-1 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 19. Verifikasi chip `Damaged — Branch Surabaya — Monitoring & Report` tampil di dalam field Field
 
 ### TC-FA-SU-685: Filter kelas fk (Modified By)
 
 20. Klik `[Clear Field]` pada field Field, lalu klik `[Apply]`
 21. Buka dropdown Modified By
-22. Verifikasi opsi dropdown = DISTINCT data tabel (`Ahmad D`, `Lina M`)
+22. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Ahmad D`, `Lina M`)
 23. Centang `Ahmad D`
 24. Klik `[Apply]`
-25. Verifikasi memilih `Ahmad D` menyisakan TR-1, TR-2, TR-5 (3 baris)
+25. Verifikasi memilih `Ahmad D` menyisakan TR-1, TR-2, TR-5 (3 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 26. Verifikasi chip `Ahmad D` tampil di dalam field Modified By
 
 ### TC-FA-SU-686: Kombinasi Search dan Filter dua arah
@@ -73,13 +73,13 @@ coverage:
 29. Klik icon Filter
 30. Buka dropdown Action, centang `Assign`
 31. Klik `[Apply]`
-32. Verifikasi Search `Assign` lalu Filter Action `Assign`: hasil irisan TR-1, TR-3, TR-5 (3 baris)
+32. Verifikasi Search `Assign` lalu Filter Action `Assign`: hasil irisan TR-1, TR-3, TR-5 (3 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 33. Verifikasi keyword Search `Assign` tidak dikosongkan oleh Filter
 34. Klik `[Clear Field]` lalu `[Apply]`, lalu klik `(←)` pada kotak Search
 35. Buka dropdown Action, centang `Assign`
 36. Klik `[Apply]`
 37. Ketik Search `Assign`, tekan Enter
-38. Verifikasi Filter Action `Assign` lalu Search `Assign`: hasil identik, hasil irisan TR-1, TR-3, TR-5 (3 baris)
+38. Verifikasi Filter Action `Assign` lalu Search `Assign`: hasil identik, hasil irisan TR-1, TR-3, TR-5 (3 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 39. Verifikasi Filter Action `Assign` tidak direset oleh Search
 40. Verifikasi tabel kembali ke halaman 1 saat kriteria berubah
 
@@ -87,5 +87,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
+- Asersi baris seed pada Modal Changelog (audit trail permanen) ditulis relatif terhadap baris seed: urutan relatif dan jumlah baris seed, dengan baris non-seed yang memenuhi kriteria boleh menyisip atau ikut tampil (S-14), mengikuti kualifier Expected TC sumber.
 - Spec ini berjumlah 40 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). (2) Tanggal baris seed Changelog (Pre-setup #27) tidak tertulis di Tabel Pre-setup; asersi yang memakai nilai atau rentang Date (10/08/26 sampai 11/08/26) mengikuti angka di TC dan bergantung pada seed yang disediakan tim FE/BE. (3) Filter Action `Assign` hanya menyisakan 3 baris (TC-FA-SU-684) sedangkan Search `Assign` menyisakan 5 baris (TC-FA-SU-672); selisih ini konsisten hanya bila Search juga mencocokkan kolom lain (mis. New Value `Assigned`, TC-FA-SU-673). Label "kolom Action" pada TC-FA-SU-672 menyiratkan pencocokan kolom Action saja. Spec mengikuti angka TC. (4) TC tidak menyebut status Filter Panel (terbuka atau tertutup) sesudah `[Apply]`; spec menutup panel dengan klik icon Filter sebelum mengetik Search pada kombinasi Search lalu Filter, dan membukanya kembali pada langkah berikutnya.

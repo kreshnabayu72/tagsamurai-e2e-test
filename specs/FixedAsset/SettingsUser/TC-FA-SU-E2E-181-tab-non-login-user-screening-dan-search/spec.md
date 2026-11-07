@@ -44,7 +44,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-538: Screening Table Tools, kolom, dan default sort
 
@@ -88,7 +88,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; `←` pada kotak Search sesudah tiap keyword (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` di User List supaya baris target tidak bergantung posisi halaman (langkah 1, 8b butir 13, R-16) lalu membuka Detail Budi Santoso; `←` pada kotak Search sesudah tiap keyword (S-09).
 - Langkah penghubung tambahan (S-03): klik header kolom Column Visibility (⋯) (langkah 10) dan `Esc` (langkah 12) memicu dan menutup overlay untuk `Verifikasi` overlay (TC-FA-SU-538 Expected b); klik dropdown page size (langkah 14) dan `Esc` (langkah 16) membuka dan menutup pilihan page size untuk `Verifikasi` pilihan page size (Expected d, S-14).
 - Langkah berulang per baris tabel parameter: tabel "Ikon Table Tools" pada langkah 3 sampai 4 (3 iterasi); tabel "Search kelas teks" pada langkah 17 sampai 19 (5 iterasi).
 - Jumlah langkah: 28 tertulis, 44 dengan ekspansi iterasi.

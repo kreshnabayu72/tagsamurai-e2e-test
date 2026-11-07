@@ -44,7 +44,7 @@ coverage:
 
 ### TC-FA-SU-448: Sort kelas teks: Name, Asset ID, Transaction ID, Brand, Model / Type
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Untuk setiap baris tabel parameter "Kolom Sort" (langkah 3 sampai 8): klik header kolom itu satu kali
 4. Verifikasi urutan baris ascending (↑) sesuai kolom Klik 1 ascending pada tabel parameter
@@ -72,7 +72,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Langkah 3 sampai 8 diulang untuk lima baris tabel parameter "Kolom Sort" (ekspansi 30 langkah dari 6 langkah nominal, bagian 8b butir 7); Verifikasi tetap satu per klausa (ascending, descending, netral) untuk tiap kolom. Klik ketiga mengembalikan urutan default sehingga tidak perlu pembersih di antara kolom.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (42 langkah, 18 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets, satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.
 - Temuan untuk QA (S-15):

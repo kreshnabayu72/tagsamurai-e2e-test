@@ -27,7 +27,7 @@ coverage:
 
 ### TC-FA-SU-469: Empty state, hasil pencarian kosong, loading, dan error load Sub-tab Assigned Assets
 
-1. Buka Detail Hana Kusuma > Tab Responsibilities > Sub-tab Assigned Assets
+1. Ketik Search `Hana Kusuma`, tekan Enter, lalu buka Detail Hana Kusuma > Tab Responsibilities > Sub-tab Assigned Assets
 2. Verifikasi data kosong sungguhan menampilkan ilustrasi 100x100 dengan Title `No assigned assets` dan Description `This user has no assigned assets currently.`
 3. Ketik Search `zzzz`, tekan Enter
 4. Verifikasi Search tanpa hasil menampilkan Title `No results found` dan Description `Try adjusting your search or filter.`
@@ -81,6 +81,7 @@ coverage:
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; tiap TC memakai surface-nya sendiri sehingga kegagalan satu blok tidak mengubah state blok lain.
 - Mode FE+BE: kegagalan dipaksa dengan `Spectra.intercept()` parsial di atas backend nyata (bagian 6 konvensi), bukan seluruh API di-mock. Kelas b (resilience) dikumpulkan per jenis aksi baca atau unduh; kelas lain tidak ada di spec ini.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): membuka ulang surface sebelum tiap kondisi lambat dan 500 (supaya permintaan data dikirim ulang dan Search tidak terbawa), serta mengatur, mengganti, dan melepas intercept (pemicu, bukan objek asersi).
+- Langkah penghubung tambahan (S-03): Search nama `Hana Kusuma` di User List supaya baris target tidak bergantung posisi halaman (langkah 1, 8b butir 13, R-16).
 - Pembagian TC lintas spec:
   - TC-FA-SU-469: format dan nama berkas TC-FA-SU-464 di spec 159, transformasi data TC-FA-SU-466 di spec 370, Download gagal TC-FA-SU-467 di spec 366.
   - TC-FA-SU-500: format dan nama berkas TC-FA-SU-495 di spec 167, transformasi data TC-FA-SU-497 di spec 371, Download gagal TC-FA-SU-498 di spec 366.

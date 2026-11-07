@@ -29,7 +29,7 @@ coverage:
 
 ### TC-FA-SU-242: Menutup modal dengan isian: dialog Unsaved Changes, Leave, Cancel, Esc, dan klik backdrop
 
-1. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, pilih Group Finance & Accounting, lalu klik `[✕]`
+1. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, pilih Group Finance & Accounting, lalu klik `[✕]`
 2. Verifikasi dialog dengan Body "You have unsaved changes. Are you sure you want to leave?"
 3. Verifikasi tombol `[Cancel]` dan `[Leave]`
 4. Klik `[Cancel]`
@@ -60,6 +60,7 @@ coverage:
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan.
 - Modal yang dibuka di akhir TC-FA-SU-242 (untuk klik backdrop) dipakai TC-FA-SU-1046 tanpa dibuka ulang karena kosong dan tidak berubah (halaman yang sama dipakai berulang, bagian 3 prinsip 13).
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-242 langkah 5 menyebut `[Leave]` lalu langkah 6 membuka modal baru; Expected c ("modal kosong menutup langsung") tidak punya langkah penutupan pada TC; spec menambahkan klik `[✕]` pada modal kosong sebagai pemicu asersi tersebut.
   - TC-FA-SU-1046 langkah 2 ("periksa atribut field") tidak menyebut cara pemeriksaan atribut; spec menuliskannya sebagai kemampuan "disediakan tim FE".

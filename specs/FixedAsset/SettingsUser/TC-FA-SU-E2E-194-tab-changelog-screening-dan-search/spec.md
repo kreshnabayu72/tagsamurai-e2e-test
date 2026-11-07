@@ -35,7 +35,7 @@ coverage:
 
 ### TC-FA-SU-575: Screening Tab Changelog
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, klik nama Budi Santoso, lalu klik tab Changelog
 2. Verifikasi Table Tools `Search`, `Filter`, `Download` tampil rata kanan
 3. Hover icon Search
 4. Verifikasi tooltip `Search`
@@ -51,7 +51,7 @@ coverage:
 14. Verifikasi overlay Column Visibility tampil
 15. Verifikasi sel body kolom Column Visibility (⋯) pada setiap baris kosong tanpa row action
 16. Tekan Esc untuk menutup overlay
-17. Verifikasi default sort Date descending, lima baris pertama: T-1, T-2, T-3, T-4, T-5
+17. Verifikasi default sort Date descending, urutan relatif baris seed (baris non-seed boleh menyisip): T-1, T-2, T-3, T-4, T-5
 18. Verifikasi footer pagination 10 data per halaman
 19. Klik dropdown page size
 20. Verifikasi pilihan page size 10, 25, 50, 100
@@ -60,31 +60,32 @@ coverage:
 ### TC-FA-SU-576: Search kelas teks (Action, Field)
 
 22. Ketik Search `Home` (kolom Action), tekan Enter
-23. Verifikasi keyword `Home` (kolom Action) menyisakan `Home Group` (T-4; 1 baris)
+23. Verifikasi keyword `Home` (kolom Action) menyisakan `Home Group` (T-4; 1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 24. Kosongkan isi kotak search, tekan Enter
 25. Ketik Search `Manage files` (kolom Field), tekan Enter
-26. Verifikasi keyword `Manage files` (kolom Field) menyisakan `Manage files — IT Infrastructure` (T-1; 1 baris)
+26. Verifikasi keyword `Manage files` (kolom Field) menyisakan `Manage files — IT Infrastructure` (T-1; 1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 27. Kosongkan isi kotak search, tekan Enter
 
 ### TC-FA-SU-577: Search kelas mixed (Old Value, New Value)
 
 28. Ketik Search `Logistics` (kolom Old Value), tekan Enter
-29. Verifikasi keyword `Logistics` (kolom Old Value) menyisakan `Home Group` (T-4; 1 baris)
+29. Verifikasi keyword `Logistics` (kolom Old Value) menyisakan `Home Group` (T-4; 1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 30. Kosongkan isi kotak search, tekan Enter
 31. Ketik Search `Assigned` (kolom New Value), tekan Enter
-32. Verifikasi keyword `Assigned` (kolom New Value) menyisakan `Manage files — IT Infrastructure`, `Manage accounting` (T-1, T-6; 2 baris)
+32. Verifikasi keyword `Assigned` (kolom New Value) menyisakan `Manage files — IT Infrastructure`, `Manage accounting` (T-1, T-6; 2 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 33. Kosongkan isi kotak search, tekan Enter
 
 ### TC-FA-SU-578: Search kelas user (Modified By)
 
 34. Ketik Search `Marlina` (kolom Modified By), tekan Enter
-35. Verifikasi keyword `Marlina` (kolom Modified By) menyisakan `Home Group` (T-4; 1 baris)
+35. Verifikasi keyword `Marlina` (kolom Modified By) menyisakan `Home Group` (T-4; 1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 36. Kosongkan isi kotak search, tekan Enter
 37. Klik icon ←
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
+- Langkah penghubung tambahan (S-03, R-16, bagian 8b butir 13): langkah 1 mengetik Search `Budi Santoso` lalu Enter supaya baris Budi Santoso tampil di User List (25 baris) sebelum nama diklik.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pembukaan dan penutupan dropdown page size, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
 - Spec ini berjumlah 37 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). (2) Expected b TC-FA-SU-575 menyebut header Column Visibility membuka overlay; overlay diverifikasi di spec 199 (TC-FA-SU-594), spec ini hanya membukanya dan mengasersi body kolom kosong.

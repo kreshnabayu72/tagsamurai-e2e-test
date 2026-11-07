@@ -33,7 +33,7 @@ coverage:
 
 ### TC-FA-SU-607: Screening Modal Changelog
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso` pada User List, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
 2. Verifikasi Table Tools `Search`, `Filter`, `Download` tampil rata kanan
 3. Hover icon Search
 4. Verifikasi tooltip `Search`
@@ -49,7 +49,7 @@ coverage:
 14. Verifikasi overlay Column Visibility tampil
 15. Verifikasi sel body kolom Column Visibility (⋯) pada setiap baris kosong tanpa row action
 16. Tekan Esc untuk menutup overlay
-17. Verifikasi default sort Date descending, lima baris pertama: G-1, G-2, G-3, G-4, G-5
+17. Verifikasi default sort Date descending, urutan relatif baris seed (baris non-seed boleh menyisip): G-1, G-2, G-3, G-4, G-5
 18. Verifikasi footer pagination 10 data per halaman
 19. Klik dropdown page size
 20. Verifikasi pilihan page size 10, 25, 50, 100
@@ -58,10 +58,10 @@ coverage:
 ### TC-FA-SU-608: Search kelas teks (Action, Role Name, Field)
 
 22. Ketik Search `Assign` (kolom Action), tekan Enter
-23. Verifikasi keyword `Assign` (kolom Action) menyisakan G-1, G-2, G-3, G-5 (4 baris)
+23. Verifikasi keyword `Assign` (kolom Action) menyisakan G-1, G-2, G-3, G-5 (4 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 24. Kosongkan isi kotak search, tekan Enter
 25. Ketik Search `Import` (kolom Role Name), tekan Enter
-26. Verifikasi keyword `Import` (kolom Role Name) menyisakan G-3 (1 baris)
+26. Verifikasi keyword `Import` (kolom Role Name) menyisakan G-3 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 27. Kosongkan isi kotak search, tekan Enter
 28. Ketik Search `Group Manager` (kolom Field), tekan Enter
 29. Verifikasi keyword `Group Manager` (kolom Field) menyisakan tidak ada baris (0 baris), empty state `No results found` tampil
@@ -73,13 +73,13 @@ coverage:
 32. Verifikasi keyword `Logistics` (kolom Old Value) menyisakan tidak ada baris (0 baris), empty state `No results found` tampil
 33. Kosongkan isi kotak search, tekan Enter
 34. Ketik Search `Assigned` (kolom New Value), tekan Enter
-35. Verifikasi keyword `Assigned` (kolom New Value) menyisakan G-1, G-2, G-3, G-5 (4 baris)
+35. Verifikasi keyword `Assigned` (kolom New Value) menyisakan G-1, G-2, G-3, G-5 (4 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 36. Kosongkan isi kotak search, tekan Enter
 
 ### TC-FA-SU-610: Search kelas user (Modified By)
 
 37. Ketik Search `Marlina` (kolom Modified By), tekan Enter
-38. Verifikasi keyword `Marlina` (kolom Modified By) menyisakan G-1 (1 baris)
+38. Verifikasi keyword `Marlina` (kolom Modified By) menyisakan G-1 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 39. Kosongkan isi kotak search, tekan Enter
 40. Klik icon ←
 
@@ -87,6 +87,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pembukaan dan penutupan dropdown page size, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung Search (R-16, bagian 8b butir 9 dan 13): langkah 1 mengetik Search `Budi Santoso` pada User List sebelum membuka Detail, karena User List memuat 3 halaman sehingga spec tidak mengandalkan posisi baris di halaman.
 - Asersi tambahan di luar Expected (S-03): empty state `No results found` pada asersi hasil 0 baris, sebagai anchor positif absence (bagian 8b butir 2).
 - Spec ini berjumlah 40 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). (2) TC menulis hasil 0 baris tanpa menyebut empty state; spec menambahkan `Verifikasi` empty state `No results found` sebagai anchor positif asersi 0 baris (bagian 8b butir 2), mengacu pada Expected TC-FA-SU-580 butir a.

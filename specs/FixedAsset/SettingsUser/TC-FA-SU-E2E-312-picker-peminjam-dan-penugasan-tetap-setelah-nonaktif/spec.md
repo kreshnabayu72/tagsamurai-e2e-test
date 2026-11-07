@@ -34,36 +34,45 @@ coverage:
 3. Tunggu aksi selesai (dialog tertutup dan sakelar baris berpindah ke OFF)
 4. Buka form pendaftaran aset lalu buka picker PIC
 5. Verifikasi picker PIC memuat sedikitnya satu pengguna aktif efektif lain (pembanding)
-6. Verifikasi picker PIC tidak memuat Gita Permata {runId}-312 (nonaktif di FAMS) maupun Rudi Hartono {runId}-312 (nonaktif di Global Settings)
-7. Tutup picker dan form tanpa menyimpan, lalu buka form Borrow dan buka picker peminjam
-8. Verifikasi picker peminjam memuat sedikitnya satu pengguna aktif efektif lain (pembanding)
-9. Verifikasi picker peminjam tidak memuat Gita Permata {runId}-312 maupun Rudi Hartono {runId}-312
-10. Tutup picker dan form tanpa menyimpan, lalu buka Fixed Asset > Settings > User dan Search `Gita Permata {runId}-312`, tekan Enter
-11. Klik sakelar Active pada baris Gita Permata {runId}-312, lalu klik `[Activate]` pada dialog `Activate User`
-12. Tunggu aksi selesai (dialog tertutup dan sakelar baris berpindah ke ON), lalu buka form pendaftaran aset dan picker PIC
-13. Verifikasi picker PIC memuat Gita Permata {runId}-312
-14. Tutup picker dan form tanpa menyimpan, lalu buka form Borrow dan picker peminjam
-15. Verifikasi picker peminjam memuat Gita Permata {runId}-312
-16. Tutup picker dan form tanpa menyimpan
+6. Ketik Search `Gita Permata {runId}-312` pada picker PIC, tekan Enter
+7. Verifikasi picker PIC tidak memuat Gita Permata {runId}-312 (nonaktif di FAMS)
+8. Ganti isi kotak search picker PIC dengan `Rudi Hartono {runId}-312`, tekan Enter
+9. Verifikasi picker PIC tidak memuat Rudi Hartono {runId}-312 (nonaktif di Global Settings)
+10. Tutup picker dan form tanpa menyimpan, lalu buka form Borrow dan buka picker peminjam
+11. Verifikasi picker peminjam memuat sedikitnya satu pengguna aktif efektif lain (pembanding)
+12. Ketik Search `Gita Permata {runId}-312` pada picker peminjam, tekan Enter
+13. Verifikasi picker peminjam tidak memuat Gita Permata {runId}-312
+14. Ganti isi kotak search picker peminjam dengan `Rudi Hartono {runId}-312`, tekan Enter
+15. Verifikasi picker peminjam tidak memuat Rudi Hartono {runId}-312
+16. Tutup picker dan form tanpa menyimpan, lalu buka Fixed Asset > Settings > User dan Search `Gita Permata {runId}-312`, tekan Enter
+17. Klik sakelar Active pada baris Gita Permata {runId}-312, lalu klik `[Activate]` pada dialog `Activate User`
+18. Tunggu aksi selesai (dialog tertutup dan sakelar baris berpindah ke ON), lalu buka form pendaftaran aset dan picker PIC
+19. Ketik Search `Gita Permata {runId}-312` pada picker PIC, tekan Enter
+20. Verifikasi picker PIC memuat Gita Permata {runId}-312
+21. Tutup picker dan form tanpa menyimpan, lalu buka form Borrow dan picker peminjam
+22. Ketik Search `Gita Permata {runId}-312` pada picker peminjam, tekan Enter
+23. Verifikasi picker peminjam memuat Gita Permata {runId}-312
+24. Tutup picker dan form tanpa menyimpan
 
 ### TC-FA-SU-958: Penonaktifan pengguna tidak menghapus penugasan peran, grup, Transaction Role, dan Home Group
 
-17. Buka Fixed Asset > Settings > User, Search `Gita Permata {runId}-312`, tekan Enter, klik nama Gita Permata {runId}-312, lalu buka Tab Role
-18. Catat penugasan Global Role, Group Role, dan Transaction Role Gita Permata {runId}-312 serta kolom Home Group baris Gita Permata {runId}-312
-19. Kembali ke User List lewat breadcrumb `User`, Search `Gita Permata {runId}-312`, tekan Enter
-20. Klik sakelar Active pada baris Gita Permata {runId}-312, lalu klik `[Deactivate]` pada dialog `Deactivate User`
-21. Tunggu aksi selesai, lalu klik nama Gita Permata {runId}-312 dan buka Tab Role
-22. Verifikasi Tab Role Gita Permata {runId}-312 menampilkan penugasan yang sama dengan catatan
-23. Kembali ke User List lewat breadcrumb `User`, Search `Gita Permata {runId}-312`, tekan Enter
-24. Verifikasi kolom Home Group baris Gita Permata {runId}-312 tidak berubah dari catatan
-25. Klik sakelar Active pada baris Gita Permata {runId}-312, lalu klik `[Activate]` pada dialog `Activate User`
-26. Tunggu aksi selesai, lalu klik nama Gita Permata {runId}-312 dan buka Tab Role
-27. Verifikasi Tab Role Gita Permata {runId}-312 menampilkan penugasan yang sama dengan catatan
+25. Buka Fixed Asset > Settings > User, Search `Gita Permata {runId}-312`, tekan Enter, klik nama Gita Permata {runId}-312, lalu buka Tab Role
+26. Catat penugasan Global Role, Group Role, dan Transaction Role Gita Permata {runId}-312 serta kolom Home Group baris Gita Permata {runId}-312
+27. Kembali ke User List lewat breadcrumb `User`, Search `Gita Permata {runId}-312`, tekan Enter
+28. Klik sakelar Active pada baris Gita Permata {runId}-312, lalu klik `[Deactivate]` pada dialog `Deactivate User`
+29. Tunggu aksi selesai, lalu klik nama Gita Permata {runId}-312 dan buka Tab Role
+30. Verifikasi Tab Role Gita Permata {runId}-312 menampilkan penugasan yang sama dengan catatan
+31. Kembali ke User List lewat breadcrumb `User`, Search `Gita Permata {runId}-312`, tekan Enter
+32. Verifikasi kolom Home Group baris Gita Permata {runId}-312 tidak berubah dari catatan
+33. Klik sakelar Active pada baris Gita Permata {runId}-312, lalu klik `[Activate]` pada dialog `Activate User`
+34. Tunggu aksi selesai, lalu klik nama Gita Permata {runId}-312 dan buka Tab Role
+35. Verifikasi Tab Role Gita Permata {runId}-312 menampilkan penugasan yang sama dengan catatan
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): 1, 3, 4, 7, 10, 12, 14, 16, 17, 19, 21, 23, 26; langkah baseline jumlah entri (S-12): 18. Langkah 1, 10, 17, 19, dan 23 juga Search untuk menemukan baris target (R-16).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): 1, 3, 4, 6, 8, 10, 12, 14, 16, 18, 19, 21, 22, 24, 25, 27, 29, 31, 34; langkah baseline jumlah entri (S-12): 26. Langkah 1, 16, 25, 27, dan 31 juga Search untuk menemukan baris target (R-16).
+- Presence dan absence di picker PIC dan peminjam (Table User Picker berpaginasi) ditemukan lewat Search nama bersuffix pada kotak search picker (langkah 6, 8, 12, 14, 19, 22; R-22), sehingga asersi tidak bergantung pada halaman pertama picker; pembanding aktif efektif pada langkah 5 dan 11 mendahului asersi absence, dan Search Gita Permata {runId}-312 yang sama menemukan baris pada langkah 19 dan 22 sesudah Activate.
 - Pengguna milik spec bernama sama dengan Pre-setup TC dengan suffix `{runId}-312` (S-06).
 - Temuan untuk QA (S-15):
   - TC-FA-SU-957 butir a menyebut tiga kategori pengguna yang tidak muncul (nonaktif di FAMS, nonaktif di Global Settings, tanpa App Access FAMS) dan tiga picker (PIC, peminjam, approver), tetapi Langkah Uji hanya menonaktifkan Gita Permata dan membuka picker PIC dan peminjam. Spec mengasersi kategori nonaktif di FAMS (Gita Permata) dan nonaktif di Global Settings (Rudi Hartono, Pre-setup #38) pada picker PIC dan peminjam; kategori tanpa App Access FAMS dan picker approver tidak diasersi karena tidak ada langkah dan data pembukanya.

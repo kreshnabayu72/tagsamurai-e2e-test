@@ -43,7 +43,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso` pada User List, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-502: Screening Table Tools, kolom, dan default sort
 
@@ -99,6 +99,8 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso, menutup kotak Search dengan `←` (S-09), dan memulihkan kolom Transaction ID (S-09).
+- Langkah penghubung Search (R-16, bagian 8b butir 9 dan 13): langkah 1 mengetik Search `Budi Santoso` pada User List sebelum membuka Detail, karena User List memuat 3 halaman sehingga spec tidak mengandalkan posisi baris di halaman.
 - Langkah penghubung tambahan (S-03): klik header kolom Column Visibility (⋯) (langkah 10) dan `Esc` (langkah 12) memicu dan menutup overlay untuk `Verifikasi` overlay (TC-FA-SU-502 Expected b); klik dropdown page size (langkah 14) dan `Esc` (langkah 16) membuka dan menutup pilihan page size untuk `Verifikasi` pilihan page size (Expected d, S-14).
 - Langkah berulang per baris tabel parameter: tabel "Ikon Table Tools" pada langkah 3 sampai 4 (3 iterasi); tabel "Search kelas teks dan badge" pada langkah 17 sampai 19 (2 iterasi).
 - Jumlah langkah: 33 tertulis, 40 dengan ekspansi iterasi.
+- Spec melewati sekitar 35 langkah bila ekspansi dihitung (33 tertulis, 40 ekspansi). Seluruh blok berada pada satu surface (satu sub-tab atau tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7); di atas smell 35 langkah.

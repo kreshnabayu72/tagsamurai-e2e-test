@@ -42,7 +42,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-563: Pin dan unpin Setup Column kelas Hideable
 
@@ -97,16 +97,19 @@ coverage:
 44. Verifikasi urutan kolom tabel sama dengan kolom "Urutan kolom sesudah drag" baris terakhir
 45. Tekan F5
 46. Verifikasi urutan kolom tabel tetap sama dengan baris terakhir tabel parameter setelah refresh
+47. Klik header kolom Actions (⋯), lalu klik `Setup Column...`
+48. Klik `[Reset to Default]`
+49. Klik `[Save]`
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; membuka Setup Column, `[Save]`, dan unpin pada tiap putaran pin (mengosongkan kuota 3 pin untuk putaran berikutnya, S-09); `✕` menutup popup Setup Column tanpa menyimpan uncheck sembilan kolom pada TC-FA-SU-564.
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13); `[Reset to Default]` dan `[Save]` di akhir (langkah 47 sampai 49) memulihkan visibilitas kolom curated, urutan, dan pin sesudah TC-FA-SU-565 (S-09, 8b butir 14; hook `after` hanya cadangan); membuka Setup Column, `[Save]`, dan unpin pada tiap putaran pin (mengosongkan kuota 3 pin untuk putaran berikutnya, S-09); `✕` menutup popup Setup Column tanpa menyimpan uncheck sembilan kolom pada TC-FA-SU-564.
 - Langkah uncheck sembilan kolom pada TC-FA-SU-564 ditambahkan sebagai langkah menuju keadaan Expected d (satu-satunya kolom visible, S-14); TC-FA-SU-565 bergantung pada kolom curated yang sudah ditampilkan TC-FA-SU-564 dalam spec yang sama.
 - Verifikasi pin per putaran memuat daftar tiga kolom yang disebut utuh dalam satu butir.
 - Langkah berulang per baris tabel parameter: tabel "Putaran pin Non-Login User" pada langkah 16 sampai 26 (2 iterasi); tabel "Urutan drag kolom curated" pada langkah 41 sampai 42 (3 iterasi).
-- Jumlah langkah: 46 tertulis, 61 dengan ekspansi iterasi.
-- Spec melewati sekitar 35 langkah bila ekspansi dihitung (61 langkah). Seluruh blok berada pada satu surface (satu tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7).
+- Jumlah langkah: 49 tertulis, 64 dengan ekspansi iterasi.
+- Spec melewati sekitar 35 langkah bila ekspansi dihitung (64 langkah). Seluruh blok berada pada satu surface (satu tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7).
 - Temuan untuk QA:
   - TC-FA-SU-563 langkah 3 meminta pin pada ketujuh kolom sedangkan Expected h membatasi maksimum 3 kolom; spec mem-pin dalam putaran tiga kolom dan melepasnya sebelum putaran berikutnya.
   - TC-FA-SU-563 langkah 5 hanya meng-unpin satu kolom; spec meng-unpin seluruh kolom putaran supaya kuota pin kembali.

@@ -32,7 +32,7 @@ coverage:
 
 1. Catat jumlah entri Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
 2. Intercept respons Submit Assign Transaction Role menjadi 5xx
-3. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Transfer × Asset Admin pada Finance & Accounting
+3. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Transfer × Asset Admin pada Finance & Accounting
 4. Klik `[Submit]`
 5. Verifikasi toast "Error, failed to assign Asset Admin."
 6. Lepas intercept respons Submit
@@ -48,7 +48,7 @@ coverage:
 
 14. Catat jumlah entri Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
 15. Intercept respons Bulk Remove Transaction Role menjadi 5xx
-16. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role dan centang dua baris dengan Role berbeda (Disposal × Staff dan Borrowing & Assignment × Approver)
+16. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role dan centang dua baris dengan Role berbeda (Disposal × Staff dan Borrowing & Assignment × Approver)
 17. Klik `[Bulk Remove]` lalu klik `[Remove]`
 18. Verifikasi toast "Error, failed to remove Transaction Role."
 19. Lepas intercept respons Bulk Remove
@@ -59,7 +59,7 @@ coverage:
 ### TC-FA-SU-276: Kegagalan penulisan log Transaction Role membatalkan perubahan karena atomik dengan aksi utama
 
 23. Picu kegagalan penulisan log di sisi server (kemampuan disediakan tim FE)
-24. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Transfer × Asset Admin pada Finance & Accounting dan klik `[Submit]`
+24. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Transfer × Asset Admin pada Finance & Accounting dan klik `[Submit]`
 25. Verifikasi toast error tampil
 26. Verifikasi tidak ada baris baru Transfer × Asset Admin di tabel
 27. Pulihkan layanan penulisan log di sisi server
@@ -72,6 +72,7 @@ coverage:
 - Langkah pola baca-log: langkah 12, 13, 21 dan 22. Search `Mira Anggraini` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - Klausa "tidak ada entri log" pada TC-FA-SU-255 dan 269 (aksi yang gagal) ditulis sebagai asersi jumlah dengan baseline (bagian 3 prinsip 13 butir g, S-12); toast error menjadi anchor positif.
 - `K-1`: TC-FA-SU-276 berkolom FE Test `-` (PIC BE) dan Automation `Manual Only — BE`; TC itu tetap menjadi sumber spec FE+BE karena tidak ada `tc-settings-user-backend.md` dan Expected-nya (toast error dan tabel tanpa baris baru) dapat diamati di UI. Pemicu kegagalan penulisan log adalah kemampuan "disediakan tim FE" tanpa asersi atas kegagalan yang dipicu UI.
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 3, 16 dan 24): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah 16 dan 24 mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-276 butir a ("toast error tampil") tidak menyebut teks toast; spec hanya mengasersi toast error tampil. TC-FA-SU-276 tidak menyebut Pre-setup #27 (Changelog) pada Expected; tidak ada asersi log.
   - TC-FA-SU-269 butir a menyebut "atau memuat nama Role bila sama" untuk toast; spec memakai dua baris dengan Role berbeda sehingga toast "Error, failed to remove Transaction Role."

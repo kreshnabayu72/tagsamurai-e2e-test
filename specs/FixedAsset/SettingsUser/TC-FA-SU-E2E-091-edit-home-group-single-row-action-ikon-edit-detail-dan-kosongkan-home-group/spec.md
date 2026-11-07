@@ -25,54 +25,63 @@ coverage:
 
 ## Test Steps
 
-1. Catat jumlah entri `Edit Home Group` pada Tab Changelog Hana Kusuma, Tab Changelog Gita Permata, Tab System Log aktor, dan Activity Log sebagai baseline; catat juga daftar Global Role, Group Role, dan Transaction Role Gita Permata
+1. Catat jumlah entri `Edit Home Group` pada Tab Changelog Hana Kusuma, Tab System Log aktor, dan Activity Log sebagai baseline TC-FA-SU-285
 
 ### TC-FA-SU-285: Edit Home Group tunggal dari row action
 
-2. Klik ⋯ pada baris Hana Kusuma lalu klik `Edit Home Group`
-3. Klik node IT Infrastructure
-4. Verifikasi node IT Infrastructure ter-highlight dan menjadi pilihan aktif
-5. Verifikasi `[Select]` Enabled
-6. Klik `[Select]`
-7. Verifikasi popup menutup tanpa dialog
-8. Verifikasi toast "Success, home group has been updated." tampil
-9. Verifikasi kolom Home Group baris Hana Kusuma menjadi IT Infrastructure
-10. Buka Detail Hana Kusuma
-11. Verifikasi field Home Group di Detail Hana Kusuma menjadi IT Infrastructure
+2. Ketik Search `Hana Kusuma`, tekan Enter
+3. Klik ⋯ pada baris Hana Kusuma lalu klik `Edit Home Group`
+4. Klik node IT Infrastructure
+5. Verifikasi node IT Infrastructure ter-highlight dan menjadi pilihan aktif
+6. Verifikasi `[Select]` Enabled
+7. Klik `[Select]`
+8. Verifikasi popup menutup tanpa dialog
+9. Verifikasi toast "Success, home group has been updated." tampil
+10. Verifikasi kolom Home Group baris Hana Kusuma menjadi IT Infrastructure
+11. Buka Detail Hana Kusuma
+12. Verifikasi field Home Group di Detail Hana Kusuma menjadi IT Infrastructure
+13. Baca jumlah entri `Edit Home Group` pada Tab Changelog Hana Kusuma, Tab System Log aktor, dan Activity Log
+14. Verifikasi jumlah entri `Edit Home Group` bertambah 1 dibanding baseline TC-FA-SU-285 pada Tab Changelog Hana Kusuma, Tab System Log aktor, dan Activity Log
 
 ### TC-FA-SU-286: Edit Home Group dari ikon edit di Detail User
 
-12. Klik ikon edit Home Group di samping badge
-13. Verifikasi popup singular `Select Home Group` terbuka
-14. Klik node Branch Surabaya
-15. Klik `[Select]`
-16. Verifikasi toast "Success, home group has been updated." tampil
-17. Verifikasi badge Home Group Hana Kusuma berubah menjadi Branch Surabaya
+15. Catat jumlah entri `Edit Home Group` pada Tab Changelog Hana Kusuma, Tab System Log aktor, dan Activity Log sebagai baseline TC-FA-SU-286
+16. Klik ikon edit Home Group di samping badge
+17. Verifikasi popup singular `Select Home Group` terbuka
+18. Klik node Branch Surabaya
+19. Klik `[Select]`
+20. Verifikasi toast "Success, home group has been updated." tampil
+21. Verifikasi badge Home Group Hana Kusuma berubah menjadi Branch Surabaya
+22. Baca jumlah entri `Edit Home Group` pada Tab Changelog Hana Kusuma, Tab System Log aktor, dan Activity Log
+23. Verifikasi jumlah entri `Edit Home Group` bertambah 1 dibanding baseline TC-FA-SU-286 pada Tab Changelog Hana Kusuma, Tab System Log aktor, dan Activity Log
 
 ### TC-FA-SU-288: Kosongkan Home Group singular
 
-18. Kembali ke User List
-19. Klik ⋯ pada baris Gita Permata lalu klik `Edit Home Group`
-20. Klik node Finance & Accounting yang ter-highlight
-21. Verifikasi tidak ada node ter-highlight
-22. Verifikasi `[Select]` Enabled
-23. Klik `[Select]`
-24. Verifikasi tidak ada dialog
-25. Verifikasi toast "Success, home group has been updated." tampil
-26. Verifikasi Home Group Gita Permata menjadi `—`
-27. Buka Detail Gita Permata > Tab Role
-28. Verifikasi Global Role, Group Role, dan Transaction Role Gita Permata sama dengan yang dicatat pada baseline
-29. Buka Tab Changelog Hana Kusuma
-30. Verifikasi entri `Edit Home Group` / Object `User` / Field `Home Group` / Old Value `General Affairs` / New Value `IT Infrastructure` tercatat
-31. Verifikasi entri `Edit Home Group` dengan Old Value `IT Infrastructure` dan New Value `Branch Surabaya` tercatat
-32. Buka Tab Changelog Gita Permata
-33. Verifikasi entri `Edit Home Group` dengan New Value `—` tercatat
-34. Baca jumlah entri `Edit Home Group` pada Tab Changelog Hana Kusuma, Tab Changelog Gita Permata, Tab System Log aktor, dan Activity Log
-35. Verifikasi jumlah entri `Edit Home Group` bertambah 2 untuk Hana Kusuma dan 1 untuk Gita Permata dibanding baseline pada Tab Changelog target, Tab System Log aktor, dan Activity Log
+24. Kembali ke User List
+25. Ganti isi kotak search dengan `Gita Permata`, tekan Enter
+26. Catat jumlah entri `Edit Home Group` pada Tab Changelog Gita Permata, Tab System Log aktor, dan Activity Log serta daftar Global Role, Group Role, dan Transaction Role Gita Permata sebagai baseline TC-FA-SU-288
+27. Klik ⋯ pada baris Gita Permata lalu klik `Edit Home Group`
+28. Klik node Finance & Accounting yang ter-highlight
+29. Verifikasi tidak ada node ter-highlight
+30. Verifikasi `[Select]` Enabled
+31. Klik `[Select]`
+32. Verifikasi tidak ada dialog
+33. Verifikasi toast "Success, home group has been updated." tampil
+34. Verifikasi Home Group Gita Permata menjadi `—`
+35. Baca jumlah entri `Edit Home Group` pada Tab Changelog Gita Permata, Tab System Log aktor, dan Activity Log
+36. Verifikasi jumlah entri `Edit Home Group` bertambah 1 dibanding baseline TC-FA-SU-288 pada Tab Changelog Gita Permata, Tab System Log aktor, dan Activity Log
+37. Buka Detail Gita Permata > Tab Role
+38. Verifikasi Global Role, Group Role, dan Transaction Role Gita Permata sama dengan yang dicatat pada baseline TC-FA-SU-288
+39. Buka Tab Changelog Hana Kusuma
+40. Verifikasi entri `Edit Home Group` / Object `User` / Field `Home Group` / Old Value `General Affairs` / New Value `IT Infrastructure` tercatat
+41. Verifikasi entri `Edit Home Group` dengan Old Value `IT Infrastructure` dan New Value `Branch Surabaya` tercatat
+42. Buka Tab Changelog Gita Permata
+43. Verifikasi entri `Edit Home Group` dengan New Value `—` tercatat
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Entri log diamati sekali pada akhir spec dengan satu baseline (langkah 1) sehingga selisih kumulatif: Hana Kusuma 2 entri (TC-FA-SU-285 dan TC-FA-SU-286), Gita Permata 1 entri (TC-FA-SU-288). Satu entri yang diamati pada tiga surface (Tab Changelog target, Tab System Log aktor, Activity Log) ditulis satu `Verifikasi` (S-01).
-- Langkah penghubung (tanpa awalan `Verifikasi`): langkah 1 (baseline), kembali ke User List, dan membuka Tab Changelog.
+- Baseline entri log dicatat per TC sebelum aksi pemicu (langkah 1, 15, dan 26) dan selisih diverifikasi tepat sesudah aksi tiap TC (langkah 14, 23, dan 36): masing-masing bertambah 1 entri (S-12). Satu entri yang diamati pada tiga surface (Tab Changelog target, Tab System Log aktor, Activity Log) ditulis satu `Verifikasi` (S-01).
+- Langkah penghubung (tanpa awalan `Verifikasi`): langkah 1, 15, dan 26 (baseline per TC), langkah 2 dan 25 (Search nama baris target sebelum membuka menu ⋯, karena User List memuat 3 halaman; R-16, bagian 8b butir 9 dan 13), kembali ke User List, dan membuka Tab Changelog.
+- Jumlah langkah 43, di atas smell 35 langkah; semua blok satu topik (Edit Home Group) dan satu kelas harness (fungsional), tiap TC berdiri sendiri; kelebihan berasal dari baseline per TC dengan selisih tepat sesudah aksi (S-12) dan satu Verifikasi per klausa Expected (S-01).
 - Temuan untuk QA (S-15): Post Condition TC-FA-SU-285 butir c (kandidat Table User Picker Group Role dan popup Assign Role Transaksi di Role & Permission mengikuti constraint Home Group; gate yang sama, menggantikan penyaringan afiliasi lama) dan TC-FA-SU-286 serta TC-FA-SU-288 (penugasan peran) tidak punya langkah observasi pada TC masing-masing dan tidak diasersi; TC-FA-SU-317 menguji kandidat kedua popup.

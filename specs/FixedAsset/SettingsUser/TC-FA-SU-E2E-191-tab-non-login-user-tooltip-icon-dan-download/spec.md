@@ -37,64 +37,66 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-569: Download format CSV dan XLSX, nama file, dan tanpa toast sukses
 
-2. Hover icon Download
-3. Verifikasi tooltip `Download`
-4. Klik icon Download
-5. Verifikasi overlay menampilkan `Download as CSV` dan `Download as XLSX`
-6. Pilih `Download as CSV`
-7. Verifikasi tidak ada toast sukses
-8. Verifikasi file `Non-Login-User-Budi-Santoso.csv` terunduh
-9. Klik icon Download
-10. Pilih `Download as XLSX`
-11. Verifikasi file `Non-Login-User-Budi-Santoso.xlsx` terunduh
-12. Buka berkas CSV
-13. Verifikasi CSV berencoding UTF-8 dengan BOM
-14. Verifikasi nilai ber-koma, tanda kutip, atau baris baru pada CSV dibungkus tanda kutip ganda
-15. Buka berkas XLSX
-16. Verifikasi XLSX satu sheet bernama `Sheet1`
+3. Hover icon Download
+4. Verifikasi tooltip `Download`
+5. Klik icon Download
+6. Verifikasi overlay menampilkan `Download as CSV` dan `Download as XLSX`
+7. Pilih `Download as CSV`
+8. Verifikasi tidak ada toast sukses
+9. Verifikasi file `Non-Login-User-Budi-Santoso.csv` terunduh
+10. Klik icon Download
+11. Pilih `Download as XLSX`
+12. Verifikasi file `Non-Login-User-Budi-Santoso.xlsx` terunduh
+13. Buka berkas CSV
+14. Verifikasi CSV berencoding UTF-8 dengan BOM
+15. Verifikasi nilai ber-koma, tanda kutip, atau baris baru pada CSV dibungkus tanda kutip ganda
+16. Buka berkas XLSX
+17. Verifikasi XLSX satu sheet bernama `Sheet1`
 
 ### TC-FA-SU-570: Cakupan baris dan kolom Download
 
-17. Unduh CSV tanpa kontrol aktif (klik icon Download, pilih `Download as CSV`)
-18. Verifikasi berkas memuat seluruh baris (`Gudang Cabang Bekasi`, `Kendaraan Operasional B 1234 XY`, `Mesin Fotokopi Lt.3`, `Printer Lantai 5`, `Ruang Meeting Anggrek`) dalam urutan sort aktif
-19. Ketik Search `Printer`, tekan Enter
-20. Klik icon Filter
-21. Buka dropdown Status lalu centang `Inactive`
-22. Klik `[Apply]`
-23. Unduh CSV (klik icon Download, pilih `Download as CSV`)
-24. Verifikasi berkas hanya memuat baris yang cocok dengan Search dan Filter (`Printer Lantai 5`)
-25. Klik header kolom Actions (⋯), lalu hilangkan centang Division
-26. Unduh CSV (klik icon Download, pilih `Download as CSV`)
-27. Verifikasi tidak ada toast peringatan
-28. Verifikasi kolom Division tidak ikut berkas
-29. Klik header kolom Actions (⋯), lalu centang kembali Division
-30. Unduh CSV (klik icon Download, pilih `Download as CSV`)
-31. Verifikasi kolom Division ikut berkas kembali
-32. Ganti isi kotak search dengan `zzz`, tekan Enter
-33. Unduh CSV (klik icon Download, pilih `Download as CSV`)
-34. Verifikasi tidak ada toast
-35. Verifikasi berkas hanya memuat baris header kolom yang visible
+18. Unduh CSV tanpa kontrol aktif (klik icon Download, pilih `Download as CSV`)
+19. Verifikasi berkas memuat seluruh baris (`Gudang Cabang Bekasi`, `Kendaraan Operasional B 1234 XY`, `Mesin Fotokopi Lt.3`, `Printer Lantai 5`, `Ruang Meeting Anggrek`) dalam urutan sort aktif
+20. Ketik Search `Printer`, tekan Enter
+21. Klik icon Filter
+22. Buka dropdown Status lalu centang `Inactive`
+23. Klik `[Apply]`
+24. Unduh CSV (klik icon Download, pilih `Download as CSV`)
+25. Verifikasi berkas hanya memuat baris yang cocok dengan Search dan Filter (`Printer Lantai 5`)
+26. Klik header kolom Actions (⋯), lalu hilangkan centang Division
+27. Unduh CSV (klik icon Download, pilih `Download as CSV`)
+28. Verifikasi tidak ada toast peringatan
+29. Verifikasi kolom Division tidak ikut berkas
+30. Klik header kolom Actions (⋯), lalu centang kembali Division
+31. Unduh CSV (klik icon Download, pilih `Download as CSV`)
+32. Verifikasi kolom Division ikut berkas kembali
+33. Ganti isi kotak search dengan `zzz`, tekan Enter
+34. Unduh CSV (klik icon Download, pilih `Download as CSV`)
+35. Verifikasi tidak ada toast
+36. Verifikasi berkas hanya memuat baris header kolom yang visible
 
 ### TC-FA-SU-573: Tooltip icon Table Tools dan header Actions
 
-36. Klik `←` pada kotak Search
-37. Klik icon Filter
-38. Klik `[Clear Field]` pada field Status
-39. Klik `[Apply]`
-40. Untuk setiap baris tabel "Ikon dan header tooltip" (langkah 40 sampai 41): hover ikon baris itu
-41. Verifikasi tooltip sama dengan kolom "Tooltip" baris itu
+37. Klik `←` pada kotak Search
+38. Klik icon Filter
+39. Klik `[Clear Field]` pada field Status
+40. Klik `[Apply]`
+41. Untuk setiap baris tabel "Ikon dan header tooltip" (langkah 41 sampai 42): hover ikon baris itu
+42. Verifikasi tooltip sama dengan kolom "Tooltip" baris itu
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; membuka berkas unduhan (langkah TC-FA-SU-569 "Buka kedua berkas"); pemulihan Search dan Filter sebelum TC-FA-SU-573 (S-09).
-- Langkah berulang per baris tabel parameter: tabel "Ikon dan header tooltip" pada langkah 40 sampai 41 (4 iterasi).
-- Jumlah langkah: 41 tertulis, 47 dengan ekspansi iterasi.
-- Spec melewati sekitar 35 langkah bila ekspansi dihitung (47 langkah). Seluruh blok berada pada satu surface (satu tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7).
+- Langkah penghubung tambahan (S-03): langkah 1 (Ketik Search `Budi Santoso`, tekan Enter sebelum membuka Detail, supaya spec tidak mengandalkan posisi baris pada User List 25 pengguna 3 halaman, R-16, bagian 8b butir 13).
+- Langkah berulang per baris tabel parameter: tabel "Ikon dan header tooltip" pada langkah 41 sampai 42 (4 iterasi).
+- Jumlah langkah: 42 tertulis, 48 dengan ekspansi iterasi.
+- Spec melewati sekitar 35 langkah bila ekspansi dihitung (48 langkah). Seluruh blok berada pada satu surface (satu tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7).
 - Temuan untuk QA:
   - TC-FA-SU-569 Expected d (encoding BOM, pembungkus tanda kutip ganda, nama sheet) adalah asersi isi berkas (kelas f, bagian 3 prinsip 13 butir f), tetapi TC ini bertipe fungsional; spec mengikuti TC. Pemilik proses dapat memindahkan dua Verifikasi isi berkas ke spec kelas f.
   - TC-FA-SU-569 Expected d menyebut nilai ber-koma, tanda kutip, atau baris baru, tetapi Pre-setup #26 tidak memuat nilai seperti itu; tim FE perlu memastikan data yang memuatnya.

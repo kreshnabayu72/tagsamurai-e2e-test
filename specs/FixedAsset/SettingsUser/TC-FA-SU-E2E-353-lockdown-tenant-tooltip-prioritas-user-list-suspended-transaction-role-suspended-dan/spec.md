@@ -32,7 +32,7 @@ coverage:
 3. Muat ulang halaman Fixed Asset > Settings > User
 4. Verifikasi halaman User List dapat dibuka dan seluruh data pengguna terlihat
 5. Verifikasi tidak ada banner di halaman Settings > User
-6. Ganti isi kotak search dengan `Budi Santoso`, tekan Enter, lalu hover sakelar Active baris Budi Santoso
+6. Ketik Search `Budi Santoso`, tekan Enter, lalu hover sakelar Active baris Budi Santoso
 7. Verifikasi sakelar Active baris Budi Santoso Disabled dengan tooltip `Entity is suspended.`
 8. Ganti isi kotak search dengan `Ahmad Dahlan`, tekan Enter, lalu hover sakelar Active baris Ahmad Dahlan (Default User)
 9. Verifikasi sakelar Active baris Ahmad Dahlan Disabled dengan tooltip `Entity is suspended.`
@@ -75,7 +75,7 @@ coverage:
 
 ### TC-FA-SU-959 (butir a): Tanpa entri log saat status Client berubah
 
-43. Klik nama Budi Santoso
+43. Ganti isi kotak search dengan `Budi Santoso`, tekan Enter, lalu klik nama Budi Santoso
 44. Klik Tab Changelog
 45. Verifikasi Tab Changelog memuat baris riwayat Budi Santoso
 46. Baca jumlah entri Tab Changelog Budi Santoso
@@ -84,7 +84,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular. TC-FA-SU-75 dan TC-FA-SU-81 ada di spec 354; TC-FA-SU-78 dan TC-FA-SU-79 ada di spec 358; TC-FA-SU-152 dan TC-FA-SU-283 ada di spec 359.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (baseline), 3 (muat ulang), 17 (tutup menu), 33 dan 34 (kembali ke User List dan muat ulang), 40 (Ganti isi kotak search), 42 (pemulihan seed API), 43, 44, dan 46 (navigasi dan pembacaan jumlah). Langkah 6, 8, 10, 12, 14, 18, dan 36 menggabungkan Search baris target dengan aksi berikutnya karena baris di luar halaman 1 (R-16). Langkah 16 dan 28 adalah anchor positif untuk asersi absence berikutnya (8b.2). Langkah 2 dan 32 adalah pemicu state lewat sesi API (R-20), bukan objek asersi UI kedua.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1 (baseline), 3 (muat ulang), 17 (tutup menu), 33 dan 34 (kembali ke User List dan muat ulang), 40 (Ganti isi kotak search), 42 (pemulihan seed API), 44, dan 46 (navigasi dan pembacaan jumlah). Langkah 6, 8, 10, 12, 14, 19, 36, dan 43 menggabungkan Search baris target dengan aksi berikutnya karena baris di luar halaman 1 (R-16). Langkah 15 dan 28 adalah anchor positif untuk asersi absence berikutnya (8b.2). Langkah 2 dan 32 adalah pemicu state lewat sesi API (R-20), bukan objek asersi UI kedua.
 - Urutan TC sumber diubah: TC-FA-SU-80 sesudah TC-FA-SU-77 karena unsuspend memakai Client yang sudah Suspended dari langkah 2. Butir b TC-FA-SU-959 (akses tulis kembali tanpa reaktivasi manual) diasersi pada langkah 39 karena aktivasi Doni Prasetyo (langkah 36 sampai 37) dikerjakan di blok TC-FA-SU-80; butir a TC-FA-SU-959 menyusul.
 - TC-FA-SU-959 butir a ("tidak ada entri log") ditulis sebagai asersi jumlah dengan baseline (S-12) pada aksi nyata spec ini (perubahan status Client lewat Principal pada langkah 2 dan 32), bukan asersi absence kelas g.
 - Verifikasi baris Doni Prasetyo (langkah 39) dikerjakan sebelum Verifikasi kolom Role baris Budi Santoso (langkah 41) supaya satu Search per baris target cukup (R-16); langkah 40 mengganti isi kotak search.

@@ -28,7 +28,7 @@ coverage:
 
 ### TC-FA-SU-572: Download Tab Non-Login User gagal: toast error tanpa ekstensi
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 2. Atur intercept respons unduhan menjadi 500
 3. Klik icon Download
 4. Pilih `Download as CSV`
@@ -81,6 +81,7 @@ coverage:
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; tiap TC memakai surface-nya sendiri sehingga kegagalan satu blok tidak mengubah state blok lain.
 - Mode FE+BE: kegagalan dipaksa dengan `Spectra.intercept()` parsial di atas backend nyata (bagian 6 konvensi), bukan seluruh API di-mock. Kelas b (resilience) dikumpulkan per jenis aksi baca atau unduh; kelas lain tidak ada di spec ini.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): mengatur dan melepas intercept respons unduhan serta menutup toast error persist, serta menutup modal Changelog.
+- Langkah penghubung tambahan (S-03): Search nama `Budi Santoso` di User List supaya baris target tidak bergantung posisi halaman (langkah 1, 8b butir 13, R-16).
 - Pembagian TC lintas spec:
   - TC-FA-SU-572: format dan nama berkas TC-FA-SU-569 di spec 191, empty state, loading, dan error load TC-FA-SU-574 di spec 362, transformasi data TC-FA-SU-571 di spec 371.
   - TC-FA-SU-604: format dan nama berkas TC-FA-SU-601 di spec 201, empty state, loading, dan error load TC-FA-SU-606 di spec 362, transformasi data TC-FA-SU-603 di spec 372.

@@ -19,7 +19,7 @@ coverage:
 - Mode: FE+BE. Backend nyata; tidak ada intercept.
 - Akun aktor: Total Control Company Limit (Pre-setup #11, pengguna `Total Control Limit`; email akun ini tidak tertulis di Pre-setup TC, lihat Temuan untuk QA), `Fixture.assetLabeling.akun.totalControlLimit`, password `Spectra.env.FA_TC_LIMIT_PASSWORD`. Login di hook `before` spec ini menggantikan akun default suite; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control Company Alpha, `Spectra.env.FA_LBL_TC_PASSWORD`). Tidak ada ganti akun di tengah spec.
 - Hook suite: Guided Tooltip, pemulihan state global, dan pembukaan Settings > Asset Master > tab Labels mengikuti hook di `suite.md` dan tidak ditulis ulang di sini.
-- Data Dinamis (nama bersuffix `{runId}-134`): `Limit Reject 401 {runId}-134` (TC-FA-LBL-401, tidak tersimpan), `Limit Direct 458 {runId}-134` (TC-FA-LBL-458, ditolak), `Import Limit 484 {runId}-134` (TC-FA-LBL-484; Default Label dalam berkas Import Asset Name, belum ada di katalog, berkas disediakan tim FE/BE; Pre-setup #14).
+- Data Dinamis (nama bersuffix `{runId}-134`): `Limit Reject 401 {runId}-134` (TC-FA-LBL-401, tidak tersimpan), `Limit Direct 458 {runId}-134` (TC-FA-LBL-458, ditolak), `Import Limit 484 {runId}-134` (TC-FA-LBL-484; Default Label dalam berkas Import Asset Name, belum ada di katalog; Pre-setup #14). Pembuat berkas Import Asset Name per run (kemampuan disediakan tim FE/BE) menyusun berkas yang memuat Asset Name bersuffix `{runId}-134` dengan Default Label itu.
 - Data Pre-setup: Company Limit (Pre-setup #11) dengan `Total Control Limit`; Master Data Count Limit diturunkan ke nilai terendah yang diizinkan (1000) dan katalog diisi lewat seed API tepat di batas.
 - Fixture `fixtures/asset-labeling.json` (disediakan tim FE; hanya identitas data, tanpa rahasia). Kunci yang dipakai spec ini:
 
@@ -29,8 +29,8 @@ coverage:
 
 - Kemampuan teknis: fixture BE untuk seeding dan membersihkan label serta membaca jumlah dan isi entri Changelog Labels, System Log aktor, dan Activity Log sebagai baseline (disediakan tim FE/BE; endpoint tidak ditulis di TC; S-12). Klien HTTP dengan token aktor Total Control Limit (sesi API aktor) untuk permintaan langsung pada TC-FA-LBL-458. Import Asset Name dengan opsi `[Create Missing Labels]` dijalankan lewat UI tab Asset Name (rincian kontrol mengikuti TC `import/`; lihat Temuan untuk QA).
 - State global: Master Data Count Limit Company Limit diturunkan ke 1000 dan katalog dipenuhi tepat di batas di hook `before`, dipulihkan di hook `after` (S-13: pelaku dan kemampuan disediakan tim FE/BE). Suite berjalan serial (`parallel: false`).
-- Cleanup: hook `after` menghapus label seed pengisi katalog dan label yang dibuat spec (nama bersuffix `{runId}-134`) lewat fixture BE berdasarkan ID, tanpa berasumsi seed berhasil penuh. Entri log bersifat permanen dan tidak dihapus.
-- Env var: `Spectra.env.FA_TC_LIMIT_PASSWORD` (Total Control Company Limit) terdaftar di `executionConfig.environmentVariables` dan `.env.example`.
+- Cleanup: hook `after` lebih dulu menghapus Asset Name hasil Import TC-FA-LBL-484 (bersuffix `{runId}-134`, beserta relasi Default Label bila terbentuk) lewat fixture BE, lalu menghapus label seed pengisi katalog dan label yang dibuat spec (nama bersuffix `{runId}-134`) lewat fixture BE berdasarkan ID, tanpa berasumsi seed atau Import berhasil penuh. Entri log bersifat permanen dan tidak dihapus.
+- Env var: `Spectra.env.FA_TC_LIMIT_PASSWORD` (Total Control Company Limit) didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`.
 
 ## Test Steps
 
@@ -82,4 +82,5 @@ coverage:
 - Temuan untuk QA:
   - Email akun Total Control Company Limit tidak tertulis di Pre-setup TC (#11 hanya menyebut `Total Control Limit`); disediakan tim FE.
   - TC-FA-LBL-401, 458, dan 484: Post Condition tidak ada. TC-FA-LBL-458 tidak menyebut kode status respons dan bentuk nilai batas di respons; spec hanya mengasersi bahwa permintaan ditolak dan respons membawa nilai batas.
+  - Cleanup hasil Import TC-FA-LBL-484 (Asset Name dan relasi Default Label) serta kemampuan pembuat berkas Import per run bergantung pada dukungan tim FE/BE; menunggu konfirmasi FE/BE (D-11, F-307).
   - TC-FA-LBL-484 tidak merinci langkah UI Import (halaman, berkas, dan tombol); spec menulis satu langkah aksi Import dan mekanisme rincinya mengikuti TC `import/`.

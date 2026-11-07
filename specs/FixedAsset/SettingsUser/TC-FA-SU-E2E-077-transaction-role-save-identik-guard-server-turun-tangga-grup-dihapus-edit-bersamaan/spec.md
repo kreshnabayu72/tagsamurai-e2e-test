@@ -34,9 +34,9 @@ coverage:
 
 ### TC-FA-SU-253: Save identik dengan assignment existing: toast No-Op dan tanpa entri log
 
-1. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Group Finance & Accounting, Transaction Damaged, dan Role Monitoring & Report
+1. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Group Finance & Accounting, Transaction Damaged, dan Role Monitoring & Report
 2. Admin B menyimpan Damaged × Monitoring & Report untuk Finance & Accounting pada Mira Anggraini lewat sesi API hingga assignment tersimpan
-3. Catat jumlah entri `Assign` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline (sesudah assignment Admin B)
+3. Catat jumlah entri `Assign` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline dibaca setelah entri `Assign` Field `Damaged — Finance & Accounting — Monitoring & Report` milik Admin B tampil (sesudah assignment Admin B; dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit)
 4. Klik `[Submit]` pada sesi A
 5. Verifikasi toast "No changes to save."
 6. Verifikasi tidak ada toast error
@@ -46,7 +46,7 @@ coverage:
 ### TC-FA-SU-256: Grup dihapus sebelum Save modal: toast stale, Group stale dibersihkan, dan modal tetap terbuka
 
 9. Catat jumlah entri Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
-10. Buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Logistics Warehouse, Transaction Transfer, dan Role Asset Admin
+10. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Logistics Warehouse, Transaction Transfer, dan Role Asset Admin
 11. Admin B menghapus grup Logistics Warehouse di Settings > Groups lewat sesi API hingga grup terhapus
 12. Klik `[Submit]`
 13. Verifikasi toast "Error, failed to assign Asset Admin. One or more selected groups no longer exist. Please select another."
@@ -61,7 +61,7 @@ coverage:
 
 ### TC-FA-SU-278: Edit bersamaan Transaction Role mengikuti last-write-wins
 
-22. Buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Group Finance & Accounting, Transaction Disposal, dan Role Asset Admin
+22. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Group Finance & Accounting, Transaction Disposal, dan Role Asset Admin
 23. Klik `[Submit]` pada sesi A
 24. Tunggu aksi selesai (modal tertutup) sebelum sesi berpindah
 25. Admin B menyimpan Disposal × Monitoring & Report untuk Finance & Accounting pada Mira Anggraini lewat sesi API, dengan konfirmasi turun tangga, hingga assignment tersimpan
@@ -72,7 +72,7 @@ coverage:
 ### TC-FA-SU-280: Save dengan sebagian Group identik: baris identik dilewati tanpa keterangan tambahan pada toast
 
 29. Admin B menambahkan Disposal × Staff pada Branch Surabaya untuk Mira Anggraini lewat sesi API hingga assignment tersimpan
-30. Catat jumlah entri `Assign` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline (sesudah assignment Admin B)
+30. Catat jumlah entri `Assign` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline dibaca setelah entri `Assign` Field `Disposal — Branch Surabaya — Staff` milik Admin B tampil (sesudah assignment Admin B; dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit)
 31. Pada tampilan sesi A yang belum dimuat ulang, klik `[+ Assign]`, pilih Group Branch Surabaya dan IT Infrastructure, Transaction Disposal, dan Role Staff, lalu klik `[Submit]`
 32. Verifikasi toast "Success, Staff has been assigned." tanpa kata skipped atau keterangan baris identik
 33. Buka Tab Changelog, Search `Mira Anggraini`, tekan Enter, lalu muat ulang sampai entri tampil
@@ -82,7 +82,7 @@ coverage:
 ### TC-FA-SU-254: Guard server menolak Save turun tangga tanpa konfirmasi: dialog konteks dan tabel di-refresh
 
 36. Pindah ke tenant `FaUserTR` dengan akun aktor yang sama
-37. Buka Detail Nanda Pratama > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Group Finance & Accounting, Transaction Disposal, dan Role Staff
+37. Ketik Search `Nanda Pratama`, tekan Enter, lalu buka Detail Nanda Pratama > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu isi Group Finance & Accounting, Transaction Disposal, dan Role Staff
 38. Admin B mengubah Disposal Finance & Accounting Nanda Pratama menjadi Asset Admin lewat sesi API hingga perubahan tersimpan
 39. Klik `[Submit]` pada sesi A
 40. Verifikasi dialog Title `User Updated` dengan Body `This user was changed by someone else. Please review.` dan tombol `[OK]`
@@ -96,11 +96,12 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan TC dalam spec: TC-FA-SU-253, 256, 278, 280, lalu 254, supaya perpindahan tenant ke `FaUserTR` terjadi satu kali di akhir (TC-FA-SU-254 memakai `FaUserTR`, sisanya `FaUserMain`).
 - Pelaku kedua (Admin B) dipicu lewat sesi API dan bukan konteks UI kedua, sehingga tidak memakai `P-2` (bagian 3 prinsip 13, `[KEPUTUSAN 2026-10-30]`). Sesi A adalah sesi UI aktor (Total Control).
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 3, 9, 16 sampai 18, 24, 30 dan 36. Baseline log dicatat sesudah aksi Admin B karena aksi itu menambah entri sendiri (S-12); penutupan modal dirty mengikuti S-08.
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 3, 9, 16 sampai 18, 24, 30 dan 36. Baseline log dicatat sesudah aksi Admin B karena aksi itu menambah entri sendiri, dan baseline menunggu entri Admin B tampil karena entri log muncul eventual (S-12, bagian 6); penutupan modal dirty mengikuti S-08.
 - Langkah pola baca-log: langkah 7, 8, 20, 21 dan 33 sampai 35. Search `Mira Anggraini` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - Klausa "tidak ada entri log" pada TC-FA-SU-253 dan 256 (aksi yang tidak mengubah data atau gagal) ditulis sebagai asersi jumlah dengan baseline di spec fungsional (bagian 3 prinsip 13 butir g, S-12); toast menjadi anchor positif.
 - Jumlah langkah 43, di atas smell 35 langkah: 36 langkah di luar blok baca-log berpola (7 langkah, tidak dihitung pada smell bagian 3 prinsip 13); seluruh blok satu topik (konflik dua pelaku pada Save Transaction Role Mira Anggraini dan Nanda Pratama) dan satu pola pelaku kedua lewat sesi API; tiap TC memakai baris Transaction Role yang berbeda sehingga tidak saling mengandalkan hasil TC lain.
 - Pre-setup #50 diterapkan hanya pada Mira Anggraini (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih Logistics Warehouse (langkah 10), Branch Surabaya (penugasan Admin B langkah 29, juga dipilih pada langkah 31), dan IT Infrastructure (langkah 31); Home Group Mira Anggraini dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 1, 10, 22 dan 37): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah 10 dan 22 mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-253, 254, 256, 278, dan 280 menyebut "Sesi A dan B" yang membuka modal atau tampilan basi; spec menjadikan sesi UI aktor sebagai sesi A dan Admin B sebagai sesi API, sehingga "B membuka modal" tidak ditulis.
   - TC-FA-SU-278 menyebut sesi B "konfirmasi dialog turun tangga"; spec menulisnya sebagai penyimpanan lewat sesi API dengan konfirmasi turun tangga tanpa mengarang endpoint. TC-FA-SU-278 tidak menyebut pengguna target; spec memakai Mira Anggraini.

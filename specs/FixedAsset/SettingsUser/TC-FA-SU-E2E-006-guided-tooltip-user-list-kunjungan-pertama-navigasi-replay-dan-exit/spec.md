@@ -86,21 +86,24 @@ coverage:
 50. Verifikasi flag seen tetap tersetel (klik `[?]` tidak mereset flag)
 51. Tekan Esc
 52. Pulihkan ukuran viewport ke semula
-53. Klik nama `Budi Santoso`
-54. Verifikasi halaman Detail User tidak memiliki walkthrough dan tombol `[?]`
+53. Ketik Search `Budi Santoso`, tekan Enter
+54. Klik nama `Budi Santoso`
+55. Verifikasi halaman Detail User Budi Santoso termuat dengan General Information tampil
+56. Verifikasi halaman Detail User tidak memiliki walkthrough dan tombol `[?]`
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 24, 31, 35, dan 39 (menghapus flag dan memuat ulang supaya walkthrough kunjungan pertama muncul), langkah 22 dan 43 (muat ulang), langkah 45 dan 51 (menutup walkthrough), langkah 52 (memulihkan viewport, S-09). Langkah 53 mengambil Detail untuk Expected d TC-FA-SU-19.
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 1, 24, 31, 35, dan 39 (menghapus flag dan memuat ulang supaya walkthrough kunjungan pertama muncul), langkah 22 dan 43 (muat ulang), langkah 45 dan 51 (menutup walkthrough), langkah 52 (memulihkan viewport, S-09), langkah 53 (Search nama baris target, R-16). Langkah 54 mengambil Detail untuk Expected d TC-FA-SU-19; langkah 55 adalah anchor positif sebelum asersi absence langkah 56.
 - Walkthrough TC-FA-SU-17 berakhir di Step 5 sehingga TC-FA-SU-18 melanjutkan dari keadaan itu (langkah 13 sampai 21: Step 5, keyboard, Esc); `[Back]` Hidden di Step 1 (Expected a TC-FA-SU-18) diasersi di langkah 4 saat Step 1 tampil.
 - Langkah 14 sampai 18 mengisi Expected d TC-FA-SU-18 (Esc = Skip, Enter = Next, ← = Back); tombol → (Next) tidak diuji terpisah dari Enter karena Expected TC menyebut "Enter atau →" sebagai satu pasangan perilaku Next.
 - Langkah 36 (klik overlay gelap) mengisi Expected b TC-FA-SU-18 ("tombol atau klik overlay gelap"); Langkah Uji TC hanya menyebut `[Skip]`.
-- Spec melewati sekitar 35 langkah (54 langkah). Seluruhnya satu kelas (Guided Tooltip User List, satu akun, tanpa mengubah data bisnis), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain.
+- Spec melewati sekitar 35 langkah (56 langkah). Seluruhnya satu kelas (Guided Tooltip User List, satu akun, tanpa mengubah data bisnis), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain.
 - Temuan untuk QA:
   - TC-FA-SU-17 dan 18 memakai "akun baru tanpa flag guided tooltip" sebagai precondition; spec memakai akun aktor dengan flag dihapus (kemampuan reset flag disediakan tim FE/BE) sehingga tidak ada akun baru.
   - TC-FA-SU-18 Langkah Uji 5 ("Ulangi dengan akun baru") dan Langkah Uji 6 ("Uji tombol Esc, Enter, panah") tidak merinci urutan; spec menyusunnya seperti di atas.
   - TC-FA-SU-19 Expected c menyebut "atau navigasi ke halaman lain di tengah walkthrough"; Langkah Uji TC hanya meresize viewport dan membuka User List lagi. Spec menguji resize dan muat ulang, dan tidak menguji navigasi ke halaman lain.
   - TC-FA-SU-19 Langkah Uji 3 ("Buka halaman User List lagi") tidak menyebut apakah lewat navigasi atau muat ulang; spec memakai muat ulang.
   - TC-FA-SU-17 Expected a menyebut kunjungan pertama berdasarkan flag yang belum ada; nama flag mengikuti Expected TC (`guided_tooltip_seen_fa-settings-user`).
+  - TC-FA-SU-18 Langkah Uji 6 menyebut "Esc, Enter, panah" dan Expected d menyebut "Enter atau →" sebagai satu pasangan perilaku Next; spec mengasersi ← (Back), Enter (Next), dan Esc (Skip) tetapi tidak menekan → secara terpisah karena TC tidak membedakan → dari Enter. Bila → harus diuji sendiri, TC perlu memisahkannya menjadi klausa Expected tersendiri.

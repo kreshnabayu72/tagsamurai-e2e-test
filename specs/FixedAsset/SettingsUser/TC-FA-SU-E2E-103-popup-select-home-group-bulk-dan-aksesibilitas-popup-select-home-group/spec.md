@@ -26,28 +26,35 @@ coverage:
 
 ### TC-FA-SU-908: Popup Select Home Group varian bulk
 
-1. Centang Gita Permata dan Budi Santoso lalu klik Bulk Action > `Edit Home Group`
-2. Ketik Search `Surabaya`, tekan Enter
-3. Verifikasi pohon memfilter node dan node Branch Surabaya tampil
-4. Klik node Branch Surabaya
-5. Verifikasi tepat satu node terpilih
-6. Klik node lain (hasil Search sesudah mengosongkan Search)
-7. Verifikasi node lain menggantikan pilihan sebelumnya
-8. Ganti isi kotak Search dengan `zzz`, tekan Enter
-9. Verifikasi empty state `No results found` tampil
-10. Klik `[Cancel]` lalu klik Unselect All
+1. Ketik Search `Gita Permata`, tekan Enter
+2. Centang Gita Permata
+3. Ganti isi kotak search dengan `Budi Santoso`, tekan Enter
+4. Centang Budi Santoso
+5. Klik Bulk Action > `Edit Home Group`
+6. Ketik Search `Surabaya`, tekan Enter
+7. Verifikasi pohon memfilter node dan node Branch Surabaya tampil
+8. Klik node Branch Surabaya
+9. Verifikasi tepat satu node terpilih
+10. Kosongkan isi kotak search popup, tekan Enter
+11. Klik node lain (hasil Search sesudah mengosongkan Search)
+12. Verifikasi node lain menggantikan pilihan sebelumnya
+13. Ketik Search `zzz`, tekan Enter
+14. Verifikasi empty state `No results found` tampil
+15. Klik `[Cancel]` lalu klik Unselect All
 
 ### TC-FA-SU-1047: Aksesibilitas popup Select Home Group
 
-11. Klik ⋯ pada baris Hana Kusuma lalu klik `Edit Home Group`
-12. Tekan Tab berulang
-13. Verifikasi fokus keyboard terkunci di dalam popup `Select Home Group` (Tab dan Shift+Tab berputar di dalam popup)
-14. Tekan Esc
-15. Verifikasi popup tertutup tanpa menyimpan
-16. Verifikasi ikon aksi baris (Detail, Edit Home Group, Resend) memiliki label deskriptif untuk screen reader
+16. Ganti isi kotak search dengan `Hana Kusuma`, tekan Enter
+17. Klik ⋯ pada baris Hana Kusuma lalu klik `Edit Home Group`
+18. Tekan Tab berulang
+19. Verifikasi fokus keyboard terkunci di dalam popup `Select Home Group` (Tab dan Shift+Tab berputar di dalam popup)
+20. Tekan Esc
+21. Verifikasi popup tertutup tanpa menyimpan
+22. Klik ⋯ pada baris Hana Kusuma
+23. Verifikasi ikon aksi baris (Detail, Edit Home Group, Resend) memiliki label deskriptif untuk screen reader
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): `[Cancel]` dan Unselect All. TC-FA-SU-908 langkah 3 "klik node lain" ditulis sebagai klik node pada hasil sesudah Search dikosongkan; urutan Search mengikuti TC.
-- Temuan untuk QA (S-15): (1) TC-FA-SU-908 tidak menyebut dua baris yang dicentang dan node "lain"; spec memakai Gita Permata dan Budi Santoso, serta node lain yang tampil pada hasil Search. (2) Klik node lain pada hasil Search `Surabaya` hanya mengamati node yang tampil; bila hanya Branch Surabaya tampil, node lain tidak terpilih sehingga langkah itu bergantung pada hasil Search. (3) TC-FA-SU-1047 Expected c (label ikon aksi baris Detail, Edit Home Group, Resend) tidak punya langkah yang membuka baris yang menampilkan ketiga ikon; spec mengamati ikon pada baris Hana Kusuma (Pending Activation). (4) Post Condition tidak ada.
+- Langkah penghubung (tanpa awalan `Verifikasi`): `[Cancel]` dan Unselect All, langkah 10 (mengosongkan Search popup supaya pohon penuh tampil sebelum klik node lain), langkah 1, 3, dan 16 (Search untuk menemukan baris target, R-16 dan butir 8b.13), dan langkah 22 (membuka kembali menu ⋯ yang tertutup sesudah popup ditutup, supaya ikon aksi baris teramati). TC-FA-SU-908 langkah 3 "klik node lain" ditulis sebagai klik node pada hasil sesudah Search dikosongkan; urutan Search mengikuti TC.
+- Temuan untuk QA (S-15): (1) TC-FA-SU-908 tidak menyebut dua baris yang dicentang dan node "lain"; spec memakai Gita Permata dan Budi Santoso, serta node lain yang tampil pada hasil Search. (2) TC-FA-SU-908 tidak menyebut node "lain"; spec mengosongkan Search lebih dulu (langkah 10) lalu memilih node lain pada pohon penuh. (3) TC-FA-SU-1047 Expected c (label ikon aksi baris Detail, Edit Home Group, Resend) tidak punya langkah yang membuka baris yang menampilkan ketiga ikon; spec mengamati ikon pada baris Hana Kusuma (Pending Activation). (4) Post Condition tidak ada. (5) TC-FA-SU-908 mencentang dua pengguna sekaligus tanpa menyebut cara menemukan baris; spec memakai Search per baris dan mengasumsikan seleksi bertahan saat isi Search berganti; mohon konfirmasi.

@@ -28,7 +28,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-531: Download format CSV dan XLSX, nama file, dan tanpa toast sukses
 
@@ -73,7 +73,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; membuka berkas unduhan (langkah TC-FA-SU-531 "Buka kedua berkas").
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13); membuka berkas unduhan (langkah TC-FA-SU-531 "Buka kedua berkas").
 - Jumlah langkah: 35 tertulis, 35 dengan ekspansi iterasi.
 - Temuan untuk QA:
   - TC-FA-SU-531 Expected d (encoding BOM, pembungkus tanda kutip ganda, nama sheet) adalah asersi isi berkas (kelas f, bagian 3 prinsip 13 butir f), tetapi TC ini bertipe fungsional dan memuatnya bersama nama berkas; spec mengikuti TC. Pemilik proses dapat memindahkan dua Verifikasi isi berkas ke spec kelas f.

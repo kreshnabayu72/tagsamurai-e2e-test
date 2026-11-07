@@ -33,7 +33,7 @@ coverage:
 
 ### TC-FA-SU-851: Filter kelas enum: Activity
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
+1. Ketik Search `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
 2. Klik icon Filter
 3. Buka dropdown Activity
 4. Verifikasi opsi dropdown Activity = DISTINCT data tabel (`Assigned`, `Unassigned`)
@@ -59,15 +59,15 @@ coverage:
 18. Verifikasi Search `Unassigned` menyisakan A-1 (anchor sebelum asersi irisan)
 19. Buka dropdown Activity, centang `Assigned`
 20. Klik `[Apply]`
-21. Verifikasi Search `Unassigned` lalu Filter Activity `Assigned`: hasil irisan tidak ada baris (0 baris)
-22. Klik `[Clear Field]` lalu `[Apply]`
-23. Klik icon ← pada kotak Search
-24. Buka dropdown Activity, centang `Assigned`
-25. Klik `[Apply]`
-26. Verifikasi Filter Activity `Assigned` menyisakan A-2, A-3, A-4, A-5 (anchor sebelum asersi irisan)
-27. Ketik Search `Unassigned`, tekan Enter
-28. Verifikasi Filter Activity `Assigned` lalu Search `Unassigned`: hasil identik tidak ada baris
-29. Verifikasi menerapkan Filter tidak mengosongkan keyword Search
+21. Verifikasi menerapkan Filter tidak mengosongkan keyword Search
+22. Verifikasi Search `Unassigned` lalu Filter Activity `Assigned`: hasil irisan tidak ada baris (0 baris)
+23. Klik `[Clear Field]` lalu `[Apply]`
+24. Klik icon ← pada kotak Search
+25. Buka dropdown Activity, centang `Assigned`
+26. Klik `[Apply]`
+27. Verifikasi Filter Activity `Assigned` menyisakan A-2, A-3, A-4, A-5 (anchor sebelum asersi irisan)
+28. Ketik Search `Unassigned`, tekan Enter
+29. Verifikasi Filter Activity `Assigned` lalu Search `Unassigned`: hasil identik tidak ada baris
 30. Verifikasi menjalankan Search tidak mereset Filter
 31. Verifikasi tabel kembali ke halaman 1 saat kriteria berubah
 32. Klik icon ← pada kotak Search
@@ -99,6 +99,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung pencarian baris (S-03, R-16, bagian 8b butir 13): langkah 1 mencari pengguna lewat Search nama persis `Budi Santoso` (nama Pre-setup) sebelum membuka Detail, karena User List dapat memuat lebih dari satu halaman (25 pengguna, 3 halaman) sehingga spec tidak mengandalkan posisi baris di halaman.
 - Panel Filter tetap terbuka sesudah `[Apply]` dan baru tertutup bila icon Filter diklik (keputusan produk); karena itu `[Clear Field]` + `[Apply]` dijalankan tanpa mengklik icon Filter lagi. Langkah 52 (`Klik icon Filter untuk menutup panel`) adalah langkah penghubung yang menutup panel sebelum blok berikutnya (S-03, S-09).
 - Spec ini berjumlah 52 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Asersi irisan 0 baris pada TC-FA-SU-853 didahului `Verifikasi` hasil tunggal (Search saja dan Filter saja) sebagai anchor positif (bagian 8b butir 2); keduanya asersi tambahan di luar Expected TC dan dicatat di sini sesuai S-03.

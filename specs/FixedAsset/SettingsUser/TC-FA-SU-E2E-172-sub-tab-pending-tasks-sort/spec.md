@@ -36,7 +36,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-511: Sort kelas teks dan badge (Transaction ID, Transaction, Status, Group)
 
@@ -68,7 +68,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso. Klik ketiga tiap kolom mengembalikan sort ke netral sehingga kolom berikutnya mulai dari default (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` lalu membuka Detail Budi Santoso (langkah 1). Klik ketiga tiap kolom mengembalikan sort ke netral sehingga kolom berikutnya mulai dari default (S-09).
 - Langkah berulang per baris tabel parameter: tabel "Sort TC-FA-SU-511" pada langkah 2 sampai 7 (4 iterasi).
 - Jumlah langkah: 19 tertulis, 37 dengan ekspansi iterasi.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (37 langkah). Seluruh blok berada pada satu surface (satu sub-tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7).

@@ -26,7 +26,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-520: Kombinasi Search dan Filter dua arah
 
@@ -76,7 +76,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; `[Clear Field]`, `[Apply]`, dan `←` pada Search di awal TC-FA-SU-521 mengosongkan kontrol sisa TC-FA-SU-520 (S-09); `Ketik Search` ulang sebelum mengganti kolom sort mengembalikan Search yang dikosongkan sebelumnya.
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` lalu membuka Detail Budi Santoso (langkah 1); `[Clear Field]`, `[Apply]`, dan `←` pada Search di awal TC-FA-SU-521 mengosongkan kontrol sisa TC-FA-SU-520 (S-09); `Ketik Search` ulang sebelum mengganti kolom sort mengembalikan Search yang dikosongkan sebelumnya.
 - TC-FA-SU-522 ada di spec 192.
 - Jumlah langkah: 40 tertulis, 40 dengan ekspansi iterasi.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (40 langkah). Seluruh blok berada pada satu surface (satu sub-tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.

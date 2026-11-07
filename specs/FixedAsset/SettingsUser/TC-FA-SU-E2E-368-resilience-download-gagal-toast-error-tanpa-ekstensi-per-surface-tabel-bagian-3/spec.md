@@ -41,7 +41,7 @@ coverage:
 
 ### TC-FA-SU-762: Download Tab System Log gagal: toast error tanpa ekstensi
 
-11. Buka Detail Budi Santoso > Tab System Log
+11. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab System Log
 12. Atur intercept respons unduhan menjadi 500
 13. Klik icon Download
 14. Pilih `Download as CSV`
@@ -79,7 +79,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; tiap TC memakai surface-nya sendiri sehingga kegagalan satu blok tidak mengubah state blok lain.
 - Mode FE+BE: kegagalan dipaksa dengan `Spectra.intercept()` parsial di atas backend nyata (bagian 6 konvensi), bukan seluruh API di-mock. Kelas b (resilience) dikumpulkan per jenis aksi baca atau unduh; kelas lain tidak ada di spec ini.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): mengatur dan melepas intercept respons unduhan serta menutup toast error persist, serta menutup modal Changelog.
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): mengatur dan melepas intercept respons unduhan serta menutup toast error persist, serta menutup modal Changelog. Langkah penghubung tambahan (S-03): Search nama `Budi Santoso` di User List supaya baris target tidak bergantung posisi halaman (langkah 11, 8b butir 13, R-16).
 - Pembagian TC lintas spec:
   - TC-FA-SU-732: format dan nama berkas TC-FA-SU-729 di spec 240, empty state, loading, dan error load TC-FA-SU-734 di spec 375, transformasi data TC-FA-SU-731 di spec 373.
   - TC-FA-SU-762: format dan nama berkas TC-FA-SU-759 di spec 250, empty state, loading, dan error load TC-FA-SU-764 di spec 364, transformasi data TC-FA-SU-761 di spec 373.

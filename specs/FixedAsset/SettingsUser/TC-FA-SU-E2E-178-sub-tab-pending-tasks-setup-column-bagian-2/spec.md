@@ -34,7 +34,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-528: Pin dan unpin Setup Column kelas Hideable
 
@@ -89,7 +89,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; membuka Setup Column, `[Save]`, dan unpin pada tiap putaran pin (mengosongkan kuota 3 pin untuk putaran berikutnya, S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13); membuka Setup Column, `[Save]`, dan unpin pada tiap putaran pin (mengosongkan kuota 3 pin untuk putaran berikutnya, S-09).
 - Verifikasi pin per putaran memuat daftar tiga kolom yang disebut utuh dalam satu butir.
 - Langkah berulang per baris tabel parameter: tabel "Putaran pin Pending Tasks" pada langkah 16 sampai 26 (2 iterasi).
 - Jumlah langkah: 45 tertulis, 56 dengan ekspansi iterasi.

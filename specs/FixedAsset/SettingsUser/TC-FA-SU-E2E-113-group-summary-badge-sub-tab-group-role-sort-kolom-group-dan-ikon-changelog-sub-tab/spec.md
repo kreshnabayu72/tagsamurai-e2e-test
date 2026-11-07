@@ -21,8 +21,9 @@ coverage:
 - Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor untuk pelaku kedua, dan pemulihan Pre-setup bersama lewat seed API.
 - Data Pre-setup: Client `FaUserMain` (#20, plan Enterprise, 25 pengguna). Nama pengguna dan nilai Pre-setup dirujuk lewat `Fixture.fa-settings-user.<kunci>` (berkas `fixtures/fa-settings-user.json` belum ada dan disediakan tim FE).
-- Spec ini hanya membaca data Pre-setup dan tidak mengubahnya; suite berjalan serial (`parallel: false`).
-- Data Pre-setup tambahan: pohon grup (#21), penugasan peran (#23), Changelog (#27), dan Group Role (#45). Pengguna yang dibuka: Wawan Setiawan dengan Group Role Manage user & role (0 grup), Manage purchase (1 grup), Manage files (2 grup), Manage group (3 grup), dan Manage asset & TAG (All Groups).
+- Spec ini mengubah data Pre-setup hanya lewat varian #45 (butir berikutnya); suite berjalan serial (`parallel: false`).
+- Data Pre-setup tambahan: pohon grup (#21), penugasan peran (#23), Changelog (#27), dan Group Role Wawan Setiawan varian `FaUserGR` (#45). Pengguna yang dibuka: Wawan Setiawan dengan Group Role Manage user & role (0 grup), Manage purchase (1 grup), Manage files (2 grup), Manage group (3 grup), dan Manage asset & TAG (All Groups).
+- Kemampuan seed API (disediakan tim BE/FE): menerapkan varian #45 pada Wawan Setiawan di hook `before` dan memulihkannya ke Pre-setup #23 di hook `after` (R-08). Efek pada Pre-setup: Group Role Wawan Setiawan berubah selama spec berjalan (Last Updated dan Modified By berubah).
 
 ## Test Steps
 

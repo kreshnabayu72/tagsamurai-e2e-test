@@ -31,7 +31,7 @@ coverage:
 
 ### TC-FA-SU-247: Turun tangga (Staff ke Monitoring & Report): dialog Change Transaction Role sebelum tersimpan
 
-1. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting, Transaction Disposal, dan Role Monitoring & Report
+1. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting, Transaction Disposal, dan Role Monitoring & Report
 2. Klik `[Submit]`
 3. Verifikasi dialog Title `Change Transaction Role` dengan Body bullet `• Mira Anggraini`, kalimat `This will change their role for Disposal to Monitoring & Report in:`, dan bullet `• Finance & Accounting (currently Staff)`
 4. Verifikasi dialog ditutup dengan pertanyaan `Are you sure you want to change it?`
@@ -55,7 +55,7 @@ coverage:
 ### TC-FA-SU-248: Konfirmasi turun tangga: seluruh Save tersimpan sekaligus dan log Remove disusul Assign per grup dengan Old Value masing-masing
 
 18. Catat jumlah entri `Remove` dan `Assign` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
-19. Buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting dan IT Infrastructure, Transaction Disposal, dan Role Monitoring & Report
+19. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting dan IT Infrastructure, Transaction Disposal, dan Role Monitoring & Report
 20. Klik `[Submit]`
 21. Verifikasi dialog hanya mendaftar grup yang turun tangga (Finance & Accounting), bukan grup baru (IT Infrastructure)
 22. Klik `[Change]`
@@ -76,6 +76,7 @@ coverage:
 - Langkah pola baca-log: langkah 16, 17 dan 26 sampai 29. Search `Mira Anggraini` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - TC-FA-SU-249: klausa "tidak ada entri log" pada aksi yang dibatalkan ditulis sebagai asersi jumlah dengan baseline (bagian 3 prinsip 13 butir g, S-12); modal tertutup dan tabel tanpa perubahan menjadi anchor positif.
 - Pre-setup #50 diterapkan hanya pada Mira Anggraini (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih IT Infrastructure (langkah 10 dan 19); Home Group Mira Anggraini dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 1 dan 19): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah 19 mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-247 butir d diperbarui: dialog hanya karena penurunan pada node yang sama. Data Mira Anggraini (Pre-setup #39) tidak memuat penugasan ancestor atau descendant Finance & Accounting pada Disposal, sehingga spec hanya mengasersi bahwa dialog memuat Finance & Accounting saja; kasus overlap ancestor dan descendant ada di E2E-415 dan E2E-417.
   - TC-FA-SU-247 butir c ("tidak ada perubahan tersimpan sebelum konfirmasi") tidak punya cara observasi langsung; spec mengasersi belum ada toast tersimpan saat dialog tampil.

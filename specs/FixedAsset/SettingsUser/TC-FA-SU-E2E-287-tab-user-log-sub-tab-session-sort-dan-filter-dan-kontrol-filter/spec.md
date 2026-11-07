@@ -35,7 +35,7 @@ coverage:
 
 ### TC-FA-SU-877: Sort kelas teks: Activity, Status, Note, IP Address, Device/Browser
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Session
+1. Ketik Search `Budi Santoso`, tekan Enter, klik nama Budi Santoso, lalu klik tab User Log, sub-tab Session
 2. Klik header Activity satu kali
 3. Verifikasi Activity klik 1 ascending (↑), lima baris pertama: S-1, S-2, S-3, S-4, S-5
 4. Klik header Activity kedua kali
@@ -82,6 +82,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
+- Langkah penghubung tambahan (S-03, R-16, bagian 8b butir 13): langkah 1 mengetik Search `Budi Santoso` lalu Enter supaya baris Budi Santoso tampil di User List (25 baris) sebelum nama diklik.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
 - Spec ini berjumlah 40 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi isi dan urutan baris seed tanpa Filter pembatas pada surface User Log yang dapat bertambah entri; spec mengikuti TC dan mengandalkan seed #30 yang disediakan ulang di hook `before` dan `after` (S-12, S-14). (2) TC-FA-SU-877: sort Activity dan Status tidak punya dua nilai distinct pada seed (Activity semua `Session`, Status semua `—`), sehingga urutan ascending, descending, dan default identik dan tidak membuktikan sort (S-11, S-14); spec mengikuti TC. Expected hanya mendaftar lima baris pertama dari sembilan baris. Urutan S-1 pada sort IP Address dan Device/Browser berada di tengah di kedua arah karena nilai kolomnya tidak tertulis di Pre-setup TC.

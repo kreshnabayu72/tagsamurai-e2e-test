@@ -28,7 +28,9 @@ coverage:
   | T0 + 30 detik | "Please wait 30 seconds before resending." |
   | T0 + 59 detik | "Please wait 1 seconds before resending." |
 
-- State global dan pemulihan: jam server dan jam browser dilepas pada langkah 23 dan dipulihkan hook `after`; cooldown Hana dipulihkan lewat seed API di hook `after`; tiga entri log Resend Hana bertambah permanen (audit trail). Log yang dibuat saat jam digeser dicari lewat selisih jumlah, bukan posisi teratas (S-12). Suite berjalan serial (`parallel: false`).
+- Kemampuan teknis (disediakan tim FE/BE): kemampuan baca jumlah entri `Resend Activation Email` Hana Kusuma pada Tab Changelog target (bagian 8b butir 10).
+- Baseline log: langkah 14 mencatat jumlah entri `Resend Activation Email` Hana Kusuma pada Tab Changelog target sesudah Hana dipulihkan tanpa cooldown lewat seed API (langkah 13) dan sebelum Resend pertama TC-FA-SU-139; langkah 26 memakai selisih terhadap baseline langkah 14, bukan baseline hook yang juga memuat entri blok TC-FA-SU-138 (S-12).
+- State global dan pemulihan: jam server dan jam browser dilepas pada langkah 24 dan dipulihkan hook `after`; cooldown Hana dipulihkan lewat seed API di hook `after`; tiga entri log Resend Hana bertambah permanen (audit trail). Log yang dibuat saat jam digeser dicari lewat selisih jumlah, bukan posisi teratas (S-12). Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
 
@@ -49,29 +51,30 @@ coverage:
 
 ### TC-FA-SU-139: Resend tepat setelah cooldown berakhir diproses sebagai pengiriman baru
 
-13. Pulihkan Hana Kusuma tanpa cooldown lewat seed API, lalu muat ulang halaman dan ketik Search `Hana`, tekan Enter
-14. Bekukan jam server dan jam browser bersamaan
-15. Klik ⋯ pada baris Hana Kusuma lalu `Resend Activation Email`
-16. Baca T0 dari waktu terbit pengiriman Resend Hana Kusuma
-17. Setel jam server dan jam browser ke T0 + 60 detik
-18. Verifikasi aksi `Resend Activation Email` pada baris Hana Kusuma Enabled pada detik ke-60
-19. Klik ⋯ pada baris Hana Kusuma lalu `Resend Activation Email`
-20. Verifikasi toast "Success, activation email has been sent."
-21. Klik ⋯ pada baris Hana Kusuma, hover `Resend Activation Email`
-22. Verifikasi tooltip "Please wait 60 seconds before resending." (cooldown dimulai kembali dari 60)
-23. Lepaskan pembekuan jam
-24. Buka Detail Hana Kusuma > Tab Changelog, muat ulang sampai entri tampil
-25. Verifikasi entri kedua `Resend Activation Email` tercatat: selisih 3 dari baseline hook (satu dari blok TC-FA-SU-138 dan dua dari blok ini)
+13. Pulihkan Hana Kusuma tanpa cooldown lewat seed API, lalu muat ulang halaman dan ganti isi kotak search dengan `Hana`, tekan Enter
+14. Catat jumlah entri `Resend Activation Email` Hana Kusuma pada Tab Changelog target sebagai baseline TC-FA-SU-139
+15. Bekukan jam server dan jam browser bersamaan
+16. Klik ⋯ pada baris Hana Kusuma lalu `Resend Activation Email`
+17. Baca T0 dari waktu terbit pengiriman Resend Hana Kusuma
+18. Setel jam server dan jam browser ke T0 + 60 detik
+19. Verifikasi aksi `Resend Activation Email` pada baris Hana Kusuma Enabled pada detik ke-60
+20. Klik ⋯ pada baris Hana Kusuma lalu `Resend Activation Email`
+21. Verifikasi toast "Success, activation email has been sent."
+22. Klik ⋯ pada baris Hana Kusuma, hover `Resend Activation Email`
+23. Verifikasi tooltip "Please wait 60 seconds before resending." (cooldown dimulai kembali dari 60)
+24. Lepaskan pembekuan jam
+25. Buka Detail Hana Kusuma > Tab Changelog, muat ulang sampai entri tampil
+26. Verifikasi entri kedua `Resend Activation Email` tercatat: selisih 2 dibanding baseline langkah 14 (dua dari blok ini)
 
 ## Notes
 
 - Sumber TC: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC untuk report per langkah.
 - Pembagian TC lintas spec: TC-FA-SU-140, 141, dan 142 (pengiriman berulang dan pemisahan cooldown) ada di spec 057.
-- Langkah penghubung tanpa awalan `Verifikasi`: langkah 1 dan 13 (Search untuk menemukan baris target, R-16; langkah 13 juga memulihkan Hana lewat seed API), langkah 2, 14, dan 23 (pembekuan dan pelepasan jam), langkah 4 dan 16 (membaca T0), langkah 10 dan 17 (menyetel jam), langkah 24 (membuka Tab Changelog).
-- Asersi tambahan di luar Expected TC: nilai tooltip T0 + 1 detik (59) dan T0 + 30 detik (30) diturunkan dari rumus 60 dikurangi offset yang disebut Expected b; TC menyebut titik waktu detik ke-1, ke-30, ke-59, dan setelah 60 detik pada Langkah Uji. Langkah 18 memeriksa tombol Enabled sebelum klik karena Expected a menyebut tombol Enabled pada detik ke-60.
-- Penghitungan langkah: langkah 7 sampai 8 berulang tiga kali (ekspansi 6 langkah), sehingga ekspansi spec ini 29 langkah (25 langkah nominal).
+- Langkah penghubung tanpa awalan `Verifikasi`: langkah 1 dan 13 (Search untuk menemukan baris target, R-16; langkah 13 juga memulihkan Hana lewat seed API), langkah 14 (mencatat baseline jumlah entri, S-12), langkah 2, 15, dan 24 (pembekuan dan pelepasan jam), langkah 4 dan 17 (membaca T0), langkah 10 dan 18 (menyetel jam), langkah 25 (membuka Tab Changelog).
+- Asersi tambahan di luar Expected TC: nilai tooltip T0 + 1 detik (59) dan T0 + 30 detik (30) diturunkan dari rumus 60 dikurangi offset yang disebut Expected b; TC menyebut titik waktu detik ke-1, ke-30, ke-59, dan setelah 60 detik pada Langkah Uji. Langkah 19 memeriksa tombol Enabled sebelum klik karena Expected a menyebut tombol Enabled pada detik ke-60.
+- Penghitungan langkah: langkah 7 sampai 8 berulang tiga kali (ekspansi 6 langkah), sehingga ekspansi spec ini 30 langkah (26 langkah nominal).
 - Temuan untuk QA:
   - Post Condition TC-FA-SU-138 ("satu entri `Resend Activation Email` tercatat pada tiga permukaan log") tidak punya langkah observasi dan tidak diasersi (S-01).
-  - Post Condition TC-FA-SU-139 butir tiga permukaan log hanya diasersi pada Tab Changelog target (langkah 24 sampai 25, sesuai Expected b "entri log kedua"); Tab System Log aktor dan Activity Log tidak disebut di Langkah Uji.
+  - Post Condition TC-FA-SU-139 butir tiga permukaan log hanya diasersi pada Tab Changelog target (langkah 25 sampai 26, sesuai Expected b "entri log kedua"); Tab System Log aktor dan Activity Log tidak disebut di Langkah Uji.
   - Tooltip "Please wait 1 seconds before resending." mempertahankan bentuk jamak "seconds" untuk nilai 1 (tanpa pluralisasi sesuai NC-02); spec mengikuti TC.

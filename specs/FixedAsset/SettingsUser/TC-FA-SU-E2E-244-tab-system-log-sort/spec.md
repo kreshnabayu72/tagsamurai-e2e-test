@@ -33,50 +33,52 @@ coverage:
 
 ### TC-FA-SU-742: Sort kelas teks (Action, Object, Name, Field)
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab System Log
-2. Klik header Action satu kali
-3. Verifikasi urutan lima baris pertama klik 1 ascending (↑): S-7, S-4, S-5, S-6, S-2
-4. Klik header Action kedua kali
-5. Verifikasi urutan lima baris pertama klik 2 descending (↓): S-1, S-3, S-2, S-4, S-5
-6. Klik header Action ketiga kali
-7. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: S-1, S-2, S-3, S-4, S-5
-8. Klik header Object satu kali
-9. Verifikasi urutan lima baris pertama klik 1 ascending (↑): S-6, S-2, S-3, S-5, S-4
-10. Klik header Object kedua kali
-11. Verifikasi urutan lima baris pertama klik 2 descending (↓): S-1, S-7, S-4, S-3, S-5
-12. Klik header Object ketiga kali
-13. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: S-1, S-2, S-3, S-4, S-5
-14. Klik header Name satu kali
-15. Verifikasi urutan lima baris pertama klik 1 ascending (↑): S-5, S-6, S-7, S-1, S-4
-16. Klik header Name kedua kali
-17. Verifikasi urutan lima baris pertama klik 2 descending (↓): S-2, S-3, S-4, S-1, S-5
-18. Klik header Name ketiga kali
-19. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: S-1, S-2, S-3, S-4, S-5
-20. Klik header Field satu kali
-21. Verifikasi urutan lima baris pertama klik 1 ascending (↑): S-4, S-1, S-2, S-6, S-5
-22. Klik header Field kedua kali
-23. Verifikasi urutan lima baris pertama klik 2 descending (↓): S-7, S-3, S-5, S-6, S-2
-24. Klik header Field ketiga kali
-25. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: S-1, S-2, S-3, S-4, S-5
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail pengguna Budi Santoso lalu klik tab System Log
+3. Klik header Action satu kali
+4. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: S-7, S-4, S-5, S-6, S-2
+5. Klik header Action kedua kali
+6. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: S-1, S-3, S-2, S-4, S-5
+7. Klik header Action ketiga kali
+8. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: S-1, S-2, S-3, S-4, S-5
+9. Klik header Object satu kali
+10. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: S-6, S-2, S-3, S-5, S-4
+11. Klik header Object kedua kali
+12. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: S-1, S-7, S-4, S-3, S-5
+13. Klik header Object ketiga kali
+14. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: S-1, S-2, S-3, S-4, S-5
+15. Klik header Name satu kali
+16. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: S-5, S-6, S-7, S-1, S-4
+17. Klik header Name kedua kali
+18. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: S-2, S-3, S-4, S-1, S-5
+19. Klik header Name ketiga kali
+20. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: S-1, S-2, S-3, S-4, S-5
+21. Klik header Field satu kali
+22. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: S-4, S-1, S-2, S-6, S-5
+23. Klik header Field kedua kali
+24. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: S-7, S-3, S-5, S-6, S-2
+25. Klik header Field ketiga kali
+26. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: S-1, S-2, S-3, S-4, S-5
 
 ### TC-FA-SU-743: Sort kelas mixed (Old Value, New Value)
 
-26. Klik header Old Value satu kali
-27. Verifikasi urutan lima baris pertama klik 1 ascending (↑): S-3, S-2, S-7, S-1, S-4
-28. Klik header Old Value kedua kali
-29. Verifikasi urutan lima baris pertama klik 2 descending (↓): S-1, S-4, S-5, S-6, S-7
-30. Klik header Old Value ketiga kali
-31. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: S-1, S-2, S-3, S-4, S-5
-32. Klik header New Value satu kali
-33. Verifikasi urutan lima baris pertama klik 1 ascending (↑): S-7, S-5, S-6, S-1, S-3
-34. Klik header New Value kedua kali
-35. Verifikasi urutan lima baris pertama klik 2 descending (↓): S-2, S-4, S-3, S-1, S-5
-36. Klik header New Value ketiga kali
-37. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: S-1, S-2, S-3, S-4, S-5
+27. Klik header Old Value satu kali
+28. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: S-3, S-2, S-7, S-1, S-4
+29. Klik header Old Value kedua kali
+30. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: S-1, S-4, S-5, S-6, S-7
+31. Klik header Old Value ketiga kali
+32. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: S-1, S-2, S-3, S-4, S-5
+33. Klik header New Value satu kali
+34. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: S-7, S-5, S-6, S-1, S-3
+35. Klik header New Value kedua kali
+36. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: S-2, S-4, S-3, S-1, S-5
+37. Klik header New Value ketiga kali
+38. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: S-1, S-2, S-3, S-4, S-5
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
-- Spec ini berjumlah 37 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): langkah 1 (Ketik Search `Budi Santoso` di User List untuk menemukan baris target sebelum membuka Detail, R-16, butir 8b.13); User List memuat 25 pengguna pada 3 halaman sehingga posisi baris tidak diandalkan.
+- Spec ini berjumlah 38 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #28 yang disediakan ulang di hook `before` dan `after` (S-14). Aksi spec lain terhadap Budi Santoso menambah entri System Log, sehingga penyediaan ulang seed menjadi syarat asersi urutan dan jumlah baris.

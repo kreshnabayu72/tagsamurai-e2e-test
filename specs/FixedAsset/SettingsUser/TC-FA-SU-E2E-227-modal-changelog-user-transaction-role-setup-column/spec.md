@@ -36,7 +36,7 @@ coverage:
 
 ### TC-FA-SU-690: Screening Overlay Column Visibility
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
 2. Klik header kolom Actions (⋯)
 3. Verifikasi overlay tampil dengan tooltip `Column Visibility` pada header
 4. Verifikasi daftar kolom berurutan Date, Action, Field, Old Value, New Value, Modified By dengan checkbox Hideable terpilih dan enabled serta drag handle
@@ -74,7 +74,7 @@ coverage:
 
 ### TC-FA-SU-693: Geser (drag reorder) kelas Hideable
 
-30. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
+30. Kembali ke User List, ganti isi kotak search dengan `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Transaction Role, lalu klik icon Changelog
 31. Buka Setup Column
 32. Untuk setiap baris pada tabel "Urutan Drag Setup Column" secara berurutan (langkah 33 sampai 34):
 33. Drag kolom pada baris tersebut satu posisi ke arah (atas atau bawah) yang tertulis pada tabel
@@ -91,6 +91,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1 dan 30) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
 - Langkah penghubung tambahan (S-03): langkah 15 (Hover checkbox kolom Modified By yang disabled) hanya memunculkan tooltip sebelum `Verifikasi` tooltip pada langkah 16 (bagian 8b butir 5); tidak ada asersi.
 - TC-FA-SU-694 (pin dan unpin modal Transaction Role) ada di spec 231.
 - Langkah berulang per kolom (idiom bagian 8b butir 7): langkah 13 sampai 14 dijalankan 5 kali, satu iterasi per kolom di tabel Prerequisites; langkah 19 dijalankan 5 kali, satu iterasi per kolom di tabel Prerequisites; langkah 22 dijalankan 5 kali, satu iterasi per kolom di tabel Prerequisites; langkah 33 sampai 34 dijalankan 6 kali, satu iterasi per kolom di tabel Prerequisites; langkah 37 dijalankan 6 kali, satu iterasi per kolom di tabel Prerequisites; langkah 40 dijalankan 6 kali, satu iterasi per kolom di tabel Prerequisites.

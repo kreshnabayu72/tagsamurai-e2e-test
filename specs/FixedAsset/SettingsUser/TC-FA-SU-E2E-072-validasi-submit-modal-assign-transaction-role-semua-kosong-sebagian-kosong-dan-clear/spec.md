@@ -30,7 +30,7 @@ coverage:
 
 ### TC-FA-SU-239: Submit dengan semua field kosong: pesan wajib isi muncul inline di bawah tiap field
 
-1. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu klik `[Submit]` tanpa mengisi apa pun
+1. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu klik `[Submit]` tanpa mengisi apa pun
 2. Verifikasi pesan "Group must not be empty" di bawah field Group
 3. Verifikasi pesan "Transaction must not be empty" di bawah field Transaction
 4. Verifikasi pesan "Role must not be empty" di bawah field Role
@@ -67,6 +67,7 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan.
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 7, 13 dan 24. `[Clear Field]` antar TC membersihkan error inline yang identik (R-12, S-09); modal ditutup tanpa dialog karena kosong.
 - Modal Assign Transaction Role dibuka sekali di awal dan dipakai ketiga TC (halaman yang sama dipakai berulang, bagian 3 prinsip 13).
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-241 langkah 3 dan 4 saling bertentangan: field sudah terisi lalu `[Submit]` "kosong" dipakai untuk memunculkan error; spec memicu error dengan `[Submit]` kosong terlebih dahulu, lalu mengisi field, mencentang Stay, dan `[Clear Field]`. Pesan error pada field terisi dapat sudah hilang saat `[Clear Field]` diklik sehingga klausa "pesan error hilang" tidak teruji kuat.
   - TC-FA-SU-239 butir b ("tidak ada request simpan") tidak menyebut cara observasi; spec menuliskannya sebagai Verifikasi sesuai teks TC.

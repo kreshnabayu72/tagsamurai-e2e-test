@@ -54,16 +54,17 @@ coverage:
 19. Ganti isi kotak search dengan `Gita Permata {runId}-129`, tekan Enter
 20. Verifikasi Temporary Until baris `Gita Permata {runId}-129` `—`
 21. Klik ⋯ pada baris `Gita Permata {runId}-129`, klik `Detail`
-22. Verifikasi field Temporary Until di General Information Hidden tanpa menyisakan sel kosong
-23. Klik breadcrumb `User`
-24. Klik menu Settings > User pada sidebar
-25. Ketik Search `Fajar Nugroho`, tekan Enter
-26. Klik ⋯ pada baris Fajar Nugroho, klik `Detail`
-27. Verifikasi field Temporary Until di General Information menampilkan `Temporary until 31/12/26`
+22. Verifikasi General Information Detail `Gita Permata {runId}-129` tampil
+23. Verifikasi field Temporary Until di General Information Hidden tanpa menyisakan sel kosong
+24. Klik breadcrumb `User`
+25. Klik menu Settings > User pada sidebar
+26. Ketik Search `Fajar Nugroho`, tekan Enter
+27. Klik ⋯ pada baris Fajar Nugroho, klik `Detail`
+28. Verifikasi field Temporary Until di General Information menampilkan `Temporary until 31/12/26`
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 1, 17, 19, 25 (Search untuk menemukan baris target, R-16), 4 (tunggu aksi selesai, 8b butir 8), 10, 14, 24 (memuat ulang atau mereset Search), serta 15 dan 16 (menampilkan kolom curated lewat Setup Column).
+- Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 1, 17, 19, 26 (Search untuk menemukan baris target, R-16), 4 (tunggu aksi selesai, 8b butir 8), 10, 14, 25 (memuat ulang atau mereset Search), serta 15 dan 16 (menampilkan kolom curated lewat Setup Column). Langkah 22 adalah anchor bahwa General Information Detail termuat sebelum asersi absence field Temporary Until pada langkah 23 (bagian 8b butir 2).
 - TC-FA-SU-369 dan TC-FA-SU-370 ada di spec 108.
 - Temuan untuk QA (S-15): (1) Post Condition TC-FA-SU-371 (Gita Permata Inactive dengan Modified By aktor dan Last Updated terbaru; pengguna baru Modified By `System`) tidak punya langkah observasi tersendiri selain Expected a sampai c, sehingga tidak diasersi terpisah. (2) TC-FA-SU-371 memakai Gita Permata Pre-setup; spec memakai pengguna milik spec bernama sama dengan suffix (S-06), dan teks dialog Deactivate diasersi di spec 029. (3) TC-FA-SU-372 menyebut pengguna non-temporary Gita Permata; spec memakai pengguna milik spec yang non-temporary.

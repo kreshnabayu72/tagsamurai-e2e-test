@@ -34,7 +34,7 @@ coverage:
 
 3. Verifikasi empty state `No assets tagged` tampil sebelum Filter Panel dibuka
 4. Klik icon Filter di toolbar Drawer
-5. Verifikasi Filter Panel terbuka dengan field `Asset Name`, `Asset ID`, `TAG`, `Brand`, `Model/Type`, `Measurement`, `Category`, `Group`, `Label`, `Status`, `Transactional Policy`, `Last Scanned`, `Asset Value (Commercial)`, `Asset Value (Fiscal)`, `Warranty Expiry`, dan `Last Updated`
+5. Verifikasi Filter Panel terbuka dengan field `Asset Name`, `TAG`, `Brand`, `Model/Type`, `Measurement`, `Category`, `Group`, `Label`, `Status`, `Transactional Policy`, `Last Scanned`, `Asset Value (Commercial)`, `Asset Value (Fiscal)`, `Warranty Expiry`, dan `Last Updated`
 6. Buka dropdown `Asset Name`
 7. Verifikasi dropdown `Asset Name` menampilkan teks `No options available`
 8. Tutup dropdown lalu buka dropdown `Brand`
@@ -57,6 +57,3 @@ coverage:
 - TC-FA-LBL-532 dilanjutkan pada Drawer yang sama dengan TC-FA-LBL-335 (satu pembukaan; TC tanpa perubahan state data). `Verifikasi` empty state sebelum Filter Panel dibuka adalah Expected TC-FA-LBL-532 butir a ('Setelah langkah 1'), diasersi pada keadaan yang sama dengan TC-FA-LBL-335.
 - Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): menutup dropdown dan Drawer di langkah terakhir.
 - Pembagian TC lintas spec: TC-FA-LBL-327 sampai TC-FA-LBL-331 ada di spec 087; TC-FA-LBL-334, TC-FA-LBL-336, TC-FA-LBL-373, TC-FA-LBL-374, dan TC-FA-LBL-509 ada di spec 088.
-- Temuan untuk QA:
-  - Expected TC-FA-LBL-532 butir b memuat field `Asset ID` pada Filter Panel, sedangkan TC-FA-LBL-346 (spec 094) tidak memuat `Asset ID` dan TC-FA-LBL-575 (spec 095) menyatakan `Asset ID` tidak Filterable; spec ini mengikuti Expected TC-FA-LBL-532 apa adanya.
-  - Daftar field TC-FA-LBL-532 butir b juga berbeda urutan dari TC-FA-LBL-346 (`Asset ID` dan `Category` pada posisi berbeda); spec mengikuti penulisan TC-FA-LBL-532.

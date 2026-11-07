@@ -38,7 +38,7 @@ coverage:
 ### TC-FA-SU-270: Select All dan Selection Limit pada Sub-tab Transaction Role: auto-cap, toast, dan checkbox Disabled setelah limit
 
 1. Ubah Selection Limit tenant FaUserMain menjadi 5 lewat Principal Automation
-2. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role lalu klik Select All
+2. Ketik Search `Yuda Pratama`, tekan Enter, lalu buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role lalu klik Select All
 3. Verifikasi Select All hanya menghitung baris yang dapat dihapus aktor dan tombol berganti `[Unselect All]`
 4. Verifikasi 5 baris pertama terpilih (dipotong ke Selection Limit)
 5. Verifikasi toast "Error, only the first 5 of 7 rows were selected. Narrow your filter to include the rest."
@@ -50,39 +50,42 @@ coverage:
 ### TC-FA-SU-274: Remove baris pola Transaction Role target Total Control menyimpang dari pola: dialog Auto-Revert D-05a, tier lepas
 
 10. Ganti akun: logout lalu login sebagai Default User Ahmad Dahlan
-11. Buka Detail Lina Marlina > Tab Role > Sub-tab Transaction Role
-12. Klik ⋯ pada baris Transfer × Approver pada Finance & Accounting lalu klik `Remove`
-13. Verifikasi dialog Auto-Revert D-05a (bukan dialog Remove Transaction Role) dengan Title `Remove Total Control`
-14. Verifikasi Body bullet `• Lina Marlina`
-15. Verifikasi kalimat `This change will remove this user's Total Control access level. Their other role assignments will remain as they are.`
-16. Verifikasi penutup `Are you sure you want to remove it?`
-17. Verifikasi tombol `[Cancel]` dan `[Remove]` tampil
-18. Klik `[Remove]`
-19. Verifikasi toast sukses auto-revert (T-06a) tampil
-20. Verifikasi baris Transfer × Approver pada Finance & Accounting terhapus
-21. Verifikasi tingkat akses Total Control Lina Marlina terlepas
-22. Verifikasi banner `This user has Total Control access.` hilang di Sub-tab Transaction Role
-23. Klik Sub-tab Global Role
-24. Verifikasi banner `This user has Total Control access.` hilang di Sub-tab Global Role
-25. Klik Sub-tab Group Role
-26. Verifikasi banner `This user has Total Control access.` hilang di Sub-tab Group Role
-27. Verifikasi baris Transaction Role lain milik Lina Marlina tidak direset
-28. Pulihkan Transaction Role dan tier Total Control Lina Marlina ke Pre-setup #23 dan #39 lewat seed API
+11. Buka Settings > User dari sidebar
+12. Ketik Search `Lina Marlina`, tekan Enter, lalu buka Detail Lina Marlina > Tab Role > Sub-tab Transaction Role
+13. Klik ⋯ pada baris Transfer × Approver pada Finance & Accounting lalu klik `Remove`
+14. Verifikasi dialog Auto-Revert D-05a (bukan dialog Remove Transaction Role) dengan Title `Remove Total Control`
+15. Verifikasi Body bullet `• Lina Marlina`
+16. Verifikasi kalimat `This change will remove this user's Total Control access level. Their other role assignments will remain as they are.`
+17. Verifikasi penutup `Are you sure you want to remove it?`
+18. Verifikasi tombol `[Cancel]` dan `[Remove]` tampil
+19. Klik `[Remove]`
+20. Verifikasi toast sukses auto-revert (T-06a) tampil
+21. Verifikasi baris Transfer × Approver pada Finance & Accounting terhapus
+22. Verifikasi tingkat akses Total Control Lina Marlina terlepas
+23. Verifikasi banner `This user has Total Control access.` hilang di Sub-tab Transaction Role
+24. Klik Sub-tab Global Role
+25. Verifikasi banner `This user has Total Control access.` hilang di Sub-tab Global Role
+26. Klik Sub-tab Group Role
+27. Verifikasi banner `This user has Total Control access.` hilang di Sub-tab Group Role
+28. Verifikasi baris Transaction Role lain milik Lina Marlina tidak direset
+29. Pulihkan Transaction Role dan tier Total Control Lina Marlina ke Pre-setup #23 dan #39 lewat seed API
 
 ### TC-FA-SU-275: Read Only: kontrol tulis Sub-tab Transaction Role Hidden dan kolom checkbox tidak dirender
 
-29. Ganti akun: logout lalu login sebagai Read Only Citra Lestari
-30. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role
-31. Verifikasi Search, Filter, dan tabel tetap tampil
-32. Verifikasi tombol `[+ Assign]`, aksi `[Assign Group]`, `Remove`, dan `[Bulk Remove]` Hidden
-33. Verifikasi kolom checkbox baris dan header tidak dirender
+30. Ganti akun: logout lalu login sebagai Read Only Citra Lestari
+31. Buka Settings > User dari sidebar
+32. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role
+33. Verifikasi Search, Filter, dan tabel tetap tampil
+34. Verifikasi tombol `[+ Assign]`, aksi `[Assign Group]`, `Remove`, dan `[Bulk Remove]` Hidden
+35. Verifikasi kolom checkbox baris dan header tidak dirender
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan.
 - Spec ditulis per blok role karena ganti akun menuntut langkah eksplisit (bagian 3a, `[KEPUTUSAN 2026-10-30]`); judulnya tanpa kata Positif atau Negatif.
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 8, 9, 23, 25 dan 28. Selection Limit dipulihkan segera setelah TC-FA-SU-270 karena TC berikutnya tidak membutuhkannya (S-09).
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 8, 9, 11, 24, 26, 29 dan 31 (langkah 11 dan 31 membuka Settings > User dari sidebar sesudah ganti akun, S-14). Selection Limit dipulihkan segera setelah TC-FA-SU-270 karena TC berikutnya tidak membutuhkannya (S-09).
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 2, 12 dan 32): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13).
 - Temuan untuk QA:
   - TC-FA-SU-270 langkah 1 menyebut "tenant `FaUserMain` dengan Selection Limit 5" sedangkan Pre-setup #36 mendefinisikan `FaUserSel` (limit 100) dan varian `FaUserMain` (limit 5) tanpa menyebut cara menurunkan limit; spec menulisnya sebagai kemampuan "disediakan tim FE" lewat Principal Automation.
   - TC-FA-SU-274 langkah 1 menyebut Ahmad Dahlan "Default User, Total Control selain Lina Marlina" sedangkan Pre-setup #2 menyebut Default User; spec memakai Default User. Copy Body dialog D-05a varian Role Transaksi bertanda "copy usulan, perlu persetujuan PM" (PRD 12 #1 `settings-role-permission`); spec mengasersi teks apa adanya.

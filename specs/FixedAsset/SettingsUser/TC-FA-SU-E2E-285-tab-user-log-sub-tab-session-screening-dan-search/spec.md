@@ -37,7 +37,7 @@ coverage:
 
 ### TC-FA-SU-871: Screening Table Tools, kolom, dan default sort
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Session
+1. Ketik Search `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Session
 2. Verifikasi Table Tools `Search`, `Filter`, `Download` tampil rata kanan
 3. Hover icon Search
 4. Verifikasi tooltip `Search`
@@ -89,6 +89,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung pencarian baris (S-03, R-16, bagian 8b butir 13): langkah 1 mencari pengguna lewat Search nama persis `Budi Santoso` (nama Pre-setup) sebelum membuka Detail, karena User List dapat memuat lebih dari satu halaman (25 pengguna, 3 halaman) sehingga spec tidak mengandalkan posisi baris di halaman.
 - Langkah 15 (`Verifikasi sedikitnya satu baris tampil pada tabel`) adalah asersi tambahan di luar Expected TC dan dicatat di sini (S-03): pembanding generik sebelum asersi universal "setiap baris" pada kolom Column Visibility (bagian 8b butir 2).
 - Langkah 20 (`Klik dropdown page size`) dan langkah 22 (`Tekan Esc untuk menutup dropdown page size`) mengikuti Langkah Uji TC (klik dropdown page size, amati pilihan, tutup dengan Esc) sehingga pilihan page size diasersi saat dropdown terbuka.
 - Spec ini berjumlah 41 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.

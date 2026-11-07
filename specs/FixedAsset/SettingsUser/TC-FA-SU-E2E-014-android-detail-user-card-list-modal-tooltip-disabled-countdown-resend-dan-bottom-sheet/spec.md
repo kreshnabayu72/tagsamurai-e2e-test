@@ -26,7 +26,7 @@ coverage:
 - Data Dinamis: tidak ada.
 - Kemampuan teknis: gestur ketuk dan geser pada perangkat Android; pengaturan jam server dan jam perangkat bersama (countdown UI berjalan di jam klien, bagian 6 konvensi) untuk langkah 58, 60, dan 62 (T0 dibaca dari waktu terbit Resend, jam diset absolut ke T0 + 59 dan T0 + 60 detik, bagian 8b butir 3) serta pemulihannya pada langkah 69 dan di hook `after`; baseline cooldown Resend Hana Kusuma dan Indra Wijaya belum berjalan (dibaca lewat kemampuan tim FE/BE). Resend mengirim email sungguhan ke pengguna Pre-setup; efek email tidak diasersi.
 - State global: jam server dan jam perangkat; cooldown Resend Hana Kusuma dan Indra Wijaya. Dipulihkan langkah 69 dan hook `after`. Suite berjalan serial (`parallel: false`).
-- Tabel parameter "Tab Detail User" (dipakai langkah 22 dan 23): `Role`, `Responsibilities`, `Non-Login User`, `Changelog`, `System Log`, `Transaction Admin Log`, `User Log`.
+- Tabel parameter "Tab Detail User" (dipakai langkah 22 sampai 26): `Role`, `Responsibilities`, `Non-Login User`, `Changelog`, `System Log`, `Transaction Admin Log`, `User Log`.
 
 ## Test Steps
 
@@ -65,10 +65,10 @@ coverage:
 
 ### TC-FA-SU-45: Android: tabel di Detail User menjadi Card List dan toolbar tab masuk bottom sheet
 
-22. Untuk setiap baris tabel "Tab Detail User" (langkah 22 sampai 23): ketuk tab pada baris itu
+22. Untuk setiap baris tabel "Tab Detail User" (langkah 22 sampai 26): ketuk tab pada baris itu
 23. Verifikasi tabel pada tab itu bertransformasi menjadi Card List
 24. Ketuk `[⋯]` toolbar
-25. Verifikasi Search, Filter, Download, dan Changelog tiap tab atau sub-tab masuk ke bottom sheet `[⋯]` seperti User List
+25. Verifikasi Search, Filter, Download, dan Changelog tab atau sub-tab itu masuk ke bottom sheet `[⋯]` seperti User List
 26. Tutup bottom sheet
 
 ### TC-FA-SU-46 dan TC-FA-SU-49: modal dan popup pada Tab Role Detail User
@@ -124,10 +124,10 @@ coverage:
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Seluruh TC bertanda `Manual Only (b)` tetap masuk spec (bagian 2 konvensi); kebutuhan teknisnya ada di `## Prerequisites`.
 - Subjudul `###` memetakan langkah ke id TC granular. Urutan blok di spec mengikuti posisi layar (User List, Detail Budi Santoso, lalu Detail Hana Kusuma dan Indra Wijaya) supaya navigasi tidak berulang (S-10): TC-FA-SU-47, bagian User List dari TC-FA-SU-49 dan TC-FA-SU-46, TC-FA-SU-44, TC-FA-SU-45, bagian Tab Role dari TC-FA-SU-46 dan TC-FA-SU-49, lalu TC-FA-SU-48.
-- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8, 12 (menutup popup atau modal, S-09), langkah 26 (menutup bottom sheet), langkah 43, 44, 50, 51, dan 54 (menutup modal atau popup tanpa mengubah data; tidak ada form yang dirty), langkah 55 dan 65 (kembali ke User List), langkah 58 (membaca T0 dari waktu terbit Resend, bagian 8b butir 3), langkah 60 dan 62 (menyetel jam absolut), langkah 69 (memulihkan jam, S-09). Langkah 22 dan 23 diulang untuk tujuh tab tabel parameter (ekspansi 14 langkah dari 2 langkah nominal, bagian 8b butir 7).
+- Langkah penghubung (aksi tanpa `Verifikasi`): langkah 8, 12 (menutup popup atau modal, S-09), langkah 26 (menutup bottom sheet), langkah 43, 44, 50, 51, dan 54 (menutup modal atau popup tanpa mengubah data; tidak ada form yang dirty), langkah 55 dan 65 (kembali ke User List), langkah 58 (membaca T0 dari waktu terbit Resend, bagian 8b butir 3), langkah 60 dan 62 (menyetel jam absolut), langkah 69 (memulihkan jam, S-09). Langkah 22 sampai 26 diulang untuk tujuh tab tabel parameter (ekspansi 35 langkah dari 5 langkah nominal, bagian 8b butir 7), sehingga bottom sheet `[⋯]` toolbar diasersi pada tiap tab.
 - Langkah 4 (absence toast) diletakkan segera sesudah tooltip tampil (langkah 3) dan sebelum tooltip hilang (langkah 5) menurut bagian 8b butir 11; tooltip pada langkah 3 menjadi anchor positif.
 - Langkah 60 dan 62: countdown UI berjalan di jam klien sehingga jam server dan jam perangkat diatur bersama (bagian 6 konvensi); langkah 61 membuktikan label menghitung mundur dari `(60s)` ke `(1s)`.
-- Spec melewati sekitar 35 langkah (69 langkah nominal, 81 dengan ekspansi). Seluruhnya satu kelas (tampilan Android, satu perangkat, tanpa mengubah data bisnis; cooldown Resend adalah state yang dipulihkan), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain.
+- Spec melewati sekitar 35 langkah (69 langkah nominal, 99 dengan ekspansi). Seluruhnya satu kelas (tampilan Android, satu perangkat, tanpa mengubah data bisnis; cooldown Resend adalah state yang dipulihkan), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain.
 - Pembagian TC lintas spec: kartu User List, row action, toolbar, seleksi, dan drawer Group Tree (TC-FA-SU-39 sampai 43) ada di spec 013.
 - Temuan untuk QA:
   - TC-FA-SU-49 Expected a menyebut dialog konfirmasi (termasuk Auto-Revert), dialog Downgrade, dan dialog Remove Transaction Role sebagai bottom sheet, dan Expected b menyebut popup Assign Group Transaction Role sebagai full-screen modal; Langkah Uji TC tidak memicu surface itu. Spec hanya mengasersi surface yang dipicu Langkah Uji (Popup Role Count, popup Assign Group Role, Select Group, modal Assign Transaction Role, popup tree Group, Select Home Group).

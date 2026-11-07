@@ -34,7 +34,7 @@ coverage:
 
 ### TC-FA-SU-626: Screening Overlay Column Visibility
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
 2. Klik header kolom Actions (⋯)
 3. Verifikasi overlay tampil dengan tooltip `Column Visibility` pada header
 4. Verifikasi daftar kolom berurutan Date, Action, Role Name, Field, Old Value, New Value, Modified By dengan checkbox Hideable terpilih dan enabled serta drag handle
@@ -74,7 +74,8 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
 - Langkah penghubung tambahan (S-03): langkah 15 (Hover checkbox `Modified By`) mendahului `Verifikasi` tooltip (TC-FA-SU-628 Expected g, bagian 8b butir 5).
 - Langkah berulang per kolom (idiom bagian 8b butir 7): langkah 13 sampai 14 dijalankan 6 kali, satu iterasi per kolom di tabel Prerequisites; langkah 19 dijalankan 6 kali, satu iterasi per kolom di tabel Prerequisites; langkah 22 dijalankan 6 kali, satu iterasi per kolom di tabel Prerequisites.
 - Spec ini berjumlah 49 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
-- Temuan untuk QA (S-15): (1) TC tidak menyebut cara menguji kolom yang menjadi satu-satunya kolom visible; spec menguji lima kolom pertama bersamaan lalu kolom terakhir terpisah setelah kolom lain dicentang kembali. Post Condition preferensi kolom tersimpan per perangkat tidak punya langkah observasi dan tidak diasersi.
+- Temuan untuk QA (S-15): (1) TC tidak menyebut cara menguji kolom yang menjadi satu-satunya kolom visible; spec menguji enam kolom pertama bersamaan lalu kolom terakhir terpisah setelah kolom lain dicentang kembali. Post Condition preferensi kolom tersimpan per perangkat tidak punya langkah observasi dan tidak diasersi.

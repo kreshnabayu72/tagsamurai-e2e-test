@@ -31,7 +31,7 @@ coverage:
 ### TC-FA-SU-267: Bulk Remove beberapa baris: counter, dialog plural, toast token Role, dan log per baris
 
 1. Catat jumlah entri `Remove` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
-2. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role dan centang dua baris (Disposal × Staff dan Borrowing & Assignment × Approver)
+2. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role dan centang dua baris (Disposal × Staff dan Borrowing & Assignment × Approver)
 3. Verifikasi counter `2 Transaction Roles selected` dan `[Bulk Remove]` tampil di Bulk Actions Bar
 4. Klik `[Bulk Remove]`
 5. Verifikasi dialog Title `Remove Transaction Roles` dengan Body `• Mira Anggraini`, `This user will lose the selected transaction roles.`, dan `Are you sure you want to remove them?`
@@ -43,7 +43,7 @@ coverage:
 ### TC-FA-SU-268: Bulk Remove seleksi satu baris memakai dialog dan counter singular
 
 10. Pulihkan Transaction Role Mira Anggraini ke Pre-setup #39 lewat seed API
-11. Buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role dan centang satu baris (Disposal × Staff)
+11. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role dan centang satu baris (Disposal × Staff)
 12. Klik `[Bulk Remove]`
 13. Verifikasi counter `1 Transaction Role selected`
 14. Verifikasi dialog Title `Remove Transaction Role` (singular) dengan `Are you sure you want to remove it?`
@@ -70,6 +70,7 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 10, 15 dan 16. Pemulihan lewat seed API memulihkan kedua baris yang dihapus TC-FA-SU-267 sebelum TC-FA-SU-268 dan 1048 mengandalkannya (S-09); `[Cancel]` pada TC-FA-SU-268 menutup dialog sebelum TC-FA-SU-1048 memakai seleksi yang sama; baseline log mengikuti S-12.
 - Langkah pola baca-log: langkah 8, 9, 25 dan 26. Search `Mira Anggraini` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - TC-FA-SU-1048: klausa "tidak ada entri log" pada aksi yang dibatalkan ditulis sebagai asersi jumlah dengan baseline (bagian 3 prinsip 13 butir g, S-12); dialog menutup dan seleksi dipertahankan menjadi anchor positif.
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 2 dan 11): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah 11 mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-267 butir c memuat dua kasus toast (Role berbeda dan Role sama, contoh dua baris Approver) tetapi Data Uji hanya memuat dua baris dengan Role berbeda; kasus Role sama tidak diasersi.
   - TC-FA-SU-268 tidak menyebut hasil konfirmasi; dialog ditutup dengan `[Cancel]` sebagai langkah penghubung sehingga Post Condition "baris terpilih tidak ada setelah dikonfirmasi" tidak diasersi. Post Condition TC-FA-SU-267 (tiga permukaan log, Settings > Role & Permission) tidak punya langkah observasi tambahan di TC dan tidak diasersi.

@@ -32,43 +32,43 @@ coverage:
 
 ### TC-FA-SU-647: Sort kelas teks (Action, Field)
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Group Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Group Role, lalu klik icon Changelog
 2. Klik header Action satu kali
-3. Verifikasi urutan baris klik 1 ascending (↑): GR-2, GR-4, GR-1, GR-3
+3. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: GR-2, GR-4, GR-1, GR-3
 4. Klik header Action kedua kali
-5. Verifikasi urutan baris klik 2 descending (↓): GR-1, GR-3, GR-4, GR-2
+5. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: GR-1, GR-3, GR-4, GR-2
 6. Klik header Action ketiga kali
-7. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+7. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: GR-1, GR-2, GR-3, GR-4
 8. Klik header Field satu kali
-9. Verifikasi urutan baris klik 1 ascending (↑): GR-3, GR-1, GR-2, GR-4
+9. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: GR-3, GR-1, GR-2, GR-4
 10. Klik header Field kedua kali
-11. Verifikasi urutan baris klik 2 descending (↓): GR-4, GR-2, GR-1, GR-3
+11. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: GR-4, GR-2, GR-1, GR-3
 12. Klik header Field ketiga kali
-13. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+13. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: GR-1, GR-2, GR-3, GR-4
 
 ### TC-FA-SU-648: Sort kelas mixed (Old Value, New Value)
 
 14. Klik header Old Value satu kali
-15. Verifikasi urutan baris klik 1 ascending (↑): GR-4, GR-1, GR-3, GR-2
+15. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: GR-4, GR-1, GR-3, GR-2
 16. Klik header Old Value kedua kali
-17. Verifikasi urutan baris klik 2 descending (↓): GR-2, GR-1, GR-3, GR-4
+17. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: GR-2, GR-1, GR-3, GR-4
 18. Klik header Old Value ketiga kali
-19. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+19. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: GR-1, GR-2, GR-3, GR-4
 20. Klik header New Value satu kali
-21. Verifikasi urutan baris klik 1 ascending (↑): GR-2, GR-4, GR-1, GR-3
+21. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: GR-2, GR-4, GR-1, GR-3
 22. Klik header New Value kedua kali
-23. Verifikasi urutan baris klik 2 descending (↓): GR-1, GR-3, GR-4, GR-2
+23. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: GR-1, GR-3, GR-4, GR-2
 24. Klik header New Value ketiga kali
-25. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+25. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: GR-1, GR-2, GR-3, GR-4
 
 ### TC-FA-SU-649: Sort kelas user (Modified By)
 
 26. Klik header Modified By satu kali
-27. Verifikasi urutan baris klik 1 ascending (↑): GR-2, GR-3, GR-4, GR-1
+27. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: GR-2, GR-3, GR-4, GR-1
 28. Klik header Modified By kedua kali
-29. Verifikasi urutan baris klik 2 descending (↓): GR-1, GR-2, GR-3, GR-4
+29. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: GR-1, GR-2, GR-3, GR-4
 30. Klik header Modified By ketiga kali
-31. Verifikasi urutan baris klik 3 netral kembali ke default: GR-1, GR-2, GR-3, GR-4
+31. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: GR-1, GR-2, GR-3, GR-4
 
 ### TC-FA-SU-650: Screening Filter Panel
 
@@ -88,5 +88,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
+- Asersi baris seed pada Modal Changelog (audit trail permanen) ditulis relatif terhadap baris seed: urutan relatif dan jumlah baris seed, dengan baris non-seed yang memenuhi kriteria boleh menyisip atau ikut tampil (S-14), mengikuti kualifier Expected TC sumber.
 - Spec ini berjumlah 42 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). (2) Urutan beberapa sort tidak simetris: Date ascending (GR-3, GR-4, GR-2, GR-1) bukan kebalikan urutan default descending (GR-1, GR-2, GR-3, GR-4), dan Old Value descending bukan kebalikan ascending. TC tidak menyebut aturan tie-break untuk nilai seri (Date berketelitian menit); spec mengikuti urutan TC dan urutan itu bergantung pada seed yang disediakan tim FE/BE.

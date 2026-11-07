@@ -36,7 +36,7 @@ coverage:
 
 ### TC-FA-SU-889: Cakupan baris dan kolom Download: Search, Filter, Sort, dan Column Visibility
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Session
+1. Ketik Search `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Session
 2. Klik icon Download, pilih `Download as CSV`
 3. Verifikasi berkas memuat seluruh baris (bukan hanya halaman aktif)
 4. Verifikasi urutan baris pada berkas mengikuti sort aktif
@@ -65,5 +65,6 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung pencarian baris (S-03, R-16, bagian 8b butir 13): langkah 1 mencari pengguna lewat Search nama persis `Budi Santoso` (nama Pre-setup) sebelum membuka Detail, karena User List dapat memuat lebih dari satu halaman (25 pengguna, 3 halaman) sehingga spec tidak mengandalkan posisi baris di halaman.
 - Panel Filter tetap terbuka sesudah `[Apply]` dan baru tertutup bila icon Filter diklik (keputusan produk); karena itu `[Clear Field]` + `[Apply]` dijalankan tanpa mengklik icon Filter lagi. Langkah 11 (`Klik icon Filter untuk menutup panel`) adalah langkah penghubung yang menutup panel sebelum blok berikutnya (S-03, S-09).
 - Temuan untuk QA (S-15): (1) TC-FA-SU-889: Expected a menyebut seluruh baris tanpa jumlah; spec tidak menambah angka. Search `ended` dan Filter Date 12/07/26 sampai 13/07/26 dipilih spec karena TC tidak menyebut nilainya. Isi berkas adalah kemampuan baca berkas dari tim FE.

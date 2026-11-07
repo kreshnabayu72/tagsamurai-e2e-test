@@ -41,7 +41,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-545: Sort kelas teks (Name, Email, Division)
 
@@ -73,7 +73,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; `←` pada kotak Search sesudah TC-FA-SU-1033 (S-09). TC-FA-SU-1033 ditaruh terakhir karena menambah kolom curated Shift.
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` di User List supaya baris target tidak bergantung posisi halaman (langkah 1, 8b butir 13, R-16) lalu membuka Detail Budi Santoso; `←` pada kotak Search sesudah TC-FA-SU-1033 (S-09). TC-FA-SU-1033 ditaruh terakhir karena menambah kolom curated Shift.
 - Langkah berulang per baris tabel parameter: tabel "Sort kelas teks" pada langkah 2 sampai 7 (3 iterasi); tabel "Sort kelas teks-e" pada langkah 8 sampai 13 (2 iterasi).
 - Jumlah langkah: 19 tertulis, 37 dengan ekspansi iterasi.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (37 langkah). Seluruh blok berada pada satu surface (satu tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7).

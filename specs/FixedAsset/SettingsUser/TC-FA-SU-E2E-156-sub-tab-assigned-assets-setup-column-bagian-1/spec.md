@@ -59,7 +59,7 @@ Urutan awal: `Photo`, `Name`, `Asset ID`, `Transaction ID`, `Brand`, `Model / Ty
 
 ### TC-FA-SU-459: Ceklis dan unceklis Setup Column Sub-tab Assigned Assets kelas Hideable (default tampil)
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Klik header kolom Actions (⋯)
 4. Klik `Setup Column...`
@@ -107,7 +107,7 @@ Urutan awal: `Photo`, `Name`, `Asset ID`, `Transaction ID`, `Brand`, `Model / Ty
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Langkah 5 sampai 6, 10, 13, 32 sampai 33, 35, dan 38 diulang per baris tabel parameter (bagian 8b butir 7); `Verifikasi` tetap satu per klausa (Live Preview, tabel, setelah F5) tiap kolom. Konfigurasi kolom disimpan sekali per putaran `[Save]` karena kolom tersisa sebagai satu-satunya kolom visible tidak dapat di-uncheck.
 - Langkah pemulihan konfigurasi kolom (27 dan 39) dan F5 sesudahnya memulihkan tabel ke default sebelum blok berikutnya (S-09); hook `after` mengulang pemulihan sebagai cadangan.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (85 langkah, 41 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets (Setup Column), satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.

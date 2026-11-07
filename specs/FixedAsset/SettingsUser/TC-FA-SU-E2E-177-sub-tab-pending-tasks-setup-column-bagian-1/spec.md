@@ -39,7 +39,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-526: Ceklis dan unceklis Setup Column kelas Hideable
 
@@ -53,24 +53,31 @@ coverage:
 9. Verifikasi tabel tidak menampilkan kolom `Transaction ID`, `Transaction`, `Status`, `Group`, `PIC`, `Total Asset`, `Request Date` dan hanya menampilkan kolom `Last Updated`
 10. Tekan F5
 11. Verifikasi tabel tetap tidak menampilkan kolom `Transaction ID`, `Transaction`, `Status`, `Group`, `PIC`, `Total Asset`, `Request Date` setelah refresh dan hanya menampilkan kolom `Last Updated`
+12. Klik header kolom Actions (⋯), lalu klik `Setup Column...`
+13. Centang kembali kolom `Transaction ID`, `Transaction`, `Status`, `Group`, `PIC`, `Total Asset`, `Request Date` pada daftar Setup Column (satu per satu)
+14. Klik `[Save]`
 
 ### TC-FA-SU-527: Geser (drag reorder) Setup Column kelas Hideable
 
-12. Klik header kolom Actions (⋯), lalu klik `Setup Column...`
-13. Untuk setiap baris tabel "Urutan drag Pending Tasks" (langkah 13 sampai 14): drag kolom baris itu satu posisi sesuai kolom "Arah" baris itu
-14. Verifikasi urutan Live Preview sama dengan kolom "Urutan kolom sesudah drag" baris itu
-15. Klik `[Save]`
-16. Verifikasi urutan kolom tabel sama dengan kolom "Urutan kolom sesudah drag" baris terakhir
-17. Tekan F5
-18. Verifikasi urutan kolom tabel tetap sama dengan baris terakhir tabel parameter setelah refresh
+15. Klik header kolom Actions (⋯), lalu klik `Setup Column...`
+16. Untuk setiap baris tabel "Urutan drag Pending Tasks" (langkah 16 sampai 17): drag kolom baris itu satu posisi sesuai kolom "Arah" baris itu
+17. Verifikasi urutan Live Preview sama dengan kolom "Urutan kolom sesudah drag" baris itu
+18. Klik `[Save]`
+19. Verifikasi urutan kolom tabel sama dengan kolom "Urutan kolom sesudah drag" baris terakhir
+20. Tekan F5
+21. Verifikasi urutan kolom tabel tetap sama dengan baris terakhir tabel parameter setelah refresh
+22. Klik header kolom Actions (⋯), lalu klik `Setup Column...`
+23. Klik `[Reset to Default]`
+24. Klik `[Save]`
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso. Pemulihan preferensi kolom dilakukan hook `after` (Prerequisites).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13). Pemulihan konfigurasi kolom: centang kembali tujuh kolom dan `[Save]` (langkah 12 sampai 14) sebelum TC-FA-SU-527, `[Reset to Default]` dan `[Save]` (langkah 22 sampai 24) di akhir (S-09, 8b butir 14); hook `after` hanya cadangan (Prerequisites).
 - Urutan drag pada tabel parameter dipilih supaya tiap kolom bergeser tepat satu posisi pada gilirannya dan urutan akhir berbeda dari default; TC-FA-SU-527 hanya menyebut "satu posisi".
-- Langkah berulang per baris tabel parameter: tabel "Urutan drag Pending Tasks" pada langkah 13 sampai 14 (8 iterasi).
-- Jumlah langkah: 18 tertulis, 32 dengan ekspansi iterasi.
+- Langkah berulang per baris tabel parameter: tabel "Urutan drag Pending Tasks" pada langkah 16 sampai 17 (8 iterasi).
+- Jumlah langkah: 24 tertulis, 38 dengan ekspansi iterasi.
+- Spec melewati sekitar 35 langkah bila ekspansi dihitung (24 tertulis, 38 ekspansi). Seluruh blok berada pada satu surface (satu sub-tab atau tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7); di atas smell 35 langkah.
 - Temuan untuk QA:
   - TC-FA-SU-526 langkah 3 meminta mengubah centang kedelapan kolom sedangkan Expected i melarang meng-uncheck kolom terakhir yang visible; spec meng-uncheck tujuh kolom pertama dan mengasersi `Last Updated` (kolom terakhir) disabled dengan tooltip. Perubahan Live Preview, tabel, dan F5 kolom `Last Updated` (Expected h) tidak dapat diasersi pada keadaan ini.
   - TC-FA-SU-527 tidak menyebut arah drag; arah per kolom ditetapkan di tabel parameter (S-15).

@@ -22,6 +22,7 @@ coverage:
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen` dan pemulihan Pre-setup bersama lewat seed API.
 - Data Pre-setup (hanya dibaca): Client `FaUserMain` (#20) dan Non-Login User (#26): pengguna target Budi Santoso dengan 5 Non-Login User (`Gudang Cabang Bekasi`, `Kendaraan Operasional B 1234 XY`, `Mesin Fotokopi Lt.3`, `Printer Lantai 5`, `Ruang Meeting Anggrek`; `Printer Lantai 5` Inactive). Asersi Search, Sort, dan Filter memakai sedikitnya dua nilai distinct pada kolom yang diuji (S-11); kolom tanpa nilai distinct dicatat di Temuan untuk QA.
 - Data Dinamis: tidak ada.
+- Nilai kolom Last Update `02/07/26` (TC-FA-SU-543) adalah nilai salah satu dari lima baris Pre-setup #26; baris pemiliknya tidak tertulis di TC (lihat Temuan untuk QA).
 - Nama pengguna dan nilai Pre-setup dirujuk lewat fixture `Fixture.fixedAssetSettingsUser.<kunci>` (berkas `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan tim FE).
 - Spec tidak mengubah data backend; perubahan tampilan (Search, Filter, Sort, Column Visibility) dipulihkan oleh langkah penghubung spec.
 - Urutan default (Name ascending): `Gudang Cabang Bekasi`, `Kendaraan Operasional B 1234 XY`, `Mesin Fotokopi Lt.3`, `Printer Lantai 5`, `Ruang Meeting Anggrek`.
@@ -29,7 +30,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso` pada User List, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-542: Siklus interaksi Search
 
@@ -63,36 +64,40 @@ coverage:
 ### TC-FA-SU-543: Guard kolom non-searchable (Last Update)
 
 28. Klik `←` pada kotak Search
-29. Ketik Search `02/07/26` (nilai kolom Last Update), tekan Enter
-30. Verifikasi `02/07/26` tidak mencocokkan baris melalui Search; empty state `No results found` tampil
+29. Verifikasi kolom Last Update menampilkan nilai `02/07/26` pada salah satu baris tabel
+30. Ketik Search `02/07/26` (nilai kolom Last Update), tekan Enter
+31. Verifikasi `02/07/26` tidak mencocokkan baris melalui Search; empty state `No results found` tampil
 
 ### TC-FA-SU-544: Search terikat visibilitas kolom Name
 
-31. Klik `←` pada kotak Search
-32. Ketik Search `Printer`, tekan Enter
-33. Verifikasi sebelum hide: keyword `Printer` menyisakan `Printer Lantai 5`
-34. Klik header kolom Actions (⋯), lalu hilangkan centang Name
-35. Ganti isi kotak search dengan `Printer`, tekan Enter
-36. Verifikasi setelah kolom Name di-hide: keyword yang sama menyisakan `Printer Lantai 5` (kolom tersembunyi tidak dicari; kolom lain yang tampil tetap dicari)
-37. Klik header kolom Actions (⋯), lalu centang kembali Name
-38. Ganti isi kotak search dengan `Printer`, tekan Enter
-39. Verifikasi setelah kolom Name di-unhide: hasil kembali `Printer Lantai 5`
+32. Klik `←` pada kotak Search
+33. Ketik Search `Printer`, tekan Enter
+34. Verifikasi sebelum hide: keyword `Printer` menyisakan `Printer Lantai 5`
+35. Klik header kolom Actions (⋯), lalu hilangkan centang Name
+36. Ganti isi kotak search dengan `Printer`, tekan Enter
+37. Verifikasi setelah kolom Name di-hide: keyword yang sama menyisakan `Printer Lantai 5` (kolom tersembunyi tidak dicari; kolom lain yang tampil tetap dicari)
+38. Klik header kolom Actions (⋯), lalu centang kembali Name
+39. Ganti isi kotak search dengan `Printer`, tekan Enter
+40. Verifikasi setelah kolom Name di-unhide: hasil kembali `Printer Lantai 5`
 
 ### TC-FA-SU-1058: Guard kolom non-searchable (Temporary Until)
 
-40. Klik `←` pada kotak Search
-41. Klik header kolom Actions (⋯), lalu centang kolom curated Temporary Until
-42. Verifikasi kolom Temporary Until tampil dengan nilai `31/12/26` pada baris `Printer Lantai 5`
-43. Ketik Search `31/12/26` (nilai kolom Temporary Until), tekan Enter
-44. Verifikasi `31/12/26` tidak mencocokkan baris melalui Search; empty state `No results found` tampil
+41. Klik `←` pada kotak Search
+42. Klik header kolom Actions (⋯), lalu centang kolom curated Temporary Until
+43. Verifikasi kolom Temporary Until tampil dengan nilai `31/12/26` pada baris `Printer Lantai 5`
+44. Ketik Search `31/12/26` (nilai kolom Temporary Until), tekan Enter
+45. Verifikasi `31/12/26` tidak mencocokkan baris melalui Search; empty state `No results found` tampil
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; `←` pada kotak Search sebelum tiap TC (S-09). TC-FA-SU-1058 ditaruh terakhir karena memakai varian data Pre-setup #47.
-- Jumlah langkah: 44 tertulis, 44 dengan ekspansi iterasi.
-- Spec melewati sekitar 35 langkah bila ekspansi dihitung (44 langkah). Seluruh blok berada pada satu surface (satu tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Langkah penghubung Search (R-16, bagian 8b butir 9 dan 13): langkah 1 mengetik Search `Budi Santoso` pada User List sebelum membuka Detail, karena User List memuat 3 halaman sehingga spec tidak mengandalkan posisi baris di halaman.
+- Jumlah langkah: 45 tertulis, 45 dengan ekspansi iterasi.
+- Spec melewati sekitar 35 langkah bila ekspansi dihitung (45 langkah). Seluruh blok berada pada satu surface (satu tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Search nilai kolom Date non-searchable (langkah 30 dan 44) didahului Verifikasi nilai Date tampil sebagai anchor positif (langkah 29 untuk `02/07/26`, langkah 43 untuk `31/12/26`; S-03, bagian 8b butir 15 b); kedua nilai tercatat di Prerequisites.
 - Temuan untuk QA:
+  - TC-FA-SU-543 tidak menyebut baris pemilik nilai Last Update `02/07/26`; spec memverifikasi nilai itu tampil pada salah satu baris sebelum Search (anchor positif sebelum absence, 8b butir 2) tanpa menyebut baris (S-15).
   - TC-FA-SU-1058 langkah 1 menyuruh mencentang kolom curated Temporary Until lewat Column Visibility, tetapi TC-FA-SU-559 menyatakan kolom curated tidak tampil sebagai baris overlay Column Visibility (hanya lewat Setup Column); spec mengikuti TC-FA-SU-1058 dan perlu dikoreksi pemilik TC bila yang benar lewat Setup Column.
   - TC-FA-SU-1058 memakai varian Pre-setup #47 (`FaUserNL`) yang bertentangan dengan Pre-setup #26 (Temporary User `No` untuk Printer Lantai 5); Client dan akun login untuk varian itu tidak tertulis, sehingga spec menyiapkannya lewat seed API dan memulihkannya.
   - TC-FA-SU-544 Expected b memberi hasil `Printer Lantai 5` setelah kolom Name disembunyikan; hasil ini bergantung pada kolom Email Printer Lantai 5 yang memuat kata `printer`, yang tidak tertulis di Pre-setup #26.

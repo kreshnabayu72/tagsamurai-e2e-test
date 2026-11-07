@@ -23,13 +23,14 @@ coverage:
 - Pengguna target: Mira Anggraini (Disposal × Staff dan Borrowing & Assignment × Approver pada Finance & Accounting) tanpa Home Group (Pre-setup #50 `FaUserNoHG`, varian `FaUserMain` dengan Home Group dikosongkan) agar pemilih Group tidak disaring gate Home Group (FI-32, Catatan TC).
 - Data uji: Group IT Infrastructure, Transaction Disposal lalu Transfer, Role Asset Admin (TC-FA-SU-233); Group Finance & Accounting dan IT Infrastructure (TC-FA-SU-234); Group Finance & Accounting (TC-FA-SU-235).
 - State global yang diubah: tidak ada data yang disimpan; isian modal dibuang lewat `[Leave]`.
+- Target tanpa Home Group (Pre-setup #50, `FaUserNoHG`; Catatan TC: TC penugasan Tab Role yang memilih node bebas dijalankan pada varian tanpa Home Group, FI-32), diterapkan per target: Home Group Mira Anggraini (Finance & Accounting pada Pre-setup #43) dikosongkan lewat seed API di hook `before` supaya node di luar constraint tidak Disabled oleh gate Home Group; Home Group Mira Anggraini dipulihkan ke Finance & Accounting di hook `after`. Seed per target disediakan tim FE/BE.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
 ## Test Steps
 
 ### TC-FA-SU-233: Mengganti Transaction setelah Role terisi mengosongkan Role dan mengunci ulang field Role
 
-1. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[+ Assign]`
+1. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[+ Assign]`
 2. Pilih Group IT Infrastructure, Transaction Disposal, dan Role Asset Admin
 3. Verifikasi Role terisi `Asset Admin` untuk Transaction Disposal
 4. Ganti Transaction ke Transfer
@@ -70,6 +71,7 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan.
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 7 dan 26 sampai 28. `[Clear Field]` memulihkan isian TC-FA-SU-233 sebelum TC-FA-SU-234 mengandalkannya (S-09); penutupan modal dirty mengikuti S-08.
 - Modal Assign Transaction Role dibuka sekali pada TC-FA-SU-233 dan dipakai TC-FA-SU-234 dan 235 tanpa dibuka ulang (halaman yang sama dipakai berulang, bagian 3 prinsip 13); tombol Group kembali `Select Group` pada akhir TC-FA-SU-234 sehingga TC-FA-SU-235 mulai dari keadaan awal.
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-233 butir b ("Field Role terkunci lalu Enabled kembali") tidak punya cara observasi keadaan terkunci sementara; spec mengasersi keadaan akhir Enabled dengan opsi katalog Transfer.
   - TC-FA-SU-235 butir c diperbarui (E-FASU-38): node ancestor atau descendant pemegang role juga tidak Disabled; spec menambah satu Verifikasi dengan Accounts Payable (descendant Finance & Accounting yang dipegang Mira Anggraini). TC tidak menyebut kasus ancestor; kasus itu tidak diasersi di spec ini (lihat TC-FA-SU-1104, spec E2E-411).

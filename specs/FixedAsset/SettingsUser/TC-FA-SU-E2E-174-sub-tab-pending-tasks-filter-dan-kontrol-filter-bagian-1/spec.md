@@ -27,7 +27,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 2. Klik icon Filter
 
 ### TC-FA-SU-517: Filter kelas fk (Group, PIC)
@@ -72,7 +72,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso dan Filter Panel; `[Clear Field]` lalu `[Apply]` antar field supaya tiap field diuji terpisah (S-09, sesuai langkah TC).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` lalu membuka Detail Budi Santoso (langkah 1) dan Filter Panel; `[Clear Field]` lalu `[Apply]` antar field supaya tiap field diuji terpisah (S-09, sesuai langkah TC).
 - Jumlah langkah: 32 tertulis, 32 dengan ekspansi iterasi.
 - Temuan untuk QA:
   - Klik `[Clear Field]` pada TC-FA-SU-517 sampai 519 tidak menyebut apakah panel tetap terbuka sesudah `[Apply]`; spec mengikuti TC (field berikutnya langsung dibuka).

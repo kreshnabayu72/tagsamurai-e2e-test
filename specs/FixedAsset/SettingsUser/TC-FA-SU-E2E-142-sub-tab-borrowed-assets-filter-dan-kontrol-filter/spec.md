@@ -26,76 +26,78 @@ coverage:
 
 ### TC-FA-SU-423: Filter Sub-tab Borrowed Assets kelas date: Due Return Date
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Borrowed Assets
-2. Klik icon Filter
-3. Pilih rentang 10/09/26 sampai 02/10/26 pada Due Return Date
-4. Klik `[Apply]`
-5. Verifikasi rentang inklusif 10/09/26 sampai 02/10/26 menyisakan `Laptop - 1`, `Laptop - 2`, dan `Kamera DSLR` (3 baris)
-6. Klik `[Clear Field]`
-7. Klik `[Apply]`
-8. Tutup panel Filter dengan klik icon Filter
+1. Ketik Search `Budi Santoso`, tekan Enter
+2. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Borrowed Assets
+3. Klik icon Filter
+4. Pilih rentang 10/09/26 sampai 02/10/26 pada Due Return Date
+5. Klik `[Apply]`
+6. Verifikasi rentang inklusif 10/09/26 sampai 02/10/26 menyisakan `Laptop - 1`, `Laptop - 2`, dan `Kamera DSLR` (3 baris)
+7. Klik `[Clear Field]`
+8. Klik `[Apply]`
+9. Tutup panel Filter dengan klik icon Filter
 
 ### TC-FA-SU-424: Kombinasi Search dan Filter Sub-tab Borrowed Assets dua arah
 
-9. Ketik Search `Kamera`, tekan Enter
-10. Klik icon Filter
-11. Buka dropdown Name
-12. Centang `Kamera DSLR`
-13. Klik `[Apply]`
-14. Verifikasi Search `Kamera` lalu Filter Name `Kamera DSLR`: hasil irisan `Kamera DSLR` (1 baris)
-15. Verifikasi kotak Search tetap berisi `Kamera` setelah Filter diterapkan
-16. Verifikasi indikator pagination menunjukkan halaman 1 saat kriteria berubah
-17. Klik `[Clear Field]`
-18. Klik `[Apply]`
-19. Klik `(←)` pada kotak Search
-20. Buka dropdown Name
-21. Centang `Kamera DSLR`
-22. Klik `[Apply]`
-23. Ketik Search `Kamera`, tekan Enter
-24. Verifikasi Filter Name `Kamera DSLR` lalu Search `Kamera`: hasil identik `Kamera DSLR` (1 baris)
-25. Verifikasi chip `Kamera DSLR` tetap tampil di field Name setelah Search dijalankan
-26. Klik `[Clear Field]`
-27. Klik `[Apply]`
-28. Klik `(←)` pada kotak Search
-29. Tutup panel Filter dengan klik icon Filter
+10. Ketik Search `Kamera`, tekan Enter
+11. Klik icon Filter
+12. Buka dropdown Name
+13. Centang `Kamera DSLR`
+14. Klik `[Apply]`
+15. Verifikasi Search `Kamera` lalu Filter Name `Kamera DSLR`: hasil irisan `Kamera DSLR` (1 baris)
+16. Verifikasi kotak Search tetap berisi `Kamera` setelah Filter diterapkan
+17. Verifikasi indikator pagination menunjukkan halaman 1 saat kriteria berubah
+18. Klik `[Clear Field]`
+19. Klik `[Apply]`
+20. Klik `(←)` pada kotak Search
+21. Buka dropdown Name
+22. Centang `Kamera DSLR`
+23. Klik `[Apply]`
+24. Ketik Search `Kamera`, tekan Enter
+25. Verifikasi Filter Name `Kamera DSLR` lalu Search `Kamera`: hasil identik `Kamera DSLR` (1 baris)
+26. Verifikasi chip `Kamera DSLR` tetap tampil di field Name setelah Search dijalankan
+27. Klik `[Clear Field]`
+28. Klik `[Apply]`
+29. Klik `(←)` pada kotak Search
+30. Tutup panel Filter dengan klik icon Filter
 
 ### TC-FA-SU-425: Pelepasan kontrol Sub-tab Borrowed Assets: Clear Field, Clear Search, ganti kolom sort, dan recovery empty state
 
-30. Ketik Search `Kamera`, tekan Enter
-31. Klik icon Filter
-32. Buka dropdown Name
-33. Centang `Kamera DSLR`
-34. Klik `[Apply]`
-35. Klik header kolom Name satu kali
-36. Klik `[Clear Field]`
-37. Klik `[Apply]`
-38. Verifikasi Clear Field saat Search `Kamera` dan Sort aktif: Search tetap berlaku, tabel menyisakan `Kamera DSLR`
-39. Verifikasi Clear Field saat Search dan Sort aktif: Sort kolom Name tetap berlaku
-40. Buka dropdown Name
-41. Centang `Kamera DSLR`
-42. Klik `[Apply]`
-43. Klik `✕` pada Search, tekan Enter
-44. Verifikasi setelah Search dikosongkan saat Filter Name dan Sort aktif: Filter tetap berlaku, tabel menyisakan `Kamera DSLR`
-45. Verifikasi setelah Search dikosongkan saat Filter dan Sort aktif: Sort kolom Name tetap berlaku
-46. Ketik Search `Kamera`, tekan Enter
-47. Klik header kolom Brand satu kali
-48. Verifikasi mengganti kolom sort memindahkan Sort ke kolom Brand
-49. Verifikasi Search `Kamera` tidak direset oleh ganti sort
-50. Verifikasi Filter Name `Kamera DSLR` tidak direset oleh ganti sort
-51. Ganti isi kotak search dengan `Laptop`, tekan Enter
-52. Verifikasi kombinasi Search `Laptop` dan Filter Name `Kamera DSLR` yang menghasilkan 0 baris menampilkan `No results found` dengan deskripsi `Try adjusting your search or filter.`
-53. Klik `✕` pada Search, tekan Enter
-54. Verifikasi melepas Search langsung memulihkan baris yang cocok: `Kamera DSLR` tampil
-55. Klik `[Clear Field]`
-56. Klik `[Apply]`
-57. Tutup panel Filter dengan klik icon Filter
-58. Klik header kolom Brand dua kali lagi sampai kembali netral
+31. Ketik Search `Kamera`, tekan Enter
+32. Klik icon Filter
+33. Buka dropdown Name
+34. Centang `Kamera DSLR`
+35. Klik `[Apply]`
+36. Klik header kolom Name satu kali
+37. Klik `[Clear Field]`
+38. Klik `[Apply]`
+39. Verifikasi Clear Field saat Search `Kamera` dan Sort aktif: Search tetap berlaku, tabel menyisakan `Kamera DSLR`
+40. Verifikasi Clear Field saat Search dan Sort aktif: Sort kolom Name tetap berlaku
+41. Buka dropdown Name
+42. Centang `Kamera DSLR`
+43. Klik `[Apply]`
+44. Klik `✕` pada Search, tekan Enter
+45. Verifikasi setelah Search dikosongkan saat Filter Name dan Sort aktif: Filter tetap berlaku, tabel menyisakan `Kamera DSLR`
+46. Verifikasi setelah Search dikosongkan saat Filter dan Sort aktif: Sort kolom Name tetap berlaku
+47. Ketik Search `Kamera`, tekan Enter
+48. Klik header kolom Brand satu kali
+49. Verifikasi mengganti kolom sort memindahkan Sort ke kolom Brand
+50. Verifikasi Search `Kamera` tidak direset oleh ganti sort
+51. Verifikasi Filter Name `Kamera DSLR` tidak direset oleh ganti sort
+52. Ganti isi kotak search dengan `Laptop`, tekan Enter
+53. Verifikasi kombinasi Search `Laptop` dan Filter Name `Kamera DSLR` yang menghasilkan 0 baris menampilkan `No results found` dengan deskripsi `Try adjusting your search or filter.`
+54. Klik `✕` pada Search, tekan Enter
+55. Verifikasi melepas Search langsung memulihkan baris yang cocok: `Kamera DSLR` tampil
+56. Klik `[Clear Field]`
+57. Klik `[Apply]`
+58. Tutup panel Filter dengan klik icon Filter
+59. Klik header kolom Brand dua kali lagi sampai kembali netral
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; urutan blok mengikuti prinsip bagian 3 (screening dan baca di awal, perubahan konfigurasi tersimpan di akhir).
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): menutup overlay Column Visibility, dropdown, dan panel Filter; menutup kotak Search lewat `(←)` atau `✕` + Enter; `[Clear Field]` dan `[Apply]` pemulih, serta mengembalikan sort ke netral dan visibilitas kolom ke semula, supaya blok berikutnya tidak mewarisi state.
-- Alasan melewati sekitar 35 langkah (58 langkah tertulis, 58 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
+- Langkah penghubung (S-03, R-16): sebelum Detail pengguna dibuka, kotak Search User List diisi nama persis `Budi Santoso` (nama Pre-setup) karena User List memuat 25 pengguna pada 3 halaman dan posisi baris tidak diandalkan (R-23, 8b.13); langkah itu hanya menyaring baris target dan tidak diverifikasi.
+- Alasan melewati sekitar 35 langkah (59 langkah tertulis, 59 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
 - Temuan untuk QA (S-15):
   - TC-FA-SU-423: format tanggal 10/09/26 dan 02/10/26 mengikuti General Settings dan langkah memilih rentang pada date range picker tidak dirinci TC; spec menuliskan satu langkah pemilihan rentang.
   - TC-FA-SU-424 butir d: "halaman 1 saat kriteria berubah" tidak dapat dibedakan pada fixture satu halaman (TC-FA-SU-434 butir e); spec mengasersi indikator pagination halaman 1.

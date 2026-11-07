@@ -44,7 +44,7 @@ coverage:
 
 ### TC-FA-SU-864: Download: format CSV dan XLSX, nama file, dan tanpa toast sukses
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
+1. Ketik Search `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
 2. Hover icon Download
 3. Verifikasi tooltip ikon `Download`
 4. Klik icon Download
@@ -101,18 +101,22 @@ coverage:
 49. Verifikasi Filter PIC sub-tab Assignment dipulihkan
 50. Verifikasi Sort Name sub-tab Assignment dipulihkan
 51. Verifikasi page size 25 sub-tab Assignment dipulihkan
-52. Verifikasi state sub-tab Assignment tidak memengaruhi sub-tab Session (Search `Session` dan Sort Date sub-tab Session tetap)
-53. Klik Back breadcrumb ke List, buka Detail pengguna Budi Santoso lagi, klik tab User Log, sub-tab Assignment
-54. Verifikasi state sub-tab Assignment (Search, Filter, Sort, page size) dipulihkan setelah Back breadcrumb
-55. Tekan F5 pada halaman Detail
-56. Verifikasi state sub-tab Assignment dipulihkan setelah refresh F5
-57. Klik menu Settings > User pada sidebar, buka Detail pengguna Budi Santoso lagi, klik tab User Log, sub-tab Assignment
-58. Verifikasi state sub-tab Assignment kembali ke default setelah keluar lewat menu sidebar
+52. Klik sub-tab Session
+53. Verifikasi Search `Session` sub-tab Session tetap
+54. Verifikasi Sort Date sub-tab Session tetap
+55. Kembali ke sub-tab Assignment
+56. Klik Back breadcrumb ke List, ganti isi kotak search dengan `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lagi, klik tab User Log, sub-tab Assignment
+57. Verifikasi state sub-tab Assignment (Search, Filter, Sort, page size) dipulihkan setelah Back breadcrumb
+58. Tekan F5 pada halaman Detail
+59. Verifikasi state sub-tab Assignment dipulihkan setelah refresh F5
+60. Klik menu Settings > User pada sidebar, ketik Search `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lagi, klik tab User Log, sub-tab Assignment
+61. Verifikasi state sub-tab Assignment kembali ke default setelah keluar lewat menu sidebar
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung pencarian baris (S-03, R-16, bagian 8b butir 13): langkah 1, 56, dan 60 mencari pengguna lewat Search nama persis `Budi Santoso` (nama Pre-setup) sebelum membuka Detail, karena User List dapat memuat lebih dari satu halaman (25 pengguna, 3 halaman) sehingga spec tidak mengandalkan posisi baris di halaman. Sesudah Back breadcrumb (langkah 56) kotak Search mempertahankan nilainya sehingga ditulis "ganti isi kotak search"; sesudah keluar lewat menu sidebar (langkah 60) User List dibuka kembali tanpa state sehingga ditulis "ketik Search" (bagian 8b butir 9).
 - Panel Filter tetap terbuka sesudah `[Apply]` dan baru tertutup bila icon Filter diklik (keputusan produk); karena itu `[Clear Field]` + `[Apply]` dijalankan tanpa mengklik icon Filter lagi. Langkah 24 dan 41 (`Klik icon Filter untuk menutup panel`) adalah langkah penghubung yang menutup panel sebelum blok berikutnya (S-03, S-09).
-- Spec ini berjumlah 58 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Spec ini berjumlah 61 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC-FA-SU-864: klausa BOM UTF-8, tanda kutip ganda, dan sheet `Sheet1` adalah isi berkas (kelas f); spec menulisnya sebagai `Verifikasi` dengan kemampuan baca berkas dari tim FE. TC-FA-SU-865: Expected a menyebut seluruh baris tanpa jumlah; spec tidak menambah angka. TC-FA-SU-870: Langkah Uji 2 menyebut "kontrol berbeda" pada sub-tab lain tanpa nilai; spec memakai Search `Session` dan Sort Date pada sub-tab Session, dan nomor halaman aktif tidak diuji (TC menyebut fixture satu halaman).

@@ -26,34 +26,35 @@ coverage:
 
 ### TC-FA-SU-895: Kolom C/R/U/D mengikuti kapabilitas role
 
-1. Buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role
-2. Klik `[Assign Group]` pada baris Manage group
-3. Verifikasi popup Assign Group Role Manage group menampilkan kolom Create, Read, Update, dan Delete
-4. Tutup popup Assign Group Role
-5. Klik `[Assign Group]` pada baris Manage files
-6. Verifikasi popup Assign Group Role Manage files hanya menampilkan kolom Read dan Delete
-7. Verifikasi checkbox Read selalu tercentang dan terkunci (FI-01)
+1. Ketik Search `Wawan Setiawan`, tekan Enter
+2. Buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role
+3. Klik `[Assign Group]` pada baris Manage group
+4. Verifikasi popup Assign Group Role Manage group menampilkan kolom Create, Read, Update, dan Delete
+5. Tutup popup Assign Group Role
+6. Klik `[Assign Group]` pada baris Manage files
+7. Verifikasi popup Assign Group Role Manage files hanya menampilkan kolom Read dan Delete
+8. Verifikasi checkbox Read selalu tercentang dan terkunci (FI-01)
 
 ### TC-FA-SU-896: Setup Column popup Assign Group Role
 
-8. Klik header kolom Actions (⋯) pada tabel popup
-9. Verifikasi kolom Group tercantum Hideable (tercentang, Enabled) pada Column Visibility
-10. Verifikasi kolom C/R/U/D tidak tercantum di Column Visibility dan selalu tampil
-11. Verifikasi urutan baris default Group A-Z (Branch Surabaya lalu IT Infrastructure)
+9. Klik header kolom Actions (⋯) pada tabel popup
+10. Verifikasi kolom Group tercantum Hideable (tercentang, Enabled) pada Column Visibility
+11. Verifikasi kolom C/R/U/D tidak tercantum di Column Visibility dan selalu tampil
+12. Verifikasi urutan baris default Group A-Z (Branch Surabaya lalu IT Infrastructure)
 
 ### TC-FA-SU-897: Search di popup Assign Group Role
 
-12. Ketik Search `Branch`, tekan Enter
-13. Verifikasi baris Branch Surabaya tampil
-14. Verifikasi baris IT Infrastructure tidak tampil
-15. Ganti isi kotak Search dengan `zzz`, tekan Enter
-16. Verifikasi empty state `No results found` dengan `Try adjusting your search or filter.` tampil
-17. Klik ikon ×
-18. Verifikasi kotak Search kosong
-19. Verifikasi seluruh baris (Branch Surabaya dan IT Infrastructure) kembali tampil
+13. Ketik Search `Branch`, tekan Enter
+14. Verifikasi baris Branch Surabaya tampil
+15. Verifikasi baris IT Infrastructure tidak tampil
+16. Ganti isi kotak Search dengan `zzz`, tekan Enter
+17. Verifikasi empty state `No results found` dengan `Try adjusting your search or filter.` tampil
+18. Klik ikon ×
+19. Verifikasi kotak Search kosong
+20. Verifikasi seluruh baris (Branch Surabaya dan IT Infrastructure) kembali tampil
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): menutup popup Assign Group Role. TC-FA-SU-896 dan TC-FA-SU-897 memakai popup Manage files yang masih terbuka dari akhir TC-FA-SU-895 (tanpa pembukaan ulang).
+- Langkah penghubung (tanpa awalan `Verifikasi`): langkah 1 (Search untuk menemukan baris target, R-16, butir 8b.13) dan menutup popup Assign Group Role. TC-FA-SU-896 dan TC-FA-SU-897 memakai popup Manage files yang masih terbuka dari akhir TC-FA-SU-895 (tanpa pembukaan ulang).
 - Temuan untuk QA (S-15): (1) TC-FA-SU-896 dan TC-FA-SU-897 menyebut popup Manage files; TC-FA-SU-895 langkah 2 menyebut popup Manage group. (2) Keyword tanpa hasil pada TC-FA-SU-897 ditulis `zzz` sesuai data uji. (3) Urutan A-Z default memakai dua baris Manage files (Branch Surabaya, IT Infrastructure); S-11 mensyaratkan dua nilai distinct, terpenuhi.

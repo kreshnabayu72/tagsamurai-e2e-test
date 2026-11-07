@@ -44,7 +44,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-530: Pagination: page size, navigasi, dan kasus tepi
 
@@ -86,18 +86,18 @@ coverage:
 31. Verifikasi Sort Request Date ascending (↑) Sub-tab Pending Tasks dipulihkan
 32. Verifikasi page size 25 Sub-tab Pending Tasks dipulihkan
 33. Klik Back breadcrumb ke List
-34. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+34. Ganti isi kotak search dengan `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 35. Verifikasi state Sub-tab Pending Tasks (Search, Filter, Sort, page size) dipulihkan setelah Back breadcrumb
 36. Tekan F5
 37. Verifikasi state Sub-tab Pending Tasks (Search, Filter, Sort, page size) dipulihkan setelah refresh
 38. Klik menu Settings > User pada sidebar
-39. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+39. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 40. Verifikasi state Sub-tab Pending Tasks kembali ke default setelah keluar lewat menu sidebar
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; membuka dropdown page size (langkah 3) dan menutupnya dengan Esc (langkah 5); mengosongkan Search dan mengembalikan sort ke netral di akhir TC-FA-SU-530 (S-09); langkah Back, buka Detail ulang, dan klik menu sidebar pada TC-FA-SU-537 adalah aksi TC.
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13) (langkah 1; langkah 34 memakai ganti isi kotak search karena Search dipertahankan sesudah Back breadcrumb, langkah 39 mengetik ulang sesudah menu sidebar); membuka dropdown page size (langkah 3) dan menutupnya dengan Esc (langkah 5); mengosongkan Search dan mengembalikan sort ke netral di akhir TC-FA-SU-530 (S-09); langkah Back, buka Detail ulang, dan klik menu sidebar pada TC-FA-SU-537 adalah aksi TC.
 - Langkah berulang per baris tabel parameter: tabel "Nomor halaman tidak valid" pada langkah 6 sampai 7 (4 iterasi); tabel "Ikon dan header tooltip" pada langkah 17 sampai 18 (4 iterasi).
 - Jumlah langkah: 40 tertulis, 52 dengan ekspansi iterasi.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (52 langkah). Seluruh blok berada pada satu surface (satu sub-tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7).

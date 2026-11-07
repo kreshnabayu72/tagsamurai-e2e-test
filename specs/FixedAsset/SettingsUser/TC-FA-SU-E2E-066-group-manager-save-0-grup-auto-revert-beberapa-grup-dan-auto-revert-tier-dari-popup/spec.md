@@ -18,12 +18,11 @@ coverage:
 
 - Mode: FE+BE.
 - Akun aktor: Default User Ahmad Dahlan (Pre-setup #2) `defaultUser_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_DU_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite; hook `after` mengembalikan sesi ke akun default suite (Total Control).
-- Akun kedua (ganti akun eksplisit di langkah terakhir): Group Manager Oscar Pranata (Pre-setup #9), email disediakan tim FE (tidak tertulis di Pre-setup TC), kredensial `Spectra.env.FA_GM_PASSWORD`.
 - Hook suite (`suite.md`): flag Guided Tooltip `seen`, sesi API aktor, dan pemulihan Pre-setup bersama dirujuk tanpa diulang di sini.
 - Client `FaUserMain` (Pre-setup #20) dengan pohon grup (Pre-setup #21) dan penugasan (Pre-setup #23).
 - Pengguna target: Oscar Pranata, Group Manager IT Infrastructure dan Accounts Payable dengan Group Role `Manage group` penuh pada kedua grup (Pre-setup #9; "role penopang" pada TC adalah `Manage group`); Lina Marlina, Total Control (Pre-setup #1 dan #23: Manage files pada seluruh group, CRUD penuh), dan Citra Lestari, Read Only (Pre-setup #3 dan #23: Manage files pada seluruh group, Read saja), target TC-FA-SU-217.
 - Data uji: Save dengan 0 grup (TC-FA-SU-215 dan 216); popup Assign Group Role `Manage files`, baris `Branch Surabaya`: centang Delete dihapus pada Lina Marlina lalu dicentang pada Citra Lestari (TC-FA-SU-217).
-- Kemampuan teknis: seed API untuk memulihkan status Group Manager dan penugasan Oscar Pranata serta tier Total Control Lina Marlina dan tier Read Only Citra Lestari (disediakan tim FE/BE); pembacaan jumlah entri Tab Changelog target dan jumlah notifikasi in-app Oscar Pranata sebelum aksi sebagai baseline (disediakan tim FE/BE, bagian 8b butir 10). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
+- Kemampuan teknis: seed API untuk memulihkan status Group Manager dan penugasan Oscar Pranata serta tier Total Control Lina Marlina dan tier Read Only Citra Lestari (disediakan tim FE/BE); pembacaan jumlah entri Tab Changelog target dan jumlah notifikasi in-app Oscar Pranata sebelum aksi sebagai baseline (disediakan tim FE/BE, bagian 8b butir 10); jumlah notifikasi sesudah pemicu dibaca lewat kemampuan baca BE yang sama, bukan dari panel notifikasi (maks 5 item). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
 - State global yang diubah: status Group Manager dan penugasan Oscar Pranata, serta tier Total Control Lina Marlina (akun aktor default suite) dan tier Read Only Citra Lestari; dipulihkan ke Pre-setup #1, #3, #9, dan #23 lewat seed API pada langkah penghubung dan di hook `after`. Suite berjalan serial.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
@@ -31,7 +30,7 @@ coverage:
 
 ### TC-FA-SU-215: Save dengan 0 grup pada target Group Manager: dialog Auto-Revert D-05c sebelum penugasan dilepas
 
-1. Buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role role penopang Manage group
+1. Ketik Search `Oscar Pranata`, tekan Enter, lalu buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role role penopang Manage group
 2. Klik `[Clear Field]` lalu klik `[Save]`
 3. Verifikasi dialog Title `Remove Group Manager` tampil sebelum penyimpanan dengan Body varian pemicu Remove baris: `These users will lose Group Manager access:`, bullet `• Oscar Pranata`, dan `Are you sure you want to remove it?`
 4. Klik `[Remove]`
@@ -45,7 +44,7 @@ coverage:
 ### TC-FA-SU-216: Auto-Revert lebih dari satu grup Group Manager dalam satu edit: satu dialog D-05d dan satu toast T-06c
 
 11. Catat jumlah entri `Auto-Revert` Oscar Pranata pada Tab Changelog serta jumlah notifikasi in-app Oscar Pranata sebagai baseline
-12. Buka ulang Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role role penopang Manage group yang menopang dua grup Group Manager
+12. Kembali ke User List, ganti isi kotak search dengan `Oscar Pranata`, tekan Enter, lalu buka ulang Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role role penopang Manage group yang menopang dua grup Group Manager
 13. Klik `[Clear Field]` lalu klik `[Save]`
 14. Verifikasi satu dialog Title `Remove Group Manager` dengan Body bullet `• Oscar Pranata`, kalimat `This change will remove Group Manager status for these groups:` diikuti bullet IT Infrastructure dan Accounts Payable, lalu `Are you sure you want to remove it?`
 15. Tunggu toast lama hilang otomatis
@@ -61,7 +60,7 @@ coverage:
 
 ### TC-FA-SU-217: Save popup Assign Group Role pada target Total Control atau Read Only yang menyimpang dari pola Group Role: dialog Auto-Revert D-05, tier lepas, dan banner hilang
 
-25. Buka Detail Lina Marlina > Tab Role > Sub-tab Group Role
+25. Kembali ke User List, ganti isi kotak search dengan `Lina Marlina`, tekan Enter, lalu buka Detail Lina Marlina > Tab Role > Sub-tab Group Role
 26. Buka popup Assign Group Role Manage files lalu hapus centang Delete pada Branch Surabaya
 27. Klik `[Save]`
 28. Verifikasi dialog Auto-Revert D-05a dengan Title `Remove Total Control` tampil sebelum penyimpanan
@@ -77,42 +76,41 @@ coverage:
 38. Verifikasi banner tier hilang di Sub-tab Global Role
 39. Klik Sub-tab Transaction Role
 40. Verifikasi banner tier hilang di Sub-tab Transaction Role
-41. Verifikasi tingkat akses Lina Marlina kosong
-42. Pulihkan tier Total Control Lina Marlina ke Pre-setup #1 dan #23 lewat seed API
-43. Buka Detail Citra Lestari > Tab Role > Sub-tab Group Role
-44. Buka popup Assign Group Role Manage files lalu centang Delete pada Branch Surabaya
-45. Klik `[Save]`
-46. Verifikasi dialog Auto-Revert D-05b dengan Title `Remove Read Only` tampil sebelum penyimpanan
-47. Verifikasi kalimat `This edit will remove this user's Read Only access level. Their individual role permissions will remain as edited.`
-48. Verifikasi dialog Remove Group Role biasa tidak tampil
-49. Klik `[Remove]`
-50. Verifikasi toast T-06a "Success, permissions have been updated. Citra Lestari is no longer Read Only."
-51. Verifikasi banner tier hilang di Sub-tab Group Role
-52. Klik Sub-tab Global Role
-53. Verifikasi banner tier hilang di Sub-tab Global Role
-54. Klik Sub-tab Transaction Role
-55. Verifikasi banner tier hilang di Sub-tab Transaction Role
-56. Verifikasi tingkat akses Citra Lestari kosong
-57. Pulihkan tier Read Only Citra Lestari ke Pre-setup #3 dan #23 lewat seed API
-58. Logout lalu login sebagai Group Manager Oscar Pranata
-59. Buka panel notifikasi
-60. Verifikasi notifikasi in-app view-only tetap satu per grup (dua notifikasi baru dibanding baseline)
+41. Pulihkan tier Total Control Lina Marlina ke Pre-setup #1 dan #23 lewat seed API
+42. Kembali ke User List, ganti isi kotak search dengan `Citra Lestari`, tekan Enter, lalu buka Detail Citra Lestari > Tab Role > Sub-tab Group Role
+43. Buka popup Assign Group Role Manage files lalu centang Delete pada Branch Surabaya
+44. Klik `[Save]`
+45. Verifikasi dialog Auto-Revert D-05b dengan Title `Remove Read Only` tampil sebelum penyimpanan
+46. Verifikasi kalimat `This edit will remove this user's Read Only access level. Their individual role permissions will remain as edited.`
+47. Verifikasi dialog Remove Group Role biasa tidak tampil
+48. Klik `[Remove]`
+49. Verifikasi toast T-06a "Success, permissions have been updated. Citra Lestari is no longer Read Only."
+50. Verifikasi banner tier hilang di Sub-tab Group Role
+51. Klik Sub-tab Global Role
+52. Verifikasi banner tier hilang di Sub-tab Global Role
+53. Klik Sub-tab Transaction Role
+54. Verifikasi banner tier hilang di Sub-tab Transaction Role
+55. Pulihkan tier Read Only Citra Lestari ke Pre-setup #3 dan #23 lewat seed API
+56. Baca jumlah notifikasi in-app Oscar Pranata lewat kemampuan baca BE yang sama dengan baseline langkah 11 hingga jumlah bertambah dua dibanding baseline langkah 11 (batas tunggu 2 menit)
+57. Verifikasi notifikasi in-app view-only tetap satu per grup (dua notifikasi baru dibanding baseline)
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
-- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan, kecuali asersi notifikasi TC-FA-SU-216 butir c yang diletakkan pada langkah terakhir spec agar satu kali ganti akun cukup; baseline notifikasi dicatat sebelum TC-FA-SU-216 sehingga notifikasi TC-FA-SU-215 tidak ikut terhitung.
-- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 10, 11, 15, 24, 37, 39, 42, 43, 52, 54, 57 dan 58. Baseline log mengikuti S-12; pemulihan lewat seed API memulihkan Pre-setup #1, #3, #9, dan #23 (S-06, S-09).
+- Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan, kecuali asersi notifikasi TC-FA-SU-216 butir c yang diletakkan pada langkah terakhir spec dan dibaca lewat kemampuan baca BE yang sama dengan baseline (bagian 8b butir 10; panel notifikasi hanya memuat 5 item) sehingga tanpa ganti akun; baseline notifikasi dicatat sebelum TC-FA-SU-216 sehingga notifikasi TC-FA-SU-215 tidak ikut terhitung.
+- Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 10, 11, 15, 24, 37, 39, 41, 42, 51, 53, 55 dan 56. Baseline log mengikuti S-12; pemulihan lewat seed API memulihkan Pre-setup #1, #3, #9, dan #23 (S-06, S-09).
 - Alasan di atas sekitar 35 langkah: seluruh TC satu topik (Auto-Revert pada target Group Manager, Total Control, dan Read Only), tiap TC mengubah state sendiri dan dipulihkan sebelum TC berikutnya, dan kegagalan satu TC tidak membuat TC lain kehilangan makna; langkah TC-FA-SU-217 banyak karena Expected bermajemuk dua target (dialog D-05a dan D-05b, toast, banner di tiga sub-tab) yang wajib satu `Verifikasi` per klausa (S-01).
 - Langkah 8 dan 19 membuka Sub-tab Transaction Role (langkah penghubung). Asersi baris pola (langkah 7, 9, 18, 20) kini positif (baris tetap tersimpan sebagai baris biasa); kolom Group baris Manage group yang menjadi `—` (langkah 5) adalah hasil aksi aktor sendiri; langkah 23 (absence) beranchor entri `Auto-Revert` pada langkah 22.
-- Langkah pola baca-log: langkah 21 dan 22. Search `Oscar Pranata` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16). Langkah terakhir spec mengganti akun ke Group Manager Oscar Pranata (ganti akun eksplisit, S-07).
+- Langkah pola baca-log: langkah 21 dan 22. Search `Oscar Pranata` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1, 12, 25 dan 42 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-215 Expected a menyebut Body dialog varian pemicu Remove baris dengan copy usulan (perlu persetujuan PM, owner `D-05` `settings-role-permission` Open Item #7d); spec mengasersi apa adanya.
   - TC-FA-SU-215 Expected b dan TC-FA-SU-216 Expected c menyebut baris pola Group Manager lain tetap tersimpan tanpa merinci isi baris pola; spec mengasersi bahwa baris pola Group Role dan Transaction Role (Asset Admin dan Approver) pada kedua grup tetap tersimpan sebagai baris biasa, tanpa menghitung angka (jumlah baris turunan, Open Item 3 PM).
   - TC-FA-SU-217 butir e ("Group Role bagian pola tier") bukan kalimat penuh dan tidak punya Verifikasi tersendiri; spec tidak mengasersinya.
   - TC-FA-SU-217 butir a menyebut "tidak ada request simpan sebelum konfirmasi" tanpa langkah observasi; spec hanya mengasersi dialog tampil sebelum penyimpanan.
   - TC-FA-SU-217 butir d menyebut toast T-06a dan banner hilang untuk kedua target; spec mengasersi banner pada tiga sub-tab untuk Lina Marlina dan Citra Lestari.
-  - TC-FA-SU-217 Post Condition butir b dan c (entri `Edit` dan `Auto-Revert` pada tiga surface log; notifikasi in-app ke Lina Marlina dan Citra Lestari) tidak punya langkah observasi dan tidak diasersi; butir d (pemulihan oleh automation baseline) dipenuhi lewat langkah 42 dan 57.
+  - TC-FA-SU-217 Post Condition butir b dan c (entri `Edit` dan `Auto-Revert` pada tiga surface log; notifikasi in-app ke Lina Marlina dan Citra Lestari) tidak punya langkah observasi dan tidak diasersi; butir d (pemulihan oleh automation baseline) dipenuhi lewat langkah 41 dan 55.
+  - TC-FA-SU-217 Post Condition butir a ("Tingkat akses Lina Marlina dan Citra Lestari kosong") tidak punya langkah observasi di Expected TC; tidak diasersi di spec ini (banner tier hilang pada tiga sub-tab sudah diasersi sebagai Expected d).
   - TC-FA-SU-215 tidak menyebut Expected untuk log dan notifikasi (hanya Post Condition tanpa langkah observasi); Post Condition TC-FA-SU-215 dan 217 tidak diasersi.
-  - TC-FA-SU-216 butir c ("notifikasi tetap satu per grup") tidak menyebut cara menghitung notifikasi; spec memakai baseline jumlah notifikasi dan panel notifikasi Oscar Pranata.
+  - TC-FA-SU-216 butir c ("notifikasi tetap satu per grup") tidak menyebut cara menghitung notifikasi; spec memakai baseline jumlah notifikasi dan pembacaan jumlah sesudah pemicu lewat kemampuan baca BE yang sama (tanpa ganti akun).
   - Kalimat `Their Group Manager role assignments in this group and its sub-groups will also be removed.` tidak ada lagi pada copy varian pemicu Remove (TC-FA-SU-215 butir a); spec tidak mengasersinya. TC-FA-SU-216 Expected c (tidak ada entri `Remove (via Group Manager)` per baris) dibaca di Tab Changelog (langkah 23); modal Changelog User > Group Role dan > Transaction Role diasersi di spec 403 (TC-FA-SU-1098).

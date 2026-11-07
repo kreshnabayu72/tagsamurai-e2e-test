@@ -32,7 +32,7 @@ coverage:
 ### TC-FA-SU-265: Remove satu baris Transaction Role: dialog singular, toast removed, dan log Remove per grup
 
 1. Catat jumlah entri `Remove` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
-2. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `⋯` pada baris Borrowing & Assignment × Approver, lalu klik `Remove`
+2. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `⋯` pada baris Borrowing & Assignment × Approver, lalu klik `Remove`
 3. Verifikasi dialog Title `Remove Transaction Role` dengan Body bullet `• Mira Anggraini`, kalimat `This user will lose the selected transaction role.`, dan `Are you sure you want to remove it?`
 4. Verifikasi tombol `[Cancel]` (Text, Contrast) dan `[Remove]` (filled danger)
 5. Klik `[Remove]` pada dialog
@@ -45,7 +45,7 @@ coverage:
 ### TC-FA-SU-266: Cancel dialog Remove Transaction Role: tidak ada perubahan
 
 11. Catat jumlah entri Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
-12. Buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `⋯` pada baris Disposal × Staff, lalu klik `Remove`
+12. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `⋯` pada baris Disposal × Staff, lalu klik `Remove`
 13. Klik `[Cancel]`
 14. Verifikasi dialog menutup
 15. Verifikasi baris Disposal × Staff tetap ada
@@ -58,7 +58,7 @@ coverage:
 
 ### TC-FA-SU-1050: Empty state Sub-tab Transaction Role berganti sesuai penugasan: assign pertama dan hapus baris terakhir
 
-22. Buka Detail Oscar Pranata > Tab Role > Sub-tab Transaction Role
+22. Kembali ke User List, ganti isi kotak search dengan `Oscar Pranata`, tekan Enter, lalu buka Detail Oscar Pranata > Tab Role > Sub-tab Transaction Role
 23. Verifikasi empty state `No transaction role yet` dengan Description `Transaction roles assigned to this user will appear here.`
 24. Klik `[+ Assign]`, pilih Group Finance & Accounting, Transaction Disposal, Role Staff, lalu klik `[Submit]`
 25. Verifikasi empty state hilang
@@ -74,6 +74,7 @@ coverage:
 - Langkah pola baca-log: langkah 9, 10, 20 dan 21. Search `Mira Anggraini` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - TC-FA-SU-266: klausa "tidak ada entri log" pada aksi yang dibatalkan ditulis sebagai asersi jumlah dengan baseline (bagian 3 prinsip 13 butir g, S-12); dialog menutup dan baris tetap ada menjadi anchor positif.
 - Pre-setup #50 diterapkan hanya pada Oscar Pranata (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih Finance & Accounting (langkah 24); Home Group Oscar Pranata dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 2, 12 dan 22): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah 12 dan 22 mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-265 butir c menyebut log "per grup" tanpa menyebut permukaan; spec mengasersi Tab Changelog. Post Condition TC-FA-SU-265 (tiga permukaan log, Settings > Role & Permission) tidak punya langkah observasi tambahan di TC dan tidak diasersi.
   - TC-FA-SU-1050 tidak menyebut toast untuk Submit dan Remove; spec tidak mengasersi toast pada TC itu. Langkah Submit dan Remove yang hasilnya tidak diasersi langsung diikuti `Verifikasi` keadaan tabel sehingga tidak ada langkah penghubung "Tunggu aksi selesai".

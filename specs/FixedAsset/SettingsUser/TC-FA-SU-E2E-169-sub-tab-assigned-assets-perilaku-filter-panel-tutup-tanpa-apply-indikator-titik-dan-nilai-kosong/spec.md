@@ -32,7 +32,7 @@ coverage:
 
 ### TC-FA-SU-455: Perilaku Filter Panel Sub-tab Assigned Assets: tutup tanpa Apply, indikator titik, dan nilai kosong
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Klik icon Filter
 4. Buka dropdown Name
@@ -55,7 +55,7 @@ coverage:
 21. Verifikasi dropdown Name menampilkan opsi nilai lain, antara lain `Lemari Arsip`
 22. Verifikasi dropdown Name tidak memiliki opsi untuk nilai kosong
 23. Tekan Esc untuk menutup dropdown
-24. Centang `AC Split Ruang Kerja`
+24. Buka dropdown Name, centang `AC Split Ruang Kerja`
 25. Klik `[Apply]`
 26. Klik header Actions (⋯)
 27. Uncheck kolom Name pada overlay Column Visibility
@@ -70,7 +70,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Pembagian TC lintas spec: TC-FA-SU-453 dan 454 ada di spec 154.
 - Temuan untuk QA (S-15):
   - TC-FA-SU-455 Expected c ("memilih opsi apa pun menyaring keluar baris yang nilainya kosong") tidak dapat diasersi: kelima baris Pre-setup #24 tidak memiliki nilai kosong pada kolom Name, Brand, Model / Type, atau PIC. Spec hanya mengasersi bahwa dropdown tidak memiliki opsi untuk nilai kosong.

@@ -28,43 +28,53 @@ coverage:
 
 ### TC-FA-SU-1041: Screening Bulk Actions Bar
 
-1. Centang baris Hana Kusuma
-2. Centang baris Kartika Sari
-3. Verifikasi Bulk Actions Bar muncul dengan empat elemen berurutan dari kiri ke kanan: dropdown `Bulk Action`, counter `2 Users selected`, `Select All (23 records)`, dan ikon `(×)`
-4. Klik `Bulk Action`
-5. Verifikasi overlay `Bulk Action` memuat empat aksi: `Activate`, `Deactivate`, `Edit Home Group`, `Resend Activation Email`
-6. Tutup overlay `Bulk Action` dengan Esc
-7. Klik ikon `(×)` pada Bulk Actions Bar
-8. Verifikasi Bulk Actions Bar tertutup
-9. Verifikasi seleksi baris Hana Kusuma dan Kartika Sari dikosongkan
+1. Ketik Search `Hana Kusuma`, tekan Enter
+2. Centang baris Hana Kusuma
+3. Ganti isi kotak search dengan `Kartika Sari`, tekan Enter
+4. Centang baris Kartika Sari
+5. Klik `(←)` pada kotak Search
+6. Verifikasi Bulk Actions Bar muncul dengan empat elemen berurutan dari kiri ke kanan: dropdown `Bulk Action`, counter `2 Users selected`, `Select All (23 records)`, dan ikon `(×)`
+7. Klik `Bulk Action`
+8. Verifikasi overlay `Bulk Action` memuat empat aksi: `Activate`, `Deactivate`, `Edit Home Group`, `Resend Activation Email`
+9. Tutup overlay `Bulk Action` dengan Esc
+10. Klik ikon `(×)` pada Bulk Actions Bar
+11. Verifikasi Bulk Actions Bar tertutup
+12. Verifikasi seleksi baris Hana Kusuma dan Kartika Sari dikosongkan
 
 ### TC-FA-SU-1042: Ikon dan severity row action serta aksi Bulk Actions Bar
 
-10. Klik ⋯ pada baris Hana Kusuma
-11. Verifikasi row action `Detail` berikon `FileInfoLine`, `Edit Home Group` berikon `Edit2Line`, dan `Resend Activation Email` berikon `MailSendLine`, seluruhnya severity dark
-12. Tutup menu row action dengan Esc
-13. Klik ⋯ pada baris Indra Wijaya
-14. Verifikasi row action `Resend Confirmation Email` berikon `MailSendLine` dengan severity dark
-15. Tutup menu row action dengan Esc
-16. Centang baris Hana Kusuma dan Kartika Sari
-17. Klik `Bulk Action`
-18. Verifikasi aksi overlay: `Activate` berikon `CheckLine`, `Deactivate` berikon `CloseLine`, `Edit Home Group` berikon `Edit2Line`, `Resend Activation Email` berikon `MailSendLine`, seluruhnya severity dark
-19. Tutup overlay dengan Esc, lalu klik ikon `(×)` pada Bulk Actions Bar
+13. Ketik Search `Hana Kusuma`, tekan Enter
+14. Klik ⋯ pada baris Hana Kusuma
+15. Verifikasi row action `Detail` berikon `FileInfoLine`, `Edit Home Group` berikon `Edit2Line`, dan `Resend Activation Email` berikon `MailSendLine`, seluruhnya severity dark
+16. Tutup menu row action dengan Esc
+17. Ganti isi kotak search dengan `Indra Wijaya`, tekan Enter
+18. Klik ⋯ pada baris Indra Wijaya
+19. Verifikasi row action `Resend Confirmation Email` berikon `MailSendLine` dengan severity dark
+20. Tutup menu row action dengan Esc
+21. Ganti isi kotak search dengan `Hana Kusuma`, tekan Enter
+22. Centang baris Hana Kusuma
+23. Ganti isi kotak search dengan `Kartika Sari`, tekan Enter
+24. Centang baris Kartika Sari
+25. Klik `Bulk Action`
+26. Verifikasi aksi overlay: `Activate` berikon `CheckLine`, `Deactivate` berikon `CloseLine`, `Edit Home Group` berikon `Edit2Line`, `Resend Activation Email` berikon `MailSendLine`, seluruhnya severity dark
+27. Tutup overlay dengan Esc, lalu klik ikon `(×)` pada Bulk Actions Bar
+28. Klik `(←)` pada kotak Search
 
 ### TC-FA-SU-1043: Label Select All singular dan plural
 
-20. Klik icon Search, ketik `Hana`, tekan Enter
-21. Centang satu-satunya baris hasil
-22. Verifikasi tombol `Select All (1 record)` tampil
-23. Klik ikon `(×)` pada Bulk Actions Bar
-24. Klik `(←)` pada kotak Search
-25. Centang baris pertama pada tabel
-26. Verifikasi tombol `Select All (23 records)` tampil
-27. Verifikasi counter `1 User selected` tampil
-28. Klik ikon `(×)` pada Bulk Actions Bar
+29. Klik icon Search, ketik `Hana`, tekan Enter
+30. Centang satu-satunya baris hasil
+31. Verifikasi tombol `Select All (1 record)` tampil
+32. Klik ikon `(×)` pada Bulk Actions Bar
+33. Klik `(←)` pada kotak Search
+34. Centang baris pertama pada tabel
+35. Verifikasi tombol `Select All (23 records)` tampil
+36. Verifikasi counter `1 User selected` tampil
+37. Klik ikon `(×)` pada Bulk Actions Bar
 
 ## Notes
 
+- Jumlah langkah 37, di atas smell 35 langkah; semua blok satu kelas harness (Bulk Actions Bar User List) dan berdiri sendiri; kelebihan berasal dari Search per baris yang dicentang (R-16, S-09) dan satu Verifikasi per klausa Expected (S-01).
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 6, 12, 15, 19 (menutup overlay dan menu), 16 (mencentang kembali baris untuk langkah 3 TC-FA-SU-1042), 23 dan 28 (membersihkan seleksi, S-09), dan 24 (menutup Search).
-- Temuan untuk QA (S-15): (1) TC-FA-SU-1043 langkah 4 ("Hapus Search lalu centang satu baris") tidak menyebut nasib seleksi Hana Kusuma; Expected b menyebut counter `1 User selected`, sehingga spec membersihkan seleksi sebelum mencentang baris berikutnya (langkah 23). (2) TC-FA-SU-1041 memakai `Select All ([N] records)` tanpa nilai N; N = 23 diambil dari Expected TC-FA-SU-1043.
+- Langkah penghubung (S-03, tanpa awalan `Verifikasi`): langkah 9, 16, 20, dan 27 (menutup overlay dan menu), 22 sampai 24 (mencentang kembali baris untuk langkah 3 TC-FA-SU-1042), 32 dan 37 (membersihkan seleksi, S-09), serta 5, 28, dan 33 (menutup Search dan mereset tabel; langkah 5 memulihkan tabel penuh supaya `Select All (23 records)` menghitung seluruh pengguna, bukan hasil Search terakhir, S-09). Langkah 1, 3, 13, 17, 21, 23, dan 29 adalah Search untuk menemukan baris target (R-16 dan butir 8b.13, memakai "ganti isi kotak search" bila kotak sudah berisi).
+- Temuan untuk QA (S-15): (1) TC-FA-SU-1043 langkah 4 ("Hapus Search lalu centang satu baris") tidak menyebut nasib seleksi Hana Kusuma; Expected b menyebut counter `1 User selected`, sehingga spec membersihkan seleksi sebelum mencentang baris berikutnya (langkah 32). (2) TC-FA-SU-1041 memakai `Select All ([N] records)` tanpa nilai N; N = 23 diambil dari Expected TC-FA-SU-1043. (3) TC-FA-SU-1041 dan TC-FA-SU-1042 mencentang dua pengguna sekaligus tanpa menyebut cara menemukan baris; spec memakai Search per baris dan mengasumsikan seleksi bertahan saat isi Search berganti serta saat Search ditutup lewat `(←)`; mohon konfirmasi.

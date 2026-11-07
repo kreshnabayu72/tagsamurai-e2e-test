@@ -44,7 +44,7 @@ coverage:
 
 ### TC-FA-SU-236: Opsi Transaction memuat katalog sembilan Jenis Transaksi
 
-1. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting
+1. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting
 2. Buka dropdown Transaction
 3. Verifikasi dropdown Transaction memuat Borrowing & Assignment, Transfer, Disposal, Damaged, Missing, Audit, Repair Ticketing, Tracking, dan Maintenance Routine
 4. Verifikasi seluruh sembilan jenis tersedia tanpa bergantung lisensi Addon
@@ -67,7 +67,7 @@ coverage:
 15. Verifikasi dialog `Unsaved Changes`
 16. Klik `[Leave]`
 17. Pindah ke tenant `FaUserTR` dengan akun aktor yang sama
-18. Buka Detail Nanda Pratama > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, pilih Group Finance & Accounting, lalu pilih Transaction Transfer
+18. Ketik Search `Nanda Pratama`, tekan Enter, lalu buka Detail Nanda Pratama > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, pilih Group Finance & Accounting, lalu pilih Transaction Transfer
 19. Verifikasi tidak ada opsi Role Enabled sehingga dropdown Role tidak dapat dipilih
 20. Klik `[✕]` pada modal
 21. Verifikasi dialog `Unsaved Changes`
@@ -82,6 +82,7 @@ coverage:
 - Modal Assign Transaction Role dibuka sekali di awal untuk TC-FA-SU-236 sampai 238 bagian Mira Anggraini dan dipakai tanpa dibuka ulang (halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - Jumlah langkah dengan ekspansi 38, di atas smell 35 langkah; semua blok satu topik (opsi pada modal Assign Transaction Role), satu kelas harness, dan baca tanpa menyimpan data.
 - Pre-setup #50 diterapkan hanya pada Mira Anggraini (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih IT Infrastructure (langkah 5 dan 8); Home Group Mira Anggraini dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1 dan 18 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-238 langkah 5 pindah ke tenant `FaUserTR` tanpa menyebut akun atau cara berpindah; spec menulisnya sebagai kemampuan "disediakan tim FE".
   - TC-FA-SU-236 butir b ("tanpa bergantung lisensi Addon") tidak menyebut tenant tanpa lisensi Addon pada langkah; TC-FA-SU-279 mengujinya pada tenant tanpa Addon, sedangkan spec ini hanya mengasersi kesembilan jenis tampil.

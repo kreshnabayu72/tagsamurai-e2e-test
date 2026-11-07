@@ -26,13 +26,14 @@ coverage:
 ### TC-FA-SU-904: Download popup Detail Group Assignment gagal
 
 1. Intercept respons Download menjadi 5xx
-2. Buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role lalu klik `[Detail]` pada baris Manage purchase
-3. Klik Download lalu pilih CSV
-4. Lepas intercept Download
-5. Verifikasi toast error "Error, failed to download Group-Assignment-Wawan-Setiawan-Manage-purchase-document." tampil
+2. Ketik Search `Wawan Setiawan`, tekan Enter
+3. Buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role lalu klik `[Detail]` pada baris Manage purchase
+4. Klik Download lalu pilih CSV
+5. Lepas intercept Download
+6. Verifikasi toast error "Error, failed to download Group-Assignment-Wawan-Setiawan-Manage-purchase-document." tampil
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular. Spec berisi satu kelas harness (b, fault injection) dengan intercept di atas backend nyata; modenya FE+BE (bagian 6).
-- Langkah penghubung (tanpa awalan `Verifikasi`): melepas intercept (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`): langkah 2 (Search untuk menemukan baris target, R-16, butir 8b.13) dan melepas intercept (S-09).
 - Temuan untuk QA (S-15): TC-FA-SU-904 tidak punya Post Condition.

@@ -20,8 +20,9 @@ coverage:
 - Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor untuk pelaku kedua, dan pemulihan Pre-setup bersama lewat seed API.
 - Data Pre-setup: Client `FaUserMain` (#20, plan Enterprise, 25 pengguna). Nama pengguna dan nilai Pre-setup dirujuk lewat `Fixture.fa-settings-user.<kunci>` (berkas `fixtures/fa-settings-user.json` belum ada dan disediakan tim FE).
-- Spec ini hanya membaca data Pre-setup dan tidak mengubahnya; suite berjalan serial (`parallel: false`).
+- Spec ini mengubah data Pre-setup hanya lewat varian #42 (butir berikutnya) dan preferensi kolom User List; suite berjalan serial (`parallel: false`).
 - Data Pre-setup tambahan: identitas (#42) berisi pengguna ber-Name `Muhammad Abdurrahman Al-Fatih Prasetyo Nugraha Wijaya Kusuma`; atribut User List (#43). Filter Status `Active` menyisakan 21 pengguna (halaman 1 berisi 10, halaman 2 berisi 10, halaman 3 berisi 1); Doni Prasetyo, Fajar Nugroho, Kartika Sari, dan Lukman Hakim berstatus Inactive.
+- Kemampuan seed API (disediakan tim BE/FE): menerapkan varian #42 (Name Teguh Prakoso diubah di Global Settings menjadi `Muhammad Abdurrahman Al-Fatih Prasetyo Nugraha Wijaya Kusuma`) di hook `before` dan memulihkannya ke seed di hook `after` (R-08). Efek pada Pre-setup: Name, Last Updated, dan Modified By Teguh Prakoso berubah selama spec berjalan.
 - Preferensi kolom User List (Setup Column) dihapus di browser pada hook `before` dan `after` spec ini (kemampuan disediakan tim FE, bagian 4 konvensi), bukan lewat `[Reset to Default]`.
 
 ## Test Steps

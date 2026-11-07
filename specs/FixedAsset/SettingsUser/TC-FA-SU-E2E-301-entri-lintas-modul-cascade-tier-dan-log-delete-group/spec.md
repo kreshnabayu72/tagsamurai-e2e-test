@@ -29,6 +29,7 @@ coverage:
   - Grup `IT Infrastructure {runId}-301` (milik spec, dihapus oleh TC-FA-SU-930), Oscar Pranata (`Oscar Pranata {runId}-301`, email `oscar.pranata+{runId}-301@qwertysystem.net`): Group Manager pada grup itu, dan Indra Wijaya (`Indra Wijaya {runId}-301`, email `indra.wijaya+{runId}-301@qwertysystem.net`): Group Role dan Transaction Role pada grup itu.
 - Kemampuan Principal Automation (Pre-setup #12) untuk mengubah tingkat akses dan Group Manager lewat Settings > Role & Permission, dan kemampuan baca notifikasi in-app pengguna target (Oscar Pranata): disediakan tim FE/BE (langkah UI Role & Permission tidak diuraikan TC).
 - Kemampuan baca jumlah entri (disediakan tim FE/BE): jumlah entri per Action dan Field pada Tab Changelog pengguna target, Tab System Log aktor, Activity Log, dan Modal Combined Changelog, dibaca sebelum dan sesudah aksi. Entri log muncul eventual: tiap surface dimuat ulang tiap 5 detik sampai entri tampil (batas tunggu 2 menit, idiom polling bagian 6 konvensi). Audit trail bersifat permanen, sehingga asersi hanya memakai selisih terhadap baseline (S-12), bukan angka absolut. Entri dicari lewat Name atau User Name bersuffix unik.
+- Jendela absence notifikasi in-app (bagian 6 konvensi, 8b.11): langkah `Tunggu 5 detik tanpa memuat ulang halaman` (langkah 61) ditaruh sesudah anchor pembanding dan sebelum asersi absence notifikasi TC-FA-SU-930.
 - Tidak ada intercept, jam server, atau klien HTTP. State global: pohon grup (grup milik spec dihapus oleh TC-FA-SU-930, dikerjakan terakhir); suite berjalan serial (`parallel: false`). Grup milik spec dihapus lewat seed API di hook `after` bila TC-FA-SU-930 belum menghapusnya.
 
 ## Test Steps
@@ -95,7 +96,7 @@ coverage:
 49. Buka Fixed Asset > Settings > User, cari Oscar Pranata {runId}-301, klik nama, lalu buka Tab Changelog, muat ulang sampai entri tampil
 50. Verifikasi Tab Changelog memuat entri `Remove` dengan Field `Group Manager — IT Infrastructure {runId}-301`, Old Value `Assigned`, New Value `—`, dan Modified By `Lina M`
 51. Verifikasi tabel Tab Changelog tidak memuat kolom Object dan nama grup terbawa di Field (Object tidak ada)
-52. Buka Detail Indra Wijaya {runId}-301 > Tab Changelog, muat ulang sampai entri tampil
+52. Kembali ke User List, ganti isi kotak search dengan `Indra Wijaya {runId}-301`, tekan Enter, klik nama Indra Wijaya {runId}-301, lalu buka Tab Changelog, muat ulang sampai entri tampil
 53. Verifikasi Tab Changelog memuat entri `Remove` per assignment Group Role dan Transaction Role pada grup IT Infrastructure {runId}-301 dengan Field membawa nama grup dan Modified By `Lina M`
 54. Buka Tab System Log aktor, muat ulang sampai entri tampil
 55. Verifikasi Tab System Log memuat entri `Remove` Object `Group Manager (Group Deleted)` dengan Field `Group Manager — IT Infrastructure {runId}-301`, Old Value `Assigned`, dan New Value `—`
@@ -103,15 +104,18 @@ coverage:
 57. Buka Activity Log, muat ulang sampai entri tampil
 58. Verifikasi Activity Log memuat entri `Remove` Object `Group Manager (Group Deleted)`, `Group Role`, dan `Transaction Role` dengan Modified By `Lina M` (admin yang menghapus grup)
 59. Buka panel notifikasi in-app Oscar Pranata {runId}-301 lewat kemampuan baca notifikasi
-60. Verifikasi panel notifikasi Oscar Pranata {runId}-301 memuat sedikitnya satu notifikasi lain sebagai pembanding dan tidak memuat notifikasi penghapusan grup IT Infrastructure {runId}-301
+60. Verifikasi panel notifikasi Oscar Pranata {runId}-301 memuat sedikitnya satu notifikasi lain sebagai pembanding
+61. Tunggu 5 detik tanpa memuat ulang halaman
+62. Verifikasi panel notifikasi Oscar Pranata {runId}-301 tidak memuat notifikasi penghapusan grup IT Infrastructure {runId}-301
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC sumber diubah: TC-FA-SU-928 (aktor Default User) dikerjakan pertama dan TC-FA-SU-930 (menghapus grup) terakhir; TC-FA-SU-927 dan TC-FA-SU-929 memakai pengguna berbeda karena TC-FA-SU-929 mengubah Group Role target lewat cascade tingkat akses (S-10, S-06).
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): 3, 19, 32, 48, 11, 12; langkah baseline jumlah entri (S-12): 1, 13, 30, 46. Langkah 11 dan 12 adalah ganti akun eksplisit.
-- Alasan di atas sekitar 35 langkah: seluruh TC satu kelas (pencatatan pada tiga surface log, bukan kelas harness lain), tiap TC berdiri sendiri dengan pengguna dan baseline sendiri, dan kegagalan satu TC tidak membuat TC lain kehilangan makna. Langkah baca-log berpola (buka surface, muat ulang sampai entri tampil, `Verifikasi` kolom log, `Verifikasi` jumlah entri) tidak dihitung menurut bagian 3 prinsip 13 (Smell): 40 dari 60 langkah, sisa 20 langkah. Alasan kelas: seluruh TC mengasersi pencatatan peristiwa lintas modul pada surface log Settings > User.
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): 3, 19, 32, 48, 61, 11, 12; langkah baseline jumlah entri (S-12): 1, 13, 30, 46. Langkah 11 dan 12 adalah ganti akun eksplisit.
+- Alasan di atas sekitar 35 langkah: seluruh TC satu kelas (pencatatan pada tiga surface log, bukan kelas harness lain), tiap TC berdiri sendiri dengan pengguna dan baseline sendiri, dan kegagalan satu TC tidak membuat TC lain kehilangan makna. Langkah baca-log berpola (buka surface, muat ulang sampai entri tampil, `Verifikasi` kolom log, `Verifikasi` jumlah entri) tidak dihitung menurut bagian 3 prinsip 13 (Smell): 40 dari 62 langkah, sisa 22 langkah. Alasan kelas: seluruh TC mengasersi pencatatan peristiwa lintas modul pada surface log Settings > User.
 - Asersi bahwa entri cascade tidak tampil di Tab Changelog, Modal Combined Changelog, dan modal Changelog User > Transaction Role (TC-FA-SU-929 butir c) adalah asersi scope exclusion dengan anchor positif entri tingkat akses pada surface yang sama, bukan asersi absence kelas g (bagian 3 prinsip 13 butir g). Klausa "tidak ada notifikasi" TC-FA-SU-930 butir d memakai pembanding notifikasi lain pada panel yang sama.
+- Langkah 52 juga Search untuk menemukan baris target (R-16, 8b.13): kotak Search masih berisi nama Oscar Pranata dari langkah 49, sehingga ditulis "ganti isi kotak search" sesudah "Kembali ke User List" (8b.9).
 - Pengguna dan grup milik spec bernama sama dengan Pre-setup TC dengan suffix `{runId}-301` (S-06).
 - Temuan untuk QA (S-15):
   - TC-FA-SU-927 butir a, b dan TC-FA-SU-928 butir a menyebut Object pada Tab Changelog, padahal Tab Changelog tidak memiliki kolom Object (TC-FA-SU-909 butir a dan TC-FA-SU-936). Spec mengasersi Action, Field, Old Value, dan New Value pada Tab Changelog dan Object pada Tab System Log dan Activity Log.

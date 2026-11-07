@@ -41,7 +41,7 @@ coverage:
 
 ### TC-FA-SU-480: Screening Filter Panel Sub-tab Pending Approvals: field, label, placeholder, dan tombol
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Pending Approvals
 3. Klik icon Filter
 4. Verifikasi panel Filter terbuka di bawah Table Tools
@@ -80,9 +80,10 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Langkah 14 sampai 21 diulang untuk dua baris tabel parameter "Field Filter" (ekspansi 16 langkah dari 8 langkah nominal, bagian 8b butir 7) dan mencakup TC-FA-SU-481 (Transaction) dan TC-FA-SU-482 (Requester). `[Clear Field]` lalu `[Apply]` di akhir tiap iterasi dan di akhir TC-FA-SU-483 memastikan tiap field diuji terpisah.
 - Pembagian TC lintas spec: TC-FA-SU-484 sampai 486 ada di spec 163.
+- Spec melewati sekitar 35 langkah bila ekspansi dihitung (29 tertulis, 37 ekspansi). Seluruh blok berada pada satu surface (satu sub-tab atau tab, satu dataset), satu kelas fungsional, tanpa mengubah data backend, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Sebagian angka di atas ambang berasal dari ekspansi iterasi tabel parameter (8b butir 7); di atas smell 35 langkah.
 - Temuan untuk QA (S-15):
   - TC-FA-SU-483 tidak menyebut cara membuka date range picker dan memilih tanggal; spec memakai langkah umum "Buka date range picker" lalu memilih tanggal awal dan akhir.
   - TC-FA-SU-480 Expected b tidak menyebut format placeholder date range picker selain `Select date`; spec mengasersi sesuai Expected.

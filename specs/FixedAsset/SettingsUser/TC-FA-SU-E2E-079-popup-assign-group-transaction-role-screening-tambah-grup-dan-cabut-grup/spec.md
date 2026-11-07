@@ -31,7 +31,7 @@ coverage:
 
 ### TC-FA-SU-257: Screening popup Assign Group Transaction Role: header, pencarian, pohon tercentang, dan footer
 
-1. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[Assign Group]` pada baris Disposal × Staff
+1. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[Assign Group]` pada baris Disposal × Staff
 2. Verifikasi header `Assign Group` dengan close `[✕]`
 3. Verifikasi Search `Search groups...`
 4. Verifikasi pohon multi-select dengan grup ter-assign pada baris (Finance & Accounting) tercentang dan dapat dicabut centangnya (bukan Disabled)
@@ -55,7 +55,7 @@ coverage:
 ### TC-FA-SU-259: Assign Group: cabut grup menampilkan dialog Remove Transaction Role lalu toast removed dan log Remove
 
 18. Catat jumlah entri `Remove` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
-19. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[Assign Group]` pada baris Disposal × Staff
+19. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role lalu klik `[Assign Group]` pada baris Disposal × Staff
 20. Hapus centang IT Infrastructure
 21. Klik `[Save]`
 22. Verifikasi dialog Title `Remove Transaction Role` dengan Body `• Mira Anggraini`, `This user will lose the selected transaction role.`, dan `Are you sure you want to remove it?`
@@ -73,6 +73,7 @@ coverage:
 - Langkah pola baca-log: langkah 16, 17, 26 dan 27. Search `Mira Anggraini` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - Popup `Assign Group` dibuka pada TC-FA-SU-257 dan dipakai TC-FA-SU-258 tanpa dibuka ulang karena belum ada perubahan (halaman yang sama dipakai berulang, bagian 3 prinsip 13). TC-FA-SU-259 (dependensi TC-FA-SU-258) membuka popup lagi dan mencabut grup yang ditambahkan TC-FA-SU-258 (S-04).
 - Pre-setup #50 diterapkan hanya pada Mira Anggraini (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih IT Infrastructure (langkah 10); Home Group Mira Anggraini dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 1 dan 19): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah 19 mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-257 butir e diperbarui: preview scope hanya untuk grup yang baru dicentang. Asersi ditulis pada langkah 8 (sebelum ada centang baru) dan langkah 11 (sesudah IT Infrastructure dicentang pada blok TC-FA-SU-258, karena aksi centang berada di sana); TC dan PRD tidak menetapkan copy, format, atau selektor preview scope sehingga asersi longgar sebagai daftar node, dan format perlu dikonfirmasi tim FE (lihat TC-FA-SU-1103, E2E-410).
   - TC-FA-SU-258 butir c dan TC-FA-SU-259 butir c menyebut log tanpa menyebut permukaan; spec mengasersi Tab Changelog. Post Condition TC-FA-SU-258 dan 259 (state baris, tiga permukaan log, Settings > Role & Permission) tidak punya langkah observasi tambahan di TC dan tidak diasersi.

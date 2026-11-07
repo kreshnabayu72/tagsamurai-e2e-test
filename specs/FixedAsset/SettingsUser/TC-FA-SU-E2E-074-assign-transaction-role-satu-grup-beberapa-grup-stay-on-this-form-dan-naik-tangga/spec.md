@@ -33,7 +33,7 @@ coverage:
 ### TC-FA-SU-243: Assign Transaction Role baru ke satu grup: toast, baris baru, dan log Assign
 
 1. Catat jumlah entri `Assign` Object `Transaction Role` Mira Anggraini pada Tab Changelog target, Tab System Log aktor, dan Activity Log sebagai baseline
-2. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting, Transaction Transfer, dan Role Asset Admin
+2. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting, Transaction Transfer, dan Role Asset Admin
 3. Klik `[Submit]`
 4. Verifikasi modal tertutup
 5. Verifikasi toast "Success, Asset Admin has been assigned."
@@ -48,7 +48,7 @@ coverage:
 ### TC-FA-SU-244: Assign ke beberapa grup dalam satu Save: satu toast bentuk tunggal dan satu entri log per grup
 
 13. Catat jumlah entri `Assign` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
-14. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting dan IT Infrastructure, Transaction Damaged, dan Role Monitoring & Report
+14. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting dan IT Infrastructure, Transaction Damaged, dan Role Monitoring & Report
 15. Tunggu toast lama hilang otomatis
 16. Klik `[Submit]`
 17. Verifikasi toast "Success, Monitoring & Report has been assigned." tampil satu kali
@@ -60,7 +60,7 @@ coverage:
 ### TC-FA-SU-245: Checkbox Stay on this form after submitting: Submit sukses mengosongkan form tanpa menutup modal
 
 22. Pulihkan Transaction Role Mira Anggraini ke Pre-setup #39 lewat seed API
-23. Buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role dan klik `[+ Assign]`
+23. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role dan klik `[+ Assign]`
 24. Centang `Stay on this form after submitting`
 25. Isi Group Finance & Accounting, Transaction Transfer, dan Role Asset Admin lalu klik `[Submit]`
 26. Verifikasi toast sukses tampil
@@ -78,7 +78,7 @@ coverage:
 
 36. Pulihkan Transaction Role Mira Anggraini ke Pre-setup #39 lewat seed API
 37. Catat jumlah entri `Remove`, `Assign`, dan `Edit` Object `Transaction Role` Mira Anggraini pada Tab Changelog target, Tab System Log aktor, dan Activity Log sebagai baseline
-38. Buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting, Transaction Disposal, dan Role Asset Admin
+38. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka ulang Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting, Transaction Disposal, dan Role Asset Admin
 39. Klik `[Submit]`
 40. Verifikasi tidak ada dialog konfirmasi
 41. Verifikasi modal tertutup
@@ -106,6 +106,7 @@ coverage:
 - Langkah pola baca-log: langkah 7 sampai 12, 19 sampai 21 dan 45 sampai 56. Search `Mira Anggraini` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16). Asersi jumlah "tidak ada entri `Edit`" pada TC-FA-SU-246 memakai baseline dan anchor positif entri `Remove` dan `Assign` pada surface yang sama (bagian 3 prinsip 13 butir g, S-12).
 - Jumlah langkah 56, di atas smell 35 langkah: 35 langkah di luar blok baca-log berpola (21 langkah, tidak dihitung pada smell bagian 3 prinsip 13); seluruh blok satu topik (Assign Transaction Role lewat modal yang sama pada pengguna yang sama) dan satu kelas harness, dan tiap TC berdiri sendiri karena Transaction Role Mira Anggraini dipulihkan antar TC.
 - Pre-setup #50 diterapkan hanya pada Mira Anggraini (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih IT Infrastructure (langkah 14); Home Group Mira Anggraini dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 2, 14, 23 dan 38): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah 14, 23 dan 38 mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-245 mengulang kombinasi Transfer × Asset Admin yang sudah diassign TC-FA-SU-243 dan tidak menyebut pemulihannya; spec memulihkan Transaction Role Mira lewat seed API sebelum TC-FA-SU-245. TC-FA-SU-245 butir b ("modal menutup otomatis tanpa Stay") tidak menyebut pengaturan awal checkbox pada modal baru; spec membuka modal baru tanpa mencentang checkbox dan mengasumsikan modal baru dimulai tanpa centang.
   - TC-FA-SU-245 butir a menyebut "toast sukses" tanpa teks; spec hanya mengasersi toast sukses tampil.

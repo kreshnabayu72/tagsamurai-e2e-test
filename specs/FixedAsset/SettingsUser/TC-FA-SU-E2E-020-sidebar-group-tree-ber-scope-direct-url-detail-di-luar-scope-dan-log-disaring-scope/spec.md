@@ -67,54 +67,55 @@ coverage:
 ### TC-FA-SU-64: Tab System Log dan Tab Transaction Admin Log disaring menurut scope aktor
 
 21. Buka Settings > User dari sidebar
-22. Buka Detail Budi Santoso lalu Tab System Log
-23. Verifikasi baris dengan Name Oscar Pranata dan Lina Marlina tampil
-24. Verifikasi baris dengan Name Hana Kusuma dan Eka Wulandari tidak tampil
-25. Buka dropdown filter Name
-26. Verifikasi opsi Oscar Pranata dan Lina Marlina tampil
-27. Verifikasi opsi Hana Kusuma dan Eka Wulandari tidak tampil
-28. Tutup dropdown dengan menekan Esc
-29. Buka dropdown filter Group
-30. Verifikasi sedikitnya satu opsi Group tampil
-31. Verifikasi opsi IT Infrastructure, Branch Surabaya, General Affairs, dan Logistics Warehouse tidak tampil
-32. Tutup dropdown dengan menekan Esc
-33. Klik icon Download pada Tab System Log lalu pilih CSV
-34. Verifikasi berkas CSV terunduh
-35. Verifikasi isi berkas CSV memuat baris dengan Name Oscar Pranata dan Lina Marlina
-36. Verifikasi isi berkas CSV tidak memuat baris dengan Name Hana Kusuma dan Eka Wulandari
-37. Buka Tab Transaction Admin Log
-38. Verifikasi sedikitnya satu baris tampil
-39. Verifikasi seluruh baris yang tampil memiliki Name atau Group dalam scope Finance & Accounting
+22. Ketik Search `Budi Santoso`, tekan Enter
+23. Buka Detail Budi Santoso lalu Tab System Log
+24. Verifikasi baris dengan Name Oscar Pranata dan Lina Marlina tampil
+25. Verifikasi baris dengan Name Hana Kusuma dan Eka Wulandari tidak tampil
+26. Buka dropdown filter Name
+27. Verifikasi opsi Oscar Pranata dan Lina Marlina tampil
+28. Verifikasi opsi Hana Kusuma dan Eka Wulandari tidak tampil
+29. Tutup dropdown dengan menekan Esc
+30. Buka dropdown filter Group
+31. Verifikasi sedikitnya satu opsi Group tampil
+32. Verifikasi opsi IT Infrastructure, Branch Surabaya, General Affairs, dan Logistics Warehouse tidak tampil
+33. Tutup dropdown dengan menekan Esc
+34. Klik icon Download pada Tab System Log lalu pilih CSV
+35. Verifikasi berkas CSV terunduh
+36. Verifikasi isi berkas CSV memuat baris dengan Name Oscar Pranata dan Lina Marlina
+37. Verifikasi isi berkas CSV tidak memuat baris dengan Name Hana Kusuma dan Eka Wulandari
+38. Buka Tab Transaction Admin Log
+39. Verifikasi sedikitnya satu baris tampil
+40. Verifikasi seluruh baris yang tampil memiliki Name atau Group dalam scope Finance & Accounting
 
 ### TC-FA-SU-65: Modal Combined Changelog disaring menurut scope aktor
 
-40. Buka Settings > User dari sidebar
-41. Klik icon Changelog di Table Tools User List
-42. Verifikasi modal Combined Changelog memuat entri pengguna Budi Santoso
-43. Verifikasi seluruh entri yang tampil milik pengguna target dalam row scope Finance & Accounting
-44. Buka filter User Name
-45. Verifikasi opsi Budi Santoso tampil
-46. Verifikasi opsi Indra Wijaya, Eka Wulandari, Rudi Hartono, Rina Susanti, Qori Akbar, dan Doni Prasetyo tidak tampil
-47. Tutup dropdown dengan menekan Esc
-48. Klik Download pada modal Combined Changelog
-49. Verifikasi berkas `Changelog-User` terunduh
-50. Verifikasi isi berkas memuat entri pengguna Budi Santoso
-51. Verifikasi isi berkas tidak memuat entri Indra Wijaya, Eka Wulandari, Rudi Hartono, Rina Susanti, Qori Akbar, dan Doni Prasetyo
-52. Tutup modal Combined Changelog dengan ✕
+41. Buka Settings > User dari sidebar
+42. Klik icon Changelog di Table Tools User List
+43. Verifikasi modal Combined Changelog memuat entri pengguna Budi Santoso
+44. Verifikasi seluruh entri yang tampil milik pengguna target dalam row scope Finance & Accounting
+45. Buka filter User Name
+46. Verifikasi opsi Budi Santoso tampil
+47. Verifikasi opsi Indra Wijaya, Eka Wulandari, Rudi Hartono, Rina Susanti, Qori Akbar, dan Doni Prasetyo tidak tampil
+48. Tutup dropdown dengan menekan Esc
+49. Klik Download pada modal Combined Changelog
+50. Verifikasi berkas `Changelog-User` terunduh
+51. Verifikasi isi berkas memuat entri pengguna Budi Santoso
+52. Verifikasi isi berkas tidak memuat entri Indra Wijaya, Eka Wulandari, Rudi Hartono, Rina Susanti, Qori Akbar, dan Doni Prasetyo
+53. Tutup modal Combined Changelog dengan ✕
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
-- Spec melewati sekitar 35 langkah (52 langkah). Alasan: seluruh blok satu kelas (fungsional scope aktor ber-scope grup, hanya membaca kecuali TC-FA-SU-63), lima TC berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna), dan tiap blok log membaca surface berbeda.
+- Spec melewati sekitar 35 langkah (53 langkah). Alasan: seluruh blok satu kelas (fungsional scope aktor ber-scope grup, hanya membaca kecuali TC-FA-SU-63), lima TC berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna), dan tiap blok log membaca surface berbeda.
 - Urutan TC: TC-FA-SU-63 ditaruh sebelum TC-FA-SU-62 karena aktor Total Control sudah aktif sesudah TC-FA-SU-61 (menghindari satu ganti akun tambahan); TC-FA-SU-62, 64, dan 65 memakai akun Sinta Dewi berurutan.
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 dan 7 (Expand All agar node turunan terbuka), 6, 15, 21, dan 40 (membuka Settings > User), 28, 32, dan 47 (menutup dropdown dengan Esc), 52 (menutup modal).
-- Langkah 2 adalah anchor positif untuk asersi absence node langkah 4; langkah 23 untuk langkah 24; langkah 26 untuk langkah 27; langkah 30 untuk langkah 31; langkah 35 untuk langkah 36; langkah 42 dan 45 untuk langkah 46 dan 51 (bagian 8b butir 2).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): langkah 1 dan 7 (Expand All agar node turunan terbuka), 6, 15, 21, dan 41 (membuka Settings > User), 22 (Search nama baris target sebelum Buka Detail, R-16, bagian 8b butir 13), 29, 33, dan 48 (menutup dropdown dengan Esc), 53 (menutup modal).
+- Langkah 2 adalah anchor positif untuk asersi absence node langkah 4; langkah 24 untuk langkah 25; langkah 27 untuk langkah 28; langkah 31 untuk langkah 32; langkah 36 untuk langkah 37; langkah 43 dan 46 untuk langkah 47 dan 52 (bagian 8b butir 2).
 - Langkah 9 memicu pelaku kedua (Principal Automation) lewat sesi API sehingga bukan konteks kedua kelas c dan tidak memakai `P-2`.
-- Langkah 33 sampai 36 dan 48 sampai 51 (Download): kemampuan membaca isi berkas disediakan tim FE.
+- Langkah 34 sampai 37 dan 49 sampai 52 (Download): kemampuan membaca isi berkas disediakan tim FE.
 - Temuan untuk QA:
   - TC-FA-SU-61 Expected c dan TC-FA-SU-64 Expected c serta TC-FA-SU-65 Expected c menyebut Default User, Total Control, Read Only, dan Manage global user & role melihat seluruh data, tetapi langkah TC hanya memuat satu aktor kedua (Total Control pada TC-FA-SU-61) atau tidak memuat aktor kedua; asersi untuk aktor selain Total Control pada TC-FA-SU-61, dan seluruh klausa c pada TC-FA-SU-64 dan 65, tidak ditulis karena tidak ada langkahnya.
   - TC-FA-SU-61 Expected b menyebut node di luar scope "tidak tampil sehingga tidak dapat diklik" tanpa langkah klik; spec mengasersi ketiadaan node saja. TC-FA-SU-61 tidak menyebut Region Jawa dan Jakarta Selatan Distribution Center pada Expected b walau berada di luar scope Finance & Accounting; spec mengasersi empat node yang disebut TC.
   - TC-FA-SU-63 langkah 2 menyebut "Product Selector Global Settings" tanpa menyebut langkah rinci membuka Detail; spec menulisnya apa adanya. TC tidak menyebut pengguna sasaran; spec memakai pengguna Data Dinamis. Expected b "User List yang di-refresh" tidak punya cara observasi sehingga hanya "aktor dikembalikan ke User List" yang diasersi.
-  - TC-FA-SU-64 dan 65: data Pre-setup #28 hanya memuat Name target Hana Kusuma, Oscar Pranata, Lina Marlina, dan Eka Wulandari; opsi Group dan baris Transaction Admin Log tidak disebut sehingga asersi Group dan Transaction Admin Log dibuat generik. Pre-setup #27 (Changelog) hanya memuat riwayat Budi Santoso, jadi entri pengguna di luar scope tidak ada; asersi absence pada langkah 46 dan 51 dapat lolos tanpa data pembanding. Usulan: tambah entri Changelog untuk pengguna di luar scope pada Pre-setup. TC-FA-SU-64 langkah 4 (Download CSV) tidak menyebut tab asal unduhan; spec mengunduh dari Tab System Log saja.
-  - TC-FA-SU-64 Expected a "baris yang Name atau Group-nya berada dalam scope" tidak menyebut kolom Name/Group untuk Transaction Admin Log; asersi langkah 39 memakai Name atau Group dalam scope Finance & Accounting.
+  - TC-FA-SU-64 dan 65: data Pre-setup #28 hanya memuat Name target Hana Kusuma, Oscar Pranata, Lina Marlina, dan Eka Wulandari; opsi Group dan baris Transaction Admin Log tidak disebut sehingga asersi Group dan Transaction Admin Log dibuat generik. Pre-setup #27 (Changelog) hanya memuat riwayat Budi Santoso, jadi entri pengguna di luar scope tidak ada; asersi absence pada langkah 47 dan 52 dapat lolos tanpa data pembanding. Usulan: tambah entri Changelog untuk pengguna di luar scope pada Pre-setup. TC-FA-SU-64 langkah 4 (Download CSV) tidak menyebut tab asal unduhan; spec mengunduh dari Tab System Log saja.
+  - TC-FA-SU-64 Expected a "baris yang Name atau Group-nya berada dalam scope" tidak menyebut kolom Name/Group untuk Transaction Admin Log; asersi langkah 40 memakai Name atau Group dalam scope Finance & Accounting.
   - Email akun #6 tidak tertulis di Pre-setup TC; password tidak diberi nama env di TC.

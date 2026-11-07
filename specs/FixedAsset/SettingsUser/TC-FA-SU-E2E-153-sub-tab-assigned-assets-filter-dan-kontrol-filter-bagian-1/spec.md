@@ -41,7 +41,7 @@ coverage:
 
 ### TC-FA-SU-451: Screening Filter Panel Sub-tab Assigned Assets: field, label, placeholder, dan tombol
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Klik icon Filter
 4. Verifikasi panel Filter terbuka di bawah Table Tools
@@ -71,7 +71,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Langkah 15 sampai 22 diulang untuk empat baris tabel parameter "Field Filter" (ekspansi 32 langkah dari 8 langkah nominal, bagian 8b butir 7). `[Clear Field]` lalu `[Apply]` di akhir tiap iterasi mengikuti TC-FA-SU-452 langkah 5, 8, dan 11 supaya tiap field diuji terpisah.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (47 langkah, 23 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets, satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.
 - Pembagian TC lintas spec: TC-FA-SU-453 sampai 455 ada di spec 154 dan 169.

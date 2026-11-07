@@ -39,7 +39,7 @@ coverage:
 
 ### Total Control Lina Marlina (TC-FA-SU-219 dan TC-FA-SU-221 butir b)
 
-1. Buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage group
+1. Ketik Search `Oscar Pranata`, tekan Enter, lalu buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage group
 2. Verifikasi checkbox CRUD dan ikon hapus pada baris IT Infrastructure Enabled bagi Total Control
 3. Klik `[+ Assign Group]` untuk membuka popup Select Group
 4. Verifikasi node IT Infrastructure Enabled (Disabled hanya bila sudah ter-assign) bagi Total Control
@@ -51,7 +51,7 @@ coverage:
 ### Default User Ahmad Dahlan (TC-FA-SU-219 dan TC-FA-SU-221 butir b)
 
 9. Ganti akun: logout lalu login sebagai Default User Ahmad Dahlan
-10. Buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage group
+10. Buka Settings > User lewat sidebar, ketik Search `Oscar Pranata`, tekan Enter, lalu buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage group
 11. Verifikasi checkbox CRUD dan ikon hapus pada baris IT Infrastructure Enabled bagi Default User
 12. Klik `[+ Assign Group]` untuk membuka popup Select Group
 13. Verifikasi node IT Infrastructure Enabled (Disabled hanya bila sudah ter-assign) bagi Default User
@@ -63,7 +63,7 @@ coverage:
 ### Manage global user & role (Update) Qori Akbar (TC-FA-SU-218)
 
 18. Ganti akun: logout lalu login sebagai Manage global user & role (Update) Qori Akbar
-19. Buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage group
+19. Buka Settings > User lewat sidebar, ketik Search `Oscar Pranata`, tekan Enter, lalu buka Detail Oscar Pranata > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage group
 20. Hover checkbox CRUD pada baris IT Infrastructure
 21. Verifikasi checkbox CRUD baris IT Infrastructure Disabled dengan tooltip "You don't have permission to edit."
 22. Hover ikon hapus pada baris IT Infrastructure
@@ -85,7 +85,7 @@ coverage:
 
 36. Setel penugasan Manage group Budi Santoso pada Finance & Accounting dan Branch Surabaya lewat seed API
 37. Ganti akun: logout lalu login sebagai Manage user & role Group (Update, Finance & Accounting) Sinta Dewi
-38. Buka Detail Budi Santoso > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage group
+38. Buka Settings > User lewat sidebar, ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage group
 39. Verifikasi baris grup di luar scope (Branch Surabaya) tetap tampil dengan checkbox C/R/U/D dan ikon hapus Disabled dengan tooltip "You don't have permission to edit."
 40. Klik `[+ Assign Group]` untuk membuka popup Select Group
 41. Verifikasi Select Group memuat Finance & Accounting dan Accounts Payable saja
@@ -104,6 +104,7 @@ coverage:
 - Spec ditulis per blok role karena ganti akun menuntut langkah eksplisit (bagian 3a, `[KEPUTUSAN 2026-10-30]`); judulnya tanpa kata Positif atau Negatif.
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 6, 15, 26, 36, 42 dan 48. Penutupan popup tanpa perubahan tidak memunculkan dialog; popup Select Group ditutup dengan `[Cancel]`.
 - Jumlah langkah 48, di atas smell 35 langkah karena ganti akun eksplisit untuk empat role (bagian 3a) dan penutupan popup antar blok; seluruh blok satu topik (kunci baris Group Role per aktor) dan satu kelas harness, dan kegagalan satu blok role tidak membuat blok role lain kehilangan makna.
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1, 10, 19 dan 38 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9). Langkah 10, 19 dan 38 juga membuka Settings > User lewat sidebar karena langkah sebelumnya adalah Ganti akun (S-14).
 - Temuan untuk QA:
   - Langkah penghubung tambahan: 7, 16, 27, 28, 30, 31, dan 32 (membuka sub-tab, popup, dan hover; S-09).
   - TC-FA-SU-218 langkah 5 meminta popup Assign Group Role `Manage user & role` Oscar sebagai contoh baris non-pola; Pre-setup #23 tidak merinci apakah Oscar Pranata memegang role itu (perlu dijamin seed).

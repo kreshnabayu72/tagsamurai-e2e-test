@@ -33,7 +33,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Responsibilities > Sub-tab Pending Tasks
 
 ### TC-FA-SU-514: Sort kelas date (Request Date, Last Updated)
 
@@ -75,7 +75,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; `[Clear Field]` lalu `[Apply]` sebelum Status supaya tiap field diuji terpisah (sesuai langkah TC-FA-SU-516).
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` lalu membuka Detail Budi Santoso (langkah 1); `[Clear Field]` lalu `[Apply]` sebelum Status supaya tiap field diuji terpisah (sesuai langkah TC-FA-SU-516).
 - Daftar field Filter Panel pada TC-FA-SU-515 diasersi sebagai satu `Verifikasi` karena daftar disebut utuh dalam satu butir Expected (S-01).
 - Langkah berulang per baris tabel parameter: tabel "Sort kelas date" pada langkah 2 sampai 7 (2 iterasi).
 - Jumlah langkah: 29 tertulis, 35 dengan ekspansi iterasi.

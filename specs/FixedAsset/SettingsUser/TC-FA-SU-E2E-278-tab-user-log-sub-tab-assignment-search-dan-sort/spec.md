@@ -27,14 +27,15 @@ coverage:
   - A-3: `Assigned|ASG-20260618-0089`, PIC `Eka W` (keyword `Wulandari`)
   - A-4: `Assigned|ASG-20260512-0067`, PIC `Ahmad D`, Date di dalam rentang 05/05/26 sampai 12/05/26
   - A-5: `Assigned|ASG-20260505-0045`, PIC `Ahmad D`, Date di dalam rentang 05/05/26 sampai 12/05/26
-- Kemampuan seed API (disediakan tim BE/FE): menyediakan ulang seed User Log #30 (Catatan TC: fixture yang diubah disediakan ulang lewat seed API) di hook `before` dan `after`. Spec ini hanya membaca surface User Log dan tidak menambah entri pada Budi Santoso.
+- Nilai Date seed untuk Search kolom non-searchable: A-1 bernilai `30/06/26`; nilai ini harus tampil pada sel kolom Date tabel sebelum dipakai sebagai keyword.
+- Kemampuan seed API: menyediakan ulang seed User Log #30 (Catatan TC: fixture yang diubah disediakan ulang lewat seed API) di hook `before` dan `after`. Spec ini hanya membaca surface User Log dan tidak menambah entri pada Budi Santoso.
 - Pemulihan preferensi kolom: kemampuan menghapus preferensi kolom tabel di browser (bukan `[Reset to Default]`) disediakan tim FE; dijalankan sebagai langkah penghubung dan di hook `after`. Preferensi kolom disimpan per perangkat (browser) sehingga spec ini tidak memengaruhi tabel lain.
 
 ## Test Steps
 
 ### TC-FA-SU-842: Siklus interaksi Search: reveal, Enter, clear, collapse
 
-1. Buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
+1. Ketik Search `Budi Santoso`, tekan Enter, buka Detail pengguna Budi Santoso lalu klik tab User Log, sub-tab Assignment
 2. Klik icon Search
 3. Verifikasi input melebar
 4. Verifikasi kursor fokus di input
@@ -65,34 +66,37 @@ coverage:
 
 ### TC-FA-SU-843: Guard kolom non-searchable: Date
 
-29. Ketik Search `30/06/26` (nilai kolom Date), tekan Enter
-30. Verifikasi `30/06/26` tidak mencocokkan baris melalui Search dan empty state `No results found` tampil (penyaringan kolom Date hanya lewat Filter Panel)
-31. Klik icon ←
+29. Verifikasi sel Date baris A-1 pada tabel menampilkan `30/06/26`
+30. Ketik Search `30/06/26` (nilai kolom Date), tekan Enter
+31. Verifikasi `30/06/26` tidak mencocokkan baris melalui Search dan empty state `No results found` tampil (penyaringan kolom Date hanya lewat Filter Panel)
+32. Klik icon ←
 
 ### TC-FA-SU-844: Search terikat visibilitas kolom Activity: hide lalu unhide
 
-32. Ketik Search `Unassigned`, tekan Enter
-33. Verifikasi sebelum hide: keyword `Unassigned` menyisakan A-1 (`Unassigned|ASG-20260618-0089`)
-34. Klik header kolom Column Visibility (⋯), hilangkan centang Activity, tekan Esc
-35. Tekan Enter pada kotak Search (keyword `Unassigned`)
-36. Verifikasi setelah kolom Activity di-hide: keyword yang sama menyisakan tidak ada baris (kolom tersembunyi tidak dicari; kolom lain yang tampil tetap dicari)
-37. Klik header kolom Column Visibility (⋯), centang kembali Activity, tekan Esc
-38. Tekan Enter pada kotak Search (keyword `Unassigned`)
-39. Verifikasi setelah kolom Activity di-unhide: hasil kembali A-1 (`Unassigned|ASG-20260618-0089`)
-40. Klik icon ←
+33. Ketik Search `Unassigned`, tekan Enter
+34. Verifikasi sebelum hide: keyword `Unassigned` menyisakan A-1 (`Unassigned|ASG-20260618-0089`)
+35. Klik header kolom Column Visibility (⋯), hilangkan centang Activity, tekan Esc
+36. Tekan Enter pada kotak Search (keyword `Unassigned`)
+37. Verifikasi setelah kolom Activity di-hide: keyword yang sama menyisakan tidak ada baris (kolom tersembunyi tidak dicari; kolom lain yang tampil tetap dicari)
+38. Klik header kolom Column Visibility (⋯), centang kembali Activity, tekan Esc
+39. Tekan Enter pada kotak Search (keyword `Unassigned`)
+40. Verifikasi setelah kolom Activity di-unhide: hasil kembali A-1 (`Unassigned|ASG-20260618-0089`)
+41. Klik icon ←
 
 ### TC-FA-SU-845: Sort kelas date: Date
 
-41. Klik header Date satu kali
-42. Verifikasi Date klik 1 ascending (↑), lima baris pertama: A-5, A-4, A-3, A-2, A-1
-43. Klik header Date kedua kali
-44. Verifikasi Date klik 2 descending (↓), lima baris pertama: A-1, A-2, A-3, A-4, A-5
-45. Klik header Date ketiga kali
-46. Verifikasi Date klik 3 netral kembali ke default, lima baris pertama: A-1, A-2, A-3, A-4, A-5
+42. Klik header Date satu kali
+43. Verifikasi Date klik 1 ascending (↑), lima baris pertama: A-5, A-4, A-3, A-2, A-1
+44. Klik header Date kedua kali
+45. Verifikasi Date klik 2 descending (↓), lima baris pertama: A-1, A-2, A-3, A-4, A-5
+46. Klik header Date ketiga kali
+47. Verifikasi Date klik 3 netral kembali ke default, lima baris pertama: A-1, A-2, A-3, A-4, A-5
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
-- Spec ini berjumlah 46 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Langkah penghubung pencarian baris (S-03, R-16, bagian 8b butir 13): langkah 1 mencari pengguna lewat Search nama persis `Budi Santoso` (nama Pre-setup) sebelum membuka Detail, karena User List dapat memuat lebih dari satu halaman (25 pengguna, 3 halaman) sehingga spec tidak mengandalkan posisi baris di halaman.
+- Spec ini berjumlah 47 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Verifikasi sel Date langkah 29 adalah asersi tambahan di luar Expected TC-FA-SU-843: ditambahkan sebagai langkah penghubung agar nilai Date seed `30/06/26` tampil di sel sebelum dipakai sebagai keyword Search (S-03, bagian 8b butir 15 b).
 - Temuan untuk QA (S-15): (1) TC mengasersi isi dan urutan baris seed tanpa Filter pembatas pada surface User Log yang dapat bertambah entri; spec mengikuti TC dan mengandalkan seed #30 yang disediakan ulang di hook `before` dan `after` (S-12, S-14). (2) TC-FA-SU-844: setelah kolom Activity di-hide hasil Search `Unassigned` adalah tidak ada baris; asersi tanpa baris memakai `Verifikasi` hasil sebelum hide (A-1) pada surface yang sama sebagai anchor. TC-FA-SU-843 memakai nilai Date `30/06/26` yang hanya diketahui dari urutan sort (A-1).

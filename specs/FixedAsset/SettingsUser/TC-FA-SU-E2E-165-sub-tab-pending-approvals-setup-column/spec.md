@@ -44,7 +44,7 @@ Urutan awal: `Transaction ID`, `Transaction`, `Requester`, `Submission Date`. Ba
 
 ### TC-FA-SU-491: Geser (drag reorder) Setup Column Sub-tab Pending Approvals kelas Hideable (default tampil)
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Pending Approvals
 3. Klik header kolom Actions (⋯)
 4. Klik `Setup Column...`
@@ -95,7 +95,7 @@ Urutan awal: `Transaction ID`, `Transaction`, `Requester`, `Submission Date`. Ba
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Langkah 5 sampai 6, 8, dan 11 diulang untuk empat baris tabel parameter "Geser Kolom" (bagian 8b butir 7); `Verifikasi` tetap satu per klausa tiap kolom.
 - Langkah pemulihan konfigurasi kolom (12 dan 42) dan F5 sesudahnya memulihkan tabel ke default (S-09); hook `after` mengulang pemulihan sebagai cadangan.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (56 langkah, 44 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Pending Approvals (Setup Column), satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.

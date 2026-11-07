@@ -35,7 +35,7 @@ coverage:
 
 ### TC-FA-SU-471: Screening Sub-tab Pending Approvals: Table Tools, kolom, dan default sort
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Pending Approvals
 3. Verifikasi Table Tools `Search`, `Filter`, dan `Download` tampil
 4. Verifikasi Table Tools rata kanan
@@ -108,7 +108,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Langkah penghubung tambahan (S-03): klik header kolom Column Visibility (⋯) (langkah 16) memicu `Verifikasi` overlay (TC-FA-SU-471 Expected b), dan `Esc` (langkah 18) menutup overlay sebelum langkah berikutnya (S-09).
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (60 langkah, 60 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Pending Approvals, satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.
 - Pembagian TC lintas spec: TC-FA-SU-475 sampai 479 ada di spec 161; TC-FA-SU-499 ada di spec 166.

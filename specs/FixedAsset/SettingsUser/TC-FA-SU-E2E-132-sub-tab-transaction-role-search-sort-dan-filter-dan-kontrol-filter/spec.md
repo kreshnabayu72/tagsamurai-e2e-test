@@ -28,65 +28,67 @@ coverage:
 
 ### TC-FA-SU-387: Search Sub-tab Transaction Role terikat visibilitas kolom Transaction: hide lalu unhide
 
-1. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
-2. Ketik Search `Transfer`, tekan Enter
-3. Verifikasi sebelum hide: keyword `Transfer` menyisakan `Transfer - Asset Admin` dan `Transfer - Monitoring & Report`
-4. Klik header kolom Actions (⋯)
-5. Hapus centang Transaction pada overlay Column Visibility
-6. Tutup overlay Column Visibility dengan Esc
-7. Ganti isi kotak search dengan `Transfer`, tekan Enter
-8. Verifikasi setelah kolom Transaction di-hide: keyword yang sama menyisakan tidak ada baris (kolom tersembunyi tidak dicari; kolom lain yang tampil tetap dicari), dengan empty state `No results found` tampil sebagai anchor
-9. Klik header kolom Actions (⋯)
-10. Centang kembali Transaction pada overlay Column Visibility
-11. Tutup overlay Column Visibility dengan Esc
-12. Ganti isi kotak search dengan `Transfer`, tekan Enter
-13. Verifikasi setelah kolom Transaction di-unhide: hasil kembali `Transfer - Asset Admin` dan `Transfer - Monitoring & Report`
-14. Klik `(←)` pada kotak Search
+1. Ketik Search `Yuda Pratama`, tekan Enter
+2. Buka Detail Yuda Pratama > Tab Role > Sub-tab Transaction Role
+3. Ketik Search `Transfer`, tekan Enter
+4. Verifikasi sebelum hide: keyword `Transfer` menyisakan `Transfer - Asset Admin` dan `Transfer - Monitoring & Report`
+5. Klik header kolom Actions (⋯)
+6. Hapus centang Transaction pada overlay Column Visibility
+7. Tutup overlay Column Visibility dengan Esc
+8. Ganti isi kotak search dengan `Transfer`, tekan Enter
+9. Verifikasi setelah kolom Transaction di-hide: keyword yang sama menyisakan tidak ada baris (kolom tersembunyi tidak dicari; kolom lain yang tampil tetap dicari), dengan empty state `No results found` tampil sebagai anchor
+10. Klik header kolom Actions (⋯)
+11. Centang kembali Transaction pada overlay Column Visibility
+12. Tutup overlay Column Visibility dengan Esc
+13. Ganti isi kotak search dengan `Transfer`, tekan Enter
+14. Verifikasi setelah kolom Transaction di-unhide: hasil kembali `Transfer - Asset Admin` dan `Transfer - Monitoring & Report`
+15. Klik `(←)` pada kotak Search
 
 ### TC-FA-SU-388: Sort Sub-tab Transaction Role kelas teks: Transaction
 
-15. Klik header kolom Transaction satu kali
-16. Verifikasi Transaction klik 1 ascending (↑): `Borrowing & Assignment - Approver`, `Damaged - Monitoring & Report`, `Disposal - Approver`, `Disposal - Staff`, `Missing - Approver`
-17. Klik header kolom Transaction kedua kali
-18. Verifikasi Transaction klik 2 descending (↓): `Transfer - Asset Admin`, `Transfer - Monitoring & Report`, `Missing - Approver`, `Disposal - Approver`, `Disposal - Staff`
-19. Klik header kolom Transaction ketiga kali
-20. Verifikasi Transaction klik 3 netral kembali ke default: `Borrowing & Assignment - Approver`, `Damaged - Monitoring & Report`, `Disposal - Approver`, `Disposal - Staff`, `Missing - Approver`
+16. Klik header kolom Transaction satu kali
+17. Verifikasi Transaction klik 1 ascending (↑): `Borrowing & Assignment - Approver`, `Damaged - Monitoring & Report`, `Disposal - Approver`, `Disposal - Staff`, `Missing - Approver`
+18. Klik header kolom Transaction kedua kali
+19. Verifikasi Transaction klik 2 descending (↓): `Transfer - Asset Admin`, `Transfer - Monitoring & Report`, `Missing - Approver`, `Disposal - Approver`, `Disposal - Staff`
+20. Klik header kolom Transaction ketiga kali
+21. Verifikasi Transaction klik 3 netral kembali ke default: `Borrowing & Assignment - Approver`, `Damaged - Monitoring & Report`, `Disposal - Approver`, `Disposal - Staff`, `Missing - Approver`
 
 ### TC-FA-SU-389: Sort Sub-tab Transaction Role kelas group: Group
 
-21. Klik header kolom Group satu kali
-22. Verifikasi Group klik 1 ascending (↑): `Disposal - Approver`, `Damaged - Monitoring & Report`, `Transfer - Monitoring & Report`, `Borrowing & Assignment - Approver`, `Disposal - Staff`
-23. Klik header kolom Group kedua kali
-24. Verifikasi Group klik 2 descending (↓): `Missing - Approver`, `Transfer - Asset Admin`, `Disposal - Staff`, `Borrowing & Assignment - Approver`, `Damaged - Monitoring & Report`
-25. Klik header kolom Group ketiga kali
-26. Verifikasi Group klik 3 netral kembali ke default: `Borrowing & Assignment - Approver`, `Damaged - Monitoring & Report`, `Disposal - Approver`, `Disposal - Staff`, `Missing - Approver`
+22. Klik header kolom Group satu kali
+23. Verifikasi Group klik 1 ascending (↑): `Disposal - Approver`, `Damaged - Monitoring & Report`, `Transfer - Monitoring & Report`, `Borrowing & Assignment - Approver`, `Disposal - Staff`
+24. Klik header kolom Group kedua kali
+25. Verifikasi Group klik 2 descending (↓): `Missing - Approver`, `Transfer - Asset Admin`, `Disposal - Staff`, `Borrowing & Assignment - Approver`, `Damaged - Monitoring & Report`
+26. Klik header kolom Group ketiga kali
+27. Verifikasi Group klik 3 netral kembali ke default: `Borrowing & Assignment - Approver`, `Damaged - Monitoring & Report`, `Disposal - Approver`, `Disposal - Staff`, `Missing - Approver`
 
 ### TC-FA-SU-390: Guard kolom non-sortable Sub-tab Transaction Role: Role
 
-27. Hover header kolom Role
-28. Klik header kolom Role
-29. Verifikasi header Role tidak memiliki icon sort
-30. Verifikasi klik header Role tidak mengubah urutan
+28. Hover header kolom Role
+29. Klik header kolom Role
+30. Verifikasi header Role tidak memiliki icon sort
+31. Verifikasi klik header Role tidak mengubah urutan
 
 ### TC-FA-SU-391: Screening Filter Panel Sub-tab Transaction Role: field, label, placeholder, dan tombol
 
-31. Klik icon Filter
-32. Verifikasi panel Filter terbuka di bawah Table Tools
-33. Verifikasi icon Filter menjadi gelap
-34. Hover icon Filter
-35. Verifikasi tooltip `Filter`
-36. Verifikasi field pertama Transaction berupa multi-select searchable dengan placeholder `All transactions`
-37. Verifikasi field kedua Role berupa multi-select searchable dengan placeholder `All roles`
-38. Verifikasi field ketiga Group berupa multi-select searchable dengan placeholder `All groups`
-39. Verifikasi footer panel: `[Clear Field]` di kiri dan `[Apply]` di kanan
-40. Verifikasi icon Filter tanpa badge titik selama belum ada filter ter-Apply
-41. Tutup panel Filter dengan klik icon Filter
+32. Klik icon Filter
+33. Verifikasi panel Filter terbuka di bawah Table Tools
+34. Verifikasi icon Filter menjadi gelap
+35. Hover icon Filter
+36. Verifikasi tooltip `Filter`
+37. Verifikasi field pertama Transaction berupa multi-select searchable dengan placeholder `All transactions`
+38. Verifikasi field kedua Role berupa multi-select searchable dengan placeholder `All roles`
+39. Verifikasi field ketiga Group berupa multi-select searchable dengan placeholder `All groups`
+40. Verifikasi footer panel: `[Clear Field]` di kiri dan `[Apply]` di kanan
+41. Verifikasi icon Filter tanpa badge titik selama belum ada filter ter-Apply
+42. Tutup panel Filter dengan klik icon Filter
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; urutan blok mengikuti prinsip bagian 3 (screening dan baca di awal, perubahan konfigurasi tersimpan di akhir).
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): menutup overlay Column Visibility, dropdown, dan panel Filter; menutup kotak Search lewat `(←)` atau `✕` + Enter; `[Clear Field]` dan `[Apply]` pemulih, serta mengembalikan sort ke netral dan visibilitas kolom ke semula, supaya blok berikutnya tidak mewarisi state.
+- Langkah penghubung Search (S-03, R-16): langkah 1 (Ketik Search `Yuda Pratama`, tekan Enter) untuk menemukan baris Yuda Pratama di User List 25 pengguna (3 halaman) sebelum membuka Detail.
 - Asersi tambahan (S-03): TC-FA-SU-387 butir b tidak menyebut empty state; `Verifikasi` empty state `No results found` ditambahkan pada langkah yang sama sebagai anchor absence baris (bagian 8b butir 2).
-- Alasan melewati sekitar 35 langkah (41 langkah tertulis, 41 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
+- Alasan melewati sekitar 35 langkah (42 langkah tertulis, 42 dengan ekspansi langkah berulang): seluruh blok berkelas fungsional (kontrol tabel pada satu sub-tab, satu dataset Pre-setup yang hanya dibaca), tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan Detail pengguna dibuka sekali.
 - Temuan untuk QA (S-15):
   - TC-FA-SU-388: klik 1 ascending menghasilkan urutan yang sama dengan default (TC-FA-SU-383), sehingga klik 3 netral tidak terbedakan dari klik 1 hanya lewat urutan baris; spec mengasersi urutan sesuai TC.

@@ -31,7 +31,7 @@ coverage:
 
 ## Test Steps
 
-1. Buka Detail Budi Santoso > Tab Non-Login User
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Non-Login User
 
 ### TC-FA-SU-547: Sort kelas toggle-b (Active)
 
@@ -85,7 +85,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`): membuka Detail Budi Santoso; satu kali menampilkan kolom curated lewat Setup Column.
+- Langkah penghubung (tanpa awalan `Verifikasi`): Search nama `Budi Santoso` (Enter) lalu membuka Detail Budi Santoso, karena User List memuat lebih dari satu halaman (R-16, 8b butir 13); satu kali menampilkan kolom curated lewat Setup Column.
 - Jumlah langkah: 35 tertulis, 35 dengan ekspansi iterasi.
 - Temuan untuk QA:
   - TC-FA-SU-549 dan TC-FA-SU-550: Temporary User (seluruh `No`) dan Temporary Until (seluruh kosong) tidak memiliki dua nilai distinct, sehingga urutan asc, desc, dan netral identik; asersi tidak membuktikan fungsi sort kolom itu (S-11).

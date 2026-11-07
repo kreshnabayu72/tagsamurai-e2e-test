@@ -28,6 +28,7 @@ coverage:
   - C-4: `Edit` | `Gita Permata` | `Manage group — Finance & Accounting — Update`; Modified By `Ahmad D`
   - C-5: `Assign` | `Budi Santoso` | `Manage accounting`; Modified By `Ahmad D`
   - C-6: `Activate` | `Eka Wulandari` | `Status`; Modified By `Ahmad D`
+- Nilai Date seed untuk Search kolom non-searchable (Pre-setup #27, TC-FA-SU-708): `15/06/26`; nilai ini harus tampil pada sel Date tabel sebelum dipakai sebagai keyword.
 - Kemampuan seed API (disediakan tim BE/FE): menyediakan ulang seed Changelog #27 (Catatan TC: fixture yang diubah disediakan ulang lewat seed API) di hook `before` dan `after`. Spec ini hanya membaca surface Combined Changelog dan tidak menambah entri.
 
 ## Test Steps
@@ -45,7 +46,7 @@ coverage:
 9. Verifikasi icon ✕ tampil di kanan input
 10. Verifikasi tabel belum tersaring
 11. Ketik sisa `Resend` (`esend`) lalu tekan Enter
-12. Verifikasi tabel tersaring menjadi C-1
+12. Verifikasi tabel tersaring menjadi C-1 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 13. Klik ✕
 14. Verifikasi input kosong
 15. Verifikasi search bar tetap terbuka
@@ -59,40 +60,44 @@ coverage:
 23. Verifikasi tabel langsung kembali ke semua baris
 24. Klik icon Search
 25. Ketik `  Resend  ` (spasi awal dan akhir), tekan Enter
-26. Verifikasi hasil sama dengan `Resend` tanpa spasi (C-1)
+26. Verifikasi hasil sama dengan `Resend` tanpa spasi (C-1; 1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 27. Verifikasi isi input tidak berubah
 
 ### TC-FA-SU-708: Guard kolom non-searchable Date
 
-28. Ganti isi kotak search dengan `15/06/26` (nilai kolom Date), tekan Enter
-29. Verifikasi nilai Date `15/06/26` tidak mencocokkan baris melalui Search; empty state `No results found` tampil
-30. Kosongkan isi kotak search, tekan Enter
+28. Klik `(←)` pada kotak Search
+29. Verifikasi nilai Date `15/06/26` tampil pada sel kolom Date tabel
+30. Ketik Search `15/06/26` (nilai kolom Date), tekan Enter
+31. Verifikasi nilai Date `15/06/26` tidak mencocokkan baris melalui Search; empty state `No results found` tampil
+32. Kosongkan isi kotak search, tekan Enter
 
 ### TC-FA-SU-709: Search terikat visibilitas kolom Action
 
-31. Ketik Search `Resend`, tekan Enter
-32. Verifikasi sebelum hide: keyword `Resend` menyisakan C-1 (1 baris)
-33. Klik header Column Visibility (⋯), hilangkan centang Action
-34. Ganti isi kotak search dengan `Resend`, tekan Enter
-35. Verifikasi setelah kolom Action di-hide: keyword yang sama menyisakan tidak ada baris (0 baris), empty state `No results found` tampil
-36. Klik header Column Visibility (⋯), centang kembali Action
-37. Ganti isi kotak search dengan `Resend`, tekan Enter
-38. Verifikasi setelah kolom Action di-unhide: hasil kembali C-1 (1 baris)
-39. Klik `(←)` pada kotak Search
+33. Ketik Search `Resend`, tekan Enter
+34. Verifikasi sebelum hide: keyword `Resend` menyisakan C-1 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
+35. Klik header Column Visibility (⋯), hilangkan centang Action
+36. Ganti isi kotak search dengan `Resend`, tekan Enter
+37. Verifikasi setelah kolom Action di-hide: keyword yang sama menyisakan tidak ada baris (0 baris), empty state `No results found` tampil
+38. Klik header Column Visibility (⋯), centang kembali Action
+39. Ganti isi kotak search dengan `Resend`, tekan Enter
+40. Verifikasi setelah kolom Action di-unhide: hasil kembali C-1 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
+41. Klik `(←)` pada kotak Search
 
 ### TC-FA-SU-710: Sort kelas date (Date)
 
-40. Klik header Date satu kali
-41. Verifikasi urutan lima baris pertama klik 1 ascending (↑): C-6, C-5, C-4, C-3, C-2
-42. Klik header Date kedua kali
-43. Verifikasi urutan lima baris pertama klik 2 descending (↓): C-1, C-2, C-3, C-4, C-5
-44. Klik header Date ketiga kali
-45. Verifikasi urutan lima baris pertama klik 3 netral kembali ke default: C-1, C-2, C-3, C-4, C-5
+42. Klik header Date satu kali
+43. Verifikasi urutan relatif baris seed klik 1 ascending (↑), baris non-seed boleh menyisip: C-6, C-5, C-4, C-3, C-2
+44. Klik header Date kedua kali
+45. Verifikasi urutan relatif baris seed klik 2 descending (↓), baris non-seed boleh menyisip: C-1, C-2, C-3, C-4, C-5
+46. Klik header Date ketiga kali
+47. Verifikasi urutan relatif baris seed klik 3 netral kembali ke default, baris non-seed boleh menyisip: C-1, C-2, C-3, C-4, C-5
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung tambahan (S-03): langkah 28 (Klik `(←)` pada kotak Search) menutup search bar dan memulihkan seluruh baris sebelum `Verifikasi` nilai Date pada langkah 29.
+- Asersi tambahan di luar Expected (S-03): `Verifikasi` nilai Date `15/06/26` pada langkah 29 membuktikan nilai itu tampil pada sel Date sebelum dipakai sebagai keyword Search kolom non-searchable (R-25).
 - Asersi tambahan di luar Expected (S-03): empty state `No results found` pada asersi hasil 0 baris TC-FA-SU-709, sebagai anchor positif absence (bagian 8b butir 2).
-- Spec ini berjumlah 45 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Spec ini berjumlah 47 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14). Modal Combined Changelog memuat riwayat seluruh pengguna Client, sehingga entri dari spec lain (Activate, Deactivate, Resend, Edit Home Group) menambah baris di surface ini; TC tidak menyatakan cara menjaga isi keenam baris seed selain penyediaan ulang seed. (2) Tanggal baris seed Changelog (Pre-setup #27) tidak tertulis di Tabel Pre-setup; asersi yang memakai nilai atau rentang Date mengikuti angka di TC dan bergantung pada seed yang disediakan tim FE/BE. (3) TC-FA-SU-709 butir b menulis hasil tanpa baris tanpa menyebut empty state; spec menambahkan `Verifikasi` empty state `No results found` sebagai anchor positif asersi 0 baris (bagian 8b butir 2).

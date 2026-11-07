@@ -30,7 +30,7 @@ coverage:
 - Data Pre-setup: Client `FaUserMain` dengan 25 pengguna (#20; halaman 1: 10, halaman 2: 10, halaman 3: 5), pohon grup (#21), tier dan penugasan (#23: Nanda Pratama Global MUR OFF + Group MUR Finance & Accounting; Qori Akbar Global Role Manage global user & role aktif dan Group Manager IT Infrastructure). Scope Nanda Pratama sebelum perubahan: 12 pengguna Finance & Accounting yaitu Ahmad Dahlan, Budi Santoso, Citra Lestari, Gita Permata, Lina Marlina, Nanda Pratama, Oscar Pranata, Putri Anggraeni, Sinta Dewi, Teguh Prakoso, Umar Faruq, dan Wawan Setiawan.
 - Data Dinamis: tidak ada.
 - Kemampuan teknis: login dan logout bergantian antar akun pada satu sesi browser; hover elemen; seed API untuk memulihkan penugasan Nanda Pratama (kemampuan disediakan tim FE/BE).
-- State global yang diubah: Global Role dan Group Role Nanda Pratama (TC-FA-SU-67 menyalakan switch Global Role dan menghapus penugasan grupnya). Langkah 20 memulihkannya ke kondisi Pre-setup #23 lewat seed API dan hook `after` memulihkannya lagi sebagai cadangan; efek pada Last Updated dan entri Changelog Nanda Pratama tidak dibalik.
+- State global yang diubah: Global Role dan Group Role Nanda Pratama (TC-FA-SU-67 menyalakan switch Global Role dan menghapus penugasan grupnya). Langkah 21 memulihkannya ke kondisi Pre-setup #23 lewat seed API dan hook `after` memulihkannya lagi sebagai cadangan; efek pada Last Updated dan entri Changelog Nanda Pratama tidak dibalik.
 
 ## Test Steps
 
@@ -50,41 +50,44 @@ coverage:
 9. Ketik Search `Nanda Pratama`, tekan Enter
 10. Buka Detail Nanda Pratama lalu Tab Role (Sub-tab Global Role)
 11. Nyalakan switch `Manage global user & role` pada Nanda Pratama
-12. Buka Sub-tab Group Role
-13. Verifikasi Sub-tab Group Role Nanda Pratama tampil
-14. Verifikasi penugasan grup Finance & Accounting pada Group Role `Manage user & role` Nanda Pratama terhapus: baris Group Role `Manage user & role` tidak tampil lagi di Sub-tab Group Role
-15. Ganti akun: logout lalu login sebagai Nanda Pratama
-16. Buka Settings > User dari sidebar
-17. Verifikasi halaman 1 User List berisi 10 baris
-18. Klik halaman 3 pada Pagination
-19. Verifikasi halaman 3 berisi 5 baris, sehingga Nanda Pratama melihat seluruh 25 pengguna organisasi
-20. Pulihkan Global Role Nanda Pratama menjadi OFF dan Group Role `Manage user & role` pada Finance & Accounting lewat seed API
+12. Tunggu aksi selesai
+13. Buka Sub-tab Group Role
+14. Verifikasi Sub-tab Group Role Nanda Pratama tampil
+15. Verifikasi penugasan grup Finance & Accounting pada Group Role `Manage user & role` Nanda Pratama terhapus: baris Group Role `Manage user & role` tidak tampil lagi di Sub-tab Group Role
+16. Ganti akun: logout lalu login sebagai Nanda Pratama
+17. Buka Settings > User dari sidebar
+18. Verifikasi halaman 1 User List berisi 10 baris
+19. Klik halaman 3 pada Pagination
+20. Verifikasi halaman 3 berisi 5 baris, sehingga Nanda Pratama melihat seluruh 25 pengguna organisasi
+21. Pulihkan Global Role Nanda Pratama menjadi OFF dan Group Role `Manage user & role` pada Finance & Accounting lewat seed API
 
 ### TC-FA-SU-68: Global Role Manage global user & role aktif dengan Group Manager tetap diperbolehkan dan scope gabungan
 
-21. Ganti akun: logout lalu login sebagai Manage global user & role (Update) dan Group Manager IT Infrastructure (Qori Akbar)
-22. Buka Settings > User dari sidebar
-23. Verifikasi halaman 1 User List berisi 10 baris
-24. Klik halaman 3 pada Pagination
-25. Verifikasi halaman 3 berisi 5 baris, sehingga scope baris entity-wide (25 pengguna)
-26. Ketik Search `Budi Santoso`, tekan Enter
-27. Buka row action menu `⋯` baris Budi Santoso
-28. Verifikasi row action `Edit Home Group` Show
-29. Tutup row action menu dengan menekan Esc
-30. Ganti isi kotak search dengan `Qori Akbar`, tekan Enter
-31. Buka Detail Qori Akbar lalu Tab Role (Sub-tab Global Role)
-32. Verifikasi switch `Manage global user & role` ON
-33. Buka Sub-tab Group Role
-34. Verifikasi Group Manager IT Infrastructure tampil pada Sub-tab Group Role Qori Akbar
-35. Verifikasi baris Group Role `Manage user & role` tidak tampil pada Sub-tab Group Role Qori Akbar
+22. Tunggu aksi selesai
+23. Ganti akun: logout lalu login sebagai Manage global user & role (Update) dan Group Manager IT Infrastructure (Qori Akbar)
+24. Buka Settings > User dari sidebar
+25. Verifikasi halaman 1 User List berisi 10 baris
+26. Klik halaman 3 pada Pagination
+27. Verifikasi halaman 3 berisi 5 baris, sehingga scope baris entity-wide (25 pengguna)
+28. Ketik Search `Budi Santoso`, tekan Enter
+29. Buka row action menu `⋯` baris Budi Santoso
+30. Verifikasi row action `Edit Home Group` Show
+31. Tutup row action menu dengan menekan Esc
+32. Ganti isi kotak search dengan `Qori Akbar`, tekan Enter
+33. Buka Detail Qori Akbar lalu Tab Role (Sub-tab Global Role)
+34. Verifikasi switch `Manage global user & role` ON
+35. Buka Sub-tab Group Role
+36. Verifikasi Group Manager IT Infrastructure tampil pada Sub-tab Group Role Qori Akbar
+37. Verifikasi baris Group Role `Manage user & role` tidak tampil pada Sub-tab Group Role Qori Akbar
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Spec ditulis per blok role: langkah tiap aktor berbeda dan ganti akun menuntut Step eksplisit (akun pertama login di hook `before`).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): Search pada langkah 4, 9, 26, 30 dan menutupnya pada langkah 6 (R-16); langkah 29 (menutup row action menu); langkah 20 (pemulihan state Nanda Pratama, S-09).
-- Langkah 13 adalah anchor positif untuk asersi absence langkah 14; langkah 34 untuk langkah 35; empty state langkah 5 adalah anchor Search untuk absence Rudi Hartono (bagian 8b butir 2).
-- Langkah 14 menggabungkan Expected a ("penugasan grup terhapus") dan Expected b ("baris tidak tampil lagi di Sub-tab Group Role") karena keduanya teramati lewat satu pengamatan yang sama (S-03, kesimpulan yang tidak teramati terpisah).
+- Jumlah langkah 37, di atas smell 35 langkah; tiga TC berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna) dan satu topik (aktor multi-sumber); kelebihan berasal dari ganti akun eksplisit untuk tiga aktor dan dua langkah penghubung Tunggu aksi selesai (bagian 8b butir 8).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`): Search pada langkah 4, 9, 28, 32 dan menutupnya pada langkah 6 (R-16); langkah 31 (menutup row action menu); langkah 21 (pemulihan state Nanda Pratama, S-09); langkah 12 dan 22 (Tunggu aksi selesai sesudah menyalakan switch Global Role dan sesudah pemulihan lewat seed API, sebelum pindah surface atau ganti akun, bagian 8b butir 8).
+- Langkah 14 adalah anchor positif untuk asersi absence langkah 15; langkah 36 untuk langkah 37; empty state langkah 5 adalah anchor Search untuk absence Rudi Hartono (bagian 8b butir 2).
+- Langkah 15 menggabungkan Expected a ("penugasan grup terhapus") dan Expected b ("baris tidak tampil lagi di Sub-tab Group Role") karena keduanya teramati lewat satu pengamatan yang sama (S-03, kesimpulan yang tidak teramati terpisah).
 - Langkah 4 sampai 6 menurunkan Expected b TC-FA-SU-66 ("Global Role berstatus inactive tidak memberi wewenang apa pun") menjadi pengamatan bahwa pengguna di luar scope grup (Rudi Hartono, hanya Global Role) tidak tampil; alasan S-03: TC tidak memberi langkah observasi untuk klausa itu.
 - Temuan untuk QA:
   - TC-FA-SU-66 Expected b ("Global Role berstatus inactive tidak memberi wewenang apa pun") tidak punya langkah observasi dan tidak menyebut kontrol yang diamati; spec memakai pengamatan scope (langkah 4 sampai 6).

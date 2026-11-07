@@ -28,7 +28,7 @@ coverage:
 
 ### TC-FA-SU-603: Transformasi data Download Tab Changelog per tipe kolom
 
-1. Buka Detail Budi Santoso > Tab Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab Changelog
 2. Klik icon Download
 3. Pilih `Download as XLSX`
 4. Buka berkas XLSX hasil unduhan
@@ -77,7 +77,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; tiap TC memakai surface-nya sendiri sehingga kegagalan satu blok tidak mengubah state blok lain.
 - Kelas f (isi berkas) dipisah dari kegagalan ekspor dan dari asersi nama berkas, nama kolom, dan jumlah baris yang berada di spec fungsional per surface (bagian 3 prinsip 13 butir f).
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): menutup modal Changelog.
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): menutup modal Changelog. Langkah penghubung tambahan (S-03): Search nama `Budi Santoso` di User List supaya baris target tidak bergantung posisi halaman (langkah 1, 8b butir 13, R-16).
 - Pembagian TC lintas spec:
   - TC-FA-SU-603: format dan nama berkas TC-FA-SU-601 di spec 201, empty state, loading, dan error load TC-FA-SU-606 di spec 362, Download gagal TC-FA-SU-604 di spec 367.
   - TC-FA-SU-635: format dan nama berkas TC-FA-SU-633 di spec 211, empty state, loading, dan error load TC-FA-SU-638 di spec 376, Download gagal TC-FA-SU-636 di spec 369.

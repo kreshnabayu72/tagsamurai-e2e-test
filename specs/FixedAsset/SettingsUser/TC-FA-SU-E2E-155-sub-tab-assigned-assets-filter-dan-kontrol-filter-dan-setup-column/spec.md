@@ -34,7 +34,7 @@ coverage:
 
 ### TC-FA-SU-456: Chip dan checkbox dropdown Filter Sub-tab Assigned Assets sinkron dua arah, logika OR dalam field
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Klik icon Filter
 4. Buka dropdown Name
@@ -92,7 +92,7 @@ coverage:
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Opsi `AC Split Ruang Kerja` dan `Lemari Arsip` (field Name) serta kata kunci cari dropdown `ARSIP` dan `zzz-tidak-ada` dipilih spec karena TC-FA-SU-456 tidak menyebut nilainya; `ARSIP` berhuruf besar untuk membuktikan pencarian tidak case-sensitive.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (48 langkah, 48 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets, satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.
 - Pembagian TC lintas spec: Setup Column yang menyimpan konfigurasi (TC-FA-SU-459 sampai 462) ada di spec 156 dan 157; TC-FA-SU-457 dan 458 hanya screening dan tidak menyimpan apa pun.

@@ -26,10 +26,10 @@ coverage:
   | Policy-Read | #25 | `Fixture.assetLabeling.akun.policyRead` | `Spectra.env.FA_POLICYREAD_PASSWORD` |
   | Asset-Tag-Update | #26 | `Fixture.assetLabeling.akun.assetTagUpdate` | `Spectra.env.FA_ASSETTAGUPDATE_PASSWORD` |
   | Total Control Company Alpha (juga Update pada Manage Asset & TAG; TC-FA-LBL-481) | #1 | `Fixture.assetLabeling.akun.totalControl` | `Spectra.env.FA_LBL_TC_PASSWORD` |
-  | Total Control Company Extra (juga Update pada Manage Asset & TAG; TC-FA-LBL-460) | #56 | `Fixture.assetLabeling.akun.totalControlExtra` | belum ada, disediakan tim FE |
+  | Total Control Company Extra (juga Update pada Manage Asset & TAG; TC-FA-LBL-460) | #56 | `Fixture.assetLabeling.akun.totalControlExtra` | `Spectra.env.FA_TC_EXTRA_PASSWORD` (nilai disediakan tim FE) |
 
 - Hook `before` login API sebagai Tanpa Role Ini dan seeding oleh Total Control lewat fixture BE; hook `after` mengembalikan sesi ke akun default suite.
-- Env var: `FA_NOROLE_PASSWORD`, `FA_POLICYREAD_PASSWORD`, `FA_ASSETTAGUPDATE_PASSWORD`, dan `FA_LBL_TC_PASSWORD` terdaftar di `executionConfig.environmentVariables` dan `.env.example`; password tidak ditulis di spec atau fixture. Password akun Total Control Company Extra belum ada dan disediakan tim FE.
+- Env var: `FA_NOROLE_PASSWORD`, `FA_POLICYREAD_PASSWORD`, `FA_ASSETTAGUPDATE_PASSWORD`, `FA_LBL_TC_PASSWORD`, dan `FA_TC_EXTRA_PASSWORD` (Company Extra; tercantum di daftar Env `suite.md`, nilai dan akun disediakan tim FE) didaftarkan tim FE di `executionConfig.environmentVariables` dan `.env.example`; password tidak ditulis di spec atau fixture.
 - Hook suite (flag Guided Tooltip `seen`, pembukaan tab Labels, pemulihan state global) mengikuti `suite.md`; spec ini tidak menulis ulang isinya.
 - Data Pre-setup (hanya dibaca; request yang diuji ditolak atau tidak mengubah data, S-06): #12 label `Finance Department` (TC-FA-LBL-451), #12 label `Seasonal Event` dan #13 aset `Laptop Dell - 3` tanpa label `Seasonal Event` (TC-FA-LBL-481, pelepasan yang tidak terpasang tidak mengubah apa pun).
 - Data Dinamis (seed milik spec lewat fixture BE di hook `before`, bersuffix `{runId}-151`, Color `Fixture.assetLabeling.warnaSeed`): label `Tag Edit 452 {runId}-151` (bersih); label `Lock Default {runId}-151` sebagai Default Label Asset Name `Lock Item {runId}-151` dan tertempel ber-source default pada aset Active `Lock Asset {runId}-151` di Company Extra (Pre-setup #56; pola Pre-setup #27, TC-FA-LBL-460). Label `Policy Write 452` tidak di-seed (hasil request yang ditolak tidak boleh ada).
@@ -42,7 +42,7 @@ coverage:
   | `Fixture.assetLabeling.akun.policyRead` | `policyRead_automated_{namaCompany}@qwertysystem.net` |
   | `Fixture.assetLabeling.akun.assetTagUpdate` | `assetTagUpdate_automated_{namaCompany}@qwertysystem.net` |
   | `Fixture.assetLabeling.akun.totalControlExtra` | belum ada, disediakan tim FE (pola Pre-setup #56 `totalControl_automated_{namaCompany}@qwertysystem.net`; `{namaCompany}` Company Extra belum diketahui) |
-- Kemampuan teknis (disediakan tim FE/BE, dinyatakan di `suite.md`): klien HTTP untuk request langsung, sesi API (login API password) per role, fixture BE untuk seeding dan membaca state katalog serta jumlah entri Changelog Labels, System Log, dan Activity Log; endpoint tidak ditulis di TC (S-13).
+- Kemampuan teknis (disediakan tim FE/BE, dinyatakan di `suite.md`): klien HTTP untuk request langsung, sesi API (login API password) per role, fixture BE untuk seeding dan membaca state katalog, relasi label pada aset, dan Total Asset label; endpoint tidak ditulis di TC (S-13).
 - State global: tidak ada yang diubah. Suite berjalan serial (`parallel: false`).
 - Cleanup: hook `after` menghapus label, aset, dan Asset Name seed milik spec lewat fixture BE berdasarkan ID, tanpa berasumsi seed berhasil penuh.
 
@@ -87,23 +87,21 @@ coverage:
 29. Verifikasi relasi `Lock Default {runId}-151` pada aset `Lock Asset {runId}-151` tetap ada
 30. Verifikasi Total Asset `Lock Default {runId}-151` sama dengan baseline
 31. Ganti sesi API ke Total Control Company Alpha (Pre-setup #1, juga memegang role Update pada Manage Asset & TAG)
-32. Catat baseline jumlah entri log aset `Laptop Dell - 3` lewat fixture BE
-33. Kirim request langsung ke server: melepas `Seasonal Event` dari aset `Laptop Dell - 3`
-34. Verifikasi permintaan dijawab sukses tanpa galat
-35. Verifikasi aset `Laptop Dell - 3` tidak memiliki label `Seasonal Event` dan tidak ada perubahan data
-36. Verifikasi jumlah entri log aset `Laptop Dell - 3` sama dengan baseline
+32. Kirim request langsung ke server: melepas `Seasonal Event` dari aset `Laptop Dell - 3`
+33. Verifikasi permintaan dijawab sukses tanpa galat
+34. Verifikasi aset `Laptop Dell - 3` tidak memiliki label `Seasonal Event` dan tidak ada perubahan data
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-asset-labeling/TestCases/tc-settings-asset-labeling.md` section 8 (Security & Defense-in-Depth). Subjudul `###` memetakan langkah ke TC granular.
-- Langkah penghubung (S-03): langkah 1, 9, 18, 25, 26, 31, 32 adalah navigasi, pembukaan atau penutupan modal, drawer, dialog, atau pengaturan state seeding tanpa `Verifikasi`; bukan bagian Expected TC.
+- Langkah penghubung (S-03): langkah 1, 9, 18, 25, 26, 31 adalah navigasi, pembukaan atau penutupan modal, drawer, dialog, atau pengaturan state seeding tanpa `Verifikasi`; bukan bagian Expected TC.
 - K-1: spec ini memuat TC kelas defense-in-depth (bagian 3 prinsip 13a) dengan Expected respons API; tumpang tindih dengan `tc-settings-asset-labeling-backend.md` dicatat BE pada tingkat endpoint.
-- Penyimpangan urutan (S-05): TC-FA-LBL-451 dan 452 (role tanpa hak tulis) dikerjakan lebih dulu dan TC-FA-LBL-460 dan 481 (Total Control) di akhir, supaya sesi API berpindah dari role paling terbatas ke Total Control tanpa kembali.
+- Penyimpangan urutan (S-10): TC-FA-LBL-451 dan 452 (role tanpa hak tulis) dikerjakan lebih dulu dan TC-FA-LBL-460 dan 481 (Total Control) di akhir, supaya sesi API berpindah dari role paling terbatas ke Total Control tanpa kembali.
 - TC-FA-LBL-460 dan 481 memakai Total Control yang juga memegang role Update pada Manage Asset & TAG (precondition TC); keduanya ada di spec ini karena kelas harness sama (request langsung, defense-in-depth).
-- Ukuran spec (36 langkah, di atas smell 35 langkah): keempat TC satu kelas (request langsung, defense-in-depth), satu sesi API yang berpindah role dari paling terbatas ke Total Control, seed milik spec, dan tiap blok berdiri sendiri; langkah bertambah satu karena TC-FA-LBL-460 (Company Extra) dan TC-FA-LBL-481 (Company Alpha) memakai akun Total Control berbeda (langkah 25 dan 31) dan tiap klausa Expected menjadi satu `Verifikasi` (S-01).
+- Rujukan S-05 dan prinsip 13g: klausa "tidak ada entri log aset" pada Expected b TC-FA-LBL-481 diasersi di spec absence 183 (aksi nyata berupa request yang sama, user dan baseline sendiri); id TC-FA-LBL-481 tetap di `sourceTc` spec ini dan spec 183. Spec ini hanya mengasersi status respons dan state data (bagian 8b butir 1).
 - Temuan untuk QA:
   - Akun dan `{namaCompany}` Company Extra (TC-FA-LBL-460, Pre-setup #56) belum ada dan menunggu konfirmasi tim FE; TC-FA-LBL-481 memakai Total Control Company Alpha (aset `Laptop Dell - 3`, Pre-setup #13) sehingga spec memakai dua akun sesuai TC (langkah 25 dan 31).
   - TC-FA-LBL-452 menyebut "mengubah label" untuk Asset-Tag-Update tanpa nama label; spec memakai label seed `Tag Edit 452`.
   - TC-FA-LBL-452 Expected b memuat ekspor hanya untuk Policy-Read (langkah ekspor Asset-Tag-Update tidak ada di TC); spec mengikuti TC.
-  - TC-FA-LBL-481 Expected b "tidak ada entri log aset" tidak menyebut surface; spec memakai jumlah entri log aset `Laptop Dell - 3` terhadap baseline.
+  - TC-FA-LBL-481 Expected b "tidak ada entri log aset" tidak menyebut surface; spec 183 memakai jumlah entri log aset `Laptop Dell - 3` terhadap baseline.
   - Post Condition TC-FA-LBL-460 dan 481 tidak ada langkah observasi tambahan di luar Expected sehingga tidak diasersi lagi.

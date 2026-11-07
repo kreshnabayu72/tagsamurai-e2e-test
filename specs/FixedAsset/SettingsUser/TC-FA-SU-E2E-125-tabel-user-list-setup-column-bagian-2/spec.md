@@ -59,7 +59,7 @@ coverage:
 9. Verifikasi kolom `<Kolom A>` tetap membeku setelah F5
 10. Verifikasi kolom `<Kolom B>` tetap membeku setelah F5
 11. Klik header kolom Actions (⋯), klik `Setup Column...`
-12. Unpin kolom `<Kolom A>` dan `<Kolom B>`, klik `[Save]`
+12. Unpin kolom `<Kolom A>` dan `<Kolom B>`, klik `[Save]`, scroll tabel secara horizontal
 13. Verifikasi kolom `<Kolom A>` terlepas dan ikut ter-scroll
 14. Verifikasi kolom `<Kolom B>` terlepas dan ikut ter-scroll
 15. Klik header kolom Actions (⋯), klik `Setup Column...`

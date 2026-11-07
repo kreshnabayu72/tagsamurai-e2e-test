@@ -44,7 +44,7 @@ Maksimum tiga kolom di-pin sekaligus, sehingga kolom di-pin per kelompok dan di-
 
 ### TC-FA-SU-461: Pin dan unpin Setup Column Sub-tab Assigned Assets kelas Hideable (default tampil)
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
 3. Untuk setiap baris tabel parameter "Kelompok Pin" (langkah 3 sampai 16): klik header kolom Actions (⋯)
 4. Klik `Setup Column...`
@@ -53,12 +53,12 @@ Maksimum tiga kolom di-pin sekaligus, sehingga kolom di-pin per kelompok dan di-
 7. Scroll tabel secara horizontal
 8. Verifikasi tiap kolom kelompok itu membeku di kiri saat tabel di-scroll horizontal
 9. Tekan F5 pada halaman Detail
-10. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets
+10. Klik tab Responsibilities, lalu klik Sub-tab Assigned Assets, scroll tabel secara horizontal
 11. Verifikasi tiap kolom kelompok itu tetap membeku di kiri setelah F5
 12. Klik header kolom Actions (⋯)
 13. Klik `Setup Column...`
 14. Klik icon Pin yang aktif pada tiap kolom kelompok itu untuk unpin
-15. Klik `[Save]`
+15. Klik `[Save]`, lalu scroll tabel secara horizontal
 16. Verifikasi tiap kolom kelompok itu tidak lagi membeku saat tabel di-scroll horizontal
 17. Klik header kolom Actions (⋯)
 18. Klik `Setup Column...`
@@ -106,7 +106,7 @@ Maksimum tiga kolom di-pin sekaligus, sehingga kolom di-pin per kelompok dan di-
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Langkah 3 sampai 16 diulang untuk tiga kelompok tabel parameter "Kelompok Pin" (bagian 8b butir 7); `Verifikasi` memakai "tiap kolom kelompok itu" dan mengasersi setiap kolom kelompok (membeku, bertahan setelah F5, dilepas setelah unpin).
 - Langkah pemulihan konfigurasi kolom (23 dan 53) dan F5 sesudahnya memulihkan tabel ke default (S-09); hook `after` mengulang pemulihan sebagai cadangan.
 - Spec melewati sekitar 35 langkah bila ekspansi dihitung (83 langkah, 55 langkah nominal). Seluruhnya satu kelas (fungsional/screening sub-tab Assigned Assets (Setup Column), satu akun, data Pre-setup sama, tanpa mengubah data Pre-setup), dan tiap blok TC berdiri sendiri: kegagalan satu blok tidak menghilangkan makna blok lain. Satu pembukaan Detail dipakai bersama seluruh blok.

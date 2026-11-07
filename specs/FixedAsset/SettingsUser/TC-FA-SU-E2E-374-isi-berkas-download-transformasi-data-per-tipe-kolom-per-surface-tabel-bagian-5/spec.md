@@ -26,7 +26,7 @@ coverage:
 
 ### TC-FA-SU-866: Transformasi data Download Tab User Log sub-tab Assignment per tipe kolom
 
-1. Buka Detail Budi Santoso > Tab User Log > Sub-tab Assignment
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail Budi Santoso > Tab User Log > Sub-tab Assignment
 2. Klik icon Download
 3. Pilih `Download as XLSX`
 4. Buka berkas XLSX hasil unduhan
@@ -48,7 +48,7 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; tiap TC memakai surface-nya sendiri sehingga kegagalan satu blok tidak mengubah state blok lain.
-- Kelas f (isi berkas) dipisah dari kegagalan ekspor dan dari asersi nama berkas, nama kolom, dan jumlah baris yang berada di spec fungsional per surface (bagian 3 prinsip 13 butir f).
+- Kelas f (isi berkas) dipisah dari kegagalan ekspor dan dari asersi nama berkas, nama kolom, dan jumlah baris yang berada di spec fungsional per surface (bagian 3 prinsip 13 butir f). Langkah penghubung tambahan (S-03): Search nama `Budi Santoso` di User List supaya baris target tidak bergantung posisi halaman (langkah 1, 8b butir 13, R-16).
 - Pembagian TC lintas spec:
   - TC-FA-SU-866: format dan nama berkas TC-FA-SU-864 di spec 284, empty state, loading, dan error load TC-FA-SU-869 di spec 365, Download gagal TC-FA-SU-867 di spec 369.
   - TC-FA-SU-890: format dan nama berkas TC-FA-SU-888 di spec 291, empty state, loading, dan error load TC-FA-SU-893 di spec 365, Download gagal TC-FA-SU-891 di spec 369.

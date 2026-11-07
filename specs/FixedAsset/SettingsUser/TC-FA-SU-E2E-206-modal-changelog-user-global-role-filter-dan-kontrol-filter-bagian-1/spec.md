@@ -32,58 +32,61 @@ coverage:
 
 ### TC-FA-SU-620: Filter kelas enum (Action, Field)
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
 2. Klik icon Filter
 3. Buka dropdown Action
-4. Verifikasi opsi dropdown = DISTINCT data tabel (`Assign`, `Assign (via Total Control)`, `Edit`, `Remove`, `Remove (via Total Control)`)
+4. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Assign`, `Assign (via Total Control)`, `Edit`, `Remove`, `Remove (via Total Control)`)
 5. Centang `Assign`
 6. Klik `[Apply]`
-7. Verifikasi memilih `Assign` menyisakan G-5 (1 baris)
+7. Verifikasi memilih `Assign` menyisakan G-5 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 8. Verifikasi chip `Assign` tampil di dalam field Action
 9. Klik `[Clear Field]` pada field Action, lalu klik `[Apply]`
 10. Buka dropdown Field
-11. Verifikasi opsi dropdown = DISTINCT data tabel (`Access`, `Manage accounting`, `Manage asset master data — Delete`, `Manage global license`)
+11. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Access`, `Manage accounting`, `Manage asset master data — Delete`, `Manage global license`)
 12. Centang `Access`
 13. Klik `[Apply]`
-14. Verifikasi memilih `Access` menyisakan G-2, G-3 (2 baris)
+14. Verifikasi memilih `Access` menyisakan G-2, G-3 (2 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 15. Verifikasi chip `Access` tampil di dalam field Field
 
 ### TC-FA-SU-621: Filter kelas fk (Role Name, Modified By)
 
 16. Klik `[Clear Field]` pada field Field, lalu klik `[Apply]`
 17. Buka dropdown Role Name
-18. Verifikasi opsi dropdown = DISTINCT data tabel (`Import Data`, `Manage accounting`, `Manage asset master data`, `Manage global license`)
+18. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Import Data`, `Manage accounting`, `Manage asset master data`, `Manage global license`)
 19. Centang `Import Data`
 20. Klik `[Apply]`
-21. Verifikasi memilih `Import Data` menyisakan G-3 (1 baris)
+21. Verifikasi memilih `Import Data` menyisakan G-3 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 22. Verifikasi chip `Import Data` tampil di dalam field Role Name
 23. Klik `[Clear Field]` pada field Role Name, lalu klik `[Apply]`
 24. Buka dropdown Modified By
-25. Verifikasi opsi dropdown = DISTINCT data tabel (`Ahmad D`, `Lina M`)
+25. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Ahmad D`, `Lina M`)
 26. Centang `Ahmad D`
 27. Klik `[Apply]`
-28. Verifikasi memilih `Ahmad D` menyisakan G-2, G-3, G-4, G-5 (4 baris)
+28. Verifikasi memilih `Ahmad D` menyisakan G-2, G-3, G-4, G-5 (4 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 29. Verifikasi chip `Ahmad D` tampil di dalam field Modified By
 
 ### TC-FA-SU-622: Kombinasi Search dan Filter dua arah
 
-30. Ketik Search `Assign`, tekan Enter
-31. Klik icon Filter
-32. Buka dropdown Action, centang `Assign`
-33. Klik `[Apply]`
-34. Verifikasi Search `Assign` lalu Filter Action `Assign`: hasil irisan G-5 (1 baris)
-35. Verifikasi keyword Search `Assign` tidak dikosongkan oleh Filter
-36. Klik `[Clear Field]` lalu `[Apply]`, lalu klik `(←)` pada kotak Search
-37. Buka dropdown Action, centang `Assign`
-38. Klik `[Apply]`
-39. Ketik Search `Assign`, tekan Enter
-40. Verifikasi Filter Action `Assign` lalu Search `Assign`: hasil identik, hasil irisan G-5 (1 baris)
-41. Verifikasi Filter Action `Assign` tidak direset oleh Search
-42. Verifikasi tabel kembali ke halaman 1 saat kriteria berubah
+30. Klik `[Clear Field]` pada field Modified By, lalu klik `[Apply]`
+31. Ketik Search `Assign`, tekan Enter
+32. Klik icon Filter
+33. Buka dropdown Action, centang `Assign`
+34. Klik `[Apply]`
+35. Verifikasi Search `Assign` lalu Filter Action `Assign`: hasil irisan G-5 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
+36. Verifikasi keyword Search `Assign` tidak dikosongkan oleh Filter
+37. Klik `[Clear Field]` lalu `[Apply]`, lalu klik `(←)` pada kotak Search
+38. Buka dropdown Action, centang `Assign`
+39. Klik `[Apply]`
+40. Ketik Search `Assign`, tekan Enter
+41. Verifikasi Filter Action `Assign` lalu Search `Assign`: hasil identik, hasil irisan G-5 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
+42. Verifikasi Filter Action `Assign` tidak direset oleh Search
+43. Verifikasi tabel kembali ke halaman 1 saat kriteria berubah
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
-- Spec ini berjumlah 42 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09).
+- Asersi baris seed pada Modal Changelog (audit trail permanen) ditulis relatif terhadap baris seed: urutan relatif dan jumlah baris seed, dengan baris non-seed yang memenuhi kriteria boleh menyisip atau ikut tampil (S-14), mengikuti kualifier Expected TC sumber. Opsi dropdown Filter ditulis `= DISTINCT data tabel dan memuat sekurangnya nilai seed`.
+- Spec ini berjumlah 43 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
 - Temuan untuk QA (S-15): (1) TC mengasersi urutan dan isi baris seed tanpa Filter pembatas pada audit trail permanen; spec mengikuti TC dan mengandalkan seed #27 yang disediakan ulang di hook `before` dan `after` (S-14).

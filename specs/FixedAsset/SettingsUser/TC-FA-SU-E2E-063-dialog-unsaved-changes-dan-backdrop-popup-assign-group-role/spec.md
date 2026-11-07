@@ -28,7 +28,7 @@ coverage:
 
 ### TC-FA-SU-207: Dialog Unsaved Changes saat menutup popup dengan perubahan: copy, Leave, dan Cancel
 
-1. Buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage files
+1. Ketik Search `Wawan Setiawan`, tekan Enter, lalu buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage files
 2. Centang Delete pada Branch Surabaya lalu klik `[✕]`
 3. Verifikasi dialog dengan Body "You have unsaved changes. Are you sure you want to leave?" tanpa bullet
 4. Verifikasi tombol `[Cancel]` (Text, Contrast) dan `[Leave]` (filled danger)
@@ -59,5 +59,6 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan.
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 21; `[Leave]` menutup popup dirty (S-08).
 - TC-FA-SU-209 dan 210 (popup yang sama dengan pelaku kedua lewat sesi API) ada di spec 087.
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - Post Condition TC-FA-SU-207 dan 208 ("penugasan tersimpan tidak berubah dan tidak ada entri log") tidak punya langkah observasi di TC dan tidak diasersi.

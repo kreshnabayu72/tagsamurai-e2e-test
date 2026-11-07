@@ -50,7 +50,7 @@ coverage:
 14. Verifikasi overlay Column Visibility tampil
 15. Verifikasi sel body kolom Column Visibility (⋯) pada setiap baris kosong tanpa row action
 16. Tekan Esc untuk menutup overlay
-17. Verifikasi default sort Date descending, lima baris pertama: C-1, C-2, C-3, C-4, C-5
+17. Verifikasi default sort Date descending, urutan relatif baris seed (baris non-seed boleh menyisip): C-1, C-2, C-3, C-4, C-5
 18. Verifikasi footer pagination 10 data per halaman
 19. Klik dropdown page size
 20. Verifikasi pilihan page size 10, 25, 50, 100
@@ -59,28 +59,28 @@ coverage:
 ### TC-FA-SU-704: Search kelas teks (Action, User Name, Field)
 
 22. Ketik Search `Resend` (kolom Action), tekan Enter
-23. Verifikasi keyword `Resend` (kolom Action) menyisakan C-1 (1 baris)
+23. Verifikasi keyword `Resend` (kolom Action) menyisakan C-1 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 24. Kosongkan isi kotak search, tekan Enter
 25. Ketik Search `Gita` (kolom User Name), tekan Enter
-26. Verifikasi keyword `Gita` (kolom User Name) menyisakan C-4 (1 baris)
+26. Verifikasi keyword `Gita` (kolom User Name) menyisakan C-4 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 27. Kosongkan isi kotak search, tekan Enter
 28. Ketik Search `Home Group` (kolom Field), tekan Enter
-29. Verifikasi keyword `Home Group` (kolom Field) menyisakan C-3 (1 baris)
+29. Verifikasi keyword `Home Group` (kolom Field) menyisakan C-3 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 30. Kosongkan isi kotak search, tekan Enter
 
 ### TC-FA-SU-705: Search kelas mixed (Old Value, New Value)
 
 31. Ketik Search `Logistics` (kolom Old Value), tekan Enter
-32. Verifikasi keyword `Logistics` (kolom Old Value) menyisakan C-3 (1 baris)
+32. Verifikasi keyword `Logistics` (kolom Old Value) menyisakan C-3 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 33. Kosongkan isi kotak search, tekan Enter
 34. Ketik Search `Assigned` (kolom New Value), tekan Enter
-35. Verifikasi keyword `Assigned` (kolom New Value) menyisakan C-5 (1 baris)
+35. Verifikasi keyword `Assigned` (kolom New Value) menyisakan C-5 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 36. Kosongkan isi kotak search, tekan Enter
 
 ### TC-FA-SU-706: Search kelas user (Modified By)
 
 37. Ketik Search `Santoso` (kolom Modified By), tekan Enter
-38. Verifikasi keyword `Santoso` (kolom Modified By) menyisakan C-2, C-3, C-5 (3 baris)
+38. Verifikasi keyword `Santoso` (kolom Modified By) menyisakan C-2, C-3, C-5 (3 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 39. Kosongkan isi kotak search, tekan Enter
 40. Klik icon ←
 

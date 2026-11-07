@@ -33,7 +33,7 @@ coverage:
 
 ### TC-FA-SU-631: Reset to Default, Discard, independensi cache
 
-1. Buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu buka Detail pengguna Budi Santoso, klik tab Role, klik sub-tab Global Role, lalu klik icon Changelog
 2. Buka Setup Column, sembunyikan satu kolom dan pin satu kolom
 3. Klik `[Reset to Default]`
 4. Verifikasi visibility, urutan, dan pin kembali ke default modul pada preview
@@ -87,6 +87,7 @@ coverage:
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pengosongan Search, penutupan overlay, pemulihan Filter dan sort, serta penghapusan preferensi kolom; semuanya hanya mengembalikan state sebelum TC berikutnya (S-09).
+- Langkah penghubung (S-03, R-16): Search `Budi Santoso` pada User List menyaring baris target sebelum membuka Detail (langkah 1) karena User List dapat memuat lebih dari satu halaman (bagian 8b butir 13); langkah ini tidak mengubah data dan tidak ada TC berikutnya yang membutuhkan tabel penuh (S-09). Sesudah muat ulang halaman pada langkah 13, kotak Search User List mempertahankan nilainya (bagian 8b butir 9) sehingga langkah 14 membuka Detail tanpa Search ulang.
 - Langkah penghubung tambahan (S-03): langkah 14 (buka ulang Detail > Role > Global Role > icon Changelog) memulihkan modal yang tertutup oleh muat ulang halaman pada langkah 13 sebelum blok pagination (S-14); klik dropdown page size (langkah 16) dan `Esc` (langkah 18) membuka dan menutup pilihan page size untuk `Verifikasi` pilihan page size (TC-FA-SU-632 Langkah 2, S-14).
 - Spec ini berjumlah 43 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional) pada satu surface yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
-- Temuan untuk QA (S-15): Expected e (fixture hanya satu halaman, multi-halaman diuji di TC-FA-SU-359 dan TC-FA-SU-1057) adalah catatan tanpa langkah observasi sehingga tidak diasersi.
+- Temuan untuk QA (S-15): (1) Expected e (fixture hanya satu halaman, multi-halaman diuji di TC-FA-SU-359 dan TC-FA-SU-1057) adalah catatan tanpa langkah observasi sehingga tidak diasersi. (2) Langkah `[Save]` pada langkah 11 ("Buka Setup Column, sembunyikan satu kolom, klik `[Save]`, lalu buka tabel lain") ditambahkan spec tanpa dasar TC: TC-FA-SU-631 langkah 5 hanya menutup lewat Esc, dan langkah 6 membandingkan tabel lain tanpa menyebut Save. Save dipilih agar perubahan tersimpan di tabel ini sebelum dibandingkan dengan User List (Expected c); pemilik TC perlu mengonfirmasi atau menyatakan cara lain. `[Save]` pada langkah 5 berasal dari TC-FA-SU-631 langkah 3 (Reset to Default lalu Save).

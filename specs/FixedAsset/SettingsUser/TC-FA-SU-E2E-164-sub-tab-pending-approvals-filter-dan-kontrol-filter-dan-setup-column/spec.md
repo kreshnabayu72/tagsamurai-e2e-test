@@ -45,7 +45,7 @@ Kolom `Submission Date` tetap visible sebagai satu-satunya kolom pada langkah pe
 
 ### TC-FA-SU-487: Chip dan checkbox dropdown Filter Sub-tab Pending Approvals sinkron dua arah, logika OR dalam field
 
-1. Klik nama `Budi Santoso` di User List
+1. Ketik Search `Budi Santoso`, tekan Enter, lalu klik nama `Budi Santoso` di User List
 2. Klik tab Responsibilities, lalu klik Sub-tab Pending Approvals
 3. Klik icon Filter
 4. Buka dropdown Transaction
@@ -133,7 +133,7 @@ Kolom `Submission Date` tetap visible sebagai satu-satunya kolom pada langkah pe
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): Search nama `Budi Santoso` serta pembukaan Detail dan sub-tab (langkah 1 dan 2) serta langkah yang mengosongkan Search, Filter, atau popup di antara blok TC supaya blok berikutnya tidak mengandalkan state blok sebelumnya (S-09).
 - Opsi `Assignment` dan `Borrow` (field Transaction) serta kata kunci cari dropdown `BORR` dan `zzz-tidak-ada` dipilih spec karena TC-FA-SU-487 tidak menyebut nilainya; `BORR` berhuruf besar untuk membuktikan pencarian tidak case-sensitive.
 - Langkah 51 sampai 52, 56, dan 59 diulang untuk tiga baris tabel parameter "Kolom Disembunyikan" (bagian 8b butir 7); `Verifikasi` tetap satu per klausa (Live Preview, tabel, setelah F5).
 - Langkah pemulihan konfigurasi kolom (73) dan F5 sesudahnya memulihkan tabel ke default; hook `after` mengulang pemulihan sebagai cadangan.

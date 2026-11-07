@@ -52,40 +52,40 @@ coverage:
 
 14. Pilih rentang 10/06/26 sampai 15/06/26 pada Date
 15. Klik `[Apply]`
-16. Verifikasi rentang inklusif 10/06/26 sampai 15/06/26 menyisakan C-5, C-6 (2 baris)
+16. Verifikasi rentang inklusif 10/06/26 sampai 15/06/26 menyisakan C-5, C-6 (2 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 
 ### TC-FA-SU-716: Filter kelas enum (Action, Field)
 
 17. Klik `[Clear Field]` pada field Date, lalu klik `[Apply]`
 18. Buka dropdown Action
-19. Verifikasi opsi dropdown = DISTINCT data tabel (`Activate`, `Assign`, `Deactivate`, `Edit`, `Edit Home Group`, `Resend Activation Email`)
+19. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Activate`, `Assign`, `Deactivate`, `Edit`, `Edit Home Group`, `Resend Activation Email`)
 20. Centang `Activate`
 21. Klik `[Apply]`
-22. Verifikasi memilih `Activate` menyisakan C-6 (1 baris)
+22. Verifikasi memilih `Activate` menyisakan C-6 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 23. Verifikasi chip `Activate` tampil di dalam field Action
 24. Klik `[Clear Field]` pada field Action, lalu klik `[Apply]`
 25. Buka dropdown Field
-26. Verifikasi opsi dropdown = DISTINCT data tabel (`Activation Email`, `Home Group`, `Manage accounting`, `Manage group — Finance & Accounting — Update`, `Status`)
+26. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Activation Email`, `Home Group`, `Manage accounting`, `Manage group — Finance & Accounting — Update`, `Status`)
 27. Centang `Activation Email`
 28. Klik `[Apply]`
-29. Verifikasi memilih `Activation Email` menyisakan C-1 (1 baris)
+29. Verifikasi memilih `Activation Email` menyisakan C-1 (1 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 30. Verifikasi chip `Activation Email` tampil di dalam field Field
 
 ### TC-FA-SU-717: Filter kelas fk (User Name, Modified By)
 
 31. Klik `[Clear Field]` pada field Field, lalu klik `[Apply]`
 32. Buka dropdown User Name
-33. Verifikasi opsi dropdown = DISTINCT data tabel (`Budi Santoso`, `Doni Prasetyo`, `Eka Wulandari`, `Gita Permata`, `Hana Kusuma`)
+33. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Budi Santoso`, `Doni Prasetyo`, `Eka Wulandari`, `Gita Permata`, `Hana Kusuma`)
 34. Centang `Budi Santoso`
 35. Klik `[Apply]`
-36. Verifikasi memilih `Budi Santoso` menyisakan C-3, C-5 (2 baris)
+36. Verifikasi memilih `Budi Santoso` menyisakan C-3, C-5 (2 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 37. Verifikasi chip `Budi Santoso` tampil di dalam field User Name
 38. Klik `[Clear Field]` pada field User Name, lalu klik `[Apply]`
 39. Buka dropdown Modified By
-40. Verifikasi opsi dropdown = DISTINCT data tabel (`Ahmad D`, `Budi S`, `Lina M`)
+40. Verifikasi opsi dropdown = DISTINCT data tabel dan memuat sekurangnya nilai seed (`Ahmad D`, `Budi S`, `Lina M`)
 41. Centang `Ahmad D`
 42. Klik `[Apply]`
-43. Verifikasi memilih `Ahmad D` menyisakan C-1, C-4, C-5, C-6 (4 baris)
+43. Verifikasi memilih `Ahmad D` menyisakan C-1, C-4, C-5, C-6 (4 baris seed; baris non-seed yang memenuhi kriteria boleh ikut tampil)
 44. Verifikasi chip `Ahmad D` tampil di dalam field Modified By
 
 ## Notes

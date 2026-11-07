@@ -32,7 +32,7 @@ coverage:
 ### TC-FA-SU-251: Approver di luar tangga: dapat dipegang bersamaan dengan role tangga tanpa konfirmasi
 
 1. Catat jumlah entri `Assign` Object `Transaction Role` Mira Anggraini pada Tab Changelog sebagai baseline
-2. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting, Transaction Disposal, dan Role Approver
+2. Ketik Search `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, lalu pilih Group Finance & Accounting, Transaction Disposal, dan Role Approver
 3. Klik `[Submit]`
 4. Verifikasi tidak ada dialog konfirmasi dan Staff yang sudah ada tidak digantikan
 5. Verifikasi tabel menampilkan baris Disposal × Staff dan Disposal × Approver untuk Finance & Accounting
@@ -42,7 +42,7 @@ coverage:
 
 ### TC-FA-SU-252: Jenis Transaksi tanpa Staff bertangga dua tingkat: turun dari Asset Admin ke Monitoring & Report memicu dialog
 
-9. Buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, pilih Group Finance & Accounting, Transaction Transfer, Role Asset Admin, lalu klik `[Submit]`
+9. Kembali ke User List, ganti isi kotak search dengan `Mira Anggraini`, tekan Enter, lalu buka Detail Mira Anggraini > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, pilih Group Finance & Accounting, Transaction Transfer, Role Asset Admin, lalu klik `[Submit]`
 10. Klik `[+ Assign]`, pilih Group Finance & Accounting, Transaction Transfer, Role Monitoring & Report, lalu klik `[Submit]`
 11. Verifikasi dialog `Change Transaction Role` tampil (Asset Admin ke Monitoring & Report pada Transfer)
 12. Klik `[Change]` pada dialog
@@ -56,7 +56,7 @@ coverage:
 
 18. Pindah ke tenant `FaUserTR` dengan akun aktor yang sama
 19. Catat jumlah entri `Remove` dan `Assign` Object `Transaction Role` Putri Anggraeni pada Tab Changelog sebagai baseline
-20. Buka Detail Putri Anggraeni > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, pilih Group Finance & Accounting dan IT Infrastructure, Transaction Disposal, dan Role Monitoring & Report, lalu klik `[Submit]`
+20. Ketik Search `Putri Anggraeni`, tekan Enter, lalu buka Detail Putri Anggraeni > Tab Role > Sub-tab Transaction Role, klik `[+ Assign]`, pilih Group Finance & Accounting dan IT Infrastructure, Transaction Disposal, dan Role Monitoring & Report, lalu klik `[Submit]`
 21. Verifikasi dialog mendaftar `• Finance & Accounting (currently Asset Admin)` dan `• IT Infrastructure (currently Staff)` dengan `[New Role]` Monitoring & Report yang sama
 22. Klik `[Change]`
 23. Tunggu aksi selesai: permintaan `[Change]` pada langkah 22 selesai dan dialog tertutup
@@ -72,6 +72,7 @@ coverage:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 1, 18, 19 dan 23. Baseline log mengikuti S-12.
 - Langkah pola baca-log: langkah 6 sampai 8 dan 24 sampai 26. Search nama target pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
 - Pre-setup #50 diterapkan hanya pada Putri Anggraeni (bukan seluruh 25 pengguna): pemilih Group Role dan Role Transaksi men-Disabled node di luar Home Group constraint target (FI-32, tooltip S-45) dan permintaan langsung di luar constraint ditolak `422`, sedangkan TC ini memilih IT Infrastructure (langkah 20); Home Group Putri Anggraeni dipulihkan di hook `after`. Mohon dikonfirmasi bila #50 harus diterapkan penuh.
+- Search nama pengguna target pada User List digabung dalam langkah buka Detail (langkah 2, 9 dan 20): langkah penghubung untuk menemukan baris target karena User List memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah 9 mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-250 tidak menyebut tenant `FaUserTR` pada langkah dan Data Uji tidak menyebut cara berpindah tenant; spec menulisnya sebagai kemampuan "disediakan tim FE".
   - TC-FA-SU-251 butir c ("entri log Assign untuk Approver saja") tidak menyebut permukaan log; spec mengasersi Tab Changelog. TC-FA-SU-252 dan 250 menyebut pasangan entri Remove dan Assign pada Post Condition tanpa langkah observasi; spec mengasersinya pada Tab Changelog sebagai bagian dari Expected butir b TC-FA-SU-250 dan tidak mengasersi Post Condition TC-FA-SU-252 selain yang tercantum di atas.

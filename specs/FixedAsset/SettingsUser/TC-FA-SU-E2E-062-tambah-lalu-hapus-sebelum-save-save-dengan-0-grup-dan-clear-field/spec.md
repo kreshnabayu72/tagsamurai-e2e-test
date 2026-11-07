@@ -24,13 +24,14 @@ coverage:
 - Data uji: grup Branch Surabaya dihapus dan ditambahkan kembali sebelum Save (TC-FA-SU-204); seluruh 2 grup `Manage files` dilepas (TC-FA-SU-205 dan 206).
 - Kemampuan teknis: seed API untuk menyetel dan memulihkan penugasan Group Role `Manage files` Wawan Setiawan (disediakan tim FE/BE); pembacaan jumlah entri Tab Changelog target sebelum aksi sebagai baseline (disediakan tim FE/BE, bagian 8b butir 10). Entri log muncul eventual: permukaan dimuat ulang tiap 5 detik sampai entri tampil, batas 2 menit.
 - State global yang diubah: penugasan Group Role `Manage files` milik Wawan Setiawan dan Role Count-nya; dipulihkan ke Pre-setup #23 lewat seed API pada langkah penghubung dan di hook `after`.
+- Target tanpa Home Group (Pre-setup #50, `FaUserNoHG`; Catatan TC: TC penugasan Tab Role yang memilih node bebas dijalankan pada varian tanpa Home Group, FI-32), diterapkan per target: Home Group Wawan Setiawan (Finance & Accounting pada Pre-setup #43) dikosongkan lewat seed API di hook `before` supaya node di luar constraint tidak Disabled oleh gate Home Group; Home Group Wawan Setiawan dipulihkan ke Finance & Accounting di hook `after`. Seed per target disediakan tim FE/BE.
 - Fixture: nama pengguna, grup, dan nilai Data Uji ditulis apa adanya dari TC; fixture `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan pada tahap script.
 
 ## Test Steps
 
 ### TC-FA-SU-204: Menambah lalu menghapus grup yang sama sebelum Save: pemulihan nilai C/R/U/D tersimpan dan Save no-op
 
-1. Buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role
+1. Ketik Search `Wawan Setiawan`, tekan Enter, lalu buka Detail Wawan Setiawan > Tab Role > Sub-tab Group Role
 2. Buka popup Assign Group Role Manage files
 3. Hapus Branch Surabaya dari tabel popup
 4. Klik `[+ Assign Group]` untuk membuka popup Select Group
@@ -42,7 +43,7 @@ coverage:
 
 ### TC-FA-SU-205: Save dengan 0 grup melepas seluruh penugasan: role tampil tanpa grup, tidak aktif, dan log Remove per grup
 
-10. Catat Role Count Wawan Setiawan di User List dan jumlah entri `Remove` Object `Group Role` Wawan Setiawan pada Tab Changelog sebagai baseline
+10. Kembali ke User List, ganti isi kotak search dengan `Wawan Setiawan`, tekan Enter, lalu catat Role Count Wawan Setiawan di User List dan jumlah entri `Remove` Object `Group Role` Wawan Setiawan pada Tab Changelog sebagai baseline
 11. Buka ulang Detail Wawan Setiawan > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage files
 12. Klik `[Clear Field]`
 13. Klik `[Save]`
@@ -50,16 +51,16 @@ coverage:
 15. Verifikasi toast "Success, group role has been updated."
 16. Verifikasi kolom Group baris Manage files menjadi `—`
 17. Verifikasi role Manage files tidak aktif
-18. Buka User List
+18. Buka User List, ganti isi kotak search dengan `Wawan Setiawan`, tekan Enter
 19. Verifikasi Role Count Wawan Setiawan berkurang dibanding baseline
-20. Buka Tab Changelog, Search `Wawan Setiawan`, tekan Enter, lalu muat ulang sampai entri tampil
+20. Buka Tab Changelog, ketik Search `Wawan Setiawan`, tekan Enter, lalu muat ulang sampai entri tampil
 21. Verifikasi dua entri `Remove` / Object `Group Role` untuk IT Infrastructure dan Branch Surabaya (Old Value `Assigned` / New Value `—`) bertambah dibanding baseline pada Tab Changelog
 22. Verifikasi tidak ada entri role-level tambahan: total entri baru pada Tab Changelog tepat dua
 
 ### TC-FA-SU-206: Clear Field mengosongkan baris tanpa menutup popup dan tanpa menyimpan
 
 23. Pulihkan penugasan Manage files Wawan Setiawan (IT Infrastructure dan Branch Surabaya) lewat seed API
-24. Buka ulang Detail Wawan Setiawan > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage files
+24. Kembali ke User List, ganti isi kotak search dengan `Wawan Setiawan`, tekan Enter, lalu buka ulang Detail Wawan Setiawan > Tab Role > Sub-tab Group Role lalu buka popup Assign Group Role Manage files
 25. Klik `[Clear Field]`
 26. Verifikasi seluruh baris grup dan centang dikosongkan
 27. Verifikasi popup tetap terbuka
@@ -76,9 +77,10 @@ coverage:
 - Mode: FE+BE. Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Urutan TC sumber dipertahankan.
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari TC): langkah 10, 23 dan 34. Baseline log mengikuti S-12; pemulihan lewat seed API memulihkan penugasan sebelum TC berikutnya mengandalkannya (S-09); penutupan popup dirty mengikuti S-08.
-- Langkah pola baca-log: langkah 20 sampai 22. Search `Wawan Setiawan` pada langkah itu adalah langkah penghubung untuk menemukan baris target (R-16).
+- Langkah pola baca-log: langkah 20 sampai 22. Search `Wawan Setiawan` pada langkah 20 menyaring entri pada kotak Search Tab Changelog (kotak kosong sehingga ditulis "ketik Search"); ini langkah penghubung untuk menampilkan entri log target, bukan untuk menemukan baris User List, sehingga R-16 tidak berlaku.
 - TC-FA-SU-205: asersi "tidak ada dialog konfirmasi tambahan" ditulis segera setelah `[Save]` dan sebelum toast sukses yang menjadi bukti respons sudah diproses (bagian 8b butir 11).
 - Home Group: spec ini menambah kembali Branch Surabaya lewat popup Select Group (langkah 6) pada Wawan Setiawan; pada Pre-setup #43 Home Group Wawan adalah Finance & Accounting sehingga gate Home Group (FI-32) men-Disabled node di luar constraint. Sesuai Catatan TC (TC penugasan Section 3d dijalankan pada varian tanpa Home Group), spec memakai Pre-setup #50; Precondition TC-FA-SU-204 dan 205 tidak memuat #50 dan perlu disesuaikan.
+- Langkah penghubung Search (S-03): Search nama pengguna target pada langkah 1, 10, 18, dan 24 digabung ke langkah pembuka Detail atau pembacaan baris, untuk menemukan baris target di User List yang memuat 25 pengguna pada 3 halaman (R-16, bagian 8b butir 13); langkah berikutnya mengganti isi kotak search yang masih berisi nama sebelumnya (bagian 8b butir 9).
 - Temuan untuk QA:
   - TC-FA-SU-204 menyebut "Branch Surabaya (D tercentang tersimpan)" sedangkan TC-FA-SU-194 menyebut Delete Branch Surabaya tidak tercentang pada `Manage files` yang sama dan TC-FA-SU-201 mengubahnya dari Inactive ke Active; spec ini menyetel Delete tercentang lewat seed API sebagai precondition TC-FA-SU-204 dan tidak menyentuh asumsi TC lain.
   - TC-FA-SU-205 butir b ("Role Count berkurang") dan butir a ("tanpa dialog tambahan") tidak menyebut cara observasi selain User List dan toast; spec mengasersi sesuai teks TC.
