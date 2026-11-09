@@ -729,5 +729,101 @@ class CheckSuitePrdTests(unittest.TestCase):
         self.assertEqual(out.count("[REVIEW] C22 "), 1)                  # the UI tab «Klik tab Info» is not a keyboard walk
 
 
+
+VARIANT_RULES = {
+    "DEMO:obl/matrix-variant/principal/submit": {"text": "P16 · Varian Principal (Batasan Sumber Dana: Bebas biaya (tanpa wallet)) x aksi «Submit»: efek"},
+    "DEMO:obl/matrix-variant/distributor-partner/submit": {"text": "P16 · Varian Distributor/Partner (Batasan Sumber Dana: Wajib didanai saldo dompet (Wallet)) x aksi «Submit»: efek"},
+    "DEMO:obl/matrix-variant/distributor/submit": {"text": "P16 · Varian Distributor (Scope Penerima (Client): Client binaan langsung (exact match — TIDAK termasuk Client Partner)) x aksi «Submit»: efek"},
+    "DEMO:T-03": {"text": "T-03 | Toast Gagal Create | Kegagalan server | \"Error, failed to create demo.\""},
+    "DEMO:T-04": {"text": "T-04 | Toast Gagal Submit | Kegagalan server | \"Error, failed to submit demo.\""},
+    "DEMO:V-10": {"text": "V-10 | Wallet Balance | Saldo kurang | \"Your pocket balance is not enough.\" | Real-time"},
+    "DEMO-LOGIC-05": {"text": "Saldo kurang menolak Submit (V-10)."},
+}
+
+
+def collect(fn, *args):
+    found = []
+    fn(*args, lambda level, code, msg: found.append((level, code, msg)))
+    return found
+
+
+class Run14AuditChecks(unittest.TestCase):
+    def test_variant_resources_come_from_the_negated_variant_value(self):
+        words = check.variant_resources(VARIANT_RULES)
+        self.assertEqual(words["wallet"][:2], ("Distributor/Partner", "Principal"))
+        self.assertIn("saldo", words)
+        self.assertNotIn("binaan", words)              # the scope dimension has no negated value, so it gives no resource words
+
+    def test_not_applicable_for_a_resource_another_variant_has_is_a_finding(self):
+        notes = "- Tidak berlaku: `DEMO:constraints/timeout` klausa Release saldo ter-reserve (PRD L942)\n"
+        out = collect(check.variant_na_checks, "S-497", notes, VARIANT_RULES)
+        self.assertEqual([o[1] for o in out], ["T28"])
+        self.assertIn("Distributor/Partner", out[0][2])
+
+    def test_not_applicable_justified_by_the_chosen_account_is_a_finding(self):
+        notes = ("- Tidak berlaku: DEMO-LOGIC-06d klausa tanpa perubahan Reserve (PRD L185)\n"
+                 "- Aktor spec ini adalah Principal (DU-07) yang tidak memakai wallet dan tidak punya Reserve (PRD L942).\n")
+        self.assertEqual([o[1] for o in collect(check.variant_na_checks, "S-043", notes, VARIANT_RULES)], ["T28"])
+
+    def test_a_prd_based_not_applicable_next_to_an_unrelated_account_note_passes(self):
+        notes = ("- Tidak berlaku: DEMO:obl/platform/edge klausa Edge: kuantitas (D9) (PRD L1033)\n"
+                 "- P-2: pengulangan lewat sesi API aktor adalah pemicu; asersi respons hanya sisi sukses tanpa kode status.\n"
+                 "- Tidak berlaku: DEMO:S-03 klausa Empty (Filtered) pada Allocation Log (PRD L435)\n"
+                 "- Empty state dibaca pada akun DU-13 yang tidak punya transaksi dalam jaringannya.\n")
+        self.assertEqual(collect(check.variant_na_checks, "S-019", notes, VARIANT_RULES), [])
+
+    def test_a_message_shown_without_its_literal_is_a_finding(self):
+        steps = ("### DEMO-LOGIC-05: Saldo kurang\n1. Ketik Quantity 999\n2. Verifikasi pesan saldo tidak mencukupi tampil di bawah Preview.\n"
+                 "3. Verifikasi pesan `Your pocket balance is not enough.` tampil di bawah Preview.\n4. Verifikasi toast Error masih tampil.\n")
+        out = collect(check.literal_checks, "S-271", steps, ["DEMO-LOGIC-05"], VARIANT_RULES)
+        self.assertEqual([o[1] for o in out], ["T29"])
+        self.assertIn("langkah 2 ", out[0][2])        # 3 quotes the text, 4 is a persistence check
+
+    def test_a_message_code_without_its_text_and_a_shared_prefix_are_findings(self):
+        steps = ("### DEMO:T-03: Toast\n1. Klik `[Submit]`\n2. Verifikasi toast `T-03` tampil.\n"
+                 "3. Verifikasi toast Error tampil dengan teks diawali `Error, failed to ` (awalan bersama).\n"
+                 "4. Verifikasi toast `Error, failed to create demo.` tampil.\n")
+        out = collect(check.literal_checks, "S-472", steps, ["DEMO:T-03"], VARIANT_RULES)
+        self.assertEqual(len(out), 2, out)
+        self.assertIn("langkah 2", out[0][2])
+        self.assertIn("awalan", out[1][2])
+
+    def test_no_duplicate_claim_after_a_self_answering_intercept_is_a_finding(self):
+        bad = ("8. Pasang intercept timeout (tanpa respons) pada permintaan simpan alokasi.\n9. Klik `[Submit]`.\n13. Lepas intercept timeout.\n"
+               "14. Klik `[Submit]`.\n18. Verifikasi List menampilkan tepat 1 baris (tidak ada transaksi ganda).\n")
+        out = collect(check.intercept_state_check, "S-328", bad)
+        self.assertIn(("FINDING", "C40"), [(o[0], o[1]) for o in out])
+        good = ("7. Pasang `Spectra.intercept` pada permintaan simpan alokasi: teruskan ke backend, tahan respons sampai timeout.\n8. Klik `[Submit]`.\n"
+                "12. Lepas `Spectra.intercept`.\n15. Verifikasi tetap tepat satu transaksi, tanpa transaksi baru (Capture terjadi sekali).\n"
+                "20. Pasang intercept yang menahan respons permintaan simpan alokasi tanpa mengubah isinya.\n21. Verifikasi saldo dipotong sekali.\n")
+        self.assertEqual(collect(check.intercept_state_check, "S-045", good), [])
+
+    def test_opening_a_log_while_the_clock_is_frozen_is_a_finding(self):
+        steps = ("3. Atur jam server dan jam browser ke titik sebelum H-24, lalu bekukan.\n10. Buka menu Activity Log, klik tab `User Action`.\n"
+                 "11. Verifikasi Activity Log memuat tepat 1 baris.\n17. Pulihkan jam server dan jam browser ke waktu nyata.\n20. Buka menu Activity Log.\n")
+        out = collect(check.frozen_clock_log_check, "S-257", steps)
+        self.assertEqual([o[1] for o in out], ["C41"])
+        self.assertIn("langkah 10, 11 ", out[0][2])
+
+    def test_top_row_read_after_a_write_needs_a_baseline(self):
+        bad = "6. Ketik Quantity 10.\n7. Klik `[Submit]`.\n8. Verifikasi baris teratas Device Allocation List menampilkan Quantity `10`.\n"
+        self.assertEqual([o[1] for o in collect(check.top_row_check, "S-089", bad)], ["C42"])
+        good = "1. Catat Allocation ID baris teratas sebagai A0.\n7. Klik `[Submit]`.\n8. Verifikasi baris teratas bukan A0 dan menampilkan Quantity `10`.\n"
+        self.assertEqual(collect(check.top_row_check, "S-089", good), [])
+        seeds = "1. Verifikasi keempat baris seed berada di empat baris teratas halaman 1.\n"
+        self.assertEqual(collect(check.top_row_check, "S-363", seeds), [])      # no action: not a result read
+
+    def test_a_menu_item_named_like_a_log_is_not_a_log_read(self):
+        steps = "18. Klik `[Approve]`.\n20. Verifikasi menu aksi baris P memuat `Allocation Log`.\n"
+        self.assertEqual(collect(check.log_read_checks, "S-322", steps), [])
+
+    def test_dependency_admitted_in_other_words_is_c25_and_independence_is_not(self):
+        steps = "\n".join(f"{i}. Verifikasi langkah {i}" for i in range(1, 41)) + "\n"
+        bad = "- Ketergantungan: langkah 31 sampai 40 membaca transaksi pertama dan kedua dari skenario sebelumnya dan tidak dapat dipisah.\n"
+        self.assertIn("C25", [o[1] for o in collect(check.long_spec_checks, "S-002", 40, steps, bad)])
+        good = "- Ukuran 45 langkah, di atas ambang 35: tiap blok membuat transaksi sendiri sehingga tidak ada ketergantungan antar-blok.\n"
+        self.assertNotIn(("FINDING", "C25"), [(o[0], o[1]) for o in collect(check.long_spec_checks, "S-299", 45, steps, good)])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -57,6 +57,18 @@ Bentuk klausa yang paling sering setengah diasersi (R-30..R-32; hanya di salinan
   C38 [REVIEW] langkah Search pada log (Activity Log Session, System Log) dengan email: log itu mencocokkan nama tampil, bukan email; dua user bernama depan sama membuat hitungan «tepat satu» menghitung keduanya (run 11: 097, 099, 105)
   T27 [REVIEW] butir pembagian klausa yang menyebut label duty aturan yang dilimpahkan, padahal langkah spek tujuan tidak memuat kata-kata label itu (run 12: rate limit Submit ditunjuk ke 139, diuji di 144)
   C40 [REVIEW] `Verifikasi` yang membaca state backend (token, password, counter, lock, kotak email) selama intercept yang menjawab sendiri (5xx, timeout, respons ditahan) aktif: permintaan tidak sampai server, asersi tidak bisa gagal (run 12: 138, 142)
+  T28 [FINDING] (audit run 14) kalimat «Tidak berlaku» untuk klausa yang menyebut sumber daya milik satu varian aktor (dimensi varian `obl/matrix-variant`
+      yang nilainya «tanpa X» untuk varian lain, mis. Principal «tanpa wallet» vs Distributor/Partner «Wallet»): klausa itu berlaku untuk varian yang
+      memilikinya; uji dengan akun varian itu (`## Varian aktor` rencana) atau limpahkan ke spek yang mengujinya. Juga [FINDING] bila butir Notes di
+      sebelah kalimat «Tidak berlaku» membenarkannya dengan pilihan akun («aktor/akun/pembuat … tanpa/tidak memakai …»): pilihan akun bukan alasan PRD
+  T29 [FINDING] (audit run 14) `Verifikasi` toast/pesan/caption/peringatan/alert «tampil» tanpa teks berkutip di subjudul aturan yang (atau kode pesan
+      yang disebutnya, mis. `V-10`) memberi literal; dan literal yang hanya «diawali» awalan bersama padahal katalog memberi teks utuh
+  C41 [FINDING] (S-09, audit run 14) Activity Log / System Log / User Log dibuka atau dibaca selama jam server atau browser dibekukan atau digeser
+      (sebelum langkah «Pulihkan jam … ke waktu nyata»)
+  C42 [REVIEW] (audit run 14) `Verifikasi` «baris teratas» sebagai bukti hasil aksi tanpa baseline yang dicatat sebelumnya (Allocation ID teratas,
+      total baris): baris permanen dari run lain dengan nilai sama meloloskannya
+  C40 kini [FINDING] bila klaim «tidak ganda / tepat satu kali / dipotong sekali» ditulis sesudah intercept yang menjawab sendiri (permintaan pertama
+      tidak sampai server, jadi duplikasi mustahil); «teruskan ke backend lalu tahan respons» dan «menahan respons» dihitung pass-through
   C39 [REVIEW] dua `Verifikasi` toast Error / failed berturut-turut tanpa langkah «Tutup toast» di antaranya: toast Error bertahan sampai ditutup manual, toast blok lama meloloskan asersi blok baru (run 11: 129, 132)
   T24 [REVIEW] butir pembagian dengan «spec NNN» tetapi tanpa ID aturan sebelumnya: pelimpahan tidak bisa diperiksa
   T25 [REVIEW] butir pembagian yang menyebut id data (DU-nn) atau literal berkutip untuk spec NNN, padahal spec itu tidak memuatnya sama sekali: aturan penghubung ada di spec tujuan, klausanya belum tentu (RP F-1: DU-16 hanya di spek penunjuk)
@@ -326,6 +338,8 @@ def one_row_check(folder, steps, out):
         out("REVIEW", "C33", f"{folder}: «{hits[0][:80]}»: pada audit trail permanen baris sisa dari run atau spek lain meloloskan asersi; catat baseline dan asersi selisih atau kunci unik")
 
 
+MENU_ITEM_RE = re.compile(r"(?i)\bmenu\b[^.\n]{0,40}\b(?:memuat|menampilkan|berisi|menyediakan)\b|\bitem menu\b|\brow action\b")
+API_REJECT_RE = re.compile(r"(?i)\brespons\b[^.\n]{0,40}\b(?:penolakan|ditolak)|ditolak server|penolakan server")
 LOG_SURFACE_RE = re.compile(r"(?i)\b(?:allocation log|activity log|system log|user log|changelog)\b")
 WAIT_RE = re.compile(r"(?i)tunggu|polling|tiap \d+ detik|setiap \d+ detik|sampai\b[^.\n]{0,80}(?:tampil|muncul|ada|bertambah|sama|terbaca|terbit)|hingga\b|ulangi|buka ulang|tutup dan buka|maks(?:imal)?\s+\d+\s+(?:menit|detik)")
 STEP_RE = re.compile(r"(?m)^(\d+)\.\s+(.*)$")
@@ -342,6 +356,8 @@ def log_read_checks(folder, steps, out):
     for i, (num, text) in enumerate(rows):
         if not re.match(r"(?i)verifikasi", text) or not LOG_SURFACE_RE.search(text) or not re.search(r"(?i)entri|entry|description|baris", text):
             continue   # «menu aksi menampilkan `Allocation Log`» names the menu item, it does not read the log
+        if MENU_ITEM_RE.search(text) or API_REJECT_RE.search(text):
+            continue   # run 14: «menu baris memuat `Allocation Log`» (069, 322, 323) and «respons berupa penolakan server» (316) are not log reads
         near = " ".join(t for _, t in rows[max(0, i - 6): i + 1])
         first_of_run = num - last_log > 3
         last_log = num
@@ -387,9 +403,12 @@ ERROR_TOAST_VERIF_RE = re.compile(r"(?i)^verifikasi[^\n]*\btoast\b[^\n]*(?:error
 
 
 INTERCEPT_MOCK_RE = re.compile(r"(?i)intercept[^\n]*(?:\b5\d\d\b|5xx|timeout|balas|kembalikan|respons|tahan|menahan|ditahan)")   # «menahan»: t assimilates to n
-MOCK_PASS_RE = re.compile(r"(?i)pass-?through|diteruskan|teruskan ke server|hitung-?saja")
+MOCK_PASS_RE = re.compile(r"(?i)pass-?through|diteruskan|teruskan(?: permintaan)? ke (?:server|backend)|meneruskan|hitung-?saja|sampai ke (?:server|backend)")
+HOLD_ONLY_RE = re.compile(r"(?i)\b(?:tahan|menahan|ditahan)\s+(?:respons|jawaban)")   # holding the server's response: the request reached the server
+SELF_ANSWER_RE = re.compile(r"(?i)tanpa respons|tanpa jawaban|\b5\d\d\b|5xx|\bbalas\b|kembalikan|\btimeout\b(?![^\n]*klien)")
+DEDUP_CLAIM_RE = re.compile(r"(?i)\bgand|duplikat|tepat (?:satu|1) kali|satu kali|\bsekali\b|tidak diulang|tanpa transaksi baru kedua")
 INTERCEPT_END_RE = re.compile(r"(?i)(?:lepas|hapus|matikan|reset|akhiri)\s+intercept")
-BACKEND_READ_RE = re.compile(r"(?i)fixture|status token|token[^\n]{0,30}(?:active|consumed|invalidated|tetap)|password lama|login dengan|counter|lock|mail-?catcher|kotak (?:email|DU)")
+BACKEND_READ_RE = re.compile(r"(?i)fixture|saldo|reserved|kuota|status token|token[^\n]{0,30}(?:active|consumed|invalidated|tetap)|password lama|login dengan|counter|lock|mail-?catcher|kotak (?:email|DU)")
 
 
 def intercept_state_check(folder, steps, out):
@@ -399,9 +418,13 @@ def intercept_state_check(folder, steps, out):
     rows = [(int(m.group(1)), m.group(2)) for m in STEP_RE.finditer(steps)]
     # `pending`: the last request of the flow was answered by a mock; it stays so after «lepas intercept» until a real action reaches the server
     active, pending, hits = False, False, []
+    mocked_write, dedup = False, []
     for num, t in rows:
-        if INTERCEPT_MOCK_RE.search(t) and not MOCK_PASS_RE.search(t):
-            active = pending = True
+        if re.match(r"(?i)verifikasi", t) and mocked_write and DEDUP_CLAIM_RE.search(t):
+            dedup.append(num)
+        passthrough = MOCK_PASS_RE.search(t) or (HOLD_ONLY_RE.search(t) and not SELF_ANSWER_RE.search(t))
+        if INTERCEPT_MOCK_RE.search(t) and not passthrough:
+            active = pending = mocked_write = True
         elif INTERCEPT_END_RE.search(t):
             active = False
         elif re.match(r"(?i)verifikasi", t):
@@ -409,6 +432,9 @@ def intercept_state_check(folder, steps, out):
                 hits.append(num)
         elif not active and re.match(r"(?i)(?:klik|kirim|submit|picu|buka|ketik[^\n]*lalu klik)", t):
             pending = False
+    if dedup:
+        out("FINDING", "C40", f"{folder}: langkah {', '.join(str(n) for n in dedup[:5])} mengklaim «tidak ganda / sekali» sesudah intercept yang menjawab sendiri: permintaan pertama tidak sampai server, "
+                              "jadi duplikasi mustahil dan asersi tidak bisa gagal; pakai intercept «teruskan ke backend lalu tahan respons» (pass-through)")
     if hits:
         out("REVIEW", "C40", f"{folder}: langkah {', '.join(str(n) for n in hits[:5])} membaca state backend sesudah intercept yang menjawab sendiri (permintaan tidak sampai server): "
                              "«state tidak berubah» tidak bisa gagal; pakai kegagalan nyata (fixture BE, penyedia mati) atau tulis klausanya sebagai efek server murni")
@@ -567,6 +593,165 @@ def vacuous_absence_check(folder, steps, out):
                 break
 
 
+FREEZE_RE = re.compile(r"(?i)\bbekukan\b|\bdibekukan\b|\bfreeze\b|(?:atur|geser|majukan|mundurkan)\s+jam\b")
+UNFREEZE_RE = re.compile(r"(?i)(?:pulihkan|kembalikan|cairkan|lepas)\s+(?:fixture\s+)?jam|jam[^.\n]{0,40}\bke waktu nyata")
+LOG_OPEN_RE = re.compile(r"(?i)\b(?:activity log|system log|user log)\b")
+
+
+def frozen_clock_log_check(folder, steps, out):
+    """C41 [FINDING] (S-09): a log surface opened or read while the server or browser clock is frozen or shifted (log rows carry the fake time, and the
+    convention says the clock is restored before the actor opens Activity Log or User Log)."""
+    frozen, hits = False, []
+    for m in STEP_RE.finditer(steps):
+        num, t = int(m.group(1)), m.group(2)
+        if UNFREEZE_RE.search(t):
+            frozen = False
+        elif FREEZE_RE.search(t) and re.search(r"(?i)\bjam\b|clock", t):
+            frozen = True
+        elif frozen and LOG_OPEN_RE.search(t) and not re.search(r"(?i)\bmenu\b[^.\n]{0,30}\bmemuat\b", t):
+            hits.append(num)
+    if hits:
+        out("FINDING", "C41", f"{folder}: langkah {', '.join(str(n) for n in hits[:5])} membuka atau membaca Activity/System/User Log selama jam dibekukan atau digeser; "
+                              "pulihkan jam ke waktu nyata sebelum log dibuka (S-09), lalu bekukan lagi untuk titik uji berikutnya")
+
+
+BASELINE_RE = re.compile(r"(?i)\bcatat\b|baseline|\bN0\b|\bB0\b|\bQ0\b|sebelum aksi")
+
+
+def top_row_check(folder, steps, out):
+    """C42 [REVIEW]: «baris teratas» read as the result of an action with no baseline recorded earlier in the spec: a permanent row of another run with
+    the same values passes the assertion even when the action created nothing."""
+    rows = [(int(m.group(1)), m.group(2)) for m in STEP_RE.finditer(steps)]
+    hits = []
+    for i, (num, t) in enumerate(rows):
+        if re.match(r"(?i)verifikasi", t) and TOP_ROW_RE.search(t) and not re.search(r"(?i)\bsearch\b|\bcari\b", " ".join(x for _, x in rows[max(0, i - 3): i])) \
+                and any(WRITE_RE.search(x) for _, x in rows[max(0, i - 10): i]):
+            if not any(BASELINE_RE.search(x) and re.search(r"(?i)teratas|total|jumlah|allocation id|\bID\b", x) for _, x in rows[:i]):
+                hits.append(num)
+    if hits:
+        out("REVIEW", "C42", f"{folder}: langkah {', '.join(str(n) for n in hits[:5])} membaca «baris teratas» sebagai hasil aksi tanpa baseline (ID teratas atau total baris) yang dicatat sebelumnya; "
+                             "baris permanen run lain dengan nilai sama meloloskannya: catat baseline atau cari lewat kunci unik")
+
+
+VARIANT_RE = re.compile(r"Varian (.+?) \(([^:()]+): (.*)\) x aksi")
+NEGATED_RE = re.compile(r"(?i)\b(?:tanpa|bebas|bukan|tidak ada|non)\s+([A-Za-z][\w-]{2,})")
+VARIANT_STOP = {"wajib", "didanai", "harus", "opsional", "semua", "dengan", "untuk", "yang", "tanpa", "bebas", "dari", "atau", "dan", "client", "kelas", "entitas"}
+
+
+def variant_resources(rules):
+    """From the P16 variant obligations: per dimension where one variant's value is negated («Bebas biaya (tanpa wallet)») and another's is not
+    («Wajib didanai saldo dompet (Wallet)»), the resource words that only the second kind of variant has. Returns {word: (having, lacking, dimension)}."""
+    dims = {}
+    for qid, r in rules.items():
+        if "/matrix-variant/" not in qid:
+            continue
+        m = VARIANT_RE.search(str(r.get("text") or ""))
+        if m:
+            dims.setdefault(m.group(2).strip(), {})[m.group(1).strip()] = m.group(3)
+    words = {}
+    for dim, vals in dims.items():
+        neg = {v: {w.lower() for w in NEGATED_RE.findall(val)} for v, val in vals.items()}
+        lacking = sorted(v for v, ws in neg.items() if ws)
+        having = sorted(v for v in vals if v not in lacking)
+        if not lacking or not having:
+            continue
+        found = set().union(*neg.values())
+        for v in having:
+            found |= {w.lower() for w in re.findall(r"[A-Za-z]{4,}", vals[v])}
+        for w in found - VARIANT_STOP:
+            words[w] = ("/".join(having), "/".join(lacking), dim)
+    return words
+
+
+ACTOR_JUSTIFY_RE = re.compile(r"(?i)\b(?:aktor|akun|pembuat|pengirim|creator|DU-\d{2,3})\b[^.\n]{0,100}\b(?:tanpa|tidak (?:memakai|punya|memiliki|menggunakan|mempunyai))\b")
+LACKED_RE = re.compile(r"(?i)\b(?:tanpa|tidak (?:memakai|punya|memiliki|menggunakan|mempunyai))\s+([A-Za-z][\w-]{3,})")
+
+
+def lacks_label_word(text, label):
+    """The account sentence says the actor lacks something the N/A clause label is about («tidak memakai wallet dan tidak punya Reserve» vs «tanpa perubahan Reserve»)."""
+    if not ACTOR_JUSTIFY_RE.search(text):
+        return False
+    words = {w.lower() for w in re.findall(r"[A-Za-z][\w-]{3,}", label)} - {"tanpa", "tidak", "pada", "klausa"}
+    return any(o.lower() in words for o in LACKED_RE.findall(text))
+NA_SENTENCE_RE = re.compile(r"(?i)Tidak berlaku:\s*`?([^\s`]+)`?\s+klausa\s+(.+?)\s*\(PRD")
+
+
+def variant_na_checks(folder, notes, rules, out):
+    """T28 [FINDING] (audit run 14: 043, 144-149, 447-453, 497): «Tidak berlaku» written because the chosen account lacks a resource that another actor
+    variant has. The clause applies to the variant that has it; the plan's `## Varian aktor` names that account."""
+    words = variant_resources(rules)
+    items = bullets(notes)
+    for i, bullet in enumerate(items):
+        m = NA_SENTENCE_RE.search(bullet)
+        if not m:
+            continue
+        label = m.group(2).lower()
+        hit = next((w for w in words if re.search(rf"\b{re.escape(w)}\b", label)), None)
+        if hit:
+            having, lacking, dim = words[hit]
+            out("FINDING", "T28", f"{folder}: «Tidak berlaku» untuk klausa «{m.group(2)[:60]}», padahal «{hit}» dimiliki varian {having} ({dim}); "
+                                  f"klausa berlaku untuk varian itu: uji dengan akun varian {having} (`## Varian aktor` rencana) atau limpahkan ke spek yang mengujinya")
+            continue
+        near = [items[j] for j in (i - 1, i + 1) if 0 <= j < len(items)]
+        if any(lacks_label_word(b, label) and not NA_SENTENCE_RE.search(b) for b in near) or lacks_label_word(bullet[m.end():], label):
+            out("FINDING", "T28", f"{folder}: «Tidak berlaku» untuk klausa «{m.group(2)[:60]}» dibenarkan dengan pilihan akun (butir di sebelahnya); "
+                                  "pilihan akun bukan alasan PRD: pakai akun yang memiliki permukaan itu atau limpahkan ke spek yang mengujinya")
+
+
+MESSAGE_NOUN_RE = re.compile(r"(?i)\b(?:toast|pesan|caption|peringatan|alert|helper text)\b")
+SHOWN_RE = re.compile(r"(?i)\b(?:tampil|muncul|terlihat)\b")
+QUOTED_RE = re.compile(r"`([^`\n]{8,})`|«([^»\n]{8,})»|\"([^\"\n]{8,})\"")
+CODE_RE = re.compile(r"\b([A-Z]{1,2}-\d{2})\b")
+PREFIX_WORD_RE = re.compile(r"(?i)diawali|awalan|berawalan|dimulai dengan")
+
+
+def message_catalog(rules):
+    """code (`T-03`, `V-10`) -> the quoted literal of its PRD catalog row."""
+    cat = {}
+    for qid, r in rules.items():
+        code = qid.split(":")[-1]
+        if re.fullmatch(r"[A-Z]{1,2}-\d{2}", code):
+            m = re.search(r"\"([^\"]{6,})\"", str(r.get("text") or ""))
+            if m:
+                cat[code] = m.group(1)
+    return cat
+
+
+def literal_checks(folder, steps, ids, rules, out):
+    """T29 [FINDING] (audit run 14 F-5/F-6: 116, 271-278, 302, 318, 320, 472-474): a message asserted as «tampil» with no quoted text under a rule whose
+    text (or a message code it names) gives the literal; and a quoted prefix («diawali `Error, failed to `») where the catalog gives the whole text."""
+    catalog = message_catalog(rules)
+    known = set(rules) | set(ids)
+    bare, prefix = [], []
+    for part in re.split(r"(?m)^(?=### )", steps):
+        hm = HEAD_RE.match(part)
+        rid = heading_rule(hm.group(1), known) if hm else None
+        text = str((rules.get(rid) or {}).get("text") or "") if rid else ""
+        code = rid.split(":")[-1] if rid else ""
+        lits = [x for x in re.findall(r"\"([^\"]{8,})\"", text)] + [catalog[c] for c in CODE_RE.findall(text + " " + code) if c in catalog]
+        for m in STEP_RE.finditer(part):
+            num, t = int(m.group(1)), m.group(2)
+            if not re.match(r"(?i)verifikasi", t) or not MESSAGE_NOUN_RE.search(t) or not SHOWN_RE.search(t) or NEGATION_RE.search(t) \
+                    or re.search(r"(?i)masih tampil|tetap tampil|bertahan", t):
+                continue   # persistence of a message asserted verbatim earlier
+            named = [catalog[c] for c in CODE_RE.findall(t) if c in catalog]
+            quoted = [next(g for g in q if g) for q in QUOTED_RE.findall(t)]
+            quoted = [q for q in quoted if not q.startswith("[")]
+            pool = named or lits
+            if not pool:
+                continue
+            if not quoted:
+                bare.append(num)
+            elif PREFIX_WORD_RE.search(t) and not any(q.strip() == p.strip() for q in quoted for p in pool):
+                prefix.append(num)
+    if bare:
+        out("FINDING", "T29", f"{folder}: langkah {', '.join(str(n) for n in bare[:6])} mengasersi pesan «tampil» tanpa teks, padahal aturan subjudulnya (atau kode pesan yang disebut) "
+                              "memberi literal; tulis teks PRD verbatim (placeholder diisi nilai DU)")
+    if prefix:
+        out("FINDING", "T29", f"{folder}: langkah {', '.join(str(n) for n in prefix[:6])} hanya mengasersi awalan pesan padahal katalog memberi teks utuh; "
+                              "tetapkan jalurnya lewat baris DU lalu asersi teks utuh")
+
+
 STD_NA_RE = re.compile(r"(?i)Tidak berlaku:\s*\S+.{0,200}?klausa\s+\S")
 PRD_REF_RE = re.compile(r"\bL\d+\b|§\s?\d")
 NA_PROSE_RE = re.compile(r"(?i)tidak berlaku|tidak (?:ada|punya|memiliki) (?:permukaan|objek)|tanpa permukaan|tidak teramati di (?:tabel|form|modal)")
@@ -584,8 +769,8 @@ def clause_na_checks(folder, notes, out):
             out("FINDING", "T23", f"{folder}: klausa yang tidak berlaku ditulis sebagai prosa; pakai kalimat baku «Tidak berlaku: <aturan> klausa <label> (PRD L<n>)»: «{bullet[:80]}»")
 
 
-DEPENDENT_REASON_RE = re.compile(r"(?i)bergantung|saling (?:memakai|mengandalkan|menggunakan)|memakai (?:ulang|hasil|keadaan|seleksi|user|record|data)\b|dibangun (?:oleh )?(?:langkah|blok)|masih terbuka dari|mengandalkan (?:flag|hasil|state|keadaan)|melanjutkan (?:dari )?blok|hasil blok (?:sebelum|awal)")
-INDEPENDENT_RE = re.compile(r"(?i)tidak (?:saling )?(?:bergantung|memakai|mengandalkan|menggunakan)|tidak ada (?:blok |langkah )?(?:yang )?(?:bergantung|memakai|mengandalkan|menggunakan)|tanpa (?:saling )?ketergantungan|berdiri sendiri")
+DEPENDENT_REASON_RE = re.compile(r"(?i)tidak dapat dipisah|tak dapat dipisah|alur berurutan|membaca (?:transaksi|hasil|data|baris|record)[^.]{0,80}\b(?:skenario|blok|langkah) sebelum|ketergantungan|bergantung|saling (?:memakai|mengandalkan|menggunakan)|memakai (?:ulang|hasil|keadaan|seleksi|user|record|data)\b|dibangun (?:oleh )?(?:langkah|blok)|masih terbuka dari|mengandalkan (?:flag|hasil|state|keadaan)|melanjutkan (?:dari )?blok|hasil blok (?:sebelum|awal)")
+INDEPENDENT_RE = re.compile(r"(?i)tidak ada ketergantungan|tidak (?:saling )?(?:bergantung|memakai|mengandalkan|menggunakan)|tidak ada (?:blok |langkah )?(?:yang )?(?:bergantung|memakai|mengandalkan|menggunakan)|tanpa (?:saling )?ketergantungan|berdiri sendiri")
 STEP_BACKREF_RE = re.compile(r"(?im)^\d+\..*\blangkah\s+\d+\b")
 
 
@@ -1008,7 +1193,7 @@ def clause_review_checks(blocks, rules, held, out, notes_all=()):
             if not re.search(rf"(?<![\d:]){num}(?![\d])", body):
                 out("REVIEW", "T16", f"{rid}: nilai «{num} {unit}» di teks aturan tidak muncul di subjudul aturan itu (spec {specs}); "
                                      "nilai dan batas dari contoh aturan diasersi satu per satu")
-        if EXCLUSIVE_RE.search(text) and not NEGATION_RE.search(body):
+        if EXCLUSIVE_RE.search(text) and not NEGATION_RE.search(body) and "/matrix-dim/" not in rid:   # run 14: «selain Active» is the dimension's definition, not a clause
             out("REVIEW", "T17", f"{rid}: klausa «hanya/selain/kecuali» tetapi subjudul aturan itu (spec {specs}) tidak memuat asersi ketiadaan; "
                                  "uji juga sisi pembanding (8b.2)")
         for duty in rule.get("duties") or []:
@@ -1136,6 +1321,10 @@ def main(argv=None):
         conditional_step_check(folder, steps, out)
         leads_from_audit_run11(folder, steps, text, out)
         intercept_state_check(folder, steps, out)
+        frozen_clock_log_check(folder, steps, out)
+        top_row_check(folder, steps, out)
+        variant_na_checks(folder, notes, rules, out)
+        literal_checks(folder, steps, ids, rules, out)
         log_read_checks(folder, steps, out)
         repeated_assertion_checks(folder, steps, out)
         heading_checks(folder, steps, ids, rules, out)
