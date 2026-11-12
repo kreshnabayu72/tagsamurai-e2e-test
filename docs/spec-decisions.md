@@ -1264,3 +1264,36 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-10 (draf disetujui).
 - **Diterapkan di:** skrip HardwareHandheldReader 071 (`pending D-draft-HHR-DATEFMT`).
 - **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` L124.
+
+## D-131 Item Allocation lain untuk aktor tanpa Manage allocation tidak ada (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-016` TC-AC-CS-71 langkah 10-11.
+- **Spec meminta:** aktor tanpa Manage allocation membuka menu `Allocation` dan sedikitnya satu item Allocation lain tampil, sedangkan `Client Subscription` tidak.
+- **Kenyataannya:** gerbang menu membuka Device Allocation, License Allocation dan Client Subscription dengan satu aturan (Read pada Group Role `manage_allocation`, atau Group Manager sebuah group). Aktor yang melihat salah satunya juga melihat Client Subscription; memberi Group Role mematahkan langkah 12.
+- **Karena:** keadaan awal langkah 10-11 tidak ada di matriks akses menu.
+- **Keputusan:** langkah 10-11 keluar dari e2e; aktor tidak diganti. Langkah 12 dan seterusnya tetap seperti spec.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12.
+- **Diterapkan di:** skrip LicenseAllocationSubscription 016 (`pending D-draft-ACCS-05`).
+- **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/integration-findings.md` L125-133; `plans/access/ac-menu-access-matrix.md` baris 5-7.
+
+## D-132 Search kolom Modified By yang di-hide memakai kata kunci yang hanya ada di Modified By (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-071` TC-GS-USER-419 langkah 103.
+- **Spec meminta:** Search `System` dengan kolom Modified By di-hide menampilkan `No results found`.
+- **Kenyataannya:** `System` juga cocok dengan Email setiap user Pre-setup (`@qwertysystem.net`), kolom yang tampil, jadi tabel tidak akan kosong.
+- **Karena:** kata kunci spec tidak menguji maksud langkahnya (kolom yang di-hide tidak ikut dicari).
+- **Keputusan:** langkah 103 memakai kata kunci yang hanya ada di Modified By (nama aktor pengubah yang dibuat run), lalu mengasersi `No results found` seperti spec.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12.
+- **Diterapkan di:** skrip User 071 (`pending D-draft-USER-5`).
+- **Sumber:** repo aplikasi `plans/global-settings-user/integration-findings.md` L1596-1602.
+
+## D-133 Label Time Zone mengikuti daftar `(UTC±HH:MM) City` override owner (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/GeneralSettings `TC-GS-GSET-E2E-014` TC-GS-GSET-33, `TC-GS-GSET-E2E-040` TC-GS-GSET-163, `TC-GS-GSET-E2E-041` TC-GS-GSET-105.
+- **Spec meminta:** label opsi Time Zone dikelompokkan seperti PRD, dan label log untuk `Etc/UTC` mengikuti teks PRD.
+- **Kenyataannya:** override owner general-settings 2026-10-19 menetapkan daftar `(UTC±HH:MM) City`; app mengirim `Etc/UTC` dengan label `(UTC+00:00) UTC` dari daftar yang sama.
+- **Karena:** override owner berlaku atas PRD untuk daftar ini.
+- **Keputusan:** label opsi dan label New/Old Value log diasersi sesuai daftar override (`Etc/UTC` = `(UTC+00:00) UTC`); nilai Asia/Jakarta `(UTC+07:00) Bangkok, Hanoi, Jakarta` tetap diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12, mengikuti override owner 2026-10-19.
+- **Diterapkan di:** skrip GeneralSettings 014, 040, 041 (`pending D-draft-gset-timezone-labels`).
+- **Sumber:** repo aplikasi `plans/global-settings-general-settings/integration-findings.md` L102; `plans/_program/prd-overrides.md` baris general-settings 2026-10-19.
