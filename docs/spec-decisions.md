@@ -1297,3 +1297,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12, mengikuti override owner 2026-10-19.
 - **Diterapkan di:** skrip GeneralSettings 014, 040, 041 (`pending D-draft-gset-timezone-labels`).
 - **Sumber:** repo aplikasi `plans/global-settings-general-settings/integration-findings.md` L102; `plans/_program/prd-overrides.md` baris general-settings 2026-10-19.
+
+## D-134 Counter Bulk Action Bar Client mengikuti teks i18n app `N Clients selected` (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-306` TC-AC-ACC-448; `TC-AC-ACC-E2E-303` TC-AC-ACC-718, 719, 720.
+- **Spec meminta:** counter Bulk Action Bar terbaca `N clients selected`.
+- **Kenyataannya:** app menampilkan `N Clients selected` dari string i18n `Strings.ClientSelected` (`# Client selected` / `# Clients selected`) lewat t() dan ICU, ada di setiap locale. Pola PRD client.md L503 `[N] [Item] selected` tidak menetapkan huruf besar-kecil item.
+- **Karena:** aturan tim 18 (owner 2026-11-10): teks UI mengikuti i18n app, bukan kata PRD apa adanya.
+- **Keputusan:** langkah e2e mengasersi teks app `N Clients selected`.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12.
+- **Diterapkan di:** skrip Client 303 dan 306 (`pending D-draft-ACC-COUNTER-COPY`).
+- **Sumber:** repo aplikasi, commit ae7fc8991 dan 7bb2e215c (feat/connect-api); PRD admin-console client.md L503.
