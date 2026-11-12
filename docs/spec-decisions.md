@@ -1648,3 +1648,14 @@ Aturan:
 - **Diputuskan oleh:** owner (product owner override 2026-10-20), dicatat Wangs-UI Coordinator 2026-11-12.
 - **Diterapkan di:** SessionManagement 024.
 - **Sumber:** repo aplikasi `plans/auth/decisions.md` L510-514.
+
+## D-166 Delete langsung Client dengan subscription live dijawab 409, bukan 422 (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-134` TC-AC-ACC-465 langkah 2, TC-AC-ACC-455 langkah 72-73, TC-AC-ACC-653, TC-AC-ACC-655 langkah 22 dan 24, TC-AC-ACC-978 langkah 31.
+- **Spec meminta:** server menolak `DELETE /clients/{id}` langsung dengan `422`.
+- **Kenyataannya:** LLD Client menjawab penolakan D-03/D-14 dengan `409` dan `data.errorCode` `delete_blocked_live_subscription` / `delete_blocked_request_in_progress` (admin-console/client LLD L1141, L1253). ems#163 ditutup sesuai LLD; run ACprove-mac-20261112-2014-v1 menjawab 409.
+- **Karena:** LLD adalah kontrak; `422` di spec adalah status validasi body (LLD langkah 2), bukan penjaga keadaan.
+- **Keputusan:** skrip mengasersi `409` dengan alasan D-03 dan record yang tidak berubah; `422` spec keluar dari e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A, D-draft-ACC-2).
+- **Diterapkan di:** Client 134.
+- **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` L62.
