@@ -1308,3 +1308,68 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12.
 - **Diterapkan di:** skrip Client 303 dan 306 (`pending D-draft-ACC-COUNTER-COPY`).
 - **Sumber:** repo aplikasi, commit ae7fc8991 dan 7bb2e215c (feat/connect-api); PRD admin-console client.md L503.
+
+## D-135 Filter Custom Field User dipasang sebelum Search (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-053` TC-GS-UCF-217.
+- **Spec meminta:** Search dulu, lalu filter; hasilnya kosong.
+- **Kenyataannya:** opsi filter mengikuti search yang aktif (kontrak custom-field-user L93), jadi setelah search, opsi yang dipakai spec tidak lagi tersedia.
+- **Keputusan:** urutan langkah menjadi filter dulu, lalu search. Hasil yang diasersi (kosong) tidak berubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12.
+- **Diterapkan di:** skrip CustomFieldUser 053 (`pending D-draft-UCF-053-FILTER-ORDER`).
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-UCF-053-FILTER-ORDER); kontrak custom-field-user L93.
+
+## D-136 Batas waktu tepat satu detik di Auth diuji dengan margin di e2e, titik batasnya di unit test backend (2026-11-12)
+
+- **Spec / langkah:** Auth/Mfa 008 (TC-AUTH-MFA-211), 025 (TC-216), 029 (TC-212, 213), 033 (TC-164 langkah 71 dan 82-89), 042 (TC-214), 054 (TC-215); Auth/ResetPassword 021 (TC-AUTH-RST-149), 028 (TC-143 langkah 35-45); Auth/SessionManagement 013 (TC-AUTH-SES-282), 017 (TC-283).
+- **Spec meminta:** jam server diset dan dibekukan di satu instan (T0 + N), lalu satu request mendarat tepat di batas (4:59, 9:59, 10:00, 24 jam, 90 hari, 180 hari, 59/60 detik).
+- **Kenyataannya:** helper waktu yang ada hanya `POST /v2/iam/dev/time/age` (menggeser kolom waktu tenant, tidak membekukan jam). Jam nyata terus berjalan antara pemanggilan helper dan request browser, jadi baris yang dituakan tepat ke batas sudah lewat saat request tiba (AccountActivation 027 TC-137 menjawab Expired).
+- **Karena:** batasnya perbandingan satu detik di backend; run e2e lewat browser tidak bisa menempatkan request di satu detik (alasan yang sama dengan D-021).
+- **Keputusan:** e2e mengasersi dua sisi batas dengan margin lewat `ageTime`. Langkah instan-tepat keluar dari e2e: seluruh blok untuk TC yang hanya berisi batas (MFA 025 TC-216, MFA 054 TC-215, RST 021 TC-149, SES 013 TC-282, SES 017 TC-283, MFA 029 TC-212/213, MFA 008 TC-211, MFA 042 TC-214), sebagian untuk MFA 033 TC-164 dan RST 028 TC-143. Sisi inklusif/eksklusif dijaga unit test iam dengan jam yang diinjeksi (iam#115); batas yang belum punya unit test dicatat sebagai baris BT, bukan langkah e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** skrip di atas (`pending D-draft-AUTH-EXACT-INSTANT`).
+- **Sumber:** repo aplikasi `plans/auth/decisions.md` L684-702 (branch feat/connect-api-c f42174bed); `plans/_program/backend-test-findings.md` L124 (BT-56); PROJECT.md `## Backend test helpers`.
+
+## D-137 Gangguan layanan geo-IP tidak bisa dibuat; fail-open dijaga unit test backend (2026-11-12)
+
+- **Spec / langkah:** Auth/LoginPassword `TC-AUTH-LP-E2E-028` TC-AUTH-LP-155 langkah 12-22; Auth/Mfa `TC-AUTH-MFA-E2E-026` TC-AUTH-MFA-45 langkah 1-15, TC-AUTH-MFA-46 langkah 25, TC-AUTH-MFA-209 langkah 37-50.
+- **Spec meminta:** layanan geo-IP dimatikan dengan failure injection, lalu login dari lokasi jauh tanpa MFA (fail-open).
+- **Kenyataannya:** tidak ada route yang membuat lookup geo-IP gagal di stack bersama.
+- **Karena:** gangguan layanan pihak ketiga tidak bisa distage di stack bersama (pola yang sama dengan D-021).
+- **Keputusan:** langkah gangguan keluar dari e2e; perilaku fail-open dijaga unit test iam. Langkah yang tidak bergantung pada gangguan tetap jalan.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** skrip LoginPassword 028 dan Mfa 026 (`pending D-draft-AUTH-GEOIP-FAILOPEN`).
+- **Sumber:** repo aplikasi `plans/auth/decisions.md` L703-715 (feat/connect-api-c f42174bed); BT-35.
+
+## D-138 Penolakan token reCAPTCHA oleh server pindah ke ui-client (2026-11-12)
+
+- **Spec / langkah:** Auth/ResetPassword `TC-AUTH-RST-E2E-038` TC-AUTH-RST-121 langkah 12-15; `TC-AUTH-RST-E2E-043` TC-AUTH-RST-137 langkah 64.
+- **Spec meminta:** `POST /v2/iam/auth/reset-password/request` dengan `recaptchaToken: "invalid-token"` ditolak server karena reCAPTCHA.
+- **Kenyataannya:** proyek memakai pasangan kunci uji v2 Google; setiap token lolos verifikasi (keputusan owner BT-6, 2026-10-29). Token `invalid-token` tidak ditolak, justru mereset user sungguhan. Kasus tanpa token (TC-120, 124) ditolak server dan sudah dibangun.
+- **Karena:** penolakan ini hanya bisa dibuat dengan jawaban tiruan, jadi termasuk ui-client (aturan state yang tidak bisa dicapai, owner 2026-11-12).
+- **Keputusan:** langkah tersebut keluar dari ui-e2e; ui-client me-mount unit Reset Password request, menjawab request dengan penolakan reCAPTCHA sesuai kontrak (4xx operasi reset-password/request di openapi auth), dan mengasersi caption serta tidak adanya langkah email. Penolakan verifier sendiri dijaga test backend iam.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** skrip ResetPassword 038 dan 043 (`pending D-draft-AUTH-RECAPTCHA-REJECT`).
+- **Sumber:** repo aplikasi `plans/auth/decisions.md` L716-725 (feat/connect-api-c f42174bed); PROJECT.md L184-187; `plans/_program/backend-test-findings.md` L74.
+
+## D-139 Ucapan screen reader di MFA 056 diperiksa manual; e2e mengasersi markup live region (2026-11-12)
+
+- **Spec / langkah:** Auth/Mfa `TC-AUTH-MFA-E2E-056` TC-AUTH-MFA-12 langkah 8, 12, 13, 14.
+- **Spec meminta:** screen reader uji dijalankan dan keluarannya dibaca otomatis.
+- **Kenyataannya:** tidak ada action atau API TestSpectra yang menjalankan screen reader atau membaca ucapannya; TC sumber menandai TC-AUTH-MFA-12 Manual Only.
+- **Karena:** ucapan screen reader adalah keluaran teknologi bantu di OS tertentu; yang dikendalikan app adalah markup-nya.
+- **Keputusan:** langkah 8, 12 dan 14 keluar dari run otomatis (cek aksesibilitas manual per rilis). Langkah 13 di e2e mengasersi yang dibuktikan DOM: region error punya `aria-live` assertive atau `role="alert"` saat caption muncul, dan fokus tidak berpindah.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** skrip Mfa 056 (`pending D-draft-AUTH-SCREEN-READER`).
+- **Sumber:** repo aplikasi `plans/auth/decisions.md` L726-735 (feat/connect-api-c f42174bed).
+
+## D-140 Request Create Session langsung keluar dari e2e (2026-11-12)
+
+- **Spec / langkah:** Auth/SessionManagement `TC-AUTH-SES-E2E-064` TC-AUTH-SES-235 langkah 1-5, TC-AUTH-SES-320 langkah 6-11, TC-AUTH-SES-250 langkah 12-17; `TC-AUTH-SES-E2E-069` TC-AUTH-SES-320 langkah 1-7, TC-AUTH-SES-250 langkah 8-14.
+- **Spec meminta:** request Create Session dengan token user tertentu (platform tidak valid, user Pending Activation, user Active OFF) ditolak tanpa session.
+- **Kenyataannya:** kontrak tidak punya operasi Create Session publik; session dibuat di dalam `POST /v2/iam/auth/login`, dan login nyata menolak user Pending Activation dan Active OFF sebelum token ada. Tidak ada route uji yang menerbitkan token untuk user yang ditolak (BT-AUTH-SES-12).
+- **Karena:** operasi itu langkah internal login, bukan panggilan publik.
+- **Keputusan:** request Create Session langsung keluar dari e2e; penolakannya dijaga test integrasi iam. E2E membuktikan hasil yang terlihat user lewat login nyata di spec LoginPassword yang mencakup penolakan Pending Activation dan Active OFF.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (opsi A usulan Integration C).
+- **Diterapkan di:** skrip SessionManagement 064 dan 069 (`pending D-draft-AUTH-CREATE-SESSION`; 069 sebelumnya `feature-gap:be`).
+- **Sumber:** repo aplikasi `plans/auth/decisions.md` L736-744 (feat/connect-api-c f42174bed); `plans/auth/backend-findings.md` L22.
