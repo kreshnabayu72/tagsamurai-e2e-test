@@ -1,13 +1,13 @@
 # Coverage E2E — Admin Console > Activity Log
 
-Sumber: `admin-console/activity-log/TestCases/tc-activity-log.md` (186 TC granular aktif, `TC-AC-ACAL-01`–`186`) dan `admin-console/activity-log/TestCases/tc-activity-log-backend.md` (hanya untuk mengenali TC kontrak API).
+Sumber: `admin-console/activity-log/TestCases/tc-activity-log.md` (183 TC granular aktif, `TC-AC-ACAL-01`–`183`) dan `admin-console/activity-log/TestCases/tc-activity-log-backend.md` (hanya untuk mengenali TC kontrak API).
 Suite: `specs/AdminConsole/ActivityLog/`. Prefix Modul: `AC` + `ACAL` (`TC-AC-ACAL-E2E-*`). Status semua spec: `draft`, belum ada script.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 184 TC masuk 55 spec, 2 TC dilewati karena hanya-BE (182, 183). Halaman coverage versi lama (238 TC, 42 spec) tidak berlaku lagi dan penomoran E2E lamanya tidak dipakai ulang.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 181 TC masuk 54 spec, 2 TC dilewati karena hanya-BE (182, 183). Halaman coverage versi lama (238 TC, 42 spec) tidak berlaku lagi dan penomoran E2E lamanya tidak dipakai ulang.
 
 ---
 
-## 1. Pemetaan TC granular ke spec e2e (55 spec)
+## 1. Pemetaan TC granular ke spec e2e (54 spec)
 
 | Spec | Judul | Mode | Langkah | TC sumber |
 |---|---|:---:|:---:|---|
@@ -38,7 +38,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 184 TC masuk 55 spec, 2 TC di
 | TC-AC-ACAL-E2E-025-sort-tab-session-semua-kolom-dan-perpindahan-target | Sort Tab Session: Semua Kolom dan Perpindahan Target | FE+BE | 55 | 74, 75, 76, 77, 78, 79 |
 | TC-AC-ACAL-E2E-026-setup-column-tab-session-overlay-popup-sembunyikan-dan-kolom-terakhir | Setup Column Tab Session: Overlay, Popup, Sembunyikan, Cancel, dan Kolom Terakhir | FE+BE | 51 | 80, 81, 82, 86, 87 |
 | TC-AC-ACAL-E2E-027-setup-column-tab-session-urutan-pin-batas-tiga-dan-reset | Setup Column Tab Session: Urutan, Pin, Batas Tiga Kolom, dan Reset | FE+BE | 34 | 83, 84, 85 |
-| TC-AC-ACAL-E2E-028-isi-kolom-tab-user-action-pola-per-jenis-aksi-dan-description | Isi Kolom Tab User Action: Pola Per Jenis Aksi dan Kolom Description | FE+BE | 16 | 88, 184 |
+| TC-AC-ACAL-E2E-028-isi-kolom-tab-user-action-pola-per-jenis-aksi | Isi Kolom Tab User Action: Pola Per Jenis Aksi | FE+BE | 6 | 88 |
 | TC-AC-ACAL-E2E-029-search-tab-user-action-siklus-kotak-modified-by-kolom-date-dan-nilai-di-luar-kolom | Search Tab User Action: Siklus Kotak, Modified By, Kolom Date, dan Nilai di Luar Kolom | FE+BE | 29 | 89, 91, 92, 94 |
 | TC-AC-ACAL-E2E-030-filter-tab-user-action-struktur-opsi-or-and-dan-nama-ganda | Filter Tab User Action: Struktur, Opsi Dinamis, OR/AND, dan Nama Ganda | FE+BE | 46 | 95, 96, 97, 98, 176 |
 | TC-AC-ACAL-E2E-031-sort-tab-user-action-kolom-modified-by-dan-tipe-campuran | Sort Tab User Action: Kolom, Modified By, dan Tipe Campuran | FE+BE | 30 | 100, 101, 102, 103 |
@@ -50,7 +50,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 184 TC masuk 55 spec, 2 TC di
 | TC-AC-ACAL-E2E-037-format-tanggal-dan-zona-waktu-general-settings-entitas-staf-login | Format Tanggal dan Zona Waktu Mengikuti General Settings Entitas Staf Login | FE+BE | 31 | 60, 135, 136 |
 | TC-AC-ACAL-E2E-038-bahasa-pengguna-kolom-translatable-dan-label-opsi-filter | Bahasa Pengguna: Kolom Translatable dan Label Opsi Filter | FE+BE | 33 | 170, 180 |
 | TC-AC-ACAL-E2E-039-download-nama-berkas-header-cakupan-baris-filter-dan-kolom-hidden | Download: Nama Berkas, Header, Cakupan Baris, Mengikuti Filter, Kolom Hidden, dan Hasil Kosong | FE+BE | 49 | 121, 122, 123, 124, 125, 126, 128 |
-| TC-AC-ACAL-E2E-040-isi-sel-berkas-download-format-tanggal-nilai-kosong-status-description-field | Isi Sel Berkas Download: Format Tanggal, Nilai Kosong, Status, Description, dan Field | FE+BE | 32 | 127, 134, 179, 186 |
+| TC-AC-ACAL-E2E-040-isi-sel-berkas-download-format-tanggal-nilai-kosong-status-dan-field | Isi Sel Berkas Download: Format Tanggal, Nilai Kosong, Status, dan Field | FE+BE | 18 | 127, 134, 179 |
 | TC-AC-ACAL-E2E-041-download-threshold-5000-5001-baris-loading-screen-dan-gagal | Download: Threshold 5.000 dan 5.001 Baris, Loading Screen, dan Gagal di Atas Threshold | FE+BE | 18 | 129, 130, 164 |
 | TC-AC-ACAL-E2E-042-volume-besar-download-1048577-baris-retensi-lintas-tahun-dan-browsing-10000 | Volume Besar: Download 1.048.577 Baris, Retensi Lintas Tahun, dan Browsing 10.000 Entri | FE+BE | 26 | 158, 159, 171 |
 | TC-AC-ACAL-E2E-043-realtime-baris-baru-saringan-aktif-opsi-filter-bertambah-dan-halaman-lebih-dari-satu | Real-time: Baris Baru, Saringan Aktif, Opsi Filter Bertambah, dan Halaman Lebih dari Satu | FE+BE | 56 | 137, 138, 139, 148, 166, 177 |
@@ -65,7 +65,6 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 184 TC masuk 55 spec, 2 TC di
 | TC-AC-ACAL-E2E-052-absence-aksi-dibatalkan-dan-gagal-di-modul-sumber-tidak-tercatat | Absence: Aksi Dibatalkan dan Gagal di Modul Sumber Tidak Tercatat | FE+BE | 28 | 146, 175 |
 | TC-AC-ACAL-E2E-053-absence-aksi-modul-fams-sams-siem-dan-global-settings-tidak-masuk-tab-user-action | Absence: Aksi di Modul FAMS, SAMS, SIEM, dan Global Settings Tidak Masuk Tab User Action | FE+BE | 16 | 163 |
 | TC-AC-ACAL-E2E-054-search-tab-user-action-substring-per-kolom-dan-kolom-hidden | Search Tab User Action: Substring per Kolom dan Kolom Hidden | FE+BE | 16 | 90, 93 |
-| TC-AC-ACAL-E2E-055-search-dan-sort-kolom-description-tab-user-action | Search dan Sort Kolom Description Tab User Action | FE+BE | 20 | 185 |
 
 Mode: `FE+BE` = backend nyata. Spec 011 `mock` (resilience: perilaku FE atas respons mock). Spec 003, 004, 036, 041, 052 memakai intercept parsial di atas backend nyata dan tetap `FE+BE` (alasan di `## Prerequisites` tiap spec). Kolom TC sumber memakai nomor `TC-AC-ACAL-NN`.
 
@@ -254,9 +253,6 @@ Mode: `FE+BE` = backend nyata. Spec 011 `mock` (resilience: perilaku FE atas res
 | TC-AC-ACAL-179 | TC-AC-ACAL-E2E-040 | FE+BE |
 | TC-AC-ACAL-180 | TC-AC-ACAL-E2E-038 | FE+BE |
 | TC-AC-ACAL-181 | TC-AC-ACAL-E2E-005 | FE+BE |
-| TC-AC-ACAL-184 | TC-AC-ACAL-E2E-028 | FE+BE |
-| TC-AC-ACAL-185 | TC-AC-ACAL-E2E-055 | FE+BE |
-| TC-AC-ACAL-186 | TC-AC-ACAL-E2E-040 | FE+BE |
 
 Kolom BE per TC belum dapat diisi: `tc-activity-log-backend.md` disusun dari kontrak API dan tidak merujuk ID TC granular (konvensi bagian 8).
 
@@ -271,7 +267,7 @@ Keduanya tidak punya jalur UI; bila QA menilai filter API-only perlu bukti UI, k
 
 ## 4. Temuan untuk QA (ringkasan)
 
-Gabungan butir "Temuan untuk QA" di `## Notes` 55 spec (263 butir; rincian per spec ada di spec itu). Kelompok utama:
+Gabungan butir "Temuan untuk QA" di `## Notes` 54 spec (258 butir; rincian per spec ada di spec itu). Kelompok utama:
 
 - **Akun dan password.** Email Pre-setup memuat placeholder `{namaCompany}` tanpa nilai; `AC_TC_PASSWORD` sudah terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`; nama lain yang dipakai spec (pola `AC_<ROLE>_PASSWORD`, `AC_<ENTITAS>_<ROLE>_PASSWORD`, `AC_DYN_PASSWORD`; daftar di `suite.md`) adalah usulan tim FE dan belum terdaftar. Email akun Principal mengikuti `.env.example` baris 28 (asumsi terbuka, FE mengonfirmasi saat login pertama).
 - **Seeding data log.** TC, PRD, dan LLD tidak mendefinisikan cara membuat entri log bertanggal tertentu, stempel identik, volume 35 / 5.000 / 5.001 / 10.000 / 1.048.577, atau snapshot identitas. Kemampuan ini diminta dari tim FE/BE; spec tidak mengarang endpoint (S-13).
@@ -284,8 +280,8 @@ Gabungan butir "Temuan untuk QA" di `## Notes` 55 spec (263 butir; rincian per s
 
 ## 5. Hasil check-suite
 
-`python scripts/check-suite.py specs/AdminConsole/ActivityLog ../admin-console/activity-log/TestCases/tc-activity-log.md docs/coverage/AdminConsoleActivityLog.md`: 55 spec, 186 TC, 184 TC tercakup, 0 temuan `[FINDING]`, 0 `[REVIEW]` (exit 0).
+`python scripts/check-suite.py specs/AdminConsole/ActivityLog ../admin-console/activity-log/TestCases/tc-activity-log.md docs/coverage/AdminConsoleActivityLog.md`: 54 spec, 183 TC, 181 TC tercakup (jumlah disesuaikan setelah kolom Description dihapus; skrip belum dijalankan ulang, hasil 0 temuan `[FINDING]` dan 0 `[REVIEW]` berasal dari run sebelumnya).
 
-`node_modules/.bin/spectra lint --strict specs/AdminConsole/ActivityLog`: 55 spec dan 1 suite terverifikasi, 0 error lint. Folder dan `id` spec 001, 008, 021, 022, 029, dan 046 disamakan dengan isinya (nomor tetap; 022 dan 046 diganti slug-nya setelah e2e-audit). Spec 011 (mock) memuat path, method, dan skema respons dari `API/openapi.yaml`; endpoint stream SSE tidak ada di dokumen API (Temuan untuk QA).
+`node_modules/.bin/spectra lint --strict specs/AdminConsole/ActivityLog`: 54 spec dan 1 suite terverifikasi, 0 error lint. Folder dan `id` spec 001, 008, 021, 022, 029, dan 046 disamakan dengan isinya (nomor tetap; 022 dan 046 diganti slug-nya setelah e2e-audit). Spec 011 (mock) memuat path, method, dan skema respons dari `API/openapi.yaml`; endpoint stream SSE tidak ada di dokumen API (Temuan untuk QA).
 
 Cek R-01..R-21 dilaporkan ke user sebagai keputusan terpisah. Spec dengan lebih dari 35 langkah nominal yang dipertahankan (19 spec, aturan hitung check-suite C6 = langkah nominal): 001, 005, 007, 012, 014, 018, 020, 023, 024, 025, 026, 030, 032, 035, 036, 039, 043, 045, 046. Spec yang baru melewati 35 langkah setelah perulangan diperluas (8b.7) menulis alasannya di `## Notes`. Spec 001, 008, 021, dan 029 dipecah menjadi spec berukuran 35 langkah atau kurang (id baru 047 sampai 055).

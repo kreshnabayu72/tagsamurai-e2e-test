@@ -49,7 +49,7 @@ coverage:
 15. Verifikasi tab Session: kolom `Note` hilang
 16. Tutup Overlay Column Visibility dengan `Esc`
 17. Klik tab "User Action"
-18. Verifikasi tab User Action: kolom `Date`, `Action`, `Object`, `Name`, `Field`, `Old Value`, `New Value`, `Description`, dan `Modified By` tampil
+18. Verifikasi tab User Action: kolom `Date`, `Action`, `Object`, `Name`, `Field`, `Old Value`, `New Value`, dan `Modified By` tampil
 19. Klik header `⋯` tab User Action
 20. Hapus centang `Field` pada Overlay Column Visibility
 21. Verifikasi tab User Action: kolom `Field` hilang

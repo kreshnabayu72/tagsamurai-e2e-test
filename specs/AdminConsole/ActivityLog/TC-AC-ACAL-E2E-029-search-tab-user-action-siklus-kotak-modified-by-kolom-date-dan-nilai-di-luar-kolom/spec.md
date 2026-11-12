@@ -33,7 +33,7 @@ coverage:
 
   Entri j dan k dipakai sebagai precondition TC, tidak diasersi pada langkah mana pun.
 
-  Nilai `brand_logs` bukan substring Action, Object, Name, Field, Old Value, New Value, Description, atau Modified By entri mana pun.
+  Nilai `brand_logs` bukan substring Action, Object, Name, Field, Old Value, New Value, atau Modified By entri mana pun.
 - Kemampuan teknis (disediakan tim FE/BE): seed BE entri User Action dengan Date, Modified By, dan nilai kolom pada tabel Data log (mekanisme seeding entri log tidak didefinisikan di TC, PRD, atau LLD dan tidak ditulis dengan endpoint karangan).
 - State global: tidak ada yang diubah. Entri User Action tidak dapat dihapus dan tetap ada sebagai snapshot.
 - Suite berjalan serial (`parallel: false`, lihat `suite.md`).

@@ -63,7 +63,7 @@ coverage:
 7. Verifikasi field `Modified By` berupa multi-select searchable dengan placeholder `All users`
 8. Verifikasi tombol `[Clear Field]` dan `[Apply]` tampil
 9. Verifikasi icon Filter berubah gelap
-10. Verifikasi tidak ada field filter Name, Old Value, New Value, maupun Description di panel
+10. Verifikasi tidak ada field filter Name, Old Value, maupun New Value di panel
 
 ### TC-AC-ACAL-96: Isi opsi dinamis dari data log
 

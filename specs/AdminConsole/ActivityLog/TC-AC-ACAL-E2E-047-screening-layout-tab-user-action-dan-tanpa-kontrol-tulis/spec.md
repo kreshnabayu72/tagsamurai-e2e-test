@@ -34,7 +34,7 @@ coverage:
 5. Verifikasi Header: Table Tools memuat `Search | Filter | Download`
 6. Verifikasi Header: Table Tools rata kanan
 7. Verifikasi Header: tidak ada tombol create
-8. Verifikasi Body: kolom `Date (sortable) | Action (sortable) | Object (sortable) | Name (sortable) | Field (sortable) | Old Value (sortable) | New Value (sortable) | Description (sortable) | Modified By (sortable) | Actions (⋯)`
+8. Verifikasi Body: kolom `Date (sortable) | Action (sortable) | Object (sortable) | Name (sortable) | Field (sortable) | Old Value (sortable) | New Value (sortable) | Modified By (sortable) | Actions (⋯)`
 9. Klik header kolom `⋯`
 10. Verifikasi header `⋯` membuka Overlay Column Visibility
 11. Tutup Overlay Column Visibility dengan `Esc`

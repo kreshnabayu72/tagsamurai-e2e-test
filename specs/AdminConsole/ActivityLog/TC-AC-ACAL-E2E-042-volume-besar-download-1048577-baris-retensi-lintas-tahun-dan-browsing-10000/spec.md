@@ -86,5 +86,5 @@ coverage:
   - TC-AC-ACAL-158, 159, dan 171 menyebut volume atau entri lama tanpa menyebut akun atau entitas; entitas Volume dan akunnya tidak ada di Pre-setup TC (Pre-setup No 11 hanya menyebut volume seed BE). Mekanisme seed (1.048.577 entri, entri bercap 2024) tidak disebut TC, PRD, atau LLD; disediakan tim FE/BE (S-13).
   - TC-AC-ACAL-158 tidak menyebut jam entri `18 Jun 2024` dan Time Zone; spec memakai jam bebas dan filter satu hari.
   - TC-AC-ACAL-159 tidak menyebut nilai Search, Filter, dan Sort serta tidak mendefinisikan "blokir"; spec memakai nilai dari tabel Prerequisites dan mengasersi blokir sebagai toolbar yang tetap dapat dioperasikan.
-  - TC-AC-ACAL-171 menyebut `Activity-Log-User-Action.xlsx` dengan dua sheet (1.048.575 dan 2 baris data) sesuai batas baris XLSX; tidak menyebut apakah Description dan kolom lain ikut. Spec hanya mengasersi nama sheet, header, dan jumlah baris data.
+  - TC-AC-ACAL-171 menyebut `Activity-Log-User-Action.xlsx` dengan dua sheet (1.048.575 dan 2 baris data) sesuai batas baris XLSX; tidak menyebut apakah kolom lain ikut. Spec hanya mengasersi nama sheet, header, dan jumlah baris data.
   - Post Condition ketiga TC bernilai `-`; tidak diasersi.

@@ -77,5 +77,5 @@ coverage:
   - Sumber Tier 2 TC-AC-ACAL-48, `auth/_foundation/auth-foundation.md` (§9), tidak ditemukan di workspace; aturan "tidak ada event platform di Tab Session" tidak dapat dicek ke sumber. Spec mengikuti Expected TC.
   - TC-AC-ACAL-48 tidak menyebut urutan reset password dan change password (change password butuh login); spec memakai reset password, login dengan password baru, lalu change password. Mekanisme reset password via sesi API tidak disebut di TC, PRD, atau LLD: disediakan tim FE/BE.
   - TC-AC-ACAL-133 "Refresh Tab User Action" tidak menyebut cara refresh; spec memakai muat ulang halaman (F5) lalu membuka tab User Action.
-  - TC-AC-ACAL-133 Search `Download` untuk "tidak ada entri terkait Download" mengandalkan nilai Object, Field, atau Description tidak memuat kata `Download`; QA konfirmasi.
+  - TC-AC-ACAL-133 Search `Download` untuk "tidak ada entri terkait Download" mengandalkan nilai Object atau Field tidak memuat kata `Download`; QA konfirmasi.
   - Email Pre-setup memakai placeholder `{namaCompany}` dan password memakai `AC_TC_PASSWORD` (terdaftar di `.env.example` dan `spectra.config.ts`) serta `AC_DYN_PASSWORD` (nama usulan tim FE dan belum terdaftar di `.env.example` maupun `spectra.config.ts`).
