@@ -1406,3 +1406,47 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration B).
 - **Diterapkan di:** skrip CS 042, 051, 128 (`pending D-draft-CS-REFERENCE-DAY`).
 - **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/decisions.md` L398-405 (feat/connect-api-b-win e611fc56c).
+
+## D-144 Empty state Default > Active Plans & Features pindah ke ui-client (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-003` TC-AC-PF-19 langkah 1 dan 3.
+- **Spec meminta:** sub-tab Default > Active menampilkan empty state asli tanpa CTA.
+- **Kenyataannya:** lima plan default (FAMS, SAMS, SIEM) di-seed dan tetap Active; produk tidak punya operasi yang menghapus atau meng-archive semua plan default (`PUT /dev/plans` Dataset E hanya menghapus plan custom dan default yang sudah archived). Hanya intercept yang bisa mengosongkan tab.
+- **Karena:** state yang tidak bisa dicapai dengan render murni termasuk ui-client (aturan owner 2026-11-12).
+- **Keputusan:** kedua langkah pindah ke spec ui-client (list Default > Active kosong lewat intercept); langkah lain 003 tetap di e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A).
+- **Diterapkan di:** skrip PF 003 (`pending D-draft-ACPF-4`).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/decisions.md` L291.
+
+## D-145 Tombol [Push Update] memakai severity `success` (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-109` TC-AC-PF-275 langkah 9.
+- **Spec meminta:** tombol [Push Update] di dialog Push Plan Update berwarna primary.
+- **Kenyataannya:** app memakai severity `success`, sesuai konvensi tombol Submit/Save (prd-conventions §24.1 L2589) dan sama dengan tombol submit lain.
+- **Karena:** warna tombol adalah presentasi; UI yang dibangun adalah acuan (D-096).
+- **Keputusan:** langkah mengasersi `success`.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A).
+- **Diterapkan di:** skrip PF 109 (`pending D-draft-ACPF-5`).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/decisions.md` L300.
+
+## D-146 Link Client Name tetap berwarna sama saat hover (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-160` TC-AC-PF-453 langkah 26.
+- **Spec meminta:** link Client Name di tab Assigned Clients berubah warna saat hover.
+- **Kenyataannya:** link tetap `#A20F15` saat hover tanpa underline: gaya link DataTable yang sama untuk setiap tabel.
+- **Karena:** gaya hover adalah presentasi dan satu keputusan komponen untuk semua screen.
+- **Keputusan:** langkah mengikuti UI (warna tetap); bagian tanpa underline tetap diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A).
+- **Diterapkan di:** skrip PF 160 (`pending D-draft-ACPF-6`).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/decisions.md` L309.
+
+## D-147 Jumlah Clients plan default diasersi dari nilai live, bukan angka spec (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-001` TC-AC-PF-1 langkah 9; 131 TC-AC-PF-306 langkah 9-10; 133 TC-AC-PF-315 langkah 1-3; 134 TC-AC-PF-321 langkah 11-14; 135 TC-AC-PF-327 langkah 22-25; 136 TC-AC-PF-331 langkah 11; TC-AC-PF-312 langkah 22-27.
+- **Spec meminta:** plan seed memegang tepat 12 / 47 / 23 / 8 / 5 Clients.
+- **Kenyataannya:** jumlah Clients adalah term Active dan Grace pada plan di seluruh tenant stack (plan-list.md). Plan default dipakai bersama oleh semua tenant yang dibuat dan dihapus suite paralel, jadi jumlahnya berubah selama run; tidak ada seed yang bisa mengunci angka itu tanpa menghapus tenant sesi lain.
+- **Karena:** langkah-langkah itu menguji search, filter dan sort kolom Clients, bukan angkanya.
+- **Keputusan:** tiap langkah mengasersi terhadap jumlah yang ada di list saat itu (script membacanya lalu menguji search, filter dan sort); angka tepat keluar dari e2e. Gap hanya dibuka bila nilai live tidak bisa membedakan plan.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A).
+- **Diterapkan di:** tujuh skrip di atas (`pending D-draft-ACPF-7`, kondisional).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/decisions.md` L318.
