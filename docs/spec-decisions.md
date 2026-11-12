@@ -1680,3 +1680,16 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A, D-draft-ACC-1).
 - **Diterapkan di:** Client 069.
 - **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` L63-69 (UG-ACC-13, UG-ACC-14).
+
+## D-169 System Limits di bawah rentang hard limit LLD bukan state nyata (2026-11-12)
+
+- **Spec / langkah** (semuanya menyetel limit lewat override System Limits platform, bukan kuota plan, subscription, seat atau device):
+  - `masterDataCountLimit` (rentang 1.000–100.000): GlobalSettings Brand 032 TC-233 (13), Brand 033 TC-234 (13), User Custom Field 027 TC-87, 028 TC-454, 029 TC-89 langkah 11-22, Division 020 TC-75 (jumlah+2), 021 TC-74 (jumlah+1), Measurement 022 TC-66 (22), 062 TC-247 (21), Non-Login User 027 TC-100, 121 TC-441 langkah 34-44, Position 015 TC-69, 051 TC-270 langkah 14-30, User 030 TC-149. "Kuota gabungan" di NLU 027/121 dan User 030 adalah Master Data Count Limit atas user Login + Non-Login.
+  - `selectionLimit` (rentang 100–5.000): AllTags 048 TC-157 (5), Brand 031 TC-127 (10), User Custom Field 043 TC-145 (10), Division 036 TC-129 (5), File Manager 018 TC-75 (5), Handheld Reader 047 TC-221 (5), Measurement 032 TC-112 (10), Position 024 TC-135 (3), User 053 TC-282/283 (3 dan 4).
+- **Spec meminta:** menyetel limit ke nilai kecil supaya batas cepat tercapai, lalu mengasersi penolakan atau toast batas.
+- **Kenyataannya:** System Limits menolak nilai di luar rentang hard limit dengan `422` "Value must be between …" (org-uiux `admin-console/plans-licensing-lifecycle-settings/API/low-level-design.md` L1165, PRD §9.9). Nilai itu hanya bisa dipasang lewat dev override, jadi tidak pernah terjadi di produk.
+- **Karena:** e2e hanya membangun state nyata. State yang tidak mungkin terjadi termasuk cacat spec, bukan helper gap.
+- **Keputusan:** langkah-langkah itu keluar dari e2e. Pass lama yang memakai nilai di bawah rentang tidak berlaku (Brand 031/032/033, Measurement 032/062, Division 036, Position 024/015/051, User 030, NLU 027). Spec owner bisa menulis ulang langkahnya pada batas bawah: Selection Limit 100 dengan 101 baris seed, seperti Role 045. Master Data Count dengan 1.000 baris terlalu berat per run, jadi lebih cocok dipindah ke spec `ui-client` yang meng-intercept jawaban batas. Langkah lain di spec yang sama (UCF 029, NLU 121, Position 051) tetap di e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C; sama dengan Client 306 / UG-ACC-23).
+- **Diterapkan di:** 22 spec di atas.
+- **Sumber:** repo aplikasi `plans/_program/limit-below-min-2026-11-12.md` (b44c80850).
