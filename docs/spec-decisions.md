@@ -1384,3 +1384,25 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12.
 - **Diterapkan di:** skrip FileManagerE2 005 (eval branch `eval/file-manager-e2`).
 - **Sumber:** laporan Eval File Manager 2026-11-12; foundation testcase-conventions L379 (EB-FLT-7).
+
+## D-142 Perbedaan tampilan Client Subscription mengikuti UI yang dibangun (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-013` TC-AC-CS-51 langkah 5 (severity Renew), `TC-AC-CS-E2E-057` TC-AC-CS-212 langkah 9 (perataan [Clear Field] dan [Save]), `TC-AC-CS-E2E-155` TC-AC-CS-590 langkah 5 (ikon Subscription Log `FileHistoryLine`), `TC-AC-CS-E2E-070` TC-AC-CS-270 langkah 5 (tiga kalimat Cancel Request dalam satu paragraf); juga `TC-AC-CS-E2E-145` TC-AC-CS-541 langkah 4 (di luar filter).
+- **Spec meminta:** severity tombol, perataan footer, glyph ikon, dan tata letak kalimat yang berbeda dari UI yang dibangun.
+- **Kenyataannya:** keempatnya presentasi; perilaku dan setiap kalimat tetap diasersi di langkah yang sama.
+- **Karena:** UI yang dibangun adalah acuan untuk presentasi (D-096).
+- **Keputusan:** asersi presentasi tersebut keluar dari e2e; perilaku dan teks tetap diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration B).
+- **Diterapkan di:** skrip CS 013, 057, 070, 155 (`pending D-draft-CS-UI-PRESENTATION`).
+- **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/decisions.md` L389-396 (branch feat/connect-api-b-win e611fc56c).
+
+## D-143 Hari acuan `19/08/26` di spec Client Subscription dijalankan sebagai hari ini (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-042` TC-AC-CS-162 langkah 11, `TC-AC-CS-E2E-051` TC-AC-CS-199 dan TC-AC-CS-205 langkah 7-8, `TC-AC-CS-E2E-128` TC-AC-CS-473 langkah 19-29; juga `TC-AC-CS-E2E-007` TC-AC-CS-24 (di luar filter).
+- **Spec meminta:** jam server dan browser diset ke `19/08/26`, dan tanggal dibaca terhadapnya.
+- **Kenyataannya:** tidak ada route yang menggeser jam enterprise-management; helper dev menulis term dengan tanggal literal dan menjalankan satu tick job (`setTenantSubscription`, `runSubscriptionJob`).
+- **Karena:** tanggal acuan spec hanya contoh; maksud langkahnya relatif terhadap hari berjalan.
+- **Keputusan:** langkah berjalan dengan hari ini (Start Date hari ini, End Date hari ini + 29 hari untuk trial 30 hari). Batas setengah jam setelah tengah malam Asia/Jakarta di TC-AC-CS-473 tidak bisa dibuat dengan tanggal relatif: keluar dari e2e, dan perbandingan zona waktunya dijaga test backend.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration B).
+- **Diterapkan di:** skrip CS 042, 051, 128 (`pending D-draft-CS-REFERENCE-DAY`).
+- **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/decisions.md` L398-405 (feat/connect-api-b-win e611fc56c).
