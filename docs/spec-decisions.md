@@ -1715,3 +1715,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration B, FD-B-CS-8).
 - **Diterapkan di:** CS 001, 092.
 - **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-B-CS-8; perluasan D-039.
+
+## D-172 Banner commit Import menyusun teks dari jumlah record (2026-11-13)
+
+- **Spec / langkah:** GlobalSettings/Import 105, 133, 134, 135, 136, 140, 141, 142, 143, 150, 160, 162, 164, 165, 213, 214, yaitu langkah banner hasil commit.
+- **Spec meminta:** teks statis PRD §7 `Success, record has been imported. Duplicate records were ignored.`
+- **Kenyataannya:** app menyusun banner dari jumlah record, dengan bentuk tunggal dan jamak: `Success, N record(s) have been imported.`, lalu kalimat duplikat dan `N error(s) remain.` hanya kalau berlaku. Contohnya `Success, 12 records have been imported.` (run 1908). Ini keputusan slicing yang dicatat di repo aplikasi `plans/global-settings-import/decisions.md` L255.
+- **Karena:** teks statis tidak bisa membawa angka yang justru diasersi spec sendiri (`N errors remain.`). Pesan status dengan jumlah ber-plural adalah pola umum (notifikasi MUI, antd, Mantine). Bedanya hanya soal kata dan bentuk (D-096), bukan aturan bisnis.
+- **Keputusan:** langkah banner mengasersi teks lengkap yang disusun dari jumlah yang diketahui langkah itu: jumlah yang diimpor, kalimat duplikat kalau ada duplikat, dan jumlah error yang tersisa. Kalimat statis PRD tidak diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration B, FD-B-IMP-13).
+- **Diterapkan di:** 16 spec Import di atas.
+- **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-B-IMP-13; `packages/features/global-settings-import/resources/Strings.ts` L134-139.
