@@ -1459,7 +1459,7 @@ Aturan:
 - **Karena:** D-054 sudah menetapkan tampilan `—` untuk nilai kosong di semua modul. `-` adalah penanda kosong milik kontrak, bukan data, jadi tampilannya ikut D-054 dan kontrak tidak berubah (opsi b dari usulan). Urutan sort atas nilai non-kosong tidak diatur kontrak.
 - **Keputusan:** sel Changelog menampilkan `—` untuk `-`, `""` dan null; langkah tampilan memverifikasi `—` di sel, bukan nilai mentah API. Langkah sort tetap di-skip `feature-gap:be BT-GAP-08 (analytics#56)`; tidak ada asersi `-`.
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C, D-draft-HHR-DASH).
-- **Diterapkan di:** HHR 061, 063; AllTags 087, 089.
+- **Diterapkan di:** HHR 061, 063; AllTags 087, 089; AdminConsole Client 120 (TC-AC-ACC-663 langkah 32-33), 134 (TC-AC-ACC-455 langkah 69): Changelog Client (EMS, LLD Client L1145) juga menyimpan `-`.
 - **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` (blok D-draft-HHR-DASH).
 
 ## D-149 Emoji yang disuntik ke DOM Alias Name di luar e2e (2026-11-12)
