@@ -1472,3 +1472,157 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-09 (dicatat 2026-11-12, D-draft-HHR-INJECT).
 - **Diterapkan di:** `TC-GS-HHR-E2E-029`.
 - **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` (blok D-draft-HHR-INJECT).
+
+## D-150 Pesan validasi Custom Field memakai nama field seperti dikonfigurasi (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-031` TC-GS-USER-155 langkah 30; `TC-GS-USER-E2E-040` TC-GS-USER-215; `TC-GS-USER-E2E-022` TC-GS-USER-158 langkah 60; `TC-GS-USER-E2E-174` TC-GS-USER-1105 langkah 6; NonLoginUser `TC-GS-NLU-E2E-053` TC-GS-NLU-458 langkah 6-7.
+- **Spec meminta:** nama field ditulis huruf kecil di pesan V-12 / V-24 (NLU 053: `Badge required`).
+- **Kenyataannya:** aplikasi menulis nama Custom Field seperti dikonfigurasi admin (`This Blood Type no longer exists. Please select another.`, `Badge Required must not be empty`); tabel copy PRD memakai placeholder `[Field name]`, bukan nama huruf kecil.
+- **Karena:** nama field adalah nama yang diberikan admin; mengecilkannya mengubah nama diri. Ini copy (presentasi), jadi UI yang dibangun menjadi rujukan (D-096).
+- **Keputusan:** kelima langkah memverifikasi pesan dengan nama field seperti dikonfigurasi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** User 022, 031, 040, 174; NLU 053 (D-draft-C-9).
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1240.
+
+## D-151 Edit nonaktif pada baris Default User memakai alasan Default User (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-011` TC-GS-USER-56 langkah 21-23 (TC-GS-USER-57 langkah 36-38 sebagai akibatnya).
+- **Spec meminta:** tooltip izin/tier pada item `Edit` yang nonaktif untuk pemegang Full CRUD di baris Default User.
+- **Kenyataannya:** aplikasi memberi Edit alasan Default User, sama dengan Delete di bawahnya.
+- **Karena:** kondisi baris itu adalah Default User; teks tooltip adalah presentasi, jadi UI yang dibangun menjadi rujukan (D-096).
+- **Keputusan:** langkah 21-23 memverifikasi tooltip Default User pada Edit dan Delete.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** User 011 (D-draft-C-11).
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1249.
+
+## D-152 Opsi filter Status di popup Select User adalah enum tetap Active / Inactive (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/NonLoginUser `TC-GS-NLU-E2E-037` TC-GS-NLU-116 langkah 24-25.
+- **Spec meminta:** dropdown Status hanya berisi nilai yang ada di tabel (hanya `Active`).
+- **Kenyataannya:** `POST /v2/iam/users/options` menjawab `statusOptions` Active dan Inactive; LLD user-crud.md L111 menetapkan opsi Status sebagai enum tetap, bukan facet. Aplikasi memakai opsi dari server apa adanya.
+- **Karena:** kontrak menetapkan enum; facet data hanya untuk Position, Division dan referensi lain.
+- **Keputusan:** langkah 25 memverifikasi opsi `Active` dan `Inactive`; langkah 26-27 tetap.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-08 (dicatat 2026-11-12, D-draft-S).
+- **Diterapkan di:** NLU 037.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1258.
+
+## D-153 Badge Dropdown yang dikosongkan kembali ke teks lama tanpa error (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-037` TC-GS-UCF-366 langkah 27-29 dan 30-32.
+- **Spec meminta:** error inline `Option name must not be empty` saat badge dikosongkan (atau hanya spasi), lalu `Beta` kembali.
+- **Kenyataannya:** BadgeInput dengan `restoreValueOnEmpty` mengembalikan teks lama tanpa error; edit hanya-spasi di-trim menjadi kosong. Run CustomFieldUser-2.
+- **Karena:** perilaku komponen menang atas spec (D-096); owner CD-080 (2026-11-08).
+- **Keputusan:** langkah 28 dan 31 memverifikasi tidak ada error; langkah 29, 31 dan 32 memverifikasi `Beta` kembali.
+- **Diputuskan oleh:** owner CD-080 (2026-11-08), dicatat Wangs-UI Coordinator 2026-11-12 (D-draft-H).
+- **Diterapkan di:** UCF 037.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1168.
+
+## D-154 Nilai Numeric disimpan dan ditampilkan sebagai angka (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-025` TC-GS-UCF-386 dan TC-GS-UCF-387.
+- **Spec meminta:** `-0.0` tersimpan `0.0` dan `5.50` tersimpan `5.50` (seperti diketik).
+- **Kenyataannya:** NumberInput selalu menghasilkan angka; nilai tersimpan dan tampil `0` dan `5.5`. Run Rerun-rc44-uifix-3.
+- **Karena:** keputusan owner CD-077: Numeric adalah angka, 5.50 == 5.5.
+- **Keputusan:** langkah memverifikasi `0` dan `5.5`.
+- **Diputuskan oleh:** owner CD-077, dicatat Wangs-UI Coordinator 2026-11-12 (D-draft-J).
+- **Diterapkan di:** UCF 025.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-J).
+
+## D-155 Batas 15 digit Numeric menghitung digit nilai angkanya (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-024` TC-GS-UCF-389 langkah 36-43 dan TC-GS-UCF-178 langkah 67-73.
+- **Spec meminta:** batas dihitung dari teks yang diketik (`0000000000000001`, 16 karakter, ditolak `Max. 15 characters`).
+- **Kenyataannya:** Numeric adalah nilai angka (D-154): `0000000000000001` bernilai `1`; lebih dari 15 digit kehilangan presisi sebagai angka JS.
+- **Karena:** keputusan owner CD-077.
+- **Keputusan:** nol di depan, `-` dan `.` tidak dihitung; `0000000000000001` diterima; nilai lebih dari 15 digit ditolak `Max. 15 characters`; `-1234567890123.45` diterima dan tersimpan.
+- **Diputuskan oleh:** owner CD-077, dicatat Wangs-UI Coordinator 2026-11-12 (D-draft-K).
+- **Diterapkan di:** UCF 024.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-K).
+
+## D-156 Numeric tidak menampilkan error untuk `-` atau `.` saja (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-024` TC-GS-UCF-179 langkah 34-35 dan TC-GS-UCF-350 langkah 62-63.
+- **Spec meminta:** `-` saja menampilkan `Bonus must be a number`; `.` saja menampilkan `Dec form must be a number`.
+- **Kenyataannya:** NumberInput tidak menerima `-` atau `.` saja sebagai nilai dan tidak memunculkan error. Run Rerun-rc46-uifix-4.
+- **Karena:** NumberInput menolak ketikan yang membuat nilai tidak valid (perilaku komponen), di atas CD-077.
+- **Keputusan:** langkah memverifikasi tidak ada error.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-L).
+- **Diterapkan di:** UCF 024.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-L).
+
+## D-157 Menutup Edit User setelah nilai diketik lalu dihapus: tanpa dialog Unsaved Changes (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-021` TC-GS-UCF-188 langkah 46-48.
+- **Spec meminta:** setelah Retro Req diisi `x` lalu dikosongkan dan Save ditolak, `[✕]` membuka `Unsaved Changes`.
+- **Kenyataannya:** form kembali ke nilai awal (kosong), jadi DialogForm tidak menganggapnya berubah dan `[✕]` menutup popup tanpa dialog. Run Rerun-rc46-uifix-4.
+- **Karena:** form dianggap berubah hanya bila nilainya berbeda dari nilai awal, sama seperti di layar lain.
+- **Keputusan:** langkah 46-47 memverifikasi popup tertutup tanpa dialog Unsaved Changes.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-M).
+- **Diterapkan di:** UCF 021.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-M).
+
+## D-158 Klik backdrop menutup popup All Values (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-002` TC-GS-UCF-15 langkah 27-28.
+- **Spec meminta:** klik backdrop tidak menutup popup All Values Preview.
+- **Kenyataannya:** popup adalah Dialog Wangs UI (BadgeGroup `+N more`), yang tertutup oleh Escape dan klik backdrop. Run CFU-rerun-rc52.
+- **Karena:** perilaku komponen (D-096). Untuk modal Changelog berlaku D-067 (klik backdrop diabaikan).
+- **Keputusan:** langkah 28 memverifikasi popup tertutup setelah klik backdrop; popup dibuka lagi untuk langkah 29-30.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-P).
+- **Diterapkan di:** UCF 002.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-P).
+
+## D-159 Nilai Dropdown yang basi dilaporkan dengan label yang dikirim (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-038` TC-GS-UCF-368 langkah 70.
+- **Spec meminta:** `Beta no longer exists. Please select another.` (label yang dihapus Admin B).
+- **Kenyataannya:** sesi A sudah mengganti `Beta` menjadi `Delta` lalu menyimpan; server menolak dengan `Delta no longer exists. Please select another.` Run CFU-rerun-rc52.
+- **Karena:** LLD custom-field-user L656: nilai basi dilaporkan dengan label yang dikirim.
+- **Keputusan:** langkah 70 memverifikasi `Delta no longer exists. Please select another.`; langkah 72 mengikuti spec.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-Q).
+- **Diterapkan di:** UCF 038.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-Q).
+
+## D-160 Error nilai Dropdown muncul saat draft di-commit, bukan saat mengetik (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-017` TC-GS-UCF-66 langkah 47-50, TC-GS-UCF-67 langkah 55-58, TC-GS-UCF-448 langkah 63-66.
+- **Spec meminta:** error `Option name already exists` dan `Max. 120 characters` muncul saat mengetik, sebelum Enter.
+- **Kenyataannya:** BadgeInput memvalidasi saat draft di-commit (Enter, blur, paste). Run CFU-rerun-rc52.
+- **Karena:** perilaku komponen; Ark/Zag dan Mantine TagsInput memvalidasi saat ditambah, antd, MUI dan React Aria tidak memvalidasi saat mengetik.
+- **Keputusan:** langkah mengetik draft, menekan Enter, lalu memverifikasi error dan jumlah badge tetap 1.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-R).
+- **Diterapkan di:** UCF 017.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-R).
+
+## D-161 Bulk Remove sukses parsial dijalankan admin Manage user and role tanpa Total Control (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/Role `TC-GS-ROLE-E2E-073` TC-GS-ROLE-261 langkah 34-42.
+- **Spec meminta:** aktor Total Control; intercept memalsukan jawaban 200 dengan `failedUserIds`.
+- **Kenyataannya:** PRD role.md EC-36: penolakan per baris berlaku untuk aktor non-Total Control; untuk aktor Total Control berlaku EC-34 (diproses lalu auto-revert). Probe slot 3 2026-11-09: `200 "2 deleted, 0 skipped"` dengan `autoRevertedUserIds`.
+- **Karena:** dengan aktor Total Control, sukses parsial EC-36 tidak bisa terjadi; jawaban palsu lewat intercept adalah jawaban bisnis. Aktor spec yang keliru, bukan backend.
+- **Keputusan:** langkah 34-42 memakai Hendra Wijaya (Manage user and role, tanpa access level); baris kedua diberi Total Control lewat API sebelum `[Remove]`; asersi toast `T-11`, satu baris terhapus, satu tetap, Bulk Action Bar tertutup. Tanpa intercept.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-09 (dicatat 2026-11-12, D-draft-ROLE-01).
+- **Diterapkan di:** Role 073.
+- **Sumber:** repo aplikasi `plans/global-settings-role/decisions.md` L270.
+
+## D-162 Bulk Resend yang gagal untuk satu penerima pindah ke ui-client (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-067` TC-GS-USER-1038 langkah 85-96.
+- **Spec meminta:** bulk Resend dengan satu penerima gagal di server, toast `Success, activation email has been sent. Some items failed.`
+- **Kenyataannya:** tidak ada route yang menggagalkan satu penerima `POST /v2/iam/users/resend-email`: 5xx menggagalkan seluruh request, chaos Mailpit menggagalkan semua penerima (BT-GS-USER-15, run GSUR-C-3).
+- **Karena:** e2e hanya membangun keadaan yang bisa terjadi; hasil parsial adalah tampilan atas jawaban kontrak.
+- **Keputusan:** langkah 85-96 pindah ke spec `ui-client` (jawaban parsial lewat intercept dari operasi resend-email di kontrak). BT-GS-USER-15 tetap sebagai kandidat backend saja.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-GSUSER-BULK-RESEND-PARTIAL).
+- **Diterapkan di:** User 067.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1150.
+
+## D-163 Convert yang bentrok dengan email Login User pindah ke ui-client (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/NonLoginUser `TC-GS-NLU-E2E-066` TC-GS-NLU-240/444 dan TC-GS-NLU-473 langkah 8-13; `TC-GS-NLU-E2E-068` TC-GS-NLU-244 langkah 4-8 dan TC-GS-NLU-245 langkah 11-14.
+- **Spec meminta:** Login User dengan email Non-Login User disisipkan melewati V-09, lalu Convert (tunggal atau bulk) menolak baris itu.
+- **Kenyataannya:** Login dan Non-Login User berbagi satu pool email; `POST /v2/iam/users` menjawab 409 `Email already exists` dan email-change menolak email yang sama (BT-GS-NLU-10, run GSUR-C-1). Bentrok tidak bisa terjadi dari browser.
+- **Karena:** keadaan yang tidak bisa dicapai produk adalah unit `ui-client`, bukan helper yang merusak cek keunikan backend.
+- **Keputusan:** langkah bentrok pindah ke spec `ui-client` penanganan hasil Convert (baris ditolak lewat intercept dari operasi convert di kontrak); langkah lain 066 dan 068 tetap. BT-GS-NLU-10 ditutup sebagai by design.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-GSNLU-CONVERT-CLASH).
+- **Diterapkan di:** NLU 066, 068.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-GSNLU-CONVERT-CLASH).
