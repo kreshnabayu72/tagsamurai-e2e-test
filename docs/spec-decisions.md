@@ -1659,3 +1659,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A, D-draft-ACC-2).
 - **Diterapkan di:** Client 134.
 - **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` L62.
+
+## D-167 Notification Center mempertahankan Tab, Search dan Sort saat masuk lagi lewat `[Show All]` (2026-11-12)
+
+- **Spec / langkah:** FixedAsset/Notification `TC-FA-NOTIF-E2E-045` TC-FA-NOTIF-185 langkah 10, `TC-FA-NOTIF-E2E-114` TC-FA-NOTIF-226 langkah 5-8.
+- **Spec meminta:** setelah keluar lalu masuk lagi lewat `[Show All]`, Tab, Search dan Sort Notification Center kembali ke default.
+- **Kenyataannya:** owner rule state tabel menetapkan bahwa tabel **halaman** (layar list, tab, halaman detail) mempertahankan Search, Filter, Sort, Pagination dan susunan kolom saat pindah tab dan saat dikunjungi lagi; hanya tabel di dalam dialog yang reset (repo aplikasi `plans/_program/prd-overrides.md` L75, product owner 2026-11-11). Notification Center adalah halaman.
+- **Keputusan:** skrip mengasersi state yang dipertahankan (Tab, Search, Sort seperti ditinggalkan user); harapan reset di spec keluar dari e2e.
+- **Diputuskan oleh:** product owner 2026-11-11 (prd-overrides), dicatat Wangs-UI Coordinator 2026-11-12 (diusulkan Integration N, UG-NOTIF-2).
+- **Diterapkan di:** Notification 045, 114.
+- **Sumber:** repo aplikasi `plans/notification/integration-findings.md` L49 (row 18).
