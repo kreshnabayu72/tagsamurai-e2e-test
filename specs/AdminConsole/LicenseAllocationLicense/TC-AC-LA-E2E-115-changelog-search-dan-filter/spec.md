@@ -27,7 +27,7 @@ coverage:
 - Data seed Pre-setup #54 (minimal 30 alokasi lintas enam status dan 25 entri Changelog termasuk Modified By `System`, aksi job `Auto-Expire`, `Auto-Activate`, `Timeout Auto-Cancel`, Action `Create` dan `Edit`, Field `Status`, Old Value `Pending`, New Value `Active`, Allocation ID `LALC-20260105-00001`, dan entri pada sedikitnya dua hari berbeda) bersifat baca-saja untuk spec ini. Changelog adalah audit trail permanen yang tumbuh; asersi isi hanya atas baris yang dijamin berada pada halaman teramati, dan jumlah total tidak diasersi sebagai angka absolut (S-12, S-14).
 - Data Dinamis TC-AC-LA-367: satu aksi yang mencatat Action baru di Changelog, dilakukan lewat sesi API aktor yang sama (token tidak dihitung sebagai sesi web; lihat `suite.md`); aksi dan akun pelakunya "disediakan tim FE" (S-13). Pemulihan dilakukan baseline automation sebelum tiap spec (Catatan TC).
 - Kemampuan teknis: spec menyembunyikan kolom `Field` lewat overlay Column Visibility Changelog (langkah 13 menyembunyikan, langkah 18 memulihkan); hook `after` menghapus preferensi kolom di peramban (bukan `[Reset to Default]`), disediakan tim FE.
-- Parameter langkah 3 sampai 4 (TC-AC-LA-360), satu baris per kolom:
+- Parameter langkah 2 sampai 4 (TC-AC-LA-360), satu baris per kolom:
 
 | Kolom | Kata kunci | Nilai yang cocok |
 |---|---|---|
@@ -53,10 +53,10 @@ coverage:
 ### TC-AC-LA-360: Search Changelog kelas teks
 
 1. Klik ikon Changelog
-2. Klik ikon Search pada Modal Changelog
-3. Untuk setiap baris tabel parameter TC-AC-LA-360 (langkah 3 sampai 4): ganti isi kotak search dengan Kata kunci, tekan Enter
-4. Verifikasi sedikitnya satu baris dengan Kolom bernilai Nilai yang cocok tampil
-5. Ganti isi kotak search dengan `zzzzqqqq`, tekan Enter
+2. Untuk setiap baris tabel parameter TC-AC-LA-360 (langkah 2 sampai 4): ketik Search Kata kunci, tekan Enter
+3. Verifikasi sedikitnya satu baris dengan Kolom bernilai Nilai yang cocok tampil
+4. Klik `(←)` pada kotak Search
+5. Ketik Search `zzzzqqqq`, tekan Enter
 6. Verifikasi `No results found` tampil
 
 ### TC-AC-LA-361: Search Modified By dan guard kolom Date
@@ -122,50 +122,55 @@ coverage:
 53. Klik ikon Filter
 54. Buka dropdown Action
 55. Verifikasi opsi Action memuat aksi job `Auto-Expire`, `Auto-Activate`, dan `Timeout Auto-Cancel`
-56. Buka dropdown Modified By
-57. Verifikasi opsi Modified By memuat `System`
-58. Verifikasi opsi dropdown Action, Allocation ID, Field, dan Modified By hanya nilai yang tercatat di Changelog tanpa duplikat
-59. Klik ikon Filter
+56. Verifikasi opsi Action hanya nilai yang tercatat di Changelog tanpa duplikat
+57. Buka dropdown Allocation ID
+58. Verifikasi opsi Allocation ID hanya nilai yang tercatat di Changelog tanpa duplikat
+59. Buka dropdown Field
+60. Verifikasi opsi Field hanya nilai yang tercatat di Changelog tanpa duplikat
+61. Buka dropdown Modified By
+62. Verifikasi opsi Modified By memuat `System`
+63. Verifikasi opsi Modified By hanya nilai yang tercatat di Changelog tanpa duplikat
+64. Klik ikon Filter
 
 ### TC-AC-LA-366: Filter tanggal Date dan kombinasi AND
 
-60. Klik ikon Filter
-61. Pilih rentang tanggal pada Date dari tanggal dua entri seed pada hari berbeda
-62. Verifikasi teks tanggal pada input mengikuti Date Format General Settings
-63. Klik `[Apply]`
-64. Verifikasi sedikitnya satu baris tampil
-65. Verifikasi hasil dalam rentang tanggal inklusif
-66. Klik ikon Filter
-67. Buka dropdown Action
-68. Centang `Edit`
-69. Klik `[Apply]`
-70. Verifikasi sedikitnya satu baris tampil
-71. Verifikasi hasil memenuhi kedua kriteria (Date dalam rentang dan Action `Edit`)
-72. Klik ikon Filter
-73. Klik `[Clear Field]` lalu `[Apply]`
+65. Klik ikon Filter
+66. Pilih rentang tanggal pada Date dari tanggal dua entri seed pada hari berbeda
+67. Verifikasi teks tanggal pada input mengikuti Date Format General Settings
+68. Klik `[Apply]`
+69. Verifikasi sedikitnya satu baris tampil
+70. Verifikasi hasil dalam rentang tanggal inklusif
+71. Klik ikon Filter
+72. Buka dropdown Action
+73. Centang `Edit`
+74. Klik `[Apply]`
+75. Verifikasi sedikitnya satu baris tampil
+76. Verifikasi hasil memenuhi kedua kriteria (Date dalam rentang dan Action `Edit`)
+77. Klik ikon Filter
+78. Klik `[Clear Field]` lalu `[Apply]`
 
 ### TC-AC-LA-367: Opsi filter Action dan Field dari nilai yang tercatat
 
-74. Klik ikon Filter
-75. Buka dropdown Action
-76. Verifikasi opsi Action hanya nilai yang ada di Changelog
-77. Buka dropdown Field
-78. Verifikasi opsi Field hanya nilai yang ada di Changelog
-79. Buka dropdown Action
-80. Centang `Create`
-81. Klik `[Apply]`
-82. Lakukan aksi yang mencatat Action baru di Changelog lewat sesi API hingga entri tersimpan
-83. Klik ikon Filter
+79. Klik ikon Filter
+80. Buka dropdown Action
+81. Verifikasi opsi Action hanya nilai yang ada di Changelog
+82. Buka dropdown Field
+83. Verifikasi opsi Field hanya nilai yang ada di Changelog
 84. Buka dropdown Action
-85. Verifikasi Action baru muncul sebagai opsi
+85. Centang `Create`
+86. Klik `[Apply]`
+87. Lakukan aksi yang mencatat Action baru di Changelog lewat sesi API hingga entri tersimpan
+88. Klik ikon Filter
+89. Buka dropdown Action
+90. Verifikasi Action baru muncul sebagai opsi
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular. TC-AC-LA-358 (empty filtered, loading, dan error load Modal Changelog) tidak ada di spec ini.
-- Langkah 3 sampai 4 diulang untuk lima baris tabel parameter (10 langkah terekspansi) dan langkah 45 sampai 52 untuk empat baris (32 langkah terekspansi); total sekitar 120 langkah terekspansi. Verifikasi tetap satu per klausa per iterasi.
+- Langkah 2 sampai 4 diulang untuk lima baris tabel parameter (15 langkah terekspansi) dan langkah 45 sampai 52 untuk empat baris (32 langkah terekspansi); total sekitar 120 langkah terekspansi. Verifikasi tetap satu per klausa per iterasi.
 - Alasan spec melewati sekitar 35 langkah: semua blok satu topik (Search dan Filter Modal Changelog) pada satu dataset baca-saja, dengan langkah berulang berparameter tabel Prerequisites tanpa langkah bersyarat (konvensi bagian 8b butir 7); tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
-- Langkah penghubung (S-03): langkah 9 (mencatat teks tanggal), langkah 14 dan 19 (menutup overlay), langkah 26 (baseline), langkah 44, 51, 53, 59, 66, 72, 83 (membuka dan menutup panel), langkah 52 dan 73 (membersihkan filter).
+- Langkah penghubung (S-03): langkah 4 (menutup dan mengosongkan Search antar iterasi), langkah 9 (mencatat teks tanggal), langkah 14 dan 19 (menutup overlay), langkah 26 (baseline), langkah 44, 51, 53, 64, 71, 77, 88 (membuka dan menutup panel), langkah 52 dan 78 (membersihkan filter), langkah 54, 57, 59, 61 (membuka dropdown filter; `Verifikasi` opsi mengikuti pada langkah berikutnya).
 - Temuan untuk QA:
   - TC-AC-LA-367 langkah 2 ("buat alokasi baru dengan Action berbeda") tidak menyebut Action yang dimaksud, cara, dan akun; spec memakai aksi "disediakan tim FE" lewat sesi API tanpa endpoint karangan (S-13). Butuh keputusan QA.
   - TC-AC-LA-365 butir e menyebut opsi `System` dan aksi job pada dropdown, yang bergantung pada seed #54 yang memuat entri job; spec mengasumsikannya ada.

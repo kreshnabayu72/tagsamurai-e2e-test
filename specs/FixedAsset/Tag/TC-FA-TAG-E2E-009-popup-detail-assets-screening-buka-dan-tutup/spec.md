@@ -36,6 +36,7 @@ coverage:
 - Data grup Excavator 20 Ton / Plant B (20 aset): lima aset acuan `AST-0011` (Excavator 20 Ton - 11), `AST-0020` (- 20), `AST-0021` (- 21), `AST-0043` (- 43), `AST-0044` (- 44); urutan Last Updated terbaru ke terlama: AST-0044, AST-0043, AST-0021, AST-0020, AST-0011.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -109,6 +110,6 @@ coverage:
 - Langkah 8 dan 31 memuat klausa "tanpa tombol" sebagai asersi absence atas elemen UI; anchor positif adalah Verifikasi `Reported` dan `Non-standard` dengan tombol `Show` pada popup yang sama (langkah 6, 7, 30) (bagian 8b butir 2). Langkah 33 memakai Verifikasi `Reported` dan `Not Paired Yet` pada langkah 34 sebagai pembanding pada popup yang sama.
 - Spec ini melewati sekitar 35 langkah (39). Alasan: seluruh blok screening Popup Detail berkelas sama (fungsional, hanya membaca data Pre-setup yang sama) dan berdiri sendiri; kegagalan satu blok tidak membuat blok lain kehilangan makna, dan blok TC-FA-TAG-42 sendiri memuat 12 Verifikasi dari Expected TC yang tidak dapat diringkas tanpa menggabungkan klausa.
 - TC-FA-TAG-50 sampai 55 ada di spec 010.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-42 Expected b menyebut "Bulk Action Bar belum tampil" sebagai satu klausa tanpa langkah yang memicunya; spec hanya mengasersi bahwa bar belum tampil sebelum ada seleksi.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

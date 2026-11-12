@@ -69,7 +69,7 @@ Untuk setiap baris tabel "Input non-digit" (langkah 8 sampai 10):
 13. Verifikasi error real-time `Max. 15 characters` tampil di bawah field
 14. Klik `[Submit]`
 15. Verifikasi error `Max. 15 characters` masih tampil setelah `[Submit]`
-16. Klik `[✕]` pada header
+16. Klik `[×]` pada header
 17. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 18. Klik `[Leave]`
 

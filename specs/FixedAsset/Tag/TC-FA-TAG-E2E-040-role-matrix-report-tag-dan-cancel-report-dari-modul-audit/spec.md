@@ -21,7 +21,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: tabel "Role yang diuji". Login di hook `before` spec ini sebagai akun pertama pada tabel; halaman Fixed Asset > TAG dibuka hook `beforeEach` suite. Ganti akun memakai langkah eksplisit di Test Steps; hook `after` mengembalikan sesi ke akun default suite.
+- Akun aktor: tabel "Role yang diuji". Login di hook `before` spec ini sebagai akun pertama pada tabel; hook `beforeEach` suite tidak membuka halaman Fixed Asset > TAG untuk spec ini (akun pertama SA_NOTAG tidak punya akses halaman TAG; spec dikecualikan di `suite.md` bagian Hook): halaman yang diuji dibuka di langkah 1. Ganti akun memakai langkah eksplisit di Test Steps; hook `after` mengembalikan sesi ke akun default suite.
 
 Role yang diuji:
 
@@ -41,8 +41,9 @@ Role yang diuji:
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - Kemampuan teknis (disediakan tim FE/BE): membuat laporan terbuka Damaged untuk Tag RF-00130 sebagai pelaku kedua (sesi API) lewat fixture backend.
 - Kemampuan teknis (disediakan tim FE/BE): dua task Audit (Existence Audit dan Condition Audit) milik spec dengan item AST-0020.
-- State global: tidak ada state global yang diubah.
+- State global (status Tag dan laporan) dipulihkan lewat fixture; efek log tidak terpulihkan (butir A-15).
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 23). Spec ini tidak mengirim aksi bisnis TAG lewat UI: dialog `Report TAG` dan `Cancel Report` hanya dibuka lalu ditutup dengan `[Cancel]` atau `[Keep Report]` (langkah 5, 10, 29), sedangkan laporan terbuka pada langkah 23 dibuat lewat fixture backend sebagai pelaku kedua.
 
 ## Test Steps
 
@@ -101,14 +102,13 @@ Role yang diuji:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md`. Tidak ada TC hanya-BE.
 - Spec Role Matrix ditulis per blok role karena ganti akun menuntut Step eksplisit (akun pertama login di hook `before`).
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 5, 6, 10, 11, 15, 19, 23, 24, 29.
-- Aksi `Report TAG` dan `Cancel Report TAG` dijalankan dari modul Audit (Task Detail), bukan dari halaman TAG; hook `beforeEach` suite membuka Fixed Asset > TAG dan langkah pembuka tiap blok berpindah ke modul Audit.
+- Aksi `Report TAG` dan `Cancel Report TAG` dijalankan dari modul Audit (Task Detail), bukan dari halaman TAG; langkah pembuka tiap blok (langkah 1, 7, 12, 16, 20, dan 25) membuka modul Audit.
 - TC-FA-TAG-186 dijalankan bersama TC-FA-TAG-185 (akun Staff Auditor sama); Expected tiap TC tetap diasersi.
 - Laporan terbuka Damaged untuk TC-FA-TAG-185 dan 186 dibuat lewat fixture backend sebagai pelaku kedua (sesi API) pada langkah penghubung sebelum blok Staff Auditor.
 - Pembagian TC lintas spec: TC-FA-TAG-187 dan 188 ada di spec 381.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 23). Spec ini tidak mengirim aksi bisnis TAG lewat UI: dialog `Report TAG` dan `Cancel Report` hanya dibuka lalu ditutup dengan `[Cancel]` atau `[Keep Report]` (langkah 5, 10, 29), sedangkan laporan terbuka pada langkah 23 dibuat lewat fixture backend sebagai pelaku kedua.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
-  - Kode Tag `RF-00130` dipakai TC untuk aset AST-0220 (TC-144 sampai TC-162) dan untuk aset AST-0020 (TC-174 sampai TC-188); kedua dataset tidak dapat ada bersamaan di registri Global. Spec menulis literal sesuai TC dan fixture backend menyiapkan dataset tiap spec.
   - TC-185 dan TC-186 tidak menyebut tab pada Task Detail; spec memakai tab In Audit hanya pada TC yang menyebutnya (TC-180 sampai TC-184).
   - TC-182 dan TC-183 menyebut "Coba membuka" Dialog Report TAG dari aksi yang tidak tersedia; spec menulis langkah membuka menu aksi lalu mengasersi dialog Hidden.
   - TC-180 menyebut Dialog `Report TAG` dengan footer `[Cancel] [Submit]`; label tombol mengikuti TC (tidak ada langkah submit).

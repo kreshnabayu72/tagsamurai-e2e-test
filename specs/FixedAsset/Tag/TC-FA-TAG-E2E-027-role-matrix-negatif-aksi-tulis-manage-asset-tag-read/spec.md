@@ -37,6 +37,7 @@ Role yang diuji:
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - State global: tidak ada state global yang diubah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -80,8 +81,8 @@ Role yang diuji:
 - Urutan TC-FA-TAG-111 dan TC-FA-TAG-112 disusun ulang (kebab di Popup Detail Plant B, lalu Bulk Action Bar Plant B, lalu Popup Detail Plant A) supaya popup tidak dibuka dua kali; Expected tiap TC tetap diasersi.
 - Langkah `Verifikasi` tombol `Event Log` tampil (TC-FA-TAG-114 butir a) diletakkan sebelum asersi Hidden tab To Be Returned sebagai anchor permukaan; klik `Event Log` dan modalnya (TC-FA-TAG-114 butir b) sesudahnya.
 - Row action Pair TAG diamati pada baris Not Paired Yet di Popup Detail Plant A, sehingga `Show` di samping `Not Paired Yet` diklik lebih dulu.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
   - TC-111 butir c ("Kebab pada aset dengan laporan terbuka tidak memuat Decline Report") tidak punya langkah yang membuka kebab aset itu; spec menambah langkah membuka kebab AST-0020 (aset dengan laporan terbuka pada data TC-174).
   - TC-111 (langkah TC ke-3) membuka kebab aset Not Paired Yet tanpa menyebut filter `Show` di samping `Not Paired Yet`; spec menambah langkah penghubung itu.

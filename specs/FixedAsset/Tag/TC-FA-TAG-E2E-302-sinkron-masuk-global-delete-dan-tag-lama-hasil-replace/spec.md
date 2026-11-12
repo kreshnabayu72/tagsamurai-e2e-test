@@ -26,8 +26,8 @@ coverage:
 - Seed dan pemulihan idempotent lewat fixture backend (disediakan tim FE/BE, lihat `suite.md`): aset, Tag per status registri, stok Tag per tipe, laporan Tag, dan entri log.
 - Data (Pre-setup TC, tanpa suffix) Tag To Be Returned: [RFID] `RF-00071` (Last Asset 'Excavator 20 Ton - 2', Reason Disposal, Return Group 'Disposal Center', Current Holder Dedi K.); [RFID] `RF-00088` ('Excavator 20 Ton - 5', 'Disposal Center', Dedi K.); [NFC] `NF-00092` ('Laptop Pro 14 - 8', 'HQ Warehouse', Rina T.).
 - Data tambahan (Pre-setup TC, tanpa suffix): aset AST-0020 ('Excavator 20 Ton - 20', Plant B) dengan Tag RFID `RF-00130` Paired; Tag RFID `RF-00500` Available.
-- Baseline badge tab To Be Returned dan jumlah entri Event Log dibaca lewat kemampuan baca (disediakan tim FE/BE) di hook `before` (S-12).
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Baseline badge tab To Be Returned dibaca lewat kemampuan baca (disediakan tim FE/BE) di hook `before` (S-12); baseline jumlah entri Event Log dibaca ulang pada langkah 19, sesudah pemulihan langkah 18 dan sebelum Tag RF-00088 dihapus (butir A-18).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 5, 14); entri TAG Log Global (langkah 5, 14). Hapus Tag `RF-00088` di Global Settings > TAG (langkah 21, 32) menghapus Tag itu beserta riwayat TAG Log-nya menurut PRD tag.md (FATAG-LOGIC-10o).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan aset AST-0020, Tag `RF-00130`, `RF-00500`, `RF-00088` (termasuk pembuatan ulang setelah dihapus), dan daftar To Be Returned ke keadaan awal lewat fixture backend.
 - State global yang diubah spec ini: registri Global (Tag `RF-00088` dihapus lalu dipulihkan), status Tag. Suite serial (`parallel: false`).
 
@@ -59,28 +59,32 @@ coverage:
 ### TC-FA-TAG-1246: Tag To Be Returned yang dihapus di Global keluar dari tab tanpa jejak di FAMS
 
 18. Klik `(←)` pada kotak Search, lalu pulihkan Tag To Be Returned lewat fixture backend
-19. Buka Global Settings > TAG
-20. Hapus Tag `RF-00088` (status To be Returned)
-21. Buka Fixed Asset > TAG > To Be Returned
-22. Ketik Search `RF-00088`, tekan Enter
-23. Verifikasi Illustration `No results found`: baris RF-00088 tidak ada lagi di tab To Be Returned
-24. Verifikasi badge tab "To Be Returned" berkurang satu terhadap baseline
-25. Klik tombol "Event Log"
-26. Verifikasi Event Log tidak memuat entri untuk RF-00088
+19. Catat jumlah entri Event Log tab To Be Returned sebagai baseline (dibaca lewat kemampuan baca, disediakan tim FE/BE)
+20. Buka Global Settings > TAG
+21. Hapus Tag `RF-00088` (status To be Returned)
+22. Buka Fixed Asset > TAG > To Be Returned
+23. Ketik Search `RF-00088`, tekan Enter
+24. Verifikasi Illustration `No results found`: baris RF-00088 tidak ada lagi di tab To Be Returned
+25. Verifikasi badge tab "To Be Returned" berkurang satu terhadap baseline
+26. Klik tombol "Event Log"
+27. Verifikasi Modal `Event Log: To Be Returned` terbuka
+28. Verifikasi jumlah entri Event Log sama dengan baseline yang dicatat pada langkah 19
+29. Verifikasi Event Log tidak memuat entri untuk RF-00088
 
 ### TC-FA-TAG-1247: penghapusan satu Tag di Global tidak memengaruhi baris Tag lain
 
-27. Tutup Modal Event Log, klik `(←)` pada kotak Search, lalu pulihkan Tag To Be Returned lewat fixture backend
-28. Buka Global Settings > TAG
-29. Hapus Tag `RF-00088`
-30. Buka Fixed Asset > TAG > To Be Returned
-31. Verifikasi baris RF-00071 dan NF-00092 tetap tampil dengan data snapshot yang sama
+30. Tutup Modal Event Log, klik `(←)` pada kotak Search, lalu pulihkan Tag To Be Returned lewat fixture backend
+31. Buka Global Settings > TAG
+32. Hapus Tag `RF-00088`
+33. Buka Fixed Asset > TAG > To Be Returned
+34. Verifikasi baris RF-00071 dan NF-00092 tetap tampil dengan data snapshot yang sama
 
 ## Notes
 
 - Mode: FE+BE.
-- Langkah penghubung (S-03): 10, 18 dan 27 (mereset Search, memulihkan data lewat fixture antar TC, S-09; menutup modal).
-- Absence TC-FA-TAG-1244, 1245, dan 1246: memakai empty state `No results found` hasil Search sebagai anchor positif; TC-FA-TAG-1246 b (Event Log tidak memuat entri RF-00088) didahului asersi `Verifikasi` tab To Be Returned yang menunjukkan Search selesai (bagian 8b butir 2).
+- Langkah penghubung (S-03): 10, 18, 19 dan 30 (mereset Search, memulihkan data lewat fixture antar TC, S-09; menutup modal).
+- Absence TC-FA-TAG-1244, 1245, dan 1246: memakai empty state `No results found` hasil Search sebagai anchor positif; TC-FA-TAG-1246 c (Event Log tidak memuat entri RF-00088) didahului `Verifikasi` Modal Event Log terbuka dengan jumlah entri sama dengan baseline (langkah 27 dan 28) sebagai anchor positif pada surface yang sama (bagian 8b butir 2).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 5, 14); entri TAG Log Global (langkah 5, 14). Hapus Tag `RF-00088` di Global Settings > TAG (langkah 21, 32) menghapus Tag itu beserta riwayat TAG Log-nya menurut PRD tag.md (FATAG-LOGIC-10o).
 - Temuan untuk QA:
   - TC-FA-TAG-1244 dan 1245 Post Condition (Tag RF-00130 berstatus Available atau Damaged/Missing di registri Global; tidak ada entri Event Log untuk RF-00130) tidak punya langkah observasi di TC; tidak diasersi.
   - TC-FA-TAG-1246 dan 1247 langkah TC ke-1 ('hapus Tag RF-00088') tidak menyebut dialog konfirmasi hapus; spec menulis satu langkah mengikuti TC.

@@ -31,6 +31,7 @@ coverage:
 | Event Log | 27 Okt 2026 14:15 [RFID] RF-00093, Excavator 20 Ton - 5, Disposal Center, Dedi K., Budi S., Assigned, Paired; 26 Okt 2026 10:02 [RFID] RF-00071, Last Asset Excavator 20 Ton - 2, Return Group Disposal Center, Handed Over By Dedi K., Received By Budi S., Method Scan, Final Status Available; 26 Okt 2026 09:40 [NFC] NF-00092, Laptop Pro 14 - 8, HQ Warehouse, Rina T., Sari W., Manual, Damaged/Missing | `eventLogToBeReturned` |
 
 - State yang diubah dan pemulihannya: konfigurasi kolom tabel To Be Returned di cache browser; penghapusan preferensi kolom Setup Column di browser oleh hook `after` spec ini. Viewport dipulihkan oleh langkah penghubung.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 13, 19).
 
 ## Test Steps
 
@@ -81,8 +82,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-1422, TC-FA-TAG-1423, TC-FA-TAG-1424, TC-FA-TAG-1425). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik Popup Setup Column tab To Be Returned dan Modal Event Log ada di spec 187 (TC-FA-TAG-1422 s.d. 1425) dan spec 188 (TC-FA-TAG-1426 s.d. 1428).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 9, 15, 22 (menutup popup Setup Column dan mempersempit atau memulihkan viewport).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 13, 19).
 - Temuan untuk QA:
   - Tab To Be Returned dibuka sekali (TC-FA-TAG-1422) dan tetap aktif sampai TC-FA-TAG-1425; langkah "Buka Fixed Asset > TAG > To Be Returned" tidak diulang di TC berikutnya, dan popup Setup Column ditutup dengan ikon close atau `[Save]`.
   - Akun aktor pada TC-FA-TAG-1425 tidak menyebut halaman awal (tidak ada baris "User berada di"); spec membuka tab To Be Returned lewat TC-FA-TAG-1422.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -30,6 +30,7 @@ coverage:
   - Tag `RF-00500` berstatus Available di Global.
   - Tag `RF-00130` berstatus Paired pada aset AST-0020.
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB (satu reader tersambung, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader). Semua pindaian ditolak atau hanya menambah daftar sesi tanpa [Receive], jadi tidak ada state global yang berubah.
+- Nilai literal Pre-setup (`RF-00071`, `NF-00092`, `RF-99999`, `QR-00300`, `RF-00500`, `RF-00130`, AST-0020) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -85,6 +86,6 @@ coverage:
 - Urutan TC diubah menjadi TC-543, TC-545, TC-544, TC-546, TC-547, TC-548 supaya dua error inline yang identik tidak berurutan (R-12); TC-547 memasukkan `RF-00071` ke daftar sehingga ditempatkan terakhir di akun pertama (S-09, S-10).
 - Langkah penghubung: langkah 1 dan 2 membuka tab dan dialog (halaman TAG dibuka hook `beforeEach`); langkah 21 dan 28 menutup dialog. Langkah 22 adalah ganti akun eksplisit.
 - Anchor absence daftar sesi tidak bertambah: error inline yang diasersi tepat sebelumnya (langkah 4, 8, 11, 14, 26); penghitung "0 TAGs scanned" pada langkah 6 dan "1 TAG scanned" pada langkah 20 menjadi anchor angka.
+- A-15: nilai literal Pre-setup (`RF-00071`, `NF-00092`, `RF-99999`, `QR-00300`, `RF-00500`, `RF-00130`, AST-0020) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`RF-00071`, `NF-00092`, `RF-99999`, `QR-00300`, `RF-00500`, `RF-00130`, AST-0020) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - Kode `QR-00300` berstatus berlawanan antar TC: belum pernah dicetak di TC-544 dan sudah dicetak (Available) di TC-1444 (spec 132); pemulihan berlangsung di hook `before` dan `after` tiap spec.

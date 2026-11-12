@@ -35,40 +35,39 @@ coverage:
 5. Verifikasi kolom curated `Measurement`, `Category`, `Label`, `Transactional Policy`, `Last Scanned`, `Asset Value`, `Warranty Expiry`, dan kolom custom field tersembunyi secara default
 6. Verifikasi default sort Last Updated Newest First
 7. Verifikasi tabel berpaginasi (pagination tampil)
-8. Verifikasi tautan `Open in Asset List ↗` tampil
 
 ### TC-FA-FAAM-504: Badge Status Lifecycle dan hasil resolusi
 
-9. Ketik Search `Dell Latitude - 38`, tekan Enter, sehingga baris aset Lifecycle Draft (Pre-setup #26g) tampil
-10. Verifikasi aset `Dell Latitude - 38` (Lifecycle Draft) menampilkan badge `Draft`
-11. Ketik Search `Dell Latitude - 40`, tekan Enter, sehingga baris aset Lifecycle Waiting for Approval (Pre-setup #26g) tampil
-12. Verifikasi aset `Dell Latitude - 40` (Lifecycle Waiting for Approval) menampilkan badge `Waiting for Approval`
-13. Ketik Search `Dell Latitude - 39`, tekan Enter, sehingga baris aset Active dengan status `Borrowed` dan overlay `Damaged` (Pre-setup #26g) tampil
-14. Verifikasi aset `Dell Latitude - 39` (Active) menampilkan badge hasil resolusi custody dan overlay (mis. `Borrowed` dengan `Damaged`)
+8. Ketik Search `Dell Latitude - 38`, tekan Enter, sehingga baris aset Lifecycle Draft (Pre-setup #26g) tampil
+9. Verifikasi aset `Dell Latitude - 38` (Lifecycle Draft) menampilkan badge `Draft`
+10. Ketik Search `Dell Latitude - 40`, tekan Enter, sehingga baris aset Lifecycle Waiting for Approval (Pre-setup #26g) tampil
+11. Verifikasi aset `Dell Latitude - 40` (Lifecycle Waiting for Approval) menampilkan badge `Waiting for Approval`
+12. Ketik Search `Dell Latitude - 39`, tekan Enter, sehingga baris aset Active dengan status `Borrowed` dan overlay `Damaged` (Pre-setup #26g) tampil
+13. Verifikasi aset `Dell Latitude - 39` (Active) menampilkan badge hasil resolusi custody dan overlay (mis. `Borrowed` dengan `Damaged`)
 
 ### TC-FA-FAAM-502: Format sel Tab Total Assets
 
-15. Klik header Actions (⋯), pilih `Setup Column...`, centang Label, klik `[Save]` (precondition TC: kolom curated Label sudah ditampilkan; dipakai sebagai precondition, tidak diasersi)
-16. Ketik Search `Dell Latitude - 42`, tekan Enter
-17. Verifikasi Name berformat `[Asset Name] - [Increment]` (mis. `Dell Latitude - 42`)
-18. Verifikasi TAG menampilkan satu ikon per tipe tag aktif tanpa Tag Code
-19. Verifikasi Brand dan Model/Type berupa badge Dark
-20. Verifikasi Group berupa badge Primary
-21. Verifikasi Status berupa badge hasil resolusi status aset
-22. Verifikasi Last Updated mengikuti format General Settings
-23. Verifikasi Label berupa chip berwarna label (kolom curated)
-24. Klik `(←)` pada kotak Search
-25. Verifikasi label tab `Total Assets (42)`
-26. Verifikasi jumlah total baris seluruh halaman tabel sama dengan 42 (jumlah total pada footer pagination)
-27. Tutup popup Detail
-28. Verifikasi kolom Total Asset baris `Dell Latitude` pada tabel utama bernilai 42
+14. Klik header Actions (⋯), pilih `Setup Column...`, centang Label, klik `[Save]` (precondition TC: kolom curated Label sudah ditampilkan; dipakai sebagai precondition, tidak diasersi)
+15. Ketik Search `Dell Latitude - 42`, tekan Enter
+16. Verifikasi Name berformat `[Asset Name] - [Increment]` (mis. `Dell Latitude - 42`)
+17. Verifikasi TAG menampilkan satu ikon per tipe tag aktif tanpa Tag Code
+18. Verifikasi Brand dan Model/Type berupa badge Dark
+19. Verifikasi Group berupa badge Primary
+20. Verifikasi Status berupa badge hasil resolusi status aset
+21. Verifikasi Last Updated mengikuti format General Settings
+22. Verifikasi Label berupa chip berwarna label (kolom curated)
+23. Klik `(←)` pada kotak Search
+24. Verifikasi label tab `Total Assets (42)`
+25. Verifikasi jumlah total baris seluruh halaman tabel sama dengan 42 (jumlah total pada footer pagination)
+26. Tutup popup Detail
+27. Verifikasi kolom Total Asset baris `Dell Latitude` pada tabel utama bernilai 42
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `fixed-asset/settings-asset-name/TestCases/tc-settings-asset-name.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Urutan TC di dalam spec: 501, 504, 502 (TC-FA-FAAM-502 menyimpan konfigurasi kolom sehingga ditaruh sesudah screening 501 yang mengasersi kolom default).
 - Pembagian TC lintas spec: TC-FA-FAAM-503 dan 505 ada di spec 210 (`TC-FA-FAAM-E2E-210-total-assets-himpunan-aset-dan-empty-state-tanpa-aset`).
-- Langkah penghubung: Search nama aset Pre-setup #26g untuk menemukan baris target pada blok TC-FA-FAAM-504 (langkah 9, 11, 13; tiap Search mengganti isi Search sebelumnya), Search `Dell Latitude - 42` dan `(←)` pada blok TC-FA-FAAM-502, serta menutup popup Detail.
+- Langkah penghubung: Search nama aset Pre-setup #26g untuk menemukan baris target pada blok TC-FA-FAAM-504 (langkah 8, 10, 12; tiap Search mengganti isi Search sebelumnya), Search `Dell Latitude - 42` dan `(←)` pada blok TC-FA-FAAM-502, serta menutup popup Detail.
 - Asersi absence tombol Changelog dan tombol aksi tulis memakai anchor positif (toolbar `Search | Filter | Download` tampil).
 - Temuan untuk QA:
   - TC-FA-FAAM-502 mengasersi chip Label, padahal kolom Label tersembunyi secara default (TC-FA-FAAM-501 butir b) dan LK TC-502 tidak menyebut langkah mencentangnya; spec menambah langkah penghubung centang Label pada blok TC-FA-FAAM-502 dan memperlakukannya sebagai precondition.

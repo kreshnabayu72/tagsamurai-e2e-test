@@ -37,6 +37,8 @@ coverage:
 
   Kunci fixture: `changelogE1E6`.
 - State yang diubah: hanya state Filter modal; Filter dikosongkan lewat `[Clear Field]` dan `[Apply]` sesudah tiap kasus. Tidak ada perubahan data bisnis.
+- Nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
 
 ## Test Steps
 
@@ -93,6 +95,7 @@ coverage:
 
 - Langkah penghubung (S-03): langkah 9 dan 10, 14 dan 15, 19 dan 20, 24 dan 25, serta 29 dan 30 (`[Clear Field]` lalu `[Apply]` mengembalikan enam entri sebelum kasus berikutnya) dan langkah 31 (menutup modal). Filter Panel dianggap tetap terbuka sesudah `[Apply]` (urutan "`[Clear Field]` lalu `[Apply]`" tanpa membuka ulang panel mengikuti TC-FA-TAG-696).
 - Pembagian TC lintas spec: kombinasi multi-filter serta kombinasi Search, Filter, dan Sort (TC-FA-TAG-963 sampai TC-FA-TAG-965) ada di spec 240.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-958 menyebut rentang tanggal "25 Okt 2026 sampai 25 Okt 2026" tanpa menjelaskan cara memilih rentang pada date picker; spec menulis satu langkah pilih rentang.
   - TC-FA-TAG-957 Expected a tidak menyebut apakah ikon Filter berubah (indikator) ketika panel terbuka; tidak diasersi.

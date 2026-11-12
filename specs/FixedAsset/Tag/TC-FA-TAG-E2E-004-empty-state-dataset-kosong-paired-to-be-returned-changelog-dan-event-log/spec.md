@@ -24,6 +24,7 @@ coverage:
 - State global yang diubah: data Tag, aset, Changelog, dan Event Log dalam scope Total Control dikosongkan sementara. Hook `after` (tetap jalan walau spec gagal) memulihkan seluruh data Pre-setup tab Paired dan tab To Be Returned lewat fixture BE yang sama; suite berjalan serial (`parallel: false`).
 - Data Pre-setup yang dipulihkan: grup Excavator 20 Ton / Plant A, Excavator 20 Ton / Plant B, Laptop Pro 14 / HQ, Forklift Manual / Plant A; tab To Be Returned memuat Tag `RF-00071`, `RF-00088`, `NF-00092`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Pemulihan idempotent. Nama dan kode literal tidak diberi suffix `{runId}` karena data Pre-setup yang dipulihkan harus sama persis (suite.md).
+- Nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -59,6 +60,7 @@ coverage:
 - Urutan TC pada spec: TC-FA-TAG-15, 939, 85, 1477, agar pembukaan modal Changelog (tab Paired) tidak memerlukan pindah tab bolak-balik; tiap TC tetap mulai dari state yang sama.
 - Langkah 13 adalah asersi absence atas empty state sementara; anchor positif adalah Verifikasi empty state `No event log yet` pada modal yang sama (langkah 12) (bagian 8b butir 2).
 - Langkah 3 memakai empty state langkah 2 sebagai anchor positif bahwa surface sudah dimuat.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - Mengosongkan seluruh data Tag dalam scope Total Control pada tenant uji bersama bersifat destruktif; mekanisme kosongkan dan pulihkan tidak didefinisikan di TC, PRD, atau LLD dan disediakan tim FE/BE (S-13). Mohon QA mengonfirmasi apakah tenant khusus (scope kosong) tersedia sebagai pengganti.
   - TC-FA-TAG-15 Precondition c, TC-FA-TAG-85, TC-FA-TAG-939, dan TC-FA-TAG-1477 tidak menyebut cara membentuk state kosong; spec menuliskannya sebagai kemampuan fixture BE tanpa endpoint karangan.

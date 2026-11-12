@@ -35,6 +35,7 @@ Role yang diuji:
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - State global: tidak ada state global yang diubah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -77,8 +78,8 @@ Role yang diuji:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 9, 11, 14, 22.
 - Pembagian TC lintas spec: TC-FA-TAG-122 dan TC-FA-TAG-124 sampai 129 ada di spec `TC-FA-TAG-E2E-031-hak-parsial-update-read-per-group-pada-aksi-halaman-bagian-1`; TC-FA-TAG-157 sampai 161 ada di spec `TC-FA-TAG-E2E-043-hak-parsial-update-read-per-group-pada-aksi-halaman-bagian-3`.
 - Aksi baca `Detail`, `Changelog`, `Event Log`, Download, dan TAG Log pada `Verifikasi` terakhir blok pertama diamati dari permukaan yang sudah dibuka pada langkah sebelumnya.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
   - TC-130 butir a menyebut delapan aksi tulis Hidden dalam satu butir; spec memecahnya per permukaan tempat aksi itu teramati (Table Tools, kebab grup, kebab baris, Bulk Action Bar, tab To Be Returned).
   - TC-162 hanya menyebut membuka dialog `Replace TAG` dan slot `QR TAG`; kebab baris dibuka sebagai langkah penghubung.

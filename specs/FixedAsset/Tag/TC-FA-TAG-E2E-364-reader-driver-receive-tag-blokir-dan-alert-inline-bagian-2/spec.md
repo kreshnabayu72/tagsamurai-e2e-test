@@ -25,6 +25,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): emulator driver reader (simulator reader USB, lihat `suite.md`) yang mengatur kondisi reader di tengah dialog: reader berstatus Waiting for Approval; driver reader USB belum terpasang; driver terpasang tetapi reader mati atau kabel tidak terpasang erat; lebih dari satu reader tersambung; reader terbaca tetapi Serial Number belum diaktivasi (Sync belum dijalankan); kondisi normal (satu reader RFID/NFC tersambung, aktif, sudah disinkronkan di Global Settings > Handheld Reader). Seed idempotent Tag To Be Returned lewat fixture backend.
 - Data Pre-setup Tag To Be Returned (tanpa suffix `{runId}` karena asersi bergantung pada kode persis): [RFID] RF-00071 (Last Asset Excavator 20 Ton - 2, Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); [RFID] RF-00088 (Excavator 20 Ton - 5, Disposal Center, Dedi K.); [NFC] NF-00092 (Laptop Pro 14 - 8, HQ Warehouse, Rina T.). Spec ini tidak menerima Tag, sehingga data tidak berubah.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan kondisi reader ke normal. Spec ini tidak mengubah state global lain. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -70,7 +71,7 @@ coverage:
 - Langkah penghubung (tanpa awalan `Verifikasi`): 1 (membuka tab), 2, 10, 12, 16, 20, 24 (mengatur kondisi reader), 28 (menutup dialog yang tidak dirty).
 - Anchor positif absence (bagian 8b butir 2): langkah 5 untuk langkah 6 dan 7; Alert pada langkah 14, 18, 22, 26 mendahului asersi "tidak ada kode yang terbaca dan daftar sesi tidak berubah" pada langkah 15, 19, 23, 27.
 - Pembagian TC lintas spec: TC-FA-TAG-550 sampai TC-FA-TAG-555 ada di spec 363, TC-FA-TAG-561 dan TC-FA-TAG-562 di spec 365.
+- A-15: nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-556 sampai TC-FA-TAG-561 berlabel Manual Only (kondisi hardware reader dan driver USB fisik); spec tetap ditulis dengan emulator driver reader sebagai kemampuan yang disediakan tim FE/BE.
   - TC-FA-TAG-556 menyebut "tidak ada perubahan data" dalam butir yang sama dengan "dialog Receive TAG tidak terbuka" tanpa cara observasi; spec mengobservasinya lewat isi tab To Be Returned (langkah 7).
-  - Nilai literal Pre-setup (kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

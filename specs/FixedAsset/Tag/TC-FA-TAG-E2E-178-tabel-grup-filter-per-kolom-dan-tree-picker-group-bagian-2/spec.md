@@ -29,7 +29,8 @@ coverage:
 | Dataset Paired | Grup 'Excavator 20 Ton' / Plant A / RFID / Total Assets 20 / Reported 0 / Non-standard 0 / Not Paired Yet 2; 'Excavator 20 Ton' / Plant B / RFID / 20 / 2 / 5 / 0; 'Laptop Pro 14' / HQ / NFC, QR / 25 / 1 / 0 / 2; 'Forklift Manual' / Plant A / Non TAG / 10 / 0 / 3 / 0 | `datasetPaired` |
 | Struktur Group | Plant A > Line 1 > Zone 1 (Plant A memiliki child Line 1 dan grandchild Zone 1) | `strukturPlantA` |
 
-- State yang diubah dan pemulihannya: kolom Asset Name disembunyikan di TC-FA-TAG-730 dan ditampilkan kembali oleh langkah penghubung (konfigurasi kolom di cache browser).
+- State yang diubah dan pemulihannya: kolom Asset Name disembunyikan di TC-FA-TAG-730 dan ditampilkan kembali oleh langkah penghubung (konfigurasi kolom di cache browser); hook `after` menghapus preferensi kolom di browser (kemampuan disediakan tim FE), bukan lewat `[Reset to Default]`, sebagai cadangan bila spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 25, 29), dipulihkan hook `after` (lihat `suite.md`).
 
 ## Test Steps
 
@@ -79,8 +80,7 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-727, TC-FA-TAG-728, TC-FA-TAG-729, TC-FA-TAG-730). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik Filter per kolom dan Tree Picker Group ada di spec 177 (TC-FA-TAG-720 s.d. 726) dan spec 178 (TC-FA-TAG-727 s.d. 730).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 10, 19, 20, 23, 29 (membersihkan draft Filter Panel, menutup modal Tree Picker dan Filter Panel, serta memulihkan kolom Asset Name).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 25, 29), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
   - Di TC-FA-TAG-730, kolom Asset Name sedang disembunyikan sehingga hasil filter tidak dapat dibaca dari nama; spec membaca hasil dari kolom Group dan TAG Type baris tunggal Forklift Manual / Plant A (Non TAG).
-  - Spec 178 tidak ada dalam daftar pemulihan kolom di hook suite; pemulihan dilakukan lewat langkah penghubung (menampilkan kolom Asset Name kembali).
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

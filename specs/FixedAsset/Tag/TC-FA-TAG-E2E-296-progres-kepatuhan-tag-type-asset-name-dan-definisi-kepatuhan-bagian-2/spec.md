@@ -21,7 +21,7 @@ coverage:
 - Fixture `fixtures/fixed-asset-tag.json` belum ada; nilai literal TC pada langkah diberi kunci fixture oleh tahap script (kunci disediakan).
 - Seed dan pemulihan idempotent lewat fixture backend (disediakan tim FE/BE, lihat `suite.md`): aset, Tag per status registri, stok Tag per tipe, laporan Tag, dan entri log.
 - Data (Pre-setup TC, tanpa suffix): Asset Name `Empty Pallet` tanpa aset; Asset Name `Draft Only Pallet` hanya memiliki 2 aset berlifecycle Draft (`[N]` = 0 untuk keduanya).
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan data seed ke keadaan awal lewat fixture backend dan sesi ke akun default suite.
 - State global: tidak ada yang diubah spec ini. Suite serial (`parallel: false`).
 
@@ -45,6 +45,7 @@ coverage:
 - Mode: FE+BE.
 - Langkah penghubung (S-03): 6 (menutup popup Detail Asset Name). TC-FA-TAG-1137, 1138, 1152, 1497, 1498, dan 1499 ada di spec 295.
 - Absence baris progres: didahului `Verifikasi` Detail Asset Name dengan nilai TAG Type tampil sebagai anchor positif (bagian 8b butir 2).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1500 Expected b ('tidak ada ruang kosong di bawah nilai TAG Type') tidak punya ukuran terukur; spec mengasersi sesuai teks TC.
   - TC-FA-TAG-1500 tidak punya Post Condition yang perlu diasersi di luar Expected.

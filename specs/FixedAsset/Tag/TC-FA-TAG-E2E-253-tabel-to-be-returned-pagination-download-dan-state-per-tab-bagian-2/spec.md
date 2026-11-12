@@ -33,10 +33,11 @@ coverage:
 | RF-00110 (RFID) | Excavator 20 Ton - 10 | Disposal | Disposal Center | Dedi K. | 10 Sep 2026 |
 
 - Data Pre-setup tab To Be Returned (kunci `Fixture.fixedAssetTag.tbr25`): 25 Tag To Be Returned dalam scope akun (kode dan atribut Tag ditentukan seeding; TC hanya menyebut jumlahnya), dimuat pada langkah 26 untuk TC-FA-TAG-1027.
-- Data Pre-setup tab Paired (dipakai hanya sebagai pembanding pada TC-FA-TAG-1028; kunci `Fixture.fixedAssetTag.pairedGrup`; tanpa suffix `{runId}`): grup Excavator 20 Ton / Plant A, Excavator 20 Ton / Plant B, Laptop Pro 14 / HQ, dan Forklift Manual / Plant A tampil di tabel grup T-TAG-01.
+- Data Pre-setup tab Paired (dataset umum empat grup, bukan dataset khusus 25 grup milik spec 229 dan 231 yang dipulihkan di hook `after` spec itu; dipakai hanya sebagai pembanding pada TC-FA-TAG-1028; kunci `Fixture.fixedAssetTag.pairedGrup`; tanpa suffix `{runId}`): grup Excavator 20 Ton / Plant A, Excavator 20 Ton / Plant B, Laptop Pro 14 / HQ, dan Forklift Manual / Plant A tampil di tabel grup T-TAG-01.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned (kode, Last Asset, Reason, Return Group, Current Holder, Since) dan Return Group; tidak ada endpoint yang dikarang di spec ini.
 - Kemampuan teknis (disediakan tim FE/BE): pembaca berkas unduhan CSV/XLSX (nama berkas, ekstensi, header kolom, jumlah baris, isi sel, nama sheet) dan pendeteksi toast pada saat klik pilihan format.
 - Pemulihan di hook `after`: dataset To Be Returned dikembalikan ke keadaan Pre-setup empat Tag lewat fixture backend bila seeding mengubahnya. Search dikosongkan dan sort dikembalikan ke netral pada akhir spec.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 26) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -97,9 +98,9 @@ coverage:
 - Absence toast (TC-FA-TAG-1024 dan 1025) diletakkan sesudah pemicu klik pilihan format dan sebelum `Verifikasi` berkas (bagian 8b butir 11).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 15 (mengosongkan Search lewat `(←)`); 20 (kembali ke tab To Be Returned); 26 (memuat dataset 25 Tag dan membuka tab); 34 (mengembalikan sort dan mengosongkan Search).
 - Asersi tambahan di luar Expected TC: `Verifikasi` empty state "No results found" sebelum `Verifikasi` tombol Download (TC-FA-TAG-1025) sebagai anchor positif absence toast dan isi berkas (bagian 8b butir 2).
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 26) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
-  - TC-FA-TAG-1028 Expected menyebut "tabel grup tidak tersaring" tetapi precondition TC hanya memuat Tag To Be Returned dan tidak menyebut dataset tab Paired; spec memakai grup Pre-setup tab Paired yang dipakai spec lain sebagai pembanding.
+  - TC-FA-TAG-1028 Expected menyebut "tabel grup tidak tersaring" tetapi precondition TC hanya memuat Tag To Be Returned dan tidak menyebut dataset tab Paired; spec memakai dataset umum empat grup Pre-setup tab Paired yang dipakai spec lain sebagai pembanding.
   - TC-FA-TAG-1027 Expected "tabel menampilkan hasil yang sama" tidak menyebut baris yang diharapkan; spec mencatat baris yang tampil sebelum pindah tab dan membandingkannya.
   - TC-FA-TAG-1027 memakai precondition 25 Tag (bukan empat Tag Pre-setup); dataset itu dimuat lewat fixture sebagai langkah penghubung.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

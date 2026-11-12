@@ -25,9 +25,11 @@ coverage:
 - Data TC-FA-TAG-818: Label: AST-0043 [Audit]; AST-0044 [Audit, Rental, Urgent].
 - Data TC-FA-TAG-819: Status: AST-0020 [Assigned, Tag Reported]; AST-0043 [Available, Tag Reported].
 - Data TC-FA-TAG-820: Opsi: Borrow, Self Service Borrow, Assign, Transfer.
+- Data TC-FA-TAG-821: Last Scanned: AST-0011 = 20 Oct 26; AST-0020 = —; AST-0021 = 25 Oct 26; AST-0043 = 10 Oct 26; AST-0044 = —.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -82,7 +84,7 @@ coverage:
 
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 8, 9, 17, 18, 26, 27, 35.
 - Filter dipasang di toolbar halaman dan dibersihkan antar TC lewat langkah penghubung; Popup Detail ditutup sebelum Filter dibuka kembali karena toolbar tertutup popup.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - TC tidak menyebut kontrol yang membersihkan Filter; langkah penghubung "Bersihkan Filter" dipakai tanpa nama tombol.
   - Post Condition TC ("Tidak ada perubahan data bisnis (aksi hanya membaca)" dan "Konfigurasi kolom tersimpan di cache browser ...") tidak punya langkah observasi di TC; tidak diasersi.

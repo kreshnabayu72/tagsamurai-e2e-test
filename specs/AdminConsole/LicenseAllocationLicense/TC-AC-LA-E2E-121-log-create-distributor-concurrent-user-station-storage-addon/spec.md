@@ -36,90 +36,96 @@ coverage:
 ### Log Create Concurrent User (TC-AC-LA-383)
 
 1. Atur jam server dan jam browser ke `22 Dec 2026` (nilai absolut)
-2. Klik `[+ Allocation]`
-3. Pilih Client `PT Sejahtera`
-4. Pilih Target `SUBS-20260101-A1B2C`
-5. Pilih Type `Concurrent User`
-6. Isi Additional Quantity `10`
-7. Klik `[Submit]`
-8. Catat Allocation ID baris baru sebagai `{idCU}`
-9. Pulihkan jam server dan jam browser ke waktu nyata
-10. Klik ikon `Changelog` pada List
-11. Ketik Search `{idCU}`, tekan Enter
-12. Verifikasi Changelog memuat entri dengan Action `Create`, Allocation ID `{idCU}`, Field `Allocation Details`, Old Value `—`, New Value `Concurrent User +10 to PT Sejahtera — Paid via wallet, Cost $100.00`, Modified By `Dewi A`
-13. Tutup modal Changelog
-14. Buka Detail User `Dewi Anggraini` > tab System Log
-15. Ketik Search `{idCU}`, tekan Enter
-16. Verifikasi System Log aktor memuat entri dengan Action `Create`, Object `License Allocation`, Name `{idCU}`, Field `Allocation Details`, Old `—`, New `Concurrent User +10 to PT Sejahtera — Paid via wallet, Cost $100.00`
-17. Buka Activity Log Admin Console
-18. Ketik Search `{idCU}`, tekan Enter
-19. Verifikasi Activity Log memuat entri dengan Action `Create`, Object `License Allocation`, Name `{idCU}`, Field `Allocation Details`, Old `—`, New `Concurrent User +10 to PT Sejahtera — Paid via wallet, Cost $100.00`, Modified By `Dewi A`
-20. Verifikasi teks New Value pada Changelog, System Log, dan Activity Log persis sama dan tidak menyisipkan status transaksi
-21. Buka Allocation > License Allocation (tab Current)
+2. Catat baseline Allocation ID baris di halaman pertama tab Current
+3. Klik `[+ Allocation]`
+4. Pilih Client `PT Sejahtera`
+5. Pilih Target `SUBS-20260101-A1B2C`
+6. Pilih Type `Concurrent User`
+7. Isi Additional Quantity `10`
+8. Klik `[Submit]`
+9. Catat Allocation ID baris yang tidak ada di baseline sebagai `{idCU}`
+10. Pulihkan jam server dan jam browser ke waktu nyata
+11. Klik ikon `Changelog` pada List
+12. Ketik Search `{idCU}`, tekan Enter
+13. Verifikasi Changelog memuat entri dengan Action `Create`, Allocation ID `{idCU}`, Field `Allocation Details`, Old Value `—`, New Value `Concurrent User +10 to PT Sejahtera — Paid via wallet, Cost $100.00`, Modified By `Dewi A`
+14. Tutup modal Changelog
+15. Buka Detail User `Dewi Anggraini` > tab System Log
+16. Ketik Search `{idCU}`, tekan Enter
+17. Verifikasi System Log aktor memuat entri dengan Action `Create`, Object `License Allocation`, Name `{idCU}`, Field `Allocation Details`, Old `—`, New `Concurrent User +10 to PT Sejahtera — Paid via wallet, Cost $100.00`
+18. Buka Activity Log Admin Console
+19. Ketik Search `{idCU}`, tekan Enter
+20. Verifikasi Activity Log memuat entri dengan Action `Create`, Object `License Allocation`, Name `{idCU}`, Field `Allocation Details`, Old `—`, New `Concurrent User +10 to PT Sejahtera — Paid via wallet, Cost $100.00`, Modified By `Dewi A`
+21. Verifikasi teks New Value pada Changelog, System Log, dan Activity Log persis sama
+22. Verifikasi teks New Value tidak menyisipkan status transaksi
+23. Buka Allocation > License Allocation (tab Current)
 
 ### Log Create Asset Control Station dan Storage (TC-AC-LA-385)
 
-22. Klik `[+ Allocation]`
-23. Pilih Client `Klinik Harapan Bunda`
-24. Pilih Target `Client-wide`
-25. Pilih Type `Asset Control Station`
-26. Isi Additional Quantity `10`
-27. Klik `[Submit]`
-28. Catat Allocation ID baris baru sebagai `{idStation}`
-29. Klik `[+ Allocation]`
-30. Pilih Client `Klinik Harapan Bunda`
-31. Pilih Target `Client-wide`
-32. Pilih Type `Storage`
-33. Isi Additional Quantity `50`
-34. Klik `[Submit]`
-35. Catat Allocation ID baris baru sebagai `{idStorage}`
-36. Klik ikon `Changelog` pada List
-37. Ketik Search `{idStation}`, tekan Enter
-38. Verifikasi Changelog untuk `{idStation}` memuat New Value `Asset Control Station +10 to Klinik Harapan Bunda — Paid via wallet, Cost $500.00`
-39. Ganti isi kotak search dengan `{idStorage}`, tekan Enter
-40. Verifikasi Changelog untuk `{idStorage}` memuat New Value `Storage +50 GB to Klinik Harapan Bunda — Paid via wallet, Cost $100.00`
-41. Tutup modal Changelog
-42. Buka Activity Log Admin Console
-43. Ketik Search `{idStation}`, tekan Enter
-44. Verifikasi Activity Log untuk `{idStation}` memuat New Value `Asset Control Station +10 to Klinik Harapan Bunda — Paid via wallet, Cost $500.00`
-45. Ganti isi kotak search dengan `{idStorage}`, tekan Enter
-46. Verifikasi Activity Log untuk `{idStorage}` memuat New Value `Storage +50 GB to Klinik Harapan Bunda — Paid via wallet, Cost $100.00`
-47. Buka Allocation > License Allocation (tab Current)
+24. Catat baseline Allocation ID baris di halaman pertama tab Current
+25. Klik `[+ Allocation]`
+26. Pilih Client `Klinik Harapan Bunda`
+27. Pilih Target `Client-wide`
+28. Pilih Type `Asset Control Station`
+29. Isi Additional Quantity `10`
+30. Klik `[Submit]`
+31. Catat Allocation ID baris yang tidak ada di baseline sebagai `{idStation}`
+32. Catat baseline Allocation ID baris di halaman pertama tab Current
+33. Klik `[+ Allocation]`
+34. Pilih Client `Klinik Harapan Bunda`
+35. Pilih Target `Client-wide`
+36. Pilih Type `Storage`
+37. Isi Additional Quantity `50`
+38. Klik `[Submit]`
+39. Catat Allocation ID baris yang tidak ada di baseline sebagai `{idStorage}`
+40. Klik ikon `Changelog` pada List
+41. Ketik Search `{idStation}`, tekan Enter
+42. Verifikasi Changelog untuk `{idStation}` memuat New Value `Asset Control Station +10 to Klinik Harapan Bunda — Paid via wallet, Cost $500.00`
+43. Ganti isi kotak search dengan `{idStorage}`, tekan Enter
+44. Verifikasi Changelog untuk `{idStorage}` memuat New Value `Storage +50 GB to Klinik Harapan Bunda — Paid via wallet, Cost $100.00`
+45. Tutup modal Changelog
+46. Buka Activity Log Admin Console
+47. Ketik Search `{idStation}`, tekan Enter
+48. Verifikasi Activity Log untuk `{idStation}` memuat New Value `Asset Control Station +10 to Klinik Harapan Bunda — Paid via wallet, Cost $500.00`
+49. Ganti isi kotak search dengan `{idStorage}`, tekan Enter
+50. Verifikasi Activity Log untuk `{idStorage}` memuat New Value `Storage +50 GB to Klinik Harapan Bunda — Paid via wallet, Cost $100.00`
+51. Buka Allocation > License Allocation (tab Current)
 
 ### Log Create Addon dan Asset Control App tanpa angka (TC-AC-LA-386)
 
-48. Atur jam server dan jam browser ke `22 Dec 2026` (nilai absolut)
-49. Klik `[+ Allocation]`
-50. Pilih Client `PT Sejahtera`
-51. Pilih Target `SUBS-20260101-A1B2C`
-52. Pilih Type `Audit`
-53. Isi Additional Quantity `30`
-54. Klik `[Submit]`
-55. Catat Allocation ID baris baru sebagai `{idAudit}`
-56. Klik `[+ Allocation]`
-57. Pilih Client `Bengkel Cahaya Motor`
-58. Pilih Target term FAMS Professional Bengkel Cahaya Motor (`{targetBengkel}`)
-59. Pilih Type `Asset Control App`
-60. Klik `[Submit]`
-61. Catat Allocation ID baris baru sebagai `{idApp}`
-62. Pulihkan jam server dan jam browser ke waktu nyata
-63. Klik ikon `Changelog` pada List
-64. Ketik Search `{idAudit}`, tekan Enter
-65. Verifikasi Changelog untuk `{idAudit}` memuat New Value `Addon: Audit to PT Sejahtera — Paid via wallet, Cost $300.00`
-66. Ganti isi kotak search dengan `{idApp}`, tekan Enter
-67. Verifikasi Changelog untuk `{idApp}` memuat New Value `Addon: Asset Control App to Bengkel Cahaya Motor — Paid via wallet, Cost $150.00`
-68. Tutup modal Changelog
-69. Buka Activity Log Admin Console
+52. Atur jam server dan jam browser ke `22 Dec 2026` (nilai absolut)
+53. Catat baseline Allocation ID baris di halaman pertama tab Current
+54. Klik `[+ Allocation]`
+55. Pilih Client `PT Sejahtera`
+56. Pilih Target `SUBS-20260101-A1B2C`
+57. Pilih Type `Audit`
+58. Isi Additional Quantity `30`
+59. Klik `[Submit]`
+60. Catat Allocation ID baris yang tidak ada di baseline sebagai `{idAudit}`
+61. Catat baseline Allocation ID baris di halaman pertama tab Current
+62. Klik `[+ Allocation]`
+63. Pilih Client `Bengkel Cahaya Motor`
+64. Pilih Target term FAMS Professional Bengkel Cahaya Motor (`{targetBengkel}`)
+65. Pilih Type `Asset Control App`
+66. Klik `[Submit]`
+67. Catat Allocation ID baris yang tidak ada di baseline sebagai `{idApp}`
+68. Pulihkan jam server dan jam browser ke waktu nyata
+69. Klik ikon `Changelog` pada List
 70. Ketik Search `{idAudit}`, tekan Enter
-71. Verifikasi Activity Log untuk `{idAudit}` memuat New Value `Addon: Audit to PT Sejahtera — Paid via wallet, Cost $300.00`
+71. Verifikasi Changelog untuk `{idAudit}` memuat New Value `Addon: Audit to PT Sejahtera — Paid via wallet, Cost $300.00`
 72. Ganti isi kotak search dengan `{idApp}`, tekan Enter
-73. Verifikasi Activity Log untuk `{idApp}` memuat New Value `Addon: Asset Control App to Bengkel Cahaya Motor — Paid via wallet, Cost $150.00`
+73. Verifikasi Changelog untuk `{idApp}` memuat New Value `Addon: Asset Control App to Bengkel Cahaya Motor — Paid via wallet, Cost $150.00`
+74. Tutup modal Changelog
+75. Buka Activity Log Admin Console
+76. Ketik Search `{idAudit}`, tekan Enter
+77. Verifikasi Activity Log untuk `{idAudit}` memuat New Value `Addon: Audit to PT Sejahtera — Paid via wallet, Cost $300.00`
+78. Ganti isi kotak search dengan `{idApp}`, tekan Enter
+79. Verifikasi Activity Log untuk `{idApp}` memuat New Value `Addon: Asset Control App to Bengkel Cahaya Motor — Paid via wallet, Cost $150.00`
 
 ## Notes
 
 - Alasan di atas sekitar 35 langkah: seluruh blok satu topik (pencatatan Create oleh Distributor Dewi Anggraini), satu kelas harness fungsional, dan berdiri sendiri dengan record hasil Submit sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna. Lima kali pengisian form Allocate adalah langkah yang diulang per Type, dan blok baca-log berpola (buka surface, cari entri, `Verifikasi` kolom log) tidak dihitung pada ambang smell.
-- Langkah penghubung (S-03, R-16): langkah 1, 9, 48, dan 62 (mengatur dan memulihkan jam), langkah 11, 15, 18, 37, 39, 43, 45, 64, 66, 70, dan 72 (Search untuk menemukan entri berdasarkan Allocation ID), langkah 13, 41, dan 68 (menutup modal Changelog), langkah 21 dan 47 (kembali ke List).
-- TC-AC-LA-383 butir d ("terlepas toggle ON atau OFF") hanya diasersi untuk toggle OFF di spec ini (langkah 20); varian toggle ON ada di spec 122 (TC-AC-LA-387).
+- Langkah penghubung (S-03, R-16): langkah 1, 10, 52, dan 68 (mengatur dan memulihkan jam), langkah 12, 16, 19, 41, 43, 47, 49, 70, 72, 76, dan 78 (Search untuk menemukan entri berdasarkan Allocation ID), langkah 14, 45, dan 74 (menutup modal Changelog), langkah 23 dan 51 (kembali ke List), langkah 2, 24, 32, 53, dan 61 (mencatat baseline Allocation ID halaman pertama tab Current sebelum [Submit]; baris baru adalah baris yang tidak ada di baseline).
+- TC-AC-LA-383 butir d ("terlepas toggle ON atau OFF") hanya diasersi untuk toggle OFF di spec ini (langkah 21 dan 22); varian toggle ON ada di spec 122 (TC-AC-LA-387).
 - Temuan untuk QA:
   - TC-AC-LA-383, 385, dan 386 tidak menyebut cara menemukan entri di Changelog, System Log, dan Activity Log; spec memakai Search dengan Allocation ID unik.
   - TC-AC-LA-385 tidak menyebut Target; spec memakai `Client-wide` sesuai TC-AC-LA-519. TC-AC-LA-385 juga tidak menyebut tanggal acuan server; spec tidak mengatur jam pada blok itu karena Cost Station dan Storage bukan prorata.

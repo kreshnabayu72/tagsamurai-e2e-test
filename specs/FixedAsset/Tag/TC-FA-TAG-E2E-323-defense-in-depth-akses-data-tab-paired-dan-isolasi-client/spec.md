@@ -28,7 +28,7 @@ coverage:
 | 1 | Manage asset & TAG (Read + Update) (Update: Plant A) | `manageAssetTagReadUpdateUpdatePlantA_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_MU_PA_PASSWORD` |
 | 2 | Read Only | `readOnly_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_RO_PASSWORD` |
 | 3 | Manage asset & TAG (Read) | `manageAssetTagRead_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_MR_PASSWORD` |
-| 4 | Manage asset & TAG (Read + Update) (Update: Plant A; Read: Plant B) | `manageAssetTagReadUpdate_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_MU_PASSWORD` |
+| 4 | Manage asset & TAG dengan Update pada Group Plant A dan hanya Read pada Group Plant B | `manageAssetTagDenganUpdatePadaGroupPlantADanHanyaReadPadaGroupPlantB_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_UP_PA_ROPB_PASSWORD` |
 | 5 | Role lain (tanpa akses menu TAG) | `roleLainTanpaAksesMenuTag_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TAG_NOMENU_PASSWORD` |
 | 6 | Total Control | `totalControl_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_TC_PASSWORD` |
 
@@ -36,7 +36,7 @@ coverage:
 - Akun aktor pertama: blok 1. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Spec selesai di akun blok 6; hook `after` mengembalikan sesi ke akun default suite (Total Control). Langkah ganti akun ditulis eksplisit (Logout lalu Login).
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_fa-tag` true untuk akun aktor yang dipakai dan hook suite `after` memulihkannya (lihat `suite.md`).
 - Suite serial: `parallel: false` (lihat `suite.md`).
-- Kemampuan teknis (disediakan tim FE/BE): (1) klien HTTP untuk request langsung ke server memakai sesi akun yang sedang login (tanpa lewat browser); (2) pembacaan state data lewat fixture backend (status aset dan Tag) dan jumlah entri Changelog, dicatat sebagai baseline di hook `before`; (3) manipulasi DOM untuk mengaktifkan tombol yang Hidden; (4) seed dan pemulihan idempotent lewat fixture backend, termasuk satu client lain yang memiliki grup 'Excavator 20 Ton' dengan Tag `RF-09999`. Tidak ada endpoint yang dikarang di spec ini.
+- Kemampuan teknis (disediakan tim FE/BE): (1) klien HTTP untuk request langsung ke server memakai sesi akun yang sedang login (tanpa lewat browser); (2) pembacaan state data lewat fixture backend (status aset dan Tag); (3) manipulasi DOM untuk mengaktifkan tombol yang Hidden; (4) seed dan pemulihan idempotent lewat fixture backend, termasuk satu client lain yang memiliki grup 'Excavator 20 Ton' dengan Tag `RF-09999`. Tidak ada endpoint yang dikarang di spec ini.
 - Data Pre-setup (kunci fixture `Fixture.fixedAssetTag.<kunci>` belum ada; ditandai untuk dibuat tim FE):
 
 | Data | Nilai | Kunci |
@@ -47,6 +47,7 @@ coverage:
 | Tag milik client lain | Tag `RF-09999` pada grup 'Excavator 20 Ton' di client lain | `tagClientLain` |
 
 - State yang diubah dan pemulihannya: spec tidak mengubah data (semua request ditolak); hook `after` memastikan AST-0011 dan AST-0051 dalam keadaan awal dan sesi ke akun default suite.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 10 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 
 ## Test Steps
 
@@ -62,10 +63,10 @@ coverage:
 5. Kirim permintaan Replace TAG untuk AST-0011 langsung ke server lewat klien HTTP (tanpa lewat UI)
 6. Verifikasi server menolak dengan 403
 7. Verifikasi (lewat fixture BE) data AST-0011 tidak berubah
-8. Verifikasi (lewat fixture BE) jumlah entri Changelog tidak bertambah dibanding baseline
-9. Buka Fixed Asset > TAG > Paired
-10. Aktifkan tombol `Print QR` yang Hidden lewat manipulasi DOM, lalu klik tombol itu
-11. Verifikasi dialog tidak menjalankan aksi atau server menolak dengan 403 saat `Start Print`
+8. Buka Fixed Asset > TAG > Paired
+9. Aktifkan tombol `Print QR` yang Hidden lewat manipulasi DOM, lalu klik tombol itu
+10. Isi `Quantity` dengan 1 pada Dialog Print QR lalu klik [Start Print]
+11. Verifikasi server menolak request `Start Print` dengan status 403
 12. Verifikasi (lewat fixture BE) tidak ada data cetak tersimpan
 
 ### Blok 3: Manage asset & TAG (Read) (TC-FA-TAG-1263)
@@ -77,7 +78,7 @@ coverage:
 
 ### Blok 4: Update Plant A, Read Plant B (TC-FA-TAG-1264)
 
-17. Logout dari akun blok 3, lalu Login sebagai akun Manage asset & TAG (Read + Update) (Update: Plant A; Read: Plant B)
+17. Logout dari akun blok 3, lalu Login sebagai akun Manage asset & TAG dengan Update pada Group Plant A dan hanya Read pada Group Plant B
 18. Kirim permintaan Replace TAG untuk AST-0011 (Plant B) langsung ke server lewat klien HTTP (tanpa lewat UI)
 19. Verifikasi server menolak dengan 403 karena group tidak dipegang Update
 20. Verifikasi (lewat fixture BE) data AST-0011 tidak berubah
@@ -102,16 +103,15 @@ coverage:
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-142, 1262 s.d. 1267). Tidak ada TC hanya-BE.
-- K-1: TC defense-in-depth dengan Expected respons API tetap di spec FE+BE; blok request langsung (langkah 1 s.d. 3, 5 s.d. 8, 14 s.d. 16, 18 s.d. 20, 22 s.d. 25) hanya mengasersi respons server dan state data lewat fixture BE (bagian 8b butir 1). Perilaku FE atas penolakan yang sama diasersi di spec jalur UI.
+- K-1: TC defense-in-depth dengan Expected respons API tetap di spec FE+BE; blok request langsung (langkah 1 s.d. 3, 5 s.d. 7, 14 s.d. 16, 18 s.d. 20, 22 s.d. 25) hanya mengasersi respons server dan state data lewat fixture BE (bagian 8b butir 1). Perilaku FE atas penolakan yang sama diasersi di spec jalur UI.
+- Pembagian TC lintas spec (S-05): klausa "tidak ada log" TC-FA-TAG-1262 (Expected b) diasersi di spec 388 (absence kelas g) dengan request langsung sebagai pemicu dan baseline sendiri; spec ini mengasersi respons 403 dan data AST-0011 yang tidak berubah (langkah 6 dan 7). TC-FA-TAG-1262 tetap di `sourceTc` kedua spec.
 - Urutan blok mengikuti akun aktor (satu ganti akun per blok) dan bukan urutan TC; tiap blok berdiri sendiri karena semua aksi ditolak dan tidak mengubah data.
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 4, 13, 17, 21, 26 (ganti akun), 9 dan 27 (membuka halaman), 31 (menutup input Search lewat `(←)` agar tabel kembali ke keadaan awal).
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 4, 13, 17, 21, 26 (ganti akun), 8 dan 27 (membuka halaman), 31 (menutup input Search lewat `(←)` agar tabel kembali ke keadaan awal).
 - Pada TC-FA-TAG-1262, TC-FA-TAG-1263, TC-FA-TAG-1264, dan TC-FA-TAG-1265 request dikirim langsung tanpa lewat browser sehingga halaman TAG tidak dibuka di blok 3, 4, dan 5.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 10 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log.
 - Temuan untuk QA:
   - TC-FA-TAG-1263 menulis "satu aset Not Paired Yet" tanpa menyebut aset; spec memakai AST-0051. TC-FA-TAG-1262 tidak menyebut Tag lama dan baru untuk request Replace; asersi hanya pada status 403 dan data aset yang tidak berubah.
-  - TC-FA-TAG-1264 memakai nama role "Manage asset & TAG (Read + Update) (Update: Plant A; Read: Plant B)" yang tidak persis ada di tabel Pre-setup TC; spec memakai akun dengan nama dasar "Manage asset & TAG (Read + Update)" (kode akun fixture `manageAssetTagReadUpdate`). Konfirmasi akun yang benar.
-  - TC-FA-TAG-1267 Expected butir a berbentuk "atau" (dialog tidak menjalankan aksi atau server menolak 403); spec menulis satu `Verifikasi` dengan kalimat TC dan tidak menetapkan salah satu jalur. Cara mengaktifkan tombol lewat manipulasi DOM tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE.
+  - TC-FA-TAG-1267: cara mengaktifkan tombol lewat manipulasi DOM tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE.
   - TC-FA-TAG-1265 tidak menyebut kode status penolakan; spec mengasersi "menolak" tanpa kode.
   - Post Condition semua TC ("Tidak ada perubahan data bisnis") tanpa langkah observasi di TC tidak diasersi, selain yang sudah menjadi Expected.
-  - Asersi "tidak ada log" pada TC-FA-TAG-1262 (langkah 8) ditulis di spec ini dengan baseline karena spec absence kelas g milik modul ini tidak memuat TC itu.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

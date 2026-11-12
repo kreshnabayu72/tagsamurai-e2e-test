@@ -43,7 +43,7 @@ coverage:
 9. Klik `[+ Allocation]`
 10. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`
 11. Verifikasi Current Quota term tidak berubah dari nilai langkah 3
-12. Klik `[✕]` pada header
+12. Klik `[×]` pada header
 13. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 14. Klik `[Leave]`
 
@@ -58,7 +58,7 @@ coverage:
 21. Klik `[+ Allocation]`
 22. Pilih Client `Toko Serba Ada`, Target `SUBS-20260819-00001`, Type `Concurrent User`
 23. Verifikasi Current Quota term Pending tidak berubah dari nilai langkah 17 (kuota ledger belum berubah)
-24. Klik `[✕]` pada header
+24. Klik `[×]` pada header
 25. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 26. Klik `[Leave]`
 
@@ -74,7 +74,7 @@ coverage:
 34. Klik `[+ Allocation]`
 35. Pilih Client `Toko Serba Ada`, Target `SUBS-20260819-00001`, Type `Concurrent User`
 36. Verifikasi Current Quota term Pending bertambah 10 terhadap nilai langkah 30 (kuota dicatat di ledger term Pending)
-37. Klik `[✕]` pada header
+37. Klik `[×]` pada header
 38. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 39. Klik `[Leave]`
 

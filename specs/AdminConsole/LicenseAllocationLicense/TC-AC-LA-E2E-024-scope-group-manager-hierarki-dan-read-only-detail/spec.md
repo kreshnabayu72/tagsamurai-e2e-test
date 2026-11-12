@@ -40,44 +40,47 @@ coverage:
 3. Klik ikon `⋯` pada baris itu
 4. Verifikasi row action `Cancel Allocation` Show
 5. Klik `Cancel Allocation`, lalu klik `[Cancel Request]`
-6. Klik tab `History`, lalu ketik Search Allocation ID `Fixture.license-allocation-license.ownPending94`, tekan Enter
-7. Verifikasi Status baris: `Canceled`
-8. Klik tab `Current`, lalu ketik Search Allocation ID seed `Pending` Toko Serba Ada di luar Region Jawa (`Fixture.license-allocation-license.seed46`), tekan Enter
-9. Verifikasi empty state `No results found` tampil
-10. Verifikasi baris Client di luar Region Jawa tidak tampil
-11. Klik `(←)` pada kotak Search
+6. Tunggu aksi selesai (dialog konfirmasi tertutup dan baris pindah dari tab Current)
+7. Klik tab `History`, lalu ketik Search Allocation ID `Fixture.license-allocation-license.ownPending94`, tekan Enter
+8. Verifikasi Status baris: `Canceled`
+9. Klik tab `Current`, lalu ganti isi kotak search dengan Allocation ID seed `Pending` Toko Serba Ada di luar Region Jawa (`Fixture.license-allocation-license.seed46`), tekan Enter
+10. Verifikasi empty state `No results found` tampil
+11. Verifikasi baris Client di luar Region Jawa tidak tampil
+12. Klik `(←)` pada kotak Search
 
 ### TC-AC-LA-95: Group Manager Distributor membatalkan Pending pada Client yang dipegang Partner
 
-12. Ganti akun: Logout lalu login sebagai Group Manager approve-only (`gmApproveOnlyLic`)
-13. Ketik Search Allocation ID alokasi `Pending` milik spec pada `PT Abadi Jaya` (`Fixture.license-allocation-license.ownPending95`), tekan Enter
-14. Verifikasi baris `Pending` pada `PT Abadi Jaya` tampil (READ jaringan)
-15. Klik ikon `⋯` pada baris itu
-16. Verifikasi row action `Cancel Allocation` Show (Client dalam scope group Group Manager)
-17. Klik `Cancel Allocation`, lalu klik `[Cancel Request]`
-18. Klik tab `History`, lalu ketik Search Allocation ID `Fixture.license-allocation-license.ownPending95`, tekan Enter
-19. Verifikasi Status baris: `Canceled`
-20. Klik `(←)` pada kotak Search
+13. Ganti akun: Logout lalu login sebagai Group Manager approve-only (`gmApproveOnlyLic`), lalu buka Allocation > License Allocation tab Current
+14. Ketik Search Allocation ID alokasi `Pending` milik spec pada `PT Abadi Jaya` (`Fixture.license-allocation-license.ownPending95`), tekan Enter
+15. Verifikasi baris `Pending` pada `PT Abadi Jaya` tampil (READ jaringan)
+16. Klik ikon `⋯` pada baris itu
+17. Verifikasi row action `Cancel Allocation` Show (Client dalam scope group Group Manager)
+18. Klik `Cancel Allocation`, lalu klik `[Cancel Request]`
+19. Tunggu aksi selesai (dialog konfirmasi tertutup dan baris pindah dari tab Current)
+20. Klik tab `History`, lalu ketik Search Allocation ID `Fixture.license-allocation-license.ownPending95`, tekan Enter
+21. Verifikasi Status baris: `Canceled`
+22. Klik `(←)` pada kotak Search
 
 ### TC-AC-LA-507: Tab License pada Detail Distributor dan Detail Partner
 
-21. Ganti akun: Logout lalu login sebagai Read Only Principal (`readOnlyLic`)
-22. Buka dashboard Admin Console, lalu buka Distributor > Detail `PT Maju Bersama` > tab License
-23. Verifikasi data lisensi Distributor tampil
-24. Hover tombol mutasi alokasi lisensi pada Detail Distributor
-25. Verifikasi tombol mutasi alokasi Disabled pada Detail Distributor
-26. Verifikasi tooltip pada Detail Distributor: "You do not have permission to allocate licenses for entities in this group."
-27. Buka Partner > Detail `CV Karya Mandiri` > tab License
-28. Verifikasi data lisensi Partner tampil
-29. Hover tombol mutasi alokasi lisensi pada Detail Partner
-30. Verifikasi tombol mutasi alokasi Disabled pada Detail Partner
-31. Verifikasi tooltip pada Detail Partner: "You do not have permission to allocate licenses for entities in this group."
+23. Ganti akun: Logout lalu login sebagai Read Only Principal (`readOnlyLic`)
+24. Buka dashboard Admin Console, lalu buka Distributor > Detail `PT Maju Bersama` > tab License
+25. Verifikasi data lisensi Distributor tampil
+26. Hover tombol mutasi alokasi lisensi pada Detail Distributor
+27. Verifikasi tombol mutasi alokasi Disabled pada Detail Distributor
+28. Verifikasi tooltip pada Detail Distributor: "You do not have permission to allocate licenses for entities in this group."
+29. Buka Partner > Detail `CV Karya Mandiri` > tab License
+30. Verifikasi data lisensi Partner tampil
+31. Hover tombol mutasi alokasi lisensi pada Detail Partner
+32. Verifikasi tombol mutasi alokasi Disabled pada Detail Partner
+33. Verifikasi tooltip pada Detail Partner: "You do not have permission to allocate licenses for entities in this group."
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah `Klik (←)` pada kotak Search dan pindah tab, langkah `Klik [Cancel Request]`, dan ganti akun eksplisit (S-07).
+- Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah `Klik (←)` pada kotak Search dan pindah tab, langkah `Klik [Cancel Request]`, langkah `Tunggu aksi selesai` (8b.8), dan ganti akun eksplisit (S-07).
+- Langkah penghubung (S-03): pembukaan Allocation > License Allocation tab Current di dalam langkah Ganti akun, karena halaman landing akun tidak diandaikan (S-07).
 - Role Matrix: ditulis per blok role karena ganti akun menuntut Step eksplisit (bagian 3a, 2026-10-30) dan tiap blok akun berdiri sendiri; hasil dan data berbeda per role.
 - Aksi Cancel memakai record milik spec yang menyerupai Pre-setup #62 dan #73; Pre-setup bersama tidak diubah (S-06).
 - Temuan untuk QA:

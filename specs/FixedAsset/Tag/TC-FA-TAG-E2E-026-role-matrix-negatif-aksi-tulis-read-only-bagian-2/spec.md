@@ -31,6 +31,7 @@ Role yang diuji:
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - State global: tidak ada state global yang diubah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -51,7 +52,7 @@ Role yang diuji:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 3, 6, 7.
 - Langkah 1 adalah anchor positif untuk asersi Hidden (bagian 8b butir 2); tidak ada di Expected TC dan dicatat sebagai asersi tambahan (S-03).
 - Pembagian TC lintas spec: TC-FA-TAG-103 sampai 108 ada di spec `TC-FA-TAG-E2E-025-role-matrix-negatif-aksi-tulis-read-only-bagian-1`.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - TC-123 ("Periksa seluruh Table Tools dan row action") tidak menyebut elemen yang diperiksa satu per satu; spec memeriksa Table Tools tab Paired, kebab grup, row action Popup Detail Plant B, dan row action tab To Be Returned.
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.

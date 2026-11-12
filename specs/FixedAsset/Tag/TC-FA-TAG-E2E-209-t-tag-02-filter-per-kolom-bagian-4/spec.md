@@ -27,6 +27,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -61,28 +62,30 @@ coverage:
 
 22. Klik ikon Filter
 23. Buka dropdown `Label`
-24. Verifikasi Tidak ada opsi untuk nilai kosong
-25. Pilih opsi `Audit` pada field `Label`
-26. Klik `[Apply]`
-27. Klik Asset Name `Excavator 20 Ton` pada baris Plant B
-28. Ubah page size menjadi 25
-29. Verifikasi Popup Detail memuat AST-0043 (berlabel Audit)
-30. Verifikasi memilih opsi apa pun menyaring keluar aset tanpa Label: AST-0101 (tanpa Label) tidak tampil
-31. Tutup Popup Detail
-32. Bersihkan Filter: buka Filter Panel, hapus pilihan yang dipasang, klik `[Apply]`
+24. Verifikasi opsi `Audit`, `Rental`, dan `Urgent` tampil pada dropdown `Label`
+25. Verifikasi Tidak ada opsi untuk nilai kosong
+26. Pilih opsi `Audit` pada field `Label`
+27. Klik `[Apply]`
+28. Klik Asset Name `Excavator 20 Ton` pada baris Plant B
+29. Ubah page size menjadi 25
+30. Verifikasi Popup Detail memuat AST-0043 (berlabel Audit)
+31. Verifikasi memilih opsi apa pun menyaring keluar aset tanpa Label: AST-0101 (tanpa Label) tidak tampil
+32. Tutup Popup Detail
+33. Bersihkan Filter: buka Filter Panel, hapus pilihan yang dipasang, klik `[Apply]`
 
 ### TC-FA-TAG-829: Field Filter kolom curated tetap ada walau kolom disembunyikan
 
-33. Klik ikon Filter
-34. Verifikasi Field `Label` dan `Warranty Expiry` tetap ada pada Filter Panel
+34. Klik ikon Filter
+35. Verifikasi Field `Label` dan `Warranty Expiry` tetap ada pada Filter Panel
 
 ## Notes
 
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 8, 9, 17, 18, 20, 21, 31, 32.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 8, 9, 17, 18, 20, 21, 32, 33.
+- Langkah 24 (Verifikasi opsi `Audit`, `Rental`, dan `Urgent` tampil pada dropdown `Label`) adalah anchor positif untuk asersi absence pada langkah 25 (bagian 8b butir 2); asersi ini tidak ada di Expected TC-FA-TAG-828 dan dicatat sebagai asersi tambahan (S-03).
 - Filter dipasang di toolbar halaman dan dibersihkan antar TC lewat langkah penghubung.
 - Langkah penghubung TC-FA-TAG-827 membuka Popup Detail dan mengatur page size 25 agar Expected "seluruh 20 aset Excavator 20 Ton tampil" dapat diamati.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - TC-FA-TAG-827 tidak menyebut tabel mana (tabel grup atau Popup Detail) yang menampilkan "seluruh 20 aset"; spec mengamatinya di Popup Detail.
   - TC-FA-TAG-828 Expected b (memilih opsi menyaring keluar aset tanpa Label) tidak punya langkah di Langkah Uji; spec menambah pemilihan opsi `Audit`, `[Apply]`, dan pembukaan Popup Detail sebagai langkah aksi pendukung, dengan AST-0043 (berlabel Audit) sebagai pembanding positif.
   - TC tidak menyebut kontrol yang membersihkan Filter; langkah penghubung "Bersihkan Filter" dipakai tanpa nama tombol.

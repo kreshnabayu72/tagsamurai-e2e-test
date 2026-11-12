@@ -35,6 +35,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned (kode, Last Asset, Reason, Return Group, Current Holder, Since) dan Return Group; tidak ada endpoint yang dikarang di spec ini.
 - Pemulihan di hook `after`: dataset To Be Returned dikembalikan ke keadaan Pre-setup empat Tag lewat fixture backend bila seeding mengubahnya. Sort dikembalikan ke netral pada akhir tiap kasus.
 - Pemulihan preferensi kolom: hook `after` spec ini menghapus preferensi kolom di browser (kemampuan disediakan tim FE; bukan lewat `[Reset to Default]`), sesuai daftar di `suite.md`. Spec ini sendiri tidak menyimpan konfigurasi kolom.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -89,8 +90,8 @@ coverage:
 - Kasus sort tiga tahap memakai satu `Verifikasi` per butir Expected TC (a, b, c); indikator panah dan urutan baris pada satu butir ditulis dalam satu `Verifikasi` karena TC menyebutnya dalam satu butir.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 24 (mengembalikan sort kolom Return Group ke netral); 29 (mengembalikan sort kolom Current Holder ke netral).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1008 dan 1009 hanya menyebut dua klik dan tidak menyebut klik ketiga; spec menambah satu langkah penghubung yang mengembalikan sort ke netral sebelum kasus berikutnya.
   - TC-FA-TAG-1005 s.d. 1007 butir c menulis "urutan bawaan Since terlama di atas" tanpa menyebut kode Tag-nya; spec menurunkan urutan RF-00071, RF-00110, RF-00088, NF-00092 dari tanggal Since pada Pre-setup TC.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -30,6 +30,7 @@ coverage:
   - `UT-00010`: User TAG terdaftar di produk User Management.
 - Pemulihan di hook `after`: kembalikan registri Global dan data produk lain ke keadaan awal bila seeding mengubahnya. Spec ini tidak mengubah data bisnis.
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -80,9 +81,9 @@ coverage:
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular. TC-FA-TAG-246 sampai TC-FA-TAG-252 ada di spec 054.
 - Langkah penghubung (tanpa awalan `Verifikasi`): 6, 11, 17, dan 23 (menutup overlay lewat ikon close sebelum scan berikutnya, karena overlay tetap terbuka sesudah pesan inline).
 - Absence dialog (langkah 5, 16, 22, dan 27) didahului Verifikasi pesan inline dan overlay yang tampil (langkah 3 sampai 4, 14 sampai 15, 20 sampai 21, dan 26) sebagai anchor positif (bagian 8b butir 2). Dialog D-07 pada langkah 27 dikenali dari teks body yang disebut TC-FA-TAG-246 (`<kode> is not paired to an asset.`).
+- A-15: nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-253 dan TC-FA-TAG-254 Expected tidak menyebut apakah pesan inline hilang sendiri atau saat pindai berikutnya; spec hanya mengasersi pesan dan overlay terbuka.
   - TC-FA-TAG-254 Expected tidak punya butir "tidak ada dialog" (berbeda dengan TC-FA-TAG-253); spec mengikuti TC.
   - Tidak ada Post Condition TC yang punya langkah observasi pada spec ini ("Tidak ada data yang berubah" tidak diasersi).
   - Registri produk Supply Asset dan User Management untuk `SA-00020` dan `UT-00010` tidak punya mekanisme seeding yang disebut TC atau PRD yang dibaca; spec menuliskannya sebagai kemampuan seed lewat fixture BE yang disediakan tim FE/BE.
-  - Nilai literal Pre-setup (kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada kode persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

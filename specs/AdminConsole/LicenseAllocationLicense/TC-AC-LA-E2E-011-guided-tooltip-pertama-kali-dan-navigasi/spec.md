@@ -79,18 +79,20 @@ coverage:
 29. Hapus flag `guided_tooltip_seen_ac-license-allocation-license` akun `totalControlLic` dan muat ulang halaman hingga walkthrough tampil
 30. Verifikasi walkthrough tampil dari Step 1
 31. Klik `[Skip]`
-32. Verifikasi walkthrough tertutup dan flag seen tersimpan untuk akun `totalControlLic`
-33. Muat ulang halaman
-34. Verifikasi Tabs List tampil
-35. Verifikasi walkthrough tidak muncul lagi setelah muat ulang
-36. Ganti akun: Logout lalu login sebagai akun UI kedua (disediakan tim FE; flag seen belum ada)
-37. Klik menu `License Allocation` di sidebar hingga walkthrough tampil
-38. Verifikasi walkthrough tampil dari Step 1
-39. Klik overlay gelap
-40. Verifikasi walkthrough tertutup dan flag seen tersimpan untuk akun UI kedua
-41. Muat ulang halaman
-42. Verifikasi Tabs List tampil
-43. Verifikasi walkthrough tidak muncul lagi setelah muat ulang
+32. Verifikasi walkthrough tertutup
+33. Verifikasi flag seen tersimpan untuk akun `totalControlLic`
+34. Muat ulang halaman
+35. Verifikasi Tabs List tampil
+36. Verifikasi walkthrough tidak muncul lagi setelah muat ulang
+37. Ganti akun: Logout lalu login sebagai akun UI kedua (disediakan tim FE; flag seen belum ada)
+38. Klik menu `License Allocation` di sidebar hingga walkthrough tampil
+39. Verifikasi walkthrough tampil dari Step 1
+40. Klik overlay gelap
+41. Verifikasi walkthrough tertutup
+42. Verifikasi flag seen tersimpan untuk akun UI kedua
+43. Muat ulang halaman
+44. Verifikasi Tabs List tampil
+45. Verifikasi walkthrough tidak muncul lagi setelah muat ulang
 
 ## Notes
 

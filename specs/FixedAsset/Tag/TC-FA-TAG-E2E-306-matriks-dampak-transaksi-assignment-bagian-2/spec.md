@@ -58,45 +58,48 @@ coverage:
 ### TC-FA-TAG-1163: Offboarding return (karyawan keluar) pada kondisi T1
 
 10. Buka layar transaksi Assignment untuk aset `Aset Matriks Offboarding T1 {runId}-306`
-11. Jalankan langkah "Offboarding return (karyawan keluar)" sampai selesai
-12. Verifikasi langkah "Offboarding return (karyawan keluar)" pada Assignment berjalan normal sampai selesai
-13. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+11. Jalankan langkah "Offboarding return (karyawan keluar)"
+12. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+13. Lanjutkan langkah "Offboarding return (karyawan keluar)" sampai selesai
+14. Verifikasi langkah "Offboarding return (karyawan keluar)" pada Assignment berjalan normal sampai selesai
 
 ### TC-FA-TAG-1164: Offboarding return (karyawan keluar) pada kondisi T2
 
-14. Buka layar transaksi Assignment untuk aset `Aset Matriks Offboarding T2 {runId}-306`
-15. Jalankan langkah "Offboarding return (karyawan keluar)" sampai selesai
-16. Verifikasi langkah "Offboarding return (karyawan keluar)" pada Assignment berjalan normal sampai selesai
+15. Buka layar transaksi Assignment untuk aset `Aset Matriks Offboarding T2 {runId}-306`
+16. Jalankan langkah "Offboarding return (karyawan keluar)"
 17. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+18. Lanjutkan langkah "Offboarding return (karyawan keluar)" sampai selesai
+19. Verifikasi langkah "Offboarding return (karyawan keluar)" pada Assignment berjalan normal sampai selesai
 
 ### TC-FA-TAG-1165: Offboarding return (karyawan keluar) pada kondisi T3
 
-18. Buka layar transaksi Assignment untuk aset `Aset Matriks Offboarding T3 {runId}-306`
-19. Jalankan langkah "Offboarding return (karyawan keluar)"
-20. Verifikasi tombol `[I can't scan the TAG]` tersedia
-21. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-22. Verifikasi bidang "Foto aset" bertanda wajib (*)
-23. Unggah Foto aset dan selesaikan transaksi
-24. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-25. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
-26. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
+20. Buka layar transaksi Assignment untuk aset `Aset Matriks Offboarding T3 {runId}-306`
+21. Jalankan langkah "Offboarding return (karyawan keluar)"
+22. Verifikasi tombol `[I can't scan the TAG]` tersedia
+23. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+24. Verifikasi bidang "Foto aset" bertanda wajib (*)
+25. Unggah Foto aset dan selesaikan transaksi
+26. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+27. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
+28. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
 
 ### TC-FA-TAG-1166: Offboarding return (karyawan keluar) pada kondisi T4
 
-27. Buka layar transaksi Assignment untuk aset `Aset Matriks Offboarding T4 {runId}-306`
-28. Jalankan langkah "Offboarding return (karyawan keluar)"
-29. Verifikasi tombol `[I can't scan the TAG]` tersedia
-30. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-31. Verifikasi bidang "Foto aset" bertanda wajib (*)
-32. Verifikasi tidak ada Tag untuk dipilih
-33. Unggah Foto aset dan selesaikan transaksi
-34. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-35. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
+29. Buka layar transaksi Assignment untuk aset `Aset Matriks Offboarding T4 {runId}-306`
+30. Jalankan langkah "Offboarding return (karyawan keluar)"
+31. Verifikasi tombol `[I can't scan the TAG]` tersedia
+32. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+33. Verifikasi bidang "Foto aset" bertanda wajib (*)
+34. Verifikasi tidak ada Tag untuk dipilih
+35. Unggah Foto aset dan selesaikan transaksi
+36. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+37. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
 
 ## Notes
 
 - Mode: FE+BE.
 - TC-FA-TAG-1155 sampai 1161 ada di spec 305 dan 321. TC-FA-TAG-1482 (Assign pada aset Non-TAG) ada di spec 321.
+- Alasan spec ini tetap di atas 35 langkah (37 langkah): kelima blok adalah sel matriks dampak transaksi (kondisi Tag T4 pada Return dan T1 sampai T4 pada Offboarding return Assignment) di satu kelas harness (FE+BE dengan simulator reader yang diatur lewat fixture) dan berdiri sendiri: tiap blok memakai aset uji sendiri (`asetRetT4`, `asetOffT1`, `asetOffT2`, `asetOffT3`, `asetOffT4` pada tabel di `## Prerequisites`), tanpa langkah penghubung dan tanpa state yang dipakai bersama, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; blok TC-FA-TAG-1163 dan 1164 (langkah 10 sampai 14 dan 15 sampai 19) berpola identik dan hanya berbeda aset, dan memecah hanya menggandakan Prerequisites serta hook seed dan pemulihan.
 - Temuan untuk QA:
   - Langkah "Jalankan langkah ..." di TC tidak menjabarkan layar, field, dan urutan klik transaksi; spec menulisnya sebagai satu langkah dan penjabarannya diserahkan ke tahap script.
   - TC tidak menyebut Group aset kondisi T1 dan T2; spec memakai Group Plant B seperti aset kondisi T3 dan T4.

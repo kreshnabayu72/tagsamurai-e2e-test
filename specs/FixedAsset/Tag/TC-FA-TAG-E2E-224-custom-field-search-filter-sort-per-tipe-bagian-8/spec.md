@@ -8,8 +8,6 @@ sourceTc:
   - TC-FA-TAG-902
   - TC-FA-TAG-903
   - TC-FA-TAG-904
-  - TC-FA-TAG-905
-  - TC-FA-TAG-906
 coverage:
   web: automated
 ---
@@ -26,12 +24,11 @@ coverage:
 - Data TC-FA-TAG-902: CF Percentage: AST-0043 = 45; AST-0011 = 12; kata kunci `45`.
 - Data TC-FA-TAG-903: CF Percentage: AST-0043 = 45; AST-0011 = 12.
 - Data TC-FA-TAG-904: CF Percentage: AST-0043 = 45; AST-0011 = 12; aset lain bernilai `—`.
-- Data TC-FA-TAG-905: CF Date: AST-0043 = 15 Okt 2026; AST-0011 = 01 Okt 2026.
-- Data TC-FA-TAG-906: CF Date: AST-0043 = 15 Okt 2026; AST-0011 = 01 Okt 2026.
 - Nilai Custom Field pada aset acuan AST-0043 dan AST-0011 di-seed idempotent lewat fixture BE di hook `before` dan dihapus di hook `after`; Custom Field yang diuji berstatus Active, 15 aset lain tanpa nilai.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`; penghapusan preferensi kolom tabel T-TAG-02 di browser (cache browser tempat konfigurasi Setup Column disimpan) dipakai di hook `after` dan sebagai langkah penghubung bila tertulis.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom di browser (bukan lewat `[Reset to Default]`) dan kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global selain preferensi kolom di browser.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 3).
 
 ## Test Steps
 
@@ -69,30 +66,15 @@ coverage:
 24. Verifikasi setelah klik 3: sort netral dan urutan kembali ke bawaan Last Updated terbaru
 25. Tutup Popup Detail
 
-### TC-FA-TAG-905: Guard: Custom Field bertipe Date tidak dapat dicari
-
-26. Ketik Search nilai kolom `CF Date` AST-0043 persis seperti tampil, tekan Enter
-27. Verifikasi `No results found`: Custom Field bertipe Date tidak punya Search
-28. Klik `(←)` pada kotak Search
-
-### TC-FA-TAG-906: Filter Custom Field bertipe Date (date range picker)
-
-29. Klik ikon Filter pada Table Tools halaman
-30. Pilih rentang 12 Okt 2026 sampai 25 Okt 2026 pada field `CF Date`
-31. Klik `[Apply]`
-32. Klik Asset Name `Excavator 20 Ton` pada baris Plant B
-33. Ubah page size menjadi 25
-34. Verifikasi Popup Detail hanya memuat AST-0043
-35. Verifikasi Aset tanpa nilai tersaring keluar
-
 ## Notes
 
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 6, 7, 15, 16, 25, 28.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 6, 7, 15, 16, 25.
 - Popup Detail Excavator 20 Ton / Plant B dibuka pada TC pertama dan tetap terbuka bila TC berikutnya memakai popup yang sama (langkah "Klik Asset Name" TC berikutnya tidak diulang; halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - Search ditutup lewat `(←)` dan Filter dibersihkan sesudah tiap TC (langkah penghubung); pada TC sort, kolom Custom Field yang sudah ditampilkan TC pencarian sebelumnya dalam spec yang sama tidak ditampilkan ulang karena langkah itu akan menyembunyikannya.
+- Pembagian TC lintas spec: TC-FA-TAG-905 sampai 907 ada di spec `TC-FA-TAG-E2E-386-custom-field-bertipe-date-guard-search-filter-dan-sort-pada-tabel-t-tag-02`; TC-FA-TAG-908 sampai 911 ada di spec `TC-FA-TAG-E2E-225-custom-field-search-filter-sort-per-tipe-bagian-9`.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 3).
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
-  - Spec ini menyimpan konfigurasi kolom lewat Setup Column dan hook `after` spec ini menghapus preferensi kolom di browser; nomor spec ini belum tercantum pada daftar pemulihan kolom di `suite.md`.
+  - Spec ini menyimpan konfigurasi kolom lewat Setup Column dan hook `after` spec ini menghapus preferensi kolom di browser; nomor spec ini tercantum pada daftar pemulihan kolom di `suite.md`.
   - TC Search Custom Field menulis Search sebelum kolomnya ditampilkan lewat Setup Column, sedangkan TC Search kolom lain mensyaratkan kolom yang dicari tampil (Search terikat visibilitas kolom); spec mengikuti urutan TC sehingga hasilnya bergantung pada apakah Search memindai Custom Field yang kolomnya belum tampil.
   - Seeding nilai Custom Field pada aset acuan dapat mengubah Last Updated aset itu dan menggeser urutan bawaan Last Updated terbaru; pemulihan lewat fixture BE di hook `after` perlu mengembalikan Last Updated.
   - Post Condition TC ("Tidak ada perubahan data bisnis (aksi hanya membaca)" dan "Konfigurasi kolom tersimpan di cache browser ...") tidak punya langkah observasi di TC; tidak diasersi.

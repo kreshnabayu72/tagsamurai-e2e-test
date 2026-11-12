@@ -56,21 +56,22 @@ coverage:
 ### TC-AC-LA-33: Row action per status
 
 12. Klik `(←)` pada kotak Search, lalu klik tab `Current`
-13. Ganti isi kotak search dengan Allocation ID seed baris tabel Prerequisites, tekan Enter (langkah 13 sampai 15 diulang untuk setiap baris tabel dengan Tab Current)
+13. Ketik Search Allocation ID seed baris tabel Prerequisites, tekan Enter (langkah 13 sampai 16 diulang untuk setiap baris tabel dengan Tab Current)
 14. Klik ikon `⋯` pada baris hasil Search
 15. Verifikasi menu `⋯` memuat aksi pada kolom `Aksi menu yang diharapkan` baris tabel itu
-16. Klik `(←)` pada kotak Search, lalu klik tab `History`
-17. Ganti isi kotak search dengan Allocation ID seed baris tabel Prerequisites, tekan Enter (langkah 17 sampai 19 diulang untuk setiap baris tabel dengan Tab History)
-18. Klik ikon `⋯` pada baris hasil Search
-19. Verifikasi menu `⋯` memuat aksi pada kolom `Aksi menu yang diharapkan` baris tabel itu
-20. Klik `(←)` pada kotak Search
+16. Klik `(←)` pada kotak Search
+17. Klik tab `History`
+18. Ketik Search Allocation ID seed baris tabel Prerequisites, tekan Enter (langkah 18 sampai 21 diulang untuk setiap baris tabel dengan Tab History)
+19. Klik ikon `⋯` pada baris hasil Search
+20. Verifikasi menu `⋯` memuat aksi pada kolom `Aksi menu yang diharapkan` baris tabel itu
+21. Klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah `Amati opsi menu`, dan langkah `(←)` pada kotak Search serta pindah tab.
-- Langkah 13 sampai 15 diulang untuk tiga baris tabel Tab Current dan langkah 17 sampai 19 untuk tiga baris tabel Tab History; ekspansi 18 langkah, tiap iterasi satu `Verifikasi` per status sesuai Expected a sampai f TC-AC-LA-33.
+- Langkah 13 sampai 16 diulang untuk tiga baris tabel Tab Current dan langkah 18 sampai 21 untuk tiga baris tabel Tab History; ekspansi 24 langkah, tiap iterasi satu `Verifikasi` per status sesuai Expected a sampai f TC-AC-LA-33. Langkah 16 dan 21 (`Klik (←)` pada kotak Search di akhir tiap iterasi) mengosongkan Search supaya langkah Search iterasi berikutnya ditulis `Ketik Search` (bagian 8b butir 9).
 - Menu `⋯` dibuka lalu dibiarkan; membuka baris lain menggantikan menu sebelumnya. Seluruh seed hanya dibaca.
 - Temuan untuk QA:
   - TC-AC-LA-33 Precondition menyebut seluruh alokasi milik `Dewi A` kecuali alokasi `Expired` (Pre-setup #51) milik `Rian T`, sedangkan Pre-setup #51 mendeskripsikannya milik requester `Rian T` (Partner); konsisten dengan TC, dicatat karena akun `Dewi A` hanya memiliki aksi `Allocation Log` pada baris itu.

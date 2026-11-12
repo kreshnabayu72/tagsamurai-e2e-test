@@ -31,6 +31,7 @@ coverage:
 
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -68,7 +69,7 @@ coverage:
 - Langkah 14 sampai 16 adalah ganti akun eksplisit (S-07); akun pertama login di hook `before`.
 - Langkah 12 adalah klausa Expected b TC-FA-TAG-40 yang merupakan kesimpulan dari langkah 10 dan 11; ditulis sebagai `Verifikasi` sendiri (S-01).
 - TC-FA-TAG-31 sampai 38 ada di spec 007.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-41 tidak menyebut apakah scope group Read Only sama dengan Total Control; Expected "kartu filter yang sama" dan dua grup hasil filter dipakai apa adanya.
   - TC-FA-TAG-41 Role `Read Only` berbeda dari role kapabilitas "Manage asset & TAG"; spec hanya mengasersi kartu dapat diklik.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

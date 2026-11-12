@@ -41,6 +41,7 @@ coverage:
 | Tag To Be Returned | [RFID] RF-00071 (Last Asset 'Excavator 20 Ton - 2', Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); [RFID] RF-00088 ('Excavator 20 Ton - 5', Disposal Center, Dedi K.); [NFC] NF-00092 ('Laptop Pro 14 - 8', HQ Warehouse, Rina T.) | `tbr` |
 
 - State yang diubah dan pemulihannya: langkah 20 s.d. 23 mengubah Tag `RF-00071` menjadi Damaged/Missing lewat Receive Manually; hook `after` memulihkan `RF-00071` ke To Be Returned lewat fixture backend, menghapus data markup, dan mengembalikan sesi ke akun default suite.
+- Nilai literal Pre-setup (Asset Name, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 23); entri TAG Log Global `Marked Damaged/Missing` (langkah 23).
 
 ## Test Steps
 
@@ -85,9 +86,9 @@ coverage:
 - Urutan TC di dalam spec: TC-1259, TC-1260, TC-1261, TC-1308 (akun Total Control, hanya membaca), lalu TC-1307 di akun lain karena Receive Manually mengubah state dan butuh ganti akun.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 4, 8, 12, 17 (menutup popup atau modal dan menutup input Search lewat `(←)`), 18 (ganti akun), 24 (menunggu aksi selesai karena langkah berikutnya berpindah surface), 26 (Search untuk menemukan Tag RF-00071 di Global Settings > TAG).
 - Asersi "tidak ada eksekusi script" (langkah 3, 7, 16, 29) selalu didahului `Verifikasi` yang menampilkan teks literalnya atau `No results found` pada surface yang sama sebagai anchor positif.
+- A-15: nilai literal Pre-setup (Asset Name, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 23); entri TAG Log Global `Marked Damaged/Missing` (langkah 23).
 - Temuan untuk QA:
   - TC-FA-TAG-1307 meminta akun Update di group Disposal Center membuka Global Settings > TAG; TC tidak menyatakan akun itu punya akses menu tersebut. Spec mengikuti TC.
   - TC-FA-TAG-1259 tidak menyebut aset yang memegang Brand markup selain berada di grup Plant B; spec memakai aset seed milik spec di grup itu.
   - Post Condition TC-FA-TAG-1307 tidak ada; perubahan Tag `RF-00071` menjadi Damaged/Missing dipulihkan hook `after`.
-  - Nama dan kode literal Pre-setup (Asset Name, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

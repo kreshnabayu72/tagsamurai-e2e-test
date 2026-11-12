@@ -32,6 +32,7 @@ coverage:
 - Group Plant B berada di bawah hierarki `Head Office > Plant B`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -62,7 +63,7 @@ coverage:
 - Langkah 6 mencari AST-0044 pada baris yang tampil tanpa Search: AST-0044 adalah aset dengan Last Updated terbaru sehingga berada di baris teratas tabel yang diurutkan Last Updated terbaru di atas.
 - Langkah 9 adalah asersi absence atas teks `+N more`; anchor positif adalah Verifikasi dua baris sel TAG Code pada AST-0044 (langkah 8) (bagian 8b butir 2).
 - Langkah 10 mengarahkan pointer ke badge Group pada baris pertama, yaitu baris AST-0044 yang berada di Group Plant B.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-61 Expected menyebut "hierarki penuh `Head Office > Plant B`" tanpa menyebut apakah baris pertama memang ber-Group Plant B (semua aset grup ini ber-Group Plant B); spec mengikuti TC.
   - TC-FA-TAG-59 tidak menyebut cara menghitung jumlah baris selain mengubah page size; spec menyerahkan cara penghitungan ke tahap script.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

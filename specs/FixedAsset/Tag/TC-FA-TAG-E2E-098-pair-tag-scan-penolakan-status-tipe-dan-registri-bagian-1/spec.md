@@ -35,6 +35,7 @@ coverage:
 | Tag Waiting for Approval | Tag RFID `RF-00604` berstatus Waiting for Approval | `tagWaiting604` |
 
 - State yang diubah dan pemulihannya: spec tidak mengubah data (semua pindaian ditolak dan dialog dibatalkan tanpa isian).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -81,9 +82,9 @@ coverage:
 - Pembagian TC lintas spec: topik penolakan scan Pair TAG dilanjutkan di spec 099 (TC-FA-TAG-424, 426 s.d. 429), spec 100 (TC-FA-TAG-430 s.d. 434), dan spec 101 (TC-FA-TAG-1453, 1454, 1462). TC-FA-TAG-425 ada di spec kelas defense-in-depth tersendiri.
 - Kelima TC memakai dialog Pair TAG yang sama (precondition dan langkah pembuka identik) dan tidak menyimpan perubahan; dialog dibuka satu kali dan error tiap pindaian berbeda teks sehingga tidak ada langkah pembersih di antaranya.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 19 (menutup dialog tanpa isian dengan [Cancel], yang menutup langsung tanpa konfirmasi D-11).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-419 sampai 423 tidak menyebut apakah pesan error pindaian sebelumnya hilang ketika pindaian berikutnya dilakukan; spec mengasersi pesan yang sesuai pada tiap pindaian.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-419 sampai 423 ("Aset tetap Not Paired Yet") tanpa langkah observasi di TC tidak diasersi.

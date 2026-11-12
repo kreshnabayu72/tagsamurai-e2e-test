@@ -43,66 +43,79 @@ coverage:
 6. Isi Additional Quantity `1`
 7. Klik `[Submit]`
 8. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
-9. Verifikasi alokasi tidak dibuat (jumlah baris tab Current sama dengan baseline)
-10. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+9. Tunggu toast hilang otomatis
+10. Verifikasi alokasi tidak dibuat (jumlah baris tab Current sama dengan baseline)
+11. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
 
 ### TC-AC-LA-468: Client Expired dipilih sebagai penerima
 
-11. Klik `[+ Allocation]`
-12. Pilih Client `Gudang Lawas` (badge Expired)
-13. Pilih Target FAMS Professional Gudang Lawas, Type `Concurrent User`, dan isi Additional Quantity `1`
-14. Klik `[Submit]`
-15. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
-16. Verifikasi alokasi tidak dibuat (jumlah baris tab Current sama dengan baseline)
-17. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+12. Klik `[+ Allocation]`
+13. Pilih Client `Gudang Lawas` (badge Expired)
+14. Pilih Target FAMS Professional Gudang Lawas, Type `Concurrent User`, dan isi Additional Quantity `1`
+15. Klik `[Submit]`
+16. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
+17. Tunggu toast hilang otomatis
+18. Verifikasi alokasi tidak dibuat (jumlah baris tab Current sama dengan baseline)
+19. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
 
 ### TC-AC-LA-470: Edit pada alokasi milik Client Suspended
 
-18. Klik row action `Edit` pada alokasi Waiting for Approval Klinik Beku
-19. Ubah Additional Quantity dari `5` menjadi `6`, lalu klik `[Save]`
-20. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
-21. Verifikasi data alokasi tidak berubah (Quantity tetap `5`)
-22. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+20. Klik row action `Edit` pada alokasi Waiting for Approval Klinik Beku
+21. Ubah Additional Quantity dari `5` menjadi `6`, lalu klik `[Save]`
+22. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
+23. Tunggu toast hilang otomatis
+24. Verifikasi data alokasi tidak berubah (Quantity tetap `5`)
+25. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
 
 ### TC-AC-LA-501: Cancel pada alokasi milik Client Suspended
 
-23. Klik row action `Cancel Allocation` pada alokasi Waiting for Approval Klinik Beku, lalu klik `[Cancel Request]`
-24. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
-25. Verifikasi status alokasi tetap `Waiting for Approval`
+26. Klik row action `Cancel Allocation` pada alokasi Waiting for Approval Klinik Beku, lalu klik `[Cancel Request]`
+27. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
+28. Tunggu toast hilang otomatis
+29. Verifikasi status alokasi tetap `Waiting for Approval`
 
 ### TC-AC-LA-502: Resubmit pada alokasi milik Client Suspended
 
-26. Klik tab `History`, klik row action `Resubmit` pada baris Canceled Klinik Beku, lalu klik `[Submit]`
-27. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
-28. Verifikasi status alokasi tidak berubah (tetap `Canceled`)
-29. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+30. Klik tab `History`, klik row action `Resubmit` pada baris Canceled Klinik Beku, lalu klik `[Submit]`
+31. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
+32. Tunggu toast hilang otomatis
+33. Verifikasi status alokasi tidak berubah (tetap `Canceled`)
+34. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
 
 ### TC-AC-LA-238: Resubmit pada alokasi milik Client Expired
 
-30. Klik row action `Resubmit` pada baris Canceled Gudang Lawas, lalu klik `[Submit]`
-31. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
-32. Verifikasi tidak ada record baru
-33. Verifikasi alokasi asal tetap `Canceled`
-34. Klik `✕`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+35. Klik tab `Current`, lalu catat jumlah baris tab Current sebagai baseline
+36. Klik tab `History`, ketik Search Allocation ID seed Canceled Gudang Lawas, tekan Enter, klik row action `Resubmit` pada baris Canceled Gudang Lawas, lalu klik `[Submit]`
+37. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
+38. Tunggu toast hilang otomatis
+39. Verifikasi alokasi asal tetap `Canceled`
+40. Klik `[×]`, verifikasi dialog `Unsaved Changes`, lalu klik `[Leave]`
+41. Klik `(←)` pada kotak Search
+42. Klik tab `Current`
+43. Verifikasi tidak ada record baru (jumlah baris tab Current sama dengan baseline langkah 35)
 
 ### TC-AC-LA-503: Approve pada alokasi milik Client Suspended
 
-35. Ganti akun: logout `Dewi A`, login sebagai `Fajar Nugroho` dengan `Spectra.env.AC_LA_TC_DIST_PASSWORD`, lalu buka Approvals > License Allocation
-36. Klik `[Review]` pada alokasi Klinik Beku, pilih Approve, klik Submit
-37. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
-38. Verifikasi status alokasi tetap `Waiting for Approval`
+44. Ganti akun: logout `Dewi A`, login sebagai `Fajar Nugroho` dengan `Spectra.env.AC_LA_TC_DIST_PASSWORD`, lalu buka Approvals > License Allocation
+45. Klik `[Review]` pada alokasi Klinik Beku, pilih Approve, klik Submit
+46. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
+47. Tunggu toast hilang otomatis
+48. Verifikasi status alokasi tetap `Waiting for Approval`
+49. Tutup dialog Review
 
 ### TC-AC-LA-504: Reject pada alokasi milik Client Suspended
 
-39. Klik `[Review]` pada alokasi Klinik Beku, pilih Reject, isi Rejection Reason `Kuota tidak sesuai`, klik Submit
-40. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
-41. Verifikasi status alokasi tetap `Waiting for Approval`
+50. Klik `[Review]` pada alokasi Klinik Beku, pilih Reject, isi Rejection Reason `Kuota tidak sesuai`, klik Submit
+51. Verifikasi toast baku "Changes can't be saved while this workspace is suspended or expired."
+52. Verifikasi status alokasi tetap `Waiting for Approval`
+53. Tutup dialog Review
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Urutan TC diubah dari urutan nomor agar semua aksi akun Dewi (Create, Edit, Cancel, Resubmit) berurutan sebelum satu kali ganti akun ke Fajar.
-- Langkah penghubung (S-03): langkah 1 (baseline jumlah baris, S-12), 35 (ganti akun dan membuka Approvals). Dialog `Unsaved Changes` (langkah 10, 17, 22, 29, 34) adalah bagian S-08.
-- Asersi absence (langkah 9, 16, 32) beranchor toast hasil server yang sudah diasersi (8b butir 2) dan berbaseline.
+- Langkah penghubung (S-03): langkah 1 dan 35 (baseline jumlah baris, S-12), 41 dan 42 (mengosongkan Search dengan `(←)` dan pindah ke tab Current), 44 (ganti akun dan membuka Approvals). Langkah 9, 17, 23, 28, 32, 38, dan 47 (Tunggu toast hilang otomatis sebelum toast baku berikutnya diasersi, R-12) adalah langkah penghubung. Dialog `Unsaved Changes` (langkah 11, 19, 25, 34, 40) adalah bagian S-08.
+- Langkah 49 dan 53 (menutup dialog Review sesudah Approve atau Reject ditolak, sebelum Review berikutnya dan di akhir spec, S-09) adalah langkah penghubung tanpa Verifikasi.
+- Asersi absence (langkah 10, 18, 43) beranchor toast hasil server yang sudah diasersi (8b butir 2) dan berbaseline. Langkah 43 (TC-AC-LA-238, tidak ada record baru) dibandingkan dengan baseline langkah 35 yang dicatat sebelum `[Submit]`; langkah 39 (record asal tetap `Canceled` di tab History, anchor) ditaruh sebelum langkah 43.
 - Spec melewati sekitar 35 langkah. Alasan pertahanan: seluruh blok satu kelas harness (state tenant: Client Suspended atau Expired sebagai penerima), satu topik, dan seed yang sama; tiap blok berdiri sendiri dan state status Client mahal dibangun ulang per blok.
 - Temuan untuk QA:
   - TC-AC-LA-467 Langkah 1 dan TC-AC-LA-468 Langkah 1 ("isi field") tidak menyebut Target dan Type; spec memakai Type `Concurrent User` dan Target term FAMS Professional Client masing-masing.

@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: Staff Auditor (tidak memegang Manage asset & TAG) (`staffAuditorTidakMemegangManageAssetTag_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TAG_SA_NOTAG_PASSWORD`). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Nama env didaftarkan di `executionConfig.environmentVariables` dan `.env.example`.
+- Akun aktor: Staff Auditor (tidak memegang Manage asset & TAG) (`staffAuditorTidakMemegangManageAssetTag_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_TAG_SA_NOTAG_PASSWORD`). Login di hook `before` spec ini; halaman dibuka di langkah pertama (hook suite `beforeEach` dikecualikan, lihat `suite.md`). Nama env didaftarkan di `executionConfig.environmentVariables` dan `.env.example`.
 - Guided Tooltip: hook suite `before` menyetel flag `guided_tooltip_seen_fa-tag` true untuk akun aktor yang dipakai dan hook suite `after` memulihkannya (lihat `suite.md`).
 - Suite serial: `parallel: false` (lihat `suite.md`), karena spec mengubah status entitas Client.
 - Kemampuan teknis (disediakan tim FE/BE): (1) perubahan status entitas Client menjadi Suspended lewat fixture backend, dan menjadi Expired atau kembali Suspended oleh pelaku kedua (Admin) lewat sesi API (login API password, tidak dihitung sebagai sesi web; lihat `suite.md`); hook `before` menyetel Suspended dan hook `after` memulihkan status Active; akun Admin disediakan tim FE; (2) seed dan pemulihan idempotent lewat fixture backend untuk aset, Tag, task Existence Audit, dan laporan Tag terbuka; (3) penanganan dialog `beforeunload` (konfirmasi otomatis saat halaman dimuat ulang dengan dialog dirty terbuka), dipakai untuk menutup dialog lewat muat ulang halaman. Tidak ada endpoint yang dikarang di spec ini.
@@ -31,6 +31,7 @@ coverage:
 | Reason Cancel Report | Tag ternyata terbaca | `reasonCancel` |
 
 - State yang diubah dan pemulihannya: entitas Client berstatus Suspended dari awal spec (diatur hook `before`), menjadi Expired di langkah 10, dan kembali Suspended di langkah 20; langkah 19 membuat laporan terbuka Damaged untuk `RF-00130` (precondition TC-FA-TAG-1302). Semua commit di spec ini ditolak. Hook `after` memulihkan status entitas Client ke Active dan menghapus laporan serta task Existence Audit walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 19). Aksi tulis pada langkah 5, 14, 24 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 10, 20) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -78,7 +79,7 @@ coverage:
 - Pembagian TC lintas spec: Submit Replace, Pair, dan Batch (TC-FA-TAG-1285 sampai 1288) ada di spec 348 dan 385; Start Print, Receive TAG, dan Receive Manually (TC-FA-TAG-1289, 1296 sampai 1298) ada di spec 349; Decline Report dan halaman baca-saja (TC-FA-TAG-1301, 1317) ada di spec 385.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9, 18, 21, dan 28 (muat ulang halaman untuk menutup dialog yang berisi isian atau menyegarkan daftar item; dialog `beforeunload` ditangani sesuai Prerequisites), 10 dan 20 (mengubah status entitas, pemicu pelaku kedua lewat sesi API), 19 (membuat laporan terbuka lewat fixture BE hingga tersimpan).
 - Pesan pada langkah 6, 15, dan 25 diasersi sebagai teks tampil tanpa menentukan jenis elemen (toast atau pesan inline) karena TC hanya menyebut "Pesan"; langkah 8, 17, dan 27 (tidak ada toast sukses) didahului `Verifikasi` pesan penolakan sebagai anchor positif.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Report TAG` per Tag (langkah 19). Aksi tulis pada langkah 5, 14, 24 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 10, 20) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-1299 dan 1300 ("Tidak ada laporan baru untuk RF-00130; tidak ada entri Event Log, TAG Log, maupun Changelog baru") dan TC-FA-TAG-1302 ("Laporan RF-00130 tetap terbuka; ...") tanpa langkah observasi di TC tidak diasersi.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

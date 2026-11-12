@@ -42,7 +42,7 @@ coverage:
 10. Klik `[+ Allocation]`
 11. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`
 12. Verifikasi Current Quota term bertambah sebesar Quantity (nilai langkah 5 ditambah 10)
-13. Klik `[✕]` pada header
+13. Klik `[×]` pada header
 14. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 15. Klik `[Leave]`
 16. Verifikasi saldo kantong berkurang permanen sebesar Cost langkah 5
@@ -61,7 +61,7 @@ coverage:
 26. Klik `[+ Allocation]`
 27. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Asset License`
 28. Verifikasi Current Quota term bertambah sebesar Quantity (nilai langkah 21 ditambah 20)
-29. Klik `[✕]` pada header
+29. Klik `[×]` pada header
 30. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 31. Klik `[Leave]`
 32. Verifikasi saldo kantong berkurang permanen sebesar Cost langkah 21

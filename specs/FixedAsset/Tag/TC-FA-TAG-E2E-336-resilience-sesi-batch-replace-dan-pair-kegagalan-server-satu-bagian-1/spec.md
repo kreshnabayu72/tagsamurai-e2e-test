@@ -25,10 +25,11 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Tiga aset Paired | 'Excavator 20 Ton - 220' (AST-0220, Tag RFID `RF-00130`), 'Excavator 20 Ton - 221' (AST-0221, `RF-00140`), 'Excavator 20 Ton - 23' (AST-0023, `RF-00141`), semuanya Group Plant A dengan satu Tag RFID Paired | `asetBatch` |
+| Tiga aset Paired | 'Excavator 20 Ton - 220' (AST-0220, Tag RFID `RF-00330`), 'Excavator 20 Ton - 221' (AST-0221, `RF-00140`), 'Excavator 20 Ton - 23' (AST-0023, `RF-00141`), semuanya Group Plant A dengan satu Tag RFID Paired | `asetBatch` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, `RF-00416` | `stokAvailable` |
 
-- State yang diubah dan pemulihannya: penyimpanan aset pertama sukses di langkah 8 (AST-0220 menjadi `RF-00412`) dan dipulihkan lewat fixture backend di langkah 16; hook `after` memulihkan ketiga aset ke Tag awal, ketiga Tag stok ke Available, dan melepas semua intercept. Langkah 31 menyimpan AST-0220 menjadi `RF-00412` dan dipulihkan hook `after`.
+- State yang diubah dan pemulihannya: penyimpanan aset pertama sukses di langkah 6 (AST-0220 menjadi `RF-00412`) dan dipulihkan lewat fixture backend di langkah 16; hook `after` memulihkan ketiga aset ke Tag awal, ketiga Tag stok ke Available, dan melepas semua intercept. Langkah 30 menyimpan AST-0220 menjadi `RF-00412` dan dipulihkan hook `after`.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 6, 30); entri TAG Log Global (langkah 6, 30). Aksi tulis pada langkah 8, 23 ditolak dan tidak menambah entri.
 
 ## Test Steps
 
@@ -49,7 +50,7 @@ coverage:
 13. Verifikasi ringkasan: 'Excavator 20 Ton - 221' berlabel `Failed` dengan alasan "Error, failed to replace asset."
 14. Verifikasi ringkasan: 'Excavator 20 Ton - 23' berlabel `Skipped`
 15. Lepas intercept
-16. Pulihkan 'Excavator 20 Ton - 220' ke Tag `RF-00130` Paired dan `RF-00412` ke Available lewat fixture BE hingga tersimpan
+16. Pulihkan 'Excavator 20 Ton - 220' ke Tag `RF-00330` Paired dan `RF-00412` ke Available lewat fixture BE hingga tersimpan
 17. Muat ulang halaman (F5)
 
 ### TC-FA-TAG-406: Timeout pada aset pertama
@@ -79,8 +80,8 @@ coverage:
 - TC-407 dilanjutkan dari ringkasan sesi TC-406 (aset 1 `Failed`, aset 2 dan 3 `Skipped`, tombol `[Retry skipped and failed (3)]` sama dengan precondition TC-407); TC-407 menulis kegagalan pertama sebagai 5xx sedangkan TC-406 memakai timeout, dan Retry tidak bergantung pada jenis kegagalan sebelumnya.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 15 (melepas intercept), 16 (memulihkan data lewat fixture BE hingga tersimpan), 17 (muat ulang halaman untuk menutup dialog ringkasan; dialog `beforeunload` ditangani sesuai Prerequisites).
 - Langkah 10 (tidak ada toast gagal) didahului `Verifikasi` header `Replace TAG · Asset 3 of 3` sebagai anchor positif (respons server sudah diproses).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 6, 30); entri TAG Log Global (langkah 6, 30). Aksi tulis pada langkah 8, 23 ditolak dan tidak menambah entri.
 - Temuan untuk QA:
-  - Post Condition TC-FA-TAG-405 (Tag `RF-00412` Paired pada aset 1, `RF-00140` tetap Paired pada aset 2) dan TC-FA-TAG-406 (Tag `RF-00130` tetap Paired) tanpa langkah observasi di TC tidak diasersi; TC-FA-TAG-407 Expected menyebut "tersimpan pada percobaan ulang" tanpa indikator UI, sehingga langkah 31 mengikuti kalimat TC.
+  - Post Condition TC-FA-TAG-405 (Tag `RF-00412` Paired pada aset 1, `RF-00140` tetap Paired pada aset 2) dan TC-FA-TAG-406 (Tag `RF-00330` tetap Paired) tanpa langkah observasi di TC tidak diasersi; TC-FA-TAG-407 Expected menyebut "tersimpan pada percobaan ulang" tanpa indikator UI, sehingga langkah 31 mengikuti kalimat TC.
   - TC-FA-TAG-407 mensyaratkan intercept 5xx pada kegagalan pertama dan tidak menyebut aset mana yang gagal; spec mengikuti TC-FA-TAG-406 (aset 1).
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

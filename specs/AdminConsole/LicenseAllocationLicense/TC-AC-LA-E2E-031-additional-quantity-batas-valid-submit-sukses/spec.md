@@ -44,21 +44,23 @@ coverage:
 9. Catat baseline Allocation ID baris di halaman pertama tab Current
 10. Klik `[+ Allocation]`
 11. Pilih Client `PT Sejahtera`, Target `SUBS-20260101-A1B2C`, Type `Concurrent User`, isi Additional Quantity `999999999999999`
-12. Verifikasi tidak ada error `Max. 15 characters` pada Additional Quantity
-13. Verifikasi tidak ada pesan validasi pada Additional Quantity
-14. Verifikasi section Payment Method tidak dirender
-15. Verifikasi tidak ada peringatan saldo
-16. Klik `[Submit]`
-17. Verifikasi toast sukses "Success, license has been allocated."
-18. Verifikasi baris baru dengan Quantity `999999999999999` tanpa terpotong tampil di tab Current (Allocation ID tidak ada pada baseline langkah 9)
-19. Verifikasi tidak ada toast galat server
+12. Verifikasi field Additional Quantity menampilkan nilai `999999999999999` utuh (anchor)
+13. Verifikasi tidak ada error `Max. 15 characters` pada Additional Quantity
+14. Verifikasi tidak ada pesan validasi pada Additional Quantity
+15. Verifikasi section Payment Method tidak dirender
+16. Verifikasi tidak ada peringatan saldo
+17. Klik `[Submit]`
+18. Verifikasi toast sukses "Success, license has been allocated."
+19. Verifikasi baris baru dengan Quantity `999999999999999` tanpa terpotong tampil di tab Current (Allocation ID tidak ada pada baseline langkah 9)
+20. Verifikasi tidak ada toast galat server
 
 ## Notes
 
-- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 2 kali, kejadian menutup 2 (modal tertutup oleh Submit sukses di langkah 4 dan 16).
+- Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 2 kali, kejadian menutup 2 (modal tertutup oleh Submit sukses di langkah 4 dan 17).
 - Langkah penghubung (S-03): langkah 1 dan 9 (baseline), langkah 8 (menunggu toast TC-AC-LA-113 hilang agar toast TC-AC-LA-509 dapat diasersi, R-12).
-- Verifikasi langkah 13 dan 15 adalah klausa terpisah dari Expected a dan b TC-AC-LA-509 (S-01).
+- Asersi tambahan (S-03): langkah 12 (field Additional Quantity menampilkan nilai utuh) adalah anchor positif pada form yang sama sebelum asersi absence langkah 13 sampai 16 (bagian 8b butir 2, keputusan 2026-11-04).
+- Verifikasi langkah 14 dan 16 adalah klausa terpisah dari Expected a dan b TC-AC-LA-509 (S-01).
 - Temuan untuk QA:
   - TC-AC-LA-113 menulis Quantity `+1`, sedangkan TC-AC-LA-509 Expected d menulis Quantity `999999999999999` tanpa tanda `+`; spec mengikuti masing-masing TC, perlu penegasan format Quantity pada baris Completed.
-  - TC-AC-LA-509 Expected d ("tanpa galat server") tidak menyebut bentuk galat; spec mengasersi tidak ada toast galat (langkah 19).
-  - Post Condition "Record Quantity +1 tercatat" (TC-AC-LA-113) dan "Record Quantity 15 digit tercatat" (TC-AC-LA-509) diwakili oleh baris baru pada langkah 7 dan 18; TC tidak memberi langkah observasi lain.
+  - TC-AC-LA-509 Expected d ("tanpa galat server") tidak menyebut bentuk galat; spec mengasersi tidak ada toast galat (langkah 20).
+  - Post Condition "Record Quantity +1 tercatat" (TC-AC-LA-113) dan "Record Quantity 15 digit tercatat" (TC-AC-LA-509) diwakili oleh baris baru pada langkah 7 dan 19; TC tidak memberi langkah observasi lain.

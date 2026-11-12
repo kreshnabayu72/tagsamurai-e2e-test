@@ -24,6 +24,7 @@ coverage:
   - Dinamis (dibuat di hook `before`, dibersihkan di hook `after`): aset Not Paired Yet `Aset Uji Pair-{runId}-133` (TAG Type Asset Name RFID) untuk Pair TAG Pengguna B di TC-568; Precondition TC-568 tidak menyebutnya.
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB (satu reader tersambung, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader); pemicu Pengguna B lewat sesi API (Receive TAG dan Pair TAG); pembacaan status Tag dari backend untuk Expected status; pemulihan status Tag dan pelepasan pasangan Tag lewat fixture backend.
 - State global yang dipulihkan: Receive mengubah Tag menjadi Available di registri Global dan menambah entri Event Log To Be Returned serta TAG Log Global yang tidak dapat dihapus; Pair TAG memasangkan `RF-00088`. Status Tag dan pasangan dipulihkan lewat fixture backend di hook `before` dan `after` serta pada langkah 14; entri log tetap bertambah.
+- Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, nama aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -65,8 +66,7 @@ coverage:
 - Langkah penghubung: langkah 1 membuka tab (hook `beforeEach` sudah membuka halaman TAG); langkah 13 dan 26 menutup dialog; langkah 14 memulihkan state antar TC (S-09).
 - Pengguna B memakai sesi API sehingga bukan kelas c; langkah pemicu ditulis "... hingga ... tersimpan" (R-20).
 - Pembagian TC lintas spec: TC-569 dan TC-1380 ada di spec 141; TC-1460 dan TC-1469 ada di spec 134.
+- A-15: nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, nama aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan tercatat di Prerequisites spec ini.
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, nama aset) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - TC-567 dan TC-568 menyebut "Pengguna B" tanpa akun, dan TC-568 tidak menyebut aset Not Paired Yet untuk Pair TAG; spec memakai akun "disediakan tim FE" dan aset milik spec.
   - Post Condition TC-567 (Event Log: satu entri `RF-00088` dari Pengguna B dan satu entri `RF-00071`, tanpa entri tambahan dari Pengguna A) tidak punya langkah observasi di TC dan tidak diasersi.
-  - TC-567 dan TC-568 diberi label Manual Only karena "dua sesi/pengguna paralel"; spec memakai sesi API untuk Pengguna B.

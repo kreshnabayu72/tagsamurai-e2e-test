@@ -38,7 +38,7 @@ coverage:
 4. Verifikasi skeleton tampil pada baris Cost dan `Your pocket balance` sampai preview dimuat
 5. Verifikasi warning V-18 belum tampil selama skeleton
 6. Lepas tahanan respons preview Cost dan lepas intercept
-7. Klik `[✕]` pada header
+7. Klik `[×]` pada header
 8. Verifikasi dialog `Unsaved Changes` dengan Body `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
 9. Klik `[Leave]`
 
@@ -72,7 +72,7 @@ coverage:
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 2 kali, kejadian menutup 2 (langkah 7 sampai 9 dan modal tertutup oleh Submit di langkah 24).
 - Penyimpangan urutan (S-10): TC-AC-LA-506 melanjutkan form TC-AC-LA-153 (Client, Target, Type, dan Additional Quantity sama) dan hanya mengganti Pay From (prinsip 6). TC-AC-LA-506 Dependensi TC-AC-LA-105 dipenuhi oleh opsi Pay From pada langkah 13 sampai 20.
-- Langkah penghubung (S-03): langkah 2 dan 6 (menahan dan melepas respons), langkah 7 sampai 9 (menutup form dirty, S-08), langkah 19 (membuka dropdown), langkah 25 (menunggu aksi selesai), dan langkah 28 (menampilkan kolom Paid From; Setup Column tidak memerlukan Verifikasi).
+- Langkah penghubung (S-03): langkah 2 dan 6 (menahan dan melepas respons), langkah 10 (ganti akun dan baseline Allocation ID), langkah 21 (mencatat saldo semua kantong sumber), langkah 7 sampai 9 (menutup form dirty, S-08), langkah 19 (membuka dropdown), langkah 25 (menunggu aksi selesai), dan langkah 28 (menampilkan kolom Paid From; Setup Column tidak memerlukan Verifikasi).
 - Temuan untuk QA:
   - TC-AC-LA-153 Expected a dan b tidak menyebut nilai saldo dan harga kantong Principal serta Distributor relasi utama (Pre-setup #33 hanya menyebut saldo Distributor $10,000.00, Partner $5,000.00, Principal $5,000.00 tanpa memetakannya ke opsi Pay From); spec mengasersi bahwa saldo dan harga mengikuti kantong terpilih tanpa nilai persis.
   - TC-AC-LA-153 menyebut "Distributor relasi utama" tanpa nama; spec memakai `PT Maju Bersama` (Pre-setup #25 dan #33).

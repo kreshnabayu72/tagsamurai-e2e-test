@@ -25,6 +25,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed idempotent dan pemulihan aset, Tag, dan laporan Tag lewat fixture backend (lihat `suite.md`).
 - Pemulihan di hook `after` (tidak berasumsi seeding berhasil penuh): buka kembali laporan AST-0020 pada RF-00130 dan kembalikan data Pre-setup tab Paired ke keadaan awal (Last Updated dan hitungan Reported grup Plant B berubah selama spec ini).
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -48,7 +49,7 @@ coverage:
 - Mode: FE+BE. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`): 5 dan 8 (menutup kebab dan Popup Detail). Langkah 1 membuka Popup Detail yang dipakai kedua TC.
 - Langkah 4 absence didahului langkah 3 (aksi `Replace TAG` tampil pada kebab yang sama) sebagai anchor positif (bagian 8b butir 2).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-197 precondition d menyebut laporan AST-0020 "sudah ditutup Declined (data persisted)" tanpa menyebut cara menutupnya; spec menuliskannya sebagai kemampuan fixture BE yang disediakan tim FE/BE.
   - TC-FA-TAG-197 dan TC-FA-TAG-191 memakai AST-0020 dengan keadaan laporan berlawanan (terbuka di TC-FA-TAG-191, ditutup di TC-FA-TAG-197); keduanya di spec berbeda (TC-FA-TAG-191 ada di spec 044) sehingga tiap spec menyiapkan keadaannya sendiri.
-  - Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah persis; Lampiran A belum memuat butir untuk modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

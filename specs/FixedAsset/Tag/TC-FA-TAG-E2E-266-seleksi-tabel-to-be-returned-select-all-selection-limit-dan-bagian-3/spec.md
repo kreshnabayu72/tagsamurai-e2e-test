@@ -23,6 +23,7 @@ coverage:
 - Data Pre-setup tab To Be Returned: TC-FA-TAG-1413 memakai 25 Tag dalam scope (kunci `Fixture.fixedAssetTag.tbr25`, dimuat hook `before`, tabel berisi 3 halaman pada 10 baris per halaman); TC-FA-TAG-1412 memakai tiga Tag Pre-setup: RF-00071 (RFID; Last Asset 'Excavator 20 Ton - 2', Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.), RF-00088 (RFID; 'Excavator 20 Ton - 5', Disposal Center, Dedi K.), dan NF-00092 (NFC; 'Laptop Pro 14 - 8', HQ Warehouse, Rina T.) (kunci `tbr3`, langkah 11). Kode dan atribut 25 Tag ditentukan seeding; TC hanya menyebut jumlahnya.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned (kode, Last Asset, Reason, Return Group, Current Holder, Since) dan Return Group; tidak ada endpoint yang dikarang di spec ini.
 - State yang diubah: TC-FA-TAG-1412 menjalankan Receive Manually Bulk sehingga RF-00071 dan RF-00088 berstatus Damaged/Missing; hook `after` memulihkan kedua Tag ke To be Returned dan dataset ke keadaan Pre-setup empat Tag lewat fixture backend. Spec ini tidak mengubah Selection Limit.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 15); entri TAG Log Global `Marked Damaged/Missing` (langkah 15).
 
 ## Test Steps
 
@@ -59,9 +60,9 @@ coverage:
 - Urutan TC di dalam spec: TC-FA-TAG-1413, lalu TC-FA-TAG-1412, karena TC-FA-TAG-1412 mengubah data (Submit) dan berada di akhir (S-10); dataset tiga Tag dimuat pada langkah penghubung 11.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 5 (memeriksa halaman 2); 7 (kembali ke halaman 1); 11 (memuat dataset 3 Tag dan membuka tab).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 15); entri TAG Log Global `Marked Damaged/Missing` (langkah 15).
 - Temuan untuk QA:
   - TC-FA-TAG-1412 Post Condition ("Tag RF-00071 dan RF-00088 berstatus Damaged/Missing di registri Global") tidak punya langkah observasi di TC sehingga tidak diasersi.
   - TC-FA-TAG-1413 Expected a menyebut baris halaman 2 tidak tercentang tanpa langkah pindah halaman; spec menambah pindah ke halaman 2 dan kembali ke halaman 1 sebagai langkah penghubung.
   - TC-FA-TAG-1413 tidak menyebut kode Tag; spec hanya memakai jumlah 25.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

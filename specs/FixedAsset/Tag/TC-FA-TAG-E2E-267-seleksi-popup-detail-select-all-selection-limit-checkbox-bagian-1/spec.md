@@ -27,6 +27,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned dalam jumlah yang dibutuhkan; pengubahan Selection Limit di Lifecycle Settings > System Limits oleh pelaku kedua lewat sesi API (nilai awal dicatat sebelum diubah); tidak ada endpoint yang dikarang di spec ini.
 - Sesi API aktor: pelaku kedua (akun admin disediakan tim FE) mengubah Selection Limit dan dataset lewat login API (password) yang tidak dihitung sebagai sesi web (lihat `suite.md`), tanpa asersi di sesinya.
 - Selection Limit: TC-FA-TAG-1402, 1403, dan 1404 berjalan dengan Selection Limit nilai awal; Selection Limit diturunkan menjadi 5 pada langkah 20 untuk TC-FA-TAG-1400 dan 1401. Hook `after` memulihkan Selection Limit ke nilai awal, juga bila spec gagal di tengah. Suite serial mencegah spec lain membaca Selection Limit yang turun.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan melakukan aksi lewat sesi API (langkah 20).
 
 ## Test Steps
 
@@ -83,10 +84,10 @@ coverage:
 - Urutan TC di dalam spec: TC-FA-TAG-1402, 1403, 1404, lalu 1400 dan 1401. TC-FA-TAG-1402 sampai 1404 dijalankan dengan Selection Limit awal sehingga Select All memilih 20 baris; Selection Limit diturunkan satu kali pada langkah 20 untuk TC-FA-TAG-1400 dan 1401 (S-10).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 9 (kembali ke halaman 1); 15, 19, 26 (membatalkan seleksi lewat ikon `×` pada Bulk Action Bar); 20 (memuat Selection Limit 5 dan membuka kembali Popup Detail); 31 (menutup Popup Detail).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan melakukan aksi lewat sesi API (langkah 20).
 - Temuan untuk QA:
   - TC-FA-TAG-1400 s.d. 1404 tidak menyebut teks jumlah terpilih pada Bulk Action Bar di Popup Detail (hanya "jumlah terpilih N"); spec mengasersi jumlahnya tanpa teks persis.
   - TC-FA-TAG-1400 s.d. 1404 tidak menyebut cara membatalkan seleksi antar kasus selain `Unselect All`; spec memakai ikon `×` pada Bulk Action Bar seperti pada TC-FA-TAG-1408.
   - TC-FA-TAG-1400 dan 1401 Expected "Bulk Action Bar dapat dipakai" tidak menyebut aksi yang diverifikasi; spec mengasersi bar tampil dan aksinya tidak Disabled.
   - TC-FA-TAG-1402 s.d. 1404 menyebut data Pre-setup tab Paired "lihat Data Uji" tanpa merinci aset yang dicentang; spec memakai baris halaman 1 dan halaman 2 Popup Detail.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

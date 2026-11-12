@@ -29,6 +29,7 @@ coverage:
 - Sesi API aktor: pelaku kedua (akun admin disediakan tim FE) mengubah Selection Limit dan dataset lewat login API (password) yang tidak dihitung sebagai sesi web (lihat `suite.md`), tanpa asersi di sesinya.
 - State global yang diubah: Selection Limit diturunkan menjadi 5 pada langkah 13 dan dipulihkan ke nilai awal pada langkah 23; hook `after` memulihkan Selection Limit ke nilai awal dan dataset To Be Returned ke keadaan Pre-setup empat Tag lewat fixture backend, juga bila spec gagal di tengah. Suite serial mencegah spec lain membaca Selection Limit yang turun.
 - TC-FA-TAG-1375 dan 1376 tidak menyebut Selection Limit; keduanya dijalankan dengan Selection Limit di nilai awal (dipulihkan pada langkah 23).
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 33); entri TAG Log Global `Marked Damaged/Missing` (langkah 33). Aksi lain lewat sesi API (langkah 13, 23) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -93,10 +94,10 @@ coverage:
 - Dataset diganti lewat fixture pada langkah penghubung 6, 13, dan 23 (tiap TC memakai dataset berbeda); muat ulang halaman membuang seleksi sebelumnya.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 6 (memuat dataset 25 Tag dan membuka tab); 12 (mengosongkan Search lewat `(←)`); 13 (memuat Selection Limit 5 dan dataset 8 Tag); 18, 29 (membatalkan seleksi lewat ikon `×` pada Bulk Action Bar); 23 (memulihkan Selection Limit dan memuat dataset 3 Tag).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Manual`) (langkah 33); entri TAG Log Global `Marked Damaged/Missing` (langkah 33). Aksi lain lewat sesi API (langkah 13, 23) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1371 s.d. 1376 memakai dataset berbeda (12, 25, 8, dan 3 Tag) tanpa menyebut kode Tag selain tiga Tag Pre-setup; spec hanya memakai jumlahnya.
   - TC-FA-TAG-1374 Expected "Bulk Action Bar tetap dapat dipakai" tidak menyebut aksi yang diverifikasi; spec mengasersi bahwa bar tampil dan aksinya tidak Disabled.
   - TC-FA-TAG-1375 tidak punya Expected toast dan tidak menyebut status akhir Tag; Post Condition tanpa langkah observasi tidak diasersi.
   - TC-FA-TAG-1373 dan 1374 tidak menyebut cara membatalkan seleksi antar kasus; spec memakai ikon `×` pada Bulk Action Bar seperti pada TC-FA-TAG-1408.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

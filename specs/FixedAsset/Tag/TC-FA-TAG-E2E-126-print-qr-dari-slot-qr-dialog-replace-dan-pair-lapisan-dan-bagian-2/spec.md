@@ -24,6 +24,7 @@ coverage:
   - Kode QR `QR-00700` berstatus Available (dibuat backend saat Start Print sebelumnya, belum Paired).
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB (satu reader tersambung, driver terpasang, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader).
 - State global yang dipulihkan: Tag `QR-00700` yang dipasang ke `Label Printer - 71` pada langkah 19 dikembalikan ke Available dan `Label Printer - 71` ke Not Paired Yet lewat fixture backend di hook `after`.
+- Nilai literal Pre-setup (`Label Printer - 71`, `Label Printer - 72`, AST-0171, AST-0172, `QR-00290`, `QR-00700`) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 19); entri TAG Log Global (langkah 19).
 
 ## Test Steps
 
@@ -40,8 +41,8 @@ coverage:
 8. Verifikasi slot `QR TAG` menampilkan `QR-00700`.
 9. Verifikasi slot `QR TAG` berbadge `Verified`.
 10. Klik ikon close (✕) pada Dialog Replace TAG.
-11. Verifikasi dialog `Unsaved Changes` tampil.
-12. Klik [Leave].
+11. Verifikasi dialog `Discard Replacement` dengan body "Discard this replacement? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil.
+12. Klik [Discard].
 
 ### TC-507: Kode QR hasil cetak dipindai di Dialog Pair TAG
 
@@ -61,6 +62,6 @@ coverage:
 - Langkah penghubung: langkah 10 sampai 12 menutup Dialog Replace TAG yang dirty; langkah 21 menutup Popup Detail.
 - Anchor absence langkah 18: langkah 16 dan 17 (slot terisi dan terverifikasi).
 - Pembagian TC lintas spec: TC-503, TC-505, TC-506 ada di spec 125; TC-504 ada di spec 140.
+- A-15: nilai literal Pre-setup (`Label Printer - 71`, `Label Printer - 72`, AST-0171, AST-0172, `QR-00290`, `QR-00700`) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 19); entri TAG Log Global (langkah 19).
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`Label Printer - 71`, `Label Printer - 72`, AST-0171, AST-0172, `QR-00290`, `QR-00700`) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - Post Condition TC-507 ("Tag `QR-00700` Paired pada `Label Printer - 71`") tidak punya langkah observasi di TC dan tidak diasersi.

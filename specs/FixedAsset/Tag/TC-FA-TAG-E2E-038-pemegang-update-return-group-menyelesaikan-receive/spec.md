@@ -34,8 +34,9 @@ Role yang diuji:
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - Kemampuan teknis (disediakan tim FE/BE): memindai kode Tag lewat simulator reader RFID/NFC USB (reader tersambung, satu reader, aktif, sudah disinkronkan di Global Settings > Handheld Reader).
 - Kemampuan teknis (disediakan tim FE/BE): memulihkan Tag RF-00071 ke daftar To Be Returned lewat fixture backend sebagai pelaku kedua (sesi API).
-- State global: tidak ada state global yang diubah.
+- State global (status Tag) dipulihkan lewat fixture; efek log tidak terpulihkan (butir A-15).
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Scan`) (langkah 4); entri TAG Log Global `Received` (langkah 4); entri Event Log To Be Returned (Method `Manual`) (langkah 12); entri TAG Log Global `Marked Damaged/Missing` (langkah 12).
 
 ## Test Steps
 
@@ -78,8 +79,8 @@ Role yang diuji:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 8, 9, 16, 23.
 - Langkah 8 dan 9 memulihkan RF-00071 karena TC-FA-TAG-171 dan TC-FA-TAG-172 sama-sama memakai RF-00071 (TC-FA-TAG-171 menerimanya).
 - Simulator reader dipakai sebagai langkah rutin untuk memindai Tag; spec ini tidak menguji kondisi reader.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Event Log To Be Returned (Method `Scan`) (langkah 4); entri TAG Log Global `Received` (langkah 4); entri Event Log To Be Returned (Method `Manual`) (langkah 12); entri TAG Log Global `Marked Damaged/Missing` (langkah 12).
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
   - Post Condition TC tanpa langkah observasi tidak diasersi (S-01). Post Condition TC-171 dan TC-172 (status Tag di registri Global, satu entri Event Log) tidak punya langkah observasi di TC dan tidak diasersi.
   - TC-171 dan TC-172 memakai RF-00071 yang sama dan TC tidak menyebut pemulihannya; spec menambah langkah pemulihan lewat fixture backend.

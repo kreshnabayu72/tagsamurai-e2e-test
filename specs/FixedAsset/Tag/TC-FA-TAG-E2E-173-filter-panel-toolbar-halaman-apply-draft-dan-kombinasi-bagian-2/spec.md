@@ -30,6 +30,7 @@ coverage:
 | Grup tambahan TC-FA-TAG-698 | Delapan grup tambahan milik spec, nama tidak memuat `Excavator`, `Forklift`, `Laptop`, atau `Ton`, bersuffix `{runId}-173-<n>`; dibuat sebelum TC-FA-TAG-698 dan dihapus sebelum TC-FA-TAG-699 | `grupTambahan173` |
 
 - State yang diubah dan pemulihannya: grup tambahan dibuat sebelum TC-FA-TAG-698 dan dihapus sesudahnya; hook `after` menghapusnya bila masih ada.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 9) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -79,8 +80,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-698, TC-FA-TAG-699, TC-FA-TAG-700, TC-FA-TAG-701). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik Filter Panel toolbar halaman ada di spec 172 (TC-FA-TAG-692 s.d. 696), spec 191 (TC-FA-TAG-697), dan spec 173 (TC-FA-TAG-698 s.d. 701).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 1, 9, 15, 24 (seeding dan penghapusan grup tambahan serta pembukaan menu Fixed Asset > TAG di sidebar untuk mereset Search, Sort, dan Filter).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 9) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - Judul TC-FA-TAG-701 menyebut kombinasi Search, Filter, dan Sort, tetapi langkah dan Expected-nya hanya memakai Search dan Sort; spec mengikuti langkah TC.
   - TC-FA-TAG-698 mensyaratkan lebih dari 10 baris grup, sedangkan TC lain di spec ini menegaskan jumlah baris dataset; grup tambahan dibuat hanya untuk TC-FA-TAG-698. Jumlah grup tambahan dan cara pembuatannya tidak disebut TC.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

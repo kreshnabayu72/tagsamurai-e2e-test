@@ -31,6 +31,7 @@ coverage:
 | Grup tambahan TC-FA-TAG-711 | Delapan grup tambahan milik spec bersuffix `{runId}-175-<n>`; dibuat sebelum TC-FA-TAG-711, dihapus di hook `after` | `grupTambahan175` |
 
 - State yang diubah dan pemulihannya: grup tambahan dibuat sebelum TC-FA-TAG-711; hook `after` menghapusnya.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 20) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -79,8 +80,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-707, TC-FA-TAG-708, TC-FA-TAG-709, TC-FA-TAG-710, TC-FA-TAG-711). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik sort tiga tahap per kolom ada di spec 174 (TC-FA-TAG-702 s.d. 706) dan spec 175 (TC-FA-TAG-707 s.d. 711).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 20 (seeding grup tambahan dan reset Sort lewat menu sidebar).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 20) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-711 mensyaratkan lebih dari 10 baris grup tanpa menyebut cara membentuknya, dan tidak menyebut kolom yang disort; spec memakai Total Assets sesuai langkah TC dan menambah grup tambahan hanya sebelum TC itu agar TC-FA-TAG-707 s.d. 710 tetap pada empat baris dataset.
   - Expected tiap tahap sort pada TC-FA-TAG-707 dan 708 menggabungkan indikator sort dan urutan baris dalam satu butir; spec menulisnya sebagai satu Verifikasi per butir TC.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

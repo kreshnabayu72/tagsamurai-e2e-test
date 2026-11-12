@@ -41,6 +41,8 @@ coverage:
 
   Kunci fixture: `changelogE1E6`.
 - State yang diubah: hanya state tampilan modal; konfigurasi kolom tidak diubah spec ini. Tidak ada perubahan data bisnis.
+- Nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
 
 ## Test Steps
 
@@ -104,6 +106,7 @@ coverage:
 - Langkah penghubung (S-03): langkah 11 sampai 13 (membuka dan menutup selector page size untuk mengamati pilihan TC-FA-TAG-931 Expected c), 17 dan 20 (membuka kembali modal sesudah ditutup), dan 31 (menutup modal sebelum pindah tab).
 - TC-FA-TAG-932 (judul modal dari halaman TAG) memakai aksi yang sama dengan TC-FA-TAG-931 langkah 1; Expected-nya dicakup `Verifikasi` langkah 2.
 - Langkah 29 mengamati setiap entri pada halaman yang tampil (enam entri E1 sampai E6 menurut Prerequisites).
+- A-15: nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - Post Condition TC-FA-TAG-968 ("Konfigurasi kolom tersimpan di cache browser sesuai langkah yang dilakukan") tidak punya langkah observasi di TC sehingga tidak diasersi.
   - TC-FA-TAG-968 langkah 2 "Periksa setiap baris dan kolom Column Visibility" tidak menyebut aksi yang dilakukan; spec hanya mengamati baris dan header kolom `⋯`.

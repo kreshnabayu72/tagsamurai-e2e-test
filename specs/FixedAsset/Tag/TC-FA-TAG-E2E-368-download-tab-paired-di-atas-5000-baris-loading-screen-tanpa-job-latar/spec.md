@@ -22,6 +22,7 @@ coverage:
 - Data: tab Paired memuat 5.001 aset ber-Tag dalam scope (jumlah baris yang cocok: 5.001). Aset volume bernama bersuffix `{runId}-368`.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus 5.001 aset volume dan Tag-nya lewat fixture backend. Spec ini hanya membaca data (aksi hanya membaca).
 - State global: tidak ada. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -35,7 +36,7 @@ coverage:
 
 - Spec volume data (kelas e): ambang 5.001 baris dipakai karena tidak lazim dihasilkan seed rutin.
 - Urutan langkah 3, 4, 5 mengikuti bagian 8b butir 5 dan 11: asersi state sementara (loading screen, absence toast dan notifikasi) diletakkan segera setelah pemicu (klik `Download as CSV`) dan sebelum asersi artefak (berkas terunduh). Pemicu pada langkah 2 menjadi anchor positif absence pada langkah 4 yang buktinya menyusul pada langkah 5.
+- A-15: nilai literal Pre-setup (kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1438 mencantumkan Post Condition "Tidak ada job background, jendela ketersediaan berkas, maupun halaman riwayat Export" tanpa langkah observasi; tidak diasersi.
   - TC-FA-TAG-1438 menyebut "5.001 aset, disiapkan lewat seed atau API" tanpa cara pembersihannya; spec menulisnya sebagai kemampuan fixture backend yang disediakan tim FE/BE.
-  - Nilai literal Pre-setup (kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

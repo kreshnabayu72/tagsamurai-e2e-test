@@ -35,6 +35,7 @@ coverage:
 - Data kasus TC-FA-TAG-991 (kunci `Fixture.fixedAssetTag.tbr25`): 25 Tag To Be Returned dalam scope akun, sehingga tabel berisi lebih dari satu halaman (10 baris per halaman); dimuat pada langkah 29.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned (kode, Last Asset, Reason, Return Group, Current Holder, Since) dan Return Group; tidak ada endpoint yang dikarang di spec ini.
 - Pemulihan di hook `after`: dataset To Be Returned dikembalikan ke keadaan Pre-setup empat Tag lewat fixture backend. Kolom Current Holder dipulihkan pada langkah 14; Search dikosongkan pada tiap akhir kasus.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 29) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
@@ -94,9 +95,9 @@ coverage:
 - Urutan TC mengikuti nomor TC; TC-FA-TAG-991 berada di akhir karena memakai dataset 25 Tag (beda dari empat Tag Pre-setup) dan dimuat sekali lewat fixture.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 4, 7, 18, 28, 34 (mengosongkan Search lewat `(←)` yang menutup input dan mereset tabel); 10, 15 (menutup Column Visibility); 29 (memuat dataset 25 Tag dan membuka tab).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 29) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-989 menulis "ulangi pencarian" tanpa menyebut apakah pencarian dijalankan ulang otomatis saat kolom ditampilkan; spec menekan Enter pada kotak Search yang masih berisi "Rina".
   - TC-FA-TAG-991 memakai precondition 25 Tag (bukan empat Tag Pre-setup); spec memuat dataset itu lewat fixture sebagai langkah penghubung dan tidak mengarang kode Tag-nya.
   - TC-FA-TAG-991 Expected tidak menyebut jumlah baris atau kode hasil Search `RF`; spec mengasersi "hasil pencarian" dan halaman 1.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

@@ -36,6 +36,7 @@ coverage:
 - Data TC-FA-TAG-38: grup Excavator 20 Ton / Plant A memuat dua aset Not Paired Yet dengan TAG Code `—`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah (suite.md).
 - Tidak ada state global yang diubah; cleanup tidak diperlukan karena spec hanya membaca.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -103,6 +104,6 @@ coverage:
 - Langkah 1 TC-FA-TAG-32, 34, dan 36 (klik kartu untuk pertama kali) identik dengan langkah 1 TC-FA-TAG-31, 33, dan 35 dan sudah dijalankan pada langkah 1, 8, dan 15; kartu tetap aktif sampai TC berikutnya sehingga langkah 5, 12, dan 19 hanya memuat klik kedua. Urutan TC tidak diubah.
 - Langkah 4, 11, dan 18 memuat klausa "dua kartu lain tidak aktif" sebagai asersi absence atas state kartu; anchor positif adalah Verifikasi kartu terpilih aktif pada langkah sebelumnya (langkah 2, 9, 16) (bagian 8b butir 2).
 - TC-FA-TAG-39 sampai 41 ada di spec 008.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut asersi nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-38 tidak menyebut nama atau ID kedua aset Not Paired Yet milik grup Excavator 20 Ton / Plant A; spec hanya mengasersi jumlah dan nilai kolom TAG Code serta Status.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut asersi nama, urutan, dan jumlah, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

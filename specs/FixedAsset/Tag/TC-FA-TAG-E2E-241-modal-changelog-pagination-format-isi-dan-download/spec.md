@@ -34,6 +34,8 @@ coverage:
 
   Kunci fixture: `changelogE1E6`. Keadaan 2 (langkah 13 sampai 20): Changelog dalam scope memuat 25 entri Replace (kunci `changelog25Replace`); langkah 12 membentuknya.
 - State yang diubah dan pemulihannya: isi Changelog dalam scope diganti dari keadaan 1 ke keadaan 2 pada langkah 12; hook `after` (tetap jalan walau spec gagal) memulihkan Changelog ke keadaan awal lewat fixture backend yang sama. Berkas CSV hasil unduhan dibuang oleh hook `after`. Tidak ada perubahan data bisnis lain.
+- Nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 12) yang menyiapkan atau memulihkan state.
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
 
 ## Test Steps
 
@@ -71,6 +73,7 @@ coverage:
 - Urutan TC pada spec: TC-FA-TAG-967, TC-FA-TAG-969, lalu TC-FA-TAG-966, karena TC-FA-TAG-966 memakai Changelog 25 entri Replace sedangkan TC-FA-TAG-967 dan TC-FA-TAG-969 memakai entri E1 sampai E6; keadaan data diganti satu kali (langkah 12).
 - Langkah penghubung (S-03): langkah 11 dan 20 (menutup modal), 12 (mengganti keadaan Changelog), 15 sampai 17 (membuka dan menutup selector page size untuk mengamati pilihan), dan 18 (TC-FA-TAG-966 langkah 3).
 - Langkah 10 ditulis sesudah `Verifikasi` berkas terunduh (langkah 9) sebagai anchor bahwa respons Download sudah diproses (bagian 8b butir 11).
+- A-15: nilai literal Pre-setup (nama aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 12) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-966 Data Uji "25 entri Replace" tidak menyebut nilai Date, Name, dan pelaku; spec hanya mengasersi jumlah entri per halaman (10 dan entri ke-11 sampai ke-20).
   - TC-FA-TAG-969 mengasersi nama berkas `Changelog-Paired-TAG` tanpa ekstensi; spec memeriksa format CSV dan nama berkas dasar `Changelog-Paired-TAG`. Isi berkas tidak diasersi.

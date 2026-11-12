@@ -25,7 +25,7 @@ coverage:
 - Guided Tooltip: flag `guided_tooltip_seen_fa-tag` disetel true oleh hook suite `before`, lihat `suite.md`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada; nilai literal TC pada langkah diberi kunci fixture oleh tahap script (akan disediakan).
 - Kemampuan teknis (disediakan tim FE/BE): emulator driver reader (simulator reader USB, lihat `suite.md`) yang mengatur kondisi reader: tidak tersambung ke komputer; driver reader lokal tidak terdeteksi; driver terpasang tetapi reader mati atau kabel tidak terpasang erat; dua reader tersambung bersamaan; reader terbaca tetapi Serial Number belum diaktivasi ([Sync] belum dijalankan) di Global Settings > Handheld Reader; reader berstatus Waiting for Approval. Seed idempotent aset lewat fixture backend.
-- Data aset (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00130` berstatus Paired. Spec ini tidak mengubah data aset.
+- Data aset (tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis): AST-0220 'Excavator 20 Ton - 220' (Group Plant A, TAG Type Asset Name RFID) punya satu Tag RFID `RF-00330` berstatus Paired. Spec ini tidak mengubah data aset.
 - Tabel 1 (parameter langkah 7 sampai 12):
 
 | TC | Kondisi reader | Isi dialog blok |
@@ -37,6 +37,7 @@ coverage:
 | TC-FA-TAG-513 | Reader berstatus Waiting for Approval | This reader is waiting for approval. Try again after it is approved. |
 
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan kondisi reader ke normal (satu reader tersambung, driver terpasang, reader aktif, sudah disinkronkan). Spec ini tidak mengubah state global lain. Suite serial (`parallel: false`).
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -77,7 +78,7 @@ Untuk setiap baris Tabel 1 (langkah 7 sampai 12):
 - Langkah penghubung (tanpa awalan `Verifikasi`): 1, 7, 13 (mengatur kondisi reader), 2 (hover), 12 dan 18 (menutup dialog blok lewat [OK]), 14 (membuka Popup Detail).
 - Anchor positif absence (bagian 8b butir 2): langkah 3 dan 4 untuk langkah 6; langkah 10 untuk langkah 11; langkah 16 untuk langkah 17 (dialog blok tampil sebagai anchor).
 - Pembagian TC lintas spec: TC-FA-TAG-515 sampai TC-FA-TAG-519 ada di spec 359, TC-FA-TAG-520 sampai TC-FA-TAG-523 di spec 360, TC-FA-TAG-524 sampai TC-FA-TAG-528 di spec 361, TC-FA-TAG-529 dan TC-FA-TAG-530 di spec 362.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-509 sampai TC-FA-TAG-513 menyebut "Tidak ada kode terbaca dan tidak ada perubahan data" sebagai Post Condition tanpa langkah observasi; tidak diasersi.
   - TC-FA-TAG-508 tidak menyebut cara membuat kondisi "Reader tidak tersambung" selain precondition; spec memakai emulator driver reader seperti TC lain.
-  - Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) tidak bisa bersuffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.

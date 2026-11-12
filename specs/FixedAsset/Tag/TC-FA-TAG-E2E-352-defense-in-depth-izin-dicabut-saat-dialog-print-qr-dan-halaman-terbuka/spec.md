@@ -36,6 +36,7 @@ coverage:
 | Quantity Print QR | 2 | `qtyPrint` |
 
 - State yang diubah dan pemulihannya: akses Update pengguna blok 1 dicabut di langkah 2 dan dipulihkan di langkah 7; Update Plant A pengguna blok 2 dicabut di langkah 11 dan dipulihkan di langkah 17. Hook `after` memulihkan capability pengguna dan sesi walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 4 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 2, 7, 11, 17) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -68,9 +69,9 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-TAG-1281 s.d. 1283 ada di spec 327 dan TC-FA-TAG-1303 s.d. 1305 ada di spec 328 (izin dicabut saat dialog Replace, Pair, Receive, Receive Manually, dan Decline Report terbuka).
 - Pelaku kedua memakai sesi API (keputusan 2026-10-21/30): bukan konteks kedua kelas c dan tidak memakai `P-2`; langkah pemicunya ditulis "... hingga ... tersimpan" (langkah 2, 7, 11, 17).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 7 dan 17 (memulihkan capability), 8 (muat ulang halaman untuk menutup dialog Print QR dirty; dialog `beforeunload` ditangani sesuai Prerequisites), 9 (ganti akun), 10 (membuka halaman sesudah login akun lain), 14 dan 15 (membuka Popup Detail dan kebab aset yang diamati TC-FA-TAG-1313).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 4 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 2, 7, 11, 17) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1284 menulis Expected butir a ("Dialog cetak browser tidak terbuka") sebelum butir b ("Server menolak permintaan"); spec mengikuti urutan itu.
   - Post Condition TC-FA-TAG-1284 ("Tidak ada kode QR yang dibuat") tanpa langkah observasi di TC tidak diasersi.
   - TC-FA-TAG-1313 menyebut "Periksa Table Tools" untuk Expected butir a; spec mengasersi tombol `Replace TAG` dan `Print QR` Hidden tanpa menambah asersi lain.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

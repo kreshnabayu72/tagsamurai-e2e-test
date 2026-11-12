@@ -32,8 +32,9 @@ coverage:
 | RF-00110 (RFID) | Excavator 20 Ton - 10 | Disposal | Disposal Center | Dedi K. | 10 Sep 2026 |
 
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk Tag To Be Returned (kode, Last Asset, Reason, Return Group, Current Holder, Since) dan Return Group; tidak ada endpoint yang dikarang di spec ini.
-- Pemulihan di hook `after`: dataset To Be Returned dikembalikan ke keadaan Pre-setup empat Tag lewat fixture backend bila seeding mengubahnya. Filter dan sort dikembalikan ke netral pada akhir kasus terkait; kolom Since dipulihkan pada langkah 31.
+- Pemulihan di hook `after`: dataset To Be Returned dikembalikan ke keadaan Pre-setup empat Tag lewat fixture backend bila seeding mengubahnya. Filter dan sort dikembalikan ke netral pada akhir kasus terkait; kolom Since dipulihkan pada langkah 32.
 - Pemulihan preferensi kolom: hook `after` spec ini menghapus preferensi kolom di browser (kemampuan disediakan tim FE; bukan lewat `[Reset to Default]`), sesuai daftar di `suite.md`. Kolom tersembunyi pada TC-FA-TAG-1013 tersimpan di browser dan diasersi tetap tersembunyi setelah F5.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 20, 22, 26, 32), dipulihkan hook `after` (lihat `suite.md`).
 
 ## Test Steps
 
@@ -77,18 +78,19 @@ coverage:
 27. Tutup Column Visibility
 28. Tekan F5 untuk memuat ulang halaman
 29. Klik tab `To Be Returned`
-30. Verifikasi kolom "Since" tetap tersembunyi setelah halaman dimuat ulang
-31. Tampilkan kembali kolom "Since" lewat Column Visibility, lalu tutup Column Visibility
+30. Verifikasi kolom "TAG Code" tetap tampil setelah halaman dimuat ulang
+31. Verifikasi kolom "Since" tetap tersembunyi setelah halaman dimuat ulang
+32. Tampilkan kembali kolom "Since" lewat Column Visibility, lalu tutup Column Visibility
 
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-1010 s.d. 1013). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: TC-FA-TAG-1005 s.d. 1009 ada di spec 249, TC-FA-TAG-1014 dan 1015 ada di spec 269, dan TC-FA-TAG-1016 dan 1017 ada di spec 251.
 - TC-FA-TAG-1010 menulis "klik ikon sort tiga kali berturut-turut" dengan satu butir Expected; spec memverifikasi sesudah tiap klik karena indikator berubah tiap klik (bagian 8b butir 5).
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 14 (mengembalikan sort kolom Last Asset ke netral); 15 (mengosongkan Filter lewat [Clear Field]); 16 (menerapkan Filter kosong lewat [Apply]); 24, 27 (menutup Column Visibility); 31 (memulihkan kolom Since).
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 14 (mengembalikan sort kolom Last Asset ke netral); 15 (mengosongkan Filter lewat [Clear Field]); 16 (menerapkan Filter kosong lewat [Apply]); 24, 27 (menutup Column Visibility); 32 (memulihkan kolom Since).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 20, 22, 26, 32), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
   - TC-FA-TAG-1011 Expected "filter TAG Type tetap aktif" tidak menyebut cara memeriksanya; spec memeriksa nilai field "TAG Type" pada panel Filter.
   - TC-FA-TAG-1011 s.d. 1013 tidak menyebut cara mengembalikan sort, Filter, dan kolom; spec menambah langkah penghubung.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

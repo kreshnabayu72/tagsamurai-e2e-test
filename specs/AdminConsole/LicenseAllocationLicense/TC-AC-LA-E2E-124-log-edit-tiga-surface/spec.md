@@ -45,70 +45,72 @@ coverage:
 6. Tunggu aksi selesai
 7. Klik ikon `Changelog` pada List
 8. Ketik Search `{idEdit}`, tekan Enter
-9. Verifikasi Changelog memuat satu baris Action `Edit` dengan Field `Type`, Old `Concurrent User`, New `Asset License`, dan satu baris Action `Edit` dengan Field `Additional Quantity`, Old `5`, New `8`
-10. Verifikasi Changelog untuk `{idEdit}` hanya memuat dua baris `Edit` tersebut, tanpa baris untuk atribut yang tidak berubah termasuk Field `Target`
-11. Tutup modal Changelog
-12. Buka Detail User `Dewi Anggraini` > tab System Log
-13. Ketik Search `{idEdit}`, tekan Enter
-14. Verifikasi System Log aktor memuat baris `Edit` yang sama per atribut (Field `Type` Old `Concurrent User` New `Asset License`; Field `Additional Quantity` Old `5` New `8`)
-15. Verifikasi System Log untuk `{idEdit}` hanya memuat dua baris `Edit` tersebut, tanpa Field `Target`
-16. Buka Activity Log Admin Console
-17. Ketik Search `{idEdit}`, tekan Enter
-18. Verifikasi Activity Log memuat baris `Edit` yang sama per atribut dengan Modified By `Dewi A`
-19. Verifikasi Activity Log untuk `{idEdit}` hanya memuat dua baris `Edit` tersebut, tanpa Field `Target`
-20. Buka Allocation > License Allocation (tab Current)
+9. Verifikasi Changelog memuat satu baris Action `Edit` dengan Field `Type`, Old `Concurrent User`, New `Asset License`
+10. Verifikasi Changelog memuat satu baris Action `Edit` dengan Field `Additional Quantity`, Old `5`, New `8`
+11. Verifikasi Changelog untuk `{idEdit}` hanya memuat dua baris `Edit` tersebut, tanpa baris untuk atribut yang tidak berubah termasuk Field `Target`
+12. Tutup modal Changelog
+13. Buka Detail User `Dewi Anggraini` > tab System Log
+14. Ketik Search `{idEdit}`, tekan Enter
+15. Verifikasi System Log aktor memuat baris `Edit` Field `Type` Old `Concurrent User` New `Asset License`
+16. Verifikasi System Log aktor memuat baris `Edit` Field `Additional Quantity` Old `5` New `8`
+17. Verifikasi System Log untuk `{idEdit}` hanya memuat dua baris `Edit` tersebut, tanpa Field `Target`
+18. Buka Activity Log Admin Console
+19. Ketik Search `{idEdit}`, tekan Enter
+20. Verifikasi Activity Log memuat baris `Edit` yang sama per atribut dengan Modified By `Dewi A`
+21. Verifikasi Activity Log untuk `{idEdit}` hanya memuat dua baris `Edit` tersebut, tanpa Field `Target`
+22. Buka Allocation > License Allocation (tab Current)
 
 ### Edit Pending kembali ke Waiting for Approval: baris Status (TC-AC-LA-389)
 
-21. Ketik Search `{idPendSend}`, tekan Enter
-22. Klik row action `Edit` pada baris Pending `{idPendSend}`
-23. Ubah Additional Quantity menjadi `20`
-24. Klik `[Save]`
-25. Klik `[Send]` pada D-04
-26. Tunggu aksi selesai
-27. Klik ikon `Changelog` pada List
-28. Ketik Search `{idPendSend}`, tekan Enter
-29. Verifikasi Changelog memuat baris Action `Edit`, Field `Status`, Old `Pending`, New `Waiting for Approval`
-30. Verifikasi Changelog memuat baris perubahan Quantity (Field `Additional Quantity`, Old `10`, New `20`)
-31. Tutup modal Changelog
-32. Buka Detail User `Dewi Anggraini` > tab System Log
-33. Ketik Search `{idPendSend}`, tekan Enter
-34. Verifikasi System Log aktor memuat baris `Edit` Status `Pending` ke `Waiting for Approval`
-35. Verifikasi System Log memuat baris perubahan Quantity
-36. Buka Activity Log Admin Console
-37. Ketik Search `{idPendSend}`, tekan Enter
-38. Verifikasi Activity Log memuat baris `Edit` Status `Pending` ke `Waiting for Approval`
-39. Verifikasi Activity Log memuat baris perubahan Quantity
-40. Buka Allocation > License Allocation (tab Current)
+23. Ketik Search `{idPendSend}`, tekan Enter
+24. Klik row action `Edit` pada baris Pending `{idPendSend}`
+25. Ubah Additional Quantity menjadi `20`
+26. Klik `[Save]`
+27. Klik `[Send]` pada D-04
+28. Tunggu aksi selesai
+29. Klik ikon `Changelog` pada List
+30. Ketik Search `{idPendSend}`, tekan Enter
+31. Verifikasi Changelog memuat baris Action `Edit`, Field `Status`, Old `Pending`, New `Waiting for Approval`
+32. Verifikasi Changelog memuat baris perubahan Quantity (Field `Additional Quantity`, Old `10`, New `20`)
+33. Tutup modal Changelog
+34. Buka Detail User `Dewi Anggraini` > tab System Log
+35. Ketik Search `{idPendSend}`, tekan Enter
+36. Verifikasi System Log aktor memuat baris `Edit` Status `Pending` ke `Waiting for Approval`
+37. Verifikasi System Log memuat baris perubahan Quantity
+38. Buka Activity Log Admin Console
+39. Ketik Search `{idPendSend}`, tekan Enter
+40. Verifikasi Activity Log memuat baris `Edit` Status `Pending` ke `Waiting for Approval`
+41. Verifikasi Activity Log memuat baris perubahan Quantity
+42. Buka Allocation > License Allocation (tab Current)
 
 ### Edit Pending langsung Active: baris Status dan Target (TC-AC-LA-390)
 
-41. Setel Require Approval for Allocation OFF (Pre-setup #39) lewat fixture backend
-42. Ketik Search `{idPendTarget}`, tekan Enter
-43. Klik row action `Edit` pada baris Pending `{idPendTarget}`
-44. Ganti Target ke term Active `SUBS-20250201-J7K8L`
-45. Klik `[Save]`
-46. Tunggu aksi selesai
-47. Klik ikon `Changelog` pada List
-48. Ketik Search `{idPendTarget}`, tekan Enter
-49. Verifikasi Changelog memuat baris Action `Edit`, Field `Status`, Old `Pending`, New `Active`
-50. Verifikasi Changelog memuat satu baris `Edit` Field `Target` dengan Old Value `SUBS-20260819-00001` dan New Value `SUBS-20250201-J7K8L`
-51. Tutup modal Changelog
-52. Buka Detail User `Dewi Anggraini` > tab System Log
-53. Ketik Search `{idPendTarget}`, tekan Enter
-54. Verifikasi System Log aktor memuat baris `Edit` Status `Pending` ke `Active`
-55. Verifikasi System Log memuat satu baris `Edit` Field `Target` dengan Old Value `SUBS-20260819-00001` dan New Value `SUBS-20250201-J7K8L`
-56. Buka Activity Log Admin Console
-57. Ketik Search `{idPendTarget}`, tekan Enter
-58. Verifikasi Activity Log memuat baris `Edit` Status `Pending` ke `Active`
-59. Verifikasi Activity Log memuat satu baris `Edit` Field `Target` dengan Old Value `SUBS-20260819-00001` dan New Value `SUBS-20250201-J7K8L`
+43. Setel Require Approval for Allocation OFF (Pre-setup #39) lewat fixture backend
+44. Ketik Search `{idPendTarget}`, tekan Enter
+45. Klik row action `Edit` pada baris Pending `{idPendTarget}`
+46. Ganti Target ke term Active `SUBS-20250201-J7K8L`
+47. Klik `[Save]`
+48. Tunggu aksi selesai
+49. Klik ikon `Changelog` pada List
+50. Ketik Search `{idPendTarget}`, tekan Enter
+51. Verifikasi Changelog memuat baris Action `Edit`, Field `Status`, Old `Pending`, New `Active`
+52. Verifikasi Changelog memuat satu baris `Edit` Field `Target` dengan Old Value `SUBS-20260819-00001` dan New Value `SUBS-20250201-J7K8L`
+53. Tutup modal Changelog
+54. Buka Detail User `Dewi Anggraini` > tab System Log
+55. Ketik Search `{idPendTarget}`, tekan Enter
+56. Verifikasi System Log aktor memuat baris `Edit` Status `Pending` ke `Active`
+57. Verifikasi System Log memuat satu baris `Edit` Field `Target` dengan Old Value `SUBS-20260819-00001` dan New Value `SUBS-20250201-J7K8L`
+58. Buka Activity Log Admin Console
+59. Ketik Search `{idPendTarget}`, tekan Enter
+60. Verifikasi Activity Log memuat baris `Edit` Status `Pending` ke `Active`
+61. Verifikasi Activity Log memuat satu baris `Edit` Field `Target` dengan Old Value `SUBS-20260819-00001` dan New Value `SUBS-20250201-J7K8L`
 
 ## Notes
 
 - Alasan di atas sekitar 35 langkah: ketiga blok satu topik (pencatatan Edit oleh Dewi Anggraini pada tiga surface), satu kelas harness fungsional, dan masing-masing memakai record seed sendiri sehingga berdiri sendiri. Sebagian besar langkah adalah blok baca-log berpola (buka surface, cari entri, `Verifikasi` kolom log) yang tidak dihitung pada ambang smell; langkah aksi Edit hanya 15.
-- Langkah penghubung (S-03, R-16): langkah 6, 26 dan 46 (menunggu aksi selesai karena langkah berikutnya berpindah surface, 8b butir 8), langkah 1, 8, 13, 17, 21, 28, 33, 37, 42, 48, 53, dan 57 (Search baris atau entri berdasarkan Allocation ID), langkah 11 dan 31 dan 51 (menutup modal Changelog), langkah 20 dan 40 (kembali ke List), langkah 41 (menyetel toggle).
+- Langkah penghubung (S-03, R-16): langkah 6, 28 dan 48 (menunggu aksi selesai karena langkah berikutnya berpindah surface, 8b butir 8), langkah 1, 8, 14, 19, 23, 30, 35, 39, 44, 50, 55, dan 59 (Search baris atau entri berdasarkan Allocation ID), langkah 12 dan 33 dan 53 (menutup modal Changelog), langkah 22 dan 42 (kembali ke List), langkah 43 (menyetel toggle).
 - Urutan blok mengikuti kebutuhan toggle (ON untuk TC-AC-LA-388 dan TC-AC-LA-389, OFF untuk TC-AC-LA-390) dan sama dengan urutan sourceTc. TC-AC-LA-391, 399, dan 392 (Cancel dan Resubmit) ada di spec 137.
-- TC-AC-LA-388 butir d ("tidak ada baris untuk atribut yang tidak berubah, termasuk Field `Target`") ditulis sebagai asersi jumlah dengan anchor baris `Type` dan `Additional Quantity` pada surface yang sama (langkah 10, 15, dan 19); ini bukan kelas g.
+- TC-AC-LA-388 butir d ("tidak ada baris untuk atribut yang tidak berubah, termasuk Field `Target`") ditulis sebagai asersi jumlah dengan anchor baris `Type` dan `Additional Quantity` pada surface yang sama (langkah 11, 17, dan 21); ini bukan kelas g.
 - Temuan untuk QA:
   - TC-AC-LA-388, 389, dan 390 tidak menyebut cara menemukan entri di Changelog, System Log, dan Activity Log; spec memakai Search dengan Allocation ID unik.
   - TC-AC-LA-389 butir c ("Baris perubahan Quantity ikut tercatat") tidak menyebut surface maupun nilai Old dan New; spec memakai ketiga surface dan nilai dari seed (Old `10`, New `20`).

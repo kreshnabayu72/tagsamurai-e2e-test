@@ -33,6 +33,8 @@ coverage:
 - Data TC-FA-TAG-1488 (kunci `Fixture.fixedAssetTag.eventLog72`): satu entri Event Log: 27 Okt 2026 14:15, RF-00072 (RFID), Last Asset 'Excavator 20 Ton - 3', Return Group 'Disposal Center', Handed Over By kosong (saat Tag dilepas aset tidak punya pemegang terakhir maupun pelaku disposal), Received By 'Budi S.', Method 'Scan', Final Status 'Available'; dimuat pada langkah 13.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk entri Event Log To Be Returned; tidak ada endpoint yang dikarang di spec ini.
 - Pemulihan di hook `after`: entri Event Log To Be Returned dikembalikan ke keadaan Pre-setup tiga entri lewat fixture backend. Search dikosongkan di akhir tiap kasus.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 13) yang menyiapkan atau memulihkan state.
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
 
 ## Test Steps
 
@@ -72,8 +74,8 @@ coverage:
 - Urutan TC: TC-FA-TAG-1043, 1044, 1045, lalu TC-FA-TAG-1488, karena TC-FA-TAG-1488 memakai dataset satu entri yang berbeda dari tiga entri Pre-setup dan dimuat sekali di akhir (S-10).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 5, 8, 11 (mengosongkan Search lewat `(←)`); 12, 17 (menutup modal Event Log); 13 (memuat dataset satu entri RF-00072).
 - Asersi tambahan di luar Expected TC: tidak ada.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 13) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
   - TC-FA-TAG-1488 Expected "tanda —" tidak menyebut karakter persisnya selain judul TC; spec memakai karakter "—" (em dash) seperti di judul dan Expected TC.
   - TC-FA-TAG-1488 hanya menyebut satu entri Event Log, sedangkan tiga entri Pre-setup lain tidak disebut; spec memakai dataset satu entri.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

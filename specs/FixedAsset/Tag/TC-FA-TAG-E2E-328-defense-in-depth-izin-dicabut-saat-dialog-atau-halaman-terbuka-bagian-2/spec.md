@@ -36,7 +36,8 @@ coverage:
 | Tag To Be Returned | [RFID] RF-00071 (Last Asset 'Excavator 20 Ton - 2', Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); [RFID] RF-00088 ('Excavator 20 Ton - 5', Disposal Center, Dedi K.); [NFC] NF-00092 ('Laptop Pro 14 - 8', HQ Warehouse, Rina T.) | `tbr` |
 | Aset berlaporan | AST-0020 ('Excavator 20 Ton - 20', group Plant B) dengan Tag tunggal RF-00130 dan laporan terbuka Damaged dari Staff Auditor | `aset20Laporan` |
 
-- State yang diubah dan pemulihannya: Update pengguna blok 1 pada group Disposal Center dicabut di langkah 4 dan 14 serta dipulihkan di langkah 9 dan 19; Update pengguna blok 2 pada group Plant B dicabut di langkah 27 dan dipulihkan di langkah 31. Hook `after` memulihkan capability pengguna dan sesi walau spec gagal di tengah.
+- State yang diubah dan pemulihannya: Update pengguna blok 1 pada group Disposal Center dicabut di langkah 4 dan 15 serta dipulihkan di langkah 9 dan 19; Update pengguna blok 2 pada group Plant B dicabut di langkah 27 dan dipulihkan di langkah 31. Hook `after` memulihkan capability pengguna dan sesi walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5, 16, 28 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 4, 9, 15, 19, 27, 31) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -76,17 +77,18 @@ coverage:
 29. Verifikasi server menolak commit dengan 403
 30. Verifikasi laporan RF-00130 tetap terbuka
 31. Pelaku kedua memulihkan Update pengguna pada group Plant B lewat sesi API hingga tersimpan
+32. Muat ulang halaman (F5)
 
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-1303 s.d. 1305). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: TC-FA-TAG-1281 s.d. 1283 ada di spec 327 dan TC-FA-TAG-1284 serta TC-FA-TAG-1313 ada di spec 352.
 - Pelaku kedua memakai sesi API (keputusan 2026-10-21/30): bukan konteks kedua kelas c dan tidak memakai `P-2`; langkah pemicunya ditulis "... hingga ... tersimpan" (langkah 4, 9, 15, 19, 27, 31).
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9, 19, dan 31 (memulihkan capability), 10 dan 20 (muat ulang halaman untuk menutup dialog dirty dan menyegarkan capability di UI; dialog `beforeunload` ditangani sesuai Prerequisites), 21 (ganti akun), 22 (membuka halaman sesudah login akun lain).
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 9, 19, dan 31 (memulihkan capability), 10, 20, dan 32 (muat ulang halaman untuk menutup dialog dirty dan menyegarkan capability di UI; dialog `beforeunload` ditangani sesuai Prerequisites), 21 (ganti akun), 22 (membuka halaman sesudah login akun lain).
 - Asersi "jumlah entri Event Log dan TAG Log tidak bertambah" (langkah 8) ditulis di spec ini dengan baseline (S-12) dan didahului `Verifikasi` respons penolakan dan status Tag sebagai anchor; spec absence kelas g milik modul ini tidak memuat TC-FA-TAG-1303.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada; aksi tulis pada langkah 5, 16, 28 ditolak dan tidak menambah entri Changelog, Event Log, maupun TAG Log. Aksi lain lewat sesi API (langkah 4, 9, 15, 19, 27, 31) tidak dinyatakan PRD tag.md atau TC menimbulkan efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1303 s.d. 1305 menyebut "Pengguna A" dan "Admin" tanpa akun; spec memakai akun Pre-setup sebagai Pengguna A dan Admin lewat sesi API yang disediakan tim FE.
   - TC-FA-TAG-1304 dan TC-FA-TAG-1305 tidak memberi langkah observasi untuk entri Event Log atau TAG Log; spec hanya mengasersi Expected TC (penolakan 403 dan status Tag atau laporan).
   - TC-FA-TAG-1305 tidak menyebut langkah membuka Popup Detail dan menu aksi; spec memakai urutan yang sama dengan TC Decline Report lain (Popup Assets group Plant B, menu aksi baris, "Decline Report").
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

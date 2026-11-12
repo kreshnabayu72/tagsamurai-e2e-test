@@ -25,19 +25,20 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Dua aset Paired | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID, Tag RFID `RF-00130` Paired) dan 'Excavator 20 Ton - 221' (AST-0221, Group Plant A, Tag RFID `RF-00140` Paired) | `asetPaired` |
+| Dua aset Paired | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID, Tag RFID `RF-00330` Paired) dan 'Excavator 20 Ton - 221' (AST-0221, Group Plant A, Tag RFID `RF-00140` Paired) | `asetPaired` |
 | Stok Available | Tag RFID `RF-00412` dan `RF-00415`, Tag NFC `NF-00500` | `stokAvailable` |
 | Tag To Be Returned | [RFID] RF-00071 (Last Asset 'Excavator 20 Ton - 2', Reason Disposal, Return Group Disposal Center, Current Holder Dedi K.); [RFID] RF-00088 ('Excavator 20 Ton - 5', Disposal Center, Dedi K.); [NFC] NF-00092 ('Laptop Pro 14 - 8', HQ Warehouse, Rina T.) | `tbr` |
 | Quantity Print QR | 2 | `qtyPrint` |
 
 - State yang diubah dan pemulihannya: langkah 21 menerima Tag `RF-00071` (status berubah dari To Be Returned) dan langkah 10 membuat satu batch 2 kode QR; hook `after` memulihkan `RF-00071` ke To Be Returned lewat fixture backend, melepas intercept, dan menutup dialog cetak browser walau spec gagal di tengah.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: batch kode QR dari `Start Print` (sebanyak Quantity, terdaftar `Available` di registri Global) beserta data cetak (langkah 10); entri Event Log To Be Returned (Method `Scan`) (langkah 21); entri TAG Log Global `Received` (langkah 21). Jumlah entri Event Log dibaca sebagai baseline pada langkah 19; log itu permanen dan tidak dipulihkan fixture, dan asersi entri baru memakai selisih terhadap baseline: butir A-18.
 
 ## Test Steps
 
 ### TC-FA-TAG-257: Dua pindaian beruntun cepat di overlay
 
 1. Klik tombol scan `Replace TAG` di toolbar tab Paired
-2. Pindai `RF-00130` lalu segera pindai `RF-00140` berurutan tanpa jeda yang dapat diatur
+2. Pindai `RF-00330` lalu segera pindai `RF-00140` berurutan tanpa jeda yang dapat diatur
 3. Verifikasi hanya satu Dialog Replace TAG terbuka, untuk aset 'Excavator 20 Ton - 220' (pindaian pertama)
 4. Verifikasi pindaian kedua diabaikan dan tidak ada dialog ganda
 5. Muat ulang halaman (F5)
@@ -75,10 +76,10 @@ coverage:
 - Pembagian TC lintas spec: Submit Decline Report dan Submit Replace ditekan beruntun (TC-FA-TAG-646, 1344) ada di spec 343; Submit Pair dan Submit & next sesi Batch (TC-FA-TAG-1348, 1349) ada di spec 344; Submit Report TAG dan Cancel Report (TC-FA-TAG-619, 669) ada di spec 351; Submit Receive Manually (TC-FA-TAG-587) ada di spec 383.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 5 (muat ulang halaman untuk menutup Dialog Replace TAG), 9 dan 20 (menunggu toast lama hilang otomatis sebelum hitungan toast), 12 (melepas tahanan respons), 15 (menutup dialog cetak browser), 16 (melepas intercept), 17 (membuka tab To Be Returned), 19 (baseline Event Log, S-12), 26 (menutup Modal Event Log).
 - Langkah 11 (hanya satu request) dan langkah 13 (hanya satu toast) diasersi sesudah respons dilepas; langkah 14 (hanya satu dokumen cetak) diasersi sesudah Toast sukses di langkah 13 sebagai anchor positif.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: batch kode QR dari `Start Print` (sebanyak Quantity, terdaftar `Available` di registri Global) beserta data cetak (langkah 10); entri Event Log To Be Returned (Method `Scan`) (langkah 21); entri TAG Log Global `Received` (langkah 21).
 - Temuan untuk QA:
   - TC-FA-TAG-566 menyebut Event Log memuat "tepat satu entri untuk RF-00071"; Event Log adalah audit trail permanen sehingga spec mengasersi tepat satu entri baru terhadap baseline (S-12).
   - Expected TC-FA-TAG-566 butir a ("Toast hanya tampil sekali") tidak menyebut teks toast; spec mengasersi jumlah toast tanpa teks.
   - Post Condition TC-FA-TAG-494 ("Hanya satu batch 2 kode QR dibuat") dan TC-FA-TAG-566 ("Tepat satu entri TAG Log Global "Received" untuk RF-00071") tanpa langkah observasi di TC tidak diasersi.
   - Batch kode QR yang dibuat langkah 10 tidak punya cara pemulihan di TC; spec tidak menghapusnya.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*, NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

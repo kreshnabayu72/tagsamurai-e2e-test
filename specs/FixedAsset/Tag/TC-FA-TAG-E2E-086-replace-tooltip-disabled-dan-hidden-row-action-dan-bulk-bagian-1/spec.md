@@ -29,18 +29,19 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID), satu Tag RFID `RF-00130` Paired | `aset220` |
+| Aset 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID), satu Tag RFID `RF-00330` Paired | `aset220` |
 | Aset 2 | 'Excavator 20 Ton - 221' (AST-0221, Group Plant A), Tag RFID `RF-00140` Paired | `aset221` |
 | Aset 3 | 'Excavator 20 Ton - 22' (AST-0022, Group Plant A), Tag RFID `RF-00142` Paired; Asset Status Disposed atau In Disposal Process sesuai bagian | `aset22` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: status reader, stok Available RFID, dan Asset Status 'Excavator 20 Ton - 22' diatur per bagian lewat fixture; hook `after` memulihkan reader tersambung, stok seperti awal, dan Asset Status aset.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 5, 16, 25, 32) yang menyiapkan atau memulihkan state.
 
 ## Test Steps
 
 ### Reader tidak tersambung dan stok 0 (TC-FA-TAG-331)
 
-1. Atur reader tidak tersambung ke komputer, hapus semua Tag RFID Available dari stok Global, dan pastikan 'Excavator 20 Ton - 220' punya satu Tag RFID `RF-00130` Paired lewat fixture backend hingga tersimpan
+1. Atur reader tidak tersambung ke komputer, hapus semua Tag RFID Available dari stok Global, dan pastikan 'Excavator 20 Ton - 220' punya satu Tag RFID `RF-00330` Paired lewat fixture backend hingga tersimpan
 2. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
 3. Arahkan kursor ke row action `Replace TAG` pada baris 'Excavator 20 Ton - 220'
 4. Verifikasi row action Disabled dengan tooltip "Connect a TAG reader to replace."
@@ -95,8 +96,8 @@ coverage:
 - Urutan TC di dalam spec mengikuti keadaan reader dan stok supaya perubahan state seminimal mungkin: TC-331, TC-371, TC-380, TC-372, TC-330, TC-373, TC-374. Setiap perpindahan keadaan adalah langkah penghubung.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 1, 5, 16, 25, dan 32 (mengatur reader, stok, dan Asset Status lewat fixture backend, menutup Popup Detail) serta langkah 12 (centang yang dipakai TC-380) dan awal langkah 16 (hapus centang). Popup Detail dibuka ulang sesudah tiap perubahan state supaya state terbaru terbaca.
 - Spec di atas smell 35 langkah (38 langkah). Alasan: seluruh blok satu topik (tooltip Disabled row action dan Bulk Replace TAG pada popup yang sama), satu kelas, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 1, 5, 16, 25, 32) yang menyiapkan atau memulihkan state.
 - Temuan untuk QA:
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme mengatur tersambung atau tidak tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - TC-FA-TAG-330, 373, dan 374 memakai 'Excavator 20 Ton - 22' dengan Asset Status berbeda dan TC-372 serta TC-330 membutuhkan stok RFID 0; TC tidak menyatakan cara mengubah state di tengah spec (fixture backend).

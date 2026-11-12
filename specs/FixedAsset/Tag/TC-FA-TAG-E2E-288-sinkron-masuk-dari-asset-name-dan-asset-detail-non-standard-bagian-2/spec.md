@@ -23,7 +23,7 @@ coverage:
 - Pelaku kedua memakai sesi API (token tidak dihitung sebagai sesi web; kemampuan disediakan tim BE/FE, lihat `suite.md`); langkah pemicunya tidak memuat asersi di sesi itu.
 - Data (Pre-setup TC, tanpa suffix): grup Excavator 20 Ton / Plant A (20 aset: 18 ber-Tag RFID dan 2 Not Paired Yet; TAG Type Asset Name RFID) dan Excavator 20 Ton / Plant B (20 aset); pemegang Update Plant A: Budi S.
 - Data tambahan: aset A adalah satu aset ber-Tag RFID di Excavator 20 Ton / Plant A (kunci fixture disediakan).
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan melakukan aksi lewat sesi API (langkah 3).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan TAG Type Asset Name, aset, Tag, laporan, dan sesi ke akun default suite lewat fixture backend.
 - State global yang diubah spec ini: pairing Tag aset A. Suite serial (`parallel: false`).
 
@@ -44,6 +44,7 @@ coverage:
 
 - Mode: FE+BE.
 - Tidak ada langkah penghubung selain langkah dari TC. TC-FA-TAG-1133 sampai 1142 ada di spec 287.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan melakukan aksi lewat sesi API (langkah 3).
 - Temuan untuk QA:
   - TC-FA-TAG-1143 berjudul 'dilepas di Global' tetapi langkah TC ke-2 menulis 'lepas pairing Tag aset A lewat modul Asset Detail'; spec memakai pelaku kedua lewat sesi API tanpa menyebut modul pelepas.
   - TC-FA-TAG-1143 tidak menyebut cara melepas pairing di UI; mekanisme dicatat sebagai kemampuan disediakan tim FE/BE (S-13).

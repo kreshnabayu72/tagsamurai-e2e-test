@@ -29,6 +29,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -46,7 +47,7 @@ coverage:
 ### TC-FA-TAG-781: Sort tiga tahap kolom Asset ID pada T-TAG-02
 
 9. Klik header kolom Asset ID sekali
-10. Verifikasi setelah klik 1 (menaik): urutan relatif lima aset acuan: AST-0011, AST-0020, AST-0021, AST-0043, AST-0044; nilai sama diurutkan menurut default sort (Last Updated terbaru di atas); nilai kosong `—` di akhir saat menaik dan di awal saat menurun
+10. Verifikasi setelah klik 1 (menaik): urutan relatif lima aset acuan: AST-0011, AST-0020, AST-0021, AST-0043, AST-0044
 11. Klik header kolom Asset ID sekali lagi
 12. Verifikasi setelah klik 2 (menurun): AST-0044, AST-0043, AST-0021, AST-0020, AST-0011
 13. Klik header kolom Asset ID sekali lagi
@@ -55,7 +56,7 @@ coverage:
 ### TC-FA-TAG-782: Sort tiga tahap kolom TAG Code pada T-TAG-02
 
 15. Klik header kolom TAG Code sekali
-16. Verifikasi setelah klik 1 (menaik): urutan relatif lima aset acuan: AST-0043, AST-0044, AST-0011, AST-0020, AST-0021; nilai sama diurutkan menurut default sort (Last Updated terbaru di atas); nilai kosong `—` di akhir saat menaik dan di awal saat menurun
+16. Verifikasi setelah klik 1 (menaik): urutan relatif lima aset acuan: AST-0043, AST-0044, AST-0011, AST-0020, AST-0021
 17. Klik header kolom TAG Code sekali lagi
 18. Verifikasi setelah klik 2 (menurun): AST-0021, AST-0020, AST-0011, AST-0044, AST-0043
 19. Klik header kolom TAG Code sekali lagi
@@ -75,6 +76,6 @@ coverage:
 
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 27.
 - Popup Detail dibuka sekali dan page size 25 diatur sekali pada TC pertama; keduanya tidak diulang pada TC berikutnya karena klik ketiga tiap TC mengembalikan sort ke netral (halaman yang sama dipakai berulang).
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Post Condition TC ("Tidak ada perubahan data bisnis (aksi hanya membaca)" dan "Konfigurasi kolom tersimpan di cache browser ...") tidak punya langkah observasi di TC; tidak diasersi.

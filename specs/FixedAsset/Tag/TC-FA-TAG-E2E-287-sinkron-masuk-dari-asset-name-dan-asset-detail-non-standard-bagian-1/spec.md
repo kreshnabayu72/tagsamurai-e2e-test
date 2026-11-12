@@ -29,7 +29,7 @@ coverage:
 - Data (Pre-setup TC, tanpa suffix): grup Excavator 20 Ton / Plant A (20 aset: 18 ber-Tag RFID dan 2 Not Paired Yet; TAG Type Asset Name RFID) dan Excavator 20 Ton / Plant B (20 aset); pemegang Update Plant A: Budi S.
 - Baseline nilai kartu `Non-standard` dan Non-standard baris Excavator 20 Ton / Plant A dibaca lewat kemampuan baca (disediakan tim FE/BE) di hook `before` (S-12).
 - Perubahan TAG Type Asset Name dipicu lewat sesi API karena objek uji ada di halaman TAG; hasilnya diamati di sesi UI akun aktor (kemampuan disediakan tim BE/FE).
-- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; Lampiran A belum memuat butir modul ini sehingga seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE (suite serial) dicatat sebagai kebutuhan.
+- Nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Seeding idempotent (dilewati bila sudah ada) dan pemulihan lewat fixture BE; suite serial (`parallel: false`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 24, 29) yang menyiapkan atau memulihkan state, serta melakukan aksi lewat sesi API (langkah 1, 9, 14, 19, 25).
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): kembalikan TAG Type Asset Name, aset, Tag, laporan, dan sesi ke akun default suite lewat fixture backend.
 - State global yang diubah spec ini: TAG Type Asset Name 'Excavator 20 Ton' (dan Asset Name lain yang disebut pada langkah). Suite serial (`parallel: false`).
 
@@ -80,18 +80,20 @@ coverage:
 
 ### TC-FA-TAG-1142: aset Not Paired Yet pada Popup Detail selaras dengan dimensi Tagging di Asset Detail
 
-29. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
-30. Klik `Show` di samping `Not Paired Yet`, lalu catat satu aset berstatus `Not Paired Yet`
-31. Buka Asset > Asset List > Detail aset yang dicatat
-32. Verifikasi Asset Detail aset itu menampilkan status Tagging `Not Paired Yet`
-33. Verifikasi aset itu tidak memiliki Tag Paired
+29. Pulihkan TAG Type 'Excavator 20 Ton' ke RFID lewat fixture backend, lalu muat ulang halaman TAG tab Paired (F5)
+30. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
+31. Klik `Show` di samping `Not Paired Yet`, lalu catat satu aset berstatus `Not Paired Yet`
+32. Buka Asset > Asset List > Detail aset yang dicatat
+33. Verifikasi Asset Detail aset itu menampilkan status Tagging `Not Paired Yet`
+34. Verifikasi aset itu tidak memiliki Tag Paired
 
 ## Notes
 
 - Mode: FE+BE.
-- Langkah penghubung (S-03): 24 (memulihkan TAG Type dan mencatat nilai awal).
+- Langkah penghubung (S-03): 24 dan 29 (24: memulihkan TAG Type dan mencatat nilai awal; 29: memulihkan TAG Type ke RFID sebelum TC-FA-TAG-1142 yang mensyaratkan TAG Type Asset Name RFID).
 - TC-FA-TAG-1143 ada di spec 288. TC-FA-TAG-1134 melanjutkan keadaan TC-FA-TAG-1133 (TAG Type NFC), sesuai dependensinya.
-- Urutan: TC-FA-TAG-1139 dan 1140 menetapkan TAG Type secara absolut sehingga tidak butuh pemulihan antar keduanya; pemulihan ke RFID hanya sebelum TC-FA-TAG-1141 yang mensyaratkan Non-standard awal 0.
+- Urutan: TC-FA-TAG-1139 dan 1140 menetapkan TAG Type secara absolut sehingga tidak butuh pemulihan antar keduanya; pemulihan ke RFID dilakukan sebelum TC-FA-TAG-1141 (Non-standard awal 0) dan sebelum TC-FA-TAG-1142 (Precondition TAG Type Asset Name RFID, setelah TC-FA-TAG-1141 mengubahnya ke NFC).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama dan kode persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan hanya mengubah data lewat fixture backend (langkah 24, 29) yang menyiapkan atau memulihkan state, serta melakukan aksi lewat sesi API (langkah 1, 9, 14, 19, 25).
 - Temuan untuk QA:
   - TC-FA-TAG-1133 langkah TC ke-1 dan TC-FA-TAG-1134 langkah TC ke-1 mengubah TAG Type lewat Modul Asset Name; spec memicunya lewat sesi API dan tidak menguji form Asset Name (bukan objek uji).
   - TC-FA-TAG-1141 langkah TC ke-2 ('Ubah TAG Type pada Asset Name') tidak menyebut Asset Name dan nilai; spec memakai 'Excavator 20 Ton' dari RFID menjadi NFC seperti TC-FA-TAG-1133.

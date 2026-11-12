@@ -2,7 +2,7 @@
 
 Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (1500 ID `TC-FA-TAG-1`–`1500`). Suite: `specs/FixedAsset/Tag/`. Prefix: `FA` + `TAG` (`TC-FA-TAG-E2E-*`). Status semua spec: `draft`, belum ada script. `tc-tag-backend.md` tidak ada dan tidak dipakai untuk suite ini.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1500 TC masuk 379 spec; tidak ada TC hanya-BE yang dikeluarkan. Setiap TC terpetakan ke tepat satu spec. TC kelas K-1 (Expected berupa respons API) tetap masuk sebagai spec FE+BE; modul ini tidak punya `openapi.yaml` dan `low-level-design.md`, sehingga tidak ada spec `Mode: mock`.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1500 TC masuk 383 spec; tidak ada TC hanya-BE yang dikeluarkan. Setiap TC terpetakan ke tepat satu spec, kecuali TC yang terbelah antara spec asal dan spec absence menurut S-05 (lihat bagian "Pembagian TC lintas spec: asersi absence log (S-05)"). TC kelas K-1 (Expected berupa respons API) tetap masuk sebagai spec FE+BE; modul ini tidak punya `openapi.yaml` dan `low-level-design.md`, sehingga tidak ada spec `Mode: mock`.
 
 ## TC hanya-BE (tidak masuk spec)
 
@@ -44,7 +44,7 @@ Tidak ada.
 | TC-FA-TAG-E2E-030-role-matrix-pair-tag-row-action-dan-bulk | Role Matrix: Pair TAG pada Row Action dan Bulk Action Bar | FE+BE | 31 | 153, 154, 155, 156 |
 | TC-FA-TAG-E2E-031-hak-parsial-update-read-per-group-pada-aksi-halaman-bagian-1 | Hak Parsial Update dan Read per Group pada Aksi Halaman TAG (Bagian 1) | FE+BE | 28 | 122, 124, 125, 126, 127 |
 | TC-FA-TAG-E2E-032-hak-parsial-update-read-per-group-pada-aksi-halaman-bagian-2 | Hak Parsial Update dan Read per Group pada Aksi Halaman TAG (Bagian 2) | FE+BE | 26 | 130, 162 |
-| TC-FA-TAG-E2E-033-scope-group-grup-popup-detail-kartu-dan-search-bagian-1 | Scope Group: Grup, Popup Detail, dan Nilai Kartu per Role (Bagian 1) | FE+BE | 22 | 30, 131, 132, 133, 134, 135, 136, 137 |
+| TC-FA-TAG-E2E-033-scope-group-grup-popup-detail-kartu-dan-search-bagian-1 | Scope Group: Grup, Popup Detail, dan Nilai Kartu per Role (Bagian 1) | FE+BE | 21 | 30, 131, 132, 133, 134, 135, 136, 137 |
 | TC-FA-TAG-E2E-034-scope-group-grup-popup-detail-kartu-dan-search-bagian-2 | Scope Group: Search Tidak Menampilkan Grup di Luar Scope | FE+BE | 3 | 138 |
 | TC-FA-TAG-E2E-035-scope-group-modal-changelog-dan-event-log | Scope Group: Modal Changelog dan Event Log | FE+BE | 14 | 139, 140, 141 |
 | TC-FA-TAG-E2E-036-role-matrix-aksi-receive-dan-event-log-to-be-returned-bagian-1 | Role Matrix: Aksi Receive dan Event Log To Be Returned per Role (Bagian 1) | FE+BE | 40 | 163, 164, 165, 166, 167 |
@@ -52,7 +52,7 @@ Tidak ada.
 | TC-FA-TAG-E2E-038-pemegang-update-return-group-menyelesaikan-receive | Pemegang Update pada Return Group Menyelesaikan Receive | FE+BE | 23 | 171, 172, 173 |
 | TC-FA-TAG-E2E-039-role-matrix-decline-report-row-action | Role Matrix: Row Action Decline Report | FE+BE | 28 | 174, 175, 176, 177, 178, 179 |
 | TC-FA-TAG-E2E-040-role-matrix-report-tag-dan-cancel-report-dari-modul-audit | Role Matrix: Report TAG dan Cancel Report dari Modul Audit | FE+BE | 32 | 180, 181, 182, 183, 184, 185, 186 |
-| TC-FA-TAG-E2E-041-aksi-tulis-oleh-pemegang-manage-read-update-pair-batch-replace-dan | Aksi Tulis oleh Pemegang Manage asset & TAG (Read + Update): Pair TAG, Batch Replace TAG, dan Print QR | FE+BE | 29 | 1431, 1432, 1433 |
+| TC-FA-TAG-E2E-041-aksi-tulis-oleh-pemegang-manage-read-update-pair-batch-replace-dan | Aksi Tulis oleh Pemegang Manage asset & TAG (Read + Update): Pair TAG, Batch Replace TAG, dan Print QR | FE+BE | 30 | 1431, 1432, 1433 |
 | TC-FA-TAG-E2E-042-role-matrix-row-action-batch-replace-dan-aksi-grup-replace-non-standard-update-parsial | Role Matrix: Aksi Replace TAG bagi Pemegang Update pada Group Plant A dan Descendant | FE+BE | 13 | 151, 152 |
 | TC-FA-TAG-E2E-043-hak-parsial-update-read-per-group-pada-aksi-halaman-bagian-3 | Hak Parsial Update dan Read per Group pada Aksi Halaman TAG (Bagian 3) | FE+BE | 22 | 157, 158, 159, 160, 161 |
 | TC-FA-TAG-E2E-044-row-action-per-kondisi-aset-urutan-dan-penghitungan-ulang-bagian-1 | Row Action per Kondisi Aset di Popup Detail: Replace TAG, Decline Report, dan Pair TAG | FE+BE | 35 | 189, 190, 191, 192, 193, 194, 195, 196 |
@@ -74,36 +74,36 @@ Tidak ada.
 | TC-FA-TAG-E2E-061-dialog-replace-tag-pemilihan-tag-centang-dan-slot-pengganti-bagian-1 | Dialog Replace TAG: Pemilihan Tag (Centang) dan Slot Pengganti Mengikuti Pilihan (Bagian 1) | FE+BE | 32 | 276, 277, 278, 279, 280 |
 | TC-FA-TAG-E2E-062-dialog-replace-tag-pemilihan-tag-centang-dan-slot-pengganti-bagian-2 | Dialog Replace TAG: Tag Non-standard Tidak Tercentang Otomatis dan Slot Tipe Wajib yang Masih Kosong (Bagian 2) | FE+BE | 18 | 281, 282 |
 | TC-FA-TAG-E2E-063-dialog-replace-tag-scan-current-tag-badge-dan-penolakan-bagian-1 | Dialog Replace TAG: Scan Current TAG, Badge Scanned atau Not scanned, dan Penolakan Tag Lama Salah (Bagian 1) | FE+BE | 33 | 283, 284, 285, 286, 287 |
-| TC-FA-TAG-E2E-064-dialog-replace-tag-scan-current-tag-badge-dan-penolakan-bagian-2 | Dialog Replace TAG: Scan Current TAG, Penolakan Tag Milik Aset Lain, Tidak Paired, Tidak Dikenal, dan Produk Lain (Bagian 2) | FE+BE | 39 | 288, 289, 290, 291, 292 |
+| TC-FA-TAG-E2E-064-dialog-replace-tag-scan-current-tag-badge-dan-penolakan-bagian-2 | Dialog Replace TAG: Scan Current TAG, Penolakan Tag Milik Aset Lain, Tidak Paired, Tidak Dikenal, dan Produk Lain (Bagian 2) | FE+BE | 38 | 288, 289, 290, 291, 292 |
 | TC-FA-TAG-E2E-065-dialog-replace-tag-scan-tag-pengganti-penolakan-v-07-v-08-v-23-bagian-1 | Dialog Replace TAG: Scan Tag Pengganti, Verified, dan Penolakan Status Paired, Reserved, Retired, Damaged/Missing, Waiting for Approval (Bagian 1) | FE+BE | 33 | 293, 294, 295, 296, 297 |
 | TC-FA-TAG-E2E-066-dialog-replace-tag-scan-tag-pengganti-penolakan-v-07-v-08-v-23-bagian-2 | Dialog Replace TAG: Scan Tag Pengganti, Penolakan Waiting for Approval, Tidak Dikenal, QR Tidak Pernah Dicetak, dan User TAG (Bagian 2) | FE+BE | 36 | 298, 299, 300, 301, 302 |
 | TC-FA-TAG-E2E-067-dialog-replace-tag-scan-tag-pengganti-penolakan-v-07-v-08-v-23-bagian-3 | Dialog Replace TAG: Scan Tag Pengganti, Penolakan Tidak Berlaku di Client, Tipe Tidak Sesuai, Tag Sama, dan Produk Supply Asset (Bagian 3) | FE+BE | 37 | 303, 304, 305, 306, 1461 |
 | TC-FA-TAG-E2E-068-dialog-replace-tag-submit-cancel-backdrop-dan-aset-non-tag-bagian-1 | Dialog Replace TAG: Submit Normal, Submit Tanpa Tag Pengganti (V-28), dan Cancel Dialog Kosong atau Terisi (Bagian 1) | FE+BE | 30 | 309, 310, 311, 312 |
-| TC-FA-TAG-E2E-069-dialog-replace-tag-submit-cancel-backdrop-dan-aset-non-tag-bagian-2 | Dialog Replace TAG: Konfirmasi Discard (D-09) lewat Cancel, Ikon Close, dan Klik Backdrop (Bagian 2) | FE+BE | 26 | 313, 314, 315, 316 |
+| TC-FA-TAG-E2E-069-dialog-replace-tag-submit-cancel-backdrop-dan-aset-non-tag-bagian-2 | Dialog Replace TAG: Konfirmasi Discard (D-09) lewat Cancel, Ikon Close, dan Klik Backdrop (Bagian 2) | FE+BE | 27 | 313, 314, 315, 316 |
 | TC-FA-TAG-E2E-070-dialog-replace-tag-submit-cancel-backdrop-dan-aset-non-tag-bagian-3 | Dialog Replace TAG: Esc pada Konfirmasi D-09, Submit Disabled Tanpa Tag Tercentang, dan Aset Non-TAG (Bagian 3) | FE+BE | 28 | 317, 1352, 1441 |
 | TC-FA-TAG-E2E-071-replace-penutupan-laporan-terbuka-dan-alur-ujung-ke-ujung-bagian-1 | Replace: Laporan Terbuka pada Tag Lain Tetap Terbuka, Penutupan Laporan Tag QR, dan Alur Ujung ke Ujung Admin Aset | FE+BE | 35 | 324, 325, 326 |
 | TC-FA-TAG-E2E-072-replace-penutupan-laporan-terbuka-dan-alur-ujung-ke-ujung-bagian-2 | Replace: Laporan Terbuka pada Tag yang Dilepas Ditutup Replaced dan Status Tag Reported Dicabut | FE+BE | 22 | 340, 1378 |
 | TC-FA-TAG-E2E-073-replace-nasib-tag-lama-available-damaged-missing-dan-keluar-bagian-1 | Replace: Nasib Tag Lama Tidak Dipindai (Damaged/Missing), Tag NFC Not scanned, Non-standard QR Keluar, dan Non-standard RFID Available (Bagian 1) | FE+BE | 32 | 332, 333, 334, 335 |
-| TC-FA-TAG-E2E-074-replace-nasib-tag-lama-available-damaged-missing-dan-keluar-bagian-2 | Replace: Nasib Tag Lama pada Aset Non-TAG, Dua Tag Dilepas Sekaligus, dan Aset Multi-Tag (Bagian 2) | FE+BE | 31 | 336, 337, 338, 339 |
-| TC-FA-TAG-E2E-075-replace-efek-pada-perhitungan-non-standard-discard-dan-stok-bagian-1 | Replace: Efek pada Hitungan Non-standard, Aksi Grup Replace non-standard TAGs, dan Jumlah Slot per Tag Dicentang (Bagian 1) | FE+BE | 39 | 327, 328, 329, 341 |
-| TC-FA-TAG-E2E-076-replace-efek-pada-perhitungan-non-standard-discard-dan-stok-bagian-2 | Replace: Discard Penggantian Membiarkan Aset Tetap Reported dan Non-standard, Stok Tetap Available, dan Tanpa Dokumen Approval (Bagian 2) | FE+BE | 27 | 342, 343, 344 |
+| TC-FA-TAG-E2E-074-replace-nasib-tag-lama-available-damaged-missing-dan-keluar-bagian-2 | Replace: Nasib Tag Lama pada Aset Non-TAG, Dua Tag Dilepas Sekaligus, dan Aset Multi-Tag (Bagian 2) | FE+BE | 32 | 336, 337, 338, 339 |
+| TC-FA-TAG-E2E-075-replace-efek-pada-perhitungan-non-standard-discard-dan-stok-bagian-1 | Replace: Efek pada Hitungan Non-standard, Aksi Grup Replace non-standard TAGs, dan Jumlah Slot per Tag Dicentang (Bagian 1) | FE+BE | 41 | 327, 328, 329, 341 |
+| TC-FA-TAG-E2E-076-replace-efek-pada-perhitungan-non-standard-discard-dan-stok-bagian-2 | Replace: Discard Penggantian Membiarkan Aset Tetap Reported dan Non-standard, Stok Tetap Available, dan Tanpa Dokumen Approval (Bagian 2) | FE+BE | 29 | 342, 343, 344 |
 | TC-FA-TAG-E2E-077-replace-tag-pengganti-to-be-returned-dan-status-aset-transaksi-bagian-1 | Replace: Tag Pengganti To be Returned Diterima bila Return Group Berhak Update dan Ditolak bila Hanya Read atau di Luar Scope (Bagian 1) | FE+BE | 29 | 345, 346, 347 |
 | TC-FA-TAG-E2E-078-replace-tag-pengganti-to-be-returned-dan-status-aset-transaksi-bagian-2 | Replace: Aset Berstatus Menunggu Serah Terima atau Approval, In Transfer Process, Sesi Opname Berjalan, dan Under Maintenance Berjalan Normal (Bagian 2) | FE+BE | 12 | 350, 351, 352, 353 |
 | TC-FA-TAG-E2E-079-replace-tag-pengganti-to-be-returned-dan-status-aset-transaksi-bagian-3 | Replace: Aset Berstatus Permanently Missing, Assigned, dan Borrowed Berjalan Normal (Bagian 3) | FE+BE | 12 | 354, 348, 349 |
-| TC-FA-TAG-E2E-080-replace-dua-tag-non-standard-dan-slot-tipe-wajib-kosong | Replace: Dua Tag Non-standard dengan Satu atau Dua Tipe Wajib Kosong, Slot Mengikuti Urutan TAG Type Asset Name | FE+BE | 32 | 1478, 1479 |
+| TC-FA-TAG-E2E-080-replace-dua-tag-non-standard-dan-slot-tipe-wajib-kosong | Replace: Dua Tag Non-standard dengan Satu atau Dua Tipe Wajib Kosong, Slot Mengikuti Urutan TAG Type Asset Name | FE+BE | 36 | 1478, 1479 |
 | TC-FA-TAG-E2E-081-replace-tag-combined-slot-validasi-v-25-v-26-dan-submit-bagian-1 | Replace dengan Tag Combined: Penolakan pada Replace Satu Slot (V-25), Pindai Sebagian Slot, dan Tag Tunggal Bertabrakan (V-26) | FE+BE | 34 | 356, 359, 360 |
 | TC-FA-TAG-E2E-082-replace-tag-combined-slot-validasi-v-25-v-26-dan-submit-bagian-2 | Replace dengan Tag Combined: Pindai Mengisi Semua Slot Komponen dan Penolakan Pola Tidak Cocok, Komponen Tidak Dikenal, Reserved, User TAG, atau Tidak Berlaku | FE+BE | 35 | 357, 358, 361, 362, 363, 364, 355 |
 | TC-FA-TAG-E2E-083-replace-tag-combined-slot-validasi-v-25-v-26-dan-submit-bagian-3 | Replace dengan Tag Combined: Caption Tag Sama, Scan Current TAG, dan Pilih Komponen | FE+BE | 20 | 366, 369, 370 |
 | TC-FA-TAG-E2E-084-replace-satu-tag-non-standard-dengan-dua-tipe-wajib-kosong | Replace: Satu Tag Non-standard dengan Dua Tipe Wajib Kosong Hanya Mendapat Satu Slot | FE+BE | 10 | 1483 |
 | TC-FA-TAG-E2E-085-replace-nasib-tag-lama-available-damaged-missing-dan-keluar-bagian-3 | Tag QR yang Dilaporkan Tidak Pernah Masuk Tab To Be Returned | FE+BE | 13 | 1379 |
 | TC-FA-TAG-E2E-086-replace-tooltip-disabled-dan-hidden-row-action-dan-bulk-bagian-1 | Replace TAG: Tooltip Disabled Row Action dan Bulk Batch Replace (Bagian 1) | FE+BE | 38 | 330, 331, 371, 372, 373, 374, 380 |
-| TC-FA-TAG-E2E-087-replace-tooltip-disabled-dan-hidden-row-action-dan-bulk-bagian-2 | Replace TAG: Tooltip Disabled dan Hidden Bulk serta Aksi Grup (Bagian 2) | FE+BE | 13 | 381, 382, 384 |
+| TC-FA-TAG-E2E-087-replace-tooltip-disabled-dan-hidden-row-action-dan-bulk-bagian-2 | Replace TAG: Tooltip Disabled dan Hidden Bulk serta Aksi Grup (Bagian 2) | FE+BE | 15 | 381, 382, 384 |
 | TC-FA-TAG-E2E-088-replace-entry-row-action-bulk-satu-aset-aksi-grup-dan-tab-tbr | Replace TAG: Pintu Masuk Row Action, Bulk Satu Aset, Aksi Grup, Tab To Be Returned, dan Overlay Scan NFC | FE+BE | 38 | 377, 378, 379, 385, 386, 387 |
 | TC-FA-TAG-E2E-089-batch-replace-sesi-header-submit-next-skip-ringkasan-dan-retry-bagian-1 | Batch Replace TAG: Header Sesi, Submit & next, Skip, dan Ringkasan Akhir (Bagian 1) | FE+BE | 34 | 388, 389, 390, 391 |
 | TC-FA-TAG-E2E-090-batch-replace-sesi-header-submit-next-skip-ringkasan-dan-retry-bagian-2 | Batch Replace TAG: Header Sesi, Submit & next, Skip, dan Ringkasan Akhir (Bagian 2) | FE+BE | 35 | 392, 393, 394 |
 | TC-FA-TAG-E2E-091-batch-replace-sesi-header-submit-next-skip-ringkasan-dan-retry-bagian-3 | Batch Replace TAG: Header Sesi, Submit & next, Skip, dan Ringkasan Akhir (Bagian 3) | FE+BE | 25 | 395, 396, 397 |
 | TC-FA-TAG-E2E-092-batch-replace-sesi-header-submit-next-skip-ringkasan-dan-retry-bagian-4 | Batch Replace TAG: Ikon Close pada Aset Terbuka dan Discard (Bagian 4) | FE+BE | 34 | 398, 399, 1473 |
-| TC-FA-TAG-E2E-093-batch-replace-scan-opsional-stok-konflik-d-03-d-04-dan-bagian-1 | Batch Replace TAG: Pilihan Tag Awal, Scan Current TAG Opsional, dan Stok Kurang (Bagian 1) | FE+BE | 27 | 400, 401, 402, 403 |
+| TC-FA-TAG-E2E-093-batch-replace-scan-opsional-stok-konflik-d-03-d-04-dan-bagian-1 | Batch Replace TAG: Pilihan Tag Awal, Scan Current TAG Opsional, dan Stok Kurang (Bagian 1) | FE+BE | 35 | 400, 401, 402, 403 |
 | TC-FA-TAG-E2E-094-batch-replace-scan-opsional-stok-konflik-d-03-d-04-dan-bagian-2 | Batch Replace TAG: Stok Habis di Tengah Sesi dan Konflik D-03 serta D-04 (Bagian 2) | FE+BE | 37 | 404, 408, 409 |
 | TC-FA-TAG-E2E-095-batch-replace-scan-opsional-stok-konflik-d-03-d-04-dan-bagian-3 | Batch Replace TAG: Tag Pengganti yang Sudah Dipakai Aset Sebelumnya Ditolak (Bagian 3) | FE+BE | 16 | 410, 1382 |
 | TC-FA-TAG-E2E-096-pair-tag-screening-dialog-dan-slot-per-tipe-wajib | Pair TAG: Screening Dialog dan Slot per Tipe Wajib | FE+BE | 25 | 411, 412, 413, 414 |
@@ -114,10 +114,10 @@ Tidak ada.
 | TC-FA-TAG-E2E-101-pair-tag-scan-penolakan-status-tipe-dan-registri-bagian-4 | Pair TAG: Penolakan Pindai Ulang V-09 dan Tag Milik Supply Asset (Bagian 4) | FE+BE | 26 | 1453, 1454, 1462 |
 | TC-FA-TAG-E2E-102-pair-tag-combined-slot-dan-penolakan-bagian-1 | Pair TAG: Tag Combined Mengisi Slot dan Penolakan (Bagian 1) | FE+BE | 36 | 435, 436, 437, 438, 439 |
 | TC-FA-TAG-E2E-103-pair-tag-combined-slot-dan-penolakan-bagian-2 | Pair TAG: Tag Combined Sebagian, Konflik dengan Tag Tunggal, Pindai Ulang, dan Komponen Gagal (Bagian 2) | FE+BE | 33 | 440, 441, 442, 443 |
-| TC-FA-TAG-E2E-104-pair-tag-cancel-ikon-close-backdrop-dan-esc-bagian-1 | Pair TAG: Cancel dan Konfirmasi Discard Pairing D-11 (Bagian 1) | FE+BE | 17 | 444, 445, 446, 447 |
-| TC-FA-TAG-E2E-105-pair-tag-cancel-ikon-close-backdrop-dan-esc-bagian-2 | Pair TAG: Ikon Close, Klik Backdrop, dan Esc pada Konfirmasi D-11 (Bagian 2) | FE+BE | 16 | 448, 1439, 1442 |
+| TC-FA-TAG-E2E-104-pair-tag-cancel-ikon-close-backdrop-dan-esc-bagian-1 | Pair TAG: Cancel dan Konfirmasi Discard Pairing D-11 (Bagian 1) | FE+BE | 18 | 444, 445, 446, 447 |
+| TC-FA-TAG-E2E-105-pair-tag-cancel-ikon-close-backdrop-dan-esc-bagian-2 | Pair TAG: Ikon Close, Klik Backdrop, dan Esc pada Konfirmasi D-11 (Bagian 2) | FE+BE | 17 | 448, 1439, 1442 |
 | TC-FA-TAG-E2E-106-pair-tag-tooltip-disabled-row-action-dan-bulk-urutan-bagian-1 | Pair TAG: Tooltip Disabled Row Action menurut Reader, Status Aset, dan Stok (Bagian 1) | FE+BE | 32 | 449, 450, 451, 452 |
-| TC-FA-TAG-E2E-107-pair-tag-tooltip-disabled-row-action-dan-bulk-urutan-bagian-2 | Pair TAG: Bulk Pair TAG Disabled, Hidden, dan Satu Aset (Bagian 2) | FE+BE | 33 | 454, 455, 456, 457, 458 |
+| TC-FA-TAG-E2E-107-pair-tag-tooltip-disabled-row-action-dan-bulk-urutan-bagian-2 | Pair TAG: Bulk Pair TAG Disabled, Hidden, dan Satu Aset (Bagian 2) | FE+BE | 34 | 454, 455, 456, 457, 458 |
 | TC-FA-TAG-E2E-108-pair-tag-tooltip-disabled-row-action-dan-bulk-urutan-bagian-3 | Pair TAG: Urutan Prioritas Tooltip Disabled Reader, Status Aset, dan Stok (Bagian 3) | FE+BE | 34 | 1455, 1491, 1492, 1493 |
 | TC-FA-TAG-E2E-109-pair-tag-tooltip-disabled-row-action-dan-bulk-urutan-bagian-4 | Pair TAG: Bulk Pair TAG Status Aset Didahulukan atas Stok (Bagian 4) | FE+BE | 8 | 1494 |
 | TC-FA-TAG-E2E-110-sesi-pair-tag-beberapa-aset-submit-next-skip-ringkasan-dan-bagian-1 | Sesi Pair TAG Beberapa Aset: Header, Footer, Submit & next, dan Skip (Bagian 1) | FE+BE | 21 | 459, 460, 461 |
@@ -132,12 +132,12 @@ Tidak ada.
 | TC-FA-TAG-E2E-120-print-qr-validasi-quantity-v-39-dan-batas-bagian-1 | Print QR: validasi Quantity V-39 untuk nilai kosong, 0, 101, desimal, dan negatif | FE+BE | 36 | 482, 483, 484, 485, 486 |
 | TC-FA-TAG-E2E-121-print-qr-validasi-quantity-v-39-dan-batas-bagian-2 | Print QR: Quantity tidak menerima huruf, pulih setelah invalid, dan batas bawah 1 | FE+BE | 16 | 487, 488, 489 |
 | TC-FA-TAG-E2E-122-print-qr-start-print-data-tersimpan-dialog-cetak-browser-dan-bagian-1 | Print QR: Start Print menyimpan data, membuka dialog cetak browser, dan menampilkan toast | FE+BE | 32 | 490, 491, 492, 493 |
-| TC-FA-TAG-E2E-123-print-qr-start-print-data-tersimpan-dialog-cetak-browser-dan-bagian-2 | Print QR: membatalkan dialog cetak browser tidak membatalkan kode QR yang sudah dibuat | FE+BE | 16 | 498 |
+| TC-FA-TAG-E2E-123-print-qr-start-print-data-tersimpan-dialog-cetak-browser-dan-bagian-2 | Print QR: membatalkan dialog cetak browser tidak membatalkan kode QR yang sudah dibuat | FE+BE | 18 | 498 |
 | TC-FA-TAG-E2E-124-print-qr-cancel-ikon-close-backdrop-dan-nilai-bawaan | Print QR: Cancel, ikon close, backdrop, dan nilai bawaan saat dibuka ulang | FE+BE | 19 | 499, 500, 501, 502 |
 | TC-FA-TAG-E2E-125-print-qr-dari-slot-qr-dialog-replace-dan-pair-lapisan-dan-bagian-1 | Print QR dari slot QR Dialog Replace TAG: lapisan di atas dialog, backdrop, Start Print, dan penutupan | FE+BE | 26 | 503, 505, 506 |
 | TC-FA-TAG-E2E-126-print-qr-dari-slot-qr-dialog-replace-dan-pair-lapisan-dan-bagian-2 | Print QR: Esc menutup lapisan paling atas dan kode QR hasil cetak diterima di Dialog Pair TAG | FE+BE | 21 | 507, 1443 |
 | TC-FA-TAG-E2E-127-receive-tag-screening-dialog-dan-penambahan-daftar-sesi | Receive TAG: screening Dialog dan penambahan Tag ke daftar sesi | FE+BE | 33 | 531, 532, 533, 534, 535 |
-| TC-FA-TAG-E2E-128-receive-tag-berhasil-satu-dua-tag-dan-tabel-dimuat-ulang | Receive TAG: berhasil untuk satu dan dua Tag, dan tabel dimuat ulang dengan Search tetap | FE+BE | 26 | 536, 537, 538 |
+| TC-FA-TAG-E2E-128-receive-tag-berhasil-satu-dua-tag-dan-tabel-dimuat-ulang | Receive TAG: berhasil untuk satu dan dua Tag, dan tabel dimuat ulang dengan Search tetap | FE+BE | 27 | 536, 537, 538 |
 | TC-FA-TAG-E2E-129-receive-tag-cancel-backdrop-ikon-close-esc-dan-receive-disabled-bagian-1 | Receive TAG: Cancel, ikon close, backdrop, dan Receive Disabled saat daftar kosong | FE+BE | 28 | 539, 540, 541, 542, 1495 |
 | TC-FA-TAG-E2E-130-receive-tag-cancel-backdrop-ikon-close-esc-dan-receive-disabled-bagian-2 | Receive TAG: Esc pada dialog berisi Tag terpindai menutup tanpa konfirmasi dan membuang sesi | FE+BE | 10 | 1496 |
 | TC-FA-TAG-E2E-131-receive-tag-scan-penolakan-tidak-dikenal-status-duplikat-scope-bagian-1 | Receive TAG: penolakan scan untuk kode tidak dikenal, status bukan To Be Returned, duplikat, dan scope group | FE+BE | 28 | 543, 544, 545, 546, 547, 548 |
@@ -145,12 +145,12 @@ Tidak ada.
 | TC-FA-TAG-E2E-133-receive-tag-konflik-sesi-lain-tidak-dapat-dibatalkan-dan-hasil-bagian-1 | Receive TAG: Tag sudah diterima atau dipasang pengguna lain sebelum [Receive] | FE+BE | 26 | 567, 568 |
 | TC-FA-TAG-E2E-134-receive-tag-konflik-sesi-lain-tidak-dapat-dibatalkan-dan-hasil-bagian-2 | Receive TAG: hasil parsial dan semua Tag gagal karena Tag diambil pengguna lain | FE+BE | 32 | 1460, 1469 |
 | TC-FA-TAG-E2E-135-receive-manually-menu-screening-dan-bulk | Receive Manually: menu aksi baris, screening Dialog, dan Bulk Action | FE+BE | 35 | 573, 574, 575, 576, 577 |
-| TC-FA-TAG-E2E-136-receive-manually-validasi-note-berhasil-dan-event-log | Receive Manually: validasi Note, berhasil satu dan dua Tag, dan Note tidak tampil di Event Log | FE+BE | 34 | 578, 579, 580, 581 |
+| TC-FA-TAG-E2E-136-receive-manually-validasi-note-berhasil-dan-event-log | Receive Manually: validasi Note, berhasil satu dan dua Tag, dan Note tidak tampil di Event Log | FE+BE | 35 | 578, 579, 580, 581 |
 | TC-FA-TAG-E2E-137-receive-manually-cancel-dan-unsaved-changes-bagian-1 | Receive Manually: Cancel kosong, backdrop, dan Unsaved Changes lewat Cancel, ikon close, dan Esc | FE+BE | 23 | 582, 586, 588, 589, 590 |
 | TC-FA-TAG-E2E-138-receive-manually-cancel-dan-unsaved-changes-bagian-2 | Receive Manually: Cancel dan Leave pada Unsaved Changes, serta ikon close pada dialog belum terisi | FE+BE | 25 | 591, 592, 593, 594 |
 | TC-FA-TAG-E2E-139-receive-manually-cancel-dan-unsaved-changes-bagian-3 | Receive Manually: muat ulang halaman memicu konfirmasi bawaan browser dan dialog terisi Note dianggap terisi | FE+BE | 11 | 595, 596 |
 | TC-FA-TAG-E2E-140-print-qr-dari-slot-qr-dialog-pair-tag-menutup-lapisan-print-qr | Print QR dari slot QR Dialog Pair TAG: lapisan di atas dialog dan penutupan mengembalikan isian | FE+BE | 16 | 504 |
-| TC-FA-TAG-E2E-141-receive-tag-pengembalian-tidak-dapat-dibatalkan-dan-hasil-receive-manually | Receive TAG: pengembalian tidak dapat dibatalkan, dan hasil Receive TAG berbeda dari Receive Manually | FE+BE | 29 | 569, 1380 |
+| TC-FA-TAG-E2E-141-receive-tag-pengembalian-tidak-dapat-dibatalkan-dan-hasil-receive-manually | Receive TAG: pengembalian tidak dapat dibatalkan, dan hasil Receive TAG berbeda dari Receive Manually | FE+BE | 30 | 569, 1380 |
 | TC-FA-TAG-E2E-142-report-tag-screening-dialog-dan-opsi-tag-bagian-1 | Report TAG: Screening Dialog dan Opsi Tag (Bagian 1) | FE+BE | 34 | 598, 599, 600, 601, 602, 603 |
 | TC-FA-TAG-E2E-143-report-tag-screening-dialog-dan-opsi-tag-bagian-2 | Report TAG: Menu Aksi pada Aset dengan Laporan Terbuka Sebagian (Bagian 2) | FE+BE | 4 | 604 |
 | TC-FA-TAG-E2E-144-report-tag-validasi-submit-report-type-note-dan-tag | Report TAG: Validasi Submit Report Type, Note, dan Tag | FE+BE | 30 | 605, 606, 607, 608 |
@@ -192,9 +192,9 @@ Tidak ada.
 | TC-FA-TAG-E2E-180-tabel-grup-format-sel-badge-ikon-dan-severity-bagian-2 | Tabel Grup: Total Assets Menyertakan Aset Not Paired Yet (Bagian 2) | FE+BE | 6 | 742 |
 | TC-FA-TAG-E2E-181-tabel-grup-column-visibility-per-kolom-bagian-1 | Tabel Grup: Column Visibility per Kolom (Bagian 1) | FE+BE | 32 | 743, 744, 745, 746, 747 |
 | TC-FA-TAG-E2E-182-tabel-grup-column-visibility-per-kolom-bagian-2 | Tabel Grup: Column Visibility per Kolom (Bagian 2) | FE+BE | 31 | 748, 749, 750, 751 |
-| TC-FA-TAG-E2E-183-tabel-grup-popup-setup-column-save-reset-reorder-dan-pin-bagian-1 | Tabel Grup: Popup Setup Column, Screening, Pratinjau, Save, dan Batal (Bagian 1) | FE+BE | 25 | 752, 753, 754, 755, 756 |
+| TC-FA-TAG-E2E-183-tabel-grup-popup-setup-column-save-reset-reorder-dan-pin-bagian-1 | Tabel Grup: Popup Setup Column, Screening, Pratinjau, Save, dan Batal (Bagian 1) | FE+BE | 26 | 752, 753, 754, 755, 756 |
 | TC-FA-TAG-E2E-184-tabel-grup-popup-setup-column-save-reset-reorder-dan-pin-bagian-2 | Tabel Grup: Popup Setup Column, Reorder dan Pin (Bagian 2) | FE+BE | 13 | 758, 759 |
-| TC-FA-TAG-E2E-185-popup-setup-column-t-tag-02-screening-save-reset-reorder-dan-bagian-1 | Popup Setup Column T-TAG-02: Screening, Pratinjau, Save, dan Batal (Bagian 1) | FE+BE | 27 | 1414, 1415, 1416, 1417 |
+| TC-FA-TAG-E2E-185-popup-setup-column-t-tag-02-screening-save-reset-reorder-dan-bagian-1 | Popup Setup Column T-TAG-02: Screening, Pratinjau, Save, dan Batal (Bagian 1) | FE+BE | 28 | 1414, 1415, 1416, 1417 |
 | TC-FA-TAG-E2E-186-popup-setup-column-t-tag-02-screening-save-reset-reorder-dan-bagian-2 | Popup Setup Column T-TAG-02: Esc, Reset, Reorder, dan Pin (Bagian 2) | FE+BE | 29 | 1418, 1419, 1420, 1421 |
 | TC-FA-TAG-E2E-187-popup-setup-column-tab-to-be-returned-dan-modal-event-log-bagian-1 | Popup Setup Column Tab To Be Returned dan Modal Event Log: Screening, Reorder, dan Pin (Bagian 1) | FE+BE | 30 | 1422, 1423, 1424, 1425 |
 | TC-FA-TAG-E2E-188-popup-setup-column-tab-to-be-returned-dan-modal-event-log-bagian-2 | Popup Setup Column Modal Event Log: Reset, Reorder, dan Pin (Bagian 2) | FE+BE | 21 | 1426, 1427, 1428 |
@@ -218,7 +218,7 @@ Tidak ada.
 | TC-FA-TAG-E2E-206-t-tag-02-filter-per-kolom-bagian-1 | Tabel T-TAG-02: Filter per Kolom (Bagian 1) | FE+BE | 30 | 814, 815, 816, 817 |
 | TC-FA-TAG-E2E-207-t-tag-02-filter-per-kolom-bagian-2 | Tabel T-TAG-02: Filter per Kolom (Bagian 2) | FE+BE | 35 | 818, 819, 820, 821 |
 | TC-FA-TAG-E2E-208-t-tag-02-filter-per-kolom-bagian-3 | Tabel T-TAG-02: Filter per Kolom (Bagian 3) | FE+BE | 35 | 822, 823, 824, 825 |
-| TC-FA-TAG-E2E-209-t-tag-02-filter-per-kolom-bagian-4 | Tabel T-TAG-02: Filter TAG Type, Category, Opsi Kosong, dan Field Kolom Curated (Bagian 4) | FE+BE | 34 | 826, 827, 828, 829 |
+| TC-FA-TAG-E2E-209-t-tag-02-filter-per-kolom-bagian-4 | Tabel T-TAG-02: Filter TAG Type, Category, Opsi Kosong, dan Field Kolom Curated (Bagian 4) | FE+BE | 35 | 826, 827, 828, 829 |
 | TC-FA-TAG-E2E-210-t-tag-02-format-sel-link-badge-hover-dan-pemotongan-bagian-1 | Tabel T-TAG-02: Format Sel Name, TAG Code, dan Aset Not Paired Yet (Bagian 1) | FE+BE | 26 | 830, 831, 832, 833, 834, 835, 836 |
 | TC-FA-TAG-E2E-211-t-tag-02-format-sel-link-badge-hover-dan-pemotongan-bagian-2 | Tabel T-TAG-02: Format Sel Badge Brand, Model/Type, dan Group (Bagian 2) | FE+BE | 17 | 837, 838, 839, 840, 841, 842 |
 | TC-FA-TAG-E2E-212-t-tag-02-format-sel-link-badge-hover-dan-pemotongan-bagian-3 | Tabel T-TAG-02: Format Sel Category, Measurement, Label, dan Status (Bagian 3) | FE+BE | 18 | 843, 844, 845, 846, 847, 848 |
@@ -233,12 +233,12 @@ Tidak ada.
 | TC-FA-TAG-E2E-221-custom-field-search-filter-sort-per-tipe-bagian-5 | Custom Field pada Tabel T-TAG-02: Search, Filter, dan Sort per Tipe (Bagian 5) | FE+BE | 31 | 890, 891, 892, 893 |
 | TC-FA-TAG-E2E-222-custom-field-search-filter-sort-per-tipe-bagian-6 | Custom Field pada Tabel T-TAG-02: Search, Filter, dan Sort per Tipe (Bagian 6) | FE+BE | 33 | 894, 895, 896, 897 |
 | TC-FA-TAG-E2E-223-custom-field-search-filter-sort-per-tipe-bagian-7 | Custom Field pada Tabel T-TAG-02: Search, Filter, dan Sort per Tipe (Bagian 7) | FE+BE | 34 | 898, 899, 900, 901 |
-| TC-FA-TAG-E2E-224-custom-field-search-filter-sort-per-tipe-bagian-8 | Custom Field pada Tabel T-TAG-02: Search, Filter, dan Sort per Tipe (Bagian 8) | FE+BE | 35 | 902, 903, 904, 905, 906 |
-| TC-FA-TAG-E2E-225-custom-field-search-filter-sort-per-tipe-bagian-9 | Custom Field pada Tabel T-TAG-02: Search, Filter, dan Sort per Tipe (Bagian 9) | FE+BE | 35 | 907, 908, 909, 910, 911 |
-| TC-FA-TAG-E2E-226-custom-field-search-filter-sort-per-tipe-bagian-10 | Custom Field pada Tabel T-TAG-02: Filter dan Sort Tipe Formula (Bagian 10) | FE+BE | 10 | 912, 913 |
+| TC-FA-TAG-E2E-224-custom-field-search-filter-sort-per-tipe-bagian-8 | Custom Field pada Tabel T-TAG-02: Search, Filter, dan Sort per Tipe (Bagian 8) | FE+BE | 25 | 902, 903, 904 |
+| TC-FA-TAG-E2E-225-custom-field-search-filter-sort-per-tipe-bagian-9 | Custom Field pada Tabel T-TAG-02: Search, Filter, dan Sort per Tipe (Bagian 9) | FE+BE | 32 | 908, 909, 910, 911 |
+| TC-FA-TAG-E2E-226-custom-field-search-filter-sort-per-tipe-bagian-10 | Custom Field pada Tabel T-TAG-02: Filter dan Sort Tipe Formula (Bagian 10) | FE+BE | 11 | 912, 913 |
 | TC-FA-TAG-E2E-229-pagination-tabel-grup-page-size-navigasi-dan-input-halaman | Pagination Tabel Grup: Page Size, Navigasi Halaman, dan Input Nomor Halaman | FE+BE | 24 | 914, 915, 916, 917, 918, 919, 920, 921 |
 | TC-FA-TAG-E2E-230-pagination-popup-detail-state-sort-dan-halaman | Pagination Popup Detail Assets: Pilihan Page Size, Navigasi, Input Tidak Valid, dan State Sort | FE+BE | 32 | 922, 923, 924, 1451, 1452 |
-| TC-FA-TAG-E2E-231-state-tabel-refresh-tab-sidebar-dan-kembali | State Tabel Paired: Refresh F5, Pindah Tab, dan Klik Ulang Menu TAG di Sidebar | FE+BE | 28 | 925, 926, 927, 928 |
+| TC-FA-TAG-E2E-231-state-tabel-refresh-tab-sidebar-dan-kembali | State Tabel Paired: Refresh F5, Pindah Tab, dan Klik Ulang Menu TAG di Sidebar | FE+BE | 30 | 925, 926, 927, 928 |
 | TC-FA-TAG-E2E-232-reload-tabel-paired-setelah-submit-replace-batch-dan-pair | Reload Tabel Paired setelah Submit Replace, Batch Replace, dan Pair dengan State Dipertahankan | FE+BE | 35 | 977, 978, 979 |
 | TC-FA-TAG-E2E-233-modal-changelog-screening-penutupan-tooltip-dan-read-only-bagian-1 | Modal Changelog Paired TAG: Screening, Penutupan, Tooltip Toolbar, dan Read-only (Bagian 1) | FE+BE | 34 | 931, 932, 933, 934, 935, 936, 937, 938, 968, 975 |
 | TC-FA-TAG-E2E-234-modal-changelog-screening-penutupan-tooltip-dan-read-only-bagian-2 | Modal Changelog Paired TAG: Entri Replace Tampil di Changelog Asset Detail (Bagian 2) | FE+BE | 7 | 976 |
@@ -249,16 +249,16 @@ Tidak ada.
 | TC-FA-TAG-E2E-239-modal-changelog-filter-per-kolom-dan-kombinasi-bagian-1 | Modal Changelog Paired TAG: Screening Filter Panel dan Filter per Kolom (Bagian 1) | FE+BE | 31 | 957, 958, 959, 960, 961, 962 |
 | TC-FA-TAG-E2E-240-modal-changelog-filter-per-kolom-dan-kombinasi-bagian-2 | Modal Changelog Paired TAG: Kombinasi Multi-filter, Kombinasi Search, Filter, Sort, dan Pemulihan Baris (Bagian 2) | FE+BE | 24 | 963, 964, 965 |
 | TC-FA-TAG-E2E-241-modal-changelog-pagination-format-isi-dan-download | Modal Changelog Paired TAG: Format Isi Baris Replace, Download CSV, dan Pagination | FE+BE | 20 | 966, 967, 969 |
-| TC-FA-TAG-E2E-242-state-tabel-refresh-tab-sidebar-dan-kembali-bagian-2 | State Tabel Paired: Tab Browser Baru dan Kembali dari Halaman Lain (Bagian 2) | FE+BE | 14 | 929, 930 |
+| TC-FA-TAG-E2E-242-state-tabel-refresh-tab-sidebar-dan-kembali-bagian-2 | State Tabel Paired: Kembali dari Halaman Lain (Bagian 2) | FE+BE | 8 | 930 |
 | TC-FA-TAG-E2E-244-tabel-to-be-returned-search-per-kolom-bagian-1 | Tabel To Be Returned: Search per Kolom, Pembukaan Input, dan Label Ikon Tipe (Bagian 1) | FE+BE | 23 | 980, 981, 982, 983, 984, 985, 986 |
 | TC-FA-TAG-E2E-245-tabel-to-be-returned-search-per-kolom-bagian-2 | Tabel To Be Returned: Search Tidak Peka Huruf, Kolom Since dan Kolom Tersembunyi, serta Kembali ke Halaman 1 (Bagian 2) | FE+BE | 34 | 987, 988, 989, 990, 991 |
 | TC-FA-TAG-E2E-246-tabel-to-be-returned-filter-per-kolom-dan-kombinasi-bagian-1 | Tabel To Be Returned: Screening Filter Panel dan Filter TAG Type, Reason, serta Return Group (Bagian 1) | FE+BE | 34 | 992, 993, 994, 995, 996 |
 | TC-FA-TAG-E2E-247-tabel-to-be-returned-filter-per-kolom-dan-kombinasi-bagian-2 | Tabel To Be Returned: Cancel Tree Picker, Filter Current Holder, Since Inklusif, dan Kombinasi Filter (Bagian 2) | FE+BE | 31 | 997, 998, 999, 1000, 1001 |
 | TC-FA-TAG-E2E-248-tabel-to-be-returned-filter-per-kolom-dan-kombinasi-bagian-3 | Tabel To Be Returned: Indikator Titik Filter, Menutup Panel Tanpa Apply, dan Kombinasi Search dengan Filter (Bagian 3) | FE+BE | 25 | 1002, 1003, 1004 |
 | TC-FA-TAG-E2E-249-tabel-to-be-returned-sort-dan-column-visibility-bagian-1 | Tabel To Be Returned: Sort Tiga Tahap Kolom TAG Code, Last Asset, Since, Return Group, dan Current Holder (Bagian 1) | FE+BE | 29 | 1005, 1006, 1007, 1008, 1009 |
-| TC-FA-TAG-E2E-250-tabel-to-be-returned-sort-dan-column-visibility-bagian-2 | Tabel To Be Returned: Sort Kolom Reason, Sort dengan Filter Aktif, dan Column Visibility (Bagian 2) | FE+BE | 31 | 1010, 1011, 1012, 1013 |
+| TC-FA-TAG-E2E-250-tabel-to-be-returned-sort-dan-column-visibility-bagian-2 | Tabel To Be Returned: Sort Kolom Reason, Sort dengan Filter Aktif, dan Column Visibility (Bagian 2) | FE+BE | 32 | 1010, 1011, 1012, 1013 |
 | TC-FA-TAG-E2E-251-tabel-to-be-returned-sort-dan-column-visibility-bagian-3 | Tabel To Be Returned: Setup Column, Ikon Close Membuang Perubahan dan Reset to Default (Bagian 3) | FE+BE | 12 | 1016, 1017 |
-| TC-FA-TAG-E2E-252-tabel-to-be-returned-pagination-download-dan-state-per-tab-bagian-1 | Tabel To Be Returned: Pagination, Ganti Jumlah Baris, Nomor Halaman Tidak Valid, dan Sort pada Halaman 2 (Bagian 1) | FE+BE | 19 | 1018, 1019, 1020, 1021 |
+| TC-FA-TAG-E2E-252-tabel-to-be-returned-pagination-download-dan-state-per-tab-bagian-1 | Tabel To Be Returned: Pagination, Ganti Jumlah Baris, Nomor Halaman Tidak Valid, dan Sort pada Halaman 2 (Bagian 1) | FE+BE | 20 | 1018, 1019, 1020, 1021 |
 | TC-FA-TAG-E2E-253-tabel-to-be-returned-pagination-download-dan-state-per-tab-bagian-2 | Tabel To Be Returned: Download XLSX, Download Tanpa Hasil, dan State Tab Setelah Pindah Tab serta Refresh (Bagian 2) | FE+BE | 34 | 1024, 1025, 1027, 1028, 1029 |
 | TC-FA-TAG-E2E-254-modal-event-log-screening-format-sel-dan-penutupan-bagian-1 | Modal Event Log To Be Returned: Screening, Urutan Bawaan, Format Sel, dan Hover Tooltip (Bagian 1) | FE+BE | 25 | 1030, 1031, 1032, 1033, 1034 |
 | TC-FA-TAG-E2E-255-modal-event-log-screening-format-sel-dan-penutupan-bagian-2 | Modal Event Log To Be Returned: Penutupan Modal dan Tooltip Ikon Toolbar (Bagian 2) | FE+BE | 17 | 1035, 1036 |
@@ -277,71 +277,71 @@ Tidak ada.
 | TC-FA-TAG-E2E-268-seleksi-popup-detail-select-all-selection-limit-checkbox-bagian-2 | Seleksi Popup Detail: Checkbox Header, Seleksi Terjaga Saat Pindah Halaman dan Saat Sort Diubah (Bagian 2) | FE+BE | 22 | 1405, 1406, 1407 |
 | TC-FA-TAG-E2E-269-tabel-to-be-returned-sort-dan-column-visibility-bagian-4 | Tabel To Be Returned: Kolom Visible Terakhir dan Setup Column Tersimpan Setelah Save (Bagian 4) | FE+BE | 15 | 1014, 1015 |
 | TC-FA-TAG-E2E-270-tabel-to-be-returned-pagination-download-dan-state-per-tab-bagian-3 | Tabel To Be Returned: Pilihan Download dan Download CSV Mengikuti Filter dan Kolom Tampil (Bagian 3) | FE+BE | 24 | 1022, 1023 |
-| TC-FA-TAG-E2E-271-derivasi-tanpa-objek-tugas-changelog-immutable-dan-tag-log-sebagai | Derivasi Tanpa Objek Tugas, Changelog Tidak Dapat Diubah, dan Popup TAG Log sebagai Satu-satunya Pintu Riwayat Status Tag | FE+BE | 28 | 1072, 1073, 1074, 1075, 1076, 1077 |
-| TC-FA-TAG-E2E-272-pencatatan-changelog-replace-dan-pair-baris-old-new-bagian-1 | Pencatatan Changelog Replace dan Pair: Baris Old dan New Value, Bagian 1 | FE+BE | 34 | 1078, 1079, 1080, 1081 |
-| TC-FA-TAG-E2E-273-pencatatan-changelog-replace-dan-pair-baris-old-new-bagian-2 | Pencatatan Changelog Replace dan Pair: Baris Old dan New Value, Bagian 2 | FE+BE | 34 | 1082, 1083, 1084 |
-| TC-FA-TAG-E2E-274-pencatatan-changelog-replace-dan-pair-baris-old-new-bagian-3 | Pencatatan Changelog Pair Satu Slot dan Format Teks Polos Old dan New Value | FE+BE | 26 | 1085, 1086, 1087 |
-| TC-FA-TAG-E2E-275-pencatatan-changelog-replace-dan-pair-baris-old-new-bagian-4 | Entri Changelog Lama Tidak Berubah setelah Tag Diganti Lagi | FE+BE | 11 | 1089 |
-| TC-FA-TAG-E2E-276-pencatatan-activity-log-dan-system-log-replace-dan-pair | Pencatatan Activity Log dan System Log untuk Replace dan Pair TAG | FE+BE | 24 | 1091, 1092, 1093 |
-| TC-FA-TAG-E2E-277-pencatatan-tag-log-replace-dan-pair-bagian-1 | Pencatatan TAG Log Replace: Tag Lama Dipindai, Tidak Dipindai, dan Dilepas | FE+BE | 29 | 1095, 1096, 1097 |
-| TC-FA-TAG-E2E-278-pencatatan-tag-log-replace-dan-pair-bagian-2 | Pencatatan TAG Log Tag Baru: Paired dan Pair TAG per Tag | FE+BE | 25 | 1099, 1100, 1101 |
-| TC-FA-TAG-E2E-279-pencatatan-receive-event-log-tag-log-global-dan-assigned-paired-bagian-1 | Pencatatan Receive: Event Log dan TAG Log Global untuk Receive TAG dan Receive Manually, Bagian 1 | FE+BE | 32 | 1103, 1104, 1105, 1107 |
-| TC-FA-TAG-E2E-280-pencatatan-receive-event-log-tag-log-global-dan-assigned-paired-bagian-2 | Pencatatan Receive: TAG Log Global untuk Receive Manually dan Receive Manually Bulk, Bagian 2 | FE+BE | 22 | 1108, 1109 |
-| TC-FA-TAG-E2E-281-pencatatan-activity-log-dan-system-log-aksi-receive-report-bagian-1 | Pencatatan Activity Log dan System Log Aksi Receive TAG dan Receive Manually | FE+BE | 32 | 1113, 1114, 1115, 1116 |
-| TC-FA-TAG-E2E-282-pencatatan-activity-log-dan-system-log-aksi-receive-report-bagian-2 | Pencatatan Activity Log dan System Log Aksi Report TAG dan Decline Report | FE+BE | 28 | 1117, 1118, 1119 |
-| TC-FA-TAG-E2E-283-pencatatan-activity-log-dan-system-log-aksi-receive-report-bagian-3 | Pencatatan Activity Log dan System Log Aksi Decline Report dan Cancel Report | FE+BE | 25 | 1120, 1121, 1122 |
-| TC-FA-TAG-E2E-284-pencatatan-changelog-report-decline-cancel-bagian-1 | Pencatatan Changelog Report TAG: Report Type Damaged, Missing, dan Unreadable | FE+BE | 28 | 1123, 1124, 1125 |
-| TC-FA-TAG-E2E-285-pencatatan-changelog-report-decline-cancel-bagian-2 | Pencatatan Changelog Report TAG dua Tag dan Decline Report | FE+BE | 27 | 1126, 1127, 1128 |
-| TC-FA-TAG-E2E-286-pencatatan-changelog-report-decline-cancel-bagian-3 | Pencatatan Changelog Cancel Report, Asset Detail, Scope Group, dan Entri Lama Tidak Berubah | FE+BE | 31 | 1129, 1130, 1131, 1132 |
-| TC-FA-TAG-E2E-287-sinkron-masuk-dari-asset-name-dan-asset-detail-non-standard-bagian-1 | Sinkron Masuk dari Asset Name dan Asset Detail: Non-standard Mengikuti TAG Type | FE+BE | 33 | 1133, 1134, 1139, 1140, 1141, 1142 |
+| TC-FA-TAG-E2E-271-derivasi-tanpa-objek-tugas-changelog-immutable-dan-tag-log-sebagai | Derivasi Tanpa Objek Tugas, Changelog Tidak Dapat Diubah, dan Popup TAG Log sebagai Satu-satunya Pintu Riwayat Status Tag | FE+BE | 29 | 1072, 1073, 1074, 1075, 1076, 1077 |
+| TC-FA-TAG-E2E-272-pencatatan-changelog-replace-dan-pair-baris-old-new-bagian-1 | Pencatatan Changelog Replace dan Pair: Baris Old dan New Value, Bagian 1 | FE+BE | 35 | 1078, 1079, 1080, 1081 |
+| TC-FA-TAG-E2E-273-pencatatan-changelog-replace-dan-pair-baris-old-new-bagian-2 | Pencatatan Changelog Replace dan Pair: Baris Old dan New Value, Bagian 2 | FE+BE | 35 | 1082, 1083, 1084 |
+| TC-FA-TAG-E2E-274-pencatatan-changelog-replace-dan-pair-baris-old-new-bagian-3 | Pencatatan Changelog Pair Satu Slot dan Format Teks Polos Old dan New Value | FE+BE | 30 | 1085, 1086, 1087 |
+| TC-FA-TAG-E2E-275-pencatatan-changelog-replace-dan-pair-baris-old-new-bagian-4 | Entri Changelog Lama Tidak Berubah setelah Tag Diganti Lagi | FE+BE | 13 | 1089 |
+| TC-FA-TAG-E2E-276-pencatatan-activity-log-dan-system-log-replace-dan-pair | Pencatatan Activity Log dan System Log untuk Replace dan Pair TAG | FE+BE | 30 | 1091, 1092, 1093 |
+| TC-FA-TAG-E2E-277-pencatatan-tag-log-replace-dan-pair-bagian-1 | Pencatatan TAG Log Replace: Tag Lama Dipindai, Tidak Dipindai, dan Dilepas | FE+BE | 34 | 1095, 1096, 1097 |
+| TC-FA-TAG-E2E-278-pencatatan-tag-log-replace-dan-pair-bagian-2 | Pencatatan TAG Log Tag Baru: Paired dan Pair TAG per Tag | FE+BE | 29 | 1099, 1100, 1101 |
+| TC-FA-TAG-E2E-279-pencatatan-receive-event-log-tag-log-global-dan-assigned-paired-bagian-1 | Pencatatan Receive: Event Log dan TAG Log Global untuk Receive TAG dan Receive Manually, Bagian 1 | FE+BE | 36 | 1103, 1104, 1105, 1107 |
+| TC-FA-TAG-E2E-280-pencatatan-receive-event-log-tag-log-global-dan-assigned-paired-bagian-2 | Pencatatan Receive: TAG Log Global untuk Receive Manually dan Receive Manually Bulk, Bagian 2 | FE+BE | 26 | 1108, 1109 |
+| TC-FA-TAG-E2E-281-pencatatan-activity-log-dan-system-log-aksi-receive-report-bagian-1 | Pencatatan Activity Log dan System Log Aksi Receive TAG dan Receive Manually | FE+BE | 35 | 1113, 1114, 1115, 1116 |
+| TC-FA-TAG-E2E-282-pencatatan-activity-log-dan-system-log-aksi-receive-report-bagian-2 | Pencatatan Activity Log dan System Log Aksi Report TAG dan Decline Report | FE+BE | 33 | 1117, 1118, 1119 |
+| TC-FA-TAG-E2E-283-pencatatan-activity-log-dan-system-log-aksi-receive-report-bagian-3 | Pencatatan Activity Log dan System Log Aksi Decline Report dan Cancel Report | FE+BE | 30 | 1120, 1121, 1122 |
+| TC-FA-TAG-E2E-284-pencatatan-changelog-report-decline-cancel-bagian-1 | Pencatatan Changelog Report TAG: Report Type Damaged, Missing, dan Unreadable | FE+BE | 31 | 1123, 1124, 1125 |
+| TC-FA-TAG-E2E-285-pencatatan-changelog-report-decline-cancel-bagian-2 | Pencatatan Changelog Report TAG dua Tag dan Decline Report | FE+BE | 30 | 1126, 1127, 1128 |
+| TC-FA-TAG-E2E-286-pencatatan-changelog-report-decline-cancel-bagian-3 | Pencatatan Changelog Cancel Report, Asset Detail, Scope Group, dan Entri Lama Tidak Berubah | FE+BE | 35 | 1129, 1130, 1131, 1132 |
+| TC-FA-TAG-E2E-287-sinkron-masuk-dari-asset-name-dan-asset-detail-non-standard-bagian-1 | Sinkron Masuk dari Asset Name dan Asset Detail: Non-standard Mengikuti TAG Type | FE+BE | 34 | 1133, 1134, 1139, 1140, 1141, 1142 |
 | TC-FA-TAG-E2E-288-sinkron-masuk-dari-asset-name-dan-asset-detail-non-standard-bagian-2 | Sinkron Masuk dari Asset Detail: Tag Paired yang Dilepas Keluar dari Tab Paired | FE+BE | 8 | 1143 |
-| TC-FA-TAG-E2E-289-notifikasi-lintas-modul-tag-replacement-needed-report-created-bagian-1 | Notifikasi Lintas Modul: tag_replacement_needed dan tag_report_created, Bagian 1 | FE+BE | 26 | 1135, 1136, 1223, 1248, 1249 |
-| TC-FA-TAG-E2E-290-notifikasi-lintas-modul-tag-replacement-needed-report-created-bagian-2 | Notifikasi Lintas Modul: tag_report_declined dan tag_report_canceled | FE+BE | 30 | 1250, 1251, 1252, 1253 |
+| TC-FA-TAG-E2E-289-notifikasi-lintas-modul-tag-replacement-needed-report-created-bagian-1 | Notifikasi Lintas Modul: tag_replacement_needed dan tag_report_created, Bagian 1 | FE+BE | 29 | 1135, 1136, 1223, 1248, 1249 |
+| TC-FA-TAG-E2E-290-notifikasi-lintas-modul-tag-replacement-needed-report-created-bagian-2 | Notifikasi Lintas Modul: tag_report_declined dan tag_report_canceled | FE+BE | 33 | 1250, 1251, 1252, 1253 |
 | TC-FA-TAG-E2E-291-notifikasi-lintas-modul-tag-replacement-needed-report-created-bagian-3 | Notifikasi Lintas Modul: Notifikasi Laporan Ditandai Terbaca setelah Laporan Ditutup | FE+BE | 5 | 1254 |
-| TC-FA-TAG-E2E-292-sinkron-lintas-modul-registri-global-asset-detail-dan-stok-bagian-1 | Sinkron Lintas Modul: Registri Global dan Stok setelah Replace, Bagian 1 | FE+BE | 35 | 1144, 1145, 1146, 1147 |
-| TC-FA-TAG-E2E-293-sinkron-lintas-modul-registri-global-asset-detail-dan-stok-bagian-2 | Sinkron Lintas Modul: Registri Global dan Asset Detail setelah Pair TAG dan Replace, Bagian 2 | FE+BE | 33 | 1148, 1149, 1150, 1151 |
-| TC-FA-TAG-E2E-294-sinkron-lintas-modul-registri-global-asset-detail-dan-stok-bagian-3 | Sinkron Lintas Modul: Tag Combined di-Separate saat Submit Replace | FE+BE | 7 | 1153 |
-| TC-FA-TAG-E2E-295-progres-kepatuhan-tag-type-asset-name-dan-definisi-kepatuhan-bagian-1 | Progres Kepatuhan TAG Type pada Detail Asset Name dan Definisi Kepatuhan, Bagian 1 | FE+BE | 33 | 1137, 1138, 1152, 1497, 1498, 1499 |
+| TC-FA-TAG-E2E-292-sinkron-lintas-modul-registri-global-asset-detail-dan-stok-bagian-1 | Sinkron Lintas Modul: Registri Global dan Stok setelah Replace, Bagian 1 | FE+BE | 36 | 1144, 1145, 1146, 1147 |
+| TC-FA-TAG-E2E-293-sinkron-lintas-modul-registri-global-asset-detail-dan-stok-bagian-2 | Sinkron Lintas Modul: Registri Global dan Asset Detail setelah Pair TAG dan Replace, Bagian 2 | FE+BE | 35 | 1148, 1149, 1150, 1151 |
+| TC-FA-TAG-E2E-294-sinkron-lintas-modul-registri-global-asset-detail-dan-stok-bagian-3 | Sinkron Lintas Modul: Tag Combined di-Separate saat Submit Replace | FE+BE | 9 | 1153 |
+| TC-FA-TAG-E2E-295-progres-kepatuhan-tag-type-asset-name-dan-definisi-kepatuhan-bagian-1 | Progres Kepatuhan TAG Type pada Detail Asset Name dan Definisi Kepatuhan, Bagian 1 | FE+BE | 34 | 1137, 1138, 1152, 1497, 1498, 1499 |
 | TC-FA-TAG-E2E-296-progres-kepatuhan-tag-type-asset-name-dan-definisi-kepatuhan-bagian-2 | Progres Kepatuhan TAG Type Tidak Tampil bila Jumlah Aset N Sama dengan 0 | FE+BE | 10 | 1500 |
 | TC-FA-TAG-E2E-297-derivasi-non-standard-reported-dan-not-paired-yet-bagian-1 | Derivasi Non-standard, Reported, dan Not Paired Yet: Dihitung Ulang dan Aturan Non-standard, Bagian 1 | FE+BE | 32 | 143, 1316, 1318, 1319, 1320, 1321, 1322, 1323 |
 | TC-FA-TAG-E2E-298-derivasi-non-standard-reported-dan-not-paired-yet-bagian-2 | Derivasi Non-standard, Reported, dan Not Paired Yet: Reported, Not Paired Yet, dan Pembentukan Baris Grup, Bagian 2 | FE+BE | 29 | 1324, 1325, 1326, 1327, 1328, 1329, 1330, 1331 |
 | TC-FA-TAG-E2E-299-derivasi-non-standard-reported-dan-not-paired-yet-bagian-3 | Derivasi Not Paired Yet: Aset Non-TAG dan Asset Name BLE dan GPS Tidak Dihitung | FE+BE | 10 | 1480, 1481 |
 | TC-FA-TAG-E2E-300-sinkron-masuk-disposal-tag-masuk-to-be-returned-dan-snapshot-bagian-1 | Sinkron Masuk Disposal: Tag Masuk ke Tab To Be Returned dan Snapshot, Bagian 1 | FE+BE | 33 | 1233, 1234, 1235, 1236, 1237, 1238 |
-| TC-FA-TAG-E2E-301-sinkron-masuk-disposal-tag-masuk-to-be-returned-dan-snapshot-bagian-2 | Sinkron Masuk Disposal: TAG Log Global, Penutupan Laporan, Scope Return Group, dan Receive Manually, Bagian 2 | FE+BE | 27 | 1239, 1241, 1242, 1243, 1381 |
-| TC-FA-TAG-E2E-302-sinkron-masuk-global-delete-dan-tag-lama-hasil-replace | Sinkron Masuk Global: Tag Lama Hasil Replace dan Tag To Be Returned yang Dihapus di Global | FE+BE | 31 | 1244, 1245, 1246, 1247 |
-| TC-FA-TAG-E2E-303-pencatatan-tag-log-replace-tag-qr-lama-keluar-dari-registri | Pencatatan TAG Log Replace: Tag QR Lama Keluar dari Registri | FE+BE | 8 | 1098 |
-| TC-FA-TAG-E2E-304-pencatatan-event-log-assigned-paired-tag-to-be-returned-dipasang-lewat-pair-dan-replace | Pencatatan Event Log Assigned/Paired untuk Tag To Be Returned yang Dipasang lewat Pair TAG dan Replace | FE+BE | 18 | 1111, 1112 |
-| TC-FA-TAG-E2E-305-matriks-dampak-transaksi-assignment-bagian-1 | Matriks Dampak Transaksi Assignment: Assign Kondisi T2 sampai T4 dan Return Kondisi T1 sampai T3 | FE+BE | 32 | 1156, 1157, 1158, 1159, 1160, 1161 |
-| TC-FA-TAG-E2E-306-matriks-dampak-transaksi-assignment-bagian-2 | Matriks Dampak Transaksi Assignment: Return Kondisi T4 dan Offboarding Return Kondisi T1 sampai T4 | FE+BE | 35 | 1162, 1163, 1164, 1165, 1166 |
-| TC-FA-TAG-E2E-307-matriks-dampak-transaksi-borrow-bagian-1 | Matriks Dampak Transaksi Borrow: Check-out Kondisi T1 sampai T4 dan Extend Kondisi T1 sampai T3 | FE+BE | 31 | 1167, 1168, 1169, 1170, 1171, 1172, 1173 |
-| TC-FA-TAG-E2E-308-matriks-dampak-transaksi-borrow-bagian-2 | Matriks Dampak Transaksi Borrow: Extend Kondisi T4 dan Check-in Kondisi T1 sampai T4 | FE+BE | 30 | 1174, 1175, 1176, 1177, 1178 |
-| TC-FA-TAG-E2E-309-matriks-dampak-transaksi-transfer-bagian-1 | Matriks Dampak Transaksi Transfer: Load Kondisi T2 sampai T4 dan Receive di Tujuan Kondisi T1 sampai T3 | FE+BE | 32 | 1180, 1181, 1182, 1183, 1184, 1185 |
+| TC-FA-TAG-E2E-301-sinkron-masuk-disposal-tag-masuk-to-be-returned-dan-snapshot-bagian-2 | Sinkron Masuk Disposal: TAG Log Global, Penutupan Laporan, Scope Return Group, dan Receive Manually, Bagian 2 | FE+BE | 29 | 1239, 1241, 1381, 1242, 1243 |
+| TC-FA-TAG-E2E-302-sinkron-masuk-global-delete-dan-tag-lama-hasil-replace | Sinkron Masuk Global: Tag Lama Hasil Replace dan Tag To Be Returned yang Dihapus di Global | FE+BE | 34 | 1244, 1245, 1246, 1247 |
+| TC-FA-TAG-E2E-303-pencatatan-tag-log-replace-tag-qr-lama-keluar-dari-registri | Pencatatan TAG Log Replace: Tag QR Lama Keluar dari Registri | FE+BE | 9 | 1098 |
+| TC-FA-TAG-E2E-304-pencatatan-event-log-assigned-paired-tag-to-be-returned-dipasang-lewat-pair-dan-replace | Pencatatan Event Log Assigned/Paired untuk Tag To Be Returned yang Dipasang lewat Pair TAG dan Replace | FE+BE | 23 | 1111, 1112 |
+| TC-FA-TAG-E2E-305-matriks-dampak-transaksi-assignment-bagian-1 | Matriks Dampak Transaksi Assignment: Assign Kondisi T2 sampai T4 dan Return Kondisi T1 sampai T3 | FE+BE | 34 | 1156, 1157, 1158, 1159, 1160, 1161 |
+| TC-FA-TAG-E2E-306-matriks-dampak-transaksi-assignment-bagian-2 | Matriks Dampak Transaksi Assignment: Return Kondisi T4 dan Offboarding Return Kondisi T1 sampai T4 | FE+BE | 37 | 1162, 1163, 1164, 1165, 1166 |
+| TC-FA-TAG-E2E-307-matriks-dampak-transaksi-borrow-bagian-1 | Matriks Dampak Transaksi Borrow: Check-out Kondisi T1 sampai T4 dan Extend Kondisi T1 sampai T3 | FE+BE | 35 | 1167, 1168, 1169, 1170, 1171, 1172, 1173 |
+| TC-FA-TAG-E2E-308-matriks-dampak-transaksi-borrow-bagian-2 | Matriks Dampak Transaksi Borrow: Extend Kondisi T4 dan Check-in Kondisi T1 sampai T4 | FE+BE | 33 | 1174, 1175, 1176, 1177, 1178 |
+| TC-FA-TAG-E2E-309-matriks-dampak-transaksi-transfer-bagian-1 | Matriks Dampak Transaksi Transfer: Load Kondisi T2 sampai T4 dan Receive di Tujuan Kondisi T1 sampai T3 | FE+BE | 34 | 1180, 1181, 1182, 1183, 1184, 1185 |
 | TC-FA-TAG-E2E-310-matriks-dampak-transaksi-transfer-bagian-2 | Matriks Dampak Transaksi Transfer: Receive di Tujuan Kondisi T4 | FE+BE | 9 | 1186 |
-| TC-FA-TAG-E2E-311-matriks-dampak-transaksi-disposal-bagian-1 | Matriks Dampak Transaksi Disposal: Request Kondisi T2 sampai T4 menurut Metode Disposal | FE+BE | 33 | 1188, 1189, 1190, 1191, 1192 |
-| TC-FA-TAG-E2E-312-matriks-dampak-transaksi-disposal-bagian-2 | Matriks Dampak Transaksi Disposal: Execute Kondisi T1 sampai T4 dan Konfirmasi Saksi | FE+BE | 32 | 1193, 1194, 1195, 1196 |
-| TC-FA-TAG-E2E-313-matriks-dampak-transaksi-stock-opname-dan-maintenance-bagian-1 | Matriks Dampak Transaksi Stock Opname dan Maintenance: Scan Aset Kondisi T2 sampai T4 dan Maintenance Kondisi T1 dan T2 | FE+BE | 34 | 1198, 1199, 1200, 1201, 1202 |
-| TC-FA-TAG-E2E-314-matriks-dampak-transaksi-stock-opname-dan-maintenance-bagian-2 | Matriks Dampak Transaksi Maintenance: Report Damage atau Complete Work Order Kondisi T3 dan T4 | FE+BE | 18 | 1203, 1204 |
+| TC-FA-TAG-E2E-311-matriks-dampak-transaksi-disposal-bagian-1 | Matriks Dampak Transaksi Disposal: Request Kondisi T2 sampai T4 menurut Metode Disposal | FE+BE | 34 | 1188, 1189, 1190, 1191, 1192 |
+| TC-FA-TAG-E2E-312-matriks-dampak-transaksi-disposal-bagian-2 | Matriks Dampak Transaksi Disposal: Execute Kondisi T1 sampai T4 dan Konfirmasi Saksi | FE+BE | 34 | 1193, 1194, 1195, 1196 |
+| TC-FA-TAG-E2E-313-matriks-dampak-transaksi-stock-opname-dan-maintenance-bagian-1 | Matriks Dampak Transaksi Stock Opname: Scan Aset Kondisi T2 sampai T4 | FE+BE | 25 | 1198, 1199, 1200 |
+| TC-FA-TAG-E2E-314-matriks-dampak-transaksi-stock-opname-dan-maintenance-bagian-2 | Matriks Dampak Transaksi Maintenance: Report Damage atau Complete Work Order Kondisi T1 sampai T4 | FE+BE | 28 | 1201, 1202, 1203, 1204 |
 | TC-FA-TAG-E2E-315-blok-t3-pada-mulai-transaksi-role-policy-dan-laporan-terbuka | Blok T3 pada Mulai Transaksi: Role, Policy, dan Laporan Terbuka | FE+BE | 33 | 1205, 1206, 1207, 1208, 1209, 1210 |
 | TC-FA-TAG-E2E-316-evaluasi-kondisi-tag-aset-dua-tag-dan-identifikasi-manual-bagian-1 | Evaluasi Kondisi Tag Aset Dua Tag dan Identifikasi Manual: Penilaian T1 sampai T3, Checkbox Bawaan, dan Report Unreadable Otomatis | FE+BE | 34 | 1211, 1212, 1213, 1214, 1215 |
 | TC-FA-TAG-E2E-317-evaluasi-kondisi-tag-aset-dua-tag-dan-identifikasi-manual-bagian-2 | Identifikasi Manual: Hanya Tag yang Dipilih Dilaporkan dan Aset T4 Tanpa Report | FE+BE | 16 | 1217, 1218 |
 | TC-FA-TAG-E2E-318-stock-opname-t3-dan-disposal-execute-t3-saksi-dan-pelepasan-tag | Stock Opname T3 dan Disposal Execute T3: Found (manual), Saksi, dan Pelepasan Tag | FE+BE | 30 | 1219, 1220, 1221, 1222 |
 | TC-FA-TAG-E2E-319-replace-tag-saat-transaksi-berjalan-diizinkan-dan-disposal-bagian-1 | Replace TAG saat Transaksi Berjalan: Aset Assigned, Menunggu Serah Terima, In Transfer Process, dan Under Maintenance | FE+BE | 34 | 1224, 1226, 1227, 1229 |
 | TC-FA-TAG-E2E-320-replace-tag-saat-transaksi-berjalan-diizinkan-dan-disposal-bagian-2 | Replace TAG saat Transaksi Berjalan: Permanently Missing Diizinkan serta In Disposal Process dan Disposed Disabled | FE+BE | 17 | 1230, 1231, 1232 |
-| TC-FA-TAG-E2E-321-matriks-dampak-transaksi-kondisi-t1-dan-aset-non-tag-lintas-modul | Matriks Dampak Transaksi Kondisi T1 dan Aset Non-TAG: Assign, Load, Request, dan Scan Aset Berjalan Normal | FE+BE | 27 | 1155, 1482, 1179, 1187, 1197 |
+| TC-FA-TAG-E2E-321-matriks-dampak-transaksi-kondisi-t1-dan-aset-non-tag-lintas-modul | Matriks Dampak Transaksi Kondisi T1 dan Aset Non-TAG: Assign, Load, Request, dan Scan Aset Berjalan Normal | FE+BE | 31 | 1155, 1482, 1179, 1187, 1197 |
 | TC-FA-TAG-E2E-322-replace-tag-saat-borrow-dan-sesi-opname-serta-identifikasi-manual-laporan-terbuka | Identifikasi Manual pada Tag dengan Laporan Terbuka serta Replace TAG saat Borrow dan Sesi Opname | FE+BE | 31 | 1216, 1225, 1228 |
 | TC-FA-TAG-E2E-323-defense-in-depth-akses-data-tab-paired-dan-isolasi-client | Defense-in-Depth: Akses Data Tab Paired Ditolak Server, Isolasi Client, dan Tombol Hidden Bukan Pengganti Pemeriksaan Server | FE+BE | 31 | 142, 1262, 1263, 1264, 1265, 1266, 1267 |
 | TC-FA-TAG-E2E-324-defense-in-depth-injeksi-markup-dan-sql-pada-teks-tampil-dan-search | Defense-in-Depth: Injeksi Markup dan SQL Ditampilkan sebagai Teks pada Tabel, Changelog, Search, dan TAG Log | FE+BE | 29 | 1259, 1260, 1261, 1307, 1308 |
-| TC-FA-TAG-E2E-325-defense-in-depth-submit-langsung-replace-pair-dan-start-print-bagian-1 | Defense-in-Depth: Submit Langsung Replace, Pair, dan Start Print Ditolak 403 untuk Role Tanpa Hak (Bagian 1) | FE+BE | 31 | 1268, 1269, 1270, 1271, 1272, 1273, 1274 |
+| TC-FA-TAG-E2E-325-defense-in-depth-submit-langsung-replace-pair-dan-start-print-bagian-1 | Defense-in-Depth: Submit Langsung Replace, Pair, dan Start Print Ditolak 403 untuk Role Tanpa Hak (Bagian 1) | FE+BE | 28 | 1268, 1269, 1270, 1271, 1272, 1273, 1274 |
 | TC-FA-TAG-E2E-326-defense-in-depth-submit-langsung-replace-pair-dan-start-print-bagian-2 | Defense-in-Depth: Submit Langsung Replace dan Pair Ditolak Server karena Kondisi Aset, Stok, Status Tag, Plan, dan Return Group (Bagian 2) | FE+BE | 28 | 1275, 1276, 1277, 1278, 1279, 1280 |
-| TC-FA-TAG-E2E-327-defense-in-depth-izin-dicabut-saat-dialog-atau-halaman-terbuka-bagian-1 | Defense-in-Depth: Izin Update atau Scope Group Dicabut saat Dialog Replace atau Pair Terbuka, Submit Ditolak Server (Bagian 1) | FE+BE | 28 | 1281, 1282, 1283 |
-| TC-FA-TAG-E2E-328-defense-in-depth-izin-dicabut-saat-dialog-atau-halaman-terbuka-bagian-2 | Defense-in-Depth: Hak Update Dicabut saat Dialog Receive TAG, Receive Manually, atau Decline Report Terbuka, Commit Ditolak Server (Bagian 2) | FE+BE | 31 | 1303, 1304, 1305 |
-| TC-FA-TAG-E2E-329-defense-in-depth-commit-langsung-receive-receive-manually-dan-bagian-1 | Defense-in-Depth: Commit Langsung Receive TAG, Receive Manually, dan Decline Report Ditolak Server (Bagian 1) | FE+BE | 32 | 1290, 1291, 1292, 1293, 1294, 1295, 1306 |
+| TC-FA-TAG-E2E-327-defense-in-depth-izin-dicabut-saat-dialog-atau-halaman-terbuka-bagian-1 | Defense-in-Depth: Izin Update atau Scope Group Dicabut saat Dialog Replace atau Pair Terbuka, Submit Ditolak Server (Bagian 1) | FE+BE | 29 | 1281, 1282, 1283 |
+| TC-FA-TAG-E2E-328-defense-in-depth-izin-dicabut-saat-dialog-atau-halaman-terbuka-bagian-2 | Defense-in-Depth: Hak Update Dicabut saat Dialog Receive TAG, Receive Manually, atau Decline Report Terbuka, Commit Ditolak Server (Bagian 2) | FE+BE | 32 | 1303, 1304, 1305 |
+| TC-FA-TAG-E2E-329-defense-in-depth-commit-langsung-receive-receive-manually-dan-bagian-1 | Defense-in-Depth: Commit Langsung Receive TAG, Receive Manually, dan Decline Report Ditolak Server (Bagian 1) | FE+BE | 28 | 1290, 1291, 1292, 1293, 1294, 1295, 1306 |
 | TC-FA-TAG-E2E-330-defense-in-depth-commit-langsung-receive-receive-manually-dan-bagian-2 | Defense-in-Depth: Search dan Filter Return Group To Be Returned Tidak Menjangkau Group di Luar Scope (Bagian 2) | FE+BE | 10 | 1309, 1310 |
 | TC-FA-TAG-E2E-331-resilience-error-load-try-again-halaman-tab-paired-dan-to-be-returned | Resilience: Error Load Tab Paired dan To Be Returned (5xx) dan Pemulihan lewat Try Again | FE+BE | 13 | 16, 17, 87 |
 | TC-FA-TAG-E2E-332-resilience-download-gagal-toast-error-paired-changelog-to-be-returned | Resilience: Download Gagal Menampilkan Toast Error pada Paired, Changelog, To Be Returned, dan Event Log | FE+BE | 27 | 230, 970, 1026, 1069 |
 | TC-FA-TAG-E2E-333-resilience-pencarian-tag-overlay-scan-gagal-dan-penggantian-atomik | Resilience: Pencarian Tag di Overlay Scan Gagal (5xx dan Timeout) dan Penggantian Atomik saat Pemasangan Tag Baru Gagal | FE+BE | 25 | 259, 260, 1350 |
 | TC-FA-TAG-E2E-334-resilience-submit-replace-gagal-timeout-layanan-global-dan-retry | Resilience: Submit Replace Gagal (5xx, Timeout, Layanan Global Tidak Terjangkau) dan Retry Berhasil | FE+BE | 27 | 1340, 1341, 1342, 1343 |
-| TC-FA-TAG-E2E-335-resilience-submit-pair-gagal-timeout-dan-layanan-global-tidak-terjangkau | Resilience: Submit Pair Gagal (5xx, Timeout, Layanan Global Tidak Terjangkau) Mempertahankan Dialog dan Slot | FE+BE | 32 | 1345, 1346, 1347 |
+| TC-FA-TAG-E2E-335-resilience-submit-pair-gagal-timeout-dan-layanan-global-tidak-terjangkau | Resilience: Submit Pair Gagal (5xx, Timeout, Layanan Global Tidak Terjangkau) Mempertahankan Dialog dan Slot | FE+BE | 33 | 1345, 1346, 1347 |
 | TC-FA-TAG-E2E-336-resilience-sesi-batch-replace-dan-pair-kegagalan-server-satu-bagian-1 | Resilience: Kegagalan Server pada Satu Aset dalam Sesi Batch Replace TAG (5xx, Timeout, Retry Failed) (Bagian 1) | FE+BE | 31 | 405, 406, 407 |
 | TC-FA-TAG-E2E-337-resilience-sesi-batch-replace-dan-pair-kegagalan-server-satu-bagian-2 | Resilience: Kegagalan Server pada Satu Aset dalam Sesi Batch Pair (Toast, Dialog Tetap Terbuka, Skip) (Bagian 2) | FE+BE | 15 | 467, 468 |
 | TC-FA-TAG-E2E-338-resilience-start-print-gagal-timeout-dan-retry | Resilience: Start Print Gagal (5xx dan Timeout) Mempertahankan Dialog Print QR dan Retry Berhasil | FE+BE | 31 | 495, 496, 497 |
@@ -349,7 +349,7 @@ Tidak ada.
 | TC-FA-TAG-E2E-340-resilience-receive-tag-dan-receive-manually-gagal-timeout-dan-bagian-2 | Resilience: Receive Manually dan Bulk Receive Manually Gagal (5xx, Layanan Global Tidak Terjangkau) Mempertahankan Dialog dan Seleksi (Bagian 2) | FE+BE | 31 | 583, 584, 585 |
 | TC-FA-TAG-E2E-341-resilience-report-tag-decline-report-dan-cancel-report-gagal-5xx | Resilience: Report TAG, Cancel Report, dan Decline Report Gagal (5xx) Mempertahankan Dialog | FE+BE | 31 | 617, 645, 668 |
 | TC-FA-TAG-E2E-342-guard-submit-beruntun-klik-ganda-hanya-satu-efek-bagian-1 | Guard Klik Ganda: Pindaian Beruntun, Start Print, dan Receive Ditekan Beruntun Hanya Menghasilkan Satu Efek (Bagian 1) | FE+BE | 26 | 257, 494, 566 |
-| TC-FA-TAG-E2E-343-guard-submit-beruntun-klik-ganda-hanya-satu-efek-bagian-2 | Guard Klik Ganda: Submit Decline Report dan Submit Replace Ditekan Beruntun Hanya Menghasilkan Satu Efek (Bagian 2) | FE+BE | 21 | 646, 1344 |
+| TC-FA-TAG-E2E-343-guard-submit-beruntun-klik-ganda-hanya-satu-efek-bagian-2 | Guard Klik Ganda: Submit Decline Report dan Submit Replace Ditekan Beruntun Hanya Menghasilkan Satu Efek (Bagian 2) | FE+BE | 22 | 646, 1344 |
 | TC-FA-TAG-E2E-344-guard-submit-beruntun-klik-ganda-hanya-satu-efek-bagian-3 | Guard Klik Ganda: Submit Pair dan Submit & next Sesi Batch Replace Ditekan Beruntun Hanya Menghasilkan Satu Efek (Bagian 3) | FE+BE | 24 | 1348, 1349 |
 | TC-FA-TAG-E2E-345-state-tenant-plan-free-tipe-tag-terkunci-pada-replace-dan-pair-bagian-1 | State Tenant: Free Plan Mengunci Seluruh Tipe Pengganti pada Scan Replace dan Row Action Replace TAG (Bagian 1) | FE+BE | 18 | 245, 263, 375 |
 | TC-FA-TAG-E2E-346-state-tenant-plan-free-tipe-tag-terkunci-pada-replace-dan-pair-bagian-2 | State Tenant: Free Plan pada Tag Non-standard, Bulk Batch Replace, Tampilan Tab Paired, Menu TAG, dan Upgrade Plan (Bagian 2) | FE+BE | 30 | 376, 383, 1154, 1314, 1315 |
@@ -357,13 +357,13 @@ Tidak ada.
 | TC-FA-TAG-E2E-348-state-tenant-entitas-suspended-atau-expired-baca-boleh-tulis-bagian-1 | State Tenant: Entitas Suspended Menolak Submit Replace, Submit Pair, dan Submit & next Sesi Batch dengan Pesan V-22 (Bagian 1) | FE+BE | 28 | 1285, 1287, 1288 |
 | TC-FA-TAG-E2E-349-state-tenant-entitas-suspended-atau-expired-baca-boleh-tulis-bagian-2 | State Tenant: Entitas Suspended atau Expired Menolak Start Print, Receive TAG, dan Receive Manually dengan Pesan V-22 (Bagian 2) | FE+BE | 29 | 1289, 1296, 1297, 1298 |
 | TC-FA-TAG-E2E-350-state-tenant-entitas-suspended-atau-expired-baca-boleh-tulis-bagian-3 | State Tenant: Entitas Suspended atau Expired Menolak Report TAG dan Cancel Report dengan Pesan V-22 (Bagian 3) | FE+BE | 28 | 1299, 1300, 1302 |
-| TC-FA-TAG-E2E-351-guard-submit-report-tag-dan-cancel-report-ditekan-beruntun-hanya-satu-laporan | Guard Klik Ganda: Submit Report TAG dan Cancel Report Ditekan Beruntun Hanya Membuat dan Menutup Satu Laporan (Bagian 4) | FE+BE | 19 | 619, 669 |
+| TC-FA-TAG-E2E-351-guard-submit-report-tag-dan-cancel-report-ditekan-beruntun-hanya-satu-laporan | Guard Klik Ganda: Submit Report TAG dan Cancel Report Ditekan Beruntun Hanya Membuat dan Menutup Satu Laporan (Bagian 4) | FE+BE | 20 | 619, 669 |
 | TC-FA-TAG-E2E-352-defense-in-depth-izin-dicabut-saat-dialog-print-qr-dan-halaman-terbuka | Defense-in-Depth: Izin Update Dicabut saat Dialog Print QR Terbuka dan saat Halaman Terbuka, Aksi Tulis Hidden Sesudah Muat Ulang | FE+BE | 17 | 1284, 1313 |
-| TC-FA-TAG-E2E-353-absence-log-replace-pair-start-print-receive-dan-intake-bagian-1 | Absence Log: Submit Replace Ditolak dan Start Print Berhasil Tidak Menulis Changelog, Activity Log, dan System Log | FE+BE | 33 | 1088, 1090, 1094 |
-| TC-FA-TAG-E2E-354-absence-log-replace-pair-start-print-receive-dan-intake-bagian-2 | Absence Log: Pair TAG Gagal 5xx dan Receive TAG Tidak Menulis Changelog atau TAG Log | FE+BE | 34 | 1102, 1106 |
-| TC-FA-TAG-E2E-355-waktu-kolom-since-tag-to-be-returned-hari-kalender-dan-tanpa-bagian-1 | Waktu: Kolom Since Hari ke-0 sampai ke-14 Tanpa Peringatan dan Tanpa Notifikasi Overdue pada Hari ke-7 sampai ke-30 | FE+BE | 14 | 1255, 1256, 1257, 1258, 1353, 1354, 1355, 1356 |
+| TC-FA-TAG-E2E-353-absence-log-replace-pair-start-print-receive-dan-intake-bagian-1 | Absence Log: Submit Replace Ditolak dan Start Print Berhasil Tidak Menulis Changelog, Activity Log, dan System Log | FE+BE | 34 | 1088, 1090, 1094 |
+| TC-FA-TAG-E2E-354-absence-log-replace-pair-start-print-receive-dan-intake-bagian-2 | Absence Log: Pair TAG Gagal 5xx dan Receive TAG Tidak Menulis Changelog atau TAG Log | FE+BE | 35 | 1102, 1106 |
+| TC-FA-TAG-E2E-355-waktu-kolom-since-tag-to-be-returned-hari-kalender-dan-tanpa-bagian-1 | Waktu: Kolom Since Hari ke-0 sampai ke-14 Tanpa Peringatan dan Tanpa Notifikasi Overdue pada Hari ke-7 sampai ke-30 | FE+BE | 15 | 1255, 1256, 1257, 1258, 1353, 1354, 1355, 1356 |
 | TC-FA-TAG-E2E-356-waktu-kolom-since-tag-to-be-returned-hari-kalender-dan-tanpa-bagian-2 | Waktu: Kolom Since Melewati Batas Pengembalian pada Hari ke-15 dan ke-30, Hari Kalender, dan Tanpa Aksi Otomatis | FE+BE | 26 | 1357, 1358, 1359, 1360 |
-| TC-FA-TAG-E2E-357-job-pengingat-laporan-terbuka-hari-ke-8-dan-penutupan-laporan | Job Pengingat: Laporan Terbuka Mendapat Pengingat Tepat pada Hari ke-8 dan Tidak pada Kondisi Lain | FE+BE | 29 | 1361, 1362, 1363, 1364, 1365, 1366, 1367, 1368, 1369, 1370 |
+| TC-FA-TAG-E2E-357-job-pengingat-laporan-terbuka-hari-ke-8-dan-penutupan-laporan | Job Pengingat: Laporan Terbuka Mendapat Pengingat Tepat pada Hari ke-8 dan Tidak pada Kondisi Lain | FE+BE | 33 | 1361, 1362, 1363, 1364, 1365, 1366, 1367, 1368, 1369, 1370 |
 | TC-FA-TAG-E2E-358-reader-driver-replace-dan-pair-blokir-d-10a-sampai-d-10e-dan-bagian-1 | Kondisi Reader: Tombol Replace TAG Disabled dan Dialog Blok D-10a sampai D-10e pada Toolbar dan Row Action | FE+BE | 18 | 508, 509, 510, 511, 512, 513, 514 |
 | TC-FA-TAG-E2E-359-reader-driver-replace-dan-pair-blokir-d-10a-sampai-d-10e-dan-bagian-2 | Kondisi Reader: Dialog Blok Batch Replace dan Pair TAG serta Alert Error Inline Scan Current TAG | FE+BE | 32 | 515, 516, 517, 518, 519 |
 | TC-FA-TAG-E2E-360-reader-driver-replace-dan-pair-blokir-d-10a-sampai-d-10e-dan-bagian-3 | Kondisi Reader: Alert Error Inline Scan Current TAG di Dialog Replace TAG untuk Reader Mati, Dua Reader, Belum Sinkron, dan Waiting for Approval | FE+BE | 22 | 520, 521, 522, 523 |
@@ -376,7 +376,7 @@ Tidak ada.
 | TC-FA-TAG-E2E-367-isi-berkas-unduhan-tab-paired-dan-to-be-returned-nilai-sel-bom-bagian-2 | Isi Berkas Unduhan: Asset Value Numerik, Transactional Policy, Category Berhierarki, dan Current Holder Nama Lengkap | FE+BE | 28 | 1434, 1435, 1436, 1437 |
 | TC-FA-TAG-E2E-368-download-tab-paired-di-atas-5000-baris-loading-screen-tanpa-job-latar | Volume Data: Download Tab Paired di Atas 5.000 Baris Memakai Loading Screen Tanpa Job Latar | FE+BE | 5 | 1438 |
 | TC-FA-TAG-E2E-369-aksesibilitas-dialog-fokus-trap-dan-aria-live-akun-total-bagian-1 | Aksesibilitas: Focus Trap Dialog Replace, Pair, dan Print QR, Aria-Live Hasil Pindai, dan Label Ikon Tipe Tag | FE+BE | 23 | 318, 323, 322, 321, 319, 320 |
-| TC-FA-TAG-E2E-370-aksesibilitas-dialog-fokus-trap-dan-aria-live-akun-total-bagian-2 | Aksesibilitas: Focus Trap Dialog Receive TAG, Receive Manually, dan Decline Report serta Aria-Live Hasil Scan Receive TAG | FE+BE | 24 | 571, 572, 570, 597, 1447 |
+| TC-FA-TAG-E2E-370-aksesibilitas-dialog-fokus-trap-dan-aria-live-akun-total-bagian-2 | Aksesibilitas: Focus Trap Dialog Receive TAG, Receive Manually, dan Decline Report serta Aria-Live Hasil Scan Receive TAG | FE+BE | 22 | 571, 572, 570, 597, 1447 |
 | TC-FA-TAG-E2E-371-aksesibilitas-aria-live-buttonscan-dan-focus-trap-dialog-report-dan | Aksesibilitas: Aria-Live Hasil ButtonScan Overlay Scan Replace dan Focus Trap Dialog Report TAG dan Cancel Report TAG | FE+BE | 17 | 24, 635, 1448 |
 | TC-FA-TAG-E2E-372-konfirmasi-bawaan-browser-saat-muat-ulang-dialog-terisi-bagian-1 | Muat Ulang: Konfirmasi Bawaan Browser Muncul pada Dialog Replace, Pair, dan Sesi Batch Replace yang Sudah Terisi | FE+BE | 29 | 1463, 1464, 1465 |
 | TC-FA-TAG-E2E-373-konfirmasi-bawaan-browser-saat-muat-ulang-dialog-terisi-bagian-2 | Muat Ulang: Konfirmasi Bawaan Browser pada Dialog Receive TAG dan Sesi Pair Terisi, Tidak Muncul pada Dialog Kosong dan Setelah Submit | FE+BE | 35 | 1466, 1467, 1484, 1468 |
@@ -390,7 +390,27 @@ Tidak ada.
 | TC-FA-TAG-E2E-382-replace-tag-combined-slot-validasi-v-25-v-26-dan-submit-kosongkan-slot-dan-separate-otomatis | Replace dengan Tag Combined: Kosongkan Slot Hasil Combined dan Separate Otomatis saat Submit | FE+BE | 22 | 367, 368 |
 | TC-FA-TAG-E2E-383-guard-submit-receive-manually-ditekan-beruntun-hanya-satu-entri | Guard Klik Ganda: Submit Receive Manually Ditekan Beruntun Hanya Menulis Satu Entri Event Log (Bagian 5) | FE+BE | 12 | 587 |
 | TC-FA-TAG-E2E-384-state-tenant-plan-nfc-terkunci-pada-pair-tag-slot-tidak-ditampilkan | State Tenant: Plan yang Mengunci Tag NFC pada Dialog Pair TAG, Slot Tidak Ditampilkan dan Submit Disabled (Bagian 4) | FE+BE | 15 | 425, 1476 |
-| TC-FA-TAG-E2E-385-state-tenant-entitas-suspended-decline-report-baca-saja-dan-replace-expired | State Tenant: Decline Report Ditolak saat Suspended, Halaman TAG Tetap Dapat Dibaca, dan Submit Replace Ditolak saat Expired (Bagian 4) | FE+BE | 34 | 1286, 1301, 1317 |
+| TC-FA-TAG-E2E-385-state-tenant-entitas-suspended-decline-report-baca-saja-dan-replace-expired | State Tenant: Decline Report Ditolak saat Suspended, Halaman TAG Tetap Dapat Dibaca, dan Submit Replace Ditolak saat Expired (Bagian 4) | FE+BE | 37 | 1286, 1301, 1317 |
+| TC-FA-TAG-E2E-386-custom-field-bertipe-date-guard-search-filter-dan-sort-pada-tabel-t-tag-02 | Custom Field Bertipe Date pada Tabel T-TAG-02: Guard Search, Filter, dan Sort | FE+BE | 25 | 905, 906, 907 |
+| TC-FA-TAG-E2E-387-multi-tab-tab-browser-baru-memulai-state-default-tabel-paired | Multi-Tab: Tab Browser Baru Memulai State Default Tabel Paired | FE+BE | 6 | 929 |
+| TC-FA-TAG-E2E-388-absence-log-request-langsung-replace-ditolak-tidak-menulis-changelog | Absence Log: Request Langsung Replace yang Ditolak 403 Tidak Menulis Changelog | FE+BE | 18 | 1262, 1268, 1269, 1270 |
+| TC-FA-TAG-E2E-389-absence-log-request-langsung-receive-dan-decline-report-ditolak-tidak-menulis-event-log-tag-log-changelog | Absence Log: Request Langsung Receive TAG, Receive Manually, dan Decline Report yang Ditolak 403 Tidak Menulis Event Log, TAG Log, dan Changelog | FE+BE | 26 | 1290, 1291, 1292, 1293, 1294 |
+
+## Dataset tab Paired
+
+- Dataset umum empat grup dipakai TC 1, 928, 929, dan 1028. Dataset khusus 25 grup (precondition d) dipakai TC 914 sampai 921 (spec 229) dan TC 925 (spec 231); kedua spec memulihkannya ke dataset umum empat grup di hook `after` atau langkah akhir.
+
+## Spec multi-konteks (kelas c)
+
+- Spec `387` memuat TC 929 (tab browser baru memulai state default). Tab browser kedua adalah objek asersi, sehingga TC ini dipisah dari spec fungsional 242 (TC 930) menurut prinsip 13c.
+
+## Pembagian TC lintas spec: asersi absence log (S-05)
+
+Tiap TC di bawah berada di `sourceTc` dua spec sekaligus, sehingga `check-suite.py` melaporkan satu temuan C2 tingkat [REVIEW] per TC. Ini disengaja (S-05, `P-5` butir a): klausa "tidak ada entri log baru" atas request langsung yang ditolak server (kelas a) dipisah ke spec absence kelas g dengan request langsung sebagai pemicu dan baseline sendiri, sedangkan status respons 403 dan state data tetap diasersi di spec kelas a. Id TC tetap di `sourceTc` kedua spec dan pembagian ditulis di `## Notes` keduanya. Pada tabel "Lapisan per TC", baris pertama TC adalah spec asal dan baris kedua adalah spec absence.
+
+- Spec `388` (Changelog Paired TAG): TC 1262 (spec asal 323), TC 1268, 1269, dan 1270 (spec asal 325).
+- Spec `389` (Event Log, TAG Log, dan Changelog): TC 1290, 1291, 1292, 1293, dan 1294 (spec asal 329).
+- Spec absence dipisah menjadi 388 dan 389 mengikuti spec asalnya karena gabungannya (44 langkah) melewati batas ±35 langkah.
 
 ## Lapisan per TC
 
@@ -1300,9 +1320,9 @@ Tidak ada.
 | TC-FA-TAG-902 | TC-FA-TAG-E2E-224 | FE+BE |
 | TC-FA-TAG-903 | TC-FA-TAG-E2E-224 | FE+BE |
 | TC-FA-TAG-904 | TC-FA-TAG-E2E-224 | FE+BE |
-| TC-FA-TAG-905 | TC-FA-TAG-E2E-224 | FE+BE |
-| TC-FA-TAG-906 | TC-FA-TAG-E2E-224 | FE+BE |
-| TC-FA-TAG-907 | TC-FA-TAG-E2E-225 | FE+BE |
+| TC-FA-TAG-905 | TC-FA-TAG-E2E-386 | FE+BE |
+| TC-FA-TAG-906 | TC-FA-TAG-E2E-386 | FE+BE |
+| TC-FA-TAG-907 | TC-FA-TAG-E2E-386 | FE+BE |
 | TC-FA-TAG-908 | TC-FA-TAG-E2E-225 | FE+BE |
 | TC-FA-TAG-909 | TC-FA-TAG-E2E-225 | FE+BE |
 | TC-FA-TAG-910 | TC-FA-TAG-E2E-225 | FE+BE |
@@ -1324,7 +1344,7 @@ Tidak ada.
 | TC-FA-TAG-926 | TC-FA-TAG-E2E-231 | FE+BE |
 | TC-FA-TAG-927 | TC-FA-TAG-E2E-231 | FE+BE |
 | TC-FA-TAG-928 | TC-FA-TAG-E2E-231 | FE+BE |
-| TC-FA-TAG-929 | TC-FA-TAG-E2E-242 | FE+BE |
+| TC-FA-TAG-929 | TC-FA-TAG-E2E-387 | FE+BE |
 | TC-FA-TAG-930 | TC-FA-TAG-E2E-242 | FE+BE |
 | TC-FA-TAG-931 | TC-FA-TAG-E2E-233 | FE+BE |
 | TC-FA-TAG-932 | TC-FA-TAG-E2E-233 | FE+BE |
@@ -1596,8 +1616,8 @@ Tidak ada.
 | TC-FA-TAG-1198 | TC-FA-TAG-E2E-313 | FE+BE |
 | TC-FA-TAG-1199 | TC-FA-TAG-E2E-313 | FE+BE |
 | TC-FA-TAG-1200 | TC-FA-TAG-E2E-313 | FE+BE |
-| TC-FA-TAG-1201 | TC-FA-TAG-E2E-313 | FE+BE |
-| TC-FA-TAG-1202 | TC-FA-TAG-E2E-313 | FE+BE |
+| TC-FA-TAG-1201 | TC-FA-TAG-E2E-314 | FE+BE |
+| TC-FA-TAG-1202 | TC-FA-TAG-E2E-314 | FE+BE |
 | TC-FA-TAG-1203 | TC-FA-TAG-E2E-314 | FE+BE |
 | TC-FA-TAG-1204 | TC-FA-TAG-E2E-314 | FE+BE |
 | TC-FA-TAG-1205 | TC-FA-TAG-E2E-315 | FE+BE |
@@ -1658,14 +1678,18 @@ Tidak ada.
 | TC-FA-TAG-1260 | TC-FA-TAG-E2E-324 | FE+BE |
 | TC-FA-TAG-1261 | TC-FA-TAG-E2E-324 | FE+BE |
 | TC-FA-TAG-1262 | TC-FA-TAG-E2E-323 | FE+BE |
+| TC-FA-TAG-1262 | TC-FA-TAG-E2E-388 | FE+BE |
 | TC-FA-TAG-1263 | TC-FA-TAG-E2E-323 | FE+BE |
 | TC-FA-TAG-1264 | TC-FA-TAG-E2E-323 | FE+BE |
 | TC-FA-TAG-1265 | TC-FA-TAG-E2E-323 | FE+BE |
 | TC-FA-TAG-1266 | TC-FA-TAG-E2E-323 | FE+BE |
 | TC-FA-TAG-1267 | TC-FA-TAG-E2E-323 | FE+BE |
 | TC-FA-TAG-1268 | TC-FA-TAG-E2E-325 | FE+BE |
+| TC-FA-TAG-1268 | TC-FA-TAG-E2E-388 | FE+BE |
 | TC-FA-TAG-1269 | TC-FA-TAG-E2E-325 | FE+BE |
+| TC-FA-TAG-1269 | TC-FA-TAG-E2E-388 | FE+BE |
 | TC-FA-TAG-1270 | TC-FA-TAG-E2E-325 | FE+BE |
+| TC-FA-TAG-1270 | TC-FA-TAG-E2E-388 | FE+BE |
 | TC-FA-TAG-1271 | TC-FA-TAG-E2E-325 | FE+BE |
 | TC-FA-TAG-1272 | TC-FA-TAG-E2E-325 | FE+BE |
 | TC-FA-TAG-1273 | TC-FA-TAG-E2E-325 | FE+BE |
@@ -1686,10 +1710,15 @@ Tidak ada.
 | TC-FA-TAG-1288 | TC-FA-TAG-E2E-348 | FE+BE |
 | TC-FA-TAG-1289 | TC-FA-TAG-E2E-349 | FE+BE |
 | TC-FA-TAG-1290 | TC-FA-TAG-E2E-329 | FE+BE |
+| TC-FA-TAG-1290 | TC-FA-TAG-E2E-389 | FE+BE |
 | TC-FA-TAG-1291 | TC-FA-TAG-E2E-329 | FE+BE |
+| TC-FA-TAG-1291 | TC-FA-TAG-E2E-389 | FE+BE |
 | TC-FA-TAG-1292 | TC-FA-TAG-E2E-329 | FE+BE |
+| TC-FA-TAG-1292 | TC-FA-TAG-E2E-389 | FE+BE |
 | TC-FA-TAG-1293 | TC-FA-TAG-E2E-329 | FE+BE |
+| TC-FA-TAG-1293 | TC-FA-TAG-E2E-389 | FE+BE |
 | TC-FA-TAG-1294 | TC-FA-TAG-E2E-329 | FE+BE |
+| TC-FA-TAG-1294 | TC-FA-TAG-E2E-389 | FE+BE |
 | TC-FA-TAG-1295 | TC-FA-TAG-E2E-329 | FE+BE |
 | TC-FA-TAG-1296 | TC-FA-TAG-E2E-349 | FE+BE |
 | TC-FA-TAG-1297 | TC-FA-TAG-E2E-349 | FE+BE |

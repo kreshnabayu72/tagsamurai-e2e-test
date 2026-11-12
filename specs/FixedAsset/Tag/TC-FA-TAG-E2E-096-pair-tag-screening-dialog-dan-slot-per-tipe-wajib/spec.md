@@ -32,6 +32,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: spec tidak mengubah data (dialog hanya dibuka dan dibatalkan tanpa isian).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -77,8 +78,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-411, 412, 413, 414). Tidak ada TC hanya-BE.
 - Urutan TC di dalam spec: TC-412 memakai dialog yang sama dengan TC-411 (langkah 3) karena precondition dan langkah pembukanya identik; TC-413 dan TC-414 memakai aset lain sehingga popup grup dibuka ulang.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 13, 19, dan 25 (menutup dialog tanpa isian dengan [Cancel], yang menutup langsung tanpa konfirmasi D-11), serta langkah 14 dan 20 (menutup Popup Detail sebelum membuka popup grup lain).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-411 butir b menulis blok info "sama dengan Dialog Replace TAG" dengan rincian di klausa yang sama; spec mengasersinya sebagai satu butir daftar elemen.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme mengatur reader tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.

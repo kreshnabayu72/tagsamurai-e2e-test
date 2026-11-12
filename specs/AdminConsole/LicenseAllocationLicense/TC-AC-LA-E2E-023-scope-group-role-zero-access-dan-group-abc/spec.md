@@ -43,11 +43,11 @@ coverage:
 5. Verifikasi opsi filter Client tidak memuat `PT Sejahtera`
 6. Tutup panel Filter, lalu klik `[+ Allocation]` dan buka dropdown Client
 7. Verifikasi dropdown Client pada form tidak memuat `PT Sejahtera`
-8. Tutup form dengan `[✕]`
+8. Tutup form dengan `[×]`
 
 ### TC-AC-LA-91: Group A Read-only
 
-9. Ganti akun: Logout lalu login sebagai Distributor Group A/B/C (`mixedGroupLic`)
+9. Ganti akun: Logout lalu login sebagai Distributor Group A/B/C (`mixedGroupLic`), lalu buka Allocation > License Allocation tab Current
 10. Ketik Search Allocation ID seed `Pending` Toko Serba Ada (`Fixture.license-allocation-license.seed46`), tekan Enter
 11. Verifikasi baris alokasi `Toko Serba Ada` tampil
 12. Klik ikon `⋯` pada baris itu
@@ -84,6 +84,7 @@ coverage:
 - Mode: FE+BE. Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`.
 - Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (S-03): langkah Search untuk menemukan baris target (R-16), langkah penutupan panel dan form, dan ganti akun eksplisit (S-07). Dropdown Client dibuka sekali dan dipakai bersama TC-AC-LA-91 butir c, TC-AC-LA-92 butir a, dan TC-AC-LA-93 butir b; langkah Search nama Client pada TC-AC-LA-93 butir a memakai Search List.
+- Langkah penghubung (S-03): pembukaan Allocation > License Allocation tab Current di dalam langkah Ganti akun, karena halaman landing akun tidak diandaikan (S-07).
 - Role Matrix: ditulis per blok role karena ganti akun menuntut Step eksplisit (bagian 3a, 2026-10-30) dan tiap blok akun berdiri sendiri; hasil dan data berbeda per role.
 - Absence baris, opsi filter, dan opsi dropdown diawali anchor positif: hasil Search kosong dengan empty state `No results found` (bagian 8b butir 2), dan dropdown Client akun `mixedGroupLic` memuat `PT Sejahtera` sebelum asersi `Toko Serba Ada` dan `Klinik Medika Jaya` tidak ada.
 - Temuan untuk QA:

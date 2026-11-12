@@ -28,14 +28,15 @@ coverage:
 
 | Data | Nilai | Kunci |
 |---|---|---|
-| Aset 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID), Tag RFID `RF-00130` Paired | `aset220` |
+| Aset 1 | 'Excavator 20 Ton - 220' (AST-0220, Group Plant A, TAG Type Asset Name RFID), Tag RFID `RF-00330` Paired | `aset220` |
 | Aset Non-standard 1 | 'Excavator 20 Ton - 42' (AST-0042, Group Plant A, TAG Type Asset Name RFID), Tag QR `QR-00230` Paired (Non-standard) | `aset42` |
 | Aset Non-standard 2 | 'Excavator 20 Ton - 243' (AST-0243, Group Plant A), Tag QR `QR-00231` Paired (Non-standard) | `aset243` |
 | Aset In Disposal Process | 'Excavator 20 Ton - 46' (AST-0046, Group Plant A, Asset Status In Disposal Process), Tag QR `QR-00234` Paired (Non-standard) | `aset46` |
-| Aset NFC dan QR | 'Laptop Pro 14 - 8' (AST-0108, Group Plant A, TAG Type Asset Name NFC dan QR), Tag NFC `NF-00092` dan Tag QR `QR-00300` Paired | `aset108` |
+| Aset NFC dan QR | 'Laptop Pro 14 - 8' (AST-0108, Group Plant A, TAG Type Asset Name NFC dan QR), Tag NFC `NF-00292` dan Tag QR `QR-00300` Paired | `aset108` |
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500` | `stokAvailable` |
 
-- State yang diubah dan pemulihannya: Tag `RF-00130` diganti `RF-00412` (TC-379); stok Available disetel ulang antar blok lewat fixture; hook `after` memulihkan Tag Paired aset dan stok Available seperti awal.
+- State yang diubah dan pemulihannya: Tag `RF-00330` diganti `RF-00412` (TC-379); stok Available disetel ulang antar blok lewat fixture; hook `after` memulihkan Tag Paired aset dan stok Available seperti awal.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 17); entri TAG Log Global (langkah 17).
 
 ## Test Steps
 
@@ -45,8 +46,8 @@ coverage:
 2. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 220'
 3. Verifikasi Dialog Replace TAG terbuka langsung dengan judul aset 'Excavator 20 Ton - 220'
 4. Verifikasi tidak ada overlay scan dan tidak ada langkah Identify
-5. Verifikasi baris `RF-00130` otomatis terpilih
-6. Verifikasi baris `RF-00130` berbadge `Not scanned`
+5. Verifikasi baris `RF-00330` otomatis terpilih
+6. Verifikasi baris `RF-00330` berbadge `Not scanned`
 7. Klik [Cancel] pada Dialog Replace TAG
 
 ### Bulk Batch Replace TAG dengan satu aset (TC-FA-TAG-378, TC-FA-TAG-379)
@@ -83,9 +84,9 @@ coverage:
 31. Verifikasi tombol `Replace TAG` dan `Print QR` Hidden
 32. Klik tab Paired
 33. Klik tombol scan `Replace TAG` di toolbar tab Paired
-34. Pindai Tag `NF-00092`
+34. Pindai Tag `NF-00292`
 35. Verifikasi Dialog Replace TAG terbuka untuk 'Laptop Pro 14 - 8'
-36. Verifikasi baris `NF-00092` tercentang dan berbadge `Scanned`
+36. Verifikasi baris `NF-00292` tercentang dan berbadge `Scanned`
 37. Verifikasi baris `QR-00300` tidak tercentang
 38. Klik [Cancel] pada Dialog Replace TAG
 
@@ -95,10 +96,11 @@ coverage:
 - Urutan TC di dalam spec: TC-377, TC-378, TC-379, TC-385, TC-386, TC-387. TC-379 mengganti Tag aset 220 sehingga ditaruh sesudah TC-377 dan TC-378 yang membaca keadaan awalnya.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 7 dan 14 (menutup dialog tanpa menyimpan), 20 (menutup popup dan menyetel ulang stok), 26 (Skip untuk mengamati aset kedua sebagai bagian asersi TC-385 butir b), 28 (menutup sesi dan ringkasan), 32, dan 38.
 - Spec di atas smell 35 langkah (38 langkah). Alasan: seluruh blok satu topik (pintu masuk dialog Replace TAG dari row action, Bulk satu aset, aksi grup, dan overlay scan) pada halaman TAG yang sama dengan reader yang sama, satu kelas, dan kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Replace` per aset (langkah 17); entri TAG Log Global (langkah 17).
 - Temuan untuk QA:
   - TC-FA-TAG-385 butir b ("Excavator 20 Ton - 46 tidak dimasukkan") dan butir a ("Asset 1 of 2") hanya teramati lewat pergeseran ke aset kedua; spec menambah satu langkah [Skip] sebagai langkah penghubung untuk mengamatinya.
   - TC-FA-TAG-385 tidak menyatakan cara menutup sesi di akhir; spec memakai ikon close lalu [Close] (perilaku ikon close tanpa isian: TC-FA-TAG-398).
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
+  - TC tidak menyatakan apakah dialog yang hanya berisi Tag lama terpindai (tanpa Tag pengganti) memunculkan konfirmasi D-09 saat [Cancel] (langkah 38, Tag `NF-00292` terpindai lewat overlay scan); spec menganggap dialog itu belum terisi dan tertutup langsung (selaras TC-FA-TAG-311).
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan dan overlay scan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-379 ("Tag `RF-00412` Paired pada AST-0220") tanpa langkah observasi tidak diasersi.

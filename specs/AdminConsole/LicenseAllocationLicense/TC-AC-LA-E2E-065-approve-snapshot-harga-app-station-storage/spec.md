@@ -27,6 +27,7 @@ coverage:
   - `{idApp}`: Asset Control App ke `SUBS-20260105-K2L3M` CV Mitra Sejati (bentuk Pre-setup #44), pada Subscription yang belum punya Asset Control App Active atau Pending;
   - `{idStation}`: Asset Control Station +2 `Client-wide` Klinik Harapan Bunda (bentuk Pre-setup #45).
 - Kemampuan teknis (disediakan tim FE/BE; TC dan PRD tidak menyebut endpoint atau halamannya): seeding alokasi dan pembersihannya, fixture waktu (jam server dan jam browser ke 2 Jan 2027 sehingga term Pending menjadi Active), fixture harga (mengubah dan memulihkan Product Price Concurrent User), kemampuan membaca saldo kantong, status App pada Subscription, tanggal kedaluwarsa, entri Allocation Log record, jumlah entri Activity Log, dan notifikasi `License allocated`.
+- Kemampuan teknis tambahan (disediakan tim FE/BE): seeding satu notifikasi Plan Owner PT Maju Bersama yang tidak terkait `{idStation}` sehingga daftar notifikasi Plan Owner memuat sedikitnya satu notifikasi lain sebagai anchor asersi absence notifikasi (langkah 32). Jendela tunggu 5 detik tanpa memuat ulang halaman (langkah 33) adalah pilihan spec, bukan nilai TC atau PRD (bagian 6).
 - State global: jam server dan jam browser diatur pada langkah 1 dan dipulihkan pada langkah 9; Product Price Concurrent User dinaikkan pada langkah 10 dan dipulihkan pada langkah 17; hook `after` memulihkan keduanya sebagai cadangan. Saldo kantong dan kuota dikembalikan oleh pembersihan record seed.
 - Suite berjalan serial (`parallel: false`).
 
@@ -71,19 +72,25 @@ coverage:
 26. Klik `[Review]` pada alokasi `{idStation}`
 27. Pilih Approve
 28. Klik Submit
-29. Verifikasi alokasi `Active` tanpa tanggal kedaluwarsa
-30. Verifikasi tidak ada notifikasi `License allocated` (Station tidak punya Plan Owner)
-31. Buka Activity Log
-32. Verifikasi Activity Log hanya memuat entri approver (`Fajar N`) atas `{idStation}`, tanpa entri untuk Plan Owner
+29. Verifikasi alokasi `Active`
+30. Verifikasi alokasi tanpa tanggal kedaluwarsa
+31. Buka notifikasi Plan Owner PT Maju Bersama
+32. Verifikasi daftar notifikasi Plan Owner memuat sedikitnya satu notifikasi lain (daftar termuat, anchor)
+33. Tunggu 5 detik tanpa memuat ulang halaman
+34. Verifikasi tidak ada notifikasi `License allocated` (Station tidak punya Plan Owner)
+35. Buka Activity Log
+36. Verifikasi Activity Log hanya memuat entri approver (`Fajar N`) atas `{idStation}`, tanpa entri untuk Plan Owner
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 2, 11, 18, 25, dan 31 (berpindah halaman), langkah 1, 9, 10, dan 17 (mengatur dan memulihkan jam serta harga). Langkah 9 memulihkan jam sebelum aksi lain supaya Last Updated dan log tidak bercap waktu masa depan (S-09, S-12).
-- Langkah 30 diletakkan segera setelah Approve dan sebelum membuka Activity Log; status `Active` pada langkah 29 menjadi anchor positif bagi asersi ketiadaan notifikasi (8b butir 2 dan 11).
+- Langkah penghubung (S-03): langkah 2, 11, 18, 25, dan 35 (berpindah halaman), langkah 1, 9, 10, dan 17 (mengatur dan memulihkan jam serta harga). Langkah 9 memulihkan jam sebelum aksi lain supaya Last Updated dan log tidak bercap waktu masa depan (S-09, S-12).
+- Langkah 31 (membuka notifikasi Plan Owner) dan 33 (jendela tunggu 5 detik tanpa Verifikasi, bagian 6) adalah langkah penghubung; langkah 32 adalah anchor positif asersi absence notifikasi pada langkah 34 (daftar notifikasi Plan Owner termuat dan memuat notifikasi lain; teks notifikasi lain itu tidak ada di katalog PRD sehingga tidak ditulis).
+- Langkah 34 diletakkan segera setelah Approve dan sebelum membuka Activity Log; status `Active` pada langkah 29 menjadi anchor positif bagi asersi ketiadaan notifikasi (8b butir 2 dan 11).
 - Langkah 8 mengasersi butir b TC-AC-LA-244 (nominal Capture sama dengan Cost awal `$3,650.00` tanpa hitung ulang).
+- Spec melewati sekitar 35 langkah (36 langkah). Alasan pertahanan: seluruh blok satu topik (Approve dari Approvals oleh Fajar Nugroho) pada dataset dan kelas harness fungsional yang sama, tiap blok memakai record seed sendiri sehingga berdiri sendiri, dan satu langkah di atas 35 hanya hasil pemecahan `Verifikasi` per klausa (S-01) serta anchor asersi absence notifikasi (bagian 6).
 - Temuan untuk QA:
   - TC-AC-LA-244 tidak menyebut langkah yang membuat term Pending menjadi Active setelah jam digeser (Catatan TC menyatakan job Activation berjalan eventual dan Langkah Uji memuat langkah tunggu satu siklus job, tetapi TC ini tidak memuatnya); spec mengasumsikan term sudah Active setelah jam diatur.
   - TC-AC-LA-245 butir b ("Cost pada Allocation Log tetap `$150.00 (Wallet)`") tidak punya langkah membuka Allocation Log di LK; langkah 16 mengamatinya lewat kemampuan baca entri Allocation Log record `{idHarga}` dari tim FE/BE.
   - TC-AC-LA-246 butir a ("Status App pada Subscription") tidak menyebut halaman tempat status App dibaca, dan tanggal kedaluwarsa tidak disebut permukaannya; spec memakai kemampuan baca state BE dari tim FE/BE.
   - TC-AC-LA-246 memakai Pre-setup #44 untuk Subscription `SUBS-20260105-K2L3M` sedangkan Pre-setup #53 menyatakan Subscription yang sama sudah punya Asset Control App Active; spec memakai seed App pada Subscription tanpa App Active atau Pending.
-  - TC-AC-LA-247 butir b menyebut Activity Log "hanya entri approver" tanpa menyebut cara memastikan tidak ada entri lain; langkah 32 mengasersi entri atas `{idStation}` hanya milik `Fajar N`. Akun pengamat notifikasi Plan Owner tidak disebut.
+  - TC-AC-LA-247 butir b menyebut Activity Log "hanya entri approver" tanpa menyebut cara memastikan tidak ada entri lain; langkah 36 mengasersi entri atas `{idStation}` hanya milik `Fajar N`. Akun pengamat notifikasi Plan Owner tidak disebut.

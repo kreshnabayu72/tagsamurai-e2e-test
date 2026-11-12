@@ -33,6 +33,8 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): pembaca berkas unduhan CSV/XLSX (nama berkas, ekstensi, header kolom, jumlah baris, isi sel, nama sheet) dan pendeteksi toast pada saat klik pilihan format.
 - Pemulihan di hook `after`: entri Event Log To Be Returned dikembalikan ke keadaan Pre-setup tiga entri lewat fixture backend bila seeding mengubahnya. Filter dikosongkan, kolom Method dipulihkan, dan Search dikosongkan pada akhir spec.
 - Pemulihan preferensi kolom: kolom Method disembunyikan lewat Column Visibility (tersimpan di browser) dan ditampilkan kembali pada langkah 16.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 7, 16), dipulihkan hook `after` (lihat `suite.md`).
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
 
 ## Test Steps
 
@@ -85,8 +87,8 @@ coverage:
 - Absence toast pada TC-FA-TAG-1070 didahului `Verifikasi` empty state "No results found" sebagai anchor positif surface (bagian 8b butir 2).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 8 (menutup Column Visibility); 16 (memulihkan kolom Method); 17 (mengosongkan Filter lewat [Clear Field]); 18 (menerapkan Filter kosong lewat [Apply]); 31 (mengosongkan Search lewat `(←)`); 32 (menutup modal Event Log).
 - Asersi tambahan di luar Expected TC: `Verifikasi` empty state "No results found" sebelum klik Download (TC-FA-TAG-1070) sebagai anchor positif absence toast dan isi berkas (bagian 8b butir 2).
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom di browser lewat Column Visibility (langkah 7, 16), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
   - TC-FA-TAG-1067 Expected butir b "nama lengkap" untuk Handed Over By dan Received By tidak menyebut nama lengkap yang diharapkan (hanya "Dedi K." bernama lengkap Dedi Kurniawan di TC lain); spec mengasersi "berupa nama lengkap" tanpa menambah nilai.
   - TC-FA-TAG-1067 butir b "header kolom yang tampil" tidak menyebut urutan header; spec mengasersi himpunan header tanpa Method.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

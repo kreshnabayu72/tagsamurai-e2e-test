@@ -28,6 +28,7 @@ coverage:
 | Kata kunci Search | NF-00092 | `kataKunciDiLuarScope` |
 
 - State yang diubah dan pemulihannya: tidak ada (spec hanya membaca).
+- Nilai literal Pre-setup (Asset Name, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -48,7 +49,7 @@ coverage:
 - Pembagian TC lintas spec: TC-FA-TAG-1290 s.d. 1295 dan TC-FA-TAG-1306 (commit langsung ke server) ada di spec 329.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 4 (menutup input Search lewat `(←)` agar tabel kembali ke keadaan awal), 9 dan 10 (menutup modal dan panel Filter).
 - Langkah 3 memakai empty state `No results found` hasil Search sebagai anchor positif untuk asersi absence Tag NF-00092 (bagian 8b butir 2); langkah 7 menjadi anchor positif bagi langkah 8.
+- A-15: nilai literal Pre-setup (Asset Name, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1309 dan TC-FA-TAG-1310 memakai Role dengan "assign group Disposal Center" dan Read; TC tidak menyebut Return Group asli NF-00092 ada di luar scope secara eksplisit selain data Pre-setup (HQ Warehouse).
-  - Nama dan kode literal Pre-setup (Asset Name, kode Tag RF-*/NF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

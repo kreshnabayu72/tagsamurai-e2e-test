@@ -19,7 +19,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE
-- Login di hook `before` spec ini sebagai Dewi Anggraini (akun pertama); halaman dibuka hook `beforeEach` suite (tab Current). Ganti akun ke Fajar Nugroho dilakukan eksplisit pada langkah 44 dan 45; hook `after` mengembalikan sesi ke akun default suite.
+- Login di hook `before` spec ini sebagai Dewi Anggraini (akun pertama); halaman dibuka hook `beforeEach` suite (tab Current). Ganti akun ke Fajar Nugroho dilakukan eksplisit pada langkah 50 dan 51; hook `after` mengembalikan sesi ke akun default suite.
 - Akun yang dipakai:
 
 | Akun | Pre-setup | Peran | Email | Env password |
@@ -47,67 +47,73 @@ coverage:
 5. Klik area backdrop
 6. Verifikasi klik backdrop tidak menutup dialog
 7. Klik `[Go Back]`
-8. Verifikasi dialog tertutup dan Status `{idD03}` tetap `Waiting for Approval`
-9. Verifikasi tidak ada toast
-10. Verifikasi jumlah entri Allocation Log `{idD03}` sama dengan baseline (tidak ada log baru)
+8. Verifikasi tidak ada toast
+9. Verifikasi dialog tertutup
+10. Verifikasi Status `{idD03}` tetap `Waiting for Approval`
+11. Verifikasi jumlah entri Allocation Log `{idD03}` sama dengan baseline (tidak ada log baru)
 
 ### Klik ganda Cancel Request
 
-11. Ganti isi kotak search dengan `{idGanda}`, tekan Enter
-12. Klik row action `Cancel Allocation`
-13. Klik ganda cepat `[Cancel Request]`
-14. Verifikasi hanya satu request diproses: Reserved kantong turun sekali sebesar `$150.00`
-15. Klik tab `History`
-16. Ketik Search `{idGanda}`, tekan Enter
-17. Klik row action `Allocation Log`
-18. Verifikasi Allocation Log memuat tepat satu entri Cancel `Allocation canceled by Dewi A`
-19. Tutup modal Allocation Log
+12. Ganti isi kotak search dengan `{idGanda}`, tekan Enter
+13. Klik row action `Cancel Allocation`
+14. Klik ganda cepat `[Cancel Request]`
+15. Verifikasi hanya satu request diproses: Reserved kantong turun sekali sebesar `$150.00`
+16. Klik tab `History`
+17. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+18. Ketik Search `{idGanda}`, tekan Enter
+19. Klik row action `Allocation Log`
+20. Verifikasi Allocation Log memuat tepat satu entri Cancel `Allocation canceled by Dewi A`
+21. Tutup modal Allocation Log
 
 ### Cancel Pending oleh requester
 
-20. Klik tab `Current`
-21. Ganti isi kotak search dengan `{idPending}`, tekan Enter
-22. Klik row action `Cancel Allocation` pada baris Pending milik sendiri
-23. Klik `[Cancel Request]`
-24. Verifikasi toast sukses: "Success, license allocation has been canceled."
-25. Verifikasi Status `{idPending}` menjadi `Canceled`
-26. Verifikasi Reserve `$3,650.00` dilepas tanpa refund: Balance kantong tidak berubah
-27. Klik `[+ Allocation]`
-28. Pilih Client `Toko Serba Ada`
-29. Pilih Target `SUBS-20260819-00001`
-30. Pilih Type `Concurrent User`
-31. Verifikasi Current Quota term Pending kembali ke nilai baseline tanpa tambahan `+10` dari alokasi itu
-32. Klik `[✕]`
-33. Verifikasi dialog `Unsaved Changes` dengan isi `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
-34. Klik `[Leave]`
+22. Klik tab `Current`
+23. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+24. Ketik Search `{idPending}`, tekan Enter
+25. Klik row action `Cancel Allocation` pada baris Pending milik sendiri
+26. Klik `[Cancel Request]`
+27. Verifikasi toast sukses: "Success, license allocation has been canceled."
+28. Verifikasi Status `{idPending}` menjadi `Canceled`
+29. Verifikasi Reserve `$3,650.00` dilepas
+30. Verifikasi Balance kantong tidak berubah (tanpa refund)
+31. Klik `[+ Allocation]`
+32. Pilih Client `Toko Serba Ada`
+33. Pilih Target `SUBS-20260819-00001`
+34. Pilih Type `Concurrent User`
+35. Verifikasi Current Quota term Pending kembali ke nilai baseline tanpa tambahan `+10` dari alokasi itu
+36. Klik `[×]`
+37. Verifikasi dialog `Unsaved Changes` dengan isi `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
+38. Klik `[Leave]`
 
 ### Cancel Waiting for Approval oleh requester
 
-35. Ganti isi kotak search dengan `{idBatal}`, tekan Enter
-36. Klik row action `Cancel Allocation` pada baris `Waiting for Approval` milik sendiri
-37. Klik `[Cancel Request]`
-38. Verifikasi toast sukses: "Success, license allocation has been canceled."
-39. Klik tab `History`
-40. Ketik Search `{idBatal}`, tekan Enter
-41. Verifikasi baris `{idBatal}` pindah ke tab History dengan Status `Canceled`
-42. Verifikasi Reserved kantong turun `$150.00` dan Available pulih sebesar `$150.00`
-43. Verifikasi Balance kantong tidak berubah (dana tidak pernah di-Capture)
+39. Ganti isi kotak search dengan `{idBatal}`, tekan Enter
+40. Klik row action `Cancel Allocation` pada baris `Waiting for Approval` milik sendiri
+41. Klik `[Cancel Request]`
+42. Verifikasi toast sukses: "Success, license allocation has been canceled."
+43. Klik tab `History`
+44. Kosongkan kotak search: klik `✕` pada Search, tekan Enter
+45. Ketik Search `{idBatal}`, tekan Enter
+46. Verifikasi baris `{idBatal}` pindah ke tab History dengan Status `Canceled`
+47. Verifikasi Reserved kantong turun `$150.00`
+48. Verifikasi Available kantong pulih sebesar `$150.00`
+49. Verifikasi Balance kantong tidak berubah (dana tidak pernah di-Capture)
 
 ### Notifikasi approver pool
 
-44. Ganti akun: Logout dari Dewi Anggraini
-45. Login sebagai Fajar Nugroho (`totalControlDistLic`, password `Spectra.env.AC_LA_TC_DIST_PASSWORD`)
-46. Buka daftar notifikasi in-app
-47. Verifikasi notifikasi `License allocation canceled` dengan Body `{idBatal} · Concurrent User · PT Sejahtera`
+50. Ganti akun: Logout dari Dewi Anggraini
+51. Login sebagai Fajar Nugroho (`totalControlDistLic`, password `Spectra.env.AC_LA_TC_DIST_PASSWORD`)
+52. Buka daftar notifikasi in-app
+53. Verifikasi notifikasi `License allocation canceled` dengan Body `{idBatal} · Concurrent User · PT Sejahtera`
 
 ## Notes
 
 - Alasan di atas sekitar 35 langkah: kelima TC satu topik (Cancel Allocation oleh requester Dewi Anggraini), kelas harness fungsional yang sama, tiap blok memakai record seed sendiri sehingga berdiri sendiri, dan kegagalan satu blok tidak membuat blok lain kehilangan makna. Blok TC-AC-LA-220 memakai form Allocate hanya untuk membaca Current Quota.
 - Urutan blok berbeda dari urutan TC (217, 218, 228, 220, lalu 219 terakhir): TC-AC-LA-219 butir d membutuhkan pengamat notifikasi Fajar Nugroho sehingga blok itu ditaruh terakhir agar ganti akun hanya sekali (S-05, S-07).
-- Langkah penghubung (S-03, R-16): langkah 1, 11, 16, 21, 35, dan 40 (Search untuk menemukan baris seed), langkah 15, 20, dan 39 (pindah tab), langkah 19 (menutup modal Allocation Log), langkah 32 sampai 34 (menutup form Allocate dirty sesuai S-08), langkah 44 sampai 46 (ganti akun dan membuka notifikasi).
-- P-1: langkah 2 dan 10 memakai `Verifikasi` berbaseline untuk "tidak ada log" TC-AC-LA-218 butir a karena spec absence tidak memuat TC ini (S-05); record `Waiting for Approval` dengan Reserve dibangun seeding backend sebelum aksi.
+- Langkah penghubung (S-03, R-16): langkah 17, 23, 44 (mengosongkan kotak search lewat `✕` dan Enter sesudah pindah tab sebelum Search berikutnya; isi kotak setelah pindah tab tidak diandaikan), langkah 1, 12, 18, 24, 39, dan 45 (Search untuk menemukan baris seed), langkah 16, 22, dan 43 (pindah tab), langkah 21 (menutup modal Allocation Log), langkah 36 sampai 38 (menutup form Allocate dirty sesuai S-08), langkah 50 sampai 52 (ganti akun dan membuka notifikasi).
+- P-1: langkah 2 dan 11 memakai `Verifikasi` berbaseline untuk "tidak ada log" TC-AC-LA-218 butir a karena spec absence tidak memuat TC ini (S-05); record `Waiting for Approval` dengan Reserve dibangun seeding backend sebelum aksi.
 - Temuan untuk QA:
-  - TC-AC-LA-218 butir a dan b ("tidak ada log", "tidak ada toast") adalah asersi absence tanpa menyebut surface log; spec memakai jumlah entri Allocation Log record dengan baseline dan anchor Status baris (langkah 8).
+  - TC-AC-LA-218 butir a dan b ("tidak ada log", "tidak ada toast") adalah asersi absence tanpa menyebut surface log; spec memakai jumlah entri Allocation Log record dengan baseline dan anchor Status baris (langkah 10).
   - TC-AC-LA-219 butir c dan TC-AC-LA-220 butir b/c serta TC-AC-LA-228 butir a menyebut saldo kantong dan ledger term tanpa menyebut halaman atau cara membacanya; spec memakai kemampuan baca state BE yang disediakan tim FE/BE.
   - TC-AC-LA-219 butir d tidak menyebut akun penerima notifikasi dari approver pool; spec memakai Fajar Nugroho (Pre-setup #10) yang disebut pada Precondition TC.
   - TC-AC-LA-220 langkah 3 ("Buka form Allocate dan lihat Current Quota term Pending") tidak menyebut Client, Target, dan Type yang dipilih serta nilai Current Quota yang diharapkan; spec memakai Toko Serba Ada, `SUBS-20260819-00001`, Type `Concurrent User`, dan membandingkan dengan baseline hook `before`.

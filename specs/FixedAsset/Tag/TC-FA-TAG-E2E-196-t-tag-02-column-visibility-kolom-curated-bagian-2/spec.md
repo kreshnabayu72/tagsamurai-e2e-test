@@ -25,6 +25,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`; penghapusan preferensi kolom tabel T-TAG-02 di browser (cache browser tempat konfigurasi Setup Column disimpan) dipakai di hook `after` dan sebagai langkah penghubung bila tertulis.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom di browser (bukan lewat `[Reset to Default]`) dan kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global selain preferensi kolom di browser.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 5, 10, 15) dan Column Visibility (langkah 18, 19), dipulihkan hook `after` (lihat `suite.md`).
 
 ## Test Steps
 
@@ -57,8 +58,8 @@ coverage:
 
 17. Klik header `⋯`
 18. Hilangkan centang Asset Value (Commercial), Asset Value (Fiscal), dan Warranty Expiry yang disimpan TC sebelumnya
-19. Hilangkan centang tujuh kolom default sehingga tersisa satu
-20. Arahkan pointer ke checkbox kolom tersisa
+19. Hilangkan centang tujuh dari delapan kolom default (Asset ID, TAG Code, Brand, Model/Type, Group, Status, Last Updated) sehingga hanya kolom `Name` tersisa
+20. Arahkan pointer ke checkbox kolom `Name`
 21. Verifikasi Checkbox kolom tersisa disabled
 22. Verifikasi Tooltip `At least one column must remain visible.` tampil
 23. Tutup overlay Column Visibility
@@ -69,8 +70,7 @@ coverage:
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 18, 23, 24.
 - Popup Detail Excavator 20 Ton / Plant B dibuka sekali pada TC pertama dan dibiarkan terbuka antar TC.
 - Urutan TC-FA-TAG-779 sesudah TC kolom curated dipertahankan; kolom curated yang disimpan TC sebelumnya dihilangkan dulu agar tepat satu kolom tersisa (langkah penghubung).
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 5, 10, 15) dan Column Visibility (langkah 18, 19), dipulihkan hook `after` (lihat `suite.md`).
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Hook `after` spec ini menghapus preferensi kolom; nomor spec ini tercantum pada daftar pemulihan kolom di `suite.md`.
-  - TC-FA-TAG-779 menyebut "tujuh kolom default" sedangkan kolom default ada delapan (Name, Asset ID, TAG Code, Brand, Model/Type, Group, Status, Last Updated); spec mengikuti TC (tersisa satu kolom).
   - Post Condition TC ("Tidak ada perubahan data bisnis (aksi hanya membaca)" dan "Konfigurasi kolom tersimpan di cache browser ...") tidak punya langkah observasi di TC; tidak diasersi.

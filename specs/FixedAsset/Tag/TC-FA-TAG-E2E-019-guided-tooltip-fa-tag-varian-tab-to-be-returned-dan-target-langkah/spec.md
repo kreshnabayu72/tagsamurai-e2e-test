@@ -22,6 +22,7 @@ coverage:
 - Data Pre-setup (dipakai sebagai latar; hanya dibaca, tidak diubah): dataset tab Paired (Excavator 20 Ton / Plant A, Excavator 20 Ton / Plant B, Laptop Pro 14 / HQ, Forklift Manual / Plant A) dan tab To Be Returned dengan 3 Tag `RF-00071`, `RF-00088`, `NF-00092`.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena data Pre-setup yang sama dipakai spec lain (suite.md).
 - State global yang diubah: flag Guided Tooltip akun Total Control (dipulihkan di hook `after`); suite berjalan serial.
+- Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Data Pre-setup hanya dibaca; satu-satunya perubahan adalah flag Guided Tooltip `guided_tooltip_seen_fa-tag` akun Total Control lewat fixture (hapus flag: langkah 1, 13; disetel kembali oleh walkthrough: langkah 3, 12, 23), dipulihkan di hook `after`; tidak ada entri Changelog, Event Log, TAG Log, atau batch QR.
 
 ## Test Steps
 
@@ -59,7 +60,7 @@ coverage:
 - Langkah 1, 12, 13, dan 23 adalah langkah penghubung (menghapus flag; menutup walkthrough), tanpa asersi (S-03). Flag diatur belum ada oleh hook `before` untuk langkah 2.
 - Langkah 22 adalah asersi absence atas target sorotan; anchor positif adalah Verifikasi target langkah 1 sampai 4 pada langkah 15, 17, 19, dan 21 (bagian 8b butir 2).
 - TC-FA-TAG-62 sampai 68 ada di spec 013, TC-FA-TAG-69, 70, dan 74 ada di spec 014, dan TC-FA-TAG-71 dan 72 ada di spec 015.
+- A-15: nilai literal Pre-setup dipakai tanpa suffix `{runId}` karena TC menuntut data yang sama dengan spec lain; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Data Pre-setup hanya dibaca; satu-satunya perubahan adalah flag Guided Tooltip `guided_tooltip_seen_fa-tag` akun Total Control lewat fixture (hapus flag: langkah 1, 13; disetel kembali oleh walkthrough: langkah 3, 12, 23), dipulihkan di hook `after`; tidak ada entri Changelog, Event Log, TAG Log, atau batch QR.
 - Temuan untuk QA:
   - TC-FA-TAG-73 langkah 6 ("Klik `[Next]` dua kali" lalu "sekali lagi") dimulai dari Step 1 setelah `[?]`; Expected a dan b diasersi pada Step 3 dan Step 4, sehingga `[Next]` ketiga ke Step 4 dihitung dari Step 3.
   - TC-FA-TAG-75 Expected b ("tidak ada langkah yang menyorot row action, bulk action bar, atau konten modal") disimpulkan dari target langkah 1 sampai 4; tidak ada pengamatan terpisah selain keempat target itu.
-  - Nama dan kode literal Pre-setup tidak diberi suffix karena TC menuntut data yang sama dengan spec lain, sedangkan konvensi (S-06, S-12) hanya mengizinkannya lewat Lampiran A yang belum memuat butir modul ini. Spec hanya membaca data itu.

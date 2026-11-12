@@ -40,6 +40,7 @@ Role yang diuji:
 - Seed dan pemulihan data Pre-setup di atas idempotent lewat fixture backend (disediakan tim FE/BE) di hook `before` dan `after`; data bernama literal sesuai TC.
 - State global: tidak ada state global yang diubah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -89,8 +90,8 @@ Role yang diuji:
 - Langkah penghubung (aksi tanpa `Verifikasi`, bukan dari langkah TC): langkah 5, 9, 12, 14, 17, 22, 28, 29.
 - Urutan TC-FA-TAG-99 dan TC-FA-TAG-100 disusun ulang (kebab AST-0011 dan Bulk Batch Replace TAG di Popup Detail Plant B dahulu, baru Popup Detail Plant A) supaya popup tidak dibuka dua kali; Expected tiap TC tetap diasersi.
 - Row action Pair TAG diamati pada baris Not Paired Yet di Popup Detail Plant A, sehingga `Show` di samping `Not Paired Yet` diklik lebih dulu (dipakai TC-FA-TAG-153).
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - Role Matrix memakai satu akun Pre-setup per Role; TC tidak menyebut kunci akun, sehingga akun dipilih dari baris Pre-setup bernama dasar sama.
   - TC-99 (langkah TC ke-3) membuka kebab baris aset Not Paired Yet tanpa menyebut filter `Show` di samping `Not Paired Yet`; TC-153 menyebutnya. Spec menambah langkah penghubung itu.
   - TC-115 dan TC-116 memakai Role `Manage asset & TAG (Read + Update)` tanpa menyebut group Update; spec menganggap akun itu memegang Update pada group data uji.

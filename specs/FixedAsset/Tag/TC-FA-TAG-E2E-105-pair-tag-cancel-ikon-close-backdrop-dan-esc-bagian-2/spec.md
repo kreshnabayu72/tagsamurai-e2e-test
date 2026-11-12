@@ -29,6 +29,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, Tag NFC `NF-00500`, Tag QR `QR-00701` | `stokAvailable` |
 
 - State yang diubah dan pemulihannya: spec tidak menyimpan perubahan (dialog dibuang dengan [Discard]).
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -52,15 +53,16 @@ coverage:
 13. Verifikasi dialog konfirmasi menutup
 14. Verifikasi slot `RFID TAG` tetap menampilkan `RF-00412` dengan badge `Verified`
 15. Klik [Cancel] pada dialog Pair TAG
-16. Klik [Discard]
+16. Verifikasi dialog `Discard Pairing` dengan body "Discard this pairing? Scanned TAGs will not be saved." dan tombol [Cancel] [Discard] tampil
+17. Klik [Discard]
 
 ## Notes
 
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-448, 1439, 1442). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik penutupan Dialog Pair TAG ada juga di spec 104 (TC-FA-TAG-444 s.d. 447).
 - Urutan TC di dalam spec: TC-1439 mendahului TC-448 pada dialog yang sama (klik backdrop tidak menutup dan tidak mengubah isian), lalu TC-1442 memakai dialog yang sama sesudah konfirmasi D-11 TC-448 ditutup dengan [Cancel].
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 10 (menutup konfirmasi D-11 TC-448 dengan [Cancel]), 15 dan 16 (membuang dialog yang berisi pindaian dengan [Cancel] dan [Discard], S-08).
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 10 (menutup konfirmasi D-11 TC-448 dengan [Cancel]), 15 dan 17 (membuang dialog yang berisi pindaian dengan [Cancel] dan [Discard], S-08). Langkah 16 (Verifikasi dialog `Discard Pairing` sebelum [Discard]) adalah asersi tambahan di luar Expected TC (S-03).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.

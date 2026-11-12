@@ -34,42 +34,45 @@ coverage:
 2. Klik row action `Edit` pada baris milik sendiri berstatus `Waiting for Approval`
 3. Ubah Additional Quantity dari `5` menjadi `6`
 4. Klik area backdrop
-5. Verifikasi klik backdrop diabaikan: tidak ada dialog dan Form Edit tetap terbuka
-6. Tekan `Esc`
-7. Verifikasi dialog D-02 dengan Title `Unsaved Changes`, Body `You have unsaved changes. Are you sure you want to leave?`, serta tombol `[Leave]` dan `[Cancel]`
-8. Klik `[Cancel]`
-9. Verifikasi dialog tertutup dan Form Edit tetap terbuka dengan Additional Quantity `6` utuh
-10. Verifikasi `[Save]` Enabled
-11. Tekan `Esc`
-12. Klik `[Leave]`
-13. Verifikasi Form Edit tertutup tanpa menyimpan
-14. Klik row action `Edit` pada baris yang sama
-15. Verifikasi Additional Quantity `5` (data tersimpan tetap Quantity `5`)
+5. Verifikasi Form Edit tetap terbuka
+6. Verifikasi klik backdrop diabaikan: tidak ada dialog
+7. Tekan `Esc`
+8. Verifikasi dialog D-02 dengan Title `Unsaved Changes`, Body `You have unsaved changes. Are you sure you want to leave?`, serta tombol `[Leave]` dan `[Cancel]`
+9. Klik `[Cancel]`
+10. Verifikasi dialog tertutup
+11. Verifikasi Form Edit tetap terbuka dengan Additional Quantity `6` utuh
+12. Verifikasi `[Save]` Enabled
+13. Tekan `Esc`
+14. Klik `[Leave]`
+15. Verifikasi Form Edit tertutup tanpa menyimpan
+16. Klik row action `Edit` pada baris yang sama
+17. Verifikasi Additional Quantity `5` (data tersimpan tetap Quantity `5`)
 
 ### Ganti Target me-reset Type
 
-16. Ganti Target ke `Client-wide`
-17. Verifikasi Type di-reset (kosong) karena Concurrent User tidak berlaku untuk Client-wide
-18. Verifikasi opsi Type hanya `Asset Control Station` dan `Storage`
-19. Verifikasi `[Save]` Disabled (Type belum diisi)
-20. Klik `[✕]`
-21. Verifikasi dialog `Unsaved Changes` dengan isi `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
-22. Klik `[Leave]`
+18. Ganti Target ke `Client-wide`
+19. Verifikasi Type di-reset (kosong) karena Concurrent User tidak berlaku untuk Client-wide
+20. Verifikasi opsi Type hanya `Asset Control Station` dan `Storage`
+21. Verifikasi `[Save]` Disabled (Type belum diisi)
+22. Klik `[×]`
+23. Verifikasi dialog `Unsaved Changes` dengan isi `You have unsaved changes. Are you sure you want to leave?` serta tombol `[Leave]` dan `[Cancel]`
+24. Klik `[Leave]`
 
 ### Edit Asset Control App
 
-23. Ganti isi kotak search dengan `{allocIdApp}`, tekan Enter
-24. Klik row action `Edit` pada baris Asset Control App milik sendiri
-25. Verifikasi Client `CV Mitra Sejati` read-only dan hanya Target dan Type dapat diubah
-26. Verifikasi field Additional Quantity tidak tampil
-27. Klik `[✕]`
+25. Ganti isi kotak search dengan `{allocIdApp}`, tekan Enter
+26. Klik row action `Edit` pada baris Asset Control App milik sendiri
+27. Verifikasi Client `CV Mitra Sejati` read-only
+28. Verifikasi hanya Target dan Type dapat diubah
+29. Verifikasi field Additional Quantity tidak tampil
+30. Klik `[×]`
 
 ## Notes
 
-- Langkah penghubung (S-03, R-16): langkah 1 dan 23 (Search untuk menemukan baris seed), langkah 11 sampai 13 (menutup form dirty memakai `Esc` dan `[Leave]` seperti TC-AC-LA-209), langkah 14 dan 15 (membuka ulang form untuk mengamati data tersimpan, Expected c TC-AC-LA-486), langkah 20 sampai 22 (menutup form dirty sesuai S-08), langkah 27 (menutup form pristine).
-- Satu `Verifikasi` dialog D-02 pada langkah 7 memenuhi TC-AC-LA-209 butir b dan TC-AC-LA-486 butir a (dialog dan isinya sama). TC-AC-LA-209 butir c ada di langkah 13.
-- Pemetaan Expected: TC-AC-LA-486 butir b di langkah 9, butir c di langkah 10 dan 15; TC-AC-LA-194 butir a, b, c di langkah 17, 18, 19; TC-AC-LA-195 butir a, b di langkah 25, 26.
+- Langkah penghubung (S-03, R-16): langkah 1 dan 25 (Search untuk menemukan baris seed), langkah 13 sampai 15 (menutup form dirty memakai `Esc` dan `[Leave]` seperti TC-AC-LA-209), langkah 16 dan 17 (membuka ulang form untuk mengamati data tersimpan, Expected c TC-AC-LA-486), langkah 22 sampai 24 (menutup form dirty sesuai S-08), langkah 30 (menutup form pristine).
+- Satu `Verifikasi` dialog D-02 pada langkah 8 memenuhi TC-AC-LA-209 butir b dan TC-AC-LA-486 butir a (dialog dan isinya sama). TC-AC-LA-209 butir c ada di langkah 15.
+- Pemetaan Expected: TC-AC-LA-486 butir b di langkah 10, butir c di langkah 12 dan 17; TC-AC-LA-194 butir a, b, c di langkah 19, 20, 21; TC-AC-LA-195 butir a, b di langkah 27, 29.
 - Temuan untuk QA:
   - TC-AC-LA-194 butir c ("`[Save]` Disabled sampai Type diisi") tidak menyebut nilai Type dan Quantity yang dipilih setelahnya; spec hanya mengasersi `[Save]` Disabled sebelum Type diisi dan tidak mengasersi bagian "sampai Type diisi".
   - TC-AC-LA-195 memakai Pre-setup #44 (dua alokasi App ke `SUBS-20260105-K2L3M`) sedangkan Pre-setup #53 menyatakan Subscription yang sama sudah punya Asset Control App Active; spec memakai seed App milik spec pada Subscription tanpa App Active atau Pending.
-  - TC-AC-LA-195 tidak menyebut apakah form Edit Asset Control App pristine saat ditutup; spec menutup form tanpa perubahan lewat `[✕]` tanpa dialog.
+  - TC-AC-LA-195 tidak menyebut apakah form Edit Asset Control App pristine saat ditutup; spec menutup form tanpa perubahan lewat `[×]` tanpa dialog.

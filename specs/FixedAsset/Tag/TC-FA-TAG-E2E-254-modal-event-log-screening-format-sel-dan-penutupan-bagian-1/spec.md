@@ -34,6 +34,8 @@ coverage:
 - Data TC-FA-TAG-1034: entri Event Log yang sama dengan tabel di atas; 'Disposal Center' berada di bawah group induk 'Operations' dan 'Dedi K.' bernama lengkap Dedi Kurniawan.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent lewat fixture backend untuk entri Event Log To Be Returned; tidak ada endpoint yang dikarang di spec ini.
 - Pemulihan di hook `after`: entri Event Log To Be Returned dikembalikan ke keadaan Pre-setup tiga entri lewat fixture backend bila seeding mengubahnya.
+- Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
+- Isolasi audit trail (butir A-18 iii): asersi yang bergantung pada isi Changelog atau Event Log lengkap (hanya memuat entri seed) memakai isolasi fixture per scope akun yang dinyatakan di `suite.md` (Kemampuan teknis, 2026-11-05); kemampuan itu disediakan tim FE/BE dan belum dikonfirmasi.
 
 ## Test Steps
 
@@ -84,9 +86,9 @@ coverage:
 - TC-FA-TAG-1030 Expected butir b menyebut placeholder ikon Search yang hanya terlihat setelah input dibuka; spec membuka input lewat langkah penghubung dan menutupnya kembali.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): 1 (membuka tab); 6 (membuka input Search untuk memeriksa placeholder); 8 (mengosongkan Search lewat `(←)`); 25 (menutup modal Event Log).
 - Asersi tambahan di luar Expected TC: tidak ada selain langkah penghubung placeholder di atas.
+- A-15: nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-1030 s.d. 1033 tidak menyebut cara membuka input Search untuk memeriksa placeholder; spec menambah langkah penghubung.
   - TC-FA-TAG-1032 Expected "severity success, warning, info" dan "badge Primary" tidak menyebut cara mengamati severity; mekanismenya tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE.
   - TC-FA-TAG-1034 menyebut nama lengkap hanya untuk "Dedi K." (Dedi Kurniawan); nama lengkap pengguna lain tidak diasersi.
-  - Nilai literal Pre-setup (kode Tag, Last Asset, Return Group, Current Holder) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada kode, urutan, dan jumlah persis; Lampiran A belum memuat butir modul ini, sehingga seeding idempotent dan pemulihan lewat fixture backend (suite serial) dicatat sebagai kebutuhan.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.

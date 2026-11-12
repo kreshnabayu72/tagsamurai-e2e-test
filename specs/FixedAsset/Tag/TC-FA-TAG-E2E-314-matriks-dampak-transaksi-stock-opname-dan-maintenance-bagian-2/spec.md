@@ -1,17 +1,19 @@
 ---
 id: TC-FA-TAG-E2E-314-matriks-dampak-transaksi-stock-opname-dan-maintenance-bagian-2
-title: "Matriks Dampak Transaksi Maintenance: Report Damage atau Complete Work Order Kondisi T3 dan T4"
+title: "Matriks Dampak Transaksi Maintenance: Report Damage atau Complete Work Order Kondisi T1 sampai T4"
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
+  - TC-FA-TAG-1201
+  - TC-FA-TAG-1202
   - TC-FA-TAG-1203
   - TC-FA-TAG-1204
 coverage:
   web: automated
 ---
 
-# Matriks Dampak Transaksi Maintenance: Report Damage atau Complete Work Order Kondisi T3 dan T4
+# Matriks Dampak Transaksi Maintenance: Report Damage atau Complete Work Order Kondisi T1 sampai T4
 
 ## Prerequisites
 
@@ -29,6 +31,8 @@ coverage:
 
   | Kunci fixture | Nama aset | Kondisi Tag | Status aset | TC |
   |---|---|---|---|---|
+  | `asetMntT1` | Aset Matriks Maintenance T1 {runId}-314 | T1 | Work order Maintenance berjalan | 1201 |
+  | `asetMntT2` | Aset Matriks Maintenance T2 {runId}-314 | T2 | Work order Maintenance berjalan | 1202 |
   | `asetMntT3` | Aset Matriks Maintenance T3 {runId}-314 | T3 | Work order Maintenance berjalan | 1203 |
   | `asetMntT4` | Aset Matriks Maintenance T4 {runId}-314 | T4 | Work order Maintenance berjalan | 1204 |
 
@@ -37,36 +41,53 @@ coverage:
 
 ## Test Steps
 
+### TC-FA-TAG-1201: Report damage / Complete work order pada kondisi T1
+
+1. Buka layar transaksi Maintenance untuk aset `Aset Matriks Maintenance T1 {runId}-314`
+2. Jalankan langkah "Report damage / Complete work order"
+3. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+4. Lanjutkan langkah "Report damage / Complete work order" sampai selesai
+5. Verifikasi langkah "Report damage / Complete work order" pada Maintenance berjalan normal sampai selesai
+
+### TC-FA-TAG-1202: Report damage / Complete work order pada kondisi T2
+
+6. Buka layar transaksi Maintenance untuk aset `Aset Matriks Maintenance T2 {runId}-314`
+7. Jalankan langkah "Report damage / Complete work order"
+8. Verifikasi peringatan "This asset's TAG has been reported as damaged. Consider replacing it before handing over." tidak tampil dan pesan blok "This asset can't be ..." tidak tampil
+9. Lanjutkan langkah "Report damage / Complete work order" sampai selesai
+10. Verifikasi langkah "Report damage / Complete work order" pada Maintenance berjalan normal sampai selesai
+
 ### TC-FA-TAG-1203: Report damage / Complete work order pada kondisi T3
 
-1. Buka layar transaksi Maintenance untuk aset `Aset Matriks Maintenance T3 {runId}-314`
-2. Jalankan langkah "Report damage / Complete work order"
-3. Verifikasi tombol `[I can't scan the TAG]` tersedia
-4. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-5. Verifikasi bidang "Foto aset" bertanda wajib (*)
-6. Unggah Foto aset dan selesaikan transaksi
-7. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-8. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
-9. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
+11. Buka layar transaksi Maintenance untuk aset `Aset Matriks Maintenance T3 {runId}-314`
+12. Jalankan langkah "Report damage / Complete work order"
+13. Verifikasi tombol `[I can't scan the TAG]` tersedia
+14. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+15. Verifikasi bidang "Foto aset" bertanda wajib (*)
+16. Unggah Foto aset dan selesaikan transaksi
+17. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+18. Verifikasi Report TAG "Unreadable" dibuat untuk Tag yang dipilih (Tag belum punya laporan terbuka) (dibaca lewat kemampuan baca state backend)
+19. Verifikasi aset mendapat tambahan status "Tag Reported" (dibaca lewat kemampuan baca state backend)
 
 ### TC-FA-TAG-1204: Report damage / Complete work order pada kondisi T4
 
-10. Buka layar transaksi Maintenance untuk aset `Aset Matriks Maintenance T4 {runId}-314`
-11. Jalankan langkah "Report damage / Complete work order"
-12. Verifikasi tombol `[I can't scan the TAG]` tersedia
-13. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
-14. Verifikasi bidang "Foto aset" bertanda wajib (*)
-15. Verifikasi tidak ada Tag untuk dipilih
-16. Unggah Foto aset dan selesaikan transaksi
-17. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
-18. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
+20. Buka layar transaksi Maintenance untuk aset `Aset Matriks Maintenance T4 {runId}-314`
+21. Jalankan langkah "Report damage / Complete work order"
+22. Verifikasi tombol `[I can't scan the TAG]` tersedia
+23. Klik `[I can't scan the TAG]` untuk melanjutkan lewat identifikasi manual
+24. Verifikasi bidang "Foto aset" bertanda wajib (*)
+25. Verifikasi tidak ada Tag untuk dipilih
+26. Unggah Foto aset dan selesaikan transaksi
+27. Verifikasi transaksi dicatat dengan flag Manual identification beserta foto (dibaca lewat kemampuan baca state backend)
+28. Verifikasi tidak ada Report TAG yang dibuat; hanya flag Manual identification yang dicatat (dibaca lewat kemampuan baca state backend)
 
 ## Notes
 
 - Mode: FE+BE.
-- TC-FA-TAG-1197 sampai 1202 ada di spec 313 dan 321.
+- TC-FA-TAG-1197 ada di spec 321. TC-FA-TAG-1198 sampai 1200 ada di spec 313.
 - Temuan untuk QA:
   - Langkah "Jalankan langkah ..." di TC tidak menjabarkan layar, field, dan urutan klik transaksi; spec menulisnya sebagai satu langkah dan penjabarannya diserahkan ke tahap script.
   - TC tidak menyebut Group aset kondisi T1 dan T2; spec memakai Group Plant B seperti aset kondisi T3 dan T4.
   - TC tidak menyebut tempat teramatinya Report TAG, status "Tag Reported", dan flag Manual identification (kolom Expected tidak menunjuk layar); spec membacanya lewat kemampuan baca state backend (disediakan tim FE/BE) tanpa mengarang endpoint.
   - Kolom Post Condition semua TC di spec ini bernilai `-`; tidak ada Post Condition yang perlu diasersi.
+  - TC-FA-TAG-1202 (kondisi T2) menuliskan Expected "peringatan ... tidak tampil" tanpa alasan; spec mengikuti Expected TC apa adanya.

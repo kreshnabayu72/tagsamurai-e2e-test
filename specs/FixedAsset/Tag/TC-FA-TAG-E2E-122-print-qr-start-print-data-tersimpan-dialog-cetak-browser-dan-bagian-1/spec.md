@@ -25,8 +25,7 @@ coverage:
   - Dialog cetak browser (tingkat OS) teramati: isi dokumen cetak (jumlah label dan posisi label) dibaca dan dialognya ditutup oleh harness.
   - `Spectra.intercept` menunda respons permintaan Start Print beberapa detik selama spec (nilai tepat dipilih tahap script) supaya state loading teramati; penundaan dipasang di hook `before` dan dilepas di hook `after`. Penundaan hanya untuk mengamati state UI, bukan kegagalan yang dipaksakan.
   - Pengamat jaringan atas permintaan cetak untuk menghitung jumlah permintaan.
-  - Pembersihan kode QR hasil cetak dari registri Global lewat fixture backend.
-- State global yang dipulihkan: kode QR yang dibuat spec ini dihapus dari registri Global di hook `after`.
+- Efek yang tidak terpulihkan: batch kode QR dari `Start Print` (sebanyak Quantity, terdaftar `Available` di registri Global) beserta data cetak (langkah 3, 13, 22, 26).
 
 ## Test Steps
 
@@ -82,5 +81,4 @@ coverage:
 - Pembagian TC lintas spec: TC-498 ada di spec 123.
 - Temuan untuk QA:
   - Post Condition TC-490 ("Backend menyimpan data cetak dan 3 kode QR berstatus Available" dan "Tidak ada entri Changelog, Activity Log, maupun System Log"), TC-491, dan TC-492 tidak punya langkah observasi di TC dan tidak diasersi; absence entri log mengikuti NC-03 dan tidak diklaim teruji di spec ini (S-05).
-  - TC-490 sampai TC-492 diberi label Manual Only karena dialog cetak browser tingkat OS; spec tetap memuatnya dengan kemampuan di Prerequisites.
   - TC-493 menuliskan "penekanan ulang tidak mengirim permintaan kedua" di Expected tanpa langkah penekanan ulang.

@@ -17,7 +17,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE.
-- Akun aktor: tabel "Role yang diuji". Login di hook `before` spec ini sebagai akun pertama pada tabel; halaman Fixed Asset > TAG dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
+- Akun aktor: tabel "Role yang diuji". Login di hook `before` spec ini sebagai akun pertama pada tabel; hook `beforeEach` suite tidak membuka halaman Fixed Asset > TAG untuk spec ini (akun NOMENU tidak punya akses menu TAG; spec dikecualikan di `suite.md` bagian Hook): sidebar pada langkah 1 dan 2 diamati pada halaman awal setelah login di hook `before`, dan halaman TAG dibuka langsung lewat URL pada langkah 3 dan 7. Hook `after` mengembalikan sesi ke akun default suite.
 
 Role yang diuji:
 
@@ -33,6 +33,7 @@ Role yang diuji:
 - Kemampuan teknis (disediakan tim FE/BE): membaca respons jaringan yang dipicu halaman (status penolakan server) bila Expected menyebutnya.
 - State global: tidak ada state global yang diubah.
 - Suite serial: `parallel: false` (lihat `suite.md`).
+- Nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -50,6 +51,6 @@ Role yang diuji:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md`. Tidak ada TC hanya-BE.
 - Langkah 1 dan 4 adalah anchor positif untuk asersi absence (bagian 8b butir 2); tidak ada di Expected TC dan dicatat sebagai asersi tambahan (S-03).
 - TC-FA-TAG-96 dan TC-FA-TAG-121 sama-sama membuka URL langsung; langkah 7 mengulang pembukaan URL untuk TC-FA-TAG-121.
+- A-15: nilai literal Pre-setup (nama aset, kode Tag, ID aset, Return Group) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
-  - Lampiran A konvensi belum memuat butir untuk modul ini: data Pre-setup yang dirujuk TC (nama aset, kode Tag, ID aset, Return Group) ditulis literal tanpa suffix `{runId}` karena asersi bergantung pada nama, urutan, dan jumlah; seeding idempotent dan pemulihan lewat fixture backend (lihat `suite.md`).
   - TC-96 butir b ("Pengambilan data ... ditolak server") menyebut penolakan server tanpa status atau kode respons; spec mengasersi penolakan tanpa kode tertentu.

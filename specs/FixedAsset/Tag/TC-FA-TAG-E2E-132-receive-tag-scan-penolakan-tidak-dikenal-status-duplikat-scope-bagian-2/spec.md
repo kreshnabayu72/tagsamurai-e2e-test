@@ -28,6 +28,7 @@ coverage:
   - Tag `RF-00500` berstatus Available di Global.
 - Kemampuan teknis (disediakan tim FE/BE): simulator reader RFID/NFC USB (satu reader tersambung, aktif, dan sudah disinkronkan di Global Settings > Handheld Reader); pemulihan status Tag ke To be Returned lewat fixture backend.
 - State global yang dipulihkan: TC-549 menerima `RF-00071` (menjadi Available di registri Global dan menambah entri Event Log To Be Returned serta TAG Log Global yang tidak dapat dihapus). Status `RF-00071` dipulihkan ke To be Returned lewat fixture backend di hook `after`; entri log tetap bertambah.
+- Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, `QR-00300`, `SA-00020`, `UT-00010`, `RF-00500`) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps
 
@@ -70,7 +71,7 @@ coverage:
 - Urutan TC diubah menjadi TC-1444, TC-1474, TC-1475, TC-549: tiga TC penolakan memakai satu dialog tanpa mengubah state, sedangkan TC-549 menerima `RF-00071` (S-10); pesan inline berurutan berbeda sehingga tidak butuh pembersih (R-12).
 - Langkah penghubung: langkah 1 dan 2 membuka tab dan dialog (halaman TAG dibuka hook `beforeEach`). Tag yang ditolak (langkah 16) tidak punya Verifikasi sendiri karena Expected TC-549 tidak memuatnya.
 - Anchor absence: langkah 4, 7, dan 12 (pesan inline yang tampil) menjadi anchor langkah 5, 8 sampai 10, dan 13 sampai 15; langkah 19 menjadi anchor langkah 21.
+- A-15: nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, `QR-00300`, `SA-00020`, `UT-00010`, `RF-00500`) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan tercatat di Prerequisites spec ini.
 - Temuan untuk QA:
-  - Nilai literal Pre-setup (`RF-00071`, `RF-00088`, `NF-00092`, `QR-00300`, `SA-00020`, `UT-00010`, `RF-00500`) ditulis tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; Lampiran A konvensi belum memuat butir modul ini.
   - Kode `QR-00300` berstatus berlawanan antar TC: sudah dicetak (Available) di TC-1444 dan belum pernah dicetak di TC-544 (spec 131).
   - Post Condition TC-549 ("Status Tag RF-00500 tidak berubah dan tidak ada entri Event Log untuknya") tidak punya langkah observasi di TC dan tidak diasersi; Post Condition "Tidak ada data yang berubah" TC-1474 dan TC-1475 juga tidak diasersi.

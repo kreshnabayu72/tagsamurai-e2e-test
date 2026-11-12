@@ -72,13 +72,14 @@ coverage:
 29. Klik `[Submit]`
 30. Verifikasi toast sukses "Success, license has been allocated."
 31. Verifikasi baris baru (Allocation ID tidak ada pada baseline langkah 26): License Type `Addon (Asset Control App)`, Quantity `—`, Status `Pending` severity warning
-32. Verifikasi Reserve `$150.00` ditahan: Reserved naik `$150.00` dan Available turun `$150.00`
-33. Verifikasi Balance tidak berkurang (Capture terjadi saat term mulai)
+32. Verifikasi Reserve `$150.00` ditahan: Reserved naik `$150.00`
+33. Verifikasi Available turun `$150.00`
+34. Verifikasi Balance tidak berkurang (Capture terjadi saat term mulai)
 
 ## Notes
 
 - Sumber: `admin-console/license-allocation-license/TestCases/tc-license-allocation-license.md`. Subjudul `###` memetakan langkah ke id TC granular. Buka form 4 kali, kejadian menutup 4 (modal tertutup oleh Submit di langkah 5, 14, 21, dan 29).
-- Spec 33 langkah; keempat blok satu topik (Submit alokasi jenis App, Station, dan Storage dengan toggle OFF) dan berdiri sendiri.
+- Spec 34 langkah; keempat blok satu topik (Submit alokasi jenis App, Station, dan Storage dengan toggle OFF) dan berdiri sendiri.
 - Langkah penghubung (S-03): langkah 1 (menampilkan kolom Cost lewat Setup Column, tanpa `Verifikasi`; kolom Cost tersembunyi secara bawaan, TC-AC-LA-1 butir b.ii), langkah 2, 11, 18, dan 26 (baseline dan pindah halaman), langkah 9 (membuka Subscription Detail).
 - Temuan untuk QA:
   - TC-AC-LA-159 Expected d ("Status Asset Control App pada Subscription itu menjadi `Active`") tidak menyebut lokasi pengamatan; spec membuka Subscription Detail term (langkah 9) tanpa menyebut bagian tertentu, lokasi ditentukan tim FE.

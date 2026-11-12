@@ -31,6 +31,7 @@ coverage:
 | Aset acuan grup Excavator 20 Ton / Plant B | Grup memuat 20 aset sehingga Popup Detail punya 2 halaman pada page size 10; lima aset acuan: AST-0011 (Excavator 20 Ton - 11), AST-0020 (- 20), AST-0021 (- 21), AST-0043 (- 43), AST-0044 (- 44); urutan Last Updated terbaru ke terlama: AST-0044, AST-0043, AST-0021, AST-0020, AST-0011; AST-0020 laporan terbuka; AST-0043 Non-standard dan laporan terbuka; AST-0044 Tag QR Non-standard | `asetPlantB` |
 
 - State yang diubah: hanya state tampilan tabel grup dan Popup Detail (sort, halaman, tombol `Show`); tidak ada perubahan data bisnis. Sort tabel grup dikembalikan netral oleh langkah 32.
+- Nilai literal Pre-setup (nama aset, ID aset) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 
 ## Test Steps
 
@@ -85,6 +86,7 @@ coverage:
 
 - Langkah penghubung (S-03): langkah 5 (menutup selector page size), 18 (TC-FA-TAG-923 langkah 3: pindah ke halaman 2), 20 dan 25 (menutup popup dengan ikon close; TC-FA-TAG-923 langkah 5 memakai "tutup popup"), serta 31 dan 32 (menutup popup dan mengembalikan sort tabel grup ke netral sebelum spec berakhir).
 - Pembagian TC: TC-FA-TAG-1451 dan TC-FA-TAG-1452 diurutkan sesudah TC-FA-TAG-922 karena memakai popup yang sudah terbuka dan halaman 1; TC-FA-TAG-923 dan TC-FA-TAG-924 diurutkan sesudahnya karena mengubah sort dan menutup popup (S-10).
+- A-15: nilai literal Pre-setup (nama aset, ID aset) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nilai persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Spec ini hanya membaca data itu (Test Steps tanpa aksi tulis), sehingga tidak ada efek yang tidak terpulihkan.
 - Temuan untuk QA:
   - TC-FA-TAG-923 Expected "urutan bawaan Last Updated terbaru" tidak menyebut baris yang tampil; spec hanya mengasersi urutan relatif lima aset acuan dari Data Uji (S-14).
   - TC-FA-TAG-923 langkah 4 `Show` di samping `Reported` tidak menyebut bahwa `Show` berubah label menjadi `Hide` atau lainnya; spec hanya mengasersi label `Show` pada Expected langkah akhir.

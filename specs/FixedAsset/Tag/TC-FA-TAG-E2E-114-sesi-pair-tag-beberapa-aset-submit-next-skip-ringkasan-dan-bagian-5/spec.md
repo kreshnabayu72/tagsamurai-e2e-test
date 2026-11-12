@@ -29,6 +29,7 @@ coverage:
 | Stok Available | Tag RFID `RF-00412`, `RF-00415`, `RF-00416` | `stokRfid` |
 
 - State yang diubah dan pemulihannya: Tag `RF-00412` dipasangkan pada 'Excavator 20 Ton - 51' pada TC-FA-TAG-472; hook `after` memulihkan aset ke Not Paired Yet dan `RF-00412` ke Available lewat fixture backend.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 23); entri TAG Log Global (langkah 23).
 
 ## Test Steps
 
@@ -73,9 +74,9 @@ coverage:
 - Pembagian TC lintas spec: topik sesi Pair beberapa aset ada juga di spec 110, 111, 112, 113, dan 115 (TC-FA-TAG-459 s.d. 470, 1445, 1446, 1487).
 - Urutan TC di dalam spec: TC-1383 (aset 1 di-Skip), TC-471 (dialog dibuang dengan [Discard]), lalu TC-472 yang menyimpan perubahan; sehingga tidak ada pemulihan data di antaranya.
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan dari langkah TC): langkah 10 dan 18 (memuat ulang halaman, yang juga mengakhiri sesi sebelumnya, dan membuka popup dari keadaan bersih), dan langkah 17 ([Discard] dari konfirmasi D-11 yang diasersi pada langkah 16).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: entri Changelog `Pair TAG` per Tag (langkah 23); entri TAG Log Global (langkah 23).
 - Temuan untuk QA:
   - TC-FA-TAG-471 tidak menyebut hasil [Discard] pada sesi Pair (ringkasan atau penutupan sesi); spec tidak mengasersinya.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; butir pengecualian modul ini belum ada di konvensi (Lampiran A). Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
   - Simulator reader dipakai sebagai langkah rutin (bukan kelas d); mekanisme memindai kode di ButtonScan tidak didefinisikan di TC, PRD, atau LLD dan diminta dari tim FE/BE.
   - Post Condition TC-472 ("Aset 1 Done dengan Tag `RF-00412` Paired; aset 2 tetap Not Paired Yet") dan TC-1383 tanpa langkah observasi di TC tidak diasersi.

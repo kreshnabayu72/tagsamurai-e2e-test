@@ -31,6 +31,7 @@ coverage:
 | Isi Popup Detail | Grup 'Excavator 20 Ton' / Plant B memuat 20 aset | `asetAcuanPlantB` |
 
 - State yang diubah dan pemulihannya: konfigurasi kolom tabel T-TAG-02 di cache browser (disembunyikan, ditampilkan, diurutkan ulang, dan di-pin); penghapusan preferensi kolom Setup Column di browser oleh hook `after` spec ini. Viewport dipulihkan oleh langkah penghubung.
+- Nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15. Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 9, 15, 20, 26).
 
 ## Test Steps
 
@@ -80,8 +81,8 @@ coverage:
 - Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (TC-FA-TAG-1418, TC-FA-TAG-1419, TC-FA-TAG-1420, TC-FA-TAG-1421). Tidak ada TC hanya-BE.
 - Pembagian TC lintas spec: topik Popup Setup Column T-TAG-02 ada di spec 185 (TC-FA-TAG-1414 s.d. 1417) dan spec 186 (TC-FA-TAG-1418 s.d. 1421).
 - Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): langkah 9, 22, 29 (menyiapkan precondition TC-FA-TAG-1419 lewat Setup Column serta mempersempit dan memulihkan viewport).
+- A-15: nilai literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis; ini pengecualian S-06/S-12 dengan seeding idempotent (dilewati bila sudah ada), pemulihan lewat fixture BE, dan suite serial (`parallel: false`, lihat `suite.md`). Efek yang tidak terpulihkan: tidak ada yang dinyatakan PRD tag.md atau TC; spec ini tidak menjalankan aksi bisnis TAG (Replace, Pair, Report, Decline, Cancel Report, Receive, Print QR) dan menyimpan preferensi kolom lewat `[Save]` Setup Column (langkah 9, 15, 20, 26).
 - Temuan untuk QA:
   - Popup Detail dibuka sekali di TC-FA-TAG-1418 dan tetap terbuka sampai akhir spec; langkah pembuka tidak diulang di TC berikutnya.
   - Precondition TC-FA-TAG-1419 (kolom Brand disembunyikan dan Measurement ditampilkan lalu disimpan) tidak diasersi; spec menyiapkannya lewat Setup Column di langkah penghubung.
-  - Nama dan kode literal Pre-setup (Asset Name, ID aset AST-*, kode Tag RF-*/NF-*/QR-*) dipakai tanpa suffix `{runId}` sesuai rancangan TC karena asersi bergantung pada nama persis; Lampiran A belum memuat butir modul ini. Seeding idempotent dan pemulihan lewat fixture backend.
   - Fixture `fixtures/fixed-asset-tag.json` belum ada; kunci pada tabel data ditandai untuk dibuat tim FE.
