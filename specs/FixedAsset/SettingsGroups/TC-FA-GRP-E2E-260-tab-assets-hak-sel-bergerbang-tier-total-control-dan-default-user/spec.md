@@ -34,7 +34,7 @@ coverage:
 1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
 2. Buka Detail Value Gate Node A (Tab Assets)
 3. Buka Popup Setup Column, centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
-4. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `—`, G4 8000, G5 120, G6 2300
+4. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `Pending`, G4 8000, G5 120, G6 2300
 5. Verifikasi Value Gate Node A kolom Warranty Expiry: G1 15/03/2027, G3 `—`, G4 20/05/2028
 6. Verifikasi Value Gate Node A kolom PO Number: G1 `PO-001`, G3 `—`, G4 `—` (di luar Scope)
 7. Verifikasi Value Gate Node A kolom Cost Account: G1 `CA-100`, G3 `—`
@@ -43,8 +43,8 @@ coverage:
 10. Buka Detail Value Gate Node B (Tab Assets)
 11. Verifikasi keempat kolom tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
 12. Verifikasi B1: Asset Value 900, Warranty Expiry 01/06/2027, PO Number `PO-B01`, Cost Account `CA-300`
-13. Verifikasi B2 menampilkan `—` pada seluruh kolom (tanpa nilai)
-14. Verifikasi B3: Asset Value dan Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
+13. Verifikasi B2 menampilkan Asset Value `Pending` dan `—` pada kolom lain (tanpa nilai)
+14. Verifikasi B3: Asset Value `Pending`, Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
 15. Tutup Popup Detail Group
 16. Ganti isi kotak Search Groups List dengan `Value Gate Child`, tekan Enter
 17. Buka Detail Value Gate Child (Tab Assets)
@@ -61,7 +61,7 @@ coverage:
 25. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
 26. Buka Detail Value Gate Node A (Tab Assets)
 27. Buka Popup Setup Column, centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
-28. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `—`, G4 8000, G5 120, G6 2300
+28. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `Pending`, G4 8000, G5 120, G6 2300
 29. Verifikasi Value Gate Node A kolom Warranty Expiry: G1 15/03/2027, G3 `—`, G4 20/05/2028
 30. Verifikasi Value Gate Node A kolom PO Number: G1 `PO-001`, G3 `—`, G4 `—` (di luar Scope)
 31. Verifikasi Value Gate Node A kolom Cost Account: G1 `CA-100`, G3 `—`
@@ -70,8 +70,8 @@ coverage:
 34. Buka Detail Value Gate Node B (Tab Assets)
 35. Verifikasi keempat kolom tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
 36. Verifikasi B1: Asset Value 900, Warranty Expiry 01/06/2027, PO Number `PO-B01`, Cost Account `CA-300`
-37. Verifikasi B2 menampilkan `—` pada seluruh kolom (tanpa nilai)
-38. Verifikasi B3: Asset Value dan Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
+37. Verifikasi B2 menampilkan Asset Value `Pending` dan `—` pada kolom lain (tanpa nilai)
+38. Verifikasi B3: Asset Value `Pending`, Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
 39. Tutup Popup Detail Group
 40. Ganti isi kotak Search Groups List dengan `Value Gate Child`, tekan Enter
 41. Buka Detail Value Gate Child (Tab Assets)

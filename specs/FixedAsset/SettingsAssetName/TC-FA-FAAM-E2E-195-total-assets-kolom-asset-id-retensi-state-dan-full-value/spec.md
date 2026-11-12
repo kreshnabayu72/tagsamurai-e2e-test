@@ -26,13 +26,13 @@ coverage:
 
 ## Test Steps
 
-### TC-FA-FAAM-788: Aktor berhak atas seluruh baris menampilkan nilai atau strip tanpa No access
+### TC-FA-FAAM-788: Aktor berhak atas seluruh baris menampilkan nilai, Pending, atau strip tanpa No access
 
 1. Klik nama `Column Matrix Item`, klik tab `Total Assets (6)`
 2. Klik header Actions (⋯), pilih `Setup Column...`
 3. Verifikasi Setup Column memuat `Asset Value`, `Warranty Expiry`, `Purchase Price`, dan `Accounting Code`
 4. Centang Asset Value, Warranty Expiry, `Purchase Price`, `Accounting Code`, klik `[Save]`
-5. Verifikasi Asset Value: 15000000, currency nol (mis. `Rp 0,00`), `—`, 5000000, 20000000, `—` berurutan `AST-2001` sampai `AST-2006`
+5. Verifikasi Asset Value: 15000000, currency nol (mis. `Rp 0,00`), `Pending`, 5000000, 20000000, `Pending` berurutan `AST-2001` sampai `AST-2006`
 6. Verifikasi Warranty Expiry: 31 Mar 2027, `—`, 15 Jan 2026, 30 Jun 2028, 01 Feb 2025, `—` berurutan `AST-2001` sampai `AST-2006`
 7. Verifikasi Purchase Price: 2500, `—`, `0`, 1800, 3200, `—` berurutan `AST-2001` sampai `AST-2006`
 8. Verifikasi Accounting Code: `ACC-1`, `—`, `—`, `ACC-4`, `—`, `—` berurutan `AST-2001` sampai `AST-2006`

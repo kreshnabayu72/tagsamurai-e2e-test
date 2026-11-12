@@ -22,8 +22,8 @@ coverage:
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (disediakan tim FE); nilai literal TC pada langkah diberi kunci fixture oleh tahap script.
 - Data Pre-setup tab Paired (grup / Group / Tipe TAG / Total / Reported / Non-standard / Not Paired Yet): Excavator 20 Ton / Plant A / RFID / 20 / 0 / 0 / 2; Excavator 20 Ton / Plant B / RFID / 20 / 2 / 5 / 0; Laptop Pro 14 / HQ / NFC, QR / 25 / 1 / 0 / 2; Forklift Manual / Plant A / Non TAG / 10 / 0 / 3 / 0. Grup Excavator 20 Ton / Plant B (20 aset) memuat lima aset acuan: AST-0011 (Excavator 20 Ton - 11), AST-0020 (- 20), AST-0021 (- 21), AST-0043 (- 43), AST-0044 (- 44); urutan Last Updated terbaru ke terlama: AST-0044, AST-0043, AST-0021, AST-0020, AST-0011; 15 aset lain memakai Asset ID AST-0101 sampai AST-0115 (Brand Volvo, Model EC210, tanpa Label, Last Scanned kosong, Last Updated sebelum 30 Sep 26); Asset Name Excavator 20 Ton di Plant A memakai increment 201 sampai 220.
 - Data TC-FA-TAG-787: Last Scanned: AST-0011 = 20 Oct 26; AST-0020 = —; AST-0021 = 25 Oct 26; AST-0043 = 10 Oct 26; AST-0044 = —.
-- Data TC-FA-TAG-788: Asset Value (Commercial): AST-0011 = 500; AST-0020 = —; AST-0021 = 300; AST-0043 = 800; AST-0044 = 100.
-- Data TC-FA-TAG-789: Asset Value (Fiscal): AST-0011 = 450; AST-0020 = —; AST-0021 = 250; AST-0043 = 700; AST-0044 = 90.
+- Data TC-FA-TAG-788: Asset Value (Commercial): AST-0011 = 500; AST-0020 = Pending (belum ada Purchase Cost); AST-0021 = 300; AST-0043 = 800; AST-0044 = 100.
+- Data TC-FA-TAG-789: Asset Value (Fiscal): AST-0011 = 450; AST-0020 = Pending (belum ada Purchase Cost); AST-0021 = 250; AST-0043 = 700; AST-0044 = 90.
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`; penghapusan preferensi kolom tabel T-TAG-02 di browser (cache browser tempat konfigurasi Setup Column disimpan) dipakai di hook `after` dan sebagai langkah penghubung bila tertulis.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom di browser (bukan lewat `[Reset to Default]`) dan kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global selain preferensi kolom di browser.
 - Suite serial: `parallel: false` (lihat `suite.md`).
@@ -47,9 +47,9 @@ coverage:
 
 10. Tampilkan kolom `Asset Value (Commercial)` lewat Setup Column (header `⋯`, `Setup Column...`, centang kolom, `[Save]`)
 11. Klik header kolom Asset Value (Commercial) sekali
-12. Verifikasi setelah klik 1 (menaik): urutan relatif lima aset acuan: AST-0044, AST-0021, AST-0011, AST-0043, AST-0020; nilai sama diurutkan menurut default sort (Last Updated terbaru di atas); nilai kosong `—` di akhir saat menaik dan di awal saat menurun
+12. Verifikasi setelah klik 1 (menaik): urutan relatif lima aset acuan: AST-0044, AST-0021, AST-0011, AST-0043, AST-0020; nilai sama diurutkan menurut default sort (Last Updated terbaru di atas); sel `Pending` (AST-0020) di akhir pada kedua arah, tidak mengikuti arah sort
 13. Klik header kolom Asset Value (Commercial) sekali lagi
-14. Verifikasi setelah klik 2 (menurun): AST-0020, AST-0043, AST-0011, AST-0021, AST-0044
+14. Verifikasi setelah klik 2 (menurun): AST-0043, AST-0011, AST-0021, AST-0044, lalu AST-0020 (`Pending`) tetap di akhir
 15. Klik header kolom Asset Value (Commercial) sekali lagi
 16. Verifikasi setelah klik 3: indikator sort netral dan urutan kembali ke bawaan Last Updated terbaru
 
@@ -57,9 +57,9 @@ coverage:
 
 17. Tampilkan kolom `Asset Value (Fiscal)` lewat Setup Column (header `⋯`, `Setup Column...`, centang kolom, `[Save]`)
 18. Klik header kolom Asset Value (Fiscal) sekali
-19. Verifikasi setelah klik 1 (menaik): urutan relatif lima aset acuan: AST-0044, AST-0021, AST-0011, AST-0043, AST-0020; nilai sama diurutkan menurut default sort (Last Updated terbaru di atas); nilai kosong `—` di akhir saat menaik dan di awal saat menurun
+19. Verifikasi setelah klik 1 (menaik): urutan relatif lima aset acuan: AST-0044, AST-0021, AST-0011, AST-0043, AST-0020; nilai sama diurutkan menurut default sort (Last Updated terbaru di atas); sel `Pending` (AST-0020) di akhir pada kedua arah, tidak mengikuti arah sort
 20. Klik header kolom Asset Value (Fiscal) sekali lagi
-21. Verifikasi setelah klik 2 (menurun): AST-0020, AST-0043, AST-0011, AST-0021, AST-0044
+21. Verifikasi setelah klik 2 (menurun): AST-0043, AST-0011, AST-0021, AST-0044, lalu AST-0020 (`Pending`) tetap di akhir
 22. Klik header kolom Asset Value (Fiscal) sekali lagi
 23. Verifikasi setelah klik 3: indikator sort netral dan urutan kembali ke bawaan Last Updated terbaru
 24. Tutup Popup Detail

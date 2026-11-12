@@ -41,7 +41,7 @@ coverage:
 4. Verifikasi Tabel grup hanya memuat grup yang memuat baris cocok (Excavator 20 Ton / Plant B)
 5. Klik Asset Name `Excavator 20 Ton` pada baris Plant B
 6. Ubah page size menjadi 25
-7. Verifikasi Popup Detail hanya memuat: AST-0011, AST-0021, dan AST-0043; AST-0020 (`—`) dan AST-0044 (100) tidak tampil
+7. Verifikasi Popup Detail hanya memuat: AST-0011, AST-0021, dan AST-0043; AST-0020 (`Pending`) dan AST-0044 (100) tidak tampil
 8. Tutup Popup Detail
 9. Bersihkan Filter: buka Filter Panel, hapus pilihan yang dipasang, klik `[Apply]`
 
@@ -53,7 +53,7 @@ coverage:
 13. Verifikasi Tabel grup hanya memuat grup yang memuat baris cocok (Excavator 20 Ton / Plant B)
 14. Klik Asset Name `Excavator 20 Ton` pada baris Plant B
 15. Ubah page size menjadi 25
-16. Verifikasi Popup Detail hanya memuat: AST-0011 dan AST-0021
+16. Verifikasi Popup Detail hanya memuat: AST-0011 dan AST-0021; AST-0020 (`Pending`) tidak tampil
 17. Tutup Popup Detail
 18. Bersihkan Filter: buka Filter Panel, hapus pilihan yang dipasang, klik `[Apply]`
 

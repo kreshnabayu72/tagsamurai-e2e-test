@@ -30,10 +30,10 @@ coverage:
 
 1. Klik nama `Column Matrix Item`, klik tab `Total Assets (6)`
 2. Klik header Actions (⋯), pilih `Setup Column...`
-3. Verifikasi urutan baris kolom di Setup Column: `Name`, `Asset ID`, `TAG`, `Brand`, `Model/Type`, `Measurement`, `Category`, `Group`, `Label`, `Status`, `Transactional Policy`, `Last Scanned`, `Asset Value`, `Warranty Expiry`, kolom custom field, `Last Updated`
+3. Verifikasi urutan baris kolom di Setup Column: `Name`, `Asset ID`, `TAG`, `Brand`, `Model/Type`, `Measurement`, `Category`, `Group`, `Label`, `Status`, `Last Scanned`, `Asset Value (Commercial)`, `Asset Value (Fiscal)`, `Warranty Expiry`, kolom custom field, `Last Updated`
 4. Verifikasi kolom custom field berurutan per grup: General (`Out Of Scope Field` sebelum `Serial Notes`), Purchasing (`Out Of Scope Purchase` sebelum `Purchase Price`), lalu Accounting (`Accounting Code`)
 5. Verifikasi checkbox `☑ Hideable` pada `Name`, `Asset ID`, `TAG`, `Brand`, `Model/Type`, `Group`, `Status`, `Last Updated`
-6. Verifikasi checkbox `☐ Curated` pada `Measurement`, `Category`, `Label`, `Transactional Policy`, `Last Scanned`, `Asset Value`, `Warranty Expiry`, dan setiap kolom custom field
+6. Verifikasi checkbox `☐ Curated` pada `Measurement`, `Category`, `Label`, `Last Scanned`, `Asset Value (Commercial)`, `Asset Value (Fiscal)`, `Warranty Expiry`, dan setiap kolom custom field
 7. Verifikasi `Last Updated` menjadi kolom data terakhir sebelum Actions (⋯)
 8. Tekan Esc untuk menutup popup Setup Column
 9. Verifikasi header tabel hanya memuat 8 kolom default: `Name`, `Asset ID`, `TAG`, `Brand`, `Model/Type`, `Group`, `Status`, `Last Updated`

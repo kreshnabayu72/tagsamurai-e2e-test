@@ -1,6 +1,6 @@
 # Coverage E2E — Fixed Asset > Settings > Asset Master > Labels
 
-Sumber: `fixed-asset/settings-asset-labeling/TestCases/tc-settings-asset-labeling.md` (595 TC granular aktif); `tc-settings-asset-labeling-backend.md` tidak dipetakan per TC granular di halaman ini.
+Sumber: `fixed-asset/settings-asset-labeling/TestCases/tc-settings-asset-labeling.md` (598 TC granular aktif); `tc-settings-asset-labeling-backend.md` tidak dipetakan per TC granular di halaman ini.
 Suite: `specs/FixedAsset/AssetLabeling/`.
 Prefix Modul: `FA` + `LBL` (`TC-FA-LBL-E2E-*`).
 Status semua spec: `draft`.
@@ -9,7 +9,7 @@ Catatan pemetaan: TC-FA-LBL-441 sampai TC-FA-LBL-450, TC-FA-LBL-453, TC-FA-LBL-4
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (182 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (185 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -130,10 +130,10 @@ Catatan pemetaan: TC-FA-LBL-441 sampai TC-FA-LBL-450, TC-FA-LBL-453, TC-FA-LBL-4
 | TC-FA-LBL-E2E-115-warranty-expiry-hari-ini-mengikuti-time-zone-general-settings | Warranty Expiry: Hari Ini Mengikuti Time Zone General Settings | FE+BE | 7 | TC-FA-LBL-586 |
 | TC-FA-LBL-E2E-116-gate-full-kolom-custom-field-setup-column-dan-pin-bagian-1-2 | Gate-Full: Kolom Custom Field, Setup Column, dan Pin (bagian 1/2) | FE+BE | 50 | TC-FA-LBL-534, TC-FA-LBL-535, TC-FA-LBL-553 |
 | TC-FA-LBL-E2E-117-gate-full-kolom-custom-field-setup-column-dan-pin-bagian-2-2 | Gate-Full: Kolom Custom Field, Setup Column, dan Pin (bagian 2/2) | FE+BE | 15 | TC-FA-LBL-560 |
-| TC-FA-LBL-E2E-118-gate-value-asset-value-dan-sel-no-access-sort-filter-search-tooltip-request-langsung-bagian-1-2 | Gate-Value: Asset Value dan Sel No access (Sort, Filter, Search, Tooltip, Request Langsung) (bagian 1/2) | FE+BE | 39 | TC-FA-LBL-546, TC-FA-LBL-557, TC-FA-LBL-559, TC-FA-LBL-576 |
+| TC-FA-LBL-E2E-118-gate-value-asset-value-dan-sel-no-access-sort-filter-search-tooltip-request-langsung-bagian-1-2 | Gate-Value: Asset Value dan Sel No access (Sort, Filter, Search, Tooltip, Request Langsung) (bagian 1/2) | FE+BE | 41 | TC-FA-LBL-546, TC-FA-LBL-557, TC-FA-LBL-559, TC-FA-LBL-576 |
 | TC-FA-LBL-E2E-119-gate-value-asset-value-dan-sel-no-access-sort-filter-search-tooltip-request-langsung-bagian-2-2 | Gate-Value: Asset Value dan Sel No access (Sort, Filter, Search, Tooltip, Request Langsung) (bagian 2/2) | FE+BE | 22 | TC-FA-LBL-551, TC-FA-LBL-566 |
 | TC-FA-LBL-E2E-120-gate-purchase-warranty-expiry-dan-custom-field-purchasing | Gate-Purchase: Warranty Expiry dan Custom Field Purchasing | FE+BE | 40 | TC-FA-LBL-549, TC-FA-LBL-555, TC-FA-LBL-558, TC-FA-LBL-562, TC-FA-LBL-570 |
-| TC-FA-LBL-E2E-121-gate-accounting-asset-value-dan-custom-field-accounting | Gate-Accounting: Asset Value dan Custom Field Accounting | FE+BE | 19 | TC-FA-LBL-545, TC-FA-LBL-556 |
+| TC-FA-LBL-E2E-121-gate-accounting-asset-value-dan-custom-field-accounting | Gate-Accounting: Asset Value dan Custom Field Accounting | FE+BE | 21 | TC-FA-LBL-545, TC-FA-LBL-556 |
 | TC-FA-LBL-E2E-122-gate-none-pemegang-view-tagged-assets-tanpa-hak-nilai-bagian-1-2 | Gate-None: Pemegang View Tagged Assets tanpa Hak Nilai (bagian 1/2) | FE+BE | 21 | TC-FA-LBL-547, TC-FA-LBL-554 |
 | TC-FA-LBL-E2E-123-gate-none-pemegang-view-tagged-assets-tanpa-hak-nilai-bagian-2-2 | Gate-None: Pemegang View Tagged Assets tanpa Hak Nilai (bagian 2/2) | FE+BE | 9 | TC-FA-LBL-561 |
 | TC-FA-LBL-E2E-124-gate-tier-group-branch-total-control-default-user-read-only-dan-group-manager | Gate Tier: Group Branch, Total Control, Default User, Read Only, dan Group Manager | FE+BE | 32 | TC-FA-LBL-548, TC-FA-LBL-568, TC-FA-LBL-569 |
@@ -195,6 +195,9 @@ Catatan pemetaan: TC-FA-LBL-441 sampai TC-FA-LBL-450, TC-FA-LBL-453, TC-FA-LBL-4
 | TC-FA-LBL-E2E-181-role-matrix-gate-ketersediaan-kolom-warranty-expiry-dan-custom-field-per-role-bagian-2-2 | Role Matrix Gate: Ketersediaan Kolom Warranty Expiry dan Custom Field per Role (bagian 2/2) | FE+BE | 46 | TC-FA-LBL-552 |
 | TC-FA-LBL-E2E-182-isi-berkas-unduh-drawer-tagged-asset-csv-xlsx-nama-berkas-kolom-dan-ikut-search-filter | Isi Berkas Unduh Drawer Tagged Asset: CSV dan XLSX, Nama Berkas, Kolom Visible, serta Search dan Filter | FE+BE | 33 | TC-FA-LBL-594, TC-FA-LBL-595 |
 | TC-FA-LBL-E2E-183-absence-log-request-langsung-ditolak-changelog-system-log-activity-log-dan-log-aset | Absence Log: Request Langsung Ditolak Tidak Menambah Entri Changelog Labels, System Log, Activity Log, dan Log Aset | FE+BE | 37 | TC-FA-LBL-441, TC-FA-LBL-442, TC-FA-LBL-443, TC-FA-LBL-444, TC-FA-LBL-445, TC-FA-LBL-446, TC-FA-LBL-447, TC-FA-LBL-448, TC-FA-LBL-449, TC-FA-LBL-450, TC-FA-LBL-453, TC-FA-LBL-457, TC-FA-LBL-481 |
+| TC-FA-LBL-E2E-184-drawer-sel-asset-value-pending-tooltip-alasan-dan-prioritas-pada-kedua-kolom | Drawer Tagged Asset: Sel Asset Value Pending pada Kedua Kolom, Tooltip Alasan Purchase Cost Belum Diisi atau Asset Class Belum Diisi, dan Prioritas Alasan | FE+BE | 14 | TC-FA-LBL-596 |
+| TC-FA-LBL-E2E-185-drawer-kolom-asset-value-fiscal-sel-pending-sort-filter-dan-search | Drawer Tagged Asset: Kolom Asset Value (Fiscal) dengan Sel Pending, Sort Tepat Sebelum No access, Tidak Cocok Filter dan Search | FE+BE | 16 | TC-FA-LBL-597 |
+| TC-FA-LBL-E2E-186-isi-berkas-unduh-drawer-asset-value-nilai-pending-kosong-dan-no-access-teks | Isi Berkas Unduh Drawer Tagged Asset: Sel Asset Value Bernilai, Pending Kosong, dan No access Teks pada CSV dan XLSX | FE+BE | 17 | TC-FA-LBL-598 |
 
 ---
 
@@ -682,6 +685,9 @@ Tidak ada. Semua TC masuk ke spec E2E; hanya TC yang tercantum pada catatan peme
 | TC-FA-LBL-593 | E2E | TC-FA-LBL-E2E-113-drawer-kolom-asset-value-commercial-dan-fiscal-company-depreciation-bagian-2-2 | FE+BE |
 | TC-FA-LBL-594 | E2E | TC-FA-LBL-E2E-182-isi-berkas-unduh-drawer-tagged-asset-csv-xlsx-nama-berkas-kolom-dan-ikut-search-filter | FE+BE |
 | TC-FA-LBL-595 | E2E | TC-FA-LBL-E2E-182-isi-berkas-unduh-drawer-tagged-asset-csv-xlsx-nama-berkas-kolom-dan-ikut-search-filter | FE+BE |
+| TC-FA-LBL-596 | E2E | TC-FA-LBL-E2E-184-drawer-sel-asset-value-pending-tooltip-alasan-dan-prioritas-pada-kedua-kolom | FE+BE |
+| TC-FA-LBL-597 | E2E | TC-FA-LBL-E2E-185-drawer-kolom-asset-value-fiscal-sel-pending-sort-filter-dan-search | FE+BE |
+| TC-FA-LBL-598 | E2E | TC-FA-LBL-E2E-186-isi-berkas-unduh-drawer-asset-value-nilai-pending-kosong-dan-no-access-teks | FE+BE |
 | TC-FA-LBL-376 | E2E | TC-FA-LBL-E2E-126-pencatatan-create-di-changelog-system-log-dan-activity-log | FE+BE |
 | TC-FA-LBL-377 | E2E | TC-FA-LBL-E2E-126-pencatatan-create-di-changelog-system-log-dan-activity-log | FE+BE |
 | TC-FA-LBL-378 | E2E | TC-FA-LBL-E2E-126-pencatatan-create-di-changelog-system-log-dan-activity-log | FE+BE |

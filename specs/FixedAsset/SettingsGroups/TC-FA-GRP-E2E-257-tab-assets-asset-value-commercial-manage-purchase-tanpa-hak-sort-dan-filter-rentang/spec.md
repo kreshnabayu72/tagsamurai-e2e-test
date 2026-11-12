@@ -60,9 +60,9 @@ coverage:
 24. Buka Detail Value Gate Node A (Tab Assets)
 25. Centang kolom Asset Value di Popup Setup Column, klik [Save]
 26. Klik header Asset Value (Ascending)
-27. Verifikasi urutan Ascending numerik: G2 (0), G5 (120), G1 (1500), G6 (2300), G4 (8000), lalu baris `—` (G3) di akhir
+27. Verifikasi urutan Ascending numerik: G2 (0), G5 (120), G1 (1500), G6 (2300), G4 (8000), lalu baris `Pending` (G3) di akhir
 28. Klik header Asset Value (Descending)
-29. Verifikasi urutan Descending: G3 (`—`) di awal, lalu G4, G6, G1, G5, G2
+29. Verifikasi urutan Descending: G4, G6, G1, G5, G2, lalu baris `Pending` (G3) tetap di akhir
 30. Klik header Asset Value (Netral)
 31. Verifikasi urutan kembali ke default tabel (Name A→Z)
 
@@ -78,7 +78,7 @@ coverage:
 39. Klik icon Filter
 40. Klik [Clear Field], isi hanya Max 500, klik [Apply]
 41. Verifikasi G2 (0) dan G5 (120) tampil
-42. Verifikasi G3 (`—`) tidak cocok dengan rentang mana pun dan tidak tampil
+42. Verifikasi G3 (`Pending`) tidak cocok dengan rentang mana pun dan tidak tampil
 43. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
 44. Verifikasi header tabel tidak memuat kolom Asset Value
 45. Verifikasi filter Max 500 tetap berlaku: hanya G2 dan G5 tampil

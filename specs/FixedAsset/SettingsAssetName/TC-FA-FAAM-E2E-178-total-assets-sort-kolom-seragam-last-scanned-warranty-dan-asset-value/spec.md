@@ -50,13 +50,13 @@ coverage:
 17. Klik header Warranty Expiry 1 kali lagi
 18. Verifikasi klik 3: kembali ke default Last Updated Newest First
 
-### TC-FA-FAAM-772: Sort kelas Asset Value (Commercial) (numerik, strip di ujung)
+### TC-FA-FAAM-772: Sort kelas Asset Value (Commercial) (numerik, Pending di ujung)
 
 19. Klik header Actions (⋯), pilih `Setup Column...`, centang Asset Value (Commercial), klik `[Save]`
 20. Klik header Asset Value (Commercial) 1 kali
-21. Verifikasi klik 1 (ascending numerik): `AST-2002` (0), `AST-2004`, `AST-2001`, `AST-2005`, lalu `AST-2003` dan `AST-2006` (`—`) di akhir (urutan di antara baris `—` tidak diasersikan)
+21. Verifikasi klik 1 (ascending numerik): `AST-2002` (0), `AST-2004`, `AST-2001`, `AST-2005`, lalu `AST-2003` dan `AST-2006` (`Pending`) di akhir (urutan di antara baris `Pending` tidak diasersikan)
 22. Klik header Asset Value (Commercial) 1 kali lagi
-23. Verifikasi klik 2 (descending): baris `—` di awal, lalu `AST-2005`, `AST-2001`, `AST-2004`, `AST-2002`
+23. Verifikasi klik 2 (descending): `AST-2005`, `AST-2001`, `AST-2004`, `AST-2002`, lalu baris `Pending` tetap di akhir
 24. Klik header Asset Value (Commercial) 1 kali lagi
 25. Verifikasi klik 3: kembali ke default Last Updated Newest First
 
@@ -67,4 +67,4 @@ coverage:
 - Langkah penghubung: centang kolom lewat Setup Column sebagai precondition, menutup popup Detail dan Logout sebelum ganti akun.
 - Pembagian TC lintas spec: TC-FA-FAAM-765 (Sort Measurement, Category, Transactional Policy) ada di spec 211 (`TC-FA-FAAM-E2E-211-total-assets-sort-kolom-seragam-measurement-category-dan-policy`).
 - Temuan untuk QA:
-  - TC-FA-FAAM-768, 776, 772: tidak ada pembanding urutan di antara baris `—`; TC sendiri menyatakan tidak diasersikan.
+  - TC-FA-FAAM-768, 776, 772: tidak ada pembanding urutan di antara baris `—` (772: `Pending`); TC sendiri menyatakan tidak diasersikan.

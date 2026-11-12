@@ -52,13 +52,13 @@ coverage:
 20. Hover sel `AST-2001` pada kolom `Asset Value (Commercial)`
 21. Verifikasi tooltip sel menampilkan metode dan masa manfaat `Straight Line · 60 months`
 
-### TC-FA-FAAM-825: Aset Not Depreciated menampilkan harga perolehan pada kolom buku itu, bukan strip
+### TC-FA-FAAM-825: Aset Not Depreciated menampilkan harga perolehan pada kolom buku itu, bukan Pending
 
 22. Amati kedua kolom pada keenam baris
 23. Verifikasi `Asset Value (Fiscal)`: `AST-2001` 9000000, `AST-2002` currency nol, `AST-2004` 4000000, `AST-2005` 25000000 (harga perolehan karena Asset Class `Not Depreciated` pada buku fiskal, bukan `—`)
-24. Verifikasi `AST-2003` dan `AST-2006` (tanpa harga perolehan) menampilkan `—` pada `Asset Value (Fiscal)`
+24. Verifikasi `AST-2003` dan `AST-2006` (tanpa harga perolehan) menampilkan `Pending` pada `Asset Value (Fiscal)`
 25. Verifikasi `Asset Value (Commercial)`: `AST-2001` 15000000, `AST-2002` currency nol, `AST-2004` 5000000, `AST-2005` 20000000
-26. Verifikasi `AST-2003` dan `AST-2006` menampilkan `—` pada `Asset Value (Commercial)`
+26. Verifikasi `AST-2003` dan `AST-2006` menampilkan `Pending` pada `Asset Value (Commercial)`
 27. Verifikasi tidak ada sel `No access` karena aktor berhak atas seluruh baris
 
 ## Notes

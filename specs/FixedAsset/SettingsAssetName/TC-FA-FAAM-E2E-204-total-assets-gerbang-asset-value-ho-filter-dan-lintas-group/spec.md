@@ -39,7 +39,7 @@ coverage:
 7. Klik Filter, isi Asset Value Min `0` dan Max `99999999`, klik `[Apply]`
 8. Verifikasi aktor `Asset Value HO`: hanya `AST-2001` dan `AST-2002` tampil
 9. Verifikasi `AST-2004` dan `AST-2005` (nilai 5000000 dan 20000000 di Warehouse, `No access`) tidak tampil
-10. Verifikasi `AST-2003` dan `AST-2006` tidak tampil
+10. Verifikasi `AST-2003` (`Pending`) dan `AST-2006` (`No access`) tidak tampil
 11. Klik Filter, klik `[Clear Field]`, klik `[Apply]` (menghapus filter), tutup popup Detail, klik tombol akun, pilih Logout
 12. Login sebagai Purchase HO (`managePurchaseHO_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_PHO_PASSWORD`)
 13. Buka Fixed Asset > Settings > Asset Master > Asset Name, klik nama `Column Matrix Item`, klik tab `Total Assets (6)`

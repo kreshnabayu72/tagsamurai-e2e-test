@@ -35,7 +35,7 @@ coverage:
 1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
 2. Buka Detail Value Gate Node A (Tab Assets)
 3. Buka Popup Setup Column, centang kolom Asset Value, Warranty Expiry, PO Number, dan Cost Account, klik [Save]
-4. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `—`, G4 8000, G5 120, G6 2300
+4. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol (mis. `Rp 0,00`), G3 `Pending`, G4 8000, G5 120, G6 2300
 5. Verifikasi Value Gate Node A kolom Warranty Expiry: G1 15/03/2027, G3 `—`, G4 20/05/2028
 6. Verifikasi Value Gate Node A kolom PO Number: G1 `PO-001`, G3 `—`, G4 `—` (di luar Scope)
 7. Verifikasi Value Gate Node A kolom Cost Account: G1 `CA-100`, G3 `—`
@@ -44,8 +44,8 @@ coverage:
 10. Buka Detail Value Gate Node B (Tab Assets)
 11. Verifikasi keempat kolom tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
 12. Verifikasi B1: Asset Value 900, Warranty Expiry 01/06/2027, PO Number `PO-B01`, Cost Account `CA-300`
-13. Verifikasi B2 menampilkan `—` pada seluruh kolom (tanpa nilai)
-14. Verifikasi B3: Asset Value dan Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
+13. Verifikasi B2 menampilkan Asset Value `Pending` dan `—` pada kolom lain (tanpa nilai)
+14. Verifikasi B3: Asset Value `Pending`, Warranty Expiry `—`, PO Number dan Cost Account `—` (di luar Scope)
 15. Tutup Popup Detail Group
 16. Ganti isi kotak Search Groups List dengan `Value Gate Child`, tekan Enter
 17. Buka Detail Value Gate Child (Tab Assets)
@@ -62,7 +62,7 @@ coverage:
 25. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
 26. Buka Detail Value Gate Node A (Tab Assets)
 27. Buka Popup Setup Column, centang kolom Asset Value, Warranty Expiry, dan PO Number, klik [Save]
-28. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol, G3 `—`
+28. Verifikasi Value Gate Node A kolom Asset Value: G1 1500, G2 currency nol, G3 `Pending`
 29. Verifikasi Value Gate Node A kolom Warranty Expiry: G1 15/03/2027
 30. Verifikasi Value Gate Node A kolom PO Number: G1 `PO-001` (tanpa `No access`)
 31. Buka Popup Setup Column
@@ -80,7 +80,7 @@ coverage:
 
 - Dua akun berurutan dengan langkah ganti akun eksplisit; blok Group Manager tetap bermakna walau blok Read Only gagal. Akun pertama (Read Only) login di hook `before`.
 - Langkah penghubung (S-03): menutup Popup Detail Group antar group dan menghilangkan centang kolom pada akhir tiap blok.
-- Alasan di atas ~35 langkah: tidak melewati; blok Read Only menulis ulang langkah TC secara utuh.
+- Alasan di atas ~35 langkah: dua akun pada satu dataset dan satu kelas; tiap blok berdiri sendiri, blok Read Only menulis ulang langkah TC secara utuh.
 - Langkah penghubung (S-03, S-14): `Buka Fixed Asset > Settings > Groups` sesudah tiap login akun lain karena hook `beforeEach` hanya membuka halaman untuk akun pertama.
 - Langkah penghubung (S-03, S-14): `Tutup Popup Setup Column` sebelum menutup Popup Detail Group, karena Popup Setup Column dibuka tanpa `[Save]` dan berada di atas Popup Detail Group.
 - Langkah penghubung (S-03, S-14, R-16): sebelum tiap `Buka Detail` ditambahkan Search Groups List dengan nama group target (`Value Gate Node A`, `Value Gate Node B`, `Value Gate Child`), karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; Search hilang setelah F5, login, atau buka ulang halaman Groups sehingga dipasang lagi.

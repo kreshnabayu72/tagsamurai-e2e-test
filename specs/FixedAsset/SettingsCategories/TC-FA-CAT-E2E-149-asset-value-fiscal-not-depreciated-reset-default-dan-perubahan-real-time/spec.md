@@ -49,7 +49,7 @@ coverage:
 10. Centang `Asset Value (Commercial)` dan `Asset Value (Fiscal)`, lalu klik `[Save]`
 11. Klik kontrol halaman berikutnya
 12. Verifikasi `Laptop HP - 3` menampilkan 20000000.00 pada kolom `Asset Value (Commercial)`
-13. Verifikasi `Laptop HP - 3` menampilkan harga perolehan 20000000.00 pada kolom `Asset Value (Fiscal)`, bukan `—` dan bukan `No access`
+13. Verifikasi `Laptop HP - 3` menampilkan harga perolehan 20000000.00 pada kolom `Asset Value (Fiscal)`, bukan `Pending` dan bukan `No access`
 14. Klik kontrol halaman sebelumnya
 
 ### TC-FA-CAT-680: Perubahan policy transaksi dan status Custom Field diperbarui real-time

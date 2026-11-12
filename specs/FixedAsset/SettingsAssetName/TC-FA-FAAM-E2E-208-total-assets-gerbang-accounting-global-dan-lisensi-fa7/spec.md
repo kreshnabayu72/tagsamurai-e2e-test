@@ -36,7 +36,7 @@ coverage:
 3. Verifikasi Setup Column memuat `Asset Value`, `Warranty Expiry`, dan `Accounting Code`
 4. Verifikasi Setup Column tidak memuat `Purchase Price`
 5. Centang Asset Value, Warranty Expiry, dan `Accounting Code` (kolom `Purchase Price` tidak tersedia pada daftar), klik `[Save]`
-6. Verifikasi Asset Value: `AST-2001` 15000000, `AST-2002` currency nol (mis. `Rp 0,00`), `AST-2003` `—`, `AST-2004` 5000000, `AST-2005` 20000000, `AST-2006` `—`
+6. Verifikasi Asset Value: `AST-2001` 15000000, `AST-2002` currency nol (mis. `Rp 0,00`), `AST-2003` `Pending`, `AST-2004` 5000000, `AST-2005` 20000000, `AST-2006` `Pending`
 7. Verifikasi Asset Value: tidak ada `No access` (hak client-wide)
 8. Verifikasi Warranty Expiry: keenam baris `No access` (aktor tidak memegang Manage purchase)
 9. Verifikasi Accounting Code: `AST-2001` `ACC-1`, `AST-2004` `ACC-4`, baris lain `—`

@@ -36,7 +36,7 @@ Role yang diuji:
 - Data TC-FA-TAG-855: AST-0043 memiliki metode dan masa manfaat penyusutan.
 - Data TC-FA-TAG-859: AST-0043 01 Sep 26 (lewat); AST-0021 31 Dec 26 (segera habis).
 - Data TC-FA-TAG-858: AST-0043 Asset Value (Commercial) 800.00 tetapi `No access` bagi role ini.
-- Data TC-FA-TAG-857: Sebagian aset berhak (nilai terisi) dan sebagian `No access`.
+- Data TC-FA-TAG-857: Sebagian aset berhak (nilai terisi) dan sebagian `No access`; aset berhak tanpa Purchase Cost (bila ada) menampilkan `Pending`.
 - Role pada blok 3 (MR) memiliki Read Plant B dan View asset value hanya pada sebagian aset grup Excavator 20 Ton / Plant B; email akun Pre-setup bernama dasar sama (lihat Temuan untuk QA).
 - Kemampuan teknis (disediakan tim FE/BE): seed dan pemulihan idempotent data Pre-setup di atas lewat fixture backend di hook `before` dan `after`; penghapusan preferensi kolom tabel T-TAG-02 di browser (cache browser tempat konfigurasi Setup Column disimpan) dipakai di hook `after` dan sebagai langkah penghubung bila tertulis.
 - Pemulihan di hook `after` (tetap jalan walau spec gagal): hapus preferensi kolom di browser (bukan lewat `[Reset to Default]`) dan kembalikan data Pre-setup yang diubah seeding spec ini ke keadaan awal. Spec ini tidak mengubah state global selain preferensi kolom di browser.
@@ -88,9 +88,9 @@ Role yang diuji:
 27. Ubah page size menjadi 25
 28. Tampilkan kolom `Asset Value (Commercial)` lewat Setup Column (header `⋯`, `Setup Column...`, centang kolom, `[Save]`)
 29. Klik header kolom Asset Value (Commercial) sekali
-30. Verifikasi Menaik: sel `No access` di akhir
+30. Verifikasi Menaik: sel `No access` di akhir; bila ada sel `Pending` (aset berhak tanpa Purchase Cost), sel itu tepat sebelum sel `No access`
 31. Klik header kolom Asset Value (Commercial) sekali lagi
-32. Verifikasi Menurun: sel `No access` tetap di akhir
+32. Verifikasi Menurun: sel `No access` tetap di akhir; sel `Pending` tetap tepat sebelumnya
 33. Tutup Popup Detail
 
 ## Notes

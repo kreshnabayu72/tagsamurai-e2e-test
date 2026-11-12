@@ -41,45 +41,47 @@ coverage:
 8. Verifikasi G2 menampilkan currency nol sesuai `prd-conventions.md` §32 (mis. `Rp 0,00`), bukan `—` dan bukan `No access`
 9. Verifikasi G4 = 8000, G5 = 120, dan G6 = 2300
 10. Verifikasi format currency dan rata kanan mengikuti `prd-conventions.md` §32
-11. Verifikasi G3 (nilai belum ada) menampilkan `—`
-12. Verifikasi tidak ada sel `No access` pada Value Gate Node A
-13. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
+11. Verifikasi G3 (Purchase Cost belum diisi) menampilkan `Pending` (bukan `—`)
+12. Hover sel G3
+13. Verifikasi tooltip `Purchase cost has not been set.`
+14. Verifikasi tidak ada sel `No access` pada Value Gate Node A
+15. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
 
 ### TC-FA-GRP-1216: Pemegang View asset value di group lain melihat No access
 
-14. Tutup Popup Detail Group
-15. Ganti isi kotak Search Groups List dengan `Value Gate Node B`, tekan Enter
-16. Buka Detail Value Gate Node B (Tab Assets)
-17. Centang kolom Asset Value di Popup Setup Column, klik [Save]
-18. Verifikasi kolom Asset Value tetap tersedia di Popup Setup Column dan tabel
-19. Verifikasi B1, B2, dan B3 menampilkan `No access` (bukan 900 dan bukan `—`, walau B2 dan B3 tidak punya nilai)
-20. Hover sel `No access`
-21. Verifikasi tooltip "Requires View asset value access in this group."
-22. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
+16. Tutup Popup Detail Group
+17. Ganti isi kotak Search Groups List dengan `Value Gate Node B`, tekan Enter
+18. Buka Detail Value Gate Node B (Tab Assets)
+19. Centang kolom Asset Value di Popup Setup Column, klik [Save]
+20. Verifikasi kolom Asset Value tetap tersedia di Popup Setup Column dan tabel
+21. Verifikasi B1, B2, dan B3 menampilkan `No access` (bukan 900 dan bukan `Pending`, walau B2 dan B3 tidak punya nilai)
+22. Hover sel `No access`
+23. Verifikasi tooltip "Requires View asset value access in this group."
+24. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
 
 ### TC-FA-GRP-1215: Pemegang Manage accounting (Global) melihat nilai di seluruh group
 
-23. Logout
-24. Login sebagai akun manageAccountingGroups
-25. Buka Fixed Asset > Settings > Groups
-26. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
-27. Buka Detail Value Gate Node A (Tab Assets)
-28. Centang kolom Asset Value di Popup Setup Column, klik [Save]
-29. Verifikasi Value Gate Node A: G1 = 1500, G2 = currency nol, G3 = `—`, G4 = 8000, G5 = 120, G6 = 2300
-30. Verifikasi tidak ada sel `No access` pada Value Gate Node A (hak client-wide)
-31. Tutup Popup Detail Group
-32. Ganti isi kotak Search Groups List dengan `Value Gate Node B`, tekan Enter
-33. Buka Detail Value Gate Node B (Tab Assets)
-34. Verifikasi Value Gate Node B: B1 = 900, B2 = `—`, B3 = `—`
-35. Verifikasi kolom Asset Value tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
-36. Verifikasi tidak ada sel `No access` pada Value Gate Node B walau aktor tidak memegang View asset value pada group itu (hak client-wide)
-37. Tutup Popup Detail Group
-38. Ganti isi kotak Search Groups List dengan `Value Gate Child`, tekan Enter
-39. Buka Detail Value Gate Child (Tab Assets)
-40. Verifikasi Value Gate Child: C1 = 700
-41. Verifikasi kolom Asset Value tampil pada Value Gate Child tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
-42. Verifikasi tidak ada sel `No access` pada Value Gate Child (hak client-wide)
-43. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
+25. Logout
+26. Login sebagai akun manageAccountingGroups
+27. Buka Fixed Asset > Settings > Groups
+28. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
+29. Buka Detail Value Gate Node A (Tab Assets)
+30. Centang kolom Asset Value di Popup Setup Column, klik [Save]
+31. Verifikasi Value Gate Node A: G1 = 1500, G2 = currency nol, G3 = `Pending`, G4 = 8000, G5 = 120, G6 = 2300
+32. Verifikasi tidak ada sel `No access` pada Value Gate Node A (hak client-wide)
+33. Tutup Popup Detail Group
+34. Ganti isi kotak Search Groups List dengan `Value Gate Node B`, tekan Enter
+35. Buka Detail Value Gate Node B (Tab Assets)
+36. Verifikasi Value Gate Node B: B1 = 900, B2 = `Pending`, B3 = `Pending`
+37. Verifikasi kolom Asset Value tampil pada Value Gate Node B tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
+38. Verifikasi tidak ada sel `No access` pada Value Gate Node B walau aktor tidak memegang View asset value pada group itu (hak client-wide)
+39. Tutup Popup Detail Group
+40. Ganti isi kotak Search Groups List dengan `Value Gate Child`, tekan Enter
+41. Buka Detail Value Gate Child (Tab Assets)
+42. Verifikasi Value Gate Child: C1 = 700
+43. Verifikasi kolom Asset Value tampil pada Value Gate Child tanpa dicentang ulang (preferensi Setup Column per akun, berlaku lintas group)
+44. Verifikasi tidak ada sel `No access` pada Value Gate Child (hak client-wide)
+45. Buka Popup Setup Column, hilangkan centang kolom Asset Value, klik [Save]
 
 ## Notes
 

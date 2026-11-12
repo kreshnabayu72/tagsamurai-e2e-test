@@ -25,7 +25,7 @@ coverage:
 
 ## Test Steps
 
-### TC-FA-FAAM-773: Filter Asset Value (Commercial) range Min–Max tidak mencocokkan nilai kosong
+### TC-FA-FAAM-773: Filter Asset Value (Commercial) range Min–Max tidak mencocokkan sel Pending
 
 1. Klik nama `Column Matrix Item`, klik tab `Total Assets (6)`
 2. Klik Filter, amati field Asset Value
@@ -33,7 +33,7 @@ coverage:
 4. Isi Min `1000000` dan Max `16000000`, klik `[Apply]`
 5. Verifikasi hanya `AST-2001` dan `AST-2004` tampil
 6. Verifikasi `AST-2002` (0) tidak tampil
-7. Verifikasi baris `—` tidak tampil
+7. Verifikasi baris `Pending` (`AST-2003`, `AST-2006`) tidak tampil
 8. Klik Filter, klik `[Clear Field]` pada field itu, isi Min `10000000` saja, klik `[Apply]`
 9. Verifikasi Min 10000000 saja: hanya `AST-2001` dan `AST-2005` tampil
 

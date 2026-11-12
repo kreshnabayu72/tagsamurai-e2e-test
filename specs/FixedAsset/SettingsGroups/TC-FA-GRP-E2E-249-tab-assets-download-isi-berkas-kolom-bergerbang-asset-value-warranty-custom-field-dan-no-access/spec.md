@@ -32,7 +32,7 @@ coverage:
 
 ## Test Steps
 
-### TC-FA-GRP-1220: Kolom Asset Value (Commercial) ditulis nilai asli, — ditulis - (viewAssetValueGroups)
+### TC-FA-GRP-1220: Kolom Asset Value (Commercial) ditulis nilai asli, Pending ditulis kosong (viewAssetValueGroups)
 
 1. Ketik Search `Value Gate Node A` pada Groups List, tekan Enter
 2. Buka Detail Value Gate Node A (Tab Assets)
@@ -44,7 +44,7 @@ coverage:
 8. Verifikasi tidak ada toast sukses
 9. Buka berkas
 10. Verifikasi kolom Asset Value (Commercial): G1 = `1500`, G2 = `0`, G4 = `8000`, G5 = `120`, G6 = `2300` ditulis nilai asli (bukan teks `No access`)
-11. Verifikasi sel Asset Value (Commercial) G3 ditulis hyphen tunggal `-`
+11. Verifikasi sel Asset Value (Commercial) G3 (`Pending`) ditulis kosong (bukan `-`, bukan teks `Pending`)
 12. Tutup Popup Detail Group
 
 ### TC-FA-GRP-1227: Kolom Warranty Expiry mengikuti format General Settings, — ditulis - (managePurchaseGroups)

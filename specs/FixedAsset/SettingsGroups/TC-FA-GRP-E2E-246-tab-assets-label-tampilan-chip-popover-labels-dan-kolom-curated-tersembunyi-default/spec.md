@@ -33,7 +33,7 @@ coverage:
 4. Verifikasi hanya kolom Name, Asset ID, TAG, Brand, Model/Type, Status, dan Last Updated yang tampil di tabel pada kondisi default
 5. Buka Popup Setup Column
 6. Amati status seluruh kolom curated
-7. Verifikasi kolom Measurement, Category, Label, Transactional Policy, Last Scanned, Asset Value (Commercial), Warranty Expiry, dan Custom Field berstatus curated: unchecked dan enabled
+7. Verifikasi kolom Measurement, Category, Label, Last Scanned, Asset Value (Commercial), Asset Value (Fiscal), Warranty Expiry, dan Custom Field berstatus curated: unchecked dan enabled
 8. Klik ✕ pada Popup Setup Column
 9. Tutup Popup Detail Group
 

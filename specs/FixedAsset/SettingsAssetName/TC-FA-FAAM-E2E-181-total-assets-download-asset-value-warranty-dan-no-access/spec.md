@@ -29,7 +29,7 @@ coverage:
 
 ## Test Steps
 
-### TC-FA-FAAM-774: Export kolom Asset Value (Commercial) menulis nilai asli, nol, dan strip
+### TC-FA-FAAM-774: Export kolom Asset Value (Commercial) menulis nilai asli, nol, dan kosong untuk Pending
 
 1. Klik nama `Column Matrix Item`, klik tab `Total Assets (6)`
 2. Klik header Actions (⋯), pilih `Setup Column...`, centang Asset Value (Commercial), klik `[Save]`
@@ -37,7 +37,7 @@ coverage:
 4. Verifikasi berkas CSV terunduh
 5. Verifikasi `AST-2001` berisi nilai 15000000
 6. Verifikasi `AST-2002` berisi angka nol asli (bukan `-`, bukan teks berformat currency)
-7. Verifikasi `AST-2003` (nilai belum ada) ditulis hyphen tunggal `-`
+7. Verifikasi `AST-2003` dan `AST-2006` (sel `Pending`) ditulis kosong (bukan hyphen `-`, bukan teks `Pending`)
 
 ### TC-FA-FAAM-778: Export kolom Warranty Expiry mengikuti General Settings, kosong ditulis strip
 

@@ -69,21 +69,23 @@ coverage:
 21. Verifikasi AST-0011 menampilkan tanggal sesuai format General Settings
 22. Verifikasi AST-0020 menampilkan `—`
 
-### TC-FA-TAG-853: Kolom Asset Value menampilkan currency dua desimal rata kanan dan strip bila belum ada nilai
+### TC-FA-TAG-853: Kolom Asset Value menampilkan currency dua desimal rata kanan dan Pending bila Purchase Cost belum ada
 
 23. Tampilkan kolom `Asset Value (Commercial)` lewat Setup Column (header `⋯`, `Setup Column...`, centang kolom, `[Save]`)
 24. Verifikasi AST-0043: currency dua desimal rata kanan (800.00)
-25. Verifikasi AST-0020 (berhak, nilai belum ada): `—`
+25. Verifikasi AST-0020 (berhak, Purchase Cost belum ada): `Pending` (bukan `—`)
+26. Arahkan pointer ke sel `Pending` AST-0020
+27. Verifikasi Tooltip `Purchase cost has not been set.`
 
 ### TC-FA-TAG-854: Asset Value berupa dua kolom tetap Commercial lalu Fiscal
 
-26. Tampilkan kolom `Asset Value (Fiscal)` lewat Setup Column (header `⋯`, `Setup Column...`, centang kolom, `[Save]`)
-27. Verifikasi Dua kolom `Asset Value (Commercial)` lalu `Asset Value (Fiscal)` tampil berurutan pada posisi kolom ini
-28. Tutup Popup Detail
+28. Tampilkan kolom `Asset Value (Fiscal)` lewat Setup Column (header `⋯`, `Setup Column...`, centang kolom, `[Save]`)
+29. Verifikasi Dua kolom `Asset Value (Commercial)` lalu `Asset Value (Fiscal)` tampil berurutan pada posisi kolom ini
+30. Tutup Popup Detail
 
 ## Notes
 
-- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 6, 12, 13, 16, 17, 28.
+- Langkah penghubung (aksi tanpa awalan `Verifikasi`, bukan langkah TC): 6, 12, 13, 16, 17, 30.
 - Popup Detail Excavator 20 Ton / Plant B dibuka pada TC pertama dan tetap terbuka bila TC berikutnya memakai popup yang sama (langkah "Klik Asset Name" TC berikutnya tidak diulang; halaman yang sama dipakai berulang, bagian 3 prinsip 13).
 - Langkah Search `Policy Off {runId}-213` menemukan baris grup target (langkah penghubung); Search ditutup sesudahnya.
 - TC-FA-TAG-854 menampilkan kedua kolom Asset Value; kolom Asset Value (Commercial) sudah tampil dari TC-FA-TAG-853 dalam spec ini, sehingga langkah Setup Column hanya mencentang Asset Value (Fiscal).

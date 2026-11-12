@@ -40,7 +40,7 @@ coverage:
 9. Verifikasi kolom Measurement ditulis Symbol (`pcs`, `set`)
 10. Verifikasi Transactional Policy ditulis label transaksi yang On dipisah koma+spasi (`Borrow, Assign` untuk `Laptop Dell`, `Transfer` untuk `Laptop HP`)
 11. Verifikasi Asset Value ditulis nilai numerik asli tanpa simbol dan pemisah ribuan sebagai sel angka di XLSX (`15000000`; nol ditulis `0`)
-12. Verifikasi sel Asset Value tanpa nilai ditulis `-` (bukan `—`)
+12. Verifikasi sel Asset Value `Pending` ditulis kosong (bukan `-`, bukan teks `Pending`), sel lain tanpa nilai ditulis `-` (bukan `—`)
 13. Verifikasi Last Scanned dan Warranty Expiry mengikuti Date Format dan Time Format General Settings
 14. Verifikasi Custom Field ditulis sesuai Data Type (`Nilai Kontrak` numerik)
 15. Verifikasi kolom `Category` tidak ada di berkas

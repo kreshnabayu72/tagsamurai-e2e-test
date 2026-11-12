@@ -34,7 +34,7 @@ coverage:
 7. Verifikasi sel Asset Value `Laptop Dell - 1` menampilkan nilai (bukan `No access`)
 8. Verifikasi sel Warranty Expiry `Laptop Dell - 1` menampilkan `2027-03-15`
 9. Verifikasi sel `Nomor PO` `Laptop Dell - 1` menampilkan `PO-0001`
-10. Verifikasi sel Asset Value, Warranty Expiry, dan `Nomor PO` `Laptop Dell - 3` menampilkan `—`
+10. Verifikasi `Laptop Dell - 3` menampilkan `Pending` pada Asset Value (berhak, Purchase Cost belum ada) dan `—` pada Warranty Expiry dan `Nomor PO` (berhak, nilai belum ada)
 11. Verifikasi sel Asset Value, Warranty Expiry, dan `Nomor PO` `Laptop HP - 3` menampilkan `No access`
 12. Hover sel `No access` Asset Value `Laptop HP - 3`
 13. Verifikasi tooltip `Requires View asset value access in this group.`

@@ -1,6 +1,6 @@
 # Coverage E2E — Fixed Asset > Settings > Asset Master > Asset Name
 
-Sumber: `fixed-asset/settings-asset-name/TestCases/tc-settings-asset-name.md` (843 TC granular aktif); tidak ada `tc-settings-asset-name-backend.md`, jadi tidak ada TC hanya-BE.
+Sumber: `fixed-asset/settings-asset-name/TestCases/tc-settings-asset-name.md` (845 TC granular aktif); tidak ada `tc-settings-asset-name-backend.md`, jadi tidak ada TC hanya-BE.
 Suite: `specs/FixedAsset/SettingsAssetName/`.
 Prefix Modul: `FA` + `FAAM` (`TC-FA-FAAM-E2E-*`).
 Status semua spec: `draft`.
@@ -183,17 +183,17 @@ Catatan pemetaan: TC-FA-FAAM-611 sampai TC-FA-FAAM-614 sengaja dipetakan ke dua 
 | TC-FA-FAAM-E2E-168-total-assets-search-dasar-name-brand-group-dan-status | Tab Total Assets Search: Tanpa Hasil, Name, Asset ID, Brand, Model/Type, Group, Status, dan Last Updated | FE+BE | 25 | TC-FA-FAAM-506, TC-FA-FAAM-507, TC-FA-FAAM-508, TC-FA-FAAM-509, TC-FA-FAAM-510 |
 | TC-FA-FAAM-E2E-169-total-assets-search-kolom-hidden-label-tag-dan-tanggal | Tab Total Assets Search: Kolom Hidden, Label, Tanggal Last Scanned-Warranty, dan Kelas Category | FE+BE | 0 | TC-FA-FAAM-541, TC-FA-FAAM-711, TC-FA-FAAM-761, TC-FA-FAAM-754 |
 | TC-FA-FAAM-E2E-170-total-assets-search-measurement-dan-tag | Tab Total Assets Search: Kelas Measurement dan Kelas TAG | FE+BE | 30 | TC-FA-FAAM-758, TC-FA-FAAM-801 |
-| TC-FA-FAAM-E2E-171-total-assets-search-transactional-policy-dan-asset-value | Tab Total Assets Search: Kelas Transactional Policy dan Asset Value Commercial | FE+BE | 0 | TC-FA-FAAM-802, TC-FA-FAAM-809 |
+| TC-FA-FAAM-E2E-171-total-assets-search-transactional-policy-dan-asset-value | Tab Total Assets Search: Kelas Transactional Policy dan Asset Value Commercial | FE+BE | 38 | TC-FA-FAAM-802, TC-FA-FAAM-809 |
 | TC-FA-FAAM-E2E-172-total-assets-filter-screening-brand-model-group | Tab Total Assets Filter: Screening Panel, Opsi Brand-Model DISTINCT, dan Group | FE+BE | 28 | TC-FA-FAAM-511, TC-FA-FAAM-512, TC-FA-FAAM-513 |
 | TC-FA-FAAM-E2E-173-total-assets-filter-status-last-updated-dan-and | Tab Total Assets Filter: Status, Last Updated, AND Brand-Group, dan Filter Brand-Model Service Vehicle | FE+BE | 21 | TC-FA-FAAM-514, TC-FA-FAAM-515, TC-FA-FAAM-516, TC-FA-FAAM-666 |
 | TC-FA-FAAM-E2E-174-total-assets-filter-label-tag-dan-measurement | Tab Total Assets Filter: Label OR, TAG, dan Measurement | FE+BE | 28 | TC-FA-FAAM-712, TC-FA-FAAM-753, TC-FA-FAAM-759 |
 | TC-FA-FAAM-E2E-175-total-assets-filter-category-policy-dan-last-scanned | Tab Total Assets Filter: Category Tree Picker, Transactional Policy, dan Last Scanned | FE+BE | 33 | TC-FA-FAAM-762, TC-FA-FAAM-764, TC-FA-FAAM-769 |
 | TC-FA-FAAM-E2E-176-total-assets-sort-name-asset-id-dan-brand-model-group | Tab Total Assets Sort: Name, Asset ID, Brand, Model/Type, dan Group | FE+BE | 19 | TC-FA-FAAM-517, TC-FA-FAAM-518, TC-FA-FAAM-519 |
 | TC-FA-FAAM-E2E-177-total-assets-sort-status-last-updated-label-dan-tag | Tab Total Assets Sort: Status, Last Updated, Label, dan TAG | FE+BE | 30 | TC-FA-FAAM-520, TC-FA-FAAM-521, TC-FA-FAAM-713, TC-FA-FAAM-752 |
-| TC-FA-FAAM-E2E-178-total-assets-sort-kolom-seragam-last-scanned-warranty-dan-asset-value | Tab Total Assets Sort: Last Scanned, Warranty Expiry, dan Asset Value (Commercial) | FE+BE | 0 | TC-FA-FAAM-768, TC-FA-FAAM-772, TC-FA-FAAM-776 |
+| TC-FA-FAAM-E2E-178-total-assets-sort-kolom-seragam-last-scanned-warranty-dan-asset-value | Tab Total Assets Sort: Last Scanned, Warranty Expiry, dan Asset Value (Commercial) | FE+BE | 25 | TC-FA-FAAM-768, TC-FA-FAAM-772, TC-FA-FAAM-776 |
 | TC-FA-FAAM-E2E-179-total-assets-download-scope-status-dan-label | Tab Total Assets Download: Cakupan Search-Filter, Kolom Status, dan Kolom Label | FE+BE | 24 | TC-FA-FAAM-523, TC-FA-FAAM-525, TC-FA-FAAM-718 |
 | TC-FA-FAAM-E2E-180-total-assets-download-tag-measurement-category-policy | Tab Total Assets Download: Kolom TAG, Measurement, Category, Transactional Policy, dan Last Scanned | FE+BE | 23 | TC-FA-FAAM-756, TC-FA-FAAM-766, TC-FA-FAAM-770 |
-| TC-FA-FAAM-E2E-181-total-assets-download-asset-value-warranty-dan-no-access | Tab Total Assets Download: Asset Value, Warranty Expiry, dan Teks No access | FE+BE | 0 | TC-FA-FAAM-774, TC-FA-FAAM-778, TC-FA-FAAM-793 |
+| TC-FA-FAAM-E2E-181-total-assets-download-asset-value-warranty-dan-no-access | Tab Total Assets Download: Asset Value, Warranty Expiry, dan Teks No access | FE+BE | 24 | TC-FA-FAAM-774, TC-FA-FAAM-778, TC-FA-FAAM-793 |
 | TC-FA-FAAM-E2E-182-total-assets-setup-column-screening-reset-dan-search-hidden | Tab Total Assets Setup Column: Screening Overlay-Popup, Reset to Default, Discard, dan Guard | FE+BE | 25 | TC-FA-FAAM-526, TC-FA-FAAM-527, TC-FA-FAAM-540 |
 | TC-FA-FAAM-E2E-183-total-assets-setup-column-name-asset-id-ceklis-geser-pin | Tab Total Assets Setup Column: Kelas Name dan Asset ID (Ceklis, Geser, Pin) | FE+BE | 32 | TC-FA-FAAM-528, TC-FA-FAAM-529, TC-FA-FAAM-530 |
 | TC-FA-FAAM-E2E-184-total-assets-setup-column-badge-ceklis-dan-geser | Tab Total Assets Setup Column: Kelas Brand, Model/Type, Group (Ceklis dan Geser) | FE+BE | 27 | TC-FA-FAAM-531, TC-FA-FAAM-532 |
@@ -201,26 +201,26 @@ Catatan pemetaan: TC-FA-FAAM-611 sampai TC-FA-FAAM-614 sengaja dipetakan ke dua 
 | TC-FA-FAAM-E2E-186-total-assets-setup-column-status-pin-dan-last-updated | Tab Total Assets Setup Column: Status Pin dan Last Updated (Ceklis, Geser) | FE+BE | 23 | TC-FA-FAAM-536, TC-FA-FAAM-537, TC-FA-FAAM-538 |
 | TC-FA-FAAM-E2E-187-total-assets-setup-column-last-updated-pin-dan-label-ceklis | Tab Total Assets Setup Column: Last Updated Pin dan Kelas Label (Default Tersembunyi, Ceklis) | FE+BE | 19 | TC-FA-FAAM-539, TC-FA-FAAM-714 |
 | TC-FA-FAAM-E2E-188-total-assets-setup-column-label-geser-pin-dan-tag | Tab Total Assets Setup Column: Label Geser dan Pin serta Kelas TAG | FE+BE | 27 | TC-FA-FAAM-715, TC-FA-FAAM-716, TC-FA-FAAM-755 |
-| TC-FA-FAAM-E2E-189-total-assets-kolom-urutan-setup-column-dan-tag | Tab Total Assets: Urutan Kolom Setup Column Sesuai Tabel dan Kolom TAG Tanpa Tag Code | FE+BE | 0 | TC-FA-FAAM-750, TC-FA-FAAM-751 |
+| TC-FA-FAAM-E2E-189-total-assets-kolom-urutan-setup-column-dan-tag | Tab Total Assets: Urutan Kolom Setup Column Sesuai Tabel dan Kolom TAG Tanpa Tag Code | FE+BE | 20 | TC-FA-FAAM-750, TC-FA-FAAM-751 |
 | TC-FA-FAAM-E2E-190-total-assets-kolom-measurement-dan-category | Tab Total Assets: Kolom Measurement (Symbol) dan Kolom Category Curated | FE+BE | 20 | TC-FA-FAAM-757, TC-FA-FAAM-760 |
 | TC-FA-FAAM-E2E-191-total-assets-kolom-transactional-policy-dan-last-scanned | Tab Total Assets: Kolom Transactional Policy dan Last Scanned | FE+BE | 22 | TC-FA-FAAM-763, TC-FA-FAAM-767 |
-| TC-FA-FAAM-E2E-192-total-assets-kolom-asset-value-dan-warranty-expiry | Tab Total Assets: Kolom Asset Value Commercial dan Warranty Expiry Curated | FE+BE | 17 | TC-FA-FAAM-771, TC-FA-FAAM-775 |
+| TC-FA-FAAM-E2E-192-total-assets-kolom-asset-value-dan-warranty-expiry | Tab Total Assets: Kolom Asset Value Commercial dan Warranty Expiry Curated | FE+BE | 18 | TC-FA-FAAM-771, TC-FA-FAAM-775 |
 | TC-FA-FAAM-E2E-193-total-assets-kolom-custom-field-daftar-scope-dan-purchasing | Tab Total Assets: Kolom Custom Field (Daftar Aktif, Scope General, Di Luar Scope) | FE+BE | 31 | TC-FA-FAAM-779, TC-FA-FAAM-780, TC-FA-FAAM-781 |
 | TC-FA-FAAM-E2E-194-total-assets-kolom-custom-field-purchasing-numerik-dan-setup | Tab Total Assets: Kolom Custom Field Purchasing Numerik dan Setup Column Custom Field | FE+BE | 28 | TC-FA-FAAM-782, TC-FA-FAAM-783 |
-| TC-FA-FAAM-E2E-195-total-assets-kolom-asset-id-retensi-state-dan-full-value | Tab Total Assets: Asset ID Tidak Filterable, Pindah Tab Memulihkan State Kolom Curated, dan Aktor Full Value Access | FE+BE | 0 | TC-FA-FAAM-788, TC-FA-FAAM-796, TC-FA-FAAM-808 |
+| TC-FA-FAAM-E2E-195-total-assets-kolom-asset-id-retensi-state-dan-full-value | Tab Total Assets: Asset ID Tidak Filterable, Pindah Tab Memulihkan State Kolom Curated, dan Aktor Full Value Access | FE+BE | 28 | TC-FA-FAAM-788, TC-FA-FAAM-796, TC-FA-FAAM-808 |
 | TC-FA-FAAM-E2E-196-total-assets-custom-field-dropdown-dan-date | Tab Total Assets Custom Field: Dropdown, Multi-Dropdown, Date, dan DateTime | FE+BE | 34 | TC-FA-FAAM-810, TC-FA-FAAM-811 |
 | TC-FA-FAAM-E2E-197-total-assets-custom-field-numerik-teks-dan-formula | Tab Total Assets Custom Field: Numeric, Currency, Percentage, Text, Text Area, Phone, Email, URL, dan Document | FE+BE | 25 | TC-FA-FAAM-812, TC-FA-FAAM-813 |
 | TC-FA-FAAM-E2E-198-total-assets-formula-dan-filter-range-nilai-full-value | Tab Total Assets: Custom Field Formula dan Filter Range Asset Value-Warranty (Full Value Access) | FE+BE | 27 | TC-FA-FAAM-773, TC-FA-FAAM-777, TC-FA-FAAM-814 |
 | TC-FA-FAAM-E2E-199-total-assets-asset-value-commercial-fiscal-dua-kolom-tetap | Tab Total Assets: Asset Value Dua Kolom Tetap Commercial dan Fiscal serta Not Depreciated | FE+BE | 27 | TC-FA-FAAM-823, TC-FA-FAAM-824, TC-FA-FAAM-825 |
-| TC-FA-FAAM-E2E-200-total-assets-asset-value-fiscal-gerbang-dan-sort-filter | Tab Total Assets: Gerbang No access pada Dua Kolom Asset Value serta Sort-Filter-Search Fiscal | FE+BE | 0 | TC-FA-FAAM-826, TC-FA-FAAM-827 |
+| TC-FA-FAAM-E2E-200-total-assets-asset-value-fiscal-gerbang-dan-sort-filter | Tab Total Assets: Gerbang No access, Pending, serta Sort-Filter-Search-Download Kolom Asset Value Fiscal | FE+BE | 67 | TC-FA-FAAM-826, TC-FA-FAAM-848, TC-FA-FAAM-827, TC-FA-FAAM-847 |
 | TC-FA-FAAM-E2E-201-total-assets-penanda-masa-garansi-batas-hari | Tab Total Assets: Penanda Warranty Expiry (Lewat, Hari Ini, Hari ke-30, Hari ke-31) | FE+BE | 22 | TC-FA-FAAM-816, TC-FA-FAAM-817, TC-FA-FAAM-818, TC-FA-FAAM-819 |
 | TC-FA-FAAM-E2E-202-total-assets-penanda-masa-garansi-strip-time-zone-dan-netral | Tab Total Assets: Penanda Garansi Strip-No access, Time Zone Client, dan Tidak Memengaruhi Sort-Filter-Search | FE+BE | 0 | TC-FA-FAAM-820, TC-FA-FAAM-821, TC-FA-FAAM-822 |
-| TC-FA-FAAM-E2E-203-total-assets-gerbang-asset-value-ho-sel-dan-sort | Tab Total Assets Gerbang Akses: Aktor Asset Value HO (Sel dan Sort No access Paling Akhir) | FE+BE | 0 | TC-FA-FAAM-784, TC-FA-FAAM-790 |
-| TC-FA-FAAM-E2E-204-total-assets-gerbang-asset-value-ho-filter-dan-lintas-group | Tab Total Assets Gerbang Akses: Aktor Asset Value HO (Filter dan Baris Lintas Group) | FE+BE | 0 | TC-FA-FAAM-795, TC-FA-FAAM-791 |
+| TC-FA-FAAM-E2E-203-total-assets-gerbang-asset-value-ho-sel-dan-sort | Tab Total Assets Gerbang Akses: Aktor Asset Value HO (Sel dan Sort No access Paling Akhir) | FE+BE | 27 | TC-FA-FAAM-784, TC-FA-FAAM-790 |
+| TC-FA-FAAM-E2E-204-total-assets-gerbang-asset-value-ho-filter-dan-lintas-group | Tab Total Assets Gerbang Akses: Aktor Asset Value HO (Filter dan Baris Lintas Group) | FE+BE | 16 | TC-FA-FAAM-795, TC-FA-FAAM-791 |
 | TC-FA-FAAM-E2E-205-total-assets-gerbang-purchase-ho-sel-tooltip-dan-search | Tab Total Assets Gerbang Akses: Aktor Purchase HO (Sel, Tooltip, dan Search) | FE+BE | 23 | TC-FA-FAAM-786, TC-FA-FAAM-789, TC-FA-FAAM-792 |
 | TC-FA-FAAM-E2E-206-total-assets-gerbang-purchase-ho-custom-field-purchasing | Tab Total Assets Gerbang Akses: Aktor Purchase HO (Custom Field Purchasing di Luar Scope dan Filter) | FE+BE | 12 | TC-FA-FAAM-803, TC-FA-FAAM-815 |
 | TC-FA-FAAM-E2E-207-total-assets-gerbang-tanpa-hak-nilai-sensitif | Tab Total Assets Gerbang Akses: Aktor Tanpa Hak Nilai Sensitif (Kolom, Ketersediaan, dan Respons Data) | FE+BE | 27 | TC-FA-FAAM-787, TC-FA-FAAM-794, TC-FA-FAAM-800 |
-| TC-FA-FAAM-E2E-208-total-assets-gerbang-accounting-global-dan-lisensi-fa7 | Tab Total Assets Gerbang Akses: Aktor Accounting Global dan Lisensi FA-7 Grace Period atau Tidak Aktif | FE+BE | 0 | TC-FA-FAAM-785, TC-FA-FAAM-806, TC-FA-FAAM-807 |
+| TC-FA-FAAM-E2E-208-total-assets-gerbang-accounting-global-dan-lisensi-fa7 | Tab Total Assets Gerbang Akses: Aktor Accounting Global dan Lisensi FA-7 Grace Period atau Tidak Aktif | FE+BE | 26 | TC-FA-FAAM-785, TC-FA-FAAM-806, TC-FA-FAAM-807 |
 | TC-FA-FAAM-E2E-209-total-assets-hak-tier-role-matrix-global-dan-group-manager | Tab Total Assets Gerbang Akses: Hak Tier Total Control, Default User, Read Only, dan Group Manager | FE+BE | 28 | TC-FA-FAAM-804, TC-FA-FAAM-805 |
 | TC-FA-FAAM-E2E-210-total-assets-himpunan-aset-dan-empty-state-tanpa-aset | Tab Total Assets: Himpunan Aset Draft-Waiting-Active dan Empty State Tanpa Aset | FE+BE | 9 | TC-FA-FAAM-503, TC-FA-FAAM-505 |
 | TC-FA-FAAM-E2E-211-total-assets-sort-kolom-seragam-measurement-category-dan-policy | Tab Total Assets Sort: Kolom Bernilai Seragam (Measurement, Category, Transactional Policy) | FE+BE | 11 | TC-FA-FAAM-765 |
@@ -1127,3 +1127,5 @@ Tidak ada. Semua TC masuk ke spec E2E; hanya TC-FA-FAAM-611 sampai TC-FA-FAAM-61
 | TC-FA-FAAM-844 | E2E | TC-FA-FAAM-E2E-251-pencatatan-absence-bulk-delete-langsung-semua-in-use | FE+BE |
 | TC-FA-FAAM-845 | E2E | TC-FA-FAAM-E2E-252-pencatatan-absence-request-create-langsung-ditolak | FE+BE |
 | TC-FA-FAAM-846 | E2E | TC-FA-FAAM-E2E-141-download-isi-berkas-total-asset-tanggal-kosong-dan-bom | FE+BE |
+| TC-FA-FAAM-847 | E2E | TC-FA-FAAM-E2E-200-total-assets-asset-value-fiscal-gerbang-dan-sort-filter | FE+BE |
+| TC-FA-FAAM-848 | E2E | TC-FA-FAAM-E2E-200-total-assets-asset-value-fiscal-gerbang-dan-sort-filter | FE+BE |

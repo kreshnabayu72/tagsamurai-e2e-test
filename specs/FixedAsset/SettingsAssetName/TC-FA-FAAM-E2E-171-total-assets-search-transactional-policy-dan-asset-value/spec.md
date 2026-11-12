@@ -47,7 +47,7 @@ coverage:
 15. Verifikasi saat Transactional Policy di-hide keyword `borrow` tidak menemukan baris
 16. Klik `(←)` pada kotak Search, tutup popup Detail, klik tombol akun, pilih Logout
 
-### TC-FA-FAAM-809: Search kelas Asset Value (Commercial) (nilai pada sel berhak; sel No access tidak cocok)
+### TC-FA-FAAM-809: Search kelas Asset Value (Commercial) (nilai pada sel berhak; sel Pending dan No access tidak cocok)
 
 17. Login sebagai Full Value Access (`fullValueAccess_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_FVA_PASSWORD`)
 18. Buka Fixed Asset > Settings > Asset Master > Asset Name, klik nama `Column Matrix Item`, klik tab `Total Assets (6)`
@@ -68,6 +68,9 @@ coverage:
 33. Ganti isi kotak search dengan `No access`, tekan Enter
 34. Verifikasi Title `No results found`
 35. Verifikasi Description `Try adjusting your search or filter.`
+36. Ganti isi kotak search dengan `Pending`, tekan Enter
+37. Verifikasi Title `No results found` (sel `Pending` `AST-2003` tidak cocok teksnya)
+38. Verifikasi Description `Try adjusting your search or filter.`
 
 ## Notes
 

@@ -37,8 +37,8 @@ coverage:
 3. Buka Popup Setup Column
 4. Verifikasi Popup Setup Column memuat tepat dua kolom curated `Asset Value (Commercial)` lalu `Asset Value (Fiscal)` (unchecked, enabled), berurutan setelah Last Scanned dan sebelum Warranty Expiry, tanpa kolom `Asset Value` tunggal dan tanpa kolom buku lain
 5. Centang `Asset Value (Commercial)` dan `Asset Value (Fiscal)` di Popup Setup Column, klik [Save]
-6. Verifikasi Commercial: G1 1500, G2 currency nol, G3 `—`, G4 8000, G5 120, G6 2300
-7. Verifikasi Fiscal: G1 1200, G2 500 dan G5 150 (harga perolehan), G3 `—`, G4 7000, G6 2000
+6. Verifikasi Commercial: G1 1500, G2 currency nol, G3 `Pending`, G4 8000, G5 120, G6 2300
+7. Verifikasi Fiscal: G1 1200, G2 500 dan G5 150 (harga perolehan), G3 `Pending`, G4 7000, G6 2000
 8. Verifikasi format currency 2 desimal rata kanan mengikuti `prd-conventions.md` §32
 9. Hover sel G1 pada kolom `Asset Value (Commercial)`
 10. Verifikasi tooltip memuat metode dan masa manfaat buku Commercial (mis. `Straight Line · 60 months`)
@@ -46,19 +46,19 @@ coverage:
 12. Verifikasi tooltip memuat metode dan masa manfaat buku Fiscal (mis. `Straight Line · 60 months`)
 13. Verifikasi metode tidak menjadi kolom tersendiri pada header tabel
 
-### TC-FA-GRP-1286: Not Depreciated menampilkan harga perolehan
+### TC-FA-GRP-1286: Not Depreciated menampilkan harga perolehan, bukan Pending
 
 14. Amati G2, G3, dan G5 pada kedua kolom (kedua kolom tercentang dari blok TC-FA-GRP-1284)
 15. Verifikasi kolom Fiscal: G2 menampilkan 500 dan G5 menampilkan 150 (harga perolehan; bukan `—`, bukan `No access`, bukan nol)
 16. Verifikasi kolom Commercial: G2 currency nol dan G5 120
-17. Verifikasi G3 (nilai belum ada) menampilkan `—` pada kedua kolom
+17. Verifikasi G3 (Purchase Cost belum diisi) menampilkan `Pending` pada kedua kolom
 
 ### TC-FA-GRP-1288: Sort, Filter, dan Search per kolom buku
 
 18. Klik header `Asset Value (Fiscal)` (Ascending)
-19. Verifikasi urutan Fiscal Ascending: G5 (150), G2 (500), G1 (1200), G6 (2000), G4 (7000), lalu baris `—` (G3) di akhir
+19. Verifikasi urutan Fiscal Ascending: G5 (150), G2 (500), G1 (1200), G6 (2000), G4 (7000), lalu baris `Pending` (G3) di akhir
 20. Klik header `Asset Value (Fiscal)` (Descending)
-21. Verifikasi urutan Fiscal Descending: baris `—` (G3) di awal, lalu G4, G6, G1, G2, G5
+21. Verifikasi urutan Fiscal Descending: G4, G6, G1, G2, G5, lalu baris `Pending` (G3) tetap di akhir
 22. Verifikasi kolom `Asset Value (Commercial)` tidak menampilkan indikator sort
 23. Klik icon Filter
 24. Verifikasi Filter Panel memuat satu field per kolom buku (`Asset Value (Commercial)`, `Asset Value (Fiscal)`)

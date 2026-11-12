@@ -40,7 +40,7 @@ Total Control (akun hook `before`):
 2. Klik header Actions (⋯), pilih `Setup Column...`, amati kolom yang tersedia
 3. Verifikasi Setup Column memuat `Asset Value`, `Warranty Expiry`, `Purchase Price`, dan `Accounting Code`
 4. Centang Asset Value, Warranty Expiry, `Purchase Price`, `Accounting Code`, klik `[Save]`
-5. Verifikasi Asset Value: 15000000, currency nol (mis. `Rp 0,00`), `—`, 5000000, 20000000, `—` berurutan `AST-2001` sampai `AST-2006`
+5. Verifikasi Asset Value: 15000000, currency nol (mis. `Rp 0,00`), `Pending`, 5000000, 20000000, `Pending` berurutan `AST-2001` sampai `AST-2006`
 6. Verifikasi Warranty Expiry: 31 Mar 2027, `—`, 15 Jan 2026, 30 Jun 2028, 01 Feb 2025, `—` berurutan
 7. Verifikasi Purchase Price: 2500, `—`, `0`, 1800, 3200, `—` berurutan
 8. Verifikasi Accounting Code: `ACC-1`, `—`, `—`, `ACC-4`, `—`, `—` berurutan
@@ -53,7 +53,7 @@ Untuk setiap baris tabel "Role yang diuji" pada Prerequisites (langkah 10 sampai
 12. Klik nama `Column Matrix Item`, klik tab `Total Assets (6)`, klik header Actions (⋯), pilih `Setup Column...`
 13. Verifikasi Setup Column memuat `Asset Value`, `Warranty Expiry`, `Purchase Price`, dan `Accounting Code`
 14. Centang Asset Value, Warranty Expiry, `Purchase Price`, `Accounting Code`, klik `[Save]`
-15. Verifikasi Asset Value: 15000000, currency nol (mis. `Rp 0,00`), `—`, 5000000, 20000000, `—` berurutan `AST-2001` sampai `AST-2006`
+15. Verifikasi Asset Value: 15000000, currency nol (mis. `Rp 0,00`), `Pending`, 5000000, 20000000, `Pending` berurutan `AST-2001` sampai `AST-2006`
 16. Verifikasi Warranty Expiry: 31 Mar 2027, `—`, 15 Jan 2026, 30 Jun 2028, 01 Feb 2025, `—` berurutan
 17. Verifikasi Purchase Price: 2500, `—`, `0`, 1800, 3200, `—` berurutan
 18. Verifikasi Accounting Code: `ACC-1`, `—`, `—`, `ACC-4`, `—`, `—` berurutan
@@ -67,7 +67,7 @@ Untuk setiap baris tabel "Role yang diuji" pada Prerequisites (langkah 10 sampai
 23. Verifikasi Setup Column memuat `Asset Value`, `Warranty Expiry`, dan `Purchase Price`
 24. Verifikasi Setup Column tidak memuat `Accounting Code`
 25. Centang Asset Value, Warranty Expiry, dan `Purchase Price`, klik `[Save]`
-26. Verifikasi Asset Value: `AST-2001` 15000000, `AST-2002` currency nol (mis. `Rp 0,00`), `AST-2003` `—`; `AST-2004`, `AST-2005`, `AST-2006` `No access`
+26. Verifikasi Asset Value: `AST-2001` 15000000, `AST-2002` currency nol (mis. `Rp 0,00`), `AST-2003` `Pending`; `AST-2004`, `AST-2005`, `AST-2006` `No access`
 27. Verifikasi Warranty Expiry: `AST-2001` 31 Mar 2027, `AST-2002` `—`, `AST-2003` 15 Jan 2026; `AST-2004`, `AST-2005`, `AST-2006` `No access`
 28. Verifikasi Purchase Price: `AST-2001` 2500, `AST-2002` `—`, `AST-2003` `0`; `AST-2004`, `AST-2005`, `AST-2006` `No access`
 
@@ -79,4 +79,4 @@ Untuk setiap baris tabel "Role yang diuji" pada Prerequisites (langkah 10 sampai
 - Aktor ACC TC-FA-FAAM-804: Total Control (#1), Default User (#32f), Read Only (#2).
 - Temuan untuk QA:
   - TC-FA-FAAM-804 LK langkah 6 dan 7 ("ulangi langkah 1 sampai 5") ditulis sebagai isi perulangan.
-  - TC-FA-FAAM-805 Expected b memakai Asset Value `AST-2003` `—` untuk aktor Group Manager pada group `Finance` (descendant `Head Office`), selaras Pre-setup #32g.
+  - TC-FA-FAAM-805 Expected b memakai Asset Value `AST-2003` `Pending` untuk aktor Group Manager pada group `Finance` (descendant `Head Office`), selaras Pre-setup #32g.

@@ -32,19 +32,19 @@ coverage:
 3. Verifikasi Setup Column memuat `Asset Value` dan `Warranty Expiry`
 4. Verifikasi Setup Column tidak memuat kolom `Purchase Price` dan `Accounting Code`
 5. Centang Asset Value dan Warranty Expiry (kolom `Purchase Price` dan `Accounting Code` tidak tersedia pada daftar), klik `[Save]`
-6. Verifikasi Asset Value: `AST-2001` 15000000, `AST-2002` currency nol (mis. `Rp 0,00`), `AST-2003` `—`
+6. Verifikasi Asset Value: `AST-2001` 15000000, `AST-2002` currency nol (mis. `Rp 0,00`), `AST-2003` `Pending`
 7. Verifikasi Asset Value: `AST-2004`, `AST-2005`, `AST-2006` `No access`
 8. Verifikasi Warranty Expiry: keenam baris `No access` (aktor tidak memegang Manage purchase di group mana pun)
 9. Verifikasi sel kolom Name, Asset ID, Brand, Group, Status tetap tampil normal pada keenam baris
 10. Klik header Actions (⋯), pilih `Setup Column...`, hapus centang Asset Value dan Warranty Expiry, klik `[Save]`
 
-### TC-FA-FAAM-790: Sort kolom bergerbang: baris No access selalu paling akhir pada ascending dan descending
+### TC-FA-FAAM-790: Sort kolom bergerbang: baris No access selalu paling akhir dan baris Pending tepat sebelumnya pada ascending dan descending
 
 11. Klik header Actions (⋯), pilih `Setup Column...`, centang Asset Value, klik `[Save]`
 12. Klik header Asset Value 1 kali
-13. Verifikasi Asset Value (aktor `Asset Value HO`) klik 1 (ascending): `AST-2002` (0), `AST-2001`, `AST-2003` (`—`), lalu `AST-2004`, `AST-2005`, `AST-2006` (`No access`) di akhir
+13. Verifikasi Asset Value (aktor `Asset Value HO`) klik 1 (ascending): `AST-2002` (0), `AST-2001`, `AST-2003` (`Pending`), lalu `AST-2004`, `AST-2005`, `AST-2006` (`No access`) di akhir
 14. Klik header Asset Value 1 kali lagi
-15. Verifikasi Asset Value klik 2 (descending): `AST-2003` (`—`), `AST-2001`, `AST-2002`, lalu ketiga baris `No access` tetap di akhir
+15. Verifikasi Asset Value klik 2 (descending): `AST-2001`, `AST-2002`, `AST-2003` (`Pending`) tepat sebelum ketiga baris `No access` yang tetap di akhir
 16. Tutup popup Detail, klik tombol akun, pilih Logout
 17. Login sebagai Purchase HO (`managePurchaseHO_automated_{namaCompany}@qwertysystem.net`, password dari `Spectra.env.FA_PHO_PASSWORD`)
 18. Buka Fixed Asset > Settings > Asset Master > Asset Name, klik nama `Column Matrix Item`, klik tab `Total Assets (6)`
