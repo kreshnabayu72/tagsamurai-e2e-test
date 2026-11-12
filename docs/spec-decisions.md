@@ -1704,3 +1704,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A).
 - **Diterapkan di:** Client 306.
 - **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` (UG-ACC-23).
+
+## D-171 Urutan bawaan Customer Subscription: Client A-Z saja, tanpa urutan di dalam Client yang sama (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/CustomerSubscription `001` TC-1 (asersi baris pertama urutan bawaan), `092` TC-349 langkah 5 (urutan Subscription ID di dalam Client yang sama).
+- **Spec meminta:** urutan bawaan Client A-Z, lalu Subscription ID terbaru lebih dulu di dalam Client yang sama.
+- **Kenyataannya:** LLD list tanpa `sortBy` menulis: tab Current → `LOWER(ce.company_name)` ASC; tab History → `s.created_at` DESC. Tidak ada tie-breaker untuk Client yang sama (org-uiux `admin-console/license-allocation-subscription/API/low-level-design.md` L82). App membuka list tanpa `sortBy`, dan semua ikon sort netral (D-039). Run 1807: dua baris di Client yang sama keluar lama-lalu-baru.
+- **Karena:** D-039 menetapkan urutan bawaan = urutan API, dan LLD adalah kontraknya. Urutan di dalam Client yang sama tidak ditulis di kontrak, jadi asersinya termasuk contract drift dan di-skip. Menambah `sortBy` saat dibuka bertentangan dengan ikon netral D-039.
+- **Keputusan:** langkah urutan bawaan mengasersi Client A-Z (tab Current) dan ikon sort netral. Urutan baris di dalam Client yang sama tidak diasersi. Asersi baris pertama memilih Client yang namanya paling awal dan unik di data run. Siklus sort per kolom tetap diasersi seperti spec.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration B, FD-B-CS-8).
+- **Diterapkan di:** CS 001, 092.
+- **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-B-CS-8; perluasan D-039.
