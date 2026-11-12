@@ -1737,3 +1737,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration C, FD-C-11).
 - **Diterapkan di:** DS 074.
 - **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-C-11; `integration-findings` E2E-DS-105.
+
+## D-174 Urutan baris dengan nilai sama di File Manager mengikuti tie-break LLD (2026-11-13)
+
+- **Spec / langkah:** GlobalSettings/FileManagerE2 `003` (l.13-14, 30-31, 40, 64-66) dan `017` (Deleted By), serta spec File Manager lain yang mengasersi urutan di antara baris bernilai sama.
+- **Spec meminta:** baris bernilai sama diurutkan dari yang terbaru (EB-SRT-2).
+- **Kenyataannya:** LLD File Manager menulis "Secondary sort: Always apply secondary tie-break on fmd.id in the same direction" untuk list (L114, BEGAP-210) dan Recycle Bin (L550). Service mengikuti aturan itu, sehingga pada sort ASC baris bernilai sama muncul dengan id menaik, dan pada DESC dengan id menurun.
+- **Karena:** LLD adalah kontrak (D-039, D-171), dan tie-break-nya ditulis eksplisit dan deterministik.
+- **Keputusan:** urutan di antara baris bernilai sama diasersi menurut tie-break LLD, yaitu `id` searah dengan arah sort, bukan "terbaru dulu". D-draft-FILEMGR2-SORT-1 menjadi entri ini.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Eval FM r2).
+- **Diterapkan di:** FileManagerE2 003, 017.
+- **Sumber:** org-uiux `global-settings/file-manager/API/low-level-design.md` L114, L550.
