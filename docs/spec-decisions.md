@@ -1669,3 +1669,14 @@ Aturan:
 - **Diputuskan oleh:** product owner 2026-11-11 (prd-overrides), dicatat Wangs-UI Coordinator 2026-11-12 (diusulkan Integration N, UG-NOTIF-2).
 - **Diterapkan di:** Notification 045, 114.
 - **Sumber:** repo aplikasi `plans/notification/integration-findings.md` L49 (row 18).
+
+## D-168 Position yang dipegang user tidak bisa dihapus, jadi state Position basi di Edit Default User tidak tercapai (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-069` TC-AC-ACC-474 langkah 20-25 (aktor kedua menghapus Position `Finance Manager` yang dipegang form Edit, lalu Save bertemu "This position no longer exists").
+- **Spec meminta:** Position yang sedang dipegang form Edit Default User dihapus saat form terbuka.
+- **Kenyataannya:** LLD Position melarang delete Position yang masih dipegang user, login maupun non-login (org-uiux `global-settings/position/API/low-level-design.md` L229-230). Probe slot 2 (2026-11-12): delete Position milik Default User menjawab `0 deleted, 1 skipped`, `blocked` / `in_use`. Position yang tidak dipegang siapa pun tidak muncul sebagai nilai user di dropdown form.
+- **Karena:** state itu tidak bisa terjadi di produk; e2e hanya membangun state nyata, dan tidak ada test route yang boleh melanggar LLD.
+- **Keputusan:** langkah 20-25 keluar dari e2e. Cek Position basi boleh dipindah ke spec `ui-client` yang meng-intercept jawaban Save. Padanan Division (TC-AC-ACC-152 langkah 11-17) tetap di e2e, karena Division yang dipegang form tapi tidak dipegang user bisa dihapus.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A, D-draft-ACC-1).
+- **Diterapkan di:** Client 069.
+- **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` L63-69 (UG-ACC-13, UG-ACC-14).
