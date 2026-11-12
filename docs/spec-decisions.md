@@ -1373,3 +1373,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (opsi A usulan Integration C).
 - **Diterapkan di:** skrip SessionManagement 064 dan 069 (`pending D-draft-AUTH-CREATE-SESSION`; 069 sebelumnya `feature-gap:be`).
 - **Sumber:** repo aplikasi `plans/auth/decisions.md` L736-744 (feat/connect-api-c f42174bed); `plans/auth/backend-findings.md` L22.
+
+## D-141 Kriteria filter yang opsinya hilang tetap jalan sebagai snapshot nilai lama (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/FileManagerE2 `TC-GS-FILEMGR2-E2E-005` grup 4, langkah 33.
+- **Spec meminta:** setelah file satu-satunya milik `Bimo Sementara` dihapus aktor lain dan filter di-Apply ulang, filter Uploaded By hanya memuat `Wulandari Pengunggah`.
+- **Kenyataannya:** FilterContainer/MultiSelect mempertahankan nilai terpilih saat Apply, dan request list tetap mengirim `{"uploadedBy":["Wulandari Pengunggah","Bimo Sementara"]}` (run FileManagerE2-eval-20261112-1520, slot 3). Komponen tidak membuang nilai terpilih secara otomatis; ini sama dengan mayoritas design system (nilai terpilih dikendalikan pemanggil). Konvensi EB-FLT-7 (foundation testcase-conventions L379) menerima salah satu: tetap jalan sebagai snapshot nilai lama, atau ter-reset. PRD File Manager tidak memilih.
+- **Karena:** perilaku komponen yang menang (aturan owner 2026-11-04/08), dan pilihan snapshot memenuhi EB-FLT-7.
+- **Keputusan:** langkah 33 mengasersi snapshot: kedua nilai tetap terpilih dan dikirim, dan hasil list tetap benar (baris `Bimo Sementara` tidak ada). App tidak menambah prune manual di onApply.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12.
+- **Diterapkan di:** skrip FileManagerE2 005 (eval branch `eval/file-manager-e2`).
+- **Sumber:** laporan Eval File Manager 2026-11-12; foundation testcase-conventions L379 (EB-FLT-7).
