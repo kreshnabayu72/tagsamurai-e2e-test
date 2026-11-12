@@ -620,3 +620,293 @@ Aturan:
 - **Karena:** keputusan user 2026-11-03 (jalur "UI tidak preview") atas temuan F-1 `report-e2e-audit.md` (`prd-harness/work-items/ac-client`), selaras dengan keputusan user 2026-11-02 yang sudah tertulis di Notes spec-spec ini.
 - **Keputusan:** spec Client mengikuti UI: kolom masih tampil/urutan tidak berubah di tabel di balik modal sampai `[Save]`. Live Preview di dalam popup tetap terpisah.
 - **Diterapkan di:** Notes dan asersi spec 245, 257, 258, 260, 294, 295, 296, 297 (sudah sesuai). `tc-client.md` (10 TC) dan `prd-conventions.md` §9.3 belum diselaraskan: menunggu keputusan cakupan, lihat `report-e2e-audit.md` F-1.
+
+## D-069 Request langsung dengan product di luar daftar tidak diuji di e2e (2026-11-03)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-057` TC-GS-ACTLOG-217 (langkah 1 sampai 5).
+- **Spec meminta:** request langsung ke endpoint daftar Session dengan parameter produk `fams` disisipkan; server menjawab sukses, mengabaikan nilai itu, dan hanya mengembalikan baris platform dan Global Settings.
+- **Kenyataannya:** `POST /v2/analytics-reporting/session-logs/list` menjawab 422 `Invalid request body` (`product` harus salah satu dari `admin_console`, `global_settings`).
+- **Karena:** klien FE tidak bisa mengirim nilai `product` di luar daftar, jadi skenarionya tidak terjadi di produksi dan tidak mewakili bug nyata. Bug yang sebenarnya ada di endpoint pembuatan log, yang menulis field `product` salah.
+- **Keputusan:** TC-GS-ACTLOG-217 dikeluarkan dari e2e; tidak ada perubahan di backend. Yang diuji adalah penulisan `product` oleh endpoint pembuatan log, lewat test get list yang sudah ada. Keputusan owner, disampaikan lewat sesi BE dan dikonfirmasi owner pada 2026-11-03.
+- **Diterapkan di:** skrip 057: blok TC-GS-ACTLOG-217 ditandai `// @spec-decision: D-069 TC-GS-ACTLOG-217` dan tanpa step; TC-GS-ACTLOG-215 dan 216 tetap.
+
+## D-070 Filter Date adalah satu kalender rentang: satu tanggal terpilih berarti hari itu saja (2026-11-03)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-039` TC-GS-ACTLOG-77 (langkah 15 sampai 26).
+- **Spec meminta:** hanya tanggal mulai diisi: filter terbuka ke sisi lainnya, dari tanggal itu dan seterusnya (PRD FI-04); hanya tanggal akhir diisi: sampai tanggal itu (PRD FI-05).
+- **Kenyataannya:** filter Date (FilterContainer `type: 'date'`) adalah satu DatePicker mode rentang dengan satu input. Klik pertama selalu menjadi tanggal mulai, sehingga tanggal akhir saja tidak dapat dimasukkan. Satu tanggal yang dipilih menghasilkan rentang hari itu (dokumentasi komponen: "one picked day covers that day"; `[hari itu 00:00:00.000, 23:59:59.999]`). Rentang terbuka ke satu sisi tidak didukung komponen, dan kode aplikasi tidak mengubah nilai itu.
+- **Karena:** perilaku komponen Wangs UI, bukan kode aplikasi.
+- **Keputusan:** perilaku komponen menang. Memilih satu tanggal berarti hari itu saja. FI-04 dan FI-05 (rentang terbuka satu sisi) tidak diimplementasikan dan tidak diuji; TC-GS-ACTLOG-77 keluar dari e2e. Perilaku "hari itu saja" sudah dijaga TC-GS-ACTLOG-74 dan TC-GS-ACTLOG-75 (rentang dengan tanggal mulai dan akhir yang sama). Keputusan owner, disampaikan di sesi integrasi 2026-11-03.
+- **Diterapkan di:** skrip 039: blok TC-GS-ACTLOG-77 ditandai `// @spec-decision: D-070 TC-GS-ACTLOG-77` dan tanpa step.
+
+## D-071 Pindah halaman di tengah Guided Tour dilakukan lewat URL, bukan klik sidebar atau tab (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-BRAND-E2E-008` TC-GS-BRAND-24 (langkah 24 dan 26); `TC-GS-DIV-E2E-005` TC-GS-DIV-15 (pindah ke tab Position lalu kembali ke Division saat walkthrough terbuka).
+- **Spec meminta:** mengklik item sidebar (Activity Log) atau tab (Position) selagi walkthrough terbuka, lalu walkthrough tertutup tanpa menyimpan flag seen (PRD §16.3 "Resize / navigasi = tutup tanpa set flag seen").
+- **Kenyataannya:** selama Guided Tour terbuka, halaman di belakangnya tidak bisa diklik; hanya elemen yang disorot yang bisa. Klik di area gelap sama dengan Skip dan menyimpan flag seen (wangs-ui 1.4.0-alpha.178).
+- **Karena:** keputusan owner atas perilaku komponen Guided Tour Wangs UI (2026-11-04, disampaikan lewat Wangs-UI Coordinator). Dua aturan itu bertabrakan di PRD: blokir klik dan "navigasi menutup tur".
+- **Keputusan:** blokir klik tetap. Berpindah halaman di tengah tur dilakukan lewat URL langsung atau Back browser; layar yang di-unmount menutup tur tanpa menyetel seen, dan skrip membaca bahwa flag seen tidak tersimpan. Tur milik halaman tujuan ditandai seen lebih dulu supaya langkah berikutnya (klik sidebar) bisa berjalan. Semua aturan lain pada kedua TC tetap berlaku. Dicatat atas permintaan pengguna sesi integrasi pada 2026-11-04.
+- **Diterapkan di:** skrip Brand 008 TC-GS-BRAND-24 dan Division 005 TC-GS-DIV-15, ditandai `// @spec-decision: D-071`. Position 006 tidak menyimpang dari spec: kunjungan tab dibuat dengan memuat ulang halaman, bukan klik tab saat tur terbuka.
+
+## D-072 Hover Position Name tidak menampilkan border primary (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-POS-E2E-001` TC-GS-POS-293 (langkah 78 dan 79).
+- **Spec meminta:** field Position Name menampilkan border primary saat pointer berada di atasnya.
+- **Kenyataannya:** preset `inputgroup` (fixedasset) punya outline normal `outline-variant` dan outline primary saat focus-within; tidak ada state hover.
+- **Karena:** PRD tidak memiliki baris tentang border hover. Konvensi umum: hover menggelapkan border netral dan warna primary dipakai untuk focus. Keputusan Wangs UI coordinator, didelegasikan owner (2026-11-04).
+- **Keputusan:** komponen tetap. Langkah hover tidak diuji; fokus diuji lewat ring (langkah 81).
+- **Diterapkan di:** skrip `TC-GS-POS-E2E-001`, ditandai `// @spec-decision: D-072 TC-GS-POS-293`.
+
+## D-073 Daftar dua nama di dialog tidak punya scroll (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-FILEMGR-E2E-022` TC-GS-FILEMGR-96 (langkah 18).
+- **Spec meminta:** daftar nama pada dialog Permanently Delete bisa di-scroll.
+- **Kenyataannya:** Ul foundation menambah ScrollArea hanya bila item melebihi `maxVisibleItems`; dua nama tidak melewatinya.
+- **Karena:** daftar baru bisa di-scroll bila isinya melebihi batas tampil; PRD §2 (tabel placeholder, "scrollable, jumlah tampil dibatasi") bermaksud sama. Keputusan Wangs UI coordinator, didelegasikan owner (2026-11-04).
+- **Keputusan:** kedua nama tampil utuh sebagai asersi; asersi scroll hanya untuk daftar di atas batas.
+- **Diterapkan di:** skrip `TC-GS-FILEMGR-E2E-022`, ditandai `// @spec-decision: D-073 TC-GS-FILEMGR-96`.
+
+## D-074 Ukuran px Illustration empty state tidak diuji di e2e (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-DIV-E2E-003` TC-GS-DIV-6 langkah 4 dan TC-GS-DIV-7 langkah 11; `TC-GS-DIV-E2E-054` TC-GS-DIV-191 langkah 11 dan TC-GS-DIV-192 langkah 3.
+- **Spec meminta:** Illustration empty state berukuran 100x100.
+- **Kenyataannya:** EmptyState Wangs UI memakai ikon yang ukurannya mengikuti prop `size` (preset `size-8`, 32 px).
+- **Karena:** ini detail visual dari prd-conventions §31.3b dan desain sistem komponen; wilayah visual/Chromatic. Keputusan Wangs UI coordinator, didelegasikan owner (2026-11-04).
+- **Keputusan:** e2e menegaskan empty state tampil dengan ilustrasi atau ikon, judul, dan deskripsi yang benar, tanpa ukuran.
+- **Diterapkan di:** skrip 003 dan 054, ditandai `// @spec-decision: D-074`.
+
+## D-075 NumberInput menjepit nilai ke batas aplikasi: `-3` terbaca `0` (2026-11-03)
+
+- **Spec / langkah:** `TC-GS-BRAND-E2E-036` TC-GS-BRAND-278 (langkah 5-6 dan 16-17, filter Used By Items).
+- **Spec meminta:** karakter yang tidak valid dibuang saat diketik: `-3` terbaca `3`, `2.5` terbaca `25`.
+- **Kenyataannya:** NumberInput kembali ke perilaku default (wangs-ui 1.4.0-alpha.174): batas datang dari props aplikasi (min 0, mode bilangan bulat) dan komponen menjepit nilainya, jadi `-3` terbaca `0`, `2.5` dibulatkan menjadi `3`, dan `2,5` terbaca `25` (diamati lewat setRange pada alpha.178; spec meminta `-3` terbaca `3`, `2.5` terbaca `25`).
+- **Karena:** keputusan owner 2026-11-03 bahwa perilaku komponen berlaku; dikonfirmasi Wangs UI coordinator (2026-11-04).
+- **Keputusan:** skrip mengikuti hasil komponen. Catatan: CustomFieldUser 024 (`-12.5` terbaca `125` pada field Numeric) tidak termasuk keputusan ini.
+- **Pembaruan 2026-11-05 (alpha.191):** NumberInput dengan min 0 kini menolak tanda minus saat diketik, jadi `-3` terbaca `3` (sama dengan permintaan spec); nilai `2.5` dan `2,5` mengikuti hasil komponen yang terbaca di run. Aturan keputusan tetap: skrip mengikuti hasil komponen (Brand 036, Measurement 038).
+- **Diterapkan di:** skrip `TC-GS-BRAND-E2E-036` dan `TC-GS-UOM-E2E-038`, ditandai `// @spec-decision: D-075 TC-GS-BRAND-278`.
+
+## D-076 Presentasi mobile 390px tidak ada di komponen web dan keluar dari run web (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-007`: TC-GS-ACTLOG-24 langkah 4 dan 6; TC-GS-ACTLOG-25 langkah 9-15; TC-GS-ACTLOG-26 langkah 18-23; TC-GS-ACTLOG-140 langkah 25 dan 29.
+- **Spec meminta:** di viewport mobile (390 x 844): Step 2 Guided Tour menyorot tombol [⋯] di toolbar; tooltip tampil sebagai bottom sheet mini; daftar Session dan User Action tampil sebagai card; Download berada di dalam overflow [⋯].
+- **Kenyataannya:** DataTable dan LogTable web memakai baris tabel di semua lebar; toolbar tetap Search | Filter | Download; GuidedTour hanya punya satu presentasi (popover).
+- **Karena:** kartu responsif, overflow [⋯], dan bottom sheet adalah presentasi mobile yang tidak ada di komponen web; membangunnya menambah fitur besar di library, bukan memperbaiki gap. Keputusan Wangs UI coordinator, didelegasikan owner (2026-11-04).
+- **Keputusan:** bagian-bagian itu keluar dari run web dan ditandai mobile-only; spec tetap disimpan untuk platform mobile. Yang tetap diuji di web: tur dibuka dan berpindah langkah, tab Session dan User Action, serta file hasil Download (tombol Download dipakai langsung).
+- **Diterapkan di:** skrip 007: lima blok ditandai `// @spec-decision: D-076` dan tanpa step.
+
+## D-077 [Clear Field] dan [Apply] sebaris: "kiri" dan "kanan" adalah urutan tombol, bukan tepi panel (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-POS-E2E-029` TC-GS-POS-159 (langkah 10).
+- **Spec meminta:** [Clear Field] di kiri dan [Apply] di kanan panel Filter; skrip sebelumnya membaca "kiri" sebagai tepi kiri panel.
+- **Kenyataannya:** FilterContainer menaruh kedua tombol dalam satu baris, [Clear Field] langsung di kiri [Apply], grupnya rata kanan.
+- **Karena:** prd-conventions §9.8 (keputusan 2026-09-07) memakai kata "kiri" dan "kanan" untuk urutan dua tombol yang berjejeran. Klarifikasi owner; keputusan Wangs UI coordinator, didelegasikan owner (2026-11-04).
+- **Keputusan:** komponen tetap. Asersi: [Clear Field] dan [Apply] sebaris, [Clear Field] langsung di kiri [Apply]. Tidak ada asersi posisi tepi panel.
+- **Diterapkan di:** skrip `TC-GS-POS-E2E-029`, ditandai `// @spec-decision: D-077 TC-GS-POS-159`.
+
+## D-078 Toast kegagalan tulis tidak punya tombol [Try Again] (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-ROLE-E2E-070` TC-GS-ROLE-306 langkah 14; `TC-GS-ROLE-E2E-073` TC-GS-ROLE-309 langkah 23.
+- **Spec meminta:** toast `Connection problem. Please try again.` memuat tombol `[Try Again]`.
+- **Kenyataannya:** aplikasi tidak punya tombol itu pada toast (PRD override 2026-10-17, tercatat di decisions.md fitur); wrapper Toast hanya membaca judul, pesan, ikon, dan tombol tutup, jadi tidak ada yang bisa dibaca.
+- **Karena:** bukan celah wrapper; tidak ada tombol yang dirender. Keputusan Wangs UI coordinator, didelegasikan owner (2026-11-04, CD-013).
+- **Keputusan:** e2e menegaskan toast dan teksnya; tombol `[Try Again]` keluar dari e2e.
+- **Diterapkan di:** skrip 070 dan 073, ditandai `// @spec-decision: D-078`.
+
+## D-079 Warna danger dan jarak 4px pesan error inline adalah detail visual (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-ROLE-E2E-024` TC-GS-ROLE-24 langkah 8-9; `030`, `031`, `032` (alert inline danger); `034`, `036` (error `You must pick a user`, danger, di atas tombol footer).
+- **Spec meminta:** teks error inline berwarna danger, rata kanan, 4px di atas tombol footer.
+- **Kenyataannya:** tidak ada wrapper Text yang membaca severity atau jarak.
+- **Karena:** warna dan jarak adalah detail visual milik preset; wilayah tes visual, bukan e2e. Keputusan Wangs UI coordinator, didelegasikan owner (2026-11-04, CD-012).
+- **Keputusan:** e2e menegaskan teks error lewat wrapper field/alert; warna dan jarak tidak diasersi.
+- **Diterapkan di:** skrip 024, 030, 031, 032, 034, 036, ditandai `// @spec-decision: D-079`.
+
+## D-080 Walkthrough terbuka menutupi sidebar: klik burger/sidebar bukan jalur e2e untuk "pindah halaman" (2026-11-04)
+
+- **Spec / langkah:** `TC-GS-ACTLOG-E2E-006` TC-GS-ACTLOG-22 langkah 24 (pada viewport 768: klik `Toggle sidebar`, lalu `User` di sidebar, saat walkthrough terbuka).
+- **Spec meminta:** dengan walkthrough terbuka, user membuka halaman lain lewat sidebar; walkthrough menutup dan flag seen tidak menjadi true.
+- **Kenyataannya:** overlay walkthrough (`fixed inset-0 z-40`, `aria-hidden`) adalah backdrop GuidedTour. Backdrop itu ditambahkan di wangs-ui alpha.178 (CD-002, dikonfirmasi owner): selama tour tampil, halaman di belakangnya tidak menerima klik, dan klik pada halaman yang diredupkan = skip tour. Di alpha.174 backdrop belum ada, jadi klik burger dulu klik sungguhan. Burger dan sidebar tertutup, user tidak bisa mengkliknya (kasus CD-003 milik Wangs-UI Coordinator). Bukti: TestSpectra 1.2.39, `--break-on-failure`, `elementFromPoint` di tengah `Toggle sidebar` = overlay `DIV aria-hidden`; klik overlay menutup walkthrough, URL tetap `/global-settings/activity-log/session`.
+- **Karena:** perilaku komponen GuidedTour disengaja; yang berubah adalah jalur klik pada spec. Tidak boleh `{ force: true }`.
+- **Dikoreksi (2026-11-04, bukti run):** klik overlay walkthrough sama dengan Skip dan menyimpan flag seen (`localStorage gs-activity-log = true`, dibaca langsung setelah klik, 2 run; sejalan dengan Brand 008 TC-21 dan Division 005 TC-12). Jadi jalur "tutup lewat overlay, lalu klik sidebar" tidak bisa memenuhi langkah 26 ("flag seen tidak true"): flag sudah true karena Skip, bukan karena pindah halaman. Jalur navigasi browser ke halaman User saat walkthrough masih terbuka (muat ulang penuh) memenuhi langkah 24-28 utuh (2 dari 2 run): walkthrough hilang, flag false, kembali ke Activity Log membuka walkthrough di Step 1.
+- **Keputusan:** jalur B. Dengan walkthrough terbuka, halaman lain dibuka lewat navigasi browser ke halaman User (muat ulang penuh); langkah klik burger/sidebar tidak dijalankan karena overlay menutupinya dan klik overlay = Skip yang menyimpan flag. Langkah 24-28 diasersi seperti tertulis: walkthrough tertutup, sidebar `User` aktif (burger diklik dulu pada viewport 768 agar label terlihat), flag seen false, kembali ke Activity Log membuka walkthrough di Step 1 sendiri. Keputusan user sesi integrasi (2026-11-04, "006 pake B"), sejalan dengan CD-003 (navigasi di tengah tour lewat URL atau navigasi browser; layar yang di-unmount menutup tour tanpa menyimpan `seen`).
+- **Diterapkan di:** skrip 006, langkah 24, ditandai `// @spec-decision: D-080`.
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-002, CD-003), 2026-11-04; keputusan ada di keempat sesi, tidak menunggu owner.
+
+## D-081 Overlay row action (Menu) tidak punya backdrop, dan itu bukan perilaku app (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-UOM-E2E-028` TC-GS-UOM-333 langkah 5 (overlay row action tanpa backdrop), dan setiap spec lain yang meminta assertion ketiadaan backdrop pada Menu.
+- **Spec meminta:** overlay row action tampil tanpa backdrop.
+- **Kenyataannya:** Menu Wangs UI tidak pernah punya backdrop di layar mana pun; tidak ada prop atau konfigurasi app yang mengubahnya, sehingga tidak ada perilaku app yang bisa diuji.
+- **Karena:** desain komponen yang sama di semua layar (CD-018).
+- **Keputusan:** langkah itu tidak diasersi di e2e.
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-018), 2026-11-05.
+- **Diterapkan di:** skrip Measurement 028, ditandai `// @spec-decision: D-081`.
+
+## D-082 Warna latar header AccordionItem saat hover adalah detail visual (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-UOM-E2E-044` TC-GS-UOM-298 langkah 18-19.
+- **Spec meminta:** latar header item Accordion berubah saat di-hover.
+- **Kenyataannya:** warna hover milik preset Wangs UI, tidak diatur app.
+- **Karena:** detail visual, wilayah tes visual, bukan e2e; sama dengan D-079 (CD-012). Keputusan CD-019.
+- **Keputusan:** warna hover tidak diasersi.
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-019), 2026-11-05.
+- **Diterapkan di:** skrip Measurement 044, ditandai `// @spec-decision: D-082`.
+
+## D-083 Arah atau rotasi ikon expand AccordionItem adalah detail visual; state-nya diasersi (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-UOM-E2E-044` TC-GS-UOM-298 langkah 21 dan 23; `TC-GS-UOM-E2E-053` TC-GS-UOM-200 langkah 20 dan 23.
+- **Spec meminta:** ikon expand menunjuk arah tertentu saat collapsed dan expanded.
+- **Kenyataannya:** rotasi ikon milik preset Wangs UI.
+- **Karena:** detail visual (CD-020); yang bermakna adalah state item.
+- **Keputusan:** arah ikon tidak diasersi; state diasersi dengan `item.shouldBeExpanded()` / `shouldNotBeExpanded()`.
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-020), 2026-11-05.
+- **Diterapkan di:** skrip Measurement 044 dan 053, ditandai `// @spec-decision: D-083`.
+
+## D-084 Kolom seleksi dan kolom Actions tidak pernah sortable (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-UOM-E2E-040` TC-GS-UOM-152 langkah 1-3 (tidak ada ikon sort pada header Checkbox dan Actions).
+- **Spec meminta:** header kolom Checkbox dan Actions tidak menampilkan ikon sort saat di-hover.
+- **Kenyataannya:** kedua kolom itu milik DataTable sendiri dan tidak pernah sortable; ikon sort hanya ada pada kolom data yang `sortable`. Tidak ada konfigurasi app yang mengubahnya.
+- **Karena:** desain komponen (CD-021).
+- **Keputusan:** langkah itu tidak diasersi; sort kolom data tetap diasersi lewat `isColumnSortable(header)`.
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-021), 2026-11-05.
+- **Diterapkan di:** skrip Measurement 040, ditandai `// @spec-decision: D-084`.
+
+## D-085 Toast: satu slot, toast baru menggantikan yang tampil; "maksimal 3 dan antrean" ditolak (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-UOM-E2E-021` TC-GS-UOM-340 langkah 35-37, dan setiap spec lain yang meminta tumpukan toast terbatas dengan antrean.
+- **Spec meminta:** paling banyak 3 toast sukses tampil bersamaan; toast ke-4 antri dan tampil setelah salah satu hilang.
+- **PRD:** Measurement §4 item 14 menyerahkan perilaku toast ke `toast_copy()`; `foundation/functions/toast-copy.md` Aturan Terkunci #12 (dirujuk `prd-conventions.md` §22): "Toast baru menggantikan toast yang sedang tampil (tidak ada stacking, hanya 1 slot aktif di kanan bawah)".
+- **Kenyataannya:** Toast Wangs UI punya `ToastHandle.replace(message)` yang mengganti semua toast yang tampil; batas 3 dan antrean tidak ada di komponen.
+- **Karena:** §2 `spec-conflicts`: aturan PRD berlaku di seluruh app dan sudah dimiliki komponen (`replace`), sedangkan batas 3 + antrean adalah perilaku baru untuk satu spec (CD-022).
+- **Keputusan:** spec 3+antrean ditolak; langkah 36-37 menegaskan satu slot: setelah 4 submit cepat tepat satu toast `Success, unit has been created.` tampil. Bila app menumpuk toast (`show()` bukan `replace()`), itu temuan `ui`, bukan alasan untuk D-entry lain.
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-022), 2026-11-05.
+- **Diterapkan di:** skrip Measurement 021, ditandai `// @spec-decision: D-085`.
+
+## D-086 Daftar dial code PhoneInput milik komponen, tidak diuji di e2e (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-NLU-E2E-024` TC-GS-NLU-502 langkah 6 (dropdown dial code tanpa opsi kosong), dan setiap spec lain yang mengasersi isi daftar dial code.
+- **Spec meminta:** dropdown kode negara tidak memuat opsi kosong.
+- **Kenyataannya:** daftar dial code dibangun PhoneInput Wangs UI dari libphonenumber (semua negara); app tidak mengaturnya.
+- **Karena:** perilaku milik komponen, dijaga test Layer 3 Wangs UI (`phoneInput.helper.test.ts`: tanpa opsi kosong, tanpa negara ganda) (CD-029).
+- **Keputusan:** langkah itu tidak diasersi di e2e.
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-029), 2026-11-05.
+- **Diterapkan di:** skrip NonLoginUser 024, ditandai `// @spec-decision: D-086`.
+
+## D-087 Delete langsung unit yang dipakai: kontrak menjawab 200 dengan baris `blocked`/`in_use`, bukan respons gagal (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-UOM-E2E-070` TC-GS-UOM-238 (request Delete langsung untuk unit yang Used By > 0).
+- **Spec meminta:** request Delete langsung untuk unit yang dipakai mendapat respons gagal.
+- **Kenyataannya:** kontrak (`global-settings/measurement/API/openapi.yaml` L267, L298, L694-700) mendefinisikan Delete sebagai operasi per baris: jawaban `200` dengan hasil `blocked` dan `reason: in_use` untuk baris yang dipakai (pesan `0 deleted, 1 skipped`), dan unit tidak terhapus.
+- **Karena:** perilaku backend mengikuti kontrak API; spec menyederhanakan "ditolak" menjadi "respons gagal".
+- **Keputusan:** skrip menegaskan jawaban kontrak (`200`, baris `blocked`/`in_use`) dan bahwa unit masih ada. Makna "ditolak" pada spec terpenuhi.
+- **Diputuskan oleh:** sesi Integration, 2026-11-05 (kontrak API; tidak menyangkut komponen).
+- **Diterapkan di:** skrip Measurement 070, ditandai `// @spec-decision: D-087`.
+
+## D-088 Layout Detail User dan Non-Login User mengikuti prd-overrides 2026-10-20 (2026-11-05)
+
+- **Spec / langkah:** setiap spec GlobalSettings/User dan GlobalSettings/NonLoginUser yang mengasersi header Detail lama: `TC-GS-USER-E2E-009` TC-GS-USER-1002 langkah 46, `-038` langkah 40, `-059` TC-GS-USER-335 langkah 4 dan TC-GS-USER-340 langkah 63, `-061` TC-GS-USER-356 langkah 5, 9, 13, `-062` (seluruhnya), `-147` TC-GS-USER-925 langkah 38, `-170` TC-GS-USER-1123 langkah 14, `-176` TC-GS-USER-1134 langkah 30.
+- **Spec meminta:** header Detail memuat Avatar + Full Name (inisial pada avatar kosong), badge Active/Inactive di bawah nama, Employee ID sebagai subtitle, General Information tanpa Full Name dan Status, dan selector `Viewing: [Product ▾]`.
+- **PRD:** user §4.2 Page: User Detail dan non-login-user §4.2d menulis layout lama itu; `plans/_program/prd-overrides.md` (baris global-settings/user, global-settings/non-login-user; diputuskan Zain Kurnia, 2026-10-20) menggantinya: judul header `User Profile` + switch Active + `[⋯]`; avatar adalah ImagePicker inline (Edit/Delete miliknya, empty state bawaan ImagePicker, tanpa inisial) di kiri grid `General Information` 3 kolom berisi `Name`, `Employee ID`, `Status` dan field General Information lain; `Custom Fields` section collapsible di bawahnya; selector `Viewing: [Product ▾]` tidak dibangun.
+- **Karena:** §1 `spec-conflicts`: keputusan owner yang tercatat menang atas PRD sampai PRD diperbarui; spec ditulis dari PRD lama.
+- **Keputusan:** langkah header diasersi menurut layout override (judul `User Profile`, Name dan Status di General Information, avatar kosong = empty state ImagePicker). Blok selector `Viewing:` (spec 062, TC-GS-USER-1002 langkah 46, TC-GS-USER-925 langkah 38) tidak punya langkah di e2e karena fiturnya tidak ada; bila owner membangunnya kembali, D-entry ini dicabut.
+- **Diputuskan oleh:** sesi Integration, 2026-11-05, menerapkan prd-overrides 2026-10-20 (owner).
+- **Diterapkan di:** skrip User 009, 038, 059, 061, 062, 147, 170, 176 dan NonLoginUser yang mengasersi header Detail, ditandai `// @spec-decision: D-088`.
+
+## D-089 Format tanggal 4 digit tahun yang tidak ditawarkan General Settings diganti opsi enum yang setara urutannya (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-USER-E2E-002` TC-GS-USER-18 (prasyarat Date Format `DD/MM/YYYY`), `TC-GS-USER-E2E-154` langkah 2, 7, 11, 16, 19 (format `MM/DD/YYYY`), dan setiap spec lain yang menyetel Date Format di luar enum General Settings.
+- **Spec meminta:** General Settings Date Format `DD/MM/YYYY` atau `MM/DD/YYYY`, lalu tanggal tampil dengan format itu.
+- **PRD:** general-settings §4.3b menawarkan 5 opsi: `dd/MM/yy` (default), `M/d/yy`, `dd MMM yy`, `DDD, MMM dd, yy`, `DDD, MMM dd, yyyy`; kontrak (`global-settings/general-settings/API/openapi.yaml` L283, L322) dan LLD V-06 menolak nilai lain (`Invalid date format`). Tidak ada `DD/MM/YYYY` maupun `MM/DD/YYYY`.
+- **Karena:** §2 `spec-conflicts`: nilai spec tidak bisa disetel (backend menolaknya); maksud langkah (tanggal mengikuti General Settings, day-first atau month-first) tetap teruji dengan opsi enum yang urutannya sama.
+- **Keputusan:** `DD/MM/YYYY` diganti `dd/MM/yy`, `MM/DD/YYYY` diganti `M/d/yy`; asersi membaca format opsi pengganti itu (nilai yang dihitung dari cap waktu backend pada zona yang disetel).
+- **Diputuskan oleh:** sesi Integration, 2026-11-05 (enum General Settings; tidak menyangkut komponen).
+- **Diterapkan di:** skrip User 002 dan 154, ditandai `// @spec-decision: D-089`.
+
+## D-090 Download di atas 5.000 baris mengikuti error-handling §10.1: loading screen lalu langsung terunduh, tanpa job background (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-USER-E2E-077` TC-GS-USER-462 langkah 1-7, dan setiap spec lain yang meminta Download/Export di atas 5.000 baris sebagai job background.
+- **Spec meminta:** Download lebih dari 5.000 baris berjalan sebagai job background: toast informasional, lalu notifikasi baru di Notification Center dengan tombol [Download] saat berkas siap.
+- **PRD:** `foundation/process/prd-process/error-handling-convention.md` §10.1 (definisi kanonik, wajib dirujuk modul): Download/Export di atas threshold **tidak** memakai job background; loading screen sampai berkas siap, lalu berkas langsung terunduh; tidak ada toast informasional "Preparing…", tidak ada notifikasi in-app, dan Download sukses tidak menampilkan toast. Pola job background + notifikasi hanya untuk Import/Bulk action.
+- **Karena:** §2 `spec-conflicts`: konvensi lintas modul berlaku; spec mengikuti versi lama F-BORROW-17 yang sudah digantikan §10.1.
+- **Keputusan:** langkah job background, toast informasional, dan notifikasi [Download] ditolak. Langkah diasersi menurut §10.1: Download as CSV pada tabel lebih dari 5.000 baris langsung mengunduh berkas berisi semua baris, tanpa toast sukses, dan tanpa notifikasi baru.
+- **Diputuskan oleh:** sesi Integration, 2026-11-05 (konvensi PRD; tidak menyangkut komponen).
+- **Diterapkan di:** skrip User 077, ditandai `// @spec-decision: D-090`.
+
+## D-091 Lebar SearchButton saat terbuka adalah detail visual preset, tidak diuji di e2e (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-USER-E2E-078` TC-GS-USER-470 langkah 21 ("search bar melebar"), dan setiap spec lain yang mengasersi lebar box Search.
+- **Spec meminta:** box Search melebar saat dibuka.
+- **Kenyataannya:** lebar box SearchButton Wangs UI ditentukan preset komponen; spec tidak memberi angka lebar.
+- **Karena:** detail visual milik preset komponen, sama dengan CD-012 (CD-031).
+- **Keputusan:** langkah lebar tidak diasersi; langkah itu diwakili `shouldBeOpen()`. Tombol reset ✕ (langkah 25) tetap diasersi dengan `shouldBeClearVisible()` / `shouldNotBeClearVisible()` (alpha.191).
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-031), 2026-11-05.
+- **Diterapkan di:** skrip User 078, ditandai `// @spec-decision: D-091`.
+
+## D-092 State hover Button adalah gaya visual komponen, tidak diuji di e2e (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-USER-E2E-029` TC-GS-USER-144 langkah 5, `TC-GS-USER-E2E-035` TC-GS-USER-192 langkah 60, dan setiap spec lain yang meminta verifikasi "tombol menampilkan state hover".
+- **Spec meminta:** tombol [Submit]/[Save] menampilkan state hover.
+- **Kenyataannya:** gaya hover Button ditentukan preset Wangs UI dan tidak membawa state yang bisa dibaca (bukan perilaku).
+- **Karena:** detail visual milik preset komponen, sama dengan CD-012 (CD-032).
+- **Keputusan:** langkah hover tidak diasersi; hover tetap dilakukan bila langkah berikutnya bergantung padanya.
+- **Diputuskan oleh:** sesi Integration bersama Wangs-UI Coordinator (CD-032), 2026-11-05.
+- **Diterapkan di:** skrip User 029 dan 035, ditandai `// @spec-decision: D-092`.
+
+## D-093 Delete Brand yang sudah dihapus admin lain mengikuti kontrak: 200 dengan baris `deleted`, bukan 404 (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-BRAND-E2E-026` TC-GS-BRAND-103 langkah 6.
+- **Spec meminta:** respons Delete untuk Brand yang sudah dihapus admin lain berstatus `404`.
+- **Kenyataannya:** kontrak (`global-settings/brand/API/openapi.yaml` L175-216) mendefinisikan Delete sebagai operasi per baris tanpa `404`; id yang sudah tidak ada dilaporkan sebagai `deleted` (operasi idempoten), jawaban `200`.
+- **Karena:** perilaku backend mengikuti kontrak API, sama dengan D-087.
+- **Keputusan:** skrip menegaskan jawaban kontrak (`200`, baris itu `deleted`) dan bahwa Brand tetap tidak ada; langkah lain TC-103 (toast, Changelog satu entri dari admin kedua) tetap seperti spec.
+- **Diputuskan oleh:** sesi Integration, 2026-11-05 (kontrak API; tidak menyangkut komponen).
+- **Diterapkan di:** skrip Brand 026, ditandai `// @spec-decision: D-093`.
+
+## D-094 Search tidak mencocokkan placeholder nilai kosong `—` (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-FILEMGR-E2E-045` langkah 29-30, dan setiap spec lain yang mencari teks `—` untuk menemukan baris bernilai kosong.
+- **Spec meminta:** Search `—` memuat seluruh entri yang New Value-nya kosong.
+- **PRD:** `—` adalah tampilan sel untuk nilai kosong (`prd-conventions.md`, kolom "Nilai Kosong"; error-handling §8 null rendering), bukan data tersimpan; Search mencari substring pada nilai kolom yang tersimpan.
+- **Karena:** §4 `spec-conflicts`: mencocokkan placeholder tampilan dengan nilai null adalah perilaku baru per kolom di backend tanpa dasar PRD; baris kosong sudah bisa ditemukan lewat Filter dan Sort (nilai kosong di awal/akhir).
+- **Keputusan:** langkah 29-30 ditolak: skrip menegaskan Search `—` memberi hasil kosong ("No results found") karena tidak ada nilai tersimpan `—`.
+- **Diputuskan oleh:** sesi Integration, 2026-11-05.
+- **Diterapkan di:** skrip FileManager 045, ditandai `// @spec-decision: D-094`.
+
+## D-095 Token file client lain adalah grant; isolasi diuji dengan token client ini (2026-11-05)
+
+- **Spec / langkah:** `TC-GS-FILEMGR-E2E-071` TC-GS-FILEMGR-252 langkah 33-37.
+- **Spec meminta:** request baca/unduh memakai token terenkripsi yang memuat ID file client lain dijawab 404 `File not found`, identik dengan token file yang tidak pernah ada.
+- **Kontrak:** `GET /v2/file-manager/files/{token}` (`global-settings/file-manager/API/openapi.yaml` L210-216, `security: []`): token terenkripsi adalah grant, memuat client id dan file id, dan route membaca file bila file itu ada di client token tersebut; tanpa pengecekan izin.
+- **Karena:** token asli milik client lain memuat client id client lain, jadi jawabannya 200 sesuai kontrak (run 2026-11-04: 200, 1024 byte). Isolasi yang dimaksud TC-252 adalah token yang memuat client id client ini dengan file id client lain: file itu tidak ada di client token, jadi jawabannya 404.
+- **Keputusan:** langkah 33 memakai token dengan client id client ini dan file id `outsider-photo-{runId}-071.jpg`. Token asli client lain tidak diuji di e2e. Langkah 34 (token file yang tidak pernah ada) dijalankan dan dicek 404 `File not found`. Langkah 33 dan 35-37 menunggu helper yang mencetak token tersebut (`BT-GS-FILEMGR-1`, `@helper-gap`).
+- **Diputuskan oleh:** sesi Integration, 2026-11-05.
+- **Diterapkan di:** skrip FileManager 071, ditandai `// @spec-decision: D-095`.
+
+## D-096 UI adalah acuan; ekspektasi tampilan yang berbeda dari spec tidak di-assert e2e (2026-11-05)
+
+- **Spec / langkah:** setiap langkah yang skripnya `gaps.check`/`gaps.open` berjenis `ui-gap` atau `component-gap`, dan langkah tampilan murni (tata letak, warna, urutan tombol, bentuk skeleton, fokus setelah aksi, Esc pada confirm Wangs UI). Daftarnya: `plans/_program/ui-expectations-dropped.md` di repo aplikasi.
+- **Spec meminta:** tampilan dan perilaku presentasi seperti yang tertulis di spec.
+- **Kenyataannya:** banyak tampilan aplikasi sengaja berbeda dari spec demi UI yang lebih baik.
+- **Keputusan:** UI yang jadi acuan; spec yang menyesuaikan. Langkah tersebut dilewati (`ui-gap`/`component-gap` tidak dijalankan dan tidak menggagalkan spec) atau dikeluarkan dengan `// @spec-decision: D-096`. Perubahan aplikasi yang dibuat hanya agar sesuai spec dikembalikan (confirm Delete Measurement kembali tertutup oleh Esc; [Clear Field] Measurement tidak memindah fokus; nama field pada pesan custom field Non-Login ditulis apa adanya). Fungsi (data tersimpan, izin, pesan error dari server, alur) tetap di-assert.
+- **Batas (user, 2026-11-05):** "UI" berarti tampilan, di luar tampilan data. Tampilan data (format nama seperti `Ahmad F`, tanggal, jam, angka, mata uang, placeholder nilai kosong) tetap mengikuti spec/PRD dan di-assert; bedanya adalah cacat aplikasi (`ui-defect`, menggagalkan spec). Fungsi (data tersimpan atau terbaca dari backend, izin, alur, penanganan jawaban server) juga tetap di-assert sebagai `ui-defect`.
+- **Diputuskan oleh:** user, 2026-11-05.
+- **Diterapkan di:** `apps/e2e/support/actions/gaps`, skrip GeneralSettings 011, User 003/020/032, Measurement 018/028/033, NonLoginUser 127.
+
+## D-097 Langkah yang butuh hardware TAG dilewati (2026-11-05)
+
+- **Spec / langkah:** setiap langkah yang butuh scan RFID TAG, TAG yang sudah di-pair ke user, atau entri TAG Registry (Pair/Unpair TAG, badge Verified/Unverified, toast hasil scan, sub-bagian User TAG, Audit TAG session). Daftarnya: `plans/_program/hardware-gaps.md` di repo aplikasi.
+- **Spec meminta:** scan TAG lewat reader dan hasilnya di UI.
+- **Kenyataannya:** scan TAG butuh hardware; cara menjalankannya dari tes belum diketahui, dan scan di UI masih mock (`tagScanMock.ts`).
+- **Keputusan:** langkah tersebut ditulis `gaps.check('hardware-gap', …)` / `gaps.open('hardware-gap', …)`: dilewati, dicatat, dan tidak menggagalkan spec, sampai cara menjalankan hardware dan implementasi UI-nya ada.
+- **Diputuskan oleh:** user, 2026-11-05.
+- **Diterapkan di:** `apps/e2e/support/actions/gaps`; skrip User 018, 024, 041, 042, 050, 057, 061, 068, 071, 074, 138, 139, 142, 147, 153; NonLoginUser 039; ActivityLog 037.
+
+## D-098 Langkah pada fitur yang belum masuk sprint dilewati (2026-11-05)
+
+- **Spec / langkah:** setiap langkah pada fitur yang belum dibangun karena sprint pengerjaannya belum tiba, menurut papan sprint pemilik produk (`plans/_program/sprint-board.md` di repo aplikasi). Contoh: User Detail beserta tab-tabnya (Role, Responsibilities, Non-Login User, Changelog, System Log, User Log) dijadwalkan di Sprint 3 (9–20 Nov 2026), sedangkan suite User, NonLoginUser dan Role sudah menyentuhnya.
+- **Spec meminta:** perilaku lengkap fitur itu sesuai PRD.
+- **Kenyataannya:** fitur itu belum masuk sprint, jadi belum dibangun atau baru sebagian. Kegagalannya bukan cacat sprint ini.
+- **Keputusan:** langkah tersebut ditulis `gaps.check('sprint-gap', …)` / `gaps.open('sprint-gap', …)`, dengan nama fitur dan sprintnya di `where`. Langkah itu dilewati, dicatat, dan spec dihitung lolos atas langkah yang masuk sprint (bukan gagal, bukan blocking). Tag dicabut saat sprint fitur itu dimulai.
+- **Diputuskan oleh:** user, 2026-11-05.
+- **Diterapkan di:** `apps/e2e/support/actions/gaps`.
