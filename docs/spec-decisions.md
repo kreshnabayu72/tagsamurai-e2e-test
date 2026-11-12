@@ -1626,3 +1626,25 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-GSNLU-CONVERT-CLASH).
 - **Diterapkan di:** NLU 066, 068.
 - **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-GSNLU-CONVERT-CLASH).
+
+## D-164 Klik backdrop tidak menutup dialog penolakan buka produk (2026-11-12)
+
+- **Spec / langkah:** Auth/SessionManagement `TC-AUTH-SES-E2E-030` TC-AUTH-SES-99 (dialog Concurrent session limit reached); `TC-AUTH-SES-E2E-036` TC-AUTH-SES-117 (dialog Subscription Not Active), langkah klik backdrop.
+- **Spec meminta:** klik area gelap di luar dialog menutup dialog.
+- **Kenyataannya:** dialog tetap terbuka; Escape dan [OK] menutupnya (run 1122). Dialog ini alert Modal Wangs UI, overlay blocking yang tidak ditutup lewat klik backdrop.
+- **Karena:** perilaku komponen, sama dengan D-043 (`Modal.spec.md`: "cannot be dismissed by clicking the overlay").
+- **Keputusan:** langkah backdrop memverifikasi dialog tetap terbuka; dialog lalu ditutup lewat [OK].
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** SessionManagement 030, 036.
+- **Sumber:** repo aplikasi `plans/auth/integration-findings.md` (triage SES 1122).
+
+## D-165 403 `app_access_denied` saat membuka produk menampilkan popup Access Denied (2026-11-12)
+
+- **Spec / langkah:** Auth/SessionManagement `TC-AUTH-SES-E2E-024` TC-AUTH-SES-74 langkah 26.
+- **Spec meminta:** tidak ada dialog setelah 403 `app_access_denied`; FE langsung kembali ke Portal (PRD session-management L299, AUTHSES-LOGIC-04a).
+- **Kenyataannya:** aplikasi menampilkan popup "Access Denied" lalu kembali ke Portal setelah [OK].
+- **Karena:** override product owner 2026-10-20: setiap 403 `app_access_denied` saat buka produk menampilkan popup Access Denied, sejajar dengan popup D09 (`concurrent_limit_reached`) dan D10 (`subscription_not_active`).
+- **Keputusan:** langkah 26 memverifikasi popup Access Denied, [OK], lalu popup tertutup.
+- **Diputuskan oleh:** owner (product owner override 2026-10-20), dicatat Wangs-UI Coordinator 2026-11-12.
+- **Diterapkan di:** SessionManagement 024.
+- **Sumber:** repo aplikasi `plans/auth/decisions.md` L510-514.
