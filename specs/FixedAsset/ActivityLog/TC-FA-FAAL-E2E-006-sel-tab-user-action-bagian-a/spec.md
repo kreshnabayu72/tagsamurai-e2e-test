@@ -26,7 +26,7 @@ coverage:
   |---|---|---|---|---|
   | UA-01 | Budi Santoso | `—` | Total Control | Admin Alpha |
   | UA-02 | Gedung A > Lantai 3 - Renovasi | Lantai 3 | Lantai 3 - Renovasi | Admin Alpha |
-  | UA-04 | Kendaraan Operasional (AST-2024-0088) | In Use | In Disposal Process | Admin Alpha |
+  | UA-04 | Kendaraan Operasional (AST-2024-0088) | In Use | Reported Disposal | Admin Alpha |
   | UA-05 | Kamera DSLR (AST-2024-0141) | Borrowed | Damaged | Ahmad Dahlan |
   | UA-08 | `—` (aksi settings-level Settings > Transactions, seed BE) | 7 days | 14 days | Admin Beta |
   | UA-11 | Default Group | `—` | Default Group | System (seed BE) |

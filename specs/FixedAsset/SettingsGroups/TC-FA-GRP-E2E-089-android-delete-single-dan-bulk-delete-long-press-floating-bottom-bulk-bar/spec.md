@@ -58,7 +58,7 @@ coverage:
 ## Notes
 
 - Langkah penghubung (tanpa `Verifikasi`, S-03): langkah 11: menutup modal atau dialog, membuka layar, ganti akun, dan memulihkan state.
-- Langkah dialog dan toast pada TC-984 mengikuti dialog D-10 sampai D-22 serta toast T-06 dan T-08 yang sama dengan desktop; teks dialog desktop diasersi pada spec Delete di atas, sedangkan di sini yang diasersi adalah judul dialog dan toast sesuai Expected.
+- Langkah dialog dan toast pada TC-984 mengikuti dialog D-10 sampai D-22 (kecuali D-14, tidak dipakai) serta toast T-06 dan T-08 yang sama dengan desktop; teks dialog desktop diasersi pada spec Delete di atas, sedangkan di sini yang diasersi adalah judul dialog dan toast sesuai Expected.
 - Temuan untuk QA:
   - TC-983 Langkah 1 tidak menyebut hasil tap biasa pada card selain "tidak masuk selection mode"; spec hanya mengasersi tidak ada Floating Bottom Bulk Bar dan tidak ada kontrol seleksi massal.
   - TC-983 Precondition menyebut `Floor 2` kosong, sedangkan `Floor 2` Pre-setup memiliki child beraset; dialog hanya dibuka lalu dibatalkan sehingga tidak ada yang dihapus.

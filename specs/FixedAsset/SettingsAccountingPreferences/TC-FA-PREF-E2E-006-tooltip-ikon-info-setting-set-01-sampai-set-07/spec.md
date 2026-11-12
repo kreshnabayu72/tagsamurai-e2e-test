@@ -62,7 +62,7 @@ coverage:
 ### TC-FA-PREF-35: Tooltip Disposal Documents (SET-07)
 
 13. Hover ikon ⓘ di sebelah label "Disposal Documents"
-14. Verifikasi tooltip tampil dengan teks persis: "Choose whether a supporting document is required or optional for each disposal type. Required documents must be attached before the disposal can be submitted."
+14. Verifikasi tooltip tampil dengan teks persis: "Choose whether a supporting document is required or optional for each disposal type. Required documents must be attached before the disposal can be executed."
 
 ## Notes
 

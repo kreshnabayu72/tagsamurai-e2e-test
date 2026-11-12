@@ -36,7 +36,7 @@ coverage:
 5. Verifikasi field Group Name * dengan placeholder `Enter group name`
 6. Verifikasi field Code dengan placeholder `Enter code, or leave blank to auto-generate` dan helper `Letters, numbers, hyphens, underscores, and dots only`
 7. Verifikasi field Description (textarea) dengan placeholder `Enter description`
-8. Verifikasi radio Function None / Assignable / Disposal Group masing-masing dengan icon info, None terpilih default
+8. Verifikasi radio Function None / Assignable masing-masing dengan icon info, None terpilih default
 9. Verifikasi checkbox `Stay on this form after submitting` unchecked
 10. Verifikasi footer: [Clear Field] dan [Submit]
 

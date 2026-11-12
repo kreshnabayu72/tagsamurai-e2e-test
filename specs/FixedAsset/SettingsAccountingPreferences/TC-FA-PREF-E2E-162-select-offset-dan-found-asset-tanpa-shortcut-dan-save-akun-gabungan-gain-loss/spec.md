@@ -1,6 +1,6 @@
 ---
 id: TC-FA-PREF-E2E-162-select-offset-dan-found-asset-tanpa-shortcut-dan-save-akun-gabungan-gain-loss
-title: "Select Default Capitalization Offset dan Found Asset Credit Account tanpa shortcut Create account, dan akun gabungan Gain dan Loss disimpan lewat dialog"
+title: "Select Default Capitalization Offset, Found Asset Credit Account, dan Default Disposal Proceeds Account tanpa shortcut Create account, dan akun gabungan Gain dan Loss disimpan lewat dialog"
 priority: High
 caseType: Positive
 status: draft
@@ -11,7 +11,7 @@ coverage:
   web: automated
 ---
 
-# Select Default Capitalization Offset dan Found Asset Credit Account tanpa shortcut Create account, dan akun gabungan Gain dan Loss disimpan lewat dialog
+# Select Default Capitalization Offset, Found Asset Credit Account, dan Default Disposal Proceeds Account tanpa shortcut Create account, dan akun gabungan Gain dan Loss disimpan lewat dialog
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ coverage:
 
 ## Test Steps
 
-### TC-FA-PREF-170: Select Default Capitalization Offset dan Found Asset Credit Account tidak memiliki shortcut Create account
+### TC-FA-PREF-170: Select Default Capitalization Offset, Found Asset Credit Account, dan Default Disposal Proceeds Account tidak memiliki shortcut Create account
 
 1. Klik Select Default Gain on Disposal
 2. Verifikasi shortcut `+ Create account` tampil pada Select Default Gain on Disposal
@@ -42,29 +42,33 @@ coverage:
 9. Verifikasi daftar opsi Select Found Asset Credit Account memuat "1-1001 – Kas Utama"
 10. Verifikasi Select Found Asset Credit Account tidak memiliki shortcut `+ Create account`
 11. Tutup daftar opsi Select Found Asset Credit Account
+12. Klik Select Default Disposal Proceeds Account
+13. Verifikasi Select Default Disposal Proceeds Account tidak memiliki shortcut `+ Create account`
+14. Tutup daftar opsi Select Default Disposal Proceeds Account
 
 ### TC-FA-PREF-592: Akun gabungan Gain dan Loss dapat dipilih di kedua Select dan disimpan
 
-12. Seed ulang Preferences company ke nilai awal PC-1 lewat API hingga tersimpan
-13. Buka ulang Fixed Asset > Settings > Accounting > Preferences
-14. Pilih "4-7002 – Gain and Loss on Disposal" pada Select Default Gain on Disposal
-15. Pilih "4-7002 – Gain and Loss on Disposal" pada Select Default Loss on Disposal
-16. Klik `[Save changes]`
-17. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "2 asset classes use the default account. 3 unposted disposals will use the new account.", lalu pertanyaan "Are you sure you want to save these changes?", dan tombol `[Cancel]` dan `[Save]`
-18. Klik `[Save]` pada dialog "Save Changes"
-19. Verifikasi toast "Success, accounting preferences have been saved." tampil
-20. Verifikasi Select Default Gain on Disposal menampilkan "4-7002 – Gain and Loss on Disposal"
-21. Verifikasi Select Default Loss on Disposal menampilkan "4-7002 – Gain and Loss on Disposal"
+15. Seed ulang Preferences company ke nilai awal PC-1 lewat API hingga tersimpan
+16. Buka ulang Fixed Asset > Settings > Accounting > Preferences
+17. Pilih "4-7002 – Gain and Loss on Disposal" pada Select Default Gain on Disposal
+18. Pilih "4-7002 – Gain and Loss on Disposal" pada Select Default Loss on Disposal
+19. Klik `[Save changes]`
+20. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "2 asset classes use the default account. 3 unposted disposals will use the new account.", lalu pertanyaan "Are you sure you want to save these changes?", dan tombol `[Cancel]` dan `[Save]`
+21. Klik `[Save]` pada dialog "Save Changes"
+22. Verifikasi toast "Success, accounting preferences have been saved." tampil
+23. Verifikasi Select Default Gain on Disposal menampilkan "4-7002 – Gain and Loss on Disposal"
+24. Verifikasi Select Default Loss on Disposal menampilkan "4-7002 – Gain and Loss on Disposal"
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Mode: FE+BE.
 - Urutan blok: TC-FA-PREF-170 (tidak mengubah state) lebih dulu, lalu TC-FA-PREF-592 yang menyimpan (S-10). Langkah 1 TC ("Buka Tab Preferences") dijalankan hook `beforeEach` suite.
-- Langkah penghubung (S-03): menutup daftar opsi: langkah 3, 7, 11; memulihkan state server lewat seed/API dan membuka ulang halaman sebelum TC berikutnya: langkah 12, 13.
-- Langkah 1 sampai 3 adalah anchor positif asersi absence shortcut (8b.2): shortcut `+ Create account` pada Select Default Gain on Disposal membuktikan bahwa shortcut tampil pada Select yang memilikinya; langkah 5 dan 9 membuktikan daftar opsi kedua Select sudah termuat. Bentuk dan posisi shortcut mengikuti TC-FA-PREF-168 (tampil pada Select).
-- Post Condition TC-FA-PREF-592 (kedua default tersimpan 4-7002) hanya diasersi lewat tampilan Select sesudah Save (langkah 20, 21); nilai tersimpan di server dan entri log tidak punya langkah observasi di TC dan tidak diasersi.
+- Langkah penghubung (S-03): menutup daftar opsi: langkah 3, 7, 11, 14; memulihkan state server lewat seed/API dan membuka ulang halaman sebelum TC berikutnya: langkah 15, 16.
+- Langkah 1 sampai 3 adalah anchor positif asersi absence shortcut (8b.2): shortcut `+ Create account` pada Select Default Gain on Disposal membuktikan bahwa shortcut tampil pada Select yang memilikinya; langkah 5 dan 9 membuktikan daftar opsi kedua Select sudah termuat; Select Default Disposal Proceeds Account (langkah 12 sampai 14) memakai pembanding yang sama. Bentuk dan posisi shortcut mengikuti TC-FA-PREF-168 (tampil pada Select).
+- Post Condition TC-FA-PREF-592 (kedua default tersimpan 4-7002) hanya diasersi lewat tampilan Select sesudah Save (langkah 23, 24); nilai tersimpan di server dan entri log tidak punya langkah observasi di TC dan tidak diasersi.
 - Temuan untuk QA:
+  - TC-FA-PREF-170 butir c (Select Default Disposal Proceeds Account) tidak menyebut opsi yang diharapkan; data PA-3 tidak memuat akun ber-function Disposal Proceeds (akun itu ada di PC-22), sehingga daftar opsi Select tersebut dapat kosong dan spec hanya mengasersi ketiadaan shortcut `+ Create account`.
   - TC-FA-PREF-170 menyebut "Periksa Select" tanpa menjelaskan letak shortcut `+ Create account` (di dalam daftar opsi atau di samping Select) dan tidak menyebut pembanding positif; spec memakai Select Default Gain on Disposal sebagai pembanding berdasarkan TC-FA-PREF-168.
   - TC-FA-PREF-170 tidak menyebut opsi yang diharapkan pada kedua Select; opsi "1-2900 – Biaya Dikapitalisasi" dan "1-1001 – Kas Utama" diambil dari Expected TC-FA-PREF-173 dan 174.
   - TC-FA-PREF-592 butir a: angka "2 asset classes" dan "3 unposted disposals" bergantung pada data PC-5 sampai PC-7 yang disediakan tim FE; Precondition menyebut "Asset Class IT Equipment dan Vehicles mengosongkan akun Gain" tetapi tidak merinci Asset Class lain.

@@ -76,7 +76,7 @@ coverage:
 19. Laporkan Disposal untuk aset `Kendaraan Operasional (AST-2024-0088)`
 20. Tunggu aksi selesai
 21. Buka Activity Log > User Action
-22. Verifikasi (polling, batas tunggu 2 menit, tab dimuat ulang secara berkala): baris baru di Tab User Action paling atas, total baris bertambah: Action `Report Disposal`, Object `Disposal`, Name `Kendaraan Operasional (AST-2024-0088)`, Field `Status`, Old Value `In Use`, New Value `In Disposal Process`, Modified By `Admin A`
+22. Verifikasi (polling, batas tunggu 2 menit, tab dimuat ulang secara berkala): baris baru di Tab User Action paling atas, total baris bertambah: Action `Report Disposal`, Object `Disposal`, Name `Kendaraan Operasional (AST-2024-0088)`, Field `Status`, Old Value `In Use`, New Value `Reported Disposal`, Modified By `Admin A`
 
 ### TC-FA-FAAL-248: Report Damaged tercatat sebagai perubahan status aset
 

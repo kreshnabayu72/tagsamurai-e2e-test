@@ -23,7 +23,7 @@ coverage:
 - Akun aktor: Total Control (Pre-setup No 1) `totalControlGroups_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
 - Flag Guided Tooltip `fa-settings-groups` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
-- Data Pre-setup (hanya dibaca, tidak diubah): pohon group baku Tabel A (Pre-setup No 9) termasuk Default Group, Head Office, Warehouse A, Branch Office, Disposal Yard, Warehouse B (Excess). Node level 1 client lebih dari 10 dan page size 10, sehingga baris target yang dinamai (bukan baris pertama) dicari dengan Search, bukan diandalkan berada di halaman 1.
+- Data Pre-setup (hanya dibaca, tidak diubah): pohon group baku Tabel A (Pre-setup No 9) termasuk Default Group, Head Office, Warehouse A, Branch Office, Warehouse B (Excess). Node level 1 client lebih dari 10 dan page size 10, sehingga baris target yang dinamai (bukan baris pertama) dicari dengan Search, bukan diandalkan berada di halaman 1.
 - Data Dinamis (di-seed di hook `before`, dihapus di hook `after`):
 
 | TC | Nama TC | Nama seed | Keterangan |
@@ -62,7 +62,7 @@ coverage:
 
 ### TC-FA-GRP-2: Format sel Groups List
 
-20. Verifikasi badge Function: Assignable berupa badge primary, Disposal Group berupa badge dark berlabel `Disposal`, None berupa `—`
+20. Verifikasi badge Function: Assignable berupa badge primary, None berupa `—`
 21. Verifikasi Total Asset berupa angka bulat dan angka `0` (Branch Office) tampil sebagai elemen yang dapat diklik
 22. Verifikasi Total User berupa angka bulat dan tidak pernah `0`
 23. Verifikasi kolom Modified By berformat `[First Name] [Last Initial]`

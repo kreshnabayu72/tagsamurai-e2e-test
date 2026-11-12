@@ -40,43 +40,41 @@ coverage:
 ### TC-FA-GRP-208: Tooltip icon info Function (on click) per opsi
 
 5. Klik icon info None
-6. Verifikasi tooltip None: `This group is for organizing only. It won't hold assets or appear as a disposal destination.`
+6. Verifikasi tooltip None: `This group is for organizing only. It won't hold assets.`
 7. Klik icon info Assignable
 8. Verifikasi tooltip Assignable: `Assets can be registered or transferred directly into this group.`
-9. Klik icon info Disposal Group
-10. Verifikasi tooltip Disposal Group: `This group becomes a destination for disposed assets. You can have more than one Disposal Group.`
 
 ### TC-FA-GRP-209: Function radio mutually exclusive
 
-11. Pilih Function Assignable
-12. Pilih Function Disposal Group
-13. Verifikasi hanya satu opsi terpilih pada satu waktu (Disposal Group terpilih)
-14. Verifikasi Assignable otomatis tidak terpilih
+9. Pilih Function Assignable
+10. Pilih Function None
+11. Verifikasi hanya satu opsi terpilih pada satu waktu (None terpilih)
+12. Verifikasi Assignable otomatis tidak terpilih
 
 ### TC-FA-GRP-210: Tombol [Clear Field]
 
-15. Isi Group Name `Clear Edit {runId}-064`, Code `CLR3`, Description `Clear me`, dan pilih Function Assignable
-16. Klik [Clear Field]
-17. Verifikasi Group Name dikosongkan
-18. Verifikasi Code dikosongkan
-19. Verifikasi Description dikosongkan
-20. Verifikasi Function kembali ke None (bukan revert ke nilai tersimpan)
-21. Verifikasi popup tetap terbuka
-22. Verifikasi tidak ada dialog konfirmasi
+13. Isi Group Name `Clear Edit {runId}-064`, Code `CLR3`, Description `Clear me`, dan pilih Function Assignable
+14. Klik [Clear Field]
+15. Verifikasi Group Name dikosongkan
+16. Verifikasi Code dikosongkan
+17. Verifikasi Description dikosongkan
+18. Verifikasi Function kembali ke None (bukan revert ke nilai tersimpan)
+19. Verifikasi popup tetap terbuka
+20. Verifikasi tidak ada dialog konfirmasi
 
 ### TC-FA-GRP-206: Description 360 karakter diterima
 
-23. Isi Group Name `Edit Target {runId}-064` dan Description 360 karakter, lalu klik [Save]
-24. Verifikasi toast sukses `Success, group has been updated.`
-25. Klik nama `Edit Target {runId}-064` untuk membuka Popup Detail Group
-26. Verifikasi Description tersimpan utuh 360 karakter di Detail
-27. Tutup Popup Detail Group dan klik `(←)` pada kotak Search
+21. Isi Group Name `Edit Target {runId}-064` dan Description 360 karakter, lalu klik [Save]
+22. Verifikasi toast sukses `Success, group has been updated.`
+23. Klik nama `Edit Target {runId}-064` untuk membuka Popup Detail Group
+24. Verifikasi Description tersimpan utuh 360 karakter di Detail
+25. Tutup Popup Detail Group dan klik `(←)` pada kotak Search
 
 ## Notes
 
 - Mode: FE+BE (backend nyata). Sumber: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`. Subjudul `###` memetakan langkah ke TC granular.
 - Urutan TC: kasus tanpa submit lebih dulu dalam satu pembukaan popup, lalu aksi sukses TC-FA-GRP-206 di akhir (S-10); berbeda dari urutan nomor TC sumber. Field diisi ulang oleh TC-FA-GRP-206 setelah [Clear Field] (S-09).
-- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-064`, tekan Enter); langkah 25 (Klik nama `Edit Target {runId}-064` untuk membuka Popup Detail Group); langkah 27 (Tutup Popup Detail Group dan klik `(←)` pada kotak Search).
+- Langkah penghubung (bukan dari TC sumber, tanpa awalan `Verifikasi`; S-03): langkah 1 (Ketik Search `Edit Target {runId}-064`, tekan Enter); langkah 23 (Klik nama `Edit Target {runId}-064` untuk membuka Popup Detail Group); langkah 25 (Tutup Popup Detail Group dan klik `(←)` pada kotak Search).
 - Langkah Search mencari baris target (R-16).
 - Temuan untuk QA:
   - TC-FA-GRP-206 Expected b "Description tersimpan utuh di Detail" tidak menyebut langkah membuka Detail; spec menambahkannya sebagai langkah penghubung.

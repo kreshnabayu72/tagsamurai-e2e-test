@@ -25,7 +25,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup PA-1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD` (nama env perlu dikonfirmasi tim FE sebelum didaftarkan di `executionConfig.environmentVariables` dan `.env.example`).
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences).
-- Data Pre-setup (hanya dibaca, tidak diubah) untuk TC-FA-PREF-36 sampai 47: Preferences nilai awal PA-2, tidak terkunci, semua setting wajib terisi, keempat akun default (Default Gain on Disposal, Default Loss on Disposal, Default Capitalization Offset, Found Asset Credit Account) kosong. Chart of Accounts PA-3 (akun Active: 1-1001 Kas Utama, 1-2900 Biaya Dikapitalisasi, 4-1500 Pendapatan Lain-lain, 4-7002 Gain and Loss on Disposal, 4-9100 Laba Pelepasan Aset, 5-9100 Rugi Pelepasan Aset) dipakai TC-FA-PREF-47. Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API).
+- Data Pre-setup (hanya dibaca, tidak diubah) untuk TC-FA-PREF-36 sampai 47: Preferences nilai awal PA-2, tidak terkunci, semua setting wajib terisi, kelima akun default (Default Gain on Disposal, Default Loss on Disposal, Default Disposal Proceeds Account, Default Capitalization Offset, Found Asset Credit Account) kosong. Chart of Accounts PA-3 (akun Active: 1-1001 Kas Utama, 1-2900 Biaya Dikapitalisasi, 4-1500 Pendapatan Lain-lain, 4-7002 Gain and Loss on Disposal, 4-9100 Laba Pelepasan Aset, 5-9100 Rugi Pelepasan Aset) dipakai TC-FA-PREF-47. Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API).
 - Data untuk TC-FA-PREF-48 sampai 50: Preferences varian PA-5 dengan Fiscal Year Start, First Accounting Period, Default Capitalization Threshold, In-service Date Source, dan Depreciation in Disposal Month tersimpan kosong, serta Journal Grouping tersimpan kosong (seed varian sesuai Precondition TC-FA-PREF-48). Seed varian dan pemulihan ke PA-2 dilakukan lewat langkah penghubung (langkah 14 dan 23), disediakan tim FE/BE.
 - Flag Guided Tooltip halaman Preferences disetel true oleh hook suite `before` (lihat `suite.md`) sehingga walkthrough tidak menutupi layar.
 - Suite berjalan serial (`parallel: false`).
@@ -52,9 +52,9 @@ coverage:
 7. Hover ikon ⓘ di sebelah label "First Accounting Period"
 8. Verifikasi tooltip tampil dengan teks persis: "The month and year your accounting periods start from. It can be in the past but not in the future. Can be changed until depreciation is posted or a period is closed."
 
-### TC-FA-PREF-46: Placeholder keempat Select akun
+### TC-FA-PREF-46: Placeholder kelima Select akun
 
-9. Verifikasi Select Default Gain on Disposal, Default Loss on Disposal, Default Capitalization Offset, dan Found Asset Credit Account menampilkan placeholder "Select account"
+9. Verifikasi Select Default Gain on Disposal, Default Loss on Disposal, Default Disposal Proceeds Account, Default Capitalization Offset, dan Found Asset Credit Account menampilkan placeholder "Select account"
 
 ### TC-FA-PREF-47: Format opsi Select akun
 

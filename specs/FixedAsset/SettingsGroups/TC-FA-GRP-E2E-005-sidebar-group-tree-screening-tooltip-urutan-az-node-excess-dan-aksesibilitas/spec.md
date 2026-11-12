@@ -23,14 +23,14 @@ coverage:
 - Akun aktor: Total Control (Pre-setup No 1) `totalControlGroups_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`.
 - Login di hook `before` spec ini sebagai Total Control; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite.
 - Flag Guided Tooltip `fa-settings-groups` disetel `seen` oleh hook suite (lihat `suite.md`); spec ini tidak mengubahnya.
-- Data Pre-setup (hanya dibaca): pohon group baku Tabel A (Pre-setup No 9): Head Office (Function None) > Floor 2 > IT Department > Server Room; Warehouse A (Assignable); Disposal Yard (Disposal Group); Warehouse B (Assignable, Excess). Node level 1 client lebih dari 10 dan page size 10, sehingga Warehouse B pada tabel dicari dengan Search, bukan diandalkan berada di halaman 1.
+- Data Pre-setup (hanya dibaca): pohon group baku Tabel A (Pre-setup No 9): Head Office (Function None) > Floor 2 > IT Department > Server Room; Warehouse A (Assignable); Warehouse B (Assignable, Excess). Node level 1 client lebih dari 10 dan page size 10, sehingga Warehouse B pada tabel dicari dengan Search, bukan diandalkan berada di halaman 1.
 - Data Dinamis (di-seed di hook `before` lewat API, dihapus di hook `after`) untuk TC-FA-GRP-967; pohon ini milik spec, bukan Head Office Tabel A:
 
 | TC | Nama TC | Nama seed | Keterangan |
 |---|---|---|---|
 | TC-FA-GRP-967 | Head Office | `Order Parent {runId}-005` | Level 1, Function None, berisi tiga child di bawah |
 | TC-FA-GRP-967 | Floor 2 | `Floor 2 {runId}-005` | Child, Assignable, dibuat pertama |
-| TC-FA-GRP-967 | Basement | `Basement {runId}-005` | Child, Assignable, dibuat kedua; di langkah 48 diubah menjadi `Zeta Basement {runId}-005` |
+| TC-FA-GRP-967 | Basement | `Basement {runId}-005` | Child, Assignable, dibuat kedua; di langkah 46 diubah menjadi `Zeta Basement {runId}-005` |
 | TC-FA-GRP-967 | alpha Wing | `alpha Wing {runId}-005` | Child, Assignable, dibuat ketiga |
 
 - Kemampuan teknis: fixture BE (seeding dan pemulihan data milik spec) dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`).
@@ -44,7 +44,7 @@ coverage:
 2. Verifikasi header sidebar memuat Title `Groups`, Search sidebar dengan placeholder `Search group or code...` sejajar toggle expand/collapse-all, dan tombol [+] Group
 3. Verifikasi root virtual `All Groups` aktif secara default
 4. Verifikasi node hierarkis Head Office, Floor 2, IT Department, Server Room dengan indentasi bertambah per level
-5. Verifikasi dot Function berwarna primary untuk Assignable dan dark untuk Disposal Group
+5. Verifikasi dot Function berwarna primary untuk Assignable
 6. Verifikasi node Head Office (None) tanpa dot Function
 7. Verifikasi tiap node memiliki elipsis (⋯)
 
@@ -66,52 +66,50 @@ coverage:
 
 19. Hover dot Function Warehouse A
 20. Verifikasi tooltip `Assignable` tampil
-21. Hover dot Function Disposal Yard
-22. Verifikasi tooltip `Disposal Group` tampil
-23. Hover node Head Office
-24. Verifikasi node Head Office tanpa dot Function sehingga tidak ada tooltip Function
+21. Hover node Head Office
+22. Verifikasi node Head Office tanpa dot Function sehingga tidak ada tooltip Function
 
 ### TC-FA-GRP-14: Node Excess di sidebar
 
-25. Hover node Warehouse B
-26. Verifikasi nama Warehouse B di-dim tanpa badge tambahan
-27. Verifikasi tooltip `Read-only — over your plan's group limit` tampil
-28. Klik elipsis (⋯) Warehouse B di sidebar
-29. Verifikasi menu hanya memuat Detail dan Delete
-30. Verifikasi Edit dan Add Subgroup tidak dirender pada menu
-31. Tutup menu dengan Esc
+23. Hover node Warehouse B
+24. Verifikasi nama Warehouse B di-dim tanpa badge tambahan
+25. Verifikasi tooltip `Read-only — over your plan's group limit` tampil
+26. Klik elipsis (⋯) Warehouse B di sidebar
+27. Verifikasi menu hanya memuat Detail dan Delete
+28. Verifikasi Edit dan Add Subgroup tidak dirender pada menu
+29. Tutup menu dengan Esc
 
 ### TC-FA-GRP-43: Tooltip Excess via keyboard focus
 
-32. Ketik Search `Warehouse B`, tekan Enter
-33. Tekan Tab sampai fokus berada pada nama Warehouse B di tabel, tanpa hover
-34. Verifikasi tooltip `Read-only — over your plan's group limit` tampil saat fokus keyboard
-35. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
+30. Ketik Search `Warehouse B`, tekan Enter
+31. Tekan Tab sampai fokus berada pada nama Warehouse B di tabel, tanpa hover
+32. Verifikasi tooltip `Read-only — over your plan's group limit` tampil saat fokus keyboard
+33. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ### TC-FA-GRP-967: Urutan sibling A-Z
 
-36. Klik toggle collapse-all pada sidebar
-37. Klik chevron node `Order Parent {runId}-005` untuk expand
-38. Verifikasi child urut `alpha Wing {runId}-005`, `Basement {runId}-005`, `Floor 2 {runId}-005` (A–Z, tidak case-sensitive, per parent)
-39. Klik node `Order Parent {runId}-005` di sidebar
-40. Klik header kolom Group 2× (sort Group Z→A)
-41. Klik ikon `Filter`
-42. Pilih Function `Assignable`
-43. Klik [Apply]
-44. Verifikasi urutan child di sidebar tetap `alpha Wing`, `Basement`, `Floor 2` (Sort dan Filter tabel tidak mengubah urutan sidebar)
-45. Klik elipsis (⋯) node `Basement {runId}-005` di sidebar
-46. Klik `Edit`
-47. Ganti Group Name dengan `Zeta Basement {runId}-005`
-48. Klik [Save]
-49. Tunggu aksi selesai (modal Edit tertutup)
-50. Muat ulang halaman dengan F5
-51. Klik chevron node `Order Parent {runId}-005` untuk expand
-52. Verifikasi `Zeta Basement {runId}-005` berada di posisi alfabetis terakhir, setelah `Floor 2 {runId}-005`
+34. Klik toggle collapse-all pada sidebar
+35. Klik chevron node `Order Parent {runId}-005` untuk expand
+36. Verifikasi child urut `alpha Wing {runId}-005`, `Basement {runId}-005`, `Floor 2 {runId}-005` (A–Z, tidak case-sensitive, per parent)
+37. Klik node `Order Parent {runId}-005` di sidebar
+38. Klik header kolom Group 2× (sort Group Z→A)
+39. Klik ikon `Filter`
+40. Pilih Function `Assignable`
+41. Klik [Apply]
+42. Verifikasi urutan child di sidebar tetap `alpha Wing`, `Basement`, `Floor 2` (Sort dan Filter tabel tidak mengubah urutan sidebar)
+43. Klik elipsis (⋯) node `Basement {runId}-005` di sidebar
+44. Klik `Edit`
+45. Ganti Group Name dengan `Zeta Basement {runId}-005`
+46. Klik [Save]
+47. Tunggu aksi selesai (modal Edit tertutup)
+48. Muat ulang halaman dengan F5
+49. Klik chevron node `Order Parent {runId}-005` untuk expand
+50. Verifikasi `Zeta Basement {runId}-005` berada di posisi alfabetis terakhir, setelah `Floor 2 {runId}-005`
 
 ## Notes
 
-- Spec melewati sekitar 35 langkah (52 langkah): seluruh blok adalah satu kelas (sidebar Group Tree) pada dataset yang sama, tiap blok berdiri sendiri, dan memisahnya hanya menggandakan login, hook, dan cleanup tanpa alur baru. Blok TC-FA-GRP-967 yang mengubah data milik spec berada paling akhir (S-10).
-- Langkah penghubung (S-03): langkah 1 dan 36 (expand/collapse-all), langkah 18 (kembali ke `All Groups`), langkah 31 (tutup menu), langkah 32 dan 35 (Ketik Search `Warehouse B`, tekan Enter, dan klik `(←)` pada kotak Search untuk mengembalikan tabel penuh; baris tidak diandalkan berada di halaman 1; R-16), langkah 37 dan 51 (expand node), langkah 39 (memilih node sebagai konteks Sort dan Filter), langkah 49 (tunggu aksi selesai, 8b butir 8).
+- Spec melewati sekitar 35 langkah (50 langkah): seluruh blok adalah satu kelas (sidebar Group Tree) pada dataset yang sama, tiap blok berdiri sendiri, dan memisahnya hanya menggandakan login, hook, dan cleanup tanpa alur baru. Blok TC-FA-GRP-967 yang mengubah data milik spec berada paling akhir (S-10).
+- Langkah penghubung (S-03): langkah 1 dan 34 (expand/collapse-all), langkah 18 (kembali ke `All Groups`), langkah 29 (tutup menu), langkah 30 dan 33 (Ketik Search `Warehouse B`, tekan Enter, dan klik `(←)` pada kotak Search untuk mengembalikan tabel penuh; baris tidak diandalkan berada di halaman 1; R-16), langkah 35 dan 49 (expand node), langkah 37 (memilih node sebagai konteks Sort dan Filter), langkah 47 (tunggu aksi selesai, 8b butir 8).
 - Pohon urutan sibling TC-FA-GRP-967 memakai parent milik spec (`Order Parent {runId}-005`), bukan Head Office Tabel A, agar Tabel A tidak berubah (S-06).
 - Temuan untuk QA:
   - TC-FA-GRP-42 menyebut "panah bawah/kanan" tanpa semantik pergerakan fokus dan expand per tombol; langkah 14 mengasersi hasilnya secara umum.

@@ -26,7 +26,7 @@ coverage:
   |---|---|---|---|
   | UA-01 | Access Level | `—` | Total Control |
   | UA-03 | Category Name | Electronic Devices | `—` |
-  | UA-04 | Status | In Use | In Disposal Process |
+  | UA-04 | Status | In Use | Reported Disposal |
   | UA-05 | Status | Borrowed | Damaged |
   | UA-06 | Status | In Audit | Waiting for Approval |
   | UA-07 | Manage asset & TAG — Gedung A | `—` | Assigned |
@@ -52,7 +52,7 @@ coverage:
 
 ### TC-FA-FAAL-27: Aksi perubahan status mengisi Old Value dan New Value
 
-6. Verifikasi baris UA-04 tampil Field `Status`, Old Value `In Use`, dan New Value `In Disposal Process`
+6. Verifikasi baris UA-04 tampil Field `Status`, Old Value `In Use`, dan New Value `Reported Disposal`
 7. Verifikasi baris UA-05 tampil Field `Status`, Old Value `Borrowed`, dan New Value `Damaged`
 8. Verifikasi baris UA-06 tampil Field `Status`, Old Value `In Audit`, dan New Value `Waiting for Approval`
 9. Verifikasi tidak ada sel Old Value maupun New Value bernilai `—` pada baris UA-04, UA-05, dan UA-06

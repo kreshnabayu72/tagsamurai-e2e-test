@@ -21,7 +21,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup PA-1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD` (nama env perlu dikonfirmasi tim FE sebelum didaftarkan di `executionConfig.environmentVariables` dan `.env.example`).
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences).
-- Data Pre-setup (hanya dibaca, tidak diubah): Preferences nilai awal PA-2, tidak terkunci, semua setting wajib terisi: Fiscal Year Start January; First Accounting Period March 2026; Default Capitalization Threshold 5.000.000; In-service Date Source Activation date; Depreciation in Disposal Month Up to previous month; Default Gain, Loss, Capitalization Offset, dan Found Asset Credit Account kosong; Disposal Documents keenam jenis Optional; Journal Grouping Group. Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API).
+- Data Pre-setup (hanya dibaca, tidak diubah): Preferences nilai awal PA-2, tidak terkunci, semua setting wajib terisi: Fiscal Year Start January; First Accounting Period March 2026; Default Capitalization Threshold 5.000.000; In-service Date Source Activation date; Depreciation in Disposal Month Up to previous month; Default Gain, Loss, Disposal Proceeds Account, Capitalization Offset, dan Found Asset Credit Account kosong; Disposal Documents keenam jenis Optional; Journal Grouping Group. Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API).
 - Flag Guided Tooltip halaman Preferences disetel true oleh hook suite `before` (lihat `suite.md`) sehingga walkthrough tidak menutupi layar.
 - Suite berjalan serial (`parallel: false`).
 
@@ -68,7 +68,7 @@ coverage:
 25. Verifikasi Default Capitalization Threshold bernilai "Rp 5.000.000,00"
 26. Verifikasi In-service Date Source bernilai "Activation date"
 27. Verifikasi Depreciation in Disposal Month bernilai "Up to previous month"
-28. Verifikasi Default Gain on Disposal, Default Loss on Disposal, Default Capitalization Offset, dan Found Asset Credit Account kosong dengan placeholder "Select account"
+28. Verifikasi Default Gain on Disposal, Default Loss on Disposal, Default Disposal Proceeds Account, Default Capitalization Offset, dan Found Asset Credit Account kosong dengan placeholder "Select account"
 29. Verifikasi Disposal Documents Sell, Scrap, Lost, Donate, Trade-in, dan Write-off bernilai "Optional"
 30. Verifikasi Journal Grouping bernilai "Group"
 

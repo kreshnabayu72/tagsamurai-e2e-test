@@ -52,7 +52,7 @@ coverage:
 19. Muat ulang halaman dengan F5
 20. Verifikasi walkthrough muncul otomatis pada Step 1
 21. Klik [Next]
-22. Verifikasi Step 2 menyorot kolom Function dengan judul `Assignable & Disposal Groups`
+22. Verifikasi Step 2 menyorot kolom Function dengan judul `Assignable Groups`
 23. Verifikasi penomor `Step 2 of 2`
 24. Verifikasi [Next] berubah menjadi [Done]
 25. Klik [Done]

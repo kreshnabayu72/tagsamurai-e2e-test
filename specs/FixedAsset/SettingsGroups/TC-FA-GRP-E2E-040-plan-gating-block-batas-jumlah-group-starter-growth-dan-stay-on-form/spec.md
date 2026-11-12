@@ -1,6 +1,6 @@
 ---
 id: TC-FA-GRP-E2E-040-plan-gating-block-batas-jumlah-group-starter-growth-dan-stay-on-form
-title: "Plan Gating Preemptif: Block Cap Jumlah Group (Starter 1, Growth 3), Stay on Form Sampai Cap, Urutan Cek Count Sebelum Depth, Tombol Tidak Disable, dan Cap Termasuk Disposal Group"
+title: "Plan Gating Preemptif: Block Cap Jumlah Group (Starter 1, Growth 3), Stay on Form Sampai Cap, Urutan Cek Count Sebelum Depth, Tombol Tidak Disable, dan Cap Dihitung terhadap Semua Node Terlepas Function"
 priority: Critical
 caseType: Negative
 status: draft
@@ -15,14 +15,14 @@ coverage:
   web: automated
 ---
 
-# Plan Gating Preemptif: Block Cap Jumlah Group (Starter 1, Growth 3), Stay on Form Sampai Cap, Urutan Cek Count Sebelum Depth, Tombol Tidak Disable, dan Cap Termasuk Disposal Group
+# Plan Gating Preemptif: Block Cap Jumlah Group (Starter 1, Growth 3), Stay on Form Sampai Cap, Urutan Cek Count Sebelum Depth, Tombol Tidak Disable, dan Cap Dihitung terhadap Semua Node Terlepas Function
 
 ## Prerequisites
 
 - Mode: FE+BE (backend nyata; kelas h state tenant: cap jumlah group ditentukan plan tier client; spec ini tidak mengubah plan, hanya memakai client yang disiapkan di cap).
 - Akun aktor: Total Control client Starter (cap 1), kredensial `Spectra.env.FA_STARTER_TC_PASSWORD`; Total Control client Growth (cap 3, depth cap 2), kredensial `Spectra.env.FA_GROWTH_TC_PASSWORD`. Kedua nama env baru, didaftarkan di `executionConfig.environmentVariables` dan `.env.example`; email kedua akun tidak tertulis di Pre-setup TC dan disediakan tim FE (lihat Temuan untuk QA). Login akun client Starter di hook `before` spec ini; halaman Fixed Asset > Settings > Groups dibuka hook `beforeEach` suite; login akun client Growth lewat langkah ganti akun eksplisit (11); hook `after` mengembalikan sesi ke akun default suite (Total Control Pre-setup No 1).
 - Hook suite (flag Guided Tooltip `fa-settings-groups` seen, sesi API aktor, klien HTTP, fixture BE): lihat `suite.md` bagian Hook suite; tidak ditulis ulang di sini.
-- Data client (disediakan tim FE; Pre-setup No 8 hanya menyebut client tambahan Starter, Growth, Enterprise): client Starter berisi tepat 1 group (precondition TC-FA-GRP-112 dan TC-FA-GRP-118); client Growth berisi tepat 2 group (Head Office > Floor 2) pada awal spec (precondition TC-FA-GRP-84). Setelah langkah 21 client Growth berisi 3 group: Head Office, Floor 2, dan `Cap Fill {runId}-040` ber-Function Disposal Group (menjadi precondition TC-FA-GRP-113, TC-FA-GRP-117, dan TC-FA-GRP-120 "3 group termasuk 1 Disposal Group").
+- Data client (disediakan tim FE; Pre-setup No 8 hanya menyebut client tambahan Starter, Growth, Enterprise): client Starter berisi tepat 1 group (precondition TC-FA-GRP-112 dan TC-FA-GRP-118); client Growth berisi tepat 2 group (Head Office > Floor 2) pada awal spec (precondition TC-FA-GRP-84). Setelah langkah 21 client Growth berisi 3 group: Head Office, Floor 2, dan `Cap Fill {runId}-040` ber-Function Assignable (menjadi precondition TC-FA-GRP-113, TC-FA-GRP-117, dan TC-FA-GRP-120 "jumlah group sama dengan cap, termasuk 1 node Assignable dan 1 node None").
 - Data Dinamis bersuffix `{runId}-040`: `Cap Fill {runId}-040` dan `Over Cap {runId}-040` (nilai diacu lewat `Fixture.fixedAssetSettingsGroups.<kunci>`; berkas fixture belum ada, dibuat di tahap script).
 - Kemampuan teknis: pembacaan jumlah group client lewat fixture BE (baseline dicatat di hook `before`; disediakan tim FE/BE, nama endpoint tidak disebut di TC dan PRD); pembacaan status respons simpan (409 Conflict) pada langkah 18 lewat intercept pasif atau fixture BE (disediakan tim FE).
 - Pemulihan (hook `after`): hapus lewat API `Cap Fill {runId}-040` pada client Growth sehingga client kembali berisi 2 group; sesi dikembalikan ke akun default suite. State global (plan, cap) tidak diubah.
@@ -53,7 +53,7 @@ coverage:
 ### TC-FA-GRP-84: Stay on this form sampai cap tercapai, submit berikutnya ditolak
 
 13. Klik [+] Group, lalu centang `Stay on this form after submitting`
-14. Isi Group Name `Cap Fill {runId}-040`, pilih Function Disposal Group, lalu klik [Submit]
+14. Isi Group Name `Cap Fill {runId}-040`, pilih Function Assignable, lalu klik [Submit]
 15. Verifikasi Cap Fill tersimpan
 16. Verifikasi form direset dan tetap terbuka
 17. Isi Group Name `Over Cap {runId}-040`, lalu klik [Submit]
@@ -79,10 +79,10 @@ coverage:
 31. Verifikasi dialog yang tampil varian count: `You've reached the group limit for your plan. Upgrade to add more.` (cek pertama yang gagal menghentikan proses)
 32. Klik [OK]
 
-### TC-FA-GRP-120: Cap dihitung terhadap semua node termasuk Disposal Group
+### TC-FA-GRP-120: Cap dihitung terhadap semua node terlepas Function
 
 33. Klik [+] Group di sidebar
-34. Verifikasi dialog `Cannot Add Group` varian count cap tampil (Disposal Group ikut dihitung)
+34. Verifikasi dialog `Cannot Add Group` varian count cap tampil (node Assignable dan None sama-sama dihitung)
 35. Klik [OK]
 
 ## Notes

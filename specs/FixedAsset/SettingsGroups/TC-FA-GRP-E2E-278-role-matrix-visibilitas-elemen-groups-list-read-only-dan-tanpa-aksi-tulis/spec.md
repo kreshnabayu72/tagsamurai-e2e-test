@@ -24,7 +24,6 @@ coverage:
 | Node | Function |
 |---|---|
 | Head Office | None |
-| Disposal Yard | Disposal Group |
 | Warehouse B | Assignable, Excess |
 
 - Kemampuan teknis: fixture BE dan sesi API aktor, disediakan tim FE/BE (lihat `suite.md`).
@@ -65,10 +64,10 @@ coverage:
 ## Notes
 
 - Spec ditulis dengan login Read Only di hook `before`; tidak ada ganti akun.
-- Langkah 16 sampai 23 diulang untuk tiga node pada tabel Prerequisites (Head Office, Disposal Yard, Warehouse B); Warehouse A sudah diperiksa pada langkah 4 sampai 11 (ekspansi 24 langkah; total ekspansi 40 langkah, di atas batas sekitar 35). Alasan di atas ~35 langkah: satu kelas (Role Matrix Read Only) dan satu dataset (Tabel A); tiap TC berdiri sendiri; 4 langkah penghubung per node (Search dan kosongkan Search) tidak membawa asersi baru.
+- Langkah 16 sampai 23 diulang untuk dua node pada tabel Prerequisites (Head Office, Warehouse B); Warehouse A sudah diperiksa pada langkah 4 sampai 11 (ekspansi 16 langkah; total ekspansi 32 langkah, di bawah batas sekitar 35).
 - Langkah penghubung (S-03): langkah 7, 10, 19, 22 (menutup menu).
 - Pembagian TC lintas spec: Role Total Control dan Default User (TC-FA-GRP-44 dan 45) ada di spec 015.
 - Langkah penghubung (S-03, S-14, R-16): `Ketik Search` pada Groups List dengan nama node (`Warehouse A` dan tiap node pada tabel Prerequisites) sebelum membuka elipsis baris, karena client memiliki lebih dari 10 node level 1 dan page size 10 sehingga baris target tidak dijamin berada di halaman 1; `Klik (←) pada kotak Search` sesudah menu ditutup mengembalikan tabel penuh untuk langkah berikutnya.
 - Temuan untuk QA:
-  - TC-FA-GRP-78 menyebut "elipsis tiap baris dan node sidebar" tanpa daftar baris; spec memeriksa Warehouse A (langkah 4 sampai 9) serta tiga node pada tabel Prerequisites yang mewakili Function None, Disposal Group, dan Excess.
+  - TC-FA-GRP-78 menyebut "elipsis tiap baris dan node sidebar" tanpa daftar baris; spec memeriksa Warehouse A (langkah 4 sampai 9) serta dua node pada tabel Prerequisites yang mewakili Function None dan Excess.
   - TC-FA-GRP-46 menyebut "seluruh tree client view-only" tanpa daftar node; spec memakai node Tabel A yang tampil di sidebar.

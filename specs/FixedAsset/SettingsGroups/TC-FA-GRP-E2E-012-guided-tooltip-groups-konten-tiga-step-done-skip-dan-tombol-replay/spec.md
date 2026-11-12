@@ -37,7 +37,7 @@ coverage:
 5. Verifikasi penomor `Step 1 of 3`
 6. Verifikasi [Back] hidden di Step 1
 7. Klik [Next]
-8. Verifikasi Step 2 menyorot kolom Function dengan judul `Assignable & Disposal Groups` dan isi `Groups can be marked as Assignable to hold active assets, or Disposal Groups to collect retired assets.`
+8. Verifikasi Step 2 menyorot kolom Function dengan judul `Assignable Groups` dan isi `Groups can be marked as Assignable to hold active assets.`
 9. Verifikasi penomor `Step 2 of 3`
 10. Klik [Next]
 11. Verifikasi Step 3 menyorot kolom Total Asset dengan judul `Asset Count` dan isi `See how many assets each group holds. Click a number for details.`

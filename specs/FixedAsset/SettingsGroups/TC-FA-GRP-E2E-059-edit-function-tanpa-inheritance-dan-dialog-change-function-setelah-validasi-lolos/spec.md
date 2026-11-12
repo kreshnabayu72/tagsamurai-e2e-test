@@ -45,8 +45,8 @@ coverage:
 13. Klik `Func Parent {runId}-059` di sidebar
 14. Verifikasi Func Child `Func Child {runId}-059` tetap ber-Function None (`—`), tidak mewarisi Function parent
 15. Ketik Search `Func Child {runId}-059`, tekan Enter
-16. Buka elipsis (⋯) baris `Func Child {runId}-059`, klik Edit, pilih Function Disposal Group, lalu klik [Save]
-17. Verifikasi Func Child tersimpan sebagai Disposal Group dengan toast `Success, group has been updated.`
+16. Buka elipsis (⋯) baris `Func Child {runId}-059`, klik Edit, pilih Function Assignable, lalu klik [Save]
+17. Verifikasi Func Child tersimpan sebagai Assignable dengan toast `Success, group has been updated.`
 18. Klik `(←)` pada kotak Search
 19. Klik All Groups
 20. Ketik Search `Func Parent {runId}-059`, tekan Enter
