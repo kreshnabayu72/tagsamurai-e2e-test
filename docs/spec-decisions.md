@@ -1693,3 +1693,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C; sama dengan Client 306 / UG-ACC-23).
 - **Diterapkan di:** 23 spec di atas (22 GS + Device Name 167).
 - **Sumber:** repo aplikasi `plans/_program/limit-below-min-2026-11-12.md` (b44c80850).
+
+## D-170 Selection Limit di Client List dibuktikan lewat LCS 166, bukan dengan 130 Client (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-306` TC-AC-ACC-448 langkah 2-14 (Selection Limit 100 lalu 120, di atas 130 Client Active tambahan C-SEL-1..130).
+- **Spec meminta:** baris setelah batas terkunci, tooltip batas tampil, dan batas baru terbaca tanpa reload, di Client List.
+- **Kenyataannya:** nilai 100 dan 120 ada di dalam rentang (org-uiux `admin-console/plans-licensing-lifecycle-settings/API/low-level-design.md` L1165), jadi state-nya nyata. Masalahnya, setiap Client adalah tenant, sehingga 130 Client lewat route asli berarti 130 tenant per run di stack bersama. Client List memakai `SelectionLimitProvider` yang sama dengan Lifecycle Settings. Perilaku batas langsung (baris terkunci, tooltip, batas terbaca ulang tanpa reload) sudah lulus di `TC-AC-LCS-E2E-166` TC-582/583/584 pada 100 dan 120 atas 150 Group (run 1177, 2026-11-12).
+- **Karena:** menyiapkan 130 tenant per run tidak sebanding dengan nilainya, karena mekanisme yang sama sudah dibuktikan di LCS 166. Nilai di bawah batas (10/12) yang dulu dipakai stand-in kita bukan dari spec, dan sudah dihapus.
+- **Keputusan:** langkah 2-14 keluar dari e2e Client; buktinya dirujuk ke LCS 166. Kalau Client List berhenti memakai provider bersama, keputusan ini dibuka lagi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A).
+- **Diterapkan di:** Client 306.
+- **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` (UG-ACC-23).
