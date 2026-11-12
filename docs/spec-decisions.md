@@ -1726,3 +1726,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration B, FD-B-IMP-13).
 - **Diterapkan di:** 16 spec Import di atas.
 - **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-B-IMP-13; `packages/features/global-settings-import/resources/Strings.ts` L134-139.
+
+## D-173 Form Device SKU mempertahankan ketikan setelah save ditolak karena stok (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/SettingsDeviceSku `074` TC-AC-DS-237 langkah 20-21.
+- **Spec meminta:** setelah Save ditolak karena SKU sudah punya stok (referensi basi), form dimuat ulang ke nilai yang tersimpan.
+- **Kenyataannya:** `PATCH /device-skus/{id}` → 422 `SKU code cannot be changed after stock has been registered` (run 1209). App menampilkan toast error, menyegarkan kunci (SKU code, Device Name dan Range Type terkunci, langkah 22 lulus), dan mempertahankan ketikan pengguna. Form tetap dirty, jadi [✕] menampilkan Unsaved Changes. PRD (settings-device-sku ACDS-LOGIC-03b, L159) hanya mengatur penguncian dan tidak mengatur isi form setelah penolakan.
+- **Karena:** keputusan owner E2E-DS-105 (2026-11-11) menetapkan nilai pengguna dipertahankan setelah save terkunci ditolak. Mempertahankan input setelah penolakan server juga perilaku form mayoritas design system, dan form Device Name di app yang sama berlaku begitu.
+- **Keputusan:** langkah 20-21 mengasersi bahwa nilai ketikan dipertahankan, field terkunci, dan [✕] menampilkan Unsaved Changes. Tag UG-DS-11 dilepas.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration C, FD-C-11).
+- **Diterapkan di:** DS 074.
+- **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-C-11; `integration-findings` E2E-DS-105.
