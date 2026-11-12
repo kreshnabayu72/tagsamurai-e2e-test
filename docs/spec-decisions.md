@@ -910,3 +910,357 @@ Aturan:
 - **Keputusan:** langkah tersebut ditulis `gaps.check('sprint-gap', …)` / `gaps.open('sprint-gap', …)`, dengan nama fitur dan sprintnya di `where`. Langkah itu dilewati, dicatat, dan spec dihitung lolos atas langkah yang masuk sprint (bukan gagal, bukan blocking). Tag dicabut saat sprint fitur itu dimulai.
 - **Diputuskan oleh:** user, 2026-11-05.
 - **Diterapkan di:** `apps/e2e/support/actions/gaps`.
+
+## D-099 Navigasi sidebar saat Popup Create Custom Field dirty: popup ditutup dulu (2026-11-07)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-019` TC-GS-UCF-327 langkah 40-47.
+- **Spec meminta:** klik menu sidebar Global Settings > Activity Log saat Popup Create dirty terbuka; perpindahan route dicegat dialog `Unsaved Changes` (`[Cancel]` mempertahankan `Umbra`, `[Leave]` membuka Activity Log).
+- **Kenyataannya:** DialogForm Create bersifat modal; overlay-nya menutupi sidebar, sehingga klik sidebar tidak dapat terjadi selama popup terbuka.
+- **Karena:** perilaku modal komponen (komponen menang atas spec); tidak ada jalur pengguna ke sidebar selama popup terbuka.
+- **Keputusan:** popup ditutup dulu: `[✕]` memunculkan dialog `Unsaved Changes` yang sama (`[Cancel]` mempertahankan `Umbra`, `[Leave]` menutup popup), lalu sidebar membuka Activity Log.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-07.
+- **Diterapkan di:** skrip CustomFieldUser 019.
+- **Sumber:** repo aplikasi `plans/global-settings-user/integration-findings.md` L737-745 (D-draft-C).
+
+## D-100 `Bonus` yang ditempel di Field Name memunculkan `Field name already exists` (2026-11-07)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-016` TC-GS-UCF-59 langkah 41 dan 49.
+- **Spec meminta:** langkah 41 Field Name memuat `Bonus ` tanpa emoji; langkah 49 tidak ada pesan error pada Field Name, Dropdown Values, dan Placeholder.
+- **Kenyataannya:** `Bonus` adalah field Pre-setup spec yang sama, sehingga Field Name `Bonus ` menampilkan `Field name already exists` (cek keunikan case-insensitive yang diuji spec ini di TC-GS-UCF-56).
+- **Karena:** error itu perilaku benar app; langkah 49 bertentangan dengan Pre-setup spec itu sendiri.
+- **Keputusan:** langkah 41 hanya memverifikasi isi Field Name (`Bonus `, tanpa emoji); lalu `[Clear Field]` sebelum langkah 42, sehingga langkah 49 membaca field lain tanpa sisa error keunikan.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-07.
+- **Diterapkan di:** skrip CustomFieldUser 016.
+- **Sumber:** repo aplikasi `plans/global-settings-user/integration-findings.md` L747-755 (D-draft-D).
+
+## D-101 Global Settings tidak terjangkau dari enterprise-management tidak diuji di e2e Client (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-049` TC-AC-ACC-507 langkah 16-27; `TC-AC-ACC-E2E-129` TC-AC-ACC-199 langkah 1-9, TC-AC-ACC-214 langkah 21-31, TC-AC-ACC-460 langkah 32-41, TC-AC-ACC-463 langkah 44-56. `TC-AC-ACC-E2E-130` TC-AC-ACC-226 menyebut gangguan yang sama.
+- **Spec meminta:** Global Settings dipaksa tidak terjangkau (atau pembuatan Default User di Global Settings gagal) saat Create, Suspend, Bulk Suspend, Unsuspend, dan Bulk Unsuspend Client, lalu operasi gagal seluruhnya tanpa perubahan parsial.
+- **Kenyataannya:** gangguan Global Settings dari sisi enterprise-management adalah outage nyata yang tidak dapat dibentuk di stack uji bersama; tidak ada test route untuk itu.
+- **Karena:** state yang tidak nyata tidak dibangun lewat route dev; pola yang sama dengan D-021 dan D-026. BT-AC-ACC-12 ditarik.
+- **Keputusan:** langkah tersebut keluar dari e2e; perilaku gagal-seluruhnya dijaga unit test backend.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12 (BT-AC-ACC-12 ditarik).
+- **Diterapkan di:** skrip Client 049 dan 129 (`// @spec-decision: pending D-draft-ACC-GS-UNREACHABLE`), Client 130 (catatan pada `@helper-gap:be BT-5`).
+- **Sumber:** repo aplikasi `plans/admin-console-client/backend-findings.md` L18; `apps/e2e/specs/AdminConsole/Client/TC-AC-ACC-E2E-049-…/common.test.ts` L83-86, `…/TC-AC-ACC-E2E-129-…/common.test.ts` L47, L109, L122, L135.
+
+## D-102 Nilai default "instalasi baru" Lifecycle Settings tidak diuji di e2e (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingLifecycleSettings `TC-AC-LCS-E2E-011` (TC-AC-LCS-33, 34, 35: Trial Settings, Free Plan Settings, License Timing) dan `TC-AC-LCS-E2E-012` (TC-AC-LCS-36, 37, 38, 39: Client Lifecycle, Recycle Bin, Approval Settings, System Limits), seluruh langkah.
+- **Spec meminta:** pada instalasi baru (tab yang belum pernah disimpan, Pre-setup FRESH) tab menampilkan nilai default PRD.
+- **Kenyataannya:** Lifecycle Settings adalah satu baris per tab untuk seluruh platform (singleton), dibaca sebagai Principal. Tenant uji baru tidak memiliki baris sendiri, Principal kedua tidak dapat dibuat (`409`), dan kontrak hanya memuat `GET`, `PATCH`, dan `POST …/reset` per tab; tidak ada route yang menghapus baris (BT-AC-LCS-3 tidak dibangun, keputusan Coordinator 2026-11-10).
+- **Karena:** keadaan "tab belum pernah disimpan" hanya ada sekali pada backend yang baru dipasang. Nilai default yang sama sudah diverifikasi setelah Reset to Default (TC-AC-LCS-2 sampai 4 dan spec Reset 036, 041, 046, 059, 069, 074, 083).
+- **Keputusan:** langkah TC-AC-LCS-33 sampai TC-AC-LCS-39 keluar dari e2e; nilai default diverifikasi lewat Reset to Default.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12 (di bawah delegasi pemilik 2026-10-31).
+- **Diterapkan di:** skrip PlansLicensingLifecycleSettings 011 dan 012 (`// @spec-decision: pending D-draft-LCS-3`).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/decisions.md` L197-205 (D-draft-LCS-3).
+
+## D-103 Live Preview Setup Column Plans & Features menampilkan baris pertama (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-150` TC-AC-PF-385 langkah 23; `TC-AC-PF-E2E-155` TC-AC-PF-631 langkah 23.
+- **Spec meminta:** Live Preview menampilkan data sel yang sama dengan semua baris tabel.
+- **Kenyataannya:** Live Preview milik komponen menampilkan baris pertama tabel saja (run PF-s3-3: tabel 4 baris, preview `alpha Tier`; run PF2-s3-8: Default > Archive 4 baris, preview `Plan Arsip Baru`).
+- **Karena:** perilaku komponen menang atas spec (aturan pemilik 2026-11-04 dan 2026-11-08).
+- **Keputusan:** langkah 23 mengasersi sel baris pertama tabel pada Live Preview.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12 (di bawah delegasi pemilik 2026-10-31).
+- **Diterapkan di:** skrip PlansLicensingPlansFeatures 150 dan 155 (`// @spec-decision: pending D-draft-PF-2`).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/integration-findings.md` L144-149 (D-draft-PF-2); `apps/e2e/specs/AdminConsole/PlansLicensingPlansFeatures/TC-AC-PF-E2E-150-…/common.test.ts` L91, `…/TC-AC-PF-E2E-155-…/common.test.ts` L135.
+
+## D-104 Katalog Device Name kosong bukan state nyata; langkahnya keluar dari e2e (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/SettingsDeviceName `TC-AC-DN-E2E-009` TC-AC-DN-25 langkah 1-2, TC-AC-DN-294 langkah 7 dan 9, TC-AC-DN-403 langkah 12-13, TC-AC-DN-449 langkah 20; `TC-AC-DN-E2E-076` TC-AC-DN-216 langkah 28-29.
+- **Spec meminta:** Principal tanpa Device Name dan tanpa entri Changelog Device Name (Pre-setup #12 "Principal Tanpa Riwayat"), sehingga list, opsi filter Brand dan Device Name, dan Changelog menampilkan empty state; pada 076, daftar utuh seperti yang dibentuk Pre-setup saja (`Cable Tester` di halaman terakhir Z-A).
+- **Kenyataannya:** backend memiliki satu Principal yang dipakai semua suite. Stok Hardware Handheld Reader menjaga Device SKU-nya `in_use`, sehingga Device Name-nya tidak dapat dihapus, dan mengosongkan katalog beserta Changelog-nya merusak seed suite lain (Device Category, Device SKU, Hardware Handheld Reader). Katalog juga memuat baris hidup suite lain (`4-Port Fixed Reader`, `Zebra RFID Reader`).
+- **Karena:** katalog Device kosong bukan state nyata lingkungan ini. Aturan pemilik 2026-11-12: state yang tidak dapat dicapai menjadi spec-decision dan ui-client, bukan `helper-gap:be`.
+- **Keputusan:** langkah empty state tersebut keluar dari e2e (pindah ke lapisan ui-client); langkah lain spec 009 (tombol `[+ Device Name]`, tanpa load error, dropdown filter yang bukan error, Changelog yang bukan load error atau empty state search, Esc dan tutup) tetap diasersi terhadap katalog bersama. 009 tidak mengosongkan katalog dan tidak lagi berjalan serial.
+- **Diputuskan oleh:** pemilik, 2026-11-12 (aturan kelas state tak tercapai); dicatat Wangs-UI Coordinator 2026-11-12.
+- **Diterapkan di:** skrip SettingsDeviceName 009 dan 076 (`gaps.check('spec-decision', 'pending D-draft-DN-009-EMPTY-CATALOG …')`).
+- **Sumber:** repo aplikasi `plans/admin-console-settings-device/decisions.md` L216 (D-draft-DN-009-EMPTY-CATALOG).
+
+## D-105 Baris Session produk Fixed Asset dihitung di Activity Log Fixed Asset, bukan Global Settings (2026-11-12)
+
+- **Spec / langkah:** Auth/SessionManagement `TC-AUTH-SES-E2E-029` TC-AUTH-SES-93 langkah 15-16; `TC-AUTH-SES-E2E-043` TC-AUTH-SES-141 langkah 16-17.
+- **Spec meminta:** jumlah entri `Session ended` untuk Dewi Permata (029) dan Mega Wibowo (043), yang hanya memegang sesi produk Fixed Asset, bertambah 1 di `Global Settings > Activity Log > Session`.
+- **Kenyataannya:** scope Global Settings hanya memuat baris platform dan Global Settings; baris Session sesi produk Fixed Asset ada di scope `fixed_asset` (probe slot 2, 2026-11-11; BT-AUTH-SES-14). Langkah 18-19 spec 043 (baris yang sama di Activity Log Fixed Asset) lolos.
+- **Karena:** keputusan pemilik 2026-11-09 (BT-GS-ACTLOG-4): setiap produk menyimpan baris Session-nya sendiri.
+- **Keputusan:** langkah yang menghitung baris itu di Global Settings > Activity Log > Session keluar dari e2e; baris sesi produk Fixed Asset dihitung di Activity Log Fixed Asset (043 langkah 18-19). 029 juga `native-gap` dan 043 juga `be-bug`; keduanya tetap PI karena itu.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12, atas keputusan pemilik 2026-11-09 (BT-GS-ACTLOG-4).
+- **Diterapkan di:** skrip SessionManagement 029 dan 043 (`@spec-decision: pending D-draft-SES-FA-SESSION-LOG`).
+- **Sumber:** repo aplikasi `plans/auth/integration-findings.md` L896, L900 (X24-1).
+
+## D-106 SKU adalah field Filter Panel registri All TAGs (2026-11-07)
+
+- **Spec / langkah:** GlobalSettings/AllTags `TC-GS-TAG-E2E-069` TC-GS-TAG-201 langkah 5-7 dan 9.
+- **Spec meminta:** daftar field langkah 5 tanpa `SKU`; langkah 9: tidak ada field untuk `SKU` dan `Code`.
+- **Kenyataannya:** Filter Panel memuat field `SKU`.
+- **PRD:** `global-settings/all-tags/PRD/all-tags.md` L333: SKU Filterable, label `SKU`, multi-select searchable, placeholder `All SKUs`.
+- **Karena:** PRD menjadi acuan.
+- **Keputusan:** langkah 5-7 memverifikasi field `SKU` (placeholder `All SKUs`) setelah Device Name; langkah 9 hanya memverifikasi tidak ada field `Code`.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-07.
+- **Diterapkan di:** skrip AllTags 069 (`@spec-decision: pending`).
+- **Sumber:** repo aplikasi `plans/global-settings-tag/integration-findings.md` L48-56.
+
+## D-107 Activate TAG pada entitas Suspended atau Expired ditolak saat sesi dibuka (2026-11-07)
+
+- **Spec / langkah:** GlobalSettings/AllTags `TC-GS-TAG-E2E-012` TC-GS-TAG-319 langkah 6-14 (Suspended dan Expired).
+- **Spec meminta:** halaman Activate TAG terbuka; IMEI ditambahkan dan Submit; toast `Changes can't be saved while this workspace is suspended or expired.` muncul saat Submit, lalu IMEI tidak ada di registri.
+- **Kenyataannya:** `POST /v2/hardware-tagging/tags/activate/session` dijawab `403` saat `Continue`; app menampilkan toast itu dan halaman Activate tidak terbuka (tanpa entri GPS).
+- **PRD:** `global-settings/all-tags/PRD/all-tags.md` EC-01 (L1206): seluruh operasi penambahan tag diblokir dan aksi tulis ditolak server (§18.8). Membuka sesi Activate adalah aksi tulis (POST).
+- **Karena:** PRD menjadi acuan; `403` saat sesi dibuka benar.
+- **Keputusan:** sesudah `Continue`, langkah memverifikasi toast suspended tampil dan halaman Activate tidak terbuka (tanpa `#gps-input-group`), untuk Suspended dan Expired. Langkah 15-21a (Delete) tetap `@helper-gap` BT-GS-TAG-1.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-07.
+- **Diterapkan di:** skrip AllTags 012 (`@spec-decision: pending`).
+- **Sumber:** repo aplikasi `plans/global-settings-tag/integration-findings.md` L68-76.
+
+## D-108 Skills memegang satu nilai; multi-value bukan tipe Custom Field (2026-11-09)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-031` TC-GS-USER-156 langkah 33, 37-38; `TC-GS-USER-E2E-040` TC-GS-USER-216 langkah 41, 45. Pre-setup No. 24 menyebut Skills `Multi-Dropdown` (juga di 020, 024, 060, 072, 075, 108, 112, 151, 170, 174).
+- **Spec meminta:** pilih Skills `Excel` dan `SQL {runId}`, hapus opsi `SQL {runId}` lewat API, lalu setelah Submit/Save chip `SQL {runId}` hilang dan chip `Excel` tetap.
+- **Kenyataannya:** PRD custom-field-user FLD-02 hanya punya enam Data Type (Text, Text Area, Dropdown, Date, Numeric, Phone), sama dengan enum `DataType` di kontrak; iam menolak `multi_dropdown` dengan `422`. Skills di-seed sebagai `dropdown`.
+- **Karena:** tipe multi-value tidak ada di PRD maupun API; langkah yang memilih dua nilai adalah cacat spec.
+- **Keputusan:** Skills memegang satu nilai. Langkahnya memilih `SQL {runId}` saja, menghapus opsi itu, lalu mengasersi error inline `SQL {runId} no longer exists. Please select another.` dan field Skills kosong. Langkah chip `Excel` tidak berlaku.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-09.
+- **Diterapkan di:** skrip User 031 dan 040 (`@spec-decision: pending (draft D-draft-USER-1 …)`); fixture `user.json` (Skills `dropdown`).
+- **Sumber:** repo aplikasi `plans/global-settings-user/integration-findings.md` L1456-1464 (D-draft-USER-1).
+
+## D-109 Empty state Activity Log Admin Console dari respons 0 baris pindah ke ui-client (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/ActivityLog `TC-AC-ACAL-E2E-003` TC-AC-ACAL-05 langkah 1-5 (Tab Session) dan TC-AC-ACAL-06 langkah 6-10 (Tab User Action).
+- **Spec meminta:** empty state genuinely kosong di kedua tab, dibentuk lewat intercept List dengan respons 0 baris (TC-06 juga mengizinkan entitas baru tanpa aksi).
+- **Kenyataannya:** sesi aktor sendiri selalu tercatat, jadi Tab Session tidak pernah kosong di browser yang login. Principal kedua tidak dapat dibuat (`POST /v2/enterprise-management/dev/clients` dengan `isPrincipal: true` dijawab `409 Client already exists`), jadi Tab User Action Principal bersama tidak pernah nol baris. BT-AC-ACAL-7 ditarik.
+- **Karena:** keduanya bukan state nyata di stack uji bersama; jawaban bisnis lewat intercept adalah lapisan ui-client (aturan pemilik 2026-11-12).
+- **Keputusan:** kedua blok keluar dari e2e dan diuji di lapisan ui-client.
+- **Diputuskan oleh:** pemilik, 2026-11-12.
+- **Diterapkan di:** skrip ActivityLog 003 (`// @spec-decision: pending D-draft-ACAL-05-ui-client`).
+- **Sumber:** repo aplikasi `plans/admin-console-activity-log/backend-findings.md` L14 (BT-AC-ACAL-7); `apps/e2e/specs/AdminConsole/ActivityLog/TC-AC-ACAL-E2E-003-…/common.test.ts` L13-16, L32-35.
+
+## D-110 Nama sheet XLSX Download Activity Log adalah `Sheet1` (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/ActivityLog `TC-AC-ACAL-E2E-039` TC-AC-ACAL-123 langkah 27.
+- **Spec meminta:** nama sheet berkas `Activity-Log-User-Action`.
+- **Kenyataannya:** XLSX adalah berkas backend; berkasnya memiliki sheet `["Sheet1"]`.
+- **Karena:** Export Contract v1 (`plans/_program/prd-overrides.md` baris 12, pemilik 2026-11-11, be-core-utils #29) menetapkan sheet `Sheet1`, dan backend sesuai kontrak; literal spec sudah usang.
+- **Keputusan:** langkah 27 mengasersi nama sheet `Sheet1`.
+- **Diputuskan oleh:** pemilik, 2026-11-11 (Export Contract v1); dicatat Wangs-UI Coordinator 2026-11-12.
+- **Diterapkan di:** skrip ActivityLog 039 (`gaps.check('spec-decision', 'pending D-draft-ACAL-SHEET-NAME …')`).
+- **Sumber:** repo aplikasi `plans/admin-console-activity-log/integration-findings.md` L53.
+
+## D-111 Drag-select teks tautan nama adalah perilaku browser, keluar dari e2e (2026-11-11)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-007` TC-AC-CS-566 langkah 32-34. Keputusan yang sama mencakup AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-044` TC-AC-PF-777 langkah 2-10 dan TC-AC-PF-779 langkah 17-19 (D-draft-ACPF-3).
+- **Spec meminta:** tekan-geser-lepas di atas nama Client (atau Plan Name) menyeleksi teksnya dan tidak menavigasi; pada TC-AC-PF-777 Ctrl+klik dan klik tengah membuka tab baru.
+- **Kenyataannya:** itu perilaku browser sendiri untuk anchor; app tidak menambah logika. TestSpectra tidak memiliki tekan-geser-lepas.
+- **Karena:** perilaku native browser, bukan perilaku app.
+- **Keputusan:** langkah tersebut keluar dari e2e. Target tautan (href), yang dimiliki app, tetap diasersi di tempat spec membacanya.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-11.
+- **Diterapkan di:** skrip LicenseAllocationSubscription 007 (`// @spec-decision: pending D-draft-ACCS-04`, menggantikan `wrapper-gap`) dan PlansLicensingPlansFeatures 044 (`// @spec-decision: D-draft-ACPF-3`).
+- **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/decisions.md` L325-332 (D-draft-ACCS-04); `plans/admin-console-plans-licensing/decisions.md` L282-289 (D-draft-ACPF-3).
+
+## D-112 CS 074 menjalankan blok cancel-while-Waiting-for-Approval pada request trial tanpa harga (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-074` TC-AC-CS-282 langkah 1-11, TC-AC-CS-615 langkah 12-25, TC-AC-CS-210 langkah 26-30, TC-AC-CS-286 langkah 31-32.
+- **Spec meminta:** request berbayar Partner Rina (Plan Owner CV Karya Mandiri, Start Date 19/08/26).
+- **Kenyataannya:** request berbayar tidak dapat dibuat selama pricing di luar semua sprint (papan sprint c5f74ebb2; `POST /subscriptions` dijawab `409 Price not set`). Request trial FAMS Professional aktor Create-Only Fajar (30 hari, asset 50, user 10) tidak butuh harga dan melewati perilaku cancel-while-Waiting-for-Approval yang sama.
+- **Karena:** pricing belum masuk sprint.
+- **Keputusan:** langkah dijalankan pada request trial pengganti; Plan Owner (Principal) dan Start Date (hari ini) diasersi dengan nilai pengganti itu. Hanya cabang renew yang ditolak pada TC-AC-CS-216 tetap `sprint-gap` pricing. Saat pricing masuk sprint, langkah kembali ke request berbayar Rina.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12.
+- **Diterapkan di:** skrip LicenseAllocationSubscription 074 (`pending D-draft-CS-074-PRICE-FREE-STANDIN`).
+- **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/decisions.md` L379-386.
+
+## D-113 Plan Custom yang di-archive saat dipegang term Active tidak diuji di e2e (2026-11-11)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-144` TC-AC-CS-539 langkah 21-26 dan 30.
+- **Spec meminta:** state "plan Custom `Maju Custom` di-archive saat term FAMS Active memegangnya", lalu term dan baris List tidak berubah.
+- **Kenyataannya:** produk tidak dapat mencapai state itu. PRD Plans & Features memblokirnya dengan dialog `Cannot Archive Plan`, dan backend menjawab `POST /v2/enterprise-management/plans-features/{planId}/archive` dengan `409 This plan is currently assigned to one or more clients` (slot 2, 2026-11-11). Membentuknya lewat route dev menguji state yang tidak dapat dibuat pengguna.
+- **Karena:** state tidak nyata.
+- **Keputusan:** langkah tersebut keluar dari e2e; guard `409` dijaga unit test backend. Spec ini tidak mengasersi `409` (itu perilaku spec PF Cannot Archive).
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-11 (lembar keputusan pemilik).
+- **Diterapkan di:** skrip LicenseAllocationSubscription 144 (`gaps.check('spec-decision', 'pending D-draft-CS-ARCHIVED-PLAN-HELD …')`).
+- **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/decisions.md` L354-361; `integration-findings.md` L208.
+
+## D-114 Push Update oleh Principal Update-Only tidak dapat dicapai (2026-11-11)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-035` TC-AC-PF-88 langkah 22-27 (Overlay Row Action `PT Push Satu` > `Push Update` > `[Push Update]` > toast sukses > Plan Version terbaru tanpa `Outdated`).
+- **Spec meminta:** Principal Update-Only (Manage plans & licensing Read + Update) mem-push pembaruan plan ke client eligible.
+- **Kenyataannya:** Push Update butuh Manage active client Update pada baris client (PRD §4.1.3 ACPF-LOGIC-09; LLD `plan-list.md` L1312). Flag baris itu by design (dikonfirmasi BE), bukan temuan BE. Persona tidak memegang role Manage active client, jadi menu tidak memuat Push Update (run PF-s3-17).
+- **Karena:** PRD menang; cacat spec. Pre-setup tidak diubah (memberi persona Manage active client mengubah Pre-setup spec).
+- **Keputusan:** langkah 22-27 keluar dari e2e sampai pemilik spec memindahkan push ke aktor yang memegang Manage active client Update. Langkah 18-21, edit plan (TC-AC-PF-81), dan rename (TC-AC-PF-85) tetap diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-11 (opsi a: PRD §4.1.3 ACPF-LOGIC-09 menang, tanpa perubahan app).
+- **Diterapkan di:** skrip PlansLicensingPlansFeatures 035 (`// @spec-decision: pending D-draft-acpf-push-update-needs-manage-active-client`).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/decisions.md` L242-249.
+
+## D-115 Archive oleh Principal Group-Mix tidak dapat dicapai (2026-11-10)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-040` TC-AC-PF-107 langkah 16-20 (Overlay Row Action `Paket Blok Mask` > `Archive` > dialog `Cannot Archive Plan` > `[OK]`).
+- **Spec meminta:** Principal Group-Mix (Pre-setup #8) mengklik `Archive` pada `Paket Blok Mask` dan membaca dialog `Cannot Archive Plan`.
+- **Kenyataannya:** Archive butuh hak Delete Manage plans & licensing; Pre-setup #8 hanya memegang Read + Update, sehingga `Archive` tersembunyi untuk aktor itu dan langkah 17-20 tidak dapat dicapai. Notes spec sendiri menandai konflik ini (prasyarat TC-AC-PF-107 "aktor memiliki Delete").
+- **Karena:** cacat spec; Pre-setup #8 tidak diubah.
+- **Keputusan:** langkah 16-20 keluar dari e2e; aktor tidak diganti.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-10 (Pre-setup tidak diubah), dicatat 2026-11-12.
+- **Diterapkan di:** skrip PlansLicensingPlansFeatures 040 (`// @spec-decision: pending D-draft-ACPF-1`).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/decisions.md` L233-240.
+
+## D-116 Memilih Product pada form New Custom Plan adalah perubahan form (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-063` TC-AC-PF-160 langkah 16-19.
+- **Spec meminta:** setelah `[Clear Field]`, memilih Product `FAMS` lalu keluar lewat breadcrumb dianggap form identik (tanpa dialog `Unsaved Changes`).
+- **Kenyataannya:** form New Custom Plan dimulai tanpa Product (placeholder `Select product`, `Product must not be empty`); memilih `FAMS` adalah perubahan dari keadaan awal, jadi guard form menanyakan `Unsaved Changes` (run PF-s3-2: dialog terbuka di `/new-custom`).
+- **Karena:** perilaku guard form benar; cacat spec.
+- **Keputusan:** skrip mengonfirmasi `[Leave]` lalu melanjutkan; langkah 19 "tanpa dialog" tidak diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12 (di bawah delegasi pemilik 2026-10-31).
+- **Diterapkan di:** skrip PlansLicensingPlansFeatures 063 (`// @spec-decision: pending D-draft-PF-1`).
+- **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/integration-findings.md` L137-142 (D-draft-PF-1).
+
+## D-117 Changelog Group yang benar-benar kosong bukan state nyata; langkahnya pindah ke ui-client (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/SettingsGroup `TC-AC-SG-E2E-067` TC-AC-SG-242 langkah 30, Pre-setup #43 (`Distributor Changelog Kosong`).
+- **Spec meminta:** modal Changelog: Group milik entitas tanpa entri Group menampilkan empty state genuinely empty (`No changelog yet`, `Activities and changes will appear here.`).
+- **Kenyataannya:** Distributor tidak dapat dibuat di stack ini (BT-21), jadi entitasnya berdiri di Principal bersama. Changelog Group-nya memuat baris Group dari setiap suite yang membuat, mengganti nama, atau menghapus group di sana (Role & Permission, Settings User, Client, Plans & Features, Subscription).
+- **Karena:** Changelog Group yang kosong bukan state lingkungan ini. Aturan pemilik 2026-11-12: state yang tidak dapat dicapai menjadi spec-decision dan ui-client.
+- **Keputusan:** langkah 30 keluar dari e2e (pindah ke lapisan ui-client). Langkah 27-29 dan 31 tetap berjalan; langkah modal Changelog lain di 067-071 dan 114 membaca seed run ini saja.
+- **Diputuskan oleh:** pemilik, 2026-11-12 (aturan kelas state tak tercapai); dicatat Wangs-UI Coordinator 2026-11-12.
+- **Diterapkan di:** skrip SettingsGroup 067 (`gaps.check('spec-decision', 'pending D-draft-SG-067-EMPTY-CHANGELOG …')`).
+- **Sumber:** repo aplikasi `plans/admin-console-settings-group/decisions.md` L316-322.
+
+## D-118 Download Version History gagal dipicu dengan 5xx, bukan 422 (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/SettingsPrivacyPolicy `TC-AC-PP-E2E-007` TC-AC-PP-141 langkah 26.
+- **Spec meminta:** respons Download (export) dipaksa `422` lewat intercept.
+- **Kenyataannya:** berkas dibangun di server (`POST …/versions/export`, Export Contract v1); tidak ada input atau state nyata yang membuat export menjawab `422`. PRD V-03 / T-03 memberi satu teks untuk setiap kegagalan Download selain penolakan EC-28.
+- **Karena:** `422` di sini adalah injeksi kegagalan; transport fault `5xx` melewati jalur UI yang sama, dan aturan `422` dijaga uji backend.
+- **Keputusan:** langkah 26 memasang intercept `500` pada `…/versions/export`; toast error persisten `Error, failed to download Privacy-Policy-Version-History.` tetap diasersi (langkah 27-31).
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12 (di bawah delegasi pemilik 2026-10-31).
+- **Diterapkan di:** skrip SettingsPrivacyPolicy 007 (`// @spec-decision: pending D-draft-PP-141-fault-5xx`).
+- **Sumber:** repo aplikasi `apps/e2e/specs/AdminConsole/SettingsPrivacyPolicy/TC-AC-PP-E2E-007-resilience-baca-tabel-dan-export/common.test.ts` L118-128; `plans/admin-console-settings-privacy-policy/integration-findings.md` L88.
+
+## D-119 Aktor tanpa `manage_privacy_policy` tidak memiliki grup Settings (2026-11-10)
+
+- **Spec / langkah:** AdminConsole/SettingsUser `TC-AC-SU-E2E-016` TC-AC-SU-52 langkah 27-28 (Group Manager saja, `Dedi Kurnia`) dan 36-37 (Manage TAG stock saja, `Rudi Hartono`).
+- **Spec meminta:** kedua aktor membuka grup Settings di sidebar dan melihat `Privacy Policy` tanpa `User`.
+- **Kenyataannya:** aktor tanpa `manage_privacy_policy` tidak memiliki grup Settings sama sekali (core `routeAccess`, F-INT-SU-3), jadi anchor `Privacy Policy` tidak ada.
+- **Karena:** gerbang menu app; langkah anchor tidak dapat dicapai.
+- **Keputusan:** langkah anchor (buka grup Settings, `Privacy Policy` tampil) keluar dari e2e; ketiadaan `User` tetap diasersi tanpa anchor itu.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-10 (draf disetujui), dicatat 2026-11-12.
+- **Diterapkan di:** skrip SettingsUser 016 (`pending D-draft-SU-016-PP`).
+- **Sumber:** repo aplikasi `plans/admin-console-settings-user/decisions.md` L139.
+
+## D-120 Division login user tidak bisa kosong (2026-11-09)
+
+- **Spec / langkah:** Auth/LoginPassword `TC-AUTH-LP-E2E-039` TC-AUTH-LP-127 prasyarat (Winarsih Kusuma tanpa Employee ID, Position, dan Division) dan langkah 22 (Division "—").
+- **Spec meminta:** baris login Winarsih di `Global Settings > Activity Log > Session` menampilkan Employee ID "—", Position "—", dan Division "—".
+- **Kenyataannya:** Division wajib untuk login user: PRD `global-settings/user` §9.9 Validation Rules ("Division *"), V-09 "Division must not be empty"; kontrak create user mewajibkan `divisionId`; Division yang dipakai tidak bisa dihapus. Login user tanpa Division tidak dapat dicapai lewat produk.
+- **Karena:** PRD menang atas spec; cacat spec.
+- **Keputusan:** TC-AUTH-LP-127 hanya memverifikasi Employee ID "—" dan Position "—" (Winarsih dibuat tanpa keduanya); bagian Division dari langkah 22 keluar dari e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-09.
+- **Diterapkan di:** skrip LoginPassword 039 TC-AUTH-LP-127 langkah 22 (`// @spec-decision: pending D-draft-AUTH-2`).
+- **Sumber:** repo aplikasi `plans/auth/integration-findings.md` L861-869 (D-draft-AUTH-2).
+
+## D-121 Symbol wajib di Column Mapping Import Measurement (2026-11-11)
+
+- **Spec / langkah:** GlobalSettings/Import `TC-GS-IMPORT-E2E-014` TC-GS-IMPORT-887 langkah 14 dan TC-GS-IMPORT-886 langkah 77.
+- **Spec meminta:** Symbol opsional: tidak ada Error Banner (langkah 14) dan Error Banner tidak memuat `Symbol` (langkah 77) saat Symbol tetap "No Column".
+- **Kenyataannya:** TC-GS-IMPORT-56 (spec 015) dan app memperlakukan Symbol sebagai wajib; dengan Symbol pada "No Column" Error Banner sebelum Confirm mencantumkannya (run ImpCs-B3-20261112-0029: banner memuat "Unit Name" dan "Symbol").
+- **Karena:** spec bertentangan dengan TC-GS-IMPORT-56 dan app; catatan "Symbol opsional" pada 887 adalah cacat spec.
+- **Keputusan:** langkah mengasersi Error Banner yang mencantumkan Symbol.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-11.
+- **Diterapkan di:** skrip Import 014 (`pending D-draft-IMP-SYMBOL-REQUIRED`).
+- **Sumber:** repo aplikasi `plans/global-settings-import/decisions.md` L320-326.
+
+## D-122 Baris 5 ke bawah template User Login tanpa styling terlihat; format Text diizinkan (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/Import `TC-GS-IMPORT-E2E-168` TC-GS-IMPORT-451 langkah 16, 20, dan 23.
+- **Spec meminta:** langkah 23 "baris 5 ke bawah kosong tanpa styling"; langkah 16 dan 20 sel Employee ID, Active Period, dan Emergency Phone pada baris 5 berformat Text.
+- **Kenyataannya:** spec bertentangan dengan dirinya sendiri: format Text pada baris 5 adalah styling baris 5.
+- **Karena:** kedua langkah tidak dapat benar bersamaan.
+- **Keputusan:** baris 5 ke bawah tidak memuat nilai dan tanpa styling terlihat (tanpa fill, bold, warna font, wrap); format angka Text pada selnya (langkah 16 dan 20) diizinkan, seperti yang ditulis template backend. Langkah 23 diasersi dengan cara itu; langkah 19 dan 20 tetap seperti tertulis.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12.
+- **Diterapkan di:** skrip Import 168 langkah 23 (`pending D-draft-IMP-TEMPLATE-ROW5-STYLE`). 168 juga `library-gap`.
+- **Sumber:** repo aplikasi `plans/global-settings-import/decisions.md` L328-335.
+
+## D-123 Search `fajar n` di Modal Changelog User saat Modified By di-hide (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-078` TC-GS-USER-475 langkah 70.
+- **Spec meminta:** Search `fajar n` dengan kolom Modified By di-hide menampilkan `No results found`.
+- **Kenyataannya:** `fajar n` juga cocok dengan User Name yang tampil `Fajar Nugroho` (entri Create dan Role Pre-setup No. 4 miliknya sendiri), jadi tabel tidak kosong (run GSUR-C-3).
+- **Karena:** cacat spec: kata kunci cocok dengan kolom lain yang tampil.
+- **Keputusan:** langkah mengasersi bahwa kolom tersembunyi tidak dicari: tidak ada baris selain milik Fajar Nugroho, dan baris Create Beta (yang cocok hanya lewat Modified By `Fajar N`) tidak tampil; setelah unhide baris itu tampil.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12 (di bawah delegasi pemilik 2026-10-31).
+- **Diterapkan di:** skrip User 078 (`@spec-decision: pending D-draft-USER-2`). 078 juga `be-bug`.
+- **Sumber:** repo aplikasi `plans/global-settings-user/integration-findings.md` L1492-1498 (D-draft-USER-2).
+
+## D-124 Search `Create` di Modal Changelog User juga mencocokkan Field `Create` (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-083` TC-GS-USER-505 langkah 20.
+- **Spec meminta:** setelah Search `Create`, setiap baris berkas unduhan ber-Action `Create`.
+- **Kenyataannya:** Search mencocokkan semua kolom yang tampil; baris System Role (Action `Edit`, User Name `Manage user and role — Fajar Nugroho`, Field `Create`) ikut cocok (run GSUR-C-5: kolom Action berkas `["Edit","Edit","Edit"]` di samping baris Create).
+- **Karena:** cacat spec.
+- **Keputusan:** langkah mengasersi bahwa setiap baris memuat `create` di salah satu kolom yang dicari, bukan bahwa Action-nya `Create`.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-12 (di bawah delegasi pemilik 2026-10-31).
+- **Diterapkan di:** skrip User 083 (`@spec-decision: pending D-draft-USER-3`).
+- **Sumber:** repo aplikasi `plans/global-settings-user/integration-findings.md` L1588-1594 (D-draft-USER-3).
+
+## D-125 Foto user yang dicabut lewat admin override File Manager: Old Value nama berkas, New Value `—` (2026-11-11)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-139` TC-GS-USER-918 langkah 83.
+- **Spec meminta:** baris Changelog Detail Action `Edit`, Field `Photo`, Old Value `—`, New Value `—`, Modified By `Siti N`.
+- **PRD:** `global-settings/user` user.md L1580: pencabutan foto tercatat dengan Old Value nama berkas dan New Value `—`.
+- **Karena:** PRD menang atas spec.
+- **Keputusan:** satu baris Edit/Photo diasersi; nilai Old/New `—`/`—` dari spec tidak diasersi (BT-GS-USER-16). 139 juga `feature-gap:be` dan `hardware-gap`.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-11.
+- **Diterapkan di:** skrip User 139 (`gaps.check('spec-decision', 'pending D-draft-gs-user-photo-fm-removal …')`).
+- **Sumber:** repo aplikasi `plans/global-settings-user/integration-findings.md` L1837; `apps/e2e/specs/GlobalSettings/User/TC-GS-USER-E2E-139-…/common.test.ts` L335-338.
+
+## D-126 Principal kedua tidak dapat dibuat: blok Device SKU per plan dan Principal Tanpa SKU keluar dari e2e (2026-11-10)
+
+- **Spec / langkah:** AdminConsole/SettingsDeviceSku `TC-AC-DS-E2E-182` TC-AC-DS-559 langkah 1-13 (Pre-setup #41); `TC-AC-DS-E2E-095` TC-AC-DS-593 langkah 22-27 (Pre-setup #21).
+- **Spec meminta:** empat Principal, masing-masing pada plan Starter, Growth, Professional, dan Enterprise (182); Total Control Principal Tanpa SKU dengan dropdown filter Brand dan Device Name `No options available` (095).
+- **Kenyataannya:** EMS mengizinkan satu Principal; Principal kedua dijawab `409`, sehingga state itu tidak dapat ada.
+- **Karena:** cacat spec; state tidak nyata, bukan helper gap.
+- **Keputusan:** blok tersebut keluar dari e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-10 (dari BE), dicatat 2026-11-12.
+- **Diterapkan di:** skrip SettingsDeviceSku 182 dan 095 (`gaps.check('spec-decision', 'pending D-draft-DS-PRINCIPALS …')`).
+- **Sumber:** repo aplikasi `plans/admin-console-settings-device/decisions.md` L215.
+
+## D-127 Publish Privacy Policy tanpa idempotency key (2026-11-10)
+
+- **Spec / langkah:** AdminConsole/SettingsPrivacyPolicy `TC-AC-PP-E2E-030` TC-AC-PP-91 langkah 15, 17-18 dan TC-AC-PP-206 langkah 68-70; `TC-AC-PP-E2E-031` TC-AC-PP-92 langkah 8-22, TC-AC-PP-93 langkah 28-62, TC-AC-PP-202 langkah 63-80; `TC-AC-PP-E2E-032` TC-AC-PP-94 langkah 7-22, TC-AC-PP-212 langkah 31-39.
+- **Spec meminta:** idempotency key pada Publish, replay jawaban pertama, `409` untuk key yang dipakai ulang (dialog D-03), dan masa berlaku key 24 jam.
+- **PRD:** Publish tanpa idempotency key (ACPP-LOGIC-07d/07e, LLD L260); timeout 30 detik ada di sisi klien (PRD L496); masa berlaku key tidak ada di PRD, LLD, maupun OpenAPI.
+- **Karena:** PRD menjadi acuan. BT-GAP-15 ditarik.
+- **Keputusan:** pengiriman ulang adalah request baru; langkah yang butuh key, replay, atau `409` keluar dari e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-10 (draf disetujui, PRD = acuan).
+- **Diterapkan di:** skrip SettingsPrivacyPolicy 030, 031, 032 (`gaps.check('spec-decision', 'pending D-draft-PP-IDEMP …')` atau komentar `// @spec-decision`).
+- **Sumber:** repo aplikasi `plans/admin-console-settings-privacy-policy/decisions.md` L102.
+
+## D-128 Download Privacy Policy di atas 5.000 baris tidak dijalankan di e2e (2026-11-10)
+
+- **Spec / langkah:** AdminConsole/SettingsPrivacyPolicy `TC-AC-PP-E2E-047` TC-AC-PP-207 langkah 1-10.
+- **Spec meminta:** Download lebih dari 5.000 baris (Riwayat D, 5.001 versi) diproses sinkron dan seluruh baris ada pada berkas.
+- **Kenyataannya:** PRD sejalan dengan spec (sinkron; LLD L369/L653). Spec di luar filter (Medium, Edge), dan seed 5.001 versinya tidak dapat ditulis (gateway `429`, BT-AC-PP-2).
+- **Karena:** seed volume tidak dapat dibentuk di stack uji; BT-GAP-14 ditarik.
+- **Keputusan:** spec 047 dilewati di e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-10 (draf disetujui, PRD = acuan).
+- **Diterapkan di:** skrip SettingsPrivacyPolicy 047 (`pending D-draft-PP-EXPORT`).
+- **Sumber:** repo aplikasi `plans/admin-console-settings-privacy-policy/decisions.md` L104.
+
+## D-129 Baris Failed penolakan Jalur A di Event Log Activate tidak memuat Device Name (2026-11-10)
+
+- **Spec / langkah:** GlobalSettings/HardwareHandheldReader `TC-GS-HHR-E2E-013` TC-GS-HHR-448/449 langkah 17-36, khususnya langkah 25 dan 34.
+- **Spec meminta:** baris `Failed` Event Log Activation untuk penolakan Jalur A menampilkan Device Name `Zebra RFID Reader (SKU-HHR-01)`.
+- **Kenyataannya:** body Jalur A (`{"rangeType":"Long Range","serialNumber":"SN-HHR-00201","readerPower":31}` atau `aliasName` 121 karakter) tidak memuat `deviceNameId` maupun `skuId`. LLD menjalankan validasi struktur sebelum mencari unit (L326) dan menulis `deviceName` null bila tidak ada yang dipilih (L398); run hhr-s2-r3 menunjukkan `deviceName: null`.
+- **Karena:** LLD menjadi acuan; BT-GAP-09 ditarik.
+- **Keputusan:** Device Name pada baris tersebut tidak diasersi; kolom lain baris itu (Range Type, PIC) tetap seperti spec.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-10 (draf disetujui).
+- **Diterapkan di:** skrip HardwareHandheldReader 013 (`pending D-draft-HHR-LOGNAME`).
+- **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` L125; `plans/global-settings-hardware/integration-findings.md` L113.
+
+## D-130 Format tanggal `MM/dd/yyyy` tidak ada di General Settings (2026-11-10)
+
+- **Spec / langkah:** GlobalSettings/HardwareHandheldReader `TC-GS-HHR-E2E-071` blok TC-GS-HHR-392, 393, 394, 395 (format `MM/dd/yyyy` 12-hour).
+- **Spec meminta:** General Settings Client A diatur ke `MM/dd/yyyy` 12-hour, lalu list, filter, dan log tampil dalam format itu.
+- **Kenyataannya:** enum `dateFormat` OpenAPI general-settings (L283) dan LLD (L88) tidak memuat `MM/dd/yyyy`; `PUT …/general-settings` menjawab `422 Invalid date format` (F-INT-HHR-21/45), sesuai kontrak.
+- **Karena:** format spec tidak ada; BT-GAP-10 ditarik.
+- **Keputusan:** blok tersebut keluar dari e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-10 (draf disetujui).
+- **Diterapkan di:** skrip HardwareHandheldReader 071 (`pending D-draft-HHR-DATEFMT`).
+- **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` L124.
