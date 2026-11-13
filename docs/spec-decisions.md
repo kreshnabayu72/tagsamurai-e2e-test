@@ -1872,3 +1872,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** SettingsRolePermission 118.
 - **Sumber:** PRD settings-role-permission L815, L1727.
+
+## D-187 Pesan error Field menggantikan helper text (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `160` TC-AC-CS-485 langkah 11-13 (Activate Trial, batas Trial Duration).
+- **Spec meminta:** setelah mengetik 46, helper `"Maximum 45 days"` tetap tampil bersama pesan error validasi.
+- **Kenyataannya:** komponen Field Wangs UI menampilkan pesan error di tempat helper text, sehingga helper tidak tampil selama ada error. Ini perilaku mayoritas design system (MUI `helperText` diganti error, Chakra `FormHelperText` vs `FormErrorMessage`, React Spectrum `description` diganti `errorMessage`). Aplikasi tidak menyembunyikan helper sendiri.
+- **Keputusan:** perilaku komponen menang. Helper `"Maximum 45 days"` diasersi sebelum nilai tidak valid diketik. Setelah 46 diketik, yang diasersi pesan error dan nilai batas yang dibaca live, tanpa helper.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** LicenseAllocationSubscription 160; berlaku sama untuk spec lain yang mengharapkan helper dan error tampil bersamaan pada satu Field.
+- **Sumber:** perilaku komponen Field Wangs UI; aturan perilaku komponen mengikuti mayoritas design system.
