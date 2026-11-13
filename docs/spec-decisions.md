@@ -1840,7 +1840,7 @@ Aturan:
 - **Kenyataannya:** user.md L4 merujuk `auth-foundation.md` §9 sebagai kanon User Log. Kanon itu menulis Note `Login with password` untuk login sukses dengan password (L320, L493) dan `Logged out` untuk logout manual (L386). Backend menulis persis itu, dan Auth LoginPassword 126/039 mengasersi teks yang sama. Contoh di user.md §8.4 hanya ilustrasi.
 - **Keputusan:** Note diasersi sesuai kanon auth-foundation §9 (`Login with password`, `Logged out`). Kolom Status tetap `—` untuk Logout dan Session (auth-foundation L485).
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
-- **Diterapkan di:** User 148.
+- **Diterapkan di:** User 148. Diperluas 2026-11-14: TC-GS-USER-938 (Reset Password sukses) mengasersi Note `Password updated successfully` sesuai auth-foundation L505, L516, L628 dan reset-password L799, bukan `Reset password via email link`; berlaku sama untuk Note User Log lain yang tertulis di kanon auth-foundation §9.
 - **Sumber:** auth-foundation.md L320, L386, L485, L493; user.md L4, L785, L787; prd-gap-registry GAP-306.
 
 ## D-184 Submit import GPS lebih dari 5.000 baris kembali ke Detail SKU, Preview tidak tetap tampil (2026-11-14)
