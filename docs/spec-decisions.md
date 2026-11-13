@@ -1922,3 +1922,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** GlobalSettings Role 048.
 - **Sumber:** org-uiux foundation prd-conventions L2352.
+
+## D-192 Save Lifecycle Settings dengan nilai null atau tipe salah dijawab 422 dengan pesan tipe dari LLD (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingLifecycleSettings `173`-`176`, `178`-`180`: langkah permintaan Save langsung ke server dengan field dikosongkan (null) atau bertipe salah (desimal, string), misalnya TC-AC-LCS-612, 613, 616, 620, 624, 628, 632, 636.
+- **Spec meminta:** permintaan ditolak server dengan status `400` ("field wajib terisi").
+- **Kenyataannya:** LLD plans-licensing-lifecycle-settings L62 dan L150 (juga L148, L313; openapi L149, L181-184): JSON yang tidak bisa di-parse → `400`; field `null` → `422` `"Expected integer, but received null"` (`"Expected boolean, but received null"` untuk `requireApprovalForTrial`); tipe salah → `422` `"Expected integer, but received <type>"`. Backend menjawab persis seperti itu sejak dev 42bf76d (2026-11-11).
+- **Keputusan:** kontrak LLD menang. Langkah tersebut mengasersi `422` dengan pesan tipe dari LLD, bukan `400`. Langkah reload yang memastikan nilai tersimpan tidak berubah tetap diasersi seperti di spec. Menggantikan D-draft-LCS-1.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** PlansLicensingLifecycleSettings 173, 174, 175, 176, 178, 179, 180.
+- **Sumber:** LLD plans-licensing-lifecycle-settings L62, L148, L150, L313; run LCS-b-win-20261114-l (board 1387).
