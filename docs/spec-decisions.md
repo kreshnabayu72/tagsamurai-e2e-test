@@ -1832,3 +1832,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-13.
 - **Diterapkan di:** TagStock 085.
 - **Sumber:** PRD tag-stock L470, L481, L494, L1032; D-016.
+
+## D-183 Note User Log untuk Login dan Logout mengikuti kanon auth-foundation (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/User `148` TC-GS-USER-933 langkah 11, TC-GS-USER-935.
+- **Spec meminta:** kolom Note di User Log berisi `—` untuk Login sukses dan Logout biasa (mengikuti contoh tabel PRD user.md §8.4 L785/L787).
+- **Kenyataannya:** user.md L4 merujuk `auth-foundation.md` §9 sebagai kanon User Log. Kanon itu menulis Note `Login with password` untuk login sukses dengan password (L320, L493) dan `Logged out` untuk logout manual (L386). Backend menulis persis itu, dan Auth LoginPassword 126/039 mengasersi teks yang sama. Contoh di user.md §8.4 hanya ilustrasi.
+- **Keputusan:** Note diasersi sesuai kanon auth-foundation §9 (`Login with password`, `Logged out`). Kolom Status tetap `—` untuk Logout dan Session (auth-foundation L485).
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** User 148.
+- **Sumber:** auth-foundation.md L320, L386, L485, L493; user.md L4, L785, L787; prd-gap-registry GAP-306.
