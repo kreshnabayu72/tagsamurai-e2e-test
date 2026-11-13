@@ -5,11 +5,12 @@ layer: be-e2e
 priority: Medium
 caseType: Positive
 status: draft
-sourceRules: [FAREG-LOGIC-20j, "§9.2#p8", "§9.6#r8"]
+sourceRules: [FAREG-LOGIC-20n, FAREG-LOGIC-20o, "§9.2#p8", "§9.6#r8"]
 smoke: []
 dependsOn: []
 trace:
-  FAREG-LOGIC-20j: [3, 4, 5, 6, 9, 10, 13, 15, 20, 21]
+  FAREG-LOGIC-20n: [6, 9, 10]
+  FAREG-LOGIC-20o: [3, 4, 5, 13, 15, 20, 21]
   "§9.2#p8": [13, 15]
   "§9.6#r8": [3, 7, 16, 18, 25, 27, 28]
 owner: BE

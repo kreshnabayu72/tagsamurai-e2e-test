@@ -5,11 +5,13 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
-sourceRules: [FAREG-LOGIC-01t, §9.2#p8, EB-XM-2@import, EB-XM-3]
+sourceRules: [FAREG-LOGIC-01t, FAREG-LOGIC-01u, FAREG-LOGIC-01v, §9.2#p8, EB-XM-2@import, EB-XM-3]
 smoke: []
 dependsOn: ["Fixed Asset Import: impor aset"]
 trace:
-  FAREG-LOGIC-01t: [2, 5, 6, 8, 10]
+  FAREG-LOGIC-01t: [5, 8]
+  FAREG-LOGIC-01u: [6]
+  FAREG-LOGIC-01v: [2, 10]
   §9.2#p8: [5, 8]
   EB-XM-2@import: [5, 8, 17, 22]
   EB-XM-3: [15, 17, 21, 22]

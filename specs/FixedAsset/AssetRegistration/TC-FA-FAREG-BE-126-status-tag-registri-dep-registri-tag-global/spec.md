@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Medium
 caseType: Positive
 status: draft
-sourceRules: [FAREG-LOGIC-03p, FAREG-LOGIC-04e, FAREG-LOGIC-04h, FAREG-LOGIC-04n, FAREG-LOGIC-04p, "§9.4.2#r30", "§9.4.2#r31", "§9.4.2#r54", "§9.4.2#r55", "§9.6#r9"]
+sourceRules: [FAREG-LOGIC-03p, FAREG-LOGIC-04e, FAREG-LOGIC-04h, FAREG-LOGIC-04n, FAREG-LOGIC-04p, FAREG-LOGIC-04r, FAREG-LOGIC-04s, FAREG-LOGIC-04t, FAREG-LOGIC-04u, "§9.4.2#r30", "§9.4.2#r31", "§9.4.2#r54", "§9.4.2#r55", "§9.6#r9"]
 smoke: []
 dependsOn: ["Registri Tag Global: status Tag"]
 trace:
@@ -13,7 +13,11 @@ trace:
   FAREG-LOGIC-04e: [14]
   FAREG-LOGIC-04h: [5, 38, 39, 46]
   FAREG-LOGIC-04n: [3, 5, 10, 14, 15, 17, 19]
-  FAREG-LOGIC-04p: [34, 35, 36, 41, 42, 43, 48, 50]
+  FAREG-LOGIC-04p: [34]
+  FAREG-LOGIC-04r: [35]
+  FAREG-LOGIC-04s: [36, 41]
+  FAREG-LOGIC-04t: [42, 48]
+  FAREG-LOGIC-04u: [43, 50]
   "§9.4.2#r30": [2, 5]
   "§9.4.2#r31": [12, 14, 15]
   "§9.4.2#r54": [29, 30, 32]

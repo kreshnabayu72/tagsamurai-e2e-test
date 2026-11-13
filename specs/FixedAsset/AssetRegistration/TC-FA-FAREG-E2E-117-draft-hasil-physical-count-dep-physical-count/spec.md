@@ -5,11 +5,12 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
-sourceRules: [FAREG-LOGIC-01t, §9.2#p8, EB-XM-2@audit]
+sourceRules: [FAREG-LOGIC-01t, FAREG-LOGIC-01u, §9.2#p8, EB-XM-2@audit]
 smoke: []
 dependsOn: ["Physical Count: Register as asset"]
 trace:
   FAREG-LOGIC-01t: [6, 8]
+  FAREG-LOGIC-01u: [6, 8]
   §9.2#p8: [6, 8]
   EB-XM-2@audit: [6, 8]
 anchor: []

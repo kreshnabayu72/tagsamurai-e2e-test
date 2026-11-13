@@ -5,14 +5,14 @@ layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
-sourceRules: [F-FAREG-06.k1, FAREG-LOGIC-06j, FAREG-LOGIC-07j, FAREG-LOGIC-20i, "§4.2.4#p1", "§4.2.4#b6", "§4.2.4#b13", "§9.4.2#r13", S-REG-13]
+sourceRules: [F-FAREG-06.k1, FAREG-LOGIC-06j, FAREG-LOGIC-07j, FAREG-LOGIC-20l, "§4.2.4#p1", "§4.2.4#b6", "§4.2.4#b13", "§9.4.2#r13", S-REG-13]
 smoke: [S-REG-13]
 dependsOn: []
 trace:
   F-FAREG-06.k1: 12
   FAREG-LOGIC-06j: [4, 7, 9]
   FAREG-LOGIC-07j: [29, 36]
-  FAREG-LOGIC-20i: [22, 23]
+  FAREG-LOGIC-20l: [22, 23]
   "§4.2.4#p1": 20
   "§4.2.4#b6": [11, 13]
   "§4.2.4#b13": 29

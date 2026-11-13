@@ -5,11 +5,11 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
-sourceRules: ["FAREG-LOGIC-20j", "§4.6#b2", "§4.6#b3", "§4.6#b4", "§4.6#b5", "§4.6#b6"]
+sourceRules: ["FAREG-LOGIC-20p", "§4.6#b2", "§4.6#b3", "§4.6#b4", "§4.6#b5", "§4.6#b6"]
 smoke: []
 dependsOn: []
 trace:
-  "FAREG-LOGIC-20j": 2
+  "FAREG-LOGIC-20p": 2
   "§4.6#b2": [3, 11, 18]
   "§4.6#b3": [8, 9, 11, 14]
   "§4.6#b4": [20, 22, 23, 26]

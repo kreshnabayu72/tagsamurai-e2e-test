@@ -5,11 +5,11 @@ layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
-sourceRules: [FAREG-LOGIC-20i, D-REG-17]
+sourceRules: [FAREG-LOGIC-20k, D-REG-17]
 smoke: [D-REG-17]
 dependsOn: []
 trace:
-  FAREG-LOGIC-20i: [8, 9]
+  FAREG-LOGIC-20k: [8, 9]
   D-REG-17: 6
 anchor: []
 coverage:
