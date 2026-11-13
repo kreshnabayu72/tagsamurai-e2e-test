@@ -1868,7 +1868,7 @@ Aturan:
 - **Spec / langkah:** AdminConsole/SettingsRolePermission `118` TC-AC-RP-400 langkah 37-39.
 - **Spec meminta:** setelah PATCH ditolak `403 target_tier` (target baru dijadikan Total Control oleh sesi lain), langkah 38 meminta checkbox "kembali ke nilai semula" (tidak tercentang, nilai saat render), sedangkan langkah 39 meminta baris di-refresh.
 - **Kenyataannya:** kedua langkah bertentangan untuk target Total Control, karena baris yang di-refresh menampilkan C/R/U/D tercentang. PRD settings-role-permission L815 dan L1727: aksi tulis atas baris yang sudah berubah tier oleh admin lain sejak render → toast netral `"This permission is no longer available."` dan "data di-refresh ke nilai terbaru, perubahan tidak tersimpan".
-- **Keputusan:** langkah 38 mengasersi checkbox pada nilai terbaru dari server setelah refresh (untuk target Total Control: tercentang), bukan nilai saat render. Toast netral dan refresh baris (langkah 39) diasersi seperti di spec. Aplikasi tidak diubah.
+- **Keputusan:** langkah 38 mengasersi checkbox pada nilai terbaru dari server setelah refresh (untuk target Total Control: tercentang), bukan nilai saat render. Refresh baris (langkah 39) diasersi seperti di spec. Spec tidak meminta toast, tetapi PRD L815/L1727 meminta toast netral `"This permission is no longer available."`, jadi toast itu ikut diasersi. Aplikasi diperbaiki supaya `403 target_tier` menampilkan toast netral itu, bukan teks mentah `Forbidden`.
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** SettingsRolePermission 118.
 - **Sumber:** PRD settings-role-permission L815, L1727.
