@@ -1782,7 +1782,7 @@ Aturan:
 - **Diterapkan di:** LicenseAllocationSubscription 076, 113.
 - **Sumber:** LLD admin-console/license-allocation-subscription L989, L991-L1007, L2127; repo aplikasi `plans/_program/fail-decisions.md`.
 
-## D-178 Nama objek baris Changelog term subscription memakai suffix kode produk (2026-11-13)
+## D-178 Nama objek baris Changelog term subscription memakai suffix kode produk (2026-11-13) (ditarik oleh D-179)
 
 - **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `113` TC-456 langkah 44 dan 46, dan `079` TC-296.
 - **Spec meminta:** baris Changelog Trial dengan nama objek `<Client>` saja.
@@ -1792,3 +1792,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (temuan Integration B run 1251; cek LLD oleh sesi BE).
 - **Diterapkan di:** LicenseAllocationSubscription 079, 113.
 - **Sumber:** LLD admin-console/license-allocation-subscription L654, L661, L881, L888, L1000, L1007, L1234, L1245, L2108-L2172.
+
+## D-179 D-178 ditarik: nama objek baris Changelog Trial adalah drift PRD vs LLD, diskip (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `113` TC-456 langkah 44 dan 46, dan `079` TC-296 (asersi nama objek baris Changelog Trial).
+- **Dasar D-178 keliru:** D-178 menyatakan PRD tidak mendefinisikan nama objek. Ternyata PRD license-allocation-subscription §4.1.2 L625 dan §8.1 menetapkan sel "Client — Product" untuk baris Trial berisi `[Client Name]` saja (Activate L1474, Edit Trial L1487-L1490, Cancel Request (Trial) L1495, Timeout Auto-Cancel (Trial) L1496, Resubmit (Trial) L1497). Baris paid berisi `[Client Name] — [Product Name]`. Contoh JSON LLD L1245 sesuai PRD, sedangkan rumus prosa LLD L1234 (dan stack) menulis `<Client> — <kode produk>`.
+- **Karena:** ini contract drift PRD vs LLD. Aturan owner: drift diskip, dan issue diposting supaya LLD diperbaiki (owner 2026-11-13).
+- **Keputusan:** asersi nama objek baris Changelog Trial pada langkah-langkah itu diskip dengan gate `BT-AC-CS-37` (enterprise-management-service#224), sampai pemilik LLD/PRD memutuskan. Tidak ada asersi pengganti. D-178 ditarik.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (koreksi dari sesi BE).
+- **Diterapkan di:** LicenseAllocationSubscription 079, 113.
+- **Sumber:** PRD license-allocation-subscription L625, L1474, L1487-L1490, L1495-L1497; LLD L1234, L1245; enterprise-management-service#224.
