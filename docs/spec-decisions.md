@@ -1952,3 +1952,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** NonLoginUser 116.
 - **Sumber:** PRD non-login-user L230; PRD user L1436 (V-15).
+
+## D-195 Pembacaan Hardware Stock di spec HHR: kondisi Client, log Hardware Stock, dan total unit (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/HardwareHandheldReader `068` (TC-GS-HHR-376..382), `069` (TC-GS-HHR-387, 388), `077` (TC-GS-HHR-375); berlaku sama untuk spec lain yang membaca Hardware Stock dengan istilah yang sama.
+- **Spec meminta:** membaca `Client Reported Condition` dan `Status` unit, "Changelog Hardware Stock", dan "total unit Hardware Stock".
+- **Kenyataannya:** Stock Detail tidak punya kolom `Client Reported Condition`; kondisi laporan Client tampil di sel `Status` Tab In Use (PRD hardware-stock §4.1.5). Hardware Stock tidak punya tombol Changelog; riwayat operasinya ada di Activity Log §8.2 (`change_logs`, PRD L1713, L1742), termasuk `Device Released` dan `Device Activation Canceled`. Stock List Principal memuat SKU suite lain, jadi total seluruh list tidak deterministik.
+- **Keputusan:** (1) `Client Reported Condition` = sel `Status` Tab In Use, dan "Status tidak berubah" = tab yang memuat unit itu (In Use/Available). (2) "Changelog Hardware Stock" = baris Activity Log Object `Hardware` (§8.2). (3) "Total unit Hardware Stock" = jumlah `Total Registered` baris Stock List dari SKU katalog Handheld Reader milik spec (Search `SKU-HHR`).
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** HardwareHandheldReader 068, 069, 077.
+- **Sumber:** PRD admin-console hardware-stock §4.1.5, L1713, L1742.
