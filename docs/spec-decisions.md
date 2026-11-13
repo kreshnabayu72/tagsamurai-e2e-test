@@ -1822,3 +1822,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-13.
 - **Diterapkan di:** LicenseAllocationSubscription 030.
 - **Sumber:** PRD license-allocation-subscription §4.3 baris Product (L427); `useSubscriptionFormDialogViewModel.ts` L283-289.
+
+## D-182 Field IMEI Add Stock menyaring input: hanya digit, berhenti di 15 (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/TagStock `TC-AC-ACTS-E2E-085` TC-247, langkah yang mengetik IMEI 16 digit, IMEI berhuruf, dan IMEI berspasi.
+- **Spec meminta:** input tidak valid itu diketik apa adanya lalu ditandai tidak valid.
+- **Kenyataannya:** field IMEI di Add Stock (helper PRD tag-stock L1032 "Digits only, exactly 15 digits.") menyaring input saat diketik: huruf dan spasi dibuang, dan input berhenti di 15 digit. Jadi ketiga input itu tidak bisa ada di field. Pola yang sama dengan D-016 (emoji dibuang di level input).
+- **Keputusan:** perilaku komponen menang. Langkah itu mengasersi isi field setelah diketik: hanya digit, maksimal 15 digit pertama. IMEI yang tetap tidak valid setelah disaring (kurang dari 15 digit, mis. `12345`) tetap diasersi sebagai Invalid Format sesuai PRD L470/L481/L494.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-13.
+- **Diterapkan di:** TagStock 085.
+- **Sumber:** PRD tag-stock L470, L481, L494, L1032; D-016.
