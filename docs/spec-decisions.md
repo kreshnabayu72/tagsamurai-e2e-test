@@ -1942,3 +1942,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** Client 131.
 - **Sumber:** LLD admin-console client L1425, L1517, L1536; openapi L1608, L1782.
+
+## D-194 Edit pertama Login User hasil Convert wajib memilih Access (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/NonLoginUser `116` TC-GS-NLU-428 langkah 24-26.
+- **Spec meminta:** user hasil Convert diedit hanya First Name-nya (`Sudah` → `Sudahx`), lalu [Save] dan popup Edit menutup.
+- **Kenyataannya:** PRD non-login-user L230: setelah Convert, akun berstatus Pending Activation dengan 0 Access sebagai keadaan transisi, dan validasi minimal 1 Access berlaku pada Edit berikutnya (user.md §9.9, V-15 L1436: `"Access must not be empty"`). Edit yang hanya mengubah First Name tidak bisa disimpan, dan popup tetap terbuka dengan error V-15.
+- **Keputusan:** langkah 25 mengubah First Name dan memilih satu Access dalam Edit yang sama sebelum [Save], seperti yang dilakukan admin menurut PRD. Langkah lanjutan yang membaca Changelog menerima entri Access yang ikut tercatat.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** NonLoginUser 116.
+- **Sumber:** PRD non-login-user L230; PRD user L1436 (V-15).
