@@ -1892,3 +1892,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** LicenseAllocationSubscription 046.
 - **Sumber:** PRD license-allocation-subscription L513, L516.
+
+## D-189 Pin kolom maksimal 3 per tabel (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/SettingsUser `085` langkah 41 (pin 9 kolom) dan `086` langkah 24 (pin 5 kolom); berlaku sama untuk spec lain yang mem-pin lebih dari 3 kolom.
+- **Spec meminta:** lebih dari 3 kolom di-pin sekaligus di Setup Column.
+- **Kenyataannya:** prd-conventions §9 L1455 membatasi pin maksimal 3 kolom per tabel (kolom Checkbox dan Actions tidak dihitung). Komponen Setup Column Wangs UI menerapkan batas itu (`maxPinnedColumns` default 3).
+- **Keputusan:** spec cacat pada jumlah pin. Skrip mem-pin 3 kolom pertama yang diminta spec, lalu mengasersi pin kolom ke-4 tidak bisa diaktifkan (disabled) dan hint batas tampil. Langkah lanjutan yang membaca kolom ter-pin memakai 3 kolom itu.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** SettingsUser 085, 086.
+- **Sumber:** org-uiux foundation prd-conventions §9 L1455.
