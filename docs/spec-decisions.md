@@ -1781,3 +1781,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (temuan Integration B, run l; cek LLD oleh sesi BE).
 - **Diterapkan di:** LicenseAllocationSubscription 076, 113.
 - **Sumber:** LLD admin-console/license-allocation-subscription L989, L991-L1007, L2127; repo aplikasi `plans/_program/fail-decisions.md`.
+
+## D-178 Nama objek baris Changelog term subscription memakai suffix kode produk (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `113` TC-456 langkah 44 dan 46, dan `079` TC-296.
+- **Spec meminta:** baris Changelog Trial dengan nama objek `<Client>` saja.
+- **Kenyataannya:** LLD license-allocation-subscription menetapkan `objectName = entities.company_name || ' — ' || products.code` untuk semua baris Changelog term: Trial create L1234, Add L661 (contoh L654), Edit L888 (contoh L881), Renew L1007 (contoh L1000). Job Timeout Auto-Cancel dan Scheduled Flip (L2108-L2172) mengikuti aturan yang sama. Contoh JSON Trial create L1245 (`"PT Bintang Timur"` tanpa suffix) bertentangan dengan rumus prosa dan tiga contoh lain, jadi itu ketidakkonsistenan dokumen. PRD tidak mendefinisikan nilai nama objek. Stack menulis `<Client> — <kode produk>`, misalnya `… — SIEM`.
+- **Karena:** PRD diam soal nilai ini, sehingga LLD yang menjadi kontrak. Ini bukan drift yang diskip.
+- **Keputusan:** langkah-langkah itu mengasersi nama objek `<Client> — <kode produk>` sesuai rumus LLD. Ketidakkonsistenan contoh L1245 diteruskan ke pemilik LLD.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (temuan Integration B run 1251; cek LLD oleh sesi BE).
+- **Diterapkan di:** LicenseAllocationSubscription 079, 113.
+- **Sumber:** LLD admin-console/license-allocation-subscription L654, L661, L881, L888, L1000, L1007, L1234, L1245, L2108-L2172.
