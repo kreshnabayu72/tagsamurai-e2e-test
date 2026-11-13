@@ -1852,3 +1852,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** TagStock 092 (dan 887 bila berlaku).
 - **Sumber:** PRD tag-stock L900 (FI-05), L1056, L1969 (T-23).
+
+## D-185 Bulk Delete Device Name: ID yang sudah dihapus admin lain dihitung terhapus, bukan "skipped" (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/SettingsDeviceName `184` TC-233 dan `185` TC-579.
+- **Spec meminta:** bila salah satu ID terpilih sudah dihapus admin lain, toast menyebut "Some items were skipped".
+- **Kenyataannya:** PRD settings-device-name T-08 (L555) memakai "Some items were skipped" hanya untuk item yang diblok ("still has SKUs or registered devices"). LLD DELETE (L406, L409) memperlakukan ID yang sudah tidak ada sebagai idempoten: dilaporkan `status: deleted`, dan pesan 200-nya `Success, device name has been deleted.` bila tidak ada yang diblok.
+- **Keputusan:** langkah itu mengasersi toast sukses biasa `"Success, device name has been deleted."` tanpa kalimat skipped. Bila semua ID sudah tidak ada (204), berlaku T-09 `"This device name is no longer available."` (PRD L556).
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** SettingsDeviceName 184, 185.
+- **Sumber:** PRD settings-device-name L555, L556; LLD settings-device-name L406, L409, L456.
