@@ -1902,3 +1902,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** SettingsUser 085, 086.
 - **Sumber:** org-uiux foundation prd-conventions §9 L1455.
+
+## D-190 Activate Trial: plan default di-archive di antara isi form dan Submit tidak diuji di e2e (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `048` TC-AC-CS-186 langkah 17-26.
+- **Spec meminta:** form Activate Trial diisi dengan plan default `Growth`, plan itu di-archive lewat API sebelum [Submit], lalu muncul error inline V-17 `"This plan no longer exists. Please select another."`, field Plan dikosongkan, dan opsinya dimuat ulang tanpa Growth.
+- **Kenyataannya:** dropdown Plan trial hanya berisi plan default aktif (LLD license-allocation-subscription L411), jadi plan Custom milik run tidak bisa menggantikannya. Plan default FAMS dipakai bersama semua spec di stack, dan archive plan default tidak bisa dibatalkan (tidak ada un-archive di API Plans & Features). Plan default milik run juga tidak bisa dibuat: `POST plans-features/default` menjawab `409 "This product already has the maximum number of paid plans (3)"` (slot 3, 2026-11-14). State itu hanya bisa dibentuk dengan merusak data bersama atau lewat route dev.
+- **Keputusan:** langkah 17-26 keluar dari e2e. Validasi ulang server V-17 dijaga unit test backend. Penanganan UI atas jawaban V-17 (error inline, Plan dikosongkan, opsi dimuat ulang) dijaga di lapisan ui-client dengan respons yang di-intercept. Langkah 1-16 tetap berjalan, dan 048 tidak lagi masuk serial-specs.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** LicenseAllocationSubscription 048.
+- **Sumber:** PRD license-allocation-subscription L512 (V-17); LLD license-allocation-subscription L410-L411; respons 409 plans-features/default (run CS-048-win-20261114-d).
