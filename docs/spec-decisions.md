@@ -1882,3 +1882,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** LicenseAllocationSubscription 160; berlaku sama untuk spec lain yang mengharapkan helper dan error tampil bersamaan pada satu Field.
 - **Sumber:** perilaku komponen Field Wangs UI; aturan perilaku komponen mengikuti mayoritas design system.
+
+## D-188 Activate Trial: field Trial Asset Quota baru tampil setelah Product FAMS/SAMS dipilih (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `046` TC-AC-CS-176 langkah 5.
+- **Spec meminta:** field Trial Asset Quota (placeholder `"Enter asset quota"`, helper `"Maximum 200 assets"`) tampil di form Activate Trial sebelum Product dipilih.
+- **Kenyataannya:** PRD license-allocation-subscription L516 menyatakan Asset Quota "Tampil hanya FAMS/SAMS", dan L513 menyatakan Product "menentukan field quota mana yang tampil". Sebelum Product dipilih, field quota tidak tampil.
+- **Keputusan:** langkah 5 mengasersi Trial Asset Quota (placeholder dan helper) setelah Product FAMS atau SAMS dipilih. Spec ini cacat untuk urutan tersebut, bukan UI.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** LicenseAllocationSubscription 046.
+- **Sumber:** PRD license-allocation-subscription L513, L516.
