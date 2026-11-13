@@ -1842,3 +1842,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** User 148.
 - **Sumber:** auth-foundation.md L320, L386, L485, L493; user.md L4, L785, L787; prd-gap-registry GAP-306.
+
+## D-184 Submit import GPS lebih dari 5.000 baris kembali ke Detail SKU, Preview tidak tetap tampil (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/TagStock `092` TC-AC-ACTS-771 langkah 7-9 dan TC-AC-ACTS-772 langkah 21-23 (juga 887 bila memakai langkah yang sama).
+- **Spec meminta:** setelah `[Submit]` pada Preview lebih dari 5.000 baris, Preview tetap tampil, lalu ditutup lewat `[Cancel]` → Unsaved Changes → `[Leave]`.
+- **Kenyataannya:** PRD tag-stock L1056 menyatakan Submit di atas 5.000 baris tetap mengikuti tiga cabang `FI-05`, dengan request langsung kembali membawa T-23. `FI-05` (L900) menetapkan: "Setelah `[Submit]` berhasil, user selalu kembali ke Detail SKU > Tab Available SKU tersebut". Aplikasi melakukan itu, sama seperti jalur sinkron.
+- **Keputusan:** langkah Cancel/Leave setelah Submit tidak dijalankan karena tidak ada di alur PRD. Sebagai gantinya diasersi toast T-23 (`"Preparing your import. We'll notify you when it's ready."`) dan halaman Detail SKU tab Available. Ini bukan ui-gap. Aplikasi tidak diubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** TagStock 092 (dan 887 bila berlaku).
+- **Sumber:** PRD tag-stock L900 (FI-05), L1056, L1969 (T-23).
