@@ -1870,7 +1870,7 @@ Aturan:
 - **Kenyataannya:** kedua langkah bertentangan untuk target Total Control, karena baris yang di-refresh menampilkan C/R/U/D tercentang. PRD settings-role-permission L815 dan L1727: aksi tulis atas baris yang sudah berubah tier oleh admin lain sejak render → toast netral `"This permission is no longer available."` dan "data di-refresh ke nilai terbaru, perubahan tidak tersimpan".
 - **Keputusan:** langkah 38 mengasersi checkbox pada nilai terbaru dari server setelah refresh (untuk target Total Control: tercentang), bukan nilai saat render. Refresh baris (langkah 39) diasersi seperti di spec. Spec tidak meminta toast, tetapi PRD L815/L1727 meminta toast netral `"This permission is no longer available."`, jadi toast itu ikut diasersi. Aplikasi diperbaiki supaya `403 target_tier` menampilkan toast netral itu, bukan teks mentah `Forbidden`.
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
-- **Diterapkan di:** SettingsRolePermission 118.
+- **Diterapkan di:** SettingsRolePermission 118; GlobalSettings Role 103 TC-273 langkah 31 (2026-11-14: setelah `403 target_tier`, checkbox target yang kini Total Control tercentang dan disabled sesuai refresh).
 - **Sumber:** PRD settings-role-permission L815, L1727.
 
 ## D-187 Pesan error Field menggantikan helper text (2026-11-14)
@@ -1912,3 +1912,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** LicenseAllocationSubscription 048.
 - **Sumber:** PRD license-allocation-subscription L512 (V-17); LLD license-allocation-subscription L410-L411; respons 409 plans-features/default (run CS-048-win-20261114-d).
+
+## D-191 Teks dialog auto-revert Read Only mengikuti copy PRD (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings Role `048` TC-295 langkah 35; berlaku sama untuk spec lain yang menulis teks dialog auto-revert Read Only berbeda dari copy PRD.
+- **Spec meminta:** dialog berbunyi `"Editing this permission will remove Read Only access from this user…"`.
+- **Kenyataannya:** copy baku dialog auto-revert di prd-conventions L2352 (dan copy D-02 PRD Role) adalah `"This edit will remove this user's Read Only access level. Their individual role permissions will remain as edited. …"`, dan aplikasi menampilkannya persis. Teks spec tidak cocok dengan sumber copy mana pun.
+- **Keputusan:** copy PRD menang. Skrip mengasersi teks prd-conventions L2352.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** GlobalSettings Role 048.
+- **Sumber:** org-uiux foundation prd-conventions L2352.
