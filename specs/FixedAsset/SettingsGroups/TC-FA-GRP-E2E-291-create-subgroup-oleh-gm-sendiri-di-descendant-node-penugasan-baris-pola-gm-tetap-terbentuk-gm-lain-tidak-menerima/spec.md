@@ -32,7 +32,7 @@ coverage:
 5. Verifikasi toast sukses `Success, group has been created.`
 6. Baca tab Group Role dan tab Transaction Role user gmPattern pada `GM Sub B {runId}-291` lewat kemampuan baca modul Role & Permission
 7. Verifikasi pada `GM Sub B {runId}-291`, user gmPattern memiliki baris pola Group Manager untuk seluruh Group Role katalog kecuali `Manage user & role` dengan CRUD penuh sesuai kolom yang berlaku
-8. Verifikasi pada `GM Sub B {runId}-291`, user gmPattern memiliki baris `Asset Admin` dan `Approver` pada setiap Jenis Transaksi (sembilan, termasuk Addon yang lisensinya belum aktif)
+8. Verifikasi pada `GM Sub B {runId}-291`, user gmPattern memiliki baris `Asset Admin` dan `Approver` pada setiap Jenis Transaksi (tujuh, termasuk Addon yang lisensinya belum aktif)
 9. Baca tab Group Manager user gmPattern lewat kemampuan baca modul Role & Permission
 10. Verifikasi penugasan Group Manager gmPattern hanya pada `GM Pattern Parent {runId}-291` (ancestor), bukan pada `GM Pattern Child {runId}-291`, sehingga baris pola pada `GM Sub B {runId}-291` berasal dari penugasan pada ancestor yang mencakup parent
 11. Verifikasi baris pola GM pada `GM Sub B {runId}-291` terbentuk untuk gmPattern sendiri sebagai pembuat Subgroup (aktor sesi ini adalah gmPattern)
@@ -52,4 +52,4 @@ coverage:
   - Email Pre-setup No 28 dan No 30 belum punya nilai nyata (TC: perlu data tim FE/QA). Usulan env baru `FA_GRP_GMPATTERN_PASSWORD` untuk login gmPattern perlu didaftarkan pemilik repo e2e (di luar suite); akun gmPatternOther hanya dibaca.
   - TC-1294 langkah 3 dan 4 membaca Role & Permission, log, dan notifikasi oleh aktor Group Manager yang tidak jelas berhak membuka modul itu (sama dengan temuan spec 020 dan 285); spec memakai kemampuan baca yang disediakan tim FE/BE.
   - Mekanisme seeding penugasan GM dan baris pola yang sudah terbentuk tidak ditegaskan di TC; ditulis sebagai kemampuan tim FE/BE tanpa endpoint karangan.
-  - TC-1294 Expected b menyebut Jenis Transaksi Addon yang lisensinya belum aktif; tampilan UI tab Transaction Role untuk Addon tak berlisensi belum terverifikasi, spec membaca daftar sembilan Jenis lewat kemampuan baca.
+  - TC-1294 Expected b menyebut Jenis Transaksi Addon yang lisensinya belum aktif; tampilan UI tab Transaction Role untuk Addon tak berlisensi belum terverifikasi, spec membaca daftar tujuh Jenis lewat kemampuan baca.

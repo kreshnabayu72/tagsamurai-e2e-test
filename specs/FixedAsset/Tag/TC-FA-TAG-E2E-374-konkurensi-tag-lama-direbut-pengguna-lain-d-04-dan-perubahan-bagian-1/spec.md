@@ -54,7 +54,7 @@ coverage:
 
 13. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 220'
 14. Klik ButtonScan `Scan RFID` pada slot `RFID TAG` lalu pindai Tag `RF-00412`
-15. Pengguna lain dengan akun Pre-setup 'Asset Admin (pelaku disposal)' [AA_DSPO] (sesi API) menyelesaikan proses disposal sehingga Tag `RF-00330` dilepas dari aset 'Excavator 20 Ton - 220' hingga pelepasan tersimpan
+15. Pengguna lain dengan akun Pre-setup 'Asset Admin (pelaku disposal)' [AA_DSPO] (sesi API) menjalankan Execute Disposal sehingga Tag `RF-00330` dilepas dari aset 'Excavator 20 Ton - 220' hingga pelepasan tersimpan
 16. Klik [Submit]
 17. Verifikasi dialog judul "Asset TAG Has Changed", body "AST-0220 TAG has changed since this page was opened.", tombol [Update Data]
 18. Verifikasi tidak ada mutasi dari Submit: Toast "Success, TAG has been replaced." tidak tampil
@@ -86,5 +86,5 @@ coverage:
   - TC-FA-TAG-1332 sampai TC-FA-TAG-1335 berlabel Manual Only (dua sesi pengguna paralel); spec tetap ditulis dengan pelaku kedua lewat sesi API.
   - TC-FA-TAG-1332 dan TC-FA-TAG-1333 menyebut Post Condition ("Penggantian Dedi K. tidak tertimpa", "Tag `RF-00412` tetap Available", "Tidak ada mutasi dari pengguna A") tanpa langkah observasi; tidak diasersi di luar Expected.
   - TC-FA-TAG-1335 menyebut pelaku kedua tanpa akun ("Admin"); spec menulisnya sebagai kemampuan sesi API yang disediakan tim FE.
-  - TC-FA-TAG-1334 mengharapkan dialog D-04 versi has changed setelah proses disposal selesai, sedangkan PRD FATAG-LOGIC-06m menyebut aset yang menjadi `In Disposal Process` atau `Disposed` menampilkan D-01 (bukan D-04); keadaan akhir aset perlu dikonfirmasi QA, spec mengikuti Expected TC.
+  - TC-FA-TAG-1334 mengharapkan dialog D-04 versi has changed setelah Execute Disposal, sedangkan PRD FATAG-LOGIC-06m menyebut aset yang menjadi `In Disposal Process` atau `Disposed` menampilkan D-01 (bukan D-04); keadaan akhir aset perlu dikonfirmasi QA, spec mengikuti Expected TC.
   - TC-FA-TAG-1332 sampai TC-FA-TAG-1335 tidak menyebut cara menutup dialog sesudah D-04; spec memakai [Update Data] lalu `✕`.

@@ -41,7 +41,7 @@ coverage:
 5. Verifikasi toast sukses `Success, group has been created.`
 6. Baca tab Group Role dan tab Transaction Role user gmPattern pada `GM Sub A {runId}-290` lewat kemampuan baca modul Role & Permission
 7. Verifikasi pada `GM Sub A {runId}-290`, user gmPattern memiliki baris pola Group Manager untuk seluruh Group Role katalog kecuali `Manage user & role` dengan CRUD penuh sesuai kolom yang berlaku
-8. Verifikasi pada `GM Sub A {runId}-290`, user gmPattern memiliki baris `Asset Admin` dan `Approver` pada setiap Jenis Transaksi (sembilan, termasuk Addon yang lisensinya belum aktif)
+8. Verifikasi pada `GM Sub A {runId}-290`, user gmPattern memiliki baris `Asset Admin` dan `Approver` pada setiap Jenis Transaksi (tujuh, termasuk Addon yang lisensinya belum aktif)
 9. Verifikasi tidak ada baris `Manage user & role` untuk user gmPattern pada `GM Sub A {runId}-290`
 10. Verifikasi baris pola GM sudah terbentuk pada pembacaan pertama sesudah toast sukses Create (tidak ada kondisi `GM Sub A {runId}-290` tanpa baris pola GM)
 11. Baca tab Group Manager user gmPattern lewat kemampuan baca modul Role & Permission
@@ -75,7 +75,7 @@ coverage:
 - Temuan untuk QA:
   - Email Pre-setup No 28 sampai 32 belum punya nilai nyata (TC: perlu data tim FE/QA); spec memakai pola email Pre-setup dan fixture `Fixture.groupsGmPattern.*` yang ditetapkan tim FE.
   - Pembentukan baris pola GM yang sudah ada (precondition TC-1293 dan TC-1295) tidak punya mekanisme seeding yang ditegaskan di TC; spec menuliskannya sebagai kemampuan seeding tim FE/BE tanpa endpoint karangan.
-  - TC-1293 Expected b menyebut Jenis Transaksi Addon yang lisensinya belum aktif (sembilan jenis); belum diverifikasi apakah tab Transaction Role di UI menampilkan Jenis Transaksi Addon tak berlisensi. Spec membaca daftar sembilan Jenis lewat kemampuan baca dan tidak mengasersi tampilan UI-nya.
+  - TC-1293 Expected b menyebut Jenis Transaksi Addon yang lisensinya belum aktif (tujuh jenis); belum diverifikasi apakah tab Transaction Role di UI menampilkan Jenis Transaksi Addon tak berlisensi. Spec membaca daftar tujuh Jenis lewat kemampuan baca dan tidak mengasersi tampilan UI-nya.
   - TC-1293 Expected e ("transaksi yang sama dengan Create") tidak teramati langsung dari UI; spec mengasersi hasil yang teramati (baris pola ada pada pembacaan pertama).
   - TC-1293 langkah 5 membuka notifikasi in-app gmPattern tanpa menyebut cara membukanya; asersinya ada di spec 292 lewat kemampuan baca.
   - NC-12 (Menunggu konfirmasi, PRD FAGRP-LOGIC-03k): efek baris pola GM pada guard Delete kondisi 5 dan Total User belum final; spec ini tidak mengasersi keduanya.

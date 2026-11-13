@@ -317,7 +317,7 @@ Tidak ada.
 | TC-FA-TAG-E2E-308-matriks-dampak-transaksi-borrow-bagian-2 | Matriks Dampak Transaksi Borrow: Extend Kondisi T4 dan Check-in Kondisi T1 sampai T4 | FE+BE | 33 | 1174, 1175, 1176, 1177, 1178 |
 | TC-FA-TAG-E2E-309-matriks-dampak-transaksi-transfer-bagian-1 | Matriks Dampak Transaksi Transfer: Load Kondisi T2 sampai T4 dan Receive di Tujuan Kondisi T1 sampai T3 | FE+BE | 34 | 1180, 1181, 1182, 1183, 1184, 1185 |
 | TC-FA-TAG-E2E-310-matriks-dampak-transaksi-transfer-bagian-2 | Matriks Dampak Transaksi Transfer: Receive di Tujuan Kondisi T4 | FE+BE | 9 | 1186 |
-| TC-FA-TAG-E2E-311-matriks-dampak-transaksi-disposal-bagian-1 | Matriks Dampak Transaksi Disposal: Request Kondisi T2 sampai T4 menurut Metode Disposal | FE+BE | 34 | 1188, 1189, 1190, 1191, 1192 |
+| TC-FA-TAG-E2E-311-matriks-dampak-transaksi-disposal-bagian-1 | Matriks Dampak Transaksi Disposal: Request Kondisi T2 sampai T4 menurut Disposal Type | FE+BE | 34 | 1188, 1189, 1190, 1191, 1192 |
 | TC-FA-TAG-E2E-312-matriks-dampak-transaksi-disposal-bagian-2 | Matriks Dampak Transaksi Disposal: Execute Kondisi T1 sampai T4 dan Konfirmasi Saksi | FE+BE | 34 | 1193, 1194, 1195, 1196 |
 | TC-FA-TAG-E2E-313-matriks-dampak-transaksi-stock-opname-dan-maintenance-bagian-1 | Matriks Dampak Transaksi Stock Opname: Scan Aset Kondisi T2 sampai T4 | FE+BE | 25 | 1198, 1199, 1200 |
 | TC-FA-TAG-E2E-314-matriks-dampak-transaksi-stock-opname-dan-maintenance-bagian-2 | Matriks Dampak Transaksi Maintenance: Report Damage atau Complete Work Order Kondisi T1 sampai T4 | FE+BE | 28 | 1201, 1202, 1203, 1204 |

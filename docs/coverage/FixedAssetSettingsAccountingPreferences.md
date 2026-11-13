@@ -1,8 +1,8 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting Preferences
 
-Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md` (617 TC aktif `TC-FA-PREF-1`–`621`; TC 326, 399, 400 dan 620 retired). Suite: `specs/FixedAsset/SettingsAccountingPreferences/`. Prefix: `FA` + `PREF` (`TC-FA-PREF-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-accounting-preferences-backend.md`.
+Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md` (627 TC aktif `TC-FA-PREF-1`–`631`; TC 326, 399, 400 dan 620 retired). Suite: `specs/FixedAsset/SettingsAccountingPreferences/`. Prefix: `FA` + `PREF` (`TC-FA-PREF-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-accounting-preferences-backend.md`.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 617 TC aktif masuk 173 spec (154 nomor rencana, 17 nomor cadangan, dan 2 nomor tambahan 175-176), tidak ada TC hanya-BE. Setiap TC yang masuk terpetakan ke tepat satu spec.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 627 TC aktif masuk 177 spec (154 nomor rencana, 17 nomor cadangan, dan 6 nomor tambahan 175-180), tidak ada TC hanya-BE. Setiap TC yang masuk terpetakan ke tepat satu spec.
 
 ## TC hanya-BE (tidak masuk spec)
 
@@ -156,8 +156,8 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-142-deferred-akun-gain-dan-loss-default-pada-asset-class-dan-jurnal-pelepasan | [DEFERRED] Akun Gain dan Loss default pada Asset Class dan jurnal pelepasan | FE+BE | 35 | 445, 446, 447, 448, 453 |
 | TC-FA-PREF-E2E-143-deferred-jurnal-pelepasan-ditahan-saat-akun-kosong-gain-loss-donate-dan-trade-in | [DEFERRED] Jurnal pelepasan ditahan saat akun kosong (Gain, Loss, Donate, Trade-in) | FE+BE | 25 | 449, 450, 451, 452 |
 | TC-FA-PREF-E2E-144-deferred-jurnal-ditahan-dapat-diekspor-dan-pelepasan-belum-diposting-memakai-akun-default-baru | [DEFERRED] Jurnal ditahan dapat diekspor setelah akun diisi dan pelepasan belum diposting memakai akun default baru | FE+BE | 23 | 454, 455 |
-| TC-FA-PREF-E2E-145-deferred-disposal-documents-field-dokumen-dan-submit-ditolak-saat-required | [DEFERRED] Disposal Documents: field dokumen dan Submit ditolak saat Required | FE+BE | 14 | 458, 459, 460, 461, 462, 463, 464, 465 |
-| TC-FA-PREF-E2E-146-deferred-disposal-documents-submit-saat-optional-tidak-memblokir-posting-dan-transaksi-sebelum-sesudah-save | [DEFERRED] Disposal Documents: Submit saat Optional, tidak memblokir posting, transaksi sebelum dan sesudah Save | FE+BE | 32 | 466, 467, 468, 469, 470 |
+| TC-FA-PREF-E2E-145-deferred-disposal-documents-field-dokumen-dan-execute-ditolak-saat-required | [DEFERRED] Disposal Documents: field dokumen dan Execute ditolak saat Required | FE+BE | 22 | 458, 459, 460, 461, 462, 463, 464, 465 |
+| TC-FA-PREF-E2E-146-deferred-disposal-documents-execute-saat-optional-tidak-memblokir-post-dan-pelepasan-sebelum-sesudah-save | [DEFERRED] Disposal Documents: Execute saat Optional, tidak memblokir Post, pelepasan sebelum dan sesudah Save | FE+BE | 32 | 466, 467, 468, 469, 470 |
 | TC-FA-PREF-E2E-147-deferred-default-capitalization-offset-prompt-kapitalisasi-pertama-pengisian-dan-log-l-03 | [DEFERRED] Default Capitalization Offset: prompt kapitalisasi pertama, pengisian, dan log L-03 | FE+BE | 37 | 471, 472, 473, 474, 475 |
 | TC-FA-PREF-E2E-148-deferred-default-capitalization-offset-kapitalisasi-berikutnya-akun-tidak-valid-dan-prompt-ditutup | [DEFERRED] Default Capitalization Offset: kapitalisasi berikutnya, akun tidak valid, dan prompt ditutup | FE+BE | 32 | 476, 477, 478, 479, 480 |
 | TC-FA-PREF-E2E-149-deferred-default-capitalization-offset-dikosongkan-perubahan-dipakai-gagal-dan-pembelian-di-bawah-threshold | [DEFERRED] Default Capitalization Offset: dikosongkan kembali, perubahan dipakai, kapitalisasi gagal, dan pembelian di bawah threshold | FE+BE | 36 | 481, 482, 483, 605 |
@@ -185,10 +185,14 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-174-deferred-jurnal-pelepasan-terposting-belum-dan-sudah-diekspor-saat-akun-default-diganti | [DEFERRED] Jurnal pelepasan terposting: belum diekspor memakai akun yang berlaku saat ekspor, sudah diekspor tidak berubah | FE+BE | 23 | 456, 457 |
 | TC-FA-PREF-E2E-175-save-ditolak-akun-capitalization-offset-dan-found-asset-credit-berubah-sebelum-save-tanpa-dialog | Save ditolak karena akun Default Capitalization Offset atau Found Asset Credit Account berubah sebelum Save (alur Save tanpa dialog) | FE+BE | 18 | 216, 217 |
 | TC-FA-PREF-E2E-176-versi-tdc-dan-transaksi-bertanggal-dibuat-saat-dialog-save-changes-terbuka-menolak-save | Versi Tax Depreciation Class dan transaksi bertanggal dibuat saat dialog Save Changes terbuka menolak Save | FE+BE | 21 | 581, 582 |
+| TC-FA-PREF-E2E-177-tooltip-opsi-dan-tanpa-shortcut-select-default-disposal-proceeds-account | Select Default Disposal Proceeds Account (SET-13): tooltip, opsi akun Disposal Proceeds, dan tanpa shortcut Create account | FE+BE | 18 | 622, 623, 624 |
+| TC-FA-PREF-E2E-178-save-default-disposal-proceeds-account-tanpa-dialog-dan-log-tiga-surface | Save Default Disposal Proceeds Account (SET-13): langsung tersimpan tanpa dialog dan tercatat di Changelog, System Log, dan Activity Log | FE+BE | 25 | 625, 626 |
+| TC-FA-PREF-E2E-179-defense-in-depth-default-disposal-proceeds-account-function-salah-dan-inactive-lewat-request-langsung | Defense-in-Depth: Default Disposal Proceeds Account dengan Akun Function di Luar Disposal Proceeds atau Inactive Ditolak Server Lewat Request Langsung | FE+BE | 12 | 627, 628 |
+| TC-FA-PREF-E2E-180-deferred-default-disposal-proceeds-account-kosong-menahan-jurnal-pelepasan-sell-dan-akun-pada-jurnal-diekspor | [DEFERRED] Default Disposal Proceeds Account kosong menahan jurnal pelepasan Sell, diekspor setelah diisi, dan jurnal yang sudah diekspor tidak berubah | FE+BE | 29 | 629, 630, 631 |
 
 ## Pembagian TC lintas spec
 
-Nomor cadangan terpakai (17): 155, 157-169, 171, 173, 174. Beberapa TC pindah dari spec rencana ke nomor cadangan supaya spec tidak melewati ~35 langkah: TC 115-117 ke 159, TC 618 ke 160, TC 170 dan 592 ke 162, TC 603-604 ke 163, TC 559 ke 164, TC 264-265 ke 165, TC 529-530 ke 166, TC 276 dan 562 ke 167, TC 560 ke 168, TC 337 ke 169, TC 410 ke 171, TC 438-439 ke 173, TC 456-457 ke 174, TC 216-217 ke 175, TC 581-582 ke 176. TC 541 pindah dari 083 ke 082. Tabel di atas dan "Lapisan per TC" mengikuti `sourceTc` spec.
+Nomor cadangan terpakai (17): 155, 157-169, 171, 173, 174. Beberapa TC pindah dari spec rencana ke nomor cadangan supaya spec tidak melewati ~35 langkah: TC 115-117 ke 159, TC 618 ke 160, TC 170 dan 592 ke 162, TC 603-604 ke 163, TC 559 ke 164, TC 264-265 ke 165, TC 529-530 ke 166, TC 276 dan 562 ke 167, TC 560 ke 168, TC 337 ke 169, TC 410 ke 171, TC 438-439 ke 173, TC 456-457 ke 174, TC 216-217 ke 175, TC 581-582 ke 176. TC 622-624 ke 177, TC 625-626 ke 178, TC 627-628 ke 179, dan TC 629-631 ke 180 (nomor tambahan 177-180; seri Default Disposal Proceeds Account, SET-13). TC 541 pindah dari 083 ke 082. Tabel di atas dan "Lapisan per TC" mengikuti `sourceTc` spec.
 
 ## Kebutuhan lingkungan (tim FE)
 
@@ -819,3 +823,13 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-618 | TC-FA-PREF-E2E-160 | FE+BE |
 | TC-FA-PREF-619 | TC-FA-PREF-E2E-039 | FE+BE |
 | TC-FA-PREF-621 | TC-FA-PREF-E2E-060 | FE+BE |
+| TC-FA-PREF-622 | TC-FA-PREF-E2E-177 | FE+BE |
+| TC-FA-PREF-623 | TC-FA-PREF-E2E-177 | FE+BE |
+| TC-FA-PREF-624 | TC-FA-PREF-E2E-177 | FE+BE |
+| TC-FA-PREF-625 | TC-FA-PREF-E2E-178 | FE+BE |
+| TC-FA-PREF-626 | TC-FA-PREF-E2E-178 | FE+BE |
+| TC-FA-PREF-627 | TC-FA-PREF-E2E-179 | FE+BE |
+| TC-FA-PREF-628 | TC-FA-PREF-E2E-179 | FE+BE |
+| TC-FA-PREF-629 | TC-FA-PREF-E2E-180 | FE+BE |
+| TC-FA-PREF-630 | TC-FA-PREF-E2E-180 | FE+BE |
+| TC-FA-PREF-631 | TC-FA-PREF-E2E-180 | FE+BE |

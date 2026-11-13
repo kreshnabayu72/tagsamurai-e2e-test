@@ -34,11 +34,11 @@ coverage:
 - Data tambahan (di-seed lewat fixture BE yang disediakan tim FE/BE; kode Tag tidak disebut di TC, lihat Temuan untuk QA):
   - TC-FA-TAG-81: Return Group `Disposal Center` berada di bawah group induk (hierarki `[Parent] > [Child]`).
   - TC-FA-TAG-82: pengguna `Dedi K.` tersimpan dengan nama lengkap di data user.
-  - TC-FA-TAG-83: satu Tag To Be Returned milik spec ini dengan kode `RF-{runId}-017` yang saat dilepas tidak punya pemegang terakhir aset maupun pelaku disposal (snapshot Current Holder kosong).
+  - TC-FA-TAG-83: satu Tag To Be Returned milik spec ini dengan kode `RF-{runId}-017` yang saat dilepas tidak punya pemegang terakhir aset maupun pelaku Execute (snapshot Current Holder kosong).
   - TC-FA-TAG-84: satu Tag lama hasil Replace NFC milik spec ini dengan kode `NF-{runId}-017` pada Global berstatus Available atau Damaged/Missing, yang tidak berada di tabel To Be Returned.
-  - TC-FA-TAG-89: aset bertag QR (`QR-00433`) yang disposal-nya selesai, dan Tag RFID `RF-00071` dari disposal yang sama.
+  - TC-FA-TAG-89: aset bertag QR (`QR-00433`) yang sudah dieksekusi lewat Execute Disposal, dan Tag RFID `RF-00071` dari Execute Disposal yang sama.
 - Fixture `fixtures/fixed-asset-tag.json` belum ada (ditandai untuk tim FE); data di atas dirujuk lewat `Fixture.fixed-asset-tag.<kunci>` setelah berkas itu dibuat. Seeding dan pemulihan idempotent lewat fixture backend (kemampuan disediakan tim FE/BE, dilewati bila data sudah ada). Nama dan kode literal tidak diberi suffix `{runId}` karena asersi bergantung pada kode, urutan, dan jumlah (suite.md).
-- Tidak ada state global yang diubah. Data tambahan di atas (`RF-{runId}-017`, `NF-{runId}-017`, dan aset bertag QR dengan disposal selesai milik TC-FA-TAG-89) di-seed di hook `before` dan dihapus atau dipulihkan lewat fixture backend di hook `after` (idempotent, tetap jalan walau spec gagal di tengah), supaya tab To Be Returned kembali ke tiga Tag Pre-setup bagi spec lain yang mengasersi tiga baris atau badge `3`.
+- Tidak ada state global yang diubah. Data tambahan di atas (`RF-{runId}-017`, `NF-{runId}-017`, dan aset bertag QR yang dieksekusi lewat Execute Disposal milik TC-FA-TAG-89) di-seed di hook `before` dan dihapus atau dipulihkan lewat fixture backend di hook `after` (idempotent, tetap jalan walau spec gagal di tengah), supaya tab To Be Returned kembali ke tiga Tag Pre-setup bagi spec lain yang mengasersi tiga baris atau badge `3`.
 - Nilai literal Pre-setup dipakai tanpa suffix `{runId}`: pengecualian S-06/S-12 butir A-15.
 
 ## Test Steps

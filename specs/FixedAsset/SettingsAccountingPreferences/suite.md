@@ -25,6 +25,7 @@ Suite ini mencakup tab Preferences pada Settings > Accounting (SectionCard Gener
 
 ## Data bersama
 
-- Seri fixture: PA (TC 1-175), PB (TC 176-361), PC (TC 362-621) adalah seed terisolasi; nilai awal Preferences PA-2, PB-1, PC-1 setara. Perubahan Preferences oleh spec dipulihkan ke nilai awal lewat seed sebelum TC berikutnya; target tulis memakai data milik spec (S-06) dan data dinamis (akun baru, entri log) bersuffix `{runId}-<NNN>` bila perlu unik (S-12).
+- Seri fixture: PA (TC 1-175), PB (TC 176-361), PC (TC 362-631) adalah seed terisolasi; nilai awal Preferences PA-2, PB-1, PC-1 setara. Perubahan Preferences oleh spec dipulihkan ke nilai awal lewat seed sebelum TC berikutnya; target tulis memakai data milik spec (S-06) dan data dinamis (akun baru, entri log) bersuffix `{runId}-<NNN>` bila perlu unik (S-12).
+- Pelepasan "belum diposting" atau "menunggu posting" pada fixture (PB-6a, PB-6b, PC-7, PC-18) adalah baris pelepasan berstatus Executed (belum Posted); baris Waiting for Approval dan Waiting for Execution tidak dihitung.
 - Fixture `fixtures/settings-accounting-preferences.json` belum ada dan disediakan tim FE; memuat identitas data Pre-setup yang dirujuk Prerequisites (kode akun Chart of Accounts, nama Asset Class, entri Changelog contoh). Nama kunci ditetapkan tim FE.
 - Data yang butuh fixture backend (penguncian periode, versi Tax Depreciation Class, transaksi bertanggal, pelepasan menunggu posting, 105 entri Changelog PB-C2, company tanpa baris Preferences, company plan Starter, entitas Suspended/Expired, perubahan akun) dan modul pemilik/konsumen untuk TC `[DEFERRED]` ditulis di `## Prerequisites` spec sebagai "disediakan tim FE" tanpa endpoint karangan (S-13).

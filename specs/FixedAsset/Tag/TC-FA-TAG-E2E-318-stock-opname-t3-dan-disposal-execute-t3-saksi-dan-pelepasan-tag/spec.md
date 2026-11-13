@@ -70,7 +70,7 @@ coverage:
 27. Selesaikan langkah Execute
 28. Verifikasi Execute selesai dan nama saksi `Budi S.` dicatat bersama flag Manual identification (dibaca lewat kemampuan baca state backend)
 29. Verifikasi waktu konfirmasi saksi dicatat bersama flag Manual identification (dibaca lewat kemampuan baca state backend)
-30. Verifikasi Tag `RF-00130` dilepas dari aset saat disposal selesai (dibaca lewat kemampuan baca state backend)
+30. Verifikasi Tag `RF-00130` dilepas dari aset saat Execute (dibaca lewat kemampuan baca state backend)
 
 ## Notes
 

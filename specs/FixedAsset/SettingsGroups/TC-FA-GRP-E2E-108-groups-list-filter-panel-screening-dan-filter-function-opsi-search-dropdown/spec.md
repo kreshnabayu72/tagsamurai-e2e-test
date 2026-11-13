@@ -31,11 +31,11 @@ coverage:
 | `Echo {runId}-108` | `V108H` | Assignable | 25 | 12 | ModA | 1 |
 | `foxtrot {runId}-108` | `V108G` | None | 0 | 4 | ModA | 1 |
 | `Golf {runId}-108` | `V108F` | Assignable | 1 | 6 | ModA | 1 |
-| `hotel {runId}-108` | `V108E` | Disposal Group | 4 | 3 | ModB | 2 |
+| `hotel {runId}-108` | `V108E` | None | 4 | 3 | ModB | 2 |
 | `India {runId}-108` | `V108D` | Assignable | 13 | 4 | ModB | 2 |
-| `juliet {runId}-108` | `V108C` | Disposal Group | 7 | 7 | ModB | 2 |
+| `juliet {runId}-108` | `V108C` | None | 7 | 7 | ModB | 2 |
 | `Kilo {runId}-108` | `V108B` | Assignable | 3 | 5 | ModB | 2 |
-| `lima {runId}-108` | `V108A` | Disposal Group | 5 | 3 | ModB | 2 |
+| `lima {runId}-108` | `V108A` | None | 5 | 3 | ModB | 2 |
 
   - `ModA` = nama Modified By aktor Total Control Pre-setup No 1 dalam format `[First Name] [Last Initial]`; `ModB` = nama Modified By user kedua yang membuat batch 2 (akun tidak tertulis di Pre-setup TC; disediakan tim FE). Nilai tampilan keduanya dibaca sebelum uji.
   - Total Asset dibentuk dengan menambahkan aset ke group; Total User = user yang otomatis punya akses ke semua group (Total Control, Default User, Read Only client) ditambah user yang ditugaskan lewat Group Role; kemampuan seeding aset dan penugasan user ini disediakan tim FE/BE.
@@ -56,7 +56,7 @@ coverage:
 ### TC-FA-GRP-346: Isi opsi dropdown Filter Function
 
 6. Buka dropdown Function
-7. Verifikasi opsi `None`, `Assignable`, dan `Disposal Group` tampil sebagai nilai Function distinct yang ada pada baris tabel
+7. Verifikasi opsi `None` dan `Assignable` tampil sebagai nilai Function distinct yang ada pada baris tabel
 8. Verifikasi opsi ditampilkan sebagai nilai penuh (bukan label badge)
 9. Verifikasi kotak search internal tampil di dalam dropdown
 10. Centang opsi `None`
@@ -66,11 +66,11 @@ coverage:
 
 ### TC-FA-GRP-347: Filter Function satu opsi
 
-14. Pilih opsi `Disposal Group` pada dropdown Function
+14. Pilih opsi `None` pada dropdown Function
 15. Klik [Apply]
 16. Verifikasi sedikitnya satu baris tampil pada tabel
 17. Verifikasi baris `hotel {runId}-108` tampil
-18. Verifikasi seluruh baris yang tampil ber-Function `Disposal Group`
+18. Verifikasi seluruh baris yang tampil ber-Function `None` (tampil `—`)
 19. Verifikasi indikator filter aktif tampil pada icon Filter
 
 ### TC-FA-GRP-348: Filter Function dua opsi (OR)
@@ -80,7 +80,7 @@ coverage:
 22. Centang opsi `None` dan `Assignable` pada dropdown Function
 23. Klik [Apply]
 24. Verifikasi baris `bravo {runId}-108` dan `Alpha {runId}-108` tampil (opsi 1 atau opsi 2)
-25. Verifikasi baris `hotel {runId}-108` tidak tampil
+25. Verifikasi baris `hotel {runId}-108` tampil (Function `None`, opsi 1)
 
 ### TC-FA-GRP-349: Search internal dropdown Filter Function
 
@@ -99,9 +99,9 @@ coverage:
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
 - Langkah penghubung (tanpa awalan `Verifikasi`): membatasi tabel dengan Search suffix spec di awal, membuka Filter Panel dan dropdown, menutup dropdown, serta [Clear Field] + [Apply] dan `(←)` pada kotak Search sebagai pemulihan state antar TC (S-03, S-09, R-16).
-- Dataset memuat ketiga nilai Function (`None`, `Assignable`, `Disposal Group`), sehingga opsi dropdown pada TC-FA-GRP-346 dapat diasersi dari baris yang tampil; opsi dari baris Pre-setup tidak diasersi.
+- Dataset memuat kedua nilai Function (`None`, `Assignable`), sehingga opsi dropdown pada TC-FA-GRP-346 dapat diasersi dari baris yang tampil; opsi dari baris Pre-setup tidak diasersi.
 - Keyword `ssign` (potongan `Assignable`) dipilih spec; TC menyebut "potongan nama opsi huruf kecil" tanpa nilai.
-- Verifikasi "seluruh baris yang tampil ber-Function `Disposal Group`" didahului pembanding sedikitnya satu baris (bagian 8b butir 2).
+- Verifikasi "seluruh baris yang tampil ber-Function `None`" didahului pembanding sedikitnya satu baris (bagian 8b butir 2).
 - Temuan untuk QA:
   - Rujukan "Tabel Data Uji" pada Precondition TC tidak punya tabel konkret (Catatan TC hanya menyebut data variasi baris Groups List); spec mendefinisikan dataset sendiri di Prerequisites dan menjamin sedikitnya dua nilai distinct per kolom.
   - Akun Modified By kedua (`ModB`) dan nilai tampilan `ModA`/`ModB` tidak tertulis di Pre-setup TC; ditulis "disediakan tim FE". Nilai Total User dasar (user yang otomatis punya akses semua group) tidak tertulis di TC; dataset memakai target nilai yang dibentuk lewat penugasan Group Role.

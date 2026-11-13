@@ -75,7 +75,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 466 TC masuk 121 spec, 0 TC d
 | TC-FA-NOTIF-E2E-062-transfer-menunggu-persetujuan-dan-hasil-keputusan | Penerimaan Notifikasi Transfer: Menunggu Persetujuan dan Hasil Keputusan Approve atau Reject | FE+BE | 44 | 247, 248, 249 |
 | TC-FA-NOTIF-E2E-063-transfer-departed-dan-scope-approval | Penerimaan Notifikasi Transfer Departed dan Scope Approval Group Asal atau Group Tujuan | FE+BE | 40 | 250, 404, 405 |
 | TC-FA-NOTIF-E2E-064-disposal-menunggu-persetujuan-dan-hasil-keputusan | Penerimaan Notifikasi Disposal: Menunggu Persetujuan dan Hasil Keputusan Approve atau Reject | FE+BE | 44 | 251, 252, 253 |
-| TC-FA-NOTIF-E2E-065-disposal-reported-dan-penerima | Penerimaan Notifikasi Disposal Reported: Flag Ringan Report Disposal dan Bukan Waiting for Approval | FE+BE | 23 | 254, 411 |
+| TC-FA-NOTIF-E2E-065-disposal-ready-to-execute-dan-report-disposal-tanpa-waiting-approval | Penerimaan Notifikasi Disposal Ready to Execute dan Report Disposal dari Damaged yang Tidak Mengirim Waiting for Approval | FE+BE | 25 | 254, 411 |
 | TC-FA-NOTIF-E2E-066-damaged-repaired-missing-found-dan-satu-notifikasi-per-aset | Penerimaan Notifikasi Damaged Repaired dan Missing Found serta Satu Notifikasi per Aset | FE+BE | 46 | 255, 256, 311, 312 |
 | TC-FA-NOTIF-E2E-067-audit-task-lifecycle-started-grace-period-dan-overdue | Penerimaan Notifikasi Audit Task: Started, Grace Period, dan Overdue | FE+BE | 59 | 257, 258, 259, 260 |
 | TC-FA-NOTIF-E2E-068-audit-approval-dan-hasil-keputusan | Penerimaan Notifikasi Audit: Menunggu Persetujuan dan Hasil Keputusan Approve atau Reject | FE+BE | 44 | 261, 262, 263 |
@@ -392,7 +392,7 @@ Nomor spec 108–123 adalah nomor cadangan yang dipakai writer untuk memecah spe
 | TC-FA-NOTIF-251 | TC-FA-NOTIF-E2E-064-disposal-menunggu-persetujuan-dan-hasil-keputusan | FE+BE |
 | TC-FA-NOTIF-252 | TC-FA-NOTIF-E2E-064-disposal-menunggu-persetujuan-dan-hasil-keputusan | FE+BE |
 | TC-FA-NOTIF-253 | TC-FA-NOTIF-E2E-064-disposal-menunggu-persetujuan-dan-hasil-keputusan | FE+BE |
-| TC-FA-NOTIF-254 | TC-FA-NOTIF-E2E-065-disposal-reported-dan-penerima | FE+BE |
+| TC-FA-NOTIF-254 | TC-FA-NOTIF-E2E-065-disposal-ready-to-execute-dan-report-disposal-tanpa-waiting-approval | FE+BE |
 | TC-FA-NOTIF-255 | TC-FA-NOTIF-E2E-066-damaged-repaired-missing-found-dan-satu-notifikasi-per-aset | FE+BE |
 | TC-FA-NOTIF-256 | TC-FA-NOTIF-E2E-066-damaged-repaired-missing-found-dan-satu-notifikasi-per-aset | FE+BE |
 | TC-FA-NOTIF-257 | TC-FA-NOTIF-E2E-067-audit-task-lifecycle-started-grace-period-dan-overdue | FE+BE |
@@ -549,7 +549,7 @@ Nomor spec 108–123 adalah nomor cadangan yang dipakai writer untuk memecah spe
 | TC-FA-NOTIF-408 | TC-FA-NOTIF-E2E-091-reminder-damaged-missing-diterima-gm-dan-pic-aset | FE+BE |
 | TC-FA-NOTIF-409 | TC-FA-NOTIF-E2E-091-reminder-damaged-missing-diterima-gm-dan-pic-aset | FE+BE |
 | TC-FA-NOTIF-410 | TC-FA-NOTIF-E2E-017-penerima-negatif-actionable-approval-per-role | FE+BE |
-| TC-FA-NOTIF-411 | TC-FA-NOTIF-E2E-065-disposal-reported-dan-penerima | FE+BE |
+| TC-FA-NOTIF-411 | TC-FA-NOTIF-E2E-065-disposal-ready-to-execute-dan-report-disposal-tanpa-waiting-approval | FE+BE |
 | TC-FA-NOTIF-412 | TC-FA-NOTIF-E2E-113-kejadian-kedua-pada-aset-yang-sama-menghasilkan-notifikasi-baru | FE+BE |
 | TC-FA-NOTIF-413 | TC-FA-NOTIF-E2E-113-kejadian-kedua-pada-aset-yang-sama-menghasilkan-notifikasi-baru | FE+BE |
 | TC-FA-NOTIF-414 | TC-FA-NOTIF-E2E-117-perubahan-akses-satu-notifikasi-per-group-yang-dilepas | FE+BE |
@@ -624,6 +624,7 @@ Gabungan butir "Temuan untuk QA" di `## Notes` setiap spec (rincian per spec ada
 - **Klasifikasi Manual Only (d).** TC 100, 101, 108, 363, 392, 110 ditandai Manual Only (d) tetapi dapat diotomasi lewat sesi API dan intercept SSE; spec mengotomasikannya.
 - **Perangkat.** Spec 013 dan 014 (Android) butuh perangkat atau emulator; bila tidak tersedia, tandai `coverage.mobile: unsupported`.
 - **Tanggal fixture.** Tanggal acuan fixture 18/06/26; TC-41 dan 42 bergantung pada tahun berjalan fixture, bukan tahun nyata.
+- **Sinkron TC 2026-11-12 (model Disposal Report).** Spec 065 diperbarui mengikuti TC-FA-NOTIF-254 (kini `disposal_ready_to_execute`) dan TC-FA-NOTIF-411 (Report Disposal dari Damaged mengirim `disposal_reported`, bukan `disposal_waiting_approval`). TC-FA-NOTIF-549 sampai 556 (event `disposal_reported`, `disposal_report_declined`, dan turunannya) belum punya spec, begitu pula TC-FA-NOTIF-482 sampai 548 yang belum masuk dokumen ini (cakupan dokumen berhenti di TC-FA-NOTIF-481). Spec 116 (TC-320, 321), 064 (TC-251 sampai 253), serta spec yang memetakan TC-168 dan TC-285 belum disesuaikan dengan TC Disposal yang ditulis ulang pada tanggal yang sama.
 - **Panjang spec.** Estimasi langkah di plan terlalu rendah karena belum menghitung pemulihan seed dan baseline per TC; beberapa spec melewati sekitar 35 langkah dengan alasan di Notes. Dua nomor cadangan per slice sudah habis.
 
 ## 5. Hasil check-suite

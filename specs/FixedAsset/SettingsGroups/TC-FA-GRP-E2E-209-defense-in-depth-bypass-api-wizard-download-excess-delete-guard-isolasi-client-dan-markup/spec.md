@@ -40,7 +40,7 @@ coverage:
   | Read Only (No 3) | `FA_RO_PASSWORD` | simpan seleksi Wizard Group Consolidation | ditolak server (403) |
   | Role Lain tanpa Manage Group (No 7) `otherRole_automated_{namaCompany}@qwertysystem.net` | `FA_OTHER_PASSWORD` | Download Groups dan Download Changelog | ditolak server |
   | Total Control (No 1) | `FA_TC_PASSWORD` | Edit Warehouse B lalu Add Subgroup di bawahnya (dua request) | keduanya ditolak (422, group excess terkunci) |
-  | Total Control (No 1) | `FA_TC_PASSWORD` | Edit `Edit Target {runId}-209` dengan penanda Assignable=true dan Disposal Group=true | ditolak (422); kombinasi tidak tersimpan; Function tetap nilai lama |
+  | Total Control (No 1) | `FA_TC_PASSWORD` | Edit `Edit Target {runId}-209` dengan Function = `Disposal Group` (nilai di luar None / Assignable) | ditolak (422); nilai tidak tersimpan; Function tetap nilai lama |
   | Total Control (No 1) | `FA_TC_PASSWORD` | simpan seleksi Wizard berisi 4 group (cap 3 berjalan) | ditolak (422, seleksi melebihi cap); seleksi tersimpan lama tetap |
   | Total Control (No 1) | `FA_TC_PASSWORD` | simpan seleksi Wizard berisi 0 group (cap 3 berjalan, seleksi tersimpan berisi 2 group) | ditolak (422, seleksi kosong); seleksi tersimpan lama tetap berlaku |
   | Total Control (No 1) | `FA_TC_PASSWORD` | Delete Warehouse A (beraset) | ditolak; Warehouse A tidak terhapus |

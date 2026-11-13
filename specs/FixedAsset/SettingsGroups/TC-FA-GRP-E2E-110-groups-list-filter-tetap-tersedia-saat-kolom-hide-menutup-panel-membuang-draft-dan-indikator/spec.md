@@ -29,11 +29,11 @@ coverage:
 | `Echo {runId}-110` | `V110H` | Assignable | 25 | 12 | ModA | 1 |
 | `foxtrot {runId}-110` | `V110G` | None | 0 | 4 | ModA | 1 |
 | `Golf {runId}-110` | `V110F` | Assignable | 1 | 6 | ModA | 1 |
-| `hotel {runId}-110` | `V110E` | Disposal Group | 4 | 3 | ModB | 2 |
+| `hotel {runId}-110` | `V110E` | None | 4 | 3 | ModB | 2 |
 | `India {runId}-110` | `V110D` | Assignable | 13 | 4 | ModB | 2 |
-| `juliet {runId}-110` | `V110C` | Disposal Group | 7 | 7 | ModB | 2 |
+| `juliet {runId}-110` | `V110C` | None | 7 | 7 | ModB | 2 |
 | `Kilo {runId}-110` | `V110B` | Assignable | 3 | 5 | ModB | 2 |
-| `lima {runId}-110` | `V110A` | Disposal Group | 5 | 3 | ModB | 2 |
+| `lima {runId}-110` | `V110A` | None | 5 | 3 | ModB | 2 |
 
   - `ModA` = nama Modified By aktor Total Control Pre-setup No 1 dalam format `[First Name] [Last Initial]`; `ModB` = nama Modified By user kedua yang membuat batch 2 (akun tidak tertulis di Pre-setup TC; disediakan tim FE). Nilai tampilan keduanya dibaca sebelum uji.
   - Total Asset dibentuk dengan menambahkan aset ke group; Total User = user yang otomatis punya akses ke semua group (Total Control, Default User, Read Only client) ditambah user yang ditugaskan lewat Group Role; kemampuan seeding aset dan penugasan user ini disediakan tim FE/BE.
@@ -89,9 +89,9 @@ coverage:
 36. Verifikasi tabel tetap menampilkan hasil Function = `None`: baris `bravo {runId}-110` tampil dan baris `Alpha {runId}-110` tidak tampil
 37. Klik icon Filter
 38. Verifikasi Filter Panel menampilkan Function = `None` (nilai ter-Apply, bukan draft)
-39. Ubah Function menjadi `Disposal Group` (hilangkan centang `None`, centang `Disposal Group`) tanpa [Apply]
+39. Centang `Assignable` di samping `None` (Function menjadi `None` dan `Assignable`) tanpa [Apply]
 40. Klik icon Filter untuk menutup panel
-41. Verifikasi tabel tetap menampilkan hasil Function = `None`: baris `bravo {runId}-110` tampil dan baris `hotel {runId}-110` tidak tampil
+41. Verifikasi tabel tetap menampilkan hasil Function = `None`: baris `bravo {runId}-110` tampil dan baris `Alpha {runId}-110` tidak tampil
 42. Klik icon Filter
 43. Verifikasi Filter Panel menampilkan Function = `None` (nilai ter-Apply, bukan draft)
 44. Verifikasi indikator filter aktif tetap tampil pada icon Filter

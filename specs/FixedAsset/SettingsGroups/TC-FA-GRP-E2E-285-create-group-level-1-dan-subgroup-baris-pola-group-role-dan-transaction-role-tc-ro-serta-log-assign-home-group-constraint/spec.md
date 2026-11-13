@@ -50,8 +50,8 @@ coverage:
 11. Verifikasi pada kedua node, baris pola Group Role terbentuk untuk setiap user Total Control (Pre-setup No 1 dan Default User) dengan seluruh baris Group Role CRUD penuh
 12. Verifikasi pada kedua node, baris pola Group Role terbentuk untuk setiap user Read Only (Pre-setup No 3) dengan seluruh baris Group Role Read saja
 13. Baca tab Transaction Role pada kedua node lewat kemampuan baca modul Role & Permission
-14. Verifikasi pada kedua node, setiap Jenis Transaksi (sembilan, termasuk Addon yang lisensinya belum aktif) memuat baris Asset Admin dan Approver untuk setiap user Total Control (termasuk Default User)
-15. Verifikasi pada kedua node, setiap Jenis Transaksi (sembilan) memuat baris Monitoring & Report saja untuk setiap user Read Only, tanpa baris Approver
+14. Verifikasi pada kedua node, setiap Jenis Transaksi (tujuh, termasuk Addon yang lisensinya belum aktif) memuat baris Asset Admin dan Approver untuk setiap user Total Control (termasuk Default User)
+15. Verifikasi pada kedua node, setiap Jenis Transaksi (tujuh) memuat baris Monitoring & Report saja untuk setiap user Read Only, tanpa baris Approver
 16. Verifikasi tier Total Control user Total Control (termasuk Default User) dan tier Read Only user Read Only tetap terpasang pada pembacaan Role & Permission (tidak terlepas)
 17. Verifikasi kedua node sudah memuat baris pola Group Role dan Transaction Role lengkap pada pembacaan pertama sesudah toast sukses Create masing-masing (tidak ada kondisi node tanpa baris pola)
 

@@ -29,11 +29,11 @@ coverage:
 | `Echo {runId}-115` | `V115H` | Assignable | 25 | 12 | ModA | 1 |
 | `foxtrot {runId}-115` | `V115G` | None | 0 | 4 | ModA | 1 |
 | `Golf {runId}-115` | `V115F` | Assignable | 1 | 6 | ModA | 1 |
-| `hotel {runId}-115` | `V115E` | Disposal Group | 4 | 3 | ModB | 2 |
+| `hotel {runId}-115` | `V115E` | None | 4 | 3 | ModB | 2 |
 | `India {runId}-115` | `V115D` | Assignable | 13 | 4 | ModB | 2 |
-| `juliet {runId}-115` | `V115C` | Disposal Group | 7 | 7 | ModB | 2 |
+| `juliet {runId}-115` | `V115C` | None | 7 | 7 | ModB | 2 |
 | `Kilo {runId}-115` | `V115B` | Assignable | 3 | 5 | ModB | 2 |
-| `lima {runId}-115` | `V115A` | Disposal Group | 5 | 3 | ModB | 2 |
+| `lima {runId}-115` | `V115A` | None | 5 | 3 | ModB | 2 |
 
   - `ModA` = nama Modified By aktor Total Control Pre-setup No 1 dalam format `[First Name] [Last Initial]`; `ModB` = nama Modified By user kedua yang membuat batch 2 (akun tidak tertulis di Pre-setup TC; disediakan tim FE). Nilai tampilan keduanya dibaca sebelum uji.
   - Total Asset dibentuk dengan menambahkan aset ke group; Total User = user yang otomatis punya akses ke semua group (Total Control, Default User, Read Only client) ditambah user yang ditugaskan lewat Group Role; kemampuan seeding aset dan penugasan user ini disediakan tim FE/BE.
@@ -91,7 +91,7 @@ coverage:
 38. Klik `(←)` pada kotak Search
 39. Ketik Search `delta {runId}-115`, tekan Enter
 40. Klik icon Filter
-41. Pilih `Disposal Group` pada dropdown Function
+41. Pilih `Assignable` pada dropdown Function
 42. Klik [Apply]
 43. Verifikasi empty state tampil dengan Illustration, title `No results found`, dan body `Try adjusting your search or filter.`
 44. Klik icon Filter
@@ -104,7 +104,7 @@ coverage:
 
 - Sumber TC: `fixed-asset/settings-groups/TestCases/tc-settings-groups.md`.
 - Langkah penghubung (tanpa awalan `Verifikasi`): mengisi kombinasi filter pada Prerequisites, mengembalikan sort ke netral, serta membersihkan Search dan filter antar TC (S-03, S-09, R-16).
-- Pada TC-FA-GRP-378 kolom A = Group (Ascending) dan kolom B = Total Asset; pada TC-FA-GRP-379 kombinasi tanpa irisan = Search `delta` (Function None) dengan filter Function `Disposal Group`. Keduanya ditentukan spec karena TC memakai "K", "A", "B" tanpa nilai.
+- Pada TC-FA-GRP-378 kolom A = Group (Ascending) dan kolom B = Total Asset; pada TC-FA-GRP-379 kombinasi tanpa irisan = Search `delta` (Function None) dengan filter Function `Assignable`. Keduanya ditentukan spec karena TC memakai "K", "A", "B" tanpa nilai.
 - Siklus sort netral memakai 3 klik per kolom (Ascending, Descending, netral) menurut TC-FA-GRP-367.
 - Spec 48 langkah, di atas smell 35 langkah. Alasan: seluruh blok satu topik dan satu dataset tanpa kelas harness lain; tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA:

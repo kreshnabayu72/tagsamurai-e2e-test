@@ -34,7 +34,7 @@ coverage:
 7. Tunggu aksi selesai
 8. Baca tab Group Role dan tab Transaction Role user gmPattern, gmPatternNested, dan gmPatternOther pada `GM Imp Sub {runId}-296` lewat kemampuan baca modul Role & Permission
 9. Verifikasi pada `GM Imp Sub {runId}-296`, user gmPattern memiliki baris pola Group Manager untuk seluruh Group Role katalog kecuali `Manage user & role` dengan CRUD penuh sesuai kolom yang berlaku
-10. Verifikasi pada `GM Imp Sub {runId}-296`, user gmPattern memiliki baris `Asset Admin` dan `Approver` pada setiap Jenis Transaksi (sembilan, termasuk Addon yang lisensinya belum aktif)
+10. Verifikasi pada `GM Imp Sub {runId}-296`, user gmPattern memiliki baris `Asset Admin` dan `Approver` pada setiap Jenis Transaksi (tujuh, termasuk Addon yang lisensinya belum aktif)
 11. Verifikasi pada `GM Imp Sub {runId}-296`, user gmPatternNested memiliki satu set baris pola GM (setiap Group Role katalog dan setiap pasangan Jenis Transaksi dengan `Asset Admin`/`Approver` tepat satu baris, tidak ganda) sama seperti Subgroup manual
 12. Verifikasi user gmPatternOther tidak memiliki baris Group Role maupun Transaction Role pada `GM Imp Sub {runId}-296` (anchor: baris pola gmPattern pada node yang sama tampil, langkah 9)
 13. Baca tab Group Role dan tab Transaction Role ketiga user GM pada `GM Imp Root {runId}-296`

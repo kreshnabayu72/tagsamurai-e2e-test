@@ -30,23 +30,23 @@ coverage:
 | `Echo {runId}-116` | `V116H` | Assignable | 25 | 12 | ModA | 1 |
 | `foxtrot {runId}-116` | `V116G` | None | 0 | 4 | ModA | 1 |
 | `Golf {runId}-116` | `V116F` | Assignable | 1 | 6 | ModA | 1 |
-| `hotel {runId}-116` | `V116E` | Disposal Group | 4 | 3 | ModB | 2 |
+| `hotel {runId}-116` | `V116E` | None | 4 | 3 | ModB | 2 |
 | `India {runId}-116` | `V116D` | Assignable | 13 | 4 | ModB | 2 |
-| `juliet {runId}-116` | `V116C` | Disposal Group | 7 | 7 | ModB | 2 |
+| `juliet {runId}-116` | `V116C` | None | 7 | 7 | ModB | 2 |
 | `Kilo {runId}-116` | `V116B` | Assignable | 3 | 5 | ModB | 2 |
-| `lima {runId}-116` | `V116A` | Disposal Group | 5 | 3 | ModB | 2 |
+| `lima {runId}-116` | `V116A` | None | 5 | 3 | ModB | 2 |
 
   - `ModA` = nama Modified By aktor Total Control Pre-setup No 1 dalam format `[First Name] [Last Initial]`; `ModB` = nama Modified By user kedua yang membuat batch 2 (akun tidak tertulis di Pre-setup TC; disediakan tim FE). Nilai tampilan keduanya dibaca sebelum uji.
   - Total Asset dibentuk dengan menambahkan aset ke group; Total User = user yang otomatis punya akses ke semua group (Total Control, Default User, Read Only client) ditambah user yang ditugaskan lewat Group Role; kemampuan seeding aset dan penugasan user ini disediakan tim FE/BE.
   - Group Pre-setup Tabel A (Default Group, Head Office, dan seterusnya) tetap tampil di Groups List dan hanya dibaca; asersi memakai baris data di atas.
 - Cleanup (hook `after`, tidak berasumsi seeding berhasil penuh): hapus lewat API seluruh group `... {runId}-116`, aset, dan penugasan user yang di-seed spec ini; hapus preferensi kolom Setup Column yang disimpan spec (kemampuan disediakan tim FE).
-- Parameter iterasi TC-FA-GRP-367, 368, 369, 370 (kolom Group, Code, Function, Total Asset), urutan baris = urutan iterasi. Tabel dibatasi Search suffix spec (12 baris; 10 baris di halaman 1). Default tabel = Group A-Z tanpa membedakan huruf besar/kecil. Code dataset berurutan terbalik terhadap nama (`V116A` milik `lima`, `V116L` milik `Alpha`); Function: Assignable 6 baris, None 3 baris, Disposal Group 3 baris; Total Asset terurut: 0, 0, 0, 1, 2, 3, 4, 5, 7, 10, 13, 25.
+- Parameter iterasi TC-FA-GRP-367, 368, 369, 370 (kolom Group, Code, Function, Total Asset), urutan baris = urutan iterasi. Tabel dibatasi Search suffix spec (12 baris; 10 baris di halaman 1). Default tabel = Group A-Z tanpa membedakan huruf besar/kecil. Code dataset berurutan terbalik terhadap nama (`V116A` milik `lima`, `V116L` milik `Alpha`); Function: Assignable 6 baris, None 6 baris; Total Asset terurut: 0, 0, 0, 1, 2, 3, 4, 5, 7, 10, 13, 25.
 
 | Kolom | Setelah klik #1 (Ascending) | Setelah klik #2 (Descending) |
 |---|---|---|
 | Group | baris 1 sampai 3 = `Alpha {runId}-116`, `bravo {runId}-116`, `Charlie {runId}-116` | baris 1 sampai 3 = `lima {runId}-116`, `Kilo {runId}-116`, `juliet {runId}-116` |
 | Code | baris 1 sampai 3 = `lima {runId}-116`, `Kilo {runId}-116`, `juliet {runId}-116` | baris 1 sampai 3 = `Alpha {runId}-116`, `bravo {runId}-116`, `Charlie {runId}-116` |
-| Function | baris 1 sampai 6 ber-Function Assignable, baris 7 Disposal Group, baris 10 None | baris 1 sampai 3 None, baris 4 Disposal Group, baris 7 Assignable |
+| Function | baris 1 sampai 6 ber-Function Assignable, baris 7 sampai 10 None | baris 1 sampai 6 None, baris 7 sampai 10 Assignable |
 | Total Asset | baris 4 = `Golf {runId}-116`, baris 5 = `Alpha {runId}-116`, baris 10 = `Charlie {runId}-116` | baris 1 sampai 3 = `Echo {runId}-116`, `India {runId}-116`, `Charlie {runId}-116` |
 
 ## Test Steps

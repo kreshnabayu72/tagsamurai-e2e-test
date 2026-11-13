@@ -1,8 +1,8 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting > Chart of Accounts
 
-Sumber: `fixed-asset/settings-chart-of-accounts/TestCases/tc-settings-chart-of-accounts.md` (365 TC `TC-FA-COA-1`–`367`, semua aktif; id 116 dan 139 tidak dipakai). Suite: `specs/FixedAsset/SettingsChartOfAccounts/`. Prefix: `FA` + `COA` (`TC-FA-COA-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-chart-of-accounts-backend.md`.
+Sumber: `fixed-asset/settings-chart-of-accounts/TestCases/tc-settings-chart-of-accounts.md` (367 TC `TC-FA-COA-1`–`369`, semua aktif; id 116 dan 139 tidak dipakai). Suite: `specs/FixedAsset/SettingsChartOfAccounts/`. Prefix: `FA` + `COA` (`TC-FA-COA-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-chart-of-accounts-backend.md`.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 365 TC aktif masuk 103 spec (83 nomor rencana `001`–`083`, nomor cadangan `084`–`094`, dan spec absence `095`–`103`), tidak ada TC hanya-BE. Setiap TC terpetakan ke tepat satu spec, kecuali 22 TC yang terbelah antara spec asal dan satu spec absence (S-05, lihat bagian Pembagian TC lintas spec); tabel di bawah dibangkitkan dari frontmatter `sourceTc`.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 367 TC aktif masuk 105 spec (83 nomor rencana `001`–`083`, nomor cadangan `084`–`094`, spec absence `095`–`103`, dan 2 nomor tambahan `104`–`105`), tidak ada TC hanya-BE. Setiap TC terpetakan ke tepat satu spec, kecuali 22 TC yang terbelah antara spec asal dan satu spec absence (S-05, lihat bagian Pembagian TC lintas spec); tabel di bawah dibangkitkan dari frontmatter `sourceTc`.
 
 ## Cakupan
 
@@ -48,6 +48,7 @@ Spec kelas g yang memuat asersi "tidak ada log" untuk klausa yang sebelumnya tan
 
 ## Pembagian TC lintas spec
 
+- Nomor tambahan `104`–`105` memuat TC seri Account Function Disposal Proceeds (`FACO-LOGIC-01f`): TC-368 (Create akun ber-function Disposal Proceeds) di `104` dan TC-369 (guard Delete akun Default Disposal Proceeds Account, `SET-13`) di `105`. TC-15 dan TC-16 (tujuh opsi dropdown Account Function dan penjelasan popover Disposal Proceeds) tetap di `013`.
 - 22 TC ada di `sourceTc` dua spec, spec asal dan spec absence (S-05 `[KEPUTUSAN 2026-11-02]`; `check-suite.py` C2 melaporkannya `[REVIEW]`): TC-32, 36, 41, 56, 65, 71, 124, 269–275, 300–305, 350, 361. Spec asal (`028`, `029`, `066`–`072`) hanya mengasersi tampilan, respons server, dan state data, dan menulis rujukan di `## Notes`; spec absence memuat pemicu yang sama dengan baseline Changelog, System Log aktor, dan Activity Log sendiri per TC.
 - Spec absence `083` memuat asersi "tidak ada log" untuk TC-51, 52, 96, 118 (aksi no-op dan item bulk yang dilewati).
 - Spec multi-konteks `073`–`078` dan `075` menulis asersi "tidak ada log" lewat baseline di spec asal (butir `P-1`).
@@ -89,7 +90,7 @@ f. Jalur ekspor (J-06): ditunda dengan syarat (keputusan pengguna 2026-11-04). S
 | TC-FA-COA-E2E-010-guided-tooltip-mulai-ulang-back-next-dan-keyboard | Guided Tooltip: Mulai Ulang, Back Next, dan Keyboard | FE+BE | 22 | 338, 339, 342 |
 | TC-FA-COA-E2E-011-mobile-android-card-list-toolbar-bottom-sheet-role | Mobile Android: Card List, Toolbar, Bottom Sheet, Role | FE+BE | 37 | 98, 99, 100, 102, 103, 104 |
 | TC-FA-COA-E2E-012-mobile-android-selection-mode-popup-used-by-dan-switch-disabled | Mobile Android: Selection Mode, Popup Used By, dan Switch Disabled | FE+BE | 31 | 101, 366, 344, 345 |
-| TC-FA-COA-E2E-013-add-account-screening-modal-dropdown-function-popover-dan-clear-field | Add Account: Screening Modal, Dropdown Function, Popover, dan Clear Field | FE+BE | 39 | 13, 15, 16, 18 |
+| TC-FA-COA-E2E-013-add-account-screening-modal-dropdown-function-popover-dan-clear-field | Add Account: Screening Modal, Dropdown Function, Popover, dan Clear Field | FE+BE | 40 | 13, 15, 16, 18 |
 | TC-FA-COA-E2E-014-add-account-validasi-wajib-spasi-karakter-dan-emoji | Add Account: Validasi Wajib, Spasi, Karakter, dan Emoji | FE+BE | 31 | 19, 20, 21, 22, 24, 27 |
 | TC-FA-COA-E2E-015-add-account-validasi-batas-panjang-dan-whitelist-account-code | Add Account: Validasi Batas Panjang dan Whitelist Account Code | FE+BE | 38 | 23, 25, 26, 359, 360 |
 | TC-FA-COA-E2E-016-add-account-validasi-duplikat-code-dan-create-dengan-search-dan-filter | Add Account: Validasi Duplikat Code dan Create dengan Search dan Filter Aktif | FE+BE | 35 | 28, 29, 143 |
@@ -180,6 +181,8 @@ f. Jalur ekspor (J-06): ditunda dengan syarat (keputusan pengguna 2026-11-04). S
 | TC-FA-COA-E2E-101-absence-log-edit-gagal-5xx-atau-timeout | Absence Log: Save Edit Gagal 5xx atau Timeout Tidak Menulis Log | FE+BE | 28 | 41, 303 |
 | TC-FA-COA-E2E-102-absence-log-bulk-activate-dan-deactivate-gagal-5xx | Absence Log: Bulk Activate dan Bulk Deactivate Gagal 5xx Tidak Menulis Log | FE+BE | 28 | 300, 301 |
 | TC-FA-COA-E2E-103-absence-log-bulk-activate-dan-deactivate-seleksi-campuran | Absence Log: Bulk Deactivate dan Bulk Activate Seleksi Campuran Tidak Menulis Log untuk Akun yang Dilewati | FE+BE | 39 | 56, 350 |
+| TC-FA-COA-E2E-104-add-account-create-akun-function-disposal-proceeds | Add Account: Create Akun dengan Account Function Disposal Proceeds | FE+BE | 12 | 368 |
+| TC-FA-COA-E2E-105-blokir-delete-single-akun-default-disposal-proceeds-account | Blokir Delete Single: Akun Default Disposal Proceeds Account | FE+BE | 10 | 369 |
 
 ## Lapisan per TC
 
@@ -550,3 +553,5 @@ f. Jalur ekspor (J-06): ditunda dengan syarat (keputusan pengguna 2026-11-04). S
 | TC-FA-COA-365 | TC-FA-COA-E2E-023 | FE+BE |
 | TC-FA-COA-366 | TC-FA-COA-E2E-012 | FE+BE |
 | TC-FA-COA-367 | TC-FA-COA-E2E-084 | FE+BE |
+| TC-FA-COA-368 | TC-FA-COA-E2E-104 | FE+BE |
+| TC-FA-COA-369 | TC-FA-COA-E2E-105 | FE+BE |

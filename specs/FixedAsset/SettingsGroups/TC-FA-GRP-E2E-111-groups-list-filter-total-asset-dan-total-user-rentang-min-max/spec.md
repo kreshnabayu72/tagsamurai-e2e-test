@@ -30,11 +30,11 @@ coverage:
 | `Echo {runId}-111` | `V111H` | Assignable | 25 | 12 | ModA | 1 |
 | `foxtrot {runId}-111` | `V111G` | None | 0 | 4 | ModA | 1 |
 | `Golf {runId}-111` | `V111F` | Assignable | 1 | 6 | ModA | 1 |
-| `hotel {runId}-111` | `V111E` | Disposal Group | 4 | 3 | ModB | 2 |
+| `hotel {runId}-111` | `V111E` | None | 4 | 3 | ModB | 2 |
 | `India {runId}-111` | `V111D` | Assignable | 13 | 4 | ModB | 2 |
-| `juliet {runId}-111` | `V111C` | Disposal Group | 7 | 7 | ModB | 2 |
+| `juliet {runId}-111` | `V111C` | None | 7 | 7 | ModB | 2 |
 | `Kilo {runId}-111` | `V111B` | Assignable | 3 | 5 | ModB | 2 |
-| `lima {runId}-111` | `V111A` | Disposal Group | 5 | 3 | ModB | 2 |
+| `lima {runId}-111` | `V111A` | None | 5 | 3 | ModB | 2 |
 
   - `ModA` = nama Modified By aktor Total Control Pre-setup No 1 dalam format `[First Name] [Last Initial]`; `ModB` = nama Modified By user kedua yang membuat batch 2 (akun tidak tertulis di Pre-setup TC; disediakan tim FE). Nilai tampilan keduanya dibaca sebelum uji.
   - Total Asset dibentuk dengan menambahkan aset ke group; Total User = user yang otomatis punya akses ke semua group (Total Control, Default User, Read Only client) ditambah user yang ditugaskan lewat Group Role; kemampuan seeding aset dan penugasan user ini disediakan tim FE/BE.
