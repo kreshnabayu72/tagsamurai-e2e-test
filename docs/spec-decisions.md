@@ -1759,3 +1759,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration B).
 - **Diterapkan di:** skrip LicenseAllocationSubscription 057, 058, 060, 062, 070, 071, 074.
 - **Sumber:** org-uiux `admin-console/license-allocation-subscription` LLD L1180; be-filing 0185d69 (BT-AC-CS-22 bagian 8).
+
+## D-176 Langkah Modified By di User 071 memakai pengubah buatan run, bukan baris `System` (2026-11-13)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-071` TC-GS-USER-419 langkah 98 dan 108.
+- **Spec meminta:** baris dengan `Modified By = System` muncul (Search lalu tampilkan kolom Modified By).
+- **Kenyataannya:** satu-satunya baris `System` adalah Default User hasil seed. Spec 032 (TC-GS-USER-162) mengedit Default User itu, sehingga Modified By-nya berganti. Langkah 98/108 lulus hanya kalau 071 berjalan sebelum 032. Urutan itu hanya dijaga `serial-specs.txt` (D-314) di runner penuh. Run 1190 (urutan 032 lalu 071) tidak punya baris `System` sama sekali.
+- **Karena:** spec tidak boleh bergantung pada urutan spec lain, dan baris yang diasersi harus milik spec itu sendiri.
+- **Keputusan:** langkah 98 dan 108 mengasersi nama pengubah yang dibuat run (seperti D-132: login user `Pengubah <runId>-071` mengedit U-1 lalu dihapus). Yang diasersi: Search nama itu, lalu baris U-1 menampilkan nama itu di Modified By, karena Modified By menyimpan snapshot nama. Ketergantungan urutan D-314 untuk 071 dihapus.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration C, FD-C-4).
+- **Diterapkan di:** User 071.
+- **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-C-4; run 1190.
