@@ -1802,3 +1802,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (koreksi dari sesi BE).
 - **Diterapkan di:** LicenseAllocationSubscription 079, 113.
 - **Sumber:** PRD license-allocation-subscription L625, L1474, L1487-L1490, L1495-L1497; LLD L1234, L1245; enterprise-management-service#224.
+
+## D-180 Waktu caption lock login memakai Time Format default dan timezone pengguna, bukan setelan tenant (2026-11-13)
+
+- **Spec / langkah:** Auth/LoginPassword `TC-AUTH-LP-E2E-040` TC-138 langkah 41-42.
+- **Spec meminta:** waktu boleh-coba-lagi di caption lock (15 menit/1 jam) mengikuti Time Format dan zona General Settings tenant (PRD S-AUTHLP-03 L210, D-29).
+- **Kenyataannya:** halaman login publik. Login yang gagal tidak punya sesi, jadi tidak bisa membaca setelan tenant, dan memang tidak boleh. Jawaban `outcome: locked` hanya membawa `lockUntil` (instan UTC). LLD/openapi (L543, L662-664) menetapkan FE yang memformat `lockUntil` (jam dan menit saja).
+- **Keputusan (owner):** waktu di caption = `lockUntil` diformat dengan opsi Time Format default (`HH:mm`), di timezone pengguna sendiri (browser), bukan setelan tenant. Langkah 41-42 mengasersi format itu, dengan waktu dihitung dari `lockUntil` dalam zona browser run. iam-service#185 (BT-AUTH-LP-1) ditutup sebagai bukan defect. PRD akan diperbarui owner.
+- **Diputuskan oleh:** owner (Zain), 2026-11-13. Dicatat oleh Wangs-UI Coordinator.
+- **Diterapkan di:** LoginPassword 040.
+- **Sumber:** repo aplikasi `plans/_program/prd-overrides.md` (baris auth/login-password, 2026-11-13); iam-service#185; openapi auth/login-password L543, L662-664.
