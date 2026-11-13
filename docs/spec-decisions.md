@@ -1932,3 +1932,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** PlansLicensingLifecycleSettings 173, 174, 175, 176, 178, 179, 180.
 - **Sumber:** LLD plans-licensing-lifecycle-settings L62, L148, L150, L313; run LCS-b-win-20261114-l (board 1387).
+
+## D-193 Request tulis langsung atas Client Archived ditolak 409 `client_not_active` (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/Client `131` TC-AC-ACC-907 langkah 14 (resend activation email) dan TC-AC-ACC-906 langkah 19 (toggle BYO activation setting); berlaku sama untuk request tulis langsung lain atas Client Archived.
+- **Spec meminta:** server menolak dengan `403 Forbidden`.
+- **Kenyataannya:** LLD client L1425, L1517 dan L1536 (openapi L1608, L1782): `403` hanya untuk gerbang permission (sebelum lookup) dan untuk Client Suspended (`workspace_suspended`); Client Archived dijawab `409` dengan `data.errorCode` `client_not_active`. Backend menjawab persis seperti itu.
+- **Keputusan:** kontrak LLD menang. Langkah tersebut mengasersi penolakan `409` dengan `client_not_active`, dan langkah sesudahnya (tidak ada email yang terkirim, setting tidak berubah) tetap diasersi. Menggantikan D-draft-ACC-ARCHIVED-WRITE-STATUS.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
+- **Diterapkan di:** Client 131.
+- **Sumber:** LLD admin-console client L1425, L1517, L1536; openapi L1608, L1782.
