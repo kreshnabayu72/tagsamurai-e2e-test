@@ -1056,7 +1056,7 @@ Aturan:
 - **Diterapkan di:** skrip LicenseAllocationSubscription 007 (`// @spec-decision: pending D-draft-ACCS-04`, menggantikan `wrapper-gap`) dan PlansLicensingPlansFeatures 044 (`// @spec-decision: D-draft-ACPF-3`).
 - **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/decisions.md` L325-332 (D-draft-ACCS-04); `plans/admin-console-plans-licensing/decisions.md` L282-289 (D-draft-ACPF-3).
 
-## D-112 CS 074 menjalankan blok cancel-while-Waiting-for-Approval pada request trial tanpa harga (2026-11-12)
+## D-112 (ditarik oleh D-175) CS 074 menjalankan blok cancel-while-Waiting-for-Approval pada request trial tanpa harga (2026-11-12)
 
 - **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-074` TC-AC-CS-282 langkah 1-11, TC-AC-CS-615 langkah 12-25, TC-AC-CS-210 langkah 26-30, TC-AC-CS-286 langkah 31-32.
 - **Spec meminta:** request berbayar Partner Rina (Plan Owner CV Karya Mandiri, Start Date 19/08/26).
@@ -1748,3 +1748,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Eval FM r2).
 - **Diterapkan di:** FileManagerE2 003, 017.
 - **Sumber:** org-uiux `global-settings/file-manager/API/low-level-design.md` L114, L550.
+
+## D-175 D-112 ditarik: pengganti trial tidak mencapai Waiting for Approval (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-074` (langkah yang diatur D-112), serta langkah Waiting-trial di 057, 058, 060, 062, 070 dan 071.
+- **Spec meminta:** request dari entity Distributor/Partner (Fajar, PT Maju Bersama; Rina, CV Karya Mandiri) yang menunggu approval.
+- **Kenyataannya:** LLD `POST /subscriptions/trials` step 6 (L1180) menetapkan bahwa trial dari aktor entity Principal langsung `active`. Hanya trial dari Distributor/Partner dengan `require_approval_for_trial = true` yang menjadi `waiting_for_approval`. Pengganti di D-112 (trial oleh requester di entity Principal) karena itu langsung Active (run CS-AdminConsole-win-20261113-e, term 2121039185581182977), jadi blok cancel-while-Waiting tidak tercapai. Aksi dan rute untuk entity Distributor/Partner belum ada di sprint (ems#52/#83).
+- **Karena:** pengganti tidak membentuk state yang diuji, dan state yang benar hanya bisa dibuat dari entity yang belum masuk sprint.
+- **Keputusan:** D-112 ditarik. Langkah Waiting-trial di spec di atas menjadi `sprint-gap` (ems#52/#83), dan kembali dijalankan dengan persona spec saat entity Distributor/Partner masuk sprint. Cabang renew tetap `sprint-gap` pricing.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration B).
+- **Diterapkan di:** skrip LicenseAllocationSubscription 057, 058, 060, 062, 070, 071, 074.
+- **Sumber:** org-uiux `admin-console/license-allocation-subscription` LLD L1180; be-filing 0185d69 (BT-AC-CS-22 bagian 8).
