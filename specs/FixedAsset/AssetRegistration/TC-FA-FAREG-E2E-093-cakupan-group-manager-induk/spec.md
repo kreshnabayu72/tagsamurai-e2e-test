@@ -4,7 +4,7 @@ title: "Cakupan Group: Group Manager induk mengubah lalu menghapus draft sub-gro
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-02e", "§9.2#p57", "§9.2#p59", "§9.2#p61", "§9.2#p62", "T-REG-04"]
 smoke: ["T-REG-04"]
 dependsOn: []

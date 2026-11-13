@@ -4,7 +4,7 @@ title: "Detail pengajuan: header, mode read-only, kolom Result dan Reason, dan f
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [T-REG-17, §4.1#r12, §4.1#b2, §4.1#b3, §4.1#b4, §4.1#b5, §4.1#b6, §4.1#p20, §4.1#r60, §4.1#r61, §4.2#p1, §4.2.1a#b1, §4.2.1a#b2, §4.2.1a#b3, §4.2.4#b2, §4.2.5#r4]
 smoke: []
 dependsOn: []
@@ -20,12 +20,12 @@ trace:
   §4.1#r60: [39, 40, 41, 49, 54]
   §4.1#r61: [42, 43, 44, 55]
   §4.2#p1: [2, 3, 4, 5, 6]
-  §4.2.1a#b1: [8, 9, 10, 11, 12, 13, 14, 68, 70]
+  §4.2.1a#b1: [8, 9, 10, 11, 12, 13, 14, 68, 70, 103, 106, 109, 112, 114, 115]
   §4.2.1a#b2: [15, 72, 74]
   §4.2.1a#b3: [20, 21, 23, 24]
   §4.2.4#b2: [64, 66]
   §4.2.5#r4: 74
-anchor: [27, 32]
+anchor: [27, 32, 102, 105, 108, 111]
 coverage:
   web: automated
 ---
@@ -37,11 +37,11 @@ coverage:
 - Layar awal: halaman Detail pengajuan, dimuat dengan kondisi tiap blok langkah.
 - Komponen: Detail pengajuan
 - Data:
-  - DU-028-1: pengajuan Registration ID `REG-20261108-00011`, Status `Waiting for Approval`, Group `Kantor Pusat`, Requested By `Hadi K`, Total Asset `4`, Submitted At `08/11/26, 14:02`.
-  - DU-028-2: pengajuan Registration ID `REG-20261103-00004`, Status `Partially Approved`, Group `Kantor Pusat`, Requested By `Hadi K`, Total Asset `4`, Submitted At `03/11/26, 10:12`.
-  - DU-028-3: pengajuan Registration ID `REG-20261104-00009`, Status `Approved`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `1`, Submitted At `04/11/26, 15:30`.
-  - DU-028-4: pengajuan Registration ID `REG-20261102-00001`, Status `Rejected`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `1`, Submitted At `02/11/26, 09:48`.
-  - DU-028-5: pengajuan Registration ID `REG-20261101-00006`, Status `Canceled`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `4`, Submitted At `01/11/26, 17:05`.
+  - DU-028-1: pengajuan Registration ID `REG-20261108-00011`, Status `Waiting for Approval`, Group `Kantor Pusat`, Requested By `Hadi K.`, Total Asset `4`, Submitted At `08/11/26, 14:02`.
+  - DU-028-2: pengajuan Registration ID `REG-20261103-00004`, Status `Partially Approved`, Group `Kantor Pusat`, Requested By `Hadi K.`, Total Asset `4`, Submitted At `03/11/26, 10:12`.
+  - DU-028-3: pengajuan Registration ID `REG-20261104-00009`, Status `Approved`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `1`, Submitted At `04/11/26, 15:30`.
+  - DU-028-4: pengajuan Registration ID `REG-20261102-00001`, Status `Rejected`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `1`, Submitted At `02/11/26, 09:48`.
+  - DU-028-5: pengajuan Registration ID `REG-20261101-00006`, Status `Canceled`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `4`, Submitted At `01/11/26, 17:05`.
   - DU-028-6: aset Name `Laptop - 128`, Category `Computers` dengan path `Electronics > Computers`, Result `Approved`, tanpa Reason.
   - DU-028-7: aset Name `Laptop - 129`, Category `Computers` dengan path `Electronics > Computers`, Result `Approved`, Reason `Scratch on the casing is minor`.
   - DU-028-8: aset Name `Laptop - 130`, Category `Computers` dengan path `Electronics > Computers`, Result `Returned`, Reason `Photo is missing`.
@@ -50,7 +50,7 @@ coverage:
   - K1: pengajuan DU-028-1 dibuka dari sub tab Waiting for Approval oleh Hadi K sebagai pengaju, dengan aset DU-028-6 sampai DU-028-9 sesuai urutan itu.
   - K2: pengajuan DU-028-1 dibuka dari sub tab Waiting for Approval oleh pengguna ber-role Total Control yang bukan pengaju, dengan aset DU-028-6 sampai DU-028-9 sesuai urutan itu.
   - K3: pengajuan DU-028-2 dibuka dari sub tab History oleh Hadi K, dengan aset DU-028-6 sampai DU-028-9 sesuai urutan itu, dan memiliki koreksi approver.
-  - K4: pengajuan DU-028-3 dibuka dari sub tab History oleh Hadi K, dengan aset DU-028-6.
+  - K4: pengajuan DU-028-3 dibuka dari sub tab History oleh Hadi K, dengan aset DU-028-6, tanpa koreksi approver.
   - K5: pengajuan DU-028-4 dibuka dari sub tab History oleh Hadi K, dengan aset DU-028-9.
   - K6: pengajuan DU-028-5 dibuka dari sub tab History oleh Hadi K, dengan aset DU-028-6 sampai DU-028-9 sesuai urutan itu.
   - K7: pengajuan DU-028-2 dibuka dari menu Approvals, tab History, oleh pengguna ber-role Total Control, dengan aset DU-028-6 sampai DU-028-9 sesuai urutan itu.
@@ -67,13 +67,13 @@ coverage:
 
 ### Header dan Breadcrumb pengajuan Waiting for Approval
 7. Tampilkan Detail pengajuan dengan kondisi K1
-8. Verifikasi header memuat Registration ID pengajuan
+8. Verifikasi header memuat Registration ID `REG-20261108-00011`
 9. Verifikasi header memuat ikon copy di samping Registration ID
-10. Verifikasi header memuat Badge status pengajuan
-11. Verifikasi header memuat `Submitted At`
-12. Verifikasi header memuat label `Group`
-13. Verifikasi header memuat label `Requested By`
-14. Verifikasi header memuat label `Total Asset`
+10. Verifikasi header memuat Badge status `Waiting for Approval`
+11. Verifikasi header memuat `Submitted At` `08/11/26, 14:02`
+12. Verifikasi header memuat `Group` `Kantor Pusat`
+13. Verifikasi header memuat `Requested By` `Hadi K.`[^drift-1]
+14. Verifikasi header memuat `Total Asset` `4`
 15. Verifikasi Breadcrumb tampil berurutan `Assets`, `Registration`, `Waiting for Approval`, `Detail`
 
 ### Salin Registration ID dari header
@@ -192,3 +192,30 @@ coverage:
 98. Verifikasi panel memuat tombol `Close`
 99. Klik `Close` pada panel
 100. Verifikasi panel unit aset tertutup
+
+### Ikon Changes by approver tidak tampil pada pengajuan Waiting for Approval
+101. Tampilkan Detail pengajuan dengan kondisi K1
+102. Verifikasi Badge status di header `Waiting for Approval`
+103. Verifikasi ikon `Changes by approver` tidak tampil di header
+
+### Ikon Changes by approver tidak tampil pada pengajuan Rejected
+104. Tampilkan Detail pengajuan dengan kondisi K5
+105. Verifikasi Badge status di header `Rejected`
+106. Verifikasi ikon `Changes by approver` tidak tampil di header
+
+### Ikon Changes by approver tidak tampil pada pengajuan Canceled
+107. Tampilkan Detail pengajuan dengan kondisi K6
+108. Verifikasi Badge status di header `Canceled`
+109. Verifikasi ikon `Changes by approver` tidak tampil di header
+
+### Ikon Changes by approver tidak tampil pada pengajuan Approved tanpa koreksi approver
+110. Tampilkan Detail pengajuan dengan kondisi K4
+111. Verifikasi Badge status di header `Approved`
+112. Verifikasi ikon `Changes by approver` tidak tampil di header
+
+### Submitted At rata kanan dan urutan Group, Requested By, Total Asset pada header
+113. Tampilkan Detail pengajuan dengan kondisi K1
+114. Verifikasi `Submitted At` pada header tampil rata kanan
+115. Verifikasi header memuat `Group`, `Requested By`, dan `Total Asset` berurutan sesudah `Submitted At`
+
+[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 Example Data: Requested By `Hadi K`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: O-4, karena override menang atas PRD dan foundation (SB-6).

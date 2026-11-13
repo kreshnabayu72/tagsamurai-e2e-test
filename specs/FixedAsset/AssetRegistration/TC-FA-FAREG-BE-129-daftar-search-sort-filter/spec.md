@@ -4,7 +4,7 @@ title: "Daftar registrasi: Search, sort, dan Filter di server"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [EB-FLT-3, EB-SRC-1, EB-SRT-1, EB-SRT-2]
 smoke: []
 dependsOn: []
@@ -12,7 +12,7 @@ trace:
   EB-FLT-3: [19, 21, 22]
   EB-SRC-1: [2, 4, 5, 7, 8, 10, 11, 13, 14, 16]
   EB-SRT-1: [24, 26, 28, 30, 32, 34, 40, 42, 44, 46, 48, 49, 51, 53, 54]
-  EB-SRT-2: [32, 34, 36, 38, 40, 42, 44, 56, 58, 59, 60, 62]
+  EB-SRT-2: [32, 34, 36, 38, 40, 42, 44, 56, 58, 59, 60, 62, 64, 68, 72, 75, 77]
 owner: BE
 ---
 # Daftar registrasi: Search, sort, dan Filter di server
@@ -30,6 +30,11 @@ owner: BE
   - DU-129-8: batch Draft Group `#Gudang Depot {runId}`, Origin `—`, Total Asset `40` (Ready `20`), Progress `50%`, Requested By `Rina Wulandari`, Last Updated `T0 − 7 jam`.
   - DU-129-9: dua belas batch Draft Group `Kantor Volume {runId}`, Origin `—`, Total Asset `{n}` untuk n = 1 sampai 12, Progress `0%`, Requested By `Rina Wulandari`, Last Updated `T0 − {n} menit`.
   - DU-129-10: dua belas batch Draft Group `Kantor Seragam {runId}`, Origin `—`, Total Asset `3`, Progress `0%`, Requested By `Rina Wulandari`, Last Updated `T0 − {n} menit` untuk n = 1 sampai 12.
+  - DU-129-11, DU-129-16, dan DU-129-17: masing-masing satu batch Draft Group `Kantor Kembar {runId}`, Origin `—`, Total Asset `4`, Progress `0%`, Requested By `Rina Wulandari`, Last Updated `T0 − 30 menit` (ketiganya identik pada seluruh kolom yang diurutkan).
+  - DU-129-12: pengajuan History Group `Anggrek Riwayat {runId}`, Total Asset `2`, Status `Approved`, Requested By `Rina Wulandari`, Approver `Agus Anwar`, Last Updated `T0 − 4 jam`.
+  - DU-129-13: pengajuan History Group `Beringin Riwayat {runId}`, Total Asset `3`, Status `Approved`, Requested By `Rina Wulandari`, Approver `Budi Basuki`, Last Updated `T0 − 3 jam`.
+  - DU-129-14: pengajuan History Group `Cemara Riwayat {runId}`, Total Asset `4`, Status `Approved`, Requested By `Rina Wulandari`, Approver `Citra Cahyani`, Last Updated `T0 − 2 jam`.
+  - DU-129-15: pengajuan History Group `Dahlia Riwayat {runId}`, Total Asset `5`, Status `Canceled`, Requested By `Rina Wulandari`, Approver `—`, Last Updated `T0 − 1 jam`.
   - Ketujuh batch DU-129-2 sampai DU-129-8 diurutkan menurut default sort tabel (Last Updated terbaru di atas): `Apel Depot {runId}`, `Élan Depot {runId}`, `3D Depot {runId}`, `Elan Depot {runId}`, `anggur Depot {runId}`, `Ezra Depot {runId}`, `#Gudang Depot {runId}`.
 - Kondisi:
   - Jumlah baris per halaman bernilai `10`.
@@ -109,3 +114,22 @@ owner: BE
 60. Verifikasi gabungan kedua halaman memuat dua belas baris berbeda tanpa baris ganda dan tanpa baris terlewat
 61. Rina mengurutkan kolom Total Asset secara menurun
 62. Verifikasi urutan baris pada kedua halaman sama persis dengan urutan sort menaik
+
+### Sort dengan nilai sama diurutkan menurut identifier
+63. Rina mencari di sub tab Draft dengan kata kunci `Kantor Kembar {runId}`
+64. Verifikasi tabel memuat tiga baris data uji yang identik pada Total Asset dan Last Updated
+65. Rina mengurutkan kolom Last Updated secara menaik
+66. Rina mencatat urutan ketiga baris
+67. Rina mengurutkan kolom Last Updated secara menurun
+68. Verifikasi urutan ketiga baris adalah kebalikan penuh dari catatan langkah 66, karena identifier menentukan urutan dengan arah mengikuti arah sort aktif
+69. Rina mengurutkan kolom Total Asset secara menaik
+70. Rina mencatat urutan ketiga baris
+71. Rina mengurutkan kolom Total Asset secara menurun
+72. Verifikasi urutan ketiga baris adalah kebalikan penuh dari catatan langkah 70, karena Total Asset dan Last Updated sama sehingga identifier menentukan urutan dengan arah mengikuti arah sort aktif
+
+### Sort kolom Approver dengan nilai kosong di History
+73. Rina mencari di sub tab History dengan kata kunci `Riwayat {runId}`
+74. Rina mengurutkan kolom Approver secara menaik
+75. Verifikasi tabel memuat empat baris data uji dengan urutan Approver menaik dan nilai kosong `—` di akhir: `Anggrek Riwayat {runId}`, `Beringin Riwayat {runId}`, `Cemara Riwayat {runId}`, `Dahlia Riwayat {runId}`
+76. Rina mengurutkan kolom Approver secara menurun
+77. Verifikasi urutan baris kebalikan penuh dengan nilai kosong `—` di awal: `Dahlia Riwayat {runId}`, `Cemara Riwayat {runId}`, `Beringin Riwayat {runId}`, `Anggrek Riwayat {runId}`

@@ -4,7 +4,7 @@ title: "Sub tab Draft: opsi dan hasil Filter"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r22", "§4.1#r23", "§4.1#r24", "§4.1#r25", "§4.1#r26", "§4.1#r27", "§9.5#r11", "EB-FLT-1@tabel-draft", "EB-FLT-4@tabel-draft", "EB-FLT-3"]
 smoke: ["EB-FLT-3"]
 dependsOn: []
@@ -29,17 +29,17 @@ coverage:
 - Aktor: Total Control `Maya L`, belum memiliki batch Draft sebelum spec mulai.
 - Layar awal: Assets > Registration > Draft.
 - Data:
-  - DU-041-1: Batch Draft dengan Group `Gudang Cawang {runId}`, Origin `—`, Total Asset `5`, Progress `0%`, Requested By `Rina W`, Last Updated `T0 − 1 hari`.
-  - DU-041-2: Batch Draft dengan Group `Gudang Pancoran {runId}`, Origin `—`, Total Asset `15`, Progress `0%`, Requested By `Budi S`, Last Updated `T0 − 2 hari`.
-  - DU-041-3: Batch Draft dengan Group `Gudang Kuningan {runId}`, Origin `—`, Total Asset `20`, Progress `0%`, Requested By `Rina W`, Last Updated `T0 − 3 hari`.
-  - DU-041-4: Batch Draft dengan Group `Gudang Pasar Minggu {runId}`, Origin `—`, Total Asset `30`, Progress `0%`, Requested By `Siti N`, Last Updated `T0 − 4 hari`.
-  - DU-041-5: Batch Draft dengan Group `Gudang Ciputat {runId}`, Origin `—`, Total Asset `31`, Progress `0%`, Requested By `Budi S`, Last Updated `T0 − 5 hari`.
-  - DU-041-6: Batch Draft dengan Group `Gudang Bintaro {runId}`, Origin `—`, Total Asset `8`, Progress `0%`, Requested By `Siti N`, Last Updated `T0 − 6 hari`.
-  - DU-041-7: Batch Draft dengan Group `Gudang Kramat {runId}`, Origin `—`, Total Asset `40`, Progress `0%`, Requested By `Dewi A`, Last Updated `T0 − 7 hari`.
-  - DU-041-8: Batch Draft dengan Group `Gudang Senen {runId}`, Origin `—`, Total Asset `45`, Progress `0%`, Requested By `Dewi A`, Last Updated `T0 − 8 hari`.
+  - DU-041-1: Batch Draft dengan Group `Gudang Cawang {runId}`, Origin `—`, Total Asset `5`, Progress `0%`, Requested By `Rina W.`, Last Updated `T0 − 1 hari`.
+  - DU-041-2: Batch Draft dengan Group `Gudang Pancoran {runId}`, Origin `—`, Total Asset `15`, Progress `0%`, Requested By `Budi S.`, Last Updated `T0 − 2 hari`.
+  - DU-041-3: Batch Draft dengan Group `Gudang Kuningan {runId}`, Origin `—`, Total Asset `20`, Progress `0%`, Requested By `Rina W.`, Last Updated `T0 − 3 hari`.
+  - DU-041-4: Batch Draft dengan Group `Gudang Pasar Minggu {runId}`, Origin `—`, Total Asset `30`, Progress `0%`, Requested By `Siti N.`, Last Updated `T0 − 4 hari`.
+  - DU-041-5: Batch Draft dengan Group `Gudang Ciputat {runId}`, Origin `—`, Total Asset `31`, Progress `0%`, Requested By `Budi S.`, Last Updated `T0 − 5 hari`.
+  - DU-041-6: Batch Draft dengan Group `Gudang Bintaro {runId}`, Origin `—`, Total Asset `8`, Progress `0%`, Requested By `Siti N.`, Last Updated `T0 − 6 hari`.
+  - DU-041-7: Batch Draft dengan Group `Gudang Kramat {runId}`, Origin `—`, Total Asset `40`, Progress `0%`, Requested By `Dewi A.`, Last Updated `T0 − 7 hari`.
+  - DU-041-8: Batch Draft dengan Group `Gudang Senen {runId}`, Origin `—`, Total Asset `45`, Progress `0%`, Requested By `Dewi A.`, Last Updated `T0 − 8 hari`.
   - DU-041-9: Group `Gudang Cikini {runId}` yang dapat dipilih (Assignable) di entitas aktor.
   - DU-041-10: Group `Gudang Setiabudi {runId}` yang dapat dipilih (Assignable) di entitas aktor.
-  - DU-041-11: Pengguna aktif `Wulan T` dengan role Manage asset & TAG, tidak memiliki batch Draft.
+  - DU-041-11: Pengguna aktif `Wulan T` (nama singkat `Wulan T.`) dengan role Manage asset & TAG, tidak memiliki batch Draft.
   - Rina W, Budi S, Siti N, dan Dewi A adalah pengguna aktif dengan role Manage asset & TAG pada Group batch masing-masing.
 
 ## Test Steps
@@ -50,7 +50,7 @@ coverage:
 
 ### Opsi filter Requested By berasal dari nilai tabel Draft
 3. Klik field `Requested By` pada panel Filter
-4. Verifikasi opsi berisi nilai DISTINCT kolom Requested By pada tabel yang sedang tampil: daftar opsi memuat `Rina W`, `Budi S`, `Siti N`, dan `Dewi A` dan tidak memuat `Wulan T` maupun `Maya L`[^drift-1]
+4. Verifikasi opsi berisi nilai DISTINCT kolom Requested By pada tabel yang sedang tampil: daftar opsi memuat `Rina W.`, `Budi S.`, `Siti N.`, dan `Dewi A.` dan tidak memuat `Wulan T.` maupun `Maya L.`[^drift-1][^drift-2]
 
 ### Filter Group: cocok dan tidak cocok
 5. Pilih Group `Gudang Kuningan {runId}` pada field `Group`
@@ -83,10 +83,10 @@ coverage:
 30. Klik `[Apply]`
 
 ### Filter Requested By: satu opsi lalu dua opsi
-31. Pilih opsi `Rina W` pada field `Requested By`
+31. Pilih opsi `Rina W.` pada field `Requested By`[^drift-2]
 32. Klik `[Apply]`
 33. Verifikasi tabel sub tab Draft memuat baris `Gudang Cawang {runId}`, `Gudang Kuningan {runId}` dan tidak memuat baris `Gudang Pancoran {runId}`, `Gudang Pasar Minggu {runId}`
-34. Pilih opsi `Siti N` pada field `Requested By`
+34. Pilih opsi `Siti N.` pada field `Requested By`
 35. Klik `[Apply]`
 36. Verifikasi tabel sub tab Draft memuat baris `Gudang Cawang {runId}`, `Gudang Kuningan {runId}`, `Gudang Pasar Minggu {runId}`, `Gudang Bintaro {runId}` dan tidak memuat baris `Gudang Pancoran {runId}`, `Gudang Ciputat {runId}`; dua opsi dalam satu field berlaku OR
 37. Klik `[Clear Field]`
@@ -105,7 +105,7 @@ coverage:
 48. Klik `[Apply]`
 
 ### Dua field filter berlaku AND
-49. Pilih opsi `Rina W` pada field `Requested By`
+49. Pilih opsi `Rina W.` pada field `Requested By`
 50. Isi Min `15` pada field `Total Asset`
 51. Isi Max `30` pada field `Total Asset`
 52. Klik `[Apply]`
@@ -141,7 +141,7 @@ coverage:
 
 ### Irisan Search dan Filter kosong lalu dipulihkan
 80. Ketik Search `Siti N`, tekan Enter
-81. Pilih opsi `Rina W` pada field `Requested By`
+81. Pilih opsi `Rina W.` pada field `Requested By`
 82. Klik `[Apply]`
 83. Verifikasi `No results found` tampil
 84. Klik `(←)` pada kotak Search
@@ -150,7 +150,7 @@ coverage:
 87. Klik `[Apply]`
 
 ### Saringan tetap berlaku saat kolom disembunyikan
-88. Pilih opsi `Rina W` pada field `Requested By`
+88. Pilih opsi `Rina W.` pada field `Requested By`
 89. Klik `[Apply]`
 90. Klik header kolom Actions `⋯`
 91. Hilangkan centang `Requested By` pada panel Column Visibility
@@ -199,6 +199,8 @@ coverage:
 
 ### Batch baru muncul sebagai opsi Requested By tanpa muat ulang
 128. Klik field `Requested By` pada panel Filter
-129. Verifikasi opsi berisi nilai DISTINCT kolom Requested By pada tabel yang sedang tampil: daftar opsi memuat `Maya L`[^drift-1]
+129. Verifikasi opsi berisi nilai DISTINCT kolom Requested By pada tabel yang sedang tampil: daftar opsi memuat `Maya L.`[^drift-1][^drift-2]
 
 [^drift-1]: Drift PRD vs foundation. PRD §9.5 baris Sumber filter Requested By: User aktif dalam scope Group. foundation `prd-conventions.md` §9.8 (Opsi dropdown filter): opsi diisi nilai DISTINCT kolom sumbernya dan cakupannya mengikuti baris tabel yang sedang tampil. Diasersi: foundation, karena Filter Panel adalah pola bersama (SB-4). Aturan bisnis PRD tentang scope Group tidak dihapus: baris tabel sudah dibatasi cakupan Group aktor.
+
+[^drift-2]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`). Override O-4: inisial diakhiri titik (`John L.`). Opsi filter Requested By adalah nilai DISTINCT kolom itu (foundation §9.8), jadi ditulis dalam nama singkat bertitik. Diasersi: override O-4.

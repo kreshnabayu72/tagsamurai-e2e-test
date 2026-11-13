@@ -4,7 +4,7 @@ title: "Cancel Registration atas pengajuan yang sudah diputuskan"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-20k, D-REG-17]
 smoke: [D-REG-17]
 dependsOn: []

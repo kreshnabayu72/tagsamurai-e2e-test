@@ -4,7 +4,7 @@ title: "Auto-approve: Kondisi A dan Kondisi B"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06l]
 smoke: []
 dependsOn: []
@@ -36,8 +36,8 @@ trace:
   - DU-134-11: batch Draft milik Rina W di Group `Gudang Timur {runId}`, Item Asset Name `Router {runId}`, Quantity `2`, Condition `Normal`.
 - Kondisi:
   - seluruh batch memenuhi Tingkat 2 dan kuota Group cukup untuk jumlah aset masing-masing.
-  - himpunan approver eligible pada node Group `Gudang Selatan {runId}` hanya berisi Rina W.
-  - himpunan approver eligible pada node Group `Gudang Timur {runId}` berisi Rina W dan Budi.
+  - himpunan approver eligible pada node Group `Gudang Selatan {runId}` berisi Rina W dan Hana T (Total Control).
+  - himpunan approver eligible pada node Group `Gudang Timur {runId}` berisi Rina W, Budi, dan Hana T (Total Control).
 
 ## Test Steps
 
@@ -62,12 +62,12 @@ trace:
 14. Verifikasi kedua aset berstatus `Active` dan slot kuota Group berstatus Used tanpa pernah Reserved
 15. Verifikasi Registration Log pengajuan memuat node `Approved by Dewi S (Group Manager — requester)`
 
-### Kondisi B: semua approver Level 1 adalah pengaju
+### Kondisi B tidak terpenuhi bila Total Control yang eligible adalah approver independen
 16. Rina W mengirim Submit for Approval atas batch Draft Group `Gudang Selatan {runId}` berisi `4` aset
-17. Verifikasi pengajuan langsung berstatus `Approved` karena Level 1 di-skip
-18. Verifikasi pengajuan itu tidak masuk antrean Approvals
-19. Verifikasi keempat aset berstatus `Active` dan slot kuota Group berstatus Used tanpa pernah Reserved
-20. Verifikasi Registration Log pengajuan memuat node `Approved by system (no independent approver)`
+17. Verifikasi pengajuan berstatus `Waiting for Approval`
+18. Verifikasi pengajuan itu masuk antrean Approvals milik Hana T karena Total Control yang eligible dihitung sebagai approver independen
+19. Verifikasi entri Rina W pada Level 1 berstatus `Not Involved` dan Level 1 tetap aktif untuk Hana T
+20. Verifikasi Registration Log pengajuan tidak memuat node `Approved by system (no independent approver)`
 
 ### Kondisi B tidak terpenuhi bila ada approver independen lain
 21. Rina W mengirim Submit for Approval atas batch Draft Group `Gudang Timur {runId}` berisi `2` aset

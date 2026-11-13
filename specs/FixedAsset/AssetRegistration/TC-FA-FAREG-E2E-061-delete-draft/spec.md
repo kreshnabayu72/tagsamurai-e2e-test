@@ -4,7 +4,7 @@ title: "Delete draft: satu batch terhapus"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [F-FAREG-12, §9.7#r4, EB-TBL-7@tabel-draft, D-REG-01, T-REG-04]
 smoke: [D-REG-01, T-REG-04]
 dependsOn: []

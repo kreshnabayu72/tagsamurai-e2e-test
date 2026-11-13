@@ -4,7 +4,7 @@ title: "Koreksi approver: staged, validasi, dan penerapan"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-07d, FAREG-LOGIC-07e, FAREG-LOGIC-07i, FAREG-LOGIC-07j, "§9.4.2#r62", "§9.4.3#b7", "§9.6#r11", EB-CON-1]
 smoke: []
 dependsOn: []
@@ -13,11 +13,11 @@ trace:
   FAREG-LOGIC-07d: [3, 11, 12, 21]
   FAREG-LOGIC-07e: [17, 18]
   FAREG-LOGIC-07i: [24, 26, 28, 30, 32, 34]
-  FAREG-LOGIC-07j: [2, 4, 9, 13, 22]
+  FAREG-LOGIC-07j: [2, 4, 9, 13, 22, 36, 38, 44, 45]
   "§9.4.2#r62": [8, 9]
   "§9.4.3#b7": [3, 21]
   "§9.6#r11": [6, 21]
-  EB-CON-1: [8, 9]
+  EB-CON-1: [8, 9, 42, 43]
 ---
 
 # Koreksi approver: staged, validasi, dan penerapan
@@ -34,6 +34,8 @@ trace:
   - DU-136-4: pengajuan `Waiting for Approval` milik Rina W berisi `2` aset `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Condition `Normal`.
   - DU-136-5: pengajuan `Waiting for Approval` milik Rina W berisi `3` aset `Laptop {runId}` Brand `Dell` Model `Latitude 5440`: aset pertama Condition `Normal` Nomor Inventaris `INV-136-011 {runId}`, aset kedua Condition `Normal`, aset ketiga Condition `Damaged` dengan Damage note `Casing retak di sisi kanan`.
   - DU-136-6: pengajuan `Waiting for Approval` milik Rina W berisi `2` aset `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Condition `Normal`.
+  - DU-136-17: pengajuan `Waiting for Approval` milik Rina W berisi `2` aset `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Condition `Normal`.
+  - DU-136-18: aset `Active` `Laptop {runId}` di Group `Gudang Medan {runId}`, Brand `Dell`, Model `Latitude 5440`, Alias Name `Laptop Staf {runId}`.
 - Kondisi:
   - kuota Group `Gudang Medan {runId}` dan kuota tenant cukup untuk seluruh pengajuan di atas.
 
@@ -84,3 +86,20 @@ trace:
 32. Verifikasi koreksi staged aset ketiga bernilai Condition `Normal` tanpa Damage note
 33. Budi menyimpan koreksi Brand aset pertama pengajuan DU-136-5 menjadi `Lenovo` tanpa Model
 34. Verifikasi koreksi diterima dan tersimpan staged walau Model dikosongkan oleh koreksi Brand
+
+### Pembatalan pengajuan membuang koreksi staged
+35. Budi menyimpan koreksi Brand aset pertama pengajuan DU-136-17 menjadi `Lenovo` dengan Model `ThinkPad E14`
+36. Verifikasi Citra membaca koreksi Brand `Lenovo` pada aset pertama pengajuan DU-136-17
+37. Rina W membatalkan pengajuan DU-136-17
+38. Verifikasi tidak ada koreksi staged yang tersisa untuk kedua aset pengajuan DU-136-17 sesudah pembatalan
+
+### Dua user mengedit aset Active yang sama menerapkan last-write-wins
+39. Budi dan Citra sama-sama membaca aset DU-136-18 dengan Alias Name `Laptop Staf {runId}`
+40. Budi menyimpan Edit Active atas aset DU-136-18 dengan Alias Name `Laptop Budi {runId}`
+41. Citra menyimpan Edit Active atas aset DU-136-18 dari keadaan yang ia baca sebelum Save Budi, dengan Alias Name `Laptop Citra {runId}`
+42. Verifikasi kedua Save Edit Active diterima server tanpa penanda versi dan tanpa penolakan karena konflik
+43. Verifikasi Alias Name aset DU-136-18 bernilai `Laptop Citra {runId}` dari Save yang terakhir diterima server
+
+### Koreksi pada aset yang tidak disetujui tidak dicatat sebagai Draft edited by
+44. Verifikasi Registration Log pengajuan DU-136-4 memuat node `Submitted by Rina W`
+45. Verifikasi Registration Log pengajuan DU-136-4 tidak memuat node `Draft edited by Budi` karena koreksi Budi hanya ada pada aset yang dikembalikan ke Draft dan aset yang ditolak

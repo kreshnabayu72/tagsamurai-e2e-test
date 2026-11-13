@@ -4,7 +4,7 @@ title: "Aktor tanpa akses: titik masuk Registration dan Approvals"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-AKS-1", "EB-AKS-2"]
 smoke: []
 dependsOn: []
@@ -33,10 +33,12 @@ coverage:
 
 ### Halaman Registration lewat alamat langsung ditolak
 4. Buka halaman `Registration` pada Fixed Asset > Assets lewat alamat langsung (URL)
-5. Verifikasi toast `You don't have permission to do this.` tampil tanpa pengalihan halaman untuk halaman `Registration`
-6. Verifikasi isi halaman `Registration` tidak tampil
+5. Verifikasi halaman penuh `/no-access` tampil tanpa sidebar untuk halaman `Registration`[^drift-1]
+6. Verifikasi isi halaman `Registration` tidak tampil pada halaman `/no-access`
 
 ### Halaman Approvals > Registration lewat alamat langsung ditolak
 7. Buka halaman `Approvals` > `Registration` lewat alamat langsung (URL)
-8. Verifikasi toast `You don't have permission to do this.` tampil tanpa pengalihan halaman untuk halaman `Approvals` > `Registration`
-9. Verifikasi isi halaman `Approvals` > `Registration` tidak tampil
+8. Verifikasi halaman penuh `/no-access` tampil tanpa sidebar untuk halaman `Approvals` > `Registration`[^drift-1]
+9. Verifikasi isi halaman `Approvals` > `Registration` tidak tampil pada halaman `/no-access`
+
+[^drift-1]: Drift PRD dan foundation vs override. PRD modul diam untuk URL halaman modul yang dibuka aktor tanpa hak; foundation `error-handling-convention.md` §2 (403): toast error `"You don't have permission to do this."` tanpa redirect. Override O-19 (all modules): "A URL the user may not open: The full-page `/no-access` without the shell (sidebar) stays." Diasersi: O-19, karena override menang atas foundation (SB-6); URL yang tak boleh dibuka terbaca sebagai halaman penuh `/no-access` tanpa sidebar, bukan toast.

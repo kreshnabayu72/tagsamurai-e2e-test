@@ -4,7 +4,7 @@ title: "Sub tab History: isi tabel, Search, Filter, sort, dan aksi baris"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r46", "§4.1#r47", "§4.1#r48", "§4.1#r49", "§4.1#r50", "§4.1#r51", "§4.1#r52", "§4.1#p16", "§5#r3", "§5#r4", "§9.5#r5", "EB-FLT-5@tabel-history", "EB-SRC-5@tabel-history"]
 smoke: []
 dependsOn: []
@@ -29,14 +29,15 @@ coverage:
 # Sub tab History: isi tabel, Search, Filter, sort, dan aksi baris
 
 ## Prerequisites
-- Aktor: Total Control `Maya L`.
+- Aktor: Total Control `Dian P`, seluruh client.
 - Layar awal: Assets > Registration > History.
 - Data:
-  - DU-047-1: Pengajuan History dengan Registration ID `REG-20261105-04701`, Group `Gudang Barat {runId}`, Total Asset `8`, Status `Approved`, Requested By `Maya L`, Approver `Hadi K`, Last Updated `T0 − 1 hari`.
-  - DU-047-2: Pengajuan History dengan Registration ID `REG-20261104-04702`, Group `Gudang Timur {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`.
-  - DU-047-3: Pengajuan History dengan Registration ID `REG-20261103-04703`, Group `Gudang Utara {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N`, Approver `Rina W`, Last Updated `T0 − 3 hari`.
-  - DU-047-4: Pengajuan History dengan Registration ID `REG-20261102-04704`, Group `Gudang Selatan {runId}`, Total Asset `20`, Status `Canceled`, Requested By `Rina W`, Approver `—`, Last Updated `T0 − 4 hari`.
-  - Maya L, Hadi K, Siti N, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing.
+  - DU-047-1: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Barat {runId}`, Total Asset `8`, Status `Approved`, Requested By `Maya L.`, Approver `Hadi K.`, Last Updated `T0 − 1 hari`.
+  - DU-047-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Timur {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K.`, Approver `Maya L.`, Last Updated `T0 − 2 hari`.
+  - DU-047-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Utara {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N.`, Approver `Rina W.`, Last Updated `T0 − 3 hari`.
+  - DU-047-4: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Selatan {runId}`, Total Asset `97`, Status `Canceled`, Requested By `Rina W.`, Approver `—`, Last Updated `T0 − 4 hari`.
+  - Pengajuan DU-047-4 diajukan lebih dulu daripada DU-047-3, DU-047-3 lebih dulu daripada DU-047-2, dan DU-047-2 lebih dulu daripada DU-047-1.
+  - Maya L, Hadi K, Siti N, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing; Maya L dan Hadi K bukan Total Control.
 - Kondisi: format tanggal General Settings `dd/MM/yy` dan format waktu 24 jam; seluruh kolom tabel History tampil.
 
 ## Test Steps
@@ -44,27 +45,27 @@ coverage:
 ### Nilai sel tabel History
 1. Ketik Search `{runId}`, tekan Enter
 2. Verifikasi tabel sub tab History memuat baris `Gudang Barat {runId}`, `Gudang Timur {runId}`, `Gudang Utara {runId}`, `Gudang Selatan {runId}` dengan Group tampil sebagai Badge
-3. Verifikasi Registration ID baris `Gudang Barat {runId}` bernilai `REG-20261105-04701`
+3. Verifikasi Registration ID baris `Gudang Barat {runId}` berformat `REG-YYYYMMDD-NNNNN` dan sama dengan Registration ID milik DU-047-1
 4. Verifikasi Total Asset baris `Gudang Barat {runId}` bernilai `8`
 5. Verifikasi Status baris `Gudang Barat {runId}` tampil sebagai Badge `Approved` berwarna success
 6. Verifikasi Status baris `Gudang Timur {runId}` tampil sebagai Badge `Partially Approved` berwarna warning
 7. Verifikasi Status baris `Gudang Utara {runId}` tampil sebagai Badge `Rejected` berwarna danger
 8. Verifikasi Status baris `Gudang Selatan {runId}` tampil sebagai Badge `Canceled` berwarna dark
-9. Verifikasi Requested By baris `Gudang Barat {runId}` bernilai `Maya L`
-10. Verifikasi Approver baris `Gudang Barat {runId}` bernilai `Hadi K`
+9. Verifikasi Requested By baris `Gudang Barat {runId}` bernilai `Maya L.`[^drift-1]
+10. Verifikasi Approver baris `Gudang Barat {runId}` bernilai `Hadi K.`[^drift-1]
 11. Verifikasi Approver baris `Gudang Selatan {runId}` bernilai `—`
 12. Verifikasi Last Updated baris `Gudang Barat {runId}` tampil dengan Date Format `dd/MM/yy` diikuti Time Format 24 jam
 
 ### Urutan awal Last Updated terbaru di atas
-13. Verifikasi urutan baris dari atas ke bawah: `Gudang Barat {runId}`, `Gudang Timur {runId}`, `Gudang Utara {runId}`, `Gudang Selatan {runId}` (Last Updated terbaru di atas)
+13. Verifikasi baris `Gudang Barat {runId}` tampil di atas baris `Gudang Timur {runId}`, baris `Gudang Timur {runId}` di atas baris `Gudang Utara {runId}`, dan baris `Gudang Utara {runId}` di atas baris `Gudang Selatan {runId}` (Last Updated terbaru di atas)
 
 ### Search pada kolom Searchable
-14. Ganti isi kotak search dengan `REG-20261104-04702`, tekan Enter
+14. Ganti isi kotak search dengan Registration ID milik DU-047-2, tekan Enter
 15. Verifikasi tabel sub tab History memuat baris `Gudang Timur {runId}` dan tidak memuat baris `Gudang Barat {runId}`
 16. Ganti isi kotak search dengan `Gudang Utara {runId}`, tekan Enter
 17. Verifikasi tabel sub tab History memuat baris `Gudang Utara {runId}` dan tidak memuat baris `Gudang Barat {runId}`
-18. Ganti isi kotak search dengan `20`, tekan Enter
-19. Verifikasi tabel sub tab History memuat baris `Gudang Selatan {runId}` dan tidak memuat baris `Gudang Barat {runId}`
+18. Ganti isi kotak search dengan `97`, tekan Enter
+19. Verifikasi tabel sub tab History memuat baris `Gudang Selatan {runId}`
 20. Ganti isi kotak search dengan `Rejected`, tekan Enter
 21. Verifikasi tabel sub tab History memuat baris `Gudang Utara {runId}` dan tidak memuat baris `Gudang Barat {runId}`
 22. Ganti isi kotak search dengan `Siti N`, tekan Enter
@@ -104,7 +105,7 @@ coverage:
 52. Verifikasi tabel sub tab History memuat baris `Gudang Utara {runId}` dan tidak memuat baris `Gudang Barat {runId}`
 53. Klik `[Clear Field]`
 54. Klik `[Apply]`
-55. Pilih opsi `Maya L` pada field `Requested By`
+55. Pilih opsi `Maya L.` pada field `Requested By`[^drift-1]
 56. Klik `[Apply]`
 57. Verifikasi tabel sub tab History memuat baris `Gudang Barat {runId}` dan tidak memuat baris `Gudang Timur {runId}`
 58. Klik `[Clear Field]`
@@ -117,9 +118,9 @@ coverage:
 
 ### Filter Approver tidak menjadikan nilai kosong sebagai opsi
 65. Buka daftar opsi field `Approver`
-66. Verifikasi daftar opsi field `Approver` memuat `Hadi K`, `Maya L`, dan `Rina W` dan tidak memuat opsi `—`
-67. Pilih opsi `Hadi K` pada field `Approver`
-68. Pilih opsi `Maya L` pada field `Approver`
+66. Verifikasi daftar opsi field `Approver` memuat `Hadi K.`, `Maya L.`, dan `Rina W.` dan tidak memuat opsi `—`[^drift-1]
+67. Pilih opsi `Hadi K.` pada field `Approver`[^drift-1]
+68. Pilih opsi `Maya L.` pada field `Approver`[^drift-1]
 69. Klik `[Apply]`
 70. Verifikasi tabel sub tab History memuat baris `Gudang Barat {runId}`, `Gudang Timur {runId}` dan tidak memuat baris `Gudang Utara {runId}`, `Gudang Selatan {runId}`
 71. Verifikasi baris `Gudang Selatan {runId}` dengan Approver `—` tersaring keluar karena memilih opsi Approver apa pun menyaring keluar nilai kosong
@@ -128,7 +129,7 @@ coverage:
 
 ### Sort pada kolom Sortable
 74. Klik ikon sort pada header kolom `Registration ID`
-75. Verifikasi urutan baris kolom `Registration ID` naik: `Gudang Barat {runId}`, `Gudang Timur {runId}`, `Gudang Utara {runId}`, `Gudang Selatan {runId}`
+75. Verifikasi urutan baris kolom `Registration ID` naik: `Gudang Selatan {runId}`, `Gudang Utara {runId}`, `Gudang Timur {runId}`, `Gudang Barat {runId}`
 76. Klik ikon sort pada header kolom `Group`
 77. Verifikasi urutan baris kolom `Group` naik: `Gudang Barat {runId}`, `Gudang Selatan {runId}`, `Gudang Timur {runId}`, `Gudang Utara {runId}`
 78. Klik ikon sort pada header kolom `Total Asset`
@@ -158,12 +159,14 @@ coverage:
 98. Verifikasi kolom `Actions` adalah kolom terakhir tabel sub tab History, sesudah kolom `Last Updated`
 99. Verifikasi baris `Gudang Barat {runId}` menampilkan ikon aksi `Detail` dan `Registration Log` dan tidak menampilkan `Cancel registration`
 100. Klik ikon `Detail` pada baris `Gudang Barat {runId}`
-101. Verifikasi halaman Detail pengajuan terbuka dengan Registration ID `REG-20261105-04701`
+101. Verifikasi halaman Detail pengajuan terbuka dengan Registration ID milik DU-047-1
 102. Klik tautan breadcrumb `History`
-103. Klik Registration ID `REG-20261104-04702`
-104. Verifikasi halaman Detail pengajuan terbuka dengan Registration ID `REG-20261104-04702`
+103. Klik Registration ID milik DU-047-2
+104. Verifikasi halaman Detail pengajuan terbuka dengan Registration ID milik DU-047-2
 105. Klik tautan breadcrumb `History`
 106. Ganti isi kotak search dengan `{runId}`, tekan Enter
 107. Klik ikon `Registration Log` pada baris `Gudang Utara {runId}`
 108. Verifikasi dialog `Registration Log` tampil di atas halaman History
 109. Klik ikon X pada dialog `Registration Log`
+
+[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By dan Approver: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

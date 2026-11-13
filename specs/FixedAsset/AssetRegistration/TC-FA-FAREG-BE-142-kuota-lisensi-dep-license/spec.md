@@ -4,7 +4,7 @@ title: "Kuota lisensi: Reserved, Used, dan perebutan slot terakhir"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-05a, FAREG-LOGIC-05b, FAREG-LOGIC-05c, FAREG-LOGIC-05d, FAREG-LOGIC-05e, FAREG-LOGIC-05f, FAREG-LOGIC-05h, FAREG-LOGIC-05j, FAREG-LOGIC-05l, "§9.4.2#r10", "§9.4.3#b5", "§9.4.3#b6", EB-CON-4]
 smoke: []
 dependsOn:

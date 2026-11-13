@@ -4,8 +4,8 @@ title: "Activity Log: entri per aksi registrasi"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: [FAREG-LOGIC-07f, FAREG-LOGIC-21b, "§8#r1", "§8#r3", "§8#b1", "§8.2#p2", "§8.2#p3", "§8.3#p4", "§9.6#r1", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§9.6#r5", "§9.6#r6", "§9.6#r7", "§9.6#r9", "§9.6#r11", "§9.6#r13", "§9.6#r14", "§9.6#r15"]
+status: ready-for-automation
+sourceRules: [FAREG-LOGIC-07f, FAREG-LOGIC-21b, "§8#r1", "§8#r3", "§8#r4", "§8#b1", "§8.2#p2", "§8.2#p3", "§8.3#p4", "§9.6#r1", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§9.6#r5", "§9.6#r6", "§9.6#r7", "§9.6#r9", "§9.6#r11", "§9.6#r13", "§9.6#r14", "§9.6#r15"]
 smoke: []
 dependsOn:
   - "Activity Log: daftar entri"
@@ -14,12 +14,13 @@ trace:
   FAREG-LOGIC-07f: [21, 22]
   FAREG-LOGIC-21b: [51, 54, 57, 60]
   "§8#r1": 3
-  "§8#r3": 6
+  "§8#r3": [6, 8, 14, 35, 63, 66, 77]
+  "§8#r4": [3, 6, 14, 20, 21, 24, 29, 68, 70, 81]
   "§8#b1": [3, 21]
   "§8.2#p2": [14, 51, 54, 57, 60]
   "§8.2#p3": [3, 14, 21, 26, 29, 32]
   "§8.3#p4": 29
-  "§9.6#r1": [3, 6]
+  "§9.6#r1": [3, 6, 73]
   "§9.6#r2": [8, 11]
   "§9.6#r3": 14
   "§9.6#r4": 20
@@ -44,8 +45,9 @@ trace:
   - DU-143-1: Group `Gudang Jakarta {runId}`, ber-toggle `Require Approval for Registration` ON, ada di entitas aktor.
   - DU-143-2: Group `Gudang Bandung {runId}`, ber-toggle `Require Approval for Registration` OFF, ada di entitas aktor.
   - DU-143-3: Asset Name `Meja Kerja {runId}` dengan Brand `Olympic` Model `OL-143` dan Brand `Chitose` Model `Orion`, TAG Type `Non-TAG`, Status `Active`.
-  - DU-143-4: Asset Name `Kursi Kantor {runId}`, Brand `Chitose`, Model `Orion K`, TAG Type `Non-TAG`, Status `Active`.
+  - DU-143-4: Asset Name `Kursi Kantor {runId}`, Brand `Chitose` dengan Model `Orion K` dan `Orion KX`, TAG Type `Non-TAG`, Status `Active`.
   - DU-143-5: Asset Name `Laptop {runId}`, Brand `Dell`, Model `Latitude 5440`, TAG Type `RFID`, Status `Active`.
+  - DU-143-6: batch Draft baru milik Rina W yang disimpan pada langkah 2, di Group `Gudang Jakarta {runId}`, berisi `3` aset `Meja Kerja {runId}` Brand `Olympic` Model `OL-143`.
   - DU-143-7: batch Draft milik Rina W di Group `Gudang Bandung {runId}`, Item `Kursi Kantor {runId}` Quantity `12`, memenuhi Tingkat 2.
   - DU-143-8: pengajuan `Waiting for Approval` milik Rina W di Group `Gudang Jakarta {runId}` berisi `2` aset `Meja Kerja {runId}` Brand `Olympic` Model `OL-143`.
   - DU-143-9: pengajuan `Waiting for Approval` milik Rina W di Group `Gudang Jakarta {runId}` berisi `1` aset `Meja Kerja {runId}`.
@@ -55,6 +57,11 @@ trace:
   - DU-143-13: batch Draft milik Lina di Group `Gudang Jakarta {runId}`, Item `Kursi Kantor {runId}` Quantity `1`, kunci sesi edit dipegang Lina.
   - DU-143-14: batch Draft milik Rina W di Group `Gudang Jakarta {runId}`, Item `Laptop {runId}` Quantity `1`.
   - DU-143-15: batch Draft milik Rina W di Group `Gudang Jakarta {runId}` dengan Item 1 `Meja Kerja {runId}` Quantity `4`, Item 2 `Kursi Kantor {runId}` Quantity `2`, dan Item 3 `Laptop {runId}` Quantity `3`.
+  - DU-143-21: batch Draft milik Rina W di Group `Gudang Jakarta {runId}`, Item `Kursi Kantor {runId}` Brand `Chitose` Model `Orion K` Quantity `1` Condition `Normal`.
+  - DU-143-22: batch Draft milik Rina W di Group `Gudang Jakarta {runId}`, Item `Meja Kerja {runId}` Brand `Olympic` Model `OL-143` Quantity `1`, memenuhi Tingkat 2.
+  - DU-143-23: pengajuan `Waiting for Approval` milik Rina W di Group `Gudang Jakarta {runId}` berisi `1` aset `Meja Kerja {runId}`.
+  - DU-143-25: batch Draft milik Rina W di Group `Gudang Jakarta {runId}`, Item `Kursi Kantor {runId}` Brand `Chitose` Model `Orion K` Quantity `1`.
+  - DU-143-26: aset `Active` `Kursi Kantor {runId}` di Group `Gudang Jakarta {runId}`, Brand `Chitose`, Model `Orion K`, Alias Name `Kursi Staf {runId}`.
 - Kondisi:
   - kuota Group `Gudang Jakarta {runId}` dan `Gudang Bandung {runId}` serta kuota tenant cukup untuk seluruh pengajuan di atas.
   - tabel di sub tab Draft, Waiting for Approval, History, dan antrean Approvals memuat baris data uji.
@@ -64,7 +71,7 @@ trace:
 ### Save draft mencatat satu entri per aset
 1. Catat jumlah entri Activity Log milik Rina W
 2. Rina W menyimpan batch Draft baru DU-143-6 di Group `Gudang Jakarta {runId}` berisi `3` aset `Meja Kerja {runId}`
-3. Verifikasi Activity Log memuat tiga entri baru, satu per aset, dengan Action `Create`, Object `Registration`, Source `Manual`, dan Modified By `Rina W`
+3. Verifikasi Activity Log memuat tiga entri baru, satu per aset, dengan Action `Create`, Object `Registration`, Name yang terisi, Field `Draft`, Old Value `—`, New Value `Created`, Source `Manual`, dan Modified By `Rina W`
 4. Rina W mengubah Brand aset pertama batch DU-143-6 dari `Olympic` menjadi `Chitose` dengan Model `Orion`
 5. Rina W menyimpan batch DU-143-6
 6. Verifikasi Activity Log memuat entri baru dengan Action `Edit`, Field `Brand`, Old Value `Olympic`, New Value `Chitose`, dan Source `Manual`
@@ -88,7 +95,7 @@ trace:
 18. Verifikasi jumlah entri Activity Log tidak bertambah dibanding catatan setelah kedua koreksi disimpan
 19. Agus P mengirim satu keputusan atas pengajuan DU-143-8: aset pertama `Approve`, aset kedua `Return to Draft` dengan Reason `Foto aset belum jelas`
 20. Verifikasi Activity Log memuat entri Action `Approve`, Field `Status`, Old Value `Waiting for Approval`, New Value `Active`, dan Modified By `Agus P` untuk aset pertama serta entri Action `Return` untuk aset kedua
-21. Verifikasi Activity Log memuat tepat satu entri Action `Correct`, Field `Brand`, Old Value `Olympic`, New Value `Chitose`, Source `Approver correction`, dan Modified By `Agus P` untuk aset pertama
+21. Verifikasi Activity Log memuat entri Action `Correct`, Field `Brand`, Old Value `Olympic`, New Value `Chitose`, Source `Approver correction`, dan Modified By `Agus P` untuk aset pertama
 22. Verifikasi Activity Log tidak memuat entri koreksi untuk aset kedua karena aset itu tidak disetujui
 
 ### Cancel registration dan auto-cancel sistem dicatat
@@ -108,7 +115,7 @@ trace:
 ### Scan dan Rescan Tag dicatat
 33. Rina W memindai Tag `E280-1430-0001 {runId}` pada aset pertama batch DU-143-14
 34. Rina W menyimpan batch DU-143-14
-35. Verifikasi Activity Log memuat entri dengan Action `Scan Tag`, Field `Tag`, Old Value `—`, dan New Value `E280-1430-0001 {runId}`
+35. Verifikasi Activity Log memuat entri dengan Field `Tag`, Old Value `—`, dan New Value `E280-1430-0001 {runId}`
 36. Rina W memindai ulang aset pertama batch DU-143-14 dengan Tag `E280-1430-0002 {runId}`
 37. Rina W menyimpan batch DU-143-14
 38. Verifikasi Activity Log memuat entri dengan Field `Tag`, Old Value `E280-1430-0001 {runId}`, dan New Value `E280-1430-0002 {runId}`
@@ -135,6 +142,37 @@ trace:
 55. Catat jumlah entri Activity Log milik Rina W
 56. Rina W mengunduh data dari sub tab History
 57. Verifikasi Activity Log memuat satu entri baru `[User] exported [Filename]` dengan User `Rina W` dan Filename sama dengan nama berkas yang diunduh dari sub tab History
-58. Catat jumlah entri Activity Log milik Rina W
-59. Rina W mengunduh data dari antrean Approvals
-60. Verifikasi Activity Log memuat satu entri baru `[User] exported [Filename]` dengan User `Rina W` dan Filename sama dengan nama berkas yang diunduh dari antrean Approvals
+58. Catat jumlah entri Activity Log milik Agus P
+59. Agus P mengunduh data dari antrean Approvals
+60. Verifikasi Activity Log memuat satu entri baru `[User] exported [Filename]` dengan User `Agus P` dan Filename sama dengan nama berkas yang diunduh dari antrean Approvals
+
+### Field Model dan Condition dicatat di Activity Log
+61. Rina W mengubah Model aset pertama batch DU-143-21 dari `Orion K` menjadi `Orion KX`
+62. Rina W menyimpan batch DU-143-21
+63. Verifikasi Activity Log memuat entri baru dengan Action `Edit`, Field `Model`, Old Value `Orion K`, dan New Value `Orion KX`
+64. Rina W mengubah Condition aset pertama batch DU-143-21 dari `Normal` menjadi `Damaged` dengan Damage note `Sandaran patah`
+65. Rina W menyimpan batch DU-143-21
+66. Verifikasi Activity Log memuat entri baru dengan Field `Condition`, Old Value `Normal`, dan New Value `Damaged`
+
+### Submit dan Reject dicatat
+67. Rina W mengirim Submit for Approval atas batch DU-143-22 berisi `1` aset
+68. Verifikasi Activity Log memuat entri baru dengan Action `Submit` dan Modified By `Rina W` untuk aset batch DU-143-22
+69. Agus P mengirim keputusan `Reject` untuk aset pengajuan DU-143-23 dengan Reason `Aset duplikat dengan pengajuan lain`
+70. Verifikasi Activity Log memuat entri baru dengan Action `Reject` dan Modified By `Agus P` untuk aset pengajuan DU-143-23
+
+### Save draft manual tanpa perubahan tidak mencatat entri
+71. Catat jumlah entri Activity Log milik Rina W
+72. Rina W menyimpan batch DU-143-6 tanpa mengubah nilai apa pun
+73. Verifikasi jumlah entri Activity Log tidak bertambah dibanding catatan
+
+### Field Group dicatat di Activity Log
+74. Catat jumlah entri Activity Log milik Rina W
+75. Rina W mengubah Group batch DU-143-25 dari `Gudang Jakarta {runId}` menjadi `Gudang Bandung {runId}`
+76. Rina W menyimpan batch DU-143-25
+77. Verifikasi Activity Log memuat entri baru dengan Action `Edit` dan Field `Group` untuk aset batch DU-143-25
+
+### Edit aset Active dicatat di Activity Log
+78. Catat jumlah entri Activity Log milik Rina W
+79. Rina W mengubah Alias Name aset DU-143-26 dari `Kursi Staf {runId}` menjadi `Kursi Direksi {runId}`
+80. Rina W menyimpan perubahan aset DU-143-26
+81. Verifikasi Activity Log memuat entri baru dengan Action `Edit`, Field `Alias Name`, Old Value `Kursi Staf {runId}`, New Value `Kursi Direksi {runId}`, dan Modified By `Rina W`

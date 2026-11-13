@@ -4,7 +4,7 @@ title: "Keputusan approval: status pengajuan, validasi, dan transaksi tunggal"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06h, FAREG-LOGIC-06i, V-REG-14, V-REG-16, "§4.2.4#r1", "§4.2.4#r2", "§4.2.4#r3", "§4.2.4#b10", "§9.2#p11", "§9.4.2#r20", "§9.6#r4", "§9.9#r19", "§9.9#r21"]
 smoke: []
 dependsOn: []

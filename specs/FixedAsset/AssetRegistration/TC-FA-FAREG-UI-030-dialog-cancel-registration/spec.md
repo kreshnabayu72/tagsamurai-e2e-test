@@ -4,7 +4,7 @@ title: "Dialog Cancel Registration: isi, checkbox, dialog blok, dan toast"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [D-REG-14, D-REG-17, T-REG-10, T-REG-12, T-REG-13, §9.6#r5, §9.9#r18, EB-ERR-1@cancel-registration, EB-FB-1@cancel-registration]
 smoke: []
 dependsOn: []

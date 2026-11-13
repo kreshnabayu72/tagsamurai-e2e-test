@@ -4,20 +4,20 @@ title: "Register Asset: Save draft pertama membentuk batch Draft"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-01a, FAREG-LOGIC-01b, FAREG-LOGIC-03a, FAREG-LOGIC-03c, FAREG-LOGIC-03l, FAREG-LOGIC-10a, §4.4#r1, §4.4#r2, §4.4#r4, §9.4.2#r1, §9.7#r1, EB-FRM-1@form-register-asset, FAREG-LOGIC-01c, T-REG-01]
 smoke: [FAREG-LOGIC-01c, T-REG-01]
 dependsOn: []
 trace:
   FAREG-LOGIC-01a: 22
-  FAREG-LOGIC-01b: 14
+  FAREG-LOGIC-01b: [14, 15]
   FAREG-LOGIC-03a: 19
-  FAREG-LOGIC-03c: 14
-  FAREG-LOGIC-03l: 14
+  FAREG-LOGIC-03c: 15
+  FAREG-LOGIC-03l: [14, 15]
   FAREG-LOGIC-10a: 25
   §4.4#r1: [17, 19]
   §4.4#r2: [8, 15]
-  §4.4#r4: 14
+  §4.4#r4: 15
   §9.4.2#r1: [19, 24]
   §9.7#r1: [22, 27, 28]
   EB-FRM-1@form-register-asset: [23, 27]
@@ -31,7 +31,7 @@ coverage:
 # Register Asset: Save draft pertama membentuk batch Draft
 
 ## Prerequisites
-- Aktor: `Rina W` (Manage asset & TAG, Group terkelola `Gudang Cabang {runId}`).
+- Aktor: `Rina W` (nama singkat `Rina W.`; Manage asset & TAG, Group terkelola `Gudang Cabang {runId}`).
 - Layar awal: Fixed Asset > Assets > Registration > sub tab Draft.
 - Data:
   - DU-053-1: Group `Gudang Cabang {runId}`, node Assignable dan bukan Excess, belum memiliki batch Draft.
@@ -49,13 +49,13 @@ coverage:
 6. Isi Quantity Item 1 dengan `3`
 7. Klik `[+ Asset Name]`
 8. Verifikasi tabel Item memuat Item 2 baru yang belum memiliki Asset Name
-9. Pilih Asset Name `Office Desk` pada Item 2
-10. Pilih Brand `Kayu Jati` pada Item 2
-11. Pilih Model `No Model` pada Item 2
-12. Isi Quantity Item 2 dengan `2`
+9. Isi Quantity Item 2 dengan `2`, tanpa memilih Asset Name
+10. Pilih Asset Name `Office Desk` pada Item 2
+11. Pilih Brand `Kayu Jati` pada Item 2
+12. Pilih Model `No Model` pada Item 2
 13. Klik tab `Asset`
 14. Verifikasi Item 1 memuat tiga aset terpisah, sebanyak Quantity `3`, setelah Asset Name `Laptop` dipilih
-15. Verifikasi Item 2 yang ditambahkan lewat `[+ Asset Name]` memuat dua aset setelah Asset Name `Office Desk` dipilih
+15. Verifikasi Item 2 yang ditambahkan lewat `[+ Asset Name]` dan Quantity `2`-nya sudah diisi sebelum Asset Name `Office Desk` dipilih, memuat dua aset sebanyak Quantity itu dengan Name sementara berformat `Office Desk`, tanda hubung, lalu nomor increment
 
 ### Save draft pertama membentuk batch Draft
 16. Klik `[Save draft]` dua kali berturut-turut
@@ -69,7 +69,9 @@ coverage:
 22. Verifikasi baris Group `Gudang Cabang {runId}` tampil di sub tab Draft
 23. Verifikasi hanya satu baris yang cocok dengan Search itu, yaitu satu batch Draft walau `[Save draft]` diklik dua kali
 24. Verifikasi Total Asset batch `5`
-25. Verifikasi Requested By batch `Rina W`, pembuat draft
+25. Verifikasi Requested By batch `Rina W.`, pembuat draft[^drift-1]
 26. Klik row action `Registration Log` pada baris
-27. Verifikasi timeline memuat node `Draft created by Rina W` satu kali
-28. Verifikasi node `Draft created by Rina W` memuat Total Asset `5`
+27. Verifikasi timeline memuat node `Draft created by Rina W.` satu kali[^drift-1]
+28. Verifikasi node `Draft created by Rina W.` memuat Total Asset `5`
+
+[^drift-1]: Drift PRD vs override. PRD §4.1 kolom Requested By: `Nama singkat`, dan PRD §8.3 node log memakai nama singkat pengguna; `prd-conventions.md` §9.13: `[First Name] [Last Initial]` (contoh tanpa titik: `John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: override O-4 (SB-6), sehingga nama singkat `Rina W.`.

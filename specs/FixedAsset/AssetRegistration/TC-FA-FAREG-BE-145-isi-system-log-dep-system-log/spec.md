@@ -4,7 +4,7 @@ title: "System Log: peristiwa yang dipicu aktor"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-07f, "§8.1#p1", "§8.3#p4"]
 smoke: []
 dependsOn:
@@ -12,7 +12,7 @@ dependsOn:
 owner: BE
 trace:
   FAREG-LOGIC-07f: 8
-  "§8.1#p1": [3, 7, 11, 14, 17, 20, 23, 27, 30, 34, 37]
+  "§8.1#p1": [3, 7, 11, 14, 17, 20, 23, 27, 30, 34, 37, 40, 41, 44]
   "§8.3#p4": [11, 14]
 ---
 
@@ -36,8 +36,13 @@ trace:
   - DU-145-10: batch Draft milik Rina W di Group `Gudang Solo {runId}` dengan Item 1 `Meja Kerja {runId}` Quantity `3` dan Item 2 `Meja Kerja {runId}` Quantity `2`, Asset Code seluruh aset sudah dialokasikan.
   - DU-145-11: batch Draft milik Rina W di Group `Gudang Solo {runId}`, Item `Meja Kerja {runId}` Quantity `1`, memenuhi Tingkat 2.
   - DU-145-12: pengajuan `Waiting for Approval` milik Rina W di Group `Gudang Solo {runId}` berisi `1` aset `Meja Kerja {runId}`.
+  - DU-145-16: Group `Gudang Solo Langsung {runId}`, ber-toggle `Require Approval for Registration` OFF, ada di entitas aktor.
+  - DU-145-17: batch Draft milik Rina W di Group `Gudang Solo Langsung {runId}`, Item `Kursi Rapat {runId}` Brand `Olympic` Model `KR-145` Quantity `2`, memenuhi Tingkat 2, Asset Code belum dialokasikan.
+  - DU-145-20: Asset Name `Kursi Rapat {runId}`, Brand `Olympic`, Model `KR-145`, TAG Type `Non-TAG`, Status `Active`.
+  - DU-145-18: batch Draft milik Rina W di Group `Gudang Solo {runId}`, Item `Meja Kerja {runId}` Quantity `2`, Asset Code sudah dialokasikan.
+  - DU-145-19: batch Draft milik Rina W di Group `Gudang Solo {runId}`, Item `Meja Kerja {runId}` Quantity `1`, Asset Code belum dialokasikan.
 - Kondisi:
-  - kuota Group `Gudang Solo {runId}` dan kuota tenant cukup untuk seluruh pengajuan di atas.
+  - kuota Group `Gudang Solo {runId}` dan `Gudang Solo Langsung {runId}` serta kuota tenant cukup untuk seluruh pengajuan di atas.
 
 ## Test Steps
 
@@ -89,3 +94,14 @@ trace:
 35. Catat jumlah entri System Log milik aktor
 36. Waktu berlalu sampai Approval Timeout platform terlampaui sejak pengajuan DU-145-12 diajukan
 37. Verifikasi jumlah entri System Log tidak bertambah dibanding catatan karena auto-cancel sistem tanpa aktor
+
+### Activate langsung tanpa Approval Workflow mencatat alokasi Asset Code dan kuota Used
+38. Catat jumlah entri System Log milik aktor
+39. Rina W mengirim Activate atas batch DU-145-17
+40. Verifikasi System Log memuat entri alokasi Asset Code dan increment untuk kedua aset
+41. Verifikasi System Log memuat entri kuota Used untuk kedua aset tanpa entri kuota Reserved
+
+### Bulk Delete mencatat Voided untuk batch yang Asset Code-nya sudah beralokasi
+42. Catat jumlah entri System Log milik aktor
+43. Rina W menjalankan Bulk Delete atas batch DU-145-18 dan batch DU-145-19
+44. Verifikasi System Log memuat dua entri Asset Code `Voided` baru, satu per aset batch DU-145-18

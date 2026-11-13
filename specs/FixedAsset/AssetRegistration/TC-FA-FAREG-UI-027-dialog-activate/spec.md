@@ -4,41 +4,41 @@ title: "Dialog Activate: konfirmasi Submit, Skip pairing, blok kuota, dan toast"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-REG-03", "D-REG-08", "FAREG-LOGIC-01h", "FAREG-LOGIC-01j", "FAREG-LOGIC-04j", "FAREG-LOGIC-04k", "FAREG-LOGIC-05n", "T-REG-02", "T-REG-03", "T-REG-12", "T-REG-13", "V-REG-11", "V-REG-12", "V-REG-13", "V-REG-18", "§4.1#r5", "§4.1#b12", "§4.2.3#b2", "§9.4.2#r29", "§9.6#r3", "§9.9#r9", "§9.9#r10", "§9.9#r17", "EB-ERR-1@activate", "EB-FB-1@activate", "EB-FB-2@dialog-blok", "EB-FRM-1@dialog-activate", "EB-FRM-4@skip-pairing-note", "EB-FRM-7@dialog-activate"]
 smoke: []
 dependsOn: []
 trace:
-  "D-REG-03": [4, 5, 6, 7, 24, 27, 28, 29, 41, 42, 43, 51, 52, 58, 61, 64, 66, 96, 97]
-  "D-REG-08": [102, 103, 104]
+  "D-REG-03": [4, 5, 6, 7, 24, 27, 28, 29, 41, 42, 43, 51, 53, 60, 63, 66, 68, 100, 101]
+  "D-REG-08": [106, 107, 108, 141, 143]
   "FAREG-LOGIC-01h": [2, 7, 29]
   "FAREG-LOGIC-01j": 42
   "FAREG-LOGIC-04j": [39, 43]
-  "FAREG-LOGIC-04k": [53, 57, 58, 60, 61, 63, 64, 66, 93]
-  "FAREG-LOGIC-05n": [4, 8, 41, 100, 102, 106]
-  "T-REG-02": [21, 35, 93, 115]
+  "FAREG-LOGIC-04k": [54, 59, 60, 62, 63, 65, 66, 68, 97]
+  "FAREG-LOGIC-05n": [4, 8, 41, 104, 106, 110, 139, 141, 143]
+  "T-REG-02": [21, 35, 97, 119]
   "T-REG-03": 31
-  "T-REG-12": 111
-  "T-REG-13": 121
-  "V-REG-11": [51, 55]
-  "V-REG-12": 68
+  "T-REG-12": 115
+  "T-REG-13": 125
+  "V-REG-11": [51, 56]
+  "V-REG-12": 71
   "V-REG-13": [46, 47]
-  "V-REG-18": [75, 77, 80, 83]
+  "V-REG-18": [79, 81, 84, 87]
   "§4.1#r5": [4, 9, 27]
   "§4.1#b12": [21, 31]
-  "§4.2.3#b2": [5, 6, 7, 8, 9, 24, 41, 42, 66, 96, 97]
-  "§9.4.2#r29": 55
-  "§9.6#r3": [21, 31, 35, 111]
-  "§9.9#r9": [52, 55]
-  "§9.9#r10": [68, 75, 77, 86]
+  "§4.2.3#b2": [5, 6, 7, 8, 9, 24, 41, 42, 68, 100, 101]
+  "§9.4.2#r29": 56
+  "§9.6#r3": [21, 31, 35, 115]
+  "§9.9#r9": [53, 56]
+  "§9.9#r10": [71, 79, 81, 90]
   "§9.9#r17": [43, 44]
-  "EB-ERR-1@activate": [111, 112, 113, 115, 121, 122]
-  "EB-FB-1@activate": [21, 31, 93, 111]
-  "EB-FB-2@dialog-blok": [16, 107]
-  "EB-FRM-1@dialog-activate": [126, 127, 130, 132]
-  "EB-FRM-4@skip-pairing-note": [75, 77]
-  "EB-FRM-7@dialog-activate": [10, 12, 13, 17]
-anchor: [15, 38, 74, 79, 82, 85, 129]
+  "EB-ERR-1@activate": [115, 116, 117, 119, 125, 126]
+  "EB-FB-1@activate": [21, 31, 97, 115]
+  "EB-FB-2@dialog-blok": [16, 111]
+  "EB-FRM-1@dialog-activate": [130, 131, 134, 136]
+  "EB-FRM-4@skip-pairing-note": [79, 81]
+  "EB-FRM-7@dialog-activate": [10, 12, 13, 17, 52, 57, 69, 72]
+anchor: [15, 38, 78, 83, 86, 89, 133]
 coverage:
   web: automated
 ---
@@ -57,6 +57,7 @@ coverage:
   - DU-027-5: Item `Laptop Dell Latitude 5440` dengan Quantity `3`; ketiga aset hanya kurang Tag (Tingkat 2 lain terisi).
   - DU-027-6: Item `Printer Epson L3250` dengan Quantity `1`; aset hanya kurang Tag (Tingkat 2 lain terisi).
   - DU-027-7: kuota Group `Gudang 1` tidak cukup untuk tiga aset sehingga Activate ditolak `QUOTA_EXCEEDED`.
+  - DU-027-20: kuota Group `Gudang 2` tidak cukup untuk tiga aset sehingga Submit for Approval ditolak `QUOTA_EXCEEDED`.
   - DU-027-8: teks dialog `Gudang 1 · 3 assets`, `Gudang 1 · 1 asset`, `3 assets are not paired to a TAG yet.`, dan `1 asset is not paired to a TAG yet.`
 - Kondisi:
   - K1: form `Edit` draft tersimpan dengan Group DU-027-1 dan Item DU-027-3; Approval Workflow OFF.
@@ -69,6 +70,7 @@ coverage:
   - K8: sama dengan K1; Activate gagal karena error server pada percobaan pertama dan berhasil pada percobaan kedua.
   - K9: sama dengan K5; Activate gagal karena gangguan jaringan.
   - K10: sama dengan K1; respons Activate lambat.
+  - K11: form `Edit` draft tersimpan dengan Group DU-027-2 dan Item DU-027-3; Approval Workflow ON; kuota DU-027-20.
 
 ## Test Steps
 ### Dialog Activate saat Approval Workflow OFF: isi, tombol, aksesibilitas, dan Cancel
@@ -135,98 +137,111 @@ coverage:
 49. Klik `[Submit]` pada footer form
 50. Centang checkbox `Submit them without pairing TAGs (pair later)`
 51. Verifikasi Select reason menampilkan placeholder `Select reason`
-52. Verifikasi opsi Reason memuat `Device unavailable`, `TAG not yet available`, `TAG damaged`, dan `Other`
-53. Verifikasi dialog memuat satu Select reason untuk ketiga aset
-54. Klik `[Activate]`
-55. Verifikasi pesan `You must pick a reason` tampil di bawah Select reason
-56. Pilih Reason `Device unavailable`
-57. Verifikasi Select reason menampilkan `Device unavailable`
-58. Verifikasi Input note tidak tampil untuk Reason `Device unavailable`
-59. Pilih Reason `TAG not yet available`
-60. Verifikasi Select reason menampilkan `TAG not yet available`
-61. Verifikasi Input note tidak tampil untuk Reason `TAG not yet available`
-62. Pilih Reason `TAG damaged`
-63. Verifikasi Select reason menampilkan `TAG damaged`
-64. Verifikasi Input note tidak tampil untuk Reason `TAG damaged`
-65. Pilih Reason `Other`
-66. Verifikasi Input note tampil dengan placeholder `Enter note`
-67. Klik `[Activate]`
-68. Verifikasi pesan `Note must not be empty` tampil di bawah Input note
+52. Verifikasi Select reason memiliki atribut aria-required
+53. Verifikasi opsi Reason memuat `Device unavailable`, `TAG not yet available`, `TAG damaged`, dan `Other`
+54. Verifikasi dialog memuat satu Select reason untuk ketiga aset
+55. Klik `[Activate]`
+56. Verifikasi pesan `You must pick a reason` tampil di bawah Select reason
+57. Verifikasi Select reason memiliki atribut aria-describedby yang menunjuk pesan `You must pick a reason`
+58. Pilih Reason `Device unavailable`
+59. Verifikasi Select reason menampilkan `Device unavailable`
+60. Verifikasi Input note tidak tampil untuk Reason `Device unavailable`
+61. Pilih Reason `TAG not yet available`
+62. Verifikasi Select reason menampilkan `TAG not yet available`
+63. Verifikasi Input note tidak tampil untuk Reason `TAG not yet available`
+64. Pilih Reason `TAG damaged`
+65. Verifikasi Select reason menampilkan `TAG damaged`
+66. Verifikasi Input note tidak tampil untuk Reason `TAG damaged`
+67. Pilih Reason `Other`
+68. Verifikasi Input note tampil dengan placeholder `Enter note`
+69. Verifikasi Input note memiliki atribut aria-required
+70. Klik `[Activate]`
+71. Verifikasi pesan `Note must not be empty` tampil di bawah Input note
+72. Verifikasi Input note memiliki atribut aria-describedby yang menunjuk pesan `Note must not be empty`
 
 ### Skip pairing Note: batas 120 karakter
-69. Tampilkan Dialog Activate dengan kondisi K5
-70. Klik `[Submit]` pada footer form
-71. Centang checkbox `Submit them without pairing TAGs (pair later)`
-72. Pilih Reason `Other`
-73. Ganti isi Input note dengan `Reader TAG di Gudang 1 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 0123456789012345678901` (120 karakter)
-74. Verifikasi Input note menampilkan `Reader TAG di Gudang 1 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 0123456789012345678901`
-75. Verifikasi tidak ada pesan error di bawah Input note
-76. Ganti isi Input note dengan `Reader TAG di Gudang 1 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 01234567890123456789012` (121 karakter)
-77. Verifikasi pesan `Max. 120 characters` tampil di bawah Input note
-78. Ganti isi Input note dengan `Reader  TAG  di  Gudang  1  sedang  diperbaiki  sehingga  pemasangan  Tag  ditunda  sampai  pekan  depan.  Kode 01234567` (120 karakter)
-79. Verifikasi Input note menampilkan `Reader  TAG  di  Gudang  1  sedang  diperbaiki  sehingga  pemasangan  Tag  ditunda  sampai  pekan  depan.  Kode 01234567`
-80. Verifikasi tidak ada pesan error di bawah Input note
-81. Ganti isi Input note dengan `Reader TAG Kantor Cabang Medan Élan 𝒜 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 0123456` (120 karakter)
-82. Verifikasi Input note menampilkan `Reader TAG Kantor Cabang Medan Élan 𝒜 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 0123456`
-83. Verifikasi tidak ada pesan error di bawah Input note
-84. Ganti isi Input note dengan `R` (1 karakter)
-85. Verifikasi Input note menampilkan `R`
-86. Verifikasi tidak ada pesan error di bawah Input note
+73. Tampilkan Dialog Activate dengan kondisi K5
+74. Klik `[Submit]` pada footer form
+75. Centang checkbox `Submit them without pairing TAGs (pair later)`
+76. Pilih Reason `Other`
+77. Ganti isi Input note dengan `Reader TAG di Gudang 1 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 0123456789012345678901` (120 karakter)
+78. Verifikasi Input note menampilkan `Reader TAG di Gudang 1 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 0123456789012345678901`
+79. Verifikasi tidak ada pesan error di bawah Input note
+80. Ganti isi Input note dengan `Reader TAG di Gudang 1 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 01234567890123456789012` (121 karakter)
+81. Verifikasi pesan `Max. 120 characters` tampil di bawah Input note
+82. Ganti isi Input note dengan `Reader  TAG  di  Gudang  1  sedang  diperbaiki  sehingga  pemasangan  Tag  ditunda  sampai  pekan  depan.  Kode 01234567` (120 karakter)
+83. Verifikasi Input note menampilkan `Reader  TAG  di  Gudang  1  sedang  diperbaiki  sehingga  pemasangan  Tag  ditunda  sampai  pekan  depan.  Kode 01234567`
+84. Verifikasi tidak ada pesan error di bawah Input note
+85. Ganti isi Input note dengan `Reader TAG Kantor Cabang Medan Élan 𝒜 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 0123456` (120 karakter)
+86. Verifikasi Input note menampilkan `Reader TAG Kantor Cabang Medan Élan 𝒜 sedang diperbaiki sehingga pemasangan Tag ditunda sampai pekan depan. Kode 0123456`
+87. Verifikasi tidak ada pesan error di bawah Input note
+88. Ganti isi Input note dengan `R` (1 karakter)
+89. Verifikasi Input note menampilkan `R`
+90. Verifikasi tidak ada pesan error di bawah Input note
 
 ### Skip pairing berhasil dengan satu alasan untuk semua aset
-87. Tampilkan Dialog Activate dengan kondisi K5
-88. Klik `[Submit]` pada footer form
-89. Centang checkbox `Submit them without pairing TAGs (pair later)`
-90. Pilih Reason `Other`
-91. Ganti isi Input note dengan `Reader TAG sedang diperbaiki`
-92. Klik `[Activate]`
-93. Verifikasi toast `Success, asset has been activated.` tampil setelah Skip pairing
+91. Tampilkan Dialog Activate dengan kondisi K5
+92. Klik `[Submit]` pada footer form
+93. Centang checkbox `Submit them without pairing TAGs (pair later)`
+94. Pilih Reason `Other`
+95. Ganti isi Input note dengan `Reader TAG sedang diperbaiki`
+96. Klik `[Activate]`
+97. Verifikasi toast `Success, asset has been activated.` tampil setelah Skip pairing
 
 ### Dialog untuk satu aset hanya kurang Tag memakai peringatan tunggal
-94. Tampilkan Dialog Activate dengan kondisi K6
-95. Klik `[Submit]` pada footer form
-96. Verifikasi dialog `Activate Assets` tampil dengan bullet `Gudang 1 · 1 asset`
-97. Verifikasi peringatan `1 asset is not paired to a TAG yet.` tampil
+98. Tampilkan Dialog Activate dengan kondisi K6
+99. Klik `[Submit]` pada footer form
+100. Verifikasi dialog `Activate Assets` tampil dengan bullet `Gudang 1 · 1 asset`
+101. Verifikasi peringatan `1 asset is not paired to a TAG yet.` tampil
 
 ### Kuota Group tidak cukup: dialog Cannot Activate
-98. Tampilkan Dialog Activate dengan kondisi K7
-99. Klik `[Submit]` pada footer form
-100. Verifikasi dialog `Activate Assets` tampil tanpa pemeriksaan kuota
-101. Klik `[Activate]`
-102. Verifikasi dialog `Cannot Activate` tampil dengan teks `Group quota exceeded. Available slots:` diikuti sisa slot dari respons
-103. Verifikasi dialog `Cannot Activate` memuat teks `Please contact administrator to increase quota.`
-104. Verifikasi dialog `Cannot Activate` hanya memuat tombol `[OK]`
-105. Klik `[OK]`
-106. Verifikasi form `Register Asset` masih Draft dengan footer `[Save draft]` dan `[Submit]`
-107. Verifikasi dialog `Cannot Activate` tertutup tanpa toast
+102. Tampilkan Dialog Activate dengan kondisi K7
+103. Klik `[Submit]` pada footer form
+104. Verifikasi dialog `Activate Assets` tampil tanpa pemeriksaan kuota
+105. Klik `[Activate]`
+106. Verifikasi dialog `Cannot Activate` tampil dengan teks `Group quota exceeded. Available slots:` diikuti sisa slot dari respons
+107. Verifikasi dialog `Cannot Activate` memuat teks `Please contact administrator to increase quota.`
+108. Verifikasi dialog `Cannot Activate` hanya memuat tombol `[OK]`
+109. Klik `[OK]`
+110. Verifikasi form `Register Asset` masih Draft dengan footer `[Save draft]` dan `[Submit]`
+111. Verifikasi dialog `Cannot Activate` tertutup tanpa toast
 
 ### Activate gagal karena error server dan pulih sesudah submit ulang
-108. Tampilkan Dialog Activate dengan kondisi K8
-109. Klik `[Submit]` pada footer form
-110. Klik `[Activate]`
-111. Verifikasi toast Error dengan awalan `Error, failed to` tampil
-112. Verifikasi dialog `Activate Assets` tetap terbuka dengan bullet `Gudang 1 · 3 assets`
-113. Verifikasi tombol `[Activate]` aktif kembali
+112. Tampilkan Dialog Activate dengan kondisi K8
+113. Klik `[Submit]` pada footer form
 114. Klik `[Activate]`
-115. Verifikasi toast `Success, asset has been activated.` tampil satu kali
+115. Verifikasi toast Error dengan awalan `Error, failed to` tampil
+116. Verifikasi dialog `Activate Assets` tetap terbuka dengan bullet `Gudang 1 · 3 assets`
+117. Verifikasi tombol `[Activate]` aktif kembali
+118. Klik `[Activate]`
+119. Verifikasi toast `Success, asset has been activated.` tampil satu kali
 
 ### Activate gagal karena gangguan jaringan mempertahankan input
-116. Tampilkan Dialog Activate dengan kondisi K9
-117. Klik `[Submit]` pada footer form
-118. Centang checkbox `Submit them without pairing TAGs (pair later)`
-119. Pilih Reason `TAG damaged`
-120. Klik `[Activate]`
-121. Verifikasi toast Error `Connection problem. Please try again.` tampil dan dialog `Activate Assets` tetap terbuka
-122. Verifikasi Select reason masih menampilkan `TAG damaged`
+120. Tampilkan Dialog Activate dengan kondisi K9
+121. Klik `[Submit]` pada footer form
+122. Centang checkbox `Submit them without pairing TAGs (pair later)`
+123. Pilih Reason `TAG damaged`
+124. Klik `[Activate]`
+125. Verifikasi toast Error `Connection problem. Please try again.` tampil dan dialog `Activate Assets` tetap terbuka
+126. Verifikasi Select reason masih menampilkan `TAG damaged`
 
 ### Activate lambat: Saving dan satu request
-123. Tampilkan Dialog Activate dengan kondisi K10
-124. Klik `[Submit]` pada footer form
-125. Klik `[Activate]`
-126. Verifikasi tombol `[Activate]` menampilkan loading dan Disabled
-127. Verifikasi `[Cancel]` dan `✕` Disabled
-128. Klik `[Activate]` sekali lagi
-129. Verifikasi tombol `[Activate]` masih menampilkan loading
-130. Verifikasi tidak ada pengiriman Activate kedua
-131. Tunggu sampai respons Activate diterima
-132. Verifikasi tepat satu toast `Success, asset has been activated.` tampil
+127. Tampilkan Dialog Activate dengan kondisi K10
+128. Klik `[Submit]` pada footer form
+129. Klik `[Activate]`
+130. Verifikasi tombol `[Activate]` menampilkan loading dan Disabled
+131. Verifikasi `[Cancel]` dan `✕` Disabled
+132. Klik `[Activate]` sekali lagi
+133. Verifikasi tombol `[Activate]` masih menampilkan loading
+134. Verifikasi tidak ada pengiriman Activate kedua
+135. Tunggu sampai respons Activate diterima
+136. Verifikasi tepat satu toast `Success, asset has been activated.` tampil
+
+### Kuota Group tidak cukup saat Approval Workflow ON: dialog Cannot Activate
+137. Tampilkan Dialog Activate dengan kondisi K11
+138. Klik `[Submit]` pada footer form
+139. Verifikasi dialog `Submit for Approval` tampil tanpa pemeriksaan kuota
+140. Klik `[Submit for Approval]`
+141. Verifikasi dialog `Cannot Activate` tampil dengan teks `Group quota exceeded. Available slots:` diikuti sisa slot dari respons
+142. Klik `[OK]`
+143. Verifikasi form `Register Asset` masih Draft dengan footer `[Save draft]` dan `[Submit]`

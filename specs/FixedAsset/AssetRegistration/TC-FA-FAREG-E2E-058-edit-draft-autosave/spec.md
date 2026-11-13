@@ -4,7 +4,7 @@ title: "Edit draft: autosave menyimpan perubahan"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§9.5#r2, S-REG-12]
 smoke: [S-REG-12]
 dependsOn: []

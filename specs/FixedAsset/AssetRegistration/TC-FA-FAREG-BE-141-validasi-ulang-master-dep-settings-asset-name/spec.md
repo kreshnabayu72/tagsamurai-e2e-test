@@ -4,7 +4,7 @@ title: "Validasi ulang referensi master di server"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-08b, FAREG-LOGIC-18a, FAREG-LOGIC-18e]
 smoke: []
 dependsOn:
@@ -13,7 +13,7 @@ owner: BE
 trace:
   FAREG-LOGIC-08b: [3, 5, 8, 11]
   FAREG-LOGIC-18a: [14, 16, 19, 21, 24, 26]
-  FAREG-LOGIC-18e: [28, 30]
+  FAREG-LOGIC-18e: [30, 32]
 ---
 
 # Validasi ulang referensi master di server
@@ -31,14 +31,14 @@ trace:
   - DU-141-5: Asset Name `Rak Gudang {runId}`, Brand `Krisbow {runId}`, Model `KR-141`, TAG Type `Non-TAG`, Status `Active`.
   - DU-141-6: Asset Name `Rak Besi {runId}`, Brand `Lion {runId}`, Model `LN-141`, TAG Type `Non-TAG`, Status `Active`.
   - DU-141-7: Asset Name `Rak Plastik {runId}`, Brand `Napolly {runId}`, Model `NP-141`, TAG Type `Non-TAG`, Status `Active`.
-  - DU-141-8: Asset Name `Rak Kayu {runId}`, Brand `Napolly Kayu {runId}`, Model `NK-141`, TAG Type `Non-TAG`, Status `Active`.
+  - DU-141-8: Asset Name `Rak Kayu {runId}`, Brand `Napolly Kayu {runId}` dengan Model `NK-141` dan `NK-142`, serta Brand `Napolly Jati {runId}` dengan Model `NJ-141`, TAG Type `Non-TAG`, Status `Active`.
   - DU-141-9: batch Draft milik Rina W di Group `Gudang Depok {runId}`, Item `Kursi Arsip {runId}` Quantity `1`, memenuhi Tingkat 2.
   - DU-141-10: batch Draft milik Rina W di Group `Gudang Depok {runId}`, Item `Meja Hapus {runId}` Quantity `1`, memenuhi Tingkat 2.
   - DU-141-11: batch Draft milik Rina W di Group `Gudang Depok {runId}`, Item `Lemari Lepas {runId}` Quantity `1`, memenuhi Tingkat 2.
   - DU-141-12: pengajuan `Waiting for Approval` milik Rina W berisi `1` aset `Rak Gudang {runId}`.
   - DU-141-13: pengajuan `Waiting for Approval` milik Rina W berisi `1` aset `Rak Besi {runId}`.
   - DU-141-14: pengajuan `Waiting for Approval` milik Rina W berisi `1` aset `Rak Plastik {runId}`.
-  - DU-141-15: pengajuan `Waiting for Approval` milik Rina W berisi `1` aset `Rak Kayu {runId}`.
+  - DU-141-15: pengajuan `Waiting for Approval` milik Rina W berisi `1` aset `Rak Kayu {runId}` Brand `Napolly Kayu {runId}` Model `NK-141`.
 - Kondisi:
   - kuota Group `Gudang Depok {runId}` dan kuota tenant cukup untuk seluruh pengajuan di atas.
 
@@ -83,7 +83,9 @@ trace:
 26. Verifikasi keputusan ditolak server dan pengajuan DU-141-14 tetap `Waiting for Approval`
 
 ### Koreksi ke nilai master yang tidak valid ditolak
-27. Budi menyimpan koreksi Brand aset pertama pengajuan DU-141-15 menjadi `Krisbow {runId}` yang sudah diarsipkan
-28. Verifikasi koreksi ditolak server dan aset pertama tidak memiliki koreksi staged
-29. Budi menyimpan koreksi Model aset pertama pengajuan DU-141-15 menjadi `LN-141` yang sudah dilepas dari Brand `Lion {runId}`
+27. Hana T mengarsipkan Brand `Napolly Jati {runId}` pada Asset Name `Rak Kayu {runId}` di Settings Asset Name
+28. Hana T melepas Model `NK-142` dari Brand `Napolly Kayu {runId}` pada Asset Name `Rak Kayu {runId}` di Settings Asset Name
+29. Budi menyimpan koreksi Brand aset pertama pengajuan DU-141-15 menjadi `Napolly Jati {runId}` yang sudah diarsipkan pada Asset Name `Rak Kayu {runId}`
 30. Verifikasi koreksi ditolak server dan aset pertama tidak memiliki koreksi staged
+31. Budi menyimpan koreksi Model aset pertama pengajuan DU-141-15 menjadi `NK-142` yang sudah dilepas dari Brand `Napolly Kayu {runId}`
+32. Verifikasi koreksi ditolak server dan aset pertama tidak memiliki koreksi staged

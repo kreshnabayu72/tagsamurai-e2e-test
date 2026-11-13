@@ -4,7 +4,7 @@ title: "Group aset Active berubah lewat Transfer"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-03j, EB-XM-2@transactions-transfer]
 smoke: []
 dependsOn: ["Transactions Transfer: perpindahan Group"]

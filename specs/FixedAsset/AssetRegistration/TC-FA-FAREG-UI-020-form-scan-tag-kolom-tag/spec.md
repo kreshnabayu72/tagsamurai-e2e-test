@@ -4,7 +4,7 @@ title: "Form Register Asset: tombol Scan, Badge TAG, dan pesan hasil scan"
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-04c", "FAREG-LOGIC-04d", "FAREG-LOGIC-04e", "FAREG-LOGIC-04o", "FAREG-LOGIC-04q", "S-REG-15", "S-REG-18", "S-REG-28", "V-REG-05", "V-REG-06", "V-REG-07", "V-REG-08", "V-REG-09", "§4.1#r101", "§4.2.2#p1", "§9.4.2#r28", "§9.4.2#r30", "§9.4.2#r31", "§9.4.2#r32", "§9.4.2#r33", "§9.4.2#r34", "§9.4.2#r35", "§9.4.2#r36", "§9.4.2#r37", "§9.4.2#r38", "§9.4.2#r39", "§9.4.2#r40", "§9.4.2#r41", "§9.4.2#r57", "§9.6#r9", "§9.9#r12", "§9.10#p2"]
 smoke: []
 dependsOn: []
@@ -12,18 +12,18 @@ trace:
   "FAREG-LOGIC-04c": 14
   "FAREG-LOGIC-04d": 9
   "FAREG-LOGIC-04e": [85, 86]
-  "FAREG-LOGIC-04o": [14, 23, 29, 34, 39, 44, 49, 54, 76, 81, 90]
-  "FAREG-LOGIC-04q": [7, 98, 99, 100]
-  "S-REG-15": [93, 94]
+  "FAREG-LOGIC-04o": [14, 23, 29, 34, 39, 44, 49, 54, 76, 81, 91]
+  "FAREG-LOGIC-04q": [7, 99, 100, 101, 102, 103, 114, 118, 119, 121]
+  "S-REG-15": [94, 95, 124, 125, 129, 130]
   "S-REG-18": [8, 14]
-  "S-REG-28": [99, 100]
+  "S-REG-28": [100, 101, 102, 103]
   "V-REG-05": 22
   "V-REG-06": [28, 33, 38, 43, 48, 53]
   "V-REG-07": [62, 66]
   "V-REG-08": 70
   "V-REG-09": 75
-  "§4.1#r101": [3, 4, 5, 8, 16, 18, 103, 107]
-  "§4.2.2#p1": [10, 15]
+  "§4.1#r101": [3, 4, 5, 8, 16, 18, 106, 110]
+  "§4.2.2#p1": [10, 15, 87]
   "§9.4.2#r28": 28
   "§9.4.2#r30": 14
   "§9.4.2#r31": 85
@@ -37,11 +37,11 @@ trace:
   "§9.4.2#r39": [62, 66]
   "§9.4.2#r40": 75
   "§9.4.2#r41": 80
-  "§9.4.2#r57": 95
+  "§9.4.2#r57": [96, 124, 125, 129, 130, 126, 131]
   "§9.6#r9": 14
-  "§9.9#r12": [22, 28, 75, 103]
-  "§9.10#p2": 100
-anchor: [6, 106]
+  "§9.9#r12": [22, 28, 75, 106]
+  "§9.10#p2": [101, 102, 103]
+anchor: [6, 109, 113]
 coverage:
   web: automated
 ---
@@ -72,6 +72,8 @@ coverage:
   - DU-020-17: Tag `RFID-000510`, tipe RFID, status `Available`, terpasang di aset `Laptop Dell Latitude 5440 - 1`.
   - DU-020-18: Tag `RFID-000511`, tipe RFID, status `Available`.
   - DU-020-19: Tag `RFID-000513`, tipe RFID, status `Available`.
+  - DU-020-20: Item `Laptop Dell Latitude 5440` dengan Brand `Dell` dan Model `Latitude 5440`, TAG Type `RFID`; aset `Laptop Dell Latitude 5440 - 1` memenuhi seluruh Tingkat 2 selain Tag, slot RFID `Unverified`.
+  - DU-020-21: Item `Forklift Komatsu FD30`, TAG Type `RFID` dan `BLE`; aset `Forklift Komatsu FD30 - 1`, slot RFID `Unverified`.
 - Kondisi:
   - K1: form `Edit` draft tersimpan dengan Item DU-020-1, DU-020-2, DU-020-3, dan DU-020-4; reader TAG terhubung; plan memperbolehkan tipe Tag RFID, QR, dan NFC; semua aset berbadge `Unverified`.
   - K2: sama dengan K1; pemindaian aset `Laptop Dell Latitude 5440 - 1` menghasilkan DU-020-6.
@@ -91,9 +93,13 @@ coverage:
   - K16: sama dengan K1; pemindaian aset `Kursi Kerja Ergonomis - 1` menghasilkan DU-020-19.
   - K17: sama dengan K1; pembacaan pada aset `Laptop Dell Latitude 5440 - 1` dihentikan pengguna.
   - K18: form `Edit` draft tersimpan dengan Item DU-020-1; reader TAG tidak terhubung.
-  - K19: form `Edit` draft tersimpan dengan Item DU-020-1 dan DU-020-2; tipe Tag QR terkunci oleh plan, tipe RFID tidak terkunci.
+  - K19: form `Edit` draft tersimpan dengan Item DU-020-1, DU-020-2, dan DU-020-3; plan berperingkat `rank=0` sehingga hanya tipe Tag QR yang tersedia, tipe RFID dan NFC terkunci oleh plan; reader TAG terhubung.
   - K20: form `Edit` draft tersimpan dengan Item DU-020-2 dan DU-020-5.
   - K21: form `Edit` draft tersimpan dengan Item DU-020-5 saja.
+  - K22: form `Edit` draft tersimpan dengan Item DU-020-20; plan berperingkat `rank=0` sehingga tipe Tag RFID terkunci oleh plan; Approval Workflow nonaktif.
+  - K23: form `Edit` draft tersimpan dengan Item DU-020-21; reader TAG terhubung; plan memperbolehkan tipe Tag RFID.
+  - K24: form `Edit` draft tersimpan dengan Item DU-020-1; driver reader TAG belum terpasang.
+  - K25: form `Edit` draft tersimpan dengan Item DU-020-1; lebih dari satu reader TAG terhubung.
 
 ## Test Steps
 ### Kolom TAG: tombol Scan per tipe dan Badge Unverified
@@ -197,32 +203,64 @@ coverage:
 84. Klik `Scan RFID` pada `Laptop Dell Latitude 5440 - 1`
 85. Verifikasi Badge `Verified` pada `Laptop Dell Latitude 5440 - 1` memuat kode Tag `RFID-000511`
 86. Verifikasi kode Tag `RFID-000510` tidak lagi tampil pada `Laptop Dell Latitude 5440 - 1`
+87. Verifikasi tidak ada dialog yang terbuka sesudah tombol `Scan RFID` diklik pada slot yang sudah terisi
 
 ### Pembacaan dihentikan pengguna tidak mengubah slot
-87. Tampilkan Halaman `Register Asset` dengan kondisi K17
-88. Klik tab `Asset`
-89. Klik `Scan RFID` pada `Laptop Dell Latitude 5440 - 1`
-90. Verifikasi Badge `Unverified` pada `Laptop Dell Latitude 5440 - 1` tidak berubah
+88. Tampilkan Halaman `Register Asset` dengan kondisi K17
+89. Klik tab `Asset`
+90. Klik `Scan RFID` pada `Laptop Dell Latitude 5440 - 1`
+91. Verifikasi Badge `Unverified` pada `Laptop Dell Latitude 5440 - 1` tidak berubah
 
 ### Tombol Scan Disabled saat reader tidak terhubung
-91. Tampilkan Halaman `Register Asset` dengan kondisi K18
-92. Klik tab `Asset`
-93. Verifikasi tombol `Scan RFID` pada `Laptop Dell Latitude 5440 - 1` berstatus Disabled
-94. Verifikasi tooltip `Connect a TAG reader to scan.` tampil saat pointer berada di tombol `Scan RFID`
-95. Verifikasi banner reader tidak terhubung tampil
+92. Tampilkan Halaman `Register Asset` dengan kondisi K18
+93. Klik tab `Asset`
+94. Verifikasi tombol `Scan RFID` pada `Laptop Dell Latitude 5440 - 1` berstatus Disabled
+95. Verifikasi tooltip `Connect a TAG reader to scan.` tampil saat pointer berada di tombol `Scan RFID`
+96. Verifikasi banner reader tidak terhubung tampil
 
 ### Tombol Scan Disabled untuk tipe Tag terkunci plan
-96. Tampilkan Halaman `Register Asset` dengan kondisi K19
-97. Klik tab `Asset`
-98. Verifikasi tombol `Scan RFID` pada `Laptop Dell Latitude 5440 - 1` tidak Disabled
-99. Verifikasi tombol `Scan QR` pada `Kursi Kerja Ergonomis - 1` berstatus Disabled
-100. Verifikasi tooltip `This TAG type isn't available on your plan.` tampil saat pointer berada di tombol `Scan QR`
+97. Tampilkan Halaman `Register Asset` dengan kondisi K19
+98. Klik tab `Asset`
+99. Verifikasi tombol `Scan RFID` pada `Laptop Dell Latitude 5440 - 1` berstatus Disabled
+100. Verifikasi tombol `Scan QR` pada `Kursi Kerja Ergonomis - 1` tidak Disabled
+101. Verifikasi tooltip `This TAG type isn't available on your plan.` tampil saat pointer berada di tombol `Scan RFID`
+102. Verifikasi tombol `Scan NFC` pada `Printer Epson L3250 - 1` berstatus Disabled
+103. Verifikasi tooltip `This TAG type isn't available on your plan.` tampil saat pointer berada di tombol `Scan NFC`
 
 ### Item Non-TAG menampilkan No tag dan kolom TAG tersembunyi bila semua aset Non-TAG
-101. Tampilkan Halaman `Register Asset` dengan kondisi K20
-102. Klik tab `Asset`
-103. Verifikasi `No tag` tampil di kolom TAG untuk aset `Meja Lipat Aluminium - 1`
-104. Tampilkan Halaman `Register Asset` dengan kondisi K21
+104. Tampilkan Halaman `Register Asset` dengan kondisi K20
 105. Klik tab `Asset`
-106. Verifikasi kolom `Name` menampilkan `Meja Lipat Aluminium - 1`
-107. Verifikasi kolom TAG tidak tampil
+106. Verifikasi `No tag` tampil di kolom TAG untuk aset `Meja Lipat Aluminium - 1`
+107. Tampilkan Halaman `Register Asset` dengan kondisi K21
+108. Klik tab `Asset`
+109. Verifikasi kolom `Name` menampilkan `Meja Lipat Aluminium - 1`
+110. Verifikasi kolom TAG tidak tampil
+
+### Tipe BLE tidak membentuk slot Tag
+111. Tampilkan Halaman `Register Asset` dengan kondisi K23
+112. Klik tab `Asset`
+113. Verifikasi tombol `Scan RFID` tampil pada `Forklift Komatsu FD30 - 1`
+114. Verifikasi tombol `Scan BLE` tidak tampil pada `Forklift Komatsu FD30 - 1`
+
+### Slot bertipe terkunci plan hanya dapat dipenuhi lewat Skip pairing
+115. Tampilkan Halaman `Register Asset` dengan kondisi K22
+116. Klik tab `Asset`
+117. Klik `[Submit]`
+118. Verifikasi dialog konfirmasi Submit memuat `1 asset is not paired to a TAG yet.`
+119. Verifikasi dialog konfirmasi Submit memuat checkbox `Submit them without pairing TAGs (pair later)`
+120. Klik `[Activate]` tanpa mencentang checkbox
+121. Verifikasi pesan `Choose to submit without pairing, or pair the TAGs first.` tampil
+
+### Tombol Scan Disabled saat driver reader belum terpasang
+122. Tampilkan Halaman `Register Asset` dengan kondisi K24
+123. Klik tab `Asset`
+124. Verifikasi tombol `Scan RFID` pada `Laptop Dell Latitude 5440 - 1` berstatus Disabled
+125. Verifikasi tooltip `Connect a TAG reader to scan.` tampil saat pointer berada di tombol `Scan RFID`
+126. Verifikasi banner reader tampil
+
+### Tombol Scan Disabled saat lebih dari satu reader terhubung
+127. Tampilkan Halaman `Register Asset` dengan kondisi K25
+128. Klik tab `Asset`
+129. Verifikasi tombol `Scan RFID` pada `Laptop Dell Latitude 5440 - 1` berstatus Disabled
+130. Verifikasi tooltip `Connect a TAG reader to scan.` tampil saat pointer berada di tombol `Scan RFID`
+131. Verifikasi banner reader tampil

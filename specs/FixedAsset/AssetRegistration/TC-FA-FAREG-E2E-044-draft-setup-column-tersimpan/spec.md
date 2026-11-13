@@ -4,7 +4,7 @@ title: "Sub tab Draft: konfigurasi Setup Column bertahan"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-KOL-2@tabel-draft"]
 smoke: []
 dependsOn: []

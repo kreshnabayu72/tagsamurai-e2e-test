@@ -4,7 +4,7 @@ title: "Sub tab Draft: mekanik Filter Panel dan field filter"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r22", "§4.1#r23", "§4.1#r24", "§4.1#r25", "§4.1#r26", "§4.1#r27", "§9.5#r8", "EB-FLT-2@tabel-draft", "EB-FLT-6@tabel-draft"]
 smoke: []
 dependsOn: []

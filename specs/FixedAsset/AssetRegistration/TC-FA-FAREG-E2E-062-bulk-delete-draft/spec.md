@@ -4,7 +4,7 @@ title: "Bulk Delete draft: beberapa batch terhapus"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.8#r21, D-REG-01, T-REG-04]
 smoke: [D-REG-01, T-REG-04]
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Quantity turun, Remove Item, dan Apply to all"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-01r, FAREG-LOGIC-03u, "§9.6#r13", "§9.6#r14", "§9.6#r15"]
 smoke: []
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Submit dengan aset belum memenuhi Tingkat 2: tidak ada yang diproses"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.4.2#r7", FAREG-LOGIC-01i, V-REG-02]
 smoke: [FAREG-LOGIC-01i, V-REG-02]
 dependsOn: []

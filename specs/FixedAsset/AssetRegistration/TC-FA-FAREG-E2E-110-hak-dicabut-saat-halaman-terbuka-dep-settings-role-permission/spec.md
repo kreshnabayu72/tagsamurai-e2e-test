@@ -4,7 +4,7 @@ title: "Hak dicabut saat halaman terbuka: aksi berikutnya ditolak"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [§9.4.2#r58, EB-AKS-6, T-REG-07, FAREG-LOGIC-10f]
 smoke: [T-REG-07, FAREG-LOGIC-10f]
 dependsOn: ["Settings Role Permission: ubah role pengguna"]

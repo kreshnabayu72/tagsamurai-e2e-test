@@ -4,15 +4,15 @@ title: "Draft hasil Import: batch per Group dan alur Edit serta Delete"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-01t, FAREG-LOGIC-01u, FAREG-LOGIC-01v, §9.2#p8, EB-XM-2@import, EB-XM-3]
 smoke: []
 dependsOn: ["Fixed Asset Import: impor aset"]
 trace:
-  FAREG-LOGIC-01t: [5, 8]
+  FAREG-LOGIC-01t: [5, 8, 24, 25, 26]
   FAREG-LOGIC-01u: [6]
   FAREG-LOGIC-01v: [2, 10]
-  §9.2#p8: [5, 8]
+  §9.2#p8: [5, 8, 25, 30]
   EB-XM-2@import: [5, 8, 17, 22]
   EB-XM-3: [15, 17, 21, 22]
 anchor: []
@@ -23,14 +23,17 @@ coverage:
 # Draft hasil Import: batch per Group dan alur Edit serta Delete
 
 ## Prerequisites
-- Aktor: Rina, role Manage asset & TAG dengan Group terkelola `Gudang Impor A {runId}` dan `Gudang Impor B {runId}`, tidak mencakup Group `Gudang Luar {runId}`.
+- Aktor: Rina, role Manage asset & TAG dengan Group terkelola `Gudang Impor A {runId}`, `Gudang Impor B {runId}`, dan `Gudang Impor Besar {runId}`, tidak mencakup Group `Gudang Luar {runId}`.
 - Layar awal: Fixed Asset > Assets > Registration > Draft.
 - Data:
   - DU-116-1: Group `Gudang Impor A {runId}`, ada di entitas aktor.
   - DU-116-2: Group `Gudang Impor B {runId}`, ada di entitas aktor.
   - DU-116-3: Group `Gudang Luar {runId}`, ada di entitas aktor.
-  - DU-116-4: berkas impor `Import-Aset-{runId}.xlsx` berisi 3 aset untuk Group `Gudang Impor A {runId}`, 2 aset untuk Group `Gudang Impor B {runId}`, dan 1 aset untuk Group `Gudang Luar {runId}`, semua Asset Name `Rak Impor {runId}` dengan Brand `Olympic` dan Model `No Model`.
+  - DU-116-4: berkas impor `Import-Aset-{runId}.xlsx` berisi 3 aset untuk Group `Gudang Impor A {runId}`, 2 aset untuk Group `Gudang Impor B {runId}`, 1 aset untuk Group `Gudang Luar {runId}`, dan 130 aset untuk Group `Gudang Impor Besar {runId}`, semua Asset Name `Rak Impor {runId}` dengan Brand `Olympic` dan Model `No Model`.
+  - DU-116-6: Group `Gudang Impor Besar {runId}`, ada di entitas aktor.
   - DU-116-5: Quantity `4` yang diketik Rina saat mengedit batch hasil impor.
+  - DU-116-7: Quantity `101` yang diketik Rina, melebihi Register Asset Bulk Limit.
+- Kondisi: Register Asset Bulk Limit bernilai `100`.
 
 ## Test Steps
 
@@ -61,3 +64,15 @@ coverage:
 20. Klik `[Delete]` pada dialog `Delete Draft`
 21. Verifikasi toast `Success, draft has been deleted.`
 22. Verifikasi tidak ada baris batch `Gudang Impor B {runId}`, empty state `No results found` tampil
+
+### Import dipecah per Group yang melebihi Register Asset Bulk Limit
+23. Ganti isi kotak search dengan `Gudang Impor Besar {runId}`, tekan Enter
+24. Verifikasi lebih dari satu baris batch `Gudang Impor Besar {runId}` tampil
+25. Verifikasi Total Asset setiap baris batch `Gudang Impor Besar {runId}` tidak lebih dari `100`
+26. Verifikasi jumlah Total Asset seluruh baris batch `Gudang Impor Besar {runId}` adalah `130`
+
+### Draft hasil Import divalidasi dengan aturan form yang sama
+27. Ganti isi kotak search dengan `Gudang Impor A {runId}`, tekan Enter
+28. Klik row action `Edit` pada baris batch `Gudang Impor A {runId}`
+29. Ganti Quantity Item pertama menjadi `101`
+30. Verifikasi error pada Quantity `For more than 100 assets, use Import.`

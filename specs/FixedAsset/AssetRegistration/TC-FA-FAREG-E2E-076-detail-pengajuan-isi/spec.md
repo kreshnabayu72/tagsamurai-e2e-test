@@ -4,7 +4,7 @@ title: "Detail pengajuan: isi salinan saat Submit, Result, dan Reason"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#b1", "§4.1#b3", "§9.7#p1"]
 smoke: []
 dependsOn: []

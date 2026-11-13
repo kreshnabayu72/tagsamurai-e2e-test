@@ -4,42 +4,42 @@ title: "Form Register Asset: tampilan awal tab General Information, tabel Item, 
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-01g, FAREG-LOGIC-15a, FLD-REG-01, "§2.1#p1", "§4.1#r4", "§4.1#p1", "§4.1#b9", "§4.1#b10", "§4.1#b11", "§4.1#b13", "§4.1#b14", "§4.1#b15", "§4.1#b19", "§4.1#b31", "§4.1#b33", "§4.1#p26", "§4.1#r90", "§4.1#r91", "§4.1#r92", "§4.1#r93", "§4.1#r94", "§4.1#r95", "§4.1#r96", "§4.1#r97", "§4.1#p42", "§4.2#p1", "§4.2.1#p1", "§9.2#p14", "§9.4.3#b11", "EB-FRM-7@form-register-asset"]
 smoke: []
 dependsOn: []
 trace:
-  FAREG-LOGIC-01g: [60, 30]
-  FAREG-LOGIC-15a: 60
-  FLD-REG-01: [16, 19, 20, 23, 25]
-  "§2.1#p1": 60
+  FAREG-LOGIC-01g: [66, 36, 77, 80, 83]
+  FAREG-LOGIC-15a: 66
+  FLD-REG-01: [17, 21, 22, 26, 30]
+  "§2.1#p1": [66, 77, 80, 83]
   "§4.1#r4": 6
   "§4.1#p1": 7
   "§4.1#b9": 6
   "§4.1#b10": 9
-  "§4.1#b11": [10, 11, 29]
+  "§4.1#b11": [10, 11, 35]
   "§4.1#b13": 7
-  "§4.1#b14": 13
-  "§4.1#b15": [55, 66]
-  "§4.1#b19": 57
+  "§4.1#b14": [13, 17, 89, 90]
+  "§4.1#b15": [61, 72]
+  "§4.1#b19": 63
   "§4.1#b31": 10
   "§4.1#b33": 12
-  "§4.1#p26": [49, 50, 51, 52, 53, 55]
-  "§4.1#r90": 32
-  "§4.1#r91": 33
-  "§4.1#r92": 34
-  "§4.1#r93": [35, 36]
-  "§4.1#r94": [37, 38]
-  "§4.1#r95": [39, 40]
-  "§4.1#r96": [41, 42]
-  "§4.1#r97": [44, 45]
-  "§4.1#p42": [19, 23, 25]
-  "§4.2#p1": [3, 4, 5, 8]
-  "§4.2.1#p1": [2, 27]
-  "§9.2#p14": 61
-  "§9.4.3#b11": 60
-  EB-FRM-7@form-register-asset: [63, 64, 67]
-anchor: [47, 59]
+  "§4.1#p26": [55, 56, 57, 58, 59, 61]
+  "§4.1#r90": 38
+  "§4.1#r91": 39
+  "§4.1#r92": 40
+  "§4.1#r93": [41, 42]
+  "§4.1#r94": [43, 44]
+  "§4.1#r95": [45, 46, 92, 93]
+  "§4.1#r96": [47, 48]
+  "§4.1#r97": [50, 51]
+  "§4.1#p42": [21, 26, 30]
+  "§4.2#p1": [3, 4, 5, 8, 86, 87]
+  "§4.2.1#p1": [2, 32, 76, 33]
+  "§9.2#p14": 67
+  "§9.4.3#b11": [66, 77, 80, 83]
+  EB-FRM-7@form-register-asset: [69, 70, 73]
+anchor: [53, 65, 75, 79, 82, 85]
 coverage:
   web: automated
 ---
@@ -47,7 +47,7 @@ coverage:
 # Form Register Asset: tampilan awal tab General Information, tabel Item, dan footer
 
 ## Prerequisites
-- Aktor: Total Control.
+- Aktor: Total Control; pada K3 aktornya Manage purchase, pada K4 Group Manager, dan pada K5 Manage asset & TAG.
 - Layar awal: Assets > Registration > Draft
 - Komponen: Halaman `Register Asset`
 - Data:
@@ -60,6 +60,9 @@ coverage:
 - Kondisi:
   - K1: form `Register Asset` baru tanpa draft tersimpan; Group belum dipilih; tabel Item berisi satu Item dengan Quantity awal; pohon Group berisi DU-013-1 sampai DU-013-4.
   - K2: form `Edit` draft tersimpan dengan Group DU-013-2; tabel Item berisi DU-013-5 lalu DU-013-6 berurutan.
+  - K3: draft tersimpan dengan Group DU-013-2 dan satu Item DU-013-5 dibuka dalam mode `Detail` (read-only) oleh aktor ber-role Manage purchase.
+  - K4: form `Register Asset` baru tanpa draft tersimpan dibuka oleh aktor ber-role Group Manager; pohon Group berisi DU-013-1 sampai DU-013-4.
+  - K5: form `Register Asset` baru tanpa draft tersimpan dibuka oleh aktor ber-role Manage asset & TAG; pohon Group berisi DU-013-1 sampai DU-013-4.
 
 ## Test Steps
 
@@ -83,65 +86,103 @@ coverage:
 13. Verifikasi field `Group` berupa `TreeSelect` pilihan tunggal dengan placeholder `Select group`
 14. Buka pemilih `Group`
 15. Klik node `Gudang 1`
-16. Verifikasi field `Group` menampilkan `Gudang 1`
-17. Buka pemilih `Group`
-18. Klik node `Kantor Pusat`
-19. Verifikasi field `Group` menampilkan `Kantor Pusat` sebagai node induk yang dapat dipilih
-20. Verifikasi `Gudang 1` tidak lagi menjadi nilai field `Group`
-21. Buka pemilih `Group`
-22. Klik node `Gudang Excess Pusat`
-23. Verifikasi field `Group` tetap menampilkan `Kantor Pusat`
-24. Klik node `Gudang Retur`
-25. Verifikasi field `Group` tetap menampilkan `Kantor Pusat`
+16. Klik `[Select]`
+17. Verifikasi field `Group` menampilkan `Gudang 1`
+18. Buka pemilih `Group` lewat `Edit selection`
+19. Klik node `Kantor Pusat`
+20. Klik `[Select]`
+21. Verifikasi field `Group` menampilkan `Kantor Pusat` sebagai node induk yang dapat dipilih
+22. Verifikasi `Gudang 1` tidak lagi menjadi nilai field `Group`
+23. Buka pemilih `Group` lewat `Edit selection`
+24. Klik node `Gudang Excess Pusat`
+25. Klik `[Select]`
+26. Verifikasi field `Group` tetap menampilkan `Kantor Pusat`
+27. Buka pemilih `Group` lewat `Edit selection`
+28. Klik node `Gudang Retur`
+29. Klik `[Select]`
+30. Verifikasi field `Group` tetap menampilkan `Kantor Pusat`
 
 ### Footer, Breadcrumb, dan tab Asset pada draft tersimpan
-26. Tampilkan Halaman `Register Asset` dengan kondisi K2
-27. Verifikasi Breadcrumb menampilkan `Assets > Registration > Draft` dan segmen terakhir `Edit`
-28. Klik tab `Asset`
-29. Verifikasi footer tab `Asset` memuat `[Cancel]`, `[Save draft]`, dan `[Submit]`
-30. Verifikasi tab `Asset` tidak memuat field Purchase
+31. Tampilkan Halaman `Register Asset` dengan kondisi K2
+32. Verifikasi Breadcrumb menampilkan `Assets > Registration > Draft` dan segmen terakhir `Edit`
+33. Verifikasi judul tab `Asset (30)` memuat jumlah aset, yaitu 30 dari Quantity `10` dan `20`
+34. Klik tab `Asset`
+35. Verifikasi footer tab `Asset` memuat `[Cancel]`, `[Save draft]`, dan `[Submit]`
+36. Verifikasi tab `Asset` tidak memuat field Purchase
 
 ### Kolom tabel Item pada form baru
-31. Tampilkan Halaman `Register Asset` dengan kondisi K1
-32. Verifikasi kolom `Number` menampilkan `1` pada Item pertama
-33. Verifikasi kolom `Category` menampilkan placeholder `Select category`
-34. Verifikasi kolom `Asset Name` menampilkan placeholder `Select asset name`
-35. Verifikasi kolom `Brand` menampilkan placeholder `Select brand`
-36. Verifikasi `Brand` Disabled sebelum Asset Name dipilih
-37. Verifikasi kolom `Model` menampilkan placeholder `Select model`
-38. Verifikasi `Model` Disabled sebelum Brand dipilih
-39. Verifikasi sel `TAG Type` menampilkan `—`
-40. Verifikasi sel `TAG Type` Read-only
-41. Verifikasi kolom `Quantity` menampilkan `1`
-42. Verifikasi sel `Quantity` tidak memiliki placeholder
-43. Klik row option (titik tiga) pada Item pertama
-44. Verifikasi `Remove from List` Disabled
-45. Verifikasi tooltip `At least one item is required.` tampil saat pointer berada di `Remove from List`
+37. Tampilkan Halaman `Register Asset` dengan kondisi K1
+38. Verifikasi kolom `#` menampilkan `1` pada Item pertama
+39. Verifikasi kolom `Category` menampilkan placeholder `Select category`
+40. Verifikasi kolom `Asset Name` menampilkan placeholder `Select asset name`
+41. Verifikasi kolom `Brand` menampilkan placeholder `Select brand`
+42. Verifikasi `Brand` Disabled sebelum Asset Name dipilih
+43. Verifikasi kolom `Model` menampilkan placeholder `Select model`
+44. Verifikasi `Model` Disabled sebelum Brand dipilih
+45. Verifikasi sel `TAG Type` menampilkan `—`
+46. Verifikasi sel `TAG Type` Read-only
+47. Verifikasi kolom `Quantity` menampilkan `1`
+48. Verifikasi sel `Quantity` tidak memiliki placeholder
+49. Klik row option (titik tiga) pada Item pertama
+50. Verifikasi `Remove from List` Disabled
+51. Verifikasi tooltip `At least one item is required.` tampil saat pointer berada di `Remove from List`
 
 ### Tabel Item tanpa sort, kolom, paginasi, Search, dan filter; sel dapat diedit; tambah Item
-46. Tampilkan Halaman `Register Asset` dengan kondisi K2
-47. Verifikasi tabel Item memuat `Laptop Dell Latitude 5440` lalu `Kursi Kerja Ergonomis` berurutan
-48. Klik header kolom `Asset Name`
-49. Verifikasi urutan Item tetap `Laptop Dell Latitude 5440` lalu `Kursi Kerja Ergonomis`
-50. Verifikasi kontrol column visibility tidak tampil pada tabel Item
-51. Verifikasi paginasi tidak tampil pada tabel Item
-52. Verifikasi kotak Search tidak tampil pada tabel Item
-53. Verifikasi filter tidak tampil pada tabel Item
-54. Ganti isi sel `Quantity` Item pertama dengan `5`
-55. Verifikasi sel `Quantity` Item pertama menampilkan `5` dan tabel tetap berupa tabel editable
-56. Klik `[+ Asset Name]`
-57. Verifikasi tabel Item memuat tiga Item dengan `Number` `3` pada Item baru
+52. Tampilkan Halaman `Register Asset` dengan kondisi K2
+53. Verifikasi tabel Item memuat `Laptop Dell Latitude 5440` lalu `Kursi Kerja Ergonomis` berurutan
+54. Klik header kolom `Asset Name`
+55. Verifikasi urutan Item tetap `Laptop Dell Latitude 5440` lalu `Kursi Kerja Ergonomis`
+56. Verifikasi kontrol column visibility tidak tampil pada tabel Item
+57. Verifikasi paginasi tidak tampil pada tabel Item
+58. Verifikasi kotak Search tidak tampil pada tabel Item
+59. Verifikasi filter tidak tampil pada tabel Item
+60. Ganti isi sel `Quantity` Item pertama dengan `5`
+61. Verifikasi sel `Quantity` Item pertama menampilkan `5` dan tabel tetap berupa tabel editable
+62. Klik `[+ Asset Name]`
+63. Verifikasi tabel Item memuat tiga Item dengan `#` `3` pada Item baru
 
 ### Field Purchase dan Project tidak ada di form
-58. Tampilkan Halaman `Register Asset` dengan kondisi K1
-59. Verifikasi tabel Item tampil dengan kolom `Asset Name`
-60. Verifikasi tidak ada field Purchase di tab `General Information`
-61. Verifikasi tidak ada field `Project` di tab `General Information`
+64. Tampilkan Halaman `Register Asset` dengan kondisi K1
+65. Verifikasi tabel Item tampil dengan kolom `Asset Name`
+66. Verifikasi tidak ada field Purchase di tab `General Information`
+67. Verifikasi tidak ada field `Project` di tab `General Information`
 
 ### Aksesibilitas field dan pesan error di bawah sel
-62. Tampilkan Halaman `Register Asset` dengan kondisi K1
-63. Verifikasi field `Group`, `Asset Name`, `Brand`, dan `Model` memiliki atribut aria-required
-64. Verifikasi kontrol row option (titik tiga) memiliki label aksesibel
-65. Ganti isi sel `Quantity` Item pertama dengan `0`
-66. Verifikasi pesan error tampil di bawah sel `Quantity`
-67. Verifikasi sel `Quantity` yang menampilkan pesan error memiliki atribut aria-describedby
+68. Tampilkan Halaman `Register Asset` dengan kondisi K1
+69. Verifikasi field `Group`, `Asset Name`, `Brand`, dan `Model` memiliki atribut aria-required
+70. Verifikasi kontrol row option (titik tiga) memiliki label aksesibel
+71. Ganti isi sel `Quantity` Item pertama dengan `0`
+72. Verifikasi pesan error tampil di bawah sel `Quantity`
+73. Verifikasi sel `Quantity` yang menampilkan pesan error memiliki atribut aria-describedby
+
+### Breadcrumb mode Detail dan field Purchase tidak ada bagi Manage purchase
+74. Tampilkan Halaman `Register Asset` dengan kondisi K3
+75. Verifikasi tabel Item memuat `Laptop Dell Latitude 5440`
+76. Verifikasi Breadcrumb menampilkan `Assets > Registration > Draft` dan segmen terakhir `Detail`
+77. Verifikasi tidak ada field Purchase di form
+
+### Field Purchase tidak ada bagi Group Manager
+78. Tampilkan Halaman `Register Asset` dengan kondisi K4
+79. Verifikasi tabel Item tampil dengan kolom `Asset Name`
+80. Verifikasi tidak ada field Purchase di tab `General Information`
+
+### Field Purchase tidak ada bagi Manage asset & TAG
+81. Tampilkan Halaman `Register Asset` dengan kondisi K5
+82. Verifikasi tabel Item tampil dengan kolom `Asset Name`
+83. Verifikasi tidak ada field Purchase di tab `General Information`
+
+### SectionCard tanpa kontrol buka-tutup dan berjarak dari Breadcrumb
+84. Tampilkan Halaman `Register Asset` dengan kondisi K1
+85. Verifikasi tabel Item tampil di dalam `SectionCard`
+86. Verifikasi jarak langsung dari Breadcrumb ke `SectionCard` adalah `gap-3` (12px)
+87. Verifikasi tidak ada kontrol untuk membuka atau menutup isi `SectionCard`
+
+### Posisi field Group di toolbar tabel Item
+88. Tampilkan Halaman `Register Asset` dengan kondisi K1
+89. Verifikasi label `Group` berada di kiri field dan field memanjang horizontal
+90. Verifikasi field `Group` berada di sisi kiri toolbar tabel Item, sejajar dengan `[+ Asset Name]` di kanan toolbar
+
+### Tooltip nama tipe Tag pada ikon TAG Type
+91. Tampilkan Halaman `Register Asset` dengan kondisi K2
+92. Verifikasi tooltip `RFID` tampil saat pointer berada di ikon `TAG Type` Item `Laptop Dell Latitude 5440`
+93. Verifikasi tooltip `QR` tampil saat pointer berada di ikon `TAG Type` Item `Kursi Kerja Ergonomis`

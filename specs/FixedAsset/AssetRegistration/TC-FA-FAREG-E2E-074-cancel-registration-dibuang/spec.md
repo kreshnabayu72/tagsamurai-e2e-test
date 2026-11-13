@@ -4,7 +4,7 @@ title: "Cancel Registration dengan aset dibuang"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.7#r12", "§9.7#r17", D-REG-14, T-REG-10]
 smoke: [D-REG-14, T-REG-10]
 dependsOn: []

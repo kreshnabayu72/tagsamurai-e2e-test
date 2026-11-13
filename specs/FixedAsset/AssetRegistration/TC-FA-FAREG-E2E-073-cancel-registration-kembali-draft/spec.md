@@ -4,7 +4,7 @@ title: "Cancel Registration dengan Save as Draft to edit"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06n, "§4.4#r14", "§9.7#r11", "§9.7#r17", D-REG-14, T-REG-10]
 smoke: [D-REG-14, T-REG-10]
 dependsOn: []

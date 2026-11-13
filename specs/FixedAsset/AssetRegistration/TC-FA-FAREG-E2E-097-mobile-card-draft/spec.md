@@ -4,7 +4,7 @@ title: "Sub tab Draft mobile: card dan aksi"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-20p", "§4.6#b2", "§4.6#b3", "§4.6#b4", "§4.6#b5", "§4.6#b6"]
 smoke: []
 dependsOn: []

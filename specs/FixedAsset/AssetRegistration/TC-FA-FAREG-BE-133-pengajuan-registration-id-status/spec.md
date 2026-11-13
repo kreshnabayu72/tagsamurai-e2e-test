@@ -4,13 +4,13 @@ title: "Pengajuan: Registration ID, status aset, dan satu pengajuan terbuka"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06a, FAREG-LOGIC-06b, "§9.2#r15", "§9.2#r16", "§10#b1"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  FAREG-LOGIC-06a: [2, 3, 4, 7, 10]
+  FAREG-LOGIC-06a: [2, 3, 4, 7, 10, 18, 19, 20, 23]
   FAREG-LOGIC-06b: [14, 15]
   "§9.2#r15": [7, 8, 9, 12]
   "§9.2#r16": [5, 17]
@@ -27,6 +27,7 @@ trace:
   - DU-133-3: Asset Name `Meja Kerja {runId}`, Brand `Olympic`, Model `OL-133`, TAG Type `Non-TAG`, Status `Active`.
   - DU-133-4: batch Draft milik Rina W di Group `Gudang Bekasi {runId}`, Item Asset Name `Meja Kerja {runId}`, Brand `Olympic`, Model `OL-133`, Quantity `3`, Condition `Normal`; seluruh aset memenuhi Tingkat 2.
   - DU-133-5: batch Draft milik Rina W di Group `Gudang Cikarang {runId}`, Item Asset Name `Meja Kerja {runId}`, Brand `Olympic`, Model `OL-133`, Quantity `2`, Condition `Normal`; seluruh aset memenuhi Tingkat 2.
+  - DU-133-7: batch Draft milik Rina W di Group `Gudang Bekasi {runId}`, Item Asset Name `Meja Kerja {runId}`, Brand `Olympic`, Model `OL-133`, Quantity `1`, Condition `Normal`; seluruh aset memenuhi Tingkat 2.
 - Kondisi:
   - kuota Group `Gudang Bekasi {runId}` dan `Gudang Cikarang {runId}` cukup untuk seluruh aset yang diaktifkan.
 
@@ -56,3 +57,13 @@ trace:
 ### Approval terakhir mengaktifkan aset
 16. Budi memutuskan `Approve` untuk kedua aset pengajuan Group `Gudang Cikarang {runId}`
 17. Verifikasi kedua aset pengajuan itu berstatus `Active` setelah approval terakhir
+
+### Nomor urut Registration ID berurutan pada hari yang sama
+18. Verifikasi bagian `NNNNN` Registration ID pengajuan Group `Gudang Bekasi {runId}` terdiri dari 5 digit dengan angka nol di depan
+19. Verifikasi bagian `NNNNN` Registration ID pengajuan Group `Gudang Cikarang {runId}` terdiri dari 5 digit dengan angka nol di depan
+20. Verifikasi bagian `NNNNN` pengajuan Group `Gudang Cikarang {runId}`, yang dibentuk sesudah pengajuan Group `Gudang Bekasi {runId}` pada tanggal server yang sama, lebih besar daripada bagian `NNNNN` pengajuan Group `Gudang Bekasi {runId}`
+
+### Nomor urut Registration ID kembali ke 00001 pada tanggal server baru
+21. Tanggal server berganti ke tanggal baru dan belum ada pengajuan registrasi yang terbentuk pada tanggal itu
+22. Rina W mengirim Activate atas batch Draft Group `Gudang Bekasi {runId}` berisi `1` aset
+23. Verifikasi bagian `NNNNN` Registration ID pengajuan itu adalah `00001`

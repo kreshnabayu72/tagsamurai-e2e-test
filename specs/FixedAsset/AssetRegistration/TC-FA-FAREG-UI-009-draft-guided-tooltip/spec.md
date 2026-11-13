@@ -4,7 +4,7 @@ title: "Sub tab Draft: Guided Tooltip `fa-registration`"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#p3", "EB-TBL-10"]
 smoke: []
 dependsOn: []

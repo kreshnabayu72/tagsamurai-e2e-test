@@ -4,24 +4,24 @@ title: "Kunci sesi edit batch Draft"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-19a, FAREG-LOGIC-19c, FAREG-LOGIC-19e, FAREG-LOGIC-19f, "§9.2#p21", "§9.6#r12", EB-EDG-3]
 smoke: []
 dependsOn: []
 trace:
   FAREG-LOGIC-19a: [3, 7, 14]
   FAREG-LOGIC-19c: [14, 27, 29, 32, 33, 41, 45]
-  FAREG-LOGIC-19e: [7, 11, 14, 51, 53]
+  FAREG-LOGIC-19e: [7, 11, 14, 51, 53, 61, 64, 66, 69, 72]
   FAREG-LOGIC-19f: [17, 20, 22, 24, 48]
   "§9.2#p21": [33, 34, 36, 40, 41, 44, 45, 46]
-  "§9.6#r12": [17, 18, 20, 22, 24, 25]
+  "§9.6#r12": [17, 18, 20, 22, 24, 25, 56, 57]
   EB-EDG-3: [44, 45, 46, 48]
 owner: BE
 ---
 # Kunci sesi edit batch Draft
 
 ## Prerequisites
-- Aktor: Rina (Manage asset & TAG, Group terkelola `Gudang Blitar {runId}`, pembuat dan Owner batch Draft di bawah); Budi (Manage asset & TAG, Group terkelola `Gudang Blitar {runId}`); Citra dan Hadi (Manage asset & TAG dengan capability Update pada node Group registrasi `Gudang Blitar {runId}`, approver).
+- Aktor: Rina (Manage asset & TAG, Group terkelola `Gudang Blitar {runId}`, pembuat dan Owner batch Draft di bawah); Budi (Manage asset & TAG, Group terkelola `Gudang Blitar {runId}`); Citra dan Hadi (Manage asset & TAG dengan capability Update pada node Group registrasi `Gudang Blitar {runId}`, approver); Agus (Manage asset & TAG tanpa akses ke `Gudang Blitar {runId}`).
 - Data:
   - DU-132-1: Group `Gudang Blitar {runId}`, Assignable, toggle `Require Approval for Registration` ON, di entitas aktor.
   - DU-132-2: Asset Name `Meja Kerja {runId}`, Category `Furnitur`, Brand `Olympic`, Model `OL-132`, TAG Type `Non-TAG`.
@@ -31,6 +31,8 @@ owner: BE
   - DU-132-6: batch Draft milik Rina, Group `Gudang Blitar {runId}`, satu Item `Meja Kerja {runId}` Quantity `1`, Tingkat 2 lengkap.
   - DU-132-7: batch Draft milik Rina, Group `Gudang Blitar {runId}`, satu Item `Meja Kerja {runId}` Quantity `1`, Tingkat 2 lengkap.
   - DU-132-8: batch Draft milik Rina, Group `Gudang Blitar {runId}`, satu Item `Meja Kerja {runId}` Quantity `1`, Tingkat 2 lengkap.
+  - DU-132-10: batch Draft milik Rina, Group `Gudang Blitar {runId}`, satu Item `Meja Kerja {runId}` Quantity `1`, Tingkat 2 lengkap.
+  - DU-132-11: batch Draft milik Rina, Group `Gudang Blitar {runId}`, satu Item `Meja Kerja {runId}` Quantity `1`, Tingkat 2 lengkap.
   - DU-132-9: batch Draft baru yang dibuat Rina lewat Save draft pertama: Group `Gudang Blitar {runId}`, Asset Name `Meja Kerja {runId}`, Brand `Olympic`, Model `OL-132`, Quantity `1`.
 - Kondisi:
   - Approval Workflow aktif untuk `Gudang Blitar {runId}` dengan Citra dan Hadi sebagai approver.
@@ -107,3 +109,28 @@ owner: BE
 51. Verifikasi jumlah batch Draft milik Rina bertambah satu
 52. Rina mengirim autosave atas batch Draft baru itu dengan Alias Name `Meja Tamu {runId}`
 53. Verifikasi autosave diterima dan Alias Name `Meja Tamu {runId}` tersimpan pada batch Draft baru
+
+### Take over oleh user tanpa hak ditolak
+54. Rina membuka batch DU-132-10 dalam mode Edit hingga memegang kunci sesinya
+55. Agus meminta Take over kunci sesi batch DU-132-10
+56. Verifikasi Take over dari Agus ditolak server tanpa mutasi
+57. Verifikasi kunci sesi batch DU-132-10 tetap dipegang Rina
+
+### Save draft dan autosave memperpanjang kunci dan tidak melepasnya
+58. Rina membuka batch DU-132-11 dalam mode Edit hingga memegang kunci sesinya
+59. Enam menit berlalu tanpa interaksi baru dari Rina
+60. Rina mengirim Save draft atas batch DU-132-11 dengan Alias Name `Meja Direksi {runId}`
+61. Verifikasi kunci sesi batch DU-132-11 tetap dipegang Rina sesudah Save draft
+62. Enam menit berlalu tanpa interaksi baru dari Rina, sehingga 12 menit penuh sejak kunci diperoleh
+63. Budi membuka batch DU-132-11 dalam mode Edit
+64. Verifikasi kunci sesi batch DU-132-11 tetap dipegang Rina karena Save draft memperpanjang kunci
+65. Rina mengirim autosave atas batch DU-132-11 dengan Alias Name `Meja Pimpinan {runId}`
+66. Verifikasi kunci sesi batch DU-132-11 tetap dipegang Rina sesudah autosave
+67. Enam menit berlalu tanpa interaksi baru dari Rina, sehingga 12 menit penuh sejak Save draft dan 6 menit sejak autosave
+68. Budi membuka batch DU-132-11 dalam mode Edit
+69. Verifikasi kunci sesi batch DU-132-11 tetap dipegang Rina karena autosave memperpanjang kunci
+
+### Autosave tidak berjalan sebelum Save draft pertama
+70. Rina mencatat jumlah batch Draft miliknya
+71. Rina mengirim autosave dari form baru dengan Group `Gudang Blitar {runId}`, Asset Name `Meja Kerja {runId}`, Brand `Olympic`, Model `OL-132`, dan Quantity `1` sebelum Save draft pertama
+72. Verifikasi autosave tidak membuat batch Draft dan jumlah batch Draft milik Rina sama dengan catatan langkah 70

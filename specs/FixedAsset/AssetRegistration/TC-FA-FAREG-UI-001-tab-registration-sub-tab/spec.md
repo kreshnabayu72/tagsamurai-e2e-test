@@ -4,7 +4,7 @@ title: "Tab Registration: sub tab, breadcrumb halaman utama, dan konfigurasi kol
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r1", "§4.1#p1", "§4.1#p3", "§4.2.1#p1", "EB-KOL-3"]
 smoke: []
 dependsOn: []

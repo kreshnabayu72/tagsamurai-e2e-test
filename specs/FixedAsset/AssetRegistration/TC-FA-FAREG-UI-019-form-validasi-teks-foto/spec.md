@@ -4,20 +4,20 @@ title: "Form Register Asset: batas karakter, karakter Alias Name, dan format Pho
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-01s", "V-REG-18", "§9.9#r8", "§9.9#r13", "§9.9#r14", "EB-FRM-4@alias-name", "EB-FRM-4@damage-note", "EB-FRM-8@edit-draft"]
 smoke: []
 dependsOn: []
 trace:
-  "FAREG-LOGIC-01s": [7, 9, 21, 29, 35, 40, 46, 52, 63, 64, 65, 71, 74, 80]
+  "FAREG-LOGIC-01s": [7, 9, 21, 29, 35, 40, 51, 58, 71, 72, 73, 80, 84, 91, 97]
   "V-REG-18": [7, 9, 12, 15, 27, 29, 32]
   "§9.9#r8": [7, 9, 18]
-  "§9.9#r13": [52, 55, 61, 63]
+  "§9.9#r13": [58, 62, 69, 71]
   "§9.9#r14": [27, 29, 32, 35]
   "EB-FRM-4@alias-name": [27, 29]
   "EB-FRM-4@damage-note": [7, 9]
   "EB-FRM-8@edit-draft": [9, 29]
-anchor: [6, 11, 14, 17, 20, 26, 31, 34, 39, 51, 54, 60, 70, 73, 79]
+anchor: [6, 11, 14, 17, 20, 26, 31, 34, 39, 57, 61, 68, 79, 83, 90]
 coverage:
   web: automated
 ---
@@ -69,7 +69,7 @@ coverage:
 30. Ganti isi input Alias Name dengan `Laptop  Direksi  Lantai  Tiga  untuk  Rapat  Dewan  Komisaris  dan  Tamu  Kehormatan  Kantor  Pusat  Jakarta.  Kode 0123` (120 karakter)
 31. Verifikasi input Alias Name menampilkan `Laptop  Direksi  Lantai  Tiga  untuk  Rapat  Dewan  Komisaris  dan  Tamu  Kehormatan  Kantor  Pusat  Jakarta.  Kode 0123`
 32. Verifikasi tidak ada pesan error di bawah input Alias Name yang berspasi ganda di tengah
-33. Ketik Alias Name `Laptop Panel Rapat 😊`
+33. Ketik Alias Name `Laptop Panel Rapat😊`
 34. Verifikasi input Alias Name menampilkan `Laptop Panel Rapat`
 35. Verifikasi input Alias Name tidak memuat emoji `😊`
 36. Klik `+ Add alias name`
@@ -78,50 +78,69 @@ coverage:
 39. Verifikasi input Alias Name pertama masih tampil
 40. Verifikasi input Alias Name kedua tidak tampil lagi
 41. Klik `+ Add alias name`
-42. Klik `+ Add alias name`
+42. Ketik Alias Name `Notebook Direksi C` pada input Alias Name kedua
 43. Klik `+ Add alias name`
-44. Klik `+ Add alias name`
+44. Ketik Alias Name `Notebook Direksi D` pada input Alias Name ketiga
 45. Klik `+ Add alias name`
-46. Verifikasi tombol `+ Add alias name` masih tampil sesudah enam input Alias Name
+46. Ketik Alias Name `Notebook Direksi E` pada input Alias Name keempat
+47. Klik `+ Add alias name`
+48. Ketik Alias Name `Notebook Direksi F` pada input Alias Name kelima
+49. Klik `+ Add alias name`
+50. Ketik Alias Name `Notebook Direksi G` pada input Alias Name keenam
+51. Verifikasi tombol `+ Add alias name` masih tampil sesudah enam input Alias Name
 
 ### Photo: format PNG dan JPG diterima
-47. Tampilkan Halaman `Register Asset` dengan kondisi K1
-48. Klik tab `Asset`
-49. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
-50. Pilih berkas `foto-aset.png` pada area `Add photo`
-51. Verifikasi foto `foto-aset.png` tampil pada aset `Laptop Dell Latitude 5440 - 1`
-52. Verifikasi tidak ada pesan error format pada bagian Photo
-53. Pilih berkas `foto-aset.jpg` pada area `Add photo`
-54. Verifikasi foto `foto-aset.jpg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
-55. Verifikasi tidak ada pesan error format pada bagian Photo setelah `foto-aset.jpg`
+52. Tampilkan Halaman `Register Asset` dengan kondisi K1
+53. Klik tab `Asset`
+54. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
+55. Pilih berkas `foto-aset.png` pada area `Add photo`
+56. Klik `Apply` pada dialog `Adjust photo`
+57. Verifikasi foto `foto-aset.png` tampil pada aset `Laptop Dell Latitude 5440 - 1`
+58. Verifikasi tidak ada pesan error format pada bagian Photo
+59. Pilih berkas `foto-aset.jpg` pada area `Add photo`
+60. Klik `Apply` pada dialog `Adjust photo`
+61. Verifikasi foto `foto-aset.jpg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
+62. Verifikasi tidak ada pesan error format pada bagian Photo setelah `foto-aset.jpg`
 
 ### Photo: format JPEG diterima dan format tidak didukung ditolak
-56. Tampilkan Halaman `Register Asset` dengan kondisi K1
-57. Klik tab `Asset`
-58. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
-59. Pilih berkas `foto-aset.jpeg` pada area `Add photo`
-60. Verifikasi foto `foto-aset.jpeg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
-61. Verifikasi tidak ada pesan error format pada bagian Photo setelah `foto-aset.jpeg`
-62. Pilih berkas `dokumen-aset.pdf` pada area `Add photo`
-63. Verifikasi pesan `Unsupported format. Please upload JPG, PNG, or JPEG.` tampil pada bagian Photo
-64. Verifikasi foto `dokumen-aset.pdf` tidak tampil pada aset `Laptop Dell Latitude 5440 - 1`
-65. Verifikasi foto `foto-aset.jpeg` masih tampil pada aset `Laptop Dell Latitude 5440 - 1`
+63. Tampilkan Halaman `Register Asset` dengan kondisi K1
+64. Klik tab `Asset`
+65. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
+66. Pilih berkas `foto-aset.jpeg` pada area `Add photo`
+67. Klik `Apply` pada dialog `Adjust photo`
+68. Verifikasi foto `foto-aset.jpeg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
+69. Verifikasi tidak ada pesan error format pada bagian Photo setelah `foto-aset.jpeg`
+70. Pilih berkas `dokumen-aset.pdf` pada area `Add photo`
+71. Verifikasi pesan `Unsupported format. Please upload JPG, PNG, or JPEG.` tampil pada bagian Photo
+72. Verifikasi foto `dokumen-aset.pdf` tidak tampil pada aset `Laptop Dell Latitude 5440 - 1`
+73. Verifikasi foto `foto-aset.jpeg` masih tampil pada aset `Laptop Dell Latitude 5440 - 1`
 
 ### Photo: ukuran di bawah dan tepat 1 MB diterima tanpa pesan error ukuran
-66. Tampilkan Halaman `Register Asset` dengan kondisi K1
-67. Klik tab `Asset`
-68. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
-69. Pilih berkas `foto-kecil.jpg` (500 KB) pada area `Add photo`
-70. Verifikasi foto `foto-kecil.jpg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
-71. Verifikasi tidak ada pesan error ukuran pada bagian Photo setelah `foto-kecil.jpg`
-72. Pilih berkas `foto-satu-mb.jpg` (1 MB) pada area `Add photo`
-73. Verifikasi foto `foto-satu-mb.jpg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
-74. Verifikasi tidak ada pesan error ukuran pada bagian Photo setelah `foto-satu-mb.jpg`
+74. Tampilkan Halaman `Register Asset` dengan kondisi K1
+75. Klik tab `Asset`
+76. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
+77. Pilih berkas `foto-kecil.jpg` (500 KB) pada area `Add photo`
+78. Klik `Apply` pada dialog `Adjust photo`
+79. Verifikasi foto `foto-kecil.jpg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
+80. Verifikasi tidak ada pesan error ukuran pada bagian Photo setelah `foto-kecil.jpg`
+81. Pilih berkas `foto-satu-mb.jpg` (1 MB) pada area `Add photo`
+82. Klik `Apply` pada dialog `Adjust photo`
+83. Verifikasi foto `foto-satu-mb.jpg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
+84. Verifikasi tidak ada pesan error ukuran pada bagian Photo setelah `foto-satu-mb.jpg`
 
 ### Photo: ukuran di atas 1 MB diperkecil otomatis tanpa pesan error ukuran
-75. Tampilkan Halaman `Register Asset` dengan kondisi K1
-76. Klik tab `Asset`
-77. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
-78. Pilih berkas `foto-besar.jpg` (3 MB) pada area `Add photo`
-79. Verifikasi foto `foto-besar.jpg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
-80. Verifikasi tidak ada pesan error ukuran pada bagian Photo setelah `foto-besar.jpg`
+85. Tampilkan Halaman `Register Asset` dengan kondisi K1
+86. Klik tab `Asset`
+87. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
+88. Pilih berkas `foto-besar.jpg` (3 MB) pada area `Add photo`
+89. Klik `Apply` pada dialog `Adjust photo`
+90. Verifikasi foto `foto-besar.jpg` tampil pada aset `Laptop Dell Latitude 5440 - 1`
+91. Verifikasi tidak ada pesan error ukuran pada bagian Photo setelah `foto-besar.jpg`
+
+### Damage note menerima emoji
+92. Tampilkan Halaman `Register Asset` dengan kondisi K1
+93. Klik tab `Asset`
+94. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
+95. Ganti sel `Condition` pada `Laptop Dell Latitude 5440 - 1` menjadi `Damaged`
+96. Ganti isi `Damage note` dengan `Layar retak 😊 pada bodi`
+97. Verifikasi `Damage note` menampilkan `Layar retak 😊 pada bodi`

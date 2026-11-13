@@ -4,7 +4,7 @@ title: "Daftar tanpa data: empty state tiap tabel dan draft pertama serta terakh
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-EDG-2", "S-REG-01", "S-REG-02", "S-REG-03", "S-REG-04", "S-REG-05"]
 smoke: ["S-REG-01", "S-REG-02", "S-REG-03", "S-REG-04", "S-REG-05"]
 dependsOn: []

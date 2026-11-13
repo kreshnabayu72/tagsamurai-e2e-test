@@ -4,7 +4,7 @@ title: "Delete dan Bulk Delete draft"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-10c, FAREG-LOGIC-10d, FAREG-LOGIC-10e, "§9.4.2#r24", "§9.4.3#b4", "§9.6#r6", "§9.6#r7", EB-ERR-3]
 smoke: []
 dependsOn: []
@@ -15,7 +15,7 @@ trace:
   "§9.4.2#r24": [10, 17]
   "§9.4.3#b4": [2, 3]
   "§9.6#r6": [7, 8, 10, 12, 13, 15, 20, 21]
-  "§9.6#r7": [26, 27, 28, 29, 30, 32]
+  "§9.6#r7": [26, 27, 28, 29, 30, 32, 34, 35]
   EB-ERR-3: [10, 17, 20, 21]
 owner: BE
 ---
@@ -34,13 +34,15 @@ owner: BE
   - DU-131-8: batch Draft milik Rina, Group `Gudang Kediri {runId}`, dua aset `Meja Kerja {runId}`, terakhir diubah `T0 − 400 hari`.
   - DU-131-9: batch milik Rina, Group `Gudang Kediri {runId}`, satu aset `Meja Kerja {runId}`, berstatus Waiting for Approval dengan Registration ID `REG-20261105-01310`.
   - DU-131-10: batch Draft milik Rina, Group `Gudang Kediri {runId}`, satu aset `Laptop {runId}` dengan Tag RFID `E280-1310-0001 {runId}`.
-  - DU-131-11: batch Draft milik Rina, Group `Gudang Kediri {runId}`, Origin `REG-20261105-01309` (kembalian dari pengajuan yang dibatalkan), satu aset `Meja Kerja {runId}` dengan Asset Code `AC-1310-0001 {runId}` yang sudah dialokasikan.
+  - DU-131-11: batch Draft milik Rina, Group `Gudang Kediri {runId}`, satu aset `Meja Kerja {runId}`; Asset Code asetnya sudah dialokasikan dan Origin batch ini (Registration ID pengajuan asal) adalah milik DU-131-11, dibentuk server pada Submit pengajuan asal (kembalian dari pengajuan yang dibatalkan).
   - DU-131-12: batch Draft milik Rina, Group `Gudang Kediri {runId}`, satu aset `Meja Kerja {runId}`.
   - DU-131-13: batch Draft milik Rina, Group `Gudang Kediri {runId}`, satu aset `Laptop {runId}` dengan Tag RFID `E280-1310-0002 {runId}`.
   - DU-131-14: batch Draft milik Rina, Group `Gudang Kediri {runId}`, satu aset `Meja Kerja {runId}`.
   - DU-131-15: batch Draft milik Rina, Group `Gudang Kediri {runId}`, satu aset `Laptop {runId}` dengan Tag RFID `E280-1310-0003 {runId}`.
   - DU-131-16: batch Draft milik Rina, Group `Gudang Kediri {runId}`, satu aset `Meja Kerja {runId}`.
   - DU-131-17: batch Draft milik Agus Pratama, Group `Gudang Madiun {runId}`, satu aset `Meja Kerja {runId}`.
+  - DU-131-18: batch Draft kembalian milik Rina, Group `Gudang Kediri {runId}`, satu aset `Meja Kerja {runId}`; Asset Code asetnya sudah dialokasikan dan Origin batch ini (Registration ID pengajuan asal) adalah milik DU-131-18, dibentuk server pada Submit pengajuan asal.
+  - DU-131-19: batch Draft milik Rina, Group `Gudang Kediri {runId}`, satu aset `Meja Kerja {runId}`.
 - Kondisi:
   - Tidak ada pekerjaan terjadwal lain yang mengubah batch Draft selama spec berjalan.
 
@@ -65,7 +67,7 @@ owner: BE
 ### Delete batch kembalian meng-Voided Asset Code yang sudah dialokasikan
 11. Rina mengirim Delete atas batch DU-131-11
 12. Verifikasi Delete berhasil dan batch DU-131-11 tidak lagi tampil di daftar Draft
-13. Verifikasi Asset Code `AC-1310-0001 {runId}` berstatus `Voided`
+13. Verifikasi Asset Code aset batch DU-131-11 berstatus `Voided`
 
 ### Draft yang sudah dihapus pihak lain
 14. Budi mengirim Delete atas batch DU-131-12
@@ -93,3 +95,8 @@ owner: BE
 30. Verifikasi batch DU-131-17 dilewati karena Rina tanpa hak atas `Gudang Madiun {runId}` dan batch tetap Draft
 31. Rina mengirim Bulk Delete yang sama sekali lagi
 32. Verifikasi seluruh lima batch dilewati: batch DU-131-13 dan DU-131-17 tetap Draft dan tidak ada batch lain yang terhapus
+
+### Bulk Delete meng-Voided Asset Code yang sudah dialokasikan
+33. Rina mengirim Bulk Delete atas dua batch: DU-131-18 dan DU-131-19
+34. Verifikasi batch DU-131-18 dan DU-131-19 terhapus dan tidak lagi tampil di daftar Draft
+35. Verifikasi Asset Code aset batch DU-131-18 berstatus `Voided`

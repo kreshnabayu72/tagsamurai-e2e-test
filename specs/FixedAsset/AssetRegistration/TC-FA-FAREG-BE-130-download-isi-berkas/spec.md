@@ -4,7 +4,7 @@ title: "Download: isi berkas per tipe kolom"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [EB-DL-4]
 smoke: []
 dependsOn: []

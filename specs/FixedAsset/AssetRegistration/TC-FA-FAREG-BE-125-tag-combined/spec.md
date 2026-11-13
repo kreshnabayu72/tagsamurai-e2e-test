@@ -4,7 +4,7 @@ title: "Tag combined: pengisian dan penolakan slot"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-04f, FAREG-LOGIC-04g, "§9.4.2#r42", "§9.4.2#r43", "§9.4.2#r44", "§9.4.2#r45", "§9.4.2#r46", "§9.4.2#r47", "§9.4.2#r48"]
 smoke: []
 dependsOn: []
@@ -39,6 +39,8 @@ owner: BE
   - DU-125-11: Tag combined `CMB-1250-0004 {runId}` berkomponen RFID `E280-1250-0104 {runId}` berstatus `Available` dan QR `QR-1250-0004 {runId}` yang tidak terdaftar di registri Global.
   - DU-125-12: Tag RFID tunggal `E280-1250-0001 {runId}`, status `Available`.
   - DU-125-13: Tag RFID tunggal `E280-1250-0002 {runId}`, status `Available`.
+  - DU-125-14: Tag combined `CMB-1250-0005 {runId}` berkomponen RFID dan QR, status `Available`, belum terpasang pada aset mana pun.
+  - DU-125-15: Tag combined `CMB-1250-0006 {runId}` berkomponen RFID dan NFC, status `Available`, belum terpasang pada aset mana pun.
 - Kondisi:
   - Approval Workflow tidak aktif untuk `Gudang Palembang {runId}`.
 
@@ -68,13 +70,13 @@ owner: BE
 ### Tag combined yang mencakup slot terisi Tag tunggal ditolak
 14. Rina memindai Tag RFID `E280-1250-0001 {runId}` pada slot RFID aset kedua batch DU-125-6
 15. Verifikasi pemindaian diterima dan slot RFID aset kedua berstatus `Verified`
-16. Rina memindai Tag combined `CMB-1250-0002 {runId}` pada slot QR aset kedua batch DU-125-6
+16. Rina memindai Tag combined `CMB-1250-0005 {runId}` pada slot QR aset kedua batch DU-125-6
 17. Verifikasi pemindaian ditolak dengan pesan `This combined TAG doesn't match the open slots`
 18. Verifikasi slot RFID aset kedua tetap berstatus `Verified` dengan Tag `E280-1250-0001 {runId}`
 19. Verifikasi slot QR aset kedua tetap berstatus `Unverified`
 
 ### Tag combined pada aset dengan satu slot ditolak
-20. Rina memindai Tag combined `CMB-1250-0001 {runId}` pada slot RFID aset batch DU-125-7
+20. Rina memindai Tag combined `CMB-1250-0006 {runId}` pada slot RFID aset batch DU-125-7
 21. Verifikasi pemindaian ditolak dengan pesan `This TAG is combined. It can only fill multiple slots.`
 22. Verifikasi slot RFID aset batch DU-125-7 tetap berstatus `Unverified`
 

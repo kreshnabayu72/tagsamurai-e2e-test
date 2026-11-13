@@ -4,7 +4,7 @@ title: "Scan TAG dengan reader: Verified dan status Tag di registri"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-04h, §9.7#r6, §9.4.2#r30, §9.4.2#r31, S-REG-18]
 smoke: [§9.4.2#r30, §9.4.2#r31, S-REG-18]
 dependsOn: ["Registri Tag Global: status Tag"]
@@ -27,8 +27,8 @@ coverage:
 - Data:
   - DU-098-1: Group `Gudang Scan {runId}`, ada di entitas aktor.
   - DU-098-2: Asset Name `Laptop Scan {runId}` dengan TAG Type `RFID`, Brand `Dell`, Model `Latitude 5440`.
-  - DU-098-3: Tag `E280-0098-A1` berstatus `Available` di registri Global.
-  - DU-098-4: Tag `E280-0098-B2` berstatus `Available` di registri Global.
+  - DU-098-3: Tag `E280-0098-A1-{runId}` berstatus `Available` di registri Global.
+  - DU-098-4: Tag `E280-0098-B2-{runId}` berstatus `Available` di registri Global.
 - Kondisi:
   - reader TAG terhubung ke perangkat aktor dan Tag fisik tersedia di dekatnya.
   - approval registrasi pada Group `Gudang Scan {runId}` bernilai OFF.
@@ -45,12 +45,12 @@ coverage:
 7. Isi Quantity `1`
 8. Klik tab `Asset`
 9. Klik `Scan RFID`
-10. Pindai Tag `E280-0098-A1` dengan reader
+10. Pindai Tag `E280-0098-A1-{runId}` dengan reader
 11. Verifikasi Badge `Verified` tampil pada kolom TAG aset
 12. Klik `[Save draft]`
 13. Buka Registri Tag Global
-14. Ketik Search `E280-0098-A1`, tekan Enter
-15. Verifikasi status Tag `E280-0098-A1` adalah `Reserved`
+14. Ketik Search `E280-0098-A1-{runId}`, tekan Enter
+15. Verifikasi status Tag `E280-0098-A1-{runId}` adalah `Reserved`
 
 ### Rescan mengganti Tag dan melepas Tag lama
 16. Buka Fixed Asset > Assets > Registration > Draft
@@ -58,11 +58,11 @@ coverage:
 18. Klik row action `Edit` pada baris batch `Gudang Scan {runId}`
 19. Klik tab `Asset`
 20. Klik `Scan RFID`
-21. Pindai Tag `E280-0098-B2` dengan reader
+21. Pindai Tag `E280-0098-B2-{runId}` dengan reader
 22. Verifikasi Badge `Verified` tampil pada kolom TAG aset
 23. Klik `[Save draft]`
 24. Buka Registri Tag Global
-25. Ketik Search `E280-0098-A1`, tekan Enter
-26. Verifikasi status Tag `E280-0098-A1` kembali `Available`
-27. Ganti isi kotak search dengan `E280-0098-B2`, tekan Enter
-28. Verifikasi status Tag `E280-0098-B2` adalah `Reserved`
+25. Ketik Search `E280-0098-A1-{runId}`, tekan Enter
+26. Verifikasi status Tag `E280-0098-A1-{runId}` kembali `Available`
+27. Ganti isi kotak search dengan `E280-0098-B2-{runId}`, tekan Enter
+28. Verifikasi status Tag `E280-0098-B2-{runId}` adalah `Reserved`

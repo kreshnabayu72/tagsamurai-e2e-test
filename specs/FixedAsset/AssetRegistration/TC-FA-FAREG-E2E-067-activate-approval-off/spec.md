@@ -4,12 +4,12 @@ title: "Submit pada Group approval OFF: aset langsung aktif"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06o, FAREG-LOGIC-20h, FAREG-LOGIC-01o, D-REG-03, T-REG-02]
 smoke: [FAREG-LOGIC-01o, D-REG-03, T-REG-02]
 dependsOn: []
 trace:
-  FAREG-LOGIC-06o: [20, 21]
+  FAREG-LOGIC-06o: [20, 21, 25, 26]
   FAREG-LOGIC-20h: [10, 12]
   FAREG-LOGIC-01o: [15]
   D-REG-03: [5, 6, 7]
@@ -58,3 +58,10 @@ coverage:
 19. Klik tab `Asset`
 20. Verifikasi kolom Result bernilai `Approved` pada ketiga aset
 21. Verifikasi kolom Reason kosong pada ketiga aset
+
+### Registration Log pengajuan approval OFF: satu node pengajuan tanpa Approved by
+22. Klik breadcrumb `History`
+23. Ketik Search `{runId}`, tekan Enter
+24. Klik ikon `Registration Log` pada baris Group `Gudang Aktivasi {runId}`
+25. Verifikasi timeline Registration Log memuat satu node pengajuan dengan isi Total Asset `3`
+26. Verifikasi timeline Registration Log tidak memuat node berjudul `Approved by`

@@ -4,13 +4,13 @@ title: "Gating Read Only"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-06p", "§2.1#r5", "§4.1#r1", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§4.8#r15", "§4.8#r17", "EB-AKS-4"]
 smoke: []
 dependsOn: []
 trace:
   "FAREG-LOGIC-06p": [19, 35]
-  "§2.1#r5": [8, 9, 35]
+  "§2.1#r5": [8, 9, 35, 43]
   "§4.1#r1": [2, 3]
   "§4.8#r1": 2
   "§4.8#r2": 5
@@ -24,12 +24,12 @@ trace:
   "§4.8#r10": 35
   "§4.8#r11": 35
   "§4.8#r12": 24
-  "§4.8#r13": 28
+  "§4.8#r13": [28, 40]
   "§4.8#r14": 6
   "§4.8#r15": [19, 32]
   "§4.8#r17": [20, 33]
   "EB-AKS-4": [8, 9, 11, 14, 15, 17]
-anchor: [4, 23, 27, 34]
+anchor: [4, 23, 27, 34, 39]
 coverage:
   web: automated
 ---
@@ -47,8 +47,11 @@ coverage:
   - DU-090-5: Rina W (Manage asset & TAG, Group terkelola `Gudang 1 {runId}`).
   - DU-090-6: Siti N (Manage asset & TAG, Group terkelola `Gudang 1 {runId}`).
   - DU-090-7: Budi S (Manage asset & TAG dengan capability Update pada node Group `Gudang 1 {runId}`).
+  - DU-090-8: Pengajuan Waiting for Approval di Group `Cabang C {runId}`, diajukan Lukman H, Total Asset `8`, Last Updated `T0 − 4 hari` (Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `8`, TAG `Verified`).
+  - DU-090-9: Lukman H (Manage asset & TAG, Group terkelola `Cabang C {runId}`).
 - Kondisi:
-  - Group `Gudang 1 {runId}` ber-toggle `Require Approval for Registration` ON.
+  - Group `Gudang 1 {runId}` dan Group `Cabang C {runId}` ber-toggle `Require Approval for Registration` ON.
+  - Group `Cabang C {runId}` tidak berkaitan dengan Group `Gudang 1 {runId}` (bukan induk dan bukan sub-group).
 
 ## Test Steps
 
@@ -96,3 +99,15 @@ coverage:
 ### Menu Approvals tidak tampil bagi Read Only
 34. Verifikasi item sidebar `Assets` tampil bagi Joko R
 35. Verifikasi menu `Approvals` > `Registration` tidak tampil pada sidebar bagi Joko R
+
+### Detail pengajuan Read Only tanpa Remove from List
+36. Klik sub tab `Waiting for Approval`
+37. Ganti isi kotak search dengan `{runId}`, tekan Enter
+38. Klik row action `Detail` pada baris Group `Gudang 1 {runId}` dengan Total Asset `12`
+39. Verifikasi baris Item `Laptop` tampil pada tabel Item tab `General Information` halaman Detail pengajuan
+40. Verifikasi row option `Remove from List` tidak tampil pada baris Item `Laptop`
+41. Klik `[Close]`
+
+### Read Only melihat pengajuan di Group lain
+42. Ganti isi kotak search dengan `{runId}`, tekan Enter
+43. Verifikasi baris Group `Cabang C {runId}` dengan Total Asset `8` dan Requested By `Lukman H` tampil di sub tab `Waiting for Approval` bagi Joko R

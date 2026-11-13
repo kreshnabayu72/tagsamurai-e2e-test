@@ -4,7 +4,7 @@ title: "Sub tab Draft: Download CSV dan XLSX"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§5#r6", "EB-DL-1@tabel-draft", "EB-DL-2@tabel-draft", "EB-DL-3@tabel-draft", "EB-FB-2@download", "EB-DL-4"]
 smoke: ["EB-DL-4"]
 dependsOn: []

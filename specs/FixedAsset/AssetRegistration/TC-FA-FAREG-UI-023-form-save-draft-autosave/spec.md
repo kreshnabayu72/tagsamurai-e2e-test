@@ -4,15 +4,15 @@ title: "Form Register Asset: Save draft, indikator autosave, Saving, dan respons
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-01q", "S-REG-11", "S-REG-12", "S-REG-25", "T-REG-01", "T-REG-07", "T-REG-12", "T-REG-13", "T-REG-14", "V-REG-01", "§9.6#r1", "§9.6#r2", "§9.9#r5", "EB-ERR-1@save-draft", "EB-FB-1@save-draft", "EB-FB-3@edit-draft", "EB-FB-4", "EB-FRM-1@form-register-asset"]
 smoke: []
 dependsOn: []
 trace:
-  "FAREG-LOGIC-01q": [31, 35, 36, 37]
+  "FAREG-LOGIC-01q": [31, 35, 36, 37, 62, 63, 64, 66]
   "S-REG-11": [8, 10]
   "S-REG-12": [26, 28, 30]
-  "S-REG-25": [35, 36, 39]
+  "S-REG-25": [35, 36, 39, 62, 63, 64, 66, 71, 76]
   "T-REG-01": [7, 48]
   "T-REG-07": 55
   "T-REG-12": 42
@@ -52,6 +52,7 @@ coverage:
   - K7: sama dengan K2; simpan draft gagal karena gangguan jaringan.
   - K8: sama dengan K2; akses ubah draft aktor dicabut sesudah form dibuka sehingga simpan draft ditolak karena tanpa hak.
   - K9: form `Edit` draft tersimpan dengan Group DU-023-1 dan Item DU-023-2; tidak ada perubahan nilai sejak dibuka.
+  - K10: sama dengan K4; Register Asset Bulk Limit bernilai `100`; autosave pada siklus pertama ditolak karena total aset melebihi Register Asset Bulk Limit; autosave pada siklus berikutnya diterima.
 
 ## Test Steps
 ### Save draft tanpa Group menampilkan pesan Group wajib
@@ -75,7 +76,7 @@ coverage:
 14. Tampilkan Halaman `Register Asset` dengan kondisi K3
 15. Klik `[Save draft]`
 16. Verifikasi tombol `[Save draft]` menampilkan loading dan Disabled
-17. Verifikasi `✕` dan seluruh kontrol form Disabled
+17. Verifikasi seluruh kontrol form dan tombol footer Disabled
 18. Klik `[Save draft]` sekali lagi
 19. Verifikasi tombol `[Save draft]` masih menampilkan loading
 20. Verifikasi tidak ada pengiriman simpan draft kedua
@@ -129,3 +130,27 @@ coverage:
 56. Tampilkan Halaman `Register Asset` dengan kondisi K9
 57. Klik `[Save draft]`
 58. Verifikasi toast netral `No changes to save.` tampil
+
+### Autosave diblokir pemeriksaan menampilkan Not saved, mempertahankan data, dan dicoba lagi
+59. Tampilkan Halaman `Register Asset` dengan kondisi K10
+60. Ganti isi sel `Quantity` Item pertama dengan `4`
+61. Waktu berlalu sampai siklus autosave pertama berjalan
+62. Verifikasi subjudul form menampilkan `Not saved`
+63. Verifikasi sel `Quantity` Item pertama masih menampilkan `4`
+64. Verifikasi tidak ada toast yang tampil sesudah autosave ditolak
+65. Waktu berlalu sampai siklus autosave berikutnya selesai
+66. Verifikasi subjudul form menampilkan `Saved`
+
+### Autosave gagal menampilkan Not saved di subjudul tab Asset
+67. Tampilkan Halaman `Register Asset` dengan kondisi K5
+68. Ganti isi sel `Quantity` Item pertama dengan `4`
+69. Waktu berlalu sampai siklus autosave pertama berjalan
+70. Klik tab `Asset`
+71. Verifikasi subjudul form pada tab `Asset` menampilkan `Not saved`
+
+### Autosave diblokir pemeriksaan menampilkan Not saved di subjudul tab Asset
+72. Tampilkan Halaman `Register Asset` dengan kondisi K10
+73. Ganti isi sel `Quantity` Item pertama dengan `4`
+74. Waktu berlalu sampai siklus autosave pertama berjalan
+75. Klik tab `Asset`
+76. Verifikasi subjudul form pada tab `Asset` menampilkan `Not saved`

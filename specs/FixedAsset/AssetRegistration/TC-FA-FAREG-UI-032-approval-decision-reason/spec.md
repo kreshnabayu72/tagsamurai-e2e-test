@@ -4,18 +4,18 @@ title: "Halaman Approval: Decision per aset dan validasi Reason"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06e, FI-REG-15, S-REG-23, V-REG-16, V-REG-18, §4.1#r7, §4.2.4#b4, §4.2.4#b5, §9.9#r19, §9.9#r20, EB-FRM-4@reason]
 smoke: []
 dependsOn: []
 trace:
   FAREG-LOGIC-06e: [8, 10, 13, 31, 33, 39]
   FI-REG-15: [18, 20]
-  S-REG-23: [28, 29]
-  V-REG-16: [29, 30, 31, 32, 33, 34, 40, 64]
+  S-REG-23: [28, 29, 70]
+  V-REG-16: [29, 30, 31, 32, 33, 34, 40, 64, 70]
   V-REG-18: [45, 49, 53, 57, 61]
-  §4.1#r7: [26, 28, 30, 32]
-  §4.2.4#b4: [2, 4]
+  §4.1#r7: [26, 28, 30, 32, 70]
+  §4.2.4#b4: [2, 4, 18, 72]
   §4.2.4#b5: [8, 10, 11, 13]
   §9.9#r19: [31, 33, 39, 45, 49, 53, 57, 64]
   §9.9#r20: [6, 8, 10, 13]
@@ -125,3 +125,14 @@ coverage:
 63. Verifikasi dialog `Submit Approval` tampil
 64. Verifikasi pesan `Reason must not be empty` tidak tampil pada baris `Laptop - 130`
 65. Klik `[Cancel]` pada dialog `Submit Approval`
+
+### Alert Reason kosong tampil di atas tombol Submit
+66. Tampilkan Halaman Approval dengan kondisi K1
+67. Pilih Decision `Return to Draft` pada baris `Laptop - 130`
+68. Kosongkan Reason pada baris `Laptop - 130`
+69. Klik `[Submit]`
+70. Verifikasi Alert Danger tampil di atas tombol `[Submit]` pada footer halaman Approval
+
+### Kolom Reason berada di sebelah kanan kolom Decision
+71. Tampilkan Halaman Approval dengan kondisi K1
+72. Verifikasi kolom `Reason` berada di sebelah kanan kolom `Decision`

@@ -4,7 +4,7 @@ title: "Halaman Approval: header, Accordion, dan kolom tabel aset"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06d, §4.1#r14, §4.1#p31, §4.1#r109, §4.1#r110, §4.1#r111, §4.1#r112, §4.1#r113, §4.1#r114, §4.1#r115, §4.1#r116, §4.1#r117, §4.1#r118, §4.1#r119, §4.1#r120, §4.1#r121, §4.2#p1, §4.2.4#p1, §4.2.4#p2, §4.2.4#b1, §4.2.4#b2, §4.2.5#r3]
 smoke: []
 dependsOn: []
@@ -27,7 +27,7 @@ trace:
   §4.1#r121: [92, 94]
   §4.2#p1: [7, 8, 9, 10, 11]
   §4.2.4#p1: [2, 3, 5]
-  §4.2.4#p2: [13, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 27, 28, 29, 30, 31, 32]
+  §4.2.4#p2: [13, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 27, 28, 29, 30, 31, 32, 96, 97]
   §4.2.4#b1: [62, 63, 65, 66, 68, 69, 72, 76]
   §4.2.4#b2: [46, 48]
   §4.2.5#r3: 13
@@ -43,16 +43,16 @@ coverage:
 - Layar awal: Halaman Approval pengajuan yang dibuka dari antrean Approvals tab Active.
 - Komponen: Halaman Approval
 - Data:
-  - DU-031-1: pengajuan Registration ID `REG-20261109-00003`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Rina W` dengan nama lengkap `Rina Wulandari`, Total Asset `4`, Submitted At `09/11/26, 10:20`.
+  - DU-031-1: pengajuan Registration ID `REG-20261109-00003`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Rina W.` dengan nama lengkap `Rina Wulandari`, Total Asset `4`, Submitted At `09/11/26, 10:20`.
   - DU-031-2: aset Name `Laptop - 128`, Category `Computers` dengan path `Electronics > Computers`, Brand `Dell`, Model `Latitude 5440`, Group `Gudang 1` dengan path `PT Sinar Mandiri > Cabang A > Gudang 1`, TAG `Verified` dengan kode Tag `E28011700000020C5A3B1F01`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-031-3: aset Name `Laptop - 129`, Category `Computers` dengan path `Electronics > Computers`, Brand `Dell`, Model `Latitude 5440`, Group `Gudang 1`, TAG `Skipped` dengan alasan `TAG damaged`, Condition `Damaged`, Corrections `1`, Decision `Approve`, tanpa Reason.
   - DU-031-4: aset Name `Laptop - 130`, Category `Computers` dengan path `Electronics > Computers`, Brand `Dell`, Model `Latitude 5440`, Group `Gudang 1`, TAG `Verified` dengan kode Tag `E28011700000020C5A3B1F02`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-031-5: aset Name `Office Desk - 12`, Category `Furniture` dengan path `Office Furniture > Furniture`, Brand `Kayu Jati`, Model `No Model`, Group `Gudang 1`, TAG `No tag`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
-  - DU-031-6: pengajuan Registration ID `REG-20261110-00012`, Status `Waiting for Approval`, Group `Gudang 2`, Requested By `Siti N`, Total Asset `2`, Submitted At `10/11/26, 09:15`.
+  - DU-031-6: pengajuan Registration ID `REG-20261110-00012`, Status `Waiting for Approval`, Group `Gudang 2`, Requested By `Siti N.`, Total Asset `2`, Submitted At `10/11/26, 09:15`.
   - DU-031-7: aset Name `Office Desk - 21`, Category `Furniture`, Brand `Kayu Jati`, Model `No Model`, Group `Gudang 2`, TAG `No tag`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-031-8: aset Name `Office Desk - 22`, Category `Furniture`, Brand `Kayu Jati`, Model `No Model`, Group `Gudang 2`, TAG `No tag`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
 - Kondisi:
-  - K1: pengajuan DU-031-1 berisi aset DU-031-2 sampai DU-031-4 dalam grup Accordion `Laptop` dan DU-031-5 dalam grup Accordion `Office Desk`, dengan Decision awal dan tanpa Reason.
+  - K1: pengajuan DU-031-1 berisi aset DU-031-2 sampai DU-031-4 dalam grup Accordion `Laptop` dan DU-031-5 dalam grup Accordion `Office Desk`, dengan Decision awal dan tanpa Reason, serta Date Format `dd/MM/yy` diikuti Time Format 24 jam.
   - K2: pengajuan DU-031-6 berisi aset DU-031-7 dan DU-031-8 dalam grup Accordion `Office Desk`, semuanya aset Non TAG.
 
 ## Test Steps
@@ -78,17 +78,17 @@ coverage:
 
 ### Judul dan info pengajuan
 14. Tampilkan Halaman Approval dengan kondisi K1
-15. Verifikasi judul memuat Registration ID pengajuan
+15. Verifikasi judul memuat Registration ID `REG-20261109-00003`
 16. Verifikasi judul memuat ikon copy di samping Registration ID
-17. Verifikasi judul memuat Badge status pengajuan
-18. Verifikasi header memuat `Submitted At`
+17. Verifikasi judul memuat Badge status `Waiting for Approval`
+18. Verifikasi header memuat `Submitted At` `09/11/26, 10:20`
 19. Verifikasi info memuat label `Group`
 20. Verifikasi info memuat Badge Group `Gudang 1`
 21. Verifikasi info memuat label `Requested By`
-22. Verifikasi info memuat ikon user dan Nama singkat `Rina W`
-23. Arahkan kursor ke Nama singkat `Rina W`
+22. Verifikasi info memuat ikon user dan Nama singkat `Rina W.`[^drift-1]
+23. Arahkan kursor ke Nama singkat `Rina W.`
 24. Verifikasi tooltip menampilkan nama lengkap `Rina Wulandari`
-25. Verifikasi info memuat label `Total Asset`
+25. Verifikasi info memuat label `Total Asset` dengan nilai `4`
 
 ### Accordion per Asset Name
 26. Tampilkan Halaman Approval dengan kondisi K1
@@ -182,3 +182,10 @@ coverage:
 92. Verifikasi pilihan `Edit` tersedia
 93. Klik `Edit`
 94. Verifikasi panel koreksi terbuka
+
+### Registration ID berformat dan Submitted At rata kanan
+95. Tampilkan Halaman Approval dengan kondisi K1
+96. Verifikasi Registration ID `REG-20261109-00003` pada judul berformat `REG-YYYYMMDD-NNNNN`
+97. Verifikasi `Submitted At` pada judul tampil rata kanan
+
+[^drift-1]: Drift PRD vs foundation vs override. PRD §4.2.4: Requested By `Nama singkat`, contoh data `Rina W`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: O-4, karena override menang atas PRD dan foundation (SB-6).

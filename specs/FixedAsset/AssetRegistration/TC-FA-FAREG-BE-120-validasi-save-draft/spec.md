@@ -4,26 +4,26 @@ title: "Validasi Save draft dan autosave"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [F-FAREG-01.k1, FAREG-LOGIC-01c, FAREG-LOGIC-01q, FAREG-LOGIC-03q, FAREG-LOGIC-03t, FAREG-LOGIC-03w, FAREG-LOGIC-10g, FAREG-LOGIC-17b, FLD-REG-02, V-REG-01, V-REG-10, "§9.2#p3", "§9.4.2#r4", "§9.4.3#b1", "§9.5#r10", "§9.6#r1", "§9.6#r2", "§9.9#r5", "§9.9#r6"]
 smoke: []
 dependsOn: []
 trace:
   F-FAREG-01.k1: [15, 16, 33, 34]
   FAREG-LOGIC-01c: [9, 10, 22, 26, 27]
-  FAREG-LOGIC-01q: [36, 37]
+  FAREG-LOGIC-01q: [36, 37, 85, 86, 87, 89, 91]
   FAREG-LOGIC-03q: [15, 20, 33]
-  FAREG-LOGIC-03t: [29, 30]
+  FAREG-LOGIC-03t: [29, 30, 93, 94]
   FAREG-LOGIC-03w: [13, 15, 20, 33]
   FAREG-LOGIC-10g: [59, 60, 61, 63, 65, 67, 69, 71]
   FAREG-LOGIC-17b: [47, 48]
-  FLD-REG-02: [50, 51, 52]
+  FLD-REG-02: [50, 51, 52, 73, 74, 75]
   V-REG-01: [3]
   V-REG-10: [7, 13, 15]
   "§9.2#p3": [7, 23, 24]
   "§9.4.2#r4": [15, 33]
   "§9.4.3#b1": [22, 26]
-  "§9.5#r10": [50, 51, 52, 54, 56]
+  "§9.5#r10": [50, 51, 52, 54, 56, 77, 78, 79, 81, 82, 83]
   "§9.6#r1": [41, 42]
   "§9.6#r2": [44, 45]
   "§9.9#r5": [4]
@@ -34,7 +34,7 @@ owner: BE
 # Validasi Save draft dan autosave
 
 ## Prerequisites
-- Aktor: Rina (Manage asset & TAG, Group terkelola `Gudang Cikarang {runId}` dan `Gudang Bekasi {runId}`); Siti (Manage asset & TAG, Group terkelola `Gudang Cikarang {runId}` saja); Dewi (Group Manager, Group binaan `Gudang Bekasi {runId}`).
+- Aktor: Rina (Manage asset & TAG, Group terkelola `Gudang Cikarang {runId}`, `Gudang Bekasi {runId}`, dan `Gudang Karawang {runId}`); Siti (Manage asset & TAG, Group terkelola `Gudang Cikarang {runId}` saja); Dewi (Group Manager, Group binaan `Gudang Bekasi {runId}`).
 - Data:
   - DU-120-1: Group `Gudang Cikarang {runId}`, Assignable, di entitas aktor.
   - DU-120-2: Group `Gudang Bekasi {runId}`, Assignable, di entitas aktor.
@@ -44,10 +44,18 @@ owner: BE
   - DU-120-6: Asset Name `Meja Kerja {runId}`, Category `Furnitur`, Brand `Olympic`, Model `OL-120`, TAG Type `Non-TAG`, status `Active`.
   - DU-120-7: Asset Name `Kursi Kantor {runId}`, Category `Furnitur`, Brand `Chitose`, Model `Orion`, TAG Type `Non-TAG`, status `Active`.
   - DU-120-8: batch Draft milik Rina, Group `Gudang Cikarang {runId}`, satu aset `Laptop {runId}` ber-Tag RFID `E280-1200-0001 {runId}` berstatus `To be Returned` dengan Return Group `Gudang Cikarang {runId}`, Quantity `1`, Owner `Rina`.
-  - DU-120-9: batch Draft kembalian milik Rina, Group `Gudang Cikarang {runId}`, Asset Name `Meja Kerja {runId}`, Quantity `2`, Asset Code aset `MJK-2026-0001`, Origin `REG-20261108-00011`.
+  - DU-120-9: batch Draft kembalian milik Rina, Group `Gudang Cikarang {runId}`, Asset Name `Meja Kerja {runId}`, Quantity `2`; Asset Code asetnya dan Origin batch ini (Registration ID pengajuan asal) adalah milik DU-120-9, dibentuk server pada Submit pengajuan asal.
+  - DU-120-25: Asset Name `Rak Induk {runId}`, Category `Perlengkapan {runId}` yang bukan node terbawah (memiliki sub-Category), Brand `Krisbow`, Model `RK-120`, TAG Type `Non-TAG`, status `Active`.
+  - DU-120-26: Asset Name `Sisa Gudang {runId}`, Category `Excess {runId}` yang ditandai Excess, Brand `Lion`, Model `LN-120`, TAG Type `Non-TAG`, status `Active`.
+  - DU-120-27: Group `Gudang Karawang {runId}`, Assignable, di entitas aktor.
+  - DU-120-28: Asset Name `Monitor Arsip {runId}`, Category `IT Equipment`, Brand `Samsung`, Model `S24F350`, TAG Type `Non-TAG`, status `Inactive` (diarsipkan sesudah DU-120-29 dibuat).
+  - DU-120-29: batch Draft milik Rina, Group `Gudang Cikarang {runId}`, satu Item Asset Name `Monitor Arsip {runId}`, Brand `Samsung`, Model `S24F350`, Quantity `1`.
+  - DU-120-30: Tag RFID `E280-1200-0002 {runId}`, status `Available`.
+  - DU-120-31: batch Draft milik Rina, Group `Gudang Cikarang {runId}`, satu Item Asset Name `Laptop {runId}`, Quantity `1`, slot Tag RFID aset kosong.
 - Kondisi:
   - Register Asset Bulk Limit bernilai `100`.
   - Approval Workflow tidak aktif untuk `Gudang Cikarang {runId}`.
+  - Sisa kuota Group `Gudang Karawang {runId}` bernilai `5` dan sisa kuota tenant lebih dari `13`.
 
 ## Test Steps
 
@@ -143,5 +151,38 @@ owner: BE
 69. Verifikasi Save draft dari Dewi berhasil
 
 ### Group batch kembalian tidak dapat diganti
-70. Rina mengirim permintaan mengganti Group batch Draft kembalian dengan Asset Code `MJK-2026-0001` menjadi `Gudang Bekasi {runId}`
-71. Verifikasi Group batch kembalian tetap `Gudang Cikarang {runId}`
+70. Rina mengirim permintaan mengganti Group batch Draft kembalian DU-120-9 menjadi `Gudang Bekasi {runId}`
+71. Verifikasi Group batch kembalian DU-120-9 tetap `Gudang Cikarang {runId}`
+
+### Opsi Asset Name hanya node terbawah dan bukan Excess
+72. Rina meminta opsi Asset Name untuk form registrasi
+73. Verifikasi opsi memuat `Laptop {runId}`
+74. Verifikasi opsi tidak memuat `Rak Induk {runId}` yang terikat Category `Perlengkapan {runId}` yang bukan node terbawah
+75. Verifikasi opsi tidak memuat `Sisa Gudang {runId}` yang terikat Category `Excess {runId}` yang ditandai Excess
+
+### Opsi Brand dan Model hanya milik Asset Name dan Brand terpilih
+76. Rina meminta opsi Brand untuk Asset Name `Laptop {runId}`
+77. Verifikasi opsi Brand memuat `Dell`
+78. Verifikasi opsi Brand tidak memuat `Olympic`, Brand milik Asset Name `Meja Kerja {runId}`
+79. Verifikasi opsi Brand tidak memuat `HP`, Brand milik Asset Name nonaktif `Printer Lama {runId}`
+80. Rina meminta opsi Model untuk Brand `Dell`
+81. Verifikasi opsi Model memuat `Latitude 5440`
+82. Verifikasi opsi Model tidak memuat `OL-120`, Model milik Brand `Olympic`
+83. Verifikasi opsi Model tidak memuat `LaserJet Pro`, Model milik Brand `HP`
+
+### Autosave memvalidasi ulang referensi master
+84. Rina mengirim autosave atas batch DU-120-29 dengan Quantity `2`
+85. Verifikasi autosave berhasil dan Quantity batch DU-120-29 tersimpan `2`
+86. Verifikasi Asset Name, Brand, dan Model Item batch DU-120-29 dikosongkan
+87. Verifikasi respons autosave memuat peringatan bahwa Asset Name `Monitor Arsip {runId}` tidak tersedia
+
+### Autosave menjadikan Tag Reserved
+88. Rina memindai Tag RFID `E280-1200-0002 {runId}` pada slot RFID aset batch DU-120-31
+89. Verifikasi status Tag `E280-1200-0002 {runId}` tetap `Available` sebelum autosave
+90. Rina mengirim autosave atas batch DU-120-31
+91. Verifikasi status Tag `E280-1200-0002 {runId}` menjadi `Reserved` atas aset batch DU-120-31
+
+### Item tanpa Asset Name tidak dihitung ke kuota Group
+92. Rina mengirim Save draft dengan Group `Gudang Karawang {runId}`, Item 1 tanpa Asset Name Quantity `10`, Item 2 Asset Name `Laptop {runId}` Quantity `3`
+93. Verifikasi Save draft berhasil dan Total Asset batch `3`, dari Quantity Item 2
+94. Verifikasi hasil Save draft tidak memuat pesan kuota `Only 5 more assets can be added to Gudang Karawang {runId}. Reduce the quantity.`

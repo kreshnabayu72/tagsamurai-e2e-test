@@ -4,7 +4,7 @@ title: "Sub tab Draft: urutan default dan hasil sort"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r22", "§4.1#r23", "§4.1#r24", "§4.1#r25", "§4.1#r26", "§4.1#r27", "§5#r4", "§9.5#r4", "EB-SRT-3@tabel-draft", "EB-SRT-1"]
 smoke: ["EB-SRT-1"]
 dependsOn: []
@@ -30,10 +30,10 @@ coverage:
 - Aktor: Total Control.
 - Layar awal: Assets > Registration > Draft.
 - Data:
-  - DU-040-1: Batch Draft dengan Group `Gudang Mawar {runId}`, Origin `—`, Total Asset `12`, Progress `60%`, Requested By `Siti N`, Last Updated `T0 − 1 hari`.
+  - DU-040-1: Batch Draft dengan Group `Gudang Mawar {runId}`, Origin `—`, Total Asset `10`, Progress `60%`, dari 6 aset Ready di antara 10 aset, Requested By `Siti N`, Last Updated `T0 − 1 hari`.
   - DU-040-2: Batch Draft dengan Group `Gudang Anggrek {runId}`, Origin `REG-20261105-04002`, Total Asset `5`, Progress `100%`, Requested By `Agus P`, Last Updated `T0 − 2 hari`.
   - DU-040-3: Batch Draft dengan Group `Gudang Melati {runId}`, Origin `REG-20261103-04001`, Total Asset `30`, Progress `0%`, Requested By `Budi S`, Last Updated `T0 − 3 hari`.
-  - DU-040-4: Batch Draft dengan Group `Gudang Cempaka {runId}`, Origin `REG-20261104-04003`, Total Asset `12`, Progress `40%`, Requested By `Rina W`, Last Updated `T0 − 4 hari`.
+  - DU-040-4: Batch Draft dengan Group `Gudang Cempaka {runId}`, Origin `REG-20261104-04003`, Total Asset `20`, Progress `40%`, dari 8 aset Ready di antara 20 aset, Requested By `Rina W`, Last Updated `T0 − 4 hari`.
   - Siti N, Agus P, Budi S, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group batch masing-masing.
 
 ## Test Steps
@@ -59,9 +59,9 @@ coverage:
 
 ### Sort kolom Total Asset secara numerik
 14. Klik ikon sort pada header kolom `Total Asset`
-15. Verifikasi urutan baris kolom `Total Asset` naik: `Gudang Anggrek {runId}`, `Gudang Mawar {runId}`, `Gudang Cempaka {runId}`, `Gudang Melati {runId}`; baris `Gudang Mawar {runId}` dan `Gudang Cempaka {runId}` yang sama-sama bernilai `12` berurutan menurut Last Updated terbaru di atas
+15. Verifikasi urutan baris kolom `Total Asset` naik: `Gudang Anggrek {runId}`, `Gudang Mawar {runId}`, `Gudang Cempaka {runId}`, `Gudang Melati {runId}`
 16. Klik ikon sort pada header kolom `Total Asset` sekali lagi
-17. Verifikasi urutan baris kolom `Total Asset` turun: `Gudang Melati {runId}`, `Gudang Mawar {runId}`, `Gudang Cempaka {runId}`, `Gudang Anggrek {runId}`; baris `Gudang Mawar {runId}` dan `Gudang Cempaka {runId}` yang sama-sama bernilai `12` tetap berurutan menurut Last Updated terbaru di atas
+17. Verifikasi urutan baris kolom `Total Asset` turun: `Gudang Melati {runId}`, `Gudang Cempaka {runId}`, `Gudang Mawar {runId}`, `Gudang Anggrek {runId}`
 
 ### Sort kolom Progress secara numerik
 18. Klik ikon sort pada header kolom `Progress`

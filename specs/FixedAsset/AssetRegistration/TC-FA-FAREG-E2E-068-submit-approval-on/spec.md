@@ -4,7 +4,7 @@ title: "Submit pada Group approval ON: pengajuan Waiting for Approval"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06c, FAREG-LOGIC-20h, "§9.7#r7", EB-FRM-1@dialog-activate, FAREG-LOGIC-06a, D-REG-03, T-REG-03]
 smoke: [FAREG-LOGIC-06a, D-REG-03, T-REG-03]
 dependsOn: []
@@ -12,7 +12,7 @@ trace:
   FAREG-LOGIC-06c: 11
   FAREG-LOGIC-20h: 9
   "§9.7#r7": 11
-  EB-FRM-1@dialog-activate: 13
+  EB-FRM-1@dialog-activate: [13, 15, 16]
   FAREG-LOGIC-06a: 12
   D-REG-03: [4, 5, 6]
   T-REG-03: 8
@@ -51,3 +51,8 @@ coverage:
 11. Verifikasi baris pengajuan Group `Gudang Pengajuan {runId}` tampil dengan Total Asset `2` di sub tab `Waiting for Approval`
 12. Verifikasi Registration ID pada baris itu berformat `REG-YYYYMMDD-NNNNN`
 13. Verifikasi hanya satu baris pengajuan Group `Gudang Pengajuan {runId}` tampil
+
+### Registration Log pengajuan approval ON: satu node Submitted sesudah klik ganda
+14. Klik ikon `Registration Log` pada baris pengajuan Group `Gudang Pengajuan {runId}`
+15. Verifikasi timeline Registration Log memuat node `Submitted by` dengan isi Total Asset `2`
+16. Verifikasi timeline Registration Log memuat tepat satu node berjudul `Submitted by`

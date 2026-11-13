@@ -4,15 +4,15 @@ title: "Edit draft: batch sudah di-Submit sesi lain"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-19g, FAREG-LOGIC-20i, §9.4.2#r27, D-REG-16]
 smoke: [D-REG-16]
 dependsOn: []
 trace:
-  FAREG-LOGIC-19g: [8, 11]
-  FAREG-LOGIC-20i: [13, 16]
-  §9.4.2#r27: [8, 11]
-  D-REG-16: [8, 9]
+  FAREG-LOGIC-19g: [9, 12]
+  FAREG-LOGIC-20i: [14, 17]
+  §9.4.2#r27: [9, 12]
+  D-REG-16: [9, 10]
 anchor: []
 coverage:
   web: automated
@@ -28,6 +28,7 @@ coverage:
 - Data:
   - DU-066-1: Draft tersimpan milik `Rina W` untuk Group `Gudang Submit {runId}`. Item 1 `Laptop`, `Dell`, `Latitude 5440` dengan Quantity `2`; kedua aset memenuhi Tingkat 2 dan berstatus `✓ Ready`; aset 1 ber-Alias Name `Laptop Gudang Submit`.
 - Kondisi:
+  - Kunci sesi edit batch `Gudang Submit {runId}` yang dipegang `Rina W` kedaluwarsa setelah 10 menit penuh tanpa aktivitasnya, sehingga `Hadi K` membuka dan men-Submit batch itu tanpa Take over.
   - Kuota tenant dan Group `Gudang Submit {runId}` mencukupi untuk dua aset, sehingga Submit oleh `Hadi K` berhasil.
 
 ## Test Steps
@@ -37,17 +38,18 @@ coverage:
 2. Rina W mengklik Group `Gudang Submit {runId}` pada baris untuk membuka form Edit
 3. Rina W mengklik tab `Asset`
 4. Rina W mengklik row option `Detail` pada aset 1
-5. Rina W mengisi Alias Name `Laptop Rina Revisi` pada aset 1 tanpa menyimpan
+5. Waktu berlalu sampai 10 menit penuh sejak aktivitas terakhir Rina W pada form, sehingga kunci sesi Rina W kedaluwarsa
 6. Hadi K men-Submit batch `Gudang Submit {runId}` dari sesi lain
-7. Rina W mengklik `[Save draft]`
-8. Verifikasi dialog `Draft Already Submitted` tampil bagi Rina W
-9. Verifikasi isi dialog `This draft was submitted by Hadi K. Your changes cannot be saved.`
-10. Waktu berlalu sampai 40 detik sejak dialog tampil
-11. Verifikasi hanya satu dialog `Draft Already Submitted` yang tampil, tanpa dialog kedua dari autosave
+7. Rina W mengisi Alias Name `Laptop Rina Revisi` pada aset 1 tanpa menyimpan
+8. Rina W mengklik `[Save draft]`
+9. Verifikasi dialog `Draft Already Submitted` tampil bagi Rina W
+10. Verifikasi isi dialog `This draft was submitted by Hadi K. Your changes cannot be saved.`
+11. Waktu berlalu sampai 40 detik sejak dialog tampil
+12. Verifikasi hanya satu dialog `Draft Already Submitted` yang tampil, tanpa dialog kedua dari autosave
 
 ### OK menutup dialog, membuang perubahan, dan membuka Detail pengajuan
-12. Rina W mengklik `[OK]`
-13. Verifikasi halaman Detail pengajuan batch `Gudang Submit {runId}` terbuka
-14. Rina W mengklik tab `Asset`
-15. Rina W mengklik Name aset 1 untuk membuka panel aset
-16. Verifikasi Alias Name aset 1 pada Detail tetap `Laptop Gudang Submit`, perubahan `Laptop Rina Revisi` yang belum tersimpan dibuang
+13. Rina W mengklik `[OK]`
+14. Verifikasi halaman Detail pengajuan batch `Gudang Submit {runId}` terbuka
+15. Rina W mengklik tab `Asset`
+16. Rina W mengklik Name aset 1 untuk membuka panel aset
+17. Verifikasi Alias Name aset 1 pada Detail tetap `Laptop Gudang Submit`, perubahan `Laptop Rina Revisi` yang belum tersimpan dibuang

@@ -4,7 +4,7 @@ title: "Edit draft: Quantity naik dan turun"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-03m, FAREG-LOGIC-03n, §4.4#r3, §9.4.2#r5, §9.4.2#r6, §9.7#r5, FAREG-LOGIC-03o, D-REG-18]
 smoke: [FAREG-LOGIC-03o, D-REG-18]
 dependsOn: []

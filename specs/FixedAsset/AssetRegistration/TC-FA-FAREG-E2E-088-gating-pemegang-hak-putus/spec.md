@@ -4,7 +4,7 @@ title: "Gating Manage asset & TAG dengan capability Update pada node Group regis
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-06p", "§2.1#r3", "§4.8#r10", "§4.8#r11", "§4.8#r18", "§9.2#p75", "§9.2#p77", "§9.2#p79", "§9.2#p80", "EB-AKS-5@keputusan-approval"]
 smoke: []
 dependsOn: []

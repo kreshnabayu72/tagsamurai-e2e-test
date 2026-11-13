@@ -4,7 +4,7 @@ title: "Asset Class berubah selama pengajuan menunggu"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-09c, §9.4.2#r14]
 smoke: []
 dependsOn: ["Asset Class Settings: Asset Class milik Asset Name"]

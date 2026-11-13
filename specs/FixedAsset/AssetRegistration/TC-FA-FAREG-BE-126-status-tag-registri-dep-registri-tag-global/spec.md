@@ -4,7 +4,7 @@ title: "Status Tag di registri Global per aksi registrasi"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-03p, FAREG-LOGIC-04e, FAREG-LOGIC-04h, FAREG-LOGIC-04n, FAREG-LOGIC-04p, FAREG-LOGIC-04r, FAREG-LOGIC-04s, FAREG-LOGIC-04t, FAREG-LOGIC-04u, "§9.4.2#r30", "§9.4.2#r31", "§9.4.2#r54", "§9.4.2#r55", "§9.6#r9"]
 smoke: []
 dependsOn: ["Registri Tag Global: status Tag"]
@@ -12,7 +12,7 @@ trace:
   FAREG-LOGIC-03p: [21, 22]
   FAREG-LOGIC-04e: [14]
   FAREG-LOGIC-04h: [5, 38, 39, 46]
-  FAREG-LOGIC-04n: [3, 5, 10, 14, 15, 17, 19]
+  FAREG-LOGIC-04n: [3, 5, 10, 14, 15, 17, 19, 53, 54, 56, 57, 60, 61]
   FAREG-LOGIC-04p: [34]
   FAREG-LOGIC-04r: [35]
   FAREG-LOGIC-04s: [36, 41]
@@ -53,6 +53,11 @@ owner: BE
   - DU-126-21: Tag RFID `E280-1260-0013 {runId}`, status `Reserved` atas aset batch DU-126-20.
   - DU-126-22: batch Draft milik Rina, Group `Gudang Pontianak {runId}`, satu Item `Laptop {runId}` Quantity `1` dengan Tingkat 2 lengkap, aset ber-Tag RFID `E280-1260-0014 {runId}`.
   - DU-126-23: Tag RFID `E280-1260-0014 {runId}`, status `Reserved` atas aset batch DU-126-22.
+  - DU-126-27: batch Draft milik Rina, Group `Gudang Pontianak {runId}`, satu Item `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Quantity `2` dengan Tingkat 2 lengkap selain Tag, kedua slot Tag RFID kosong.
+  - DU-126-28: Tag RFID `E280-1260-0021 {runId}`, status `Available`.
+  - DU-126-29: Tag RFID `E280-1260-0022 {runId}`, status `To be Returned`, Return Group `Gudang Pontianak {runId}`.
+  - DU-126-30: batch Draft milik Rina, Group `Gudang Singkawang {runId}`, satu Item `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Quantity `2` dengan Tingkat 2 lengkap; aset pertama ber-Tag RFID `E280-1260-0023 {runId}` dan aset kedua tanpa Tag.
+  - DU-126-31: Tag RFID `E280-1260-0023 {runId}`, status `Reserved` atas aset pertama batch DU-126-30.
 - Kondisi:
   - Approval Workflow aktif untuk `Gudang Pontianak {runId}` dengan toggle `Require Approval for Registration` ON; untuk `Gudang Singkawang {runId}` toggle itu OFF.
   - Kuota tenant dan kuota Group `Gudang Pontianak {runId}` dan `Gudang Singkawang {runId}` mencukupi untuk seluruh aset yang diajukan spec ini.
@@ -126,3 +131,18 @@ owner: BE
 48. Verifikasi status Tag `E280-1260-0013 {runId}` di registri Global tetap `Reserved` atas aset pada batch Draft baru
 49. Rina membatalkan pengajuan batch DU-126-22 dengan `Save as Draft to edit` tidak dicentang
 50. Verifikasi status Tag `E280-1260-0014 {runId}` di registri Global menjadi `Available`
+
+### Autosave menjadikan Tag Reserved dan melepas Tag To be Returned
+51. Rina memindai Tag RFID `E280-1260-0021 {runId}` pada slot RFID aset pertama batch DU-126-27
+52. Rina memindai Tag RFID `E280-1260-0022 {runId}` pada slot RFID aset kedua batch DU-126-27
+53. Verifikasi status Tag `E280-1260-0021 {runId}` di registri Global tetap `Available` sebelum autosave
+54. Verifikasi status Tag `E280-1260-0022 {runId}` di registri Global tetap `To be Returned` sebelum autosave
+55. Rina mengirim autosave atas batch DU-126-27
+56. Verifikasi status Tag `E280-1260-0021 {runId}` di registri Global menjadi `Reserved` atas aset pertama batch DU-126-27
+57. Verifikasi status Tag `E280-1260-0022 {runId}` di registri Global menjadi `Reserved` atas aset kedua batch DU-126-27
+
+### Pairing dan Skip pairing tidak memakai kuota Tag terpisah
+58. Rina mencatat kuota Used Group `Gudang Singkawang {runId}`
+59. Rina mengirim Submit atas batch DU-126-30 dengan Skip pairing dicentang dan Reason `Device unavailable`
+60. Verifikasi kuota Used Group `Gudang Singkawang {runId}` bertambah `2` dari catatan langkah 58, sebesar jumlah aset batch DU-126-30
+61. Verifikasi Submit itu tidak memakai, mengalokasikan, atau melepas kuota Tag terpisah

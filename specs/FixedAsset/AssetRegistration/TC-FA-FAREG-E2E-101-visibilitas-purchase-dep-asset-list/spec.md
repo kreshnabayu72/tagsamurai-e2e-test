@@ -4,7 +4,7 @@ title: "Kelompok Purchase dihilangkan bagi Manage asset & TAG"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-02c]
 smoke: [FAREG-LOGIC-02c]
 dependsOn: ["Asset List: kolom kelompok Purchase"]

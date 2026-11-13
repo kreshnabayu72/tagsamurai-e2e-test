@@ -4,7 +4,7 @@ title: "Sub tab Draft: Download lebih dari 5.000 baris"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-DL-5"]
 smoke: []
 dependsOn: []

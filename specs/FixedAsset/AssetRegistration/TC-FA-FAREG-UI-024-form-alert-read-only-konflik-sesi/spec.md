@@ -4,7 +4,7 @@ title: "Form Register Asset: Alert, mode read-only, dan dialog konflik sesi"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-REG-16", "D-REG-22", "S-REG-19", "S-REG-20", "S-REG-21", "S-REG-26", "S-REG-27", "V-REG-04", "§4.1#r17", "§4.2.1#b1", "§4.2.1#b2", "§4.2.1#b3"]
 smoke: []
 dependsOn: []
@@ -16,7 +16,7 @@ trace:
   "S-REG-21": [9, 10, 13]
   "S-REG-26": [18, 19, 20, 26, 27]
   "S-REG-27": [29, 30]
-  "V-REG-04": [2, 5]
+  "V-REG-04": [2, 5, 40]
   "§4.1#r17": [15, 16]
   "§4.2.1#b1": [2, 3]
   "§4.2.1#b2": 7
@@ -40,6 +40,7 @@ coverage:
   - DU-024-5: pemegang kunci sesi `Rina W`.
   - DU-024-6: pengambil alih kunci sesi `Budi S`.
   - DU-024-7: pengaju yang sudah men-submit draft `Siti N`.
+  - DU-024-8: Quantity `121` diketik pada Item `Laptop Dell Latitude 5440`.
 - Kondisi:
   - K1: form `Edit` draft tersimpan dengan Item DU-024-1; master Brand DU-024-2.
   - K2: form `Edit` draft tersimpan dengan Item DU-024-1; draft dikembalikan approver (`Return to Draft`) dengan alasan DU-024-3.
@@ -48,6 +49,7 @@ coverage:
   - K5: draft tersimpan dengan Item DU-024-1 dibuka lewat row action `Detail`.
   - K6: form `Edit` draft tersimpan dengan Item DU-024-1 sedang dibuka; kunci sesinya direbut DU-024-6 lewat Take over.
   - K7: form `Edit` draft tersimpan dengan Item DU-024-1; draft sudah di-submit oleh DU-024-7 sehingga simpan draft ditolak.
+  - K8: sama dengan K1; Approval Workflow nonaktif.
 
 ## Test Steps
 ### Alert Warning untuk referensi master yang diarsipkan
@@ -65,7 +67,7 @@ coverage:
 8. Tampilkan Halaman `Register Asset` dengan kondisi K3
 9. Verifikasi Alert Warning `For more than 100 assets, use Import.` tampil di atas form
 10. Verifikasi kata `Import` pada Alert Warning berupa tautan
-11. Ganti isi sel `Quantity` Item pertama dengan `120`
+11. Ganti isi sel `Quantity` Item pertama dengan `121`
 12. Verifikasi pesan inline `For more than 100 assets, use Import.` tampil di bawah sel `Quantity`
 13. Verifikasi Alert Warning tidak tampil bersamaan dengan pesan inline pada sel `Quantity`
 
@@ -99,3 +101,9 @@ coverage:
 34. Verifikasi dialog hanya memuat tombol `[OK]`
 35. Klik `[OK]`
 36. Verifikasi dialog `Draft Already Submitted` tertutup
+
+### Referensi master yang diarsipkan memblok Activate
+37. Tampilkan Halaman `Register Asset` dengan kondisi K8
+38. Klik `[Submit]`
+39. Klik `[Activate]` pada dialog konfirmasi `Activate Assets`
+40. Verifikasi pesan `Dell is not available. Choose another Brand.` tampil sesudah `[Activate]`

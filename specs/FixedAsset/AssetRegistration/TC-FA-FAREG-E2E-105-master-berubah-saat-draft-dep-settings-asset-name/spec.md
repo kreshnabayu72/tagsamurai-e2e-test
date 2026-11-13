@@ -4,7 +4,7 @@ title: "Master Asset Name, Brand, atau Model berubah: draft divalidasi ulang"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [F-FAREG-03.k1, FAREG-LOGIC-08a, FAREG-LOGIC-08c, FAREG-LOGIC-08d, FAREG-LOGIC-08f, §9.4.2#r2, §9.7#r14, V-REG-04, S-REG-19]
 smoke: [V-REG-04, S-REG-19]
 dependsOn:
@@ -12,9 +12,9 @@ dependsOn:
 trace:
   F-FAREG-03.k1: [4, 5, 11]
   FAREG-LOGIC-08a: [4, 16, 23]
-  FAREG-LOGIC-08c: [5, 6, 7, 17, 18, 24]
+  FAREG-LOGIC-08c: [5, 6, 7, 17, 18, 24, 38, 39, 40, 41, 46, 51, 52, 57, 58, 59, 64, 65, 66]
   FAREG-LOGIC-08d: [9, 11]
-  FAREG-LOGIC-08f: [30, 31, 33]
+  FAREG-LOGIC-08f: [30, 31, 33, 34]
   §9.4.2#r2: [5, 6, 7]
   §9.7#r14: [4, 16, 23]
   V-REG-04: [4, 16, 23]
@@ -28,7 +28,7 @@ coverage:
 
 ## Prerequisites
 - Aktor:
-  - Rina, role Manage asset & TAG dengan Group terkelola `Gudang Master A {runId}`, `Gudang Master B {runId}`, `Gudang Master C {runId}`, dan `Gudang Master D {runId}`.
+  - Rina, role Manage asset & TAG dengan Group terkelola `Gudang Master A {runId}`, `Gudang Master B {runId}`, `Gudang Master C {runId}`, `Gudang Master D {runId}`, `Gudang Master E {runId}`, `Gudang Master F {runId}`, dan `Gudang Master G {runId}`.
   - Admin, role Total Control (seluruh client), hanya sebagai aktor lain yang memicu perubahan master.
 - Layar awal: Fixed Asset > Assets > Registration > Draft.
 - Data:
@@ -37,7 +37,7 @@ coverage:
   - DU-105-3: Group `Gudang Master C {runId}`, ada di entitas aktor.
   - DU-105-4: Group `Gudang Master D {runId}`, ada di entitas aktor.
   - DU-105-5: Asset Name `Laptop Master A {runId}` dengan TAG Type `RFID`, Brand `Dell`, dan Model `Latitude 5440`.
-  - DU-105-6: Asset Name `Laptop Master B {runId}` dengan TAG Type `RFID`, Brand `Lenovo`, dan Model `ThinkPad T14`.
+  - DU-105-6: Asset Name `Laptop Master B {runId}` dengan TAG Type `RFID`, Brand `Lenovo`, dan Model `ThinkPad T14`, serta Model `ThinkPad E14` yang tidak diarsipkan.
   - DU-105-7: Asset Name `Laptop Master C {runId}` dengan TAG Type `RFID`, Category `Komputer C {runId}`, Brand `Dell`, dan Model `Latitude 5440`.
   - DU-105-8: Asset Name `Laptop Master D {runId}` dengan TAG Type `RFID`, Brand `Dell`, dan Model `Latitude 5440`.
   - DU-105-9: batch Draft `Gudang Master A {runId}` berisi 1 Item Asset Name `Laptop Master A {runId}`, Brand `Dell`, Model `Latitude 5440`, Quantity `3`, dengan peringatan yang diharapkan `Dell is not available. Choose another Brand.`
@@ -45,6 +45,15 @@ coverage:
   - DU-105-11: batch Draft `Gudang Master C {runId}` berisi 1 Item Asset Name `Laptop Master C {runId}`, Brand `Dell`, Model `Latitude 5440`, Quantity `3`.
   - DU-105-12: batch Draft `Gudang Master D {runId}` berisi 1 Item Asset Name `Laptop Master D {runId}`, Brand `Dell`, Model `Latitude 5440`, Quantity `3`, dengan peringatan yang diharapkan `Laptop Master D {runId} is not available. Choose another Asset Name.`
   - DU-105-13: Category `Komputer Baru {runId}`, ada di master Category.
+  - DU-105-14: Group `Gudang Master E {runId}`, ada di entitas aktor.
+  - DU-105-15: Group `Gudang Master F {runId}`, ada di entitas aktor.
+  - DU-105-16: Group `Gudang Master G {runId}`, ada di entitas aktor.
+  - DU-105-17: Asset Name `Laptop Master E {runId}` dengan TAG Type `RFID`, Brand `Dell`, dan Model `Latitude 5440`.
+  - DU-105-18: Asset Name `Laptop Master F {runId}` dengan TAG Type `RFID`, Brand `Dell`, dan Model `Latitude 7440 {runId}`.
+  - DU-105-19: Asset Name `Laptop Master G {runId}` dengan TAG Type `RFID`, Brand `Acer {runId}`, dan Model `Aspire 5 {runId}`.
+  - DU-105-20: batch Draft `Gudang Master E {runId}` berisi 1 Item Asset Name `Laptop Master E {runId}`, Brand `Dell`, Model `Latitude 5440`, Quantity `3`, dengan peringatan yang diharapkan `Laptop Master E {runId} is not available. Choose another Asset Name.`
+  - DU-105-21: batch Draft `Gudang Master F {runId}` berisi 1 Item Asset Name `Laptop Master F {runId}`, Brand `Dell`, Model `Latitude 7440 {runId}`, Quantity `3`, dengan peringatan yang diharapkan `Latitude 7440 {runId} is not available. Choose another Model.`
+  - DU-105-22: batch Draft `Gudang Master G {runId}` berisi 1 Item Asset Name `Laptop Master G {runId}`, Brand `Acer {runId}`, Model `Aspire 5 {runId}`, Quantity `3`, dengan peringatan yang diharapkan `Acer {runId} is not available. Choose another Brand.`
 
 ## Test Steps
 
@@ -89,3 +98,46 @@ coverage:
 31. Verifikasi tidak ada `Alert` Warning di atas form
 32. Klik tab `Asset`
 33. Verifikasi tombol `Scan QR` tampil pada kolom TAG
+34. Verifikasi tidak ada tombol `Scan RFID` pada kolom TAG
+
+### Asset Name diarsipkan: turunannya dikosongkan dan field lain dipertahankan
+35. Buka Fixed Asset > Assets > Registration > Draft
+36. Ketik Search `Gudang Master D {runId}`, tekan Enter
+37. Klik row action `Edit` pada baris batch `Gudang Master D {runId}`
+38. Verifikasi Brand dikosongkan: placeholder `Select brand` tampil
+39. Verifikasi Model dikosongkan: placeholder `Select model` tampil
+40. Verifikasi Quantity tetap `3`
+41. Verifikasi Group `Gudang Master D {runId}` tetap
+
+### Model diarsipkan: opsi Model dimuat ulang
+42. Buka Fixed Asset > Assets > Registration > Draft
+43. Ketik Search `Gudang Master B {runId}`, tekan Enter
+44. Klik row action `Edit` pada baris batch `Gudang Master B {runId}`
+45. Klik field Model
+46. Verifikasi opsi Model hanya `ThinkPad E14`
+
+### Asset Name dihapus
+47. Admin menghapus Asset Name `Laptop Master E {runId}`
+48. Buka Fixed Asset > Assets > Registration > Draft
+49. Ketik Search `Gudang Master E {runId}`, tekan Enter
+50. Klik row action `Edit` pada baris batch `Gudang Master E {runId}`
+51. Verifikasi `Alert` Warning `Laptop Master E {runId} is not available. Choose another Asset Name.` tampil di atas form
+52. Verifikasi Asset Name dikosongkan: placeholder `Select asset name` tampil
+
+### Model dihapus
+53. Admin menghapus Model `Latitude 7440 {runId}` milik Brand `Dell` pada Asset Name `Laptop Master F {runId}`
+54. Buka Fixed Asset > Assets > Registration > Draft
+55. Ketik Search `Gudang Master F {runId}`, tekan Enter
+56. Klik row action `Edit` pada baris batch `Gudang Master F {runId}`
+57. Verifikasi `Alert` Warning `Latitude 7440 {runId} is not available. Choose another Model.` tampil di atas form
+58. Verifikasi Model dikosongkan: placeholder `Select model` tampil
+59. Verifikasi Brand tetap `Dell`
+
+### Brand dihapus
+60. Admin menghapus Brand `Acer {runId}` dari Asset Name `Laptop Master G {runId}`
+61. Buka Fixed Asset > Assets > Registration > Draft
+62. Ketik Search `Gudang Master G {runId}`, tekan Enter
+63. Klik row action `Edit` pada baris batch `Gudang Master G {runId}`
+64. Verifikasi `Alert` Warning `Acer {runId} is not available. Choose another Brand.` tampil di atas form
+65. Verifikasi Brand dikosongkan: placeholder `Select brand` tampil
+66. Verifikasi Model dikosongkan: placeholder `Select model` tampil

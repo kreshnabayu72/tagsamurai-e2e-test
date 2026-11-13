@@ -4,12 +4,12 @@ title: "Sub tab Draft: Select All lintas halaman"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-BLK-2@tabel-draft"]
 smoke: []
 dependsOn: []
 trace:
-  "EB-BLK-2@tabel-draft": [2, 4, 6, 8]
+  "EB-BLK-2@tabel-draft": [3, 5, 7, 9]
 coverage:
   web: automated
 ---
@@ -28,12 +28,13 @@ coverage:
 
 ### Select All memilih seluruh baris yang cocok lintas halaman
 1. Ketik Search `{runId}`, tekan Enter
-2. Verifikasi tombol `Select All (25 records)` tampil di atas tabel sub tab Draft
-3. Klik `Select All (25 records)`
-4. Verifikasi tombol berubah menjadi `Unselect All`
-5. Pindah ke halaman 3 pada paginasi tabel
-6. Verifikasi baris `Gudang Select 25 {runId}` pada halaman 3 tercentang
+2. Centang baris `Gudang Select 1 {runId}`
+3. Verifikasi tombol `Select All (25 records)` tampil di bar seleksi tabel sub tab Draft
+4. Klik `Select All (25 records)`
+5. Verifikasi tombol berubah menjadi `Unselect All`
+6. Pindah ke halaman 3 pada paginasi tabel
+7. Verifikasi baris `Gudang Select 25 {runId}` pada halaman 3 tercentang
 
 ### Uncheck satu baris mengembalikan tombol Select All
-7. Hilangkan centang baris `Gudang Select 25 {runId}`
-8. Verifikasi tombol `Select All (25 records)` tampil kembali dengan jumlah tetap `25`
+8. Hilangkan centang baris `Gudang Select 25 {runId}`
+9. Verifikasi tombol `Select All (25 records)` tampil kembali dengan jumlah tetap `25`

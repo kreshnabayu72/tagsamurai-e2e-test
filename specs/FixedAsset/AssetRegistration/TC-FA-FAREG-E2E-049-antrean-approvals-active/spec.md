@@ -4,13 +4,13 @@ title: "Antrean Approvals tab Active: isi, hitungan, Search, Filter, dan Review"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-06c", "§4.1#r127", "§4.1#r128", "§4.1#r129", "§4.1#r130", "§4.1#r131", "§4.1#p35", "§4.2.5#p1", "§4.2.5#b1", "§4.2.5#b3", "§5#r3", "§5#r4", "§9.5#r6", "§9.7#r7", "EB-SRC-5@antrean-approvals-active"]
 smoke: []
 dependsOn: []
 trace:
   "§4.2.5#p1": [2, 4, 7]
-  "§4.2.5#b1": [7, 14, 17, 18, 22, 81, 85]
+  "§4.2.5#b1": [7, 14, 17, 18, 22, 81, 85, 88, 89, 91]
   "§4.1#r128": [9, 28, 35, 39, 61]
   "FAREG-LOGIC-06c": [10]
   "§9.7#r7": [10]
@@ -31,15 +31,17 @@ coverage:
 # Antrean Approvals tab Active: isi, hitungan, Search, Filter, dan Review
 
 ## Prerequisites
-- Aktor: Total Control `Maya L`, approver yang bukan pengaju satu pun pengajuan data uji.
-- Layar awal: Approvals > Registration > Active.
+- Aktor: Manage asset & TAG `Maya L`, pemegang capability Update pada Group `Gudang Kenari {runId}`, `Gudang Jabon {runId}`, dan `Gudang Trembesi {runId}` dan tidak pada Group `Gudang Luar Cakupan {runId}`, approver yang bukan pengaju satu pun pengajuan data uji.
+- Layar awal: Assets > Registration > Draft.
 - Data:
-  - DU-049-1: Pengajuan Waiting for Approval dengan Registration ID `REG-20261109-04901`, Group `Gudang Kenari {runId}`, Total Asset `12`, Requested By `Hadi K`, Last Updated `T0 − 1 hari`.
-  - DU-049-2: Pengajuan Waiting for Approval dengan Registration ID `REG-20261108-04902`, Group `Gudang Jabon {runId}`, Total Asset `30`, Requested By `Siti N`, Last Updated `T0 − 2 hari`.
-  - DU-049-3: Pengajuan Waiting for Approval dengan Registration ID `REG-20261107-04903`, Group `Gudang Trembesi {runId}`, Total Asset `5`, Requested By `Rina W`, Last Updated `T0 − 3 hari`.
+  - DU-049-1: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Kenari {runId}`, Total Asset `12`, Requested By `Hadi K.`, Last Updated `T0 − 1 hari`.
+  - DU-049-2: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Jabon {runId}`, Total Asset `30`, Requested By `Siti N.`, Last Updated `T0 − 2 hari`.
+  - DU-049-3: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Trembesi {runId}`, Total Asset `5`, Requested By `Rina W.`, Last Updated `T0 − 3 hari`.
+  - DU-049-4: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Luar Cakupan {runId}`, Total Asset `4`, Requested By `Siti N.`, Last Updated `T0 − 4 hari`, di luar cakupan Group aktor.
   - DU-049-1 memuat 12 aset berstatus Waiting for Approval dalam satu pengajuan.
+  - Pengajuan DU-049-3 diajukan lebih dulu daripada DU-049-2, dan DU-049-2 lebih dulu daripada DU-049-1.
   - Hadi K, Siti N, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing.
-- Kondisi: format tanggal General Settings `dd/MM/yy` dan format waktu 24 jam; kolom Requested By tampil.
+- Kondisi: format tanggal General Settings `dd/MM/yy` dan format waktu 24 jam; kolom Requested By tampil; induk menu `Approvals` pada sidebar tertutup.
 
 ## Test Steps
 
@@ -56,12 +58,12 @@ coverage:
 8. Ketik Search `{runId}`, tekan Enter
 9. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}`, `Gudang Jabon {runId}`, `Gudang Trembesi {runId}` dengan Group tampil sebagai Badge
 10. Verifikasi pengajuan `Gudang Kenari {runId}` yang memuat 12 aset tampil sebagai satu baris dengan Total Asset `12`
-11. Verifikasi Registration ID baris `Gudang Kenari {runId}` bernilai `REG-20261109-04901`
-12. Verifikasi Requested By baris `Gudang Kenari {runId}` bernilai `Hadi K`
+11. Verifikasi Registration ID baris `Gudang Kenari {runId}` berformat `REG-YYYYMMDD-NNNNN` dan sama dengan Registration ID milik DU-049-1
+12. Verifikasi Requested By baris `Gudang Kenari {runId}` bernilai `Hadi K.`[^drift-1]
 13. Verifikasi Last Updated baris `Gudang Kenari {runId}` tampil dengan Date Format `dd/MM/yy` diikuti Time Format 24 jam
 
 ### Urutan awal Last Updated terbaru di atas
-14. Verifikasi urutan baris dari atas ke bawah: `Gudang Kenari {runId}`, `Gudang Jabon {runId}`, `Gudang Trembesi {runId}` (Last Updated terbaru di atas)
+14. Verifikasi baris `Gudang Kenari {runId}` tampil di atas baris `Gudang Jabon {runId}`, dan baris `Gudang Jabon {runId}` tampil di atas baris `Gudang Trembesi {runId}` (Last Updated terbaru di atas)
 
 ### Hitungan pada tab Active tidak mengikuti Search dan Filter
 15. Catat angka N pada tab `Active (N)`
@@ -76,7 +78,7 @@ coverage:
 24. Klik `[Apply]`
 
 ### Search pada kolom Searchable
-25. Ganti isi kotak search dengan `REG-20261108-04902`, tekan Enter
+25. Ganti isi kotak search dengan Registration ID milik DU-049-2, tekan Enter
 26. Verifikasi tabel tab Active memuat baris `Gudang Jabon {runId}` dan tidak memuat baris `Gudang Kenari {runId}`
 27. Ganti isi kotak search dengan `Gudang Trembesi {runId}`, tekan Enter
 28. Verifikasi tabel tab Active memuat baris `Gudang Trembesi {runId}` dan tidak memuat baris `Gudang Kenari {runId}`
@@ -101,7 +103,7 @@ coverage:
 45. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}`, `Gudang Jabon {runId}` dan tidak memuat baris `Gudang Trembesi {runId}`
 46. Klik `[Clear Field]`
 47. Klik `[Apply]`
-48. Pilih opsi `Hadi K` pada field `Requested By`
+48. Pilih opsi `Hadi K.` pada field `Requested By`[^drift-1]
 49. Klik `[Apply]`
 50. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}` dan tidak memuat baris `Gudang Jabon {runId}`
 51. Klik `[Clear Field]`
@@ -114,7 +116,7 @@ coverage:
 
 ### Sort pada kolom Sortable
 58. Klik ikon sort pada header kolom `Registration ID`
-59. Verifikasi urutan baris kolom `Registration ID` naik: `Gudang Kenari {runId}`, `Gudang Jabon {runId}`, `Gudang Trembesi {runId}`
+59. Verifikasi urutan baris kolom `Registration ID` naik: `Gudang Trembesi {runId}`, `Gudang Jabon {runId}`, `Gudang Kenari {runId}`
 60. Klik ikon sort pada header kolom `Group`
 61. Verifikasi urutan baris kolom `Group` naik: `Gudang Jabon {runId}`, `Gudang Kenari {runId}`, `Gudang Trembesi {runId}`
 62. Klik ikon sort pada header kolom `Total Asset`
@@ -140,9 +142,20 @@ coverage:
 78. Verifikasi kolom `Actions` adalah kolom terakhir tabel tab Active, sesudah kolom `Last Updated`
 79. Verifikasi baris `Gudang Kenari {runId}` menampilkan ikon aksi `Review`
 80. Klik ikon `Review` pada baris `Gudang Kenari {runId}`
-81. Verifikasi halaman Approval terbuka dengan breadcrumb `Approvals > Registration > Active > Review` dan judul `REG-20261109-04901`
+81. Verifikasi halaman Approval terbuka dengan breadcrumb `Approvals > Registration > Active > Review` dan judul Registration ID milik DU-049-1
 82. Klik tautan breadcrumb `Active`
 83. Ganti isi kotak search dengan `{runId}`, tekan Enter
-84. Klik Registration ID `REG-20261108-04902`
-85. Verifikasi halaman Approval terbuka dengan judul `REG-20261108-04902`
+84. Klik Registration ID milik DU-049-2
+85. Verifikasi halaman Approval terbuka dengan judul Registration ID milik DU-049-2
 86. Klik tautan breadcrumb `Active`
+
+### Keputusan tidak dibuat dari baris
+87. Ganti isi kotak search dengan `{runId}`, tekan Enter
+88. Verifikasi baris `Gudang Kenari {runId}` menampilkan ikon aksi `Review` sebagai satu-satunya ikon aksi dan tidak menampilkan `Approve`, `Return to Draft`, maupun `Reject`
+
+### Hitungan pada tab Active mengikuti cakupan Group
+89. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}` dan tidak memuat baris `Gudang Luar Cakupan {runId}`
+90. Klik `(←)` pada kotak Search
+91. Verifikasi angka N pada tab `Active (N)` sama dengan nilai Z pada info paginasi `Showing X to Y of Z` tabel tab Active tanpa Search dan Filter
+
+[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

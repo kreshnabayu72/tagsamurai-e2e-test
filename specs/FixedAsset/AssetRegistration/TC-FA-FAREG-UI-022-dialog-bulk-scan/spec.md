@@ -4,7 +4,7 @@ title: "Dialog Bulk Scan: antrean aset dan navigasi"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-REG-23", "FI-REG-25", "FI-REG-26", "FI-REG-27", "FI-REG-28", "§4.1#r15", "§4.1#p28", "§4.8#r24"]
 smoke: []
 dependsOn: []

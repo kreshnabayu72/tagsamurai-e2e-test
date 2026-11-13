@@ -4,7 +4,7 @@ title: "Activity Log: entri registrasi terbaca"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [EB-XM-2@activity-log, FAREG-LOGIC-21b]
 smoke: [FAREG-LOGIC-21b]
 dependsOn: ["Activity Log: daftar entri"]
@@ -34,4 +34,4 @@ coverage:
 4. Pilih `Download as CSV`
 5. Buka Activity Log
 6. Muat ulang halaman
-7. Verifikasi entri baru `Rina W exported Registration-Drafts` tampil di atas entri yang dicatat
+7. Verifikasi entri baru berbentuk `[User] exported [Filename]` dengan User pengguna yang mengunduh dan Filename sama dengan nama berkas yang diunduh pada langkah 4 tampil di atas entri yang dicatat

@@ -4,15 +4,15 @@ title: "Form Register Asset: tab Asset, tabel Asset per Item, badge, dan kartu f
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["F-FAREG-04", "F-FAREG-15", "FAREG-LOGIC-04b", "FAREG-LOGIC-11e", "FAREG-LOGIC-17a", "FLD-REG-06", "S-REG-06", "§4.1#b21", "§4.1#b22", "§4.1#b23", "§4.1#b24", "§4.1#b28", "§4.1#p28", "§4.1#r98", "§4.1#r99", "§4.1#r100", "§4.1#r102", "§4.1#r103", "§4.1#r104", "§4.1#r105", "§4.4#r9", "§4.5#p1", "§9.9#r7"]
 smoke: []
 dependsOn: []
 trace:
   "F-FAREG-04": [32, 35]
   "F-FAREG-15": [12, 13, 14]
-  "FAREG-LOGIC-04b": [14, 67]
-  "FAREG-LOGIC-11e": [31, 32, 33]
+  "FAREG-LOGIC-04b": [14, 67, 79, 80, 81]
+  "FAREG-LOGIC-11e": [31, 32, 33, 84, 85]
   "FAREG-LOGIC-17a": [12, 15]
   "FLD-REG-06": [23, 24]
   "S-REG-06": [70, 71, 75, 76]
@@ -24,15 +24,15 @@ trace:
   "§4.1#p28": [3, 26, 28, 43, 44, 46, 47, 50, 51, 52, 53, 55]
   "§4.1#r98": 8
   "§4.1#r99": [10, 11]
-  "§4.1#r100": [12, 13, 14, 15]
+  "§4.1#r100": [12, 13, 14, 15, 88]
   "§4.1#r102": [16, 17]
   "§4.1#r103": [18, 23]
   "§4.1#r104": [31, 32, 33, 35]
   "§4.1#r105": 19
   "§4.4#r9": 37
-  "§4.5#p1": [31, 62, 64]
+  "§4.5#p1": [31, 62, 64, 92]
   "§9.9#r7": 23
-anchor: [59, 61]
+anchor: [59, 61, 87]
 coverage:
   web: automated
 ---
@@ -49,12 +49,18 @@ coverage:
   - DU-017-3: Item `Printer Epson L3250`, TAG Type `RFID`, Quantity `2`, Custom field per aset `Tanggal Garansi` (tanggal) dan `Jenis Tinta` (pilihan, placeholder `Select Jenis Tinta`); aset `Printer Epson L3250 - 1` ber-Tag `RFID-000401`, Tanggal Garansi `15/11/2026`, Jenis Tinta `Black`, Condition `Normal`, Ready; aset `Printer Epson L3250 - 2` tanpa Tag, tanpa Tanggal Garansi, tanpa Jenis Tinta, Condition `Normal`, kekurangan `Tag`.
   - DU-017-4: Item `Meja Lipat Aluminium`, TAG Type `Non-TAG`, Quantity `1`; aset `Meja Lipat Aluminium - 1`.
   - DU-017-5: Item `Laptop Dell Latitude 5440` dengan 12 aset bernama `Laptop Dell Latitude 5440 - 1` sampai `Laptop Dell Latitude 5440 - 12`.
+  - DU-017-8: Custom field `Catatan Lokasi`, Scope `General`, teks, tidak wajib, Value Type Specific (Nilai per aset), berlaku bagi semua Asset Name.
+  - DU-017-9: Item `Laptop Dell Latitude 5440` tanpa Brand dan tanpa Model, TAG Type `RFID`, Quantity `1`, Custom field per aset `Serial Number` (teks, wajib); aset `Laptop Dell Latitude 5440 - 1` tanpa Serial Number dan tanpa Tag, Condition `Normal`, kekurangan berurutan `Brand`, `Model`, `Serial Number`, `Tag`.
+  - DU-017-10: Item `Kursi Kerja Ergonomis` dengan Brand `Ergotec` dan Model `ErgoMesh 200`, TAG Type `QR`, Quantity `1`; aset `Kursi Kerja Ergonomis - 1` tanpa Tag, Condition `Damaged` dan Damage note kosong, kekurangan berurutan `Damage note`, `Tag`.
 - Kondisi:
   - K1: form `Edit` draft tersimpan dengan Item DU-017-1, DU-017-2, dan DU-017-3; format tanggal General Settings `DD/MM/YYYY`; kartu filter berjumlah `All` 7, `Needs data` 3, `Ready` 4.
   - K2: form `Edit` draft tersimpan dengan Item DU-017-4 dan DU-017-2.
   - K3: form `Register Asset` baru tanpa Asset Name yang dipilih.
   - K4: form `Edit` draft tersimpan dengan Item DU-017-2 saja.
   - K5: form `Edit` draft tersimpan dengan Item DU-017-5.
+  - K6: form `Edit` draft tersimpan dengan Item DU-017-1 dan DU-017-2; master Custom field DU-017-8.
+  - K7: form `Edit` draft tersimpan dengan Item DU-017-9 dan DU-017-10.
+  - K8: sama dengan K1; lebar viewport sempit.
 
 ## Test Steps
 ### Accordion per Item, badge, dan kolom tabel aset
@@ -146,3 +152,27 @@ coverage:
 74. Klik kartu `Needs data`
 75. Verifikasi tabel menampilkan `No results found`
 76. Verifikasi tabel menampilkan `Try adjusting your search or filter.`
+
+### Custom field Scope General tampil di semua Item dan Scope Specific hanya pada Asset Name-nya
+77. Tampilkan Halaman `Register Asset` dengan kondisi K6
+78. Klik tab `Asset`
+79. Verifikasi tabel Item `Kursi Kerja Ergonomis` memuat kolom Custom field `Catatan Lokasi`
+80. Verifikasi tabel Item `Laptop Dell Latitude 5440` memuat kolom Custom field `Catatan Lokasi` dan `Serial Number`
+81. Verifikasi tabel Item `Kursi Kerja Ergonomis` tidak memuat kolom Custom field `Serial Number`
+
+### Kekurangan pertama Status mengikuti urutan kolom
+82. Tampilkan Halaman `Register Asset` dengan kondisi K7
+83. Klik tab `Asset`
+84. Verifikasi Status `Laptop Dell Latitude 5440 - 1` menampilkan kekurangan pertama `Brand` dan `+3`
+85. Verifikasi Status `Kursi Kerja Ergonomis - 1` menampilkan kekurangan pertama `Damage note` dan `+1`
+
+### Tabel Item tab General Information tanpa isian Custom field
+86. Tampilkan Halaman `Register Asset` dengan kondisi K1
+87. Verifikasi tabel Item memuat `Laptop Dell Latitude 5440`, `Kursi Kerja Ergonomis`, dan `Printer Epson L3250`
+88. Verifikasi tidak ada kolom atau isian Custom field `Serial Number`, `Tanggal Garansi`, dan `Jenis Tinta` di tabel Item
+
+### Panel samping aset turun di bawah form pada lebar sempit
+89. Tampilkan Halaman `Register Asset` dengan kondisi K8
+90. Klik tab `Asset`
+91. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
+92. Verifikasi panel samping aset `Laptop Dell Latitude 5440 - 1` berada di bawah form

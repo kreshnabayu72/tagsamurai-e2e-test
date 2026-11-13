@@ -4,7 +4,7 @@ title: "Konkurensi: Submit ganda, Tag direbut, dan keputusan bersamaan"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-19g, "§9.4.2#r17", "§9.4.2#r50", "§9.4.2#r51", EB-CON-3, EB-EDG-1]
 smoke: []
 dependsOn: []
@@ -14,7 +14,7 @@ trace:
   "§9.4.2#r17": [20, 22, 23]
   "§9.4.2#r50": [10, 11, 12]
   "§9.4.2#r51": [15, 16, 17]
-  EB-CON-3: [3, 20, 22, 26]
+  EB-CON-3: [3, 20, 22, 26, 30, 31]
   EB-EDG-1: [7, 26]
 ---
 
@@ -37,6 +37,8 @@ trace:
   - DU-138-9: pengajuan `Waiting for Approval` milik Rina W berisi `2` aset `Meja Kerja {runId}`.
   - DU-138-10: pengajuan `Waiting for Approval` milik Rina W berisi `2` aset `Meja Kerja {runId}`.
   - DU-138-11: batch Draft milik Rina W di Group `Gudang Tangerang {runId}`, Item `Meja Kerja {runId}` Quantity `1`.
+  - DU-138-16: aset `Active` `Meja Kerja {runId}` di Group `Gudang Tangerang {runId}`, Brand `Olympic`, Model `OL-138`.
+  - Asset Name `Meja Kerja {runId}` (DU-138-2) memuat pasangan Brand dan Model `Olympic` / `OL-138` dan `Lion` / `LN-138`.
 - Kondisi:
   - kuota Group `Gudang Tangerang {runId}` dan kuota tenant cukup untuk seluruh pengajuan yang terbentuk.
 
@@ -70,10 +72,17 @@ trace:
 19. Budi mengirim keputusan `Approve` untuk kedua aset pengajuan DU-138-9 yang ia buka sebelum pembatalan
 20. Verifikasi keputusan ditolak server tanpa mutasi dan pengajuan DU-138-9 tetap `Canceled`
 21. Budi dan Citra mengirim keputusan atas pengajuan DU-138-10 pada saat yang sama: Budi `Approve` untuk kedua aset, Citra `Reject` untuk kedua aset
-22. Verifikasi pengajuan DU-138-10 berakhir pada tepat satu status akhir dari salah satu keputusan dan keputusan lainnya ditolak tanpa mutasi
-23. Verifikasi slot Reserved dan Used Group hanya berubah menurut satu keputusan yang diterima, tanpa pelepasan Reserved ganda
+22. Verifikasi tepat satu dari kedua keputusan atas pengajuan DU-138-10 diterima server dan keputusan yang lain ditolak tanpa mutasi
+23. Verifikasi status akhir pengajuan DU-138-10 serta slot Reserved dan Used Group mengikuti hanya keputusan yang diterima server, tanpa pelepasan Reserved ganda
 
 ### Delete draft yang sudah dihapus
 24. Rina W menghapus batch DU-138-11
 25. Rina W menghapus batch DU-138-11 sekali lagi
 26. Verifikasi penghapusan kedua ditolak dengan pesan `This draft is no longer available.` tanpa efek ganda
+
+### Edit Active oleh dua user pada aset yang sama tetap menegakkan guard
+27. Rina W dan Lina sama-sama membaca aset DU-138-16 dengan Brand `Olympic` dan Model `OL-138`
+28. Rina W menyimpan Edit Active atas aset DU-138-16 dengan Brand `Lion` dan Model `LN-138`
+29. Lina menyimpan Edit Active atas aset DU-138-16 dari keadaan yang ia baca sebelum Save Rina W, dengan Brand `Merek Tak Terdaftar {runId}`
+30. Verifikasi Save Rina W diterima dan Brand aset DU-138-16 bernilai `Lion` dengan Model `LN-138`
+31. Verifikasi Save Lina ditolak server karena referensi Brand tidak valid dan aset DU-138-16 tidak berubah oleh Save itu

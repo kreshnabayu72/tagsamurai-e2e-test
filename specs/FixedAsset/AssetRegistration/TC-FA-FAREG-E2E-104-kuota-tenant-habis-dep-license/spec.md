@@ -4,7 +4,7 @@ title: "Kuota tenant habis: Activate diblok"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [§9.4.2#r8, D-REG-08]
 smoke: [D-REG-08]
 dependsOn: ["License: kuota tenant"]

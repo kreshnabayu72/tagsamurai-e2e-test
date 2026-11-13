@@ -4,7 +4,7 @@ title: "Halaman Approval: Bulk Action per grup Accordion"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FI-REG-16, FI-REG-17, FI-REG-18, V-REG-15, §4.2.4#p2, §4.2.4#b5, §4.8#r22, §9.9#r19]
 smoke: []
 dependsOn: []

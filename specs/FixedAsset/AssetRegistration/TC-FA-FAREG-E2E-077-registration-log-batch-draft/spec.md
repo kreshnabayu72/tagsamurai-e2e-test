@@ -4,7 +4,7 @@ title: "Registration Log batch Draft: Created, Edited, dan batch kembalian"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06o, "§8.3#p1", "§8.3#r1", "§8.3#r2", "§8.3#r8"]
 smoke: []
 dependsOn: []
@@ -30,6 +30,7 @@ coverage:
   - DU-077-3: batch Draft kembalian milik Rina W di Group `Gudang Kembalian {runId}`, Total Asset `2`, dengan Origin berisi Registration ID pengajuan asal yang aset-nya dikembalikan ke Draft.
   - DU-077-4: input form yang dibuat langkah: Group `Gudang Log {runId}`, Asset Name `Office Desk`, Brand `Kayu Jati`, Model `No Model`, Quantity `2`.
   - DU-077-5: perubahan form yang dibuat langkah: Quantity `3`.
+  - Node Registration Log yang diharapkan `Draft created by Rina W.` dan `Draft edited by Rina W.`, dari Rina W; nama singkat Rina W tampil `Rina W.`.
 
 ## Test Steps
 
@@ -46,7 +47,7 @@ coverage:
 10. Ketik Search `{runId}`, tekan Enter
 11. Klik ikon `Registration Log` pada baris Group `Gudang Log {runId}`
 12. Verifikasi dialog `Registration Log` terbuka dengan Badge `Draft`
-13. Verifikasi node timeline berjudul `Draft created by Rina W`
+13. Verifikasi node timeline berjudul `Draft created by Rina W.`[^drift-1]
 14. Verifikasi node itu memuat Total Asset `2`
 15. Klik ikon `✕` pada dialog Registration Log
 
@@ -56,7 +57,7 @@ coverage:
 18. Klik `[Save draft]`
 19. Klik `[Cancel]` pada form; perubahan sudah disimpan sehingga tidak ada dialog Unsaved Changes
 20. Klik ikon `Registration Log` pada baris Group `Gudang Log {runId}`
-21. Verifikasi node timeline berjudul `Draft edited by Rina W`
+21. Verifikasi node timeline berjudul `Draft edited by Rina W.`[^drift-1]
 22. Klik ikon `✕` pada dialog Registration Log
 
 ### Batch Draft kembalian dibuka dengan node Created by system
@@ -64,3 +65,5 @@ coverage:
 24. Verifikasi node timeline berjudul `Draft created by System`
 25. Verifikasi node itu memuat Total Asset `2`
 26. Verifikasi node itu memuat baris `Origin:` berisi Registration ID pengajuan asal
+
+[^drift-1]: Drift PRD vs override. PRD §8.3 node log `Draft created by [User]` dan `Draft edited by [User]` memakai nama singkat pengguna; `prd-conventions.md` §9.13: `[First Name] [Last Initial]` (contoh tanpa titik: `John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: override O-4 (SB-6), sehingga nama singkat `Rina W.`.

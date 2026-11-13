@@ -4,7 +4,7 @@ title: "Antrean Approvals: Download"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.2.5#b3", "§5#r6"]
 smoke: []
 dependsOn: []
@@ -19,10 +19,10 @@ coverage:
 # Antrean Approvals: Download
 
 ## Prerequisites
-- Aktor: Total Control `Maya L`.
+- Aktor: Total Control `Dian P`, seluruh client, bukan pengaju satu pun pengajuan data uji.
 - Layar awal: Approvals > Registration > Active.
 - Data:
-  - DU-051-1: Pengajuan Waiting for Approval dengan Registration ID `REG-20261109-05101`, Group `Gudang Unduh Aktif {runId}`, Total Asset `6`, Requested By `Hadi K`, Last Updated `T0 − 1 hari`.
+  - DU-051-1: Pengajuan Waiting for Approval dengan Registration ID `REG-20261109-05101`, Group `Gudang Unduh Aktif {runId}`, Total Asset `6`, Requested By `Hadi K.`, Last Updated `T0 − 1 hari`.
   - DU-051-2: Pengajuan Waiting for Approval dengan Registration ID `REG-20261108-05102`, Group `Gudang Unduh Aktif Dua {runId}`, Total Asset `9`, Requested By `Siti N`, Last Updated `T0 − 2 hari`.
   - DU-051-3: Pengajuan History dengan Registration ID `REG-20261107-05103`, Group `Gudang Unduh Riwayat {runId}`, Total Asset `7`, Status `Approved`, Requested By `Rina W`, Approver `Maya L`, Last Updated `T0 − 3 hari`.
   - Hadi K, Siti N, Rina W, dan Maya L adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing.
@@ -42,7 +42,7 @@ coverage:
 
 ### Download dari tab Active mengikuti Filter
 10. Klik ikon Filter
-11. Pilih opsi `Hadi K` pada field `Requested By`
+11. Pilih opsi `Hadi K.` pada field `Requested By`[^drift-1]
 12. Klik `[Apply]`
 13. Verifikasi tabel tab Active memuat baris `Gudang Unduh Aktif {runId}` dan tidak memuat baris `Gudang Unduh Aktif Dua {runId}`
 14. Klik `[Download]`
@@ -62,3 +62,5 @@ coverage:
 26. Klik `[Download]`
 27. Pilih `Download as XLSX`
 28. Verifikasi berkas `Approvals-Registration` dengan ekstensi `.xlsx` terunduh dan memuat baris dengan Registration ID `REG-20261107-05103`
+
+[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

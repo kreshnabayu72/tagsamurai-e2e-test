@@ -4,7 +4,7 @@ title: "Send dari mobile: validasi dan batch satu aset"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-20n, FAREG-LOGIC-20o, "§9.2#p8", "§9.6#r8"]
 smoke: []
 dependsOn: []
@@ -12,7 +12,7 @@ trace:
   FAREG-LOGIC-20n: [6, 9, 10]
   FAREG-LOGIC-20o: [3, 4, 5, 13, 15, 20, 21]
   "§9.2#p8": [13, 15]
-  "§9.6#r8": [3, 7, 16, 18, 25, 27, 28]
+  "§9.6#r8": [3, 7, 16, 18, 25, 27, 28, 29]
 owner: BE
 ---
 # Send dari mobile: validasi dan batch satu aset
@@ -73,3 +73,6 @@ owner: BE
 26. Rina mengirim Send dari mobile dengan Group `Gudang Mataram {runId}`, Asset Name `Laptop {runId}`, Brand `Dell`, Model `Latitude 5440`, dan Tag RFID `E280-1280-0001 {runId}` yang sudah dipakai batch Draft pertama
 27. Verifikasi Send ditolak server dengan pesan yang memuat Tag `E280-1280-0001 {runId}` dan status `Reserved`
 28. Verifikasi jumlah batch Draft milik Rina tidak bertambah akibat Send yang ditolak
+
+### Send tercatat di Activity Log dengan Source Mobile
+29. Verifikasi Activity Log memuat entri Action `Create` atas batch Draft hasil Send dari langkah 2 dengan Source `Mobile`

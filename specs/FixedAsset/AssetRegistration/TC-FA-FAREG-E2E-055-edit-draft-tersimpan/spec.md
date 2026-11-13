@@ -4,13 +4,13 @@ title: "Edit draft: perubahan tersimpan dan Save tanpa perubahan"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§9.4.2#r63, §9.7#r2, EB-FB-3@edit-draft, EB-FRM-9, FAREG-LOGIC-03r, T-REG-14]
 smoke: [FAREG-LOGIC-03r, T-REG-14]
 dependsOn: []
 trace:
   §9.4.2#r63: [8, 12, 36]
-  §9.7#r2: [16, 18, 28]
+  §9.7#r2: [16, 18, 28, 58]
   EB-FB-3@edit-draft: [12, 36]
   EB-FRM-9: [25, 26, 27, 41, 42, 46]
   FAREG-LOGIC-03r: [48, 54]
@@ -23,10 +23,10 @@ coverage:
 # Edit draft: perubahan tersimpan dan Save tanpa perubahan
 
 ## Prerequisites
-- Aktor: `Rina W` (Manage asset & TAG, Group terkelola `Gudang Edit A {runId}` dan `Gudang Edit B {runId}`).
+- Aktor: `Rina W` (nama singkat `Rina W.`; Manage asset & TAG, Group terkelola `Gudang Edit A {runId}` dan `Gudang Edit B {runId}`).
 - Layar awal: Fixed Asset > Assets > Registration > sub tab Draft.
 - Data:
-  - DU-055-1: Draft tersimpan milik `Rina W` untuk Group `Gudang Edit A {runId}`. Item 1: `Laptop`, `Dell`, `Latitude 5440`, Quantity `2`. Aset 1: Serial Number `SN-0001`, Tag RFID `Verified`, Condition `Normal`, Alias Name `Laptop Direksi`, Photo `2`. Aset 2: Serial Number `SN-0002`, Tag RFID `Verified`, Condition `Damaged`, Damage note `Layar retak di sudut kiri`, tanpa Photo. Kedua aset berstatus `✓ Ready`.
+  - DU-055-1: Draft tersimpan milik `Rina W` untuk Group `Gudang Edit A {runId}`. Item 1: `Laptop`, `Dell`, `Latitude 5440`, Quantity `2`. Aset 1: Serial Number `SN-0001`, Tag RFID `Verified`, Condition `Normal`, Alias Name `Laptop Direksi`, Photo `2`. Aset 2: Serial Number `SN-0002`, Tag RFID `Verified`, Condition `Damaged`, Damage note `Layar retak di sudut kiri`, tanpa Photo. Kedua aset berstatus `✓ Ready`, sehingga Progress batch `100%` (2 dari 2 aset Ready).
   - DU-055-2: Draft tersimpan milik `Rina W` untuk Group `Gudang Edit B {runId}`. Item 1: `Laptop`, `Dell`, `Latitude 5440`, Quantity `1`. Aset 1: Condition `Normal`, field opsional (Alias Name, Photo, Damage note) kosong.
   - Register Asset Bulk Limit bernilai `100`.
 
@@ -35,7 +35,7 @@ coverage:
 ### Save draft tanpa perubahan memberi toast netral dan tanpa log baru
 1. Ketik Search `Gudang Edit A {runId}`, tekan Enter
 2. Klik row action `Registration Log` pada baris
-3. Verifikasi timeline memuat node `Draft created by Rina W`
+3. Verifikasi timeline memuat node `Draft created by Rina W.`[^drift-1]
 4. Catat jumlah node pada timeline
 5. Tekan `Esc` untuk menutup dialog Registration Log
 6. Klik Group `Gudang Edit A {runId}` pada baris untuk membuka form Edit
@@ -43,8 +43,8 @@ coverage:
 8. Verifikasi toast `No changes to save.` tampil
 9. Klik `[Cancel]` pada form (form belum diubah)
 10. Klik row action `Registration Log` pada baris
-11. Verifikasi timeline masih memuat node `Draft created by Rina W`
-12. Verifikasi jumlah node sama dengan jumlah yang dicatat sebelum Save draft dan tidak ada node `Draft edited by Rina W` baru
+11. Verifikasi timeline masih memuat node `Draft created by Rina W.`[^drift-1]
+12. Verifikasi jumlah node sama dengan jumlah yang dicatat sebelum Save draft dan tidak ada node `Draft edited by Rina W.` baru[^drift-1]
 13. Tekan `Esc` untuk menutup dialog Registration Log
 
 ### Perubahan nyata tersimpan, field lain tetap, dan bertahan setelah muat ulang
@@ -97,3 +97,9 @@ coverage:
 54. Verifikasi Name aset 1 kini diawali `Office Desk`, bukan `Laptop`
 55. Klik `[Cancel]` pada form
 56. Klik `[Leave]` pada dialog Unsaved Changes
+
+### Progress batch di sub tab Draft turun sesudah edit disimpan
+57. Ganti isi kotak search dengan `Gudang Edit A {runId}`, tekan Enter
+58. Verifikasi Progress batch `Gudang Edit A {runId}` `50%` (1 dari 2 aset Ready), turun dari `100%` sebelum Condition aset 1 diubah menjadi `Damaged`
+
+[^drift-1]: Drift PRD vs override. PRD §8.3 node log memakai nama singkat pengguna; `prd-conventions.md` §9.13: `[First Name] [Last Initial]` (contoh tanpa titik: `John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: override O-4 (SB-6), sehingga nama singkat `Rina W.`.

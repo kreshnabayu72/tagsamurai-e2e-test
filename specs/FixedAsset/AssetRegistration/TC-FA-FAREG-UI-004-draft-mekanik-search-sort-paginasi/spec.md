@@ -4,7 +4,7 @@ title: "Sub tab Draft: siklus kotak Search, indikator sort, dan paginasi"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§5#r2", "§5#r3", "EB-SRC-4@tabel-draft", "EB-SRT-3@tabel-draft", "EB-TBL-7@tabel-draft"]
 smoke: []
 dependsOn: []

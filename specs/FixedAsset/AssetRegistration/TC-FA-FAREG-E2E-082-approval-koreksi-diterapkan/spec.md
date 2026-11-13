@@ -4,7 +4,7 @@ title: "Koreksi approver: staged, diterapkan saat Approve, dan terbaca di Approv
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-07g, FAREG-LOGIC-07j, "§9.7#r16", FAREG-LOGIC-07d, T-REG-11]
 smoke: [FAREG-LOGIC-07d, T-REG-11]
 dependsOn: []
@@ -29,6 +29,7 @@ coverage:
   - DU-082-3: satu Item pada pengajuan itu: Asset Name `Laptop`, Brand `Dell`, Model `Latitude 5440`, Quantity `2`, Condition `Normal`, TAG Type `RFID`; Total Asset `2`.
   - DU-082-4: Tag RFID `RFID-082-{n}-{runId}` terpasang dengan Badge `Verified` pada setiap aset, `{n}` bernomor 1 sampai 2.
   - DU-082-5: Budi S (Manage asset & TAG dengan capability Update pada Group `Gudang Koreksi {runId}`).
+  - Nama singkat Budi S tampil `Budi S.`.
   - DU-082-6: Model `Latitude 5540` milik Brand `Dell`, tersedia di master Model.
   - DU-082-7: koreksi yang diisi langkah: Model aset ke-1 menjadi `Latitude 5540`.
 - Kondisi:
@@ -61,4 +62,6 @@ coverage:
 20. Klik ikon `Detail` pada baris Group `Gudang Koreksi {runId}`
 21. Verifikasi ikon `Changes by approver` tampil pada header halaman Detail
 22. Klik ikon `Changes by approver`
-23. Verifikasi dialog `Approver Corrections` memuat baris dengan Field `Laptop (Model)`, Old Value `Latitude 5440`, New Value `Latitude 5540`, dan Modified By `Budi S`
+23. Verifikasi dialog `Approver Corrections` memuat baris dengan Field `Laptop (Model)`, Old Value `Latitude 5440`, New Value `Latitude 5540`, dan Modified By `Budi S.`[^drift-1]
+
+[^drift-1]: Drift PRD vs override. PRD FAREG-LOGIC-07g: kolom Modified By (= approver), tampil sebagai nama singkat pengguna; `prd-conventions.md` §9.13: `[First Name] [Last Initial]` (contoh tanpa titik: `John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`); baris O-5: pengguna yang tercatat (`modifiedBy`) ditampilkan sebagai nama singkat. Diasersi: override O-4 dan O-5 (SB-6), sehingga nama singkat `Budi S.`.

@@ -4,7 +4,7 @@ title: "Edit draft: Apply to all menerapkan nilai ke semua aset Item"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-01r, §9.7#r19, T-REG-16, FI-REG-13]
 smoke: [T-REG-16, FI-REG-13]
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Keputusan approval: semua aset Approve"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-20h, "§9.7#r10", FAREG-LOGIC-06h, D-REG-10, T-REG-08]
 smoke: [FAREG-LOGIC-06h, D-REG-10, T-REG-08]
 dependsOn: []

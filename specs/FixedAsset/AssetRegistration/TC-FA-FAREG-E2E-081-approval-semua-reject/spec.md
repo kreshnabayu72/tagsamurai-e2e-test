@@ -4,7 +4,7 @@ title: "Keputusan approval: tidak ada aset Approve"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.4.2#r22", "§9.7#r12", FAREG-LOGIC-06h]
 smoke: [FAREG-LOGIC-06h]
 dependsOn: []

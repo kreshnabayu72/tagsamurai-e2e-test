@@ -4,7 +4,7 @@ title: "Sub tab Draft: Loading, empty state, gagal muat, dan Download gagal"
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["S-REG-01", "S-REG-07", "S-REG-08", "§4.3#r5", "EB-DL-2@tabel-draft", "EB-TBL-1@tabel-draft"]
 smoke: []
 dependsOn: []

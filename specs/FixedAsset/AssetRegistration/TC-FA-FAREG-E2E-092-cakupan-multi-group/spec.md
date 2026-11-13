@@ -4,7 +4,7 @@ title: "Cakupan Group: pengguna dengan beberapa Group melihat gabungan draft"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-02e", "§9.2#p66", "§9.2#p68", "§9.2#p70", "§9.2#p71", "§9.5#r9"]
 smoke: []
 dependsOn: []

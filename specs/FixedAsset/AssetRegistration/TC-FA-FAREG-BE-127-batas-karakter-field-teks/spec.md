@@ -4,7 +4,7 @@ title: "Batas karakter field teks di server"
 layer: be-e2e
 priority: Medium
 caseType: Edge
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-01s, V-REG-18, "§9.9#r14", EB-FRM-4@alias-name, EB-FRM-4@damage-note, EB-FRM-4@reason, EB-FRM-4@skip-pairing-note]
 smoke: []
 dependsOn: []

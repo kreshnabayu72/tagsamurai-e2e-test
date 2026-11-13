@@ -4,7 +4,7 @@ title: "Form Register Asset: Remove from List, Quantity turun, dan dialog Remove
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-REG-18", "FAREG-LOGIC-03o", "FAREG-LOGIC-03u", "FI-REG-07", "S-REG-16", "T-REG-12", "T-REG-13", "T-REG-15", "§4.8#r25", "§9.6#r13", "§9.6#r14", "EB-FB-1@remove-item"]
 smoke: []
 dependsOn: []

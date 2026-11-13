@@ -4,7 +4,7 @@ title: "Bulk Delete draft: pilihan campuran dan tanpa batch yang dapat dihapus"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-10e, §4.8#r21, EB-BLK-3, T-REG-18, D-REG-28]
 smoke: [T-REG-18, D-REG-28]
 dependsOn: []

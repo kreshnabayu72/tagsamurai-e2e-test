@@ -4,7 +4,7 @@ title: "Sub tab Waiting for Approval dan History: Download"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#b8", "§5#r6"]
 smoke: []
 dependsOn: []
@@ -19,12 +19,12 @@ coverage:
 # Sub tab Waiting for Approval dan History: Download
 
 ## Prerequisites
-- Aktor: Total Control `Maya L`.
+- Aktor: Total Control `Dian P`, seluruh client.
 - Layar awal: Assets > Registration > Waiting for Approval.
 - Data:
   - DU-048-1: Pengajuan Waiting for Approval dengan Registration ID `REG-20261109-04801`, Group `Gudang Unduh Menunggu {runId}`, Total Asset `6`, Requested By `Maya L`, Last Updated `T0 − 1 hari`.
   - DU-048-2: Pengajuan History dengan Registration ID `REG-20261108-04802`, Group `Gudang Unduh Riwayat {runId}`, Total Asset `7`, Status `Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`.
-  - Maya L dan Hadi K adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing.
+  - Maya L dan Hadi K adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing; Maya L dan Hadi K bukan Total Control.
 
 ## Test Steps
 

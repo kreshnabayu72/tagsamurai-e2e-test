@@ -4,7 +4,7 @@ title: "Submit tanpa pairing TAG dengan alasan"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-04p, "§9.4.2#r56", V-REG-11]
 smoke: [V-REG-11]
 dependsOn: []

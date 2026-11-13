@@ -4,29 +4,29 @@ title: "Validasi scan Tag per status dan tipe"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [F-FAREG-02.k1, V-REG-05, V-REG-06, V-REG-07, V-REG-08, V-REG-09, "§9.4.2#r28", "§9.4.2#r32", "§9.4.2#r33", "§9.4.2#r34", "§9.4.2#r35", "§9.4.2#r36", "§9.4.2#r37", "§9.4.2#r38", "§9.4.2#r39", "§9.4.2#r40", "§9.4.2#r41", "§9.9#r12"]
 smoke: []
 dependsOn: []
 trace:
-  F-FAREG-02.k1: [17, 19, 21, 23, 25, 27, 29, 36]
+  F-FAREG-02.k1: [17, 19, 21, 23, 25, 27, 29, 49]
   V-REG-05: [10, 12, 14]
-  V-REG-06: [17, 19, 21, 23, 25, 27, 29, 47]
+  V-REG-06: [17, 19, 21, 23, 25, 27, 29, 45]
   V-REG-07: [32, 34]
-  V-REG-08: [38]
-  V-REG-09: [36]
+  V-REG-08: [36]
+  V-REG-09: [49]
   "§9.4.2#r28": [17, 19, 30]
-  "§9.4.2#r32": [38, 39]
+  "§9.4.2#r32": [36, 37]
   "§9.4.2#r33": [10, 12, 14, 15]
   "§9.4.2#r34": [17, 30]
   "§9.4.2#r35": [19]
   "§9.4.2#r36": [21, 23, 25, 27]
-  "§9.4.2#r37": [44, 47]
+  "§9.4.2#r37": [42, 45]
   "§9.4.2#r38": [29]
   "§9.4.2#r39": [32, 34]
-  "§9.4.2#r40": [36]
-  "§9.4.2#r41": [41, 42]
-  "§9.9#r12": [2, 4, 6, 8]
+  "§9.4.2#r40": [49, 50]
+  "§9.4.2#r41": [39, 40]
+  "§9.9#r12": [2, 4, 6, 8, 47]
 owner: BE
 ---
 
@@ -55,6 +55,8 @@ owner: BE
   - DU-124-18: Tag RFID `E280-1240-0017 {runId}`, status `To be Returned`, Return Group `Gudang Manado {runId}`.
   - DU-124-19: Tag user `USR-1240-0001 {runId}`, status `Paired` pada pengguna `Agus Pratama`.
   - DU-124-20: Tag produk lain `SUP-1240-0001 {runId}` milik produk `Supply Asset`.
+  - DU-124-24: batch Draft milik Rina, Group `Gudang Makassar {runId}`, satu Item `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Quantity `2`, slot Tag RFID kedua aset kosong.
+  - DU-124-25: Tag RFID `E280-1240-0021 {runId}`, status `Available`.
 - Kondisi:
   - Approval Workflow tidak aktif untuk `Gudang Makassar {runId}`.
 
@@ -102,21 +104,26 @@ owner: BE
 33. Rina memindai Tag produk lain `SUP-1240-0001 {runId}` pada slot RFID aset kedua batch DU-124-5
 34. Verifikasi pemindaian ditolak dengan pesan `This TAG is used by Supply Asset`
 
-### Tag duplikat di form dan Rescan Tag yang sama ditolak
-35. Rina memindai Tag RFID `E280-1240-0001 {runId}` pada slot RFID aset kedua batch DU-124-5
-36. Verifikasi pemindaian ditolak dengan pesan `This TAG has already been scanned`
-37. Rina memindai ulang Tag RFID `E280-1240-0001 {runId}` pada slot RFID aset pertama batch DU-124-5
-38. Verifikasi pemindaian ditolak dengan pesan `This TAG is the same as the current TAG`
-39. Verifikasi slot RFID aset pertama tetap berstatus `Verified` dengan Tag `E280-1240-0001 {runId}`
+### Rescan Tag yang sama ditolak
+35. Rina memindai ulang Tag RFID `E280-1240-0001 {runId}` pada slot RFID aset pertama batch DU-124-5
+36. Verifikasi pemindaian ditolak dengan pesan `This TAG is the same as the current TAG`
+37. Verifikasi slot RFID aset pertama tetap berstatus `Verified` dengan Tag `E280-1240-0001 {runId}`
 
 ### Tag bertipe lain dari slot ditolak
-40. Rina memindai Tag RFID `E280-1240-0002 {runId}` pada slot QR aset kedua batch DU-124-5
-41. Verifikasi pemindaian ditolak dengan pesan `This slot needs a QR TAG`
-42. Verifikasi slot QR aset kedua tetap berstatus `Unverified`
+38. Rina memindai Tag RFID `E280-1240-0002 {runId}` pada slot QR aset kedua batch DU-124-5
+39. Verifikasi pemindaian ditolak dengan pesan `This slot needs a QR TAG`
+40. Verifikasi slot QR aset kedua tetap berstatus `Unverified`
 
 ### Tag To be Returned dengan Return Group dalam cakupan diterima
-43. Rina memindai Tag RFID `E280-1240-0003 {runId}` pada slot RFID aset kedua batch DU-124-5
-44. Verifikasi pemindaian diterima dan slot RFID aset kedua berstatus `Verified`
-45. Rina mengirim Save draft atas batch DU-124-5
-46. Dewi memindai Tag RFID `E280-1240-0003 {runId}` pada slot RFID aset pertama batch DU-124-6
-47. Verifikasi pemindaian ditolak dengan pesan yang memuat Tag `E280-1240-0003 {runId}` dan status `Reserved`, bukan `To be Returned`
+41. Rina memindai Tag RFID `E280-1240-0003 {runId}` pada slot RFID aset kedua batch DU-124-5
+42. Verifikasi pemindaian diterima dan slot RFID aset kedua berstatus `Verified`
+43. Rina mengirim Save draft atas batch DU-124-5
+44. Dewi memindai Tag RFID `E280-1240-0003 {runId}` pada slot RFID aset pertama batch DU-124-6
+45. Verifikasi pemindaian ditolak dengan pesan yang memuat Tag `E280-1240-0003 {runId}` dan status `Reserved`, bukan `To be Returned`
+
+### Tag duplikat di form ditolak
+46. Rina memindai Tag RFID `E280-1240-0021 {runId}` pada slot RFID aset pertama batch DU-124-24 tanpa mengirim Save draft
+47. Verifikasi pemindaian diterima dan slot RFID aset pertama batch DU-124-24 berstatus `Verified`
+48. Rina memindai Tag RFID `E280-1240-0021 {runId}` pada slot RFID aset kedua batch DU-124-24
+49. Verifikasi pemindaian ditolak dengan pesan `This TAG has already been scanned`
+50. Verifikasi slot RFID aset kedua batch DU-124-24 berstatus `Unverified`

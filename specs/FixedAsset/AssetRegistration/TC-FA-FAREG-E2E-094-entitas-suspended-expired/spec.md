@@ -4,7 +4,7 @@ title: "Entitas Suspended atau Expired: aksi tulis diblok"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FAREG-LOGIC-21d", "EB-AKS-7", "F-FAREG-05.k3"]
 smoke: ["F-FAREG-05.k3"]
 dependsOn: []

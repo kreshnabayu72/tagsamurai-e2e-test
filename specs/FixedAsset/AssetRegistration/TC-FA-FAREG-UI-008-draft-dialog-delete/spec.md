@@ -4,14 +4,14 @@ title: "Sub tab Draft: dialog Delete Draft, dialog blok, dan toast hapus"
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["D-REG-01", "D-REG-27", "D-REG-28", "T-REG-04", "T-REG-06", "T-REG-12", "T-REG-13", "T-REG-18", "V-REG-19", "V-REG-22", "§4.8#p2", "§7.2#p1", "§9.6#r6", "§9.6#r7", "EB-ERR-1@delete-draft", "EB-ERR-2@dialog-delete-draft", "EB-FB-1@delete-draft", "EB-FB-2@cancel-dialog"]
 smoke: []
 dependsOn: []
 trace:
-  D-REG-01: [3, 4, 5, 6, 9, 65, 66, 67, 74, 75, 76, 77, 78, 79, 88, 89, 90, 91, 92, 93, 114, 130, 131, 132, 133]
+  D-REG-01: [3, 4, 5, 6, 9, 65, 66, 67, 74, 75, 76, 77, 78, 79, 88, 89, 90, 91, 92, 93, 114, 130, 131, 132, 133, 149, 150]
   D-REG-27: [41, 42, 43, 46]
-  D-REG-28: [102, 103, 104, 105, 106, 107, 108, 123, 124]
+  D-REG-28: [102, 103, 104, 105, 106, 107, 108, 123, 124, 157, 158, 159, 161, 162, 163, 170, 171, 172, 173, 174]
   T-REG-04: [13, 81]
   T-REG-06: 37
   T-REG-12: [50, 140]
@@ -59,6 +59,8 @@ coverage:
   - K9: sama dengan K8, tetapi DU-008-1 juga dikunci sesi edit oleh `Dewi Anggraini` sebelum `[Delete]` diklik; tidak satu pun dapat dihapus.
   - K10: daftar berisi DU-008-5; hapus berhasil.
   - K11: sama dengan K1; hapus massal gagal karena error server.
+  - K12: daftar berisi DU-008-1, DU-008-2, DU-008-6, dan DU-008-7; hanya DU-008-1 yang dapat dihapus; DU-008-2 dikunci user lain, DU-008-6 sudah dihapus pihak lain, dan DU-008-7 tanpa hak hapus.
+  - K13: daftar berisi DU-008-5; seluruh batch dikunci sesi edit oleh `Dewi Anggraini` sebelum `[Delete]` diklik, sehingga tidak satu pun dapat dihapus.
 
 ## Test Steps
 
@@ -238,5 +240,45 @@ coverage:
 139. Klik `[Delete]` pada dialog
 140. Verifikasi toast `Error, failed to delete draft.`
 141. Verifikasi dialog Delete Drafts tetap terbuka
+
+### Bulk Delete campuran memuat batch tanpa hak pada kelompok yang dilewati
+142. Tampilkan Sub tab `Draft` (TBL-REG-01) dengan kondisi K12
+143. Centang baris `Gudang 1`
+144. Centang baris `Gudang 2`
+145. Centang baris `Gudang 6`
+146. Centang baris `Gudang 7`
+147. Klik `Bulk Action`
+148. Klik `Delete`
+149. Verifikasi kelompok `The following will be deleted:` memuat bullet `Gudang 1 · 12 assets`
+150. Verifikasi kelompok `The following can't be deleted and will be skipped:` memuat bullet `Gudang 7 · 9 assets`
+
+### Dialog blok bulk yang semuanya ditolak memuat daftar dan mempertahankan seleksi
+151. Tampilkan Sub tab `Draft` (TBL-REG-01) dengan kondisi K9
+152. Centang baris `Gudang 1`
+153. Centang baris `Kantor Pusat`
+154. Klik `Bulk Action`
+155. Klik `Delete`
+156. Klik `[Delete]` pada dialog
+157. Verifikasi dialog `Cannot Delete Drafts` memuat bullet `Gudang 1 · 12 assets`
+158. Verifikasi dialog `Cannot Delete Drafts` memuat bullet `Kantor Pusat · 30 assets`
+159. Verifikasi isi dialog `None of the selected drafts can be deleted right now. They are being edited by another user, already deleted, or you don't have permission.`
+160. Klik `[OK]`
+161. Verifikasi baris `Gudang 1` tetap tercentang
+162. Verifikasi baris `Kantor Pusat` tetap tercentang
+163. Verifikasi bar Bulk Action tetap tampil
+
+### Dialog blok dengan daftar panjang tidak diringkas
+164. Tampilkan Sub tab `Draft` (TBL-REG-01) dengan kondisi K13
+165. Pilih ukuran halaman `50`
+166. Centang checkbox header
+167. Klik `Bulk Action`
+168. Klik `Delete`
+169. Klik `[Delete]` pada dialog
+170. Verifikasi judul dialog `Cannot Delete Drafts`
+171. Verifikasi dialog memuat bullet `Gudang Distribusi Regional Jawa Barat Wilayah Kerja 1 · 4 assets`
+172. Verifikasi dialog memuat bullet `Gudang Distribusi Regional Jawa Barat Wilayah Kerja 30 · 4 assets`
+173. Verifikasi daftar bullet pada dialog dapat digulir
+174. Verifikasi dialog tidak memuat ringkasan `...and N more`
+
 
 [^drift-1]: Drift PRD vs foundation. PRD §7.2 `D-REG-01`: pilihan campuran dibagi dua kelompok bullet dengan pertanyaan konfirmasi untuk kelompok pertama, tombol `[Cancel]` `[Delete]`. foundation `functions/toast-copy.md` Aturan Terkunci #10: bulk dengan outcome campuran memakai `Are you sure you want to continue?` dan tombol `[Continue]`. Diasersi: foundation, karena dialog konfirmasi bulk adalah pola bersama (SB-4).

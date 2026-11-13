@@ -4,7 +4,7 @@ title: "Antrean Approvals > Registration: tab, kolom, breadcrumb, dan state tabe
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["S-REG-04", "S-REG-05", "§4.1#r13", "§4.1#p1", "§4.1#p4", "§4.1#r127", "§4.1#r128", "§4.1#r129", "§4.1#r130", "§4.1#r131", "§4.1#r135", "§4.1#r136", "§4.1#r137", "§4.1#r138", "§4.1#r139", "§4.1#r140", "§4.1#r141", "§4.2#p1", "§4.2.5#p2", "§4.2.5#p3", "§4.2.5#r1", "§4.2.5#r2", "§5#r1", "§5#r2", "§5#r5", "§7.1#p1", "§9.5#r8", "EB-FLT-6@antrean-approvals-active", "EB-FLT-6@antrean-approvals-history", "EB-TBL-11", "EB-TBL-1@antrean-approvals-active", "EB-TBL-1@antrean-approvals-history"]
 smoke: []
 dependsOn: []
@@ -24,9 +24,9 @@ trace:
   "§4.1#r137": [128, 148, 149, 150, 195]
   "§4.1#r138": [128, 153, 154, 155, 156, 196]
   "§4.1#r139": [128, 159, 161, 162, 164, 197]
-  "§4.1#r140": [128, 167, 169, 170, 172, 173, 174, 175, 198]
+  "§4.1#r140": [128, 167, 169, 170, 172, 173, 174, 175, 198, 247]
   "§4.1#r141": [128, 131, 178, 179, 199]
-  "§4.2#p1": [16, 17, 19]
+  "§4.2#p1": [16, 17, 19, 243, 244]
   "§4.2.5#p2": [21, 27, 71, 72, 73, 75, 80, 183, 184, 185]
   "§4.2.5#p3": [22, 23, 24, 28]
   "§4.2.5#r1": [21, 31]
@@ -62,11 +62,12 @@ coverage:
   - DU-011-7: pengajuan History Registration ID `REG-20261101-00006`, Group `Gudang 1`, Total Asset `8`, Status `Canceled`, Requested By `Rina Wulandari`, Approver `—`, Last Updated `2026-11-01T17:05:00Z`.
   - DU-011-8: pengajuan History auto-approve Kondisi A (pengaju Total Control) Registration ID `REG-20261031-00005`, Group `Gudang 2`, Total Asset `6`, Status `Approved`, Requested By `Siti Nurbaya`, Approver `Siti Nurbaya`, Last Updated `2026-10-31T09:00:00Z`.
   - DU-011-9: pengajuan History auto-approve Kondisi B (tanpa approver independen) Registration ID `REG-20261030-00003`, Group `Gudang 2`, Total Asset `4`, Status `Approved`, Requested By `Hadi Kusuma`, Approver `System`, Last Updated `2026-10-30T08:30:00Z`.
+  - DU-011-11: pengajuan History approval OFF Registration ID `REG-20261031-00007`, Group `Gudang 1`, Total Asset `7`, Status `Approved`, Requested By `Hadi Kusuma`, Approver `—`, Last Updated `2026-10-31T12:15:00Z`.
   - DU-011-10: kata kunci Search `Gudang Fiktif` yang tidak cocok dengan pengajuan mana pun.
-  - Requested By dan Approver yang diharapkan: `Rina W` dari `Rina Wulandari`; `Hadi K` dari `Hadi Kusuma`; `Siti N` dari `Siti Nurbaya`; `Budi S` dari `Budi Santoso`; `Agus P` dari `Agus Prasetyo`.
+  - Requested By dan Approver yang diharapkan: `Rina W.` dari `Rina Wulandari`; `Hadi K.` dari `Hadi Kusuma`; `Siti N.` dari `Siti Nurbaya`; `Budi S.` dari `Budi Santoso`; `Agus P.` dari `Agus Prasetyo`.
   - Last Updated yang diharapkan dengan Date Format `dd/MM/yy`: `09/11/26, 10:20` dari `2026-11-09T10:20:00Z`; `08/11/26, 14:02` dari `2026-11-08T14:02:00Z`; `07/11/26, 11:30` dari `2026-11-07T11:30:00Z`; `04/11/26, 15:30` dari `2026-11-04T15:30:00Z`; `03/11/26, 10:12` dari `2026-11-03T10:12:00Z`.
 - Kondisi:
-  - K1: tab Active berisi DU-011-1 sampai DU-011-3 sehingga hitungan tab `Active (3)`; tab History berisi DU-011-4 sampai DU-011-9; Date Format General Settings `dd/MM/yy`, Time Format `24h`, Time Zone `UTC`.
+  - K1: tab Active berisi DU-011-1 sampai DU-011-3 sehingga hitungan tab `Active (3)`; tab History berisi DU-011-4 sampai DU-011-9 dan DU-011-11; Date Format General Settings `dd/MM/yy`, Time Format `24h`, Time Zone `UTC`.
   - K2: tab Active dan tab History kosong, belum ada pengajuan.
   - K3: tab Active berisi DU-011-1 dan tab History berisi DU-011-4; pencarian dengan kata kunci DU-011-10 tidak menghasilkan baris pada kedua tab.
   - K4: memuat antrean gagal karena error server pada tab yang dibuka.
@@ -150,13 +151,13 @@ coverage:
 
 ### Requested By tampil sebagai nama singkat dan nama lengkap saat hover pada antrean tab Active
 55. Tampilkan Menu `Approvals` > `Registration` dengan kondisi K1
-56. Verifikasi sel Requested By pada baris `REG-20261109-00003` menampilkan `Rina W`
+56. Verifikasi sel Requested By pada baris `REG-20261109-00003` menampilkan `Rina W.`[^drift-1]
 57. Arahkan kursor ke sel Requested By pada baris `REG-20261109-00003`
 58. Verifikasi tooltip menampilkan nama lengkap `Rina Wulandari` pada antrean tab Active
-59. Verifikasi sel Requested By pada baris `REG-20261108-00011` menampilkan `Hadi K`
+59. Verifikasi sel Requested By pada baris `REG-20261108-00011` menampilkan `Hadi K.`[^drift-1]
 60. Arahkan kursor ke sel Requested By pada baris `REG-20261108-00011`
 61. Verifikasi tooltip menampilkan nama lengkap `Hadi Kusuma` pada antrean tab Active
-62. Verifikasi sel Requested By pada baris `REG-20261107-00002` menampilkan `Siti N`
+62. Verifikasi sel Requested By pada baris `REG-20261107-00002` menampilkan `Siti N.`[^drift-1]
 63. Arahkan kursor ke sel Requested By pada baris `REG-20261107-00002`
 64. Verifikasi tooltip menampilkan nama lengkap `Siti Nurbaya` pada antrean tab Active
 
@@ -287,23 +288,23 @@ coverage:
 ### Requested By tampil sebagai nama singkat dan nama lengkap saat hover pada antrean tab History
 157. Tampilkan Menu `Approvals` > `Registration` dengan kondisi K1
 158. Klik tab `History`
-159. Verifikasi sel Requested By pada baris `REG-20261104-00009` menampilkan `Rina W`
+159. Verifikasi sel Requested By pada baris `REG-20261104-00009` menampilkan `Rina W.`[^drift-1]
 160. Arahkan kursor ke sel Requested By pada baris `REG-20261104-00009`
 161. Verifikasi tooltip menampilkan nama lengkap `Rina Wulandari` pada antrean tab History
-162. Verifikasi sel Requested By pada baris `REG-20261103-00004` menampilkan `Hadi K`
+162. Verifikasi sel Requested By pada baris `REG-20261103-00004` menampilkan `Hadi K.`[^drift-1]
 163. Arahkan kursor ke sel Requested By pada baris `REG-20261103-00004`
 164. Verifikasi tooltip menampilkan nama lengkap `Hadi Kusuma` pada antrean tab History
 
 ### Approver tampil sebagai nama singkat, nama lengkap saat hover, dan nilai kosong pada antrean tab History
 165. Tampilkan Menu `Approvals` > `Registration` dengan kondisi K1
 166. Klik tab `History`
-167. Verifikasi sel Approver pada baris `REG-20261104-00009` menampilkan `Budi S`
+167. Verifikasi sel Approver pada baris `REG-20261104-00009` menampilkan `Budi S.`[^drift-1]
 168. Arahkan kursor ke sel Approver pada baris `REG-20261104-00009`
 169. Verifikasi tooltip menampilkan nama lengkap `Budi Santoso` pada antrean tab History
-170. Verifikasi sel Approver pada baris `REG-20261103-00004` menampilkan `Agus P`
+170. Verifikasi sel Approver pada baris `REG-20261103-00004` menampilkan `Agus P.`[^drift-1]
 171. Arahkan kursor ke sel Approver pada baris `REG-20261103-00004`
 172. Verifikasi tooltip menampilkan nama lengkap `Agus Prasetyo` pada antrean tab History
-173. Verifikasi sel Approver pada baris auto-approve `REG-20261031-00005` menampilkan `Siti N`
+173. Verifikasi sel Approver pada baris auto-approve `REG-20261031-00005` menampilkan `Siti N.`[^drift-1]
 174. Verifikasi sel Approver pada baris auto-approve `REG-20261030-00003` menampilkan `System`
 175. Verifikasi sel Approver pada baris Canceled `REG-20261101-00006` menampilkan `—`
 
@@ -390,3 +391,15 @@ coverage:
 239. Verifikasi pesan `Unable to load this data.` pada antrean tab History
 240. Verifikasi tombol `[Try Again]` tampil pada antrean tab History
 241. Verifikasi judul `No history yet` pada antrean tab History tidak tampil saat gagal muat
+
+### SectionCard antrean tidak dapat dibuka atau ditutup
+242. Tampilkan Menu `Approvals` > `Registration` dengan kondisi K1
+243. Verifikasi tabel antrean tampil di dalam `SectionCard`
+244. Verifikasi `SectionCard` tidak memiliki kontrol untuk membuka atau menutup isinya
+
+### Approver kosong pada pengajuan approval OFF di antrean tab History
+245. Tampilkan Menu `Approvals` > `Registration` dengan kondisi K1
+246. Klik tab `History`
+247. Verifikasi sel Approver pada baris approval OFF `REG-20261031-00007` menampilkan `—`
+
+[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By dan Approver: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

@@ -4,7 +4,7 @@ title: "Sub tab Draft: seleksi baris dan Bulk Action bar"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#p5", "§4.8#p5", "§5#r5", "EB-BLK-1@tabel-draft", "EB-BLK-4"]
 smoke: []
 dependsOn: []

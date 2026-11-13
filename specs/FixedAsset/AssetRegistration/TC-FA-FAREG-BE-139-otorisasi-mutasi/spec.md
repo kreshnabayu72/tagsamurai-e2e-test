@@ -4,22 +4,22 @@ title: "Otorisasi mutasi per role dan cakupan Group"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06p, FAREG-LOGIC-10b, FAREG-LOGIC-10f, "§4.8#p2", "§9.2#p7", "§9.2#r14", "§9.2#p63", "§9.2#p64", "§9.3#p1", "§9.4.3#b8", "EB-AKS-3@activate", "EB-AKS-3@cancel-registration", "EB-AKS-3@delete-draft", "EB-AKS-3@keputusan-approval", "EB-AKS-3@save-draft", "EB-AKS-3@simpan-koreksi"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
   FAREG-LOGIC-06p: [40, 42]
-  FAREG-LOGIC-10b: [2, 4, 6, 8, 10, 12, 14, 58]
+  FAREG-LOGIC-10b: [2, 4, 6, 8, 10, 12, 14, 58, 62, 64, 66]
   FAREG-LOGIC-10f: [49, 52, 55, 58]
   "§4.8#p2": [20, 22, 24, 26, 28, 34, 36, 49]
-  "§9.2#p7": 60
-  "§9.2#r14": [2, 4, 6, 58]
+  "§9.2#p7": [60, 67, 69, 70, 72, 74, 76]
+  "§9.2#r14": [2, 4, 6, 58, 62, 66]
   "§9.2#p63": 16
   "§9.2#p64": 18
-  "§9.3#p1": [2, 20, 30, 32, 38]
-  "§9.4.3#b8": 30
+  "§9.3#p1": [2, 20, 30, 32, 38, 78, 80]
+  "§9.4.3#b8": [30, 78]
   "EB-AKS-3@activate": 20
   "EB-AKS-3@cancel-registration": 24
   "EB-AKS-3@delete-draft": 22
@@ -45,6 +45,10 @@ trace:
   - Lina (Manage asset & TAG, Group terkelola `Gudang Surabaya {runId}`).
   - Joko (Manage asset & TAG, Group terkelola `Gudang Surabaya {runId}`) sebagai pengaju.
   - Wati (Manage asset & TAG, Group terkelola `Gudang Surabaya {runId}`) sebagai Owner batch Draft.
+  - Yudi (Manage asset & TAG, Group terkelola `Gudang Surabaya Utara {runId}`, tanpa cakupan atas `Gudang Surabaya Selatan {runId}`).
+  - Nanda (Manage asset & TAG, Group terkelola `Gudang Malang {runId}`) sebagai Owner batch Draft yang dibuat Rina W.
+  - Fajar (Manage asset & TAG, Group terkelola `Gudang Surabaya {runId}`, dengan capability Update pada node Group registrasi `Gudang Surabaya {runId}`) sebagai pengaju.
+  - Gita (Manage asset & TAG pada client lain `PT Surya Lain {runId}`, Group terkelola `Gudang Lain {runId}`).
 - Data:
   - DU-139-1: Group `Gudang Surabaya {runId}`, ber-toggle `Require Approval for Registration` ON, ada di entitas aktor.
   - DU-139-2: Group `Gudang Malang {runId}`, ada di entitas aktor.
@@ -68,6 +72,18 @@ trace:
   - DU-139-12: akun Siti, role Manage asset & TAG, Group terkelola `Gudang Malang {runId}`.
   - DU-139-13: akun Budi, role Manage asset & TAG dengan capability Update pada node Group registrasi `Gudang Surabaya {runId}`.
   - DU-139-17: akun Lina, role Manage asset & TAG, Group terkelola `Gudang Surabaya {runId}`.
+  - DU-139-28: Group `Gudang Surabaya Utara {runId}`, sub-group dari `Gudang Surabaya {runId}`, ada di entitas aktor.
+  - DU-139-29: Group `Gudang Surabaya Selatan {runId}`, sub-group dari `Gudang Surabaya {runId}`, ada di entitas aktor.
+  - DU-139-30: akun Yudi, role Manage asset & TAG, Group terkelola `Gudang Surabaya Utara {runId}`.
+  - DU-139-31: batch Draft milik Joko di Group `Gudang Surabaya Utara {runId}`, Item `Meja Kerja {runId}` Quantity `1`.
+  - DU-139-32: batch Draft milik Joko di Group `Gudang Surabaya Selatan {runId}`, Item `Meja Kerja {runId}` Quantity `1`.
+  - DU-139-33: batch Draft di Group `Gudang Surabaya {runId}` yang dibuat Rina W dengan Owner Nanda, Item `Meja Kerja {runId}` Quantity `1`.
+  - DU-139-34: akun Nanda, role Manage asset & TAG, Group terkelola `Gudang Malang {runId}`.
+  - DU-139-35: akun Gita, role Manage asset & TAG, Group terkelola `Gudang Lain {runId}` pada client lain `PT Surya Lain {runId}`.
+  - DU-139-36: batch Draft milik Gita di Group `Gudang Lain {runId}` pada client `PT Surya Lain {runId}`, Item `Kursi {runId}` Quantity `1`.
+  - DU-139-37: akun Fajar, role Manage asset & TAG, Group terkelola `Gudang Surabaya {runId}`, dengan capability Update pada node Group registrasi `Gudang Surabaya {runId}`.
+  - DU-139-38: pengajuan `Waiting for Approval` milik Fajar di Group `Gudang Surabaya {runId}` berisi `1` aset `Meja Kerja {runId}`.
+  - DU-139-39: pengajuan `Waiting for Approval` milik Rina W di Group `Gudang Surabaya {runId}` berisi `1` aset `Meja Kerja {runId}`.
 - Kondisi:
   - kuota Group `Gudang Surabaya {runId}` dan kuota tenant cukup untuk seluruh pengajuan di atas.
 
@@ -146,5 +162,35 @@ trace:
 58. Verifikasi Save diterima server dan Quantity batch menjadi `3` karena Rina W memegang role dengan akses Group yang sama
 
 ### Company diambil dari client user login
-59. Rina W menyimpan batch Draft baru di Group `Gudang Surabaya {runId}` dengan Company `PT Surya Lain {runId}` di dalam permintaan
+59. Rina W menyimpan batch Draft baru di Group `Gudang Surabaya {runId}` berisi satu Item `Meja Kerja {runId}` Quantity `2` dengan Company `PT Surya Lain {runId}` di dalam permintaan
 60. Verifikasi batch tersimpan dengan Company client Rina W dan bukan `PT Surya Lain {runId}`
+
+### Cakupan Group mencakup sub-group dan menolak Group saudara
+61. Rina W menyimpan batch DU-139-31 di sub-group `Gudang Surabaya Utara {runId}` dengan Quantity `2`
+62. Verifikasi Save diterima server dan Quantity batch menjadi `2` karena Group `Gudang Surabaya {runId}` yang dikelola Rina W mencakup sub-group-nya
+63. Yudi menyimpan batch DU-139-32 di sub-group `Gudang Surabaya Selatan {runId}` dengan Quantity `5`
+64. Verifikasi Save ditolak server tanpa mutasi dan Quantity batch tetap `1` karena `Gudang Surabaya Selatan {runId}` di luar Group terkelola Yudi
+
+### Owner batch yang bukan pembuat dapat mengubahnya
+65. Nanda sebagai Owner batch DU-139-33 menyimpan batch itu dengan Quantity `3`
+66. Verifikasi Save diterima server dan Quantity batch menjadi `3` karena Nanda adalah Owner batch walau Group `Gudang Surabaya {runId}` di luar Group terkelolanya
+
+### Company tersimpan di setiap baris aset dan tidak terlihat client lain
+67. Verifikasi kedua baris aset pada batch yang tersimpan di langkah 59 masing-masing membawa Company client Rina W
+68. Gita meminta daftar batch Draft
+69. Verifikasi daftar Gita memuat batch DU-139-36 milik Gita sendiri
+70. Verifikasi daftar Gita tidak memuat batch maupun aset client Rina W
+71. Gita mencari `Gudang Surabaya {runId}` pada daftar batch Draft
+72. Verifikasi hasil pencarian Gita tidak memuat batch client Rina W
+73. Gita memfilter daftar batch Draft menurut Group `Gudang Surabaya {runId}`
+74. Verifikasi hasil filter Gita tidak memuat batch client Rina W
+75. Gita mengunduh berkas daftar batch Draft
+76. Verifikasi berkas unduhan Gita tidak memuat batch client Rina W
+
+### Pengaju yang memegang capability Update tidak dapat memutuskan pengajuannya sendiri
+77. Fajar sebagai pengaju mengirim keputusan `Approve` untuk aset pengajuan DU-139-38 miliknya
+78. Verifikasi keputusan ditolak server dan pengajuan DU-139-38 tetap `Waiting for Approval` walau Fajar memegang capability Update pada node Group registrasi
+
+### Total Control memutuskan pengajuan yang bukan miliknya
+79. Hana T mengirim keputusan `Approve` untuk aset pengajuan DU-139-39 milik Rina W
+80. Verifikasi keputusan diterima server dan pengajuan DU-139-39 berstatus `Approved` karena Total Control berhak memutuskan

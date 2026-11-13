@@ -4,7 +4,7 @@ title: "Sub tab Draft: hasil Search"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r22", "§4.1#r23", "§4.1#r24", "§4.1#r25", "§4.1#r26", "§4.1#r27", "§5#r3", "EB-SRC-2@tabel-draft", "EB-SRC-3@tabel-draft", "EB-SRC-5@tabel-draft", "EB-SRC-1"]
 smoke: ["EB-SRC-1"]
 dependsOn: []

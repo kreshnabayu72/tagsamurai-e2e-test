@@ -4,7 +4,7 @@ title: "Register Asset: draft dengan Item tanpa Asset Name"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-03d, FAREG-LOGIC-03t]
 smoke: []
 dependsOn: []

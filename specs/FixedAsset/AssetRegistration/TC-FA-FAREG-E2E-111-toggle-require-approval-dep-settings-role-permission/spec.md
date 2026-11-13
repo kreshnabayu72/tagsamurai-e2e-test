@@ -4,7 +4,7 @@ title: "Toggle Require Approval for Registration menentukan jalur Submit"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-06m, §9.5#r7]
 smoke: []
 dependsOn: ["Settings Role Permission: toggle Require Approval for Registration"]

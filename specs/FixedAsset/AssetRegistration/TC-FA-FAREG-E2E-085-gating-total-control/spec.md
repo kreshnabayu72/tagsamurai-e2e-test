@@ -4,7 +4,7 @@ title: "Gating Total Control"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r1", "§4.1#r1", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§4.8#r17"]
 smoke: []
 dependsOn: []
@@ -19,10 +19,10 @@ trace:
   "§4.8#r6": 8
   "§4.8#r7": [30, 39]
   "§4.8#r8": 9
-  "§4.8#r9": 32
+  "§4.8#r9": [32, 59]
   "§4.8#r10": 41
   "§4.8#r11": [44, 46, 48, 49, 52]
-  "§4.8#r12": 35
+  "§4.8#r12": [35, 61]
   "§4.8#r13": [18, 22, 25]
   "§4.8#r14": 5
   "§4.8#r17": [15, 31, 40]
@@ -42,8 +42,9 @@ coverage:
   - DU-085-3: Pengajuan Approved `REG-20261108-08503` di Group `Gudang 1 {runId}`, diajukan Rina W, Approver Agus P, Total Asset `3`, Last Updated `T0 − 3 hari`.
   - DU-085-4: Agus P (Total Control, seluruh client).
   - DU-085-5: Rina W (Manage asset & TAG, Group terkelola `Gudang 1 {runId}`).
+  - DU-085-6: Pengajuan Waiting for Approval di Group `Gudang 2 {runId}`, diajukan Agus P, Total Asset `2`, Last Updated `T0 − 1 hari` (Item `Monitor` Brand `Dell` Model `P2422H` Quantity `2`).
 - Kondisi:
-  - Group `Gudang 1 {runId}` ber-toggle `Require Approval for Registration` ON.
+  - Group `Gudang 1 {runId}` dan Group `Gudang 2 {runId}` ber-toggle `Require Approval for Registration` ON.
   - Kunci sesi edit batch DU-085-1 sedang dipegang Rina W.
 
 ## Test Steps
@@ -115,3 +116,13 @@ coverage:
 52. Verifikasi panel koreksi tampil
 53. Klik `Close` pada panel koreksi yang belum diubah
 54. Klik `[Cancel]` pada footer halaman Approval yang Decision dan isian panelnya belum diubah, tanpa dialog Unsaved Changes
+
+### Total Control sebagai pengaju: Cancel registration tampil
+55. Buka layar Fixed Asset > Assets
+56. Klik tab `Registration`
+57. Klik sub tab `Waiting for Approval`
+58. Ketik Search `Gudang 2 {runId}`, tekan Enter
+59. Verifikasi row action `Cancel registration` tampil pada baris Group `Gudang 2 {runId}` yang diajukan Agus P
+60. Klik row action `Detail` pada baris Group `Gudang 2 {runId}`
+61. Verifikasi tombol `[Cancel Registration]` tampil pada halaman Detail pengajuan bagi Total Control sebagai pengaju
+62. Klik `[Close]`

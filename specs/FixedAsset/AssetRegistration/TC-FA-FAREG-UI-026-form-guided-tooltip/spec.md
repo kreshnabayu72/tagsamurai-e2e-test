@@ -4,7 +4,7 @@ title: "Form Register Asset: Guided Tooltip `fa-registration-form`"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.7#r4", "§4.7#r5", "§4.7#r6", "§4.7#r7", "§4.7#p3", "EB-TBL-10"]
 smoke: []
 dependsOn: []

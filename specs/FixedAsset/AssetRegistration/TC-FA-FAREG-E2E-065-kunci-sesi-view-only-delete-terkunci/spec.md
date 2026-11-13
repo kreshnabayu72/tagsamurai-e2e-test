@@ -4,7 +4,7 @@ title: "Kunci sesi: View only dan Delete batch yang terkunci"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [F-FAREG-03.k2, FAREG-LOGIC-19b, FAREG-LOGIC-19f, FAREG-LOGIC-20b, §4.8#r16, §4.8#r26, §9.4.2#r25, §9.4.2#r26, D-REG-22, D-REG-27, S-REG-26]
 smoke: [D-REG-22, D-REG-27, S-REG-26]
 dependsOn: []

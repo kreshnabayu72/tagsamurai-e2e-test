@@ -4,7 +4,7 @@ title: "Group tidak tersedia: draft tampil No group yet"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [FAREG-LOGIC-08b, FAREG-LOGIC-08c, FAREG-LOGIC-08e, FAREG-LOGIC-18a, FAREG-LOGIC-18c, FAREG-LOGIC-18d, V-REG-01]
 smoke: [V-REG-01]
 dependsOn: ["Settings Groups: hapus atau ubah node Group"]
@@ -14,7 +14,7 @@ trace:
   FAREG-LOGIC-08e: [3, 8, 10, 13]
   FAREG-LOGIC-18a: [18, 25]
   FAREG-LOGIC-18c: [18, 19]
-  FAREG-LOGIC-18d: [19, 21]
+  FAREG-LOGIC-18d: [19, 21, 28, 30]
   V-REG-01: 8
 anchor: []
 coverage:
@@ -34,6 +34,7 @@ coverage:
   - DU-107-3: Group `Gudang Hapus Approval {runId}`, ada di entitas aktor.
   - DU-107-4: batch Draft `Gudang Hapus {runId}` berisi 1 Item Asset Name `Lemari Hapus {runId}` dengan TAG Type `Non-TAG`, Brand `Olympic`, Model `No Model`, Quantity `4`, dengan peringatan yang diharapkan `Gudang Hapus {runId} is not available. Choose another Group.`
   - DU-107-5: pengajuan berstatus Waiting for Approval milik Siti (Manage asset & TAG) di Group `Gudang Hapus Approval {runId}`, berisi 1 aset Asset Name `Lemari Hapus {runId}`, keputusan awal `Approve`.
+  - DU-107-6: Reason keputusan `Group dihapus dari master` untuk aset `Lemari Hapus {runId}`.
 - Kondisi: approval registrasi pada Group `Gudang Hapus Approval {runId}` bernilai ON.
 
 ## Test Steps
@@ -66,3 +67,12 @@ coverage:
 23. Ketik Search `Gudang Hapus Approval {runId}`, tekan Enter
 24. Klik row action `Review` pada baris pengajuan `Gudang Hapus Approval {runId}`
 25. Verifikasi baris aset `Lemari Hapus {runId}` tetap ditandai `Unavailable` saat halaman dibuka kembali
+
+### Return to Draft membuka blokir aset Unavailable
+26. Ubah Decision aset `Lemari Hapus {runId}` menjadi `Return to Draft`
+27. Isi Reason aset `Lemari Hapus {runId}` dengan `Group dihapus dari master`
+28. Verifikasi tombol keputusan aset `Lemari Hapus {runId}` aktif
+
+### Reject membuka blokir aset Unavailable
+29. Ubah Decision aset `Lemari Hapus {runId}` menjadi `Reject`
+30. Verifikasi tombol keputusan aset `Lemari Hapus {runId}` aktif

@@ -4,12 +4,12 @@ title: "Gating Group Manager"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r2", "§4.1#r1", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§4.8#r17", "§4.8#r20", "§4.8#r23"]
 smoke: []
 dependsOn: []
 trace:
-  "§2.1#r2": [7, 20]
+  "§2.1#r2": [7, 20, 58, 63]
   "§4.1#r1": 2
   "§4.8#r1": 2
   "§4.8#r2": 3
@@ -19,16 +19,16 @@ trace:
   "§4.8#r6": 8
   "§4.8#r7": [30, 39]
   "§4.8#r8": 9
-  "§4.8#r9": 32
+  "§4.8#r9": [32, 66]
   "§4.8#r10": 41
   "§4.8#r11": [44, 46, 48, 49, 52]
-  "§4.8#r12": 35
+  "§4.8#r12": [35, 68]
   "§4.8#r13": [18, 22, 25]
   "§4.8#r14": 5
   "§4.8#r17": [15, 31, 40]
   "§4.8#r20": 32
   "§4.8#r23": 35
-anchor: [34]
+anchor: [34, 57, 62]
 coverage:
   web: automated
 ---
@@ -44,8 +44,14 @@ coverage:
   - DU-086-3: Pengajuan Approved `REG-20261108-08603` di Group `Gudang 1 {runId}`, diajukan Rina W, Approver Dewi A, Total Asset `3`, Last Updated `T0 − 3 hari`.
   - DU-086-4: Dewi A (Group Manager, Group binaan `Cabang A {runId}` beserta sub-group).
   - DU-086-5: Rina W (Manage asset & TAG, Group terkelola `Gudang 1 {runId}`).
+  - DU-086-6: Batch Draft dengan Group `Cabang B {runId}`, Origin `—`, Total Asset `6`, Progress `0%`, Requested By `Tono P`, Last Updated `T0 − 1 hari`, Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `6`.
+  - DU-086-7: Pengajuan Waiting for Approval di Group `Cabang B {runId}`, diajukan Tono P, Total Asset `7`, Last Updated `T0 − 2 hari` (Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `7`, TAG `Verified`).
+  - DU-086-8: Tono P (Manage asset & TAG, Group terkelola `Cabang B {runId}`).
+  - DU-086-9: Pengajuan Waiting for Approval di Group `Gudang 2 {runId}`, diajukan Dewi A, Total Asset `2`, Last Updated `T0 − 1 hari` (Item `Monitor` Brand `Dell` Model `P2422H` Quantity `2`).
 - Kondisi:
   - Group `Gudang 1 {runId}` adalah sub-group dari Group `Cabang A {runId}` dan ber-toggle `Require Approval for Registration` ON.
+  - Group `Gudang 2 {runId}` adalah sub-group dari Group `Cabang A {runId}` dan ber-toggle `Require Approval for Registration` ON.
+  - Group `Cabang B {runId}` bukan Group binaan Dewi A dan bukan sub-group dari Group `Cabang A {runId}`, dan ber-toggle `Require Approval for Registration` ON.
   - Kunci sesi edit batch DU-086-1 sedang dipegang Rina W.
 
 ## Test Steps
@@ -117,3 +123,22 @@ coverage:
 52. Verifikasi panel koreksi tampil
 53. Klik `Close` pada panel koreksi yang belum diubah
 54. Klik `[Cancel]` pada footer halaman Approval yang Decision dan isian panelnya belum diubah, tanpa dialog Unsaved Changes
+
+### Data Group di luar binaan tidak tampil bagi Group Manager
+55. Klik menu `Approvals` > `Registration`
+56. Ganti isi kotak search dengan `{runId}`, tekan Enter
+57. Verifikasi baris Group `Gudang 1 {runId}` dengan Total Asset `5` tampil di antrean `Active`
+58. Verifikasi baris Group `Cabang B {runId}` tidak tampil di antrean `Active`
+59. Buka Fixed Asset > Assets > Registration
+60. Klik sub tab `Draft`
+61. Ganti isi kotak search dengan `{runId}`, tekan Enter
+62. Verifikasi baris Group `Gudang 1 {runId}` dengan Requested By `Rina W` tampil di sub tab `Draft`
+63. Verifikasi baris Group `Cabang B {runId}` tidak tampil di sub tab `Draft`
+
+### Group Manager sebagai pengaju: Cancel registration tampil
+64. Klik sub tab `Waiting for Approval`
+65. Ganti isi kotak search dengan `Gudang 2 {runId}`, tekan Enter
+66. Verifikasi row action `Cancel registration` tampil pada baris Group `Gudang 2 {runId}` yang diajukan Dewi A
+67. Klik row action `Detail` pada baris Group `Gudang 2 {runId}`
+68. Verifikasi tombol `[Cancel Registration]` tampil pada halaman Detail pengajuan bagi Group Manager sebagai pengaju
+69. Klik `[Close]`
