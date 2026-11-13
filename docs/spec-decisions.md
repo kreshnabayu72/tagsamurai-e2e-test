@@ -1812,3 +1812,13 @@ Aturan:
 - **Diputuskan oleh:** owner (Zain), 2026-11-13. Dicatat oleh Wangs-UI Coordinator.
 - **Diterapkan di:** LoginPassword 040.
 - **Sumber:** repo aplikasi `plans/_program/prd-overrides.md` (baris auth/login-password, 2026-11-13); iam-service#185; openapi auth/login-password L543, L662-664.
+
+## D-181 Form Add Subscription: Product baru bisa dipilih setelah Client dipilih (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `030` TC-112 langkah 2.
+- **Spec meminta:** memilih Product SAMS di form Add tanpa memilih Client lebih dulu.
+- **Kenyataannya:** PRD §4.3 (tabel field form Add, baris Product) membatasi opsi Product pada FAMS/SAMS/SIEM yang belum punya baris di tab `Current` **untuk Client terpilih**, jadi daftar Product bergantung pada Client. Aplikasi baru memuat opsi Product setelah Client dipilih, sesuai PRD.
+- **Keputusan:** langkah 2 diawali memilih Client yang memenuhi syarat, lalu memilih Product SAMS. Asersi tentang Product dan Plan tetap seperti di spec. Aplikasi tidak diubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-13.
+- **Diterapkan di:** LicenseAllocationSubscription 030.
+- **Sumber:** PRD license-allocation-subscription §4.3 baris Product (L427); `useSubscriptionFormDialogViewModel.ts` L283-289.
