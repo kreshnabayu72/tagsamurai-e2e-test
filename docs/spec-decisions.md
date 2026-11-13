@@ -1770,3 +1770,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration C, FD-C-4).
 - **Diterapkan di:** User 071.
 - **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-C-4; run 1190.
+
+## D-177 Baris Changelog Renew terjadwal mengikuti LLD: field `Status`, bukan Plan/End Date (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `076` TC-288 dan `113` TC-438.
+- **Spec meminta:** baris Changelog Renew (efek terjadwal) dengan Field `Plan`/`End Date`, misalnya `Growth/dd/MM/yy` → `Professional/dd/MM/yy`.
+- **Kenyataannya:** LLD license-allocation-subscription mencatat satu baris Changelog `Renew (efek terjadwal, diterapkan)` dengan field `Status` (Renew endpoint, Logs Written L989 dan contoh L991-L1007; Background Jobs, Scheduled flip, Mode Renewal L2127). Plan dan End Date adalah detail Subscription Log `Subscription renewed`, bukan baris Changelog. Stack menulis sesuai LLD: `Status` `Pending` → `Active`, Modified By System.
+- **Karena:** PRD vs LLD adalah contract drift. Aturan owner (2026-11-08): drift diskip, tanpa improvisasi.
+- **Keputusan:** asersi Plan/End Date di baris Changelog Renew pada kedua langkah itu diskip sebagai contract drift. Baris `Status` tidak diasersi sebagai pengganti. Detail Plan/End Date di Subscription Log tetap di gate BT-GAP-60 (ars#65) dan BT-AC-CS-35 (ems#206: Flip menulis `Subscription renewed` tanpa detail).
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (temuan Integration B, run l; cek LLD oleh sesi BE).
+- **Diterapkan di:** LicenseAllocationSubscription 076, 113.
+- **Sumber:** LLD admin-console/license-allocation-subscription L989, L991-L1007, L2127; repo aplikasi `plans/_program/fail-decisions.md`.
