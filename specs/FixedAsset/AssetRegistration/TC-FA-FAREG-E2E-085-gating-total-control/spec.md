@@ -34,15 +34,15 @@ coverage:
 # Gating Total Control
 
 ## Prerequisites
-- Aktor: Agus P (Total Control, seluruh client).
+- Aktor: `Agus P {runId}` (Total Control, seluruh client).
 - Layar awal: Fixed Asset > Assets.
 - Data:
   - DU-085-1: Batch Draft dengan Group `Gudang 1 {runId}`, Origin `—`, Total Asset `12`, Progress `0%`, Requested By `Rina W`, Last Updated `T0 − 1 hari`, Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `12`.
   - DU-085-2: Pengajuan Waiting for Approval `REG-20261109-08502` di Group `Gudang 1 {runId}`, diajukan Rina W, Total Asset `5`, Last Updated `T0 − 2 hari` (Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `5`, TAG `Verified`).
-  - DU-085-3: Pengajuan Approved `REG-20261108-08503` di Group `Gudang 1 {runId}`, diajukan Rina W, Approver Agus P, Total Asset `3`, Last Updated `T0 − 3 hari`.
-  - DU-085-4: Agus P (Total Control, seluruh client).
+  - DU-085-3: Pengajuan Approved `REG-20261108-08503` di Group `Gudang 1 {runId}`, diajukan Rina W, Approver `Agus P {runId}`, Total Asset `3`, Last Updated `T0 − 3 hari`.
+  - DU-085-4: pengguna Name `Agus P {runId}` (Total Control, seluruh client).
   - DU-085-5: Rina W (Manage asset & TAG, Group terkelola `Gudang 1 {runId}`).
-  - DU-085-6: Pengajuan Waiting for Approval di Group `Gudang 2 {runId}`, diajukan Agus P, Total Asset `2`, Last Updated `T0 − 1 hari` (Item `Monitor` Brand `Dell` Model `P2422H` Quantity `2`).
+  - DU-085-6: Pengajuan Waiting for Approval di Group `Gudang 2 {runId}`, diajukan `Agus P {runId}`, Total Asset `2`, Last Updated `T0 − 1 hari` (Item `Monitor` Brand `Dell` Model `P2422H` Quantity `2`).
 - Kondisi:
   - Group `Gudang 1 {runId}` dan Group `Gudang 2 {runId}` ber-toggle `Require Approval for Registration` ON.
   - Kunci sesi edit batch DU-085-1 sedang dipegang Rina W.
@@ -122,7 +122,7 @@ coverage:
 56. Klik tab `Registration`
 57. Klik sub tab `Waiting for Approval`
 58. Ketik Search `Gudang 2 {runId}`, tekan Enter
-59. Verifikasi row action `Cancel registration` tampil pada baris Group `Gudang 2 {runId}` yang diajukan Agus P
+59. Verifikasi row action `Cancel registration` tampil pada baris Group `Gudang 2 {runId}` yang diajukan `Agus P {runId}`
 60. Klik row action `Detail` pada baris Group `Gudang 2 {runId}`
 61. Verifikasi tombol `[Cancel Registration]` tampil pada halaman Detail pengajuan bagi Total Control sebagai pengaju
 62. Klik `[Close]`

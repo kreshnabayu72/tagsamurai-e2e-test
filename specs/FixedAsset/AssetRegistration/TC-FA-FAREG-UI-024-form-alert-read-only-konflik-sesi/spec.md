@@ -49,7 +49,7 @@ coverage:
   - K5: draft tersimpan dengan Item DU-024-1 dibuka lewat row action `Detail`.
   - K6: form `Edit` draft tersimpan dengan Item DU-024-1 sedang dibuka; kunci sesinya direbut DU-024-6 lewat Take over.
   - K7: form `Edit` draft tersimpan dengan Item DU-024-1; draft sudah di-submit oleh DU-024-7 sehingga simpan draft ditolak.
-  - K8: sama dengan K1; Approval Workflow nonaktif.
+  - K8: form `Edit` draft tersimpan dengan Item DU-024-1 yang Brand `Dell`-nya masih tersedia saat form dibuka; Approval Workflow nonaktif; master Brand diarsipkan sesudah form dibuka (DU-024-2) sehingga Activate ditolak dengan pesan DU-024-2.
 
 ## Test Steps
 ### Alert Warning untuk referensi master yang diarsipkan
@@ -66,7 +66,7 @@ coverage:
 ### Alert Warning untuk draft di atas Register Asset Bulk Limit baru
 8. Tampilkan Halaman `Register Asset` dengan kondisi K3
 9. Verifikasi Alert Warning `For more than 100 assets, use Import.` tampil di atas form
-10. Verifikasi kata `Import` pada Alert Warning berupa tautan
+10. Verifikasi Alert Warning memuat tautan ke Import
 11. Ganti isi sel `Quantity` Item pertama dengan `121`
 12. Verifikasi pesan inline `For more than 100 assets, use Import.` tampil di bawah sel `Quantity`
 13. Verifikasi Alert Warning tidak tampil bersamaan dengan pesan inline pada sel `Quantity`
@@ -92,7 +92,7 @@ coverage:
 ### Pemegang lama melihat Alert dan mode read-only sesudah sesi direbut
 28. Tampilkan Halaman `Register Asset` dengan kondisi K6
 29. Verifikasi Alert Warning `Your edit session was taken over by Budi S.` tampil
-30. Verifikasi form tampil read-only dengan footer `[Close]`
+30. Verifikasi form pemegang lama tampil read-only tanpa `[Save draft]` dan `[Submit]`
 
 ### Draft yang sudah di-submit orang lain memblok simpan
 31. Tampilkan Halaman `Register Asset` dengan kondisi K7

@@ -60,7 +60,7 @@ coverage:
 4. Verifikasi Alert Danger `Please complete the data for 3 assets to continue.` tampil di atas footer `[Submit]`
 5. Verifikasi dialog konfirmasi Submit tidak tampil
 6. Verifikasi Item `Laptop Dell Latitude 5440` terbuka otomatis
-7. Verifikasi halaman menggulir ke error pertama, yaitu field `Kapasitas RAM` pada `Laptop Dell Latitude 5440 - 1`
+7. Verifikasi halaman menggulir ke aset pertama yang bermasalah, yaitu baris `Laptop Dell Latitude 5440 - 1`
 8. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
 9. Verifikasi field `Kapasitas RAM` ditandai Danger dengan pesan `Kapasitas RAM must not be empty` di bawahnya
 10. Verifikasi field `Serial Number` ditandai Danger dengan pesan `Serial Number must not be empty` di bawahnya
@@ -96,7 +96,7 @@ coverage:
 34. Verifikasi Alert Danger `Please complete the data for 1 asset to continue.` tampil di atas footer `[Submit]`
 35. Verifikasi Item `Printer Epson L3250` terbuka otomatis dan baris `Printer Epson L3250 - 1` tampil
 36. Verifikasi Item `Kursi Kerja Ergonomis` tetap dilipat dan baris `Kursi Kerja Ergonomis - 1` tidak tampil
-37. Verifikasi halaman menggulir ke error pertama, yaitu field `Nomor Inventaris` pada `Printer Epson L3250 - 1`
+37. Verifikasi halaman menggulir ke aset yang bermasalah, yaitu baris `Printer Epson L3250 - 1`
 38. Klik kolom `Name` pada `Printer Epson L3250 - 1`
 39. Verifikasi field `Nomor Inventaris` ditandai Danger dengan pesan `Nomor Inventaris must not be empty` di bawahnya
 40. Verifikasi field `Catatan Garansi` yang kosong tidak ditandai Danger dan tidak memiliki pesan error

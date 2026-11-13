@@ -19,7 +19,7 @@ trace:
   FAREG-LOGIC-04k: [23]
   FAREG-LOGIC-04l: [24]
   FAREG-LOGIC-09a: [27]
-  FAREG-LOGIC-11a: [56, 57, 58, 59]
+  FAREG-LOGIC-11a: [56, 57, 58, 59, 68]
   FAREG-LOGIC-11c: [3, 4, 5, 6, 7]
   FAREG-LOGIC-15h: [28, 56, 66, 67]
   FLD-REG-09: [14, 25, 63, 64]
@@ -51,17 +51,17 @@ owner: BE
   - DU-121-2: Asset Name `Meja Kerja {runId}`, Category `Furnitur`, Brand `Olympic`, Model `OL-121`, TAG Type `Non-TAG`, tanpa Asset Class, dengan Custom field kelompok Purchase wajib `Nomor Invoice`.
   - DU-121-3: Asset Name `Kursi Kantor {runId}`, Category `Furnitur`, Brand `Chitose`, Model `Orion`, TAG Type `Non-TAG`.
   - DU-121-4: Asset Name `Lemari Arsip {runId}`, Category `Furnitur`, Brand `Alba`, Model `AR-12`, TAG Type `Non-TAG`.
-  - DU-121-5: Asset Name `Rak Besi {runId}`, Category `Furnitur`, Brand `Krisbow`, Model `RB-4`, TAG Type `Non-TAG`, dengan Custom field General wajib `Material`.
+  - DU-121-5: Asset Name `Rak Besi {runId}`, Category `Furnitur`, Brand `Krisbow`, Model `RB-4`, TAG Type `Non-TAG`, dengan Custom field Specific Asset Name wajib `Material`.
   - DU-121-6: Asset Name `Bangku Lab {runId}`, Category `Furnitur`, Brand `Lab Pro`, Model `BL-1`, TAG Type `Non-TAG`.
   - DU-121-7: Asset Name `Laptop {runId}`, Category `IT Equipment`, Brand `Dell`, Model `Latitude 5440`, TAG Type `RFID`.
   - DU-121-8: Asset Name `Pot Bunga {runId}`, Category `Furnitur`, TAG Type `Non-TAG`, tanpa Brand terkait di master.
   - DU-121-9: batch Draft milik Rina, Group `Gudang Surabaya {runId}`, enam Item: Item 1 `Meja Kerja {runId}` Brand `Olympic` Model `OL-121` Quantity `2` lengkap; Item 2 tanpa Asset Name Quantity `1`; Item 3 `Kursi Kantor {runId}` tanpa Brand dan Model Quantity `1`; Item 4 `Lemari Arsip {runId}` Brand `Alba` tanpa Model Quantity `1`; Item 5 `Rak Besi {runId}` Brand `Krisbow` Model `RB-4` dengan Material kosong Quantity `1`; Item 6 `Bangku Lab {runId}` Brand `Lab Pro` Model `BL-1` Condition `Damaged` tanpa Damage note Quantity `1`.
   - DU-121-10: batch Draft milik Rina, Group `Gudang Surabaya {runId}`, Item 1 `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Quantity `3` dengan aset pertama ber-Tag RFID `E280-1210-0001 {runId}` dan dua aset lain belum ber-Tag, Item 2 `Meja Kerja {runId}` Brand `Olympic` Model `OL-121` Quantity `1`, Tingkat 3 kosong.
   - DU-121-20: Asset Name `Perangkat Ukur {runId}`, Category `Peralatan Lapangan`, Brand `Leica`, Model `TS16`, TAG Type `RFID` dan `NFC` (dua slot Tag).
-  - DU-121-21: Asset Name `Rak Warna {runId}`, Category `Furnitur`, Brand `Krisbow`, Model `RW-1`, TAG Type `Non-TAG`, dengan Custom field General opsional `Warna` (tidak wajib).
+  - DU-121-21: Asset Name `Rak Warna {runId}`, Category `Furnitur`, Brand `Krisbow`, Model `RW-1`, TAG Type `Non-TAG`, dengan Custom field Specific Asset Name opsional `Warna` (tidak wajib).
   - DU-121-22: Tag RFID `E280-1210-0201 {runId}`, status `Available`.
   - DU-121-23: batch Draft milik Rina, Group `Gudang Surabaya {runId}`, satu Item `Perangkat Ukur {runId}` Brand `Leica` Model `TS16` Quantity `1`, Tingkat 2 lengkap selain Tag; slot RFID terverifikasi dengan Tag `E280-1210-0201 {runId}` dan slot NFC kosong.
-  - DU-121-24: batch Draft milik Rina, Group `Gudang Surabaya {runId}`, tiga Item Quantity `1`: Item 1 `Meja Kerja {runId}` Brand `Olympic` Model `OL-121` dengan Alias Name `Meja Rapat {runId}`, Photo dan Asset labels kosong, Custom field Purchase `Nomor Invoice` kosong; Item 2 `Rak Warna {runId}` Brand `Krisbow` Model `RW-1` dengan Alias Name, Photo, Asset labels, dan `Warna` kosong; Item 3 `Laptop {runId}` Brand `Dell` Model `Latitude 5440` tanpa Tag dengan Alias Name, Photo, dan Asset labels kosong.
+  - DU-121-24: batch Draft milik Rina, Group `Gudang Surabaya {runId}`, empat Item Quantity `1`: Item 1 `Meja Kerja {runId}` Brand `Olympic` Model `OL-121` dengan Alias Name `Meja Rapat {runId}`, Photo dan Asset labels kosong, Custom field Purchase `Nomor Invoice` kosong; Item 2 `Rak Warna {runId}` Brand `Krisbow` Model `RW-1` dengan Alias Name, Photo, Asset labels, dan `Warna` kosong; Item 3 `Laptop {runId}` Brand `Dell` Model `Latitude 5440` tanpa Tag dengan Alias Name, Photo, dan Asset labels kosong; Item 4 `Rak Besi {runId}` Brand `Krisbow` Model `RB-4` dengan `Material` `Baja` dan Alias Name `Rak Gudang {runId}`, Photo dan Asset labels kosong.
   - DU-121-25: batch Draft milik Rina, Group `Gudang Surabaya {runId}`, satu Item `Kursi Kantor {runId}` Brand `Chitose` Model `Orion` Quantity `1`, Tingkat 2 lengkap.
 - Kondisi:
   - Approval Workflow tidak aktif untuk `Gudang Surabaya {runId}`.
@@ -143,8 +143,8 @@ owner: BE
 55. Verifikasi ketiga aset `Kursi Kantor {runId}` batch DU-121-25 berstatus Active dalam satu transaksi
 
 ### Skor kelengkapan dihitung dari field yang berlaku
-56. Verifikasi skor kelengkapan aset `Meja Kerja {runId}` batch DU-121-24 adalah `75`, dari 6 field terisi dari 8 field yang berlaku, tanpa Custom field Purchase `Nomor Invoice` dalam hitungan
-57. Verifikasi skor kelengkapan aset `Rak Warna {runId}` batch DU-121-24 adalah `56`, dari 5 field terisi dari 9 field yang berlaku, dengan Custom field opsional `Warna` dalam hitungan
+56. Verifikasi skor kelengkapan aset `Meja Kerja {runId}` batch DU-121-24 adalah `75`, dari 6 field terisi dari 8 field yang berlaku, tanpa Custom field Purchase `Nomor Invoice` dan tanpa Custom field Specific Asset Name milik Asset Name lain dalam hitungan
+57. Verifikasi skor kelengkapan aset `Rak Warna {runId}` batch DU-121-24 adalah `56`, dari 5 field terisi dari 9 field yang berlaku, dengan Custom field Specific Asset Name opsional `Warna` yang kosong dalam hitungan
 58. Verifikasi skor kelengkapan aset `Laptop {runId}` batch DU-121-24 adalah `56`, dari 5 field terisi dari 9 field yang berlaku, dengan slot Tag RFID `Unverified` dihitung kosong
 59. Verifikasi skor kelengkapan aset kedua `Laptop {runId}` batch DU-121-10 adalah `67`, dari 6 field terisi dari 9 field yang berlaku, dengan slot Tag RFID `Skipped` dihitung terisi
 
@@ -161,3 +161,6 @@ owner: BE
 65. Rina meminta data batch DU-121-24 lewat form registrasi
 66. Verifikasi respons form memuat Asset Name `Meja Kerja {runId}`, Brand `Olympic`, dan Model `OL-121` untuk aset itu
 67. Verifikasi respons form untuk aset `Meja Kerja {runId}` tidak memuat Custom field kelompok Purchase `Nomor Invoice`
+
+### Skor kelengkapan menghitung Custom field wajib milik Asset Name
+68. Verifikasi skor kelengkapan aset `Rak Besi {runId}` batch DU-121-24 adalah `78`, dari 7 field terisi dari 9 field yang berlaku, dengan Custom field Specific Asset Name wajib `Material` yang terisi dalam hitungan

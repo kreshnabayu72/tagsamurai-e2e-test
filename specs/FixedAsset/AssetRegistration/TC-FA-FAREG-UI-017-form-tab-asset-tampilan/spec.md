@@ -9,30 +9,30 @@ sourceRules: ["F-FAREG-04", "F-FAREG-15", "FAREG-LOGIC-04b", "FAREG-LOGIC-11e", 
 smoke: []
 dependsOn: []
 trace:
-  "F-FAREG-04": [32, 35]
-  "F-FAREG-15": [12, 13, 14]
-  "FAREG-LOGIC-04b": [14, 67, 79, 80, 81]
-  "FAREG-LOGIC-11e": [31, 32, 33, 84, 85]
-  "FAREG-LOGIC-17a": [12, 15]
-  "FLD-REG-06": [23, 24]
-  "S-REG-06": [70, 71, 75, 76]
+  "F-FAREG-04": [37, 40, 114]
+  "F-FAREG-15": [13, 19, 20]
+  "FAREG-LOGIC-04b": [20, 77, 90, 93, 91]
+  "FAREG-LOGIC-11e": [36, 37, 38, 97, 99, 111, 112, 113, 114, 118]
+  "FAREG-LOGIC-17a": [13, 22]
+  "FLD-REG-06": [27, 28]
+  "S-REG-06": [80, 81, 85, 86]
   "§4.1#b21": 3
-  "§4.1#b22": [3, 4, 5, 6, 7]
-  "§4.1#b23": [8, 9]
-  "§4.1#b24": [38, 39, 40, 41]
-  "§4.1#b28": 57
-  "§4.1#p28": [3, 26, 28, 43, 44, 46, 47, 50, 51, 52, 53, 55]
-  "§4.1#r98": 8
-  "§4.1#r99": [10, 11]
-  "§4.1#r100": [12, 13, 14, 15, 88]
-  "§4.1#r102": [16, 17]
-  "§4.1#r103": [18, 23]
-  "§4.1#r104": [31, 32, 33, 35]
-  "§4.1#r105": 19
-  "§4.4#r9": 37
-  "§4.5#p1": [31, 62, 64, 92]
-  "§9.9#r7": 23
-anchor: [59, 61, 87]
+  "§4.1#b22": [3, 4, 5, 6, 7, 73]
+  "§4.1#b23": [9, 10]
+  "§4.1#b24": [43, 44, 45, 46]
+  "§4.1#b28": 66
+  "§4.1#p28": [3, 30, 32, 48, 49, 51, 54, 55, 59, 60, 61, 62, 64]
+  "§4.1#r98": 9
+  "§4.1#r99": [11, 12]
+  "§4.1#r100": [13, 19, 20, 22, 102]
+  "§4.1#r102": [14, 15]
+  "§4.1#r103": [16, 27]
+  "§4.1#r104": [36, 37, 38, 40, 112, 114, 118]
+  "§4.1#r105": 17
+  "§4.4#r9": 42
+  "§4.5#p1": [36, 73, 70, 107]
+  "§9.9#r7": 27
+anchor: [68, 72, 101]
 coverage:
   web: automated
 ---
@@ -52,6 +52,8 @@ coverage:
   - DU-017-8: Custom field `Catatan Lokasi`, Scope `General`, teks, tidak wajib, Value Type Specific (Nilai per aset), berlaku bagi semua Asset Name.
   - DU-017-9: Item `Laptop Dell Latitude 5440` tanpa Brand dan tanpa Model, TAG Type `RFID`, Quantity `1`, Custom field per aset `Serial Number` (teks, wajib); aset `Laptop Dell Latitude 5440 - 1` tanpa Serial Number dan tanpa Tag, Condition `Normal`, kekurangan berurutan `Brand`, `Model`, `Serial Number`, `Tag`.
   - DU-017-10: Item `Kursi Kerja Ergonomis` dengan Brand `Ergotec` dan Model `ErgoMesh 200`, TAG Type `QR`, Quantity `1`; aset `Kursi Kerja Ergonomis - 1` tanpa Tag, Condition `Damaged` dan Damage note kosong, kekurangan berurutan `Damage note`, `Tag`.
+  - DU-017-11: Item `Kursi Kerja Ergonomis` dengan Brand `Ergotec` dan Model `ErgoMesh 200`, TAG Type `QR`, Quantity `2`, tanpa Custom field per aset; aset `Kursi Kerja Ergonomis - 1` ber-Tag `Skipped`, Condition `Normal`, Tingkat 2 lain lengkap sehingga Status `✓ Ready`; aset `Kursi Kerja Ergonomis - 2` ber-Tag `Unverified` dan Condition `Normal`, kekurangan `Tag` saja.
+  - DU-017-12: Item `Laptop Dell Latitude 5440` dengan Brand `Dell` dan Model `Latitude 5440`, TAG Type `RFID`, Quantity `1`, Custom field per aset `Serial Number` (teks, wajib); aset `Laptop Dell Latitude 5440 - 1` tanpa Serial Number, ber-Tag `RFID-000501` Verified, Condition `Damaged` dan Damage note kosong, kekurangan berurutan `Serial Number`, `Damage note` sehingga Status `Serial Number` dengan `+1`.
 - Kondisi:
   - K1: form `Edit` draft tersimpan dengan Item DU-017-1, DU-017-2, dan DU-017-3; format tanggal General Settings `DD/MM/YYYY`; kartu filter berjumlah `All` 7, `Needs data` 3, `Ready` 4.
   - K2: form `Edit` draft tersimpan dengan Item DU-017-4 dan DU-017-2.
@@ -61,118 +63,149 @@ coverage:
   - K6: form `Edit` draft tersimpan dengan Item DU-017-1 dan DU-017-2; master Custom field DU-017-8.
   - K7: form `Edit` draft tersimpan dengan Item DU-017-9 dan DU-017-10.
   - K8: sama dengan K1; lebar viewport sempit.
+  - K9: form `Edit` draft tersimpan dengan Item DU-017-11 dan DU-017-12.
 
 ## Test Steps
 ### Accordion per Item, badge, dan kolom tabel aset
 1. Tampilkan Halaman `Register Asset` dengan kondisi K1
 2. Klik tab `Asset`
-3. Verifikasi judul Item `Laptop Dell Latitude 5440`, `Kursi Kerja Ergonomis`, dan `Printer Epson L3250` tampil sebagai Accordion per Item
+3. Verifikasi aset dikelompokkan per Item dengan judul Item `Laptop Dell Latitude 5440`, `Kursi Kerja Ergonomis`, dan `Printer Epson L3250`
 4. Verifikasi judul Item `Laptop Dell Latitude 5440` memuat badge `Incomplete`
 5. Verifikasi judul Item `Kursi Kerja Ergonomis` memuat badge `Complete`
 6. Verifikasi tooltip `2 assets still need data.` tampil saat pointer berada di badge `Incomplete` Item `Laptop Dell Latitude 5440`
 7. Verifikasi tooltip `1 asset still needs data.` tampil saat pointer berada di badge `Incomplete` Item `Printer Epson L3250`
-8. Verifikasi kolom `#` menampilkan nomor urut `1`, `2`, dan `3` pada tabel Item `Laptop Dell Latitude 5440`
-9. Verifikasi tabel aset tidak memiliki checkbox
-10. Verifikasi kolom `Name` menampilkan `Laptop Dell Latitude 5440 - 1`
-11. Verifikasi kolom `Name` terisi pada `Laptop Dell Latitude 5440 - 2` dan `Laptop Dell Latitude 5440 - 3`
-12. Verifikasi kolom `Serial Number` pada `Laptop Dell Latitude 5440 - 2` menampilkan placeholder `Enter value`
-13. Verifikasi kolom `Tanggal Garansi` pada `Printer Epson L3250 - 2` menampilkan placeholder `Select date`
-14. Verifikasi kolom `Jenis Tinta` pada `Printer Epson L3250 - 2` menampilkan placeholder `Select Jenis Tinta`
-15. Verifikasi tabel Item `Kursi Kerja Ergonomis` tidak memiliki kolom Custom field per aset
-16. Verifikasi kolom `Photo` pada `Laptop Dell Latitude 5440 - 1` menampilkan `2`
-17. Verifikasi kolom `Photo` pada `Laptop Dell Latitude 5440 - 3` menampilkan `—`
-18. Verifikasi kolom `Condition` pada `Laptop Dell Latitude 5440 - 1` menampilkan `Normal` tanpa placeholder
-19. Verifikasi row option (titik tiga) pada `Laptop Dell Latitude 5440 - 1` memuat `Detail`
+8. Klik judul Item `Laptop Dell Latitude 5440`
+9. Verifikasi kolom `#` menampilkan nomor urut `1`, `2`, dan `3` pada tabel Item `Laptop Dell Latitude 5440`
+10. Verifikasi tabel aset tidak memiliki checkbox
+11. Verifikasi kolom `Name` menampilkan `Laptop Dell Latitude 5440 - 1`
+12. Verifikasi kolom `Name` terisi pada `Laptop Dell Latitude 5440 - 2` dan `Laptop Dell Latitude 5440 - 3`
+13. Verifikasi kolom `Serial Number` pada `Laptop Dell Latitude 5440 - 2` menampilkan placeholder `Enter value`
+14. Verifikasi kolom `Photo` pada `Laptop Dell Latitude 5440 - 1` menampilkan `2`
+15. Verifikasi kolom `Photo` pada `Laptop Dell Latitude 5440 - 3` menampilkan `—`
+16. Verifikasi kolom `Condition` pada `Laptop Dell Latitude 5440 - 1` menampilkan `Normal` tanpa placeholder
+17. Verifikasi row option (titik tiga) pada `Laptop Dell Latitude 5440 - 1` memuat `Detail`
+18. Klik judul Item `Printer Epson L3250`
+19. Verifikasi kolom `Tanggal Garansi` pada `Printer Epson L3250 - 2` menampilkan placeholder `Select date`
+20. Verifikasi kolom `Jenis Tinta` pada `Printer Epson L3250 - 2` menampilkan placeholder `Select Jenis Tinta`
+21. Klik judul Item `Kursi Kerja Ergonomis`
+22. Verifikasi tabel Item `Kursi Kerja Ergonomis` tidak memiliki kolom Custom field per aset
 
 ### Condition dan Custom field per aset dapat diedit
-20. Tampilkan Halaman `Register Asset` dengan kondisi K1
-21. Klik tab `Asset`
-22. Klik sel `Condition` pada `Laptop Dell Latitude 5440 - 1`
-23. Verifikasi opsi `Normal` dan `Damaged` tampil di dropdown `Condition`
-24. Verifikasi opsi `Missing` tidak tampil di dropdown `Condition`
-25. Klik `Damaged`
-26. Verifikasi sel `Condition` pada `Laptop Dell Latitude 5440 - 1` menampilkan `Damaged`
-27. Ganti isi sel `Serial Number` pada `Laptop Dell Latitude 5440 - 2` dengan `SN-LDL-0002`
-28. Verifikasi sel `Serial Number` pada `Laptop Dell Latitude 5440 - 2` menampilkan `SN-LDL-0002`
+23. Tampilkan Halaman `Register Asset` dengan kondisi K1
+24. Klik tab `Asset`
+25. Klik judul Item `Laptop Dell Latitude 5440`
+26. Klik sel `Condition` pada `Laptop Dell Latitude 5440 - 1`
+27. Verifikasi opsi `Normal` dan `Damaged` tampil di dropdown `Condition`
+28. Verifikasi opsi `Missing` tidak tampil di dropdown `Condition`
+29. Klik `Damaged`
+30. Verifikasi sel `Condition` pada `Laptop Dell Latitude 5440 - 1` menampilkan `Damaged`
+31. Ganti isi sel `Serial Number` pada `Laptop Dell Latitude 5440 - 2` dengan `SN-LDL-0002`
+32. Verifikasi sel `Serial Number` pada `Laptop Dell Latitude 5440 - 2` menampilkan `SN-LDL-0002`
 
 ### Kolom Status, daftar kekurangan, dan kartu filter
-29. Tampilkan Halaman `Register Asset` dengan kondisi K1
-30. Klik tab `Asset`
-31. Verifikasi Status `Laptop Dell Latitude 5440 - 1` menampilkan teks `✓ Ready`
-32. Verifikasi Status `Laptop Dell Latitude 5440 - 2` menampilkan kekurangan pertama `Serial Number` dan `+1`
-33. Verifikasi Status `Laptop Dell Latitude 5440 - 3` menampilkan `Tag` tanpa `+N`
-34. Arahkan pointer ke Status `Laptop Dell Latitude 5440 - 2`
-35. Verifikasi daftar kekurangan lengkap `Serial Number` dan `Tag` tampil pada hover Status
-36. Klik `+1` pada Status `Laptop Dell Latitude 5440 - 2`
-37. Verifikasi popover daftar kekurangan lengkap memuat `Serial Number` dan `Tag`
-38. Verifikasi kartu filter `All`, `Needs data`, dan `Ready` tampil
-39. Verifikasi kartu `All` menampilkan jumlah `7`
-40. Verifikasi kartu `Needs data` menampilkan jumlah `3`
-41. Verifikasi kartu `Ready` menampilkan jumlah `4`
-42. Klik kartu `Needs data`
-43. Verifikasi tabel memuat `Laptop Dell Latitude 5440 - 2`, `Laptop Dell Latitude 5440 - 3`, dan `Printer Epson L3250 - 2`
-44. Verifikasi `Laptop Dell Latitude 5440 - 1` tidak tampil di tabel
-45. Klik kartu `Ready`
-46. Verifikasi tabel memuat `Laptop Dell Latitude 5440 - 1`
-47. Verifikasi `Laptop Dell Latitude 5440 - 2` tidak tampil di tabel
+33. Tampilkan Halaman `Register Asset` dengan kondisi K1
+34. Klik tab `Asset`
+35. Klik judul Item `Laptop Dell Latitude 5440`
+36. Verifikasi Status `Laptop Dell Latitude 5440 - 1` menampilkan teks `✓ Ready`
+37. Verifikasi Status `Laptop Dell Latitude 5440 - 2` menampilkan kekurangan pertama `Serial Number` dan `+1`
+38. Verifikasi Status `Laptop Dell Latitude 5440 - 3` menampilkan `Tag` tanpa `+N`
+39. Arahkan pointer ke Status `Laptop Dell Latitude 5440 - 2`
+40. Verifikasi daftar kekurangan lengkap `Serial Number` dan `Tag` tampil pada hover Status
+41. Klik `+1` pada Status `Laptop Dell Latitude 5440 - 2`
+42. Verifikasi popover daftar kekurangan lengkap memuat `Serial Number` dan `Tag`
+43. Verifikasi kartu filter `All`, `Needs data`, dan `Ready` tampil
+44. Verifikasi kartu `All` menampilkan jumlah `7`
+45. Verifikasi kartu `Needs data` menampilkan jumlah `3`
+46. Verifikasi kartu `Ready` menampilkan jumlah `4`
+47. Klik kartu `Needs data`
+48. Verifikasi tabel Item `Laptop Dell Latitude 5440` memuat `Laptop Dell Latitude 5440 - 2` dan `Laptop Dell Latitude 5440 - 3`
+49. Verifikasi `Laptop Dell Latitude 5440 - 1` tidak tampil di tabel
+50. Klik judul Item `Printer Epson L3250`
+51. Verifikasi tabel Item `Printer Epson L3250` memuat `Printer Epson L3250 - 2`
+52. Klik kartu `Ready`
+53. Klik judul Item `Laptop Dell Latitude 5440`
+54. Verifikasi tabel memuat `Laptop Dell Latitude 5440 - 1`
+55. Verifikasi `Laptop Dell Latitude 5440 - 2` tidak tampil di tabel
 
 ### Tabel aset memakai paginasi tanpa colvis, Search, filter, dan sort
-48. Tampilkan Halaman `Register Asset` dengan kondisi K5
-49. Klik tab `Asset`
-50. Verifikasi paginasi menawarkan `10`, `25`, `50`, dan `100`
-51. Verifikasi kontrol column visibility tidak tampil pada tabel aset
-52. Verifikasi kotak Search tidak tampil pada tabel aset
-53. Verifikasi filter selain kartu filter tidak tampil pada tabel aset
-54. Klik header kolom `Name`
-55. Verifikasi urutan aset tetap `Laptop Dell Latitude 5440 - 1`, `Laptop Dell Latitude 5440 - 2`, `Laptop Dell Latitude 5440 - 3` dari atas
+56. Tampilkan Halaman `Register Asset` dengan kondisi K5
+57. Klik tab `Asset`
+58. Klik judul Item `Laptop Dell Latitude 5440`
+59. Verifikasi paginasi menawarkan `10`, `25`, `50`, dan `100`
+60. Verifikasi kontrol column visibility tidak tampil pada tabel aset
+61. Verifikasi kotak Search tidak tampil pada tabel aset
+62. Verifikasi filter selain kartu filter tidak tampil pada tabel aset
+63. Klik header kolom `Name`
+64. Verifikasi urutan aset tetap `Laptop Dell Latitude 5440 - 1`, `Laptop Dell Latitude 5440 - 2`, `Laptop Dell Latitude 5440 - 3` dari atas
 
 ### Accordion dapat dilipat dengan keyboard
-56. Tampilkan Halaman `Register Asset` dengan kondisi K1
-57. Verifikasi tabel General Information tidak memuat kolom `Condition`
-58. Klik tab `Asset`
-59. Verifikasi baris `Laptop Dell Latitude 5440 - 1` tampil
-60. Tekan `Enter` pada judul Item `Laptop Dell Latitude 5440`
-61. Verifikasi judul Item `Laptop Dell Latitude 5440` tetap tampil
-62. Verifikasi baris `Laptop Dell Latitude 5440 - 1` tidak tampil karena Accordion dilipat
-63. Tekan `Enter` pada judul Item `Laptop Dell Latitude 5440`
-64. Verifikasi baris `Laptop Dell Latitude 5440 - 1` tampil kembali
+65. Tampilkan Halaman `Register Asset` dengan kondisi K1
+66. Verifikasi tabel General Information tidak memuat kolom `Condition`
+67. Klik tab `Asset`
+68. Verifikasi judul Item `Laptop Dell Latitude 5440` tampil sebelum dibuka
+69. Tekan `Enter` pada judul Item `Laptop Dell Latitude 5440`
+70. Verifikasi baris `Laptop Dell Latitude 5440 - 1` tampil karena Accordion dibuka
+71. Tekan `Enter` pada judul Item `Laptop Dell Latitude 5440`
+72. Verifikasi judul Item `Laptop Dell Latitude 5440` tetap tampil
+73. Verifikasi baris `Laptop Dell Latitude 5440 - 1` tidak tampil karena Accordion dilipat
 
 ### Item TAG Type Non-TAG tidak memiliki slot Tag
-65. Tampilkan Halaman `Register Asset` dengan kondisi K2
-66. Klik tab `Asset`
-67. Verifikasi kolom Tag pada `Meja Lipat Aluminium - 1` menampilkan `No tag`
+74. Tampilkan Halaman `Register Asset` dengan kondisi K2
+75. Klik tab `Asset`
+76. Klik judul Item `Meja Lipat Aluminium`
+77. Verifikasi kolom Tag pada `Meja Lipat Aluminium - 1` menampilkan `No tag`
 
 ### Empty state tab Asset dan hasil saring kosong
-68. Tampilkan Halaman `Register Asset` dengan kondisi K3
-69. Klik tab `Asset`
-70. Verifikasi tab `Asset` menampilkan `No assets yet`
-71. Verifikasi tab `Asset` menampilkan `Select an Asset Name in General Information to see the assets here.`
-72. Tampilkan Halaman `Register Asset` dengan kondisi K4
-73. Klik tab `Asset`
-74. Klik kartu `Needs data`
-75. Verifikasi tabel menampilkan `No results found`
-76. Verifikasi tabel menampilkan `Try adjusting your search or filter.`
+78. Tampilkan Halaman `Register Asset` dengan kondisi K3
+79. Klik tab `Asset`
+80. Verifikasi tab `Asset` menampilkan `No assets yet`
+81. Verifikasi tab `Asset` menampilkan `Select an Asset Name in General Information to see the assets here.`
+82. Tampilkan Halaman `Register Asset` dengan kondisi K4
+83. Klik tab `Asset`
+84. Klik kartu `Needs data`
+85. Verifikasi tabel menampilkan `No results found`
+86. Verifikasi tabel menampilkan `Try adjusting your search or filter.`
 
 ### Custom field Scope General tampil di semua Item dan Scope Specific hanya pada Asset Name-nya
-77. Tampilkan Halaman `Register Asset` dengan kondisi K6
-78. Klik tab `Asset`
-79. Verifikasi tabel Item `Kursi Kerja Ergonomis` memuat kolom Custom field `Catatan Lokasi`
-80. Verifikasi tabel Item `Laptop Dell Latitude 5440` memuat kolom Custom field `Catatan Lokasi` dan `Serial Number`
-81. Verifikasi tabel Item `Kursi Kerja Ergonomis` tidak memuat kolom Custom field `Serial Number`
+87. Tampilkan Halaman `Register Asset` dengan kondisi K6
+88. Klik tab `Asset`
+89. Klik judul Item `Kursi Kerja Ergonomis`
+90. Verifikasi tabel Item `Kursi Kerja Ergonomis` memuat kolom Custom field `Catatan Lokasi`
+91. Verifikasi tabel Item `Kursi Kerja Ergonomis` tidak memuat kolom Custom field `Serial Number`
+92. Klik judul Item `Laptop Dell Latitude 5440`
+93. Verifikasi tabel Item `Laptop Dell Latitude 5440` memuat kolom Custom field `Catatan Lokasi` dan `Serial Number`
 
 ### Kekurangan pertama Status mengikuti urutan kolom
-82. Tampilkan Halaman `Register Asset` dengan kondisi K7
-83. Klik tab `Asset`
-84. Verifikasi Status `Laptop Dell Latitude 5440 - 1` menampilkan kekurangan pertama `Brand` dan `+3`
-85. Verifikasi Status `Kursi Kerja Ergonomis - 1` menampilkan kekurangan pertama `Damage note` dan `+1`
+94. Tampilkan Halaman `Register Asset` dengan kondisi K7
+95. Klik tab `Asset`
+96. Klik judul Item `Laptop Dell Latitude 5440`
+97. Verifikasi Status `Laptop Dell Latitude 5440 - 1` menampilkan kekurangan pertama `Brand` dan `+3`
+98. Klik judul Item `Kursi Kerja Ergonomis`
+99. Verifikasi Status `Kursi Kerja Ergonomis - 1` menampilkan kekurangan pertama `Damage note` dan `+1`
 
 ### Tabel Item tab General Information tanpa isian Custom field
-86. Tampilkan Halaman `Register Asset` dengan kondisi K1
-87. Verifikasi tabel Item memuat `Laptop Dell Latitude 5440`, `Kursi Kerja Ergonomis`, dan `Printer Epson L3250`
-88. Verifikasi tidak ada kolom atau isian Custom field `Serial Number`, `Tanggal Garansi`, dan `Jenis Tinta` di tabel Item
+100. Tampilkan Halaman `Register Asset` dengan kondisi K1
+101. Verifikasi tabel Item memuat `Laptop Dell Latitude 5440`, `Kursi Kerja Ergonomis`, dan `Printer Epson L3250`
+102. Verifikasi tidak ada kolom atau isian Custom field `Serial Number`, `Tanggal Garansi`, dan `Jenis Tinta` di tabel Item
 
 ### Panel samping aset turun di bawah form pada lebar sempit
-89. Tampilkan Halaman `Register Asset` dengan kondisi K8
-90. Klik tab `Asset`
-91. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
-92. Verifikasi panel samping aset `Laptop Dell Latitude 5440 - 1` berada di bawah form
+103. Tampilkan Halaman `Register Asset` dengan kondisi K8
+104. Klik tab `Asset`
+105. Klik judul Item `Laptop Dell Latitude 5440`
+106. Klik kolom `Name` pada `Laptop Dell Latitude 5440 - 1`
+107. Verifikasi panel samping aset `Laptop Dell Latitude 5440 - 1` berada di bawah form
+
+### Aset ber-Tag Skipped dihitung terisi dan Tag Unverified tetap kekurangan
+108. Tampilkan Halaman `Register Asset` dengan kondisi K9
+109. Klik tab `Asset`
+110. Klik judul Item `Kursi Kerja Ergonomis`
+111. Verifikasi kolom Tag pada `Kursi Kerja Ergonomis - 1` menampilkan `Skipped`
+112. Verifikasi Status `Kursi Kerja Ergonomis - 1` menampilkan teks `✓ Ready`
+113. Verifikasi kolom Tag pada `Kursi Kerja Ergonomis - 2` menampilkan `Unverified`
+114. Verifikasi Status `Kursi Kerja Ergonomis - 2` menampilkan `Tag` tanpa `+N`
+
+### Custom field wajib mendahului Damage note pada kekurangan pertama Status
+115. Tampilkan Halaman `Register Asset` dengan kondisi K9
+116. Klik tab `Asset`
+117. Klik judul Item `Laptop Dell Latitude 5440`
+118. Verifikasi Status `Laptop Dell Latitude 5440 - 1` menampilkan kekurangan pertama `Serial Number` dan `+1`

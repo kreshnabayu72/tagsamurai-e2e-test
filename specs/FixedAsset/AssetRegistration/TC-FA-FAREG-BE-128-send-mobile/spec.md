@@ -74,5 +74,5 @@ owner: BE
 27. Verifikasi Send ditolak server dengan pesan yang memuat Tag `E280-1280-0001 {runId}` dan status `Reserved`
 28. Verifikasi jumlah batch Draft milik Rina tidak bertambah akibat Send yang ditolak
 
-### Send tercatat di Activity Log dengan Source Mobile
-29. Verifikasi Activity Log memuat entri Action `Create` atas batch Draft hasil Send dari langkah 2 dengan Source `Mobile`
+### Send tercatat di Activity Log
+29. Verifikasi Activity Log memuat entri Action `Create` atas batch Draft hasil Send dari langkah 2

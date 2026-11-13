@@ -9,7 +9,7 @@ sourceRules: [S-REG-13, S-REG-17, S-REG-24, S-REG-29, §4.1#r8, §4.1#r9, §4.2.
 smoke: []
 dependsOn: []
 trace:
-  S-REG-13: [2, 3, 9, 23]
+  S-REG-13: [2, 3, 9, 23, 84]
   S-REG-17: [13, 15, 18]
   S-REG-24: [31, 32, 45, 52, 53, 60]
   S-REG-29: [27, 34, 36, 40, 49, 55, 58, 62, 63, 65, 73, 76]
@@ -18,9 +18,9 @@ trace:
   §4.2.4#b6: [2, 3, 6]
   §4.2.4#b7: [13, 18, 19, 20, 21]
   §4.2.4#b9: [30, 31, 34, 37, 38, 43, 44, 47, 52, 55, 56, 73, 74]
-  §4.8#r22: [3, 5, 23]
+  §4.8#r22: [3, 5, 23, 84]
   §4.8#r27: [6, 11, 13, 18, 24]
-  EB-TBL-5@halaman-approval: [9, 11, 15, 36]
+  EB-TBL-5@halaman-approval: [9, 11, 15, 36, 84]
   FAREG-LOGIC-20m: [2, 13, 23, 24, 25]
 anchor: [71]
 coverage:
@@ -170,3 +170,9 @@ coverage:
 78. Respons master menyatakan Asset Name `Monitor` tidak lagi tersedia (kondisi K11)
 79. Verifikasi baris Alert pertama `2 assets use master data that is no longer available. Correct them, return them to Draft, or reject them before deciding.`
 80. Verifikasi baris Alert kedua `3 assets use master data that is no longer available. Return them to Draft or reject them before deciding.`
+
+### Alasan disabled pada Bulk Action tampil saat hover
+81. Tampilkan Halaman Approval dengan kondisi K1
+82. Centang baris `Laptop - 128` pada grup `Laptop`
+83. Arahkan kursor ke Bulk Action pada grup `Laptop`
+84. Verifikasi alasan `You cannot decide a registration you submitted.` tersampaikan pada Bulk Action grup `Laptop` yang disabled

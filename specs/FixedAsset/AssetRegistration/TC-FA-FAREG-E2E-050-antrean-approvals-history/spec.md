@@ -12,7 +12,7 @@ trace:
   "§4.1#r136": [2, 17, 37, 40, 73]
   "§4.2.5#b2": [2, 13, 97, 102]
   "§4.1#r135": [3, 15, 37, 71, 102]
-  "§4.1#r137": [4, 19, 37, 46, 75]
+  "§4.1#r137": [4, 19, 37, 46, 75, 106, 107]
   "§4.1#r138": [5, 6, 7, 8, 21, 29, 33, 37, 51, 77]
   "§4.1#r139": [9, 23, 25, 37, 56, 79]
   "§4.1#r140": [10, 11, 25, 37, 62, 81]
@@ -35,8 +35,8 @@ coverage:
 - Layar awal: Approvals > Registration > History.
 - Data:
   - DU-050-1: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Meranti {runId}`, Total Asset `8`, Status `Approved` karena pengaju adalah Total Control sehingga disetujui otomatis tanpa approver independen, Requested By `Eko T`, Approver `Eko T`, Last Updated `T0 − 1 hari`.
-  - DU-050-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Ulin {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`.
-  - DU-050-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Bangkirai {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N`, Approver `Rina W`, Last Updated `T0 − 3 hari`.
+  - DU-050-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Ulin {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`. Komposisi aset: `6` Approve, `5` Return to Draft, dan `3` Reject.
+  - DU-050-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Bangkirai {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N`, Approver `Rina W`, Last Updated `T0 − 3 hari`. Komposisi aset: `1` Return to Draft dan `2` Reject, tanpa aset Approve.
   - DU-050-4: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Damar {runId}`, Total Asset `97`, Status `Canceled`, Requested By `Rina W`, Approver `—`, Last Updated `T0 − 4 hari`.
   - Pengajuan DU-050-4 diajukan lebih dulu daripada DU-050-3, DU-050-3 lebih dulu daripada DU-050-2, dan DU-050-2 lebih dulu daripada DU-050-1.
   - Eko T adalah pengguna aktif dengan role Total Control. Maya L, Hadi K, Siti N, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing; Maya L dan Hadi K bukan Total Control.
@@ -49,10 +49,10 @@ coverage:
 2. Verifikasi tabel tab History memuat baris `Gudang Meranti {runId}`, `Gudang Ulin {runId}`, `Gudang Bangkirai {runId}`, `Gudang Damar {runId}` dengan Group tampil sebagai Badge
 3. Verifikasi Registration ID baris `Gudang Meranti {runId}` berformat `REG-YYYYMMDD-NNNNN` dan sama dengan Registration ID milik DU-050-1
 4. Verifikasi Total Asset baris `Gudang Meranti {runId}` bernilai `8`
-5. Verifikasi Status baris `Gudang Meranti {runId}` tampil sebagai Badge `Approved` berwarna success
-6. Verifikasi Status baris `Gudang Ulin {runId}` tampil sebagai Badge `Partially Approved` berwarna warning
-7. Verifikasi Status baris `Gudang Bangkirai {runId}` tampil sebagai Badge `Rejected` berwarna danger
-8. Verifikasi Status baris `Gudang Damar {runId}` tampil sebagai Badge `Canceled` berwarna dark
+5. Verifikasi Status baris `Gudang Meranti {runId}` bernilai teks `Approved`
+6. Verifikasi Status baris `Gudang Ulin {runId}` bernilai teks `Partially Approved`
+7. Verifikasi Status baris `Gudang Bangkirai {runId}` bernilai teks `Rejected`
+8. Verifikasi Status baris `Gudang Damar {runId}` bernilai teks `Canceled`
 9. Verifikasi Requested By baris `Gudang Meranti {runId}` bernilai `Eko T`
 10. Verifikasi Approver baris `Gudang Meranti {runId}` bernilai `Eko T`, nama pengaju, karena pengajuan disetujui otomatis (Kondisi A)
 11. Verifikasi Approver baris `Gudang Damar {runId}` bernilai `—`
@@ -163,3 +163,8 @@ coverage:
 102. Verifikasi Detail pengajuan read-only terbuka dengan Registration ID milik DU-050-2
 103. Klik tautan breadcrumb `History`
 104. Verifikasi antrean Approvals terbuka kembali pada tab `History`
+
+### Total Asset menghitung aset dari semua status
+105. Ganti isi kotak search dengan `{runId}`, tekan Enter
+106. Verifikasi Total Asset baris `Gudang Ulin {runId}` bernilai `14`, yaitu jumlah seluruh aset pengajuan (`6` Approve, `5` Return to Draft, `3` Reject), bukan hanya `6` aset Approve
+107. Verifikasi Total Asset baris `Gudang Bangkirai {runId}` bernilai `3`, yaitu jumlah seluruh aset pengajuan (`1` Return to Draft, `2` Reject), bukan hanya `2` aset Reject

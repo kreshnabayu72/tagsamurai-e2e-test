@@ -29,7 +29,7 @@ trace:
   - Citra (Manage asset & TAG dengan capability Update pada node Group registrasi `Gudang Medan {runId}`) sebagai approver lain pada pengajuan yang sama.
 - Data:
   - DU-136-1: Group `Gudang Medan {runId}`, ber-toggle `Require Approval for Registration` ON, ada di entitas aktor.
-  - DU-136-2: Asset Name `Laptop {runId}`, TAG Type `Non-TAG`, Status `Active`, dengan pasangan Brand dan Model `Dell` / `Latitude 5440`, `Lenovo` / `ThinkPad E14`, dan `HP` / `ProBook 450`, serta Custom field wajib `Nomor Inventaris` (Specific).
+  - DU-136-2: Asset Name `Laptop {runId}`, TAG Type `Non-TAG`, Status `Active`, dengan pasangan Brand dan Model `Dell` / `Latitude 5440`, `Lenovo` / `ThinkPad E14`, dan `HP` / `ProBook 450`, serta Custom field wajib `Nomor Inventaris` dengan Scope `General` dan Value Type `Specific` (nilai per aset).
   - DU-136-3: pengajuan `Waiting for Approval` milik Rina W berisi `2` aset `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Condition `Normal`, Nomor Inventaris `INV-136-001 {runId}` dan `INV-136-002 {runId}`.
   - DU-136-4: pengajuan `Waiting for Approval` milik Rina W berisi `2` aset `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Condition `Normal`.
   - DU-136-5: pengajuan `Waiting for Approval` milik Rina W berisi `3` aset `Laptop {runId}` Brand `Dell` Model `Latitude 5440`: aset pertama Condition `Normal` Nomor Inventaris `INV-136-011 {runId}`, aset kedua Condition `Normal`, aset ketiga Condition `Damaged` dengan Damage note `Casing retak di sisi kanan`.

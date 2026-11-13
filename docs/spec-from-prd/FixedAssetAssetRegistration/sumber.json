@@ -2,9 +2,9 @@
  "suite": "specs/FixedAsset/AssetRegistration",
  "prd": "fixed-asset@abe2bec",
  "prdSha": "a06fc762cd090daf",
- "foundation": "foundation@3243ca3-dirty",
- "kontrakKomponen": "wangs-ui@1.4.0-rc.180",
+ "foundation": "foundation@e8ac00f",
+ "kontrakKomponen": "wangs-ui@1.4.0-rc.181",
  "kontrakSamaDenganPin": false,
- "stage": "prd-harness-spec@4b143d5",
- "ditutup": "2026-11-13T07:24:45Z"
+ "stage": "prd-harness-spec@90300d1",
+ "ditutup": "2026-11-13T11:05:37Z"
 }

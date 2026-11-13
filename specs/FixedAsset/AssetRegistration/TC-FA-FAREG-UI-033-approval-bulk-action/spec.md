@@ -11,12 +11,12 @@ dependsOn: []
 trace:
   FI-REG-16: [3, 5, 6]
   FI-REG-17: [12, 13, 15, 17]
-  FI-REG-18: [23, 24, 25, 32, 33, 34, 35, 36, 38, 39, 47, 48, 49, 58, 59, 60, 68, 75]
-  V-REG-15: [61, 67, 74]
+  FI-REG-18: [23, 24, 25, 32, 33, 34, 35, 36, 38, 39, 47, 48, 49, 58, 59, 60, 68, 75, 87, 93, 101, 102, 103]
+  V-REG-15: [61, 67, 74, 94]
   §4.2.4#p2: [5, 8]
   §4.2.4#b5: [5, 23, 32, 33, 47, 48, 49, 58]
   §4.8#r22: [3, 5, 8, 15, 17]
-  §9.9#r19: [24, 34, 35, 61, 67, 74, 80]
+  §9.9#r19: [24, 34, 35, 61, 67, 74, 80, 85, 87, 93, 94]
 anchor: [2, 7, 51]
 coverage:
   web: automated
@@ -35,8 +35,8 @@ coverage:
   - DU-033-5: aset Name `Office Desk - 12`, Category `Furniture`, Brand `Kayu Jati`, Model `No Model`, Group `Gudang 1`, TAG `No tag`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-033-6: aset Name `Laptop - 129`, Category `Computers`, Brand `Dell`, Model `Latitude 5440`, Group `Gudang 1`, TAG `Skipped`, Condition `Damaged`, Corrections `1`, Decision `Return to Draft`, Reason `Photo is missing`.
 - Kondisi:
-  - K1: pengajuan DU-033-1 berisi aset DU-033-2 sampai DU-033-4 dalam grup Accordion `Laptop` dan DU-033-5 dalam grup Accordion `Office Desk`, dengan Decision awal `Approve` dan tanpa Reason, dan approver berhak memutuskan.
-  - K2: pengajuan DU-033-1 berisi aset DU-033-2, DU-033-6, dan DU-033-4 dalam grup Accordion `Laptop` dan DU-033-5 dalam grup Accordion `Office Desk`, dan approver berhak memutuskan.
+  - K1: pengajuan DU-033-1 berisi aset DU-033-2 sampai DU-033-4 dalam grup Accordion `Laptop` dan DU-033-5 dalam grup Accordion `Office Desk`, kedua grup dalam keadaan terbuka bersamaan, dengan Decision awal `Approve` dan tanpa Reason, dan approver berhak memutuskan.
+  - K2: pengajuan DU-033-1 berisi aset DU-033-2, DU-033-6, dan DU-033-4 dalam grup Accordion `Laptop` dan DU-033-5 dalam grup Accordion `Office Desk`, kedua grup dalam keadaan terbuka bersamaan, dan approver berhak memutuskan.
 
 ## Test Steps
 
@@ -137,3 +137,32 @@ coverage:
 78. Pilih aksi `Return to Draft` pada Bulk Action grup `Laptop`
 79. Isi Reason Bulk Action dengan `perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapy` (361 karakter)
 80. Verifikasi pesan `Max. 360 characters` tampil di bawah field Reason Bulk Action
+
+### Reason Bulk Action tepat di batas panjang diterima
+81. Tampilkan Halaman Approval dengan kondisi K1
+82. Centang baris `Laptop - 128`
+83. Pilih aksi `Return to Draft` pada Bulk Action grup `Laptop`
+84. Isi Reason Bulk Action dengan `perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkap` (360 karakter)
+85. Verifikasi tidak ada pesan `Max. 360 characters` di bawah field Reason Bulk Action
+86. Klik `[Apply]`
+87. Verifikasi Decision pada baris `Laptop - 128` menampilkan `Return to Draft`
+
+### Reason Bulk Action satu karakter diterima
+88. Tampilkan Halaman Approval dengan kondisi K1
+89. Centang baris `Laptop - 128`
+90. Pilih aksi `Return to Draft` pada Bulk Action grup `Laptop`
+91. Isi Reason Bulk Action dengan `X` (1 karakter)
+92. Klik `[Apply]`
+93. Verifikasi Reason pada baris `Laptop - 128` menampilkan `X`
+94. Verifikasi pesan `Reason must not be empty` tidak tampil pada Reason Bulk Action
+
+### Apply Approve dengan Reason menyalin Reason ke semua baris terpilih
+95. Tampilkan Halaman Approval dengan kondisi K1
+96. Centang baris `Laptop - 128`
+97. Centang baris `Laptop - 129`
+98. Pilih aksi `Approve` pada Bulk Action grup `Laptop`
+99. Isi Reason Bulk Action dengan `Scratch on the casing is minor`
+100. Klik `[Apply]`
+101. Verifikasi Reason hasil Apply `Approve` pada baris `Laptop - 128` adalah `Scratch on the casing is minor`
+102. Verifikasi Reason hasil Apply `Approve` pada baris `Laptop - 129` adalah `Scratch on the casing is minor`
+103. Verifikasi Reason pada baris `Laptop - 130` kosong

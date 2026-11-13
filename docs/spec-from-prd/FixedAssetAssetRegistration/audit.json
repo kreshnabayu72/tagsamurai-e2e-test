@@ -1,10 +1,10 @@
 {
  "schema": "spec-from-prd-audit/v1",
  "putaran": 3,
- "suite": "1641882719036e09",
+ "suite": "70a7da5b326b1a75",
  "hitung": {
-  "ok": 866,
-  "parsial": 32,
+  "ok": 865,
+  "parsial": 33,
   "hilang": 0,
   "salah": 0,
   "na": 430,
@@ -163,6 +163,22 @@
  "draft": {},
  "plan": [
   {
+   "unit": "§4.1#p3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-037-navigasi-tab-dan-pill-draft",
+   "langkah": [],
+   "catatan": "Pembuatan Registration ID saat Submit dibuktikan di BE-133; di spec unit ini hanya tampilan tab dan pill."
+  },
+  {
+   "unit": "§4.2.1#p1",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+   "langkah": [],
+   "catatan": "Remaining Quota dan breadcrumb Waiting for Approval > Detail diasersi di UI-015, E2E-103, dan UI-028, bukan spec pemilik unit."
+  },
+  {
    "unit": "EB-XM-1",
    "verdict": "ok",
    "jenis": "plan",
@@ -174,20 +190,58 @@
    "catatan": "Spec mengubah Date Format General Settings (tingkat platform/seluruh client) dan tidak ber-subSuite, sehingga bisa berjalan bersamaan dengan spec lain yang mengasersi format `dd/MM/yy` (mis. E2E-038, E2E-046, E2E-047). Pindahkan ke subSuite yang berjalan terpisah dan berurutan."
   },
   {
-   "unit": "§4.1#r2",
+   "unit": "§4.1#r23",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": null,
+   "spec": "TC-FA-FAREG-E2E-038-draft-isi-tabel",
    "langkah": [],
-   "catatan": "Pemilik unit tercatat hanya UI-002; asersi serupa juga ada di spec lain tetapi tidak tercatat sebagai penanggung."
+   "catatan": "Origin terisi setelah batch kembali dari return/cancel dicakup di spec lain (E2E-038/040 data Origin REG-...)."
   },
   {
-   "unit": "§4.1#p5",
+   "unit": "S-REG-01",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": null,
+   "spec": "TC-FA-FAREG-E2E-052-daftar-kosong-dan-draft-terakhir",
    "langkah": [],
-   "catatan": "Klausa ditanggung UI-007 saja; asersi serupa di spec lain tidak tercatat sebagai penanggung."
+   "catatan": "Smoke; satu perwakilan cukup."
+  },
+  {
+   "unit": "§4.1#p4",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-013-form-general-information-tampilan",
+   "langkah": [
+    56
+   ],
+   "catatan": "Tabel Item dan Asset diasersi di UI-013 langkah 56 dan UI-017 langkah 51."
+  },
+  {
+   "unit": "D-REG-01",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-061-delete-draft",
+   "langkah": [],
+   "catatan": "Smoke; satu perwakilan cukup."
+  },
+  {
+   "unit": "T-REG-12",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-023-form-save-draft-autosave",
+   "langkah": [
+    46
+   ],
+   "catatan": "Persistensi toast Error diasersi di UI-023 langkah 46 dan UI-030 langkah 34."
+  },
+  {
+   "unit": "T-REG-13",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-030-dialog-cancel-registration",
+   "langkah": [
+    34
+   ],
+   "catatan": "Persistensi toast Error diasersi di UI-030 langkah 34."
   },
   {
    "unit": "§4.8#p2",
@@ -229,17 +283,67 @@
    "catatan": "Klausa System Log `Voided` hanya diasersi untuk Delete satuan (langkah 10-11); Bulk Delete atas batch yang Asset Code-nya sudah dialokasikan tidak diasersi di System Log, dan BE-145 tidak tercatat sebagai penanggung §9.6#r7. BE-131 langkah 35 hanya mengasersi status Asset Code `Voided`."
   },
   {
+   "unit": "EB-TBL-4@kolom-approver",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
+   "langkah": [
+    159,
+    160,
+    161,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173
+   ],
+   "catatan": "Spec UI-011 (antrean Approvals tab History/Active) juga mengasersi nama singkat `[First Name] [Inisial Last Name]` (`Rina W`, `Budi S`, `Agus P`) dan nama lengkap saat hover pada kolom Requested By dan Approver; E2E-047 dan E2E-050 mengasersi nilai singkat dari data nyata. Ketiganya tidak tercatat sebagai penanggung EB-TBL-4@kolom-approver."
+  },
+  {
+   "unit": "§4.1#r13",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-049-antrean-approvals-active",
+   "langkah": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "catatan": "E2E-049 juga mengasersi induk `Approvals` collapsible dengan satu anak `Registration` (sesuai PRD §4.2.5: 'Modul ini hanya memiliki anak `Registration`') dan breadcrumb tab Active; tidak tercatat sebagai penanggung §4.1#r13."
+  },
+  {
    "unit": "§4.2.5#p2",
    "verdict": "ok",
    "jenis": "plan",
    "spec": "TC-FA-FAREG-E2E-051-antrean-approvals-download",
    "langkah": [
     5,
+    6,
     9,
+    16,
     24,
+    25,
     28
    ],
-   "catatan": "Filename `Approvals-Registration` dan opsi Download as CSV/XLSX untuk tab History diasersi dengan berkas nyata di E2E-051; plan hanya mencatat UI-011 sebagai penanggung unit ini."
+   "catatan": "E2E-051 mengasersi Filename `Approvals-Registration` (`.csv` dan `.xlsx`) dan opsi `Download as CSV`/`Download as XLSX` pada kedua tab, yang tidak diasersi UI-011 selain lewat toast gagal pada tab Active (langkah 77-80). E2E-051 tidak tercatat sebagai penanggung §4.2.5#p2."
+  },
+  {
+   "unit": "§4.2.5#p3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-049-antrean-approvals-active",
+   "langkah": [
+    7,
+    81,
+    86
+   ],
+   "catatan": "E2E-049 dan E2E-050 (langkah 97, 99, 103, 104) juga mengasersi breadcrumb Approvals > Registration > Active/History dan tautan kembali ke tab asal; tidak tercatat sebagai penanggung."
   },
   {
    "unit": "§2.1#p1",
@@ -259,68 +363,28 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
    "langkah": [
+    32,
+    33,
     34,
+    35,
+    38,
     39,
-    42
-   ],
-   "catatan": "`Remaining Quota: [N]` di samping field Group (FI-REG-24) diasersi di UI-015 dan E2E-103, bukan di UI-013 yang tercatat sebagai penanggung unit."
-  },
-  {
-   "unit": "§4.1#r91",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-   "langkah": [
     41,
     42,
     44,
-    45,
     46,
     47,
-    48,
-    50,
-    51,
-    52,
-    59
+    48
    ],
-   "catatan": "Format path penuh, dapat dikosongkan, buka pemilih pohon, menyaring Asset Name, dan terisi otomatis diasersi di UI-014, bukan UI-013 yang tercatat."
+   "catatan": "Klausa `Remaining Quota: [N]` di samping field Group (FI-REG-23/24) diasersi di UI-015, yang tidak tercatat sebagai penanggung unit ini. Tambahkan UI-015 ke daftar spec unit atau catat sebagai rujukan ke FI-REG-23 dan FI-REG-24."
   },
   {
-   "unit": "§4.1#r92",
+   "unit": "§4.1#r4",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-   "langkah": [
-    36,
-    37,
-    38,
-    56,
-    57
-   ],
-   "catatan": "Ganti nilai mengosongkan Brand/Model (FI-REG-04) dan Asset Name hanya dari master diasersi di UI-014; sifat Wajib diasersi di BE-121 (langkah 3) dan aria-required UI-013 (63)."
-  },
-  {
-   "unit": "§4.1#r93",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-   "langkah": [
-    3,
-    33
-   ],
-   "catatan": "Tooltip `Select asset name first.` dan penggantian Brand mengosongkan Model diasersi di UI-014, bukan UI-013."
-  },
-  {
-   "unit": "§4.1#r94",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-   "langkah": [
-    5,
-    16,
-    17
-   ],
-   "catatan": "Tooltip `Select brand first.` dan `No Model` paling atas diasersi di UI-014, bukan UI-013."
+   "spec": "TC-FA-FAREG-UI-017-form-tab-asset-tampilan",
+   "langkah": [],
+   "catatan": "Bagian unit di luar tab General Information (`DataTable` per Item, panel samping aset) diasersi di UI-017 dan UI-018, dan batas «1 sampai Register Asset Bulk Limit aset» di UI-015 serta BE-120; semuanya tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§4.1#r96",
@@ -329,109 +393,72 @@
    "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
    "langkah": [
     2,
-    5,
-    6,
-    9,
-    10,
-    12,
-    13,
-    17,
-    20,
-    23
+    8,
+    11,
+    15
    ],
-   "catatan": "Rentang 1 sampai Register Asset Bulk Limit dan pesan kuota di bawah sel diasersi di UI-015, bukan UI-013 yang tercatat."
+   "catatan": "Klausa rentang `1–Register Asset Bulk Limit`, pesan kuota di bawah sel, dan nilai awal `1` diasersi di UI-015, yang tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§4.1#r97",
    "verdict": "ok",
    "jenis": "plan",
    "spec": "TC-FA-FAREG-UI-016-form-remove-item-quantity-turun",
-   "langkah": [
-    3,
-    4,
-    7,
-    8
-   ],
-   "catatan": "Penghapusan Item lewat Remove from List diasersi di UI-016 dan E2E-057; hilang pada mode read-only di E2E-089 langkah 18, bukan UI-013."
+   "langkah": [],
+   "catatan": "Aksi `Remove from List` menghapus Item (UI-016), dan row option `Remove from List` hilang pada mode read-only (E2E-089 langkah 18, E2E-090 langkah 40) diasersi di spec yang tidak tercatat sebagai penanggung unit ini."
   },
   {
-   "unit": "§9.5#r1",
+   "unit": "EB-TBL-5@form-register-asset",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-020-form-scan-tag-kolom-tag",
+   "langkah": [],
+   "catatan": "Tombol disabled berdalih lain pada surface form-register-asset (`Remove from List` S-REG-16 di UI-013 langkah 51 dan UI-016; `Scan [Type]` S-REG-15 dan S-REG-28 di UI-020) diasersi di spec yang tidak tercatat sebagai penanggung unit ini. Catatan plan hanya menyebut S-REG-09 dan S-REG-10."
+  },
+  {
+   "unit": "FLD-REG-03",
    "verdict": "ok",
    "jenis": "plan",
    "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
    "langkah": [
-    12,
-    13,
+    76,
+    77,
+    78,
+    79
+   ],
+   "catatan": "Klausa «Opsi = Brand terkait Asset Name terpilih» (opsi tidak memuat Brand milik Asset Name lain, mis. `Olympic`, `HP`) diasersi di BE-120, yang tidak tercatat sebagai penanggung unit ini; UI-014 langkah 12 hanya mengasersi kehadiran `Dell` dan `Lenovo`."
+  },
+  {
+   "unit": "FLD-REG-05",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-053-buat-draft-tersimpan",
+   "langkah": [
     14,
+    15
+   ],
+   "catatan": "Klausa 'setiap aset menjadi satu aset' (Quantity N = N aset terpisah) diasersi benar di E2E-053 langkah 14-15 dan E2E-056 langkah 8, tetapi unit hanya mencatat UI-015 sebagai penanggung. Catat E2E-053 (dan/atau E2E-056) sebagai penanggung klausa itu."
+  },
+  {
+   "unit": "§4.2.1#b3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
+   "langkah": [
     15,
-    17,
-    18,
-    19,
-    20
+    33
    ],
-   "catatan": "BE-120 mengasersi maksimum per Item dan total aset per pengajuan = Bulk Limit (99 dan 100 diterima, 101 dan 60+41 ditolak) tetapi tidak tercatat sebagai penanggung §9.5#r1."
-  },
-  {
-   "unit": "FI-REG-07",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-BE-123-operasi-item-aset",
-   "langkah": [
-    8,
-    9,
-    10,
-    11,
-    15,
-    16,
-    17,
-    18,
-    19
-   ],
-   "catatan": "BE-123 mengasersi Tag aset yang dihapus dilepas (Available) dan guard 'hanya selama semua unit Item masih Draft' untuk Remove Item, tetapi tidak tercatat sebagai penanggung FI-REG-07."
+   "catatan": "Penolakan server atas total di atas Bulk Limit (`For more than 100 assets, use Import.`) diasersi di BE-120 langkah 15 dan 33 tetapi BE-120 tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§4.8#r25",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-FAREG-E2E-089-gating-manage-purchase",
+   "spec": "TC-FA-FAREG-E2E-090-gating-read-only",
    "langkah": [
-    17,
-    18
+    40
    ],
-   "catatan": "Klausa 'Hidden pada mode read-only' diasersi di sini (langkah 18), bukan di UI-016; E2E-089 tidak tercatat sebagai penanggung §4.8#r25."
-  },
-  {
-   "unit": "§4.8#r25",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-E2E-087-gating-manage-asset-tag",
-   "langkah": [
-    22,
-    23
-   ],
-   "catatan": "Klausa 'Show bagi role yang berhak mengubah draft' diasersi (langkah 23); tidak tercatat sebagai penanggung §4.8#r25."
-  },
-  {
-   "unit": "§4.8#r25",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-E2E-085-gating-total-control",
-   "langkah": [
-    21,
-    22
-   ],
-   "catatan": "Klausa 'Show bagi role yang berhak' (langkah 22); tidak tercatat sebagai penanggung §4.8#r25."
-  },
-  {
-   "unit": "§4.8#r25",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-E2E-086-gating-group-manager",
-   "langkah": [
-    21,
-    22
-   ],
-   "catatan": "Klausa 'Show bagi role yang berhak' (langkah 22); tidak tercatat sebagai penanggung §4.8#r25."
+   "catatan": "Klausa 'Show bagi role yang berhak mengubah draft; Hidden pada mode read-only' diasersi di E2E-085/086/087 (tampil, langkah 22/23) dan E2E-089 langkah 18 serta E2E-090 langkah 40 (tidak tampil), bukan di UI-016. Catat spec gating itu sebagai penanggung klausa visibilitas unit ini."
   },
   {
    "unit": "F-FAREG-04",
@@ -469,17 +496,7 @@
     58,
     59
    ],
-   "catatan": "Rumus skor (6/8=75, 5/9=56, 5/9=56, 6/9=67; Tag Skipped terisi, Unverified kosong) diasersi di BE-121 yang tidak tercatat sebagai penanggung unit ini."
-  },
-  {
-   "unit": "FAREG-LOGIC-11e",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-E2E-055-edit-draft-tersimpan",
-   "langkah": [
-    58
-   ],
-   "catatan": "Progress = aset Ready / total (50% dari 1 dari 2) diasersi di E2E-055 selain E2E-038."
+   "catatan": "Rumus skor kelengkapan (dibulatkan, Tag Verified/Skipped terisi, Unverified kosong) diasersi benar di BE-121 langkah 56-59, tetapi BE-121 tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "FLD-REG-06",
@@ -487,21 +504,12 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-E2E-115-damage-record-dep-damage-record",
    "langkah": [
+    5,
+    6,
     7,
     8
    ],
-   "catatan": "E2E-115 mengasersi aset Active ber-Condition Damaged otomatis mendapat Damage record (Source Registration, status Damaged); tidak tercatat sebagai penanggung FLD-REG-06."
-  },
-  {
-   "unit": "§4.1#r99",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-BE-122-name-increment-asset-code",
-   "langkah": [
-    2,
-    10
-   ],
-   "catatan": "Klausa 'Sementara selama belum Submit (FAREG-LOGIC-03)' diasersi di BE-122 (Name sementara berformat Asset Name - increment dan dihitung ulang), tetapi spec itu tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Klausa 'Aset yang menjadi Active dengan Condition Damaged otomatis mendapat Damage record (FAREG-LOGIC-05l)' diasersi di E2E-115 (Source `Registration`, status `Damaged`), bukan di UI-017 (ui-client). Catat E2E-115 sebagai penanggung klausa itu."
   },
   {
    "unit": "§4.5#p1",
@@ -511,20 +519,77 @@
    "langkah": [
     17
    ],
-   "catatan": "Klausa 'fokus dikembalikan ke pemicu saat dialog ditutup' diasersi UI-027 langkah 17 (fokus kembali ke [Submit]); spec itu tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Klausa 'fokus dikembalikan ke pemicu saat dialog ditutup' diasersi untuk dialog lain (UI-008 langkah 27, UI-027 langkah 17, UI-034 langkah 58), bukan di UI-017 maupun dialog formnya (Remove Assets di UI-016, Bulk Scan di UI-022). Catat spec itu sebagai penanggung klausa fokus, atau tambahkan pada dialog form."
   },
   {
-   "unit": "FI-REG-08",
+   "unit": "FLD-REG-07",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan",
+   "spec": "TC-FA-FAREG-UI-019-form-validasi-teks-foto",
    "langkah": [
-    96,
-    97,
-    99,
-    100
+    5,
+    9
    ],
-   "catatan": "Panel pada halaman Detail read-only dibuka lewat klik nama aset dan ditutup lewat Close di spec 028, tetapi spec itu tidak tercatat sebagai penanggung FI-REG-08."
+   "catatan": "Batas 120 karakter Damage note diasersi di sini (boleh 120, tolak 121 dengan `Max. 120 characters`, 1 karakter, emoji diterima), tetapi UI-019 tidak tercatat sebagai penanggung FLD-REG-07 (hanya UI-018)."
+  },
+  {
+   "unit": "FLD-REG-07",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-025-form-submit-aset-belum-lengkap",
+   "langkah": [
+    11
+   ],
+   "catatan": "`Damage note must not be empty` saat Activate bila Condition `Damaged` diasersi di UI-025, tetapi UI-025 tidak tercatat sebagai penanggung FLD-REG-07."
+  },
+  {
+   "unit": "FLD-REG-10",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-019-form-validasi-teks-foto",
+   "langkah": [
+    55,
+    73
+   ],
+   "catatan": "Format PNG/JPG/JPEG, tolak format tak didukung, dan ukuran di atas 1 MB diasersi di UI-019 tetapi spec ini tidak tercatat sebagai penanggung FLD-REG-10."
+  },
+  {
+   "unit": "FLD-REG-10",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-059-edit-draft-apply-to-all",
+   "langkah": [
+    14,
+    15,
+    16
+   ],
+   "catatan": "Apply to all Photo (nilai sumber menggantikan, maks 2 foto) diasersi di E2E-059 yang hanya tercatat smoke untuk FI-REG-13/T-REG-16, bukan untuk FLD-REG-10."
+  },
+  {
+   "unit": "FLD-REG-11",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-019-form-validasi-teks-foto",
+   "langkah": [
+    25,
+    29,
+    36,
+    40,
+    51
+   ],
+   "catatan": "Maks 120 karakter, penghapusan entri dengan mengosongkan input, dan jumlah tidak dibatasi diasersi di UI-019 tetapi spec ini tidak tercatat sebagai penanggung FLD-REG-11 (hanya UI-018)."
+  },
+  {
+   "unit": "FLD-REG-13",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-017-form-tab-asset-tampilan",
+   "langkah": [
+    79,
+    80,
+    81
+   ],
+   "catatan": "Custom field Value Type Specific yang tidak wajib (`Catatan Lokasi`) dan Scope General/Specific diasersi di UI-017, bukan di spec penanggung (UI-018 tidak memuat field Value Type Specific opsional)."
   },
   {
    "unit": "FLD-REG-13",
@@ -532,9 +597,41 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-BE-121-validasi-activate",
    "langkah": [
+    56,
     57
    ],
-   "catatan": "Custom field opsional dihitung dalam skor diasersi BE-121 langkah 57 (Warna opsional, skor 56) yang tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Custom field opsional ikut dihitung dalam skor (`Warna` dalam hitungan 5 dari 9) diasersi di BE-121, tidak tercatat sebagai penanggung FLD-REG-13."
+  },
+  {
+   "unit": "FAREG-LOGIC-01s",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-BE-123-operasi-item-aset",
+   "langkah": [
+    22
+   ],
+   "catatan": "Apply to all Alias Name 121 karakter ditolak `Max. 120 characters` (batas server) diasersi di BE-123, tidak tercatat sebagai penanggung FAREG-LOGIC-01s."
+  },
+  {
+   "unit": "V-REG-18",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-033-approval-bulk-action",
+   "langkah": [
+    80
+   ],
+   "catatan": "Batas 360 karakter Reason pada Bulk Action (`Max. 360 characters`) diasersi di UI-033 tetapi spec ini tidak tercatat sebagai penanggung V-REG-18."
+  },
+  {
+   "unit": "V-REG-18",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
+   "langkah": [
+    8,
+    9
+   ],
+   "catatan": "Damage note 121 karakter ditolak server `Max. 120 characters` diasersi di BE-120, tidak tercatat sebagai penanggung V-REG-18."
   },
   {
    "unit": "§9.9#r13",
@@ -547,6 +644,21 @@
    "catatan": "Batas 'Maks 2 foto' diasersi UI-018 langkah 55-62; UI-018 tidak tercatat sebagai penanggung unit ini."
   },
   {
+   "unit": "FAREG-LOGIC-04q",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-021-form-tag-combined-perubahan-slot",
+   "langkah": [
+    65,
+    66,
+    67,
+    68,
+    69,
+    70
+   ],
+   "catatan": "Penolakan seluruh scan Tag combined yang komponennya bertipe terkunci plan (K12) diasersi di UI-021, spec ini tidak tercatat sebagai penanggung FAREG-LOGIC-04q."
+  },
+  {
    "unit": "S-REG-18",
    "verdict": "ok",
    "jenis": "plan",
@@ -556,7 +668,7 @@
     15,
     16
    ],
-   "catatan": "Badge `Skipped` beserta alasan di hover diasersi di E2E-070 (langkah 14-16) dan slot `Skipped` di BE-126 langkah 34, tetapi spec itu tidak tercatat sebagai penanggung unit ini; 020 hanya mengasersi Verified dan Unverified."
+   "catatan": "Badge `Skipped` beserta alasan pada tooltip diasersi di E2E-070 (dan UI-031 langkah 66-67), tidak tercatat sebagai penanggung S-REG-18; UI-020 sendiri hanya memuat `Verified` dan `Unverified`."
   },
   {
    "unit": "§4.1#r101",
@@ -564,12 +676,10 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-E2E-070-submit-tanpa-pairing",
    "langkah": [
-    13,
-    14,
     15,
     16
    ],
-   "catatan": "Badge `Skipped` dan tooltip alasan pada kolom TAG diasersi di E2E-070 (halaman Detail), bukan di spec pemilik unit ini (UI-020). Catat E2E-070 sebagai penanggung klausa Skipped unit ini."
+   "catatan": "Hover Badge `Skipped` memuat alasan (`TAG not yet available`) diasersi di E2E-070, tidak tercatat sebagai penanggung §4.1#r101; UI-020 tidak memuat Badge `Skipped`."
   },
   {
    "unit": "§9.4.2#r31",
@@ -624,14 +734,6 @@
    "catatan": "Tag direbut sebelum Submit, seluruh Submit ditolak dan aset tetap Draft diasersi BE-138; spec itu hanya tercatat untuk §9.4.2#r51, bukan unit ini."
   },
   {
-   "unit": "§4.8#r24",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-022-dialog-bulk-scan",
-   "langkah": [],
-   "catatan": "Visibilitas per role (Show: Total Control, Group Manager, Manage asset & TAG; Hidden: Manage purchase, Read Only) diasersi di E2E-085, 086, 087, 089, 090 (langkah `tombol Bulk Scan tampil/tidak tampil pada Item Laptop`), bukan di UI-022 (aktor Total Control saja). Catat spec gating itu sebagai penanggung unit ini."
-  },
-  {
    "unit": "T-REG-14",
    "verdict": "ok",
    "jenis": "plan",
@@ -639,7 +741,7 @@
    "langkah": [
     35
    ],
-   "catatan": "E2E-100 langkah 35 mengasersi toast `No changes to save.` untuk Edit Active tanpa perubahan (basis pembanding changelog-entry.md §8.8: hanya beda kapitalisasi adalah No-Op), tetapi spec itu tidak tercatat sebagai penanggung T-REG-14. Catat di plan; cabang Edit Active unit ini hanya terasersi di sana."
+   "catatan": "'Edit Active tanpa perubahan' (`No changes to save.`) diasersi di E2E-100 langkah 33-35, tidak tercatat sebagai penanggung T-REG-14."
   },
   {
    "unit": "§9.6#r1",
@@ -672,6 +774,17 @@
    "catatan": "Registration Log 'Draft edited' satu per sesi edit diasersi BE-147; spec itu tidak tercatat sebagai penanggung unit ini."
   },
   {
+   "unit": "§9.9#r5",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-013-form-general-information-tampilan",
+   "langkah": [
+    13,
+    30
+   ],
+   "catatan": "Aturan 'node Assignable, bukan Excess' pada pemilih Group (Gudang Excess Pusat dan Gudang Retur tidak dapat dipilih) diasersi di UI-013, tidak tercatat sebagai penanggung §9.9#r5."
+  },
+  {
    "unit": "S-REG-19",
    "verdict": "ok",
    "jenis": "plan",
@@ -679,7 +792,7 @@
    "langkah": [
     5
    ],
-   "catatan": "E2E-107 langkah 5 mengasersi `Alert` Warning `Gudang Hapus {runId} is not available. Choose another Group.` (varian Group); spec ini tidak tercatat sebagai penanggung S-REG-19. Varian Asset Name dan Model hanya ada di E2E-105 (smoke)."
+   "catatan": "E2E-107 langkah 5 mengasersi Alert Warning `[Group] is not available. Choose another Group.` di atas form (varian Group dari S-REG-19), tetapi spec ini tidak tercatat sebagai penanggung S-REG-19. Varian Asset Name, Brand, Model sudah di E2E-105 (smoke) dan Brand di UI-024; catat E2E-107 pada unit ini."
   },
   {
    "unit": "V-REG-04",
@@ -687,23 +800,21 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
    "langkah": [
-    5,
-    7,
-    8
+    5
    ],
-   "catatan": "Varian Group (pesan saat dibuka dan setelah Save draft) diasersi E2E-107; spec itu tidak tercatat sebagai penanggung unit ini."
+   "catatan": "E2E-107 mengasersi pesan V-REG-04 varian Group saat dibuka; tidak tercatat pada unit ini."
   },
   {
-   "unit": "§4.2.1#b1",
+   "unit": "V-REG-04",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-FAREG-E2E-105-master-berubah-saat-draft-dep-settings-asset-name",
+   "spec": "TC-FA-FAREG-BE-141-validasi-ulang-master-dep-settings-asset-name",
    "langkah": [
-    4,
-    16,
-    23
+    3,
+    5,
+    11
    ],
-   "catatan": "E2E-105 langkah 4, 16, 23 mengasersi `Alert` Warning di atas form untuk Brand, Model, dan Asset Name; E2E-107 langkah 5 untuk Group. Keduanya tidak tercatat sebagai penanggung §4.2.1#b1 (hanya UI-024 dengan varian Brand)."
+   "catatan": "BE-141 memvalidasi ulang referensi master saat Save draft dan Activate (timing `Saat Save/Activate`); tidak tercatat pada unit ini."
   },
   {
    "unit": "§4.2.1#b2",
@@ -711,30 +822,46 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-E2E-080-approval-keputusan-campuran",
    "langkah": [
-    46,
-    47
+    46
    ],
-   "catatan": "E2E-080 langkah 46-47 mengasersi `Alert` Danger di atas form yang memuat alasan approver; asersi posisi 'di atas form' untuk Alert Danger tidak ada di UI-024 langkah 7. E2E-080 tidak tercatat sebagai penanggung §4.2.1#b2 (tercatat hanya untuk S-REG-20)."
+   "catatan": "E2E-080 langkah 46 mengasersi `Alert` Danger `di atas form` memuat alasan approver (posisi yang tidak diasersi UI-024 langkah 7). Spec ini hanya tercatat smoke untuk S-REG-20, belum untuk unit ini."
   },
   {
-   "unit": "§4.1#r5",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-025-form-submit-aset-belum-lengkap",
-   "langkah": [
-    5
-   ],
-   "catatan": "Klausa 'hanya muncul bila seluruh aset memenuhi Tingkat 2 selain Tag' diasersi di UI-025 langkah 5 (dialog konfirmasi Submit tidak tampil saat ada aset Tingkat 2 belum lengkap), tetapi spec ini tidak tercatat sebagai penanggung unit."
-  },
-  {
-   "unit": "§4.1#r5",
+   "unit": "V-REG-03",
    "verdict": "ok",
    "jenis": "plan",
    "spec": "TC-FA-FAREG-E2E-069-submit-aset-belum-lengkap",
    "langkah": [
-    5
+    8
    ],
-   "catatan": "Klausa yang sama diasersi di E2E-069 langkah 5; spec tidak tercatat sebagai penanggung unit ini."
+   "catatan": "E2E-069 langkah 8 mengasersi pesan inline `Damage note must not be empty` pada aset Damaged; tidak tercatat pada unit ini."
+  },
+  {
+   "unit": "D-REG-03",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-070-submit-tanpa-pairing",
+   "langkah": [
+    4,
+    5,
+    6,
+    8
+   ],
+   "catatan": "E2E-070 mengasersi peringatan `1 asset is not paired to a TAG yet.`, checkbox Skip, dan Select reason; spec itu hanya tercatat smoke untuk V-REG-11, belum untuk D-REG-03."
+  },
+  {
+   "unit": "FAREG-LOGIC-04k",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-070-submit-tanpa-pairing",
+   "langkah": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "catatan": "E2E-070 mengasersi satu alasan Skip pairing untuk aset yang hanya kurang Tag dan Activate diterima; tidak tercatat pada unit ini."
   },
   {
    "unit": "§9.6#r3",
@@ -764,6 +891,29 @@
    "catatan": "Registration Log Activate approval OFF diasersi E2E-067; tidak tercatat sebagai penanggung unit ini."
   },
   {
+   "unit": "§4.1#b3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-080-approval-keputusan-campuran",
+   "langkah": [
+    30,
+    31,
+    32
+   ],
+   "catatan": "E2E-080 mengasersi kolom Result dan Reason (Approved, Returned, Rejected beserta Reason) pada pengajuan Partially Approved; tidak tercatat pada unit ini."
+  },
+  {
+   "unit": "§4.1#b3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-067-activate-approval-off",
+   "langkah": [
+    20,
+    21
+   ],
+   "catatan": "E2E-067 mengasersi Result `Approved` dan Reason kosong pada pengajuan Approved dari approval OFF; tidak tercatat pada unit ini."
+  },
+  {
    "unit": "§4.1#b6",
    "verdict": "ok",
    "jenis": "plan",
@@ -790,11 +940,24 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan",
    "langkah": [
+    67,
     68,
     69,
-    70
+    70,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112
    ],
-   "catatan": "Ikon `Changes by approver` membuka dialog pada Partially Approved diasersi UI-028; spec itu tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Visibilitas ikon `Changes by approver` per status dan pembukaan dialog diasersi di spec 028 (ui-client), yang tidak tercatat sebagai penanggung unit ini. Tambahkan 028 sebagai pemilik bagian ikon."
   },
   {
    "unit": "§4.1#r19",
@@ -802,16 +965,12 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan",
    "langkah": [
+    67,
     68,
     69,
-    70,
-    101,
-    103,
-    106,
-    109,
-    112
+    70
    ],
-   "catatan": "Ikon `Changes by approver` tampil pada Partially Approved dan tidak tampil pada Waiting for Approval, Rejected, Canceled, Approved tanpa koreksi diasersi UI-028; spec itu dan E2E-082 langkah 21-22 (Approved) tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Pemicu (klik ikon `Changes by approver` di Detail pengajuan Partially Approved membuka dialog) diasersi di spec 028 dan spec e2e 082 langkah 22-23; spec 029 (satu-satunya penanggung tercatat) mulai dari dialog sudah terbuka. Tambahkan 028 sebagai penanggung unit ini."
   },
   {
    "unit": "§4.1#r109",
@@ -824,7 +983,7 @@
     7,
     8
    ],
-   "catatan": "Klausa 'Memilih aset untuk Bulk Action' dan 'Per grup Accordion' diasersi di UI-033 (Bulk Action tampil per grup setelah baris dicentang, tidak di grup lain); spec tidak tercatat sebagai penanggung unit."
+   "catatan": "Fungsi pemilihan baris per grup Accordion untuk Bulk Action diasersi di spec 033, yang tidak tercatat untuk unit ini (hanya 031 langkah 41 yang mengasersi keberadaan checkbox)."
   },
   {
    "unit": "§4.1#r113",
@@ -832,13 +991,10 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
    "langkah": [
-    70,
-    71,
-    72,
     73,
     74
    ],
-   "catatan": "Badge Brand `Unavailable` (K10) diasersi UI-035; spec itu tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Catatan kolom \"ditandai Badge `Unavailable` (danger) bila master tidak tersedia\" diasersi di spec 035 (langkah 73-74) dan e2e 106/107, bukan di spec 031 yang tercatat sebagai satu-satunya penanggung unit."
   },
   {
    "unit": "§4.1#r114",
@@ -846,19 +1002,73 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
    "langkah": [
-    28,
-    39,
-    40
+    30,
+    37,
+    43,
+    44
    ],
-   "catatan": "Klausa 'Ditandai Badge `Unavailable` bila master tidak tersedia' untuk Model diasersi di UI-035 langkah 28, 39, 40; spec tidak tercatat sebagai penanggung unit."
+   "catatan": "Badge `Unavailable` pada kolom Model diasersi di spec 035 dan e2e 106, bukan di spec 031 yang tercatat sebagai satu-satunya penanggung unit."
+  },
+  {
+   "unit": "§4.1#r120",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-032-approval-decision-reason",
+   "langkah": [
+    2,
+    3,
+    4,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "catatan": "Placeholder `Enter reason` dan aturan wajib (Return to Draft/Reject) vs opsional (Approve) diasersi di spec 032, bukan di spec 031 yang tercatat sebagai satu-satunya penanggung unit (031 hanya mengasersi Reason kosong di keadaan awal). Tambahkan 032."
+  },
+  {
+   "unit": "§4.1#r121",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
+   "langkah": [
+    13,
+    14,
+    15
+   ],
+   "catatan": "Klausa \"Nonaktif saat halaman terkunci\" diasersi di spec 035 (langkah 13) dan e2e 083 langkah 14, bukan di spec 031 yang tercatat sebagai satu-satunya penanggung unit."
   },
   {
    "unit": "§4.1#r14",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Kolom antrean Active dan History di unit ini diasersi oleh E2E-049 (nilai sel, Registration ID sebagai link) dan E2E-050; kedua spec itu tidak tercatat sebagai penanggung unit. UI-031 hanya memikul bagian halaman Approval."
+   "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
+   "langkah": [
+    33,
+    34,
+    128
+   ],
+   "catatan": "Kolom antrean Approvals tab Active (Registration ID, Group, Total Asset, Requested By, Last Updated) dan tab History diasersi di spec UI-011 (langkah 33, 128), yang tidak tercatat untuk unit ini. Spec 031 hanya mencakup bagian halaman Approval."
+  },
+  {
+   "unit": "§4.2.4#p2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-034-approval-panel-koreksi",
+   "langkah": [
+    122,
+    123
+   ],
+   "catatan": "Klausa \"panel kanan dapat ditutup\" diasersi di spec 034 (langkah 122-123, Close), bukan di spec 031 atau 033 yang tercatat sebagai penanggung."
   },
   {
    "unit": "§4.2.4#p2",
@@ -869,7 +1079,51 @@
     6,
     7
    ],
-   "catatan": "Footer [Cancel] dan [Submit] diasersi UI-036; Alert Danger footer di UI-032; panel koreksi dapat ditutup di UI-034. Spec itu tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Klausa footer `[Cancel]` dan `[Submit]` diasersi di spec 036 (langkah 6-7), bukan di spec 031 atau 033 yang tercatat. Alert Danger di footer diasersi di spec 032 (langkah 26-29, 70). Tambahkan 036 dan 032 sebagai penanggung bagian footer."
+  },
+  {
+   "unit": "FAREG-LOGIC-06e",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-033-approval-bulk-action",
+   "langkah": [
+    23,
+    24,
+    32,
+    33,
+    34,
+    35,
+    36,
+    47,
+    48,
+    49,
+    58,
+    59,
+    60,
+    62,
+    75
+   ],
+   "catatan": "Jalur keputusan lewat Bulk Action (termasuk Reason wajib untuk Return to Draft dan Reject) diasersi di spec 033, dan penolakan server di be-e2e 135 langkah 18-26; keduanya tidak tercatat untuk unit ini (hanya 032 yang mengasersi jalur per aset)."
+  },
+  {
+   "unit": "§4.8#r22",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-083-approval-akses-halaman",
+   "langkah": [
+    58
+   ],
+   "catatan": "E2E-083 mengasersi 'Disabled pada halaman terkunci' (langkah 58) tetapi tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§4.8#r22",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-088-gating-pemegang-hak-putus",
+   "langkah": [
+    10
+   ],
+   "catatan": "'Show bagi pemegang hak putus setelah aset terpilih' diasersi E2E-088 langkah 10 (juga E2E-085 langkah 48 dan E2E-086 langkah 48), spec yang tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "EB-FRM-2@panel-koreksi",
@@ -900,9 +1154,32 @@
    "unit": "FAREG-LOGIC-07i",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Butir ketiga (Select Model again saat [Submit], memblokir [Submit]) diasersi di UI-036 (langkah 93, 100) dan BE-135 (langkah 29-33), yang tidak tercatat sebagai penanggung unit."
+   "spec": "TC-FA-FAREG-UI-036-approval-submit-keputusan",
+   "langkah": [
+    89,
+    90,
+    91,
+    92,
+    97,
+    98
+   ],
+   "catatan": "Butir ketiga unit (pilih ulang Model setelah koreksi Brand, `Select Model again`, ditandai di baris Model, memblokir [Submit]) diasersi UI-036 K8, tetapi UI-036 tidak tercatat sebagai penanggung unit ini; bagian ui-client unit hanya menyebut pesan inline saat [Save correction]."
+  },
+  {
+   "unit": "FAREG-LOGIC-07i",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-BE-135-keputusan-approval",
+   "langkah": [
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+   ],
+   "catatan": "Sisi server butir ketiga (keputusan ditolak sebelum Model dipilih ulang) diasersi BE-135 (juga unit V-REG-14), tetapi BE-135 tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "FAREG-LOGIC-17c",
@@ -922,43 +1199,53 @@
    "spec": "TC-FA-FAREG-UI-031-approval-tampilan-awal",
    "langkah": [
     80,
-    81,
-    82,
-    83
+    81
    ],
-   "catatan": "Badge Corrections `1`, `—` bila tanpa koreksi, dan dialog Corrections diasersi juga di spec 031 yang tidak tercatat sebagai penanggung unit; `—` pada baris tanpa koreksi hanya diasersi di sana (034 tidak memverifikasinya). Catat 031 sebagai pemilik atau tambahkan asersi `—` di 034."
+   "catatan": "Klausa 'Badge jumlah koreksi, `—` bila tidak ada' diasersi UI-031 (langkah 80-81: Badge `1` pada Laptop - 129, `—` pada Laptop - 128), spec yang tidak tercatat sebagai penanggung unit ini. UI-034 tidak mengasersi `—`."
+  },
+  {
+   "unit": "S-REG-24",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
+   "langkah": [
+    19
+   ],
+   "catatan": "E2E-107 mengasersi Alert Warning master tidak tersedia di atas tabel aset (cabang Group dihapus), tetapi tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "S-REG-29",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
+   "langkah": [
+    21
+   ],
+   "catatan": "E2E-107 mengasersi tombol keputusan Disabled dengan tooltip `This asset uses master data that is no longer available.` (cabang Group dihapus), tetapi tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§4.1#r9",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
+   "langkah": [
+    19
+   ],
+   "catatan": "E2E-107 langkah 19 mengasersi salinan kedua Alert (Asset Name atau Group tidak tersedia, N = 1) pada master sungguhan, tetapi tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§4.2.4#b9",
-   "verdict": "parsial",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-034-approval-panel-koreksi",
-   "langkah": [
-    218,
-    219,
-    220,
-    221,
-    222,
-    223,
-    224,
-    225
-   ],
-   "catatan": "Klausa 'nilai terpilih di panel yang menjadi tidak valid: FI-REG-21' diasersi di UI-034, yang tidak tercatat sebagai penanggung unit ini. Penolakan server atas keputusan karena master berubah diasersi di BE-141 langkah 13-26, juga tidak tercatat."
-  },
-  {
-   "unit": "§4.8#r27",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-034-approval-panel-koreksi",
+   "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
    "langkah": [
-    182,
-    183,
-    184,
-    185,
-    186,
-    187
+    18,
+    19,
+    20,
+    21,
+    25
    ],
-   "catatan": "Klausa '[Save correction] menyimpan koreksi staged' diasersi di UI-034, tidak tercatat sebagai penanggung unit ini."
+   "catatan": "E2E-107 mengasersi cabang Group dihapus saat halaman Approval terbuka (Unavailable tanpa muat ulang, Alert, tombol Disabled), spec yang tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§4.8#r27",
@@ -967,9 +1254,11 @@
    "spec": "TC-FA-FAREG-E2E-088-gating-pemegang-hak-putus",
    "langkah": [
     11,
-    14
+    14,
+    16,
+    17
    ],
-   "catatan": "Klausa 'Show bagi pemegang hak putus' ([Submit] dan panel koreksi) diasersi di E2E-088 (Manage asset & TAG berkapabilitas Update), E2E-085 dan E2E-086 (langkah 49 dan 52), tidak tercatat sebagai penanggung unit ini."
+   "catatan": "'Show bagi pemegang hak putus' untuk `[Submit]` dan panel koreksi serta `[Submit]` membuka `D-REG-10` diasersi E2E-088 (juga E2E-085 langkah 49 dan 52, E2E-086), spec yang tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§4.2.4#p4",
@@ -981,7 +1270,7 @@
     9,
     15
    ],
-   "catatan": "Klausa 'status pengajuan ditentukan sistem dari campuran Decision' diasersi di spec 135 (FAREG-LOGIC-06h) dan spec 080/081, yang tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Kalimat 'Status pengajuan ditentukan sistem dari campuran Decision (`FAREG-LOGIC-06`)' diasersi BE-135 (Approved, Partially Approved, Rejected), spec yang tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§9.6#r4",
@@ -1004,10 +1293,13 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-E2E-089-gating-manage-purchase",
    "langkah": [
+    8,
     13,
-    14
+    14,
+    15,
+    16
    ],
-   "catatan": "Klik Detail membuka form Register Asset read-only (Manage purchase) diasersi di E2E-089 langkah 13-14, tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Ikon `Detail` pada sub tab Draft (dan kliknya membuka form `Register Asset` read-only) diasersi E2E-089 untuk role Manage purchase. E2E-038 langkah 12 tidak memuat `Detail` karena aktornya pemegang hak ubah (sesuai §4.8: Detail Hidden bagi pemegang `Edit`). E2E-089 tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "EB-SRT-1",
@@ -1029,29 +1321,6 @@
     11
    ],
    "catatan": "Plan mencatat 068 menanggung `aset berstatus Waiting for Approval`, tetapi langkah 11-13 hanya mengasersi baris pengajuan di sub tab pengaju; status Waiting for Approval per aset diasersi di BE-122 (langkah 5, 14), dan masuk antrean Approvals di BE-134 langkah 22 serta 049 langkah 10 (data awal). Catat penanggung sebenarnya atau tambah langkah di 068."
-  },
-  {
-   "unit": "§4.2.5#b3",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
-   "langkah": [
-    86,
-    87,
-    88,
-    194,
-    195,
-    196,
-    197,
-    198,
-    112,
-    113,
-    114,
-    225,
-    226,
-    227
-   ],
-   "catatan": "Jenis kontrol filter (Tree picker pada Active, Multi-select searchable pada History), empty state, dan paginasi diasersi di UI-011, tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§9.7#r7",
@@ -1114,10 +1383,15 @@
    "jenis": "plan",
    "spec": "TC-FA-FAREG-BE-123-operasi-item-aset",
    "langkah": [
+    1,
+    2,
     3,
-    5
+    4,
+    5,
+    6,
+    7
    ],
-   "catatan": "Klausa `Tag dilepas` pada Quantity turun aset berisi data hanya diasersi di BE-123 langkah 3-5 (aset ber-Tag) dan BE-126 langkah 20; 056 memakai aset ber-Serial Number tanpa Tag sehingga tidak menguji pelepasan Tag. Catat BE-123/BE-126 sebagai penanggung unit ini."
+   "catatan": "Klausa 'Tag dilepas' pada Quantity turun diasersi benar di BE-123 (Tag aset ke-3 kembali tersedia, dapat dipindai ulang), tetapi unit hanya mencatat E2E-056 (yang datanya hanya Serial Number, tanpa Tag). Catat BE-123 sebagai penanggung klausa pelepasan Tag."
   },
   {
    "unit": "§9.7#r5",
@@ -1192,13 +1466,13 @@
    "unit": "§4.8#r26",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
+   "spec": "TC-FA-FAREG-E2E-089-gating-manage-purchase",
    "langkah": [
-    64,
-    65,
-    66
+    46,
+    47,
+    48
    ],
-   "catatan": "Klausa \"Take over Show bagi role yang berhak mengubah draft\" diasersi sisi negatifnya di BE-120 langkah 64-66 (Take over oleh Siti dan Dewi ditolak) dan sisi positif di E2E-085/086/087 (langkah 18-20), tidak tercatat sebagai penanggung."
+   "catatan": "Klausa '`Take over` Show bagi role yang berhak mengubah draft' (Hidden bagi Manage purchase) diasersi benar di E2E-089 langkah 47-48, tetapi unit hanya mencatat spec 064 dan 065. Catat E2E-089 sebagai penanggung klausa Take over tidak tampil bagi role tanpa hak ubah."
   },
   {
    "unit": "§9.6#r12",
@@ -1224,16 +1498,35 @@
    "catatan": "Klik Edit membuka form Register Asset diasersi di E2E-038, tidak tercatat sebagai penanggung unit ini."
   },
   {
-   "unit": "§8.3#r7",
+   "unit": "§9.4.2#r56",
    "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-BE-121-validasi-activate",
+   "langkah": [
+    22,
+    23,
+    24
+   ],
+   "catatan": "Klausa 'status `Not Paired Yet`' diasersi di BE-121 langkah 24 (kedua aset tanpa Tag tercatat `Not Paired Yet`), tetapi unit hanya mencatat E2E-070. Catat BE-121 sebagai penanggung klausa status."
+  },
+  {
+   "unit": "§8.3#r7",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-072-auto-approve-kondisi-b",
+   "langkah": [],
+   "catatan": "Judul plan 'Auto-approve Kondisi B: tanpa approver independen' tidak sama dengan judul spec ('Submit dengan approver independen tidak di-approve otomatis'); isinya menguji Kondisi B TIDAK terpenuhi, bukan hasil Kondisi B. Penanggung klausa `Approved by system ...` kosong. Selaraskan judul/penanggung setelah skenario positif ditambahkan."
+  },
+  {
+   "unit": "§8.3#r7",
+   "verdict": "parsial",
    "jenis": "plan",
    "spec": "TC-FA-FAREG-BE-134-auto-approve",
    "langkah": [
     5,
-    10,
-    15
+    20
    ],
-   "catatan": "Varian `Approved by [User] (Total Control — requester)` hanya diasersi di BE-134 langkah 5 (dan Group Manager langkah 10, 15); BE-134 tidak tercatat sebagai penanggung unit ini. Kondisi B diasersi di 072."
+   "catatan": "BE-134 langkah 5 mengasersi node `Approved by Hana T (Total Control — requester)`, tetapi unit tidak mencatat BE-134 sebagai penanggung."
   },
   {
    "unit": "§9.2#p46",
@@ -1290,7 +1583,7 @@
     7,
     21
    ],
-   "catatan": "`batch hasil Cancel atau auto-cancel sistem tidak memiliki Alert`: bagian auto-cancel diasersi di BE-137 langkah 7 dan 21; BE-137 tidak tercatat sebagai penanggung unit ini (073 menanggung bagian Cancel)."
+   "catatan": "Klausa 'batch hasil Cancel atau auto-cancel sistem tidak memiliki Alert' juga diasersi di BE-137 langkah 7 (Cancel) dan 21 (auto-cancel); unit hanya mencatat E2E-073 (Cancel). Catat BE-137 sebagai penanggung klausa auto-cancel tanpa Alert."
   },
   {
    "unit": "§9.7#r11",
@@ -1355,18 +1648,6 @@
    "catatan": "Klausa Derived view (Name sementara) dan skor kelengkapan diasersi di BE-122 dan BE-121 langkah 31; Lifecycle Reflected ke `asset/` di E2E-099; hanya klausa Snapshot Detail yang tercatat di E2E-076 langkah 6."
   },
   {
-   "unit": "§8.3#r3",
-   "verdict": "parsial",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-E2E-067-activate-approval-off",
-   "langkah": [
-    24,
-    25,
-    26
-   ],
-   "catatan": "Node pengajuan approval OFF diasersi tanpa judul di 067 langkah 24-26; tidak tercatat sebagai penanggung unit ini."
-  },
-  {
    "unit": "§9.7#r10",
    "verdict": "parsial",
    "jenis": "plan",
@@ -1420,16 +1701,6 @@
    "catatan": "Tag kembali Available dan Asset Code Voided pada Reject diasersi di BE-135 langkah 13; spec 081 (Non-TAG) tidak mengasersinya. BE-135 tidak tercatat sebagai penanggung unit ini."
   },
   {
-   "unit": "FAREG-LOGIC-07j",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FAREG-BE-147-isi-registration-log",
-   "langkah": [
-    20
-   ],
-   "catatan": "Entri `Draft edited by [User]` (approver) saat Approve diasersi BE-147 langkah 20; BE-147 tidak tercatat sebagai penanggung unit ini."
-  },
-  {
    "unit": "§2.1#r1",
    "verdict": "ok",
    "jenis": "plan",
@@ -1468,7 +1739,19 @@
     10,
     11
    ],
-   "catatan": "Perilaku `Membuka D-REG-14; sukses T-REG-10 dan kembali ke tab History` diasersi di spec 073; `D-REG-17` di spec 075. Keduanya tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Spec 073 mengasersi row action `Cancel registration` membuka `D-REG-14`, sukses `T-REG-10` dan kembali ke sub tab History, tetapi tidak tercatat sebagai penanggung unit ini (hanya 086 dan 087)."
+  },
+  {
+   "unit": "§4.8#r20",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan",
+   "langkah": [
+    6,
+    7,
+    8
+   ],
+   "catatan": "Spec 075 mengasersi `D-REG-17` (`Cannot Cancel`) tetapi tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§4.8#r23",
@@ -1477,10 +1760,9 @@
    "spec": "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan",
    "langkah": [
     4,
-    5,
-    6
+    5
    ],
-   "catatan": "`[Cancel Registration]` di Detail membuka D-REG-14 dan D-REG-17 diasersi di spec 075; keduanya tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Spec 075 menekan `[Cancel Registration]` di footer Detail dan membuka dialog `Cancel Registration`, tetapi tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§2.1#r3",
@@ -1503,6 +1785,37 @@
     97
    ],
    "catatan": "Breadcrumb `Approvals > Registration > History > Detail` untuk Detail dari antrean History diasersi di spec 050 langkah 97 dan Detail dari tab History antrean Approvals dibuka di spec 083 langkah 8; keduanya tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§4.8#r19",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-065-kunci-sesi-view-only-delete-terkunci",
+   "langkah": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+   ],
+   "catatan": "Klausa `tidak Disabled bila batch dikunci user lain` dan `kunci sesi dipegang user lain D-REG-27` diasersi benar di spec 065 (klik `Delete` pada batch terkunci membuka dialog blok), bukan di 087/089; 065 tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§4.8#r19",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-061-delete-draft",
+   "langkah": [],
+   "catatan": "Klausa `Membuka D-REG-01; sukses T-REG-04` diasersi di spec 061 (juga 062), yang tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§4.8#r19",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-008-draft-dialog-delete",
+   "langkah": [],
+   "catatan": "Klausa `draft sudah dihapus T-REG-06` hanya diasersi di UI-008 (ui-client), yang tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "FAREG-LOGIC-02e",
@@ -1617,6 +1930,34 @@
    "catatan": "Penolakan referensi Brand tidak valid pada Edit Active dua user diasersi BE-138 langkah 27-31, dan tanpa penanda versi/konflik di BE-136 langkah 39-43; tidak tercatat sebagai penanggung unit ini."
   },
   {
+   "unit": "FAREG-LOGIC-05a",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-E2E-104-kuota-tenant-habis-dep-license",
+   "langkah": [
+    11,
+    12
+   ],
+   "catatan": "Cabang `sisa terkecil` bila sisa kuota tenant lebih kecil dari Group (Group `50`, tenant `0`, `Available slots: 0`) diasersi di spec 104; spec 103 hanya memakai tenant lebih besar dari Group. 104 tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§9.4.2#r3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+   "langkah": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+   ],
+   "catatan": "Klausa `tenant lebih dulu` (pesan `... on your plan.` lawan pesan Group) hanya diasersi di UI-015 (ui-client); spec 103 memakai kuota tenant yang lebih besar. UI-015 tidak tercatat sebagai penanggung unit ini."
+  },
+  {
    "unit": "§9.4.2#r9",
    "verdict": "ok",
    "jenis": "plan",
@@ -1631,9 +1972,13 @@
    "unit": "FAREG-LOGIC-18c",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-FAREG-E2E-106-master-berubah-saat-approval-dep-settings-asset-name",
-   "langkah": [],
-   "catatan": "FAREG-LOGIC-18c untuk Brand diarsipkan, Model dilepas, dan Asset Name dihapus (penanda `Unavailable`) diasersi oleh BE-141 langkah 14, 19, 24, yang tidak tercatat sebagai penanggung unit ini; spec 106 hanya menandai Model dihapus (langkah 4) dan hanya Alert untuk Asset Name dihapus (langkah 15)."
+   "spec": "TC-FA-FAREG-BE-141-validasi-ulang-master-dep-settings-asset-name",
+   "langkah": [
+    14,
+    19,
+    24
+   ],
+   "catatan": "Varian `diarsipkan` dan `dilepas dari induknya` (Brand diarsipkan, Model dilepas dari Brand) diasersi di BE-141, bukan di 106 yang hanya memakai penghapusan; BE-141 dan UI-035 (badge Brand/Model `Unavailable`) tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§9.4.2#r18",
@@ -1642,10 +1987,17 @@
    "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
    "langkah": [
     30,
-    43,
-    73
+    31,
+    32,
+    45,
+    53,
+    60,
+    68,
+    69,
+    79,
+    80
    ],
-   "catatan": "Badge Unavailable untuk Brand dan Model serta Alert pada halaman Approval juga diasersi di UI-035 (ui-client) dan BE-141 langkah 14, 19 (pemicu Brand diarsipkan dan Model dilepas); keduanya tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Salinan Alert untuk dua jenis aset, bentuk jamak `[N] assets`, dan badge Brand `Unavailable` diasersi di UI-035 (ui-client); spec ini tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§9.4.2#r58",
@@ -1822,6 +2174,22 @@
    "catatan": "Notifikasi `registration_auto_canceled` untuk kedua jalur diasersi BE-148; tidak tercatat sebagai penanggung."
   },
   {
+   "unit": "§9.4.2#r17",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FAREG-UI-036-approval-submit-keputusan",
+   "langkah": [
+    71,
+    72,
+    74,
+    80,
+    81,
+    87,
+    88
+   ],
+   "catatan": "Dialog `D-REG-19` pada Submit keputusan (pembatalan atau keputusan pihak lain di antara klik `[Submit]` dan konfirmasi) diasersi di UI-036 (ui-client); BE-138 hanya menutup `Server menolak`. UI-036 tidak tercatat sebagai penanggung unit ini."
+  },
+  {
    "unit": "FAREG-LOGIC-10b",
    "verdict": "ok",
    "jenis": "plan",
@@ -1943,42 +2311,65 @@
   {
    "unit": "§5#r3",
    "verdict": "ok",
-   "jenis": "prd",
+   "jenis": "drift",
    "spec": "TC-FA-FAREG-E2E-039-draft-search",
-   "langkah": [],
-   "catatan": "SearchButton#5 memecah kata, foundation §9.16 menetapkan pencocokan lain; sumber tidak konsisten soal pemisahan kata pada search."
-  },
-  {
-   "unit": "§4.1#r136",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
    "langkah": [
-    194
+    23,
+    24,
+    33,
+    34
    ],
-   "catatan": "Sumber tidak sepakat soal tipe filter Group: baris kolom Group tab History bertulis `Multi-select searchable`, sedangkan tab Active bertulis `Tree picker` dan §4.1 (Example Tree) bertulis `di filter dipakai Tree picker pada data live`. Spec mengikuti bunyi baris unit ini (Multi-select searchable)."
+   "catatan": "Query dengan spasi tengah dan 'Head Room' tidak cocok 'Gudang Head Office Room' mengikuti foundation 9.16 (substring utuh), bertentangan dengan kontrak SearchButton#5 (terverifikasi: semua kata muncul di baris). Tidak ada catatan kaki [^drift-n]; ini bukan unit pemilik pola pencarian (EB-SRC-3)."
   },
   {
-   "unit": "§4.1#p42",
+   "unit": "§4.1#r96",
    "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
+   "jenis": "drift",
+   "spec": "TC-FA-FAREG-UI-013-form-general-information-tampilan",
    "langkah": [
-    194
+    71,
+    72
    ],
-   "catatan": "Teks unit: `di filter dipakai Tree picker pada data live`. Baris kolom Group tab History di §4.1 bertulis `Multi-select searchable` (Active: `Tree picker`). Spec UI-011 mengikuti baris kolom per tab."
+   "catatan": "PRD V-REG-10: Quantity `1 sampai batas` dengan pesan `\"Quantity must be between 1 and [Max]\"`, timing «Langsung». Kontrak NumberInput#1 dan NumberInput#15: nilai di luar `min`/`max` dijepit ke batas saat blur atau Enter, dan «No range error message and no invalid state». Pertentangannya: nilai `0` tidak bisa bertahan di sel bila `min` terpasang, sehingga pesan rentang tidak muncul. Sisi yang berlaku: kontrak komponen. Spec mengasersi versi PRD tanpa footnote `[^drift-<n>]`."
   },
   {
-   "unit": "FI-REG-01",
+   "unit": "§4.1#r96",
    "verdict": "ok",
-   "jenis": "prd",
+   "jenis": "drift",
+   "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+   "langkah": [
+    10,
+    11,
+    14,
+    15
+   ],
+   "catatan": "Sama dengan temuan UI-013 langkah 71-72: `0` dan `101` diasersi menghasilkan pesan `Quantity must be between 1 and 100` / `For more than 100 assets, use Import.` di bawah sel, padahal NumberInput menjepit nilai ke rentang (NumberInput#1, #15). Sisi yang berlaku: kontrak komponen; spec tanpa footnote drift."
+  },
+  {
+   "unit": "§4.1#b18",
+   "verdict": "ok",
+   "jenis": "drift",
    "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
    "langkah": [
     45,
     53,
-    67
+    62,
+    69,
+    78,
+    86
    ],
-   "catatan": "PRD kolom Category: \"Path penuh\" pada field; kontrak TreeSelect #6: badge tunggal memuat label node. Spec mengasersi label node tanpa footnote drift."
+   "catatan": "PRD (Tabel Item, kolom Category): Format `Path penuh`. Kontrak TreeSelect#6: pada mode single dengan node terpilih, field menampilkan badge berisi LABEL node (bukan path). Sisi yang berlaku: kontrak komponen. Spec mengasersi 'path penuh' (mis. `Elektronik > Komputer > Laptop`) tanpa footnote drift; seharusnya mengasersi label node (mis. `Laptop`) dengan footnote [^drift-n] yang menyebut kedua bunyi."
+  },
+  {
+   "unit": "V-REG-10",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+   "langkah": [
+    14,
+    15
+   ],
+   "catatan": "PRD tidak memutuskan pesan untuk Quantity satu Item di atas Bulk Limit (mis. 101 dengan limit 100). §9.9 Quantity (per Item): `1–[Max]` -> `\"Quantity must be between 1 and [Max]\"` dengan [Max] = batas per Item = Bulk Limit (§9.5 'maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit'); §4.2.1: `Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 ... \"For more than [Limit] assets, use Import.\"`. Dua suite menyatakan hasil berbeda untuk masukan sama: UI-015 langkah 14-15 dan UI-024 langkah 11-12 memakai `For more than ...`, BE-120 langkah 12-13 memakai `Quantity must be between 1 and 100`. Tidak ada aturan yang memilih sisi."
   },
   {
    "unit": "V-REG-10",
@@ -1986,19 +2377,63 @@
    "jenis": "prd",
    "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
    "langkah": [
+    12,
     13
    ],
-   "catatan": "§9.9/V-REG-10: `Quantity must be between 1 and [Max]` untuk 1-[Max] (Max per Item = Bulk Limit, §9.x Quantity \"maksimum per Item dan total aset = Bulk Limit\"), sedangkan §4.2.1 dan V-REG-10 memberi `For more than [Limit] assets, use Import.` untuk melebihi limit. Untuk satu Item Quantity 101 PRD tidak memutuskan pesan; BE-120 langkah 13 memakai `Quantity must be between 1 and 100`, UI-015 langkah 15 dan E2E-112 memakai `For more than 100 assets, use Import.`"
+   "catatan": "PRD tidak memutuskan pesan untuk Quantity satu Item di atas Bulk Limit (mis. 101 dengan limit 100). §9.9 Quantity (per Item): `1–[Max]` -> `\"Quantity must be between 1 and [Max]\"` dengan [Max] = batas per Item = Bulk Limit (§9.5 'maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit'); §4.2.1: `Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 ... \"For more than [Limit] assets, use Import.\"`. Dua suite menyatakan hasil berbeda untuk masukan sama: UI-015 langkah 14-15 dan UI-024 langkah 11-12 memakai `For more than ...`, BE-120 langkah 12-13 memakai `Quantity must be between 1 and 100`. Tidak ada aturan yang memilih sisi."
+  },
+  {
+   "unit": "V-REG-10",
+   "verdict": "ok",
+   "jenis": "drift",
+   "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+   "langkah": [
+    10,
+    11,
+    14,
+    15,
+    81,
+    82
+   ],
+   "catatan": "PRD V-REG-10/§9.9: Quantity di luar rentang menampilkan pesan langsung (`Quantity must be between 1 and [Max]`). Kontrak NumberInput#1/#15/#44: min/max adalah rentang yang menjepit nilai saat blur atau Enter (0 menjadi 1, di atas max menjadi max) dan komponen tidak punya pesan rentang; pesan hanya bisa bertahan selama nilai masih diketik. Sisi yang berlaku: kontrak komponen. Spec mengasersi pesan sebagai hasil akhir `Ganti isi`/`Kosongkan` tanpa footnote drift dan tanpa menyebut kejepit saat blur."
+  },
+  {
+   "unit": "§4.2.1#b3",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+   "langkah": [
+    14,
+    15
+   ],
+   "catatan": "PRD tidak memutuskan pesan untuk Quantity satu Item di atas Bulk Limit (mis. 101 dengan limit 100). §9.9 Quantity (per Item): `1–[Max]` -> `\"Quantity must be between 1 and [Max]\"` dengan [Max] = batas per Item = Bulk Limit (§9.5 'maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit'); §4.2.1: `Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 ... \"For more than [Limit] assets, use Import.\"`. Dua suite menyatakan hasil berbeda untuk masukan sama: UI-015 langkah 14-15 dan UI-024 langkah 11-12 memakai `For more than ...`, BE-120 langkah 12-13 memakai `Quantity must be between 1 and 100`. Tidak ada aturan yang memilih sisi."
   },
   {
    "unit": "§9.9#r6",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
+   "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
    "langkah": [
-    13
+    11,
+    14,
+    15
    ],
-   "catatan": "Quantity 101 pada satu Item: §9.9 `Quantity must be between 1 and [Max]` vs V-REG-10/§4.2.1 `For more than [Limit] assets, use Import.`; PRD tidak memutuskan, BE-120 dan UI-015 memakai pesan berbeda."
+   "catatan": "PRD tidak memutuskan pesan untuk Quantity satu Item di atas Bulk Limit (mis. 101 dengan limit 100). §9.9 Quantity (per Item): `1–[Max]` -> `\"Quantity must be between 1 and [Max]\"` dengan [Max] = batas per Item = Bulk Limit (§9.5 'maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit'); §4.2.1: `Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 ... \"For more than [Limit] assets, use Import.\"`. Dua suite menyatakan hasil berbeda untuk masukan sama: UI-015 langkah 14-15 dan UI-024 langkah 11-12 memakai `For more than ...`, BE-120 langkah 12-13 memakai `Quantity must be between 1 and 100`. Tidak ada aturan yang memilih sisi."
+  },
+  {
+   "unit": "§9.9#r6",
+   "verdict": "ok",
+   "jenis": "drift",
+   "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+   "langkah": [
+    10,
+    11,
+    14,
+    15,
+    81,
+    82
+   ],
+   "catatan": "PRD V-REG-10/§9.9: Quantity di luar rentang menampilkan pesan langsung (`Quantity must be between 1 and [Max]`). Kontrak NumberInput#1/#15/#44: min/max adalah rentang yang menjepit nilai saat blur atau Enter (0 menjadi 1, di atas max menjadi max) dan komponen tidak punya pesan rentang; pesan hanya bisa bertahan selama nilai masih diketik. Sisi yang berlaku: kontrak komponen. Spec mengasersi pesan sebagai hasil akhir `Ganti isi`/`Kosongkan` tanpa footnote drift dan tanpa menyebut kejepit saat blur."
   },
   {
    "unit": "FAREG-LOGIC-16b",
@@ -2024,12 +2459,9 @@
    "langkah": [
     70,
     71,
-    88,
-    89,
-    90,
-    91
+    72
    ],
-   "catatan": "PRD 01s: 'berkas di atas 1 MB dikecilkan otomatis tanpa pesan error ukuran' dan 'format tidak didukung ditolak dengan \"Unsupported format...\"'; kontrak ImagePicker #18/#74 menolak berkas di atas maxFileSize (bawaan 1048576 byte) sebagai file-too-large dan #26 menyatakan komponen tidak menampilkan pesan penolakan apa pun (hanya onReject). PRD tidak menyatakan konfigurasi maxFileSize atau render pesan oleh aplikasi."
+   "catatan": "Sumber tidak sepakat soal pesan format: foundation prd-conventions §4 File Upload 'PNG, JPG, JPEG: file picker sudah di-filter; tidak ada format error' vs §25.3 dan PRD 01s/§9.9 'Unsupported format. Please upload JPG, PNG, or JPEG.' saat file dipilih. Spec mengasersi pesan; literalnya sah di foundation §25.3 dan PRD, jadi tidak dihitung salah."
   },
   {
    "unit": "§9.9#r13",
@@ -2045,26 +2477,24 @@
   {
    "unit": "FAREG-LOGIC-04q",
    "verdict": "ok",
-   "jenis": "prd",
+   "jenis": "drift",
    "spec": "TC-FA-FAREG-UI-020-form-scan-tag-kolom-tag",
    "langkah": [
-    99,
     101,
-    102,
     103
    ],
-   "catatan": "PRD 04q/S-REG-28: tooltip \"This TAG type isn't available on your plan.\"; plans.md 'Catatan TAG - Starter': tombol scan RFID/NFC/BLE/GPS terkunci dengan tooltip \"Upgrade to unlock\". Dua literal berbeda untuk elemen yang sama; spec memakai bunyi PRD tanpa footnote drift."
+   "catatan": "PRD 04q/S-REG-28: tooltip tombol Scan terkunci plan `This TAG type isn't available on your plan.`; foundation plans-licensing (Catatan TAG - Starter): tombol scan RFID/NFC/BLE/GPS terkunci 🔒 'dengan tooltip `Upgrade to unlock`'. Sisi yang berlaku: foundation (pola gating plan bersama). Spec mengasersi bunyi PRD tanpa footnote `[^drift-<n>]`."
   },
   {
    "unit": "S-REG-28",
    "verdict": "ok",
-   "jenis": "prd",
+   "jenis": "drift",
    "spec": "TC-FA-FAREG-UI-020-form-scan-tag-kolom-tag",
    "langkah": [
     101,
     103
    ],
-   "catatan": "PRD S-REG-28: tooltip \"This TAG type isn't available on your plan.\" vs plans.md 'Catatan TAG - Starter': \"Upgrade to unlock\". Pemilik perlu memutuskan literal; spec mengikuti PRD."
+   "catatan": "PRD S-REG-28: `This TAG type isn't available on your plan.`; foundation plans-licensing (Catatan TAG - Starter): tombol scan non-QR terkunci dengan tooltip `Upgrade to unlock`. Sisi yang berlaku: foundation (pola gating plan bersama). Spec mengasersi bunyi PRD tanpa footnote drift."
   },
   {
    "unit": "§9.4.2#r31",
@@ -2083,23 +2513,22 @@
    "catatan": "Kolom Logging Scan/Rescan menyebut System Log; §8.1 membatasi System Log pada alokasi Asset Code, kuota, dan Voided tanpa Tag. Bertentangan; pemilik perlu memutuskan."
   },
   {
-   "unit": "S-REG-21",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-FAREG-UI-024-form-alert-read-only-konflik-sesi",
-   "langkah": [
-    11,
-    12
-   ],
-   "catatan": "PRD tidak konsisten soal pesan Quantity di atas limit: §4.2.1 'Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 \"For more than [Limit] assets, use Import.\"' vs V-REG-10/§9.9/§9.5 'Quantity must be between 1 and [Max]' untuk Quantity per Item di luar 1..Max. UI-024 langkah 12 dan E2E-112 langkah 8 memakai bunyi 'For more than ...' untuk satu Item, BE-120 langkah 13 memakai 'between 1 and 100'. Perlu keputusan pemilik."
-  },
-  {
    "unit": "§9.6#r3",
    "verdict": "ok",
    "jenis": "prd",
    "spec": "TC-FA-FAREG-BE-147-isi-registration-log",
    "langkah": [],
    "catatan": "FAREG-LOGIC-06o: 'Pengajuan approval OFF mencatat satu node Registration Log `Submitted by [User]`' vs §8.3: '`Submitted by [User]` (approval ON) / `Activated by [User]` (approval OFF)'. Judul node approval OFF tidak diputuskan; E2E-067 langkah 25-26 mengasersi satu node pengajuan tanpa judul."
+  },
+  {
+   "unit": "FAREG-LOGIC-07g",
+   "verdict": "ok",
+   "jenis": "drift",
+   "spec": "TC-FA-FAREG-UI-029-dialog-approver-corrections",
+   "langkah": [
+    5
+   ],
+   "catatan": "PRD `FAREG-LOGIC-07g`: \"toolbar Search · Filter · Export\". Foundation (ExportButton#1, ExportButton#26, DataTable#81, Tooltip#26): tombol unduh toolbar tabel berlabel/bertooltip `Download`. Sisi yang berlaku: foundation/kontrak. Spec sudah mengasersi `Download` dengan footnote drift-1; sesuai."
   },
   {
    "unit": "FAREG-LOGIC-07g",
@@ -2111,38 +2540,20 @@
     111,
     112
    ],
-   "catatan": "PRD §4.2.1a: ikon `Changes by approver` 'bila ada' (spec 028 menyembunyikannya pada Approved tanpa koreksi) vs 07g: 'pengajuan tanpa koreksi menampilkan empty state' (UI-029 K2). Bila ikon tidak tampil tanpa koreksi, empty state tidak terjangkau; PRD tidak memutuskan."
+   "catatan": "Sumber tidak memutuskan apakah ikon `Changes by approver` tampil pada pengajuan Approved/Partially Approved yang tanpa koreksi. `FAREG-LOGIC-07g`: ikon ada \"di halaman Detail pengajuan berstatus Approved atau Partially Approved\" dan \"pengajuan tanpa koreksi menampilkan empty state `No changes yet`\" (berarti dialog tetap bisa dibuka). §4.2.1a header: \"ikon `Changes by approver` yang membuka dialog `Approver Corrections` bila ada\". Langkah 110-112 (K4: Approved tanpa koreksi, ikon tidak tampil) memilih pembacaan \"bila ada koreksi\", yang membuat empty state di spec 029 (K2) tidak terjangkau dari Detail."
   },
   {
-   "unit": "D-REG-17",
+   "unit": "§4.2.4#p2",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": "TC-FA-FAREG-UI-030-dialog-cancel-registration",
+   "spec": "TC-FA-FAREG-UI-031-approval-tampilan-awal",
    "langkah": [
-    49
+    27,
+    28,
+    29,
+    30
    ],
-   "catatan": "PRD D-REG-17: `\"This request was already decided by [User].\"` tidak menyatakan [User] nama singkat atau lengkap; override O-4 membuat nama singkat berakhir titik (`Agus P.`) sehingga kalimat menjadi `Agus P..`. Hasil tidak diputuskan; spec mengasersi `Agus P.`."
-  },
-  {
-   "unit": "D-REG-17",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan",
-   "langkah": [
-    6
-   ],
-   "catatan": "Sama: langkah 6 mengasersi `Budi S.` tanpa kejelasan [User] (nama singkat/lengkap) dan override O-4."
-  },
-  {
-   "unit": "§4.8#r22",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
-   "langkah": [
-    4,
-    5
-   ],
-   "catatan": "PRD §4.8: Bulk Action 'Show ... setelah minimal satu aset dalam satu grup terpilih; Disabled pada halaman terkunci'. Kontrak BulkActionButton#1: bar hanya ada saat ada baris terpilih. PRD tidak menyatakan apakah checkbox baris dapat dipilih pada halaman terkunci; spec mengasumsikan dapat."
+   "catatan": "PRD menggambar \"Accordion per Asset Name\" tetapi tidak menetapkan keadaan awal (terbuka atau tertutup) dan apakah beberapa grup boleh terbuka bersamaan. Kontrak Accordion: bawaan semua tertutup dan mode single (Accordion#2, #3, #27), isi panel tertutup dibuang dari halaman (Accordion#9, #23)."
   },
   {
    "unit": "FAREG-LOGIC-07a",
@@ -2158,18 +2569,6 @@
    "catatan": "PRD §9.2 'Field Koreksi Approver': 'Brand, Model, Condition (beserta Damage note), dan Custom field General', sedangkan §4.1 baris Custom field Per asset menyebut 'Mis. Serial Number ... Custom field lain diisi di panel samping aset'. Tidak jelas apakah Custom field Per asset (Value Type Specific, mis. Serial Number) ikut dikoreksi di panel; spec memakai Serial Number sebagai field koreksi."
   },
   {
-   "unit": "FAREG-LOGIC-07i",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-FAREG-UI-034-approval-panel-koreksi",
-   "langkah": [
-    90,
-    91,
-    92
-   ],
-   "catatan": "Butir pertama menyebut 'Custom field wajib' sebagai field Tingkat 2 yang dikoreksi, tetapi Custom field Per asset (Serial Number) tampil sebagai kolom tabel pada Register Asset, bukan di panel samping (§4.1). Lihat temuan prd pada FAREG-LOGIC-07a."
-  },
-  {
    "unit": "FAREG-LOGIC-17c",
    "verdict": "ok",
    "jenis": "prd",
@@ -2179,11 +2578,22 @@
   },
   {
    "unit": "§4.2.4#b9",
-   "verdict": "parsial",
+   "verdict": "ok",
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "PRD §4.2.4: 'Perubahan di antara klik [Submit] dan konfirmasi D-REG-10 ditolak server dan membuka dialog yang sama seperti D-REG-19', tetapi D-REG-19 hanya memuat salinan 'This request was canceled by [User]...' / 'already decided by [User]...'. Judul dan isi dialog untuk penolakan karena master berubah tidak ditetapkan."
+   "catatan": "PRD §4.2.4: 'Perubahan di antara klik `[Submit]` dan konfirmasi `D-REG-10` ditolak server dan membuka dialog yang sama seperti `D-REG-19`' (kalimat ini ada di butir master data). Isi D-REG-19 hanya 'This request was canceled by [User]...' / 'This request was already decided by [User]...', yang tidak sesuai untuk perubahan master. Hasil UI untuk perubahan master saat konfirmasi tidak ditetapkan, jadi tidak ada asersi yang bisa diwajibkan. Sisi server (keputusan ditolak) sudah diasersi BE-141 langkah 15-16, 20-21, 25-26."
+  },
+  {
+   "unit": "§9.5#r11",
+   "verdict": "ok",
+   "jenis": "drift",
+   "spec": "TC-FA-FAREG-E2E-041-draft-filter",
+   "langkah": [
+    4,
+    129
+   ],
+   "catatan": "PRD §9.5 'Sumber filter Requested By: User aktif dalam scope Group' vs foundation `prd-conventions.md` §9.8: opsi filter adalah nilai DISTINCT kolom sumbernya pada baris tabel yang sedang tampil. Sisi yang berlaku: foundation (Filter Panel pola bersama). Spec mengasersi sisi foundation dengan footnote `[^drift-1]` yang menyebut kedua bunyi dan sisi yang diasersi; sudah sesuai."
   },
   {
    "unit": "EB-BLK-2@tabel-draft",
@@ -2207,22 +2617,26 @@
   {
    "unit": "§4.8#r21",
    "verdict": "ok",
-   "jenis": "prd",
+   "jenis": "drift",
    "spec": "TC-FA-FAREG-E2E-063-bulk-delete-draft-campuran",
    "langkah": [
-    20
+    17,
+    18,
+    19
    ],
-   "catatan": "FAREG-LOGIC-10e: \"batch yang dilewati karena perubahan sesudah konfirmasi dilaporkan lewat toast parsial T-REG-18\" (pilihan campuran sudah diketahui sebelum kirim) vs §4.8 \"pilihan campuran dibagi dua kelompok ...; sukses T-REG-04, sebagian dilewati T-REG-18\" dan katalog T-REG-18 \"sebagian batch dilewati (terkunci user lain, sudah dihapus, atau tanpa hak)\". Tidak tegas apakah campuran yang sudah diketahui di dialog berakhir T-REG-04 atau T-REG-18; spec memakai T-REG-18."
+   "catatan": "PRD D-REG-01 (pilihan campuran): tombol `[Cancel]` `[Delete]` dan 'pertanyaan konfirmasi untuk kelompok pertama'. Foundation (toast-copy, Dialog Konfirmasi, aturan #10 dan Template Body #5): outcome campuran memakai `\"Are you sure you want to continue?\"` dan tombol `[Continue]`. Sisi yang berlaku: foundation (pola dialog bersama). Spec tidak menyebut label tombol konfirmasi dialog campuran (langkah 19 'tombol konfirmasi'), jadi tidak salah, tetapi bila mengasersi label/pertanyaan harus versi foundation dengan footnote [^drift-n]."
   },
   {
    "unit": "FAREG-LOGIC-10e",
    "verdict": "ok",
-   "jenis": "prd",
+   "jenis": "drift",
    "spec": "TC-FA-FAREG-E2E-063-bulk-delete-draft-campuran",
    "langkah": [
-    20
+    17,
+    18,
+    19
    ],
-   "catatan": "FAREG-LOGIC-10e: toast parsial T-REG-18 untuk \"batch yang dilewati karena perubahan sesudah konfirmasi\"; §4.8 baris Delete dan T-REG-18 memakai T-REG-18 juga untuk campuran yang sudah diketahui (dialog dua kelompok). PRD tidak menetapkan toast mana (T-REG-04 atau T-REG-18) untuk campuran yang sudah diketahui sebelum kirim."
+   "catatan": "PRD D-REG-01 campuran: `[Cancel]` `[Delete]` + pertanyaan untuk kelompok pertama; foundation: `\"Are you sure you want to continue?\"` + tombol `[Continue]` untuk outcome campuran. Sisi yang berlaku: foundation. Spec belum menyebut label tombol dialog campuran; bila ditambahkan, asersi versi foundation dengan footnote [^drift-n]."
   },
   {
    "unit": "FAREG-LOGIC-06o",
@@ -2231,14 +2645,6 @@
    "spec": null,
    "langkah": [],
    "catatan": "FAREG-LOGIC-06o: 'Pengajuan approval OFF mencatat satu node Registration Log Submitted by [User]' vs PRD §8.3 tabel Registration Log: 'Submitted by [User] (approval ON) / Activated by [User] (approval OFF)'. Judul node approval OFF tidak konsisten; E2E-067 langkah 25 menghindari judul."
-  },
-  {
-   "unit": "§8.3#r3",
-   "verdict": "parsial",
-   "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "§8.3 tabel: \"`Activated by [User]` (approval OFF)\" vs FAREG-LOGIC-06o: \"Pengajuan approval OFF mencatat satu node Registration Log `Submitted by [User]` (tanpa node `Approved by`)\". Judul node approval OFF tidak konsisten; pemilik perlu memutuskan."
   },
   {
    "unit": "§4.8#r12",
@@ -2252,9 +2658,11 @@
    "unit": "§4.8#r6",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "§4.8 baris `Row action Edit (sub tab Draft)` memberi Read Only `Show (Detail saja)`, padahal baris `Sub tab Draft` memberi Read Only `Hidden` dan baris row action `Detail` (§4.8 Visibilitas per Action) menyatakan `Hidden ... bagi Read Only (sub tab Draft tidak tampil)`. Sumber tidak konsisten soal Read Only pada sub tab Draft."
+   "spec": "TC-FA-FAREG-E2E-090-gating-read-only",
+   "langkah": [
+    5
+   ],
+   "catatan": "PRD tidak menetapkan satu hasil untuk Read Only pada sub tab Draft: matriks §4.8 baris `Row action Edit (sub tab Draft)` kolom Read Only berbunyi `Show (Detail saja)`, sedangkan baris `Sub tab Draft` kolom Read Only `Hidden` dan Row Actions `Detail` berbunyi `Hidden bagi ... Read Only (sub tab Draft tidak tampil)`. Spec 090 mengasersi sub tab Draft tidak tampil (langkah 5), yang konsisten dengan dua baris terakhir."
   },
   {
    "unit": "§4.8#r9",
@@ -2294,7 +2702,7 @@
     8,
     19
    ],
-   "catatan": "PRD V-REG-10 memuat dua pesan untuk Quantity di atas batas ('Quantity must be between 1 and [Max]' dan 'For more than [Limit] assets, use Import.') tanpa syarat pemilihan. Suite memakai 'Quantity must be between 1 and 100' untuk Quantity 101 satu Item (BE-120 langkah 13) tetapi 'For more than N assets, use Import.' untuk satu Item di atas limit (112 langkah 8, 19; 116 langkah 30; 117 langkah 16)."
+   "catatan": "PRD tidak memutuskan pesan Save/Submit untuk satu Item yang Quantity-nya di atas limit. V-REG-10: `\"Quantity must be between 1 and [Max]\"` / `\"For more than [Limit] assets, use Import.\"`; §9.5: `maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit`. Spec 112 (satu Item Quantity `8`, limit `5`) mengasersi `For more than 5 assets, use Import.`, sedangkan BE-120 langkah 13 (satu Item Quantity `101`, limit `100`) mengasersi `Quantity must be between 1 and 100`; dua spec berbeda untuk keadaan yang sama."
   },
   {
    "unit": "§9.2#p8",
@@ -2331,13 +2739,12 @@
   {
    "unit": "§8.3#r6",
    "verdict": "ok",
-   "jenis": "prd",
+   "jenis": "drift",
    "spec": "TC-FA-FAREG-BE-137-cancel-dan-auto-cancel",
    "langkah": [
-    9,
-    17
+    9
    ],
-   "catatan": "PRD §8.3: judul node `Canceled by system (approval timeout)` / `(plan changed)`; foundation approval-foundation.md §1.7: `... (approval timeout — no decision within [N] days)`. Spec langkah 9 memakai literal foundation tanpa footnote drift, langkah 17 memakai literal PRD; kedua sumber perlu diselaraskan."
+   "catatan": "PRD §8.3: judul node `Canceled by system (approval timeout)`; foundation `approval-foundation.md` §1.7: Log label `\"Canceled by system (approval timeout — no decision within [N] days)\"`. Sisi yang berlaku: foundation (pola approval bersama). Spec mengasersi versi foundation dengan `[N]` = `3` (sesuai Kondisi Approval Timeout 3 hari) tetapi tanpa footnote `[^drift-<n>]`."
   },
   {
    "unit": "§9.4.2#r19",
@@ -2638,7 +3045,14 @@
   {
    "unit": "§4.1#p3",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-037-navigasi-tab-dan-pill-draft",
+     "langkah": [],
+     "catatan": "Pembuatan Registration ID saat Submit dibuktikan di BE-133; di spec unit ini hanya tampilan tab dan pill."
+    }
+   ],
    "juri": "j1"
   },
   {
@@ -2650,7 +3064,14 @@
   {
    "unit": "§4.2.1#p1",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+     "langkah": [],
+     "catatan": "Remaining Quota dan breadcrumb Waiting for Approval > Detail diasersi di UI-015, E2E-103, dan UI-028, bukan spec pemilik unit."
+    }
+   ],
    "juri": "j1"
   },
   {
@@ -2696,14 +3117,7 @@
   {
    "unit": "§4.1#r2",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Pemilik unit tercatat hanya UI-002; asersi serupa juga ada di spec lain tetapi tidak tercatat sebagai penanggung."
-    }
-   ],
+   "temuan": [],
    "juri": "j1"
   },
   {
@@ -2714,19 +3128,13 @@
   },
   {
    "unit": "§4.1#r23",
-   "verdict": "parsial",
+   "verdict": "ok",
    "temuan": [
     {
-     "jenis": "kurang",
-     "spec": "TC-FA-FAREG-E2E-080-approval-keputusan-campuran",
-     "langkah": [
-      39,
-      40,
-      41,
-      42
-     ],
-     "catatan": "PRD Origin: \"Terisi bila batch kembali dari pengajuan yang dikembalikan atau dibatalkan\". Kasus dibatalkan diasersi di E2E-073 langkah 19, tetapi kasus dikembalikan approver (Return to Draft) tidak: setelah aset Return to Draft kembali sebagai batch Draft baru (langkah 41-42) kolom Origin batch itu tidak diasersi berisi Registration ID pengajuan asal.",
-     "status": "tetap"
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-038-draft-isi-tabel",
+     "langkah": [],
+     "catatan": "Origin terisi setelah batch kembali dari return/cancel dicakup di spec lain (E2E-038/040 data Origin REG-...)."
     }
    ],
    "juri": "j1"
@@ -2776,7 +3184,14 @@
   {
    "unit": "S-REG-01",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-052-daftar-kosong-dan-draft-terakhir",
+     "langkah": [],
+     "catatan": "Smoke; satu perwakilan cukup."
+    }
+   ],
    "juri": "j1"
   },
   {
@@ -2833,10 +3248,15 @@
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
+     "jenis": "drift",
      "spec": "TC-FA-FAREG-E2E-039-draft-search",
-     "langkah": [],
-     "catatan": "SearchButton#5 memecah kata, foundation §9.16 menetapkan pencocokan lain; sumber tidak konsisten soal pemisahan kata pada search."
+     "langkah": [
+      23,
+      24,
+      33,
+      34
+     ],
+     "catatan": "Query dengan spasi tengah dan 'Head Room' tidak cocok 'Gudang Head Office Room' mengikuti foundation 9.16 (substring utuh), bertentangan dengan kontrak SearchButton#5 (terverifikasi: semua kata muncul di baris). Tidak ada catatan kaki [^drift-n]; ini bukan unit pemilik pola pencarian (EB-SRC-3)."
     }
    ],
    "juri": "j1"
@@ -2871,13 +3291,18 @@
    "temuan": [
     {
      "jenis": "kurang",
-     "spec": "TC-FA-FAREG-UI-031-approval-tampilan-awal",
-     "langkah": [
-      4,
-      5
-     ],
-     "catatan": "PRD §4.1 Deviasi: tabel di dalam form dan halaman kerja (\"aset halaman Approval\") tidak memiliki Column Visibility/Setup Column. Negasinya diasersi untuk Item (UI-013 langkah 50), tabel Asset (UI-017 langkah 51) dan Detail pengajuan (UI-028 langkah 91), tetapi tabel aset halaman Approval (UI-031) tidak diasersi tanpa kontrol column visibility/Setup Column.",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Setup Column dan Column Visibility diasersi untuk Draft, Waiting for Approval, History, antrean Approval, serta tabel Item/Asset/Detail, tetapi tabel aset pada halaman Approval dan tabel Result/Reason tidak diasersi tanpa kolom visibility.",
      "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-013-form-general-information-tampilan",
+     "langkah": [
+      56
+     ],
+     "catatan": "Tabel Item dan Asset diasersi di UI-013 langkah 56 dan UI-017 langkah 51."
     }
    ],
    "juri": "j1"
@@ -2897,14 +3322,7 @@
   {
    "unit": "§4.1#p5",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Klausa ditanggung UI-007 saja; asersi serupa di spec lain tidak tercatat sebagai penanggung."
-    }
-   ],
+   "temuan": [],
    "juri": "j1"
   },
   {
@@ -2922,7 +3340,14 @@
   {
    "unit": "D-REG-01",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-061-delete-draft",
+     "langkah": [],
+     "catatan": "Smoke; satu perwakilan cukup."
+    }
+   ],
    "juri": "j1"
   },
   {
@@ -2976,26 +3401,44 @@
   {
    "unit": "T-REG-12",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-023-form-save-draft-autosave",
+     "langkah": [
+      46
+     ],
+     "catatan": "Persistensi toast Error diasersi di UI-023 langkah 46 dan UI-030 langkah 34."
+    }
+   ],
    "juri": "j1"
   },
   {
    "unit": "T-REG-13",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-030-dialog-cancel-registration",
+     "langkah": [
+      34
+     ],
+     "catatan": "Persistensi toast Error diasersi di UI-030 langkah 34."
+    }
+   ],
    "juri": "j1"
   },
   {
    "unit": "T-REG-18",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "V-REG-19",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "V-REG-22",
@@ -3025,7 +3468,7 @@
    "unit": "§7.2#p1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§9.6#r6",
@@ -3073,7 +3516,7 @@
    "unit": "§4.7#p3",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§4.7#r1",
@@ -3126,8 +3569,26 @@
   {
    "unit": "EB-TBL-4@kolom-approver",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
+     "langkah": [
+      159,
+      160,
+      161,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173
+     ],
+     "catatan": "Spec UI-011 (antrean Approvals tab History/Active) juga mengasersi nama singkat `[First Name] [Inisial Last Name]` (`Rina W`, `Budi S`, `Agus P`) dan nama lengkap saat hover pada kolom Requested By dan Approver; E2E-047 dan E2E-050 mengasersi nilai singkat dari data nyata. Ketiganya tidak tercatat sebagai penanggung EB-TBL-4@kolom-approver."
+    }
+   ],
+   "juri": "j2"
   },
   {
    "unit": "S-REG-02",
@@ -3163,7 +3624,7 @@
    "unit": "§4.1#r38",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r39",
@@ -3181,7 +3642,7 @@
    "unit": "§4.1#r41",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r42",
@@ -3193,7 +3654,7 @@
    "unit": "§4.1#r46",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r47",
@@ -3205,7 +3666,7 @@
    "unit": "§4.1#r48",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r49",
@@ -3217,13 +3678,21 @@
    "unit": "§4.1#r50",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r51",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-FAREG-UI-010-pengajuan-tampilan-kolom-state",
+     "langkah": [],
+     "status": "dibuang",
+     "catatan": "asersi dibuang karena tidak bisa dibenarkan: Data mustahil menurut `FAREG-LOGIC-06l`. DU-010-8 menyatakan `Hadi Kusuma` adalah Total Control (Kondisi A, Approver = pengaju); DU-010-9 memakai pengaju yang sama `Hadi Kusuma` dengan Approver `System` (Kondisi B). Pengaju Total Control selalu memenuhi Kondisi A (Approver = nama pengaju), dan Total Control (aktor spec ini juga Total Control) dihitung approver independen sehingga Kondisi B ('hanya terpenuhi bila pengaju adalah satu-satunya anggota himpunan eligible') tidak bisa terjadi. Langkah 140 (`System`) tidak mungkin dihasilkan data ini. Gunakan pengaju non-Total Control pada Group yang tidak punya approver independen lain, atau ganti pasangan data."
+    }
+   ],
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r52",
@@ -3283,7 +3752,7 @@
    "unit": "§4.1#r127",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r128",
@@ -3300,14 +3769,29 @@
   {
    "unit": "§4.1#r13",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-049-antrean-approvals-active",
+     "langkah": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "catatan": "E2E-049 juga mengasersi induk `Approvals` collapsible dengan satu anak `Registration` (sesuai PRD §4.2.5: 'Modul ini hanya memiliki anak `Registration`') dan breadcrumb tab Active; tidak tercatat sebagai penanggung §4.1#r13."
+    }
+   ],
    "juri": "j2"
   },
   {
    "unit": "§4.1#r130",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r131",
@@ -3319,52 +3803,51 @@
    "unit": "§4.1#r135",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r136",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
-     "langkah": [
-      194
-     ],
-     "catatan": "Sumber tidak sepakat soal tipe filter Group: baris kolom Group tab History bertulis `Multi-select searchable`, sedangkan tab Active bertulis `Tree picker` dan §4.1 (Example Tree) bertulis `di filter dipakai Tree picker pada data live`. Spec mengikuti bunyi baris unit ini (Multi-select searchable)."
-    }
-   ],
-   "juri": "j3"
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r137",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r138",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r139",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r140",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
+     "langkah": [],
+     "status": "dibuang",
+     "catatan": "asersi dibuang karena tidak bisa dibenarkan: Data mustahil menurut `FAREG-LOGIC-06l`. DU-011-9 (Requested By `Hadi Kusuma`, Approver `System`, Kondisi B 'tanpa approver independen') tidak bisa terjadi: Total Control dihitung approver independen dan spec ini sendiri memuat Total Control lain (aktor, serta `Siti Nurbaya` pada DU-011-8), jadi pengaju bukan satu-satunya anggota himpunan approver eligible dan Kondisi B tidak terpenuhi. Langkah 174 (`System`) tidak bisa dihasilkan data ini. Pakai pasangan data yang konsisten dengan himpunan approver eligible."
+    }
+   ],
+   "juri": "j2"
   },
   {
    "unit": "§4.1#r141",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j2"
   },
   {
    "unit": "§4.2#p1",
@@ -3381,26 +3864,40 @@
      "spec": "TC-FA-FAREG-E2E-051-antrean-approvals-download",
      "langkah": [
       5,
+      6,
       9,
+      16,
       24,
+      25,
       28
      ],
-     "catatan": "Filename `Approvals-Registration` dan opsi Download as CSV/XLSX untuk tab History diasersi dengan berkas nyata di E2E-051; plan hanya mencatat UI-011 sebagai penanggung unit ini."
+     "catatan": "E2E-051 mengasersi Filename `Approvals-Registration` (`.csv` dan `.xlsx`) dan opsi `Download as CSV`/`Download as XLSX` pada kedua tab, yang tidak diasersi UI-011 selain lewat toast gagal pada tab Active (langkah 77-80). E2E-051 tidak tercatat sebagai penanggung §4.2.5#p2."
     }
    ],
-   "juri": "j3"
+   "juri": "j2"
   },
   {
    "unit": "§4.2.5#p3",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j3"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-049-antrean-approvals-active",
+     "langkah": [
+      7,
+      81,
+      86
+     ],
+     "catatan": "E2E-049 dan E2E-050 (langkah 97, 99, 103, 104) juga mengasersi breadcrumb Approvals > Registration > Active/History dan tautan kembali ke tab asal; tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j2"
   },
   {
    "unit": "§4.2.5#r1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j2"
   },
   {
    "unit": "§4.2.5#r2",
@@ -3440,30 +3937,15 @@
   },
   {
    "unit": "§8.3#p1",
-   "verdict": "parsial",
-   "temuan": [
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan",
-     "langkah": [],
-     "catatan": "Klausa \"tidak ada di halaman Detail pengajuan\": tidak ada langkah yang mengasersi aksi/ikon `Registration Log` tidak tersedia di header atau footer Detail pengajuan.",
-     "status": "tetap"
-    },
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-FAREG-UI-013-form-general-information-tampilan",
-     "langkah": [],
-     "catatan": "Klausa \"tidak ada di ... form Draft (akses hanya dari tabel luar)\": tidak ada langkah yang mengasersi `Registration Log` tidak tersedia di form `Register Asset`.",
-     "status": "tetap"
-    }
-   ],
-   "juri": "j1"
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
   },
   {
    "unit": "§8.3#p2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "§8.3#p3",
@@ -3538,14 +4020,23 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
      "langkah": [
+      32,
+      33,
       34,
+      35,
+      38,
       39,
-      42
+      41,
+      42,
+      44,
+      46,
+      47,
+      48
      ],
-     "catatan": "`Remaining Quota: [N]` di samping field Group (FI-REG-24) diasersi di UI-015 dan E2E-103, bukan di UI-013 yang tercatat sebagai penanggung unit."
+     "catatan": "Klausa `Remaining Quota: [N]` di samping field Group (FI-REG-23/24) diasersi di UI-015, yang tidak tercatat sebagai penanggung unit ini. Tambahkan UI-015 ke daftar spec unit atau catat sebagai rujukan ke FI-REG-23 dan FI-REG-24."
     }
    ],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "§4.1#b15",
@@ -3586,22 +4077,20 @@
   {
    "unit": "§4.1#p42",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
-     "langkah": [
-      194
-     ],
-     "catatan": "Teks unit: `di filter dipakai Tree picker pada data live`. Baris kolom Group tab History di §4.1 bertulis `Multi-select searchable` (Active: `Tree picker`). Spec UI-011 mengikuti baris kolom per tab."
-    }
-   ],
+   "temuan": [],
    "juri": "j3"
   },
   {
    "unit": "§4.1#r4",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-017-form-tab-asset-tampilan",
+     "langkah": [],
+     "catatan": "Bagian unit di luar tab General Information (`DataTable` per Item, panel samping aset) diasersi di UI-017 dan UI-018, dan batas «1 sampai Register Asset Bulk Limit aset» di UI-015 serta BE-120; semuanya tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
    "juri": "j3"
   },
   {
@@ -3613,106 +4102,67 @@
   {
    "unit": "§4.1#r91",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-     "langkah": [
-      41,
-      42,
-      44,
-      45,
-      46,
-      47,
-      48,
-      50,
-      51,
-      52,
-      59
-     ],
-     "catatan": "Format path penuh, dapat dikosongkan, buka pemilih pohon, menyaring Asset Name, dan terisi otomatis diasersi di UI-014, bukan UI-013 yang tercatat."
-    }
-   ],
+   "temuan": [],
    "juri": "j3"
   },
   {
    "unit": "§4.1#r92",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-     "langkah": [
-      36,
-      37,
-      38,
-      56,
-      57
-     ],
-     "catatan": "Ganti nilai mengosongkan Brand/Model (FI-REG-04) dan Asset Name hanya dari master diasersi di UI-014; sifat Wajib diasersi di BE-121 (langkah 3) dan aria-required UI-013 (63)."
-    }
-   ],
+   "temuan": [],
    "juri": "j3"
   },
   {
    "unit": "§4.1#r93",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-     "langkah": [
-      3,
-      33
-     ],
-     "catatan": "Tooltip `Select asset name first.` dan penggantian Brand mengosongkan Model diasersi di UI-014, bukan UI-013."
-    }
-   ],
+   "temuan": [],
    "juri": "j3"
   },
   {
    "unit": "§4.1#r94",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-     "langkah": [
-      5,
-      16,
-      17
-     ],
-     "catatan": "Tooltip `Select brand first.` dan `No Model` paling atas diasersi di UI-014, bukan UI-013."
-    }
-   ],
+   "temuan": [],
    "juri": "j3"
   },
   {
    "unit": "§4.1#r95",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "§4.1#r96",
    "verdict": "ok",
    "temuan": [
     {
+     "jenis": "drift",
+     "spec": "TC-FA-FAREG-UI-013-form-general-information-tampilan",
+     "langkah": [
+      71,
+      72
+     ],
+     "catatan": "PRD V-REG-10: Quantity `1 sampai batas` dengan pesan `\"Quantity must be between 1 and [Max]\"`, timing «Langsung». Kontrak NumberInput#1 dan NumberInput#15: nilai di luar `min`/`max` dijepit ke batas saat blur atau Enter, dan «No range error message and no invalid state». Pertentangannya: nilai `0` tidak bisa bertahan di sel bila `min` terpasang, sehingga pesan rentang tidak muncul. Sisi yang berlaku: kontrak komponen. Spec mengasersi versi PRD tanpa footnote `[^drift-<n>]`."
+    },
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+     "langkah": [
+      10,
+      11,
+      14,
+      15
+     ],
+     "catatan": "Sama dengan temuan UI-013 langkah 71-72: `0` dan `101` diasersi menghasilkan pesan `Quantity must be between 1 and 100` / `For more than 100 assets, use Import.` di bawah sel, padahal NumberInput menjepit nilai ke rentang (NumberInput#1, #15). Sisi yang berlaku: kontrak komponen; spec tanpa footnote drift."
+    },
+    {
      "jenis": "plan",
      "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
      "langkah": [
       2,
-      5,
-      6,
-      9,
-      10,
-      12,
-      13,
-      17,
-      20,
-      23
+      8,
+      11,
+      15
      ],
-     "catatan": "Rentang 1 sampai Register Asset Bulk Limit dan pesan kuota di bawah sel diasersi di UI-015, bukan UI-013 yang tercatat."
+     "catatan": "Klausa rentang `1–Register Asset Bulk Limit`, pesan kuota di bawah sel, dan nilai awal `1` diasersi di UI-015, yang tidak tercatat sebagai penanggung unit ini."
     }
    ],
    "juri": "j3"
@@ -3724,13 +4174,8 @@
     {
      "jenis": "plan",
      "spec": "TC-FA-FAREG-UI-016-form-remove-item-quantity-turun",
-     "langkah": [
-      3,
-      4,
-      7,
-      8
-     ],
-     "catatan": "Penghapusan Item lewat Remove from List diasersi di UI-016 dan E2E-057; hilang pada mode read-only di E2E-089 langkah 18, bukan UI-013."
+     "langkah": [],
+     "catatan": "Aksi `Remove from List` menghapus Item (UI-016), dan row option `Remove from List` hilang pada mode read-only (E2E-089 langkah 18, E2E-090 langkah 40) diasersi di spec yang tidak tercatat sebagai penanggung unit ini."
     }
    ],
    "juri": "j3"
@@ -3750,7 +4195,14 @@
   {
    "unit": "EB-TBL-5@form-register-asset",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-020-form-scan-tag-kolom-tag",
+     "langkah": [],
+     "catatan": "Tombol disabled berdalih lain pada surface form-register-asset (`Remove from List` S-REG-16 di UI-013 langkah 51 dan UI-016; `Scan [Type]` S-REG-15 dan S-REG-28 di UI-020) diasersi di spec yang tidak tercatat sebagai penanggung unit ini. Catatan plan hanya menyebut S-REG-09 dan S-REG-10."
+    }
+   ],
    "juri": "j3"
   },
   {
@@ -3775,90 +4227,91 @@
    "unit": "FAREG-LOGIC-01p",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "FAREG-LOGIC-04a",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j3"
   },
   {
    "unit": "FI-REG-01",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
-     "langkah": [
-      45,
-      53,
-      67
-     ],
-     "catatan": "PRD kolom Category: \"Path penuh\" pada field; kontrak TreeSelect #6: badge tunggal memuat label node. Spec mengasersi label node tanpa footnote drift."
-    }
-   ],
-   "juri": "j1"
+   "temuan": [],
+   "juri": "j3"
   },
   {
    "unit": "FI-REG-02",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "FI-REG-03",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j3"
   },
   {
    "unit": "FI-REG-04",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j3"
   },
   {
    "unit": "FI-REG-05",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j3"
   },
   {
    "unit": "FI-REG-06",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j3"
   },
   {
    "unit": "FLD-REG-02",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "FLD-REG-03",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j4"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
+     "langkah": [
+      76,
+      77,
+      78,
+      79
+     ],
+     "catatan": "Klausa «Opsi = Brand terkait Asset Name terpilih» (opsi tidak memuat Brand milik Asset Name lain, mis. `Olympic`, `HP`) diasersi di BE-120, yang tidak tercatat sebagai penanggung unit ini; UI-014 langkah 12 hanya mengasersi kehadiran `Dell` dan `Lenovo`."
+    }
+   ],
+   "juri": "j3"
   },
   {
    "unit": "FLD-REG-04",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j3"
   },
   {
    "unit": "S-REG-09",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j3"
   },
   {
    "unit": "S-REG-10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j3"
   },
   {
    "unit": "§4.1#b16",
@@ -3875,32 +4328,46 @@
   {
    "unit": "§4.1#b18",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-FAREG-UI-014-form-interaksi-field-item",
+     "langkah": [
+      45,
+      53,
+      62,
+      69,
+      78,
+      86
+     ],
+     "catatan": "PRD (Tabel Item, kolom Category): Format `Path penuh`. Kontrak TreeSelect#6: pada mode single dengan node terpilih, field menampilkan badge berisi LABEL node (bukan path). Sisi yang berlaku: kontrak komponen. Spec mengasersi 'path penuh' (mis. `Elektronik > Komputer > Laptop`) tanpa footnote drift; seharusnya mengasersi label node (mis. `Laptop`) dengan footnote [^drift-n] yang menyebut kedua bunyi."
+    }
+   ],
    "juri": "j4"
   },
   {
    "unit": "§4.1#p45",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j4"
   },
   {
    "unit": "§9.9#r1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j4"
   },
   {
    "unit": "FAREG-LOGIC-05g",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j4"
   },
   {
    "unit": "FAREG-LOGIC-05m",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j4"
   },
   {
    "unit": "FI-REG-23",
@@ -3917,7 +4384,17 @@
   {
    "unit": "FLD-REG-05",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-053-buat-draft-tersimpan",
+     "langkah": [
+      14,
+      15
+     ],
+     "catatan": "Klausa 'setiap aset menjadi satu aset' (Quantity N = N aset terpisah) diasersi benar di E2E-053 langkah 14-15 dan E2E-056 langkah 8, tetapi unit hanya mencatat UI-015 sebagai penanggung. Catat E2E-053 (dan/atau E2E-056) sebagai penanggung klausa itu."
+    }
+   ],
    "juri": "j4"
   },
   {
@@ -3926,47 +4403,73 @@
    "temuan": [
     {
      "jenis": "prd",
+     "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+     "langkah": [
+      14,
+      15
+     ],
+     "catatan": "PRD tidak memutuskan pesan untuk Quantity satu Item di atas Bulk Limit (mis. 101 dengan limit 100). §9.9 Quantity (per Item): `1–[Max]` -> `\"Quantity must be between 1 and [Max]\"` dengan [Max] = batas per Item = Bulk Limit (§9.5 'maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit'); §4.2.1: `Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 ... \"For more than [Limit] assets, use Import.\"`. Dua suite menyatakan hasil berbeda untuk masukan sama: UI-015 langkah 14-15 dan UI-024 langkah 11-12 memakai `For more than ...`, BE-120 langkah 12-13 memakai `Quantity must be between 1 and 100`. Tidak ada aturan yang memilih sisi."
+    },
+    {
+     "jenis": "prd",
      "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
      "langkah": [
+      12,
       13
      ],
-     "catatan": "§9.9/V-REG-10: `Quantity must be between 1 and [Max]` untuk 1-[Max] (Max per Item = Bulk Limit, §9.x Quantity \"maksimum per Item dan total aset = Bulk Limit\"), sedangkan §4.2.1 dan V-REG-10 memberi `For more than [Limit] assets, use Import.` untuk melebihi limit. Untuk satu Item Quantity 101 PRD tidak memutuskan pesan; BE-120 langkah 13 memakai `Quantity must be between 1 and 100`, UI-015 langkah 15 dan E2E-112 memakai `For more than 100 assets, use Import.`"
+     "catatan": "PRD tidak memutuskan pesan untuk Quantity satu Item di atas Bulk Limit (mis. 101 dengan limit 100). §9.9 Quantity (per Item): `1–[Max]` -> `\"Quantity must be between 1 and [Max]\"` dengan [Max] = batas per Item = Bulk Limit (§9.5 'maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit'); §4.2.1: `Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 ... \"For more than [Limit] assets, use Import.\"`. Dua suite menyatakan hasil berbeda untuk masukan sama: UI-015 langkah 14-15 dan UI-024 langkah 11-12 memakai `For more than ...`, BE-120 langkah 12-13 memakai `Quantity must be between 1 and 100`. Tidak ada aturan yang memilih sisi."
+    },
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+     "langkah": [
+      10,
+      11,
+      14,
+      15,
+      81,
+      82
+     ],
+     "catatan": "PRD V-REG-10/§9.9: Quantity di luar rentang menampilkan pesan langsung (`Quantity must be between 1 and [Max]`). Kontrak NumberInput#1/#15/#44: min/max adalah rentang yang menjepit nilai saat blur atau Enter (0 menjadi 1, di atas max menjadi max) dan komponen tidak punya pesan rentang; pesan hanya bisa bertahan selama nilai masih diketik. Sisi yang berlaku: kontrak komponen. Spec mengasersi pesan sebagai hasil akhir `Ganti isi`/`Kosongkan` tanpa footnote drift dan tanpa menyebut kejepit saat blur."
     }
    ],
-   "juri": "j1"
+   "juri": "j4"
   },
   {
    "unit": "V-REG-17",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j4"
   },
   {
    "unit": "§4.2.1#b3",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
-   "unit": "§9.5#r1",
-   "verdict": "ok",
    "temuan": [
+    {
+     "jenis": "prd",
+     "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+     "langkah": [
+      14,
+      15
+     ],
+     "catatan": "PRD tidak memutuskan pesan untuk Quantity satu Item di atas Bulk Limit (mis. 101 dengan limit 100). §9.9 Quantity (per Item): `1–[Max]` -> `\"Quantity must be between 1 and [Max]\"` dengan [Max] = batas per Item = Bulk Limit (§9.5 'maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit'); §4.2.1: `Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 ... \"For more than [Limit] assets, use Import.\"`. Dua suite menyatakan hasil berbeda untuk masukan sama: UI-015 langkah 14-15 dan UI-024 langkah 11-12 memakai `For more than ...`, BE-120 langkah 12-13 memakai `Quantity must be between 1 and 100`. Tidak ada aturan yang memilih sisi."
+    },
     {
      "jenis": "plan",
      "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
      "langkah": [
-      12,
-      13,
-      14,
       15,
-      17,
-      18,
-      19,
-      20
+      33
      ],
-     "catatan": "BE-120 mengasersi maksimum per Item dan total aset per pengajuan = Bulk Limit (99 dan 100 diterima, 101 dan 60+41 ditolak) tetapi tidak tercatat sebagai penanggung §9.5#r1."
+     "catatan": "Penolakan server atas total di atas Bulk Limit (`For more than 100 assets, use Import.`) diasersi di BE-120 langkah 15 dan 33 tetapi BE-120 tidak tercatat sebagai penanggung unit ini."
     }
    ],
+   "juri": "j4"
+  },
+  {
+   "unit": "§9.5#r1",
+   "verdict": "ok",
+   "temuan": [],
    "juri": "j4"
   },
   {
@@ -3975,14 +4478,29 @@
    "temuan": [
     {
      "jenis": "prd",
-     "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
+     "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
      "langkah": [
-      13
+      11,
+      14,
+      15
      ],
-     "catatan": "Quantity 101 pada satu Item: §9.9 `Quantity must be between 1 and [Max]` vs V-REG-10/§4.2.1 `For more than [Limit] assets, use Import.`; PRD tidak memutuskan, BE-120 dan UI-015 memakai pesan berbeda."
+     "catatan": "PRD tidak memutuskan pesan untuk Quantity satu Item di atas Bulk Limit (mis. 101 dengan limit 100). §9.9 Quantity (per Item): `1–[Max]` -> `\"Quantity must be between 1 and [Max]\"` dengan [Max] = batas per Item = Bulk Limit (§9.5 'maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit'); §4.2.1: `Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 ... \"For more than [Limit] assets, use Import.\"`. Dua suite menyatakan hasil berbeda untuk masukan sama: UI-015 langkah 14-15 dan UI-024 langkah 11-12 memakai `For more than ...`, BE-120 langkah 12-13 memakai `Quantity must be between 1 and 100`. Tidak ada aturan yang memilih sisi."
+    },
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+     "langkah": [
+      10,
+      11,
+      14,
+      15,
+      81,
+      82
+     ],
+     "catatan": "PRD V-REG-10/§9.9: Quantity di luar rentang menampilkan pesan langsung (`Quantity must be between 1 and [Max]`). Kontrak NumberInput#1/#15/#44: min/max adalah rentang yang menjepit nilai saat blur atau Enter (0 menjadi 1, di atas max menjadi max) dan komponen tidak punya pesan rentang; pesan hanya bisa bertahan selama nilai masih diketik. Sisi yang berlaku: kontrak komponen. Spec mengasersi pesan sebagai hasil akhir `Ganti isi`/`Kosongkan` tanpa footnote drift dan tanpa menyebut kejepit saat blur."
     }
    ],
-   "juri": "j1"
+   "juri": "j4"
   },
   {
    "unit": "D-REG-18",
@@ -4011,24 +4529,7 @@
   {
    "unit": "FI-REG-07",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-BE-123-operasi-item-aset",
-     "langkah": [
-      8,
-      9,
-      10,
-      11,
-      15,
-      16,
-      17,
-      18,
-      19
-     ],
-     "catatan": "BE-123 mengasersi Tag aset yang dihapus dilepas (Available) dan guard 'hanya selama semua unit Item masih Draft' untuk Remove Item, tetapi tidak tercatat sebagai penanggung FI-REG-07."
-    }
-   ],
+   "temuan": [],
    "juri": "j4"
   },
   {
@@ -4049,39 +4550,11 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-089-gating-manage-purchase",
+     "spec": "TC-FA-FAREG-E2E-090-gating-read-only",
      "langkah": [
-      17,
-      18
+      40
      ],
-     "catatan": "Klausa 'Hidden pada mode read-only' diasersi di sini (langkah 18), bukan di UI-016; E2E-089 tidak tercatat sebagai penanggung §4.8#r25."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-087-gating-manage-asset-tag",
-     "langkah": [
-      22,
-      23
-     ],
-     "catatan": "Klausa 'Show bagi role yang berhak mengubah draft' diasersi (langkah 23); tidak tercatat sebagai penanggung §4.8#r25."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-085-gating-total-control",
-     "langkah": [
-      21,
-      22
-     ],
-     "catatan": "Klausa 'Show bagi role yang berhak' (langkah 22); tidak tercatat sebagai penanggung §4.8#r25."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-086-gating-group-manager",
-     "langkah": [
-      21,
-      22
-     ],
-     "catatan": "Klausa 'Show bagi role yang berhak' (langkah 22); tidak tercatat sebagai penanggung §4.8#r25."
+     "catatan": "Klausa 'Show bagi role yang berhak mengubah draft; Hidden pada mode read-only' diasersi di E2E-085/086/087 (tampil, langkah 22/23) dan E2E-089 langkah 18 serta E2E-090 langkah 40 (tidak tampil), bukan di UI-016. Catat spec gating itu sebagai penanggung klausa visibilitas unit ini."
     }
    ],
    "juri": "j4"
@@ -4152,18 +4625,10 @@
       58,
       59
      ],
-     "catatan": "Rumus skor (6/8=75, 5/9=56, 5/9=56, 6/9=67; Tag Skipped terisi, Unverified kosong) diasersi di BE-121 yang tidak tercatat sebagai penanggung unit ini."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-055-edit-draft-tersimpan",
-     "langkah": [
-      58
-     ],
-     "catatan": "Progress = aset Ready / total (50% dari 1 dari 2) diasersi di E2E-055 selain E2E-038."
+     "catatan": "Rumus skor kelengkapan (dibulatkan, Tag Verified/Skipped terisi, Unverified kosong) diasersi benar di BE-121 langkah 56-59, tetapi BE-121 tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j2"
+   "juri": "j4"
   },
   {
    "unit": "FAREG-LOGIC-17a",
@@ -4179,10 +4644,12 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-E2E-115-damage-record-dep-damage-record",
      "langkah": [
+      5,
+      6,
       7,
       8
      ],
-     "catatan": "E2E-115 mengasersi aset Active ber-Condition Damaged otomatis mendapat Damage record (Source Registration, status Damaged); tidak tercatat sebagai penanggung FLD-REG-06."
+     "catatan": "Klausa 'Aset yang menjadi Active dengan Condition Damaged otomatis mendapat Damage record (FAREG-LOGIC-05l)' diasersi di E2E-115 (Source `Registration`, status `Damaged`), bukan di UI-017 (ui-client). Catat E2E-115 sebagai penanggung klausa itu."
     }
    ],
    "juri": "j4"
@@ -4227,65 +4694,55 @@
    "unit": "§4.1#p28",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "§4.1#r100",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j4"
   },
   {
    "unit": "§4.1#r102",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "§4.1#r103",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "§4.1#r104",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "§4.1#r105",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "§4.1#r98",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "§4.1#r99",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-BE-122-name-increment-asset-code",
-     "langkah": [
-      2,
-      10
-     ],
-     "catatan": "Klausa 'Sementara selama belum Submit (FAREG-LOGIC-03)' diasersi di BE-122 (Name sementara berformat Asset Name - increment dan dihitung ulang), tetapi spec itu tidak tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j5"
+   "temuan": [],
+   "juri": "j4"
   },
   {
    "unit": "§4.4#r9",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "§4.5#p1",
@@ -4297,16 +4754,16 @@
      "langkah": [
       17
      ],
-     "catatan": "Klausa 'fokus dikembalikan ke pemicu saat dialog ditutup' diasersi UI-027 langkah 17 (fokus kembali ke [Submit]); spec itu tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Klausa 'fokus dikembalikan ke pemicu saat dialog ditutup' diasersi untuk dialog lain (UI-008 langkah 27, UI-027 langkah 17, UI-034 langkah 58), bukan di UI-017 maupun dialog formnya (Remove Assets di UI-016, Bulk Scan di UI-022). Catat spec itu sebagai penanggung klausa fokus, atau tambahkan pada dialog form."
     }
    ],
-   "juri": "j2"
+   "juri": "j4"
   },
   {
    "unit": "§9.9#r7",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "EB-FB-1@apply-to-all",
@@ -4324,7 +4781,7 @@
    "unit": "FAREG-LOGIC-16a",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j4"
   },
   {
    "unit": "FAREG-LOGIC-16b",
@@ -4342,20 +4799,8 @@
   {
    "unit": "FI-REG-08",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan",
-     "langkah": [
-      96,
-      97,
-      99,
-      100
-     ],
-     "catatan": "Panel pada halaman Detail read-only dibuka lewat klik nama aset dan ditutup lewat Close di spec 028, tetapi spec itu tidak tercatat sebagai penanggung FI-REG-08."
-    }
-   ],
-   "juri": "j5"
+   "temuan": [],
+   "juri": "j4"
   },
   {
    "unit": "FI-REG-09",
@@ -4367,7 +4812,7 @@
    "unit": "FI-REG-10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j4"
   },
   {
    "unit": "FI-REG-11",
@@ -4385,7 +4830,7 @@
    "unit": "FI-REG-13",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "FI-REG-14",
@@ -4396,19 +4841,70 @@
   {
    "unit": "FLD-REG-07",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-019-form-validasi-teks-foto",
+     "langkah": [
+      5,
+      9
+     ],
+     "catatan": "Batas 120 karakter Damage note diasersi di sini (boleh 120, tolak 121 dengan `Max. 120 characters`, 1 karakter, emoji diterima), tetapi UI-019 tidak tercatat sebagai penanggung FLD-REG-07 (hanya UI-018)."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-025-form-submit-aset-belum-lengkap",
+     "langkah": [
+      11
+     ],
+     "catatan": "`Damage note must not be empty` saat Activate bila Condition `Damaged` diasersi di UI-025, tetapi UI-025 tidak tercatat sebagai penanggung FLD-REG-07."
+    }
+   ],
    "juri": "j5"
   },
   {
    "unit": "FLD-REG-10",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-019-form-validasi-teks-foto",
+     "langkah": [
+      55,
+      73
+     ],
+     "catatan": "Format PNG/JPG/JPEG, tolak format tak didukung, dan ukuran di atas 1 MB diasersi di UI-019 tetapi spec ini tidak tercatat sebagai penanggung FLD-REG-10."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-059-edit-draft-apply-to-all",
+     "langkah": [
+      14,
+      15,
+      16
+     ],
+     "catatan": "Apply to all Photo (nilai sumber menggantikan, maks 2 foto) diasersi di E2E-059 yang hanya tercatat smoke untuk FI-REG-13/T-REG-16, bukan untuk FLD-REG-10."
+    }
+   ],
+   "juri": "j5"
   },
   {
    "unit": "FLD-REG-11",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-019-form-validasi-teks-foto",
+     "langkah": [
+      25,
+      29,
+      36,
+      40,
+      51
+     ],
+     "catatan": "Maks 120 karakter, penghapusan entri dengan mengosongkan input, dan jumlah tidak dibatasi diasersi di UI-019 tetapi spec ini tidak tercatat sebagai penanggung FLD-REG-11 (hanya UI-018)."
+    }
+   ],
    "juri": "j5"
   },
   {
@@ -4423,14 +4919,25 @@
    "temuan": [
     {
      "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-017-form-tab-asset-tampilan",
+     "langkah": [
+      79,
+      80,
+      81
+     ],
+     "catatan": "Custom field Value Type Specific yang tidak wajib (`Catatan Lokasi`) dan Scope General/Specific diasersi di UI-017, bukan di spec penanggung (UI-018 tidak memuat field Value Type Specific opsional)."
+    },
+    {
+     "jenis": "plan",
      "spec": "TC-FA-FAREG-BE-121-validasi-activate",
      "langkah": [
+      56,
       57
      ],
-     "catatan": "Custom field opsional dihitung dalam skor diasersi BE-121 langkah 57 (Warna opsional, skor 56) yang tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Custom field opsional ikut dihitung dalam skor (`Warna` dalam hitungan 5 dari 9) diasersi di BE-121, tidak tercatat sebagai penanggung FLD-REG-13."
     }
    ],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "T-REG-16",
@@ -4511,13 +5018,9 @@
    "temuan": [
     {
      "jenis": "kurang",
-     "spec": "TC-FA-FAREG-BE-123-operasi-item-aset",
-     "langkah": [
-      1,
-      2,
-      3
-     ],
-     "catatan": "'berkas Photo aset yang dibuang (Reject, Cancel dibuang, Delete draft, Quantity turun) dihapus dalam transaksi yang sama' tidak diasersi di spec mana pun. BE-123 langkah 1-3 (Quantity turun) hanya mengasersi aset dan Tag; langkah 26 hanya foto yang tergantikan Apply to all. Tambahkan asersi berkas foto aset yang dibuang tidak lagi tersedia untuk tiap pemicu (Quantity turun di BE-123, Delete draft, Reject, Cancel dibuang).",
+     "spec": "TC-FA-FAREG-BE-131-delete-draft",
+     "langkah": [],
+     "catatan": "Klausa 'berkas Photo aset yang dibuang (Reject, Cancel dibuang, Delete draft, Quantity turun) dihapus dalam transaksi yang sama' tidak diasersi di spec mana pun (tidak ada langkah yang memeriksa berkas Photo tidak lagi tersedia). Delete draft: batch Draft beraset berfoto, verifikasi berkas Photo-nya terhapus; hal sama untuk Quantity turun (BE-123), Reject (BE-135), dan Cancel dibuang (BE-137).",
      "status": "tetap"
     },
     {
@@ -4526,20 +5029,43 @@
      "langkah": [
       70,
       71,
-      88,
-      89,
-      90,
-      91
+      72
      ],
-     "catatan": "PRD 01s: 'berkas di atas 1 MB dikecilkan otomatis tanpa pesan error ukuran' dan 'format tidak didukung ditolak dengan \"Unsupported format...\"'; kontrak ImagePicker #18/#74 menolak berkas di atas maxFileSize (bawaan 1048576 byte) sebagai file-too-large dan #26 menyatakan komponen tidak menampilkan pesan penolakan apa pun (hanya onReject). PRD tidak menyatakan konfigurasi maxFileSize atau render pesan oleh aplikasi."
+     "catatan": "Sumber tidak sepakat soal pesan format: foundation prd-conventions §4 File Upload 'PNG, JPG, JPEG: file picker sudah di-filter; tidak ada format error' vs §25.3 dan PRD 01s/§9.9 'Unsupported format. Please upload JPG, PNG, or JPEG.' saat file dipilih. Spec mengasersi pesan; literalnya sah di foundation §25.3 dan PRD, jadi tidak dihitung salah."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-BE-123-operasi-item-aset",
+     "langkah": [
+      22
+     ],
+     "catatan": "Apply to all Alias Name 121 karakter ditolak `Max. 120 characters` (batas server) diasersi di BE-123, tidak tercatat sebagai penanggung FAREG-LOGIC-01s."
     }
    ],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "V-REG-18",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-033-approval-bulk-action",
+     "langkah": [
+      80
+     ],
+     "catatan": "Batas 360 karakter Reason pada Bulk Action (`Max. 360 characters`) diasersi di UI-033 tetapi spec ini tidak tercatat sebagai penanggung V-REG-18."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
+     "langkah": [
+      8,
+      9
+     ],
+     "catatan": "Damage note 121 karakter ditolak server `Max. 120 characters` diasersi di BE-120, tidak tercatat sebagai penanggung V-REG-18."
+    }
+   ],
    "juri": "j5"
   },
   {
@@ -4607,24 +5133,35 @@
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
+     "jenis": "drift",
      "spec": "TC-FA-FAREG-UI-020-form-scan-tag-kolom-tag",
      "langkah": [
-      99,
       101,
-      102,
       103
      ],
-     "catatan": "PRD 04q/S-REG-28: tooltip \"This TAG type isn't available on your plan.\"; plans.md 'Catatan TAG - Starter': tombol scan RFID/NFC/BLE/GPS terkunci dengan tooltip \"Upgrade to unlock\". Dua literal berbeda untuk elemen yang sama; spec memakai bunyi PRD tanpa footnote drift."
+     "catatan": "PRD 04q/S-REG-28: tooltip tombol Scan terkunci plan `This TAG type isn't available on your plan.`; foundation plans-licensing (Catatan TAG - Starter): tombol scan RFID/NFC/BLE/GPS terkunci 🔒 'dengan tooltip `Upgrade to unlock`'. Sisi yang berlaku: foundation (pola gating plan bersama). Spec mengasersi bunyi PRD tanpa footnote `[^drift-<n>]`."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-021-form-tag-combined-perubahan-slot",
+     "langkah": [
+      65,
+      66,
+      67,
+      68,
+      69,
+      70
+     ],
+     "catatan": "Penolakan seluruh scan Tag combined yang komponennya bertipe terkunci plan (K12) diasersi di UI-021, spec ini tidak tercatat sebagai penanggung FAREG-LOGIC-04q."
     }
    ],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "S-REG-15",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "S-REG-18",
@@ -4638,7 +5175,7 @@
       15,
       16
      ],
-     "catatan": "Badge `Skipped` beserta alasan di hover diasersi di E2E-070 (langkah 14-16) dan slot `Skipped` di BE-126 langkah 34, tetapi spec itu tidak tercatat sebagai penanggung unit ini; 020 hanya mengasersi Verified dan Unverified."
+     "catatan": "Badge `Skipped` beserta alasan pada tooltip diasersi di E2E-070 (dan UI-031 langkah 66-67), tidak tercatat sebagai penanggung S-REG-18; UI-020 sendiri hanya memuat `Verified` dan `Unverified`."
     }
    ],
    "juri": "j5"
@@ -4648,16 +5185,16 @@
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
+     "jenis": "drift",
      "spec": "TC-FA-FAREG-UI-020-form-scan-tag-kolom-tag",
      "langkah": [
       101,
       103
      ],
-     "catatan": "PRD S-REG-28: tooltip \"This TAG type isn't available on your plan.\" vs plans.md 'Catatan TAG - Starter': \"Upgrade to unlock\". Pemilik perlu memutuskan literal; spec mengikuti PRD."
+     "catatan": "PRD S-REG-28: `This TAG type isn't available on your plan.`; foundation plans-licensing (Catatan TAG - Starter): tombol scan non-QR terkunci dengan tooltip `Upgrade to unlock`. Sisi yang berlaku: foundation (pola gating plan bersama). Spec mengasersi bunyi PRD tanpa footnote drift."
     }
    ],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "V-REG-05",
@@ -4697,27 +5234,25 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-E2E-070-submit-tanpa-pairing",
      "langkah": [
-      13,
-      14,
       15,
       16
      ],
-     "catatan": "Badge `Skipped` dan tooltip alasan pada kolom TAG diasersi di E2E-070 (halaman Detail), bukan di spec pemilik unit ini (UI-020). Catat E2E-070 sebagai penanggung klausa Skipped unit ini."
+     "catatan": "Hover Badge `Skipped` memuat alasan (`TAG not yet available`) diasersi di E2E-070, tidak tercatat sebagai penanggung §4.1#r101; UI-020 tidak memuat Badge `Skipped`."
     }
    ],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "§4.2.2#p1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "§9.10#p2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "§9.4.2#r28",
@@ -4830,7 +5365,7 @@
    "unit": "§9.4.2#r57",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j5"
   },
   {
    "unit": "§9.6#r9",
@@ -4884,7 +5419,7 @@
    "unit": "§9.4.2#r42",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "§9.4.2#r43",
@@ -4926,7 +5461,7 @@
    "unit": "§9.4.2#r49",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "§9.4.2#r50",
@@ -4944,56 +5479,49 @@
    "unit": "§9.4.2#r53",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "D-REG-23",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "FI-REG-25",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "FI-REG-26",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "FI-REG-27",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "FI-REG-28",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "§4.1#r15",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j5"
   },
   {
    "unit": "§4.8#r24",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-022-dialog-bulk-scan",
-     "langkah": [],
-     "catatan": "Visibilitas per role (Show: Total Control, Group Manager, Manage asset & TAG; Hidden: Manage purchase, Read Only) diasersi di E2E-085, 086, 087, 089, 090 (langkah `tombol Bulk Scan tampil/tidak tampil pada Item Laptop`), bukan di UI-022 (aktor Total Control saja). Catat spec gating itu sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j6"
+   "temuan": [],
+   "juri": "j5"
   },
   {
    "unit": "EB-ERR-1@save-draft",
@@ -5053,13 +5581,13 @@
    "unit": "T-REG-01",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j5"
   },
   {
    "unit": "T-REG-07",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j5"
   },
   {
    "unit": "T-REG-14",
@@ -5071,16 +5599,16 @@
      "langkah": [
       35
      ],
-     "catatan": "E2E-100 langkah 35 mengasersi toast `No changes to save.` untuk Edit Active tanpa perubahan (basis pembanding changelog-entry.md §8.8: hanya beda kapitalisasi adalah No-Op), tetapi spec itu tidak tercatat sebagai penanggung T-REG-14. Catat di plan; cabang Edit Active unit ini hanya terasersi di sana."
+     "catatan": "'Edit Active tanpa perubahan' (`No changes to save.`) diasersi di E2E-100 langkah 33-35, tidak tercatat sebagai penanggung T-REG-14."
     }
    ],
-   "juri": "j7"
+   "juri": "j5"
   },
   {
    "unit": "V-REG-01",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j5"
   },
   {
    "unit": "§9.6#r1",
@@ -5124,20 +5652,30 @@
   {
    "unit": "§9.9#r5",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-013-form-general-information-tampilan",
+     "langkah": [
+      13,
+      30
+     ],
+     "catatan": "Aturan 'node Assignable, bukan Excess' pada pemilih Group (Gudang Excess Pusat dan Gudang Retur tidak dapat dipilih) diasersi di UI-013, tidak tercatat sebagai penanggung §9.9#r5."
+    }
+   ],
+   "juri": "j5"
   },
   {
    "unit": "D-REG-16",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j5"
   },
   {
    "unit": "D-REG-22",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j5"
   },
   {
    "unit": "S-REG-19",
@@ -5149,32 +5687,22 @@
      "langkah": [
       5
      ],
-     "catatan": "E2E-107 langkah 5 mengasersi `Alert` Warning `Gudang Hapus {runId} is not available. Choose another Group.` (varian Group); spec ini tidak tercatat sebagai penanggung S-REG-19. Varian Asset Name dan Model hanya ada di E2E-105 (smoke)."
+     "catatan": "E2E-107 langkah 5 mengasersi Alert Warning `[Group] is not available. Choose another Group.` di atas form (varian Group dari S-REG-19), tetapi spec ini tidak tercatat sebagai penanggung S-REG-19. Varian Asset Name, Brand, Model sudah di E2E-105 (smoke) dan Brand di UI-024; catat E2E-107 pada unit ini."
     }
    ],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "S-REG-20",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "S-REG-21",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-FAREG-UI-024-form-alert-read-only-konflik-sesi",
-     "langkah": [
-      11,
-      12
-     ],
-     "catatan": "PRD tidak konsisten soal pesan Quantity di atas limit: §4.2.1 'Lebih dari Register Asset Bulk Limit aset: error inline V-REG-10 \"For more than [Limit] assets, use Import.\"' vs V-REG-10/§9.9/§9.5 'Quantity must be between 1 and [Max]' untuk Quantity per Item di luar 1..Max. UI-024 langkah 12 dan E2E-112 langkah 8 memakai bunyi 'For more than ...' untuk satu Item, BE-120 langkah 13 memakai 'between 1 and 100'. Perlu keputusan pemilik."
-    }
-   ],
-   "juri": "j2"
+   "temuan": [],
+   "juri": "j6"
   },
   {
    "unit": "S-REG-26",
@@ -5186,7 +5714,7 @@
    "unit": "S-REG-27",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "V-REG-04",
@@ -5196,37 +5724,34 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
      "langkah": [
-      5,
-      7,
-      8
+      5
      ],
-     "catatan": "Varian Group (pesan saat dibuka dan setelah Save draft) diasersi E2E-107; spec itu tidak tercatat sebagai penanggung unit ini."
+     "catatan": "E2E-107 mengasersi pesan V-REG-04 varian Group saat dibuka; tidak tercatat pada unit ini."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-BE-141-validasi-ulang-master-dep-settings-asset-name",
+     "langkah": [
+      3,
+      5,
+      11
+     ],
+     "catatan": "BE-141 memvalidasi ulang referensi master saat Save draft dan Activate (timing `Saat Save/Activate`); tidak tercatat pada unit ini."
     }
    ],
-   "juri": "j2"
+   "juri": "j6"
   },
   {
    "unit": "§4.1#r17",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "§4.2.1#b1",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-105-master-berubah-saat-draft-dep-settings-asset-name",
-     "langkah": [
-      4,
-      16,
-      23
-     ],
-     "catatan": "E2E-105 langkah 4, 16, 23 mengasersi `Alert` Warning di atas form untuk Brand, Model, dan Asset Name; E2E-107 langkah 5 untuk Group. Keduanya tidak tercatat sebagai penanggung §4.2.1#b1 (hanya UI-024 dengan varian Brand)."
-    }
-   ],
-   "juri": "j7"
+   "temuan": [],
+   "juri": "j6"
   },
   {
    "unit": "§4.2.1#b2",
@@ -5236,19 +5761,18 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-E2E-080-approval-keputusan-campuran",
      "langkah": [
-      46,
-      47
+      46
      ],
-     "catatan": "E2E-080 langkah 46-47 mengasersi `Alert` Danger di atas form yang memuat alasan approver; asersi posisi 'di atas form' untuk Alert Danger tidak ada di UI-024 langkah 7. E2E-080 tidak tercatat sebagai penanggung §4.2.1#b2 (tercatat hanya untuk S-REG-20)."
+     "catatan": "E2E-080 langkah 46 mengasersi `Alert` Danger `di atas form` memuat alasan approver (posisi yang tidak diasersi UI-024 langkah 7). Spec ini hanya tercatat smoke untuk S-REG-20, belum untuk unit ini."
     }
    ],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "FAREG-LOGIC-01i",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j6"
   },
   {
    "unit": "FLD-REG-08",
@@ -5260,31 +5784,40 @@
    "unit": "S-REG-22",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "V-REG-02",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "V-REG-03",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-069-submit-aset-belum-lengkap",
+     "langkah": [
+      8
+     ],
+     "catatan": "E2E-069 langkah 8 mengasersi pesan inline `Damage note must not be empty` pada aset Damaged; tidak tercatat pada unit ini."
+    }
+   ],
+   "juri": "j6"
   },
   {
    "unit": "§4.1#r6",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "§4.2.3#b1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j6"
   },
   {
    "unit": "§9.9#r11",
@@ -5296,55 +5829,67 @@
    "unit": "§9.9#r2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "§9.9#r3",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "§9.9#r4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "§4.7#r4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "§4.7#r5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "§4.7#r6",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "§4.7#r7",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "D-REG-03",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-070-submit-tanpa-pairing",
+     "langkah": [
+      4,
+      5,
+      6,
+      8
+     ],
+     "catatan": "E2E-070 mengasersi peringatan `1 asset is not paired to a TAG yet.`, checkbox Skip, dan Select reason; spec itu hanya tercatat smoke untuk V-REG-11, belum untuk D-REG-03."
+    }
+   ],
+   "juri": "j6"
   },
   {
    "unit": "D-REG-08",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "EB-ERR-1@activate",
@@ -5386,7 +5931,7 @@
    "unit": "FAREG-LOGIC-01h",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "FAREG-LOGIC-01j",
@@ -5403,44 +5948,57 @@
   {
    "unit": "FAREG-LOGIC-04k",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-070-submit-tanpa-pairing",
+     "langkah": [
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "catatan": "E2E-070 mengasersi satu alasan Skip pairing untuk aset yang hanya kurang Tag dan Activate diterima; tidak tercatat pada unit ini."
+    }
+   ],
+   "juri": "j6"
   },
   {
    "unit": "FAREG-LOGIC-05n",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j6"
   },
   {
    "unit": "T-REG-02",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j6"
   },
   {
    "unit": "T-REG-03",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "V-REG-11",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "V-REG-12",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "V-REG-13",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "§4.1#b12",
@@ -5451,31 +6009,14 @@
   {
    "unit": "§4.1#r5",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-025-form-submit-aset-belum-lengkap",
-     "langkah": [
-      5
-     ],
-     "catatan": "Klausa 'hanya muncul bila seluruh aset memenuhi Tingkat 2 selain Tag' diasersi di UI-025 langkah 5 (dialog konfirmasi Submit tidak tampil saat ada aset Tingkat 2 belum lengkap), tetapi spec ini tidak tercatat sebagai penanggung unit."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-069-submit-aset-belum-lengkap",
-     "langkah": [
-      5
-     ],
-     "catatan": "Klausa yang sama diasersi di E2E-069 langkah 5; spec tidak tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j8"
+   "temuan": [],
+   "juri": "j6"
   },
   {
    "unit": "§4.2.3#b2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "§9.4.2#r29",
@@ -5523,7 +6064,7 @@
    "unit": "§9.9#r10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "§9.9#r17",
@@ -5541,7 +6082,7 @@
    "unit": "T-REG-17",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "§4.1#b2",
@@ -5552,14 +6093,34 @@
   {
    "unit": "§4.1#b3",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-080-approval-keputusan-campuran",
+     "langkah": [
+      30,
+      31,
+      32
+     ],
+     "catatan": "E2E-080 mengasersi kolom Result dan Reason (Approved, Returned, Rejected beserta Reason) pada pengajuan Partially Approved; tidak tercatat pada unit ini."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-067-activate-approval-off",
+     "langkah": [
+      20,
+      21
+     ],
+     "catatan": "E2E-067 mengasersi Result `Approved` dan Reason kosong pada pengajuan Approved dari approval OFF; tidak tercatat pada unit ini."
+    }
+   ],
+   "juri": "j6"
   },
   {
    "unit": "§4.1#b4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "§4.1#b5",
@@ -5587,7 +6148,7 @@
    "unit": "§4.1#p20",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "§4.1#r12",
@@ -5599,7 +6160,7 @@
    "unit": "§4.1#r60",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j6"
   },
   {
    "unit": "§4.1#r61",
@@ -5611,13 +6172,13 @@
    "unit": "§4.2.1a#b1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j6"
   },
   {
    "unit": "§4.2.1a#b2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.2.1a#b3",
@@ -5650,24 +6211,32 @@
    "unit": "§4.2.4#b2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.2.5#r4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "D-REG-26",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "FAREG-LOGIC-07g",
    "verdict": "ok",
    "temuan": [
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-FAREG-UI-029-dialog-approver-corrections",
+     "langkah": [
+      5
+     ],
+     "catatan": "PRD `FAREG-LOGIC-07g`: \"toolbar Search · Filter · Export\". Foundation (ExportButton#1, ExportButton#26, DataTable#81, Tooltip#26): tombol unduh toolbar tabel berlabel/bertooltip `Download`. Sisi yang berlaku: foundation/kontrak. Spec sudah mengasersi `Download` dengan footnote drift-1; sesuai."
+    },
     {
      "jenis": "prd",
      "spec": "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan",
@@ -5676,26 +6245,39 @@
       111,
       112
      ],
-     "catatan": "PRD §4.2.1a: ikon `Changes by approver` 'bila ada' (spec 028 menyembunyikannya pada Approved tanpa koreksi) vs 07g: 'pengajuan tanpa koreksi menampilkan empty state' (UI-029 K2). Bila ikon tidak tampil tanpa koreksi, empty state tidak terjangkau; PRD tidak memutuskan."
+     "catatan": "Sumber tidak memutuskan apakah ikon `Changes by approver` tampil pada pengajuan Approved/Partially Approved yang tanpa koreksi. `FAREG-LOGIC-07g`: ikon ada \"di halaman Detail pengajuan berstatus Approved atau Partially Approved\" dan \"pengajuan tanpa koreksi menampilkan empty state `No changes yet`\" (berarti dialog tetap bisa dibuka). §4.2.1a header: \"ikon `Changes by approver` yang membuka dialog `Approver Corrections` bila ada\". Langkah 110-112 (K4: Approved tanpa koreksi, ikon tidak tampil) memilih pembacaan \"bila ada koreksi\", yang membuat empty state di spec 029 (K2) tidak terjangkau dari Detail."
     },
     {
      "jenis": "plan",
      "spec": "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan",
      "langkah": [
+      67,
       68,
       69,
-      70
+      70,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112
      ],
-     "catatan": "Ikon `Changes by approver` membuka dialog pada Partially Approved diasersi UI-028; spec itu tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Visibilitas ikon `Changes by approver` per status dan pembukaan dialog diasersi di spec 028 (ui-client), yang tidak tercatat sebagai penanggung unit ini. Tambahkan 028 sebagai pemilik bagian ikon."
     }
    ],
-   "juri": "j2"
+   "juri": "j7"
   },
   {
    "unit": "S-REG-31",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r19",
@@ -5705,48 +6287,27 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan",
      "langkah": [
+      67,
       68,
       69,
-      70,
-      101,
-      103,
-      106,
-      109,
-      112
+      70
      ],
-     "catatan": "Ikon `Changes by approver` tampil pada Partially Approved dan tidak tampil pada Waiting for Approval, Rejected, Canceled, Approved tanpa koreksi diasersi UI-028; spec itu dan E2E-082 langkah 21-22 (Approved) tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Pemicu (klik ikon `Changes by approver` di Detail pengajuan Partially Approved membuka dialog) diasersi di spec 028 dan spec e2e 082 langkah 22-23; spec 029 (satu-satunya penanggung tercatat) mulai dari dialog sudah terbuka. Tambahkan 028 sebagai penanggung unit ini."
     }
    ],
-   "juri": "j2"
+   "juri": "j7"
   },
   {
    "unit": "D-REG-14",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "D-REG-17",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-FAREG-UI-030-dialog-cancel-registration",
-     "langkah": [
-      49
-     ],
-     "catatan": "PRD D-REG-17: `\"This request was already decided by [User].\"` tidak menyatakan [User] nama singkat atau lengkap; override O-4 membuat nama singkat berakhir titik (`Agus P.`) sehingga kalimat menjadi `Agus P..`. Hasil tidak diputuskan; spec mengasersi `Agus P.`."
-    },
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan",
-     "langkah": [
-      6
-     ],
-     "catatan": "Sama: langkah 6 mengasersi `Budi S.` tanpa kejelasan [User] (nama singkat/lengkap) dan override O-4."
-    }
-   ],
-   "juri": "j8"
+   "temuan": [],
+   "juri": "j7"
   },
   {
    "unit": "EB-ERR-1@cancel-registration",
@@ -5764,7 +6325,7 @@
    "unit": "T-REG-10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§9.6#r5",
@@ -5788,7 +6349,7 @@
    "unit": "§4.1#p31",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r109",
@@ -5803,28 +6364,28 @@
       7,
       8
      ],
-     "catatan": "Klausa 'Memilih aset untuk Bulk Action' dan 'Per grup Accordion' diasersi di UI-033 (Bulk Action tampil per grup setelah baris dicentang, tidak di grup lain); spec tidak tercatat sebagai penanggung unit."
+     "catatan": "Fungsi pemilihan baris per grup Accordion untuk Bulk Action diasersi di spec 033, yang tidak tercatat untuk unit ini (hanya 031 langkah 41 yang mengasersi keberadaan checkbox)."
     }
    ],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r110",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r111",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r112",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r113",
@@ -5834,16 +6395,13 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
      "langkah": [
-      70,
-      71,
-      72,
       73,
       74
      ],
-     "catatan": "Badge Brand `Unavailable` (K10) diasersi UI-035; spec itu tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Catatan kolom \"ditandai Badge `Unavailable` (danger) bila master tidak tersedia\" diasersi di spec 035 (langkah 73-74) dan e2e 106/107, bukan di spec 031 yang tercatat sebagai satu-satunya penanggung unit."
     }
    ],
-   "juri": "j2"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r114",
@@ -5853,26 +6411,27 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
      "langkah": [
-      28,
-      39,
-      40
+      30,
+      37,
+      43,
+      44
      ],
-     "catatan": "Klausa 'Ditandai Badge `Unavailable` bila master tidak tersedia' untuk Model diasersi di UI-035 langkah 28, 39, 40; spec tidak tercatat sebagai penanggung unit."
+     "catatan": "Badge `Unavailable` pada kolom Model diasersi di spec 035 dan e2e 106, bukan di spec 031 yang tercatat sebagai satu-satunya penanggung unit."
     }
    ],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r115",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r116",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r117",
@@ -5884,25 +6443,61 @@
    "unit": "§4.1#r118",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r119",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r120",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-032-approval-decision-reason",
+     "langkah": [
+      2,
+      3,
+      4,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "catatan": "Placeholder `Enter reason` dan aturan wajib (Return to Draft/Reject) vs opsional (Approve) diasersi di spec 032, bukan di spec 031 yang tercatat sebagai satu-satunya penanggung unit (031 hanya mengasersi Reason kosong di keadaan awal). Tambahkan 032."
+    }
+   ],
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r121",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
+     "langkah": [
+      13,
+      14,
+      15
+     ],
+     "catatan": "Klausa \"Nonaktif saat halaman terkunci\" diasersi di spec 035 (langkah 13) dan e2e 083 langkah 14, bukan di spec 031 yang tercatat sebagai satu-satunya penanggung unit."
+    }
+   ],
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r14",
@@ -5910,29 +6505,53 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Kolom antrean Active dan History di unit ini diasersi oleh E2E-049 (nilai sel, Registration ID sebagai link) dan E2E-050; kedua spec itu tidak tercatat sebagai penanggung unit. UI-031 hanya memikul bagian halaman Approval."
+     "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
+     "langkah": [
+      33,
+      34,
+      128
+     ],
+     "catatan": "Kolom antrean Approvals tab Active (Registration ID, Group, Total Asset, Requested By, Last Updated) dan tab History diasersi di spec UI-011 (langkah 33, 128), yang tidak tercatat untuk unit ini. Spec 031 hanya mencakup bagian halaman Approval."
     }
    ],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "§4.2.4#b1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "§4.2.4#p1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "§4.2.4#p2",
    "verdict": "ok",
    "temuan": [
+    {
+     "jenis": "prd",
+     "spec": "TC-FA-FAREG-UI-031-approval-tampilan-awal",
+     "langkah": [
+      27,
+      28,
+      29,
+      30
+     ],
+     "catatan": "PRD menggambar \"Accordion per Asset Name\" tetapi tidak menetapkan keadaan awal (terbuka atau tertutup) dan apakah beberapa grup boleh terbuka bersamaan. Kontrak Accordion: bawaan semua tertutup dan mode single (Accordion#2, #3, #27), isi panel tertutup dibuang dari halaman (Accordion#9, #23)."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-034-approval-panel-koreksi",
+     "langkah": [
+      122,
+      123
+     ],
+     "catatan": "Klausa \"panel kanan dapat ditutup\" diasersi di spec 034 (langkah 122-123, Close), bukan di spec 031 atau 033 yang tercatat sebagai penanggung."
+    },
     {
      "jenis": "plan",
      "spec": "TC-FA-FAREG-UI-036-approval-submit-keputusan",
@@ -5940,16 +6559,16 @@
       6,
       7
      ],
-     "catatan": "Footer [Cancel] dan [Submit] diasersi UI-036; Alert Danger footer di UI-032; panel koreksi dapat ditutup di UI-034. Spec itu tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Klausa footer `[Cancel]` dan `[Submit]` diasersi di spec 036 (langkah 6-7), bukan di spec 031 atau 033 yang tercatat. Alert Danger di footer diasersi di spec 032 (langkah 26-29, 70). Tambahkan 036 dan 032 sebagai penanggung bagian footer."
     }
    ],
-   "juri": "j2"
+   "juri": "j7"
   },
   {
    "unit": "§4.2.5#r3",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "EB-FRM-4@reason",
@@ -5960,50 +6579,73 @@
   {
    "unit": "FAREG-LOGIC-06e",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-033-approval-bulk-action",
+     "langkah": [
+      23,
+      24,
+      32,
+      33,
+      34,
+      35,
+      36,
+      47,
+      48,
+      49,
+      58,
+      59,
+      60,
+      62,
+      75
+     ],
+     "catatan": "Jalur keputusan lewat Bulk Action (termasuk Reason wajib untuk Return to Draft dan Reject) diasersi di spec 033, dan penolakan server di be-e2e 135 langkah 18-26; keduanya tidak tercatat untuk unit ini (hanya 032 yang mengasersi jalur per aset)."
+    }
+   ],
+   "juri": "j7"
   },
   {
    "unit": "FI-REG-15",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "S-REG-23",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j7"
   },
   {
    "unit": "V-REG-16",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j7"
   },
   {
    "unit": "§4.1#r7",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j7"
   },
   {
    "unit": "§4.2.4#b4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j7"
   },
   {
    "unit": "§4.2.4#b5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "§9.9#r19",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "§9.9#r20",
@@ -6015,59 +6657,87 @@
    "unit": "FI-REG-16",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "FI-REG-17",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "FI-REG-18",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-FAREG-UI-033-approval-bulk-action",
+     "langkah": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61
+     ],
+     "catatan": "FI-REG-18: \"Decision dan Reason semua baris terpilih diisi\". Untuk `Return to Draft` dan `Reject` isi Reason tersalin ke baris dan diasersi. Untuk `Approve` hanya Decision yang diasersi, dengan Reason Bulk Action dikosongkan. Cabang `Approve` dengan Reason terisi (Reason tersalin ke semua baris terpilih) tidak diasersi, dan pada K2 baris `Laptop - 129` berReason `Photo is missing`, hasil Reason baris itu sesudah Apply `Approve` tanpa Reason (tertimpa kosong atau tetap) tidak diasersi.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j7"
   },
   {
    "unit": "V-REG-15",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j7"
   },
   {
    "unit": "§4.8#r22",
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
-     "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-083-approval-akses-halaman",
      "langkah": [
-      4,
-      5
+      58
      ],
-     "catatan": "PRD §4.8: Bulk Action 'Show ... setelah minimal satu aset dalam satu grup terpilih; Disabled pada halaman terkunci'. Kontrak BulkActionButton#1: bar hanya ada saat ada baris terpilih. PRD tidak menyatakan apakah checkbox baris dapat dipilih pada halaman terkunci; spec mengasumsikan dapat."
+     "catatan": "E2E-083 mengasersi 'Disabled pada halaman terkunci' (langkah 58) tetapi tidak tercatat sebagai penanggung unit ini."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-088-gating-pemegang-hak-putus",
+     "langkah": [
+      10
+     ],
+     "catatan": "'Show bagi pemegang hak putus setelah aset terpilih' diasersi E2E-088 langkah 10 (juga E2E-085 langkah 48 dan E2E-086 langkah 48), spec yang tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j2"
+   "juri": "j8"
   },
   {
    "unit": "D-REG-20",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "D-REG-21",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "D-REG-25",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "EB-ERR-1@simpan-koreksi",
@@ -6198,22 +6868,33 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Butir ketiga (Select Model again saat [Submit], memblokir [Submit]) diasersi di UI-036 (langkah 93, 100) dan BE-135 (langkah 29-33), yang tidak tercatat sebagai penanggung unit."
-    },
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-FAREG-UI-034-approval-panel-koreksi",
+     "spec": "TC-FA-FAREG-UI-036-approval-submit-keputusan",
      "langkah": [
+      89,
       90,
       91,
-      92
+      92,
+      97,
+      98
      ],
-     "catatan": "Butir pertama menyebut 'Custom field wajib' sebagai field Tingkat 2 yang dikoreksi, tetapi Custom field Per asset (Serial Number) tampil sebagai kolom tabel pada Register Asset, bukan di panel samping (§4.1). Lihat temuan prd pada FAREG-LOGIC-07a."
+     "catatan": "Butir ketiga unit (pilih ulang Model setelah koreksi Brand, `Select Model again`, ditandai di baris Model, memblokir [Submit]) diasersi UI-036 K8, tetapi UI-036 tidak tercatat sebagai penanggung unit ini; bagian ui-client unit hanya menyebut pesan inline saat [Save correction]."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-BE-135-keputusan-approval",
+     "langkah": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+     ],
+     "catatan": "Sisi server butir ketiga (keputusan ditolak sebelum Model dipilih ulang) diasersi BE-135 (juga unit V-REG-14), tetapi BE-135 tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "FAREG-LOGIC-15e",
@@ -6247,7 +6928,7 @@
    "unit": "FI-REG-19",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "FI-REG-20",
@@ -6259,19 +6940,19 @@
    "unit": "FI-REG-21",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "FI-REG-22",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "T-REG-11",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "§4.1#r11",
@@ -6283,19 +6964,19 @@
    "unit": "§4.1#r18",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "§4.1#r20",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "§4.2.4#b11",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j8"
   },
   {
    "unit": "§4.2.4#b3",
@@ -6306,14 +6987,12 @@
      "spec": "TC-FA-FAREG-UI-031-approval-tampilan-awal",
      "langkah": [
       80,
-      81,
-      82,
-      83
+      81
      ],
-     "catatan": "Badge Corrections `1`, `—` bila tanpa koreksi, dan dialog Corrections diasersi juga di spec 031 yang tidak tercatat sebagai penanggung unit; `—` pada baris tanpa koreksi hanya diasersi di sana (034 tidak memverifikasinya). Catat 031 sebagai pemilik atau tambahkan asersi `—` di 034."
+     "catatan": "Klausa 'Badge jumlah koreksi, `—` bila tidak ada' diasersi UI-031 (langkah 80-81: Badge `1` pada Laptop - 129, `—` pada Laptop - 128), spec yang tidak tercatat sebagai penanggung unit ini. UI-034 tidak mengasersi `—`."
     }
    ],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "§4.2.4#b7",
@@ -6337,7 +7016,7 @@
    "unit": "EB-TBL-5@halaman-approval",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "FAREG-LOGIC-20m",
@@ -6349,78 +7028,95 @@
    "unit": "S-REG-13",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "S-REG-17",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "S-REG-24",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j3"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
+     "langkah": [
+      19
+     ],
+     "catatan": "E2E-107 mengasersi Alert Warning master tidak tersedia di atas tabel aset (cabang Group dihapus), tetapi tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j8"
   },
   {
    "unit": "S-REG-29",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j3"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
+     "langkah": [
+      21
+     ],
+     "catatan": "E2E-107 mengasersi tombol keputusan Disabled dengan tooltip `This asset uses master data that is no longer available.` (cabang Group dihapus), tetapi tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j8"
   },
   {
    "unit": "§4.1#r8",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "§4.1#r9",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j3"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
+     "langkah": [
+      19
+     ],
+     "catatan": "E2E-107 langkah 19 mengasersi salinan kedua Alert (Asset Name atau Group tidak tersedia, N = 1) pada master sungguhan, tetapi tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j8"
   },
   {
    "unit": "§4.2.4#b6",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "§4.2.4#b9",
-   "verdict": "parsial",
+   "verdict": "ok",
    "temuan": [
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-FAREG-UI-036-approval-submit-keputusan",
-     "langkah": [],
-     "catatan": "Klausa 'Perubahan di antara klik [Submit] dan konfirmasi D-REG-10 ditolak server dan membuka dialog yang sama seperti D-REG-19' (master berubah) tidak diasersi di UI. Spec 036 hanya menguji pengajuan sudah diputuskan (K6) dan dibatalkan otomatis (K7). Tambahkan kondisi respons server menolak keputusan karena master (Asset Name/Brand/Model/Group) berubah dan asersi dialog D-REG-19 terbuka tanpa menyimpan keputusan. Sisi server hanya ada di BE-141 langkah 13-26.",
-     "status": "tetap"
-    },
     {
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "PRD §4.2.4: 'Perubahan di antara klik [Submit] dan konfirmasi D-REG-10 ditolak server dan membuka dialog yang sama seperti D-REG-19', tetapi D-REG-19 hanya memuat salinan 'This request was canceled by [User]...' / 'already decided by [User]...'. Judul dan isi dialog untuk penolakan karena master berubah tidak ditetapkan."
+     "catatan": "PRD §4.2.4: 'Perubahan di antara klik `[Submit]` dan konfirmasi `D-REG-10` ditolak server dan membuka dialog yang sama seperti `D-REG-19`' (kalimat ini ada di butir master data). Isi D-REG-19 hanya 'This request was canceled by [User]...' / 'This request was already decided by [User]...', yang tidak sesuai untuk perubahan master. Hasil UI untuk perubahan master saat konfirmasi tidak ditetapkan, jadi tidak ada asersi yang bisa diwajibkan. Sisi server (keputusan ditolak) sudah diasersi BE-141 langkah 15-16, 20-21, 25-26."
     },
     {
      "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-034-approval-panel-koreksi",
+     "spec": "TC-FA-FAREG-E2E-107-group-tidak-tersedia-dep-settings-groups",
      "langkah": [
-      218,
-      219,
-      220,
-      221,
-      222,
-      223,
-      224,
-      225
+      18,
+      19,
+      20,
+      21,
+      25
      ],
-     "catatan": "Klausa 'nilai terpilih di panel yang menjadi tidak valid: FI-REG-21' diasersi di UI-034, yang tidak tercatat sebagai penanggung unit ini. Penolakan server atas keputusan karena master berubah diasersi di BE-141 langkah 13-26, juga tidak tercatat."
+     "catatan": "E2E-107 mengasersi cabang Group dihapus saat halaman Approval terbuka (Unavailable tanpa muat ulang, Alert, tombol Disabled), spec yang tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "§4.8#r27",
@@ -6428,40 +7124,29 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-034-approval-panel-koreksi",
-     "langkah": [
-      182,
-      183,
-      184,
-      185,
-      186,
-      187
-     ],
-     "catatan": "Klausa '[Save correction] menyimpan koreksi staged' diasersi di UI-034, tidak tercatat sebagai penanggung unit ini."
-    },
-    {
-     "jenis": "plan",
      "spec": "TC-FA-FAREG-E2E-088-gating-pemegang-hak-putus",
      "langkah": [
       11,
-      14
+      14,
+      16,
+      17
      ],
-     "catatan": "Klausa 'Show bagi pemegang hak putus' ([Submit] dan panel koreksi) diasersi di E2E-088 (Manage asset & TAG berkapabilitas Update), E2E-085 dan E2E-086 (langkah 49 dan 52), tidak tercatat sebagai penanggung unit ini."
+     "catatan": "'Show bagi pemegang hak putus' untuk `[Submit]` dan panel koreksi serta `[Submit]` membuka `D-REG-10` diasersi E2E-088 (juga E2E-085 langkah 49 dan 52, E2E-086), spec yang tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "D-REG-10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "D-REG-19",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "EB-ERR-1@keputusan-approval",
@@ -6485,19 +7170,19 @@
    "unit": "T-REG-08",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "V-REG-14",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "§4.1#r10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "§4.2.4#b10",
@@ -6509,7 +7194,7 @@
    "unit": "§4.2.4#b12",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "§4.2.4#p4",
@@ -6523,10 +7208,10 @@
       9,
       15
      ],
-     "catatan": "Klausa 'status pengajuan ditentukan sistem dari campuran Decision' diasersi di spec 135 (FAREG-LOGIC-06h) dan spec 080/081, yang tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Kalimat 'Status pengajuan ditentukan sistem dari campuran Decision (`FAREG-LOGIC-06`)' diasersi BE-135 (Approved, Partially Approved, Rejected), spec yang tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "§9.4.2#r23",
@@ -6574,13 +7259,16 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-E2E-089-gating-manage-purchase",
      "langkah": [
+      8,
       13,
-      14
+      14,
+      15,
+      16
      ],
-     "catatan": "Klik Detail membuka form Register Asset read-only (Manage purchase) diasersi di E2E-089 langkah 13-14, tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Ikon `Detail` pada sub tab Draft (dan kliknya membuka form `Register Asset` read-only) diasersi E2E-089 untuk role Manage purchase. E2E-038 langkah 12 tidak memuat `Detail` karena aktornya pemegang hak ubah (sesuai §4.8: Detail Hidden bagi pemegang `Edit`). E2E-089 tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "EB-SRC-1",
@@ -6626,13 +7314,13 @@
    "unit": "§5#r4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "§9.5#r4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "EB-FLT-1@tabel-draft",
@@ -6655,8 +7343,18 @@
   {
    "unit": "§9.5#r11",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j10"
+   "temuan": [
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-FAREG-E2E-041-draft-filter",
+     "langkah": [
+      4,
+      129
+     ],
+     "catatan": "PRD §9.5 'Sumber filter Requested By: User aktif dalam scope Group' vs foundation `prd-conventions.md` §9.8: opsi filter adalah nilai DISTINCT kolom sumbernya pada baris tabel yang sedang tampil. Sisi yang berlaku: foundation (Filter Panel pola bersama). Spec mengasersi sisi foundation dengan footnote `[^drift-1]` yang menyebut kedua bunyi dan sisi yang diasersi; sudah sesuai."
+    }
+   ],
+   "juri": "j8"
   },
   {
    "unit": "EB-BLK-2@tabel-draft",
@@ -6699,7 +7397,7 @@
    "unit": "§5#r6",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j8"
   },
   {
    "unit": "EB-KOL-2@tabel-draft",
@@ -6723,13 +7421,13 @@
    "unit": "§4.1#p12",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "§9.5#r5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "EB-FLT-5@tabel-history",
@@ -6747,13 +7445,13 @@
    "unit": "§4.1#p16",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j8"
   },
   {
    "unit": "§4.1#b8",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j8"
   },
   {
    "unit": "EB-SRC-5@antrean-approvals-active",
@@ -6780,53 +7478,31 @@
    "unit": "§4.1#p35",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j8"
   },
   {
    "unit": "§4.2.5#b1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "§4.2.5#b3",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-UI-011-antrean-approvals-tampilan",
-     "langkah": [
-      86,
-      87,
-      88,
-      194,
-      195,
-      196,
-      197,
-      198,
-      112,
-      113,
-      114,
-      225,
-      226,
-      227
-     ],
-     "catatan": "Jenis kontrol filter (Tree picker pada Active, Multi-select searchable pada History), empty state, dan paginasi diasersi di UI-011, tidak tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j3"
+   "temuan": [],
+   "juri": "j9"
   },
   {
    "unit": "§4.2.5#p1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "§9.5#r6",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "§9.7#r7",
@@ -6853,30 +7529,19 @@
    "unit": "§4.1#p39",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j9"
   },
   {
    "unit": "§4.2.5#b2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "§4.2.5#p4",
-   "verdict": "parsial",
-   "temuan": [
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-FAREG-E2E-049-antrean-approvals-active",
-     "langkah": [
-      82,
-      86
-     ],
-     "catatan": "Asal tab Active tidak diasersi: langkah 82 dan 86 hanya mengklik tautan breadcrumb 'Active' tanpa Verifikasi bahwa antrean kembali ke tab Active dengan breadcrumb 'Approvals > Registration > Active'. Tombol Back browser dari halaman Approval juga tidak diuji. Hanya asal History yang diasersi (E2E-050 langkah 98-99, 103-104).",
-     "status": "tetap"
-    }
-   ],
-   "juri": "j3"
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
   },
   {
    "unit": "EB-EDG-2",
@@ -7007,7 +7672,7 @@
    "unit": "FAREG-LOGIC-03t",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "EB-FRM-9",
@@ -7058,25 +7723,25 @@
    "unit": "FAREG-LOGIC-03m",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j9"
   },
   {
    "unit": "FAREG-LOGIC-03n",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j9"
   },
   {
    "unit": "§4.4#r3",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j9"
   },
   {
    "unit": "§9.4.2#r5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j9"
   },
   {
    "unit": "§9.4.2#r6",
@@ -7086,13 +7751,18 @@
      "jenis": "plan",
      "spec": "TC-FA-FAREG-BE-123-operasi-item-aset",
      "langkah": [
+      1,
+      2,
       3,
-      5
+      4,
+      5,
+      6,
+      7
      ],
-     "catatan": "Klausa `Tag dilepas` pada Quantity turun aset berisi data hanya diasersi di BE-123 langkah 3-5 (aset ber-Tag) dan BE-126 langkah 20; 056 memakai aset ber-Serial Number tanpa Tag sehingga tidak menguji pelepasan Tag. Catat BE-123/BE-126 sebagai penanggung unit ini."
+     "catatan": "Klausa 'Tag dilepas' pada Quantity turun diasersi benar di BE-123 (Tag aset ke-3 kembali tersedia, dapat dipindai ulang), tetapi unit hanya mencatat E2E-056 (yang datanya hanya Serial Number, tanpa Tag). Catat BE-123 sebagai penanggung klausa pelepasan Tag."
     }
    ],
-   "juri": "j11"
+   "juri": "j9"
   },
   {
    "unit": "§9.7#r5",
@@ -7154,7 +7824,7 @@
    "unit": "D-REG-15",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j9"
   },
   {
    "unit": "EB-FRM-2@form-register-asset",
@@ -7166,7 +7836,7 @@
    "unit": "FAREG-LOGIC-20a",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "F-FAREG-12",
@@ -7216,15 +7886,17 @@
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
+     "jenis": "drift",
      "spec": "TC-FA-FAREG-E2E-063-bulk-delete-draft-campuran",
      "langkah": [
-      20
+      17,
+      18,
+      19
      ],
-     "catatan": "FAREG-LOGIC-10e: \"batch yang dilewati karena perubahan sesudah konfirmasi dilaporkan lewat toast parsial T-REG-18\" (pilihan campuran sudah diketahui sebelum kirim) vs §4.8 \"pilihan campuran dibagi dua kelompok ...; sukses T-REG-04, sebagian dilewati T-REG-18\" dan katalog T-REG-18 \"sebagian batch dilewati (terkunci user lain, sudah dihapus, atau tanpa hak)\". Tidak tegas apakah campuran yang sudah diketahui di dialog berakhir T-REG-04 atau T-REG-18; spec memakai T-REG-18."
+     "catatan": "PRD D-REG-01 (pilihan campuran): tombol `[Cancel]` `[Delete]` dan 'pertanyaan konfirmasi untuk kelompok pertama'. Foundation (toast-copy, Dialog Konfirmasi, aturan #10 dan Template Body #5): outcome campuran memakai `\"Are you sure you want to continue?\"` dan tombol `[Continue]`. Sisi yang berlaku: foundation (pola dialog bersama). Spec tidak menyebut label tombol konfirmasi dialog campuran (langkah 19 'tombol konfirmasi'), jadi tidak salah, tetapi bila mengasersi label/pertanyaan harus versi foundation dengan footnote [^drift-n]."
     }
    ],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "EB-BLK-3",
@@ -7250,27 +7922,29 @@
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
+     "jenis": "drift",
      "spec": "TC-FA-FAREG-E2E-063-bulk-delete-draft-campuran",
      "langkah": [
-      20
+      17,
+      18,
+      19
      ],
-     "catatan": "FAREG-LOGIC-10e: toast parsial T-REG-18 untuk \"batch yang dilewati karena perubahan sesudah konfirmasi\"; §4.8 baris Delete dan T-REG-18 memakai T-REG-18 juga untuk campuran yang sudah diketahui (dialog dua kelompok). PRD tidak menetapkan toast mana (T-REG-04 atau T-REG-18) untuk campuran yang sudah diketahui sebelum kirim."
+     "catatan": "PRD D-REG-01 campuran: `[Cancel]` `[Delete]` + pertanyaan untuk kelompok pertama; foundation: `\"Are you sure you want to continue?\"` + tombol `[Continue]` untuk outcome campuran. Sisi yang berlaku: foundation. Spec belum menyebut label tombol dialog campuran; bila ditambahkan, asersi versi foundation dengan footnote [^drift-n]."
     }
    ],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "FAREG-LOGIC-19b",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "FAREG-LOGIC-19f",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "§4.8#r26",
@@ -7278,16 +7952,16 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": "TC-FA-FAREG-BE-120-validasi-save-draft",
+     "spec": "TC-FA-FAREG-E2E-089-gating-manage-purchase",
      "langkah": [
-      64,
-      65,
-      66
+      46,
+      47,
+      48
      ],
-     "catatan": "Klausa \"Take over Show bagi role yang berhak mengubah draft\" diasersi sisi negatifnya di BE-120 langkah 64-66 (Take over oleh Siti dan Dewi ditolak) dan sisi positif di E2E-085/086/087 (langkah 18-20), tidak tercatat sebagai penanggung."
+     "catatan": "Klausa '`Take over` Show bagi role yang berhak mengubah draft' (Hidden bagi Manage purchase) diasersi benar di E2E-089 langkah 47-48, tetapi unit hanya mencatat spec 064 dan 065. Catat E2E-089 sebagai penanggung klausa Take over tidak tampil bagi role tanpa hak ubah."
     }
    ],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "§9.2#p49",
@@ -7323,7 +7997,7 @@
    "unit": "§9.4.2#r26",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "§9.6#r12",
@@ -7374,25 +8048,25 @@
    "unit": "§9.4.2#r25",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "FAREG-LOGIC-19g",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "FAREG-LOGIC-20i",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "§9.4.2#r27",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j9"
   },
   {
    "unit": "FAREG-LOGIC-01o",
@@ -7447,8 +8121,19 @@
   {
    "unit": "§9.4.2#r56",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j12"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-BE-121-validasi-activate",
+     "langkah": [
+      22,
+      23,
+      24
+     ],
+     "catatan": "Klausa 'status `Not Paired Yet`' diasersi di BE-121 langkah 24 (kedua aset tanpa Tag tercatat `Not Paired Yet`), tetapi unit hanya mencatat E2E-070. Catat BE-121 sebagai penanggung klausa status."
+    }
+   ],
+   "juri": "j9"
   },
   {
    "unit": "FAREG-LOGIC-06l",
@@ -7475,20 +8160,36 @@
   },
   {
    "unit": "§8.3#r7",
-   "verdict": "ok",
+   "verdict": "parsial",
    "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-FAREG-E2E-072-auto-approve-kondisi-b",
+     "langkah": [
+      9,
+      10,
+      11
+     ],
+     "catatan": "PRD §8.3: Auto-approved memiliki tiga judul: `Approved by [User] (Group Manager — requester)`, `Approved by [User] (Total Control — requester)`, `Approved by system (no independent approver)`, dengan isi Jumlah Approved (seluruh aset). Hanya varian Group Manager diasersi di UI (E2E-071, termasuk Jumlah Approved 30). Varian `Approved by system (no independent approver)` (Kondisi B terpenuhi) tidak pernah diasersi positif di spec mana pun: E2E-072 dan BE-134 langkah 20 hanya menyatakan node itu TIDAK ada. Tambahkan skenario Kondisi B terpenuhi (pengaju satu-satunya anggota himpunan approver eligible, tanpa Total Control lain) dengan Verifikasi node `Approved by system (no independent approver)` dan Jumlah Approved seluruh aset. Judul `(Total Control — requester)` hanya ada di BE-134 langkah 5, tanpa Jumlah Approved.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-072-auto-approve-kondisi-b",
+     "langkah": [],
+     "catatan": "Judul plan 'Auto-approve Kondisi B: tanpa approver independen' tidak sama dengan judul spec ('Submit dengan approver independen tidak di-approve otomatis'); isinya menguji Kondisi B TIDAK terpenuhi, bukan hasil Kondisi B. Penanggung klausa `Approved by system ...` kosong. Selaraskan judul/penanggung setelah skenario positif ditambahkan."
+    },
     {
      "jenis": "plan",
      "spec": "TC-FA-FAREG-BE-134-auto-approve",
      "langkah": [
       5,
-      10,
-      15
+      20
      ],
-     "catatan": "Varian `Approved by [User] (Total Control — requester)` hanya diasersi di BE-134 langkah 5 (dan Group Manager langkah 10, 15); BE-134 tidak tercatat sebagai penanggung unit ini. Kondisi B diasersi di 072."
+     "catatan": "BE-134 langkah 5 mengasersi node `Approved by Hana T (Total Control — requester)`, tetapi unit tidak mencatat BE-134 sebagai penanggung."
     }
    ],
-   "juri": "j4"
+   "juri": "j9"
   },
   {
    "unit": "§9.2#p41",
@@ -7587,16 +8288,16 @@
       7,
       21
      ],
-     "catatan": "`batch hasil Cancel atau auto-cancel sistem tidak memiliki Alert`: bagian auto-cancel diasersi di BE-137 langkah 7 dan 21; BE-137 tidak tercatat sebagai penanggung unit ini (073 menanggung bagian Cancel)."
+     "catatan": "Klausa 'batch hasil Cancel atau auto-cancel sistem tidak memiliki Alert' juga diasersi di BE-137 langkah 7 (Cancel) dan 21 (auto-cancel); unit hanya mencatat E2E-073 (Cancel). Catat BE-137 sebagai penanggung klausa auto-cancel tanpa Alert."
     }
    ],
-   "juri": "j4"
+   "juri": "j9"
   },
   {
    "unit": "§4.4#r14",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "§9.7#r11",
@@ -7719,7 +8420,7 @@
    "unit": "FAREG-LOGIC-20k",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "§4.1#b1",
@@ -7744,19 +8445,19 @@
    "unit": "§8.3#r1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "§8.3#r2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j9"
   },
   {
    "unit": "§8.3#r8",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j9"
   },
   {
    "unit": "§8.3#r3",
@@ -7765,40 +8466,30 @@
     {
      "jenis": "kurang",
      "spec": "TC-FA-FAREG-E2E-078-registration-log-pengajuan",
-     "langkah": [],
-     "catatan": "`Activated by [User]` (approval OFF) beserta Total Asset tidak diasersi: tidak ada pengajuan approval OFF di data 078. 067 langkah 24-26 hanya mengasersi satu node pengajuan dengan Total Asset `3` tanpa judul.",
-     "status": "tetap"
-    },
-    {
-     "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "§8.3 tabel: \"`Activated by [User]` (approval OFF)\" vs FAREG-LOGIC-06o: \"Pengajuan approval OFF mencatat satu node Registration Log `Submitted by [User]` (tanpa node `Approved by`)\". Judul node approval OFF tidak konsisten; pemilik perlu memutuskan."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-067-activate-approval-off",
      "langkah": [
-      24,
-      25,
-      26
+      1,
+      2,
+      3,
+      4,
+      5
      ],
-     "catatan": "Node pengajuan approval OFF diasersi tanpa judul di 067 langkah 24-26; tidak tercatat sebagai penanggung unit ini."
+     "catatan": "PRD §8.3: judul `Submitted by [User]` (approval ON) / `Activated by [User]` (approval OFF). Hanya `Submitted by` yang diasersi (langkah 3, 35). Judul `Activated by [User]` untuk pengajuan Group ber-Require Approval OFF tidak diasersi di spec mana pun (grep 'Activated by' di seluruh suite kosong). Tambahkan pengajuan Activated (approval OFF) dengan Verifikasi node `Activated by Rina W`, Total Asset, dan baris `Submitted without TAG pairing` bila ada.",
+     "status": "tetap"
     }
    ],
-   "juri": "j4"
+   "juri": "j9"
   },
   {
    "unit": "§8.3#r4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j9"
   },
   {
    "unit": "§8.3#r5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j9"
   },
   {
    "unit": "FAREG-LOGIC-06h",
@@ -7931,17 +8622,8 @@
   {
    "unit": "FAREG-LOGIC-07j",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FAREG-BE-147-isi-registration-log",
-     "langkah": [
-      20
-     ],
-     "catatan": "Entri `Draft edited by [User]` (approver) saat Approve diasersi BE-147 langkah 20; BE-147 tidak tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j4"
+   "temuan": [],
+   "juri": "j9"
   },
   {
    "unit": "§9.7#r16",
@@ -7971,25 +8653,25 @@
    "unit": "§4.2.4#b13",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j9"
   },
   {
    "unit": "§9.4.2#r13",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j9"
   },
   {
    "unit": "§9.4.2#r15",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j9"
   },
   {
    "unit": "§9.4.2#r16",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j10"
   },
   {
    "unit": "§2.1#r1",
@@ -8082,7 +8764,7 @@
    "unit": "§4.8#r5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j10"
   },
   {
    "unit": "§4.8#r6",
@@ -8090,12 +8772,14 @@
    "temuan": [
     {
      "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "§4.8 baris `Row action Edit (sub tab Draft)` memberi Read Only `Show (Detail saja)`, padahal baris `Sub tab Draft` memberi Read Only `Hidden` dan baris row action `Detail` (§4.8 Visibilitas per Action) menyatakan `Hidden ... bagi Read Only (sub tab Draft tidak tampil)`. Sumber tidak konsisten soal Read Only pada sub tab Draft."
+     "spec": "TC-FA-FAREG-E2E-090-gating-read-only",
+     "langkah": [
+      5
+     ],
+     "catatan": "PRD tidak menetapkan satu hasil untuk Read Only pada sub tab Draft: matriks §4.8 baris `Row action Edit (sub tab Draft)` kolom Read Only berbunyi `Show (Detail saja)`, sedangkan baris `Sub tab Draft` kolom Read Only `Hidden` dan Row Actions `Detail` berbunyi `Hidden bagi ... Read Only (sub tab Draft tidak tampil)`. Spec 090 mengasersi sub tab Draft tidak tampil (langkah 5), yang konsisten dengan dua baris terakhir."
     }
    ],
-   "juri": "j13"
+   "juri": "j10"
   },
   {
    "unit": "§4.8#r7",
@@ -8153,10 +8837,20 @@
       10,
       11
      ],
-     "catatan": "Perilaku `Membuka D-REG-14; sukses T-REG-10 dan kembali ke tab History` diasersi di spec 073; `D-REG-17` di spec 075. Keduanya tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Spec 073 mengasersi row action `Cancel registration` membuka `D-REG-14`, sukses `T-REG-10` dan kembali ke sub tab History, tetapi tidak tercatat sebagai penanggung unit ini (hanya 086 dan 087)."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan",
+     "langkah": [
+      6,
+      7,
+      8
+     ],
+     "catatan": "Spec 075 mengasersi `D-REG-17` (`Cannot Cancel`) tetapi tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j13"
+   "juri": "j10"
   },
   {
    "unit": "§4.8#r23",
@@ -8167,13 +8861,12 @@
      "spec": "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan",
      "langkah": [
       4,
-      5,
-      6
+      5
      ],
-     "catatan": "`[Cancel Registration]` di Detail membuka D-REG-14 dan D-REG-17 diasersi di spec 075; keduanya tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Spec 075 menekan `[Cancel Registration]` di footer Detail dan membuka dialog `Cancel Registration`, tetapi tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j13"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-06p",
@@ -8222,8 +8915,34 @@
   {
    "unit": "§4.8#r19",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j13"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-065-kunci-sesi-view-only-delete-terkunci",
+     "langkah": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+     ],
+     "catatan": "Klausa `tidak Disabled bila batch dikunci user lain` dan `kunci sesi dipegang user lain D-REG-27` diasersi benar di spec 065 (klik `Delete` pada batch terkunci membuka dialog blok), bukan di 087/089; 065 tidak tercatat sebagai penanggung unit ini."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-061-delete-draft",
+     "langkah": [],
+     "catatan": "Klausa `Membuka D-REG-01; sukses T-REG-04` diasersi di spec 061 (juga 062), yang tidak tercatat sebagai penanggung unit ini."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-008-draft-dialog-delete",
+     "langkah": [],
+     "catatan": "Klausa `draft sudah dihapus T-REG-06` hanya diasersi di UI-008 (ui-client), yang tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j10"
   },
   {
    "unit": "§9.2#p82",
@@ -8397,7 +9116,7 @@
    "unit": "§9.5#r9",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "§9.2#p57",
@@ -8463,7 +9182,7 @@
    "unit": "FAREG-LOGIC-20d",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-20j",
@@ -8481,19 +9200,19 @@
    "unit": "FAREG-LOGIC-20o",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j10"
   },
   {
    "unit": "§4.6#p1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "§9.4.2#r59",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "§9.6#r8",
@@ -8501,23 +9220,19 @@
    "temuan": [
     {
      "jenis": "kurang",
-     "spec": "TC-FA-FAREG-E2E-096-mobile-registrasi-send",
-     "langkah": [
-      14,
-      15,
-      16
-     ],
-     "catatan": "Kolom On failure (5xx/timeout): `T-REG-12` (`Error, failed to ...`) dan \"Draft tidak terbentuk\" saat Send gagal karena server tidak diasersi di spec ui-e2e mana pun (hanya sukses dan penolakan validasi). Tidak ada spec ui-client mobile untuk Send.",
-     "status": "tetap"
+     "spec": "TC-FA-FAREG-BE-128-send-mobile",
+     "langkah": [],
+     "status": "dibuang",
+     "catatan": "asersi dibuang karena tidak bisa dibenarkan: `Source` `Mobile` pada entri Activity Log `Create` untuk Send tidak ditetapkan PRD: contoh §8.2 memberi `Create` ... `Manual` dan hanya `Scan Tag` ... `Mobile`; foundation pack tidak mendefinisikan nilai Source."
     }
    ],
-   "juri": "j4"
+   "juri": "j10"
   },
   {
    "unit": "§9.7#r3",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-20p",
@@ -8529,31 +9244,31 @@
    "unit": "§4.6#b2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "§4.6#b3",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "§4.6#b4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "§4.6#b5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "§4.6#b6",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-04h",
@@ -8641,7 +9356,7 @@
    "unit": "F-FAREG-10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-12a",
@@ -8653,25 +9368,25 @@
    "unit": "FAREG-LOGIC-12b",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-12c",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-12d",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j10"
   },
   {
    "unit": "S-REG-14",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j10"
   },
   {
    "unit": "§9.2#r22",
@@ -8689,19 +9404,19 @@
    "unit": "§9.2#r24",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j10"
   },
   {
    "unit": "§9.2#r25",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j15"
+   "juri": "j10"
   },
   {
    "unit": "§9.4.2#r60",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j15"
+   "juri": "j10"
   },
   {
    "unit": "§9.4.2#r61",
@@ -8741,7 +9456,7 @@
    "unit": "§9.4.3#b9",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j15"
+   "juri": "j10"
   },
   {
    "unit": "§9.6#r10",
@@ -8813,8 +9528,18 @@
   {
    "unit": "FAREG-LOGIC-05a",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j15"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-E2E-104-kuota-tenant-habis-dep-license",
+     "langkah": [
+      11,
+      12
+     ],
+     "catatan": "Cabang `sisa terkecil` bila sisa kuota tenant lebih kecil dari Group (Group `50`, tenant `0`, `Available slots: 0`) diasersi di spec 104; spec 103 hanya memakai tenant lebih besar dari Group. 104 tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-05i",
@@ -8861,8 +9586,24 @@
   {
    "unit": "§9.4.2#r3",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j4"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-015-form-quantity-kuota-inline",
+     "langkah": [
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56
+     ],
+     "catatan": "Klausa `tenant lebih dulu` (pesan `... on your plan.` lawan pesan Group) hanya diasersi di UI-015 (ui-client); spec 103 memakai kuota tenant yang lebih besar. UI-015 tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j10"
   },
   {
    "unit": "§9.4.2#r9",
@@ -8932,7 +9673,7 @@
    "unit": "F-FAREG-06.k2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j15"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-18b",
@@ -8946,18 +9687,22 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": "TC-FA-FAREG-E2E-106-master-berubah-saat-approval-dep-settings-asset-name",
-     "langkah": [],
-     "catatan": "FAREG-LOGIC-18c untuk Brand diarsipkan, Model dilepas, dan Asset Name dihapus (penanda `Unavailable`) diasersi oleh BE-141 langkah 14, 19, 24, yang tidak tercatat sebagai penanggung unit ini; spec 106 hanya menandai Model dihapus (langkah 4) dan hanya Alert untuk Asset Name dihapus (langkah 15)."
+     "spec": "TC-FA-FAREG-BE-141-validasi-ulang-master-dep-settings-asset-name",
+     "langkah": [
+      14,
+      19,
+      24
+     ],
+     "catatan": "Varian `diarsipkan` dan `dilepas dari induknya` (Brand diarsipkan, Model dilepas dari Brand) diasersi di BE-141, bukan di 106 yang hanya memakai penghapusan; BE-141 dan UI-035 (badge Brand/Model `Unavailable`) tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j15"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-18d",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-18f",
@@ -8974,13 +9719,20 @@
      "spec": "TC-FA-FAREG-UI-035-approval-terkunci-unavailable",
      "langkah": [
       30,
-      43,
-      73
+      31,
+      32,
+      45,
+      53,
+      60,
+      68,
+      69,
+      79,
+      80
      ],
-     "catatan": "Badge Unavailable untuk Brand dan Model serta Alert pada halaman Approval juga diasersi di UI-035 (ui-client) dan BE-141 langkah 14, 19 (pemicu Brand diarsipkan dan Model dilepas); keduanya tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Salinan Alert untuk dua jenis aset, bentuk jamak `[N] assets`, dan badge Brand `Unavailable` diasersi di UI-035 (ui-client); spec ini tidak tercatat sebagai penanggung unit ini."
     }
    ],
-   "juri": "j5"
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-08b",
@@ -9095,10 +9847,10 @@
       8,
       19
      ],
-     "catatan": "PRD V-REG-10 memuat dua pesan untuk Quantity di atas batas ('Quantity must be between 1 and [Max]' dan 'For more than [Limit] assets, use Import.') tanpa syarat pemilihan. Suite memakai 'Quantity must be between 1 and 100' untuk Quantity 101 satu Item (BE-120 langkah 13) tetapi 'For more than N assets, use Import.' untuk satu Item di atas limit (112 langkah 8, 19; 116 langkah 30; 117 langkah 16)."
+     "catatan": "PRD tidak memutuskan pesan Save/Submit untuk satu Item yang Quantity-nya di atas limit. V-REG-10: `\"Quantity must be between 1 and [Max]\"` / `\"For more than [Limit] assets, use Import.\"`; §9.5: `maksimum per Item dan total aset per pengajuan = Register Asset Bulk Limit`. Spec 112 (satu Item Quantity `8`, limit `5`) mengasersi `For more than 5 assets, use Import.`, sedangkan BE-120 langkah 13 (satu Item Quantity `101`, limit `100`) mengasersi `Quantity must be between 1 and 100`; dua spec berbeda untuk keadaan yang sama."
     }
    ],
-   "juri": "j5"
+   "juri": "j10"
   },
   {
    "unit": "EB-NTF-1",
@@ -9188,7 +9940,7 @@
    "unit": "FAREG-LOGIC-21b",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j10"
   },
   {
    "unit": "EB-XM-2@damaged",
@@ -9318,7 +10070,7 @@
    "unit": "§9.5#r10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j10"
   },
   {
    "unit": "EB-ERR-4",
@@ -9785,16 +10537,15 @@
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
+     "jenis": "drift",
      "spec": "TC-FA-FAREG-BE-137-cancel-dan-auto-cancel",
      "langkah": [
-      9,
-      17
+      9
      ],
-     "catatan": "PRD §8.3: judul node `Canceled by system (approval timeout)` / `(plan changed)`; foundation approval-foundation.md §1.7: `... (approval timeout — no decision within [N] days)`. Spec langkah 9 memakai literal foundation tanpa footnote drift, langkah 17 memakai literal PRD; kedua sumber perlu diselaraskan."
+     "catatan": "PRD §8.3: judul node `Canceled by system (approval timeout)`; foundation `approval-foundation.md` §1.7: Log label `\"Canceled by system (approval timeout — no decision within [N] days)\"`. Sisi yang berlaku: foundation (pola approval bersama). Spec mengasersi versi foundation dengan `[N]` = `3` (sesuai Kondisi Approval Timeout 3 hari) tetapi tanpa footnote `[^drift-<n>]`."
     }
    ],
-   "juri": "j5"
+   "juri": "j10"
   },
   {
    "unit": "§9.4.2#r19",
@@ -9869,8 +10620,23 @@
   {
    "unit": "§9.4.2#r17",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j5"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FAREG-UI-036-approval-submit-keputusan",
+     "langkah": [
+      71,
+      72,
+      74,
+      80,
+      81,
+      87,
+      88
+     ],
+     "catatan": "Dialog `D-REG-19` pada Submit keputusan (pembatalan atau keputusan pihak lain di antara klik `[Submit]` dan konfirmasi) diasersi di UI-036 (ui-client); BE-138 hanya menutup `Server menolak`. UI-036 tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j10"
   },
   {
    "unit": "EB-AKS-3@activate",
@@ -10435,9 +11201,22 @@
   },
   {
    "unit": "FAREG-LOGIC-11a",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j5"
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-FAREG-BE-121-validasi-activate",
+     "langkah": [
+      56,
+      57,
+      58,
+      59
+     ],
+     "catatan": "Cabang `Scope definisi (General atau Specific Asset Name)` dan `Required per field` tidak teruji penuh: semua Custom field di data terikat ke satu Asset Name tertentu (`Warna` pada `Rak Warna`, `Material` pada `Rak Besi`, `Nomor Invoice` pada `Meja Kerja`) sehingga tidak ada Custom field ber-Scope General yang ikut dihitung di semua aset, dan Custom field wajib (`Material`) tidak pernah masuk hitungan skor (hanya `Warna` opsional). Tambahkan Custom field ber-Scope General (wajib dan opsional) dan aset ber-Custom field wajib yang dihitung skornya.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j10"
   },
   {
    "unit": "FAREG-LOGIC-11b",

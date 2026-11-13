@@ -11,7 +11,7 @@ dependsOn: []
 trace:
   "§4.1#r47": [2, 17, 38, 41, 77]
   "§4.1#r46": [3, 15, 38, 75, 104]
-  "§4.1#r48": [4, 19, 38, 47, 79]
+  "§4.1#r48": [4, 19, 38, 47, 79, 111, 112]
   "§4.1#r49": [5, 6, 7, 8, 21, 29, 30, 34, 38, 52, 81]
   "§4.1#r50": [9, 23, 25, 38, 57, 83]
   "§4.1#r51": [10, 11, 25, 38, 66, 70, 85]
@@ -33,8 +33,8 @@ coverage:
 - Layar awal: Assets > Registration > History.
 - Data:
   - DU-047-1: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Barat {runId}`, Total Asset `8`, Status `Approved`, Requested By `Maya L`, Approver `Hadi K`, Last Updated `T0 − 1 hari`.
-  - DU-047-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Timur {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`.
-  - DU-047-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Utara {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N`, Approver `Rina W`, Last Updated `T0 − 3 hari`.
+  - DU-047-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Timur {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`. Komposisi aset: `6` Approve, `5` Return to Draft, dan `3` Reject.
+  - DU-047-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Utara {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N`, Approver `Rina W`, Last Updated `T0 − 3 hari`. Komposisi aset: `1` Return to Draft dan `2` Reject, tanpa aset Approve.
   - DU-047-4: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Selatan {runId}`, Total Asset `97`, Status `Canceled`, Requested By `Rina W`, Approver `—`, Last Updated `T0 − 4 hari`.
   - Pengajuan DU-047-4 diajukan lebih dulu daripada DU-047-3, DU-047-3 lebih dulu daripada DU-047-2, dan DU-047-2 lebih dulu daripada DU-047-1.
   - Maya L, Hadi K, Siti N, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing; Maya L dan Hadi K bukan Total Control.
@@ -168,3 +168,8 @@ coverage:
 107. Klik ikon `Registration Log` pada baris `Gudang Utara {runId}`
 108. Verifikasi dialog `Registration Log` tampil di atas halaman History
 109. Klik ikon X pada dialog `Registration Log`
+
+### Total Asset menghitung aset dari semua status
+110. Ganti isi kotak search dengan `{runId}`, tekan Enter
+111. Verifikasi Total Asset baris `Gudang Timur {runId}` bernilai `14`, yaitu jumlah seluruh aset pengajuan (`6` Approve, `5` Return to Draft, `3` Reject), bukan hanya `6` aset Approve
+112. Verifikasi Total Asset baris `Gudang Utara {runId}` bernilai `3`, yaitu jumlah seluruh aset pengajuan (`1` Return to Draft, `2` Reject), bukan hanya `2` aset Reject

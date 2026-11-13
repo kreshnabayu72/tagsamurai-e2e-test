@@ -50,29 +50,29 @@ coverage:
 ## Test Steps
 
 ### Field terkunci tampil Disabled dengan jalur yang benar
-1. Ketik Search `Laptop Edit {runId}`, tekan Enter
-2. Klik row action `Edit` pada baris aset `Laptop Edit {runId}`
-3. Arahkan kursor ke field Asset Name
+1. Dewi mengetik Search `Laptop Edit {runId}`, tekan Enter
+2. Dewi klik row action `Edit` pada baris aset `Laptop Edit {runId}`
+3. Dewi mengarahkan kursor ke field Asset Name
 4. Verifikasi field Asset Name Disabled dengan tooltip `Asset Name changes through Move Asset Names.`
-5. Arahkan kursor ke field Condition
+5. Dewi mengarahkan kursor ke field Condition
 6. Verifikasi field Condition Disabled dengan tooltip `Condition changes through a Damaged or Missing report.`
-7. Arahkan kursor ke field Tag
+7. Dewi mengarahkan kursor ke field Tag
 8. Verifikasi field Tag Disabled dengan tooltip `TAG changes through TAG replacement.`
-9. Arahkan kursor ke field Asset Code
+9. Dewi mengarahkan kursor ke field Asset Code
 10. Verifikasi field Asset Code Disabled dengan tooltip `Asset Code is locked.`
-11. Arahkan kursor ke field Group
+11. Dewi mengarahkan kursor ke field Group
 12. Verifikasi field Group Disabled dengan tooltip `Group changes through a Transfer.`
 
 ### Field yang diizinkan tersimpan dan tercatat di log aset
-13. Pilih Brand `Lenovo`
-14. Pilih Model `ThinkPad T14`
-15. Ganti Alias Name menjadi `Laptop Tim Keuangan {runId}`
-16. Pilih Asset labels `Aset Kantor {runId}`
-17. Ganti Serial Number menjadi `SN-0100-B`
-18. Unggah Photo `laptop-edit.jpg`
-19. Ganti Cost pada kelompok Purchase menjadi `15000000`
-20. Simpan perubahan aset
-21. Klik row action `Detail` pada baris aset `Laptop Edit {runId}`
+13. Dewi memilih Brand `Lenovo`
+14. Dewi memilih Model `ThinkPad T14`
+15. Dewi mengganti Alias Name menjadi `Laptop Tim Keuangan {runId}`
+16. Dewi memilih Asset labels `Aset Kantor {runId}`
+17. Dewi mengganti Serial Number menjadi `SN-0100-B`
+18. Dewi mengunggah Photo `laptop-edit.jpg`
+19. Dewi mengganti Cost pada kelompok Purchase menjadi `15000000`
+20. Dewi menyimpan perubahan aset
+21. Dewi klik row action `Detail` pada baris aset `Laptop Edit {runId}`
 22. Verifikasi Brand aset `Lenovo`
 23. Verifikasi Model aset `ThinkPad T14`
 24. Verifikasi Alias Name aset `Laptop Tim Keuangan {runId}`
@@ -80,17 +80,17 @@ coverage:
 26. Verifikasi Serial Number aset `SN-0100-B`
 27. Verifikasi Photo `laptop-edit.jpg` tampil pada aset
 28. Verifikasi Cost aset `15000000`
-29. Buka bagian log aset
+29. Dewi membuka bagian log aset
 30. Verifikasi entri log dengan Field `Alias Name`, Old Value `Laptop Finance {runId}`, dan New Value `Laptop Tim Keuangan {runId}` tampil
 
 ### Simpan tanpa perubahan tidak menambah log
-31. Catat jumlah entri log aset
-32. Klik row action `Edit` pada baris aset `Laptop Edit {runId}`
-33. Ganti Alias Name menjadi `LAPTOP TIM KEUANGAN {runId}`
-34. Simpan perubahan aset
+31. Dewi mencatat jumlah entri log aset
+32. Dewi klik row action `Edit` pada baris aset `Laptop Edit {runId}`
+33. Dewi mengganti Alias Name menjadi `LAPTOP TIM KEUANGAN {runId}`
+34. Dewi menyimpan perubahan aset
 35. Verifikasi toast `No changes to save.`
-36. Klik row action `Detail` pada baris aset `Laptop Edit {runId}`
-37. Buka bagian log aset
+36. Dewi klik row action `Detail` pada baris aset `Laptop Edit {runId}`
+37. Dewi membuka bagian log aset
 38. Verifikasi jumlah entri log aset sama dengan jumlah yang dicatat
 
 ### Dua pengguna mengedit aset yang sama
@@ -103,8 +103,8 @@ coverage:
 45. Verifikasi tidak ada dialog konflik yang tampil
 
 ### Log aset mencatat setiap field yang diubah
-46. Klik row action `Detail` pada baris aset `Laptop Edit {runId}`
-47. Buka bagian log aset
+46. Dewi klik row action `Detail` pada baris aset `Laptop Edit {runId}`
+47. Dewi membuka bagian log aset
 48. Verifikasi entri log dengan Field `Brand`, Old Value `Dell`, dan New Value `Lenovo` tampil
 49. Verifikasi entri log dengan Field `Model`, Old Value `Latitude 5440`, dan New Value `ThinkPad T14` tampil
 50. Verifikasi entri log dengan Field `Serial Number`, Old Value `SN-0100-A`, dan New Value `SN-0100-B` tampil

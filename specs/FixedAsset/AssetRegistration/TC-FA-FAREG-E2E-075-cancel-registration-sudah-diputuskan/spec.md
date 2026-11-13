@@ -10,7 +10,7 @@ smoke: [D-REG-17]
 dependsOn: []
 trace:
   FAREG-LOGIC-20k: [8, 9]
-  D-REG-17: 6
+  D-REG-17: [6, 16, 18]
 anchor: []
 coverage:
   web: automated
@@ -19,15 +19,18 @@ coverage:
 # Cancel Registration atas pengajuan yang sudah diputuskan
 
 ## Prerequisites
-- Aktor: Rina W (Manage asset & TAG, pengaju pengajuan; Group terkelola `Gudang Diputus {runId}`). Budi S (Manage asset & TAG dengan capability Update pada Group `Gudang Diputus {runId}`) memutuskan pengajuan sebagai pemicu.
+- Aktor: Rina W (Manage asset & TAG, pengaju pengajuan; Group terkelola `Gudang Diputus {runId}`). Budi S (Manage asset & TAG dengan capability Update pada Group `Gudang Diputus {runId}` dan Group `Gudang Diputus Baris {runId}`) memutuskan pengajuan sebagai pemicu.
 - Layar awal: Fixed Asset > Assets > Registration > Waiting for Approval.
 - Data:
   - DU-075-1: Group `Gudang Diputus {runId}`, ada di entitas aktor.
   - DU-075-2: pengajuan Waiting for Approval di Group `Gudang Diputus {runId}`, diajukan Rina W.
   - DU-075-3: satu Item pada pengajuan itu: Asset Name `Office Desk`, Brand `Kayu Jati`, Model `No Model`, Quantity `2`, Condition `Normal`, TAG Type `Non-TAG`; Total Asset `2`.
-  - DU-075-4: Budi S (Manage asset & TAG dengan capability Update pada Group `Gudang Diputus {runId}`).
+  - DU-075-4: Budi S (Manage asset & TAG dengan capability Update pada Group `Gudang Diputus {runId}` dan Group `Gudang Diputus Baris {runId}`).
+  - DU-075-5: Group `Gudang Diputus Baris {runId}`, ada di entitas aktor.
+  - DU-075-6: pengajuan Waiting for Approval di Group `Gudang Diputus Baris {runId}`, diajukan Rina W.
+  - DU-075-7: satu Item pada pengajuan itu: Asset Name `Office Desk`, Brand `Kayu Jati`, Model `No Model`, Quantity `3`, Condition `Normal`, TAG Type `Non-TAG`; Total Asset `3`.
 - Kondisi:
-  - Group `Gudang Diputus {runId}` ber-toggle `Require Approval for Registration` ON.
+  - Group `Gudang Diputus {runId}` dan Group `Gudang Diputus Baris {runId}` ber-toggle `Require Approval for Registration` ON.
 
 ## Test Steps
 
@@ -41,3 +44,14 @@ coverage:
 7. Klik `[OK]`
 8. Verifikasi halaman Detail pengajuan dimuat ulang dan menampilkan Badge status `Approved`
 9. Verifikasi dialog `Cannot Cancel` tidak tampil
+
+### Cancel registration dari baris tabel atas pengajuan yang sudah diputuskan
+10. Klik `[Close]` pada footer halaman Detail
+11. Klik sub tab `Waiting for Approval`
+12. Ketik Search `{runId}`, tekan Enter
+13. Budi S memutuskan pengajuan Group `Gudang Diputus Baris {runId}` dengan seluruh aset `Approve`
+14. Klik ikon `Cancel registration` pada baris Group `Gudang Diputus Baris {runId}`
+15. Klik `[Cancel Registration]` pada dialog `Cancel Registration`
+16. Verifikasi dialog `Cannot Cancel` tampil dengan pesan `This request was already decided by Budi S.`
+17. Klik `[OK]`
+18. Verifikasi dialog `Cannot Cancel` tidak tampil

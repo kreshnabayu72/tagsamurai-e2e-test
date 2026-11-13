@@ -9,11 +9,11 @@ sourceRules: ["§8.3#p1", "§8.3#r3", "§8.3#r4", "§8.3#r5"]
 smoke: []
 dependsOn: []
 trace:
-  "§8.3#p1": 6
+  "§8.3#p1": [6, 49]
   "§8.3#r3": [3, 4, 5, 35, 36, 37]
   "§8.3#r4": [11, 12, 15, 16, 17, 18, 21, 22, 42, 45]
   "§8.3#r5": [25, 26, 29, 30]
-anchor: []
+anchor: [48]
 coverage:
   web: automated
 ---
@@ -91,3 +91,10 @@ coverage:
 43. Klik ikon `✕` pada dialog Registration Log
 44. Klik ikon `Registration Log` pada baris Group `Gudang Sebagian {runId}`
 45. Verifikasi node `Partially approved by Budi S` memuat Reason `Checked by supervisor` untuk aset yang di-approve
+
+### Registration Log tidak tersedia dari halaman Detail pengajuan
+46. Klik ikon `✕` pada dialog Registration Log
+47. Klik ikon `Detail` pada baris Group `Gudang Sebagian {runId}`
+48. Verifikasi footer halaman Detail pengajuan memuat `[Close]`
+49. Verifikasi kontrol `Registration Log` tidak tampil pada halaman Detail pengajuan
+50. Klik `[Close]` pada footer halaman Detail

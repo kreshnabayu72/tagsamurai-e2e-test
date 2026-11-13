@@ -32,7 +32,7 @@ trace:
   "§4.8#r18": 42
   "§4.8#r19": 11
   "§4.8#r20": 33
-  "§4.8#r23": 35
+  "§4.8#r23": [35, 51, 53, 54]
   "§9.2#p82": 42
   "T-REG-07": 44
 anchor: [41]
@@ -47,7 +47,7 @@ coverage:
 - Layar awal: Fixed Asset > Assets.
 - Data:
   - DU-087-1: Batch Draft dengan Group `Gudang 1 {runId}`, Origin `—`, Total Asset `12`, Progress `0%`, Requested By `Rina W`, Last Updated `T0 − 1 hari`, Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `12`.
-  - DU-087-2: Pengajuan Waiting for Approval `REG-20261109-08702` di Group `Gudang 1 {runId}`, diajukan Siti N, Total Asset `5`, Last Updated `T0 − 2 hari` (Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `5`, TAG `Verified`).
+  - DU-087-2: Pengajuan Waiting for Approval `REG-20261109-08702` di Group `Gudang 1 {runId}`, diajukan Siti N, Total Asset `5`, Last Updated `T0 − 2 hari` (Item `Laptop {runId}` Brand `Dell` Model `Latitude 5440` Quantity `5`, TAG `Verified`).
   - DU-087-3: Pengajuan Approved `REG-20261108-08703` di Group `Gudang 1 {runId}`, diajukan Siti N, Approver Budi S, Total Asset `3`, Last Updated `T0 − 3 hari`.
   - DU-087-4: Siti N (Manage asset & TAG tanpa capability Update, Group terkelola `Gudang 1 {runId}`).
   - DU-087-5: Rina W (Manage asset & TAG, Group terkelola `Gudang 1 {runId}`).
@@ -117,3 +117,15 @@ coverage:
 ### Halaman Approval ditolak lewat alamat langsung
 43. Buka halaman Approval pengajuan Group `Gudang 1 {runId}` dengan Total Asset `5` lewat alamat langsung (URL)
 44. Verifikasi toast error `You don't have permission to do this.` tampil bagi Siti N
+
+### Cancel Registration dari Detail pengajuan oleh pengaju
+45. Buka layar Fixed Asset > Assets
+46. Klik tab `Registration`
+47. Klik sub tab `Waiting for Approval`
+48. Ketik Search `Gudang 1 {runId}`, tekan Enter
+49. Klik row action `Detail` pada baris Group `Gudang 1 {runId}` dengan Total Asset `5`
+50. Klik `[Cancel Registration]` pada footer halaman Detail pengajuan
+51. Verifikasi dialog `Cancel Registration` terbuka
+52. Klik `[Cancel Registration]` pada dialog `Cancel Registration`
+53. Verifikasi toast `Success, registration has been canceled.` tampil
+54. Verifikasi halaman kembali ke Registration dengan sub tab `History` aktif

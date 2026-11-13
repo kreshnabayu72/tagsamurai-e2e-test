@@ -118,4 +118,4 @@ coverage:
 ### Bulk Action Disabled pada halaman terkunci
 56. Buka halaman Approval pengajuan dengan Total Asset `3` lewat alamat langsung (URL)
 57. Centang aset ke-1 pada grup `Office Desk`
-58. Verifikasi pilihan `Approve`, `Return to Draft`, dan `Reject` pada Bulk Action Disabled
+58. Verifikasi Bulk Action (trigger) pada grup `Office Desk` Disabled

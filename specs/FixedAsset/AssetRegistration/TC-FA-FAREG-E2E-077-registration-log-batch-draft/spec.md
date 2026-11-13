@@ -10,11 +10,11 @@ smoke: []
 dependsOn: []
 trace:
   FAREG-LOGIC-06o: [24, 25, 26]
-  "§8.3#p1": 12
+  "§8.3#p1": [12, 29]
   "§8.3#r1": [13, 14]
   "§8.3#r2": 21
   "§8.3#r8": [24, 25, 26]
-anchor: []
+anchor: [28]
 coverage:
   web: automated
 ---
@@ -65,3 +65,9 @@ coverage:
 24. Verifikasi node timeline berjudul `Draft created by System`
 25. Verifikasi node itu memuat Total Asset `2`
 26. Verifikasi node itu memuat baris `Origin:` berisi Registration ID pengajuan asal
+
+### Registration Log tidak tersedia dari form Draft
+27. Klik ikon `Edit` pada baris Group `Gudang Log {runId}`
+28. Verifikasi form Edit Draft Group `Gudang Log {runId}` terbuka dengan Quantity `3`
+29. Verifikasi kontrol `Registration Log` tidak tampil pada form Edit Draft
+30. Klik `[Cancel]` pada form; form belum diubah sehingga tidak ada dialog Unsaved Changes

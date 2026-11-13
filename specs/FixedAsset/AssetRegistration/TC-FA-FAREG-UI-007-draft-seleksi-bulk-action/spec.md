@@ -9,7 +9,7 @@ sourceRules: ["§4.1#p5", "§4.8#p5", "§5#r5", "EB-BLK-1@tabel-draft", "EB-BLK-
 smoke: []
 dependsOn: []
 trace:
-  "§4.1#p5": [2, 37]
+  "§4.1#p5": [2, 37, 71]
   "§4.8#p5": [3, 5]
   "§5#r5": [2, 5]
   EB-BLK-1@tabel-draft: [6, 8, 11, 12, 15, 17, 18, 23, 25, 32, 33, 40, 41, 42, 43, 44, 51]
@@ -123,3 +123,7 @@ coverage:
 67. Verifikasi toast `Connection problem. Please try again.`
 68. Verifikasi Bulk Action bar tetap tampil
 69. Verifikasi counter `2 Drafts selected`
+
+### Kolom checkbox menjadi kolom pertama tabel
+70. Tampilkan Sub tab `Draft` (TBL-REG-01) dengan kondisi K2
+71. Verifikasi kolom checkbox adalah kolom pertama pada tabel, sebelum kolom `Group`

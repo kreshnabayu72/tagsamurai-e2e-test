@@ -12,26 +12,26 @@ trace:
   "FAREG-LOGIC-01k": [12, 17]
   "FAREG-LOGIC-01l": [33, 34, 37, 38]
   "FAREG-LOGIC-01m": [10, 14]
-  "FAREG-LOGIC-01p": [76, 78, 79, 83, 86, 88]
-  "FAREG-LOGIC-04a": [31, 39, 63]
-  "FI-REG-01": [47, 48, 57]
-  "FI-REG-02": [69, 70, 71, 72]
-  "FI-REG-03": 62
+  "FAREG-LOGIC-01p": [75, 77, 78, 82, 85, 87]
+  "FAREG-LOGIC-04a": [31, 39, 62]
+  "FI-REG-01": [47, 48, 56]
+  "FI-REG-02": [68, 69, 70, 71]
+  "FI-REG-03": 61
   "FI-REG-04": [37, 38]
   "FI-REG-05": 33
   "FI-REG-06": [6, 31, 39]
-  "FLD-REG-02": [41, 60]
-  "FLD-REG-03": [2, 12]
-  "FLD-REG-04": [4, 16, 17, 18]
+  "FLD-REG-02": [41, 59, 97, 98]
+  "FLD-REG-03": [2, 12, 102, 103]
+  "FLD-REG-04": [4, 16, 17, 18, 108, 109]
   "S-REG-09": 3
   "S-REG-10": 5
   "§4.1#b16": [31, 39]
   "§4.1#b17": [25, 26]
   "§4.1#b18": 41
-  "§4.1#p45": [45, 53, 51]
-  "§9.9#r1": [53, 55, 57, 51, 92, 95]
+  "§4.1#p45": [45, 52]
+  "§9.9#r1": [52, 54, 56, 91, 94]
   "EB-TBL-5@form-register-asset": [3, 5]
-anchor: [91, 94]
+anchor: [90, 93]
 coverage:
   web: automated
 ---
@@ -104,62 +104,84 @@ coverage:
 42. Buka pemilih `Category`
 43. Klik node `Laptop`
 44. Klik `[Select]`
-45. Verifikasi `Category` berisi path penuh `Elektronik > Komputer > Laptop`
+45. Verifikasi `Category` menampilkan badge berisi label node `Laptop`[^drift-1]
 46. Buka dropdown `Asset Name`
 47. Verifikasi opsi `Laptop Dell Latitude 5440` tampil di dropdown `Asset Name`
 48. Verifikasi opsi `Kursi Kerja Ergonomis` tidak tampil di dropdown `Asset Name`
 49. Buka pemilih `Category`
 50. Klik node induk `Elektronik`
-51. Verifikasi checkbox node induk `Elektronik` berstatus Disabled
-52. Klik `[Select]`
-53. Verifikasi `Category` tetap berisi path penuh `Elektronik > Komputer > Laptop`
-54. Kosongkan `Category`
-55. Verifikasi `Category` menampilkan placeholder `Select category`
-56. Buka dropdown `Asset Name`
-57. Verifikasi opsi `Kursi Kerja Ergonomis` tampil kembali di dropdown `Asset Name`
+51. Klik `[Select]`
+52. Verifikasi `Category` tetap menampilkan badge berisi label node `Laptop`[^drift-1]
+53. Kosongkan `Category`
+54. Verifikasi `Category` menampilkan placeholder `Select category`
+55. Buka dropdown `Asset Name`
+56. Verifikasi opsi `Kursi Kerja Ergonomis` tampil kembali di dropdown `Asset Name`
 
 ### Asset Name berupa dropdown master dan mengisi Category otomatis
-58. Tampilkan Halaman `Register Asset` dengan kondisi K1
-59. Ketik `Meja Tidak Terdaftar` pada dropdown `Asset Name`
-60. Verifikasi `Meja Tidak Terdaftar` tidak menjadi nilai `Asset Name`
-61. Pilih `Kursi Kerja Ergonomis` di dropdown `Asset Name`
-62. Verifikasi `Category` terisi otomatis dengan `Furnitur > Kursi`
-63. Verifikasi `TAG Type` menampilkan ikon `QR`
-64. Pilih `Ergotec` di dropdown `Brand`
-65. Pilih `ErgoMesh 200` di dropdown `Model`
-66. Buka pemilih `Category`
-67. Klik node `Laptop`
-68. Klik `[Select]`
-69. Verifikasi `Category` berisi path penuh `Elektronik > Komputer > Laptop`
-70. Verifikasi `Asset Name` menampilkan placeholder `Select asset name`
-71. Verifikasi `Brand` menampilkan placeholder `Select brand`
-72. Verifikasi `Model` menampilkan placeholder `Select model`
+57. Tampilkan Halaman `Register Asset` dengan kondisi K1
+58. Ketik `Meja Tidak Terdaftar` pada dropdown `Asset Name`
+59. Verifikasi `Meja Tidak Terdaftar` tidak menjadi nilai `Asset Name`
+60. Pilih `Kursi Kerja Ergonomis` di dropdown `Asset Name`
+61. Verifikasi `Category` terisi otomatis dengan badge berisi label node `Kursi`[^drift-1]
+62. Verifikasi `TAG Type` menampilkan ikon `QR`
+63. Pilih `Ergotec` di dropdown `Brand`
+64. Pilih `ErgoMesh 200` di dropdown `Model`
+65. Buka pemilih `Category`
+66. Klik node `Laptop`
+67. Klik `[Select]`
+68. Verifikasi `Category` menampilkan badge berisi label node `Laptop`[^drift-1]
+69. Verifikasi `Asset Name` menampilkan placeholder `Select asset name`
+70. Verifikasi `Brand` menampilkan placeholder `Select brand`
+71. Verifikasi `Model` menampilkan placeholder `Select model`
 
 ### Asset Name tanpa Brand terkait dan Category terisi kembali
-73. Tampilkan Halaman `Register Asset` dengan kondisi K1
-74. Pilih `Rak Besi Gudang` di dropdown `Asset Name`
-75. Buka dropdown `Brand`
-76. Verifikasi dropdown `Brand` menampilkan `No brand available`
-77. Kosongkan `Category`
-78. Verifikasi `Category` terisi kembali dengan `Furnitur > Rak`
-79. Verifikasi `Asset Name` tetap `Rak Besi Gudang`
+72. Tampilkan Halaman `Register Asset` dengan kondisi K1
+73. Pilih `Rak Besi Gudang` di dropdown `Asset Name`
+74. Buka dropdown `Brand`
+75. Verifikasi dropdown `Brand` menampilkan `No brand available`
+76. Kosongkan `Category`
+77. Verifikasi `Category` terisi kembali dengan badge berisi label node `Rak`[^drift-1]
+78. Verifikasi `Asset Name` tetap `Rak Besi Gudang`
 
 ### Definisi Custom field Asset Name tidak berubah saat Category dikosongkan
-80. Tampilkan Halaman `Register Asset` dengan kondisi K1
-81. Pilih `Rak Besi Gudang` di dropdown `Asset Name`
-82. Klik tab `Asset`
-83. Verifikasi Item `Rak Besi Gudang` memuat kolom Custom field `Serial Number`
-84. Klik tab `General Information`
-85. Kosongkan `Category`
-86. Verifikasi `Category` terisi kembali dengan `Furnitur > Rak`
-87. Klik tab `Asset`
-88. Verifikasi Item `Rak Besi Gudang` tetap memuat kolom Custom field `Serial Number`
+79. Tampilkan Halaman `Register Asset` dengan kondisi K1
+80. Pilih `Rak Besi Gudang` di dropdown `Asset Name`
+81. Klik tab `Asset`
+82. Verifikasi Item `Rak Besi Gudang` memuat kolom Custom field `Serial Number`
+83. Klik tab `General Information`
+84. Kosongkan `Category`
+85. Verifikasi `Category` terisi kembali dengan badge berisi label node `Rak`[^drift-1]
+86. Klik tab `Asset`
+87. Verifikasi Item `Rak Besi Gudang` tetap memuat kolom Custom field `Serial Number`
 
 ### Category kosong tidak diperiksa saat Submit dan Save draft
-89. Tampilkan Halaman `Register Asset` dengan kondisi K1
-90. Klik `[Submit]`
-91. Verifikasi pesan `Asset Name must not be empty` tampil di bawah sel `Asset Name`
-92. Verifikasi tidak ada pesan error di bawah sel `Category`
-93. Klik `[Save draft]`
-94. Verifikasi field `Group` menampilkan pesan `Group must not be empty`
-95. Verifikasi tidak ada pesan error di bawah sel `Category`
+88. Tampilkan Halaman `Register Asset` dengan kondisi K1
+89. Klik `[Submit]`
+90. Verifikasi pesan `Asset Name must not be empty` tampil di bawah sel `Asset Name`
+91. Verifikasi tidak ada pesan error di bawah sel `Category`
+92. Klik `[Save draft]`
+93. Verifikasi field `Group` menampilkan pesan `Group must not be empty`
+94. Verifikasi tidak ada pesan error di bawah sel `Category`
+
+### Dropdown Asset Name dapat dicari dengan mengetik
+95. Tampilkan Halaman `Register Asset` dengan kondisi K1
+96. Ketik `Kursi` pada dropdown `Asset Name`
+97. Verifikasi opsi `Kursi Kerja Ergonomis` tampil di dropdown `Asset Name`
+98. Verifikasi opsi `Laptop Dell Latitude 5440`, `Printer Epson L3250`, dan `Rak Besi Gudang` tidak tampil di dropdown `Asset Name`
+
+### Dropdown Brand dapat dicari dengan mengetik
+99. Tampilkan Halaman `Register Asset` dengan kondisi K1
+100. Pilih `Laptop Dell Latitude 5440` di dropdown `Asset Name`
+101. Ketik `Len` pada dropdown `Brand`
+102. Verifikasi opsi `Lenovo` tampil di dropdown `Brand`
+103. Verifikasi opsi `Dell` tidak tampil di dropdown `Brand`
+
+### Dropdown Model dapat dicari dengan mengetik
+104. Tampilkan Halaman `Register Asset` dengan kondisi K1
+105. Pilih `Laptop Dell Latitude 5440` di dropdown `Asset Name`
+106. Pilih `Dell` di dropdown `Brand`
+107. Ketik `Insp` pada dropdown `Model`
+108. Verifikasi opsi `Inspiron 15 3530` tampil di dropdown `Model`
+109. Verifikasi opsi `No Model` dan `Latitude 5440` tidak tampil di dropdown `Model`
+
+[^drift-1]: Drift PRD vs kontrak komponen. PRD §4.1 tabel Item, baris Category (`TreeSelect`): format tampil `Path penuh`. Kontrak `TreeSelect#6`: mode single dengan node yang sudah dipilih menampilkan badge berisi LABEL node (bukan key). Diasersi: kontrak, yaitu badge berisi label node (`Laptop`, `Kursi`, `Rak`) dan bukan path penuh.

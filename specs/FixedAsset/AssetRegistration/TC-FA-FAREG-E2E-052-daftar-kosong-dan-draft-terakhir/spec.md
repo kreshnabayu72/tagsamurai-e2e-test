@@ -36,16 +36,16 @@ coverage:
 ### Empty state alami sub tab Draft, Waiting for Approval, dan History
 1. Verifikasi sub tab Draft menampilkan ilustrasi dengan teks `No drafts yet` dan `Get started by creating your first draft.`
 2. Klik sub tab `Waiting for Approval`
-3. Verifikasi sub tab Waiting for Approval menampilkan ilustrasi dengan teks `No requests waiting for approval` dan `Submitted registrations that need a decision will appear here.`
+3. Verifikasi sub tab Waiting for Approval menampilkan judul empty state `No requests waiting for approval` dan deskripsi `Submitted registrations that need a decision will appear here.`
 4. Klik sub tab `History`
-5. Verifikasi sub tab History menampilkan ilustrasi dengan teks `No history yet` dan `Decided or canceled registrations will appear here.`
+5. Verifikasi sub tab History menampilkan judul empty state `No history yet` dan deskripsi `Decided or canceled registrations will appear here.`
 
 ### Empty state alami antrean Approvals
 6. Klik induk menu `Approvals` pada sidebar
 7. Klik anak menu `Registration`
-8. Verifikasi antrean Approvals tab Active menampilkan ilustrasi dengan teks `No pending approvals` dan `You have no pending approval requests at this moment.`
+8. Verifikasi antrean Approvals tab Active menampilkan judul empty state `No pending approvals` dan deskripsi `You have no pending approval requests at this moment.`
 9. Klik tab `History`
-10. Verifikasi antrean Approvals tab History menampilkan ilustrasi dengan teks `No history yet` dan `Decided or canceled registrations will appear here.`
+10. Verifikasi antrean Approvals tab History menampilkan judul empty state `No history yet` dan deskripsi `Decided or canceled registrations will appear here.`
 
 ### Draft pertama mengubah daftar dari nol menjadi satu
 11. Klik menu `Registration` pada sidebar Assets

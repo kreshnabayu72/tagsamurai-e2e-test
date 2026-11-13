@@ -21,7 +21,7 @@ trace:
   FAREG-LOGIC-07i: [88, 89, 94, 98, 100, 103, 105, 110]
   FAREG-LOGIC-15e: 41
   FAREG-LOGIC-17c: [6, 18]
-  FI-REG-19: [134, 138, 144, 146, 158, 160]
+  FI-REG-19: [134, 138, 144, 146, 158, 160, 247, 249]
   FI-REG-20: [123, 124, 128, 129]
   FI-REG-21: [221, 222, 224, 225]
   FI-REG-22: [47, 48, 49, 63]
@@ -160,7 +160,7 @@ coverage:
 67. Tampilkan Halaman Approval dengan kondisi K1
 68. Klik Badge Corrections `1` pada baris `Laptop - 129`
 69. Verifikasi dialog `Corrections` untuk aset `Laptop - 129` terbuka
-70. Verifikasi baris di bawah judul dialog memuat `Laptop - 129`
+70. Verifikasi dialog `Corrections` menampilkan nama aset `Laptop - 129`
 71. Verifikasi tabel memuat kolom `Field`, `Old Value`, dan `New Value`
 72. Verifikasi tabel memuat Field `Model` dengan Old Value `Latitude 5440` dan New Value `Latitude 5450`
 73. Verifikasi dialog memuat tombol `[Close]`
@@ -378,3 +378,13 @@ coverage:
 239. Verifikasi Photo, Alias Name `Laptop Kasir, Laptop Cadangan`, dan Asset labels `Aset Kantor` dan `Prioritas` tampil sebagai data read-only, tidak ada field input untuk ketiganya
 240. Verifikasi Photo, Alias Name, dan Asset labels berada di atas field koreksi `Brand`
 241. Verifikasi data read-only tidak memiliki judul blok
+
+### Row option Edit pada aset lain dengan isian belum disimpan memunculkan dialog Unsaved Changes
+242. Tampilkan Halaman Approval dengan kondisi K1
+243. Klik nama `Laptop - 128`
+244. Pilih Brand `Lenovo`
+245. Klik row option (titik tiga) pada baris `Laptop - 130`
+246. Klik `Edit`
+247. Verifikasi dialog `Unsaved Changes` tampil
+248. Klik `[Leave]` pada dialog `Unsaved Changes`
+249. Verifikasi panel menampilkan Custom field `Serial Number` bernilai `SN-130-0001`

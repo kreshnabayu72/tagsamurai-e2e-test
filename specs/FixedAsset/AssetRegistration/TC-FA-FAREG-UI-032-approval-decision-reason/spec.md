@@ -17,9 +17,9 @@ trace:
   §4.1#r7: [26, 28, 30, 32, 70]
   §4.2.4#b4: [2, 4, 18, 72]
   §4.2.4#b5: [8, 10, 11, 13]
-  §9.9#r19: [31, 33, 39, 45, 49, 53, 57, 64]
+  §9.9#r19: [31, 33, 39, 45, 49, 53, 57, 64, 76, 77]
   §9.9#r20: [6, 8, 10, 13]
-  EB-FRM-4@reason: [45, 49, 53, 57]
+  EB-FRM-4@reason: [45, 49, 53, 57, 76, 77]
 anchor: [38, 63]
 coverage:
   web: automated
@@ -136,3 +136,10 @@ coverage:
 ### Kolom Reason berada di sebelah kanan kolom Decision
 71. Tampilkan Halaman Approval dengan kondisi K1
 72. Verifikasi kolom `Reason` berada di sebelah kanan kolom `Decision`
+
+### Reason berisi emoji diterima utuh
+73. Tampilkan Halaman Approval dengan kondisi K1
+74. Pilih Decision `Return to Draft` pada baris `Laptop - 130`
+75. Isi Reason pada baris `Laptop - 130` dengan `Foto aset buram 😊🔥`
+76. Verifikasi Reason pada baris `Laptop - 130` menampilkan `Foto aset buram 😊🔥`
+77. Verifikasi tidak ada pesan error pada Reason baris `Laptop - 130`

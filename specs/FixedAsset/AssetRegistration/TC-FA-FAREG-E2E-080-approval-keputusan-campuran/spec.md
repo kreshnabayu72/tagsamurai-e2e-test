@@ -11,7 +11,7 @@ dependsOn: []
 trace:
   FAREG-LOGIC-06f: [31, 41]
   FAREG-LOGIC-06g: [32, 36, 37, 45]
-  FAREG-LOGIC-06n: [41, 42, 44, 45, 46, 47, 48]
+  FAREG-LOGIC-06n: [41, 42, 44, 45, 46, 47, 48, 57, 58]
   "§9.2#p24": 9
   "§9.2#p26": [30, 31, 32]
   "§9.2#p28": 26
@@ -40,8 +40,11 @@ coverage:
   - DU-080-6: Hadi K (Manage asset & TAG, Group terkelola `Gudang Campuran {runId}`), pengaju.
   - DU-080-7: batch Draft pembanding milik Hadi K di Group `Gudang Campuran {runId}`, Total Asset `1`.
   - DU-080-8: keputusan yang diisi langkah: Return to Draft dengan Reason `Photo is missing` dan `Quantity is wrong`; Reject dengan Reason `Duplicate entry`.
+  - Requested By yang diharapkan pada pengajuan hasil Submit Budi S atas batch kembalian `Hadi K`, dari Owner batch kembalian milik Hadi K (DU-080-6); Total Asset `5`.
 - Kondisi:
   - Group `Gudang Campuran {runId}` ber-toggle `Require Approval for Registration` ON.
+  - Himpunan approver eligible pada node Group `Gudang Campuran {runId}` berisi Budi S dan Total Control, sehingga pengajuan hasil Submit Budi S masuk Waiting for Approval.
+  - Seluruh aset batch Draft kembalian memenuhi Tingkat 2 dan kuota Group cukup.
 
 ## Test Steps
 
@@ -102,3 +105,13 @@ coverage:
 48. Verifikasi Item `Office Desk` berada sebelum Item `Laptop` pada tabel Item, mengikuti urutan Item pada pengajuan asal
 49. Verifikasi `Remaining Quota` pada form bertambah `10` dari nilai yang dicatat sebelum keputusan
 50. Klik `[Cancel]` pada form; form belum diubah sehingga tidak ada dialog Unsaved Changes
+
+### Submit batch kembalian oleh role lain tidak mengubah Owner
+51. Ketik Search `{runId}`, tekan Enter
+52. Klik ikon `Edit` pada baris Group `Gudang Campuran {runId}` dengan Total Asset `5`
+53. Klik `[Submit]`
+54. Klik `[Submit for Approval]`
+55. Klik sub tab `Waiting for Approval`
+56. Ketik Search `{runId}`, tekan Enter
+57. Verifikasi baris pengajuan Group `Gudang Campuran {runId}` dengan Total Asset `5` tampil di sub tab `Waiting for Approval`
+58. Verifikasi baris pengajuan itu memiliki Requested By `Hadi K`, sehingga Owner batch kembalian tidak berubah oleh Submit Budi S

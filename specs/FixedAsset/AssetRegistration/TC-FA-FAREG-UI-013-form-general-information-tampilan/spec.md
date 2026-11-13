@@ -20,25 +20,25 @@ trace:
   "§4.1#b11": [10, 11, 35]
   "§4.1#b13": 7
   "§4.1#b14": [13, 17, 89, 90]
-  "§4.1#b15": [61, 72]
+  "§4.1#b15": 61
   "§4.1#b19": 63
   "§4.1#b31": 10
   "§4.1#b33": 12
-  "§4.1#p26": [55, 56, 57, 58, 59, 61]
+  "§4.1#p26": [55, 56, 57, 58, 59, 61, 95, 97]
   "§4.1#r90": 38
   "§4.1#r91": 39
   "§4.1#r92": 40
   "§4.1#r93": [41, 42]
   "§4.1#r94": [43, 44]
   "§4.1#r95": [45, 46, 92, 93]
-  "§4.1#r96": [47, 48]
+  "§4.1#r96": [47, 48, 72, 73]
   "§4.1#r97": [50, 51]
   "§4.1#p42": [21, 26, 30]
   "§4.2#p1": [3, 4, 5, 8, 86, 87]
   "§4.2.1#p1": [2, 32, 76, 33]
   "§9.2#p14": 67
   "§9.4.3#b11": [66, 77, 80, 83]
-  EB-FRM-7@form-register-asset: [69, 70, 73]
+  EB-FRM-7@form-register-asset: [69, 70]
 anchor: [53, 65, 75, 79, 82, 85]
 coverage:
   web: automated
@@ -57,6 +57,7 @@ coverage:
   - DU-013-4: Group `Gudang Excess Pusat`, anak dari `Kantor Pusat`, Assignable `Ya`, Excess `Ya`.
   - DU-013-5: Item draft 1, Category `Elektronik > Komputer > Laptop`, Asset Name `Laptop Dell Latitude 5440`, Brand `Dell`, Model `Latitude 5440`, TAG Type `RFID`, Quantity `10`.
   - DU-013-6: Item draft 2, Category `Furnitur > Kursi`, Asset Name `Kursi Kerja Ergonomis`, Brand `Ergotec`, Model `ErgoMesh 200`, TAG Type `QR`, Quantity `20`.
+  - Judul tab `Asset` pada K2 adalah `Asset (30)`, dari Quantity `10` ditambah `20`; sesudah Quantity Item pertama diganti `5` menjadi `Asset (25)`, dari `5` ditambah `20`.
 - Kondisi:
   - K1: form `Register Asset` baru tanpa draft tersimpan; Group belum dipilih; tabel Item berisi satu Item dengan Quantity awal; pohon Group berisi DU-013-1 sampai DU-013-4.
   - K2: form `Edit` draft tersimpan dengan Group DU-013-2; tabel Item berisi DU-013-5 lalu DU-013-6 berurutan.
@@ -147,13 +148,13 @@ coverage:
 66. Verifikasi tidak ada field Purchase di tab `General Information`
 67. Verifikasi tidak ada field `Project` di tab `General Information`
 
-### Aksesibilitas field dan pesan error di bawah sel
+### Aksesibilitas field dan Quantity di luar rentang dijepit ke batas
 68. Tampilkan Halaman `Register Asset` dengan kondisi K1
 69. Verifikasi field `Group`, `Asset Name`, `Brand`, dan `Model` memiliki atribut aria-required
 70. Verifikasi kontrol row option (titik tiga) memiliki label aksesibel
-71. Ganti isi sel `Quantity` Item pertama dengan `0`
-72. Verifikasi pesan error tampil di bawah sel `Quantity`
-73. Verifikasi sel `Quantity` yang menampilkan pesan error memiliki atribut aria-describedby
+71. Ganti isi sel `Quantity` Item pertama dengan `0`, tekan Enter
+72. Verifikasi nilai `0` yang diketik pada sel `Quantity` Item pertama dijepit ke batas bawah `1`[^drift-1]
+73. Verifikasi tidak ada pesan rentang di bawah sel `Quantity`[^drift-1]
 
 ### Breadcrumb mode Detail dan field Purchase tidak ada bagi Manage purchase
 74. Tampilkan Halaman `Register Asset` dengan kondisi K3
@@ -186,3 +187,11 @@ coverage:
 91. Tampilkan Halaman `Register Asset` dengan kondisi K2
 92. Verifikasi tooltip `RFID` tampil saat pointer berada di ikon `TAG Type` Item `Laptop Dell Latitude 5440`
 93. Verifikasi tooltip `QR` tampil saat pointer berada di ikon `TAG Type` Item `Kursi Kerja Ergonomis`
+
+### Perubahan sel Quantity langsung tercermin di judul tab Asset
+94. Tampilkan Halaman `Register Asset` dengan kondisi K2
+95. Verifikasi judul tab `Asset (30)` sebelum Quantity diganti
+96. Ganti isi sel `Quantity` Item pertama dengan `5`, tekan Enter
+97. Verifikasi judul tab `Asset` berubah menjadi `Asset (25)` tanpa mengklik `[Save draft]`
+
+[^drift-1]: Drift PRD vs kontrak komponen. PRD V-REG-10 dan §9.9 baris Quantity: nilai di luar rentang 1 sampai [Max] memunculkan pesan `Quantity must be between 1 and [Max]` dengan timing Langsung. Kontrak `NumberInput#1`: `min` dan `max` adalah rentang, dan saat blur atau Enter nilai dijepit ke batas terdekat (`-7` menjadi `0`, di atas `max` menjadi `max`). Kontrak `NumberInput#15`: tidak ada pesan rentang dan tidak ada keadaan invalid untuk nilai di luar `min`/`max`, hanya dijepit. Diasersi: kontrak, yaitu nilai `0` dijepit ke batas bawah `1` tanpa pesan rentang di bawah sel.

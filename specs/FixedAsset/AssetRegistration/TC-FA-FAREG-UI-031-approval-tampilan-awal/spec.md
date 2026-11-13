@@ -9,29 +9,29 @@ sourceRules: [FAREG-LOGIC-06d, §4.1#r14, §4.1#p31, §4.1#r109, §4.1#r110, §4
 smoke: []
 dependsOn: []
 trace:
-  FAREG-LOGIC-06d: 85
+  FAREG-LOGIC-06d: 82
   §4.1#r14: [2, 3, 4]
-  §4.1#p31: [36, 38, 39]
-  §4.1#r109: 41
-  §4.1#r110: [34, 35]
-  §4.1#r111: [42, 44]
-  §4.1#r112: [46, 48]
-  §4.1#r113: [50, 52]
-  §4.1#r114: [53, 55, 56]
-  §4.1#r115: [58, 60]
-  §4.1#r116: [62, 63, 65, 66, 68, 69]
-  §4.1#r117: [78, 79]
-  §4.1#r118: [80, 81, 83]
-  §4.1#r119: [85, 86, 89]
-  §4.1#r120: 87
-  §4.1#r121: [92, 94]
-  §4.2#p1: [7, 8, 9, 10, 11]
+  §4.1#p31: [33, 35, 36]
+  §4.1#r109: 38
+  §4.1#r110: [31, 32]
+  §4.1#r111: [39, 41]
+  §4.1#r112: [43, 45]
+  §4.1#r113: [47, 49]
+  §4.1#r114: [50, 52, 53]
+  §4.1#r115: [55, 57]
+  §4.1#r116: [59, 60, 62, 63, 65, 66]
+  §4.1#r117: [75, 76]
+  §4.1#r118: [77, 78, 80]
+  §4.1#r119: [82, 83, 86]
+  §4.1#r120: 84
+  §4.1#r121: [89, 91]
+  §4.2#p1: 8
   §4.2.4#p1: [2, 3, 5]
-  §4.2.4#p2: [13, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 27, 28, 29, 30, 31, 32, 96, 97]
-  §4.2.4#b1: [62, 63, 65, 66, 68, 69, 72, 76]
-  §4.2.4#b2: [46, 48]
-  §4.2.5#r3: 13
-anchor: [71, 75]
+  §4.2.4#p2: [10, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 93]
+  §4.2.4#b1: [59, 60, 62, 63, 65, 66, 69, 73]
+  §4.2.4#b2: [43, 45]
+  §4.2.5#r3: 10
+anchor: [7, 68, 72]
 coverage:
   web: automated
 ---
@@ -52,8 +52,8 @@ coverage:
   - DU-031-7: aset Name `Office Desk - 21`, Category `Furniture`, Brand `Kayu Jati`, Model `No Model`, Group `Gudang 2`, TAG `No tag`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-031-8: aset Name `Office Desk - 22`, Category `Furniture`, Brand `Kayu Jati`, Model `No Model`, Group `Gudang 2`, TAG `No tag`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
 - Kondisi:
-  - K1: pengajuan DU-031-1 berisi aset DU-031-2 sampai DU-031-4 dalam grup Accordion `Laptop` dan DU-031-5 dalam grup Accordion `Office Desk`, dengan Decision awal dan tanpa Reason, serta Date Format `dd/MM/yy` diikuti Time Format 24 jam.
-  - K2: pengajuan DU-031-6 berisi aset DU-031-7 dan DU-031-8 dalam grup Accordion `Office Desk`, semuanya aset Non TAG.
+  - K1: pengajuan DU-031-1 berisi aset DU-031-2 sampai DU-031-4 dalam grup Accordion `Laptop` dan DU-031-5 dalam grup Accordion `Office Desk`, kedua grup dalam keadaan terbuka bersamaan, dengan Decision awal dan tanpa Reason, serta Date Format `dd/MM/yy` diikuti Time Format 24 jam.
+  - K2: pengajuan DU-031-6 berisi aset DU-031-7 dan DU-031-8 dalam grup Accordion `Office Desk` yang dalam keadaan terbuka, semuanya aset Non TAG.
 
 ## Test Steps
 
@@ -64,127 +64,123 @@ coverage:
 4. Verifikasi tabel aset memuat kolom `Decision`
 5. Verifikasi kolom `Category`, `Brand`, `Model`, `Group`, `TAG`, dan `Condition` tampil sebagai teks atau Badge statis tanpa input
 
-### Struktur halaman Approval mengikuti SectionCard
+### Halaman Approval tanpa sidebar tree Group
 6. Tampilkan Halaman Approval dengan kondisi K1
-7. Verifikasi konten Halaman Approval dibungkus `SectionCard`
-8. Verifikasi Breadcrumb tampil di luar `SectionCard` mana pun
-9. Verifikasi tidak ada Page Title Header terpisah di antara Breadcrumb dan `SectionCard`
-10. Verifikasi `SectionCard` tidak memiliki kontrol untuk membuka atau menutup isinya
-11. Verifikasi tidak ada sidebar tree Group
+7. Verifikasi judul memuat Registration ID `REG-20261109-00003`
+8. Verifikasi tidak ada sidebar tree Group
 
 ### Breadcrumb Halaman Approval
-12. Tampilkan Halaman Approval dengan kondisi K1
-13. Verifikasi Breadcrumb tampil berurutan `Approvals`, `Registration`, `Active`, `Review`
+9. Tampilkan Halaman Approval dengan kondisi K1
+10. Verifikasi Breadcrumb tampil berurutan `Approvals`, `Registration`, `Active`, `Review`
 
 ### Judul dan info pengajuan
-14. Tampilkan Halaman Approval dengan kondisi K1
-15. Verifikasi judul memuat Registration ID `REG-20261109-00003`
-16. Verifikasi judul memuat ikon copy di samping Registration ID
-17. Verifikasi judul memuat Badge status `Waiting for Approval`
-18. Verifikasi header memuat `Submitted At` `09/11/26, 10:20`
-19. Verifikasi info memuat label `Group`
-20. Verifikasi info memuat Badge Group `Gudang 1`
-21. Verifikasi info memuat label `Requested By`
-22. Verifikasi info memuat ikon user dan Nama singkat `Rina W`
-23. Arahkan kursor ke Nama singkat `Rina W`
-24. Verifikasi tooltip menampilkan nama lengkap `Rina Wulandari`
-25. Verifikasi info memuat label `Total Asset` dengan nilai `4`
+11. Tampilkan Halaman Approval dengan kondisi K1
+12. Verifikasi judul memuat Registration ID `REG-20261109-00003`
+13. Verifikasi judul memuat ikon copy di samping Registration ID
+14. Verifikasi judul memuat Badge status `Waiting for Approval`
+15. Verifikasi header memuat `Submitted At` `09/11/26, 10:20`
+16. Verifikasi info memuat label `Group`
+17. Verifikasi info memuat Badge Group `Gudang 1`
+18. Verifikasi info memuat label `Requested By`
+19. Verifikasi info memuat Nama singkat `Rina W`
+20. Arahkan kursor ke Nama singkat `Rina W`
+21. Verifikasi tooltip menampilkan nama lengkap `Rina Wulandari`
+22. Verifikasi info memuat label `Total Asset` dengan nilai `4`
 
 ### Accordion per Asset Name
-26. Tampilkan Halaman Approval dengan kondisi K1
-27. Verifikasi judul Accordion memuat Asset Name `Laptop`
-28. Verifikasi judul Accordion `Laptop` memuat jumlah aset `3`
-29. Verifikasi judul Accordion memuat Asset Name `Office Desk`
-30. Verifikasi judul Accordion `Office Desk` memuat jumlah aset `1`
-31. Verifikasi Accordion tidak memiliki kotak Search
-32. Verifikasi Accordion tidak memiliki Filter
+23. Tampilkan Halaman Approval dengan kondisi K1
+24. Verifikasi judul Accordion memuat Asset Name `Laptop`
+25. Verifikasi judul Accordion `Laptop` memuat jumlah aset `3`
+26. Verifikasi judul Accordion memuat Asset Name `Office Desk`
+27. Verifikasi judul Accordion `Office Desk` memuat jumlah aset `1`
+28. Verifikasi Accordion tidak memiliki kotak Search
+29. Verifikasi Accordion tidak memiliki Filter
 
 ### Urutan aset mengikuti kolom # dan tidak dapat diurutkan
-33. Tampilkan Halaman Approval dengan kondisi K1
-34. Verifikasi kolom `#` pada grup `Laptop` bernilai `1`, `2`, `3` berurutan
-35. Verifikasi kolom `#` pada grup `Office Desk` dimulai dari `1`
-36. Verifikasi urutan baris grup `Laptop` adalah `Laptop - 128`, `Laptop - 129`, `Laptop - 130`
-37. Klik header kolom `Condition` pada grup `Laptop`
-38. Verifikasi urutan baris grup `Laptop` tetap `Laptop - 128`, `Laptop - 129`, `Laptop - 130`
-39. Verifikasi header kolom `Condition` tidak menampilkan indikator sort
+30. Tampilkan Halaman Approval dengan kondisi K1
+31. Verifikasi kolom `#` pada grup `Laptop` bernilai `1`, `2`, `3` berurutan
+32. Verifikasi kolom `#` pada grup `Office Desk` dimulai dari `1`
+33. Verifikasi urutan baris grup `Laptop` adalah `Laptop - 128`, `Laptop - 129`, `Laptop - 130`
+34. Klik header kolom `Condition` pada grup `Laptop`
+35. Verifikasi urutan baris grup `Laptop` tetap `Laptop - 128`, `Laptop - 129`, `Laptop - 130`
+36. Verifikasi header kolom `Condition` tidak menampilkan indikator sort
 
 ### Kolom Checkbox dan Name
-40. Tampilkan Halaman Approval dengan kondisi K1
-41. Verifikasi baris `Laptop - 128` memiliki checkbox pemilihan
-42. Verifikasi nama `Laptop - 128` tampil sebagai link
-43. Klik nama `Laptop - 128`
-44. Verifikasi panel koreksi terbuka
+37. Tampilkan Halaman Approval dengan kondisi K1
+38. Verifikasi baris `Laptop - 128` memiliki checkbox pemilihan
+39. Verifikasi nama `Laptop - 128` tampil sebagai link
+40. Klik nama `Laptop - 128`
+41. Verifikasi panel koreksi terbuka
 
 ### Kolom Category
-45. Tampilkan Halaman Approval dengan kondisi K1
-46. Verifikasi baris `Laptop - 128` menampilkan Badge Category `Computers`
-47. Arahkan kursor ke Badge Category `Computers` pada baris `Laptop - 128`
-48. Verifikasi tooltip menampilkan path lengkap `Electronics > Computers`
+42. Tampilkan Halaman Approval dengan kondisi K1
+43. Verifikasi baris `Laptop - 128` menampilkan Badge Category `Computers`
+44. Arahkan kursor ke Badge Category `Computers` pada baris `Laptop - 128`
+45. Verifikasi tooltip menampilkan path lengkap `Electronics > Computers`
 
 ### Kolom Brand dan Model
-49. Tampilkan Halaman Approval dengan kondisi K1
-50. Verifikasi baris `Laptop - 128` menampilkan Badge Brand `Dell`
-51. Arahkan kursor ke Badge Brand `Dell` pada baris `Laptop - 128`
-52. Verifikasi tooltip menampilkan nama Brand penuh `Dell`
-53. Verifikasi baris `Laptop - 128` menampilkan Badge Model `Latitude 5440`
-54. Arahkan kursor ke Badge Model `Latitude 5440` pada baris `Laptop - 128`
-55. Verifikasi tooltip menampilkan nama Model penuh `Latitude 5440`
-56. Verifikasi baris `Office Desk - 12` menampilkan Badge Model `No Model`
+46. Tampilkan Halaman Approval dengan kondisi K1
+47. Verifikasi baris `Laptop - 128` menampilkan Badge Brand `Dell`
+48. Arahkan kursor ke Badge Brand `Dell` pada baris `Laptop - 128`
+49. Verifikasi tooltip menampilkan nama Brand penuh `Dell`
+50. Verifikasi baris `Laptop - 128` menampilkan Badge Model `Latitude 5440`
+51. Arahkan kursor ke Badge Model `Latitude 5440` pada baris `Laptop - 128`
+52. Verifikasi tooltip menampilkan nama Model penuh `Latitude 5440`
+53. Verifikasi baris `Office Desk - 12` menampilkan Badge Model `No Model`
 
 ### Kolom Group
-57. Tampilkan Halaman Approval dengan kondisi K1
-58. Verifikasi baris `Laptop - 128` menampilkan Badge Group `Gudang 1`
-59. Arahkan kursor ke Badge Group `Gudang 1` pada baris `Laptop - 128`
-60. Verifikasi tooltip menampilkan path penuh Group `PT Sinar Mandiri > Cabang A > Gudang 1`
+54. Tampilkan Halaman Approval dengan kondisi K1
+55. Verifikasi baris `Laptop - 128` menampilkan Badge Group `Gudang 1`
+56. Arahkan kursor ke Badge Group `Gudang 1` pada baris `Laptop - 128`
+57. Verifikasi tooltip menampilkan path penuh Group `PT Sinar Mandiri > Cabang A > Gudang 1`
 
 ### Kolom TAG pada pengajuan campuran
-61. Tampilkan Halaman Approval dengan kondisi K1
-62. Verifikasi tabel aset memuat kolom `TAG`
-63. Verifikasi baris `Laptop - 128` menampilkan Badge TAG `Verified`
-64. Arahkan kursor ke Badge TAG `Verified` pada baris `Laptop - 128`
-65. Verifikasi tooltip menampilkan kode Tag `E28011700000020C5A3B1F01`
-66. Verifikasi baris `Laptop - 129` menampilkan Badge TAG `Skipped`
-67. Arahkan kursor ke Badge TAG `Skipped` pada baris `Laptop - 129`
-68. Verifikasi tooltip menampilkan alasan skip `TAG damaged`
-69. Verifikasi baris `Office Desk - 12` menampilkan `No tag` di kolom `TAG`
+58. Tampilkan Halaman Approval dengan kondisi K1
+59. Verifikasi tabel aset memuat kolom `TAG`
+60. Verifikasi baris `Laptop - 128` menampilkan Badge TAG `Verified`
+61. Arahkan kursor ke Badge TAG `Verified` pada baris `Laptop - 128`
+62. Verifikasi tooltip menampilkan kode Tag `E28011700000020C5A3B1F01`
+63. Verifikasi baris `Laptop - 129` menampilkan Badge TAG `Skipped`
+64. Arahkan kursor ke Badge TAG `Skipped` pada baris `Laptop - 129`
+65. Verifikasi tooltip menampilkan alasan skip `TAG damaged`
+66. Verifikasi baris `Office Desk - 12` menampilkan `No tag` di kolom `TAG`
 
 ### Kolom TAG tidak tampil bila semua aset Non TAG
-70. Tampilkan Halaman Approval dengan kondisi K2
-71. Verifikasi tabel aset memuat baris `Office Desk - 21`
-72. Verifikasi tabel aset tidak memuat kolom `TAG`
+67. Tampilkan Halaman Approval dengan kondisi K2
+68. Verifikasi tabel aset memuat baris `Office Desk - 21`
+69. Verifikasi tabel aset tidak memuat kolom `TAG`
 
 ### Tag bukan field koreksi
-73. Tampilkan Halaman Approval dengan kondisi K1
-74. Klik nama `Laptop - 128`
-75. Verifikasi panel koreksi terbuka
-76. Verifikasi panel koreksi tidak memuat field `TAG`
+70. Tampilkan Halaman Approval dengan kondisi K1
+71. Klik nama `Laptop - 128`
+72. Verifikasi panel koreksi terbuka
+73. Verifikasi panel koreksi tidak memuat field `TAG`
 
 ### Kolom Condition dan Corrections
-77. Tampilkan Halaman Approval dengan kondisi K1
-78. Verifikasi baris `Laptop - 128` menampilkan Condition `Normal`
-79. Verifikasi baris `Laptop - 129` menampilkan Condition `Damaged`
-80. Verifikasi baris `Laptop - 129` menampilkan Badge Corrections `1`
-81. Verifikasi baris `Laptop - 128` menampilkan `—` di kolom `Corrections`
-82. Klik Badge Corrections `1` pada baris `Laptop - 129`
-83. Verifikasi dialog `Corrections` terbuka
+74. Tampilkan Halaman Approval dengan kondisi K1
+75. Verifikasi baris `Laptop - 128` menampilkan Condition `Normal`
+76. Verifikasi baris `Laptop - 129` menampilkan Condition `Damaged`
+77. Verifikasi baris `Laptop - 129` menampilkan Badge Corrections `1`
+78. Verifikasi baris `Laptop - 128` menampilkan `—` di kolom `Corrections`
+79. Klik Badge Corrections `1` pada baris `Laptop - 129`
+80. Verifikasi dialog `Corrections` terbuka
 
 ### Decision dan Reason pada keadaan awal
-84. Tampilkan Halaman Approval dengan kondisi K1
-85. Verifikasi Decision setiap baris aset bernilai `Approve`
-86. Verifikasi Decision tidak menampilkan placeholder
-87. Verifikasi Reason setiap baris aset kosong
-88. Klik Decision pada baris `Laptop - 128`
-89. Verifikasi pilihan Decision `Approve`, `Return to Draft`, dan `Reject` tampil
+81. Tampilkan Halaman Approval dengan kondisi K1
+82. Verifikasi Decision setiap baris aset bernilai `Approve`
+83. Verifikasi Decision tidak menampilkan placeholder
+84. Verifikasi Reason setiap baris aset kosong
+85. Klik Decision pada baris `Laptop - 128`
+86. Verifikasi pilihan Decision `Approve`, `Return to Draft`, dan `Reject` tampil
 
 ### Row option Edit membuka panel koreksi
-90. Tampilkan Halaman Approval dengan kondisi K1
-91. Klik row option (titik tiga) pada baris `Laptop - 128`
-92. Verifikasi pilihan `Edit` tersedia
-93. Klik `Edit`
-94. Verifikasi panel koreksi terbuka
+87. Tampilkan Halaman Approval dengan kondisi K1
+88. Klik row option (titik tiga) pada baris `Laptop - 128`
+89. Verifikasi pilihan `Edit` tersedia
+90. Klik `Edit`
+91. Verifikasi panel koreksi terbuka
 
-### Registration ID berformat dan Submitted At rata kanan
-95. Tampilkan Halaman Approval dengan kondisi K1
-96. Verifikasi Registration ID `REG-20261109-00003` pada judul berformat `REG-YYYYMMDD-NNNNN`
-97. Verifikasi `Submitted At` pada judul tampil rata kanan
+### Registration ID berformat
+92. Tampilkan Halaman Approval dengan kondisi K1
+93. Verifikasi Registration ID `REG-20261109-00003` pada judul berformat `REG-YYYYMMDD-NNNNN`
 

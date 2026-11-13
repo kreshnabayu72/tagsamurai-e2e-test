@@ -9,24 +9,24 @@ sourceRules: [F-FAREG-05.k1, FAREG-LOGIC-05a, FAREG-LOGIC-05g, FAREG-LOGIC-05i, 
 smoke: [FAREG-LOGIC-05n, D-REG-08, V-REG-17]
 dependsOn: ["License: kuota Group"]
 trace:
-  F-FAREG-05.k1: [15, 30, 50]
-  FAREG-LOGIC-05a: [15, 50]
-  FAREG-LOGIC-05g: [10, 15]
-  FAREG-LOGIC-05i: [10, 20, 23, 27]
-  §9.2#p33: 8
-  §9.2#p35: 12
-  §9.2#p37: 15
-  §9.2#p38: [15, 20]
-  §9.2#p39: [17, 20]
-  §9.4.2#r3: [8, 10, 15, 83, 84, 85, 97]
-  §9.4.2#r9: [15, 50]
-  §9.4.2#r11: [15, 20]
-  EB-CON-4: [30, 36]
-  EB-XM-2@license: [40, 46, 56, 62, 67, 90]
-  FAREG-LOGIC-05n: [12, 14]
-  D-REG-08: [14, 15, 50]
-  V-REG-17: 8
-anchor: [89]
+  F-FAREG-05.k1: [14, 29, 48]
+  FAREG-LOGIC-05a: [14, 48]
+  FAREG-LOGIC-05g: [9, 14]
+  FAREG-LOGIC-05i: [9, 19, 22, 26]
+  §9.2#p33: 7
+  §9.2#p35: 11
+  §9.2#p37: 14
+  §9.2#p38: [14, 19]
+  §9.2#p39: [16, 19]
+  §9.4.2#r3: [7, 9, 14, 79, 80, 81, 92]
+  §9.4.2#r9: [14, 48]
+  §9.4.2#r11: [14, 19]
+  EB-CON-4: [29, 35]
+  EB-XM-2@license: [39, 44, 54, 59, 64, 86]
+  FAREG-LOGIC-05n: [11, 13]
+  D-REG-08: [13, 14, 48]
+  V-REG-17: 7
+anchor: [85]
 coverage:
   web: automated
 ---
@@ -61,114 +61,109 @@ coverage:
 ### Quantity melebihi sisa kuota Group langsung diberi pesan
 1. Klik `[+ Register Asset]`
 2. Pilih Group `Gudang Kuota {runId}`
-3. Klik `[+ Asset Name]`
-4. Pilih Asset Name `Meja Kuota {runId}`
-5. Pilih Brand `Ergotec`
-6. Pilih Model `No Model`
-7. Isi Quantity `10`
-8. Verifikasi error pada Quantity `Only 8 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
+3. Pilih Asset Name `Meja Kuota {runId}` pada Item pertama
+4. Pilih Brand `Ergotec`
+5. Pilih Model `No Model`
+6. Isi Quantity `10`
+7. Verifikasi error pada Quantity `Only 8 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
 
 ### Save draft tetap berjalan dan Activate ditolak seluruhnya
-9. Klik `[Save draft]`
-10. Verifikasi toast `Success, draft has been saved.`
-11. Klik `[Submit]`
-12. Verifikasi dialog konfirmasi tampil lebih dulu dengan `Are you sure you want to activate it?`
-13. Klik `[Activate]`
-14. Verifikasi judul dialog `Cannot Activate` dan tombol `[OK]` tampil
-15. Verifikasi dialog memuat `Group quota exceeded. Available slots: 8. Please contact administrator to increase quota.`
-16. Klik `[OK]`
-17. Verifikasi `Remaining Quota: 8` tetap tampil di samping field Group
+8. Klik `[Save draft]`
+9. Verifikasi toast `Success, draft has been saved.`
+10. Klik `[Submit]`
+11. Verifikasi dialog konfirmasi tampil lebih dulu dengan `Are you sure you want to activate it?`
+12. Klik `[Activate]`
+13. Verifikasi judul dialog `Cannot Activate` dan tombol `[OK]` tampil
+14. Verifikasi dialog memuat `Group quota exceeded. Available slots: 8. Please contact administrator to increase quota.`
+15. Klik `[OK]`
+16. Verifikasi `Remaining Quota: 8` tetap tampil di samping field Group
 
 ### Draft tetap dapat dibaca dan diekspor saat kuota tidak cukup
-18. Klik `[Cancel]`
-19. Ketik Search `Gudang Kuota {runId}`, tekan Enter
-20. Verifikasi baris batch `Gudang Kuota {runId}` tetap di sub tab Draft dengan Total Asset `10`
-21. Klik `[Download]`
-22. Pilih `Download as CSV`
-23. Verifikasi berkas `Registration-Drafts` terunduh
+17. Klik `[Cancel]`
+18. Ketik Search `Gudang Kuota {runId}`, tekan Enter
+19. Verifikasi baris batch `Gudang Kuota {runId}` tetap di sub tab Draft dengan Total Asset `10`
+20. Klik `[Download]`
+21. Pilih `Download as CSV`
+22. Verifikasi berkas `Registration-Drafts` terunduh
 
 ### Aset ke-N diterima dan ke-N+1 ditolak
-24. Klik row action `Edit` pada baris batch `Gudang Kuota {runId}`
-25. Ganti Quantity menjadi `9`
-26. Klik `[Save draft]`
-27. Verifikasi toast `Success, draft has been saved.`
-28. Klik `[Submit]`
-29. Klik `[Activate]`
-30. Verifikasi dialog memuat `Group quota exceeded. Available slots: 8. Please contact administrator to increase quota.`
-31. Klik `[OK]`
-32. Ganti Quantity menjadi `8`
-33. Klik `[Save draft]`
-34. Klik `[Submit]`
-35. Klik `[Activate]`
-36. Verifikasi toast `Success, asset has been activated.`
+23. Klik row action `Edit` pada baris batch `Gudang Kuota {runId}`
+24. Ganti Quantity menjadi `9`
+25. Klik `[Save draft]`
+26. Verifikasi toast `Success, draft has been saved.`
+27. Klik `[Submit]`
+28. Klik `[Activate]`
+29. Verifikasi dialog memuat `Group quota exceeded. Available slots: 8. Please contact administrator to increase quota.`
+30. Klik `[OK]`
+31. Ganti Quantity menjadi `8`
+32. Klik `[Save draft]`
+33. Klik `[Submit]`
+34. Klik `[Activate]`
+35. Verifikasi toast `Success, asset has been activated.`
 
 ### Sisa kuota Group habis tercermin di form Register Asset
-37. Buka Fixed Asset > Assets > Registration > Draft
-38. Klik `[+ Register Asset]`
-39. Pilih Group `Gudang Kuota {runId}`
-40. Verifikasi `Remaining Quota: 0` tampil di samping field Group
-41. Klik `[+ Asset Name]`
-42. Pilih Asset Name `Meja Kuota {runId}`
-43. Pilih Brand `Ergotec`
-44. Pilih Model `No Model`
-45. Isi Quantity `1`
-46. Verifikasi error pada Quantity `No more assets can be added to Gudang Kuota {runId}.`
+36. Buka Fixed Asset > Assets > Registration > Draft
+37. Klik `[+ Register Asset]`
+38. Pilih Group `Gudang Kuota {runId}`
+39. Verifikasi `Remaining Quota: 0` tampil di samping field Group
+40. Pilih Asset Name `Meja Kuota {runId}` pada Item pertama
+41. Pilih Brand `Ergotec`
+42. Pilih Model `No Model`
+43. Isi Quantity `1`
+44. Verifikasi error pada Quantity `No more assets can be added to Gudang Kuota {runId}.`
 
 ### Activate ditolak saat sisa kuota Group habis
-47. Klik `[Save draft]`
-48. Klik `[Submit]`
-49. Klik `[Activate]`
-50. Verifikasi dialog memuat `Group quota exceeded. Available slots: 0. Please contact administrator to increase quota.`
-51. Klik `[OK]`
-52. Klik `[Cancel]`
+45. Klik `[Save draft]`
+46. Klik `[Submit]`
+47. Klik `[Activate]`
+48. Verifikasi dialog memuat `Group quota exceeded. Available slots: 0. Please contact administrator to increase quota.`
+49. Klik `[OK]`
+50. Klik `[Cancel]`
 
 ### Kuota Group dinaikkan di License tercermin pada Remaining Quota dan pesan Quantity
-53. Admin License menaikkan kuota Group `Gudang Kuota {runId}` sehingga sisa kuota Group menjadi `4`
-54. Klik `[+ Register Asset]`
-55. Pilih Group `Gudang Kuota {runId}`
-56. Verifikasi `Remaining Quota: 4` tampil di samping field Group
-57. Klik `[+ Asset Name]`
-58. Pilih Asset Name `Meja Kuota {runId}`
-59. Pilih Brand `Ergotec`
-60. Pilih Model `No Model`
-61. Isi Quantity `5`
-62. Verifikasi error pada Quantity `Only 4 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
-63. Klik `✕` pada form, lalu klik `[Leave]` pada dialog Unsaved Changes
+51. Admin License menaikkan kuota Group `Gudang Kuota {runId}` sehingga sisa kuota Group menjadi `4`
+52. Klik `[+ Register Asset]`
+53. Pilih Group `Gudang Kuota {runId}`
+54. Verifikasi `Remaining Quota: 4` tampil di samping field Group
+55. Pilih Asset Name `Meja Kuota {runId}` pada Item pertama
+56. Pilih Brand `Ergotec`
+57. Pilih Model `No Model`
+58. Isi Quantity `5`
+59. Verifikasi error pada Quantity `Only 4 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
+60. Klik `✕` pada form, lalu klik `[Leave]` pada dialog Unsaved Changes
 
 ### Kuota Group diturunkan di License dan error ditandai pada Item yang melampaui sisa
-64. Admin License menurunkan kuota Group `Gudang Kuota {runId}` sehingga sisa kuota Group menjadi `2`
-65. Klik `[+ Register Asset]`
-66. Pilih Group `Gudang Kuota {runId}`
-67. Verifikasi `Remaining Quota: 2` tampil di samping field Group
-68. Klik `[+ Asset Name]`
-69. Pilih Asset Name `Meja Kuota {runId}`
-70. Pilih Brand `Ergotec`
-71. Pilih Model `No Model`
-72. Isi Quantity `2`
-73. Klik `[+ Asset Name]`
-74. Pilih Asset Name `Kursi Kuota {runId}`
-75. Pilih Brand `Ergotec`
-76. Pilih Model `No Model`
-77. Isi Quantity `1`
-78. Klik `[+ Asset Name]`
-79. Pilih Asset Name `Lemari Kuota {runId}`
-80. Pilih Brand `Ergotec`
-81. Pilih Model `No Model`
-82. Isi Quantity `1`
-83. Verifikasi error pada Quantity Item `Kursi Kuota {runId}` `Only 2 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
-84. Verifikasi error pada Quantity Item `Lemari Kuota {runId}` `Only 2 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
-85. Verifikasi Quantity Item `Meja Kuota {runId}` tanpa error
-86. Klik `✕` pada form, lalu klik `[Leave]` pada dialog Unsaved Changes
+61. Admin License menurunkan kuota Group `Gudang Kuota {runId}` sehingga sisa kuota Group menjadi `2`
+62. Klik `[+ Register Asset]`
+63. Pilih Group `Gudang Kuota {runId}`
+64. Verifikasi `Remaining Quota: 2` tampil di samping field Group
+65. Pilih Asset Name `Meja Kuota {runId}` pada Item pertama
+66. Pilih Brand `Ergotec` pada Item pertama
+67. Pilih Model `No Model` pada Item pertama
+68. Isi Quantity `2` pada Item pertama
+69. Klik `[+ Asset Name]` untuk menambah Item kedua
+70. Pilih Asset Name `Kursi Kuota {runId}` pada Item kedua
+71. Pilih Brand `Ergotec` pada Item kedua
+72. Pilih Model `No Model` pada Item kedua
+73. Isi Quantity `1` pada Item kedua
+74. Klik `[+ Asset Name]` untuk menambah Item ketiga
+75. Pilih Asset Name `Lemari Kuota {runId}` pada Item ketiga
+76. Pilih Brand `Ergotec` pada Item ketiga
+77. Pilih Model `No Model` pada Item ketiga
+78. Isi Quantity `1` pada Item ketiga
+79. Verifikasi error pada Quantity Item `Kursi Kuota {runId}` `Only 2 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
+80. Verifikasi error pada Quantity Item `Lemari Kuota {runId}` `Only 2 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
+81. Verifikasi Quantity Item `Meja Kuota {runId}` tanpa error
+82. Klik `✕` pada form, lalu klik `[Leave]` pada dialog Unsaved Changes
 
 ### Group tanpa batas menyembunyikan Remaining Quota dan pergantian Group memicu error
-87. Klik `[+ Register Asset]`
-88. Pilih Group `Gudang Tanpa Batas {runId}`
-89. Verifikasi field Group menampilkan `Gudang Tanpa Batas {runId}`
-90. Verifikasi `Remaining Quota` tidak tampil di samping field Group
-91. Klik `[+ Asset Name]`
-92. Pilih Asset Name `Meja Kuota {runId}`
-93. Pilih Brand `Ergotec`
-94. Pilih Model `No Model`
-95. Isi Quantity `3`
-96. Pilih Group `Gudang Kuota {runId}`
-97. Verifikasi error pada Quantity `Only 2 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`
+83. Klik `[+ Register Asset]`
+84. Pilih Group `Gudang Tanpa Batas {runId}`
+85. Verifikasi field Group menampilkan `Gudang Tanpa Batas {runId}`
+86. Verifikasi `Remaining Quota` tidak tampil di samping field Group
+87. Pilih Asset Name `Meja Kuota {runId}` pada Item pertama
+88. Pilih Brand `Ergotec`
+89. Pilih Model `No Model`
+90. Isi Quantity `3`
+91. Pilih Group `Gudang Kuota {runId}`
+92. Verifikasi error pada Quantity `Only 2 more assets can be added to Gudang Kuota {runId}. Reduce the quantity.`

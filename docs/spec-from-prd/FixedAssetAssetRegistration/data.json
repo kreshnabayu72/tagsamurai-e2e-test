@@ -2,7 +2,7 @@
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
  "disetujui": "otomatis, 2026-11-13",
- "sha": "ace8adea4c17230f",
+ "sha": "460b91bec0f5f62c",
  "entri": [
   {
    "id": "DU-001-1",
@@ -1086,7 +1086,7 @@
     "Group Path": "PT Sejahtera Abadi > Cabang A > Gudang 1",
     "Total Asset": "12",
     "Requested By": "Budi",
-    "Last Updated": "2026-03-25T09:15:00Z"
+    "Last Updated": "2026-11-12T09:15:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1107,7 +1107,7 @@
     "Group": "Gudang 2",
     "Total Asset": "5",
     "Requested By": "Siti Nurbaya",
-    "Last Updated": "2026-03-24T23:30:00Z"
+    "Last Updated": "2026-11-11T23:30:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1128,7 +1128,7 @@
     "Group": "Kantor Pusat",
     "Total Asset": "30",
     "Requested By": "Alexander Graham Bell",
-    "Last Updated": "2026-03-23T09:05:00Z"
+    "Last Updated": "2026-11-10T09:05:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1152,7 +1152,7 @@
     "Status": "Approved",
     "Requested By": "Budi",
     "Approver": "Dewi Anggraini",
-    "Last Updated": "2026-03-25T09:15:00Z"
+    "Last Updated": "2026-11-12T09:15:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1175,7 +1175,7 @@
     "Status": "Partially Approved",
     "Requested By": "Siti Nurbaya",
     "Approver": "Dewi Anggraini",
-    "Last Updated": "2026-03-24T23:30:00Z"
+    "Last Updated": "2026-11-11T23:30:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1198,7 +1198,7 @@
     "Status": "Rejected",
     "Requested By": "Alexander Graham Bell",
     "Approver": "Buzzlightyear Sumardi",
-    "Last Updated": "2026-03-23T09:05:00Z"
+    "Last Updated": "2026-11-10T09:05:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1221,7 +1221,7 @@
     "Status": "Canceled",
     "Requested By": "Budi",
     "Approver": "—",
-    "Last Updated": "2026-03-22T13:10:00Z"
+    "Last Updated": "2026-11-09T13:10:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1244,30 +1244,7 @@
     "Status": "Approved",
     "Requested By": "Hadi Kusuma",
     "Approver": "Hadi Kusuma",
-    "Last Updated": "2026-03-21T10:00:00Z"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {}
-  },
-  {
-   "id": "DU-010-9",
-   "spec": [
-    "TC-FA-FAREG-UI-010-pengajuan-tampilan-kolom-state"
-   ],
-   "jenis": "Pengajuan History",
-   "data": "Pengajuan auto-approve Kondisi B: tanpa approver independen, Approver System",
-   "asal": "awal",
-   "nilai": {
-    "Registration ID": "REG-20261031-00003",
-    "Group": "Gudang 3",
-    "Total Asset": "4",
-    "Status": "Approved",
-    "Requested By": "Hadi Kusuma",
-    "Approver": "System",
-    "Last Updated": "2026-03-20T11:30:00Z"
+    "Last Updated": "2026-11-08T10:00:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1307,7 +1284,7 @@
     "Status": "Approved",
     "Requested By": "Budi",
     "Approver": "—",
-    "Last Updated": "2026-03-19T14:45:00Z"
+    "Last Updated": "2026-11-06T14:45:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1485,32 +1462,9 @@
     "Group": "Gudang 2",
     "Total Asset": "6",
     "Status": "Approved",
-    "Requested By": "Siti Nurbaya",
-    "Approver": "Siti Nurbaya",
+    "Requested By": "Maria Fransiska",
+    "Approver": "Maria Fransiska",
     "Last Updated": "2026-10-31T09:00:00Z"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {}
-  },
-  {
-   "id": "DU-011-9",
-   "spec": [
-    "TC-FA-FAREG-UI-011-antrean-approvals-tampilan"
-   ],
-   "jenis": "Pengajuan antrean History",
-   "data": "Pengajuan auto-approve Kondisi B: tanpa approver independen, Approver System",
-   "asal": "awal",
-   "nilai": {
-    "Registration ID": "REG-20261030-00003",
-    "Group": "Gudang 2",
-    "Total Asset": "4",
-    "Status": "Approved",
-    "Requested By": "Hadi Kusuma",
-    "Approver": "System",
-    "Last Updated": "2026-10-30T08:30:00Z"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -2618,7 +2572,9 @@
     "Model 3": "ProBook 450",
     "TAG Type": "Non-TAG",
     "Status": "Active",
-    "Custom field wajib": "Nomor Inventaris"
+    "Custom field wajib": "Nomor Inventaris",
+    "Scope Custom field wajib": "General",
+    "Value Type Custom field wajib": "Specific (nilai per aset)"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -6465,7 +6421,7 @@
     "TC-FA-FAREG-BE-143-isi-activity-log-dep-activity-log"
    ],
    "jenis": "Koreksi",
-   "data": "Koreksi Brand Chitose Model Orion oleh Agus P pada aset pertama",
+   "data": "Koreksi Brand Chitose Model Orion oleh Agus P {runId} pada aset pertama",
    "asal": "dibuat",
    "nilai": {
     "Brand": "Chitose",
@@ -6577,7 +6533,7 @@
     "TC-FA-FAREG-BE-143-isi-activity-log-dep-activity-log"
    ],
    "jenis": "Pengajuan",
-   "data": "Pengajuan satu aset yang ditolak Agus P",
+   "data": "Pengajuan satu aset yang ditolak Agus P {runId}",
    "asal": "awal",
    "nilai": {
     "Group": "Gudang Jakarta {runId}",
@@ -8400,6 +8356,57 @@
    ]
   },
   {
+   "jenis": "Pencarian dropdown",
+   "data": "Kata kunci yang diketik pada dropdown Asset Name",
+   "asal": "dicoba",
+   "nilai": {
+    "Asset Name": "Kursi"
+   },
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": null,
+   "id": "DU-014-6",
+   "spec": [
+    "TC-FA-FAREG-UI-014-form-interaksi-field-item"
+   ]
+  },
+  {
+   "jenis": "Pencarian dropdown",
+   "data": "Kata kunci yang diketik pada dropdown Brand",
+   "asal": "dicoba",
+   "nilai": {
+    "Brand": "Len"
+   },
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": null,
+   "id": "DU-014-7",
+   "spec": [
+    "TC-FA-FAREG-UI-014-form-interaksi-field-item"
+   ]
+  },
+  {
+   "jenis": "Pencarian dropdown",
+   "data": "Kata kunci yang diketik pada dropdown Model",
+   "asal": "dicoba",
+   "nilai": {
+    "Model": "Insp"
+   },
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": null,
+   "id": "DU-014-8",
+   "spec": [
+    "TC-FA-FAREG-UI-014-form-interaksi-field-item"
+   ]
+  },
+  {
    "jenis": "Kuota Tenant",
    "data": "Sisa kuota tenant besar",
    "asal": "awal",
@@ -9178,6 +9185,63 @@
     "Aset 1 Condition": "Damaged",
     "Aset 1 Damage note": "—",
     "Aset 1 Kekurangan": "Damage note, Tag"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "FAREG-LOGIC-11e",
+   "maks": null
+  },
+  {
+   "id": "DU-017-11",
+   "spec": [
+    "TC-FA-FAREG-UI-017-form-tab-asset-tampilan"
+   ],
+   "jenis": "Item",
+   "data": "Item kursi dengan Tag Skipped dan Tag Unverified",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Kursi Kerja Ergonomis",
+    "Brand": "Ergotec",
+    "Model": "ErgoMesh 200",
+    "TAG Type": "QR",
+    "Quantity": "2",
+    "Aset 1 Name": "Kursi Kerja Ergonomis - 1",
+    "Aset 1 Tag": "Skipped",
+    "Aset 1 Condition": "Normal",
+    "Aset 1 Status": "✓ Ready",
+    "Aset 2 Name": "Kursi Kerja Ergonomis - 2",
+    "Aset 2 Tag": "Unverified",
+    "Aset 2 Condition": "Normal",
+    "Aset 2 Kekurangan": "Tag"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "FAREG-LOGIC-11e",
+   "maks": null
+  },
+  {
+   "id": "DU-017-12",
+   "spec": [
+    "TC-FA-FAREG-UI-017-form-tab-asset-tampilan"
+   ],
+   "jenis": "Item",
+   "data": "Item laptop dengan Serial Number wajib dan Damage note sama-sama kosong",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Laptop Dell Latitude 5440",
+    "Brand": "Dell",
+    "Model": "Latitude 5440",
+    "TAG Type": "RFID",
+    "Quantity": "1",
+    "Custom field per aset": "Serial Number",
+    "Aset 1 Name": "Laptop Dell Latitude 5440 - 1",
+    "Aset 1 Serial Number": "—",
+    "Aset 1 Tag": "RFID-000501",
+    "Aset 1 Condition": "Damaged",
+    "Aset 1 Damage note": "—",
+    "Aset 1 Kekurangan": "Serial Number, Damage note"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -11517,6 +11581,23 @@
    "maks": null
   },
   {
+   "id": "DU-027-21",
+   "spec": [
+    "TC-FA-FAREG-UI-027-dialog-activate"
+   ],
+   "jenis": "Skip Note",
+   "data": "Note berisi emoji",
+   "asal": "dibuat",
+   "nilai": {
+    "Note": "Reader rusak 😊"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "FAREG-LOGIC-01s",
+   "maks": null
+  },
+  {
    "id": "DU-028-1",
    "spec": [
     "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan"
@@ -11702,6 +11783,82 @@
     "Category path": "Office Furniture > Furniture",
     "Result": "Rejected",
     "Reason": "Duplicate entry"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §4.1 Example Data",
+   "maks": {}
+  },
+  {
+   "id": "DU-028-10",
+   "spec": [
+    "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan"
+   ],
+   "jenis": "Aset pengajuan",
+   "data": "Aset pengajuan belum diputuskan atau dibatalkan, tanpa Result dan Reason",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop - 128",
+    "Category": "Computers",
+    "Category path": "Electronics > Computers"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §4.1 Example Data",
+   "maks": {}
+  },
+  {
+   "id": "DU-028-11",
+   "spec": [
+    "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan"
+   ],
+   "jenis": "Aset pengajuan",
+   "data": "Aset pengajuan belum diputuskan atau dibatalkan, tanpa Result dan Reason",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop - 129",
+    "Category": "Computers",
+    "Category path": "Electronics > Computers"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §4.1 Example Data",
+   "maks": {}
+  },
+  {
+   "id": "DU-028-12",
+   "spec": [
+    "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan"
+   ],
+   "jenis": "Aset pengajuan",
+   "data": "Aset pengajuan belum diputuskan atau dibatalkan, tanpa Result dan Reason",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop - 130",
+    "Category": "Computers",
+    "Category path": "Electronics > Computers"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §4.1 Example Data",
+   "maks": {}
+  },
+  {
+   "id": "DU-028-13",
+   "spec": [
+    "TC-FA-FAREG-UI-028-detail-pengajuan-tampilan"
+   ],
+   "jenis": "Aset pengajuan",
+   "data": "Aset pengajuan belum diputuskan atau dibatalkan, tanpa Result dan Reason",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Office Desk - 12",
+    "Category": "Furniture",
+    "Category path": "Office Furniture > Furniture"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -12274,6 +12431,24 @@
    "maks": {}
   },
   {
+   "id": "DU-032-15",
+   "spec": [
+    "TC-FA-FAREG-UI-032-approval-decision-reason"
+   ],
+   "jenis": "Reason keputusan",
+   "data": "Reason berisi emoji pada Return to Draft",
+   "asal": "dibuat",
+   "nilai": {
+    "Decision": "Return to Draft",
+    "Reason": "Foto aset buram 😊🔥"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "FAREG-LOGIC-01s",
+   "maks": {}
+  },
+  {
    "id": "DU-033-1",
    "spec": [
     "TC-FA-FAREG-UI-033-approval-bulk-action"
@@ -12585,6 +12760,57 @@
    "mutasi": [],
    "varian": [],
    "sumber": "§9.9#r19",
+   "maks": {}
+  },
+  {
+   "id": "DU-033-16",
+   "spec": [
+    "TC-FA-FAREG-UI-033-approval-bulk-action"
+   ],
+   "jenis": "Reason Bulk Action",
+   "data": "Reason tepat 360 karakter pada Bulk Action",
+   "asal": "dibuat",
+   "nilai": {
+    "Reason": "perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkapi-data-fisik-sebelum-diajukan-ulang-perbaiki-foto-aset-dan-lengkap"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.9#r19",
+   "maks": {}
+  },
+  {
+   "id": "DU-033-17",
+   "spec": [
+    "TC-FA-FAREG-UI-033-approval-bulk-action"
+   ],
+   "jenis": "Reason Bulk Action",
+   "data": "Reason 1 karakter pada Bulk Action",
+   "asal": "dibuat",
+   "nilai": {
+    "Reason": "X"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.9#r19",
+   "maks": {}
+  },
+  {
+   "id": "DU-033-18",
+   "spec": [
+    "TC-FA-FAREG-UI-033-approval-bulk-action"
+   ],
+   "jenis": "Reason Bulk Action",
+   "data": "Reason opsional untuk Approve pada Bulk Action",
+   "asal": "dibuat",
+   "nilai": {
+    "Reason": "Scratch on the casing is minor"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §4.1 Example Data",
    "maks": {}
   },
   {
@@ -14859,7 +15085,7 @@
     "TC-FA-FAREG-E2E-047-history-tabel"
    ],
    "jenis": "Pengajuan registrasi",
-   "data": "Pengajuan yang disetujui sebagian, status memuat kata Approved",
+   "data": "Pengajuan yang disetujui sebagian, status memuat kata Approved, Total Asset menghitung aset semua status",
    "asal": "awal",
    "nilai": {
     "Registration ID": "milik DU-047-2, dibentuk server saat Submit",
@@ -14868,7 +15094,8 @@
     "Status": "Partially Approved",
     "Requested By": "Hadi K",
     "Approver": "Maya L",
-    "Last Updated": "T0 − 2 hari"
+    "Last Updated": "T0 − 2 hari",
+    "Komposisi aset": "6 Approve, 5 Return to Draft, 3 Reject"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -14886,7 +15113,7 @@
     "TC-FA-FAREG-E2E-047-history-tabel"
    ],
    "jenis": "Pengajuan registrasi",
-   "data": "Pengajuan yang ditolak dengan approver terisi",
+   "data": "Pengajuan yang ditolak dengan approver terisi, berisi aset Return to Draft dan Reject",
    "asal": "awal",
    "nilai": {
     "Registration ID": "milik DU-047-3, dibentuk server saat Submit",
@@ -14895,7 +15122,8 @@
     "Status": "Rejected",
     "Requested By": "Siti N",
     "Approver": "Rina W",
-    "Last Updated": "T0 − 3 hari"
+    "Last Updated": "T0 − 3 hari",
+    "Komposisi aset": "1 Return to Draft, 2 Reject"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -14941,7 +15169,7 @@
    "data": "Pengajuan Waiting for Approval untuk Download sub tab Waiting for Approval",
    "asal": "awal",
    "nilai": {
-    "Registration ID": "REG-20261109-04801",
+    "Registration ID": "milik DU-048-1, dibentuk server saat Submit",
     "Group": "Gudang Unduh Menunggu {runId}",
     "Total Asset": "6",
     "Requested By": "Maya L",
@@ -14964,7 +15192,7 @@
    "data": "Pengajuan History untuk Download sub tab History",
    "asal": "awal",
    "nilai": {
-    "Registration ID": "REG-20261108-04802",
+    "Registration ID": "milik DU-048-2, dibentuk server saat Submit",
     "Group": "Gudang Unduh Riwayat {runId}",
     "Total Asset": "7",
     "Status": "Approved",
@@ -15103,7 +15331,7 @@
     "TC-FA-FAREG-E2E-050-antrean-approvals-history"
    ],
    "jenis": "Pengajuan registrasi",
-   "data": "Pengajuan yang disetujui sebagian, status memuat kata Approved",
+   "data": "Pengajuan yang disetujui sebagian, status memuat kata Approved, Total Asset menghitung aset semua status",
    "asal": "awal",
    "nilai": {
     "Registration ID": "milik DU-050-2, dibentuk server saat Submit",
@@ -15112,7 +15340,8 @@
     "Status": "Partially Approved",
     "Requested By": "Hadi K",
     "Approver": "Maya L",
-    "Last Updated": "T0 − 2 hari"
+    "Last Updated": "T0 − 2 hari",
+    "Komposisi aset": "6 Approve, 5 Return to Draft, 3 Reject"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -15128,7 +15357,7 @@
     "TC-FA-FAREG-E2E-050-antrean-approvals-history"
    ],
    "jenis": "Pengajuan registrasi",
-   "data": "Pengajuan yang ditolak dengan approver terisi",
+   "data": "Pengajuan yang ditolak dengan approver terisi, berisi aset Return to Draft dan Reject",
    "asal": "awal",
    "nilai": {
     "Registration ID": "milik DU-050-3, dibentuk server saat Submit",
@@ -15137,7 +15366,8 @@
     "Status": "Rejected",
     "Requested By": "Siti N",
     "Approver": "Rina W",
-    "Last Updated": "T0 − 3 hari"
+    "Last Updated": "T0 − 3 hari",
+    "Komposisi aset": "1 Return to Draft, 2 Reject"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -15181,7 +15411,7 @@
    "data": "Pengajuan Waiting for Approval milik Hadi K untuk Download tab Active",
    "asal": "awal",
    "nilai": {
-    "Registration ID": "REG-20261109-05101",
+    "Registration ID": "milik DU-051-1, dibentuk server saat Submit",
     "Group": "Gudang Unduh Aktif {runId}",
     "Total Asset": "6",
     "Requested By": "Hadi K",
@@ -15204,7 +15434,7 @@
    "data": "Pengajuan Waiting for Approval milik Siti N untuk Download tab Active",
    "asal": "awal",
    "nilai": {
-    "Registration ID": "REG-20261108-05102",
+    "Registration ID": "milik DU-051-2, dibentuk server saat Submit",
     "Group": "Gudang Unduh Aktif Dua {runId}",
     "Total Asset": "9",
     "Requested By": "Siti N",
@@ -15227,7 +15457,7 @@
    "data": "Pengajuan History untuk Download tab History",
    "asal": "awal",
    "nilai": {
-    "Registration ID": "REG-20261107-05103",
+    "Registration ID": "milik DU-051-3, dibentuk server saat Submit",
     "Group": "Gudang Unduh Riwayat {runId}",
     "Total Asset": "7",
     "Status": "Approved",
@@ -16001,6 +16231,77 @@
     "Item 1": "Laptop Dell Latitude 5440, Quantity 2, batch campuran terkunci user lain",
     "Total Asset": "2",
     "Identitas bullet dialog": "Gudang Campur Terkunci {n} {runId} · 2 assets"
+   },
+   "jumlah": 2,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Group": null,
+    "Identitas bullet dialog": null
+   }
+  },
+  {
+   "id": "DU-063-3",
+   "spec": [
+    "TC-FA-FAREG-E2E-063-bulk-delete-draft-campuran"
+   ],
+   "jenis": "Registration Draft",
+   "data": "Batch Draft yang tetap dapat dihapus sesudah batch lain dikunci",
+   "asal": "awal",
+   "nilai": {
+    "Group": "Gudang Susulan Bisa {runId}",
+    "Item 1": "Laptop Dell Latitude 5440, Quantity 2, batch yang tetap dapat dihapus",
+    "Total Asset": "2",
+    "Identitas bullet dialog": "Gudang Susulan Bisa {runId} · 2 assets"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FAREG-E2E-063-bulk-delete-draft-campuran"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Group": null,
+    "Identitas bullet dialog": null
+   }
+  },
+  {
+   "id": "DU-063-4",
+   "spec": [
+    "TC-FA-FAREG-E2E-063-bulk-delete-draft-campuran"
+   ],
+   "jenis": "Registration Draft",
+   "data": "Batch Draft yang kuncinya dipegang user lain sesudah dialog terbuka",
+   "asal": "awal",
+   "nilai": {
+    "Group": "Gudang Susulan Terkunci Kemudian {runId}",
+    "Item 1": "Laptop Dell Latitude 5440, Quantity 2, batch yang dikunci sesudah dialog terbuka",
+    "Total Asset": "2",
+    "Identitas bullet dialog": "Gudang Susulan Terkunci Kemudian {runId} · 2 assets"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Group": null,
+    "Identitas bullet dialog": null
+   }
+  },
+  {
+   "id": "DU-063-5",
+   "spec": [
+    "TC-FA-FAREG-E2E-063-bulk-delete-draft-campuran"
+   ],
+   "jenis": "Registration Draft",
+   "data": "Dua batch Draft yang kuncinya dipegang user lain sesudah dialog terbuka",
+   "asal": "awal",
+   "nilai": {
+    "Group": "Gudang Susulan Habis {n} {runId}",
+    "Item 1": "Laptop Dell Latitude 5440, Quantity 2, batch yang dikunci sesudah dialog terbuka",
+    "Total Asset": "2",
+    "Identitas bullet dialog": "Gudang Susulan Habis {n} {runId} · 2 assets"
    },
    "jumlah": 2,
    "mutasi": [],
@@ -16796,7 +17097,7 @@
     "Name": "Budi S",
     "Role": "Manage asset & TAG",
     "Capability": "Update",
-    "Scope": "Gudang Diputus {runId}"
+    "Scope": "Gudang Diputus {runId}, Gudang Diputus Baris {runId}"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -16805,6 +17106,72 @@
    "maks": {
     "Scope": null
    }
+  },
+  {
+   "id": "DU-075-5",
+   "spec": [
+    "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan"
+   ],
+   "jenis": "Group",
+   "data": "Group kedua dengan toggle Require Approval for Registration ON untuk jalur Cancel registration dari baris tabel",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Diputus Baris {runId}",
+    "Require Approval for Registration": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-075-6",
+   "spec": [
+    "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan"
+   ],
+   "jenis": "Registration Request",
+   "data": "Pengajuan Waiting for Approval milik Rina W yang diputuskan Budi S sebelum Rina W membatalkan dari baris tabel",
+   "asal": "awal",
+   "nilai": {
+    "Group": "Gudang Diputus Baris {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-075-7",
+   "spec": [
+    "TC-FA-FAREG-E2E-075-cancel-registration-sudah-diputuskan"
+   ],
+   "jenis": "Registration Item",
+   "data": "Item tiga aset Non-TAG pada pengajuan kedua",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Office Desk",
+    "Brand": "Kayu Jati",
+    "Model": "No Model",
+    "Quantity": "3",
+    "Condition": "Normal",
+    "TAG Type": "Non-TAG",
+    "Total Asset": "3",
+    "Status": "Waiting for Approval",
+    "Requested By": "Rina W"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
   },
   {
    "id": "DU-076-1",
@@ -17669,7 +18036,7 @@
     "Name": "Budi S",
     "Role": "Manage asset & TAG",
     "Capability": "Update",
-    "Scope": "Gudang Koreksi {runId}"
+    "Scope": "Gudang Koreksi {runId}, Gudang Koreksi Sebagian {runId}"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -17707,6 +18074,132 @@
    "asal": "dibuat",
    "nilai": {
     "Model aset ke-1": "Latitude 5540"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-082-8",
+   "spec": [
+    "TC-FA-FAREG-E2E-082-approval-koreksi-diterapkan"
+   ],
+   "jenis": "Group",
+   "data": "Group kedua dengan toggle Require Approval for Registration ON untuk pengajuan Partially Approved",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Koreksi Sebagian {runId}",
+    "Require Approval for Registration": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-082-9",
+   "spec": [
+    "TC-FA-FAREG-E2E-082-approval-koreksi-diterapkan"
+   ],
+   "jenis": "Registration Request",
+   "data": "Pengajuan Waiting for Approval yang diputuskan campuran Approve dan Return to Draft",
+   "asal": "awal",
+   "nilai": {
+    "Group": "Gudang Koreksi Sebagian {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FAREG-E2E-082-approval-koreksi-diterapkan"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-082-10",
+   "spec": [
+    "TC-FA-FAREG-E2E-082-approval-koreksi-diterapkan"
+   ],
+   "jenis": "Registration Item",
+   "data": "Item dua aset Laptop RFID pada pengajuan kedua",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Laptop",
+    "Brand": "Dell",
+    "Model": "Latitude 5440",
+    "Quantity": "2",
+    "Condition": "Normal",
+    "TAG Type": "RFID",
+    "Total Asset": "2",
+    "Status": "Waiting for Approval",
+    "Requested By": "Rina W"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-082-11",
+   "spec": [
+    "TC-FA-FAREG-E2E-082-approval-koreksi-diterapkan"
+   ],
+   "jenis": "Tag",
+   "data": "Tag RFID Verified pada aset pengajuan kedua",
+   "asal": "awal",
+   "nilai": {
+    "Code": "RFID-082B-{n}-{runId}",
+    "Type": "RFID",
+    "Badge": "Verified"
+   },
+   "jumlah": 2,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Code": null
+   }
+  },
+  {
+   "id": "DU-082-12",
+   "spec": [
+    "TC-FA-FAREG-E2E-082-approval-koreksi-diterapkan"
+   ],
+   "jenis": "Master Model",
+   "data": "Model Dell kedua untuk koreksi aset yang dikembalikan ke Draft",
+   "asal": "awal",
+   "nilai": {
+    "Brand": "Dell",
+    "Model": "Latitude 7440"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-082-13",
+   "spec": [
+    "TC-FA-FAREG-E2E-082-approval-koreksi-diterapkan"
+   ],
+   "jenis": "Input Koreksi dan Keputusan Approver",
+   "data": "Koreksi Model pada aset yang di-approve dan pada aset yang dikembalikan ke Draft",
+   "asal": "dibuat",
+   "nilai": {
+    "Model aset ke-1": "Latitude 5540",
+    "Keputusan aset ke-1": "Approve",
+    "Model aset ke-2": "Latitude 7440",
+    "Keputusan aset ke-2": "Return to Draft",
+    "Reason aset ke-2": "Photo is missing"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -18236,7 +18729,7 @@
     "Status": "Approved",
     "Total Asset": "3",
     "Requested By": "Rina W",
-    "Approver": "Agus P",
+    "Approver": "Agus P {runId}",
     "Last Updated": "T0 − 3 hari"
    },
    "jumlah": 1,
@@ -18244,7 +18737,8 @@
    "varian": [],
    "sumber": "PRD §4.1 Example Data History",
    "maks": {
-    "Group": null
+    "Group": null,
+    "Approver": null
    }
   },
   {
@@ -18256,7 +18750,7 @@
    "data": "Aktor Total Control",
    "asal": "awal",
    "nilai": {
-    "Name": "Agus P",
+    "Name": "Agus P {runId}",
     "Role": "Total Control",
     "Scope": "Seluruh client"
    },
@@ -18264,7 +18758,9 @@
    "mutasi": [],
    "varian": [],
    "sumber": "matriks role PRD",
-   "maks": {}
+   "maks": {
+    "Name": null
+   }
   },
   {
    "id": "DU-085-5",
@@ -18293,13 +18789,13 @@
     "TC-FA-FAREG-E2E-085-gating-total-control"
    ],
    "jenis": "Pengajuan registrasi",
-   "data": "Pengajuan Waiting for Approval yang diajukan Agus P sendiri",
+   "data": "Pengajuan Waiting for Approval yang diajukan Agus P {runId} sendiri",
    "asal": "awal",
    "nilai": {
     "Group": "Gudang 2 {runId}",
     "Status": "Waiting for Approval",
     "Total Asset": "2",
-    "Requested By": "Agus P",
+    "Requested By": "Agus P {runId}",
     "Last Updated": "T0 − 1 hari",
     "Asset Name": "Monitor",
     "Brand": "Dell",
@@ -18311,7 +18807,8 @@
    "varian": [],
    "sumber": "PRD §4.1 Example Data Waiting for Approval",
    "maks": {
-    "Group": null
+    "Group": null,
+    "Requested By": null
    }
   },
   {
@@ -18585,18 +19082,21 @@
     "Total Asset": "5",
     "Requested By": "Siti N",
     "Last Updated": "T0 − 2 hari",
-    "Asset Name": "Laptop",
+    "Asset Name": "Laptop {runId}",
     "Brand": "Dell",
     "Model": "Latitude 5440",
     "Quantity": "5",
     "TAG": "Verified"
    },
    "jumlah": 1,
-   "mutasi": [],
+   "mutasi": [
+    "TC-FA-FAREG-E2E-087-gating-manage-asset-tag"
+   ],
    "varian": [],
    "sumber": "PRD §4.1 Example Data Waiting for Approval",
    "maks": {
-    "Group": null
+    "Group": null,
+    "Asset Name": null
    }
   },
   {
@@ -19471,6 +19971,44 @@
    "sumber": "matriks role PRD",
    "maks": {
     "Scope": null
+   }
+  },
+  {
+   "id": "DU-092-5",
+   "spec": [
+    "TC-FA-FAREG-E2E-092-cakupan-multi-group"
+   ],
+   "jenis": "Group",
+   "data": "Group induk di luar scope Lina M dan Rina W",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kantor Induk {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.5#r9",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-092-6",
+   "spec": [
+    "TC-FA-FAREG-E2E-092-cakupan-multi-group"
+   ],
+   "jenis": "Group",
+   "data": "Sub-group dari Group terkelola",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang 1 Rak {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.5#r9",
+   "maks": {
+    "Name": null
    }
   },
   {
@@ -22550,7 +23088,9 @@
     "Quantity": "8"
    },
    "jumlah": 1,
-   "mutasi": [],
+   "mutasi": [
+    "TC-FA-FAREG-E2E-112-bulk-limit-diturunkan-dep-lifecycle-settings"
+   ],
    "varian": [],
    "sumber": "turunan penulis",
    "maks": {
@@ -24754,7 +25294,7 @@
     "TC-FA-FAREG-BE-121-validasi-activate"
    ],
    "jenis": "Asset Name",
-   "data": "Asset Name Non-TAG dengan Custom field General wajib",
+   "data": "Asset Name Non-TAG dengan Custom field Specific Asset Name wajib",
    "asal": "awal",
    "nilai": {
     "Name": "Rak Besi {runId}",
@@ -24762,7 +25302,7 @@
     "Brand": "Krisbow",
     "Model": "RB-4",
     "TAG Type": "Non-TAG",
-    "Custom field General wajib": "Material"
+    "Custom field Specific Asset Name wajib": "Material"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -25119,7 +25659,7 @@
     "TC-FA-FAREG-BE-121-validasi-activate"
    ],
    "jenis": "Asset Name",
-   "data": "Asset Name dengan Custom field opsional",
+   "data": "Asset Name dengan Custom field Specific Asset Name opsional",
    "asal": "awal",
    "nilai": {
     "Name": "Rak Warna {runId}",
@@ -25127,7 +25667,7 @@
     "Brand": "Krisbow",
     "Model": "RW-1",
     "TAG Type": "Non-TAG",
-    "Custom field General opsional": "Warna"
+    "Custom field Specific Asset Name opsional": "Warna"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -25189,17 +25729,21 @@
     "TC-FA-FAREG-BE-121-validasi-activate"
    ],
    "jenis": "Draft",
-   "data": "Batch Draft untuk skor kelengkapan",
+   "data": "Batch Draft untuk skor kelengkapan, empat Item",
    "asal": "awal",
    "nilai": {
     "Group": "Gudang Surabaya {runId}",
     "Item 1": "Meja Kerja {runId}, Brand Olympic, Model OL-121, Quantity 1, Alias Name Meja Rapat {runId}",
-    "Item 2": "Rak Warna {runId}, Brand Krisbow, Model RW-1, Quantity 1",
+    "Item 2": "Rak Warna {runId}, Brand Krisbow, Model RW-1, Quantity 1, Warna kosong",
     "Item 3": "Laptop {runId}, Brand Dell, Model Latitude 5440, Quantity 1, tanpa Tag",
+    "Item 4": "Rak Besi {runId}, Brand Krisbow, Model RB-4, Quantity 1, Material Baja, Alias Name Rak Gudang {runId}",
     "Skor Item 1": "75 (6 dari 8)",
     "Skor Item 2": "56 (5 dari 9)",
     "Skor Item 3": "56 (5 dari 9)",
-    "Alias Name Item 1": "Meja Rapat {runId}"
+    "Skor Item 4": "78 (7 dari 9)",
+    "Alias Name Item 1": "Meja Rapat {runId}",
+    "Alias Name Item 4": "Rak Gudang {runId}",
+    "Material Item 4": "Baja"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -25210,7 +25754,9 @@
     "Item 1": 120,
     "Item 2": 120,
     "Item 3": 120,
-    "Alias Name Item 1": 120
+    "Item 4": 120,
+    "Alias Name Item 1": 120,
+    "Alias Name Item 4": 120
    }
   },
   {
@@ -28605,8 +29151,7 @@
    "data": "Entri Activity Log atas Send dari mobile",
    "asal": "dibuat",
    "nilai": {
-    "Action": "Create",
-    "Source": "Mobile"
+    "Action": "Create"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -29443,7 +29988,8 @@
     "Requested By": "Rina Wulandari",
     "Last Updated": "T0 − 1 jam",
     "Item": "Laptop {runId} x1",
-    "Tag RFID": "E280-1310-0001 {runId}"
+    "Tag RFID": "E280-1310-0001 {runId}",
+    "Photo": "satu berkas Photo milik aset batch DU-131-10, diunggah ke aset itu"
    },
    "jumlah": 1,
    "mutasi": [
@@ -29571,7 +30117,8 @@
     "Requested By": "Rina Wulandari",
     "Last Updated": "T0 − 6 jam",
     "Item": "Laptop {runId} x1",
-    "Tag RFID": "E280-1310-0003 {runId}"
+    "Tag RFID": "E280-1310-0003 {runId}",
+    "Photo": "satu berkas Photo milik aset batch DU-131-15, diunggah ke aset itu"
    },
    "jumlah": 1,
    "mutasi": [

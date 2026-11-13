@@ -14,11 +14,11 @@ trace:
   "FI-REG-23": [34, 35, 39, 42]
   "FI-REG-24": [32, 48]
   "FLD-REG-05": [2, 4]
-  "V-REG-10": [8, 11, 15, 79]
+  "V-REG-10": [8, 11, 15, 16, 79]
   "V-REG-17": [20, 24, 28, 37, 40, 43, 53, 55]
-  "§4.2.1#b3": [15, 16]
+  "§4.2.1#b3": [79, 80]
   "§9.5#r1": [2, 8]
-  "§9.9#r6": [11, 82, 84]
+  "§9.9#r6": [11, 15, 83]
 anchor: [7, 31, 45, 47]
 coverage:
   web: automated
@@ -66,17 +66,17 @@ coverage:
 7. Verifikasi sel `Quantity` Item pertama menampilkan `100`
 8. Verifikasi tidak ada pesan error di bawah sel `Quantity` Item pertama
 
-### Quantity di bawah rentang
+### Quantity di bawah rentang dijepit ke batas bawah
 9. Tampilkan Halaman `Register Asset` dengan kondisi K1
-10. Ganti isi sel `Quantity` Item pertama dengan `0`
-11. Verifikasi pesan `Quantity must be between 1 and 100` tampil langsung di bawah sel `Quantity`
+10. Ganti isi sel `Quantity` Item pertama dengan `0`, tekan Enter
+11. Verifikasi sel `Quantity` Item pertama menampilkan `1`, yaitu nilai `0` yang diketik dijepit ke batas bawah[^drift-1]
 
-### Quantity melebihi Register Asset Bulk Limit
+### Quantity melebihi Register Asset Bulk Limit dijepit ke batas atas
 12. Tampilkan Halaman `Register Asset` dengan kondisi K1
 13. Pilih `Laptop Dell Latitude 5440` di dropdown `Asset Name` Item pertama
-14. Ganti isi sel `Quantity` Item pertama dengan `101`
-15. Verifikasi pesan `For more than 100 assets, use Import.` tampil di bawah sel `Quantity`
-16. Verifikasi pesan itu memuat tautan `Import`
+14. Ganti isi sel `Quantity` Item pertama dengan `101`, tekan Enter
+15. Verifikasi sel `Quantity` Item pertama menampilkan `100`, yaitu nilai `101` yang diketik dijepit ke batas atas[^drift-1]
+16. Verifikasi tidak ada pesan rentang di bawah sel `Quantity` Item pertama[^drift-1]
 
 ### Pesan kuota tenant: banyak, satu, dan nol
 17. Tampilkan Halaman `Register Asset` dengan kondisi K2
@@ -150,10 +150,11 @@ coverage:
 77. Pilih `Kursi Kerja Ergonomis` di dropdown `Asset Name` Item kedua
 78. Ganti isi sel `Quantity` Item kedua dengan `41`
 79. Verifikasi pesan `For more than 100 assets, use Import.` tampil di bawah sel `Quantity` Item kedua
+80. Verifikasi pesan di bawah sel `Quantity` Item kedua memuat tautan `Import`
 
-### Quantity wajib diisi dan hanya menerima angka
-80. Tampilkan Halaman `Register Asset` dengan kondisi K1
-81. Kosongkan sel `Quantity` Item pertama
-82. Verifikasi pesan `Quantity must be between 1 and 100` tampil di bawah sel `Quantity`
-83. Ganti isi sel `Quantity` Item pertama dengan `5x`
-84. Verifikasi sel `Quantity` Item pertama menampilkan `5`
+### Quantity hanya menerima angka
+81. Tampilkan Halaman `Register Asset` dengan kondisi K1
+82. Ganti isi sel `Quantity` Item pertama dengan `5x`
+83. Verifikasi sel `Quantity` Item pertama menampilkan `5`
+
+[^drift-1]: Drift PRD vs kontrak komponen. PRD V-REG-10 dan §9.9 baris Quantity: nilai di luar rentang 1 sampai [Max] memunculkan pesan `Quantity must be between 1 and [Max]` dengan timing Langsung. Kontrak `NumberInput#1`: `min` dan `max` adalah rentang, dan saat blur atau Enter nilai dijepit ke batas terdekat (`-7` menjadi `0`, di atas `max` menjadi `max`). Kontrak `NumberInput#15`: tidak ada pesan rentang dan tidak ada keadaan invalid untuk nilai di luar `min`/`max`, hanya dijepit. Diasersi: kontrak, yaitu `0` dijepit menjadi `1` dan `101` dijepit menjadi `100` tanpa pesan rentang.

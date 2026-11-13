@@ -10,7 +10,7 @@ smoke: []
 dependsOn: []
 trace:
   "§4.2.5#p1": [2, 4, 7]
-  "§4.2.5#b1": [7, 14, 17, 18, 22, 81, 85, 88, 89, 91]
+  "§4.2.5#b1": [7, 14, 17, 18, 22, 81, 85, 88, 89, 91, 95, 98]
   "§4.1#r128": [9, 28, 35, 39, 61]
   "FAREG-LOGIC-06c": [10]
   "§9.7#r7": [10]
@@ -56,7 +56,7 @@ coverage:
 
 ### Nilai sel tab Active
 8. Ketik Search `{runId}`, tekan Enter
-9. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}`, `Gudang Jabon {runId}`, `Gudang Trembesi {runId}` dengan Group tampil sebagai Badge
+9. Verifikasi tabel tab Active memuat tiga baris dengan nilai Group `Gudang Kenari {runId}`, `Gudang Jabon {runId}`, dan `Gudang Trembesi {runId}`
 10. Verifikasi pengajuan `Gudang Kenari {runId}` yang memuat 12 aset tampil sebagai satu baris dengan Total Asset `12`
 11. Verifikasi Registration ID baris `Gudang Kenari {runId}` berformat `REG-YYYYMMDD-NNNNN` dan sama dengan Registration ID milik DU-049-1
 12. Verifikasi Requested By baris `Gudang Kenari {runId}` bernilai `Hadi K`
@@ -157,3 +157,12 @@ coverage:
 89. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}` dan tidak memuat baris `Gudang Luar Cakupan {runId}`
 90. Klik `(←)` pada kotak Search
 91. Verifikasi angka N pada tab `Active (N)` sama dengan nilai Z pada info paginasi `Showing X to Y of Z` tabel tab Active tanpa Search dan Filter
+
+### Breadcrumb dan Back browser kembali ke tab Active
+92. Ganti isi kotak search dengan `{runId}`, tekan Enter
+93. Klik ikon `Review` pada baris `Gudang Kenari {runId}`
+94. Klik tautan breadcrumb `Active`
+95. Verifikasi antrean Approvals terbuka kembali pada tab `Active` dengan breadcrumb `Approvals > Registration > Active`
+96. Klik ikon `Review` pada baris `Gudang Kenari {runId}`
+97. Klik tombol Back browser
+98. Verifikasi antrean Approvals terbuka kembali pada tab `Active` dengan breadcrumb `Approvals > Registration > Active`

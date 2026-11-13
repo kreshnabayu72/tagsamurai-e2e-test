@@ -22,8 +22,8 @@ coverage:
 - Aktor: Total Control `Dian P`, seluruh client.
 - Layar awal: Assets > Registration > Waiting for Approval.
 - Data:
-  - DU-048-1: Pengajuan Waiting for Approval dengan Registration ID `REG-20261109-04801`, Group `Gudang Unduh Menunggu {runId}`, Total Asset `6`, Requested By `Maya L`, Last Updated `T0 − 1 hari`.
-  - DU-048-2: Pengajuan History dengan Registration ID `REG-20261108-04802`, Group `Gudang Unduh Riwayat {runId}`, Total Asset `7`, Status `Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`.
+  - DU-048-1: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Unduh Menunggu {runId}`, Total Asset `6`, Requested By `Maya L`, Last Updated `T0 − 1 hari`.
+  - DU-048-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Unduh Riwayat {runId}`, Total Asset `7`, Status `Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`.
   - Maya L dan Hadi K adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing; Maya L dan Hadi K bukan Total Control.
 
 ## Test Steps
@@ -33,11 +33,11 @@ coverage:
 2. Verifikasi tabel sub tab Waiting for Approval memuat baris `Gudang Unduh Menunggu {runId}`
 3. Klik `[Download]`
 4. Pilih `Download as CSV`
-5. Verifikasi berkas `Registration-Requests` dengan ekstensi `.csv` terunduh dan memuat baris dengan Registration ID `REG-20261109-04801`
-6. Verifikasi berkas `Registration-Requests` dengan ekstensi `.csv` tidak memuat baris dengan Registration ID `REG-20261108-04802`
+5. Verifikasi berkas `Registration-Requests` dengan ekstensi `.csv` terunduh dan memuat baris dengan Registration ID milik DU-048-1
+6. Verifikasi berkas `Registration-Requests` dengan ekstensi `.csv` tidak memuat baris dengan Registration ID milik DU-048-2
 7. Klik `[Download]`
 8. Pilih `Download as XLSX`
-9. Verifikasi berkas `Registration-Requests` dengan ekstensi `.xlsx` terunduh dan memuat baris dengan Registration ID `REG-20261109-04801`
+9. Verifikasi berkas `Registration-Requests` dengan ekstensi `.xlsx` terunduh dan memuat baris dengan Registration ID milik DU-048-1
 
 ### Download dari sub tab History
 10. Klik sub tab `History`
@@ -45,8 +45,8 @@ coverage:
 12. Verifikasi tabel sub tab History memuat baris `Gudang Unduh Riwayat {runId}`
 13. Klik `[Download]`
 14. Pilih `Download as CSV`
-15. Verifikasi berkas `Registration-Requests` dengan ekstensi `.csv` terunduh dan memuat baris dengan Registration ID `REG-20261108-04802`
-16. Verifikasi berkas `Registration-Requests` dengan ekstensi `.csv` tidak memuat baris dengan Registration ID `REG-20261109-04801`
+15. Verifikasi berkas `Registration-Requests` dengan ekstensi `.csv` terunduh dan memuat baris dengan Registration ID milik DU-048-2
+16. Verifikasi berkas `Registration-Requests` dengan ekstensi `.csv` tidak memuat baris dengan Registration ID milik DU-048-1
 17. Klik `[Download]`
 18. Pilih `Download as XLSX`
-19. Verifikasi berkas `Registration-Requests` dengan ekstensi `.xlsx` terunduh dan memuat baris dengan Registration ID `REG-20261108-04802`
+19. Verifikasi berkas `Registration-Requests` dengan ekstensi `.xlsx` terunduh dan memuat baris dengan Registration ID milik DU-048-2

@@ -16,8 +16,9 @@ trace:
   "FAREG-LOGIC-20o": [16]
   "§4.6#p1": [3, 6, 12, 16]
   "§9.4.2#r59": 16
-  "§9.6#r8": 16
+  "§9.6#r8": [16, 56, 59]
   "§9.7#r3": [16, 19]
+anchor: [58]
 coverage:
   android: manual
 ---
@@ -40,6 +41,7 @@ coverage:
   - DU-096-10: Tag RFID `E28068940000500AB1C00965{runId}` berstatus `Retired`. Pesan penolakan yang diharapkan `E28068940000500AB1C00965{runId} is not available (Retired)`, dari template `[TAG Code] is not available ([Status])` dengan TAG Code `E28068940000500AB1C00965{runId}` dan Status `Retired`.
 - Kondisi:
   - Perangkat tersambung ke server.
+  - Send untuk Tag `E28068940000500AB1C00962{runId}` pada kelompok «Send gagal karena error server tidak membentuk Draft» gagal karena error server.
 
 ## Test Steps
 
@@ -93,3 +95,21 @@ coverage:
 41. Lanjut ke layar Photo
 42. Pilih berkas Photo `foto-laptop.gif` dari galeri perangkat
 43. Verifikasi error inline `Unsupported format. Please upload JPG, PNG, or JPEG.` tampil pada layar Photo
+
+### Send gagal karena error server tidak membentuk Draft
+44. Buka sub tab `Draft`
+45. Catat jumlah card Draft Group `Gudang 1 {runId}`
+46. Buka layar Scan pada Registrasi mobile
+47. Pindai Tag `E28068940000500AB1C00962{runId}` dengan perangkat
+48. Lanjut ke layar Photo
+49. Ambil satu Photo dengan kamera perangkat
+50. Lanjut ke layar `Asset Name, Brand, Model & Group`
+51. Pilih Asset Name `Laptop`
+52. Pilih Brand `Dell`
+53. Pilih Model `Latitude 5440`
+54. Pilih Group `Gudang 1 {runId}`
+55. Klik `Send`
+56. Verifikasi toast error dengan awalan `Error, failed to` tampil
+57. Buka sub tab `Draft`
+58. Verifikasi card Draft Group `Gudang 1 {runId}` dengan Requested By `Rina W` tampil
+59. Verifikasi jumlah card Draft Group `Gudang 1 {runId}` sama dengan jumlah yang dicatat, tidak ada card Draft baru

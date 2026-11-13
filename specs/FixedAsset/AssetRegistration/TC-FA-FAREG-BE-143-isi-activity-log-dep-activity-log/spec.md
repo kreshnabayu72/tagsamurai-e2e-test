@@ -40,7 +40,7 @@ trace:
 - Aktor:
   - Rina W (Manage asset & TAG, Group terkelola `Gudang Jakarta {runId}` dan `Gudang Bandung {runId}`) sebagai pengaju dan pelaku aksi draft.
   - Lina (Manage asset & TAG, Group terkelola `Gudang Jakarta {runId}`).
-  - Agus P (Group Manager Group `Gudang Jakarta {runId}`) sebagai approver.
+  - `Agus P {runId}` (Group Manager Group `Gudang Jakarta {runId}`, user milik spec ini) sebagai approver.
 - Data:
   - DU-143-1: Group `Gudang Jakarta {runId}`, ber-toggle `Require Approval for Registration` ON, ada di entitas aktor.
   - DU-143-2: Group `Gudang Bandung {runId}`, ber-toggle `Require Approval for Registration` OFF, ada di entitas aktor.
@@ -89,13 +89,13 @@ trace:
 14. Verifikasi Activity Log memuat dua belas entri baru, satu per aset, dengan Action `Activate`, Field `Status`, Old Value `Draft`, New Value `Active`, Source `Manual`, dan Modified By `Rina W`
 
 ### Keputusan approval dan koreksi approver dicatat saat Approve
-15. Catat jumlah entri Activity Log milik Agus P
-16. Agus P menyimpan koreksi Brand aset pertama pengajuan DU-143-8 menjadi `Chitose` dengan Model `Orion`
-17. Agus P menyimpan koreksi Brand aset kedua pengajuan DU-143-8 menjadi `Chitose` dengan Model `Orion`
+15. Catat jumlah entri Activity Log milik Agus P {runId}
+16. Agus P {runId} menyimpan koreksi Brand aset pertama pengajuan DU-143-8 menjadi `Chitose` dengan Model `Orion`
+17. Agus P {runId} menyimpan koreksi Brand aset kedua pengajuan DU-143-8 menjadi `Chitose` dengan Model `Orion`
 18. Verifikasi jumlah entri Activity Log tidak bertambah dibanding catatan setelah kedua koreksi disimpan
-19. Agus P mengirim satu keputusan atas pengajuan DU-143-8: aset pertama `Approve`, aset kedua `Return to Draft` dengan Reason `Foto aset belum jelas`
-20. Verifikasi Activity Log memuat entri Action `Approve`, Field `Status`, Old Value `Waiting for Approval`, New Value `Active`, dan Modified By `Agus P` untuk aset pertama serta entri Action `Return` untuk aset kedua
-21. Verifikasi Activity Log memuat entri Action `Correct`, Field `Brand`, Old Value `Olympic`, New Value `Chitose`, Source `Approver correction`, dan Modified By `Agus P` untuk aset pertama
+19. Agus P {runId} mengirim satu keputusan atas pengajuan DU-143-8: aset pertama `Approve`, aset kedua `Return to Draft` dengan Reason `Foto aset belum jelas`
+20. Verifikasi Activity Log memuat entri Action `Approve`, Field `Status`, Old Value `Waiting for Approval`, New Value `Active`, dan Modified By `Agus P {runId}` untuk aset pertama serta entri Action `Return` untuk aset kedua
+21. Verifikasi Activity Log memuat entri Action `Correct`, Field `Brand`, Old Value `Olympic`, New Value `Chitose`, Source `Approver correction`, dan Modified By `Agus P {runId}` untuk aset pertama
 22. Verifikasi Activity Log tidak memuat entri koreksi untuk aset kedua karena aset itu tidak disetujui
 
 ### Cancel registration dan auto-cancel sistem dicatat
@@ -142,9 +142,9 @@ trace:
 55. Catat jumlah entri Activity Log milik Rina W
 56. Rina W mengunduh data dari sub tab History
 57. Verifikasi Activity Log memuat satu entri baru `[User] exported [Filename]` dengan User `Rina W` dan Filename sama dengan nama berkas yang diunduh dari sub tab History
-58. Catat jumlah entri Activity Log milik Agus P
-59. Agus P mengunduh data dari antrean Approvals
-60. Verifikasi Activity Log memuat satu entri baru `[User] exported [Filename]` dengan User `Agus P` dan Filename sama dengan nama berkas yang diunduh dari antrean Approvals
+58. Catat jumlah entri Activity Log milik Agus P {runId}
+59. Agus P {runId} mengunduh data dari antrean Approvals
+60. Verifikasi Activity Log memuat satu entri baru `[User] exported [Filename]` dengan User `Agus P {runId}` dan Filename sama dengan nama berkas yang diunduh dari antrean Approvals
 
 ### Field Model dan Condition dicatat di Activity Log
 61. Rina W mengubah Model aset pertama batch DU-143-21 dari `Orion K` menjadi `Orion KX`
@@ -157,8 +157,8 @@ trace:
 ### Submit dan Reject dicatat
 67. Rina W mengirim Submit for Approval atas batch DU-143-22 berisi `1` aset
 68. Verifikasi Activity Log memuat entri baru dengan Action `Submit` dan Modified By `Rina W` untuk aset batch DU-143-22
-69. Agus P mengirim keputusan `Reject` untuk aset pengajuan DU-143-23 dengan Reason `Aset duplikat dengan pengajuan lain`
-70. Verifikasi Activity Log memuat entri baru dengan Action `Reject` dan Modified By `Agus P` untuk aset pengajuan DU-143-23
+69. Agus P {runId} mengirim keputusan `Reject` untuk aset pengajuan DU-143-23 dengan Reason `Aset duplikat dengan pengajuan lain`
+70. Verifikasi Activity Log memuat entri baru dengan Action `Reject` dan Modified By `Agus P {runId}` untuk aset pengajuan DU-143-23
 
 ### Save draft manual tanpa perubahan tidak mencatat entri
 71. Catat jumlah entri Activity Log milik Rina W

@@ -13,7 +13,7 @@ trace:
   "FAREG-LOGIC-04d": 9
   "FAREG-LOGIC-04e": [85, 86]
   "FAREG-LOGIC-04o": [14, 23, 29, 34, 39, 44, 49, 54, 76, 81, 91]
-  "FAREG-LOGIC-04q": [7, 99, 100, 101, 102, 103, 114, 118, 119, 121]
+  "FAREG-LOGIC-04q": [7, 99, 100, 101, 102, 103, 114, 118, 119, 121, 137]
   "S-REG-15": [94, 95, 124, 125, 129, 130]
   "S-REG-18": [8, 14]
   "S-REG-28": [100, 101, 102, 103]
@@ -100,6 +100,7 @@ coverage:
   - K23: form `Edit` draft tersimpan dengan Item DU-020-21; reader TAG terhubung; plan memperbolehkan tipe Tag RFID.
   - K24: form `Edit` draft tersimpan dengan Item DU-020-1; driver reader TAG belum terpasang.
   - K25: form `Edit` draft tersimpan dengan Item DU-020-1; lebih dari satu reader TAG terhubung.
+  - K26: sama dengan K22; Activate dengan Skip pairing dan Reason terpilih diterima.
 
 ## Test Steps
 ### Kolom TAG: tombol Scan per tipe dan Badge Unverified
@@ -223,9 +224,9 @@ coverage:
 98. Klik tab `Asset`
 99. Verifikasi tombol `Scan RFID` pada `Laptop Dell Latitude 5440 - 1` berstatus Disabled
 100. Verifikasi tombol `Scan QR` pada `Kursi Kerja Ergonomis - 1` tidak Disabled
-101. Verifikasi tooltip `This TAG type isn't available on your plan.` tampil saat pointer berada di tombol `Scan RFID`
+101. Verifikasi alasan `Upgrade to unlock` tersampaikan saat pointer berada di tombol `Scan RFID` yang Disabled[^drift-1]
 102. Verifikasi tombol `Scan NFC` pada `Printer Epson L3250 - 1` berstatus Disabled
-103. Verifikasi tooltip `This TAG type isn't available on your plan.` tampil saat pointer berada di tombol `Scan NFC`
+103. Verifikasi alasan `Upgrade to unlock` tersampaikan saat pointer berada di tombol `Scan NFC` yang Disabled[^drift-1]
 
 ### Item Non-TAG menampilkan No tag dan kolom TAG tersembunyi bila semua aset Non-TAG
 104. Tampilkan Halaman `Register Asset` dengan kondisi K20
@@ -264,3 +265,13 @@ coverage:
 129. Verifikasi tombol `Scan RFID` pada `Laptop Dell Latitude 5440 - 1` berstatus Disabled
 130. Verifikasi tooltip `Connect a TAG reader to scan.` tampil saat pointer berada di tombol `Scan RFID`
 131. Verifikasi banner reader tampil
+
+### Slot bertipe terkunci plan diterima lewat Skip pairing
+132. Tampilkan Halaman `Register Asset` dengan kondisi K26
+133. Klik `[Submit]`
+134. Centang checkbox `Submit them without pairing TAGs (pair later)`
+135. Pilih Reason `TAG not yet available`
+136. Klik `[Activate]`
+137. Verifikasi Activate diterima untuk aset ber-slot terkunci plan dengan toast `Success, asset has been activated.`
+
+[^drift-1]: Drift PRD vs foundation. PRD FAREG-LOGIC-04q dan S-REG-28: tombol `Scan [Type]` Disabled untuk tipe Tag terkunci plan dengan tooltip `This TAG type isn't available on your plan.`. foundation `product/licensing/plans.md` §2.1 «Catatan TAG — Starter»: tombol scan RFID/NFC/BLE/GPS tetap tampil tetapi terkunci (🔒) dengan tooltip `Upgrade to unlock`. Diasersi: foundation, karena gating plan adalah pola bersama lintas modul (SB-4).

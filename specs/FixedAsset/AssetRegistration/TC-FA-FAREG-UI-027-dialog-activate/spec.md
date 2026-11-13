@@ -9,7 +9,7 @@ sourceRules: ["D-REG-03", "D-REG-08", "FAREG-LOGIC-01h", "FAREG-LOGIC-01j", "FAR
 smoke: []
 dependsOn: []
 trace:
-  "D-REG-03": [4, 5, 6, 7, 24, 27, 28, 29, 41, 42, 43, 51, 53, 60, 63, 66, 68, 100, 101]
+  "D-REG-03": [4, 5, 6, 7, 24, 27, 28, 29, 41, 42, 43, 51, 53, 60, 63, 66, 68, 100, 101, 148]
   "D-REG-08": [106, 107, 108, 141, 143]
   "FAREG-LOGIC-01h": [2, 7, 29]
   "FAREG-LOGIC-01j": 42
@@ -17,13 +17,13 @@ trace:
   "FAREG-LOGIC-04k": [54, 59, 60, 62, 63, 65, 66, 68, 97]
   "FAREG-LOGIC-05n": [4, 8, 41, 104, 106, 110, 139, 141, 143]
   "T-REG-02": [21, 35, 97, 119]
-  "T-REG-03": 31
-  "T-REG-12": 115
-  "T-REG-13": 125
+  "T-REG-03": [31, 151]
+  "T-REG-12": [115, 147]
+  "T-REG-13": [125, 155]
   "V-REG-11": [51, 56]
   "V-REG-12": 71
   "V-REG-13": [46, 47]
-  "V-REG-18": [79, 81, 84, 87]
+  "V-REG-18": [79, 81, 84, 87, 162, 163]
   "§4.1#r5": [4, 9, 27]
   "§4.1#b12": [21, 31]
   "§4.2.3#b2": [5, 6, 7, 8, 9, 24, 41, 42, 68, 100, 101]
@@ -32,8 +32,8 @@ trace:
   "§9.9#r9": [53, 56]
   "§9.9#r10": [71, 79, 81, 90]
   "§9.9#r17": [43, 44]
-  "EB-ERR-1@activate": [115, 116, 117, 119, 125, 126]
-  "EB-FB-1@activate": [21, 31, 97, 115]
+  "EB-ERR-1@activate": [115, 116, 117, 119, 125, 126, 147, 148, 149, 151, 155, 156]
+  "EB-FB-1@activate": [21, 31, 97, 115, 147, 151]
   "EB-FB-2@dialog-blok": [16, 111]
   "EB-FRM-1@dialog-activate": [130, 131, 134, 136]
   "EB-FRM-4@skip-pairing-note": [79, 81]
@@ -58,6 +58,7 @@ coverage:
   - DU-027-6: Item `Printer Epson L3250` dengan Quantity `1`; aset hanya kurang Tag (Tingkat 2 lain terisi).
   - DU-027-7: kuota Group `Gudang 1` tidak cukup untuk tiga aset sehingga Activate ditolak `QUOTA_EXCEEDED`.
   - DU-027-20: kuota Group `Gudang 2` tidak cukup untuk tiga aset sehingga Submit for Approval ditolak `QUOTA_EXCEEDED`.
+  - DU-027-21: Skip pairing Note berisi emoji `Reader rusak 😊`.
   - DU-027-8: teks dialog `Gudang 1 · 3 assets`, `Gudang 1 · 1 asset`, `3 assets are not paired to a TAG yet.`, dan `1 asset is not paired to a TAG yet.`
 - Kondisi:
   - K1: form `Edit` draft tersimpan dengan Group DU-027-1 dan Item DU-027-3; Approval Workflow OFF.
@@ -71,6 +72,8 @@ coverage:
   - K9: sama dengan K5; Activate gagal karena gangguan jaringan.
   - K10: sama dengan K1; respons Activate lambat.
   - K11: form `Edit` draft tersimpan dengan Group DU-027-2 dan Item DU-027-3; Approval Workflow ON; kuota DU-027-20.
+  - K12: sama dengan K3; Submit for Approval gagal karena error server pada percobaan pertama dan berhasil pada percobaan kedua.
+  - K13: sama dengan K3; Submit for Approval gagal karena gangguan jaringan.
 
 ## Test Steps
 ### Dialog Activate saat Approval Workflow OFF: isi, tombol, aksesibilitas, dan Cancel
@@ -245,3 +248,29 @@ coverage:
 141. Verifikasi dialog `Cannot Activate` tampil dengan teks `Group quota exceeded. Available slots:` diikuti sisa slot dari respons
 142. Klik `[OK]`
 143. Verifikasi form `Register Asset` masih Draft dengan footer `[Save draft]` dan `[Submit]`
+
+### Submit for Approval gagal karena error server dan pulih sesudah submit ulang
+144. Tampilkan Dialog Activate dengan kondisi K12
+145. Klik `[Submit]` pada footer form
+146. Klik `[Submit for Approval]`
+147. Verifikasi toast Error dengan awalan `Error, failed to` tampil sesudah `[Submit for Approval]`
+148. Verifikasi dialog `Submit for Approval` tetap terbuka dengan bullet `Gudang 2 · 3 assets`
+149. Verifikasi tombol `[Submit for Approval]` aktif kembali
+150. Klik `[Submit for Approval]`
+151. Verifikasi toast `Success, registration has been submitted.` tampil satu kali
+
+### Submit for Approval gagal karena gangguan jaringan
+152. Tampilkan Dialog Activate dengan kondisi K13
+153. Klik `[Submit]` pada footer form
+154. Klik `[Submit for Approval]`
+155. Verifikasi toast Error `Connection problem. Please try again.` tampil dan dialog `Submit for Approval` tetap terbuka
+156. Verifikasi tombol `[Submit for Approval]` aktif kembali
+
+### Skip pairing Note menerima emoji
+157. Tampilkan Dialog Activate dengan kondisi K5
+158. Klik `[Submit]` pada footer form
+159. Centang checkbox `Submit them without pairing TAGs (pair later)`
+160. Pilih Reason `Other`
+161. Ganti isi Input note dengan `Reader rusak 😊`
+162. Verifikasi Input note menampilkan `Reader rusak 😊` utuh
+163. Verifikasi tidak ada pesan error di bawah Input note
