@@ -1056,7 +1056,7 @@ Aturan:
 - **Diterapkan di:** skrip LicenseAllocationSubscription 007 (`// @spec-decision: pending D-draft-ACCS-04`, menggantikan `wrapper-gap`) dan PlansLicensingPlansFeatures 044 (`// @spec-decision: D-draft-ACPF-3`).
 - **Sumber:** repo aplikasi `plans/admin-console-license-allocation-subscription/decisions.md` L325-332 (D-draft-ACCS-04); `plans/admin-console-plans-licensing/decisions.md` L282-289 (D-draft-ACPF-3).
 
-## D-112 CS 074 menjalankan blok cancel-while-Waiting-for-Approval pada request trial tanpa harga (2026-11-12)
+## D-112 (ditarik oleh D-175) CS 074 menjalankan blok cancel-while-Waiting-for-Approval pada request trial tanpa harga (2026-11-12)
 
 - **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-074` TC-AC-CS-282 langkah 1-11, TC-AC-CS-615 langkah 12-25, TC-AC-CS-210 langkah 26-30, TC-AC-CS-286 langkah 31-32.
 - **Spec meminta:** request berbayar Partner Rina (Plan Owner CV Karya Mandiri, Start Date 19/08/26).
@@ -1450,3 +1450,312 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A).
 - **Diterapkan di:** tujuh skrip di atas (`pending D-draft-ACPF-7`, kondisional).
 - **Sumber:** repo aplikasi `plans/admin-console-plans-licensing/decisions.md` L318.
+
+## D-148 Nilai kosong Changelog yang disimpan `-` tampil `—` (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/HardwareHandheldReader `TC-GS-HHR-E2E-063` TC-GS-HHR-345 (Old Value kosong baris Edit), TC-GS-HHR-350 langkah 144, 148, 151 (New Value kosong baris Cancel Request), TC-GS-HHR-351 langkah 166, 170, 173 (New Value kosong baris Delete); `TC-GS-HHR-E2E-061` TC-GS-HHR-336 langkah 98-99. Drift yang sama: AllTags `TC-GS-TAG-E2E-087` TC-GS-TAG-263 langkah 14, `TC-GS-TAG-E2E-089` TC-GS-TAG-268 langkah 29.
+- **Spec meminta:** Old Value / New Value kosong tampil `—`; sort menaruh nilai kosong di akhir pada ascending, dan baris non-kosong pertama adalah yang disebut spec.
+- **Kenyataannya:** LLD Handheld Reader (L474-L487, L793-L806) dan service menyimpan nilai kosong sebagai `-` (hardware-tagging `LogEmpty = "-"`, hardware-tagging-service#54 ditutup ke kontrak); analytics sudah menghitung `""`, null dan `"-"` sebagai kosong saat filter dan sort. Run hhr-s2-r1: `newValue "-"`. Sel Changelog aplikasi sudah menampilkan `—` untuk `-`, `""` dan null (dicek Integration C 2026-11-12).
+- **Karena:** D-054 sudah menetapkan tampilan `—` untuk nilai kosong di semua modul. `-` adalah penanda kosong milik kontrak, bukan data, jadi tampilannya ikut D-054 dan kontrak tidak berubah (opsi b dari usulan). Urutan sort atas nilai non-kosong tidak diatur kontrak.
+- **Keputusan:** sel Changelog menampilkan `—` untuk `-`, `""` dan null; langkah tampilan memverifikasi `—` di sel, bukan nilai mentah API. Langkah sort tetap di-skip `feature-gap:be BT-GAP-08 (analytics#56)`; tidak ada asersi `-`.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C, D-draft-HHR-DASH).
+- **Diterapkan di:** HHR 061, 063; AllTags 087, 089; AdminConsole Client 120 (TC-AC-ACC-663 langkah 32-33), 134 (TC-AC-ACC-455 langkah 69): Changelog Client (EMS, LLD Client L1145) juga menyimpan `-`. Modal Changelog Client belum dibangun (fase logs, ADR-006), jadi stand-in API mengasersi `-` mentah, dan tampilan `—` menunggu modal di `feature-gap:fe UG-ACC-LOG-1`.
+- **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` (blok D-draft-HHR-DASH).
+
+## D-149 Emoji yang disuntik ke DOM Alias Name di luar e2e (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/HardwareHandheldReader `TC-GS-HHR-E2E-029` TC-GS-HHR-113 langkah 40-45.
+- **Spec meminta:** `😊` disuntik langsung ke DOM field Alias Name melewati filter ketikan FE, Save, lalu muncul 422 inline `Alias name contains invalid characters` dengan nilai tetap.
+- **Kenyataannya:** pengguna tidak bisa mencapai keadaan itu lewat UI (ketik dan paste ditolak, TC-GS-HHR-112); 422 server untuk `😊` sudah diasersi lewat API di `TC-GS-HHR-E2E-013`.
+- **Karena:** e2e hanya membangun keadaan yang benar-benar bisa terjadi; ini cacat spec, bukan wrapper-gap atau library-gap.
+- **Keputusan:** blok itu di luar e2e, tanpa langkah dan tanpa gap; tag `@library-gap` dan `@wrapper-gap` dihapus.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-09 (dicatat 2026-11-12, D-draft-HHR-INJECT).
+- **Diterapkan di:** `TC-GS-HHR-E2E-029`.
+- **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` (blok D-draft-HHR-INJECT).
+
+## D-150 Pesan validasi Custom Field memakai nama field seperti dikonfigurasi (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-031` TC-GS-USER-155 langkah 30; `TC-GS-USER-E2E-040` TC-GS-USER-215; `TC-GS-USER-E2E-022` TC-GS-USER-158 langkah 60; `TC-GS-USER-E2E-174` TC-GS-USER-1105 langkah 6; NonLoginUser `TC-GS-NLU-E2E-053` TC-GS-NLU-458 langkah 6-7.
+- **Spec meminta:** nama field ditulis huruf kecil di pesan V-12 / V-24 (NLU 053: `Badge required`).
+- **Kenyataannya:** aplikasi menulis nama Custom Field seperti dikonfigurasi admin (`This Blood Type no longer exists. Please select another.`, `Badge Required must not be empty`); tabel copy PRD memakai placeholder `[Field name]`, bukan nama huruf kecil.
+- **Karena:** nama field adalah nama yang diberikan admin; mengecilkannya mengubah nama diri. Ini copy (presentasi), jadi UI yang dibangun menjadi rujukan (D-096).
+- **Keputusan:** kelima langkah memverifikasi pesan dengan nama field seperti dikonfigurasi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** User 022, 031, 040, 174; NLU 053 (D-draft-C-9).
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1240.
+
+## D-151 Edit nonaktif pada baris Default User memakai alasan Default User (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-011` TC-GS-USER-56 langkah 21-23 (TC-GS-USER-57 langkah 36-38 sebagai akibatnya).
+- **Spec meminta:** tooltip izin/tier pada item `Edit` yang nonaktif untuk pemegang Full CRUD di baris Default User.
+- **Kenyataannya:** aplikasi memberi Edit alasan Default User, sama dengan Delete di bawahnya.
+- **Karena:** kondisi baris itu adalah Default User; teks tooltip adalah presentasi, jadi UI yang dibangun menjadi rujukan (D-096).
+- **Keputusan:** langkah 21-23 memverifikasi tooltip Default User pada Edit dan Delete.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** User 011 (D-draft-C-11).
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1249.
+
+## D-152 Opsi filter Status di popup Select User adalah enum tetap Active / Inactive (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/NonLoginUser `TC-GS-NLU-E2E-037` TC-GS-NLU-116 langkah 24-25.
+- **Spec meminta:** dropdown Status hanya berisi nilai yang ada di tabel (hanya `Active`).
+- **Kenyataannya:** `POST /v2/iam/users/options` menjawab `statusOptions` Active dan Inactive; LLD user-crud.md L111 menetapkan opsi Status sebagai enum tetap, bukan facet. Aplikasi memakai opsi dari server apa adanya.
+- **Karena:** kontrak menetapkan enum; facet data hanya untuk Position, Division dan referensi lain.
+- **Keputusan:** langkah 25 memverifikasi opsi `Active` dan `Inactive`; langkah 26-27 tetap.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-08 (dicatat 2026-11-12, D-draft-S).
+- **Diterapkan di:** NLU 037.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1258.
+
+## D-153 Badge Dropdown yang dikosongkan kembali ke teks lama tanpa error (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-037` TC-GS-UCF-366 langkah 27-29 dan 30-32.
+- **Spec meminta:** error inline `Option name must not be empty` saat badge dikosongkan (atau hanya spasi), lalu `Beta` kembali.
+- **Kenyataannya:** BadgeInput dengan `restoreValueOnEmpty` mengembalikan teks lama tanpa error; edit hanya-spasi di-trim menjadi kosong. Run CustomFieldUser-2.
+- **Karena:** perilaku komponen menang atas spec (D-096); owner CD-080 (2026-11-08).
+- **Keputusan:** langkah 28 dan 31 memverifikasi tidak ada error; langkah 29, 31 dan 32 memverifikasi `Beta` kembali.
+- **Diputuskan oleh:** owner CD-080 (2026-11-08), dicatat Wangs-UI Coordinator 2026-11-12 (D-draft-H).
+- **Diterapkan di:** UCF 037.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1168.
+
+## D-154 Nilai Numeric disimpan dan ditampilkan sebagai angka (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-025` TC-GS-UCF-386 dan TC-GS-UCF-387.
+- **Spec meminta:** `-0.0` tersimpan `0.0` dan `5.50` tersimpan `5.50` (seperti diketik).
+- **Kenyataannya:** NumberInput selalu menghasilkan angka; nilai tersimpan dan tampil `0` dan `5.5`. Run Rerun-rc44-uifix-3.
+- **Karena:** keputusan owner CD-077: Numeric adalah angka, 5.50 == 5.5.
+- **Keputusan:** langkah memverifikasi `0` dan `5.5`.
+- **Diputuskan oleh:** owner CD-077, dicatat Wangs-UI Coordinator 2026-11-12 (D-draft-J).
+- **Diterapkan di:** UCF 025.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-J).
+
+## D-155 Batas 15 digit Numeric menghitung digit nilai angkanya (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-024` TC-GS-UCF-389 langkah 36-43 dan TC-GS-UCF-178 langkah 67-73.
+- **Spec meminta:** batas dihitung dari teks yang diketik (`0000000000000001`, 16 karakter, ditolak `Max. 15 characters`).
+- **Kenyataannya:** Numeric adalah nilai angka (D-154): `0000000000000001` bernilai `1`; lebih dari 15 digit kehilangan presisi sebagai angka JS.
+- **Karena:** keputusan owner CD-077.
+- **Keputusan:** nol di depan, `-` dan `.` tidak dihitung; `0000000000000001` diterima; nilai lebih dari 15 digit ditolak `Max. 15 characters`; `-1234567890123.45` diterima dan tersimpan.
+- **Diputuskan oleh:** owner CD-077, dicatat Wangs-UI Coordinator 2026-11-12 (D-draft-K).
+- **Diterapkan di:** UCF 024.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-K).
+
+## D-156 Numeric tidak menampilkan error untuk `-` atau `.` saja (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-024` TC-GS-UCF-179 langkah 34-35 dan TC-GS-UCF-350 langkah 62-63.
+- **Spec meminta:** `-` saja menampilkan `Bonus must be a number`; `.` saja menampilkan `Dec form must be a number`.
+- **Kenyataannya:** NumberInput tidak menerima `-` atau `.` saja sebagai nilai dan tidak memunculkan error. Run Rerun-rc46-uifix-4.
+- **Karena:** NumberInput menolak ketikan yang membuat nilai tidak valid (perilaku komponen), di atas CD-077.
+- **Keputusan:** langkah memverifikasi tidak ada error.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-L).
+- **Diterapkan di:** UCF 024.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-L).
+
+## D-157 Menutup Edit User setelah nilai diketik lalu dihapus: tanpa dialog Unsaved Changes (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-021` TC-GS-UCF-188 langkah 46-48.
+- **Spec meminta:** setelah Retro Req diisi `x` lalu dikosongkan dan Save ditolak, `[✕]` membuka `Unsaved Changes`.
+- **Kenyataannya:** form kembali ke nilai awal (kosong), jadi DialogForm tidak menganggapnya berubah dan `[✕]` menutup popup tanpa dialog. Run Rerun-rc46-uifix-4.
+- **Karena:** form dianggap berubah hanya bila nilainya berbeda dari nilai awal, sama seperti di layar lain.
+- **Keputusan:** langkah 46-47 memverifikasi popup tertutup tanpa dialog Unsaved Changes.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-M).
+- **Diterapkan di:** UCF 021.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-M).
+
+## D-158 Klik backdrop menutup popup All Values (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-002` TC-GS-UCF-15 langkah 27-28.
+- **Spec meminta:** klik backdrop tidak menutup popup All Values Preview.
+- **Kenyataannya:** popup adalah Dialog Wangs UI (BadgeGroup `+N more`), yang tertutup oleh Escape dan klik backdrop. Run CFU-rerun-rc52.
+- **Karena:** perilaku komponen (D-096). Untuk modal Changelog berlaku D-067 (klik backdrop diabaikan).
+- **Keputusan:** langkah 28 memverifikasi popup tertutup setelah klik backdrop; popup dibuka lagi untuk langkah 29-30.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-P).
+- **Diterapkan di:** UCF 002.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-P).
+
+## D-159 Nilai Dropdown yang basi dilaporkan dengan label yang dikirim (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-038` TC-GS-UCF-368 langkah 70.
+- **Spec meminta:** `Beta no longer exists. Please select another.` (label yang dihapus Admin B).
+- **Kenyataannya:** sesi A sudah mengganti `Beta` menjadi `Delta` lalu menyimpan; server menolak dengan `Delta no longer exists. Please select another.` Run CFU-rerun-rc52.
+- **Karena:** LLD custom-field-user L656: nilai basi dilaporkan dengan label yang dikirim.
+- **Keputusan:** langkah 70 memverifikasi `Delta no longer exists. Please select another.`; langkah 72 mengikuti spec.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-Q).
+- **Diterapkan di:** UCF 038.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-Q).
+
+## D-160 Error nilai Dropdown muncul saat draft di-commit, bukan saat mengetik (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/CustomFieldUser `TC-GS-UCF-E2E-017` TC-GS-UCF-66 langkah 47-50, TC-GS-UCF-67 langkah 55-58, TC-GS-UCF-448 langkah 63-66.
+- **Spec meminta:** error `Option name already exists` dan `Max. 120 characters` muncul saat mengetik, sebelum Enter.
+- **Kenyataannya:** BadgeInput memvalidasi saat draft di-commit (Enter, blur, paste). Run CFU-rerun-rc52.
+- **Karena:** perilaku komponen; Ark/Zag dan Mantine TagsInput memvalidasi saat ditambah, antd, MUI dan React Aria tidak memvalidasi saat mengetik.
+- **Keputusan:** langkah mengetik draft, menekan Enter, lalu memverifikasi error dan jumlah badge tetap 1.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-R).
+- **Diterapkan di:** UCF 017.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-R).
+
+## D-161 Bulk Remove sukses parsial dijalankan admin Manage user and role tanpa Total Control (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/Role `TC-GS-ROLE-E2E-073` TC-GS-ROLE-261 langkah 34-42.
+- **Spec meminta:** aktor Total Control; intercept memalsukan jawaban 200 dengan `failedUserIds`.
+- **Kenyataannya:** PRD role.md EC-36: penolakan per baris berlaku untuk aktor non-Total Control; untuk aktor Total Control berlaku EC-34 (diproses lalu auto-revert). Probe slot 3 2026-11-09: `200 "2 deleted, 0 skipped"` dengan `autoRevertedUserIds`.
+- **Karena:** dengan aktor Total Control, sukses parsial EC-36 tidak bisa terjadi; jawaban palsu lewat intercept adalah jawaban bisnis. Aktor spec yang keliru, bukan backend.
+- **Keputusan:** langkah 34-42 memakai Hendra Wijaya (Manage user and role, tanpa access level); baris kedua diberi Total Control lewat API sebelum `[Remove]`; asersi toast `T-11`, satu baris terhapus, satu tetap, Bulk Action Bar tertutup. Tanpa intercept.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-09 (dicatat 2026-11-12, D-draft-ROLE-01).
+- **Diterapkan di:** Role 073.
+- **Sumber:** repo aplikasi `plans/global-settings-role/decisions.md` L270.
+
+## D-162 Bulk Resend yang gagal untuk satu penerima pindah ke ui-client (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-067` TC-GS-USER-1038 langkah 85-96.
+- **Spec meminta:** bulk Resend dengan satu penerima gagal di server, toast `Success, activation email has been sent. Some items failed.`
+- **Kenyataannya:** tidak ada route yang menggagalkan satu penerima `POST /v2/iam/users/resend-email`: 5xx menggagalkan seluruh request, chaos Mailpit menggagalkan semua penerima (BT-GS-USER-15, run GSUR-C-3).
+- **Karena:** e2e hanya membangun keadaan yang bisa terjadi; hasil parsial adalah tampilan atas jawaban kontrak.
+- **Keputusan:** langkah 85-96 pindah ke spec `ui-client` (jawaban parsial lewat intercept dari operasi resend-email di kontrak). BT-GS-USER-15 tetap sebagai kandidat backend saja.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-GSUSER-BULK-RESEND-PARTIAL).
+- **Diterapkan di:** User 067.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` L1150.
+
+## D-163 Convert yang bentrok dengan email Login User pindah ke ui-client (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/NonLoginUser `TC-GS-NLU-E2E-066` TC-GS-NLU-240/444 dan TC-GS-NLU-473 langkah 8-13; `TC-GS-NLU-E2E-068` TC-GS-NLU-244 langkah 4-8 dan TC-GS-NLU-245 langkah 11-14.
+- **Spec meminta:** Login User dengan email Non-Login User disisipkan melewati V-09, lalu Convert (tunggal atau bulk) menolak baris itu.
+- **Kenyataannya:** Login dan Non-Login User berbagi satu pool email; `POST /v2/iam/users` menjawab 409 `Email already exists` dan email-change menolak email yang sama (BT-GS-NLU-10, run GSUR-C-1). Bentrok tidak bisa terjadi dari browser.
+- **Karena:** keadaan yang tidak bisa dicapai produk adalah unit `ui-client`, bukan helper yang merusak cek keunikan backend.
+- **Keputusan:** langkah bentrok pindah ke spec `ui-client` penanganan hasil Convert (baris ditolak lewat intercept dari operasi convert di kontrak); langkah lain 066 dan 068 tetap. BT-GS-NLU-10 ditutup sebagai by design.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C) (D-draft-GSNLU-CONVERT-CLASH).
+- **Diterapkan di:** NLU 066, 068.
+- **Sumber:** repo aplikasi `plans/global-settings-user/decisions.md` (D-draft-GSNLU-CONVERT-CLASH).
+
+## D-164 Klik backdrop tidak menutup dialog penolakan buka produk (2026-11-12)
+
+- **Spec / langkah:** Auth/SessionManagement `TC-AUTH-SES-E2E-030` TC-AUTH-SES-99 (dialog Concurrent session limit reached); `TC-AUTH-SES-E2E-036` TC-AUTH-SES-117 (dialog Subscription Not Active), langkah klik backdrop.
+- **Spec meminta:** klik area gelap di luar dialog menutup dialog.
+- **Kenyataannya:** dialog tetap terbuka; Escape dan [OK] menutupnya (run 1122). Dialog ini alert Modal Wangs UI, overlay blocking yang tidak ditutup lewat klik backdrop.
+- **Karena:** perilaku komponen, sama dengan D-043 (`Modal.spec.md`: "cannot be dismissed by clicking the overlay").
+- **Keputusan:** langkah backdrop memverifikasi dialog tetap terbuka; dialog lalu ditutup lewat [OK].
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C).
+- **Diterapkan di:** SessionManagement 030, 036.
+- **Sumber:** repo aplikasi `plans/auth/integration-findings.md` (triage SES 1122).
+
+## D-165 403 `app_access_denied` saat membuka produk menampilkan popup Access Denied (2026-11-12)
+
+- **Spec / langkah:** Auth/SessionManagement `TC-AUTH-SES-E2E-024` TC-AUTH-SES-74 langkah 26.
+- **Spec meminta:** tidak ada dialog setelah 403 `app_access_denied`; FE langsung kembali ke Portal (PRD session-management L299, AUTHSES-LOGIC-04a).
+- **Kenyataannya:** aplikasi menampilkan popup "Access Denied" lalu kembali ke Portal setelah [OK].
+- **Karena:** override product owner 2026-10-20: setiap 403 `app_access_denied` saat buka produk menampilkan popup Access Denied, sejajar dengan popup D09 (`concurrent_limit_reached`) dan D10 (`subscription_not_active`).
+- **Keputusan:** langkah 26 memverifikasi popup Access Denied, [OK], lalu popup tertutup.
+- **Diputuskan oleh:** owner (product owner override 2026-10-20), dicatat Wangs-UI Coordinator 2026-11-12.
+- **Diterapkan di:** SessionManagement 024.
+- **Sumber:** repo aplikasi `plans/auth/decisions.md` L510-514.
+
+## D-166 Delete langsung Client dengan subscription live dijawab 409, bukan 422 (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-134` TC-AC-ACC-465 langkah 2, TC-AC-ACC-455 langkah 72-73, TC-AC-ACC-653, TC-AC-ACC-655 langkah 22 dan 24, TC-AC-ACC-978 langkah 31.
+- **Spec meminta:** server menolak `DELETE /clients/{id}` langsung dengan `422`.
+- **Kenyataannya:** LLD Client menjawab penolakan D-03/D-14 dengan `409` dan `data.errorCode` `delete_blocked_live_subscription` / `delete_blocked_request_in_progress` (admin-console/client LLD L1141, L1253). ems#163 ditutup sesuai LLD; run ACprove-mac-20261112-2014-v1 menjawab 409.
+- **Karena:** LLD adalah kontrak; `422` di spec adalah status validasi body (LLD langkah 2), bukan penjaga keadaan.
+- **Keputusan:** skrip mengasersi `409` dengan alasan D-03 dan record yang tidak berubah; `422` spec keluar dari e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A, D-draft-ACC-2).
+- **Diterapkan di:** Client 134.
+- **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` L62.
+
+## D-167 Notification Center mempertahankan Tab, Search dan Sort saat masuk lagi lewat `[Show All]` (2026-11-12)
+
+- **Spec / langkah:** FixedAsset/Notification `TC-FA-NOTIF-E2E-045` TC-FA-NOTIF-185 langkah 10, `TC-FA-NOTIF-E2E-114` TC-FA-NOTIF-226 langkah 5-8.
+- **Spec meminta:** setelah keluar lalu masuk lagi lewat `[Show All]`, Tab, Search dan Sort Notification Center kembali ke default.
+- **Kenyataannya:** owner rule state tabel menetapkan bahwa tabel **halaman** (layar list, tab, halaman detail) mempertahankan Search, Filter, Sort, Pagination dan susunan kolom saat pindah tab dan saat dikunjungi lagi; hanya tabel di dalam dialog yang reset (repo aplikasi `plans/_program/prd-overrides.md` L75, product owner 2026-11-11). Notification Center adalah halaman.
+- **Keputusan:** skrip mengasersi state yang dipertahankan (Tab, Search, Sort seperti ditinggalkan user); harapan reset di spec keluar dari e2e.
+- **Diputuskan oleh:** product owner 2026-11-11 (prd-overrides), dicatat Wangs-UI Coordinator 2026-11-12 (diusulkan Integration N, UG-NOTIF-2).
+- **Diterapkan di:** Notification 045, 114.
+- **Sumber:** repo aplikasi `plans/notification/integration-findings.md` L49 (row 18).
+
+## D-168 Position yang dipegang user tidak bisa dihapus, jadi state Position basi di Edit Default User tidak tercapai (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-069` TC-AC-ACC-474 langkah 20-25 (aktor kedua menghapus Position `Finance Manager` yang dipegang form Edit, lalu Save bertemu "This position no longer exists").
+- **Spec meminta:** Position yang sedang dipegang form Edit Default User dihapus saat form terbuka.
+- **Kenyataannya:** LLD Position melarang delete Position yang masih dipegang user, login maupun non-login (org-uiux `global-settings/position/API/low-level-design.md` L229-230). Probe slot 2 (2026-11-12): delete Position milik Default User menjawab `0 deleted, 1 skipped`, `blocked` / `in_use`. Position yang tidak dipegang siapa pun tidak muncul sebagai nilai user di dropdown form.
+- **Karena:** state itu tidak bisa terjadi di produk; e2e hanya membangun state nyata, dan tidak ada test route yang boleh melanggar LLD.
+- **Keputusan:** langkah 20-25 keluar dari e2e. Cek Position basi boleh dipindah ke spec `ui-client` yang meng-intercept jawaban Save. Padanan Division (TC-AC-ACC-152 langkah 11-17) tetap di e2e, karena Division yang dipegang form tapi tidak dipegang user bisa dihapus.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A, D-draft-ACC-1).
+- **Diterapkan di:** Client 069.
+- **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` L63-69 (UG-ACC-13, UG-ACC-14).
+
+## D-169 System Limits di bawah rentang hard limit LLD bukan state nyata (2026-11-12)
+
+- **Spec / langkah** (semuanya menyetel limit lewat override System Limits platform, bukan kuota plan, subscription, seat atau device):
+  - `masterDataCountLimit` (rentang 1.000–100.000): GlobalSettings Brand 032 TC-233 (13), Brand 033 TC-234 (13), User Custom Field 027 TC-87, 028 TC-454, 029 TC-89 langkah 11-22, Division 020 TC-75 (jumlah+2), 021 TC-74 (jumlah+1), Measurement 022 TC-66 (22), 062 TC-247 (21), Non-Login User 027 TC-100, 121 TC-441 langkah 34-44, Position 015 TC-69, 051 TC-270 langkah 14-30, User 030 TC-149; AdminConsole Device Name 167 TC-AC-DN-605 langkah 26-37 (jumlah katalog sendiri, puluhan). "Kuota gabungan" di NLU 027/121 dan User 030 adalah Master Data Count Limit atas user Login + Non-Login.
+  - `selectionLimit` (rentang 100–5.000): AllTags 048 TC-157 (5), Brand 031 TC-127 (10), User Custom Field 043 TC-145 (10), Division 036 TC-129 (5), File Manager 018 TC-75 (5), Handheld Reader 047 TC-221 (5), Measurement 032 TC-112 (10), Position 024 TC-135 (3), User 053 TC-282/283 (3 dan 4).
+- **Spec meminta:** menyetel limit ke nilai kecil supaya batas cepat tercapai, lalu mengasersi penolakan atau toast batas.
+- **Kenyataannya:** System Limits menolak nilai di luar rentang hard limit dengan `422` "Value must be between …" (org-uiux `admin-console/plans-licensing-lifecycle-settings/API/low-level-design.md` L1165, PRD §9.9). Nilai itu hanya bisa dipasang lewat dev override, jadi tidak pernah terjadi di produk.
+- **Karena:** e2e hanya membangun state nyata. State yang tidak mungkin terjadi termasuk cacat spec, bukan helper gap.
+- **Keputusan:** langkah-langkah itu keluar dari e2e. Pass lama yang memakai nilai di bawah rentang tidak berlaku (Brand 031/032/033, Measurement 032/062, Division 036, Position 024/015/051, User 030, NLU 027). Spec owner bisa menulis ulang langkahnya pada batas bawah: Selection Limit 100 dengan 101 baris seed, seperti Role 045. Master Data Count dengan 1.000 baris terlalu berat per run, jadi lebih cocok dipindah ke spec `ui-client` yang meng-intercept jawaban batas. Langkah lain di spec yang sama (UCF 029, NLU 121, Position 051) tetap di e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration C; sama dengan Client 306 / UG-ACC-23).
+- **Diterapkan di:** 23 spec di atas (22 GS + Device Name 167).
+- **Sumber:** repo aplikasi `plans/_program/limit-below-min-2026-11-12.md` (b44c80850).
+
+## D-170 Selection Limit di Client List dibuktikan lewat LCS 166, bukan dengan 130 Client (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-306` TC-AC-ACC-448 langkah 2-14 (Selection Limit 100 lalu 120, di atas 130 Client Active tambahan C-SEL-1..130).
+- **Spec meminta:** baris setelah batas terkunci, tooltip batas tampil, dan batas baru terbaca tanpa reload, di Client List.
+- **Kenyataannya:** nilai 100 dan 120 ada di dalam rentang (org-uiux `admin-console/plans-licensing-lifecycle-settings/API/low-level-design.md` L1165), jadi state-nya nyata. Masalahnya, setiap Client adalah tenant, sehingga 130 Client lewat route asli berarti 130 tenant per run di stack bersama. Client List memakai `SelectionLimitProvider` yang sama dengan Lifecycle Settings. Perilaku batas langsung (baris terkunci, tooltip, batas terbaca ulang tanpa reload) sudah lulus di `TC-AC-LCS-E2E-166` TC-582/583/584 pada 100 dan 120 atas 150 Group (run 1177, 2026-11-12).
+- **Karena:** menyiapkan 130 tenant per run tidak sebanding dengan nilainya, karena mekanisme yang sama sudah dibuktikan di LCS 166. Nilai di bawah batas (10/12) yang dulu dipakai stand-in kita bukan dari spec, dan sudah dihapus.
+- **Keputusan:** langkah 2-14 keluar dari e2e Client; buktinya dirujuk ke LCS 166. Kalau Client List berhenti memakai provider bersama, keputusan ini dibuka lagi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration A).
+- **Diterapkan di:** Client 306.
+- **Sumber:** repo aplikasi `plans/admin-console-client/decisions.md` (UG-ACC-23).
+
+## D-171 Urutan bawaan Customer Subscription: Client A-Z saja, tanpa urutan di dalam Client yang sama (2026-11-12)
+
+- **Spec / langkah:** AdminConsole/CustomerSubscription `001` TC-1 (asersi baris pertama urutan bawaan), `092` TC-349 langkah 5 (urutan Subscription ID di dalam Client yang sama).
+- **Spec meminta:** urutan bawaan Client A-Z, lalu Subscription ID terbaru lebih dulu di dalam Client yang sama.
+- **Kenyataannya:** LLD list tanpa `sortBy` menulis: tab Current → `LOWER(ce.company_name)` ASC; tab History → `s.created_at` DESC. Tidak ada tie-breaker untuk Client yang sama (org-uiux `admin-console/license-allocation-subscription/API/low-level-design.md` L82). App membuka list tanpa `sortBy`, dan semua ikon sort netral (D-039). Run 1807: dua baris di Client yang sama keluar lama-lalu-baru.
+- **Karena:** D-039 menetapkan urutan bawaan = urutan API, dan LLD adalah kontraknya. Urutan di dalam Client yang sama tidak ditulis di kontrak, jadi asersinya termasuk contract drift dan di-skip. Menambah `sortBy` saat dibuka bertentangan dengan ikon netral D-039.
+- **Keputusan:** langkah urutan bawaan mengasersi Client A-Z (tab Current) dan ikon sort netral. Urutan baris di dalam Client yang sama tidak diasersi. Asersi baris pertama memilih Client yang namanya paling awal dan unik di data run. Siklus sort per kolom tetap diasersi seperti spec.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration B, FD-B-CS-8).
+- **Diterapkan di:** CS 001, 092.
+- **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-B-CS-8; perluasan D-039.
+
+## D-172 Banner commit Import menyusun teks dari jumlah record (2026-11-12)
+
+- **Spec / langkah:** GlobalSettings/Import 105, 133, 134, 135, 136, 140, 141, 142, 143, 150, 160, 162, 164, 165, 213, 214, yaitu langkah banner hasil commit.
+- **Spec meminta:** teks statis PRD §7 `Success, record has been imported. Duplicate records were ignored.`
+- **Kenyataannya:** app menyusun banner dari jumlah record, dengan bentuk tunggal dan jamak: `Success, N record(s) have been imported.`, lalu kalimat duplikat dan `N error(s) remain.` hanya kalau berlaku. Contohnya `Success, 12 records have been imported.` (run 1908). Ini keputusan slicing yang dicatat di repo aplikasi `plans/global-settings-import/decisions.md` L255.
+- **Karena:** teks statis tidak bisa membawa angka yang justru diasersi spec sendiri (`N errors remain.`). Pesan status dengan jumlah ber-plural adalah pola umum (notifikasi MUI, antd, Mantine). Bedanya hanya soal kata dan bentuk (D-096), bukan aturan bisnis.
+- **Keputusan:** langkah banner mengasersi teks lengkap yang disusun dari jumlah yang diketahui langkah itu: jumlah yang diimpor, kalimat duplikat kalau ada duplikat, dan jumlah error yang tersisa. Kalimat statis PRD tidak diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-12 (diusulkan Integration B, FD-B-IMP-13).
+- **Diterapkan di:** 16 spec Import di atas.
+- **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-B-IMP-13; `packages/features/global-settings-import/resources/Strings.ts` L134-139.
+
+## D-173 Form Device SKU mempertahankan ketikan setelah save ditolak karena stok (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/SettingsDeviceSku `074` TC-AC-DS-237 langkah 20-21.
+- **Spec meminta:** setelah Save ditolak karena SKU sudah punya stok (referensi basi), form dimuat ulang ke nilai yang tersimpan.
+- **Kenyataannya:** `PATCH /device-skus/{id}` → 422 `SKU code cannot be changed after stock has been registered` (run 1209). App menampilkan toast error, menyegarkan kunci (SKU code, Device Name dan Range Type terkunci, langkah 22 lulus), dan mempertahankan ketikan pengguna. Form tetap dirty, jadi [✕] menampilkan Unsaved Changes. PRD (settings-device-sku ACDS-LOGIC-03b, L159) hanya mengatur penguncian dan tidak mengatur isi form setelah penolakan.
+- **Karena:** keputusan owner E2E-DS-105 (2026-11-11) menetapkan nilai pengguna dipertahankan setelah save terkunci ditolak. Mempertahankan input setelah penolakan server juga perilaku form mayoritas design system, dan form Device Name di app yang sama berlaku begitu.
+- **Keputusan:** langkah 20-21 mengasersi bahwa nilai ketikan dipertahankan, field terkunci, dan [✕] menampilkan Unsaved Changes. Tag UG-DS-11 dilepas.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration C, FD-C-11).
+- **Diterapkan di:** DS 074.
+- **Sumber:** repo aplikasi `plans/_program/fail-decisions.md` FD-C-11; `integration-findings` E2E-DS-105.
+
+## D-174 Urutan baris dengan nilai sama di File Manager mengikuti tie-break LLD (2026-11-13)
+
+- **Spec / langkah:** GlobalSettings/FileManagerE2 `003` (l.13-14, 30-31, 40, 64-66) dan `017` (Deleted By), serta spec File Manager lain yang mengasersi urutan di antara baris bernilai sama.
+- **Spec meminta:** baris bernilai sama diurutkan dari yang terbaru (EB-SRT-2).
+- **Kenyataannya:** LLD File Manager menulis "Secondary sort: Always apply secondary tie-break on fmd.id in the same direction" untuk list (L114, BEGAP-210) dan Recycle Bin (L550). Service mengikuti aturan itu, sehingga pada sort ASC baris bernilai sama muncul dengan id menaik, dan pada DESC dengan id menurun.
+- **Karena:** LLD adalah kontrak (D-039, D-171), dan tie-break-nya ditulis eksplisit dan deterministik.
+- **Keputusan:** urutan di antara baris bernilai sama diasersi menurut tie-break LLD, yaitu `id` searah dengan arah sort, bukan "terbaru dulu". D-draft-FILEMGR2-SORT-1 menjadi entri ini.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Eval FM r2).
+- **Diterapkan di:** FileManagerE2 003, 017.
+- **Sumber:** org-uiux `global-settings/file-manager/API/low-level-design.md` L114, L550.
+
+## D-175 D-112 ditarik: pengganti trial tidak mencapai Waiting for Approval (2026-11-13)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationSubscription `TC-AC-CS-E2E-074` (langkah yang diatur D-112), serta langkah Waiting-trial di 057, 058, 060, 062, 070 dan 071.
+- **Spec meminta:** request dari entity Distributor/Partner (Fajar, PT Maju Bersama; Rina, CV Karya Mandiri) yang menunggu approval.
+- **Kenyataannya:** LLD `POST /subscriptions/trials` step 6 (L1180) menetapkan bahwa trial dari aktor entity Principal langsung `active`. Hanya trial dari Distributor/Partner dengan `require_approval_for_trial = true` yang menjadi `waiting_for_approval`. Pengganti di D-112 (trial oleh requester di entity Principal) karena itu langsung Active (run CS-AdminConsole-win-20261113-e, term 2121039185581182977), jadi blok cancel-while-Waiting tidak tercapai. Aksi dan rute untuk entity Distributor/Partner belum ada di sprint (ems#52/#83).
+- **Karena:** pengganti tidak membentuk state yang diuji, dan state yang benar hanya bisa dibuat dari entity yang belum masuk sprint.
+- **Keputusan:** D-112 ditarik. Langkah Waiting-trial di spec di atas menjadi `sprint-gap` (ems#52/#83), dan kembali dijalankan dengan persona spec saat entity Distributor/Partner masuk sprint. Cabang renew tetap `sprint-gap` pricing.
+- **Diputuskan oleh:** Wangs-UI Coordinator di bawah delegasi owner (2026-10-31), 2026-11-13 (diusulkan Integration B).
+- **Diterapkan di:** skrip LicenseAllocationSubscription 057, 058, 060, 062, 070, 071, 074.
+- **Sumber:** org-uiux `admin-console/license-allocation-subscription` LLD L1180; be-filing 0185d69 (BT-AC-CS-22 bagian 8).
