@@ -40,7 +40,7 @@ coverage:
   - DU-002-5: batch Draft Group `Gudang 4` (path penuh `PT Sejahtera Abadi > Cabang A > Gudang 4`), Origin `—`, Total Asset `8`, Progress `25%`, Requested By `Dewi Anggraini`, Last Updated `2026-03-21T10:00:00Z`.
   - DU-002-6: batch Draft Group `Gudang 5` (path penuh `PT Sejahtera Abadi > Cabang A > Gudang 5`), Origin `—`, Total Asset `6`, Progress `50%`, Requested By `Dewi Anggreni`, Last Updated `2026-03-20T11:30:00Z`.
   - DU-002-7: batch Draft Group `<b>Gudang 3</b>` (path penuh `PT Sejahtera Abadi > Cabang A > <b>Gudang 3</b>`), Origin `—`, Total Asset `4`, Progress `75%`, Requested By `Hadi Kusuma`, Last Updated `2026-03-19T14:45:00Z`.
-  - Requested By yang diharapkan: `Budi` dari `Budi`; `Siti N.` dari `Siti Nurbaya`; `Alexander G.` dari `Alexander Graham Bell`; `Buzzlightyear S.` dari `Buzzlightyear Sumardi`; `Dewi A.` dari `Dewi Anggraini`; `Dewi A.` dari `Dewi Anggreni`. Nama tanpa last name (`Budi`) tidak memuat inisial dan titik.
+  - Requested By yang diharapkan: `Budi` dari `Budi`; `Siti N` dari `Siti Nurbaya`; `Alexander G` dari `Alexander Graham Bell`; `Buzzlightyear S` dari `Buzzlightyear Sumardi`; `Dewi A` dari `Dewi Anggraini`; `Dewi A` dari `Dewi Anggreni`. Nama tanpa last name (`Budi`) tidak memuat inisial.
   - Last Updated yang diharapkan dengan Date Format `dd/MM/yy`: `25/03/26, 09:15` dari `2026-03-25T09:15:00Z`; `24/03/26, 23:30` dari `2026-03-24T23:30:00Z`.
   - Last Updated yang diharapkan dengan Date Format `M/d/yy`: `3/25/26, 09:15` dari `2026-03-25T09:15:00Z`; `3/24/26, 23:30` dari `2026-03-24T23:30:00Z`.
   - Last Updated yang diharapkan dengan Date Format `dd/MM/yy`, Time Format `12h`, dan Time Zone UTC: `25/03/26, 09:15 AM` dari `2026-03-25T09:15:00Z`; `24/03/26, 11:30 PM` dari `2026-03-24T23:30:00Z`.
@@ -79,19 +79,19 @@ coverage:
 17. Verifikasi sel Requested By pada baris `Gudang 1` menampilkan `Budi`
 18. Arahkan kursor ke sel Requested By pada baris `Gudang 1`
 19. Verifikasi tooltip menampilkan nama lengkap `Budi`
-20. Verifikasi sel Requested By pada baris `Gudang 2` menampilkan `Siti N.`[^drift-1]
+20. Verifikasi sel Requested By pada baris `Gudang 2` menampilkan `Siti N`
 21. Arahkan kursor ke sel Requested By pada baris `Gudang 2`
 22. Verifikasi tooltip menampilkan nama lengkap `Siti Nurbaya`
-23. Verifikasi sel Requested By pada baris `Kantor Pusat` menampilkan `Alexander G.`[^drift-1]
+23. Verifikasi sel Requested By pada baris `Kantor Pusat` menampilkan `Alexander G`
 24. Arahkan kursor ke sel Requested By pada baris `Kantor Pusat`
 25. Verifikasi tooltip menampilkan nama lengkap `Alexander Graham Bell`
-26. Verifikasi sel Requested By pada baris batch tanpa Group (DU-002-4) menampilkan `Buzzlightyear S.`[^drift-1]
+26. Verifikasi sel Requested By pada baris batch tanpa Group (DU-002-4) menampilkan `Buzzlightyear S`
 27. Arahkan kursor ke sel Requested By pada baris batch tanpa Group (DU-002-4)
 28. Verifikasi tooltip menampilkan nama lengkap `Buzzlightyear Sumardi`
-29. Verifikasi sel Requested By pada baris `Gudang 4` menampilkan `Dewi A.`[^drift-1]
+29. Verifikasi sel Requested By pada baris `Gudang 4` menampilkan `Dewi A`
 30. Arahkan kursor ke sel Requested By pada baris `Gudang 4`
 31. Verifikasi tooltip menampilkan nama lengkap `Dewi Anggraini`
-32. Verifikasi sel Requested By pada baris `Gudang 5` menampilkan `Dewi A.`[^drift-1]
+32. Verifikasi sel Requested By pada baris `Gudang 5` menampilkan `Dewi A`
 33. Arahkan kursor ke sel Requested By pada baris `Gudang 5`
 34. Verifikasi tooltip menampilkan nama lengkap `Dewi Anggreni`
 
@@ -142,5 +142,3 @@ coverage:
 ### Kolom Actions tepat sesudah Last Updated
 65. Tampilkan Sub tab `Draft` (TBL-REG-01) dengan kondisi K1
 66. Verifikasi header kolom `Actions` tampil tepat sesudah header kolom `Last Updated`
-
-[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

@@ -33,12 +33,10 @@ coverage:
 
 ### Halaman Registration lewat alamat langsung ditolak
 4. Buka halaman `Registration` pada Fixed Asset > Assets lewat alamat langsung (URL)
-5. Verifikasi halaman penuh `/no-access` tampil tanpa sidebar untuk halaman `Registration`[^drift-1]
-6. Verifikasi isi halaman `Registration` tidak tampil pada halaman `/no-access`
+5. Verifikasi toast error `You don't have permission to do this.` tampil
+6. Verifikasi isi halaman `Registration` tidak tampil
 
 ### Halaman Approvals > Registration lewat alamat langsung ditolak
 7. Buka halaman `Approvals` > `Registration` lewat alamat langsung (URL)
-8. Verifikasi halaman penuh `/no-access` tampil tanpa sidebar untuk halaman `Approvals` > `Registration`[^drift-1]
-9. Verifikasi isi halaman `Approvals` > `Registration` tidak tampil pada halaman `/no-access`
-
-[^drift-1]: Drift PRD dan foundation vs override. PRD modul diam untuk URL halaman modul yang dibuka aktor tanpa hak; foundation `error-handling-convention.md` §2 (403): toast error `"You don't have permission to do this."` tanpa redirect. Override O-19 (all modules): "A URL the user may not open: The full-page `/no-access` without the shell (sidebar) stays." Diasersi: O-19, karena override menang atas foundation (SB-6); URL yang tak boleh dibuka terbaca sebagai halaman penuh `/no-access` tanpa sidebar, bukan toast.
+8. Verifikasi toast error `You don't have permission to do this.` tampil
+9. Verifikasi isi halaman `Approvals` > `Registration` tidak tampil

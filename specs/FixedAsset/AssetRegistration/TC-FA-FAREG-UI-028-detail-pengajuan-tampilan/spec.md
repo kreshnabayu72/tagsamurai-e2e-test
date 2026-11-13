@@ -37,11 +37,11 @@ coverage:
 - Layar awal: halaman Detail pengajuan, dimuat dengan kondisi tiap blok langkah.
 - Komponen: Detail pengajuan
 - Data:
-  - DU-028-1: pengajuan Registration ID `REG-20261108-00011`, Status `Waiting for Approval`, Group `Kantor Pusat`, Requested By `Hadi K.`, Total Asset `4`, Submitted At `08/11/26, 14:02`.
-  - DU-028-2: pengajuan Registration ID `REG-20261103-00004`, Status `Partially Approved`, Group `Kantor Pusat`, Requested By `Hadi K.`, Total Asset `4`, Submitted At `03/11/26, 10:12`.
-  - DU-028-3: pengajuan Registration ID `REG-20261104-00009`, Status `Approved`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `1`, Submitted At `04/11/26, 15:30`.
-  - DU-028-4: pengajuan Registration ID `REG-20261102-00001`, Status `Rejected`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `1`, Submitted At `02/11/26, 09:48`.
-  - DU-028-5: pengajuan Registration ID `REG-20261101-00006`, Status `Canceled`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `4`, Submitted At `01/11/26, 17:05`.
+  - DU-028-1: pengajuan Registration ID `REG-20261108-00011`, Status `Waiting for Approval`, Group `Kantor Pusat`, Requested By `Hadi K`, Total Asset `4`, Submitted At `08/11/26, 14:02`.
+  - DU-028-2: pengajuan Registration ID `REG-20261103-00004`, Status `Partially Approved`, Group `Kantor Pusat`, Requested By `Hadi K`, Total Asset `4`, Submitted At `03/11/26, 10:12`.
+  - DU-028-3: pengajuan Registration ID `REG-20261104-00009`, Status `Approved`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `1`, Submitted At `04/11/26, 15:30`.
+  - DU-028-4: pengajuan Registration ID `REG-20261102-00001`, Status `Rejected`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `1`, Submitted At `02/11/26, 09:48`.
+  - DU-028-5: pengajuan Registration ID `REG-20261101-00006`, Status `Canceled`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `4`, Submitted At `01/11/26, 17:05`.
   - DU-028-6: aset Name `Laptop - 128`, Category `Computers` dengan path `Electronics > Computers`, Result `Approved`, tanpa Reason.
   - DU-028-7: aset Name `Laptop - 129`, Category `Computers` dengan path `Electronics > Computers`, Result `Approved`, Reason `Scratch on the casing is minor`.
   - DU-028-8: aset Name `Laptop - 130`, Category `Computers` dengan path `Electronics > Computers`, Result `Returned`, Reason `Photo is missing`.
@@ -72,7 +72,7 @@ coverage:
 10. Verifikasi header memuat Badge status `Waiting for Approval`
 11. Verifikasi header memuat `Submitted At` `08/11/26, 14:02`
 12. Verifikasi header memuat `Group` `Kantor Pusat`
-13. Verifikasi header memuat `Requested By` `Hadi K.`[^drift-1]
+13. Verifikasi header memuat `Requested By` `Hadi K`
 14. Verifikasi header memuat `Total Asset` `4`
 15. Verifikasi Breadcrumb tampil berurutan `Assets`, `Registration`, `Waiting for Approval`, `Detail`
 
@@ -218,4 +218,3 @@ coverage:
 114. Verifikasi `Submitted At` pada header tampil rata kanan
 115. Verifikasi header memuat `Group`, `Requested By`, dan `Total Asset` berurutan sesudah `Submitted At`
 
-[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 Example Data: Requested By `Hadi K`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: O-4, karena override menang atas PRD dan foundation (SB-6).

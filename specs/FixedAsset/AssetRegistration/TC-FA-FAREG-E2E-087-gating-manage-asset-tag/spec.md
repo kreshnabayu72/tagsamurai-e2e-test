@@ -46,7 +46,7 @@ coverage:
 - Aktor: Siti N (Manage asset & TAG tanpa capability Update pada node Group registrasi `Gudang 1 {runId}`), pengaju pengajuan DU-087-2.
 - Layar awal: Fixed Asset > Assets.
 - Data:
-  - DU-087-1: Batch Draft dengan Group `Gudang 1 {runId}`, Origin `—`, Total Asset `12`, Progress `0%`, Requested By `Rina W.`, Last Updated `T0 − 1 hari`, Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `12`.
+  - DU-087-1: Batch Draft dengan Group `Gudang 1 {runId}`, Origin `—`, Total Asset `12`, Progress `0%`, Requested By `Rina W`, Last Updated `T0 − 1 hari`, Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `12`.
   - DU-087-2: Pengajuan Waiting for Approval `REG-20261109-08702` di Group `Gudang 1 {runId}`, diajukan Siti N, Total Asset `5`, Last Updated `T0 − 2 hari` (Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `5`, TAG `Verified`).
   - DU-087-3: Pengajuan Approved `REG-20261108-08703` di Group `Gudang 1 {runId}`, diajukan Siti N, Approver Budi S, Total Asset `3`, Last Updated `T0 − 3 hari`.
   - DU-087-4: Siti N (Manage asset & TAG tanpa capability Update, Group terkelola `Gudang 1 {runId}`).
@@ -67,7 +67,7 @@ coverage:
 
 ### Siti N melihat dan menindak batch Draft
 6. Ketik Search `Gudang 1 {runId}`, tekan Enter
-7. Verifikasi baris Group `Gudang 1 {runId}` dengan Requested By `Rina W.` tampil di sub tab `Draft` bagi Siti N[^drift-2]
+7. Verifikasi baris Group `Gudang 1 {runId}` dengan Requested By `Rina W` tampil di sub tab `Draft` bagi Siti N
 8. Verifikasi row action `Edit` tampil pada baris `Gudang 1 {runId}`
 9. Verifikasi row action `Detail` tidak tampil pada baris `Gudang 1 {runId}`
 10. Verifikasi row action `Registration Log` tampil pada baris `Gudang 1 {runId}`
@@ -116,8 +116,4 @@ coverage:
 
 ### Halaman Approval ditolak lewat alamat langsung
 43. Buka halaman Approval pengajuan Group `Gudang 1 {runId}` dengan Total Asset `5` lewat alamat langsung (URL)
-44. Verifikasi halaman penuh `/no-access` tampil tanpa sidebar bagi Siti N[^drift-1]
-
-[^drift-1]: Drift PRD dan foundation vs override. PRD §9.2 (skenario Hak putus) dan `FAREG-LOGIC-06p`: URL halaman Approval tanpa hak "ditolak server (`403`, `T-REG-07`)"; foundation `error-handling-convention.md` §2: 403 menghasilkan toast error `"You don't have permission to do this."` tanpa redirect. Override O-19 (all modules): "A URL the user may not open: The full-page `/no-access` without the shell (sidebar) stays." Diasersi: O-19, karena override menang atas PRD dan foundation (SB-6); penolakan server atas aktor ini terbaca sebagai halaman penuh `/no-access` tanpa sidebar, bukan toast.
-
-[^drift-2]: Drift PRD dan foundation vs override. PRD §4.1 (tabel kolom sub tab Draft): Requested By memakai «Nama singkat»; foundation `prd-conventions.md` §9.13: `[First Name] [Last Initial]` dengan contoh tanpa titik (`John L`). Override O-4 (all modules): «The short name ends the initial with a period: `John L.`, `Alexander G.`». Diasersi: O-4, karena override menang atas PRD dan foundation (SB-6); Requested By pengguna Rina W tampil `Rina W.`.
+44. Verifikasi toast error `You don't have permission to do this.` tampil bagi Siti N

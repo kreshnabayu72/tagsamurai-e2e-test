@@ -32,10 +32,10 @@ coverage:
 - Aktor: Total Control `Dian P`, seluruh client.
 - Layar awal: Assets > Registration > History.
 - Data:
-  - DU-047-1: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Barat {runId}`, Total Asset `8`, Status `Approved`, Requested By `Maya L.`, Approver `Hadi K.`, Last Updated `T0 − 1 hari`.
-  - DU-047-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Timur {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K.`, Approver `Maya L.`, Last Updated `T0 − 2 hari`.
-  - DU-047-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Utara {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N.`, Approver `Rina W.`, Last Updated `T0 − 3 hari`.
-  - DU-047-4: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Selatan {runId}`, Total Asset `97`, Status `Canceled`, Requested By `Rina W.`, Approver `—`, Last Updated `T0 − 4 hari`.
+  - DU-047-1: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Barat {runId}`, Total Asset `8`, Status `Approved`, Requested By `Maya L`, Approver `Hadi K`, Last Updated `T0 − 1 hari`.
+  - DU-047-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Timur {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`.
+  - DU-047-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Utara {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N`, Approver `Rina W`, Last Updated `T0 − 3 hari`.
+  - DU-047-4: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Selatan {runId}`, Total Asset `97`, Status `Canceled`, Requested By `Rina W`, Approver `—`, Last Updated `T0 − 4 hari`.
   - Pengajuan DU-047-4 diajukan lebih dulu daripada DU-047-3, DU-047-3 lebih dulu daripada DU-047-2, dan DU-047-2 lebih dulu daripada DU-047-1.
   - Maya L, Hadi K, Siti N, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing; Maya L dan Hadi K bukan Total Control.
 - Kondisi: format tanggal General Settings `dd/MM/yy` dan format waktu 24 jam; seluruh kolom tabel History tampil.
@@ -51,8 +51,8 @@ coverage:
 6. Verifikasi Status baris `Gudang Timur {runId}` tampil sebagai Badge `Partially Approved` berwarna warning
 7. Verifikasi Status baris `Gudang Utara {runId}` tampil sebagai Badge `Rejected` berwarna danger
 8. Verifikasi Status baris `Gudang Selatan {runId}` tampil sebagai Badge `Canceled` berwarna dark
-9. Verifikasi Requested By baris `Gudang Barat {runId}` bernilai `Maya L.`[^drift-1]
-10. Verifikasi Approver baris `Gudang Barat {runId}` bernilai `Hadi K.`[^drift-1]
+9. Verifikasi Requested By baris `Gudang Barat {runId}` bernilai `Maya L`
+10. Verifikasi Approver baris `Gudang Barat {runId}` bernilai `Hadi K`
 11. Verifikasi Approver baris `Gudang Selatan {runId}` bernilai `—`
 12. Verifikasi Last Updated baris `Gudang Barat {runId}` tampil dengan Date Format `dd/MM/yy` diikuti Time Format 24 jam
 
@@ -105,7 +105,7 @@ coverage:
 52. Verifikasi tabel sub tab History memuat baris `Gudang Utara {runId}` dan tidak memuat baris `Gudang Barat {runId}`
 53. Klik `[Clear Field]`
 54. Klik `[Apply]`
-55. Pilih opsi `Maya L.` pada field `Requested By`[^drift-1]
+55. Pilih opsi `Maya L` pada field `Requested By`
 56. Klik `[Apply]`
 57. Verifikasi tabel sub tab History memuat baris `Gudang Barat {runId}` dan tidak memuat baris `Gudang Timur {runId}`
 58. Klik `[Clear Field]`
@@ -118,9 +118,9 @@ coverage:
 
 ### Filter Approver tidak menjadikan nilai kosong sebagai opsi
 65. Buka daftar opsi field `Approver`
-66. Verifikasi daftar opsi field `Approver` memuat `Hadi K.`, `Maya L.`, dan `Rina W.` dan tidak memuat opsi `—`[^drift-1]
-67. Pilih opsi `Hadi K.` pada field `Approver`[^drift-1]
-68. Pilih opsi `Maya L.` pada field `Approver`[^drift-1]
+66. Verifikasi daftar opsi field `Approver` memuat `Hadi K`, `Maya L`, dan `Rina W` dan tidak memuat opsi `—`
+67. Pilih opsi `Hadi K` pada field `Approver`
+68. Pilih opsi `Maya L` pada field `Approver`
 69. Klik `[Apply]`
 70. Verifikasi tabel sub tab History memuat baris `Gudang Barat {runId}`, `Gudang Timur {runId}` dan tidak memuat baris `Gudang Utara {runId}`, `Gudang Selatan {runId}`
 71. Verifikasi baris `Gudang Selatan {runId}` dengan Approver `—` tersaring keluar karena memilih opsi Approver apa pun menyaring keluar nilai kosong
@@ -168,5 +168,3 @@ coverage:
 107. Klik ikon `Registration Log` pada baris `Gudang Utara {runId}`
 108. Verifikasi dialog `Registration Log` tampil di atas halaman History
 109. Klik ikon X pada dialog `Registration Log`
-
-[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By dan Approver: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

@@ -61,7 +61,7 @@ coverage:
   - DU-010-9: pengajuan History auto-approve Kondisi B (tanpa approver independen) Registration ID `REG-20261031-00003`, Group `Gudang 3`, Total Asset `4`, Status `Approved`, Requested By `Hadi Kusuma`, Approver `System`, Last Updated `2026-03-20T11:30:00Z`.
   - DU-010-10: kata kunci Search `Gudang Fiktif` yang tidak cocok dengan pengajuan mana pun.
   - DU-010-11: pengajuan History approval OFF Registration ID `REG-20261030-00002`, Group `Gudang 6`, Total Asset `7`, Status `Approved`, Requested By `Budi`, Approver `—`, Last Updated `2026-03-19T14:45:00Z`.
-  - Requested By dan Approver yang diharapkan: `Budi` dari `Budi`; `Siti N.` dari `Siti Nurbaya`; `Alexander G.` dari `Alexander Graham Bell`; `Dewi A.` dari `Dewi Anggraini`; `Buzzlightyear S.` dari `Buzzlightyear Sumardi`; `Hadi K.` dari `Hadi Kusuma`. Nama tanpa last name (`Budi`) tidak memuat inisial dan titik.
+  - Requested By dan Approver yang diharapkan: `Budi` dari `Budi`; `Siti N` dari `Siti Nurbaya`; `Alexander G` dari `Alexander Graham Bell`; `Dewi A` dari `Dewi Anggraini`; `Buzzlightyear S` dari `Buzzlightyear Sumardi`; `Hadi K` dari `Hadi Kusuma`. Nama tanpa last name (`Budi`) tidak memuat inisial.
   - Last Updated yang diharapkan dengan Date Format `dd/MM/yy`: `25/03/26, 09:15` dari `2026-03-25T09:15:00Z`; `24/03/26, 23:30` dari `2026-03-24T23:30:00Z`.
 - Kondisi:
   - K1: sub tab Waiting for Approval berisi DU-010-1 sampai DU-010-3; Date Format General Settings `dd/MM/yy`, Time Format `24h`, Time Zone `UTC`.
@@ -116,10 +116,10 @@ coverage:
 28. Verifikasi sel Requested By pada baris `REG-20261109-00001` menampilkan `Budi`
 29. Arahkan kursor ke sel Requested By pada baris `REG-20261109-00001`
 30. Verifikasi tooltip menampilkan nama lengkap `Budi`
-31. Verifikasi sel Requested By pada baris `REG-20261108-00004` menampilkan `Siti N.`[^drift-1]
+31. Verifikasi sel Requested By pada baris `REG-20261108-00004` menampilkan `Siti N`
 32. Arahkan kursor ke sel Requested By pada baris `REG-20261108-00004`
 33. Verifikasi tooltip menampilkan nama lengkap `Siti Nurbaya`
-34. Verifikasi sel Requested By pada baris `REG-20261107-00002` menampilkan `Alexander G.`[^drift-1]
+34. Verifikasi sel Requested By pada baris `REG-20261107-00002` menampilkan `Alexander G`
 35. Arahkan kursor ke sel Requested By pada baris `REG-20261107-00002`
 36. Verifikasi tooltip menampilkan nama lengkap `Alexander Graham Bell`
 
@@ -244,19 +244,19 @@ coverage:
 124. Verifikasi sel Requested By pada baris `REG-20261105-00007` menampilkan `Budi`
 125. Arahkan kursor ke sel Requested By pada baris `REG-20261105-00007`
 126. Verifikasi tooltip menampilkan nama lengkap `Budi`
-127. Verifikasi sel Requested By pada baris `REG-20261103-00002` menampilkan `Alexander G.`[^drift-1]
+127. Verifikasi sel Requested By pada baris `REG-20261103-00002` menampilkan `Alexander G`
 128. Arahkan kursor ke sel Requested By pada baris `REG-20261103-00002`
 129. Verifikasi tooltip menampilkan nama lengkap `Alexander Graham Bell`
 
 ### Approver tampil sebagai nama singkat, nama lengkap saat hover, dan nilai kosong
 130. Tampilkan Sub tab `Waiting for Approval` dan `History` (TBL-REG-02) dengan kondisi K2
-131. Verifikasi sel Approver pada baris `REG-20261105-00007` menampilkan `Dewi A.`[^drift-1]
+131. Verifikasi sel Approver pada baris `REG-20261105-00007` menampilkan `Dewi A`
 132. Arahkan kursor ke sel Approver pada baris `REG-20261105-00007`
 133. Verifikasi tooltip menampilkan nama lengkap `Dewi Anggraini`
-134. Verifikasi sel Approver pada baris `REG-20261103-00002` menampilkan `Buzzlightyear S.`[^drift-1]
+134. Verifikasi sel Approver pada baris `REG-20261103-00002` menampilkan `Buzzlightyear S`
 135. Arahkan kursor ke sel Approver pada baris `REG-20261103-00002`
 136. Verifikasi tooltip menampilkan nama lengkap `Buzzlightyear Sumardi`
-137. Verifikasi sel Approver pada baris pengajuan auto-approve `REG-20261101-00005` menampilkan `Hadi K.`[^drift-1]
+137. Verifikasi sel Approver pada baris pengajuan auto-approve `REG-20261101-00005` menampilkan `Hadi K`
 138. Arahkan kursor ke sel Approver pada baris `REG-20261101-00005`
 139. Verifikasi tooltip menampilkan nama lengkap `Hadi Kusuma`
 140. Verifikasi sel Approver pada baris pengajuan auto-approve `REG-20261031-00003` menampilkan `System`
@@ -340,5 +340,3 @@ coverage:
 200. Verifikasi pesan `Unable to load this data.` pada sub tab History
 201. Verifikasi tombol `[Try Again]` tampil pada sub tab History
 202. Verifikasi judul `No history yet` tidak tampil saat gagal muat
-
-[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By dan Approver: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

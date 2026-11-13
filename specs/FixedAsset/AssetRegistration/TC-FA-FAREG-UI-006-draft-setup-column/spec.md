@@ -10,7 +10,7 @@ smoke: []
 dependsOn: []
 trace:
   "§4.1#p4": [4, 9]
-  EB-KOL-1@tabel-draft: [4, 5, 6, 7, 8, 9, 10, 11, 17, 19, 20, 25, 30, 32, 39, 40, 42, 44, 49, 51, 57, 59, 65, 67, 76, 78, 80, 85, 87]
+  EB-KOL-1@tabel-draft: [4, 5, 6, 7, 8, 9, 10, 11, 17, 19, 20, 25, 30, 32, 39, 40, 42, 44, 49, 51, 57, 59, 65, 67, 76, 78, 80]
 anchor: [16, 56, 64]
 coverage:
   web: automated
@@ -49,8 +49,8 @@ coverage:
 13. Klik header kolom Actions `⋯`
 14. Klik `Setup Column...`
 15. Hilangkan centang kolom `Origin` pada modal Setup Column
-16. Verifikasi kolom `Group` tampil pada Live Preview di modal Setup Column[^drift-1]
-17. Verifikasi kolom `Origin` tidak tampil pada Live Preview di modal Setup Column[^drift-1]
+16. Verifikasi kolom `Group` tampil pada tabel di balik modal
+17. Verifikasi kolom `Origin` tidak tampil pada tabel di balik modal
 18. Klik `[Save]`
 19. Verifikasi modal `Setup Column` tertutup
 20. Verifikasi kolom `Origin` tidak tampil pada tabel
@@ -60,14 +60,14 @@ coverage:
 22. Klik header kolom Actions `⋯`
 23. Klik `Setup Column...`
 24. Centang kolom `Origin` pada modal Setup Column
-25. Verifikasi kolom `Origin` tampil pada Live Preview di modal Setup Column[^drift-1]
+25. Verifikasi kolom `Origin` tampil pada tabel di balik modal
 
 ### Urutan kolom dipratinjau lalu tersimpan
 26. Tampilkan Sub tab `Draft` (TBL-REG-01) dengan kondisi K1
 27. Klik header kolom Actions `⋯`
 28. Klik `Setup Column...`
 29. Seret kolom `Last Updated` ke atas kolom `Group` pada modal Setup Column
-30. Verifikasi kolom `Last Updated` berada sebelum kolom `Group` pada Live Preview di modal Setup Column[^drift-1]
+30. Verifikasi kolom `Last Updated` berada sebelum kolom `Group` pada tabel di balik modal
 31. Klik `[Save]`
 32. Verifikasi kolom `Last Updated` berada sebelum kolom `Group` pada tabel
 
@@ -90,7 +90,7 @@ coverage:
 46. Klik header kolom Actions `⋯`
 47. Klik `Setup Column...`
 48. Klik `[Reset to Default]`
-49. Verifikasi kolom `Origin` tampil pada Live Preview di modal Setup Column[^drift-1]
+49. Verifikasi kolom `Origin` tampil pada tabel di balik modal
 50. Klik `[Save]`
 51. Verifikasi kolom `Origin` tampil pada tabel
 
@@ -99,8 +99,8 @@ coverage:
 53. Klik header kolom Actions `⋯`
 54. Klik `Setup Column...`
 55. Hilangkan centang kolom `Origin` pada modal Setup Column
-56. Verifikasi kolom `Group` tampil pada Live Preview di modal Setup Column[^drift-1]
-57. Verifikasi kolom `Origin` tidak tampil pada Live Preview di modal Setup Column[^drift-1]
+56. Verifikasi kolom `Group` tampil pada tabel di balik modal
+57. Verifikasi kolom `Origin` tidak tampil pada tabel di balik modal
 58. Klik `✕` pada modal Setup Column
 59. Verifikasi kolom `Origin` tampil pada tabel
 
@@ -109,8 +109,8 @@ coverage:
 61. Klik header kolom Actions `⋯`
 62. Klik `Setup Column...`
 63. Hilangkan centang kolom `Origin` pada modal Setup Column
-64. Verifikasi kolom `Group` tampil pada Live Preview di modal Setup Column[^drift-1]
-65. Verifikasi kolom `Origin` tidak tampil pada Live Preview di modal Setup Column[^drift-1]
+64. Verifikasi kolom `Group` tampil pada tabel di balik modal
+65. Verifikasi kolom `Origin` tidak tampil pada tabel di balik modal
 66. Tekan `Esc`
 67. Verifikasi kolom `Origin` tampil pada tabel
 
@@ -128,14 +128,3 @@ coverage:
 78. Verifikasi tooltip `At least one column must remain visible.`
 79. Centang kolom `Origin` pada modal Setup Column
 80. Verifikasi checkbox kolom `Group` enabled
-
-### Tabel di balik modal tidak berubah sebelum Save
-81. Tampilkan Sub tab `Draft` (TBL-REG-01) dengan kondisi K1
-82. Klik header kolom Actions `⋯`
-83. Klik `Setup Column...`
-84. Hilangkan centang kolom `Origin` pada modal Setup Column
-85. Verifikasi kolom `Origin` tetap tampil pada tabel di balik modal[^drift-1]
-86. Seret kolom `Last Updated` ke atas kolom `Group` pada modal Setup Column
-87. Verifikasi kolom `Group` tetap berada sebelum kolom `Last Updated` pada tabel di balik modal[^drift-1]
-
-[^drift-1]: Drift foundation vs override. PRD §4.1 (Deviasi) menunjuk `prd-conventions.md` §9.3 tanpa aturan preview sendiri; foundation `prd-conventions.md` §9.3: perubahan di modal Setup Column di-preview langsung di tabel di balik modal. Override O-20: dialog punya Live Preview sendiri, dan tabel berubah hanya sesudah `[Save]`; langkah yang mengharapkan tabel di balik modal berubah selama dialog terbuka diabaikan. Diasersi: O-20, karena override menang atas foundation (SB-6).

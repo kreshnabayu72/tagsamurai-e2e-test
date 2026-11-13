@@ -29,7 +29,7 @@ coverage:
 - Aktor: Manage asset & TAG `Maya L`, Group terkelola `Gudang Mangga {runId}`, `Gudang Jati {runId}`, dan `Gudang Akasia {runId}`, pengaju DU-046-1.
 - Layar awal: Assets > Registration > Waiting for Approval.
 - Data:
-  - DU-046-1: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Mangga {runId}`, Total Asset `12`, Requested By `Maya L.`, Last Updated `T0 − 1 hari`.
+  - DU-046-1: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Mangga {runId}`, Total Asset `12`, Requested By `Maya L`, Last Updated `T0 − 1 hari`.
   - DU-046-2: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Jati {runId}`, Total Asset `30`, Requested By `Hadi K`, Last Updated `T0 − 2 hari`.
   - DU-046-3: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Akasia {runId}`, Total Asset `5`, Requested By `Siti N`, Last Updated `T0 − 3 hari`.
   - Pengajuan DU-046-3 diajukan lebih dulu daripada DU-046-2, dan DU-046-2 lebih dulu daripada DU-046-1.
@@ -43,7 +43,7 @@ coverage:
 2. Verifikasi tabel sub tab Waiting for Approval memuat baris `Gudang Mangga {runId}`, `Gudang Jati {runId}`, `Gudang Akasia {runId}` dengan Group tampil sebagai Badge
 3. Verifikasi Registration ID baris `Gudang Mangga {runId}` berformat `REG-YYYYMMDD-NNNNN` dan sama dengan Registration ID milik DU-046-1
 4. Verifikasi Total Asset baris `Gudang Mangga {runId}` bernilai `12`
-5. Verifikasi Requested By baris `Gudang Mangga {runId}` bernilai `Maya L.`[^drift-1]
+5. Verifikasi Requested By baris `Gudang Mangga {runId}` bernilai `Maya L`
 6. Verifikasi Last Updated baris `Gudang Mangga {runId}` tampil dengan Date Format `dd/MM/yy` diikuti Time Format 24 jam
 
 ### Urutan awal Last Updated terbaru di atas
@@ -76,7 +76,7 @@ coverage:
 29. Verifikasi tabel sub tab Waiting for Approval memuat baris `Gudang Mangga {runId}`, `Gudang Jati {runId}` dan tidak memuat baris `Gudang Akasia {runId}`
 30. Klik `[Clear Field]`
 31. Klik `[Apply]`
-32. Pilih opsi `Maya L.` pada field `Requested By`[^drift-1]
+32. Pilih opsi `Maya L` pada field `Requested By`
 33. Klik `[Apply]`
 34. Verifikasi tabel sub tab Waiting for Approval memuat baris `Gudang Mangga {runId}` dan tidak memuat baris `Gudang Jati {runId}`
 35. Klik `[Clear Field]`
@@ -137,5 +137,3 @@ coverage:
 76. Klik ikon `Cancel registration` pada baris `Gudang Mangga {runId}`
 77. Verifikasi dialog `Cancel Registration` tampil
 78. Klik `[Go Back]` pada dialog `Cancel Registration`
-
-[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

@@ -34,10 +34,10 @@ coverage:
 - Aktor: Manage asset & TAG `Maya L`, pemegang capability Update pada Group `Gudang Kenari {runId}`, `Gudang Jabon {runId}`, dan `Gudang Trembesi {runId}` dan tidak pada Group `Gudang Luar Cakupan {runId}`, approver yang bukan pengaju satu pun pengajuan data uji.
 - Layar awal: Assets > Registration > Draft.
 - Data:
-  - DU-049-1: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Kenari {runId}`, Total Asset `12`, Requested By `Hadi K.`, Last Updated `T0 − 1 hari`.
-  - DU-049-2: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Jabon {runId}`, Total Asset `30`, Requested By `Siti N.`, Last Updated `T0 − 2 hari`.
-  - DU-049-3: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Trembesi {runId}`, Total Asset `5`, Requested By `Rina W.`, Last Updated `T0 − 3 hari`.
-  - DU-049-4: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Luar Cakupan {runId}`, Total Asset `4`, Requested By `Siti N.`, Last Updated `T0 − 4 hari`, di luar cakupan Group aktor.
+  - DU-049-1: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Kenari {runId}`, Total Asset `12`, Requested By `Hadi K`, Last Updated `T0 − 1 hari`.
+  - DU-049-2: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Jabon {runId}`, Total Asset `30`, Requested By `Siti N`, Last Updated `T0 − 2 hari`.
+  - DU-049-3: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Trembesi {runId}`, Total Asset `5`, Requested By `Rina W`, Last Updated `T0 − 3 hari`.
+  - DU-049-4: Pengajuan Waiting for Approval dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Luar Cakupan {runId}`, Total Asset `4`, Requested By `Siti N`, Last Updated `T0 − 4 hari`, di luar cakupan Group aktor.
   - DU-049-1 memuat 12 aset berstatus Waiting for Approval dalam satu pengajuan.
   - Pengajuan DU-049-3 diajukan lebih dulu daripada DU-049-2, dan DU-049-2 lebih dulu daripada DU-049-1.
   - Hadi K, Siti N, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing.
@@ -59,7 +59,7 @@ coverage:
 9. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}`, `Gudang Jabon {runId}`, `Gudang Trembesi {runId}` dengan Group tampil sebagai Badge
 10. Verifikasi pengajuan `Gudang Kenari {runId}` yang memuat 12 aset tampil sebagai satu baris dengan Total Asset `12`
 11. Verifikasi Registration ID baris `Gudang Kenari {runId}` berformat `REG-YYYYMMDD-NNNNN` dan sama dengan Registration ID milik DU-049-1
-12. Verifikasi Requested By baris `Gudang Kenari {runId}` bernilai `Hadi K.`[^drift-1]
+12. Verifikasi Requested By baris `Gudang Kenari {runId}` bernilai `Hadi K`
 13. Verifikasi Last Updated baris `Gudang Kenari {runId}` tampil dengan Date Format `dd/MM/yy` diikuti Time Format 24 jam
 
 ### Urutan awal Last Updated terbaru di atas
@@ -103,7 +103,7 @@ coverage:
 45. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}`, `Gudang Jabon {runId}` dan tidak memuat baris `Gudang Trembesi {runId}`
 46. Klik `[Clear Field]`
 47. Klik `[Apply]`
-48. Pilih opsi `Hadi K.` pada field `Requested By`[^drift-1]
+48. Pilih opsi `Hadi K` pada field `Requested By`
 49. Klik `[Apply]`
 50. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}` dan tidak memuat baris `Gudang Jabon {runId}`
 51. Klik `[Clear Field]`
@@ -157,5 +157,3 @@ coverage:
 89. Verifikasi tabel tab Active memuat baris `Gudang Kenari {runId}` dan tidak memuat baris `Gudang Luar Cakupan {runId}`
 90. Klik `(←)` pada kotak Search
 91. Verifikasi angka N pada tab `Active (N)` sama dengan nilai Z pada info paginasi `Showing X to Y of Z` tabel tab Active tanpa Search dan Filter
-
-[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

@@ -26,7 +26,7 @@ coverage:
 - Layar awal: dialog `Approver Corrections` yang terbuka dari ikon `Changes by approver` pada Detail pengajuan Approved atau Partially Approved.
 - Komponen: Dialog `Approver Corrections` (`D-REG-26`)
 - Data:
-  - DU-029-1: koreksi approver Asset `Laptop`, Field `Model`, Old Value `Latitude 5440`, New Value `Latitude 5450`, Modified By `Agus P.`, Date `08/11/26, 14:02`.
+  - DU-029-1: koreksi approver Asset `Laptop`, Field `Model`, Old Value `Latitude 5440`, New Value `Latitude 5450`, Modified By `Agus P`, Date `08/11/26, 14:02`.
   - Field yang diharapkan `Laptop (Model)`, dari Asset `Laptop` dan Field `Model`.
 - Kondisi:
   - K1: pengajuan memiliki koreksi approver DU-029-1, dengan Date Format `dd/MM/yy` diikuti Time Format 24 jam.
@@ -77,8 +77,7 @@ coverage:
 32. Verifikasi sel Date pada baris DU-029-1 menampilkan `08/11/26, 14:02`
 33. Verifikasi sel Old Value pada baris DU-029-1 menampilkan `Latitude 5440`
 34. Verifikasi sel New Value pada baris DU-029-1 menampilkan `Latitude 5450`
-35. Verifikasi sel Modified By pada baris DU-029-1 menampilkan `Agus P.` (approver pengajuan)[^drift-2]
+35. Verifikasi sel Modified By pada baris DU-029-1 menampilkan `Agus P` (approver pengajuan)
 
 [^drift-1]: Drift PRD vs foundation. PRD `FAREG-LOGIC-07g`: toolbar dialog `Search · Filter · Export`. foundation `prd-conventions.md` §9.1 (Global Table Rules, toolbar): `Search (icon) | Filter | Download`; kontrak wangs-ui `Tooltip#26` dan `DataTable#81`: ExportButton bertooltip dan beraria-label `Download`. Diasersi: foundation, karena tombol unduh toolbar tabel adalah komponen bersama (SB-4).
 
-[^drift-2]: Drift PRD vs override. PRD `FAREG-LOGIC-07g`: Modified By (= approver); PRD §8.3 contoh Activity Log: `Agus P.`; `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]` tanpa titik (`John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: override O-4 (SB-6), sehingga `Agus P.`.

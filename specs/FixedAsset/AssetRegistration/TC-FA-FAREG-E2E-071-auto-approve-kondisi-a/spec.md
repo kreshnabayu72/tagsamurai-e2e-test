@@ -32,7 +32,7 @@ coverage:
   - DU-071-2: batch Draft milik Agus P di Group `Gudang Manajer {runId}`.
   - DU-071-3: satu Item pada batch itu: Asset Name `Office Desk`, Brand `Kayu Jati`, Model `No Model`, Quantity `30`, Condition `Normal`, TAG Type `Non-TAG`; Total Asset `30`; seluruh aset memenuhi Tingkat 2.
   - DU-071-4: pengajuan berstatus Waiting for Approval di Group `Gudang Manajer {runId}`, diajukan Rina W (Manage asset & TAG), Total Asset `5`.
-  - Node Registration Log yang diharapkan `Approved by Agus P. (Group Manager — requester)`, dari pengaju Agus P; nama singkat Agus P tampil `Agus P.`.
+  - Node Registration Log yang diharapkan `Approved by Agus P (Group Manager — requester)`, dari pengaju Agus P; nama singkat Agus P tampil `Agus P`.
 - Kondisi:
   - Group `Gudang Manajer {runId}` ber-toggle `Require Approval for Registration` ON.
 
@@ -45,11 +45,11 @@ coverage:
 4. Klik `[Submit for Approval]`
 5. Verifikasi toast `Success, asset has been activated.` tampil pada pengajuan yang di-approve otomatis
 6. Ketik Search `{runId}`, tekan Enter
-7. Verifikasi baris pengajuan Group `Gudang Manajer {runId}` tampil di sub tab `History` dengan Total Asset `30`, Status `Approved`, dan Approver `Agus P.`[^drift-1]
+7. Verifikasi baris pengajuan Group `Gudang Manajer {runId}` tampil di sub tab `History` dengan Total Asset `30`, Status `Approved`, dan Approver `Agus P`
 
 ### Registration Log mencatat Auto-approved Kondisi A
 8. Klik ikon `Registration Log` pada baris Group `Gudang Manajer {runId}`
-9. Verifikasi node timeline berjudul `Approved by Agus P. (Group Manager — requester)`[^drift-1]
+9. Verifikasi node timeline berjudul `Approved by Agus P (Group Manager — requester)`
 10. Verifikasi node itu memuat Jumlah Approved `30`
 11. Klik ikon `✕` pada dialog Registration Log
 
@@ -58,5 +58,3 @@ coverage:
 13. Ketik Search `{runId}`, tekan Enter
 14. Verifikasi baris pengajuan Group `Gudang Manajer {runId}` dengan Total Asset `5` tampil di tab `Active`
 15. Verifikasi hanya baris dengan Total Asset `5` yang tampil sehingga pengajuan dengan Total Asset `30` tidak ada di antrean
-
-[^drift-1]: Drift PRD vs override. PRD §4.1 kolom Approver: `Nama singkat`, dan PRD §8.3 node log `Approved by [User] (Group Manager — requester)` memakai nama singkat pengguna; `prd-conventions.md` §9.13: `[First Name] [Last Initial]` (contoh tanpa titik: `John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: override O-4 (SB-6), sehingga nama singkat `Agus P.`.

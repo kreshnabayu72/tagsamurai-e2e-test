@@ -33,25 +33,25 @@ coverage:
 - Layar awal: Halaman Approval pengajuan. Pengajuan sendiri (K1) tidak masuk antrean Active sehingga halamannya dibuka lewat alamat langsung; pengajuan lain (K2 sampai K10) dibuka dari antrean Approvals tab Active.
 - Komponen: Halaman Approval
 - Data:
-  - DU-035-1: pengajuan Registration ID `REG-20261111-00014`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Hadi K.`, Total Asset `3`.
+  - DU-035-1: pengajuan Registration ID `REG-20261111-00014`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Hadi K`, Total Asset `3`.
   - DU-035-2: aset Name `Laptop - 128`, Category `Computers`, Brand `Dell`, Model `Latitude 5440`, Group `Gudang 1`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason; di panel koreksi: Custom field `Serial Number` bernilai `SN-128-0001`.
   - DU-035-3: aset Name `Laptop - 129`, Category `Computers`, Brand `Dell`, Model `Latitude 5440`, Group `Gudang 1`, TAG `Skipped`, Condition `Damaged`, Corrections `1`, Decision `Approve`, tanpa Reason.
   - DU-035-4: aset Name `Office Desk - 12`, Category `Furniture`, Brand `Kayu Jati`, Model `No Model`, Group `Gudang 1`, TAG `No tag`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
-  - DU-035-5: pengajuan Registration ID `REG-20261109-00003`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `5`.
+  - DU-035-5: pengajuan Registration ID `REG-20261109-00003`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `5`.
   - DU-035-6: aset Name `Laptop - 129`, Category `Computers`, Brand `Dell`, Model `Latitude 5440`, Group `Gudang 1`, TAG `Skipped`, Condition `Damaged`, Corrections `1`, Decision awal `Approve`, tanpa Reason.
   - DU-035-7: aset Name `Laptop - 130`, Category `Computers`, Brand `Dell`, Model `Latitude 5450`, Group `Gudang 1`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-035-8: aset Name `Laptop - 131`, Category `Computers`, Brand `Dell`, Model `Latitude 5450`, Group `Gudang 1`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-035-9: aset Name `Office Desk - 12`, Category `Furniture`, Brand `Kayu Jati`, Model `No Model`, Group `Gudang 1`, TAG `No tag`, Condition `Normal`, Corrections `—`, Decision awal `Approve`, tanpa Reason.
-  - DU-035-10: pengajuan Registration ID `REG-20261110-00012`, Status `Waiting for Approval`, Group `Gudang 3`, Requested By `Siti N.`, Total Asset `2`.
+  - DU-035-10: pengajuan Registration ID `REG-20261110-00012`, Status `Waiting for Approval`, Group `Gudang 3`, Requested By `Siti N`, Total Asset `2`.
   - DU-035-11: aset Name `Monitor - 21`, Category `Computers`, Brand `Samsung`, Model `U28`, Group `Gudang 3`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-035-12: aset Name `Monitor - 22`, Category `Computers`, Brand `Samsung`, Model `U28`, Group `Gudang 4`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-035-13: aset Name `Monitor - 23`, Category `Computers`, Brand `Samsung`, Model `U28`, Group `Gudang 4`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - DU-035-14: aset Name `Monitor - 24`, Category `Computers`, Brand `Samsung`, Model `U28`, Group `Gudang 3`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision awal `Approve`, tanpa Reason.
-  - DU-035-15: pengajuan Registration ID `REG-20261112-00015`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `3`.
+  - DU-035-15: pengajuan Registration ID `REG-20261112-00015`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `3`.
   - DU-035-16: aset Name `Monitor - 25`, Category `Computers`, Brand `Samsung`, Model `S24`, Group `Gudang 1`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
-  - DU-035-17: pengajuan Registration ID `REG-20261113-00016`, Status `Waiting for Approval`, Group `Gudang 4`, Requested By `Siti N.`, Total Asset `2`.
+  - DU-035-17: pengajuan Registration ID `REG-20261113-00016`, Status `Waiting for Approval`, Group `Gudang 4`, Requested By `Siti N`, Total Asset `2`.
   - DU-035-18: aset Name `Monitor - 26`, Category `Computers`, Brand `Samsung`, Model `S24`, Group `Gudang 1`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
-  - DU-035-19: pengajuan Registration ID `REG-20261114-00017`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Rina W.`, Total Asset `4`.
+  - DU-035-19: pengajuan Registration ID `REG-20261114-00017`, Status `Waiting for Approval`, Group `Gudang 1`, Requested By `Rina W`, Total Asset `4`.
   - DU-035-20: aset Name `Monitor - 30`, Category `Computers`, Brand `Dell`, Model `P2422H`, Group `Gudang 1`, TAG `Verified`, Condition `Normal`, Corrections `—`, Decision `Approve`, tanpa Reason.
   - Teks Alert yang diharapkan: `1 asset uses master data that is no longer available. Correct it, return it to Draft, or reject it before deciding.` (satu aset Brand atau Model tidak tersedia), `2 assets use master data that is no longer available. Correct them, return them to Draft, or reject them before deciding.` (dua aset), `1 asset uses master data that is no longer available. Return it to Draft or reject it before deciding.` (satu aset Asset Name atau Group tidak tersedia), dan `2 assets use master data that is no longer available. Return them to Draft or reject them before deciding.` (dua aset), dari template `[N] assets use master data that is no longer available.` dengan N sesuai jumlah aset. Pada K11, baris Alert pertama menghitung DU-035-2 dan DU-035-20 (Brand tidak tersedia), dan baris Alert kedua menghitung DU-035-16, DU-035-18, dan DU-035-20 (Asset Name tidak tersedia, termasuk DU-035-20 yang Brand-nya juga tidak tersedia).
 - Kondisi:

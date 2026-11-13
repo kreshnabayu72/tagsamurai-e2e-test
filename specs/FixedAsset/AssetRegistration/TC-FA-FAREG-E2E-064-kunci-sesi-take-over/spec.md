@@ -31,7 +31,7 @@ coverage:
 
 ## Prerequisites
 - Aktor:
-  - `Rina W` (nama singkat `Rina W.`; Manage asset & TAG, Group terkelola `Gudang Kunci {runId}`), pemegang kunci sesi lebih dulu.
+  - `Rina W` (Manage asset & TAG, Group terkelola `Gudang Kunci {runId}`), pemegang kunci sesi lebih dulu.
   - `Hadi K` (Manage asset & TAG, Group terkelola `Gudang Kunci {runId}`), pengambil alih.
 - Layar awal: Rina W dan Hadi K masing-masing di Fixed Asset > Assets > Registration > sub tab Draft.
 - Data:
@@ -42,7 +42,7 @@ coverage:
 ### Baseline Registration Log sebelum Take over
 1. Hadi K mengetik Search `Gudang Kunci {runId}`, tekan Enter
 2. Hadi K mengklik row action `Registration Log` pada baris
-3. Verifikasi timeline memuat node `Draft created by Rina W.`[^drift-1]
+3. Verifikasi timeline memuat node `Draft created by Rina W`
 4. Hadi K mencatat jumlah node pada timeline
 5. Hadi K menekan `Esc` untuk menutup dialog Registration Log
 
@@ -70,7 +70,5 @@ coverage:
 ### Take over tidak dicatat di Registration Log
 23. Hadi K mengklik `[Cancel]` pada form (form belum diubah sejak dibuka)
 24. Hadi K mengklik row action `Registration Log` pada baris
-25. Verifikasi timeline masih memuat node `Draft created by Rina W.`[^drift-1]
+25. Verifikasi timeline masih memuat node `Draft created by Rina W`
 26. Verifikasi jumlah node sama dengan jumlah yang dicatat sebelum Take over, tanpa node baru
-
-[^drift-1]: Drift PRD vs override. PRD §8.3 node log memakai nama singkat pengguna; `prd-conventions.md` §9.13: `[First Name] [Last Initial]` (contoh tanpa titik: `John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: override O-4 (SB-6), sehingga nama singkat `Rina W.`.

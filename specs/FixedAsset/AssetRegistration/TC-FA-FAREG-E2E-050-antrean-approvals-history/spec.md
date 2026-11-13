@@ -34,10 +34,10 @@ coverage:
 - Aktor: Total Control `Dian P`, seluruh client.
 - Layar awal: Approvals > Registration > History.
 - Data:
-  - DU-050-1: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Meranti {runId}`, Total Asset `8`, Status `Approved` karena pengaju adalah Total Control sehingga disetujui otomatis tanpa approver independen, Requested By `Eko T.`, Approver `Eko T.`, Last Updated `T0 − 1 hari`.
-  - DU-050-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Ulin {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K.`, Approver `Maya L.`, Last Updated `T0 − 2 hari`.
-  - DU-050-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Bangkirai {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N.`, Approver `Rina W.`, Last Updated `T0 − 3 hari`.
-  - DU-050-4: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Damar {runId}`, Total Asset `97`, Status `Canceled`, Requested By `Rina W.`, Approver `—`, Last Updated `T0 − 4 hari`.
+  - DU-050-1: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Meranti {runId}`, Total Asset `8`, Status `Approved` karena pengaju adalah Total Control sehingga disetujui otomatis tanpa approver independen, Requested By `Eko T`, Approver `Eko T`, Last Updated `T0 − 1 hari`.
+  - DU-050-2: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Ulin {runId}`, Total Asset `14`, Status `Partially Approved`, Requested By `Hadi K`, Approver `Maya L`, Last Updated `T0 − 2 hari`.
+  - DU-050-3: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Bangkirai {runId}`, Total Asset `3`, Status `Rejected`, Requested By `Siti N`, Approver `Rina W`, Last Updated `T0 − 3 hari`.
+  - DU-050-4: Pengajuan History dengan Registration ID yang dibentuk server saat Submit, Group `Gudang Damar {runId}`, Total Asset `97`, Status `Canceled`, Requested By `Rina W`, Approver `—`, Last Updated `T0 − 4 hari`.
   - Pengajuan DU-050-4 diajukan lebih dulu daripada DU-050-3, DU-050-3 lebih dulu daripada DU-050-2, dan DU-050-2 lebih dulu daripada DU-050-1.
   - Eko T adalah pengguna aktif dengan role Total Control. Maya L, Hadi K, Siti N, dan Rina W adalah pengguna aktif dengan role Manage asset & TAG pada Group pengajuan masing-masing; Maya L dan Hadi K bukan Total Control.
 - Kondisi: format tanggal General Settings `dd/MM/yy` dan format waktu 24 jam; seluruh kolom tabel tab History tampil.
@@ -53,8 +53,8 @@ coverage:
 6. Verifikasi Status baris `Gudang Ulin {runId}` tampil sebagai Badge `Partially Approved` berwarna warning
 7. Verifikasi Status baris `Gudang Bangkirai {runId}` tampil sebagai Badge `Rejected` berwarna danger
 8. Verifikasi Status baris `Gudang Damar {runId}` tampil sebagai Badge `Canceled` berwarna dark
-9. Verifikasi Requested By baris `Gudang Meranti {runId}` bernilai `Eko T.`[^drift-1]
-10. Verifikasi Approver baris `Gudang Meranti {runId}` bernilai `Eko T.`, nama pengaju, karena pengajuan disetujui otomatis (Kondisi A)[^drift-1]
+9. Verifikasi Requested By baris `Gudang Meranti {runId}` bernilai `Eko T`
+10. Verifikasi Approver baris `Gudang Meranti {runId}` bernilai `Eko T`, nama pengaju, karena pengajuan disetujui otomatis (Kondisi A)
 11. Verifikasi Approver baris `Gudang Damar {runId}` bernilai `—`
 12. Verifikasi Last Updated baris `Gudang Meranti {runId}` tampil dengan Date Format `dd/MM/yy` diikuti Time Format 24 jam
 
@@ -106,13 +106,13 @@ coverage:
 51. Verifikasi tabel tab History memuat baris `Gudang Bangkirai {runId}` dan tidak memuat baris `Gudang Meranti {runId}`
 52. Klik `[Clear Field]`
 53. Klik `[Apply]`
-54. Pilih opsi `Eko T.` pada field `Requested By`[^drift-1]
+54. Pilih opsi `Eko T` pada field `Requested By`
 55. Klik `[Apply]`
 56. Verifikasi tabel tab History memuat baris `Gudang Meranti {runId}` dan tidak memuat baris `Gudang Ulin {runId}`
 57. Klik `[Clear Field]`
 58. Klik `[Apply]`
-59. Pilih opsi `Eko T.` pada field `Approver`[^drift-1]
-60. Pilih opsi `Maya L.` pada field `Approver`[^drift-1]
+59. Pilih opsi `Eko T` pada field `Approver`
+60. Pilih opsi `Maya L` pada field `Approver`
 61. Klik `[Apply]`
 62. Verifikasi tabel tab History memuat baris `Gudang Meranti {runId}`, `Gudang Ulin {runId}` dan tidak memuat baris `Gudang Bangkirai {runId}`, `Gudang Damar {runId}`
 63. Klik `[Clear Field]`
@@ -163,5 +163,3 @@ coverage:
 102. Verifikasi Detail pengajuan read-only terbuka dengan Registration ID milik DU-050-2
 103. Klik tautan breadcrumb `History`
 104. Verifikasi antrean Approvals terbuka kembali pada tab `History`
-
-[^drift-1]: Drift PRD vs foundation vs override. PRD §4.1 kolom Requested By dan Approver: `Nama singkat`. foundation `prd-conventions.md` §9.13: nama singkat `[First Name] [Last Initial]`, contoh tanpa titik (`John L`, `Alexander G`). Override O-4: nama singkat mengakhiri inisial dengan titik (`John L.`, `Alexander G.`). Diasersi: O-4, karena override menang atas foundation (SB-6).

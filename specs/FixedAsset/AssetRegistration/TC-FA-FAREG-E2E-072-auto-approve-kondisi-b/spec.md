@@ -25,7 +25,7 @@ coverage:
   - DU-072-1: Group `Gudang Mandiri {runId}`, ada di entitas aktor.
   - DU-072-2: batch Draft milik Rina W di Group `Gudang Mandiri {runId}`.
   - DU-072-3: satu Item pada batch itu: Asset Name `Office Desk`, Brand `Kayu Jati`, Model `No Model`, Quantity `2`, Condition `Normal`, TAG Type `Non-TAG`; Total Asset `2`; seluruh aset memenuhi Tingkat 2.
-  - Node Registration Log yang diharapkan `Submitted by Rina W.`, dari pengaju Rina W; nama singkat Rina W tampil `Rina W.`.
+  - Node Registration Log yang diharapkan `Submitted by Rina W`, dari pengaju Rina W; nama singkat Rina W tampil `Rina W`.
 - Kondisi:
   - Group `Gudang Mandiri {runId}` ber-toggle `Require Approval for Registration` ON.
   - Client aktor memiliki pengguna Total Control: Total Control eligible di setiap node Group dan dihitung sebagai approver independen, sehingga pengaju bukan satu-satunya anggota himpunan approver eligible dan Kondisi B tidak terpenuhi.
@@ -44,7 +44,5 @@ coverage:
 
 ### Registration Log tidak mencatat Auto-approved Kondisi B
 9. Klik ikon `Registration Log` pada baris Group `Gudang Mandiri {runId}`
-10. Verifikasi timeline pengajuan Group `Gudang Mandiri {runId}` memuat node `Submitted by Rina W.`[^drift-1]
+10. Verifikasi timeline pengajuan Group `Gudang Mandiri {runId}` memuat node `Submitted by Rina W`
 11. Verifikasi timeline tidak memuat node berjudul `Approved by system (no independent approver)`
-
-[^drift-1]: Drift PRD vs override. PRD §8.3 node log `Submitted by [User]` memakai nama singkat pengguna; `prd-conventions.md` §9.13: `[First Name] [Last Initial]` (contoh tanpa titik: `John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: override O-4 (SB-6), sehingga nama singkat `Rina W.`.

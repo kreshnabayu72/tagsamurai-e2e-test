@@ -31,7 +31,7 @@ coverage:
 # Register Asset: Save draft pertama membentuk batch Draft
 
 ## Prerequisites
-- Aktor: `Rina W` (nama singkat `Rina W.`; Manage asset & TAG, Group terkelola `Gudang Cabang {runId}`).
+- Aktor: `Rina W` (Manage asset & TAG, Group terkelola `Gudang Cabang {runId}`).
 - Layar awal: Fixed Asset > Assets > Registration > sub tab Draft.
 - Data:
   - DU-053-1: Group `Gudang Cabang {runId}`, node Assignable dan bukan Excess, belum memiliki batch Draft.
@@ -69,9 +69,7 @@ coverage:
 22. Verifikasi baris Group `Gudang Cabang {runId}` tampil di sub tab Draft
 23. Verifikasi hanya satu baris yang cocok dengan Search itu, yaitu satu batch Draft walau `[Save draft]` diklik dua kali
 24. Verifikasi Total Asset batch `5`
-25. Verifikasi Requested By batch `Rina W.`, pembuat draft[^drift-1]
+25. Verifikasi Requested By batch `Rina W`, pembuat draft
 26. Klik row action `Registration Log` pada baris
-27. Verifikasi timeline memuat node `Draft created by Rina W.` satu kali[^drift-1]
-28. Verifikasi node `Draft created by Rina W.` memuat Total Asset `5`
-
-[^drift-1]: Drift PRD vs override. PRD §4.1 kolom Requested By: `Nama singkat`, dan PRD §8.3 node log memakai nama singkat pengguna; `prd-conventions.md` §9.13: `[First Name] [Last Initial]` (contoh tanpa titik: `John L`). Baris O-4: nama singkat mengakhiri inisial dengan titik (`John L.`). Diasersi: override O-4 (SB-6), sehingga nama singkat `Rina W.`.
+27. Verifikasi timeline memuat node `Draft created by Rina W` satu kali
+28. Verifikasi node `Draft created by Rina W` memuat Total Asset `5`

@@ -46,7 +46,7 @@ coverage:
 - Aktor: Maya L (Manage purchase, Group terkelola `Gudang 1 {runId}` dan `Gudang Sesi {runId}`).
 - Layar awal: Fixed Asset > Assets.
 - Data:
-  - DU-089-1: Batch Draft dengan Group `Gudang 1 {runId}`, Origin `—`, Total Asset `12`, Progress `0%`, Requested By `Rina W.`, Last Updated `T0 − 1 hari`, Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `12`.
+  - DU-089-1: Batch Draft dengan Group `Gudang 1 {runId}`, Origin `—`, Total Asset `12`, Progress `0%`, Requested By `Rina W`, Last Updated `T0 − 1 hari`, Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `12`.
   - DU-089-2: Pengajuan Waiting for Approval `REG-20261109-08902` di Group `Gudang 1 {runId}`, diajukan Rina W, Total Asset `5`, Last Updated `T0 − 2 hari` (Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `5`, TAG `Verified`).
   - DU-089-3: Pengajuan Approved `REG-20261108-08903` di Group `Gudang 1 {runId}`, diajukan Rina W, Approver Budi S, Total Asset `3`, Last Updated `T0 − 3 hari`.
   - DU-089-4: Maya L (Manage purchase, Group terkelola `Gudang 1 {runId}` dan `Gudang Sesi {runId}`).
@@ -57,7 +57,7 @@ coverage:
   - DU-089-9: Pengajuan Waiting for Approval di Group `Gudang Eksternal {runId}`, diajukan Dimas R, Total Asset `6`, Last Updated `T0 − 2 hari` (Item `Laptop` Brand `Dell` Model `Latitude 5440` Quantity `6`, TAG `Verified`).
   - DU-089-10: Dimas R (Manage asset & TAG, Group terkelola `Gudang Eksternal {runId}`).
   - DU-089-11: Hendra Q (Manage asset & TAG, Group terkelola `Gudang Sesi {runId}`), pembuat batch DU-089-7.
-  - DU-089-12: Batch Draft dengan Group `Ruang Arsip {runId}`, Origin `—`, Total Asset `8`, Progress `0%`, Requested By `Hendra Q.`, Last Updated `T0 − 1 hari`, Item `Printer` Brand `Epson` Model `L3210` Quantity `8`.
+  - DU-089-12: Batch Draft dengan Group `Ruang Arsip {runId}`, Origin `—`, Total Asset `8`, Progress `0%`, Requested By `Hendra Q`, Last Updated `T0 − 1 hari`, Item `Printer` Brand `Epson` Model `L3210` Quantity `8`.
   - DU-089-13: Pengajuan Waiting for Approval di Group `Ruang Arsip {runId}`, diajukan Hendra Q, Total Asset `7`, Last Updated `T0 − 2 hari` (Item `Printer` Brand `Epson` Model `L3210` Quantity `7`, TAG `Verified`).
 - Kondisi:
   - Group `Gudang 1 {runId}` dan Group `Gudang Eksternal {runId}` ber-toggle `Require Approval for Registration` ON.
@@ -76,7 +76,7 @@ coverage:
 
 ### Manage purchase melihat batch Draft hanya lewat Detail
 6. Ketik Search `Gudang 1 {runId}`, tekan Enter
-7. Verifikasi baris Group `Gudang 1 {runId}` dengan Requested By `Rina W.` tampil di sub tab `Draft` bagi Maya L[^drift-2]
+7. Verifikasi baris Group `Gudang 1 {runId}` dengan Requested By `Rina W` tampil di sub tab `Draft` bagi Maya L
 8. Verifikasi row action `Detail` tampil pada baris `Gudang 1 {runId}`
 9. Verifikasi row action `Registration Log` tampil pada baris `Gudang 1 {runId}`
 10. Verifikasi row action `Edit` tidak tampil pada baris `Gudang 1 {runId}`
@@ -121,7 +121,7 @@ coverage:
 39. Verifikasi item sidebar `Assets` tampil bagi Maya L
 40. Verifikasi menu `Approvals` > `Registration` tidak tampil pada sidebar bagi Maya L
 41. Buka halaman Approval pengajuan Group `Gudang 1 {runId}` dengan Total Asset `5` lewat alamat langsung (URL)
-42. Verifikasi halaman penuh `/no-access` tampil tanpa sidebar bagi Maya L[^drift-1]
+42. Verifikasi toast error `You don't have permission to do this.` tampil bagi Maya L
 
 ### Take over tidak tampil bagi Manage purchase pada batch Draft yang kuncinya dipegang user lain
 43. Buka Fixed Asset > Assets > Registration
@@ -135,7 +135,7 @@ coverage:
 
 ### Group di luar Group terkelola tidak tampil bagi Manage purchase
 51. Ganti isi kotak search dengan `{runId}`, tekan Enter
-52. Verifikasi baris Group `Gudang 1 {runId}` dengan Requested By `Rina W.` tampil di sub tab `Draft` bagi Maya L[^drift-2]
+52. Verifikasi baris Group `Gudang 1 {runId}` dengan Requested By `Rina W` tampil di sub tab `Draft` bagi Maya L
 53. Verifikasi baris Group `Gudang Eksternal {runId}` tidak tampil di sub tab `Draft`
 54. Klik sub tab `Waiting for Approval`
 55. Ganti isi kotak search dengan `{runId}`, tekan Enter
@@ -146,13 +146,9 @@ coverage:
 58. Buka Fixed Asset > Assets > Registration
 59. Klik sub tab `Draft`
 60. Ganti isi kotak search dengan `Ruang Arsip {runId}`, tekan Enter
-61. Verifikasi baris Group `Ruang Arsip {runId}` dengan Requested By `Hendra Q.` tampil di sub tab `Draft` bagi Maya L[^drift-2]
+61. Verifikasi baris Group `Ruang Arsip {runId}` dengan Requested By `Hendra Q` tampil di sub tab `Draft` bagi Maya L
 62. Verifikasi row action `Detail` tampil pada baris Group `Ruang Arsip {runId}`
 63. Verifikasi row action `Edit` tidak tampil pada baris Group `Ruang Arsip {runId}`
 64. Klik sub tab `Waiting for Approval`
 65. Ganti isi kotak search dengan `Ruang Arsip {runId}`, tekan Enter
 66. Verifikasi row action `Detail` tampil pada baris Group `Ruang Arsip {runId}` dengan Total Asset `7`
-
-[^drift-1]: Drift PRD dan foundation vs override. PRD §9.2 (skenario Hak putus) dan `FAREG-LOGIC-06p`: URL halaman Approval yang dibuka Manage purchase "ditolak server dengan `403` dan `T-REG-07`"; foundation `error-handling-convention.md` §2: 403 menghasilkan toast error `"You don't have permission to do this."` tanpa redirect. Override O-19 (all modules): "A URL the user may not open: The full-page `/no-access` without the shell (sidebar) stays." Diasersi: O-19, karena override menang atas PRD dan foundation (SB-6); penolakan atas aktor ini terbaca sebagai halaman penuh `/no-access` tanpa sidebar, bukan toast.
-
-[^drift-2]: Drift PRD dan foundation vs override. PRD §4.1 (tabel kolom sub tab Draft): Requested By memakai «Nama singkat»; foundation `prd-conventions.md` §9.13: `[First Name] [Last Initial]` dengan contoh tanpa titik (`John L`). Override O-4 (all modules): «The short name ends the initial with a period: `John L.`, `Alexander G.`». Diasersi: O-4, karena override menang atas PRD dan foundation (SB-6); Requested By pengguna Rina W tampil `Rina W.` dan pengguna Hendra Q tampil `Hendra Q.`.
