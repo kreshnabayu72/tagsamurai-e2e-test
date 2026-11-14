@@ -2144,3 +2144,46 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration C).
 - **Diterapkan di:** SettingsUser 020.
 - **Sumber:** PRD admin-console/settings-user ACSU-LOGIC-09; API doc user-actions.md L29; SettingsUser 174 `TC-AC-SU-598` langkah 4.
+
+## D-207 Placeholder filter Last Used in Journal di Chart of Accounts adalah `Select period` (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-123` langkah 11 dan catatan `drift-1`.
+- **Spec meminta:** placeholder `Select date` (mengikuti `prd-conventions.md` §9.8).
+- **Kenyataannya:** aplikasi menampilkan `Select period`.
+- **Karena:** PRD settings-chart-of-accounts L376 menyatakan delta yang disengaja atas §9.8: nilainya periode bulan (`MMM YYYY`), bukan tanggal. Ini bukan drift, sehingga catatan `drift-1` tidak berlaku.
+- **Keputusan:**
+  - Langkah 11 mengasersi `Select period`.
+  - Langkah 15 (Last Updated) tetap `Select date`.
+  - Aplikasi tidak diubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
+- **Diterapkan di:** SettingsChartOfAccounts UI-123.
+- **Sumber:** PRD fixed-asset settings-chart-of-accounts L370, L376.
+
+## D-208 Chip opsi pada field Function mengikuti overflow komponen (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-123` langkah 43.
+- **Spec meminta:** tiga chip (`Asset Cost`, `Gain on Disposal`, `Loss on Disposal`) tampil pada field `Function`.
+- **Kenyataannya:** pada lebar field, komponen menampilkan dua chip dan satu chip `+1 more`.
+- **Karena:**
+  - Overflow chip adalah perilaku komponen MultiSelect.
+  - Spec yang sama (langkah 61) sudah menerima aturannya: jumlah chip yang tampil ditambah N sama dengan jumlah opsi terpilih.
+- **Keputusan:**
+  - Langkah 43 mengasersi jumlah chip yang tampil ditambah N dari `+N more` sama dengan 3, dan ketiga opsi tercentang di daftar.
+  - Langkah 45-47 menghapus chip yang tampil.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
+- **Diterapkan di:** SettingsChartOfAccounts UI-123.
+- **Sumber:** perilaku MultiSelect wangs-ui; UI-123 langkah 61.
+
+## D-209 Counter seleksi dan tombol Unselect All mengikuti format komponen (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-125` kondisi K5-K8, langkah 78, 82-83, 87 dan langkah sejenis.
+- **Spec meminta:** counter `1000 Accounts selected` dan tombol `Unselect All`.
+- **Kenyataannya:** DataTable menampilkan `1,000 Accounts selected` (pemisah ribuan) dan `Unselect All (N records)`.
+- **Karena:** format angka dan label tombol adalah perilaku komponen DataTable yang sama di semua modul. Spec menulis angka mentah dari nilai Selection Limit, bukan teks tampilan.
+- **Keputusan:**
+  - Counter diasersi dengan pemisah ribuan (`1,000 Accounts selected`).
+  - Tombol diasersi sebagai `Unselect All (N records)`.
+  - Aplikasi tidak diubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
+- **Diterapkan di:** SettingsChartOfAccounts UI-125.
+- **Sumber:** perilaku DataTable wangs-ui (seleksi lintas halaman).
