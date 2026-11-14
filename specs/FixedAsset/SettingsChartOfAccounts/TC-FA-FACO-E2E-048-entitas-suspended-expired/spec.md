@@ -9,12 +9,12 @@ sourceRules: ["T-11", "§[F-FACO-01] Create Account#p1", "§[F-FACO-02] Edit Acc
 smoke: []
 dependsOn: []
 trace:
-  "T-11": [20, 30, 43, 53]
-  "§[F-FACO-01] Create Account#p1": [20, 43]
-  "§[F-FACO-02] Edit Account#p1": [30, 53]
-  "§9.4.2#r28": [20, 23, 30, 32, 43, 46, 53, 55]
-  "EB-AKS-7": [20, 30, 43, 53]
-anchor: [9, 14, 37]
+  "T-11": [20, 34, 42, 48, 55, 64, 73, 82, 96, 110, 118, 124, 131, 140, 149, 158]
+  "§[F-FACO-01] Create Account#p1": [20, 96]
+  "§[F-FACO-02] Edit Account#p1": [34, 110]
+  "§9.4.2#r28": [20, 27, 34, 39, 42, 45, 48, 51, 55, 58, 64, 67, 73, 76, 82, 85, 96, 103, 110, 115, 118, 121, 124, 127, 131, 134, 140, 143, 149, 152, 158, 161]
+  "EB-AKS-7": [20, 34, 42, 48, 55, 64, 73, 82, 96, 110, 118, 124, 131, 140, 149, 158]
+anchor: [9, 14, 25, 90, 101]
 coverage:
   web: automated
 ---
@@ -30,6 +30,8 @@ coverage:
   - DU-048-3: Entitas `Client Expired {runId}` berstatus Expired.
   - DU-048-4: akun Account Code `5-6001-{runId}`, Account Name `Depreciation Expense – Admin {runId}`, Account Function `Depreciation Expense`, Status Active, Used By `0`, belum pernah diekspor, pada entitas `Client Suspended {runId}`.
   - DU-048-5: akun Account Code `5-6001-{runId}`, Account Name `Depreciation Expense – Admin {runId}`, Account Function `Depreciation Expense`, Status Active, Used By `0`, belum pernah diekspor, pada entitas `Client Expired {runId}`.
+  - DU-048-11: akun Account Code `4-7001-{runId}`, Account Name `Gain on Disposal {runId}`, Account Function `Gain on Disposal`, Status Inactive, Used By `0`, belum pernah diekspor, pada entitas `Client Suspended {runId}`.
+  - DU-048-12: akun Account Code `4-7001-{runId}`, Account Name `Gain on Disposal {runId}`, Account Function `Gain on Disposal`, Status Inactive, Used By `0`, belum pernah diekspor, pada entitas `Client Expired {runId}`.
 
 ## Test Steps
 
@@ -44,7 +46,7 @@ coverage:
 8. Klik `[Submit]`
 9. Verifikasi toast `Success, account has been created.` tampil
 
-### Aksi tulis ditolak di entitas Suspended
+### Create Account ditolak di entitas Suspended
 10. Masuk sebagai Default User entitas `Client Suspended {runId}`
 11. Buka halaman Settings > Accounting
 12. Klik tab `Chart of Accounts`
@@ -56,40 +58,174 @@ coverage:
 18. Pilih Account Function `Asset Cost`
 19. Klik `[Submit]`
 20. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-21. Klik `✕` pada form, lalu klik `[Leave]` pada dialog Unsaved Changes
-22. Ganti isi kotak search dengan `8-1001-{runId}`, tekan Enter
-23. Verifikasi empty state `No results found` tampil karena akun `8-1001-{runId}` tidak tercipta
-24. Klik `(←)` pada kotak Search
-25. Ketik Search `{runId}`, tekan Enter
-26. Klik ikon `⋯` pada baris Account Code `5-6001-{runId}`
-27. Klik `Edit`
-28. Ganti Account Name dengan `Depreciation Expense – Admin Revisi S {runId}`
-29. Klik `[Save]`
-30. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-31. Klik `✕` pada form, lalu klik `[Leave]` pada dialog Unsaved Changes
-32. Verifikasi baris Account Code `5-6001-{runId}` tetap memuat Account Name `Depreciation Expense – Admin {runId}`
+21. Masuk sebagai Default User entitas `Client Suspended {runId}`
+22. Buka halaman Settings > Accounting
+23. Klik tab `Chart of Accounts`
+24. Ketik Search `{runId}`, tekan Enter
+25. Verifikasi baris Account Code `5-6001-{runId}` tampil di tabel
+26. Ganti isi kotak search dengan `8-1001-{runId}`, tekan Enter
+27. Verifikasi empty state `No results found` tampil karena akun `8-1001-{runId}` tidak tercipta
+28. Klik `(←)` pada kotak Search
+29. Ketik Search `{runId}`, tekan Enter
 
-### Aksi tulis ditolak di entitas Expired
-33. Masuk sebagai Default User entitas `Client Expired {runId}`
-34. Buka halaman Settings > Accounting
-35. Klik tab `Chart of Accounts`
-36. Ketik Search `{runId}`, tekan Enter
-37. Verifikasi baris Account Code `5-6001-{runId}` tampil di tabel
-38. Klik `+ Account`
-39. Isi Account Code `8-1002-{runId}`
-40. Isi Account Name `Building Improvement Cost {runId}`
-41. Pilih Account Function `Asset Cost`
-42. Klik `[Submit]`
-43. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-44. Klik `✕` pada form, lalu klik `[Leave]` pada dialog Unsaved Changes
-45. Ganti isi kotak search dengan `8-1002-{runId}`, tekan Enter
-46. Verifikasi empty state `No results found` tampil karena akun `8-1002-{runId}` tidak tercipta
-47. Klik `(←)` pada kotak Search
-48. Ketik Search `{runId}`, tekan Enter
-49. Klik ikon `⋯` pada baris Account Code `5-6001-{runId}`
-50. Klik `Edit`
-51. Ganti Account Name dengan `Depreciation Expense – Admin Revisi E {runId}`
-52. Klik `[Save]`
-53. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-54. Klik `✕` pada form, lalu klik `[Leave]` pada dialog Unsaved Changes
-55. Verifikasi baris Account Code `5-6001-{runId}` tetap memuat Account Name `Depreciation Expense – Admin {runId}`
+### Edit Account ditolak di entitas Suspended
+30. Klik ikon `⋯` pada baris Account Code `5-6001-{runId}`
+31. Klik `Edit`
+32. Ganti Account Name dengan `Depreciation Expense – Admin Revisi S {runId}`
+33. Klik `[Save]`
+34. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+35. Masuk sebagai Default User entitas `Client Suspended {runId}`
+36. Buka halaman Settings > Accounting
+37. Klik tab `Chart of Accounts`
+38. Ketik Search `{runId}`, tekan Enter
+39. Verifikasi baris Account Code `5-6001-{runId}` tetap memuat Account Name `Depreciation Expense – Admin {runId}`
+
+### Activate single ditolak di entitas Suspended
+40. Klik Switch Status pada baris Account Code `4-7001-{runId}`
+41. Klik `[Activate]` pada dialog konfirmasi
+42. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+43. Muat ulang halaman
+44. Ketik Search `{runId}`, tekan Enter
+45. Verifikasi Switch Status pada baris Account Code `4-7001-{runId}` Inactive
+
+### Deactivate single ditolak di entitas Suspended
+46. Klik Switch Status pada baris Account Code `5-6001-{runId}`
+47. Klik `[Deactivate]` pada dialog konfirmasi
+48. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+49. Muat ulang halaman
+50. Ketik Search `{runId}`, tekan Enter
+51. Verifikasi Switch Status pada baris Account Code `5-6001-{runId}` Active
+
+### Delete single ditolak di entitas Suspended
+52. Klik ikon `⋯` pada baris Account Code `5-6001-{runId}`
+53. Klik `Delete`
+54. Klik `[Delete]` pada dialog konfirmasi
+55. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+56. Muat ulang halaman
+57. Ketik Search `{runId}`, tekan Enter
+58. Verifikasi baris Account Code `5-6001-{runId}` tetap tampil di tabel
+
+### Bulk Activate ditolak di entitas Suspended
+59. Centang baris Account Code `5-6001-{runId}`
+60. Centang baris Account Code `4-7001-{runId}`
+61. Klik `Bulk Action`
+62. Klik `Activate`
+63. Klik `[Activate]` pada dialog konfirmasi
+64. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+65. Muat ulang halaman
+66. Ketik Search `{runId}`, tekan Enter
+67. Verifikasi Switch Status pada baris Account Code `4-7001-{runId}` Inactive
+
+### Bulk Deactivate ditolak di entitas Suspended
+68. Centang baris Account Code `5-6001-{runId}`
+69. Centang baris Account Code `4-7001-{runId}`
+70. Klik `Bulk Action`
+71. Klik `Deactivate`
+72. Klik `[Deactivate]` pada dialog konfirmasi
+73. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+74. Muat ulang halaman
+75. Ketik Search `{runId}`, tekan Enter
+76. Verifikasi Switch Status pada baris Account Code `5-6001-{runId}` Active
+
+### Bulk Delete ditolak di entitas Suspended
+77. Centang baris Account Code `5-6001-{runId}`
+78. Centang baris Account Code `4-7001-{runId}`
+79. Klik `Bulk Action`
+80. Klik `Delete`
+81. Klik `[Delete]` pada dialog konfirmasi
+82. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+83. Muat ulang halaman
+84. Ketik Search `{runId}`, tekan Enter
+85. Verifikasi baris Account Code `5-6001-{runId}` dan `4-7001-{runId}` tetap tampil di tabel
+
+### Create Account ditolak di entitas Expired
+86. Masuk sebagai Default User entitas `Client Expired {runId}`
+87. Buka halaman Settings > Accounting
+88. Klik tab `Chart of Accounts`
+89. Ketik Search `{runId}`, tekan Enter
+90. Verifikasi baris Account Code `5-6001-{runId}` tampil di tabel
+91. Klik `+ Account`
+92. Isi Account Code `8-1002-{runId}`
+93. Isi Account Name `Building Improvement Cost {runId}`
+94. Pilih Account Function `Asset Cost`
+95. Klik `[Submit]`
+96. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+97. Masuk sebagai Default User entitas `Client Expired {runId}`
+98. Buka halaman Settings > Accounting
+99. Klik tab `Chart of Accounts`
+100. Ketik Search `{runId}`, tekan Enter
+101. Verifikasi baris Account Code `5-6001-{runId}` tampil di tabel
+102. Ganti isi kotak search dengan `8-1002-{runId}`, tekan Enter
+103. Verifikasi empty state `No results found` tampil karena akun `8-1002-{runId}` tidak tercipta
+104. Klik `(←)` pada kotak Search
+105. Ketik Search `{runId}`, tekan Enter
+
+### Edit Account ditolak di entitas Expired
+106. Klik ikon `⋯` pada baris Account Code `5-6001-{runId}`
+107. Klik `Edit`
+108. Ganti Account Name dengan `Depreciation Expense – Admin Revisi E {runId}`
+109. Klik `[Save]`
+110. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+111. Masuk sebagai Default User entitas `Client Expired {runId}`
+112. Buka halaman Settings > Accounting
+113. Klik tab `Chart of Accounts`
+114. Ketik Search `{runId}`, tekan Enter
+115. Verifikasi baris Account Code `5-6001-{runId}` tetap memuat Account Name `Depreciation Expense – Admin {runId}`
+
+### Activate single ditolak di entitas Expired
+116. Klik Switch Status pada baris Account Code `4-7001-{runId}`
+117. Klik `[Activate]` pada dialog konfirmasi
+118. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+119. Muat ulang halaman
+120. Ketik Search `{runId}`, tekan Enter
+121. Verifikasi Switch Status pada baris Account Code `4-7001-{runId}` Inactive
+
+### Deactivate single ditolak di entitas Expired
+122. Klik Switch Status pada baris Account Code `5-6001-{runId}`
+123. Klik `[Deactivate]` pada dialog konfirmasi
+124. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+125. Muat ulang halaman
+126. Ketik Search `{runId}`, tekan Enter
+127. Verifikasi Switch Status pada baris Account Code `5-6001-{runId}` Active
+
+### Delete single ditolak di entitas Expired
+128. Klik ikon `⋯` pada baris Account Code `5-6001-{runId}`
+129. Klik `Delete`
+130. Klik `[Delete]` pada dialog konfirmasi
+131. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+132. Muat ulang halaman
+133. Ketik Search `{runId}`, tekan Enter
+134. Verifikasi baris Account Code `5-6001-{runId}` tetap tampil di tabel
+
+### Bulk Activate ditolak di entitas Expired
+135. Centang baris Account Code `5-6001-{runId}`
+136. Centang baris Account Code `4-7001-{runId}`
+137. Klik `Bulk Action`
+138. Klik `Activate`
+139. Klik `[Activate]` pada dialog konfirmasi
+140. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+141. Muat ulang halaman
+142. Ketik Search `{runId}`, tekan Enter
+143. Verifikasi Switch Status pada baris Account Code `4-7001-{runId}` Inactive
+
+### Bulk Deactivate ditolak di entitas Expired
+144. Centang baris Account Code `5-6001-{runId}`
+145. Centang baris Account Code `4-7001-{runId}`
+146. Klik `Bulk Action`
+147. Klik `Deactivate`
+148. Klik `[Deactivate]` pada dialog konfirmasi
+149. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+150. Muat ulang halaman
+151. Ketik Search `{runId}`, tekan Enter
+152. Verifikasi Switch Status pada baris Account Code `5-6001-{runId}` Active
+
+### Bulk Delete ditolak di entitas Expired
+153. Centang baris Account Code `5-6001-{runId}`
+154. Centang baris Account Code `4-7001-{runId}`
+155. Klik `Bulk Action`
+156. Klik `Delete`
+157. Klik `[Delete]` pada dialog konfirmasi
+158. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+159. Muat ulang halaman
+160. Ketik Search `{runId}`, tekan Enter
+161. Verifikasi baris Account Code `5-6001-{runId}` dan `4-7001-{runId}` tetap tampil di tabel

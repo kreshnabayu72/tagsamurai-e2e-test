@@ -24,7 +24,7 @@ coverage:
 - Kemampuan teknis (disediakan tim FE/BE): membaca jumlah entri Modal Changelog: Group, Activity Log, dan System Log aktor sebelum dan sesudah aksi (audit trail permanen; 8b butir 10).
 - Jam server dan jam browser sinkron; Date entri log dibandingkan dengan waktu yang dicatat sesudah transaksi T-0 commit dengan toleransi satu menit (S-12).
 - Baseline log: N0 = jumlah entri Modal Changelog: Group yang dicatat pada langkah 3, sebelum aksi pemicu pertama yang diasersi (S-12). N1 dan A1 = jumlah entri Modal Changelog: Group dan Activity Log yang dicatat pada langkah 39, sebelum pemicu T-0 TC-FA-GRP-306 (S-12).
-- Pembacaan dropdown tujuan Register Asset (Expected c TC-303): dropdown assignment atau disposal diwakili dropdown tujuan Register Asset; TC tidak menyebut dropdown mana (lihat Temuan untuk QA).
+- Pembacaan dropdown tujuan Register Asset (Expected c TC-303): dropdown assignment baru diwakili dropdown tujuan Register Asset; TC tidak menyebut dropdown mana (lihat Temuan untuk QA).
 
 ## Test Steps
 
@@ -101,7 +101,7 @@ coverage:
 - Klausa "belum ada baris log" sebelum T-0 (TC-303 Expected b) diasersi pada langkah 12 dengan baseline N0; anchor positif: langkah 2 (entri lain tampil). Asersi tambahan: tidak ada. Search untuk menemukan entri target (langkah di TC-306) adalah langkah penghubung (R-16).
 - Spec berisi lebih dari 35 langkah. Alasan: seluruh blok satu kelas (h, penerapan seleksi Wizard) pada satu dataset dan satu alur state; langkah penghubung seeding, pemicu T-0, dan baca-log berpola bukan asersi baru (bagian 3 prinsip 13, P-1).
 - Temuan untuk QA:
-  - TC-303 Expected c menyebut dropdown assignment atau disposal tanpa menyebut dropdown mana; spec memakai dropdown tujuan Register Asset (rujukan TC-1051).
+  - TC-303 Expected c menyebut dropdown assignment baru tanpa menyebut dropdown mana; spec memakai dropdown tujuan Register Asset (rujukan TC-1051).
   - TC-303 dan TC-306 Post Condition/Expected tentang log di T-0 mengasersi Modified By = submit terakhir; pada TC-306 hanya satu aktor yang submit sehingga Modified By = aktor yang sama; perlu konfirmasi QA bila seharusnya dua user berbeda.
   - TC-305 Post Condition (Changelog dan Activity Log Marked/Restored seketika, System Log ditempel ke user submit) tidak punya langkah observasi; tidak diasersi (S-01).
   - TC-306 tidak menyebut isi checkbox pada pembukaan ulang Wizard sesudah submit; spec mengatur centang sampai hanya seleksi B tercentang.

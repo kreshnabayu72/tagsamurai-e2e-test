@@ -15,13 +15,13 @@ trace:
   "D-08": [38, 39, 40]
   "D-14": [3, 4, 5]
   "D-15": [11, 12, 13]
-  "R-05": [193, 194, 238, 239]
-  "R-06": [203, 204, 206, 247, 248]
-  "T-03": [274, 275, 279, 280, 287]
-  "T-04": [103, 104, 116, 155, 159, 183]
+  "R-05": [193, 194, 238, 239, 241]
+  "R-06": [203, 204, 206, 248, 249, 251]
+  "T-03": [276, 277, 281, 282, 289]
+  "T-04": [103, 104, 116, 155, 159, 183, 297]
   "T-05": [108, 109, 125, 142, 163, 167, 193]
-  "T-06": [98, 134, 150, 172, 176, 203]
-  "T-12": [253, 254, 255, 260, 261, 262, 269]
+  "T-06": [98, 134, 150, 172, 176, 203, 313]
+  "T-12": [255, 256, 257, 262, 263, 264, 271, 304, 305, 306]
   "§4.1.1#p4": [45, 46, 50, 51, 57, 58, 62, 63, 68, 69]
   "§4.2f#b2": [45, 46, 50, 51]
   "§4.5#b2": [91, 93]
@@ -31,13 +31,13 @@ trace:
   "§7.2#r17": [98, 134]
   "§7.2#r18": 150
   "§7.2#r19": [172, 203]
-  "§7.2#p2": [184, 194, 204, 238, 239, 247, 248]
-  "§7.3#b1": [156, 164, 173, 185, 195, 205, 211, 219, 228, 238, 240, 247, 249]
-  "§7.3#b2": [76, 117, 118, 126, 127, 135, 143, 151, 184, 194, 204, 239, 248, 270, 288]
-  "§7.3#b4": [253, 254, 255, 260, 261, 262, 269, 270]
-  "§7.3#b5": [274, 275, 279, 280, 287, 288]
-  "§[F-FACO-03] Activate Account#p1": [183, 184, 186, 196]
-  "§[F-FACO-05] Delete Account#p2": [203, 204, 206]
+  "§7.2#p2": [184, 194, 204, 238, 239, 241, 248, 249, 251, 298, 300]
+  "§7.3#b1": [156, 164, 173, 185, 195, 205, 211, 219, 228, 238, 240, 248, 250, 299]
+  "§7.3#b2": [76, 117, 118, 126, 127, 135, 143, 151, 184, 194, 204, 239, 249, 272, 290, 298, 314, 320, 322]
+  "§7.3#b4": [255, 256, 257, 262, 263, 264, 271, 272, 304, 305, 306, 313, 314]
+  "§7.3#b5": [276, 277, 281, 282, 289, 290]
+  "§[F-FACO-03] Activate Account#p1": [183, 184, 186, 196, 241, 251, 297, 298, 300]
+  "§[F-FACO-05] Delete Account#p2": [203, 204, 206, 251]
   "§9.4.2#r36": [45, 46, 50, 51]
   "EB-FB-1@activate-account": [103, 116, 155]
   "EB-FB-1@deactivate-account": [108, 125, 163]
@@ -71,6 +71,7 @@ coverage:
   - K3: seperti K1; server tidak menjawab permintaan aksi pertama sampai batas waktu dan menerima permintaan aksi berikutnya.
   - K4: seperti K1; akun yang dikonfirmasi sudah dihapus pengguna lain, server menjawab bahwa akun tidak tersedia, dan daftar yang dimuat ulang tidak memuat akun itu.
   - K5: seperti K1; akun yang dikonfirmasi sudah berstatus target (data usang), dan daftar yang dimuat ulang memuat status terkini.
+  - K6: seperti K1; akun `5-1002` sudah dihapus pengguna lain, server melewati akun itu dan menghapus akun terpilih lainnya.
 
 ## Test Steps
 
@@ -371,65 +372,107 @@ coverage:
 238. Verifikasi toast `Connection problem. Please try again.` tampil
 239. Verifikasi counter `2 Accounts selected` tampil
 240. Verifikasi dialog `Deactivate Accounts` tetap tampil
+241. Verifikasi permintaan daftar akun dikirim ulang ke server
 
 ### Bulk Delete gagal karena timeout
-241. Tampilkan Tab Chart of Accounts dengan kondisi K3
-242. Centang baris `5-1001`
-243. Centang baris `5-1002`
-244. Klik `Bulk Action`
-245. Klik `Delete`
-246. Klik `[Delete]` pada dialog `Delete Accounts`
-247. Verifikasi toast `Connection problem. Please try again.` tampil
-248. Verifikasi counter `2 Accounts selected` tampil
-249. Verifikasi dialog `Delete Accounts` tetap tampil
+242. Tampilkan Tab Chart of Accounts dengan kondisi K3
+243. Centang baris `5-1001`
+244. Centang baris `5-1002`
+245. Klik `Bulk Action`
+246. Klik `Delete`
+247. Klik `[Delete]` pada dialog `Delete Accounts`
+248. Verifikasi toast `Connection problem. Please try again.` tampil
+249. Verifikasi counter `2 Accounts selected` tampil
+250. Verifikasi dialog `Delete Accounts` tetap tampil
+251. Verifikasi permintaan daftar akun dikirim ulang ke server
 
 ### Akun sudah dihapus pengguna lain saat Activate
-250. Tampilkan Tab Chart of Accounts dengan kondisi K4
-251. Klik switch baris `6-1001`
-252. Klik `[Activate]` pada dialog `Activate Account`
-253. Verifikasi toast `This account is no longer available.` tampil
-254. Verifikasi dialog `Activate Account` tidak tampil
-255. Verifikasi baris `6-1001` tidak tampil
+252. Tampilkan Tab Chart of Accounts dengan kondisi K4
+253. Klik switch baris `6-1001`
+254. Klik `[Activate]` pada dialog `Activate Account`
+255. Verifikasi toast `This account is no longer available.` tampil
+256. Verifikasi dialog `Activate Account` tidak tampil
+257. Verifikasi baris `6-1001` tidak tampil
 
 ### Akun sudah dihapus pengguna lain saat Delete
-256. Tampilkan Tab Chart of Accounts dengan kondisi K4
-257. Klik `⋯` pada baris `5-1001`
-258. Klik `Delete`
-259. Klik `[Delete]` pada dialog `Delete Account`
-260. Verifikasi toast `This account is no longer available.` tampil
-261. Verifikasi dialog `Delete Account` tidak tampil
-262. Verifikasi baris `5-1001` tidak tampil
+258. Tampilkan Tab Chart of Accounts dengan kondisi K4
+259. Klik `⋯` pada baris `5-1001`
+260. Klik `Delete`
+261. Klik `[Delete]` pada dialog `Delete Account`
+262. Verifikasi toast `This account is no longer available.` tampil
+263. Verifikasi dialog `Delete Account` tidak tampil
+264. Verifikasi baris `5-1001` tidak tampil
 
 ### Seluruh akun terpilih sudah dihapus pengguna lain
-263. Tampilkan Tab Chart of Accounts dengan kondisi K4
-264. Centang baris `5-1001`
-265. Centang baris `5-1002`
-266. Klik `Bulk Action`
-267. Klik `Delete`
-268. Klik `[Delete]` pada dialog `Delete Accounts`
-269. Verifikasi toast `This account is no longer available.` tampil sebagai satu-satunya toast
-270. Verifikasi Bulk Action Bar tidak tampil
+265. Tampilkan Tab Chart of Accounts dengan kondisi K4
+266. Centang baris `5-1001`
+267. Centang baris `5-1002`
+268. Klik `Bulk Action`
+269. Klik `Delete`
+270. Klik `[Delete]` pada dialog `Delete Accounts`
+271. Verifikasi toast `This account is no longer available.` tampil sebagai satu-satunya toast
+272. Verifikasi Bulk Action Bar tidak tampil
 
 ### Activate atas akun yang sudah berstatus target
-271. Tampilkan Tab Chart of Accounts dengan kondisi K5
-272. Klik switch baris `6-1001`
-273. Klik `[Activate]` pada dialog `Activate Account`
-274. Verifikasi toast `No changes to save.` tampil
-275. Verifikasi dialog `Activate Account` tidak tampil
+273. Tampilkan Tab Chart of Accounts dengan kondisi K5
+274. Klik switch baris `6-1001`
+275. Klik `[Activate]` pada dialog `Activate Account`
+276. Verifikasi toast `No changes to save.` tampil
+277. Verifikasi dialog `Activate Account` tidak tampil
 
 ### Deactivate atas akun yang sudah berstatus target
-276. Tampilkan Tab Chart of Accounts dengan kondisi K5
-277. Klik switch baris `5-1001`
-278. Klik `[Deactivate]` pada dialog `Deactivate Account`
-279. Verifikasi toast `No changes to save.` tampil
-280. Verifikasi dialog `Deactivate Account` tidak tampil
+278. Tampilkan Tab Chart of Accounts dengan kondisi K5
+279. Klik switch baris `5-1001`
+280. Klik `[Deactivate]` pada dialog `Deactivate Account`
+281. Verifikasi toast `No changes to save.` tampil
+282. Verifikasi dialog `Deactivate Account` tidak tampil
 
 ### Bulk Deactivate atas akun yang seluruhnya sudah berstatus target
-281. Tampilkan Tab Chart of Accounts dengan kondisi K5
-282. Centang baris `5-1001`
-283. Centang baris `5-1002`
-284. Klik `Bulk Action`
-285. Klik `Deactivate`
-286. Klik `[Deactivate]` pada dialog `Deactivate Accounts`
-287. Verifikasi toast `No changes to save.` tampil sebagai satu-satunya toast
-288. Verifikasi Bulk Action Bar tidak tampil
+283. Tampilkan Tab Chart of Accounts dengan kondisi K5
+284. Centang baris `5-1001`
+285. Centang baris `5-1002`
+286. Klik `Bulk Action`
+287. Klik `Deactivate`
+288. Klik `[Deactivate]` pada dialog `Deactivate Accounts`
+289. Verifikasi toast `No changes to save.` tampil sebagai satu-satunya toast
+290. Verifikasi Bulk Action Bar tidak tampil
+
+### Bulk Activate gagal karena timeout
+291. Tampilkan Tab Chart of Accounts dengan kondisi K3
+292. Centang baris `6-1001`
+293. Centang baris `6-1002`
+294. Klik `Bulk Action`
+295. Klik `Activate`
+296. Klik `[Activate]` pada dialog `Activate Accounts`
+297. Verifikasi toast `Connection problem. Please try again.` tampil
+298. Verifikasi counter `2 Accounts selected` tampil
+299. Verifikasi dialog `Activate Accounts` tetap tampil
+300. Verifikasi permintaan daftar akun dikirim ulang ke server
+
+### Akun sudah dihapus pengguna lain saat Deactivate
+301. Tampilkan Tab Chart of Accounts dengan kondisi K4
+302. Klik switch baris `5-1001`
+303. Klik `[Deactivate]` pada dialog `Deactivate Account`
+304. Verifikasi toast `This account is no longer available.` tampil
+305. Verifikasi dialog `Deactivate Account` tidak tampil
+306. Verifikasi baris `5-1001` tidak tampil
+
+### Bulk Delete atas seleksi yang sebagian akunnya sudah dihapus pengguna lain
+307. Tampilkan Tab Chart of Accounts dengan kondisi K6
+308. Centang baris `5-1001`
+309. Centang baris `5-1002`
+310. Klik `Bulk Action`
+311. Klik `Delete`
+312. Klik `[Delete]` pada dialog `Delete Accounts`
+313. Verifikasi toast `Success, account has been deleted.` tampil sebagai satu-satunya toast
+314. Verifikasi Bulk Action Bar tidak tampil
+
+### Dialog Blok bulk mempertahankan seleksi
+315. Tampilkan Tab Chart of Accounts dengan kondisi K1
+316. Centang baris `7-1001`
+317. Centang baris `8-1001`
+318. Klik `Bulk Action`
+319. Klik `Delete`
+320. Verifikasi judul dialog `Cannot Delete Accounts` tampil
+321. Klik `[OK]`
+322. Verifikasi counter `2 Accounts selected` tampil

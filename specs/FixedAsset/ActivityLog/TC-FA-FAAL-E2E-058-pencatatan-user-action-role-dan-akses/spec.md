@@ -91,7 +91,7 @@ coverage:
 
 ### TC-FA-FAAL-227: Assign Transaction Role tercatat dengan Object Transaction Role
 
-30. Assign Transaction Role `Approver` pada sub-tab Disposal group Gedung A kepada Citra Lestari
+30. Assign Transaction Role `Approver` pada sub-tab Disposal untuk Group Gedung A kepada Citra Lestari
 31. Tunggu aksi selesai
 32. Buka Activity Log > User Action
 33. Verifikasi (polling, batas tunggu 2 menit, tab dimuat ulang secara berkala): baris baru di Tab User Action paling atas, total baris bertambah: Action `Assign`, Object `Transaction Role`, Name `Citra Lestari`, Field `Disposal — Gedung A — Approver`, Old Value `—`, New Value `Assigned`, Modified By `Admin A`

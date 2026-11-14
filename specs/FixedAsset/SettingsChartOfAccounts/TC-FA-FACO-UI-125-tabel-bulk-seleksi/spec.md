@@ -11,14 +11,14 @@ dependsOn: []
 trace:
   "§4.1.1#p4": [9, 10, 18, 19, 26, 28]
   "§3.8#r5": [10, 18, 26]
-  "§3.8#r6": [9, 19, 26]
+  "§3.8#r6": [9, 19, 26, 104]
   "§4.8#b3": [9, 10, 18, 19, 26]
-  "§5#b6": [7, 13, 30, 56, 57, 65, 73]
-  "§9.4.2#r35": [76, 80, 84, 85, 93, 94]
+  "§5#b6": [7, 13, 30, 56, 57, 65, 73, 106]
+  "§9.4.2#r35": [77, 82, 87, 88, 97, 98]
   "§9.5#r3": [2, 3, 4]
   "EB-BLK-1@tabel-account-list": [7, 13, 24, 30, 33, 36, 38, 42, 43, 46, 48, 49, 56, 57]
   "EB-BLK-4": [64, 65, 72, 73]
-  "EB-BLK-6": [76, 77, 80, 81, 84, 85, 88, 89, 93, 94]
+  "EB-BLK-6": [77, 78, 82, 83, 87, 88, 91, 92, 97, 98]
 anchor: []
 coverage:
   web: automated
@@ -39,6 +39,7 @@ coverage:
   - DU-125-6: 1.200 akun Active, Account Code `P-{n}`, Name `Cabang Besar {n}`, Function `Asset Cost`.
   - DU-125-7: 300 akun Active, Account Code `Q-{n}`, Name `Cabang Kecil {n}`, Function `Asset Cost`.
   - DU-125-8: kata kunci Search `Nonaktif` dan `Cabang Besar`.
+  - DU-125-9: 2 akun Active yang dipakai Asset Class, Account Code `U-{n}`, Name `Akun Terpakai {n}`, Function `Asset Cost`, Used By `2`.
 - Kondisi:
   - K1: tabel berisi DU-125-1 dan DU-125-2 dengan ukuran halaman bawaan; kata kunci Search `Nonaktif` hanya menghasilkan DU-125-2.
   - K2: seperti K1; konfirmasi Activate berhasil.
@@ -48,6 +49,7 @@ coverage:
   - K6: Selection Limit bernilai `1000`; tabel berisi DU-125-4.
   - K7: Selection Limit bernilai `1000`; tabel berisi DU-125-5.
   - K8: Selection Limit bernilai `1000`; tabel berisi DU-125-6 dan DU-125-7; kata kunci Search `Cabang Besar` hanya menghasilkan DU-125-6.
+  - K9: seperti K1, tetapi tabel berisi DU-125-9.
 
 ## Test Steps
 
@@ -146,29 +148,43 @@ coverage:
 
 ### Select All di bawah Selection Limit
 74. Tampilkan Tab Chart of Accounts dengan kondisi K5
-75. Klik `Select All (999 records)`
-76. Verifikasi counter `999 Accounts selected` tampil
-77. Verifikasi tombol berubah menjadi `Unselect All`
+75. Centang baris `L-1`
+76. Klik `Select All (999 records)`
+77. Verifikasi counter `999 Accounts selected` tampil
+78. Verifikasi tombol berubah menjadi `Unselect All`
 
 ### Select All tepat di Selection Limit
-78. Tampilkan Tab Chart of Accounts dengan kondisi K6
-79. Klik `Select All (1000 records)`
-80. Verifikasi counter `1000 Accounts selected` tampil
-81. Verifikasi tombol berubah menjadi `Unselect All`
+79. Tampilkan Tab Chart of Accounts dengan kondisi K6
+80. Centang baris `M-1`
+81. Klik `Select All (1000 records)`
+82. Verifikasi counter `1000 Accounts selected` tampil
+83. Verifikasi tombol berubah menjadi `Unselect All`
 
 ### Select All melebihi Selection Limit
-82. Tampilkan Tab Chart of Accounts dengan kondisi K7
-83. Klik `Select All (1001 records)`
-84. Verifikasi counter `1000 Accounts selected` tampil
-85. Verifikasi toast `Error, only the first 1000 of 1001 rows were selected. Narrow your filter to include the rest.` tampil
-86. Ketik `101` pada input Jump to page, tekan Enter
-87. Arahkan kursor ke checkbox baris yang tampil di halaman `101`
-88. Verifikasi checkbox baris di halaman `101` disabled
-89. Verifikasi `You've reached the maximum selection of 1000 rows.` tersampaikan pada checkbox baris di halaman `101`
+84. Tampilkan Tab Chart of Accounts dengan kondisi K7
+85. Centang baris `N-1`
+86. Klik `Select All (1001 records)`
+87. Verifikasi counter `1000 Accounts selected` tampil
+88. Verifikasi toast `Error, only the first 1000 of 1001 rows were selected. Narrow your filter to include the rest.` tampil
+89. Ketik `101` pada input Jump to page, tekan Enter
+90. Arahkan kursor ke checkbox baris yang tampil di halaman `101`
+91. Verifikasi checkbox baris di halaman `101` disabled
+92. Verifikasi `You've reached the maximum selection of 1000 rows.` tersampaikan pada checkbox baris di halaman `101`
 
 ### Select All atas hasil Search yang melebihi Selection Limit
-90. Tampilkan Tab Chart of Accounts dengan kondisi K8
-91. Ketik Search `Cabang Besar`, tekan Enter
-92. Klik `Select All (1200 records)`
-93. Verifikasi counter `1000 Accounts selected` tampil
-94. Verifikasi toast `Error, only the first 1000 of 1200 rows were selected. Narrow your filter to include the rest.` tampil
+93. Tampilkan Tab Chart of Accounts dengan kondisi K8
+94. Ketik Search `Cabang Besar`, tekan Enter
+95. Centang baris `P-1`
+96. Klik `Select All (1200 records)`
+97. Verifikasi counter `1000 Accounts selected` tampil
+98. Verifikasi toast `Error, only the first 1000 of 1200 rows were selected. Narrow your filter to include the rest.` tampil
+
+### Dialog Blok bulk mempertahankan seleksi
+99. Tampilkan Tab Chart of Accounts dengan kondisi K9
+100. Centang baris `U-1`
+101. Centang baris `U-2`
+102. Klik `Bulk Action`
+103. Klik `Deactivate`
+104. Verifikasi judul dialog `Cannot Deactivate Accounts` tampil
+105. Klik `[OK]`
+106. Verifikasi counter `2 Accounts selected` tampil

@@ -24,6 +24,8 @@ coverage:
   - DU-094-2: Account Name baru `Activity Trail Cost Revised {runId}`.
   - DU-094-3: Account Code baru `ACL2-{runId}`.
   - Akun DU-094-1 dengan Account Code `ACL2-{runId}` adalah satu-satunya akun milik spec ini; seluruh aksinya dilakukan oleh aktor di atas.
+- Kondisi:
+  - Entri Activity Log ditulis sesudah commit secara best-effort, sehingga setiap baris diamati paling lambat 30 detik sesudah aksi pemicunya selesai; data akun itu sendiri sudah tersimpan saat commit.
 
 ## Test Steps
 
@@ -61,10 +63,10 @@ coverage:
 29. Buka halaman Activity Log FAMS
 30. Cari baris Activity Log dengan Name `ACL1-{runId}` atau `ACL2-{runId}`
 31. Verifikasi kolom tabel Activity Log berurutan `Date`, `Action`, `Object`, `Name`, `Field`, `Old Value`, `New Value`, `Modified By`
-32. Verifikasi baris Activity Log dengan Action `Create`, Object `Chart of Accounts`, Name `ACL1-{runId}`, Field `Account Code`, Old Value `—`, dan New Value `ACL1-{runId}` tampil; Modified By pada baris itu adalah nama aktor
-33. Verifikasi baris Activity Log dengan Action `Edit`, Object `Chart of Accounts`, Name `ACL1-{runId}`, Field `Account Name`, Old Value `Activity Trail Cost {runId}`, dan New Value `Activity Trail Cost Revised {runId}` tampil; Modified By pada baris itu adalah nama aktor
-34. Verifikasi baris Activity Log dengan Action `Edit`, Object `Chart of Accounts`, Name `ACL2-{runId}`, Field `Account Code`, Old Value `ACL1-{runId}`, dan New Value `ACL2-{runId}` tampil; Modified By pada baris itu adalah nama aktor
-35. Verifikasi baris Activity Log dengan Action `Edit`, Object `Chart of Accounts`, Name `ACL2-{runId}`, Field `Status`, Old Value `Active`, dan New Value `Inactive` tampil; Modified By pada baris itu adalah nama aktor
-36. Verifikasi baris Activity Log dengan Action `Edit`, Object `Chart of Accounts`, Name `ACL2-{runId}`, Field `Status`, Old Value `Inactive`, dan New Value `Active` tampil; Modified By pada baris itu adalah nama aktor
-37. Verifikasi baris Activity Log dengan Action `Delete`, Object `Chart of Accounts`, Name `ACL2-{runId}`, Field `Account Code`, Old Value `ACL2-{runId}`, dan New Value `—` tampil; Modified By pada baris itu adalah nama aktor
-38. Verifikasi jumlah baris dengan Name `ACL1-{runId}` atau `ACL2-{runId}` adalah 6, yaitu Edit tanpa perubahan tidak menulis baris
+32. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris Activity Log dengan Action `Create`, Object `Chart of Accounts`, Name `ACL1-{runId}`, Field `Account Code`, Old Value `—`, dan New Value `ACL1-{runId}` tampil; Modified By pada baris itu adalah nama aktor
+33. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris Activity Log dengan Action `Edit`, Object `Chart of Accounts`, Name `ACL1-{runId}`, Field `Account Name`, Old Value `Activity Trail Cost {runId}`, dan New Value `Activity Trail Cost Revised {runId}` tampil; Modified By pada baris itu adalah nama aktor
+34. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris Activity Log dengan Action `Edit`, Object `Chart of Accounts`, Name `ACL2-{runId}`, Field `Account Code`, Old Value `ACL1-{runId}`, dan New Value `ACL2-{runId}` tampil; Modified By pada baris itu adalah nama aktor
+35. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris Activity Log dengan Action `Edit`, Object `Chart of Accounts`, Name `ACL2-{runId}`, Field `Status`, Old Value `Active`, dan New Value `Inactive` tampil; Modified By pada baris itu adalah nama aktor
+36. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris Activity Log dengan Action `Edit`, Object `Chart of Accounts`, Name `ACL2-{runId}`, Field `Status`, Old Value `Inactive`, dan New Value `Active` tampil; Modified By pada baris itu adalah nama aktor
+37. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris Activity Log dengan Action `Delete`, Object `Chart of Accounts`, Name `ACL2-{runId}`, Field `Account Code`, Old Value `ACL2-{runId}`, dan New Value `—` tampil; Modified By pada baris itu adalah nama aktor
+38. Verifikasi sesudah 30 detik sejak aksi terakhir selesai, jumlah baris dengan Name `ACL1-{runId}` atau `ACL2-{runId}` adalah 6, yaitu Edit tanpa perubahan tidak menulis baris

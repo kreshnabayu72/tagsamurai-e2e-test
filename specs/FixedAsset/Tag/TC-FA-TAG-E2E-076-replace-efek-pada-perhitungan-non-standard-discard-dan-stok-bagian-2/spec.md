@@ -32,7 +32,7 @@ coverage:
 
 1. Klik Asset Name 'Excavator 20 Ton' pada baris grup Plant A untuk membuka Popup Detail
 2. Klik row action `Replace TAG` pada baris 'Excavator 20 Ton - 244'
-3. Centang baris `QR-00432`
+3. Verifikasi baris `QR-00432` tercentang dan checkbox Disabled
 4. Klik ButtonScan `Scan RFID` pada slot `RFID TAG`
 5. Pindai Tag `RF-00412` dengan reader
 6. Klik [Cancel] pada dialog Replace TAG

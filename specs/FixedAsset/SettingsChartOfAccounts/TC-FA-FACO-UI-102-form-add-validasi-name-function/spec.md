@@ -13,15 +13,15 @@ trace:
   V-06: [22, 29, 34, 39]
   V-07: [43, 44, 48, 49, 53]
   V-08: [5, 8]
-  §4.1.2#r2: [22, 58]
+  §4.1.2#r2: [22, 57, 61]
   §4.1.2#r3: [8, 9]
   §[F-FACO-01] Create Account#r3: [22, 24]
   §[F-FACO-01] Create Account#r4: [7, 8, 10, 15]
   §9.4.2#r3: [22, 24]
   §9.4.2#r4: [7, 8, 10, 15]
   EB-FRM-4@account-name: [20, 22]
-  EB-FRM-6@form-add-account: [43, 48, 53]
-anchor: [3, 19, 28, 33, 38, 57]
+  EB-FRM-6@form-add-account: [43, 48, 53, 64, 68, 69]
+anchor: [3, 19, 28, 33, 38, 56]
 coverage:
   web: automated
 ---
@@ -36,7 +36,8 @@ coverage:
   - DU-102-1: akun yang sudah ada dengan Account Code `ASET-EQP-01`, Account Name `Peralatan Kantor Pusat`, Account Function `Asset Cost`.
 - Kondisi:
   - K1: form Add Account baru dibuka dari toolbar dan belum ada isian.
-  - K2: seperti K1, dan akun DU-102-1 sudah ada.
+  - K2: modal Add Account terbuka dan belum ada isian, akun DU-102-1 sudah ada, dan penyimpanan akun berhasil.
+  - K3: modal Add Account terbuka dan belum ada isian.
 
 ## Test Steps
 
@@ -113,7 +114,22 @@ coverage:
 
 ### Account Name boleh sama dengan akun lain
 54. Tampilkan Modal Add Account dengan kondisi K2
-55. Klik `[+ Account]`
-56. Ketik Account Name `Peralatan Kantor Pusat`
-57. Verifikasi field `Account Name` berisi `Peralatan Kantor Pusat`
-58. Verifikasi caption `Account name already exists` tidak tampil pada field `Account Name`
+55. Ketik Account Name `Peralatan Kantor Pusat`
+56. Verifikasi field `Account Name` berisi `Peralatan Kantor Pusat`
+57. Verifikasi tidak ada caption error yang tampil pada field `Account Name` sesudah nilai yang sama dengan DU-102-1 diketik
+58. Ketik Account Code `ASET-EQP-02`
+59. Pilih Account Function `Asset Cost`
+60. Klik `[Submit]`
+61. Verifikasi modal Add Account tertutup sesudah Submit diterima dengan Account Name yang sama dengan DU-102-1
+
+### Baris baru yang ditempel tidak masuk ke Account Name
+62. Tampilkan Modal Add Account dengan kondisi K3
+63. Tempel teks `Peralatan` dan `Gudang` yang dipisah baris baru ke field `Account Name`
+64. Verifikasi field `Account Name` memuat `Peralatan` dan `Gudang` tanpa karakter baris baru
+
+### Tab yang ditekan tidak masuk ke Account Name
+65. Tampilkan Modal Add Account dengan kondisi K3
+66. Ketik Account Name `Gudang`
+67. Tekan Tab
+68. Verifikasi field `Account Name` berisi `Gudang` tanpa karakter tab
+69. Verifikasi fokus berpindah dari field `Account Name` ke kontrol berikutnya

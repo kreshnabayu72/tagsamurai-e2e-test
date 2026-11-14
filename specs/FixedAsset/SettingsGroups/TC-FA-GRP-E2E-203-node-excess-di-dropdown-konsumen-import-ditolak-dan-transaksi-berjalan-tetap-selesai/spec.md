@@ -48,8 +48,8 @@ coverage:
 
 12. Buat Transfer keluar aset dari `Old Assign {runId}-203`
 13. Verifikasi aset eligible sesuai syarat "Available dalam kuasa group asal user"
-14. Buat Disposal aset dari `Old Assign {runId}-203`
-15. Verifikasi aset eligible sesuai syarat "Custody=Available, Lifecycle=Active"
+14. Buat Disposal aset dari `Old Assign {runId}-203` (Group asal aset = `Old Assign {runId}-203`)
+15. Verifikasi aset eligible sesuai syarat "Custody=Available, Lifecycle=Active", dan Disposal tidak memilih node tujuan (DSP dibuat per Group asal)
 16. Buat Assignment aset dari `Old Assign {runId}-203`
 17. Verifikasi aset eligible sesuai syarat "status Available + Normal + group user"
 18. Verifikasi Function node asal (None) tidak memengaruhi eligibility pada ketiga transaksi

@@ -13,7 +13,7 @@ trace:
   "§4.1.1#r2": [4, 6]
   "§4.1.1#r3": [10, 12]
   "§4.1.1#r4": [14, 16]
-  "§4.1.1#r7": [31, 33]
+  "§4.1.1#r7": [31, 33, 59, 60, 62]
   "§4.1.1#r8": [35, 37, 44, 47]
   "§5#b4": [2, 39, 53]
   "§9.5#r1": [2, 12, 33]
@@ -27,7 +27,7 @@ coverage:
 # Sort Account List mengurutkan baris per kolom dan kembali ke urutan default
 
 ## Prerequisites
-- Aktor: pengguna Total Control.
+- Aktor: pengguna Total Control. Aktor lain pemicu: Admin B (DU-003-14).
 - Layar awal: Settings > Accounting > Chart of Accounts.
 - Data:
   - DU-003-1: akun `K5-{runId}`, Account Name `Élan SRT {runId}`, Account Function `Loss on Disposal`, Status `Inactive`.
@@ -37,12 +37,13 @@ coverage:
   - DU-003-5: akun `K7-{runId}`, Account Name `Ezra SRT {runId}`, Account Function `Disposal Proceeds`, Status `Active`.
   - DU-003-6: akun `K2-{runId}`, Account Name `Zaitun SRT {runId}`, Account Function `Depreciation Expense`, Status `Inactive`.
   - DU-003-7: akun `K8-{runId}`, Account Name `#Gudang SRT {runId}`, Account Function `Asset Cost`, Status `Inactive`.
-  - DU-003-8: akun `K4-{runId}`, Account Name `Apel SRT {runId}`, Account Function `Gain on Disposal`, Status `Active`.
+  - DU-003-8: akun `K4-{runId}`, Account Name `Apel SRT {runId}`, Account Function `Gain on Disposal`, Status `Active`. Account Name sesudah diubah Admin B: `Apel Baru SRT {runId}`.
   - DU-003-9: akun `K6-{runId}`, Account Name `Elan SRT {runId}`, Account Function `Capitalization Offset`, Status `Active`.
   - DU-003-10: akun `KA-{runId}`, Account Name `Melati SRT {runId}`, Account Function `Gain on Disposal`, Status `Active`.
   - DU-003-1 sampai DU-003-10 dibuat berurutan menurut nomornya (DU-003-1 paling dulu), sehingga urutan pembuatannya berbeda dari urutan Account Code.
   - DU-003-11: 12 akun, Account Code `V{n}-{runId}`, Account Name `Kas {n} Volume {runId}`, Account Function `Asset Cost`, Status `Active`, untuk n 1 sampai 12. Dibuat berurutan menurut n sesudah DU-003-10.
-  - Seluruh baris DU-003-1 sampai DU-003-10 belum pernah diubah lewat form, sehingga Modified By-nya `System`.
+  - Seluruh baris DU-003-1 sampai DU-003-10 tanpa entri Changelog sama sekali (belum pernah diubah oleh siapa pun), sehingga Modified By-nya `System`, sampai Admin B mengubah DU-003-8 pada kelompok langkah terakhir.
+  - DU-003-14: Admin B, nama lengkap `Rani Pratama` (tampil `Rani P` di kolom Modified By), role Total Control, cakupan seluruh client, akun aktif dan kredensialnya disediakan fase 2.
 - Kondisi:
   - Ukuran halaman tabel adalah 10 baris (nilai bawaan).
 
@@ -120,3 +121,15 @@ coverage:
 51. Catat 10 Account Code yang tampil di halaman 1
 52. Klik halaman 2 pada Paginator
 53. Verifikasi 2 baris di halaman 2 adalah Account Code dari `V1-{runId}` sampai `V12-{runId}` yang belum tampil di halaman 1, sehingga setiap Account Code tampil tepat satu kali
+
+### Sort Modified By dengan dua nilai berbeda menurut nama lengkap
+54. Klik header kolom Function (klik kedua)
+55. Klik header kolom Function (klik ketiga)
+56. Ganti isi kotak Search dengan `SRT {runId}`, tekan Enter
+57. Admin B mengubah Account Name `K4-{runId}` menjadi `Apel Baru SRT {runId}`
+58. Klik header kolom Modified By (klik pertama)
+59. Verifikasi Modified By baris `K4-{runId}` bernilai `Rani P`, nama depan Admin B diikuti inisial nama belakangnya
+60. Verifikasi urutan baris menaik menurut Modified By dengan nama lengkap sebagai kunci, `Rani Pratama` sebelum `System`, dan baris bernilai `System` mengikuti default sort: `K4-{runId}`, `K1-{runId}`, `K2-{runId}`, `K3-{runId}`, `K5-{runId}`, `K6-{runId}`, `K7-{runId}`, `K8-{runId}`, `K9-{runId}`, `KA-{runId}`
+61. Klik header kolom Modified By (klik kedua)
+62. Verifikasi urutan baris menurun menurut Modified By dengan nama lengkap sebagai kunci, baris bernilai `System` lebih dulu menurut default sort dan `K4-{runId}` terakhir: `K1-{runId}`, `K2-{runId}`, `K3-{runId}`, `K5-{runId}`, `K6-{runId}`, `K7-{runId}`, `K8-{runId}`, `K9-{runId}`, `KA-{runId}`, `K4-{runId}`
+63. Klik header kolom Modified By (klik ketiga)

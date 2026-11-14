@@ -9,16 +9,16 @@ sourceRules: ["R-04", "ST-01", "ST-02", "ST-03", "§4.1.1#r1", "§4.5#b1", "§4.
 smoke: []
 dependsOn: []
 trace:
-  "R-04": [52, 53, 57, 58]
-  "ST-01": [3, 4, 48]
-  "ST-02": [42, 43, 45, 47]
+  "R-04": [50, 51, 55, 56]
+  "ST-01": [3, 4, 46]
+  "ST-02": [42, 43, 45]
   "ST-03": [13, 14, 16, 18, 20, 21, 23, 24, 26]
   "§4.1.1#r1": [2, 5, 6, 13, 14, 23, 24, 28, 29]
   "§4.5#b1": [32, 34, 38]
   "§4.5#b3": [8, 9, 10, 11]
   "§4.5#b5": [16, 18]
   "§4.8#b2": [16, 18, 26]
-  "§7.2#p2": [52, 53, 57, 58, 62, 63]
+  "§7.2#p2": [50, 51, 55, 56, 60, 61]
   "EB-TBL-5@switch-status": [16, 18, 26]
 anchor: []
 coverage:
@@ -102,31 +102,29 @@ coverage:
 41. Klik `[Activate]` pada dialog `Activate Account`
 42. Verifikasi switch baris `1-2001` menampilkan spinner
 43. Verifikasi switch baris `1-2001` non-interaktif
-44. Klik switch baris `1-2001`
-45. Verifikasi dialog `Activate Account` tidak tampil
-46. Lepaskan respons server atas Activate
-47. Verifikasi switch baris `1-2001` tidak menampilkan spinner
-48. Verifikasi switch baris `1-2001` berstatus On
+44. Lepaskan respons server atas Activate
+45. Verifikasi switch baris `1-2001` tidak menampilkan spinner
+46. Verifikasi switch baris `1-2001` berstatus On
 
 ### Activate gagal karena error server
-49. Tampilkan Tab Chart of Accounts dengan kondisi K5
-50. Klik switch baris `1-2001`
-51. Klik `[Activate]` pada dialog `Activate Account`
-52. Verifikasi toast `Error, failed to activate account.` tampil
-53. Verifikasi switch baris `1-2001` kembali berstatus Off
+47. Tampilkan Tab Chart of Accounts dengan kondisi K5
+48. Klik switch baris `1-2001`
+49. Klik `[Activate]` pada dialog `Activate Account`
+50. Verifikasi toast `Error, failed to activate account.` tampil
+51. Verifikasi switch baris `1-2001` kembali berstatus Off
 
 ### Activate gagal karena timeout
-54. Tampilkan Tab Chart of Accounts dengan kondisi K6
-55. Klik switch baris `1-2001`
-56. Klik `[Activate]` pada dialog `Activate Account`
-57. Verifikasi toast `Connection problem. Please try again.` tampil
-58. Verifikasi switch baris `1-2001` kembali berstatus Off
+52. Tampilkan Tab Chart of Accounts dengan kondisi K6
+53. Klik switch baris `1-2001`
+54. Klik `[Activate]` pada dialog `Activate Account`
+55. Verifikasi toast `Connection problem. Please try again.` tampil
+56. Verifikasi switch baris `1-2001` kembali berstatus Off
 
 ### Deactivate gagal karena error server
-59. Tampilkan Tab Chart of Accounts dengan kondisi K7
-60. Klik switch baris `1-1001`
-61. Klik `[Deactivate]` pada dialog `Deactivate Account`
-62. Verifikasi toast `Error, failed to deactivate account.` tampil
-63. Verifikasi switch baris `1-1001` kembali berstatus On
+57. Tampilkan Tab Chart of Accounts dengan kondisi K7
+58. Klik switch baris `1-1001`
+59. Klik `[Deactivate]` pada dialog `Deactivate Account`
+60. Verifikasi toast `Error, failed to deactivate account.` tampil
+61. Verifikasi switch baris `1-1001` kembali berstatus On
 
 [^drift-1]: Drift PRD vs kontrak komponen. PRD `§4.5#b5`: «Tooltip 🔖 dapat diakses lewat keyboard focus.» Kontrak `Tooltip#38`: «A disabled control cannot be focused, so its tooltip opens on hover only.» dan `Switch#37`: «A disabled or loading switch is skipped by Tab (the native input is disabled).» Diasersi: kontrak (tooltip switch Disabled hanya lewat hover), karena fokus pada kontrol disabled adalah mekanik komponen (SB-7); akses keyboard untuk tooltip kontrol yang dapat difokus dimiliki spec lain.

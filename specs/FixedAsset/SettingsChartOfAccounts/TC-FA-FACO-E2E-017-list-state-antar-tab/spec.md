@@ -54,7 +54,7 @@ coverage:
 16. Muat ulang halaman
 17. Verifikasi tab `Chart of Accounts` tetap menjadi tab aktif
 18. Verifikasi kotak Search berisi `Keadaan {runId}` dan halaman 2 menjadi halaman aktif
-19. Verifikasi halaman 2 memuat baris `LS2-{runId}` lalu `LS1-{runId}`, urut menurun menurut Account Name
+19. Verifikasi halaman 2 memuat tepat dua baris, yaitu `LS2-{runId}` lalu `LS1-{runId}`, urut menurun menurut Account Name, karena Filter Function `Asset Cost` masih berlaku dan `LS13-{runId}` tidak ikut tampil
 
 ### Meninggalkan halaman mereset state tabel
 20. Klik menu lain di sidebar, di luar halaman Accounting

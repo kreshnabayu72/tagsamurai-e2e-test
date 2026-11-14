@@ -47,7 +47,7 @@ coverage:
   | 5 | `Manage asset license` | `manageAssetLicense_automated_{namaCompany}@qwertysystem.net` |
   | 6 | `Manage purchase` | `managePurchase_automated_{namaCompany}@qwertysystem.net` |
   | 7 | `View asset value` | `viewAssetValue_automated_{namaCompany}@qwertysystem.net` |
-- Tabel "Transaction Role (Pre-setup #7)" untuk TC-FA-FAAL-47; role pada sub-tab Disposal group Gedung A, password semuanya `Spectra.env.FA_ROLEHOLDER_PASSWORD`:
+- Tabel "Transaction Role (Pre-setup #7)" untuk TC-FA-FAAL-47; role pada sub-tab Disposal untuk Group Gedung A, password semuanya `Spectra.env.FA_ROLEHOLDER_PASSWORD`:
 
   | No | Transaction Role | Email |
   |---|---|---|
