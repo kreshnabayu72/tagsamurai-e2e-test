@@ -1,8 +1,8 @@
 # Coverage E2E — Fixed Asset > TAG
 
-Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (1500 ID `TC-FA-TAG-1`–`1500`). Suite: `specs/FixedAsset/Tag/`. Prefix: `FA` + `TAG` (`TC-FA-TAG-E2E-*`). Status semua spec: `draft`, belum ada script. `tc-tag-backend.md` tidak ada dan tidak dipakai untuk suite ini.
+Sumber: `fixed-asset/tag/TestCases/tc-tag.md` (1501 TC, ID `TC-FA-TAG-1`–`1508`; ID yang dihapus tidak dipakai ulang). Suite: `specs/FixedAsset/Tag/`. Prefix: `FA` + `TAG` (`TC-FA-TAG-E2E-*`). Status semua spec: `draft`, belum ada script. `tc-tag-backend.md` tidak ada dan tidak dipakai untuk suite ini.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1500 TC masuk 383 spec; tidak ada TC hanya-BE yang dikeluarkan. Setiap TC terpetakan ke tepat satu spec, kecuali TC yang terbelah antara spec asal dan spec absence menurut S-05 (lihat bagian "Pembagian TC lintas spec: asersi absence log (S-05)"). TC kelas K-1 (Expected berupa respons API) tetap masuk sebagai spec FE+BE; modul ini tidak punya `openapi.yaml` dan `low-level-design.md`, sehingga tidak ada spec `Mode: mock`.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 1501 TC masuk 388 spec; tidak ada TC hanya-BE yang dikeluarkan. Setiap TC terpetakan ke tepat satu spec, kecuali TC yang terbelah antara spec asal dan spec absence menurut S-05 (lihat bagian "Pembagian TC lintas spec: asersi absence log (S-05)"). TC kelas K-1 (Expected berupa respons API) tetap masuk sebagai spec FE+BE; modul ini tidak punya `openapi.yaml` dan `low-level-design.md`, sehingga tidak ada spec `Mode: mock`.
 
 ## TC hanya-BE (tidak masuk spec)
 
@@ -81,7 +81,7 @@ Tidak ada.
 | TC-FA-TAG-E2E-068-dialog-replace-tag-submit-cancel-backdrop-dan-aset-non-tag-bagian-1 | Dialog Replace TAG: Submit Normal, Submit Tanpa Tag Pengganti (V-28), dan Cancel Dialog Kosong atau Terisi (Bagian 1) | FE+BE | 30 | 309, 310, 311, 312 |
 | TC-FA-TAG-E2E-069-dialog-replace-tag-submit-cancel-backdrop-dan-aset-non-tag-bagian-2 | Dialog Replace TAG: Konfirmasi Discard (D-09) lewat Cancel, Ikon Close, dan Klik Backdrop (Bagian 2) | FE+BE | 27 | 313, 314, 315, 316 |
 | TC-FA-TAG-E2E-070-dialog-replace-tag-submit-cancel-backdrop-dan-aset-non-tag-bagian-3 | Dialog Replace TAG: Esc pada Konfirmasi D-09, Submit Disabled Tanpa Tag Tercentang, dan Aset Non-TAG (Bagian 3) | FE+BE | 28 | 317, 1352, 1441 |
-| TC-FA-TAG-E2E-071-replace-penutupan-laporan-terbuka-dan-alur-ujung-ke-ujung-bagian-1 | Replace: Laporan Terbuka pada Tag Lain Tetap Terbuka, Penutupan Laporan Tag QR, dan Alur Ujung ke Ujung Admin Aset | FE+BE | 35 | 324, 325, 326 |
+| TC-FA-TAG-E2E-071-replace-penutupan-laporan-terbuka-dan-alur-ujung-ke-ujung-bagian-1 | Replace: Tag Berlaporan Terbuka Wajib Ikut Diganti, Penutupan Laporan Tag QR, dan Alur Ujung ke Ujung Admin Aset | FE+BE | 37 | 324, 325, 326 |
 | TC-FA-TAG-E2E-072-replace-penutupan-laporan-terbuka-dan-alur-ujung-ke-ujung-bagian-2 | Replace: Laporan Terbuka pada Tag yang Dilepas Ditutup Replaced dan Status Tag Reported Dicabut | FE+BE | 22 | 340, 1378 |
 | TC-FA-TAG-E2E-073-replace-nasib-tag-lama-available-damaged-missing-dan-keluar-bagian-1 | Replace: Nasib Tag Lama Tidak Dipindai (Damaged/Missing), Tag NFC Not scanned, Non-standard QR Keluar, dan Non-standard RFID Available (Bagian 1) | FE+BE | 32 | 332, 333, 334, 335 |
 | TC-FA-TAG-E2E-074-replace-nasib-tag-lama-available-damaged-missing-dan-keluar-bagian-2 | Replace: Nasib Tag Lama pada Aset Non-TAG, Dua Tag Dilepas Sekaligus, dan Aset Multi-Tag (Bagian 2) | FE+BE | 32 | 336, 337, 338, 339 |
@@ -395,6 +395,9 @@ Tidak ada.
 | TC-FA-TAG-E2E-387-multi-tab-tab-browser-baru-memulai-state-default-tabel-paired | Multi-Tab: Tab Browser Baru Memulai State Default Tabel Paired | FE+BE | 6 | 929 |
 | TC-FA-TAG-E2E-388-absence-log-request-langsung-replace-ditolak-tidak-menulis-changelog | Absence Log: Request Langsung Replace yang Ditolak 403 Tidak Menulis Changelog | FE+BE | 18 | 1262, 1268, 1269, 1270 |
 | TC-FA-TAG-E2E-389-absence-log-request-langsung-receive-dan-decline-report-ditolak-tidak-menulis-event-log-tag-log-changelog | Absence Log: Request Langsung Receive TAG, Receive Manually, dan Decline Report yang Ditolak 403 Tidak Menulis Event Log, TAG Log, dan Changelog | FE+BE | 26 | 1290, 1291, 1292, 1293, 1294 |
+| TC-FA-TAG-E2E-390-replace-tag-berlaporan-terbuka-terkunci-dan-wajib-diganti | Replace: Tag Berlaporan Terbuka Tercentang dan Terkunci pada Row Action, Overlay Scan, dan Bulk Batch Replace | FE+BE | 33 | 1504, 1505, 1506, 1507 |
+| TC-FA-TAG-E2E-391-replace-tag-berlaporan-terbuka-bertipe-terkunci-plan-dilepas-tanpa-pasangan | Replace: Tag Berlaporan Terbuka Bertipe Terkunci Plan Dilepas Tanpa Pasangan dan Laporan Ditutup | FE+BE | 8 | 1508 |
+| TC-FA-TAG-E2E-392-modal-changelog-daftar-aset-menampilkan-entri-replace-tag | Modal Changelog Daftar Aset: Entri Changelog TAG Replace Tampil | FE+BE | 4 | 1501 |
 
 ## Dataset tab Paired
 
@@ -1925,3 +1928,9 @@ Tiap TC di bawah berada di `sourceTc` dua spec sekaligus, sehingga `check-suite.
 | TC-FA-TAG-1498 | TC-FA-TAG-E2E-295 | FE+BE |
 | TC-FA-TAG-1499 | TC-FA-TAG-E2E-295 | FE+BE |
 | TC-FA-TAG-1500 | TC-FA-TAG-E2E-296 | FE+BE |
+| TC-FA-TAG-1501 | TC-FA-TAG-E2E-392 | FE+BE |
+| TC-FA-TAG-1504 | TC-FA-TAG-E2E-390 | FE+BE |
+| TC-FA-TAG-1505 | TC-FA-TAG-E2E-390 | FE+BE |
+| TC-FA-TAG-1506 | TC-FA-TAG-E2E-390 | FE+BE |
+| TC-FA-TAG-1507 | TC-FA-TAG-E2E-390 | FE+BE |
+| TC-FA-TAG-1508 | TC-FA-TAG-E2E-391 | FE+BE |

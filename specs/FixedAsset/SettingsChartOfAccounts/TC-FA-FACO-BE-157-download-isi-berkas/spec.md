@@ -6,11 +6,12 @@ priority: Medium
 caseType: Positive
 status: draft
 owner: BE
-sourceRules: ["§5#b7", "§[F-FACO-11] Download Account List#r2", "§9.4.2#r27", EB-DL-4, EB-DL-5]
+sourceRules: ["§5#b7", "§[F-FACO-11] Download Account List#p1", "§[F-FACO-11] Download Account List#r2", "§9.4.2#r27", EB-DL-4, EB-DL-5]
 smoke: []
 dependsOn: []
 trace:
   "§5#b7": [2, 3, 4, 8, 9, 11, 13, 16]
+  "§[F-FACO-11] Download Account List#p1": [2, 11, 22, 24]
   "§[F-FACO-11] Download Account List#r2": [22]
   "§9.4.2#r27": [22]
   EB-DL-4: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 16, 18, 20]
@@ -72,3 +73,7 @@ trace:
 ### Berkas lengkap untuk lebih dari 5000 baris
 21. Admin A mengirim Download as CSV dengan Search `Besar {runId}`, yang cocok dengan 5001 akun volume
 22. Verifikasi berkas diterima langsung sebagai hasil permintaan itu, tanpa job latar belakang, dan berisi satu baris header serta tepat 5001 baris data, satu per akun volume, tanpa baris terpotong pada 5000
+
+### Last Updated mengikuti Date Format dan Time Format client
+23. Admin A mengirim Download as CSV dengan Search `Unduh {runId}` dan kolom visible Account Code dan Last Updated
+24. Verifikasi sel Last Updated setiap baris data berisi tanggal berformat Date Format `dd/MM/yy` diikuti waktu berformat Time Format `24h` yang berlaku di client

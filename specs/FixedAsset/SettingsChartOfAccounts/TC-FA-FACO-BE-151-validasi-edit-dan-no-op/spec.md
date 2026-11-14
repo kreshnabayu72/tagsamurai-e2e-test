@@ -20,14 +20,14 @@ trace:
   "§[F-FACO-02] Edit Account#r7": [7, 8]
   "§[F-FACO-02] Edit Account#r15": [50, 56]
   "§[F-FACO-02] Edit Account#r16": [51]
-  "§[F-FACO-02] Edit Account#r17": [64, 65]
+  "§[F-FACO-02] Edit Account#r17": [64, 65, 71, 72]
   "§9.4.2#r9": [49, 50, 51, 55, 56]
   "§9.9#r1": [20, 22, 24, 26, 28, 34, 40, 44]
   "§9.9#r2": [30, 32, 36, 42]
   "§9.9#r3": [38]
   EB-FRM-6@form-edit-account: [28, 32]
-  EB-FRM-8@account-code: [20, 22, 24, 26, 28, 34, 40, 44]
-  EB-FRM-8@account-name: [30, 32, 36, 42]
+  EB-FRM-8@account-code: [20, 22, 24, 26, 28, 34, 40, 44, 67]
+  EB-FRM-8@account-name: [30, 32, 36, 42, 69]
   EB-FRM-8@account-function: [38]
   EB-ERR-4: [20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 59]
   EB-CON-1: [49, 50, 56, 62]
@@ -54,6 +54,8 @@ trace:
   - DU-151-37: Account Code `STS-{runId}`, Account Name `Beban Asuransi {runId}`, Account Function `Asset Cost`, Status `Active`.
   - DU-151-39: Account Code `CN1-{runId}`, Account Name `Kas Proyek Satu {runId}`, Account Function `Asset Cost`.
   - DU-151-40: Account Code `CN2-{runId}`, Account Name `Kas Proyek Dua {runId}`, Account Function `Asset Cost`.
+  - DU-151-42: Account Code `TRB-{runId}`, Account Name `Batas Setelah Trim {runId}`, Account Function `Asset Cost`.
+  - DU-151-45: Account Code `CSM-{runId}`, Account Name `Kas Serentak {runId}`, Account Function `Asset Cost`.
 - Kondisi:
   - Semua akun di atas belum pernah diekspor (Last Used in Journal kosong) dan tidak dipakai Asset Class (Used By 0), sehingga tidak ada field yang terkunci.
 
@@ -66,7 +68,7 @@ trace:
 ### Edit tanpa perubahan nilai tidak mengubah data dan tidak menulis log
 3. Admin A mencatat jumlah entri log akun `NOP-{runId}` pada Changelog, pada System Log milik Admin A, dan pada Activity Log
 4. Admin A mengirim Edit akun `NOP-{runId}` dengan Account Code `NOP-{runId}`, Account Name `Kas Kecil Pusat {runId}`, Account Function `Asset Cost`, semuanya identik dengan nilai tersimpan
-5. Verifikasi permintaan berhasil tanpa mengubah nilai akun, dan Account Code `NOP-{runId}` tidak ditolak sebagai duplikat dari akun itu sendiri
+5. Verifikasi permintaan berhasil dengan respons tanpa konten (`No Content`), nilai akun tidak berubah, dan Account Code `NOP-{runId}` tidak ditolak sebagai duplikat dari akun itu sendiri
 6. Verifikasi versi akun `NOP-{runId}` tidak naik
 7. Verifikasi jumlah entri log akun `NOP-{runId}` pada Changelog sama dengan jumlah yang dicatat sebelum Edit
 8. Verifikasi jumlah entri log akun `NOP-{runId}` pada System Log milik Admin A dan pada Activity Log sama dengan jumlah yang dicatat sebelum Edit
@@ -149,3 +151,16 @@ trace:
 63. Admin A mengirim Edit akun `CN1-{runId}` dengan Account Code `CNC-{runId}`, dan Admin B secara serentak mengirim Edit akun `CN2-{runId}` dengan Account Code `CNC-{runId}`
 64. Verifikasi satu permintaan Edit berhasil mengubah Account Code menjadi `CNC-{runId}`, sedangkan permintaan Edit lainnya ditolak dengan alasan `Account code already exists`
 65. Verifikasi daftar akun client aktor dengan Account Code `CNC-{runId}` memuat tepat satu akun
+
+### Edit Account Code 15 karakter setelah trim diterima
+66. Admin A mengirim Edit akun `TRB-{runId}` dengan Account Code `" BE151-TRIMM-B15 "` (satu spasi di awal dan satu di akhir; setelah trim panjangnya 15 karakter), Account Name `Batas Setelah Trim {runId}`, Account Function `Asset Cost`
+67. Verifikasi akun diterima dan tersimpan dengan Account Code `BE151-TRIMM-B15`, karena batas dihitung dari panjang setelah trim
+
+### Edit dengan Account Name yang hanya berisi spasi ditolak
+68. Admin A mengirim Edit akun `EDD-{runId}` dengan Account Code `EDD-{runId}`, Account Name berisi tiga spasi saja, Account Function `Asset Cost`
+69. Verifikasi permintaan ditolak karena Account Name yang hanya berisi spasi dianggap kosong, dan akun `EDD-{runId}` tetap bernilai Account Name `Beban Dibayar Dimuka {runId}`
+
+### Dua admin menyimpan Edit atas akun yang sama, satu memakai Account Code milik akun lain
+70. Admin A mengirim Edit akun `CSM-{runId}` dengan Account Code `REF-{runId}`, Account Name `Kas Serentak {runId}`, Account Function `Asset Cost`, dan Admin B secara serentak mengirim Edit akun `CSM-{runId}` dengan Account Code `CSM-{runId}`, Account Name `Kas Serentak Baru {runId}`, Account Function `Asset Cost`
+71. Verifikasi Edit Admin A ditolak dengan alasan `Account code already exists`, sedangkan Edit Admin B berhasil
+72. Verifikasi akun `CSM-{runId}` bernilai Account Code `CSM-{runId}` dan Account Name `Kas Serentak Baru {runId}`, dan hanya satu akun yang ber-Account Code `REF-{runId}`

@@ -38,7 +38,7 @@ coverage:
   - DU-004-8: Admin B, nama `Admin B {runId}`, role Total Control, cakupan seluruh client, akun aktif dan kredensialnya disediakan fase 2.
 - Kondisi:
   - Seluruh akun DU-004-1 sampai DU-004-7 dibuat pada hari run (T0), sehingga Last Updated akun yang belum diubah adalah T0.
-  - Seluruh akun DU-004-1 sampai DU-004-5 belum pernah diubah lewat form, sehingga Modified By-nya `System`.
+  - Seluruh akun DU-004-1 sampai DU-004-5 tanpa entri Changelog sama sekali (belum pernah diubah oleh siapa pun), sehingga Modified By-nya `System` dan opsi `System` ada di field Modified By.
   - Ukuran halaman tabel adalah 10 baris (nilai bawaan).
 
 ## Test Steps

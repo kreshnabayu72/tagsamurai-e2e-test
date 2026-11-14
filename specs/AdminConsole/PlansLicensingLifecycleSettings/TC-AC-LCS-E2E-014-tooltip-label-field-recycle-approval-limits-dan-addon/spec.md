@@ -45,7 +45,7 @@ coverage:
 
 7. Klik tab System Limits pada tab bar
 8. Hover label "Bulk Transaction Row Limit"
-9. Verifikasi Tooltip pada label "Bulk Transaction Row Limit": "Maximum number of assets allowed in a single bulk transaction request (e.g. Request Transfer, Request Disposal). Checked when the request is submitted, based on the number of assets included in that request — not the number of rows selected earlier in an asset list. Does not apply to file import, which is limited by file size instead."
+9. Verifikasi Tooltip pada label "Bulk Transaction Row Limit": "Maximum number of assets allowed in a single new transaction submission (e.g. Borrow, Assignment, Transfer, Disposal). Checked when the form is submitted, based on the number of assets in that submission — not the number of rows selected earlier in an asset list. Does not apply to file import (limited by file size) or Register Asset (has its own limit)."
 10. Hover label "Selection Limit"
 11. Verifikasi Tooltip pada label "Selection Limit": "Maximum number of rows that can be selected at once — applies to checkbox-based bulk actions in a table (e.g. mark as damaged, delete, activate) and to multi-select fields (e.g. assets, users). Additional rows beyond the limit cannot be checked. Using 'Select All' when the total exceeds this limit selects only the first 1000 rows."
 12. Hover label "Register Asset Bulk Limit"

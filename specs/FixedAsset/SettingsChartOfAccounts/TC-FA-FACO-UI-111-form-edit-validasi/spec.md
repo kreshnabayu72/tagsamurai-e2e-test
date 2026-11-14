@@ -15,12 +15,12 @@ trace:
   V-04: [73, 75]
   V-05: [7, 11, 24]
   V-06: [83, 89, 95, 101]
-  V-07: [106, 107, 112, 113, 118]
+  V-07: [106, 107, 112, 113, 115]
   V-08: [8, 12]
   §[F-FACO-02] Edit Account#b2: [10, 11, 12, 18, 24, 32, 55, 73, 75, 83]
-  EB-FRM-6@form-edit-account: [60, 61, 66, 67, 106, 112, 118]
+  EB-FRM-6@form-edit-account: [60, 61, 66, 67, 106, 112, 115, 118, 122, 123]
   EB-FRM-8@account-code: [10, 18, 30, 32, 44, 47, 50, 55, 61, 67, 73, 75]
-  EB-FRM-8@account-name: [11, 24, 81, 83, 106, 112, 118]
+  EB-FRM-8@account-name: [11, 24, 81, 83, 106, 112, 115]
   EB-FRM-8@account-function: 12
 anchor: [5, 29, 37, 43, 46, 49, 57, 63, 72, 80, 88, 94, 100]
 coverage:
@@ -36,9 +36,11 @@ coverage:
 - Data:
   - DU-111-1: akun dengan Account Code `5-6001`, Account Name `Depreciation Expense – Admin`, Account Function `Depreciation Expense`, Used By `0`, Last Used in Journal `—`.
   - DU-111-2: akun lain dengan Account Code `5-6002`, Account Name `Depreciation Expense – Warehouse`, Account Function `Depreciation Expense`, Used By `0`, Last Used in Journal `—`.
+  - DU-111-23: Account Name `Gudang Cabang🔥`, yaitu emoji yang lolos dari blok klien.
 - Kondisi:
   - K1: form Edit Account dibuka untuk akun DU-111-1, yang tidak terkunci, dan pengecekan keunikan Account Code menyatakan kode yang diketik tersedia.
   - K2: seperti K1, dan pengecekan keunikan Account Code menyatakan kode `5-6002` sudah dipakai akun DU-111-2, sedangkan `5-6001` milik akun yang sedang diedit tetap tersedia.
+  - K3: seperti K1, dan field Account Name berisi nilai DU-111-23.
 
 ## Test Steps
 
@@ -183,9 +185,18 @@ coverage:
 112. Verifikasi field `Account Name` berisi `Perawatan Mesin`, dari `Perawatan📌 Mesin` tanpa emoji pada form Edit
 113. Verifikasi caption `Account name contains invalid characters` tidak tampil pada field `Account Name` pada form Edit untuk teks yang ditempel
 
-### Emoji yang lolos lewat seret dan lepas ditolak pada Account Name form Edit
-114. Tampilkan Modal Edit Account dengan kondisi K1
-115. Klik `⋯` pada baris akun `5-6001`
-116. Klik `Edit`
-117. Seret dan lepas teks `Gudang Cabang🔥` ke field `Account Name`
-118. Verifikasi caption `Account name contains invalid characters` tampil pada field `Account Name` pada form Edit tanpa `[Save]` diklik
+### Emoji yang lolos ke Account Name form Edit ditolak dengan caption
+114. Tampilkan Modal Edit Account dengan kondisi K3
+115. Verifikasi caption `Account name contains invalid characters` tampil pada field `Account Name` pada form Edit tanpa `[Save]` diklik
+
+### Baris baru yang ditempel tidak masuk ke Account Name form Edit
+116. Tampilkan Modal Edit Account dengan kondisi K1
+117. Tempel teks `Perawatan` dan `Mesin` yang dipisah baris baru ke field `Account Name`
+118. Verifikasi field `Account Name` memuat `Perawatan` dan `Mesin` tanpa karakter baris baru pada form Edit
+
+### Tab yang ditekan tidak masuk ke Account Name form Edit
+119. Tampilkan Modal Edit Account dengan kondisi K1
+120. Ganti isi field `Account Name` dengan `Mesin`
+121. Tekan Tab
+122. Verifikasi field `Account Name` berisi `Mesin` tanpa karakter tab pada form Edit
+123. Verifikasi fokus berpindah dari field `Account Name` ke kontrol berikutnya pada form Edit

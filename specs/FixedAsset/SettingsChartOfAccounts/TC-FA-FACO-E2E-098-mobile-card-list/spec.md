@@ -34,6 +34,7 @@ coverage:
   - DU-098-3: akun Account Code `4-7001-{runId}`, Account Name `Gain on Disposal {runId}`, Account Function `Gain on Disposal`, Status Inactive, Used By `0`, belum pernah diekspor.
   - DU-098-4: akun Account Code `1-1001-{runId}`, Account Name `Fixed Assets – Equipment {runId}`, Account Function `Asset Cost`, Status Active, Used By `3`, belum pernah diekspor.
   - DU-098-5: akun Account Code `4-7301-{runId}`, Account Name `Gain on Disposal – Vehicles {runId}`, Account Function `Gain on Disposal`, Status Inactive, Used By `0`, belum pernah diekspor.
+  - DU-098-6: 8 akun Active dengan Account Code `9-80{n}-{runId}` (n dari 1 sampai 8), Account Name `Operating Expense Cabang {n} {runId}`, Account Function `Asset Cost`, Used By `0`, belum pernah diekspor. Bersama DU-098-2 sampai DU-098-5, hasil Search atas data spec ini berjumlah 12 akun, melebihi 10 card yang dimuat per halaman; Account Code `9-80{n}-{runId}` terurut sesudah akun DU-098-2 sampai DU-098-5. Counter yang diharapkan sesudah `[Select All]` adalah `10 Selected`, dari 10 card yang dimuat.
 
 ## Test Steps
 
@@ -83,7 +84,7 @@ coverage:
 37. Verifikasi counter menunjukkan 2 card terpilih
 38. Verifikasi aksi bulk `Activate`, `Deactivate`, dan `Delete` tampil
 39. Klik `[Select All]`
-40. Verifikasi counter menunjukkan 4 card terpilih, sama dengan seluruh card yang dimuat
+40. Verifikasi counter `10 Selected` tampil, yaitu card yang sudah dimuat (10 per halaman), bukan 12 akun hasil Search
 41. Klik `[✕]` pada Floating Bottom Bulk Action Bar
 42. Verifikasi card dengan Account Code `5-6001-{runId}` tampil
 43. Verifikasi card tidak menampilkan checkbox dan Floating Bottom Bulk Action Bar tidak tampil
@@ -107,4 +108,4 @@ coverage:
 59. Verifikasi Guided Tooltip tidak berjalan di aplikasi Android[^drift-1]
 60. Verifikasi tombol `[?]` tidak tampil di header halaman[^drift-1]
 
-[^drift-1]: Drift PRD vs foundation. PRD §4.7: «Guided Tooltip tidak berjalan di aplikasi Android; tur dan tombol `[?]` hanya tampil pada tampilan desktop». foundation `guided-tooltip.md` §16.3: «Mobile | Tooltip muncul sebagai bottom sheet mini; spotlight tetap ada; swipe left/right = Next/Back». Diasersi: PRD, karena target step 1 sampai 5 tidak ada di card list dan ini konfigurasi khusus modul (SB-4).
+[^drift-1]: Drift PRD vs foundation. PRD §4.7: «Guided Tooltip tidak berjalan di aplikasi Android; tur dan tombol `[?]` hanya tampil pada tampilan desktop». foundation `guided-tooltip.md` §16.3: «Mobile | Tooltip muncul sebagai bottom sheet mini; spotlight tetap ada; swipe left/right = Next/Back». Diasersi: PRD, karena PRD §4.7 menyatakan pengecualian modul secara eksplisit atas baris Mobile itu dan alasannya bersumber dari foundation sendiri (`guided-tooltip.md` §16.5: target step hanya landmark permanen yang selalu ada pada initial load, sedangkan card list mobile tidak memiliki header kolom, tidak menampilkan Last Used in Journal, dan menaruh Filter di dalam `[⋯]`); ini konfigurasi khusus modul (SB-4).

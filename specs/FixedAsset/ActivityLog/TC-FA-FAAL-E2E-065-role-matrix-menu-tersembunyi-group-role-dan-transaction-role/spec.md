@@ -28,7 +28,7 @@ coverage:
   | 5 | `Manage asset license` | `manageAssetLicense_automated_{namaCompany}@qwertysystem.net` |
   | 6 | `Manage purchase` | `managePurchase_automated_{namaCompany}@qwertysystem.net` |
   | 7 | `View asset value` | `viewAssetValue_automated_{namaCompany}@qwertysystem.net` |
-- Tabel "Transaction Role (Pre-setup #7)" untuk TC-FA-FAAL-43; role pada sub-tab Disposal group Gedung A:
+- Tabel "Transaction Role (Pre-setup #7)" untuk TC-FA-FAAL-43; role pada sub-tab Disposal untuk Group Gedung A:
 
   | No | Transaction Role | Email |
   |---|---|---|

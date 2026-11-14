@@ -78,7 +78,7 @@ coverage:
 36. Verifikasi DD-13 tidak tertaut ke aset
 37. Buka menu baris DD-13, lalu klik `TAG Log`
 38. Verifikasi satu entri baru `TAG Marked To be Returned by [pelaku disposal]` (jumlah entri bertambah satu dari nilai yang dicatat)
-39. Verifikasi entri itu memuat `Asset`, `Asset Code`, `Reason: Disposal`, dan `Return Group` Disposal Group transaksi
+39. Verifikasi entri itu memuat `Asset`, `Asset Code`, `Reason: Disposal`, dan `Return Group` Group asal aset pada transaksi disposal (Group DSP)
 40. Verifikasi tidak ada entri `TAG Unpaired by ...` maupun `TAG Retired by ...`
 41. Tutup popup TAG Log
 42. Klik Tab All

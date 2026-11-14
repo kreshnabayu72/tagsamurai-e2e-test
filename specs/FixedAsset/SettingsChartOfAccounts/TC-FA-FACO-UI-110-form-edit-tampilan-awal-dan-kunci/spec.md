@@ -14,7 +14,7 @@ trace:
   §4.1.2#r1: [8, 17, 32]
   §4.1.2#r3: [9, 18, 33]
   §4.1.2#p2: [10, 11, 12]
-  §4.2b#p1: [4, 5, 6, 7, 13]
+  §4.2b#p1: [4, 5, 6, 7, 13, 55, 56, 58, 59]
   §4.2b#r1: 20
   §4.2b#r2: 23
   §4.5#b5: 26
@@ -95,7 +95,7 @@ coverage:
 43. Tekan Tab berulang kali sampai elemen interaktif terakhir di modal Edit Account terlewati
 44. Verifikasi fokus tetap berada di dalam modal Edit Account sesudah Tab melewati elemen terakhir
 45. Klik `✕` pada form yang belum diubah
-46. Verifikasi fokus kembali ke pemicu yang membuka modal Edit Account
+46. Verifikasi fokus kembali ke tombol `⋯` pada baris akun `5-6001`, pemicu menu `Edit` yang membuka modal Edit Account
 
 ### Caption error terhubung ke field pada form Edit
 47. Tampilkan Modal Edit Account dengan kondisi K2
@@ -104,5 +104,14 @@ coverage:
 50. Kosongkan field `Account Name`
 51. Klik `[Save]`
 52. Verifikasi field `Account Name` memiliki `aria-describedby` yang menunjuk caption `Account name must not be empty` pada modal Edit Account
+
+### Popover penjelasan Account Function pada form Edit
+53. Tampilkan Modal Edit Account dengan kondisi K2
+54. Klik ikon `[ℹ]` pada label `Account Function`
+55. Verifikasi popover penjelasan Account Function terbuka pada modal Edit Account
+56. Verifikasi field `Account Function` tetap menampilkan `Depreciation Expense` sesudah ikon `[ℹ]` diklik
+57. Tekan `Esc`
+58. Verifikasi popover penjelasan Account Function pada modal Edit Account tertutup sesudah `Esc`
+59. Verifikasi modal Edit Account tetap terbuka
 
 [^drift-1]: Drift PRD vs kontrak komponen. PRD §4.5: «Tooltip 🔖 dapat diakses lewat keyboard focus.» Kontrak `Tooltip#38`: «A disabled control cannot be focused, so its tooltip opens on hover only.» Diasersi: kontrak, karena field `Account Code` yang Disabled tidak bisa menerima fokus keyboard (SB-7).

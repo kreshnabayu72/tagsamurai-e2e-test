@@ -32,12 +32,14 @@ coverage:
 - Aktor: Admin dengan role Total Control bernama lengkap `Sari Kusuma {runId}` (DU-075-2), yang juga menjalankan Export Journal.
 - Layar awal: Settings > Accounting > Chart of Accounts.
 - Data:
-  - DU-075-1: Account Code `LUJ1-{runId}`, Account Name `Equipment Cost Journal {runId}`, Account Function `Capitalization Offset`, Status `Active`, Used By `0`, Last Used in Journal `—`, ada di entitas aktor.
+  - DU-075-1: Account Code `LUJ1-{runId}`, Account Name `Equipment Cost Journal {runId}`, Account Function `Asset Cost`, Status `Active`, Used By `1`, Last Used in Journal `—`, dipakai DU-075-3, ada di entitas aktor.
   - DU-075-2: User `Sari Kusuma {runId}`, Access Level `Total Control`, cakupan seluruh client, aktor spec ini dan pengekspor pada setiap Export Journal.
+  - DU-075-3: Asset Class `Kelas Ekspor Jurnal {runId}`, Status `Active`; Asset Cost `LUJ1-{runId}`.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`.
-  - Akun DU-075-1 ikut dalam berkas setiap Export Journal yang dijalankan di spec ini.
+  - Akun DU-075-1 ikut dalam berkas setiap Export Journal yang dijalankan di spec ini, karena Asset Class DU-075-3 memakainya pada Asset Cost dan pemetaan itu tidak berubah selama spec ini.
   - Periode jurnal yang diekspor berurutan: `Jun 2026`, `Aug 2026`, `Jul 2026`, lalu `Aug 2026`.
+  - Entri log L-10 (Changelog dan sumber hover Last Used in Journal) ditulis sesudah commit secara best-effort, sehingga baris Changelog dan teks hover diamati paling lambat 30 detik sesudah Export Journal selesai; nilai Last Used in Journal itu sendiri tersimpan saat commit.
 
 ## Test Steps
 
@@ -49,12 +51,12 @@ coverage:
 5. Ketik Search `LUJ1-{runId}`, tekan Enter
 6. Verifikasi Last Used in Journal baris `LUJ1-{runId}` bernilai `Jun 2026`, yaitu periode jurnal yang diekspor dan bukan tanggal export
 7. Arahkan kursor ke sel Last Used in Journal baris `LUJ1-{runId}`
-8. Verifikasi hover memuat `Last exported [Date Time] by [User Name]`, dengan [Date Time] menurut Date Format `dd/MM/yy` dan Time Format `24h`, dan [User Name] berupa nama lengkap aktor pengekspor `Sari Kusuma {runId}`
+8. Verifikasi paling lambat 30 detik sesudah export selesai, hover memuat `Last exported [Date Time] by [User Name]`, dengan [Date Time] menurut Date Format `dd/MM/yy` dan Time Format `24h`, dan [User Name] berupa nama lengkap aktor pengekspor `Sari Kusuma {runId}`
 
 ### Changelog mencatat periode pertama
 9. Klik ikon `Changelog` di toolbar
 10. Ketik Search `LUJ1-{runId}`, tekan Enter
-11. Verifikasi baris Changelog dengan Action `Edit`, Account Code `LUJ1-{runId}`, Field `Last Used in Journal`, Old Value `—`, dan New Value `Jun 2026` tampil
+11. Verifikasi paling lambat 30 detik sesudah export selesai, baris Changelog dengan Action `Edit`, Account Code `LUJ1-{runId}`, Field `Last Used in Journal`, Old Value `—`, dan New Value `Jun 2026` tampil
 12. Klik `✕` pada modal Changelog
 
 ### Export periode yang lebih baru memajukan nilai
@@ -64,7 +66,7 @@ coverage:
 16. Ketik Search `LUJ1-{runId}`, tekan Enter
 17. Verifikasi Last Used in Journal baris `LUJ1-{runId}` bernilai `Aug 2026`
 18. Arahkan kursor ke sel Last Used in Journal baris `LUJ1-{runId}`
-19. Verifikasi teks hover berbeda dari teks hover pada langkah 8
+19. Verifikasi paling lambat 30 detik sesudah export `Aug 2026` selesai, teks hover berbeda dari teks hover pada langkah 8
 20. Verifikasi [Date Time] pada hover adalah waktu Export Journal periode `Aug 2026`, yaitu menit yang lebih akhir daripada [Date Time] pada langkah 8, dengan [User Name] tetap `Sari Kusuma {runId}`
 
 ### Export ulang periode yang lebih lama tidak memundurkan nilai
@@ -75,7 +77,7 @@ coverage:
 25. Ketik Search `LUJ1-{runId}`, tekan Enter
 26. Verifikasi Last Used in Journal baris `LUJ1-{runId}` tetap bernilai `Aug 2026`
 27. Arahkan kursor ke sel Last Used in Journal baris `LUJ1-{runId}`
-28. Verifikasi teks hover sama dengan teks yang dicatat pada langkah 21
+28. Verifikasi sesudah 30 detik sejak export `Jul 2026` selesai, teks hover sama dengan teks yang dicatat pada langkah 21
 
 ### Export ulang periode yang sama tidak mengubah nilai
 29. Waktu berlalu sampai menit berganti
@@ -84,4 +86,4 @@ coverage:
 32. Ketik Search `LUJ1-{runId}`, tekan Enter
 33. Verifikasi Last Used in Journal baris `LUJ1-{runId}` tetap bernilai `Aug 2026`
 34. Arahkan kursor ke sel Last Used in Journal baris `LUJ1-{runId}`
-35. Verifikasi teks hover sama dengan teks yang dicatat pada langkah 21
+35. Verifikasi sesudah 30 detik sejak export `Aug 2026` selesai, teks hover sama dengan teks yang dicatat pada langkah 21

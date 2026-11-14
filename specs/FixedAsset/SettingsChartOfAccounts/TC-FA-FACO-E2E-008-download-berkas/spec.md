@@ -10,7 +10,7 @@ smoke: []
 dependsOn: []
 trace:
   "F-FACO-11": [5, 41]
-  "R-11": [4, 30]
+  "R-11": [4, 30, 110, 112]
   "§5#b7": [3, 19, 49]
   "§5#b8": 61
   "§[F-FACO-11] Download Account List#p1": [5, 19]
@@ -18,12 +18,12 @@ trace:
   "§9.4.2#r26": 31
   "EB-FB-2@download": [4, 9, 30, 62]
   "EB-DL-1@tabel-account-list": [5, 19, 20, 41, 49]
-  "EB-DL-1@tabel-changelog": [63, 70, 78]
+  "EB-DL-1@tabel-changelog": [63, 70, 78, 96, 104]
   "EB-DL-2@tabel-account-list": [4, 9, 30]
   "EB-DL-2@tabel-changelog": [62, 71]
   "EB-DL-3@tabel-account-list": [3, 8, 18, 29]
   "EB-DL-3@tabel-changelog": [61, 69]
-anchor: [3, 8, 15, 26, 29, 38, 48, 58, 61, 69]
+anchor: [3, 8, 15, 26, 29, 38, 48, 58, 61, 69, 92, 101]
 coverage:
   web: automated
 ---
@@ -40,6 +40,7 @@ coverage:
   - DU-008-4: akun `DL12-{runId}`, Account Name `12 Unduh {runId}`, Account Function `Depreciation Expense`, Status `Active`.
   - Seluruh 12 akun memuat `Unduh {runId}` pada Account Name, sehingga Search `Unduh {runId}` hanya mencocokkan baris milik spec ini. Ukuran halaman tabel 10 baris, sehingga 12 baris tersebar di dua halaman.
   - Akun milik spec ini tidak punya entri Changelog sebelum langkah Edit.
+  - Pada kelompok langkah sesudahnya seluruh 12 akun dinonaktifkan sekaligus lewat Bulk Deactivate (Used By `0`), sehingga Changelog yang disaring dengan runId spec ini berisi 13 entri milik spec ini: satu entri Edit Field `Account Name` untuk DL1 dan 12 entri Edit Field `Status`. Dengan ukuran halaman modal 10 entri, halaman 2 memuat 3 entri.
 - Kondisi:
   - Kolom `Used By` tampil di tabel Account List (kondisi bawaan).
 
@@ -133,3 +134,44 @@ coverage:
 76. Klik ikon Download pada modal Changelog
 77. Klik `Download as CSV`
 78. Verifikasi berkas memuat entri Account Code `DL1-{runId}` walau Search sudah dibersihkan, yaitu cakupan seluruh entri Changelog tanpa Search
+
+### Download Changelog tanpa Search atau Filter memuat seluruh entri lintas halaman
+79. Klik `✕` pada modal Changelog
+80. Centang baris `DL1-{runId}`
+81. Klik `Select All (12 records)`
+82. Klik `Bulk Action`
+83. Klik `Deactivate`
+84. Klik `[Deactivate]`
+85. Klik header kolom Actions `⋯`
+86. Centang `Last Updated` pada panel Column Visibility
+87. Klik header kolom Actions `⋯` untuk menutup panel
+88. Catat nilai Last Updated baris `DL2-{runId}`
+
+89. Klik ikon Changelog
+90. Ketik Search `{runId}` pada modal Changelog, tekan Enter
+91. Klik halaman 2 pada Paginator modal Changelog
+92. Verifikasi halaman 2 modal Changelog memuat 3 entri, sehingga Search `{runId}` menghasilkan 13 entri dengan 10 entri di halaman 1
+93. Klik `(←)` pada kotak Search modal Changelog
+94. Klik ikon Download pada modal Changelog
+95. Klik `Download as CSV`
+96. Verifikasi berkas memuat 13 entri milik spec ini, yaitu 12 baris Field `Status` untuk Account Code `DL1-{runId}` sampai `DL12-{runId}` dan satu baris Field `Account Name` untuk `DL1-{runId}`, lebih banyak daripada 10 baris yang tampil pada satu halaman modal
+
+### Download Changelog mengikuti Filter yang aktif
+97. Klik ikon Filter pada modal Changelog
+98. Pilih `Account Name` pada field Field
+99. Klik `[Apply]`
+100. Ketik Search `{runId}` pada modal Changelog, tekan Enter
+101. Verifikasi entri dengan Account Code `DL1-{runId}` dan Field `Account Name` tampil di modal Changelog
+102. Klik ikon Download pada modal Changelog
+103. Klik `Download as CSV`
+104. Verifikasi berkas memuat satu baris data, yaitu entri Account Code `DL1-{runId}` dengan Field `Account Name`, dan tidak memuat baris Field `Status`, karena Filter Field `Account Name` dan Search `{runId}` aktif
+105. Klik `[Clear Field]`
+106. Klik `[Apply]`
+107. Klik `(←)` pada kotak Search modal Changelog
+
+### Download tidak menulis entri Changelog dan tidak memperbarui Last Updated
+108. Ketik Search `{runId}` pada modal Changelog, tekan Enter
+109. Klik halaman 2 pada Paginator modal Changelog
+110. Verifikasi halaman 2 modal Changelog tetap memuat 3 entri, sehingga Search `{runId}` tetap menghasilkan 13 entri seperti sebelum seluruh unduhan pada kelompok sebelumnya
+111. Klik `✕` pada modal Changelog
+112. Verifikasi Last Updated baris `DL2-{runId}` tetap sama dengan nilai yang dicatat sebelum unduhan pada kelompok sebelumnya

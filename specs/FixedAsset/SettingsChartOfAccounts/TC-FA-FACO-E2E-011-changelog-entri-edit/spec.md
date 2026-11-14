@@ -9,7 +9,7 @@ sourceRules: ["§8.1#p3", "EB-LOG-1", "EB-LOG-2", "L-02"]
 smoke: ["L-02"]
 dependsOn: []
 trace:
-  "§8.1#p3": [10, 13, 25, 27]
+  "§8.1#p3": [10, 13, 25, 27, 38, 39]
   "EB-LOG-1": [9, 14, 16, 24]
   "EB-LOG-2": [25, 26]
   "L-02": [9, 10, 11, 12]
@@ -25,7 +25,7 @@ coverage:
 - Layar awal: Settings > Accounting > Chart of Accounts.
 - Data:
   - DU-011-1: akun `LG1-{runId}`, Account Name `Nama Satu {runId}`, Account Function `Asset Cost`, Status `Active`, Used By 0, Last Used in Journal kosong, belum pernah punya entri Changelog. Edit pertama mengubah tiga field dalam satu Save: Account Code `LG1B-{runId}`, Account Name `Nama Dua {runId}`, Account Function `Gain on Disposal`. Edit kedua hanya mengubah Account Name menjadi `Nama Tiga {runId}`.
-  - DU-011-2: akun `LG2-{runId}`, Account Name `Akun Pembanding {runId}`, Account Function `Asset Cost`, Status `Active`, tidak diubah oleh spec ini dan belum pernah punya entri Changelog.
+  - DU-011-2: akun `LG2-{runId}`, Account Name `Akun Pembanding {runId}`, Account Function `Asset Cost`, Status `Active`, belum pernah punya entri Changelog. Tidak diubah sampai kelompok langkah terakhir: Account Name diubah menjadi `Pembanding Satu {runId}`, lalu pada Save berikutnya Account Code diubah menjadi `LG2B-{runId}`.
 
 ## Test Steps
 ### Edit tiga field sekaligus menulis satu entri per field dengan Account Code sesudah perubahan
@@ -60,3 +60,17 @@ coverage:
 25. Verifikasi entri rename pertama tetap menampilkan Old Value `Nama Satu {runId}` dan New Value `Nama Dua {runId}`
 26. Verifikasi entri rename kedua menampilkan Old Value `Nama Dua {runId}` dan New Value `Nama Tiga {runId}`
 27. Verifikasi baris Field `Account Code` tetap bernilai Old Value `LG1-{runId}` dan New Value `LG1B-{runId}`, tidak mengikuti kode terbaru
+
+### Entri yang ditulis sebelum perubahan kode tetap memuat kode lama
+28. Tutup modal Changelog
+29. Ganti isi kotak Search dengan `LG2-{runId}`, tekan Enter
+30. Klik `⋯` pada baris `LG2-{runId}` > `Edit`
+31. Ganti isi Account Name dengan `Pembanding Satu {runId}`
+32. Klik `[Save]`
+33. Klik `⋯` pada baris `LG2-{runId}` > `Edit`
+34. Ganti isi Account Code dengan `LG2B-{runId}`
+35. Klik `[Save]`
+36. Klik ikon Changelog
+37. Ketik Search `LG2-{runId}` pada modal Changelog, tekan Enter
+38. Verifikasi baris Field `Account Name` dengan Old Value `Akun Pembanding {runId}` dan New Value `Pembanding Satu {runId}` bernilai Account Code `LG2-{runId}`, kode sebelum perubahan, tidak mengikuti kode terbaru `LG2B-{runId}`
+39. Verifikasi baris Field `Account Code` bernilai Account Code `LG2B-{runId}`, Old Value `LG2-{runId}`, dan New Value `LG2B-{runId}`

@@ -9,15 +9,15 @@ sourceRules: ["§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r25", "§4.1
 smoke: []
 dependsOn: []
 trace:
-  "§4.1.1#r22": 39
-  "§4.1.1#r23": 31
-  "§4.1.1#r24": 33
-  "§4.1.1#r25": 35
-  "§4.1.1#r26": 37
-  "§4.1.1#r27": 42
-  "EB-SRC-2@tabel-changelog": [35, 40, 44, 48, 50, 51, 73, 78]
-  "EB-SRC-3@tabel-changelog": [46, 53, 55, 57, 59, 61, 62, 64, 66]
-anchor: [68]
+  "§4.1.1#r22": 42
+  "§4.1.1#r23": 34
+  "§4.1.1#r24": 36
+  "§4.1.1#r25": 38
+  "§4.1.1#r26": 40
+  "§4.1.1#r27": 45
+  "EB-SRC-2@tabel-changelog": [38, 43, 49, 53, 55, 56, 78, 83]
+  "EB-SRC-3@tabel-changelog": [51, 58, 60, 62, 64, 66, 67, 69, 71]
+anchor: [73]
 coverage:
   web: automated
 ---
@@ -71,64 +71,69 @@ coverage:
 27. Klik `[Delete]` pada dialog `Delete Account`
 28. Klik `(←)` pada kotak Search
 29. Klik ikon Changelog
-30. Ketik Search `CS1-{runId}` pada modal Changelog, tekan Enter
-31. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom Account Code
-32. Ganti isi kotak Search modal Changelog dengan `Account Name`, tekan Enter
-33. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom Field
-34. Ganti isi kotak Search modal Changelog dengan `Procurement Cabang {runId}`, tekan Enter
-35. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom Old Value
-36. Ganti isi kotak Search modal Changelog dengan `Procurement Cabang Baru {runId}`, tekan Enter
-37. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom New Value
-38. Ganti isi kotak Search modal Changelog dengan `Delete`, tekan Enter
-39. Verifikasi entri `CS7-{runId}` tampil di modal Changelog karena cocok di kolom Action
-40. Verifikasi entri `CS1-{runId}` tidak tampil di modal Changelog karena tidak ada kolom visibelnya yang memuat `Delete`
-41. Ganti isi kotak Search modal Changelog dengan teks Modified By persis seperti tampil pada baris entri `CS1-{runId}`, tekan Enter
-42. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom Modified By
+30. Klik ikon Filter pada modal Changelog
+31. Pilih `CS1-{runId}` dan `CS7-{runId}` pada field Account Code
+32. Klik `[Apply]`
+33. Ketik Search `CS1-{runId}` pada modal Changelog, tekan Enter
+34. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom Account Code
+35. Ganti isi kotak Search modal Changelog dengan `Account Name`, tekan Enter
+36. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom Field
+37. Ganti isi kotak Search modal Changelog dengan `Procurement Cabang {runId}`, tekan Enter
+38. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom Old Value
+39. Ganti isi kotak Search modal Changelog dengan `Procurement Cabang Baru {runId}`, tekan Enter
+40. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom New Value
+41. Ganti isi kotak Search modal Changelog dengan `Delete`, tekan Enter
+42. Verifikasi entri `CS7-{runId}` tampil di modal Changelog karena cocok di kolom Action
+43. Verifikasi entri `CS1-{runId}` tidak tampil di modal Changelog karena tidak ada kolom visibelnya yang memuat `Delete`
+44. Ganti isi kotak Search modal Changelog dengan teks Modified By persis seperti tampil pada baris entri `CS1-{runId}`, tekan Enter
+45. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena cocok di kolom Modified By
+46. Klik `[Clear Field]`
+47. Klik `[Apply]`
 
 ### Pencocokan substring dan huruf besar-kecil
-43. Ganti isi kotak Search modal Changelog dengan `curement Cabang {runId}`, tekan Enter
-44. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena kata kunci cocok di bagian tengah nilai
-45. Ganti isi kotak Search modal Changelog dengan `PROCUREMENT Cabang {runId}`, tekan Enter
-46. Verifikasi entri `CS1-{runId}` tampil di modal Changelog tanpa membedakan huruf besar-kecil
+48. Ganti isi kotak Search modal Changelog dengan `curement Cabang {runId}`, tekan Enter
+49. Verifikasi entri `CS1-{runId}` tampil di modal Changelog karena kata kunci cocok di bagian tengah nilai
+50. Ganti isi kotak Search modal Changelog dengan `PROCUREMENT Cabang {runId}`, tekan Enter
+51. Verifikasi entri `CS1-{runId}` tampil di modal Changelog tanpa membedakan huruf besar-kecil
 
 ### Kolom tanggal tidak ikut dicari dan kata kunci yang cocok di dua kolom
-47. Ganti isi kotak Search modal Changelog dengan bagian tanggal (Date Format `dd/MM/yy`) dari sel Date entri `CS1-{runId}`, tekan Enter
-48. Verifikasi `No results found` tampil di modal Changelog karena kolom Date tidak dicari
-49. Ganti isi kotak Search modal Changelog dengan `CS6-{runId}`, tekan Enter
-50. Verifikasi entri `CS6-{runId}` tampil di modal Changelog karena cocok di kolom Account Code
-51. Verifikasi entri `CS5-{runId}` tampil di modal Changelog karena cocok di kolom Old Value
+52. Ganti isi kotak Search modal Changelog dengan bagian tanggal (Date Format `dd/MM/yy`) dari sel Date entri `CS1-{runId}`, tekan Enter
+53. Verifikasi `No results found` tampil di modal Changelog karena kolom Date tidak dicari
+54. Ganti isi kotak Search modal Changelog dengan `CS6-{runId}`, tekan Enter
+55. Verifikasi entri `CS6-{runId}` tampil di modal Changelog karena cocok di kolom Account Code
+56. Verifikasi entri `CS5-{runId}` tampil di modal Changelog karena cocok di kolom Old Value
 
 ### Spasi di tepi dibuang dan spasi di tengah dipertahankan
-52. Ganti isi kotak Search modal Changelog dengan ` Procurement Cabang {runId} ` (satu spasi di awal dan satu spasi di akhir), tekan Enter
-53. Verifikasi entri `CS1-{runId}` tampil di modal Changelog sesudah spasi di tepi dibuang
-54. Ganti isi kotak Search modal Changelog dengan `Procurement  Cabang {runId}` (dua spasi di antara `Procurement` dan `Cabang`), tekan Enter
-55. Verifikasi `No results found` tampil di modal Changelog karena spasi di tengah dipertahankan
-56. Ganti isi kotak Search modal Changelog dengan `Head Office Room {runId}`, tekan Enter
-57. Verifikasi entri `CS2-{runId}` tampil di modal Changelog
-58. Ganti isi kotak Search modal Changelog dengan `Head Room {runId}`, tekan Enter
-59. Verifikasi `No results found` tampil di modal Changelog karena kata kunci tidak dipecah menjadi kata terpisah
+57. Ganti isi kotak Search modal Changelog dengan ` Procurement Cabang {runId} ` (satu spasi di awal dan satu spasi di akhir), tekan Enter
+58. Verifikasi entri `CS1-{runId}` tampil di modal Changelog sesudah spasi di tepi dibuang
+59. Ganti isi kotak Search modal Changelog dengan `Procurement  Cabang {runId}` (dua spasi di antara `Procurement` dan `Cabang`), tekan Enter
+60. Verifikasi `No results found` tampil di modal Changelog karena spasi di tengah dipertahankan
+61. Ganti isi kotak Search modal Changelog dengan `Head Office Room {runId}`, tekan Enter
+62. Verifikasi entri `CS2-{runId}` tampil di modal Changelog
+63. Ganti isi kotak Search modal Changelog dengan `Head Room {runId}`, tekan Enter
+64. Verifikasi `No results found` tampil di modal Changelog karena kata kunci tidak dipecah menjadi kata terpisah
 
 ### Karakter pola dicari sebagai teks
-60. Ganti isi kotak Search modal Changelog dengan `Biaya 10% {runId}`, tekan Enter
-61. Verifikasi entri `CS3-{runId}` tampil di modal Changelog
-62. Verifikasi entri `CS4-{runId}` tidak tampil di modal Changelog karena `%` dicari sebagai karakter biasa
-63. Ganti isi kotak Search modal Changelog dengan `<script>alert(1)</script> {runId}`, tekan Enter
-64. Verifikasi `No results found` tampil di modal Changelog karena payload skrip dicari sebagai teks
+65. Ganti isi kotak Search modal Changelog dengan `Biaya 10% {runId}`, tekan Enter
+66. Verifikasi entri `CS3-{runId}` tampil di modal Changelog
+67. Verifikasi entri `CS4-{runId}` tidak tampil di modal Changelog karena `%` dicari sebagai karakter biasa
+68. Ganti isi kotak Search modal Changelog dengan `<script>alert(1)</script> {runId}`, tekan Enter
+69. Verifikasi `No results found` tampil di modal Changelog karena payload skrip dicari sebagai teks
 
 ### Kata kunci tanpa kecocokan
-65. Ganti isi kotak Search modal Changelog dengan `tidakada-{runId}`, tekan Enter
-66. Verifikasi `No results found` tampil di modal Changelog karena kata kunci tidak cocok dengan entri mana pun
+70. Ganti isi kotak Search modal Changelog dengan `tidakada-{runId}`, tekan Enter
+71. Verifikasi `No results found` tampil di modal Changelog karena kata kunci tidak cocok dengan entri mana pun
 
 ### Kolom yang di-hide tidak ikut dicari
-67. Ganti isi kotak Search modal Changelog dengan `Procurement Cabang Baru {runId}`, tekan Enter
-68. Verifikasi entri `CS1-{runId}` tampil di modal Changelog
-69. Klik header kolom Actions `⋯` pada tabel Changelog
-70. Hapus centang `New Value` pada panel Column Visibility
-71. Klik header kolom Actions `⋯` untuk menutup panel
-72. Tekan Enter pada kotak Search modal Changelog
-73. Verifikasi `No results found` tampil di modal Changelog karena kolom New Value di-hide
+72. Ganti isi kotak Search modal Changelog dengan `Procurement Cabang Baru {runId}`, tekan Enter
+73. Verifikasi entri `CS1-{runId}` tampil di modal Changelog
 74. Klik header kolom Actions `⋯` pada tabel Changelog
-75. Centang `New Value` pada panel Column Visibility
+75. Hapus centang `New Value` pada panel Column Visibility
 76. Klik header kolom Actions `⋯` untuk menutup panel
 77. Tekan Enter pada kotak Search modal Changelog
-78. Verifikasi entri `CS1-{runId}` tampil kembali di modal Changelog karena kolom New Value ditampilkan
+78. Verifikasi `No results found` tampil di modal Changelog karena kolom New Value di-hide
+79. Klik header kolom Actions `⋯` pada tabel Changelog
+80. Centang `New Value` pada panel Column Visibility
+81. Klik header kolom Actions `⋯` untuk menutup panel
+82. Tekan Enter pada kotak Search modal Changelog
+83. Verifikasi entri `CS1-{runId}` tampil kembali di modal Changelog karena kolom New Value ditampilkan

@@ -26,7 +26,7 @@ coverage:
   | TC-FA-NOTIF-124 (Approver A, lalu B) | Approver (Borrowing & Assignment) A | #4 | `approverBorrowingAssignment_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_APPROVERBA_PASSWORD` | `Fixture.fixedAssetNotification.approverBorrowingAssignment` |
   | TC-FA-NOTIF-124, 125, 126 (Approver B) | Approver (Borrowing & Assignment) B | #15 | `approverBorrowingAssignment2_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_APPROVERBA2_PASSWORD` | `Fixture.fixedAssetNotification.approverBorrowingAssignment2` |
   | TC-FA-NOTIF-127 (Group Tujuan) | Approver Gedung B (Group Tujuan Transfer) | #32 | `approverGedungB_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_APPROVERGDGB_PASSWORD` | `Fixture.fixedAssetNotification.approverGedungB` |
-  | TC-FA-NOTIF-128 (Disposal Group) | Approver (Disposal) Disposal Group | #6 | `approverDisposal_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_APPROVERDSP_PASSWORD` | `Fixture.fixedAssetNotification.approverDisposal` |
+  | TC-FA-NOTIF-128 (Disposal) | Approver (Disposal) | #6 | `approverDisposal_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_APPROVERDSP_PASSWORD` | `Fixture.fixedAssetNotification.approverDisposal` |
 
 - Pelaku lewat sesi API aktor (butir "Sesi API aktor" di `suite.md`): Approver A (Pre-setup #4) pada TC-FA-NOTIF-125 dan 126; Approver Group Asal Transfer (Pre-setup #5, `approverTransfer_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_APPROVERTRF_PASSWORD`) pada TC-FA-NOTIF-127; Approver Origin Group Disposal pada TC-FA-NOTIF-128 (akun tidak ada di Pre-setup TC; disediakan tim FE). Pelaku kedua memakai sesi API, bukan sesi UI.
 - Login akun aktor pertama (Pre-setup #4) di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite (Total Control, Pre-setup #1).
@@ -74,9 +74,9 @@ coverage:
 
 ### TC-FA-NOTIF-128: Dual-group Disposal: sisi gugur karena Reject sisi lain
 
-23. Pulihkan seed notifikasi dan transaksi (Pre-setup #17 sampai #24) lewat fixture BE pemulih, logout, login sebagai Approver Disposal Group (Pre-setup #6), buka Fixed Asset > Dashboard, lalu lewat sesi API Approver Origin Group Reject DSP-2026-0030 hingga keputusan akhir tersimpan
-24. Klik Bell icon sebagai Approver Disposal Group
-25. Verifikasi item `Waiting for your approval` DSP-2026-0030 milik Approver Disposal Group berstatus Read
+23. Pulihkan seed notifikasi dan transaksi (Pre-setup #17 sampai #24) lewat fixture BE pemulih, logout, login sebagai Approver Disposal (Pre-setup #6), buka Fixed Asset > Dashboard, lalu lewat sesi API Approver Origin Group Reject DSP-2026-0030 hingga keputusan akhir tersimpan
+24. Klik Bell icon sebagai Approver Disposal
+25. Verifikasi item `Waiting for your approval` DSP-2026-0030 milik Approver Disposal berstatus Read
 26. Verifikasi tombol `[Detail]` tidak tampil pada item itu
 
 ## Notes
@@ -85,9 +85,9 @@ coverage:
 - Langkah penghubung (S-03): langkah 1, 6, 10, 15, 19 dan 23. Langkah pembuka blok memuat pemulihan fixture BE, muat ulang halaman atau ganti akun, dan pemicu keputusan pihak lain lewat sesi API (ditulis "... hingga ... tersimpan"); langkah `[Detail]` adalah jalur ke halaman Approvals; langkah 6 adalah ganti akun eksplisit (S-07).
 - Pembagian per TC: TC-FA-NOTIF-124 (langkah 1 sampai 9), TC-FA-NOTIF-125 (langkah 10 sampai 14), TC-FA-NOTIF-126 (langkah 15 sampai 18), TC-FA-NOTIF-127 (langkah 19 sampai 22), TC-FA-NOTIF-128 (langkah 23 sampai 26).
 - Pembagian per TC lintas spec: TC-FA-NOTIF-129 (almost_timeout multi-approver dengan job) dan TC-FA-NOTIF-364 (tiga approver level OR) ada di spec 112.
-- Alasan blok per role: tiap TC mengamati akun penerima yang berbeda (Approver A lalu B, B, Group Tujuan, Disposal Group), sehingga ganti akun memerlukan langkah eksplisit (bagian 3a, keputusan 2026-10-30).
+- Alasan blok per role: tiap TC mengamati akun penerima yang berbeda (Approver A lalu B, B, Group Tujuan, Approver Disposal), sehingga ganti akun memerlukan langkah eksplisit (bagian 3a, keputusan 2026-10-30).
 - Alasan pemisahan: topik Auto-Read memakai seed notifikasi dan transaksi Pre-setup yang sama; spec ini hanya memuat keputusan multi-approver, scope Both, dan dual-group yang mengamati beberapa akun approver berurutan, karena penyatuan dengan kelompok lain menambah ganti akun dan melewati sekitar 35 langkah.
 - Temuan untuk QA:
-  - TC-FA-NOTIF-124 sampai 126 menulis "Approver A" dan "Approver B" tanpa nomor Pre-setup; spec memakai Pre-setup #4 untuk A dan #15 ("Approver kedua (AND/OR)") untuk B. TC-FA-NOTIF-127 dan 128 tidak menyebut akun Group Asal, Group Tujuan, Origin Group, dan Disposal Group; spec memakai Pre-setup #32 (Group Tujuan Transfer), #5 (Approver Transfer sebagai Group Asal), dan #6 (Approver Disposal sebagai Disposal Group); akun Approver Origin Group Disposal tidak ada di Pre-setup TC.
+  - TC-FA-NOTIF-124 sampai 126 menulis "Approver A" dan "Approver B" tanpa nomor Pre-setup; spec memakai Pre-setup #4 untuk A dan #15 ("Approver kedua (AND/OR)") untuk B. TC-FA-NOTIF-127 dan 128 tidak menyebut akun Group Asal, Group Tujuan, Origin Group, dan Approver Disposal; spec memakai Pre-setup #32 (Group Tujuan Transfer), #5 (Approver Transfer sebagai Group Asal), dan #6 (Approver Disposal); akun Approver Origin Group Disposal tidak ada di Pre-setup TC.
   - TC-FA-NOTIF-125 menulis "Approver A sudah Approve" sebagai precondition tanpa menyebut cara membentuknya; spec membentuknya lewat sesi API Approver A. TC-FA-NOTIF-124 menulis "Approver A Approve" pada Langkah sementara precondition login adalah Approver A; spec mengikuti dengan Approve lewat UI.
   - TC-FA-NOTIF-127 menulis Expected "saat keputusan akhir Rejected" tanpa menyebut efek bila Group Tujuan sudah memutuskan lebih dulu; spec hanya mengikuti alur Reject dari Group Asal.

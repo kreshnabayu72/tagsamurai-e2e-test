@@ -54,7 +54,7 @@ coverage:
 
 10. Ganti isi kotak search dengan `E2801160600002054D8C0054`, tekan Enter, buka menu baris DD-54, klik `TAG Log`
 11. Verifikasi entri `TAG Marked To be Returned by` pelaku disposal memuat `Asset`, `Asset Code`, `Reason: Disposal`, dan `Return Group: Gudang Pusat`
-12. Verifikasi `Return Group` `Gudang Pusat` sama dengan Disposal Group transaksi disposal pada fixture
+12. Verifikasi `Return Group` `Gudang Pusat` sama dengan Group asal aset (Group DSP) transaksi disposal pada fixture
 13. Verifikasi tidak ada entri `TAG Unpaired by ...` maupun `TAG Retired by ...` dari disposal itu pada TAG Log DD-54
 14. Tutup popup lewat `[✕]`
 
@@ -86,7 +86,7 @@ coverage:
 - Langkah 5, 6, 13, 18, 19, 26 (absence) memakai entri lain pada popup yang sama sebagai anchor positif (bagian 8b butir 2).
 - Temuan untuk QA:
   - TC-281 Expected b ("penerimaan pengembalian dan disposal tidak menulis entri `Unpaired`") tidak punya langkah observasi pada TC-281; spec mengamatinya pada DD-54 (disposal) dan DD-58 (penerimaan) dan mencatatnya sebagai asersi tambahan.
-  - TC-282 Expected b ("`Return Group` berupa Disposal Group transaksi disposal") tidak dapat diamati terpisah dari Expected a di registri Global Settings; spec membandingkan dengan Disposal Group pada fixture transaksi disposal (disediakan tim FE/BE).
+  - TC-282 Expected b ("`Return Group` berupa Group asal aset pada transaksi disposal (Group DSP)") tidak dapat diamati terpisah dari Expected a di registri Global Settings; spec membandingkan dengan Group asal aset pada fixture transaksi disposal (disediakan tim FE/BE).
   - Pelaku fixture dan nama aset DD-54 tidak ditetapkan di Tabel Data Uji Dinamis (placeholder `[pelaku ...]`); spec mengasersi judul tanpa nama pelaku bila nilainya tidak ditetapkan (Q-15).
   - TC-364 Expected a menulis pelaku `[pelaku user FAMS]` tanpa nama; TC-365 menulis `[Rina Wulandari]` di Expected sedangkan format tampil pelaku adalah `[First Name] [Last Initial]` (`Rina W`); spec memakai `Rina W`.
   - Pembuatan fixture TAG Log (DD-46 sampai DD-58) antar spec tidak didefinisikan di TC (Q-4).

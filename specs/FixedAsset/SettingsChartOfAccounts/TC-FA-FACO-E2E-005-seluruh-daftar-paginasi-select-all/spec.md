@@ -11,11 +11,11 @@ dependsOn: []
 trace:
   "N-11": [5, 9]
   "§5#b6": [18, 26]
-  "§9.5#r11": [3, 8]
+  "§9.5#r11": [3, 8, 62]
   "EB-TBL-7@tabel-account-list": [53, 54]
   "EB-BLK-2@tabel-account-list": [14, 16, 21, 24]
-  "EB-FLT-1@tabel-account-list": [3, 4, 36, 46]
-anchor: [45, 50]
+  "EB-FLT-1@tabel-account-list": [3, 4, 36, 46, 62]
+anchor: [45, 50, 61]
 coverage:
   web: automated
 ---
@@ -28,7 +28,7 @@ coverage:
 - Data:
   - DU-005-1: entitas khusus `Entitas Uji Daftar {runId}`, hanya dipakai spec ini, dan tidak berisi akun selain DU-005-2 sampai DU-005-5.
   - DU-005-2: 18 akun, Account Code `P{n}-{runId}`, Account Name `Kas Pusat {n} {runId}`, Account Function `Asset Cost`, Status `Active`, untuk n 1 sampai 18.
-  - DU-005-3: akun `PA-{runId}`, Account Name `Penyusutan Gedung {runId}`, Account Function `Accumulated Depreciation`, Status `Inactive`.
+  - DU-005-3: akun `PA-{runId}`, Account Name `Penyusutan Gedung {runId}`, Account Function `Accumulated Depreciation`, Status `Inactive`. Satu-satunya akun Inactive di entitas ini; Status-nya diubah menjadi `Active` pada kelompok langkah terakhir.
   - DU-005-4: akun `PB-{runId}`, Account Name `Beban Penyusutan Kantor {runId}`, Account Function `Depreciation Expense`, Status `Active`.
   - DU-005-5: akun `PC-{runId}`, Account Name `Hasil Pelepasan Aset {runId}`, Account Function `Disposal Proceeds`, Status `Active`. Satu-satunya akun ber-Function `Disposal Proceeds` di entitas ini.
   - Jumlah akun di entitas ini 21, sehingga tabel berisi 3 halaman pada ukuran halaman 10.
@@ -101,3 +101,15 @@ coverage:
 52. Klik `[Delete]` pada dialog `Delete Account`
 53. Verifikasi halaman 2 menjadi halaman aktif karena halaman 3 sudah tidak ada
 54. Verifikasi halaman 2 memuat 10 baris
+
+### Opsi filter Active hanya memuat nilai yang ada di tabel
+55. Ketik Search `PA-{runId}`, tekan Enter
+56. Klik Switch Status pada baris `PA-{runId}`
+57. Klik `[Activate]` pada dialog konfirmasi
+58. Klik `(←)` pada kotak Search
+59. Klik ikon Filter
+60. Buka dropdown field Active
+61. Verifikasi opsi `Active` tampil di field Active
+62. Verifikasi opsi `Inactive` tidak tampil di field Active karena tidak ada lagi akun Inactive di entitas ini
+63. Tutup dropdown field Active
+64. Klik ikon Filter untuk menutup Filter Panel
