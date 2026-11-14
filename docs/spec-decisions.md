@@ -2005,3 +2005,23 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14.
 - **Diterapkan di:** Import 175.
 - **Sumber:** run Tri-mac-20261114-1619 dan Imp175brk (spectra inspect eval), plans/global-settings-import/integration-findings.md baris 67.
+
+## D-199 Save tanpa perubahan di Edit Subscription: yang diasersi adalah tidak ada write di server, bukan tidak ada request (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/ClientSubscription `118` TC-231 / TC-458 langkah 11.
+- **Spec meminta:** Save tanpa perubahan tidak mengirim request mutasi.
+- **Kenyataannya:**
+  - Aplikasi mengirim `PATCH /subscriptions/{id}` `{durationYears, startDate}`.
+  - Kontrak menjawab edit tanpa perubahan dengan `204`. FE memetakan `204` ke `unchanged`, lalu menampilkan "No changes to save." dengan dialog tetap terbuka (decisions.md aplikasi L275).
+  - Tidak ada baris Changelog, Activity Log, atau System Log yang ditulis.
+- **Karena:** kontrak sengaja menyediakan jawaban `204` untuk edit yang tidak mengubah apa pun, jadi request ke server adalah perilaku yang dikontrakkan. Yang diminta spec, yaitu data tidak berubah, tetap bisa diamati.
+- **Keputusan:**
+  - Langkah 11 mengasersi:
+    - `PATCH` dijawab `204`;
+    - pesan "No changes to save.";
+    - dialog tetap terbuka;
+    - tidak ada baris log baru.
+  - Tidak ada asersi "tidak ada request". Ini bukan ui-gap.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
+- **Diterapkan di:** ClientSubscription 118.
+- **Sumber:** run CS-unwrap-win-20261114-bb; decisions.md aplikasi L275.
