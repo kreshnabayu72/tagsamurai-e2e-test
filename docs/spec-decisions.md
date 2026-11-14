@@ -1972,3 +1972,20 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (perilaku komponen di atas spec, 2026-11-08), 2026-11-14.
 - **Diterapkan di:** MyProfile 025, 026.
 - **Sumber:** wangs-ui DialogForm (`clickBackdrop`, behavior catalog TC-6496).
+
+## D-197 Setelah login, tujuan pertama selalu Portal — Product Hub, juga saat membuka URL halaman dalam tanpa sesi (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/MyProfile `015` TC-GS-PROFILE-71 langkah 8-10. Berlaku sama untuk spec lain yang membuka URL halaman dalam tanpa sesi lalu mengharapkan kembali ke halaman itu setelah login.
+- **Spec meminta:** tanpa sesi aktif, membuka URL My Profile diarahkan ke Login, dan setelah login (Pre-setup #1, jalur MFA Authenticator) kembali ke My Profile.
+- **Kenyataannya:**
+  - PRD login-password L907, kontrak `auth-foundation.md` §7a: tujuan redirect login sukses "selalu ke Portal dulu (semua entitas)". L157, L632 dan L915 juga menyebut redirect ke Portal — Product Hub.
+  - PRD MFA §11 (tc-mfa L549, TC-AUTH-MFA-178): Product Hub adalah tujuan redirect setelah MFA.
+  - Backend menjawab verify MFA dengan `redirectTo: "/portal/product-hub"`, dan app mengikutinya.
+  - Tidak ada baris PRD tentang kembali ke halaman yang dituju setelah login; hanya test case yang memintanya.
+- **Keputusan:**
+  - PRD menang: app sudah benar.
+  - Langkah 10 mengasersi halaman Portal — Product Hub setelah login. Lalu My Profile dibuka dari Portal (atau lewat URL-nya) dan diasersi tampil untuk user itu.
+  - Bukan ui-gap, dan tidak ada perbaikan app.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (PRD sebagai acuan), 2026-11-14.
+- **Diterapkan di:** MyProfile 015.
+- **Sumber:** PRD auth login-password L157, L632, L907, L915; PRD MFA §11.
