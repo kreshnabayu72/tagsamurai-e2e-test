@@ -2042,3 +2042,21 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
 - **Diterapkan di:** ClientSubscription 120.
 - **Sumber:** run CS-unwrap-win-20261114-bb; PRD §8.1 L1484-L1485; LLD license-allocation-subscription L114, L705, L870-L888.
+
+## D-201 Code yang bentrok lagi saat retry otomatis di Create Division keluar dari e2e dan dijaga test backend (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/Division `022` (TC-GS-DIV-E2E-022) TC-GS-DIV-80, langkah 42-63.
+- **Spec meminta:**
+  - Admin kedua membuat `Quality Rival {runId}-022` dengan Code `QRT2`, tepat di antara percobaan Create pertama Session A dan retry Code otomatis oleh server.
+  - Create Session A lalu mendapat Code berikutnya. Retry yang bentrok lagi diperlakukan sebagai kegagalan biasa.
+- **Kenyataannya:**
+  - Konflik dan retry terjadi di dalam satu request server.
+  - Tidak ada fault hook atau test route yang bisa menaruh Division di jendela itu.
+  - Intercept tidak boleh memalsukan jawaban server.
+- **Karena:** state itu butuh timing presisi di dalam satu request backend, dan e2e hanya membangun state lewat cara yang benar-benar terjadi. Tingkat service/repository bisa mengujinya lewat test unit atau integrasi backend, e2e tidak.
+- **Keputusan:**
+  - Langkah 42-63 keluar dari e2e, sebagai cacat spec untuk lapisan e2e. Perilakunya dijaga test backend.
+  - TC-GS-DIV-272, TC-GS-DIV-273 dan TC-GS-DIV-79 tetap di e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (usulan Integration B 2026-11-10, diajukan ulang Integration C).
+- **Diterapkan di:** Division 022.
+- **Sumber:** global-settings/division/TestCases/tc-division.md (TC-GS-DIV-80); aturan Code auto-generate di PRD Division; repo aplikasi plans/global-settings-user/integration-findings.md L1724-L1733.
