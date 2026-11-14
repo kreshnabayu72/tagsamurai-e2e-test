@@ -2078,7 +2078,7 @@ Aturan:
 - **Diterapkan di:** AllTags 010, 011.
 - **Sumber:** PRD All TAGs §9.10; Plans & Features PRD §4.1.3 L418, §9.2 L1331; plans.md L21/L30/L41/L47; auth me/API/low-level-design.md L135, L192; openapi MeEntity.
 
-## D-203 Kandidat popup Assign User to Role (Global Role) untuk aktor Total Control: pemegang Read Only diskip sebagai contract drift (2026-11-14)
+## D-203 Kandidat popup Assign User to Role (Global Role) untuk aktor Total Control: pemegang Read Only diskip sebagai contract drift (2026-11-14) (ditarik oleh D-204)
 
 - **Spec / langkah:** AdminConsole/SettingsRolePermission `045` langkah 10 dan 22 (picker assignment Manage language).
 - **Spec meminta:** kandidat tidak memuat pemegang role, yaitu seluruh Total Control dan Read Only, Default User, dan aktor sendiri. Search `Anggraini` (pemegang Read Only Dewi Anggraini) menampilkan `No results found`.
@@ -2094,3 +2094,20 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
 - **Diterapkan di:** SettingsRolePermission 045.
 - **Sumber:** PRD admin-console/settings-role-permission §9.5, §2.3, §8.3, §8.4; LLD assignable-users.md L23-L24; iam assignable_users_query_builder.go L193-L199.
+
+## D-204 Kandidat popup Assign User to Role (Global Role) untuk aktor Total Control memuat pemegang Read Only; menarik D-203 (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/SettingsRolePermission `045`, langkah 10 (TC-AC-RP-161, aktor Total Control Siti Nurhaliza) dan langkah 22 (pool aktor "Manage user and role", aktor diganti di langkah 12).
+- **Spec meminta:** di langkah 10, kandidat tidak memuat seluruh Total Control dan Read Only.
+- **Kenyataannya:**
+  - PRD settings-role-permission §9.5 L2514 mengecualikan user yang sudah punya penugasan pada Global Role ini, Default User, Total Control, dan aktor sendiri. PRD lalu menambahkan: "Bagi aktor 'Manage user and role': exclude juga target Read Only."
+  - Karena pengecualian Read Only hanya disebut untuk aktor "Manage user and role", pool aktor Total Control memuat pemegang Read Only.
+  - LLD assignable-users.md L24 menyatakan hal yang sama ("A Total Control actor's Global Role pool includes Read Only holders"), dan stack mengikutinya.
+- **Karena:** PRD, LLD, dan kode sepakat. Bacaan D-203 (pemegang Read Only dianggap sudah punya penugasan lewat pola tier) tidak didukung §9.5, sehingga ini kesalahan spec, bukan contract drift.
+- **Keputusan:**
+  - Langkah 10 mengasersi bahwa Total Control, Default User, aktor, dan pemegang langsung tidak muncul, sedangkan pemegang Read Only muncul.
+  - Langkah 22 tetap seperti tertulis, karena di pool aktor "Manage user and role" pemegang Read Only memang dikecualikan.
+  - D-203 ditarik.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (koreksi Integration B).
+- **Diterapkan di:** SettingsRolePermission 045.
+- **Sumber:** PRD admin-console/settings-role-permission §9.5 L2514; LLD assignable-users.md L24; iam assignable_users_query_builder.go L193-L199.
