@@ -2060,3 +2060,20 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (usulan Integration B 2026-11-10, diajukan ulang Integration C).
 - **Diterapkan di:** Division 022.
 - **Sumber:** global-settings/division/TestCases/tc-division.md (TC-GS-DIV-80); aturan Code auto-generate di PRD Division; repo aplikasi plans/global-settings-user/integration-findings.md L1724-L1733.
+
+## D-202 Kunci TAG di plan dasar (AllTags) diskip sebagai contract drift: `/me/entity` tidak membawa Pricing Type atau rank (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/AllTags `010` dan `011`, langkah kunci TAG per plan (TAG-LOGIC-08).
+- **Spec meminta:** di plan dasar, semua tipe TAG selain QR terkunci.
+- **Kenyataannya:**
+  - PRD All TAGs §9.10 (TAG-LOGIC-08) dan Plans & Features PRD §4.1.3 L418 serta §9.2 L1331 (baris "TAG Features") menurunkan akses TAG dari Pricing Type plan: rank 0 berarti QR saja (plans.md L21/L30/L41/L47). PRD tidak punya baris katalog fitur untuk kunci ini.
+  - Kontrak `GET /v2/me/entity` (auth me/API/low-level-design.md L135 dan L192, openapi MeEntity, PR #18) hanya membawa `plan: {name, features}`, tanpa rank dan tanpa pricingType.
+  - Contoh baris `fixed_asset_module/tag_activation/unlimited` di openapi tidak ada di katalog PRD.
+- **Karena:** sinyal yang dibutuhkan PRD tidak ada di kontrak. Mencocokkan `plan.name` dengan "Free" atau "Starter" adalah tebakan yang rusak begitu plan default diganti namanya. Aturan owner (2026-11-08): drift diskip, tanpa improvisasi. Prinsip owner 2026-11-07: kondisi dibaca dari plan, bukan dari free atau paid.
+- **Keputusan:**
+  - Langkah kunci TAG per plan di 010/011 diskip sebagai contract drift.
+  - FE tidak memakai pencocokan nama plan. Perilaku layar TAG saat ini tetap, dan server tetap menolak write yang terkunci (TAG-LOGIC-08c).
+  - Drift ini diajukan sebagai issue ke pemilik kontrak `/me/entity`: Pricing Type atau rank, atau baris fitur akses TAG, belum ada di payload plan.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
+- **Diterapkan di:** AllTags 010, 011.
+- **Sumber:** PRD All TAGs §9.10; Plans & Features PRD §4.1.3 L418, §9.2 L1331; plans.md L21/L30/L41/L47; auth me/API/low-level-design.md L135, L192; openapi MeEntity.
