@@ -2077,3 +2077,20 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
 - **Diterapkan di:** AllTags 010, 011.
 - **Sumber:** PRD All TAGs §9.10; Plans & Features PRD §4.1.3 L418, §9.2 L1331; plans.md L21/L30/L41/L47; auth me/API/low-level-design.md L135, L192; openapi MeEntity.
+
+## D-203 Kandidat popup Assign User to Role (Global Role) untuk aktor Total Control: pemegang Read Only diskip sebagai contract drift (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/SettingsRolePermission `045` langkah 10 dan 22 (picker assignment Manage language).
+- **Spec meminta:** kandidat tidak memuat pemegang role, yaitu seluruh Total Control dan Read Only, Default User, dan aktor sendiri. Search `Anggraini` (pemegang Read Only Dewi Anggraini) menampilkan `No results found`.
+- **Kenyataannya:**
+  - PRD settings-role-permission §9.5 (baris "Popup Assign User ke Role — Global Role") mengecualikan user yang sudah punya penugasan pada Global Role ini, Default User, Total Control, dan aktor sendiri.
+  - Pemegang Read Only memegang setiap Global Role lewat pola tingkat akses (§2.3; cascade `Assign (via Read Only)` di §8.3 dan §8.4). Menurut PRD, mereka termasuk user yang sudah punya penugasan.
+  - LLD assignable-users.md L23-L24 menetapkan pengecualian per picker tanpa menyebut bahwa `excludeKey` mengecualikan pemegang Read Only. Kode stack (assignable_users_query_builder.go L193-L199) sengaja tetap menampilkan pemegang Read Only untuk aktor Total Control, karena baris pola tier tidak dihitung sebagai pemegang `excludeKey`.
+- **Karena:** PRD dan LLD/stack berbeda soal apakah penugasan lewat pola Read Only dihitung sebagai "sudah punya penugasan". Aturan owner (2026-11-08): drift diskip tanpa improvisasi dan diajukan sebagai issue.
+- **Keputusan:**
+  - Langkah 10 (bagian pemegang Read Only) dan langkah 22 diskip sebagai contract drift.
+  - Pengecualian lain di langkah 10 (pemegang langsung, Total Control, Default User, aktor) tetap diasersi.
+  - Drift ini diajukan sebagai issue ke pemilik LLD assignable-users.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
+- **Diterapkan di:** SettingsRolePermission 045.
+- **Sumber:** PRD admin-console/settings-role-permission §9.5, §2.3, §8.3, §8.4; LLD assignable-users.md L23-L24; iam assignable_users_query_builder.go L193-L199.
