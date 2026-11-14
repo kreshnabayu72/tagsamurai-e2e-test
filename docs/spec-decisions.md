@@ -1962,3 +1962,13 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (wewenang malam 2026-11-13), 2026-11-14.
 - **Diterapkan di:** HardwareHandheldReader 068, 069, 077.
 - **Sumber:** PRD admin-console hardware-stock §4.1.5, L1713, L1742.
+
+## D-196 Klik backdrop pada popup Change Password mengikuti perilaku DialogForm (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/MyProfile `025` TC-GS-PROFILE-150 langkah 17-18 dan `026` TC-GS-PROFILE-151 langkah 17-20; berlaku sama untuk spec lain yang mengklik area di luar popup form.
+- **Spec meminta:** klik di luar popup Change Password membuat popup tetap terbuka, baik form kosong (150) maupun sudah terisi (151), tanpa dialog Unsaved Changes (151 langkah 20).
+- **Kenyataannya:** DialogForm menutup popup yang belum diubah saat area di luar diklik, seperti default mayoritas design system (MUI Dialog, Chakra Modal, Mantine Modal, antd Modal). Bila form sudah diubah, popup tetap terbuka dan dialog Unsaved Changes muncul agar isian tidak hilang tanpa konfirmasi.
+- **Keputusan:** perilaku komponen menang. 150: klik backdrop menutup popup; langkah yang memakai popup "yang masih terbuka" membukanya lagi lewat [Change Password]. 151: klik backdrop memunculkan Unsaved Changes dan popup tetap terbuka; langkah 20 mengasersi dialog itu muncul, lalu memilih kembali ke form.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (perilaku komponen di atas spec, 2026-11-08), 2026-11-14.
+- **Diterapkan di:** MyProfile 025, 026.
+- **Sumber:** wangs-ui DialogForm (`clickBackdrop`, behavior catalog TC-6496).
