@@ -1989,3 +1989,19 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (PRD sebagai acuan), 2026-11-14.
 - **Diterapkan di:** MyProfile 015.
 - **Sumber:** PRD auth login-password L157, L632, L907, L915; PRD MFA §11.
+
+## D-198 Langkah multi-tab dengan SSE dibatasi batas koneksi per host lingkungan e2e (HTTP/1.1) (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/Import `175` TC-GS-IMPORT-542, langkah yang membuka tab ke-6 dan ke-7. Berlaku sama untuk spec lain yang membuka banyak tab sekaligus, dengan tiap tab memegang koneksi SSE.
+- **Spec meminta:** tujuh tab import terbuka bersamaan, masing-masing dengan sesi aktif.
+- **Kenyataannya:**
+  - Stack e2e melayani app lewat HTTP/1.1 (network-resources run Imp175, 2.417 record h1).
+  - Chrome membatasi 6 koneksi bersamaan per host. Tiap tab memegang 2 SSE, jadi di tab ke-6 request baru (GET validate, POST product-sessions) tertahan di browser dan tidak pernah sampai ke server.
+  - Request yang sama lewat nama host lain dijawab dalam 7 ms. Backend tidak bermasalah, dan produksi di balik HTTP/2 tidak terkena batas ini.
+- **Keputusan:**
+  - **Kalau tab-tab itu membangun sesi bersamaan untuk menguji batas atau konflik:** sesi tab sebelumnya dibuat lewat helper API (POST product-sessions dan validate) dengan user yang sama. Ini sama dengan tab lain milik user itu, atau perangkat lain. Cukup 2-3 tab UI asli, dan reaksi UI diasersi di tab terakhir.
+  - **Kalau tiap tab mengasersi UI-nya sendiri:** tab ditutup setelah asersinya selesai, sehingga paling banyak 3 tab ber-SSE terbuka.
+  - Bukan gap BE dan bukan ui-gap.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14.
+- **Diterapkan di:** Import 175.
+- **Sumber:** run Tri-mac-20261114-1619 dan Imp175brk (spectra inspect eval), plans/global-settings-import/integration-findings.md baris 67.
