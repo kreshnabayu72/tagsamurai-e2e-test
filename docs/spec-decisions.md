@@ -2111,3 +2111,19 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (koreksi Integration B).
 - **Diterapkan di:** SettingsRolePermission 045.
 - **Sumber:** PRD admin-console/settings-role-permission §9.5 L2514; LLD assignable-users.md L24; iam assignable_users_query_builder.go L193-L199.
+
+## D-205 Pemisah tanggal dan jam pada nilai Date Time tampilan tidak diasersi; nilai tanggal, jam, dan zona waktunya diasersi (2026-11-14)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-120` (kolom Last Updated, spec.md baris 43, 144-146), dan setiap spec lain yang menulis Date Time tampilan dengan koma, misalnya `25/03/26, 09:15`.
+- **Spec meminta:** Last Updated tampil `25/03/26, 09:15`, dengan koma setelah tanggal, pada K1 Date Format `dd/MM/yy`, Time Format 24h, Time Zone UTC.
+- **Kenyataannya:**
+  - Aplikasi menampilkan `25/03/26 09:15`, tanpa koma, lewat preset date Wangs UI yang mengikuti General Settings.
+  - General Settings PRD §4.3b mendefinisikan pratinjau format sebagai `17/03/23 14:30` (L310, L490), tanpa koma.
+  - Contoh tabel di PRD yang sama (L273-L277) dan prd-conventions §Date/DateTime memakai koma, tetapi konvensi menyatakan contoh semacam itu ilustratif ("contoh, bukan format tetap").
+- **Karena:** PRD tidak konsisten soal pemisah. Glyph pemisah termasuk presentasi (D-096), sedangkan tanggal, jam, dan zona waktu yang tampil adalah data yang harus benar.
+- **Keputusan:**
+  - Nilai diasersi per tanggal dan jam sesuai Date Format, Time Format, dan Time Zone General Settings.
+  - Pemisah di antara tanggal dan jam (spasi atau `, `) tidak diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan sesi slicing, component test Chart of Accounts).
+- **Diterapkan di:** SettingsChartOfAccounts 120; component test slicing Chart of Accounts.
+- **Sumber:** PRD global-settings/general-settings §4.3b L273-L277, L310, L490; foundation prd-conventions §Date/DateTime (aturan wajib Date/DateTime, contoh ilustratif).
