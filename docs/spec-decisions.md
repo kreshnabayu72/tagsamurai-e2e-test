@@ -2025,3 +2025,20 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
 - **Diterapkan di:** ClientSubscription 118.
 - **Sumber:** run CS-unwrap-win-20261114-bb; decisions.md aplikasi L275.
+
+## D-200 Nilai tanggal di baris Changelog Edit Subscription: diasersi tanggal kalendernya, bukan format glyph (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/ClientSubscription `120` TC-461, dan TC-459 langkah 139-140.
+- **Spec meminta:** Old/New value Start Date di baris Changelog memakai format tanggal tenant `dd/MM/yy` (misalnya `15/11/26`).
+- **Kenyataannya:**
+  - Stack menulis `15 Nov 2026` → `14 Nov 2026` (`d MMM yyyy`). Teks ini ditulis backend ke log, tidak diformat oleh FE.
+  - PRD §8.1 L1485 hanya menyebut `[Old Start Date] → [New Start Date]`, tanpa format.
+  - LLD license-allocation-subscription (Edit, L870-L888) hanya memberi contoh Duration (`1 year(s)` → `2 year(s)`). Satu-satunya aturan tanggal di LLD (L114, L705) adalah serialisasi field API `YYYY-MM-DDT00:00:00Z`, bukan teks log.
+- **Karena:** PRD dan LLD sama-sama tidak menetapkan format teks tanggal di log. Format glyph termasuk presentasi (D-096), sedangkan tanggal mana yang tercatat adalah data yang harus benar.
+- **Keputusan:**
+  - Nilai Old/New diasersi sebagai tanggal kalender. Nilai diterima bila terbaca sebagai hari yang sama, dalam format `dd/MM/yy` atau `d MMM yyyy`.
+  - Format glyph tidak diasersi.
+  - Celah dokumen ini diajukan sebagai issue ke pemilik LLD supaya format nilai log ditetapkan.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
+- **Diterapkan di:** ClientSubscription 120.
+- **Sumber:** run CS-unwrap-win-20261114-bb; PRD §8.1 L1484-L1485; LLD license-allocation-subscription L114, L705, L870-L888.
