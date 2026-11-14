@@ -1,0 +1,27 @@
+# Eliminasi Step: Admin Console > SettingsPrivacyPolicy
+
+Modul: SettingsPrivacyPolicy  
+Sumber: specs/AdminConsole/SettingsPrivacyPolicy  
+Tanggal: 2026-11-14
+
+## Kriteria
+
+- A. Persona Distributor atau Partner. Persona aktif dilacak per langkah dari Prerequisites dan langkah login, ganti akun, logout, atau ganti company. Langkah yang dijalankan saat persona Distributor/Partner aktif dikecualikan. Langkah login atau ganti akun yang menuju Distributor/Partner dikecualikan. Langkah yang kembali ke Principal dipertahankan. Verifikasi state hasil request atas nama Distributor/Partner dihitung sebagai bagian persona tersebut. Persona Client bukan Distributor atau Partner, sehingga tidak dikecualikan (masuk Ragu). Copy tooltip yang hanya menyebut Principal, Distributor, atau Partner tidak dikecualikan (masuk Ragu).
+- B. Hanya halaman detail User di Admin Console > Settings > User List (termasuk tab dan sub-tab di dalamnya) dan halaman detail Client di Admin Console > Client List. Langkah yang membuka, memverifikasi, atau beroperasi di halaman itu dikecualikan, termasuk aksi yang masuk ke halaman itu (klik Name atau Company Name, menu Detail). Tidak termasuk B: detail User di Global Settings > User atau Fixed Asset > Settings > User, Detail Non-Login User, serta detail lain di Admin Console (Subscription, License, Device SKU, Stock, Role, Group, Plan, Partner, Distributor, dan sebagainya). Langkah login, buka List, dan Search yang mendahului halaman detail dipertahankan.
+- C. Fitur AI: tidak ada di modul ini.
+- D. Hanya menu Approval Admin Console (Admin Console > Approvals, sidebar atau halaman) dan langkah yang masuk atau beroperasi di dalamnya (Approve, Reject, Review di Approvals). Tidak termasuk: Approve/Reject lewat API di luar menu, approval di Fixed Asset, teks approval di dialog, serta sub-tab Pending Approvals pada Responsibilities detail User. Rangkaian langkah D lama dipertahankan hanya bila memuat atau didahului langkah yang menyebut Approvals, atau berada di spek bertajuk approval; langkah API dan Pending Approval dikeluarkan.
+- E. Surface mobile atau Android, serta resize viewport desktop. Yang dikecualikan: langkah yang mengubah atau memulihkan ukuran viewport browser desktop, dan langkah verifikasi yang hanya ada karena resize itu (gulir horizontal, kolom beku, layout viewport sempit, walkthrough tertutup saat resize). Langkah campuran (resize bersama aksi lain dalam satu langkah) dipertahankan.
+
+## Daftar Eliminasi
+
+| Spek | Judul | Langkah dikecualikan | Kriteria | Alasan | Dependensi |
+|---|---|---|---|---|---|
+| TC-AC-PP-E2E-011-role-matrix-negatif-entity-gate | Role Matrix Negatif: Entity Gate Distributor, Partner, dan Client Tidak Mengakses Privacy Policy | 1-7, 11-21 | A | A: langkah 1-2 dijalankan atau menuju persona Distributor; A: langkah 3-6 dijalankan atau menuju persona Partner; A: langkah 7 dijalankan atau menuju persona Distributor; A: langkah 11-15 dijalankan atau menuju persona Distributor; A: langkah 16-21 dijalankan atau menuju persona Partner | Langkah 8-10 dan 22-25 (Client, Ragu) tetap dan tidak bergantung pada langkah 1-7 dan 11-21. |
+| TC-AC-PP-E2E-044 | Setup Column: Hide, Reorder, Pin, Reset, dan Persistensi Konfigurasi | 34-36, 38-40, 42-43, 45-46, 48-51 | E | E: langkah 34, 45, 51 resize viewport desktop; langkah 35-36, 38-40, 42-43, 46, 48-50 verifikasi setelah resize viewport desktop (gulir horizontal dan kolom beku). Langkah 37, 41, 44, 47 dipertahankan | - |
+| TC-AC-PP-E2E-049 | Entri Log Publish pada Activity Log dan System Log Aktor | 1, 8-17, 53, 64-67 | B | B: langkah 1 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk); B: langkah 8-17 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk); B: langkah 53 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk); B: langkah 64-67 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk) | - |
+| TC-AC-PP-E2E-051 | Aksi Tanpa Pencatatan: View, Search, Download, Publish Gagal, dan Versi Seed Tidak Menulis Log | 2, 8, 10, 36, 40-41 | B | B: langkah 2 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk); B: langkah 8 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk); B: langkah 10 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk); B: langkah 36 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk); B: langkah 40-41 membuka, memverifikasi, atau mengakses halaman Detail User (tab System Log) (jalur masuk termasuk) | - |
+| TC-AC-PP-E2E-056-android-back-sistem-dialog-popover | Android: Back Sistem pada Modal, Dialog Publish Confirm, dan Popover Insert Link | 1-45 | E | E: spek seluruhnya menguji surface Android (native, card list dan bottom sheet) | Spek seluruhnya Android; tidak ada langkah tersisa. |
+| TC-AC-PP-E2E-057-android-download-dan-sort-bottom-sheet | Android: Download Susunan Kolom Default dan Sort lewat Bottom Sheet | 1-33 | E | E: spek seluruhnya menguji surface Android (native, card list dan bottom sheet) | Spek seluruhnya Android; tidak ada langkah tersisa. |
+
+## Ragu / Perlu Konfirmasi
+- TC-AC-PP-E2E-011-role-matrix-negatif-entity-gate, langkah 8-10, 22-25: persona Client (bukan Distributor/Partner, tidak termasuk kriteria A).
