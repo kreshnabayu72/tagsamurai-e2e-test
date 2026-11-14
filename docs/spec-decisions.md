@@ -2127,3 +2127,20 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan sesi slicing, component test Chart of Accounts).
 - **Diterapkan di:** SettingsChartOfAccounts 120; component test slicing Chart of Accounts.
 - **Sumber:** PRD global-settings/general-settings §4.3b L273-L277, L310, L490; foundation prd-conventions §Date/DateTime (aturan wajib Date/DateTime, contoh ilustratif).
+
+## D-206 Switch Active Admin Console untuk user yang nonaktif di Global Settings tampil Off dan disabled (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/SettingsUser 020 `TC-AC-SU-100` langkah 14-15, bertentangan dengan 174 `TC-AC-SU-598` langkah 4.
+- **Spec meminta:**
+  - 020 menyatakan switch Active Admin Console tetap On (posisi terakhir), disabled, dengan tooltip.
+  - 174 menyatakan switch pada keadaan yang sama tampil Off.
+- **Kenyataannya:**
+  - Aplikasi menampilkan Off, disabled, dengan tooltip yang benar (`isActive && isActiveGlobal`, perbaikan F-INT-SU-12 2026-11-10).
+  - API users/list mengembalikan `isActive: true, isActiveGlobal: false` untuk user tersebut.
+- **Karena:** PRD ACSU-LOGIC-09 menetapkan status aktif sebagai AND dari status Admin Console dan Global Settings, dan dokumen API user-actions.md L29 sejalan. 174 mengikuti aturan ini, sedangkan 020 tidak.
+- **Keputusan:**
+  - 020 langkah 14-15 mengasersi switch Off dan disabled, dengan tooltip.
+  - Aplikasi tidak diubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration C).
+- **Diterapkan di:** SettingsUser 020.
+- **Sumber:** PRD admin-console/settings-user ACSU-LOGIC-09; API doc user-actions.md L29; SettingsUser 174 `TC-AC-SU-598` langkah 4.
