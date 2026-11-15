@@ -2269,3 +2269,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
 - **Diterapkan di:** SettingsAssetMaster.
 - **Sumber:** decisions.md L158 dan L241; D-016; D-052.
+
+## D-216 Tombol Select pada dialog TreeSelect tetap aktif dan memvalidasi saat diklik (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster `TC-FA-FAAM-322`, `TC-FA-FAAM-323` (Test Case PRD v1).
+- **Spec meminta:** tombol `Select` disabled selama belum ada pilihan.
+- **Kenyataannya:** tombol `Select` aktif selama dialog tidak sedang memuat. Klik tanpa pilihan menampilkan `You must make a selection`.
+- **Karena:** perilaku komponen TreeSelectDialog wangs-ui, yang sejalan dengan mayoritas design system (tombol konfirmasi tetap aktif, validasi saat diklik). Perilaku komponen menang.
+- **Keputusan:** langkah tersebut mengasersi bahwa tombol aktif dan bahwa klik tanpa pilihan menampilkan `You must make a selection`.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster.
+- **Sumber:** katalog perilaku TreeSelectDialog wangs-ui (rc.224).
