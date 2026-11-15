@@ -2316,3 +2316,25 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test CAID).
 - **Diterapkan di:** SettingsCustomAssetId dan modul lain dengan tabel log yang sama.
 - **Sumber:** D-213, D-096.
+
+## D-220 Sel Purchase yang di luar scope tampil sebagai No access (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster `TC-FA-FAAM-803` langkah 803-2 (Test Case PRD v1).
+- **Spec meminta:** sel Purchase yang Out Of Scope menampilkan `—`.
+- **Kenyataannya:** sel menampilkan `No access`.
+- **Karena:** respons API tidak membawa penanda bahwa sebuah field di luar scope, jadi UI tidak bisa membedakannya dari field tanpa izin. Ini selisih PRD dan kontrak (contract drift), dan langkah seperti ini dilewati tanpa improvisasi.
+- **Keputusan:** langkah 803-2 dilewati sebagai contract drift. Issue dibuat untuk pemilik LLD supaya kontrak membawa penanda out-of-scope.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster.
+- **Sumber:** aturan contract drift (owner 2026-11-08).
+
+## D-221 Pesan tanpa hasil di TreeSelect berupa satu baris teks (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster `TC-FA-FAAM-322`, deskripsi keadaan tanpa hasil (Test Case PRD v1).
+- **Spec meminta:** keadaan kosong dengan judul dan deskripsi (EmptyState).
+- **Kenyataannya:** TreeSelect menampilkan satu baris pesan tanpa hasil.
+- **Karena:** perilaku komponen TreeSelect wangs-ui, yang sejalan dengan mayoritas design system (daftar opsi yang kosong menampilkan satu baris pesan, bukan EmptyState halaman). Perilaku komponen menang.
+- **Keputusan:** langkah tersebut mengasersi teks pesan tanpa hasil saja, tanpa deskripsi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster dan modul lain yang memakai TreeSelect.
+- **Sumber:** katalog perilaku TreeSelect wangs-ui (rc.224).
