@@ -2411,3 +2411,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A, F-07).
 - **Diterapkan di:** SettingsChartOfAccounts dan semua langkah lain yang mengharapkan fokus keyboard pada kontrol disabled.
 - **Sumber:** katalog perilaku Switch wangs-ui; Notes spec TC-FA-COA-E2E-008.
+
+## D-228 T-11 di entitas Suspended/Expired muncul setelah Submit, bukan saat klik + Account (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-COA-E2E-079`, blok `TC-FA-COA-112` langkah 2-3.
+- **Spec meminta:** klik `+ Account` (langkah 2), lalu Toast T-11 tampil (langkah 3).
+- **Kenyataannya:** klik `+ Account` hanya membuka form. T-11 tampil setelah Submit ditolak server (`403` entitas Suspended/Expired), dan form tetap terbuka.
+- **Karena:** PRD settings-chart-of-accounts memicu T-11 dari aksi tulis: baris T-11 "Aksi tulis apa pun saat entitas Suspended atau Expired" (L954) dan E-FACO-53 (L1343: seluruh aksi tulis pada entitas Suspended/Expired → 403, toast T-11, tanpa perubahan data). Membuka form bukan aksi tulis. Aplikasi sesuai PRD; urutan di spec yang keliru.
+- **Keputusan:** langkah 2-3 dijalankan sebagai: klik `+ Account`, isi form, Submit, lalu verifikasi T-11 tampil dan tidak ada data yang berubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A, F-14).
+- **Diterapkan di:** SettingsChartOfAccounts dan langkah lain yang mengharapkan T-11 dari aksi yang bukan penulisan.
+- **Sumber:** PRD settings-chart-of-accounts L954, L1343, gate F-FACO-01 (L1106).
