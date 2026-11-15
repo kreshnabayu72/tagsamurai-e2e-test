@@ -2362,3 +2362,27 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
 - **Diterapkan di:** SettingsChartOfAccounts dan semua langkah e2e lain yang bergantung pada umur data.
 - **Sumber:** aturan "stage only real states" (owner 2026-11-07).
+
+## D-224 Fallback V-08 emoji di Label Name tidak bisa tercapai di client (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/AssetLabeling `TC-FA-LBL-124` (spec TC-FA-LBL-E2E-037, langkah 21-24) dan component test LabelFormDialog TC-FA-LBL-124.
+- **Spec meminta:** nilai beremoji disuntikkan langsung ke DOM field Label Name, lalu inline error `Label name contains invalid characters` tampil langsung dan [Save] disabled dengan tooltip yang sama.
+- **Kenyataannya:** field nama memakai sanitizer `Trim` dan `StripEmoji` di Field (konvensi form untuk semua field nama dan teks bebas). Emoji dibuang di setiap jalur masuk: ketik, tempel, drop, dan perubahan nilai dari DOM. Nilai beremoji tidak pernah sampai ke validator, sehingga fallback V-08 di client tidak punya keadaan nyata. Menyuntikkan nilai lewat jalur khusus test tidak diizinkan.
+- **Keputusan:**
+  - Langkah 21-24 mengasersi bahwa emoji dibuang dari Label Name tanpa pesan, dan status [Save] mengikuti sisa nama.
+  - Pesan V-08 tetap dicakup di jalur server: permintaan beremoji ditolak 422 dan pesannya tampil setelah Submit (component test lewat seed respons 422).
+  - Tidak ada validator emoji tambahan di FE, karena tidak pernah bisa memicu.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test Labels).
+- **Diterapkan di:** AssetLabeling dan semua field nama lain yang memakai `StripEmoji`.
+- **Sumber:** PRD settings-asset-labeling §6 V-08 dan aturan karakter Label Name (L692, L695); skill create-form (sanitizer `Trim`, `StripEmoji`); aturan "stage only real states" (owner 2026-11-07).
+
+## D-225 Label Select All menyebut total record, bukan jumlah yang sedang terpilih (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/AssetLabeling `TC-FA-LBL-181` langkah 181-1 (component test LabelList).
+- **Spec meminta:** setelah Select All lalu satu baris dilepas, tombol berbunyi `Select All (119 records)`.
+- **Kenyataannya:** tombol tetap `Select All (120 records)`. Teks jumlah terpilih sudah ada di Bulk Action Bar: `119 Labels selected`.
+- **Karena:** label tombol menyebut sasaran aksinya, yaitu seluruh record yang akan terpilih bila diklik. Ini perilaku komponen BulkActionButton (`totalRecords`) dan pola umum di aplikasi lain (mis. "Select all 120 conversations"). PRD hanya menyebut button `Select All` tanpa angka. Perilaku komponen menang.
+- **Keputusan:** langkah 181-1 mengasersi `Select All (120 records)` dan jumlah terpilih dibaca dari teks Bulk Action Bar `119 Labels selected`.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test Labels).
+- **Diterapkan di:** semua tabel yang memakai BulkActionButton.
+- **Sumber:** PRD settings-asset-labeling L251; BulkActionButton wangs-ui.
