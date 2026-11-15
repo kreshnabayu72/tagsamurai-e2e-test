@@ -2444,3 +2444,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration C).
 - **Diterapkan di:** MyProfile 025, 026 dan semua popup form aplikasi.
 - **Sumber:** core aplikasi `formDialogDefaults.ts` (`closeOnOverlayClick: false`); D-196.
+
+## D-231 Klik backdrop menutup dialog Detail yang hanya-baca (2026-11-15)
+
+- **Spec / langkah:** AdminConsole/SettingsDeviceName `TC-AC-DN-E2E-087`, blok `TC-AC-DN-245` (Klik backdrop tidak menutup dialog Detail) langkah 26-27; berlaku juga untuk dialog Detail hanya-baca lain (mis. Device SKU TC-AC-DS-428).
+- **Spec meminta:** klik backdrop tidak menutup dialog Detail.
+- **Kenyataannya:** dialog Detail tertutup saat backdrop diklik (run dn-r6-ac-ser; perilaku yang sama di Device SKU 128).
+- **Karena:** dialog Detail tidak memuat isian, jadi tidak ada yang hilang. Menutup lewat backdrop adalah default komponen Dialog dan mayoritas design system (MUI Dialog, Chakra Modal, Mantine Modal, antd Modal). Konvensi aplikasi yang menahan backdrop (D-230) hanya berlaku untuk DialogForm. Perilaku komponen menang.
+- **Keputusan:** langkah 26-27 mengasersi dialog Detail tertutup setelah klik backdrop; langkah berikutnya yang butuh Detail terbuka membukanya lagi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
+- **Diterapkan di:** SettingsDeviceName 087, Device SKU 128, dan semua dialog Detail hanya-baca.
+- **Sumber:** wangs-ui Dialog (default tutup lewat backdrop); D-230.
