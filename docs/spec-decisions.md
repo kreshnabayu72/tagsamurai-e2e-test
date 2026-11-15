@@ -2433,3 +2433,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
 - **Diterapkan di:** Import dan grid lain yang selnya berisi input yang selalu tampil.
 - **Sumber:** react-core `useDataTableKeyboard` (rc.240), katalog TC-6561.
+
+## D-230 Klik backdrop popup form tidak menutup popup; menggantikan D-196 (2026-11-15)
+
+- **Spec / langkah:** GlobalSettings/MyProfile `025` TC-GS-PROFILE-150 langkah 17-18 dan `026` TC-GS-PROFILE-151 langkah 17-20; berlaku untuk spec lain yang mengklik area di luar popup form.
+- **Spec meminta:** klik di luar popup Change Password membuat popup tetap terbuka, baik form kosong (150) maupun sudah terisi (151), tanpa dialog Unsaved Changes (151 langkah 20).
+- **Kenyataannya:** aplikasi menyetel `closeOnOverlayClick: false` untuk semua DialogForm (default form dialog di core aplikasi, bersama konfirmasi buang perubahan). Klik backdrop tidak menutup popup dan tidak memunculkan Unsaved Changes, kosong maupun terisi. Bukti probe di slot 1: klik mendarat di mask dialog, popup tetap ada setelah 2 detik.
+- **Karena:** konvensi aplikasi yang disengaja menang atas default komponen (isian pengguna tidak pernah hilang karena klik di luar). Konvensi ini sama dengan permintaan spec. D-196 disusun dari default komponen DialogForm dan tidak memperhitungkan konfigurasi aplikasi, sehingga digantikan.
+- **Keputusan:** langkah 150 dan 151 dijalankan sesuai spec: klik backdrop, popup tetap terbuka, tanpa Unsaved Changes. D-196 tidak berlaku lagi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration C).
+- **Diterapkan di:** MyProfile 025, 026 dan semua popup form aplikasi.
+- **Sumber:** core aplikasi `formDialogDefaults.ts` (`closeOnOverlayClick: false`); D-196.
