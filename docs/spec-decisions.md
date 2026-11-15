@@ -2422,3 +2422,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A, F-14).
 - **Diterapkan di:** SettingsChartOfAccounts dan langkah lain yang mengharapkan T-11 dari aksi yang bukan penulisan.
 - **Sumber:** PRD settings-chart-of-accounts L954, L1343, gate F-FACO-01 (L1106).
+
+## D-229 Tombol panah di dalam input sel grid tetap milik input (2026-11-15)
+
+- **Spec / langkah:** GlobalSettings/Import `TC-GS-IMPORT-E2E-091`, blok `TC-GS-IMPORT-235` (Navigasi keyboard pada grid Edit this page) langkah 7-8.
+- **Spec meminta:** dengan fokus di sel Brand Name baris #1, tekan panah bawah, lalu fokus tidak lagi berada di sel baris #1.
+- **Kenyataannya:** fokus berada di input teks sel (langkah 2 menempatkannya lewat klik). Panah bawah ditangani input, sehingga fokus tetap di input baris #1. Navigasi panah antarsel berjalan bila fokus ada di sel itu sendiri (role gridcell). Tab dan Shift+Tab berpindah antar-input sesuai spec (perbaikan rc.240).
+- **Karena:** perilaku komponen DataTable: tombol yang datang dari kontrol di dalam sel diserahkan ke kontrol itu, sehingga input teks tidak kehilangan tombol panah, sama seperti grid editable MUI DataGrid dan React Aria. Perilaku komponen menang.
+- **Keputusan:** langkah 7-8 dilewati dengan rujukan ke keputusan ini; langkah 10 mengasersi fokus tetap di baris #1. Langkah Tab/Shift+Tab tetap diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
+- **Diterapkan di:** Import dan grid lain yang selnya berisi input yang selalu tampil.
+- **Sumber:** react-core `useDataTableKeyboard` (rc.240), katalog TC-6561.
