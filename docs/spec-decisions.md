@@ -2294,3 +2294,25 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
 - **Diterapkan di:** SettingsAssetMaster.
 - **Sumber:** PRD fixed-asset settings-asset-master FAAM-LOGIC-07d; repo aplikasi plans/fixed-asset-settings-asset-master/conflicts.AssetName.md.
+
+## D-218 Melepas centang Initial Company mengosongkan isinya (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsCustomAssetId `TC-FA-CAID-49` langkah 49-2 dan 49-3 (Test Case PRD v1).
+- **Spec meminta:** setelah centang segmen Initial Company dilepas, input menjadi disabled dan masih berisi `ABC`.
+- **Kenyataannya:** input menjadi disabled dan kosong.
+- **Karena:** keputusan UI yang tercatat. Melepas centang mengosongkan teks yang sudah diketik, dan keputusan ini menggantikan FI-04 yang meminta teks dipertahankan. Perbedaan UI yang disengaja menang atas PRD.
+- **Keputusan:** langkah 49-2 dan 49-3 mengasersi input disabled dan kosong.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test CAID).
+- **Diterapkan di:** SettingsCustomAssetId.
+- **Sumber:** repo aplikasi plans/fixed-asset-settings-asset-master/decisions.md L508.
+
+## D-219 Format tanggal-jam tabel log mengikuti tampilan aplikasi (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsCustomAssetId `TC-FA-CAID-69`, sel tanggal tabel Changelog (Test Case PRD v1).
+- **Spec meminta:** `15/09/26, 14:25` (dengan koma).
+- **Kenyataannya:** `15/09/26 14:25` (tanpa koma).
+- **Karena:** D-213 menetapkan format angka, mata uang, dan tanggal mengikuti setting sesi. Pemisah tanggal-jam adalah soal tampilan, bukan bug (D-096).
+- **Keputusan:** script mengasersi format yang ditampilkan aplikasi untuk setting sesi tersebut, tidak hardcode koma. Berlaku untuk semua tabel log yang memakai komponen bersama.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test CAID).
+- **Diterapkan di:** SettingsCustomAssetId dan modul lain dengan tabel log yang sama.
+- **Sumber:** D-213, D-096.
