@@ -2187,3 +2187,32 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
 - **Diterapkan di:** SettingsChartOfAccounts UI-125.
 - **Sumber:** perilaku DataTable wangs-ui (seleksi lintas halaman).
+
+## D-210 Format isi berkas Download Chart of Accounts diuji di e2e dengan BE nyata (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-E2E-009` langkah 15 dan langkah format isi berkas sejenis.
+- **Spec meminta:**
+  - Nilai boolean dan sel kosong ditulis dengan format tertentu.
+  - Berkas XLSX memuat satu sheet bernama `Sheet1`.
+- **Kenyataannya:** pada component test berbasis mock, berkas dibuat oleh export klien. CSV menulis `true`/`false`, XLSX menulis `TRUE`/`FALSE`, sel kosong tetap kosong, dan nama sheet `datatable`.
+- **Karena:** semua Download adalah export BE, sehingga format isi berkas adalah hasil BE. Mock hanya meniru.
+- **Keputusan:**
+  - Component test mengasersi nama berkas, ekstensi, header, dan baris sesuai perilaku export klien.
+  - Format nilai (boolean, sel kosong `-`) dan nama sheet diasersi di e2e dengan BE nyata.
+  - Bila BE berbeda dari spec, itu temuan BE.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
+- **Diterapkan di:** SettingsChartOfAccounts E2E-009, BE-157 dan baris Download sejenis.
+- **Sumber:** keputusan owner 2026-11-11, semua Download adalah export BE (Contract v1).
+
+## D-211 Batas hari filter tanggal mengikuti zona waktu tenant (2026-11-15)
+
+- **Spec / langkah:** filter rentang tanggal di semua modul (pertanyaan dari SettingsChartOfAccounts).
+- **Spec meminta:** rentang tanggal mencakup hari yang dipilih secara inklusif.
+- **Kenyataannya:** filter tanggal menghitung batas hari dari zona waktu lokal browser.
+- **Karena:** tanggal di tabel ditampilkan dalam zona waktu tenant (General Settings). Batas hari filter harus sama dengan tanggal yang tampil agar baris yang terlihat bertanggal X ikut tersaring pada hari X.
+- **Keputusan:**
+  - Filter tanggal memakai zona waktu tenant yang sama dengan tampilan kolom.
+  - Selama zona waktu tenant sama dengan zona waktu browser saat run, asersi tidak berubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (pertanyaan CoA Component Test).
+- **Diterapkan di:** semua modul dengan filter tanggal.
+- **Sumber:** format tanggal General Settings (date format dan time zone).
