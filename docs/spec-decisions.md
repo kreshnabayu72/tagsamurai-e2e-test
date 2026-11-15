@@ -2280,3 +2280,17 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
 - **Diterapkan di:** SettingsAssetMaster.
 - **Sumber:** katalog perilaku TreeSelectDialog wangs-ui (rc.224).
+
+## D-217 Mengosongkan Code pada Asset Master mengikuti FAAM-LOGIC-07d (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster `TC-FA-FAAM-340` bertentangan dengan `TC-FA-FAAM-226` (Test Case PRD v1).
+- **Spec meminta:**
+  - 340 mengharapkan satu penulisan selesai.
+  - 226 mengharapkan toast netral T-10, form menutup, dan tidak ada penulisan.
+  - Keduanya untuk keadaan yang sama, yaitu Code dikosongkan.
+- **Kenyataannya:** aplikasi mengikuti 226.
+- **Karena:** PRD FAAM-LOGIC-07d mendukung 226.
+- **Keputusan:** 340 mengasersi perilaku 226: toast netral T-10, form menutup, dan tidak ada permintaan tulis.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster.
+- **Sumber:** PRD fixed-asset settings-asset-master FAAM-LOGIC-07d; repo aplikasi plans/fixed-asset-settings-asset-master/conflicts.AssetName.md.
