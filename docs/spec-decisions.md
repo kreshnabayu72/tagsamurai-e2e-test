@@ -2349,3 +2349,16 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test CAID).
 - **Diterapkan di:** SettingsCustomAssetId dan semua toggle dengan dialog konfirmasi.
 - **Sumber:** repo aplikasi CustomAssetIdForm.tsx (switch terkendali `draft.isActive`), FI-06.
+
+## D-223 Keadaan yang hanya tercapai karena waktu berlalu diuji di component test (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `043` (Test Case PRD v1).
+- **Spec meminta:** data master-asset yang sudah berumur melewati batas waktu tertentu.
+- **Kenyataannya:** e2e tidak punya cara nyata untuk membuat data berumur tanpa menunggu waktunya berlalu. Satu-satunya jalan adalah route khusus test yang mengubah umur data, dan itu dilarang karena e2e hanya membangun keadaan lewat jalur yang memang terjadi.
+- **Keputusan:**
+  - Reaksi UI terhadap data berumur diuji di component test lewat seed dengan tanggal lama.
+  - Perhitungan umur oleh BE dicakup unit test BE.
+  - Langkah e2e tersebut dilewati dengan rujukan ke keputusan ini.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
+- **Diterapkan di:** SettingsChartOfAccounts dan semua langkah e2e lain yang bergantung pada umur data.
+- **Sumber:** aturan "stage only real states" (owner 2026-11-07).
