@@ -2397,3 +2397,17 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration C).
 - **Diterapkan di:** SettingsUser dan semua endpoint bulk dengan hasil per id (`blocked` / `skipped`).
 - **Sumber:** admin-console/settings-user/API/user-actions.md L11-L29 dan L93.
+
+## D-227 Switch disabled tidak masuk urutan Tab (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-COA-E2E-008`, blok `TC-FA-COA-163` langkah 11 dan 13.
+- **Spec meminta:** Tab sampai fokus berada di Switch Status baris P1 yang disabled (langkah 11), lalu tooltip `You don't have permission to edit.` tampil saat Switch menerima fokus keyboard (langkah 13).
+- **Kenyataannya:** Switch yang disabled tidak bisa difokus dengan Tab, jadi tooltip tidak bisa dipicu lewat keyboard. Notes spec sendiri sudah menyebut bahwa elemen disabled lazimnya tidak dapat difokus.
+- **Karena:** perilaku mayoritas design system dan elemen native: kontrol `disabled` dikeluarkan dari urutan Tab (MUI, Chakra, React Aria `isDisabled`, Radix). Perilaku komponen menang.
+- **Keputusan:**
+  - Langkah 11 dan 13 dilewati dengan rujukan ke keputusan ini.
+  - Langkah 12 (Switch Status baris P1 Disabled) tetap diasersi.
+  - Tooltip izin pada kontrol disabled tetap diuji lewat hover bila spec memintanya.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A, F-07).
+- **Diterapkan di:** SettingsChartOfAccounts dan semua langkah lain yang mengharapkan fokus keyboard pada kontrol disabled.
+- **Sumber:** katalog perilaku Switch wangs-ui; Notes spec TC-FA-COA-E2E-008.
