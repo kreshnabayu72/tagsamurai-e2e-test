@@ -2216,3 +2216,16 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (pertanyaan CoA Component Test).
 - **Diterapkan di:** semua modul dengan filter tanggal.
 - **Sumber:** format tanggal General Settings (date format dan time zone).
+
+## D-212 Tombol Unselect All di Chart of Accounts tetap `Unselect All` (2026-11-15, menggantikan sebagian D-209)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-125` langkah 78, 83 dan langkah sejenis.
+- **Spec meminta:** tombol `Unselect All`.
+- **Kenyataannya:** di feat/connect-api, default bulk bar aplikasi menampilkan `Unselect All`. Label `Unselect All (N records)` di D-209 berasal dari cabang slicing.
+- **Karena:** default aplikasi di connect-api sudah sama dengan spec.
+- **Keputusan:**
+  - Tombol diasersi sebagai `Unselect All`.
+  - Bagian counter D-209 (`1,000 Accounts selected`) tetap berlaku.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
+- **Diterapkan di:** SettingsChartOfAccounts UI-125.
+- **Sumber:** default bulk bar feat/connect-api 8ea876915; D-209.
