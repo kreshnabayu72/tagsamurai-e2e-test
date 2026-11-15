@@ -2229,3 +2229,43 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
 - **Diterapkan di:** SettingsChartOfAccounts UI-125.
 - **Sumber:** default bulk bar feat/connect-api 8ea876915; D-209.
+
+## D-213 Format angka, mata uang dan tanggal mengikuti pengaturan sesi, bukan literal Test Case (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster (Test Case PRD v1), langkah yang menulis nilai terformat, misalnya `Rp 1.500.000,00` dan `15 Sep 2026`.
+- **Spec meminta:** nilai dengan format literal tersebut.
+- **Kenyataannya:** aplikasi memformat nilai menurut pengaturan General Settings sesi (date format, time zone, locale). Pada harness component test hasilnya `Rp1,500,000.00` dan `15/09/26`.
+- **Karena:** format tampilan adalah pengaturan tenant, bukan aturan modul. Literal Test Case mengandaikan satu pengaturan tertentu.
+- **Keputusan:**
+  - Asersi memakai keluaran formatter aplikasi untuk pengaturan sesi yang sedang berlaku.
+  - Literal di Test Case dibaca sebagai nilai, bukan format.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster, dan modul lain dengan kasus yang sama.
+- **Sumber:** pengaturan General Settings (date format, time zone).
+
+## D-214 403 tanpa alasan pada tulis Asset Master menampilkan toast izin (2026-11-15)
+
+- **Spec / langkah:** `TC-FA-FAAM-617`.
+- **Spec meminta:** toast izin saat tulis ditolak 403.
+- **Kenyataannya:** setiap 403 dipetakan ke toast workspace suspended/expired.
+- **Karena:** 403 pada umumnya berarti izin ditolak (konvensi EC-09). Suspended atau expired hanya boleh tampil bila respons membawa alasan itu.
+- **Keputusan:**
+  - 403 dengan kode alasan suspended/expired menampilkan toast suspended/expired.
+  - 403 lainnya menampilkan toast izin. Ini perbaikan FE di pemetaan error modul.
+  - Bila kontrak API tidak mendefinisikan kode alasan itu, catat sebagai drift kontrak untuk pemilik LLD.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster, Asset Name write.
+- **Sumber:** konvensi EC-09; plans/fixed-asset-settings-asset-master/decisions.md L32.
+
+## D-215 Asset Master: keputusan UI tercatat menang atas baris Test Case v1, kecuali Code List overlay (2026-11-15)
+
+- **Spec / langkah:** SettingsAssetMaster baris 28-3 (default sort header Asset Name), 762 (filter Category yang dihapus di Detail), 92, 189, 137 dan 684 (emoji), LBL-297, LBL-300 dan CAID-165 (Modified By), serta CAID-160 (overlay Code List).
+- **Spec meminta:** perilaku sesuai Test Case v1.
+- **Kenyataannya:** keputusan slicing tercatat berbeda. Keputusan modul (decisions.md) mengatur default sort dan filter Category, D-016 mengatur emoji, dan D-052 mengatur Modified By nama lengkap.
+- **Karena:** perbedaan UI yang disengaja dan tercatat menang atas Test Case. Untuk overlay, modul ini sudah memutuskan backdrop tidak menutup popup (`TC-FA-FAAM-304`, decisions.md L158), sehingga Code List harus konsisten dengan itu.
+- **Keputusan:**
+  - Baris 28-3, 762, emoji (D-016) dan Modified By (D-052) mengasersi keputusan tercatat, dengan rujukan keputusannya.
+  - CAID-160 diikuti: klik overlay tidak menutup Dialog Code List, sedangkan Escape dan `[✕]` tetap menutup. Ini perbaikan FE (decisions.md L241 diubah).
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster.
+- **Sumber:** decisions.md L158 dan L241; D-016; D-052.
