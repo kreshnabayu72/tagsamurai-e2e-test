@@ -2386,3 +2386,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test Labels).
 - **Diterapkan di:** semua tabel yang memakai BulkActionButton.
 - **Sumber:** PRD settings-asset-labeling L251; BulkActionButton wangs-ui.
+
+## D-226 Penolakan bulk status per id dijawab 200 dengan entri `blocked` (2026-11-15)
+
+- **Spec / langkah:** AdminConsole/SettingsUser `TC-AC-SU-E2E-182` langkah 17 (`TC-AC-SU-619`).
+- **Spec meminta:** request langsung untuk mengaktifkan user yang nonaktif di Global Settings ditolak server dengan respons bukan 2xx.
+- **Kenyataannya:** server menjawab `200` dengan entri per id `status: blocked, reason: global_inactive`, dan status user tetap Inactive.
+- **Karena:** kontrak API `POST /v2/iam/users/products/admin_console/status/bulk` menetapkan bahwa kegagalan guard per id (`self`, `default_user`, `tcro_target`, `no_access`, `global_inactive`, `not_found`) dilaporkan sebagai entri `blocked` di dalam array hasil `200`, tidak pernah sebagai respons error tingkat atas. Spec mengikuti kontrak.
+- **Keputusan:** langkah 17 mengasersi `200` dengan entri `blocked` / `global_inactive` untuk id tersebut. Langkah 18 (status tetap Inactive) tidak berubah. Langkah bulk lain yang mengharapkan penolakan non-2xx untuk guard per id ikut aturan ini.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration C).
+- **Diterapkan di:** SettingsUser dan semua endpoint bulk dengan hasil per id (`blocked` / `skipped`).
+- **Sumber:** admin-console/settings-user/API/user-actions.md L11-L29 dan L93.
