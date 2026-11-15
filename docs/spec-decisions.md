@@ -2338,3 +2338,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
 - **Diterapkan di:** SettingsAssetMaster dan modul lain yang memakai TreeSelect.
 - **Sumber:** katalog perilaku TreeSelect wangs-ui (rc.224).
+
+## D-222 Master Switch tetap ON selama dialog Disable terbuka (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsCustomAssetId `TC-FA-CAID-69` langkah 94-4 dan 97-1 (Test Case PRD v1).
+- **Spec meminta:** Master Switch sudah OFF saat dialog Disable terbuka.
+- **Kenyataannya:** switch tetap ON, dan baru berubah OFF setelah [Disable] berhasil. Kalau [Cancel] diklik, switch tetap ON (FI-06).
+- **Karena:** perilaku umum di mayoritas design system. Toggle yang butuh konfirmasi tidak berubah sebelum dikonfirmasi, dan switch terkendali baru berubah setelah permintaan selesai. Perilaku komponen menang.
+- **Keputusan:** langkah tersebut mengasersi switch ON selama dialog terbuka, dan OFF hanya setelah Disable berhasil. Langkah berikutnya yang mengharapkan OFF sebelum Disable ikut disesuaikan.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test CAID).
+- **Diterapkan di:** SettingsCustomAssetId dan semua toggle dengan dialog konfirmasi.
+- **Sumber:** repo aplikasi CustomAssetIdForm.tsx (switch terkendali `draft.isActive`), FI-06.
