@@ -2455,3 +2455,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
 - **Diterapkan di:** SettingsDeviceName 087, Device SKU 128, dan semua dialog Detail hanya-baca.
 - **Sumber:** wangs-ui Dialog (default tutup lewat backdrop); D-230.
+
+## D-232 Langkah CoA yang butuh jurnal adalah sprint-gap (2026-11-16)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts, langkah yang membutuhkan entri jurnal: kolom Last Used in Journal (J-06) dan kunci Account Code setelah akun dipakai di jurnal. Spec 020, 023, 027, 043, 046, 055, 065, 071, 073, 075, 083, 087, 096.
+- **Spec meminta:** akun yang sudah dipakai di jurnal menampilkan tanggal Last Used in Journal dan Account Code-nya terkunci.
+- **Kenyataannya:** tidak ada fitur yang membuat entri jurnal, jadi kondisi "sudah dipakai di jurnal" tidak bisa dibuat secara nyata.
+- **Karena:** Journal tidak ada di sprint board (baris CoA no. 57 ada, Journal tidak ada). Kondisi itu tidak boleh dibuat lewat jalur buatan (stage only real states).
+- **Keputusan:** langkah-langkah ini di-tag `sprint-gap`, bukan `feature-gap:be`. BT-FA-COA-10 tidak dijadikan issue BE.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-16.
+- **Diterapkan di:** 13 spec CoA di atas.
+- **Sumber:** plans/_program/sprint-board.md; plans/fixed-asset-settings-chart-of-accounts/backend-findings.md (BT-FA-COA-10).
