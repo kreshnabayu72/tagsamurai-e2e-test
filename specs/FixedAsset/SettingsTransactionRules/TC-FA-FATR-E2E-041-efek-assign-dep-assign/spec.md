@@ -4,7 +4,7 @@ title: "Setting Assign berlaku pada transaksi Assign"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.2#b166", "§9.7#r28", "EB-XM-2@assign", "§9.2#b221", "§9.2#b261"]
 smoke: ["§9.2#b221", "§9.2#b261"]
 dependsOn:

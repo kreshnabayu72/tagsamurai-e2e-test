@@ -4,7 +4,7 @@ title: "Guard Allowed assignee OFF/OFF"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§4.1#r111", "§4.1#r112", "§4.1#r113", "§4.1#r114", "§4.1#r115", "§4.1#r116", "§4.1#r119", "§4.1#r120", "§4.1#r121", "§4.1#r123", "§6#r35", "§6#r36", "§6#r37", "§6#r40", "§6#r41", "§9.2#b32", "§9.2#b44", "§9.2#b47", "§9.2#b106", "§9.2#b110", "§9.2#b111", "§9.2#b114", "§9.2#b115", "§9.2#b116", "§9.2#b118", "§9.2#b119", "§9.2#b185", "§9.2#b187", "§9.2#b188", "§9.2#b189", "§9.2#b191", "§9.4.2#r65", "§9.4.2#r66", "§9.4.2#r68", "§9.4.2#r69", "§9.4.2#r70", "§9.4.2#r71", "§9.4.2#r72", "§9.4.2#r73", "§9.4.2#r74", "§9.4.2#r77", "§9.4.4#r34", "§9.6#r31", "§9.6#r32", "§9.6#r33", "§9.9#r12", "§9.9#r17", "§9.9#r22"]
 smoke: []
@@ -100,7 +100,7 @@ trace:
   - DU-089-34: Override, override aset Employee OFF yang tersisa: Scope `aset`; Target `Perangkat Guard Hapus {runId}`; Category `Guard Hapus {runId}`; Transaksi `penugasan`; Field `Allowed assignee: Employee`; Value `OFF`.
   - DU-089-35: Override, override Group Division ON pada bulk Delete: Scope `Group`; Target `Tim Guard Hapus Bulk {runId}`; Category `Guard Hapus Bulk {runId}`; Transaksi `penugasan`; Field `Allowed assignee: Division`; Value `ON`.
   - DU-089-36: Override, override aset Employee OFF yang tersisa pada bulk Delete: Scope `aset`; Target `Perangkat Guard Hapus Bulk {runId}`; Category `Guard Hapus Bulk {runId}`; Transaksi `penugasan`; Field `Allowed assignee: Employee`; Value `OFF`.
-  - DU-089-37: Override, override biasa pada bulk Delete yang boleh terhapus: Scope `Group`; Target `Tim Guard Plain {runId}`; Category `Guard Hapus Bulk {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
+  - DU-089-37: Override, override biasa pada bulk Delete yang boleh terhapus: Scope `Group`; Target `Tim Guard Plain {runId}`; Category `Guard Hapus Bulk {runId}`; Transaksi `penugasan`; Field `Max assets per assignee (concurrent)`; Value `2`.
   - DU-089-38: Override, override Group Division ON pada Category Deny yang aman dihapus: Scope `Group`; Target `Tim Guard Deny Hapus {runId}`; Category `Guard Deny Setelah Hapus {runId}`; Transaksi `penugasan`; Field `Allowed assignee: Division`; Value `ON`.
   - DU-089-39: Override, override aset Employee OFF pada Category Deny: Scope `aset`; Target `Mesin Deny Hapus {runId}`; Category `Guard Deny Setelah Hapus {runId}`; Transaksi `penugasan`; Field `Allowed assignee: Employee`; Value `OFF`.
   - DU-089-40 sampai DU-089-47 adalah nilai input Save dan Add override yang ditolak atau diterima di blok masing-masing, bukan record yang sudah ada.

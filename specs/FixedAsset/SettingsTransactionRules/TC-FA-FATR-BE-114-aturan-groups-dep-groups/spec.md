@@ -4,7 +4,7 @@ title: "Override saat Group berubah"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§9.2#b121", "§9.2#b123", "§9.2#b129", "§9.2#b130", "§9.2#b146", "§9.2#b148", "§9.4.2#r34", "§9.4.3#b11"]
 smoke: []

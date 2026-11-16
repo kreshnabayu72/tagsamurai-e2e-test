@@ -4,7 +4,7 @@ title: "Dialog Changelog: kolom, format, dan empty state"
 layer: ui-client
 priority: High
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#r12"
   - "§4.1#r41"
@@ -46,12 +46,12 @@ trace:
   §5#r1: [5, 7, 9, 11]
   §7#r18: [54, 55]
   D-08: 2
-  S-08: [58, 59, 69]
-  §9.2#b376: [54, 55, 58, 59]
-  §9.4.2#r53: [54, 58, 69]
-  §9.4.4#r44: [54, 58]
+  S-08: [59, 60, 70]
+  §9.2#b376: [54, 55, 59, 60]
+  §9.4.2#r53: [54, 59, 70]
+  §9.4.4#r44: [54, 59]
   §9.5#r29: [54, 55]
-  EB-TBL-1@changelog: [54, 58, 60, 62, 63, 64]
+  EB-TBL-1@changelog: [54, 59, 61, 63, 64, 65]
   EB-TBL-4@modified-by-changelog: [34, 35, 37]
   EB-TBL-8@changelog: 40
   EB-XM-1: [20, 21]
@@ -67,12 +67,12 @@ coverage:
 - Layar awal: Settings > Transaction Settings, Dialog Changelog dibuka dari tombol `[Changelog]` di header halaman.
 - Komponen: Dialog Changelog
 - Data:
-  - DU-081-1: entri Date `2026-06-15 14:05` (tampil `15/06/26 14:05`), Action `Edit`, Category `Vehicle > Pool car`, Field `Borrow (Max duration)`, Old Value `14 days`, New Value `30 days`, Modified By `Budi Santoso` (tampil `Budi S`).
-  - DU-081-2: entri Date `2026-06-12 09:30` (tampil `12/06/26 09:30`), Action `Edit`, Category `All categories`, Field `Borrow (Allow Borrow)`, Old Value `Allow`, New Value `Deny`, Modified By `Siti Nurbaya` (tampil `Siti N`).
-  - DU-081-3: entri Date `2026-06-10 16:45` (tampil `10/06/26 16:45`), Action `Edit`, Category `Machinery`, Field `Borrow (Max extensions)`, Old Value `1`, New Value `No extension`, Modified By `Alexander Graham Bell` (tampil `Alexander G`).
-  - DU-081-4: entri Date `2026-06-08 08:15` (tampil `08/06/26 08:15`), Action `Edit`, Category `Vehicle > Pool car`, Field `Borrow (Max duration)`, Old Value `Inherit`, New Value `30 days`, Modified By `Siti Nurbaya` (tampil `Siti N`).
-  - DU-081-5: entri Date `2026-06-05 11:20` (tampil `05/06/26 11:20`), Action `Edit`, Category `Vehicle > <b>Pool</b> car`, Field `Borrow (Max duration)`, Old Value `7 days`, New Value `14 days`, Modified By `Budi Santoso` (tampil `Budi S`).
-  - DU-081-6: entri Date `2026-06-01 15:50` (tampil `01/06/26 15:50`), Action `Edit`, Category `Machinery`, Field `Borrow (Max extensions)`, Old Value `No extension`, New Value `1`, Modified By `Rina Wulandari` (tampil `Rina W`), pengguna itu kemudian dihapus.
+  - DU-081-1: entri Date `2026-06-15 14:05` (tampil tanggal `15/06/26` dari 2026-06-15 dan jam `14:05` dari 14:05), Action `Edit`, Category `Vehicle > Pool car`, Field `Borrow (Max duration)`, Old Value `14 days`, New Value `30 days`, Modified By `Budi Santoso` (tampil `Budi S`).
+  - DU-081-2: entri Date `2026-06-12 09:30` (tampil tanggal `12/06/26` dari 2026-06-12 dan jam `09:30` dari 09:30), Action `Edit`, Category `All categories`, Field `Borrow (Allow Borrow)`, Old Value `Allow`, New Value `Deny`, Modified By `Siti Nurbaya` (tampil `Siti N`).
+  - DU-081-3: entri Date `2026-06-10 16:45` (tampil tanggal `10/06/26` dari 2026-06-10 dan jam `16:45` dari 16:45), Action `Edit`, Category `Machinery`, Field `Borrow (Max extensions)`, Old Value `1`, New Value `No extension`, Modified By `Alexander Graham Bell` (tampil `Alexander G`).
+  - DU-081-4: entri Date `2026-06-08 08:15` (tampil tanggal `08/06/26` dari 2026-06-08 dan jam `08:15` dari 08:15), Action `Edit`, Category `Vehicle > Pool car`, Field `Borrow (Max duration)`, Old Value `Inherit`, New Value `30 days`, Modified By `Siti Nurbaya` (tampil `Siti N`).
+  - DU-081-5: entri Date `2026-06-05 11:20` (tampil tanggal `05/06/26` dari 2026-06-05 dan jam `11:20` dari 11:20), Action `Edit`, Category `Vehicle > <b>Pool</b> car`, Field `Borrow (Max duration)`, Old Value `7 days`, New Value `14 days`, Modified By `Budi Santoso` (tampil `Budi S`).
+  - DU-081-6: entri Date `2026-06-01 15:50` (tampil tanggal `01/06/26` dari 2026-06-01 dan jam `15:50` dari 15:50), Action `Edit`, Category `Machinery`, Field `Borrow (Max extensions)`, Old Value `No extension`, New Value `1`, Modified By `Rina Wulandari` (tampil `Rina W`), pengguna itu kemudian dihapus.
   - DU-081-7: kata kunci Search `Zebra Tidak Ada`, tidak cocok dengan baris mana pun.
   - DU-081-8: filter Date rentang dari `01/01/25` sampai `31/01/25`, di luar semua entri, tidak menghasilkan baris.
 - Kondisi:
@@ -112,30 +112,30 @@ coverage:
 20. Verifikasi sel Date pada baris Old Value `14 days` memuat tanggal `15/06/26` dan jam `14:05`
 21. Verifikasi sel Date pada baris Field `Borrow (Allow Borrow)` memuat tanggal `12/06/26` dan jam `09:30`
 22. Verifikasi sel Action pada setiap baris berisi `Edit`
-23. Verifikasi sel Category pada baris Date `15/06/26 14:05` berisi `Vehicle > Pool car`
-24. Verifikasi sel Category pada baris Date `12/06/26 09:30` berisi `All categories`
-25. Verifikasi sel Field pada baris Date `15/06/26 14:05` berisi `Borrow (Max duration)`
-26. Verifikasi sel Field pada baris Date `12/06/26 09:30` berisi `Borrow (Allow Borrow)`
+23. Verifikasi sel Category pada baris Old Value `14 days` berisi `Vehicle > Pool car`
+24. Verifikasi sel Category pada baris Field `Borrow (Allow Borrow)` berisi `All categories`
+25. Verifikasi sel Field pada baris Old Value `14 days` berisi `Borrow (Max duration)`
+26. Verifikasi sel Field pada baris Old Value `Allow` berisi `Borrow (Allow Borrow)`
 27. Verifikasi sel Date, Action, Category, Field, Old Value, New Value, dan Modified By di setiap baris berisi nilai dan tidak menampilkan `—`
 
 ### Format kolom Old Value dan New Value
 28. Tampilkan Dialog Changelog dengan kondisi K1
-29. Verifikasi sel Old Value `14 days` dan New Value `30 days` pada baris Field `Borrow (Max duration)` Date `15/06/26 14:05`, nilai ditulis dengan satuannya
-30. Verifikasi sel Old Value pada baris Date `08/06/26 08:15` berisi `Inherit`
-31. Verifikasi sel New Value pada baris Date `10/06/26 16:45` berisi `No extension`, nilai 0 tampil sebagai teks maknanya
-32. Verifikasi sel Old Value pada baris Date `01/06/26 15:50` berisi `No extension`, nilai 0 tampil sebagai teks maknanya
+29. Verifikasi ada baris dengan Field `Borrow (Max duration)`, Old Value `14 days`, dan New Value `30 days`, nilai ditulis dengan satuannya
+30. Verifikasi sel Old Value pada baris Modified By `Siti N` dengan New Value `30 days` berisi `Inherit`
+31. Verifikasi sel New Value pada baris Modified By `Alexander G` berisi `No extension`, nilai 0 tampil sebagai teks maknanya
+32. Verifikasi sel Old Value pada baris Modified By `Rina W` berisi `No extension`, nilai 0 tampil sebagai teks maknanya
 
 ### Format kolom Modified By
 33. Tampilkan Dialog Changelog dengan kondisi K1
-34. Verifikasi sel Modified By pada baris Date `15/06/26 14:05` berisi `Budi S`
-35. Verifikasi sel Modified By pada baris Date `10/06/26 16:45` berisi `Alexander G`
-36. Arahkan kursor ke sel Modified By pada baris Date `15/06/26 14:05`
+34. Verifikasi sel Modified By pada baris Old Value `14 days` berisi `Budi S`
+35. Verifikasi sel Modified By pada baris Old Value `1` dan New Value `No extension` berisi `Alexander G`
+36. Arahkan kursor ke sel Modified By pada baris Old Value `14 days`
 37. Verifikasi nama lengkap `Budi Santoso` tersampaikan pada sel Modified By
-38. Verifikasi sel Modified By pada baris Date `01/06/26 15:50` tetap berisi `Rina W` walau pengguna itu sudah dihapus
+38. Verifikasi sel Modified By pada baris Old Value `No extension` dan New Value `1` tetap berisi `Rina W` walau pengguna itu sudah dihapus
 
 ### Teks sel berisi markup
 39. Tampilkan Dialog Changelog dengan kondisi K1
-40. Verifikasi sel Category pada baris Date `05/06/26 11:20` menampilkan `Vehicle > <b>Pool</b> car` apa adanya sebagai teks
+40. Verifikasi sel Category pada baris Old Value `7 days` menampilkan `Vehicle > <b>Pool</b> car` apa adanya sebagai teks
 
 ### Field Filter Panel
 41. Tampilkan Dialog Changelog dengan kondisi K1
@@ -160,20 +160,21 @@ coverage:
 
 ### Empty state hasil Search dan Filter tanpa hasil
 56. Tampilkan Dialog Changelog dengan kondisi K3
-57. Ketik Search `Zebra Tidak Ada`, tekan Enter
-58. Verifikasi judul empty state `No results found` tampil pada tabel Changelog
-59. Verifikasi deskripsi empty state `Try adjusting your search or filter.` tampil pada tabel Changelog
-60. Verifikasi `No changelog yet` tidak tampil
+57. Klik ikon Search di toolbar
+58. Ketik Search `Zebra Tidak Ada`, tekan Enter
+59. Verifikasi judul empty state `No results found` tampil pada tabel Changelog
+60. Verifikasi deskripsi empty state `Try adjusting your search or filter.` tampil pada tabel Changelog
+61. Verifikasi `No changelog yet` tidak tampil
 
 ### Gagal memuat tabel
-61. Tampilkan Dialog Changelog dengan kondisi K4
-62. Verifikasi pesan `Unable to load this data.` tampil pada tabel Changelog
-63. Verifikasi tombol `[Try Again]` tampil pada tabel Changelog
-64. Verifikasi `No changelog yet` tidak tampil
+62. Tampilkan Dialog Changelog dengan kondisi K4
+63. Verifikasi pesan `Unable to load this data.` tampil pada tabel Changelog
+64. Verifikasi tombol `[Try Again]` tampil pada tabel Changelog
+65. Verifikasi `No changelog yet` tidak tampil
 
 ### Empty state hasil Filter tanpa hasil
-65. Tampilkan Dialog Changelog dengan kondisi K3
-66. Klik tombol filter di toolbar
-67. Pada field `Date`, pilih rentang dari `01/01/25` sampai `31/01/25`
-68. Klik `[Apply]`
-69. Verifikasi judul empty state `No results found` tampil pada tabel Changelog sesudah filter
+66. Tampilkan Dialog Changelog dengan kondisi K3
+67. Klik tombol filter di toolbar
+68. Pada field `Date`, pilih rentang dari `01/01/25` sampai `31/01/25`
+69. Klik `[Apply]`
+70. Verifikasi judul empty state `No results found` tampil pada tabel Changelog sesudah filter

@@ -4,7 +4,7 @@ title: "Area utama: field tab Assign"
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r55
   - §4.1#r99
@@ -28,10 +28,10 @@ trace:
   §4.1#r101: 12
   §4.1#r102: [13, 15, 37, 43]
   §4.1#r103: [17, 19, 38, 44]
-  §4.1#r161: 22
-  §4.1#r163: 23
+  §4.1#r161: [22, 48, 52]
+  §4.1#r163: [23, 49, 53]
   §4.1#r179: [25, 27, 39, 45]
-  §4.1#r184: [28, 30]
+  §4.1#r184: [28, 30, 50, 55]
   §4.1#r200: 33
   §4.1#r212: [34, 40, 46]
   §9.2#b424: [22, 23]
@@ -48,7 +48,7 @@ coverage:
 - Komponen: Area utama
 - Data:
   - DU-060-1: Pengaturan Company default tab Assign pada All categories: Allow Assign `Allow`, Allowed assignee: Employee `ON`, Allowed assignee: Division `ON`, Max assets per assignee (concurrent) `0`, Recipient acceptance `Required`, Direct handover between holders `Allow`, Photo at start `ON`, Photo at end `ON`, Require approval `OFF`, Approval type `Any one approver`, Transaction timeout `7`, Send email notifications `OFF`.
-  - DU-060-2: Pengaturan Company default tab Assign pada All categories yang berbeda dari nilai awal: Allowed assignee: Employee `ON`, Allowed assignee: Division `OFF`, Recipient acceptance `Optional`, Direct handover between holders `Deny`, Require approval `ON`, Send email notifications `ON`.
+  - DU-060-2: Pengaturan Company default tab Assign pada All categories yang berbeda dari nilai awal: Allowed assignee: Employee `ON`, Allowed assignee: Division `OFF`, Recipient acceptance `Optional`, Direct handover between holders `Deny`, Photo at start `OFF`, Photo at end `OFF`, Require approval `ON`, Approval type `All approvers (AND)`, Send email notifications `ON`.
 - Kondisi:
   - K1: node All categories terpilih, tab Assign aktif, nilai Company default memakai DU-060-1.
   - K2: node All categories terpilih, tab Assign aktif, nilai Company default memakai DU-060-2.
@@ -110,3 +110,14 @@ coverage:
 44. Verifikasi `Direct handover between holders` kembali ke nilai awal `Allow`
 45. Verifikasi `Require approval` kembali ke nilai awal `OFF`
 46. Verifikasi `Send email notifications` kembali ke nilai awal `OFF`
+
+### Reset to Default mengembalikan Evidence dan Approval type Assign ke nilai awal
+47. Tampilkan Area utama dengan kondisi K2
+48. Verifikasi `Photo at start` bernilai `OFF` pada bagian `Evidence`
+49. Verifikasi `Photo at end` bernilai `OFF` pada bagian `Evidence`
+50. Verifikasi `Approval type` bernilai `All approvers (AND)`
+51. Klik `Reset to Default`
+52. Verifikasi `Photo at start` kembali ke nilai awal `ON` pada bagian `Evidence`
+53. Verifikasi `Photo at end` kembali ke nilai awal `ON` pada bagian `Evidence`
+54. Nyalakan `Require approval`
+55. Verifikasi `Approval type` kembali ke nilai awal `Any one approver`

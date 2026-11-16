@@ -4,7 +4,7 @@ title: "Write-lock entitas Suspended atau Expired"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§9.2#b49", "§9.2#b50", "§9.2#b51", "§9.2#b62", "§9.2#b63", "§9.2#b168", "§9.2#b169", "§9.2#b300", "§9.2#b375", "§9.4.2#r24", "§9.4.2#r31", "§9.4.2#r47", "§9.4.2#r52", "§9.4.2#r85", "§9.4.2#r87", "§9.4.3#b1", "§9.4.4#r16", "§9.4.4#r28", "§9.4.4#r39", "§9.4.4#r43", "§9.11#p1", EB-AKS-7]
 smoke: []
@@ -12,23 +12,23 @@ dependsOn: []
 trace:
   "§9.2#b49": [10, 35]
   "§9.2#b50": [21, 24, 45, 48]
-  "§9.2#b51": [31, 52]
+  "§9.2#b51": [31, 53]
   "§9.2#b62": [10, 35]
   "§9.2#b63": [26, 50]
   "§9.2#b168": [14, 38]
   "§9.2#b169": [17, 40]
-  "§9.2#b300": [31, 52]
+  "§9.2#b300": [31, 53]
   "§9.2#b375": [21, 24, 45]
   "§9.4.2#r24": [14, 38]
   "§9.4.2#r31": [17, 40]
-  "§9.4.2#r47": [31, 52]
+  "§9.4.2#r47": [31, 53]
   "§9.4.2#r52": [21, 24, 45, 48]
   "§9.4.2#r85": [10, 35]
   "§9.4.2#r87": [26, 48]
   "§9.4.3#b1": [11, 14, 17, 36, 38, 40]
   "§9.4.4#r16": [12, 42]
   "§9.4.4#r28": [15, 18, 41]
-  "§9.4.4#r39": [31, 52]
+  "§9.4.4#r39": [31, 53]
   "§9.4.4#r43": [22, 46]
   "§9.11#p1": [27, 28, 29]
   EB-AKS-7: [2, 4, 6, 10, 11, 35, 36]
@@ -52,7 +52,7 @@ trace:
   - DU-096-18: Asset, aset pada transaksi peminjaman yang menunggu approval saat Suspended: Name `Aset Timeout Satu {runId}`; Asset Name `Aset Timeout {runId}`; Category `Perangkat Status {runId}`; Group `Tim Status Baru {runId}`.
   - DU-096-19: Asset, aset pada transaksi peminjaman yang menunggu approval saat Expired: Name `Aset Timeout Dua {runId}`; Asset Name `Aset Timeout {runId}`; Category `Perangkat Status {runId}`; Group `Tim Status Baru {runId}`.
   - DU-096-20: Transaksi, transaksi peminjaman yang menunggu approval melewati Transaction timeout, untuk job saat Suspended: Jenis `peminjaman`; Status `Waiting for Approval`; Aset `Aset Timeout Satu {runId}`; Diajukan `H-8`.
-  - DU-096-21: Transaksi, transaksi peminjaman yang menunggu approval melewati Transaction timeout, untuk job saat Expired: Jenis `peminjaman`; Status `Waiting for Approval`; Aset `Aset Timeout Dua {runId}`; Diajukan `H-8`.
+  - DU-096-21: Transaksi, transaksi peminjaman yang menunggu approval dan baru melewati Transaction timeout sesudah entitas Expired, untuk job saat Expired: Jenis `peminjaman`; Status `Waiting for Approval`; Aset `Aset Timeout Dua {runId}`; Diajukan `H-6`, sehingga 6 hari sejak diajukan pada awal spec.
   - DU-096-22: Entitas, Client kedua yang tidak diubah, pembanding isolasi: Name `Entitas Lain {runId}`; Status `Active`.
   - DU-096-23: Category, Category leaf pada entitas kedua dengan nama yang sama dengan Category entitas ini: Name `Perangkat Status {runId}`; Entitas `Entitas Lain {runId}`.
   - DU-096-24: Group, Group target override pada entitas kedua: Name `Tim Entitas Lain {runId}`; Entitas `Entitas Lain {runId}`.
@@ -61,6 +61,7 @@ trace:
 - Kondisi:
   - Spec ini memakai entitas khusus `Entitas Status {runId}` (DU-096-1) yang tidak dipakai spec lain, karena status entitas diubah menjadi Suspended lalu Expired.
   - Seluruh field Category `Perangkat Status {runId}` bernilai Inherit, dan Transaction timeout Company default bernilai default `7` hari.
+  - Level Feature Suite Borrowing entitas `Entitas Status {runId}` bernilai `Full`.
   - Job Transaction timeout tidak berjalan sendiri selama spec ini; Operator Status menjalankannya pada langkah yang menyebutnya.
   - Jumlah entri Changelog dan Activity Log serta versi setting dibaca sebagai selisih terhadap nilai yang dicatat sebelum aksi.
   - Entitas `Entitas Lain {runId}` (DU-096-22) adalah Client kedua yang tetap Active selama spec ini dan tidak diubah; Category `Perangkat Status {runId}` ada di kedua entitas, dan hanya override milik entitas ini yang boleh muncul pada daftar dan berkas Export rules entitas ini.
@@ -106,7 +107,7 @@ trace:
 
 ### Entitas Suspended: job Transaction timeout tanpa aktor tetap berjalan
 30. Operator Status menjalankan job Transaction timeout
-31. Verifikasi transaksi peminjaman atas aset `Aset Timeout Satu {runId}`, yang menunggu approval melewati Transaction timeout, kembali ke Draft baru tanpa nomor BRW oleh `System` dengan log `Returned to Draft`, dan tidak berstatus Canceled
+31. Verifikasi transaksi peminjaman atas aset `Aset Timeout Satu {runId}`, yang menunggu approval melewati Transaction timeout, berstatus `Canceled` dengan Note `Timed out (Waiting for Approval)` dan tercatat di log transaksi dengan Modified By `System`, serta aset kembali ke Draft baru tanpa nomor BRW
 
 ### Entitas Expired: Save, Add override, dan Delete override ditolak server
 32. Operator Status menetapkan entitas `Entitas Status {runId}` menjadi Expired
@@ -130,5 +131,6 @@ trace:
 48. Verifikasi Changelog terbaca
 49. Maya Pengelola membuka daftar override Category `Perangkat Status {runId}`
 50. Verifikasi daftar override terbaca, karena aksi baca tidak diblokir
-51. Operator Status menjalankan job Transaction timeout
-52. Verifikasi transaksi peminjaman atas aset `Aset Timeout Dua {runId}`, yang menunggu approval melewati Transaction timeout, kembali ke Draft baru tanpa nomor BRW oleh `System` dengan log `Returned to Draft`, dan tidak berstatus Canceled
+51. Waktu berlalu sampai transaksi peminjaman atas aset `Aset Timeout Dua {runId}` genap 8 hari sejak diajukan, melewati Transaction timeout `7` hari
+52. Operator Status menjalankan job Transaction timeout
+53. Verifikasi transaksi peminjaman atas aset `Aset Timeout Dua {runId}`, yang menunggu approval melewati Transaction timeout, berstatus `Canceled` dengan Note `Timed out (Waiting for Approval)` dan tercatat di log transaksi dengan Modified By `System`, serta aset kembali ke Draft baru tanpa nomor BRW

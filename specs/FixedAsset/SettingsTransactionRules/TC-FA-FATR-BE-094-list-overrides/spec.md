@@ -4,7 +4,7 @@ title: "Search, sort, dan filter daftar override"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [EB-SRC-1, EB-FLT-3, EB-SRT-1]
 smoke: []

@@ -4,9 +4,9 @@ title: "Approval dan penentuan approver pada transaksi Transfer"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
-sourceRules: ["§Aturan Logika Modul#r74", "§Aturan Logika Modul#r81", "§4.1#p24", "§4.1#r193", "§4.1#r194", "§4.1#r195", "§4.1#r196", "§4.1#r198", "§9.2#b379", "§9.2#b380", "§9.2#b381", "§9.2#b382", "§9.2#b441", "§9.2#b443", "§9.2#b444", "§9.2#b445", "§9.2#b446", "§9.2#b448", "§9.2#b449", "§9.2#b450", "§9.2#b451", "§9.2#b453", "§9.2#b455", "§9.2#b456", "§9.2#b457", "§9.2#b458", "§9.2#b460", "§9.2#b461", "§9.2#b464", "§9.2#b465", "§9.2#b466", "§9.2#b468", "§9.2#b469", "§9.2#b470", "§9.2#b471", "§9.2#b472", "§9.2#b475", "§9.2#b476", "§9.2#b477", "§9.2#b488", "§9.2#b489", "§9.2#b490", "§9.2#b491", "§9.2#b492", "§9.2#b493", "§9.2#b494", "§9.2#b463", "§9.2#b442", "§9.2#b452", "§9.2#b462", "§9.2#b479", "§9.2#b480", "§9.2#b483", "§9.2#b481", "§9.2#b482", "§9.2#b500", "§9.2#b501", "§9.2#b503", "§9.2#b502", "§9.2#b504", "§9.2#b506", "§9.2#b507", "§9.2#b508", "§9.2#b509", "§9.2#b510", "§9.2#b511", "§9.2#b512", "§9.2#b513", "§9.2#b514", "§9.2#b515", "§9.2#b516", "§9.2#b517", "§9.2#b518", "§9.2#b519", "§9.2#b520", "§9.2#b521", "§9.2#b522", "§9.2#p26", "§9.2#p27", "§9.2#p28", "§9.2#p29", "§9.2#b534", "§9.2#b535", "§9.2#b537", "§9.2#b538", "§9.2#b540", "§9.2#b541", "§9.2#b549", "§9.2#b550", "§9.2#b551", "§9.2#b552", "§9.2#b553", "§9.2#b555", "§9.2#b543", "§9.2#b544", "§9.2#b545", "§9.2#b546", "§9.2#b554", "§9.4.1#r20", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r62", "§9.4.2#r130", "§9.4.2#r131", "§9.4.2#r133", "§9.4.2#r134", "§9.4.2#r135", "§9.4.2#r148", "§9.4.2#r149", "§9.4.2#r150", "§9.4.2#r151", "§9.4.2#r152", "§9.4.3#b4", "§9.4.4#r11", "§9.4.4#r48", "§9.4.4#r49", "§9.4.4#r50", "§9.4.4#r51", "§9.4.4#r53", "§9.8#r12", "§9.8#r13", "§9.8#r14", "§9.10.1#r11", "§10#b1", "§11#r5"]
+sourceRules: ["§Aturan Logika Modul#r74", "§Aturan Logika Modul#r81", "§4.1#p24", "§4.1#r193", "§4.1#r194", "§4.1#r195", "§4.1#r196", "§4.1#r198", "§9.2#b379", "§9.2#b380", "§9.2#b381", "§9.2#b382", "§9.2#b441", "§9.2#b443", "§9.2#b444", "§9.2#b445", "§9.2#b446", "§9.2#b448", "§9.2#b449", "§9.2#b450", "§9.2#b451", "§9.2#b453", "§9.2#b455", "§9.2#b456", "§9.2#b457", "§9.2#b458", "§9.2#b460", "§9.2#b461", "§9.2#b464", "§9.2#b465", "§9.2#b466", "§9.2#b468", "§9.2#b469", "§9.2#b470", "§9.2#b471", "§9.2#b472", "§9.2#b475", "§9.2#b476", "§9.2#b477", "§9.2#b488", "§9.2#b489", "§9.2#b490", "§9.2#b491", "§9.2#b492", "§9.2#b493", "§9.2#b494", "§9.2#b463", "§9.2#b442", "§9.2#b452", "§9.2#b462", "§9.2#b479", "§9.2#b480", "§9.2#b483", "§9.2#b481", "§9.2#b482", "§9.2#b500", "§9.2#b501", "§9.2#b503", "§9.2#b502", "§9.2#b504", "§9.2#b506", "§9.2#b507", "§9.2#b508", "§9.2#b509", "§9.2#b510", "§9.2#b511", "§9.2#b512", "§9.2#b513", "§9.2#b514", "§9.2#b515", "§9.2#b516", "§9.2#b517", "§9.2#b518", "§9.2#b519", "§9.2#b520", "§9.2#b521", "§9.2#b522", "§9.2#p26", "§9.2#p27", "§9.2#p28", "§9.2#p29", "§9.2#b534", "§9.2#b535", "§9.2#b537", "§9.2#b538", "§9.2#b540", "§9.2#b541", "§9.2#b549", "§9.2#b550", "§9.2#b551", "§9.2#b552", "§9.2#b553", "§9.2#b555", "§9.2#b543", "§9.2#b544", "§9.2#b545", "§9.2#b546", "§9.2#b554", "§9.4.1#r20", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r62", "§9.4.2#r130", "§9.4.2#r131", "§9.4.2#r133", "§9.4.2#r134", "§9.4.2#r135", "§9.4.2#r148", "§9.4.2#r149", "§9.4.2#r150", "§9.4.2#r151", "§9.4.2#r152", "§9.4.3#b4", "§9.4.4#r11", "§9.4.4#r48", "§9.4.4#r49", "§9.4.4#r50", "§9.4.4#r51", "§9.4.4#r53", "§9.8#r10", "§9.8#r11", "§9.8#r12", "§9.10.1#r11", "§10#b1", "§11#r5"]
 smoke: []
 dependsOn:
   - Transfer: pengajuan, Send, dan Receive
@@ -131,9 +131,9 @@ trace:
   "§9.4.4#r50": [53, 54, 55, 61]
   "§9.4.4#r51": [102, 109]
   "§9.4.4#r53": [30, 31, 35]
-  "§9.8#r12": 44
-  "§9.8#r13": [31, 32, 36, 37]
-  "§9.8#r14": 54
+  "§9.8#r10": 44
+  "§9.8#r11": [31, 32, 36, 37, 114, 123]
+  "§9.8#r12": 54
   "§9.10.1#r11": 129
   "§10#b1": 8
   "§11#r5": 102
@@ -339,10 +339,10 @@ anchor: []
 73. Hana menolak permintaan approval atas baris Transfer aset `Meja Hybrid 2 {runId}`
 74. Verifikasi baris Transfer aset `Meja Hybrid 2 {runId}` berstatus `Rejected` dan permintaan Hadi berstatus `Not Involved`, karena keputusan Group Manager tetap bersifat override final
 
-### Notifikasi approver_required saat Save konfigurasi Approval menimbulkan kondisi tanpa Approver
+### Save konfigurasi Approval tidak mengirim approver_required bila ada Role Transaksi Approver di Group lain
 75. Wulan mencatat jumlah notifikasi `approver_required` yang terkait Group `Gudang Tanpa Approver {runId}`
 76. Wulan menambah override aset untuk aset `Meja Save 1 {runId}` di All categories dengan Require approval `ON` dan Auto-approve `OFF`
-77. Verifikasi satu notifikasi `approver_required` baru terkirim karena Save konfigurasi Approval menimbulkan kondisi tidak ada Approver untuk Transfer aset itu
+77. Verifikasi tidak ada notifikasi `approver_required` baru yang terkait Group `Gudang Tanpa Approver {runId}`, karena Role Transaksi `Approver` Transfer ditugaskan di Group lain sehingga kondisi tidak ada Role Transaksi `Approver` yang ditugaskan tidak timbul akibat Save itu
 78. Wulan menambah override aset untuk aset `Meja Save 2 {runId}` di All categories dengan Photo at end `OFF`
 79. Verifikasi jumlah notifikasi `approver_required` tidak bertambah, karena konfigurasi Approval tidak diubah
 

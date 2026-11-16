@@ -4,7 +4,7 @@ title: "Area utama: Set own value, Reset to inherit, Reset to Default, dan tombo
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r118
   - §4.1#r218

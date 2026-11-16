@@ -4,7 +4,7 @@ title: "Save Changes di All categories mengubah Company default"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.2#b22", "§9.2#b34", "§9.4.2#r12", "§9.4.2#r13", "§9.4.2#r81", "§9.4.2#r83", "§9.2#p6"]
 smoke: ["§9.2#p6"]
 dependsOn: []

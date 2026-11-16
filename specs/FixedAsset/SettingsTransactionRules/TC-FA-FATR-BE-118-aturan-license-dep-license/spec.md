@@ -4,7 +4,7 @@ title: "Kuota Group pada Destination quota check"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§11#r12"]
 smoke: []

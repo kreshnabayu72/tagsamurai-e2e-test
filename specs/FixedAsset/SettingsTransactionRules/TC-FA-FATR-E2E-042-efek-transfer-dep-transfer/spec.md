@@ -4,7 +4,7 @@ title: "Setting Transfer berlaku pada transaksi Transfer"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.2#b166", "§9.4.2#r123", "§9.7#r28", "EB-XM-2@transfer", "§9.2#b277", "§9.2#p28", "§9.4.2#r61", "§9.4.2#r62"]
 smoke: ["§9.2#b277", "§9.2#p28", "§9.4.2#r61", "§9.4.2#r62"]
 dependsOn:
@@ -34,7 +34,7 @@ coverage:
   - DU-042-3: Group Name `Plant South {runId}`, Parent `Operations {runId}`; Group dengan induk langsung Operations.
   - DU-042-4: Group Name `Plant East {runId}`, Group quota `1`; Group dengan kuota 1 yang sudah terpakai.
   - DU-042-5: Category Name `Production Machinery {runId}`, Allow Transfer `Allow`; Category leaf dengan Allow Transfer nilai sendiri.
-  - DU-042-6: User Name `Tika Maharani {runId}`, Role `Employee`, Group `Plant North {runId}`; akun aktif.
+  - DU-042-6: User Name `Tika Maharani {runId}`, Role `Employee`, Group `Plant North {runId}`, Role Transaksi `Aktor Transfer`; akun aktif.
   - DU-042-7: User Name `Bambang Setiawan {runId}`, Role `Employee`, Group `Plant North {runId}`, Role Transaksi `Approver`; akun aktif.
   - DU-042-8: User Name `Citra Dewanti {runId}`, Role `Employee`, Group `Plant South {runId}`, Role Transaksi `Approver`; akun aktif.
   - DU-042-9: Asset Name `Furnace FN05 {runId}`, Category `Production Machinery {runId}`, Group `Plant East {runId}`, Status `Available`; aset yang menempati kuota Group tujuan.
@@ -57,6 +57,7 @@ coverage:
 - Kondisi:
   - Akun semua aktor di atas aktif dan kredensialnya tersedia untuk login.
   - Alokasi kuota per Group aktif, dan Group `Plant East {runId}` berkuota `1` dengan aset `Furnace FN05 {runId}` sudah menempati kuota itu.
+  - `Tika Maharani {runId}` berhak mengajukan Transfer karena memegang Role Transaksi `Aktor Transfer` untuk Group `Plant North {runId}`.
   - Role Transaksi `Approver` untuk Group `Plant North {runId}` hanya dipegang `Bambang Setiawan {runId}`, dan untuk Group `Plant South {runId}` hanya dipegang `Citra Dewanti {runId}`.
   - Pengajuan Transfer aset `Conveyor CV90 {runId}` dan `Press Brake PB60 {runId}` sudah melewati batas Transaction timeout statusnya masing-masing.
 

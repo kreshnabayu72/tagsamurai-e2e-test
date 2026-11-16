@@ -4,9 +4,9 @@ title: "Perubahan plan tercermin di Transaction Settings"
 layer: ui-e2e
 priority: High
 caseType: Positive
-status: draft
-sourceRules: ["§9.4.2#r54", "§9.4.4#r55", "§9.4.4#r57", "§9.4.4#r59", "§9.10.1#b9", "§9.10.2#b7", "§9.10.3#b7", "§11#r2", "§9.2#b557", "§9.2#b559", "§9.2#b561", "§9.8#r17"]
-smoke: ["§9.2#b557", "§9.2#b559", "§9.2#b561", "§9.8#r17"]
+status: ready-for-automation
+sourceRules: ["§9.4.2#r54", "§9.4.4#r55", "§9.4.4#r57", "§9.4.4#r59", "§9.10.1#b9", "§9.10.2#b7", "§9.10.3#b7", "§11#r2", "§9.2#b557", "§9.2#b559", "§9.2#b561", "§9.8#r15"]
+smoke: ["§9.2#b557", "§9.2#b559", "§9.2#b561", "§9.8#r15"]
 dependsOn:
   - "Admin Console: Plans & Features"
 trace:
@@ -21,7 +21,7 @@ trace:
   "§9.2#b557": 16
   "§9.2#b559": 33
   "§9.2#b561": 50
-  "§9.8#r17": 16
+  "§9.8#r15": 16
 anchor: [3]
 coverage:
   web: automated
@@ -39,6 +39,7 @@ coverage:
   - DU-056-4: Override Target `Plan Team {runId}`, Scope `Group`, Category `Plan Equipment {runId}`, Transaction `Assign`, Require approval `ON`; override Group dengan field bergerbang Require approval.
 - Kondisi:
   - Spec ini memakai entitas khusus `Entitas Plan {runId}` yang tidak dipakai spec lain, karena yang diubah adalah plan entitas.
+  - Plan `Entitas Plan {runId}` adalah plan khusus spec ini yang hanya dipakai entitas khusus itu, bukan plan bersama dengan entitas lain.
   - Plan entitas khusus ini memiliki Approval Workflow `ON`, level Feature Suite Borrowing `Full`, dan level Feature Suite Assignment `Full`.
   - Category `Plan Equipment {runId}` menyimpan Require approval Assign `ON`, Self service Borrow `ON`, Duration unit `Hours`, dan Direct handover between holders `Allow`.
 

@@ -4,7 +4,7 @@ title: "Dialog Save Changes: isi dan tombol"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r5
   - §4.1#r230

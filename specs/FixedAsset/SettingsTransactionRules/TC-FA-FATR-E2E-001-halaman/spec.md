@@ -4,7 +4,7 @@ title: "Halaman Transaction Settings menampilkan tab, bagian, dan nilai per node
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r92", "§4.2#b3", "§4.4#r2", "§9.2#b194", "§9.4.2#r19", "§9.5#r4", "§9.5#r11", "§11#r7"]
 smoke: []
 dependsOn: []
@@ -30,7 +30,6 @@ coverage:
   - DU-001-1: Category leaf `Pool Car {runId}`, tanpa sub-Category, ada di entitas aktor. Di tab Borrow: Duration unit bernilai sendiri `Hours`, Max duration Inherit, Max extensions bernilai sendiri `2`, Auto-approve when duration ≤ Inherit, field lain Inherit.
 - Kondisi:
   - Company default entitas aktor bernilai bawaan: Allow Borrow `Allow`, Duration unit `Days`, Max duration `14`, Max extensions `1`, Transaction timeout `7`, Require approval Borrow `ON`, Self service `OFF`, Auto-approve `ON`, Auto-approve when duration ≤ `3`.
-  - Tidak ada user yang memegang Role Transaksi `Approver` untuk transaksi Borrow di Group mana pun.
   - Plan entitas aktor menyediakan Approval Workflow dan semua tab transaksi, dengan level Feature Suite Borrowing `Full`.
 
 ## Test Steps
@@ -43,8 +42,8 @@ coverage:
 5. Verifikasi field `Max extensions` bernilai `1`
 6. Verifikasi field `Transaction timeout` bernilai `7`
 
-### Alert Approver tampil di bagian Approval
-7. Verifikasi bagian Approval tab `Borrow` menampilkan Alert warning `No one is assigned as Approver for this transaction in any Group. Approval goes to the Group Manager or Total Control.`
+### Require approval Borrow bernilai ON di bagian Approval
+7. Verifikasi field `Require approval` pada bagian Approval tab `Borrow` bernilai `ON`
 
 ### Tab transaksi aktif dipertahankan bila tersedia di node baru
 8. Klik tab `Transfer`

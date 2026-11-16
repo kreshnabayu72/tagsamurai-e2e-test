@@ -41,7 +41,7 @@ coverage:
 6. Pilih nilai `ON` pada field Require approval
 7. Klik `[Save]`
 8. Klik `[Save]` pada dialog Save Changes
-9. Verifikasi Alert severity warning `No one is assigned as Approver for this transaction in any Group. Approval goes to the Group Manager or Total Control.` tampil di bagian Approval tab `Assign`
+9. Verifikasi Alert `No one is assigned as Approver for this transaction in any Group. Approval goes to the Group Manager or Total Control.` tampil di bagian Approval tab `Assign`
 
 ### Penugasan Role Transaksi Approver menghilangkan Alert
 10. Tetapkan Role Transaksi `Approver` untuk transaksi `Assign` kepada user `Mira Lestari {runId}` pada Group `Fleet Team {runId}`

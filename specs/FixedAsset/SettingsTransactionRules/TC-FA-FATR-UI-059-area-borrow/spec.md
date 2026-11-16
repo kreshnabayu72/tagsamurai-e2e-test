@@ -4,7 +4,7 @@ title: "Area utama: field tab Borrow"
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r55
   - §4.1#r56

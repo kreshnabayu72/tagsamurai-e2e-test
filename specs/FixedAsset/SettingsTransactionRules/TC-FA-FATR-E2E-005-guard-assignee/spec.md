@@ -4,7 +4,7 @@ title: "Guard Allowed assignee menolak Save dan Add override"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#r117"
   - "§6#r23"

@@ -4,7 +4,7 @@ title: "Export rules mengunduh berkas aturan node terpilih"
 layer: ui-e2e
 priority: High
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.4#r9, §7#r10, §9.2#b309, §9.2#b315, §9.2#b322, §9.4.2#r49, §9.4.2#r50, §9.4.4#r41, §9.6#r4, §9.11#r4, EB-FB-2@export-rules, §9.2#b310]
 smoke: [§9.2#b310]
 dependsOn: []

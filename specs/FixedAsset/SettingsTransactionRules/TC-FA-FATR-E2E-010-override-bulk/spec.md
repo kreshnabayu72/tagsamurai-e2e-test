@@ -4,7 +4,7 @@ title: "Bulk Delete override"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#p49, §6#r30, §6#r31, §7#r7, D-07, §9.2#b117, §9.2#b190, §9.4.2#r79, §9.4.2#r117, §9.4.2#r118, §9.4.2#r119, §9.4.2#r120, §9.4.4#r26, §9.6#r28, EB-BLK-2@tabel-overrides, EB-BLK-3, EB-EDG-2, §9.2#b162, §9.6#r29]
 smoke: [§9.2#b162, §9.6#r29]
 dependsOn: []

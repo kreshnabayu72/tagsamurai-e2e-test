@@ -4,7 +4,7 @@ title: "Delete satu override"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.4#r19, §4.4#r20, §4.4#r21, §9.4.2#r114, §9.4.2#r115, §9.6#r3, §9.6#r27, §9.7#r16, §7#r5, §9.2#b108, §9.2#b160, §9.4.2#r116, §9.6#r26, EB-FB-1@delete-override]
 smoke: [§7#r5, §9.2#b108, §9.2#b160, §9.4.2#r116, §9.6#r26, EB-FB-1@delete-override]
 dependsOn: []

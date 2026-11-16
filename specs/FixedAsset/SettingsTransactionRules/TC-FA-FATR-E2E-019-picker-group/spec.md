@@ -4,7 +4,7 @@ title: "Dialog Select Group menampilkan Group menurut cakupan aktor"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [D-03, §9.5#r22, §11#r8]
 smoke: []
 dependsOn: []

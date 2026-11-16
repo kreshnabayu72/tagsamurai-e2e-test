@@ -4,7 +4,7 @@ title: "Setting Transfer dan Disposal berlaku di Accounting"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.4.2#r138"]
 smoke: []
 dependsOn:

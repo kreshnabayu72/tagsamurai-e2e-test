@@ -4,7 +4,7 @@ title: "Role tanpa akses tidak dapat membuka Transaction Settings"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [§2#r4, §2#r11, EB-AKS-1, EB-AKS-2]
 smoke: []
 dependsOn: []

@@ -11,7 +11,7 @@ dependsOn: []
 trace:
   "§4.1#r48": 35
   "§4.1#r50": [90, 97]
-  "§4.1#r91": [15, 134]
+  "§4.1#r91": [15, 134, 148, 149]
   "§4.4#r15": 2
   "§8.1#r1": [15, 90]
   "§8.1#r3": [15, 26]
@@ -44,6 +44,7 @@ coverage:
   - DU-020-3: Group `Proyek Karawang {runId}`.
 - Kondisi:
   - Long missing after bernilai `30` pada All categories.
+  - Company default menyimpan Duration unit `Days`; level Feature Suite Borrowing `Full`.
 
 ## Test Steps
 
@@ -203,3 +204,20 @@ coverage:
 133. Ketik Search `{runId}`, tekan Enter
 134. Verifikasi ada baris dengan Category `Kendaraan {runId} > Mobil Dinas {runId}`, Field `Borrow (Auto-approve when duration ≤)`, Old Value `Inherit`, dan New Value `2 days`
 135. Klik `✕` pada dialog Changelog
+
+### Satuan Duration unit Hours ditulis pada Old Value dan New Value di Changelog
+136. Klik tab `Borrow`
+137. Klik `[Set own value]` pada field Duration unit
+138. Pilih Duration unit `Hours`
+139. Klik `[Save]`
+140. Klik `[Save]` pada dialog Save Changes
+141. Klik `[Set own value]` pada field Max duration
+142. Isi Max duration `3`
+143. Isi Auto-approve when duration ≤ `4`
+144. Klik `[Save]`
+145. Klik `[Save]` pada dialog Save Changes
+146. Klik ikon Changelog di header
+147. Ketik Search `{runId}`, tekan Enter
+148. Verifikasi ada baris dengan Category `Kendaraan {runId} > Mobil Dinas {runId}`, Field `Borrow (Max duration)`, Old Value `Inherit`, dan New Value `3 hours`
+149. Verifikasi ada baris dengan Category `Kendaraan {runId} > Mobil Dinas {runId}`, Field `Borrow (Auto-approve when duration ≤)`, dan New Value `4 hours`
+150. Klik `✕` pada dialog Changelog

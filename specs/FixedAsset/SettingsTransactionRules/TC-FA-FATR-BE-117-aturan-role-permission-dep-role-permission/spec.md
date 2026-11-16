@@ -4,7 +4,7 @@ title: "Penugasan Approver di Role Permission"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§11#r1"]
 smoke: []

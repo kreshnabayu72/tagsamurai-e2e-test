@@ -4,7 +4,7 @@ title: "Penyelesaian nilai efektif menurut tingkat pewarisan"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§Aturan Logika Modul#r1", "§Aturan Logika Modul#r2", "§Aturan Logika Modul#r15", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r17", "§Aturan Logika Modul#r18", "§Aturan Logika Modul#r19", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r101", "§4.1#r88", "§4.1#r89", "§9.2#r1", "§9.2#r2", "§9.2#r3", "§9.2#r4", "§9.2#r5", "§9.2#r6", "§9.2#r7", "§9.2#r8", "§9.2#p6", "§9.2#b5", "§9.2#b78", "§9.2#b92", "§9.2#b109", "§9.2#b165", "§9.2#b183", "§9.2#b193", "§9.2#b200", "§9.4.2#r6", "§9.4.2#r56", "§9.4.2#r57", "§9.4.2#r102", "§9.4.2#r116", "§9.6#r11", "§9.7#r18", "§9.10.4#b3"]
 smoke: []

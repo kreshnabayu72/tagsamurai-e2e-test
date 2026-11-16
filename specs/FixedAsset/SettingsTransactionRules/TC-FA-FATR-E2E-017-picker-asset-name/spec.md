@@ -4,7 +4,7 @@ title: "Dialog Select Asset Name menampilkan Asset Name dari data nyata"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r361, §4.1#r384, §4.1#r385, §4.1#r386, §4.1#r387, §4.1#r388, §4.1#r389, §5#r3, §5#r4, D-04, §9.5#r10, §9.5#r23, §9.5#r24, §11#r9, EB-TBL-9@select-asset-name, EB-SRC-5@select-asset-name]
 smoke: []
 dependsOn: []

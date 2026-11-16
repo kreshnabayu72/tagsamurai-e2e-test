@@ -4,7 +4,7 @@ title: "Column Visibility tabel Overrides tersimpan"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [EB-SRC-5@tabel-overrides, EB-KOL-2@tabel-overrides, EB-KOL-3]
 smoke: []
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Area utama: struktur tab, bagian, dan baris field"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §Aturan Logika Modul#r10
   - §Aturan Logika Modul#r66

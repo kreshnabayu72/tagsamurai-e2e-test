@@ -4,7 +4,7 @@ title: "Area utama: tampilan field dan tab bergerbang plan"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §Aturan Logika Modul#r75
   - §Aturan Logika Modul#r76
@@ -65,7 +65,7 @@ trace:
   §Aturan Logika Modul#r110: [62, 67]
   §4.1#r54: [10, 38, 40, 48]
   §4.1#r229: 32
-  §4.3#r12: [35, 36, 38, 40, 44, 103]
+  §4.3#r12: [35, 36, 38, 40, 44, 103, 116, 117, 118]
   §4.3#r13: [46, 48, 53, 106, 109, 110]
   §4.3#r14: [55, 57, 58, 62, 64, 65]
   §4.3#r15: [69, 71, 72, 75, 76, 78, 79]
@@ -115,6 +115,7 @@ coverage:
   - DU-066-10: Pengaturan Company default tab Transfer pada All categories: Require approval tersimpan `OFF`, Auto-approve tersimpan `ON`, Auto-approve when destination in same parent Group tersimpan `ON`, Approval type tersimpan `All approvers (AND)`, Approval scope tersimpan `Origin only`.
   - DU-066-11: Pengaturan Category leaf `Machinery` tab Assign: Direct handover between holders bernilai sendiri tersimpan `Deny`.
   - DU-066-12: Pengaturan Category leaf `Machinery` tab Borrow: Require approval bernilai sendiri tersimpan `ON`, Approval type bernilai sendiri tersimpan `All approvers (AND)`.
+  - DU-066-14: Pengaturan Category leaf `Machinery` tab Borrow: Self service bernilai sendiri tersimpan `ON`, Duration unit bernilai sendiri tersimpan `Hours`.
   - DU-066-13: Pengaturan Company default tab Disposal pada All categories: Require approval tersimpan `ON`.
 - Kondisi:
   - K1: node All categories terpilih, tab Borrow aktif, Approval Workflow tidak tersedia di plan, level Feature Suite Borrowing Full, tidak ada Approver ditugaskan untuk Borrow di Group mana pun, nilai memakai DU-066-1.
@@ -134,6 +135,7 @@ coverage:
   - K15: node All categories terpilih, tab Assign aktif, level Feature Suite Assignment Basic, Approval Workflow tersedia di plan, Approver ditugaskan untuk Assign di Group, nilai memakai DU-066-7.
   - K16: node Category leaf `Machinery` terpilih, tab Assign aktif, level Feature Suite Assignment Basic, nilai memakai DU-066-11.
   - K17: node Category leaf `Machinery` terpilih, tab Borrow aktif, Approval Workflow tidak tersedia di plan, nilai memakai DU-066-12.
+  - K18: node Category leaf `Machinery` terpilih, tab Borrow aktif, level Feature Suite Borrowing Basic, nilai memakai DU-066-14.
   - K18: node All categories terpilih, tab Disposal aktif, Approval Workflow tidak tersedia di plan, nilai memakai DU-066-13.
 
 ## Test Steps
@@ -289,3 +291,9 @@ coverage:
 112. Verifikasi `Require approval` tampil disabled dengan nilai tersimpan `ON` pada Category leaf `Machinery`
 113. Verifikasi `Approval type` tampil disabled dengan nilai tersimpan `All approvers (AND)` pada Category leaf `Machinery`
 114. Verifikasi tombol `Set own value` dan tombol `Reset to inherit` tidak ada pada `Require approval` dan `Approval type`
+
+### Self service dan Duration unit bernilai sendiri di Category saat level Borrowing Basic
+115. Tampilkan Area utama dengan kondisi K18
+116. Verifikasi `Self service` tampil disabled dengan nilai tersimpan `ON` pada Category leaf `Machinery`
+117. Verifikasi `Duration unit` tampil disabled dengan nilai tersimpan `Hours` pada Category leaf `Machinery`
+118. Verifikasi tombol `Set own value` dan tombol `Reset to inherit` tidak ada pada `Self service` dan `Duration unit`

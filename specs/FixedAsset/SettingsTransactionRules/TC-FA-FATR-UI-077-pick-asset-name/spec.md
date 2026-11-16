@@ -4,7 +4,7 @@ title: "Dialog Select Asset Name: kolom, toolbar, footer, dan validasi"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#r358"
   - "§4.1#r365"

@@ -4,7 +4,7 @@ title: "Transaction timeout dan versi setting pada transaksi Assign"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§Aturan Logika Modul#r5", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r30", "§Aturan Logika Modul#r37", "§9.2#b128", "§9.2#b140", "§9.2#b201", "§9.2#b203", "§9.2#b205", "§9.2#b206", "§9.2#b207", "§9.2#b208", "§9.2#b213", "§9.2#b214", "§9.2#b217", "§9.2#b218", "§9.2#b219", "§9.2#b221", "§9.2#b225", "§9.2#b259", "§9.2#b260", "§9.2#b261", "§9.2#b262", "§9.2#b263", "§9.2#b264", "§9.2#b265", "§9.2#b283", "§9.2#b289", "§9.2#b293", "§9.2#b300", "§9.2#b383", "§9.2#b395", "§9.2#b396", "§9.2#b437", "§9.2#b439", "§9.4.1#r11", "§9.4.2#r46", "§9.4.2#r127", "§9.4.2#r129", "§9.4.2#r139", "§9.4.2#r142", "§9.4.2#r143", "§9.4.3#b10", "§9.4.4#r37", "§9.6#r5", "§9.7#r2", "§9.7#r11", "§9.7#r22", "§9.7#r31", "§9.10.1#b8", "§11#r20"]
 smoke: []
 dependsOn:

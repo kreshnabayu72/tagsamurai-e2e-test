@@ -4,7 +4,7 @@ title: "Filter tabel Overrides"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r239, §4.1#r241, §4.1#r242, §4.1#r244, §4.1#r243, EB-FLT-1@tabel-overrides, EB-FLT-4@tabel-overrides, EB-FLT-3]
 smoke: [EB-FLT-3]
 dependsOn: []

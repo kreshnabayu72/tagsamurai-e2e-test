@@ -4,7 +4,7 @@ title: "Authz per role dan cakupan Group"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§2#p2", "§9.2#b1", "§9.2#b82", "§9.2#b126", "§9.2#b139", "§9.2#b156", "§9.2#b160", "§9.2#b307", "§9.2#b341", "§9.3#b1", "§9.3#b3", "§9.4.1#r16", "§9.4.1#r17", "§9.4.1#r18", "§9.4.1#r19", "§9.4.2#r3", "§9.4.2#r23", "§9.4.2#r30", "§9.4.3#b5", "§9.4.4#r1", "§9.4.4#r24", "§9.4.4#r25", "§9.11#r1", "§9.11#r2", "§9.11#r3", "§9.11#r4", "§9.11#r5", "§9.11#r6", "§9.11#r7", "§9.11#r8", "§9.11#r9", "§9.11#r10", "§10#b4", "§11#r1", EB-AKS-3@save-changes, EB-AKS-3@add-override, EB-AKS-3@delete-override]
 smoke: []

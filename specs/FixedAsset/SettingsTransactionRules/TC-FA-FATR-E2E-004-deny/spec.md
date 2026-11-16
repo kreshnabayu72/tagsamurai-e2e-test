@@ -4,7 +4,7 @@ title: "Allow bernilai Deny menyembunyikan bagian lain tanpa menghapus nilainya"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§Aturan Logika Modul#r25", "§9.2#b17", "§9.4.2#r100", "§9.4.2#r101", "§9.4.2#r103", "§9.4.3#b3", "§9.4.2#r102"]
 smoke: ["§9.4.2#r102"]
 dependsOn: []

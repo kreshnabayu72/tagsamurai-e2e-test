@@ -4,23 +4,23 @@ title: "Approval dan penentuan approver pada transaksi Assign"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
-sourceRules: ["§Aturan Logika Modul#r74", "§Aturan Logika Modul#r81", "§4.1#r193", "§4.1#r194", "§4.1#r195", "§4.1#r196", "§9.2#b379", "§9.2#b380", "§9.2#b381", "§9.2#b382", "§9.2#b441", "§9.2#b443", "§9.2#b444", "§9.2#b445", "§9.2#b446", "§9.2#b448", "§9.2#b449", "§9.2#b450", "§9.2#b451", "§9.2#b453", "§9.2#b455", "§9.2#b456", "§9.2#b457", "§9.2#b458", "§9.2#b460", "§9.2#b461", "§9.2#b464", "§9.2#b465", "§9.2#b466", "§9.2#b468", "§9.2#b469", "§9.2#b470", "§9.2#b471", "§9.2#b472", "§9.2#b475", "§9.2#b476", "§9.2#b477", "§9.2#b488", "§9.2#b489", "§9.2#b490", "§9.2#b491", "§9.2#b492", "§9.2#b493", "§9.2#b494", "§9.2#b463", "§9.2#b479", "§9.2#b480", "§9.2#b483", "§9.2#b481", "§9.2#b482", "§9.2#b534", "§9.2#b535", "§9.2#b537", "§9.2#b538", "§9.2#b540", "§9.2#b541", "§9.2#b549", "§9.2#b550", "§9.2#b551", "§9.2#b552", "§9.2#b553", "§9.2#b555", "§9.4.1#r20", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r130", "§9.4.2#r131", "§9.4.2#r148", "§9.4.2#r149", "§9.4.2#r150", "§9.4.2#r152", "§9.4.3#b4", "§9.4.4#r11", "§9.4.4#r48", "§9.4.4#r49", "§9.4.4#r50", "§9.4.4#r53", "§9.8#r12", "§9.8#r13", "§9.8#r14", "§9.10.1#r11", "§10#b1"]
+status: ready-for-automation
+sourceRules: ["§Aturan Logika Modul#r74", "§Aturan Logika Modul#r81", "§4.1#r193", "§4.1#r194", "§4.1#r195", "§4.1#r196", "§9.2#b379", "§9.2#b380", "§9.2#b381", "§9.2#b382", "§9.2#b441", "§9.2#b443", "§9.2#b444", "§9.2#b445", "§9.2#b446", "§9.2#b448", "§9.2#b449", "§9.2#b450", "§9.2#b451", "§9.2#b453", "§9.2#b455", "§9.2#b456", "§9.2#b457", "§9.2#b458", "§9.2#b460", "§9.2#b461", "§9.2#b464", "§9.2#b465", "§9.2#b466", "§9.2#b468", "§9.2#b469", "§9.2#b470", "§9.2#b471", "§9.2#b472", "§9.2#b475", "§9.2#b476", "§9.2#b477", "§9.2#b488", "§9.2#b489", "§9.2#b490", "§9.2#b491", "§9.2#b492", "§9.2#b493", "§9.2#b494", "§9.2#b463", "§9.2#b479", "§9.2#b480", "§9.2#b483", "§9.2#b481", "§9.2#b482", "§9.2#b534", "§9.2#b535", "§9.2#b537", "§9.2#b538", "§9.2#b540", "§9.2#b541", "§9.2#b549", "§9.2#b550", "§9.2#b551", "§9.2#b552", "§9.2#b553", "§9.2#b555", "§9.4.1#r20", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r130", "§9.4.2#r131", "§9.4.2#r148", "§9.4.2#r149", "§9.4.2#r150", "§9.4.2#r152", "§9.4.3#b4", "§9.4.4#r11", "§9.4.4#r48", "§9.4.4#r49", "§9.4.4#r50", "§9.4.4#r53", "§9.8#r10", "§9.8#r11", "§9.8#r12", "§9.10.1#r11", "§10#b1"]
 smoke: []
 dependsOn:
   - "Assign: pengajuan, handover, Reassign, dan Unassign"
 owner: BE
 trace:
-  "§Aturan Logika Modul#r74": 108
-  "§Aturan Logika Modul#r81": 109
+  "§Aturan Logika Modul#r74": 107
+  "§Aturan Logika Modul#r81": 108
   "§4.1#r193": 6
   "§4.1#r194": [9, 14]
   "§4.1#r195": [23, 25]
   "§4.1#r196": [10, 28]
-  "§9.2#b379": [99, 101, 112, 114]
+  "§9.2#b379": [99, 101, 110, 112, 127, 129, 131]
   "§9.2#b380": 3
   "§9.2#b381": [4, 33]
-  "§9.2#b382": 108
+  "§9.2#b382": 107
   "§9.2#b441": 11
   "§9.2#b443": [9, 87]
   "§9.2#b444": 25
@@ -29,15 +29,15 @@ trace:
   "§9.2#b448": [4, 6, 33]
   "§9.2#b449": 4
   "§9.2#b450": 5
-  "§9.2#b451": [34, 35, 117, 118, 119]
+  "§9.2#b451": [34, 35, 115, 116, 117]
   "§9.2#b453": 42
   "§9.2#b455": [9, 23]
   "§9.2#b456": [9, 14]
   "§9.2#b457": [23, 25]
   "§9.2#b458": [10, 15, 28, 29]
   "§9.2#b460": 70
-  "§9.2#b461": [70, 76, 121]
-  "§9.2#b464": [74, 95, 125, 126]
+  "§9.2#b461": [70, 76, 119]
+  "§9.2#b464": [74, 95, 123, 124]
   "§9.2#b465": 80
   "§9.2#b466": 73
   "§9.2#b468": 85
@@ -68,13 +68,13 @@ trace:
   "§9.2#b540": [36, 45]
   "§9.2#b541": 38
   "§9.2#b549": [70, 76]
-  "§9.2#b550": [70, 76, 121, 125]
-  "§9.2#b551": [71, 122, 126]
+  "§9.2#b550": [70, 76, 119, 123]
+  "§9.2#b551": [71, 120, 124]
   "§9.2#b552": 77
   "§9.2#b553": 72
   "§9.2#b555": 80
   "§9.4.1#r20": 83
-  "§9.4.2#r37": 108
+  "§9.4.2#r37": 107
   "§9.4.2#r40": [92, 94]
   "§9.4.2#r42": [18, 19]
   "§9.4.2#r130": [36, 45]
@@ -89,17 +89,17 @@ trace:
   "§9.4.4#r49": 91
   "§9.4.4#r50": 36
   "§9.4.4#r53": [70, 76]
-  "§9.8#r12": [92, 93]
-  "§9.8#r13": [71, 77]
-  "§9.8#r14": 37
-  "§9.10.1#r11": 108
+  "§9.8#r10": [92, 93]
+  "§9.8#r11": [71, 77]
+  "§9.8#r12": 37
+  "§9.10.1#r11": 107
   "§10#b1": 11
 ---
 
 # Approval dan penentuan approver pada transaksi Assign
 
 ## Prerequisites
-- Aktor: Admin `Budi Santoso {runId}` (Total Control entitas; membuat override dan, pada blok Kondisi A, mengajukan transaksi sebagai Total Control); `Tia Anggraini {runId}` (pengaju Assign, bukan Group Manager dan bukan Total Control); Approver, Group Manager, dan Total Control sesuai data di bawah; Operator platform (hanya mengubah Approval Workflow pada plan entitas).
+- Aktor: Admin `Budi Santoso {runId}` (Total Control entitas; membuat override dan, pada blok Kondisi A, mengajukan transaksi sebagai Total Control); `Tia Anggraini {runId}` (pengaju Assign, bukan Group Manager dan bukan Total Control); Approver, Group Manager, dan Total Control sesuai data di bawah.
 - Data:
   - DU-101-1: User: Name `Budi Santoso {runId}`, Status `Aktif`, Role `Total Control entitas`; user di entitas suite.
   - DU-101-2: User: Name `Tia Anggraini {runId}`, Status `Aktif`, Role `Pengaju Assign, bukan Group Manager dan bukan Total Control`; user di entitas suite.
@@ -169,7 +169,6 @@ trace:
   - DU-101-66: Asset: Name `Handphone Xiaomi Redmi Note 12 {runId}`, Group `Gudang Pontianak {runId}`; aset milik spec ini.
   - DU-101-67: Asset: Name `Handphone Oppo A78 {runId}`, Group `Gudang Pontianak {runId}`; aset milik spec ini.
   - DU-101-68: Asset: Name `Server Dell PowerEdge T150 {runId}`, Group `Gudang Manado {runId}`; aset milik spec ini.
-  - DU-101-69: Plan entitas: Approval Workflow `Tersedia`; keadaan plan entitas suite.
   - DU-101-76: User: Name `Susanti Wijaya {runId}`, Status `Aktif`, Role `Total Control entitas`; user di entitas suite.
   - DU-101-77: User: Name `Lukman Hakim {runId}`, Status `Aktif`, Role `Pemegang peran Approver dengan akses Read Only`; user di entitas suite.
   - DU-101-78: User: Name `Nanda Pratiwi {runId}`, Status `Aktif`, Role `Pemegang peran Approver tanpa lisensi addon`; user di entitas suite.
@@ -326,34 +325,40 @@ trace:
 104. Admin `Budi Santoso {runId}` membuat override pada aset `Server Dell PowerEdge T150 {runId}` untuk transaksi Assign dengan Recipient acceptance `Optional`
 105. Verifikasi tidak ada notifikasi `approver_required` baru karena konfigurasi Approval tidak diubah
 
-### Approval dilewati saat Approval Workflow tidak tersedia di plan
-106. Operator platform mengubah Approval Workflow pada plan entitas menjadi tidak tersedia
-107. `Tia Anggraini {runId}` mengajukan Assign aset `Laptop Acer Swift 3 {runId}` kepada `Bayu Saputra {runId}`
-108. Verifikasi pengajuan tidak berstatus `Waiting for Approval` melainkan langsung `Waiting for Handover`, karena nilai efektif Require approval `OFF` saat Approval Workflow tidak tersedia
-109. Verifikasi tidak ada permintaan approval untuk `Wawan Hidayat {runId}` dan `Citra Lestari {runId}` walau mereka Approver pada Group `Gudang Cikarang {runId}`, karena penugasan Role Transaksi `Approver` tidak dipakai selama Approval Workflow tidak tersedia
-110. Operator platform mengubah Approval Workflow pada plan entitas menjadi tersedia
+### Approval berlaku selama Approval Workflow tersedia di plan
+106. `Tia Anggraini {runId}` mengajukan Assign aset `Laptop Acer Swift 3 {runId}` kepada `Bayu Saputra {runId}`
+107. Verifikasi pengajuan aset `Laptop Acer Swift 3 {runId}` berstatus `Waiting for Approval` dan langkah approval tidak dilewati, karena Approval Workflow tersedia di plan entitas dan nilai efektif Require approval `ON` dari override Group `Gudang Cikarang {runId}`
+108. Verifikasi permintaan approval terbentuk untuk `Wawan Hidayat {runId}` dan `Citra Lestari {runId}`, karena penugasan Role Transaksi `Approver` dipakai selama Approval Workflow tersedia di plan
 
 ### Urutan evaluasi: aturan tetap dan Eligibility ditolak sebelum approval
-111. `Tia Anggraini {runId}` mengajukan Assign aset `Laptop HP EliteBook 840 {runId}`, yang masih punya transaksi Assign aktif, kepada `Bayu Saputra {runId}`
-112. Verifikasi pengajuan ditolak oleh aturan tetap satu transaksi aktif per aset, sebelum approval, dan tidak ada permintaan approval yang terbentuk
-113. `Tia Anggraini {runId}` mengajukan Assign aset `Laptop Lenovo Yoga Slim 7 {runId}` kepada `Dian Pertiwi {runId}`
-114. Verifikasi pengajuan ditolak oleh Eligibility karena assignee Employee `Dian Pertiwi {runId}` berstatus Nonaktif, sebelum approval, dan tidak ada permintaan approval yang terbentuk
+109. `Tia Anggraini {runId}` mengajukan Assign aset `Laptop HP EliteBook 840 {runId}`, yang masih punya transaksi Assign aktif, kepada `Bayu Saputra {runId}`
+110. Verifikasi pengajuan ditolak oleh aturan tetap satu transaksi aktif per aset, sebelum approval, dan tidak ada permintaan approval yang terbentuk
+111. `Tia Anggraini {runId}` mengajukan Assign aset `Laptop Lenovo Yoga Slim 7 {runId}` kepada `Dian Pertiwi {runId}`
+112. Verifikasi pengajuan ditolak oleh Eligibility karena assignee Employee `Dian Pertiwi {runId}` berstatus Nonaktif, sebelum approval, dan tidak ada permintaan approval yang terbentuk
 
 ### Approver berakses Read Only dan tanpa lisensi addon tidak eligible
-115. Admin `Budi Santoso {runId}` membuat override pada Group `Gudang Malang {runId}` untuk transaksi Assign dengan Require approval `ON` dan Approval type `Any one approver`
-116. `Tia Anggraini {runId}` mengajukan Assign aset `Printer Epson L3210 {runId}` kepada `Bayu Saputra {runId}`
-117. Verifikasi `Lukman Hakim {runId}`, Approver pada Group `Gudang Malang {runId}` yang berakses Read Only, tidak termasuk approver transaksi itu dan tidak menerima permintaan approval
-118. Verifikasi `Nanda Pratiwi {runId}`, Approver pada Group `Gudang Malang {runId}` yang tanpa lisensi addon, tidak termasuk approver transaksi itu dan tidak menerima permintaan approval
-119. Verifikasi tidak ada Approver eligible yang mencakup Group `Gudang Malang {runId}`, sehingga approver jatuh ke user Total Control karena tidak ada Group Manager yang menaungi
+113. Admin `Budi Santoso {runId}` membuat override pada Group `Gudang Malang {runId}` untuk transaksi Assign dengan Require approval `ON` dan Approval type `Any one approver`
+114. `Tia Anggraini {runId}` mengajukan Assign aset `Printer Epson L3210 {runId}` kepada `Bayu Saputra {runId}`
+115. Verifikasi `Lukman Hakim {runId}`, Approver pada Group `Gudang Malang {runId}` yang berakses Read Only, tidak termasuk approver transaksi itu dan tidak menerima permintaan approval
+116. Verifikasi `Nanda Pratiwi {runId}`, Approver pada Group `Gudang Malang {runId}` yang tanpa lisensi addon, tidak termasuk approver transaksi itu dan tidak menerima permintaan approval
+117. Verifikasi tidak ada Approver eligible yang mencakup Group `Gudang Malang {runId}`, sehingga approver jatuh ke user Total Control karena tidak ada Group Manager yang menaungi
 
 ### Pengaju Group Manager di Group induk melewati approval
-120. `Indra Wijaya {runId}` mengajukan Assign aset `Scanner Canon DR-C225 {runId}` kepada `Putri Handayani {runId}`
-121. Verifikasi seluruh langkah approval dilewati dan transaksi langsung `Waiting for Handover` karena pengaju adalah Group Manager di Group induk `Kantor Pusat Jakarta {runId}` yang menaungi Group aset `Gudang Jakarta Timur {runId}` lewat ancestor-nya, walau Group aset ber-Require approval `ON` dengan Approval type `All approvers (AND)`
-122. Verifikasi log transaksi memuat `Approved by [Nama] (Group Manager — requester)` dengan [Nama] adalah `Indra Wijaya {runId}`
+118. `Indra Wijaya {runId}` mengajukan Assign aset `Scanner Canon DR-C225 {runId}` kepada `Putri Handayani {runId}`
+119. Verifikasi seluruh langkah approval dilewati dan transaksi langsung `Waiting for Handover` karena pengaju adalah Group Manager di Group induk `Kantor Pusat Jakarta {runId}` yang menaungi Group aset `Gudang Jakarta Timur {runId}` lewat ancestor-nya, walau Group aset ber-Require approval `ON` dengan Approval type `All approvers (AND)`
+120. Verifikasi log transaksi memuat `Approved by [Nama] (Group Manager — requester)` dengan [Nama] adalah `Indra Wijaya {runId}`
 
 ### Kondisi A dievaluasi sebelum self-approval guard
-123. Admin `Budi Santoso {runId}` membuat override pada Group `Gudang Tangerang {runId}` untuk transaksi Assign dengan Require approval `ON` dan Approval type `Any one approver`
-124. `Yusuf Hakim {runId}` mengajukan Assign aset `Printer Brother HL-L5100 {runId}` kepada `Putri Handayani {runId}`
-125. Verifikasi seluruh langkah approval dilewati dan transaksi langsung `Waiting for Handover` karena pengaju adalah Group Manager yang menaungi Group aset, walau pengaju juga satu-satunya Approver eligible Group `Gudang Tangerang {runId}`
-126. Verifikasi log transaksi memuat `Approved by [Nama] (Group Manager — requester)` dengan [Nama] adalah `Yusuf Hakim {runId}`, dan bukan `Approved by system (no independent approver)`
+121. Admin `Budi Santoso {runId}` membuat override pada Group `Gudang Tangerang {runId}` untuk transaksi Assign dengan Require approval `ON` dan Approval type `Any one approver`
+122. `Yusuf Hakim {runId}` mengajukan Assign aset `Printer Brother HL-L5100 {runId}` kepada `Putri Handayani {runId}`
+123. Verifikasi seluruh langkah approval dilewati dan transaksi langsung `Waiting for Handover` karena pengaju adalah Group Manager yang menaungi Group aset, walau pengaju juga satu-satunya Approver eligible Group `Gudang Tangerang {runId}`
+124. Verifikasi log transaksi memuat `Approved by [Nama] (Group Manager — requester)` dengan [Nama] adalah `Yusuf Hakim {runId}`, dan bukan `Approved by system (no independent approver)`
 
+### Urutan evaluasi: aturan tetap dan Deny pada override mendahului Eligibility dan Limits
+125. Admin `Budi Santoso {runId}` membuat override pada aset `Laptop HP EliteBook 840 {runId}` untuk transaksi Assign dengan Allow Assign `Deny`
+126. `Tia Anggraini {runId}` mengajukan Assign aset `Laptop HP EliteBook 840 {runId}`, yang masih punya transaksi Assign aktif dan kini ber-Deny pada override, kepada `Bayu Saputra {runId}`
+127. Verifikasi pengajuan ditolak oleh aturan tetap satu transaksi aktif per aset, bukan oleh Deny pada override, karena aturan tetap dievaluasi lebih dulu daripada Deny pada override
+128. `Tia Anggraini {runId}` mengajukan Assign aset `Handphone Xiaomi Redmi Note 12 {runId}`, yang ber-Deny pada override, kepada `Ratna Dewi {runId}`, yang sudah memegang aset sebesar batas Max assets per assignee (concurrent) `1`
+129. Verifikasi pengajuan ditolak oleh Deny pada override, bukan oleh batas Max assets per assignee (concurrent) `1`, karena Deny pada override dievaluasi lebih dulu daripada Limits
+130. `Tia Anggraini {runId}` mengajukan Assign aset `Handphone Xiaomi Redmi Note 12 {runId}` kepada `Dian Pertiwi {runId}`, yang berstatus Nonaktif
+131. Verifikasi pengajuan ditolak oleh Deny pada override, bukan oleh Eligibility karena assignee `Dian Pertiwi {runId}` berstatus Nonaktif, karena Deny pada override dievaluasi lebih dulu daripada Eligibility

@@ -4,7 +4,7 @@ title: "Header halaman: breadcrumb, Export rules, dan tombol Changelog"
 layer: ui-client
 priority: High
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r1
   - §4.1#p1

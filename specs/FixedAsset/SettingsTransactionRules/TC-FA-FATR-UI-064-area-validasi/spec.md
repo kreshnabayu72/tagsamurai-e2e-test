@@ -4,7 +4,7 @@ title: "Area utama: validasi field sebelum Save"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r115
   - §4.1#r202
@@ -69,7 +69,7 @@ trace:
   §6#r34: 90
   §6#r38: [90, 92]
   §9.2#r9: [119, 120, 122]
-  §9.2#b31: [110, 113]
+  §9.2#b31: [110, 113, 130, 131]
   §9.2#b44: [98, 103]
   §9.2#b68: [8, 9, 10, 11, 12, 42, 49, 60, 61, 75]
   §9.2#b69: [21, 22, 23, 24, 52, 65, 66]
@@ -115,12 +115,14 @@ coverage:
   - DU-064-8: Pengaturan Category leaf `Machinery` tab Borrow: semua field Inherit, Company default Max duration `14` dengan Duration unit `Days`.
   - DU-064-9: Nilai Max duration `400` yang dicoba untuk Duration unit `Days`.
   - DU-064-10: Pengaturan Category leaf `Machinery` tab Borrow: semua field Inherit, Company default Duration unit `Hours` dengan Max duration `9000`.
+  - DU-064-11: Draft tidak valid di node Category leaf `Machinery` tab Borrow: Max duration bernilai sendiri `0`. Node All categories yang dilihat tidak punya draft tidak valid.
 - Kondisi:
   - K1: node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-064-1.
   - K2: node All categories terpilih, tab Disposal aktif, Allowed disposal types hanya `Sell` memakai DU-064-5, field lain memakai DU-064-1.
   - K3: node Category leaf `Machinery` terpilih, tab Assign aktif, nilai memakai DU-064-7.
   - K4: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-064-8.
   - K5: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-064-10.
+  - K6: node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-064-1, draft tidak valid ada di node Category leaf `Machinery` sesuai DU-064-11.
 
 ## Test Steps
 
@@ -278,3 +280,9 @@ coverage:
 125. Verifikasi peringatan `Max duration exceeds 1 year in total. You can still save.` tidak ada pada nilai warisan
 126. Klik `Set own value` pada `Duration unit`
 127. Verifikasi peringatan `Max duration exceeds 1 year in total. You can still save.` tampil di bagian `Limits`
+
+### Draft tidak valid di node Category lain
+128. Tampilkan Area utama dengan kondisi K6
+129. Klik `Save`
+130. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `Max duration` pada node Category leaf `Machinery` tab `Borrow`
+131. Verifikasi dialog `Save Changes` tidak tampil dan Save tidak diproses

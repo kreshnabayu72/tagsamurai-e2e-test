@@ -4,7 +4,7 @@ title: "Filter tabel Changelog"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r398, §4.1#r400, §4.1#r401, §4.1#r404, EB-FLT-1@changelog, EB-FLT-4@changelog]
 smoke: []
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Isi berkas unduhan Changelog"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [EB-DL-4, EB-DL-5]
 smoke: []

@@ -4,7 +4,7 @@ title: "Sidebar Category Tree: pohon, pencarian, dan collapse"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r4
   - §4.1#p1
@@ -60,7 +60,7 @@ coverage:
   - K2: sidebar terbuka, pohon memakai DU-069-1, cabang `Vehicle` tertutup, `All categories` terpilih.
   - K3: sidebar terbuka, pohon memakai DU-069-1, kolom pencarian kosong.
   - K4: layar di bawah breakpoint tablet, pohon memakai DU-069-1.
-  - K5: sidebar terbuka, pohon memakai DU-069-1, fokus keyboard berada di baris `All categories` pada pohon.
+  - K5: sidebar terbuka, pohon memakai DU-069-1, `All categories` terbuka dan cabang `Vehicle` tertutup, fokus keyboard berada di baris `All categories` pada pohon.
 
 ## Test Steps
 

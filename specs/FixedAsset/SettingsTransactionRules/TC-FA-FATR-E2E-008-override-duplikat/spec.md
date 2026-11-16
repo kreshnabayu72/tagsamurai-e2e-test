@@ -4,7 +4,7 @@ title: "Add override ditolak untuk override aktif yang duplikat"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r279, §4.1#r280, §6#r10, §9.2#b97, §9.4.2#r107, §9.4.2#r108, §9.4.2#r110, §9.4.4#r21, §9.9#r21, §Aturan Logika Modul#r42, §9.2#b98, §9.6#r22, EB-FRM-5@target-add-override]
 smoke: [§Aturan Logika Modul#r42, §9.2#b98, §9.6#r22, EB-FRM-5@target-add-override]
 dependsOn: []

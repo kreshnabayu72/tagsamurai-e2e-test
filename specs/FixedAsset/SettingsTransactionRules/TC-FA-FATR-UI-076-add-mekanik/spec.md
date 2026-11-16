@@ -4,7 +4,7 @@ title: "Dialog Add override: footer, Clear Field, penutupan, dan reaksi atas res
 layer: ui-client
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#r330"
   - "§4.1#r331"

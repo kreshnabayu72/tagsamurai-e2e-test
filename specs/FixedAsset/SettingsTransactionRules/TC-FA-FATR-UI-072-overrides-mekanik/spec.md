@@ -4,7 +4,7 @@ title: "Tabel Overrides: Search, Filter, Sort, paginasi, dan Column Visibility"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r266, §5#r2, §5#r3, §9.5#r2, EB-TBL-7@tabel-overrides, EB-SRC-4@tabel-overrides, EB-FLT-2@tabel-overrides, EB-FLT-6@tabel-overrides, EB-SRT-3@tabel-overrides, EB-KOL-1@tabel-overrides]
 smoke: []
 dependsOn: []

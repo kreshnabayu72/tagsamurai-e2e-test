@@ -4,7 +4,7 @@ title: "Search dan Column Visibility tabel Changelog"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r399", "§4.1#r402", "§4.1#r403", "§4.1#r400", "§4.1#r401", "§4.1#r404", "§5#r3", "§9.4.2#r53", "EB-SRC-2@changelog", "EB-SRC-3@changelog", "EB-SRC-5@changelog", "EB-KOL-2@changelog"]
 smoke: []
 dependsOn: []

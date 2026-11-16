@@ -4,7 +4,7 @@ title: "Search tabel Overrides"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r239, §4.1#r241, §4.1#r242, §4.1#r244, §4.1#r240, §5#r3, EB-SRC-2@tabel-overrides, EB-SRC-3@tabel-overrides, EB-SRC-1]
 smoke: [EB-SRC-1]
 dependsOn: []

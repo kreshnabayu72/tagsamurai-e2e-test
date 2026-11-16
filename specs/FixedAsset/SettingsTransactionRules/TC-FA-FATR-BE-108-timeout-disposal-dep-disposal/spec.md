@@ -4,7 +4,7 @@ title: "Transaction timeout dan versi setting pada transaksi Disposal"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§Aturan Logika Modul#r5"
   - "§Aturan Logika Modul#r28"
@@ -153,6 +153,7 @@ trace:
 - Kondisi:
   - Transaction timeout Disposal bernilai `7` (days), nilai awal Company default. Approval Timeout platform bernilai tidak lebih besar daripada `7` (days).
   - Require approval Disposal pada Category uji bernilai `ON` dengan Approval type `Any one approver`, dan Approval Workflow tersedia di plan entitas aktor.
+  - Level Feature Suite Disposal entitas aktor bernilai `Full`.
   - Khusus kelompok langkah «Approval Workflow tidak tersedia di plan: versi setting tercatat pada transaksi tanpa langkah approval»: Approval Workflow tidak tersedia di plan entitas aktor.
   - Entitas aktor berstatus aktif pada awal spec. Status entitas diubah Operator platform hanya pada kelompok langkah «Job timeout tanpa aktor tetap berjalan saat entitas Suspended atau Expired».
 

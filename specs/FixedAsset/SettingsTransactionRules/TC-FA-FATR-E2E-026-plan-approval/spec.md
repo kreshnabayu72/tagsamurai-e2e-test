@@ -4,7 +4,7 @@ title: "Approval Workflow tidak tersedia di plan"
 layer: ui-e2e
 priority: High
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r248, §4.1#r249, §9.4.2#r25, §9.10.1#b5, §9.10.1#p7, §9.10.1#p11, §9.10.1#p12, §Aturan Logika Modul#r78, §9.2#b556, §9.4.2#r92, §9.10.1#r5, §9.10.1#r8, §9.10.1#b3, §9.10.1#b4, §9.10.1#r9]
 smoke: [§Aturan Logika Modul#r78, §9.2#b556, §9.4.2#r92, §9.10.1#r5, §9.10.1#r8, §9.10.1#b3, §9.10.1#b4, §9.10.1#r9]
 dependsOn: []

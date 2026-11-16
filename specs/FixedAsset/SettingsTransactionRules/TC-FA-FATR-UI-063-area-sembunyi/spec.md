@@ -4,7 +4,7 @@ title: "Area utama: aturan sembunyi bagian dan field"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §Aturan Logika Modul#r20
   - §Aturan Logika Modul#r21

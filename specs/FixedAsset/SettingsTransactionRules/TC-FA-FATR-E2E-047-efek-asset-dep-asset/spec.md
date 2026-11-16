@@ -4,7 +4,7 @@ title: "Override dan aturan transaksi mengikuti perubahan aset"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r246", "§4.1#r247", "§9.2#b122", "§9.2#b124", "§9.2#b141", "§9.2#b147", "§9.4.2#r34", "§9.7#r7", "§9.7#r14", "§9.7#r17", "§9.7#r30", "§11#r14", "EB-XM-2@asset-detail"]
 smoke: []
 dependsOn:

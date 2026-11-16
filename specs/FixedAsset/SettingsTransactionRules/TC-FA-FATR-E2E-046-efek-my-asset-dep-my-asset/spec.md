@@ -4,7 +4,7 @@ title: "Setting transaksi berlaku di My Asset"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§11#r15", "EB-XM-2@my-asset"]
 smoke: []
 dependsOn:

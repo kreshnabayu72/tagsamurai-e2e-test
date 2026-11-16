@@ -4,7 +4,7 @@ title: "Dialog Select Asset: kolom dan validasi"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#r390"
   - "§4.1#r391"
@@ -46,11 +46,11 @@ trace:
   §7#r16: [92, 93]
   "AU-BAGIAN-asampaiAU-BAGIAN-o,AU-NILAI-asampaiAU-NILAI-j,AU-TOOLTIP-asampaiAU-TOOLTIP-d": [2, 17]
   D-05: [5, 85]
-  S-08: [96, 97, 108, 109]
+  S-08: [97, 98, 109, 110]
   §9.5#r2: [41, 43]
   §9.5#r29: [92, 93]
   §9.9#r23: [79, 81]
-  EB-TBL-1@select-asset: [92, 96, 98, 100, 101, 102]
+  EB-TBL-1@select-asset: [92, 97, 99, 101, 102, 103]
   EB-TBL-9@select-asset: [78, 79]
   EB-FLT-6@select-asset: [72, 74, 75]
 anchor: []
@@ -105,14 +105,14 @@ coverage:
 20. Verifikasi badge Group pada baris `Excavator PC200 - 2` berisi `Jakarta Sela..ution Center`
 21. Arahkan kursor ke badge Group `Jakarta Sela..ution Center`
 22. Verifikasi hierarki lengkap `Region Jawa > Jakarta Selatan Distribution Center` tersampaikan pada badge
-23. Verifikasi sel Category pada baris `Excavator PC200 - 1` berupa badge Primary berisi `Machinery`
+23. Verifikasi sel Category pada baris `Excavator PC200 - 1` berisi `Machinery`
 24. Arahkan kursor ke badge Category `Machinery`
 25. Verifikasi hierarki lengkap `Heavy Equipment > Machinery` tersampaikan pada badge
-26. Verifikasi sel Brand pada baris `Excavator PC200 - 1` berupa badge Dark berisi `Komatsu`
+26. Verifikasi sel Brand pada baris `Excavator PC200 - 1` berisi `Komatsu`
 27. Arahkan kursor ke badge Brand `Komatsu`
 28. Verifikasi nama Brand penuh `Komatsu` tersampaikan pada badge
 29. Verifikasi sel Brand pada baris `Toyota Avanza - 1` berisi `—`
-30. Verifikasi sel Model / Type pada baris `Excavator PC200 - 1` berupa badge Dark berisi `PC200`
+30. Verifikasi sel Model / Type pada baris `Excavator PC200 - 1` berisi `PC200`
 31. Arahkan kursor ke badge Model / Type `PC200`
 32. Verifikasi nama Model / Type penuh `PC200` tersampaikan pada badge
 33. Verifikasi sel Model / Type pada baris `Toyota Avanza - 1` berisi `—`
@@ -193,22 +193,23 @@ coverage:
 
 ### Empty state hasil Search tanpa hasil
 94. Tampilkan Dialog Select Asset dengan kondisi K3
-95. Ketik Search `Zebra Tidak Ada`, tekan Enter
-96. Verifikasi judul empty state `No results found` tampil pada tabel Select Asset
-97. Verifikasi deskripsi empty state `Try adjusting your search or filter.` tampil pada tabel Select Asset
-98. Verifikasi `No assets yet` tidak tampil
+95. Klik ikon Search di toolbar
+96. Ketik Search `Zebra Tidak Ada`, tekan Enter
+97. Verifikasi judul empty state `No results found` tampil pada tabel Select Asset
+98. Verifikasi deskripsi empty state `Try adjusting your search or filter.` tampil pada tabel Select Asset
+99. Verifikasi `No assets yet` tidak tampil
 
 ### Gagal memuat tabel
-99. Tampilkan Dialog Select Asset dengan kondisi K4
-100. Verifikasi pesan `Unable to load this data.` tampil pada tabel Select Asset
-101. Verifikasi tombol `[Try Again]` tampil pada tabel Select Asset
-102. Verifikasi `No assets yet` tidak tampil
+100. Tampilkan Dialog Select Asset dengan kondisi K4
+101. Verifikasi pesan `Unable to load this data.` tampil pada tabel Select Asset
+102. Verifikasi tombol `[Try Again]` tampil pada tabel Select Asset
+103. Verifikasi `No assets yet` tidak tampil
 
 ### Empty state hasil Filter tanpa hasil
-103. Tampilkan Dialog Select Asset dengan kondisi K3
-104. Klik tombol filter di toolbar
-105. Klik field filter `Category`
-106. Pilih opsi `Pool car` pada field filter `Category`
-107. Klik `[Apply]`
-108. Verifikasi judul empty state `No results found` tampil pada tabel Select Asset sesudah filter
-109. Verifikasi deskripsi empty state `Try adjusting your search or filter.` tampil pada tabel Select Asset sesudah filter
+104. Tampilkan Dialog Select Asset dengan kondisi K3
+105. Klik tombol filter di toolbar
+106. Klik field filter `Category`
+107. Pilih opsi `Pool car` pada field filter `Category`
+108. Klik `[Apply]`
+109. Verifikasi judul empty state `No results found` tampil pada tabel Select Asset sesudah filter
+110. Verifikasi deskripsi empty state `Try adjusting your search or filter.` tampil pada tabel Select Asset sesudah filter

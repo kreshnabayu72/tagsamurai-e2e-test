@@ -4,7 +4,7 @@ title: "Gating Manage asset & TAG (Read)"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§2#r2, §2#r9, §4.3#r5, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r12, §4.8#p2, §9.11#r1, §9.11#r2]
 smoke: []
 dependsOn: []

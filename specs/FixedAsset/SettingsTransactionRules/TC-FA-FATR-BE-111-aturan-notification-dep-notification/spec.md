@@ -56,13 +56,13 @@ trace:
 - Aktor: Total Control. Pengaju peminjaman: `Rudi Hartono {runId}`. Operator di luar tenant, hanya untuk mengubah paket entitas.
 - Data:
   - DU-111-1: entitas khusus `Entitas Notifikasi Transaksi {runId}`, tidak dipakai spec lain; semua data di bawah ada di entitas ini.
-  - DU-111-2: aset `Laptop Kantor {runId}`, peminjaman berstatus Overdue sejak `T0 − 1 hari`.
+  - DU-111-2: aset `Laptop Kantor {runId}`, peminjaman berstatus Borrowed dengan Due date `T0 − 1 hari`; event `borrow_overdue` untuk peminjaman ini belum pernah terjadi sebelum spec mulai.
   - DU-111-3: aset `Printer Lantai 2 {runId}`, penugasan berstatus Waiting for Approval sejak `T0 − 14 hari 1 jam`.
   - DU-111-4: aset `Meja Rapat {runId}`, transfer berstatus In Transit.
   - DU-111-5: aset `Kursi Gudang {runId}`, pelepasan aset berstatus Waiting for Approval sejak `T0 − 14 hari 1 jam`.
   - DU-111-6: aset `Tablet Kasir {runId}`, tersedia untuk dipinjam.
   - DU-111-7: aset `Router Cadangan {runId}`, Condition `Missing`, hilang sejak `T0 − 40 hari`.
-  - DU-111-8: aset `Monitor Ruang Rapat {runId}`, peminjaman berstatus Overdue sejak `T0 − 1 hari`.
+  - DU-111-8: aset `Monitor Ruang Rapat {runId}`, peminjaman berstatus Borrowed dengan Due date `T0 − 1 hari`; event `borrow_overdue` untuk peminjaman ini belum pernah terjadi sebelum spec mulai.
   - DU-111-9: aset `Scanner Arsip {runId}`, penugasan berstatus Waiting for Approval sejak `T0 − 13 hari 23 jam`.
   - DU-111-10: aset `Lemari Berkas {runId}`, transfer berstatus In Transit.
   - DU-111-11: aset `Kipas Angin Besar {runId}`, pelepasan aset berstatus Waiting for Approval sejak `T0 − 13 hari 23 jam`.
@@ -84,7 +84,7 @@ trace:
   - DU-111-27: Group `Gudang Barat {runId}`.
   - DU-111-28: aset `Kursi Lipat Aula {runId}`, ada di Group `Gudang Barat {runId}`, tersedia untuk dipinjam.
   - DU-111-29: aset `Forklift Cadangan {runId}`, ada di Group `Gudang Timur {runId}`, tersedia untuk dipinjam.
-  - DU-111-30: aset `Drone Survei {runId}`, peminjaman berstatus Overdue sejak `T0 − 1 hari`.
+  - DU-111-30: aset `Drone Survei {runId}`, peminjaman berstatus Borrowed dengan Due date `T0 − 1 hari`; event `borrow_overdue` untuk peminjaman ini belum pernah terjadi sebelum spec mulai.
   - DU-111-31: aset `Rak Gudang Besi {runId}`, transfer berstatus In Transit.
 - Kondisi:
   - Approval Workflow tersedia pada paket entitas.
@@ -92,13 +92,14 @@ trace:
   - Max duration bernilai `14` untuk transaksi pinjam.
   - Long missing after bernilai `30` (days).
   - Level Feature Suite Borrowing bernilai `Full`.
-  - Transaction timeout bernilai `14` (days) pada awal spec.
+  - Transaction timeout bernilai `14` (days) untuk setiap transaksi pada awal spec.
+  - Entitas memakai plan khusus miliknya sendiri, tidak dipakai entitas lain.
 
 ## Test Steps
 
 ### Send email notifications ON: notifikasi transaksi itu juga dikirim lewat email
 1. Total Control menyimpan Send email notifications bernilai `ON` untuk setiap transaksi di All categories
-2. Event `borrow_overdue` terjadi untuk aset `Laptop Kantor {runId}`
+2. Job harian Overdue Borrow berjalan sehingga peminjaman aset `Laptop Kantor {runId}` untuk pertama kali Overdue dan event `borrow_overdue` terjadi
 3. Verifikasi notifikasi `borrow_overdue` untuk aset `Laptop Kantor {runId}` terkirim in-app dan lewat email
 4. Job pengecekan Transaction timeout berjalan sehingga penugasan aset `Printer Lantai 2 {runId}` dan pelepasan aset `Kursi Gudang {runId}`, yang menunggu approval sejak `T0 − 14 hari 1 jam`, melewati batas Transaction timeout `14` (days)
 5. Verifikasi notifikasi berawalan `assignment_` dan berakhiran `_auto_canceled` untuk aset `Printer Lantai 2 {runId}` terkirim in-app dan lewat email
@@ -116,7 +117,7 @@ trace:
 ### Send email notifications OFF: notifikasi transaksi itu hanya in-app
 14. Waktu berlalu 2 jam
 15. Total Control menyimpan Send email notifications bernilai `OFF` untuk setiap transaksi di All categories
-16. Event `borrow_overdue` terjadi untuk aset `Monitor Ruang Rapat {runId}`
+16. Job harian Overdue Borrow berjalan sehingga peminjaman aset `Monitor Ruang Rapat {runId}` untuk pertama kali Overdue dan event `borrow_overdue` terjadi
 17. Verifikasi notifikasi `borrow_overdue` untuk aset `Monitor Ruang Rapat {runId}` terkirim in-app dan tidak ada email
 18. Job pengecekan Transaction timeout berjalan sehingga penugasan aset `Scanner Arsip {runId}` dan pelepasan aset `Kipas Angin Besar {runId}`, yang menunggu approval sejak `T0 − 13 hari 23 jam`, melewati batas Transaction timeout `14` (days)
 19. Verifikasi notifikasi berawalan `assignment_` dan berakhiran `_auto_canceled` untuk aset `Scanner Arsip {runId}` terkirim in-app dan tidak ada email
@@ -151,7 +152,7 @@ trace:
 
 ### Switch Send email notifications dibedakan per transaksi
 44. Total Control menyimpan Send email notifications bernilai `ON` untuk transaksi pinjam dan `OFF` untuk transaksi transfer di All categories
-45. Event `borrow_overdue` terjadi untuk aset `Drone Survei {runId}`
+45. Job harian Overdue Borrow berjalan sehingga peminjaman aset `Drone Survei {runId}` untuk pertama kali Overdue dan event `borrow_overdue` terjadi
 46. Verifikasi notifikasi `borrow_overdue` untuk aset `Drone Survei {runId}` terkirim in-app dan lewat email
 47. Event `transfer_transit_overdue` terjadi untuk aset `Rak Gudang Besi {runId}`
 48. Verifikasi notifikasi `transfer_transit_overdue` untuk aset `Rak Gudang Besi {runId}` terkirim in-app dan tidak ada email
@@ -161,20 +162,20 @@ trace:
 50. Verifikasi notifikasi `*_almost_timeout` untuk transaksi atas aset `Genset Proyek {runId}` yang diajukan `T0 − 13 hari 12 jam` terkirim satu kali karena sisa waktu ke batas `14` (days) kurang dari 24 jam
 51. Verifikasi notifikasi `*_almost_timeout` itu mengikuti katalog notifikasi
 52. Verifikasi pengiriman notifikasi `*_almost_timeout` tidak menulis entri baru di Changelog Transaction Settings atau log lain
-53. Total Control menyimpan Transaction timeout bernilai `30` di All categories
+53. Total Control menyimpan Transaction timeout bernilai `30` untuk setiap transaksi di All categories
 54. Job pengecekan Transaction timeout berjalan
 55. Verifikasi notifikasi `*_almost_timeout` untuk aset `Genset Proyek {runId}` tidak bertambah karena sisa waktu ke batas baru lebih dari 24 jam
-56. Total Control menyimpan Transaction timeout bernilai `14` di All categories
+56. Total Control menyimpan Transaction timeout bernilai `14` untuk setiap transaksi di All categories
 57. Job pengecekan Transaction timeout berjalan
 58. Verifikasi notifikasi `*_almost_timeout` untuk aset `Genset Proyek {runId}` dikirim ulang sehingga tercatat dua kali karena sisa waktu ke batas baru 24 jam atau kurang
 
 ### Transaction timeout 1 hari: peringatan segera terkirim
 59. Total Control menugaskan Role Transaksi `Approver` untuk transaksi pinjam kepada `Maya Kusuma {runId}` dengan cakupan Group `Gudang Barat {runId}`
-60. Total Control menyimpan Transaction timeout bernilai `1` di All categories
+60. Total Control menyimpan Transaction timeout bernilai `1` untuk setiap transaksi di All categories
 61. `Rudi Hartono {runId}` mengajukan peminjaman aset `Speaker Aula {runId}` di Group `Gudang Barat {runId}` yang menunggu approval `Maya Kusuma {runId}`
 62. Job pengecekan Transaction timeout berjalan untuk pertama kalinya sesudah pengajuan itu
 63. Verifikasi notifikasi `*_almost_timeout` untuk pengajuan pinjam aset `Speaker Aula {runId}` yang baru masuk status menunggu approval saat Transaction timeout `1` terkirim pada pengecekan job pertama itu
-64. Verifikasi titik 1 hari sebelum batas untuk aset `Speaker Aula {runId}` jatuh saat transaksi masuk status menunggu approval
+64. Verifikasi batas Transaction timeout `1` hari untuk pengajuan pinjam aset `Speaker Aula {runId}` adalah 24 jam sejak masuk status menunggu approval, sehingga titik 1 hari sebelum batas jatuh saat transaksi masuk status itu
 65. Verifikasi peringatan untuk aset `Speaker Aula {runId}` tidak dilewati: tepat satu notifikasi `*_almost_timeout` tercatat sebelum batas
 66. Verifikasi peringatan untuk Transaction timeout `1` memakai event `*_almost_timeout` yang sama seperti nilai Transaction timeout lain, tanpa event pengganti
 67. Verifikasi notifikasi `*_almost_timeout` untuk perpanjangan peminjaman aset `Mobil Operasional {runId}` yang berstatus Waiting for Approval sejak `T0 − 2 jam` terkirim
@@ -186,7 +187,7 @@ trace:
 71. Verifikasi notifikasi berawalan `assignment_` dengan akhiran `_auto_canceled` untuk aset `Radio Panggil {runId}` yang menunggu approval sejak `T0 − 3 hari` terkirim
 72. Verifikasi notifikasi berawalan `transfer_` dengan akhiran `_auto_canceled` untuk aset `Timbangan Digital {runId}` yang menunggu approval sejak `T0 − 3 hari` terkirim
 73. Verifikasi notifikasi berawalan `disposal_` dengan akhiran `_auto_canceled` untuk aset `Mesin Cetak {runId}` yang menunggu approval sejak `T0 − 3 hari` terkirim
-74. Verifikasi notifikasi `borrow_auto_canceled` untuk aset `Kompor Lapangan {runId}` yang menunggu serah terima sejak `T0 − 3 hari` dan baris peminjamannya kembali ke Draft terkirim
+74. Verifikasi notifikasi `borrow_auto_canceled` untuk aset `Kompor Lapangan {runId}` yang menunggu serah terima sejak `T0 − 3 hari` dan baris peminjamannya ditutup Canceled terkirim
 75. Verifikasi notifikasi `borrow_extension_resolved` varian Timed out untuk perpanjangan peminjaman aset `Tenda Lapangan {runId}` yang menunggu review sejak `T0 − 3 hari` terkirim
 
 ### Level Borrowing Basic: baris yang melewati batas ditutup Canceled dan tetap dinotifikasi
@@ -197,6 +198,6 @@ trace:
 80. Verifikasi notifikasi `borrow_auto_canceled` untuk aset `Kursi Lipat Aula {runId}` yang peminjamannya ditutup Canceled pada level Feature Suite Borrowing `Basic` terkirim
 
 ### Paket tanpa Approval Workflow menonaktifkan approver_required
-81. Operator mengubah paket entitas menjadi paket yang Approval Workflow-nya `OFF`
+81. Operator mengubah paket entitas menjadi paket yang Approval Workflow-nya `OFF` dengan level Feature Suite Borrowing `Full`
 82. `Rudi Hartono {runId}` mengajukan transaksi pinjam atas aset `Forklift Cadangan {runId}` di Group `Gudang Timur {runId}` yang tidak dicakup Approver eligible mana pun
 83. Verifikasi tidak ada notifikasi `approver_required` baru dan transaksi tidak menunggu approval saat Approval Workflow `OFF`

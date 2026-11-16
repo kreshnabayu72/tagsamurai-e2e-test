@@ -1,0 +1,10 @@
+{
+ "suite": "specs/FixedAsset/SettingsTransactionRules",
+ "prd": "fixed-asset@9e5ae60",
+ "prdSha": "9596df51c9e6c2f6",
+ "foundation": "foundation@8ec9ed8-dirty",
+ "kontrakKomponen": "wangs-ui@1.0.0",
+ "kontrakSamaDenganPin": false,
+ "stage": "prd-harness@1271d35",
+ "ditutup": "2026-11-14T10:29:12Z"
+}

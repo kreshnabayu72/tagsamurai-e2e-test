@@ -4,7 +4,7 @@ title: "Gating Read Only"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§2#r4, §2#r10, §4.3#r5, §4.3#r6, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r12, §4.8#p2, §9.2#b1, §9.4.2#r3, §9.4.4#r1, §9.11#r1, EB-AKS-4, §9.2#b157, §9.2#b307, §9.3#b3, §9.11#r3]
 smoke: [§9.2#b157, §9.2#b307, §9.3#b3, §9.11#r3]
 dependsOn: []
@@ -50,6 +50,7 @@ coverage:
   - DU-037-6: override pada tab Borrow Category `Inventaris Gudang {runId}` dengan Scope `Group`, Target `Gudang Bandung {runId}`, Overridden `Max duration (30 days)`, dibuat oleh aktor lain; DU-037-5 dibuat lebih dulu daripada DU-037-6.
   - DU-037-7: entri Changelog Category `Inventaris Gudang {runId}`, Field `Borrow (Max duration)`, Action `Edit`, Old Value `Inherit`, New Value `11 days`, dari perubahan DU-037-2.
   - DU-037-8: entri Changelog Category `Inventaris Gudang {runId}`, Field `Borrow (Max extensions)`, Action `Edit`, Old Value `No extension`, New Value `Inherit`.
+  - DU-037-9: entri Changelog Category `Inventaris Gudang {runId}`, Field `Borrow (Max extensions)`, Action `Edit`, Old Value `Inherit`, New Value `No extension`; entri ini lebih dulu daripada DU-037-8.
 - Kondisi:
   - Akun `Rudi Hermawan {runId}` aktif dan dapat dipakai masuk.
 
@@ -121,7 +122,7 @@ coverage:
 53. Verifikasi baris Field `Borrow (Max duration)` dan baris Field `Borrow (Max extensions)` tampil di tabel Changelog
 54. Klik header kolom `Field`
 55. Verifikasi baris Field `Borrow (Max duration)` berada di atas baris Field `Borrow (Max extensions)`
-56. Verifikasi pagination tabel Changelog menampilkan `Showing 1 to 2 of 2`
+56. Verifikasi pagination tabel Changelog menampilkan `Showing 1 to 3 of 3`
 57. Klik header kolom Actions pada tabel Changelog
 58. Verifikasi tombol `Setup Columns` tampil dan aktif
 59. Tekan Esc untuk menutup menu Column Visibility

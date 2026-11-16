@@ -4,7 +4,7 @@ title: "Area utama: field tab Transfer"
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r55
   - §4.1#r125
@@ -32,11 +32,11 @@ trace:
   §4.1#r128: [15, 17, 43, 47]
   §4.1#r127: [14, 19]
   §4.1#r129: 20
-  §4.1#r161: 22
-  §4.1#r163: 23
+  §4.1#r161: [22, 60, 64]
+  §4.1#r163: [23, 61, 65]
   §4.1#r179: [25, 56, 58]
-  §4.1#r184: [26, 28]
-  §4.1#r181: [30, 33]
+  §4.1#r184: [26, 28, 68, 70]
+  §4.1#r181: [30, 33, 62, 66]
   §4.1#r183: [31, 50, 53]
   §4.1#r185: [34, 36, 51, 54]
   §4.1#r197: 36
@@ -58,7 +58,8 @@ coverage:
   - DU-061-1: Pengaturan Company default tab Transfer pada All categories: Allow Transfer `Allow`, Destination scope `Any Group`, Change Cost Center with Group `Never`, In-transit overdue after `7`, Destination quota check `ON`, Photo at start `ON`, Photo at end `ON`, Require approval `ON`, Approval type `Any one approver`, Auto-approve `ON`, Auto-approve when destination in same parent Group `ON`, Approval scope `Both`, Transaction timeout `7`, Send email notifications `OFF`.
   - DU-061-2: Pengaturan Category leaf `Machinery`: semua field Inherit, Change Cost Center with Group Company default `Never`.
   - DU-061-3: Pengaturan Company default tab Transfer pada All categories yang berbeda dari nilai awal: Destination scope `Within same parent Group`, Destination quota check `OFF`, Send email notifications `ON`.
-  - DU-061-4: Pengaturan Company default tab Transfer pada All categories yang berbeda dari nilai awal: Require approval `ON`, Auto-approve `ON`, Auto-approve when destination in same parent Group `OFF`, Approval scope `Origin only`.
+  - DU-061-4: Pengaturan Company default tab Transfer pada All categories yang berbeda dari nilai awal: Require approval `ON`, Auto-approve `ON`, Auto-approve when destination in same parent Group `OFF`, Approval scope `Origin only`, Approval type `All approvers (AND)`.
+  - DU-061-6: Pengaturan Company default tab Transfer pada All categories yang berbeda dari nilai awal: Photo at start `OFF`, Photo at end `OFF`, Require approval `ON`, Auto-approve `OFF`.
   - DU-061-5: Pengaturan Company default tab Transfer pada All categories yang berbeda dari nilai awal: Require approval `OFF`.
 - Kondisi:
   - K1: node All categories terpilih, tab Transfer aktif, nilai Company default memakai DU-061-1.
@@ -66,6 +67,7 @@ coverage:
   - K3: node All categories terpilih, tab Transfer aktif, nilai Company default memakai DU-061-3.
   - K4: node All categories terpilih, tab Transfer aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-061-4.
   - K5: node All categories terpilih, tab Transfer aktif, nilai Company default memakai DU-061-5.
+  - K6: node All categories terpilih, tab Transfer aktif, nilai Company default memakai DU-061-6.
 
 ## Test Steps
 
@@ -142,3 +144,19 @@ coverage:
 56. Verifikasi `Require approval` bernilai `OFF`
 57. Klik `Reset to Default`
 58. Verifikasi `Require approval` kembali ke nilai awal `ON`
+
+### Reset to Default mengembalikan Evidence dan Auto-approve Transfer ke nilai awal
+59. Tampilkan Area utama dengan kondisi K6
+60. Verifikasi `Photo at start` bernilai `OFF` pada bagian `Evidence`
+61. Verifikasi `Photo at end` bernilai `OFF` pada bagian `Evidence`
+62. Verifikasi `Auto-approve` bernilai `OFF`
+63. Klik `Reset to Default`
+64. Verifikasi `Photo at start` kembali ke nilai awal `ON` pada bagian `Evidence`
+65. Verifikasi `Photo at end` kembali ke nilai awal `ON` pada bagian `Evidence`
+66. Verifikasi `Auto-approve` kembali ke nilai awal `ON`
+
+### Reset to Default mengembalikan Approval type Transfer ke nilai awal
+67. Tampilkan Area utama dengan kondisi K4
+68. Verifikasi `Approval type` bernilai `All approvers (AND)`
+69. Klik `Reset to Default`
+70. Verifikasi `Approval type` kembali ke nilai awal `Any one approver`

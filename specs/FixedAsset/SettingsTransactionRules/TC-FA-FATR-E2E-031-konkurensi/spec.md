@@ -4,7 +4,7 @@ title: "Dua aktor mengubah Settings dan override yang sama"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.2#b66", "§9.4.2#r32", "§9.4.2#r88", "§9.4.2#r89", "§9.4.2#r90", "§9.4.4#r17", "§9.4.4#r32", "§9.2#b39", "§9.2#b65", "§9.2#b180", "§9.6#r19", "EB-CON-2"]
 smoke: ["§9.2#b39", "§9.2#b65", "§9.2#b180", "§9.6#r19", "EB-CON-2"]
 dependsOn: []

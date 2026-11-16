@@ -4,7 +4,7 @@ title: "Tabel Overrides: seleksi baris dan menu bulk Delete"
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#p49, §4.1#r354, §4.1#r355, §4.1#r356, §4.1#r357, §4.3#r20, §5#r5, §9.2#b159, §9.4.2#r120, §9.4.2#r121, §9.5#r15, EB-TBL-5@menu-bulk-delete, EB-BLK-1@tabel-overrides, EB-BLK-4]
 smoke: []
 dependsOn: []

@@ -4,8 +4,8 @@ title: "Transaction timeout dan versi setting pada transaksi Borrow"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
-sourceRules: ["§Aturan Logika Modul#r5", "§Aturan Logika Modul#r27", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r29", "§Aturan Logika Modul#r37", "§8.1#r5", "§9.2#b128", "§9.2#b140", "§9.2#b201", "§9.2#b203", "§9.2#b205", "§9.2#b206", "§9.2#b207", "§9.2#b208", "§9.2#b213", "§9.2#b214", "§9.2#b217", "§9.2#b218", "§9.2#b219", "§9.2#b222", "§9.2#b223", "§9.2#b225", "§9.2#b230", "§9.2#b231", "§9.2#b241", "§9.2#b242", "§9.2#b243", "§9.2#b244", "§9.2#b245", "§9.2#b246", "§9.2#b247", "§9.2#b248", "§9.2#b249", "§9.2#b251", "§9.2#b252", "§9.2#b253", "§9.2#b254", "§9.2#b255", "§9.2#b256", "§9.2#b257", "§9.2#b282", "§9.2#b288", "§9.2#b293", "§9.2#b294", "§9.2#b295", "§9.2#b300", "§9.2#b383", "§9.2#b395", "§9.2#b396", "§9.2#b437", "§9.2#b439", "§9.4.1#r11", "§9.4.2#r46", "§9.4.2#r127", "§9.4.2#r129", "§9.4.2#r140", "§9.4.2#r141", "§9.4.2#r142", "§9.4.2#r143", "§9.4.2#r144", "§9.4.3#b10", "§9.4.4#r37", "§9.6#r5", "§9.7#r2", "§9.7#r11", "§9.7#r22", "§9.7#r23", "§9.7#r24", "§9.7#r25", "§9.7#r26", "§9.7#r27", "§9.7#r31", "§9.10.1#b8", "§11#r18"]
+status: ready-for-automation
+sourceRules: ["§Aturan Logika Modul#r5", "§Aturan Logika Modul#r27", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r29", "§Aturan Logika Modul#r37", "§8.1#r5", "§9.2#b128", "§9.2#b140", "§9.2#b201", "§9.2#b203", "§9.2#b205", "§9.2#b206", "§9.2#b207", "§9.2#b208", "§9.2#b213", "§9.2#b214", "§9.2#b217", "§9.2#b218", "§9.2#b219", "§9.2#b221", "§9.2#b222", "§9.2#b223", "§9.2#b225", "§9.2#b230", "§9.2#b231", "§9.2#b241", "§9.2#b242", "§9.2#b243", "§9.2#b244", "§9.2#b245", "§9.2#b246", "§9.2#b247", "§9.2#b248", "§9.2#b249", "§9.2#b251", "§9.2#b252", "§9.2#b253", "§9.2#b254", "§9.2#b255", "§9.2#b256", "§9.2#b257", "§9.2#b282", "§9.2#b288", "§9.2#b293", "§9.2#b294", "§9.2#b295", "§9.2#b300", "§9.2#b383", "§9.2#b395", "§9.2#b396", "§9.2#b437", "§9.2#b439", "§9.4.1#r11", "§9.4.2#r46", "§9.4.2#r127", "§9.4.2#r129", "§9.4.2#r140", "§9.4.2#r141", "§9.4.2#r142", "§9.4.2#r143", "§9.4.2#r144", "§9.4.3#b10", "§9.4.4#r37", "§9.6#r5", "§9.7#r2", "§9.7#r11", "§9.7#r22", "§9.7#r23", "§9.7#r24", "§9.7#r25", "§9.7#r26", "§9.7#r27", "§9.7#r31", "§9.10.1#b8", "§11#r18"]
 smoke: []
 dependsOn:
   - Borrow: pengajuan, Extension, dan Return
@@ -29,19 +29,20 @@ trace:
   "§9.2#b217": [74]
   "§9.2#b218": [32, 33, 70]
   "§9.2#b219": [32, 33]
+  "§9.2#b221": [55, 56, 90, 91]
   "§9.2#b222": [55, 56]
-  "§9.2#b223": [90, 91]
+  "§9.2#b223": [90, 91, 92]
   "§9.2#b225": [78]
   "§9.2#b230": [41]
   "§9.2#b231": [42]
   "§9.2#b241": [74]
   "§9.2#b242": [83]
   "§9.2#b243": [55, 56]
-  "§9.2#b244": [55, 56]
+  "§9.2#b244": [55, 56, 101]
   "§9.2#b245": [59]
-  "§9.2#b246": [58]
+  "§9.2#b246": [58, 100]
   "§9.2#b247": [57]
-  "§9.2#b248": [90, 91]
+  "§9.2#b248": [90, 91, 92]
   "§9.2#b249": [93, 94]
   "§9.2#b251": [7, 61, 62]
   "§9.2#b252": [6, 56]
@@ -225,10 +226,10 @@ owner: BE
 ### Timeout menutup transaksi di entitas Suspended tanpa aktor
 53. Waktu berlalu sampai 24 jam sesudah waktu Save ketiga, yaitu `T0 + 9 hari`
 54. Job timeout transaksi berjalan
-55. Verifikasi baris `Genset Yanmar 10kVA {runId}` yang menunggu approval ditutup oleh `System` dan kembali ke Draft baru tanpa nomor BRW, bukan `Canceled` atau Expired, walau entitas `Suspended`
-56. Verifikasi baris `Tangga Lipat Aluminium {runId}` dan `Gerinda Besar Makita {runId}` yang berstatus `Waiting for Handover` ditutup oleh `System` dan kembali ke Draft baru tanpa nomor BRW dengan alasan `Not picked up`
-57. Verifikasi log transaksi memuat node `Returned to Draft` pada BRW asal, Draft baru, dan log aset dengan Modified By `System`
-58. Verifikasi BRW asal baris `Genset Yanmar 10kVA {runId}` tetap bernomor karena baris `Kompresor Udara Ingersoll {runId}` masih ada di dalamnya, dan baris `Genset Yanmar 10kVA {runId}` keluar dari BRW asal
+55. Verifikasi baris `Genset Yanmar 10kVA {runId}` yang menunggu approval ditutup oleh `System` sebagai `Canceled` dengan alasan `Timed out (Waiting for Approval)`, dan asetnya dikembalikan ke Draft baru tanpa nomor BRW, tanpa status Expired, walau entitas `Suspended`
+56. Verifikasi baris `Tangga Lipat Aluminium {runId}` dan `Gerinda Besar Makita {runId}` yang berstatus `Waiting for Handover` ditutup oleh `System` sebagai `Canceled`, dan asetnya dikembalikan ke Draft baru tanpa nomor BRW, dengan alasan `Not picked up`
+57. Verifikasi log transaksi memuat node `Canceled` pada BRW asal dan log aset dengan Modified By `System`
+58. Verifikasi baris `Genset Yanmar 10kVA {runId}` tetap di BRW asal sebagai `Canceled`, dan BRW asal tidak berstatus `Canceled` karena baris `Kompresor Udara Ingersoll {runId}` masih `Borrowed`
 59. Verifikasi Custody aset `Genset Yanmar 10kVA {runId}` dilepas dan status aset kembali `Available`
 60. Verifikasi aturan no-show Borrow tidak berlaku: baris `Tangga Lipat Aluminium {runId}` tidak berstatus no-show
 61. Verifikasi Extension baris `Rangka Perancah Baja {runId}` berstatus Canceled dengan Note `Timed out (Waiting for Approval)` dan Modified By `System`
@@ -242,10 +243,10 @@ owner: BE
 ### Timeout N hari adalah N kali 24 jam di entitas Expired
 68. Waktu berlalu sampai 48 jam sesudah baris `Gerobak Dorong Besi {runId}` masuk status Waiting for Approval, yaitu `T0 + 10 hari`
 69. Job timeout transaksi berjalan
-70. Verifikasi baris `Gerobak Dorong Besi {runId}` ditutup oleh `System` tepat saat batas 2 x 24 jam tercapai dan kembali ke Draft baru tanpa nomor BRW walau entitas `Expired`
-71. Verifikasi alasan baris `Gerobak Dorong Besi {runId}` tercatat `Timed out after 2 days in Waiting approval` sesuai Transaction timeout `2` yang berlaku untuk baris itu
+70. Verifikasi baris `Gerobak Dorong Besi {runId}` ditutup oleh `System` sebagai `Canceled` tepat saat batas 2 x 24 jam tercapai, dan asetnya dikembalikan ke Draft baru tanpa nomor BRW walau entitas `Expired`
+71. Verifikasi alasan baris `Gerobak Dorong Besi {runId}` tercatat `Timed out (Waiting for Approval)`
 72. Job timeout transaksi berjalan kembali
-73. Verifikasi baris `Genset Yanmar 10kVA {runId}` yang sudah kembali ke Draft tidak diproses lagi: node `Returned to Draft` pada log tetap satu dan tidak ada entri `System` baru
+73. Verifikasi baris `Genset Yanmar 10kVA {runId}` yang sudah `Canceled` tidak diproses lagi: node `Canceled` pada log tetap satu dan tidak ada entri `System` baru
 
 ### Draft dan Borrowed tidak pernah ditutup otomatis
 74. Verifikasi Draft `Alat Ukur Jarak Bosch {runId}` dan Draft `Meja Kerja Lipat {runId}` tetap `Draft` walau melewati batas Transaction timeout, karena Draft tidak memiliki timeout
@@ -260,7 +261,7 @@ owner: BE
 ### Draft hanya batal bila Borrower dinonaktifkan atau dibuang manual
 80. Rina menonaktifkan Employee `Kirana Larasati {runId}`
 81. Verifikasi Draft `Meja Kerja Lipat {runId}` batal karena Borrower dinonaktifkan, bukan karena timeout, sedangkan Draft `Alat Ukur Jarak Bosch {runId}` tetap `Draft`
-82. Hana membuang Draft `Alat Ukur Jarak Bosch {runId}` secara manual
+82. Hana membuang Draft `Alat Ukur Jarak Bosch {runId}` secara manual lewat `Delete` di tab Drafts
 83. Verifikasi Draft `Alat Ukur Jarak Bosch {runId}` hilang dari daftar Draft hanya karena dibuang manual, bukan ditutup otomatis
 
 ### Timeout Borrow pada level Basic membatalkan baris tanpa Draft baru
@@ -282,3 +283,7 @@ owner: BE
 97. Hana mengajukan Borrow aset `Mesin Gerinda Tangan Bosch {runId}` untuk Borrower `Gilang Ramadhan {runId}`
 98. Verifikasi baris `Mesin Gerinda Tangan Bosch {runId}` langsung `Waiting for Handover` tanpa langkah approval dan Versi setting tercatat pada baris itu
 99. Verifikasi Versi setting baris `Mesin Gerinda Tangan Bosch {runId}` sama dengan baris `Gerobak Dorong Besi {runId}` karena perubahan toggle dan level plan bukan perubahan Settings
+
+### BRW asal dan Draft baru mencatat hasil timeout
+100. Verifikasi BRW asal baris `Gerobak Dorong Besi {runId}` berstatus `Canceled` karena semua barisnya sudah tertutup
+101. Verifikasi Draft baru tanpa nomor BRW dari baris `Gerobak Dorong Besi {runId}` memuat `Restored from [BRW no.]` dengan [BRW no.] nomor BRW asal baris itu

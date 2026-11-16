@@ -4,7 +4,7 @@ title: "Perubahan Settings dan override tercatat di Activity Log"
 layer: ui-e2e
 priority: High
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§8.2#r2", "§9.4.2#r49", "§8.2#p1", "§9.2#b372", "§9.7#r10"]
 smoke: ["§8.2#p1", "§9.2#b372", "§9.7#r10"]
 dependsOn:

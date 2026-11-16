@@ -4,7 +4,7 @@ title: "Setting dan override saat Category berubah"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§4.1#r18", "§4.1#r20", "§9.2#b35", "§9.2#b36", "§9.2#b121", "§9.2#b123", "§9.2#b146", "§9.2#b148", "§9.4.2#r34", "§9.4.2#r55", "§9.4.3#b11", "§9.4.3#b12", "EB-EDG-3"]
 smoke: []

@@ -4,12 +4,12 @@ title: "Tabel Overrides: kolom, format sel, dan empty state"
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r6, §4.1#r41, §4.1#r49, §4.1#r239, §4.1#r241, §4.1#r242, §4.1#r244, §4.1#r240, §4.1#r243, §4.1#r245, §4.1#r247, §4.1#r249, §4.1#r250, §4.1#r251, §4.1#r252, §4.1#r254, §4.1#r255, §4.1#r256, §4.1#r260, §4.1#r261, §4.1#r264, §4.1#r265, §5#r1, §7#r14, S-08, §9.2#b125, §9.2#b152, §9.2#b157, §9.2#b159, §9.4.2#r67, §9.5#r27, §9.5#r28, §9.5#r29, §9.10.1#b5, §9.11#r2, EB-TBL-1@tabel-overrides, EB-TBL-4@created-by-tabel-overrides, EB-TBL-5@tombol-add-override, EB-TBL-5@delete-baris-override, EB-TBL-8@tabel-overrides, EB-TBL-12, EB-XM-1]
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r6: [2, 3, 8, 14, 124]
+  §4.1#r6: [2, 3, 8, 14, 125]
   §4.1#r41: 41
   §4.1#r49: 42
   §4.1#r239: [15, 17, 30, 33, 37, 38, 39]
@@ -20,10 +20,10 @@ trace:
   §4.1#r243: [27, 30, 33, 59, 60]
   §4.1#r245: 11
   §4.1#r247: [68, 70]
-  §4.1#r249: [72, 75, 78, 119]
+  §4.1#r249: [72, 75, 78, 120]
   §4.1#r250: 74
   §4.1#r251: [77, 80]
-  §4.1#r252: 121
+  §4.1#r252: 122
   §4.1#r254: [45, 47, 48, 50]
   §4.1#r255: 43
   §4.1#r256: 44
@@ -31,11 +31,11 @@ trace:
   §4.1#r261: 83
   §4.1#r264: 90
   §4.1#r265: [84, 85]
-  §5#r1: [5, 7, 8, 124]
+  §5#r1: [5, 7, 8, 125]
   §7#r14: [99, 100]
-  S-08: [104, 105, 112, 113]
+  S-08: [105, 106, 113, 114]
   §9.2#b125: [68, 70]
-  §9.2#b152: [72, 74, 75, 78, 119]
+  §9.2#b152: [72, 74, 75, 78, 120]
   §9.2#b157: [92, 94]
   §9.2#b159: 88
   §9.4.2#r67: [96, 97]
@@ -44,12 +44,12 @@ trace:
   §9.5#r29: [99, 100]
   §9.10.1#b5: 74
   §9.11#r2: 88
-  EB-TBL-1@tabel-overrides: [99, 101, 104, 106, 115, 116, 117]
+  EB-TBL-1@tabel-overrides: [99, 101, 105, 107, 116, 117, 118]
   EB-TBL-4@created-by-tabel-overrides: [54, 55, 56, 58]
   EB-TBL-5@tombol-add-override: [92, 94]
   EB-TBL-5@delete-baris-override: [88, 90]
   EB-TBL-8@tabel-overrides: 51
-  EB-TBL-12: [43, 126, 129, 130, 131, 132]
+  EB-TBL-12: [43, 127, 130, 131, 132, 133]
   EB-XM-1: [59, 60]
 anchor: []
 coverage:
@@ -86,7 +86,7 @@ coverage:
   - K6: tabel berisi DU-071-1; aktor tidak berhak membuat override.
   - K7: tabel berisi DU-071-7.
   - K8: tab transaksi Borrow aktif; tabel berisi DU-071-8, DU-071-9, dan DU-071-14; plan entitas tidak memuat Approval Workflow dan Borrowing penuh.
-  - K10: bahasa aktif aplikasi bukan Inggris; tab transaksi Borrow aktif; tabel berisi DU-071-2, DU-071-3, dan DU-071-4.
+  - K10: bahasa aktif aplikasi `Bahasa Indonesia`, dan nama field, satuan, serta label `All categories` pada baris DU-071-2 dan DU-071-4 sudah punya terjemahan pada bahasa itu; tab transaksi Borrow aktif; tabel berisi DU-071-2, DU-071-3, dan DU-071-4.
   - K11: tab transaksi Assign aktif; tabel berisi DU-071-10; plan entitas tidak memuat Assignment penuh.
   - K9: tabel berisi DU-071-1 dan DU-071-11; Save ditolak karena kombinasi efektif Allowed assignee OFF/OFF pada aset yang dibuka DU-071-11.
 
@@ -221,43 +221,44 @@ coverage:
 
 ### Empty state hasil Search tanpa hasil
 102. Tampilkan Tabel Overrides dengan kondisi K3
-103. Ketik Search `Zebra Tidak Ada`, tekan Enter
-104. Verifikasi judul `No results found` tampil
-105. Verifikasi deskripsi `Try adjusting your search or filter.` tampil
-106. Verifikasi `No overrides yet` tidak tampil
+103. Klik ikon Search di toolbar
+104. Ketik Search `Zebra Tidak Ada`, tekan Enter
+105. Verifikasi judul `No results found` tampil
+106. Verifikasi deskripsi `Try adjusting your search or filter.` tampil
+107. Verifikasi `No overrides yet` tidak tampil
 
 ### Empty state hasil Filter tanpa hasil
-107. Tampilkan Tabel Overrides dengan kondisi K3
-108. Klik ikon Filter di toolbar
-109. Klik field filter `Scope`
-110. Pilih opsi `Asset` pada field filter `Scope`
-111. Klik `[Apply]`
-112. Verifikasi judul `No results found` tampil
-113. Verifikasi deskripsi `Try adjusting your search or filter.` tampil
+108. Tampilkan Tabel Overrides dengan kondisi K3
+109. Klik ikon Filter di toolbar
+110. Klik field filter `Scope`
+111. Pilih opsi `Asset` pada field filter `Scope`
+112. Klik `[Apply]`
+113. Verifikasi judul `No results found` tampil
+114. Verifikasi deskripsi `Try adjusting your search or filter.` tampil
 
 ### Gagal memuat tabel
-114. Tampilkan Tabel Overrides dengan kondisi K4
-115. Verifikasi pesan `Unable to load this data.` tampil
-116. Verifikasi tombol `[Try Again]` tampil
-117. Verifikasi `No overrides yet` tidak tampil
+115. Tampilkan Tabel Overrides dengan kondisi K4
+116. Verifikasi pesan `Unable to load this data.` tampil
+117. Verifikasi tombol `[Try Again]` tampil
+118. Verifikasi `No overrides yet` tidak tampil
 
 ### Badge Not applied pada field Assignment yang tidak tersedia di plan
-118. Tampilkan Tabel Overrides dengan kondisi K11
-119. Verifikasi badge `Not applied` tampil pada sel Target baris `Proyek Makassar`
-120. Arahkan kursor ke badge `Not applied` pada baris Target `Proyek Makassar`
-121. Verifikasi alasan `Available on plans with full Assignment` tersampaikan pada badge
+119. Tampilkan Tabel Overrides dengan kondisi K11
+120. Verifikasi badge `Not applied` tampil pada sel Target baris `Proyek Makassar`
+121. Arahkan kursor ke badge `Not applied` pada baris Target `Proyek Makassar`
+122. Verifikasi alasan `Available on plans with full Assignment` tersampaikan pada badge
 
 ### Urutan bar bulk pada toolbar saat ada baris terpilih
-122. Tampilkan Tabel Overrides dengan kondisi K1
-123. Centang baris Target `Proyek Karawang`
-124. Verifikasi bar bulk berada di kiri ikon Search di toolbar
+123. Tampilkan Tabel Overrides dengan kondisi K1
+124. Centang baris Target `Proyek Karawang`
+125. Verifikasi bar bulk berada di kiri ikon Search di toolbar
 
 ### Nilai verbatim dan label translatable pada bahasa aktif selain Inggris
-125. Tampilkan Tabel Overrides dengan kondisi K10
-126. Verifikasi sel Target pada baris Scope `Asset Name` tampil verbatim `Excavator PC200`
-127. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-128. Centang kolom `Category` di daftar Column Visibility
-129. Verifikasi sel Category pada baris Target `Excavator PC200` berisi `Machinery` persis sama
-130. Verifikasi sel Target pada baris Scope `Asset` tampil `EXC-0001 · Excavator PC200 - 1` persis sama
-131. Verifikasi sel Overridden pada baris Target `Excavator PC200` menampilkan nama field dan satuan dalam bahasa aktif, berbeda dari `Max duration (10 days), Max extensions (No extension)`
-132. Verifikasi sel Category pada baris Target `Workshop` menampilkan label dalam bahasa aktif, berbeda dari `All categories`
+126. Tampilkan Tabel Overrides dengan kondisi K10
+127. Verifikasi sel Target pada baris Scope `Asset Name` tampil verbatim `Excavator PC200`
+128. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+129. Centang kolom `Category` di daftar Column Visibility
+130. Verifikasi sel Category pada baris Target `Excavator PC200` berisi `Machinery` persis sama
+131. Verifikasi sel Target pada baris Scope `Asset` tampil `EXC-0001 · Excavator PC200 - 1` persis sama
+132. Verifikasi sel Overridden pada baris Target `Excavator PC200` menampilkan nama field dan satuan dalam bahasa aktif, berbeda dari `Max duration (10 days), Max extensions (No extension)`
+133. Verifikasi sel Category pada baris Target `Workshop` menampilkan label dalam bahasa aktif, berbeda dari `All categories`

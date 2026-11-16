@@ -4,7 +4,7 @@ title: "Hak berubah saat halaman terbuka dan gabungan beberapa peran"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [§2#p2, EB-AKS-6]
 smoke: []
 dependsOn: []

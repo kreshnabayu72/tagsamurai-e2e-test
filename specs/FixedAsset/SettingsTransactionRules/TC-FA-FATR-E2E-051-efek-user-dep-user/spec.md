@@ -4,7 +4,7 @@ title: "Created By dan Modified By bertahan sesudah user berubah"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r257", "§4.1#r258", "§4.1#r259", "§4.1#r405", "§4.1#r406", "§4.1#r407"]
 smoke: []
 dependsOn:
@@ -24,14 +24,14 @@ coverage:
 # Created By dan Modified By bertahan sesudah user berubah
 
 ## Prerequisites
-- Aktor: Default User yang memegang Manage transaction settings (Update) dan akses penuh ke Settings User; `Rina{runId} Susanti` dan `Tono{runId} Wibowo` sebagai Default User pembuat override dan pengubah setting.
+- Aktor: Default User yang memegang Manage transaction settings (Update) dan akses penuh ke Settings User; `Rina{runId} Susanti` sebagai Default User yang memegang Manage transaction settings (Update) dengan cakupan Group `Depot Bogor {runId}`, dan `Tono{runId} Wibowo` sebagai Default User yang memegang Manage transaction settings (Update) dengan cakupan Group `Depot Cirebon {runId}`; keduanya pembuat override dan pengubah setting.
 - Layar awal: Fixed Asset > Settings > Transaction Settings
 - Data:
   - DU-051-1: Category Name `Cooling Equipment {runId}`; Category leaf tempat override dibuat.
   - DU-051-2: Group Name `Depot Bogor {runId}`; Group target override pertama.
   - DU-051-3: Group Name `Depot Cirebon {runId}`; Group target override kedua.
-  - DU-051-4: User Name `Rina{runId} Susanti`, Role `Default User`; pengguna yang akan dinonaktifkan sesudah membuat override dan menyimpan perubahan.
-  - DU-051-5: User Name `Tono{runId} Wibowo`, Role `Default User`, Nama baru `Toni{runId} Wibowo`; pengguna yang akan diubah namanya lalu dihapus sesudah membuat override dan menyimpan perubahan.
+  - DU-051-4: User Name `Rina{runId} Susanti`, Role `Default User`, Manage transaction settings `Update`, cakupan Group `Depot Bogor {runId}`; pengguna yang akan dinonaktifkan sesudah membuat override dan menyimpan perubahan.
+  - DU-051-5: User Name `Tono{runId} Wibowo`, Role `Default User`, Manage transaction settings `Update`, cakupan Group `Depot Cirebon {runId}`, Nama baru `Toni{runId} Wibowo`; pengguna yang akan diubah namanya lalu dihapus sesudah membuat override dan menyimpan perubahan.
 - Kondisi:
   - Akun `Rina{runId} Susanti` dan `Tono{runId} Wibowo` aktif dan kredensialnya tersedia untuk login.
 

@@ -4,7 +4,7 @@ title: "Dialog Select Group: tree picker dan validasi"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#r9"
   - "§4.1#p1"

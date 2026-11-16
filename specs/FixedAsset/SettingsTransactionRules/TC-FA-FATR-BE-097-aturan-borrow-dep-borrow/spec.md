@@ -4,18 +4,18 @@ title: "Evaluasi dan penegakan aturan pada transaksi Borrow"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
-sourceRules: ["§Aturan Logika Modul#r6", "§Aturan Logika Modul#r26", "§Aturan Logika Modul#r36", "§Aturan Logika Modul#r89", "§4.1#r62", "§4.1#r63", "§4.1#r64", "§4.1#r65", "§4.1#r66", "§4.1#r67", "§4.1#r68", "§4.1#r69", "§4.1#r70", "§4.1#r71", "§4.1#r72", "§4.1#r73", "§4.1#r74", "§4.1#r75", "§4.1#r79", "§4.1#r80", "§4.1#r81", "§4.1#r83", "§4.1#r85", "§4.1#r93", "§4.1#r94", "§4.1#r95", "§4.1#r96", "§4.1#r97", "§4.1#r98", "§4.1#r164", "§4.1#r165", "§4.1#r175", "§4.1#r190", "§4.1#r206", "§4.1#r207", "§4.1#r208", "§4.1#r209", "§4.1#r210", "§4.1#r211", "§9.2#b92", "§9.2#b427", "§9.2#b428", "§9.2#b429", "§9.2#b434", "§9.2#b435", "§9.2#b438", "§9.2#b384", "§9.2#b386", "§9.2#b387", "§9.2#b388", "§9.2#b389", "§9.2#b390", "§9.2#b392", "§9.2#b393", "§9.2#b394", "§9.2#b401", "§9.2#b402", "§9.2#b404", "§9.2#b406", "§9.2#b407", "§9.2#b408", "§9.2#b409", "§9.2#b410", "§9.2#b411", "§9.2#b424", "§9.2#b430", "§9.2#b431", "§9.2#b432", "§9.4.2#r35", "§9.4.2#r60", "§9.4.2#r82", "§9.4.2#r122", "§9.4.2#r128", "§9.4.2#r145", "§9.4.2#r146", "§9.4.2#r147", "§9.4.3#b9", "§9.4.4#r54", "§9.7#r6", "§9.7#r15", "§9.8#r2", "§9.8#r3", "§9.8#r4", "§9.10.2#r5", "§9.10.2#b7", "§9.10.2#r12", "§11#r3", "§11#r19"]
+status: ready-for-automation
+sourceRules: ["§Aturan Logika Modul#r6", "§Aturan Logika Modul#r26", "§Aturan Logika Modul#r36", "§Aturan Logika Modul#r89", "§4.1#r62", "§4.1#r63", "§4.1#r64", "§4.1#r65", "§4.1#r66", "§4.1#r67", "§4.1#r68", "§4.1#r69", "§4.1#r70", "§4.1#r71", "§4.1#r72", "§4.1#r73", "§4.1#r74", "§4.1#r75", "§4.1#r79", "§4.1#r80", "§4.1#r81", "§4.1#r83", "§4.1#r85", "§4.1#r93", "§4.1#r94", "§4.1#r95", "§4.1#r96", "§4.1#r97", "§4.1#r98", "§4.1#r164", "§4.1#r165", "§4.1#r175", "§4.1#r190", "§4.1#r206", "§4.1#r207", "§4.1#r208", "§4.1#r209", "§4.1#r210", "§4.1#r211", "§9.2#b92", "§9.2#b427", "§9.2#b428", "§9.2#b429", "§9.2#b434", "§9.2#b435", "§9.2#b438", "§9.2#b384", "§9.2#b386", "§9.2#b387", "§9.2#b388", "§9.2#b389", "§9.2#b390", "§9.2#b392", "§9.2#b393", "§9.2#b394", "§9.2#b401", "§9.2#b402", "§9.2#b404", "§9.2#b406", "§9.2#b407", "§9.2#b408", "§9.2#b409", "§9.2#b410", "§9.2#b411", "§9.2#b424", "§9.2#b430", "§9.2#b431", "§9.2#b432", "§9.4.2#r35", "§9.4.2#r60", "§9.4.2#r82", "§9.4.2#r122", "§9.4.2#r128", "§9.4.2#r145", "§9.4.2#r146", "§9.4.2#r147", "§9.4.3#b9", "§9.4.4#r54", "§9.7#r6", "§9.7#r15", "§9.8#r1", "§9.8#r2", "§9.10.2#r5", "§9.10.2#b7", "§9.10.2#r12", "§11#r3", "§11#r19"]
 smoke: []
 dependsOn:
   - Borrow: pengajuan, Extension, dan Return
 trace:
   "§Aturan Logika Modul#r6": [4, 6, 49]
   "§Aturan Logika Modul#r26": [4]
-  "§Aturan Logika Modul#r36": [203, 208]
-  "§Aturan Logika Modul#r89": [238]
+  "§Aturan Logika Modul#r36": [201, 206]
+  "§Aturan Logika Modul#r89": [236]
   "§4.1#r62": [84]
-  "§4.1#r63": [214, 216]
+  "§4.1#r63": [212, 214]
   "§4.1#r64": [84]
   "§4.1#r65": [91]
   "§4.1#r66": [84]
@@ -28,45 +28,45 @@ trace:
   "§4.1#r73": [47]
   "§4.1#r74": [49]
   "§4.1#r75": [51]
-  "§4.1#r79": [84, 87, 124]
+  "§4.1#r79": [84, 87, 123]
   "§4.1#r80": [84]
   "§4.1#r81": [87, 89]
   "§4.1#r83": [91, 93]
-  "§4.1#r85": [93, 127]
+  "§4.1#r85": [93, 125]
   "§4.1#r93": [66, 68]
   "§4.1#r94": [62, 64]
   "§4.1#r95": [71, 73]
   "§4.1#r96": [77, 79]
   "§4.1#r97": [75]
   "§4.1#r98": [82]
-  "§4.1#r164": [135]
-  "§4.1#r165": [211]
-  "§4.1#r175": [140]
-  "§4.1#r190": [212]
-  "§4.1#r206": [168]
-  "§4.1#r207": [156, 164]
-  "§4.1#r208": [156, 168]
-  "§4.1#r209": [151]
-  "§4.1#r210": [182]
-  "§4.1#r211": [188, 191]
+  "§4.1#r164": [133]
+  "§4.1#r165": [209]
+  "§4.1#r175": [138]
+  "§4.1#r190": [210]
+  "§4.1#r206": [166]
+  "§4.1#r207": [154, 162]
+  "§4.1#r208": [154, 166]
+  "§4.1#r209": [149]
+  "§4.1#r210": [180]
+  "§4.1#r211": [186, 189]
   "§9.2#b92": [10, 11, 12]
-  "§9.2#b427": [129]
-  "§9.2#b428": [131]
-  "§9.2#b429": [138]
+  "§9.2#b427": [127]
+  "§9.2#b428": [129]
+  "§9.2#b429": [136]
   "§9.2#b434": [4, 6]
   "§9.2#b435": [5]
-  "§9.2#b438": [202]
+  "§9.2#b438": [200]
   "§9.2#b384": [5]
   "§9.2#b386": [20, 21]
-  "§9.2#b387": [162, 173]
-  "§9.2#b388": [163, 174]
-  "§9.2#b389": [176]
-  "§9.2#b390": [142]
-  "§9.2#b392": [162, 173]
-  "§9.2#b393": [171, 173]
-  "§9.2#b394": [159, 162]
-  "§9.2#b401": [168]
-  "§9.2#b402": [156, 164]
+  "§9.2#b387": [160, 171]
+  "§9.2#b388": [161, 172]
+  "§9.2#b389": [174]
+  "§9.2#b390": [140]
+  "§9.2#b392": [160, 171]
+  "§9.2#b393": [169, 171]
+  "§9.2#b394": [157, 160]
+  "§9.2#b401": [166]
+  "§9.2#b402": [154, 162]
   "§9.2#b404": [23, 25, 27, 28, 30, 31, 103, 104]
   "§9.2#b406": [33]
   "§9.2#b407": [40, 42]
@@ -74,30 +74,29 @@ trace:
   "§9.2#b409": [40, 42, 112, 114]
   "§9.2#b410": [25, 27]
   "§9.2#b411": [35]
-  "§9.2#b424": [133, 140]
-  "§9.2#b430": [144]
-  "§9.2#b431": [145, 146, 147, 148]
-  "§9.2#b432": [136]
+  "§9.2#b424": [131, 138]
+  "§9.2#b430": [142]
+  "§9.2#b431": [143, 144, 145, 146]
+  "§9.2#b432": [134]
   "§9.4.2#r35": [4]
   "§9.4.2#r60": [47, 51, 59]
-  "§9.4.2#r82": [205, 207]
+  "§9.4.2#r82": [203, 205]
   "§9.4.2#r122": [16, 18]
-  "§9.4.2#r128": [202]
+  "§9.4.2#r128": [200]
   "§9.4.2#r145": [84]
   "§9.4.2#r146": [87, 88]
-  "§9.4.2#r147": [93, 127]
-  "§9.4.3#b9": [198]
-  "§9.4.4#r54": [235]
-  "§9.7#r6": [205, 207]
+  "§9.4.2#r147": [93, 125]
+  "§9.4.3#b9": [196]
+  "§9.4.4#r54": [233]
+  "§9.7#r6": [203, 205]
   "§9.7#r15": [10, 14]
-  "§9.8#r2": [194, 195, 196]
-  "§9.8#r3": [231]
-  "§9.8#r4": [232]
-  "§9.10.2#r5": [220, 222]
-  "§9.10.2#b7": [225]
-  "§9.10.2#r12": [220, 224]
-  "§11#r3": [40, 194]
-  "§11#r19": [194, 197, 231, 232]
+  "§9.8#r1": [229]
+  "§9.8#r2": [192, 193, 194, 230]
+  "§9.10.2#r5": [218, 220]
+  "§9.10.2#b7": [223]
+  "§9.10.2#r12": [218, 222]
+  "§11#r3": [40, 192]
+  "§11#r19": [192, 195, 229, 230]
 owner: BE
 ---
 
@@ -227,7 +226,8 @@ owner: BE
 - Kondisi:
   - Spec ini memakai entitas khusus `Entitas Aturan Borrow {runId}` yang tidak dipakai spec lain, sehingga perubahan setting dan plan tidak menyentuh spec lain.
   - Level Feature Suite Borrowing bernilai `Full` dan toggle Approval Workflow ON pada plan entitas, kecuali diubah langkah.
-  - Company default Borrow bernilai: Max duration `14`, Max extensions `1`, Max assets per borrower (concurrent) `3`, Allowed borrower `Employee in any Group`, Block new borrow when overdue `ON`, Self service `OFF`, Duration unit `Days`, Photo at start `ON`, Photo at end `ON`, Due date reminders `D-3, D-1, D-day`, Transaction timeout `7`, Require approval `ON`, Allow Borrow `Allow`.
+  - Company default Borrow bernilai: Max duration `14`, Max extensions `1`, Max assets per borrower (concurrent) `3`, Allowed borrower `Employee in any Group`, Block new borrow when overdue `ON`, Self service `OFF`, Duration unit `Days`, Photo at start `ON`, Photo at end `ON`, Due date reminders `D-3, D-1, D-day`, Transaction timeout `7`, Require approval `ON`, Auto-approve `ON`, Auto-approve when duration ≤ `3`, Allow Borrow `Allow`.
+  - Override tingkat aset pada `Pompa Beton Schwing {runId}` dengan Max extensions `2` sudah ada sebelum baris DU-097-118 diajukan, sehingga transaksinya memakai Max extensions `2`.
   - Category `Alat Ringan {runId}` bernilai sendiri Duration unit `Hours` dan Due date reminders `D-day only`.
   - Waktu acuan `T0` adalah waktu saat spec dimulai; waktu berlalu dinyatakan relatif terhadap `T0` menurut zona waktu client.
 
@@ -408,158 +408,156 @@ owner: BE
 121. Verifikasi pengajuan diterima karena semua baris Overdue Borrower sudah Returned
 
 ### Extension dihitung terhadap Max duration bersama perpanjangan yang sudah ada
-122. Rina menyimpan Max extensions bernilai `2`
-123. Hana mengajukan Extension `3 hari` pada baris `Pompa Beton Schwing {runId}` milik Borrower `Mulyadi Pranoto {runId}`
-124. Verifikasi Extension ditolak karena total `15` hari sejak Handover termasuk Extension Approved `2` hari yang sudah ada melebihi Max duration `14`, walau Extension ini sendiri `3` hari dan total tanpa perpanjangan lama `13` hari
-125. Rina menyimpan Max extensions bernilai `1`
+122. Hana mengajukan Extension `3 hari` pada baris `Pompa Beton Schwing {runId}` milik Borrower `Mulyadi Pranoto {runId}`
+123. Verifikasi Extension ditolak karena total `15` hari sejak Handover termasuk Extension Approved `2` hari yang sudah ada melebihi Max duration `14`, walau Extension ini sendiri `3` hari dan total tanpa perpanjangan lama `13` hari, sedangkan jumlah perpanjangan sesudahnya `2` tidak melebihi Max extensions `2`
 
 ### Extension Waiting for Approval tidak dihitung terhadap Max extensions
-126. Hana mengajukan Extension `1 hari` pada baris `Pompa Celup Ebara {runId}` milik Borrower `Mulyadi Pranoto {runId}`
-127. Verifikasi Extension diterima karena Extension Waiting for Approval pada baris itu tidak dihitung terhadap Max extensions `1`
+124. Hana mengajukan Extension `1 hari` pada baris `Pompa Celup Ebara {runId}` milik Borrower `Mulyadi Pranoto {runId}`
+125. Verifikasi Extension diterima karena Extension Waiting for Approval pada baris itu tidak dihitung terhadap Max extensions `1`
 
 ### Langkah mulai Borrow mewajibkan scan TAG dan 1 foto
-128. Hana mencoba Handover baris `Mesin Bor Magnet Jancy {runId}` tanpa scan TAG
-129. Verifikasi Handover ditolak karena scan TAG wajib saat mulai transaksi untuk aset ber-TAG
-130. Hana mencoba menyelesaikan langkah mulai baris `Mesin Bor Magnet Jancy {runId}` dengan identifikasi manual
-131. Verifikasi langkah mulai ditolak karena tidak ada identifikasi manual untuk langkah mulai
-132. Hana mencoba Handover baris `Mesin Bor Magnet Jancy {runId}` dengan scan TAG tanpa foto
-133. Verifikasi Handover ditolak karena Photo at start `ON` mewajibkan 1 foto
-134. Hana melakukan Handover baris `Mesin Bor Magnet Jancy {runId}` dengan scan TAG dan 1 foto
-135. Verifikasi baris `Mesin Bor Magnet Jancy {runId}` berstatus `Borrowed` setelah Handover sebagai langkah awal Borrow
-136. Verifikasi Handover Note PDF dibuat untuk serah terima fisik itu
+126. Hana mencoba Handover baris `Mesin Bor Magnet Jancy {runId}` tanpa scan TAG
+127. Verifikasi Handover ditolak karena scan TAG wajib saat mulai transaksi untuk aset ber-TAG
+128. Hana mencoba menyelesaikan langkah mulai baris `Mesin Bor Magnet Jancy {runId}` dengan identifikasi manual
+129. Verifikasi langkah mulai ditolak karena tidak ada identifikasi manual untuk langkah mulai
+130. Hana mencoba Handover baris `Mesin Bor Magnet Jancy {runId}` dengan scan TAG tanpa foto
+131. Verifikasi Handover ditolak karena Photo at start `ON` mewajibkan 1 foto
+132. Hana melakukan Handover baris `Mesin Bor Magnet Jancy {runId}` dengan scan TAG dan 1 foto
+133. Verifikasi baris `Mesin Bor Magnet Jancy {runId}` berstatus `Borrowed` setelah Handover sebagai langkah awal Borrow
+134. Verifikasi Handover Note PDF dibuat untuk serah terima fisik itu
 
 ### Aset Non TAG dikecualikan dari scan TAG saat mulai
-137. Hana melakukan Handover baris `Rompi Safety Set {runId}` tanpa scan TAG dengan 1 foto
-138. Verifikasi Handover diterima karena Category bertanda Non TAG dikecualikan dari scan TAG wajib
+135. Hana melakukan Handover baris `Rompi Safety Set {runId}` tanpa scan TAG dengan 1 foto
+136. Verifikasi Handover diterima karena Category bertanda Non TAG dikecualikan dari scan TAG wajib
 
 ### Return mewajibkan 1 foto dan aset kembali ke Group asal
-139. Hana mencoba Return baris `Mesin Bor Magnet Jancy {runId}` tanpa foto
-140. Verifikasi Return ditolak karena Photo at end `ON` mewajibkan 1 foto
-141. Hana melakukan Return baris `Mesin Bor Magnet Jancy {runId}` dengan 1 foto
-142. Verifikasi aset `Mesin Bor Magnet Jancy {runId}` berada di Group asal `Gudang Pusat {runId}` walau Borrower berada di Group `Gudang Cabang {runId}`
+137. Hana mencoba Return baris `Mesin Bor Magnet Jancy {runId}` tanpa foto
+138. Verifikasi Return ditolak karena Photo at end `ON` mewajibkan 1 foto
+139. Hana melakukan Return baris `Mesin Bor Magnet Jancy {runId}` dengan 1 foto
+140. Verifikasi aset `Mesin Bor Magnet Jancy {runId}` berada di Group asal `Gudang Pusat {runId}` walau Borrower berada di Group `Gudang Cabang {runId}`
 
 ### Return lewat I can't scan the TAG
-143. Hana melakukan Return baris `Alat Ukur Jarak Leica {runId}` lewat "I can't scan the TAG" dengan 1 foto
-144. Verifikasi Return diterima karena tag rusak boleh melewati scan pada langkah selesai
-145. Verifikasi foto tercatat pada Return
-146. Verifikasi pengecekan radius dilakukan pada Return
-147. Verifikasi Return diberi flag
-148. Verifikasi Report TAG dibuat otomatis
+141. Hana melakukan Return baris `Alat Ukur Jarak Leica {runId}` lewat "I can't scan the TAG" dengan 1 foto
+142. Verifikasi Return diterima karena tag rusak boleh melewati scan pada langkah selesai
+143. Verifikasi foto tercatat pada Return
+144. Verifikasi pengecekan radius dilakukan pada Return
+145. Verifikasi Return diberi flag
+146. Verifikasi Report TAG dibuat otomatis
 
 ### Titik pengingat yang sudah lewat saat Due date ditetapkan dilewati
-149. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Troli Dorong Besi {runId}`
-150. Job harian pengingat Due date berjalan pada `T0`
-151. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Troli Dorong Besi {runId}` sama dengan catatan karena titik D-3 sudah lewat dan tidak dikirim terlambat
+147. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Troli Dorong Besi {runId}`
+148. Job harian pengingat Due date berjalan pada `T0`
+149. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Troli Dorong Besi {runId}` sama dengan catatan karena titik D-3 sudah lewat dan tidak dikirim terlambat
 
 ### Pengingat per jam untuk Duration unit Hours tidak mengikuti pilihan Due date reminders
-152. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Lampu Kerja Portabel {runId}`
-153. Wati mencatat jumlah notifikasi `borrow_overdue` untuk baris `Lampu Sorot LED {runId}`
-154. Waktu berlalu sampai `T0 + 2 jam`
-155. Pengecekan per jam berjalan
-156. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Lampu Kerja Portabel {runId}` bertambah satu pada 1 jam sebelum Due date walau Due date reminders bernilai `D-day only`
-157. Waktu berlalu sampai 59 menit sesudah Due date baris `Lampu Sorot LED {runId}`
-158. Pengecekan per jam berjalan
-159. Verifikasi baris `Lampu Sorot LED {runId}` masih `Borrowed`
-160. Waktu berlalu sampai `T0 + 3 jam`
-161. Pengecekan per jam berjalan
-162. Verifikasi baris `Lampu Sorot LED {runId}` berstatus `Overdue` 1 jam setelah Due date menurut zona waktu client
-163. Verifikasi Wati menerima satu notifikasi `borrow_overdue` untuk baris `Lampu Sorot LED {runId}`
-164. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Lampu Kerja Portabel {runId}` bertambah satu lagi pada saat Due date
+150. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Lampu Kerja Portabel {runId}`
+151. Wati mencatat jumlah notifikasi `borrow_overdue` untuk baris `Lampu Sorot LED {runId}`
+152. Waktu berlalu sampai `T0 + 2 jam`
+153. Pengecekan per jam berjalan
+154. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Lampu Kerja Portabel {runId}` bertambah satu pada 1 jam sebelum Due date walau Due date reminders bernilai `D-day only`
+155. Waktu berlalu sampai 59 menit sesudah Due date baris `Lampu Sorot LED {runId}`
+156. Pengecekan per jam berjalan
+157. Verifikasi baris `Lampu Sorot LED {runId}` masih `Borrowed`
+158. Waktu berlalu sampai `T0 + 3 jam`
+159. Pengecekan per jam berjalan
+160. Verifikasi baris `Lampu Sorot LED {runId}` berstatus `Overdue` 1 jam setelah Due date menurut zona waktu client
+161. Verifikasi Wati menerima satu notifikasi `borrow_overdue` untuk baris `Lampu Sorot LED {runId}`
+162. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Lampu Kerja Portabel {runId}` bertambah satu lagi pada saat Due date
 
 ### Pengingat D-1 dikirim oleh job harian
-165. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Troli Dorong Besi {runId}`
-166. Waktu berlalu sampai `T0 + 1 hari`
-167. Job harian pengingat Due date berjalan
-168. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Troli Dorong Besi {runId}` bertambah satu sebagai pengingat D-1 untuk aset ber-Duration unit Days
+163. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Troli Dorong Besi {runId}`
+164. Waktu berlalu sampai `T0 + 1 hari`
+165. Job harian pengingat Due date berjalan
+166. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Troli Dorong Besi {runId}` bertambah satu sebagai pengingat D-1 untuk aset ber-Duration unit Days
 
 ### Overdue Days mulai awal hari kalender setelah Due date
-169. Wati mencatat jumlah notifikasi `borrow_overdue` untuk baris `Tangki Air Portabel {runId}`
-170. Waktu berlalu sampai akhir hari Due date `T0 + 1 hari` menurut zona waktu client
-171. Verifikasi baris `Tangki Air Portabel {runId}` masih `Borrowed`
-172. Waktu berlalu sampai awal hari kalender `T0 + 2 hari` menurut zona waktu client
-173. Verifikasi baris `Tangki Air Portabel {runId}` berstatus `Overdue` mulai awal hari kalender setelah Due date
-174. Verifikasi jumlah notifikasi `borrow_overdue` untuk baris `Tangki Air Portabel {runId}` bertambah satu
-175. Waktu berlalu sampai `T0 + 3 hari`
-176. Verifikasi jumlah notifikasi `borrow_overdue` untuk baris `Tangki Air Portabel {runId}` sama dengan setelah Overdue pertama sehingga tidak ada notifikasi atau eskalasi lanjutan
+167. Wati mencatat jumlah notifikasi `borrow_overdue` untuk baris `Tangki Air Portabel {runId}`
+168. Waktu berlalu sampai akhir hari Due date `T0 + 1 hari` menurut zona waktu client
+169. Verifikasi baris `Tangki Air Portabel {runId}` masih `Borrowed`
+170. Waktu berlalu sampai awal hari kalender `T0 + 2 hari` menurut zona waktu client
+171. Verifikasi baris `Tangki Air Portabel {runId}` berstatus `Overdue` mulai awal hari kalender setelah Due date
+172. Verifikasi jumlah notifikasi `borrow_overdue` untuk baris `Tangki Air Portabel {runId}` bertambah satu
+173. Waktu berlalu sampai `T0 + 3 hari`
+174. Verifikasi jumlah notifikasi `borrow_overdue` untuk baris `Tangki Air Portabel {runId}` sama dengan setelah Overdue pertama sehingga tidak ada notifikasi atau eskalasi lanjutan
 
 ### Titik pengingat baru yang sudah lewat saat Due date diubah dilewati
-177. Job harian pengingat Due date berjalan pada `T0 + 3 hari`
-178. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Kabel Roll 50m {runId}`
-179. Hana mengajukan Extension `1 hari` pada baris `Kabel Roll 50m {runId}` milik Borrower `Winda Kusuma {runId}`
-180. Rudi menyetujui Extension baris `Kabel Roll 50m {runId}`
-181. Job harian pengingat Due date berjalan kembali
-182. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Kabel Roll 50m {runId}` sama dengan catatan karena titik D-3 terhadap Due date baru sudah lewat dan tidak dikirim terlambat
+175. Job harian pengingat Due date berjalan pada `T0 + 3 hari`
+176. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Kabel Roll 50m {runId}`
+177. Hana mengajukan Extension `1 hari` pada baris `Kabel Roll 50m {runId}` milik Borrower `Winda Kusuma {runId}`
+178. Rudi menyetujui Extension baris `Kabel Roll 50m {runId}`
+179. Job harian pengingat Due date berjalan kembali
+180. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Kabel Roll 50m {runId}` sama dengan catatan karena titik D-3 terhadap Due date baru sudah lewat dan tidak dikirim terlambat
 
 ### Extension menghitung ulang ambang pengingat terhadap Due date baru
-183. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Mesin Amplas Bosch {runId}`
-184. Hana mengajukan Extension `4 hari` pada baris `Mesin Amplas Bosch {runId}` milik Borrower `Winda Kusuma {runId}`
-185. Rudi menyetujui Extension baris `Mesin Amplas Bosch {runId}`
-186. Waktu berlalu sampai `T0 + 4 hari`
-187. Job harian pengingat Due date berjalan
-188. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Mesin Amplas Bosch {runId}` sama dengan catatan karena ambang terhadap Due date lama tidak berlaku lagi
-189. Waktu berlalu sampai `T0 + 6 hari`
-190. Job harian pengingat Due date berjalan
-191. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Mesin Amplas Bosch {runId}` bertambah satu sebagai pengingat D-3 terhadap Due date baru
+181. Winda mencatat jumlah notifikasi `borrow_due_soon` untuk baris `Mesin Amplas Bosch {runId}`
+182. Hana mengajukan Extension `4 hari` pada baris `Mesin Amplas Bosch {runId}` milik Borrower `Winda Kusuma {runId}`
+183. Rudi menyetujui Extension baris `Mesin Amplas Bosch {runId}`
+184. Waktu berlalu sampai `T0 + 4 hari`
+185. Job harian pengingat Due date berjalan
+186. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Mesin Amplas Bosch {runId}` sama dengan catatan karena ambang terhadap Due date lama tidak berlaku lagi
+187. Waktu berlalu sampai `T0 + 6 hari`
+188. Job harian pengingat Due date berjalan
+189. Verifikasi jumlah notifikasi `borrow_due_soon` untuk baris `Mesin Amplas Bosch {runId}` bertambah satu sebagai pengingat D-3 terhadap Due date baru
 
-### Timeout Waiting for Handover mengembalikan baris ke Draft baru
-192. Waktu berlalu sampai batas Transaction timeout `7` hari sejak `T0` terlewati
-193. Job timeout transaksi berjalan
-194. Verifikasi baris `Pompa Submersible Grundfos {runId}` kembali ke Draft baru tanpa nomor BRW dan bukan `Canceled` atau Expired
-195. Verifikasi log transaksi memuat node `Returned to Draft` pada BRW asal, Draft baru, dan log aset
-196. Verifikasi alasan tercatat `Not picked up` dan Modified By `System`
-197. Verifikasi aturan no-show Borrow tidak berlaku: baris `Pompa Submersible Grundfos {runId}` tidak berstatus no-show
-198. Verifikasi Draft `Kunci Torsi Digital {runId}` dan baris Borrowed `Pengebor Tanah Manual {runId}` tidak ditutup otomatis
+### Timeout Waiting for Handover menutup baris Canceled dan mengembalikan aset ke Draft baru
+190. Waktu berlalu sampai batas Transaction timeout `7` hari sejak `T0` terlewati
+191. Job timeout transaksi berjalan
+192. Verifikasi baris `Pompa Submersible Grundfos {runId}` ditutup `Canceled` oleh `System` di BRW asal, dan asetnya dikembalikan ke Draft baru tanpa nomor BRW, tanpa status Expired
+193. Verifikasi log transaksi memuat node `Canceled` pada BRW asal dan log aset
+194. Verifikasi alasan tercatat `Not picked up` dan Modified By `System`
+195. Verifikasi aturan no-show Borrow tidak berlaku: baris `Pompa Submersible Grundfos {runId}` tidak berstatus no-show
+196. Verifikasi Draft `Kunci Torsi Digital {runId}` dan baris Borrowed `Pengebor Tanah Manual {runId}` tidak ditutup otomatis
 
 ### Settings berubah saat Borrow berjalan
-199. Hana mengajukan Borrow aset `Theodolite Topcon {runId}` dengan Duration `10 hari` untuk Borrower `Vina Oktaviani {runId}`
-200. Hana mencatat Versi setting yang tercatat pada baris `Theodolite Topcon {runId}`
-201. Rina menyimpan Max duration bernilai `5`
-202. Verifikasi baris `Theodolite Topcon {runId}` tetap `Waiting for Approval` dan tidak dibatalkan otomatis
-203. Verifikasi Versi setting yang tercatat pada baris `Theodolite Topcon {runId}` sama dengan catatan
+197. Hana mengajukan Borrow aset `Theodolite Topcon {runId}` dengan Duration `10 hari` untuk Borrower `Vina Oktaviani {runId}`
+198. Hana mencatat Versi setting yang tercatat pada baris `Theodolite Topcon {runId}`
+199. Rina menyimpan Max duration bernilai `5`
+200. Verifikasi baris `Theodolite Topcon {runId}` tetap `Waiting for Approval` dan tidak dibatalkan otomatis
+201. Verifikasi Versi setting yang tercatat pada baris `Theodolite Topcon {runId}` sama dengan catatan
 
 ### Perubahan Settings berlaku untuk Borrow baru
-204. Hana mengajukan Borrow aset `Pemadat Tanah Wacker {runId}` dengan Duration `6 hari` untuk Borrower `Vina Oktaviani {runId}`
-205. Verifikasi pengajuan ditolak karena Duration melebihi Max duration `5` yang baru
-206. Hana mengajukan Borrow aset `Pemadat Tanah Wacker {runId}` dengan Duration `5 hari` untuk Borrower `Vina Oktaviani {runId}`
-207. Verifikasi pengajuan diterima menurut Max duration `5`
-208. Verifikasi Versi setting yang tercatat pada baris `Pemadat Tanah Wacker {runId}` satu lebih besar daripada pada baris `Theodolite Topcon {runId}`
+202. Hana mengajukan Borrow aset `Pemadat Tanah Wacker {runId}` dengan Duration `6 hari` untuk Borrower `Vina Oktaviani {runId}`
+203. Verifikasi pengajuan ditolak karena Duration melebihi Max duration `5` yang baru
+204. Hana mengajukan Borrow aset `Pemadat Tanah Wacker {runId}` dengan Duration `5 hari` untuk Borrower `Vina Oktaviani {runId}`
+205. Verifikasi pengajuan diterima menurut Max duration `5`
+206. Verifikasi Versi setting yang tercatat pada baris `Pemadat Tanah Wacker {runId}` satu lebih besar daripada pada baris `Theodolite Topcon {runId}`
 
 ### Self service dan Max duration dihitung sejak Borrow Now
-209. Rina menyimpan Self service bernilai `ON`
-210. Umar melakukan Borrow Now aset `Genset Cummins 20kVA {runId}` dengan Duration `4 hari` tanpa bantuan Aktor Borrow
-211. Verifikasi baris `Genset Cummins 20kVA {runId}` berstatus `Borrowed` tanpa langkah Handover
-212. Verifikasi Borrower meminjam sendiri tanpa admin
-213. Umar mengajukan Extension `2 hari` pada baris `Genset Cummins 20kVA {runId}`
-214. Verifikasi Extension ditolak karena total `6` hari sejak Borrow Now melebihi Max duration `5`
-215. Umar mengajukan Extension `1 hari` pada baris `Genset Cummins 20kVA {runId}`
-216. Verifikasi Extension diterima karena total `5` hari sejak Borrow Now sama dengan Max duration
+207. Rina menyimpan Self service bernilai `ON`
+208. Umar melakukan Borrow Now aset `Genset Cummins 20kVA {runId}` dengan Duration `4 hari` tanpa bantuan Aktor Borrow
+209. Verifikasi baris `Genset Cummins 20kVA {runId}` berstatus `Borrowed` tanpa langkah Handover
+210. Verifikasi Borrower meminjam sendiri tanpa admin
+211. Umar mengajukan Extension `2 hari` pada baris `Genset Cummins 20kVA {runId}`
+212. Verifikasi Extension ditolak karena total `6` hari sejak Borrow Now melebihi Max duration `5`
+213. Umar mengajukan Extension `1 hari` pada baris `Genset Cummins 20kVA {runId}`
+214. Verifikasi Extension diterima karena total `5` hari sejak Borrow Now sama dengan Max duration
 
 ### Level Basic memakai nilai efektif apa pun nilai tersimpan
-217. Hana mencatat Versi setting yang berlaku
-218. Principal mengubah level Feature Suite Borrowing plan entitas menjadi `Basic`
-219. Umar mencoba Borrow Now aset `Concrete Cutter Husqvarna {runId}`
-220. Verifikasi Borrow Now ditolak karena Self service tidak tersedia pada level Basic walau nilai tersimpan `ON`
-221. Hana mengajukan Borrow aset `Senter Kerja Industrial {runId}` dengan Duration `3 jam` untuk Borrower `Bagas Setiawan {runId}`
-222. Verifikasi pengajuan ditolak karena Duration unit Hours tidak tersedia pada level Basic
-223. Hana mengajukan Borrow aset `Senter Kerja Industrial {runId}` dengan Duration `3 hari` untuk Borrower `Bagas Setiawan {runId}`
-224. Verifikasi transaksi tercatat memakai Duration unit `Days` walau nilai tersimpan Category `Hours`
-225. Verifikasi Versi setting yang berlaku sama dengan catatan karena perubahan level plan bukan perubahan Settings
+215. Hana mencatat Versi setting yang berlaku
+216. Principal mengubah level Feature Suite Borrowing plan entitas menjadi `Basic`
+217. Umar mencoba Borrow Now aset `Concrete Cutter Husqvarna {runId}`
+218. Verifikasi Borrow Now ditolak karena Self service tidak tersedia pada level Basic walau nilai tersimpan `ON`
+219. Hana mengajukan Borrow aset `Senter Kerja Industrial {runId}` dengan Duration `3 jam` untuk Borrower `Bagas Setiawan {runId}`
+220. Verifikasi pengajuan ditolak karena Duration unit Hours tidak tersedia pada level Basic
+221. Hana mengajukan Borrow aset `Senter Kerja Industrial {runId}` dengan Duration `3 hari` untuk Borrower `Bagas Setiawan {runId}`
+222. Verifikasi transaksi tercatat memakai Duration unit `Days` walau nilai tersimpan Category `Hours`
+223. Verifikasi Versi setting yang berlaku sama dengan catatan karena perubahan level plan bukan perubahan Settings
 
 ### Timeout Borrow pada level Basic membatalkan baris
-226. Hana mengajukan Borrow aset `Water Pump Mitsubishi {runId}` dengan Duration `4 hari` untuk Borrower `Bagas Setiawan {runId}`
-227. Hana mengajukan Borrow aset `Scaffolding Set Lengkap {runId}` dengan Duration `4 hari` untuk Borrower `Bagas Setiawan {runId}`
-228. Rudi menyetujui pengajuan Borrow aset `Scaffolding Set Lengkap {runId}`
-229. Waktu berlalu sampai batas Transaction timeout `7` hari sejak masing-masing baris masuk statusnya terlewati
-230. Job timeout transaksi berjalan
-231. Verifikasi baris `Water Pump Mitsubishi {runId}` berstatus `Canceled` dan bukan Draft, dengan alasan `Timed out (Waiting for Approval)` dan Modified By `System`
-232. Verifikasi baris `Scaffolding Set Lengkap {runId}` berstatus `Canceled` dan bukan Draft, dengan alasan `Not picked up` dan Modified By `System`
+224. Hana mengajukan Borrow aset `Water Pump Mitsubishi {runId}` dengan Duration `4 hari` untuk Borrower `Bagas Setiawan {runId}`
+225. Hana mengajukan Borrow aset `Scaffolding Set Lengkap {runId}` dengan Duration `4 hari` untuk Borrower `Bagas Setiawan {runId}`
+226. Rudi menyetujui pengajuan Borrow aset `Scaffolding Set Lengkap {runId}`
+227. Waktu berlalu sampai batas Transaction timeout `7` hari sejak masing-masing baris masuk statusnya terlewati
+228. Job timeout transaksi berjalan
+229. Verifikasi baris `Water Pump Mitsubishi {runId}` berstatus `Canceled` dan bukan Draft, dengan alasan `Timed out (Waiting for Approval)` dan Modified By `System`
+230. Verifikasi baris `Scaffolding Set Lengkap {runId}` berstatus `Canceled` dan bukan Draft, dengan alasan `Not picked up` dan Modified By `System`
 
 ### Approval Workflow tidak tersedia melewati langkah approval
-233. Principal mematikan toggle Approval Workflow pada plan entitas
-234. Hana mengajukan Borrow aset `Hydraulic Jack 20T {runId}` untuk Borrower `Intan Maharani {runId}`
-235. Verifikasi nilai efektif Require approval adalah `OFF` dan baris `Hydraulic Jack 20T {runId}` langsung `Waiting for Handover` tanpa langkah approval
+231. Principal mematikan toggle Approval Workflow pada plan entitas
+232. Hana mengajukan Borrow aset `Hydraulic Jack 20T {runId}` dengan Duration `4 hari` untuk Borrower `Intan Maharani {runId}`
+233. Verifikasi nilai efektif Require approval adalah `OFF` dan baris `Hydraulic Jack 20T {runId}` langsung `Waiting for Handover` tanpa langkah approval walau Duration `4` hari melebihi Auto-approve when duration ≤ `3`
 
 ### Borrow tidak tersedia pada level None
-236. Principal mengubah level Feature Suite Borrowing plan entitas menjadi `None`
-237. Hana mengajukan Borrow aset `Gerinda Tangan Makita {runId}` untuk Borrower `Intan Maharani {runId}`
-238. Verifikasi Borrow tidak tersedia dan pengajuan ditolak server
+234. Principal mengubah level Feature Suite Borrowing plan entitas menjadi `None`
+235. Hana mengajukan Borrow aset `Gerinda Tangan Makita {runId}` untuk Borrower `Intan Maharani {runId}`
+236. Verifikasi Borrow tidak tersedia dan pengajuan ditolak server

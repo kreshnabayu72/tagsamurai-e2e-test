@@ -4,7 +4,7 @@ title: "Level Feature Suite Assignment Basic dan None"
 layer: ui-e2e
 priority: High
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r248, §4.1#r249, §9.4.2#r16, §9.4.2#r25, §9.4.2#r38, §9.4.4#r2, §9.4.4#r56, §Aturan Logika Modul#r107, §Aturan Logika Modul#r110, §9.2#b560, §9.10.3#r6, §9.10.3#b2]
 smoke: [§Aturan Logika Modul#r107, §Aturan Logika Modul#r110, §9.2#b560, §9.10.3#r6, §9.10.3#b2]
 dependsOn: []

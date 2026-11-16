@@ -4,7 +4,7 @@ title: "Tabel Overrides menampilkan override per node dan tab"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r90, §4.1#p43, §4.1#p50, §11#r10, EB-TBL-7@tabel-overrides]
 smoke: []
 dependsOn: []

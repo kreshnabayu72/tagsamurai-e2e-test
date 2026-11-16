@@ -4,7 +4,7 @@ title: "Dialog Changelog: Search, Filter, Sort, paginasi, Column Visibility, dan
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#p88"
   - "§5#r2"
@@ -23,21 +23,21 @@ sourceRules:
 smoke: []
 dependsOn: []
 trace:
-  §4.1#p88: [2, 90, 91, 171]
+  §4.1#p88: [2, 91, 92, 172]
   §5#r2: [2, 8]
   §5#r3: [13, 16]
-  §7#r11: 175
+  §7#r11: 176
   §9.5#r2: [3, 5]
   §9.5#r21: 6
-  EB-TBL-7@changelog: [106, 108, 110, 112, 114, 116, 120]
+  EB-TBL-7@changelog: [107, 109, 111, 113, 115, 117, 121]
   EB-SRC-4@changelog: [11, 13, 14, 17, 19, 20, 22, 24, 26, 27]
-  EB-FLT-2@changelog: [32, 34, 36, 40, 42, 44, 46, 47, 50, 55, 57, 59, 71, 75]
-  EB-FLT-6@changelog: [83, 85, 86]
-  EB-SRT-3@changelog: [94, 96, 98, 101, 102, 103]
-  EB-KOL-1@changelog: [124, 125, 126, 128, 130, 135, 140, 147, 149, 151, 157, 166, 168]
-  EB-DL-2@changelog: 175
-  EB-DL-5: [179, 180, 182]
-anchor: [88]
+  EB-FLT-2@changelog: [32, 34, 35, 37, 41, 43, 45, 47, 48, 51, 56, 58, 60, 72, 76]
+  EB-FLT-6@changelog: [84, 86, 87]
+  EB-SRT-3@changelog: [95, 97, 99, 102, 103, 104]
+  EB-KOL-1@changelog: [125, 126, 127, 129, 131, 136, 141, 148, 150, 152, 158, 167, 169]
+  EB-DL-2@changelog: 176
+  EB-DL-5: [180, 181, 183]
+anchor: [89]
 coverage:
   web: automated
 ---
@@ -111,184 +111,185 @@ coverage:
 31. Pilih opsi `Vehicle > Pool car` pada field filter `Category`
 32. Verifikasi chip `Vehicle > Pool car` tampil pada field filter `Category`
 33. Klik tombol filter di toolbar untuk menutup Filter Panel tanpa `[Apply]`
-34. Verifikasi tabel masih menampilkan 10 baris pada halaman 1 tanpa saringan
-35. Klik tombol filter di toolbar untuk membuka kembali Filter Panel
-36. Verifikasi field filter `Category` menampilkan placeholder `All categories` tanpa chip `Vehicle > Pool car`, draf yang belum di-Apply dibuang
-37. Klik field filter `Category`
-38. Pilih opsi `All categories` pada field filter `Category`
-39. Pilih opsi `Vehicle > Pool car` pada field filter `Category`
-40. Verifikasi chip `All categories` dan `Vehicle > Pool car` tampil pada field filter `Category`
-41. Klik `✕` pada chip `All categories` di field filter `Category`
-42. Verifikasi chip `All categories` hilang dan chip `Vehicle > Pool car` tetap tampil pada field filter `Category`
-43. Klik field filter `Category`
-44. Verifikasi opsi `All categories` tidak tercentang dan opsi `Vehicle > Pool car` tercentang
-45. Klik `[Apply]`
-46. Verifikasi filter yang dikirim pada `Category` hanya memuat opsi `Vehicle > Pool car`
-47. Verifikasi tombol filter menampilkan indikator filter aktif
-48. Klik `[Clear Field]`
-49. Klik `[Apply]`
-50. Verifikasi tombol filter tidak menampilkan indikator filter aktif
+34. Verifikasi laporan paginasi tetap `Showing 1 to 10 of 27`, bukan `Showing 1 to 10 of 26`
+35. Verifikasi tombol filter tidak menampilkan indikator filter aktif
+36. Klik tombol filter di toolbar untuk membuka kembali Filter Panel
+37. Verifikasi field filter `Category` menampilkan placeholder `All categories` tanpa chip `Vehicle > Pool car`, draf yang belum di-Apply dibuang
+38. Klik field filter `Category`
+39. Pilih opsi `All categories` pada field filter `Category`
+40. Pilih opsi `Vehicle > Pool car` pada field filter `Category`
+41. Verifikasi chip `All categories` dan `Vehicle > Pool car` tampil pada field filter `Category`
+42. Klik `✕` pada chip `All categories` di field filter `Category`
+43. Verifikasi chip `All categories` hilang dan chip `Vehicle > Pool car` tetap tampil pada field filter `Category`
+44. Klik field filter `Category`
+45. Verifikasi opsi `All categories` tidak tercentang dan opsi `Vehicle > Pool car` tercentang
+46. Klik `[Apply]`
+47. Verifikasi filter yang dikirim pada `Category` hanya memuat opsi `Vehicle > Pool car`
+48. Verifikasi tombol filter menampilkan indikator filter aktif
+49. Klik `[Clear Field]`
+50. Klik `[Apply]`
+51. Verifikasi tombol filter tidak menampilkan indikator filter aktif
 
 ### Dropdown filter: uncheck opsi dan pencarian di dalam opsi
-51. Tampilkan Dialog Changelog dengan kondisi K1
-52. Klik tombol filter di toolbar
-53. Klik field filter `Modified By`
-54. Pilih opsi `Budi Santoso` pada field filter `Modified By`
-55. Verifikasi chip `Budi Santoso` tampil pada field filter `Modified By`
-56. Klik opsi `Budi Santoso` sekali lagi untuk menghapus centangnya
-57. Verifikasi chip `Budi Santoso` hilang dari field filter `Modified By`
-58. Ketik `Zebra Tidak Ada` pada kotak pencarian opsi
-59. Verifikasi daftar opsi menampilkan `No results found`
+52. Tampilkan Dialog Changelog dengan kondisi K1
+53. Klik tombol filter di toolbar
+54. Klik field filter `Modified By`
+55. Pilih opsi `Budi Santoso` pada field filter `Modified By`
+56. Verifikasi chip `Budi Santoso` tampil pada field filter `Modified By`
+57. Klik opsi `Budi Santoso` sekali lagi untuk menghapus centangnya
+58. Verifikasi chip `Budi Santoso` hilang dari field filter `Modified By`
+59. Ketik `Zebra Tidak Ada` pada kotak pencarian opsi
+60. Verifikasi daftar opsi menampilkan `No results found`
 
 ### Chip ringkasan untuk opsi terpilih yang banyak
-60. Tampilkan Dialog Changelog dengan kondisi K1
-61. Klik tombol filter di toolbar
-62. Klik field filter `Modified By`
-63. Pilih opsi `Budi Santoso` pada field filter `Modified By`
-64. Pilih opsi `Siti Nurbaya` pada field filter `Modified By`
-65. Pilih opsi `Alexander Graham Bell` pada field filter `Modified By`
-66. Pilih opsi `John Lennon` pada field filter `Modified By`
-67. Pilih opsi `Buzzlightyear Sumardi` pada field filter `Modified By`
-68. Pilih opsi `Rina Wulandari` pada field filter `Modified By`
-69. Pilih opsi `Dewi Lestari` pada field filter `Modified By`
-70. Pilih opsi `Agus Pratama` pada field filter `Modified By`
-71. Verifikasi jumlah chip yang tampil ditambah N pada chip ringkasan `+N more` sama dengan `8`
+61. Tampilkan Dialog Changelog dengan kondisi K1
+62. Klik tombol filter di toolbar
+63. Klik field filter `Modified By`
+64. Pilih opsi `Budi Santoso` pada field filter `Modified By`
+65. Pilih opsi `Siti Nurbaya` pada field filter `Modified By`
+66. Pilih opsi `Alexander Graham Bell` pada field filter `Modified By`
+67. Pilih opsi `John Lennon` pada field filter `Modified By`
+68. Pilih opsi `Buzzlightyear Sumardi` pada field filter `Modified By`
+69. Pilih opsi `Rina Wulandari` pada field filter `Modified By`
+70. Pilih opsi `Dewi Lestari` pada field filter `Modified By`
+71. Pilih opsi `Agus Pratama` pada field filter `Modified By`
+72. Verifikasi jumlah chip yang tampil ditambah N pada chip ringkasan `+N more` sama dengan `8`
 
 ### Sumber opsi filter kosong
-72. Tampilkan Dialog Changelog dengan kondisi K2
-73. Klik tombol filter di toolbar
-74. Klik field filter `Modified By`
-75. Verifikasi daftar opsi menampilkan `No options available`
+73. Tampilkan Dialog Changelog dengan kondisi K2
+74. Klik tombol filter di toolbar
+75. Klik field filter `Modified By`
+76. Verifikasi daftar opsi menampilkan `No options available`
 
 ### Menyembunyikan kolom tidak menghapus field filter dan filter ter-Apply
-76. Tampilkan Dialog Changelog dengan kondisi K1
-77. Klik tombol filter di toolbar
-78. Klik field filter `Category`
-79. Pilih opsi `Vehicle > Pool car` pada field filter `Category`
-80. Klik `[Apply]`
-81. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-82. Hilangkan centang kolom `Category` pada Column Visibility
-83. Verifikasi tabel tidak menampilkan header kolom `Category`
-84. Klik tombol filter di toolbar untuk membuka kembali Filter Panel
-85. Verifikasi field filter `Category` tetap ada pada Filter Panel
-86. Verifikasi chip `Vehicle > Pool car` tetap tampil pada field filter `Category` dan tombol filter tetap menampilkan indikator filter aktif
+77. Tampilkan Dialog Changelog dengan kondisi K1
+78. Klik tombol filter di toolbar
+79. Klik field filter `Category`
+80. Pilih opsi `Vehicle > Pool car` pada field filter `Category`
+81. Klik `[Apply]`
+82. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+83. Hilangkan centang kolom `Category` pada Column Visibility
+84. Verifikasi tabel tidak menampilkan header kolom `Category`
+85. Klik tombol filter di toolbar untuk membuka kembali Filter Panel
+86. Verifikasi field filter `Category` tetap ada pada Filter Panel
+87. Verifikasi chip `Vehicle > Pool car` tetap tampil pada field filter `Category` dan tombol filter tetap menampilkan indikator filter aktif
 
 ### Header kolom Actions membuka Column Visibility
-87. Tampilkan Dialog Changelog dengan kondisi K1
-88. Verifikasi baris pertama tabel memiliki Date `26/07/26 10:00`
-89. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-90. Verifikasi daftar Column Visibility tampil dan memuat `Setup Column...`
-91. Verifikasi baris pertama tabel tetap memiliki Date `26/07/26 10:00`, klik header kolom Actions tidak mengubah urutan
+88. Tampilkan Dialog Changelog dengan kondisi K1
+89. Verifikasi baris pertama tabel memiliki Date `26/07/26 10:00`
+90. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+91. Verifikasi daftar Column Visibility tampil dan memuat `Setup Column...`
+92. Verifikasi baris pertama tabel tetap memiliki Date `26/07/26 10:00`, klik header kolom Actions tidak mengubah urutan
 
 ### Siklus tiga klik sort dan kolom tanpa ikon sort
-92. Tampilkan Dialog Changelog dengan kondisi K1
-93. Klik header kolom `Category`
-94. Verifikasi header kolom `Category` menampilkan indikator naik `(↑)`
-95. Klik header kolom `Category`
-96. Verifikasi header kolom `Category` menampilkan indikator turun `(↓)`
-97. Klik header kolom `Category`
-98. Verifikasi header kolom `Category` tidak menampilkan indikator sort
-99. Klik header kolom `Category`
-100. Klik header kolom `Field`
-101. Verifikasi header kolom `Field` menampilkan indikator naik `(↑)`
-102. Verifikasi header kolom `Category` tidak menampilkan indikator sort
-103. Verifikasi header kolom Actions (`⋯`) tidak memiliki ikon sort
+93. Tampilkan Dialog Changelog dengan kondisi K1
+94. Klik header kolom `Category`
+95. Verifikasi header kolom `Category` menampilkan indikator naik `(↑)`
+96. Klik header kolom `Category`
+97. Verifikasi header kolom `Category` menampilkan indikator turun `(↓)`
+98. Klik header kolom `Category`
+99. Verifikasi header kolom `Category` tidak menampilkan indikator sort
+100. Klik header kolom `Category`
+101. Klik header kolom `Field`
+102. Verifikasi header kolom `Field` menampilkan indikator naik `(↑)`
+103. Verifikasi header kolom `Category` tidak menampilkan indikator sort
+104. Verifikasi header kolom Actions (`⋯`) tidak memiliki ikon sort
 
 ### Ukuran halaman, sort, dan nomor halaman tidak valid pada paginasi
-104. Tampilkan Dialog Changelog dengan kondisi K1
-105. Klik halaman `2`
-106. Verifikasi halaman aktif adalah `2`
-107. Klik header kolom `Category`
-108. Verifikasi halaman aktif tetap `2` sesudah sort diganti
-109. Ketik `abc` pada input nomor halaman, tekan Enter
-110. Verifikasi halaman aktif tetap `2` dan input `abc` diabaikan
-111. Ketik `-1` pada input nomor halaman, tekan Enter
-112. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1[^drift-1]
-113. Ketik `4` pada input nomor halaman, tekan Enter
-114. Verifikasi halaman aktif berpindah ke halaman `3` karena nomor melewati halaman terakhir dibawa ke halaman terakhir[^drift-1]
-115. Ketik `0` pada input nomor halaman, tekan Enter
-116. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1[^drift-1]
-117. Klik halaman `2`
-118. Klik dropdown `Rows per page`
-119. Pilih ukuran halaman `25`
-120. Verifikasi halaman aktif kembali ke `1` sesudah ukuran halaman diganti
+105. Tampilkan Dialog Changelog dengan kondisi K1
+106. Klik halaman `2`
+107. Verifikasi halaman aktif adalah `2`
+108. Klik header kolom `Category`
+109. Verifikasi halaman aktif tetap `2` sesudah sort diganti
+110. Ketik `abc` pada input nomor halaman, tekan Enter
+111. Verifikasi halaman aktif tetap `2` dan input `abc` diabaikan
+112. Ketik `-1` pada input nomor halaman, tekan Enter
+113. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1[^drift-1]
+114. Ketik `4` pada input nomor halaman, tekan Enter
+115. Verifikasi halaman aktif berpindah ke halaman `3` karena nomor melewati halaman terakhir dibawa ke halaman terakhir[^drift-1]
+116. Ketik `0` pada input nomor halaman, tekan Enter
+117. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1[^drift-1]
+118. Klik halaman `2`
+119. Klik dropdown `Rows per page`
+120. Pilih ukuran halaman `25`
+121. Verifikasi halaman aktif kembali ke `1` sesudah ukuran halaman diganti
 
 ### Setup Column: anatomi modal, hide, show, batal, dan Save
-121. Tampilkan Dialog Changelog dengan kondisi K1
-122. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-123. Klik `Setup Column...` pada daftar Column Visibility
-124. Verifikasi modal berjudul `Setup Column` dengan deskripsi `Drag and drop to rearrange the order and click the pin to freeze up to 3 columns.`
-125. Verifikasi footer modal memuat tombol `[Reset to Default]` dan `[Save]`
-126. Verifikasi footer modal tidak memuat tombol `[Cancel]`
-127. Hilangkan centang kolom `Modified By` pada modal
-128. Verifikasi tabel di balik modal tidak menampilkan header kolom `Modified By`
-129. Klik `[✕]` pada modal Setup Column
-130. Verifikasi tabel menampilkan header kolom `Modified By`, perubahan yang belum di-Save dibuang
-131. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-132. Klik `Setup Column...` pada daftar Column Visibility
-133. Hilangkan centang kolom `Modified By` pada modal
-134. Klik `[Save]`
-135. Verifikasi modal Setup Column tertutup dan tabel tidak menampilkan header kolom `Modified By`
+122. Tampilkan Dialog Changelog dengan kondisi K1
+123. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+124. Klik `Setup Column...` pada daftar Column Visibility
+125. Verifikasi modal berjudul `Setup Column` dengan deskripsi `Drag and drop to rearrange the order and click the pin to freeze up to 3 columns.`
+126. Verifikasi footer modal memuat tombol `[Reset to Default]` dan `[Save]`
+127. Verifikasi footer modal tidak memuat tombol `[Cancel]`
+128. Hilangkan centang kolom `Modified By` pada modal
+129. Verifikasi tabel di balik modal tidak menampilkan header kolom `Modified By`
+130. Klik `[✕]` pada modal Setup Column
+131. Verifikasi tabel menampilkan header kolom `Modified By`, perubahan yang belum di-Save dibuang
+132. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+133. Klik `Setup Column...` pada daftar Column Visibility
+134. Hilangkan centang kolom `Modified By` pada modal
+135. Klik `[Save]`
+136. Verifikasi modal Setup Column tertutup dan tabel tidak menampilkan header kolom `Modified By`
 
 ### Setup Column: reorder kolom
-136. Tampilkan Dialog Changelog dengan kondisi K1
-137. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-138. Klik `Setup Column...` pada daftar Column Visibility
-139. Seret kolom `Modified By` ke posisi pertama pada daftar kolom modal
-140. Verifikasi tabel di balik modal menampilkan header kolom `Modified By` sebagai kolom data pertama
+137. Tampilkan Dialog Changelog dengan kondisi K1
+138. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+139. Klik `Setup Column...` pada daftar Column Visibility
+140. Seret kolom `Modified By` ke posisi pertama pada daftar kolom modal
+141. Verifikasi tabel di balik modal menampilkan header kolom `Modified By` sebagai kolom data pertama
 
 ### Setup Column: pin dan batas tiga kolom
-141. Tampilkan Dialog Changelog dengan kondisi K1
-142. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-143. Klik `Setup Column...` pada daftar Column Visibility
-144. Klik ikon pin kolom `Date`
-145. Klik ikon pin kolom `Action`
-146. Klik ikon pin kolom `Category`
-147. Verifikasi ikon pin kolom `Field` disabled
-148. Arahkan kursor ke ikon pin kolom `Field`
-149. Verifikasi alasan `Maximum 3 columns can be pinned at once. Unpin another column first.` tersampaikan pada ikon pin
-150. Klik ikon pin kolom `Date` untuk melepas pin
-151. Verifikasi ikon pin kolom `Field` kembali aktif
+142. Tampilkan Dialog Changelog dengan kondisi K1
+143. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+144. Klik `Setup Column...` pada daftar Column Visibility
+145. Klik ikon pin kolom `Date`
+146. Klik ikon pin kolom `Action`
+147. Klik ikon pin kolom `Category`
+148. Verifikasi ikon pin kolom `Field` disabled
+149. Arahkan kursor ke ikon pin kolom `Field`
+150. Verifikasi alasan `Maximum 3 columns can be pinned at once. Unpin another column first.` tersampaikan pada ikon pin
+151. Klik ikon pin kolom `Date` untuk melepas pin
+152. Verifikasi ikon pin kolom `Field` kembali aktif
 
 ### Setup Column: Reset to Default
-152. Tampilkan Dialog Changelog dengan kondisi K1
-153. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-154. Klik `Setup Column...` pada daftar Column Visibility
-155. Hilangkan centang kolom `Old Value` pada modal
-156. Klik `[Reset to Default]`
-157. Verifikasi tabel di balik modal menampilkan header kolom `Old Value`
+153. Tampilkan Dialog Changelog dengan kondisi K1
+154. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+155. Klik `Setup Column...` pada daftar Column Visibility
+156. Hilangkan centang kolom `Old Value` pada modal
+157. Klik `[Reset to Default]`
+158. Verifikasi tabel di balik modal menampilkan header kolom `Old Value`
 
 ### Kolom visible terakhir tidak bisa disembunyikan
-158. Tampilkan Dialog Changelog dengan kondisi K1
-159. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
-160. Hilangkan centang kolom `Date` pada Column Visibility
-161. Hilangkan centang kolom `Action` pada Column Visibility
-162. Hilangkan centang kolom `Category` pada Column Visibility
-163. Hilangkan centang kolom `Field` pada Column Visibility
-164. Hilangkan centang kolom `Old Value` pada Column Visibility
-165. Hilangkan centang kolom `New Value` pada Column Visibility
-166. Verifikasi centang kolom `Modified By` disabled
-167. Arahkan kursor ke centang kolom `Modified By`
-168. Verifikasi alasan `At least one column must remain visible.` tersampaikan pada centang kolom `Modified By`
+159. Tampilkan Dialog Changelog dengan kondisi K1
+160. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+161. Hilangkan centang kolom `Date` pada Column Visibility
+162. Hilangkan centang kolom `Action` pada Column Visibility
+163. Hilangkan centang kolom `Category` pada Column Visibility
+164. Hilangkan centang kolom `Field` pada Column Visibility
+165. Hilangkan centang kolom `Old Value` pada Column Visibility
+166. Hilangkan centang kolom `New Value` pada Column Visibility
+167. Verifikasi centang kolom `Modified By` disabled
+168. Arahkan kursor ke centang kolom `Modified By`
+169. Verifikasi alasan `At least one column must remain visible.` tersampaikan pada centang kolom `Modified By`
 
 ### Popover Download
-169. Tampilkan Dialog Changelog dengan kondisi K1
-170. Klik ikon Download di toolbar
-171. Verifikasi popover Download memuat opsi `Download as CSV` dan `Download as XLSX`
+170. Tampilkan Dialog Changelog dengan kondisi K1
+171. Klik ikon Download di toolbar
+172. Verifikasi popover Download memuat opsi `Download as CSV` dan `Download as XLSX`
 
 ### Unduhan gagal
-172. Tampilkan Dialog Changelog dengan kondisi K3
-173. Klik ikon Download di toolbar
-174. Klik `Download as CSV`
-175. Verifikasi toast error `Error, failed to download Changelog-Transaction-Settings.` tampil
+173. Tampilkan Dialog Changelog dengan kondisi K3
+174. Klik ikon Download di toolbar
+175. Klik `Download as CSV`
+176. Verifikasi toast error `Error, failed to download Changelog-Transaction-Settings.` tampil
 
 ### Unduhan lebih dari 5.000 baris
-176. Tampilkan Dialog Changelog dengan kondisi K4
-177. Klik ikon Download di toolbar
-178. Klik `Download as XLSX`
-179. Verifikasi loading screen tampil sampai berkas siap
-180. Verifikasi tidak ada toast dan tidak ada notifikasi in-app selama berkas disiapkan
-181. Tunggu sampai berkas siap
-182. Verifikasi loading screen hilang dan berkas langsung terunduh tanpa toast sukses
+177. Tampilkan Dialog Changelog dengan kondisi K4
+178. Klik ikon Download di toolbar
+179. Klik `Download as XLSX`
+180. Verifikasi loading screen tampil sampai berkas siap
+181. Verifikasi tidak ada toast dan tidak ada notifikasi in-app selama berkas disiapkan
+182. Tunggu sampai berkas siap
+183. Verifikasi loading screen hilang dan berkas langsung terunduh tanpa toast sukses
 
 [^drift-1]: Drift PRD dan foundation vs kontrak komponen. PRD §4.1 (Dialog Changelog): tidak menetapkan perilaku nomor halaman tidak valid, paginasi mengikuti pola bersama foundation. foundation `prd-conventions.md` §9.18: «Nomor halaman tidak valid (0, negatif, melebihi halaman terakhir, bukan angka) pada input nomor halaman: input diabaikan dan tabel tetap di halaman sekarang.» Kontrak `Paginator#9`: «a page past the last goes to the last page, a page below 1 goes to page 1». Diasersi: kontrak untuk nomor `0`, `-1`, dan `4`, sehingga halaman berpindah ke halaman 1 atau halaman terakhir (SB-7); input `abc` tidak bertentangan dengan kontrak dan tetap diabaikan.

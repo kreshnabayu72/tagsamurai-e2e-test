@@ -4,7 +4,7 @@ title: "Override mengikuti perubahan Asset Name"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r246", "§4.1#r247", "§9.4.2#r34"]
 smoke: []
 dependsOn:

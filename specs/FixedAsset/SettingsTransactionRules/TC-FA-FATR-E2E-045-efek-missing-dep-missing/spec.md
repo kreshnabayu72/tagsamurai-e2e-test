@@ -4,7 +4,7 @@ title: "Long missing after berlaku di Missing"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-XM-2@missing", "§4.1#r158", "§11#r17"]
 smoke: ["§4.1#r158", "§11#r17"]
 dependsOn:

@@ -4,7 +4,7 @@ title: "Dialog Select Asset menampilkan aset dari data nyata"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r390, §4.1#r391, §4.1#r392, §4.1#r393, §4.1#r394, §4.1#r395, §4.1#r396, §4.1#r397, §5#r3, §5#r4, D-05, §9.5#r10, §9.5#r25, §11#r14, EB-TBL-9@select-asset, EB-SRC-5@select-asset]
 smoke: []
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Area utama: field tab Disposal dan tab Damaged & Missing"
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.1#r55
   - §4.1#r143
@@ -32,7 +32,7 @@ trace:
   §4.1#r156: 28
   §4.1#r162: 29
   §4.1#r179: [19, 46, 48]
-  §4.1#r184: [20, 22]
+  §4.1#r184: [20, 22, 50, 52]
   §4.1#r200: 25
   §4.1#r212: [26, 39, 44]
   §9.2#b71: [15, 16]
@@ -58,12 +58,14 @@ coverage:
   - DU-062-3: Pengaturan Company default tab Disposal dengan Allowed disposal types hanya `Sell`.
   - DU-062-4: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Allowed disposal types hanya `Sell`, Min asset age warning `24`, Max deviation from book value `50`, Send email notifications `ON`.
   - DU-062-5: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Require approval `OFF`.
+  - DU-062-6: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Require approval `ON`, Approval type `All approvers (AND)`.
 - Kondisi:
   - K1: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-062-1.
   - K2: node All categories terpilih, tab Damaged & Missing aktif, nilai Company default memakai DU-062-2.
   - K3: node All categories terpilih, tab Disposal aktif, Allowed disposal types hanya `Sell` memakai DU-062-3.
   - K4: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-062-4.
   - K5: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-062-5.
+  - K6: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-062-6.
 
 ## Test Steps
 
@@ -132,3 +134,9 @@ coverage:
 46. Verifikasi `Require approval` bernilai `OFF`
 47. Klik `Reset to Default`
 48. Verifikasi `Require approval` kembali ke nilai awal `ON`
+
+### Reset to Default mengembalikan Approval type Disposal ke nilai awal
+49. Tampilkan Area utama dengan kondisi K6
+50. Verifikasi `Approval type` bernilai `All approvers (AND)`
+51. Klik `Reset to Default`
+52. Verifikasi `Approval type` kembali ke nilai awal `Any one approver`

@@ -4,7 +4,7 @@ title: "Tanggal mengikuti Date Format dan Time Format General Settings"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-XM-1"]
 smoke: []
 dependsOn:

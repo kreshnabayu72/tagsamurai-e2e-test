@@ -4,7 +4,7 @@ title: "Dialog Add override: validasi dan error inline"
 layer: ui-client
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#r122"
   - "§4.1#r279"

@@ -4,7 +4,7 @@ title: "Notifikasi akibat setting transaksi"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§Aturan Logika Modul#r4", "§9.2#r11", "§9.2#b229", "§9.2#b388", "§9.2#b484", "§9.7#r12", "§11#r13"]
 smoke: ["§9.2#b229", "§9.2#b388", "§9.2#b484", "§9.7#r12", "§11#r13"]
 dependsOn:

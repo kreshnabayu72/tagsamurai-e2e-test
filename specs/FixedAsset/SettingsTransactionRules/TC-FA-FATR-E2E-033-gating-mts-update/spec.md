@@ -4,7 +4,7 @@ title: "Gating Manage transaction settings (Read + Update)"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§2#r1, §2#r6, §4.1#r263, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r9, §4.8#r10, §4.8#r11, §4.8#r12, §4.8#p2, §9.11#r1, EB-AKS-5@save-changes, EB-AKS-5@add-override, EB-AKS-5@delete-override, §9.3#b1, §9.11#r7, §9.11#r10]
 smoke: [§9.3#b1, §9.11#r7, §9.11#r10]
 dependsOn: []

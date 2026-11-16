@@ -4,7 +4,7 @@ title: "Sort tabel Changelog"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r398", "§4.1#r399", "§4.1#r402", "§4.1#r403", "§4.1#r400", "§4.1#r401", "§4.1#r404", "§5#r4", "§9.5#r9", "EB-SRT-3@changelog"]
 smoke: ["EB-SRT-3@changelog"]
 dependsOn: []
@@ -31,14 +31,15 @@ coverage:
 - Data:
   - Spec ini memakai entitas khusus yang tidak dipakai spec lain, DU-022-7. Changelog entitas ini hanya memuat DU-022-1 sampai DU-022-6, dibuat berurutan dari DU-022-1 paling awal sampai DU-022-6 paling akhir.
   - DU-022-1: Changelog Category `Alat Berat {runId} > Ekskavator {runId}`, Field `Borrow (Max duration)`, Old Value `Inherit`, New Value `7 days`, Action `Edit`, Modified By `Rina W`, dari Name `Rina Wulandari`.
-  - DU-022-2: Changelog Category `Kendaraan {runId} > Truk {runId}`, Field `Transfer (In-transit overdue after)`, Old Value `3 days`, New Value `5 days`, Action `Edit`, Modified By `Budi S`, dari Name `Budi Santoso`.
-  - DU-022-3: Changelog Category `Elektronik {runId} > Laptop {runId}`, Field `Transfer (Approval type)`, Old Value `Any one approver`, New Value `All approvers (AND)`, Action `Edit`, Modified By `Citra D`, dari Name `Citra Dewi`.
-  - DU-022-4: Changelog Category `Kendaraan {runId} > Mobil {runId}`, Field `Borrow (Allow Borrow)`, Old Value `Allow`, New Value `Deny`, Action `Edit`, Modified By `Dimas P`, dari Name `Dimas Pratama`.
-  - DU-022-5: Changelog Category `All categories`, Field `Damaged & Missing (Long missing after)`, Old Value `45 days`, New Value `Off`, Action `Edit`, Modified By `Eko W`, dari Name `Eko Wibowo`.
-  - DU-022-6: Changelog Category `Alat Berat {runId} > Buldoser {runId}`, Field `Borrow (Max extensions)`, Old Value `No extension`, New Value `2`, Action `Edit`, Modified By `Fajar N`, dari Name `Fajar Nugroho`.
+  - DU-022-2: Changelog Category `Kendaraan {runId} > Truk {runId}`, Field `Transfer (In-transit overdue after)`, Old Value `Inherit`, New Value `5 days`, Action `Edit`, Modified By `Budi S`, dari Name `Budi Santoso`.
+  - DU-022-3: Changelog Category `Elektronik {runId} > Laptop {runId}`, Field `Transfer (Approval type)`, Old Value `Inherit`, New Value `All approvers (AND)`, Action `Edit`, Modified By `Citra D`, dari Name `Citra Dewi`.
+  - DU-022-4: Changelog Category `Kendaraan {runId} > Mobil {runId}`, Field `Borrow (Allow Borrow)`, Old Value `Inherit`, New Value `Deny`, Action `Edit`, Modified By `Dimas P`, dari Name `Dimas Pratama`.
+  - DU-022-5: Changelog Category `All categories`, Field `Damaged & Missing (Long missing after)`, Old Value `30 days`, New Value `Off`, Action `Edit`, Modified By `Eko W`, dari Name `Eko Wibowo`.
+  - DU-022-6: Changelog Category `Alat Berat {runId} > Buldoser {runId}`, Field `Borrow (Max extensions)`, Old Value `Inherit`, New Value `2`, Action `Edit`, Modified By `Fajar N`, dari Name `Fajar Nugroho`.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.
   - Time Format bernilai `24h`.
+  - Long missing after bernilai `30` pada All categories sebelum DU-022-5 tercatat.
 
 ## Test Steps
 
@@ -80,9 +81,9 @@ coverage:
 27. Klik ikon Changelog di header
 28. Verifikasi tabel memuat keenam entri data uji
 29. Klik header kolom Old Value
-30. Verifikasi urutan baris dari atas ke bawah menurut Field: `Transfer (In-transit overdue after)`, `Damaged & Missing (Long missing after)`, `Borrow (Allow Borrow)`, `Transfer (Approval type)`, `Borrow (Max duration)`, `Borrow (Max extensions)` secara ascending
+30. Verifikasi baris teratas memuat Field `Damaged & Missing (Long missing after)` dan Old Value `30 days` secara ascending
 31. Klik header kolom Old Value
-32. Verifikasi urutan baris dari atas ke bawah menurut Field: `Borrow (Max extensions)`, `Borrow (Max duration)`, `Transfer (Approval type)`, `Borrow (Allow Borrow)`, `Damaged & Missing (Long missing after)`, `Transfer (In-transit overdue after)` secara descending
+32. Verifikasi baris terbawah memuat Field `Damaged & Missing (Long missing after)` dan Old Value `30 days` secara descending
 33. Klik `✕` pada dialog Changelog
 
 ### Sort kolom New Value ascending dan descending

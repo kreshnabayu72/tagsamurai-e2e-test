@@ -4,7 +4,7 @@ title: "Add override membuat satu baris per target"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r278, §4.1#r281, §4.1#r282, §4.1#r295, §4.1#r296, §4.4#r10, §4.4#r16, §4.4#r17, §4.4#r18, §9.2#b74, §9.2#b75, §9.2#b80, §9.2#b81, §9.2#b89, §9.2#b182, §9.4.2#r26, §9.4.2#r56, §9.4.2#r104, §9.4.2#r105, §9.4.2#r106, §9.6#r2, §9.7#r13, EB-FRM-1@add-override, §Aturan Logika Modul#r43, §Aturan Logika Modul#r52, §7#r3, §9.2#b94, EB-FB-1@add-override]
 smoke: [§Aturan Logika Modul#r43, §Aturan Logika Modul#r52, §7#r3, §9.2#b94, EB-FB-1@add-override]
 dependsOn: []
@@ -100,7 +100,7 @@ coverage:
 33. Verifikasi tabel Overrides hasil Search `{runId}` memuat `3` baris, satu baris per target
 
 ### Override All categories berdampingan dengan override Category leaf untuk target dan transaksi yang sama
-34. Klik `(←)` pada kotak Search Sidebar Category Tree
+34. Kosongkan kotak Search Sidebar Category Tree, tekan Enter
 35. Klik node `All categories` di Sidebar Category Tree
 36. Klik tab `Borrow`
 37. Klik `[+ Override]`

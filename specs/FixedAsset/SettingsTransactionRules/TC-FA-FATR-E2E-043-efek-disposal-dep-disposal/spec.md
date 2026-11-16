@@ -4,7 +4,7 @@ title: "Setting Disposal berlaku pada transaksi Disposal"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r149", "§4.1#r187", "§9.2#b16", "§9.2#b166", "§9.2#b525", "§9.2#b526", "§9.2#b529", "§9.2#b532", "§9.4.2#r137", "§9.7#r28", "EB-XM-2@disposal", "§4.1#r152", "§9.2#b269", "§9.2#b397", "§9.2#b527", "§9.2#b528", "§9.4.2#r136"]
 smoke: ["§4.1#r152", "§9.2#b269", "§9.2#b397", "§9.2#b527", "§9.2#b528", "§9.4.2#r136"]
 dependsOn:

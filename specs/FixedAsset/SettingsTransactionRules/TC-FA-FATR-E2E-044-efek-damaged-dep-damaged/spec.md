@@ -4,7 +4,7 @@ title: "After photo required berlaku di Damaged"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-XM-2@damaged", "§11#r16"]
 smoke: ["§11#r16"]
 dependsOn:

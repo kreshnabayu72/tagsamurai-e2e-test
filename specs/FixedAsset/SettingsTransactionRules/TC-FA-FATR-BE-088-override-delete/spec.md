@@ -4,7 +4,7 @@ title: "Delete override baris dan bulk"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§Aturan Logika Modul#r45", "§4.1#r348", FI-01sampaiFI-14, "§9.2#b116", "§9.2#b117", "§9.2#b126", "§9.2#b162", "§9.2#b163", "§9.2#b180", "§9.2#b189", "§9.2#b190", "§9.4.1#r19", "§9.4.2#r78", "§9.4.2#r79", "§9.4.2#r80", "§9.4.2#r117", "§9.4.2#r118", "§9.4.4#r26", "§9.6#r3", "§9.6#r26", "§9.6#r29", "§9.10.4#b3"]
 smoke: []
@@ -56,7 +56,7 @@ trace:
   - DU-088-16: Override, override Group turunan dalam cakupan yang boleh dihapus: Scope `Group`; Target `Seksi Hapus Lingkup {runId}`; Category `Penghapusan Guard {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
   - DU-088-17: Override, override Group di luar cakupan yang juga akan ditolak guard bila dievaluasi: Scope `Group`; Target `Tim Hapus Luar Guard {runId}`; Category `Penghapusan Guard {runId}`; Transaksi `penugasan`; Field `Allowed assignee: Division`; Value `ON`.
   - DU-088-18: Override, override aset di luar cakupan yang membuat kombinasi OFF/OFF bila override Group dihapus: Scope `aset`; Target `Perangkat Luar Guard {runId}`; Category `Penghapusan Guard {runId}`; Transaksi `penugasan`; Field `Allowed assignee: Employee`; Value `OFF`.
-  - DU-088-19: Override, override Group biasa milik Maya Pengelola yang boleh dihapus: Scope `Group`; Target `Tim Hapus Plain {runId}`; Category `Penghapusan Guard {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
+  - DU-088-19: Override, override Group biasa milik Maya Pengelola yang boleh dihapus: Scope `Group`; Target `Tim Hapus Plain {runId}`; Category `Penghapusan Guard {runId}`; Transaksi `penugasan`; Field `Max assets per assignee (concurrent)`; Value `2`.
   - DU-088-20: Group, Group target override yang dihapus bersama lima Group lain (5 record): Name `Tim Hapus Banyak {n} {runId}`.
   - DU-088-21: Override, override Group untuk bulk Delete banyak baris yang seluruhnya boleh dihapus (5 record): Scope `Group`; Target `Tim Hapus Banyak {n} {runId}`; Category `Penghapusan Biasa {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
   - DU-088-22: Group, Group target Delete satu baris: Name `Tim Hapus Satu {runId}`.

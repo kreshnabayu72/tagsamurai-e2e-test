@@ -4,9 +4,9 @@ title: "Save Changes di Category leaf tersimpan dan terbaca ulang"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§Aturan Logika Modul#r4", "§4.1#r220", "§4.4#r7", "§9.2#b54", "§9.4.2#r5", "§9.4.2#r6", "§9.4.2#r81", "§9.4.2#r83", "§9.6#r12", "§9.6#r13", "EB-FB-3@save-changes", "EB-FRM-1@save-changes", "EB-FRM-9", "§7#r1", "§7#r8", "§8.1#b1", "§8.1#b2", "§9.2#b5", "§9.2#b20", "§9.2#b23", "§9.2#b25", "§9.2#b41", "§9.2#b53", "§9.6#r1", "§9.6#r7", "§9.6#r10", "§9.6#r11", "§9.8#r15", "EB-FB-1@save-changes"]
-smoke: ["§7#r1", "§7#r8", "§8.1#b1", "§8.1#b2", "§9.2#b5", "§9.2#b20", "§9.2#b23", "§9.2#b25", "§9.2#b41", "§9.2#b53", "§9.6#r1", "§9.6#r7", "§9.6#r10", "§9.6#r11", "§9.8#r15", "EB-FB-1@save-changes"]
+status: ready-for-automation
+sourceRules: ["§Aturan Logika Modul#r4", "§4.1#r220", "§4.4#r7", "§9.2#b54", "§9.4.2#r5", "§9.4.2#r6", "§9.4.2#r81", "§9.4.2#r83", "§9.6#r12", "§9.6#r13", "EB-FB-3@save-changes", "EB-FRM-1@save-changes", "EB-FRM-9", "§7#r1", "§7#r8", "§8.1#b1", "§8.1#b2", "§9.2#b5", "§9.2#b20", "§9.2#b23", "§9.2#b25", "§9.2#b41", "§9.2#b53", "§9.6#r1", "§9.6#r7", "§9.6#r10", "§9.6#r11", "§9.8#r13", "EB-FB-1@save-changes"]
+smoke: ["§7#r1", "§7#r8", "§8.1#b1", "§8.1#b2", "§9.2#b5", "§9.2#b20", "§9.2#b23", "§9.2#b25", "§9.2#b41", "§9.2#b53", "§9.6#r1", "§9.6#r7", "§9.6#r10", "§9.6#r11", "§9.8#r13", "EB-FB-1@save-changes"]
 dependsOn: []
 trace:
   "§Aturan Logika Modul#r4": [14, 21, 27]
@@ -36,7 +36,7 @@ trace:
   "§9.6#r7": 40
   "§9.6#r10": 21
   "§9.6#r11": 21
-  "§9.8#r15": 43
+  "§9.8#r13": 43
   "EB-FB-1@save-changes": 16
 coverage:
   web: automated

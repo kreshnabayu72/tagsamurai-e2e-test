@@ -4,7 +4,7 @@ title: "Setting Borrow berlaku pada transaksi Borrow"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r76", "§4.1#r82", "§4.1#r86", "§4.1#r178", "§9.2#b166", "§9.7#r28", "§9.7#r29", "EB-XM-2@borrow", "§4.1#r72", "§4.1#r73", "§4.1#r96", "§9.2#b92", "§9.2#b203", "§9.2#b222", "§9.2#b244", "§9.2#b384", "§9.2#b404", "§9.2#b410", "§9.2#b463", "§9.4.2#r35", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r60", "§9.4.2#r82", "§9.4.2#r122", "§9.4.2#r127", "§9.4.2#r146", "§9.7#r6", "§9.10.1#p10"]
 smoke: ["§4.1#r72", "§4.1#r73", "§4.1#r96", "§9.2#b92", "§9.2#b203", "§9.2#b222", "§9.2#b244", "§9.2#b384", "§9.2#b404", "§9.2#b410", "§9.2#b463", "§9.4.2#r35", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r60", "§9.4.2#r82", "§9.4.2#r122", "§9.4.2#r127", "§9.4.2#r146", "§9.7#r6", "§9.10.1#p10"]
 dependsOn:
@@ -24,7 +24,7 @@ trace:
   "§9.2#b92": 68
   "§9.2#b203": [93, 94]
   "§9.2#b222": 96
-  "§9.2#b244": 95
+  "§9.2#b244": [95, 108, 109]
   "§9.2#b384": [4, 27]
   "§9.2#b404": 32
   "§9.2#b410": 31
@@ -220,14 +220,14 @@ coverage:
 88. Verifikasi status `Maya Puspita {runId}` pada transaksi aset `Tower Crane TC50 {runId}` adalah `Not Involved`
 89. Verifikasi pengajuan aset `Tower Crane TC50 {runId}`, yang diajukan sebelum Category `Cranes {runId}` bernilai `Deny`, tidak dibatalkan otomatis dan tetap diproses memakai setting saat diajukan
 
-### Transaksi yang melewati Transaction timeout kembali ke Draft
+### Transaksi yang melewati Transaction timeout ditutup Canceled dan asetnya kembali ke Draft baru
 90. Masuk sebagai Default User
 91. Job Transaction timeout berjalan
 92. Buka tab Drafts di Borrow
 93. Verifikasi Draft baru memuat aset `Air Compressor AC10 {runId}`
 94. Verifikasi Draft baru memuat aset `Concrete Mixer CM40 {runId}`
-95. Verifikasi Draft baru aset `Air Compressor AC10 {runId}` tidak bernomor BRW dan pengajuannya tidak berstatus Canceled atau Expired
-96. Verifikasi hasil timeout pengajuan Borrow aset `Air Compressor AC10 {runId}` adalah kembali ke Draft
+95. Verifikasi Draft baru aset `Air Compressor AC10 {runId}` tidak bernomor BRW dan memuat keterangan `Restored from [BRW no.]` dengan `[BRW no.]` terisi nomor BRW asal
+96. Verifikasi aset pada baris `Air Compressor AC10 {runId}` yang ditutup `Canceled` dikembalikan ke Draft baru
 97. Buka daftar Borrow
 98. Ketik Search `Welding Machine WM30 {runId}`, tekan Enter
 99. Verifikasi baris pembanding aset `Welding Machine WM30 {runId}` berstatus `Waiting for Handover` tampil di daftar Borrow
@@ -236,3 +236,10 @@ coverage:
 102. Buka tab Drafts di Borrow
 103. Buka detail Draft baru aset `Air Compressor AC10 {runId}`
 104. Verifikasi detail Draft itu menampilkan aset `Air Compressor AC10 {runId}` dan tidak berstatus `Waiting for Approval`
+
+### Baris yang melewati Transaction timeout tetap di BRW asal sebagai Canceled
+105. Buka daftar Borrow
+106. Ganti isi kotak search dengan `Air Compressor AC10 {runId}`, tekan Enter
+107. Buka detail pengajuan Borrow aset `Air Compressor AC10 {runId}` di daftar Borrow
+108. Verifikasi baris aset `Air Compressor AC10 {runId}` di BRW asal berstatus `Canceled` dan ditutup oleh `System`
+109. Verifikasi baris aset `Air Compressor AC10 {runId}` di BRW asal tidak berstatus `Expired`

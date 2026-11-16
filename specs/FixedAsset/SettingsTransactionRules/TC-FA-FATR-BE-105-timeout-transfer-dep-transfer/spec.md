@@ -4,7 +4,7 @@ title: "Transaction timeout dan versi setting pada transaksi Transfer"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§Aturan Logika Modul#r5", "§Aturan Logika Modul#r27", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r37", "§9.2#b128", "§9.2#b140", "§9.2#b201", "§9.2#b203", "§9.2#b205", "§9.2#b206", "§9.2#b207", "§9.2#b208", "§9.2#b213", "§9.2#b215", "§9.2#b217", "§9.2#b218", "§9.2#b219", "§9.2#b221", "§9.2#b225", "§9.2#b275", "§9.2#b276", "§9.2#b277", "§9.2#b278", "§9.2#b279", "§9.2#b280", "§9.2#b284", "§9.2#b290", "§9.2#b293", "§9.2#b300", "§9.2#b383", "§9.2#b395", "§9.2#b396", "§9.2#b437", "§9.2#b439", "§9.2#b419", "§9.4.2#r46", "§9.4.2#r127", "§9.4.2#r129", "§9.4.2#r139", "§9.4.2#r142", "§9.4.2#r143", "§9.4.3#b10", "§9.4.4#r37", "§9.6#r5", "§9.7#r2", "§9.7#r11", "§9.7#r22", "§9.7#r31", "§9.10.1#b8", "§11#r18"]
 smoke: []

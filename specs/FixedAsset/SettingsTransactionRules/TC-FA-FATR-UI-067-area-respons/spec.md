@@ -4,7 +4,7 @@ title: "Area utama: loading, gagal muat, dan reaksi atas respons Save"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §7#r1
   - §7#r2
@@ -43,7 +43,7 @@ trace:
   §9.4.2#r86: [50, 56]
   §9.4.2#r94: 18
   §9.4.2#r95: [24, 35]
-  §9.4.2#r96: 37
+  §9.4.2#r96: [37, 78, 80]
   §9.4.4#r15: 37
   §9.6#r14: 18
   §9.6#r15: [24, 35]
@@ -177,5 +177,14 @@ coverage:
 ### Loading saat daftar override diambil
 72. Tampilkan Area utama dengan kondisi K11
 73. Verifikasi keadaan loading tampil pada tabel `Overrides` selama daftar override belum diterima
+
+### Save gagal karena kegagalan server tidak menyimpan draft
+74. Tampilkan Area utama dengan kondisi K4
+75. Ubah `Max duration` menjadi `10`
+76. Klik `Save`
+77. Klik `Save` pada dialog `Save Changes`
+78. Verifikasi toast `Error, failed to save settings.` tampil
+79. Klik `Cancel` pada dialog `Save Changes`
+80. Verifikasi tombol `Save` pada Area utama tetap aktif karena draft belum tersimpan
 
 [^drift-1]: Drift PRD vs foundation. PRD §9.4.2 #r94 (EC-11a) dan §9.6 #r14 (RES-SAVE-i): Save Changes 5xx atau timeout memunculkan Toast T-02 `Error, failed to save settings.`. Foundation `error-handling-convention.md` §2 baris Timeout / Network: toast `Connection problem. Please try again.`. Diasersi: foundation, karena copy toast untuk timeout atau jaringan adalah pola bersama platform (SB-4); toast T-02 diasersi pada langkah kegagalan server.

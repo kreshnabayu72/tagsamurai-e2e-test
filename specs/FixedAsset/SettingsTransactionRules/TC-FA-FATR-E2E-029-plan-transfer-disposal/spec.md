@@ -4,7 +4,7 @@ title: "Level Feature Suite Transfer dan Disposal None"
 layer: ui-e2e
 priority: High
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [§9.4.2#r16, §9.4.2#r25, §9.4.4#r2, §9.4.4#r58, §9.10.4#b1, §4.3#r15]
 smoke: [§4.3#r15]
 dependsOn: []

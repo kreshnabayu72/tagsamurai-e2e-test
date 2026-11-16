@@ -4,9 +4,9 @@ title: "Isi entri Changelog"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
-sourceRules: ["§8.1#r2", "§9.2#b42", "§9.2#b55", "§9.2#p17", "§9.2#b377", "§9.4.2#r5", "§9.4.2#r6", "§9.4.2#r32", "§9.4.2#r84", "§9.4.3#b8", "§9.4.4#r5", "§9.4.4#r14", "§9.4.4#r34", "§9.4.4#r45", "§9.6#r1", "§9.6#r9", "§9.7#r9", "§9.8#r15", "§9.8#r16", "§9.8#r17", "§9.10.1#b9", "§9.10.2#b7", "§9.10.3#b7"]
+sourceRules: ["§8.1#r2", "§9.2#b42", "§9.2#b55", "§9.2#p17", "§9.2#b377", "§9.4.2#r5", "§9.4.2#r6", "§9.4.2#r32", "§9.4.2#r84", "§9.4.3#b8", "§9.4.4#r5", "§9.4.4#r14", "§9.4.4#r34", "§9.4.4#r45", "§9.6#r1", "§9.6#r9", "§9.7#r9", "§9.8#r13", "§9.8#r14", "§9.8#r15", "§9.10.1#b9", "§9.10.2#b7", "§9.10.3#b7"]
 smoke: []
 dependsOn: []
 trace:
@@ -19,7 +19,7 @@ trace:
   "§9.4.2#r6": 14
   "§9.4.2#r32": 29
   "§9.4.2#r84": 3
-  "§9.4.3#b8": [18, 22, 24, 40]
+  "§9.4.3#b8": [18, 22, 24]
   "§9.4.4#r5": 15
   "§9.4.4#r14": 18
   "§9.4.4#r34": [36, 38, 39]
@@ -27,21 +27,20 @@ trace:
   "§9.6#r1": 3
   "§9.6#r9": 18
   "§9.7#r9": 3
-  "§9.8#r15": [18, 19]
-  "§9.8#r16": [22, 24]
-  "§9.8#r17": 40
-  "§9.10.1#b9": 41
-  "§9.10.2#b7": 42
-  "§9.10.3#b7": 43
+  "§9.8#r13": [18, 19]
+  "§9.8#r14": [22, 24]
+  "§9.8#r15": 40
+  "§9.10.1#b9": 40
+  "§9.10.2#b7": 40
+  "§9.10.3#b7": 40
 ---
 # Isi entri Changelog
 
 ## Prerequisites
-- Aktor: Maya Pengelola (DU-086-1) dan Budi Penyunting (DU-086-2), keduanya Total Control dengan cakupan seluruh Group; serta Operator Plan (DU-086-3), operator Admin Console di luar entitas.
+- Aktor: Maya Pengelola (DU-086-1) dan Budi Penyunting (DU-086-2), keduanya Total Control dengan cakupan seluruh Group.
 - Data:
   - DU-086-1: User, pengelola yang menyimpan setting dan override: Name `Maya Pengelola {runId}`; Access Level `Total Control`; Cakupan `seluruh Group`.
   - DU-086-2: User, pengelola kedua yang menyimpan dan menghapus lebih dulu: Name `Budi Penyunting {runId}`; Access Level `Total Control`; Cakupan `seluruh Group`.
-  - DU-086-3: User, operator platform yang mengubah plan entitas: Name `Operator Plan {runId}`; Peran `operator Admin Console di luar entitas`.
   - DU-086-4: Category, Category leaf untuk entri Changelog per field: Name `Perangkat Log {runId}`.
   - DU-086-5: Category, Category leaf untuk perubahan Inherit ke nilai sendiri: Name `Peralatan Log {runId}`.
   - DU-086-6: Category, Category leaf untuk guard Allowed assignee: Name `Alat Ukur Log {runId}`.
@@ -55,7 +54,6 @@ trace:
   - Max duration Category `Perangkat Log {runId}` belum bernilai sendiri sebelum Save pertama di spec ini.
   - Allowed assignee: Employee `ON` dan Allowed assignee: Division `ON` pada Company default.
   - Allow Assign bernilai `Allow` pada Company default dan Inherit pada Category `Alat Ukur Log {runId}`; spec ini tidak mengubahnya, sehingga penolakan guard Allowed assignee berlaku untuk aset yang nilai efektif Allow Assign-nya bukan Deny.
-  - Operator Plan pernah mengubah plan entitas sebelum spec ini dijalankan: toggle Approval Workflow dicabut lalu dinyalakan kembali, serta level Feature Suite Borrowing dan Assignment diturunkan ke `Basic` lalu dikembalikan ke `Full`.
   - Entri Changelog dibaca per Category `{runId}` milik spec ini; kolom Field memuat nama transaksi diikuti nama field dalam kurung.
 
 ## Test Steps
@@ -105,7 +103,7 @@ trace:
 30. Maya Pengelola menyimpan Category `Alat Ukur Log {runId}` dengan Allowed assignee: Division nilai sendiri `OFF` lewat Save Changes
 31. Maya Pengelola menambahkan override Group `Tim Log Tiga {runId}` pada Category `Alat Ukur Log {runId}` untuk transaksi penugasan dengan Allowed assignee: Division `ON`
 32. Maya Pengelola menambahkan override aset `Alat Ukur Tiga {runId}` pada Category `Alat Ukur Log {runId}` untuk transaksi penugasan dengan Allowed assignee: Employee `OFF`
-33. Maya Pengelola menambahkan override Group `Tim Log Empat {runId}` pada Category `Alat Ukur Log {runId}` untuk transaksi peminjaman dengan Max duration `5`
+33. Maya Pengelola menambahkan override Group `Tim Log Empat {runId}` pada Category `Alat Ukur Log {runId}` untuk transaksi penugasan dengan Max assets per assignee (concurrent) `2`
 34. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log untuk Category `Alat Ukur Log {runId}`
 35. Maya Pengelola menghapus override Group `Tim Log Tiga {runId}`, yang akan membuat kombinasi efektif Allowed assignee: Employee dan Allowed assignee: Division override aset `Alat Ukur Tiga {runId}` sama-sama `OFF`
 36. Verifikasi Delete ditolak, override Group `Tim Log Tiga {runId}` masih ada, dan Changelog serta Activity Log untuk Category `Alat Ukur Log {runId}` tidak bertambah entri
@@ -113,8 +111,5 @@ trace:
 38. Verifikasi override Group `Tim Log Empat {runId}` terhapus dan override Group `Tim Log Tiga {runId}` dilewati karena ditolak guard
 39. Verifikasi Activity Log untuk Category `Alat Ukur Log {runId}` bertambah tepat satu entri, untuk override Group `Tim Log Empat {runId}` yang terhapus, dan Changelog tidak bertambah entri
 
-### Perubahan toggle dan level plan tidak masuk Changelog halaman ini
-40. Verifikasi Changelog tidak memuat entri dengan pelaku `Operator Plan {runId}`, sehingga perubahan toggle atau level plan bukan perubahan Settings dan tidak dicatat
-41. Verifikasi Changelog tidak memuat entri untuk pencabutan dan pengaktifan kembali toggle Approval Workflow
-42. Verifikasi Changelog tidak memuat entri untuk penurunan dan pengembalian level Feature Suite Borrowing ke `Full`
-43. Verifikasi Changelog tidak memuat entri untuk penurunan dan pengembalian level Feature Suite Assignment ke `Full`
+### Changelog halaman ini hanya memuat perubahan field Settings
+40. Verifikasi seluruh entri Changelog untuk Category `Perangkat Log {runId}` adalah entri perubahan field Settings dengan object path `Transaction Settings`, dan tidak ada entri perubahan toggle atau level plan karena perubahan itu bukan perubahan Settings dan tidak dicatat di halaman ini

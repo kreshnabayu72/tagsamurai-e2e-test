@@ -4,7 +4,7 @@ title: "Konkurensi dan aksi berulang pada Settings dan override"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§9.2#b39", "§9.2#b65", "§9.2#b180", "§9.4.2#r32", "§9.4.2#r88", "§9.4.2#r90", "§9.4.4#r17", "§9.4.4#r32", "§9.6#r3", "§9.6#r18", "§9.6#r19", EB-ERR-3, EB-CON-1, EB-CON-2, EB-CON-3, EB-EDG-1]
 smoke: []

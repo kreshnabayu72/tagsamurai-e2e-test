@@ -4,7 +4,7 @@ title: "Delete override ditolak guard Allowed assignee"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#r347, §4.4#r22, §6#r29, §6#r32, §6#r33, D-07, FI-01sampaiFI-14, §9.2#b113, §9.2#b118, §9.2#b186, §9.4.2#r75, §9.4.2#r76, §9.4.2#r77, §9.4.2#r80, §9.6#r30, §9.6#r33, §9.9#r22, §9.2#b110, §9.2#b114, §9.2#b188, §9.6#r31]
 smoke: [§9.2#b110, §9.2#b114, §9.2#b188, §9.6#r31]
 dependsOn: []

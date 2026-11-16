@@ -4,7 +4,7 @@ title: "Versi setting"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§Aturan Logika Modul#r32", "§Aturan Logika Modul#r33", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r35", "§4.1#r349", "§9.2#b23", "§9.2#b56", "§9.4.2#r5", "§9.4.4#r34", "§9.6#r8", "§9.7#r3", "§9.7#r20", "§9.7#r21"]
 smoke: []

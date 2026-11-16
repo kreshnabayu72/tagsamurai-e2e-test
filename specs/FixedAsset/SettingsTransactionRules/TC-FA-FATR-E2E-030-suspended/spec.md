@@ -4,7 +4,7 @@ title: "Entitas Suspended atau Expired memblok Save, Add override, dan Delete ov
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§7#r9", "§9.2#b49", "§9.2#b62", "§9.2#b168", "§9.2#b169", "§9.4.2#r24", "§9.4.2#r31", "§9.4.2#r52", "§9.4.2#r85", "§9.4.2#r86", "§9.4.2#r87", "§9.4.3#b1", "§9.4.4#r16", "§9.4.4#r28", "§9.4.4#r43", "EB-AKS-7", "§9.2#b50", "§9.2#b375"]
 smoke: ["§9.2#b50", "§9.2#b375"]
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Validasi Add override"
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§Aturan Logika Modul#r38", "§Aturan Logika Modul#r39", "§Aturan Logika Modul#r40", "§Aturan Logika Modul#r41", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r43", "§Aturan Logika Modul#r50", "§Aturan Logika Modul#r52", "§9.2#b74", "§9.2#b75", "§9.2#b76", "§9.2#b77", "§9.2#b80", "§9.2#b81", "§9.2#b84", "§9.2#b87", "§9.2#b90", "§9.2#b91", "§9.2#b94", "§9.2#b95", "§9.2#b96", "§9.2#b97", "§9.2#b101", "§9.2#b102", "§9.2#b143", "§9.2#b144", "§9.2#b174", "§9.2#b175", "§9.2#b182", "§9.2#b197", "§9.4.2#r26", "§9.4.2#r56", "§9.4.2#r104", "§9.4.2#r107", "§9.4.2#r110", "§9.4.3#b6", "§9.4.3#b7", "§9.4.4#r21", "§9.4.4#r30", "§9.6#r2", "§9.6#r20", "§9.6#r22", "§9.9#r13", "§9.9#r14", "§9.9#r15", "§9.9#r16", "§9.9#r21", "§9.10.4#b3", "§10#b2", EB-FRM-5@target-add-override]
 smoke: []

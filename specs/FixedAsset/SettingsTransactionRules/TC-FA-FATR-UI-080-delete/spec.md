@@ -4,7 +4,7 @@ title: "Dialog Delete override dan Dialog Blok"
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - "§4.1#r10"
   - "§4.1#r350"

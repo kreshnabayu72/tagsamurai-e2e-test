@@ -4,7 +4,7 @@ title: "Download Changelog"
 layer: ui-e2e
 priority: High
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§4.1#p88, §5#r6, EB-DL-1@changelog, EB-DL-2@changelog, EB-DL-3@changelog, EB-DL-4]
 smoke: [EB-DL-4]
 dependsOn: []
@@ -27,10 +27,10 @@ coverage:
 - Layar awal: Settings > Transaction Settings.
 - Data:
   - DU-024-1: entitas `Wirasena Logistik {runId}` dengan Changelog yang hanya berisi entri DU-024-2 sampai DU-024-5, total `12` entri.
-  - DU-024-2: entri Changelog Category `Vehicle > Pool car {runId}`, Field `Borrow (Allow Borrow)`, Old Value `Allow`, New Value `Deny`, Modified By `Budi Santoso` (tampil `Budi S`), Action `Edit`, Date `T0 − 3 hari`.
-  - DU-024-3: entri Changelog Category `Vehicle > Pool car {runId}`, Field `Borrow (Max duration)`, Old Value `14 days`, New Value `30 days`, Modified By `Rina Wulandari` (tampil `Rina W`), Action `Edit`, Date `T0 − 4 hari`.
-  - DU-024-4: entri Changelog Category `Machinery {runId}`, Field `Transfer (Approval scope)`, Old Value `Both`, New Value `Origin only`, Modified By `Budi Santoso`, Action `Edit`, Date `T0 − 2 hari`.
-  - DU-024-5: 9 entri Changelog Category `Machinery {runId}`, Field `Borrow (Max extensions)`, berantai menurut urutan tercatat: entri pertama Old Value `No extension` dan New Value `1`, entri ke-n (n dari 2 sampai 9) Old Value `{n-1}` dan New Value `{n}`, Modified By `Budi Santoso`, Action `Edit`, Date `T0 − 1 hari`.
+  - DU-024-2: entri Changelog Category `Vehicle > Pool car {runId}`, Field `Borrow (Allow Borrow)`, Old Value `Inherit`, New Value `Deny`, Modified By `Budi Santoso` (tampil `Budi S`), Action `Edit`, Date `T0 − 3 hari`.
+  - DU-024-3: entri Changelog Category `Vehicle > Pool car {runId}`, Field `Borrow (Max duration)`, Old Value `Inherit`, New Value `30 days`, Modified By `Rina Wulandari` (tampil `Rina W`), Action `Edit`, Date `T0 − 4 hari`.
+  - DU-024-4: entri Changelog Category `Machinery {runId}`, Field `Transfer (Approval scope)`, Old Value `Inherit`, New Value `Origin only`, Modified By `Budi Santoso`, Action `Edit`, Date `T0 − 2 hari`.
+  - DU-024-5: 9 entri Changelog Category `Machinery {runId}`, Field `Borrow (Max extensions)`, berantai menurut urutan tercatat: entri pertama Old Value `Inherit` dan New Value `1`, entri ke-n (n dari 2 sampai 9) Old Value `{n-1}` dan New Value `{n}`, Modified By `Budi Santoso`, Action `Edit`, Date `T0 − 1 hari`.
   - DU-024-6: kata kunci Search `Tidak Ditemukan {runId}` yang tidak cocok dengan entri mana pun.
 
 ## Test Steps

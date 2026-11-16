@@ -4,7 +4,7 @@ title: "After photo required pada Damaged"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [§4.1#r169, §4.1#r170, §4.1#r171, §4.1#r172, §9.2#b272, §9.2#b426, §9.7#r34, §11#r16]
 smoke: []

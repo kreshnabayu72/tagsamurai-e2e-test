@@ -4,8 +4,8 @@ title: "Approval dan penentuan approver pada transaksi Borrow"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
-sourceRules: ["§Aturan Logika Modul#r74", "§Aturan Logika Modul#r81", "§4.1#r84", "§4.1#r191", "§4.1#r193", "§4.1#r194", "§4.1#r195", "§4.1#r196", "§9.2#b379", "§9.2#b380", "§9.2#b381", "§9.2#b382", "§9.2#b441", "§9.2#b443", "§9.2#b444", "§9.2#b445", "§9.2#b446", "§9.2#b448", "§9.2#b449", "§9.2#b450", "§9.2#b451", "§9.2#b453", "§9.2#b455", "§9.2#b456", "§9.2#b457", "§9.2#b458", "§9.2#b460", "§9.2#b461", "§9.2#b464", "§9.2#b465", "§9.2#b466", "§9.2#b468", "§9.2#b469", "§9.2#b470", "§9.2#b471", "§9.2#b472", "§9.2#b475", "§9.2#b476", "§9.2#b477", "§9.2#b488", "§9.2#b489", "§9.2#b490", "§9.2#b491", "§9.2#b492", "§9.2#b493", "§9.2#b494", "§9.2#b463", "§9.2#b473", "§9.2#b479", "§9.2#b480", "§9.2#b483", "§9.2#b481", "§9.2#b482", "§9.2#b496", "§9.2#b497", "§9.2#b498", "§9.2#b499", "§9.2#b502", "§9.2#b504", "§9.2#b534", "§9.2#b535", "§9.2#b537", "§9.2#b538", "§9.2#b540", "§9.2#b541", "§9.2#b549", "§9.2#b550", "§9.2#b551", "§9.2#b552", "§9.2#b553", "§9.2#b555", "§9.4.1#r20", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r62", "§9.4.2#r130", "§9.4.2#r131", "§9.4.2#r148", "§9.4.2#r149", "§9.4.2#r150", "§9.4.2#r152", "§9.4.3#b4", "§9.4.4#r11", "§9.4.4#r48", "§9.4.4#r49", "§9.4.4#r50", "§9.4.4#r53", "§9.8#r1", "§9.8#r5", "§9.8#r12", "§9.8#r13", "§9.8#r14", "§9.10.1#r11", "§9.10.1#p10", "§9.10.1#p13", "§10#b1"]
+status: ready-for-automation
+sourceRules: ["§Aturan Logika Modul#r74", "§Aturan Logika Modul#r81", "§4.1#r84", "§4.1#r191", "§4.1#r193", "§4.1#r194", "§4.1#r195", "§4.1#r196", "§9.2#b379", "§9.2#b380", "§9.2#b381", "§9.2#b382", "§9.2#b441", "§9.2#b443", "§9.2#b444", "§9.2#b445", "§9.2#b446", "§9.2#b448", "§9.2#b449", "§9.2#b450", "§9.2#b451", "§9.2#b453", "§9.2#b455", "§9.2#b456", "§9.2#b457", "§9.2#b458", "§9.2#b460", "§9.2#b461", "§9.2#b464", "§9.2#b465", "§9.2#b466", "§9.2#b468", "§9.2#b469", "§9.2#b470", "§9.2#b471", "§9.2#b472", "§9.2#b475", "§9.2#b476", "§9.2#b477", "§9.2#b488", "§9.2#b489", "§9.2#b490", "§9.2#b491", "§9.2#b492", "§9.2#b493", "§9.2#b494", "§9.2#b463", "§9.2#b473", "§9.2#b479", "§9.2#b480", "§9.2#b483", "§9.2#b481", "§9.2#b482", "§9.2#b496", "§9.2#b497", "§9.2#b498", "§9.2#b499", "§9.2#b502", "§9.2#b504", "§9.2#b534", "§9.2#b535", "§9.2#b537", "§9.2#b538", "§9.2#b540", "§9.2#b541", "§9.2#b549", "§9.2#b550", "§9.2#b551", "§9.2#b552", "§9.2#b553", "§9.2#b555", "§9.4.1#r20", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r62", "§9.4.2#r130", "§9.4.2#r131", "§9.4.2#r148", "§9.4.2#r149", "§9.4.2#r150", "§9.4.2#r152", "§9.4.3#b4", "§9.4.4#r11", "§9.4.4#r48", "§9.4.4#r49", "§9.4.4#r50", "§9.4.4#r53", "§9.8#r1", "§9.8#r3", "§9.8#r10", "§9.8#r11", "§9.8#r12", "§9.10.1#r11", "§9.10.1#p10", "§9.10.1#p13", "§10#b1"]
 smoke: []
 dependsOn:
   - Borrow: pengajuan, Extension, dan Return
@@ -17,25 +17,25 @@ trace:
   "§4.1#r193": [2, 95]
   "§4.1#r194": [5]
   "§4.1#r195": [9, 11]
-  "§4.1#r196": [6, 11, 13, 16, 17, 134, 135]
-  "§9.2#b379": [98, 100, 101, 147, 149, 150]
+  "§4.1#r196": [6, 11, 13, 16, 17, 144, 145]
+  "§9.2#b379": [98, 100, 101, 126, 128, 129, 157, 158]
   "§9.2#b380": [2]
   "§9.2#b381": [3]
   "§9.2#b382": [77]
   "§9.2#b441": [5]
   "§9.2#b443": [7]
   "§9.2#b444": [2]
-  "§9.2#b445": [128]
+  "§9.2#b445": [138]
   "§9.2#b446": [78]
   "§9.2#b448": [3, 29]
   "§9.2#b449": [29]
   "§9.2#b450": [31]
   "§9.2#b451": [24, 27]
-  "§9.2#b453": [34, 40, 138]
+  "§9.2#b453": [34, 40, 148]
   "§9.2#b455": [5]
   "§9.2#b456": [5, 20]
   "§9.2#b457": [9, 13]
-  "§9.2#b458": [6, 16, 17, 134, 135]
+  "§9.2#b458": [6, 16, 17, 144, 145]
   "§9.2#b460": [64]
   "§9.2#b461": [64, 69]
   "§9.2#b464": [73]
@@ -49,10 +49,10 @@ trace:
   "§9.2#b475": [40]
   "§9.2#b476": [41]
   "§9.2#b477": [42]
-  "§9.2#b488": [40, 140]
+  "§9.2#b488": [40, 150]
   "§9.2#b489": [54, 55]
   "§9.2#b490": [44, 57, 60]
-  "§9.2#b491": [44, 143, 144]
+  "§9.2#b491": [44, 153, 154]
   "§9.2#b492": [60, 62]
   "§9.2#b493": [38]
   "§9.2#b494": [34]
@@ -64,7 +64,7 @@ trace:
   "§9.2#b481": [42, 47]
   "§9.2#b482": [47]
   "§9.2#b496": [103, 107]
-  "§9.2#b497": [103, 105, 107, 111, 152, 154]
+  "§9.2#b497": [103, 105, 107, 111, 131, 133]
   "§9.2#b498": [116, 118]
   "§9.2#b499": [103]
   "§9.2#b502": [65, 70, 73, 82, 120]
@@ -98,11 +98,11 @@ trace:
   "§9.4.4#r49": [82]
   "§9.4.4#r50": [41]
   "§9.4.4#r53": [64]
-  "§9.8#r1": [128, 129]
-  "§9.8#r5": [130, 131]
-  "§9.8#r12": [82, 83]
-  "§9.8#r13": [65, 66]
-  "§9.8#r14": [41]
+  "§9.8#r1": [138, 139]
+  "§9.8#r3": [140, 141]
+  "§9.8#r10": [82, 83]
+  "§9.8#r11": [65, 66]
+  "§9.8#r12": [41]
   "§9.10.1#r11": [77]
   "§9.10.1#p10": [77]
   "§9.10.1#p13": [78, 79]
@@ -198,6 +198,7 @@ owner: BE
   - DU-098-81: Asset, Asset `Pompa Submersible Tsurumi {runId}`, Category `Alat Berat {runId}`, Group asal `Gudang Induk {runId}`, Status `Available`; aset dengan Approval type Any one approver untuk Reject.
   - DU-098-82: Borrow, Borrower `Oscar Pranata {runId}`, Asset `Mesin Bubut Krisbow {runId}`, Category `Alat Berat {runId}`, Group asal `Gudang Induk {runId}`, Status `Borrowed`, Duration `1 hari`, Handover `T0`, Extension `satu Extension Approved sebesar 1 hari`; baris Borrowed dengan Duration 1 hari dan satu Extension Approved 1 hari, override Max extensions 2.
   - DU-098-83: Borrow, Borrower `Oscar Pranata {runId}`, Asset `Mesin Frais Mini {runId}`, Category `Alat Berat {runId}`, Group asal `Gudang Induk {runId}`, Status `Borrowed`, Duration `2 hari`, Handover `T0`, Extension `satu Extension Approved sebesar 1 hari`; baris Borrowed dengan Duration 2 hari dan satu Extension Approved 1 hari, override Max extensions 2.
+  - DU-098-84: Asset, Asset `Bulldozer Kobelco {runId}`, Category `Alat Berat {runId}`, Group asal `Gudang Anak {runId}`, Status `Available`; aset dengan override Allow Borrow Deny dan Allowed borrower Same Group only.
 - Kondisi:
   - Level Feature Suite Borrowing bernilai `Full` dan Approval Workflow tersedia di plan entitas aktor.
   - Company default Borrow bernilai: Require approval `ON`, Auto-approve `ON`, Auto-approve when duration ≤ `3`, Approval type `Any one approver`, Max duration `14`, Max extensions `1`, Duration unit `Days`, Self service `OFF`, Transaction timeout `7`, Allow Borrow `Allow`.
@@ -206,10 +207,12 @@ owner: BE
   - Group Manager: Gani Prakoso {runId} menaungi Group `Gudang Induk {runId}` dan `Gudang Gani {runId}`; Gina Anggraeni {runId} menaungi Group `Gudang Tanpa Approver {runId}`; Gino Wibowo {runId} dan Gita Rahayu {runId} menaungi Group `Gudang Dua Manager {runId}`; Gerry Kusuma {runId} menaungi Group `Gudang Sub Dua Manager {runId}`; tidak ada Group Manager yang menaungi Group `Gudang Tanpa Manager {runId}`.
   - Override tingkat aset yang ada untuk aset `Mixer Truck Scania {runId}`, `Crane Tower Potain {runId}`, `Genset Perkins 100kVA {runId}`, `Wheel Loader Caterpillar {runId}`, `Excavator Sany SY215 {runId}`, `Roller Hamm {runId}`, dan `Welding Machine Lincoln {runId}` bernilai Approval type `All approvers (AND)`.
   - Override tingkat aset untuk `Scissor Lift Skyjack {runId}`, `Boom Lift Haulotte {runId}`, dan `Bor Pile Soilmec {runId}` bernilai Require approval `OFF`; untuk `Skid Loader New Holland {runId}` bernilai Allowed borrower `Same Group only`; untuk `Mesin Bubut Krisbow {runId}` dan `Mesin Frais Mini {runId}` bernilai Max extensions `2`.
-  - Override tingkat aset untuk `Genset Portable Hours A {runId}` dan `Genset Portable Hours B {runId}` bernilai Duration unit `Hours`; untuk `Plate Compactor Bomag {runId}` bernilai Auto-approve `OFF`; untuk `Mesin Las Genset Honda {runId}` bernilai Self service `ON`; untuk `Jackhammer Makita {runId}` bernilai Allow Borrow `Deny`.
+  - Override tingkat aset untuk `Genset Portable Hours A {runId}` dan `Genset Portable Hours B {runId}` bernilai Duration unit `Hours`; untuk `Plate Compactor Bomag {runId}` bernilai Auto-approve `OFF`; untuk `Mesin Las Genset Honda {runId}` bernilai Self service `ON`; untuk `Jackhammer Makita {runId}` bernilai Allow Borrow `Deny`; untuk `Bulldozer Kobelco {runId}` bernilai Allow Borrow `Deny` dan Allowed borrower `Same Group only`.
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`; waktu acuan `T0` adalah waktu saat spec dimulai dan waktu berlalu dinyatakan relatif terhadap `T0`.
 
 ## Test Steps
+
+
 ### Approval satu level dari Approver Role Transaksi dengan Approval type Any one approver
 1. Hana mengajukan Borrow aset `Pompa Beton Schwing {runId}` untuk Borrower `Bima Nugraha {runId}` dengan Duration `5 hari`
 2. Verifikasi baris `Pompa Beton Schwing {runId}` berstatus `Waiting for Approval` karena nilai efektif Require approval `ON` dan Approval type `Any one approver`
@@ -393,47 +396,53 @@ owner: BE
 122. Borrower `Nanda Pratiwi {runId}` melakukan Borrow Now aset `Mesin Las Genset Honda {runId}` dengan Duration `5 hari` tanpa bantuan Aktor Borrow
 123. Verifikasi baris `Mesin Las Genset Honda {runId}` berstatus `Borrowed` tanpa langkah approval
 
-### Timeout menutup pengajuan dan Extension yang menunggu
-124. Hana mengajukan Borrow aset `Chain Hoist Kito {runId}` untuk Borrower `Dedi Kurniawan {runId}` dengan Duration `5 hari`
-125. Hana mengajukan Extension `1 hari` pada baris `Pompa Lumpur Grundfos {runId}`
-126. Waktu berlalu sampai batas Transaction timeout `7` hari sejak masing-masing baris masuk statusnya terlewati
-127. Job timeout transaksi berjalan
-128. Verifikasi baris `Chain Hoist Kito {runId}` kembali ke Draft baru tanpa nomor BRW dengan alasan `Timed out after 7 days in Waiting approval`
-129. Verifikasi log transaksi baris `Chain Hoist Kito {runId}` memuat node `Returned to Draft` di BRW asal, Draft baru, dan log aset dengan Modified By `System`
-130. Verifikasi Extension baris `Pompa Lumpur Grundfos {runId}` berstatus Canceled dengan alasan `Timed out (Waiting for Approval)` dan baris tetap `Borrowed`
-131. Verifikasi Extension baris `Bor Pile Soilmec {runId}` yang menunggu review Aktor Borrow berstatus Canceled dengan alasan `Timed out (Waiting for Review)` dan baris tetap `Borrowed`
-
-### Any one approver: Reject pertama menggagalkan level
-132. Hana mengajukan Borrow aset `Pompa Submersible Tsurumi {runId}` untuk Borrower `Lukman Hakim {runId}` dengan Duration `5 hari`
-133. Rudi menolak baris `Pompa Submersible Tsurumi {runId}`
-134. Verifikasi baris `Pompa Submersible Tsurumi {runId}` berstatus `Rejected` karena Approver pertama yang reject menggagalkan level pada Approval type `Any one approver`
-135. Verifikasi Rani berstatus `Not Involved` pada baris `Pompa Submersible Tsurumi {runId}`
-
-### Group Manager yang menaungi lewat ancestor memutuskan baris di Group turunan
-136. Hana mengajukan Borrow aset `Skid Loader Gehl {runId}` yang Group asalnya `Gudang Anak {runId}` untuk Borrower `Kirana Larasati {runId}` dengan Duration `5 hari`
-137. Gani menyetujui baris `Skid Loader Gehl {runId}`
-138. Verifikasi baris `Skid Loader Gehl {runId}` berstatus `Waiting for Handover` karena keputusan Group Manager yang menaungi Group `Gudang Induk {runId}` sebagai ancestor Group asal bersifat override final tanpa penugasan Approver
-
-### Himpunan fallback memuat Group Manager node dan ancestor-nya
-139. Hana mengajukan Borrow aset `Mesin Press Hidrolik {runId}` yang Group asalnya `Gudang Sub Dua Manager {runId}` untuk Borrower `Gilang Ramadhan {runId}` dengan Duration `5 hari`
-140. Verifikasi approver fallback baris `Mesin Press Hidrolik {runId}` adalah Gerry Kusuma {runId} sebagai Group Manager node serta Gino Wibowo {runId} dan Gita Rahayu {runId} sebagai Group Manager ancestor
-
-### Any one approver pada himpunan fallback dengan dua Group Manager cukup satu
-141. Hana mengajukan Borrow aset `Hydraulic Press Enerpac {runId}` untuk Borrower `Indah Permatasari {runId}` dengan Duration `5 hari`
-142. Gino menyetujui baris `Hydraulic Press Enerpac {runId}`
-143. Verifikasi baris `Hydraulic Press Enerpac {runId}` berstatus `Waiting for Handover` karena Any one approver pada himpunan fallback cukup satu Group Manager
-144. Verifikasi Gita berstatus `Not Involved` pada baris `Hydraulic Press Enerpac {runId}`
-
 ### Aturan tetap dan Eligibility dievaluasi sebelum approval
-145. Hana mencatat jumlah permintaan approval yang diterima Rudi
-146. Hana mengajukan Borrow aset `Pompa Beton Schwing {runId}` untuk Borrower `Mira Oktaviani {runId}` dengan Duration `5 hari`
-147. Verifikasi pengajuan ditolak karena aset sudah punya transaksi aktif, aturan tetap yang dievaluasi sebelum approval
-148. Hana mengajukan Borrow aset `Skid Loader New Holland {runId}` untuk Borrower `Joko Widodo {runId}` dengan Duration `5 hari`
-149. Verifikasi pengajuan ditolak karena Allowed borrower `Same Group only` pada Eligibility dievaluasi sebelum approval
-150. Verifikasi jumlah permintaan approval yang diterima Rudi sama dengan catatan
+124. Hana mencatat jumlah permintaan approval yang diterima Rudi
+125. Hana mengajukan Borrow aset `Pompa Beton Schwing {runId}` untuk Borrower `Mira Oktaviani {runId}` dengan Duration `5 hari`
+126. Verifikasi pengajuan ditolak karena aset sudah punya transaksi aktif, aturan tetap yang dievaluasi sebelum approval
+127. Hana mengajukan Borrow aset `Skid Loader New Holland {runId}` untuk Borrower `Joko Widodo {runId}` dengan Duration `5 hari`
+128. Verifikasi pengajuan ditolak karena Allowed borrower `Same Group only` pada Eligibility dievaluasi sebelum approval
+129. Verifikasi jumlah permintaan approval yang diterima Rudi sama dengan catatan
 
 ### Auto-approve menghitung perpanjangan sebelumnya
-151. Hana mengajukan Extension `1 hari` pada baris `Mesin Bubut Krisbow {runId}`
-152. Verifikasi Extension langsung berlaku tanpa menunggu approval karena durasi total sejak handover `3` hari termasuk perpanjangan sebelumnya sama dengan batas Auto-approve when duration ≤
-153. Hana mengajukan Extension `1 hari` pada baris `Mesin Frais Mini {runId}`
-154. Verifikasi Extension berstatus `Waiting for Approval` karena durasi total `4` hari termasuk perpanjangan sebelumnya melebihi batas Auto-approve when duration ≤, walau Extension ini sendiri `1` hari
+130. Hana mengajukan Extension `1 hari` pada baris `Mesin Bubut Krisbow {runId}`
+131. Verifikasi Extension langsung berlaku tanpa menunggu approval karena durasi total sejak handover `3` hari termasuk perpanjangan sebelumnya sama dengan batas Auto-approve when duration ≤
+132. Hana mengajukan Extension `1 hari` pada baris `Mesin Frais Mini {runId}`
+133. Verifikasi Extension berstatus `Waiting for Approval` karena durasi total `4` hari termasuk perpanjangan sebelumnya melebihi batas Auto-approve when duration ≤, walau Extension ini sendiri `1` hari
+
+### Timeout menutup pengajuan dan Extension yang menunggu
+134. Hana mengajukan Borrow aset `Chain Hoist Kito {runId}` untuk Borrower `Dedi Kurniawan {runId}` dengan Duration `5 hari`
+135. Hana mengajukan Extension `1 hari` pada baris `Pompa Lumpur Grundfos {runId}`
+136. Waktu berlalu sampai batas Transaction timeout `7` hari sejak masing-masing baris masuk statusnya terlewati
+137. Job timeout transaksi berjalan
+138. Verifikasi baris `Chain Hoist Kito {runId}` ditutup `Canceled` di BRW asal dengan alasan `Timed out (Waiting for Approval)`, dan asetnya dikembalikan ke Draft baru tanpa nomor BRW
+139. Verifikasi log transaksi baris `Chain Hoist Kito {runId}` memuat node `Canceled` di BRW asal dan log aset dengan Modified By `System`
+140. Verifikasi Extension baris `Pompa Lumpur Grundfos {runId}` berstatus Canceled dengan alasan `Timed out (Waiting for Approval)` dan baris tetap `Borrowed`
+141. Verifikasi Extension baris `Bor Pile Soilmec {runId}` yang menunggu review Aktor Borrow berstatus Canceled dengan alasan `Timed out (Waiting for Review)` dan baris tetap `Borrowed`
+
+### Any one approver: Reject pertama menggagalkan level
+142. Hana mengajukan Borrow aset `Pompa Submersible Tsurumi {runId}` untuk Borrower `Lukman Hakim {runId}` dengan Duration `5 hari`
+143. Rudi menolak baris `Pompa Submersible Tsurumi {runId}`
+144. Verifikasi baris `Pompa Submersible Tsurumi {runId}` berstatus `Rejected` karena Approver pertama yang reject menggagalkan level pada Approval type `Any one approver`
+145. Verifikasi Rani berstatus `Not Involved` pada baris `Pompa Submersible Tsurumi {runId}`
+
+### Group Manager yang menaungi lewat ancestor memutuskan baris di Group turunan
+146. Hana mengajukan Borrow aset `Skid Loader Gehl {runId}` yang Group asalnya `Gudang Anak {runId}` untuk Borrower `Kirana Larasati {runId}` dengan Duration `5 hari`
+147. Gani menyetujui baris `Skid Loader Gehl {runId}`
+148. Verifikasi baris `Skid Loader Gehl {runId}` berstatus `Waiting for Handover` karena keputusan Group Manager yang menaungi Group `Gudang Induk {runId}` sebagai ancestor Group asal bersifat override final tanpa penugasan Approver
+
+### Himpunan fallback memuat Group Manager node dan ancestor-nya
+149. Hana mengajukan Borrow aset `Mesin Press Hidrolik {runId}` yang Group asalnya `Gudang Sub Dua Manager {runId}` untuk Borrower `Gilang Ramadhan {runId}` dengan Duration `5 hari`
+150. Verifikasi approver fallback baris `Mesin Press Hidrolik {runId}` adalah Gerry Kusuma {runId} sebagai Group Manager node serta Gino Wibowo {runId} dan Gita Rahayu {runId} sebagai Group Manager ancestor
+
+### Any one approver pada himpunan fallback dengan dua Group Manager cukup satu
+151. Hana mengajukan Borrow aset `Hydraulic Press Enerpac {runId}` untuk Borrower `Indah Permatasari {runId}` dengan Duration `5 hari`
+152. Gino menyetujui baris `Hydraulic Press Enerpac {runId}`
+153. Verifikasi baris `Hydraulic Press Enerpac {runId}` berstatus `Waiting for Handover` karena Any one approver pada himpunan fallback cukup satu Group Manager
+154. Verifikasi Gita berstatus `Not Involved` pada baris `Hydraulic Press Enerpac {runId}`
+
+### Deny pada override mengalahkan Eligibility dan Limits
+155. Hana mencatat jumlah baris Borrow untuk aset `Bulldozer Kobelco {runId}`
+156. Hana mengajukan Borrow aset `Bulldozer Kobelco {runId}` untuk Borrower `Joko Widodo {runId}` dengan Duration `15 hari`
+157. Verifikasi pengajuan ditolak karena Deny pada override tingkat aset dievaluasi lebih dulu daripada Eligibility Allowed borrower `Same Group only` dan Limits Max duration `14`, walau Group Borrower berbeda dari Group asal aset dan Duration `15` hari melebihi Max duration
+158. Verifikasi jumlah baris Borrow untuk aset `Bulldozer Kobelco {runId}` sama dengan catatan

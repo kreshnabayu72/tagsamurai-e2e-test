@@ -4,7 +4,7 @@ title: "Dialog Add override: tampilan awal, Scope, Target, dan baris Field + Val
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§Aturan Logika Modul#r46, §Aturan Logika Modul#r47, §Aturan Logika Modul#r48, §Aturan Logika Modul#r49, §Aturan Logika Modul#r51, §Aturan Logika Modul#r67, §Aturan Logika Modul#r100, §4.1#r8, §4.1#r283, §4.1#r284, §4.1#r285, §4.1#r286, §4.1#r287, §4.1#r288, §4.1#r289, §4.1#r290, §4.1#r291, §4.1#r292, §4.1#r294, §4.1#r295, §4.1#r296, §4.1#r297, §4.1#r298, §4.1#r299, §4.1#r300, §4.1#r301, §4.1#r302, §4.1#r303, §4.1#r304, §4.1#r305, §4.1#r306, §4.1#r307, §4.1#r308, §4.1#r309, §4.1#r319, §4.1#p60, D-02, §9.2#b84, §9.2#b86, §9.2#b87, §9.2#b150, §9.2#b155, §9.2#b197, §9.4.2#r8, §9.4.2#r25, §9.4.4#r23, §9.5#r13, §9.5#r14, §9.5#r19, §9.5#r20, §9.5#r26, §9.9#r13, §9.9#r14, §9.9#r15, §9.9#r16, §9.10.1#b5, §9.10.2#b5, §9.10.3#b5, §10#b2, EB-FRM-7@add-override, EB-TBL-5@hapus-baris-field]
 smoke: []
 dependsOn: []

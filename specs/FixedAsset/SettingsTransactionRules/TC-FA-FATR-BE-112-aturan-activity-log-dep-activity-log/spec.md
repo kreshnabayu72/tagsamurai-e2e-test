@@ -4,16 +4,16 @@ title: "Entri Activity Log dari Settings dan override"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
-sourceRules: ["§8.1#r6", "§8.2#p1", "§8.2#p2", "§9.2#b247", "§9.2#b372", "§9.2#b377", "§9.4.4#r26", "§9.4.4#r30", "§9.4.4#r45", "§9.6#r1", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§9.6#r21", "§9.7#r3", "§9.7#r10", "§9.7#r19", "§9.8#r15", "§9.8#r16", "§9.8#r18", "§11#r11"]
+sourceRules: ["§8.1#r6", "§8.2#p1", "§8.2#p2", "§9.2#b247", "§9.2#b372", "§9.2#b377", "§9.4.4#r26", "§9.4.4#r30", "§9.4.4#r45", "§9.6#r1", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§9.6#r21", "§9.7#r3", "§9.7#r10", "§9.7#r19", "§9.8#r13", "§9.8#r14", "§9.8#r16", "§11#r11"]
 smoke: []
 dependsOn: ["Activity Log: daftar entri"]
 trace:
   "§8.2#p1": [3, 4, 5, 7, 10, 16, 24, 26]
   "§9.7#r10": 3
   "§11#r11": 3
-  "§9.8#r15": [12, 13]
+  "§9.8#r13": [12, 13]
   "§9.6#r1": [12, 13]
   "§8.1#r6": [16, 30]
   "§9.6#r2": [16, 18]
@@ -22,12 +22,12 @@ trace:
   "§9.6#r21": 18
   "§9.2#b377": [21, 26, 30, 31]
   "§9.4.4#r45": [21, 31]
-  "§9.8#r16": [21, 26, 31]
+  "§9.8#r14": [21, 26, 31]
   "§9.7#r19": [26, 30]
   "§9.6#r3": [26, 28]
   "§9.4.4#r26": 30
   "§9.6#r4": [33, 35, 37]
-  "§9.8#r18": [33, 35]
+  "§9.8#r16": [33, 35]
   "§9.2#b372": [33, 35, 37]
   "§9.2#b247": 39
   "§8.2#p2": [40, 42]
@@ -108,7 +108,7 @@ trace:
 
 ### Aksi sistem dicatat dengan Modified By System tanpa System Log
 38. Job Transaction timeout berjalan atas peminjaman aset `Autoklaf Mini {runId}`
-39. Verifikasi log aset `Autoklaf Mini {runId}` memuat node `Returned to Draft` yang dicatat oleh `System`
+39. Verifikasi log aset `Autoklaf Mini {runId}` memuat node `Canceled` yang dicatat oleh `System`
 40. Verifikasi transaksi yang ditutup timeout itu dicatat dengan Modified By `System` dan tanpa entri System Log
 41. `Bagus Prasetyo {runId}` mengajukan peminjaman aset `Sentrifus Meja {runId}` di Category `Peralatan Lab {runId} > Mikroskop {runId}` dan Group `Divisi Riset {runId}` yang tidak punya Approver, sehingga rute approval jatuh ke Group Manager atau Total Control
 42. Verifikasi rute approval yang jatuh ke Group Manager atau Total Control dicatat dengan Modified By `System` dan tanpa entri System Log

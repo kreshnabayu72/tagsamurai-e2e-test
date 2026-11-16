@@ -4,7 +4,7 @@ title: "Draft Settings bertahan lintas node dan dijaga dialog Unsaved Changes"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.2#b4", "§4.2#r1", "§4.2#r2", "§4.2#r3", "§4.2#r4", "§4.2#r5", "§4.2#r6", "§9.2#b3", "§9.2#b27", "§9.2#b30", "§9.4.2#r15", "§9.5#r16", "§9.5#r17"]
 smoke: []
 dependsOn: []
