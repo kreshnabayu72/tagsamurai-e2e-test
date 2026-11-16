@@ -2488,3 +2488,13 @@ Aturan:
 - **Diputuskan oleh:** owner, 2026-11-16 ("user list, is user list, not user detail").
 - **Diterapkan di:** spec AdminConsole yang langkahnya menunggu BT-GAP-19 / BT-AC-SU-8.
 - **Sumber:** plans/_program/sprint-board.md baris 24; plans/_program/be-filing/ISSUE-MAP.md (iam-service #244).
+
+## D-235 Langkah Client Detail dan form Client Admin Console adalah sprint-gap (2026-11-16)
+
+- **Spec / langkah:** semua langkah AdminConsole yang membuka Client Detail (tab Subscription, TAG, Hardware, Asset Control, Storage, Retry Access Setup, status default user) atau form create Client.
+- **Spec meminta:** layar-layar tersebut dapat dibuka dan isinya diverifikasi.
+- **Karena:** Client Detail dan form Client tidak punya baris di sprint board. Baris 33 "Client List" hanya mencakup daftar client. Satu baris hanya mencakup layar yang namanya disebut (owner 2026-11-16, "user list, is user list, not user detail").
+- **Keputusan:** langkah-langkah ini di-tag `sprint-gap`. Issue BE ems#147, #157, #158, #159, #160, #161, #164, #169 dan #241 di-hold (out-of-sprint). iam#240 (tab Responsibilities di detail user Admin Console) di-hold berdasarkan D-234.
+- **Diputuskan oleh:** Wangs-UI Coordinator, dengan aturan baris literal dari owner, 2026-11-16.
+- **Diterapkan di:** spec AdminConsole yang langkahnya menunggu BT-AC-ACC-3/-4/-5/-6/-7/-11/-17/-22/-24 dan BT-GAP-46.
+- **Sumber:** plans/_program/sprint-board.md baris 33; plans/_program/be-filing/ISSUE-MAP.md.
