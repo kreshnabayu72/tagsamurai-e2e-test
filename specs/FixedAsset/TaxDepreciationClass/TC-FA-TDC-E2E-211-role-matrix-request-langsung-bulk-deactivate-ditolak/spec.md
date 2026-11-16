@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-211-role-matrix-request-langsung-bulk-deactivate-ditolak
 title: "Role Matrix Negatif: Request Langsung Bulk Deactivate Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,12 @@ sourceTc:
   - TC-FA-TDC-808
   - TC-FA-TDC-809
   - TC-FA-TDC-810
+sourceRules: ["F-FATDC-13.k13", "FATDC-LOGIC-08i"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-13.k13": 4
+  "FATDC-LOGIC-08i": [4, 6]
 coverage:
   web: automated
 ---

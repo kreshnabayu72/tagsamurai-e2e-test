@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-083-alert-versi-scheduled-screening-dan-dialog-cancel-scheduled-version-d-10
 title: "Alert Versi Scheduled pada Drawer Edit dan Screening Dialog Cancel Scheduled Version (D-10)"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-TDC-295
   - TC-FA-TDC-296
   - TC-FA-TDC-297
+sourceRules: ["ST-30", "FLD-05", "FATDC-LOGIC-04aa", "FATDC-LOGIC-04ab", "D-10"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-30": 3
+  "FLD-05": [3, 4, 8, 9, 12, 13]
+  "FATDC-LOGIC-04aa": [4, 8]
+  "FATDC-LOGIC-04ab": 5
+  "D-10": [18, 19, 20, 21, 22]
 coverage:
   web: automated
 ---

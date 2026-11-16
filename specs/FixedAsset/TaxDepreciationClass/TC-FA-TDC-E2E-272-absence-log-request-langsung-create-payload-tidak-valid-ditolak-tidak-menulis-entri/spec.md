@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-272-absence-log-request-langsung-create-payload-tidak-valid-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Create dengan Payload Tidak Valid yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -13,6 +14,23 @@ sourceTc:
   - TC-FA-TDC-856
   - TC-FA-TDC-857
   - TC-FA-TDC-858
+sourceRules: ["E-FATDC-03", "V-07", "V-06", "E-FATDC-02", "V-02", "V-03", "V-09", "E-FATDC-05", "V-12", "E-FATDC-04", "V-05", "§8.4#r7", "J-04"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FATDC-03": 3
+  "V-07": 3
+  "V-06": 3
+  "E-FATDC-02": 3
+  "V-02": 3
+  "V-03": 3
+  "V-09": 3
+  "E-FATDC-05": 3
+  "V-12": 3
+  "E-FATDC-04": 3
+  "V-05": 3
+  "§8.4#r7": [4, 5, 6]
+  "J-04": [4, 5, 6]
 coverage:
   web: automated
 ---

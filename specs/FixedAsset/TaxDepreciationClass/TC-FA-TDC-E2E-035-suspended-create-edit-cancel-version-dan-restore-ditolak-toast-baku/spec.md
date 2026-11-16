@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-035-suspended-create-edit-cancel-version-dan-restore-ditolak-toast-baku
 title: "Entitas Suspended: Create, Edit, Cancel Scheduled Version, dan Restore Default Classes Ditolak dengan Toast Baku"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-885
   - TC-FA-TDC-886
   - TC-FA-TDC-887
+sourceRules: ["E-FATDC-62", "T-12", "§4.2c#b1", "L-01", "ST-30", "L-09", "ST-23"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FATDC-62": [4, 11, 12, 13, 18, 24, 25, 30, 33, 36, 42, 45, 46]
+  "T-12": [4, 18, 30, 42]
+  "§4.2c#b1": 8
+  "L-01": [13, 46]
+  "ST-30": 33
+  "L-09": 36
+  "ST-23": 45
+anchor: [5, 6, 19, 20, 31, 32, 43, 44]
 coverage:
   web: automated
 ---

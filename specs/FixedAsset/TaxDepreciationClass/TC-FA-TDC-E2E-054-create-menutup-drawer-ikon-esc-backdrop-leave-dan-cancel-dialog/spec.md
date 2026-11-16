@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-054-create-menutup-drawer-ikon-esc-backdrop-leave-dan-cancel-dialog
 title: "Create - Menutup Drawer Lewat Ikon, Esc, Backdrop, Leave, dan Cancel Dialog"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,14 @@ sourceTc:
   - TC-FA-TDC-120
   - TC-FA-TDC-121
   - TC-FA-TDC-122
+sourceRules: ["§12#r11", "§4.2c#b1", "§4.5#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§12#r11": 3
+  "§4.2c#b1": [4, 8, 12, 18, 20, 21, 26, 28, 29, 31]
+  "§4.5#b1": [7, 14]
+anchor: [11, 22]
 coverage:
   web: automated
 ---

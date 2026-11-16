@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-260-absence-log-request-langsung-role-matrix-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Role Matrix Activate dan Deactivate yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -13,6 +14,12 @@ sourceTc:
   - TC-FA-TDC-796
   - TC-FA-TDC-797
   - TC-FA-TDC-798
+sourceRules: ["FATDC-LOGIC-08i", "§8.4#r7"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-08i": [3, 9]
+  "§8.4#r7": [4, 5, 6, 10, 11, 12]
 coverage:
   web: automated
 ---

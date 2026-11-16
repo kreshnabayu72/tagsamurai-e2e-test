@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-079-apply-regulation-reference-class-name-dan-allowed-methods-membentuk-versi
 title: "Apply D-09: Regulation Reference Diwarisi, Class Name Ditulis Langsung, dan Perubahan Allowed Methods Tanpa Guard Persempit"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-TDC-276
   - TC-FA-TDC-277
   - TC-FA-TDC-278
+sourceRules: ["T-02c", "FATDC-LOGIC-04r.4", "FATDC-LOGIC-04r.3", "§4.1.1#r3", "F-FATDC-02.k10b", "D-09", "D-08", "T-02b", "FATDC-LOGIC-03f.2", "§4.1.1#r8", "§4.1.1#r7", "FATDC-LOGIC-03f.3"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02c": [7, 19]
+  "FATDC-LOGIC-04r.4": 10
+  "FATDC-LOGIC-04r.3": 20
+  "§4.1.1#r3": 20
+  "F-FATDC-02.k10b": 21
+  "D-09": [25, 34]
+  "D-08": [26, 35]
+  "T-02b": [29, 38]
+  "FATDC-LOGIC-03f.2": 30
+  "§4.1.1#r8": 30
+  "§4.1.1#r7": 39
+  "FATDC-LOGIC-03f.3": 39
 coverage:
   web: automated
 ---

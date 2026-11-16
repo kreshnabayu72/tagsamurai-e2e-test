@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-080-apply-gagal-5xx-klik-ganda-dan-saving-state
 title: "Apply D-09: Gagal 5xx Mempertahankan Input, Klik Ganda Hanya Membentuk Satu Versi, dan Tombol Apply Masuk Saving State"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-TDC-279
   - TC-FA-TDC-280
   - TC-FA-TDC-281
+sourceRules: ["T-02d", "R-02", "§7.3#b1", "ST-13", "T-02c", "§4.1.6#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02d": 8
+  "R-02": [9, 15, 18]
+  "§7.3#b1": 10
+  "ST-13": [11, 26, 27, 28, 29]
+  "T-02c": 15
+  "§4.1.6#r5": 18
 coverage:
   web: automated
 ---

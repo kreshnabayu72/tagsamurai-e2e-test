@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-133-konflik-delete-single-class-berubah-saat-dialog-terbuka
 title: "Konflik Delete Single: Class Berubah Saat Dialog Delete Terbuka"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-TDC-408
   - TC-FA-TDC-409
   - TC-FA-TDC-895
+sourceRules: ["D-05", "R-06", "L-05", "D-04", "T-13", "E-FATDC-31", "§[F-FATDC-06] Delete Tax Depreciation Class#b3", "L-04"]
+smoke: []
+dependsOn: []
+trace:
+  "D-05": 7
+  "R-06": [10, 21]
+  "L-05": [11, 22, 31, 41]
+  "D-04": 18
+  "T-13": [29, 30]
+  "E-FATDC-31": 39
+  "§[F-FATDC-06] Delete Tax Depreciation Class#b3": 40
+  "L-04": 41
+anchor: [8, 19]
 coverage:
   web: automated
 ---

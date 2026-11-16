@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-073-d-09-tahun-pajak-closed-soft-closed-dan-open-ditawarkan-atau-tidak
 title: "Pilihan Effective From pada D-09: Tahun Pajak Seluruh Periode Closed Tidak Ditawarkan, Soft Closed dan Open Tetap Ditawarkan"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-TDC-259
   - TC-FA-TDC-260
   - TC-FA-TDC-261
+sourceRules: ["FATDC-LOGIC-04af", "FATDC-LOGIC-04ag", "FATDC-LOGIC-04e", "FATDC-LOGIC-04t", "V-20", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04af": [6, 7, 13, 20]
+  "FATDC-LOGIC-04ag": 6
+  "FATDC-LOGIC-04e": [7, 13, 20]
+  "FATDC-LOGIC-04t": [8, 14, 21]
+  "V-20": 15
+  "§4.2c#b1": 24
 coverage:
   web: automated
 ---

@@ -1,12 +1,23 @@
 ---
 id: TC-FA-TDC-E2E-072-d-09-pilihan-effective-from-tahun-pajak-berjalan-sampai-lima-tahun
 title: "Pilihan Effective From pada D-09: Tahun Pajak Berjalan sampai Lima Tahun Setelahnya dan Mulai dari Versi Terakhir Bertanggal"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-256
   - TC-FA-TDC-257
+sourceRules: ["FATDC-LOGIC-04af", "FATDC-LOGIC-04f.4", "FATDC-LOGIC-04t", "E-FATDC-77", "§4.2c#b1", "V-22"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04af": [6, 8, 19, 20]
+  "FATDC-LOGIC-04f.4": 6
+  "FATDC-LOGIC-04t": [7, 18]
+  "E-FATDC-77": 8
+  "§4.2c#b1": [12, 24]
+  "V-22": 20
 coverage:
   web: automated
 ---

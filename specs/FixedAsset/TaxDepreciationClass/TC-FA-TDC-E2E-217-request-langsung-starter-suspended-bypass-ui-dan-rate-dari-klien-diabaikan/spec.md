@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-217-request-langsung-starter-suspended-bypass-ui-dan-rate-dari-klien-diabaikan
 title: "Request Langsung: Plan Starter dan Entitas Suspended Ditolak serta Rate dari Klien Diabaikan"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-TDC-173
   - TC-FA-TDC-831
   - TC-FA-TDC-888
+sourceRules: ["T-01", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2", "FATDC-LOGIC-03f.5", "E-FATDC-62"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": 11
+  "FATDC-LOGIC-03f.1": 13
+  "FATDC-LOGIC-03f.2": 13
+  "FATDC-LOGIC-03f.5": 13
+  "E-FATDC-62": [24, 26]
+anchor: [18, 20]
 coverage:
   web: automated
 ---

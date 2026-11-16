@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-189-log-l-02-class-code-tidak-diperbarui-ulang-edit-sekaligus-dan-kapitalisasi
 title: "Pencatatan Log L-02 pada Tiga Surface: Class Code Tidak Diperbarui Ulang, Edit Tiga Field Sekaligus, dan Perubahan Kapitalisasi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,24 @@ sourceTc:
   - TC-FA-TDC-678
   - TC-FA-TDC-679
   - TC-FA-TDC-680
+sourceRules: ["FATDC-LOGIC-04c", "L-02d", "L-02a", "§4.1.1#r31", "L-01", "L-02e", "§8.2#p1", "L-02b", "§8.2#r1", "§8.3#p1", "L-02c", "F-FATDC-02.k11d", "§8#b1", "§[F-FATDC-02] Edit Tax Depreciation Class#r43"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04c": [9, 16, 21, 34, 36, 37, 40, 41, 43, 44]
+  "L-02d": [10, 11, 17, 18, 22, 23, 35, 41, 44, 52, 53, 57, 60]
+  "L-02a": [10, 11, 35, 36, 37, 53]
+  "§4.1.1#r31": [10, 11, 35, 36, 37, 53]
+  "L-01": [13, 19, 25]
+  "L-02e": [13, 19, 25]
+  "§8.2#p1": [16, 40, 56]
+  "L-02b": [17, 18, 41, 57]
+  "§8.2#r1": [17, 18, 41, 57]
+  "§8.3#p1": [21, 22, 23, 43, 44, 59, 60]
+  "L-02c": [22, 23, 44, 60]
+  "F-FATDC-02.k11d": 34
+  "§8#b1": [52, 53, 56, 59]
+  "§[F-FATDC-02] Edit Tax Depreciation Class#r43": 52
 coverage:
   web: automated
 ---

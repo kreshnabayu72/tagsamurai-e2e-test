@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-195-log-bulk-activate-activity-log-dan-bulk-delete-satu-kejadian-per-class
 title: "Pencatatan Log L-04 Bulk Activate pada Activity Log dan L-05 Bulk Delete: Satu Kejadian per Class di Tiga Surface"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-TDC-713
   - TC-FA-TDC-714
   - TC-FA-TDC-715
+sourceRules: ["L-04", "§8.3#p1", "L-05", "§4.1.1#r31", "§8.2#p1", "§8.2#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "L-04": [8, 9, 10]
+  "§8.3#p1": [9, 10, 30, 31]
+  "L-05": [19, 20, 21, 24, 25, 26, 29, 30, 31]
+  "§4.1.1#r31": [20, 21]
+  "§8.2#p1": 24
+  "§8.2#r1": [25, 26]
 coverage:
   web: automated
 ---

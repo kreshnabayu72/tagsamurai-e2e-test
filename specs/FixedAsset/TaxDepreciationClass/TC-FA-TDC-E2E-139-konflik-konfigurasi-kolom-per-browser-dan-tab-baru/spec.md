@@ -1,12 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-139-konflik-konfigurasi-kolom-per-browser-dan-tab-baru
 title: "Multi-Konteks: Konfigurasi Kolom Tersimpan per Browser dan Tab Browser Baru Memulai dari State Default"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-551
   - TC-FA-TDC-563
+sourceRules: ["§5#b9", "§9.5#r4", "§5#b4"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b9": [5, 7]
+  "§9.5#r4": 7
+  "§5#b4": 19
+anchor: [17, 18, 20]
 coverage:
   web: automated
 ---

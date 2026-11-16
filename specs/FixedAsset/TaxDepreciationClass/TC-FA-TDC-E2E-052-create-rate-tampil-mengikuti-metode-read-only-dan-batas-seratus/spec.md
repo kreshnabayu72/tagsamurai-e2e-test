@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-052-create-rate-tampil-mengikuti-metode-read-only-dan-batas-seratus
 title: "Create - Rate Tampil Mengikuti Metode, Read-only, dan Batas 100"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-TDC-166
   - TC-FA-TDC-167
   - TC-FA-TDC-171
+sourceRules: ["FATDC-LOGIC-03f.4", "ST-10", "§9.9#r7", "§9.9#r8", "FATDC-LOGIC-03f.1", "FI-03", "FATDC-LOGIC-03f.2", "FI-11", "V-15"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-03f.4": [4, 5, 7, 9, 20, 24]
+  "ST-10": [10, 12]
+  "§9.9#r7": 15
+  "§9.9#r8": 15
+  "FATDC-LOGIC-03f.1": [17, 28, 31]
+  "FI-03": [17, 18]
+  "FATDC-LOGIC-03f.2": [18, 29, 32]
+  "FI-11": [25, 26]
+  "V-15": 26
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-194-log-bulk-deactivate-dan-bulk-activate-satu-kejadian-per-class
 title: "Pencatatan Log L-04 Bulk Deactivate dan Bulk Activate: Satu Kejadian per Class di Tiga Surface"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,15 @@ sourceTc:
   - TC-FA-TDC-709
   - TC-FA-TDC-710
   - TC-FA-TDC-711
+sourceRules: ["L-04", "§4.1.1#r31", "§8.2#p1", "§8.2#r1", "§8.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "L-04": [8, 9, 10, 13, 14, 15, 18, 19, 20, 29, 30, 31, 34, 35, 36]
+  "§4.1.1#r31": [9, 10, 30, 31]
+  "§8.2#p1": [13, 34]
+  "§8.2#r1": [14, 15, 35, 36]
+  "§8.3#p1": [19, 20]
 coverage:
   web: automated
 ---

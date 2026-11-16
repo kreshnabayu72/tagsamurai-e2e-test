@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-215-role-matrix-request-langsung-cancel-scheduled-version-ditolak
 title: "Role Matrix Negatif: Request Langsung Cancel Scheduled Version Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-TDC-824
   - TC-FA-TDC-825
   - TC-FA-TDC-826
+sourceRules: ["§9.3#r3", "§[F-FATDC-03] Cancel Scheduled Version#p1", "§9.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#r3": 4
+  "§[F-FATDC-03] Cancel Scheduled Version#p1": 4
+  "§9.3#p1": 6
 coverage:
   web: automated
 ---

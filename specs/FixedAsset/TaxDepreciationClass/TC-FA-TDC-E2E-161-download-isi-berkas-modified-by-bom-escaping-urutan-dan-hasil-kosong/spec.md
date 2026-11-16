@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-161-download-isi-berkas-modified-by-bom-escaping-urutan-dan-hasil-kosong
 title: "Download Isi Berkas: Modified By, BOM, Escaping, Urutan, dan Hasil Kosong"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-TDC-575
   - TC-FA-TDC-576
   - TC-FA-TDC-577
+sourceRules: ["§4.1.1#r12", "§3.9#r13", "T-11a", "F-FATDC-12.k2", "§5#b7"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r12": 6
+  "§3.9#r13": 16
+  "T-11a": 19
+  "F-FATDC-12.k2": [20, 21]
+  "§5#b7": 20
+anchor: [13, 27, 28, 29]
 coverage:
   web: automated
 ---

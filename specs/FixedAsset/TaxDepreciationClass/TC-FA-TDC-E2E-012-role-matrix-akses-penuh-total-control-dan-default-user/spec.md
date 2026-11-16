@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-012-role-matrix-akses-penuh-total-control-dan-default-user
 title: "Role Matrix: Akses Penuh Total Control dan Default User pada Tab Tax Depreciation Class"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,25 @@ sourceTc:
   - TC-FA-TDC-38
   - TC-FA-TDC-39
   - TC-FA-TDC-40
+sourceRules: ["§4.8#r1", "§9.3#r1", "§4.8#r9", "§4.8#r13", "§4.8#r15", "§4.4#r1", "§4.8#r7", "ST-06", "FATDC-LOGIC-03a.3", "§4.8#r8", "D-02", "§3.9#r4", "§4.1.1#r16", "§4.2b#p1", "§4.8#r11"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r1": [1, 21]
+  "§9.3#r1": [2, 21]
+  "§4.8#r9": [3, 22]
+  "§4.8#r13": [5, 24]
+  "§4.8#r15": [5, 24]
+  "§4.4#r1": 8
+  "§4.8#r7": 9
+  "ST-06": 10
+  "FATDC-LOGIC-03a.3": 11
+  "§4.8#r8": 12
+  "D-02": [15, 16, 17]
+  "§3.9#r4": 19
+  "§4.1.1#r16": 19
+  "§4.2b#p1": 27
+  "§4.8#r11": 28
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-081-d-08-blok-persempit-allowed-methods-screening-ok-dan-esc
 title: "Dialog D-08 Blok Persempit Allowed Methods: Screening untuk Lebih dari Satu Asset Class, Tombol OK, dan Esc"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-TDC-283
   - TC-FA-TDC-286
   - TC-FA-TDC-287
+sourceRules: ["D-08", "F-FATDC-02.k6b", "E-FATDC-17", "§7.3#b1", "§7.3#b2", "F-FATDC-02.k6c", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "D-08": [5, 6, 7, 8, 14, 20]
+  "F-FATDC-02.k6b": 7
+  "E-FATDC-17": [9, 15, 21]
+  "§7.3#b1": [16, 21]
+  "§7.3#b2": 17
+  "F-FATDC-02.k6c": 22
+  "§4.2c#b1": 24
 coverage:
   web: automated
 ---

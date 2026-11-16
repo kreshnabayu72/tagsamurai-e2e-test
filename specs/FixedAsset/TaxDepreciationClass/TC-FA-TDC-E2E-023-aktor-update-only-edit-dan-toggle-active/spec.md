@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-023-aktor-update-only-edit-dan-toggle-active
 title: "Aktor Update-Only: Edit Class dan Toggle Active"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,24 @@ sourceTc:
   - TC-FA-TDC-75
   - TC-FA-TDC-76
   - TC-FA-TDC-77
+sourceRules: ["F-FATDC-02.k11a", "§[F-FATDC-02] Edit Tax Depreciation Class#b4", "T-02a", "§[F-FATDC-02] Edit Tax Depreciation Class#b6", "S-02a", "ST-06", "FATDC-LOGIC-07a", "ST-30", "D-03", "T-04", "§3.9#r5", "D-01", "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3", "§3.9#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-02.k11a": [4, 18]
+  "§[F-FATDC-02] Edit Tax Depreciation Class#b4": [4, 18]
+  "T-02a": [5, 13, 19]
+  "§[F-FATDC-02] Edit Tax Depreciation Class#b6": [6, 20]
+  "S-02a": [7, 14]
+  "ST-06": 10
+  "FATDC-LOGIC-07a": 10
+  "ST-30": 22
+  "D-03": 25
+  "T-04": 27
+  "§3.9#r5": 28
+  "D-01": 30
+  "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3": 32
+  "§3.9#r3": 33
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-198-absence-log-kejadian-system-dan-aksi-dilewati-atau-diblokir
 title: "Absence Log: Kejadian System Tidak Ditulis ke System Log, Aksi Bulk Dilewati, dan Aksi yang Diblokir Dialog"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -10,6 +11,25 @@ sourceTc:
   - TC-FA-TDC-716
   - TC-FA-TDC-717
   - TC-FA-TDC-697
+sourceRules: ["D-02", "F-FATDC-13.k3", "F-FATDC-05.k1", "D-05", "F-FATDC-06.k2", "§8.4#r7", "L-04", "§8.2#p1", "§8.2#r1", "§8.3#p1", "L-05", "J-02", "L-08", "J-03", "L-10"]
+smoke: []
+dependsOn: []
+trace:
+  "D-02": [5, 17]
+  "F-FATDC-13.k3": [5, 8, 11, 13]
+  "F-FATDC-05.k1": 17
+  "D-05": 21
+  "F-FATDC-06.k2": 21
+  "§8.4#r7": [25, 28, 31]
+  "L-04": [39, 40, 41, 44, 45, 46, 48, 49, 50]
+  "§8.2#p1": [44, 63, 81, 83, 85]
+  "§8.2#r1": [45, 64]
+  "§8.3#p1": [49, 68]
+  "L-05": [58, 59, 60, 63, 64, 65, 67, 68, 69]
+  "J-02": 76
+  "L-08": 76
+  "J-03": 77
+  "L-10": 77
 coverage:
   web: automated
 ---

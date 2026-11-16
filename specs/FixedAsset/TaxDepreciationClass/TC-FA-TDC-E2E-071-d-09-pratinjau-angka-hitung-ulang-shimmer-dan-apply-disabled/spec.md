@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-071-d-09-pratinjau-angka-hitung-ulang-shimmer-dan-apply-disabled
 title: "Pratinjau Dampak D-09: Daftar Asset Class Terdampak, Angka Bernilai Strip, Hitung Ulang, dan Shimmer dengan Apply Disabled"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-TDC-252
   - TC-FA-TDC-254
   - TC-FA-TDC-255
+sourceRules: ["FATDC-LOGIC-05b.1", "§4.2c#p1", "D-09", "FLD-15", "FATDC-LOGIC-05g", "FATDC-LOGIC-05b.3", "FATDC-LOGIC-05b.4", "FI-04", "FATDC-LOGIC-05b.2", "FATDC-LOGIC-05f", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-05b.1": [6, 10, 19]
+  "§4.2c#p1": 6
+  "D-09": [7, 12]
+  "FLD-15": [8, 11]
+  "FATDC-LOGIC-05g": [13, 14, 15, 16]
+  "FATDC-LOGIC-05b.3": [13, 18]
+  "FATDC-LOGIC-05b.4": 14
+  "FI-04": [18, 19, 20]
+  "FATDC-LOGIC-05b.2": 20
+  "FATDC-LOGIC-05f": [23, 24, 26]
+  "§4.2c#b1": 29
 coverage:
   web: automated
 ---

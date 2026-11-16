@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-166-popup-used-by-download-opsi-nama-berkas-dan-isi-tanpa-penanda-warning
 title: "Popup Used By Download: Opsi, Nama Berkas, dan Isi Tanpa Penanda Warning"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-592
   - TC-FA-TDC-593
   - TC-FA-TDC-929
+sourceRules: ["§4.1.6#p3", "T-11e", "§4.1.6#p1", "§4.1.6#r1", "§4.1.6#r2", "FATDC-LOGIC-11d.5", "§4.1.6#r3", "§4.1.6#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.6#p3": [3, 5, 6, 9, 10, 13, 14, 22, 23, 34, 36, 37]
+  "T-11e": [5, 9, 13]
+  "§4.1.6#p1": 15
+  "§4.1.6#r1": [23, 31, 34]
+  "§4.1.6#r2": [23, 34]
+  "FATDC-LOGIC-11d.5": 31
+  "§4.1.6#r3": 34
+  "§4.1.6#p2": 35
 coverage:
   web: automated
 ---

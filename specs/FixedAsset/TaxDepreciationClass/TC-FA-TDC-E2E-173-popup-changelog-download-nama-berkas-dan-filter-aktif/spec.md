@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-173-popup-changelog-download-nama-berkas-dan-filter-aktif
 title: "Popup Changelog Download: Overlay, Nama Berkas, dan Filter Aktif"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-TDC-616
   - TC-FA-TDC-617
   - TC-FA-TDC-618
+sourceRules: ["§5#b8", "§[F-FATDC-12] Download#b1", "§4.1.1#p8", "§4.1.1#r26", "§4.1.1#r43", "§4.1.1#r44"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b8": [5, 7, 12]
+  "§[F-FATDC-12] Download#b1": [7, 12, 21, 22]
+  "§4.1.1#p8": 21
+  "§4.1.1#r26": 22
+  "§4.1.1#r43": [22, 23]
+  "§4.1.1#r44": [22, 23]
+anchor: [3, 4, 8, 13]
 coverage:
   web: automated
 ---

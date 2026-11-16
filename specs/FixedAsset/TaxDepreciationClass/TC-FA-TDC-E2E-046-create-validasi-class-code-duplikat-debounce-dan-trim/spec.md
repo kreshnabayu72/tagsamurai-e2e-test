@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-046-create-validasi-class-code-duplikat-debounce-dan-trim
 title: "Create - Validasi Class Code Duplikat, Debounce, dan Trim"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -11,6 +12,16 @@ sourceTc:
   - TC-FA-TDC-143
   - TC-FA-TDC-174
   - TC-FA-TDC-175
+sourceRules: ["V-04", "F-FATDC-01.k1", "T-01", "§6#p1", "§[F-FATDC-01] Create Tax Depreciation Class#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "V-04": [3, 5, 7, 9, 12, 14]
+  "F-FATDC-01.k1": [5, 7, 9]
+  "T-01": 19
+  "§6#p1": 20
+  "§[F-FATDC-01] Create Tax Depreciation Class#b1": 20
+anchor: [25, 26]
 coverage:
   web: automated
 ---

@@ -1,12 +1,22 @@
 ---
 id: TC-FA-TDC-E2E-248-filter-baris-bernilai-kosong-dan-independen-dari-visibilitas-kolom
 title: "Filter: Baris Bernilai Kosong dan Independen dari Visibilitas Kolom"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-526
   - TC-FA-TDC-527
+sourceRules: ["§4.1.1#r5", "§4.1.1#r22", "§4.1.1#r8", "§5#b3", "§4.1.1#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r5": [4, 5]
+  "§4.1.1#r22": [5, 10]
+  "§4.1.1#r8": [9, 10]
+  "§5#b3": [17, 19]
+  "§4.1.1#r4": 19
 coverage:
   web: automated
 ---

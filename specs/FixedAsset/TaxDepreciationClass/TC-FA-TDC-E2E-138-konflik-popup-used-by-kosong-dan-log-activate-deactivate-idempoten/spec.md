@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-138-konflik-popup-used-by-kosong-dan-log-activate-deactivate-idempoten
 title: "Konflik Dua Sesi: Popup Used By Kosong pada Data Usang dan Log Activate serta Deactivate yang Idempoten"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,13 @@ sourceTc:
   - TC-FA-TDC-586
   - TC-FA-TDC-720
   - TC-FA-TDC-721
+sourceRules: ["ST-25", "L-04", "E-FATDC-32"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-25": 4
+  "L-04": [14, 15, 20, 21, 23, 24, 34, 35, 38, 39]
+  "E-FATDC-32": 18
 coverage:
   web: automated
 ---

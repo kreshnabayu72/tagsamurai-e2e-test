@@ -1,11 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-233-create-berhasil-mengosongkan-search-clear-filter-dan-sort-default-di-halaman-dua
 title: "Create Berhasil Mengosongkan Search, Meng-clear Filter Panel, dan Memuat Ulang Tabel di Sort Default"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-110
+sourceRules: ["F-FATDC-01.k12", "T-01", "ST-02", "FI-09", "§9.5#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-01.k12": 9
+  "T-01": 10
+  "ST-02": 11
+  "FI-09": [12, 13, 15]
+  "§9.5#r1": 14
 coverage:
   web: automated
 ---

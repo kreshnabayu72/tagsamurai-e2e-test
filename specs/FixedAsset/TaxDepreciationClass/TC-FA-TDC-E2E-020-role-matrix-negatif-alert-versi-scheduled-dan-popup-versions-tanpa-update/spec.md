@@ -1,12 +1,25 @@
 ---
 id: TC-FA-TDC-E2E-020-role-matrix-negatif-alert-versi-scheduled-dan-popup-versions-tanpa-update
 title: "Role Matrix Negatif: Alert Versi Scheduled dan Popup Versions tanpa Hak Update"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-66
   - TC-FA-TDC-68
+sourceRules: ["ST-30", "§4.8#r6", "§4.8#r19", "FATDC-LOGIC-04ab", "FATDC-LOGIC-04ad", "F-FATDC-03.k9", "§4.8#r21", "FATDC-LOGIC-04ae"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-30": 4
+  "§4.8#r6": 4
+  "§4.8#r19": 5
+  "FATDC-LOGIC-04ab": 5
+  "FATDC-LOGIC-04ad": 7
+  "F-FATDC-03.k9": 8
+  "§4.8#r21": 9
+  "FATDC-LOGIC-04ae": 9
 coverage:
   web: automated
 ---

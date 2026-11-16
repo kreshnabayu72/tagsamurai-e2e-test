@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-130-konflik-restore-kapitalisasi-all-exist-dan-seed-dibuat-admin-lain
 title: "Konflik Restore Default Classes: Kapitalisasi Class Code, Semua Seed Sudah Ada, dan Seed Dibuat Admin Lain Antara Pratinjau dan Restore"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-TDC-327
   - TC-FA-TDC-328
   - TC-FA-TDC-332
+sourceRules: ["ST-23", "FATDC-LOGIC-02h", "T-10", "FATDC-LOGIC-02g", "F-FATDC-08.k2", "F-FATDC-08.k5"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": [1, 14]
+  "FATDC-LOGIC-02h": [4, 5]
+  "T-10": [7, 26]
+  "FATDC-LOGIC-02g": [9, 10]
+  "F-FATDC-08.k2": [17, 18, 19]
+  "F-FATDC-08.k5": [27, 28]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-102-delete-single-dialog-blok-guard-1-dan-guard-2
 title: "Delete Single: Dialog Blok Guard 1 dan Guard 2"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-TDC-400
   - TC-FA-TDC-401
   - TC-FA-TDC-402
+sourceRules: ["D-04", "FATDC-LOGIC-09a", "D-05", "FATDC-LOGIC-09b", "FATDC-LOGIC-09c"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": [2, 14, 16]
+  "FATDC-LOGIC-09a": 3
+  "D-05": [6, 10]
+  "FATDC-LOGIC-09b": [7, 11]
+  "FATDC-LOGIC-09c": 15
 coverage:
   web: automated
 ---

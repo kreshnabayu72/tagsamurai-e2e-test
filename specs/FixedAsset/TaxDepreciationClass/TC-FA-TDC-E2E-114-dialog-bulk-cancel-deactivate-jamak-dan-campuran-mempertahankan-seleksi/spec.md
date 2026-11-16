@@ -1,12 +1,23 @@
 ---
 id: TC-FA-TDC-E2E-114-dialog-bulk-cancel-deactivate-jamak-dan-campuran-mempertahankan-seleksi
 title: "Dialog Bulk Cancel Deactivate Jamak dan Campuran Mempertahankan Seleksi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-433
   - TC-FA-TDC-434
+sourceRules: ["FATDC-LOGIC-14k", "FATDC-LOGIC-08h", "§3.6#p1", "§4.1#r7", "L-04"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-14k": [6, 9, 20, 23]
+  "FATDC-LOGIC-08h": [7, 21]
+  "§3.6#p1": [8, 22]
+  "§4.1#r7": [11, 25]
+  "L-04": [12, 26]
+anchor: [5, 19]
 coverage:
   web: automated
 ---

@@ -1,12 +1,26 @@
 ---
 id: TC-FA-TDC-E2E-232-batas-master-data-count-limit-slot-terakhir-dan-stay-on-form-hingga-batas
 title: "Batas Master Data Count Limit: Create pada Slot Terakhir Diizinkan, lalu Ditolak D-07, Termasuk Create Berulang dengan Stay on This Form"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-130
   - TC-FA-TDC-133
+sourceRules: ["§4.1#r2", "T-01", "FATDC-LOGIC-13a", "D-07", "F-FATDC-01.k9", "FI-10", "FATDC-LOGIC-13d", "§7.3#b1", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1#r2": [4, 15]
+  "T-01": [6, 19]
+  "FATDC-LOGIC-13a": [7, 22]
+  "D-07": [9, 25]
+  "F-FATDC-01.k9": 10
+  "FI-10": [20, 21]
+  "FATDC-LOGIC-13d": 27
+  "§7.3#b1": [28, 29]
+  "§4.2c#b1": 31
 coverage:
   web: automated
 ---

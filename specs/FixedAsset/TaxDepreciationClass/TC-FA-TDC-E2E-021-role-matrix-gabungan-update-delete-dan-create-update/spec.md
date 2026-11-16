@@ -1,12 +1,27 @@
 ---
 id: TC-FA-TDC-E2E-021-role-matrix-gabungan-update-delete-dan-create-update
 title: "Role Matrix: Gabungan Capability Update+Delete dan Create+Update"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-69
   - TC-FA-TDC-70
+sourceRules: ["§4.8#r9", "§4.8#r10", "§4.8#r13", "§4.8#r15", "§4.8#r17", "§4.8#r18", "§4.8#r14", "§4.8#r7", "§4.8#r8", "§4.8#r19"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r9": [1, 17]
+  "§4.8#r10": 2
+  "§4.8#r13": [4, 19]
+  "§4.8#r15": [4, 19, 20]
+  "§4.8#r17": [7, 23]
+  "§4.8#r18": [7, 24]
+  "§4.8#r14": [9, 26]
+  "§4.8#r7": [12, 29]
+  "§4.8#r8": [13, 30]
+  "§4.8#r19": [14, 31]
 coverage:
   web: automated
 ---

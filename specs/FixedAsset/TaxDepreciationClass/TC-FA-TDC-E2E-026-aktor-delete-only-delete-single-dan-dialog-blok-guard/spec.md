@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-026-aktor-delete-only-delete-single-dan-dialog-blok-guard
 title: "Aktor Delete-Only: Delete Single dan Dialog Blok Guard"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-TDC-82
   - TC-FA-TDC-83
   - TC-FA-TDC-84
+sourceRules: ["D-05", "F-FATDC-06.k2", "D-04", "F-FATDC-06.k1", "D-06", "F-FATDC-06.k6", "§[F-FATDC-06] Delete Tax Depreciation Class#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "D-05": 3
+  "F-FATDC-06.k2": [3, 5, 6]
+  "D-04": 9
+  "F-FATDC-06.k1": [9, 11, 12]
+  "D-06": 15
+  "F-FATDC-06.k6": [15, 18]
+  "§[F-FATDC-06] Delete Tax Depreciation Class#b3": 17
 coverage:
   web: automated
 ---

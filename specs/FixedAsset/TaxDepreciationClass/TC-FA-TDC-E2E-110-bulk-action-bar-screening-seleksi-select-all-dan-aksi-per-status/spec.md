@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-110-bulk-action-bar-screening-seleksi-select-all-dan-aksi-per-status
 title: "Bulk Action Bar Screening Seleksi Select All dan Aksi per Status"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -12,6 +13,16 @@ sourceTc:
   - TC-FA-TDC-417
   - TC-FA-TDC-418
   - TC-FA-TDC-419
+sourceRules: ["§4.1.1#p5", "FATDC-LOGIC-14k", "FATDC-LOGIC-14b", "FATDC-LOGIC-14l", "§3.6#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#p5": [3, 12]
+  "FATDC-LOGIC-14k": [4, 28, 31, 36]
+  "FATDC-LOGIC-14b": [5, 15, 16, 19, 20, 23]
+  "FATDC-LOGIC-14l": [6, 27, 30, 31, 35, 37]
+  "§3.6#p1": 11
+anchor: [7, 13]
 coverage:
   web: automated
 ---

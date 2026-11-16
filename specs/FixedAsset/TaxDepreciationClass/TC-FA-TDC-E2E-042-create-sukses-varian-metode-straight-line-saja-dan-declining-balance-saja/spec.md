@@ -1,12 +1,25 @@
 ---
 id: TC-FA-TDC-E2E-042-create-sukses-varian-metode-straight-line-saja-dan-declining-balance-saja
 title: "Create Sukses - Varian Metode Straight Line Saja dan Declining Balance Saja"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-108
   - TC-FA-TDC-109
+sourceRules: ["T-01", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "FATDC-LOGIC-03d", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.3", "FATDC-LOGIC-03f.2"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [9, 20]
+  "§4.1.1#r6": [10, 21]
+  "§4.1.1#r7": [10, 21]
+  "§4.1.1#r8": [10, 21]
+  "FATDC-LOGIC-03d": [10, 21]
+  "FATDC-LOGIC-03f.1": 10
+  "FATDC-LOGIC-03f.3": [10, 21]
+  "FATDC-LOGIC-03f.2": 21
 coverage:
   web: automated
 ---

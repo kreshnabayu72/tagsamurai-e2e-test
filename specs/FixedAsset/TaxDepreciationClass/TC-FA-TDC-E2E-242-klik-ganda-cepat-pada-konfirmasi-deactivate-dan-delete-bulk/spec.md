@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-242-klik-ganda-cepat-pada-konfirmasi-deactivate-dan-delete-bulk
 title: "Klik Ganda Cepat pada Konfirmasi Deactivate dan Delete Bulk"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-488
   - TC-FA-TDC-487
+sourceRules: ["ST-28", "F-FATDC-13.k1", "L-04", "F-FATDC-13.k8", "T-13", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-28": 5
+  "F-FATDC-13.k1": 7
+  "L-04": [9, 10]
+  "F-FATDC-13.k8": 17
+  "T-13": 18
+  "L-05": [20, 21]
+anchor: [6, 15, 16]
 coverage:
   web: automated
 ---

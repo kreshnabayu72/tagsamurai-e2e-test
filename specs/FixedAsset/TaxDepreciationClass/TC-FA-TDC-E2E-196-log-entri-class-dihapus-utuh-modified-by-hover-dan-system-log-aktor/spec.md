@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-196-log-entri-class-dihapus-utuh-modified-by-hover-dan-system-log-aktor
 title: "Pencatatan Log: Entri Lama Tidak Berubah, Modified By Hover Nama Lengkap, dan Isolasi System Log per Aktor"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-TDC-723
   - TC-FA-TDC-724
   - TC-FA-TDC-722
+sourceRules: ["F-FATDC-02.k11d", "FATDC-LOGIC-04c", "L-02e", "L-04", "§4.1.1#r31", "§8.2#p1", "§8.2#r1", "L-05", "S-07c"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-02.k11d": [7, 8]
+  "FATDC-LOGIC-04c": 8
+  "L-02e": 9
+  "L-04": [16, 17, 26, 27, 43, 45, 46]
+  "§4.1.1#r31": [17, 19]
+  "§8.2#p1": [26, 29, 30]
+  "§8.2#r1": 27
+  "L-05": [43, 44]
+  "S-07c": 47
 coverage:
   web: automated
 ---

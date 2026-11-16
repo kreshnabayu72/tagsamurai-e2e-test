@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-265-absence-log-request-langsung-role-matrix-delete-dan-bulk-delete-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Role Matrix Delete dan Bulk Delete yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -13,6 +14,13 @@ sourceTc:
   - TC-FA-TDC-812
   - TC-FA-TDC-813
   - TC-FA-TDC-814
+sourceRules: ["§9.3#p1", "§9.3#r4", "§[F-FATDC-13] Bulk Action#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#p1": [3, 4, 5, 6, 9, 10, 11, 12]
+  "§9.3#r4": [3, 4, 5, 6, 9, 10, 11, 12]
+  "§[F-FATDC-13] Bulk Action#p1": 9
 coverage:
   web: automated
 ---

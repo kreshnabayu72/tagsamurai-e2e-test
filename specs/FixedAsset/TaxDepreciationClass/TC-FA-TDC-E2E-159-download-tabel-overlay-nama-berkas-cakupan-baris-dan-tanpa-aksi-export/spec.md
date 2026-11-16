@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-159-download-tabel-overlay-nama-berkas-cakupan-baris-dan-tanpa-aksi-export
 title: "Download Tabel: Overlay, Nama Berkas, Cakupan Baris, dan Tanpa Aksi Export"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -11,6 +12,18 @@ sourceTc:
   - TC-FA-TDC-567
   - TC-FA-TDC-568
   - TC-FA-TDC-914
+sourceRules: ["§5#b7", "T-11a", "FATDC-LOGIC-14b", "§4.1.1#p4", "§4.1.1#p3", "§4.1.1#p5", "§[F-FATDC-12] Download#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b7": [3, 8, 12, 24]
+  "T-11a": [7, 11]
+  "FATDC-LOGIC-14b": 15
+  "§4.1.1#p4": [16, 22, 24]
+  "§4.1.1#p3": [18, 19]
+  "§4.1.1#p5": 21
+  "§[F-FATDC-12] Download#b1": [31, 36]
+anchor: [2, 13]
 coverage:
   web: automated
 ---

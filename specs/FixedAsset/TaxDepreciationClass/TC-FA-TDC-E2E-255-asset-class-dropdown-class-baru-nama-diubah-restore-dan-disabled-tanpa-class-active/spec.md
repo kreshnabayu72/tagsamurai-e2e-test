@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-255-asset-class-dropdown-class-baru-nama-diubah-restore-dan-disabled-tanpa-class-active
 title: "Asset Class: Dropdown Tax Depreciation Class Mengikuti Class Baru, Nama Diubah, Restore, dan Disabled Tanpa Class Active"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-TDC-730
   - TC-FA-TDC-731
   - TC-FA-TDC-732
+sourceRules: ["S-01b", "S-02b", "S-09b"]
+smoke: []
+dependsOn: []
+trace:
+  "S-01b": 12
+  "S-02b": [22, 23]
+  "S-09b": 33
+anchor: [44, 46]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-047-create-validasi-class-name-kosong-panjang-dan-emoji
 title: "Create - Validasi Class Name Kosong, Panjang, dan Emoji"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-TDC-146
   - TC-FA-TDC-147
   - TC-FA-TDC-148
+sourceRules: ["V-05", "F-FATDC-01.k4b", "E-FATDC-04", "V-06", "V-07", "E-FATDC-03"]
+smoke: []
+dependsOn: []
+trace:
+  "V-05": [4, 7]
+  "F-FATDC-01.k4b": 7
+  "E-FATDC-04": [8, 9]
+  "V-06": [12, 14]
+  "V-07": [17, 18, 20, 21, 26]
+  "E-FATDC-03": [27, 28]
 coverage:
   web: automated
 ---

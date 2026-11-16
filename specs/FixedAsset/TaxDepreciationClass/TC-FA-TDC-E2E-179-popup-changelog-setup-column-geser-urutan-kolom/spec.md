@@ -1,11 +1,18 @@
 ---
 id: TC-FA-TDC-E2E-179-popup-changelog-setup-column-geser-urutan-kolom
 title: "Popup Changelog Setup Column: Geser Urutan Kolom"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-643
+sourceRules: ["§5#b9"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b9": 10
+anchor: [5, 7]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-029-plan-starter-menu-accounting-disabled-dan-tab-penuh-growth-professional-enterprise
 title: "Plan Starter: Menu Accounting Disabled dan Akses Langsung Ditolak, Tab Tersedia Penuh pada Plan Growth, Professional, dan Enterprise"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-TDC-100
   - TC-FA-TDC-764
   - TC-FA-TDC-765
+sourceRules: ["§9.10#b2", "E-FATDC-67", "§9.10#b1", "§4.1.5#r1", "§4.1.5#r2", "§4.1.5#r3", "§4.1.5#r4", "§4.1.5#r5", "§4.1.5#r6", "§4.1.5#r7", "§4.8#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.10#b2": [3, 6, 14, 16]
+  "E-FATDC-67": [6, 9, 16]
+  "§9.10#b1": 20
+  "§4.1.5#r1": 21
+  "§4.1.5#r2": 21
+  "§4.1.5#r3": 21
+  "§4.1.5#r4": 21
+  "§4.1.5#r5": 21
+  "§4.1.5#r6": 21
+  "§4.1.5#r7": 21
+  "§4.8#r9": 22
+anchor: [5, 8, 10]
 coverage:
   web: automated
 ---

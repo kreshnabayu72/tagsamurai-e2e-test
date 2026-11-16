@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-060-edit-kapitalisasi-no-op-class-code-sendiri-bukan-duplikat-dan-versi-baru-class-terkunci
 title: "Edit: Kapitalisasi Class Code, Edit No-Op, Class Code Sendiri Bukan Duplikat, dan Versi Baru Class Terkunci"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,24 @@ sourceTc:
   - TC-FA-TDC-195
   - TC-FA-TDC-196
   - TC-FA-TDC-218
+sourceRules: ["T-03", "E-FATDC-11", "F-FATDC-02.k2a", "V-04", "DO-01", "T-02a", "FATDC-LOGIC-04c", "§4.1.1#r2", "T-02c", "FATDC-LOGIC-04ad", "FATDC-LOGIC-04ac", "FATDC-LOGIC-04h", "ST-06", "FATDC-LOGIC-07a"]
+smoke: []
+dependsOn: []
+trace:
+  "T-03": [5, 10, 11]
+  "E-FATDC-11": [6, 12]
+  "F-FATDC-02.k2a": 7
+  "V-04": [13, 19, 24]
+  "DO-01": 14
+  "T-02a": [18, 23]
+  "FATDC-LOGIC-04c": 23
+  "§4.1.1#r2": 26
+  "T-02c": 33
+  "FATDC-LOGIC-04ad": 36
+  "FATDC-LOGIC-04ac": 36
+  "FATDC-LOGIC-04h": 36
+  "ST-06": 38
+  "FATDC-LOGIC-07a": 38
 coverage:
   web: automated
 ---

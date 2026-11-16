@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-144-search-kolom-hidden-regulation-reference-modified-by-dan-class-name
 title: "Search: Kolom Hidden Mengikuti Visibilitas Kolom"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-TDC-493
   - TC-FA-TDC-494
   - TC-FA-TDC-495
+sourceRules: ["§4.1.1#r2", "§4.1.1#r11", "§4.1.1#b2", "§4.1.1#r12", "§4.1.1#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r2": [1, 21]
+  "§4.1.1#r11": 2
+  "§4.1.1#b2": [4, 7, 24]
+  "§4.1.1#r12": [11, 13]
+  "§4.1.1#r3": [22, 28, 30]
 coverage:
   web: automated
 ---

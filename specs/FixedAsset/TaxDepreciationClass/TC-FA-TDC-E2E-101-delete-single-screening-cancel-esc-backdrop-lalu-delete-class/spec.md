@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-101-delete-single-screening-cancel-esc-backdrop-lalu-delete-class
 title: "Delete Single: Screening Dialog, Cancel, Esc, Backdrop, lalu Delete Class"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -11,6 +12,16 @@ sourceTc:
   - TC-FA-TDC-398
   - TC-FA-TDC-394
   - TC-FA-TDC-395
+sourceRules: ["D-06", "L-05", "§4.5#b1", "R-06", "F-FATDC-06.k6"]
+smoke: []
+dependsOn: []
+trace:
+  "D-06": 3
+  "L-05": [8, 14, 23, 31]
+  "§4.5#b1": [11, 21]
+  "R-06": [27, 36]
+  "F-FATDC-06.k6": [28, 30, 37]
+anchor: [5, 6, 7, 12, 13, 17, 18, 19, 22, 26, 35]
 coverage:
   web: automated
 ---

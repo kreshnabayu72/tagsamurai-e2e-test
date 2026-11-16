@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-041-create-class-sukses-non-building-building-dan-land
 title: "Create Class Sukses - Non-building, Building, dan Land"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,29 @@ sourceTc:
   - TC-FA-TDC-105
   - TC-FA-TDC-106
   - TC-FA-TDC-107
+sourceRules: ["F-FATDC-01.k12", "T-01", "FI-09", "ST-02", "§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2", "FATDC-LOGIC-03f.3", "FATDC-LOGIC-03c", "FATDC-LOGIC-03b"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-01.k12": 9
+  "T-01": [10, 23, 32]
+  "FI-09": 11
+  "ST-02": 12
+  "§4.1.1#r1": 13
+  "§4.1.1#r2": 13
+  "§4.1.1#r3": 13
+  "§4.1.1#r4": [13, 24, 33]
+  "§4.1.1#r5": [13, 24, 33]
+  "§4.1.1#r6": [13, 24, 33]
+  "§4.1.1#r7": [13, 24, 33]
+  "§4.1.1#r8": [13, 24, 33]
+  "§4.1.1#r9": 13
+  "§4.1.1#r10": 13
+  "FATDC-LOGIC-03f.1": [13, 24]
+  "FATDC-LOGIC-03f.2": 13
+  "FATDC-LOGIC-03f.3": 24
+  "FATDC-LOGIC-03c": 24
+  "FATDC-LOGIC-03b": 33
 coverage:
   web: automated
 ---

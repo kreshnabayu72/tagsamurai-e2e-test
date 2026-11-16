@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-125-konflik-d-13-class-code-terkunci-saat-drawer-terbuka
 title: "Konflik D-13: Class Code Terkunci Saat Drawer Edit Terbuka, Penolakan Save, Screening Dialog, dan Tombol OK"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-TDC-210
   - TC-FA-TDC-211
   - TC-FA-TDC-212
+sourceRules: ["F-FATDC-02.k3c", "D-13", "F-FATDC-02.k3d", "ST-06", "FATDC-LOGIC-07a", "F-FATDC-02.k3b"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-02.k3c": 7
+  "D-13": [8, 9, 10, 11, 12]
+  "F-FATDC-02.k3d": 15
+  "ST-06": 15
+  "FATDC-LOGIC-07a": 16
+  "F-FATDC-02.k3b": [19, 20, 21]
+anchor: [14, 17]
 coverage:
   web: automated
 ---

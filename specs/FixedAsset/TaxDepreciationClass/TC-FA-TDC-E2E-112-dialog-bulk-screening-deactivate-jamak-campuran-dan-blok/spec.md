@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-112-dialog-bulk-screening-deactivate-jamak-campuran-dan-blok
 title: "Dialog Bulk Screening Deactivate Jamak Campuran dan Blok"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-TDC-426
   - TC-FA-TDC-427
   - TC-FA-TDC-428
+sourceRules: ["D-02", "FATDC-LOGIC-14g", "D-01", "FATDC-LOGIC-14e", "FATDC-LOGIC-14i", "D-14", "FATDC-LOGIC-14f"]
+smoke: []
+dependsOn: []
+trace:
+  "D-02": [3, 4, 5]
+  "FATDC-LOGIC-14g": 6
+  "D-01": [11, 12, 13, 15, 16]
+  "FATDC-LOGIC-14e": 12
+  "FATDC-LOGIC-14i": 14
+  "D-14": [21, 22, 23, 24, 25, 26]
+  "FATDC-LOGIC-14f": [22, 23, 25]
 coverage:
   web: automated
 ---

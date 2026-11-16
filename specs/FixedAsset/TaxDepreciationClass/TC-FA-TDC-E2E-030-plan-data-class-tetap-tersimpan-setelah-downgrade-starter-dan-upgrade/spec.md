@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-030-plan-data-class-tetap-tersimpan-setelah-downgrade-starter-dan-upgrade
 title: "Plan: Data Class Tetap Tersimpan Setelah Downgrade ke Starter dan Upgrade, Tab Tersedia Penuh pada Plan Growth, Professional, dan Enterprise"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-TDC-767
   - TC-FA-TDC-768
   - TC-FA-TDC-769
+sourceRules: ["§9.10#b1", "§9.10#b2", "§4.1.1#r3", "ST-30", "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3", "ST-27"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.10#b1": [4, 16]
+  "§9.10#b2": [5, 10]
+  "§4.1.1#r3": 6
+  "ST-30": 12
+  "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3": 19
+  "ST-27": 20
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-022-aktor-create-only-membuat-class-dan-memulihkan-seed
 title: "Aktor Create-Only: Membuat Class dan Memulihkan Seed lewat Restore default classes"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-TDC-71
   - TC-FA-TDC-72
   - TC-FA-TDC-323
+sourceRules: ["T-01", "FI-09", "ST-02", "§4.1.1#r1", "§4.1.1#r9", "§4.1.1#r10", "D-12", "F-FATDC-08.k1a", "T-10", "FATDC-LOGIC-02d", "§[F-FATDC-08] Restore Default Classes#b3", "ST-23", "FATDC-LOGIC-02b.1"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": 9
+  "FI-09": [10, 11]
+  "ST-02": 11
+  "§4.1.1#r1": 12
+  "§4.1.1#r9": 12
+  "§4.1.1#r10": 12
+  "D-12": 15
+  "F-FATDC-08.k1a": 15
+  "T-10": [17, 22]
+  "FATDC-LOGIC-02d": [18, 25]
+  "§[F-FATDC-08] Restore Default Classes#b3": 23
+  "ST-23": 24
+  "FATDC-LOGIC-02b.1": 25
 coverage:
   web: automated
 ---

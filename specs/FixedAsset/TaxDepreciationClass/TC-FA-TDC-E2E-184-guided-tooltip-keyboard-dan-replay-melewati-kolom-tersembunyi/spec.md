@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-184-guided-tooltip-keyboard-dan-replay-melewati-kolom-tersembunyi
 title: "Guided Tooltip: Keyboard dan Replay Melewati Kolom Tersembunyi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-659
   - TC-FA-TDC-933
+sourceRules: ["§4.7#p2", "§4.7#r1", "§4.7#r3", "§4.7#r5", "§4.7#r6", "§4.7#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#p2": [4, 6, 8, 17, 20, 23, 26, 30, 31]
+  "§4.7#r1": 18
+  "§4.7#r3": 21
+  "§4.7#r5": 24
+  "§4.7#r6": 27
+  "§4.7#p1": [28, 29]
+anchor: [2, 10, 32, 33]
 coverage:
   web: automated
 ---

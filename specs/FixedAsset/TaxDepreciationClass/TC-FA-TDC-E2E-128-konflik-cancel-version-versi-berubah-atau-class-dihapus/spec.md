@@ -1,12 +1,23 @@
 ---
 id: TC-FA-TDC-E2E-128-konflik-cancel-version-versi-berubah-atau-class-dihapus
 title: "Konflik Cancel Version: Versi Sudah Dibatalkan Sesi Lain atau Class Dihapus Sesi Lain"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-306
   - TC-FA-TDC-311
+sourceRules: ["T-07", "F-FATDC-03.k2a", "F-FATDC-03.k2b", "T-13", "F-FATDC-03.k4", "§7.3#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "T-07": 7
+  "F-FATDC-03.k2a": 8
+  "F-FATDC-03.k2b": 9
+  "T-13": 16
+  "F-FATDC-03.k4": 16
+  "§7.3#b3": [17, 18]
 coverage:
   web: automated
 ---

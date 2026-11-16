@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-174-popup-changelog-kolom-old-new-value-modified-by-urutan-bawaan-dan-sort-date
 title: "Popup Changelog: Kolom Old Value, New Value, Modified By, Urutan Bawaan, dan Sort Date"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,25 @@ sourceTc:
   - TC-FA-TDC-622
   - TC-FA-TDC-623
   - TC-FA-TDC-624
+sourceRules: ["§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r32", "§4.1.1#r45", "§4.1.1#r46", "L-03", "§4.1.1#r43", "§4.1.1#r31", "§4.1.1#r33", "§4.1.1#p8", "§4.1.1#r25", "§4.1.1#r47", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r29": [2, 4, 5, 6]
+  "§4.1.1#r30": 2
+  "§4.1.1#r32": [2, 8, 13]
+  "§4.1.1#r45": 4
+  "§4.1.1#r46": 5
+  "L-03": 6
+  "§4.1.1#r43": 6
+  "§4.1.1#r31": [8, 9, 11]
+  "§4.1.1#r33": 9
+  "§4.1.1#p8": 13
+  "§4.1.1#r25": [13, 15, 17, 19]
+  "§4.1.1#r47": 13
+  "§4.1.1#r26": [21, 23]
+  "§4.1.1#r27": 25
+  "§4.1.1#r28": 27
 coverage:
   web: automated
 ---

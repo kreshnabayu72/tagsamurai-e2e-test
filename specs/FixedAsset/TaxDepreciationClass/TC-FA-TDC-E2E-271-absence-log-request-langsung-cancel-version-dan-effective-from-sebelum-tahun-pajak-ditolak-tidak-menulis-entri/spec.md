@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-271-absence-log-request-langsung-cancel-version-dan-effective-from-sebelum-tahun-pajak-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Cancel Version dan Effective From Sebelum Tahun Pajak Berjalan yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-848
   - TC-FA-TDC-849
   - TC-FA-TDC-928
+sourceRules: ["F-FATDC-03.k1", "F-FATDC-03.k5a", "§8.4#r7", "J-04", "F-FATDC-03.k2d", "E-FATDC-36", "FATDC-LOGIC-04af", "V-20"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-03.k1": 4
+  "F-FATDC-03.k5a": 4
+  "§8.4#r7": [6, 7, 8, 12, 13, 14, 20, 21, 22]
+  "J-04": [6, 7, 8, 12, 13, 14, 20, 21, 22]
+  "F-FATDC-03.k2d": 11
+  "E-FATDC-36": 11
+  "FATDC-LOGIC-04af": 18
+  "V-20": 18
 coverage:
   web: automated
 ---

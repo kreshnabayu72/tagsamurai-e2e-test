@@ -1,11 +1,17 @@
 ---
 id: TC-FA-TDC-E2E-252-popup-changelog-setup-column-pin-dan-unpin-tujuh-kolom-default
 title: "Popup Changelog Setup Column: Pin dan Unpin Tujuh Kolom Default"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-644
+sourceRules: []
+smoke: []
+dependsOn: []
+trace:
+anchor: [7, 11, 17]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-068-edit-validasi-regulation-reference-dan-useful-life-kosong
 title: "Edit: Validasi Regulation Reference (Kosong, 255 Karakter, Trim) dan Useful Life Kosong"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,20 @@ sourceTc:
   - TC-FA-TDC-238
   - TC-FA-TDC-239
   - TC-FA-TDC-240
+sourceRules: ["V-08", "F-FATDC-01.k4c", "V-09", "F-FATDC-01.k3c", "§4.1.2#r1", "V-11", "F-FATDC-01.k4f", "DO-01", "T-02a"]
+smoke: []
+dependsOn: []
+trace:
+  "V-08": [5, 9]
+  "F-FATDC-01.k4c": [5, 9, 11]
+  "V-09": 13
+  "F-FATDC-01.k3c": 13
+  "§4.1.2#r1": [15, 16, 29]
+  "V-11": 20
+  "F-FATDC-01.k4f": [20, 23]
+  "DO-01": 22
+  "T-02a": 27
+anchor: [10, 21]
 coverage:
   web: automated
 ---

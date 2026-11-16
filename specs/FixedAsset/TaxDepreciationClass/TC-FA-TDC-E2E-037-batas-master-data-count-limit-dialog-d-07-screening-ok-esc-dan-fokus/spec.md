@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-037-batas-master-data-count-limit-dialog-d-07-screening-ok-esc-dan-fokus
 title: "Batas Master Data Count Limit: Dialog D-07 Tax Depreciation Class Limit Reached, Screening, Tombol OK, Esc, dan Fokus"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-TDC-128
   - TC-FA-TDC-129
   - TC-FA-TDC-919
+sourceRules: ["D-07", "F-FATDC-01.k9", "§4.5#b2", "§4.5#b1", "FATDC-LOGIC-13d"]
+smoke: []
+dependsOn: []
+trace:
+  "D-07": [3, 5, 6, 7, 8, 15, 21, 23]
+  "F-FATDC-01.k9": [4, 13, 18, 24]
+  "§4.5#b2": 10
+  "§4.5#b1": [12, 17]
+  "FATDC-LOGIC-13d": 26
+anchor: [19, 25]
 coverage:
   web: automated
 ---

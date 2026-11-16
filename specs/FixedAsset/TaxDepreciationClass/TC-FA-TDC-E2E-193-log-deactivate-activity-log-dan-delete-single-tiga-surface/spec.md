@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-193-log-deactivate-activity-log-dan-delete-single-tiga-surface
 title: "Pencatatan Log L-04 Deactivate pada Activity Log dan L-05 Delete Single: Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-TDC-704
   - TC-FA-TDC-705
   - TC-FA-TDC-706
+sourceRules: ["L-04", "§8.3#p1", "L-05", "§4.1.1#r31", "§4.1.1#r26", "§4.1.1#r29", "§4.1.1#r30", "§8.2#p1", "§8.2#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "L-04": [6, 7]
+  "§8.3#p1": [7, 25]
+  "L-05": [15, 16, 20, 21, 24, 25]
+  "§4.1.1#r31": 16
+  "§4.1.1#r26": 17
+  "§4.1.1#r29": 17
+  "§4.1.1#r30": 17
+  "§8.2#p1": 20
+  "§8.2#r1": 21
 coverage:
   web: automated
 ---

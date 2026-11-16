@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-163-popup-used-by-screening-isi-kolom-dan-penanda-warning
 title: "Popup Used By: Screening, Isi Kolom, dan Penanda Warning"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-TDC-580
   - TC-FA-TDC-581
   - TC-FA-TDC-582
+sourceRules: ["§4.1.6#p1", "§4.1.6#r1", "§4.1.6#r2", "§4.1.6#r3", "§4.8#r3", "§4.1.6#p2", "FATDC-LOGIC-11a", "§4.1.1#r16", "FATDC-LOGIC-11d.5", "§4.5#b3", "§4.5#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.6#p1": [2, 3, 4, 5, 6, 7, 11]
+  "§4.1.6#r1": [8, 9, 12, 18, 21]
+  "§4.1.6#r2": [8, 9, 13]
+  "§4.1.6#r3": [8, 9, 14]
+  "§4.8#r3": 8
+  "§4.1.6#p2": 10
+  "FATDC-LOGIC-11a": 15
+  "§4.1.1#r16": 15
+  "FATDC-LOGIC-11d.5": [18, 19]
+  "§4.5#b3": 23
+  "§4.5#b5": 27
 coverage:
   web: automated
 ---

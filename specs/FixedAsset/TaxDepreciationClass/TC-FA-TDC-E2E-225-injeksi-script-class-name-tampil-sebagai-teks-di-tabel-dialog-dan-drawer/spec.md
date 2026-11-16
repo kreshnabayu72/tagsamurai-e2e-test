@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-225-injeksi-script-class-name-tampil-sebagai-teks-di-tabel-dialog-dan-drawer
 title: "Injeksi Script pada Class Name Tampil sebagai Teks di Tabel, Dialog, dan Drawer"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-TDC-867
   - TC-FA-TDC-868
   - TC-FA-TDC-869
+sourceRules: ["§4.1.1#r3", "§4.1.2#p1", "D-01", "D-06", "D-02"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r3": 1
+  "§4.1.2#p1": 5
+  "D-01": 9
+  "D-06": 14
+  "D-02": 19
+anchor: [2, 3, 6, 10, 15, 20]
 coverage:
   web: automated
 ---

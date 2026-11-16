@@ -1,12 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-247-search-kolom-non-searchable-effective-from-last-updated-dan-active
 title: "Search: Kolom Non-Searchable Effective From, Last Updated, dan Active"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-496
   - TC-FA-TDC-497
+sourceRules: ["§5#b2", "ST-23", "§4.1.1#b3", "§5#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b2": [6, 8]
+  "ST-23": [6, 8, 14, 16]
+  "§4.1.1#b3": [14, 16, 21]
+  "§5#b3": 21
 coverage:
   web: automated
 ---

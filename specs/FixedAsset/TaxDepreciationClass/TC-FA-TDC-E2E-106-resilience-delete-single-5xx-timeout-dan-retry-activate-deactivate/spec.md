@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-106-resilience-delete-single-5xx-timeout-dan-retry-activate-deactivate
 title: "Resilience Delete Single: Gagal 5xx dan Timeout, serta Retry Activate dan Deactivate"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-TDC-411
   - TC-FA-TDC-899
   - TC-FA-TDC-900
+sourceRules: ["R-06", "§7.3#b1", "§9.6#p1", "T-04", "§4.2c#r16", "FATDC-LOGIC-08h", "L-04", "R-05", "§4.2c#r13"]
+smoke: []
+dependsOn: []
+trace:
+  "R-06": [4, 8, 18]
+  "§7.3#b1": [6, 15, 16]
+  "§9.6#p1": [7, 9, 15, 17, 19]
+  "T-04": [24, 28]
+  "§4.2c#r16": 26
+  "FATDC-LOGIC-08h": [27, 38]
+  "L-04": [30, 31, 41, 42]
+  "R-05": [35, 39]
+  "§4.2c#r13": 37
+anchor: [5]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-093-job-j-02-class-inactive-job-gagal-dan-penanda-used-by
 title: "Job J-02: Class Inactive, Job Gagal Dicoba Lagi, dan Penanda Peringatan pada Modal Used By"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-TDC-347
   - TC-FA-TDC-348
   - TC-FA-TDC-349
+sourceRules: ["FATDC-LOGIC-04o", "F-FATDC-10.k1", "F-FATDC-10.k3a", "§4.1.6#r5", "R-12", "FATDC-LOGIC-10d", "§4.1.6#r1", "§4.1.6#r2", "ST-15"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04o": 3
+  "F-FATDC-10.k1": [3, 16]
+  "F-FATDC-10.k3a": [7, 10]
+  "§4.1.6#r5": 10
+  "R-12": 16
+  "FATDC-LOGIC-10d": 19
+  "§4.1.6#r1": [19, 21]
+  "§4.1.6#r2": 19
+  "ST-15": 21
 coverage:
   web: automated
 ---

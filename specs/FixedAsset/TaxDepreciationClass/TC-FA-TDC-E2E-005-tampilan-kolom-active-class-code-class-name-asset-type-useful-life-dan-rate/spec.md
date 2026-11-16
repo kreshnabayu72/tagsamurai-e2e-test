@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-005-tampilan-kolom-active-class-code-class-name-asset-type-useful-life-dan-rate
 title: "Tampilan Kolom Active, Class Code, Class Name, Asset Type, Useful Life, dan Rate"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,26 @@ sourceTc:
   - TC-FA-TDC-18
   - TC-FA-TDC-19
   - TC-FA-TDC-20
+sourceRules: ["§4.1.1#r1", "§4.1.1#r16", "§4.1.1#r24", "§4.5#b4", "ST-27", "§4.1.2#r3", "§4.1.1#r4", "§4.1.1#r20", "§4.1.1#r22", "§4.1.1#r5", "§4.1.1#r17", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r18", "§4.1.1#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r1": [1, 2]
+  "§4.1.1#r16": [1, 12, 14, 18]
+  "§4.1.1#r24": 2
+  "§4.5#b4": [3, 4, 5, 6]
+  "ST-27": [4, 6]
+  "§4.1.2#r3": 7
+  "§4.1.1#r4": [12, 13]
+  "§4.1.1#r20": [12, 16, 21]
+  "§4.1.1#r22": [12, 17, 22]
+  "§4.1.1#r5": [14, 15, 16, 17]
+  "§4.1.1#r17": [15, 19]
+  "§4.1.1#r6": [18, 19, 20, 21, 22]
+  "§4.1.1#r7": [18, 19, 20, 21, 22]
+  "§4.1.1#r18": 20
+  "§4.1.1#r2": [23, 28]
+anchor: [8, 9, 11, 25, 26]
 coverage:
   web: automated
 ---

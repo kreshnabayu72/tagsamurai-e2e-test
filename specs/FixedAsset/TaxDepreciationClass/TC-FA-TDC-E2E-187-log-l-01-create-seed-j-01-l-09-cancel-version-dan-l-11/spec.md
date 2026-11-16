@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-187-log-l-01-create-seed-j-01-l-09-cancel-version-dan-l-11
 title: "Pencatatan Log L-01, L-09, dan L-11 pada Changelog, System Log, dan Activity Log: Seed J-01, Create Class, Cancel Scheduled Version, dan Penggantian Versi Scheduled"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-TDC-672
   - TC-FA-TDC-688
   - TC-FA-TDC-689
+sourceRules: ["J-01", "L-01", "§8.4#r6", "§8.3#p1", "§8.2#p1", "§4.1.1#r31", "§8.2#r1", "L-09", "FATDC-LOGIC-04ac", "L-11", "FATDC-LOGIC-04u.2"]
+smoke: []
+dependsOn: []
+trace:
+  "J-01": [3, 6, 8]
+  "L-01": [3, 6, 21, 22, 23, 24, 27, 28, 29, 30, 32, 33, 34, 35]
+  "§8.4#r6": 3
+  "§8.3#p1": [6, 32, 33, 34, 50, 51, 71, 72, 73]
+  "§8.2#p1": [8, 27, 47, 66]
+  "§4.1.1#r31": [22, 23, 44, 61, 62]
+  "§8.2#r1": [28, 29, 48, 67, 68]
+  "L-09": [43, 44, 47, 48, 50, 51, 60, 61, 66, 67, 71, 72]
+  "FATDC-LOGIC-04ac": [44, 61, 62]
+  "L-11": [60, 62, 66, 68, 71, 73]
+  "FATDC-LOGIC-04u.2": [63, 69, 74]
 coverage:
   web: automated
 ---

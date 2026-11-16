@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-199-asset-class-dropdown-hanya-class-active-serta-aktivasi-deaktivasi-dan-penghapusan-class
 title: "Asset Class: Dropdown Tax Depreciation Class Hanya Memuat Class Active dan Mengikuti Aktivasi, Deaktivasi, dan Penghapusan"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-TDC-726
   - TC-FA-TDC-727
   - TC-FA-TDC-728
+sourceRules: ["§11.1#r1", "FATDC-LOGIC-08b", "§4.1.1#r24", "S-05a", "§4.1.5#r3", "S-06a", "S-07b"]
+smoke: []
+dependsOn: []
+trace:
+  "§11.1#r1": [4, 6]
+  "FATDC-LOGIC-08b": [5, 6]
+  "§4.1.1#r24": 5
+  "S-05a": 15
+  "§4.1.5#r3": [24, 36]
+  "S-06a": 25
+  "S-07b": 37
 coverage:
   web: automated
 ---

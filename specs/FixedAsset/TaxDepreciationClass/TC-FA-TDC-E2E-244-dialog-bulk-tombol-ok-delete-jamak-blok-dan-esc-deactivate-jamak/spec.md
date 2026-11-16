@@ -1,12 +1,26 @@
 ---
 id: TC-FA-TDC-E2E-244-dialog-bulk-tombol-ok-delete-jamak-blok-dan-esc-deactivate-jamak
 title: "Dialog Bulk Tombol OK Delete Jamak Blok dan Esc Deactivate Jamak"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-439
   - TC-FA-TDC-440
+sourceRules: ["D-04", "F-FATDC-13.k10", "§3.6#p1", "FATDC-LOGIC-14j", "§4.1#r7", "§4.5#b1", "FATDC-LOGIC-14k", "FATDC-LOGIC-08h", "L-04"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": 5
+  "F-FATDC-13.k10": [6, 7, 12]
+  "§3.6#p1": [8, 23]
+  "FATDC-LOGIC-14j": 9
+  "§4.1#r7": 11
+  "§4.5#b1": 19
+  "FATDC-LOGIC-14k": [20, 22]
+  "FATDC-LOGIC-08h": 21
+  "L-04": 24
 coverage:
   web: automated
 ---

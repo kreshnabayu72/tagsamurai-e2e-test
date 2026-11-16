@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-136-konflik-bulk-deactivate-activate-delete-sebagian-class-dihapus-sesi-lain
 title: "Konflik Bulk: Class Diposting, Sebagian atau Seluruh Class Dihapus Sesi Lain Saat Confirm Bulk Delete, Deactivate, dan Activate"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-TDC-475
   - TC-FA-TDC-476
   - TC-FA-TDC-477
+sourceRules: ["F-FATDC-13.k9", "T-06b", "L-05", "F-FATDC-13.k12", "F-FATDC-13.k1", "L-04", "T-13", "FATDC-LOGIC-14k", "F-FATDC-13.k7", "T-04"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-13.k9": 8
+  "T-06b": 9
+  "L-05": 10
+  "F-FATDC-13.k12": 19
+  "F-FATDC-13.k1": 20
+  "L-04": [21, 32, 45]
+  "T-13": [30, 31]
+  "FATDC-LOGIC-14k": [33, 34]
+  "F-FATDC-13.k7": 43
+  "T-04": 44
 coverage:
   web: automated
 ---

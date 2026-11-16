@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-105-resilience-activate-deactivate-single-5xx-dan-timeout
 title: "Resilience Activate dan Deactivate Single: Gagal 5xx dan Timeout"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-TDC-370
   - TC-FA-TDC-390
   - TC-FA-TDC-391
+sourceRules: ["T-04", "§7.3#b1", "§9.6#p1", "R-04", "R-05"]
+smoke: []
+dependsOn: []
+trace:
+  "T-04": 4
+  "§7.3#b1": [6, 15, 16, 26, 35, 36]
+  "§9.6#p1": [7, 9, 15, 17, 19, 27, 29, 35, 37, 39]
+  "R-04": [8, 18]
+  "R-05": [24, 28, 38]
+anchor: [5, 25]
 coverage:
   web: automated
 ---

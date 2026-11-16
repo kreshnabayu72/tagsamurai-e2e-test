@@ -1,12 +1,22 @@
 ---
 id: TC-FA-TDC-E2E-235-drawer-edit-header-badge-status-dan-effective-from-versi-current
 title: "Drawer Edit: Effective From Versi Current Read-Only dan Header Badge Status"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-32
   - TC-FA-TDC-179
+sourceRules: ["§4.1.2#r10", "FATDC-LOGIC-04ac", "FATDC-LOGIC-04ad", "§4.1.2#p1", "ST-01"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.2#r10": [3, 6]
+  "FATDC-LOGIC-04ac": 3
+  "FATDC-LOGIC-04ad": 4
+  "§4.1.2#p1": [10, 12, 13, 14, 18, 20]
+  "ST-01": [11, 19]
 coverage:
   web: automated
 ---

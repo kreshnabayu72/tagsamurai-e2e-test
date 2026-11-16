@@ -1,11 +1,22 @@
 ---
 id: TC-FA-TDC-E2E-011-aksesibilitas-fokus-ter-trap-dialog-d-09-d-10-dan-d-12
 title: "Aksesibilitas Fokus Ter-trap Dialog D-09, D-10, dan D-12"
+layer: ui-e2e
 priority: Low
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-293
+sourceRules: ["D-09", "§4.5#b2", "§4.5#b1", "§4.2c#b1", "D-10", "D-12"]
+smoke: []
+dependsOn: []
+trace:
+  "D-09": 5
+  "§4.5#b2": [5, 14, 21]
+  "§4.5#b1": [7, 16, 23]
+  "§4.2c#b1": 9
+  "D-10": 14
+  "D-12": 21
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-033-suspended-aksi-bulk-activate-deactivate-delete-ditolak-toast-baku
 title: "Entitas Suspended: Aksi Bulk Activate, Deactivate, dan Delete Ditolak dengan Toast Baku"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-877
   - TC-FA-TDC-878
   - TC-FA-TDC-879
+sourceRules: ["E-FATDC-62", "T-12", "R-04", "L-04", "R-05", "R-06", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FATDC-62": [4, 7, 8, 14, 17, 18, 24, 27, 28]
+  "T-12": [4, 14, 24]
+  "R-04": 7
+  "L-04": [8, 18]
+  "R-05": 17
+  "R-06": 27
+  "L-05": 28
+anchor: [5, 6, 15, 16, 25, 26]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-016-role-matrix-positif-create-row-action-dan-toggle-active
 title: "Role Matrix Positif: Tombol Create, Menu Row Action, dan Toggle Active"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,23 @@ sourceTc:
   - TC-FA-TDC-54
   - TC-FA-TDC-55
   - TC-FA-TDC-57
+sourceRules: ["§4.8#r9", "§4.1#r2", "§4.2b#p1", "FLD-18", "§9.5#r7", "§4.8#r11", "§4.8#r12", "§4.1.1#p3", "§4.8#r13", "§4.8#r15", "§4.8#r14", "§3.9#r5", "FATDC-LOGIC-08h"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r9": [1, 18]
+  "§4.1#r2": [3, 20]
+  "§4.2b#p1": [3, 20]
+  "FLD-18": [4, 21]
+  "§9.5#r7": [4, 21]
+  "§4.8#r11": [5, 22]
+  "§4.8#r12": [8, 26, 38]
+  "§4.1.1#p3": 9
+  "§4.8#r13": [9, 27, 40]
+  "§4.8#r15": [9, 28, 39]
+  "§4.8#r14": [13, 32]
+  "§3.9#r5": [14, 33]
+  "FATDC-LOGIC-08h": [15, 34]
 coverage:
   web: automated
 ---

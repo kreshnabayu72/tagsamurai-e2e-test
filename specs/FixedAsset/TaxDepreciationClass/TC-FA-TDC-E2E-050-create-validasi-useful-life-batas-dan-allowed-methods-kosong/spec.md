@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-050-create-validasi-useful-life-batas-dan-allowed-methods-kosong
 title: "Create - Validasi Batas Useful Life dan Allowed Methods Kosong"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-TDC-157
   - TC-FA-TDC-158
   - TC-FA-TDC-159
+sourceRules: ["V-12", "§9.9#r5", "V-13", "F-FATDC-01.k4g"]
+smoke: []
+dependsOn: []
+trace:
+  "V-12": [3, 5, 7, 9]
+  "§9.9#r5": [11, 13]
+  "V-13": 17
+  "F-FATDC-01.k4g": [18, 19]
 coverage:
   web: automated
 ---

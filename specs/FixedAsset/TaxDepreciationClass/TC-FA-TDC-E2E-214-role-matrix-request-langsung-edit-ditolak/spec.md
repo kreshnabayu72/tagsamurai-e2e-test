@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-214-role-matrix-request-langsung-edit-ditolak
 title: "Role Matrix Negatif: Request Langsung Edit Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-TDC-820
   - TC-FA-TDC-821
   - TC-FA-TDC-822
+sourceRules: ["§9.3#r3", "§[F-FATDC-02] Edit Tax Depreciation Class#p1", "§9.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#r3": 4
+  "§[F-FATDC-02] Edit Tax Depreciation Class#p1": 4
+  "§9.3#p1": 6
 coverage:
   web: automated
 ---

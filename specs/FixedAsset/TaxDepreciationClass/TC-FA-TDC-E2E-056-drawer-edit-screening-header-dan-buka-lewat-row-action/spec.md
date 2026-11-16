@@ -1,12 +1,37 @@
 ---
 id: TC-FA-TDC-E2E-056-drawer-edit-screening-header-dan-buka-lewat-row-action
 title: "Drawer Edit: Screening Tiga Zona dan Buka Lewat Row Action"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-177
   - TC-FA-TDC-178
+sourceRules: ["FLD-18", "ST-01", "ST-30", "§4.1.2#r1", "§4.1.2#r2", "FATDC-LOGIC-07a", "§4.1.2#r3", "ST-07", "FLD-05", "§4.1.2#r6", "FATDC-LOGIC-03f.4", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2", "§4.1.2#r10", "FATDC-LOGIC-04p.5", "FATDC-LOGIC-04ad", "§4.1.2#r11", "§4.2b#p1", "§4.1#r2", "FLD-04"]
+smoke: []
+dependsOn: []
+trace:
+  "FLD-18": [3, 5, 6, 26]
+  "ST-01": 4
+  "ST-30": 7
+  "§4.1.2#r1": [8, 27]
+  "§4.1.2#r2": [9, 27]
+  "FATDC-LOGIC-07a": 10
+  "§4.1.2#r3": [11, 27]
+  "ST-07": 12
+  "FLD-05": [13, 27]
+  "§4.1.2#r6": [14, 27]
+  "FATDC-LOGIC-03f.4": [15, 16]
+  "FATDC-LOGIC-03f.1": [15, 27]
+  "FATDC-LOGIC-03f.2": [16, 27]
+  "§4.1.2#r10": 17
+  "FATDC-LOGIC-04p.5": 17
+  "FATDC-LOGIC-04ad": 18
+  "§4.1.2#r11": 19
+  "§4.2b#p1": 20
+  "§4.1#r2": [21, 22, 26]
+  "FLD-04": 27
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-085-cancel-version-versi-paling-awal-alert-berikutnya-dan-versi-tidak-berubah
 title: "Cancel Version pada Dua Versi Scheduled: Alert Berpindah ke Versi Berikutnya dan Versi Terbentuk Tidak Berubah"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,24 @@ sourceTc:
   - TC-FA-TDC-303
   - TC-FA-TDC-304
   - TC-FA-TDC-314
+sourceRules: ["T-07", "FLD-05", "S-13a", "S-13b", "FATDC-LOGIC-04q.3", "D-10", "FATDC-LOGIC-04ac", "FATDC-LOGIC-04aa", "§4.1.6#r5", "FATDC-LOGIC-04i", "FATDC-LOGIC-04g.2", "FATDC-LOGIC-04g.1", "§4.1.6#r6", "§4.1.6#r11"]
+smoke: []
+dependsOn: []
+trace:
+  "T-07": [4, 15]
+  "FLD-05": [5, 16]
+  "S-13a": 5
+  "S-13b": 8
+  "FATDC-LOGIC-04q.3": 8
+  "D-10": 13
+  "FATDC-LOGIC-04ac": 13
+  "FATDC-LOGIC-04aa": 16
+  "§4.1.6#r5": [18, 30]
+  "FATDC-LOGIC-04i": 18
+  "FATDC-LOGIC-04g.2": 30
+  "FATDC-LOGIC-04g.1": 31
+  "§4.1.6#r6": 31
+  "§4.1.6#r11": 31
 coverage:
   web: automated
 ---

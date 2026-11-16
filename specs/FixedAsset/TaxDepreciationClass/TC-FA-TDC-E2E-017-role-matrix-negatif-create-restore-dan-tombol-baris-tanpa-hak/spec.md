@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-017-role-matrix-negatif-create-restore-dan-tombol-baris-tanpa-hak
 title: "Role Matrix Negatif: Tombol Create, Restore default classes, dan Tombol Baris Tanpa Hak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-TDC-50
   - TC-FA-TDC-52
   - TC-FA-TDC-56
+sourceRules: ["§4.1.1#p5", "§4.8#r2", "§4.8#r9", "§4.1.1#r19", "§4.8#r12", "§4.8#r13", "§4.8#r15", "ST-23", "§4.8#r10"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#p5": 3
+  "§4.8#r2": 3
+  "§4.8#r9": 4
+  "§4.1.1#r19": 7
+  "§4.8#r12": 8
+  "§4.8#r13": 9
+  "§4.8#r15": 9
+  "ST-23": [13, 14]
+  "§4.8#r10": 14
 coverage:
   web: automated
 ---

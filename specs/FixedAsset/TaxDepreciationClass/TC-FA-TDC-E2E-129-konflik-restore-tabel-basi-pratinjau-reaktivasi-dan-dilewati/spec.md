@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-129-konflik-restore-tabel-basi-pratinjau-reaktivasi-dan-dilewati
 title: "Konflik Restore Default Classes: Tabel Basi, Pratinjau Reaktivasi dan Dilewati, serta Nilai Tidak Ditimpa"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-TDC-320
   - TC-FA-TDC-325
   - TC-FA-TDC-326
+sourceRules: ["ST-23", "F-FATDC-08.k1a", "F-FATDC-08.k1b", "FATDC-LOGIC-02e", "D-12", "T-10", "FATDC-LOGIC-02d", "§[F-FATDC-08] Restore Default Classes#b3", "F-FATDC-08.k4"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": [1, 11, 25]
+  "F-FATDC-08.k1a": 4
+  "F-FATDC-08.k1b": 5
+  "FATDC-LOGIC-02e": [6, 29, 34, 35, 37]
+  "D-12": 7
+  "T-10": [15, 31]
+  "FATDC-LOGIC-02d": [17, 19]
+  "§[F-FATDC-08] Restore Default Classes#b3": 22
+  "F-FATDC-08.k4": 28
 coverage:
   web: automated
 ---

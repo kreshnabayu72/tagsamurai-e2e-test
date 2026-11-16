@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-145-search-trim-teks-biasa-hasil-kosong-dan-irisan-dengan-filter
 title: "Search: Trim, Teks Biasa, Hasil Kosong, dan Irisan dengan Filter"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-TDC-500
   - TC-FA-TDC-501
   - TC-FA-TDC-502
+sourceRules: ["§5#b2", "ST-23", "§7.1#p2", "§4.1.1#r4", "§4.1.1#r8", "§4.7#r5", "§5#b6"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b2": [2, 5, 7, 9, 11, 13, 18, 23, 32]
+  "ST-23": 15
+  "§7.1#p2": 16
+  "§4.1.1#r4": [23, 30]
+  "§4.1.1#r8": [23, 30]
+  "§4.7#r5": [23, 32]
+  "§5#b6": [24, 33]
+anchor: [3]
 coverage:
   web: automated
 ---

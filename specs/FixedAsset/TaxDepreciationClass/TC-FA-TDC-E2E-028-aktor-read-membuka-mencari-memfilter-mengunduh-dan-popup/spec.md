@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-028-aktor-read-membuka-mencari-memfilter-mengunduh-dan-popup
 title: "Aktor Read: Membuka Tab, Mencari, Memfilter, Mengunduh, dan Membuka Popup"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -12,6 +13,31 @@ sourceTc:
   - TC-FA-TDC-95
   - TC-FA-TDC-96
   - TC-FA-TDC-97
+sourceRules: ["§4.2a#p2", "§4.1.1#r16", "§4.1.1#r17", "§4.1.1#r18", "§4.1.1#r19", "§4.1.1#r20", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§5#b2", "§5#b3", "§4.1.1#b7", "T-11a", "§5#b7", "§5#b8", "§4.1.1#p9", "§4.1.6#p1", "FATDC-LOGIC-11d.1", "§4.1.6#p5", "F-FATDC-03.k9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2a#p2": 4
+  "§4.1.1#r16": 5
+  "§4.1.1#r17": 5
+  "§4.1.1#r18": 5
+  "§4.1.1#r19": 5
+  "§4.1.1#r20": 5
+  "§4.1.1#r21": 5
+  "§4.1.1#r22": [5, 7]
+  "§4.1.1#r23": 5
+  "§4.1.1#r24": 5
+  "§5#b2": 7
+  "§5#b3": 12
+  "§4.1.1#b7": 13
+  "T-11a": 17
+  "§5#b7": 18
+  "§5#b8": 20
+  "§4.1.1#p9": 21
+  "§4.1.6#p1": 24
+  "FATDC-LOGIC-11d.1": 25
+  "§4.1.6#p5": 29
+  "F-FATDC-03.k9": 30
 coverage:
   web: automated
 ---

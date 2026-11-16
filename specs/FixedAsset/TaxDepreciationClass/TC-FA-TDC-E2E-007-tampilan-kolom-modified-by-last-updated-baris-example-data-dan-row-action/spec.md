@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-007-tampilan-kolom-modified-by-last-updated-baris-example-data-dan-row-action
 title: "Tampilan Kolom Modified By, Last Updated, Baris Example Data, dan Row Action"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,27 @@ sourceTc:
   - TC-FA-TDC-30
   - TC-FA-TDC-31
   - TC-FA-TDC-33
+sourceRules: ["§4.1.1#r12", "J-01", "§4.1.1#r13", "§4.1.1#r16", "§4.1.1#r17", "§4.1.1#r18", "§4.1.1#r19", "§4.1.1#r20", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r14", "§4.1.1#r15", "FATDC-LOGIC-08g", "§4.1.1#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r12": [4, 7]
+  "J-01": 5
+  "§4.1.1#r13": [11, 12, 13]
+  "§4.1.1#r16": 19
+  "§4.1.1#r17": 20
+  "§4.1.1#r18": 21
+  "§4.1.1#r19": 22
+  "§4.1.1#r20": 23
+  "§4.1.1#r21": 24
+  "§4.1.1#r22": 25
+  "§4.1.1#r23": 26
+  "§4.1.1#r24": 27
+  "§4.1.1#r14": 30
+  "§4.1.1#r15": 31
+  "FATDC-LOGIC-08g": 32
+  "§4.1.1#b5": 32
+anchor: [29]
 coverage:
   web: automated
 ---

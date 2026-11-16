@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-221-request-langsung-class-code-kembar-effective-from-dan-cancel-version
 title: "Request Langsung: Class Code Kembar, Effective From Tidak Valid, dan Cancel Version Ditolak"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -11,6 +12,17 @@ sourceTc:
   - TC-FA-TDC-847
   - TC-FA-TDC-848
   - TC-FA-TDC-849
+sourceRules: ["V-04", "F-FATDC-02.k7a", "V-22", "F-FATDC-03.k1", "FATDC-LOGIC-04i", "V-21", "FATDC-LOGIC-04e"]
+smoke: []
+dependsOn: []
+trace:
+  "V-04": [3, 5]
+  "F-FATDC-02.k7a": [7, 9]
+  "V-22": [12, 14]
+  "F-FATDC-03.k1": [16, 18]
+  "FATDC-LOGIC-04i": [20, 22]
+  "V-21": [25, 27]
+  "FATDC-LOGIC-04e": 25
 coverage:
   web: automated
 ---

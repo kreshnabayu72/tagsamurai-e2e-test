@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-048-create-class-name-trim-duplikat-diizinkan-dan-regulation-reference-kosong
 title: "Create - Class Name Ter-trim, Duplikat Diizinkan, dan Regulation Reference Kosong"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-149
   - TC-FA-TDC-150
   - TC-FA-TDC-151
+sourceRules: ["V-08", "F-FATDC-01.k4c", "E-FATDC-04", "T-01", "§6#p1", "§[F-FATDC-01] Create Tax Depreciation Class#b1", "§4.1.2#r3", "§9.9#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "V-08": [4, 7]
+  "F-FATDC-01.k4c": 7
+  "E-FATDC-04": [8, 9]
+  "T-01": [14, 22]
+  "§6#p1": 15
+  "§[F-FATDC-01] Create Tax Depreciation Class#b1": 15
+  "§4.1.2#r3": 20
+  "§9.9#r2": 23
 coverage:
   web: automated
 ---

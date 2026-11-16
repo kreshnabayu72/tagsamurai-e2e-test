@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-169-popup-versions-screening-badge-status-isi-kolom-dan-class-land
 title: "Popup Versions: Screening, Badge Status, Isi Kolom, dan Class Land"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,27 @@ sourceTc:
   - TC-FA-TDC-604
   - TC-FA-TDC-605
   - TC-FA-TDC-606
+sourceRules: ["§4.1.6#p5", "§4.2c#p1", "§4.1.6#r10", "§4.1.6#r11", "§4.1.6#r12", "§4.1.6#r13", "§4.1.6#r14", "§4.1.6#r4", "§4.1.6#r5", "§4.1.6#r6", "§4.1.6#r7", "§4.1.6#r8", "FATDC-LOGIC-04ad", "§4.1.6#p6", "FATDC-LOGIC-04ac", "FATDC-LOGIC-04p.5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.6#p5": [3, 4, 5, 6, 7, 30]
+  "§4.2c#p1": 4
+  "§4.1.6#r10": [8, 20, 29]
+  "§4.1.6#r11": [8, 21]
+  "§4.1.6#r12": [8, 22]
+  "§4.1.6#r13": [8, 23, 24]
+  "§4.1.6#r14": 8
+  "§4.1.6#r4": [8, 17, 29]
+  "§4.1.6#r5": [8, 11, 12, 13, 14, 15, 16, 29]
+  "§4.1.6#r6": [8, 18, 29]
+  "§4.1.6#r7": [8, 19, 29]
+  "§4.1.6#r8": [8, 19, 29]
+  "FATDC-LOGIC-04ad": 9
+  "§4.1.6#p6": 9
+  "FATDC-LOGIC-04ac": 17
+  "FATDC-LOGIC-04p.5": 17
+anchor: [10]
 coverage:
   web: automated
 ---

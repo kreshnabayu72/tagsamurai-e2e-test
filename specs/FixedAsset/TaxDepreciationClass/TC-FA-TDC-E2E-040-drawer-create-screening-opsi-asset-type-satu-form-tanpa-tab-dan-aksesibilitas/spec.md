@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-040-drawer-create-screening-opsi-asset-type-satu-form-tanpa-tab-dan-aksesibilitas
 title: "Drawer Create - Screening, Opsi Asset Type, Satu Form Tanpa Tab, dan Aksesibilitas"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,29 @@ sourceTc:
   - TC-FA-TDC-104
   - TC-FA-TDC-915
   - TC-FA-TDC-176
+sourceRules: ["§4.1.2#p1", "ST-30", "§4.1.2#r1", "§4.1.2#r2", "§4.1.2#r3", "§4.1.2#r4", "FLD-05", "§4.1.2#r6", "ST-10", "FATDC-LOGIC-03f.4", "§4.1.2#r10", "§4.1.2#r11", "FLD-18", "§9.5#r7", "§4.1#r2", "§9.5#r11", "§4.5#b2", "§4.5#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.2#p1": [2, 3, 4, 21, 30]
+  "ST-30": 4
+  "§4.1.2#r1": 5
+  "§4.1.2#r2": 6
+  "§4.1.2#r3": 7
+  "§4.1.2#r4": [8, 16, 18]
+  "FLD-05": 9
+  "§4.1.2#r6": 10
+  "ST-10": 11
+  "FATDC-LOGIC-03f.4": 11
+  "§4.1.2#r10": 12
+  "§4.1.2#r11": 12
+  "FLD-18": [13, 14, 15]
+  "§9.5#r7": 13
+  "§4.1#r2": 15
+  "§9.5#r11": [18, 19]
+  "§4.5#b2": 23
+  "§4.5#b1": [25, 27]
+anchor: [28]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-170-popup-versions-urutan-tetap-tanpa-sort-search-download-dan-paginasi
 title: "Popup Versions: Urutan Tetap, Tanpa Sort, Search, Download, dan Pagination"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,26 @@ sourceTc:
   - TC-FA-TDC-608
   - TC-FA-TDC-609
   - TC-FA-TDC-610
+sourceRules: ["FATDC-LOGIC-04ad", "§4.1.6#p6", "§4.1.6#r10", "§4.1.6#r11", "§4.1.6#r12", "§4.1.6#r13", "§4.1.6#r14", "§4.1.6#r4", "§4.1.6#r5", "§4.1.6#r6", "§4.1.6#r7", "§4.1.6#r8", "§4.1.6#p5", "§9.5#r3", "§5#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04ad": [3, 23]
+  "§4.1.6#p6": [3, 23]
+  "§4.1.6#r10": 10
+  "§4.1.6#r11": 10
+  "§4.1.6#r12": 10
+  "§4.1.6#r13": 10
+  "§4.1.6#r14": 10
+  "§4.1.6#r4": 10
+  "§4.1.6#r5": 10
+  "§4.1.6#r6": 10
+  "§4.1.6#r7": 10
+  "§4.1.6#r8": 10
+  "§4.1.6#p5": [12, 19, 22, 25]
+  "§9.5#r3": [19, 20, 22, 25]
+  "§5#b5": 20
+anchor: [6, 7, 9]
 coverage:
   web: automated
 ---

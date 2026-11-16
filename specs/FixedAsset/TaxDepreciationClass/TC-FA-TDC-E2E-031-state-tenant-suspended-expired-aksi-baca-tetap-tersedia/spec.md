@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-031-state-tenant-suspended-expired-aksi-baca-tetap-tersedia
 title: "State Tenant Suspended dan Expired: Aksi Baca Tabel, Search, Used By, Changelog, dan Drawer Edit Tetap Tersedia"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-889
   - TC-FA-TDC-890
+sourceRules: ["E-FATDC-62", "§4.1.1#r2", "§4.1.1#b2", "§4.1.6#p1", "§4.1.1#p8", "§3.9#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FATDC-62": [1, 3, 5, 8, 11, 18, 20, 22, 25, 28]
+  "§4.1.1#r2": [1, 18]
+  "§4.1.1#b2": [3, 20]
+  "§4.1.6#p1": [5, 22]
+  "§4.1.1#p8": [8, 25]
+  "§3.9#r2": [11, 28]
+anchor: [12, 29]
 coverage:
   web: automated
 ---

@@ -1,11 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-234-create-tombol-clear-field-mengosongkan-semua-field-tanpa-menutup-drawer
 title: "Create - Tombol Clear Field Mengosongkan Semua Field Tanpa Menutup Drawer"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-113
+sourceRules: ["§4.1.2#r1", "§4.1.2#r2", "§4.1.2#r3", "§4.1.2#r4", "FLD-05", "§4.1.2#r6", "§9.5#r7"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.2#r1": 7
+  "§4.1.2#r2": 8
+  "§4.1.2#r3": 9
+  "§4.1.2#r4": 10
+  "FLD-05": 11
+  "§4.1.2#r6": 12
+  "§9.5#r7": 18
+anchor: [13, 14, 15, 16, 17]
 coverage:
   web: automated
 ---

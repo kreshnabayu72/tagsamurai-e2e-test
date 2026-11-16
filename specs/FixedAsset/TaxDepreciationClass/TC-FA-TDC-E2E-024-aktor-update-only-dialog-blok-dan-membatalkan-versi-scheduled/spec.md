@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-024-aktor-update-only-dialog-blok-dan-membatalkan-versi-scheduled
 title: "Aktor Update-Only: Dialog Blok Deactivate dan Membatalkan Versi Scheduled"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,23 @@ sourceTc:
   - TC-FA-TDC-80
   - TC-FA-TDC-81
   - TC-FA-TDC-313
+sourceRules: ["D-02", "F-FATDC-05.k1", "D-10", "FATDC-LOGIC-04ac", "T-07", "§[F-FATDC-03] Cancel Scheduled Version#b3", "ST-30", "F-FATDC-03.k7", "FATDC-LOGIC-04ad", "FATDC-LOGIC-04aa", "F-FATDC-03.k6", "FATDC-LOGIC-04ae", "§4.1.6#r14"]
+smoke: []
+dependsOn: []
+trace:
+  "D-02": 2
+  "F-FATDC-05.k1": [4, 5]
+  "D-10": [8, 19]
+  "FATDC-LOGIC-04ac": 8
+  "T-07": [10, 21, 32]
+  "§[F-FATDC-03] Cancel Scheduled Version#b3": [11, 22]
+  "ST-30": 12
+  "F-FATDC-03.k7": [18, 19]
+  "FATDC-LOGIC-04ad": [24, 39]
+  "FATDC-LOGIC-04aa": [29, 33]
+  "F-FATDC-03.k6": 33
+  "FATDC-LOGIC-04ae": 38
+  "§4.1.6#r14": 39
 coverage:
   web: automated
 ---

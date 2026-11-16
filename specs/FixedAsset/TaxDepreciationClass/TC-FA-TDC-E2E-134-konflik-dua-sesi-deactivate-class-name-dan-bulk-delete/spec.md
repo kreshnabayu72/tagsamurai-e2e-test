@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-134-konflik-dua-sesi-deactivate-class-name-dan-bulk-delete
 title: "Konflik Dua Sesi: Deactivate dan Edit Class Name pada Class yang Sama, Bulk Delete Setelah Sesi Lain Menonaktifkan, dan Deactivate Class Terakhir bertipe Land"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-TDC-896
   - TC-FA-TDC-897
   - TC-FA-TDC-898
+sourceRules: ["R-05", "ST-27", "§[F-FATDC-02] Edit Tax Depreciation Class#b4", "FATDC-LOGIC-04c", "L-04", "F-FATDC-13.k8", "FATDC-LOGIC-14c", "L-05", "§9.5#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "R-05": [6, 30]
+  "ST-27": [9, 29]
+  "§[F-FATDC-02] Edit Tax Depreciation Class#b4": 10
+  "FATDC-LOGIC-04c": 11
+  "L-04": 12
+  "F-FATDC-13.k8": 21
+  "FATDC-LOGIC-14c": 22
+  "L-05": 23
+  "§9.5#r9": 31
 coverage:
   web: automated
 ---

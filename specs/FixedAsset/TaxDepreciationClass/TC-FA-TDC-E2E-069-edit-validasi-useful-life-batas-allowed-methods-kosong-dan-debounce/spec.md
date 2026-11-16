@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-069-edit-validasi-useful-life-batas-allowed-methods-kosong-dan-debounce
 title: "Edit: Validasi Batas Useful Life 1 sampai 100, Allowed Methods Kosong, dan Debounce Keunikan Class Code"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-242
   - TC-FA-TDC-243
   - TC-FA-TDC-246
+sourceRules: ["V-12", "F-FATDC-01.k5a", "V-13", "F-FATDC-01.k4g", "§4.1.2#r2", "V-04", "F-FATDC-01.k1"]
+smoke: []
+dependsOn: []
+trace:
+  "V-12": [4, 7, 8]
+  "F-FATDC-01.k5a": 4
+  "V-13": 12
+  "F-FATDC-01.k4g": [12, 14]
+  "§4.1.2#r2": 17
+  "V-04": [18, 20]
+  "F-FATDC-01.k1": 20
+anchor: [13]
 coverage:
   web: automated
 ---

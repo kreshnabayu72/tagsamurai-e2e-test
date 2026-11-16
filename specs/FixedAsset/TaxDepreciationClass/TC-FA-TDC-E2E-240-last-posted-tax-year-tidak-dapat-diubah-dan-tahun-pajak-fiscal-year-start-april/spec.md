@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-240-last-posted-tax-year-tidak-dapat-diubah-dan-tahun-pajak-fiscal-year-start-april
 title: "Last Posted Tax Year Tidak Dapat Diubah dari UI dan Dicatat sebagai Tahun Kalender Awal Tahun Pajak (Fiscal Year Start April)"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-358
   - TC-FA-TDC-359
+sourceRules: ["§4.1.2#r11", "§9.9#r10", "ST-07", "FATDC-LOGIC-03a.3", "§4.2c#b1", "FATDC-LOGIC-04v", "F-FATDC-11.k1a"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.2#r11": 3
+  "§9.9#r10": [3, 5]
+  "ST-07": 6
+  "FATDC-LOGIC-03a.3": 6
+  "§4.2c#b1": 8
+  "FATDC-LOGIC-04v": 14
+  "F-FATDC-11.k1a": 14
 coverage:
   web: automated
 ---

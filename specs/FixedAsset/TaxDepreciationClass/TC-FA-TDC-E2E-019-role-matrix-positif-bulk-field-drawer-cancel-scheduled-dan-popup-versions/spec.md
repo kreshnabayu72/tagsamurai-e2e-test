@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-019-role-matrix-positif-bulk-field-drawer-cancel-scheduled-dan-popup-versions
 title: "Role Matrix Positif: Bulk Action Bar, Field Drawer Edit, Cancel Scheduled Version, dan Popup Versions"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -11,6 +12,31 @@ sourceTc:
   - TC-FA-TDC-63
   - TC-FA-TDC-65
   - TC-FA-TDC-67
+sourceRules: ["§4.8#r16", "FATDC-LOGIC-14b", "§4.8#r17", "§4.8#r18", "§4.1.2#r1", "§4.1.2#r2", "§4.1.2#r3", "§9.9#r5", "§4.1.2#r6", "§4.8#r7", "ST-07", "FATDC-LOGIC-03a.3", "ST-10", "FATDC-LOGIC-03f.4", "§4.8#r8", "ST-30", "§4.8#r6", "§4.8#r19", "§4.1.6#r14", "FATDC-LOGIC-04ae", "§4.8#r21"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r16": [2, 22, 43]
+  "FATDC-LOGIC-14b": [3, 23, 44, 45]
+  "§4.8#r17": [3, 23, 45]
+  "§4.8#r18": [3, 24, 44]
+  "§4.1.2#r1": [6, 27]
+  "§4.1.2#r2": [6, 27]
+  "§4.1.2#r3": [6, 27]
+  "§9.9#r5": [6, 27]
+  "§4.1.2#r6": [6, 27]
+  "§4.8#r7": [6, 27]
+  "ST-07": [7, 28]
+  "FATDC-LOGIC-03a.3": [7, 28]
+  "ST-10": [8, 29]
+  "FATDC-LOGIC-03f.4": [8, 29]
+  "§4.8#r8": [9, 30]
+  "ST-30": [12, 33]
+  "§4.8#r6": [12, 33]
+  "§4.8#r19": [13, 34]
+  "§4.1.6#r14": [15, 17, 36, 38]
+  "FATDC-LOGIC-04ae": [16, 37]
+  "§4.8#r21": [16, 37]
 coverage:
   web: automated
 ---

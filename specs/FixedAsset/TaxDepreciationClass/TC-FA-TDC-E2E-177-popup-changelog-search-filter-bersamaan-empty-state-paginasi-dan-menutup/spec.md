@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-177-popup-changelog-search-filter-bersamaan-empty-state-paginasi-dan-menutup
 title: "Popup Changelog: Search dan Filter Bersamaan, Empty State, Paginasi, dan Menutup Popup"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,28 @@ sourceTc:
   - TC-FA-TDC-637
   - TC-FA-TDC-638
   - TC-FA-TDC-639
+sourceRules: ["ST-26", "§5#b5", "§9.5#r3", "§4.1.1#r42", "§4.1.1#r43", "§4.1.1#r44", "§4.1.1#r45", "§4.1.1#r46", "§4.1.1#r47", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r33", "§4.1.1#r34", "§4.1.1#r35", "§4.1.1#r36", "§4.1.1#r37", "§4.5#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-26": [3, 21, 38]
+  "§5#b5": [5, 8, 13]
+  "§9.5#r3": 6
+  "§4.1.1#r42": [11, 23]
+  "§4.1.1#r43": [11, 19, 23]
+  "§4.1.1#r44": [11, 19, 23]
+  "§4.1.1#r45": 11
+  "§4.1.1#r46": 11
+  "§4.1.1#r47": [11, 23]
+  "§4.1.1#r26": [19, 21, 23, 25]
+  "§4.1.1#r27": 19
+  "§4.1.1#r33": 23
+  "§4.1.1#r34": 23
+  "§4.1.1#r35": 23
+  "§4.1.1#r36": 23
+  "§4.1.1#r37": 23
+  "§4.5#b1": 34
+anchor: [29, 31]
 coverage:
   web: automated
 ---

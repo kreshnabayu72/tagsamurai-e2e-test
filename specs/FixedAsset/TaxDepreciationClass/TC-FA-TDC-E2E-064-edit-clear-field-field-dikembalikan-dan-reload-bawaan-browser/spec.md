@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-064-edit-clear-field-field-dikembalikan-dan-reload-bawaan-browser
 title: "Edit: Clear Field, Field Dikembalikan Dianggap Bersih, dan Reload Bawaan Browser"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-TDC-200
   - TC-FA-TDC-208
   - TC-FA-TDC-209
+sourceRules: ["ST-07", "§4.2c#b1", "§12#r11"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-07": 9
+  "§4.2c#b1": [15, 22, 26, 31]
+  "§12#r11": 21
+anchor: [4, 5, 6, 7, 8, 10, 11, 12, 13, 32, 33]
 coverage:
   web: automated
 ---

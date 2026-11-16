@@ -1,12 +1,27 @@
 ---
 id: TC-FA-TDC-E2E-178-popup-changelog-setup-column-screening-overlay-popup-dan-kolom-default
 title: "Popup Changelog Setup Column: Screening Overlay, Popup, dan Kolom Default"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-640
   - TC-FA-TDC-641
+sourceRules: ["§4.4#r11", "§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§4.1.1#p8"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.4#r11": [3, 8]
+  "§4.1.1#r25": [5, 6, 13, 14]
+  "§4.1.1#r26": [5, 6, 13, 14]
+  "§4.1.1#r27": [5, 6, 13, 14]
+  "§4.1.1#r28": [5, 6, 13, 14]
+  "§4.1.1#r29": [5, 6, 13, 14]
+  "§4.1.1#r30": [5, 6, 13, 14]
+  "§4.1.1#r31": [5, 6, 13, 14]
+  "§4.1.1#p8": 10
+anchor: [4, 7, 11, 12, 15, 16, 17]
 coverage:
   web: automated
 ---

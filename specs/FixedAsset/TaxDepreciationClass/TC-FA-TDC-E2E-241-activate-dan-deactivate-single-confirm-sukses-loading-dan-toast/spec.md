@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-241-activate-dan-deactivate-single-confirm-sukses-loading-dan-toast
 title: "Activate dan Deactivate Single: Konfirmasi Sukses, Loading, dan Toast"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-362
   - TC-FA-TDC-374
+sourceRules: ["ST-28", "§3.4#p1", "§[F-FATDC-04] Activate Tax Depreciation Class#b2", "T-04", "L-04", "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-28": [5, 15]
+  "§3.4#p1": [7, 17]
+  "§[F-FATDC-04] Activate Tax Depreciation Class#b2": [8, 9]
+  "T-04": 9
+  "L-04": [11, 20]
+  "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3": [18, 19]
+anchor: [10]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-150-filter-chip-sinkron-overflow-clear-all-dan-menutup-tanpa-apply
 title: "Filter: Sinkron Chip, Overflow +N more, Clear All, dan Menutup Panel Tanpa Apply"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-TDC-523
   - TC-FA-TDC-524
   - TC-FA-TDC-525
+sourceRules: ["§4.1.1#r4", "§4.1.1#b7", "§4.4#r9", "§9.5#r2", "§5#b6"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r4": [5, 6, 8]
+  "§4.1.1#b7": [12, 13, 14]
+  "§4.4#r9": [16, 17, 18]
+  "§9.5#r2": 18
+  "§5#b6": [23, 25]
+anchor: [31, 32, 33, 34]
 coverage:
   web: automated
 ---

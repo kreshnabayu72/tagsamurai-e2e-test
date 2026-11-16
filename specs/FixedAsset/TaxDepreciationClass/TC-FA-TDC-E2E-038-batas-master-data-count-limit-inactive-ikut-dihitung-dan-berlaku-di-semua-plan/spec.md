@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-038-batas-master-data-count-limit-inactive-ikut-dihitung-dan-berlaku-di-semua-plan
 title: "Batas Master Data Count Limit: Class Inactive Ikut Dihitung dan Batas Berlaku pada Plan Growth, Professional, dan Enterprise"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -10,6 +11,14 @@ sourceTc:
   - TC-FA-TDC-760
   - TC-FA-TDC-761
   - TC-FA-TDC-762
+sourceRules: ["D-07", "F-FATDC-01.k9", "FATDC-LOGIC-13b", "FATDC-LOGIC-13a"]
+smoke: []
+dependsOn: []
+trace:
+  "D-07": [2, 8, 14]
+  "F-FATDC-01.k9": [3, 9, 15]
+  "FATDC-LOGIC-13b": 8
+  "FATDC-LOGIC-13a": 14
 coverage:
   web: automated
 ---

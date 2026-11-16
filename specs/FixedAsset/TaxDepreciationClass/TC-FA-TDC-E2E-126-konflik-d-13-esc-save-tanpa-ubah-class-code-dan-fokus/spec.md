@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-126-konflik-d-13-esc-save-tanpa-ubah-class-code-dan-fokus
 title: "Konflik D-13: Esc dan Fokus Dialog serta Save Tanpa Mengubah Class Code Tetap Berhasil"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-TDC-213
   - TC-FA-TDC-214
   - TC-FA-TDC-921
+sourceRules: ["F-FATDC-02.k3c", "D-13", "F-FATDC-02.k3d", "ST-06", "F-FATDC-02.k3b", "T-02a", "E-FATDC-09", "S-02a"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-02.k3c": 6
+  "D-13": 8
+  "F-FATDC-02.k3d": 11
+  "ST-06": 11
+  "F-FATDC-02.k3b": 12
+  "T-02a": 19
+  "E-FATDC-09": 20
+  "S-02a": 21
+anchor: [10]
 coverage:
   web: automated
 ---

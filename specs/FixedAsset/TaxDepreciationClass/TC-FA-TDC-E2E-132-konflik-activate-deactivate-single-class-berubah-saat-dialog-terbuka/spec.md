@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-132-konflik-activate-deactivate-single-class-berubah-saat-dialog-terbuka
 title: "Konflik Activate dan Deactivate Single: Class Berubah Saat Dialog Konfirmasi Terbuka"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -10,6 +11,24 @@ sourceTc:
   - TC-FA-TDC-387
   - TC-FA-TDC-388
   - TC-FA-TDC-389
+sourceRules: ["F-FATDC-04.k1", "T-04", "L-04", "T-13", "F-FATDC-04.k2a", "F-FATDC-04.k2b", "F-FATDC-04.k2c", "D-02", "F-FATDC-05.k3", "FATDC-LOGIC-08h", "F-FATDC-05.k4", "F-FATDC-05.k5a", "F-FATDC-05.k5b", "F-FATDC-05.k5c"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-04.k1": [6, 7]
+  "T-04": 8
+  "L-04": [9, 27, 36]
+  "T-13": [15, 42]
+  "F-FATDC-04.k2a": 15
+  "F-FATDC-04.k2b": 16
+  "F-FATDC-04.k2c": 17
+  "D-02": 23
+  "F-FATDC-05.k3": 24
+  "FATDC-LOGIC-08h": 26
+  "F-FATDC-05.k4": [33, 34, 35]
+  "F-FATDC-05.k5a": 42
+  "F-FATDC-05.k5b": 43
+  "F-FATDC-05.k5c": 44
 coverage:
   web: automated
 ---

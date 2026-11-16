@@ -1,12 +1,33 @@
 ---
 id: TC-FA-TDC-E2E-015-role-matrix-visibilitas-elemen-baca-dan-drawer-baca-semua-aktor
 title: "Role Matrix: Visibilitas Elemen Baca dan Drawer Baca untuk Semua Aktor"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-47
   - TC-FA-TDC-48
+sourceRules: ["§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.4#r11", "§4.1.1#r3", "§5#b5", "§9.5#r3", "§4.8#r4", "§4.1.1#r16", "§4.1.1#r9", "§4.8#r5", "ST-30", "§4.8#r6", "FATDC-LOGIC-04ad", "§4.8#r20", "§4.1.6#p5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r1": 5
+  "§4.8#r2": 6
+  "§4.8#r3": 7
+  "§4.4#r11": 7
+  "§4.1.1#r3": 8
+  "§5#b5": 9
+  "§9.5#r3": 9
+  "§4.8#r4": [10, 11]
+  "§4.1.1#r16": [10, 11]
+  "§4.1.1#r9": 11
+  "§4.8#r5": 16
+  "ST-30": 17
+  "§4.8#r6": 17
+  "FATDC-LOGIC-04ad": 18
+  "§4.8#r20": [18, 20]
+  "§4.1.6#p5": 20
 coverage:
   web: automated
 ---

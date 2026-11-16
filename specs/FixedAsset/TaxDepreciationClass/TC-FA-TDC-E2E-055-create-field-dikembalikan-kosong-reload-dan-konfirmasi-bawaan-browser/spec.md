@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-055-create-field-dikembalikan-kosong-reload-dan-konfirmasi-bawaan-browser
 title: "Create - Field Dikembalikan Kosong, Reload, dan Konfirmasi Bawaan Browser"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
@@ -8,6 +9,13 @@ sourceTc:
   - TC-FA-TDC-123
   - TC-FA-TDC-124
   - TC-FA-TDC-125
+sourceRules: ["§4.2c#b1", "FI-09"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2c#b1": [5, 6, 10, 15, 21]
+  "FI-09": 22
+anchor: [14, 20]
 coverage:
   web: automated
 ---

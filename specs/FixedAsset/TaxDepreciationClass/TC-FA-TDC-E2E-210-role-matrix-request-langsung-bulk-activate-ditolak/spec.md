@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-210-role-matrix-request-langsung-bulk-activate-ditolak
 title: "Role Matrix Negatif: Request Langsung Bulk Activate Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,12 @@ sourceTc:
   - TC-FA-TDC-804
   - TC-FA-TDC-805
   - TC-FA-TDC-806
+sourceRules: ["FATDC-LOGIC-08i", "F-FATDC-13.k13"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-08i": [4, 6]
+  "F-FATDC-13.k13": 4
 coverage:
   web: automated
 ---

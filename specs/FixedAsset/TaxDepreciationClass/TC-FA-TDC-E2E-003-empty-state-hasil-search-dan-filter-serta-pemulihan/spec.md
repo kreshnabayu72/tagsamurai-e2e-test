@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-003-empty-state-hasil-search-dan-filter-serta-pemulihan
 title: "Empty State Hasil Search dan Filter serta Pemulihan Tabel"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-TDC-10
   - TC-FA-TDC-11
   - TC-FA-TDC-12
+sourceRules: ["ST-23", "FATDC-LOGIC-02k", "§7.1#p2", "§5#b2", "FATDC-LOGIC-02a", "§4.1.1#b7"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": [2, 4, 7, 17, 24]
+  "FATDC-LOGIC-02k": [3, 18]
+  "§7.1#p2": [3, 18]
+  "§5#b2": 10
+  "FATDC-LOGIC-02a": [12, 26]
+  "§4.1.1#b7": [19, 27]
+anchor: [9]
 coverage:
   web: automated
 ---

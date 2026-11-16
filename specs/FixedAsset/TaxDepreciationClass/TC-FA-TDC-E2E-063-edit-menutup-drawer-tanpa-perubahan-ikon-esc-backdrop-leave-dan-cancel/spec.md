@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-063-edit-menutup-drawer-tanpa-perubahan-ikon-esc-backdrop-leave-dan-cancel
 title: "Edit: Menutup Drawer dengan Ikon Tutup, Esc, Backdrop, Leave, dan Cancel"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,14 @@ sourceTc:
   - TC-FA-TDC-205
   - TC-FA-TDC-206
   - TC-FA-TDC-207
+sourceRules: ["§12#r11", "§4.2c#b1", "§4.5#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§12#r11": 4
+  "§4.2c#b1": [5, 9, 19, 27, 32]
+  "§4.5#b1": [8, 15]
+anchor: [12, 13, 21, 22, 23, 29, 30]
 coverage:
   web: automated
 ---

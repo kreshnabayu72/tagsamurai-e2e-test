@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-147-filter-panel-screening-guard-field-dan-opsi-dropdown
 title: "Filter Panel: Screening, Guard Field, dan Opsi Dropdown"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,25 @@ sourceTc:
   - TC-FA-TDC-508
   - TC-FA-TDC-509
   - TC-FA-TDC-510
+sourceRules: ["§5#b3", "§4.1.1#r1", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "§4.1.1#r12", "§4.1.1#r13", "§9.5#r14", "§9.5#r11", "§9.5#r12"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b3": [4, 16]
+  "§4.1.1#r1": 5
+  "§4.1.1#r4": 6
+  "§4.1.1#r5": 7
+  "§4.1.1#r6": 8
+  "§4.1.1#r7": 9
+  "§4.1.1#r8": [10, 29]
+  "§4.1.1#r9": 11
+  "§4.1.1#r10": 12
+  "§4.1.1#r12": [13, 24, 25]
+  "§4.1.1#r13": 14
+  "§9.5#r14": [18, 19, 22, 26, 29, 34, 36]
+  "§9.5#r11": 21
+  "§9.5#r12": 28
+anchor: [2, 3, 15]
 coverage:
   web: automated
 ---

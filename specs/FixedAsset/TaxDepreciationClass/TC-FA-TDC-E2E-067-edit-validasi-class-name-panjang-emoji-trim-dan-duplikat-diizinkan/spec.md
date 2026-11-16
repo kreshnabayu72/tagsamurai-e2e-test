@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-067-edit-validasi-class-name-panjang-emoji-trim-dan-duplikat-diizinkan
 title: "Edit: Validasi Class Name Batas Panjang 120 Karakter, Emoji, Trim, dan Nama Duplikat Diizinkan"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -11,6 +12,20 @@ sourceTc:
   - TC-FA-TDC-233
   - TC-FA-TDC-234
   - TC-FA-TDC-235
+sourceRules: ["V-06", "F-FATDC-01.k3a", "§4.1.2#r3", "V-07", "F-FATDC-01.k3b", "T-02a", "F-FATDC-02.k11d", "FATDC-LOGIC-04c", "§5#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "V-06": 4
+  "F-FATDC-01.k3a": 4
+  "§4.1.2#r3": [6, 7, 25, 34, 36]
+  "V-07": [10, 11, 14, 15, 18]
+  "F-FATDC-01.k3b": 20
+  "T-02a": [24, 33]
+  "F-FATDC-02.k11d": [27, 28]
+  "FATDC-LOGIC-04c": 28
+  "§5#b2": 36
+anchor: [19]
 coverage:
   web: automated
 ---

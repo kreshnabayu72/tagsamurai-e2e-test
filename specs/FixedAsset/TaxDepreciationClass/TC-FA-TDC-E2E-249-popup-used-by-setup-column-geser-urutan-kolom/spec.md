@@ -1,11 +1,17 @@
 ---
 id: TC-FA-TDC-E2E-249-popup-used-by-setup-column-geser-urutan-kolom
 title: "Popup Used By Setup Column: Geser Urutan Kolom"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-598
+sourceRules: []
+smoke: []
+dependsOn: []
+trace:
+anchor: [5, 7, 10]
 coverage:
   web: automated
 ---

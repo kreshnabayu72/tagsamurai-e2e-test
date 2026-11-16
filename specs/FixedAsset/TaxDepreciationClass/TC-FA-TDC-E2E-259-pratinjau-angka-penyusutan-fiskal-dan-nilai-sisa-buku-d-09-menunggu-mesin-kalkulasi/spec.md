@@ -1,11 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-259-pratinjau-angka-penyusutan-fiskal-dan-nilai-sisa-buku-d-09-menunggu-mesin-kalkulasi
 title: "Pratinjau Dampak D-09 Menampilkan Angka Penyusutan Fiskal dan Nilai Sisa Buku Sebelum → Sesudah (Menunggu Mesin Kalkulasi, OI-03 b)"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-253
+sourceRules: ["D-09", "FATDC-LOGIC-05b.3", "FATDC-LOGIC-05d", "FATDC-LOGIC-05b.4", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "D-09": 5
+  "FATDC-LOGIC-05b.3": [7, 10]
+  "FATDC-LOGIC-05d": 8
+  "FATDC-LOGIC-05b.4": 9
+  "§4.2c#b1": 13
 coverage:
   web: unsupported
 ---

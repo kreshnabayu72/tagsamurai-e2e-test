@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-062-edit-class-inactive-saving-state-gagal-5xx-dan-klik-ganda-save
 title: "Edit: Saving State, Klik Ganda Save, Gagal 5xx, dan Class Inactive Dapat Diedit"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-198
   - TC-FA-TDC-199
   - TC-FA-TDC-219
+sourceRules: ["ST-13", "T-02a", "R-02", "T-02d", "§4.2c#b1", "ST-27", "S-02a"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-13": [6, 14]
+  "T-02a": [8, 16, 36]
+  "R-02": [15, 25]
+  "T-02d": 22
+  "§4.2c#b1": 30
+  "ST-27": 37
+  "S-02a": 38
+anchor: [7, 24, 26]
 coverage:
   web: automated
 ---

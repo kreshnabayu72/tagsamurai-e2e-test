@@ -1,12 +1,25 @@
 ---
 id: TC-FA-TDC-E2E-243-dialog-bulk-cancel-activate-dan-delete-jamak-mempertahankan-seleksi
 title: "Dialog Bulk Cancel Activate dan Delete Jamak Mempertahankan Seleksi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-435
   - TC-FA-TDC-436
+sourceRules: ["D-03", "FATDC-LOGIC-14k", "FATDC-LOGIC-08h", "§3.6#p1", "§4.1#r7", "L-04", "D-06", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "D-03": 5
+  "FATDC-LOGIC-14k": [6, 9, 20, 21, 23]
+  "FATDC-LOGIC-08h": 7
+  "§3.6#p1": [8, 22]
+  "§4.1#r7": [11, 25]
+  "L-04": 12
+  "D-06": 19
+  "L-05": 26
 coverage:
   web: automated
 ---

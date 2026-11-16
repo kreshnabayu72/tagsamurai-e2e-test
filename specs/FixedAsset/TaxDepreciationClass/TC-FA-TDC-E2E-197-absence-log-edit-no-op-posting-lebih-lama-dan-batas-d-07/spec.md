@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-197-absence-log-edit-no-op-posting-lebih-lama-dan-batas-d-07
 title: "Absence Log: Edit No-Op, Posting Tahun Pajak Sama atau Lebih Lama, dan Batas D-07 Tidak Menulis Entri"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-681
   - TC-FA-TDC-694
   - TC-FA-TDC-134
+sourceRules: ["T-03", "F-FATDC-02.k2b", "§9.4.3#b9", "F-FATDC-11.k2", "L-10", "F-FATDC-01.k9", "D-07", "§8.4#r7"]
+smoke: []
+dependsOn: []
+trace:
+  "T-03": 4
+  "F-FATDC-02.k2b": [7, 10, 12]
+  "§9.4.3#b9": [7, 10, 12]
+  "F-FATDC-11.k2": [18, 22, 23]
+  "L-10": 22
+  "F-FATDC-01.k9": [30, 32]
+  "D-07": 30
+  "§8.4#r7": 34
 coverage:
   web: automated
 ---

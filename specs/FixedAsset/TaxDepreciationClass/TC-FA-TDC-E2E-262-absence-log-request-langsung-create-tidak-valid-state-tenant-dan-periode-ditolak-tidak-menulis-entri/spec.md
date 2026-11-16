@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-262-absence-log-request-langsung-create-tidak-valid-state-tenant-dan-periode-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung pada Plan Starter, Entitas Suspended, dan Periode Tertutup yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,13 @@ sourceTc:
   - TC-FA-TDC-831
   - TC-FA-TDC-888
   - TC-FA-TDC-847
+sourceRules: ["E-FATDC-67", "E-FATDC-62", "E-FATDC-18"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FATDC-67": [4, 6, 7, 8]
+  "E-FATDC-62": [12, 14, 15, 16]
+  "E-FATDC-18": [21, 24, 25, 26]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-158-pagination-halaman-terakhir-dan-state-tabel-dipertahankan-atau-direset
 title: "Pagination: State Tabel Dipertahankan atau Direset dan Halaman Terakhir Sesudah Delete"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-TDC-561
   - TC-FA-TDC-562
   - TC-FA-TDC-931
+sourceRules: ["§5#b6", "§9.5#r3", "§9.5#r1", "D-06", "§[F-FATDC-06] Delete Tax Depreciation Class#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b6": [9, 10, 11, 12, 14, 15, 16, 17, 18, 33, 34, 35, 36]
+  "§9.5#r3": [21, 47]
+  "§9.5#r1": 24
+  "D-06": 43
+  "§[F-FATDC-06] Delete Tax Depreciation Class#b3": 45
+anchor: [22, 23, 46]
 coverage:
   web: automated
 ---

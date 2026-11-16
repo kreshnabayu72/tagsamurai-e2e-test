@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-190-log-l-03-versi-baru-allowed-methods-dan-effective-from-sama
 title: "Pencatatan Log L-03: Versi Baru dari Useful Life, Allowed Methods, Regulation Reference, dan Effective From Sama dengan Versi Current"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-TDC-683
   - TC-FA-TDC-684
   - TC-FA-TDC-932
+sourceRules: ["L-03", "FATDC-LOGIC-04b.1", "§4.1.1#r31", "FATDC-LOGIC-04ac", "FATDC-LOGIC-04b.2", "§8.2#p1", "§8.2#r1", "§8.3#p1", "FATDC-LOGIC-04b.4", "FATDC-LOGIC-04r.2", "E-FATDC-19", "F-FATDC-02.k8"]
+smoke: []
+dependsOn: []
+trace:
+  "L-03": [10, 11, 12, 13, 16, 17, 18, 19, 21, 22, 23, 24, 34, 35, 36, 37, 49, 50, 51, 52, 64, 65, 70, 74]
+  "FATDC-LOGIC-04b.1": 10
+  "§4.1.1#r31": [11, 12, 35, 36, 50, 51, 52, 65]
+  "FATDC-LOGIC-04ac": [12, 18, 23, 36, 52]
+  "FATDC-LOGIC-04b.2": 13
+  "§8.2#p1": [16, 69]
+  "§8.2#r1": [17, 18, 70]
+  "§8.3#p1": [21, 22, 23, 24, 73, 74]
+  "FATDC-LOGIC-04b.4": [34, 35]
+  "FATDC-LOGIC-04r.2": [49, 50]
+  "E-FATDC-19": [64, 65, 66, 69, 71, 73, 75]
+  "F-FATDC-02.k8": [66, 71, 75]
 coverage:
   web: automated
 ---

@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-227-aksesibilitas-fokus-ter-trap-dialog-blok-d-02-d-04-d-05-dan-d-08
 title: "Aksesibilitas Fokus Ter-trap Dialog Blok D-02, D-04, D-05 dan D-08"
+layer: ui-e2e
 priority: Low
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-918
   - TC-FA-TDC-920
+sourceRules: ["§4.5#b2", "§4.5#b1", "§4.1.1#r16", "D-04", "D-05", "§4.2c#b1", "D-08"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b2": [3, 10, 17, 25]
+  "§4.5#b1": [5, 12, 19, 27]
+  "§4.1.1#r16": 6
+  "D-04": 13
+  "D-05": 20
+  "§4.2c#b1": 29
+  "D-08": 31
 coverage:
   web: automated
 ---

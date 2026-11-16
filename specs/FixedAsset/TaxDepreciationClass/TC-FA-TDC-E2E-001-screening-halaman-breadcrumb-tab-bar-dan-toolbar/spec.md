@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-001-screening-halaman-breadcrumb-tab-bar-dan-toolbar
 title: "Screening Halaman Tax Depreciation Class: Breadcrumb, Tab Bar, dan Toolbar"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,38 @@ sourceTc:
   - TC-FA-TDC-2
   - TC-FA-TDC-3
   - TC-FA-TDC-4
+sourceRules: ["§4.2a#p1", "§4.1#r1", "FATDC-LOGIC-02a", "§4.2a#p2", "§4.7#p1", "§4.1.1#p5", "§5#b1", "§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "§4.1.1#p4", "§4.4#r11", "§4.1.1#r11", "§4.1.1#r12", "§4.1.1#r13", "§9.5#r4", "§9.5#r1", "§4.1.1#b7", "§5#b5", "§9.5#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2a#p1": [4, 5, 10, 18, 19, 23, 25]
+  "§4.1#r1": [4, 24]
+  "FATDC-LOGIC-02a": [6, 14]
+  "§4.2a#p2": [8, 25]
+  "§4.7#p1": 9
+  "§4.1.1#p5": 11
+  "§5#b1": 11
+  "§4.1.1#r1": 12
+  "§4.1.1#r2": 12
+  "§4.1.1#r3": 12
+  "§4.1.1#r4": 12
+  "§4.1.1#r5": 12
+  "§4.1.1#r6": 12
+  "§4.1.1#r7": 12
+  "§4.1.1#r8": 12
+  "§4.1.1#r9": 12
+  "§4.1.1#r10": 12
+  "§4.1.1#p4": 12
+  "§4.4#r11": 12
+  "§4.1.1#r11": 13
+  "§4.1.1#r12": 13
+  "§4.1.1#r13": 13
+  "§9.5#r4": 13
+  "§9.5#r1": 14
+  "§4.1.1#b7": 15
+  "§5#b5": 16
+  "§9.5#r3": 16
+anchor: [21, 27, 29, 31]
 coverage:
   web: automated
 ---

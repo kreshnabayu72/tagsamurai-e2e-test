@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-036-job-latar-j-01-j-02-j-03-tetap-berjalan-saat-suspended-atau-expired
 title: "Job Latar J-01, J-02, dan J-03 Tetap Berjalan saat Entitas Suspended atau Expired"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -10,6 +11,24 @@ sourceTc:
   - TC-FA-TDC-893
   - TC-FA-TDC-894
   - TC-FA-TDC-360
+sourceRules: ["J-02", "E-FATDC-53", "FATDC-LOGIC-04ac", "L-08", "J-03", "E-FATDC-57", "FATDC-LOGIC-12a", "FATDC-LOGIC-07a", "E-FATDC-10", "L-10", "J-01", "FATDC-LOGIC-02a", "FATDC-LOGIC-02b.1", "L-01"]
+smoke: []
+dependsOn: []
+trace:
+  "J-02": [5, 7, 8, 37, 39, 40]
+  "E-FATDC-53": [5, 37]
+  "FATDC-LOGIC-04ac": [5, 8, 37, 40]
+  "L-08": [7, 8, 39, 40]
+  "J-03": [14, 18, 19, 45]
+  "E-FATDC-57": [14, 45]
+  "FATDC-LOGIC-12a": [14, 45]
+  "FATDC-LOGIC-07a": 15
+  "E-FATDC-10": 15
+  "L-10": [18, 19]
+  "J-01": [26, 28, 29]
+  "FATDC-LOGIC-02a": 26
+  "FATDC-LOGIC-02b.1": 26
+  "L-01": [28, 29]
 coverage:
   web: automated
 ---

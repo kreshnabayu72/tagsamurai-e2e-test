@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-121-matriks-bulk-delete-9-sampai-11
 title: "Matriks Bulk Delete 9 sampai 11"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,19 @@ sourceTc:
   - TC-FA-TDC-464
   - TC-FA-TDC-465
   - TC-FA-TDC-466
+sourceRules: ["F-FATDC-13.k10", "FATDC-LOGIC-14k", "§3.6#p1", "D-15", "F-FATDC-13.k9", "T-06b", "S-07a", "§3.6#r10", "F-FATDC-13.k8"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-13.k10": [4, 5]
+  "FATDC-LOGIC-14k": [6, 28, 36]
+  "§3.6#p1": [7, 27, 35]
+  "D-15": [11, 12, 17]
+  "F-FATDC-13.k9": 18
+  "T-06b": 24
+  "S-07a": [25, 34]
+  "§3.6#r10": 26
+  "F-FATDC-13.k8": 33
 coverage:
   web: automated
 ---

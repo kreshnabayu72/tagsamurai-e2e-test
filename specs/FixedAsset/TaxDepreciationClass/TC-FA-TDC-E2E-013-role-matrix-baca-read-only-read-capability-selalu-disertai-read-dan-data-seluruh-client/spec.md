@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-013-role-matrix-baca-read-only-read-capability-selalu-disertai-read-dan-data-seluruh-client
 title: "Role Matrix: Akses Baca Read Only, Read, Capability Selalu Disertai Read, dan Data Berlaku Seluruh Client"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,32 @@ sourceTc:
   - TC-FA-TDC-42
   - TC-FA-TDC-43
   - TC-FA-TDC-46
+sourceRules: ["§4.1.1#r16", "§5#b2", "§4.1#r7", "§4.1.1#p5", "§2.2#r3", "§4.8#r9", "§4.8#r12", "§4.8#r16", "§4.8#r1", "§4.8#r7", "§4.8#b2", "§4.8#r8", "§3.9#r2", "§4.1.1#r17", "§4.1.1#r18", "§4.1.1#r19", "§4.1.1#r20", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§9.11#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r16": [2, 31, 34]
+  "§5#b2": [3, 21]
+  "§4.1#r7": [5, 23]
+  "§4.1.1#p5": 7
+  "§2.2#r3": 7
+  "§4.8#r9": 8
+  "§4.8#r12": 9
+  "§4.8#r16": 9
+  "§4.8#r1": [12, 19]
+  "§4.8#r7": 14
+  "§4.8#b2": 14
+  "§4.8#r8": 15
+  "§3.9#r2": 26
+  "§4.1.1#r17": [31, 34]
+  "§4.1.1#r18": [31, 34]
+  "§4.1.1#r19": [31, 34]
+  "§4.1.1#r20": [31, 34]
+  "§4.1.1#r21": [31, 34]
+  "§4.1.1#r22": [31, 34]
+  "§4.1.1#r23": [31, 34]
+  "§4.1.1#r24": [31, 34]
+  "§9.11#p1": [34, 35]
 coverage:
   web: automated
 ---
