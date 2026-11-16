@@ -1,8 +1,8 @@
 # Coverage E2E — Global Settings > File Manager
 
-Sumber: `global-settings/file-manager/TestCases/tc-file-manager.md` (289 TC, ID `TC-GS-FILEMGR-1`–`289`; 289 aktif, 0 retired). Suite: `specs/GlobalSettings/FileManager/`. Prefix: `GS` + `FILEMGR` (`TC-GS-FILEMGR-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`).
+Sumber: `global-settings/file-manager/TestCases/tc-file-manager.md` (291 TC, ID `TC-GS-FILEMGR-1`–`291`; 291 aktif, 0 retired). Suite: `specs/GlobalSettings/FileManager/`. Prefix: `GS` + `FILEMGR` (`TC-GS-FILEMGR-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`).
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 289 TC aktif masuk spec, 0 TC hanya-BE (`tc-file-manager-backend.md` memakai ID `BE-n` terpisah yang tidak merujuk ID granular; TC request langsung 248 sampai 252 dan 282 tetap di E2E, spec 071). 71 spec. Setiap TC terpetakan ke tepat satu spec (diverifikasi lewat `sourceTc`: 289 unik, tanpa duplikat, tanpa yang hilang).
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 291 TC aktif masuk spec, 0 TC hanya-BE (`tc-file-manager-backend.md` memakai ID `BE-n` terpisah yang tidak merujuk ID granular; TC request langsung 248 sampai 252 dan 282 tetap di E2E, spec 071). 72 spec. Setiap TC terpetakan ke tepat satu spec (diverifikasi lewat `sourceTc`: 291 unik, tanpa duplikat, tanpa yang hilang).
 
 Keputusan rencana (disetujui user): D-1 opsi B (klausa absence log memakai baseline jumlah entri di spec asal, tanpa spec absence tambahan), D-2 TC request langsung tetap di E2E, D-3 Setup Column dan Guided Tooltip mengikuti pola Brand (049 dan 051 mock, 050 FE+BE, 069 mock), D-4 TC-267 dan TC-284 di spec mobile 012.
 
@@ -81,6 +81,7 @@ Keputusan rencana (disetujui user): D-1 opsi B (klausa absence log memakai basel
 | TC-GS-FILEMGR-E2E-069-guided-tooltip-konten-navigasi-keyboard | Guided Tooltip File Manager: Konten Step, Siklus Back, Next, Done, Skip, dan Keyboard | mock | 37 | 34, 37, 39 |
 | TC-GS-FILEMGR-E2E-070-guided-tooltip-flag-seen-replay-dan-navigasi-keluar | Guided Tooltip File Manager: Flag Seen, Replay, dan Keluar lewat Navigasi | FE+BE | 24 | 35, 36, 38 |
 | TC-GS-FILEMGR-E2E-071-defense-in-depth-request-langsung-isolasi-client-dan-xss | Defense-in-Depth: Request Langsung Tanpa Capability, Isolasi ID Client Lain, dan Nama File Berisi Markup | FE+BE | 44 | 248, 249, 250, 251, 252, 253, 282 |
+| TC-GS-FILEMGR-E2E-072-rename-user-user-name-mengikuti-nama-terkini | Rename User: User Name Mengikuti Nama Terkini di Tabel Utama dan Recycle Bin, Uploaded By Tetap, dan Search Memakai Nama Terkini | FE+BE | 24 | 290, 291 |
 
 TC hanya-BE: tidak ada.
 
@@ -97,7 +98,7 @@ TC hanya-BE: tidak ada.
 ## Spec di atas sekitar 35 langkah
 
 
-35 dari 71 spec melewati ±35 langkah (jumlah langkah tertulis; spec 049 sampai 051 dan 031 sampai 037 jauh lebih panjang setelah ekspansi). Alasan tiap spec ada di `## Notes` masing-masing: satu kelas harness, satu dataset, dan tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+35 dari 72 spec melewati ±35 langkah (jumlah langkah tertulis; spec 049 sampai 051 dan 031 sampai 037 jauh lebih panjang setelah ekspansi). Alasan tiap spec ada di `## Notes` masing-masing: satu kelas harness, satu dataset, dan tiap blok berdiri sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 
 | Spec | Langkah |
 |---|:---:|
@@ -489,3 +490,5 @@ Seluruh pertanyaan sumber di atas sudah diputuskan; tidak ada keputusan terbuka 
 | TC-GS-FILEMGR-287 | TC-GS-FILEMGR-E2E-028-cascade-purge-delete-user-dan-non-login-user | FE+BE |
 | TC-GS-FILEMGR-288 | TC-GS-FILEMGR-E2E-064-tenant-suspended-job-latar | FE+BE |
 | TC-GS-FILEMGR-289 | TC-GS-FILEMGR-E2E-007-role-matrix-positif-download-delete-dan-permanently-delete | FE+BE |
+| TC-GS-FILEMGR-290 | TC-GS-FILEMGR-E2E-072-rename-user-user-name-mengikuti-nama-terkini | FE+BE |
+| TC-GS-FILEMGR-291 | TC-GS-FILEMGR-E2E-072-rename-user-user-name-mengikuti-nama-terkini | FE+BE |
