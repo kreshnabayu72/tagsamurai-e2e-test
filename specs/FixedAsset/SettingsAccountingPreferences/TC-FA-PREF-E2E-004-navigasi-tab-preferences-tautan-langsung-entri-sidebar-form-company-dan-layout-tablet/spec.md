@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-004-navigasi-tab-preferences-tautan-langsung-entri-sidebar-form-company-dan-layout-tablet
 title: "Navigasi Tab Preferences: Klik Tab, Tautan Langsung, Entri Sidebar, Form Company Langsung, dan Layout Tablet"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,20 @@ sourceTc:
   - TC-FA-PREF-17
   - TC-FA-PREF-601
   - TC-FA-PREF-67
+sourceRules: ["§4.2a#p4", "§4.2a#p3", "SET-01", "SET-12", "SET-02", "SET-03", "§4.2a#p1", "FAPREF-LOGIC-01a", "§Resolved#r7", "§4.5#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2a#p4": [3, 8]
+  "§4.2a#p3": [4, 9]
+  "SET-01": [5, 10]
+  "SET-12": [5, 10]
+  "SET-02": [5, 10]
+  "SET-03": [5, 10]
+  "§4.2a#p1": 13
+  "FAPREF-LOGIC-01a": [16, 17]
+  "§Resolved#r7": [16, 17]
+  "§4.5#b5": 19
 coverage:
   web: automated
 ---

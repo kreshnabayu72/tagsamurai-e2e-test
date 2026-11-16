@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-013-android-dialog-d03-d04-bottom-sheet-dan-tooltip-disabled
 title: "Android: dialog D-03 dan D-04 sebagai bottom sheet, tooltip elemen Disabled bagi Read Only"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-PREF-72
   - TC-FA-PREF-606
   - TC-FA-PREF-607
+sourceRules: ["§4.6#b2", "D-03", "D-04", "ST-08"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.6#b2": [6, 13]
+  "D-03": [6, 7, 8]
+  "D-04": [13, 14, 15, 16]
+  "ST-08": 22
+anchor: [23, 24]
 coverage:
   mobile: automated
 ---

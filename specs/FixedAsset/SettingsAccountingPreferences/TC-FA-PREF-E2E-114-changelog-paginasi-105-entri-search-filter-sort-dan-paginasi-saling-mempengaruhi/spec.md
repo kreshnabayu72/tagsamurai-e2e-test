@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-114-changelog-paginasi-105-entri-search-filter-sort-dan-paginasi-saling-mempengaruhi
 title: "Changelog paginasi 105 entri: Search, Filter, Sort, dan paginasi saling mempengaruhi"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,12 @@ sourceTc:
   - TC-FA-PREF-347
   - TC-FA-PREF-348
   - TC-FA-PREF-349
+sourceRules: ["§4.1.4#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r2": 21
+anchor: [4, 8, 13, 20]
 coverage:
   web: automated
 ---

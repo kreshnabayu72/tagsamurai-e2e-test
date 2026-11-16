@@ -1,11 +1,26 @@
 ---
 id: TC-FA-PREF-E2E-164-save-fiscal-year-start-ditolak-d03-saat-soft-closed-muncul-di-d01
 title: "Save Fiscal Year Start Ditolak D-03 Saat Periode Soft Closed Muncul Setelah D-01 Terbuka"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-559
+sourceRules: ["D-01", "PV-04", "PV-05", "D-03", "F-FAPREF-01.k6c", "F-FAPREF-01.k6d", "FAPREF-LOGIC-02e", "ST-05", "F-FAPREF-01.k6b"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [4, 5, 6, 7]
+  "PV-04": 5
+  "PV-05": 5
+  "D-03": [10, 11, 12]
+  "F-FAPREF-01.k6c": 10
+  "F-FAPREF-01.k6d": [15, 21]
+  "FAPREF-LOGIC-02e": [16, 18, 20]
+  "ST-05": [16, 18, 20]
+  "F-FAPREF-01.k6b": [21, 23]
+anchor: [13]
 coverage:
   web: automated
 ---

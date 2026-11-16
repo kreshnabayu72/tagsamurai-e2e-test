@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-047-first-accounting-period-batas-transaksi-bertanggal-15-mei-2026-seri-pc
 title: "First Accounting Period terhadap transaksi bertanggal paling awal 15 Mei 2026: April, Mei, dan Juni (seri PC)"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-PREF-585
   - TC-FA-PREF-586
   - TC-FA-PREF-587
+sourceRules: ["D-01", "PV-04", "F-FAPREF-01.k23", "V-10", "E-FAPREF-42", "T-01", "E-FAPREF-37"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [3, 12, 20]
+  "PV-04": [3, 12, 20]
+  "F-FAPREF-01.k23": [5, 7]
+  "V-10": 6
+  "E-FAPREF-42": 8
+  "T-01": [14, 22]
+  "E-FAPREF-37": [15, 23]
 coverage:
   web: automated
 ---

@@ -1,12 +1,34 @@
 ---
 id: TC-FA-PREF-E2E-120-log-tiga-surface-save-depreciation-in-disposal-month-dan-default-gain-on-disposal
 title: "Log tiga surface: Save perubahan Depreciation in Disposal Month dan Default Gain on Disposal tercatat di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-366
   - TC-FA-PREF-367
+sourceRules: ["D-01", "PV-03", "T-01", "§3.1#b6", "L-02a", "L-02e", "SET-04", "L-02f", "L-02b", "§8.2#p1", "§8.2#p2", "L-02c", "§8.3#p1", "PV-02", "§4.1.1#p4", "§4.1.4#r12", "L-02i"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [4, 28]
+  "PV-03": 4
+  "T-01": [7, 31]
+  "§3.1#b6": [8, 32]
+  "L-02a": [10, 34]
+  "L-02e": [10, 34]
+  "SET-04": 11
+  "L-02f": [11, 18, 22]
+  "L-02b": [17, 41]
+  "§8.2#p1": [18, 19, 42, 43]
+  "§8.2#p2": [18, 42]
+  "L-02c": [21, 45]
+  "§8.3#p1": [22, 46]
+  "PV-02": 28
+  "§4.1.1#p4": 32
+  "§4.1.4#r12": 35
+  "L-02i": [35, 42, 46]
 coverage:
   web: automated
 ---

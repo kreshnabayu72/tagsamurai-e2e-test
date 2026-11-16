@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-153-deferred-export-journal-isi-berkas-debit-credit-transaksi-transaction-number-account-code-dan-tanpa-dimensi
 title: "[DEFERRED] Export Journal isi berkas (2): Debit dan Credit, minimal 2 baris, Transaction Number, Account Code, dan tanpa dimensi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-PREF-501
   - TC-FA-PREF-502
   - TC-FA-PREF-503
+sourceRules: ["FAPREF-LOGIC-09w", "FAPREF-LOGIC-09x", "FAPREF-LOGIC-09y", "FAPREF-LOGIC-09z", "FAPREF-LOGIC-09s", "FAPREF-LOGIC-09t"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-09w": 4
+  "FAPREF-LOGIC-09x": [5, 6]
+  "FAPREF-LOGIC-09y": 7
+  "FAPREF-LOGIC-09z": 8
+  "FAPREF-LOGIC-09s": 12
+  "FAPREF-LOGIC-09t": 13
 coverage:
   web: automated
 ---

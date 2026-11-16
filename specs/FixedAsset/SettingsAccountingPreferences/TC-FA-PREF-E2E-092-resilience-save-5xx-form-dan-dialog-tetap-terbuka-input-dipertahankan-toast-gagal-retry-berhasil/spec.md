@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-092-resilience-save-5xx-form-dan-dialog-tetap-terbuka-input-dipertahankan-toast-gagal-retry-berhasil
 title: "Resilience Save 5xx: Form dan Dialog D-01 Tetap Terbuka, Input Dipertahankan, Toast Gagal Tampil, Retry Berhasil"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-PREF-278
   - TC-FA-PREF-279
   - TC-FA-PREF-282
+sourceRules: ["T-01", "F-FAPREF-01.k17c", "RG-04", "F-FAPREF-01.k17a", "F-FAPREF-01.k17b", "ST-01", "F-FAPREF-01.k22b", "F-FAPREF-01.k13"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [4, 16, 28, 30]
+  "F-FAPREF-01.k17c": [4, 16, 28]
+  "RG-04": [4, 16]
+  "F-FAPREF-01.k17a": [5, 17]
+  "F-FAPREF-01.k17b": [6, 18]
+  "ST-01": [7, 32]
+  "F-FAPREF-01.k22b": [8, 20]
+  "F-FAPREF-01.k13": 31
+anchor: [19]
 coverage:
   web: automated
 ---

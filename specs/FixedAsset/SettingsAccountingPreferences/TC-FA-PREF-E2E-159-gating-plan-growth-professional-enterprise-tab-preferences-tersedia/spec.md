@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-159-gating-plan-growth-professional-enterprise-tab-preferences-tersedia
 title: "Gating Plan: Growth, Professional, dan Enterprise Memiliki Tab Preferences dengan Akses Penuh"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-PREF-115
   - TC-FA-PREF-116
   - TC-FA-PREF-117
+sourceRules: ["§4.8#r1", "§4.2a#p4", "§4.8#r4", "§4.8#r5", "FAPREF-LOGIC-10f"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r1": [3, 12, 21]
+  "§4.2a#p4": [3, 12, 21]
+  "§4.8#r4": [5, 14, 23]
+  "§4.8#r5": [6, 15, 24]
+  "FAPREF-LOGIC-10f": [6, 15, 24]
 coverage:
   web: automated
 ---

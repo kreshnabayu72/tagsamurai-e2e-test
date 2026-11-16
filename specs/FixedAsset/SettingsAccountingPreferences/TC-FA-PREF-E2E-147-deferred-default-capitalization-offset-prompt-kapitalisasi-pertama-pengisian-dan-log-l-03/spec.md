@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-147-deferred-default-capitalization-offset-prompt-kapitalisasi-pertama-pengisian-dan-log-l-03
 title: "[DEFERRED] Default Capitalization Offset: prompt kapitalisasi pertama, pengisian, dan log L-03"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,22 @@ sourceTc:
   - TC-FA-PREF-473
   - TC-FA-PREF-474
   - TC-FA-PREF-475
+sourceRules: ["FAPREF-LOGIC-08c", "§Aturan Logika Modul#b1", "F-FAPREF-05.k1b", "L-03a", "§4.1.4#r8", "L-03b", "§8.2#p2", "L-03c", "L-02d", "§8.4#p3", "§4.1.1#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-08c": 3
+  "§Aturan Logika Modul#b1": 7
+  "F-FAPREF-05.k1b": 10
+  "L-03a": 16
+  "§4.1.4#r8": 17
+  "L-03b": [23, 24]
+  "§8.2#p2": 24
+  "L-03c": [26, 27]
+  "L-02d": 27
+  "§8.4#p3": [33, 34]
+  "§4.1.1#p1": 36
+anchor: [8]
 coverage:
   web: automated
 ---

@@ -1,12 +1,26 @@
 ---
 id: TC-FA-PREF-E2E-176-versi-tdc-dan-transaksi-bertanggal-dibuat-saat-dialog-save-changes-terbuka-menolak-save
 title: "Versi Tax Depreciation Class dan transaksi bertanggal dibuat saat dialog Save Changes terbuka menolak Save"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-581
   - TC-FA-PREF-582
+sourceRules: ["D-01", "PV-04", "PV-05", "F-FAPREF-01.k19d", "V-09", "E-FAPREF-38", "F-FAPREF-01.k23", "V-10", "E-FAPREF-42"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [3, 14]
+  "PV-04": [3, 14]
+  "PV-05": 3
+  "F-FAPREF-01.k19d": [6, 8]
+  "V-09": 7
+  "E-FAPREF-38": 9
+  "F-FAPREF-01.k23": [17, 19]
+  "V-10": 18
+  "E-FAPREF-42": 20
 coverage:
   web: automated
 ---

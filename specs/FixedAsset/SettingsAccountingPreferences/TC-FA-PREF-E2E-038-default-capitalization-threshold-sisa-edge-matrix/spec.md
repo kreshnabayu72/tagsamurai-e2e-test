@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-038-default-capitalization-threshold-sisa-edge-matrix
 title: "Default Capitalization Threshold sisa edge matrix: V-01, V-02, V-03, digit desimal ketiga, nilai 0, dan 16 digit dengan 2 desimal"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -10,6 +11,19 @@ sourceTc:
   - TC-FA-PREF-553
   - TC-FA-PREF-554
   - TC-FA-PREF-555
+sourceRules: ["V-02", "FAPREF-LOGIC-10a", "E-FAPREF-03", "V-03", "FAPREF-LOGIC-03e", "D-01", "PV-01", "T-01", "FAPREF-LOGIC-03a"]
+smoke: []
+dependsOn: []
+trace:
+  "V-02": [2, 3]
+  "FAPREF-LOGIC-10a": [5, 12]
+  "E-FAPREF-03": [6, 13]
+  "V-03": [9, 10, 17, 33]
+  "FAPREF-LOGIC-03e": [16, 32]
+  "D-01": [21, 29]
+  "PV-01": [21, 29]
+  "T-01": [23, 31]
+  "FAPREF-LOGIC-03a": 24
 coverage:
   web: automated
 ---

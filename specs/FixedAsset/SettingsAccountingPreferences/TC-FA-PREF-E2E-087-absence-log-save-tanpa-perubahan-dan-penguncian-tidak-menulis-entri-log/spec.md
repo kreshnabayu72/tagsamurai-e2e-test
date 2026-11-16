@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-087-absence-log-save-tanpa-perubahan-dan-penguncian-tidak-menulis-entri-log
 title: "Absence Log: Save Tanpa Perubahan dan Penguncian Tidak Menulis Entri Log"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-PREF-244
   - TC-FA-PREF-382
   - TC-FA-PREF-602
+sourceRules: ["R-02", "F-FAPREF-01.k1a", "F-FAPREF-01.k1b", "FAPREF-LOGIC-03e", "ST-05"]
+smoke: []
+dependsOn: []
+trace:
+  "R-02": [3, 21]
+  "F-FAPREF-01.k1a": [3, 5, 21, 23]
+  "F-FAPREF-01.k1b": [6, 24, 25, 26]
+  "FAPREF-LOGIC-03e": 23
+  "ST-05": [30, 31]
+anchor: [12, 14, 15, 32, 33, 34]
 coverage:
   web: automated
 ---

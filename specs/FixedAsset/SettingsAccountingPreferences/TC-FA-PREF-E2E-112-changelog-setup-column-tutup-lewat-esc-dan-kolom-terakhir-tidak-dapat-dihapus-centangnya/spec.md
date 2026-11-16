@@ -1,12 +1,19 @@
 ---
 id: TC-FA-PREF-E2E-112-changelog-setup-column-tutup-lewat-esc-dan-kolom-terakhir-tidak-dapat-dihapus-centangnya
 title: "Changelog Setup Column: tutup lewat Esc membuang perubahan, kolom terakhir tidak dapat dihapus centangnya"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-340
   - TC-FA-PREF-341
+sourceRules: ["§4.5#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b1": 5
+anchor: [6, 11, 12, 14]
 coverage:
   web: automated
 ---

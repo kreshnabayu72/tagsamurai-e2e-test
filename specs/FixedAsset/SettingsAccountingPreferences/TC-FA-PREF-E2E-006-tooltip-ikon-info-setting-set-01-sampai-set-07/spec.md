@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-006-tooltip-ikon-info-setting-set-01-sampai-set-07
 title: "Tooltip Ikon Info ⓘ Setting SET-01 sampai SET-07"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,17 @@ sourceTc:
   - TC-FA-PREF-33
   - TC-FA-PREF-34
   - TC-FA-PREF-35
+sourceRules: ["SET-01", "SET-02", "SET-03", "SET-04", "SET-05", "SET-06", "SET-07"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-01": 2
+  "SET-02": 4
+  "SET-03": 6
+  "SET-04": 8
+  "SET-05": 10
+  "SET-06": 12
+  "SET-07": 14
 coverage:
   web: automated
 ---

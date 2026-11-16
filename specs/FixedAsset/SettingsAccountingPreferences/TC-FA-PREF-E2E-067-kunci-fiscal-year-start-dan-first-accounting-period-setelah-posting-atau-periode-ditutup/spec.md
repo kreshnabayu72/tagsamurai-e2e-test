@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-067-kunci-fiscal-year-start-dan-first-accounting-period-setelah-posting-atau-periode-ditutup
 title: "Kunci Fiscal Year Start dan First Accounting Period Setelah Posting Penyusutan atau Periode Soft Closed/Closed"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-PREF-238
   - TC-FA-PREF-239
   - TC-FA-PREF-240
+sourceRules: ["FAPREF-LOGIC-02e", "ST-05", "FAPREF-LOGIC-02c", "ST-01"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-02e": [2, 3, 6, 7, 13, 14, 17, 18, 24, 25, 28, 29]
+  "ST-05": [3, 5, 7, 9, 14, 16, 18, 20, 25, 27, 29, 31]
+  "FAPREF-LOGIC-02c": [10, 21, 32]
+  "ST-01": [11, 22, 33]
 coverage:
   web: automated
 ---

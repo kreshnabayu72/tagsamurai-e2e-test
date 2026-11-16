@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-043-validasi-v-09-fiscal-year-start-versi-tax-depreciation-class-alur-edit
 title: "Validasi V-09: perubahan Fiscal Year Start ditolak saat ada versi Tax Depreciation Class ber-Effective From (alur edit)"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-PREF-153
   - TC-FA-PREF-154
   - TC-FA-PREF-578
+sourceRules: ["D-01", "PV-04", "PV-05", "F-FAPREF-01.k19d", "V-09", "D-03", "E-FAPREF-38", "F-FAPREF-01.k19a", "F-FAPREF-01.k20e", "T-01", "FAPREF-LOGIC-02k"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [3, 12, 22, 30]
+  "PV-04": [3, 12, 22, 30]
+  "PV-05": [3, 12, 30]
+  "F-FAPREF-01.k19d": [5, 6, 15, 16]
+  "V-09": [7, 14]
+  "D-03": 8
+  "E-FAPREF-38": 8
+  "F-FAPREF-01.k19a": [17, 18]
+  "F-FAPREF-01.k20e": 23
+  "T-01": [25, 32]
+  "FAPREF-LOGIC-02k": 33
 coverage:
   web: automated
 ---

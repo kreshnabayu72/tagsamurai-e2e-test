@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-018-helper-peringatan-akun-default-inactive
 title: "Helper peringatan akun default Inactive pada keempat Select akun"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,14 @@ sourceTc:
   - TC-FA-PREF-93
   - TC-FA-PREF-94
   - TC-FA-PREF-95
+sourceRules: ["F-FAPREF-04.k2a", "FI-02", "SET-05", "ST-06"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-04.k2a": [1, 3, 5, 7]
+  "FI-02": [2, 4, 6, 8]
+  "SET-05": 10
+  "ST-06": 11
 coverage:
   web: automated
 ---

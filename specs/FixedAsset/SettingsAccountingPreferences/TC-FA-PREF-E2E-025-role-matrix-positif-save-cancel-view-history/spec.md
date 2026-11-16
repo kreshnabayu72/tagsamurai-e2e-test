@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-025-role-matrix-positif-save-cancel-view-history
 title: "Role Matrix Positif: Read + Update Menjalankan Save dan Cancel, Read dan Read Only Membuka View History, Read Only Melihat Nilai Tanpa Masking"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,27 @@ sourceTc:
   - TC-FA-PREF-120
   - TC-FA-PREF-121
   - TC-FA-PREF-548
+sourceRules: ["F-FAPREF-01.k22a", "F-FAPREF-01.k22b", "T-01", "F-FAPREF-01.k13", "ST-01", "F-FAPREF-02.k3a", "F-FAPREF-02.k3b", "F-FAPREF-02.k3d", "§5#b1", "L-02a", "SET-02", "FAPREF-LOGIC-03a", "SET-05", "§4.1.1#p4", "SET-08", "SET-09", "§9.11#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k22a": 3
+  "F-FAPREF-01.k22b": 4
+  "T-01": 4
+  "F-FAPREF-01.k13": 5
+  "ST-01": [6, 12]
+  "F-FAPREF-02.k3a": 10
+  "F-FAPREF-02.k3b": 11
+  "F-FAPREF-02.k3d": 11
+  "§5#b1": [17, 24]
+  "L-02a": [18, 25]
+  "SET-02": 28
+  "FAPREF-LOGIC-03a": 28
+  "SET-05": 29
+  "§4.1.1#p4": [29, 30, 31]
+  "SET-08": 30
+  "SET-09": 31
+  "§9.11#b1": 32
 coverage:
   web: automated
 ---

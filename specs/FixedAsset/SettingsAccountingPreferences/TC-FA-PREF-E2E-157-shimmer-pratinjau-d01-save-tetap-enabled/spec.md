@@ -1,12 +1,22 @@
 ---
 id: TC-FA-PREF-E2E-157-shimmer-pratinjau-d01-save-tetap-enabled
 title: "Shimmer pratinjau dampak dialog D-01: tombol Save tetap Enabled saat hitungan dimuat"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-204
   - TC-FA-PREF-597
+sourceRules: ["§4.2b#b4", "F-FAPREF-01.k21d", "F-FAPREF-01.k21b", "T-01"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2b#b4": [4, 15]
+  "F-FAPREF-01.k21d": [5, 16]
+  "F-FAPREF-01.k21b": 7
+  "T-01": [8, 18]
+anchor: [9]
 coverage:
   web: automated
 ---

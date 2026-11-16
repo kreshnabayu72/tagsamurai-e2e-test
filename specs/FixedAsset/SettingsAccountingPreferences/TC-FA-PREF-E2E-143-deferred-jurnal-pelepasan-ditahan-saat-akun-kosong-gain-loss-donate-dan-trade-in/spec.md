@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-143-deferred-jurnal-pelepasan-ditahan-saat-akun-kosong-gain-loss-donate-dan-trade-in
 title: "[DEFERRED] Jurnal pelepasan ditahan saat akun kosong (Gain, Loss, Donate, Trade-in)"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,12 @@ sourceTc:
   - TC-FA-PREF-450
   - TC-FA-PREF-451
   - TC-FA-PREF-452
+sourceRules: ["FAPREF-LOGIC-06d", "FAPREF-LOGIC-06e"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-06d": [3, 9, 15, 21]
+  "FAPREF-LOGIC-06e": [6, 12, 18, 24]
 coverage:
   web: automated
 ---

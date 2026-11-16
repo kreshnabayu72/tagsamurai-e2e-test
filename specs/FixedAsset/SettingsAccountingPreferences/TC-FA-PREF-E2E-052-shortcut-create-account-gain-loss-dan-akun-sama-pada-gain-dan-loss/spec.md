@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-052-shortcut-create-account-gain-loss-dan-akun-sama-pada-gain-dan-loss
 title: "Select akun Default Gain dan Loss: akun sama dapat dipilih pada Gain dan Loss, serta shortcut + Create account membuat akun baru yang langsung terpilih"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-PREF-168
   - TC-FA-PREF-169
   - TC-FA-PREF-175
+sourceRules: ["FAPREF-LOGIC-06a", "V-04", "FAPREF-LOGIC-10f", "FI-03", "FAPREF-LOGIC-06i", "FI-05"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-06a": [3, 4]
+  "V-04": [5, 6]
+  "FAPREF-LOGIC-10f": 7
+  "FI-03": [10, 13, 14, 22, 25, 26]
+  "FAPREF-LOGIC-06i": [11, 23]
+  "FI-05": [16, 28]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-140-deferred-in-service-date-source-aset-terdaftar-sebelum-tepat-dan-setelah-waktu-save
 title: "[DEFERRED] Perubahan In-service Date Source terhadap aset terdaftar sebelum, tepat, dan setelah waktu Save"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,12 @@ sourceTc:
   - TC-FA-PREF-435
   - TC-FA-PREF-436
   - TC-FA-PREF-437
+sourceRules: ["FAPREF-LOGIC-04f", "FAPREF-LOGIC-04d"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-04f": [9, 18, 27]
+  "FAPREF-LOGIC-04d": 27
 coverage:
   web: automated
 ---

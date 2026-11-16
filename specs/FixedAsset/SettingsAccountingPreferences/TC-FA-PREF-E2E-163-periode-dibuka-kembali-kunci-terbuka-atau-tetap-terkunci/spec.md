@@ -1,12 +1,22 @@
 ---
 id: TC-FA-PREF-E2E-163-periode-dibuka-kembali-kunci-terbuka-atau-tetap-terkunci
 title: "Periode yang Dibuka Kembali: Kunci Terbuka Tanpa Posting Penyusutan dan Tetap Terkunci Bila Posting Sudah Ada"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-603
   - TC-FA-PREF-604
+sourceRules: ["SET-01", "FAPREF-LOGIC-02c", "FAPREF-LOGIC-02e", "ST-05", "FI-01"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-01": 2
+  "FAPREF-LOGIC-02c": [2, 9]
+  "FAPREF-LOGIC-02e": [3, 5, 7, 11]
+  "ST-05": [3, 5, 7, 9, 11, 13]
+  "FI-01": 9
 coverage:
   web: automated
 ---

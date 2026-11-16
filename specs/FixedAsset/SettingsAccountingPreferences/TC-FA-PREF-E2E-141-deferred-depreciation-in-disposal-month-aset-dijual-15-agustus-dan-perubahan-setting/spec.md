@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-141-deferred-depreciation-in-disposal-month-aset-dijual-15-agustus-dan-perubahan-setting
 title: "[DEFERRED] Depreciation in Disposal Month pada aset dijual 15 Agustus dan perubahan setting terhadap pelepasan terposting"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,12 @@ sourceTc:
   - TC-FA-PREF-442
   - TC-FA-PREF-443
   - TC-FA-PREF-444
+sourceRules: ["FAPREF-LOGIC-05b", "FAPREF-LOGIC-05c"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-05b": [4, 5, 9]
+  "FAPREF-LOGIC-05c": [16, 25]
 coverage:
   web: automated
 ---

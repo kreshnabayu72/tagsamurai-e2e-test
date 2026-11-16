@@ -1,12 +1,27 @@
 ---
 id: TC-FA-PREF-E2E-042-save-ditolak-akun-inactive-setelah-d-01-terbuka-dan-akun-tersimpan-inactive
 title: "Save ditolak akun Inactive setelah dialog D-01 terbuka; akun tersimpan Inactive tidak memblokir Save setting lain"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-218
   - TC-FA-PREF-556
+sourceRules: ["D-01", "PV-01", "PV-02", "F-FAPREF-01.k4c", "V-04", "FAPREF-LOGIC-06h", "E-FAPREF-04", "F-FAPREF-04.k2a", "F-FAPREF-01.k22b", "T-01"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": 4
+  "PV-01": 4
+  "PV-02": 4
+  "F-FAPREF-01.k4c": [7, 11, 12]
+  "V-04": [8, 9]
+  "FAPREF-LOGIC-06h": 11
+  "E-FAPREF-04": 13
+  "F-FAPREF-04.k2a": [19, 21]
+  "F-FAPREF-01.k22b": 20
+  "T-01": 20
 coverage:
   web: automated
 ---

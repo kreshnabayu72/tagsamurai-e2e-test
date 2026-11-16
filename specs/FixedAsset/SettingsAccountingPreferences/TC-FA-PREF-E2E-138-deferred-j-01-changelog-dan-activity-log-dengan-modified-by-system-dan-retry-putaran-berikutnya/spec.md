@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-138-deferred-j-01-changelog-dan-activity-log-dengan-modified-by-system-dan-retry-putaran-berikutnya
 title: "[DEFERRED] J-01: Changelog dan Activity Log dengan Modified By System serta Retry pada Putaran Berikutnya"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,36 @@ sourceTc:
   - TC-FA-PREF-425
   - TC-FA-PREF-426
   - TC-FA-PREF-428
+sourceRules: ["L-01a", "J-01", "§8#b3", "§4.1.4#p3", "§[F-FAPREF-03] Initialize Default Preferences#b3", "L-01b", "L-02d", "§8.3#p1", "F-FAPREF-03.k3", "R-04", "SET-01", "SET-12", "SET-02", "SET-03", "SET-04", "SET-05", "SET-06", "SET-08", "SET-09", "DOC-01", "DOC-02", "DOC-03", "DOC-04", "DOC-05", "DOC-06", "SET-11"]
+smoke: []
+dependsOn: []
+trace:
+  "L-01a": 6
+  "J-01": [6, 13]
+  "§8#b3": [7, 14]
+  "§4.1.4#p3": 7
+  "§[F-FAPREF-03] Initialize Default Preferences#b3": [7, 14]
+  "L-01b": [13, 14]
+  "L-02d": 14
+  "§8.3#p1": 14
+  "F-FAPREF-03.k3": [18, 20, 21, 25]
+  "R-04": [20, 21]
+  "SET-01": 25
+  "SET-12": 25
+  "SET-02": 25
+  "SET-03": 25
+  "SET-04": 25
+  "SET-05": 25
+  "SET-06": 25
+  "SET-08": 25
+  "SET-09": 25
+  "DOC-01": 25
+  "DOC-02": 25
+  "DOC-03": 25
+  "DOC-04": 25
+  "DOC-05": 25
+  "DOC-06": 25
+  "SET-11": 25
 coverage:
   web: automated
 ---

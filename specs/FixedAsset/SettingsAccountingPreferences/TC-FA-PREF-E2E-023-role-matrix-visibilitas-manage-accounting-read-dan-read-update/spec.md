@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-023-role-matrix-visibilitas-manage-accounting-read-dan-read-update
 title: "Role Matrix: Visibilitas Preferences untuk Manage accounting Read dan Read + Update, termasuk tombol tersembunyi"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-PREF-100
   - TC-FA-PREF-229
   - TC-FA-PREF-561
+sourceRules: ["§4.8#r1", "§9.3#r1", "§4.8#r2", "ST-07", "§4.8#r3", "ST-08", "§4.8#r4", "§4.8#r5", "§4.8#r6", "ST-01", "FAPREF-LOGIC-06i"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r1": [2, 25]
+  "§9.3#r1": 2
+  "§4.8#r2": [3, 19, 26]
+  "ST-07": [4, 27]
+  "§4.8#r3": [4, 27]
+  "ST-08": [6, 10, 12, 15, 17]
+  "§4.8#r4": [6, 10, 15, 28]
+  "§4.8#r5": [7, 13, 18, 29]
+  "§4.8#r6": [8, 20, 31]
+  "ST-01": 30
+  "FAPREF-LOGIC-06i": 31
 coverage:
   web: automated
 ---

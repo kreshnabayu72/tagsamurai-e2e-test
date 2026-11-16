@@ -1,12 +1,26 @@
 ---
 id: TC-FA-PREF-E2E-099-changelog-search-siklus-interaksi-dan-kecocokan-sebagian-pada-enam-kolom
 title: "Changelog Search: Siklus Interaksi, Kecocokan Sebagian pada Enam Kolom Searchable"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-298
   - TC-FA-PREF-299
+sourceRules: ["§4.1.4#b1", "§4.1.4#p2", "§4.1.4#r4", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r7"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#b1": 4
+  "§4.1.4#p2": [7, 15, 19]
+  "§4.1.4#r4": [9, 13, 21]
+  "§4.1.4#r2": 21
+  "§4.1.4#r3": 21
+  "§4.1.4#r5": 21
+  "§4.1.4#r6": 21
+  "§4.1.4#r7": 21
+anchor: [3, 6, 11, 12, 18]
 coverage:
   web: automated
 ---

@@ -1,12 +1,34 @@
 ---
 id: TC-FA-PREF-E2E-119-log-tiga-surface-save-default-capitalization-threshold-dan-in-service-date-source
 title: "Log tiga surface: Save perubahan Default Capitalization Threshold dan In-service Date Source tercatat di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-364
   - TC-FA-PREF-365
+sourceRules: ["D-01", "PV-01", "T-01", "§3.1#b6", "FAPREF-LOGIC-03e", "L-02a", "L-02e", "§4.1.4#r15", "L-02j", "L-02b", "§8.2#p1", "§8.2#p2", "L-02c", "§8.3#p1", "SET-03", "§8#b1", "L-02f"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": 4
+  "PV-01": 4
+  "T-01": [7, 28]
+  "§3.1#b6": [8, 29]
+  "FAPREF-LOGIC-03e": 8
+  "L-02a": [10, 31]
+  "L-02e": [10, 31]
+  "§4.1.4#r15": 11
+  "L-02j": [11, 18, 22]
+  "L-02b": [17, 38]
+  "§8.2#p1": [18, 19, 39, 40]
+  "§8.2#p2": [18, 39]
+  "L-02c": [21, 42]
+  "§8.3#p1": [22, 43]
+  "SET-03": 32
+  "§8#b1": 32
+  "L-02f": [32, 39, 43]
 coverage:
   web: automated
 ---

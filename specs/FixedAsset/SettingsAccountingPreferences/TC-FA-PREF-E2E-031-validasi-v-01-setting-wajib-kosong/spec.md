@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-031-validasi-v-01-setting-wajib-kosong
 title: "Validasi V-01 Setting Wajib Kosong: Save Menampilkan Caption dan Titik Peringatan"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-PREF-126
   - TC-FA-PREF-127
   - TC-FA-PREF-550
+sourceRules: ["V-01", "ST-01", "FAPREF-LOGIC-10f", "§3.1#b3", "F-FAPREF-01.k2b", "E-FAPREF-02", "ST-04", "F-FAPREF-01.k2c", "F-FAPREF-01.k2a"]
+smoke: []
+dependsOn: []
+trace:
+  "V-01": [3, 5, 11, 19, 28, 29, 30, 31, 32]
+  "ST-01": 6
+  "FAPREF-LOGIC-10f": 6
+  "§3.1#b3": [10, 18, 27]
+  "F-FAPREF-01.k2b": [11, 19, 28, 29, 30, 31, 32]
+  "E-FAPREF-02": [11, 19]
+  "ST-04": [13, 14, 21, 34]
+  "F-FAPREF-01.k2c": [13, 21]
+  "F-FAPREF-01.k2a": 22
+anchor: [4, 12, 20, 33]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-069-d03-tampil-saat-kunci-terjadi-setelah-form-dibuka
 title: "D-03 Tampil Saat Kunci Terjadi Setelah Form Dibuka (Posting Pertama, Soft Closed, Closed)"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-PREF-251
   - TC-FA-PREF-252
   - TC-FA-PREF-253
+sourceRules: ["D-03", "E-FAPREF-06", "ST-27", "§4.2b#r12"]
+smoke: []
+dependsOn: []
+trace:
+  "D-03": [5, 6, 7, 16, 17, 18, 27, 28, 29]
+  "E-FAPREF-06": [5, 16, 27]
+  "ST-27": [8, 19, 30]
+  "§4.2b#r12": [9, 20, 31]
 coverage:
   web: automated
 ---

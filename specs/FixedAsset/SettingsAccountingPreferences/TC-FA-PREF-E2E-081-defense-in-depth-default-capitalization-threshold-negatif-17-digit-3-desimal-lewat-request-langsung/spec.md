@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-081-defense-in-depth-default-capitalization-threshold-negatif-17-digit-3-desimal-lewat-request-langsung
 title: "Defense-in-Depth: Default Capitalization Threshold Negatif, 17 Digit, dan 3 Desimal Ditolak Server Lewat Request Langsung"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -11,6 +12,14 @@ sourceTc:
   - TC-FA-PREF-526
   - TC-FA-PREF-527
   - TC-FA-PREF-528
+sourceRules: ["V-02", "E-FAPREF-03", "RG-02", "V-03"]
+smoke: []
+dependsOn: []
+trace:
+  "V-02": [3, 19]
+  "E-FAPREF-03": [5, 10, 15, 21, 26, 31]
+  "RG-02": [6, 11, 16, 22, 27, 32]
+  "V-03": [8, 13, 24, 29]
 coverage:
   web: automated
 ---

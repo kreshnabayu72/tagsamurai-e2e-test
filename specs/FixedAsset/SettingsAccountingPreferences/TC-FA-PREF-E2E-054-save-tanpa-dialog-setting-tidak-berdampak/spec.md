@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-054-save-tanpa-dialog-setting-tidak-berdampak
 title: "Save Tanpa Dialog: In-service Date Source, Default Capitalization Offset, Found Asset Credit Account, Journal Grouping"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-PREF-178
   - TC-FA-PREF-179
   - TC-FA-PREF-180
+sourceRules: ["T-01", "F-FAPREF-01.k22b", "F-FAPREF-01.k22a", "FAPREF-LOGIC-10j", "SET-03", "FAPREF-LOGIC-10d", "§3.1#b6", "ST-01", "SET-08", "SET-09", "FAPREF-LOGIC-09c"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [4, 15, 23, 31]
+  "F-FAPREF-01.k22b": [4, 15, 23, 31]
+  "F-FAPREF-01.k22a": [5, 16, 24, 32]
+  "FAPREF-LOGIC-10j": [5, 16, 24, 32]
+  "SET-03": 6
+  "FAPREF-LOGIC-10d": 7
+  "§3.1#b6": [10, 18, 26, 34]
+  "ST-01": [11, 19, 27, 35]
+  "SET-08": 17
+  "SET-09": 25
+  "FAPREF-LOGIC-09c": 33
+anchor: [9]
 coverage:
   web: automated
 ---

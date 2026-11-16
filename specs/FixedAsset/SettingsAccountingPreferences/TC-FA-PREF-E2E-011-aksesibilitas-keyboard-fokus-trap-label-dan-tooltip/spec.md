@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-011-aksesibilitas-keyboard-fokus-trap-label-dan-tooltip
 title: "Aksesibilitas: navigasi keyboard, fokus ter-trap dialog D-01 dan modal Changelog, label titik peringatan, tooltip keyboard"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,20 @@ sourceTc:
   - TC-FA-PREF-63
   - TC-FA-PREF-64
   - TC-FA-PREF-65
+sourceRules: ["§4.5#b1", "§4.5#b2", "D-01", "F-FAPREF-01.k21c", "§4.2a#p1", "§4.5#b4", "§4.1.2#p1", "§4.5#b3", "ST-04"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b1": [2, 5, 8, 15, 22]
+  "§4.5#b2": [13, 20]
+  "D-01": 13
+  "F-FAPREF-01.k21c": 16
+  "§4.2a#p1": 23
+  "§4.5#b4": 25
+  "§4.1.2#p1": 25
+  "§4.5#b3": [27, 28]
+  "ST-04": [27, 28]
+anchor: [3]
 coverage:
   web: automated
 ---

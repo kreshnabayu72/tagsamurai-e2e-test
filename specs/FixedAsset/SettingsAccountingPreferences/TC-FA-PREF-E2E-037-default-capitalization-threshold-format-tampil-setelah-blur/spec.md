@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-037-default-capitalization-threshold-format-tampil-setelah-blur
 title: "Default Capitalization Threshold: Format Tampil Setelah Blur, Desimal, dan Digit Desimal Ketiga Diblok"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-PREF-139
   - TC-FA-PREF-140
   - TC-FA-PREF-141
+sourceRules: ["FAPREF-LOGIC-03e", "V-02", "V-03"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-03e": [2, 4, 8, 13, 16, 18]
+  "V-02": [5, 9]
+  "V-03": [11, 14]
 coverage:
   web: automated
 ---

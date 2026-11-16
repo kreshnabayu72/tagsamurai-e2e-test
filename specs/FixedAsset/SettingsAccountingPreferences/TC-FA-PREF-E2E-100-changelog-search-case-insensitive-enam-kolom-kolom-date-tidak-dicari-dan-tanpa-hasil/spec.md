@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-100-changelog-search-case-insensitive-enam-kolom-kolom-date-tidak-dicari-dan-tanpa-hasil
 title: "Changelog Search: Case-Insensitive pada Enam Kolom, Kolom Date Tidak Dicari, dan Tanpa Hasil"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-PREF-300
   - TC-FA-PREF-301
   - TC-FA-PREF-302
+sourceRules: ["§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r7", "ST-23", "§4.1.4#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r2": 3
+  "§4.1.4#r3": 3
+  "§4.1.4#r4": 3
+  "§4.1.4#r5": 3
+  "§4.1.4#r6": 3
+  "§4.1.4#r7": 3
+  "ST-23": [6, 10]
+  "§4.1.4#r1": 7
 coverage:
   web: automated
 ---

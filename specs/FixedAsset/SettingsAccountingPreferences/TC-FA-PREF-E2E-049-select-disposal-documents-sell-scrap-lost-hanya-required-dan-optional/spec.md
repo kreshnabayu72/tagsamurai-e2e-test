@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-049-select-disposal-documents-sell-scrap-lost-hanya-required-dan-optional
 title: "Select Disposal Documents jenis Sell, Scrap, dan Lost hanya berisi Required dan Optional dan tidak dapat dikosongkan"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-PREF-158
   - TC-FA-PREF-159
   - TC-FA-PREF-160
+sourceRules: ["DOC-01", "FAPREF-LOGIC-07h", "SET-07", "V-07", "DOC-02", "DOC-03"]
+smoke: []
+dependsOn: []
+trace:
+  "DOC-01": 3
+  "FAPREF-LOGIC-07h": [4, 5, 14, 15, 24, 25]
+  "SET-07": [7, 9, 17, 19, 27, 29]
+  "V-07": [10, 20, 30]
+  "DOC-02": 13
+  "DOC-03": 23
 coverage:
   web: automated
 ---

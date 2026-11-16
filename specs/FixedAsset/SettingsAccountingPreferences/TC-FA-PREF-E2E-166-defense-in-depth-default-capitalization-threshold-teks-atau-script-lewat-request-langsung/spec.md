@@ -1,12 +1,23 @@
 ---
 id: TC-FA-PREF-E2E-166-defense-in-depth-default-capitalization-threshold-teks-atau-script-lewat-request-langsung
 title: "Defense-in-Depth: Default Capitalization Threshold Berisi Teks atau Script Ditolak Server dan Tidak Tercatat di Changelog"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-529
   - TC-FA-PREF-530
+sourceRules: ["F-FAPREF-01.k3", "§9.9#r3", "L-02a", "L-02b", "L-02c", "§4.1#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k3": [3, 5, 15, 17]
+  "§9.9#r3": [3, 15]
+  "L-02a": [6, 11, 18, 23]
+  "L-02b": [7, 19]
+  "L-02c": [8, 20]
+  "§4.1#r2": [10, 22]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-104-changelog-filter-kotak-cari-dropdown-chip-uncheck-dan-tutup-panel-tanpa-apply
 title: "Changelog Filter: kotak cari di dropdown, hapus chip, uncheck opsi, tutup panel tanpa Apply"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-313
   - TC-FA-PREF-314
   - TC-FA-PREF-315
+sourceRules: ["§4.1.4#r4", "§4.1.4#r3", "§4.1.4#p2", "§4.1.4#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r4": [5, 6]
+  "§4.1.4#r3": [12, 14, 15, 17, 18, 23, 24]
+  "§4.1.4#p2": 29
+  "§4.1.4#r2": 31
+anchor: [8]
 coverage:
   web: automated
 ---

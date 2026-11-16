@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-177-tooltip-opsi-dan-tanpa-shortcut-select-default-disposal-proceeds-account
 title: "Select Default Disposal Proceeds Account (SET-13): tooltip, opsi akun Disposal Proceeds, dan tanpa shortcut Create account"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-PREF-622
   - TC-FA-PREF-623
   - TC-FA-PREF-624
+sourceRules: ["§4.1.2#p1", "§4.1.1#p4", "FAPREF-LOGIC-06j", "FI-04", "FI-05", "FAPREF-LOGIC-06i"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.2#p1": 4
+  "§4.1.1#p4": 6
+  "FAPREF-LOGIC-06j": 6
+  "FI-04": 8
+  "FI-05": [8, 9, 10, 16]
+  "FAPREF-LOGIC-06i": [13, 17]
 coverage:
   web: automated
 ---

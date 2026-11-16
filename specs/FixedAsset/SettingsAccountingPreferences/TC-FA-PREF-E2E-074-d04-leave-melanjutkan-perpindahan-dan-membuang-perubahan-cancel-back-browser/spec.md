@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-074-d04-leave-melanjutkan-perpindahan-dan-membuang-perubahan-cancel-back-browser
 title: "D-04: [Leave] Melanjutkan Perpindahan (Tab, Sidebar, Back Browser) dan Membuang Perubahan; [Cancel] pada Back Browser"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-PREF-262
   - TC-FA-PREF-613
   - TC-FA-PREF-614
+sourceRules: ["F-FAPREF-02.k1b", "ST-01", "FAPREF-LOGIC-10f", "§7.2#p1", "§4.2b#b6", "F-FAPREF-02.k1c"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-02.k1b": [4, 6, 12, 14, 22, 24]
+  "ST-01": [7, 33]
+  "FAPREF-LOGIC-10f": 7
+  "§7.2#p1": [8, 15, 25]
+  "§4.2b#b6": 22
+  "F-FAPREF-02.k1c": [31, 32]
 coverage:
   web: automated
 ---

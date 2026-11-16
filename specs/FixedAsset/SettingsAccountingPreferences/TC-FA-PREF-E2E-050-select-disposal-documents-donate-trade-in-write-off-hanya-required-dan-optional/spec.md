@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-050-select-disposal-documents-donate-trade-in-write-off-hanya-required-dan-optional
 title: "Select Disposal Documents jenis Donate, Trade-in, dan Write-off hanya berisi Required dan Optional dan tidak dapat dikosongkan"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-PREF-161
   - TC-FA-PREF-162
   - TC-FA-PREF-163
+sourceRules: ["DOC-04", "FAPREF-LOGIC-07h", "DOC-05", "DOC-06"]
+smoke: []
+dependsOn: []
+trace:
+  "DOC-04": [3, 7, 9]
+  "FAPREF-LOGIC-07h": [4, 5, 10, 14, 15, 20, 24, 25, 30]
+  "DOC-05": [13, 17, 19]
+  "DOC-06": [23, 27, 29]
 coverage:
   web: automated
 ---

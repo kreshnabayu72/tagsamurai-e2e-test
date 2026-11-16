@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-076-muat-ulang-f5-dan-tutup-tab-konfirmasi-bawaan-browser-dan-d04
 title: "Muat Ulang F5 dan Tutup Tab: Konfirmasi Bawaan Browser Hanya untuk Form Dirty dan Tidak Memunculkan D-04"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-PREF-272
   - TC-FA-PREF-273
   - TC-FA-PREF-575
+sourceRules: ["§4.2b#b5", "T-01", "F-FAPREF-01.k13", "D-04", "F-FAPREF-02.k1b"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2b#b5": 7
+  "T-01": 16
+  "F-FAPREF-01.k13": 19
+  "D-04": 23
+  "F-FAPREF-02.k1b": [25, 27]
+anchor: [2, 5, 11, 18]
 coverage:
   web: automated
 ---

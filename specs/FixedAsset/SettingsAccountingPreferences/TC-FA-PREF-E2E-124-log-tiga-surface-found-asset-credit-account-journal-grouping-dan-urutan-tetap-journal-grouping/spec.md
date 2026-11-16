@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-124-log-tiga-surface-found-asset-credit-account-journal-grouping-dan-urutan-tetap-journal-grouping
 title: "Log Tiga Surface: Found Asset Credit Account, Journal Grouping, dan Urutan Tetap Journal Grouping"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,36 @@ sourceTc:
   - TC-FA-PREF-376
   - TC-FA-PREF-377
   - TC-FA-PREF-388
+sourceRules: ["T-01", "§3.1#b6", "L-02a", "L-02e", "§4.1.4#r1", "§4.1.4#r2", "§8#r4", "§4.1.4#r3", "§8#b1", "§4.1.4#r4", "§4.1.4#r7", "§4.1.4#p1", "SET-09", "L-02i", "L-02h", "L-02b", "§8.2#r1", "§8.2#p2", "§8.2#p1", "L-02c", "L-02d", "§8.3#p1", "SET-11", "L-02f", "FAPREF-LOGIC-10j", "§4.2b#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [4, 22, 40]
+  "§3.1#b6": [5, 23]
+  "L-02a": [8, 9, 26, 27, 43, 44]
+  "L-02e": [8, 12, 16, 26, 30, 34, 43]
+  "§4.1.4#r1": [9, 27]
+  "§4.1.4#r2": [9, 27, 44]
+  "§8#r4": [9, 27, 44]
+  "§4.1.4#r3": [9, 27, 44]
+  "§8#b1": [9, 27, 44]
+  "§4.1.4#r4": [9, 27, 44]
+  "§4.1.4#r7": [9, 17, 27, 35]
+  "§4.1.4#p1": [9, 27, 44]
+  "SET-09": [9, 13, 17]
+  "L-02i": [9, 13, 17]
+  "L-02h": [9, 13, 17]
+  "L-02b": [12, 13, 30, 31]
+  "§8.2#r1": [13, 17, 31, 35]
+  "§8.2#p2": [13, 17, 31, 35]
+  "§8.2#p1": [14, 32]
+  "L-02c": [16, 17, 34, 35]
+  "L-02d": [17, 35]
+  "§8.3#p1": [17, 35]
+  "SET-11": [27, 31, 35, 44]
+  "L-02f": [27, 31, 35, 44]
+  "FAPREF-LOGIC-10j": 41
+  "§4.2b#b1": 41
 coverage:
   web: automated
 ---

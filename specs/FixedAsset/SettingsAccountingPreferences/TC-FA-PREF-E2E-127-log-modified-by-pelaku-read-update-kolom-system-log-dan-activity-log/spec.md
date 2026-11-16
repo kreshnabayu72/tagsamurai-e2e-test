@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-127-log-modified-by-pelaku-read-update-kolom-system-log-dan-activity-log
 title: "Log: Kolom System Log dan Activity Log serta Modified By Pelaku Manage accounting - Read + Update"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,34 @@ sourceTc:
   - TC-FA-PREF-383
   - TC-FA-PREF-384
   - TC-FA-PREF-385
+sourceRules: ["L-02b", "L-02e", "§8.2#p1", "§8.2#r1", "§8.2#p2", "SET-02", "L-02j", "L-02c", "§8.3#p1", "L-02d", "§4.1.4#r7", "T-01", "FAPREF-LOGIC-10j", "§4.2b#b1", "L-02a", "§4.1.4#r1", "§4.1.4#r2", "§8#r4", "§4.1.4#r3", "§8#b1", "§4.1.4#r4", "§4.1.4#p1", "SET-03", "L-02f"]
+smoke: []
+dependsOn: []
+trace:
+  "L-02b": [7, 10, 35, 36]
+  "L-02e": [7, 18, 31, 35, 39]
+  "§8.2#p1": [8, 9, 37]
+  "§8.2#r1": [10, 20, 36, 40]
+  "§8.2#p2": [10, 20, 36, 40]
+  "SET-02": [10, 20]
+  "L-02j": [10, 20]
+  "L-02c": [18, 20, 39, 40]
+  "§8.3#p1": [19, 20, 40]
+  "L-02d": [20, 40]
+  "§4.1.4#r7": [20, 32, 40]
+  "T-01": 27
+  "FAPREF-LOGIC-10j": 28
+  "§4.2b#b1": 28
+  "L-02a": [31, 32]
+  "§4.1.4#r1": 32
+  "§4.1.4#r2": 32
+  "§8#r4": 32
+  "§4.1.4#r3": 32
+  "§8#b1": 32
+  "§4.1.4#r4": 32
+  "§4.1.4#p1": 32
+  "SET-03": [32, 36, 40]
+  "L-02f": [32, 36, 40]
 coverage:
   web: automated
 ---

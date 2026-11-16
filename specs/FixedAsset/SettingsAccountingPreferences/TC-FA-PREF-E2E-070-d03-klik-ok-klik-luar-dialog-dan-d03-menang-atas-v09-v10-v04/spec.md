@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-070-d03-klik-ok-klik-luar-dialog-dan-d03-menang-atas-v09-v10-v04
 title: "D-03: Klik [OK] Memuat Ulang Form, Klik Luar Tidak Menutup, D-03 Menang atas V-09, V-10, V-04"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-PREF-254
   - TC-FA-PREF-255
   - TC-FA-PREF-256
+sourceRules: ["D-03", "ST-05", "F-FAPREF-01.k6d", "ST-01", "E-FAPREF-06", "§6#p2", "ST-27"]
+smoke: []
+dependsOn: []
+trace:
+  "D-03": [7, 19, 29, 30]
+  "ST-05": [8, 9]
+  "F-FAPREF-01.k6d": [8, 9, 10]
+  "ST-01": 11
+  "E-FAPREF-06": 29
+  "§6#p2": 31
+  "ST-27": 32
+anchor: [18]
 coverage:
   web: automated
 ---

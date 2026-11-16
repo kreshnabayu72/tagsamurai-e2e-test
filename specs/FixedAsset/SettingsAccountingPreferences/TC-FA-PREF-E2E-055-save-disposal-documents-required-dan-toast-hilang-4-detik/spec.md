@@ -1,12 +1,30 @@
 ---
 id: TC-FA-PREF-E2E-055-save-disposal-documents-required-dan-toast-hilang-4-detik
 title: "Save Semua Jenis Disposal Documents Required; Toast Sukses Hilang Otomatis 4 Detik"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-177
   - TC-FA-PREF-182
+sourceRules: ["T-01", "F-FAPREF-01.k22b", "F-FAPREF-01.k22a", "FAPREF-LOGIC-10j", "DOC-01", "DOC-02", "DOC-03", "DOC-04", "DOC-05", "DOC-06", "§3.1#b6", "ST-01"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [8, 21]
+  "F-FAPREF-01.k22b": [8, 21]
+  "F-FAPREF-01.k22a": 9
+  "FAPREF-LOGIC-10j": 9
+  "DOC-01": 10
+  "DOC-02": 11
+  "DOC-03": 12
+  "DOC-04": 13
+  "DOC-05": 14
+  "DOC-06": 15
+  "§3.1#b6": 16
+  "ST-01": 17
+anchor: [23]
 coverage:
   web: automated
 ---

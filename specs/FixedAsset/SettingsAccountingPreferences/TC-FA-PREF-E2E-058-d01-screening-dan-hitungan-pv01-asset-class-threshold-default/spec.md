@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-058-d01-screening-dan-hitungan-pv01-asset-class-threshold-default
 title: "D-01 Screening dan Hitungan PV-01 (Asset Class Memakai Threshold Default)"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-PREF-184
   - TC-FA-PREF-185
   - TC-FA-PREF-186
+sourceRules: ["D-01", "PV-01", "F-FAPREF-01.k21c"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [3, 5, 6, 12, 14, 15, 20, 22, 23, 28, 30, 31]
+  "PV-01": [4, 13, 21, 29]
+  "F-FAPREF-01.k21c": 8
+anchor: [7]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-064-d01-esc-klik-luar-dialog-dan-save-campuran
 title: "D-01 Esc, Klik Luar Dialog Tidak Menutup, Save Campuran Lewat D-01"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-PREF-199
   - TC-FA-PREF-202
   - TC-FA-PREF-203
+sourceRules: ["D-01", "PV-01", "FAPREF-LOGIC-10k", "§4.2b#b1", "F-FAPREF-01.k21b", "T-01", "§3.1#b6", "ST-01", "FAPREF-LOGIC-03e", "§4.5#b1", "§7.2#p1", "F-FAPREF-01.k21c"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": 4
+  "PV-01": 4
+  "FAPREF-LOGIC-10k": 4
+  "§4.2b#b1": 5
+  "F-FAPREF-01.k21b": 7
+  "T-01": 8
+  "§3.1#b6": [9, 12]
+  "ST-01": 10
+  "FAPREF-LOGIC-03e": 11
+  "§4.5#b1": 17
+  "§7.2#p1": [18, 25]
+  "F-FAPREF-01.k21c": 19
+anchor: [24]
 coverage:
   web: automated
 ---

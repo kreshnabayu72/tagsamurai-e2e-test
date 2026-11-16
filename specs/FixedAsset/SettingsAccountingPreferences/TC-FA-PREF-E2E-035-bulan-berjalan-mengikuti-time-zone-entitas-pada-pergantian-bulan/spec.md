@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-035-bulan-berjalan-mengikuti-time-zone-entitas-pada-pergantian-bulan
 title: "Bulan Berjalan First Accounting Period Mengikuti Time Zone Entitas (Jakarta dan Honolulu) pada Pergantian Bulan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-PREF-151
   - TC-FA-PREF-599
   - TC-FA-PREF-600
+sourceRules: ["FAPREF-LOGIC-02m", "FI-06", "FAPREF-LOGIC-02i"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-02m": [4, 11, 18, 23]
+  "FI-06": [6, 12, 17]
+  "FAPREF-LOGIC-02i": 24
 coverage:
   web: automated
 ---

@@ -1,12 +1,26 @@
 ---
 id: TC-FA-PREF-E2E-057-save-campuran-dan-berlaku-langsung-tanpa-approval-notifikasi
 title: "Save Campuran Setting Berdampak dan Tidak Berdampak; Save Berlaku Langsung Tanpa Approval dan Notifikasi"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-583
   - TC-FA-PREF-593
+sourceRules: ["D-01", "PV-01", "FAPREF-LOGIC-10k", "T-01", "F-FAPREF-01.k11", "F-FAPREF-01.k13", "FAPREF-LOGIC-09c", "FAPREF-LOGIC-10d"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [5, 7, 8, 20, 22, 23]
+  "PV-01": [6, 21]
+  "FAPREF-LOGIC-10k": 9
+  "T-01": [11, 25]
+  "F-FAPREF-01.k11": 13
+  "F-FAPREF-01.k13": 14
+  "FAPREF-LOGIC-09c": 15
+  "FAPREF-LOGIC-10d": [26, 27]
+anchor: [29, 31, 33, 34]
 coverage:
   web: automated
 ---

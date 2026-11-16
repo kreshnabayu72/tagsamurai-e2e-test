@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-103-changelog-filter-logika-or-dan-and-rentang-date-inklusif-dan-filter-section
 title: "Changelog Filter: logika OR dalam dropdown, AND antar dropdown, rentang Date inklusif, filter Section menyaring baris tanpa Section"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-309
   - TC-FA-PREF-310
   - TC-FA-PREF-311
+sourceRules: ["§4.1.4#r3", "§4.1.4#r2", "§4.1.4#r7", "§4.1.4#r1", "§4.1.4#r16"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r3": [5, 6, 28, 29]
+  "§4.1.4#r2": [13, 14]
+  "§4.1.4#r7": [13, 14]
+  "§4.1.4#r1": [20, 22]
+  "§4.1.4#r16": 29
 coverage:
   web: automated
 ---

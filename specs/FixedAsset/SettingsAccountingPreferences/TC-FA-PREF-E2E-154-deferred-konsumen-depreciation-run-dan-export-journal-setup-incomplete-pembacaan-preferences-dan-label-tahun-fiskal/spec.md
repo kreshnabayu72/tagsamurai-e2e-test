@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-154-deferred-konsumen-depreciation-run-dan-export-journal-setup-incomplete-pembacaan-preferences-dan-label-tahun-fiskal
 title: "[DEFERRED] Konsumen: Depreciation Run dan Export Journal terblokir saat Setup Incomplete, pembacaan Preferences, dan label tahun fiskal"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,20 @@ sourceTc:
   - TC-FA-PREF-507
   - TC-FA-PREF-509
   - TC-FA-PREF-510
+sourceRules: ["F-FAPREF-06.k1b", "F-FAPREF-06.k1c", "F-FAPREF-06.k2", "D-01", "PV-03", "F-FAPREF-04.k1", "§[F-FAPREF-04] Provide Preferences to Consumers#p1", "PV-04", "PV-05", "FAPREF-LOGIC-02o"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-06.k1b": 3
+  "F-FAPREF-06.k1c": 5
+  "F-FAPREF-06.k2": [8, 10]
+  "D-01": [15, 27]
+  "PV-03": 15
+  "F-FAPREF-04.k1": 19
+  "§[F-FAPREF-04] Provide Preferences to Consumers#p1": 22
+  "PV-04": 27
+  "PV-05": 27
+  "FAPREF-LOGIC-02o": 33
 coverage:
   web: automated
 ---

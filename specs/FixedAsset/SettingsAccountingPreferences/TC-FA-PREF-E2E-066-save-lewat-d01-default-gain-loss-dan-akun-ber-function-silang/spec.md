@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-066-save-lewat-d01-default-gain-loss-dan-akun-ber-function-silang
 title: "Save Lewat D-01: Default Gain, Default Loss, Akun Ber-function Silang"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-PREF-210
   - TC-FA-PREF-211
   - TC-FA-PREF-212
+sourceRules: ["PV-02", "F-FAPREF-01.k21b", "T-01", "SET-05", "§3.1#b6", "ST-01", "SET-06", "FAPREF-LOGIC-06a"]
+smoke: []
+dependsOn: []
+trace:
+  "PV-02": [4, 14]
+  "F-FAPREF-01.k21b": [6, 16, 26]
+  "T-01": [7, 17, 27]
+  "SET-05": [8, 28]
+  "§3.1#b6": [9, 19]
+  "ST-01": [10, 20]
+  "SET-06": [18, 29]
+  "FAPREF-LOGIC-06a": [28, 29]
 coverage:
   web: automated
 ---

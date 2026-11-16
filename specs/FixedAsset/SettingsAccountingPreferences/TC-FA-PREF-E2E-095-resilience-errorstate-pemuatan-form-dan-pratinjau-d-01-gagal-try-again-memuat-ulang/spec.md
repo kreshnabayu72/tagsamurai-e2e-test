@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-095-resilience-errorstate-pemuatan-form-dan-pratinjau-d-01-gagal-try-again-memuat-ulang
 title: "Resilience ErrorState: Pemuatan Form dan Pratinjau D-01 Gagal, Try Again Memuat Ulang"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-PREF-75
   - TC-FA-PREF-205
   - TC-FA-PREF-206
+sourceRules: ["ST-22", "ST-03", "§4.2b#b4", "F-FAPREF-01.k21d", "F-FAPREF-01.k21b", "T-01", "F-FAPREF-01.k22b", "ST-21", "PV-01"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-22": [3, 14, 24]
+  "ST-03": [3, 4]
+  "§4.2b#b4": [14, 24, 26]
+  "F-FAPREF-01.k21d": 15
+  "F-FAPREF-01.k21b": 17
+  "T-01": 18
+  "F-FAPREF-01.k22b": 18
+  "ST-21": 26
+  "PV-01": 28
+anchor: [8, 9]
 coverage:
   web: automated
 ---

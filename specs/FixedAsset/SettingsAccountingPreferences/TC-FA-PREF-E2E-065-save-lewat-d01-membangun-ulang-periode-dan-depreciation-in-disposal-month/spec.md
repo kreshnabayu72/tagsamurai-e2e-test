@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-065-save-lewat-d01-membangun-ulang-periode-dan-depreciation-in-disposal-month
 title: "Save Lewat D-01 Membangun Ulang Periode: Fiscal Year Start, First Accounting Period, Depreciation in Disposal Month"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-PREF-207
   - TC-FA-PREF-208
   - TC-FA-PREF-209
+sourceRules: ["PV-04", "PV-05", "F-FAPREF-01.k21b", "T-01", "F-FAPREF-01.k20a", "§3.1#b6", "ST-01", "PV-03"]
+smoke: []
+dependsOn: []
+trace:
+  "PV-04": [3, 14]
+  "PV-05": [3, 15]
+  "F-FAPREF-01.k21b": [5, 17, 29]
+  "T-01": [6, 18, 30]
+  "F-FAPREF-01.k20a": 7
+  "§3.1#b6": [8, 9, 19, 20, 21, 31, 32]
+  "ST-01": [10, 22, 33]
+  "PV-03": 27
 coverage:
   web: automated
 ---

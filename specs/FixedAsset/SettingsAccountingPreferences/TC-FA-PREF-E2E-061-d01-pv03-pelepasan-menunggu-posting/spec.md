@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-061-d01-pv03-pelepasan-menunggu-posting
 title: "D-01 PV-03: Pelepasan Menunggu Posting (Jamak, Tunggal, Nol)"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,12 @@ sourceTc:
   - TC-FA-PREF-191
   - TC-FA-PREF-192
   - TC-FA-PREF-193
+sourceRules: ["D-01", "PV-03"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [4, 6, 7, 12, 14, 15, 20, 22, 23]
+  "PV-03": [5, 13, 21]
 coverage:
   web: automated
 ---

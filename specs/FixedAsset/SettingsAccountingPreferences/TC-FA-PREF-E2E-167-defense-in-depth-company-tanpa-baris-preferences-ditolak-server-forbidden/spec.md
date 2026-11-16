@@ -1,12 +1,21 @@
 ---
 id: TC-FA-PREF-E2E-167-defense-in-depth-company-tanpa-baris-preferences-ditolak-server-forbidden
 title: "Defense-in-depth: Company Tanpa Baris Preferences Ditolak Server dengan Forbidden pada Request Langsung dan Pembukaan Tab"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-276
   - TC-FA-PREF-562
+sourceRules: ["F-FAPREF-02.k4", "FAPREF-LOGIC-01b", "E-FAPREF-12"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-02.k4": 2
+  "FAPREF-LOGIC-01b": 4
+  "E-FAPREF-12": [6, 9]
+anchor: [7, 8]
 coverage:
   web: automated
 ---

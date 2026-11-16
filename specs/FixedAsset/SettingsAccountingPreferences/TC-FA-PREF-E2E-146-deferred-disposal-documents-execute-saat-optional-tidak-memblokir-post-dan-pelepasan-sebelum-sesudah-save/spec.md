@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-146-deferred-disposal-documents-execute-saat-optional-tidak-memblokir-post-dan-pelepasan-sebelum-sesudah-save
 title: "[DEFERRED] Disposal Documents: Execute saat Optional, tidak memblokir Post, pelepasan sebelum dan sesudah Save"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-PREF-468
   - TC-FA-PREF-469
   - TC-FA-PREF-470
+sourceRules: ["FAPREF-LOGIC-07d", "FAPREF-LOGIC-07e", "T-01", "V-07", "FAPREF-LOGIC-07c", "FAPREF-LOGIC-07g"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-07d": [5, 8, 9]
+  "FAPREF-LOGIC-07e": [12, 13]
+  "T-01": [18, 27]
+  "V-07": 21
+  "FAPREF-LOGIC-07c": [21, 22]
+  "FAPREF-LOGIC-07g": [29, 30, 31]
 coverage:
   web: automated
 ---

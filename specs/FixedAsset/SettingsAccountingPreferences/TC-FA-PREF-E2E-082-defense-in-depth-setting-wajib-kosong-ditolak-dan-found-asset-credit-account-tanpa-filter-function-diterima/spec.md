@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-082-defense-in-depth-setting-wajib-kosong-ditolak-dan-found-asset-credit-account-tanpa-filter-function-diterima
 title: "Defense-in-Depth: Setting Wajib Kosong Ditolak Server Lewat Request Langsung dan Found Asset Credit Account Active Tanpa Filter Function Diterima"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -11,6 +12,16 @@ sourceTc:
   - TC-FA-PREF-534
   - TC-FA-PREF-535
   - TC-FA-PREF-541
+sourceRules: ["V-01", "E-FAPREF-02", "RG-02", "E-FAPREF-40", "V-04", "FAPREF-LOGIC-08e"]
+smoke: []
+dependsOn: []
+trace:
+  "V-01": [3, 8, 13, 18, 23]
+  "E-FAPREF-02": [5, 10, 15, 20, 25]
+  "RG-02": [6, 11, 16, 21, 26]
+  "E-FAPREF-40": 28
+  "V-04": 28
+  "FAPREF-LOGIC-08e": 30
 coverage:
   web: automated
 ---

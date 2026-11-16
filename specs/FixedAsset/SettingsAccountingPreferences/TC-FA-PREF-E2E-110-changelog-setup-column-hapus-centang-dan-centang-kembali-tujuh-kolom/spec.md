@@ -1,11 +1,23 @@
 ---
 id: TC-FA-PREF-E2E-110-changelog-setup-column-hapus-centang-dan-centang-kembali-tujuh-kolom
 title: "Changelog Setup Column: hapus centang lalu centang kembali tujuh kolom"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-335
+sourceRules: ["§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r7"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r1": [5, 6, 9]
+  "§4.1.4#r2": [5, 6, 9]
+  "§4.1.4#r3": [5, 6, 9]
+  "§4.1.4#r4": [5, 6, 9]
+  "§4.1.4#r5": [5, 6, 9]
+  "§4.1.4#r6": [5, 6, 9]
+  "§4.1.4#r7": [5, 6, 9]
 coverage:
   web: automated
 ---

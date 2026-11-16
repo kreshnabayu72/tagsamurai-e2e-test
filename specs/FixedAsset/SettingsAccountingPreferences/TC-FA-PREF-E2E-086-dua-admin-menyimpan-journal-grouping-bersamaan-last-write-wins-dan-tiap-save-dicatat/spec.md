@@ -1,11 +1,22 @@
 ---
 id: TC-FA-PREF-E2E-086-dua-admin-menyimpan-journal-grouping-bersamaan-last-write-wins-dan-tiap-save-dicatat
 title: "Dua Admin Menyimpan Journal Grouping Bersamaan: Last-Write-Wins dan Tiap Save Dicatat"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-287
+sourceRules: ["T-01", "F-FAPREF-01.k7a", "FAPREF-LOGIC-09c", "F-FAPREF-01.k7b", "L-02e", "L-02f"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [5, 8]
+  "F-FAPREF-01.k7a": [12, 13]
+  "FAPREF-LOGIC-09c": [12, 13]
+  "F-FAPREF-01.k7b": [15, 20]
+  "L-02e": [15, 16, 17, 20]
+  "L-02f": [16, 17, 20]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-117-changelog-download-isi-berkas-isi-sel-urutan-baris-dan-105-baris
 title: "Changelog Download isi berkas: isi sel, urutan baris mengikuti Sort, dan 105 baris"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-PREF-355
   - TC-FA-PREF-359
   - TC-FA-PREF-360
+sourceRules: ["§4.1.4#r7", "§4.1.4#r16", "§4.1.4#r5", "§4.1.4#r11", "L-02j", "§4.1.4#r1", "§4.1.4#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r7": 5
+  "§4.1.4#r16": 6
+  "§4.1.4#r5": 6
+  "§4.1.4#r11": 7
+  "L-02j": 7
+  "§4.1.4#r1": 14
+  "§4.1.4#b2": 22
+anchor: [8, 18]
 coverage:
   web: automated
 ---

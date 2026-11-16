@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-017-kunci-fiscal-year-start-dan-first-accounting-period-gembok-tooltip
 title: "Kunci Fiscal Year Start dan First Accounting Period: gembok, tooltip, field lain tetap Enabled"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -11,6 +12,15 @@ sourceTc:
   - TC-FA-PREF-86
   - TC-FA-PREF-87
   - TC-FA-PREF-124
+sourceRules: ["ST-05", "§4.3#b1", "ST-01", "FAPREF-LOGIC-02c"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-05": [1, 3, 4, 6, 8, 9, 11, 13, 21]
+  "§4.3#b1": 9
+  "ST-01": 16
+  "FAPREF-LOGIC-02c": 21
+anchor: [15, 22, 23, 24]
 coverage:
   web: automated
 ---

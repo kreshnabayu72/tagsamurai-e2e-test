@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-137-deferred-rekonsiliasi-j-01-membuat-preferences-periode-paling-awal-dan-field-terkunci
 title: "[DEFERRED] Rekonsiliasi J-01: Membuat Preferences, Periode Paling Awal sebagai First Accounting Period, dan Field Terkunci"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,37 @@ sourceTc:
   - TC-FA-PREF-422
   - TC-FA-PREF-423
   - TC-FA-PREF-424
+sourceRules: ["SET-01", "SET-12", "SET-02", "SET-03", "SET-04", "SET-05", "SET-06", "SET-08", "SET-09", "DOC-01", "DOC-02", "DOC-03", "DOC-04", "DOC-05", "DOC-06", "SET-11", "§[F-FAPREF-03] Initialize Default Preferences#b1", "FAPREF-LOGIC-01g", "FAPREF-LOGIC-03e", "E-FAPREF-16", "R-04", "FAPREF-LOGIC-01h", "§[F-FAPREF-03] Initialize Default Preferences#r4", "FAPREF-LOGIC-02c", "E-FAPREF-41", "ST-05", "FAPREF-LOGIC-02e"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-01": 5
+  "SET-12": 5
+  "SET-02": [5, 11]
+  "SET-03": 5
+  "SET-04": 5
+  "SET-05": 5
+  "SET-06": 5
+  "SET-08": 5
+  "SET-09": 5
+  "DOC-01": 5
+  "DOC-02": 5
+  "DOC-03": 5
+  "DOC-04": 5
+  "DOC-05": 5
+  "DOC-06": 5
+  "SET-11": 5
+  "§[F-FAPREF-03] Initialize Default Preferences#b1": 5
+  "FAPREF-LOGIC-01g": 5
+  "FAPREF-LOGIC-03e": 11
+  "E-FAPREF-16": 11
+  "R-04": 13
+  "FAPREF-LOGIC-01h": [19, 23, 28]
+  "§[F-FAPREF-03] Initialize Default Preferences#r4": [19, 28]
+  "FAPREF-LOGIC-02c": [20, 21, 29]
+  "E-FAPREF-41": 23
+  "ST-05": [29, 30, 32, 34]
+  "FAPREF-LOGIC-02e": 30
 coverage:
   web: automated
 ---

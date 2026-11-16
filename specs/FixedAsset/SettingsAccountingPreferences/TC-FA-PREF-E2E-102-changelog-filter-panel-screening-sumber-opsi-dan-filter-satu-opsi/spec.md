@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-102-changelog-filter-panel-screening-sumber-opsi-dan-filter-satu-opsi
 title: "Changelog Filter Panel: screening, sumber opsi dropdown, filter satu opsi pada empat dropdown"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-PREF-305
   - TC-FA-PREF-306
   - TC-FA-PREF-307
+sourceRules: ["§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r7", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r16"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r1": 5
+  "§4.1.4#r2": [6, 15, 25]
+  "§4.1.4#r3": [7, 17, 18, 28]
+  "§4.1.4#r4": [8, 20, 31]
+  "§4.1.4#r7": [9, 22, 34]
+  "§4.1.4#r5": 10
+  "§4.1.4#r6": 10
+  "§4.1.4#r16": 25
+anchor: [3, 4, 11]
 coverage:
   web: automated
 ---

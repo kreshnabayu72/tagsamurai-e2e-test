@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-109-changelog-column-visibility-dan-screening-setup-column
 title: "Changelog Column Visibility dan screening modal Setup Column"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,20 @@ sourceTc:
   - TC-FA-PREF-332
   - TC-FA-PREF-333
   - TC-FA-PREF-334
+sourceRules: ["§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r7", "§4.4#r4", "§4.1#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r1": [3, 4, 18, 19, 22]
+  "§4.1.4#r2": [3, 4, 18, 19, 22]
+  "§4.1.4#r3": [3, 4, 18, 19, 22]
+  "§4.1.4#r4": [3, 4, 10, 18, 19, 22]
+  "§4.1.4#r5": [3, 4, 18, 19, 22]
+  "§4.1.4#r6": [3, 4, 18, 19, 22]
+  "§4.1.4#r7": [3, 4, 18, 19, 22]
+  "§4.4#r4": 6
+  "§4.1#r3": 17
+anchor: [5, 12, 13, 20, 21, 23, 24]
 coverage:
   web: automated
 ---

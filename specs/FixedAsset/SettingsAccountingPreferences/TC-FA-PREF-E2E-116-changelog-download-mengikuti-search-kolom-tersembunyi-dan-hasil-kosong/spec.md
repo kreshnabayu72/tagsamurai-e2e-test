@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-116-changelog-download-mengikuti-search-kolom-tersembunyi-dan-hasil-kosong
 title: "Changelog Download: mengikuti Search, tidak memuat kolom tersembunyi, memuat kembali kolom yang ditampilkan, hasil Search kosong"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-PREF-356
   - TC-FA-PREF-357
   - TC-FA-PREF-358
+sourceRules: ["§4.1.4#b2", "§4.1.4#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#b2": [6, 13, 21, 29, 30]
+  "§4.1.4#r4": [13, 21, 29]
+anchor: [24, 27]
 coverage:
   web: automated
 ---

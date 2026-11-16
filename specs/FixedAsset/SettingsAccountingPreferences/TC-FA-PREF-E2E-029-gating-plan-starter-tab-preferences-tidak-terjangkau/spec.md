@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-029-gating-plan-starter-tab-preferences-tidak-terjangkau
 title: "Gating Plan Starter: Entri Accounting Disabled dengan Chip Upgrade dan Tab Preferences Tidak Terjangkau"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,14 @@ sourceTc:
   - TC-FA-PREF-277
   - TC-FA-PREF-569
   - TC-FA-PREF-570
+sourceRules: ["F-FAPREF-02.k5", "E-FAPREF-20", "§9.10#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-02.k5": [1, 2, 4, 10, 11, 14, 15]
+  "E-FAPREF-20": [1, 10, 14]
+  "§9.10#b2": [2, 4, 6, 7, 11, 15, 18, 19]
+anchor: [5, 17]
 coverage:
   web: automated
 ---

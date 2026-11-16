@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-090-state-tenant-suspended-dan-expired-save-ditolak-toast-baku-tab-tetap-dapat-dibaca
 title: "State Tenant Suspended dan Expired: Save Ditolak dengan Toast Baku dan Tab Preferences Tetap Dapat Dibaca"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-PREF-228
   - TC-FA-PREF-563
   - TC-FA-PREF-566
+sourceRules: ["F-FAPREF-01.k16c", "T-02", "F-FAPREF-01.k16b", "T-01", "F-FAPREF-01.k16a", "FAPREF-LOGIC-04a"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k16c": [3, 12]
+  "T-02": [6, 15, 23, 31]
+  "F-FAPREF-01.k16b": [6, 15, 23, 31]
+  "T-01": [8, 17]
+  "F-FAPREF-01.k16a": [26, 34]
+  "FAPREF-LOGIC-04a": [26, 34]
+anchor: [7, 16, 24, 32]
 coverage:
   web: automated
 ---

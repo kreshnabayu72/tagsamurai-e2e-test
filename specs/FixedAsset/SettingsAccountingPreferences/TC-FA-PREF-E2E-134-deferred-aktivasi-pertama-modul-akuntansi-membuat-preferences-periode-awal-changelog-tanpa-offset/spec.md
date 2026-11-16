@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-134-deferred-aktivasi-pertama-modul-akuntansi-membuat-preferences-periode-awal-changelog-tanpa-offset
 title: "[DEFERRED] Aktivasi Pertama Modul Akuntansi Membuat Preferences, Periode Awal, dan Changelog tanpa Offset"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,40 @@ sourceTc:
   - TC-FA-PREF-413
   - TC-FA-PREF-414
   - TC-FA-PREF-415
+sourceRules: ["SET-01", "SET-12", "SET-02", "SET-03", "SET-04", "SET-05", "SET-06", "SET-08", "SET-09", "DOC-01", "DOC-02", "DOC-03", "DOC-04", "DOC-05", "DOC-06", "SET-11", "FAPREF-LOGIC-02b", "F-FAPREF-03.k1", "L-01a", "J-05", "§8#b3", "§4.1.4#p3", "L-01d", "§8.2#r1", "L-02d", "§8.3#p1", "FAPREF-LOGIC-08h", "FAPREF-LOGIC-08a", "§4.1.1#p4"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-01": 5
+  "SET-12": 5
+  "SET-02": 5
+  "SET-03": 5
+  "SET-04": 5
+  "SET-05": 5
+  "SET-06": 5
+  "SET-08": 5
+  "SET-09": 5
+  "DOC-01": 5
+  "DOC-02": 5
+  "DOC-03": 5
+  "DOC-04": 5
+  "DOC-05": 5
+  "DOC-06": 5
+  "SET-11": 5
+  "FAPREF-LOGIC-02b": [9, 10]
+  "F-FAPREF-03.k1": 9
+  "L-01a": 16
+  "J-05": 16
+  "§8#b3": [17, 27, 30]
+  "§4.1.4#p3": [17, 30]
+  "L-01d": [17, 26, 27, 29, 30]
+  "§8.2#r1": 27
+  "L-02d": 30
+  "§8.3#p1": 30
+  "FAPREF-LOGIC-08h": 34
+  "FAPREF-LOGIC-08a": 36
+  "§4.1.1#p4": 36
+anchor: [33]
 coverage:
   web: automated
 ---

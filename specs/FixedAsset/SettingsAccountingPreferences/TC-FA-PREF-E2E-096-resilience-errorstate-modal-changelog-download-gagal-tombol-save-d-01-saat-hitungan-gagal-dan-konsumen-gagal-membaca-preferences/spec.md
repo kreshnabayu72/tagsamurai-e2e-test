@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-096-resilience-errorstate-modal-changelog-download-gagal-tombol-save-d-01-saat-hitungan-gagal-dan-konsumen-gagal-membaca-preferences
 title: "Resilience ErrorState: Modal Changelog Gagal, Download Gagal, Tombol Save D-01 saat Hitungan Gagal, dan Konsumen Gagal Membaca Preferences"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-PREF-361
   - TC-FA-PREF-598
   - TC-FA-PREF-508
+sourceRules: ["ST-22", "§4.2b#b4", "F-FAPREF-01.k21d", "T-01", "F-FAPREF-01.k21b", "R-05"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-22": [3, 19]
+  "§4.2b#b4": 19
+  "F-FAPREF-01.k21d": 20
+  "T-01": 22
+  "F-FAPREF-01.k21b": 22
+  "R-05": 27
+anchor: [5, 11, 12]
 coverage:
   web: automated
 ---

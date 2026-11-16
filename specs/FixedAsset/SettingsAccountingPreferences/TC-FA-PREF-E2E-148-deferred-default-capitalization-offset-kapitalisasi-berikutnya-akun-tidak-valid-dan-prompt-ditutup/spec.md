@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-148-deferred-default-capitalization-offset-kapitalisasi-berikutnya-akun-tidak-valid-dan-prompt-ditutup
 title: "[DEFERRED] Default Capitalization Offset: kapitalisasi berikutnya, akun tidak valid, dan prompt ditutup"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-PREF-478
   - TC-FA-PREF-479
   - TC-FA-PREF-480
+sourceRules: ["F-FAPREF-05.k2a", "F-FAPREF-05.k2b", "F-FAPREF-05.k2c", "F-FAPREF-05.k3", "FAPREF-LOGIC-08d", "F-FAPREF-05.k4", "FAPREF-LOGIC-08j"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-05.k2a": 4
+  "F-FAPREF-05.k2b": 5
+  "F-FAPREF-05.k2c": 8
+  "F-FAPREF-05.k3": 12
+  "FAPREF-LOGIC-08d": 14
+  "F-FAPREF-05.k4": [18, 20]
+  "FAPREF-LOGIC-08j": [24, 26, 28, 31]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-046-first-accounting-period-batas-transaksi-bertanggal-paling-awal-seri-pb
 title: "Save First Accounting Period terhadap transaksi bertanggal paling awal: batas satu bulan sebelum, sama, dan sesudah (seri PB)"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-PREF-223
   - TC-FA-PREF-224
   - TC-FA-PREF-226
+sourceRules: ["F-FAPREF-01.k23", "V-10", "E-FAPREF-42", "F-FAPREF-01.k21b", "T-01", "E-FAPREF-37"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k23": [4, 5]
+  "V-10": [6, 34]
+  "E-FAPREF-42": 7
+  "F-FAPREF-01.k21b": [12, 22, 32]
+  "T-01": [13, 23, 33]
+  "E-FAPREF-37": [14, 15, 16, 24, 25, 26, 35]
 coverage:
   web: automated
 ---

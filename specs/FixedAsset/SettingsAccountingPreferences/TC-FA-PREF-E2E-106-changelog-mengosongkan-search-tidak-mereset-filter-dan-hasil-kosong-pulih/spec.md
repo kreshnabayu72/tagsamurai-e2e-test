@@ -1,12 +1,20 @@
 ---
 id: TC-FA-PREF-E2E-106-changelog-mengosongkan-search-tidak-mereset-filter-dan-hasil-kosong-pulih
 title: "Changelog: mengosongkan Search tidak mereset Filter dan Sort, hasil kosong dari Search dan Filter pulih saat salah satu dilepas"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-321
   - TC-FA-PREF-322
+sourceRules: ["§4.1.4#r3", "§4.1.4#r7", "ST-23"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r3": [5, 6]
+  "§4.1.4#r7": [6, 13]
+  "ST-23": 11
 coverage:
   web: automated
 ---

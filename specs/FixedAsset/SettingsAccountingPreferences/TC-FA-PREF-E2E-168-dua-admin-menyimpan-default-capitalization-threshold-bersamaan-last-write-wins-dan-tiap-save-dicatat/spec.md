@@ -1,11 +1,21 @@
 ---
 id: TC-FA-PREF-E2E-168-dua-admin-menyimpan-default-capitalization-threshold-bersamaan-last-write-wins-dan-tiap-save-dicatat
 title: "Dua Admin Menyimpan Default Capitalization Threshold Bersamaan: Last-Write-Wins dan Tiap Save Dicatat"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-560
+sourceRules: ["T-01", "F-FAPREF-01.k7a", "F-FAPREF-01.k7b", "§8#r3", "L-02j"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [7, 12]
+  "F-FAPREF-01.k7a": [8, 13, 15]
+  "F-FAPREF-01.k7b": 17
+  "§8#r3": [18, 19]
+  "L-02j": [18, 19]
 coverage:
   web: automated
 ---

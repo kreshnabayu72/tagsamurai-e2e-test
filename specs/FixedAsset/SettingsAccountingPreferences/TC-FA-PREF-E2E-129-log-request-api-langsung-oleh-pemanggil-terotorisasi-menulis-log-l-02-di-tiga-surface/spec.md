@@ -1,11 +1,27 @@
 ---
 id: TC-FA-PREF-E2E-129-log-request-api-langsung-oleh-pemanggil-terotorisasi-menulis-log-l-02-di-tiga-surface
 title: "Log: Request API Langsung oleh Pemanggil Terotorisasi Menulis Log L-02 di Tiga Surface"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-549
+sourceRules: ["J-03", "S-01e", "L-02f", "SET-03", "§4.1.4#r7", "S-01f", "L-02b", "§8.2#p1", "S-01g", "L-02c", "L-02d"]
+smoke: []
+dependsOn: []
+trace:
+  "J-03": 3
+  "S-01e": 7
+  "L-02f": 8
+  "SET-03": [8, 12]
+  "§4.1.4#r7": 8
+  "S-01f": 11
+  "L-02b": 12
+  "§8.2#p1": 13
+  "S-01g": 15
+  "L-02c": 16
+  "L-02d": 16
 coverage:
   web: automated
 ---

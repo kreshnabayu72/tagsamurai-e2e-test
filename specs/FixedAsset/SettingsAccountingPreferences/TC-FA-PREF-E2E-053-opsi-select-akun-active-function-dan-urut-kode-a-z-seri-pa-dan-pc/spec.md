@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-053-opsi-select-akun-active-function-dan-urut-kode-a-z-seri-pa-dan-pc
 title: "Opsi Select akun hanya memuat akun Active sesuai function dan berurutan menurut kode A-Z (seri PA dan PC)"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -13,6 +14,16 @@ sourceTc:
   - TC-FA-PREF-589
   - TC-FA-PREF-590
   - TC-FA-PREF-591
+sourceRules: ["FI-04", "FAPREF-LOGIC-06a", "FAPREF-LOGIC-06h", "FAPREF-LOGIC-08a", "FI-05", "FAPREF-LOGIC-08e"]
+smoke: []
+dependsOn: []
+trace:
+  "FI-04": [2, 7, 15, 21, 25, 29, 33]
+  "FAPREF-LOGIC-06a": [2, 4, 7, 21, 25]
+  "FAPREF-LOGIC-06h": [3, 8]
+  "FAPREF-LOGIC-08a": [11, 12, 29]
+  "FI-05": [12, 16, 22, 26, 30, 34]
+  "FAPREF-LOGIC-08e": [15, 16, 33]
 coverage:
   web: automated
 ---

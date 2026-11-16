@@ -1,11 +1,22 @@
 ---
 id: TC-FA-PREF-E2E-171-sinkronisasi-save-preferences-tidak-mengubah-data-asset-class-dan-periode-diposting
 title: "Sinkronisasi: Save Preferences Tidak Mengubah Data Asset Class dan Periode yang Sudah Diposting"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-410
+sourceRules: ["D-01", "PV-01", "FAPREF-LOGIC-01e", "E-FAPREF-17", "FAPREF-LOGIC-03b", "§11.2#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": 4
+  "PV-01": 4
+  "FAPREF-LOGIC-01e": 10
+  "E-FAPREF-17": 10
+  "FAPREF-LOGIC-03b": 12
+  "§11.2#r2": 12
 coverage:
   web: automated
 ---

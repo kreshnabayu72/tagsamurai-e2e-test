@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-155-status-tombol-save-changes-dan-cancel-pada-form-pristine-dan-berubah
 title: "Status Tombol [Save changes] dan [Cancel]: Disabled pada Form Pristine, Enabled saat Berubah, Kembali Disabled saat Dikembalikan"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-PREF-18
   - TC-FA-PREF-19
   - TC-FA-PREF-20
+sourceRules: ["ST-01", "§4.8#r5", "§4.1.1#b2", "FAPREF-LOGIC-10f"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-01": [1, 3, 5, 10, 11, 15, 17, 19]
+  "§4.8#r5": 1
+  "§4.1.1#b2": [3, 5, 17, 19]
+  "FAPREF-LOGIC-10f": [8, 10, 15]
 coverage:
   web: automated
 ---

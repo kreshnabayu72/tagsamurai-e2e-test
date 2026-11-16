@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-012-android-form-halaman-penuh-header-bottom-sheet-changelog
 title: "Android: form halaman penuh, ikon View history di header, dialog Save Changes bottom sheet, modal Changelog card list"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-69
   - TC-FA-PREF-70
   - TC-FA-PREF-71
+sourceRules: ["§4.6#b1", "§4.6#b3", "§4.6#b4", "§4.6#b2", "D-01"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.6#b1": [3, 5]
+  "§4.6#b3": 6
+  "§4.6#b4": [8, 9]
+  "§4.6#b2": 13
+  "D-01": [13, 14]
 coverage:
   mobile: automated
 ---
