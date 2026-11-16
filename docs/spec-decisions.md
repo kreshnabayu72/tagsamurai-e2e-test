@@ -2543,11 +2543,11 @@ Aturan:
 
 - **Spec / langkah:** TC-FA-FACO-E2E-017 langkah 23-25.
 - **Spec meminta:** Search kosong, halaman 1 dan sort awal setelah tab Accounting dibuka lagi.
-- **Karena:** aturan owner 2026-11-11: tabel di halaman menyimpan state, tabel di dialog tidak (plans/_program/prd-overrides.md). D-167 menerapkan aturan yang sama untuk Notification Center.
-- **Keputusan:** script memverifikasi state yang dipertahankan. Langkah 23-25 di-tag `ui-gap` dengan merujuk baris prd-overrides; bukan bug.
+- **Karena:** aturan umum D-243: tabel di halaman menyimpan state, tabel di dialog tidak. D-167 menerapkan aturan yang sama untuk Notification Center.
+- **Keputusan:** script memverifikasi state yang dipertahankan. Langkah 23-25 di-tag `ui-gap` dengan merujuk D-243; bukan bug.
 - **Diputuskan oleh:** Wangs-UI Coordinator, dengan aturan owner 2026-11-11.
 - **Diterapkan di:** TC-FA-FACO-E2E-017.
-- **Sumber:** plans/_program/prd-overrides.md; D-167.
+- **Sumber:** D-243; D-167.
 
 ## D-241 Chip Function di ui-client 1280x720: urutan pilih boleh berubah agar chip yang dihapus tetap terlihat (2026-11-16)
 
@@ -2567,3 +2567,45 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
 - **Diterapkan di:** spec FACO di D-236.
 - **Sumber:** master-asset#25; plans/_program/be-filing/ISSUE-MAP.md.
+
+## D-243 Aturan umum: tabel di halaman menyimpan state, tabel di dialog tidak (2026-11-16)
+
+- **Berlaku untuk:** semua modul, semua tabel.
+- **Aturan:** tabel di halaman (layar list, tab, halaman detail) mempertahankan Search, Filter, Sort, Pagination dan pilihan kolom saat user pindah halaman atau tab lalu kembali, termasuk lewat sidebar. Tabel di dalam dialog selalu mulai dari keadaan awal setiap kali dialog dibuka.
+- **Untuk spec:** langkah "kembali ke halaman" mengharapkan state yang ditinggalkan user, bukan reset. Langkah "buka dialog lagi" mengharapkan keadaan awal. Langkah yang meminta sebaliknya di-tag `ui-gap` dengan merujuk D-243.
+- **Diputuskan oleh:** product owner 2026-11-11, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum (sebelumnya hanya diterapkan per kasus di D-167 dan D-240).
+
+## D-244 Aturan umum: data uji ui-e2e harus bisa dibuat lewat alur nyata (2026-11-16)
+
+- **Berlaku untuk:** semua spec ui-e2e.
+- **Aturan:** setiap data uji (DU) di spec ui-e2e harus bisa dibuat lewat aplikasi atau API publik, dengan cara yang memang terjadi di produk. Keadaan yang hanya bisa dibuat dengan mengubah database, menghapus log, atau route khusus uji tidak dipakai di ui-e2e.
+- **Untuk spec:** langkah yang butuh keadaan seperti itu ditulis di layer ui-client (respons API di-intercept), bukan ui-e2e. Contoh: akun tanpa entri Changelog (Modified By `System`), karena setiap penulisan membuat baris Changelog (D-237).
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+
+## D-245 Aturan umum: nilai yang dipakai langkah harus ada di kontrak API (2026-11-16)
+
+- **Berlaku untuk:** semua spec.
+- **Aturan:** sebelum langkah memakai sebuah nilai (opsi, Function, status, field), cek bahwa nilai itu ada di kontrak API (LLD dan openapi), bukan hanya di PRD.
+- **Untuk spec:** jika PRD dan kontrak berbeda, langkah tetap ditulis mengikuti PRD, tetapi diberi catatan perbedaan itu (nama nilai, PRD vs kontrak) agar bisa dikonfirmasi ke BE sebelum dijalankan. Contoh: `Disposal Proceeds` ada di PRD (7 Function) tetapi tidak di kontrak (6) (D-236, D-242, master-asset#25).
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+
+## D-246 Aturan umum: penolakan karena status langganan terjadi di gerbang login, bukan per aksi (2026-11-16)
+
+- **Berlaku untuk:** semua produk dan modul.
+- **Aturan:** entitas yang langganannya Expired tidak mendapat akses ke produk. Setelah login, user berhenti di /portal dengan dialog Subscription Not Active, sehingga tidak ada layar modul yang bisa dibuka.
+- **Untuk spec:** untuk entitas Expired, tulis satu langkah yang memverifikasi gerbang itu (dialog Subscription Not Active di /portal). Jangan tulis langkah tulis per aksi (Create, Edit, Delete, Activate, Deactivate) di dalam modul untuk entitas Expired. Contoh: TC-FA-FACO-E2E-048 (D-239).
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+
+## D-247 Aturan umum: langkah tidak bergantung pada urutan pilih atau semua chip terlihat (2026-11-16)
+
+- **Berlaku untuk:** semua field multi-select dengan chip.
+- **Aturan:** chip yang tidak muat ditampilkan sebagai `+N more` (overflow komponen, D-208). Chip mana yang terlihat bergantung pada lebar layar dan urutan pilih.
+- **Untuk spec:** tulis pilihan sebagai himpunan, bukan urutan. Langkah yang menghapus satu chip lewat (✕) harus memilih chip itu lebih dulu, atau menghapusnya lewat daftar opsi, bukan mengandalkan chip itu terlihat. Contoh: TC-FA-FACO-UI-136 (D-241).
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+
+## D-248 Aturan umum: spec khusus mobile ditandai platformnya (2026-11-16)
+
+- **Berlaku untuk:** semua suite.
+- **Aturan:** langkah yang hanya bisa dijalankan di aplikasi mobile (Android) tidak bisa dijalankan di web.
+- **Untuk spec:** spec yang seluruhnya mobile ditandai platform `mobile`, agar runner web melewatinya dan laporan memisahkannya. Contoh: TC-FA-FACO-E2E-097 sampai -099.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
