@@ -1,6 +1,6 @@
 ---
 id: TC-GS-FILEMGR-E2E-063-tenant-baca-tetap-tersedia
-title: "State Tenant: Aksi Baca File Manager dan Kartu Storage Tetap Tersedia saat Suspended atau Expired"
+title: "State Tenant: Aksi Baca File Manager dan Kartu Storage Tetap Tersedia saat Suspended, Expired, atau Grace"
 priority: High
 caseType: Edge
 status: draft
@@ -11,7 +11,7 @@ coverage:
   web: automated
 ---
 
-# State Tenant: Aksi Baca File Manager dan Kartu Storage Tetap Tersedia saat Suspended atau Expired
+# State Tenant: Aksi Baca File Manager dan Kartu Storage Tetap Tersedia saat Suspended, Expired, atau Grace
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ coverage:
 - Akun aktor: Total Control Sinta Maharani (`Sinta M`) `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup A1). Login di hook `before` spec ini (saat Client Active); kredensial `Spectra.env.GS_TC_PASSWORD`. Akun ini adalah akun default suite, sehingga hook `after` tidak perlu memulihkan sesi. Halaman awal Global Settings > File Manager dibuka di hook `beforeEach`.
 - Environment variable: `GS_TC_PASSWORD`. Password tidak ditulis di spec atau fixture; nama env didaftarkan di `executionConfig.environmentVariables` dan `.env.example` pada tahap script.
 - Suite serial (`parallel: false`) karena spec mengubah status Client uji dan laporan Storage. Flag Guided Tooltip `guided_tooltip_seen_gs-file-manager` disetel true oleh hook suite `before` dan dipulihkan hook `after` (lihat `suite.md`).
-- Kemampuan teknis (disediakan tim FE; akun pengubah status Client tidak disebut di TC, PRD, atau LLD, lihat Temuan untuk QA): mengubah status Client uji menjadi Suspended dan Expired; seeding laporan Storage skenario S1 (Tabel A5: kuota 50 GB; Fixed Asset 3.2 GB, Admin Console 1.4 GB, Global Settings 204.8 MB; Total Used 4.8 GB); membaca file terunduh (nama dan keberadaan).
+- Kemampuan teknis (disediakan tim FE; akun pengubah status Client tidak disebut di TC, PRD, atau LLD, lihat Temuan untuk QA): mengubah status Client uji menjadi Suspended, Expired, dan Grace; seeding laporan Storage skenario S1 (Tabel A5: kuota 50 GB; Fixed Asset 3.2 GB, Admin Console 1.4 GB, Global Settings 204.8 MB; Total Used 4.8 GB); membaca file terunduh (nama dan keberadaan).
 - State global yang diubah: status Client uji dan laporan Storage. Hook `after` (tetap jalan walau spec gagal di tengah) mengembalikan status Client ke Active dan memulihkan laporan Storage awal.
 - Data: Data Pre-setup Tabel A2 (33 file aktif, termasuk `budi-avatar.jpg` F01) di-seed idempotent di hook `before` dan hanya dibaca (tidak diubah, S-06; lihat Temuan untuk QA tentang hitungan 33).
 - Tabel "Status Client yang diuji" (langkah 1 sampai 14 diulang per baris):
@@ -28,6 +28,7 @@ coverage:
   |---|
   | Suspended |
   | Expired |
+  | Grace |
 
 - Dependensi TC (TC-01 tabel utama, TC-268 kartu Storage Usage) dijalankan sebagai langkah aksi di spec ini.
 - Cleanup (hook `after`): pulihkan status Client dan laporan Storage seperti di atas; file hasil download dihapus dari folder unduhan uji.

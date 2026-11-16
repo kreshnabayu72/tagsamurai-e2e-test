@@ -2,7 +2,7 @@
 
 Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC aktif, `TC-AUTH-SES-1`–`328`). Suite: `specs/Auth/SessionManagement/`. Status seluruh spec: `draft`, belum ada script TestSpectra.
 
-**Verifikasi lint:** `npx spectra lint --strict specs/Auth/SessionManagement` → `✓ 76 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
+**Verifikasi lint:** `npx spectra lint --strict specs/Auth/SessionManagement` → `✓ 77 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
 
 **Seleksi:** sesuai `docs/e2e-conventions.md` bagian 2, seluruh 328 TC masuk spec; tidak ada TC hanya-BE. TC yang menembak endpoint langsung tanpa UI (antara lain TC-233, 234, 235, 322, 231, 232, 250, 320, 256) tetap masuk sebagai spec kelas a. Hambatan teknis dan label `Manual Only` (jam server, perangkat Android/iOS, biometrik, SSE, failure injection, status Client dan subscription, seat dan kuota) bukan alasan mengeluarkan TC; semua kebutuhan ditulis di `## Prerequisites` tiap spec.
 
@@ -53,7 +53,7 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-E2E-033-cascade-sesi-produk-dan-pelepasan-seat | Cascade Sesi Platform ke Sesi-produk dan Pelepasan Seat | 245, 246, 255, 263, 301 | web + mobile |
 | TC-AUTH-SES-E2E-034-sesi-produk-bersama-web-dan-mobile | Sesi-produk Bersama Web dan Mobile | 104, 137, 144, 271, 272, 273, 300 | web + mobile |
 | TC-AUTH-SES-E2E-035-popup-concurrent-dan-subscription-di-mobile | Popup Concurrent Session Limit Reached dan Subscription Not Active di Aplikasi Mobile | 302, 303 | mobile |
-| TC-AUTH-SES-E2E-036-subscription-tidak-aktif-memblok-buka-produk | Subscription Tidak Aktif (Expired, Grace, Archive) Memblok Pembukaan Produk Baru | 111, 112, 113, 116, 117, 118 | web |
+| TC-AUTH-SES-E2E-036-subscription-tidak-aktif-memblok-buka-produk | Subscription Tidak Aktif (Archive) Memblok Pembukaan Produk Baru | 113, 116, 117, 118 | web |
 | TC-AUTH-SES-E2E-037-subscription-status-lanjutan-memblok-buka-produk | Subscription Status Lanjutan (Purge, Deleted, dan Status Non-Aktif Lain) Memblok Pembukaan Produk Baru | 114, 115, 274, 275, 276, 277, 278 | web |
 | TC-AUTH-SES-E2E-038-subscription-renewed-dan-kembali-active | Subscription Kembali Active dan Renewed Mengizinkan Pembukaan Produk Baru | 279, 281 | web |
 | TC-AUTH-SES-E2E-039-subscription-memengaruhi-sesi-produk-existing | Perubahan Status Subscription terhadap Sesi-Produk yang Sudah Berjalan | 119, 120, 121, 122, 123, 280 | web |
@@ -85,7 +85,7 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-E2E-065-konkurensi-dan-urutan-event | Konkurensi dan Urutan Event: Aksi Paralel, Push Terlewat, dan Reconnect SSE | 238, 239, 240, 241, 242, 243, 265 | web |
 | TC-AUTH-SES-E2E-066-absence-duplicate-login-dan-session-expired | Absence Pencatatan Duplicate Login dan Session Expired: Kondisi yang Tidak Menulis Log | 29, 30, 31, 34, 35, 49, 256, 294 | web + mobile |
 | TC-AUTH-SES-E2E-067-absence-sesi-produk-dan-concurrent | Absence Pencatatan Sesi-produk dan Concurrent: Reuse, Limit Reached, dan End Product Berulang | 101, 102, 104, 204, 263 | web + mobile |
-| TC-AUTH-SES-E2E-068-absence-subscription-tidak-aktif | Absence Pencatatan: Pembukaan Produk Diblok karena Subscription Tidak Aktif Tidak Menulis Log | 111, 112, 113, 114, 115, 274, 275, 276, 277, 278 | web |
+| TC-AUTH-SES-E2E-068-absence-subscription-tidak-aktif | Absence Pencatatan: Pembukaan Produk Diblok karena Subscription Tidak Aktif Tidak Menulis Log | 113, 114, 115, 274, 275, 276, 277, 278 | web |
 | TC-AUTH-SES-E2E-069-absence-penolakan-force-logout-dan-aksi-admin | Absence Pencatatan: Penolakan Server, Force-logout Idempotent, dan Aksi Admin | 136, 142, 233, 234, 239, 250, 320, 322, 327 | web |
 | TC-AUTH-SES-E2E-070-absence-biometric | Absence Pencatatan Biometric: Kondisi Re-login, Enroll, dan Disable yang Tidak Menulis Session Log Entry | 154, 160, 162, 170, 173, 175, 176, 177, 212, 257, 258, 325, 328 | web + mobile |
 | TC-AUTH-SES-E2E-071-admin-triggered-dialog-focus-trap | Accessibility Focus Trap dan Role Alertdialog Dialog Lifecycle yang Dipicu Aksi Admin | 306, 307, 308 | web |
@@ -94,8 +94,9 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-E2E-074-biometric-relogin-ip-rate-limit-429 | Re-login Biometric: Melampaui IP Rate Limit Ditolak dengan Toast Too Many Requests | 175 | mobile |
 | TC-AUTH-SES-E2E-075-biometric-agreement-token-ttl-boundary | Re-login Biometric: Umur Token Pra-autentikasi Agreement 10 Menit (Kedaluwarsa dan Batas Eksak) | 165, 286 | mobile |
 | TC-AUTH-SES-E2E-076-product-session-sweep-and-time-travel | Sesi-Produk: Tab Ditutup, Kedaluwarsa Sesi Platform, dan Sweep Dinonaktifkan (Time-Travel) | 130, 131 | web |
+| TC-AUTH-SES-E2E-077-expired-grace-buka-produk-tanpa-popup | Subscription Expired dan Grace: Pembukaan Produk Baru Membuat Sesi-Produk Tanpa Popup Subscription Not Active | 111, 112 | web |
 
-**Total:** 328 dari 328 TC granular tercakup oleh 76 spec. TC yang klausa absence-nya ada di spec 066–070 muncul di dua spec; selebihnya satu spec per TC.
+**Total:** 328 dari 328 TC granular tercakup oleh 77 spec. TC yang klausa absence-nya ada di spec 066–070 muncul di dua spec; selebihnya satu spec per TC.
 
 ---
 
@@ -213,8 +214,8 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-108 | TC-AUTH-SES-E2E-032-admin-console-dan-global-settings-tanpa-concurrent | FE+BE |
 | TC-AUTH-SES-109 | TC-AUTH-SES-E2E-032-admin-console-dan-global-settings-tanpa-concurrent | FE+BE |
 | TC-AUTH-SES-110 | TC-AUTH-SES-E2E-014-resilience-kegagalan-server-sesi-web | FE+BE |
-| TC-AUTH-SES-111 | TC-AUTH-SES-E2E-036-subscription-tidak-aktif-memblok-buka-produk | FE+BE |
-| TC-AUTH-SES-112 | TC-AUTH-SES-E2E-036-subscription-tidak-aktif-memblok-buka-produk | FE+BE |
+| TC-AUTH-SES-111 | TC-AUTH-SES-E2E-077-expired-grace-buka-produk-tanpa-popup | FE+BE |
+| TC-AUTH-SES-112 | TC-AUTH-SES-E2E-077-expired-grace-buka-produk-tanpa-popup | FE+BE |
 | TC-AUTH-SES-113 | TC-AUTH-SES-E2E-036-subscription-tidak-aktif-memblok-buka-produk | FE+BE |
 | TC-AUTH-SES-114 | TC-AUTH-SES-E2E-037-subscription-status-lanjutan-memblok-buka-produk | FE+BE |
 | TC-AUTH-SES-115 | TC-AUTH-SES-E2E-037-subscription-status-lanjutan-memblok-buka-produk | FE+BE |

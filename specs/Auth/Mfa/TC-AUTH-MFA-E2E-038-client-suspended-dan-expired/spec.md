@@ -65,7 +65,7 @@ coverage:
 - Sumber: `auth/mfa/TestCases/tc-mfa.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Langkah pembuka tiap TC sesudah TC pertama menutup jendela user uji dari TC sebelumnya dan menghapus sesi login browser terkait (ID device dan jendela sesi akun aktor tetap) sebelum jendela baru dibuka; itu langkah penghubung tanpa `Verifikasi` (S-03, S-09).
 - Kelas harness h (state tenant: Client Suspended dan Expired), dipisah dari verifikasi baca murni. Spec ini hanya memverifikasi bahwa MFA tidak diblok oleh status Client.
-- Pembatasan akses read-only Client Suspended dan popup Subscription Not Active saat membuka produk dimiliki session-management dan tidak diasersi di spec ini (sesuai Expected TC).
+- Pembatasan akses read-only Client Suspended dan perilaku pembukaan produk pada subscription Expired (gerbang produk terbuka tanpa popup) dimiliki session-management dan tidak diasersi di spec ini (sesuai Expected TC).
 - Urutan mengikuti TC sumber. Tiap TC memakai Client dan user sendiri, jadi urutan antar TC tidak saling bergantung. Status Client diubah di hook `before` dan dipulihkan di hook `after` (pemulihan dilakukan sebelum penghapusan user).
 - Langkah penghubung tanpa awalan `Verifikasi` (S-03): buka jendela privat baru di awal tiap TC (langkah 1 dan 13).
 - Temuan untuk QA:

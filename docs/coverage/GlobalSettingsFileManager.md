@@ -71,8 +71,8 @@ Keputusan rencana (disetujui user): D-1 opsi B (klausa absence log memakai basel
 | TC-GS-FILEMGR-E2E-059-format-tanggal-general-settings | Format Tanggal dan Waktu General Settings pada Upload Date, Deleted Date, Date Changelog, dan Input Filter | FE+BE | 22 | 235, 236, 237 |
 | TC-GS-FILEMGR-E2E-060-sync-detail-user-foto-kosong-dan-import-tanpa-file | Sinkronisasi: Detail User Foto Kosong setelah Delete dan Import Tidak Menyimpan File ke File Manager | FE+BE | 16 | 238, 242 |
 | TC-GS-FILEMGR-E2E-061-plan-tier-tidak-digate | File Manager Identik pada Seluruh Tier Plan | FE+BE | 10 | 243 |
-| TC-GS-FILEMGR-E2E-062-tenant-write-lockdown-suspended-expired | State Tenant: Aksi Tulis Ditolak saat Client Suspended atau Expired | FE+BE | 38 | 244, 245, 246 |
-| TC-GS-FILEMGR-E2E-063-tenant-baca-tetap-tersedia | State Tenant: Aksi Baca File Manager dan Kartu Storage Tetap Tersedia saat Suspended atau Expired | FE+BE | 14 | 247, 283 |
+| TC-GS-FILEMGR-E2E-062-tenant-write-lockdown-suspended-expired | State Tenant: Aksi Tulis Ditolak saat Client Suspended, Expired, atau Grace | FE+BE | 53 | 244, 245, 246 |
+| TC-GS-FILEMGR-E2E-063-tenant-baca-tetap-tersedia | State Tenant: Aksi Baca File Manager dan Kartu Storage Tetap Tersedia saat Suspended, Expired, atau Grace | FE+BE | 14 | 247, 283 |
 | TC-GS-FILEMGR-E2E-064-tenant-suspended-job-latar | State Tenant: Auto-Purge dan Cascade Purge Tetap Berjalan saat Client Suspended | FE+BE | 19 | 113, 288 |
 | TC-GS-FILEMGR-E2E-065-storage-screening-urutan-format-dan-baris-app | Kartu Storage Usage: Screening, Urutan Daftar App, Format Angka, dan Baris App Tanpa Aksi | FE+BE | 31 | 268, 269, 270, 286 |
 | TC-GS-FILEMGR-E2E-066-storage-state-laporan-kuota-dan-batas-persentase | Kartu Storage Usage: Laporan Terlama, Kuota Belum Dialokasikan, Melewati Kuota, dan Batas Persentase | FE+BE | 30 | 271, 273, 274, 275 |
@@ -134,7 +134,7 @@ TC hanya-BE: tidak ada.
 | TC-GS-FILEMGR-E2E-051-setup-column-pin-dan-reset | 42 |
 | TC-GS-FILEMGR-E2E-052-download-tabel-utama-isi-file-csv-xlsx | 62 |
 | TC-GS-FILEMGR-E2E-055-log-permanently-delete-tiga-surface | 39 |
-| TC-GS-FILEMGR-E2E-062-tenant-write-lockdown-suspended-expired | 38 |
+| TC-GS-FILEMGR-E2E-062-tenant-write-lockdown-suspended-expired | 53 |
 | TC-GS-FILEMGR-E2E-069-guided-tooltip-konten-navigasi-keyboard | 37 |
 | TC-GS-FILEMGR-E2E-071-defense-in-depth-request-langsung-isolasi-client-dan-xss | 44 |
 
