@@ -2477,3 +2477,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-16 (temuan Integration A).
 - **Diterapkan di:** SettingsChartOfAccounts UI-120, dan semua spec ui-client yang langkahnya memeriksa elemen halaman.
 - **Sumber:** konvensi ui-client (mount unit kecil, tanpa app shell); keputusan owner 2026-11-16 "semua harus di include kecuali BE".
+
+## D-234 Langkah yang butuh detail user Admin Console adalah sprint-gap (2026-11-16)
+
+- **Spec / langkah:** semua langkah AdminConsole yang membuka atau memeriksa detail user Admin Console (BT-GAP-19 / BT-AC-SU-8). Terutama SettingsUser, ditambah langkah lintas modul di SettingsGroup, SettingsRolePermission, SettingsDeviceName, SettingsDeviceSku, SettingsDeviceCategory, SettingsPrivacyPolicy dan PlansLicensingPlansFeatures.
+- **Spec meminta:** halaman detail user Admin Console dapat dibuka dan isinya diverifikasi.
+- **Kenyataannya:** kontrak Admin Console Settings User tidak punya route detail user. Satu-satunya route detail (GET /v2/iam/users/{id}) di-guard untuk Global Settings.
+- **Karena:** detail user Admin Console tidak punya baris di sprint board. Baris 24 "Admin Console > Settings > User List" hanya mencakup User List, bukan detail user (owner 2026-11-16).
+- **Keputusan:** langkah-langkah ini di-tag `sprint-gap`, bukan `feature-gap:be`. Issue BE iam-service #244 di-hold (out-of-sprint), prioritas tetap critical.
+- **Diputuskan oleh:** owner, 2026-11-16 ("user list, is user list, not user detail").
+- **Diterapkan di:** spec AdminConsole yang langkahnya menunggu BT-GAP-19 / BT-AC-SU-8.
+- **Sumber:** plans/_program/sprint-board.md baris 24; plans/_program/be-filing/ISSUE-MAP.md (iam-service #244).
