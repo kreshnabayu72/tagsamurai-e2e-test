@@ -2558,3 +2558,12 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
 - **Diterapkan di:** TC-FA-FACO-UI-136.
 - **Sumber:** run Ruic3 (A); D-208.
+
+## D-242 Koreksi D-236: `Disposal Proceeds` sudah ada di kode BE, langkahnya menunggu deploy slot 2 (2026-11-16)
+
+- **Spec / langkah:** semua langkah yang disebut di D-236.
+- **Karena:** sesi BE memeriksa 2026-11-16 bahwa kode dev sudah punya Function ketujuh (migrasi 20261114130000 dan 20261114140000, masuk dev 15-11). Image slot 2 (14-11) lebih tua, sehingga `POST` dengan `Disposal Proceeds` dijawab 500 di slot 2. Yang tertinggal hanya dokumen kontrak (LLD dan openapi), dicatat di master-asset#25.
+- **Keputusan:** D-236 dikoreksi. Langkah-langkah itu bukan contract drift yang dilewati permanen. Langkah-langkah itu di-tag `be-bug BT-FA-FACO-1` (master-asset#25), menunggu deploy slot 2, lalu dijalankan ulang.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+- **Diterapkan di:** spec FACO di D-236.
+- **Sumber:** master-asset#25; plans/_program/be-filing/ISSUE-MAP.md.
