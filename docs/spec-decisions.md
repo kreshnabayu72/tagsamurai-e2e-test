@@ -2610,7 +2610,7 @@ Aturan:
 - **Untuk spec:** spec yang seluruhnya mobile ditandai platform `mobile`, agar runner web melewatinya dan laporan memisahkannya. Contoh: TC-FA-FACO-E2E-097 sampai -099.
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
 
-## D-249 Aturan umum: flag Guided Tour disimpan di browser, tidak lewat API (koreksi D-238) (2026-11-16)
+## D-249 [DITARIK oleh D-251] Aturan umum: flag Guided Tour disimpan di browser, tidak lewat API (koreksi D-238) (2026-11-16)
 
 - **Berlaku untuk:** semua Guided Tour di semua modul.
 - **Aturan:** flag "tur sudah dilihat" disimpan di browser per user, tidak lewat API. Setelah Skip atau Done, tur tidak muncul lagi untuk user itu di browser yang sama. Di browser atau profil lain, tur boleh muncul sekali lagi. User lain di browser yang sama tetap melihat tur.
@@ -2627,3 +2627,12 @@ Aturan:
 - **Koreksi:** D-246 ditarik, karena aturan gerbang login itu tidak sesuai §18.8. D-239 dikoreksi: TC-FA-FACO-E2E-048 langkah tulis untuk entitas Expired (86-152, termasuk Delete dan Bulk Delete) kembali diuji per aksi dan tidak lagi di-tag `spec-decision`.
 - **Kenyataan saat ini:** `POST /v2/iam/auth/product-sessions` menolak entitas Expired dengan `403 subscription_not_active`, sehingga aplikasi berhenti di /portal. Perilaku ini mengikuti PRD auth `session-management` `AUTHSES-LOGIC-03`, yang belum sesuai §18.8. Koreksi PRD diajukan di Gitea `Dokumentasi-Tag-Samurai/auth#21`. Sampai PRD dan BE disesuaikan, langkah 048 yang membutuhkan entitas Expired tidak dapat dijangkau dan di-tag `spec-decision` (D-250, menunggu auth#21), bukan `pass`.
 - **Diputuskan oleh:** product owner, 2026-11-16 ("functions/entity-isolation.md, ui harus ikutin itu"), dicatat Wangs-UI Coordinator.
+
+## D-251 Aturan umum: flag Guided Tooltip disimpan di akun user, sinkron antar perangkat (koreksi D-249) (2026-11-16)
+
+- **Berlaku untuk:** semua Guided Tooltip di semua modul.
+- **Aturan:** flag "tur sudah dilihat" (`guided_tooltip_seen_[page_key]`) disimpan di akun user lewat API dan berlaku di semua browser dan perangkat milik user itu. Flag disimpan saat Skip (termasuk klik overlay) atau Done. Replay tidak me-reset flag. Resize atau navigasi menutup tur tanpa menyimpan flag. Flag milik satu user tidak berlaku untuk user lain di browser yang sama.
+- **Untuk spec:** langkah "tur tidak muncul lagi" boleh diverifikasi di browser atau perangkat lain untuk user yang sama. Tulis juga langkah yang memastikan user lain di browser yang sama tetap melihat tur.
+- **Dasar:** foundation `functions/guided-tooltip.md` §16.1 (L46) dan §16.4 (L97-103), "Store: user account (sync across devices)".
+- **Koreksi:** D-249 ditarik. TC-FA-FACO-E2E-016 langkah 19 tidak lagi di-tag `spec-decision`. Endpoint untuk menyimpan flag belum ada, sehingga langkah itu di-tag `be-bug iam#281` sampai endpoint tersedia dan aplikasi memakainya.
+- **Diputuskan oleh:** product owner, 2026-11-16 ("guided kita perbaiki, buatkan issue untuk BE di iam … lalu di terapkan"), dicatat Wangs-UI Coordinator.
