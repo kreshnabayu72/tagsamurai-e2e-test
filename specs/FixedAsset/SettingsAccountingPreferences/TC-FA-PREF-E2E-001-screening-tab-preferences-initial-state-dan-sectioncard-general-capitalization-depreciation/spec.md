@@ -33,42 +33,41 @@ coverage:
 3. Verifikasi Tab `Preferences (aktif) | Chart of Accounts | Tax Depreciation Class | Asset Class` tampil berurutan
 4. Verifikasi ikon View history tampil di header tab
 5. Verifikasi Banner Setup Incomplete tidak tampil
-6. Verifikasi daftar anchor sticky di sisi kiri: `General | Capitalization | Depreciation | Disposal | Chart of Accounts | Journal Export`
-7. Verifikasi SectionCard berurutan: `General | Capitalization | Depreciation | Disposal | Chart of Accounts | Journal Export`
-8. Verifikasi masing-masing SectionCard terpisah
-9. Verifikasi tidak ada tabel, Drawer, atau sidebar data pada Body
-10. Verifikasi `[Cancel]` (variant text) lalu `[Save changes]` (variant filled) tampil di Footer
-11. Verifikasi `[Cancel]` dan `[Save changes]` Disabled
+6. Verifikasi SectionCard berurutan: `General | Capitalization | Depreciation | Disposal | Chart of Accounts | Journal Export`
+7. Verifikasi masing-masing SectionCard terpisah
+8. Verifikasi tidak ada tabel, Drawer, atau sidebar data pada Body
+9. Verifikasi `[Cancel]` (variant text) lalu `[Save changes]` (variant filled) tampil di Footer
+10. Verifikasi `[Cancel]` dan `[Save changes]` Disabled
 
 ### TC-FA-PREF-3: Screening SectionCard General
 
-12. Gulir ke SectionCard General
-13. Verifikasi judul SectionCard "General"
-14. Verifikasi label Fiscal Year Start* dengan ikon ⓘ tampil
-15. Verifikasi Select Fiscal Year Start bernilai "January"
-16. Verifikasi Select Fiscal Year Start Enabled tanpa ikon gembok
-17. Verifikasi label First Accounting Period* dengan ikon ⓘ tampil
-18. Verifikasi dua Select First Accounting Period: bulan "March" dan tahun "2026"
-19. Verifikasi kedua Select First Accounting Period Enabled tanpa ikon gembok
+11. Gulir ke SectionCard General
+12. Verifikasi judul SectionCard "General"
+13. Verifikasi label Fiscal Year Start* dengan ikon ⓘ tampil
+14. Verifikasi Select Fiscal Year Start bernilai "January"
+15. Verifikasi Select Fiscal Year Start Enabled tanpa ikon gembok
+16. Verifikasi label First Accounting Period* dengan ikon ⓘ tampil
+17. Verifikasi dua Select First Accounting Period: bulan "March" dan tahun "2026"
+18. Verifikasi kedua Select First Accounting Period Enabled tanpa ikon gembok
 
 ### TC-FA-PREF-4: Screening SectionCard Capitalization
 
-20. Gulir ke SectionCard Capitalization
-21. Verifikasi judul SectionCard "Capitalization"
-22. Verifikasi label Default Capitalization Threshold* dengan ikon ⓘ tampil
-23. Verifikasi CurrencyInput Default Capitalization Threshold bernilai "Rp 5.000.000,00"
-24. Verifikasi label In-service Date Source* dengan ikon ⓘ tampil
-25. Verifikasi Select In-service Date Source bernilai "Activation date"
+19. Gulir ke SectionCard Capitalization
+20. Verifikasi judul SectionCard "Capitalization"
+21. Verifikasi label Default Capitalization Threshold* dengan ikon ⓘ tampil
+22. Verifikasi CurrencyInput Default Capitalization Threshold bernilai "Rp 5.000.000,00"
+23. Verifikasi label In-service Date Source* dengan ikon ⓘ tampil
+24. Verifikasi Select In-service Date Source bernilai "Activation date"
 
 ### TC-FA-PREF-5: Screening SectionCard Depreciation
 
-26. Gulir ke SectionCard Depreciation
-27. Verifikasi judul SectionCard "Depreciation"
-28. Verifikasi label Depreciation in Disposal Month* dengan ikon ⓘ tampil
-29. Verifikasi Select Depreciation in Disposal Month bernilai "Up to previous month"
+25. Gulir ke SectionCard Depreciation
+26. Verifikasi judul SectionCard "Depreciation"
+27. Verifikasi label Depreciation in Disposal Month* dengan ikon ⓘ tampil
+28. Verifikasi Select Depreciation in Disposal Month bernilai "Up to previous month"
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 12, 20, dan 26 (gulir ke SectionCard yang diperiksa). Layar Preferences dibuka hook `beforeEach` suite, sehingga langkah TC "Buka Tab Preferences" tidak diulang di spec ini.
+- Langkah penghubung (S-03): langkah 11, 19, dan 25 (gulir ke SectionCard yang diperiksa). Layar Preferences dibuka hook `beforeEach` suite, sehingga langkah TC "Buka Tab Preferences" tidak diulang di spec ini.
 - Urutan TC dalam spec: TC-FA-PREF-1, 3, 4, 5 (screening keseluruhan tab lebih dulu, lalu per SectionCard). Spec tidak mengubah Preferences; form tidak dirty di akhir spec.
 - Temuan untuk QA: tidak ada temuan pada TC sumber spec ini.

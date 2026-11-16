@@ -24,7 +24,7 @@ coverage:
 - Data Pre-setup (hanya dibaca, tidak diubah): Preferences nilai awal PA-2, tidak terkunci, semua setting wajib terisi: Fiscal Year Start January; First Accounting Period March 2026; Default Capitalization Threshold 5.000.000; In-service Date Source Activation date. Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API).
 - TC-FA-PREF-601 memakai seri fixture PC-1; nilai awal Preferences PC-1 setara PA-2. Seed ulang ke nilai awal PC-1 dilakukan lewat langkah penghubung (langkah 14), disediakan tim FE/BE.
 - Tautan langsung ke Settings > Accounting > Preferences (langkah 7) disediakan tim FE; TC tidak menyebut alamatnya.
-- Viewport lebar tablet (langkah 18) mengikuti breakpoint tablet design system; nilai pikselnya ditetapkan tim FE karena TC tidak menyebutnya. Viewport dipulihkan ke ukuran awal pada langkah 21.
+- Viewport lebar tablet (langkah 18) mengikuti breakpoint tablet design system; nilai pikselnya ditetapkan tim FE karena TC tidak menyebutnya. Viewport dipulihkan ke ukuran awal pada langkah 20.
 - Flag Guided Tooltip halaman Preferences disetel true oleh hook suite `before` (lihat `suite.md`) sehingga walkthrough tidak menutupi layar.
 - Suite berjalan serial (`parallel: false`).
 
@@ -62,13 +62,12 @@ coverage:
 ### TC-FA-PREF-67: Layout lebar tablet
 
 18. Atur viewport ke lebar tablet
-19. Verifikasi daftar anchor tampil sebagai baris di atas form (bukan kolom sticky di kiri)
-20. Verifikasi field di dalam SectionCard tersusun satu kolom
-21. Pulihkan viewport ke ukuran awal
+19. Verifikasi field di dalam SectionCard tersusun satu kolom
+20. Pulihkan viewport ke ukuran awal
 
 ## Notes
 
-- Langkah penghubung (S-03): langkah 1 (membentuk precondition TC-FA-PREF-15), langkah 6 dan 11 (membentuk precondition halaman aplikasi lain), langkah 14 dan 15 (seed ulang seri PC-1 dan muat ulang agar form memuat nilai seed), serta langkah 21 (memulihkan viewport). Layar Preferences dibuka hook `beforeEach` suite, sehingga langkah TC "Buka Tab Preferences" tidak diulang.
+- Langkah penghubung (S-03): langkah 1 (membentuk precondition TC-FA-PREF-15), langkah 6 dan 11 (membentuk precondition halaman aplikasi lain), langkah 14 dan 15 (seed ulang seri PC-1 dan muat ulang agar form memuat nilai seed), serta langkah 20 (memulihkan viewport). Layar Preferences dibuka hook `beforeEach` suite, sehingga langkah TC "Buka Tab Preferences" tidak diulang.
 - Urutan TC dalam spec: navigasi lebih dulu, TC-FA-PREF-601, lalu TC-FA-PREF-67 di akhir karena mengubah viewport. Spec tidak mengubah Preferences; form tidak dirty di akhir spec.
 - TC-FA-PREF-18, 19, dan 20 (status `[Save changes]` dan `[Cancel]`) ada di spec 155.
 - Temuan untuk QA:

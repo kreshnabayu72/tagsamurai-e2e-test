@@ -39,12 +39,12 @@ coverage:
 ### TC-FA-PREF-594: Tidak ada kontrol Create atau Delete Preferences (seluruh kontrol)
 
 6. Seed ulang Preferences company ke PC-1 lewat API lalu buka ulang Fixed Asset > Settings > Accounting > Preferences
-7. Verifikasi kontrol yang tersedia: ikon View history, daftar anchor section, field setting, shortcut `+ Create account` pada Default Gain on Disposal dan Default Loss on Disposal, tombol `[Cancel]`, dan tombol `[Save changes]`
+7. Verifikasi kontrol yang tersedia: ikon View history, field setting, shortcut `+ Create account` pada Default Gain on Disposal dan Default Loss on Disposal, tombol `[Cancel]`, dan tombol `[Save changes]`
 8. Verifikasi tidak ada tombol atau menu untuk membuat Preferences baru maupun menghapus Preferences
 
 ### TC-FA-PREF-595: Tidak ada setting keterangan atau tanggal jurnal
 
-9. Gulir ke SectionCard Journal Export melalui daftar anchor
+9. Gulir ke SectionCard Journal Export
 10. Verifikasi SectionCard Journal Export hanya memuat Journal Grouping
 11. Verifikasi tidak ada setting keterangan jurnal maupun tanggal jurnal pada tab Preferences
 
@@ -63,6 +63,6 @@ coverage:
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Spec ini hanya membaca tampilan; asersi absence didahului anchor positif pada surface yang sama (8b butir 2): langkah 1 dan 2 sebelum langkah 3; langkah 7 sebelum langkah 8; langkah 10 sebelum langkah 11; langkah 12 sebelum langkah 13; langkah 15 sebelum langkah 16; langkah 17 sebelum langkah 18.
 - Urutan Verifikasi pada TC-FA-PREF-2 dan TC-FA-PREF-608 disusun anchor lebih dulu (S-14); isi Expected tetap sama dengan TC.
-- Langkah penghubung (S-03): langkah 6 (seed ulang PC-1 dan buka ulang halaman); langkah 9 (menggulir ke SectionCard Journal Export lewat daftar anchor, sesuai Langkah Uji TC-FA-PREF-595).
+- Langkah penghubung (S-03): langkah 6 (seed ulang PC-1 dan buka ulang halaman); langkah 9 (menggulir ke SectionCard Journal Export, sesuai Langkah Uji TC-FA-PREF-595).
 - Temuan untuk QA:
   - TC-FA-PREF-2, 594, 595, dan 608 tidak menyebut nama env var password; nama `FA_TC_PASSWORD` diusulkan spec dan perlu keputusan tim.

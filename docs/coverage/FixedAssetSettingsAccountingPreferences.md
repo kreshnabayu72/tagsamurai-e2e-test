@@ -1,8 +1,8 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting Preferences
 
-Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md` (627 TC aktif `TC-FA-PREF-1`–`631`; TC 326, 399, 400 dan 620 retired). Suite: `specs/FixedAsset/SettingsAccountingPreferences/`. Prefix: `FA` + `PREF` (`TC-FA-PREF-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-accounting-preferences-backend.md`.
+Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md` (621 TC aktif `TC-FA-PREF-1`–`631`; TC 9–14, 326, 399, 400 dan 620 retired). Suite: `specs/FixedAsset/SettingsAccountingPreferences/`. Prefix: `FA` + `PREF` (`TC-FA-PREF-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-accounting-preferences-backend.md`.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 627 TC aktif masuk 177 spec (154 nomor rencana, 17 nomor cadangan, dan 6 nomor tambahan 175-180), tidak ada TC hanya-BE. Setiap TC yang masuk terpetakan ke tepat satu spec.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 621 TC aktif masuk 176 spec (154 nomor rencana, 17 nomor cadangan, dan 6 nomor tambahan 175-180), tidak ada TC hanya-BE. Setiap TC yang masuk terpetakan ke tepat satu spec.
 
 ## TC hanya-BE (tidak masuk spec)
 
@@ -12,10 +12,9 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 
 | Spec | Judul | Mode | Langkah | TC sumber |
 |---|---|:---:|:---:|---|
-| TC-FA-PREF-E2E-001-screening-tab-preferences-initial-state-dan-sectioncard-general-capitalization-depreciation | Screening Tab Preferences: Initial State dan SectionCard General, Capitalization, Depreciation dengan Nilai Awal | FE+BE | 29 | 1, 3, 4, 5 |
+| TC-FA-PREF-E2E-001-screening-tab-preferences-initial-state-dan-sectioncard-general-capitalization-depreciation | Screening Tab Preferences: Initial State dan SectionCard General, Capitalization, Depreciation dengan Nilai Awal | FE+BE | 28 | 1, 3, 4, 5 |
 | TC-FA-PREF-E2E-002-screening-sectioncard-disposal-chart-of-accounts-journal-export-urutan-dan-nilai-awal | Screening SectionCard Disposal, Chart of Accounts, Journal Export, Urutan SectionCard, dan Nilai Awal Seluruh Setting | FE+BE | 30 | 6, 7, 8, 21, 22 |
-| TC-FA-PREF-E2E-003-anchor-sticky-klik-anchor-menggulir-form-ke-sectioncard | Daftar Anchor Sticky: Klik Anchor Menggulir Form ke SectionCard | FE+BE | 24 | 9, 10, 11, 12, 13, 14 |
-| TC-FA-PREF-E2E-004-navigasi-tab-preferences-tautan-langsung-entri-sidebar-form-company-dan-layout-tablet | Navigasi Tab Preferences: Klik Tab, Tautan Langsung, Entri Sidebar, Form Company Langsung, dan Layout Tablet | FE+BE | 21 | 15, 16, 17, 601, 67 |
+| TC-FA-PREF-E2E-004-navigasi-tab-preferences-tautan-langsung-entri-sidebar-form-company-dan-layout-tablet | Navigasi Tab Preferences: Klik Tab, Tautan Langsung, Entri Sidebar, Form Company Langsung, dan Layout Tablet | FE+BE | 20 | 15, 16, 17, 601, 67 |
 | TC-FA-PREF-E2E-005-opsi-select-dan-multiselect-fiscal-year-start-first-accounting-period-in-service-depreciation-month-journal-grouping | Opsi Select dan MultiSelect: Fiscal Year Start, First Accounting Period, In-service Date Source, Depreciation in Disposal Month, Journal Grouping | FE+BE | 33 | 23, 24, 25, 26, 164, 165, 596 |
 | TC-FA-PREF-E2E-006-tooltip-ikon-info-setting-set-01-sampai-set-07 | Tooltip Ikon Info ⓘ Setting SET-01 sampai SET-07 | FE+BE | 14 | 29, 30, 31, 32, 33, 34, 35 |
 | TC-FA-PREF-E2E-007-tooltip-set-08-set-09-set-11-set-12-format-opsi-dan-placeholder-select | Tooltip Ikon Info ⓘ SET-08, SET-09, SET-11, SET-12, Format Opsi Select Akun, dan Placeholder Select Saat Nilai Kosong | FE+BE | 23 | 36, 37, 38, 39, 46, 47, 48, 49, 50 |
@@ -23,7 +22,7 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-009-guided-tooltip-kunjungan-pertama-step-1-sampai-4 | Guided Tooltip Preferences: Kunjungan Pertama Menampilkan Step 1 sampai Step 4 | FE+BE | 26 | 52, 53, 54, 55 |
 | TC-FA-PREF-E2E-010-guided-tooltip-back-done-skip-dan-replay | Guided Tooltip Preferences: [Back], [Done], [Skip], dan Replay Lewat [?] | FE+BE | 32 | 56, 57, 58, 59 |
 | TC-FA-PREF-E2E-011-aksesibilitas-keyboard-fokus-trap-label-dan-tooltip | Aksesibilitas: navigasi keyboard, fokus ter-trap dialog D-01 dan modal Changelog, label titik peringatan, tooltip keyboard | FE+BE | 28 | 60, 61, 62, 63, 64, 65 |
-| TC-FA-PREF-E2E-012-android-form-halaman-penuh-header-bottom-sheet-changelog | Android: form halaman penuh, ikon View history di header, dialog Save Changes bottom sheet, modal Changelog card list | FE+BE | 17 | 68, 69, 70, 71 |
+| TC-FA-PREF-E2E-012-android-form-halaman-penuh-header-bottom-sheet-changelog | Android: form halaman penuh, ikon View history di header, dialog Save Changes bottom sheet, modal Changelog card list | FE+BE | 16 | 68, 69, 70, 71 |
 | TC-FA-PREF-E2E-013-android-dialog-d03-d04-bottom-sheet-dan-tooltip-disabled | Android: dialog D-03 dan D-04 sebagai bottom sheet, tooltip elemen Disabled bagi Read Only | FE+BE | 24 | 72, 606, 607 |
 | TC-FA-PREF-E2E-014-shimmer-form-preferences-dan-modal-changelog | Shimmer: form Preferences dan modal Changelog saat data dimuat | FE+BE | 15 | 73, 295 |
 | TC-FA-PREF-E2E-015-banner-setup-incomplete-dan-titik-peringatan-sectioncard | Banner Setup Incomplete dan titik peringatan SectionCard: isi, tidak dapat ditutup, tidak tampil bila lengkap | FE+BE | 15 | 76, 77, 78, 79, 81, 82 |
@@ -214,12 +213,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-6 | TC-FA-PREF-E2E-002 | FE+BE |
 | TC-FA-PREF-7 | TC-FA-PREF-E2E-002 | FE+BE |
 | TC-FA-PREF-8 | TC-FA-PREF-E2E-002 | FE+BE |
-| TC-FA-PREF-9 | TC-FA-PREF-E2E-003 | FE+BE |
-| TC-FA-PREF-10 | TC-FA-PREF-E2E-003 | FE+BE |
-| TC-FA-PREF-11 | TC-FA-PREF-E2E-003 | FE+BE |
-| TC-FA-PREF-12 | TC-FA-PREF-E2E-003 | FE+BE |
-| TC-FA-PREF-13 | TC-FA-PREF-E2E-003 | FE+BE |
-| TC-FA-PREF-14 | TC-FA-PREF-E2E-003 | FE+BE |
 | TC-FA-PREF-15 | TC-FA-PREF-E2E-004 | FE+BE |
 | TC-FA-PREF-16 | TC-FA-PREF-E2E-004 | FE+BE |
 | TC-FA-PREF-17 | TC-FA-PREF-E2E-004 | FE+BE |
