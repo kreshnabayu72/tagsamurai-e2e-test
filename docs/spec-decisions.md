@@ -1972,3 +1972,486 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (perilaku komponen di atas spec, 2026-11-08), 2026-11-14.
 - **Diterapkan di:** MyProfile 025, 026.
 - **Sumber:** wangs-ui DialogForm (`clickBackdrop`, behavior catalog TC-6496).
+
+## D-197 Setelah login, tujuan pertama selalu Portal — Product Hub, juga saat membuka URL halaman dalam tanpa sesi (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/MyProfile `015` TC-GS-PROFILE-71 langkah 8-10. Berlaku sama untuk spec lain yang membuka URL halaman dalam tanpa sesi lalu mengharapkan kembali ke halaman itu setelah login.
+- **Spec meminta:** tanpa sesi aktif, membuka URL My Profile diarahkan ke Login, dan setelah login (Pre-setup #1, jalur MFA Authenticator) kembali ke My Profile.
+- **Kenyataannya:**
+  - PRD login-password L907, kontrak `auth-foundation.md` §7a: tujuan redirect login sukses "selalu ke Portal dulu (semua entitas)". L157, L632 dan L915 juga menyebut redirect ke Portal — Product Hub.
+  - PRD MFA §11 (tc-mfa L549, TC-AUTH-MFA-178): Product Hub adalah tujuan redirect setelah MFA.
+  - Backend menjawab verify MFA dengan `redirectTo: "/portal/product-hub"`, dan app mengikutinya.
+  - Tidak ada baris PRD tentang kembali ke halaman yang dituju setelah login; hanya test case yang memintanya.
+- **Keputusan:**
+  - PRD menang: app sudah benar.
+  - Langkah 10 mengasersi halaman Portal — Product Hub setelah login. Lalu My Profile dibuka dari Portal (atau lewat URL-nya) dan diasersi tampil untuk user itu.
+  - Bukan ui-gap, dan tidak ada perbaikan app.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner (PRD sebagai acuan), 2026-11-14.
+- **Diterapkan di:** MyProfile 015.
+- **Sumber:** PRD auth login-password L157, L632, L907, L915; PRD MFA §11.
+
+## D-198 Langkah multi-tab dengan SSE dibatasi batas koneksi per host lingkungan e2e (HTTP/1.1) (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/Import `175` TC-GS-IMPORT-542, langkah yang membuka tab ke-6 dan ke-7. Berlaku sama untuk spec lain yang membuka banyak tab sekaligus, dengan tiap tab memegang koneksi SSE.
+- **Spec meminta:** tujuh tab import terbuka bersamaan, masing-masing dengan sesi aktif.
+- **Kenyataannya:**
+  - Stack e2e melayani app lewat HTTP/1.1 (network-resources run Imp175, 2.417 record h1).
+  - Chrome membatasi 6 koneksi bersamaan per host. Tiap tab memegang 2 SSE, jadi di tab ke-6 request baru (GET validate, POST product-sessions) tertahan di browser dan tidak pernah sampai ke server.
+  - Request yang sama lewat nama host lain dijawab dalam 7 ms. Backend tidak bermasalah, dan produksi di balik HTTP/2 tidak terkena batas ini.
+- **Keputusan:**
+  - **Kalau tab-tab itu membangun sesi bersamaan untuk menguji batas atau konflik:** sesi tab sebelumnya dibuat lewat helper API (POST product-sessions dan validate) dengan user yang sama. Ini sama dengan tab lain milik user itu, atau perangkat lain. Cukup 2-3 tab UI asli, dan reaksi UI diasersi di tab terakhir.
+  - **Kalau tiap tab mengasersi UI-nya sendiri:** tab ditutup setelah asersinya selesai, sehingga paling banyak 3 tab ber-SSE terbuka.
+  - Bukan gap BE dan bukan ui-gap.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14.
+- **Diterapkan di:** Import 175.
+- **Sumber:** run Tri-mac-20261114-1619 dan Imp175brk (spectra inspect eval), plans/global-settings-import/integration-findings.md baris 67.
+
+## D-199 Save tanpa perubahan di Edit Subscription: yang diasersi adalah tidak ada write di server, bukan tidak ada request (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/ClientSubscription `118` TC-231 / TC-458 langkah 11.
+- **Spec meminta:** Save tanpa perubahan tidak mengirim request mutasi.
+- **Kenyataannya:**
+  - Aplikasi mengirim `PATCH /subscriptions/{id}` `{durationYears, startDate}`.
+  - Kontrak menjawab edit tanpa perubahan dengan `204`. FE memetakan `204` ke `unchanged`, lalu menampilkan "No changes to save." dengan dialog tetap terbuka (decisions.md aplikasi L275).
+  - Tidak ada baris Changelog, Activity Log, atau System Log yang ditulis.
+- **Karena:** kontrak sengaja menyediakan jawaban `204` untuk edit yang tidak mengubah apa pun, jadi request ke server adalah perilaku yang dikontrakkan. Yang diminta spec, yaitu data tidak berubah, tetap bisa diamati.
+- **Keputusan:**
+  - Langkah 11 mengasersi:
+    - `PATCH` dijawab `204`;
+    - pesan "No changes to save.";
+    - dialog tetap terbuka;
+    - tidak ada baris log baru.
+  - Tidak ada asersi "tidak ada request". Ini bukan ui-gap.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
+- **Diterapkan di:** ClientSubscription 118.
+- **Sumber:** run CS-unwrap-win-20261114-bb; decisions.md aplikasi L275.
+
+## D-200 Nilai tanggal di baris Changelog Edit Subscription: diasersi tanggal kalendernya, bukan format glyph (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/ClientSubscription `120` TC-461, dan TC-459 langkah 139-140.
+- **Spec meminta:** Old/New value Start Date di baris Changelog memakai format tanggal tenant `dd/MM/yy` (misalnya `15/11/26`).
+- **Kenyataannya:**
+  - Stack menulis `15 Nov 2026` → `14 Nov 2026` (`d MMM yyyy`). Teks ini ditulis backend ke log, tidak diformat oleh FE.
+  - PRD §8.1 L1485 hanya menyebut `[Old Start Date] → [New Start Date]`, tanpa format.
+  - LLD license-allocation-subscription (Edit, L870-L888) hanya memberi contoh Duration (`1 year(s)` → `2 year(s)`). Satu-satunya aturan tanggal di LLD (L114, L705) adalah serialisasi field API `YYYY-MM-DDT00:00:00Z`, bukan teks log.
+- **Karena:** PRD dan LLD sama-sama tidak menetapkan format teks tanggal di log. Format glyph termasuk presentasi (D-096), sedangkan tanggal mana yang tercatat adalah data yang harus benar.
+- **Keputusan:**
+  - Nilai Old/New diasersi sebagai tanggal kalender. Nilai diterima bila terbaca sebagai hari yang sama, dalam format `dd/MM/yy` atau `d MMM yyyy`.
+  - Format glyph tidak diasersi.
+  - Celah dokumen ini diajukan sebagai issue ke pemilik LLD supaya format nilai log ditetapkan.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
+- **Diterapkan di:** ClientSubscription 120.
+- **Sumber:** run CS-unwrap-win-20261114-bb; PRD §8.1 L1484-L1485; LLD license-allocation-subscription L114, L705, L870-L888.
+
+## D-201 Code yang bentrok lagi saat retry otomatis di Create Division keluar dari e2e dan dijaga test backend (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/Division `022` (TC-GS-DIV-E2E-022) TC-GS-DIV-80, langkah 42-63.
+- **Spec meminta:**
+  - Admin kedua membuat `Quality Rival {runId}-022` dengan Code `QRT2`, tepat di antara percobaan Create pertama Session A dan retry Code otomatis oleh server.
+  - Create Session A lalu mendapat Code berikutnya. Retry yang bentrok lagi diperlakukan sebagai kegagalan biasa.
+- **Kenyataannya:**
+  - Konflik dan retry terjadi di dalam satu request server.
+  - Tidak ada fault hook atau test route yang bisa menaruh Division di jendela itu.
+  - Intercept tidak boleh memalsukan jawaban server.
+- **Karena:** state itu butuh timing presisi di dalam satu request backend, dan e2e hanya membangun state lewat cara yang benar-benar terjadi. Tingkat service/repository bisa mengujinya lewat test unit atau integrasi backend, e2e tidak.
+- **Keputusan:**
+  - Langkah 42-63 keluar dari e2e, sebagai cacat spec untuk lapisan e2e. Perilakunya dijaga test backend.
+  - TC-GS-DIV-272, TC-GS-DIV-273 dan TC-GS-DIV-79 tetap di e2e.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (usulan Integration B 2026-11-10, diajukan ulang Integration C).
+- **Diterapkan di:** Division 022.
+- **Sumber:** global-settings/division/TestCases/tc-division.md (TC-GS-DIV-80); aturan Code auto-generate di PRD Division; repo aplikasi plans/global-settings-user/integration-findings.md L1724-L1733.
+
+## D-202 Kunci TAG di plan dasar (AllTags) diskip sebagai contract drift: `/me/entity` tidak membawa Pricing Type atau rank (2026-11-14)
+
+- **Spec / langkah:** GlobalSettings/AllTags `010` dan `011`, langkah kunci TAG per plan (TAG-LOGIC-08).
+- **Spec meminta:** di plan dasar, semua tipe TAG selain QR terkunci.
+- **Kenyataannya:**
+  - PRD All TAGs §9.10 (TAG-LOGIC-08) dan Plans & Features PRD §4.1.3 L418 serta §9.2 L1331 (baris "TAG Features") menurunkan akses TAG dari Pricing Type plan: rank 0 berarti QR saja (plans.md L21/L30/L41/L47). PRD tidak punya baris katalog fitur untuk kunci ini.
+  - Kontrak `GET /v2/me/entity` (auth me/API/low-level-design.md L135 dan L192, openapi MeEntity, PR #18) hanya membawa `plan: {name, features}`, tanpa rank dan tanpa pricingType.
+  - Contoh baris `fixed_asset_module/tag_activation/unlimited` di openapi tidak ada di katalog PRD.
+- **Karena:** sinyal yang dibutuhkan PRD tidak ada di kontrak. Mencocokkan `plan.name` dengan "Free" atau "Starter" adalah tebakan yang rusak begitu plan default diganti namanya. Aturan owner (2026-11-08): drift diskip, tanpa improvisasi. Prinsip owner 2026-11-07: kondisi dibaca dari plan, bukan dari free atau paid.
+- **Keputusan:**
+  - Langkah kunci TAG per plan di 010/011 diskip sebagai contract drift.
+  - FE tidak memakai pencocokan nama plan. Perilaku layar TAG saat ini tetap, dan server tetap menolak write yang terkunci (TAG-LOGIC-08c).
+  - Drift ini diajukan sebagai issue ke pemilik kontrak `/me/entity`: Pricing Type atau rank, atau baris fitur akses TAG, belum ada di payload plan.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
+- **Diterapkan di:** AllTags 010, 011.
+- **Sumber:** PRD All TAGs §9.10; Plans & Features PRD §4.1.3 L418, §9.2 L1331; plans.md L21/L30/L41/L47; auth me/API/low-level-design.md L135, L192; openapi MeEntity.
+
+## D-203 Kandidat popup Assign User to Role (Global Role) untuk aktor Total Control: pemegang Read Only diskip sebagai contract drift (2026-11-14) (ditarik oleh D-204)
+
+- **Spec / langkah:** AdminConsole/SettingsRolePermission `045` langkah 10 dan 22 (picker assignment Manage language).
+- **Spec meminta:** kandidat tidak memuat pemegang role, yaitu seluruh Total Control dan Read Only, Default User, dan aktor sendiri. Search `Anggraini` (pemegang Read Only Dewi Anggraini) menampilkan `No results found`.
+- **Kenyataannya:**
+  - PRD settings-role-permission §9.5 (baris "Popup Assign User ke Role — Global Role") mengecualikan user yang sudah punya penugasan pada Global Role ini, Default User, Total Control, dan aktor sendiri.
+  - Pemegang Read Only memegang setiap Global Role lewat pola tingkat akses (§2.3; cascade `Assign (via Read Only)` di §8.3 dan §8.4). Menurut PRD, mereka termasuk user yang sudah punya penugasan.
+  - LLD assignable-users.md L23-L24 menetapkan pengecualian per picker tanpa menyebut bahwa `excludeKey` mengecualikan pemegang Read Only. Kode stack (assignable_users_query_builder.go L193-L199) sengaja tetap menampilkan pemegang Read Only untuk aktor Total Control, karena baris pola tier tidak dihitung sebagai pemegang `excludeKey`.
+- **Karena:** PRD dan LLD/stack berbeda soal apakah penugasan lewat pola Read Only dihitung sebagai "sudah punya penugasan". Aturan owner (2026-11-08): drift diskip tanpa improvisasi dan diajukan sebagai issue.
+- **Keputusan:**
+  - Langkah 10 (bagian pemegang Read Only) dan langkah 22 diskip sebagai contract drift.
+  - Pengecualian lain di langkah 10 (pemegang langsung, Total Control, Default User, aktor) tetap diasersi.
+  - Drift ini diajukan sebagai issue ke pemilik LLD assignable-users.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration B).
+- **Diterapkan di:** SettingsRolePermission 045.
+- **Sumber:** PRD admin-console/settings-role-permission §9.5, §2.3, §8.3, §8.4; LLD assignable-users.md L23-L24; iam assignable_users_query_builder.go L193-L199.
+
+## D-204 Kandidat popup Assign User to Role (Global Role) untuk aktor Total Control memuat pemegang Read Only; menarik D-203 (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/SettingsRolePermission `045`, langkah 10 (TC-AC-RP-161, aktor Total Control Siti Nurhaliza) dan langkah 22 (pool aktor "Manage user and role", aktor diganti di langkah 12).
+- **Spec meminta:** di langkah 10, kandidat tidak memuat seluruh Total Control dan Read Only.
+- **Kenyataannya:**
+  - PRD settings-role-permission §9.5 L2514 mengecualikan user yang sudah punya penugasan pada Global Role ini, Default User, Total Control, dan aktor sendiri. PRD lalu menambahkan: "Bagi aktor 'Manage user and role': exclude juga target Read Only."
+  - Karena pengecualian Read Only hanya disebut untuk aktor "Manage user and role", pool aktor Total Control memuat pemegang Read Only.
+  - LLD assignable-users.md L24 menyatakan hal yang sama ("A Total Control actor's Global Role pool includes Read Only holders"), dan stack mengikutinya.
+- **Karena:** PRD, LLD, dan kode sepakat. Bacaan D-203 (pemegang Read Only dianggap sudah punya penugasan lewat pola tier) tidak didukung §9.5, sehingga ini kesalahan spec, bukan contract drift.
+- **Keputusan:**
+  - Langkah 10 mengasersi bahwa Total Control, Default User, aktor, dan pemegang langsung tidak muncul, sedangkan pemegang Read Only muncul.
+  - Langkah 22 tetap seperti tertulis, karena di pool aktor "Manage user and role" pemegang Read Only memang dikecualikan.
+  - D-203 ditarik.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (koreksi Integration B).
+- **Diterapkan di:** SettingsRolePermission 045.
+- **Sumber:** PRD admin-console/settings-role-permission §9.5 L2514; LLD assignable-users.md L24; iam assignable_users_query_builder.go L193-L199.
+
+## D-205 Pemisah tanggal dan jam pada nilai Date Time tampilan tidak diasersi; nilai tanggal, jam, dan zona waktunya diasersi (2026-11-14)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-120` (kolom Last Updated, spec.md baris 43, 144-146), dan setiap spec lain yang menulis Date Time tampilan dengan koma, misalnya `25/03/26, 09:15`.
+- **Spec meminta:** Last Updated tampil `25/03/26, 09:15`, dengan koma setelah tanggal, pada K1 Date Format `dd/MM/yy`, Time Format 24h, Time Zone UTC.
+- **Kenyataannya:**
+  - Aplikasi menampilkan `25/03/26 09:15`, tanpa koma, lewat preset date Wangs UI yang mengikuti General Settings.
+  - General Settings PRD §4.3b mendefinisikan pratinjau format sebagai `17/03/23 14:30` (L310, L490), tanpa koma.
+  - Contoh tabel di PRD yang sama (L273-L277) dan prd-conventions §Date/DateTime memakai koma, tetapi konvensi menyatakan contoh semacam itu ilustratif ("contoh, bukan format tetap").
+- **Karena:** PRD tidak konsisten soal pemisah. Glyph pemisah termasuk presentasi (D-096), sedangkan tanggal, jam, dan zona waktu yang tampil adalah data yang harus benar.
+- **Keputusan:**
+  - Nilai diasersi per tanggal dan jam sesuai Date Format, Time Format, dan Time Zone General Settings.
+  - Pemisah di antara tanggal dan jam (spasi atau `, `) tidak diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan sesi slicing, component test Chart of Accounts).
+- **Diterapkan di:** SettingsChartOfAccounts 120; component test slicing Chart of Accounts.
+- **Sumber:** PRD global-settings/general-settings §4.3b L273-L277, L310, L490; foundation prd-conventions §Date/DateTime (aturan wajib Date/DateTime, contoh ilustratif).
+
+## D-206 Switch Active Admin Console untuk user yang nonaktif di Global Settings tampil Off dan disabled (2026-11-14)
+
+- **Spec / langkah:** AdminConsole/SettingsUser 020 `TC-AC-SU-100` langkah 14-15, bertentangan dengan 174 `TC-AC-SU-598` langkah 4.
+- **Spec meminta:**
+  - 020 menyatakan switch Active Admin Console tetap On (posisi terakhir), disabled, dengan tooltip.
+  - 174 menyatakan switch pada keadaan yang sama tampil Off.
+- **Kenyataannya:**
+  - Aplikasi menampilkan Off, disabled, dengan tooltip yang benar (`isActive && isActiveGlobal`, perbaikan F-INT-SU-12 2026-11-10).
+  - API users/list mengembalikan `isActive: true, isActiveGlobal: false` untuk user tersebut.
+- **Karena:** PRD ACSU-LOGIC-09 menetapkan status aktif sebagai AND dari status Admin Console dan Global Settings, dan dokumen API user-actions.md L29 sejalan. 174 mengikuti aturan ini, sedangkan 020 tidak.
+- **Keputusan:**
+  - 020 langkah 14-15 mengasersi switch Off dan disabled, dengan tooltip.
+  - Aplikasi tidak diubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-14 (temuan Integration C).
+- **Diterapkan di:** SettingsUser 020.
+- **Sumber:** PRD admin-console/settings-user ACSU-LOGIC-09; API doc user-actions.md L29; SettingsUser 174 `TC-AC-SU-598` langkah 4.
+
+## D-207 Placeholder filter Last Used in Journal di Chart of Accounts adalah `Select period` (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-123` langkah 11 dan catatan `drift-1`.
+- **Spec meminta:** placeholder `Select date` (mengikuti `prd-conventions.md` §9.8).
+- **Kenyataannya:** aplikasi menampilkan `Select period`.
+- **Karena:** PRD settings-chart-of-accounts L376 menyatakan delta yang disengaja atas §9.8: nilainya periode bulan (`MMM YYYY`), bukan tanggal. Ini bukan drift, sehingga catatan `drift-1` tidak berlaku.
+- **Keputusan:**
+  - Langkah 11 mengasersi `Select period`.
+  - Langkah 15 (Last Updated) tetap `Select date`.
+  - Aplikasi tidak diubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
+- **Diterapkan di:** SettingsChartOfAccounts UI-123.
+- **Sumber:** PRD fixed-asset settings-chart-of-accounts L370, L376.
+
+## D-208 Chip opsi pada field Function mengikuti overflow komponen (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-123` langkah 43.
+- **Spec meminta:** tiga chip (`Asset Cost`, `Gain on Disposal`, `Loss on Disposal`) tampil pada field `Function`.
+- **Kenyataannya:** pada lebar field, komponen menampilkan dua chip dan satu chip `+1 more`.
+- **Karena:**
+  - Overflow chip adalah perilaku komponen MultiSelect.
+  - Spec yang sama (langkah 61) sudah menerima aturannya: jumlah chip yang tampil ditambah N sama dengan jumlah opsi terpilih.
+- **Keputusan:**
+  - Langkah 43 mengasersi jumlah chip yang tampil ditambah N dari `+N more` sama dengan 3, dan ketiga opsi tercentang di daftar.
+  - Langkah 45-47 menghapus chip yang tampil.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
+- **Diterapkan di:** SettingsChartOfAccounts UI-123.
+- **Sumber:** perilaku MultiSelect wangs-ui; UI-123 langkah 61.
+
+## D-209 Counter seleksi dan tombol Unselect All mengikuti format komponen (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-125` kondisi K5-K8, langkah 78, 82-83, 87 dan langkah sejenis.
+- **Spec meminta:** counter `1000 Accounts selected` dan tombol `Unselect All`.
+- **Kenyataannya:** DataTable menampilkan `1,000 Accounts selected` (pemisah ribuan) dan `Unselect All (N records)`.
+- **Karena:** format angka dan label tombol adalah perilaku komponen DataTable yang sama di semua modul. Spec menulis angka mentah dari nilai Selection Limit, bukan teks tampilan.
+- **Keputusan:**
+  - Counter diasersi dengan pemisah ribuan (`1,000 Accounts selected`).
+  - Tombol diasersi sebagai `Unselect All (N records)`.
+  - Aplikasi tidak diubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
+- **Diterapkan di:** SettingsChartOfAccounts UI-125.
+- **Sumber:** perilaku DataTable wangs-ui (seleksi lintas halaman).
+
+## D-210 Format isi berkas Download Chart of Accounts diuji di e2e dengan BE nyata (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-E2E-009` langkah 15 dan langkah format isi berkas sejenis.
+- **Spec meminta:**
+  - Nilai boolean dan sel kosong ditulis dengan format tertentu.
+  - Berkas XLSX memuat satu sheet bernama `Sheet1`.
+- **Kenyataannya:** pada component test berbasis mock, berkas dibuat oleh export klien. CSV menulis `true`/`false`, XLSX menulis `TRUE`/`FALSE`, sel kosong tetap kosong, dan nama sheet `datatable`.
+- **Karena:** semua Download adalah export BE, sehingga format isi berkas adalah hasil BE. Mock hanya meniru.
+- **Keputusan:**
+  - Component test mengasersi nama berkas, ekstensi, header, dan baris sesuai perilaku export klien.
+  - Format nilai (boolean, sel kosong `-`) dan nama sheet diasersi di e2e dengan BE nyata.
+  - Bila BE berbeda dari spec, itu temuan BE.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan CoA Component Test).
+- **Diterapkan di:** SettingsChartOfAccounts E2E-009, BE-157 dan baris Download sejenis.
+- **Sumber:** keputusan owner 2026-11-11, semua Download adalah export BE (Contract v1).
+
+## D-211 Batas hari filter tanggal mengikuti zona waktu tenant (2026-11-15)
+
+- **Spec / langkah:** filter rentang tanggal di semua modul (pertanyaan dari SettingsChartOfAccounts).
+- **Spec meminta:** rentang tanggal mencakup hari yang dipilih secara inklusif.
+- **Kenyataannya:** filter tanggal menghitung batas hari dari zona waktu lokal browser.
+- **Karena:** tanggal di tabel ditampilkan dalam zona waktu tenant (General Settings). Batas hari filter harus sama dengan tanggal yang tampil agar baris yang terlihat bertanggal X ikut tersaring pada hari X.
+- **Keputusan:**
+  - Filter tanggal memakai zona waktu tenant yang sama dengan tampilan kolom.
+  - Selama zona waktu tenant sama dengan zona waktu browser saat run, asersi tidak berubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (pertanyaan CoA Component Test).
+- **Diterapkan di:** semua modul dengan filter tanggal.
+- **Sumber:** format tanggal General Settings (date format dan time zone).
+
+## D-212 Tombol Unselect All di Chart of Accounts tetap `Unselect All` (2026-11-15, menggantikan sebagian D-209)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-125` langkah 78, 83 dan langkah sejenis.
+- **Spec meminta:** tombol `Unselect All`.
+- **Kenyataannya:** di feat/connect-api, default bulk bar aplikasi menampilkan `Unselect All`. Label `Unselect All (N records)` di D-209 berasal dari cabang slicing.
+- **Karena:** default aplikasi di connect-api sudah sama dengan spec.
+- **Keputusan:**
+  - Tombol diasersi sebagai `Unselect All`.
+  - Bagian counter D-209 (`1,000 Accounts selected`) tetap berlaku.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
+- **Diterapkan di:** SettingsChartOfAccounts UI-125.
+- **Sumber:** default bulk bar feat/connect-api 8ea876915; D-209.
+
+## D-213 Format angka, mata uang dan tanggal mengikuti pengaturan sesi, bukan literal Test Case (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster (Test Case PRD v1), langkah yang menulis nilai terformat, misalnya `Rp 1.500.000,00` dan `15 Sep 2026`.
+- **Spec meminta:** nilai dengan format literal tersebut.
+- **Kenyataannya:** aplikasi memformat nilai menurut pengaturan General Settings sesi (date format, time zone, locale). Pada harness component test hasilnya `Rp1,500,000.00` dan `15/09/26`.
+- **Karena:** format tampilan adalah pengaturan tenant, bukan aturan modul. Literal Test Case mengandaikan satu pengaturan tertentu.
+- **Keputusan:**
+  - Asersi memakai keluaran formatter aplikasi untuk pengaturan sesi yang sedang berlaku.
+  - Literal di Test Case dibaca sebagai nilai, bukan format.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster, dan modul lain dengan kasus yang sama.
+- **Sumber:** pengaturan General Settings (date format, time zone).
+
+## D-214 403 tanpa alasan pada tulis Asset Master menampilkan toast izin (2026-11-15)
+
+- **Spec / langkah:** `TC-FA-FAAM-617`.
+- **Spec meminta:** toast izin saat tulis ditolak 403.
+- **Kenyataannya:** setiap 403 dipetakan ke toast workspace suspended/expired.
+- **Karena:** 403 pada umumnya berarti izin ditolak (konvensi EC-09). Suspended atau expired hanya boleh tampil bila respons membawa alasan itu.
+- **Keputusan:**
+  - 403 dengan kode alasan suspended/expired menampilkan toast suspended/expired.
+  - 403 lainnya menampilkan toast izin. Ini perbaikan FE di pemetaan error modul.
+  - Bila kontrak API tidak mendefinisikan kode alasan itu, catat sebagai drift kontrak untuk pemilik LLD.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster, Asset Name write.
+- **Sumber:** konvensi EC-09; plans/fixed-asset-settings-asset-master/decisions.md L32.
+
+## D-215 Asset Master: keputusan UI tercatat menang atas baris Test Case v1, kecuali Code List overlay (2026-11-15)
+
+- **Spec / langkah:** SettingsAssetMaster baris 28-3 (default sort header Asset Name), 762 (filter Category yang dihapus di Detail), 92, 189, 137 dan 684 (emoji), LBL-297, LBL-300 dan CAID-165 (Modified By), serta CAID-160 (overlay Code List).
+- **Spec meminta:** perilaku sesuai Test Case v1.
+- **Kenyataannya:** keputusan slicing tercatat berbeda. Keputusan modul (decisions.md) mengatur default sort dan filter Category, D-016 mengatur emoji, dan D-052 mengatur Modified By nama lengkap.
+- **Karena:** perbedaan UI yang disengaja dan tercatat menang atas Test Case. Untuk overlay, modul ini sudah memutuskan backdrop tidak menutup popup (`TC-FA-FAAM-304`, decisions.md L158), sehingga Code List harus konsisten dengan itu.
+- **Keputusan:**
+  - Baris 28-3, 762, emoji (D-016) dan Modified By (D-052) mengasersi keputusan tercatat, dengan rujukan keputusannya.
+  - CAID-160 diikuti: klik overlay tidak menutup Dialog Code List, sedangkan Escape dan `[✕]` tetap menutup. Ini perbaikan FE (decisions.md L241 diubah).
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster.
+- **Sumber:** decisions.md L158 dan L241; D-016; D-052.
+
+## D-216 Tombol Select pada dialog TreeSelect tetap aktif dan memvalidasi saat diklik (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster `TC-FA-FAAM-322`, `TC-FA-FAAM-323` (Test Case PRD v1).
+- **Spec meminta:** tombol `Select` disabled selama belum ada pilihan.
+- **Kenyataannya:** tombol `Select` aktif selama dialog tidak sedang memuat. Klik tanpa pilihan menampilkan `You must make a selection`.
+- **Karena:** perilaku komponen TreeSelectDialog wangs-ui, yang sejalan dengan mayoritas design system (tombol konfirmasi tetap aktif, validasi saat diklik). Perilaku komponen menang.
+- **Keputusan:** langkah tersebut mengasersi bahwa tombol aktif dan bahwa klik tanpa pilihan menampilkan `You must make a selection`.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster.
+- **Sumber:** katalog perilaku TreeSelectDialog wangs-ui (rc.224).
+
+## D-217 Mengosongkan Code pada Asset Master mengikuti FAAM-LOGIC-07d (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster `TC-FA-FAAM-340` bertentangan dengan `TC-FA-FAAM-226` (Test Case PRD v1).
+- **Spec meminta:**
+  - 340 mengharapkan satu penulisan selesai.
+  - 226 mengharapkan toast netral T-10, form menutup, dan tidak ada penulisan.
+  - Keduanya untuk keadaan yang sama, yaitu Code dikosongkan.
+- **Kenyataannya:** aplikasi mengikuti 226.
+- **Karena:** PRD FAAM-LOGIC-07d mendukung 226.
+- **Keputusan:** 340 mengasersi perilaku 226: toast netral T-10, form menutup, dan tidak ada permintaan tulis.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster.
+- **Sumber:** PRD fixed-asset settings-asset-master FAAM-LOGIC-07d; repo aplikasi plans/fixed-asset-settings-asset-master/conflicts.AssetName.md.
+
+## D-218 Melepas centang Initial Company mengosongkan isinya (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsCustomAssetId `TC-FA-CAID-49` langkah 49-2 dan 49-3 (Test Case PRD v1).
+- **Spec meminta:** setelah centang segmen Initial Company dilepas, input menjadi disabled dan masih berisi `ABC`.
+- **Kenyataannya:** input menjadi disabled dan kosong.
+- **Karena:** keputusan UI yang tercatat. Melepas centang mengosongkan teks yang sudah diketik, dan keputusan ini menggantikan FI-04 yang meminta teks dipertahankan. Perbedaan UI yang disengaja menang atas PRD.
+- **Keputusan:** langkah 49-2 dan 49-3 mengasersi input disabled dan kosong.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test CAID).
+- **Diterapkan di:** SettingsCustomAssetId.
+- **Sumber:** repo aplikasi plans/fixed-asset-settings-asset-master/decisions.md L508.
+
+## D-219 Format tanggal-jam tabel log mengikuti tampilan aplikasi (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsCustomAssetId `TC-FA-CAID-69`, sel tanggal tabel Changelog (Test Case PRD v1).
+- **Spec meminta:** `15/09/26, 14:25` (dengan koma).
+- **Kenyataannya:** `15/09/26 14:25` (tanpa koma).
+- **Karena:** D-213 menetapkan format angka, mata uang, dan tanggal mengikuti setting sesi. Pemisah tanggal-jam adalah soal tampilan, bukan bug (D-096).
+- **Keputusan:** script mengasersi format yang ditampilkan aplikasi untuk setting sesi tersebut, tidak hardcode koma. Berlaku untuk semua tabel log yang memakai komponen bersama.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test CAID).
+- **Diterapkan di:** SettingsCustomAssetId dan modul lain dengan tabel log yang sama.
+- **Sumber:** D-213, D-096.
+
+## D-220 Sel Purchase yang di luar scope tampil sebagai No access (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster `TC-FA-FAAM-803` langkah 803-2 (Test Case PRD v1).
+- **Spec meminta:** sel Purchase yang Out Of Scope menampilkan `—`.
+- **Kenyataannya:** sel menampilkan `No access`.
+- **Karena:** respons API tidak membawa penanda bahwa sebuah field di luar scope, jadi UI tidak bisa membedakannya dari field tanpa izin. Ini selisih PRD dan kontrak (contract drift), dan langkah seperti ini dilewati tanpa improvisasi.
+- **Keputusan:** langkah 803-2 dilewati sebagai contract drift. Issue dibuat untuk pemilik LLD supaya kontrak membawa penanda out-of-scope.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster.
+- **Sumber:** aturan contract drift (owner 2026-11-08).
+
+## D-221 Pesan tanpa hasil di TreeSelect berupa satu baris teks (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetMaster `TC-FA-FAAM-322`, deskripsi keadaan tanpa hasil (Test Case PRD v1).
+- **Spec meminta:** keadaan kosong dengan judul dan deskripsi (EmptyState).
+- **Kenyataannya:** TreeSelect menampilkan satu baris pesan tanpa hasil.
+- **Karena:** perilaku komponen TreeSelect wangs-ui, yang sejalan dengan mayoritas design system (daftar opsi yang kosong menampilkan satu baris pesan, bukan EmptyState halaman). Perilaku komponen menang.
+- **Keputusan:** langkah tersebut mengasersi teks pesan tanpa hasil saja, tanpa deskripsi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Asset Master Component Test).
+- **Diterapkan di:** SettingsAssetMaster dan modul lain yang memakai TreeSelect.
+- **Sumber:** katalog perilaku TreeSelect wangs-ui (rc.224).
+
+## D-222 Master Switch tetap ON selama dialog Disable terbuka (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsCustomAssetId `TC-FA-CAID-69` langkah 94-4 dan 97-1 (Test Case PRD v1).
+- **Spec meminta:** Master Switch sudah OFF saat dialog Disable terbuka.
+- **Kenyataannya:** switch tetap ON, dan baru berubah OFF setelah [Disable] berhasil. Kalau [Cancel] diklik, switch tetap ON (FI-06).
+- **Karena:** perilaku umum di mayoritas design system. Toggle yang butuh konfirmasi tidak berubah sebelum dikonfirmasi, dan switch terkendali baru berubah setelah permintaan selesai. Perilaku komponen menang.
+- **Keputusan:** langkah tersebut mengasersi switch ON selama dialog terbuka, dan OFF hanya setelah Disable berhasil. Langkah berikutnya yang mengharapkan OFF sebelum Disable ikut disesuaikan.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test CAID).
+- **Diterapkan di:** SettingsCustomAssetId dan semua toggle dengan dialog konfirmasi.
+- **Sumber:** repo aplikasi CustomAssetIdForm.tsx (switch terkendali `draft.isActive`), FI-06.
+
+## D-223 Keadaan yang hanya tercapai karena waktu berlalu diuji di component test (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `043` (Test Case PRD v1).
+- **Spec meminta:** data master-asset yang sudah berumur melewati batas waktu tertentu.
+- **Kenyataannya:** e2e tidak punya cara nyata untuk membuat data berumur tanpa menunggu waktunya berlalu. Satu-satunya jalan adalah route khusus test yang mengubah umur data, dan itu dilarang karena e2e hanya membangun keadaan lewat jalur yang memang terjadi.
+- **Keputusan:**
+  - Reaksi UI terhadap data berumur diuji di component test lewat seed dengan tanggal lama.
+  - Perhitungan umur oleh BE dicakup unit test BE.
+  - Langkah e2e tersebut dilewati dengan rujukan ke keputusan ini.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
+- **Diterapkan di:** SettingsChartOfAccounts dan semua langkah e2e lain yang bergantung pada umur data.
+- **Sumber:** aturan "stage only real states" (owner 2026-11-07).
+
+## D-224 Fallback V-08 emoji di Label Name tidak bisa tercapai di client (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/AssetLabeling `TC-FA-LBL-124` (spec TC-FA-LBL-E2E-037, langkah 21-24) dan component test LabelFormDialog TC-FA-LBL-124.
+- **Spec meminta:** nilai beremoji disuntikkan langsung ke DOM field Label Name, lalu inline error `Label name contains invalid characters` tampil langsung dan [Save] disabled dengan tooltip yang sama.
+- **Kenyataannya:** field nama memakai sanitizer `Trim` dan `StripEmoji` di Field (konvensi form untuk semua field nama dan teks bebas). Emoji dibuang di setiap jalur masuk: ketik, tempel, drop, dan perubahan nilai dari DOM. Nilai beremoji tidak pernah sampai ke validator, sehingga fallback V-08 di client tidak punya keadaan nyata. Menyuntikkan nilai lewat jalur khusus test tidak diizinkan.
+- **Keputusan:**
+  - Langkah 21-24 mengasersi bahwa emoji dibuang dari Label Name tanpa pesan, dan status [Save] mengikuti sisa nama.
+  - Pesan V-08 tetap dicakup di jalur server: permintaan beremoji ditolak 422 dan pesannya tampil setelah Submit (component test lewat seed respons 422).
+  - Tidak ada validator emoji tambahan di FE, karena tidak pernah bisa memicu.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test Labels).
+- **Diterapkan di:** AssetLabeling dan semua field nama lain yang memakai `StripEmoji`.
+- **Sumber:** PRD settings-asset-labeling §6 V-08 dan aturan karakter Label Name (L692, L695); skill create-form (sanitizer `Trim`, `StripEmoji`); aturan "stage only real states" (owner 2026-11-07).
+
+## D-225 Label Select All menyebut total record, bukan jumlah yang sedang terpilih (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/AssetLabeling `TC-FA-LBL-181` langkah 181-1 (component test LabelList).
+- **Spec meminta:** setelah Select All lalu satu baris dilepas, tombol berbunyi `Select All (119 records)`.
+- **Kenyataannya:** tombol tetap `Select All (120 records)`. Teks jumlah terpilih sudah ada di Bulk Action Bar: `119 Labels selected`.
+- **Karena:** label tombol menyebut sasaran aksinya, yaitu seluruh record yang akan terpilih bila diklik. Ini perilaku komponen BulkActionButton (`totalRecords`) dan pola umum di aplikasi lain (mis. "Select all 120 conversations"). PRD hanya menyebut button `Select All` tanpa angka. Perilaku komponen menang.
+- **Keputusan:** langkah 181-1 mengasersi `Select All (120 records)` dan jumlah terpilih dibaca dari teks Bulk Action Bar `119 Labels selected`.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration B, component test Labels).
+- **Diterapkan di:** semua tabel yang memakai BulkActionButton.
+- **Sumber:** PRD settings-asset-labeling L251; BulkActionButton wangs-ui.
+
+## D-226 Penolakan bulk status per id dijawab 200 dengan entri `blocked` (2026-11-15)
+
+- **Spec / langkah:** AdminConsole/SettingsUser `TC-AC-SU-E2E-182` langkah 17 (`TC-AC-SU-619`).
+- **Spec meminta:** request langsung untuk mengaktifkan user yang nonaktif di Global Settings ditolak server dengan respons bukan 2xx.
+- **Kenyataannya:** server menjawab `200` dengan entri per id `status: blocked, reason: global_inactive`, dan status user tetap Inactive.
+- **Karena:** kontrak API `POST /v2/iam/users/products/admin_console/status/bulk` menetapkan bahwa kegagalan guard per id (`self`, `default_user`, `tcro_target`, `no_access`, `global_inactive`, `not_found`) dilaporkan sebagai entri `blocked` di dalam array hasil `200`, tidak pernah sebagai respons error tingkat atas. Spec mengikuti kontrak.
+- **Keputusan:** langkah 17 mengasersi `200` dengan entri `blocked` / `global_inactive` untuk id tersebut. Langkah 18 (status tetap Inactive) tidak berubah. Langkah bulk lain yang mengharapkan penolakan non-2xx untuk guard per id ikut aturan ini.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration C).
+- **Diterapkan di:** SettingsUser dan semua endpoint bulk dengan hasil per id (`blocked` / `skipped`).
+- **Sumber:** admin-console/settings-user/API/user-actions.md L11-L29 dan L93.
+
+## D-227 Switch disabled tidak masuk urutan Tab (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-COA-E2E-008`, blok `TC-FA-COA-163` langkah 11 dan 13.
+- **Spec meminta:** Tab sampai fokus berada di Switch Status baris P1 yang disabled (langkah 11), lalu tooltip `You don't have permission to edit.` tampil saat Switch menerima fokus keyboard (langkah 13).
+- **Kenyataannya:** Switch yang disabled tidak bisa difokus dengan Tab, jadi tooltip tidak bisa dipicu lewat keyboard. Notes spec sendiri sudah menyebut bahwa elemen disabled lazimnya tidak dapat difokus.
+- **Karena:** perilaku mayoritas design system dan elemen native: kontrol `disabled` dikeluarkan dari urutan Tab (MUI, Chakra, React Aria `isDisabled`, Radix). Perilaku komponen menang.
+- **Keputusan:**
+  - Langkah 11 dan 13 dilewati dengan rujukan ke keputusan ini.
+  - Langkah 12 (Switch Status baris P1 Disabled) tetap diasersi.
+  - Tooltip izin pada kontrol disabled tetap diuji lewat hover bila spec memintanya.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A, F-07).
+- **Diterapkan di:** SettingsChartOfAccounts dan semua langkah lain yang mengharapkan fokus keyboard pada kontrol disabled.
+- **Sumber:** katalog perilaku Switch wangs-ui; Notes spec TC-FA-COA-E2E-008.
+
+## D-228 T-11 di entitas Suspended/Expired muncul setelah Submit, bukan saat klik + Account (2026-11-15)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-COA-E2E-079`, blok `TC-FA-COA-112` langkah 2-3.
+- **Spec meminta:** klik `+ Account` (langkah 2), lalu Toast T-11 tampil (langkah 3).
+- **Kenyataannya:** klik `+ Account` hanya membuka form. T-11 tampil setelah Submit ditolak server (`403` entitas Suspended/Expired), dan form tetap terbuka.
+- **Karena:** PRD settings-chart-of-accounts memicu T-11 dari aksi tulis: baris T-11 "Aksi tulis apa pun saat entitas Suspended atau Expired" (L954) dan E-FACO-53 (L1343: seluruh aksi tulis pada entitas Suspended/Expired → 403, toast T-11, tanpa perubahan data). Membuka form bukan aksi tulis. Aplikasi sesuai PRD; urutan di spec yang keliru.
+- **Keputusan:** langkah 2-3 dijalankan sebagai: klik `+ Account`, isi form, Submit, lalu verifikasi T-11 tampil dan tidak ada data yang berubah.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A, F-14).
+- **Diterapkan di:** SettingsChartOfAccounts dan langkah lain yang mengharapkan T-11 dari aksi yang bukan penulisan.
+- **Sumber:** PRD settings-chart-of-accounts L954, L1343, gate F-FACO-01 (L1106).
+
+## D-229 Tombol panah di dalam input sel grid tetap milik input (2026-11-15)
+
+- **Spec / langkah:** GlobalSettings/Import `TC-GS-IMPORT-E2E-091`, blok `TC-GS-IMPORT-235` (Navigasi keyboard pada grid Edit this page) langkah 7-8.
+- **Spec meminta:** dengan fokus di sel Brand Name baris #1, tekan panah bawah, lalu fokus tidak lagi berada di sel baris #1.
+- **Kenyataannya:** fokus berada di input teks sel (langkah 2 menempatkannya lewat klik). Panah bawah ditangani input, sehingga fokus tetap di input baris #1. Navigasi panah antarsel berjalan bila fokus ada di sel itu sendiri (role gridcell). Tab dan Shift+Tab berpindah antar-input sesuai spec (perbaikan rc.240).
+- **Karena:** perilaku komponen DataTable: tombol yang datang dari kontrol di dalam sel diserahkan ke kontrol itu, sehingga input teks tidak kehilangan tombol panah, sama seperti grid editable MUI DataGrid dan React Aria. Perilaku komponen menang.
+- **Keputusan:** langkah 7-8 dilewati dengan rujukan ke keputusan ini; langkah 10 mengasersi fokus tetap di baris #1. Langkah Tab/Shift+Tab tetap diasersi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
+- **Diterapkan di:** Import dan grid lain yang selnya berisi input yang selalu tampil.
+- **Sumber:** react-core `useDataTableKeyboard` (rc.240), katalog TC-6561.
+
+## D-230 Klik backdrop popup form tidak menutup popup; menggantikan D-196 (2026-11-15)
+
+- **Spec / langkah:** GlobalSettings/MyProfile `025` TC-GS-PROFILE-150 langkah 17-18 dan `026` TC-GS-PROFILE-151 langkah 17-20; berlaku untuk spec lain yang mengklik area di luar popup form.
+- **Spec meminta:** klik di luar popup Change Password membuat popup tetap terbuka, baik form kosong (150) maupun sudah terisi (151), tanpa dialog Unsaved Changes (151 langkah 20).
+- **Kenyataannya:** aplikasi menyetel `closeOnOverlayClick: false` untuk semua DialogForm (default form dialog di core aplikasi, bersama konfirmasi buang perubahan). Klik backdrop tidak menutup popup dan tidak memunculkan Unsaved Changes, kosong maupun terisi. Bukti probe di slot 1: klik mendarat di mask dialog, popup tetap ada setelah 2 detik.
+- **Karena:** konvensi aplikasi yang disengaja menang atas default komponen (isian pengguna tidak pernah hilang karena klik di luar). Konvensi ini sama dengan permintaan spec. D-196 disusun dari default komponen DialogForm dan tidak memperhitungkan konfigurasi aplikasi, sehingga digantikan.
+- **Keputusan:** langkah 150 dan 151 dijalankan sesuai spec: klik backdrop, popup tetap terbuka, tanpa Unsaved Changes. D-196 tidak berlaku lagi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration C).
+- **Diterapkan di:** MyProfile 025, 026 dan semua popup form aplikasi.
+- **Sumber:** core aplikasi `formDialogDefaults.ts` (`closeOnOverlayClick: false`); D-196.
+
+## D-231 Klik backdrop menutup dialog Detail yang hanya-baca (2026-11-15)
+
+- **Spec / langkah:** AdminConsole/SettingsDeviceName `TC-AC-DN-E2E-087`, blok `TC-AC-DN-245` (Klik backdrop tidak menutup dialog Detail) langkah 26-27; berlaku juga untuk dialog Detail hanya-baca lain (mis. Device SKU TC-AC-DS-428).
+- **Spec meminta:** klik backdrop tidak menutup dialog Detail.
+- **Kenyataannya:** dialog Detail tertutup saat backdrop diklik (run dn-r6-ac-ser; perilaku yang sama di Device SKU 128).
+- **Karena:** dialog Detail tidak memuat isian, jadi tidak ada yang hilang. Menutup lewat backdrop adalah default komponen Dialog dan mayoritas design system (MUI Dialog, Chakra Modal, Mantine Modal, antd Modal). Konvensi aplikasi yang menahan backdrop (D-230) hanya berlaku untuk DialogForm. Perilaku komponen menang.
+- **Keputusan:** langkah 26-27 mengasersi dialog Detail tertutup setelah klik backdrop; langkah berikutnya yang butuh Detail terbuka membukanya lagi.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-15 (temuan Integration A).
+- **Diterapkan di:** SettingsDeviceName 087, Device SKU 128, dan semua dialog Detail hanya-baca.
+- **Sumber:** wangs-ui Dialog (default tutup lewat backdrop); D-230.
