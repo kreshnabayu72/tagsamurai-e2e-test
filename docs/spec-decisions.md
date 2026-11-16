@@ -2572,7 +2572,8 @@ Aturan:
 
 - **Berlaku untuk:** semua modul, semua tabel.
 - **Aturan:** tabel di halaman (layar list, tab, halaman detail) mempertahankan Search, Filter, Sort, Pagination dan pilihan kolom saat user pindah halaman atau tab lalu kembali, termasuk lewat sidebar. Tabel di dalam dialog selalu mulai dari keadaan awal setiap kali dialog dibuka.
-- **Untuk spec:** langkah "kembali ke halaman" mengharapkan state yang ditinggalkan user, bukan reset. Langkah "buka dialog lagi" mengharapkan keadaan awal. Langkah yang meminta sebaliknya di-tag `ui-gap` dengan merujuk D-243.
+- **Pembaruan 2026-11-16 (foundation `prd-conventions` §9.19, §24.5, §27.1c, commit `4d617e3`):** tabel di halaman dipertahankan saat pindah sub-tab lalu kembali, Back/breadcrumb dari Detail, refresh (F5), dan kembali lewat sidebar dari menu lain atau dari Detail. Tabel di-reset ke default saat user mengklik menu List itu sendiri ketika sedang berada di List tersebut. Tab browser baru, tab ditutup, dan logout memulai dari default. Tabel di dalam dialog di-reset setiap kali dialog dibuka lagi (Search, Sort, Filter, Paginasi, Column Visibility), dan dipertahankan per tab selama dialog masih terbuka.
+- **Untuk spec:** langkah "kembali ke halaman" mengharapkan state yang ditinggalkan user, bukan reset. Langkah "klik menu List saat sedang di List itu" mengharapkan keadaan awal. Langkah "buka dialog lagi" mengharapkan keadaan awal. Langkah yang meminta sebaliknya di-tag `ui-gap` dengan merujuk D-243.
 - **Diputuskan oleh:** product owner 2026-11-11, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum (sebelumnya hanya diterapkan per kasus di D-167 dan D-240).
 
 ## D-244 Aturan umum: data uji ui-e2e harus bisa dibuat lewat alur nyata (2026-11-16)
