@@ -1,14 +1,14 @@
 {
  "schema": "spec-from-prd-audit/v1",
  "putaran": 3,
- "suite": "fe3b6b885cc67614",
+ "suite": "d8dbcbb16382475c",
  "hitung": {
-  "ok": 707,
-  "parsial": 30,
+  "ok": 705,
+  "parsial": 32,
   "hilang": 0,
   "salah": 0,
   "na": 126,
-  "skor": 98.0
+  "skor": 97.8
  },
  "siap": [
   "TC-FA-MISS-E2E-001-tab-active-tampilan-tabel",
@@ -364,23 +364,6 @@
    "catatan": "E2E-032 (web/android) mengasersi Cancel Report pemegang di kartu My Asset yang disebut unit ini sebagai permukaan mobile, tetapi tidak tercatat sebagai penanggung; unit hanya mencatat E2E-012 (web) dan E2E-046 (android)."
   },
   {
-   "unit": "§8.1#p2",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MISS-BE-071-transisi-status-dan-konflik",
-   "langkah": [
-    56,
-    57,
-    58,
-    59,
-    60,
-    61,
-    62,
-    63
-   ],
-   "catatan": "BE-071 mengasersi Reject, Cancel, Remove (baris dihapus), dan timeout baris Disposal mengembalikan record ke Missing, tetapi tidak tercatat sebagai penanggung unit ini; unit hanya mencatat E2E-012, E2E-036, BE-077."
-  },
-  {
    "unit": "§8.1#r17",
    "verdict": "ok",
    "jenis": "plan",
@@ -547,6 +530,19 @@
    "catatan": "`server juga menolak aksinya (MISS-LOGIC-09)` pada skenario Andi diasersi di BE-072 77-86, tetapi BE-072 tidak tercatat sebagai penanggung unit ini (hanya E2E-017)."
   },
   {
+   "unit": "§4.8#r8",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-E2E-017-last-holder-disabled",
+   "langkah": [
+    11,
+    12,
+    67,
+    68
+   ],
+   "catatan": "E2E-017 mengasersi `Report Disposal` Disabled bagi Group Manager Last holder (sel Group Manager baris Report Disposal, MISS-LOGIC-09) tetapi E2E-017 tidak tercatat sebagai penanggung unit ini; tambahkan sebagai pemilik sel Disabled."
+  },
+  {
    "unit": "EB-AKS-1",
    "verdict": "ok",
    "jenis": "plan",
@@ -613,12 +609,36 @@
    "catatan": "Tidak adanya nomor transaksi/header pada Missing Log terasersi di E2E-012 langkah 6, UI-058 langkah 4, dan BE-070 langkah 13; belum tercatat sebagai penanggung unit ini."
   },
   {
-   "unit": "§11#r2",
-   "verdict": "ok",
+   "unit": "§2#b2",
+   "verdict": "parsial",
    "jenis": "plan",
-   "spec": "TC-FA-MISS-E2E-025-gating-view-asset-value",
+   "spec": "TC-FA-MISS-E2E-033-efek-transaksi-dep-borrow",
    "langkah": [],
-   "catatan": "Hak lihat nilai finansial diasersi di spec gating (E2E-020 s.d. E2E-025) dan BE-072 langkah 62-76, bukan di E2E-031; catat sebagai penanggung."
+   "catatan": "Titik masuk halaman transaksi Borrow oleh Aktor transaksi tanpa Manage asset & TAG (Update) (langkah 1-22) diasersi di sini tetapi E2E-033 tidak tercatat sebagai penanggung unit ini. Tambahkan sebagai pemilik."
+  },
+  {
+   "unit": "§2#b2",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
+   "langkah": [],
+   "catatan": "Titik masuk Assignment (Aktor Assignment tanpa Manage asset & TAG Update, langkah 1-8) diasersi tetapi spec tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§2#b2",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-E2E-035-efek-transaksi-dep-transactions-transfer",
+   "langkah": [],
+   "catatan": "Titik masuk Transfer (Aktor Transfer tanpa Manage asset & TAG Update) diasersi tetapi spec tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§2#b2",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-E2E-032-laporan-pemegang-dep-my-asset",
+   "langkah": [],
+   "catatan": "Titik masuk My Asset oleh pemegang yang juga ber-hak Aktor Missing sebagai Pelapor admin (bagian `Pemegang dengan hak Aktor Missing melapor sebagai Pelapor admin`, sekitar langkah 61-71) diasersi di sini tetapi spec tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§4.4#r3",
@@ -672,6 +692,14 @@
    "catatan": "Toast gagal TS-MIS-07 'Error, failed to cancel report.' dan dialog bertahan diasersi di UI-059, tetapi UI-059 tidak tercatat sebagai penanggung unit ini; tambahkan sebagai pemilik cabang gagal."
   },
   {
+   "unit": "§9.7#r8",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
+   "langkah": [],
+   "catatan": "Per `shared` (efek modul lain di spec -dep- modul itu), E2E-034 harus menjadi penanggung unit ini untuk sisi Assignment; saat ini hanya E2E-032, E2E-033, BE-076, BE-077."
+  },
+  {
    "unit": "§1.2#r51",
    "verdict": "ok",
    "jenis": "plan",
@@ -682,6 +710,14 @@
     16
    ],
    "catatan": "Sisi 'tetap hanya mencakup Borrow, Assign, Transfer, Disposal' (modul lain tidak berubah) diasersi di BE-070 langkah 14-16, bukan di E2E-033; catat BE-070 sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§1.2#r55",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
+   "langkah": [],
+   "catatan": "Unit menyebut Assign (ASSIGN-LOGIC-16) tetapi hanya E2E-033 (Borrow) tercatat sebagai penanggung. Tambahkan E2E-034."
   },
   {
    "unit": "§2.1#b1",
@@ -807,15 +843,15 @@
    "catatan": "BE-081 langkah 29-38 mengasersi pembatalan Report dan baris Disposal oleh System (EC-MIS-03) tetapi tidak tercatat sebagai penanggung unit ini."
   },
   {
-   "unit": "§4.1a#r33",
+   "unit": "§8.2#b2",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-MISS-E2E-017-last-holder-disabled",
+   "spec": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
    "langkah": [
-    10,
-    12
+    9,
+    18
    ],
-   "catatan": "Syarat 'bukan Last holder' (Report Disposal Disabled dengan alasan 'You were holding this asset. Ask another admin.') diasersi di E2E-017 langkah 10-12, dan syarat hak Report Disposal diasersi di E2E-023 langkah 16 dan 34; keduanya belum tercatat sebagai penanggung unit ini."
+   "catatan": "Trace §8.2#b2 menunjuk langkah 9 dan 18 (toast), padahal spec tidak mengasersi Transaction admin log sama sekali. Klausa ini diasersi di E2E-044 (langkah 4-23, 28, 33) dan BE-077 (langkah 7, 14, 20, 29, 33, 37, 42, termasuk Cancel Disposal Report di sub-tab Disposal). Hapus E2E-036 sebagai penanggung atau tambahkan asersi Transaction admin log sub-tab Disposal untuk Report Disposal dan Cancel Disposal Report."
   },
   {
    "unit": "§9.2#p12",
@@ -882,6 +918,30 @@
    "catatan": "Cabang 'baris Disposal Lost ditolak approver -> record kembali Missing' diasersi di BE-071 (56-57), bukan di E2E-036 (hanya Decline dan pembatalan baris); BE-071 tidak tercatat sebagai penanggung."
   },
   {
+   "unit": "§9.7#r5",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-BE-071-transisi-status-dan-konflik",
+   "langkah": [
+    57,
+    59,
+    61,
+    63,
+    65
+   ],
+   "catatan": "Transisi Reject, Cancel, Remove, timeout baris Disposal dan Decline Report kembali ke Missing diasersi di BE-071 (langkah 56-65). Spec itu tidak tercatat sebagai penanggung unit ini. Tambahkan BE-071 sebagai spec yang menanggung §9.7#r5, atau biarkan BE-077 (langkah 46-47, 80-85) sebagai penanggung tunggal."
+  },
+  {
+   "unit": "§9.8#p2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-BE-071-transisi-status-dan-konflik",
+   "langkah": [
+    17
+   ],
+   "catatan": "Langkah 17 mengasersi bahwa Cancel Disposal Report tidak mengirim event `missing_*`. Di BE-077 langkah 42 hanya mengasersi node dan Transaction admin log tanpa klausa tanpa-event untuk Cancel. Klausa tanpa-event untuk Cancel Report hanya ada di BE-071, yang tidak tercatat sebagai penanggung §9.8#p2. Tambahkan BE-071 ke penanggung unit ini."
+  },
+  {
    "unit": "EB-FB-1@bulk-report-disposal",
    "verdict": "ok",
    "jenis": "plan",
@@ -903,19 +963,60 @@
    "catatan": "Klausa 'Toolbar (kanan): Search, Filter, Download, Scan Found Asset' diasersi di E2E-001 langkah 6, bukan di spec penanggung unit ini."
   },
   {
+   "unit": "§9.4.4#r4",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-BE-081-bulk-report-disposal-dep-transactions-disposal",
+   "langkah": [
+    12,
+    15
+   ],
+   "catatan": "Langkah 12 dan 15 mengasersi teks dialog blok D-MIS-09 (`None of the selected records can be reported for disposal.` dan `Selected assets come from more than one group. Select assets from one group.`) di spec be-e2e, yang menurut layernya tanpa teks UI. Teks dialog sudah diasersi di ui-e2e (037 langkah 56, 69) dan ui-client (UI-052 langkah 54, 65). Di BE cukup asersi penolakan tanpa Disposal Report dan tanpa node baru."
+  },
+  {
+   "unit": "§9.6#r10",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-BE-081-bulk-report-disposal-dep-transactions-disposal",
+   "langkah": [
+    8,
+    12,
+    15
+   ],
+   "catatan": "Langkah 8 (toast `Success, disposal report has been created. Some items were skipped.`), 12 (`None of the selected records can be reported for disposal.`), dan 15 (`Selected assets come from more than one group...`) adalah teks UI di spec be-e2e. Teks itu sudah diasersi di E2E-037 langkah 44, 56, 69 dan UI-052 langkah 65, 54, 78. Di BE cukup asersi sebagian diproses, sebagian dilewati, atau seluruh seleksi ditolak tanpa Disposal Report."
+  },
+  {
    "unit": "§9.6#r10",
    "verdict": "ok",
    "jenis": "plan",
    "spec": "TC-FA-MISS-UI-052-bulk-report-disposal-klien",
    "langkah": [
+    81,
+    82,
     83,
     84,
     85,
+    86,
+    87,
+    88,
+    89,
+    90,
     91,
     92,
-    93
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104
    ],
-   "catatan": "Kegagalan bulk 'mengikuti prd-conventions.md §8' (5xx dan timeout mempertahankan bar dan seleksi) diasersi di UI-052, tidak tercatat sebagai penanggung unit ini."
+   "catatan": "Kolom `On failure (5xx/timeout)` Bulk Report Disposal (`Mengikuti prd-conventions.md §8`: bar dan seleksi dipertahankan, dialog tetap terbuka dengan input, list di-refresh) diasersi benar di UI-052 langkah 88-92 dan 100-104, tetapi UI-052 tidak tercatat sebagai penanggung unit ini. Tambahkan."
   },
   {
    "unit": "§9.7#r7",
@@ -945,9 +1046,23 @@
    "unit": "§11#r8",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-MISS-E2E-045-long-missing-after-dep-settings-transaction-rules",
-   "langkah": [],
-   "catatan": "Klausa `Transaction timeout` pada baris ini diasersi oleh BE-071 langkah 62 (baris Disposal melewati Transaction timeout), dan kelayakan (`FATR-LOGIC-09`) oleh BE-070; keduanya tidak tercatat sebagai penanggung unit ini. E2E-045 hanya memegang klausa Long missing after."
+   "spec": "TC-FA-MISS-BE-077-log-dan-notifikasi",
+   "langkah": [
+    84,
+    85
+   ],
+   "catatan": "Klausa `Transaction timeout` pada unit ini diasersi di BE-077 langkah 84-85 dan BE-071 langkah 62-63 (baris Disposal melewati Transaction timeout, record kembali Missing tanpa event missing_*). Kedua spec tidak tercatat sebagai penanggung §11#r8; E2E-045 hanya menanggung Long missing after. Tambahkan salah satunya."
+  },
+  {
+   "unit": "§11#r8",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MISS-BE-071-transisi-status-dan-konflik",
+   "langkah": [
+    62,
+    63
+   ],
+   "catatan": "Sama: Transaction timeout atas baris Disposal diasersi di sini tetapi BE-071 tidak tercatat sebagai penanggung §11#r8."
   },
   {
    "unit": "§9.4.1#r11",
@@ -1170,38 +1285,15 @@
    "catatan": "Unit D10 Failure adalah baris checklist yang mendelegasikan ke `error-handling-convention.md` dan §9.6; trace ke langkah 74 (Download tidak menulis log) tidak berkaitan. Penanganan kegagalan tiap aksi dimiliki unit §9.6 per aksi dan spec ui-client; unit ini tidak perlu penanggung."
   },
   {
-   "unit": "§9.2#b30",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MISS-BE-077-log-dan-notifikasi",
-   "langkah": [
-    48,
-    49,
-    50
-   ],
-   "catatan": "BE-077 langkah 48-50 juga mengasersi Report Disposal `Reported` dibatalkan `System` dengan alasan `Asset reported missing` dan tanpa node Missing Log; BE-077 tidak tercatat sebagai penanggung unit ini."
-  },
-  {
    "unit": "§9.2#b31",
    "verdict": "ok",
    "jenis": "plan",
    "spec": "TC-FA-MISS-BE-070-kelayakan-report-missing",
    "langkah": [
+    36,
     37
    ],
-   "catatan": "BE-070 langkah 37 mengasersi aset dengan record `In Disposal Process` ditolak `Already reported missing` (klausa 'Report Missing tidak ditawarkan ... termasuk In Disposal Process'); BE-070 tidak tercatat sebagai penanggung unit."
-  },
-  {
-   "unit": "§9.2#b31",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MISS-BE-077-log-dan-notifikasi",
-   "langkah": [
-    51,
-    52,
-    53
-   ],
-   "catatan": "BE-077 langkah 51-53 mengasersi baris Disposal Waiting for Approval menjadi Canceled oleh `System` alasan `Asset reported missing` tanpa event `missing_*`; BE-077 tidak tercatat sebagai penanggung unit."
+   "catatan": "Klausa `Report Missing tidak ditawarkan` pada aset Reported Disposal dan In Disposal Process diasersi benar di BE-070 langkah 36-37 (In Disposal Process hanya di sana; Reported Disposal juga di BE-081 langkah 35-36). BE-070 tidak tercatat sebagai penanggung unit ini. Tambahkan BE-070."
   }
  ],
  "prd": [
@@ -1245,7 +1337,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Definisi `Book value` (nilai buku Commercial per periode Posted terakhir, sama dengan kolom Asset Value (Commercial)) ditetapkan `asset.md` (General information), di luar kit; kesamaan nilai kolom dengan Book value tidak bisa diasersi pasti oleh suite ini."
+   "catatan": "Definisi `Book value` = nilai buku Commercial per periode Posted terakhir dan kesamaannya dengan Asset Value (Commercial) ditetapkan `asset-detail.md` (General information), di luar kit; tidak dihitung kurang. Hak lihat (Total Control, Accounting, View asset value Group di-assign + descendant) diasersi di E2E-020/021/023/025 dan BE-072 langkah 62-76."
   },
   {
    "unit": "§5#r3",
@@ -1261,7 +1353,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Nilai dan penamaan Source ditetapkan PRD modul asal (`asset.md`, `borrow.md`, `transactions-assignment.md`, `transactions-transfer.md`, `audit/`, `my-asset.md`, `wizard-reconciliation/`) dan penamaan titik masuk My Asset / Asset List / Asset Detail / tab Damaged 'wajib ditetapkan di PRD modulnya sendiri'; suite ini tidak dapat memastikan literal nilai tersebut."
+   "catatan": "Nilai dan penamaan Source ditetapkan PRD modul asal (`borrow.md`, `assignment.md`, `transfer.md`, `audit/`, `my-asset.md`, `wizard-reconciliation/`); titik masuk My Asset, Asset List / Asset Detail, tab Damaged belum menetapkan namanya. Suite hanya bisa menegaskan Source terisi (E2E-031 langkah 30, BE-070 langkah 13 dan 29) dan opsi DISTINCT (E2E-004 langkah 8, BE-078 langkah 68)."
   },
   {
    "unit": "§4.1b#r10",
@@ -1285,7 +1377,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Node untuk Reject / Cancel / Remove / timeout baris Disposal tidak dinamai di PRD ini; ditetapkan `transactions-disposal.md` §8.2/§8.3 (dokumen di luar kit). Ketiadaan asersi nama node-nya bukan kekurangan."
+   "catatan": "Isi node untuk Reject / Cancel / Remove / timeout baris Disposal dan penulisan log aktor Disposal dimiliki `disposal.md` §8.2 dan §8.3; suite hanya menegaskan kembalinya record ke Missing tanpa event missing_* (BE-077 langkah 46-47, 80-85)."
   },
   {
    "unit": "§8.1#p2",
@@ -1293,7 +1385,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Nama node log untuk Reject / Cancel / Remove / timeout baris Disposal ditetapkan `transactions-disposal.md` §8.3 (dokumen di luar kit); ketiadaan asersinya tidak dihitung kurang."
+   "catatan": "PRD baris 919: `node log-nya mengikuti peristiwa Disposal yang sama (disposal.md §8.3)`; isi node untuk Reject / Cancel / Remove / timeout baris Disposal dimiliki disposal.md §8.3 (di luar kit). Tidak dihitung kurang. Perilaku kembali ke Missing sudah diasersi (BE-077 langkah 47, 81, 83, 85)."
   },
   {
    "unit": "§8.1#r6",
@@ -1400,7 +1492,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Hasil Dispose/Decline hanya Aktor Disposal, keanggotaan Aktor Disposal (Group Manager, Asset Admin sub-tab Disposal) dan larangan Accounting melakukan Dispose/Decline ditetapkan `transactions-disposal.md` §2.1 / `DISP-LOGIC-15` dan surface-nya Transactions > Disposal (modul lain). Tidak dapat diasersi pasti oleh suite ini; ketiadaannya tidak mengubah verdict. Bagian modul Missing (Accounting boleh melapor aset Missing dan membatalkan laporan sendiri) sudah diasersi E2E-023 langkah 16, 29, 33-34 dan BE-072 langkah 22-27."
+   "catatan": "Hak Dispose / Decline hanya Aktor Disposal dan Accounting tidak dapat Dispose atau Decline dimiliki `disposal.md` §2.1 dan `DISP-LOGIC-15`; surface Transactions > Disposal milik modul lain, tidak dihitung kurang."
   },
   {
    "unit": "§1.2#r14",
@@ -1411,28 +1503,20 @@
    "catatan": "MISS-LOGIC-01e menyebut «di semua titik masuk (§2, Pelapor admin)»: titik masuk halaman transaksi, Stock Opname, Work Order, tab Damaged, My Asset adalah surface modul lain dan tidak bisa dipastikan oleh suite ini; Asset List dan Asset Detail sudah diasersi (E2E-031 langkah 19-20, 143-144)."
   },
   {
-   "unit": "§10#r6",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Klausa «Group dan Category yang dirujuk record berjalan tidak dapat dihapus ... pesan dimiliki settings-groups/ dan settings-categories/»: penghapusan Category adalah surface modul settings-categories dan tidak bisa dipastikan suite ini; tidak dihitung kurang. Delete Asset Data (Missing, WfC, Reported Disposal, In Disposal Process, bulk, Unmanaged, Disposed) dan Group sudah diasersi (BE-070 langkah 56-77, E2E-031 langkah 122-132, E2E-040)."
-  },
-  {
-   "unit": "§11#r2",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Sumber tidak menetapkan di mana `Book value` tampil: PRD §2.1 menulis `View asset value ... melihat sub-tab Active, History, dan dialog Missing Log beserta Book value dan kolom nilai finansial`, sedangkan §8.1 (argumen dan tabel node Missing Log) maupun kolom T-MIS-01/02 tidak memuat baris atau kolom `Book value` (hanya `Asset Value (Commercial)`, yang menurut glosarium PRD sama dengan Book value). Tidak ada literal `Book value` di suite."
-  },
-  {
    "unit": "§2#b2",
-   "verdict": "ok",
+   "verdict": "parsial",
    "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Definisi Pelapor admin mencantumkan titik masuk Work Order dan tab Damaged: surface modul lain (Work Order, Damaged) yang tidak bisa dipastikan suite ini; tidak ada spec yang melapor dari kedua layar itu. Titik masuk Asset List/Detail, Borrow, Assignment, Transfer, Stock Opname, My Asset, Reconciliation, Aktor transaksi, dan pemilik sesi sudah diasersi."
+   "spec": "TC-FA-MISS-E2E-042-stock-opname-dep-audit",
+   "langkah": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38
+   ],
+   "catatan": "PRD baris 256: pemilik sesi Stock Opname tanpa Update melapor `untuk aset dalam cakupan transaksi atau sesi itu`; baris 540 dan F-MISS-01.k1a: aset `di luar cakupan Group` dilewati. Untuk pemilik sesi tanpa Manage asset & TAG, PRD tidak memutuskan cakupan mana yang berlaku. Data DU-042-11 menempatkan `Lemari Arsip Besi` di dalam sesinya, namun langkah 38 mengasersi dilewati karena di luar cakupan Group Maya; BE-072 DU-072-13 mendefinisikan cakupannya `aset dalam sesinya sendiri`."
   },
   {
    "unit": "§3#p2",
@@ -1456,7 +1540,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Klausa `bukti kehilangan diunggah sebagai dokumen di form Disposal saat Execute, mengikuti SET-07` ditetapkan `transactions-disposal.md` DISP-LOGIC-07 (dokumen/modul Disposal); tidak bisa diasersi di suite ini."
+   "catatan": "Bukti kehilangan (laporan polisi) diunggah di form Disposal saat Execute mengikuti SET-07 / `disposal.md` DISP-LOGIC-07, di luar kit; yang teruji di sini hanya dialog satu isian dan Add Update untuk catatan."
   },
   {
    "unit": "§7.3#r5",
@@ -1477,20 +1561,20 @@
    "catatan": "F-MISS-01 «Dialog D-MIS-01 untuk semua titik masuk»: titik masuk Work Order dan tab Damaged milik modul lain tidak diasersi; tidak dihitung kurang. Satu record per aset dan efek atomik (invarian) sudah diasersi."
   },
   {
-   "unit": "§9.7#r1",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Surface terdampak `Approvals` (transaksi menunggu milik aset) adalah milik modul lain dan tidak diasersi di spec mana pun; tidak dihitung kurang."
-  },
-  {
    "unit": "§9.8#r1",
    "verdict": "ok",
    "jenis": "prd",
    "spec": null,
    "langkah": [],
    "catatan": "Penerima notifikasi `missing_reported` dimiliki `fixed-asset/notification/PRD/notification.md` §5.1d (PRD §9.8: `Penerima, varian, Title, Body ... dimiliki notification.md`); isi/penerima tidak bisa diasersi pasti di suite ini."
+  },
+  {
+   "unit": "§9.7#r8",
+   "verdict": "parsial",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "§9.7 baris Cancel Report: `pengingat baris berjalan lagi` mengandaikan pengingat sempat dijeda, sedangkan F-MISS-01.k2c: `pengingat baris transaksi tidak dijeda` dan MISS-LOGIC-05d: `pengingat berjalan seperti biasa`. E2E-033 langkah 33 dan 82 mengasersi keduanya; PRD tidak menetapkan yang berlaku."
   },
   {
    "unit": "§1.2#r41",
@@ -1502,40 +1586,27 @@
   },
   {
    "unit": "§1.2#r55",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-MISS-E2E-033-efek-transaksi-dep-borrow",
-   "langkah": [],
-   "catatan": "Pengaturan baris Assign setelah Confirm / Reject / Cancel Report ditetapkan ASSIGN-LOGIC-16 di transactions-assignment.md (di luar kit); E2E-033 hanya mengasersi sisi Borrow, dan E2E-034 hanya laporan pemegang tanpa penutupan baris Assigned."
-  },
-  {
-   "unit": "§9.7#r3",
-   "verdict": "ok",
+   "verdict": "parsial",
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Surface Asset Detail dan My Asset (status global aset dikembalikan setelah Reject) dimiliki modul asset/ dan my-asset/, di luar kit; suite ini mengasersi status global di server (BE-076 langkah 46) dan pengingat baris Borrow (E2E-033 langkah 52), bukan tampilan di surface modul lain."
+   "catatan": "MISS-LOGIC-05d: `tetap terbuka ... juga setelah Confirm / Reject / Cancel Report` bertentangan dengan EC-MIS-07 (§9.4.2) dan F-MISS-06.k2 yang menyatakan Confirm menutup baris (`Returned` / `Unassigned` bermarker `Missing`). E2E-033 langkah 45 dan E2E-034 langkah 60 mengikuti sisi Confirm menutup; PRD tidak menetapkan sisi mana yang berlaku."
   },
   {
    "unit": "§1.2#r42",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
-   "langkah": [
-    8,
-    15
-   ],
-   "catatan": "Akibat Assign dimiliki ASSIGN-LOGIC-16 (transactions-assignment.md), di luar kit; hasil rinci status baris (selain Canceled pada Waiting for Handover) tidak ditetapkan sumber, sehingga langkah 8 ('tidak lagi berstatus Assigned') tidak bisa dinilai lebih ketat."
+   "spec": null,
+   "langkah": [],
+   "catatan": "Akibat per transaksi Assignment dimiliki `assignment.md` ASSIGN-LOGIC-16 (di luar kit); E2E-034 langkah 8 mengasersi baris Assigned tidak lagi `Assigned`, tidak dihitung kurang."
   },
   {
    "unit": "§1.2#r43",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": "TC-FA-MISS-E2E-035-efek-transaksi-dep-transactions-transfer",
-   "langkah": [
-    9
-   ],
-   "catatan": "Akibat Transfer dimiliki XFER-LOGIC-16 (transactions-transfer.md), di luar kit; hasil rinci baris In transit setelah dilaporkan tidak ditetapkan sumber, langkah 9 hanya mengasersi 'tidak lagi In transit'."
+   "spec": null,
+   "langkah": [],
+   "catatan": "Akibat per transaksi Transfer dimiliki `transfer.md` XFER-LOGIC-16 (di luar kit); E2E-035 langkah 10 mengasersi baris In transit tidak lagi `In transit`, tidak dihitung kurang."
   },
   {
    "unit": "EB-FB-1@cancel-disposal-report",
@@ -1561,12 +1632,9 @@
    "unit": "§1.2#r44",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
-   "langkah": [
-    74,
-    77
-   ],
-   "catatan": "Akibat Disposal atas Report Missing dimiliki transactions-disposal.md 9.2.11, di luar kit; E2E-036 mengasersi Report Reported menjadi Canceled oleh System (langkah 77), baris Disposal ditutup diasersi di BE-077 langkah 51-52 dan BE-081 langkah 31-34."
+   "spec": null,
+   "langkah": [],
+   "catatan": "Akibat per transaksi Disposal dimiliki `disposal.md` §9.2 `9.2.11` (di luar kit); E2E-036 langkah 77 mengasersi Report Canceled oleh `System` alasan `Asset reported missing`, tidak dihitung kurang."
   },
   {
    "unit": "§1.2#r96",
@@ -1583,9 +1651,9 @@
    "unit": "§11#r7",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
+   "spec": null,
    "langkah": [],
-   "catatan": "Klausa 'Report Disposal atas aset Missing hanya lewat record Missing' dan aturan DISP-LOGIC-15 dimiliki transactions-disposal.md, di luar kit; sisi negatif tidak bisa diasersi di suite ini."
+   "catatan": "`Report Disposal atas aset Missing hanya lewat record Missing` bergantung pada aksi di modul Disposal (`disposal.md` DISP-LOGIC-15, DISP-LOGIC-05); sisi negatifnya (Report Disposal tidak tersedia dari Transactions > Disposal untuk aset Missing) tidak bisa diasersi suite ini."
   },
   {
    "unit": "§4.4#r11",
@@ -1598,6 +1666,14 @@
    "catatan": "Copy toast TS-MIS-06 mengikuti TS-DISP-18 (transactions-disposal.md), di luar kit; langkah 18 tanpa literal sudah sesuai."
   },
   {
+   "unit": "§7.2#r4",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Isi dialog `D-MIS-08` mengikuti `D-DISP-15` dan toast mengikuti `TS-DISP-18` (`disposal.md`, di luar kit); E2E-036 langkah 16-18 hanya dapat mengasersi dialog terbuka, submit tanpa Reason, dan toast sukses."
+  },
+  {
    "unit": "§7.3#r10",
    "verdict": "ok",
    "jenis": "prd",
@@ -1605,7 +1681,7 @@
    "langkah": [
     18
    ],
-   "catatan": "TS-MIS-06 mengikuti TS-DISP-18 (transactions-disposal.md), di luar kit; literal toast sukses dan gagal tidak bisa ditetapkan di sini."
+   "catatan": "TS-MIS-06 sukses dan gagal ditetapkan lewat `TS-DISP-18` milik `disposal.md`, dokumen di luar kit. Literal toast sukses Cancel Disposal Report dan toast gagalnya tidak bisa dipastikan dari kit ini. Langkah 18 mengasersi toast sukses tampil tanpa literal, dan itu sudah memadai. Toast gagal tidak diasersi di spec mana pun, dan itu tidak dihitung kurang."
   },
   {
    "unit": "§9.2#b28",
@@ -1619,17 +1695,12 @@
    "unit": "§9.6#r9",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Copy toast sukses dan gagal Report Disposal / Cancel Disposal Report ('Toast TS-DISP-15 / TS-MIS-06', 'Toast gagal yang sama', TS-DISP-18) dimiliki transactions-disposal.md (di luar kit); literal toast gagal tidak ada di sumber sehingga tidak bisa diasersi, tidak mengubah verdict."
-  },
-  {
-   "unit": "§9.8#p2",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Notifikasi transisi Disposal «dimiliki transactions-disposal.md (§9.8)», dokumen di luar kit. Suite hanya dapat mengasersi ketiadaan event missing_*; isi notifikasi Disposal sendiri tidak dapat diasersi di sini."
+   "spec": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
+   "langkah": [
+    9,
+    18
+   ],
+   "catatan": "Toast `TS-DISP-15` dan `TS-MIS-06`/`TS-DISP-18`, termasuk toast gagalnya, ditetapkan `disposal.md`, di luar kit. Literal `Success, disposal report has been created.` di langkah 9 tidak termuat utuh di PRD ini, hanya terbaca dari varian sebagian di TS-MIS-09. Hasil yang pasti ada di dokumen Disposal, jadi ketiadaan asersi atas toast gagal tidak dihitung kurang."
   },
   {
    "unit": "EB-BLK-2@tabel-active",
@@ -1653,9 +1724,25 @@
    "unit": "§7.3#r13",
    "verdict": "ok",
    "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "'Sukses penuh mengikuti TS-DISP-15' dan 'Mengikuti TS-DISP-15' (gagal) dimiliki transactions-disposal.md (di luar kit); tidak mengubah verdict."
+   "spec": "TC-FA-MISS-E2E-037-bulk-report-disposal-dep-transactions-disposal",
+   "langkah": [
+    13,
+    33,
+    100
+   ],
+   "catatan": "PRD baris 858: `Sukses penuh mengikuti TS-DISP-15 (disposal.md)` dan kolom kegagalan `Mengikuti TS-DISP-15`; dokumen itu di luar kit. Literal sukses penuh `Success, disposal report has been created.` tidak termuat di kit; hanya turunan dari pola foundation (toast bulk Success) dan varian sebagian. Varian sebagian dinyatakan literal dan diasersi benar di E2E-037 langkah 44 dan UI-052 langkah 78. Tidak dihitung kurang."
+  },
+  {
+   "unit": "§9.6#r10",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": "TC-FA-MISS-E2E-037-bulk-report-disposal-dep-transactions-disposal",
+   "langkah": [
+    13,
+    33,
+    100
+   ],
+   "catatan": "Toast sukses penuh `TS-DISP-15`, idempotensi, dan guard atomik Bulk Report Disposal `Mengikuti / Dimiliki disposal.md` (di luar kit); tidak bisa diverifikasi dari kit ini dan tidak dihitung kurang."
   },
   {
    "unit": "§9.4.4#r6",
@@ -1695,7 +1782,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Penerima notifikasi `missing_long` ditetapkan di luar kit: PRD 11 baris ini menunjuk `settings-transaction-rules/` `FATR-LOGIC-13` (dan katalog `notification.md` 5.1d). Suite tidak bisa memastikan penerimanya; ketiadaan asersinya tidak dihitung kurang."
+   "catatan": "PRD baris 1359: `penerima missing_long dimiliki notification.md §5.1d` dan `kelayakan (FATR-LOGIC-09)` (MISS-LOGIC-03k: dimiliki tiap modul transaksi). Penerima notifikasi dan syarat kelayakan ditetapkan dokumen di luar kit; ketiadaan asersinya tidak dihitung kurang."
   },
   {
    "unit": "§9.9#p4",
@@ -2448,7 +2535,7 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Definisi `Book value` (nilai buku Commercial per periode Posted terakhir, sama dengan kolom Asset Value (Commercial)) ditetapkan `asset.md` (General information), di luar kit; kesamaan nilai kolom dengan Book value tidak bisa diasersi pasti oleh suite ini."
+     "catatan": "Definisi `Book value` = nilai buku Commercial per periode Posted terakhir dan kesamaannya dengan Asset Value (Commercial) ditetapkan `asset-detail.md` (General information), di luar kit; tidak dihitung kurang. Hak lihat (Total Control, Accounting, View asset value Group di-assign + descendant) diasersi di E2E-020/021/023/025 dan BE-072 langkah 62-76."
     }
    ],
    "juri": "j1"
@@ -2584,10 +2671,10 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Nilai dan penamaan Source ditetapkan PRD modul asal (`asset.md`, `borrow.md`, `transactions-assignment.md`, `transactions-transfer.md`, `audit/`, `my-asset.md`, `wizard-reconciliation/`) dan penamaan titik masuk My Asset / Asset List / Asset Detail / tab Damaged 'wajib ditetapkan di PRD modulnya sendiri'; suite ini tidak dapat memastikan literal nilai tersebut."
+     "catatan": "Nilai dan penamaan Source ditetapkan PRD modul asal (`borrow.md`, `assignment.md`, `transfer.md`, `audit/`, `my-asset.md`, `wizard-reconciliation/`); titik masuk My Asset, Asset List / Asset Detail, tab Damaged belum menetapkan namanya. Suite hanya bisa menegaskan Source terisi (E2E-031 langkah 30, BE-070 langkah 13 dan 29) dan opsi DISTINCT (E2E-004 langkah 8, BE-078 langkah 68)."
     }
    ],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "EB-KOL-2@tabel-active",
@@ -2791,7 +2878,7 @@
    "unit": "§4.1b#r24",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§4.1b#r25",
@@ -2948,10 +3035,10 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Node untuk Reject / Cancel / Remove / timeout baris Disposal tidak dinamai di PRD ini; ditetapkan `transactions-disposal.md` §8.2/§8.3 (dokumen di luar kit). Ketiadaan asersi nama node-nya bukan kekurangan."
+     "catatan": "Isi node untuk Reject / Cancel / Remove / timeout baris Disposal dan penulisan log aktor Disposal dimiliki `disposal.md` §8.2 dan §8.3; suite hanya menegaskan kembalinya record ke Missing tanpa event missing_* (BE-077 langkah 46-47, 80-85)."
     }
    ],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§8#r2",
@@ -3000,28 +3087,13 @@
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "plan",
-     "spec": "TC-FA-MISS-BE-071-transisi-status-dan-konflik",
-     "langkah": [
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62,
-      63
-     ],
-     "catatan": "BE-071 mengasersi Reject, Cancel, Remove (baris dihapus), dan timeout baris Disposal mengembalikan record ke Missing, tetapi tidak tercatat sebagai penanggung unit ini; unit hanya mencatat E2E-012, E2E-036, BE-077."
-    },
-    {
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Nama node log untuk Reject / Cancel / Remove / timeout baris Disposal ditetapkan `transactions-disposal.md` §8.3 (dokumen di luar kit); ketiadaan asersinya tidak dihitung kurang."
+     "catatan": "PRD baris 919: `node log-nya mengikuti peristiwa Disposal yang sama (disposal.md §8.3)`; isi node untuk Reject / Cancel / Remove / timeout baris Disposal dimiliki disposal.md §8.3 (di luar kit). Tidak dihitung kurang. Perilaku kembali ke Missing sudah diasersi (BE-077 langkah 47, 81, 83, 85)."
     }
    ],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§8.1#r1",
@@ -3186,7 +3258,7 @@
    "unit": "§9.2#b22",
    "verdict": "na",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j1"
   },
   {
    "unit": "§9.6#r6",
@@ -3373,7 +3445,7 @@
    "unit": "§9.2#b33",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j4"
+   "juri": "j1"
   },
   {
    "unit": "§9.2#r1",
@@ -3510,13 +3582,13 @@
    "unit": "§9.4.2#r7",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§9.6#r3",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§9.9#r7",
@@ -3756,7 +3828,7 @@
    "unit": "§9.2#b26",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§9.2#r5",
@@ -3768,7 +3840,7 @@
    "unit": "§9.4.2#r5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r8",
@@ -3804,7 +3876,7 @@
    "unit": "§9.7#r4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§9.8#r7",
@@ -4155,7 +4227,7 @@
    "unit": "§2.1#r9",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j1"
   },
   {
    "unit": "§4.8#b2",
@@ -4190,8 +4262,20 @@
   {
    "unit": "§4.8#r8",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j6"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-E2E-017-last-holder-disabled",
+     "langkah": [
+      11,
+      12,
+      67,
+      68
+     ],
+     "catatan": "E2E-017 mengasersi `Report Disposal` Disabled bagi Group Manager Last holder (sel Group Manager baris Report Disposal, MISS-LOGIC-09) tetapi E2E-017 tidak tercatat sebagai penanggung unit ini; tambahkan sebagai pemilik sel Disabled."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§4.8#r9",
@@ -4209,7 +4293,7 @@
    "unit": "§9.3#b1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "EB-AKS-5@add-update",
@@ -4245,7 +4329,7 @@
    "unit": "§2.1#p10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
    "unit": "§2.1#p2",
@@ -4285,10 +4369,10 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Hasil Dispose/Decline hanya Aktor Disposal, keanggotaan Aktor Disposal (Group Manager, Asset Admin sub-tab Disposal) dan larangan Accounting melakukan Dispose/Decline ditetapkan `transactions-disposal.md` §2.1 / `DISP-LOGIC-15` dan surface-nya Transactions > Disposal (modul lain). Tidak dapat diasersi pasti oleh suite ini; ketiadaannya tidak mengubah verdict. Bagian modul Missing (Accounting boleh melapor aset Missing dan membatalkan laporan sendiri) sudah diasersi E2E-023 langkah 16, 29, 33-34 dan BE-072 langkah 22-27."
+     "catatan": "Hak Dispose / Decline hanya Aktor Disposal dan Accounting tidak dapat Dispose atau Decline dimiliki `disposal.md` §2.1 dan `DISP-LOGIC-15`; surface Transactions > Disposal milik modul lain, tidak dihitung kurang."
     }
    ],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
    "unit": "§2.1#b6",
@@ -4704,15 +4788,8 @@
   {
    "unit": "§10#r6",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Klausa «Group dan Category yang dirujuk record berjalan tidak dapat dihapus ... pesan dimiliki settings-groups/ dan settings-categories/»: penghapusan Category adalah surface modul settings-categories dan tidak bisa dipastikan suite ini; tidak dihitung kurang. Delete Asset Data (Missing, WfC, Reported Disposal, In Disposal Process, bulk, Unmanaged, Disposed) dan Group sudah diasersi (BE-070 langkah 56-77, E2E-031 langkah 122-132, E2E-040)."
-    }
-   ],
-   "juri": "j2"
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§11#r1",
@@ -4723,34 +4800,60 @@
   {
    "unit": "§11#r2",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MISS-E2E-025-gating-view-asset-value",
-     "langkah": [],
-     "catatan": "Hak lihat nilai finansial diasersi di spec gating (E2E-020 s.d. E2E-025) dan BE-072 langkah 62-76, bukan di E2E-031; catat sebagai penanggung."
-    },
-    {
-     "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Sumber tidak menetapkan di mana `Book value` tampil: PRD §2.1 menulis `View asset value ... melihat sub-tab Active, History, dan dialog Missing Log beserta Book value dan kolom nilai finansial`, sedangkan §8.1 (argumen dan tabel node Missing Log) maupun kolom T-MIS-01/02 tidak memuat baris atau kolom `Book value` (hanya `Asset Value (Commercial)`, yang menurut glosarium PRD sama dengan Book value). Tidak ada literal `Book value` di suite."
-    }
-   ],
-   "juri": "j8"
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§2#b2",
-   "verdict": "ok",
+   "verdict": "parsial",
    "temuan": [
     {
-     "jenis": "prd",
+     "jenis": "kurang",
      "spec": null,
      "langkah": [],
-     "catatan": "Definisi Pelapor admin mencantumkan titik masuk Work Order dan tab Damaged: surface modul lain (Work Order, Damaged) yang tidak bisa dipastikan suite ini; tidak ada spec yang melapor dari kedua layar itu. Titik masuk Asset List/Detail, Borrow, Assignment, Transfer, Stock Opname, My Asset, Reconciliation, Aktor transaksi, dan pemilik sesi sudah diasersi."
+     "catatan": "PRD baris 232: Pelapor admin melapor `dari titik masuk mana pun: ... Stock Opname, Work Order, tab Damaged, atau My Asset`. Titik masuk Report Missing dari Work Order dan dari tab Damaged tidak diasersi di spec mana pun (Work Order hanya muncul sebagai pihak yang tidak berubah di BE-070 langkah 14 dan sebagai layar pemindai di BE-074; tab Damaged hanya muncul pada Mark as Found di E2E-038). Titik masuk lain sudah diasersi: Asset List/Detail (E2E-031), Borrow/Assignment/Transfer (E2E-033/034/035), Stock Opname (E2E-042, BE-072 langkah 110-111), My Asset oleh pemegang ber-hak (E2E-032). Perlu spec -dep- untuk Work Order dan Damaged (laporan dari sana langsung berstatus Missing); bila surface itu dianggap milik modul lain, ini turun jadi catatan prd.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-E2E-033-efek-transaksi-dep-borrow",
+     "langkah": [],
+     "catatan": "Titik masuk halaman transaksi Borrow oleh Aktor transaksi tanpa Manage asset & TAG (Update) (langkah 1-22) diasersi di sini tetapi E2E-033 tidak tercatat sebagai penanggung unit ini. Tambahkan sebagai pemilik."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
+     "langkah": [],
+     "catatan": "Titik masuk Assignment (Aktor Assignment tanpa Manage asset & TAG Update, langkah 1-8) diasersi tetapi spec tidak tercatat sebagai penanggung unit ini."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-E2E-035-efek-transaksi-dep-transactions-transfer",
+     "langkah": [],
+     "catatan": "Titik masuk Transfer (Aktor Transfer tanpa Manage asset & TAG Update) diasersi tetapi spec tidak tercatat sebagai penanggung unit ini."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-E2E-032-laporan-pemegang-dep-my-asset",
+     "langkah": [],
+     "catatan": "Titik masuk My Asset oleh pemegang yang juga ber-hak Aktor Missing sebagai Pelapor admin (bagian `Pemegang dengan hak Aktor Missing melapor sebagai Pelapor admin`, sekitar langkah 61-71) diasersi di sini tetapi spec tidak tercatat sebagai penanggung unit ini."
+    },
+    {
+     "jenis": "prd",
+     "spec": "TC-FA-MISS-E2E-042-stock-opname-dep-audit",
+     "langkah": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+     ],
+     "catatan": "PRD baris 256: pemilik sesi Stock Opname tanpa Update melapor `untuk aset dalam cakupan transaksi atau sesi itu`; baris 540 dan F-MISS-01.k1a: aset `di luar cakupan Group` dilewati. Untuk pemilik sesi tanpa Manage asset & TAG, PRD tidak memutuskan cakupan mana yang berlaku. Data DU-042-11 menempatkan `Lemari Arsip Besi` di dalam sesinya, namun langkah 38 mengasersi dilewati karena di luar cakupan Group Maya; BE-072 DU-072-13 mendefinisikan cakupannya `aset dalam sesinya sendiri`."
     }
    ],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§3#p2",
@@ -4807,10 +4910,10 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Klausa `bukti kehilangan diunggah sebagai dokumen di form Disposal saat Execute, mengikuti SET-07` ditetapkan `transactions-disposal.md` DISP-LOGIC-07 (dokumen/modul Disposal); tidak bisa diasersi di suite ini."
+     "catatan": "Bukti kehilangan (laporan polisi) diunggah di form Disposal saat Execute mengikuti SET-07 / `disposal.md` DISP-LOGIC-07, di luar kit; yang teruji di sini hanya dialog satu isian dan Add Update untuk catatan."
     }
    ],
-   "juri": "j8"
+   "juri": "j1"
   },
   {
    "unit": "§4.2.4#r13",
@@ -4889,7 +4992,7 @@
    "unit": "§8.2#b1",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§9.1#r1",
@@ -4991,22 +5094,15 @@
   },
   {
    "unit": "§9.7#p1",
-   "verdict": "na",
+   "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j1"
   },
   {
    "unit": "§9.7#r1",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Surface terdampak `Approvals` (transaksi menunggu milik aset) adalah milik modul lain dan tidak diasersi di spec mana pun; tidak dihitung kurang."
-    }
-   ],
-   "juri": "j2"
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§9.8#r1",
@@ -5133,7 +5229,7 @@
    "unit": "§4.2.3#p2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§4.2.4#p7",
@@ -5199,7 +5295,7 @@
    "unit": "§9.2#b32",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j1"
   },
   {
    "unit": "§9.2#b34",
@@ -5283,7 +5379,7 @@
    "unit": "§9.7#r2",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§9.7#r8",
@@ -5297,11 +5393,23 @@
       23,
       24
      ],
-     "catatan": "Klausa «pengingat baris berjalan lagi (borrow/, transactions-assignment/)» sesudah Cancel Report: pemulihan pengingat Borrow sudah diasersi (E2E-033 langkah 71-75) tetapi pemulihan pengingat baris Assignment tidak diasersi di spec mana pun (E2E-034 tidak punya langkah Cancel Report). Tambahkan Cancel Report oleh pemegang atas laporan WfC pada baris Assigned lalu verifikasi pengingat baris Assignment berjalan lagi. (Surface Asset Detail sudah diasersi, E2E-032 langkah 103-108.)",
+     "catatan": "Cancel Report (pelapor): `pengingat baris berjalan lagi (borrow/, assignment/)`. Hanya sisi Borrow yang diasersi (E2E-033 langkah 78-82). Tidak ada langkah Cancel Report atas aset berbaris Assigned (laporan pemegang Monitor LG, langkah 22-24) yang memverifikasi baris Assigned tetap terbuka dan pengingatnya berjalan lagi. Tambahkan Cancel Report oleh pelapor lalu asersi baris Assignment tetap Assigned dan pengingat berjalan.",
      "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
+     "langkah": [],
+     "catatan": "Per `shared` (efek modul lain di spec -dep- modul itu), E2E-034 harus menjadi penanggung unit ini untuk sisi Assignment; saat ini hanya E2E-032, E2E-033, BE-076, BE-077."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "§9.7 baris Cancel Report: `pengingat baris berjalan lagi` mengandaikan pengingat sempat dijeda, sedangkan F-MISS-01.k2c: `pengingat baris transaksi tidak dijeda` dan MISS-LOGIC-05d: `pengingat berjalan seperti biasa`. E2E-033 langkah 33 dan 82 mengasersi keduanya; PRD tidak menetapkan yang berlaku."
     }
    ],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§9.8#r2",
@@ -5369,16 +5477,35 @@
   },
   {
    "unit": "§1.2#r55",
-   "verdict": "ok",
+   "verdict": "parsial",
    "temuan": [
     {
-     "jenis": "prd",
-     "spec": "TC-FA-MISS-E2E-033-efek-transaksi-dep-borrow",
+     "jenis": "kurang",
+     "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
+     "langkah": [
+      22,
+      23,
+      24,
+      51,
+      60
+     ],
+     "catatan": "MISS-LOGIC-05d: baris transaksi berjalan tetap terbuka dan pengingat berjalan seperti biasa, juga setelah Confirm / Reject / Cancel Report, untuk Borrow (BORROW-LOGIC-16) dan Assign (ASSIGN-LOGIC-16). Sisi Assign hanya diasersi saat laporan pemegang (langkah 24 baris tetap Assigned). Reject dan Cancel Report atas baris Assigned tidak ada, dan pengingat baris Assigned tidak diasersi. Tambahkan Reject dan Cancel Report atas baris Assigned: baris tetap Assigned dan pengingat berjalan.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
      "langkah": [],
-     "catatan": "Pengaturan baris Assign setelah Confirm / Reject / Cancel Report ditetapkan ASSIGN-LOGIC-16 di transactions-assignment.md (di luar kit); E2E-033 hanya mengasersi sisi Borrow, dan E2E-034 hanya laporan pemegang tanpa penutupan baris Assigned."
+     "catatan": "Unit menyebut Assign (ASSIGN-LOGIC-16) tetapi hanya E2E-033 (Borrow) tercatat sebagai penanggung. Tambahkan E2E-034."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "MISS-LOGIC-05d: `tetap terbuka ... juga setelah Confirm / Reject / Cancel Report` bertentangan dengan EC-MIS-07 (§9.4.2) dan F-MISS-06.k2 yang menyatakan Confirm menutup baris (`Returned` / `Unassigned` bermarker `Missing`). E2E-033 langkah 45 dan E2E-034 langkah 60 mengikuti sisi Confirm menutup; PRD tidak menetapkan sisi mana yang berlaku."
     }
    ],
-   "juri": "j9"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r67",
@@ -5510,7 +5637,7 @@
    "unit": "§9.2#b11",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§9.2#b13",
@@ -5573,13 +5700,13 @@
    "unit": "§9.4.2#r3",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r6",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.3#b2",
@@ -5590,15 +5717,8 @@
   {
    "unit": "§9.7#r3",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Surface Asset Detail dan My Asset (status global aset dikembalikan setelah Reject) dimiliki modul asset/ dan my-asset/, di luar kit; suite ini mengasersi status global di server (BE-076 langkah 46) dan pengingat baris Borrow (E2E-033 langkah 52), bukan tampilan di surface modul lain."
-    }
-   ],
-   "juri": "j10"
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r42",
@@ -5606,21 +5726,18 @@
    "temuan": [
     {
      "jenis": "prd",
-     "spec": "TC-FA-MISS-E2E-034-efek-transaksi-dep-transactions-assignment",
-     "langkah": [
-      8,
-      15
-     ],
-     "catatan": "Akibat Assign dimiliki ASSIGN-LOGIC-16 (transactions-assignment.md), di luar kit; hasil rinci status baris (selain Canceled pada Waiting for Handover) tidak ditetapkan sumber, sehingga langkah 8 ('tidak lagi berstatus Assigned') tidak bisa dinilai lebih ketat."
+     "spec": null,
+     "langkah": [],
+     "catatan": "Akibat per transaksi Assignment dimiliki `assignment.md` ASSIGN-LOGIC-16 (di luar kit); E2E-034 langkah 8 mengasersi baris Assigned tidak lagi `Assigned`, tidak dihitung kurang."
     }
    ],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§11#r5",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r4",
@@ -5634,20 +5751,18 @@
    "temuan": [
     {
      "jenis": "prd",
-     "spec": "TC-FA-MISS-E2E-035-efek-transaksi-dep-transactions-transfer",
-     "langkah": [
-      9
-     ],
-     "catatan": "Akibat Transfer dimiliki XFER-LOGIC-16 (transactions-transfer.md), di luar kit; hasil rinci baris In transit setelah dilaporkan tidak ditetapkan sumber, langkah 9 hanya mengasersi 'tidak lagi In transit'."
+     "spec": null,
+     "langkah": [],
+     "catatan": "Akibat per transaksi Transfer dimiliki `transfer.md` XFER-LOGIC-16 (di luar kit); E2E-035 langkah 10 mengasersi baris In transit tidak lagi `In transit`, tidak dihitung kurang."
     }
    ],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§11#r6",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "EB-FB-1@cancel-disposal-report",
@@ -5683,7 +5798,7 @@
    "unit": "§1#b4",
    "verdict": "na",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r100",
@@ -5707,7 +5822,7 @@
    "unit": "§1.2#r34",
    "verdict": "na",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r35",
@@ -5721,15 +5836,12 @@
    "temuan": [
     {
      "jenis": "prd",
-     "spec": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
-     "langkah": [
-      74,
-      77
-     ],
-     "catatan": "Akibat Disposal atas Report Missing dimiliki transactions-disposal.md 9.2.11, di luar kit; E2E-036 mengasersi Report Reported menjadi Canceled oleh System (langkah 77), baris Disposal ditutup diasersi di BE-077 langkah 51-52 dan BE-081 langkah 31-34."
+     "spec": null,
+     "langkah": [],
+     "catatan": "Akibat per transaksi Disposal dimiliki `disposal.md` §9.2 `9.2.11` (di luar kit); E2E-036 langkah 77 mengasersi Report Canceled oleh `System` alasan `Asset reported missing`, tidak dihitung kurang."
     }
    ],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r93",
@@ -5769,7 +5881,7 @@
    "unit": "§1.2#r97",
    "verdict": "na",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r98",
@@ -5795,18 +5907,18 @@
    "temuan": [
     {
      "jenis": "prd",
-     "spec": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
+     "spec": null,
      "langkah": [],
-     "catatan": "Klausa 'Report Disposal atas aset Missing hanya lewat record Missing' dan aturan DISP-LOGIC-15 dimiliki transactions-disposal.md, di luar kit; sisi negatif tidak bisa diasersi di suite ini."
+     "catatan": "`Report Disposal atas aset Missing hanya lewat record Missing` bergantung pada aksi di modul Disposal (`disposal.md` DISP-LOGIC-15, DISP-LOGIC-05); sisi negatifnya (Report Disposal tidak tersedia dari Transactions > Disposal untuk aset Missing) tidak bisa diasersi suite ini."
     }
    ],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§4.1#r11",
-   "verdict": "ok",
+   "verdict": "na",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§4.1#r8",
@@ -5817,36 +5929,26 @@
   {
    "unit": "§4.1a#r33",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MISS-E2E-017-last-holder-disabled",
-     "langkah": [
-      10,
-      12
-     ],
-     "catatan": "Syarat 'bukan Last holder' (Report Disposal Disabled dengan alasan 'You were holding this asset. Ask another admin.') diasersi di E2E-017 langkah 10-12, dan syarat hak Report Disposal diasersi di E2E-023 langkah 16 dan 34; keduanya belum tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j10"
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§4.2.4#p14",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§4.2.4#p8",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§4.2.4#r21",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§4.2.4#r22",
@@ -5891,7 +5993,7 @@
    "unit": "§7.2#r16",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
   },
   {
    "unit": "§7.2#r17",
@@ -5902,8 +6004,15 @@
   {
    "unit": "§7.2#r4",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j10"
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Isi dialog `D-MIS-08` mengikuti `D-DISP-15` dan toast mengikuti `TS-DISP-18` (`disposal.md`, di luar kit); E2E-036 langkah 16-18 hanya dapat mengasersi dialog terbuka, submit tanpa Reason, dan toast sukses."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§7.3#r10",
@@ -5915,16 +6024,26 @@
      "langkah": [
       18
      ],
-     "catatan": "TS-MIS-06 mengikuti TS-DISP-18 (transactions-disposal.md), di luar kit; literal toast sukses dan gagal tidak bisa ditetapkan di sini."
+     "catatan": "TS-MIS-06 sukses dan gagal ditetapkan lewat `TS-DISP-18` milik `disposal.md`, dokumen di luar kit. Literal toast sukses Cancel Disposal Report dan toast gagalnya tidak bisa dipastikan dari kit ini. Langkah 18 mengasersi toast sukses tampil tanpa literal, dan itu sudah memadai. Toast gagal tidak diasersi di spec mana pun, dan itu tidak dihitung kurang."
     }
    ],
-   "juri": "j10"
+   "juri": "j2"
   },
   {
    "unit": "§8.2#b2",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j10"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
+     "langkah": [
+      9,
+      18
+     ],
+     "catatan": "Trace §8.2#b2 menunjuk langkah 9 dan 18 (toast), padahal spec tidak mengasersi Transaction admin log sama sekali. Klausa ini diasersi di E2E-044 (langkah 4-23, 28, 33) dan BE-077 (langkah 7, 14, 20, 29, 33, 37, 42, termasuk Cancel Disposal Report di sub-tab Disposal). Hapus E2E-036 sebagai penanggung atau tambahkan asersi Transaction admin log sub-tab Disposal untuk Report Disposal dan Cancel Disposal Report."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§9.1#r5",
@@ -6063,13 +6182,13 @@
    "unit": "§9.4.4#r14",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.4#r15",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j11"
+   "juri": "j2"
   },
   {
    "unit": "§9.6#r9",
@@ -6077,31 +6196,49 @@
    "temuan": [
     {
      "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Copy toast sukses dan gagal Report Disposal / Cancel Disposal Report ('Toast TS-DISP-15 / TS-MIS-06', 'Toast gagal yang sama', TS-DISP-18) dimiliki transactions-disposal.md (di luar kit); literal toast gagal tidak ada di sumber sehingga tidak bisa diasersi, tidak mengubah verdict."
+     "spec": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
+     "langkah": [
+      9,
+      18
+     ],
+     "catatan": "Toast `TS-DISP-15` dan `TS-MIS-06`/`TS-DISP-18`, termasuk toast gagalnya, ditetapkan `disposal.md`, di luar kit. Literal `Success, disposal report has been created.` di langkah 9 tidak termuat utuh di PRD ini, hanya terbaca dari varian sebagian di TS-MIS-09. Hasil yang pasti ada di dokumen Disposal, jadi ketiadaan asersi atas toast gagal tidak dihitung kurang."
     }
    ],
-   "juri": "j11"
+   "juri": "j2"
   },
   {
    "unit": "§9.7#r5",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j11"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-BE-071-transisi-status-dan-konflik",
+     "langkah": [
+      57,
+      59,
+      61,
+      63,
+      65
+     ],
+     "catatan": "Transisi Reject, Cancel, Remove, timeout baris Disposal dan Decline Report kembali ke Missing diasersi di BE-071 (langkah 56-65). Spec itu tidak tercatat sebagai penanggung unit ini. Tambahkan BE-071 sebagai spec yang menanggung §9.7#r5, atau biarkan BE-077 (langkah 46-47, 80-85) sebagai penanggung tunggal."
+    }
+   ],
+   "juri": "j2"
   },
   {
    "unit": "§9.8#p2",
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Notifikasi transisi Disposal «dimiliki transactions-disposal.md (§9.8)», dokumen di luar kit. Suite hanya dapat mengasersi ketiadaan event missing_*; isi notifikasi Disposal sendiri tidak dapat diasersi di sini."
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-BE-071-transisi-status-dan-konflik",
+     "langkah": [
+      17
+     ],
+     "catatan": "Langkah 17 mengasersi bahwa Cancel Disposal Report tidak mengirim event `missing_*`. Di BE-077 langkah 42 hanya mengasersi node dan Transaction admin log tanpa klausa tanpa-event untuk Cancel. Klausa tanpa-event untuk Cancel Report hanya ada di BE-071, yang tidak tercatat sebagai penanggung §9.8#p2. Tambahkan BE-071 ke penanggung unit ini."
     }
    ],
-   "juri": "j3"
+   "juri": "j2"
   },
   {
    "unit": "EB-BLK-2@tabel-active",
@@ -6227,12 +6364,16 @@
    "temuan": [
     {
      "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "'Sukses penuh mengikuti TS-DISP-15' dan 'Mengikuti TS-DISP-15' (gagal) dimiliki transactions-disposal.md (di luar kit); tidak mengubah verdict."
+     "spec": "TC-FA-MISS-E2E-037-bulk-report-disposal-dep-transactions-disposal",
+     "langkah": [
+      13,
+      33,
+      100
+     ],
+     "catatan": "PRD baris 858: `Sukses penuh mengikuti TS-DISP-15 (disposal.md)` dan kolom kegagalan `Mengikuti TS-DISP-15`; dokumen itu di luar kit. Literal sukses penuh `Success, disposal report has been created.` tidak termuat di kit; hanya turunan dari pola foundation (toast bulk Success) dan varian sebagian. Varian sebagian dinyatakan literal dan diasersi benar di E2E-037 langkah 44 dan UI-052 langkah 78. Tidak dihitung kurang."
     }
    ],
-   "juri": "j11"
+   "juri": "j1"
   },
   {
    "unit": "§7.3#r4",
@@ -6261,8 +6402,18 @@
   {
    "unit": "§9.4.4#r4",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j11"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-BE-081-bulk-report-disposal-dep-transactions-disposal",
+     "langkah": [
+      12,
+      15
+     ],
+     "catatan": "Langkah 12 dan 15 mengasersi teks dialog blok D-MIS-09 (`None of the selected records can be reported for disposal.` dan `Selected assets come from more than one group. Select assets from one group.`) di spec be-e2e, yang menurut layernya tanpa teks UI. Teks dialog sudah diasersi di ui-e2e (037 langkah 56, 69) dan ui-client (UI-052 langkah 54, 65). Di BE cukup asersi penolakan tanpa Disposal Report dan tanpa node baru."
+    }
+   ],
+   "juri": "j2"
   },
   {
    "unit": "§9.6#r10",
@@ -6270,19 +6421,57 @@
    "temuan": [
     {
      "jenis": "plan",
+     "spec": "TC-FA-MISS-BE-081-bulk-report-disposal-dep-transactions-disposal",
+     "langkah": [
+      8,
+      12,
+      15
+     ],
+     "catatan": "Langkah 8 (toast `Success, disposal report has been created. Some items were skipped.`), 12 (`None of the selected records can be reported for disposal.`), dan 15 (`Selected assets come from more than one group...`) adalah teks UI di spec be-e2e. Teks itu sudah diasersi di E2E-037 langkah 44, 56, 69 dan UI-052 langkah 65, 54, 78. Di BE cukup asersi sebagian diproses, sebagian dilewati, atau seluruh seleksi ditolak tanpa Disposal Report."
+    },
+    {
+     "jenis": "plan",
      "spec": "TC-FA-MISS-UI-052-bulk-report-disposal-klien",
      "langkah": [
+      81,
+      82,
       83,
       84,
       85,
+      86,
+      87,
+      88,
+      89,
+      90,
       91,
       92,
-      93
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104
      ],
-     "catatan": "Kegagalan bulk 'mengikuti prd-conventions.md §8' (5xx dan timeout mempertahankan bar dan seleksi) diasersi di UI-052, tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Kolom `On failure (5xx/timeout)` Bulk Report Disposal (`Mengikuti prd-conventions.md §8`: bar dan seleksi dipertahankan, dialog tetap terbuka dengan input, list di-refresh) diasersi benar di UI-052 langkah 88-92 dan 100-104, tetapi UI-052 tidak tercatat sebagai penanggung unit ini. Tambahkan."
+    },
+    {
+     "jenis": "prd",
+     "spec": "TC-FA-MISS-E2E-037-bulk-report-disposal-dep-transactions-disposal",
+     "langkah": [
+      13,
+      33,
+      100
+     ],
+     "catatan": "Toast sukses penuh `TS-DISP-15`, idempotensi, dan guard atomik Bulk Report Disposal `Mengikuti / Dimiliki disposal.md` (di luar kit); tidak bisa diverifikasi dari kit ini dan tidak dihitung kurang."
     }
    ],
-   "juri": "j11"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r27",
@@ -6798,19 +6987,31 @@
    "verdict": "ok",
    "temuan": [
     {
-     "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Penerima notifikasi `missing_long` ditetapkan di luar kit: PRD 11 baris ini menunjuk `settings-transaction-rules/` `FATR-LOGIC-13` (dan katalog `notification.md` 5.1d). Suite tidak bisa memastikan penerimanya; ketiadaan asersinya tidak dihitung kurang."
+     "jenis": "plan",
+     "spec": "TC-FA-MISS-BE-077-log-dan-notifikasi",
+     "langkah": [
+      84,
+      85
+     ],
+     "catatan": "Klausa `Transaction timeout` pada unit ini diasersi di BE-077 langkah 84-85 dan BE-071 langkah 62-63 (baris Disposal melewati Transaction timeout, record kembali Missing tanpa event missing_*). Kedua spec tidak tercatat sebagai penanggung §11#r8; E2E-045 hanya menanggung Long missing after. Tambahkan salah satunya."
     },
     {
      "jenis": "plan",
-     "spec": "TC-FA-MISS-E2E-045-long-missing-after-dep-settings-transaction-rules",
+     "spec": "TC-FA-MISS-BE-071-transisi-status-dan-konflik",
+     "langkah": [
+      62,
+      63
+     ],
+     "catatan": "Sama: Transaction timeout atas baris Disposal diasersi di sini tetapi BE-071 tidak tercatat sebagai penanggung §11#r8."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
      "langkah": [],
-     "catatan": "Klausa `Transaction timeout` pada baris ini diasersi oleh BE-071 langkah 62 (baris Disposal melewati Transaction timeout), dan kelayakan (`FATR-LOGIC-09`) oleh BE-070; keduanya tidak tercatat sebagai penanggung unit ini. E2E-045 hanya memegang klausa Long missing after."
+     "catatan": "PRD baris 1359: `penerima missing_long dimiliki notification.md §5.1d` dan `kelayakan (FATR-LOGIC-09)` (MISS-LOGIC-03k: dimiliki tiap modul transaksi). Penerima notifikasi dan syarat kelayakan ditetapkan dokumen di luar kit; ketiadaan asersinya tidak dihitung kurang."
     }
    ],
-   "juri": "j13"
+   "juri": "j1"
   },
   {
    "unit": "§9.2#b50",
@@ -8227,13 +8428,13 @@
    "unit": "§9.4.4#r16",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j16"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.4#r17",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j16"
+   "juri": "j1"
   },
   {
    "unit": "EB-DL-5",
@@ -8250,19 +8451,8 @@
   {
    "unit": "§9.2#b30",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MISS-BE-077-log-dan-notifikasi",
-     "langkah": [
-      48,
-      49,
-      50
-     ],
-     "catatan": "BE-077 langkah 48-50 juga mengasersi Report Disposal `Reported` dibatalkan `System` dengan alasan `Asset reported missing` dan tanpa node Missing Log; BE-077 tidak tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j16"
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§9.2#b31",
@@ -8272,22 +8462,13 @@
      "jenis": "plan",
      "spec": "TC-FA-MISS-BE-070-kelayakan-report-missing",
      "langkah": [
+      36,
       37
      ],
-     "catatan": "BE-070 langkah 37 mengasersi aset dengan record `In Disposal Process` ditolak `Already reported missing` (klausa 'Report Missing tidak ditawarkan ... termasuk In Disposal Process'); BE-070 tidak tercatat sebagai penanggung unit."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MISS-BE-077-log-dan-notifikasi",
-     "langkah": [
-      51,
-      52,
-      53
-     ],
-     "catatan": "BE-077 langkah 51-53 mengasersi baris Disposal Waiting for Approval menjadi Canceled oleh `System` alasan `Asset reported missing` tanpa event `missing_*`; BE-077 tidak tercatat sebagai penanggung unit."
+     "catatan": "Klausa `Report Missing tidak ditawarkan` pada aset Reported Disposal dan In Disposal Process diasersi benar di BE-070 langkah 36-37 (In Disposal Process hanya di sana; Reported Disposal juga di BE-081 langkah 35-36). BE-070 tidak tercatat sebagai penanggung unit ini. Tambahkan BE-070."
     }
    ],
-   "juri": "j16"
+   "juri": "j1"
   },
   {
    "unit": "D-MIS-01,D-MIS-02,D-MIS-04,D-MIS-05,D-MIS-06,D-MIS-07,D-MIS-08,D-MIS-09,D-MIS-10",
@@ -8402,7 +8583,7 @@
    "unit": "§1.1#b1",
    "verdict": "na",
    "temuan": [],
-   "juri": "j16"
+   "juri": "j2"
   },
   {
    "unit": "§1.1#b10",
@@ -8420,19 +8601,19 @@
    "unit": "§1.1#b12",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j2"
   },
   {
    "unit": "§1.1#b13",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j2"
   },
   {
    "unit": "§1.1#b14",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j2"
   },
   {
    "unit": "§1.1#b15",
@@ -8480,7 +8661,7 @@
    "unit": "§1.1#b21",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j2"
   },
   {
    "unit": "§1.1#b3",
@@ -8492,13 +8673,13 @@
    "unit": "§1.1#b4",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j2"
   },
   {
    "unit": "§1.1#b5",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j2"
   },
   {
    "unit": "§1.1#b6",
@@ -8516,7 +8697,7 @@
    "unit": "§1.1#b8",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j2"
   },
   {
    "unit": "§1.1#b9",

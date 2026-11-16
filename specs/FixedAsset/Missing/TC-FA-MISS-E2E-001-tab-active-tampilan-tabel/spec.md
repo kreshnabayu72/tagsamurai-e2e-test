@@ -31,7 +31,7 @@ trace:
   §4.1a#r20: [17, 72]
   §4.1a#r21: [17, 72]
   §4.1a#r22: [17, 72]
-  §4.1a#r23: [17, 72]
+  §4.1a#r23: [17, 72, 102, 104, 107, 109, 111, 114, 120, 121]
   §4.1a#r24: [17, 71, 72]
   §4.1a#r25: [17, 71, 72]
   §4.1a#r26: [17, 71, 72]
@@ -79,7 +79,7 @@ trace:
   §1#b2: [2, 60]
   §9.1#r2: 6
   EB-TBL-1@tabel-active: 78
-anchor: []
+anchor: [112]
 coverage:
   web: automated
 ---
@@ -100,11 +100,14 @@ coverage:
   - DU-001-8: Record berstatus `Reported Disposal` untuk aset `Projector Epson EB-X06 {runId}` (Group `Branch Surabaya {runId}`, TAG `QR`), Source `Stock opname`, tanpa Last Holder, pemindai terakhir pengguna `Agus Prasetyo {runId}` pada T0 − 45 hari pukul `14:05`, Reported By `Agus Prasetyo {runId}`, Reported Date T0 − 41 hari pukul `08:00`. Days Missing `41 days`, dari selisih 41 hari kalender.
   - DU-001-9: Record berstatus `In Disposal Process` untuk aset `Printer HP LaserJet M404 {runId}` (Group `Head Office {runId}`, TAG `BLE`), Source `Manual`, tanpa Last Holder, pemindai terakhir reader `Lobby reader {runId}` pada T0 − 80 hari pukul `16:40`, Reported By `Rina Wijaya {runId}`, Reported Date T0 − 78 hari pukul `10:00`. Days Missing `78 days`, dari selisih 78 hari kalender.
   - DU-001-10: Record berstatus `Missing` untuk aset `Toyota Innova {runId}` (Group `Branch Surabaya {runId}`, TAG `GPS`), Source `Transfer`, tanpa Last Holder, pemindai terakhir reader `Gate B reader {runId}` pada T0 − 11 hari pukul `16:20`, Reported By `Agus Prasetyo {runId}`, Reported Date T0 − 10 hari pukul `09:00`, tanpa pembaruan sesudah dilaporkan. Days Missing `10 days`, dari selisih 10 hari kalender.
-  - DU-001-11: Record berstatus `Missing` untuk aset `Laptop Lenovo ThinkPad T14 {runId}` (Group `Head Office {runId}`, TAG `NFC` dan `QR`), Source `Manual`, Last Holder `Dewi Anggraini {runId}`, pemindai terakhir reader `Gate A reader {runId}` pada T0 − 37 hari pukul `11:10`, Reported By `Rina Wijaya {runId}`, Reported Date T0 − 34 hari pukul `09:00`. Days Missing `34 days`, dari selisih 34 hari kalender, melewati Long missing after sehingga memuat penanda `Long missing`.
+  - DU-001-11: Record berstatus `Missing` untuk aset `Laptop Lenovo ThinkPad T14 {runId}` (Group `Head Office {runId}`, TAG `NFC` dan `QR`), Source `Manual`, Last Holder `Dewi Anggraini {runId}`, pemindai terakhir reader `Gate A reader {runId}` pada T0 − 37 hari pukul `11:10`, Reported By `Rina Wijaya {runId}`, Reported Date T0 − 34 hari pukul `09:00`. Days Missing `34 days`, dari selisih 34 hari kalender, melewati Long missing after sehingga memuat penanda `Long missing`. Daftar garansi aset: `Garansi Unit {runId}` sampai T0 + 120 hari dan `Garansi Baterai {runId}` sampai T0 + 365 hari, sehingga Warranty until terdekat adalah T0 + 120 hari.
   - DU-001-12: Record berstatus `Missing` untuk aset `Monitor LG 27UL500 {runId}` (Group `Head Office {runId}`, tanpa TAG), Source `Borrow`, Last Holder `Rina Wijaya {runId}` (aktor spec ini), Reported By `Rina Wijaya {runId}`, Reported Date T0 − 3 hari pukul `08:00`, tanpa pembaruan sesudah dilaporkan. Days Missing `3 days`, dari selisih 3 hari kalender.
   - DU-001-13: Record berstatus `Found` untuk aset `Camera Canon EOS {runId}` (Group `Head Office {runId}`), Source `Manual`, Reported By `Rina Wijaya {runId}`, sudah selesai sehingga hanya ada di tab History.
   - DU-001-14: kata kunci Search `{runId} tidakada` yang tidak cocok dengan kolom mana pun.
   - DU-001-15: isian Report Disposal untuk DU-001-6: Reason `Aset tidak ditemukan setelah penelusuran tiga minggu`.
+  - DU-001-16: Daftar garansi tambahan: aset `Monitor LG 27UL500 {runId}` (DU-001-12) punya `Garansi Monitor {runId}` sampai T0 + 30 hari, dan aset `Printer HP LaserJet M404 {runId}` (DU-001-9) punya `Garansi Printer {runId}` sampai T0 + 200 hari. Warranty until terdekat ketiga aset Group `Head Office {runId}` berbeda: T0 + 30 hari untuk `Monitor LG 27UL500 {runId}`, T0 + 120 hari untuk `Laptop Lenovo ThinkPad T14 {runId}` (DU-001-11), dan T0 + 200 hari untuk `Printer HP LaserJet M404 {runId}`.
+  - DU-001-17: kata kunci Search `Garansi Unit {runId}`, nama garansi aset DU-001-11 yang hanya ada di daftar garansi dan tidak cocok dengan kolom lain.
+  - DU-001-18: rentang Warranty Expiry dari T0 + 100 hari sampai T0 + 150 hari, memuat Warranty until terdekat DU-001-11 (T0 + 120 hari) dan tidak memuat T0 + 30 hari maupun T0 + 200 hari.
 - Kondisi:
   - Date Format bernilai `DD/MM/YY` dan Time Format bernilai `HH:mm`.
   - Long missing after bernilai `30`.
@@ -235,5 +238,41 @@ coverage:
 94. Isi Reason `Aset tidak ditemukan setelah penelusuran tiga minggu`
 95. Kirim dialog Report Disposal
 96. Verifikasi jumlah pada badge tab `Missing` berkurang satu dari jumlah yang dicatat, karena record yang berpindah ke `Reported Disposal` tidak dihitung
+
+### Warranty Expiry menampilkan garansi terdekat dan daftar seluruh garansi
+97. Klik header kolom Actions
+98. Klik `Setup Column...`
+99. Centang kolom `Warranty Expiry`
+100. Klik `[Save]`
+101. Ganti isi kotak search dengan `Laptop Lenovo ThinkPad T14 {runId}`, tekan Enter
+102. Verifikasi kolom Warranty Expiry baris `Laptop Lenovo ThinkPad T14 {runId}` menampilkan Warranty until terdekat dari daftar garansi aset, yaitu tanggal T0 + 120 hari dengan format `DD/MM/YY`, dan bukan tanggal T0 + 365 hari
+103. Arahkan kursor ke sel kolom Warranty Expiry baris `Laptop Lenovo ThinkPad T14 {runId}`
+104. Verifikasi daftar seluruh garansi aset tampil dengan format `[Warranty name] — [tanggal]`: `Garansi Unit {runId}` bertanggal T0 + 120 hari dan `Garansi Baterai {runId}` bertanggal T0 + 365 hari, dengan tanggal berformat `DD/MM/YY`
+105. Klik `(←)` pada kotak Search
+
+### Warranty Expiry diurutkan menurut Warranty until terdekat
+106. Ketik Search `Head Office {runId}`, tekan Enter
+107. Verifikasi kolom Warranty Expiry menampilkan tanggal T0 + 30 hari pada baris `Monitor LG 27UL500 {runId}`, T0 + 120 hari pada baris `Laptop Lenovo ThinkPad T14 {runId}`, dan T0 + 200 hari pada baris `Printer HP LaserJet M404 {runId}`, dengan format `DD/MM/YY`
+108. Klik header `Warranty Expiry`
+109. Verifikasi urutan baris dari atas ke bawah menurut Oldest First atas Warranty until terdekat: `Monitor LG 27UL500 {runId}` lalu `Laptop Lenovo ThinkPad T14 {runId}` lalu `Printer HP LaserJet M404 {runId}`, dengan `Laptop Lenovo ThinkPad T14 {runId}` sebelum `Printer HP LaserJet M404 {runId}` walau garansi terjauhnya (T0 + 365 hari) lebih akhir
+110. Klik header `Warranty Expiry`
+111. Verifikasi urutan baris dari atas ke bawah menurut Newest First atas Warranty until terdekat: `Printer HP LaserJet M404 {runId}` lalu `Laptop Lenovo ThinkPad T14 {runId}` lalu `Monitor LG 27UL500 {runId}`
+
+### Warranty Expiry tidak ikut dicari oleh Search
+112. Verifikasi baris `Laptop Lenovo ThinkPad T14 {runId}` tampil pada hasil Search `Head Office {runId}`
+113. Ganti isi kotak search dengan `Garansi Unit {runId}`, tekan Enter
+114. Verifikasi `No results found` dan `Try adjusting your search or filter.` tampil karena Warranty Expiry bukan kolom yang dicari Search, walau baris `Laptop Lenovo ThinkPad T14 {runId}` memuat garansi `Garansi Unit {runId}`
+115. Klik `(←)` pada kotak Search
+
+### Filter rentang Warranty Expiry memakai Warranty until terdekat
+116. Ketik Search `Head Office {runId}`, tekan Enter
+117. Klik ikon Filter
+118. Pilih rentang Warranty Expiry dari `T0 + 100 hari` sampai `T0 + 150 hari` sesuai DU-001-18
+119. Klik `[Apply]`
+120. Verifikasi tabel memuat baris `Laptop Lenovo ThinkPad T14 {runId}` yang Warranty until terdekatnya T0 + 120 hari berada di dalam rentang
+121. Verifikasi baris `Monitor LG 27UL500 {runId}` yang Warranty until terdekatnya T0 + 30 hari dan baris `Printer HP LaserJet M404 {runId}` yang T0 + 200 hari, keduanya di luar rentang, tidak tampil
+122. Klik `[Clear Field]`
+123. Klik `[Apply]`
+124. Klik `(←)` pada kotak Search
 
 [^drift-1]: Drift PRD vs foundation. PRD §4.2.1 butir 3: pada Breadcrumb `Assets > Missing > [Active | History]` hanya `Assets` yang dapat diklik; `Missing` dan sub-tab adalah halaman aktif. Foundation `prd-conventions.md` §27.0: segmen pertama dan terakhir tidak bisa diklik, hanya segmen di tengah yang bisa diklik pada breadcrumb dengan 3 segmen atau lebih. Diasersi: foundation, karena breadcrumb adalah pola bersama (SB-4).

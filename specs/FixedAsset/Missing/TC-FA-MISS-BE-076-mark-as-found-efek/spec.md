@@ -52,7 +52,7 @@ trace:
   §9.4.4#r11: [8, 12, 32]
   §9.4.4#r12: 16
   §9.6#r4: [11, 35]
-  §9.7#r3: 49
+  §9.7#r3: [46, 49]
   §9.7#r4: [12, 16]
   §9.7#r8: 51
   §9.2#r5: [5, 17, 21, 32]
@@ -76,13 +76,13 @@ trace:
   - DU-076-2: User Name `Joko Susilo {runId}`, Peran `pemegang tanpa hak Aktor Missing`, Cakupan `aset yang ia pegang`.
   - DU-076-3: User Name `Sari Dewi {runId}`, Peran `pemegang tanpa hak Aktor Missing`, Cakupan `aset yang ia pegang`, Status `dinonaktifkan`.
   - DU-076-4: Asset Name `Laptop Dell Latitude 5420 {runId}`, Asset ID `FA076-001`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Normal`, TAG terpasang `QR-076-0001`, Work Order `berjalan`.
-  - DU-076-5: Asset Name `Hand Pallet Truck {runId}`, Asset ID `FA076-002`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Sari Dewi {runId}`, Pemegang `Sari Dewi {runId}`, Baris transaksi `terbuka`, TAG terpasang `tidak ada`.
+  - DU-076-5: Asset Name `Hand Pallet Truck {runId}`, Asset ID `FA076-002`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Sari Dewi {runId}`, Pemegang `Sari Dewi {runId}`, Baris transaksi `terbuka` dengan badge `Reported Missing`, TAG terpasang `tidak ada`.
   - DU-076-6: Asset Name `Projector Epson EB-X06 {runId}`, Asset ID `FA076-003`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Normal`, TAG terpasang `QR-076-0002`.
   - DU-076-7: Asset Name `Printer HP LaserJet M404 {runId}`, Asset ID `FA076-004`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Normal`, TAG terpasang `QR-076-0003`.
   - DU-076-8: Asset Name `Monitor LG 27UL500 {runId}`, Asset ID `FA076-005`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Normal`, TAG terpasang `QR-076-0004`.
   - DU-076-9: Asset Name `Toyota Innova {runId}`, Asset ID `FA076-006`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Normal`, TAG terpasang `tidak ada`.
   - DU-076-10: Asset Name `Genset Honda EU22 {runId}`, Asset ID `FA076-007`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Damaged`, TAG terpasang `tidak ada`, Damage record `berjalan dan ditahan`, Work Order `berjalan`.
-  - DU-076-11: Asset Name `Tablet Samsung Tab A8 {runId}`, Asset ID `FA076-008`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Condition sebelum laporan `Damaged`, Damage record `berjalan dan ditahan`, Tagging `Tag Reported`, Activity Lock `In Audit`.
+  - DU-076-11: Asset Name `Tablet Samsung Tab A8 {runId}`, Asset ID `FA076-008`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Baris transaksi `terbuka` dengan badge `Reported Missing`, Condition sebelum laporan `Damaged`, Damage record `berjalan dan ditahan`, Tagging `Tag Reported`, Activity Lock `In Audit`.
   - DU-076-12: Asset Name `Kamera Sony A7 {runId}`, Asset ID `FA076-009`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Condition sebelum laporan `Damaged`, Damage record `berjalan dan ditahan`.
   - DU-076-13: Asset Name `Brankas Besi {runId}`, Asset ID `FA076-010`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Condition sebelum laporan `Damaged, tidak lagi dapat dipulihkan`.
   - DU-076-14: Asset Name `Scanner Zebra DS2208 {runId}`, Asset ID `FA076-011`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Condition sebelum laporan `Normal`.
@@ -110,7 +110,7 @@ trace:
 13. Verifikasi baris transaksi aset `Hand Pallet Truck {runId}` tetap terbuka selama record berstatus `Waiting for Confirmation` walau pemegangnya sudah dinonaktifkan
 14. Rina W mengirim Mark as Found atas record `Hand Pallet Truck {runId}` dengan Found at default Group aset dan Asset Status `Normal`
 15. Verifikasi record `Hand Pallet Truck {runId}` berstatus `Found` langsung dari `Waiting for Confirmation`
-16. Verifikasi baris transaksi aset `Hand Pallet Truck {runId}` tetap terbuka dan pengingatnya berjalan lagi
+16. Verifikasi baris transaksi aset `Hand Pallet Truck {runId}` tetap terbuka dan badge `Reported Missing` hilang
 17. Verifikasi status global aset `Hand Pallet Truck {runId}` bukan Available karena baris transaksi masih terbuka, dan hasil sukses memuat pesan `Success, asset has been marked as found.`
 18. Verifikasi Found at tersimpan sebagai Group aset karena Found at tidak diubah dari bawaan
 
@@ -150,7 +150,7 @@ trace:
 
 ### Reject dan Cancel Report memulihkan Condition dan status global aset
 45. Rina W mengirim Reject atas record `Tablet Samsung Tab A8 {runId}` dengan Reason `Aset terlihat di ruang kerja pemegang`
-46. Verifikasi record `Tablet Samsung Tab A8 {runId}` berstatus `Rejected` dan status global aset kembali seperti sebelum laporan
+46. Verifikasi record `Tablet Samsung Tab A8 {runId}` berstatus `Rejected` dan status global aset kembali seperti sebelum laporan, dan badge `Reported Missing` pada baris transaksi aset hilang
 47. Verifikasi Condition aset `Tablet Samsung Tab A8 {runId}` dipulihkan menjadi `Damaged` dan Damage record aktif kembali
 48. Verifikasi Tagging `Tag Reported`, Activity Lock `In Audit`, dan Custody aset `Tablet Samsung Tab A8 {runId}` tidak berubah oleh Reject
 49. Verifikasi `Joko Susilo {runId}` menerima notifikasi `missing_holder_resolved` berisi Reason itu, dan node `Report rejected by` memuat Reason yang sama

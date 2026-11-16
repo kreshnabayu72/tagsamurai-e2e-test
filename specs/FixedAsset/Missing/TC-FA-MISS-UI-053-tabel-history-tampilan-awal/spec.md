@@ -32,7 +32,7 @@ trace:
   §4.1b#r21: [10, 63, 72, 104]
   §4.1b#r22: [10, 74, 105]
   §4.1b#r23: [10, 75, 77, 106]
-  §4.1b#r24: [10, 76, 78, 107]
+  §4.1b#r24: [10, 76, 78, 107, 142, 144, 146]
   §4.1b#r25: [10, 79, 82, 108]
   §4.1b#r26: [10, 80, 83, 109]
   §4.1b#r27: [10, 81, 84, 110]
@@ -62,14 +62,15 @@ coverage:
   - DU-053-3: Record History Rejected dengan Duration satu hari. Name `Camera Canon EOS - 1`; Asset ID `CAM-2026-0001`; Group `Head Office`; Hierarki Group `Head Office`; Status `Rejected`; Source `Reported by holder`; Last Holder `Budi Santoso`; Last Holder tampil `Budi S`; Reported By `Budi Santoso`; Reported By tampil `Budi S`; Reported Date `2026-11-05T08:30:00Z`; Reported Date tampil `05/11/26, 08:30`; Duration `1`; Duration tampil `1 day`; Resolved By `Rina Wulandari`; Resolved By tampil `Rina W`; Resolved Date `2026-11-06T09:15:00Z`; Resolved Date tampil `06/11/26, 09:15`; Photo `camera-canon-1.jpg`.
   - DU-053-4: Record History Canceled oleh pelapor. Name `Scanner Zebra DS2208 - 2`; Asset ID `SCN-2026-0002`; Group `Warehouse`; Hierarki Group `Warehouse`; Status `Canceled`; Source `Reported by holder`; Last Holder `Joko Susanto`; Last Holder tampil `Joko S`; Reported By `Joko Susanto`; Reported By tampil `Joko S`; Reported Date `2026-11-03T13:00:00Z`; Reported Date tampil `03/11/26, 13:00`; Duration `1`; Duration tampil `1 day`; Resolved By `Joko Susanto`; Resolved By tampil `Joko S`; Resolved Date `2026-11-04T08:20:00Z`; Resolved Date tampil `04/11/26, 08:20`; Photo `scanner-zebra-2.jpg`.
   - DU-053-5: Record History Found dengan pengguna yang kemudian dihapus. Name `Tablet Samsung Galaxy Tab A8 - 3`; Asset ID `TAB-2026-0003`; Group `Finance Room`; Hierarki Group `Head Office > Finance Room`; Status `Found`; Source `Transfer`; Last Holder `Maya Kusuma`; Last Holder tampil `Maya K`; Status akun Maya Kusuma `dihapus sesudah record selesai`; Reported By `Maya Kusuma`; Reported By tampil `Maya K`; Reported Date `2026-10-20T10:00:00Z`; Reported Date tampil `20/10/26, 10:00`; Duration `3`; Duration tampil `3 days`; Resolved By `Rina Wulandari`; Resolved By tampil `Rina W`; Resolved Date `2026-10-23T15:45:00Z`; Resolved Date tampil `23/10/26, 15:45`; Photo `tablet-samsung-3.jpg`.
-  - DU-053-6: Record History dengan seluruh kolom Curated terisi. Name `Mobile Printer Zebra ZQ320 - 5`; Asset ID `PRN-2026-0205`; Group `Head Office`; Status `Found`; Brand `Zebra Technologies`; Model/Type `Mobile Printer ZQ320`; TAG `BLE, QR`; Category `Mobile Printer`; Hierarki Category `Hardware > Printer > Mobile Printer`; Alias Name `Printer Lapangan`; Measurement `Unit`; Division `Operations`; Labels `Portable, Priority`; Asset Class `Electronic Equipment`; Register Date `2024-06-01`; Register Date tampil `01/06/24`; Purchase Date `2024-05-20`; Purchase Date tampil `20/05/24`; Warranty Expiry `2026-05-20`; Warranty Expiry tampil `20/05/26`; Purchase Cost `4500000`; Asset Value (Commercial) `3200000`; Asset Value (Fiscal) `2800000`.
+  - DU-053-6: Record History dengan seluruh kolom Curated terisi. Name `Mobile Printer Zebra ZQ320 - 5`; Asset ID `PRN-2026-0205`; Group `Head Office`; Status `Found`; Brand `Zebra Technologies`; Model/Type `Mobile Printer ZQ320`; TAG `BLE, QR`; Category `Mobile Printer`; Hierarki Category `Hardware > Printer > Mobile Printer`; Alias Name `Printer Lapangan`; Measurement `Unit`; Division `Operations`; Labels `Portable, Priority`; Asset Class `Electronic Equipment`; Register Date `2024-06-01`; Register Date tampil `01/06/24`; Purchase Date `2024-05-20`; Purchase Date tampil `20/05/24`; Daftar garansi `Garansi Pabrik — 2026-12-05 | Garansi Layanan Purna Jual — 2027-04-18 | Garansi Baterai — 2027-09-30`; Warranty Expiry (Warranty until terdekat) `2026-12-05`; Warranty Expiry tampil `05/12/26`; Hover daftar garansi `Garansi Pabrik — 05/12/26 | Garansi Layanan Purna Jual — 18/04/27 | Garansi Baterai — 30/09/27`; Purchase Cost `4500000`; Asset Value (Commercial) `3200000`; Asset Value (Fiscal) `2800000`.
   - DU-053-7: Record History dengan kolom Curated kosong. Name `Lemari Arsip Besi - 2`; Asset ID `FRN-2026-0302`; Group `Head Office`; Status `Found`; Brand `null`; Model/Type `null`; TAG `null`; Category `Furniture`; Hierarki Category `Furniture`; Alias Name `null`; Measurement `null`; Division `null`; Labels `null`; Asset Class `null`; Register Date `2025-02-14`; Register Date tampil `14/02/25`; Purchase Date `null`; Warranty Expiry `null`; Purchase Cost `null`; Asset Value (Commercial) `null`; Asset Value (Fiscal) `null`.
   - DU-053-8: Kata kunci Search tanpa hasil. Kata kunci Search `ZZZ-TIDAK-ADA`.
   - DU-053-9: Record History Found tanpa foto, dilaporkan PIC atas nama pemegang tanpa akun. Name `Forklift Toyota 8FD - 6`; Asset ID `FLK-2026-0006`; Group `Warehouse`; Hierarki Group `Warehouse`; Status `Found`; Source `Reported by holder`; Last Holder `Joko Susanto`; Last Holder tampil `Joko S`; Last Holder hover PIC `PIC: Rudi Hartono`; Reported By `Rudi Hartono (PIC) atas nama Joko Susanto`; Reported By tampil `Rudi H (on behalf of Joko S)`; Reported Date `2026-10-25T07:15:00Z`; Reported Date tampil `25/10/26, 07:15`; Duration `2`; Duration tampil `2 days`; Resolved By `Rina Wulandari`; Resolved By tampil `Rina W`; Resolved Date `2026-10-27T10:30:00Z`; Resolved Date tampil `27/10/26, 10:30`; Photo `tanpa foto (avatar inisial)`.
+  - DU-053-10: Record History Found dengan tiga garansi yang urutan daftarnya tidak dimulai dari garansi terdekat. Name `Generator Honda EU22i - 4`; Asset ID `GEN-2026-0104`; Group `Warehouse`; Status `Found`; Register Date `2025-04-11`; Register Date tampil `11/04/25`; Purchase Date `2025-04-01`; Purchase Date tampil `01/04/25`; Daftar garansi `Garansi Mesin — 2028-04-01 | Garansi Aki — 2027-01-15 | Garansi Servis — 2026-12-12`; Warranty Expiry (Warranty until terdekat) `2026-12-12`; Warranty Expiry tampil `12/12/26`; Hover daftar garansi `Garansi Mesin — 01/04/28 | Garansi Aki — 15/01/27 | Garansi Servis — 12/12/26`; Purchase Cost `18500000`; Asset Value (Commercial) `16200000`; Asset Value (Fiscal) `14800000`.
 - Kondisi:
   - K1: Date Format bernilai `DD/MM/YY`, Time Format bernilai `HH:mm`, dan Time Zone bernilai `UTC`; daftar History berisi DU-053-1 sampai DU-053-5; kolom yang tampil adalah kolom bawaan tabel
   - K2: preferensi kolom tersimpan menampilkan hanya kolom `Name`, `Brand`, `Model/Type`, `TAG`, `Category`, `Group`, `Alias Name`, `Measurement`, `Division`, `Labels`, dan `Asset Class`; daftar History berisi DU-053-6 dan DU-053-7
-  - K3: Date Format bernilai `DD/MM/YY`, Time Format bernilai `HH:mm`, dan Time Zone bernilai `UTC`; preferensi kolom tersimpan menampilkan hanya kolom `Name`, `Register Date`, `Purchase Date`, `Warranty Expiry`, `Purchase Cost`, `Asset Value (Commercial)`, dan `Asset Value (Fiscal)`; aktor berhak melihat nilai finansial; daftar History berisi DU-053-6 dan DU-053-7
+  - K3: Date Format bernilai `DD/MM/YY`, Time Format bernilai `HH:mm`, dan Time Zone bernilai `UTC`; preferensi kolom tersimpan menampilkan hanya kolom `Name`, `Register Date`, `Purchase Date`, `Warranty Expiry`, `Purchase Cost`, `Asset Value (Commercial)`, dan `Asset Value (Fiscal)`; aktor berhak melihat nilai finansial; daftar History berisi DU-053-6, DU-053-7, dan DU-053-10
   - K4: daftar History kosong tanpa Search dan Filter
   - K5: daftar History berisi DU-053-1 sampai DU-053-5; pencarian `ZZZ-TIDAK-ADA` (DU-053-8) dijawab daftar kosong
   - K6: memuat daftar History gagal karena error server pada percobaan pertama, lalu berhasil berisi DU-053-1 sampai DU-053-5 pada percobaan kedua
@@ -165,7 +166,7 @@ coverage:
 73. Tampilkan Halaman Missing sub-tab History (tabel T-MIS-02) dengan kondisi K3
 74. Verifikasi Register Date `01/06/24` tampil pada baris `Mobile Printer Zebra ZQ320 - 5`
 75. Verifikasi Purchase Date `20/05/24` tampil pada baris `Mobile Printer Zebra ZQ320 - 5`
-76. Verifikasi Warranty Expiry `20/05/26` tampil pada baris `Mobile Printer Zebra ZQ320 - 5`
+76. Verifikasi Warranty Expiry `05/12/26`, Warranty until terdekat dari tiga garansi aset, tampil pada baris `Mobile Printer Zebra ZQ320 - 5`
 77. Verifikasi Purchase Date `—` tampil pada baris `Lemari Arsip Besi - 2`
 78. Verifikasi Warranty Expiry `—` tampil pada baris `Lemari Arsip Besi - 2`
 79. Verifikasi Purchase Cost tampil sebagai nilai mata uang Company dari `4500000` pada baris `Mobile Printer Zebra ZQ320 - 5`
@@ -242,3 +243,11 @@ coverage:
 138. Arahkan kursor ke Last Holder `Joko S` pada baris `Forklift Toyota 8FD - 6`
 139. Verifikasi nama lengkap `Joko Susanto` tampil pada hover Last Holder baris `Forklift Toyota 8FD - 6`
 140. Verifikasi `PIC: Rudi Hartono` tampil pada hover Last Holder baris `Forklift Toyota 8FD - 6`
+
+### Warranty Expiry: Warranty until terdekat dan daftar seluruh garansi saat hover
+141. Tampilkan Halaman Missing sub-tab History (tabel T-MIS-02) dengan kondisi K3
+142. Verifikasi Warranty Expiry `12/12/26`, Warranty until terdekat dari tiga garansi aset, tampil pada baris `Generator Honda EU22i - 4`
+143. Arahkan kursor ke Warranty Expiry `12/12/26` pada baris `Generator Honda EU22i - 4`
+144. Verifikasi daftar seluruh garansi memuat tiga entri `Garansi Mesin — 01/04/28`, `Garansi Aki — 15/01/27`, dan `Garansi Servis — 12/12/26`
+145. Arahkan kursor ke Warranty Expiry `05/12/26` pada baris `Mobile Printer Zebra ZQ320 - 5`
+146. Verifikasi daftar seluruh garansi memuat tiga entri `Garansi Pabrik — 05/12/26`, `Garansi Layanan Purna Jual — 18/04/27`, dan `Garansi Baterai — 30/09/27`

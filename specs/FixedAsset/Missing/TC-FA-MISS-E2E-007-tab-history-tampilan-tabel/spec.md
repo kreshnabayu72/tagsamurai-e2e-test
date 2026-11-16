@@ -32,7 +32,7 @@ trace:
   §4.1b#r21: [12, 15]
   §4.1b#r22: [12, 15]
   §4.1b#r23: [12, 15]
-  §4.1b#r24: [12, 15]
+  §4.1b#r24: [12, 15, 67, 76, 79, 81, 83, 86, 92, 93]
   §4.1b#r25: [12, 15, 31]
   §4.1b#r26: [12, 15, 56]
   §4.1b#r27: [12, 15]
@@ -46,7 +46,7 @@ trace:
   §9.2#b16: 7
   §4.4#r1: [5, 8]
   §10#r5: 7
-anchor: []
+anchor: [84]
 coverage:
   web: automated
 ---
@@ -62,13 +62,16 @@ coverage:
   - DU-007-3: User `Agus Prasetyo {runId}`, role Manage asset & TAG (Update); tampil sebagai `Agus P`, dari `Agus Prasetyo {runId}`.
   - DU-007-4: User `Budi Santoso {runId}`, pemegang (Borrower) aset tanpa hak Aktor Missing; tampil sebagai `Budi S`, dari `Budi Santoso {runId}`.
   - DU-007-5: User `Joko Susilo {runId}`, pemegang (Borrower) aset tanpa hak Aktor Missing; tampil sebagai `Joko S`, dari `Joko Susilo {runId}`.
-  - DU-007-6: Record `Found` untuk aset `Kamera Baru {runId}` yang namanya sebelum record selesai `Kamera Lama {runId}`, Source `Borrow`, Last Holder `Sari Dewi {runId}`, Reported By `Rina Wijaya {runId}`, Reported Date T0 − 30 hari pukul `09:00`, Resolved By `Rina Wijaya {runId}`, Resolved Date T0 − 24 hari pukul `14:10`; Duration `6 days`, dari selisih 6 hari kalender. Saat record selesai Group aset `Gudang Lama {runId}` dan Purchase Cost `5000000`; sesudahnya aset dipindah ke Group `Gudang Baru {runId}` dan Purchase Cost menjadi `5500000`. Saat record selesai Category aset `Elektronik {runId}`, Asset Value (Commercial) `4200000`, dan Asset Value (Fiscal) `4000000`; sesudahnya Category menjadi `Peralatan Studio {runId}`, Asset Value (Commercial) `3900000`, dan Asset Value (Fiscal) `3800000`. Data aset terkini: Brand `Sonora {runId}` (sebelum record selesai `Merk Lama {runId}`), Model/Type `Alpha 7 {runId}`, TAG `RFID`, Labels `Studio {runId}`, Division `Produksi {runId}`, Measurement `Pcs`, Asset Class `Peralatan {runId}`, Register Date T0 − 400 hari, Purchase Date T0 − 410 hari, dan Warranty Expiry T0 + 300 hari. Asset ID dibentuk server dan menjadi milik entri ini.
+  - DU-007-6: Record `Found` untuk aset `Kamera Baru {runId}` yang namanya sebelum record selesai `Kamera Lama {runId}`, Source `Borrow`, Last Holder `Sari Dewi {runId}`, Reported By `Rina Wijaya {runId}`, Reported Date T0 − 30 hari pukul `09:00`, Resolved By `Rina Wijaya {runId}`, Resolved Date T0 − 24 hari pukul `14:10`; Duration `6 days`, dari selisih 6 hari kalender. Saat record selesai Group aset `Gudang Lama {runId}` dan Purchase Cost `5000000`; sesudahnya aset dipindah ke Group `Gudang Baru {runId}` dan Purchase Cost menjadi `5500000`. Saat record selesai Category aset `Elektronik {runId}`, Asset Value (Commercial) `4200000`, dan Asset Value (Fiscal) `4000000`; sesudahnya Category menjadi `Peralatan Studio {runId}`, Asset Value (Commercial) `3900000`, dan Asset Value (Fiscal) `3800000`. Data aset terkini: Brand `Sonora {runId}` (sebelum record selesai `Merk Lama {runId}`), Model/Type `Alpha 7 {runId}`, TAG `RFID`, Labels `Studio {runId}`, Division `Produksi {runId}`, Measurement `Pcs`, Asset Class `Peralatan {runId}`, Register Date T0 − 400 hari, Purchase Date T0 − 410 hari, dan daftar garansi aset `Garansi Unit {runId}` sampai T0 + 300 hari serta `Garansi Servis {runId}` sampai T0 + 540 hari, sehingga Warranty Expiry (Warranty until terdekat) T0 + 300 hari. Asset ID dibentuk server dan menjadi milik entri ini.
   - DU-007-7: Record `Disposed` untuk aset `Bor Listrik {runId}` (Group `Gudang Lama {runId}`), Source `Manual`, tanpa Last Holder, Reported By `Agus Prasetyo {runId}`, Reported Date T0 − 70 hari pukul `08:00`, Resolved By `System`, Resolved Date T0 − 8 hari pukul `00:00`; Duration `62 days`, dari selisih 62 hari kalender.
   - DU-007-8: Record `Rejected` untuk aset `Mesin Foto {runId}` (Group `Gudang Lama {runId}`), Source `Reported by holder`, Last Holder `Budi Santoso {runId}`, Reported By `Budi Santoso {runId}`, Reported Date T0 − 10 hari pukul `08:30`, Resolved By `Rina Wijaya {runId}`, Resolved Date T0 − 9 hari pukul `09:15`; Duration `1 day`, dari selisih 1 hari kalender.
   - DU-007-9: Record `Canceled` untuk aset `Pemindai Gudang {runId}` (Group `Gudang Lama {runId}`), Source `Reported by holder`, Last Holder `Joko Susilo {runId}`, Reported By `Joko Susilo {runId}`, Reported Date T0 − 12 hari pukul `13:00`, Resolved By `Joko Susilo {runId}` sebagai pelapor, Resolved Date T0 − 11 hari pukul `08:20`; Duration `1 day`, dari selisih 1 hari kalender.
   - DU-007-10: Record `Found` untuk aset `Gerinda Tangan {runId}` (Group `Gudang Lama {runId}`), Source `Manual`, tanpa Last Holder, Reported By `Agus Prasetyo {runId}`, Reported Date T0 − 55 hari, Resolved By `Wulan Pertiwi {runId}` (DU-007-12), Resolved Date T0 − 50 hari; Duration `5 days`, dari selisih 5 hari kalender.
   - DU-007-11: Record `Canceled` untuk aset `Gerinda Tangan {runId}` yang sama dengan DU-007-10 karena aset itu hilang berulang, Source `Reported by holder`, Last Holder `Budi Santoso {runId}`, Reported By `Budi Santoso {runId}`, Reported Date T0 − 45 hari, Resolved By `Budi Santoso {runId}`, Resolved Date T0 − 44 hari; Duration `1 day`, dari selisih 1 hari kalender.
   - DU-007-12: User `Wulan Pertiwi {runId}`, role Manage asset & TAG (Update), menyelesaikan record DU-007-10 lalu dinonaktifkan; tampil sebagai `Wulan P`, dari `Wulan Pertiwi {runId}`.
+  - DU-007-13: Daftar garansi tambahan: aset `Bor Listrik {runId}` (DU-007-7) punya `Garansi Bor {runId}` sampai T0 + 100 hari, aset `Pemindai Gudang {runId}` (DU-007-9) punya `Garansi Pemindai {runId}` sampai T0 + 200 hari, dan aset `Mesin Foto {runId}` (DU-007-8) punya `Garansi Mesin Foto {runId}` sampai T0 + 450 hari. Aset `Gerinda Tangan {runId}` (DU-007-10 dan DU-007-11) tanpa garansi. Warranty until terdekat: `Bor Listrik {runId}` T0 + 100 hari, `Pemindai Gudang {runId}` T0 + 200 hari, `Kamera Baru {runId}` T0 + 300 hari (DU-007-6), dan `Mesin Foto {runId}` T0 + 450 hari.
+  - DU-007-14: kata kunci Search `Garansi Unit {runId}`, nama garansi aset DU-007-6 yang hanya ada di daftar garansi dan tidak cocok dengan kolom lain.
+  - DU-007-15: rentang Warranty Expiry dari T0 + 150 hari sampai T0 + 350 hari, memuat Warranty until terdekat `Pemindai Gudang {runId}` (T0 + 200 hari) dan `Kamera Baru {runId}` (T0 + 300 hari), dan tidak memuat T0 + 100 hari maupun T0 + 450 hari.
 - Kondisi:
   - Date Format bernilai `DD/MM/YY` dan Time Format bernilai `HH:mm`.
   - T0 adalah waktu spec dijalankan; tanggal pada entri di atas dihitung relatif terhadap T0.
@@ -152,7 +155,7 @@ coverage:
 64. Verifikasi kolom Asset Class baris `Kamera Baru {runId}` menampilkan `Peralatan {runId}` sesuai data aset terkini
 65. Verifikasi kolom Register Date baris `Kamera Baru {runId}` menampilkan tanggal T0 − 400 hari dengan format `DD/MM/YY` sesuai data aset terkini
 66. Verifikasi kolom Purchase Date baris `Kamera Baru {runId}` menampilkan tanggal T0 − 410 hari dengan format `DD/MM/YY` sesuai data aset terkini
-67. Verifikasi kolom Warranty Expiry baris `Kamera Baru {runId}` menampilkan tanggal T0 + 300 hari dengan format `DD/MM/YY` sesuai data aset terkini
+67. Verifikasi kolom Warranty Expiry baris `Kamera Baru {runId}` menampilkan Warranty until terdekat dari daftar garansi aset, yaitu tanggal T0 + 300 hari dengan format `DD/MM/YY` sesuai data aset terkini, dan bukan tanggal T0 + 540 hari
 
 ### Aset yang pernah hilang berulang tampil sebagai dua baris
 68. Ganti isi kotak search dengan `Gerinda Tangan {runId}`, tekan Enter
@@ -163,3 +166,34 @@ coverage:
 71. Ganti isi kotak search dengan `Gerinda Tangan {runId}`, tekan Enter
 72. Verifikasi kolom Resolved By baris `Gerinda Tangan {runId}` yang berstatus `Found` menampilkan `Wulan P` walau penggunanya sudah dinonaktifkan
 73. Klik `(←)` pada kotak Search
+
+### Warranty Expiry menampilkan daftar seluruh garansi
+74. Ketik Search `Kamera Baru {runId}`, tekan Enter
+75. Arahkan kursor ke sel kolom Warranty Expiry baris `Kamera Baru {runId}`
+76. Verifikasi daftar seluruh garansi aset tampil dengan format `[Warranty name] — [tanggal]`: `Garansi Unit {runId}` bertanggal T0 + 300 hari dan `Garansi Servis {runId}` bertanggal T0 + 540 hari, dengan tanggal berformat `DD/MM/YY`
+77. Klik `(←)` pada kotak Search
+
+### Warranty Expiry diurutkan menurut Warranty until terdekat
+78. Ketik Search `{runId}`, tekan Enter
+79. Verifikasi kolom Warranty Expiry menampilkan tanggal T0 + 100 hari pada baris `Bor Listrik {runId}`, T0 + 200 hari pada baris `Pemindai Gudang {runId}`, T0 + 300 hari pada baris `Kamera Baru {runId}`, dan T0 + 450 hari pada baris `Mesin Foto {runId}`, dengan format `DD/MM/YY`, dan `—` pada kedua baris `Gerinda Tangan {runId}` karena asetnya tanpa garansi
+80. Klik header `Warranty Expiry`
+81. Verifikasi urutan baris dari atas ke bawah menurut Oldest First atas Warranty until terdekat: `Bor Listrik {runId}`, `Pemindai Gudang {runId}`, `Kamera Baru {runId}`, `Mesin Foto {runId}`, lalu kedua baris `Gerinda Tangan {runId}` yang tanpa garansi di akhir, dengan `Kamera Baru {runId}` sebelum `Mesin Foto {runId}` walau garansi terjauhnya (T0 + 540 hari) lebih akhir
+82. Klik header `Warranty Expiry`
+83. Verifikasi urutan baris dari atas ke bawah menurut Newest First atas Warranty until terdekat: kedua baris `Gerinda Tangan {runId}` yang tanpa garansi di awal, lalu `Mesin Foto {runId}`, `Kamera Baru {runId}`, `Pemindai Gudang {runId}`, `Bor Listrik {runId}`
+
+### Warranty Expiry tidak ikut dicari oleh Search
+84. Verifikasi baris `Kamera Baru {runId}` tampil pada hasil Search `{runId}`
+85. Ganti isi kotak search dengan `Garansi Unit {runId}`, tekan Enter
+86. Verifikasi `No results found` dan `Try adjusting your search or filter.` tampil karena Warranty Expiry bukan kolom yang dicari Search, walau baris `Kamera Baru {runId}` memuat garansi `Garansi Unit {runId}`
+87. Klik `(←)` pada kotak Search
+
+### Filter rentang Warranty Expiry memakai Warranty until terdekat
+88. Ketik Search `{runId}`, tekan Enter
+89. Klik ikon Filter
+90. Pilih rentang Warranty Expiry dari `T0 + 150 hari` sampai `T0 + 350 hari` sesuai DU-007-15
+91. Klik `[Apply]`
+92. Verifikasi tabel memuat baris `Pemindai Gudang {runId}` yang Warranty until terdekatnya T0 + 200 hari dan baris `Kamera Baru {runId}` yang T0 + 300 hari, keduanya di dalam rentang
+93. Verifikasi baris `Bor Listrik {runId}` yang Warranty until terdekatnya T0 + 100 hari, baris `Mesin Foto {runId}` yang T0 + 450 hari, dan kedua baris `Gerinda Tangan {runId}` yang tanpa garansi, tidak tampil
+94. Klik `[Clear Field]`
+95. Klik `[Apply]`
+96. Klik `(←)` pada kotak Search

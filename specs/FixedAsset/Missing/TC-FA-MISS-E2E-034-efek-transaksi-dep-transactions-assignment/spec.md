@@ -5,17 +5,17 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r42", "§9.4.2#r4", "§11#r5", "§4.2.3#p2", "§9.7#r1", "§9.2#b32", "§4.2.3#b5"]
+sourceRules: ["§1.2#r42", "§9.4.2#r4", "§11#r5", "§9.7#r1", "§9.2#b32", "§4.2.3#b5", "§9.4.2#r6"]
 smoke: []
-dependsOn: ["Transactions Assignment: halaman Assignment > aksi Report Missing", "Transactions Assignment: Draft"]
+dependsOn: ["Assignment: halaman Assignment > aksi Report Missing", "Assignment: Draft"]
 trace:
   "§1.2#r42": [8]
   "§9.4.2#r4": [18, 19, 21, 48, 50]
   "§11#r5": [3, 8, 15, 36]
-  "§4.2.3#p2": [12]
   "§9.7#r1": [8, 15, 36, 57, 60]
   "§9.2#b32": [24]
   "§4.2.3#b5": [5, 12, 29, 43]
+  "§9.4.2#r6": [60]
 anchor: [28, 42, 47]
 coverage:
   web: automated
@@ -112,7 +112,7 @@ coverage:
 49. Klik `[Submit]` pada Draft
 50. Verifikasi Submit Draft berhasil tanpa blokir
 
-### Confirm laporan pemegang menutup baris Assigned
+### Confirm laporan pemegang menutup baris Assigned menjadi Unassigned bermarker Missing
 51. Buka halaman `Assets`
 52. Klik tab `Missing`
 53. Ketik Search `Monitor LG 27UL500 {runId}`, tekan Enter
@@ -122,4 +122,4 @@ coverage:
 57. Verifikasi toast `Success, report has been confirmed.` tampil
 58. Buka halaman `Assignment`
 59. Ketik Search `Monitor LG 27UL500 {runId}`, tekan Enter
-60. Verifikasi baris Assignment `Monitor LG 27UL500 {runId}` tidak lagi berstatus `Assigned`
+60. Verifikasi baris Assignment `Monitor LG 27UL500 {runId}` berstatus `Unassigned` dengan marker `Missing`

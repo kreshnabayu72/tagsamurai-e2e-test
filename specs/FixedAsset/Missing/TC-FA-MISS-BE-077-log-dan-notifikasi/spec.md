@@ -22,7 +22,7 @@ trace:
   §8#r10: [63, 64]
   §8#r11: [39, 42, 44, 45]
   §8#p2: [45, 74]
-  §8.1#p2: [47, 49, 50, 52]
+  §8.1#p2: [47, 49, 50, 52, 91]
   §8.2#b1: [7, 14, 20, 29, 33, 75]
   §8.2#b2: [7, 14, 20, 24, 29, 33, 37, 42]
   §8.2#b3: 74
@@ -90,7 +90,7 @@ trace:
   - DU-077-11: Asset Name `Projector Epson EB-X06 {runId}`, Asset ID `FA077-008`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`.
   - DU-077-12: Asset Name `Toyota Innova {runId}`, Asset ID `FA077-009`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, TAG terpasang `tidak ada`.
   - DU-077-13: Asset Name `Genset Honda EU22 {runId}`, Asset ID `FA077-010`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`.
-  - DU-077-14: Asset Name `Tablet Samsung Tab A8 {runId}`, Asset ID `FA077-011`, Group aset `Finance Room`, Record berjalan `In Disposal Process, dilaporkan Rina W`, Disposal No. `DSP-077-0001`.
+  - DU-077-14: Asset Name `Tablet Samsung Tab A8 {runId}`, Asset ID `FA077-011`, Group aset `Finance Room`, Record berjalan `In Disposal Process, dilaporkan Rina W`. Disposal No. dibentuk server saat Disposal Executed dan menjadi milik DU-077-14.
   - DU-077-15: Asset Name `Kamera Sony A7 {runId}`, Asset ID `FA077-012`, Group aset `Finance Room`, Record berjalan `In Disposal Process, dilaporkan Rina W`.
   - DU-077-16: Asset Name `Brankas Besi {runId}`, Asset ID `FA077-013`, Group aset `Finance Room`, Record berjalan `tidak ada`, Disposal Report `Reported`.
   - DU-077-17: Asset Name `Kursi Ergonomis {runId}`, Asset ID `FA077-014`, Group aset `Finance Room`, Record berjalan `tidak ada`, Baris Disposal `Sell, Waiting for Approval`.
@@ -164,7 +164,7 @@ trace:
 41. Rina W menjalankan Cancel Disposal Report atas record `Genset Honda EU22 {runId}`
 42. Verifikasi record `Genset Honda EU22 {runId}` memuat node `Disposal report canceled by` dengan Back to Missing `Yes`, dan Transaction admin log Rina W memuat Cancel Disposal Report pada sub-tab Disposal
 43. Disposal Executed untuk aset `Tablet Samsung Tab A8 {runId}`
-44. Verifikasi record `Tablet Samsung Tab A8 {runId}` memuat node `Disposed` atas nama `System` dengan Disposal No. `DSP-077-0001`, dan event `missing_resolved` dikirim
+44. Verifikasi record `Tablet Samsung Tab A8 {runId}` memuat node `Disposed` atas nama `System` dengan Disposal No. milik DU-077-14, dan event `missing_resolved` dikirim
 45. Verifikasi Activity Log mencatat peristiwa itu dengan Modified By `System` dan System Log tidak mendapat entri aktor, karena tidak ada pengguna aktor
 46. Baris Disposal aset `Kamera Sony A7 {runId}` ditolak approver Disposal
 47. Verifikasi record `Kamera Sony A7 {runId}` kembali `Missing` dan tidak ada event `missing_*` untuk transisi itu, sedangkan node log mengikuti peristiwa Disposal yang sama
@@ -225,3 +225,6 @@ trace:
 88. Verifikasi record `Rak Besi Gudang {runId}` mendapat node `Reported found by` baru atas nama `Agus Pratama {runId}` dan Aktor Missing menerima event `missing_found_reported` baru untuk `Agus Pratama {runId}`, karena jendela 1 jam sejak notifikasi pertamanya sudah berakhir
 89. `Agus Pratama {runId}` mengirim I found it atas record `Meja Kerja Kayu {runId}` dalam 1 jam sesudah pengiriman pada record `Rak Besi Gudang {runId}`
 90. Verifikasi Aktor Missing menerima event `missing_found_reported` untuk `Agus Pratama {runId}` atas record `Meja Kerja Kayu {runId}`, karena jendela 1 jam dihitung per pengguna per record
+
+### Node Reported found by memuat koordinat lokasi penemu
+91. Verifikasi node `Reported found by` pertama atas nama `Agus Pratama {runId}` pada record `Rak Besi Gudang {runId}` memuat Location dengan Latitude `-6.200000` dan Longitude `106.816667`

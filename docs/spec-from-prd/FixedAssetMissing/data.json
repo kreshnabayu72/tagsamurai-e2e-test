@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-14",
- "sha": "a473a8eadacaab56",
+ "disetujui": "otomatis, 2026-11-16",
+ "sha": "9e687dc4579f624b",
  "entri": [
   {
    "id": "DU-001-1",
@@ -310,7 +310,12 @@
     "Reported By": "Rina Wijaya {runId}",
     "Reported Date": "T0 − 34 hari, pukul 09:00",
     "Days Missing": "34 days",
-    "Penanda": "Long missing"
+    "Penanda": "Long missing",
+    "Garansi 1 nama": "Garansi Unit {runId}",
+    "Garansi 1 sampai": "T0 + 120 hari",
+    "Garansi 2 nama": "Garansi Baterai {runId}",
+    "Garansi 2 sampai": "T0 + 365 hari",
+    "Warranty Expiry": "T0 + 120 hari, dari Warranty until terdekat"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -321,7 +326,9 @@
     "Group": null,
     "Last Holder": null,
     "Pemindai": null,
-    "Reported By": null
+    "Reported By": null,
+    "Garansi 1 nama": null,
+    "Garansi 2 nama": null
    }
   },
   {
@@ -420,6 +427,72 @@
    "maks": {
     "Reason": null
    }
+  },
+  {
+   "id": "DU-001-16",
+   "spec": [
+    "TC-FA-MISS-E2E-001-tab-active-tampilan-tabel"
+   ],
+   "jenis": "Garansi aset",
+   "data": "Daftar garansi tambahan untuk sort Warranty Expiry",
+   "asal": "awal",
+   "nilai": {
+    "Aset 1": "Monitor LG 27UL500 {runId}",
+    "Garansi 1 nama": "Garansi Monitor {runId}",
+    "Garansi 1 sampai": "T0 + 30 hari",
+    "Warranty Expiry aset 1": "T0 + 30 hari, dari Warranty until terdekat",
+    "Aset 2": "Printer HP LaserJet M404 {runId}",
+    "Garansi 2 nama": "Garansi Printer {runId}",
+    "Garansi 2 sampai": "T0 + 200 hari",
+    "Warranty Expiry aset 2": "T0 + 200 hari, dari Warranty until terdekat"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Garansi 1 nama": null,
+    "Garansi 2 nama": null,
+    "Aset 1": null,
+    "Aset 2": null
+   }
+  },
+  {
+   "id": "DU-001-17",
+   "spec": [
+    "TC-FA-MISS-E2E-001-tab-active-tampilan-tabel"
+   ],
+   "jenis": "Kata kunci Search",
+   "data": "Nama garansi yang tidak boleh ikut dicari",
+   "asal": "dicoba",
+   "nilai": {
+    "Kata kunci": "Garansi Unit {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Kata kunci": null
+   }
+  },
+  {
+   "id": "DU-001-18",
+   "spec": [
+    "TC-FA-MISS-E2E-001-tab-active-tampilan-tabel"
+   ],
+   "jenis": "Filter Warranty Expiry",
+   "data": "Rentang yang memuat satu Warranty until terdekat",
+   "asal": "dicoba",
+   "nilai": {
+    "Dari": "T0 + 100 hari",
+    "Sampai": "T0 + 150 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
   },
   {
    "id": "DU-002-1",
@@ -2480,9 +2553,13 @@
     "Division": "Produksi {runId}",
     "Measurement": "Pcs",
     "Asset Class": "Peralatan {runId}",
+    "Garansi 1 nama": "Garansi Unit {runId}",
+    "Garansi 1 sampai": "T0 + 300 hari",
+    "Garansi 2 nama": "Garansi Servis {runId}",
+    "Garansi 2 sampai": "T0 + 540 hari",
     "Register Date": "T0 − 400 hari",
     "Purchase Date": "T0 − 410 hari",
-    "Warranty Expiry": "T0 + 300 hari",
+    "Warranty Expiry": "T0 + 300 hari, dari Warranty until terdekat",
     "Status": "Found",
     "Source": "Borrow",
     "Last Holder": "Sari Dewi {runId}",
@@ -2513,7 +2590,9 @@
     "Model/Type": null,
     "Labels": null,
     "Division": null,
-    "Asset Class": null
+    "Asset Class": null,
+    "Garansi 1 nama": null,
+    "Garansi 2 nama": null
    }
   },
   {
@@ -2702,6 +2781,78 @@
    "maks": {
     "Name": null
    }
+  },
+  {
+   "id": "DU-007-13",
+   "spec": [
+    "TC-FA-MISS-E2E-007-tab-history-tampilan-tabel"
+   ],
+   "jenis": "Garansi aset",
+   "data": "Daftar garansi tambahan untuk sort Warranty Expiry",
+   "asal": "awal",
+   "nilai": {
+    "Aset 1": "Bor Listrik {runId}",
+    "Garansi 1 nama": "Garansi Bor {runId}",
+    "Garansi 1 sampai": "T0 + 100 hari",
+    "Warranty Expiry aset 1": "T0 + 100 hari, dari Warranty until terdekat",
+    "Aset 2": "Pemindai Gudang {runId}",
+    "Garansi 2 nama": "Garansi Pemindai {runId}",
+    "Garansi 2 sampai": "T0 + 200 hari",
+    "Warranty Expiry aset 2": "T0 + 200 hari, dari Warranty until terdekat",
+    "Aset 3": "Mesin Foto {runId}",
+    "Garansi 3 nama": "Garansi Mesin Foto {runId}",
+    "Garansi 3 sampai": "T0 + 450 hari",
+    "Warranty Expiry aset 3": "T0 + 450 hari, dari Warranty until terdekat"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Aset 1": null,
+    "Aset 2": null,
+    "Aset 3": null,
+    "Garansi 1 nama": null,
+    "Garansi 2 nama": null,
+    "Garansi 3 nama": null
+   }
+  },
+  {
+   "id": "DU-007-14",
+   "spec": [
+    "TC-FA-MISS-E2E-007-tab-history-tampilan-tabel"
+   ],
+   "jenis": "Kata kunci Search",
+   "data": "Nama garansi yang tidak boleh ikut dicari",
+   "asal": "dicoba",
+   "nilai": {
+    "Kata kunci": "Garansi Unit {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Kata kunci": null
+   }
+  },
+  {
+   "id": "DU-007-15",
+   "spec": [
+    "TC-FA-MISS-E2E-007-tab-history-tampilan-tabel"
+   ],
+   "jenis": "Filter Warranty Expiry",
+   "data": "Rentang yang memuat dua Warranty until terdekat",
+   "asal": "dicoba",
+   "nilai": {
+    "Dari": "T0 + 150 hari",
+    "Sampai": "T0 + 350 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
   },
   {
    "id": "DU-008-1",
@@ -3524,7 +3675,7 @@
    "asal": "awal",
    "nilai": {
     "Name": "Laptop Lenovo ThinkPad T14 {runId}",
-    "Asset ID": "LPT-012-0001",
+    "Asset ID": "milik entri ini (dibentuk server)",
     "Group": "Head Office",
     "Status": "Missing",
     "Source": "Manual",
@@ -3711,7 +3862,7 @@
     "TC-FA-MISS-E2E-012-dialog-missing-log"
    ],
    "jenis": "Missing record",
-   "data": "Record Found di History dengan node Report confirmed by dan Marked as found by",
+   "data": "Record Found di History dengan node Report confirmed by (Closed lines) dan Marked as found by (Manual identification)",
    "asal": "awal",
    "nilai": {
     "Name": "Laptop Dell Latitude 5420 {runId}",
@@ -3722,9 +3873,11 @@
     "Last Holder": "Sari D",
     "Reported By": "Sari D",
     "Node Confirm": "Report confirmed by Rina W",
+    "Closed lines": "nomor transaksi dan jenis transaksi milik satu baris transaksi berjalan atas Sari D yang ditutup saat Confirm (nomor dibentuk server, milik entri ini)",
     "Node Found": "Marked as found by Rina W",
     "Found at": "Server Room",
     "Asset Status": "Normal",
+    "Manual identification": "Yes",
     "Note": "Ditemukan di laci ruang rapat lantai 2",
     "Photo": "satu foto terlampir",
     "Resolved Date": "T0 − 1 hari, pukul 10:00"
@@ -10034,6 +10187,92 @@
    "maks": {}
   },
   {
+   "id": "DU-044-16",
+   "spec": [
+    "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
+   ],
+   "jenis": "User",
+   "data": "Pengguna Aktor Borrow tanpa Manage asset & TAG (Update) sebagai Pelapor admin",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Budi Hartono {runId}",
+    "Role": "Aktor Borrow tanpa Manage asset & TAG (Update)",
+    "Cakupan": "aset dalam cakupan transaksi Borrow"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§8.2#b2",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-044-17",
+   "spec": [
+    "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dengan entri Report Missing dari halaman transaksi Borrow di Transaction admin log",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Proyektor BenQ MW535 {runId}",
+    "Group": "Head Office",
+    "Log": "Report Missing",
+    "Titik masuk": "halaman transaksi Borrow"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§8.2#b2",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-044-18",
+   "spec": [
+    "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
+   ],
+   "jenis": "User",
+   "data": "Pengguna pemilik sesi Stock Opname tanpa Manage asset & TAG (Update) sebagai Pelapor admin",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Sari Wulandari {runId}",
+    "Role": "pemilik sesi Stock Opname tanpa Manage asset & TAG (Update)",
+    "Cakupan": "aset dalam sesi Stock Opname miliknya"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§8.2#b2",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-044-19",
+   "spec": [
+    "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dengan entri Report Missing dari sesi Stock Opname di Transaction admin log",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Barcode Scanner Honeywell 1900 {runId}",
+    "Group": "Warehouse",
+    "Log": "Report Missing",
+    "Titik masuk": "sesi Stock Opname"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§8.2#b2",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
    "id": "DU-045-1",
    "spec": [
     "TC-FA-MISS-E2E-045-long-missing-after-dep-settings-transaction-rules"
@@ -10682,8 +10921,10 @@
     "Register Date tampil": "15/01/25",
     "Purchase Date": "2024-12-20",
     "Purchase Date tampil": "20/12/24",
-    "Warranty Expiry": "2026-12-20",
+    "Daftar garansi": "Garansi Pabrik — 2026-12-20 | Garansi Baterai — 2027-03-15 | Garansi Layar — 2027-06-30",
+    "Warranty Expiry (Warranty until terdekat)": "2026-12-20",
     "Warranty Expiry tampil": "20/12/26",
+    "Hover daftar garansi": "Garansi Pabrik — 20/12/26 | Garansi Baterai — 15/03/27 | Garansi Layar — 30/06/27",
     "Purchase Cost": "15000000",
     "Asset Value (Commercial)": "12500000",
     "Asset Value (Fiscal)": "9000000",
@@ -11179,6 +11420,41 @@
    "nilai": {
     "Node": "Reported missing by Andi P",
     "Detail": "Laptop hilang saat dipinjam"
+   },
+   "varian": [],
+   "sumber": "turunan penulis",
+   "spec": [
+    "TC-FA-MISS-UI-050-tabel-active-tampilan-awal"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-050-25",
+   "jenis": "Missing Record",
+   "data": "Record Missing dengan tiga garansi yang urutan daftarnya tidak dimulai dari garansi terdekat",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Server Dell PowerEdge R440 - 6",
+    "Asset ID": "SRV-2026-0006",
+    "Group": "Head Office",
+    "Hierarki Group": "Head Office",
+    "Status": "Missing",
+    "Source": "Manual",
+    "Register Date": "2025-02-03",
+    "Register Date tampil": "03/02/25",
+    "Purchase Date": "2025-01-20",
+    "Purchase Date tampil": "20/01/25",
+    "Daftar garansi": "Garansi Server — 2028-01-20 | Garansi Penyimpanan — 2027-08-05 | Garansi Catu Daya — 2026-11-30",
+    "Warranty Expiry (Warranty until terdekat)": "2026-11-30",
+    "Warranty Expiry tampil": "30/11/26",
+    "Hover daftar garansi": "Garansi Server — 20/01/28 | Garansi Penyimpanan — 05/08/27 | Garansi Catu Daya — 30/11/26",
+    "Purchase Cost": "28000000",
+    "Asset Value (Commercial)": "24500000",
+    "Asset Value (Fiscal)": "21000000",
+    "Modified By": "Rina Wulandari",
+    "Modified By tampil": "Rina W"
    },
    "varian": [],
    "sumber": "turunan penulis",
@@ -11779,6 +12055,50 @@
    "maks": {}
   },
   {
+   "id": "DU-052-8",
+   "jenis": "Disposal Reason",
+   "data": "Reason yang diisi pada dialog Report Disposal",
+   "asal": "dibuat",
+   "nilai": {
+    "Reason": "Aset tidak ditemukan setelah inventarisasi gudang"
+   },
+   "varian": [],
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "spec": [
+    "TC-FA-MISS-UI-052-bulk-report-disposal-klien"
+   ],
+   "mutasi": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-052-9",
+   "jenis": "Missing Record",
+   "data": "Record Missing yang muncul pada pembacaan ulang daftar sesudah kegagalan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Aset Muncul Sesudah Gagal - 1",
+    "Asset ID": "MSG-2026-0001",
+    "Group": "Head Office",
+    "Status": "Missing",
+    "Source": "Manual",
+    "Last Holder": "null",
+    "Last Seen": "Unknown",
+    "Reported By": "Rina Wulandari",
+    "Reported Date": "2026-11-01T08:00:00Z",
+    "Days Missing": "10",
+    "Last Updated": "2026-11-01T08:00:00Z"
+   },
+   "varian": [],
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "spec": [
+    "TC-FA-MISS-UI-052-bulk-report-disposal-klien"
+   ],
+   "mutasi": [],
+   "maks": {}
+  },
+  {
    "id": "DU-053-1",
    "jenis": "Missing History Record",
    "data": "Record History Found, diselesaikan Rina Wulandari",
@@ -11993,8 +12313,10 @@
     "Register Date tampil": "01/06/24",
     "Purchase Date": "2024-05-20",
     "Purchase Date tampil": "20/05/24",
-    "Warranty Expiry": "2026-05-20",
-    "Warranty Expiry tampil": "20/05/26",
+    "Daftar garansi": "Garansi Pabrik — 2026-12-05 | Garansi Layanan Purna Jual — 2027-04-18 | Garansi Baterai — 2027-09-30",
+    "Warranty Expiry (Warranty until terdekat)": "2026-12-05",
+    "Warranty Expiry tampil": "05/12/26",
+    "Hover daftar garansi": "Garansi Pabrik — 05/12/26 | Garansi Layanan Purna Jual — 18/04/27 | Garansi Baterai — 30/09/27",
     "Purchase Cost": "4500000",
     "Asset Value (Commercial)": "3200000",
     "Asset Value (Fiscal)": "2800000"
@@ -12088,6 +12410,37 @@
     "Resolved Date": "2026-10-27T10:30:00Z",
     "Resolved Date tampil": "27/10/26, 10:30",
     "Photo": "tanpa foto (avatar inisial)"
+   },
+   "varian": [],
+   "sumber": "turunan penulis",
+   "spec": [
+    "TC-FA-MISS-UI-053-tabel-history-tampilan-awal"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-053-10",
+   "jenis": "Missing History Record",
+   "data": "Record History dengan tiga garansi yang urutan daftarnya tidak dimulai dari garansi terdekat",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Generator Honda EU22i - 4",
+    "Asset ID": "GEN-2026-0104",
+    "Group": "Warehouse",
+    "Status": "Found",
+    "Register Date": "2025-04-11",
+    "Register Date tampil": "11/04/25",
+    "Purchase Date": "2025-04-01",
+    "Purchase Date tampil": "01/04/25",
+    "Daftar garansi": "Garansi Mesin — 2028-04-01 | Garansi Aki — 2027-01-15 | Garansi Servis — 2026-12-12",
+    "Warranty Expiry (Warranty until terdekat)": "2026-12-12",
+    "Warranty Expiry tampil": "12/12/26",
+    "Hover daftar garansi": "Garansi Mesin — 01/04/28 | Garansi Aki — 15/01/27 | Garansi Servis — 12/12/26",
+    "Purchase Cost": "18500000",
+    "Asset Value (Commercial)": "16200000",
+    "Asset Value (Fiscal)": "14800000"
    },
    "varian": [],
    "sumber": "turunan penulis",
@@ -12285,17 +12638,14 @@
     "TC-FA-MISS-UI-054-dialog-report-missing"
    ],
    "jenis": "Kotak Dampak",
-   "data": "Kotak dampak satu permintaan menunggu dan satu transaksi Borrow",
+   "data": "Kotak dampak satu transaksi Borrow pada satu aset",
    "asal": "awal",
    "nilai": {
-    "Borrow": "BRW-2026-0141",
-    "Pending Request": "1"
+    "Borrow": "BRW-2026-0141"
    },
    "jumlah": 1,
    "mutasi": [],
-   "varian": [
-    "kotak-dampak@report-missing:jumlah-satu"
-   ],
+   "varian": [],
    "sumber": "§4.2.3#p2",
    "maks": {}
   },
@@ -12305,16 +12655,15 @@
     "TC-FA-MISS-UI-054-dialog-report-missing"
    ],
    "jenis": "Kotak Dampak",
-   "data": "Kotak dampak tiga permintaan menunggu",
+   "data": "Kotak dampak dua aset, masing-masing dengan transaksi Borrow",
    "asal": "awal",
    "nilai": {
-    "Pending Request": "3"
+    "Borrow aset Laptop Dell Latitude 5420": "BRW-2026-0152",
+    "Borrow aset Monitor LG 27UL500": "BRW-2026-0153"
    },
    "jumlah": 1,
    "mutasi": [],
-   "varian": [
-    "kotak-dampak@report-missing:jumlah-banyak"
-   ],
+   "varian": [],
    "sumber": "§4.2.3#p2",
    "maks": {}
   },
@@ -12565,12 +12914,11 @@
     "TC-FA-MISS-UI-054-dialog-report-missing"
    ],
    "jenis": "Kotak Dampak",
-   "data": "Kotak dampak aset campuran: satu aset tidak layak dengan Borrow dan dua permintaan menunggu, satu aset layak dengan satu permintaan menunggu",
+   "data": "Kotak dampak aset campuran: satu aset tidak layak dengan Borrow, satu aset layak dengan Borrow",
    "asal": "awal",
    "nilai": {
     "Borrow aset tidak layak": "BRW-2026-0150",
-    "Pending Request aset tidak layak": "2",
-    "Pending Request aset layak": "1"
+    "Borrow aset layak": "BRW-2026-0155"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -17991,7 +18339,7 @@
     "Group aset": "Finance Room",
     "Record berjalan": "Waiting for Confirmation, dilaporkan Sari Dewi {runId}",
     "Pemegang": "Sari Dewi {runId}",
-    "Baris transaksi": "terbuka",
+    "Baris transaksi": "terbuka dengan badge `Reported Missing`",
     "TAG terpasang": "tidak ada"
    },
    "jumlah": 1,
@@ -18152,6 +18500,7 @@
     "Group aset": "Finance Room",
     "Record berjalan": "Waiting for Confirmation, dilaporkan Joko Susilo {runId}",
     "Pemegang": "Joko Susilo {runId}",
+    "Baris transaksi": "terbuka dengan badge `Reported Missing`",
     "Condition sebelum laporan": "Damaged",
     "Damage record": "berjalan dan ditahan",
     "Tagging": "Tag Reported",
@@ -18697,8 +19046,7 @@
     "Name": "Tablet Samsung Tab A8 {runId}",
     "Asset ID": "FA077-011",
     "Group aset": "Finance Room",
-    "Record berjalan": "In Disposal Process, dilaporkan Rina W",
-    "Disposal No.": "DSP-077-0001"
+    "Record berjalan": "In Disposal Process, dilaporkan Rina W"
    },
    "jumlah": 1,
    "mutasi": [
