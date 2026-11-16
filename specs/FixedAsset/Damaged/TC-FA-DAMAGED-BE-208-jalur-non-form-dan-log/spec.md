@@ -1,55 +1,55 @@
 ---
 id: TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log
-title: "Server membuat record dan node dari jalur non-form (registrasi, Accept with damage, Stock Opname, Transfer receive, Mark as Found), menulis Damage Log, Transaction log, Transaction admin log, Activity Log, dan System Log per aksi, dan tidak mencatat pembukaan dialog maupun Download"
+title: "Server membuat record dan node dari jalur non-form (registrasi, Unassign bermarker Damaged, Stock Opname, Transfer receive, Mark as Found), menulis Damage Log, Transaction log, Transaction admin log, Activity Log, dan System Log per aksi, dan tidak mencatat pembukaan dialog maupun Download"
 layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r45", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r47", "§Aturan Logika Modul#r80", "§Aturan Logika Modul#r81", "§Aturan Logika Modul#r82", "§Aturan Logika Modul#r83", "§Aturan Logika Modul#r84", "§Aturan Logika Modul#r85", "§Aturan Logika Modul#r86", "§9.2#b5", "§9.2#b6", "§9.2#b7", "§9.6#r9", "§9.6#p1", "§8#p1", "§8.1#p4", "§8.2#b1", "§8.2#b2", "§8.2#b3", "§8.3#r1", "§8.3#r2", "§8.3#r3", "§8.3#r4", "§8.3#r5", "§8.3#r6", "§8.3#p2", "§8.3#b1", "§8.3#b2", "§5#r7", "§9.4.2#r6", "§9.4.2#r24", "§9.4.2#r25", "§9.4.2#r27", "§9.4.2#r28", "§9.4.4#r4", "§9.4.4#r6", "§9.4.4#r9", "§9.4.4#r12", "§9.7#r3", "§9.7#r8", "§9.4.1#r15", "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16"]
+sourceRules: ["§Aturan Logika Modul#r45", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r47", "§Aturan Logika Modul#r77", "§Aturan Logika Modul#r78", "§Aturan Logika Modul#r79", "§Aturan Logika Modul#r80", "§Aturan Logika Modul#r81", "§Aturan Logika Modul#r82", "§Aturan Logika Modul#r83", "§9.2#b5", "§9.2#b6", "§9.2#b7", "§9.6#r9", "§9.6#p1", "§8#p1", "§8.1#p4", "§8.2#b1", "§8.2#b2", "§8.2#b3", "§8.3#r1", "§8.3#r2", "§8.3#r3", "§8.3#r4", "§8.3#r5", "§8.3#r6", "§8.3#p2", "§8.3#b1", "§8.3#b2", "§5#r7", "EC-DMG-06", "EC-DMG-28", "EC-DMG-29", "EC-DMG-31", "EC-DMG-32", "§9.4.4#r4", "§9.4.4#r6", "§9.4.4#r9", "§9.4.4#r12", "§9.7#r3", "§9.7#r8", "§9.4.1#r15", "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r45": [57, 69, 71]
-  "§Aturan Logika Modul#r46": [57, 61]
+  "§Aturan Logika Modul#r45": [57, 68, 70]
+  "§Aturan Logika Modul#r46": [57, 60, 95]
   "§Aturan Logika Modul#r47": [76, 78]
-  "§Aturan Logika Modul#r80": 48
-  "§Aturan Logika Modul#r81": 49
-  "§Aturan Logika Modul#r82": 48
-  "§Aturan Logika Modul#r83": [50, 51]
-  "§Aturan Logika Modul#r84": 52
-  "§Aturan Logika Modul#r85": 53
-  "§Aturan Logika Modul#r86": 46
+  "§Aturan Logika Modul#r77": 48
+  "§Aturan Logika Modul#r78": 49
+  "§Aturan Logika Modul#r79": 48
+  "§Aturan Logika Modul#r80": [50, 51]
+  "§Aturan Logika Modul#r81": 52
+  "§Aturan Logika Modul#r82": 53
+  "§Aturan Logika Modul#r83": 46
   "§9.2#b5": 54
   "§9.2#b6": [50, 51]
-  "§9.2#b7": [57, 61, 67]
+  "§9.2#b7": [57, 60, 66]
   "§9.6#r9": 55
-  "§9.6#p1": [67, 69]
+  "§9.6#p1": [66, 68]
   "§8#p1": 3
   "§8.1#p4": 92
   "§8.2#b1": [4, 14, 17, 24, 40, 55]
   "§8.2#b2": [5, 14, 20, 21, 24, 30, 35, 86]
   "§8.2#b3": [6, 21, 25, 27, 92]
   "§8.3#r1": 53
-  "§8.3#r2": [3, 7, 59, 61, 69, 71, 93]
+  "§8.3#r2": [3, 7, 58, 60, 68, 70, 93]
   "§8.3#r3": [76, 80, 82, 84]
   "§8.3#r4": [29, 32, 34, 39]
   "§8.3#r5": [42, 43]
-  "§8.3#r6": [73, 74]
+  "§8.3#r6": [72, 74]
   "§8.3#p2": [76, 78]
   "§8.3#b1": [9, 10, 11]
   "§8.3#b2": [45, 93]
   "§5#r7": 6
-  "§9.4.2#r6": 64
-  "§9.4.2#r24": 48
-  "§9.4.2#r25": 74
-  "§9.4.2#r27": 52
-  "§9.4.2#r28": [53, 54]
-  "§9.4.4#r4": [64, 65]
+  EC-DMG-06: 63
+  EC-DMG-28: 48
+  EC-DMG-29: 74
+  EC-DMG-31: 52
+  EC-DMG-32: [53, 54]
+  "§9.4.4#r4": [63, 64]
   "§9.4.4#r6": [48, 49]
   "§9.4.4#r9": 52
-  "§9.4.4#r12": 73
-  "§9.7#r3": [57, 58, 59, 61, 62]
+  "§9.4.4#r12": [72, 73]
+  "§9.7#r3": [57, 58, 60, 61]
   "§9.7#r8": 54
   "§9.4.1#r15": [39, 42, 54]
   "§8.1#r7": [3, 53, 88]
@@ -64,7 +64,7 @@ trace:
   "§8.1#r16": [39, 84]
 ---
 
-# Server membuat record dan node dari jalur non-form (registrasi, Accept with damage, Stock Opname, Transfer receive, Mark as Found), menulis Damage Log, Transaction log, Transaction admin log, Activity Log, dan System Log per aksi, dan tidak mencatat pembukaan dialog maupun Download
+# Server membuat record dan node dari jalur non-form (registrasi, Unassign bermarker Damaged, Stock Opname, Transfer receive, Mark as Found), menulis Damage Log, Transaction log, Transaction admin log, Activity Log, dan System Log per aksi, dan tidak mencatat pembukaan dialog maupun Download
 
 ## Prerequisites
 - Aktor:
@@ -108,7 +108,7 @@ trace:
   - DU-208-32: Aset `Projector Epson EB-X06 - 151 {runId}`, Group `Head Office {runId}`, draf registrasi ber-Condition `Damaged`, belum Active.
   - DU-208-35: Aset `Tablet Samsung Tab A8 - 161 {runId}`, Group `Head Office {runId}`, `Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan.
   - DU-208-36: Aset `Tablet Samsung Tab A8 - 162 {runId}`, Group `Head Office {runId}`, `Assigned` kepada `Budi Santoso {runId}`, tanpa record berjalan.
-  - DU-208-37: Aset `Tablet Samsung Tab A8 - 163 {runId}`, Group `Head Office {runId}`, `Borrowed` oleh `Budi Santoso {runId}`, punya record `Damaged` dengan What happened `Engsel longgar {runId}`.
+  - DU-208-37: Aset `Tablet Samsung Tab A8 - 163 {runId}`, Group `Head Office {runId}`, `Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}` dengan What happened `Engsel longgar {runId}`.
   - DU-208-38: Aset `Tablet Samsung Tab A8 - 164 {runId}`, Group `Head Office {runId}`, `Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan, form Return belum lolos validasi.
   - DU-208-39: Aset `Forklift Toyota 8FD - 171 {runId}`, Group `Head Office {runId}`, termasuk sesi opname milik `Sinta Marlina {runId}`, tanpa record berjalan.
   - DU-208-40: Aset `Forklift Toyota 8FD - 172 {runId}`, Group `Head Office {runId}`, dalam pemindahan menuju `Branch Surabaya {runId}`, tanpa record berjalan.
@@ -119,7 +119,7 @@ trace:
   - DU-208-45: Aset `Camera Canon EOS - 184 {runId}`, Group `Head Office {runId}`, punya record `Damaged` ditahan dengan laporan hilang dari pemegang yang akan ditolak.
   - DU-208-46: Aset `Camera Canon EOS - 185 {runId}`, Group `Head Office {runId}`, `Missing` dengan record `Damaged` ditahan yang akan menjadi `Disposed`.
   - DU-208-47: Description `Engsel longgar saat dikembalikan {runId}`, foto Return `foto-return.jpg`.
-  - DU-208-48: Description `Layar tergores saat dikembalikan {runId}`, foto Return `foto-unassign.jpg`.
+  - DU-208-48: Description `Layar tergores saat dikembalikan {runId}`, foto Unassign `foto-unassign.jpg`.
   - DU-208-49: What happened `Rangka berkarat ditemukan saat opname {runId}`, Damaged Photo `rangka-berkarat.jpg`.
   - DU-208-50: What happened `Garpu bengkok saat diterima {runId}`, Damaged Photo `garpu-bengkok.jpg`.
   - DU-208-51: Note `Ditemukan rusak di ruang arsip {runId}`, Damaged Photo `ditemukan-rusak.jpg`.
@@ -131,6 +131,7 @@ trace:
   - DU-208-57: Aset `Scanner Fujitsu fi-7160 - 146 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal`.
   - DU-208-58: Aset `Camera Canon EOS - 186 {runId}`, Group `Head Office {runId}`, punya record `Damaged`.
   - DU-208-59: What happened `Terakhir terlihat di gudang lantai dua {runId}`, Damaged Photo `terakhir-terlihat.jpg`.
+  - DU-208-60: Aset `Tablet Samsung Tab A8 - 165 {runId}`, Group `Head Office {runId}`, `Assigned` kepada `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`.
 - Kondisi:
   - Approval registrasi aset bernilai `OFF`.
 
@@ -203,27 +204,27 @@ trace:
 54. Verifikasi record dibuat dalam transaksi aktivasi aset tanpa dialog Report Damaged dan tanpa notifikasi
 55. Verifikasi Transaction log aset memuat Reported damaged dengan Source `Registration`, dan aktivasi yang dicoba ulang tidak membuat record kedua
 
-### Accept with damage membawa catatan dan foto Return, dan tidak menambah node bila record sudah ada
-56. Aktor peminjaman `Yoga Tanuwijaya {runId}` menyelesaikan Return `Accept with damage` atas `Tablet Samsung Tab A8 - 161 {runId}` dengan Description `Engsel longgar saat dikembalikan {runId}` dan foto Return `foto-return.jpg`
-57. Verifikasi server membuat record `Damaged` dengan Source `Borrow return`, What happened `Engsel longgar saat dikembalikan {runId}`, dan Damaged Photo `foto-return.jpg`
-58. Verifikasi status global aset menjadi `Damaged`
-59. Verifikasi node `Reported damaged by` mencatat pelaku Aktor peminjaman `Yoga Tanuwijaya {runId}`, dan tidak ada event `damaged_*` karena notifikasi dimiliki modul asal
-60. Aktor penugasan `Dewi Anggraini {runId}` melakukan Unassign `Accept with damage` atas `Tablet Samsung Tab A8 - 162 {runId}` dengan Description `Layar tergores saat dikembalikan {runId}` dan foto Return `foto-unassign.jpg`
-61. Verifikasi server membuat record `Damaged` dengan Source `Assign return`, What happened `Layar tergores saat dikembalikan {runId}`, dan Damaged Photo `foto-unassign.jpg`
-62. Verifikasi status global aset menjadi `Damaged`
-63. Aktor peminjaman `Yoga Tanuwijaya {runId}` menyelesaikan Return `Accept with damage` atas `Tablet Samsung Tab A8 - 163 {runId}` yang sudah punya record berjalan
-64. Verifikasi Return tetap selesai tanpa laporan baru dan tanpa node baru dari Return di record berjalan
-65. Verifikasi tidak ada event `damaged_reported` maupun `damaged_review_requested` yang dipicu oleh Return itu
-66. Aktor peminjaman `Yoga Tanuwijaya {runId}` mengirim Return `Accept with damage` atas `Tablet Samsung Tab A8 - 164 {runId}` dengan Description tidak diisi
-67. Verifikasi Return ditolak oleh form modul asal dan tidak ada record Damaged yang dibuat, karena record dibuat hanya bila form modul asal lolos validasi
+### Report Damaged dari halaman Return Borrow dan Unassign bermarker Damaged membawa catatan dan foto, dan tidak menambah laporan bila record sudah ada
+56. Aktor peminjaman `Yoga Tanuwijaya {runId}` mengirim Report Damaged dari halaman Return Borrow atas `Tablet Samsung Tab A8 - 161 {runId}` dengan Description `Engsel longgar saat dikembalikan {runId}` dan foto Return `foto-return.jpg`
+57. Verifikasi server membuat record `Waiting for Confirmation`, karena Aktor peminjaman tanpa hak Aktor Damaged adalah pelapor umum, dengan Source `Borrow return`, What happened `Engsel longgar saat dikembalikan {runId}`, dan Damaged Photo `foto-return.jpg`
+58. Verifikasi node `Reported damaged by` mencatat pelaku Aktor peminjaman `Yoga Tanuwijaya {runId}`, dan tidak ada event `damaged_*` karena notifikasi dimiliki modul asal
+59. Aktor penugasan `Dewi Anggraini {runId}` melakukan Unassign berstatus `Unassigned` bermarker `Damaged` atas `Tablet Samsung Tab A8 - 162 {runId}` dengan Description `Layar tergores saat dikembalikan {runId}` dan foto Unassign `foto-unassign.jpg`
+60. Verifikasi server membuat record `Damaged` dengan Source `Assign return`, What happened `Layar tergores saat dikembalikan {runId}`, dan Damaged Photo `foto-unassign.jpg`
+61. Verifikasi status global aset menjadi `Damaged`
+62. Aktor peminjaman `Yoga Tanuwijaya {runId}` menyelesaikan Return atas `Tablet Samsung Tab A8 - 163 {runId}` yang sudah punya record berjalan `Waiting for Confirmation`
+63. Verifikasi Return tetap selesai tanpa menunggu keputusan, tanpa laporan baru, dan tanpa node baru dari Return di record berjalan yang tetap `Waiting for Confirmation`
+64. Verifikasi tidak ada event `damaged_reported` maupun `damaged_review_requested` yang dipicu oleh Return itu
+65. Aktor peminjaman `Yoga Tanuwijaya {runId}` mengirim Report Damaged dari halaman Return Borrow atas `Tablet Samsung Tab A8 - 164 {runId}` dengan Description tidak diisi
+66. Verifikasi Report Damaged ditolak oleh form modul asal dan tidak ada record yang dibuat, karena record dibuat hanya bila form modul asal lolos validasi
 
 ### Stock Opname dan penerimaan pemindahan aset membawa bukti dari form modul asal
-68. Pemilik sesi opname `Sinta Marlina {runId}` melaporkan kondisi rusak atas `Forklift Toyota 8FD - 171 {runId}` dengan What happened `Rangka berkarat ditemukan saat opname {runId}` dan Damaged Photo `rangka-berkarat.jpg`
-69. Verifikasi server membuat record `Damaged` dengan Source `Stock opname`, What happened `Rangka berkarat ditemukan saat opname {runId}`, Damaged Photo `rangka-berkarat.jpg`, dan node `Reported damaged by` atas nama `Sinta Marlina {runId}`
-70. Aktor pemindahan aset `Tono Riyadi {runId}` menerima pemindahan `Forklift Toyota 8FD - 172 {runId}` dan melaporkan Damaged saat penerimaan dengan What happened `Garpu bengkok saat diterima {runId}` dan Damaged Photo `garpu-bengkok.jpg`
-71. Verifikasi server membuat record `Damaged` dengan Source `Transfer receive`, What happened `Garpu bengkok saat diterima {runId}`, Damaged Photo `garpu-bengkok.jpg`, dan node `Reported damaged by` atas nama `Tono Riyadi {runId}`
-72. Aktor pemindahan aset `Tono Riyadi {runId}` menerima pemindahan `Forklift Toyota 8FD - 173 {runId}` yang record `Damaged`-nya sudah ada
-73. Verifikasi tidak ada node baru di Damage Log record dan Source tetap `Manual`
+67. Pemilik sesi opname `Sinta Marlina {runId}` melaporkan kondisi rusak atas `Forklift Toyota 8FD - 171 {runId}` dengan What happened `Rangka berkarat ditemukan saat opname {runId}` dan Damaged Photo `rangka-berkarat.jpg`
+68. Verifikasi server membuat record `Damaged` dengan Source `Stock opname`, What happened `Rangka berkarat ditemukan saat opname {runId}`, Damaged Photo `rangka-berkarat.jpg`, dan node `Reported damaged by` atas nama `Sinta Marlina {runId}`
+69. Aktor pemindahan aset `Tono Riyadi {runId}` menerima pemindahan `Forklift Toyota 8FD - 172 {runId}` dan melaporkan Damaged saat penerimaan dengan What happened `Garpu bengkok saat diterima {runId}` dan Damaged Photo `garpu-bengkok.jpg`
+70. Verifikasi server membuat record `Damaged` dengan Source `Transfer receive`, What happened `Garpu bengkok saat diterima {runId}`, Damaged Photo `garpu-bengkok.jpg`, dan node `Reported damaged by` atas nama `Tono Riyadi {runId}`
+71. Aktor pemindahan aset `Tono Riyadi {runId}` menerima pemindahan `Forklift Toyota 8FD - 173 {runId}` yang record `Damaged`-nya sudah ada
+72. Verifikasi tidak ada node baru di Damage Log record dan Source tetap `Manual`
+73. Verifikasi penerimaan pemindahan itu tidak memicu event `damaged_*`
 74. Verifikasi Group record ikut Group aset tujuan `Branch Surabaya {runId}` tanpa mengubah riwayat Damage Log
 
 ### Mark as Found Damaged menambah node atau membuat record baru
@@ -252,3 +253,7 @@ trace:
 91. Total Control `Agus Pratama {runId}` membuka Damage Log `Laptop Dell Latitude 5420 - 111 {runId}` dan mengunduh Download daftar record Active
 92. Verifikasi jumlah entri Activity Log dan System Log `Agus Pratama {runId}` serta jumlah node Damage Log tidak bertambah dari pembukaan dialog dan Download itu
 93. Verifikasi jumlah node Damage Log `Camera Canon EOS - 116 {runId}` yang tidak terlibat tetap sama, dan tidak ada entri milik entitas `Mitra Lain {runId}` yang ikut tercatat
+
+### Unassign bermarker Damaged atas aset yang sudah punya record menautkan laporan tanpa Damage Report kedua
+94. Aktor penugasan `Dewi Anggraini {runId}` melakukan Unassign berstatus `Unassigned` bermarker `Damaged` atas `Tablet Samsung Tab A8 - 165 {runId}` yang sudah punya record `Waiting for Confirmation` dengan Description `Layar tergores saat dikembalikan {runId}` dan foto Unassign `foto-unassign.jpg`
+95. Verifikasi laporan yang sudah ada ditautkan dan Damaged Photo `foto-unassign.jpg` ditambahkan tanpa Damage Report kedua, sehingga aset itu tetap hanya memiliki satu record berjalan

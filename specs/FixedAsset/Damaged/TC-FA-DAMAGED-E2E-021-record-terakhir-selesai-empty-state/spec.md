@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [EB-EDG-2, §7.1#r1, §Aturan Logika Modul#r58]
+sourceRules: [EB-EDG-2, S-DMG-11, §Aturan Logika Modul#r55]
 smoke: []
 dependsOn: []
 trace:
   EB-EDG-2: [1, 2, 8, 12]
-  §7.1#r1: [8, 9, 10]
-  §Aturan Logika Modul#r58: [7, 12]
+  S-DMG-11: [8, 9, 10]
+  §Aturan Logika Modul#r55: [7, 12]
 anchor: []
 coverage:
   web: automated

@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r10", "§Aturan Logika Modul#r11", "§Aturan Logika Modul#r12", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r15", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r43", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r48", "§Aturan Logika Modul#r78", "§9.2#r2", "§9.2#b1", "§9.2#b2", "§9.2#b3", "§9.2#b4", "§9.2#b9", "§4.2.3#b1", "§4.2.3#b4", "§9.4.3#b1", "§9.6#r1", "§3#p2", "V-DMG-10", "S-DMG-21", "S-DMG-22", "§9.4.2#r1", "§9.4.2#r2", "§9.4.2#r4", "§9.4.2#r5", "§9.4.2#r23", "§9.9#r1", "§9.9#r2", "§9.4.4#r1", "§9.4.4#r2", "§9.4.4#r5", "§9.4.4#r7", "§2#b6", "§2#b7", "§9.4.1#r6", "§9.4.1#r7", "EB-FRM-4@what-happened", "§9.1#r1"]
+sourceRules: ["§Aturan Logika Modul#r10", "§Aturan Logika Modul#r11", "§Aturan Logika Modul#r12", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r15", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r43", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r48", "§Aturan Logika Modul#r75", "§9.2#r2", "S-DMG-22", "§9.2#b2", "§9.2#b3", "§9.2#b4", "S-DMG-21", "§4.2.3#b1", "§4.2.3#b4", "§9.4.3#b1", "§9.6#r1", "§3#p2", "V-DMG-10", "EC-DMG-01", "EC-DMG-02", "EC-DMG-04", "EC-DMG-05", "EC-DMG-27", "FLD-DMG-01", "FLD-DMG-02", "§9.4.4#r1", "§9.4.4#r2", "§9.4.4#r5", "§9.4.4#r7", "§2#b6", "§2#b7", "§9.4.1#r6", "§9.4.1#r7", "EB-FRM-4@what-happened", "F-DMG-01"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -16,42 +16,40 @@ trace:
   "§Aturan Logika Modul#r13": [24, 31, 33]
   "§Aturan Logika Modul#r15": 43
   "§Aturan Logika Modul#r16": 42
-  "§Aturan Logika Modul#r42": 2
-  "§Aturan Logika Modul#r43": [20, 22]
+  "§Aturan Logika Modul#r42": [2, 87]
+  "§Aturan Logika Modul#r43": [15, 18, 20, 22]
   "§Aturan Logika Modul#r44": 4
   "§Aturan Logika Modul#r48": 3
-  "§Aturan Logika Modul#r78": 38
+  "§Aturan Logika Modul#r75": 38
   "§9.2#r2": 2
-  "§9.2#b1": [24, 35, 82, 84]
+  S-DMG-22: [24, 35, 40, 44, 82, 84]
   "§9.2#b2": [2, 42]
   "§9.2#b3": [25, 31, 33]
   "§9.2#b4": 3
-  "§9.2#b9": 46
+  S-DMG-21: [46, 47]
   "§4.2.3#b1": 35
   "§4.2.3#b4": [40, 85]
   "§9.4.3#b1": [25, 61, 67, 72]
   "§9.6#r1": [7, 9]
   "§3#p2": [2, 15, 16, 79, 80]
-  "V-DMG-10": [43, 48]
-  "S-DMG-21": 47
-  "S-DMG-22": [40, 44]
-  "§9.4.2#r1": [29, 43]
-  "§9.4.2#r2": [24, 26]
-  "§9.4.2#r4": 35
-  "§9.4.2#r5": 46
-  "§9.4.2#r23": [11, 13]
-  "§9.9#r1": 51
-  "§9.9#r2": 55
+  V-DMG-10: [43, 48]
+  EC-DMG-01: [29, 43]
+  EC-DMG-02: [24, 26]
+  EC-DMG-04: 35
+  EC-DMG-05: 46
+  EC-DMG-27: [11, 13]
+  FLD-DMG-01: 51
+  FLD-DMG-02: 55
   "§9.4.4#r1": [2, 27, 43]
   "§9.4.4#r2": [35, 36]
   "§9.4.4#r5": 49
   "§9.4.4#r7": 8
-  "§2#b6": [2, 11, 12, 15, 18, 82, 84]
-  "§2#b7": [20, 22, 74, 76, 77]
+  "§2#b6": [2, 11, 12, 82, 84, 87]
+  "§2#b7": [15, 18, 20, 22, 74, 76, 77]
   "§9.4.1#r6": 46
   "§9.4.1#r7": 24
-  "EB-FRM-4@what-happened": [53, 57]
-  "§9.1#r1": 2
+  EB-FRM-4@what-happened: [53, 57]
+  F-DMG-01: 2
 ---
 
 # Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda
@@ -97,7 +95,7 @@ trace:
   - DU-201-27: Aset `Toyota Avanza - 1 {runId}`, Group `Head Office {runId}`, Normal, tanpa record berjalan.
   - DU-201-28: Aset `Toyota Avanza - 3 {runId}`, Group `Head Office {runId}`, Normal, tanpa record berjalan.
   - DU-201-29: Aset `Printer HP LaserJet M404 - 2 {runId}`, Group `Head Office {runId}`, Normal, tanpa record berjalan.
-  - DU-201-30: Aset `Laptop Dell Latitude 5420 - 9 {runId}`, Group `Head Office {runId}`, Borrowed oleh `Budi Santoso {runId}`, punya record `Damaged` Source `Manual` dengan What happened `Engsel longgar`.
+  - DU-201-30: Aset `Laptop Dell Latitude 5420 - 9 {runId}`, Group `Head Office {runId}`, Assigned kepada `Budi Santoso {runId}`, punya record `Damaged` Source `Manual` dengan What happened `Engsel longgar`.
   - DU-201-31: Aset `Camera Canon EOS - 3 {runId}`, Group `Head Office {runId}`, Missing (hilang) dengan Condition sebelumnya Damaged, punya record `Damaged` ditahan dengan What happened `Lensa berjamur`.
   - DU-201-32: Aset `Projector Epson EB-X06 - 5 {runId}`, Group `Head Office {runId}`, draf registrasi dengan Condition `Damaged` dan Damage note `Lensa tergores saat pengiriman`, belum Active.
   - DU-201-33: Aset `Forklift Toyota 8FD - 2 {runId}`, Group `Head Office {runId}`, dalam Transfer menuju `Branch Surabaya {runId}`, punya record `Damaged` dengan What happened `Garpu bengkok`.
@@ -119,6 +117,7 @@ trace:
   - DU-201-49: Aset `Printer HP LaserJet M404 - 9 {runId}`, Group `Head Office {runId}`, Normal, tanpa record berjalan.
   - DU-201-50: Aset `Laptop Dell Latitude 5420 - 12 {runId}`, Group `Head Office {runId}`, Normal, tanpa record berjalan.
   - DU-201-51: Aset `Handheld Scanner Zebra TC21 - 4 {runId}`, Group `Branch Surabaya {runId}`, Normal, tanpa record berjalan.
+  - DU-201-52: Aset `Tablet Samsung Tab A8 - 6 {runId}`, Group `Head Office {runId}`, dalam Transfer menuju `Branch Surabaya {runId}`, tanpa record berjalan.
 
 ## Test Steps
 
@@ -139,12 +138,12 @@ trace:
 12. Verifikasi Source record itu adalah `Reported by holder`
 13. Verifikasi Confirm dan Reject tidak berlaku bagi record itu dan permintaannya ditolak
 
-### Aktor transaksi melapor dari halaman transaksinya: langsung Damaged dengan Source titik masuk
+### Aktor Borrow dan Aktor Assignment tanpa hak Damaged melapor dari halaman transaksinya: Waiting for Confirmation dengan Source titik masuk
 14. Aktor peminjaman `Yoga Tanuwijaya {runId}` mengirim Report Damaged atas `Projector Epson EB-X06 - 2 {runId}` yang sedang dipinjam dari halaman transaksi peminjaman dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
-15. Verifikasi server membuat record berstatus `Damaged` dengan Source `Borrowed asset`
+15. Verifikasi server membuat record berstatus `Waiting for Confirmation`, bukan `Damaged`, dengan Source `Borrowed asset`
 16. Verifikasi pemegang `Budi Santoso {runId}` tetap memegang aset itu
 17. Aktor penugasan `Dewi Anggraini {runId}` mengirim Report Damaged atas `Monitor Dell P2422H - 6 {runId}` yang sedang ditugaskan dari halaman transaksi penugasan dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
-18. Verifikasi server membuat record berstatus `Damaged` dengan Source `Assigned asset`
+18. Verifikasi server membuat record berstatus `Waiting for Confirmation`, bukan `Damaged`, dengan Source `Assigned asset`
 
 ### Pelapor umum melapor: record Waiting for Confirmation menurut titik masuk
 19. Pelapor umum `Dedi Kurniawan {runId}` mengirim Report Damaged atas `Office Chair Ergo - 31 {runId}` dari hasil scan TAG di mobile dengan What happened `Kursi roda patah saat dipakai` dan Damaged Photo `roda-patah.jpg`
@@ -200,8 +199,8 @@ trace:
 57. Verifikasi laporan itu diterima dan server membuat satu Damage record `Damaged` dengan What happened sepanjang 360 karakter
 
 ### Aset yang sudah punya record berjalan tidak mendapat record kedua lewat jalur modul lain
-58. Aktor peminjaman `Yoga Tanuwijaya {runId}` menyelesaikan Return `Accept with damage` atas `Laptop Dell Latitude 5420 - 9 {runId}` dengan Description `Engsel longgar` dan satu foto Return
-59. Verifikasi Return selesai dan aset itu tetap hanya memiliki satu record berjalan `Damaged` dengan What happened `Engsel longgar`
+58. Aktor penugasan `Dewi Anggraini {runId}` menyelesaikan Unassign berstatus `Unassigned` bermarker `Damaged` atas `Laptop Dell Latitude 5420 - 9 {runId}` dengan Description `Engsel longgar` dan satu foto Unassign
+59. Verifikasi Unassign selesai dan aset itu tetap hanya memiliki satu record berjalan `Damaged` dengan What happened `Engsel longgar`
 60. Aktor penemuan aset `Hendra Saputra {runId}` menjalankan Mark as Found Damaged atas `Camera Canon EOS - 3 {runId}` dengan Note `Lensa berjamur` dan satu Damaged Photo
 61. Verifikasi server menambah node ke record yang ada dan aset itu tetap hanya memiliki satu record berjalan
 62. Total Control `Agus Pratama {runId}` mengaktifkan registrasi `Projector Epson EB-X06 - 5 {runId}` yang ber-Condition `Damaged`
@@ -236,3 +235,7 @@ trace:
 83. Group Manager `Gita Permatasari {runId}` mengirim satu Report Damaged atas `Laptop Dell Latitude 5420 - 12 {runId}` dan `Handheld Scanner Zebra TC21 - 4 {runId}` dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg` per aset
 84. Verifikasi server membuat satu Damage record `Damaged` untuk `Laptop Dell Latitude 5420 - 12 {runId}`
 85. Verifikasi aset `Handheld Scanner Zebra TC21 - 4 {runId}` di luar Group binaan dilewati dengan keterangan `Can't be reported damaged`, ditolak server, dan tidak mendapat record
+
+### Aktor Transfer melapor dari halaman transaksinya: langsung Damaged
+86. Aktor pemindahan aset `Tono Riyadi {runId}` mengirim Report Damaged atas `Tablet Samsung Tab A8 - 6 {runId}` dari halaman transaksi pemindahan dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
+87. Verifikasi server membuat record berstatus `Damaged`, bukan `Waiting for Confirmation`

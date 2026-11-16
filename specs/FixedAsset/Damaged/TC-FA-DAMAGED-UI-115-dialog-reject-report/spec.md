@@ -5,14 +5,14 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [D-DMG-04, "§4.2.4#p4", "§4.4#r6", "§9.9#r6", TS-DMG-04, "§4.2.4#p12", "§9.6#r3", EB-FRM-4@reason, EB-FB-1@reject, EB-FB-2@cancel-reject-report, EB-FRM-1@reject-report, EB-FRM-2@reject-report, EB-FRM-7@reject-report, EB-ERR-1@reject-report]
+sourceRules: [D-DMG-04, "§4.2.4#p4", "§4.4#r6", FLD-DMG-06, TS-DMG-04, "§4.2.4#p12", "§9.6#r3", EB-FRM-4@reason, EB-FB-1@reject, EB-FB-2@cancel-reject-report, EB-FRM-1@reject-report, EB-FRM-2@reject-report, EB-FRM-7@reject-report, EB-ERR-1@reject-report]
 smoke: []
 dependsOn: []
 trace:
   D-DMG-04: [2, 3, 5, 6, 7]
   "§4.2.4#p4": [2, 3, 4, 5, 6, 7]
   "§4.4#r6": [2]
-  "§9.9#r6": [10, 14, 17, 19, 21, 23]
+  FLD-DMG-06: [10, 14, 17, 19, 21, 23]
   TS-DMG-04: [27, 39]
   "§4.2.4#p12": [65, 73, 75]
   "§9.6#r3": [27, 28, 39]

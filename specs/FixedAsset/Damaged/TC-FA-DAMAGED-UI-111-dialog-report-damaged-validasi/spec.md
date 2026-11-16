@@ -5,15 +5,15 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [FI-DMG-02, FI-DMG-06, FI-DMG-07, "§9.9#r1", "§9.9#r2", "§9.9#p4", EB-FRM-4@what-happened]
+sourceRules: [FI-DMG-02, FI-DMG-06, FI-DMG-07, FLD-DMG-01, FLD-DMG-02, "§9.9#p4", EB-FRM-4@what-happened]
 smoke: []
 dependsOn: []
 trace:
   FI-DMG-02: [3, 4]
   FI-DMG-06: [20]
   FI-DMG-07: [24, 25]
-  "§9.9#r1": [3, 8, 11, 13, 15, 17]
-  "§9.9#r2": [4, 29, 34, 40, 45, 46]
+  FLD-DMG-01: [3, 8, 11, 13, 15, 17]
+  FLD-DMG-02: [4, 29, 34, 40, 45, 46]
   "§9.9#p4": [30, 35, 38, 41, 42, 47]
   EB-FRM-4@what-happened: [11, 13, 17]
 anchor: []

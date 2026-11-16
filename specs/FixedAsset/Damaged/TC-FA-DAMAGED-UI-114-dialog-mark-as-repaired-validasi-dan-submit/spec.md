@@ -5,19 +5,19 @@ layer: ui-client
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: [FI-DMG-08, V-DMG-03, V-DMG-04, "§9.9#r3", "§9.9#r5", TS-DMG-05, "§4.2.4#p12", "§9.6#r5", "§9.4.4#r24", EB-FRM-4@repair-note, EB-FB-1@mark-as-repaired, EB-FB-2@cancel-mark-as-repaired, EB-FRM-1@mark-as-repaired, EB-FRM-2@mark-as-repaired, EB-ERR-1@mark-as-repaired]
+sourceRules: [FI-DMG-08, V-DMG-03, V-DMG-04, FLD-DMG-03, FLD-DMG-05, TS-DMG-05, "§4.2.4#p12", "§9.6#r5", "§9.4.4#r23", EB-FRM-4@repair-note, EB-FB-1@mark-as-repaired, EB-FB-2@cancel-mark-as-repaired, EB-FRM-1@mark-as-repaired, EB-FRM-2@mark-as-repaired, EB-ERR-1@mark-as-repaired]
 smoke: []
 dependsOn: []
 trace:
   FI-DMG-08: [4]
   V-DMG-03: [8]
   V-DMG-04: [4]
-  "§9.9#r3": [4, 8]
-  "§9.9#r5": [12, 16, 19, 21, 23, 25]
+  FLD-DMG-03: [4, 8]
+  FLD-DMG-05: [12, 16, 19, 21, 23, 25]
   TS-DMG-05: [29, 35, 41, 47, 53, 58, 74]
   "§4.2.4#p12": [100, 108, 110]
   "§9.6#r5": [29, 30, 74]
-  "§9.4.4#r24": [9]
+  "§9.4.4#r23": [9]
   EB-FRM-4@repair-note: [19, 21]
   EB-FB-1@mark-as-repaired: [29, 74]
   EB-FB-2@cancel-mark-as-repaired: [5, 63, 95, 96]
@@ -60,7 +60,7 @@ coverage:
   - K2: record DU-114-1 dengan setting DU-114-3; hasil pindai adalah DU-114-6.
   - K3: record DU-114-1 dengan setting DU-114-3; hasil pindai adalah DU-114-5; respons simpan sukses.
   - K4: record DU-114-2 dengan setting DU-114-3; respons simpan sukses.
-  - K5: record DU-114-2 dengan setting DU-114-4; respons simpan sukses.
+  - K5: record DU-114-2 dengan setting DU-114-4; pemilih foto `After photo` menerima berkas sumber di atas 1 MB dan memampatkan hasilnya otomatis menjadi tidak lebih dari 1 MB tanpa pesan error; respons simpan sukses.
   - K6: record DU-114-2 dengan setting DU-114-3; respons simpan lambat lalu sukses.
   - K7: record DU-114-2 dengan setting DU-114-3; respons simpan pertama gagal karena error server, respons berikutnya sukses.
   - K8: record DU-114-2 dengan setting DU-114-3; permintaan simpan melewati batas waktu.

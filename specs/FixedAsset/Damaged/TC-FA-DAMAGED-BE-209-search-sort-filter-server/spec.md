@@ -10,17 +10,17 @@ smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "T-DMG-01": [2, 4, 6, 8, 10, 12, 14, 16, 18, 22, 24, 26, 28, 30, 32, 42, 46, 48, 50, 52]
-  "T-DMG-02": [38, 40, 56, 59]
+  T-DMG-01: [2, 4, 6, 8, 10, 12, 14, 16, 18, 22, 24, 26, 28, 30, 32, 42, 46, 48, 50, 52]
+  T-DMG-02: [38, 40, 56, 59]
   "§5#r3": [2, 4, 6, 8, 10, 12, 14, 16, 18]
   "§9.5#r2": 36
   "§9.5#r3": 38
   "§9.5#r7": [46, 48, 54, 56]
   "§9.2#b4": [50, 52]
-  "EB-SRC-1": [2, 20]
-  "EB-SRT-1": [22, 24, 26, 28, 30, 40]
-  "EB-SRT-2": [32, 34, 36, 61, 63, 65]
-  "EB-FLT-3": [42, 44, 46]
+  EB-SRC-1: [2, 20]
+  EB-SRT-1: [22, 24, 26, 28, 30, 40]
+  EB-SRT-2: [32, 34, 36, 61, 63, 65]
+  EB-FLT-3: [42, 44, 46]
 ---
 
 # Server mencari per kelas kolom searchable, mengurutkan per tipe data dengan Status per label dan nilai kosong di ujung, menyaring AND antar-field dan OR dalam Status termasuk penanda, dan menyediakan opsi DISTINCT dalam cakupan Group

@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["V-DMG-11", "§9.4.2#r17", "§9.4.4#r13", "§9.4.1#r14", "EB-FLT-7"]
+sourceRules: ["V-DMG-11", "EC-DMG-20", "§9.4.4#r13", "§9.4.1#r14", "EB-FLT-7"]
 smoke: []
 dependsOn:
   - "Groups: hapus Group"
 trace:
   "V-DMG-11": [2, 3]
-  "§9.4.2#r17": [2, 3, 6]
+  "EC-DMG-20": [2, 3, 6]
   "§9.4.4#r13": [2, 8]
   "§9.4.1#r14": [2, 3, 6]
   "EB-FLT-7": [15, 19, 20, 21]

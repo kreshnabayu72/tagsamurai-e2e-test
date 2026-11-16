@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-13, "§4.2.4#p10", "§4.2.4#r8", "§4.2.4#r10", "§4.4#r13", V-DMG-09, TS-DMG-09, "§6#p2", "§8.3#b2", "§9.4.2#r31", "§9.4.4#r11", "§9.6#r7", EB-BLK-3, EB-EDG-2, "§9.2#b23", S-DMG-08]
+sourceRules: [T-DMG-01, D-DMG-13, "§4.2.4#p10", D-DISP-13, "§4.2.4#r10", "§4.4#r13", V-DMG-09, TS-DMG-09, "§6#p2", "§8.3#b2", EC-DMG-35, "§9.4.4#r11", TS-DISP-15, EB-BLK-3, EB-EDG-2, "§9.2#b23", S-DMG-08]
 smoke: []
 dependsOn: ["Disposal: dialog Report Disposal (D-DISP-13) untuk bulk"]
 trace:
@@ -13,15 +13,15 @@ trace:
   S-DMG-08: [4, 69, 71]
   EB-EDG-2: [6, 9, 10]
   "§4.4#r13": 16
-  "§4.2.4#r8": [16, 24, 28]
+  D-DISP-13: [16, 24, 28]
   "§9.2#b23": [16, 20, 21]
-  "§9.6#r7": [19, 23, 53, 58, 61]
+  TS-DISP-15: [19, 23, 53, 58, 61]
   "§8.3#b2": [23, 27, 41, 44]
   EB-BLK-3: [19, 23, 27, 61]
   V-DMG-09: [37, 38, 39]
   TS-DMG-09: 37
   "§6#p2": [37, 53, 59]
-  "§9.4.2#r31": [37, 38, 39, 44]
+  EC-DMG-35: [37, 38, 39, 44]
   "§9.4.4#r11": [41, 44]
   D-DMG-13: [53, 54, 55, 56]
   "§4.2.4#p10": [53, 55]

@@ -5,12 +5,12 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§9.4.2#r32, §9.4.4#r29, §9.10#p1, §9.4.1#r2, T-DMG-01]
+sourceRules: [EC-DMG-36, §9.4.4#r28, §9.10#p1, §9.4.1#r2, T-DMG-01]
 smoke: []
 dependsOn: []
 trace:
-  §9.4.2#r32: [6, 8, 10, 11, 12, 16, 18, 24, 26, 28]
-  §9.4.4#r29: [11, 12, 28]
+  EC-DMG-36: [6, 8, 10, 11, 12, 16, 18, 24, 26, 28]
+  §9.4.4#r28: [11, 12, 28]
   §9.10#p1: [6, 16, 24, 33, 37, 42, 46, 50, 51, 53]
   §9.4.1#r2: [6, 8, 18, 24, 26]
   T-DMG-01: [4, 16, 22, 33, 37, 42, 46]

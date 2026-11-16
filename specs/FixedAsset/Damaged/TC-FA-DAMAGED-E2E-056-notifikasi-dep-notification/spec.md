@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.8#r3", "§9.8#r4", "§9.8#p4"]
+sourceRules: ["damaged_review_resolved", "damaged_resolved", "§9.8#p4"]
 smoke: []
 dependsOn:
   - "Notification: daftar notifikasi in-app"
 trace:
-  "§9.8#r3": [6]
-  "§9.8#r4": [13]
+  "damaged_review_resolved": [6]
+  "damaged_resolved": [13]
   "§9.8#p4": [6, 13]
 anchor: []
 coverage:

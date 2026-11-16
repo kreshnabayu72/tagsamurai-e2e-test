@@ -5,16 +5,16 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r38", "§Aturan Logika Modul#r39", "§9.4.2#r10", "§9.4.2#r15", "§9.4.4#r21", "§9.4.4#r8", "§9.2#b17", "T-DMG-01"]
+sourceRules: ["§Aturan Logika Modul#r38", "§Aturan Logika Modul#r39", "EC-DMG-10", "EC-DMG-18", "§9.4.4#r20", "§9.4.4#r8", "§9.2#b17", "T-DMG-01"]
 smoke: []
 dependsOn:
   - "Assignment: baris Assignment, form Assign"
 trace:
   "§Aturan Logika Modul#r38": [14, 22]
   "§Aturan Logika Modul#r39": [28, 29]
-  "§9.4.2#r10": [22, 28, 29]
-  "§9.4.2#r15": [3]
-  "§9.4.4#r21": [24]
+  "EC-DMG-10": [22, 28, 29]
+  "EC-DMG-18": [3]
+  "§9.4.4#r20": [24]
   "§9.4.4#r8": [3]
   "§9.2#b17": [28, 29]
   "T-DMG-01": [12, 14, 19]

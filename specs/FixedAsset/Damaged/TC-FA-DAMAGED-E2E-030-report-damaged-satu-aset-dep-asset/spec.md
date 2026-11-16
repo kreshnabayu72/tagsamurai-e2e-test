@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-01, §4.1#r5, §4.1#r10, §4.2.3#p1, §4.2.3#p2, §4.2.3#b1, §4.4#r3, TS-DMG-01, §7.1#p2, §7.1#p3, §4.2.2#p1, §8.2#b1, §Aturan Logika Modul#r13, §Aturan Logika Modul#r14, §Aturan Logika Modul#r42, §Aturan Logika Modul#r44, §Aturan Logika Modul#r48, §Aturan Logika Modul#r25, §9.7#r1, §3#p2, §9.4.2#r4, §9.4.4#r2, §9.1#r1, §4.8#r2, §2.1#r2, §9.6#r1, T-DMG-01, EB-FB-1@report-damaged, EB-FRM-1@report-damaged]
+sourceRules: [D-DMG-01, §4.1#r5, §4.1#r10, §4.2.3#p1, §4.2.3#p2, §4.2.3#b1, §4.4#r3, TS-DMG-01, S-DMG-18, S-DMG-19, §4.2.2#p1, §8.2#b1, §Aturan Logika Modul#r13, §Aturan Logika Modul#r14, §Aturan Logika Modul#r42, §Aturan Logika Modul#r44, §Aturan Logika Modul#r48, §Aturan Logika Modul#r25, §9.7#r1, §3#p2, EC-DMG-04, §9.4.4#r2, F-DMG-01, §4.8#r2, §2.1#r2, §9.6#r1, T-DMG-01, EB-FB-1@report-damaged, EB-FRM-1@report-damaged]
 smoke: [EB-FB-1@report-damaged, EB-FRM-1@report-damaged]
 dependsOn:
   - "Asset: Asset List dan Asset Detail (tombol Report Damaged, banner Damaged)"
@@ -18,8 +18,8 @@ trace:
   §4.2.3#b1: [50, 53]
   §4.4#r3: [10, 41]
   TS-DMG-01: [10, 41]
-  §7.1#p2: [23, 42, 57, 63, 70, 74]
-  §7.1#p3: [24, 58, 64, 65]
+  S-DMG-18: [57, 58]
+  S-DMG-19: [23, 24, 42, 63, 64, 65, 70, 74]
   §4.2.2#p1: 26
   §8.2#b1: 31
   §Aturan Logika Modul#r13: 47
@@ -30,9 +30,9 @@ trace:
   §Aturan Logika Modul#r25: [21, 43]
   §9.7#r1: [21, 43]
   §3#p2: [14, 21]
-  §9.4.2#r4: [50, 53]
+  EC-DMG-04: [50, 53]
   §9.4.4#r2: [50, 53]
-  §9.1#r1: [10, 41]
+  F-DMG-01: [10, 41]
   §4.8#r2: [2, 35]
   §2.1#r2: [2, 35]
   §9.6#r1: [10, 31]

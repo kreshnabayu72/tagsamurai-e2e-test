@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r1", "§4.1#p3", "§4.1#p4", "§4.4#r11", "§5#r1", "§7.1#r1", "§7.1#p1", S-DMG-02, S-DMG-10, "§4.5#p1", "§4#p1", EB-TBL-1@tabel-active, EB-TBL-3@kolom-labels, EB-TBL-4@kolom-last-holder, EB-TBL-4@kolom-reported-by, EB-TBL-4@kolom-modified-by, EB-TBL-8@tabel-active, EB-XM-1, EB-TBL-2@kolom-photo, EB-TBL-2@kolom-brand, EB-TBL-2@kolom-model-type, EB-TBL-2@kolom-tag, EB-TBL-2@kolom-last-holder, EB-TBL-2@kolom-alias-name, EB-TBL-2@kolom-measurement, EB-TBL-2@kolom-division, EB-TBL-2@kolom-labels, EB-TBL-2@kolom-asset-class, EB-TBL-2@kolom-purchase-date, EB-TBL-2@kolom-warranty-expiry, EB-TBL-2@kolom-purchase-cost, EB-TBL-2@kolom-asset-value-commercial, EB-TBL-2@kolom-asset-value-fiscal]
+sourceRules: [T-DMG-01, "§4.1#r1", "§4.1#p3", "§4.1#p4", "§4.4#r11", "§5#r1", S-DMG-11, S-DMG-12, S-DMG-16, S-DMG-02, S-DMG-10, "§4.5#p1", "§4#p1", EB-TBL-1@tabel-active, EB-TBL-3@kolom-labels, EB-TBL-4@kolom-last-holder, EB-TBL-4@kolom-reported-by, EB-TBL-4@kolom-modified-by, EB-TBL-8@tabel-active, EB-XM-1, EB-TBL-2@kolom-photo, EB-TBL-2@kolom-brand, EB-TBL-2@kolom-model-type, EB-TBL-2@kolom-tag, EB-TBL-2@kolom-last-holder, EB-TBL-2@kolom-alias-name, EB-TBL-2@kolom-measurement, EB-TBL-2@kolom-division, EB-TBL-2@kolom-labels, EB-TBL-2@kolom-asset-class, EB-TBL-2@kolom-purchase-date, EB-TBL-2@kolom-warranty-expiry, EB-TBL-2@kolom-purchase-cost, EB-TBL-2@kolom-asset-value-commercial, EB-TBL-2@kolom-asset-value-fiscal]
 smoke: []
 dependsOn: []
 trace:
@@ -15,8 +15,9 @@ trace:
   "§4.1#p4": [46, 51]
   "§4.4#r11": [15]
   "§5#r1": [130, 131, 132]
-  "§7.1#r1": [108, 109, 111, 114, 115]
-  "§7.1#p1": [118, 119, 122, 125, 127, 128]
+  S-DMG-11: [108, 109, 111]
+  S-DMG-12: [114, 115]
+  S-DMG-16: [118, 119, 122]
   S-DMG-02: [24, 25]
   S-DMG-10: [124, 125, 127, 128]
   "§4.5#p1": [17, 19, 136, 154, 155, 159, 162]

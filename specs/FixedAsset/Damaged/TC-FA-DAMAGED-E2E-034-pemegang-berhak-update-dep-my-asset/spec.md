@@ -5,17 +5,17 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§9.4.2#r23, §9.4.4#r7, §Aturan Logika Modul#r42, §2.1#r3, §2#b6, §2.1#b7, T-DMG-01]
+sourceRules: [EC-DMG-27, §9.4.4#r7, §Aturan Logika Modul#r42, §2.1#r3, §2#b6, §2.1#b6, T-DMG-01]
 smoke: []
 dependsOn:
   - "My Asset: kartu aset yang dipegang (Report Damaged)"
 trace:
-  §9.4.2#r23: [7, 10]
+  EC-DMG-27: [7, 10]
   §9.4.4#r7: [7, 10, 21, 22]
   §Aturan Logika Modul#r42: 7
   §2.1#r3: 18
   §2#b6: 7
-  §2.1#b7: 10
+  §2.1#b6: 10
   T-DMG-01: [7, 8, 18]
 anchor: [9]
 coverage:

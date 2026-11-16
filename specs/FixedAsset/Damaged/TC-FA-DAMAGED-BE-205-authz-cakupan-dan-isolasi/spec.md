@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§2#b1", "§2#b2", "§2#b3", "§2#b5", "§2.1#b2", "§2.1#b5", "§2.1#b6", "§2.1#b8", "§9.3#b1", "§9.3#b2", "§9.11#r1", "§9.11#r2", "§9.11#b1", "§7.1#p1", "§4.2.2#p2", "§9.10#p1", "S-DMG-09", "§9.4.2#r19", "§9.4.2#r26", "§9.4.2#r32", "§9.4.4#r15", "§9.4.4#r14", "§9.4.4#r29", "§9.4.1#r1", "§9.4.1#r2", "§9.4.1#r4", "EB-AKS-7", "EB-AKS-3@report-damaged", "EB-AKS-3@confirm", "EB-AKS-3@reject", "EB-AKS-3@cancel-report", "EB-AKS-3@mark-as-repaired", "EB-AKS-3@cancel-disposal-report", "§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r11"]
+sourceRules: ["§2#b1", "§2#b2", "§2#b3", "§2#b5", "§2.1#b2", "§2.1#b4", "§2.1#b5", "§2.1#b7", "§9.3#b1", "§9.3#b2", "§9.11#r1", "§9.11#r2", "§9.11#b1", "S-DMG-17", "§4.2.2#p2", "§9.10#p1", "S-DMG-09", "EC-DMG-22", "EC-DMG-30", "EC-DMG-36", "§9.4.4#r15", "§9.4.4#r14", "§9.4.4#r28", "§9.4.1#r1", "§9.4.1#r2", "§9.4.1#r4", "EB-AKS-7", "EB-AKS-3@report-damaged", "EB-AKS-3@confirm", "EB-AKS-3@reject", "EB-AKS-3@cancel-report", "EB-AKS-3@mark-as-repaired", "EB-AKS-3@cancel-disposal-report", "§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r11"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -14,44 +14,44 @@ trace:
   "§2#b2": [8, 12]
   "§2#b3": [10, 30]
   "§2#b5": 2
-  "§2.1#b2": [62, 64, 66, 70, 72, 126, 128, 130, 132]
-  "§2.1#b5": [46, 48, 50, 112, 114]
-  "§2.1#b6": [6, 20, 40, 146, 148, 150, 152, 154]
-  "§2.1#b8": [8, 10, 14]
-  "§9.3#b1": [62, 64, 116, 118, 120, 122, 124, 134, 136]
+  "§2.1#b2": [62, 64, 66, 70, 72, 131, 133, 135, 137, 161]
+  "§2.1#b4": [46, 48, 50, 117, 119]
+  "§2.1#b5": [6, 20, 40, 151, 153, 155, 157, 159]
+  "§2.1#b7": [8, 10, 14]
+  "§9.3#b1": [62, 64, 121, 123, 125, 127, 129, 139, 141]
   "§9.3#b2": [14, 42, 74, 82]
   "§9.11#r1": [58, 66, 70]
   "§9.11#r2": [84, 86, 88, 92]
   "§9.11#b1": [84, 88, 90]
-  "§7.1#p1": [14, 60, 74]
+  S-DMG-17: [14, 58, 60, 74]
   "§4.2.2#p2": [58, 60]
   "§9.10#p1": [104, 106]
-  "S-DMG-09": [88, 90, 92]
-  "§9.4.2#r19": [60, 66, 68, 70, 74, 76, 78, 80]
-  "§9.4.2#r26": [94, 96, 98, 100]
-  "§9.4.2#r32": [106, 108, 110]
+  S-DMG-09: [88, 90, 92]
+  EC-DMG-22: [60, 66, 68, 70, 74, 76, 78, 80]
+  EC-DMG-30: [94, 96, 98, 100]
+  EC-DMG-36: [106, 110, 114]
   "§9.4.4#r15": [68, 74]
   "§9.4.4#r14": [94, 96, 100]
-  "§9.4.4#r29": [106, 108, 110]
+  "§9.4.4#r28": [106, 110, 114, 107, 108, 111, 112, 115]
   "§9.4.1#r1": [94, 102]
-  "§9.4.1#r2": [106, 110]
+  "§9.4.1#r2": [106, 114]
   "§9.4.1#r4": [6, 80]
-  "EB-AKS-7": [94, 98, 100]
-  "EB-AKS-3@report-damaged": 24
-  "EB-AKS-3@confirm": [10, 26]
-  "EB-AKS-3@reject": 28
-  "EB-AKS-3@cancel-report": [44, 134, 136]
-  "EB-AKS-3@mark-as-repaired": [14, 30, 64, 148]
-  "EB-AKS-3@cancel-disposal-report": [46, 112, 114, 138, 140, 142, 144]
+  EB-AKS-7: [94, 98, 100]
+  EB-AKS-3@report-damaged: 24
+  EB-AKS-3@confirm: [10, 26]
+  EB-AKS-3@reject: 28
+  EB-AKS-3@cancel-report: [44, 139, 141]
+  EB-AKS-3@mark-as-repaired: [14, 30, 64, 153]
+  EB-AKS-3@cancel-disposal-report: [46, 117, 119, 143, 145, 147, 149]
   "§2.1#r1": [2, 4, 16, 18, 22]
-  "§2.1#r2": [24, 54, 154]
+  "§2.1#r2": [24, 54, 159]
   "§2.1#r3": [54, 56]
-  "§2.1#r4": [10, 26, 28, 146]
-  "§2.1#r5": [44, 134, 136]
-  "§2.1#r6": [12, 30, 148]
-  "§2.1#r7": [32, 150]
-  "§2.1#r8": [34, 36, 152]
-  "§2.1#r9": [46, 48, 50, 52, 112, 114, 138, 140, 142, 144]
+  "§2.1#r4": [10, 26, 28, 151]
+  "§2.1#r5": [44, 139, 141]
+  "§2.1#r6": [12, 30, 153]
+  "§2.1#r7": [32, 155]
+  "§2.1#r8": [34, 36, 157]
+  "§2.1#r9": [46, 48, 50, 52, 117, 119, 143, 145, 147, 149]
   "§2.1#r10": [38, 40]
   "§2.1#r11": [2, 4, 6, 8, 18, 22]
 ---
@@ -100,7 +100,7 @@ trace:
   - DU-205-29: Aset `Camera Canon EOS - 35 {runId}`, Group `Head Office {runId}`, record `Reported Disposal` yang dilaporkan `Maya Puspita {runId}`.
   - DU-205-30: Aset `Tablet Samsung Tab A8 - 36 {runId}`, Group `Head Office {runId}`, record `Reported Disposal` yang dilaporkan `Agus Pratama {runId}`.
   - DU-205-31: Aset `Projector Epson EB-X06 - 37 {runId}`, Group `Head Office {runId}`, record `Damaged` dengan penanda `Missing`.
-  - DU-205-32: Aset `Scanner Fujitsu fi-7160 - 38 {runId}`, Group `Head Office {runId}`, record `Damaged` dari laporan `Yoga Tanuwijaya {runId}`.
+  - DU-205-32: Aset `Scanner Fujitsu fi-7160 - 38 {runId}`, Group `Head Office {runId}`, record `Damaged` dari laporan `Yoga Tanuwijaya {runId}` yang sudah di-Confirm Aktor Damaged.
   - DU-205-33: Aset `Forklift Toyota 8FD - 39 {runId}`, Group `Head Office {runId}`, record `Damaged` dari laporan `Sinta Marlina {runId}`.
   - DU-205-34: Aset `Office Chair Ergo - 40 {runId}`, Group `Head Office {runId}`, record `Rejected` dari laporan `Budi Santoso {runId}` dengan Reason `Foto tidak jelas {runId}`, Damaged Photo `kursi-patah.jpg`, diputuskan `Rina Wulandari {runId}`.
   - DU-205-35: Aset `Handheld Scanner Zebra TC21 - 41 {runId}`, Group `Head Office {runId}`, record `Waiting for Confirmation` dari laporan `Dedi Kurniawan {runId}`.
@@ -125,11 +125,12 @@ trace:
   - DU-205-54: User `Tono Riyadi {runId}`, Aktor Transfer, cakupan Group `Head Office {runId}`, tanpa Update dan tanpa Read Only.
   - DU-205-55: Aset `Monitor Dell P2422H - 54 {runId}`, Group `Head Office {runId}`, record `Reported Disposal` yang dilaporkan `Agus Pratama {runId}`.
   - DU-205-56: Aset `Drill Bosch GSB - 55 {runId}`, Group `Warehouse {runId}`, record `Reported Disposal` yang dilaporkan `Agus Pratama {runId}`.
-  - DU-205-57: Aset `Handheld Scanner Zebra TC21 - 56 {runId}`, Group `Head Office {runId}`, record `Damaged` dari laporan `Dewi Anggraini {runId}`.
+  - DU-205-57: Aset `Handheld Scanner Zebra TC21 - 56 {runId}`, Group `Head Office {runId}`, record `Waiting for Confirmation` dari laporan `Dewi Anggraini {runId}`.
   - DU-205-58: Aset `Forklift Toyota 8FD - 57 {runId}`, Group `Head Office {runId}`, record `Damaged` dari laporan `Tono Riyadi {runId}`.
   - DU-205-59: Aset `Toyota Avanza - 59 {runId}`, Group `Warehouse {runId}`, record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`.
   - DU-205-60: Aset `Printer HP LaserJet M404 - 58 {runId}`, Group `Warehouse {runId}`, tanpa record berjalan.
   - DU-205-61: Aset `Camera Canon EOS - 61 {runId}`, Group `Mitra Suspended {runId}`, tanpa record berjalan di entitas `Mitra Suspended {runId}`.
+  - DU-205-62: Aset `Tablet Samsung Tab A8 - 60 {runId}`, Group `Head Office {runId}`, tanpa record berjalan.
 
 ## Test Steps
 
@@ -201,7 +202,7 @@ trace:
 59. Pelapor umum `Budi Santoso {runId}` membuka Damage Log record `Handheld Scanner Zebra TC21 - 41 {runId}` milik laporan orang lain
 60. Verifikasi permintaan ditolak dengan `403`
 61. Aktor peminjaman `Yoga Tanuwijaya {runId}` mengirim Report Damaged atas `Laptop Dell Latitude 5420 - 52 {runId}` dari halaman transaksi peminjaman tanpa hak Update dengan What happened `Casing retak setelah terbentur {runId}` dan Damaged Photo `casing-retak.jpg`
-62. Verifikasi server menerima dan membuat record `Damaged`, karena hak melapor dari halaman transaksi mengikuti hak aksi transaksi, bukan hak Update
+62. Verifikasi server menerima laporan karena hak melapor dari halaman transaksi mengikuti hak aksi transaksi, bukan hak Update, dan membuat record `Waiting for Confirmation`, bukan `Damaged`, karena Aktor Borrow tanpa hak Aktor Damaged adalah pelapor umum
 63. Aktor peminjaman `Yoga Tanuwijaya {runId}` menjalankan Mark as Repaired atas `Scanner Fujitsu fi-7160 - 38 {runId}` yang ia laporkan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
 64. Verifikasi Mark as Repaired ditolak karena Aktor peminjaman tidak memegang Update pada Group aset dan record tetap `Damaged`
 65. Aktor peminjaman `Yoga Tanuwijaya {runId}` membuka Damage Log record `Scanner Fujitsu fi-7160 - 38 {runId}` yang ia laporkan
@@ -254,63 +255,72 @@ trace:
 104. Verifikasi Report Damaged diterima karena inti Damaged tidak plan-gated
 105. Total Control `Dian Susanto {runId}` menjalankan Report Disposal atas `Drill Bosch GSB - 49 {runId}`
 106. Verifikasi Report Disposal ditolak server dan record tetap `Damaged`
-107. Total Control `Dian Susanto {runId}` mengirim Bulk Report Disposal atas `Drill Bosch GSB - 49 {runId}`
-108. Verifikasi Bulk Report Disposal ditolak server dan record tetap `Damaged`
-109. Total Control `Dian Susanto {runId}` menjalankan Cancel Disposal Report atas `Forklift Toyota 8FD - 50 {runId}`
-110. Verifikasi Cancel Disposal Report ditolak server, record tetap `Reported Disposal`, dan tidak ada node Damage Log baru
+107. Verifikasi penolakan Report Disposal itu tidak menambah node Damage Log di record
+108. Verifikasi penolakan Report Disposal itu tidak memicu event `damaged_*`
+109. Total Control `Dian Susanto {runId}` mengirim Bulk Report Disposal atas `Drill Bosch GSB - 49 {runId}`
+110. Verifikasi Bulk Report Disposal ditolak server dan record tetap `Damaged`
+111. Verifikasi penolakan Bulk Report Disposal itu tidak menambah node Damage Log di record
+112. Verifikasi penolakan Bulk Report Disposal itu tidak memicu event `damaged_*`
+113. Total Control `Dian Susanto {runId}` menjalankan Cancel Disposal Report atas `Forklift Toyota 8FD - 50 {runId}`
+114. Verifikasi Cancel Disposal Report ditolak server, record tetap `Reported Disposal`, dan tidak ada node Damage Log baru
+115. Verifikasi penolakan Cancel Disposal Report itu tidak memicu event `damaged_*`
 
 ### Cancel Disposal Report atas laporan orang lain dan di luar Group binaan ditolak
-111. Pemegang `Maya Puspita {runId}` yang juga Asset Admin sub-tab pelepasan aset menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}` yang dilaporkan `Agus Pratama {runId}`
-112. Verifikasi Cancel Disposal Report ditolak karena bukan laporan miliknya dan record tetap `Reported Disposal`
-113. Group Manager `Gunawan Hartono {runId}` menjalankan Cancel Disposal Report atas `Drill Bosch GSB - 55 {runId}` di Group `Warehouse {runId}` yang di luar Group binaan
-114. Verifikasi Cancel Disposal Report ditolak karena di luar Group binaan dan record tetap `Reported Disposal`
+116. Pemegang `Maya Puspita {runId}` yang juga Asset Admin sub-tab pelepasan aset menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}` yang dilaporkan `Agus Pratama {runId}`
+117. Verifikasi Cancel Disposal Report ditolak karena bukan laporan miliknya dan record tetap `Reported Disposal`
+118. Group Manager `Gunawan Hartono {runId}` menjalankan Cancel Disposal Report atas `Drill Bosch GSB - 55 {runId}` di Group `Warehouse {runId}` yang di luar Group binaan
+119. Verifikasi Cancel Disposal Report ditolak karena di luar Group binaan dan record tetap `Reported Disposal`
 
 ### Pelapor umum murni tidak dapat menjalankan aksi Aktor Damaged
-115. Pelapor umum `Budi Santoso {runId}` menjalankan Confirm atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}`
-116. Verifikasi Confirm ditolak dan record tetap `Waiting for Confirmation`
-117. Pelapor umum `Budi Santoso {runId}` menjalankan Reject atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}` dengan Reason `Foto yang dikirim bukan foto aset ini {runId}`
-118. Verifikasi Reject ditolak dan record tetap `Waiting for Confirmation`
-119. Pelapor umum `Budi Santoso {runId}` menjalankan Mark as Repaired atas `Scanner Fujitsu fi-7160 - 38 {runId}` dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
-120. Verifikasi Mark as Repaired ditolak dan record tetap `Damaged`
-121. Pelapor umum `Budi Santoso {runId}` menjalankan Report Missing atas `Scanner Fujitsu fi-7160 - 38 {runId}`
-122. Verifikasi Report Missing ditolak dan record tidak berubah
-123. Pelapor umum `Budi Santoso {runId}` menjalankan Report Disposal atas `Scanner Fujitsu fi-7160 - 38 {runId}`
-124. Verifikasi Report Disposal ditolak dan record tetap `Damaged`
+120. Pelapor umum `Budi Santoso {runId}` menjalankan Confirm atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}`
+121. Verifikasi Confirm ditolak dan record tetap `Waiting for Confirmation`
+122. Pelapor umum `Budi Santoso {runId}` menjalankan Reject atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}` dengan Reason `Foto yang dikirim bukan foto aset ini {runId}`
+123. Verifikasi Reject ditolak dan record tetap `Waiting for Confirmation`
+124. Pelapor umum `Budi Santoso {runId}` menjalankan Mark as Repaired atas `Scanner Fujitsu fi-7160 - 38 {runId}` dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
+125. Verifikasi Mark as Repaired ditolak dan record tetap `Damaged`
+126. Pelapor umum `Budi Santoso {runId}` menjalankan Report Missing atas `Scanner Fujitsu fi-7160 - 38 {runId}`
+127. Verifikasi Report Missing ditolak dan record tidak berubah
+128. Pelapor umum `Budi Santoso {runId}` menjalankan Report Disposal atas `Scanner Fujitsu fi-7160 - 38 {runId}`
+129. Verifikasi Report Disposal ditolak dan record tetap `Damaged`
 
 ### Aktor penugasan dan Aktor pemindahan tanpa Update hanya membuka Damage Log laporannya sendiri
-125. Aktor penugasan `Dewi Anggraini {runId}` membuka Damage Log record `Handheld Scanner Zebra TC21 - 56 {runId}` yang ia laporkan
-126. Verifikasi Damage Log terkirim karena record itu laporannya sendiri tanpa hak Update maupun Read Only
-127. Aktor penugasan `Dewi Anggraini {runId}` membuka Damage Log record `Laptop Dell Latitude 5420 - 31 {runId}` yang bukan laporannya
-128. Verifikasi permintaan ditolak dengan `403`
-129. Aktor pemindahan aset `Tono Riyadi {runId}` membuka Damage Log record `Forklift Toyota 8FD - 57 {runId}` yang ia laporkan
-130. Verifikasi Damage Log terkirim karena record itu laporannya sendiri tanpa hak Update maupun Read Only
-131. Aktor pemindahan aset `Tono Riyadi {runId}` membuka Damage Log record `Laptop Dell Latitude 5420 - 31 {runId}` yang bukan laporannya
-132. Verifikasi permintaan ditolak dengan `403`
+130. Aktor penugasan `Dewi Anggraini {runId}` membuka Damage Log record `Handheld Scanner Zebra TC21 - 56 {runId}` yang ia laporkan
+131. Verifikasi Damage Log terkirim karena record itu laporannya sendiri tanpa hak Update maupun Read Only
+132. Aktor penugasan `Dewi Anggraini {runId}` membuka Damage Log record `Laptop Dell Latitude 5420 - 31 {runId}` yang bukan laporannya
+133. Verifikasi permintaan ditolak dengan `403`
+134. Aktor pemindahan aset `Tono Riyadi {runId}` membuka Damage Log record `Forklift Toyota 8FD - 57 {runId}` yang ia laporkan
+135. Verifikasi Damage Log terkirim karena record itu laporannya sendiri tanpa hak Update maupun Read Only
+136. Aktor pemindahan aset `Tono Riyadi {runId}` membuka Damage Log record `Laptop Dell Latitude 5420 - 31 {runId}` yang bukan laporannya
+137. Verifikasi permintaan ditolak dengan `403`
 
 ### Cancel Report atas laporan orang lain ditolak walau pelakunya berhak tulis
-133. Pemegang Update `Rina Wulandari {runId}` menjalankan Cancel Report atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}` milik `Dedi Kurniawan {runId}` yang masih `Waiting for Confirmation`
-134. Verifikasi Cancel Report ditolak karena bukan laporannya sendiri dan record tetap `Waiting for Confirmation`
-135. Pelapor umum `Budi Santoso {runId}` menjalankan Cancel Report atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}` milik `Dedi Kurniawan {runId}` yang masih `Waiting for Confirmation`
-136. Verifikasi Cancel Report ditolak karena bukan laporannya sendiri dan record tetap `Waiting for Confirmation`
+138. Pemegang Update `Rina Wulandari {runId}` menjalankan Cancel Report atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}` milik `Dedi Kurniawan {runId}` yang masih `Waiting for Confirmation`
+139. Verifikasi Cancel Report ditolak karena bukan laporannya sendiri dan record tetap `Waiting for Confirmation`
+140. Pelapor umum `Budi Santoso {runId}` menjalankan Cancel Report atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}` milik `Dedi Kurniawan {runId}` yang masih `Waiting for Confirmation`
+141. Verifikasi Cancel Report ditolak karena bukan laporannya sendiri dan record tetap `Waiting for Confirmation`
 
 ### Cancel Disposal Report ditolak bagi Read Only, Manage asset & TAG (Read), View asset value, dan pelapor umum
-137. Read Only `Rosa Maharani {runId}` menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}`
-138. Verifikasi Cancel Disposal Report ditolak dan record tetap `Reported Disposal`
-139. Pemegang Read `Reza Pratama {runId}` menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}`
-140. Verifikasi Cancel Disposal Report ditolak dan record tetap `Reported Disposal`
-141. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Cancel Disposal Report atas `Drill Bosch GSB - 55 {runId}` di Group `Warehouse {runId}`
-142. Verifikasi Cancel Disposal Report ditolak dan record tetap `Reported Disposal`
-143. Pelapor umum `Budi Santoso {runId}` menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}`
-144. Verifikasi Cancel Disposal Report ditolak dan record tetap `Reported Disposal`
+142. Read Only `Rosa Maharani {runId}` menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}`
+143. Verifikasi Cancel Disposal Report ditolak dan record tetap `Reported Disposal`
+144. Pemegang Read `Reza Pratama {runId}` menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}`
+145. Verifikasi Cancel Disposal Report ditolak dan record tetap `Reported Disposal`
+146. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Cancel Disposal Report atas `Drill Bosch GSB - 55 {runId}` di Group `Warehouse {runId}`
+147. Verifikasi Cancel Disposal Report ditolak dan record tetap `Reported Disposal`
+148. Pelapor umum `Budi Santoso {runId}` menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}`
+149. Verifikasi Cancel Disposal Report ditolak dan record tetap `Reported Disposal`
 
 ### Pemegang View asset value tidak dapat menjalankan aksi tulis apa pun
-145. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Confirm atas laporan `Toyota Avanza - 59 {runId}` di Group `Warehouse {runId}`
-146. Verifikasi Confirm ditolak dan record tetap `Waiting for Confirmation`
-147. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Mark as Repaired atas `Drill Bosch GSB - 33 {runId}` dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
-148. Verifikasi Mark as Repaired ditolak dan record tetap `Damaged`
-149. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Report Missing atas `Toyota Avanza - 42 {runId}`
-150. Verifikasi Report Missing ditolak dan record tetap `Damaged`
-151. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Report Disposal atas `Toyota Avanza - 42 {runId}`
-152. Verifikasi Report Disposal ditolak dan record tetap `Damaged`
-153. Pemegang View asset value `Vina Kusuma {runId}` mengirim Report Damaged sebagai Pelapor admin dari Asset List atas `Printer HP LaserJet M404 - 58 {runId}` dengan What happened `Casing retak setelah terbentur {runId}` dan Damaged Photo `casing-retak.jpg`
-154. Verifikasi permintaan ditolak dan tidak ada Damage record untuk aset itu
+150. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Confirm atas laporan `Toyota Avanza - 59 {runId}` di Group `Warehouse {runId}`
+151. Verifikasi Confirm ditolak dan record tetap `Waiting for Confirmation`
+152. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Mark as Repaired atas `Drill Bosch GSB - 33 {runId}` dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
+153. Verifikasi Mark as Repaired ditolak dan record tetap `Damaged`
+154. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Report Missing atas `Toyota Avanza - 42 {runId}`
+155. Verifikasi Report Missing ditolak dan record tetap `Damaged`
+156. Pemegang View asset value `Vina Kusuma {runId}` menjalankan Report Disposal atas `Toyota Avanza - 42 {runId}`
+157. Verifikasi Report Disposal ditolak dan record tetap `Damaged`
+158. Pemegang View asset value `Vina Kusuma {runId}` mengirim Report Damaged sebagai Pelapor admin dari Asset List atas `Printer HP LaserJet M404 - 58 {runId}` dengan What happened `Casing retak setelah terbentur {runId}` dan Damaged Photo `casing-retak.jpg`
+159. Verifikasi permintaan ditolak dan tidak ada Damage record untuk aset itu
+
+### Aktor Assignment tanpa hak Aktor Damaged melapor sebagai pelapor umum
+160. Aktor penugasan `Dewi Anggraini {runId}` mengirim Report Damaged atas `Tablet Samsung Tab A8 - 60 {runId}` dari halaman transaksi penugasan tanpa hak Update dengan What happened `Casing retak setelah terbentur {runId}` dan Damaged Photo `casing-retak.jpg`
+161. Verifikasi server menerima laporan dan membuat record `Waiting for Confirmation`, bukan `Damaged`, karena Aktor Assignment tanpa hak Aktor Damaged adalah pelapor umum

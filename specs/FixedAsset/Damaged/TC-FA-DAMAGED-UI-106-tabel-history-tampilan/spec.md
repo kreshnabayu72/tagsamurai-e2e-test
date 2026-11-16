@@ -5,14 +5,15 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-02, "§4.1#r2", "§5#r1", "§7.1#r2", EB-TBL-1@tabel-history, EB-TBL-4@kolom-resolved-by, EB-FLT-6@tabel-history]
+sourceRules: [T-DMG-02, "§4.1#r2", "§5#r1", S-DMG-13, S-DMG-14, EB-TBL-1@tabel-history, EB-TBL-4@kolom-resolved-by, EB-FLT-6@tabel-history]
 smoke: []
 dependsOn: []
 trace:
   T-DMG-02: [2, 3, 4, 5, 6, 8, 9, 10, 11, 16, 17, 18, 19, 20, 21, 29, 30, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 86, 88, 89, 90, 91, 93, 95, 96, 98, 99, 100, 101, 103, 105, 108]
   "§4.1#r2": [26]
   "§5#r1": [23, 24, 25]
-  "§7.1#r2": [32, 33, 36, 37]
+  S-DMG-13: [32, 33]
+  S-DMG-14: [36, 37]
   EB-TBL-1@tabel-history: [32, 33, 36, 37, 38, 40, 41, 42]
   EB-TBL-4@kolom-resolved-by: [13, 15, 16]
   EB-FLT-6@tabel-history: [47, 48, 52, 53, 54, 56]

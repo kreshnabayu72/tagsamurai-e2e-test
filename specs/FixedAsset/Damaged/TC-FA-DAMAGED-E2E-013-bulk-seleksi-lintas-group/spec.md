@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-07, §4.2.4#p6, §4.2.4#r9, §4.4#r13, V-DMG-08, V-DMG-02, S-DMG-08, §6#p2, §9.2#b12, §9.4.2#r18, §9.4.4#r10, §5#r5, EB-BLK-2@tabel-active, §9.1#r2, EB-FB-2@dialog-blok-disposal]
+sourceRules: [T-DMG-01, D-DMG-07, §4.2.4#p6, §4.2.4#r9, §4.4#r13, V-DMG-08, V-DMG-02, S-DMG-08, §6#p2, §9.2#b12, EC-DMG-21, §9.4.4#r10, §5#r5, EB-BLK-2@tabel-active, F-DMG-02, EB-FB-2@dialog-blok-disposal]
 smoke: [EB-FB-2@dialog-blok-disposal]
 dependsOn: []
 trace:
@@ -19,11 +19,11 @@ trace:
   S-DMG-08: [64, 67]
   §6#p2: [70, 73, 82, 83, 84, 86, 87]
   §9.2#b12: [64, 67]
-  §9.4.2#r18: [67, 70, 74]
+  EC-DMG-21: [67, 70, 74]
   §9.4.4#r10: 74
   §5#r5: 65
   EB-BLK-2@tabel-active: [25, 27, 28, 45, 47, 48, 50, 53, 55]
-  §9.1#r2: [65, 67]
+  F-DMG-02: [65, 67]
   EB-FB-2@dialog-blok-disposal: [67, 71]
 anchor: []
 coverage:

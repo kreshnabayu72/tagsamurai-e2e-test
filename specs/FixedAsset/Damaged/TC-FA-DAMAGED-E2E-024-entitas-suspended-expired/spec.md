@@ -5,11 +5,11 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§9.4.2#r26, §9.4.4#r14, §9.4.1#r1, EB-AKS-7]
+sourceRules: [EC-DMG-30, §9.4.4#r14, §9.4.1#r1, EB-AKS-7]
 smoke: []
 dependsOn: []
 trace:
-  §9.4.2#r26: [16, 17, 18, 21, 29, 30, 31, 34]
+  EC-DMG-30: [16, 17, 18, 21, 29, 30, 31, 34]
   §9.4.4#r14: [17, 18, 30, 31]
   §9.4.1#r1: [2, 12, 16, 25, 29]
   EB-AKS-7: [6, 7, 16, 29]

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r21", "§8.1#p2", "§8.1#r16", "§8.3#r4", "§8.3#r5", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.4#r28", "§9.4.2#r14", S-DMG-05, S-DMG-06, T-DMG-02]
+sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r21", "§8.1#p2", "§8.1#r16", "§8.3#r4", "§8.3#r5", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.4#r27", EC-DMG-17, S-DMG-05, S-DMG-06, T-DMG-02]
 smoke: []
 dependsOn:
   - "Disposal: Dispose, Request, Reject, Cancel, Remove, Execute"
@@ -16,13 +16,13 @@ trace:
   S-DMG-06: 11
   "§8.1#p2": [14, 43, 57, 71]
   "§9.7#r13": [21, 24]
-  "§9.4.4#r28": [24, 28]
+  "§9.4.4#r27": [24, 28]
   T-DMG-02: [24, 25, 26]
   "§8.1#r16": [28, 29]
   "§8.3#r4": 28
   "§Aturan Logika Modul#r21": [40, 54, 68]
   "§9.7#r14": [40, 41, 54, 55, 68, 69]
-  "§9.4.2#r14": [40, 43, 54, 57, 68, 71]
+  EC-DMG-17: [40, 43, 54, 57, 68, 71]
   "§8.3#r5": [43, 57, 71]
 anchor: []
 coverage:
@@ -42,6 +42,7 @@ coverage:
 - Kondisi:
   - Level Feature Suite Disposal bernilai `Basic`.
   - Baris Disposal hasil Submit Request atas `Laptop Dell Latitude 5420 {runId}` berstatus Waiting for Execution, tanpa menunggu approval.
+  - Baris Disposal hasil Submit Request atas `Monitor Dell P2422H {runId}` berstatus Waiting for Approval, menunggu keputusan approver.
 
 ## Test Steps
 

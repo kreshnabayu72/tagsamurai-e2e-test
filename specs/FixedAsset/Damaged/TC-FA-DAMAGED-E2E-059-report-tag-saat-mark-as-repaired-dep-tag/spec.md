@@ -5,15 +5,15 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
-sourceRules: [FI-DMG-09, FI-DMG-10, §9.4.2#r13, §9.4.4#r22, §9.2#b16, §8.1#r12, D-DMG-02, §4.1#r9, §8.2#b3]
+sourceRules: [FI-DMG-09, FI-DMG-10, EC-DMG-16, §9.4.4#r21, §9.2#b16, §8.1#r12, D-DMG-02, §4.1#r9, §8.2#b3]
 smoke: []
 dependsOn:
   - "Tag: dialog Report TAG (identifikasi manual)"
 trace:
   FI-DMG-09: 5
   FI-DMG-10: [7, 8, 11]
-  §9.4.2#r13: [7, 17]
-  §9.4.4#r22: [14, 17]
+  EC-DMG-16: [7, 17]
+  §9.4.4#r21: [14, 17]
   §9.2#b16: [5, 7, 17]
   §8.1#r12: [16, 17]
   D-DMG-02: 3

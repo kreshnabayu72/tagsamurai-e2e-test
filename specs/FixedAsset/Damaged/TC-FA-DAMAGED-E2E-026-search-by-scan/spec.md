@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-10, §4.1#r3, §4.1#p2, §4.2.1#b3, §4.4#r2, §5#r1, §9.1#r2]
+sourceRules: [D-DMG-10, §4.1#r3, §4.1#p2, §4.2.1#b3, §4.4#r2, §5#r1, F-DMG-02]
 smoke: []
 dependsOn: []
 trace:
@@ -15,7 +15,7 @@ trace:
   §4.2.1#b3: [2, 9, 10, 16, 24, 25, 26]
   §4.4#r2: [4, 9, 10, 11, 16, 17]
   §5#r1: [2, 40, 41]
-  §9.1#r2: [2, 11, 26]
+  F-DMG-02: [2, 11, 26]
 anchor: []
 coverage:
   web: manual

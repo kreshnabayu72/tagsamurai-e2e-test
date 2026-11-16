@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-14",
- "sha": "aef760a3918deeae",
+ "disetujui": "otomatis, 2026-11-16",
+ "sha": "a2e6f06bcadf191c",
  "entri": [
   {
    "id": "DU-001-1",
@@ -384,9 +384,7 @@
    },
    "jumlah": 1,
    "mutasi": [],
-   "varian": [
-    "status-record@tabel-active:per-kondisi-disabled:pengguna = pelapor"
-   ],
+   "varian": [],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
    "maks": {
     "Name": null,
@@ -2841,7 +2839,9 @@
     "What happened": "Cartridge printer bocor dan hasil cetak bergaris"
    },
    "jumlah": 1,
-   "mutasi": [],
+   "mutasi": [
+    "TC-FA-DAMAGED-E2E-009-review-confirm"
+   ],
    "varian": [],
    "sumber": "turunan penulis",
    "maks": {
@@ -4605,6 +4605,53 @@
    }
   },
   {
+   "id": "DU-016-16",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-016-gating-manage-asset-tag-update"
+   ],
+   "jenis": "User",
+   "data": "Aktor akhir spec: pemegang Update yang juga Asset Admin sub-tab Disposal",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Maya Puspita {runId}",
+    "Role": "Manage asset & TAG (Update pada Head Office {runId}) dan Asset Admin sub-tab Disposal",
+    "Cakupan": "Group Update beserta descendant"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null,
+    "Role": null
+   }
+  },
+  {
+   "id": "DU-016-17",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-016-gating-manage-asset-tag-update"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Reported Disposal milik Asset Admin sub-tab Disposal",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Scanner Brother ADS-2200 {runId}",
+    "Group": "Head Office {runId}",
+    "Status": "Reported Disposal",
+    "Source": "Manual",
+    "Reported By": "Maya Puspita {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Group": null,
+    "Reported By": null
+   }
+  },
+  {
    "id": "DU-017-1",
    "jenis": "Damage record",
    "data": "Laporan Waiting di Group pertama",
@@ -5695,6 +5742,33 @@
    "varian": [],
    "sumber": "turunan penulis",
    "maks": {}
+  },
+  {
+   "id": "DU-022-10",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-022-already-changed-konflik-status"
+   ],
+   "jenis": "Damage record",
+   "data": "Laporan Waiting yang lebih dulu dibatalkan pelapor saat admin membuka Confirm",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Scanner Fujitsu fi-7160 {runId}",
+    "Group": "Head Office {runId}",
+    "Status": "Waiting for Confirmation",
+    "Source": "Reported by holder",
+    "Reported By": "Dewi Anggraeni {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-E2E-022-already-changed-konflik-status"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Group": null,
+    "Reported By": null
+   }
   },
   {
    "id": "DU-023-1",
@@ -8966,77 +9040,12 @@
    "spec": [
     "TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow"
    ],
-   "jenis": "Asset",
-   "data": "aset dipinjam dengan record Waiting for Confirmation dari laporan pemegang, untuk Reject",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Barcode Scanner Zebra DS2208 {runId}",
-    "Group": "Head Office",
-    "TAG": "tanpa TAG",
-    "Status Borrow": "Borrowed",
-    "Borrower": "Agus Santoso {runId}",
-    "Status record": "Waiting for Confirmation",
-    "Source": "Reported by holder",
-    "What happened": "Tombol trigger barcode scanner tidak responsif"
-   },
-   "jumlah": 1,
-   "mutasi": [
-    "TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow"
-   ],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {
-    "Name": null,
-    "Borrower": null
-   }
-  },
-  {
-   "id": "DU-049-4",
-   "spec": [
-    "TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow"
-   ],
    "jenis": "Return",
    "data": "catatan dan foto Return atas aset tanpa record",
    "asal": "dibuat",
    "nilai": {
     "Description": "Casing printer retak setelah terjatuh saat dikembalikan",
     "Foto Return": "printer-casing-retak.jpg"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {}
-  },
-  {
-   "id": "DU-049-5",
-   "spec": [
-    "TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow"
-   ],
-   "jenis": "Return",
-   "data": "catatan dan foto Return atas aset yang sudah punya record Waiting for Confirmation, untuk Confirm",
-   "asal": "dibuat",
-   "nilai": {
-    "Description": "Roller pemindai macet seperti yang dilaporkan pemegang",
-    "Foto Return": "scanner-roller-macet.jpg"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {}
-  },
-  {
-   "id": "DU-049-6",
-   "spec": [
-    "TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow"
-   ],
-   "jenis": "Return",
-   "data": "catatan dan foto Return atas aset yang sudah punya record Waiting for Confirmation, untuk Reject",
-   "asal": "dibuat",
-   "nilai": {
-    "Description": "Layar barcode scanner menampilkan garis horizontal",
-    "Foto Return": "barcode-scanner-layar.jpg"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -9217,11 +9226,11 @@
     "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
    ],
    "jenis": "Unassign",
-   "data": "catatan dan foto Return atas aset tanpa record",
+   "data": "catatan dan foto Unassign atas aset tanpa record",
    "asal": "dibuat",
    "nilai": {
     "Description": "Lensa webcam tergores dan gambar buram",
-    "Foto Return": "webcam-lensa-tergores.jpg"
+    "Foto Unassign": "webcam-lensa-tergores.jpg"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -9235,11 +9244,11 @@
     "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
    ],
    "jenis": "Unassign",
-   "data": "catatan dan foto Return atas aset yang sudah punya record Waiting for Confirmation",
+   "data": "catatan dan foto Unassign atas aset yang sudah punya record Waiting for Confirmation",
    "asal": "dibuat",
    "nilai": {
     "Description": "Layar tablet bintik hitam seperti yang dilaporkan pemegang",
-    "Foto Return": "tablet-layar-bintik.jpg"
+    "Foto Unassign": "tablet-layar-bintik.jpg"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -10925,27 +10934,6 @@
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1a Example Data",
-   "maks": {}
-  },
-  {
-   "id": "DU-104-2",
-   "spec": [
-    "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status"
-   ],
-   "jenis": "Damage record",
-   "data": "Record Waiting for Confirmation yang dilaporkan aktor sendiri",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Scanner Fujitsu fi-7160 - 2",
-    "Asset ID": "SCN-2026-0002",
-    "Group": "Head Office",
-    "Status": "Waiting for Confirmation",
-    "Reported By": "aktor sendiri"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
    "maks": {}
   },
   {
@@ -13900,14 +13888,14 @@
    "nilai": {
     "Name": "Laptop Dell Latitude 5420 - 9 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "Borrowed oleh `Budi Santoso {runId}`, punya record `Damaged` Source `Manual` dengan What happened `Engsel longgar`",
+    "Keadaan": "Assigned kepada `Budi Santoso {runId}`, punya record `Damaged` Source `Manual` dengan What happened `Engsel longgar`",
     "Record berjalan": "Damaged",
     "What happened": "Engsel longgar"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "record-berjalan@aset:per-operasi:Accept with damage"
+    "record-berjalan@aset:per-operasi:Unassigned bermarker Damaged"
    ],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
    "maks": {
@@ -14372,6 +14360,29 @@
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-201-52",
+   "spec": [
+    "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tablet Samsung Tab A8 - 6 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "dalam Transfer menuju `Branch Surabaya {runId}`, tanpa record berjalan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
    "maks": {
     "Name": null,
     "Group": null,
@@ -15031,6 +15042,78 @@
    }
   },
   {
+   "id": "DU-202-30",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tablet Samsung Tab A8 - 7 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "status global `Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan",
+    "TAG": "QR"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-31",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Camera Canon EOS - 7 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "status global `Assigned` kepada `Budi Santoso {runId}`, tanpa record berjalan",
+    "TAG": "RFID"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-32",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Drill Bosch GSB - 5 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "status global `Assigned` kepada `Budi Santoso {runId}`, punya record `Damaged`",
+    "TAG": "QR"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
    "id": "DU-203-1",
    "spec": [
     "TC-FA-DAMAGED-BE-203-review-confirm-reject-cancel-report"
@@ -15459,7 +15542,6 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "kondisi@review:per-kondisi:F-DMG-04.k1",
     "kondisi@review:efek-samping-per-cabang"
    ],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
@@ -15481,52 +15563,6 @@
     "Name": "Toyota Avanza - 5 {runId}",
     "Group": "Head Office {runId}",
     "Keadaan": "punya record `Damaged` dari laporan pemegang Update `Rina Wulandari {runId}`"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "PRD §4.1a T-DMG-01 Example Data",
-   "maks": {
-    "Name": null,
-    "Group": null,
-    "Keadaan": null
-   }
-  },
-  {
-   "id": "DU-203-22",
-   "spec": [
-    "TC-FA-DAMAGED-BE-203-review-confirm-reject-cancel-report"
-   ],
-   "jenis": "Asset",
-   "data": "Aset uji",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Forklift Toyota 8FD - 4 {runId}",
-    "Group": "Head Office {runId}",
-    "Keadaan": "`Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "PRD §4.1a T-DMG-01 Example Data",
-   "maks": {
-    "Name": null,
-    "Group": null,
-    "Keadaan": null
-   }
-  },
-  {
-   "id": "DU-203-23",
-   "spec": [
-    "TC-FA-DAMAGED-BE-203-review-confirm-reject-cancel-report"
-   ],
-   "jenis": "Asset",
-   "data": "Aset uji",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Drill Bosch GSB - 7 {runId}",
-    "Group": "Head Office {runId}",
-    "Keadaan": "`Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -16014,7 +16050,7 @@
    }
   },
   {
-   "id": "DU-203-45",
+   "id": "DU-203-47",
    "spec": [
     "TC-FA-DAMAGED-BE-203-review-confirm-reject-cancel-report"
    ],
@@ -16022,14 +16058,14 @@
    "data": "Aset uji",
    "asal": "awal",
    "nilai": {
-    "Name": "Forklift Toyota 8FD - 6 {runId}",
+    "Name": "Camera Canon EOS - 5 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "`Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya"
+    "Keadaan": "punya record `Waiting for Confirmation` dari laporan `Sari Dewanti {runId}`"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "PRD §4.1a T-DMG-01 Example Data",
+   "sumber": "turunan penulis",
    "maks": {
     "Name": null,
     "Group": null,
@@ -16037,7 +16073,7 @@
    }
   },
   {
-   "id": "DU-203-46",
+   "id": "DU-203-48",
    "spec": [
     "TC-FA-DAMAGED-BE-203-review-confirm-reject-cancel-report"
    ],
@@ -16045,14 +16081,37 @@
    "data": "Aset uji",
    "asal": "awal",
    "nilai": {
-    "Name": "Drill Bosch GSB - 9 {runId}",
+    "Name": "Tablet Samsung Tab A8 - 8 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "`Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya"
+    "Keadaan": "`Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Yoga Tanuwijaya {runId}` lewat halaman peminjaman"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "PRD §4.1a T-DMG-01 Example Data",
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-203-49",
+   "spec": [
+    "TC-FA-DAMAGED-BE-203-review-confirm-reject-cancel-report"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Camera Canon EOS - 6 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "`Assigned` kepada `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Dewi Anggraini {runId}` lewat halaman penugasan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
    "maks": {
     "Name": null,
     "Group": null,
@@ -17263,7 +17322,7 @@
    "nilai": {
     "Name": "Scanner Fujitsu fi-7160 - 38 {runId}",
     "Group": "Head Office {runId}",
-    "Record": "`Damaged` dari laporan `Yoga Tanuwijaya {runId}`"
+    "Record": "`Damaged` dari laporan `Yoga Tanuwijaya {runId}` yang sudah di-Confirm Aktor Damaged"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -17824,7 +17883,7 @@
    "nilai": {
     "Name": "Handheld Scanner Zebra TC21 - 56 {runId}",
     "Group": "Head Office {runId}",
-    "Record": "`Damaged` dari laporan `Dewi Anggraini {runId}`"
+    "Record": "`Waiting for Confirmation` dari laporan `Dewi Anggraini {runId}`"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -17922,6 +17981,29 @@
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Record": null
+   }
+  },
+  {
+   "id": "DU-205-62",
+   "spec": [
+    "TC-FA-DAMAGED-BE-205-authz-cakupan-dan-isolasi"
+   ],
+   "jenis": "Damage record",
+   "data": "Record uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tablet Samsung Tab A8 - 60 {runId}",
+    "Group": "Head Office {runId}",
+    "Record": "tanpa record berjalan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
    "maks": {
     "Name": null,
     "Group": null,
@@ -18745,7 +18827,7 @@
    "nilai": {
     "Name": "Printer HP LaserJet M404 - 84 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "punya record `Reported Disposal`"
+    "Keadaan": "punya record `Reported Disposal` dari laporan `Maya Puspita {runId}`"
    },
    "jumlah": 1,
    "mutasi": [
@@ -18757,7 +18839,8 @@
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
    "maks": {
     "Name": null,
-    "Group": null
+    "Group": null,
+    "Keadaan": null
    }
   },
   {
@@ -20258,8 +20341,8 @@
     "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log"
    ],
    "varian": [
-    "damage-log@record:per-varian-jalur:Accept with damage",
-    "jalur-non-form@record:per-jalur:Accept with damage",
+    "damage-log@record:per-varian-jalur:Report Damaged di halaman Return Borrow",
+    "jalur-non-form@record:per-jalur:Report Damaged di halaman Return Borrow",
     "aktor-log@record:asal-modul-lain"
    ],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
@@ -20287,7 +20370,9 @@
     "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log"
    ],
    "varian": [
-    "jalur-non-form@record:dengan-aktor"
+    "jalur-non-form@record:dengan-aktor",
+    "damage-log@record:per-varian-jalur:Unassigned bermarker Damaged",
+    "jalur-non-form@record:per-jalur:Unassigned bermarker Damaged"
    ],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
    "maks": {
@@ -20307,7 +20392,7 @@
    "nilai": {
     "Name": "Tablet Samsung Tab A8 - 163 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "`Borrowed` oleh `Budi Santoso {runId}`, punya record `Damaged` dengan What happened `Engsel longgar {runId}`",
+    "Keadaan": "`Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}` dengan What happened `Engsel longgar {runId}`",
     "What happened": "Engsel longgar {runId}"
    },
    "jumlah": 1,
@@ -20599,7 +20684,7 @@
    "asal": "dibuat",
    "nilai": {
     "Description": "Layar tergores saat dikembalikan {runId}",
-    "Foto Return": "foto-unassign.jpg"
+    "Foto Unassign": "foto-unassign.jpg"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -20831,6 +20916,31 @@
    "sumber": "turunan penulis",
    "maks": {
     "What happened": null
+   }
+  },
+  {
+   "id": "DU-208-60",
+   "spec": [
+    "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tablet Samsung Tab A8 - 165 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "`Assigned` kepada `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
    }
   },
   {
@@ -21885,16 +21995,16 @@
     "TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen"
    ],
    "jenis": "Konsumen",
-   "data": "Konsumen record asset/",
+   "data": "Konsumen record asset-detail/",
    "asal": "awal",
    "nilai": {
-    "Konsumen": "asset/",
+    "Konsumen": "asset-detail/",
     "Surface": "halaman detail aset"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "sync@record:per-konsumen:asset/"
+    "sync@record:per-konsumen:asset-detail/"
    ],
    "sumber": "turunan penulis",
    "maks": {}
@@ -21945,16 +22055,16 @@
     "TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen"
    ],
    "jenis": "Konsumen",
-   "data": "Konsumen record transactions-assignment/",
+   "data": "Konsumen record assignment/",
    "asal": "awal",
    "nilai": {
-    "Konsumen": "transactions-assignment/",
+    "Konsumen": "assignment/",
     "Surface": "baris penugasan"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "sync@record:per-konsumen:transactions-assignment/"
+    "sync@record:per-konsumen:assignment/"
    ],
    "sumber": "turunan penulis",
    "maks": {}
@@ -22025,16 +22135,16 @@
     "TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen"
    ],
    "jenis": "Konsumen",
-   "data": "Konsumen record transactions-disposal/",
+   "data": "Konsumen record disposal/",
    "asal": "awal",
    "nilai": {
-    "Konsumen": "transactions-disposal/",
+    "Konsumen": "disposal/",
     "Surface": "laporan pelepasan aset"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "sync@record:per-konsumen:transactions-disposal/"
+    "sync@record:per-konsumen:disposal/"
    ],
    "sumber": "turunan penulis",
    "maks": {}
@@ -22045,16 +22155,16 @@
     "TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen"
    ],
    "jenis": "Konsumen",
-   "data": "Konsumen record transactions-transfer/",
+   "data": "Konsumen record transfer/",
    "asal": "awal",
    "nilai": {
-    "Konsumen": "transactions-transfer/",
+    "Konsumen": "transfer/",
     "Surface": "pemindahan aset"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "sync@record:per-konsumen:transactions-transfer/"
+    "sync@record:per-konsumen:transfer/"
    ],
    "sumber": "turunan penulis",
    "maks": {}
@@ -22436,6 +22546,26 @@
     "Group": null,
     "Keadaan": null
    }
+  },
+  {
+   "id": "DU-210-49",
+   "spec": [
+    "TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen"
+   ],
+   "jenis": "Konsumen",
+   "data": "Konsumen record asset-list/",
+   "asal": "awal",
+   "nilai": {
+    "Konsumen": "asset-list/",
+    "Surface": "daftar aset"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "sync@record:per-konsumen:asset-list/"
+   ],
+   "sumber": "turunan penulis",
+   "maks": {}
   },
   {
    "id": "DU-211-1",
@@ -23855,7 +23985,7 @@
     "TC-FA-DAMAGED-BE-212-event-notifikasi"
    ],
    "jenis": "Return note",
-   "data": "Catatan Accept with damage Return",
+   "data": "Catatan dan foto Report Damaged dari halaman Return Borrow",
    "asal": "dibuat",
    "nilai": {
     "Description": "Engsel longgar saat dikembalikan {runId}",
@@ -23875,11 +24005,11 @@
     "TC-FA-DAMAGED-BE-212-event-notifikasi"
    ],
    "jenis": "Unassign note",
-   "data": "Catatan Accept with damage Unassign",
+   "data": "Catatan dan foto Unassign bermarker Damaged",
    "asal": "dibuat",
    "nilai": {
     "Description": "Layar tergores saat dikembalikan {runId}",
-    "Foto Return": "foto-unassign.jpg"
+    "Foto Unassign": "foto-unassign.jpg"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -23920,7 +24050,7 @@
    "nilai": {
     "Name": "Forklift Toyota 8FD - 345 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "punya record `Reported Disposal`"
+    "Keadaan": "punya record `Reported Disposal` dari laporan `Maya Puspita {runId}`"
    },
    "jumlah": 1,
    "mutasi": [
@@ -23930,7 +24060,8 @@
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
    "maks": {
     "Name": null,
-    "Group": null
+    "Group": null,
+    "Keadaan": null
    }
   },
   {

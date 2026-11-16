@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-09, "§4.2.4#p8", "§4.2.4#r11", "§4.4#r12", TS-DMG-08, S-DMG-06, V-DMG-06, "§8.1#r15", "§Aturan Logika Modul#r20", "§9.2#b22", "§9.6#r8", "§9.4.4#r27", "§2.1#r9", "§4.8#r9", "§2.1#b5", "EB-FB-1@cancel-disposal-report"]
+sourceRules: [T-DMG-01, D-DMG-09, D-DISP-15, TS-DISP-18, "§4.4#r12", TS-DMG-08, S-DMG-06, V-DMG-06, "§8.1#r15", "§Aturan Logika Modul#r20", "§9.2#b22", "§9.6#r8", "§9.4.4#r26", "§2.1#r9", "§4.8#r9", "§2.1#b4", "EB-FB-1@cancel-disposal-report"]
 smoke: []
 dependsOn:
   - "Disposal: Cancel Report (D-DISP-15)"
@@ -14,11 +14,11 @@ trace:
   T-DMG-01: [4, 13, 32, 33, 38, 39]
   "§2.1#r9": 4
   "§4.8#r9": 4
-  "§2.1#b5": [4, 13, 33, 39]
-  "§4.2.4#p8": [4, 6, 10]
+  "§2.1#b4": [4, 13, 33, 39]
+  D-DISP-15: [4, 6, 9, 10, 13, 33, 39]
   D-DMG-09: [6, 10]
   "§4.4#r12": [6, 9, 10]
-  "§4.2.4#r11": [6, 10]
+  TS-DISP-18: 9
   TS-DMG-08: 9
   "EB-FB-1@cancel-disposal-report": 9
   "§9.6#r8": [9, 10]
@@ -26,7 +26,7 @@ trace:
   S-DMG-06: [13, 30, 33, 36, 39]
   "§8.1#r15": [16, 17, 18]
   V-DMG-06: [21, 26, 28]
-  "§9.4.4#r27": [26, 28]
+  "§9.4.4#r26": [26, 28]
 anchor: []
 coverage:
   web: automated
