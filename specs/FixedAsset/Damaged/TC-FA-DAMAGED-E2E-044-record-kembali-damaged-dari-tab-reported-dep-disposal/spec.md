@@ -5,15 +5,15 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r20", "§Aturan Logika Modul#r63", "§8.1#r14", "§8.1#r15", "§8.3#r4", "§9.4.2#r14", "§9.4.4#r26", "§9.7#r11"]
+sourceRules: ["§Aturan Logika Modul#r20", "§Aturan Logika Modul#r60", "§8.1#r14", "§8.1#r15", "§8.3#r4", EC-DMG-17, "§9.4.4#r25", "§9.7#r11"]
 smoke: []
 dependsOn:
   - "Disposal: tab Reported (Decline, Cancel Report)"
 trace:
-  "§Aturan Logika Modul#r63": [5, 25]
+  "§Aturan Logika Modul#r60": [5, 25]
   "§Aturan Logika Modul#r20": [11, 14, 31, 34]
-  "§9.4.2#r14": [11, 17, 31, 37]
-  "§9.4.4#r26": [11, 17, 31, 37]
+  EC-DMG-17: [11, 17, 31, 37]
+  "§9.4.4#r25": [11, 17, 31, 37]
   "§9.7#r11": [11, 12, 14, 31, 32, 34]
   "§8.1#r14": [17, 18, 19]
   "§8.3#r4": [17, 37]

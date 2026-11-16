@@ -1,11 +1,11 @@
 ---
 id: TC-FA-DAMAGED-UI-116-dialog-damage-log
-title: "Dialog Damage Log: judul tanpa nomor, pihak, badge status dan penanda, footer Review hanya saat berhak dengan Confirm/Reject Disabled bagi pelapor, Confirm tanpa dialog kedua, reaksi sesudah Confirm, dan navigasi Prev/Next"
+title: "Dialog Damage Log: judul tanpa nomor, pihak, badge status dan penanda, footer Review hanya saat Waiting for Confirmation tanpa penanda Missing bagi Aktor Damaged, Confirm tanpa dialog kedua, reaksi sesudah Confirm, dan navigasi Prev/Next"
 layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-11, "§4.1#r4", "§8.1#r1", "§8.1#r2", "§8.1#r3", "§8.1#r4", "§8.1#r5", "§8.1#r6", "§8.1#b1", "§4.4#r4", "§4.4#r5", "§4.4#p1", "§7.1#r3", TS-DMG-04, "§9.6#r2", EB-FB-1@confirm, EB-ERR-1@confirm, "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16"]
+sourceRules: [D-DMG-11, "§4.1#r4", "§8.1#r1", "§8.1#r2", "§8.1#r3", "§8.1#r4", "§8.1#r5", "§8.1#r6", "§8.1#b1", "§4.4#r4", "§4.4#r5", "§4.4#p1", S-DMG-15, TS-DMG-04, "§9.6#r2", EB-FB-1@confirm, EB-ERR-1@confirm, "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16"]
 smoke: []
 dependsOn: []
 trace:
@@ -21,7 +21,7 @@ trace:
   "§4.4#r4": [10, 11]
   "§4.4#r5": [38, 39, 40]
   "§4.4#p1": [40, 41, 42, 43, 45, 52, 53, 54, 55, 108, 110, 112]
-  "§7.1#r3": [9]
+  S-DMG-15: [9]
   TS-DMG-04: [38, 58]
   "§9.6#r2": [38, 58, 59]
   EB-FB-1@confirm: [38, 58]
@@ -41,7 +41,7 @@ coverage:
   web: automated
 ---
 
-# Dialog Damage Log: judul tanpa nomor, pihak, badge status dan penanda, footer Review hanya saat berhak dengan Confirm/Reject Disabled bagi pelapor, Confirm tanpa dialog kedua, reaksi sesudah Confirm, dan navigasi Prev/Next
+# Dialog Damage Log: judul tanpa nomor, pihak, badge status dan penanda, footer Review hanya saat Waiting for Confirmation tanpa penanda Missing bagi Aktor Damaged, Confirm tanpa dialog kedua, reaksi sesudah Confirm, dan navigasi Prev/Next
 
 ## Prerequisites
 - Aktor: Aktor Damaged pada Group aset yang membuka dialog Damage Log (`Rina W`); pada K2 pelapor yang juga Aktor Damaged; pada K19 dan K20 pengguna tanpa hak Aktor Damaged.
@@ -119,10 +119,10 @@ coverage:
 21. Verifikasi dialog Damage Log menampilkan record `Projector Epson EB-X06 - 2`
 22. Verifikasi `Prev` Disabled karena record berada di ujung daftar
 
-### Confirm dan Reject Disabled bagi pelapor sendiri
+### Confirm dan Reject tersedia bagi pelapor yang juga Aktor Damaged
 23. Tampilkan Dialog Damage Log dengan kondisi K2
-24. Verifikasi tombol `[Reject]` dan `[Confirm]` Disabled bagi pelapor sendiri
-25. Verifikasi alasan `You reported this. Ask another admin.` tersampaikan pada tombol `[Confirm]` yang Disabled
+24. Verifikasi tombol `[Reject]` dan `[Confirm]` tampil pada footer bagi pelapor sendiri
+25. Verifikasi tombol `[Reject]` dan `[Confirm]` aktif, tidak Disabled, bagi pelapor sendiri
 
 ### Record Damaged tanpa footer review
 26. Tampilkan Dialog Damage Log dengan kondisi K3

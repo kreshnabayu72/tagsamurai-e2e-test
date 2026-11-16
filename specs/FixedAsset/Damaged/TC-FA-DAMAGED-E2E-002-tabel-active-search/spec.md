@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§5#r3", "§7.1#r1", EB-SRC-2@tabel-active, EB-SRC-3@tabel-active, EB-SRC-5@tabel-active, EB-TBL-1@tabel-active, EB-SRC-1]
+sourceRules: [T-DMG-01, "§5#r3", S-DMG-12, EB-SRC-2@tabel-active, EB-SRC-3@tabel-active, EB-SRC-5@tabel-active, EB-TBL-1@tabel-active, EB-SRC-1]
 smoke: [EB-SRC-1]
 dependsOn: []
 trace:
   T-DMG-01: [4, 5, 7, 8, 10, 11, 56, 57, 61, 62]
   "§5#r3": [4, 17, 18]
-  "§7.1#r1": [43, 44]
+  S-DMG-12: [43, 44]
   EB-SRC-2@tabel-active: [10, 39, 41, 46]
   EB-SRC-3@tabel-active: [20, 22, 24, 26, 28, 29, 31, 33, 35, 37]
   EB-SRC-5@tabel-active: [50, 51, 54]

@@ -5,21 +5,21 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-06, §4.2.4#p5, §4.2.4#r14, §4.4#r10, V-DMG-07, §9.4.2#r7, §9.4.4#r17, §9.4.4#r25, V-DMG-05, EB-ERR-4]
+sourceRules: [D-DMG-06, §4.2.4#p5, §4.2.4#r14, §4.4#r10, V-DMG-07, EC-DMG-07, §9.4.4#r16, §9.4.4#r24, V-DMG-05, EB-ERR-4]
 smoke: [EB-ERR-4]
 dependsOn: []
 trace:
-  D-DMG-06: [7, 8, 9, 32, 33]
-  §4.2.4#p5: [7, 8, 9, 11, 12]
+  D-DMG-06: [7, 8, 9, 32, 33, 46, 47]
+  §4.2.4#p5: [7, 8, 9, 11, 12, 49]
   §4.2.4#r14: 7
   §4.4#r10: [2, 7]
-  V-DMG-07: [7, 8]
-  §9.4.2#r7: [7, 8, 14]
-  §9.4.4#r17: [7, 12, 14]
-  §9.4.4#r25: [7, 14, 32, 38]
+  V-DMG-07: [7, 8, 46]
+  EC-DMG-07: [7, 8, 14, 46, 47, 50, 53]
+  §9.4.4#r16: [7, 12, 14]
+  §9.4.4#r24: [7, 14, 32, 38]
   V-DMG-05: [18, 19, 23, 24, 32, 35]
   EB-ERR-4: [7, 12, 14]
-anchor: [37]
+anchor: [37, 41]
 coverage:
   web: automated
 ---
@@ -27,7 +27,7 @@ coverage:
 # Aksi atas record yang statusnya sudah diubah admin lain ditolak dengan dialog Already Changed dan Reload memuat ulang tabel
 
 ## Prerequisites
-- Aktor: Total Control (DU-022-5); aktor kedua yang hanya memicu perubahan: Total Control (DU-022-6).
+- Aktor: Total Control (DU-022-5); aktor kedua yang hanya memicu perubahan: Total Control (DU-022-6); pelapor umum `Dewi Anggraeni {runId}` (DU-022-4) hanya memicu perubahan dengan membatalkan laporannya sendiri.
 - Layar awal: halaman Assets, tab Damaged, sub-tab Active.
 - Data:
   - DU-022-1: Damage record aset `Laptop Dell Latitude 5420 {runId}` di Group `Head Office {runId}`, status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-022-4; Damage Log hanya memuat node `Reported damaged by`.
@@ -39,6 +39,7 @@ coverage:
   - DU-022-7: Damage record aset `Projector Epson EB-X06 {runId}` tanpa TAG di Group `Head Office {runId}`, status `Damaged`, Source `Manual`, dilaporkan DU-022-5.
   - DU-022-8: Input Repair note oleh DU-022-5 atas `Projector Epson EB-X06 {runId}`: Repair note `Lampu proyektor diganti dan unit sudah diuji menyala normal`.
   - DU-022-9: Input Reason oleh DU-022-6 atas `Projector Epson EB-X06 {runId}`: Reason `Unit sudah dilaporkan lebih dulu oleh admin lain`.
+  - DU-022-10: Damage record aset `Scanner Fujitsu fi-7160 {runId}` di Group `Head Office {runId}`, status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-022-4.
 - Kondisi:
   - After photo required bernilai `OFF`.
   - Level Feature Suite Disposal bernilai `Basic`.
@@ -91,3 +92,19 @@ coverage:
 37. Verifikasi timeline memuat tepat satu node `Disposal reported by` dengan pelaku `Agus Pratama {runId}`
 38. Verifikasi tidak ada node `Marked as repaired by` pada timeline
 39. Klik `✕` pada dialog `Damage Log`
+
+### Confirm atas laporan yang sudah dibatalkan pelapor ditolak dengan Already Changed
+40. Ganti isi kotak search dengan `Scanner Fujitsu fi-7160 {runId}`, tekan Enter
+41. Verifikasi baris aset `Scanner Fujitsu fi-7160 {runId}` tampil di tabel dengan status `Waiting for Confirmation`
+42. Klik `⋯` pada baris `Scanner Fujitsu fi-7160 {runId}`
+43. Klik `Review`
+44. Dewi Anggraeni {runId} membatalkan laporannya atas aset `Scanner Fujitsu fi-7160 {runId}` dari sesi lain
+45. Klik `[Confirm]`
+46. Verifikasi dialog `Already Changed` terbuka dengan tombol `[Reload]`
+47. Verifikasi dialog memuat pesan `This record was changed by [User Name]. Reload to see the latest status.` dengan `[User Name]` berisi `Dewi Anggraeni {runId}`, pelapor yang lebih dulu membatalkan laporan
+48. Klik `[Reload]` pada dialog `Already Changed`
+49. Verifikasi dialog `Already Changed` tidak lagi tampil
+50. Verifikasi baris aset `Scanner Fujitsu fi-7160 {runId}` tidak tampil di tabel sub-tab `Active`
+51. Klik sub-tab `History`
+52. Ketik Search `Scanner Fujitsu fi-7160 {runId}`, tekan Enter
+53. Verifikasi baris aset `Scanner Fujitsu fi-7160 {runId}` tampil di tabel History dengan status `Canceled`

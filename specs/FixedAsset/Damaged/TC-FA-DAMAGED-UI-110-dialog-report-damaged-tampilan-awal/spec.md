@@ -20,8 +20,8 @@ trace:
   FI-DMG-01: [7]
   FI-DMG-04: [41, 42, 43]
   FI-DMG-05: [48, 50]
-  S-DMG-21: [56, 57]
-  S-DMG-22: [37, 38]
+  S-DMG-21: [36, 56, 57]
+  S-DMG-22: [37]
   EB-FRM-7@report-damaged: [59, 60, 61, 62, 64, 66, 68, 70, 72]
 anchor: []
 coverage:

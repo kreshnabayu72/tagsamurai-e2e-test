@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.4.2#r25", "§9.4.2#r15", "§9.4.4#r12", "§9.4.4#r8", "§9.7#r17", "§8.3#r6", "§8.3#r2", "§2.1#b2", "§2#b6", "§4.8#r3", "§Aturan Logika Modul#r34", "T-DMG-01"]
+sourceRules: ["EC-DMG-29", "EC-DMG-18", "§9.4.4#r12", "§9.4.4#r8", "§9.7#r17", "§8.3#r6", "§8.3#r2", "§2.1#b2", "§2#b6", "§4.8#r3", "§Aturan Logika Modul#r34", "T-DMG-01"]
 smoke: []
 dependsOn:
   - "Transfer: form Transfer dan Receive (Report Damaged saat Receive)"
 trace:
-  "§9.4.2#r25": [19, 20, 22]
-  "§9.4.2#r15": [3, 14]
+  "EC-DMG-29": [19, 20, 22]
+  "EC-DMG-18": [3, 14]
   "§9.4.4#r12": [19, 20, 22]
   "§9.4.4#r8": [3]
   "§9.7#r17": [19, 25]

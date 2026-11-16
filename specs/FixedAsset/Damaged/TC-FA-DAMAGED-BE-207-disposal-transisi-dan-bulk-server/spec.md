@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r61", "§Aturan Logika Modul#r62", "§Aturan Logika Modul#r63", "§9.2#r3", "§9.2#r4", "§9.2#r6", "§9.2#b12", "§9.2#b21", "§9.2#b22", "§9.2#b23", "§6#p2", "§8.1#p2", "V-DMG-06", "V-DMG-08", "V-DMG-09", "D-DMG-13", "TS-DMG-09", "§9.6#r6", "§9.6#r7", "§9.6#r8", "§9.4.2#r14", "§9.4.2#r18", "§9.4.2#r31", "§9.4.4#r10", "§9.4.4#r11", "§9.4.4#r26", "§9.4.4#r27", "§9.4.4#r28", "§9.7#r10", "§9.7#r11", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.1#r9", "§3#p6", "§9.1#r6"]
+sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r58", "§Aturan Logika Modul#r59", "§Aturan Logika Modul#r60", "§9.2#r3", "§9.2#r4", "§9.2#r6", "§9.2#b12", "§9.2#b21", "§9.2#b22", "§9.2#b23", "§6#p2", "§8.1#p2", "V-DMG-06", "V-DMG-08", "V-DMG-09", "D-DMG-13", "TS-DMG-09", "TS-DISP-12", "TS-DISP-15", "§9.6#r8", "EC-DMG-17", "EC-DMG-21", "EC-DMG-35", "§9.4.4#r10", "§9.4.4#r11", "§9.4.4#r25", "§9.4.4#r26", "§9.4.4#r27", "§9.7#r10", "§9.7#r11", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.1#r9", "§3#p6", "F-DMG-06"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -13,9 +13,9 @@ trace:
   "§Aturan Logika Modul#r19": [2, 26, 59]
   "§Aturan Logika Modul#r20": [32, 34]
   "§Aturan Logika Modul#r21": [36, 38, 40, 42]
-  "§Aturan Logika Modul#r61": 2
-  "§Aturan Logika Modul#r62": [2, 6]
-  "§Aturan Logika Modul#r63": [26, 32, 34]
+  "§Aturan Logika Modul#r58": 2
+  "§Aturan Logika Modul#r59": [2, 6]
+  "§Aturan Logika Modul#r60": [26, 32, 34]
   "§9.2#r3": [2, 3, 12]
   "§9.2#r4": [26, 36, 82]
   "§9.2#r6": [20, 29, 84]
@@ -25,22 +25,22 @@ trace:
   "§9.2#b23": [8, 10, 12, 54]
   "§6#p2": [22, 24, 59, 63]
   "§8.1#p2": [4, 27, 32, 36, 38, 40, 42]
-  "V-DMG-06": [47, 49]
-  "V-DMG-08": 51
-  "V-DMG-09": [59, 60]
-  "D-DMG-13": [63, 64]
-  "TS-DMG-09": 60
-  "§9.6#r6": [4, 6]
-  "§9.6#r7": [54, 55, 57, 63]
+  V-DMG-06: [47, 49]
+  V-DMG-08: 51
+  V-DMG-09: [59, 60]
+  D-DMG-13: [63, 64]
+  TS-DMG-09: 60
+  TS-DISP-12: [4, 6, 86]
+  TS-DISP-15: [54, 55, 57, 63]
   "§9.6#r8": [44, 45, 66]
-  "§9.4.2#r14": [32, 34, 36]
-  "§9.4.2#r18": 51
-  "§9.4.2#r31": [59, 61]
+  EC-DMG-17: [32, 34, 36]
+  EC-DMG-21: 51
+  EC-DMG-35: [59, 61]
   "§9.4.4#r10": 52
   "§9.4.4#r11": [55, 61, 64]
-  "§9.4.4#r26": [32, 34, 36]
-  "§9.4.4#r27": [47, 49]
-  "§9.4.4#r28": [29, 30]
+  "§9.4.4#r25": [32, 34, 36]
+  "§9.4.4#r26": [47, 49]
+  "§9.4.4#r27": [29, 30]
   "§9.7#r10": 2
   "§9.7#r11": [32, 34, 44]
   "§9.7#r12": 26
@@ -48,7 +48,7 @@ trace:
   "§9.7#r14": [36, 38, 40, 42]
   "§9.4.1#r9": [51, 54, 59]
   "§3#p6": 2
-  "§9.1#r6": 2
+  F-DMG-06: 2
 ---
 
 # Server mengikuti Disposal Report dan baris Disposal untuk status record, memproses Bulk Report Disposal per record dengan pengecekan ganda, memblok lintas Group, dan membatasi Cancel Disposal Report pada Reported Disposal
@@ -67,7 +67,7 @@ trace:
   - DU-207-7: Aset `Scanner Fujitsu fi-7160 - 81 {runId}`, Group `Head Office {runId}`, punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`.
   - DU-207-8: Aset `Laptop Dell Latitude 5420 - 82 {runId}`, Group `Head Office {runId}`, punya record `Damaged`, tanpa transaksi berjalan.
   - DU-207-9: Aset `Printer HP LaserJet M404 - 83 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal`.
-  - DU-207-10: Aset `Printer HP LaserJet M404 - 84 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal`.
+  - DU-207-10: Aset `Printer HP LaserJet M404 - 84 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal` dari laporan `Maya Puspita {runId}`.
   - DU-207-11: Aset `Printer HP LaserJet M404 - 85 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal` yang dilaporkan `Agus Pratama {runId}`.
   - DU-207-12: Aset `Monitor Dell P2422H - 86 {runId}`, Group `Head Office {runId}`, punya record `Damaged`, tanpa transaksi berjalan.
   - DU-207-13: Aset `Camera Canon EOS - 87 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris Disposal `Waiting for Approval`.
@@ -208,4 +208,8 @@ trace:
 82. Verifikasi Custody aset `Available`
 83. Total Control `Agus Pratama {runId}` membaca Lifecycle aset `Laptop Dell Latitude 5420 - 82 {runId}` yang pelepasan asetnya sudah dieksekusi
 84. Verifikasi Lifecycle aset `Disposed`
+
+### Report Disposal satu aset atomik: laporan, Condition, dan status record berubah bersamaan
+85. Total Control `Agus Pratama {runId}` membaca laporan pelepasan aset, status record, dan Condition aset `Monitor Dell P2422H - 108 {runId}` yang Report Disposal-nya sudah diproses
+86. Verifikasi laporan pelepasan aset, status record `Reported Disposal`, dan Condition aset `Reported Disposal` terbentuk bersamaan sebagai satu kesatuan, tanpa laporan yang tersisa tanpa perubahan Condition dan status record
 

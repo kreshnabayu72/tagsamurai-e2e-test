@@ -5,27 +5,27 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.7#p1", "§9.7#b1", "§9.7#b2", "§9.7#b3", "§9.7#r17", "V-DMG-11", "§9.4.2#r16", "§9.4.2#r17", "§9.4.2#r25", "§9.4.4#r13", "§9.4.4#r19", "§9.4.1#r13", "§9.4.1#r14", "§9.4.1#r10", "T-DMG-01", "T-DMG-02"]
+sourceRules: ["§9.7#p1", "§9.7#b1", "§9.7#b2", "§9.7#b3", "§9.7#r17", "V-DMG-11", "EC-DMG-19", "EC-DMG-20", "EC-DMG-29", "§9.4.4#r13", "§9.4.4#r18", "§9.4.1#r13", "§9.4.1#r14", "§9.4.1#r10", "T-DMG-01", "T-DMG-02"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§9.7#p1": [9, 35, 37, 38, 48, 50, 52]
+  "§9.7#p1": [9, 35, 37, 38, 48, 50, 52, 58]
   "§9.7#b1": [2, 3, 5, 9, 23, 38, 40]
   "§9.7#b2": [11, 12, 14, 24, 56]
   "§9.7#b3": [2, 7, 12, 15, 17, 19, 21, 43, 44]
   "§9.7#r17": [23, 24]
-  "V-DMG-11": [28, 30]
-  "§9.4.2#r16": 26
-  "§9.4.2#r17": [28, 30]
-  "§9.4.2#r25": [23, 24]
+  V-DMG-11: [28, 30]
+  EC-DMG-19: 26
+  EC-DMG-20: [28, 30]
+  EC-DMG-29: [23, 24]
   "§9.4.4#r13": [28, 30]
-  "§9.4.4#r19": 26
+  "§9.4.4#r18": 26
   "§9.4.1#r13": 26
   "§9.4.1#r14": [28, 30]
   "§9.4.1#r10": 33
-  "T-DMG-01": [2, 3, 5, 11, 17, 19]
-  "T-DMG-02": [7, 14, 15, 21]
+  T-DMG-01: [2, 3, 5, 11, 17, 19]
+  T-DMG-02: [7, 14, 15, 21]
 ---
 
 # Field Reflected ikut berubah saat pemilik berubah, field Snapshot membeku mengikuti node, Days Damaged dan Duration dihitung per zona waktu company, Group record ikut Transfer, pelapor nonaktif tidak mengubah record, dan Group ber-record berjalan tidak dapat dihapus
@@ -60,15 +60,15 @@ trace:
   - DU-210-21: Aset `Scanner Fujitsu fi-7160 - 210 {runId}`, Group `Head Office {runId}`, punya record `Damaged`.
   - DU-210-22: Aset `Office Chair Ergo - 211 {runId}`, Group `Head Office {runId}`, `Normal`, tanpa record berjalan.
   - DU-210-23: Aset `Projector Epson EB-X06 - 212 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal` yang mencerminkan laporan pelepasan aset.
-  - DU-210-24: Konsumen `asset/` dengan surface halaman detail aset.
+  - DU-210-24: Konsumen `asset-detail/` dengan surface halaman detail aset.
   - DU-210-25: Konsumen `my-asset/` dengan surface halaman aset yang dipegang pemegang.
   - DU-210-26: Konsumen `borrow/` dengan surface baris peminjaman.
-  - DU-210-27: Konsumen `transactions-assignment/` dengan surface baris penugasan.
+  - DU-210-27: Konsumen `assignment/` dengan surface baris penugasan.
   - DU-210-28: Konsumen `missing/` dengan surface modul aset hilang.
   - DU-210-29: Konsumen `asset-registration/` dengan surface registrasi aset.
   - DU-210-30: Konsumen `audit/` dengan surface sesi opname.
-  - DU-210-31: Konsumen `transactions-disposal/` dengan surface laporan pelepasan aset.
-  - DU-210-32: Konsumen `transactions-transfer/` dengan surface pemindahan aset.
+  - DU-210-31: Konsumen `disposal/` dengan surface laporan pelepasan aset.
+  - DU-210-32: Konsumen `transfer/` dengan surface pemindahan aset.
   - DU-210-33: Konsumen `settings-groups/` dengan surface pengelolaan Group.
   - DU-210-34: What happened `Layar retak setelah terjatuh dari meja {runId}`, Damaged Photo `layar-retak.jpg`.
   - DU-210-35: Brand `Lenovo Baru {runId}`, Purchase Cost `13000000`, Asset Value (Commercial) `9500000`.
@@ -84,6 +84,7 @@ trace:
   - DU-210-45: Aset `Tablet Samsung Tab A8 - 216 {runId}`, Group `Head Office {runId}`, `Assigned` kepada `Budi Santoso {runId}`, tanpa record berjalan.
   - DU-210-46: User `Wawan Setiadi {runId}`, Total Control, cakupan seluruh client, yang kemudian diganti namanya menjadi `Wawan Hidayat {runId}`.
   - DU-210-47: User `Dimas Prakoso {runId}`, pelapor umum, pemegang aset, cakupan aset yang ia pegang, yang kemudian diganti namanya menjadi `Dimas Kusuma {runId}`.
+  - DU-210-49: Konsumen `asset-list/` dengan surface daftar aset.
   - DU-210-48: Aset `Laptop Lenovo ThinkPad - 217 {runId}`, Group `Head Office {runId}`, punya record `Damaged` Source `Manual` dilaporkan `Wawan S`, Last Holder `Dimas P`.
 - Kondisi:
   - Time Zone company bernilai `Asia/Jakarta`.
@@ -160,7 +161,7 @@ trace:
 46. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Tablet Samsung Tab A8 - 216 {runId}` yang sedang ditugaskan dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
 47. Konsumen `borrow/` membaca baris peminjaman `Tablet Samsung Tab A8 - 215 {runId}`
 48. Verifikasi baris peminjaman itu menampilkan penanda `Damaged` dari record yang sama
-49. Konsumen `transactions-assignment/` membaca baris penugasan `Tablet Samsung Tab A8 - 216 {runId}`
+49. Konsumen `assignment/` membaca baris penugasan `Tablet Samsung Tab A8 - 216 {runId}`
 50. Verifikasi baris penugasan itu menampilkan penanda `Damaged` dari record yang sama
 51. Konsumen `my-asset/` membaca halaman aset yang dipegang `Budi Santoso {runId}`
 52. Verifikasi halaman itu menampilkan status `Damaged` untuk `Tablet Samsung Tab A8 - 215 {runId}`
@@ -170,3 +171,7 @@ trace:
 54. Nama User `Dimas Prakoso {runId}`, pemegang `Laptop Lenovo ThinkPad - 217 {runId}` saat dilaporkan, diganti menjadi `Dimas Kusuma {runId}`
 55. Total Control `Agus Pratama {runId}` meminta record Active `Laptop Lenovo ThinkPad - 217 {runId}`
 56. Verifikasi record itu tetap menampilkan Last Holder `Dimas P` dan Reported By `Wawan S` seperti saat dilaporkan
+
+### Konsumen daftar aset membaca status global yang sama dari record
+57. Konsumen `asset-list/` membaca daftar aset yang memuat `Office Chair Ergo - 211 {runId}`
+58. Verifikasi daftar aset itu menampilkan status `Damaged` untuk `Office Chair Ergo - 211 {runId}` dari record yang sama

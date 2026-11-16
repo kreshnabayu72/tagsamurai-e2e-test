@@ -1,11 +1,11 @@
 <!-- Ditulis stage spec-from-prd saat close. Jangan diubah tangan: run berikutnya menimpanya. -->
 
-Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c8775dfeb0c74f`), foundation@8ec9ed8, kontrak komponen wangs-ui@1.0.0. Stage: `prd-harness@1271d35`, ditutup 2026-11-14T11:48:35Z.
+Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@625d932` (sha `cbd9b7ca9320daee`), foundation@8ec9ed8-dirty, kontrak komponen wangs-ui@1.0.0. Stage: `prd-harness@1271d35`, ditutup 2026-11-16T04:02:58Z.
 
-# Matriks data Damaged (aef760a3918deeae)
+# Matriks data Damaged (a2e6f06bcadf191c)
 
-- Entri: 1029 (awal 836, dibuat 134, dicoba 59)
-- Checker: ERROR 0, REVIEW 17
+- Entri: 1034 (awal 843, dibuat 132, dicoba 59)
+- Checker: ERROR 0, REVIEW 26
 
 ## Target × varian
 
@@ -39,9 +39,9 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | Varian | Entri |
 |---|---|
 | `berkas-kosong` | ✓ DU-111-4 |
-| `kosong` | — §9.9#r2: field Image, bukan teks |
-| `spasi-saja` | — §9.9#r2: field Image, bukan teks |
-| `pilihan-kosong` | — §9.9#r2: field Image, bukan pilihan |
+| `kosong` | — FLD-DMG-02 (§9.9): field Image, bukan teks |
+| `spasi-saja` | — FLD-DMG-02 (§9.9): field Image, bukan teks |
+| `pilihan-kosong` | — FLD-DMG-02 (§9.9): field Image, bukan pilihan |
 
 ### Damaged Photo@report-damaged · VD-F12
 
@@ -53,8 +53,8 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `ukuran-di-bawah` | ✓ DU-111-10 |
 | `ukuran-tepat-batas` | ✓ DU-111-11 |
 | `ukuran-lebih-batas` | ✓ DU-111-13 |
-| `satu-foto-auto-default` | — §9.9#r2: satu foto per aset, tanpa slot default |
-| `default-di-slot-dua` | — §9.9#r2: satu foto, tanpa slot kedua |
+| `satu-foto-auto-default` | — FLD-DMG-02 (§9.9): satu foto per aset, tanpa slot default |
+| `default-di-slot-dua` | — FLD-DMG-02 (§9.9): satu foto, tanpa slot kedua |
 | `berkas-valid-field-lain-invalid` | — §9.9#p4: nasib berkas staging tidak teramati (orphan file cleanup tidak diasersi); yang diasersi caption field lain saja lewat VD-F1 |
 | `unggah-lalu-batal` | — §9.9#p4: pembersihan staging tidak teramati dari luar |
 | `ganti-berkas-edit` | — §9.6#p3: tidak ada form edit |
@@ -88,9 +88,9 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | Varian | Entri |
 |---|---|
 | `berkas-kosong` | ✓ DU-114-18 |
-| `kosong` | — §9.9#r4: field Image |
-| `spasi-saja` | — §9.9#r4: field Image |
-| `pilihan-kosong` | — §9.9#r4: field Image |
+| `kosong` | — FLD-DMG-04 (§9.9): field Image |
+| `spasi-saja` | — FLD-DMG-04 (§9.9): field Image |
+| `pilihan-kosong` | — FLD-DMG-04 (§9.9): field Image |
 
 ### After photo@mark-as-repaired · VD-F6
 
@@ -98,8 +98,8 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 |---|---|
 | `terisi` | ✓ DU-114-13 |
 | `kosong` | ✓ DU-114-17 |
-| `default-tak-disentuh` | — §9.9#r4: default kosong, bukan nilai ber-default |
-| `per-opsi` | — §9.9#r4: bukan field pilihan |
+| `default-tak-disentuh` | — FLD-DMG-04 (§9.9): default kosong, bukan nilai ber-default |
+| `per-opsi` | — FLD-DMG-04 (§9.9): bukan field pilihan |
 | `pasangan-berinteraksi` | — §4.2.4: tidak ada pasangan field yang berinteraksi |
 
 ### After photo@mark-as-repaired · VD-F12
@@ -112,8 +112,8 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `ukuran-di-bawah` | ✓ DU-114-13 |
 | `ukuran-tepat-batas` | ✓ DU-114-14 |
 | `ukuran-lebih-batas` | ✓ DU-114-16 |
-| `satu-foto-auto-default` | — §9.9#r4: satu foto |
-| `default-di-slot-dua` | — §9.9#r4: satu foto |
+| `satu-foto-auto-default` | — FLD-DMG-04 (§9.9): satu foto |
+| `default-di-slot-dua` | — FLD-DMG-04 (§9.9): satu foto |
 | `berkas-valid-field-lain-invalid` | — §9.9#p4: nasib berkas staging tidak teramati |
 | `unggah-lalu-batal` | — §9.9#p4: pembersihan staging tidak teramati |
 | `ganti-berkas-edit` | — §9.6#p3: tidak ada form edit |
@@ -128,18 +128,18 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `per-jenis-tag:RFID` | ✓ DU-012-4 |
 | `per-jenis-tag:QR` | ✓ DU-012-5 |
 | `per-jenis-tag:NFC` | ✓ DU-012-6 |
-| `tag-belum-paired` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `tag-tidak-terdaftar` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `tag-bukan-tagsamurai` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `object-tag` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `tag-company-lain` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `tag-belum-diaktivasi` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `tag-damaged` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `tag-missing` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `aset-on-tracking` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `aset-missing` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `group-found-sama` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
-| `group-found-beda` | — §9.9#r3: hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `tag-belum-paired` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `tag-tidak-terdaftar` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `tag-bukan-tagsamurai` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `object-tag` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `tag-company-lain` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `tag-belum-diaktivasi` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `tag-damaged` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `tag-missing` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `aset-on-tracking` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `aset-missing` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `group-found-sama` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
+| `group-found-beda` | — FLD-DMG-03 (§9.9): hasil selain TAG milik aset / bukan milik aset dimiliki tag.md §9.12.3 (bukan sumber) |
 
 ### Scan TAG@mark-as-repaired · VD-F15
 
@@ -561,7 +561,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 |---|---|
 | `entitas-kosong` | ✓ DU-101-15, DU-106-5 |
 | `kosong-untuk-aktor-ini` | ✓ DU-101-16 |
-| `log-kosong` | — §7.1#r3 S-DMG-15: Damage Log tidak pernah kosong |
+| `log-kosong` | — S-DMG-15 (§7.1): Damage Log tidak pernah kosong |
 | `relasi-kosong` | — §4.1a: tidak ada induk-anggota |
 | `node-tanpa-anak` | — §4.1a: tidak ada tree data |
 | `jadi-kosong-setelah-hapus` | — dimiliki target empty-state-setelah-selesai@tabel-active (ui-e2e, EB-EDG-2) |
@@ -572,7 +572,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 |---|---|
 | `entitas-kosong` | ✓ DU-021-1 |
 | `jadi-kosong-setelah-hapus` | ✓ DU-021-1 |
-| `log-kosong` | — §7.1#r3: Damage Log tidak pernah kosong |
+| `log-kosong` | — S-DMG-15 (§7.1): Damage Log tidak pernah kosong |
 | `relasi-kosong` | — §4.1a: tidak ada induk-anggota |
 | `node-tanpa-anak` | — §4.1a: tidak ada tree data |
 | `kosong-untuk-aktor-ini` | — §2.1#r11: cakupan per aktor dimiliki target empty-state@tab-damaged (ui-client) |
@@ -597,7 +597,6 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `per-status:In Disposal Process` | ✓ DU-001-2 |
 | `flag-terkunci:Reported Missing` | ✓ DU-001-4 |
 | `flag-terkunci:Missing` | ✓ DU-001-5 |
-| `per-kondisi-disabled:pengguna = pelapor` | ✓ DU-001-12 |
 | `per-kondisi-disabled:penanda Missing` | ✓ DU-001-4 |
 | `per-kondisi-disabled:Reported Disposal / In Disposal Process` | ✓ DU-001-2 |
 | `transisi-valid` | — §9.2 "9.2.0": transisi diuji be-e2e (target status-record@server) |
@@ -607,7 +606,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `sudah-di-state-tujuan` | — §9.6: idempotensi dimiliki target status-record@server |
 | `state-transien` | — §9.2 "9.2.0": tidak ada status transien |
 | `koheren-rantai-gate` | — §4.1a: tiap baris satu status, tanpa rantai gate |
-| `per-kondisi-disabled:level Feature Suite Disposal None` | — §9.10#p1 / §9.4.2#r32: kondisi tingkat entitas (level Feature Suite Disposal), bukan state record tabel; lingkungan suite memakai level Basic (plans.md §3.4a) dan keadaan None dibentuk spec TC-FA-DAMAGED-E2E-025-plan-disposal-none ber-entitasKhusus status-entitas (IN-2), bukan entri data record di entitas suite |
+| `per-kondisi-disabled:level Feature Suite Disposal None` | — §9.10#p1 / EC-DMG-36: kondisi tingkat entitas (level Feature Suite Disposal), bukan state record tabel; lingkungan suite memakai level Basic (plans.md §3.4a) dan keadaan None dibentuk spec TC-FA-DAMAGED-E2E-025-plan-disposal-none ber-entitasKhusus status-entitas (IN-2), bukan entri data record di entitas suite |
 
 ### status-record@tabel-history · VD-A5
 
@@ -684,7 +683,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `tepat-maksimal` | ✓ DU-201-18 |
 | `mutually-exclusive` | ✓ DU-201-18, DU-201-19, DU-201-20, DU-201-21 |
 | `per-operasi:Report Damaged` | ✓ DU-201-19 |
-| `per-operasi:Accept with damage` | ✓ DU-201-30 |
+| `per-operasi:Unassigned bermarker Damaged` | ✓ DU-201-30 |
 | `per-operasi:Mark as Found Damaged` | ✓ DU-201-31 |
 | `per-operasi:Registrasi` | ✓ DU-201-32 |
 | `per-operasi:Transfer receive` | ✓ DU-201-33 |
@@ -722,7 +721,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `item-beranotasi` | ✓ DU-042-4 |
 | `semua-ditolak-alasan-single` | — §4.2.4#p10: D-DMG-13 hanya untuk bulk; aksi tunggal memakai D-DMG-06 |
 | `nol-item` | — §4.1a: bar hanya tampil saat ≥ 1 baris terpilih; semua dilewati = semua-ditolak |
-| `sisa-satu-relevan` | — §4.2.4#r8: satu Reason untuk semua; PRD tidak menyatakan bentuk tunggal |
+| `sisa-satu-relevan` | — D-DISP-13 (§4.2.4, baris Bulk Report Disposal): satu Reason untuk semua; PRD tidak menyatakan bentuk tunggal |
 | `termasuk-baris-terlindungi` | — §4.1a: tidak ada baris Default/Self |
 
 ### kondisi-bulk@tabel-active · VD-R1
@@ -758,12 +757,11 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 
 | Varian | Entri |
 |---|---|
-| `per-kondisi:F-DMG-04.k1` | ✓ DU-203-20 |
 | `per-kondisi:F-DMG-04.k2` | ✓ DU-203-25 |
 | `per-kondisi:F-DMG-04.k4` | ✓ DU-203-9, DU-203-38 |
 | `lolos-semua-cabang` | ✓ DU-203-15 |
 | `efek-samping-per-cabang` | ✓ DU-203-15, DU-203-20 |
-| `per-kondisi:F-DMG-04.k3` | — §9.4.2 EC-DMG-23: menunggu lama adalah waktu berlalu (Kondisi, bukan data) |
+| `per-kondisi:F-DMG-04.k3` | — EC-DMG-23: menunggu lama adalah waktu berlalu (Kondisi, bukan data) |
 | `per-langkah-logic` | — §9.6#p2: tidak ada dokumen API |
 | `per-baris-error-handling` | — §9.6#p2: tidak ada dokumen API |
 
@@ -909,7 +907,8 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `per-aksi-non-crud:Decline Report` | ✓ DU-208-25 |
 | `per-aksi-non-crud:Cancel Disposal Report` | ✓ DU-208-26 |
 | `per-varian-jalur:Registrasi aset ber-Condition Damaged` | ✓ DU-208-32 |
-| `per-varian-jalur:Accept with damage` | ✓ DU-208-35 |
+| `per-varian-jalur:Report Damaged di halaman Return Borrow` | ✓ DU-208-35 |
+| `per-varian-jalur:Unassigned bermarker Damaged` | ✓ DU-208-36 |
 | `per-varian-jalur:Report Condition (Stock Opname)` | ✓ DU-208-39 |
 | `per-varian-jalur:Report Damaged saat Receive (Transfer)` | ✓ DU-208-40 |
 | `per-varian-jalur:Mark as Found Damaged` | ✓ DU-208-42 |
@@ -969,7 +968,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `edit-beruntun` | — §9.6#p3: tidak ada form edit |
 | `edit-nama-sendiri` | — §9.6#p3: tidak ada form edit |
 | `edit-beruntun-dua-aktor` | — §9.6#p3: tidak ada form edit |
-| `record-tanpa-entri` | — §7.1#r3 S-DMG-15: Damage Log tidak pernah kosong |
+| `record-tanpa-entri` | — S-DMG-15 (§7.1): Damage Log tidak pernah kosong |
 
 ### aktor-log@record · VD-L4
 
@@ -985,7 +984,8 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | Varian | Entri |
 |---|---|
 | `per-jalur:Registrasi` | ✓ DU-208-32 |
-| `per-jalur:Accept with damage` | ✓ DU-208-35 |
+| `per-jalur:Report Damaged di halaman Return Borrow` | ✓ DU-208-35 |
+| `per-jalur:Unassigned bermarker Damaged` | ✓ DU-208-36 |
 | `per-jalur:Report Condition (Stock Opname)` | ✓ DU-208-39 |
 | `per-jalur:Report Damaged saat Receive` | ✓ DU-208-40 |
 | `per-jalur:Mark as Found Damaged` | ✓ DU-208-42, DU-208-43 |
@@ -1016,15 +1016,16 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 | `arah-a-ke-b` | ✓ DU-210-1 |
 | `arah-b-ke-a` | ✓ DU-210-1 |
 | `state-reflected` | ✓ DU-210-12 |
-| `per-konsumen:asset/` | ✓ DU-210-24 |
+| `per-konsumen:asset-list/` | ✓ DU-210-49 |
+| `per-konsumen:asset-detail/` | ✓ DU-210-24 |
 | `per-konsumen:my-asset/` | ✓ DU-210-25 |
 | `per-konsumen:borrow/` | ✓ DU-210-26 |
-| `per-konsumen:transactions-assignment/` | ✓ DU-210-27 |
+| `per-konsumen:assignment/` | ✓ DU-210-27 |
 | `per-konsumen:missing/` | ✓ DU-210-28 |
 | `per-konsumen:asset-registration/` | ✓ DU-210-29 |
 | `per-konsumen:audit/` | ✓ DU-210-30 |
-| `per-konsumen:transactions-disposal/` | ✓ DU-210-31 |
-| `per-konsumen:transactions-transfer/` | ✓ DU-210-32 |
+| `per-konsumen:disposal/` | ✓ DU-210-31 |
+| `per-konsumen:transfer/` | ✓ DU-210-32 |
 | `per-konsumen:settings-groups/` | ✓ DU-210-33 |
 | `state-dari-modul-trigger` | ✓ DU-210-23 |
 | `turunan` | ✓ DU-210-22 |
@@ -1256,7 +1257,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-008-7** Damage record (awal), Record Damaged dengan 5 node Damage Log: Name `Log Aset {runId} - 7` (20 kar), Asset ID `LOG-0007-{runId}` (16 kar), Group `Head Office {runId}` (19 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Last Holder `—` (1 kar), Reported By `Agus P` (6 kar), Reported Date `T0 − 8 hari, pukul 09:00` (24 kar), What happened `Kipas mati total` (16 kar), Node 1 `Reported damaged by Agus P` (26 kar), Node 2 `Asset reported missing` (22 kar), Node 3 `Missing report closed` (21 kar), Node 4 `Asset reported missing` (22 kar), Node 5 `Asset found` (11 kar), Damaged Photo `foto-kerusakan.jpg` (18 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-008-8** Damage log node (awal), Detail node disposal, penolakan, dan perbaikan pada record DU-008: Reason Disposal `Sudah tidak ekonomis` (20 kar), Reason Decline `Masih bisa diperbaiki` (21 kar), Reason Reject `Foto tidak menunjukkan kerusakan` (32 kar), Repair note `Layar diganti` (13 kar), Report ID `milik laporan disposal DU-008-1 dan DU-008-6` (44 kar), Disposal No. `milik DU-008-6` (14 kar) · sumber PRD §8.1
 - **DU-009-1** Damage record (awal; dimutasi TC-FA-DAMAGED-E2E-009-review-confirm), Laporan pemegang Waiting for Confirmation yang akan di-Confirm: Asset Name `Laptop Dell Latitude 5420 {runId}` (33 kar), Group `Head Office` (11 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Reported By `Budi Santoso {runId}` (20 kar), What happened `Layar laptop retak setelah terjatuh dari meja kerja` (51 kar) · sumber turunan penulis
-- **DU-009-2** Damage record (awal), Laporan Waiting for Confirmation yang pelapornya kini Aktor Damaged (aktor spec ini): Asset Name `Printer HP LaserJet M404 {runId}` (32 kar), Group `Head Office` (11 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Reported By `Rina Wijaya {runId}` (19 kar), What happened `Cartridge printer bocor dan hasil cetak bergaris` (48 kar) · sumber turunan penulis
+- **DU-009-2** Damage record (awal; dimutasi TC-FA-DAMAGED-E2E-009-review-confirm), Laporan Waiting for Confirmation yang pelapornya kini Aktor Damaged (aktor spec ini): Asset Name `Printer HP LaserJet M404 {runId}` (32 kar), Group `Head Office` (11 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Reported By `Rina Wijaya {runId}` (19 kar), What happened `Cartridge printer bocor dan hasil cetak bergaris` (48 kar) · sumber turunan penulis
 - **DU-009-3** User (awal), Pemegang aset yang melapor sebagai pelapor umum: Name `Budi Santoso {runId}` (20 kar), Role `Pelapor umum (tanpa hak Aktor Damaged)` (38 kar), Cakupan `Aset yang ia pegang` (19 kar) · sumber matriks role PRD
 - **DU-009-4** User (awal), Aktor spec ini, Total Control yang pernah melapor sebagai pelapor umum: Name `Rina Wijaya {runId}` (19 kar), Role `Total Control` (13 kar), Cakupan `Seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-010-1** Damage record (awal; dimutasi TC-FA-DAMAGED-E2E-010-review-reject), Laporan pemegang Waiting for Confirmation yang akan di-Reject: Asset Name `Camera Canon EOS {runId}` (24 kar), Group `Head Office` (11 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Reported By `Dewi Anggraeni {runId}` (22 kar), What happened `Lensa kamera berembun dan gambar tidak fokus` (44 kar) · sumber turunan penulis
@@ -1333,6 +1334,8 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-016-13** User (awal), Pelapor record Waiting for Confirmation: Name `Dewi Anggraeni {runId}` (22 kar), Role `Pelapor umum (tanpa hak Aktor Damaged)` (38 kar), Cakupan `Aset yang ia pegang` (19 kar) · sumber matriks role PRD
 - **DU-016-14** Group (awal), Group tanpa Update maupun Read bagi aktor: Name `Gudang Bandung {runId}` (22 kar) · sumber turunan penulis
 - **DU-016-15** Damage record (awal), Record Damaged di Group di luar cakupan aktor: Asset Name `Forklift Toyota 8FD {runId}` (27 kar), Group `Gudang Bandung {runId}` (22 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Reported By `Agus Pratama {runId}` (20 kar) · sumber turunan penulis
+- **DU-016-16** User (awal), Aktor akhir spec: pemegang Update yang juga Asset Admin sub-tab Disposal: Name `Maya Puspita {runId}` (20 kar), Role `Manage asset & TAG (Update pada Head Office {runId}) dan Asset Admin sub-tab Disposal` (85 kar), Cakupan `Group Update beserta descendant` (31 kar) · sumber matriks role PRD
+- **DU-016-17** Damage record (awal), Record Reported Disposal milik Asset Admin sub-tab Disposal: Asset Name `Scanner Brother ADS-2200 {runId}` (32 kar), Group `Head Office {runId}` (19 kar), Status `Reported Disposal` (17 kar), Source `Manual` (6 kar), Reported By `Maya Puspita {runId}` (20 kar) · sumber turunan penulis
 - **DU-017-1** Damage record (awal), Laporan Waiting di Group pertama: Asset Name `Laptop Dell Latitude 5420 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Reported By `Dewi Anggraeni {runId}` (22 kar) · sumber turunan penulis
 - **DU-017-2** Damage record (awal), Record Damaged di Group lain: Asset Name `Toyota Avanza {runId}` (21 kar), Group `Branch Surabaya {runId}` (23 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Reported By `Dewi Anggraeni {runId}` (22 kar) · sumber turunan penulis
 - **DU-017-3** Damage record (awal), Record Reported Disposal: Asset Name `Printer HP LaserJet M404 {runId}` (32 kar), Group `Head Office {runId}` (19 kar), Status `Reported Disposal` (17 kar), Source `Stock opname` (12 kar), Reported By `Dewi Anggraeni {runId}` (22 kar) · sumber turunan penulis
@@ -1381,6 +1384,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-022-7** Damage record (awal; dimutasi TC-FA-DAMAGED-E2E-022-already-changed-konflik-status), Record Damaged tanpa TAG yang dipindah ke Reported Disposal oleh admin lain saat dialog Mark as Repaired terbuka: Asset Name `Projector Epson EB-X06 {runId}` (30 kar), Group `Head Office {runId}` (19 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), TAG `tidak ada` (9 kar), Reported By `Rina Wijaya {runId}` (19 kar) · sumber turunan penulis
 - **DU-022-8** Repair note Mark as Repaired (dicoba), Repair note yang diketik lalu ditolak karena status sudah berubah: Repair note `Lampu proyektor diganti dan unit sudah diuji menyala normal` (59 kar) · sumber turunan penulis
 - **DU-022-9** Reason Report Disposal (dibuat), Alasan Report Disposal oleh admin lain yang lebih dulu memindahkan status: Reason `Unit sudah dilaporkan lebih dulu oleh admin lain` (48 kar) · sumber turunan penulis
+- **DU-022-10** Damage record (awal; dimutasi TC-FA-DAMAGED-E2E-022-already-changed-konflik-status), Laporan Waiting yang lebih dulu dibatalkan pelapor saat admin membuka Confirm: Asset Name `Scanner Fujitsu fi-7160 {runId}` (31 kar), Group `Head Office {runId}` (19 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Reported By `Dewi Anggraeni {runId}` (22 kar) · sumber turunan penulis
 - **DU-023-1** User (awal), Aktor kunjungan pertama: Name `Rina Wijaya {runId}` (19 kar), Role `Total Control (flag Guided Tooltip tab Damaged belum diset)` (59 kar), Cakupan `Seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-023-2** User (awal), Aktor yang flag-nya sudah diset di perangkat lain: Name `Agus Pratama {runId}` (20 kar), Role `Total Control (flag Guided Tooltip tab Damaged sudah diset dari perangkat lain)` (79 kar), Cakupan `Seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-023-3** User (awal), Aktor ketiga dengan flag Guided Tooltip belum diset, memakai jalur Skip: Name `Budi Santoso {runId}` (20 kar), Role `Total Control (flag Guided Tooltip tab Damaged belum diset)` (59 kar), Cakupan `Seluruh client` (14 kar) · sumber matriks role PRD
@@ -1527,10 +1531,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-048-2** Damage record (dibuat), laporan kerusakan dari Detail BRW: What happened `Lensa proyektor berembun dan gambar buram` (41 kar), Damaged Photo `proyektor-lensa-buram.jpg` (25 kar) · sumber turunan penulis
 - **DU-049-1** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow), aset dipinjam tanpa record Damage: Name `Printer Brother HL-L2375 {runId}` (32 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status Borrow `Borrowed` (8 kar), Borrower `Hana Pratiwi {runId}` (20 kar) · sumber turunan penulis
 - **DU-049-2** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow), aset dipinjam dengan record Waiting for Confirmation dari laporan pemegang, untuk Confirm: Name `Scanner Fujitsu fi-7160 {runId}` (31 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status Borrow `Borrowed` (8 kar), Borrower `Rudi Hartono {runId}` (20 kar), Status record `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), What happened `Roller pemindai macet dan kertas sering tersangkut` (50 kar) · sumber turunan penulis
-- **DU-049-3** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow), aset dipinjam dengan record Waiting for Confirmation dari laporan pemegang, untuk Reject: Name `Barcode Scanner Zebra DS2208 {runId}` (36 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status Borrow `Borrowed` (8 kar), Borrower `Agus Santoso {runId}` (20 kar), Status record `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), What happened `Tombol trigger barcode scanner tidak responsif` (46 kar) · sumber turunan penulis
-- **DU-049-4** Return (dibuat), catatan dan foto Return atas aset tanpa record: Description `Casing printer retak setelah terjatuh saat dikembalikan` (55 kar), Foto Return `printer-casing-retak.jpg` (24 kar) · sumber turunan penulis
-- **DU-049-5** Return (dibuat), catatan dan foto Return atas aset yang sudah punya record Waiting for Confirmation, untuk Confirm: Description `Roller pemindai macet seperti yang dilaporkan pemegang` (54 kar), Foto Return `scanner-roller-macet.jpg` (24 kar) · sumber turunan penulis
-- **DU-049-6** Return (dibuat), catatan dan foto Return atas aset yang sudah punya record Waiting for Confirmation, untuk Reject: Description `Layar barcode scanner menampilkan garis horizontal` (50 kar), Foto Return `barcode-scanner-layar.jpg` (25 kar) · sumber turunan penulis
+- **DU-049-3** Return (dibuat), catatan dan foto Return atas aset tanpa record: Description `Casing printer retak setelah terjatuh saat dikembalikan` (55 kar), Foto Return `printer-casing-retak.jpg` (24 kar) · sumber turunan penulis
 - **DU-050-1** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-050-mark-repaired-aset-ditugaskan-dep-assignment), aset Damaged yang sedang ditugaskan: Name `Laptop Dell Latitude 5420 {runId}` (33 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status Assignment `Assigned` (8 kar), Assignee `Bima Prakoso {runId}` (20 kar), Status record `Damaged` (7 kar), Source `Manual` (6 kar), What happened `Engsel laptop longgar dan layar tidak bisa berdiri tegak` (56 kar) · sumber turunan penulis
 - **DU-050-2** Asset (awal), aset Damaged tanpa pemegang untuk pembacaan form Assign: Name `Monitor Dell P2422H {runId}` (27 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status record `Damaged` (7 kar), Source `Manual` (6 kar), What happened `Layar monitor berkedip dan garis vertikal muncul` (48 kar) · sumber turunan penulis
 - **DU-050-3** Damage record (dibuat), Repair note untuk Mark as Repaired aset ditugaskan: Repair note `Engsel laptop sudah diganti dan layar bisa berdiri tegak` (56 kar) · sumber turunan penulis
@@ -1538,8 +1539,8 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-051-2** Damage record (dibuat), laporan kerusakan dari Detail Assignment: What happened `Earcup kiri retak dan bantalan terlepas` (39 kar), Damaged Photo `headset-earcup-retak.jpg` (24 kar) · sumber turunan penulis
 - **DU-052-1** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment), aset ditugaskan tanpa record Damage: Name `Webcam Logitech C920 {runId}` (28 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status Assignment `Assigned` (8 kar), Assignee `Citra Maharani {runId}` (22 kar) · sumber turunan penulis
 - **DU-052-2** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment), aset ditugaskan dengan record Waiting for Confirmation dari laporan pemegang: Name `Tablet Lenovo Tab M10 {runId}` (29 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status Assignment `Assigned` (8 kar), Assignee `Dani Ramadhan {runId}` (21 kar), Status record `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), What happened `Layar tablet muncul bintik hitam dan sentuhan lambat` (52 kar) · sumber turunan penulis
-- **DU-052-3** Unassign (dibuat), catatan dan foto Return atas aset tanpa record: Description `Lensa webcam tergores dan gambar buram` (38 kar), Foto Return `webcam-lensa-tergores.jpg` (25 kar) · sumber turunan penulis
-- **DU-052-4** Unassign (dibuat), catatan dan foto Return atas aset yang sudah punya record Waiting for Confirmation: Description `Layar tablet bintik hitam seperti yang dilaporkan pemegang` (58 kar), Foto Return `tablet-layar-bintik.jpg` (23 kar) · sumber turunan penulis
+- **DU-052-3** Unassign (dibuat), catatan dan foto Unassign atas aset tanpa record: Description `Lensa webcam tergores dan gambar buram` (38 kar), Foto Unassign `webcam-lensa-tergores.jpg` (25 kar) · sumber turunan penulis
+- **DU-052-4** Unassign (dibuat), catatan dan foto Unassign atas aset yang sudah punya record Waiting for Confirmation: Description `Layar tablet bintik hitam seperti yang dilaporkan pemegang` (58 kar), Foto Unassign `tablet-layar-bintik.jpg` (23 kar) · sumber turunan penulis
 - **DU-053-1** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-053-transfer-dep-transfer), aset ber-record Damaged yang akan di-Transfer: Name `Printer Epson L3250 {runId}` (27 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status record `Damaged` (7 kar), Source `Manual` (6 kar), What happened `Tinta merembes dan head printer macet` (37 kar) · sumber turunan penulis
 - **DU-053-2** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-053-transfer-dep-transfer), aset normal yang dilaporkan rusak saat Receive: Name `Scanner Canon DR-C225 {runId}` (29 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar) · sumber turunan penulis
 - **DU-053-3** Asset (awal; dimutasi TC-FA-DAMAGED-E2E-053-transfer-dep-transfer), aset ber-laporan scan Waiting for Confirmation yang di-Transfer: Name `Router Cisco RV340 {runId}` (26 kar), Group `Head Office` (11 kar), TAG `tanpa TAG` (9 kar), Status record `Waiting for Confirmation` (24 kar), Source `Reported by scan` (16 kar), What happened `Port LAN tiga mati sejak kemarin` (32 kar) · sumber turunan penulis
@@ -1613,7 +1614,6 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-103-19** Damage record (awal), Record Reported Disposal yang checkbox-nya Disabled: Name `Welding Machine Lincoln - 2` (27 kar), Asset ID `WLD-2026-0002` (13 kar), Group `Head Office` (11 kar), Status `Reported Disposal` (17 kar) · sumber turunan penulis
 - **DU-103-20** Damage record (awal), Record In Disposal Process yang checkbox-nya Disabled: Name `Welding Machine Lincoln - 3` (27 kar), Asset ID `WLD-2026-0003` (13 kar), Group `Head Office` (11 kar), Status `In Disposal Process` (19 kar) · sumber turunan penulis
 - **DU-104-1** Damage record (awal), Record Waiting for Confirmation dilaporkan pengguna lain: Name `Laptop Dell Latitude 5420 - 4` (29 kar), Asset ID `LPT-2026-0004` (13 kar), Group `Head Office` (11 kar), Status `Waiting for Confirmation` (24 kar), Reported By `Budi Santoso` (12 kar) · sumber PRD §4.1a Example Data
-- **DU-104-2** Damage record (awal), Record Waiting for Confirmation yang dilaporkan aktor sendiri: Name `Scanner Fujitsu fi-7160 - 2` (27 kar), Asset ID `SCN-2026-0002` (13 kar), Group `Head Office` (11 kar), Status `Waiting for Confirmation` (24 kar), Reported By `aktor sendiri` (13 kar) · sumber turunan penulis
 - **DU-104-3** Damage record (awal), Record Damaged dari Pelapor admin: Name `Projector Epson EB-X06 - 2` (26 kar), Asset ID `PRJ-2026-0002` (13 kar), Group `Head Office` (11 kar), Status `Damaged` (7 kar) · sumber PRD §4.1a Example Data
 - **DU-104-4** Damage record (awal), Record Reported Disposal: Name `Printer HP LaserJet M404 - 8` (28 kar), Asset ID `PRN-2026-0008` (13 kar), Group `Head Office` (11 kar), Status `Reported Disposal` (17 kar) · sumber PRD §4.1a Example Data
 - **DU-104-5** Damage record (awal), Record In Disposal Process: Name `Monitor Dell P2422H - 6` (23 kar), Asset ID `MON-2026-0006` (13 kar), Group `Head Office` (11 kar), Status `In Disposal Process` (19 kar) · sumber PRD §4.1a Example Data
@@ -1756,7 +1756,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-201-27** Asset (awal), Aset uji: Name `Toyota Avanza - 1 {runId}` (25 kar), Group `Head Office {runId}` (19 kar), Keadaan `Normal, tanpa record berjalan` (29 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-201-28** Asset (awal), Aset uji: Name `Toyota Avanza - 3 {runId}` (25 kar), Group `Head Office {runId}` (19 kar), Keadaan `Normal, tanpa record berjalan` (29 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-201-29** Asset (awal), Aset uji: Name `Printer HP LaserJet M404 - 2 {runId}` (36 kar), Group `Head Office {runId}` (19 kar), Keadaan `Normal, tanpa record berjalan` (29 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-201-30** Asset (awal), Aset uji: Name `Laptop Dell Latitude 5420 - 9 {runId}` (37 kar), Group `Head Office {runId}` (19 kar), Keadaan `Borrowed oleh `Budi Santoso {runId}`, punya record `Damaged` Source `Manual` dengan What happened `Engsel longgar`` (114 kar), Record berjalan `Damaged` (7 kar), What happened `Engsel longgar` (14 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-201-30** Asset (awal), Aset uji: Name `Laptop Dell Latitude 5420 - 9 {runId}` (37 kar), Group `Head Office {runId}` (19 kar), Keadaan `Assigned kepada `Budi Santoso {runId}`, punya record `Damaged` Source `Manual` dengan What happened `Engsel longgar`` (116 kar), Record berjalan `Damaged` (7 kar), What happened `Engsel longgar` (14 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-201-31** Asset (awal), Aset uji: Name `Camera Canon EOS - 3 {runId}` (28 kar), Group `Head Office {runId}` (19 kar), Keadaan `Missing (hilang) dengan Condition sebelumnya Damaged, punya record `Damaged` ditahan dengan What happened `Lensa berjamur`` (122 kar), Record berjalan `Damaged` (7 kar), What happened `Lensa berjamur` (14 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-201-32** Asset (awal), Aset uji: Name `Projector Epson EB-X06 - 5 {runId}` (34 kar), Group `Head Office {runId}` (19 kar), Keadaan `draf registrasi dengan Condition `Damaged` dan Damage note `Lensa tergores saat pengiriman`, belum Active` (105 kar), Damage note `Lensa tergores saat pengiriman` (30 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-201-33** Asset (awal), Aset uji: Name `Forklift Toyota 8FD - 2 {runId}` (31 kar), Group `Head Office {runId}` (19 kar), Keadaan `dalam Transfer menuju `Branch Surabaya {runId}`, punya record `Damaged` dengan What happened `Garpu bengkok`` (108 kar), Record berjalan `Damaged` (7 kar), What happened `Garpu bengkok` (13 kar) · sumber PRD §4.1a T-DMG-01 Example Data
@@ -1778,6 +1778,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-201-49** Asset (awal), Aset uji: Name `Printer HP LaserJet M404 - 9 {runId}` (36 kar), Group `Head Office {runId}` (19 kar), Keadaan `Normal, tanpa record berjalan` (29 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-201-50** Asset (awal), Aset uji: Name `Laptop Dell Latitude 5420 - 12 {runId}` (38 kar), Group `Head Office {runId}` (19 kar), Keadaan `Normal, tanpa record berjalan` (29 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-201-51** Asset (awal), Aset uji: Name `Handheld Scanner Zebra TC21 - 4 {runId}` (39 kar), Group `Branch Surabaya {runId}` (23 kar), Keadaan `Normal, tanpa record berjalan` (29 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-201-52** Asset (awal), Aset uji: Name `Tablet Samsung Tab A8 - 6 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `dalam Transfer menuju `Branch Surabaya {runId}`, tanpa record berjalan` (70 kar) · sumber turunan penulis
 - **DU-202-1** User (awal), User Total Control: Name `Agus Pratama {runId}` (20 kar), Role `Total Control` (13 kar), Cakupan `seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-202-2** User (awal), User Aktor Borrow: Name `Yoga Tanuwijaya {runId}` (23 kar), Role `Aktor Borrow` (12 kar), Cakupan `Group `Head Office {runId}`` (27 kar) · sumber matriks role PRD
 - **DU-202-3** User (awal), User Aktor Assignment: Name `Dewi Anggraini {runId}` (22 kar), Role `Aktor Assignment` (16 kar), Cakupan `Group `Head Office {runId}`` (27 kar) · sumber matriks role PRD
@@ -1807,6 +1808,9 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-202-27** Asset (awal), Aset uji: Name `Projector Epson EB-X06 - 8 {runId}` (34 kar), Group `Head Office {runId}` (19 kar), Keadaan `status global `Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan` (75 kar), TAG `QR` (2 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-202-28** Asset (awal), Aset uji: Name `Monitor Dell P2422H - 10 {runId}` (32 kar), Group `Head Office {runId}` (19 kar), Keadaan `status global `TAG Reported`, dipegang `Budi Santoso {runId}`, tanpa record berjalan` (84 kar), TAG `RFID` (4 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-202-29** Asset (awal), Aset uji: Name `Forklift Toyota 8FD - 5 {runId}` (31 kar), Group `Head Office {runId}` (19 kar), Keadaan `status global `Borrowed` oleh `Budi Santoso {runId}`, punya record `Damaged`` (76 kar), TAG `RFID` (4 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-202-30** Asset (awal), Aset uji: Name `Tablet Samsung Tab A8 - 7 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `status global `Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan` (75 kar), TAG `QR` (2 kar) · sumber turunan penulis
+- **DU-202-31** Asset (awal), Aset uji: Name `Camera Canon EOS - 7 {runId}` (28 kar), Group `Head Office {runId}` (19 kar), Keadaan `status global `Assigned` kepada `Budi Santoso {runId}`, tanpa record berjalan` (77 kar), TAG `RFID` (4 kar) · sumber turunan penulis
+- **DU-202-32** Asset (awal), Aset uji: Name `Drill Bosch GSB - 5 {runId}` (27 kar), Group `Head Office {runId}` (19 kar), Keadaan `status global `Assigned` kepada `Budi Santoso {runId}`, punya record `Damaged`` (78 kar), TAG `QR` (2 kar) · sumber turunan penulis
 - **DU-203-1** User (awal), User Total Control: Name `Agus Pratama {runId}` (20 kar), Role `Total Control` (13 kar), Cakupan `seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-203-2** User (awal), User Manage asset & TAG (Update): Name `Rina Wulandari {runId}` (22 kar), Role `Manage asset & TAG (Update)` (27 kar), Cakupan `Group `Head Office {runId}` beserta descendant` (46 kar) · sumber matriks role PRD
 - **DU-203-3** User (awal), User Aktor Borrow: Name `Yoga Tanuwijaya {runId}` (23 kar), Role `Aktor Borrow` (12 kar), Cakupan `Group `Head Office {runId}`` (27 kar) · sumber matriks role PRD
@@ -1828,8 +1832,6 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-203-19** Asset (awal), Aset uji: Name `Scanner Fujitsu fi-7160 - 5 {runId}` (35 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Waiting for Confirmation` dari laporan `Sinta Maharani {runId} on behalf of Tono Rahmat {runId}`` (110 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-203-20** Asset (awal), Aset uji: Name `Camera Canon EOS - 4 {runId}` (28 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Waiting for Confirmation` dari laporan `Sari Dewanti {runId}`` (75 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-203-21** Asset (awal), Aset uji: Name `Toyota Avanza - 5 {runId}` (25 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Damaged` dari laporan pemegang Update `Rina Wulandari {runId}`` (76 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-203-22** Asset (awal), Aset uji: Name `Forklift Toyota 8FD - 4 {runId}` (31 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya` (95 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-203-23** Asset (awal), Aset uji: Name `Drill Bosch GSB - 7 {runId}` (27 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya` (95 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-203-24** Asset (awal), Aset uji: Name `Handheld Scanner Zebra TC21 - 4 {runId}` (39 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Assigned` kepada `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya` (97 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-203-25** Asset (awal), Aset uji: Name `Office Chair Ergo - 20 {runId}` (30 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`` (75 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-203-26** Asset (awal), Aset uji: Name `Office Chair Ergo - 21 {runId}` (30 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`` (75 kar) · sumber PRD §4.1a T-DMG-01 Example Data
@@ -1851,8 +1853,9 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-203-42** Reject reason (dicoba), Reason kosong: Reason `` (0 kar) · sumber FLD-DMG-06
 - **DU-203-43** Repair note (dibuat), Catatan perbaikan: Repair note `Komponen rusak sudah diganti {runId}` (36 kar) · sumber turunan penulis
 - **DU-203-44** Damage evidence (dibuat), Bukti laporan baru: What happened `Casing retak setelah terbentur {runId}` (38 kar), Damaged Photo `casing-retak.jpg` (16 kar) · sumber turunan penulis
-- **DU-203-45** Asset (awal), Aset uji: Name `Forklift Toyota 8FD - 6 {runId}` (31 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya` (95 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-203-46** Asset (awal), Aset uji: Name `Drill Bosch GSB - 9 {runId}` (27 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporannya` (95 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-203-47** Asset (awal), Aset uji: Name `Camera Canon EOS - 5 {runId}` (28 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Waiting for Confirmation` dari laporan `Sari Dewanti {runId}`` (75 kar) · sumber turunan penulis
+- **DU-203-48** Asset (awal), Aset uji: Name `Tablet Samsung Tab A8 - 8 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Yoga Tanuwijaya {runId}` lewat halaman peminjaman` (143 kar) · sumber turunan penulis
+- **DU-203-49** Asset (awal), Aset uji: Name `Camera Canon EOS - 6 {runId}` (28 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Assigned` kepada `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Dewi Anggraini {runId}` lewat halaman penugasan` (143 kar) · sumber turunan penulis
 - **DU-204-1** User (awal), User Total Control: Name `Agus Pratama {runId}` (20 kar), Role `Total Control` (13 kar), Cakupan `seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-204-2** User (awal), User Manage asset & TAG (Update): Name `Rina Wulandari {runId}` (22 kar), Role `Manage asset & TAG (Update)` (27 kar), Cakupan `Group `Head Office {runId}` beserta descendant` (46 kar) · sumber matriks role PRD
 - **DU-204-3** User (awal), User pelapor umum, pemegang aset: Name `Budi Santoso {runId}` (20 kar), Role `pelapor umum, pemegang aset` (27 kar), Cakupan `aset yang ia pegang` (19 kar) · sumber matriks role PRD
@@ -1905,7 +1908,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-205-29** Damage record (awal; dimutasi TC-FA-DAMAGED-BE-205-authz-cakupan-dan-isolasi), Record uji: Name `Camera Canon EOS - 35 {runId}` (29 kar), Group `Head Office {runId}` (19 kar), Record ``Reported Disposal` yang dilaporkan `Maya Puspita {runId}`` (58 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-30** Damage record (awal; dimutasi TC-FA-DAMAGED-BE-205-authz-cakupan-dan-isolasi), Record uji: Name `Tablet Samsung Tab A8 - 36 {runId}` (34 kar), Group `Head Office {runId}` (19 kar), Record ``Reported Disposal` yang dilaporkan `Agus Pratama {runId}`` (58 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-31** Damage record (awal), Record uji: Name `Projector Epson EB-X06 - 37 {runId}` (35 kar), Group `Head Office {runId}` (19 kar), Record ``Damaged` dengan penanda `Missing`` (34 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-205-32** Damage record (awal), Record uji: Name `Scanner Fujitsu fi-7160 - 38 {runId}` (36 kar), Group `Head Office {runId}` (19 kar), Record ``Damaged` dari laporan `Yoga Tanuwijaya {runId}`` (48 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-205-32** Damage record (awal), Record uji: Name `Scanner Fujitsu fi-7160 - 38 {runId}` (36 kar), Group `Head Office {runId}` (19 kar), Record ``Damaged` dari laporan `Yoga Tanuwijaya {runId}` yang sudah di-Confirm Aktor Damaged` (84 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-33** Damage record (awal), Record uji: Name `Forklift Toyota 8FD - 39 {runId}` (32 kar), Group `Head Office {runId}` (19 kar), Record ``Damaged` dari laporan `Sinta Marlina {runId}`` (46 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-34** Damage record (awal), Record uji: Name `Office Chair Ergo - 40 {runId}` (30 kar), Group `Head Office {runId}` (19 kar), Record ``Rejected` dari laporan `Budi Santoso {runId}` dengan Reason `Foto tidak jelas {runId}`, Damaged Photo `kursi-patah.jpg`, diputuskan `Rina Wulandari {runId}`` (157 kar), Reason `Foto tidak jelas {runId}` (24 kar), Damaged Photo `kursi-patah.jpg` (15 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-35** Damage record (awal), Record uji: Name `Handheld Scanner Zebra TC21 - 41 {runId}` (40 kar), Group `Head Office {runId}` (19 kar), Record ``Waiting for Confirmation` dari laporan `Dedi Kurniawan {runId}`` (64 kar) · sumber PRD §4.1a T-DMG-01 Example Data
@@ -1930,11 +1933,12 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-205-54** User (awal), User Aktor Transfer: Name `Tono Riyadi {runId}` (19 kar), Role `Aktor Transfer` (14 kar), Cakupan `Group `Head Office {runId}`, tanpa Update dan tanpa Read Only` (61 kar) · sumber matriks role PRD
 - **DU-205-55** Damage record (awal), Record uji: Name `Monitor Dell P2422H - 54 {runId}` (32 kar), Group `Head Office {runId}` (19 kar), Record ``Reported Disposal` yang dilaporkan `Agus Pratama {runId}`` (58 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-56** Damage record (awal), Record uji: Name `Drill Bosch GSB - 55 {runId}` (28 kar), Group `Warehouse {runId}` (17 kar), Record ``Reported Disposal` yang dilaporkan `Agus Pratama {runId}`` (58 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-205-57** Damage record (awal), Record uji: Name `Handheld Scanner Zebra TC21 - 56 {runId}` (40 kar), Group `Head Office {runId}` (19 kar), Record ``Damaged` dari laporan `Dewi Anggraini {runId}`` (47 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-205-57** Damage record (awal), Record uji: Name `Handheld Scanner Zebra TC21 - 56 {runId}` (40 kar), Group `Head Office {runId}` (19 kar), Record ``Waiting for Confirmation` dari laporan `Dewi Anggraini {runId}`` (64 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-58** Damage record (awal), Record uji: Name `Forklift Toyota 8FD - 57 {runId}` (32 kar), Group `Head Office {runId}` (19 kar), Record ``Damaged` dari laporan `Tono Riyadi {runId}`` (44 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-59** Damage record (awal), Record uji: Name `Toyota Avanza - 59 {runId}` (26 kar), Group `Warehouse {runId}` (17 kar), Record ``Waiting for Confirmation` dari laporan `Budi Santoso {runId}`` (62 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-60** Damage record (awal), Record uji: Name `Printer HP LaserJet M404 - 58 {runId}` (37 kar), Group `Warehouse {runId}` (17 kar), Record `tanpa record berjalan` (21 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-205-61** Damage record (awal), Record uji: Name `Camera Canon EOS - 61 {runId}` (29 kar), Group `Mitra Suspended {runId}` (23 kar), Record `tanpa record berjalan di entitas `Mitra Suspended {runId}`` (58 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-205-62** Damage record (awal), Record uji: Name `Tablet Samsung Tab A8 - 60 {runId}` (34 kar), Group `Head Office {runId}` (19 kar), Record `tanpa record berjalan` (21 kar) · sumber turunan penulis
 - **DU-206-1** User (awal), User Total Control: Name `Agus Pratama {runId}` (20 kar), Role `Total Control` (13 kar), Cakupan `seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-206-2** User (awal), User Aktor Missing: Name `Hendra Saputra {runId}` (22 kar), Role `Aktor Missing` (13 kar), Cakupan `Group `Head Office {runId}`` (27 kar) · sumber matriks role PRD
 - **DU-206-3** User (awal), User Asset Admin sub-tab Disposal: Name `Maya Puspita {runId}` (20 kar), Role `Asset Admin sub-tab Disposal` (28 kar), Cakupan `Group `Head Office {runId}`` (27 kar) · sumber matriks role PRD
@@ -1970,7 +1974,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-207-7** Asset (awal), Aset uji: Name `Scanner Fujitsu fi-7160 - 81 {runId}` (36 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`` (75 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-207-8** Asset (awal; dimutasi TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server), Aset uji: Name `Laptop Dell Latitude 5420 - 82 {runId}` (38 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Damaged`, tanpa transaksi berjalan` (48 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-207-9** Asset (awal; dimutasi TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server), Aset uji: Name `Printer HP LaserJet M404 - 83 {runId}` (37 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal`` (32 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-207-10** Asset (awal; dimutasi TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server), Aset uji: Name `Printer HP LaserJet M404 - 84 {runId}` (37 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal`` (32 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-207-10** Asset (awal; dimutasi TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server), Aset uji: Name `Printer HP LaserJet M404 - 84 {runId}` (37 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal` dari laporan `Maya Puspita {runId}`` (68 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-207-11** Asset (awal; dimutasi TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server), Aset uji: Name `Printer HP LaserJet M404 - 85 {runId}` (37 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal` yang dilaporkan `Agus Pratama {runId}`` (71 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-207-12** Asset (awal), Aset uji: Name `Monitor Dell P2422H - 86 {runId}` (32 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Damaged`, tanpa transaksi berjalan` (48 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-207-13** Asset (awal; dimutasi TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server), Aset uji: Name `Camera Canon EOS - 87 {runId}` (29 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `In Disposal Process` dengan baris Disposal `Waiting for Approval`` (79 kar) · sumber PRD §4.1a T-DMG-01 Example Data
@@ -2033,7 +2037,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-208-32** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Projector Epson EB-X06 - 151 {runId}` (36 kar), Group `Head Office {runId}` (19 kar), Keadaan `draf registrasi ber-Condition `Damaged`, belum Active` (53 kar), Damage note `Lensa tergores dan bodi penyok akibat benturan saat pengiriman dari gudang pusat ke kantor cabang Lensa tergores dan bod` (120 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-35** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Tablet Samsung Tab A8 - 161 {runId}` (35 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan` (61 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-36** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Tablet Samsung Tab A8 - 162 {runId}` (35 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Assigned` kepada `Budi Santoso {runId}`, tanpa record berjalan` (63 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-208-37** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Tablet Samsung Tab A8 - 163 {runId}` (35 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, punya record `Damaged` dengan What happened `Engsel longgar {runId}`` (108 kar), What happened `Engsel longgar {runId}` (22 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-208-37** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Tablet Samsung Tab A8 - 163 {runId}` (35 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}` dengan What happened `Engsel longgar {runId}`` (161 kar), What happened `Engsel longgar {runId}` (22 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-38** Asset (awal), Aset uji: Name `Tablet Samsung Tab A8 - 164 {runId}` (35 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan, form Return belum lolos validasi` (95 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-39** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Forklift Toyota 8FD - 171 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `termasuk sesi opname milik `Sinta Marlina {runId}`, tanpa record berjalan` (73 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-40** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Forklift Toyota 8FD - 172 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `dalam pemindahan menuju `Branch Surabaya {runId}`, tanpa record berjalan` (72 kar) · sumber PRD §4.1a T-DMG-01 Example Data
@@ -2044,7 +2048,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-208-45** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Camera Canon EOS - 184 {runId}` (30 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Damaged` ditahan dengan laporan hilang dari pemegang yang akan ditolak` (84 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-46** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Camera Canon EOS - 185 {runId}` (30 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Missing` dengan record `Damaged` ditahan yang akan menjadi `Disposed`` (70 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-47** Return report (dibuat), Catatan dan foto Return: Description `Engsel longgar saat dikembalikan {runId}` (40 kar), Foto Return `foto-return.jpg` (15 kar) · sumber turunan penulis
-- **DU-208-48** Unassign report (dibuat), Catatan dan foto Unassign: Description `Layar tergores saat dikembalikan {runId}` (40 kar), Foto Return `foto-unassign.jpg` (17 kar) · sumber turunan penulis
+- **DU-208-48** Unassign report (dibuat), Catatan dan foto Unassign: Description `Layar tergores saat dikembalikan {runId}` (40 kar), Foto Unassign `foto-unassign.jpg` (17 kar) · sumber turunan penulis
 - **DU-208-49** Opname report (dibuat), Bukti laporan opname: What happened `Rangka berkarat ditemukan saat opname {runId}` (45 kar), Damaged Photo `rangka-berkarat.jpg` (19 kar) · sumber turunan penulis
 - **DU-208-50** Receive report (dibuat), Bukti laporan saat penerimaan: What happened `Garpu bengkok saat diterima {runId}` (35 kar), Damaged Photo `garpu-bengkok.jpg` (17 kar) · sumber turunan penulis
 - **DU-208-51** Found report (dibuat), Note dan foto ditemukan rusak: Note `Ditemukan rusak di ruang arsip {runId}` (38 kar), Damaged Photo `ditemukan-rusak.jpg` (19 kar) · sumber turunan penulis
@@ -2056,6 +2060,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-208-57** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Scanner Fujitsu fi-7160 - 146 {runId}` (37 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal`` (32 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-58** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Camera Canon EOS - 186 {runId}` (30 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Damaged`` (22 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-208-59** Damage report (dibuat), Laporan hilang: What happened `Terakhir terlihat di gudang lantai dua {runId}` (46 kar), Damaged Photo `terakhir-terlihat.jpg` (21 kar) · sumber turunan penulis
+- **DU-208-60** Asset (awal; dimutasi TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log), Aset uji: Name `Tablet Samsung Tab A8 - 165 {runId}` (35 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Assigned` kepada `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`` (117 kar) · sumber turunan penulis
 - **DU-209-1** User (awal), User Total Control: Name `Agus Pratama {runId}` (20 kar), Role `Total Control` (13 kar), Cakupan `seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-209-2** User (awal), User Group Manager: Name `Gunawan Hartono {runId}` (23 kar), Role `Group Manager` (13 kar), Cakupan `Group `Head Office {runId}` beserta sub-group` (45 kar) · sumber matriks role PRD
 - **DU-209-3** Group (awal), Group utama: Name `Head Office {runId}` (19 kar) · sumber turunan penulis
@@ -2097,15 +2102,15 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-210-21** Asset (awal), Aset uji: Name `Scanner Fujitsu fi-7160 - 210 {runId}` (37 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Damaged`` (22 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-210-22** Asset (awal; dimutasi TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen), Aset uji: Name `Office Chair Ergo - 211 {runId}` (31 kar), Group `Head Office {runId}` (19 kar), Keadaan ``Normal`, tanpa record berjalan` (31 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-210-23** Asset (awal; dimutasi TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen), Aset uji: Name `Projector Epson EB-X06 - 212 {runId}` (36 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal` yang mencerminkan laporan pelepasan aset` (73 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-210-24** Konsumen (awal), Konsumen record asset/: Konsumen `asset/` (6 kar), Surface `halaman detail aset` (19 kar) · sumber turunan penulis
+- **DU-210-24** Konsumen (awal), Konsumen record asset-detail/: Konsumen `asset-detail/` (13 kar), Surface `halaman detail aset` (19 kar) · sumber turunan penulis
 - **DU-210-25** Konsumen (awal), Konsumen record my-asset/: Konsumen `my-asset/` (9 kar), Surface `halaman aset yang dipegang pemegang` (35 kar) · sumber turunan penulis
 - **DU-210-26** Konsumen (awal), Konsumen record borrow/: Konsumen `borrow/` (7 kar), Surface `baris peminjaman` (16 kar) · sumber turunan penulis
-- **DU-210-27** Konsumen (awal), Konsumen record transactions-assignment/: Konsumen `transactions-assignment/` (24 kar), Surface `baris penugasan` (15 kar) · sumber turunan penulis
+- **DU-210-27** Konsumen (awal), Konsumen record assignment/: Konsumen `assignment/` (11 kar), Surface `baris penugasan` (15 kar) · sumber turunan penulis
 - **DU-210-28** Konsumen (awal), Konsumen record missing/: Konsumen `missing/` (8 kar), Surface `modul aset hilang` (17 kar) · sumber turunan penulis
 - **DU-210-29** Konsumen (awal), Konsumen record asset-registration/: Konsumen `asset-registration/` (19 kar), Surface `registrasi aset` (15 kar) · sumber turunan penulis
 - **DU-210-30** Konsumen (awal), Konsumen record audit/: Konsumen `audit/` (6 kar), Surface `sesi opname` (11 kar) · sumber turunan penulis
-- **DU-210-31** Konsumen (awal), Konsumen record transactions-disposal/: Konsumen `transactions-disposal/` (22 kar), Surface `laporan pelepasan aset` (22 kar) · sumber turunan penulis
-- **DU-210-32** Konsumen (awal), Konsumen record transactions-transfer/: Konsumen `transactions-transfer/` (22 kar), Surface `pemindahan aset` (15 kar) · sumber turunan penulis
+- **DU-210-31** Konsumen (awal), Konsumen record disposal/: Konsumen `disposal/` (9 kar), Surface `laporan pelepasan aset` (22 kar) · sumber turunan penulis
+- **DU-210-32** Konsumen (awal), Konsumen record transfer/: Konsumen `transfer/` (9 kar), Surface `pemindahan aset` (15 kar) · sumber turunan penulis
 - **DU-210-33** Konsumen (awal), Konsumen record settings-groups/: Konsumen `settings-groups/` (16 kar), Surface `pengelolaan Group` (17 kar) · sumber turunan penulis
 - **DU-210-34** Damage evidence (dibuat), Bukti laporan: What happened `Layar retak setelah terjatuh dari meja {runId}` (46 kar), Damaged Photo `layar-retak.jpg` (15 kar) · sumber turunan penulis
 - **DU-210-35** Asset edit (dibuat; dimutasi TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen), Perubahan data aset oleh pemiliknya: Brand `Lenovo Baru {runId}` (19 kar), Purchase Cost `13000000` (8 kar), Asset Value (Commercial) `9500000` (7 kar) · sumber turunan penulis
@@ -2122,6 +2127,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@12ddb49` (sha `16c87
 - **DU-210-46** User (awal; dimutasi TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen), User pelapor yang kemudian diganti namanya: Name `Wawan Setiadi {runId}` (21 kar), Role `Total Control` (13 kar), Cakupan `seluruh client` (14 kar), Nama baru `Wawan Hidayat {runId}` (21 kar) · sumber matriks role PRD
 - **DU-210-47** User (awal; dimutasi TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen), User pemegang aset yang kemudian diganti namanya: Name `Dimas Prakoso {runId}` (21 kar), Role `pelapor umum, pemegang aset` (27 kar), Cakupan `aset yang ia pegang` (19 kar), Nama baru `Dimas Kusuma {runId}` (20 kar) · sumber matriks role PRD
 - **DU-210-48** Asset (awal), Aset uji: Name `Laptop Lenovo ThinkPad - 217 {runId}` (36 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Damaged` Source `Manual` dilaporkan `Wawan S`, Last Holder `Dimas P`` (82 kar), Last Holder `Dimas P` (7 kar), Reported By `Wawan S` (7 kar) · sumber turunan penulis
+- **DU-210-49** Konsumen (awal), Konsumen record asset-list/: Konsumen `asset-list/` (11 kar), Surface `daftar aset` (11 kar) · sumber turunan penulis
 - **DU-211-1** User (awal), User Total Control: Name `Agus Pratama {runId}` (20 kar), Role `Total Control` (13 kar), Cakupan `seluruh client` (14 kar) · sumber matriks role PRD
 - **DU-211-2** User (awal), User Group Manager: Name `Gunawan Hartono {runId}` (23 kar), Role `Group Manager` (13 kar), Cakupan `Group `Head Office {runId}` beserta sub-group` (45 kar) · sumber matriks role PRD
 - **DU-211-3** User (awal), User Read Only: Name `Rosa Maharani {runId}` (21 kar), Role `Read Only` (9 kar), Cakupan `seluruh client tanpa hak lihat nilai finansial` (46 kar) · sumber matriks role PRD
@@ -2179,10 +2185,10 @@ Lantai 2 {runId}` (29 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-212-32** Damage evidence (dibuat), Bukti laporan: What happened `Layar retak setelah terjatuh dari meja {runId}` (46 kar), Damaged Photo `layar-retak.jpg` (15 kar) · sumber turunan penulis
 - **DU-212-33** Reject reason (dibuat), Alasan Reject: Reason `Foto yang dikirim bukan foto aset ini {runId}` (45 kar) · sumber turunan penulis
 - **DU-212-34** Repair note (dibuat), Catatan perbaikan: Repair note `Komponen rusak sudah diganti {runId}` (36 kar) · sumber turunan penulis
-- **DU-212-35** Return note (dibuat), Catatan Accept with damage Return: Description `Engsel longgar saat dikembalikan {runId}` (40 kar), Foto Return `foto-return.jpg` (15 kar) · sumber turunan penulis
-- **DU-212-36** Unassign note (dibuat), Catatan Accept with damage Unassign: Description `Layar tergores saat dikembalikan {runId}` (40 kar), Foto Return `foto-unassign.jpg` (17 kar) · sumber turunan penulis
+- **DU-212-35** Return note (dibuat), Catatan dan foto Report Damaged dari halaman Return Borrow: Description `Engsel longgar saat dikembalikan {runId}` (40 kar), Foto Return `foto-return.jpg` (15 kar) · sumber turunan penulis
+- **DU-212-36** Unassign note (dibuat), Catatan dan foto Unassign bermarker Damaged: Description `Layar tergores saat dikembalikan {runId}` (40 kar), Foto Unassign `foto-unassign.jpg` (17 kar) · sumber turunan penulis
 - **DU-212-37** Found note (dibuat), Catatan Mark as Found Damaged: Note `Ditemukan rusak di ruang arsip {runId}` (38 kar), Damaged Photo `ditemukan-rusak.jpg` (19 kar) · sumber turunan penulis
-- **DU-212-38** Asset (awal; dimutasi TC-FA-DAMAGED-BE-212-event-notifikasi), Aset uji: Name `Forklift Toyota 8FD - 345 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal`` (32 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-212-38** Asset (awal; dimutasi TC-FA-DAMAGED-BE-212-event-notifikasi), Aset uji: Name `Forklift Toyota 8FD - 345 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal` dari laporan `Maya Puspita {runId}`` (68 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-212-39** Asset (awal; dimutasi TC-FA-DAMAGED-BE-212-event-notifikasi), Aset uji: Name `Forklift Toyota 8FD - 346 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `Reported Disposal`` (32 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-212-40** Asset (awal; dimutasi TC-FA-DAMAGED-BE-212-event-notifikasi), Aset uji: Name `Forklift Toyota 8FD - 347 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `In Disposal Process` dengan baris pelepasan aset yang akan ditolak` (80 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-212-41** Asset (awal; dimutasi TC-FA-DAMAGED-BE-212-event-notifikasi), Aset uji: Name `Forklift Toyota 8FD - 348 {runId}` (33 kar), Group `Head Office {runId}` (19 kar), Keadaan `punya record `In Disposal Process` dengan baris pelepasan aset yang akan dibatalkan` (83 kar) · sumber PRD §4.1a T-DMG-01 Example Data

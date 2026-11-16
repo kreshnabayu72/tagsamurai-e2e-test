@@ -5,20 +5,18 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.8#r1", "§9.8#r2", "§9.8#r3", "§9.8#r4", "§9.8#p2", "§9.8#p3", "§9.8#p4", "§9.4.2#r16", "§9.4.4#r19", "§9.4.4#r3", "§9.4.4#r7"]
+sourceRules: ["damaged_reported", "damaged_review_requested", "damaged_review_resolved", "damaged_resolved", "§9.8#p4", "EC-DMG-19", "§9.4.4#r18", "§9.4.4#r3", "§9.4.4#r7"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§9.8#r1": [3, 4, 6, 8]
-  "§9.8#r2": [10, 12]
-  "§9.8#r3": [14, 16, 18]
-  "§9.8#r4": [20, 22, 24]
-  "§9.8#p2": [4, 26, 28, 30, 32, 34]
-  "§9.8#p3": [18, 22, 24, 36, 38, 40, 42, 44, 46, 48, 50, 52]
+  damaged_reported: [3, 4, 6, 8, 26, 28, 30, 32, 34]
+  damaged_review_requested: [10, 12]
+  damaged_review_resolved: [14, 16, 18]
+  damaged_resolved: [18, 20, 22, 24, 36, 38, 40, 42, 44, 46, 48, 50, 52]
   "§9.8#p4": [54, 55, 56]
-  "§9.4.2#r16": 60
-  "§9.4.4#r19": 60
+  EC-DMG-19: 60
+  "§9.4.4#r18": 60
   "§9.4.4#r3": [8, 10]
   "§9.4.4#r7": 6
 ---
@@ -67,9 +65,9 @@ trace:
   - DU-212-33: Reason `Foto yang dikirim bukan foto aset ini {runId}`.
   - DU-212-34: Repair note `Komponen rusak sudah diganti {runId}`.
   - DU-212-35: Description `Engsel longgar saat dikembalikan {runId}`, foto Return `foto-return.jpg`.
-  - DU-212-36: Description `Layar tergores saat dikembalikan {runId}`, foto Return `foto-unassign.jpg`.
+  - DU-212-36: Description `Layar tergores saat dikembalikan {runId}`, foto Unassign `foto-unassign.jpg`.
   - DU-212-37: Note `Ditemukan rusak di ruang arsip {runId}`, Damaged Photo `ditemukan-rusak.jpg`.
-  - DU-212-38: Aset `Forklift Toyota 8FD - 345 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal`.
+  - DU-212-38: Aset `Forklift Toyota 8FD - 345 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal` dari laporan `Maya Puspita {runId}`.
   - DU-212-39: Aset `Forklift Toyota 8FD - 346 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal`.
   - DU-212-40: Aset `Forklift Toyota 8FD - 347 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris pelepasan aset yang akan ditolak.
   - DU-212-41: Aset `Forklift Toyota 8FD - 348 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris pelepasan aset yang akan dibatalkan.
@@ -77,7 +75,7 @@ trace:
 
 ## Test Steps
 
-### Report Damaged oleh Pelapor admin memicu damaged_reported
+### Report Damaged oleh Pelapor admin memicu damaged_reported, sedangkan laporan dari halaman peminjaman tidak
 1. Catat jumlah event `damaged_reported`, `damaged_review_requested`, `damaged_review_resolved`, dan `damaged_resolved` untuk aset uji
 2. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Laptop Dell Latitude 5420 - 301 {runId}` dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
 3. Verifikasi tepat satu event `damaged_reported` dipicu untuk record itu
@@ -85,7 +83,7 @@ trace:
 5. Pemegang Update `Rina Wulandari {runId}` mengirim Report Damaged atas `Tablet Samsung Tab A8 - 302 {runId}` yang ia pegang dari halaman aset yang dipegangnya dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
 6. Verifikasi event `damaged_reported` dipicu karena record langsung `Damaged` sebagai Pelapor admin, bukan `damaged_review_requested`
 7. Aktor peminjaman `Yoga Tanuwijaya {runId}` mengirim Report Damaged atas `Projector Epson EB-X06 - 303 {runId}` yang sedang dipinjam dari halaman transaksi peminjaman dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
-8. Verifikasi event `damaged_reported` dipicu dan baris peminjaman tidak berubah
+8. Verifikasi tidak ada event `damaged_reported` maupun `damaged_review_requested` dipicu karena notifikasinya dimiliki modul asal, dan baris peminjaman tidak berubah
 
 ### Report Damaged oleh pelapor umum memicu damaged_review_requested
 9. Pelapor umum `Budi Santoso {runId}` mengirim Report Damaged atas `Monitor Dell P2422H - 304 {runId}` yang ia pegang dari halaman aset yang dipegangnya dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
@@ -110,9 +108,9 @@ trace:
 24. Verifikasi tepat satu event `damaged_resolved` dipicu saat record menjadi `Disposed` dari aset hilang
 
 ### Jalur modul asal tidak memicu event damaged
-25. Aktor peminjaman `Yoga Tanuwijaya {runId}` menyelesaikan Return `Accept with damage` atas `Tablet Samsung Tab A8 - 331 {runId}` dengan Description `Engsel longgar saat dikembalikan {runId}` dan foto Return `foto-return.jpg`
-26. Verifikasi record `Damaged` dibuat tanpa event `damaged_reported` maupun `damaged_review_requested`, karena notifikasinya dimiliki modul asal
-27. Aktor penugasan `Dewi Anggraini {runId}` melakukan Unassign `Accept with damage` atas `Tablet Samsung Tab A8 - 332 {runId}` dengan Description `Layar tergores saat dikembalikan {runId}` dan foto Return `foto-unassign.jpg`
+25. Aktor peminjaman `Yoga Tanuwijaya {runId}` mengirim Report Damaged dari halaman Return Borrow atas `Tablet Samsung Tab A8 - 331 {runId}` dengan Description `Engsel longgar saat dikembalikan {runId}` dan foto Return `foto-return.jpg`
+26. Verifikasi record `Waiting for Confirmation` dibuat tanpa event `damaged_reported` maupun `damaged_review_requested`, karena notifikasinya dimiliki modul asal
+27. Aktor penugasan `Dewi Anggraini {runId}` melakukan Unassign berstatus `Unassigned` bermarker `Damaged` atas `Tablet Samsung Tab A8 - 332 {runId}` dengan Description `Layar tergores saat dikembalikan {runId}` dan foto Unassign `foto-unassign.jpg`
 28. Verifikasi record `Damaged` dibuat tanpa event `damaged_*`
 29. Aktor penemuan aset `Hendra Saputra {runId}` menjalankan Mark as Found Damaged atas `Tablet Samsung Tab A8 - 333 {runId}` dengan Note `Ditemukan rusak di ruang arsip {runId}` dan Damaged Photo `ditemukan-rusak.jpg`
 30. Verifikasi node ditambahkan tanpa event `damaged_*`, karena notifikasinya dimiliki modul asal

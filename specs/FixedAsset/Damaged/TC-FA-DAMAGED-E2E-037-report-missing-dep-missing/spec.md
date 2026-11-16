@@ -5,31 +5,31 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r8", "§4.2.4#p11", "§4.2.4#r6", "§4.4#r8", S-DMG-04, V-DMG-02, S-DMG-02, "§8.1#r10", "§8.3#r3", "§Aturan Logika Modul#r66", "§Aturan Logika Modul#r68", "§Aturan Logika Modul#r69", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r71", "§Aturan Logika Modul#r73", "§9.4.2#r11", "§9.4.2#r22", "§9.4.4#r31", "§9.7#r15", "§9.1#r8", "§2.1#r7", "§4.8#r5", "§9.2#b25", "§4.1#p3"]
+sourceRules: [T-DMG-01, "§4.1#r8", TS-MIS-01, D-MIS-01, "§4.4#r8", S-DMG-04, V-DMG-02, S-DMG-02, "§8.1#r10", "§8.3#r3", "§Aturan Logika Modul#r63", "§Aturan Logika Modul#r65", "§Aturan Logika Modul#r66", "§Aturan Logika Modul#r67", "§Aturan Logika Modul#r68", "§Aturan Logika Modul#r70", EC-DMG-11, EC-DMG-26, "§9.4.4#r30", "§9.7#r15", F-DMG-10, "§2.1#r7", "§4.8#r5", "§9.2#b25", "§4.1#p3"]
 smoke: []
 dependsOn: ["Missing: dialog Report Missing (D-MIS-01)"]
 trace:
   T-DMG-01: [5, 14, 21]
   "§4.1#r8": 7
-  "§4.2.4#p11": [9, 10]
-  "§4.2.4#r6": 7
+  TS-MIS-01: [7, 9, 10]
+  D-MIS-01: [7, 9, 10, 11]
   "§4.4#r8": [7, 11]
   S-DMG-04: [18, 19, 20]
   V-DMG-02: [18, 19, 20, 21]
   S-DMG-02: [11, 23]
   "§8.1#r10": [25, 26]
   "§8.3#r3": [25, 26]
-  "§Aturan Logika Modul#r66": 9
-  "§Aturan Logika Modul#r68": 29
-  "§Aturan Logika Modul#r69": [11, 17]
-  "§Aturan Logika Modul#r70": 23
-  "§Aturan Logika Modul#r71": 11
-  "§Aturan Logika Modul#r73": [17, 18, 19, 20]
-  "§9.4.2#r11": [11, 17, 18, 19, 20]
-  "§9.4.2#r22": [7, 9, 11]
-  "§9.4.4#r31": 25
+  "§Aturan Logika Modul#r63": 9
+  "§Aturan Logika Modul#r65": 29
+  "§Aturan Logika Modul#r66": [11, 17]
+  "§Aturan Logika Modul#r67": 23
+  "§Aturan Logika Modul#r68": 11
+  "§Aturan Logika Modul#r70": [17, 18, 19, 20]
+  EC-DMG-11: [11, 17, 18, 19, 20]
+  EC-DMG-26: [7, 9, 11]
+  "§9.4.4#r30": 25
   "§9.7#r15": [11, 12]
-  "§9.1#r8": [11, 17]
+  F-DMG-10: [11, 17]
   "§2.1#r7": [5, 9]
   "§4.8#r5": [5, 14]
   "§9.2#b25": [25, 26]
@@ -64,7 +64,7 @@ coverage:
 8. Kirim dialog Report Missing
 9. Verifikasi toast `Success, asset has been reported missing.` tampil
 10. Verifikasi dialog Report Missing tertutup dan tampilan kembali ke sub-tab Active
-11. Verifikasi baris `Camera Canon EOS {runId}` tetap berstatus `Damaged` dan memuat penanda `Missing` di samping badge status
+11. Verifikasi baris `Camera Canon EOS {runId}` tetap berstatus `Damaged` dan memuat penanda `Missing`
 12. Verifikasi jumlah pada badge tab Damaged berkurang `1` dari jumlah yang dicatat
 
 ### Selama ditahan hanya Damage Log yang tersedia
@@ -80,7 +80,7 @@ coverage:
 
 ### Penanda Reported Missing pada record awal
 22. Verifikasi baris `Drill Bosch GSB {runId}` berstatus `Damaged`
-23. Verifikasi baris `Drill Bosch GSB {runId}` memuat penanda `Reported Missing` di samping badge status
+23. Verifikasi baris `Drill Bosch GSB {runId}` memuat penanda `Reported Missing`
 
 ### Node Asset reported missing di Damage Log
 24. Klik nama aset `Camera Canon EOS {runId}` di kolom Name

@@ -5,25 +5,25 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r7", "§4.2.4#p11", "§4.2.4#r7", "§4.4#r9", S-DMG-05, "§8.1#r13", "§8.3#r4", "§Aturan Logika Modul#r61", "§Aturan Logika Modul#r62", "§Aturan Logika Modul#r19", "§9.7#r10", "§9.6#r6", "§9.2#b23", "§9.1#r6", "§2.1#r8", "§4.8#r8", S-DMG-01]
+sourceRules: [T-DMG-01, "§4.1#r7", TS-DISP-15, D-DISP-13, "§4.4#r9", S-DMG-05, "§8.1#r13", "§8.3#r4", "§Aturan Logika Modul#r58", "§Aturan Logika Modul#r59", "§Aturan Logika Modul#r19", "§9.7#r10", TS-DISP-12, "§9.2#b23", F-DMG-06, "§2.1#r8", "§4.8#r8", S-DMG-01]
 smoke: []
 dependsOn: ["Disposal: dialog Report Disposal (D-DISP-13)"]
 trace:
   T-DMG-01: [2, 5, 15, 17, 29, 32, 34, 36, 39, 41]
   "§4.1#r7": 7
-  "§4.2.4#p11": [10, 11]
-  "§4.2.4#r7": [7, 12]
+  TS-DISP-15: [10, 11]
+  D-DISP-13: [7, 11, 12, 26]
   "§4.4#r9": [7, 12]
   S-DMG-05: 16
   "§8.1#r13": [20, 21, 22]
   "§8.3#r4": 20
-  "§Aturan Logika Modul#r61": [7, 26]
-  "§Aturan Logika Modul#r62": 12
+  "§Aturan Logika Modul#r58": [7, 26]
+  "§Aturan Logika Modul#r59": 12
   "§Aturan Logika Modul#r19": 12
   "§9.7#r10": [12, 13, 26]
-  "§9.6#r6": [10, 12, 26]
+  TS-DISP-12: [10, 12, 26]
   "§9.2#b23": [7, 12]
-  "§9.1#r6": 12
+  F-DMG-06: [7, 12]
   "§2.1#r8": 5
   "§4.8#r8": 5
   S-DMG-01: 13

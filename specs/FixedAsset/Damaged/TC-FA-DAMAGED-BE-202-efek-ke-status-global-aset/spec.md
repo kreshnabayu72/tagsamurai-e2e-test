@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r24", "§Aturan Logika Modul#r25", "§Aturan Logika Modul#r26", "§Aturan Logika Modul#r27", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r29", "§Aturan Logika Modul#r30", "§Aturan Logika Modul#r31", "§Aturan Logika Modul#r32", "§Aturan Logika Modul#r33", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r36", "§Aturan Logika Modul#r37", "§Aturan Logika Modul#r38", "§Aturan Logika Modul#r39", "§Aturan Logika Modul#r40", "§Aturan Logika Modul#r41", "§Aturan Logika Modul#r59", "§Aturan Logika Modul#r60", "§9.2#b8", "§9.4.3#b2", "§9.4.3#b3", "§9.4.2#r3", "§9.4.2#r9", "§9.4.2#r10", "§9.4.2#r21", "§9.4.4#r3", "§9.4.4#r20", "§9.4.4#r21", "§9.4.4#r23", "§9.7#r1", "§9.7#r2", "§9.7#r5", "§9.7#r6", "§9.7#r7", "§9.7#r9", "§9.4.1#r3", "§9.4.1#r8", "§9.4.1#r5"]
+sourceRules: ["§Aturan Logika Modul#r24", "§Aturan Logika Modul#r25", "§Aturan Logika Modul#r26", "§Aturan Logika Modul#r27", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r29", "§Aturan Logika Modul#r30", "§Aturan Logika Modul#r31", "§Aturan Logika Modul#r32", "§Aturan Logika Modul#r33", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r36", "§Aturan Logika Modul#r37", "§Aturan Logika Modul#r38", "§Aturan Logika Modul#r39", "§Aturan Logika Modul#r40", "§Aturan Logika Modul#r41", "§Aturan Logika Modul#r56", "§Aturan Logika Modul#r57", "§9.2#b8", "§9.4.3#b2", "§9.4.3#b3", "EC-DMG-03", "EC-DMG-09", "EC-DMG-10", "EC-DMG-25", "§9.4.4#r3", "§9.4.4#r19", "§9.4.4#r20", "§9.4.4#r22", "§9.7#r1", "§9.7#r2", "§9.7#r5", "§9.7#r6", "§9.7#r7", "§9.7#r9", "§9.4.1#r3", "§9.4.1#r8", "§9.4.1#r5"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -14,7 +14,7 @@ trace:
   "§Aturan Logika Modul#r25": [2, 14]
   "§Aturan Logika Modul#r26": [3, 9]
   "§Aturan Logika Modul#r27": [8, 11]
-  "§Aturan Logika Modul#r28": 8
+  "§Aturan Logika Modul#r28": [8, 64, 66]
   "§Aturan Logika Modul#r29": [11, 12]
   "§Aturan Logika Modul#r30": 14
   "§Aturan Logika Modul#r31": [40, 49]
@@ -27,25 +27,25 @@ trace:
   "§Aturan Logika Modul#r39": [41, 45]
   "§Aturan Logika Modul#r40": 42
   "§Aturan Logika Modul#r41": [51, 53]
-  "§Aturan Logika Modul#r59": [40, 44, 49]
-  "§Aturan Logika Modul#r60": 47
+  "§Aturan Logika Modul#r56": [40, 44, 49]
+  "§Aturan Logika Modul#r57": 47
   "§9.2#b8": [8, 9, 12, 14]
   "§9.4.3#b2": [4, 6]
-  "§9.4.3#b3": [8, 11]
-  "§9.4.2#r3": [4, 6]
-  "§9.4.2#r9": [40, 41]
-  "§9.4.2#r10": [44, 45]
-  "§9.4.2#r21": 47
+  "§9.4.3#b3": 11
+  EC-DMG-03: [4, 6]
+  EC-DMG-09: [40, 41]
+  EC-DMG-10: [44, 45]
+  EC-DMG-25: 47
   "§9.4.4#r3": [4, 6]
-  "§9.4.4#r20": [40, 62]
-  "§9.4.4#r21": 44
-  "§9.4.4#r23": 47
+  "§9.4.4#r19": [40, 62]
+  "§9.4.4#r20": [44, 69]
+  "§9.4.4#r22": 47
   "§9.7#r1": 2
-  "§9.7#r2": [8, 11]
+  "§9.7#r2": [8, 11, 64, 66]
   "§9.7#r5": [14, 15, 17]
   "§9.7#r6": [20, 25, 35]
   "§9.7#r7": [30, 38]
-  "§9.7#r9": [40, 44, 47, 49, 61]
+  "§9.7#r9": [40, 44, 47, 49, 61, 68]
   "§9.4.1#r3": [2, 40]
   "§9.4.1#r8": [4, 23, 28, 33, 51]
   "§9.4.1#r5": 49
@@ -90,6 +90,9 @@ trace:
   - DU-202-27: Aset `Projector Epson EB-X06 - 8 {runId}`, Group `Head Office {runId}`, TAG `QR`, status global `Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan.
   - DU-202-28: Aset `Monitor Dell P2422H - 10 {runId}`, Group `Head Office {runId}`, TAG `RFID`, status global `TAG Reported`, dipegang `Budi Santoso {runId}`, tanpa record berjalan.
   - DU-202-29: Aset `Forklift Toyota 8FD - 5 {runId}`, Group `Head Office {runId}`, TAG `RFID`, status global `Borrowed` oleh `Budi Santoso {runId}`, punya record `Damaged`.
+  - DU-202-30: Aset `Tablet Samsung Tab A8 - 7 {runId}`, Group `Head Office {runId}`, TAG `QR`, status global `Borrowed` oleh `Budi Santoso {runId}`, tanpa record berjalan.
+  - DU-202-31: Aset `Camera Canon EOS - 7 {runId}`, Group `Head Office {runId}`, TAG `RFID`, status global `Assigned` kepada `Budi Santoso {runId}`, tanpa record berjalan.
+  - DU-202-32: Aset `Drill Bosch GSB - 5 {runId}`, Group `Head Office {runId}`, TAG `QR`, status global `Assigned` kepada `Budi Santoso {runId}`, punya record `Damaged`.
 - Kondisi:
   - After photo required bernilai `OFF`.
 
@@ -160,11 +163,11 @@ trace:
 48. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Projector Epson EB-X06 - 3 {runId}` yang tidak memiliki TAG dengan Repair note `Komponen rusak sudah diganti {runId}`
 49. Verifikasi record menjadi `Repaired` tanpa permintaan Scan TAG, status global aset menjadi `Normal`, dan penanda Damaged pada aset hilang
 
-### Return dan Unassign atas aset ber-record Damaged berjalan sebagai Accept biasa
-50. Aktor peminjaman `Yoga Tanuwijaya {runId}` menyelesaikan Return dengan Accept atas `Monitor Dell P2422H - 9 {runId}`
-51. Verifikasi Return selesai sebagai Accept biasa dan record tetap `Damaged` tanpa record baru
-52. Aktor penugasan `Dewi Anggraini {runId}` melakukan Unassign dengan Accept atas `Handheld Scanner Zebra TC21 - 5 {runId}`
-53. Verifikasi Unassign selesai sebagai Accept biasa dan record tetap `Damaged` tanpa record baru
+### Return dan Unassign atas aset ber-record Damaged berjalan biasa dengan status Returned dan Unassigned
+50. Aktor peminjaman `Yoga Tanuwijaya {runId}` menyelesaikan Return atas `Monitor Dell P2422H - 9 {runId}`
+51. Verifikasi Return selesai biasa dengan status `Returned` dan record tetap `Damaged` tanpa record baru
+52. Aktor penugasan `Dewi Anggraini {runId}` melakukan Unassign atas `Handheld Scanner Zebra TC21 - 5 {runId}`
+53. Verifikasi Unassign selesai biasa dengan status `Unassigned` dan record tetap `Damaged` tanpa record baru
 
 ### Reject dan Cancel Report laporan pemegang menghitung ulang status global menjadi Borrowed atau TAG Reported
 54. Pelapor umum `Budi Santoso {runId}` mengirim Report Damaged atas `Projector Epson EB-X06 - 8 {runId}` yang ia pinjam dari halaman aset yang dipegangnya dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
@@ -179,3 +182,13 @@ trace:
 61. Verifikasi record menjadi `Repaired` dan baris peminjaman tetap `Borrowed`
 62. Verifikasi tepat satu event `damaged_resolved` dikirim untuk record itu
 
+### Laporan Aktor Borrow dan Aktor Assignment selama Waiting for Confirmation langsung mengubah status global menjadi Damaged
+63. Aktor peminjaman `Yoga Tanuwijaya {runId}` mengirim Report Damaged atas `Tablet Samsung Tab A8 - 7 {runId}` yang sedang dipinjam dari halaman transaksi peminjaman dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
+64. Verifikasi record berstatus `Waiting for Confirmation` sedangkan status global aset langsung menjadi `Damaged`
+65. Aktor penugasan `Dewi Anggraini {runId}` mengirim Report Damaged atas `Camera Canon EOS - 7 {runId}` yang sedang ditugaskan dari halaman transaksi penugasan dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
+66. Verifikasi record berstatus `Waiting for Confirmation` sedangkan status global aset langsung menjadi `Damaged`
+
+### Mark as Repaired atas aset yang sedang ditugaskan memicu tepat satu event damaged_resolved
+67. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Drill Bosch GSB - 5 {runId}` yang sedang ditugaskan dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
+68. Verifikasi record menjadi `Repaired` dan baris penugasan tetap `Assigned`
+69. Verifikasi Mark as Repaired atas aset yang ditugaskan itu memicu tepat satu event `damaged_resolved`

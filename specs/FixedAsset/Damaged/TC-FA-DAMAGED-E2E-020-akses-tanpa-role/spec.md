@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [EB-AKS-1, EB-AKS-2, §2.1#b4, §4.8#r1, §2.1#r1, §2#b7]
+sourceRules: [EB-AKS-1, EB-AKS-2, §2.1#b3, §4.8#r1, §2.1#r1, §2#b7]
 smoke: []
 dependsOn: []
 trace:
   EB-AKS-1: 2
   EB-AKS-2: [4, 5, 6]
-  §2.1#b4: 2
+  §2.1#b3: 2
   §4.8#r1: 2
   §2.1#r1: 5
   §2#b7: 5

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.2.2#p1, §4.2.2#p2, §4.2.2#p3, §9.11#r3, §Aturan Logika Modul#r17, §9.4.2#r19, §7.1#p1]
+sourceRules: [§4.2.2#p1, §4.2.2#p2, §4.2.2#p3, §9.11#r3, §Aturan Logika Modul#r17, EC-DMG-22, S-DMG-17]
 smoke: []
 dependsOn:
   - "My Asset: status laporan dan tautan Damage Log"
@@ -15,8 +15,8 @@ trace:
   §4.2.2#p3: [1, 2, 3, 4, 5, 6]
   §9.11#r3: [1, 2, 3, 4, 5, 6]
   §Aturan Logika Modul#r17: [3, 4, 5, 6]
-  §9.4.2#r19: [8, 16]
-  §7.1#p1: 16
+  EC-DMG-22: [1, 2, 3, 4, 5, 6, 8, 16]
+  S-DMG-17: [8, 9, 10, 11, 12, 13, 16]
 coverage:
   web: automated
 ---

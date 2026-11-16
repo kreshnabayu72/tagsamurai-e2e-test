@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§2.1#b1", "§2.1#b2", "§2#b6", "§4.8#r3", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r45", "§8.3#r2", "§3#p2", "§9.4.2#r19", "§9.11#r1", "T-DMG-01"]
+sourceRules: ["§2.1#b1", "§2.1#b2", "§2#b6", "§4.8#r3", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r45", "§8.3#r2", "§3#p2", "EC-DMG-22", "§9.11#r1", "T-DMG-01"]
 smoke: []
 dependsOn:
   - "Stock Opname: dialog Report Condition"
@@ -17,8 +17,8 @@ trace:
   "§Aturan Logika Modul#r42": [10]
   "§Aturan Logika Modul#r45": [16]
   "§8.3#r2": [11, 15]
-  "§3#p2": [7, 10, 15]
-  "§9.4.2#r19": [14, 15]
+  "§3#p2": [7, 10, 15, 24]
+  "EC-DMG-22": [14, 15]
   "§9.11#r1": [14, 15]
   "T-DMG-01": [10, 11, 12, 19, 20, 21]
 anchor: []
@@ -62,3 +62,8 @@ coverage:
 19. Verifikasi aksi `Damage Log` tampil pada menu baris
 20. Verifikasi aksi `Mark as Repaired` tidak tampil pada menu baris
 21. Verifikasi aksi `Report Missing` tidak tampil pada menu baris
+
+### Status global aset Damaged sejak Report Condition
+22. Buka halaman Assets, tab `Assets`
+23. Ketik Search `Rak Besi Heavy Duty {runId}`, tekan Enter
+24. Verifikasi status global aset `Damaged` pada baris `Rak Besi Heavy Duty {runId}`

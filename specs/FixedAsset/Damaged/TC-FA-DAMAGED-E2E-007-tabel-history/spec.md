@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-02, "§4.1#r2", "§5#r5", "§9.5#r3", "§9.5#r6", "§9.5#r7", "§9.2#b11", "§7.1#r2", "§Aturan Logika Modul#r17", EB-SRC-5@tabel-history, EB-TBL-1@tabel-history, "§5#r1"]
+sourceRules: [T-DMG-02, "§4.1#r2", "§5#r5", "§9.5#r3", "§9.5#r6", "§9.5#r7", "§9.2#b11", S-DMG-13, S-DMG-14, "§Aturan Logika Modul#r17", EB-SRC-5@tabel-history, EB-TBL-1@tabel-history, "§5#r1"]
 smoke: []
 dependsOn: []
 trace:
@@ -16,12 +16,13 @@ trace:
   "§9.5#r6": [11]
   "§9.5#r7": [23, 24]
   "§9.2#b11": [7, 8]
-  "§7.1#r2": [30, 31]
+  S-DMG-13: [79]
+  S-DMG-14: [30, 31]
   "§Aturan Logika Modul#r17": [13, 42]
   EB-SRC-5@tabel-history: [33, 37, 40]
   EB-TBL-1@tabel-history: [30]
   "§5#r1": [3, 5, 9]
-anchor: []
+anchor: [78]
 coverage:
   web: automated
 ---
@@ -147,3 +148,8 @@ coverage:
 
 ### Sub-tab History tanpa kartu ringkasan
 76. Verifikasi sub-tab History tidak menampilkan kartu ringkasan
+
+### Kosong akibat Search tidak memakai teks kosong alami
+77. Ganti isi kotak search dengan `Tidak Ada Hasil {runId}`, tekan Enter
+78. Verifikasi sub-tab History menampilkan `No results found`
+79. Verifikasi teks `No resolved records yet` tidak tampil karena sub-tab History memuat record selesai dan tabel kosong hanya akibat Search
