@@ -2609,3 +2609,11 @@ Aturan:
 - **Aturan:** langkah yang hanya bisa dijalankan di aplikasi mobile (Android) tidak bisa dijalankan di web.
 - **Untuk spec:** spec yang seluruhnya mobile ditandai platform `mobile`, agar runner web melewatinya dan laporan memisahkannya. Contoh: TC-FA-FACO-E2E-097 sampai -099.
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+
+## D-249 Aturan umum: flag Guided Tour disimpan di browser, tidak lewat API (koreksi D-238) (2026-11-16)
+
+- **Berlaku untuk:** semua Guided Tour di semua modul.
+- **Aturan:** flag "tur sudah dilihat" disimpan di browser per user, tidak lewat API. Setelah Skip atau Done, tur tidak muncul lagi untuk user itu di browser yang sama. Di browser atau profil lain, tur boleh muncul sekali lagi. User lain di browser yang sama tetap melihat tur.
+- **Untuk spec:** jangan tulis langkah yang mengharapkan tur tidak muncul di browser atau perangkat lain. Langkah "tur tidak muncul lagi" diverifikasi di browser yang sama, untuk user yang sama.
+- **Keputusan untuk spec yang ada:** TC-FA-FACO-E2E-016 langkah 19 di-tag `spec-decision` (D-249) dan dilewati. D-238 dikoreksi: tidak ada `ui-gap` dan tidak ada issue BE.
+- **Diputuskan oleh:** product owner, 2026-11-16 ("flag guided tour ga perlu di simpan api"), dicatat Wangs-UI Coordinator.
