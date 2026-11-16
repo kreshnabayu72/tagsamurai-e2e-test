@@ -7,7 +7,7 @@ caseType: Positive
 status: ready-for-automation
 sourceRules: ["§1.2#r43", "§11#r6", "§9.7#r1", "§4.2.3#b5"]
 smoke: []
-dependsOn: ["Transactions Transfer: halaman Transfer > aksi Report Missing"]
+dependsOn: ["Transfer: halaman Transfer > aksi Report Missing"]
 trace:
   "§1.2#r43": [10]
   "§11#r6": [3, 10]

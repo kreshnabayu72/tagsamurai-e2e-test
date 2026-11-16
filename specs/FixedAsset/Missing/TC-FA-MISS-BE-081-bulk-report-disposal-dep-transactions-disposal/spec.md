@@ -116,5 +116,5 @@ trace:
 34. Verifikasi baris Disposal `Dispenser Air Galon {runId}` menjadi `Canceled` oleh `System` dengan alasan `Asset reported missing`, dan aset mendapat record Missing baru
 35. Rina W mengirim Report Missing atas `Kamera Sony A7 {runId}` yang berstatus `Reported Disposal` dengan What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
 36. Verifikasi permintaan itu ditolak dengan keterangan `Already reported missing` karena aset sudah punya record berjalan `Reported Disposal`, dan tidak ada record Missing kedua
-37. Verifikasi Draft Disposal aset `Lemari Arsip Besi {runId}` tidak berubah dan aset ditandai ⚠ sampai dikeluarkan dari Draft
+37. Verifikasi Draft Disposal aset `Lemari Arsip Besi {runId}` tidak berubah dan aset ditandai ⚠
 38. Verifikasi pembatalan oleh `System` pada `Brankas Besi {runId}` dan `Lemari Arsip Besi {runId}` tidak mengirim event `missing_*` selain `missing_reported` untuk laporan baru

@@ -1,10 +1,10 @@
 {
  "module": "Missing",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-14",
+ "disetujui": "otomatis, 2026-11-16",
  "prd": "fixed-asset@12ddb49",
- "prdSha": "2997fef891970829",
- "foundation": "foundation@8ec9ed8",
+ "prdSha": "a8d8637595c8aa03",
+ "foundation": "foundation@8ec9ed8-dirty",
  "specs": [
   {
    "id": "TC-FA-MISS-E2E-001-tab-active-tampilan-tabel",
@@ -475,7 +475,7 @@
    "priority": "High",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu mutasi: Confirm. Efek ke baris Borrow (MISS-LOGIC-04) dan notifikasi pemegang milik spec -dep-. §9.2#b33, §9.4.4#r19, §9.8#r3 shared: klausa Confirm/Reject status record di sini, klausa pengingat dan notifikasi di spec -dep-borrow / -dep-notification.",
+   "alasan": "Satu mutasi: Confirm. Efek ke baris Borrow (MISS-LOGIC-04) dan notifikasi pemegang milik spec -dep-. §9.2#b33, §9.4.4#r19, §9.8#r3 shared: klausa Confirm/Reject status record di sini, klausa efek baris Borrow dan notifikasi di spec -dep-borrow / -dep-notification.",
    "coverage": {
     "web": "automated"
    }
@@ -508,7 +508,7 @@
    "priority": "Medium",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu mutasi: Reject. §9.4.2#r7 shared: klausa status Rejected di sini, klausa pengingat dan reason diterima pemegang di spec -dep-. §9.9#r7 bagian: validasi klien di ui-client, satu representatif server di sini.",
+   "alasan": "Satu mutasi: Reject. §9.4.2#r7 shared: klausa status Rejected di sini, klausa badge `Reported Missing` di baris transaksi dan reason diterima pemegang di spec -dep-. §9.9#r7 bagian: validasi klien di ui-client, satu representatif server di sini.",
    "coverage": {
     "web": "automated"
    }
@@ -1203,7 +1203,7 @@
   },
   {
    "id": "TC-FA-MISS-E2E-033-efek-transaksi-dep-borrow",
-   "title": "Efek Missing pada Borrow: baris ditutup saat Report admin dan Confirm, pengingat dijeda saat laporan pemegang, dipulihkan saat Reject dan Found",
+   "title": "Efek Missing pada Borrow: baris ditutup saat Report admin dan Confirm, baris tetap terbuka berbadge Reported Missing saat laporan pemegang, badge hilang saat Reject dan Found",
    "layer": "ui-e2e",
    "units": [
     "§1.2#r39",
@@ -1242,7 +1242,8 @@
     "§2.1#b2",
     "§4.2.4#r15",
     "§9.4.1#r8",
-    "§9.4.1#r13"
+    "§9.4.1#r13",
+    "§9.7#r2"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1253,7 +1254,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Borrow. Memuat Report Missing dari halaman Borrow oleh Aktor Borrow tanpa Manage asset & TAG (Pelapor admin jenis 2), kotak dampak baris Borrow, Closed lines di node Confirm, dan pemulihan pengingat. Efek Assignment, Transfer, Disposal di spec -dep- masing-masing.",
+   "alasan": "Satu modul luar: Borrow. Memuat Report Missing dari halaman Borrow oleh Aktor Borrow tanpa Manage asset & TAG (Pelapor admin jenis 2), kotak dampak baris Borrow, Closed lines di node Confirm, dan baris Borrow selama laporan pemegang: tetap terbuka, pengingat tidak dijeda, badge `Reported Missing` tampil (§9.7#r2 shared) dan hilang saat Reject dan Mark as Found. §9.4.2#r6 shared: klausa baris Borrow di sini, klausa Assignment di spec -dep-transactions-assignment. Cancel Report: hanya pengingat baris yang diasersi (temuan 10). Efek Assignment, Transfer, Disposal di spec -dep- masing-masing.",
    "coverage": {
     "web": "automated"
    }
@@ -1266,21 +1267,21 @@
     "§1.2#r42",
     "§9.4.2#r4",
     "§11#r5",
-    "§4.2.3#p2",
     "§9.7#r1",
     "§9.2#b32",
-    "§4.2.3#b5"
+    "§4.2.3#b5",
+    "§9.4.2#r6"
    ],
    "smoke": [],
    "dependsOn": [
-    "Transactions Assignment: halaman Assignment > aksi Report Missing",
-    "Transactions Assignment: Draft"
+    "Assignment: halaman Assignment > aksi Report Missing",
+    "Assignment: Draft"
    ],
    "batch": "b4",
    "priority": "High",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Assignment. EC-MIS-04 Draft Assign diasersi di sini; Draft Borrow di spec -dep-borrow (shared).",
+   "alasan": "Satu modul luar: Assignment. EC-MIS-04 Draft Assign diasersi di sini; Draft Borrow di spec -dep-borrow (shared). §9.4.2#r6 shared: hanya klausa Assignment (Confirm laporan pemegang menutup baris menjadi `Unassigned` bermarker `Missing`); klausa baris Borrow dan pengingat Overdue di spec -dep-borrow. Baris penerima notifikasi di kotak dampak diasersi dari §4.2.3#b5.",
    "coverage": {
     "web": "automated"
    }
@@ -1297,7 +1298,7 @@
    ],
    "smoke": [],
    "dependsOn": [
-    "Transactions Transfer: halaman Transfer > aksi Report Missing"
+    "Transfer: halaman Transfer > aksi Report Missing"
    ],
    "batch": "b4",
    "priority": "Medium",
@@ -1594,7 +1595,6 @@
     "§9.7#r10",
     "§9.4.2#r7",
     "§3#p2",
-    "§4.2.3#p2",
     "§4.2.4#r15",
     "§4.2.4#r16",
     "§9.2#b15"
@@ -1607,7 +1607,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Notification. Diasersi keberadaan notifikasi per event di sisi penerima; isi Title/Body milik notification.md. Event deteksi scan dan Long missing dibentuk sebagai data awal yang memuat node-nya (event sudah terkirim), bukan dipicu di run.",
+   "alasan": "Satu modul luar: Notification. Diasersi keberadaan notifikasi per event di sisi penerima; isi Title/Body milik notification.md. Event deteksi scan dan Long missing dibentuk sebagai data awal yang memuat node-nya (event sudah terkirim), bukan dipicu di run. Baris penerima notifikasi di kotak dampak diasersi dari FI-15 dan FI-16 (§4.2.4#r15, §4.2.4#r16).",
    "coverage": {
     "web": "automated"
    }
@@ -2985,6 +2985,34 @@
     "`Button#2`: «A disabled button (`disabled`) is a native disabled button with `aria-disabled=\"true\"`: it cannot take focus, a click does nothing, the pointer is inert and the cursor is the default arrow.»"
    ],
    "dampak": "Kontrak komponen diasersi (SB-7): alasan pada tombol disabled dibuka lewat hover dan tombol disabled tidak menerima fokus keyboard. Langkah §4.5#p1 di spec dialog Missing Log klien memakai footnote drift yang menyebut `Tooltip#38`; PRD §4.5 perlu disamakan dengan komponen."
+  },
+  {
+   "no": 9,
+   "jenis": "bertentangan",
+   "units": [
+    "§4.2.3#p2",
+    "§4.2.3#b5"
+   ],
+   "kutipan": [
+    "§4.2.3 wireframe: «\"[Asset Name] in BRW-2026-0141 will be closed as missing.\"     (satu baris per aset yang barisnya ditutup; Pelapor admin)»",
+    "§4.2.3: «Kotak dampak `D-MIS-01` hanya memuat baris Borrow, permintaan menunggu, dan penerima notifikasi»"
+   ],
+   "dampak": "Wireframe kotak dampak hanya memuat baris penutupan Borrow, sedangkan butir di bawahnya masih menyebut baris permintaan menunggu dan penerima notifikasi. Baris penutupan Borrow diasersi dengan copy wireframe. Baris penerima notifikasi tetap diasersi karena copy-nya ada di butir yang sama, FI-15, dan FI-16. Baris permintaan menunggu tidak punya copy di PRD, jadi ada-tidaknya tidak diasersi. Pemilik PRD perlu menyamakan wireframe dengan butir itu."
+  },
+  {
+   "no": 10,
+   "jenis": "ambigu",
+   "units": [
+    "§9.7#r8",
+    "§1.2#r55",
+    "§9.2#b11"
+   ],
+   "kutipan": [
+    "§9.7: «Cancel Report (pelapor) | Status global aset dikembalikan (`asset-detail/`); pengingat baris berjalan lagi (`borrow/`, `assignment/`)»",
+    "§9.2 F-MISS-01.k2c: «pengingat baris transaksi tidak dijeda»",
+    "§9.7: «Reject | status global aset dikembalikan (`asset-detail/`); badge `Reported Missing` di baris transaksi hilang»"
+   ],
+   "dampak": "Pengingat tidak pernah dijeda, tetapi baris Cancel Report masih berbunyi «berjalan lagi» dan tidak menyebut badge `Reported Missing`, sedangkan baris Reject dan Mark as Found menyatakan badge hilang. Spec mengasersi pengingat baris berjalan sesudah Cancel Report; hilangnya badge sesudah Cancel Report tidak diasersi sampai PRD menyatakannya."
   }
  ],
  "ekspektasiBaku": {
@@ -5267,12 +5295,12 @@
   "§9.2#b15": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.2#b32": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.6#r7": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
-  "§9.7#r2": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
+  "§9.7#r2": "per surface: status global aset dan baris My Asset di -dep-my-asset; badge `Reported Missing` pada baris Borrow di -dep-borrow; event notifikasi di -dep-notification",
   "§9.7#r8": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.2#r8": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§1.2#r17": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.4.4#r18": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
-  "§4.2.3#p2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
+  "§4.2.3#p2": "per surface: dialog yang dibuka dari My Asset di -dep-my-asset; baris kotak dampak penutupan Borrow di -dep-borrow",
   "§9.8#r2": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.7#r3": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§2.1#b1": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
@@ -5299,7 +5327,8 @@
   "§3#p6": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.6#r11": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.4.4#r16": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
-  "§9.4.4#r17": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor"
+  "§9.4.4#r17": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.4.2#r6": "per modul: baris Borrow (pengingat Overdue berjalan selama Waiting for Confirmation, Confirm menutup baris menjadi `Returned` bermarker `Missing`, keterlambatan tetap tercatat) di -dep-borrow; baris Assignment (`Unassigned` bermarker `Missing`) di -dep-transactions-assignment"
  },
  "kontrak": {
   "DataTable": [
@@ -5311,7 +5340,9 @@
   ],
   "TableCell": [
    "§4.1a#r2",
-   "§4.1a#r12"
+   "§4.1a#r12",
+   "§4.1a#r23",
+   "§4.1b#r24"
   ],
   "Tabs": [
    "§4.2.1#p1",
@@ -6259,23 +6290,6 @@
    "tidakBerlaku": {
     "jumlah-nol": "§4.1a Days Missing dan §4.1b Duration: copy 0 hari tidak dinyatakan (temuan 4)",
     "per-jumlah-independen": "§4.1b: satu jumlah"
-   }
-  },
-  {
-   "target": "kotak-dampak@report-missing",
-   "kode": "VD-T12",
-   "units": [
-    "§4.2.3#p2",
-    "§4.2.3#b5"
-   ],
-   "spec": [
-    "TC-FA-MISS-UI-054-dialog-report-missing"
-   ],
-   "pemilik": "TC-FA-MISS-UI-054-dialog-report-missing",
-   "param": {},
-   "tidakBerlaku": {
-    "jumlah-nol": "§4.2.3: baris permintaan hanya tampil bila ada permintaan menunggu (0 = baris tidak ada, dicakup kondisi tanpa permintaan)",
-    "per-jumlah-independen": "§4.2.3: satu jumlah"
    }
   },
   {

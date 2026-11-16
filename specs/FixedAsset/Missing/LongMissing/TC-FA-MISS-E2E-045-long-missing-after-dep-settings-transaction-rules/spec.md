@@ -10,14 +10,14 @@ smoke: []
 dependsOn: ["Settings Transaction Rules: Long missing after"]
 trace:
   "§9.5#r5": [1]
-  "§11#r8": [1]
-  "§1.2#r110": [5, 31]
-  "§1.2#r113": [32]
+  "§11#r8": [1, 39]
+  "§1.2#r110": [5, 39]
+  "§1.2#r113": [40]
   "§9.4.2#r19": [15]
   "§9.4.1#r11": [7, 15]
   "§9.2#b50": [15]
-  "§9.2#b55": [23, 31]
-anchor: []
+  "§9.2#b55": [23, 39]
+anchor: [31]
 coverage:
   web: automated
 ---
@@ -65,17 +65,24 @@ coverage:
 22. Ketik Search `Laptop Lenovo ThinkPad T14 {runId}`, tekan Enter
 23. Verifikasi baris `Laptop Lenovo ThinkPad T14 {runId}` berstatus `Missing` dengan kolom Days Missing tanpa penanda `Long missing`
 
-### Nilai 0 menonaktifkan penanda tanpa menutup record, lalu nilai dikembalikan
+### Nilai 0 menghilangkan penanda yang sudah ada tanpa menutup record, lalu nilai dikembalikan
 24. Buka Settings Transaction Rules
-25. Ubah Long missing after menjadi `0`
+25. Ubah Long missing after menjadi `7`
 26. Simpan perubahan Settings Transaction Rules
 27. Job harian Long missing berjalan
 28. Buka halaman `Assets`
 29. Klik tab `Missing`
 30. Ketik Search `Toyota Innova {runId}`, tekan Enter
-31. Verifikasi baris `Toyota Innova {runId}` berstatus `Missing` dengan kolom Days Missing tanpa penanda `Long missing`
-32. Verifikasi baris `Toyota Innova {runId}` tetap tampil di sub-tab Active
-
-33. Buka Settings Transaction Rules
-34. Ubah Long missing after menjadi `30`
-35. Simpan perubahan Settings Transaction Rules
+31. Verifikasi kolom Days Missing pada baris `Toyota Innova {runId}` memuat penanda `Long missing` sebelum nilai diubah menjadi `0`
+32. Buka Settings Transaction Rules
+33. Ubah Long missing after menjadi `0`
+34. Simpan perubahan Settings Transaction Rules
+35. Job harian Long missing berjalan
+36. Buka halaman `Assets`
+37. Klik tab `Missing`
+38. Ketik Search `Toyota Innova {runId}`, tekan Enter
+39. Verifikasi baris `Toyota Innova {runId}` berstatus `Missing` dengan kolom Days Missing tanpa penanda `Long missing`
+40. Verifikasi baris `Toyota Innova {runId}` tetap tampil di sub-tab Active
+41. Buka Settings Transaction Rules
+42. Ubah Long missing after menjadi `30`
+43. Simpan perubahan Settings Transaction Rules

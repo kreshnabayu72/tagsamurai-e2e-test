@@ -9,7 +9,7 @@ sourceRules: ["§8.2#b2", "§8#r10", "§9.6#r1", "§9.6#r2", "§9.6#r3", "§9.6#
 smoke: []
 dependsOn: ["Settings User: Detail User > Transaction admin log"]
 trace:
-  "§8.2#b2": [4, 16, 23]
+  "§8.2#b2": [4, 16, 23, 28, 33]
   "§8#r10": [18]
   "§9.6#r1": [4, 8, 9]
   "§9.6#r2": [5]
@@ -29,9 +29,9 @@ coverage:
 
 ## Prerequisites
 - Aktor: Total Control `Rina W`. Aktor lain yang memicu perubahan: Total Control `Dewi Anggraini {runId}` sebagai Aktor Missing.
-- Layar awal: Detail pengguna.
+- Layar awal: Daftar pengguna.
 - Data:
-  - DU-044-1: Pengguna `Dewi Anggraini {runId}`, Total Control, yang di Transaction admin log-nya sudah tercatat entri-entri pada DU-044-3 sampai DU-044-9 dan DU-044-11.
+  - DU-044-1: Pengguna `Dewi Anggraini {runId}`, Total Control, yang di Transaction admin log-nya sudah tercatat entri-entri pada DU-044-3 sampai DU-044-8 dan DU-044-11.
   - DU-044-2: Pengguna `Joko Santoso {runId}`, pemegang tanpa hak Aktor Missing, yang membatalkan laporannya atas `Laptop Lenovo ThinkPad T14 {runId}` lewat Cancel Report.
   - DU-044-3: Asset `Laptop Dell Latitude 5420 {runId}`, Group `Finance Room`, dengan entri Report Missing oleh `Dewi Anggraini {runId}` di Transaction admin log.
   - DU-044-4: Asset `Scanner Zebra DS2208 {runId}`, Group `Warehouse`, dengan entri Confirm oleh `Dewi Anggraini {runId}` di Transaction admin log.
@@ -46,6 +46,10 @@ coverage:
   - DU-044-13: Asset `Handheld Honeywell CT60 {runId}`, Group `Warehouse`, dengan record Missing berstatus `Missing` yang punya node `Reported found by` dari `Dewi Anggraini {runId}` lewat `I found it`.
   - DU-044-14: Pengguna `Rina W`, Total Control.
   - DU-044-15: Update `Catatan penelusuran hari ini`.
+  - DU-044-16: Pengguna `Budi Hartono {runId}`, Aktor Borrow tanpa Manage asset & TAG (Update), yang di Transaction admin log-nya sudah tercatat entri Report Missing atas DU-044-17.
+  - DU-044-17: Asset `Proyektor BenQ MW535 {runId}`, Group `Head Office`, dengan satu entri Report Missing oleh `Budi Hartono {runId}` yang dilaporkan dari halaman transaksi Borrow.
+  - DU-044-18: Pengguna `Sari Wulandari {runId}`, pemilik sesi Stock Opname tanpa Manage asset & TAG (Update), yang di Transaction admin log-nya sudah tercatat entri Report Missing atas DU-044-19.
+  - DU-044-19: Asset `Barcode Scanner Honeywell 1900 {runId}`, Group `Warehouse`, dengan satu entri Report Missing oleh `Sari Wulandari {runId}` yang dilaporkan dari sesi Stock Opname miliknya.
 - Kondisi:
   - Akun `Rina W` dan `Dewi Anggraini {runId}` aktif dan kredensialnya disediakan fase 2.
 
@@ -83,3 +87,15 @@ coverage:
 21. Klik `Joko Santoso {runId}` pada kolom Name
 22. Buka Transaction admin log pada User Detail
 23. Verifikasi tidak ada entri Cancel Report atas `Laptop Lenovo ThinkPad T14 {runId}` di Transaction admin log
+
+### Report Missing oleh Pelapor admin dari halaman transaksi dan dari sesi Stock Opname tercatat di log pelapornya
+24. Buka daftar pengguna
+25. Ketik Search `Budi Hartono {runId}`, tekan Enter
+26. Klik `Budi Hartono {runId}` pada kolom Name
+27. Buka Transaction admin log pada User Detail
+28. Verifikasi entri Report Missing atas `Proyektor BenQ MW535 {runId}` tampil di Transaction admin log
+29. Buka daftar pengguna
+30. Ganti isi kotak search dengan `Sari Wulandari {runId}`, tekan Enter
+31. Klik `Sari Wulandari {runId}` pada kolom Name
+32. Buka Transaction admin log pada User Detail
+33. Verifikasi entri Report Missing atas `Barcode Scanner Honeywell 1900 {runId}` tampil di Transaction admin log

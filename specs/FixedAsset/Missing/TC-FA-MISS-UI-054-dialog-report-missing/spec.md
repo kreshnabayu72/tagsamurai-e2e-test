@@ -10,7 +10,7 @@ smoke: []
 dependsOn: []
 trace:
   §4.2.3#p1: 3
-  §4.2.3#p2: [2, 5, 6, 7, 8, 9, 12, 13, 14, 15, 18, 19, 20, 21, 24, 27, 28, 188, 189, 191, 193]
+  §4.2.3#p2: [2, 5, 6, 7, 8, 9, 12, 13, 14, 15, 18, 19, 20, 21, 24, 28, 188, 189, 191, 193, 195, 197, 214]
   §4.2.3#b1: [34, 37, 39, 128, 131, 132, 133, 134, 135, 136, 137, 138, 142, 143, 144, 145, 195, 196, 197, 198]
   §4.2.3#b2: [132, 133]
   §4.2.3#b4: [30, 32]
@@ -48,7 +48,7 @@ trace:
   EB-FB-4: [114, 166, 210, 212]
   EB-ERR-1@report-missing: [161, 162, 163, 164, 168, 169, 173, 174, 175, 176, 180, 181]
   EB-FB-2@cancel-report-missing: [88, 90, 91]
-anchor: []
+anchor: [27]
 coverage:
   web: automated
 ---
@@ -66,18 +66,18 @@ coverage:
   - DU-054-5: Aset `Scanner Zebra DS2208 - 2`, Asset ID `SCN-2026-0002`, TAG `BLE`, Brand `Zebra`, Group `Warehouse`, Model/Type `DS2208`, Asset Status `Assigned`, Photo `scn-2026-0002.jpg`, pemegang `Joko S`
   - DU-054-6: Aset `Camera Canon EOS - 1`, Asset ID `CAM-2026-0001`, TAG `RFID`, Brand `Canon`, Group `Head Office`, Model/Type `EOS 90D`, Asset Status `Assigned`, Photo `cam-2026-0001.jpg`, pemegang `Joko S`
   - DU-054-7: Aset `Printer HP LaserJet M404 - 5`, Asset ID `PRN-2026-0005`, TAG `QR`, Brand `HP`, Group `Head Office`, Model/Type `LaserJet M404`, Asset Status `Assigned`, Photo `prn-2026-0005.jpg`, pemegang `Andi P`
-  - DU-054-8: Kotak dampak dengan Borrow `BRW-2026-0141` dan Pending Request `1`.
-  - DU-054-9: Kotak dampak dengan Pending Request `3`.
+  - DU-054-8: Kotak dampak dengan Borrow `BRW-2026-0141` pada aset DU-054-1; baris yang diharapkan `Hand Pallet Truck in BRW-2026-0141 will be closed as missing.`, dari Asset Name `Hand Pallet Truck` dan Borrow `BRW-2026-0141`.
+  - DU-054-9: Kotak dampak dengan Borrow `BRW-2026-0152` pada aset DU-054-2 dan Borrow `BRW-2026-0153` pada aset DU-054-3; baris yang diharapkan `Laptop Dell Latitude 5420 in BRW-2026-0152 will be closed as missing.`, dari Asset Name `Laptop Dell Latitude 5420` dan Borrow `BRW-2026-0152`, serta `Monitor LG 27UL500 in BRW-2026-0153 will be closed as missing.`, dari Asset Name `Monitor LG 27UL500` dan Borrow `BRW-2026-0153`.
   - DU-054-10: Isian awal What happened `Aset tidak ditemukan saat pengecekan rak` dari titik masuk.
   - DU-054-11: Jumlah record Waiting for Confirmation dan Missing `0`.
   - DU-054-12: Jumlah record Waiting for Confirmation dan Missing `2`.
-  - DU-054-23: Aset DU-054-2 dengan Borrow `BRW-2026-0150` dan Pending Request `2`; aset DU-054-6 dengan Pending Request `1` dan tanpa Borrow. Baris Borrow yang tidak boleh tampil adalah `Borrow BRW-2026-0150 will be closed as Reported missing.`, dari Borrow `BRW-2026-0150`.
+  - DU-054-23: Aset DU-054-2 dengan Borrow `BRW-2026-0150`; aset DU-054-6 dengan Borrow `BRW-2026-0155`. Baris yang diharapkan `Camera Canon EOS in BRW-2026-0155 will be closed as missing.`, dari Asset Name `Camera Canon EOS` dan Borrow `BRW-2026-0155`. Baris Borrow yang tidak boleh tampil adalah `Laptop Dell Latitude 5420 in BRW-2026-0150 will be closed as missing.`, dari Asset Name `Laptop Dell Latitude 5420` dan Borrow `BRW-2026-0150`.
   - Joko S adalah pemegang aset tanpa hak Aktor Missing; Andi P dan Sari D adalah pemegang aset; Rina W adalah Aktor Missing pada Group aset yang melapor lebih dulu.
 - Kondisi:
   - K1: dialog dibuka oleh Pelapor admin untuk aset DU-054-1 dengan kotak dampak DU-054-8; simpan berhasil.
   - K2: dialog dibuka oleh Pelapor admin untuk aset DU-054-2 dan DU-054-3 dengan kotak dampak DU-054-9.
   - K3: dialog dibuka oleh Pelapor admin untuk aset DU-054-4 yang tidak punya pemegang.
-  - K4: dialog dibuka oleh Joko S sebagai pemegang aset DU-054-5, tanpa hak Aktor Missing; aset punya transaksi Borrow `BRW-2026-0141` dan satu permintaan menunggu.
+  - K4: dialog dibuka oleh Joko S sebagai pemegang aset DU-054-5, tanpa hak Aktor Missing; aset punya transaksi Borrow `BRW-2026-0141`; baris Borrow yang tidak boleh tampil adalah `Scanner Zebra DS2208 in BRW-2026-0141 will be closed as missing.`, dari Asset Name `Scanner Zebra DS2208` dan Borrow `BRW-2026-0141`.
   - K5: dialog dibuka oleh Pelapor admin untuk aset DU-054-4 dengan isian awal What happened dari DU-054-10.
   - K6: dialog dibuka oleh Pelapor admin untuk aset DU-054-2 dan DU-054-3; simpan berhasil untuk DU-054-2 dan dilewati untuk DU-054-3.
   - K7: dialog dibuka oleh Joko S untuk aset DU-054-5; simpan berhasil.
@@ -92,7 +92,7 @@ coverage:
   - K16: dialog dibuka oleh Joko S untuk aset DU-054-5; simpan gagal karena error server.
   - K17: halaman Assets menerima jumlah record Waiting for Confirmation dan Missing dari DU-054-11.
   - K18: halaman Assets menerima jumlah record Waiting for Confirmation dan Missing dari DU-054-12.
-  - K19: dialog dibuka oleh Pelapor admin untuk aset DU-054-6 dan DU-054-2; DU-054-2 sudah punya record berjalan dengan Borrow dan dua permintaan menunggu dari DU-054-23, sedangkan DU-054-6 layak dengan satu permintaan menunggu.
+  - K19: dialog dibuka oleh Pelapor admin untuk aset DU-054-6 dan DU-054-2; DU-054-2 sudah punya record berjalan dengan Borrow dari DU-054-23, sedangkan DU-054-6 layak dengan Borrow dari DU-054-23.
   - K20: halaman Assets menampilkan aset DU-054-1 terpilih; dialog dibuka oleh Pelapor admin untuk aset itu; simpan gagal karena error server.
 
 ## Test Steps
@@ -110,17 +110,17 @@ coverage:
 10. Verifikasi What happened bertanda wajib
 11. Verifikasi isian What happened kosong
 12. Verifikasi placeholder isian What happened `Enter what happened`
-13. Verifikasi kotak dampak memuat baris `Borrow BRW-2026-0141 will be closed as Reported missing.`
-14. Verifikasi kotak dampak memuat baris `1 pending request will be canceled.`
+13. Verifikasi kotak dampak memuat baris `Hand Pallet Truck in BRW-2026-0141 will be closed as missing.`
+14. Verifikasi kotak dampak memuat tepat satu baris penutupan transaksi, yaitu untuk aset `Hand Pallet Truck`
 15. Verifikasi kotak dampak memuat baris `Joko S and the asset admins will be notified.`
-16. Verifikasi kotak dampak hanya memuat ketiga baris itu dan tidak memuat baris lain
+16. Verifikasi kotak dampak tidak memuat baris pratinjau efek pada transaksi Disposal maupun transaksi Draft
 
 ### Dua aset: judul jamak dan seluruh aset tampil
 17. Tampilkan Dialog Report Missing dengan kondisi K2
 18. Verifikasi judul dialog `Report Missing Assets`
 19. Verifikasi header aset `Laptop Dell Latitude 5420 - 22` dengan Asset ID `LPT-2026-0022` tampil
 20. Verifikasi header aset `Monitor LG 27UL500 - 11` dengan Asset ID `MON-2026-0011` tampil
-21. Verifikasi kotak dampak memuat baris `3 pending requests will be canceled.`
+21. Verifikasi kotak dampak memuat baris `Laptop Dell Latitude 5420 in BRW-2026-0152 will be closed as missing.`
 
 ### Aset tanpa pemegang
 22. Tampilkan Dialog Report Missing dengan kondisi K3
@@ -130,8 +130,8 @@ coverage:
 
 ### Pemegang tanpa hak Aktor Missing
 26. Tampilkan Dialog Report Missing dengan kondisi K4
-27. Verifikasi kotak dampak memuat baris `The asset admins will review your report. Until then, reminders are paused.`
-28. Verifikasi kotak dampak tidak memuat baris `Borrow BRW-2026-0141 will be closed as Reported missing.`
+27. Verifikasi header aset `Scanner Zebra DS2208 - 2` dengan Asset ID `SCN-2026-0002` tampil
+28. Verifikasi baris `Scanner Zebra DS2208 in BRW-2026-0141 will be closed as missing.` tidak tampil di kotak dampak
 
 ### Titik masuk mengisi awal What happened
 29. Tampilkan Dialog Report Missing dengan kondisi K5
@@ -354,10 +354,10 @@ coverage:
 
 ### Kotak dampak hanya menghitung aset yang layak
 194. Tampilkan Dialog Report Missing dengan kondisi K19
-195. Verifikasi kotak dampak memuat baris `1 pending request will be canceled.`
+195. Verifikasi kotak dampak memuat baris `Camera Canon EOS in BRW-2026-0155 will be closed as missing.`
 196. Verifikasi kotak dampak memuat baris `Joko S and the asset admins will be notified.`
-197. Verifikasi kotak dampak tidak memuat baris `Borrow BRW-2026-0150 will be closed as Reported missing.`
-198. Verifikasi kotak dampak tidak memuat baris `3 pending requests will be canceled.`
+197. Verifikasi kotak dampak tidak memuat baris `Laptop Dell Latitude 5420 in BRW-2026-0150 will be closed as missing.`
+198. Verifikasi judul dialog `Report Missing Assets`
 
 ### Simpan gagal mempertahankan seleksi aset dan memuat ulang daftar
 199. Tampilkan Dialog Report Missing dengan kondisi K20
@@ -376,5 +376,9 @@ coverage:
 210. Verifikasi toast `Error, failed to report asset as missing.` tampil
 211. Klik tombol tutup pada toast `Error, failed to report asset as missing.`
 212. Verifikasi toast `Error, failed to report asset as missing.` sudah hilang dari halaman sesudah animasi keluarnya selesai
+
+### Kotak dampak memuat satu baris per aset yang barisnya ditutup
+213. Tampilkan Dialog Report Missing dengan kondisi K2
+214. Verifikasi kotak dampak memuat baris `Monitor LG 27UL500 in BRW-2026-0153 will be closed as missing.`
 
 [^drift-1]: Drift foundation vs kontrak komponen. PRD tidak menyatakan durasi toast; ekspektasi baku EB-FB-4: «Toast error bertahan sampai ditutup». foundation `toast-copy.md` Aturan Terkunci #12: «Auto-dismiss: Success 4 detik; Error persists sampai di-dismiss manual.»; kontrak `Toast#2`: «Every severity (`info`, `success`, `warning`, `danger`) auto-dismisses the same way; no severity persists on its own.» Diasersi: kontrak, sehingga toast error ikut hilang sendiri sesudah 4000 ms dan hilang dari halaman sesudah animasi keluar 200 ms (`Toast#10`) (SB-7).

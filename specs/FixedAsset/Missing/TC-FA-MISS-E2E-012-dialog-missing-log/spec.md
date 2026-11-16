@@ -19,17 +19,17 @@ trace:
   "§8.1#r6": [11, 36, 42]
   "§8.1#r7": [12, 39]
   "§8.1#r8": 72
-  "§8.1#r9": [69, 75]
+  "§8.1#r9": [69, 75, 104]
   "§8.1#r10": 13
   "§8.1#r11": [14, 15, 16]
   "§8.1#r12": [17, 18]
   "§8.1#r13": 19
-  "§8.1#r14": [76, 77, 78, 79]
+  "§8.1#r14": [76, 77, 78, 79, 105]
   "§8.1#r15": [51, 55, 65]
   "§8.1#r16": [52, 53, 54]
   "§8.1#r17": [56, 57, 58]
   "§8.1#r18": 66
-  "§8.1#p2": [17, 19, 54, 58]
+  "§8.1#p2": [17, 19, 54, 58, 104, 105]
   "§8#r1": 5
   "§8#r2": 5
   "§8#r3": [12, 13, 14, 17, 19]
@@ -66,13 +66,13 @@ coverage:
 - Aktor: Rina W, Total Control, tidak menjadi Last Holder satu pun record di bawah.
 - Layar awal: halaman Missing, sub-tab Active.
 - Data:
-  - DU-012-1: Record Missing `Laptop Lenovo ThinkPad T14 {runId}`, Asset ID `LPT-012-0001`, Group `Head Office`, Status `Missing`, Source `Manual`, Last Holder `Dewi A`, Reported By `Rina W`, Reported Date `T0 − 30 hari, pukul 09:00`, Days Missing `30 days`. Node: `Reported missing by Rina W` dengan What happened `Laptop tidak ada di meja kerja setelah rapat bulanan`; `Update added by Rina W` dengan Update `Sudah dicek ke ruang arsip lantai 2, belum ditemukan`; `Detected by scan` dari reader dengan Last seen `T0 − 6 hari, pukul 11:10` dan pemindai `Gate A reader`, Count `3`; `Detected by scan` dari pengguna dengan Last seen `T0 − 2 hari, pukul 15:25` dan pemindai `Agus P`, Count `1`; `Reported found by Agus P` dengan Location `—` dan satu Photo terlampir; `Long missing` oleh `System` dengan Days missing `30`.
+  - DU-012-1: Record Missing `Laptop Lenovo ThinkPad T14 {runId}`, Group `Head Office`, Status `Missing`, Source `Manual`, Last Holder `Dewi A`, Reported By `Rina W`, Reported Date `T0 − 30 hari, pukul 09:00`, Days Missing `30 days`. Asset ID dibentuk server dan menjadi milik entri ini. Node: `Reported missing by Rina W` dengan What happened `Laptop tidak ada di meja kerja setelah rapat bulanan`; `Update added by Rina W` dengan Update `Sudah dicek ke ruang arsip lantai 2, belum ditemukan`; `Detected by scan` dari reader dengan Last seen `T0 − 6 hari, pukul 11:10` dan pemindai `Gate A reader`, Count `3`; `Detected by scan` dari pengguna dengan Last seen `T0 − 2 hari, pukul 15:25` dan pemindai `Agus P`, Count `1`; `Reported found by Agus P` dengan Location `—` dan satu Photo terlampir; `Long missing` oleh `System` dengan Days missing `30`.
   - DU-012-2: Record Waiting for Confirmation `Hand Pallet Truck {runId}`, Asset ID `HPT-012-0002`, Group `Warehouse`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Joko S`, Reported By `Rudi H (on behalf of Joko S)`, Reported Date `T0 − 1 hari, pukul 07:15`, Days Missing `1 day`. Node: `Reported missing by Rudi H on behalf of Joko S` dengan What happened `Hand pallet truck tidak kembali dari area bongkar muat`.
   - DU-012-3: Record Missing `Projector Epson EB-X06 {runId}`, Asset ID `PRJ-012-0003`, Group `Branch Surabaya`, Status `Missing`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 10 hari, pukul 08:00`, Days Missing `10 days`. Node: `Disposal reported by Agus P` (laporan Disposal pertama, Report ID milik laporan pertama DU-012-3) dengan Reason `Aset belum ditemukan sesudah pencarian di seluruh kantor`; `Disposal report declined by Rina W` (laporan pertama) dengan Reason `Pencarian di gudang cabang masih berlangsung` dan Back to Missing `Yes`; `Disposal reported by Agus P` (laporan Disposal kedua, Report ID milik laporan kedua DU-012-3) dengan Reason `Pencarian selesai tanpa hasil`; `Disposal report canceled by Agus P` (laporan kedua) dengan Reason `Laporan diajukan sebelum pencarian selesai` dan Back to Missing `Yes`.
   - DU-012-4: Record Disposed `Drill Bosch GSB {runId}`, Asset ID `DRL-012-0004`, Group `Warehouse`, Status `Disposed`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Resolved Date `T0 − 8 hari, pukul 13:20`. Node: `Disposal reported by Agus P` dengan Reason `Bor hilang lebih dari 60 hari`; `Disposed` oleh `System` dengan Disposal No. milik DU-012-4.
   - DU-012-5: Record Rejected `Camera Canon EOS {runId}`, Asset ID `CAM-012-0005`, Group `Head Office`, Status `Rejected`, Source `Reported by holder`, Last Holder `Budi S`, Reported By `Budi S`, Resolved Date `T0 − 3 hari, pukul 09:30`. Node: `Report rejected by Rina W` dengan Reason `Aset terlihat di ruang studio lantai 3`.
   - DU-012-6: Record Canceled `Scanner Zebra DS2208 {runId}`, Asset ID `SCN-012-0006`, Group `Warehouse`, Status `Canceled`, Source `Reported by holder`, Last Holder `Joko S`, Reported By `Joko S`, Resolved Date `T0 − 5 hari, pukul 16:00`. Node: `Report canceled by Joko S`.
-  - DU-012-7: Record Found `Laptop Dell Latitude 5420 {runId}`, Asset ID `LPT-012-0007`, Group `Finance Room`, Status `Found`, Source `Reported by holder`, Last Holder `Sari D`, Reported By `Sari D`, Resolved Date `T0 − 1 hari, pukul 10:00`. Node: `Report confirmed by Rina W`; `Marked as found by Rina W` dengan Found at `Server Room`, Asset Status `Normal`, Note `Ditemukan di laci ruang rapat lantai 2`, dan satu Photo terlampir.
+  - DU-012-7: Record Found `Laptop Dell Latitude 5420 {runId}`, Asset ID `LPT-012-0007`, Group `Finance Room`, Status `Found`, Source `Reported by holder`, Last Holder `Sari D`, Reported By `Sari D`, Resolved Date `T0 − 1 hari, pukul 10:00`. Node: `Report confirmed by Rina W` dengan Closed lines berisi nomor transaksi dan jenis transaksi milik satu baris transaksi berjalan atas `Sari D` yang ditutup saat Confirm (nomor transaksi dibentuk server dan menjadi milik entri ini); `Marked as found by Rina W` dengan Found at `Server Room`, Asset Status `Normal`, Manual identification `Yes` (TAG tidak dipindai, jalur `I Can't Scan the TAG`), Note `Ditemukan di laci ruang rapat lantai 2`, dan satu Photo terlampir.
   - DU-012-8: Pengguna `Agus Prasetyo {runId}`, role Total Control, seluruh client, sehingga berhak Report Missing, Report Disposal, dan membatalkan laporan Disposal-nya sendiri; tampil sebagai `Agus P`, dari `Agus Prasetyo {runId}`.
   - Pengguna pada data: Rina W, Total Control, seluruh client; Dewi A, Manage asset & TAG dengan Update pada Group Head Office; Agus P, pengguna DU-012-8; Rudi H, PIC yang tercatat bagi Joko S; Joko S, karyawan pemegang tanpa akun; Budi S dan Sari D, pemegang yang memakai akun sendiri.
   - Waktu pada data ditulis relatif terhadap waktu run `T0`, dan ditampilkan menurut Date Format dan Time Format di bawah.
@@ -88,7 +88,7 @@ coverage:
 2. Verifikasi baris `Laptop Lenovo ThinkPad T14 {runId}`, `Hand Pallet Truck {runId}`, dan `Projector Epson EB-X06 {runId}` tampil di sub-tab Active
 3. Klik nama `Laptop Lenovo ThinkPad T14 {runId}` pada kolom Name
 4. Verifikasi dialog `Missing Log` terbuka
-5. Verifikasi dialog memuat record `Laptop Lenovo ThinkPad T14 {runId}` dengan Asset ID `LPT-012-0001`
+5. Verifikasi dialog memuat record `Laptop Lenovo ThinkPad T14 {runId}` dengan Asset ID milik DU-012-1
 6. Verifikasi dialog tidak menampilkan nomor transaksi record
 7. Verifikasi Last Holder `Dewi A` tampil di dialog
 8. Verifikasi Reported By `Rina W` tampil di dialog
@@ -202,3 +202,10 @@ coverage:
 99. Verifikasi `Prev` dan `Next` Disabled karena `Camera Canon EOS {runId}` satu-satunya baris tabel hasil Search
 100. Klik `✕` pada dialog Missing Log
 101. Klik `(←)` pada kotak Search
+### Closed lines dan Manual identification pada record Found
+102. Ketik Search `Laptop Dell Latitude 5420 {runId}`, tekan Enter
+103. Klik nama `Laptop Dell Latitude 5420 {runId}` pada kolom Name
+104. Verifikasi node `Report confirmed by Rina W` memuat Closed lines berisi nomor transaksi dan jenis transaksi milik baris yang ditutup pada DU-012-7
+105. Verifikasi node `Marked as found by Rina W` memuat Manual identification `Yes`
+106. Klik `✕` pada dialog Missing Log
+107. Klik `(←)` pada kotak Search
