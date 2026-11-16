@@ -2498,3 +2498,63 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator, dengan aturan baris literal dari owner, 2026-11-16.
 - **Diterapkan di:** spec AdminConsole yang langkahnya menunggu BT-AC-ACC-3/-4/-5/-6/-7/-11/-17/-22/-24 dan BT-GAP-46.
 - **Sumber:** plans/_program/sprint-board.md baris 33; plans/_program/be-filing/ISSUE-MAP.md.
+
+## D-236 Account Function `Disposal Proceeds` tidak ada di kontrak: langkah yang membutuhkannya dilewati (2026-11-16)
+
+- **Spec / langkah:** TC-FA-FACO-E2E-002 langkah 16 (DU-002-4), -003 DU-003-5 (K7), -004 langkah 112-125, -005 langkah 3 (DU-005-5), -008, -026 langkah 33-45, -087; TC-FA-FACO-UI-100, -120, -123.
+- **Spec meminta:** akun dengan Function `Disposal Proceeds` dibuat atau difilter (tujuh Account Function), dan Accounting Preferences punya `Default Disposal Proceeds Account`.
+- **Karena:** UI dan PRD (OI-21) memuat tujuh Function, tetapi kontrak API memuat enam. `POST` akun dengan `Disposal Proceeds` dijawab 422, jadi data ujinya tidak bisa dibuat lewat aplikasi.
+- **Keputusan:** ini contract drift. Langkah-langkah itu di-tag `spec-decision` (D-236) dan dilewati, bukan gagal, tanpa improvisasi. Langkah yang hanya membaca daftar Function di UI tetap mengikuti UI (tujuh). Satu issue pendek untuk pemilik kontrak dikirim lewat sesi BE (BT-FA-FACO-1). Menggantikan D-draft-FACO-DISPOSAL dan D-draft-FACO-DISPOSAL-PROCEEDS-DRIFT.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16 (aturan contract drift owner 2026-11-08).
+- **Diterapkan di:** spec FACO yang disebut di atas.
+- **Sumber:** plans/fixed-asset-settings-chart-of-accounts/decisions.md, faco-mapping-A.md butir 2 (F-04).
+
+## D-237 Akun tanpa entri Changelog (Modified By `System`) tidak dibangun di ui-e2e (2026-11-16)
+
+- **Spec / langkah:** TC-FA-FACO-E2E-001 langkah 13, -002 langkah 81, -003 langkah 31-33, 60 dan 62, -004 langkah 102-105 serta opsi `System` di langkah 110.
+- **Spec meminta:** akun yang tidak punya entri Changelog, sehingga Modified By tampil `System`.
+- **Karena:** setiap penulisan lewat aplikasi atau API publik membuat satu baris Changelog, sehingga keadaan ini tidak bisa dibuat dengan cara yang benar-benar terjadi. ui-e2e hanya membangun keadaan nyata.
+- **Keputusan:** langkah-langkah itu di-tag `spec-decision` (D-237) dan dilewati di ui-e2e. Tampilan `System` diuji di layer ui-client lewat intercept. Tidak ada route khusus uji dari BE dan tidak menghapus Changelog sebagai jalan pintas.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+- **Diterapkan di:** spec FACO yang disebut di atas.
+- **Sumber:** plans/fixed-asset-settings-chart-of-accounts/faco-mapping-A.md butir 1.
+
+## D-238 Flag Guided Tour Chart of Accounts disimpan per akun (2026-11-16)
+
+- **Spec / langkah:** TC-FA-FACO-E2E-016 langkah 19.
+- **Spec meminta:** setelah Skip atau Done, tur tidak muncul lagi untuk user yang sama di browser lain.
+- **Karena:** aplikasi menyimpan flag tur di browser; Skip dan Done tidak mengirim request ke backend, jadi tur muncul lagi di profil browser baru.
+- **Keputusan:** ekspektasi spec (per akun) tetap berlaku. Langkah 19 di-tag `ui-gap`. Jika kontrak API tidak punya tempat untuk menyimpan flag ini, langkah itu menjadi contract drift: di-tag `spec-decision` (D-238) dan satu issue pendek dikirim lewat sesi BE.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+- **Diterapkan di:** TC-FA-FACO-E2E-016.
+- **Sumber:** run Rf4-coa-mac-20261116-1304 langkah 23-33.
+
+## D-239 Entitas Expired tidak bisa membuka Fixed Asset: langkah tulis CoA di entitas Expired tidak dapat dijangkau (2026-11-16)
+
+- **Spec / langkah:** TC-FA-FACO-E2E-048 semua langkah tulis di entitas Expired (86-127, 128-134, 135-152), termasuk Delete dan Bulk Delete.
+- **Spec meminta:** Create, Edit, Activate, Deactivate dan Delete di tab Chart of Accounts ditolak (T-11) pada entitas Expired.
+- **Karena:** entitas Expired tidak mendapat sesi produk Fixed Asset (`POST /v2/iam/auth/product-sessions` 403 `subscription_not_active`, `activeProducts` kosong). Setelah login, aplikasi berhenti di /portal dengan dialog Subscription Not Active, jadi tab Chart of Accounts tidak pernah tampil.
+- **Keputusan:** penolakan untuk entitas Expired terjadi di gerbang langganan, bukan per aksi. Spec memverifikasi gerbang itu sekali (dialog Subscription Not Active di /portal). Langkah tulis per aksi di-tag `spec-decision` (D-239). Delete dan Bulk Delete Expired juga masuk keputusan ini, tidak lagi BT-FA-COA-2. Tidak ada issue BE.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+- **Diterapkan di:** TC-FA-FACO-E2E-048.
+- **Sumber:** run Rf6 slot 2 (A), plans/fixed-asset-settings-chart-of-accounts/backend-findings.md.
+
+## D-240 Tabel Chart of Accounts mempertahankan state saat tab dibuka lagi lewat sidebar (2026-11-16)
+
+- **Spec / langkah:** TC-FA-FACO-E2E-017 langkah 23-25.
+- **Spec meminta:** Search kosong, halaman 1 dan sort awal setelah tab Accounting dibuka lagi.
+- **Karena:** aturan owner 2026-11-11: tabel di halaman menyimpan state, tabel di dialog tidak (plans/_program/prd-overrides.md). D-167 menerapkan aturan yang sama untuk Notification Center.
+- **Keputusan:** script memverifikasi state yang dipertahankan. Langkah 23-25 di-tag `ui-gap` dengan merujuk baris prd-overrides; bukan bug.
+- **Diputuskan oleh:** Wangs-UI Coordinator, dengan aturan owner 2026-11-11.
+- **Diterapkan di:** TC-FA-FACO-E2E-017.
+- **Sumber:** plans/_program/prd-overrides.md; D-167.
+
+## D-241 Chip Function di ui-client 1280x720: urutan pilih boleh berubah agar chip yang dihapus tetap terlihat (2026-11-16)
+
+- **Spec / langkah:** TC-FA-FACO-UI-136 langkah 42.
+- **Spec meminta:** menekan (✕) pada chip Edit.
+- **Karena:** pada viewport 1280x720, chip Edit yang dipilih kedua masuk ke `+N more` (overflow komponen, D-208), sehingga (✕)-nya tidak terlihat.
+- **Keputusan:** script memilih Edit lebih dulu. Himpunan pilihannya tetap sama, hanya urutannya yang berbeda. Perluasan dari D-208.
+- **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
+- **Diterapkan di:** TC-FA-FACO-UI-136.
+- **Sumber:** run Ruic3 (A); D-208.
