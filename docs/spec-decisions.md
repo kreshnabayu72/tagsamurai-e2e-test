@@ -2709,3 +2709,12 @@ Aturan:
 - **Untuk spec:** langkah "pengaturan kolom tetap ada" boleh diverifikasi setelah logout lalu login lagi, atau di browser lain untuk user yang sama. Tulis juga langkah yang memastikan user lain melihat kolom default. Langkah yang mengharapkan pengaturan kolom hilang setelah logout atau di tab baru tidak berlaku.
 - **Dasar:** foundation `prd-conventions` §9.3, commit `78b8a44`. `testcase-conventions` 5k mengikuti.
 - **Diputuskan oleh:** product owner 2026-11-16, dicatat Wangs-UI Coordinator.
+
+## D-262 Aturan umum: kegagalan penulisan log tidak membatalkan aksi (2026-11-16)
+
+- **Spec / langkah:** `TC-AC-LCS-E2E-140` TC-AC-LCS-477 langkah 2, 4–11 (run `Bb-bb23-mac-20261116-2227`). Pola sama dengan D-013 (Auth).
+- **Spec meminta:** saat penulisan log dipaksa gagal, Save Free Plan Settings dibatalkan: toast error, nilai tetap `365`, Changelog kosong.
+- **Kenyataannya:** PATCH lifecycle-settings/free-plan tetap `200` dan toast sukses tampil. Log ditulis ke service analytics yang terpisah, ditahan, lalu diulang setiap 5 detik sampai berhasil.
+- **Aturan:** berlaku untuk semua modul. Jika log ditulis ke service lain, kegagalan penulisan log tidak membatalkan aksi pengguna: aksi tetap sukses, dan log menyusul lewat retry setelah service log pulih. Spec yang mengharapkan aksi dibatalkan karena log gagal tidak berlaku.
+- **Untuk spec:** dengan fault log aktif, verifikasi aksi sukses (toast sukses, nilai baru tersimpan setelah reload). Setelah fault dipulihkan, verifikasi entri log atau Changelog muncul. Di TC-477: Free Plan Duration `400` setelah reload, lalu setelah langkah 12 Changelog menampilkan satu entri 365 menjadi 400.
+- **Diputuskan oleh:** Wangs-UI Coordinator 2026-11-16 (didelegasikan owner), memperluas D-013.
