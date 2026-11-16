@@ -2466,3 +2466,14 @@ Aturan:
 - **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-16.
 - **Diterapkan di:** 13 spec CoA di atas.
 - **Sumber:** plans/_program/sprint-board.md; plans/fixed-asset-settings-chart-of-accounts/backend-findings.md (BT-FA-COA-10).
+
+## D-233 Elemen halaman di spec ui-client di-mount dengan unit halaman, tidak dipindah ke ui-e2e (2026-11-16)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-UI-120` langkah 2-7: breadcrumb `Settings` > `Accounting` > `Chart of Accounts`, tab bar `Preferences` … `Asset Class`, dan tombol `[?]` `Show guide`.
+- **Spec meminta:** langkah 2-7 diverifikasi di layer ui-client.
+- **Kenyataannya:** script hanya me-mount unit Account List, jadi breadcrumb, tab bar dan `[?]` tidak ada di DOM. Penulis mengusulkan memindahkan langkah ini ke ui-e2e (D-draft-FACO-1).
+- **Karena:** semua spec ui-client versi 2 wajib dikerjakan, tanpa pengecualian kecuali layer BE (owner 2026-11-16). Unit ui-client dipilih menurut langkah spec: kalau langkah memeriksa elemen halaman, unit yang di-mount adalah komponen halaman Settings Accounting (breadcrumb, tab bar, panel tab), tetap tanpa app shell, tanpa login dan tanpa slot.
+- **Keputusan:** blok langkah 1-7 me-mount komponen halaman Settings Accounting dengan tab Chart of Accounts aktif, router memori, dan jawaban `Spectra.intercept`. Langkah 8 dan seterusnya boleh tetap memakai unit Account List. Kalau breadcrumb dirender oleh app shell di luar modul, hanya langkah breadcrumb (2-4) yang diverifikasi di ui-e2e, dan script menyebut spec ui-e2e yang menutupnya. Bukti bahwa breadcrumb dirender di luar modul wajib dilampirkan. D-draft-FACO-1 dibatalkan.
+- **Diputuskan oleh:** Wangs-UI Coordinator atas nama owner, 2026-11-16 (temuan Integration A).
+- **Diterapkan di:** SettingsChartOfAccounts UI-120, dan semua spec ui-client yang langkahnya memeriksa elemen halaman.
+- **Sumber:** konvensi ui-client (mount unit kecil, tanpa app shell); keputusan owner 2026-11-16 "semua harus di include kecuali BE".
