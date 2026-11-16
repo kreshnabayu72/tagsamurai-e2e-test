@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-16, R-02, R-03, T-02, T-03, T-12, §4.1.2#p4, §4.2f#b3, §7.3#b1, §7.3#b4, §[F-FACO-02] Edit Account#r10, §[F-FACO-02] Edit Account#r11, §[F-FACO-02] Edit Account#r14, §9.4.2#r7, §9.4.2#r32, EB-FB-1@edit-account, EB-FB-3@form-edit-account, EB-FRM-1@form-edit-account, EB-FRM-2@form-edit-account, EB-FRM-3@form-edit-account, EB-ERR-1@edit-account]
+sourceRules: [D-16, R-02, R-03, T-02, T-03, T-12, §4.1.2#p4, §4.2f#b3, §7.3#b1, §7.3#b4, "§[F-FACO-02] Edit Account#r10", "§[F-FACO-02] Edit Account#r11", "§[F-FACO-02] Edit Account#r14", §9.4.2#r7, §9.4.2#r32, EB-FB-1@edit-account, EB-FB-3@form-edit-account, EB-FRM-1@form-edit-account, EB-FRM-2@form-edit-account, EB-FRM-3@form-edit-account, EB-ERR-1@edit-account]
 smoke: []
 dependsOn: []
 trace:

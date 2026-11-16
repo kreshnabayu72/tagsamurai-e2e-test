@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [V-01, V-02, V-03, V-04, V-05, V-06, V-07, V-08, §[F-FACO-02] Edit Account#b2, EB-FRM-6@form-edit-account, EB-FRM-8@account-code, EB-FRM-8@account-name, EB-FRM-8@account-function]
+sourceRules: [V-01, V-02, V-03, V-04, V-05, V-06, V-07, V-08, "§[F-FACO-02] Edit Account#b2", EB-FRM-6@form-edit-account, EB-FRM-8@account-code, EB-FRM-8@account-name, EB-FRM-8@account-function]
 smoke: []
 dependsOn: []
 trace:
