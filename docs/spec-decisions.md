@@ -2529,7 +2529,7 @@ Aturan:
 - **Diterapkan di:** TC-FA-FACO-E2E-016.
 - **Sumber:** run Rf4-coa-mac-20261116-1304 langkah 23-33.
 
-## D-239 Entitas Expired tidak bisa membuka Fixed Asset: langkah tulis CoA di entitas Expired tidak dapat dijangkau (2026-11-16)
+## D-239 [DIKOREKSI oleh D-250] Entitas Expired tidak bisa membuka Fixed Asset: langkah tulis CoA di entitas Expired tidak dapat dijangkau (2026-11-16)
 
 - **Spec / langkah:** TC-FA-FACO-E2E-048 semua langkah tulis di entitas Expired (86-127, 128-134, 135-152), termasuk Delete dan Bulk Delete.
 - **Spec meminta:** Create, Edit, Activate, Deactivate dan Delete di tab Chart of Accounts ditolak (T-11) pada entitas Expired.
@@ -2589,7 +2589,7 @@ Aturan:
 - **Untuk spec:** jika PRD dan kontrak berbeda, langkah tetap ditulis mengikuti PRD, tetapi diberi catatan perbedaan itu (nama nilai, PRD vs kontrak) agar bisa dikonfirmasi ke BE sebelum dijalankan. Contoh: `Disposal Proceeds` ada di PRD (7 Function) tetapi tidak di kontrak (6) (D-236, D-242, master-asset#25).
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-16.
 
-## D-246 Aturan umum: penolakan karena status langganan terjadi di gerbang login, bukan per aksi (2026-11-16)
+## D-246 [DITARIK oleh D-250] Aturan umum: penolakan karena status langganan terjadi di gerbang login, bukan per aksi (2026-11-16)
 
 - **Berlaku untuk:** semua produk dan modul.
 - **Aturan:** entitas yang langganannya Expired tidak mendapat akses ke produk. Setelah login, user berhenti di /portal dengan dialog Subscription Not Active, sehingga tidak ada layar modul yang bisa dibuka.
@@ -2617,3 +2617,13 @@ Aturan:
 - **Untuk spec:** jangan tulis langkah yang mengharapkan tur tidak muncul di browser atau perangkat lain. Langkah "tur tidak muncul lagi" diverifikasi di browser yang sama, untuk user yang sama.
 - **Keputusan untuk spec yang ada:** TC-FA-FACO-E2E-016 langkah 19 di-tag `spec-decision` (D-249) dan dilewati. D-238 dikoreksi: tidak ada `ui-gap` dan tidak ada issue BE.
 - **Diputuskan oleh:** product owner, 2026-11-16 ("flag guided tour ga perlu di simpan api"), dicatat Wangs-UI Coordinator.
+
+## D-250 Aturan umum: entitas Suspended/Expired tetap bisa membuka modul, aksi tulis ditolak per aksi (koreksi D-246 dan D-239) (2026-11-16)
+
+- **Berlaku untuk:** semua produk dan modul.
+- **Aturan:** entitas Suspended atau Expired (termasuk Grace) tetap bisa membuka produk dan modul, dan semua data tetap terbaca. Setiap aksi tulis (Create, Update, Delete, termasuk bulk dan aksi domain seperti Activate/Deactivate) ditolak server dengan `403`. UI menampilkan toast `Changes can't be saved while this workspace is suspended or expired.`, tidak redirect, dan data tidak berubah. Toast muncul setelah aksi tulis dikirim (mis. Submit), bukan saat form dibuka. Pengecualian: aksi Client Subscription yang mengaktifkan kembali entitas.
+- **Untuk spec:** untuk entitas Suspended/Expired, tulis langkah tulis per aksi di dalam modul. Setiap langkah memverifikasi toast di atas dan memastikan data tidak berubah. Jangan tulis langkah yang mengharapkan dialog Subscription Not Active atau redirect ke /portal untuk entitas Expired.
+- **Dasar:** foundation `functions/entity-isolation.md` §18.8 (L161-165) dan `product/licensing/plans.md` §5.10 (diperbarui 2026-11-16, commit `4c21dcf`).
+- **Koreksi:** D-246 ditarik, karena aturan gerbang login itu tidak sesuai §18.8. D-239 dikoreksi: TC-FA-FACO-E2E-048 langkah tulis untuk entitas Expired (86-152, termasuk Delete dan Bulk Delete) kembali diuji per aksi dan tidak lagi di-tag `spec-decision`.
+- **Kenyataan saat ini:** `POST /v2/iam/auth/product-sessions` menolak entitas Expired dengan `403 subscription_not_active`, sehingga aplikasi berhenti di /portal. Perilaku ini mengikuti PRD auth `session-management` `AUTHSES-LOGIC-03`, yang belum sesuai §18.8. Koreksi PRD diajukan di Gitea `Dokumentasi-Tag-Samurai/auth#21`. Sampai PRD dan BE disesuaikan, langkah 048 yang membutuhkan entitas Expired tidak dapat dijangkau dan di-tag `spec-decision` (D-250, menunggu auth#21), bukan `pass`.
+- **Diputuskan oleh:** product owner, 2026-11-16 ("functions/entity-isolation.md, ui harus ikutin itu"), dicatat Wangs-UI Coordinator.
