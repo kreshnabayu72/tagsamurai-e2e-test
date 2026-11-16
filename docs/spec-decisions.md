@@ -2701,3 +2701,11 @@ Aturan:
 - **Aturan:** panel kanan bergaya sama dengan sidebar kiri: permukaan dan elevasi yang sama, tanpa border kiri dan tanpa sudut membulat. Tombol buka-tutupnya berada di luar panel dengan ikon menu-unfold, bukan tombol Primary mengambang di tepi panel seperti `prd-conventions` §31.3 butir 1 dan 3.
 - **Untuk spec:** langkah membuka atau menutup panel kanan lewat tombol toggle-nya. Border, bayangan, dan posisi tombol adalah detail visual, bukan langkah e2e.
 - **Diputuskan oleh:** product owner 2026-10-18, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum.
+
+## D-261 Aturan umum: pengaturan kolom tabel halaman disimpan di akun user (2026-11-16)
+
+- **Berlaku untuk:** semua modul, setiap tabel halaman yang punya Column Visibility atau Setup Column.
+- **Aturan:** pengaturan kolom disimpan per user di akun, dengan key per tabel. Yang disimpan: kolom yang tampil, urutan, pin, dan curated field yang ditambahkan. Pengaturan ini sama di semua browser dan perangkat milik user itu, tetap ada setelah logout, dan tidak hilang saat cache browser dihapus. Search, Filter, Sort dan paginasi tidak termasuk; ketiganya tetap di browser menurut D-243. Tabel di dalam dialog tidak menyimpan pengaturan kolom (D-243).
+- **Untuk spec:** langkah "pengaturan kolom tetap ada" boleh diverifikasi setelah logout lalu login lagi, atau di browser lain untuk user yang sama. Tulis juga langkah yang memastikan user lain melihat kolom default. Langkah yang mengharapkan pengaturan kolom hilang setelah logout atau di tab baru tidak berlaku.
+- **Dasar:** foundation `prd-conventions` §9.3, commit `78b8a44`. `testcase-conventions` 5k mengikuti.
+- **Diputuskan oleh:** product owner 2026-11-16, dicatat Wangs-UI Coordinator.
