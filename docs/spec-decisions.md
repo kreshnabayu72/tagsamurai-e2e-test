@@ -2638,3 +2638,66 @@ Aturan:
 - **Dasar:** foundation `functions/guided-tooltip.md` §16.1 (L46) dan §16.4 (L97-103), "Store: user account (sync across devices)".
 - **Koreksi:** D-249 ditarik. TC-FA-FACO-E2E-016 langkah 19 tidak lagi di-tag `spec-decision`. Endpoint untuk menyimpan flag belum ada, sehingga langkah itu di-tag `be-bug iam#281` sampai endpoint tersedia dan aplikasi memakainya.
 - **Diputuskan oleh:** product owner, 2026-11-16 ("guided kita perbaiki, buatkan issue untuk BE di iam … lalu di terapkan"), dicatat Wangs-UI Coordinator.
+
+## D-252 Aturan umum: entri `Setup Column...` ada di bagian atas panel Column Visibility (2026-11-16)
+
+- **Berlaku untuk:** semua modul, setiap tabel yang punya Column Visibility.
+- **Aturan:** entri `Setup Column...` berada di bagian **atas** panel Column Visibility, bukan di bawah seperti tertulis di `prd-conventions` §9.3. Teksnya tetap mengikuti PRD: entri `Setup Column...`, judul dialog `Setup Column`, petunjuk "Drag and drop to rearrange the order and click the pin to freeze up to 3 columns. ".
+- **Untuk spec:** langkah tidak memverifikasi posisi entri di bawah daftar kolom. Langkah membuka Setup Column lewat entri `Setup Column...` di panel.
+- **Diputuskan oleh:** product owner 2026-10-14, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum.
+
+## D-253 Aturan umum: Download adalah berkas dari backend, tombolnya berwarna hijau (2026-11-16)
+
+- **Berlaku untuk:** semua modul, setiap Download CSV/XLSX.
+- **Aturan:** setiap berkas Download dibuat backend lewat endpoint `…/export` modul itu (Export Contract v1). Nama berkas persis seperti yang ditulis PRD. Berkas XLSX berisi satu sheet bernama `Sheet1`. Isi berkas mengikuti Search, Filter, Sort dan kolom yang sedang tampil di tabel. Tombol Download di toolbar memakai tampilan sendiri (garis tepi hijau/success), tidak sama dengan tool toolbar lain.
+- **Untuk spec:** langkah memverifikasi nama berkas sesuai PRD, nama sheet `Sheet1`, dan isi berkas. Jangan tulis langkah yang mengharapkan tombol Download bergaya sama dengan tool toolbar lain; warna tombol adalah detail visual, bukan langkah e2e. Nama berkas dari backend yang berbeda dari PRD adalah bug BE.
+- **Diputuskan oleh:** product owner 2026-10-15 (tampilan tombol) dan 2026-11-11 (berkas dari backend), dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum (sebelumnya diterapkan per kasus di D-110).
+
+## D-254 Aturan umum: nama pendek user tanpa titik (`John L`) (2026-11-16)
+
+- **Berlaku untuk:** semua modul, setiap tempat yang menampilkan nama pendek `[First Name] [Last Initial]`.
+- **Aturan:** nama pendek ditulis tanpa titik setelah inisial: `John L`, `Budi S`, sesuai contoh `prd-conventions` §9.13.
+- **Untuk spec:** langkah mengharapkan `Budi S`, bukan `Budi S.`.
+- **Diputuskan oleh:** product owner 2026-10-19, ditegaskan 2026-11-13, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum.
+
+## D-255 Aturan umum: toast masalah koneksi tidak punya tombol [Try Again] (2026-11-16)
+
+- **Berlaku untuk:** semua modul, setiap toast masalah koneksi.
+- **Aturan:** toast masalah koneksi hanya berisi pesan dan severity danger. Tidak ada tombol `[Try Again]` di dalam toast, walaupun PRD §9.6 atau `error-handling-convention` §2 menyebutnya. Tombol `[Try Again]` di dalam halaman error (ErrorState) atau dialog tidak termasuk aturan ini.
+- **Untuk spec:** langkah memverifikasi toast dan teksnya saja. Jangan tulis langkah yang mengklik `[Try Again]` di dalam toast.
+- **Diputuskan oleh:** product owner 2026-10-17, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum (sebelumnya diterapkan per kasus di D-078).
+
+## D-256 Aturan umum: dialog Unsaved Changes memakai satu bentuk di seluruh aplikasi (2026-11-16)
+
+- **Berlaku untuk:** semua modul, setiap dialog Unsaved Changes (form dialog, form halaman, dan navigasi keluar dari form yang berubah).
+- **Aturan:** dialog Unsaved Changes ber-severity warning. Tombol `[Leave]` ber-severity primary dan tombol `[Cancel]` ber-severity contrast. Teks atau wireframe PRD yang menyebut `[Leave]` warning atau danger tidak berlaku.
+- **Untuk spec:** langkah yang memverifikasi warna tombol mengharapkan `[Leave]` primary dan `[Cancel]` contrast.
+- **Diputuskan oleh:** product owner 2026-10-20, ditegaskan 2026-10-28, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum (sebelumnya diterapkan per kasus di D-014).
+
+## D-257 Aturan umum: label field wajib tidak memuat `*` di teksnya (2026-11-16)
+
+- **Berlaku untuk:** semua modul, setiap field wajib di form.
+- **Aturan:** teks label tidak memuat `*`. PRD yang menulis `Client *` berarti label `Client` dengan penanda wajib berwarna merah yang ditampilkan komponen di samping label.
+- **Untuk spec:** langkah mencari field lewat labelnya tanpa `*` (mis. `Client`, bukan `Client *`), dan memverifikasi field itu ditandai wajib.
+- **Diputuskan oleh:** product owner 2026-10-27, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum.
+
+## D-258 Aturan umum: entri timeline riwayat yang punya detail bisa dilipat dan mulai terbuka (2026-11-16)
+
+- **Berlaku untuk:** semua modul, setiap timeline riwayat per record (mis. Allocation Log).
+- **Aturan:** entri timeline yang punya baris detail (Category, Quantity, Rejection Reason, dan sejenisnya) bisa dilipat dan saat pertama tampil dalam keadaan terbuka. Entri tanpa detail tidak punya tombol lipat.
+- **Untuk spec:** langkah mengharapkan detail entri langsung terlihat tanpa klik. Langkah melipat entri hanya untuk entri yang punya detail.
+- **Diputuskan oleh:** product owner 2026-10-26, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum.
+
+## D-259 Aturan umum: user adalah satu entitas dari Global Settings; aplikasi hanya menampilkan user yang punya App Access (2026-11-16)
+
+- **Berlaku untuk:** semua aplikasi (Fixed Asset, Admin Console, dan lainnya), setiap daftar user, picker user, dan filter user.
+- **Aturan:** user dibuat dan dikelola hanya di Global Settings > User. Tidak ada pembuatan atau undangan user per aplikasi. Sebuah aplikasi hanya menampilkan user yang diberi App Access ke aplikasi itu di Global Settings. User tanpa akses tidak muncul di daftar, picker, atau filter aplikasi itu. Role tetap milik masing-masing aplikasi.
+- **Untuk spec:** data uji user dibuat di Global Settings > User, lalu diberi App Access ke aplikasi yang diuji. Langkah yang mengharapkan user tanpa App Access muncul di aplikasi tidak berlaku.
+- **Diputuskan oleh:** product owner 2026-10-21, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum.
+
+## D-260 Aturan umum: panel kanan bergaya sama dengan sidebar kiri, toggle di luar panel (2026-11-16)
+
+- **Berlaku untuk:** semua halaman yang punya panel kanan.
+- **Aturan:** panel kanan bergaya sama dengan sidebar kiri: permukaan dan elevasi yang sama, tanpa border kiri dan tanpa sudut membulat. Tombol buka-tutupnya berada di luar panel dengan ikon menu-unfold, bukan tombol Primary mengambang di tepi panel seperti `prd-conventions` §31.3 butir 1 dan 3.
+- **Untuk spec:** langkah membuka atau menutup panel kanan lewat tombol toggle-nya. Border, bayangan, dan posisi tombol adalah detail visual, bukan langkah e2e.
+- **Diputuskan oleh:** product owner 2026-10-18, dicatat Wangs-UI Coordinator 2026-11-16 sebagai aturan umum.
