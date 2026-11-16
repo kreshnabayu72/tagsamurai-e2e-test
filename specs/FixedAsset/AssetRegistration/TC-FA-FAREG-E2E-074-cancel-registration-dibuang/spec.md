@@ -36,7 +36,7 @@ coverage:
 ### Cancel Registration dengan checkbox dilepas membuang aset
 1. Ketik Search `{runId}`, tekan Enter
 2. Klik ikon `Cancel registration` pada baris Group `Gudang Dibuang {runId}`
-3. Klik checkbox `Save as Draft to edit` hingga tidak tercentang
+3. Verifikasi checkbox `Save as Draft to edit` tidak tercentang
 4. Verifikasi teks bantu `The assets will be discarded and their reserved quota is released. This can't be undone.` tampil
 5. Klik `[Cancel Registration]`
 6. Verifikasi toast `Success, registration has been canceled.` tampil

@@ -51,8 +51,8 @@ coverage:
 4. Verifikasi dialog tidak menampilkan Group `Kantor Pusat`
 5. Verifikasi dialog tidak menampilkan keterangan jumlah aset `4 assets`
 6. Verifikasi body dialog memuat checkbox `Save as Draft to edit`
-7. Verifikasi checkbox `Save as Draft to edit` tercentang
-8. Verifikasi teks bantu `The assets return to Draft and their reserved quota is released.` tampil
+7. Verifikasi checkbox `Save as Draft to edit` tidak tercentang
+8. Verifikasi teks bantu `The assets will be discarded and their reserved quota is released. This can't be undone.` tampil
 9. Verifikasi pertanyaan konfirmasi `Are you sure you want to cancel it?`
 10. Verifikasi footer dialog memuat tombol `[Go Back]`
 11. Verifikasi footer dialog memuat tombol `[Cancel Registration]`
@@ -60,11 +60,11 @@ coverage:
 ### Teks bantu mengikuti checkbox
 12. Tampilkan Dialog `Cancel Registration` (`D-REG-14`) dengan kondisi K1
 13. Klik checkbox `Save as Draft to edit`
-14. Verifikasi checkbox `Save as Draft to edit` tidak tercentang
-15. Verifikasi teks bantu `The assets will be discarded and their reserved quota is released. This can't be undone.` tampil
-16. Verifikasi teks bantu `The assets return to Draft and their reserved quota is released.` tidak tampil
+14. Verifikasi checkbox `Save as Draft to edit` tercentang
+15. Verifikasi teks bantu `The assets return to Draft and their reserved quota is released.` tampil
+16. Verifikasi teks bantu `The assets will be discarded and their reserved quota is released. This can't be undone.` tidak tampil
 17. Klik checkbox `Save as Draft to edit`
-18. Verifikasi teks bantu `The assets return to Draft and their reserved quota is released.` tampil
+18. Verifikasi teks bantu `The assets will be discarded and their reserved quota is released. This can't be undone.` tampil
 
 ### Go Back menutup dialog
 19. Tampilkan Dialog `Cancel Registration` (`D-REG-14`) dengan kondisi K1
@@ -83,7 +83,7 @@ coverage:
 28. Klik tombol `[Cancel Registration]` pada footer dialog
 29. Verifikasi toast error `Error, failed to cancel registration.`
 30. Verifikasi dialog `Cancel Registration` tetap terbuka
-31. Verifikasi checkbox `Save as Draft to edit` tetap tidak tercentang
+31. Verifikasi checkbox `Save as Draft to edit` tetap tercentang
 32. Verifikasi tombol `[Cancel Registration]` pada footer dialog aktif lagi
 33. Waktu berlalu sampai 10 detik sejak toast error tampil
 34. Verifikasi toast error `Error, failed to cancel registration.` masih tampil

@@ -40,7 +40,7 @@ coverage:
 3. Verifikasi baris pengajuan Group `Gudang Batal {runId}` tampil di sub tab `Waiting for Approval` dengan Total Asset `3`
 4. Verifikasi dialog `Cancel Registration` terbuka
 5. Verifikasi dialog memuat bullet Registration ID pengajuan berformat `REG-YYYYMMDD-NNNNN`
-6. Verifikasi checkbox `Save as Draft to edit` tercentang
+6. Klik checkbox `Save as Draft to edit` hingga tercentang
 7. Verifikasi teks bantu `The assets return to Draft and their reserved quota is released.` tampil
 8. Verifikasi dialog memuat pertanyaan `Are you sure you want to cancel it?`
 9. Klik `[Cancel Registration]`
