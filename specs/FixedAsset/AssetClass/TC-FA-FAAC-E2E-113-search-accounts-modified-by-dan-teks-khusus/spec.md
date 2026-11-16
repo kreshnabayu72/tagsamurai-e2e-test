@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-113-search-accounts-modified-by-dan-teks-khusus
 title: "Search Tabel Asset Class: Accounts, Modified By, Nama Asset Name, dan Kolom yang Tidak Dicari"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-FAAC-357
   - TC-FA-FAAC-358
   - TC-FA-FAAC-359
+sourceRules: ["§5#b2", "§4.1.1#r7", "§4.1.1#b1", "§4.1#r10", "§4.4#r15", "§4.1.1#r10", "§4.1.1#r11"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b2": [2, 3, 4, 7, 10, 11, 29]
+  "§4.1.1#r7": [2, 3, 4, 7, 10]
+  "§4.1.1#b1": [14, 16]
+  "§4.1#r10": 20
+  "§4.4#r15": 20
+  "§4.1.1#r10": [20, 23]
+  "§4.1.1#r11": 29
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-020-role-matrix-visibilitas-tabel-total-control-read-only-manage-read
 title: "Role Matrix: Visibilitas Elemen Tabel Asset Class untuk Total Control, Read Only, dan Manage Accounting (Read)"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,24 @@ sourceTc:
   - TC-FA-FAAC-56
   - TC-FA-FAAC-57
   - TC-FA-FAAC-58
+sourceRules: ["§4.8#r1", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r11", "§4.8#r14", "§4.8#r15", "§4.8#b3", "§4.8#r16", "§4.8#r17", "§4.8#r18", "§4.8#r20", "§4.8#r19", "ST-32"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r1": [1, 15, 25]
+  "§4.8#r3": [1, 15, 25]
+  "§4.8#r4": [1, 15, 25]
+  "§4.8#r5": [1, 15, 25]
+  "§4.8#r11": [2, 16, 26]
+  "§4.8#r14": [5, 18, 28]
+  "§4.8#r15": [5, 18, 28]
+  "§4.8#b3": 6
+  "§4.8#r16": [8, 19, 29]
+  "§4.8#r17": 9
+  "§4.8#r18": 9
+  "§4.8#r20": 9
+  "§4.8#r19": [12, 22, 32]
+  "ST-32": [21, 31]
 coverage:
   web: automated
 ---

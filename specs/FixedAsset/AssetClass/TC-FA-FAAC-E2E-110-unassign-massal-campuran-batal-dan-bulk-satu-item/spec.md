@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-110-unassign-massal-campuran-batal-dan-bulk-satu-item
 title: "Unassign Massal: Dialog Campuran dengan Batal, Lanjutkan Melewati Aset Aktif, dan Bulk Satu Item"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-FAAC-233
   - TC-FA-FAAC-234
   - TC-FA-FAAC-239
+sourceRules: ["§5#b7", "D-18", "F-FAAC-10.k3", "§4.1.3#p6", "R-11", "E-FAAC-40", "F-FAAC-10.k1", "E-FAAC-84", "D-15"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b7": [6, 7, 8, 23]
+  "D-18": [6, 7, 11]
+  "F-FAAC-10.k3": [11, 13, 14]
+  "§4.1.3#p6": 11
+  "R-11": 13
+  "E-FAAC-40": 14
+  "F-FAAC-10.k1": 15
+  "E-FAAC-84": 21
+  "D-15": [21, 23]
 coverage:
   web: automated
 ---

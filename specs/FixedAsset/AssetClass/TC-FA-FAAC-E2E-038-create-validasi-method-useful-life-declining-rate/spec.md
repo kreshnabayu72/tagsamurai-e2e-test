@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-038-create-validasi-method-useful-life-declining-rate
 title: "Create Asset Class: Validasi Method, Useful Life, dan Declining Rate"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -10,6 +11,19 @@ sourceTc:
   - TC-FA-FAAC-107
   - TC-FA-FAAC-108
   - TC-FA-FAAC-109
+sourceRules: ["V-09", "ST-04", "F-FAAC-01.k4", "V-10", "§8.4#r9", "V-11", "V-12", "V-13", "§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "V-09": 5
+  "ST-04": 6
+  "F-FAAC-01.k4": 7
+  "V-10": 10
+  "§8.4#r9": [11, 23]
+  "V-11": [13, 15, 17, 19]
+  "V-12": 22
+  "V-13": [25, 27, 29, 31]
+  "§4.2f#b2": 33
 coverage:
   web: automated
 ---

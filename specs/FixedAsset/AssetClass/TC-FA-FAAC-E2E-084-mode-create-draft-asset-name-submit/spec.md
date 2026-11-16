@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-084-mode-create-draft-asset-name-submit
 title: "Mode Create: Submit Asset Class Baru dengan Draft Asset Name"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-FAAC-259
   - TC-FA-FAAC-654
   - TC-FA-FAAC-655
+sourceRules: ["T-01", "§[F-FAAC-01] Create Asset Class#b5", "ST-05", "L-01", "L-06", "§4.1.1#r32", "§8.3#p1", "F-FAAC-08.k4", "R-09"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [8, 37]
+  "§[F-FAAC-01] Create Asset Class#b5": 9
+  "ST-05": [10, 39]
+  "L-01": [24, 25]
+  "L-06": [24, 26]
+  "§4.1.1#r32": 27
+  "§8.3#p1": 27
+  "F-FAAC-08.k4": 38
+  "R-09": 38
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-022-role-matrix-visibilitas-detail-edit-total-control-read-only-manage-read
 title: "Role Matrix: Visibilitas Elemen Detail Mode Edit untuk Total Control, Read Only, dan Manage Accounting (Read)"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,20 @@ sourceTc:
   - TC-FA-FAAC-62
   - TC-FA-FAAC-63
   - TC-FA-FAAC-64
+sourceRules: ["§4.8#r6", "§4.8#r7", "F-FAAC-02.k17", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r13", "§4.8#r21", "§4.8#b2", "§4.1.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r6": [3, 19, 34]
+  "§4.8#r7": [3, 19, 34]
+  "F-FAAC-02.k17": [3, 19, 34]
+  "§4.8#r8": [4, 20, 35]
+  "§4.8#r9": [5, 23, 26, 38, 41]
+  "§4.8#r10": [6, 24, 39]
+  "§4.8#r13": [8, 26, 41]
+  "§4.8#r21": [13, 29, 44]
+  "§4.8#b2": [22, 37]
+  "§4.1.3#p1": [28, 43]
 coverage:
   web: automated
 ---

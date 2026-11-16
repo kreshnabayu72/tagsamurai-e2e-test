@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-149-changelog-filter-struktur-opsi-dan-multi-select
 title: "Modal Changelog: Struktur Filter Panel, Isi Opsi Dropdown, Opsi Field 24 Nilai, dan Filter Tunggal Multi-Select"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,32 @@ sourceTc:
   - TC-FA-FAAC-486
   - TC-FA-FAAC-487
   - TC-FA-FAAC-488
+sourceRules: ["§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r32", "§4.1.1#r30", "§4.1.1#r31", "§4.1.1#r33", "§4.1.1#r34", "§4.1.1#r35", "§4.1.1#r38", "§4.1.1#r40", "§4.1.1#r42", "§4.1.1#r43", "§4.1.1#r44", "§5#b3", "§4.1.1#r36", "§4.1.1#r37", "§4.1.1#r39", "§8#r3", "§4.1.1#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r26": [3, 4]
+  "§4.1.1#r27": [3, 5, 11]
+  "§4.1.1#r28": [3, 6, 13]
+  "§4.1.1#r29": [3, 7]
+  "§4.1.1#r32": [3, 8, 15]
+  "§4.1.1#r30": 9
+  "§4.1.1#r31": 9
+  "§4.1.1#r33": [13, 15]
+  "§4.1.1#r34": [13, 15, 19]
+  "§4.1.1#r35": [13, 15, 24, 34]
+  "§4.1.1#r38": [13, 34]
+  "§4.1.1#r40": 13
+  "§4.1.1#r42": [13, 29]
+  "§4.1.1#r43": [13, 29]
+  "§4.1.1#r44": 13
+  "§5#b3": 19
+  "§4.1.1#r36": [24, 34]
+  "§4.1.1#r37": 34
+  "§4.1.1#r39": 34
+  "§8#r3": 42
+  "§4.1.1#b5": 42
+anchor: [16]
 coverage:
   web: automated
 ---

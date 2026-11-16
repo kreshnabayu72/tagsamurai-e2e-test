@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-121-sort-3-state-active-accounts-last-updated
 title: "Sort 3-State Tabel Asset Class: Active, Accounts, Last Updated, Satu Kolom Sort Aktif, dan Kolom Tanpa Ikon Sort"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-FAAC-392
   - TC-FA-FAAC-393
   - TC-FA-FAAC-394
+sourceRules: ["§4.1.1#r7", "§4.1.1#r11", "§4.1.1#r2", "§9.5#r1", "§4.1.1#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r7": [4, 6]
+  "§4.1.1#r11": [4, 6]
+  "§4.1.1#r2": 8
+  "§9.5#r1": 8
+  "§4.1.1#r9": 12
+anchor: [11, 14, 16, 17]
 coverage:
   web: automated
 ---

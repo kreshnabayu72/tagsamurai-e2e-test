@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-034-role-matrix-negatif-create-update-delete-only-permintaan-langsung-ke-server
 title: "Role Matrix Negatif: Create-Only, Update-Only, dan Delete-Only Tidak Dapat Menjalankan Aksi di Luar Hak (UI dan Permintaan Langsung ke Server)"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-FAAC-598
   - TC-FA-FAAC-599
   - TC-FA-FAAC-600
+sourceRules: ["§4.8#r3", "§4.8#r16", "§4.8#r17", "§4.8#r18", "§4.8#r20", "ST-32", "§3.9#r8", "§4.8#r14", "E-FAAC-78", "§9.3#r3", "§9.3#r4", "§4.8#r11", "§9.3#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r3": [1, 19, 33]
+  "§4.8#r16": [4, 23, 37]
+  "§4.8#r17": [4, 23, 37]
+  "§4.8#r18": [4, 23, 37]
+  "§4.8#r20": [4, 23, 37]
+  "ST-32": [7, 40]
+  "§3.9#r8": [7, 40]
+  "§4.8#r14": 8
+  "E-FAAC-78": [11, 12, 13, 14, 15, 16, 27, 28, 29, 30, 43, 44, 45, 46]
+  "§9.3#r3": [11, 12, 44]
+  "§9.3#r4": [13, 28]
+  "§4.8#r11": [20, 34]
+  "§9.3#r2": [27, 43]
 coverage:
   web: automated
 ---

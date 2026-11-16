@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-166-log-absence-tidak-ada-entri
 title: "Log Absence: Tidak Ada Entri untuk Aksi yang Dilewati, Ditolak, atau Gagal"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -10,6 +11,33 @@ sourceTc:
   - TC-FA-FAAC-540
   - TC-FA-FAAC-551
   - TC-FA-FAAC-578
+sourceRules: ["L-04", "§8.4#r5", "E-FAAC-14", "§8.2#p1", "§8.2#r1", "§8.3#p1", "F-FAAC-02.k2", "E-FAAC-26", "F-FAAC-01.k1", "§4.2f#b2", "R-02", "R-09", "§7.3#b5", "L-06", "§4.1.1#r8", "S-13", "§4.1.3#p1", "§8.4#p3", "L-10", "L-11", "J-01", "J-02"]
+smoke: []
+dependsOn: []
+trace:
+  "L-04": [6, 7, 11, 12, 15, 16]
+  "§8.4#r5": [6, 8, 13, 17]
+  "E-FAAC-14": [8, 13, 17]
+  "§8.2#p1": [11, 42, 92]
+  "§8.2#r1": 12
+  "§8.3#p1": [15, 16, 45, 88]
+  "F-FAAC-02.k2": [23, 38, 42, 45]
+  "E-FAAC-26": [23, 38]
+  "F-FAAC-01.k1": 25
+  "§4.2f#b2": 27
+  "R-02": 32
+  "R-09": 55
+  "§7.3#b5": [55, 61]
+  "L-06": 61
+  "§4.1.1#r8": 73
+  "S-13": [73, 77]
+  "§4.1.3#p1": 76
+  "§8.4#p3": [77, 81]
+  "L-10": [88, 89]
+  "L-11": [88, 89]
+  "J-01": [89, 92]
+  "J-02": [89, 92]
+anchor: [37, 41, 44, 60, 80, 91]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-014-dialog-d23-search-dan-sort
 title: "Dialog Asset Names Without Asset Class: Search Hanya Mencocokkan Asset Name dan Siklus Sort Tiga Tahap Tiap Kolom"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-FAAC-275
   - TC-FA-FAAC-276
   - TC-FA-FAAC-277
+sourceRules: ["F-FAAC-13.k3", "§4.1.9#b1", "§4.4#r14", "§4.1.9#r1", "§4.1.9#r2", "§4.1.9#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-13.k3": [3, 15, 22, 29]
+  "§4.1.9#b1": [4, 7]
+  "§4.4#r14": [10, 12, 14, 17, 19, 21, 24, 26, 28]
+  "§4.1.9#r1": [10, 15, 22, 29]
+  "§4.1.9#r2": 17
+  "§4.1.9#r3": [24, 26]
 coverage:
   web: automated
 ---

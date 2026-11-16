@@ -1,12 +1,24 @@
 ---
 id: TC-FA-FAAC-E2E-175-log-pembatalan-versi-scheduled-dan-last-posted-exported
 title: "Log Pembatalan Versi Scheduled dan Perubahan Last Posted dan Last Exported Period"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-537
   - TC-FA-FAAC-538
+sourceRules: ["L-13", "§8.2#p1", "§8.3#p1", "L-10", "L-11", "J-01", "J-02"]
+smoke: []
+dependsOn: []
+trace:
+  "L-13": [7, 8, 11, 12, 14, 15]
+  "§8.2#p1": [11, 12]
+  "§8.3#p1": [14, 15, 24, 25]
+  "L-10": [20, 21, 24]
+  "L-11": [20, 21, 24]
+  "J-01": [21, 25]
+  "J-02": [21, 25]
 coverage:
   web: automated
 ---

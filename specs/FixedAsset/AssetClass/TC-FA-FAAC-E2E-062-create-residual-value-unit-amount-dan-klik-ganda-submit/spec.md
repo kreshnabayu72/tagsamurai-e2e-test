@@ -1,12 +1,25 @@
 ---
 id: TC-FA-FAAC-E2E-062-create-residual-value-unit-amount-dan-klik-ganda-submit
 title: "Create Asset Class: Residual Value Unit Amount dan Klik Ganda Submit Hanya Memproses Satu Permintaan"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-96
   - TC-FA-FAAC-606
+sourceRules: ["T-01", "§4.1.1#r4", "§4.1.1#b6", "ST-13", "E-FAAC-80", "L-01", "§8.2#p1", "§8.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": 6
+  "§4.1.1#r4": 9
+  "§4.1.1#b6": 9
+  "ST-13": 16
+  "E-FAAC-80": 21
+  "L-01": 22
+  "§8.2#p1": 23
+  "§8.3#p1": 24
 coverage:
   web: automated
 ---

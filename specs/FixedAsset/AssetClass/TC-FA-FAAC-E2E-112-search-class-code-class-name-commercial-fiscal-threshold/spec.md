@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-112-search-class-code-class-name-commercial-fiscal-threshold
 title: "Search Tabel Asset Class: Class Code, Class Name, Commercial, Fiscal, Capitalization Threshold, Asset Names, dan Assets"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-FAAC-352
   - TC-FA-FAAC-353
   - TC-FA-FAAC-354
+sourceRules: ["§5#b2", "§4.1.1#r1", "§4.1.1#r2", "ST-23", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#b6", "§4.1.1#r8", "§4.1.1#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b2": [2, 4, 7, 9, 15, 18, 21, 24, 31]
+  "§4.1.1#r1": [2, 4]
+  "§4.1.1#r2": [2, 4]
+  "ST-23": 12
+  "§4.1.1#r4": 15
+  "§4.1.1#r5": [18, 21]
+  "§4.1.1#r6": [24, 27, 28]
+  "§4.1.1#b6": 24
+  "§4.1.1#r8": 31
+  "§4.1.1#r9": 34
 coverage:
   web: automated
 ---

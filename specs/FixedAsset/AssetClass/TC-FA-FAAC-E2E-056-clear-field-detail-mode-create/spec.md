@@ -1,12 +1,40 @@
 ---
 id: TC-FA-FAAC-E2E-056-clear-field-detail-mode-create
 title: "Clear Field pada Detail Mode Create: Seluruh Field Dikosongkan dan Select Start Kembali ke Nilai Awal"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-647
   - TC-FA-FAAC-696
+sourceRules: ["V-05", "F-FAAC-01.k4", "§4.1.2#p1", "§4.2f#b2", "§4.1.2#r1", "§4.1.2#r2", "§4.1.2#r3", "§4.1.2#r6", "§4.1.2#r14", "FAAC-LOGIC-02d", "§4.1.2#r13", "§4.1.2#r18", "§4.1.2#r19", "FLD-07", "§4.1.2#r12", "§4.1.2#r20", "§4.1.2#r21", "§4.1.2#r22", "§4.1.2#r23", "§4.1.2#r24", "§4.1.2#p11", "V-18", "V-21"]
+smoke: []
+dependsOn: []
+trace:
+  "V-05": [8, 16]
+  "F-FAAC-01.k4": 9
+  "§4.1.2#p1": 11
+  "§4.2f#b2": [12, 29]
+  "§4.1.2#r1": 13
+  "§4.1.2#r2": 14
+  "§4.1.2#r3": 15
+  "§4.1.2#r6": 18
+  "§4.1.2#r14": 19
+  "FAAC-LOGIC-02d": [20, 21, 35, 36]
+  "§4.1.2#r13": [20, 35, 37]
+  "§4.1.2#r18": [21, 36, 37]
+  "§4.1.2#r19": 22
+  "FLD-07": 24
+  "§4.1.2#r12": 25
+  "§4.1.2#r20": 27
+  "§4.1.2#r21": 27
+  "§4.1.2#r22": 27
+  "§4.1.2#r23": 27
+  "§4.1.2#r24": 27
+  "§4.1.2#p11": 29
+  "V-18": 38
+  "V-21": 38
 coverage:
   web: automated
 ---

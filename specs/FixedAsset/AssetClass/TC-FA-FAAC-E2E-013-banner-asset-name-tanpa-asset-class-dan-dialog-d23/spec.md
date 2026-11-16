@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-013-banner-asset-name-tanpa-asset-class-dan-dialog-d23
 title: "Banner Asset Name Tanpa Asset Class (0, 3, dan 1 Asset Name) serta Screening dan Penutupan Dialog Asset Names Without Asset Class"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -11,6 +12,26 @@ sourceTc:
   - TC-FA-FAAC-271
   - TC-FA-FAAC-272
   - TC-FA-FAAC-34
+sourceRules: ["§4.1#r2", "F-FAAC-13.k1", "§4.1.1#p3", "F-FAAC-13.k2", "§4.2g#p1", "§4.1.9#p1", "E-FAAC-108", "§4.1.9#r1", "§4.1.9#r2", "§4.1.9#r3", "F-FAAC-13.k3", "§4.1.9#r4", "§4.1.9#r5", "§4.1.9#r6", "§4.1.9#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1#r2": 1
+  "F-FAAC-13.k1": [2, 3]
+  "§4.1.1#p3": [7, 33, 35]
+  "F-FAAC-13.k2": [8, 25, 34]
+  "§4.2g#p1": [10, 20]
+  "§4.1.9#p1": [10, 12, 13, 21, 23, 28]
+  "E-FAAC-108": 11
+  "§4.1.9#r1": [13, 14, 15]
+  "§4.1.9#r2": [13, 16, 18]
+  "§4.1.9#r3": 13
+  "F-FAAC-13.k3": [14, 19]
+  "§4.1.9#r4": 14
+  "§4.1.9#r5": 14
+  "§4.1.9#r6": 14
+  "§4.1.9#b1": 20
+anchor: [24, 29]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-195-log-absence-request-langsung-asset-name-ditolak-server
 title: "Log Absence: Request Langsung Move, Unassign, dan Assign Asset Name yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-FAAC-605
   - TC-FA-FAAC-242
   - TC-FA-FAAC-621
+sourceRules: ["V-37", "F-FAAC-09.k10", "E-FAAC-111", "§8#p1", "§8.4#r9", "§8.2#p1", "§8.3#p1", "F-FAAC-10.k1", "E-FAAC-38", "FAAC-LOGIC-11c"]
+smoke: []
+dependsOn: []
+trace:
+  "V-37": [3, 9]
+  "F-FAAC-09.k10": [3, 9]
+  "E-FAAC-111": [3, 9]
+  "§8#p1": [4, 10, 16, 22]
+  "§8.4#r9": [4, 5, 6, 10, 11, 12, 16, 17, 18, 22, 23, 24]
+  "§8.2#p1": [5, 11, 17, 23]
+  "§8.3#p1": [6, 12, 18, 24]
+  "F-FAAC-10.k1": 15
+  "E-FAAC-38": 15
+  "FAAC-LOGIC-11c": 21
 coverage:
   web: automated
 ---

@@ -1,12 +1,23 @@
 ---
 id: TC-FA-FAAC-E2E-191-resilience-submit-draft-asset-name-dan-use-recommended-classes
 title: "Resilience: Submit dengan Draft Asset Name dan Create Use Recommended Classes Gagal karena Error Server 5xx"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-FAAC-262
   - TC-FA-FAAC-292
+sourceRules: ["T-01", "R-01", "FI-13", "§4.2f#b2", "T-10", "R-08"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": 10
+  "R-01": [11, 12]
+  "FI-13": 14
+  "§4.2f#b2": [16, 28]
+  "T-10": 24
+  "R-08": [25, 26]
 coverage:
   web: automated
 ---

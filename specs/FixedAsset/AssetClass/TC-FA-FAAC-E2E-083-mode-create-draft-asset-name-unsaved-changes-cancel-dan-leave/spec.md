@@ -1,12 +1,23 @@
 ---
 id: TC-FA-FAAC-E2E-083-mode-create-draft-asset-name-unsaved-changes-cancel-dan-leave
 title: "Mode Create: Draft Asset Name sebagai Perubahan Belum Disimpan pada Dialog Unsaved Changes"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-260
   - TC-FA-FAAC-261
+sourceRules: ["§4.2f#b2", "FI-13", "ST-05", "FAAC-LOGIC-14a", "§4.1.1#p3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b2": [8, 14]
+  "FI-13": [8, 12, 14]
+  "ST-05": [12, 16]
+  "FAAC-LOGIC-14a": 17
+  "§4.1.1#p3": 17
+anchor: [10, 11]
 coverage:
   web: automated
 ---

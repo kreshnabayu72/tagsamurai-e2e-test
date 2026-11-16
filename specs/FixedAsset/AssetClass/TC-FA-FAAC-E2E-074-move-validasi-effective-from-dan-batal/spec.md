@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-074-move-validasi-effective-from-dan-batal
 title: "Move: Validasi Pemilih Bulan Effective From serta Batal dan Tutup Dialog Move"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-FAAC-195
   - TC-FA-FAAC-198
   - TC-FA-FAAC-199
+sourceRules: ["FAAC-LOGIC-07b", "FAAC-LOGIC-07k", "V-23", "E-FAAC-95", "D-14"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-07b": 6
+  "FAAC-LOGIC-07k": [7, 16, 23, 28]
+  "V-23": 13
+  "E-FAAC-95": [14, 15]
+  "D-14": [21, 26]
+anchor: [22, 27]
 coverage:
   web: automated
 ---

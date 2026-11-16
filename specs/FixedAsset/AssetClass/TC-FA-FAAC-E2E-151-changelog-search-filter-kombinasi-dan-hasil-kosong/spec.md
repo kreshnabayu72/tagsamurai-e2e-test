@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-151-changelog-search-filter-kombinasi-dan-hasil-kosong
 title: "Modal Changelog: Kombinasi Search dan Filter, Hasil Kosong Pulih, dan Kombinasi Search, Filter, Sort, serta Ukuran Halaman"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-FAAC-496
   - TC-FA-FAAC-497
   - TC-FA-FAAC-498
+sourceRules: ["§4.1.1#r27", "§4.1.1#r32", "§4.1.1#p10", "ST-27", "§4.1.1#r26", "§5#b5", "§4.1.1#r49"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r27": [6, 15, 16, 36]
+  "§4.1.1#r32": [6, 15, 27, 35, 36]
+  "§4.1.1#p10": [7, 16, 35]
+  "ST-27": 24
+  "§4.1.1#r26": [35, 37]
+  "§5#b5": 35
+  "§4.1.1#r49": 37
 coverage:
   web: automated
 ---

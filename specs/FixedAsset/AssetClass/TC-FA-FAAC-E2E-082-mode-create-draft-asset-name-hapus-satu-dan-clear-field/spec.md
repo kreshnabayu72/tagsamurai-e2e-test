@@ -1,12 +1,19 @@
 ---
 id: TC-FA-FAAC-E2E-082-mode-create-draft-asset-name-hapus-satu-dan-clear-field
 title: "Mode Create: Hapus Satu Draft Asset Name dan Clear Field Membuang Seluruh Draft"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-257
   - TC-FA-FAAC-258
+sourceRules: ["§3.1#p1", "ST-05"]
+smoke: []
+dependsOn: []
+trace:
+  "§3.1#p1": 7
+  "ST-05": [8, 15, 16]
 coverage:
   web: automated
 ---

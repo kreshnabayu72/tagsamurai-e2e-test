@@ -1,12 +1,39 @@
 ---
 id: TC-FA-FAAC-E2E-001-screening-halaman-accounting-tab-asset-class-dan-navigasi
 title: "Screening Halaman Settings > Accounting Tab Asset Class dan Urutan Empat Tab"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-1
   - TC-FA-FAAC-2
+sourceRules: ["§4.2a#p1", "§4.1.8#p1", "FAAC-LOGIC-18c", "§5#b1", "§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "§4.1.1#r11", "§9.5#r6", "§4.1.1#b4", "§9.5#r5", "§5#b5", "FAAC-LOGIC-18a", "§3.10#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2a#p1": 3
+  "§4.1.8#p1": [4, 24, 31]
+  "FAAC-LOGIC-18c": 4
+  "§5#b1": [5, 16, 17]
+  "§4.1.1#r1": 16
+  "§4.1.1#r2": [16, 17]
+  "§4.1.1#r3": [16, 17]
+  "§4.1.1#r4": [16, 17]
+  "§4.1.1#r5": [16, 17]
+  "§4.1.1#r6": [16, 17]
+  "§4.1.1#r7": [16, 17]
+  "§4.1.1#r8": [16, 17]
+  "§4.1.1#r9": [16, 17]
+  "§4.1.1#r10": 18
+  "§4.1.1#r11": 18
+  "§9.5#r6": 18
+  "§4.1.1#b4": 19
+  "§9.5#r5": [20, 21]
+  "§5#b5": [20, 21]
+  "FAAC-LOGIC-18a": [24, 31]
+  "§3.10#p2": [26, 28, 30]
+anchor: [7, 9, 11, 13, 15]
 coverage:
   web: automated
 ---

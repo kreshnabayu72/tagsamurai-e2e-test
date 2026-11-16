@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-120-sort-3-state-kolom-teks-commercial-fiscal
 title: "Sort 3-State Tabel Asset Class: Class Code, Class Name, Modified By, Commercial, Fiscal, Asset Names, Assets, dan Capitalization Threshold"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,30 @@ sourceTc:
   - TC-FA-FAAC-387
   - TC-FA-FAAC-388
   - TC-FA-FAAC-389
+sourceRules: ["§4.4#r14", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "§4.1.1#r17", "§4.1.1#r18", "§4.1.1#r19", "§4.1.1#r20", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r25", "§5#b4", "§9.5#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.4#r14": [4, 6, 8]
+  "§4.1.1#r2": [4, 6, 8]
+  "§4.1.1#r3": [4, 6]
+  "§4.1.1#r4": [4, 6]
+  "§4.1.1#r5": [4, 6]
+  "§4.1.1#r6": [4, 6]
+  "§4.1.1#r8": [4, 6]
+  "§4.1.1#r9": [4, 6]
+  "§4.1.1#r10": [4, 6]
+  "§4.1.1#r17": [4, 6, 8]
+  "§4.1.1#r18": [4, 6, 8]
+  "§4.1.1#r19": [4, 6, 8]
+  "§4.1.1#r20": [4, 6, 8]
+  "§4.1.1#r21": [4, 6, 8]
+  "§4.1.1#r22": [4, 6, 8]
+  "§4.1.1#r23": [4, 6, 8]
+  "§4.1.1#r24": [4, 6, 8]
+  "§4.1.1#r25": [4, 6, 8]
+  "§5#b4": 8
+  "§9.5#r1": 8
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-005-use-recommended-classes-validasi-baris-dan-tutup-dialog
 title: "Dialog Use Recommended Classes: Validasi Class Code dan Class Name per Baris, Class Code Duplikat, Klik Backdrop, dan Unsaved Changes"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -10,6 +11,24 @@ sourceTc:
   - TC-FA-FAAC-287
   - TC-FA-FAAC-699
   - TC-FA-FAAC-710
+sourceRules: ["V-04", "F-FAAC-07.k2", "E-FAAC-65", "V-03", "V-02", "V-06", "V-01", "V-05", "FAAC-LOGIC-15a", "§4.1#r8", "§4.2f#b2", "§4.5#b1", "ST-23"]
+smoke: []
+dependsOn: []
+trace:
+  "V-04": [5, 6, 29]
+  "F-FAAC-07.k2": [5, 6, 7, 23, 29, 41, 53]
+  "E-FAAC-65": [5, 6, 29]
+  "V-03": 13
+  "V-02": 15
+  "V-06": 18
+  "V-01": [21, 23]
+  "V-05": [22, 23]
+  "FAAC-LOGIC-15a": 30
+  "§4.1#r8": 36
+  "§4.2f#b2": [37, 38, 40, 45, 47, 48, 50, 52]
+  "§4.5#b1": [40, 45]
+  "ST-23": [41, 53]
+anchor: [54]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-161-log-status-delete-dan-penjadwalan-versi
 title: "Log Activate, Deactivate, Delete, dan Penjadwalan Versi Scheduled"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-FAAC-534
   - TC-FA-FAAC-535
   - TC-FA-FAAC-536
+sourceRules: ["L-04", "§8.2#p1", "§8.2#r1", "§8.3#p1", "L-05", "§8#p1", "L-12"]
+smoke: []
+dependsOn: []
+trace:
+  "L-04": [6, 7, 12, 15]
+  "§8.2#p1": [11, 27]
+  "§8.2#r1": [12, 28]
+  "§8.3#p1": [14, 15, 30, 31]
+  "L-05": [22, 23, 28, 31]
+  "§8#p1": 24
+  "L-12": [42, 43]
+anchor: [8]
 coverage:
   web: automated
 ---

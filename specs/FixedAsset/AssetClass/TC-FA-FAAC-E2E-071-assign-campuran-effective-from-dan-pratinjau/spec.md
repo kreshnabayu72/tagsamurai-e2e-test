@@ -1,12 +1,24 @@
 ---
 id: TC-FA-FAAC-E2E-071-assign-campuran-effective-from-dan-pratinjau
 title: "Effective From dan Pratinjau Dampak Hanya Muncul bila Pilihan Memuat Move dengan Aset Aktif"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-159
   - TC-FA-FAAC-688
+sourceRules: ["FI-11", "FI-12", "§[F-FAAC-08] Assign Asset Names#b2", "FAAC-LOGIC-07k", "F-FAAC-08.k2", "§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "FI-11": [5, 9]
+  "FI-12": 7
+  "§[F-FAAC-08] Assign Asset Names#b2": 14
+  "FAAC-LOGIC-07k": 15
+  "F-FAAC-08.k2": 16
+  "§4.2f#b2": [19, 20, 21]
+anchor: [18]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-138-tab-asset-names-sort-lanjutan-dan-kolom-label
 title: "Tab Asset Names: Sort Tiga Tahap pada Kolom Assigned At dan Assigned By serta Kolom Label Tidak Dapat Diurutkan"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-FAAC-460
   - TC-FA-FAAC-461
   - TC-FA-FAAC-462
+sourceRules: ["§4.1.3#r5", "§4.4#r14", "§4.1.3#r9", "§4.1.3#r10", "§4.1.3#r11", "§5#b4", "§4.1.3#r1", "§4.1.3#r6", "§4.1.3#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#r5": [6, 8]
+  "§4.4#r14": [6, 8, 10, 13, 15, 17]
+  "§4.1.3#r9": [6, 11, 13, 15, 18, 21]
+  "§4.1.3#r10": [6, 11, 13, 15, 18, 21]
+  "§4.1.3#r11": [6, 8, 11, 13, 18, 21]
+  "§5#b4": [11, 18, 21]
+  "§4.1.3#r1": [11, 18, 21]
+  "§4.1.3#r6": [13, 15]
+  "§4.1.3#r3": 20
 coverage:
   web: automated
 ---

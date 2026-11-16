@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-135-tab-asset-names-filter
 title: "Tab Asset Names: Struktur Filter Panel serta Filter Category, Label, Assets Yes, dan Assets No"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,24 @@ sourceTc:
   - TC-FA-FAAC-451
   - TC-FA-FAAC-452
   - TC-FA-FAAC-453
+sourceRules: ["§4.1.3#p1", "§4.1.3#r9", "§4.1.3#r10", "§4.1.3#r11", "§5#b3", "§4.1.3#r2", "§4.1.3#r3", "§4.1.3#r4", "§4.1.3#b1", "§4.1.3#r5", "§4.1.3#r6", "§4.1.3#r1", "§4.1.1#b4", "§4.4#r13"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#p1": [5, 7]
+  "§4.1.3#r9": [5, 15, 21, 25, 30]
+  "§4.1.3#r10": [5, 15, 21, 25, 30]
+  "§4.1.3#r11": [5, 15, 21, 26, 30]
+  "§5#b3": [7, 13, 16]
+  "§4.1.3#r2": [8, 15]
+  "§4.1.3#r3": [9, 21]
+  "§4.1.3#r4": [10, 25, 26, 30]
+  "§4.1.3#b1": 10
+  "§4.1.3#r5": 11
+  "§4.1.3#r6": 12
+  "§4.1.3#r1": 13
+  "§4.1.1#b4": [16, 17]
+  "§4.4#r13": 17
 coverage:
   web: automated
 ---

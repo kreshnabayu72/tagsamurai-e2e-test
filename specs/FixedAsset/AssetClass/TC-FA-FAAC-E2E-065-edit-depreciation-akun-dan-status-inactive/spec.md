@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-065-edit-depreciation-akun-dan-status-inactive
 title: "Edit Depreciation, Accounts, dan Asset Class Inactive pada Asset Class yang Belum Dipakai Aset"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,21 @@ sourceTc:
   - TC-FA-FAAC-176
   - TC-FA-FAAC-177
   - TC-FA-FAAC-178
+sourceRules: ["T-02", "F-FAAC-02.k11", "§4.1.1#r4", "FAAC-LOGIC-07h", "ST-34", "F-FAAC-02.k9a", "FAAC-LOGIC-07i", "§3.2#p1", "ST-01", "FAAC-LOGIC-10b"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02": [4, 15, 23]
+  "F-FAAC-02.k11": 5
+  "§4.1.1#r4": 6
+  "FAAC-LOGIC-07h": 7
+  "ST-34": 9
+  "F-FAAC-02.k9a": 16
+  "FAAC-LOGIC-07i": 17
+  "§3.2#p1": 19
+  "ST-01": 20
+  "FAAC-LOGIC-10b": 24
+anchor: [25]
 coverage:
   web: automated
 ---

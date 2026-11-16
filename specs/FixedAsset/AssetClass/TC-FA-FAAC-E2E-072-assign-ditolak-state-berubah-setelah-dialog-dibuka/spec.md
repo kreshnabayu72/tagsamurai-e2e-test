@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-072-assign-ditolak-state-berubah-setelah-dialog-dibuka
 title: "Assign Ditolak atau Dilewati saat State Berubah Setelah Dialog Dibuka"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-FAAC-162
   - TC-FA-FAAC-163
   - TC-FA-FAAC-164
+sourceRules: ["F-FAAC-08.k4", "T-07", "FAAC-LOGIC-13b", "L-06", "§[F-FAAC-08] Assign Asset Names#b5", "F-FAAC-08.k5", "FI-12", "F-FAAC-08.k7", "D-20", "F-FAAC-08.k3"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-08.k4": [7, 8]
+  "T-07": [9, 20]
+  "FAAC-LOGIC-13b": [10, 21]
+  "L-06": 11
+  "§[F-FAAC-08] Assign Asset Names#b5": 11
+  "F-FAAC-08.k5": [18, 19, 22]
+  "FI-12": [25, 31]
+  "F-FAAC-08.k7": [28, 29, 30]
+  "D-20": 39
+  "F-FAAC-08.k3": [40, 42]
 coverage:
   web: automated
 ---

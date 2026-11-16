@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-187-multi-sesi-dua-admin-race
 title: "Multi-Sesi: Dua Admin Menyimpan Edit, Create Class Code Sama, dan Cancel Scheduled Version Hampir Bersamaan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,24 @@ sourceTc:
   - TC-FA-FAAC-182
   - TC-FA-FAAC-669
   - TC-FA-FAAC-687
+sourceRules: ["T-02", "F-FAAC-02.k4", "L-02", "T-01", "F-FAAC-01.k1", "R-01", "§4.2f#b2", "N-10", "L-01", "F-FAAC-17.k6", "T-16", "S-17", "L-13", "E-FAAC-119"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02": [7, 9]
+  "F-FAAC-02.k4": [10, 13]
+  "L-02": [14, 15]
+  "T-01": 21
+  "F-FAAC-01.k1": 22
+  "R-01": 23
+  "§4.2f#b2": 25
+  "N-10": 28
+  "L-01": 30
+  "F-FAAC-17.k6": [35, 36]
+  "T-16": 37
+  "S-17": 38
+  "L-13": 41
+  "E-FAAC-119": 42
 coverage:
   web: automated
 ---

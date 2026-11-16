@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-122-setup-column-screening-dan-ceklis-kolom
 title: "Setup Column Tabel Asset Class: Screening Panel dan Modal, Ceklis Kolom Tampil Bawaan, dan Ceklis Kolom Tersembunyi Bawaan"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,24 @@ sourceTc:
   - TC-FA-FAAC-396
   - TC-FA-FAAC-397
   - TC-FA-FAAC-398
+sourceRules: ["§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "§4.1.1#r11", "§4.1#r10", "§9.5#r6"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r1": [4, 5, 13, 17, 19, 23]
+  "§4.1.1#r2": [4, 5, 13, 17, 19, 23, 29]
+  "§4.1.1#r3": [4, 5, 13, 17, 19, 23]
+  "§4.1.1#r4": [4, 5, 13, 17, 19, 23]
+  "§4.1.1#r5": [4, 5, 13, 22, 27]
+  "§4.1.1#r6": [4, 5, 13, 22, 27]
+  "§4.1.1#r7": [4, 5, 13, 22, 27]
+  "§4.1.1#r8": [4, 5, 13, 22, 27]
+  "§4.1.1#r9": [4, 5, 13, 26]
+  "§4.1.1#r10": [4, 6, 13, 33, 39]
+  "§4.1.1#r11": [4, 6, 13, 33, 34, 39]
+  "§4.1#r10": [7, 9]
+  "§9.5#r6": 12
+anchor: [2, 10, 11, 14, 15, 30, 36]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-006-use-recommended-classes-create-berhasil
 title: "Use Recommended Classes: Create Berhasil Satu Baris dengan Perubahan, Baris LAND Tanpa Asset Name, dan Delapan Baris Sekaligus"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,34 @@ sourceTc:
   - TC-FA-FAAC-284
   - TC-FA-FAAC-644
   - TC-FA-FAAC-283
+sourceRules: ["T-10", "T-01", "FAAC-LOGIC-16e", "FAAC-LOGIC-16a", "§4.1.5#r7", "§4.1.5#r13", "FAAC-LOGIC-16b", "§4.1.1#p3", "F-FAAC-13.k2", "§4.1.5#r6", "§4.1.5#r8", "§4.1.5#r9", "§4.1.5#r10", "§4.1.5#r11", "§4.1.5#r12", "§4.1.1#r1", "§4.1.1#r7", "§4.1.1#r8", "§4.1.1#r5", "FAAC-LOGIC-02g", "§4.1.1#r24", "§4.1.1#r6", "FAAC-LOGIC-02d", "§4.1.2#r12"]
+smoke: []
+dependsOn: []
+trace:
+  "T-10": [6, 14, 25]
+  "T-01": 6
+  "FAAC-LOGIC-16e": 7
+  "FAAC-LOGIC-16a": [8, 15, 26, 34]
+  "§4.1.5#r7": [8, 26]
+  "§4.1.5#r13": [15, 26]
+  "FAAC-LOGIC-16b": [18, 28]
+  "§4.1.1#p3": 20
+  "F-FAAC-13.k2": 20
+  "§4.1.5#r6": 26
+  "§4.1.5#r8": 26
+  "§4.1.5#r9": 26
+  "§4.1.5#r10": 26
+  "§4.1.5#r11": 26
+  "§4.1.5#r12": 26
+  "§4.1.1#r1": 27
+  "§4.1.1#r7": 28
+  "§4.1.1#r8": 29
+  "§4.1.1#r5": 30
+  "FAAC-LOGIC-02g": 30
+  "§4.1.1#r24": 30
+  "§4.1.1#r6": 31
+  "FAAC-LOGIC-02d": [32, 33]
+  "§4.1.2#r12": 34
 coverage:
   web: automated
 ---

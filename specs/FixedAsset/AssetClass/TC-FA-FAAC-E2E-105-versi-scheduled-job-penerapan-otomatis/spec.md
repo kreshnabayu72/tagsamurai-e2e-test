@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-105-versi-scheduled-job-penerapan-otomatis
 title: "Versi Scheduled: Job Latar Menerapkan Versi Otomatis, Kegagalan Job, dan Pencatatan Log oleh System"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-FAAC-328
   - TC-FA-FAAC-329
   - TC-FA-FAAC-533
+sourceRules: ["R-16", "S-03b", "FAAC-LOGIC-07d", "J-04", "L-03", "§8.3#p1", "§8.2#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "R-16": [4, 29, 31, 33]
+  "S-03b": [7, 19, 37]
+  "FAAC-LOGIC-07d": [9, 21, 37]
+  "J-04": [9, 12, 23, 46, 49, 51]
+  "L-03": [11, 12, 23, 46]
+  "§8.3#p1": 49
+  "§8.2#p1": 51
 coverage:
   web: automated
 ---

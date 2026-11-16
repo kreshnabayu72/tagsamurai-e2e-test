@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-117-filter-logika-or-and-chip-dan-dropdown
 title: "Filter Tabel Asset Class: Logika OR dan AND, Search di Dropdown, dan Chip pada Field Multi-Select"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-FAAC-371
   - TC-FA-FAAC-372
   - TC-FA-FAAC-373
+sourceRules: ["§4.1.1#r4", "§4.1.1#r17", "§4.1.1#r19", "§4.1.1#r20", "§5#b3", "§4.1.1#r7", "§4.1.1#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r4": [3, 5, 26, 33]
+  "§4.1.1#r17": [3, 26, 33]
+  "§4.1.1#r19": [3, 5, 26, 33]
+  "§4.1.1#r20": [3, 5]
+  "§5#b3": 5
+  "§4.1.1#r7": 5
+  "§4.1.1#r5": [9, 11]
+anchor: [14, 16, 20, 21, 23, 24, 30, 31]
 coverage:
   web: automated
 ---

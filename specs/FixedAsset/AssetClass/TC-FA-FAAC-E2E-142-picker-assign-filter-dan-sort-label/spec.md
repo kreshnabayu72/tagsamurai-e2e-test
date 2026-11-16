@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-142-picker-assign-filter-dan-sort-label
 title: "Picker Assign: Struktur Filter, Filter Category, Label, dan Rentang Assets, serta Kolom Label Tidak Dapat Diurutkan"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -10,6 +11,20 @@ sourceTc:
   - TC-FA-FAAC-518
   - TC-FA-FAAC-519
   - TC-FA-FAAC-524
+sourceRules: ["§4.1.4#p1", "§4.1.4#r6", "§4.1.4#r7", "§4.1.4#r8", "§4.1.4#r9", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r5", "§4.1.4#r4", "§4.1.4#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#p1": 7
+  "§4.1.4#r6": [7, 22]
+  "§4.1.4#r7": [7, 22]
+  "§4.1.4#r8": [7, 22]
+  "§4.1.4#r9": 7
+  "§4.1.4#r2": [9, 14]
+  "§4.1.4#r3": [10, 18, 25, 26]
+  "§4.1.4#r5": [11, 22]
+  "§4.1.4#r4": 12
+  "§4.1.4#b1": 12
 coverage:
   web: automated
 ---

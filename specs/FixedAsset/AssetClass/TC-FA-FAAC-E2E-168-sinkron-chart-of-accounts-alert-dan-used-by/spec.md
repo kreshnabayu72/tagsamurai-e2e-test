@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-168-sinkron-chart-of-accounts-alert-dan-used-by
 title: "Sinkronisasi Chart of Accounts: Alert Dependensi Akun, Used By, dan Kolom Accounts"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,26 @@ sourceTc:
   - TC-FA-FAAC-561
   - TC-FA-FAAC-567
   - TC-FA-FAAC-584
+sourceRules: ["§4.1.8#p2", "FAAC-LOGIC-20b", "F-FAAC-16.k2", "F-FAAC-16.k1", "FAAC-LOGIC-20d", "§11.2#r2", "S-02d", "§11.1#r1", "§4.1.1#r7", "FAAC-LOGIC-05a", "FAAC-LOGIC-05b", "FAAC-LOGIC-05e", "S-12", "§9.2#b2", "§4.1.2#r21"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.8#p2": [3, 15, 21, 27]
+  "FAAC-LOGIC-20b": 3
+  "F-FAAC-16.k2": [3, 15, 21, 27]
+  "F-FAAC-16.k1": 9
+  "FAAC-LOGIC-20d": 9
+  "§11.2#r2": [44, 47, 92, 95]
+  "S-02d": [44, 47, 92, 95]
+  "§11.1#r1": [44, 47, 92, 95]
+  "§4.1.1#r7": [50, 58, 60]
+  "FAAC-LOGIC-05a": 50
+  "FAAC-LOGIC-05b": [58, 60]
+  "FAAC-LOGIC-05e": 60
+  "S-12": [63, 65, 73]
+  "§9.2#b2": 63
+  "§4.1.2#r21": [68, 69]
+anchor: [8]
 coverage:
   web: automated
 ---

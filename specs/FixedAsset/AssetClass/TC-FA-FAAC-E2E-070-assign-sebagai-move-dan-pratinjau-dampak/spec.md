@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-070-assign-sebagai-move-dan-pratinjau-dampak
 title: "Assign Asset Name yang Sudah di Asset Class Lain Diperlakukan sebagai Move dengan Effective From dan Pratinjau Dampak"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-FAAC-156
   - TC-FA-FAAC-157
   - TC-FA-FAAC-158
+sourceRules: ["FAAC-LOGIC-13c", "FI-12", "T-08", "FAAC-LOGIC-13e", "F-FAAC-08.k2", "FAAC-LOGIC-07k", "FLD-27", "FAAC-LOGIC-13b"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-13c": 7
+  "FI-12": 8
+  "T-08": [11, 27, 38]
+  "FAAC-LOGIC-13e": [12, 16]
+  "F-FAAC-08.k2": [22, 23, 33, 34, 35]
+  "FAAC-LOGIC-07k": [23, 28, 29, 34, 39]
+  "FLD-27": [24, 35]
+  "FAAC-LOGIC-13b": 39
+anchor: [10, 15, 26, 37]
 coverage:
   web: automated
 ---

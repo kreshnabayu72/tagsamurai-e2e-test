@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-167-log-request-api-langsung-tiga-surface
 title: "Log Request API Langsung Assign, Move, Unassign, Create, Edit, dan Delete pada Tiga Surface"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,24 @@ sourceTc:
   - TC-FA-FAAC-608
   - TC-FA-FAAC-609
   - TC-FA-FAAC-610
+sourceRules: ["J-05", "L-06", "§8.2#p1", "§8.2#r1", "§8.3#p1", "L-08", "§8.4#r7", "L-07", "§8.4#r6", "L-01", "§4.1.1#r32", "L-02", "L-04", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "J-05": [6, 10, 13, 20, 34, 47, 60, 73]
+  "L-06": [6, 7, 11, 14]
+  "§8.2#p1": [10, 24, 38, 51, 64, 77]
+  "§8.2#r1": [11, 25, 39, 52, 65, 78]
+  "§8.3#p1": [13, 14, 27, 28, 41, 42, 54, 55, 67, 68, 80, 81]
+  "L-08": [20, 21, 25, 28]
+  "§8.4#r7": [20, 24, 27]
+  "L-07": [34, 35, 39, 42]
+  "§8.4#r6": 34
+  "L-01": [47, 48, 52, 55]
+  "§4.1.1#r32": [48, 61, 74]
+  "L-02": [60, 61, 65, 68]
+  "L-04": [60, 61, 65, 68]
+  "L-05": [73, 74, 78, 81]
 coverage:
   web: automated
 ---

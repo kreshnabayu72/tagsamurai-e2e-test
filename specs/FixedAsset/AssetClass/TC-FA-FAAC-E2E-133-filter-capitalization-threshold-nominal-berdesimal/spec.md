@@ -1,11 +1,22 @@
 ---
 id: TC-FA-FAAC-E2E-133-filter-capitalization-threshold-nominal-berdesimal
 title: "Filter Tabel Asset Class: Min dan Max pada Capitalization Threshold Membandingkan Nilai Tersimpan Termasuk Bagian Desimal"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-FAAC-706
+sourceRules: ["§5#b2", "§4.1.1#r6", "§5#b3", "ST-23", "§4.1.1#r17", "§4.1.1#r19"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b2": 2
+  "§4.1.1#r6": [5, 6, 9, 13, 14]
+  "§5#b3": [5, 6, 9, 13, 14]
+  "ST-23": 9
+  "§4.1.1#r17": 14
+  "§4.1.1#r19": 14
 coverage:
   web: automated
 ---

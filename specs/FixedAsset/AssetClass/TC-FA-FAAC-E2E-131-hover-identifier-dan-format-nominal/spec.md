@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-131-hover-identifier-dan-format-nominal
 title: "Tabel Asset Class: Format Nominal Berdesimal pada Capitalization Threshold dan Commercial, serta Hover Primary Identifier"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-FAAC-704
   - TC-FA-FAAC-707
   - TC-FA-FAAC-716
+sourceRules: ["§4.1.1#r4", "T-01"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r4": [2, 16, 17, 25]
+  "T-01": [7, 13, 22]
+anchor: [27, 29, 31, 33]
 coverage:
   web: automated
 ---

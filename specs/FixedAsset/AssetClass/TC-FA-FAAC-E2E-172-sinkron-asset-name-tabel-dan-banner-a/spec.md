@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-172-sinkron-asset-name-tabel-dan-banner-a
 title: "Sinkronisasi Assign, Move, dan Banner: Kolom Asset Names dan Assets, Badge Current Class, dan Hitungan Banner"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-FAAC-571
   - TC-FA-FAAC-572
   - TC-FA-FAAC-573
+sourceRules: ["§4.1.1#r8", "§4.1.1#r9", "S-07a", "§4.1.4#r4", "§4.1.1#p3", "S-07c", "S-08a", "§[F-FAAC-09] Move Asset Names#b4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r8": [3, 45, 47]
+  "§4.1.1#r9": [3, 45, 47]
+  "S-07a": 11
+  "§4.1.4#r4": 25
+  "§4.1.1#p3": [32, 41]
+  "S-07c": [32, 41]
+  "S-08a": [54, 56]
+  "§[F-FAAC-09] Move Asset Names#b4": 57
+anchor: [28, 29]
 coverage:
   web: automated
 ---

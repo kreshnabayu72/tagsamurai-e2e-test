@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-126-state-tabel-kombinasi-dan-kembali-dari-detail
 title: "State Tabel Asset Class: Kombinasi Search, Filter, Sort, dan Ukuran Halaman, serta Dipertahankan Saat Kembali dari Detail"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-FAAC-384
   - TC-FA-FAAC-413
   - TC-FA-FAAC-414
+sourceRules: ["§4.1.1#r3", "§9.5#r5", "§3.10#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r3": [7, 15, 23]
+  "§9.5#r5": 7
+  "§3.10#p2": [10, 18]
+anchor: [6, 11, 12, 13, 14, 19, 20, 21, 22]
 coverage:
   web: automated
 ---

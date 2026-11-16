@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-067-assign-batal-tutup-dan-asset-class-inactive
 title: "Batal dan Tutup Dialog Assign Asset Names serta Assign pada Asset Class Inactive"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-FAAC-154
   - TC-FA-FAAC-160
   - TC-FA-FAAC-712
+sourceRules: ["§4.2f#b2", "§4.1.3#p2", "D-20", "F-FAAC-08.k8"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b2": [5, 6, 7, 11, 12, 13, 17, 18, 19]
+  "§4.1.3#p2": 21
+  "D-20": [23, 26, 27]
+  "F-FAAC-08.k8": 24
 coverage:
   web: automated
 ---

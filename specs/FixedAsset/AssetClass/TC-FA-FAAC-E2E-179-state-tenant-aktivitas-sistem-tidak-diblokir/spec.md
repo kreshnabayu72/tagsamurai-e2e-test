@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-179-state-tenant-aktivitas-sistem-tidak-diblokir
 title: "State Tenant: Job Sistem Penerapan Versi, Posting, dan Export Tidak Diblokir saat Client Suspended"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,22 @@ sourceTc:
   - TC-FA-FAAC-327
   - TC-FA-FAAC-343
   - TC-FA-FAAC-611
+sourceRules: ["D-24", "F-FAAC-02.k16", "J-04", "E-FAAC-90", "F-FAAC-12.k1", "L-03", "E-FAAC-91", "L-10", "L-11", "J-01", "J-02"]
+smoke: []
+dependsOn: []
+trace:
+  "D-24": 10
+  "F-FAAC-02.k16": 10
+  "J-04": [10, 19, 20, 25]
+  "E-FAAC-90": [14, 15, 22, 24]
+  "F-FAAC-12.k1": [14, 15]
+  "L-03": [19, 24]
+  "E-FAAC-91": [19, 24]
+  "L-10": [22, 24]
+  "L-11": [22, 24]
+  "J-01": 25
+  "J-02": 25
+anchor: [9]
 coverage:
   web: automated
 ---

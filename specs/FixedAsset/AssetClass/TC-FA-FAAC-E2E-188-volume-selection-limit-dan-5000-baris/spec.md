@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-188-volume-selection-limit-dan-5000-baris
 title: "Volume Data: Selection Limit pada Seleksi Tabel dan Picker Assign serta Download Lebih dari 5.000 Baris"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-FAAC-632
   - TC-FA-FAAC-658
   - TC-FA-FAAC-673
+sourceRules: ["§4.1.4#p4", "§5#b7", "E-FAAC-83", "F-FAAC-14.k2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#p4": [6, 7, 9, 29, 31]
+  "§5#b7": [10, 16]
+  "E-FAAC-83": [14, 15]
+  "F-FAAC-14.k2": [19, 20]
 coverage:
   web: automated
 ---

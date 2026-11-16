@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-041-create-validasi-input-digit-desimal
 title: "Create Asset Class: Input Digit Desimal Ke-3 dan Pemisah Desimal Tidak Dapat Diketik"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,12 @@ sourceTc:
   - TC-FA-FAAC-689
   - TC-FA-FAAC-690
   - TC-FA-FAAC-691
+sourceRules: ["FI-16", "§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "FI-16": [5, 6, 9, 10, 13, 14, 16, 17, 20, 21, 23, 24]
+  "§4.2f#b2": 26
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-134-tab-asset-names-search
 title: "Tab Asset Names: Search pada Kolom Asset Name, Category, Label, Assets, Assigned By, Assigned At, Debounce, dan Kolom Tersembunyi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -13,6 +14,20 @@ sourceTc:
   - TC-FA-FAAC-446
   - TC-FA-FAAC-447
   - TC-FA-FAAC-448
+sourceRules: ["§4.1.3#p1", "§4.1.3#r9", "§4.1.3#r10", "§4.1.3#r11", "§5#b2", "§4.1.3#r2", "§4.1.3#r3", "§4.1.3#r4", "§4.1.3#r6", "ST-24"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#p1": 5
+  "§4.1.3#r9": [5, 7, 10, 13, 16, 19, 26, 28]
+  "§4.1.3#r10": [5, 7, 10, 13, 16, 19, 26, 28, 30]
+  "§4.1.3#r11": [5, 7, 10, 13, 16, 19, 26, 28]
+  "§5#b2": [7, 10, 13, 16, 19, 22, 26, 28, 30, 34]
+  "§4.1.3#r2": [10, 34]
+  "§4.1.3#r3": 13
+  "§4.1.3#r4": 16
+  "§4.1.3#r6": 19
+  "ST-24": [22, 34]
 coverage:
   web: automated
 ---

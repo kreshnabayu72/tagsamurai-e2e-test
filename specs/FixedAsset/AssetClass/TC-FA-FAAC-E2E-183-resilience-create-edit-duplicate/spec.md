@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-183-resilience-create-edit-duplicate
 title: "Resilience: Submit Create, Save Edit, dan Submit Duplicate Gagal karena Error Server 5xx Mempertahankan Form"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-FAAC-143
   - TC-FA-FAAC-180
   - TC-FA-FAAC-269
+sourceRules: ["T-01", "R-01", "§9.6#p1", "§4.2f#b2", "T-02", "R-02"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [7, 36]
+  "R-01": [8, 37]
+  "§9.6#p1": [9, 10, 11, 24, 25, 28, 38]
+  "§4.2f#b2": [13, 40]
+  "T-02": 22
+  "R-02": 23
 coverage:
   web: automated
 ---

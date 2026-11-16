@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-177-state-tenant-write-lockdown-suspended-expired
 title: "State Tenant: Aksi Tulis Create, Edit, Toggle Active, dan Delete Ditolak saat Client Suspended atau Expired"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-FAAC-591
   - TC-FA-FAAC-592
   - TC-FA-FAAC-593
+sourceRules: ["T-13", "E-FAAC-73", "§[F-FAAC-01] Create Asset Class#p1", "§4.2f#b2", "§[F-FAAC-04] Deactivate Asset Class#p1", "§4.1.1#r1", "§[F-FAAC-05] Delete Asset Class#p1", "§[F-FAAC-02] Edit Asset Class#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "T-13": [5, 13, 17, 26]
+  "E-FAAC-73": [5, 6, 18, 27]
+  "§[F-FAAC-01] Create Asset Class#p1": 6
+  "§4.2f#b2": 9
+  "§[F-FAAC-04] Deactivate Asset Class#p1": 13
+  "§4.1.1#r1": 14
+  "§[F-FAAC-05] Delete Asset Class#p1": [17, 18]
+  "§[F-FAAC-02] Edit Asset Class#p1": [26, 27]
+anchor: [7, 28]
 coverage:
   web: automated
 ---

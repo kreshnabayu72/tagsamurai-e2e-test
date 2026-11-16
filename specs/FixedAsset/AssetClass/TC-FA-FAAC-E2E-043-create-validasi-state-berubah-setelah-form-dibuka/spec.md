@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-043-create-validasi-state-berubah-setelah-form-dibuka
 title: "Create Asset Class: Submit Ditolak Saat Tax Depreciation Class, Tax Method, atau Akun Berubah Setelah Form Dibuka"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-FAAC-118
   - TC-FA-FAAC-119
   - TC-FA-FAAC-120
+sourceRules: ["V-35", "§4.1.2#r14", "FAAC-LOGIC-02e", "F-FAAC-01.k7", "V-36", "§4.1.2#r15", "FAAC-LOGIC-02f", "V-28", "§4.1.2#r20", "F-FAAC-01.k8", "§4.2f#b2", "§4.1.2#p11"]
+smoke: []
+dependsOn: []
+trace:
+  "V-35": 6
+  "§4.1.2#r14": 9
+  "FAAC-LOGIC-02e": 10
+  "F-FAAC-01.k7": [11, 20]
+  "V-36": 16
+  "§4.1.2#r15": 18
+  "FAAC-LOGIC-02f": 19
+  "V-28": 25
+  "§4.1.2#r20": [28, 29]
+  "F-FAAC-01.k8": 30
+  "§4.2f#b2": 33
+  "§4.1.2#p11": 33
+anchor: [7, 26]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-039-create-validasi-units-dan-residual-value
 title: "Create Asset Class: Validasi Total Estimated Units, Unit Type, dan Residual Value"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-FAAC-111
   - TC-FA-FAAC-112
   - TC-FA-FAAC-113
+sourceRules: ["V-16", "§8.4#r9", "V-15", "V-14", "V-17", "FI-06", "§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "V-16": 5
+  "§8.4#r9": [6, 14]
+  "V-15": [8, 10]
+  "V-14": 13
+  "V-17": [16, 18, 20, 22]
+  "FI-06": 23
+  "§4.2f#b2": 25
 coverage:
   web: automated
 ---

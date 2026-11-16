@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-028-role-matrix-positif-update-only-assign-move-unassign-dan-manage-delete
 title: "Role Matrix Positif: Update-Only Melihat Kontrol Assign, Move, Unassign dan Menjalankan Assign, serta Manage Accounting (Read, Delete) Menjalankan Delete"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,20 @@ sourceTc:
   - TC-FA-FAAC-613
   - TC-FA-FAAC-617
   - TC-FA-FAAC-86
+sourceRules: ["§4.8#r21", "§4.8#r14", "§4.8#r16", "§3.9#r13", "D-13", "T-07", "S-07b", "D-07", "T-06", "§[F-FAAC-05] Delete Asset Class#b4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r21": [5, 8]
+  "§4.8#r14": 6
+  "§4.8#r16": 8
+  "§3.9#r13": 9
+  "D-13": 17
+  "T-07": 18
+  "S-07b": 19
+  "D-07": 24
+  "T-06": 26
+  "§[F-FAAC-05] Delete Asset Class#b4": 27
 coverage:
   web: automated
 ---

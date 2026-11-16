@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-100-apply-changes-validasi-effective-from-dasar
 title: "Apply Changes: Validasi Effective From Kosong, Periode Closed, dan Bulan Tanpa Accounting Period"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-FAAC-316
   - TC-FA-FAAC-317
   - TC-FA-FAAC-318
+sourceRules: ["V-23", "§[F-FAAC-02] Edit Asset Class#b2", "V-24", "F-FAAC-02.k7", "FAAC-LOGIC-07b", "T-02"]
+smoke: []
+dependsOn: []
+trace:
+  "V-23": 8
+  "§[F-FAAC-02] Edit Asset Class#b2": [9, 10]
+  "V-24": 12
+  "F-FAAC-02.k7": [15, 16, 19]
+  "FAAC-LOGIC-07b": 18
+  "T-02": 21
 coverage:
   web: automated
 ---

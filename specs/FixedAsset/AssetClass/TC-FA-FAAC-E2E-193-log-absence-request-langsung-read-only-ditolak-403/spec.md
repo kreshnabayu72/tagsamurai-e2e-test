@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-193-log-absence-request-langsung-read-only-ditolak-403
 title: "Log Absence: Request Langsung Read Only Ditolak 403 Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,20 @@ sourceTc:
   - TC-FA-FAAC-597
   - TC-FA-FAAC-618
   - TC-FA-FAAC-686
+sourceRules: ["E-FAAC-78", "§9.3#r2", "§8#p1", "§8.4#r9", "§8.2#p1", "§8.3#p1", "§9.3#r3", "§9.3#r4", "E-FAAC-114", "F-FAAC-17.k1"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FAAC-78": [3, 9, 10, 16, 22]
+  "§9.3#r2": 3
+  "§8#p1": [4, 11, 17, 23, 29]
+  "§8.4#r9": [4, 5, 6, 11, 12, 13, 17, 18, 19, 23, 24, 25, 29, 30, 31]
+  "§8.2#p1": [5, 12, 18, 24, 30]
+  "§8.3#p1": [6, 13, 19, 25, 31]
+  "§9.3#r3": [9, 10, 22]
+  "§9.3#r4": 16
+  "E-FAAC-114": 28
+  "F-FAAC-17.k1": 28
 coverage:
   web: automated
 ---

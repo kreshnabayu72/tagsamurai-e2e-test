@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-184-resilience-assign
 title: "Resilience: Assign Asset Name Gagal karena Error Server, Dialog Tetap Terbuka, dan Assign Diulang setelah Kegagalan Sebagian"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-FAAC-165
   - TC-FA-FAAC-166
   - TC-FA-FAAC-167
+sourceRules: ["T-07", "R-09", "§9.6#p1", "T-08", "§7.2#p2", "§7.3#b5", "§[F-FAAC-08] Assign Asset Names#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "T-07": [7, 24, 32]
+  "R-09": [8, 18, 25]
+  "§9.6#p1": [9, 11, 19]
+  "T-08": 17
+  "§7.2#p2": 17
+  "§7.3#b5": [28, 33]
+  "§[F-FAAC-08] Assign Asset Names#b5": 34
 coverage:
   web: automated
 ---

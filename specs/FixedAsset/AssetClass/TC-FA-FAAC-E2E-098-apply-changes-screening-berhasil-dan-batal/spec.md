@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-098-apply-changes-screening-berhasil-dan-batal
 title: "Apply Changes: Screening Dialog, Cancel, dan Apply dengan Effective From Bulan Berjalan"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-FAAC-307
   - TC-FA-FAAC-308
   - TC-FA-FAAC-310
+sourceRules: ["D-11", "FLD-26", "FAAC-LOGIC-07c", "FAAC-LOGIC-07f", "§4.2d#p1", "§[F-FAAC-02] Edit Asset Class#b4", "E-FAAC-08", "F-FAAC-02.k18", "T-02", "§4.1.1#r4", "§[F-FAAC-02] Edit Asset Class#p2", "ST-34", "FAAC-LOGIC-09d"]
+smoke: []
+dependsOn: []
+trace:
+  "D-11": 8
+  "FLD-26": 9
+  "FAAC-LOGIC-07c": 9
+  "FAAC-LOGIC-07f": 10
+  "§4.2d#p1": [11, 15]
+  "§[F-FAAC-02] Edit Asset Class#b4": 12
+  "E-FAAC-08": [14, 16, 17, 18]
+  "F-FAAC-02.k18": [21, 22]
+  "T-02": 22
+  "§4.1.1#r4": 23
+  "§[F-FAAC-02] Edit Asset Class#p2": 25
+  "ST-34": 26
+  "FAAC-LOGIC-09d": 27
 coverage:
   web: automated
 ---

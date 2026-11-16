@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-130-bulk-action-bar-dan-seleksi
 title: "Bulk Action Bar Tabel Asset Class: Tampil, Aksi Menurut Status Baris, Seleksi Halaman dan Lintas Halaman, serta Seleksi Dipertahankan"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,13 @@ sourceTc:
   - TC-FA-FAAC-438
   - TC-FA-FAAC-439
   - TC-FA-FAAC-440
+sourceRules: ["§5#b7", "§4.1.1#p5"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b7": [3, 6, 26, 30, 45]
+  "§4.1.1#p5": [9, 13, 16]
+anchor: [5, 20, 21, 23, 27, 29, 36, 39, 44]
 coverage:
   web: automated
 ---

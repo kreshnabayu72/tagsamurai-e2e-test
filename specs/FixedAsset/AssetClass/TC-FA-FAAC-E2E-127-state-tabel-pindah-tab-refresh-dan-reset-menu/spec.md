@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-127-state-tabel-pindah-tab-refresh-dan-reset-menu
 title: "State Tabel Asset Class: Dipertahankan Saat Pindah Tab Accounting dan Refresh, Direset Saat Menu Accounting Diklik Ulang"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-FAAC-415
   - TC-FA-FAAC-416
   - TC-FA-FAAC-417
+sourceRules: ["§4.4#r1", "§4.4#r14", "§5#b6", "FAAC-LOGIC-18c", "§9.5#r1", "§9.5#r3", "§9.5#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.4#r1": [8, 9, 10, 11]
+  "§4.4#r14": [12, 19]
+  "§5#b6": [15, 16, 17, 18]
+  "FAAC-LOGIC-18c": 21
+  "§9.5#r1": 24
+  "§9.5#r3": 25
+  "§9.5#r5": 26
+anchor: [23]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-012-alert-dependensi-akun-chart-of-accounts
 title: "Alert Dependensi Akun Chart of Accounts: Teks per Account Function, Posisi di Atas Banner, dan Tidak Tampil Saat Lengkap"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-FAAC-31
   - TC-FA-FAAC-25
   - TC-FA-FAAC-26
+sourceRules: ["§4.1.8#p2", "FAAC-LOGIC-20a", "FAAC-LOGIC-20b", "§10#r12", "§4.1.1#p3", "§4.2a#p1", "FAAC-LOGIC-20d"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.8#p2": [1, 2, 5, 9]
+  "FAAC-LOGIC-20a": [1, 9]
+  "FAAC-LOGIC-20b": 2
+  "§10#r12": 3
+  "§4.1.1#p3": [4, 5]
+  "§4.2a#p1": 13
+  "FAAC-LOGIC-20d": 14
 coverage:
   web: automated
 ---

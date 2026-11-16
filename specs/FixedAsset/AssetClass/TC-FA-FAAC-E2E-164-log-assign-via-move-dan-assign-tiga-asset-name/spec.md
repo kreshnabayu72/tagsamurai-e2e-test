@@ -1,12 +1,23 @@
 ---
 id: TC-FA-FAAC-E2E-164-log-assign-via-move-dan-assign-tiga-asset-name
 title: "Log Assign sebagai Move dan Assign Tiga Asset Name pada Changelog"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-547
   - TC-FA-FAAC-548
+sourceRules: ["FAAC-LOGIC-13c", "F-FAAC-08.k1", "L-08", "§8.4#r7", "L-06", "§8.4#r6"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-13c": 12
+  "F-FAAC-08.k1": 12
+  "L-08": [12, 13, 14]
+  "§8.4#r7": 12
+  "L-06": [27, 28, 29, 30]
+  "§8.4#r6": 27
 coverage:
   web: automated
 ---

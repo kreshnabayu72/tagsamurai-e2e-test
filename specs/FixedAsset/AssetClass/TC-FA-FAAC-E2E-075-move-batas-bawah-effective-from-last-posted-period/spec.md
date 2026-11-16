@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-075-move-batas-bawah-effective-from-last-posted-period
 title: "Move: Batas Bawah Effective From Akibat Accounting Period Closed dan Last Posted Period"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-FAAC-200
   - TC-FA-FAAC-201
   - TC-FA-FAAC-202
+sourceRules: ["V-24", "F-FAAC-09.k5", "E-FAAC-95", "V-25", "F-FAAC-09.k9"]
+smoke: []
+dependsOn: []
+trace:
+  "V-24": 7
+  "F-FAAC-09.k5": 9
+  "E-FAAC-95": [10, 19]
+  "V-25": [16, 25]
+  "F-FAAC-09.k9": [18, 27]
 coverage:
   web: automated
 ---

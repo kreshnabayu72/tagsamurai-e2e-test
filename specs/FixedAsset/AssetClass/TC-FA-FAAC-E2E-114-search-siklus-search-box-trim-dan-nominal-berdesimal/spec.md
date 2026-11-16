@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-114-search-siklus-search-box-trim-dan-nominal-berdesimal
 title: "Search Tabel Asset Class: Siklus Search Box, Pemangkasan Spasi, dan Nominal Berdesimal"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-FAAC-360
   - TC-FA-FAAC-361
   - TC-FA-FAAC-705
+sourceRules: ["§5#b2", "§4.1.1#r6", "§4.1.1#b6"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b2": [9, 11, 17]
+  "§4.1.1#r6": [27, 28, 31, 32]
+  "§4.1.1#b6": [27, 31]
+anchor: [2, 4, 5, 6, 8, 13, 14, 15, 20, 21, 22, 24, 25]
 coverage:
   web: automated
 ---

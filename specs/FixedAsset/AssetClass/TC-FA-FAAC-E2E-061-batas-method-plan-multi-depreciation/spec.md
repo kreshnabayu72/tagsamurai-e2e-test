@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-061-batas-method-plan-multi-depreciation
 title: "Batas Method pada Plan Multi Depreciation: Max Depreciation Methods, Boundary, dan Perhitungan Method Lama"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -11,6 +12,20 @@ sourceTc:
   - TC-FA-FAAC-146
   - TC-FA-FAAC-184
   - TC-FA-FAAC-185
+sourceRules: ["D-22", "F-FAAC-01.k12", "§4.2f#b2", "E-FAAC-77", "T-01", "FAAC-LOGIC-17b", "FAAC-LOGIC-17c", "T-02", "§Aturan Logika Modul#b4", "FAAC-LOGIC-12d"]
+smoke: []
+dependsOn: []
+trace:
+  "D-22": [6, 16]
+  "F-FAAC-01.k12": 7
+  "§4.2f#b2": [10, 20]
+  "E-FAAC-77": 17
+  "T-01": [26, 33, 50]
+  "FAAC-LOGIC-17b": [27, 51]
+  "FAAC-LOGIC-17c": 34
+  "T-02": 40
+  "§Aturan Logika Modul#b4": 41
+  "FAAC-LOGIC-12d": 45
 coverage:
   web: automated
 ---

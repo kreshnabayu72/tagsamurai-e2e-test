@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-051-create-berhasil-not-depreciated-akun-kosong-dan-start-rule
 title: "Create Asset Class Berhasil: Method Not Depreciated, Tab Accounts Kosong, dan Start Convention serta Start Rule Bukan Nilai Awal"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,27 @@ sourceTc:
   - TC-FA-FAAC-91
   - TC-FA-FAAC-92
   - TC-FA-FAAC-148
+sourceRules: ["FAAC-LOGIC-02a", "FI-02", "ST-08", "FI-04", "ST-09", "FAAC-LOGIC-02g", "T-01", "§4.1.1#r4", "§4.1.1#r5", "FAAC-LOGIC-05c", "§4.1.1#r6", "FAAC-LOGIC-03b", "§4.1.1#r7", "FAAC-LOGIC-05b", "FAAC-LOGIC-05a", "FAAC-LOGIC-04f", "FAAC-LOGIC-02d"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-02a": 4
+  "FI-02": 5
+  "ST-08": 5
+  "FI-04": [7, 8]
+  "ST-09": 7
+  "FAAC-LOGIC-02g": [7, 8]
+  "T-01": [10, 19, 33]
+  "§4.1.1#r4": 13
+  "§4.1.1#r5": 13
+  "FAAC-LOGIC-05c": 20
+  "§4.1.1#r6": 23
+  "FAAC-LOGIC-03b": 23
+  "§4.1.1#r7": [25, 26]
+  "FAAC-LOGIC-05b": 25
+  "FAAC-LOGIC-05a": [26, 27]
+  "FAAC-LOGIC-04f": 27
+  "FAAC-LOGIC-02d": [35, 36]
 coverage:
   web: automated
 ---

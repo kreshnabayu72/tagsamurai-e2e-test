@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-097-aksi-asset-name-pada-asset-class-dihapus-pengguna-lain
 title: "Aksi Assign, Move, dan Unassign Asset Name pada Asset Class yang Dihapus Pengguna Lain"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-FAAC-213
   - TC-FA-FAAC-240
   - TC-FA-FAAC-241
+sourceRules: ["T-14", "§[F-FAAC-08] Assign Asset Names#b4", "F-FAAC-05.k4", "§[F-FAAC-09] Move Asset Names#b3", "§[F-FAAC-10] Unassign Asset Names#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "T-14": [8, 10, 21, 23, 32, 33, 42, 43, 44]
+  "§[F-FAAC-08] Assign Asset Names#b4": 9
+  "F-FAAC-05.k4": [11, 12, 24, 35, 46]
+  "§[F-FAAC-09] Move Asset Names#b3": 22
+  "§[F-FAAC-10] Unassign Asset Names#b3": [34, 45]
 coverage:
   web: automated
 ---

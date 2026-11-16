@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-077-move-berhasil-single-dan-massal
 title: "Move Asset Name Berhasil: Satu Asset Name dan Massal dengan Effective From Bulan Berjalan"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-FAAC-190
   - TC-FA-FAAC-191
   - TC-FA-FAAC-192
+sourceRules: ["E-FAAC-42", "T-08", "FAAC-LOGIC-07k", "FAAC-LOGIC-13e", "§4.1.3#r5", "D-14"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FAAC-42": [6, 12, 31]
+  "T-08": [7, 17, 32]
+  "FAAC-LOGIC-07k": [8, 11, 18, 35]
+  "FAAC-LOGIC-13e": [16, 22]
+  "§4.1.3#r5": 21
+  "D-14": [26, 27, 28]
 coverage:
   web: automated
 ---

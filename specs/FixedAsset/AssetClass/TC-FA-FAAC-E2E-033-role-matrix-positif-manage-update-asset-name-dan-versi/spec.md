@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-033-role-matrix-positif-manage-update-asset-name-dan-versi
 title: "Role Matrix Positif: Manage Accounting (Read, Update) Assign, Move, Unassign Asset Name dan Cancel Scheduled Version Berhasil"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-FAAC-83
   - TC-FA-FAAC-84
   - TC-FA-FAAC-85
+sourceRules: ["§4.2c#p1", "D-13", "T-07", "D-14", "T-08", "D-15", "T-09a", "§3.11#p1", "FAAC-LOGIC-07l", "T-15", "S-17", "ST-34"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2c#p1": 5
+  "D-13": 5
+  "T-07": 8
+  "D-14": 14
+  "T-08": 17
+  "D-15": 23
+  "T-09a": 25
+  "§3.11#p1": 30
+  "FAAC-LOGIC-07l": 30
+  "T-15": 32
+  "S-17": 33
+  "ST-34": 33
 coverage:
   web: automated
 ---

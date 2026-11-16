@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-044-create-field-dinamis-method
 title: "Create Asset Class: Field Dinamis Depreciation Menurut Method"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,23 @@ sourceTc:
   - TC-FA-FAAC-122
   - TC-FA-FAAC-123
   - TC-FA-FAAC-124
+sourceRules: ["FI-01", "§4.1.2#r12", "§4.1.2#r13", "ST-08", "FLD-07", "§4.1.2#r8", "§4.1.2#r10", "§4.1.2#r11", "§9.5#r16", "FI-02", "FAAC-LOGIC-02b", "§4.2f#b2", "§4.1.2#p11"]
+smoke: []
+dependsOn: []
+trace:
+  "FI-01": 4
+  "§4.1.2#r12": 4
+  "§4.1.2#r13": 4
+  "ST-08": [5, 10, 13]
+  "FLD-07": [6, 7]
+  "§4.1.2#r8": 9
+  "§4.1.2#r10": 12
+  "§4.1.2#r11": [12, 15]
+  "§9.5#r16": 15
+  "FI-02": [18, 19]
+  "FAAC-LOGIC-02b": 19
+  "§4.2f#b2": 21
+  "§4.1.2#p11": 21
 coverage:
   web: automated
 ---

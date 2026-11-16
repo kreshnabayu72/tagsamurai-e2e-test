@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-008-guided-tooltip-skip-back-esc-dan-pindah-tab
 title: "Guided Tooltip Tab Asset Class: Back, Skip, Klik Overlay, Esc Menyimpan Flag, dan Pindah Halaman Tidak Menyimpan Flag"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -10,6 +11,13 @@ sourceTc:
   - TC-FA-FAAC-50
   - TC-FA-FAAC-54
   - TC-FA-FAAC-55
+sourceRules: ["§4.7#r1", "§4.7#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#r1": [7, 50]
+  "§4.7#p1": [19, 30, 41, 47, 50]
+anchor: [5, 8, 15, 20, 25, 31, 36, 42]
 coverage:
   web: automated
 ---

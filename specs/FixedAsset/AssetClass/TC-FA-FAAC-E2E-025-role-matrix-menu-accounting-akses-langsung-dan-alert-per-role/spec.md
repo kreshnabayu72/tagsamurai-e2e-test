@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-025-role-matrix-menu-accounting-akses-langsung-dan-alert-per-role
 title: "Role Matrix: Menu Accounting, Akses Langsung ke Tab Asset Class, dan Alert Dependensi Akun per Role"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,23 @@ sourceTc:
   - TC-FA-FAAC-589
   - TC-FA-FAAC-682
   - TC-FA-FAAC-683
+sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r5", "§2.1#b2", "§3.10#p1", "§2.1#r4", "E-FAAC-79", "§4.1.8#p2", "F-FAAC-16.k2", "§4.8#r2", "FAAC-LOGIC-20b", "FI-15"]
+smoke: []
+dependsOn: []
+trace:
+  "§2.1#r1": 2
+  "§2.1#r2": 4
+  "§2.1#r5": [6, 8, 10, 12]
+  "§2.1#b2": [6, 8, 10, 12]
+  "§3.10#p1": [15, 18]
+  "§2.1#r4": [15, 18]
+  "E-FAAC-79": [21, 22, 25, 26]
+  "§4.1.8#p2": [29, 35]
+  "F-FAAC-16.k2": [29, 35]
+  "§4.8#r2": [29, 30, 35, 36]
+  "FAAC-LOGIC-20b": [30, 36]
+  "FI-15": [32, 38]
+anchor: [14, 17]
 coverage:
   web: automated
 ---

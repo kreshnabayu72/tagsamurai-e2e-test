@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-145-badge-label-current-class-dan-teks-panjang
 title: "Picker Assign: Badge Label dengan Chip +N more dan Badge Current Class Terpotong, serta Teks Class Name dan Asset Name Sangat Panjang"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-FAAC-685
   - TC-FA-FAAC-694
   - TC-FA-FAAC-695
+sourceRules: ["§4.1.4#r3", "§4.1.4#r4", "§4.1#r5", "§4.1.1#r3", "§4.1.2#r2", "§4.1.3#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r3": [7, 8, 10]
+  "§4.1.4#r4": [19, 21]
+  "§4.1#r5": 23
+  "§4.1.1#r3": [28, 29]
+  "§4.1.2#r2": 28
+  "§4.1.3#r1": [35, 36]
+anchor: [24, 25, 30, 32, 37, 39]
 coverage:
   web: automated
 ---

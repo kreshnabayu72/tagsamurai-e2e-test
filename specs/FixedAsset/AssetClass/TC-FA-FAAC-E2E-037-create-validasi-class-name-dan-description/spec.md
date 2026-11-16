@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-037-create-validasi-class-name-dan-description
 title: "Create Asset Class: Validasi Class Name dan Description (Kosong, Batas Panjang, Emoji)"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-FAAC-102
   - TC-FA-FAAC-103
   - TC-FA-FAAC-104
+sourceRules: ["V-05", "ST-04", "F-FAAC-01.k4", "V-06", "V-07", "V-08", "§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "V-05": 6
+  "ST-04": 7
+  "F-FAAC-01.k4": 8
+  "V-06": [10, 12]
+  "V-07": 14
+  "V-08": [17, 19]
+  "§4.2f#b2": 21
 coverage:
   web: automated
 ---

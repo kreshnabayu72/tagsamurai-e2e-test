@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-152-changelog-sort-3-state-dan-setup-column-screening
 title: "Modal Changelog: Sort Tiga Tahap Kolom Date dan Kolom Campuran, serta Screening Column Visibility dan Setup Column"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,24 @@ sourceTc:
   - TC-FA-FAAC-501
   - TC-FA-FAAC-502
   - TC-FA-FAAC-503
+sourceRules: ["§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§4.1.1#r32", "§4.4#r15", "§4.1#r10", "§4.1.1#p9", "§4.1.1#r33", "§4.4#r14", "§4.1.1#r51"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r26": [3, 4, 8, 9, 13, 15, 17, 20]
+  "§4.1.1#r27": [3, 4, 8, 9]
+  "§4.1.1#r28": [3, 4, 8, 9]
+  "§4.1.1#r29": [3, 4, 8, 9]
+  "§4.1.1#r30": [3, 4, 8, 9, 22, 24]
+  "§4.1.1#r31": [3, 4, 8, 9, 28, 30]
+  "§4.1.1#r32": [3, 4, 8, 9]
+  "§4.4#r15": 5
+  "§4.1#r10": 5
+  "§4.1.1#p9": [13, 20]
+  "§4.1.1#r33": [13, 17]
+  "§4.4#r14": [15, 17, 19, 22, 24, 26, 28, 30, 32]
+  "§4.1.1#r51": 15
+anchor: [7, 10, 11]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-086-duplicate-nilai-sumber-tidak-valid-dan-versi-scheduled
 title: "Duplicate Asset Class: Nilai Sumber Tidak Valid Dikosongkan dan Pre-fill dari Versi Terakhir"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-FAAC-265
   - TC-FA-FAAC-266
   - TC-FA-FAAC-674
+sourceRules: ["§4.2b#p1", "R-07", "§3.8#p1", "ST-34", "§4.2f#b2", "V-19", "FAAC-LOGIC-02f", "V-20", "V-36"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2b#p1": 3
+  "R-07": 4
+  "§3.8#p1": [6, 13, 14, 16]
+  "ST-34": 7
+  "§4.2f#b2": [9, 21, 30]
+  "V-19": 19
+  "FAAC-LOGIC-02f": 25
+  "V-20": 27
+  "V-36": 28
 coverage:
   web: automated
 ---

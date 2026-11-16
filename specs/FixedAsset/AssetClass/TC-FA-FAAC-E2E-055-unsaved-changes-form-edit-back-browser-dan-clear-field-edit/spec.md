@@ -1,12 +1,24 @@
 ---
 id: TC-FA-FAAC-E2E-055-unsaved-changes-form-edit-back-browser-dan-clear-field-edit
 title: "Form Edit Asset Class: Unsaved Changes dengan Tombol Back Browser dan Clear Field pada Mode Edit"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-662
   - TC-FA-FAAC-697
+sourceRules: ["§4.2f#b2", "§4.1.2#p11", "§4.1.2#r2", "§4.1.2#r3", "§4.1.2#p1", "§4.1.2#r1", "§4.1.2#r6"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b2": [5, 19, 26]
+  "§4.1.2#p11": [5, 7, 8, 11, 12, 26, 28]
+  "§4.1.2#r2": [15, 21]
+  "§4.1.2#r3": [16, 22]
+  "§4.1.2#p1": 18
+  "§4.1.2#r1": 20
+  "§4.1.2#r6": 24
 coverage:
   web: automated
 ---

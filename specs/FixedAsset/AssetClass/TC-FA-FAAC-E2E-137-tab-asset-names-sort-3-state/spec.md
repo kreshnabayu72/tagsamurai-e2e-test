@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-137-tab-asset-names-sort-3-state
 title: "Tab Asset Names: Sort Tiga Tahap pada Kolom Asset Name, Category, dan Assets"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-FAAC-457
   - TC-FA-FAAC-458
   - TC-FA-FAAC-459
+sourceRules: ["§4.1.3#r1", "§4.4#r14", "§4.1.3#r9", "§4.1.3#r10", "§4.1.3#r11", "§5#b4", "§4.1.3#r2", "§4.1.3#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#r1": [6, 8, 11, 18, 25]
+  "§4.4#r14": [6, 8, 10, 15, 17, 20, 22, 24]
+  "§4.1.3#r9": [6, 8, 11, 13, 15, 18, 20, 22, 25]
+  "§4.1.3#r10": [6, 8, 11, 13, 15, 18, 20, 22, 25]
+  "§4.1.3#r11": [6, 8, 11, 13, 15, 18, 20, 22, 25]
+  "§5#b4": [11, 13, 15, 18, 25]
+  "§4.1.3#r2": [13, 15]
+  "§4.1.3#r4": [20, 22]
 coverage:
   web: automated
 ---

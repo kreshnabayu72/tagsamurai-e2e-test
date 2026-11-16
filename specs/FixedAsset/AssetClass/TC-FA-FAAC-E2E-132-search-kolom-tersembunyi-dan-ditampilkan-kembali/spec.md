@@ -1,11 +1,17 @@
 ---
 id: TC-FA-FAAC-E2E-132-search-kolom-tersembunyi-dan-ditampilkan-kembali
 title: "Search Tabel Asset Class: Kolom yang Disembunyikan Tidak Dicari dan Kembali Dicari Setelah Ditampilkan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-FAAC-362
+sourceRules: ["§5#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b2": [4, 6, 10]
 coverage:
   web: automated
 ---

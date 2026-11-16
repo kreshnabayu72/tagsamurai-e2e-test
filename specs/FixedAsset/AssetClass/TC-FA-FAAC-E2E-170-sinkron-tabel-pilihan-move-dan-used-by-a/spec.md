@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-170-sinkron-tabel-pilihan-move-dan-used-by-a
 title: "Sinkronisasi Create, Rename, Delete Asset Class ke Tabel, Pilihan Move, dan Used By Akun"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,29 @@ sourceTc:
   - TC-FA-FAAC-565
   - TC-FA-FAAC-583
   - TC-FA-FAAC-588
+sourceRules: ["S-01a", "S-01b", "S-01c", "S-01d", "L-01", "§8.2#p1", "§8.3#p1", "S-02a", "S-02b", "S-02c", "§9.2#r4", "ST-23", "S-06a", "S-06b", "S-06c", "S-06e", "L-05", "S-06d", "§4.2c#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "S-01a": 15
+  "S-01b": 21
+  "S-01c": 26
+  "S-01d": [30, 34, 37]
+  "L-01": 31
+  "§8.2#p1": [35, 96]
+  "§8.3#p1": [38, 99]
+  "S-02a": 45
+  "S-02b": [51, 111]
+  "S-02c": [56, 123]
+  "§9.2#r4": 60
+  "ST-23": [73, 141]
+  "S-06a": [74, 142]
+  "S-06b": [80, 81]
+  "S-06c": [86, 137]
+  "S-06e": [90, 95, 98]
+  "L-05": 91
+  "S-06d": 92
+  "§4.2c#p1": 118
 coverage:
   web: automated
 ---

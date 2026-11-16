@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-102-apply-changes-alert-dampak-dan-capitalization-threshold
 title: "Apply Changes: Alert Dampak Not Depreciated dan Perubahan Capitalization Threshold Saja"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-FAAC-313
   - TC-FA-FAAC-314
   - TC-FA-FAAC-315
+sourceRules: ["FAAC-LOGIC-07g", "F-FAAC-02.k10", "§4.2f#b2", "FI-10", "FAAC-LOGIC-07a", "FAAC-LOGIC-07f", "T-02", "S-03d"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-07g": [6, 17]
+  "F-FAAC-02.k10": 7
+  "§4.2f#b2": [10, 22]
+  "FI-10": 19
+  "FAAC-LOGIC-07a": 29
+  "FAAC-LOGIC-07f": 30
+  "T-02": 32
+  "S-03d": 33
 coverage:
   web: automated
 ---

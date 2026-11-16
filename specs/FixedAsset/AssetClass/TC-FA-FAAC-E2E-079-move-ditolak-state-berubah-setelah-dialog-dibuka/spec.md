@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-079-move-ditolak-state-berubah-setelah-dialog-dibuka
 title: "Move Ditolak atau Dilewati saat State Berubah Setelah Dialog Dibuka"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,20 @@ sourceTc:
   - TC-FA-FAAC-208
   - TC-FA-FAAC-209
   - TC-FA-FAAC-210
+sourceRules: ["D-20", "F-FAAC-09.k4", "F-FAAC-09.k6", "FAAC-LOGIC-13e", "T-08", "§7.2#p3", "§[F-FAAC-09] Move Asset Names#b2", "FAAC-LOGIC-13d", "F-FAAC-09.k7", "§7.3#b4"]
+smoke: []
+dependsOn: []
+trace:
+  "D-20": 7
+  "F-FAAC-09.k4": [7, 8]
+  "F-FAAC-09.k6": 16
+  "FAAC-LOGIC-13e": 17
+  "T-08": 18
+  "§7.2#p3": 19
+  "§[F-FAAC-09] Move Asset Names#b2": 22
+  "FAAC-LOGIC-13d": 22
+  "F-FAAC-09.k7": [25, 26, 27]
+  "§7.3#b4": 28
 coverage:
   web: automated
 ---

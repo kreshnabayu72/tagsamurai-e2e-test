@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-035-role-matrix-negatif-read-only-permintaan-langsung-ke-server
 title: "Role Matrix Negatif: Read Only Tidak Dapat Create, Edit, Deactivate, atau Delete (UI dan Permintaan Langsung ke Server)"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,24 @@ sourceTc:
   - TC-FA-FAAC-595
   - TC-FA-FAAC-596
   - TC-FA-FAAC-597
+sourceRules: ["§4.8#r3", "§4.8#r11", "§4.8#r16", "§4.8#r18", "E-FAAC-78", "§9.3#r2", "ST-32", "§3.9#r8", "§4.8#r9", "§4.8#b2", "§4.8#r10", "§9.3#r3", "§4.8#r20", "§9.3#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r3": [1, 22]
+  "§4.8#r11": 2
+  "§4.8#r16": [3, 23]
+  "§4.8#r18": 3
+  "E-FAAC-78": [6, 7, 17, 18, 19, 20, 26, 27, 28]
+  "§9.3#r2": 6
+  "ST-32": 10
+  "§3.9#r8": 10
+  "§4.8#r9": 13
+  "§4.8#b2": 13
+  "§4.8#r10": 14
+  "§9.3#r3": [17, 18]
+  "§4.8#r20": 23
+  "§9.3#r4": 26
 coverage:
   web: automated
 ---

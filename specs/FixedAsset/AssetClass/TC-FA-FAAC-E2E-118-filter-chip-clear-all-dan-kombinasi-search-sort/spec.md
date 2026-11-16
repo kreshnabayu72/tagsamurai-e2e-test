@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-118-filter-chip-clear-all-dan-kombinasi-search-sort
 title: "Filter Tabel Asset Class: Chip Filter Aktif, Clear all, dan Kombinasi dengan Search dan Sort"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,22 @@ sourceTc:
   - TC-FA-FAAC-376
   - TC-FA-FAAC-377
   - TC-FA-FAAC-378
+sourceRules: ["§4.1.1#b4", "§4.4#r13", "§4.1.1#r19", "§4.1.1#r25", "§5#b2", "§5#b3", "§4.1.1#r17", "§4.1.1#r22", "§4.1.1#r23", "§4.4#r14", "§4.1.1#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#b4": [3, 4, 6, 29]
+  "§4.4#r13": [3, 6, 7, 20]
+  "§4.1.1#r19": [7, 11, 22, 28]
+  "§4.1.1#r25": [7, 11, 16, 22, 28]
+  "§5#b2": 11
+  "§5#b3": [11, 12, 16, 21, 28]
+  "§4.1.1#r17": [11, 16, 22, 28]
+  "§4.1.1#r22": [11, 22, 28]
+  "§4.1.1#r23": [11, 22, 28]
+  "§4.4#r14": [17, 22]
+  "§4.1.1#r3": 22
+anchor: [15]
 coverage:
   web: automated
 ---

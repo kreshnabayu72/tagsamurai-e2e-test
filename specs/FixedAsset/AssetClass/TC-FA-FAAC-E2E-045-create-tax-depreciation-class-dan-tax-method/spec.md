@@ -1,12 +1,26 @@
 ---
 id: TC-FA-FAAC-E2E-045-create-tax-depreciation-class-dan-tax-method
 title: "Create Asset Class: Tax Method Mengikuti Tax Depreciation Class dan Useful Life & Rate Fiskal Read-Only"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-126
   - TC-FA-FAAC-127
+sourceRules: ["§4.1.2#r16", "§4.1.2#r14", "§4.1.2#r15", "FAAC-LOGIC-02f", "FI-03", "FLD-15", "V-20", "§4.2f#b2", "§4.1.2#p11"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.2#r16": 3
+  "§4.1.2#r14": 5
+  "§4.1.2#r15": [8, 9]
+  "FAAC-LOGIC-02f": [9, 11]
+  "FI-03": [11, 15, 20]
+  "FLD-15": 12
+  "V-20": 17
+  "§4.2f#b2": 22
+  "§4.1.2#p11": 22
 coverage:
   web: automated
 ---

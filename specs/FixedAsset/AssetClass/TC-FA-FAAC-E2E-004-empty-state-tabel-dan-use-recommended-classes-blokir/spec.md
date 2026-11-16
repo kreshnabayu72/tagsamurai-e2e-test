@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-004-empty-state-tabel-dan-use-recommended-classes-blokir
 title: "Empty State Tabel Asset Class dan Dialog Use Recommended Classes: Screening, Create Tanpa Baris, Cancel, Baris Disabled, dan Blokir Batas Jumlah"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -12,6 +13,43 @@ sourceTc:
   - TC-FA-FAAC-286
   - TC-FA-FAAC-290
   - TC-FA-FAAC-291
+sourceRules: ["ST-23", "FAAC-LOGIC-16a", "§4.1#r8", "§4.4#r5", "§4.1.5#p1", "FAAC-LOGIC-16d", "§4.1.5#r6", "§4.1.5#r7", "§4.1.5#r8", "§4.1.5#r9", "§4.1.5#r10", "§4.1.5#r11", "§4.1.5#r12", "§4.1.5#r13", "§4.1.5#r1", "§4.1.5#r2", "§4.1.5#p3", "§4.1.5#r3", "§4.1.5#r4", "§4.1.5#r5", "§4.1.5#p5", "FAAC-LOGIC-16e", "V-01", "FAAC-LOGIC-15a", "F-FAAC-07.k3", "F-FAAC-07.k1", "ST-12", "E-FAAC-64", "D-10", "F-FAAC-07.k5", "E-FAAC-75", "FAAC-LOGIC-15d"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": [1, 2, 20]
+  "FAAC-LOGIC-16a": [2, 6]
+  "§4.1#r8": [4, 10, 12, 13, 14, 19]
+  "§4.4#r5": 4
+  "§4.1.5#p1": 5
+  "FAAC-LOGIC-16d": 5
+  "§4.1.5#r6": 6
+  "§4.1.5#r7": 6
+  "§4.1.5#r8": 6
+  "§4.1.5#r9": 6
+  "§4.1.5#r10": 6
+  "§4.1.5#r11": 6
+  "§4.1.5#r12": 6
+  "§4.1.5#r13": 6
+  "§4.1.5#r1": 7
+  "§4.1.5#r2": 7
+  "§4.1.5#p3": 7
+  "§4.1.5#r3": 8
+  "§4.1.5#r4": 8
+  "§4.1.5#r5": 8
+  "§4.1.5#p5": 9
+  "FAAC-LOGIC-16e": 12
+  "V-01": 13
+  "FAAC-LOGIC-15a": [15, 36]
+  "F-FAAC-07.k3": [15, 22, 23, 24, 43]
+  "F-FAAC-07.k1": [28, 29, 31]
+  "ST-12": [28, 29]
+  "E-FAAC-64": [28, 31]
+  "D-10": [36, 43]
+  "F-FAAC-07.k5": 37
+  "E-FAAC-75": 37
+  "FAAC-LOGIC-15d": [43, 44]
+anchor: [21]
 coverage:
   web: automated
 ---

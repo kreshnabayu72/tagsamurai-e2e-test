@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-109-reklasifikasi-d12-new-journals-dan-create-reclassification
 title: "Reklasifikasi D-12: Pilihan New Journals Only, Create Reclassification, dan Urutan D-11 Lalu D-12"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,25 @@ sourceTc:
   - TC-FA-FAAC-345
   - TC-FA-FAAC-346
   - TC-FA-FAAC-350
+sourceRules: ["F-FAAC-02.k18", "R-02", "F-FAAC-02.k9c", "FAAC-LOGIC-06b", "F-FAAC-02.k9b", "S-02g", "D-11", "F-FAAC-02.k5a", "FAAC-LOGIC-07a", "D-12", "F-FAAC-02.k9a", "FAAC-LOGIC-06a", "F-FAAC-02.k5c", "§4.1.2#p11", "§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-02.k18": [7, 20]
+  "R-02": [8, 21]
+  "F-FAAC-02.k9c": [10, 11]
+  "FAAC-LOGIC-06b": [11, 23, 24]
+  "F-FAAC-02.k9b": [23, 24]
+  "S-02g": 24
+  "D-11": 31
+  "F-FAAC-02.k5a": 31
+  "FAAC-LOGIC-07a": 31
+  "D-12": 33
+  "F-FAAC-02.k9a": 33
+  "FAAC-LOGIC-06a": 33
+  "F-FAAC-02.k5c": 35
+  "§4.1.2#p11": 37
+  "§4.2f#b2": 37
 coverage:
   web: automated
 ---

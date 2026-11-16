@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-159-log-edit-unit-description-dan-threshold
 title: "Log Edit: Unit Residual Value, Useful Life Berlaku Langsung, Description, dan Capitalization Threshold"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -11,6 +12,19 @@ sourceTc:
   - TC-FA-FAAC-676
   - TC-FA-FAAC-677
   - TC-FA-FAAC-678
+sourceRules: ["F-FAAC-02.k18", "L-02", "§4.1.1#r30", "F-FAAC-02.k5b", "L-03", "§4.1.1#r44", "§8.2#p1", "§8.2#r1", "§4.1.1#r6"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-02.k18": [8, 32, 41, 51, 61]
+  "L-02": [9, 33, 42, 52, 62]
+  "§4.1.1#r30": [9, 52, 62]
+  "F-FAAC-02.k5b": 20
+  "L-03": [20, 21, 25]
+  "§4.1.1#r44": 21
+  "§8.2#p1": 24
+  "§8.2#r1": 25
+  "§4.1.1#r6": [52, 62]
 coverage:
   web: automated
 ---

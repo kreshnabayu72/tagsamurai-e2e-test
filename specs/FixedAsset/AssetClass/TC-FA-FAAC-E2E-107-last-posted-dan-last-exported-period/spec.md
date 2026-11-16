@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-107-last-posted-dan-last-exported-period
 title: "Last Posted Period dan Last Exported Period: Maju Saat Posting atau Export, Tidak Mundur"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-FAAC-340
   - TC-FA-FAAC-341
   - TC-FA-FAAC-342
+sourceRules: ["F-FAAC-12.k2", "§4.1.2#r4", "F-FAAC-12.k1", "L-10", "J-01", "§4.1.2#r5", "L-11", "J-02"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-12.k2": [6, 8]
+  "§4.1.2#r4": 10
+  "F-FAAC-12.k1": [14, 23]
+  "L-10": [16, 17]
+  "J-01": 17
+  "§4.1.2#r5": 19
+  "L-11": [25, 26]
+  "J-02": 26
 coverage:
   web: automated
 ---
