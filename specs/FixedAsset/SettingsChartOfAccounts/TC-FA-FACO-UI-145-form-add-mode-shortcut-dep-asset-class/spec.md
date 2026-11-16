@@ -4,7 +4,7 @@ title: "Form Add Account dari shortcut konsumen: Account Function terkunci dan t
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - FACO-LOGIC-10f
   - FACO-LOGIC-12b
@@ -40,7 +40,7 @@ coverage:
 ## Test Steps
 
 ### Shortcut membuka modal Add Account dengan Account Function terkunci dan tanpa checkbox Stay
-1. Tampilkan Modal Add Account dengan kondisi K1
+1. Tampilkan Select akun DU-145-1 beserta shortcut `+ Create account` dengan kondisi K1
 2. Klik shortcut `+ Create account` pada Select akun
 3. Verifikasi tombol `[Submit]` tampil pada modal Add Account
 4. Verifikasi field Account Function berisi `Asset Cost`

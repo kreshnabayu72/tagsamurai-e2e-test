@@ -4,7 +4,7 @@ title: "Form Add Account: Saving, menutup form, Clear Field, dan Stay on this fo
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [§3.1#p1, §4.1.2#p2, §4.2f#b3, §4.5#b1, §4.5#b2, §9.4.2#r32, §9.5#r7, EB-FRM-1@form-add-account, EB-FRM-2@form-add-account, EB-FRM-3@form-add-account]
 smoke: []
 dependsOn: []
@@ -12,14 +12,14 @@ trace:
   §3.1#p1: [3, 4, 11, 14, 19, 20, 21, 22, 27]
   §4.1.2#p2: [40, 43, 47, 54, 56, 59]
   §4.2f#b3: [47, 48, 56, 59]
-  §4.5#b1: [43, 63, 67]
+  §4.5#b1: [43, 63, 67, 85, 90]
   §4.5#b2: 70
   §9.4.2#r32: 37
   §9.5#r7: 6
   EB-FRM-1@form-add-account: [33, 34, 35, 36, 37]
   EB-FRM-2@form-add-account: [40, 43, 47, 48, 50, 52, 54]
   EB-FRM-3@form-add-account: [77, 78, 79, 80, 81]
-anchor: []
+anchor: [87]
 coverage:
   web: automated
 ---
@@ -137,3 +137,14 @@ coverage:
 79. Verifikasi field `Account Function` kembali belum terpilih oleh `[Clear Field]`
 80. Verifikasi tidak ada dialog konfirmasi yang tampil sesudah `[Clear Field]` diklik
 81. Verifikasi checkbox `Stay on this form after submitting` tetap tercentang sesudah `[Clear Field]` diklik
+
+### Enter pada checkbox dan Space pada tombol
+82. Tampilkan Modal Add Account dengan kondisi K1
+83. Tekan Tab sampai fokus berada pada checkbox `Stay on this form after submitting`
+84. Tekan Enter
+85. Verifikasi checkbox `Stay on this form after submitting` tercentang lewat Enter
+86. Ketik Account Name `Biaya Listrik Kantor`
+87. Verifikasi field `Account Name` berisi `Biaya Listrik Kantor`
+88. Tekan Tab sampai fokus berada pada `[Clear Field]`
+89. Tekan Space
+90. Verifikasi field `Account Name` kosong sesudah `[Clear Field]` diaktifkan dengan Space

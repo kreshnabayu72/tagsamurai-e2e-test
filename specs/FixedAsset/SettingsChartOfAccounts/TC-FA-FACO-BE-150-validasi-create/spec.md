@@ -4,9 +4,9 @@ title: "Validasi server Create Account"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
-sourceRules: [C-07, FACO-LOGIC-01a, N-12, R-01, V-01, V-02, V-03, V-04, V-05, V-06, V-07, V-08, "§6#p1", "§[F-FACO-01] Create Account#b1", "§[F-FACO-01] Create Account#r1", "§[F-FACO-01] Create Account#r2", "§[F-FACO-01] Create Account#r3", "§[F-FACO-01] Create Account#r4", "§9.4.2#r1", "§9.4.2#r2", "§9.4.2#r3", "§9.4.2#r4", "§9.9#r1", "§9.9#r2", "§9.9#r3", EB-FRM-4@account-code, EB-FRM-4@account-name, EB-FRM-5@account-code, EB-FRM-6@form-add-account, EB-CON-2]
+sourceRules: [C-07, FACO-LOGIC-01a, N-12, R-01, V-01, V-02, V-03, V-04, V-05, V-06, V-07, V-08, "§6#p1", "§[F-FACO-01] Create Account#b1", "§[F-FACO-01] Create Account#r1", "§[F-FACO-01] Create Account#r2", "§[F-FACO-01] Create Account#r3", "§[F-FACO-01] Create Account#r4", "§9.4.2#r1", "§9.4.2#r2", "§9.4.2#r3", "§9.4.2#r4", "§9.9#r1", "§9.9#r2", "§9.9#r3", EB-FRM-4@account-code, EB-FRM-4@account-name, EB-FRM-5@account-code, EB-FRM-6@form-add-account, EB-CON-2, FACO-LOGIC-07d]
 smoke: []
 dependsOn: []
 trace:
@@ -16,7 +16,7 @@ trace:
   R-01: [37]
   V-01: [20]
   V-02: [10]
-  V-03: [16]
+  V-03: [16, 59, 61]
   V-04: [28, 30, 32, 34]
   V-05: [22]
   V-06: [14]
@@ -32,7 +32,7 @@ trace:
   "§9.4.2#r2": [10, 16]
   "§9.4.2#r3": [14]
   "§9.4.2#r4": [20, 22, 24, 26]
-  "§9.9#r1": [10, 16, 20, 28]
+  "§9.9#r1": [10, 16, 20, 28, 59, 61]
   "§9.9#r2": [14, 18, 22]
   "§9.9#r3": [24, 40, 42, 44, 46, 47, 48, 49]
   EB-FRM-4@account-code: [6, 8, 10]
@@ -40,6 +40,7 @@ trace:
   EB-FRM-5@account-code: [28]
   EB-FRM-6@form-add-account: [16, 18, 51, 53, 55, 57]
   EB-CON-2: [37, 38]
+  FACO-LOGIC-07d: [63, 65]
 ---
 
 # Validasi server Create Account
@@ -129,3 +130,14 @@ trace:
 55. Verifikasi akun dengan Account Code `NSQ-{runId}` tersimpan dengan Account Name persis `{"$ne": null} {runId}`
 56. Admin A mengirim Create dengan Account Code `MRK-{runId}`, Account Name `<b>Kas Kecil</b> {runId}`, Account Function `Asset Cost`
 57. Verifikasi akun dengan Account Code `MRK-{runId}` tersimpan dengan Account Name persis `<b>Kas Kecil</b> {runId}` sebagai teks
+### Account Code berisi garis bawah dan titik diterima
+58. Admin A mengirim Create dengan Account Code `BNK_{runId}`, Account Name `Rekening Bank Operasional {runId}`, Account Function `Asset Cost`
+59. Verifikasi akun dengan Account Code `BNK_{runId}` diterima dan tersimpan, karena `_` termasuk karakter yang diizinkan
+60. Admin A mengirim Create dengan Account Code `BNK.{runId}`, Account Name `Rekening Bank Cadangan {runId}`, Account Function `Asset Cost`
+61. Verifikasi akun dengan Account Code `BNK.{runId}` diterima dan tersimpan, karena `.` termasuk karakter yang diizinkan
+
+### Last Used in Journal tidak bisa diisi lewat Create langsung
+62. Admin A mengirim Create dengan Account Code `LUJ-{runId}`, Account Name `Kas Periode Jurnal {runId}`, Account Function `Asset Cost`, dan Last Used in Journal `Oct 2026`
+63. Verifikasi permintaan itu tidak menghasilkan akun ber-Last Used in Journal `Oct 2026`: akun dengan Account Code `LUJ-{runId}` tidak ada, atau ada dengan Last Used in Journal kosong
+64. Admin A mengirim Create dengan Account Code `LUK-{runId}`, Account Name `Kas Tanpa Periode {runId}`, Account Function `Asset Cost`
+65. Verifikasi akun dengan Account Code `LUK-{runId}` tersimpan dengan Last Used in Journal kosong

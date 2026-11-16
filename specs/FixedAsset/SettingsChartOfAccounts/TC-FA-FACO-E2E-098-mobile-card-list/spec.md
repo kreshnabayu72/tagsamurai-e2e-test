@@ -4,21 +4,21 @@ title: "Card list, bottom sheet, dan seleksi long-press Chart of Accounts di apl
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.6#p1", "§4.6#b1", "§4.6#b2", "§4.6#b4", "§4.6#b5", "§4.6#b6", "§4.6#b7", "§4.6#b8", "§4.7#b1"]
+status: ready-for-automation
+sourceRules: ["§4.6#b1", "§4.6#b2", "§4.6#b4", "§4.6#b5", "§4.6#b6", "§4.6#b7", "§4.6#b8", "§4.7#b1", "§4.2b#p3"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.6#p1": 4
   "§4.6#b1": [4, 5, 6, 7, 8]
   "§4.6#b2": [21, 27]
   "§4.6#b4": [9, 10, 12, 13, 15]
   "§4.6#b5": [19, 23, 25]
-  "§4.6#b6": [29, 31, 32, 33, 34, 35, 37, 38, 40, 43, 47, 51, 57]
+  "§4.6#b6": [29, 31, 32, 33, 34, 35, 37, 38, 40, 43, 47, 51, 57, 64, 65]
   "§4.6#b7": 17
-  "§4.6#b8": 59
-  "§4.7#b1": [59, 60]
-anchor: [3, 42, 46, 50, 55, 56]
+  "§4.6#b8": [72, 73]
+  "§4.7#b1": [61, 62, 72, 73]
+  "§4.2b#p3": 69
+anchor: [3, 42, 46, 50, 55, 56, 60, 68, 71]
 coverage:
   android: automated
 ---
@@ -34,7 +34,10 @@ coverage:
   - DU-098-3: akun Account Code `4-7001-{runId}`, Account Name `Gain on Disposal {runId}`, Account Function `Gain on Disposal`, Status Inactive, Used By `0`, belum pernah diekspor.
   - DU-098-4: akun Account Code `1-1001-{runId}`, Account Name `Fixed Assets – Equipment {runId}`, Account Function `Asset Cost`, Status Active, Used By `3`, belum pernah diekspor.
   - DU-098-5: akun Account Code `4-7301-{runId}`, Account Name `Gain on Disposal – Vehicles {runId}`, Account Function `Gain on Disposal`, Status Inactive, Used By `0`, belum pernah diekspor.
-  - DU-098-6: 8 akun Active dengan Account Code `9-80{n}-{runId}` (n dari 1 sampai 8), Account Name `Operating Expense Cabang {n} {runId}`, Account Function `Asset Cost`, Used By `0`, belum pernah diekspor. Bersama DU-098-2 sampai DU-098-5, hasil Search atas data spec ini berjumlah 12 akun, melebihi 10 card yang dimuat per halaman; Account Code `9-80{n}-{runId}` terurut sesudah akun DU-098-2 sampai DU-098-5. Counter yang diharapkan sesudah `[Select All]` adalah `10 Selected`, dari 10 card yang dimuat.
+  - DU-098-6: 8 akun Active dengan Account Code `9-80{n}-{runId}` (n dari 1 sampai 8), Account Name `Operating Expense Cabang {n} {runId}`, Account Function `Asset Cost`, Used By `0`, belum pernah diekspor. Bersama DU-098-2 sampai DU-098-5, hasil Search atas data spec ini berjumlah 12 akun; Account Code `9-80{n}-{runId}` terurut sesudah akun DU-098-2 sampai DU-098-5.
+- Kondisi:
+  - Daftar Chart of Accounts memuat `10` card per muatan, sehingga 12 akun hasil Search tidak seluruhnya dimuat sekaligus.
+  - User `Bagus Prasetyo {runId}` belum pernah membuka halaman Chart of Accounts; flag Guided Tooltip belum disetel.
 
 ## Test Steps
 
@@ -42,7 +45,7 @@ coverage:
 1. Buka halaman Chart of Accounts di aplikasi Android
 2. Ketik Search `{runId}`, tekan Enter
 3. Verifikasi card dengan Account Code `5-6001-{runId}` tampil
-4. Verifikasi judul card memuat Account Code `5-6001-{runId}`
+4. Verifikasi card menampilkan Account Code `5-6001-{runId}`
 5. Verifikasi card memuat Account Name `Depreciation Expense – Admin {runId}`
 6. Verifikasi card memuat badge Function `Depreciation Expense`
 7. Verifikasi card memuat switch Status
@@ -84,7 +87,7 @@ coverage:
 37. Verifikasi counter menunjukkan 2 card terpilih
 38. Verifikasi aksi bulk `Activate`, `Deactivate`, dan `Delete` tampil
 39. Klik `[Select All]`
-40. Verifikasi counter `10 Selected` tampil, yaitu card yang sudah dimuat (10 per halaman), bukan 12 akun hasil Search
+40. Verifikasi counter menunjukkan `10` card terpilih, sebanyak card yang sedang dimuat di daftar dan lebih kecil dari `12` akun hasil Search
 41. Klik `[✕]` pada Floating Bottom Bulk Action Bar
 42. Verifikasi card dengan Account Code `5-6001-{runId}` tampil
 43. Verifikasi card tidak menampilkan checkbox dan Floating Bottom Bulk Action Bar tidak tampil
@@ -103,9 +106,26 @@ coverage:
 56. Verifikasi card dengan Account Code `5-6001-{runId}` tampil
 57. Verifikasi card tidak menampilkan checkbox dan Floating Bottom Bulk Action Bar tidak tampil
 
-### Guided Tooltip tidak berjalan
+### Card list tanpa header kolom dan tanpa Last Used in Journal
 58. Buka ulang halaman Chart of Accounts
-59. Verifikasi Guided Tooltip tidak berjalan di aplikasi Android[^drift-1]
-60. Verifikasi tombol `[?]` tidak tampil di header halaman[^drift-1]
+59. Ketik Search `{runId}`, tekan Enter
+60. Verifikasi card dengan Account Code `5-6001-{runId}` tampil
+61. Verifikasi card list tidak memiliki header kolom
+62. Verifikasi card dengan Account Code `5-6001-{runId}` tidak memuat `Last Used in Journal`
 
-[^drift-1]: Drift PRD vs foundation. PRD §4.7: «Guided Tooltip tidak berjalan di aplikasi Android; tur dan tombol `[?]` hanya tampil pada tampilan desktop». foundation `guided-tooltip.md` §16.3: «Mobile | Tooltip muncul sebagai bottom sheet mini; spotlight tetap ada; swipe left/right = Next/Back». Diasersi: PRD, karena PRD §4.7 menyatakan pengecualian modul secara eksplisit atas baris Mobile itu dan alasannya bersumber dari foundation sendiri (`guided-tooltip.md` §16.5: target step hanya landmark permanen yang selalu ada pada initial load, sedangkan card list mobile tidak memiliki header kolom, tidak menampilkan Last Used in Journal, dan menaruh Filter di dalam `[⋯]`); ini konfigurasi khusus modul (SB-4).
+### Aksi bulk untuk seleksi yang seluruhnya Inactive
+63. Long-press card dengan Account Code `4-7001-{runId}`
+64. Verifikasi aksi bulk `Activate` dan `Delete` tampil
+65. Verifikasi aksi bulk `Deactivate` tidak tampil
+66. Klik `[✕]` pada Floating Bottom Bulk Action Bar
+
+### Badge Function pada card tanpa tooltip
+67. Ketuk badge Function `Depreciation Expense` pada card dengan Account Code `5-6001-{runId}`
+68. Verifikasi badge Function `Depreciation Expense` tampil pada card dengan Account Code `5-6001-{runId}`
+69. Verifikasi tidak ada tooltip yang tampil pada badge Function `Depreciation Expense`
+
+### Guided Tooltip tidak berjalan di aplikasi Android
+70. Buka ulang halaman Chart of Accounts
+71. Verifikasi card dengan Account Code `5-6001-{runId}` tampil
+72. Verifikasi Guided Tooltip tidak tampil
+73. Verifikasi tombol `[?]` tidak tampil

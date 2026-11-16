@@ -1,557 +1,171 @@
-# Coverage E2E — Fixed Asset > Settings > Accounting > Chart of Accounts
+<!-- Ditulis stage spec-from-prd saat close. Jangan diubah tangan: run berikutnya menimpanya. -->
 
-Sumber: `fixed-asset/settings-chart-of-accounts/TestCases/tc-settings-chart-of-accounts.md` (367 TC `TC-FA-COA-1`–`369`, semua aktif; id 116 dan 139 tidak dipakai). Suite: `specs/FixedAsset/SettingsChartOfAccounts/`. Prefix: `FA` + `COA` (`TC-FA-COA-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-chart-of-accounts-backend.md`.
+Suite: `specs/FixedAsset/SettingsChartOfAccounts`. Sumber: PRD `fixed-asset@9e5ae60` (sha `851502c28b0ddee7`), foundation@8ec9ed8-dirty, kontrak komponen wangs-ui@1.0.0. Stage: `prd-harness@1271d35`, ditutup 2026-11-15T19:55:20Z.
+Plan, unit PRD, data, dan vonis per unit: `docs/spec-from-prd/FixedAssetSettingsChartOfAccounts/`.
+# Audit Chart of Accounts
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 367 TC aktif masuk 105 spec (83 nomor rencana `001`–`083`, nomor cadangan `084`–`094`, spec absence `095`–`103`, dan 2 nomor tambahan `104`–`105`), tidak ada TC hanya-BE. Setiap TC terpetakan ke tepat satu spec, kecuali 22 TC yang terbelah antara spec asal dan satu spec absence (S-05, lihat bagian Pembagian TC lintas spec); tabel di bawah dibangkitkan dari frontmatter `sourceTc`.
+- Putaran: 3. Unit dinilai: 769 (ok 556, parsial 0, hilang 0, salah 0, na 213).
+- Skor: 100.0% (ok + setengah parsial, dibagi unit berperilaku).
+- Spec `ready-for-automation`: 121. Spec tetap `draft`: 0.
 
-## Cakupan
+## Keputusan pemilik PRD (42)
 
-Halaman Chart of Accounts (tab keempat Settings > Accounting): tabel akun dengan Search, Filter, Sort, Pagination, Setup Column, dan Download; modal Add Account dan Edit Account; Activate dan Deactivate (single dan bulk); Delete (single dan bulk) beserta dialog blok; popup Used By; Modal Changelog dan pencatatan di tiga surface; Role Matrix; Guided Tooltip; tampilan Android; batas jumlah akun dan Selection Limit; state tenant; konflik dua sesi; defense-in-depth; ketahanan terhadap kegagalan server.
+Hanya bagian ini yang butuh manusia: sumber bertentangan atau belum memutuskan. Keputusannya ditulis di PRD, lalu spec yang ditahan dibuat.
 
-## TC hanya-BE (tidak masuk spec)
+- Temuan 13 (bertentangan): PRD tidak menetapkan sisi mana yang berlaku untuk log aksi bulk: ditulis setelah commit secara best-effort (§8.2, §9.6) atau dalam satu transaksi dengan datanya (F-FACO-03). Menguji kegagalan dispatch log juga butuh hook fault-injection dari BE. Kedua unit ditahan sampai PRD direvisi; spec pemilik tetap mengasersi unit lain. Unit ditahan: `§9.6#p1`, `§[F-FACO-01] Create Account#b4`.
+- Temuan 14 (ambigu): PRD modul menyatakan «Tab tidak tampil» bagi aktor tanpa Manage accounting, tetapi menyerahkan item sidebar dan halaman Accounting ke `asset-class/`; apa yang teramati bagi aktor itu (tab bar, sidebar, halaman) tidak ditetapkan di sini. EB-AKS-1 ditahan sampai PRD menetapkannya; penolakan lewat alamat langsung tetap diasersi spec gating tanpa akses. Unit ditahan: `EB-AKS-1`.
+- Juri, unit `§4.1.1#r27`: Catatan baris ini: «Termasuk `System` (§8.4)», tetapi §8.4 tidak memuat jalur beraktor System: `J-04` «User yang mengekspor» dan `J-06` «Pemanggil terotorisasi». PRD tidak menetapkan kejadian apa yang menulis entri Changelog dengan Modified By `System`, sehingga klausa ini tidak bisa diasersi dan tidak ada spec yang mengasersinya.
+- Juri, unit `§8.1#p3`: Masih berlaku dari putaran 1. Klausa «Name pada System Log dan Activity Log berisi Account Code setelah perubahan, untuk semua baris `L-02` dari Save itu» berlaku di surface milik modul lain (Global Settings > User: Detail User > Tab System Log; Activity Log FAMS). Suite hanya mengasersinya untuk Save yang mengubah Account Code saja (BE-155 langkah 13, E2E-093 langkah 35, E2E-094 langkah 34); Save yang mengubah Account Code bersama field lain tidak diasersi di kedua surface itu (BE-155 langkah 14-16 mengubah dua field tanpa Account Code). Tidak dihitung kurang.
+- Juri, unit `§2.2#r1`: Klausa «Total Control permanen ... tidak dapat diubah» adalah perilaku pengaturan access level Default User, milik `settings-role-permission/` (PRD §2: «daftar dan CRUD-nya dimiliki `settings-role-permission/` §2.1 baris #4») dan modul User; surface-nya di luar modul ini sehingga tidak diasersi suite. Bagian «akses penuh» diasersi spec 040 dengan aktor Default User.
+- Juri, unit `§9.11#p1`: Kalimat kedua («Tab Accounts di `settings-custom-asset-id/` ditampilkan tanpa mensyaratkan capability Manage accounting ... pengecualian itu dimiliki `settings-custom-asset-id/`») ditetapkan modul Custom Asset ID di luar kit. Spec 090 memakai aktor Total Control sehingga tidak menguji aktor tanpa Manage accounting; tidak dihitung kurang.
+- Juri, unit `§9.4.2#r31`: Klausa «item sidebar dan halaman Accounting mengikuti `asset-class/` (`FAAC-LOGIC-18`)» ditetapkan PRD Asset Class di luar kit, sehingga visibilitas item sidebar dan halaman Accounting bagi aktor tanpa Manage accounting tidak diasersi suite ini; tidak dihitung kurang. Klausa «Tab tidak tampil; akses langsung `403`» diasersi spec 046 dan BE-152 langkah 74-90.
+- Juri, unit `§9.4.2#r29`: Bentuk «Menu Accounting tidak tersedia» ditetapkan di luar kit: PRD §9.10 «tier dan tampilan menu pada plan yang tidak mencakupnya dimiliki `asset-class/` (`FAAC-LOGIC-18`)». Langkah 4 mengasersi bunyi foundation `plan_tier()` («None: Fitur tidak tersedia; menu disabled + chip "Upgrade"»; `plans.md` §4.1 «menu tetap tampil tapi disabled, ditandai chip kecil "Upgrade"»), yang ada di foundation pack; tidak dihitung salah maupun kurang.
+- Juri, unit `FACO-LOGIC-02g`: Kalimat kedua unit («Used By, popup Used By, dan guard Delete (`FACO-LOGIC-03`) berlaku pada akun berstatus apa pun») untuk akun Inactive ber-Used By > 0 tidak bisa diasersi suite ini dengan pasti: unit sendiri menyatakan keadaan itu «tidak terbentuk lewat aksi di modul ini», dan jalur pembentukannya (Asset Class memakai akun Inactive, `FACO-LOGIC-11b`, `FAAC-LOGIC-20`) dimiliki `asset-class/` di luar kit. Langkah 6 hanya menunjukkan Used By `0` pada akun Inactive, yang tidak membedakan aturan dari kebalikannya.
+- Juri, unit `§4.1.4#p3`: «tanpa melihat jumlah aset» dan pembaruan hitungan pada Assign, Move, serta saat Asset Name dibuat atau dihapus ditetapkan `asset-class/` (`FAAC-LOGIC-13`, `FAAC-LOGIC-13h`, `S-13`) di luar kit, sehingga tidak bisa diasersi suite ini dengan pasti. Suite hanya mengasersi hitungan dibaca saat popup dibuka sesudah Unassign (langkah 45–48).
+- Juri, unit `D-06`: Klausa «`[Setting Name]` … diurutkan mengikuti urutan setting pada tab Preferences» bergantung pada urutan setting yang ditetapkan modul `settings-accounting-preferences/` (hanya dirujuk). UI-144 langkah 12 mengasersi `Default Gain on Disposal, Default Loss on Disposal` dengan urutan yang dinyatakan di data spec sendiri; urutan dari data nyata tidak bisa diasersi suite ini dengan pasti dan tidak dihitung kurang.
+- Juri, unit `D-09`: Klausa «[Setting Name] … diurutkan mengikuti urutan setting pada tab Preferences»: urutan setting pada tab Preferences ditetapkan `settings-accounting-preferences/` (di luar kit), jadi tidak bisa diasersi dengan pasti dan tidak dihitung kurang. Catatan: satu-satunya pasangan yang diasersi suite adalah `Default Gain on Disposal, Default Loss on Disposal` (UI-144 lk 25; juga lk 12 dan 40), yang sekaligus urut abjad; contoh PRD `D-06` sendiri `Default Gain on Disposal, Default Capitalization Offset` membedakan urutan tab dari urutan abjad. Urutan dari data nyata tidak diasersi (E2E-086 dan E2E-085 hanya satu setting per akun).
+- Juri, unit `S-14`: Hasil S-14 (derived view akun Active per Account Function dibaca ulang untuk Alert dependensi akun `FAAC-LOGIC-20`) ditetapkan PRD `asset-class/` yang tidak ada di kit. Suite hanya mengasersi efeknya pada opsi Select akun Asset Class (E2E-069 langkah 18, 38, 41, 44) dan tidak menjalankan cabang «Edit Account Function»; tidak dihitung kurang.
+- Juri, unit `§9.7#p4`: Klausa «pada segmen Account Code di `settings-custom-asset-id/`» dan «Asset ID yang sudah terbit (§11.1) … tidak berubah» bersurface di modul `settings-custom-asset-id/` dan aset (PRD §11.1: segmen ini masih fallback `"0000"`, `FAID-LOGIC-05c`), dan «berkas export lama» milik `export-journal/` (belum disusun). Suite hanya bisa mengasersi daftar tab Accounts (E2E-090 langkah 27-28); ketiadaan asersi atas segmen Asset ID, Asset ID terbit, dan berkas export lama tidak dihitung kurang. «Entri log tidak berubah» diasersi E2E-011 langkah 27 dan 38.
+- Juri, unit `§9.7#r16`: Syarat «bila Active dan sesuai function» dimiliki PRD Asset Class (`asset-class/`, di luar kit). Suite mengasersi sisi positifnya (E2E-069 langkah 18); sisi negatif (akun tidak menjadi opsi pada field ber-function lain) tidak bisa dipastikan dari kit dan tidak dihitung kurang.
+- Juri, unit `§9.7#r24`: PRD §9.7 `S-04b`: «Deactivate | riwayat jurnal tidak berubah» tanpa menyebut surface riwayat jurnal itu. Di modul ini yang teramati hanya Last Used in Journal (diasersi E2E-081 langkah 7); baris jurnal pada berkas export lama adalah surface `export-journal/` (PRD §11.1: «belum disusun»), di luar kit, sehingga tidak diasersi suite ini.
+- Juri, unit `§9.2#p2`: Klausa «label dan status akun yang tampil di Preferences mengikuti akun terkini»: label diasersi E2E-087 langkah 15 dan 23, tetapi tampilan status akun di Preferences tidak. Surface dan aturannya milik `settings-accounting-preferences/`; PRD §9.2: «keselarasan default dengan status akun saat Deactivate ditetapkan `settings-accounting-preferences/` (`FAPREF-LOGIC-06`)», dokumen di luar kit.
+- Juri, unit `EB-XM-2@preferences`: Langkah mengasersi label opsi dan nilai Select di Preferences berformat `[Account Code] – [Account Name]`. PRD modul hanya menetapkan format itu untuk `[Account Label]` pada dialog (§4.2f) dan menyebut «label dan status akun yang tampil di Preferences mengikuti akun terkini» (§9.2) tanpa format; format label opsi Select Preferences ditetapkan `settings-accounting-preferences/`, di luar kit.
+- Juri, unit `FACO-LOGIC-01d`: Klausa «tidak dipetakan per Asset Class» (surface form Asset Class, `asset-class/`) dan «opsional dan kosong pada nilai awal» untuk Default Capitalization Offset (`SET-08`, `settings-accounting-preferences/`) berada di surface modul lain yang dokumennya di luar kit, sehingga tidak diasersi. Yang diasersi: akun Capitalization Offset menjadi opsi Default Capitalization Offset (E2E-087 langkah 10 dan 32).
+- Juri, unit `FACO-LOGIC-01f`: Klausa peran Disposal Proceeds pada jurnal pelepasan Sell, Scrap, dan Trade-in ditetapkan `transactions-disposal.md` §9.12.2, dan «opsional dan kosong pada nilai awal» untuk Default Disposal Proceeds Account ditetapkan `SET-13` di `settings-accounting-preferences/`; keduanya di luar kit sehingga tidak diasersi. Yang diasersi: tidak dihitung Used By (E2E-087 langkah 13) dan dipilih lewat Default Disposal Proceeds Account (langkah 15).
+- Juri, unit `§11.1#r3`: Klausa «perubahan Code tidak mengubah Asset ID aset yang sudah terbit» dan «segmen ini selalu bernilai fallback `0000` (`FAID-LOGIC-05c`)» berada di surface Asset ID milik `settings-custom-asset-id/` dan modul aset, yang dokumennya di luar kit; selama segmen selalu `0000`, perubahan Code juga tidak bisa dibedakan dari kebalikannya. Yang diasersi: Account Code master tercermin di tab Accounts (E2E-090 langkah 27 dan 28).
+- Juri, unit `§11.1#r6`: Format berkas dan aturan import ditetapkan `import/` (PRD §11.1: «format berkas dan aturan import dimiliki import/»), dokumen di luar kit. Suite hanya bisa mengasersi klausa milik modul ini, yaitu tab tanpa kontrol upload (langkah 3).
+- Juri, unit `FACO-LOGIC-07d`: PRD hanya menyatakan «Tidak ada input manual untuk Last Used in Journal» (`FACO-LOGIC-07d`) dan tidak memutuskan hasil permintaan langsung yang membawa nilai itu: ditolak seluruhnya atau diterima dengan nilainya diabaikan. `FACO-LOGIC-04e` («Server menolak perubahan terkunci apa pun jalurnya») hanya menyebut Account Code dan Account Function. Karena itu langkah 63 mengasersi dua kemungkinan («akun tidak ada, atau ada dengan Last Used in Journal kosong»), dan BE-151 langkah 46 hanya mengasersi nilai tetap kosong.
+- Juri, unit `§4.2a#p1`: Tab bar halaman Accounting dan urutan tabnya dimiliki `asset-class/` (`FAAC-LOGIC-18`; PRD §4.2a: «halaman, tab bar, urutan tab, dan tab default: asset-class/»), dokumen di luar kit. Langkah 5 mengasersi empat tab itu hanya berdasarkan salinan di wireframe PRD ini.
+- Juri, unit `§8#b1`: Klausa 'field teks lain mengikuti default `changelog_entry()` §8.8' menunjuk seksi yang tidak ada di foundation pack (pack hanya memuat `functions/changelog-entry.md` §8.4 dan §8.5). Basis pembanding Account Name untuk perubahan yang hanya huruf besar-kecil tidak bisa diasersi dengan pasti dari kit; ketiadaan asersinya tidak dihitung kurang.
+- Juri, unit `§[F-FACO-02] Edit Account#b3`: Respons Edit No-Op berbeda antar sumber: PRD E-FACO-07 dan `R-03` menulis '`204 No Content`', sedangkan foundation `changelog-entry.md` §8.5 menulis 'respons `200 OK`' dan `error-handling-convention.md` §7.1 menulis '`200 OK`, nol log, versi tidak naik'. Langkah 5 mengasersi sisi PRD (`No Content`); tidak ada aturan di kit yang menetapkan sisi mana yang berlaku untuk kode respons.
+- Juri, unit `R-09`: Sel On failure 'Export Journal menangani kegagalan' dan sisi gagal dari 'Satu transaksi dengan penyelesaian export' ditetapkan modul `export-journal/`, yang PRD-nya tidak ada di kit. Keadaan Last Used in Journal dan log `L-10` saat Export Journal gagal tidak bisa diasersi dengan pasti; ketiadaan asersinya tidak dihitung kurang.
+- Juri, unit `§[F-FACO-08] Update Last Used in Journal#r3`: Isi berkas export sesudah akun Asset Class diganti ditetapkan di luar kit: PRD §11.1 baris Export Journal menyebut «aturan jurnal yang bergantung pada pemetaan (… reklasifikasi saat akun diganti) dimiliki `export-journal/` dan `asset-class/`» dan `export-journal/` «belum disusun». Langkah 20 menyatakan export `Nov 2026` «tidak lagi memuat akun `XJC-{runId}`» sesudah pengalihan di langkah 19; bila jurnal reklasifikasi pada periode itu memuat akun lama, akun itu ikut berkas dan `F-FACO-08.k1` yang berlaku, bukan `F-FACO-08.k3`. Suite ini tidak bisa memastikan keadaan itu; rujukan: PRD `export-journal/`.
+- Juri, unit `C-04`: Surface dan pengujian aturan ini milik modul lain: PRD §10 C-04 «surface dan pengujiannya dimiliki `asset-class/` (`FAAC-LOGIC-05d`)». Tidak ada spec di suite yang mengasersinya (grep «penyusutan», `FACO-LOGIC-11a`, `C-04` di S: nol hasil), dan itu tidak dihitung kurang.
+- Juri, unit `C-05`: «Export Journal menahan (Held) jurnal aset yang Asset Class-nya belum memiliki akun lengkap atau memakai akun Inactive»: surface dan aturannya milik `export-journal/` (belum disusun) dan `asset-class/` (`FAAC-LOGIC-05`), sesuai FACO-LOGIC-11b dan §11.1. Hasilnya ditetapkan di luar kit, sehingga tidak diasersi suite ini.
+- Juri, unit `EB-AKS-1`: Hasil bagi aktor tanpa capability ditetapkan di luar kit, oleh modul `asset-class/` (`FAAC-LOGIC-18`). PRD §9.4.2 E-FACO-56: «Tab tidak tampil; akses langsung `403`; item sidebar dan halaman Accounting mengikuti `asset-class/` (`FAAC-LOGIC-18`)»; PRD §4.8: «Item sidebar dan halaman Accounting mengikuti `asset-class/` (`FAAC-LOGIC-18`); tabel ini hanya memuat elemen di dalam tab `Chart of Accounts`». Tab bar dan halaman Accounting milik `asset-class/`, dan keempat tab berada di bawah capability yang sama (§2.1), sehingga apa yang teramati aktor tanpa Manage accounting (item sidebar tersembunyi, halaman tidak terbuka, atau tab bar tanpa tab) tidak ditetapkan di sini. Seksi `navbar-foundation.md` di foundation pack juga tidak memuat aturan item sidebar per capability. Tidak dihitung kurang. Sisi yang ditetapkan PRD modul ini sudah diasersi di unit lain: tab tampil bagi aktor ber-capability (E2E-038, 040-045 langkah 2, §4.8#r1) dan penolakan alamat langsung (E2E-046 langkah 2-4, 7-9).
+- Juri, unit `FACO-LOGIC-01c`: Klaim «FAMS tidak pernah mendebit akun itu, hanya mengkreditnya» dan «angkanya tidak dihitung FAMS» adalah sifat baris jurnal; surface-nya mesin Export Journal (`export-journal/`, belum disusun; Ringkasan Cepat: di luar scope). Tidak bisa diasersi suite ini; tempat ujinya PRD `export-journal/`.
+- Juri, unit `FACO-LOGIC-01e`: Pemakaian Capitalization Offset sebagai akun lawan (biaya perbaikan dikapitalisasi, kapitalisasi manual, CIP v1.1) adalah pembentukan jurnal; surface-nya `export-journal/` (belum disusun) dan modul transaksi asalnya, di luar scope PRD ini. Tidak bisa diasersi suite ini.
+- Juri, unit `FACO-LOGIC-11a`: Surface dan pengujian aturan ini milik modul lain: PRD «surface dan pengujian aturan ini dimiliki `asset-class/` (`FAAC-LOGIC-05d`)» (operasi aset dan penyusutan di FAMS). Tidak ada spec di suite yang mengasersinya, dan itu tidak dihitung kurang.
+- Juri, unit `FACO-LOGIC-11b`: Jurnal ditahan (Held) di Export Journal: PRD sendiri menyatakan «definisi kelengkapan dimiliki `asset-class/` (`FAAC-LOGIC-05`) dan aturan per jenis jurnal dimiliki `export-journal/` (§11.1)», dan `export-journal/` belum disusun. Hasilnya ditetapkan di luar kit, sehingga tidak diasersi suite ini.
+- Juri, unit `§11.1#r5`: Baris dependensi ini menyatakan surface dan pengujian `FACO-LOGIC-11a` dimiliki `asset-class/` (`FAAC-LOGIC-05d`): «modul ini hanya menyatakan aturannya». Hasilnya ditetapkan PRD `asset-class/`, di luar kit; ketiadaan asersi tidak dihitung kurang.
+- Juri, unit `§11.1#r7`: Halaman Accounting, tab bar, urutan tab, tab default, dan tier plan «dimiliki `asset-class/` (`FAAC-LOGIC-18`)»; hasilnya ditetapkan PRD `asset-class/`, di luar kit. Bagian milik modul ini (tab `Chart of Accounts` tampil di halaman itu) ditanggung §4.2a#p1 di TC-FA-FACO-UI-120-tabel-tampilan-awal.
+- Juri, unit `§2.1#b1`: «pemegang Manage accounting otomatis mendapat View asset value client-wide (`FARP-LOGIC-10`, `settings-role-permission/`)» dan cakupan capability atas tab Preferences, Tax Depreciation Class, dan Asset Class: aturan dan surface-nya milik `settings-role-permission/` dan modul tab lain, di luar kit. Tidak bisa diasersi suite ini.
+- Juri, unit `§4.8#b3`: Item sidebar dan halaman Accounting «mengikuti `asset-class/` (`FAAC-LOGIC-18`)»; surface itu milik modul `asset-class/` dan hasilnya ditetapkan di luar kit. Sisa kalimat («tabel ini hanya memuat elemen di dalam tab `Chart of Accounts`») adalah keterangan cakupan tabel §4.8, tanpa perilaku teruji.
+- Juri, unit `§9.10#b2`: Tier dan tampilan menu Accounting pada plan yang tidak mencakupnya ditetapkan modul lain di luar kit: PRD baris 1515 «tier dan tampilan menu pada plan yang tidak mencakupnya dimiliki `asset-class/` (`FAAC-LOGIC-18`)». Suite hanya bisa mengasersi versi foundation `plan-tier.md` («None: Fitur tidak tersedia; menu disabled + chip "Upgrade"») di TC-FA-FACO-E2E-050 langkah 4; bunyi FAAC-LOGIC-18 tidak tersedia untuk dicocokkan.
+- Juri, unit `§9.6#p1`: Klausa log tidak diputuskan sumber. PRD §9.6: «ketiga log dari change-log record yang sama, ditulis setelah commit, best-effort; §8.2» dan §8.2: «kegagalan dispatch tidak me-rollback data dan tidak mengubah respons». PRD F-FACO-03: «Bulk Activate, Bulk Deactivate, dan Bulk Delete (`F-FACO-05`) meng-commit per akun: data dan ketiga log tiap akun dalam satu transaksi». Foundation berbunyi seperti F-FACO-03 dan berlaku untuk semua aksi, bukan hanya bulk: `prd-conventions.md` §9.10 «Satu aksi = satu set log entry di seluruh surface yang relevan; selalu ditulis dalam satu transaksi DB», `state-sync-protocol.md` §5 «State + log + counter + notif dalam satu transaksi; jika gagal → rollback penuh ... Tidak boleh "status berubah tapi log tak tertulis"», `error-handling-convention.md` §7 «Tidak boleh setengah jadi (mis. status aset berubah tapi log tak tertulis)». Waktu penulisan log bukan pola UI bersama, jadi tidak ada aturan yang menetapkan sisi mana yang berlaku; hasil saat penulisan log gagal (data tetap tersimpan atau ikut batal) tidak bisa diasersi. Tidak ada spec yang mengasersinya (grep «best-effort», «dispatch», «rollback»: hanya catatan Kondisi di E2E-075, 093, 094).
+- Juri, unit `§[F-FACO-01] Create Account#b4`: Klausa «setelah commit, best-effort» tidak diputuskan sumber untuk Create. PRD F-FACO-01 langkah 4: «Tulis log `L-01` pada tiga surface setelah commit, best-effort (§8)», dengan §8.2: «kegagalan dispatch tidak me-rollback data dan tidak mengubah respons». Foundation: `prd-conventions.md` §9.10 «Satu aksi = satu set log entry di seluruh surface yang relevan; selalu ditulis dalam satu transaksi DB» dan `state-sync-protocol.md` §3 «Synchronous (same transaction) | Default untuk state inti + log + counter»; PRD sendiri di F-FACO-03 menulis «data dan ketiga log tiap akun dalam satu transaksi» untuk bulk. §8 PRD tidak mendaftarkan best-effort sebagai delta atas `changelog_entry()`, dan waktu penulisan log bukan pola UI bersama, jadi tidak ada aturan yang menetapkan sisi mana yang berlaku. Hasil Create saat penulisan log gagal (akun tetap tersimpan atau batal) tidak bisa diasersi. Bila sisi PRD yang diputuskan berlaku, cabang ini belum diasersi spec mana pun dan tempatnya di BE-155.
 
-Tidak ada.
+## Drift antar-sumber (13)
 
-## TC yang dipindah ke nomor cadangan dari nomor rencana
+Tempat PRD berbeda bunyi dengan foundation atau dengan kontrak komponen. Spec tidak menunggu apa pun: aturan stage sudah menetapkan sisi yang diasersi (foundation untuk pola bersama, kontrak komponen untuk mekanik komponen). Daftar ini menunjukkan bagian mana yang berlawanan dan dokumen mana yang perlu diperbaiki.
 
-Penulis memecah spec yang melewati ~35 langkah ke nomor cadangan. Nomor rencana tetap dipakai oleh TC sisanya.
+- Planner, temuan 9 (beda-foundation): Periode jurnal adalah data khusus modul (bulan, bukan tanggal), jadi sisi PRD yang diasersi (SB-4); kolom ini juga dikecualikan dari Search.
+- Planner, temuan 10 (beda-foundation): Cara memicu aksi bulk mengikuti foundation: klik `Bulk Action`, lalu pilih `Activate`, `Deactivate`, atau `Delete`. Semua spec menulis pemicu dengan urutan itu.
+- Juri, unit `EB-SRC-3@tabel-account-list`: behavior-contracts §SearchButton#5: «...or when every whitespace-separated word of the query appears somewhere in the row's values (any order...)»; prd-conventions §9.16: «query tidak dipecah menjadi beberapa kata». Sisi yang berlaku: §9.16, karena PRD §5 menyatakan tabel server-driven («Search, Sort, Filter, dan paginasi diproses server») sehingga pencocokan dilakukan server (SearchButton#33, DataTable#100), bukan pencocok client di butir #5. Langkah 31 mengasersi sisi yang berlaku.
+- Juri, unit `EB-TBL-7@tabel-account-list`: Foundation `prd-conventions.md` §9.18: nomor halaman tidak valid «input diabaikan dan tabel tetap di halaman sekarang». Kontrak `Paginator#9`: «a page past the last goes to the last page, a page below 1 goes to page 1». Sisi yang berlaku kontrak (mekanik Paginator). Spec mengasersi kontrak dengan footnote `[^drift-1]`, jadi sesuai; `abc` (langkah 64) sama di kedua sumber.
+- Juri, unit `§[F-FACO-03] Activate Account#p1`: PRD §[F-FACO-03]: «Pada kegagalan 5xx atau timeout … toast gagal (`T-04`, `T-05`, atau `T-06`) tampil». Foundation `prd-conventions.md` §8 Bulk Action Gagal di Server: «timeout memakai baris Timeout/Network §2 (toast error `Connection problem. Please try again.`)» (selaras delta PRD §7.2 dan §3.3). Sisi yang berlaku: foundation. UI-127 langkah 238, 248, 297 (dan UI-125 langkah 72) mengasersi sisi foundation, tanpa footnote drift.
+- Juri, unit `§4.2b#r3`: Selisih sumber masih ada: PRD §4.5 «Tooltip 🔖 dapat diakses lewat keyboard focus.» dan foundation `toast_copy()` §Tooltip «Harus bisa diakses via keyboard focus (tidak hanya hover)» berlawanan dengan kontrak `Tooltip#38` «A disabled control cannot be focused, so its tooltip opens on hover only.» dan `Select#11` «`disabled` greys the control, removes it from the tab order». Sisi yang berlaku: kontrak komponen (mekanik komponen; `Tooltip#6` menyediakan hover pada kontrol disabled). Suite sekarang mengikuti kontrak: semua langkah field terkunci memakai «Arahkan kursor» (E2E-065 lk 6, 12; E2E-066 lk 18; E2E-078 lk 13, 15; UI-142 lk 3, 6), dan UI-110 lk 26 memuat footnote drift-nya.
+- Juri, unit `§4.2b#r1`: PRD §4.5: «Tooltip 🔖 dapat diakses lewat keyboard focus.» dan foundation `toast-copy.md` §Tooltip: «Harus bisa diakses via keyboard focus (tidak hanya hover)». Kontrak `Tooltip#38`: «A disabled control cannot be focused, so its tooltip opens on hover only.» (juga `Switch#37`: «A disabled or loading switch is skipped by Tab»). Yang berlaku untuk tooltip pada kontrol Disabled: kontrak komponen. UI-110 langkah 26 mengasersi sisi kontrak untuk field Account Code yang Disabled dengan footnote `[^drift-1]`; sesuai.
+- Juri, unit `§4.5#b1`: PRD §4.5: «Enter / Space untuk tombol dan checkbox». Kontrak `Checkbox#18`: «Enter does not toggle the box» (belum diverifikasi) dan `Checkbox#35`: «Space toggles it» (belum diverifikasi). Untuk mekanik komponen sisi kontrak yang berlaku, tetapi butirnya masih bertanda belum diverifikasi sehingga tidak dipakai untuk menilai salah. Perbaikan putaran 1 menambah UI-103 langkah 84-85 yang mengasersi sisi PRD (checkbox tercentang lewat Enter); bila butir `Checkbox#18` nanti terverifikasi, langkah itu menjadi bertentangan dengan kontrak. Space pada tombol (UI-103 langkah 89-90) sesuai `Button#29` dan temuan `kurang` putaran 1 sudah beres.
+- Juri, unit `§4.1#r5`: PRD §4.1/§4.4 dan foundation §9.3 menulis item `"Setup Column..."` dan judul modal `"Setup Column"`; kontrak menulis teks bawaan `Setup Columns` (`DataTable#76`, juga `CustomColumn#56` yang belum diverifikasi). Berlaku: foundation, karena literalnya ditetapkan sumber dan teks bawaan komponen adalah default yang bisa diganti (`CustomColumn#50` `setupColumnText`/`setupDialogTitle`, belum diverifikasi). Spec mengasersi literal foundation, jadi sesuai; perlu dipastikan komponen memang dikonfigurasi dengan teks itu.
+- Juri, unit `§4.4#r6`: PRD §4.4 dan foundation `prd-conventions.md` §9.3: item «Setup Column...» di bagian bawah panel dan modal berjudul «Setup Column». Kontrak: teks bawaan `Setup Columns` untuk entri menu dan judul dialog (`DataTable#76`, `CustomColumn#56`), dan `CustomColumn#7` «The menu popover starts with a Setup Columns button» (belum diverifikasi). Teksnya bisa diganti lewat `setupColumnText` dan `setupDialogTitle` (`CustomColumn#50`), dan foundation menetapkan literalnya, sehingga sisi foundation yang berlaku; UI-124 mengasersi sisi itu.
+- Juri, unit `EB-BLK-6`: Foundation `prd-conventions.md` §8 Perilaku Bulk Selection: tombol Select All «Web: selalu tampil (tidak perlu pilih dulu)». Kontrak `BulkActionButton#9`: «A select-all button appears when the selection is non-empty» dan `#1`: «The bar is on the page only while at least one row is selected». Yang berlaku: kontrak (kapan elemen muncul adalah mekanik komponen). UI-125 kini mencentang satu baris sebelum mengklik Select All (langkah 75, 80, 85, 95), sehingga temuan kelayakan putaran 1 sudah beres; tidak ada langkah Verifikasi yang mengasersi sisi foundation.
+- Juri, unit `EB-KOL-1@tabel-changelog`: Foundation `prd-conventions.md` §9.3: perubahan di modal Setup Column 'di-preview langsung di tabel (tabel di balik modal merefleksikan state sementara ini secara real-time)'. Kontrak DataTable#20 dan CustomColumn#9: 'edits are staged and reach the table only on Save', dengan tabel Preview di dalam dialog. Kedua butir kontrak bertanda belum diverifikasi, jadi sisi yang dipakai adalah foundation dan langkah ini dinilai sesuai; bila kontraknya terverifikasi, keempat langkah ini perlu diubah ke tabel Preview.
+- Juri, unit `EB-KOL-1@tabel-changelog`: Foundation §9.3: item panel `Setup Column...` dan judul modal `Setup Column`. Kontrak DataTable#76 (teks bawaan): `Setup Columns`. Literal foundation yang berlaku karena teks itu dapat diganti lewat `setupColumnText` dan `setupDialogTitle` (CustomColumn#50); langkah dinilai sesuai.
 
-| Spec cadangan | TC | Asal (nomor rencana) |
-|---|---|---|
-| 084 | TC-367 | 012 |
-| 085 | TC-363, TC-364 | 005 |
-| 086 | TC-33, TC-289 | 017 |
-| 087 | TC-122, TC-123, TC-343 | 020 |
-| 088 | TC-295, TC-297 | 030 |
-| 089 | TC-168, TC-355 | 034 |
-| 090 | TC-184, TC-185 | 040 |
-| 091 | TC-173 | 045 |
-| 092 | TC-191 | 052 |
-| 093 | TC-203 | 059 |
-| 094 | TC-281, TC-160 | 073 |
+## Unit yang belum teruji penuh (0)
 
-## Spec absence (095–103)
+Spec yang memuatnya benar, tetapi klausa di bawah belum diasersi. Ini yang menurunkan skor.
 
-Spec kelas g yang memuat asersi "tidak ada log" untuk klausa yang sebelumnya tanpa rumah (temuan a, diputuskan D1 opsi 1). Nomor `095`–`100` dari rencana; `101` dan `102` adalah nomor cadangan slice 1 yang dipakai karena `098` (empat TC, 54 langkah) dan `100` (empat TC, 48 langkah) melewati ~35 langkah bila digabung; `103` memuat klausa "tanpa log" TC-56 dan TC-350.
+- Tidak ada.
 
-| Spec absence | TC | Spec asal |
-|---|---|---|
-| 095 | TC-269, 270, 271 | 070 |
-| 096 | TC-36, 124, 272 | 071 (TC-36, 124), 072 (TC-272) |
-| 097 | TC-273, 274, 275 | 072 |
-| 098 | TC-32, 302 | 066 |
-| 099 | TC-65, 305, 71 | 068 |
-| 100 | TC-304, 361 | 067 |
-| 101 | TC-41, 303 | 066 |
-| 102 | TC-300, 301 | 069 |
-| 103 | TC-56, 350 | 029 (TC-56), 028 (TC-350) |
+## Spec yang tetap draft (0)
 
-## Pembagian TC lintas spec
+Asersi yang masih salah atau tidak bisa dijalankan sesudah perbaikan penutup.
 
-- Nomor tambahan `104`–`105` memuat TC seri Account Function Disposal Proceeds (`FACO-LOGIC-01f`): TC-368 (Create akun ber-function Disposal Proceeds) di `104` dan TC-369 (guard Delete akun Default Disposal Proceeds Account, `SET-13`) di `105`. TC-15 dan TC-16 (tujuh opsi dropdown Account Function dan penjelasan popover Disposal Proceeds) tetap di `013`.
-- 22 TC ada di `sourceTc` dua spec, spec asal dan spec absence (S-05 `[KEPUTUSAN 2026-11-02]`; `check-suite.py` C2 melaporkannya `[REVIEW]`): TC-32, 36, 41, 56, 65, 71, 124, 269–275, 300–305, 350, 361. Spec asal (`028`, `029`, `066`–`072`) hanya mengasersi tampilan, respons server, dan state data, dan menulis rujukan di `## Notes`; spec absence memuat pemicu yang sama dengan baseline Changelog, System Log aktor, dan Activity Log sendiri per TC.
-- Spec absence `083` memuat asersi "tidak ada log" untuk TC-51, 52, 96, 118 (aksi no-op dan item bulk yang dilewati).
-- Spec multi-konteks `073`–`078` dan `075` menulis asersi "tidak ada log" lewat baseline di spec asal (butir `P-1`).
+- Tidak ada.
 
-## Kebutuhan lingkungan (tim FE)
+## Catatan tingkat plan (81)
 
-- Env var password terdaftar yang dipakai: `FA_TC_PASSWORD`, `FA_RO_PASSWORD`, `FA_DU_PASSWORD` (Default User), `FA_GM_PASSWORD`. Sudah terdaftar di `spectra.config.ts` dan `.env.example` dengan nilai kosong (2026-11-04; tim FE mengisi nilainya): `FA_MACC_READ_PASSWORD`, `FA_MACC_CREATE_PASSWORD`, `FA_MACC_UPDATE_PASSWORD`, `FA_MACC_DELETE_PASSWORD`, `FA_MACC_UPDDEL_PASSWORD`, `FA_GMNOACC_PASSWORD`. `FA_GM_PASSWORD` terdaftar sebagai Group Manager Gedung A (Activity Log); pemakaian di suite ini (Group Manager untuk TC-153) perlu dikonfirmasi tim FE.
-- Fixture `fixtures/settings-chart-of-accounts.json` (belum ada; nama kunci ditetapkan tim FE) serta seed dan pemulihan akun lewat API.
-- Kemampuan teknis lain mengikuti butir di `suite.md`.
+- unit `§4.1.1#r1` (ok): Klausa «Searchable —» kolom Active (switch Status tidak ikut dicari) diasersi E2E-002 langkah 71 di bawah §5#b3; E2E-002 tidak tercatat sebagai penanggung §4.1.1#r1.
+- unit `§4.1.1#r1` (ok): Klausa Tipe Filter «populate dari data tabel» untuk field Active diasersi E2E-005 langkah 8 dan 62 (di bawah §9.5#r11); E2E-005 tidak tercatat sebagai penanggung §4.1.1#r1.
+- unit `§4.1.1#r4` (ok): Klausa Tipe Filter «populate dari data tabel» untuk field Function diasersi E2E-005 langkah 3 dan 4 (di bawah §9.5#r11); E2E-005 tidak tercatat sebagai penanggung §4.1.1#r4.
+- unit `§4.1.1#r7` (ok): Klausa «Searchable ✅» kolom Modified By hanya diasersi E2E-002 langkah 76 dan 81 (Search `System` saat kolom di-hide lalu visible), di bawah §5#b3; E2E-002 tidak tercatat sebagai penanggung §4.1.1#r7.
+- unit `§4.1.1#r8` (ok): Klausa «Searchable —» kolom Last Updated (tanggal tidak ikut dicari) diasersi E2E-002 langkah 23; E2E-002 tidak tercatat sebagai penanggung §4.1.1#r8.
+- unit `§4.1.1#r8` (ok): Klausa Format «Mengikuti General Settings» hanya terbedakan dari format tetap di E2E-095 (Date Format non-bawaan dan Time Format `12h`, di bawah EB-XM-1); spec penanggung unit ini (E2E-001 langkah 14, UI-120 langkah 78-80) hanya memakai nilai bawaan `dd/MM/yy` + `24h`. E2E-095 tidak tercatat sebagai penanggung §4.1.1#r8.
+- unit `§5#b3` (ok): Klausa «kecuali ... periode» (Last Used in Journal tidak ikut dicari) hanya diasersi BE-170 langkah 2 (di bawah §4.1.1#r6); BE-170 tidak tercatat sebagai penanggung §5#b3 dan unit ini tidak punya bagian be-e2e.
+- unit `EB-SRT-1` (ok): Klausa «angka natural» (0, 0, 0, 1, 2, 10) hanya diasersi BE-170 langkah 10 dan 12; pemilik BE-158 tidak memuat sort kolom angka dan BE-170 tidak tercatat sebagai penanggung EB-SRT-1.
+- unit `EB-SRT-1` (ok): Klausa «tanggal Oldest First dan Newest First» hanya diasersi spec smoke E2E-003 langkah 35 dan 37 (Last Updated); pemilik BE-158 tidak memuat sort kolom tanggal.
+- unit `§5#b8` (ok): BE-157 memakai akun `DLA-{runId}` yang «sudah pernah diekspor pada periode `Oct 2026`» untuk mengasersi sel Last Used in Journal `Oct 2026`, tetapi `dependsOn` kosong dan id spec tanpa akhiran dep. Last Used in Journal hanya terisi oleh Export Journal (FACO-LOGIC-07d: «Tidak ada input manual»), seperti dinyatakan BE-170 lewat dependsOn «Export Journal: export jurnal yang mengisi Last Used in Journal».
+- unit `§[F-FACO-11] Download Account List#p1` (ok): Belum beres dari putaran 1. Klausa «Gate: Read» unit ini diasersi di sini (aktor Manage accounting huruf Read membuka popover Download dan mengunduh `Chart-of-Accounts`), tetapi spec ini tetap tidak tercatat sebagai penanggung unit, dan `bagian` unit (ui-e2e maupun be-e2e) tidak memuat klausa gate. Spec pemilik E2E-008 dan BE-157 hanya memakai aktor Total Control.
+- unit `§[F-FACO-11] Download Account List#p1` (ok): Belum beres dari putaran 1. Klausa «Gate: Read» unit ini diasersi di sisi server di sini (Download diterima untuk aktor Read Only, ditolak Forbidden untuk Group Manager tanpa Manage accounting; PRD §9.3: «Melihat tab, tabel, popup Used By, Changelog, Download | Read pada Manage accounting, atau Total Control, atau Read Only»), tetapi spec ini tetap tidak tercatat sebagai penanggung unit.
+- unit `§4.1.1#r21` (ok): Klausa «Searchable —» kolom Date (tanggal tidak ikut dicari di modal Changelog) diasersi E2E-012 langkah 54 di bawah EB-SRC-2@tabel-changelog; E2E-012 tidak tercatat sebagai penanggung §4.1.1#r21.
+- unit `§4.1.1#r23` (ok): Klausa Catatan «Untuk `L-02` yang mengubah kode, berisi kode setelah perubahan (§8.1)» diasersi E2E-011 langkah 13 (di bawah §8.1#p3); E2E-011 tidak tercatat sebagai penanggung §4.1.1#r23.
+- unit `§8.1#p3` (ok): Masih berlaku dari putaran 1. Klausa Name pada System Log dan Activity Log diasersi BE-155 langkah 13 («kolom Account Code serta Name berisi kode setelah perubahan»), tetapi BE-155 tidak mencatat §8.1#p3 di `sourceRules`/`trace` dan tidak tercatat sebagai penanggung unit ini; penanggung tercatat hanya E2E-011 (ui-e2e) yang hanya menjangkau modal Changelog.
+- unit `V-04` (ok): Sisi Edit dari bagian be-e2e (server menolak kode yang sama, tanpa membedakan huruf besar-kecil, setelah trim, dengan record sendiri dikecualikan) diasersi BE-151 langkah 5, 20, 22, dan 24, tetapi BE-151 tidak tercatat sebagai penanggung V-04. Penanggung be-e2e tercatat hanya BE-150 (Create), padahal unit dibagi «Create vs Edit».
+- unit `§3.1#p1` (ok): Cabang «Gagal 5xx → toast gagal; timeout → toast koneksi; modal tetap terbuka, input dipertahankan» dan «Batas jumlah akun tercapai saat Submit → Dialog D-13; akun tidak dibuat; modal tetap terbuka» diasersi UI-104, bukan UI-103 yang tercatat sebagai penanggung ui-client untuk bagian itu.
+- unit `§3.1#p1` (ok): Cabang «Klik [+ Account] saat batas jumlah akun tercapai → Dialog D-13; modal tidak dibuka» diasersi UI-129 langkah 7 dan 10; UI-129 tidak tercatat sebagai penanggung §3.1#p1.
+- unit `EB-FRM-9` (ok): Spec berplatform web/android memuat langkah khusus web «Muat ulang halaman» (langkah 27) untuk klausa «nilainya bertahan sesudah muat ulang». Aplikasi Android native tidak punya muat ulang halaman, jadi klausa itu perlu padanan Android (mis. menutup lalu membuka kembali halaman) atau spec dipisah per platform.
+- unit `FACO-LOGIC-04c` (ok): Untuk keadaan «pernah diekspor», E2E-077 langkah 22 hanya memeriksa field Account Name tidak Disabled. Perubahan Account Name akun terekspor yang benar-benar tersimpan diasersi E2E-080 langkah 11-14 (juga E2E-078 langkah 28-32), yang tidak tercatat sebagai penanggung FACO-LOGIC-04c.
+- unit `§9.4.2#r7` (ok): Klausa «respons `200 OK`» E-FACO-07 hanya diasersi di BE-151 langkah 5 (permintaan berhasil dengan respons sukses, bukan tanpa konten) lewat unit R-03; BE-151 tidak tercatat sebagai penanggung §9.4.2#r7 dan `bagian` unit tidak punya bagian be-e2e. Di UI-112 `200 OK` hanya menjadi Kondisi K4 (respons tiruan), bukan asersi.
+- unit `§[F-FACO-03] Activate Account#p1` (ok): Klausa «Gate: Update» untuk Activate (single dan bulk) diasersi E2E-044 dengan aktor Manage accounting huruf Read dan Update (langkah 39-43 dan 49-56), dan penolakannya oleh BE-152 langkah 38 dan 86; keduanya tidak tercatat menanggung unit ini (sourceRules E2E-044 hanya memuat `§[F-FACO-04] Deactivate Account#p1`). Penanggung tercatat (E2E-025, E2E-027, UI-127, BE-153) semuanya memakai aktor Total Control.
+- unit `§[F-FACO-03] Activate Account#p1` (ok): Klausa «Bulk Deactivate meng-commit per akun: data dan ketiga log tiap akun» diasersi BE-156 langkah 3 (juga BE-155 langkah 26-27 dan BE-165 langkah 15, 29), bukan oleh BE-153 yang menjadi satu-satunya penanggung be-e2e unit ini dan hanya memuat Bulk Activate (langkah 14-17). BE-156 tidak tercatat sebagai penanggung.
+- unit `§[F-FACO-03] Activate Account#p1` (ok): Klausa «Bulk Delete meng-commit per akun: data dan ketiga log tiap akun» diasersi BE-166 langkah 24 (satu entri `Delete` pada setiap surface; BE-154 langkah 18 hanya Changelog dan Activity Log), bukan oleh penanggung be-e2e tercatat (BE-153). BE-166 tidak tercatat sebagai penanggung unit ini.
+- unit `§8.4#r3` (ok): Cabang Bulk Activate (satu entri per akun yang berhasil pada ketiga surface, akun berstatus target tanpa entri) diasersi BE-153 langkah 16 dan 17; BE-153 tidak tercatat sebagai penanggung §8.4#r3. Cabang Bulk Deactivate dan Bulk Delete kini sudah diasersi pemilik BE-156 (langkah 3-5 dan 21-22) pada ketiga surface.
+- unit `§[F-FACO-05] Delete Account#p3` (ok): Kalimat pertama unit («akun yang menjadi nilai default company di Preferences dijaga dan Delete ditolak dengan D-06») diasersi E2E-085 lk 10 dan 13 (sisi server BE-168 lk 2-12), bukan oleh pemilik tercatat E2E-028 yang hanya menanggung kalimat kedua (lk 13, 16, 17). E2E-085 tidak tercatat sebagai penanggung unit ini.
+- unit `EB-ERR-3` (ok): Klausa «Record yang sudah in-use oleh pihak lain ditolak guard» saat cek ulang konfirmasi diasersi BE-166 langkah 19 (Confirm ditolak cek ulang guard); BE-166 tidak tercatat sebagai penanggung EB-ERR-3, yang penanggungnya (BE-154, E2E-030) hanya memuat cabang akun sudah dihapus.
+- unit `§2.1#r1` (ok): Spec 040 (judul «melihat dan menjalankan seluruh aksi») hanya membuka modal Add/Edit dan dialog Delete/Deactivate/Activate lalu membatalkannya (langkah 26-42). Aksi Create, Edit, Activate, Deactivate, Delete oleh Total Control yang benar-benar diterima diasersi BE-152 langkah 6, 8, 10, 12, 14, tetapi BE-152 tidak tercatat sebagai penanggung §2.1#r1.
+- unit `§2.2#r2` (ok): Klausa «guard bisnis (`FACO-LOGIC-02`...) tetap berlaku» bagi Total Control tidak diasersi spec 040 (semua akunnya Used By 0; langkah 38 hanya dialog konfirmasi `Deactivate Account`). Guard Deactivate untuk aktor Total Control diasersi spec 061 langkah 4-6 (`Cannot Deactivate Account`), yang tidak tercatat sebagai penanggung §2.2#r2.
+- unit `§2.2#r2` (ok): Guard Delete (`FACO-LOGIC-03`) untuk aktor Total Control diasersi spec 063 langkah 5-7 (`Cannot Delete Account`), tidak tercatat sebagai penanggung §2.2#r2; spec 040 hanya memuat Delete yang lolos guard (langkah 35).
+- unit `§2.2#r2` (ok): Kunci field (`FACO-LOGIC-04`) untuk aktor Total Control diasersi spec 065 langkah 4 dan 7 (Account Function Disabled dengan alasan), tidak tercatat sebagai penanggung §2.2#r2; spec 040 tidak memuat akun terkunci.
+- unit `§9.11#p1` (ok): «Seluruh aktor yang boleh mengakses tab melihat himpunan akun yang sama» diasersi paling tegas oleh BE-152 langkah 2, 16, 26 (Total Control, Manage accounting, dan Read Only membaca akun `OTR-{runId}` yang sama dengan Account Name yang sama), tetapi BE-152 tidak tercatat sebagai penanggung §9.11#p1. Spec 041 langkah 17 hanya menghitung 2 baris untuk satu aktor.
+- unit `§2.1#r5` (ok): Klausa «popup Used By» untuk huruf Read tidak diasersi spec 042 (kedua akunnya Used By `0`). Klausa itu diasersi spec 053 langkah 4 dan 6 (aktor Manage accounting huruf Read saja membuka popup `Used By`), yang tidak tercatat sebagai penanggung §2.1#r5.
+- unit `§4.2b#p3` (ok): Unit menyebut popover `[ℹ]` «pada modal Add / Edit». Spec UI-100 hanya menguji modal Add; popover pada modal Edit (terbuka, tidak mengubah nilai, tertutup lewat `Esc`, modal tetap terbuka) diasersi UI-110 langkah 45, 46, 48, 49, tetapi UI-110 tidak tercatat sebagai penanggung §4.2b#p3.
+- unit `§4.6#b2` (ok): Spec 098 menyatakan DU-098-4 ber-Used By `3` dan mengasersinya di langkah 8 (trace §4.6#b1, di luar grup ini), tetapi `dependsOn` kosong dan Data tidak menyebut tiga Asset Class pemakainya. Used By adalah Derived view yang dihitung dari pemakaian akun oleh Asset Class (PRD §9.7; `S-12` aksi di `asset-class/`). Tambahkan dependsOn «Asset Class: pemakaian akun pada field akun Asset Class (Used By)» dan data Asset Class pemakainya.
+- unit `FACO-LOGIC-02g` (ok): Guard Delete pada akun Inactive (Guard 1, `D-05` cabang (c), akun tetap tersimpan) diasersi spec 081, yang tidak tercatat sebagai penanggung FACO-LOGIC-02g.
+- unit `FACO-LOGIC-02g` (ok): Guard Delete di server pada akun terekspor yang sudah Inactive diasersi BE-167 langkah 43, yang tidak tercatat sebagai penanggung FACO-LOGIC-02g.
+- unit `§4.1.1#r5` (ok): Klausa Toggle «☑ Hideable (checked, enabled)» kolom Used By diasersi di sini (centang dilepas dan dipasang, header hilang dan tampil, tercentang sesudah Reset to Default), tetapi UI-124 tidak tercatat sebagai penanggung §4.1.1#r5 dan `bagian` ui-client unit tidak memuat klausa itu.
+- unit `§3.8#r3` (ok): E2E-061 hanya menanggung cabang diblokir (`D-04`, switch tetap Active, tetap Enabled walau Used By > 0). Klausa lain baris ini diasersi spec yang tidak tercatat sebagai penanggung: «Lolos guard: Dialog `D-01`; toast `T-05`» oleh E2E-024 (langkah 4, 6) dan UI-127 (langkah 16 sampai 18); «Disabled 🔖 bagi aktor tanpa Update» oleh E2E-041 (langkah 16 sampai 18).
+- unit `§3.8#r4` (ok): Penanggung tercatat (E2E-063, E2E-077) hanya menutup cabang `D-06` karena dipakai Asset Class dan `D-05`. Klausa lain baris ini diasersi spec yang tidak tercatat sebagai penanggung: «akun menjadi nilai default company: `D-06`» oleh E2E-085 (langkah 10); «Lolos kedua guard: Dialog `D-07`; toast `T-06`» oleh E2E-028 (langkah 5, 7) dan UI-127 (langkah 30 sampai 32); «Hidden bagi aktor tanpa Delete» oleh E2E-041 (langkah 20) dan E2E-044 (langkah 29).
+- unit `S-12` (ok): Belum beres dari putaran 1. Untuk cabang «Asset Class memakai akun», E2E-069 hanya mengasersi Used By (langkah 49), guard Deactivate (52), dan popup (55); guard Delete yang dihitung ulang diasersi E2E-068 langkah 6-8 (`Cannot Delete Account` dengan `This account is used by 1 Asset Class and cannot be deleted.` sesudah akun menjadi dipakai). E2E-068 tidak tercatat sebagai penanggung S-12 (`sourceRules`-nya tidak memuat S-12). Pada cabang «melepas akun», Used By dan kedua guard sudah diasersi E2E-069 (langkah 50, 58, 62).
+- unit `§4.1.1#b2` (ok): Periode `MMM YYYY` pada berkas Download format XLSX (`Oct 2026`, langkah 13) dan CSV (langkah 9) diasersi BE-157, yang tidak tercatat sebagai penanggung §4.1.1#b2; BE-167 langkah 60–61 hanya mengasersi berkas CSV.
+- unit `§4.1.1#r6` (ok): Belum beres dari putaran 1. Klausa Toggle «☑ Hideable (checked, enabled)» kolom Last Used in Journal hanya tersentuh di sini: baris kolomnya ada di daftar Setup Column (15), centangnya dilepas (79), dan asersi langkah 80 (checkbox `Account Code` disabled sebagai kolom terakhir) bergantung pada kolom itu berhasil disembunyikan. UI-124 tetap tidak tercatat sebagai penanggung §4.1.1#r6 dan `bagian` ui-client unit tidak memuat klausa itu.
+- unit `EB-XM-2@export-journal` (ok): Klausa «Delete atau Bulk Delete menghilangkan opsi» tidak bisa terjadi di surface Export Journal: PRD §11.2 «Menghapus akun | Tidak berdampak ke Export Journal karena akun yang lolos guard tidak dipakai Asset Class, bukan nilai default company ..., dan tidak memiliki riwayat jurnal». Unit tidak membawa `catatan_plan` untuk klausa itu; Create (langkah 15) dan Edit (langkah 14) sudah diasersi.
+- unit `§11.1#r4` (ok): Klausa «membuka modal Add Account lewat shortcut `+ Create account` pada Select akun (`FACO-LOGIC-12`)» diasersi E2E-088, yang tidak tercatat sebagai penanggung unit ini.
+- unit `§11.1#r4` (ok): Klausa «menjadi guard Delete dengan `D-06` (§9.2)» diasersi E2E-085 langkah 10 (dan BE-168), yang tidak tercatat sebagai penanggung unit ini; E2E-087 sendiri tidak mengasersinya.
+- unit `§8.2#p1` (ok): Kejadian `L-10` yang ditulis ke System Log milik user pengekspor diasersi BE-167, yang tidak tercatat sebagai penanggung unit ini; E2E-093 hanya memuat `L-01` sampai `L-04`.
+- unit `§4.1.2#p2` (ok): Klausa «perubahan yang belum disimpan memicu dialog Unsaved Changes baku (`toast_copy()` Form — Create / Edit)» untuk form Edit diasersi UI-112, yang tidak tercatat sebagai penanggung unit ini; penanggung Edit yang tercatat (UI-110) hanya mengasersi tombol `[Clear Field]` dan `[Save]`.
+- unit `§4.1.2#r2` (ok): Belum beres dari putaran 1. Klausa kolom «Edit: Dapat Diubah? Selalu» diasersi E2E-077 langkah 22 (Account Name tidak Disabled pada akun terekspor), yang tidak mencatat `§4.1.2#r2`; penanggung tercatat (UI-100, UI-102) hanya menguji form Add.
+- unit `§9.4.2#r1` (ok): Klausa «modal tetap terbuka» E-FACO-01 hanya terbukti di spec ini (langkah 43-49: Account Name dan Account Function terisi valid, Submit, caption `Account code already exists` tampil di form yang masih terbuka), padahal spec ini tidak tercatat sebagai penanggung unit. Di TC-FA-FACO-UI-101 langkah 17-18 asersinya tidak bisa gagal: Submit dikirim dengan Account Name dan Account Function kosong, sehingga modal tetap terbuka karena V-05/V-08 apa pun hasil cek duplikat. Catat E2E-020 sebagai penanggung, atau isi Name dan Function valid sebelum langkah 17 di UI-101.
+- unit `§4.2f#b3` (ok): Dua klausa unit, «Reload/tutup tab saat form dirty: §24.1d» dan «navigasi internal saat form dirty: §24.1e», diasersi benar oleh spec ini untuk form Add (langkah 5, 9, 13, 27) dan form Edit (langkah 32, 36, 48), tetapi spec ini tidak tercatat sebagai penanggung unit. Penanggung tercatat (UI-103, UI-112) hanya memuat dialog Unsaved Changes lewat `✕` dan `Esc`.
+- unit `D-13` (ok): Pemicu ketiga D-13, klik shortcut `+ Create account` (FACO-LOGIC-10f), diasersi UI-145 langkah 9-10 (dialog `Cannot Add Account` tampil, modal tidak dibuka), tetapi UI-145 tidak tercatat sebagai penanggung D-13; `shared` unit ini hanya menyebut klik `+ Account` dan Submit.
+- unit `§7.2#b3` (ok): Klausa «seleksi dipertahankan» pada timeout tidak diasersi UI-104 maupun UI-128; yang mengasersinya adalah UI-127 (toast koneksi dan counter `2 Accounts selected` pada bulk Deactivate, Delete, Activate), yang tidak tercatat sebagai penanggung §7.2#b3.
+- unit `EB-FRM-6@form-edit-account` (ok): Butir (c), «Markup dan payload tersimpan tampil sebagai teks, tidak dieksekusi», tidak punya `bagian` dan tidak diasersi UI-111 maupun BE-151. Asersinya ada di UI-120 langkah 83 (Account Name `<b>Kas Besar</b>` tampil sebagai teks) dan UI-135 langkah 46-47, yang tidak tercatat sebagai penanggung unit ini.
+- unit `EB-FRM-8@account-name` (ok): Kasus Create «Account Name boleh sama dengan akun lain» (UI-102 langkah 44-51) tidak punya padanan Edit di UI-111 maupun BE-151. Padanannya diasersi E2E-022 langkah 45, yang tidak tercatat sebagai penanggung EB-FRM-8@account-name.
+- unit `§4.2a#p1` (ok): Fungsi tombol `[?]`, «menjalankan ulang Guided Tooltip», dan letaknya di kanan Breadcrumb tidak diasersi UI-120 (hanya tooltip `Show guide`, langkah 7). Asersinya ada di UI-130 langkah 69-71, yang tidak tercatat sebagai penanggung §4.2a#p1.
+- unit `§4.2a#p1` (ok): Literal Filename `Chart-of-Accounts` pada wireframe tidak diasersi UI-120. Asersinya ada di BE-157 langkah 2 (dan UI-128 langkah 11 lewat toast), yang tidak tercatat sebagai penanggung §4.2a#p1.
+- unit `§5#b6` (ok): Kasus tepi §9.18 «Menghapus baris terakhir di halaman terakhir: tabel pindah ke halaman terakhir yang masih ada» tidak diasersi UI-122. Asersinya ada di E2E-005 langkah 53-54, yang tidak tercatat sebagai penanggung §5#b6.
+- unit `§5#b10` (ok): Klausa «Preset Switch adalah preset sel Switch pada kolom Active» tidak diasersi UI-124. Asersinya ada di UI-126 langkah 2 (kolom `Active` menampilkan switch) dan UI-120 langkah 41-42, yang tidak tercatat sebagai penanggung §5#b10.
+- unit `§3.8#r5` (ok): UI-125 (penanggung tercatat) hanya mengasersi tampil/tersembunyinya `Activate` menurut komposisi seleksi (langkah 10, 18, 26). Klausa lain baris ini diasersi spec yang tidak tercatat: aktor berwenang Update melihat bulk Activate di E2E-044 (langkah 22) dan aktor tanpa Update tidak di E2E-045 (langkah 25); dialog `D-15` dan «hanya akun Inactive yang diproses» di UI-127 (11-13, 57-58, 68-69) dan E2E-027; toast `T-04` di UI-127 (116).
+- unit `§3.8#r6` (ok): UI-125 (penanggung tercatat) hanya mengasersi tampil/tersembunyinya `Deactivate` menurut komposisi seleksi (langkah 9, 19, 26). Klausa lain diasersi spec yang tidak tercatat: aktor Update di E2E-044 (22) dan tanpa Update di E2E-045 (25); `D-02` di UI-127 (24-26); `D-03` lalu toast parsial `T-05` di UI-127 (141-142) dan UI-141; `D-04` di UI-141.
+- unit `R-06` (ok): Bagian be-e2e «cek ulang guard atomik» tidak diasersi BE-154: semua akunnya lolos kedua guard (Kondisi BE-154). Cek ulang guard Delete saat Confirm diasersi BE-166 langkah 18-20 (akun menjadi dipakai), yang tidak tercatat sebagai penanggung R-06.
+- unit `R-06` (ok): Cek ulang guard Delete saat Confirm untuk akun yang menjadi terekspor diasersi BE-167 langkah 51-53, yang tidak tercatat sebagai penanggung R-06; BE-154 tidak memuat kasus ini.
+- unit `T-09` (ok): Cabang sukses 'Tidak ada toast' untuk surface modal Changelog tidak diasersi UI-136 (UI-136 hanya memuat cabang gagal, langkah 248 dan 253). Klausa itu diasersi E2E-008 langkah 62 dan 71, tetapi E2E-008 tidak tercatat sebagai penanggung T-09.
+- unit `§9.4.2#r27` (ok): Data DU-157-3 (Last Used in Journal `Oct 2026`, Kondisi 'sudah pernah diekspor') hanya bisa terbentuk lewat Export Journal (FACO-LOGIC-07d: tidak ada input manual), tetapi `dependsOn` BE-157 kosong dan spec ini tidak tercatat bergantung pada modul Export Journal.
+- unit `EB-CON-4` (ok): Kondisi mengeset Master Data Count Limit ke `1000` dan langkah 20 dan 24 mengubah plan client lewat operator platform. Foundation (`plans.md`, catatan Brand/Supplier) menyebut Master Data Count Limit satu nilai System Limits yang 'platform-wide dan independen dari plan', jadi spec ini mengubah keadaan tingkat platform, tetapi `subSuite` null dan `dependsOn` kosong. Selama nilainya 1000, spec lain yang butuh lebih dari 1000 akun tidak bisa membentuk datanya (BE-157: 5001 akun volume; BE-156: 1001 akun volume).
+- unit `§4.1#r3` (ok): Klausa trigger «Klik angka Used By > 0» tidak ada di UI-140 (popup langsung ditampilkan lewat Kondisi K1); diasersi E2E-060 langkah 7-8, yang tidak tercatat sebagai penanggung §4.1#r3.
+- unit `§4.2d#p1` (ok): Belum beres dari putaran 1. Klausa «urut A-Z» tidak diasersi UI-140 (langkah 9-11 memeriksa tiap Asset Class tampil, bukan urutannya); diasersi E2E-060 langkah 10, yang tidak mencatat `§4.2d#p1`.
+- unit `§9.9#r1` (ok): Klausa klien baris ini (pesan `V-01` sampai `V-04` beserta timing, default Create kosong, Edit pre-filled dan terkunci) diasersi spec ui-client (UI-100, UI-101, UI-110, UI-111) yang tidak tercatat sebagai penanggung §9.9#r1; penanggung tercatat hanya BE-150 dan BE-151. Kedua temuan `kurang` putaran 1 sudah beres: kode ber-`_` dan ber-`.` kini diterima pada Create (BE-150 langkah 58-61) dan Edit (BE-151 langkah 97-100).
+- unit `§9.9#r2` (ok): Klausa klien baris ini (pesan `V-05` sampai `V-07` beserta timing, default Create kosong, Edit pre-filled) diasersi UI-102, UI-111, UI-100 langkah 10, dan UI-110 langkah 4; 'Unik ❌' (nama sama diizinkan) diasersi E2E-020 langkah 46 dan E2E-022 langkah 45. Spec itu tidak tercatat sebagai penanggung §9.9#r2; penanggung tercatat hanya BE-150 dan BE-151.
+- unit `§9.9#r3` (ok): Klausa klien baris ini (pesan `V-08` setelah Submit, default Create belum terpilih, Edit pre-filled dan terkunci) diasersi UI-102 langkah 7, UI-111 langkah 10, UI-100 langkah 13, dan UI-110 langkah 14 dan 27; kunci di server diasersi BE-166 langkah 28 dan BE-167 langkah 31. Spec itu tidak tercatat sebagai penanggung §9.9#r3; penanggung tercatat hanya BE-150 dan BE-151.
+- unit `§9.3#r1` (ok): BE-152 mengasersi baca popup Used By, Changelog, dan Download hanya untuk Read Only (langkah 28-32) dan penolakannya untuk Group Manager (76-80); untuk Read pada Manage accounting hanya daftar akun (langkah 16). Baca tiga surface itu oleh aktor Manage accounting huruf Read diasersi di E2E-042 yang tidak tercatat sebagai penanggung unit ini.
+- unit `§9.3#r1` (ok): Untuk Total Control BE-152 hanya mengasersi baca daftar akun (langkah 2); popup Used By, Changelog, dan Download untuk Total Control diasersi di E2E-040 yang tidak tercatat sebagai penanggung unit ini.
+- unit `§8#r3` (ok): Belum beres dari putaran 1. Field log kelima, `Last Used in Journal`, tidak diasersi BE-155 (trace hanya Account Code, Account Name, Account Function, Status); asersinya ada di BE-167, yang tidak mencatat `§8#r3`.
+- unit `N-02` (ok): Jalur «lewat toggle» adalah jalur UI; BE-165 menanggung single, bulk, dan permintaan langsung di server (langkah 3, 10, 16, 19). Jalur toggle diasersi E2E-061 yang tidak tercatat sebagai penanggung N-02.
+- unit `§4.2f#p1` (na): alasan_plan menunjuk D-01 (dialog single) sebagai pemilik, padahal satu-satunya klausa teruji di unit ini, «`• …` adalah daftar entitas (bulk: scrollable, tidak diringkas)», adalah aturan dialog bulk (D-02, D-08, D-15, dan toast_copy() Aturan Terkunci #6 «List bulk tidak boleh diringkas»), bukan D-01. Klausanya sudah diasersi: TC-FA-FACO-E2E-026-bulk-deactivate langkah 41 (trace D-02) dan TC-FA-FACO-E2E-029-bulk-delete langkah 35 («memuat 12 bullet dan seluruhnya dapat dijangkau pada daftar yang bergulir»). Verdict tidak berubah; cukup perbaiki penunjuk di plan ke unit dialog bulk.
+- unit `§4.6#p1` (na): Unit ini pernyataan definisi platform («Platform mobile = aplikasi native Android») tanpa perilaku teruji tersendiri; plan mencatatnya `dimiliki` dengan trace ke langkah 4 (judul card memuat Account Code) yang tidak mengasersi isi unit. Cukup tercermin dari `platform: android` spec E2E-098 dan E2E-099.
+- unit `§9.4.1#r1` (ok): Unit dicatat `na` dengan penunjuk §9.4.2#r28, tetapi klausa «baca tetap tersedia» hanya ada di baris ini (PRD baris 1268); teks §9.4.2#r28 (E-FACO-53) dan EB-AKS-7 tidak memuatnya. Klausa itu sudah diasersi benar: TC-FA-FACO-BE-160 langkah 17-18 (Suspended) dan 35-36 (Expired) «permintaan baca tetap berhasil dan daftar memuat akun …», serta TC-FA-FACO-E2E-048 langkah 14 dan 37 (baris akun tampil di tabel pada entitas Suspended dan Expired); sesuai foundation `entity-isolation.md` §18.8 «Aksi baca tetap mengikuti scope §18.1». Klausa tulis ditolak 403 dengan copy baku juga diasersi (BE-160 langkah 3-15, 21-33; E2E-048 langkah 20, 30, 43, 53 dengan literal «Changes can't be saved while this workspace is suspended or expired.»). Selisihnya hanya pencatatan: tambahkan §9.4.1#r1 (atau klausa bacanya) ke sourceRules/trace kedua spec itu.
+- unit `§9.4.1#r6` (na): Baris checklist D6 memang penunjuk, tetapi `alasan_plan` hanya mencatat §9.4.2#r8, #r40, #r41. Butir D6 lain juga menunjuk baris matriks yang sudah ditanggung suite: «Edit bersamaan» = §9.4.2#r9 (E-FACO-09, TC-FA-FACO-BE-151), «akun menjadi dipakai saat konfirmasi» = §9.4.2#r12 dan #r22 (E-FACO-12, E-FACO-22; TC-FA-FACO-E2E-067, TC-FA-FACO-E2E-068), «double-submit» = §9.4.2#r32 (E-FACO-57, TC-FA-FACO-E2E-020). Lengkapi daftar penunjuk di plan; verdict tidak berubah.
+- unit `§9.6#p1` (na): Penahanan hanya cocok untuk klausa log. Kalimat kedua unit («Kegagalan 5xx / timeout: komponen aksi tetap terbuka atau kembali ke nilai tersimpan, input dan seleksi dipertahankan, retry manual lewat aksi ulang oleh user; toast tanpa tombol») ditetapkan sumber, bisa diuji, dan sudah diasersi spec lain di bawah R-01 sampai R-06, §7.2#p2, §7.2#b2, §7.3#b1: UI-104 langkah 14-18, 28-33, 39-41 (Create), UI-112 langkah 8-11, 15-19 (Edit), UI-126 langkah 47, 52, 57 (switch kembali ke nilai tersimpan), UI-127 langkah 155-159, 163-167, 172-176, 183-185, 193-195, 203-205, 210-214, 218-222, 227-231, 238-240, 248-250, 297-299 (dialog tetap tampil, seleksi dipertahankan, aksi ulang), UI-125 langkah 64-65, 72-73. Tidak ada spec yang mencatat §9.6#p1. Catat kalimat kedua pada spec-spec itu atau pecah unitnya, supaya yang ditahan hanya klausa log. `alasan_plan` menyebut pertentangan hanya untuk aksi bulk, padahal klausa log §9.6 berlaku untuk semua aksi dan berbeda juga dari foundation. Catatan cakupan: «toast tanpa tombol» hanya diasersi pada Create (UI-104 langkah 15, 30).
+- unit `§[F-FACO-01] Create Account#b4` (na): `alasan_plan` memakai temuan 13 (log aksi bulk, F-FACO-03), yang tidak menyangkut Create; dasar penahanan yang benar untuk unit ini adalah selisih PRD dengan foundation soal waktu penulisan log. Bagian unit yang pasti («Tulis log `L-01` pada tiga surface») ditetapkan sumber dan sudah diasersi BE-155 langkah 3 (Changelog), 4 (System Log), 5 (Activity Log), tercatat di bawah L-01 dan §9.7#r17, bukan di bawah unit ini. Yang tertahan hanya klausa «setelah commit, best-effort».
 
-## Temuan dan keputusan
-
-Diputuskan pengguna pada run ini:
-
-a. Klausa "tidak ada log" tanpa spec rumah: D1 opsi 1. Spec absence `095`–`103` ditambahkan (lihat bagian Spec absence); spec `028`, `029`, dan `066`–`072` tidak lagi memuat klausa itu.
-b. Target Pre-setup bersama untuk permintaan langsung ditolak: D2 opsi 1. Spec `070`, `071`, `072`, `075`, `079`, dan spec absence men-seed akun miliknya (Code `DID<NNN>x`) di hook `before` dan membersihkannya di `after`.
-c. Batas literal 15 karakter pada Account Code (Lampiran A tidak memuatnya): D3 opsi 1. Code literal maksimal 15 karakter, memuat nomor spec untuk akun milik spec; alasannya ditulis di `## Prerequisites`. Nilai Code dari TC untuk Create yang selalu gagal atau ditolak dipertahankan. Konvensi tidak diubah di run ini; usulan butir Lampiran A menunggu batch konvensi sesudah loop suite.
-d. Spec di atas ~35 langkah: D4 opsi 1. 44 spec dipertahankan, alasan tiap spec ada di Notes (046 (67), 050 (56), 053 (56), 064 (60), 042 (51), 063 (50), dan lainnya); `066` (56) dan `069` (58) tetap di atas 35 langkah.
-
-Masih terbuka:
-
-e. Ditunda dengan syarat (keputusan pengguna 2026-11-04; bukan keputusan terbuka, melainkan ketergantungan ke tim FE/BE; spec belum bisa dijalankan sampai terpenuhi, permintaan: `prd-harness/work-items/settings-chart-of-accounts/permintaan-fe-be.md`). Fixture dan env yang perlu disediakan tim FE (lihat bagian kebutuhan lingkungan), termasuk kemampuan seed pada client Suspended (spec `079`), penyetelan nilai default company lewat seed (spec `072`, `097`), dan kemampuan baca jumlah entri Changelog, System Log aktor, dan Activity Log per Account Code (spec absence).
-f. Jalur ekspor (J-06): ditunda dengan syarat (keputusan pengguna 2026-11-04). Syarat: tim BE menyediakan fixture ekspor Journal J-06; spec yang butuh akun terekspor aktif (antara lain `032`, `071`, `096`) dilengkapi setelah itu.
-- Detail temuan TC-sumber per spec ada di Notes "Temuan untuk QA".
-
-## TC granular → spec e2e
-
-| Spec | Judul | Mode | Langkah | TC sumber |
-|---|---|:---:|:---:|---|
-| TC-FA-COA-E2E-001-screening-halaman-chart-of-accounts-tab-tabel-loading-dan-search-kosong | Screening Halaman Chart of Accounts: Tab, Tabel, Loading, dan Search Kosong | FE+BE | 34 | 1, 3, 4, 138 |
-| TC-FA-COA-E2E-002-tabel-kosong-client-tanpa-akun | Tabel Kosong Client Tanpa Akun | FE+BE | 3 | 2 |
-| TC-FA-COA-E2E-003-accessibility-switch-status-fokus-modal-dan-atribut-aria-form | Accessibility: Switch Status, Fokus Modal, dan Atribut ARIA Form | FE+BE | 48 | 161, 162, 291, 292 |
-| TC-FA-COA-E2E-004-role-matrix-visibilitas-elemen-role-read-per-role | Role Matrix: Visibilitas Elemen Role Read per Role | FE+BE | 39 | 6, 7, 8, 9 |
-| TC-FA-COA-E2E-005-role-matrix-visibilitas-elemen-role-write-per-role | Role Matrix: Visibilitas Elemen Role Write per Role | FE+BE | 32 | 10, 11 |
-| TC-FA-COA-E2E-006-role-matrix-positif-create-dan-update-sampai-toast-sukses | Role Matrix Positif: Create dan Update sampai Toast Sukses | FE+BE | 42 | 261, 262, 263, 264, 265, 266 |
-| TC-FA-COA-E2E-007-role-matrix-positif-delete-sampai-toast-sukses | Role Matrix Positif: Delete sampai Toast Sukses | FE+BE | 12 | 267, 268 |
-| TC-FA-COA-E2E-008-role-matrix-negatif-akses-tab-ditolak-dan-switch-status-disabled | Role Matrix Negatif: Akses Tab Ditolak dan Switch Status Disabled | FE+BE | 14 | 12, 163 |
-| TC-FA-COA-E2E-009-guided-tooltip-kunjungan-pertama-dan-skip-done | Guided Tooltip: Kunjungan Pertama dan Skip Done | FE+BE | 35 | 105, 337, 340, 341 |
-| TC-FA-COA-E2E-010-guided-tooltip-mulai-ulang-back-next-dan-keyboard | Guided Tooltip: Mulai Ulang, Back Next, dan Keyboard | FE+BE | 22 | 338, 339, 342 |
-| TC-FA-COA-E2E-011-mobile-android-card-list-toolbar-bottom-sheet-role | Mobile Android: Card List, Toolbar, Bottom Sheet, Role | FE+BE | 37 | 98, 99, 100, 102, 103, 104 |
-| TC-FA-COA-E2E-012-mobile-android-selection-mode-popup-used-by-dan-switch-disabled | Mobile Android: Selection Mode, Popup Used By, dan Switch Disabled | FE+BE | 31 | 101, 366, 344, 345 |
-| TC-FA-COA-E2E-013-add-account-screening-modal-dropdown-function-popover-dan-clear-field | Add Account: Screening Modal, Dropdown Function, Popover, dan Clear Field | FE+BE | 40 | 13, 15, 16, 18 |
-| TC-FA-COA-E2E-014-add-account-validasi-wajib-spasi-karakter-dan-emoji | Add Account: Validasi Wajib, Spasi, Karakter, dan Emoji | FE+BE | 31 | 19, 20, 21, 22, 24, 27 |
-| TC-FA-COA-E2E-015-add-account-validasi-batas-panjang-dan-whitelist-account-code | Add Account: Validasi Batas Panjang dan Whitelist Account Code | FE+BE | 38 | 23, 25, 26, 359, 360 |
-| TC-FA-COA-E2E-016-add-account-validasi-duplikat-code-dan-create-dengan-search-dan-filter | Add Account: Validasi Duplikat Code dan Create dengan Search dan Filter Aktif | FE+BE | 35 | 28, 29, 143 |
-| TC-FA-COA-E2E-017-add-account-create-sukses-name-sama-trim-dan-stay-on-this-form | Add Account: Create Sukses, Name Sama, Trim, dan Stay on this Form | FE+BE | 32 | 14, 17, 30, 260 |
-| TC-FA-COA-E2E-018-add-account-tutup-form-unsaved-changes-dan-nilai-dikembalikan | Add Account: Tutup Form, Unsaved Changes, dan Nilai Dikembalikan | FE+BE | 28 | 236, 237, 238, 239, 241 |
-| TC-FA-COA-E2E-019-add-account-klik-backdrop-refresh-sidebar-dan-esc-pada-form-dirty | Add Account: Klik Backdrop, Refresh, Sidebar, dan Esc pada Form Dirty | FE+BE | 34 | 240, 242, 243, 244, 356 |
-| TC-FA-COA-E2E-020-edit-account-screening-modal-kunci-field-dan-tooltip-kunci | Edit Account: Screening Modal, Kunci Field, dan Tooltip Kunci | FE+BE | 26 | 34, 35, 42 |
-| TC-FA-COA-E2E-021-edit-account-validasi-field-diblokir | Edit Account: Validasi Field Diblokir | FE+BE | 31 | 253, 254, 255, 256, 257, 258 |
-| TC-FA-COA-E2E-022-edit-account-duplikat-code-simpan-berhasil-no-op-trim-dan-perubahan | Edit Account: Duplikat Code, Simpan Berhasil, No-Op, Trim, dan Perubahan Huruf | FE+BE | 50 | 37, 38, 39, 40, 144, 259 |
-| TC-FA-COA-E2E-023-edit-account-multi-field-log-akun-inactive-terekspor-double-save-dan | Edit Account: Multi-Field Log, Akun Inactive Terekspor, Double Save, dan Saving State | FE+BE | 49 | 145, 283, 290, 365 |
-| TC-FA-COA-E2E-024-edit-account-tutup-form-unsaved-changes-dan-backdrop | Edit Account: Tutup Form, Unsaved Changes, dan Backdrop | FE+BE | 41 | 245, 246, 247, 248, 249, 250 |
-| TC-FA-COA-E2E-025-edit-account-refresh-sidebar-dan-esc-pada-form-dirty | Edit Account: Refresh, Sidebar, dan Esc pada Form Dirty | FE+BE | 34 | 251, 252, 357 |
-| TC-FA-COA-E2E-026-activate-deactivate-single-dialog-cancel-no-op-dan-double-click | Activate Deactivate Single: Dialog, Cancel, No-Op, dan Double Click | FE+BE | 18 | 46, 47, 285 |
-| TC-FA-COA-E2E-027-deactivate-single-pernah-diekspor-akun-default-company-dan-spinner | Deactivate Single: Pernah Diekspor, Akun Default Company, dan Spinner | FE+BE | 38 | 48, 49, 50, 164, 286 |
-| TC-FA-COA-E2E-028-bulk-activate-seleksi-campuran-dan-collapse-single | Bulk Activate: Seleksi, Campuran, dan Collapse Single | FE+BE | 43 | 53, 54, 298, 350 |
-| TC-FA-COA-E2E-029-bulk-deactivate-semua-eligible-campuran-collapse-dan-d-03-satu-akun | Bulk Deactivate: Semua Eligible, Campuran, Collapse, dan D-03 Satu Akun | FE+BE | 40 | 55, 56, 299, 354 |
-| TC-FA-COA-E2E-030-cancel-dialog-bulk-activate-deactivate-dan-delete | Cancel Dialog Bulk Activate, Deactivate, dan Delete | FE+BE | 36 | 293, 294, 296 |
-| TC-FA-COA-E2E-031-blokir-deactivate-akun-dipakai-asset-class | Blokir Deactivate: Akun Dipakai Asset Class | FE+BE | 43 | 125, 126, 127, 128, 156 |
-| TC-FA-COA-E2E-032-blokir-delete-single-akun-terekspor-dan-dipakai-asset-class | Blokir Delete Single: Akun Terekspor dan Dipakai Asset Class | FE+BE | 34 | 59, 60, 129, 130, 136 |
-| TC-FA-COA-E2E-033-blokir-delete-single-akun-default-company | Blokir Delete Single: Akun Default Company | FE+BE | 35 | 165, 166, 167 |
-| TC-FA-COA-E2E-034-blokir-bulk-delete-seluruh-seleksi-diblokir | Blokir Bulk Delete: Seluruh Seleksi Diblokir | FE+BE | 20 | 70, 131 |
-| TC-FA-COA-E2E-035-bulk-delete-campuran-akun-eligible-dihapus-akun-terekspor-atau-dipakai | Bulk Delete Campuran: Akun Eligible Dihapus, Akun Terekspor atau Dipakai Asset Class Dilewati | FE+BE | 35 | 69, 115, 132 |
-| TC-FA-COA-E2E-036-bulk-delete-campuran-dengan-akun-default-company | Bulk Delete Campuran dengan Akun Default Company | FE+BE | 23 | 169, 170 |
-| TC-FA-COA-E2E-037-popup-used-by-daftar-asset-class-urutan-dan-loading | Popup Used By: Daftar Asset Class, Urutan, dan Loading | FE+BE | 45 | 133, 134, 135, 154, 155, 287 |
-| TC-FA-COA-E2E-038-used-by-berubah-saat-asset-class-memakai-atau-melepas-akun | Used By Berubah Saat Asset Class Memakai atau Melepas Akun | FE+BE | 47 | 157, 158 |
-| TC-FA-COA-E2E-039-delete-single-dan-bulk-delete-berhasil | Delete Single dan Bulk Delete Berhasil | FE+BE | 39 | 61, 62, 63, 67, 68, 284 |
-| TC-FA-COA-E2E-040-search-tabel-per-kolom-hidden-dan-used-by | Search Tabel: Per Kolom, Hidden, dan Used By | FE+BE | 31 | 72, 73, 74, 183, 320 |
-| TC-FA-COA-E2E-041-search-tabel-perilaku-kotak-search-dan-trim-spasi | Search Tabel: Perilaku Kotak Search dan Trim Spasi | FE+BE | 34 | 229, 316, 317, 318, 319 |
-| TC-FA-COA-E2E-042-filter-panel-tabel-struktur-opsi-dan-multi-select | Filter Panel Tabel: Struktur, Opsi, dan Multi-Select | FE+BE | 51 | 75, 76, 180, 186, 322 |
-| TC-FA-COA-E2E-043-filter-panel-tabel-periode-date-range-used-by-dan-kombinasi-and | Filter Panel Tabel: Periode, Date Range, Used By, dan Kombinasi AND | FE+BE | 40 | 77, 78, 181, 323, 324 |
-| TC-FA-COA-E2E-044-filter-panel-tabel-tutup-panel-badge-indikator-chip-dan-dropdown | Filter Panel Tabel: Tutup Panel, Badge Indikator, Chip, dan Dropdown | FE+BE | 42 | 214, 215, 218, 329, 330, 331 |
-| TC-FA-COA-E2E-045-sort-tabel-default-siklus-tiga-tahap-dan-kolom-teks-numerik | Sort Tabel: Default, Siklus Tiga Tahap pada Account Name, Account Code, Active, dan Used By | FE+BE | 39 | 80, 182, 174, 175 |
-| TC-FA-COA-E2E-046-sort-tabel-last-used-last-updated-kolom-tanpa-sort-pindah-kolom-dan-tie | Sort Tabel: Last Used in Journal, Last Updated, Kolom Tanpa Sort, Pindah Kolom, dan Tie-Breaker | FE+BE | 67 | 176, 177, 178, 179, 220 |
-| TC-FA-COA-E2E-047-kombinasi-search-filter-sort-paginasi-pada-tabel | Kombinasi Search, Filter, Sort, dan Paginasi pada Tabel | FE+BE | 38 | 79, 325, 326, 327 |
-| TC-FA-COA-E2E-048-paginasi-tabel-dan-hapus-baris-terakhir | Paginasi Tabel: Reset Halaman, Input Halaman Tidak Valid, Ukuran Halaman, dan Hapus Baris Terakhir | FE+BE | 44 | 81, 225, 227, 228, 226 |
-| TC-FA-COA-E2E-049-list-state-dan-independensi-filter-dari-column-visibility | List State dan Independensi Filter dari Column Visibility | FE+BE | 44 | 231, 232, 233, 234 |
-| TC-FA-COA-E2E-050-row-action-dan-bulk-action-bar-seleksi-select-all-dan-clear | Row Action dan Bulk Action Bar: Seleksi, Select All, dan Clear | FE+BE | 56 | 306, 307, 308, 309, 310, 328 |
-| TC-FA-COA-E2E-051-setup-column-tabel-quick-panel-popup-dan-kolom-default-hidden | Setup Column Tabel: Quick Panel, Popup, dan Kolom Default Hidden | FE+BE | 35 | 187, 188, 189, 193 |
-| TC-FA-COA-E2E-052-setup-column-tabel-reorder-pin-dan-guard-pin-keempat | Setup Column Tabel: Reorder, Pin, dan Guard Pin Keempat | FE+BE | 39 | 190, 194, 332, 333 |
-| TC-FA-COA-E2E-053-setup-column-tabel-pin-hidden-reset-to-default-dan-tutup-tanpa-save | Setup Column Tabel: Pin Hidden, Reset to Default, dan Tutup Tanpa Save | FE+BE | 56 | 82, 83, 192, 195, 196 |
-| TC-FA-COA-E2E-054-format-tampilan-last-updated-modified-by-dan-date-changelog | Format Tampilan Last Updated, Modified By, dan Date Changelog | FE+BE | 32 | 311, 312, 313, 314, 315 |
-| TC-FA-COA-E2E-055-download-tabel-isi-berkas-mengikuti-search-filter-sort-dan-kolom | Download Tabel: Isi Berkas mengikuti Search, Filter, Sort, dan Kolom | FE+BE | 43 | 84, 85, 86, 223, 224, 334 |
-| TC-FA-COA-E2E-056-download-tabel-format-csv-bom-xlsx-sheet1-dan-lintas-halaman | Download Tabel: Format CSV BOM, XLSX Sheet1, dan Lintas Halaman | FE+BE | 24 | 221, 222, 358 |
-| TC-FA-COA-E2E-057-modal-changelog-screening-loading-kosong-dan-sort | Modal Changelog: Screening, Loading, Kosong, dan Sort | FE+BE | 34 | 88, 89, 91, 197, 198, 199, 288 |
-| TC-FA-COA-E2E-058-modal-changelog-search-per-kolom | Modal Changelog: Search per Kolom | FE+BE | 30 | 200, 201, 230, 321 |
-| TC-FA-COA-E2E-059-modal-changelog-struktur-filter-opsi-date-range-dan-multi-select | Modal Changelog: Struktur Filter, Date Range, dan Multi-Select | FE+BE | 40 | 90, 202, 204, 205 |
-| TC-FA-COA-E2E-060-modal-changelog-tutup-panel-filter-badge-paginasi-dan-download | Modal Changelog: Tutup Panel Filter, Badge, Paginasi, dan Download | FE+BE | 36 | 216, 217, 219, 335, 336 |
-| TC-FA-COA-E2E-061-modal-changelog-setup-column-quick-panel-popup-checkbox-dan-guard | Modal Changelog: Setup Column Quick Panel, Popup, Checkbox, dan Guard | FE+BE | 29 | 206, 207, 208, 213 |
-| TC-FA-COA-E2E-062-modal-changelog-setup-column-reorder-pin-reset-dan-tutup | Modal Changelog: Setup Column Reorder, Pin, Reset, dan Tutup | FE+BE | 36 | 209, 210, 211, 212 |
-| TC-FA-COA-E2E-063-audit-log-create-dan-snapshot-tie-breaker-changelog | Audit Log: Create dan Snapshot, Tie-Breaker Changelog | FE+BE | 50 | 92, 97, 235 |
-| TC-FA-COA-E2E-064-audit-log-edit-account-code-activate-deactivate-dan-delete | Audit Log: Edit Account Code, Activate Deactivate, dan Delete | FE+BE | 60 | 93, 94, 95 |
-| TC-FA-COA-E2E-065-last-used-in-journal-hover-tanpa-input-manual-dan-jalur-api | Last Used in Journal: Hover, Tanpa Input Manual, dan Jalur API | FE+BE | 38 | 106, 117, 119, 120 |
-| TC-FA-COA-E2E-066-resilience-create-dan-edit-gagal-5xx-dan-timeout | Resilience Create dan Edit Account: Respons 5xx dan Timeout Mempertahankan Modal dan Input | FE+BE | 56 | 32, 302, 41, 303 |
-| TC-FA-COA-E2E-067-resilience-activate-dan-deactivate-single-gagal-dan-timeout | Resilience Activate dan Deactivate Single: Respons 5xx dan Timeout Mengembalikan Switch dan Mempertahankan Dialog | FE+BE | 36 | 57, 58, 304, 361 |
-| TC-FA-COA-E2E-068-resilience-delete-single-dan-bulk-delete-gagal-dan-timeout | Resilience Delete Single dan Bulk Delete: Respons 5xx dan Timeout Mempertahankan Dialog dan Data | FE+BE | 32 | 65, 305, 71 |
-| TC-FA-COA-E2E-069-resilience-bulk-gagal-timeout-dan-load-error-tabel | Resilience Bulk Activate dan Deactivate Gagal, Timeout, dan Error State Tabel | FE+BE | 58 | 5, 300, 301, 362 |
-| TC-FA-COA-E2E-070-defense-in-depth-akses-langsung-per-role-ditolak-server | Defense-in-Depth: Akses Langsung per Role Ditolak Server | FE+BE | 36 | 107, 108, 153, 269, 270, 271 |
-| TC-FA-COA-E2E-071-defense-in-depth-akses-langsung-atas-akun-terkunci-dan-lintas-client | Defense-in-Depth: Akses Langsung atas Akun Terkunci dan Lintas Client | FE+BE | 16 | 36, 109, 110, 111, 124 |
-| TC-FA-COA-E2E-072-defense-in-depth-akses-langsung-atas-akun-terpakai-dan-default-company | Defense-in-Depth: Akses Langsung atas Akun Terpakai dan Default Company, serta Nama Berisi HTML | FE+BE | 23 | 121, 272, 273, 274, 275 |
-| TC-FA-COA-E2E-073-multi-konteks-edit-serentak-kunci-berubah-dan-last-write-wins | Multi-Konteks: Edit Akun saat Kunci Berubah oleh Sesi Lain dan Edit Serentak Dua Sesi (Last-Write-Wins) | FE+BE | 31 | 43, 44, 45 |
-| TC-FA-COA-E2E-074-multi-konteks-aksi-single-atas-akun-yang-berubah-oleh-sesi-lain | Multi-Konteks: Aksi Single (Save Edit, Activate, Deactivate) atas Akun yang Dihapus atau Sudah Berubah Status oleh Sesi Lain | FE+BE | 44 | 146, 147, 148, 150, 151 |
-| TC-FA-COA-E2E-075-multi-konteks-delete-dan-guard-berubah-antara-dialog-dan-confirm | Multi-Konteks: Delete Single dan Guard Berubah antara Dialog Dibuka dan Confirm (Akun Dihapus, Diekspor, atau Dipakai Asset Class) | FE+BE | 34 | 64, 66, 137, 349 |
-| TC-FA-COA-E2E-076-multi-konteks-bulk-aksi-atas-akun-sudah-dihapus-atau-sudah-berubah | Multi-Konteks: Bulk Activate dan Deactivate saat Seluruh Akun Terpilih Sudah Dihapus atau Sudah Berstatus Target oleh Sesi Lain | FE+BE | 41 | 149, 152, 351, 352 |
-| TC-FA-COA-E2E-077-multi-konteks-bulk-sebagian-dihapus-sesi-lain | Multi-Konteks: Bulk Deactivate, Activate, dan Delete saat Sebagian Akun Terpilih Dihapus Sesi Lain, Akun Lain Tetap Diproses | FE+BE | 52 | 114, 171, 172, 353 |
-| TC-FA-COA-E2E-078-multi-konteks-bulk-guard-berubah-antara-dialog-dan-confirm | Multi-Konteks: Bulk Deactivate dan Bulk Delete saat Guard Berubah antara Dialog Dibuka dan Confirm (Dipakai Asset Class atau Diekspor) | FE+BE | 43 | 346, 347, 348 |
-| TC-FA-COA-E2E-079-state-tenant-suspended-expired-dan-plan-starter | State Tenant: Client Suspended atau Expired Menolak Aksi Tulis dan Plan Starter Menonaktifkan Menu Accounting | FE+BE | 40 | 112, 113, 277, 278, 279, 280, 142 |
-| TC-FA-COA-E2E-080-batas-jumlah-akun-master-data-count-limit | Batas Jumlah Akun: Master Data Count Limit Memblokir Penambahan Akun | FE+BE | 28 | 31, 159, 282 |
-| TC-FA-COA-E2E-081-selection-limit-batas-seleksi-100 | Selection Limit: Batas Seleksi 100 pada Select All, Seleksi Manual, dan Permintaan Langsung Bulk | FE+BE | 23 | 140, 141, 276 |
-| TC-FA-COA-E2E-082-download-lebih-dari-5000-baris | Download Lebih dari 5.000 Baris: Loading Tampil sampai Berkas Siap | FE+BE | 5 | 87 |
-| TC-FA-COA-E2E-083-absence-log-aksi-no-op-dan-item-bulk-yang-dilewati | Absence Log: Aksi No-Op dan Item Bulk yang Dilewati Tidak Menulis Log | FE+BE | 49 | 51, 52, 96, 118 |
-| TC-FA-COA-E2E-084-mobile-android-selection-mode-setelah-bulk-commit-cancel-dan-dialog-blok | Mobile Android: Selection Mode Setelah Bulk Commit, Cancel, dan Dialog Blok | FE+BE | 22 | 367 |
-| TC-FA-COA-E2E-085-role-matrix-visibilitas-elemen-update-delete-dan-default-user | Role Matrix: Visibilitas Elemen Update + Delete dan Default User | FE+BE | 34 | 363, 364 |
-| TC-FA-COA-E2E-086-add-account-klik-ganda-submit-dan-saving-state | Add Account: Klik Ganda Submit dan Saving State | FE+BE | 17 | 33, 289 |
-| TC-FA-COA-E2E-087-edit-account-tooltip-kunci-function-used-by-dan-last-used-in-journal | Edit Account: Tooltip Kunci Function karena Used By dan Last Used in Journal | FE+BE | 19 | 122, 123, 343 |
-| TC-FA-COA-E2E-088-cancel-dialog-bulk-deactivate-dan-delete-campuran | Cancel Dialog Bulk Deactivate dan Delete Campuran (D-03 dan D-09) | FE+BE | 25 | 295, 297 |
-| TC-FA-COA-E2E-089-blokir-bulk-delete-akun-default-company | Blokir Bulk Delete: Seluruh Seleksi Akun Default Company | FE+BE | 26 | 168, 355 |
-| TC-FA-COA-E2E-090-search-tabel-modified-by-dan-guard-negatif | Search Tabel: Modified By dan Guard Negatif | FE+BE | 29 | 184, 185 |
-| TC-FA-COA-E2E-091-sort-tabel-kolom-function-dan-modified-by | Sort Tabel: Siklus Tiga Tahap pada Kolom Function dan Modified By | FE+BE | 24 | 173 |
-| TC-FA-COA-E2E-092-setup-column-tabel-pin-dan-unpin-kolom-default-visible | Setup Column Tabel: Pin dan Unpin Kolom Default Visible | FE+BE | 10 | 191 |
-| TC-FA-COA-E2E-093-modal-changelog-isi-opsi-dropdown-filter | Modal Changelog: Isi Opsi Dropdown Filter | FE+BE | 24 | 203 |
-| TC-FA-COA-E2E-094-multi-konteks-create-serentak-code-sama-dan-batas-akun-antara-klik-dan-submit | Multi-Konteks: Create Serentak Dua Sesi dengan Account Code Sama dan Batas Jumlah Akun Tercapai antara Klik dan Submit | FE+BE | 35 | 281, 160 |
-| TC-FA-COA-E2E-095-absence-log-permintaan-langsung-ditolak-role-create-update-dan-delete | Absence Log: Permintaan Langsung Ditolak Role Create, Update, dan Delete Tidak Menulis Log | FE+BE | 25 | 269, 270, 271 |
-| TC-FA-COA-E2E-096-absence-log-permintaan-langsung-atas-akun-terkunci-dan-akun-dipakai-asset-class-ditolak | Absence Log: Permintaan Langsung atas Akun Terekspor dan Akun Dipakai Asset Class Ditolak Tidak Menulis Log | FE+BE | 18 | 36, 124, 272 |
-| TC-FA-COA-E2E-097-absence-log-permintaan-langsung-atas-akun-default-company-dan-bulk-campuran-ditolak | Absence Log: Permintaan Langsung Delete Akun Terpakai, Akun Default Company, dan Bulk Deactivate Campuran Tidak Menulis Log untuk Akun Terblokir | FE+BE | 18 | 273, 274, 275 |
-| TC-FA-COA-E2E-098-absence-log-create-gagal-5xx-atau-timeout | Absence Log: Create Account Gagal 5xx atau Timeout Tidak Menulis Log | FE+BE | 26 | 32, 302 |
-| TC-FA-COA-E2E-099-absence-log-delete-single-dan-bulk-delete-gagal-5xx-atau-timeout | Absence Log: Delete Single dan Bulk Delete Gagal 5xx atau Timeout Tidak Menulis Log | FE+BE | 35 | 65, 305, 71 |
-| TC-FA-COA-E2E-100-absence-log-activate-dan-deactivate-single-gagal-5xx-atau-timeout | Absence Log: Activate dan Deactivate Single Timeout Tidak Menulis Log | FE+BE | 22 | 304, 361 |
-| TC-FA-COA-E2E-101-absence-log-edit-gagal-5xx-atau-timeout | Absence Log: Save Edit Gagal 5xx atau Timeout Tidak Menulis Log | FE+BE | 28 | 41, 303 |
-| TC-FA-COA-E2E-102-absence-log-bulk-activate-dan-deactivate-gagal-5xx | Absence Log: Bulk Activate dan Bulk Deactivate Gagal 5xx Tidak Menulis Log | FE+BE | 28 | 300, 301 |
-| TC-FA-COA-E2E-103-absence-log-bulk-activate-dan-deactivate-seleksi-campuran | Absence Log: Bulk Deactivate dan Bulk Activate Seleksi Campuran Tidak Menulis Log untuk Akun yang Dilewati | FE+BE | 39 | 56, 350 |
-| TC-FA-COA-E2E-104-add-account-create-akun-function-disposal-proceeds | Add Account: Create Akun dengan Account Function Disposal Proceeds | FE+BE | 12 | 368 |
-| TC-FA-COA-E2E-105-blokir-delete-single-akun-default-disposal-proceeds-account | Blokir Delete Single: Akun Default Disposal Proceeds Account | FE+BE | 10 | 369 |
-
-## Lapisan per TC
-
-| TC | Spec | Mode |
-|---|---|---|
-| TC-FA-COA-1 | TC-FA-COA-E2E-001 | FE+BE |
-| TC-FA-COA-2 | TC-FA-COA-E2E-002 | FE+BE |
-| TC-FA-COA-3 | TC-FA-COA-E2E-001 | FE+BE |
-| TC-FA-COA-4 | TC-FA-COA-E2E-001 | FE+BE |
-| TC-FA-COA-5 | TC-FA-COA-E2E-069 | FE+BE |
-| TC-FA-COA-6 | TC-FA-COA-E2E-004 | FE+BE |
-| TC-FA-COA-7 | TC-FA-COA-E2E-004 | FE+BE |
-| TC-FA-COA-8 | TC-FA-COA-E2E-004 | FE+BE |
-| TC-FA-COA-9 | TC-FA-COA-E2E-004 | FE+BE |
-| TC-FA-COA-10 | TC-FA-COA-E2E-005 | FE+BE |
-| TC-FA-COA-11 | TC-FA-COA-E2E-005 | FE+BE |
-| TC-FA-COA-12 | TC-FA-COA-E2E-008 | FE+BE |
-| TC-FA-COA-13 | TC-FA-COA-E2E-013 | FE+BE |
-| TC-FA-COA-14 | TC-FA-COA-E2E-017 | FE+BE |
-| TC-FA-COA-15 | TC-FA-COA-E2E-013 | FE+BE |
-| TC-FA-COA-16 | TC-FA-COA-E2E-013 | FE+BE |
-| TC-FA-COA-17 | TC-FA-COA-E2E-017 | FE+BE |
-| TC-FA-COA-18 | TC-FA-COA-E2E-013 | FE+BE |
-| TC-FA-COA-19 | TC-FA-COA-E2E-014 | FE+BE |
-| TC-FA-COA-20 | TC-FA-COA-E2E-014 | FE+BE |
-| TC-FA-COA-21 | TC-FA-COA-E2E-014 | FE+BE |
-| TC-FA-COA-22 | TC-FA-COA-E2E-014 | FE+BE |
-| TC-FA-COA-23 | TC-FA-COA-E2E-015 | FE+BE |
-| TC-FA-COA-24 | TC-FA-COA-E2E-014 | FE+BE |
-| TC-FA-COA-25 | TC-FA-COA-E2E-015 | FE+BE |
-| TC-FA-COA-26 | TC-FA-COA-E2E-015 | FE+BE |
-| TC-FA-COA-27 | TC-FA-COA-E2E-014 | FE+BE |
-| TC-FA-COA-28 | TC-FA-COA-E2E-016 | FE+BE |
-| TC-FA-COA-29 | TC-FA-COA-E2E-016 | FE+BE |
-| TC-FA-COA-30 | TC-FA-COA-E2E-017 | FE+BE |
-| TC-FA-COA-31 | TC-FA-COA-E2E-080 | FE+BE |
-| TC-FA-COA-32 | TC-FA-COA-E2E-066, TC-FA-COA-E2E-098 | FE+BE |
-| TC-FA-COA-33 | TC-FA-COA-E2E-086 | FE+BE |
-| TC-FA-COA-34 | TC-FA-COA-E2E-020 | FE+BE |
-| TC-FA-COA-35 | TC-FA-COA-E2E-020 | FE+BE |
-| TC-FA-COA-36 | TC-FA-COA-E2E-071, TC-FA-COA-E2E-096 | FE+BE |
-| TC-FA-COA-37 | TC-FA-COA-E2E-022 | FE+BE |
-| TC-FA-COA-38 | TC-FA-COA-E2E-022 | FE+BE |
-| TC-FA-COA-39 | TC-FA-COA-E2E-022 | FE+BE |
-| TC-FA-COA-40 | TC-FA-COA-E2E-022 | FE+BE |
-| TC-FA-COA-41 | TC-FA-COA-E2E-066, TC-FA-COA-E2E-101 | FE+BE |
-| TC-FA-COA-42 | TC-FA-COA-E2E-020 | FE+BE |
-| TC-FA-COA-43 | TC-FA-COA-E2E-073 | FE+BE |
-| TC-FA-COA-44 | TC-FA-COA-E2E-073 | FE+BE |
-| TC-FA-COA-45 | TC-FA-COA-E2E-073 | FE+BE |
-| TC-FA-COA-46 | TC-FA-COA-E2E-026 | FE+BE |
-| TC-FA-COA-47 | TC-FA-COA-E2E-026 | FE+BE |
-| TC-FA-COA-48 | TC-FA-COA-E2E-027 | FE+BE |
-| TC-FA-COA-49 | TC-FA-COA-E2E-027 | FE+BE |
-| TC-FA-COA-50 | TC-FA-COA-E2E-027 | FE+BE |
-| TC-FA-COA-51 | TC-FA-COA-E2E-083 | FE+BE |
-| TC-FA-COA-52 | TC-FA-COA-E2E-083 | FE+BE |
-| TC-FA-COA-53 | TC-FA-COA-E2E-028 | FE+BE |
-| TC-FA-COA-54 | TC-FA-COA-E2E-028 | FE+BE |
-| TC-FA-COA-55 | TC-FA-COA-E2E-029 | FE+BE |
-| TC-FA-COA-56 | TC-FA-COA-E2E-029, TC-FA-COA-E2E-103 | FE+BE |
-| TC-FA-COA-57 | TC-FA-COA-E2E-067 | FE+BE |
-| TC-FA-COA-58 | TC-FA-COA-E2E-067 | FE+BE |
-| TC-FA-COA-59 | TC-FA-COA-E2E-032 | FE+BE |
-| TC-FA-COA-60 | TC-FA-COA-E2E-032 | FE+BE |
-| TC-FA-COA-61 | TC-FA-COA-E2E-039 | FE+BE |
-| TC-FA-COA-62 | TC-FA-COA-E2E-039 | FE+BE |
-| TC-FA-COA-63 | TC-FA-COA-E2E-039 | FE+BE |
-| TC-FA-COA-64 | TC-FA-COA-E2E-075 | FE+BE |
-| TC-FA-COA-65 | TC-FA-COA-E2E-068, TC-FA-COA-E2E-099 | FE+BE |
-| TC-FA-COA-66 | TC-FA-COA-E2E-075 | FE+BE |
-| TC-FA-COA-67 | TC-FA-COA-E2E-039 | FE+BE |
-| TC-FA-COA-68 | TC-FA-COA-E2E-039 | FE+BE |
-| TC-FA-COA-69 | TC-FA-COA-E2E-035 | FE+BE |
-| TC-FA-COA-70 | TC-FA-COA-E2E-034 | FE+BE |
-| TC-FA-COA-71 | TC-FA-COA-E2E-068, TC-FA-COA-E2E-099 | FE+BE |
-| TC-FA-COA-72 | TC-FA-COA-E2E-040 | FE+BE |
-| TC-FA-COA-73 | TC-FA-COA-E2E-040 | FE+BE |
-| TC-FA-COA-74 | TC-FA-COA-E2E-040 | FE+BE |
-| TC-FA-COA-75 | TC-FA-COA-E2E-042 | FE+BE |
-| TC-FA-COA-76 | TC-FA-COA-E2E-042 | FE+BE |
-| TC-FA-COA-77 | TC-FA-COA-E2E-043 | FE+BE |
-| TC-FA-COA-78 | TC-FA-COA-E2E-043 | FE+BE |
-| TC-FA-COA-79 | TC-FA-COA-E2E-047 | FE+BE |
-| TC-FA-COA-80 | TC-FA-COA-E2E-045 | FE+BE |
-| TC-FA-COA-81 | TC-FA-COA-E2E-048 | FE+BE |
-| TC-FA-COA-82 | TC-FA-COA-E2E-053 | FE+BE |
-| TC-FA-COA-83 | TC-FA-COA-E2E-053 | FE+BE |
-| TC-FA-COA-84 | TC-FA-COA-E2E-055 | FE+BE |
-| TC-FA-COA-85 | TC-FA-COA-E2E-055 | FE+BE |
-| TC-FA-COA-86 | TC-FA-COA-E2E-055 | FE+BE |
-| TC-FA-COA-87 | TC-FA-COA-E2E-082 | FE+BE |
-| TC-FA-COA-88 | TC-FA-COA-E2E-057 | FE+BE |
-| TC-FA-COA-89 | TC-FA-COA-E2E-057 | FE+BE |
-| TC-FA-COA-90 | TC-FA-COA-E2E-059 | FE+BE |
-| TC-FA-COA-91 | TC-FA-COA-E2E-057 | FE+BE |
-| TC-FA-COA-92 | TC-FA-COA-E2E-063 | FE+BE |
-| TC-FA-COA-93 | TC-FA-COA-E2E-064 | FE+BE |
-| TC-FA-COA-94 | TC-FA-COA-E2E-064 | FE+BE |
-| TC-FA-COA-95 | TC-FA-COA-E2E-064 | FE+BE |
-| TC-FA-COA-96 | TC-FA-COA-E2E-083 | FE+BE |
-| TC-FA-COA-97 | TC-FA-COA-E2E-063 | FE+BE |
-| TC-FA-COA-98 | TC-FA-COA-E2E-011 | FE+BE |
-| TC-FA-COA-99 | TC-FA-COA-E2E-011 | FE+BE |
-| TC-FA-COA-100 | TC-FA-COA-E2E-011 | FE+BE |
-| TC-FA-COA-101 | TC-FA-COA-E2E-012 | FE+BE |
-| TC-FA-COA-102 | TC-FA-COA-E2E-011 | FE+BE |
-| TC-FA-COA-103 | TC-FA-COA-E2E-011 | FE+BE |
-| TC-FA-COA-104 | TC-FA-COA-E2E-011 | FE+BE |
-| TC-FA-COA-105 | TC-FA-COA-E2E-009 | FE+BE |
-| TC-FA-COA-106 | TC-FA-COA-E2E-065 | FE+BE |
-| TC-FA-COA-107 | TC-FA-COA-E2E-070 | FE+BE |
-| TC-FA-COA-108 | TC-FA-COA-E2E-070 | FE+BE |
-| TC-FA-COA-109 | TC-FA-COA-E2E-071 | FE+BE |
-| TC-FA-COA-110 | TC-FA-COA-E2E-071 | FE+BE |
-| TC-FA-COA-111 | TC-FA-COA-E2E-071 | FE+BE |
-| TC-FA-COA-112 | TC-FA-COA-E2E-079 | FE+BE |
-| TC-FA-COA-113 | TC-FA-COA-E2E-079 | FE+BE |
-| TC-FA-COA-114 | TC-FA-COA-E2E-077 | FE+BE |
-| TC-FA-COA-115 | TC-FA-COA-E2E-035 | FE+BE |
-| TC-FA-COA-117 | TC-FA-COA-E2E-065 | FE+BE |
-| TC-FA-COA-118 | TC-FA-COA-E2E-083 | FE+BE |
-| TC-FA-COA-119 | TC-FA-COA-E2E-065 | FE+BE |
-| TC-FA-COA-120 | TC-FA-COA-E2E-065 | FE+BE |
-| TC-FA-COA-121 | TC-FA-COA-E2E-072 | FE+BE |
-| TC-FA-COA-122 | TC-FA-COA-E2E-087 | FE+BE |
-| TC-FA-COA-123 | TC-FA-COA-E2E-087 | FE+BE |
-| TC-FA-COA-124 | TC-FA-COA-E2E-071, TC-FA-COA-E2E-096 | FE+BE |
-| TC-FA-COA-125 | TC-FA-COA-E2E-031 | FE+BE |
-| TC-FA-COA-126 | TC-FA-COA-E2E-031 | FE+BE |
-| TC-FA-COA-127 | TC-FA-COA-E2E-031 | FE+BE |
-| TC-FA-COA-128 | TC-FA-COA-E2E-031 | FE+BE |
-| TC-FA-COA-129 | TC-FA-COA-E2E-032 | FE+BE |
-| TC-FA-COA-130 | TC-FA-COA-E2E-032 | FE+BE |
-| TC-FA-COA-131 | TC-FA-COA-E2E-034 | FE+BE |
-| TC-FA-COA-132 | TC-FA-COA-E2E-035 | FE+BE |
-| TC-FA-COA-133 | TC-FA-COA-E2E-037 | FE+BE |
-| TC-FA-COA-134 | TC-FA-COA-E2E-037 | FE+BE |
-| TC-FA-COA-135 | TC-FA-COA-E2E-037 | FE+BE |
-| TC-FA-COA-136 | TC-FA-COA-E2E-032 | FE+BE |
-| TC-FA-COA-137 | TC-FA-COA-E2E-075 | FE+BE |
-| TC-FA-COA-138 | TC-FA-COA-E2E-001 | FE+BE |
-| TC-FA-COA-140 | TC-FA-COA-E2E-081 | FE+BE |
-| TC-FA-COA-141 | TC-FA-COA-E2E-081 | FE+BE |
-| TC-FA-COA-142 | TC-FA-COA-E2E-079 | FE+BE |
-| TC-FA-COA-143 | TC-FA-COA-E2E-016 | FE+BE |
-| TC-FA-COA-144 | TC-FA-COA-E2E-022 | FE+BE |
-| TC-FA-COA-145 | TC-FA-COA-E2E-023 | FE+BE |
-| TC-FA-COA-146 | TC-FA-COA-E2E-074 | FE+BE |
-| TC-FA-COA-147 | TC-FA-COA-E2E-074 | FE+BE |
-| TC-FA-COA-148 | TC-FA-COA-E2E-074 | FE+BE |
-| TC-FA-COA-149 | TC-FA-COA-E2E-076 | FE+BE |
-| TC-FA-COA-150 | TC-FA-COA-E2E-074 | FE+BE |
-| TC-FA-COA-151 | TC-FA-COA-E2E-074 | FE+BE |
-| TC-FA-COA-152 | TC-FA-COA-E2E-076 | FE+BE |
-| TC-FA-COA-153 | TC-FA-COA-E2E-070 | FE+BE |
-| TC-FA-COA-154 | TC-FA-COA-E2E-037 | FE+BE |
-| TC-FA-COA-155 | TC-FA-COA-E2E-037 | FE+BE |
-| TC-FA-COA-156 | TC-FA-COA-E2E-031 | FE+BE |
-| TC-FA-COA-157 | TC-FA-COA-E2E-038 | FE+BE |
-| TC-FA-COA-158 | TC-FA-COA-E2E-038 | FE+BE |
-| TC-FA-COA-159 | TC-FA-COA-E2E-080 | FE+BE |
-| TC-FA-COA-160 | TC-FA-COA-E2E-094 | FE+BE |
-| TC-FA-COA-161 | TC-FA-COA-E2E-003 | FE+BE |
-| TC-FA-COA-162 | TC-FA-COA-E2E-003 | FE+BE |
-| TC-FA-COA-163 | TC-FA-COA-E2E-008 | FE+BE |
-| TC-FA-COA-164 | TC-FA-COA-E2E-027 | FE+BE |
-| TC-FA-COA-165 | TC-FA-COA-E2E-033 | FE+BE |
-| TC-FA-COA-166 | TC-FA-COA-E2E-033 | FE+BE |
-| TC-FA-COA-167 | TC-FA-COA-E2E-033 | FE+BE |
-| TC-FA-COA-168 | TC-FA-COA-E2E-089 | FE+BE |
-| TC-FA-COA-169 | TC-FA-COA-E2E-036 | FE+BE |
-| TC-FA-COA-170 | TC-FA-COA-E2E-036 | FE+BE |
-| TC-FA-COA-171 | TC-FA-COA-E2E-077 | FE+BE |
-| TC-FA-COA-172 | TC-FA-COA-E2E-077 | FE+BE |
-| TC-FA-COA-173 | TC-FA-COA-E2E-091 | FE+BE |
-| TC-FA-COA-174 | TC-FA-COA-E2E-045 | FE+BE |
-| TC-FA-COA-175 | TC-FA-COA-E2E-045 | FE+BE |
-| TC-FA-COA-176 | TC-FA-COA-E2E-046 | FE+BE |
-| TC-FA-COA-177 | TC-FA-COA-E2E-046 | FE+BE |
-| TC-FA-COA-178 | TC-FA-COA-E2E-046 | FE+BE |
-| TC-FA-COA-179 | TC-FA-COA-E2E-046 | FE+BE |
-| TC-FA-COA-180 | TC-FA-COA-E2E-042 | FE+BE |
-| TC-FA-COA-181 | TC-FA-COA-E2E-043 | FE+BE |
-| TC-FA-COA-182 | TC-FA-COA-E2E-045 | FE+BE |
-| TC-FA-COA-183 | TC-FA-COA-E2E-040 | FE+BE |
-| TC-FA-COA-184 | TC-FA-COA-E2E-090 | FE+BE |
-| TC-FA-COA-185 | TC-FA-COA-E2E-090 | FE+BE |
-| TC-FA-COA-186 | TC-FA-COA-E2E-042 | FE+BE |
-| TC-FA-COA-187 | TC-FA-COA-E2E-051 | FE+BE |
-| TC-FA-COA-188 | TC-FA-COA-E2E-051 | FE+BE |
-| TC-FA-COA-189 | TC-FA-COA-E2E-051 | FE+BE |
-| TC-FA-COA-190 | TC-FA-COA-E2E-052 | FE+BE |
-| TC-FA-COA-191 | TC-FA-COA-E2E-092 | FE+BE |
-| TC-FA-COA-192 | TC-FA-COA-E2E-053 | FE+BE |
-| TC-FA-COA-193 | TC-FA-COA-E2E-051 | FE+BE |
-| TC-FA-COA-194 | TC-FA-COA-E2E-052 | FE+BE |
-| TC-FA-COA-195 | TC-FA-COA-E2E-053 | FE+BE |
-| TC-FA-COA-196 | TC-FA-COA-E2E-053 | FE+BE |
-| TC-FA-COA-197 | TC-FA-COA-E2E-057 | FE+BE |
-| TC-FA-COA-198 | TC-FA-COA-E2E-057 | FE+BE |
-| TC-FA-COA-199 | TC-FA-COA-E2E-057 | FE+BE |
-| TC-FA-COA-200 | TC-FA-COA-E2E-058 | FE+BE |
-| TC-FA-COA-201 | TC-FA-COA-E2E-058 | FE+BE |
-| TC-FA-COA-202 | TC-FA-COA-E2E-059 | FE+BE |
-| TC-FA-COA-203 | TC-FA-COA-E2E-093 | FE+BE |
-| TC-FA-COA-204 | TC-FA-COA-E2E-059 | FE+BE |
-| TC-FA-COA-205 | TC-FA-COA-E2E-059 | FE+BE |
-| TC-FA-COA-206 | TC-FA-COA-E2E-061 | FE+BE |
-| TC-FA-COA-207 | TC-FA-COA-E2E-061 | FE+BE |
-| TC-FA-COA-208 | TC-FA-COA-E2E-061 | FE+BE |
-| TC-FA-COA-209 | TC-FA-COA-E2E-062 | FE+BE |
-| TC-FA-COA-210 | TC-FA-COA-E2E-062 | FE+BE |
-| TC-FA-COA-211 | TC-FA-COA-E2E-062 | FE+BE |
-| TC-FA-COA-212 | TC-FA-COA-E2E-062 | FE+BE |
-| TC-FA-COA-213 | TC-FA-COA-E2E-061 | FE+BE |
-| TC-FA-COA-214 | TC-FA-COA-E2E-044 | FE+BE |
-| TC-FA-COA-215 | TC-FA-COA-E2E-044 | FE+BE |
-| TC-FA-COA-216 | TC-FA-COA-E2E-060 | FE+BE |
-| TC-FA-COA-217 | TC-FA-COA-E2E-060 | FE+BE |
-| TC-FA-COA-218 | TC-FA-COA-E2E-044 | FE+BE |
-| TC-FA-COA-219 | TC-FA-COA-E2E-060 | FE+BE |
-| TC-FA-COA-220 | TC-FA-COA-E2E-046 | FE+BE |
-| TC-FA-COA-221 | TC-FA-COA-E2E-056 | FE+BE |
-| TC-FA-COA-222 | TC-FA-COA-E2E-056 | FE+BE |
-| TC-FA-COA-223 | TC-FA-COA-E2E-055 | FE+BE |
-| TC-FA-COA-224 | TC-FA-COA-E2E-055 | FE+BE |
-| TC-FA-COA-225 | TC-FA-COA-E2E-048 | FE+BE |
-| TC-FA-COA-226 | TC-FA-COA-E2E-048 | FE+BE |
-| TC-FA-COA-227 | TC-FA-COA-E2E-048 | FE+BE |
-| TC-FA-COA-228 | TC-FA-COA-E2E-048 | FE+BE |
-| TC-FA-COA-229 | TC-FA-COA-E2E-041 | FE+BE |
-| TC-FA-COA-230 | TC-FA-COA-E2E-058 | FE+BE |
-| TC-FA-COA-231 | TC-FA-COA-E2E-049 | FE+BE |
-| TC-FA-COA-232 | TC-FA-COA-E2E-049 | FE+BE |
-| TC-FA-COA-233 | TC-FA-COA-E2E-049 | FE+BE |
-| TC-FA-COA-234 | TC-FA-COA-E2E-049 | FE+BE |
-| TC-FA-COA-235 | TC-FA-COA-E2E-063 | FE+BE |
-| TC-FA-COA-236 | TC-FA-COA-E2E-018 | FE+BE |
-| TC-FA-COA-237 | TC-FA-COA-E2E-018 | FE+BE |
-| TC-FA-COA-238 | TC-FA-COA-E2E-018 | FE+BE |
-| TC-FA-COA-239 | TC-FA-COA-E2E-018 | FE+BE |
-| TC-FA-COA-240 | TC-FA-COA-E2E-019 | FE+BE |
-| TC-FA-COA-241 | TC-FA-COA-E2E-018 | FE+BE |
-| TC-FA-COA-242 | TC-FA-COA-E2E-019 | FE+BE |
-| TC-FA-COA-243 | TC-FA-COA-E2E-019 | FE+BE |
-| TC-FA-COA-244 | TC-FA-COA-E2E-019 | FE+BE |
-| TC-FA-COA-245 | TC-FA-COA-E2E-024 | FE+BE |
-| TC-FA-COA-246 | TC-FA-COA-E2E-024 | FE+BE |
-| TC-FA-COA-247 | TC-FA-COA-E2E-024 | FE+BE |
-| TC-FA-COA-248 | TC-FA-COA-E2E-024 | FE+BE |
-| TC-FA-COA-249 | TC-FA-COA-E2E-024 | FE+BE |
-| TC-FA-COA-250 | TC-FA-COA-E2E-024 | FE+BE |
-| TC-FA-COA-251 | TC-FA-COA-E2E-025 | FE+BE |
-| TC-FA-COA-252 | TC-FA-COA-E2E-025 | FE+BE |
-| TC-FA-COA-253 | TC-FA-COA-E2E-021 | FE+BE |
-| TC-FA-COA-254 | TC-FA-COA-E2E-021 | FE+BE |
-| TC-FA-COA-255 | TC-FA-COA-E2E-021 | FE+BE |
-| TC-FA-COA-256 | TC-FA-COA-E2E-021 | FE+BE |
-| TC-FA-COA-257 | TC-FA-COA-E2E-021 | FE+BE |
-| TC-FA-COA-258 | TC-FA-COA-E2E-021 | FE+BE |
-| TC-FA-COA-259 | TC-FA-COA-E2E-022 | FE+BE |
-| TC-FA-COA-260 | TC-FA-COA-E2E-017 | FE+BE |
-| TC-FA-COA-261 | TC-FA-COA-E2E-006 | FE+BE |
-| TC-FA-COA-262 | TC-FA-COA-E2E-006 | FE+BE |
-| TC-FA-COA-263 | TC-FA-COA-E2E-006 | FE+BE |
-| TC-FA-COA-264 | TC-FA-COA-E2E-006 | FE+BE |
-| TC-FA-COA-265 | TC-FA-COA-E2E-006 | FE+BE |
-| TC-FA-COA-266 | TC-FA-COA-E2E-006 | FE+BE |
-| TC-FA-COA-267 | TC-FA-COA-E2E-007 | FE+BE |
-| TC-FA-COA-268 | TC-FA-COA-E2E-007 | FE+BE |
-| TC-FA-COA-269 | TC-FA-COA-E2E-070, TC-FA-COA-E2E-095 | FE+BE |
-| TC-FA-COA-270 | TC-FA-COA-E2E-070, TC-FA-COA-E2E-095 | FE+BE |
-| TC-FA-COA-271 | TC-FA-COA-E2E-070, TC-FA-COA-E2E-095 | FE+BE |
-| TC-FA-COA-272 | TC-FA-COA-E2E-072, TC-FA-COA-E2E-096 | FE+BE |
-| TC-FA-COA-273 | TC-FA-COA-E2E-072, TC-FA-COA-E2E-097 | FE+BE |
-| TC-FA-COA-274 | TC-FA-COA-E2E-072, TC-FA-COA-E2E-097 | FE+BE |
-| TC-FA-COA-275 | TC-FA-COA-E2E-072, TC-FA-COA-E2E-097 | FE+BE |
-| TC-FA-COA-276 | TC-FA-COA-E2E-081 | FE+BE |
-| TC-FA-COA-277 | TC-FA-COA-E2E-079 | FE+BE |
-| TC-FA-COA-278 | TC-FA-COA-E2E-079 | FE+BE |
-| TC-FA-COA-279 | TC-FA-COA-E2E-079 | FE+BE |
-| TC-FA-COA-280 | TC-FA-COA-E2E-079 | FE+BE |
-| TC-FA-COA-281 | TC-FA-COA-E2E-094 | FE+BE |
-| TC-FA-COA-282 | TC-FA-COA-E2E-080 | FE+BE |
-| TC-FA-COA-283 | TC-FA-COA-E2E-023 | FE+BE |
-| TC-FA-COA-284 | TC-FA-COA-E2E-039 | FE+BE |
-| TC-FA-COA-285 | TC-FA-COA-E2E-026 | FE+BE |
-| TC-FA-COA-286 | TC-FA-COA-E2E-027 | FE+BE |
-| TC-FA-COA-287 | TC-FA-COA-E2E-037 | FE+BE |
-| TC-FA-COA-288 | TC-FA-COA-E2E-057 | FE+BE |
-| TC-FA-COA-289 | TC-FA-COA-E2E-086 | FE+BE |
-| TC-FA-COA-290 | TC-FA-COA-E2E-023 | FE+BE |
-| TC-FA-COA-291 | TC-FA-COA-E2E-003 | FE+BE |
-| TC-FA-COA-292 | TC-FA-COA-E2E-003 | FE+BE |
-| TC-FA-COA-293 | TC-FA-COA-E2E-030 | FE+BE |
-| TC-FA-COA-294 | TC-FA-COA-E2E-030 | FE+BE |
-| TC-FA-COA-295 | TC-FA-COA-E2E-088 | FE+BE |
-| TC-FA-COA-296 | TC-FA-COA-E2E-030 | FE+BE |
-| TC-FA-COA-297 | TC-FA-COA-E2E-088 | FE+BE |
-| TC-FA-COA-298 | TC-FA-COA-E2E-028 | FE+BE |
-| TC-FA-COA-299 | TC-FA-COA-E2E-029 | FE+BE |
-| TC-FA-COA-300 | TC-FA-COA-E2E-069, TC-FA-COA-E2E-102 | FE+BE |
-| TC-FA-COA-301 | TC-FA-COA-E2E-069, TC-FA-COA-E2E-102 | FE+BE |
-| TC-FA-COA-302 | TC-FA-COA-E2E-066, TC-FA-COA-E2E-098 | FE+BE |
-| TC-FA-COA-303 | TC-FA-COA-E2E-066, TC-FA-COA-E2E-101 | FE+BE |
-| TC-FA-COA-304 | TC-FA-COA-E2E-067, TC-FA-COA-E2E-100 | FE+BE |
-| TC-FA-COA-305 | TC-FA-COA-E2E-068, TC-FA-COA-E2E-099 | FE+BE |
-| TC-FA-COA-306 | TC-FA-COA-E2E-050 | FE+BE |
-| TC-FA-COA-307 | TC-FA-COA-E2E-050 | FE+BE |
-| TC-FA-COA-308 | TC-FA-COA-E2E-050 | FE+BE |
-| TC-FA-COA-309 | TC-FA-COA-E2E-050 | FE+BE |
-| TC-FA-COA-310 | TC-FA-COA-E2E-050 | FE+BE |
-| TC-FA-COA-311 | TC-FA-COA-E2E-054 | FE+BE |
-| TC-FA-COA-312 | TC-FA-COA-E2E-054 | FE+BE |
-| TC-FA-COA-313 | TC-FA-COA-E2E-054 | FE+BE |
-| TC-FA-COA-314 | TC-FA-COA-E2E-054 | FE+BE |
-| TC-FA-COA-315 | TC-FA-COA-E2E-054 | FE+BE |
-| TC-FA-COA-316 | TC-FA-COA-E2E-041 | FE+BE |
-| TC-FA-COA-317 | TC-FA-COA-E2E-041 | FE+BE |
-| TC-FA-COA-318 | TC-FA-COA-E2E-041 | FE+BE |
-| TC-FA-COA-319 | TC-FA-COA-E2E-041 | FE+BE |
-| TC-FA-COA-320 | TC-FA-COA-E2E-040 | FE+BE |
-| TC-FA-COA-321 | TC-FA-COA-E2E-058 | FE+BE |
-| TC-FA-COA-322 | TC-FA-COA-E2E-042 | FE+BE |
-| TC-FA-COA-323 | TC-FA-COA-E2E-043 | FE+BE |
-| TC-FA-COA-324 | TC-FA-COA-E2E-043 | FE+BE |
-| TC-FA-COA-325 | TC-FA-COA-E2E-047 | FE+BE |
-| TC-FA-COA-326 | TC-FA-COA-E2E-047 | FE+BE |
-| TC-FA-COA-327 | TC-FA-COA-E2E-047 | FE+BE |
-| TC-FA-COA-328 | TC-FA-COA-E2E-050 | FE+BE |
-| TC-FA-COA-329 | TC-FA-COA-E2E-044 | FE+BE |
-| TC-FA-COA-330 | TC-FA-COA-E2E-044 | FE+BE |
-| TC-FA-COA-331 | TC-FA-COA-E2E-044 | FE+BE |
-| TC-FA-COA-332 | TC-FA-COA-E2E-052 | FE+BE |
-| TC-FA-COA-333 | TC-FA-COA-E2E-052 | FE+BE |
-| TC-FA-COA-334 | TC-FA-COA-E2E-055 | FE+BE |
-| TC-FA-COA-335 | TC-FA-COA-E2E-060 | FE+BE |
-| TC-FA-COA-336 | TC-FA-COA-E2E-060 | FE+BE |
-| TC-FA-COA-337 | TC-FA-COA-E2E-009 | FE+BE |
-| TC-FA-COA-338 | TC-FA-COA-E2E-010 | FE+BE |
-| TC-FA-COA-339 | TC-FA-COA-E2E-010 | FE+BE |
-| TC-FA-COA-340 | TC-FA-COA-E2E-009 | FE+BE |
-| TC-FA-COA-341 | TC-FA-COA-E2E-009 | FE+BE |
-| TC-FA-COA-342 | TC-FA-COA-E2E-010 | FE+BE |
-| TC-FA-COA-343 | TC-FA-COA-E2E-087 | FE+BE |
-| TC-FA-COA-344 | TC-FA-COA-E2E-012 | FE+BE |
-| TC-FA-COA-345 | TC-FA-COA-E2E-012 | FE+BE |
-| TC-FA-COA-346 | TC-FA-COA-E2E-078 | FE+BE |
-| TC-FA-COA-347 | TC-FA-COA-E2E-078 | FE+BE |
-| TC-FA-COA-348 | TC-FA-COA-E2E-078 | FE+BE |
-| TC-FA-COA-349 | TC-FA-COA-E2E-075 | FE+BE |
-| TC-FA-COA-350 | TC-FA-COA-E2E-028, TC-FA-COA-E2E-103 | FE+BE |
-| TC-FA-COA-351 | TC-FA-COA-E2E-076 | FE+BE |
-| TC-FA-COA-352 | TC-FA-COA-E2E-076 | FE+BE |
-| TC-FA-COA-353 | TC-FA-COA-E2E-077 | FE+BE |
-| TC-FA-COA-354 | TC-FA-COA-E2E-029 | FE+BE |
-| TC-FA-COA-355 | TC-FA-COA-E2E-089 | FE+BE |
-| TC-FA-COA-356 | TC-FA-COA-E2E-019 | FE+BE |
-| TC-FA-COA-357 | TC-FA-COA-E2E-025 | FE+BE |
-| TC-FA-COA-358 | TC-FA-COA-E2E-056 | FE+BE |
-| TC-FA-COA-359 | TC-FA-COA-E2E-015 | FE+BE |
-| TC-FA-COA-360 | TC-FA-COA-E2E-015 | FE+BE |
-| TC-FA-COA-361 | TC-FA-COA-E2E-067, TC-FA-COA-E2E-100 | FE+BE |
-| TC-FA-COA-362 | TC-FA-COA-E2E-069 | FE+BE |
-| TC-FA-COA-363 | TC-FA-COA-E2E-085 | FE+BE |
-| TC-FA-COA-364 | TC-FA-COA-E2E-085 | FE+BE |
-| TC-FA-COA-365 | TC-FA-COA-E2E-023 | FE+BE |
-| TC-FA-COA-366 | TC-FA-COA-E2E-012 | FE+BE |
-| TC-FA-COA-367 | TC-FA-COA-E2E-084 | FE+BE |
-| TC-FA-COA-368 | TC-FA-COA-E2E-104 | FE+BE |
-| TC-FA-COA-369 | TC-FA-COA-E2E-105 | FE+BE |

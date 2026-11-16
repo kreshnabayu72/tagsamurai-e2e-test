@@ -4,14 +4,14 @@ title: "Tab Chart of Accounts: Column Visibility dan Setup Column"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.1#r5", "§4.4#r7", "§5#b9", "EB-KOL-1@tabel-account-list", "EB-KOL-3"]
+status: ready-for-automation
+sourceRules: ["§4.1#r5", "§4.4#r6", "§5#b10", "EB-KOL-1@tabel-account-list", "EB-KOL-3"]
 smoke: []
 dependsOn: []
 trace:
   "§4.1#r5": 6
-  "§4.4#r7": [3, 4, 6]
-  "§5#b9": [17, 18, 46, 48, 49, 51, 54, 55]
+  "§4.4#r6": [3, 4, 6]
+  "§5#b10": [17, 18, 46, 48, 49, 51, 54, 55]
   "EB-KOL-1@tabel-account-list": [10, 11, 12, 13, 14, 15, 16, 23, 25, 26, 30, 32, 37, 39, 46, 48, 49, 51, 62, 63, 64, 69, 71, 80, 82, 97, 98, 105, 106]
   "EB-KOL-3": [88, 90]
 anchor: []
@@ -30,7 +30,7 @@ coverage:
   - DU-124-2: entri Changelog dengan Action `Edit`, Account Code `1-1001`, Field `Account Name`, Old Value `Fixed Asset Equipment`, New Value `Fixed Assets – Equipment`, Modified By `Rina Pratiwi`.
 - Kondisi:
   - K1: tabel berisi DU-124-1 dengan kolom tampil menurut bawaan dan belum ada konfigurasi kolom tersimpan.
-  - K2: seperti K1, dengan seluruh kolom ditampilkan dan area tabel lebih sempit daripada total lebar kolom.
+  - K2: seperti K1, dengan seluruh kolom ditampilkan dan area tabel hanya memuat tiga kolom data sekaligus, sehingga tanpa pin kolom `Account Code` keluar dari area pandang saat kolom paling kanan terlihat.
   - K3: seperti K1; modal Changelog berisi DU-124-2.
 
 ## Test Steps

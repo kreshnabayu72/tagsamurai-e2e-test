@@ -4,27 +4,26 @@ title: "Pencatatan log per aksi akun pada tiga surface"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
-sourceRules: [J-06, L-01, L-02, L-03, L-04, "§8#r3", "§8#r4", "§8.1#p1", "§[F-FACO-01] Create Account#b4", "§9.6#p1", "§9.7#r17", "§9.7#r20", "§9.7#r22", "§9.7#r25", "§9.7#r28"]
+sourceRules: [J-06, L-01, L-02, L-03, L-04, "§8#r3", "§8#r4", "§8.1#p1", "§9.7#r17", "§9.7#r20", "§9.7#r22", "§9.7#r25", "§9.7#r28", "§8.1#p2"]
 smoke: []
 dependsOn: []
 trace:
-  J-06: [29, 31, 33]
-  L-01: [3, 4, 5, 29]
-  L-02: [7, 8, 9, 11, 13, 15, 16, 31]
+  J-06: [29, 30, 32, 33, 35, 36]
+  L-01: [2, 3, 4, 5, 29, 30]
+  L-02: [7, 8, 9, 11, 13, 15, 16, 32, 33]
   L-03: [18, 20, 26, 27]
-  L-04: [22, 23, 24, 33]
+  L-04: [22, 23, 24, 35, 36]
   "§8#r3": [3, 7, 11, 13, 18]
   "§8#r4": [3, 7, 18, 22]
   "§8.1#p1": [3, 7, 15, 16, 22, 26, 27]
-  "§[F-FACO-01] Create Account#b4": [3, 4, 5, 34]
-  "§9.6#p1": [2, 34]
-  "§9.7#r17": [3, 4, 5, 29]
-  "§9.7#r20": [7, 8, 9, 11, 13, 15, 16, 31]
+  "§9.7#r17": [3, 4, 5, 29, 30]
+  "§9.7#r20": [7, 8, 9, 11, 13, 15, 16, 32, 33]
   "§9.7#r22": [18]
   "§9.7#r25": [20, 26, 27]
-  "§9.7#r28": [22, 23, 24, 33]
+  "§9.7#r28": [22, 23, 24, 35, 36]
+  "§8.1#p2": [3, 4, 5, 22, 23, 24, 29, 30, 35, 36]
 ---
 
 # Pencatatan log per aksi akun pada tiga surface
@@ -52,9 +51,9 @@ trace:
 ### Create menulis satu kejadian L-01 pada ketiga surface
 1. Admin A (DU-155-1) mengirim Create dengan Account Code `LG1-{runId}`, Account Name `Beban Pemasaran {runId}`, Account Function `Depreciation Expense`
 2. Verifikasi akun `LG1-{runId}` tersimpan dan terbaca ulang
-3. Verifikasi Changelog memuat tepat satu baris untuk akun `LG1-{runId}` dengan Action `Create`, Account Code `LG1-{runId}`, Field `Account Code`, Old Value `—`, dan New Value `LG1-{runId}`
-4. Verifikasi System Log milik Admin A memuat tepat satu entri untuk akun `LG1-{runId}` dengan Action `Create`, Object `Chart of Accounts`, Name `LG1-{runId}`, Field `Account Code`, Old Value `—`, dan New Value `LG1-{runId}`
-5. Verifikasi Activity Log memuat tepat satu entri untuk akun `LG1-{runId}` dengan Action `Create`, Object `Chart of Accounts`, Name `LG1-{runId}`, Field `Account Code`, Old Value `—`, dan New Value `LG1-{runId}`, dan Modified By adalah Admin A
+3. Verifikasi Changelog memuat tepat satu baris untuk akun `LG1-{runId}` dengan Action `Create`, Account Code `LG1-{runId}`, Field `Account Code`, Old Value `-` (satu tanda hubung), dan New Value `LG1-{runId}`
+4. Verifikasi System Log milik Admin A memuat tepat satu entri untuk akun `LG1-{runId}` dengan Action `Create`, Object `Chart of Accounts`, Name `LG1-{runId}`, Field `Account Code`, Old Value `-`, dan New Value `LG1-{runId}`
+5. Verifikasi Activity Log memuat tepat satu entri untuk akun `LG1-{runId}` dengan Action `Create`, Object `Chart of Accounts`, Name `LG1-{runId}`, Field `Account Code`, Old Value `-`, dan New Value `LG1-{runId}`, dan Modified By adalah Admin A
 
 ### Edit satu field menulis satu baris per surface
 6. Admin A (DU-155-1) mengirim Edit akun `LG2-{runId}` dengan Account Name `Beban Transportasi Darat {runId}`
@@ -79,9 +78,9 @@ trace:
 
 ### Delete menulis satu kejadian L-04 pada ketiga surface
 21. Admin A (DU-155-1) mengirim Delete atas akun `LG8-{runId}`
-22. Verifikasi Changelog memuat tepat satu baris untuk akun `LG8-{runId}` dengan Action `Delete`, Account Code `LG8-{runId}`, Field `Account Code`, Old Value `LG8-{runId}`, dan New Value `—`
-23. Verifikasi System Log milik Admin A memuat tepat satu entri untuk akun `LG8-{runId}` dengan Action `Delete`, Object `Chart of Accounts`, Name `LG8-{runId}`, Field `Account Code`, Old Value `LG8-{runId}`, dan New Value `—`
-24. Verifikasi Activity Log memuat tepat satu entri untuk akun `LG8-{runId}` dengan Action `Delete`, Object `Chart of Accounts`, Name `LG8-{runId}`, Field `Account Code`, Old Value `LG8-{runId}`, dan New Value `—`, dan Modified By adalah Admin A
+22. Verifikasi Changelog memuat tepat satu baris untuk akun `LG8-{runId}` dengan Action `Delete`, Account Code `LG8-{runId}`, Field `Account Code`, Old Value `LG8-{runId}`, dan New Value `-` (satu tanda hubung)
+23. Verifikasi System Log milik Admin A memuat tepat satu entri untuk akun `LG8-{runId}` dengan Action `Delete`, Object `Chart of Accounts`, Name `LG8-{runId}`, Field `Account Code`, Old Value `LG8-{runId}`, dan New Value `-`
+24. Verifikasi Activity Log memuat tepat satu entri untuk akun `LG8-{runId}` dengan Action `Delete`, Object `Chart of Accounts`, Name `LG8-{runId}`, Field `Account Code`, Old Value `LG8-{runId}`, dan New Value `-`, dan Modified By adalah Admin A
 
 ### Aksi bulk menulis satu kejadian per akun yang berhasil pada setiap surface
 25. Admin A (DU-155-1) mengirim Deactivate bulk atas akun `LG9A-{runId}` dan `LG9B-{runId}`
@@ -90,11 +89,11 @@ trace:
 
 ### Request langsung oleh pemanggil terotorisasi menulis log pada ketiga surface
 28. Pemanggil terotorisasi (DU-155-2) mengirim Create lewat request langsung dengan Account Code `LG10-{runId}`, Account Name `Kas Integrasi {runId}`, Account Function `Asset Cost`
-29. Verifikasi Changelog, System Log milik pemanggil, dan Activity Log masing-masing memuat tepat satu baris untuk akun `LG10-{runId}` dengan Action `Create`, Field `Account Code`, Old Value `—`, dan New Value `LG10-{runId}`, dan Modified By adalah pemanggil itu
-30. Pemanggil terotorisasi (DU-155-2) mengirim Edit lewat request langsung atas akun `LG10-{runId}` dengan Account Name `Kas Integrasi Terbarui {runId}`
-31. Verifikasi Changelog, System Log milik pemanggil, dan Activity Log masing-masing memuat tepat satu baris untuk akun `LG10-{runId}` dengan Action `Edit`, Field `Account Name`, Old Value `Kas Integrasi {runId}`, dan New Value `Kas Integrasi Terbarui {runId}`, dan Modified By adalah pemanggil itu
-32. Pemanggil terotorisasi (DU-155-2) mengirim Delete lewat request langsung atas akun `LG10-{runId}`
-33. Verifikasi Changelog, System Log milik pemanggil, dan Activity Log masing-masing memuat tepat satu baris untuk akun `LG10-{runId}` dengan Action `Delete`, Field `Account Code`, Old Value `LG10-{runId}`, dan New Value `—`, dan Modified By adalah pemanggil itu
-
-### Ketiga log berasal dari satu change-log record dan ditulis setelah akun tersimpan
-34. Verifikasi entri log akun `LG1-{runId}` pada Changelog, System Log milik Admin A, dan Activity Log memuat Action, Field, Old Value, dan New Value yang sama, karena berasal dari change-log record yang sama dan ditulis setelah akun tersimpan
+29. Verifikasi Changelog dan Activity Log masing-masing memuat tepat satu baris untuk akun `LG10-{runId}` dengan Action `Create`, Field `Account Code`, Old Value `-`, dan New Value `LG10-{runId}`, dan Modified By adalah pemanggil itu
+30. Verifikasi System Log milik pemanggil memuat tepat satu entri untuk akun `LG10-{runId}` dengan Action `Create`, Object `Chart of Accounts`, Name `LG10-{runId}`, Field `Account Code`, Old Value `-`, dan New Value `LG10-{runId}`
+31. Pemanggil terotorisasi (DU-155-2) mengirim Edit lewat request langsung atas akun `LG10-{runId}` dengan Account Name `Kas Integrasi Terbarui {runId}`
+32. Verifikasi Changelog dan Activity Log masing-masing memuat tepat satu baris untuk akun `LG10-{runId}` dengan Action `Edit`, Field `Account Name`, Old Value `Kas Integrasi {runId}`, dan New Value `Kas Integrasi Terbarui {runId}`, dan Modified By adalah pemanggil itu
+33. Verifikasi System Log milik pemanggil memuat tepat satu entri untuk akun `LG10-{runId}` dengan Action `Edit`, Object `Chart of Accounts`, Name `LG10-{runId}`, Field `Account Name`, Old Value `Kas Integrasi {runId}`, dan New Value `Kas Integrasi Terbarui {runId}`
+34. Pemanggil terotorisasi (DU-155-2) mengirim Delete lewat request langsung atas akun `LG10-{runId}`
+35. Verifikasi Changelog dan Activity Log masing-masing memuat tepat satu baris untuk akun `LG10-{runId}` dengan Action `Delete`, Field `Account Code`, Old Value `LG10-{runId}`, dan New Value `-`, dan Modified By adalah pemanggil itu
+36. Verifikasi System Log milik pemanggil memuat tepat satu entri untuk akun `LG10-{runId}` dengan Action `Delete`, Object `Chart of Accounts`, Name `LG10-{runId}`, Field `Account Code`, Old Value `LG10-{runId}`, dan New Value `-`

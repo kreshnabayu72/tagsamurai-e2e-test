@@ -4,7 +4,7 @@ title: "Otorisasi baca dan tulis per capability Manage accounting"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§9.3#r1", "§9.3#r2", "§9.3#r3", "§9.3#r4", "§9.3#p1", "§9.3#p2", "§9.4.2#r30", "§9.4.2#r31", "§9.4.2#r34", EB-AKS-3@create-account, EB-AKS-3@edit-account, EB-AKS-3@activate-account, EB-AKS-3@deactivate-account, EB-AKS-3@delete-account]
 smoke: []

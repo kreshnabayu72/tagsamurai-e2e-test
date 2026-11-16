@@ -4,17 +4,17 @@ title: "Save Edit saat akun mulai dipakai Asset Class sesudah form dibuka"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
-sourceRules: [D-16, "§[F-FACO-02] Edit Account#r4", "§[F-FACO-02] Edit Account#r11", "§[F-FACO-02] Edit Account#r12", "§[F-FACO-02] Edit Account#r13", "§[F-FACO-02] Edit Account#r14", "§9.4.2#r8"]
+status: ready-for-automation
+sourceRules: [D-16, "§[F-FACO-02] Edit Account#r4", "§[F-FACO-02] Edit Account#r13", "§[F-FACO-02] Edit Account#r14", "§[F-FACO-02] Edit Account#r15", "§[F-FACO-02] Edit Account#r16", "§9.4.2#r8"]
 smoke: []
 dependsOn: ["Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]
 trace:
   D-16: [12, 13]
   "§[F-FACO-02] Edit Account#r4": [12, 33]
-  "§[F-FACO-02] Edit Account#r11": [12, 14]
-  "§[F-FACO-02] Edit Account#r12": [16, 17, 19, 20]
-  "§[F-FACO-02] Edit Account#r13": [22, 23, 26]
-  "§[F-FACO-02] Edit Account#r14": [34, 35, 36, 39, 40]
+  "§[F-FACO-02] Edit Account#r13": [12, 14]
+  "§[F-FACO-02] Edit Account#r14": [16, 17, 19, 20]
+  "§[F-FACO-02] Edit Account#r15": [22, 23, 26]
+  "§[F-FACO-02] Edit Account#r16": [34, 35, 36, 39, 40]
   "§9.4.2#r8": [12, 16, 17, 22, 23, 26, 33]
 anchor: []
 coverage:

@@ -4,13 +4,13 @@ title: "Save Edit Account tanpa perubahan nilai tidak mengubah data dan tidak me
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§[F-FACO-02] Edit Account#r6", "§[F-FACO-02] Edit Account#r7", "§9.4.2#r7", "EB-FB-3@form-edit-account", "T-03"]
+status: ready-for-automation
+sourceRules: ["§[F-FACO-02] Edit Account#r8", "§[F-FACO-02] Edit Account#r9", "§9.4.2#r7", "EB-FB-3@form-edit-account", "T-03"]
 smoke: ["T-03"]
 dependsOn: []
 trace:
-  "§[F-FACO-02] Edit Account#r6": [11, 12]
-  "§[F-FACO-02] Edit Account#r7": 16
+  "§[F-FACO-02] Edit Account#r8": [11, 12]
+  "§[F-FACO-02] Edit Account#r9": 16
   "§9.4.2#r7": [10, 11, 12, 16]
   "EB-FB-3@form-edit-account": 16
   "T-03": 10

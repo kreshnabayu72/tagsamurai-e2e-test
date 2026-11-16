@@ -4,7 +4,7 @@ title: "Dialog blok dan konfirmasi campuran untuk akun yang dipakai Asset Class"
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules:
   - D-03
   - D-04

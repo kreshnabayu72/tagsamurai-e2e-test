@@ -4,7 +4,7 @@ title: "Filter Panel modal Changelog menyaring entri dan memuat opsi dari data l
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r27", "EB-FLT-1@tabel-changelog", "EB-FLT-4@tabel-changelog"]
 smoke: []
 dependsOn: []

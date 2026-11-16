@@ -4,18 +4,19 @@ title: "Tab Chart of Accounts: popover Download, gagal unduh, dan loading berkas
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["R-11", "T-09", "§5#b7", "§[F-FACO-11] Download Account List#r2", "§9.4.2#r27", "EB-DL-2@tabel-account-list", "EB-DL-5"]
+status: ready-for-automation
+sourceRules: ["R-11", "T-09", "§5#b8", "§[F-FACO-11] Download Account List#r2", "§9.4.2#r27", "EB-DL-2@tabel-account-list", "EB-DL-5", "§7.2#b3"]
 smoke: []
 dependsOn: []
 trace:
-  "R-11": [11, 12, 16, 17, 22]
+  "R-11": [11, 12, 16, 17, 21, 22]
   "T-09": [11, 16, 21, 27, 32, 41]
-  "§5#b7": [3, 5, 6, 7, 26, 31]
+  "§5#b8": [3, 5, 6, 7, 26, 31]
   "§[F-FACO-11] Download Account List#r2": [36, 39, 40]
   "§9.4.2#r27": [36, 39]
   "EB-DL-2@tabel-account-list": [11, 16, 21, 27, 32]
   "EB-DL-5": [36, 37, 39, 40, 41]
+  "§7.2#b3": [11, 16, 21]
 anchor: []
 coverage:
   web: automated

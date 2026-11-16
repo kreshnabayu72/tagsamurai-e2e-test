@@ -4,7 +4,7 @@ title: "Create, Edit, dan Delete akun identik di plan Growth, Professional, dan 
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.10#r2", "§9.10#r3", "§9.10#r4", "EB-AKS-8"]
 smoke: []
 dependsOn: []

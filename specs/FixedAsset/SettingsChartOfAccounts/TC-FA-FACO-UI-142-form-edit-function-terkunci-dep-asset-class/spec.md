@@ -4,7 +4,7 @@ title: "Form Edit Account: tooltip Account Function terkunci karena dipakai Asse
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - §4.2b#r3
 smoke: []

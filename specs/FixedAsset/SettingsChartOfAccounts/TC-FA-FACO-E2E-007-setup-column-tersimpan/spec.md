@@ -4,13 +4,13 @@ title: "Konfigurasi kolom Account List dan Changelog bertahan sesudah muat ulang
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§5#b2", "§5#b10", "EB-SRC-5@tabel-account-list", "EB-SRC-5@tabel-changelog", "EB-KOL-2@tabel-account-list", "EB-KOL-2@tabel-changelog"]
+status: ready-for-automation
+sourceRules: ["§5#b3", "§5#b11", "EB-SRC-5@tabel-account-list", "EB-SRC-5@tabel-changelog", "EB-KOL-2@tabel-account-list", "EB-KOL-2@tabel-changelog"]
 smoke: []
 dependsOn: []
 trace:
-  "§5#b2": 7
-  "§5#b10": [18, 20]
+  "§5#b3": 7
+  "§5#b11": [18, 20]
   "EB-SRC-5@tabel-account-list": [7, 12]
   "EB-SRC-5@tabel-changelog": [34, 39]
   "EB-KOL-2@tabel-account-list": 18

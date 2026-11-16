@@ -4,7 +4,7 @@ title: "Bulk Deactivate akun Active yang seluruhnya lolos guard"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-02", "F-FACO-04", "§4.1.1#p4", "§[F-FACO-04] Deactivate Account#b3", "§8.4#r3", "T-05"]
 smoke: ["§8.4#r3", "T-05"]
 dependsOn: []

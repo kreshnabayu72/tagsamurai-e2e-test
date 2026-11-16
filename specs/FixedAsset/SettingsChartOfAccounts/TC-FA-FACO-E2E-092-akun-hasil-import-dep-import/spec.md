@@ -4,12 +4,12 @@ title: "Akun hasil Import menjalani Edit dan Delete seperti akun manual"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§11.1#r5", EB-XM-3]
+status: ready-for-automation
+sourceRules: ["§11.1#r6", EB-XM-3]
 smoke: []
 dependsOn: ["Import: import akun dari berkas"]
 trace:
-  "§11.1#r5": 3
+  "§11.1#r6": 3
   EB-XM-3: [8, 9, 12, 16, 18, 19, 22]
 anchor: [2]
 coverage:

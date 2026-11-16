@@ -4,14 +4,14 @@ title: "Form Add Account: toast dan reaksi atas respons server"
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
-sourceRules: [D-13, FACO-LOGIC-10d, R-01, T-01, §7.2#p2, §7.2#b2, §7.2#b3, §7.3#b1, §[F-FACO-01] Create Account#r6, §9.4.2#r39, §9.6#p1, EB-FB-1@create-account, EB-FB-4, EB-ERR-1@create-account]
+status: ready-for-automation
+sourceRules: [D-13, FACO-LOGIC-10d, R-01, T-01, §7.2#p2, §7.2#b2, §7.2#b3, §7.3#b1, §[F-FACO-01] Create Account#r6, §9.4.2#r39, EB-FB-1@create-account, EB-FB-4, EB-ERR-1@create-account]
 smoke: []
 dependsOn: []
 trace:
   D-13: [47, 48, 49, 50]
   FACO-LOGIC-10d: 47
-  R-01: [14, 16]
+  R-01: [14, 16, 28, 29, 31]
   T-01: [6, 14]
   §7.2#p2: [16, 17, 31, 32, 59, 60]
   §7.2#b2: [15, 30]
@@ -19,7 +19,6 @@ trace:
   §7.3#b1: [16, 17, 31, 32, 59, 60]
   §[F-FACO-01] Create Account#r6: 52
   §9.4.2#r39: 52
-  §9.6#p1: [15, 16, 17, 31, 32]
   EB-FB-1@create-account: [6, 14]
   EB-FB-4: [8, 20, 22]
   EB-ERR-1@create-account: [16, 17, 18, 28, 31, 32, 33, 39, 41, 58, 59, 60]

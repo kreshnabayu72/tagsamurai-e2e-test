@@ -4,8 +4,8 @@ title: "Create Account dari toolbar tersimpan dan tampil di tabel"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["F-FACO-01", "R-01", "ST-04", "§3.1#p1", "§5#b13", "§[F-FACO-01] Create Account#b1", "§[F-FACO-01] Create Account#b3", "§[F-FACO-01] Create Account#b5", "§9.4.2#r32", "§9.4.2#r37", "§9.5#r9", "§9.7#r15", "EB-FRM-1@form-add-account", "L-01", "T-01", "V-04", "EB-FRM-5@account-code", "EB-CON-2"]
+status: ready-for-automation
+sourceRules: ["F-FACO-01", "R-01", "ST-04", "§3.1#p1", "§5#b14", "§[F-FACO-01] Create Account#b1", "§[F-FACO-01] Create Account#b3", "§[F-FACO-01] Create Account#b5", "§9.4.2#r32", "§9.4.2#r37", "§9.5#r9", "§9.7#r15", "EB-FRM-1@form-add-account", "L-01", "T-01", "V-04", "EB-FRM-5@account-code", "EB-CON-2"]
 smoke: ["L-01", "T-01", "V-04", "EB-FRM-5@account-code", "EB-CON-2"]
 dependsOn: []
 trace:
@@ -13,7 +13,7 @@ trace:
   "R-01": [13, 14, 16]
   "ST-04": 20
   "§3.1#p1": [21, 22, 23]
-  "§5#b13": [15, 16, 20, 31]
+  "§5#b14": [15, 16, 20, 31]
   "§[F-FACO-01] Create Account#b1": 26
   "§[F-FACO-01] Create Account#b3": [21, 22, 23]
   "§[F-FACO-01] Create Account#b5": [13, 14, 15, 16, 17, 18, 19, 20, 31]

@@ -4,7 +4,7 @@ title: "Aksi tulis Chart of Accounts ditolak saat entitas Suspended atau Expired
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["T-11", "§[F-FACO-01] Create Account#p1", "§[F-FACO-02] Edit Account#p1", "§9.4.2#r28", "EB-AKS-7"]
 smoke: []
 dependsOn: []

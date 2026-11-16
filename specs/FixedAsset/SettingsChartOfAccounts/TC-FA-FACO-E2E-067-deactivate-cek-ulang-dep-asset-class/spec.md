@@ -4,7 +4,7 @@ title: "Akun menjadi dipakai antara dialog Deactivate dibuka dan Confirm"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§7.3#b3", "§7.3#b6", "§7.3#b7", "§[F-FACO-04] Deactivate Account#r7", "§[F-FACO-04] Deactivate Account#r8", "§9.4.2#r12"]
 smoke: []
 dependsOn: ["Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]

@@ -4,7 +4,7 @@ title: "Deactivate akun yang dipakai Asset Class ditolak dengan dialog blok"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [C-02, D-04, FACO-LOGIC-02c, FACO-LOGIC-02d, "§3.8#r3", "§[F-FACO-04] Deactivate Account#r1", "§[F-FACO-04] Deactivate Account#r5", "§9.4.2#r11", "§9.4.2#r15", "EB-FB-2@guard-blok"]
 smoke: []
 dependsOn: ["Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]

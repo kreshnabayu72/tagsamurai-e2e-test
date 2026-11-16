@@ -4,7 +4,7 @@ title: "Bulk Delete atas akun yang pernah diekspor"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [D-09, D-12, "§[F-FACO-05] Delete Account#r6", "§9.4.2#r21", T-06]
 smoke: [T-06]
 dependsOn: ["Export Journal: export jurnal yang mengisi Last Used in Journal"]

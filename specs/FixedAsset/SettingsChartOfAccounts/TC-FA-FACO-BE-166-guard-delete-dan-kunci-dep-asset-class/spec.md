@@ -4,9 +4,9 @@ title: "Guard Delete dan kunci Account Function untuk akun yang dipakai Asset Cl
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
-sourceRules: [FACO-LOGIC-03b, FACO-LOGIC-03f, FACO-LOGIC-04b, FACO-LOGIC-04e, N-04, "§[F-FACO-02] Edit Account#r2", "§[F-FACO-02] Edit Account#r10", "§[F-FACO-05] Delete Account#b2", "§[F-FACO-05] Delete Account#r2", "§[F-FACO-05] Delete Account#r14", "§9.4.2#r6", "§9.4.2#r17"]
+sourceRules: [FACO-LOGIC-03b, FACO-LOGIC-03f, FACO-LOGIC-04b, FACO-LOGIC-04e, N-04, "§[F-FACO-02] Edit Account#r2", "§[F-FACO-02] Edit Account#r12", "§[F-FACO-05] Delete Account#b2", "§[F-FACO-05] Delete Account#r2", "§[F-FACO-05] Delete Account#r14", "§9.4.2#r6", "§9.4.2#r17"]
 smoke: []
 dependsOn: ["Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]
 trace:
@@ -16,7 +16,7 @@ trace:
   FACO-LOGIC-04e: [31, 36]
   N-04: [28, 29]
   "§[F-FACO-02] Edit Account#r2": [28, 29, 31]
-  "§[F-FACO-02] Edit Account#r10": [36, 37]
+  "§[F-FACO-02] Edit Account#r12": [36, 37]
   "§[F-FACO-05] Delete Account#b2": [19, 20, 24, 25]
   "§[F-FACO-05] Delete Account#r2": [3, 4, 6, 8, 13, 14]
   "§[F-FACO-05] Delete Account#r14": [19, 20, 25]

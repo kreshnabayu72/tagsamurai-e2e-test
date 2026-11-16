@@ -4,8 +4,8 @@ title: "Modal Changelog: Chart of Accounts menampilkan entri per field yang beru
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.1#r4", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "§5#b8", "§8#r1", "§8.1#p1", "§8.1#p2"]
+status: ready-for-automation
+sourceRules: ["§4.1#r4", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "§5#b9", "§8#r1", "§8.1#p1", "§8.1#p2"]
 smoke: []
 dependsOn: []
 trace:
@@ -17,10 +17,10 @@ trace:
   "§4.1.1#r25": [23, 27, 28, 35]
   "§4.1.1#r26": [24, 27, 28, 36]
   "§4.1.1#r27": [26, 37]
-  "§5#b8": 18
+  "§5#b9": 18
   "§8#r1": 18
   "§8.1#p1": [19, 21, 27, 28, 30, 34]
-  "§8.1#p2": 31
+  "§8.1#p2": [23, 31, 36]
 coverage:
   web: automated
 ---

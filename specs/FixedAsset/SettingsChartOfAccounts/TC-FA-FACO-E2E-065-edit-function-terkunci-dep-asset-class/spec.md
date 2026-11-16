@@ -4,7 +4,7 @@ title: "Account Function terkunci selama akun dipakai Asset Class"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [C-03, FACO-LOGIC-04b, "§4.2b#r3", "§[F-FACO-02] Edit Account#r2", "§9.4.2#r6"]
 smoke: []
 dependsOn: ["Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]

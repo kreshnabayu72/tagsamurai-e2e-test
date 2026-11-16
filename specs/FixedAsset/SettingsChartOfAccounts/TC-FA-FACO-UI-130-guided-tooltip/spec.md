@@ -4,7 +4,7 @@ title: "Guided Tooltip Chart of Accounts: konten step, navigasi, dan replay"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#r4", "§4.7#r5", "§4.7#r6", "EB-TBL-10"]
 smoke: []
 dependsOn: []

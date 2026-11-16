@@ -4,7 +4,7 @@ title: "Bulk Delete akun yang seluruhnya lolos guard"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-08", "F-FACO-05", "EB-EDG-2", "T-06"]
 smoke: ["T-06"]
 dependsOn: []

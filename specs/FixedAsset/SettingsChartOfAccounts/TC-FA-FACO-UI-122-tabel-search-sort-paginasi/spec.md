@@ -4,14 +4,14 @@ title: "Tab Chart of Accounts: siklus Search, indikator sort, dan paginasi"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.4#r6", "§5#b2", "§5#b5", "§9.5#r4", "EB-TBL-7@tabel-account-list", "EB-SRC-4@tabel-account-list", "EB-SRT-3@tabel-account-list"]
+status: ready-for-automation
+sourceRules: ["§4.4#r5", "§5#b3", "§5#b6", "§9.5#r4", "EB-TBL-7@tabel-account-list", "EB-SRC-4@tabel-account-list", "EB-SRT-3@tabel-account-list"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.4#r6": [46, 53, 54]
-  "§5#b2": [5, 7]
-  "§5#b5": [21, 25, 36, 38, 39, 41, 43, 74, 76, 78, 81, 85]
+  "§4.4#r5": [46, 53, 54]
+  "§5#b3": [5, 7]
+  "§5#b6": [21, 25, 36, 38, 39, 41, 43, 74, 76, 78, 81, 85]
   "§9.5#r4": [21, 25, 28, 31, 34]
   "EB-TBL-7@tabel-account-list": [23, 27, 58, 60, 64, 66, 69, 71]
   "EB-SRC-4@tabel-account-list": [3, 5, 7, 8, 10, 11, 12, 14, 16, 18, 19]
@@ -120,12 +120,12 @@ coverage:
 63. Ketik `abc` pada input Jump to page, tekan Enter
 64. Verifikasi halaman aktif tetap `2`
 65. Ketik `0` pada input Jump to page, tekan Enter
-66. Verifikasi halaman aktif adalah `1`[^drift-1]
+66. Verifikasi halaman aktif adalah `1`
 67. Klik halaman `2`
 68. Ketik `-1` pada input Jump to page, tekan Enter
-69. Verifikasi halaman aktif adalah `1`[^drift-1]
+69. Verifikasi halaman aktif adalah `1`
 70. Ketik `12` pada input Jump to page, tekan Enter
-71. Verifikasi halaman aktif adalah halaman terakhir `11`[^drift-1]
+71. Verifikasi halaman aktif adalah halaman terakhir `11`
 
 ### Search dan Filter Panel mengembalikan ke halaman 1
 72. Tampilkan Tab Chart of Accounts dengan kondisi K4
@@ -142,5 +142,3 @@ coverage:
 83. Pilih `Asset Cost` pada filter Function
 84. Klik `[Apply]`
 85. Verifikasi halaman aktif adalah `1`
-
-[^drift-1]: Drift foundation vs kontrak komponen. foundation `prd-conventions.md` §9.18: «Nomor halaman tidak valid (0, negatif, melebihi halaman terakhir, bukan angka) pada input nomor halaman: input diabaikan dan tabel tetap di halaman sekarang.» Kontrak `Paginator#9`: «a page past the last goes to the last page, a page below 1 goes to page 1». Diasersi: kontrak, karena input nomor halaman adalah mekanik komponen Paginator (SB-7); PRD §5#b5 hanya merujuk §9.18.

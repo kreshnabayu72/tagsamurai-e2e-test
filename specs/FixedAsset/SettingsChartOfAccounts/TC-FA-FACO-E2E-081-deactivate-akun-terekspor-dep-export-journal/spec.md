@@ -4,7 +4,7 @@ title: "Akun terekspor dinonaktifkan dan tetap tersimpan"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [C-01, D-05, FACO-LOGIC-03a, "§9.7#r24"]
 smoke: []
 dependsOn: ["Export Journal: export jurnal yang mengisi Last Used in Journal"]

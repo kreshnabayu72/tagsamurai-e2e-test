@@ -4,7 +4,7 @@ title: "Batas jumlah akun pada Create Account"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [FACO-LOGIC-10a, FACO-LOGIC-10b, FACO-LOGIC-10d, "§[F-FACO-01] Create Account#r6", "§9.4.2#r39", EB-CON-4]
 smoke: []
@@ -25,13 +25,12 @@ trace:
 - Data:
   - DU-159-1: User `Maya Pengelola {runId}`, Access Level `Total Control`, cakupan seluruh client khusus.
   - DU-159-2: User `Budi Pengelola {runId}`, Access Level `Total Control`, cakupan seluruh client khusus.
-  - DU-159-3: akun pengisi Active dengan Account Code `PGA{n}-{runId}` dan Account Name `Kas Pengisi Aktif {n} {runId}`, Account Function `Asset Cost`, sejumlah batas dikurangi tiga.
+  - DU-159-3: akun pengisi Active dengan Account Code `PGA{n}-{runId}` dan Account Name `Kas Pengisi Aktif {n} {runId}`, Account Function `Asset Cost`, sejumlah 997.
   - DU-159-4: Account Code `LIM3-{runId}`, Account Name `Kas Calon Nonaktif {runId}`, Account Function `Asset Cost`, Status `Active`.
   - DU-159-5: Account Code `PGI-{runId}`, Account Name `Kas Pengisi Nonaktif {runId}`, Account Function `Asset Cost`, Status `Inactive`.
 - Kondisi:
-  - Client khusus spec ini berplan Enterprise pada awal spec, dan Master Data Count Limit yang berlaku padanya adalah batas jumlah akun semua status (dalam skenario ditulis "batas").
-  - Nilai batas tidak dinyatakan di PRD maupun foundation, sehingga langkah memakai keadaan relatif terhadap batas (satu di bawah batas dan tepat sama dengan batas) tanpa angka.
-  - Pada awal spec total akun client sama dengan batas dikurangi satu: akun DU-159-3, DU-159-4, dan DU-159-5 adalah seluruh akun client.
+  - Client khusus spec ini berplan Enterprise pada awal spec, dan Master Data Count Limit yang berlaku padanya adalah batas jumlah akun semua status (dalam skenario ditulis "batas"), diset operator platform ke `1000`, yaitu nilai minimum System Limits.
+  - Pada awal spec total akun client sama dengan batas dikurangi satu: jumlah akun pengisi DU-159-3 adalah 997, ditambah DU-159-4 dan DU-159-5, sehingga total akun client adalah 999 dan ketiganya adalah seluruh akun client.
   - Semua akun di atas belum pernah diekspor dan tidak dipakai Asset Class (Used By 0), sehingga Deactivate dan Delete tidak diblokir.
 
 ## Test Steps

@@ -4,7 +4,7 @@ title: "Activate dan Deactivate: idempotensi dan commit per akun"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [R-04, "§7.3#b5", "§[F-FACO-03] Activate Account#p1", "§[F-FACO-03] Activate Account#r2", "§[F-FACO-04] Deactivate Account#r3", "§9.4.2#r10", "§9.4.2#r13", EB-CON-3, EB-EDG-1]
 smoke: []
@@ -87,10 +87,10 @@ trace:
 
 ### Activate dan Deactivate atas akun yang sudah dihapus admin lain tidak berefek
 29. Admin A menghapus akun `DLA-{runId}`
-30. Admin A mencatat jumlah entri Changelog dengan Account Code `DLA-{runId}`
+30. Admin B mencatat jumlah entri log akun `DLA-{runId}` pada Changelog, pada System Log milik Admin B, dan pada Activity Log
 31. Admin B mengirim Activate atas akun `DLA-{runId}`
-32. Verifikasi permintaan Admin B tidak mengubah data: tidak ada akun dengan Account Code `DLA-{runId}`, dan jumlah entri Changelog dengan Account Code `DLA-{runId}` tidak bertambah
+32. Verifikasi permintaan Admin B tidak mengubah data: tidak ada akun dengan Account Code `DLA-{runId}`, dan jumlah entri log akun itu tidak bertambah pada ketiga surface
 33. Admin A menghapus akun `DLD-{runId}`
-34. Admin A mencatat jumlah entri Changelog dengan Account Code `DLD-{runId}`
+34. Admin B mencatat jumlah entri log akun `DLD-{runId}` pada Changelog, pada System Log milik Admin B, dan pada Activity Log
 35. Admin B mengirim Deactivate atas akun `DLD-{runId}`
-36. Verifikasi permintaan Admin B tidak mengubah data: tidak ada akun dengan Account Code `DLD-{runId}`, dan jumlah entri Changelog dengan Account Code `DLD-{runId}` tidak bertambah
+36. Verifikasi permintaan Admin B tidak mengubah data: tidak ada akun dengan Account Code `DLD-{runId}`, dan jumlah entri log akun itu tidak bertambah pada ketiga surface

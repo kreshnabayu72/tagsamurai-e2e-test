@@ -4,12 +4,12 @@ title: "State tabel Account List pulih saat pindah tab dan muat ulang halaman"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§5#b11"]
+status: ready-for-automation
+sourceRules: ["§5#b12"]
 smoke: []
 dependsOn: []
 trace:
-  "§5#b11": [12, 13, 14, 15, 17, 18, 19, 22, 24]
+  "§5#b12": [12, 14, 15, 16, 18, 19, 20, 23, 25]
 anchor: [9]
 coverage:
   web: automated
@@ -46,19 +46,20 @@ coverage:
 10. Klik tab `Asset Class`
 11. Klik tab `Chart of Accounts`
 12. Verifikasi kotak Search berisi `Keadaan {runId}`
-13. Verifikasi nilai `Asset Cost` pada field Function di Filter Panel masih terpilih sesudah kembali dari tab lain
-14. Verifikasi halaman 2 menjadi halaman aktif pada Paginator
-15. Verifikasi halaman 2 memuat baris `LS2-{runId}` lalu `LS1-{runId}`, urut menurun menurut Account Name
+13. Klik ikon Filter
+14. Verifikasi nilai `Asset Cost` pada field Function di Filter Panel masih terpilih sesudah kembali dari tab lain
+15. Verifikasi halaman 2 menjadi halaman aktif pada Paginator
+16. Verifikasi halaman 2 memuat baris `LS2-{runId}` lalu `LS1-{runId}`, urut menurun menurut Account Name
 
 ### Muat ulang halaman mempertahankan tab aktif dan state tabel
-16. Muat ulang halaman
-17. Verifikasi tab `Chart of Accounts` tetap menjadi tab aktif
-18. Verifikasi kotak Search berisi `Keadaan {runId}` dan halaman 2 menjadi halaman aktif
-19. Verifikasi halaman 2 memuat tepat dua baris, yaitu `LS2-{runId}` lalu `LS1-{runId}`, urut menurun menurut Account Name, karena Filter Function `Asset Cost` masih berlaku dan `LS13-{runId}` tidak ikut tampil
+17. Muat ulang halaman
+18. Verifikasi tab `Chart of Accounts` tetap menjadi tab aktif
+19. Verifikasi kotak Search berisi `Keadaan {runId}` dan halaman 2 menjadi halaman aktif
+20. Verifikasi halaman 2 memuat tepat dua baris, yaitu `LS2-{runId}` lalu `LS1-{runId}`, urut menurun menurut Account Name, karena Filter Function `Asset Cost` masih berlaku dan `LS13-{runId}` tidak ikut tampil
 
 ### Meninggalkan halaman mereset state tabel
-20. Klik menu lain di sidebar, di luar halaman Accounting
-21. Buka kembali Settings > Accounting > Chart of Accounts lewat menu sidebar
-22. Verifikasi kotak Search kosong dan halaman 1 menjadi halaman aktif
-23. Ketik Search `Keadaan {runId}`, tekan Enter
-24. Verifikasi baris `LS13-{runId}` tampil di halaman 1 karena Filter Function dan Sort Account Name sudah direset, dengan urutan default Account Code
+21. Klik menu lain di sidebar, di luar halaman Accounting
+22. Buka kembali Settings > Accounting > Chart of Accounts lewat menu sidebar
+23. Verifikasi kotak Search kosong dan halaman 1 menjadi halaman aktif
+24. Ketik Search `Keadaan {runId}`, tekan Enter
+25. Verifikasi baris `LS13-{runId}` tampil di halaman 1 karena Filter Function dan Sort Account Name sudah direset, dengan urutan default Account Code

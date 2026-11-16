@@ -4,7 +4,7 @@ title: "Aksi akun tercatat di System Log pengguna aktor"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§8#r2", "§8.2#p1", "§8.2#r1"]
 smoke: []
 dependsOn: ["Global Settings > User: Detail User > Tab System Log"]
@@ -26,7 +26,7 @@ coverage:
   - DU-093-3: Account Code baru `SYL2-{runId}`.
   - Akun DU-093-1 dengan Account Code `SYL2-{runId}` adalah satu-satunya akun milik spec ini; seluruh aksinya dilakukan oleh aktor di atas.
 - Kondisi:
-  - Entri System Log ditulis sesudah commit secara best-effort, sehingga setiap baris diamati paling lambat 30 detik sesudah aksi pemicunya selesai; data akun itu sendiri sudah tersimpan saat commit.
+  - Entri System Log ditulis sesudah commit secara best-effort, sehingga pengamatan setiap baris menunggu sampai baris itu tertulis; data akun itu sendiri sudah tersimpan saat commit.
 
 ## Test Steps
 
@@ -65,10 +65,10 @@ coverage:
 30. Buka Detail User milik aktor
 31. Klik tab `System Log`
 32. Verifikasi kolom tabel System Log berurutan `Date`, `Action`, `Object`, `Name`, `Field`, `Old Value`, `New Value`
-33. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris System Log dengan Action `Create`, Object `Chart of Accounts`, Name `SYL1-{runId}`, Field `Account Code`, Old Value `—`, dan New Value `SYL1-{runId}` tampil
-34. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris System Log dengan Action `Edit`, Object `Chart of Accounts`, Name `SYL1-{runId}`, Field `Account Name`, Old Value `Audit Trail Cost {runId}`, dan New Value `Audit Trail Cost Revised {runId}` tampil
-35. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris System Log dengan Action `Edit`, Object `Chart of Accounts`, Name `SYL2-{runId}`, Field `Account Code`, Old Value `SYL1-{runId}`, dan New Value `SYL2-{runId}` tampil
-36. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris System Log dengan Action `Edit`, Object `Chart of Accounts`, Name `SYL2-{runId}`, Field `Status`, Old Value `Active`, dan New Value `Inactive` tampil
-37. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris System Log dengan Action `Edit`, Object `Chart of Accounts`, Name `SYL2-{runId}`, Field `Status`, Old Value `Inactive`, dan New Value `Active` tampil
-38. Verifikasi paling lambat 30 detik sesudah aksinya selesai, baris System Log dengan Action `Delete`, Object `Chart of Accounts`, Name `SYL2-{runId}`, Field `Account Code`, Old Value `SYL2-{runId}`, dan New Value `—` tampil
-39. Verifikasi sesudah 30 detik sejak aksi terakhir selesai, jumlah baris dengan Name `SYL1-{runId}` atau `SYL2-{runId}` adalah 6, yaitu Edit tanpa perubahan tidak menulis baris
+33. Verifikasi baris System Log dengan Action `Create`, Object `Chart of Accounts`, Name `SYL1-{runId}`, Field `Account Code`, Old Value `—`, dan New Value `SYL1-{runId}` tampil
+34. Verifikasi baris System Log dengan Action `Edit`, Object `Chart of Accounts`, Name `SYL1-{runId}`, Field `Account Name`, Old Value `Audit Trail Cost {runId}`, dan New Value `Audit Trail Cost Revised {runId}` tampil
+35. Verifikasi baris System Log dengan Action `Edit`, Object `Chart of Accounts`, Name `SYL2-{runId}`, Field `Account Code`, Old Value `SYL1-{runId}`, dan New Value `SYL2-{runId}` tampil
+36. Verifikasi baris System Log dengan Action `Edit`, Object `Chart of Accounts`, Name `SYL2-{runId}`, Field `Status`, Old Value `Active`, dan New Value `Inactive` tampil
+37. Verifikasi baris System Log dengan Action `Edit`, Object `Chart of Accounts`, Name `SYL2-{runId}`, Field `Status`, Old Value `Inactive`, dan New Value `Active` tampil
+38. Verifikasi baris System Log dengan Action `Delete`, Object `Chart of Accounts`, Name `SYL2-{runId}`, Field `Account Code`, Old Value `SYL2-{runId}`, dan New Value `—` tampil
+39. Verifikasi sesudah keenam baris tampil, jumlah baris dengan Name `SYL1-{runId}` atau `SYL2-{runId}` adalah 6, yaitu Edit tanpa perubahan tidak menulis baris

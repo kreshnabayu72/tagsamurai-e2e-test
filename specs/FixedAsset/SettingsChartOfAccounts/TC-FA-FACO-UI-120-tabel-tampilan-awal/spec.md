@@ -4,8 +4,8 @@ title: "Tab Chart of Accounts: toolbar, kolom, dan format sel"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: [ST-05, "§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.2a#p1", "§5#b1", "§5#b10", "§9.5#r5", "§9.5#r12", "EB-TBL-2@kolom-last-used-in-journal", "EB-TBL-4@kolom-modified-by", "EB-TBL-8@tabel-account-list", EB-TBL-11, EB-XM-1]
+status: ready-for-automation
+sourceRules: [ST-05, "§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.2a#p1", "§5#b2", "§5#b11", "§4.2b#p3", "§9.5#r5", "§9.5#r12", "EB-TBL-2@kolom-last-used-in-journal", "EB-TBL-4@kolom-modified-by", "EB-TBL-8@tabel-account-list", EB-TBL-11, EB-XM-1]
 smoke: []
 dependsOn: []
 trace:
@@ -19,8 +19,9 @@ trace:
   "§4.1.1#r7": [36, 59, 62, 65, 68, 71, 74, 77]
   "§4.1.1#r8": [37, 78, 79, 80, 85]
   "§4.2a#p1": [2, 5, 7, 10, 12, 14, 16, 19, 21, 24]
-  "§5#b1": [8, 18]
-  "§5#b10": [26, 27, 28, 29, 30, 31, 32]
+  "§5#b2": [8, 18]
+  "§5#b11": [26, 27, 28, 29, 30, 31, 32]
+  "§4.2b#p3": [89]
   "§9.5#r5": [26, 27, 28, 29, 30, 31, 32]
   "§9.5#r12": [53, 54, 55]
   "EB-TBL-2@kolom-last-used-in-journal": [53, 54, 55]
@@ -28,7 +29,7 @@ trace:
   "EB-TBL-8@tabel-account-list": 83
   EB-TBL-11: [3, 4]
   EB-XM-1: [78, 79, 80]
-anchor: []
+anchor: [87]
 coverage:
   web: automated
 ---
@@ -153,3 +154,9 @@ coverage:
 ### Posisi kolom Last Updated
 84. Tampilkan Tab Chart of Accounts dengan kondisi K2
 85. Verifikasi kolom `Last Updated` adalah kolom data terakhir sebelum kolom Actions
+
+### Badge Function di tabel tanpa tooltip
+86. Tampilkan Tab Chart of Accounts dengan kondisi K1
+87. Verifikasi baris `1-1001` menampilkan badge Function `Asset Cost`
+88. Arahkan kursor ke badge Function `Asset Cost` pada baris `1-1001`
+89. Verifikasi tidak ada teks bantuan yang tersampaikan pada badge Function baris `1-1001`

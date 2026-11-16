@@ -4,14 +4,14 @@ title: "Aksi bulk: catatan log per akun, tanpa entri, dan Selection Limit"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [N-08, "§8.4#r3", "§8.4#r4", "§9.4.2#r35"]
 smoke: []
 dependsOn: []
 trace:
   N-08: [4, 8]
-  "§8.4#r3": [3, 4, 5]
+  "§8.4#r3": [3, 4, 5, 21, 22]
   "§8.4#r4": [11, 12]
   "§9.4.2#r35": [14, 15, 17, 18]
 ---
@@ -29,8 +29,10 @@ trace:
   - DU-156-6: Account Code `NOP-{runId}`, Account Name `Kas Tanpa Perubahan {runId}`, Account Function `Asset Cost`.
   - DU-156-7: Account Code `DUP-{runId}`, Account Name `Kas Pemilik Kode {runId}`, Account Function `Asset Cost`.
   - DU-156-8: 1001 akun volume dengan Account Code `V{n}-{runId}` dan Account Name `Kas Volume {n} {runId}` (n dari 1 sampai 1001), Account Function `Asset Cost`, Status `Active`.
+  - DU-156-9: Account Code `BXA-{runId}`, Account Name `Kas Bulk Hapus Log Satu {runId}`, Account Function `Asset Cost`, Status `Active`.
+  - DU-156-10: Account Code `BXB-{runId}`, Account Name `Kas Bulk Hapus Log Dua {runId}`, Account Function `Asset Cost`, Status `Active`.
 - Kondisi:
-  - Semua akun di atas belum pernah diekspor dan tidak dipakai Asset Class (Used By 0), sehingga Deactivate tidak diblokir.
+  - Semua akun di atas belum pernah diekspor dan tidak dipakai Asset Class (Used By 0), sehingga Deactivate dan Delete tidak diblokir.
   - Selection Limit client bernilai `1000`.
   - Batas jumlah akun client mencukupi untuk 1001 akun volume tambahan.
 
@@ -61,3 +63,8 @@ trace:
 16. Admin A mengirim Deactivate bulk atas 1000 akun volume pertama
 17. Verifikasi permintaan diterima: akun volume pertama dan akun volume ke-1000 berstatus `Inactive`, masing-masing dengan satu entri log baru pada ketiga surface
 18. Verifikasi akun volume ke-1001 tetap berstatus `Active` tanpa entri log baru
+### Bulk Delete: satu entri per akun yang terhapus pada setiap surface
+19. Admin A mencatat jumlah entri log akun `BXA-{runId}` dan `BXB-{runId}` pada Changelog, pada System Log milik Admin A, dan pada Activity Log
+20. Admin A mengirim Delete bulk atas akun `BXA-{runId}` dan `BXB-{runId}`
+21. Verifikasi tidak ada lagi akun dengan Account Code `BXA-{runId}` dan tidak ada lagi akun dengan Account Code `BXB-{runId}`
+22. Verifikasi jumlah entri log akun `BXA-{runId}` dan akun `BXB-{runId}` pada Changelog, pada System Log milik Admin A, dan pada Activity Log masing-masing bertambah satu dengan Action `Delete`, sehingga tiap akun yang terhapus tercatat sendiri-sendiri pada ketiga surface

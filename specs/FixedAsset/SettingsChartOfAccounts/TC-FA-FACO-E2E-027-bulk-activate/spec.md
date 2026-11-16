@@ -4,7 +4,7 @@ title: "Bulk Activate hanya memproses akun Inactive pada seleksi campuran"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-15", "F-FACO-03", "§4.1.1#p4", "§[F-FACO-03] Activate Account#p1", "EB-BLK-7", "T-04"]
 smoke: ["T-04"]
 dependsOn: []

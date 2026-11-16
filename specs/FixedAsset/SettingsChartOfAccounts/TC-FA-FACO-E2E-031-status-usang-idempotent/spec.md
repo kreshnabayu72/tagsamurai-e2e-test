@@ -4,7 +4,7 @@ title: "Activate atau Deactivate atas akun yang sudah berstatus target tidak men
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§7.3#b5", "§[F-FACO-03] Activate Account#r2", "§[F-FACO-03] Activate Account#r3", "§[F-FACO-04] Deactivate Account#r3", "§9.4.2#r10", "§9.4.2#r13"]
 smoke: []
 dependsOn: []

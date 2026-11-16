@@ -4,7 +4,7 @@ title: "Dialog blok Delete untuk akun yang pernah diekspor"
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules:
   - D-05
   - D-09

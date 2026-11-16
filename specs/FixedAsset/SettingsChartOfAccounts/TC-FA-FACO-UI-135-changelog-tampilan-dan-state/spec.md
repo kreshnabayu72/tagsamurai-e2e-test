@@ -4,7 +4,7 @@ title: "Modal Changelog: kolom, format sel, dan state data"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["ST-20", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "EB-TBL-1@tabel-changelog", "EB-TBL-2@kolom-old-value", "EB-TBL-2@kolom-new-value", "EB-TBL-4@kolom-modified-by-changelog", "EB-TBL-8@tabel-changelog", "EB-XM-1"]
 smoke: []
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Activate satu akun Inactive lewat Switch Status"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-14", "F-FACO-03", "FACO-LOGIC-02e", "§[F-FACO-03] Activate Account#p1", "L-03", "T-04"]
 smoke: ["L-03", "T-04"]
 dependsOn: []

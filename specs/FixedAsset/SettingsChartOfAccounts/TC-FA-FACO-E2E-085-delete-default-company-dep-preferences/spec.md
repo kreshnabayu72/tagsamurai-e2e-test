@@ -4,7 +4,7 @@ title: "Delete akun yang menjadi nilai default company ditolak"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [D-06, D-12, FACO-LOGIC-03b, "§9.2#p2", "§[F-FACO-05] Delete Account#r2", "§[F-FACO-05] Delete Account#r6", "§9.4.2#r17", "§9.4.2#r21"]
 smoke: []
 dependsOn: ["Settings > Accounting > Preferences: akun default company", "Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]

@@ -4,7 +4,7 @@ title: "Create Account dari shortcut `+ Create account` pada Select akun Asset C
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FACO-LOGIC-12a, FACO-LOGIC-12b, FACO-LOGIC-12c, FACO-LOGIC-12d, FACO-LOGIC-12e, "§9.5#r6"]
 smoke: []
 dependsOn: ["Asset Class: Select akun dengan shortcut `+ Create account`"]

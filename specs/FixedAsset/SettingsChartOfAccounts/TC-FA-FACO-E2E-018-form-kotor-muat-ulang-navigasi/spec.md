@@ -4,7 +4,7 @@ title: "Form Add dan Edit Account yang kotor saat muat ulang atau pindah menu"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-FRM-2@form-add-account", "EB-FRM-2@form-edit-account"]
 smoke: []
 dependsOn: []

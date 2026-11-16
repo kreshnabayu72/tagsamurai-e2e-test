@@ -4,7 +4,7 @@ title: "Tab Chart of Accounts: dialog konfirmasi Activate, Deactivate, Delete da
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-01", "D-02", "D-07", "D-08", "D-14", "D-15", "R-05", "R-06", "T-03", "T-04", "T-05", "T-06", "T-12", "§4.1.1#p4", "§4.2f#b2", "§4.5#b2", "§7.2#r14", "§7.2#r15", "§7.2#r16", "§7.2#r17", "§7.2#r18", "§7.2#r19", "§7.2#p2", "§7.3#b1", "§7.3#b2", "§7.3#b4", "§7.3#b5", "§[F-FACO-03] Activate Account#p1", "§[F-FACO-05] Delete Account#p2", "§9.4.2#r36", "EB-FB-1@activate-account", "EB-FB-1@deactivate-account", "EB-FB-1@delete-account", "EB-FB-2@batal-dialog", "EB-ERR-1@activate-account", "EB-ERR-1@deactivate-account", "EB-ERR-1@delete-account", "EB-ERR-2@dialog-delete-account"]
 smoke: []
 dependsOn: []
@@ -18,10 +18,10 @@ trace:
   "R-05": [193, 194, 238, 239, 241]
   "R-06": [203, 204, 206, 248, 249, 251]
   "T-03": [276, 277, 281, 282, 289]
-  "T-04": [103, 104, 116, 155, 159, 183, 297]
-  "T-05": [108, 109, 125, 142, 163, 167, 193]
+  "T-04": [103, 104, 116, 155, 159, 183, 297, 337]
+  "T-05": [108, 109, 125, 142, 163, 167, 193, 329]
   "T-06": [98, 134, 150, 172, 176, 203, 313]
-  "T-12": [255, 256, 257, 262, 263, 264, 271, 304, 305, 306]
+  "T-12": [255, 256, 257, 262, 263, 264, 271, 304, 305, 306, 345, 353]
   "§4.1.1#p4": [45, 46, 50, 51, 57, 58, 62, 63, 68, 69]
   "§4.2f#b2": [45, 46, 50, 51]
   "§4.5#b2": [91, 93]
@@ -33,8 +33,8 @@ trace:
   "§7.2#r19": [172, 203]
   "§7.2#p2": [184, 194, 204, 238, 239, 241, 248, 249, 251, 298, 300]
   "§7.3#b1": [156, 164, 173, 185, 195, 205, 211, 219, 228, 238, 240, 248, 250, 299]
-  "§7.3#b2": [76, 117, 118, 126, 127, 135, 143, 151, 184, 194, 204, 239, 249, 272, 290, 298, 314, 320, 322]
-  "§7.3#b4": [255, 256, 257, 262, 263, 264, 271, 272, 304, 305, 306, 313, 314]
+  "§7.3#b2": [76, 117, 118, 126, 127, 135, 143, 151, 184, 194, 204, 239, 249, 272, 290, 298, 314, 320, 322, 346, 354]
+  "§7.3#b4": [255, 256, 257, 262, 263, 264, 271, 272, 304, 305, 306, 313, 314, 329, 330, 337, 338, 345, 346, 353, 354]
   "§7.3#b5": [276, 277, 281, 282, 289, 290]
   "§[F-FACO-03] Activate Account#p1": [183, 184, 186, 196, 241, 251, 297, 298, 300]
   "§[F-FACO-05] Delete Account#p2": [203, 204, 206, 251]
@@ -72,6 +72,8 @@ coverage:
   - K4: seperti K1; akun yang dikonfirmasi sudah dihapus pengguna lain, server menjawab bahwa akun tidak tersedia, dan daftar yang dimuat ulang tidak memuat akun itu.
   - K5: seperti K1; akun yang dikonfirmasi sudah berstatus target (data usang), dan daftar yang dimuat ulang memuat status terkini.
   - K6: seperti K1; akun `5-1002` sudah dihapus pengguna lain, server melewati akun itu dan menghapus akun terpilih lainnya.
+  - K7: seperti K1; akun `5-1002` sudah dihapus pengguna lain, server melewati akun itu dan menonaktifkan akun terpilih lainnya.
+  - K8: seperti K1; akun `6-1002` sudah dihapus pengguna lain, server melewati akun itu dan mengaktifkan akun terpilih lainnya.
 
 ## Test Steps
 
@@ -476,3 +478,43 @@ coverage:
 320. Verifikasi judul dialog `Cannot Delete Accounts` tampil
 321. Klik `[OK]`
 322. Verifikasi counter `2 Accounts selected` tampil
+
+### Bulk Deactivate atas seleksi yang sebagian akunnya sudah dihapus pengguna lain
+323. Tampilkan Tab Chart of Accounts dengan kondisi K7
+324. Centang baris `5-1001`
+325. Centang baris `5-1002`
+326. Klik `Bulk Action`
+327. Klik `Deactivate`
+328. Klik `[Deactivate]` pada dialog `Deactivate Accounts`
+329. Verifikasi toast `Success, account has been deactivated.` tampil sebagai satu-satunya toast
+330. Verifikasi Bulk Action Bar tidak tampil
+
+### Bulk Activate atas seleksi yang sebagian akunnya sudah dihapus pengguna lain
+331. Tampilkan Tab Chart of Accounts dengan kondisi K8
+332. Centang baris `6-1001`
+333. Centang baris `6-1002`
+334. Klik `Bulk Action`
+335. Klik `Activate`
+336. Klik `[Activate]` pada dialog `Activate Accounts`
+337. Verifikasi toast `Success, account has been activated.` tampil sebagai satu-satunya toast
+338. Verifikasi Bulk Action Bar tidak tampil
+
+### Seluruh akun terpilih sudah dihapus pengguna lain saat Bulk Deactivate
+339. Tampilkan Tab Chart of Accounts dengan kondisi K4
+340. Centang baris `5-1001`
+341. Centang baris `5-1002`
+342. Klik `Bulk Action`
+343. Klik `Deactivate`
+344. Klik `[Deactivate]` pada dialog `Deactivate Accounts`
+345. Verifikasi toast `This account is no longer available.` tampil sebagai satu-satunya toast
+346. Verifikasi Bulk Action Bar tidak tampil
+
+### Seluruh akun terpilih sudah dihapus pengguna lain saat Bulk Activate
+347. Tampilkan Tab Chart of Accounts dengan kondisi K4
+348. Centang baris `6-1001`
+349. Centang baris `6-1002`
+350. Klik `Bulk Action`
+351. Klik `Activate`
+352. Klik `[Activate]` pada dialog `Activate Accounts`
+353. Verifikasi toast `This account is no longer available.` tampil sebagai satu-satunya toast
+354. Verifikasi Bulk Action Bar tidak tampil

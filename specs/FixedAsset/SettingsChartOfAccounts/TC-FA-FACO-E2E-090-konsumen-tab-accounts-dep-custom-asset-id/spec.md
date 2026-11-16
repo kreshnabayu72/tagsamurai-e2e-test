@@ -4,7 +4,7 @@ title: "Akun tercermin di tab Accounts Custom Asset ID"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.3#p2", "§9.7#p4", "§9.11#p1", "§11.1#r3", "EB-XM-2@custom-asset-id"]
 smoke: []
 dependsOn: ["Settings > Custom Asset ID: tab Accounts"]

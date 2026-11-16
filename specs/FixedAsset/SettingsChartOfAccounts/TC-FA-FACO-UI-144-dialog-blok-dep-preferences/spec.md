@@ -4,7 +4,7 @@ title: "Dialog blok Delete untuk akun default company"
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules:
   - D-06
   - D-09

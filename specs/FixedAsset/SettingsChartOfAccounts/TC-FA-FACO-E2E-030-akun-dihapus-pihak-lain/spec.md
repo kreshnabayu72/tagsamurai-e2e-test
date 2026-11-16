@@ -4,8 +4,8 @@ title: "Aksi atas akun yang sudah dihapus pengguna lain menampilkan toast netral
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§7.3#b4", "§[F-FACO-05] Delete Account#r8", "§[F-FACO-05] Delete Account#r9", "§9.4.2#r19", "EB-ERR-3", "T-12"]
+status: ready-for-automation
+sourceRules: ["§7.3#b4", "§[F-FACO-05] Delete Account#r8", "§[F-FACO-05] Delete Account#r9", "§9.4.2#r19", "§[F-FACO-02] Edit Account#r7", "§9.4.2#r41", "EB-ERR-3", "T-12"]
 smoke: ["EB-ERR-3", "T-12"]
 dependsOn: []
 trace:
@@ -13,6 +13,8 @@ trace:
   "§[F-FACO-05] Delete Account#r8": [8, 15, 22, 30]
   "§[F-FACO-05] Delete Account#r9": [9, 16, 23, 31]
   "§9.4.2#r19": [30, 31]
+  "§[F-FACO-02] Edit Account#r7": [8, 9, 15, 16, 22, 23]
+  "§9.4.2#r41": [8, 9, 15, 16, 22, 23]
   "EB-ERR-3": 30
   "T-12": [8, 15, 22, 30]
 anchor: [2, 11, 18, 25]

@@ -4,24 +4,27 @@ title: "Modal Changelog: Search, sort, Filter Panel, Setup Column, paginasi, dan
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r27", "EB-TBL-7@tabel-changelog", "EB-SRC-4@tabel-changelog", "EB-FLT-2@tabel-changelog", "EB-FLT-6@tabel-changelog", "EB-SRT-3@tabel-changelog", "EB-KOL-1@tabel-changelog", "EB-DL-2@tabel-changelog"]
+status: ready-for-automation
+sourceRules: ["T-09", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r23", "§4.1.1#r24", "§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "EB-TBL-7@tabel-changelog", "EB-SRC-4@tabel-changelog", "EB-FLT-2@tabel-changelog", "EB-FLT-6@tabel-changelog", "EB-SRT-3@tabel-changelog", "EB-KOL-1@tabel-changelog", "EB-DL-2@tabel-changelog"]
 smoke: []
 dependsOn: []
 trace:
+  "T-09": [249, 254]
   "§4.1.1#r21": [4, 5, 6]
   "§4.1.1#r22": [4, 7, 8]
   "§4.1.1#r23": [4, 9, 10]
   "§4.1.1#r24": [4, 11, 12]
+  "§4.1.1#r25": 259
+  "§4.1.1#r26": 260
   "§4.1.1#r27": [4, 13, 14]
-  "EB-TBL-7@tabel-changelog": [123, 125, 127, 129, 130, 133, 135, 139, 141, 146, 148, 151, 153, 157, 159, 163, 167]
-  "EB-SRC-4@tabel-changelog": [91, 93, 95, 96, 98, 99, 100, 102, 104, 106, 107]
+  "EB-TBL-7@tabel-changelog": [124, 126, 128, 130, 131, 134, 136, 140, 142, 147, 149, 152, 154, 158, 160, 164, 168]
+  "EB-SRC-4@tabel-changelog": [92, 94, 96, 97, 99, 100, 101, 103, 105, 107, 108]
   "EB-FLT-2@tabel-changelog": [19, 21, 22, 23, 29, 31, 39, 41, 43, 45, 46, 59, 65, 66, 68, 70, 75]
-  "EB-FLT-6@tabel-changelog": [81, 84, 86, 87]
-  "EB-SRT-3@tabel-changelog": [111, 113, 115, 118, 119, 120]
-  "EB-KOL-1@tabel-changelog": [171, 173, 174, 175, 176, 177, 178, 179, 185, 187, 188, 193, 199, 201, 209, 211, 212, 214, 221, 222, 228, 230, 241, 243]
-  "EB-DL-2@tabel-changelog": [248, 253]
-anchor: []
+  "EB-FLT-6@tabel-changelog": [81, 85, 87, 88]
+  "EB-SRT-3@tabel-changelog": [112, 114, 116, 119, 120, 121]
+  "EB-KOL-1@tabel-changelog": [172, 174, 175, 176, 177, 178, 179, 180, 186, 188, 189, 194, 200, 202, 210, 212, 213, 215, 222, 223, 229, 231, 242, 244]
+  "EB-DL-2@tabel-changelog": [249, 254]
+anchor: [258]
 coverage:
   web: automated
 ---
@@ -74,7 +77,7 @@ coverage:
 13. Verifikasi field `Modified By` berupa dropdown multi-select yang searchable untuk tabel Changelog
 14. Verifikasi field `Modified By` memuat placeholder `All users` untuk tabel Changelog
 
-### Draf, Apply, dan penanda filter aktif
+### Draf, Apply, dan badge titik indikator filter aktif
 15. Tampilkan Tab Chart of Accounts dengan kondisi K1
 16. Klik ikon Changelog
 17. Klik ikon Filter pada toolbar modal Changelog
@@ -83,7 +86,7 @@ coverage:
 20. Klik `[Apply]`
 21. Verifikasi entri `1-1001` tampil untuk tabel Changelog
 22. Verifikasi entri `1-2001` tidak tampil untuk tabel Changelog
-23. Verifikasi penanda filter aktif tampil pada ikon Filter untuk tabel Changelog
+23. Verifikasi badge titik indikator filter aktif tampil pada ikon Filter untuk tabel Changelog
 
 ### Menutup panel tanpa Apply membuang draf
 24. Tampilkan Tab Chart of Accounts dengan kondisi K1
@@ -154,207 +157,214 @@ coverage:
 79. Pilih `Create` pada filter Action
 80. Klik `[Apply]`
 81. Verifikasi entri `1-1001` tampil untuk tabel Changelog
-82. Klik `⋯` pada header kolom Actions di modal Changelog
-83. Hilangkan centang `Action` pada panel Column Visibility
-84. Verifikasi header kolom `Action` tidak tampil untuk tabel Changelog
-85. Klik ikon Filter pada toolbar modal Changelog
-86. Verifikasi field `Action` masih ada di Filter Panel untuk tabel Changelog
-87. Verifikasi entri `1-2001` tetap tidak tampil untuk tabel Changelog
+82. Klik ikon Filter pada toolbar modal Changelog
+83. Klik `⋯` pada header kolom Actions di modal Changelog
+84. Hilangkan centang `Action` pada panel Column Visibility
+85. Verifikasi header kolom `Action` tidak tampil untuk tabel Changelog
+86. Klik ikon Filter pada toolbar modal Changelog
+87. Verifikasi field `Action` masih ada di Filter Panel untuk tabel Changelog
+88. Verifikasi entri `1-2001` tetap tidak tampil untuk tabel Changelog
 
 ### Siklus kotak Search
-88. Tampilkan Tab Chart of Accounts dengan kondisi K3
-89. Klik ikon Changelog
-90. Klik ikon Search pada toolbar modal Changelog
-91. Verifikasi kotak Search terbuka dan fokus berada di input untuk tabel Changelog
-92. Ketik `Kas Cabang` pada kotak Search tanpa menekan Enter
-93. Verifikasi entri dengan New Value `Bank Cabang 1` tetap tampil dalam 2 detik sesudah mengetik untuk tabel Changelog
-94. Tekan Enter pada kotak Search
-95. Verifikasi entri dengan New Value `Kas Cabang 1` tampil untuk tabel Changelog
-96. Verifikasi entri dengan New Value `Bank Cabang 1` tidak tampil untuk tabel Changelog
-97. Klik `✕` pada kotak Search
-98. Verifikasi isi kotak Search kosong untuk tabel Changelog
-99. Verifikasi entri dengan New Value `Kas Cabang 1` masih tampil untuk tabel Changelog
-100. Verifikasi entri dengan New Value `Bank Cabang 1` masih tidak tampil untuk tabel Changelog
-101. Tekan Enter pada kotak Search yang kosong
-102. Verifikasi entri dengan New Value `Bank Cabang 1` tampil kembali untuk tabel Changelog
-103. Ketik Search `Kas Cabang`, tekan Enter
-104. Verifikasi entri dengan New Value `Kas Cabang 1` tampil untuk tabel Changelog
-105. Klik `(←)` pada kotak Search
-106. Verifikasi kotak Search tertutup untuk tabel Changelog
-107. Verifikasi entri dengan New Value `Bank Cabang 1` tampil kembali untuk tabel Changelog
+89. Tampilkan Tab Chart of Accounts dengan kondisi K3
+90. Klik ikon Changelog
+91. Klik ikon Search pada toolbar modal Changelog
+92. Verifikasi kotak Search terbuka dan fokus berada di input untuk tabel Changelog
+93. Ketik `Kas Cabang` pada kotak Search tanpa menekan Enter
+94. Verifikasi entri dengan New Value `Bank Cabang 1` tetap tampil dalam 2 detik sesudah mengetik untuk tabel Changelog
+95. Tekan Enter pada kotak Search
+96. Verifikasi entri dengan New Value `Kas Cabang 1` tampil untuk tabel Changelog
+97. Verifikasi entri dengan New Value `Bank Cabang 1` tidak tampil untuk tabel Changelog
+98. Klik `✕` pada kotak Search
+99. Verifikasi isi kotak Search kosong untuk tabel Changelog
+100. Verifikasi entri dengan New Value `Kas Cabang 1` masih tampil untuk tabel Changelog
+101. Verifikasi entri dengan New Value `Bank Cabang 1` masih tidak tampil untuk tabel Changelog
+102. Tekan Enter pada kotak Search yang kosong
+103. Verifikasi entri dengan New Value `Bank Cabang 1` tampil kembali untuk tabel Changelog
+104. Ketik Search `Kas Cabang`, tekan Enter
+105. Verifikasi entri dengan New Value `Kas Cabang 1` tampil untuk tabel Changelog
+106. Klik `(←)` pada kotak Search
+107. Verifikasi kotak Search tertutup untuk tabel Changelog
+108. Verifikasi entri dengan New Value `Bank Cabang 1` tampil kembali untuk tabel Changelog
 
 ### Indikator sort
-108. Tampilkan Tab Chart of Accounts dengan kondisi K2
-109. Klik ikon Changelog
-110. Klik header kolom `Account Code`
-111. Verifikasi indikator sort naik `↑` aktif pada header kolom `Account Code` untuk tabel Changelog
-112. Klik header kolom `Account Code`
-113. Verifikasi indikator sort turun `↓` aktif pada header kolom `Account Code` untuk tabel Changelog
-114. Klik header kolom `Account Code`
-115. Verifikasi indikator sort pada header kolom `Account Code` hilang untuk tabel Changelog
-116. Klik header kolom `Account Code`
-117. Klik header kolom `Field`
-118. Verifikasi indikator sort aktif pada header kolom `Field` untuk tabel Changelog
-119. Verifikasi indikator sort pada header kolom `Account Code` tidak aktif untuk tabel Changelog
-120. Verifikasi header kolom Actions `⋯` tidak memiliki ikon sort untuk tabel Changelog
+109. Tampilkan Tab Chart of Accounts dengan kondisi K2
+110. Klik ikon Changelog
+111. Klik header kolom `Account Code`
+112. Verifikasi indikator sort naik `↑` aktif pada header kolom `Account Code` untuk tabel Changelog
+113. Klik header kolom `Account Code`
+114. Verifikasi indikator sort turun `↓` aktif pada header kolom `Account Code` untuk tabel Changelog
+115. Klik header kolom `Account Code`
+116. Verifikasi indikator sort pada header kolom `Account Code` hilang untuk tabel Changelog
+117. Klik header kolom `Account Code`
+118. Klik header kolom `Field`
+119. Verifikasi indikator sort aktif pada header kolom `Field` untuk tabel Changelog
+120. Verifikasi indikator sort pada header kolom `Account Code` tidak aktif untuk tabel Changelog
+121. Verifikasi header kolom Actions `⋯` tidak memiliki ikon sort untuk tabel Changelog
 
 ### Ukuran halaman dan kembali ke halaman 1
-121. Tampilkan Tab Chart of Accounts dengan kondisi K2
-122. Klik ikon Changelog
-123. Verifikasi ukuran halaman terpilih `10` dan halaman 1 menampilkan 10 baris untuk tabel Changelog
-124. Klik halaman `2`
-125. Verifikasi halaman aktif adalah `2` untuk tabel Changelog
-126. Klik dropdown Rows per page
-127. Verifikasi pilihan `10`, `25`, `50`, dan `100` tersedia untuk tabel Changelog
-128. Pilih `25`
-129. Verifikasi halaman aktif adalah `1` untuk tabel Changelog
-130. Verifikasi halaman 1 menampilkan 25 baris untuk tabel Changelog
-131. Klik dropdown Rows per page
-132. Pilih `100`
-133. Verifikasi halaman 1 menampilkan 100 baris untuk tabel Changelog
-134. Klik halaman `2`
-135. Verifikasi halaman 2 menampilkan 1 baris untuk tabel Changelog
+122. Tampilkan Tab Chart of Accounts dengan kondisi K2
+123. Klik ikon Changelog
+124. Verifikasi ukuran halaman terpilih `10` dan halaman 1 menampilkan 10 baris untuk tabel Changelog
+125. Klik halaman `2`
+126. Verifikasi halaman aktif adalah `2` untuk tabel Changelog
+127. Klik dropdown Rows per page
+128. Verifikasi pilihan `10`, `25`, `50`, dan `100` tersedia untuk tabel Changelog
+129. Pilih `25`
+130. Verifikasi halaman aktif adalah `1` untuk tabel Changelog
+131. Verifikasi halaman 1 menampilkan 25 baris untuk tabel Changelog
+132. Klik dropdown Rows per page
+133. Pilih `100`
+134. Verifikasi halaman 1 menampilkan 100 baris untuk tabel Changelog
+135. Klik halaman `2`
+136. Verifikasi halaman 2 menampilkan 1 baris untuk tabel Changelog
 
 ### Ganti sort tetap di halaman sekarang
-136. Tampilkan Tab Chart of Accounts dengan kondisi K2
-137. Klik ikon Changelog
-138. Klik halaman `2`
-139. Verifikasi halaman aktif adalah `2` untuk tabel Changelog
-140. Klik header kolom `Account Code`
-141. Verifikasi halaman aktif tetap `2` untuk tabel Changelog
+137. Tampilkan Tab Chart of Accounts dengan kondisi K2
+138. Klik ikon Changelog
+139. Klik halaman `2`
+140. Verifikasi halaman aktif adalah `2` untuk tabel Changelog
+141. Klik header kolom `Account Code`
+142. Verifikasi halaman aktif tetap `2` untuk tabel Changelog
 
 ### Nomor halaman tidak valid
-142. Tampilkan Tab Chart of Accounts dengan kondisi K2
-143. Klik ikon Changelog
-144. Klik halaman `2`
-145. Ketik `abc` pada input Jump to page, tekan Enter
-146. Verifikasi halaman aktif tetap `2` untuk tabel Changelog
-147. Ketik `0` pada input Jump to page, tekan Enter
-148. Verifikasi halaman aktif adalah `1` untuk tabel Changelog[^drift-1]
-149. Klik halaman `2`
-150. Ketik `-1` pada input Jump to page, tekan Enter
-151. Verifikasi halaman aktif adalah `1` untuk tabel Changelog[^drift-1]
-152. Ketik `12` pada input Jump to page, tekan Enter
-153. Verifikasi halaman aktif adalah halaman terakhir `11` untuk tabel Changelog[^drift-1]
+143. Tampilkan Tab Chart of Accounts dengan kondisi K2
+144. Klik ikon Changelog
+145. Klik halaman `2`
+146. Ketik `abc` pada input Jump to page, tekan Enter
+147. Verifikasi halaman aktif tetap `2` untuk tabel Changelog
+148. Ketik `0` pada input Jump to page, tekan Enter
+149. Verifikasi halaman aktif adalah `1` untuk tabel Changelog
+150. Klik halaman `2`
+151. Ketik `-1` pada input Jump to page, tekan Enter
+152. Verifikasi halaman aktif adalah `1` untuk tabel Changelog
+153. Ketik `12` pada input Jump to page, tekan Enter
+154. Verifikasi halaman aktif adalah halaman terakhir `11` untuk tabel Changelog
 
 ### Search dan Filter Panel mengembalikan ke halaman 1
-154. Tampilkan Tab Chart of Accounts dengan kondisi K3
-155. Klik ikon Changelog
-156. Klik halaman `2`
-157. Verifikasi halaman aktif adalah `2` untuk tabel Changelog
-158. Ketik Search `Kas Cabang`, tekan Enter
-159. Verifikasi halaman aktif adalah `1` untuk tabel Changelog
-160. Tampilkan Tab Chart of Accounts dengan kondisi K4
-161. Klik ikon Changelog
-162. Klik halaman `2`
-163. Verifikasi halaman aktif adalah `2` untuk tabel Changelog
-164. Klik ikon Filter pada toolbar modal Changelog
-165. Pilih `Edit` pada filter Action
-166. Klik `[Apply]`
-167. Verifikasi halaman aktif adalah `1` untuk tabel Changelog
+155. Tampilkan Tab Chart of Accounts dengan kondisi K3
+156. Klik ikon Changelog
+157. Klik halaman `2`
+158. Verifikasi halaman aktif adalah `2` untuk tabel Changelog
+159. Ketik Search `Kas Cabang`, tekan Enter
+160. Verifikasi halaman aktif adalah `1` untuk tabel Changelog
+161. Tampilkan Tab Chart of Accounts dengan kondisi K4
+162. Klik ikon Changelog
+163. Klik halaman `2`
+164. Verifikasi halaman aktif adalah `2` untuk tabel Changelog
+165. Klik ikon Filter pada toolbar modal Changelog
+166. Pilih `Edit` pada filter Action
+167. Klik `[Apply]`
+168. Verifikasi halaman aktif adalah `1` untuk tabel Changelog
 
 ### Anatomi Setup Column modal Changelog
-168. Tampilkan Tab Chart of Accounts dengan kondisi K1
-169. Klik ikon Changelog
-170. Klik `⋯` pada header kolom Actions di modal Changelog
-171. Verifikasi item `Setup Column...` tampil di bagian bawah panel Column Visibility untuk tabel Changelog
-172. Klik `Setup Column...`
-173. Verifikasi judul modal `Setup Column` tampil untuk tabel Changelog
-174. Verifikasi deskripsi `Drag and drop to rearrange the order and click the pin to freeze up to 3 columns.` tampil untuk tabel Changelog
-175. Verifikasi ikon `[✕]` tampil di modal untuk tabel Changelog
-176. Verifikasi tombol `[Reset to Default]` dan `[Save]` tampil untuk tabel Changelog
-177. Verifikasi tidak ada tombol `[Cancel]` di modal untuk tabel Changelog
-178. Verifikasi daftar kolom memuat baris `Date`, `Action`, `Account Code`, `Field`, `Old Value`, `New Value`, dan `Modified By` untuk tabel Changelog
-179. Verifikasi kolom Actions tidak muncul sebagai baris pada daftar kolom untuk tabel Changelog
+169. Tampilkan Tab Chart of Accounts dengan kondisi K1
+170. Klik ikon Changelog
+171. Klik `⋯` pada header kolom Actions di modal Changelog
+172. Verifikasi item `Setup Column...` tampil di bagian bawah panel Column Visibility untuk tabel Changelog
+173. Klik `Setup Column...`
+174. Verifikasi judul modal `Setup Column` tampil untuk tabel Changelog
+175. Verifikasi deskripsi `Drag and drop to rearrange the order and click the pin to freeze up to 3 columns.` tampil untuk tabel Changelog
+176. Verifikasi ikon `[✕]` tampil di modal untuk tabel Changelog
+177. Verifikasi tombol `[Reset to Default]` dan `[Save]` tampil untuk tabel Changelog
+178. Verifikasi tidak ada tombol `[Cancel]` di modal untuk tabel Changelog
+179. Verifikasi daftar kolom memuat baris `Date`, `Action`, `Account Code`, `Field`, `Old Value`, `New Value`, dan `Modified By` untuk tabel Changelog
+180. Verifikasi kolom Actions tidak muncul sebagai baris pada daftar kolom untuk tabel Changelog
 
 ### Hide dan show kolom lewat Setup Column
-180. Tampilkan Tab Chart of Accounts dengan kondisi K1
-181. Klik ikon Changelog
-182. Klik `⋯` pada header kolom Actions di modal Changelog
-183. Klik `Setup Column...`
-184. Hilangkan centang `Field` pada daftar kolom
-185. Verifikasi header kolom `Field` tidak tampil pada tabel di balik modal `Setup Column` untuk tabel Changelog
-186. Klik `[Save]`
-187. Verifikasi modal `Setup Column` tertutup untuk tabel Changelog
-188. Verifikasi header kolom `Field` tidak tampil pada tabel Changelog
-189. Klik `⋯` pada header kolom Actions di modal Changelog
-190. Klik `Setup Column...`
-191. Centang `Field` pada daftar kolom
-192. Klik `[Save]`
-193. Verifikasi header kolom `Field` tampil pada tabel Changelog
+181. Tampilkan Tab Chart of Accounts dengan kondisi K1
+182. Klik ikon Changelog
+183. Klik `⋯` pada header kolom Actions di modal Changelog
+184. Klik `Setup Column...`
+185. Hilangkan centang `Field` pada daftar kolom
+186. Verifikasi header kolom `Field` tidak tampil pada tabel di balik modal `Setup Column` untuk tabel Changelog
+187. Klik `[Save]`
+188. Verifikasi modal `Setup Column` tertutup untuk tabel Changelog
+189. Verifikasi header kolom `Field` tidak tampil pada tabel Changelog
+190. Klik `⋯` pada header kolom Actions di modal Changelog
+191. Klik `Setup Column...`
+192. Centang `Field` pada daftar kolom
+193. Klik `[Save]`
+194. Verifikasi header kolom `Field` tampil pada tabel Changelog
 
 ### Urutan kolom diubah lewat drag and drop
-194. Tampilkan Tab Chart of Accounts dengan kondisi K1
-195. Klik ikon Changelog
-196. Klik `⋯` pada header kolom Actions di modal Changelog
-197. Klik `Setup Column...`
-198. Seret baris `Field` ke atas baris `Action` pada daftar kolom
-199. Verifikasi header kolom `Field` berada sebelum header kolom `Action` pada tabel di balik modal `Setup Column` untuk tabel Changelog
-200. Klik `[Save]`
-201. Verifikasi header kolom `Field` berada sebelum header kolom `Action` pada tabel Changelog
+195. Tampilkan Tab Chart of Accounts dengan kondisi K1
+196. Klik ikon Changelog
+197. Klik `⋯` pada header kolom Actions di modal Changelog
+198. Klik `Setup Column...`
+199. Seret baris `Field` ke atas baris `Action` pada daftar kolom
+200. Verifikasi header kolom `Field` berada sebelum header kolom `Action` pada tabel di balik modal `Setup Column` untuk tabel Changelog
+201. Klik `[Save]`
+202. Verifikasi header kolom `Field` berada sebelum header kolom `Action` pada tabel Changelog
 
 ### Pin kolom dan batas tiga kolom
-202. Tampilkan Tab Chart of Accounts dengan kondisi K1
-203. Klik ikon Changelog
-204. Klik `⋯` pada header kolom Actions di modal Changelog
-205. Klik `Setup Column...`
-206. Klik ikon pin pada baris `Date`
-207. Klik ikon pin pada baris `Action`
-208. Klik ikon pin pada baris `Account Code`
-209. Verifikasi baris `Date`, `Action`, dan `Account Code` berstatus pin untuk tabel Changelog
-210. Arahkan kursor ke ikon pin pada baris `Field`
-211. Verifikasi ikon pin pada baris `Field` disabled untuk tabel Changelog
-212. Verifikasi `Maximum 3 columns can be pinned at once. Unpin another column first.` tersampaikan pada ikon pin baris `Field` untuk tabel Changelog
-213. Klik ikon pin pada baris `Account Code`
-214. Verifikasi ikon pin pada baris `Field` aktif kembali untuk tabel Changelog
+203. Tampilkan Tab Chart of Accounts dengan kondisi K1
+204. Klik ikon Changelog
+205. Klik `⋯` pada header kolom Actions di modal Changelog
+206. Klik `Setup Column...`
+207. Klik ikon pin pada baris `Date`
+208. Klik ikon pin pada baris `Action`
+209. Klik ikon pin pada baris `Account Code`
+210. Verifikasi baris `Date`, `Action`, dan `Account Code` berstatus pin untuk tabel Changelog
+211. Arahkan kursor ke ikon pin pada baris `Field`
+212. Verifikasi ikon pin pada baris `Field` disabled untuk tabel Changelog
+213. Verifikasi `Maximum 3 columns can be pinned at once. Unpin another column first.` tersampaikan pada ikon pin baris `Field` untuk tabel Changelog
+214. Klik ikon pin pada baris `Account Code`
+215. Verifikasi ikon pin pada baris `Field` aktif kembali untuk tabel Changelog
 
 ### Reset to Default
-215. Tampilkan Tab Chart of Accounts dengan kondisi K1
-216. Klik ikon Changelog
-217. Klik `⋯` pada header kolom Actions di modal Changelog
-218. Klik `Setup Column...`
-219. Hilangkan centang `Old Value` pada daftar kolom
-220. Klik `[Reset to Default]`
-221. Verifikasi baris `Old Value` tercentang pada daftar kolom untuk tabel Changelog
-222. Verifikasi header kolom `Old Value` tampil pada tabel di balik modal `Setup Column` untuk tabel Changelog
+216. Tampilkan Tab Chart of Accounts dengan kondisi K1
+217. Klik ikon Changelog
+218. Klik `⋯` pada header kolom Actions di modal Changelog
+219. Klik `Setup Column...`
+220. Hilangkan centang `Old Value` pada daftar kolom
+221. Klik `[Reset to Default]`
+222. Verifikasi baris `Old Value` tercentang pada daftar kolom untuk tabel Changelog
+223. Verifikasi header kolom `Old Value` tampil pada tabel di balik modal `Setup Column` untuk tabel Changelog
 
 ### Menutup Setup Column tanpa Save membuang perubahan
-223. Tampilkan Tab Chart of Accounts dengan kondisi K1
-224. Klik ikon Changelog
-225. Klik `⋯` pada header kolom Actions di modal Changelog
-226. Klik `Setup Column...`
-227. Hilangkan centang `Field` pada daftar kolom
-228. Verifikasi header kolom `Field` tidak tampil pada tabel di balik modal `Setup Column` untuk tabel Changelog
-229. Klik `[✕]` pada modal `Setup Column`
-230. Verifikasi header kolom `Field` tampil pada tabel Changelog
+224. Tampilkan Tab Chart of Accounts dengan kondisi K1
+225. Klik ikon Changelog
+226. Klik `⋯` pada header kolom Actions di modal Changelog
+227. Klik `Setup Column...`
+228. Hilangkan centang `Field` pada daftar kolom
+229. Verifikasi header kolom `Field` tidak tampil pada tabel di balik modal `Setup Column` untuk tabel Changelog
+230. Klik `[✕]` pada modal `Setup Column`
+231. Verifikasi header kolom `Field` tampil pada tabel Changelog
 
 ### Kolom terakhir tidak bisa disembunyikan
-231. Tampilkan Tab Chart of Accounts dengan kondisi K1
-232. Klik ikon Changelog
-233. Klik `⋯` pada header kolom Actions di modal Changelog
-234. Klik `Setup Column...`
-235. Hilangkan centang `Action` pada daftar kolom
-236. Hilangkan centang `Account Code` pada daftar kolom
-237. Hilangkan centang `Field` pada daftar kolom
-238. Hilangkan centang `Old Value` pada daftar kolom
-239. Hilangkan centang `New Value` pada daftar kolom
-240. Hilangkan centang `Modified By` pada daftar kolom
-241. Verifikasi checkbox baris `Date` disabled untuk tabel Changelog
-242. Arahkan kursor ke checkbox baris `Date`
-243. Verifikasi `At least one column must remain visible.` tersampaikan pada checkbox baris `Date` untuk tabel Changelog
+232. Tampilkan Tab Chart of Accounts dengan kondisi K1
+233. Klik ikon Changelog
+234. Klik `⋯` pada header kolom Actions di modal Changelog
+235. Klik `Setup Column...`
+236. Hilangkan centang `Action` pada daftar kolom
+237. Hilangkan centang `Account Code` pada daftar kolom
+238. Hilangkan centang `Field` pada daftar kolom
+239. Hilangkan centang `Old Value` pada daftar kolom
+240. Hilangkan centang `New Value` pada daftar kolom
+241. Hilangkan centang `Modified By` pada daftar kolom
+242. Verifikasi checkbox baris `Date` disabled untuk tabel Changelog
+243. Arahkan kursor ke checkbox baris `Date`
+244. Verifikasi `At least one column must remain visible.` tersampaikan pada checkbox baris `Date` untuk tabel Changelog
 
 ### Unduhan CSV Changelog gagal
-244. Tampilkan Tab Chart of Accounts dengan kondisi K6
-245. Klik ikon Changelog
-246. Klik ikon Download pada toolbar modal Changelog
-247. Klik `Download as CSV`
-248. Verifikasi toast `Error, failed to download Changelog-Chart-of-Accounts.` tampil
+245. Tampilkan Tab Chart of Accounts dengan kondisi K6
+246. Klik ikon Changelog
+247. Klik ikon Download pada toolbar modal Changelog
+248. Klik `Download as CSV`
+249. Verifikasi toast `Error, failed to download Changelog-Chart-of-Accounts.` tampil
 
 ### Unduhan XLSX Changelog gagal
-249. Tampilkan Tab Chart of Accounts dengan kondisi K6
-250. Klik ikon Changelog
-251. Klik ikon Download pada toolbar modal Changelog
-252. Klik `Download as XLSX`
-253. Verifikasi toast `Error, failed to download Changelog-Chart-of-Accounts.` tampil
+250. Tampilkan Tab Chart of Accounts dengan kondisi K6
+251. Klik ikon Changelog
+252. Klik ikon Download pada toolbar modal Changelog
+253. Klik `Download as XLSX`
+254. Verifikasi toast `Error, failed to download Changelog-Chart-of-Accounts.` tampil
 
-[^drift-1]: Drift foundation vs kontrak komponen. foundation `prd-conventions.md` §9.18: «Nomor halaman tidak valid (0, negatif, melebihi halaman terakhir, bukan angka) pada input nomor halaman: input diabaikan dan tabel tetap di halaman sekarang.» Kontrak `Paginator#9`: «a page past the last goes to the last page, a page below 1 goes to page 1». Diasersi: kontrak, karena input nomor halaman adalah mekanik komponen Paginator (SB-7); PRD (ekspektasi baku EB-TBL-7) hanya merujuk §9.18.
+### Filter Panel tidak memuat field Old Value dan New Value
+255. Tampilkan Tab Chart of Accounts dengan kondisi K1
+256. Klik ikon Changelog
+257. Klik ikon Filter pada toolbar modal Changelog
+258. Verifikasi field `Modified By` tampil di Filter Panel untuk tabel Changelog
+259. Verifikasi field `Old Value` tidak tampil di Filter Panel untuk tabel Changelog
+260. Verifikasi field `New Value` tidak tampil di Filter Panel untuk tabel Changelog

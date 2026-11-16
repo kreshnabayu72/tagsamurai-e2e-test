@@ -4,7 +4,7 @@ title: "Akun tercermin sebagai nilai default company di Preferences"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FACO-LOGIC-01d, FACO-LOGIC-01f, "§9.2#p2", "§11.1#r4", "EB-XM-2@preferences"]
 smoke: []
 dependsOn: ["Settings > Accounting > Preferences: akun default company"]

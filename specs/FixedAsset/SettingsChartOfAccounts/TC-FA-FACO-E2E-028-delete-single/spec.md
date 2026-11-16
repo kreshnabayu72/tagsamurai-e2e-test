@@ -4,7 +4,7 @@ title: "Delete satu akun yang lolos kedua guard"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-07", "F-FACO-05", "FACO-LOGIC-03d", "FACO-LOGIC-03e", "§[F-FACO-05] Delete Account#p3", "§[F-FACO-05] Delete Account#b3", "§9.4.2#r33", "§9.7#r26", "§9.7#r27", "L-04", "T-06", "EB-EDG-3"]
 smoke: ["L-04", "T-06", "EB-EDG-3"]
 dependsOn: []

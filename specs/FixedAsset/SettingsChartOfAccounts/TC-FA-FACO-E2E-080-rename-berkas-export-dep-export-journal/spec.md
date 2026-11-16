@@ -4,7 +4,7 @@ title: "Perubahan Account Name berlaku untuk export berikutnya"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FACO-LOGIC-04d, "§9.7#r19", "§11.2#r1", "EB-XM-2@export-journal"]
 smoke: []
 dependsOn: ["Export Journal: export jurnal yang mengisi Last Used in Journal"]

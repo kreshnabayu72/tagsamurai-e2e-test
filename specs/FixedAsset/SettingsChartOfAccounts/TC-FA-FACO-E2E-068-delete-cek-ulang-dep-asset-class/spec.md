@@ -4,7 +4,7 @@ title: "Akun menjadi dipakai antara dialog Delete dibuka dan Confirm"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§7.3#b3", "§7.3#b6", "§7.3#b7", "§[F-FACO-05] Delete Account#r15", "§[F-FACO-05] Delete Account#r16", "§9.4.2#r22"]
 smoke: []
 dependsOn: ["Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]

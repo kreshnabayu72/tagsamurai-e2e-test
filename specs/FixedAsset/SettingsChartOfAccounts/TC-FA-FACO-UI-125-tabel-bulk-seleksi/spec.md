@@ -4,16 +4,16 @@ title: "Tab Chart of Accounts: seleksi baris, Bulk Action Bar, dan Selection Lim
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.1.1#p4", "§3.8#r5", "§3.8#r6", "§4.8#b3", "§5#b6", "§9.4.2#r35", "§9.5#r3", "EB-BLK-1@tabel-account-list", "EB-BLK-4", "EB-BLK-6"]
+status: ready-for-automation
+sourceRules: ["§4.1.1#p4", "§3.8#r5", "§3.8#r6", "§4.8#b4", "§5#b7", "§9.4.2#r35", "§9.5#r3", "EB-BLK-1@tabel-account-list", "EB-BLK-4", "EB-BLK-6"]
 smoke: []
 dependsOn: []
 trace:
   "§4.1.1#p4": [9, 10, 18, 19, 26, 28]
   "§3.8#r5": [10, 18, 26]
   "§3.8#r6": [9, 19, 26, 104]
-  "§4.8#b3": [9, 10, 18, 19, 26]
-  "§5#b6": [7, 13, 30, 56, 57, 65, 73, 106]
+  "§4.8#b4": [9, 10, 18, 19, 26]
+  "§5#b7": [7, 13, 30, 56, 57, 65, 73, 106, 109, 111]
   "§9.4.2#r35": [77, 82, 87, 88, 97, 98]
   "§9.5#r3": [2, 3, 4]
   "EB-BLK-1@tabel-account-list": [7, 13, 24, 30, 33, 36, 38, 42, 43, 46, 48, 49, 56, 57]
@@ -41,7 +41,7 @@ coverage:
   - DU-125-8: kata kunci Search `Nonaktif` dan `Cabang Besar`.
   - DU-125-9: 2 akun Active yang dipakai Asset Class, Account Code `U-{n}`, Name `Akun Terpakai {n}`, Function `Asset Cost`, Used By `2`.
 - Kondisi:
-  - K1: tabel berisi DU-125-1 dan DU-125-2 dengan ukuran halaman bawaan; kata kunci Search `Nonaktif` hanya menghasilkan DU-125-2.
+  - K1: tabel berisi DU-125-1 dan DU-125-2 (15 akun) dengan ukuran halaman bawaan; kata kunci Search `Nonaktif` hanya menghasilkan DU-125-2.
   - K2: seperti K1; konfirmasi Activate berhasil.
   - K3: seperti K1; konfirmasi Activate gagal karena error server.
   - K4: seperti K1; konfirmasi Activate tidak dijawab sampai batas waktu.
@@ -188,3 +188,10 @@ coverage:
 104. Verifikasi judul dialog `Cannot Deactivate Accounts` tampil
 105. Klik `[OK]`
 106. Verifikasi counter `2 Accounts selected` tampil
+
+### Select All hanya tampil saat seleksi tidak kosong
+107. Tampilkan Tab Chart of Accounts dengan kondisi K1
+108. Centang baris `A-1`
+109. Verifikasi tombol `Select All (15 records)` tampil di Bulk Action Bar
+110. Klik `✕` pada Bulk Action Bar
+111. Verifikasi tombol `Select All (15 records)` tidak tampil

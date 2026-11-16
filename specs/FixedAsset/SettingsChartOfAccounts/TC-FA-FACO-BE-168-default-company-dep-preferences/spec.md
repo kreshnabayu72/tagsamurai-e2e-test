@@ -4,14 +4,14 @@ title: "Guard Delete untuk akun default company"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [FACO-LOGIC-03b, "§9.2#p2", "§[F-FACO-05] Delete Account#r2", "§9.4.2#r17"]
 smoke: []
 dependsOn: ["Settings > Accounting > Preferences: akun default company"]
 trace:
   FACO-LOGIC-03b: [3, 5, 7, 9, 11, 12, 14, 15, 20, 22]
-  "§9.2#p2": [3, 5, 7, 9, 11, 15, 17, 22]
+  "§9.2#p2": [3, 5, 7, 9, 11, 15, 17, 22, 24, 26]
   "§[F-FACO-05] Delete Account#r2": [3, 5, 7, 9, 11, 12, 14, 15, 17, 20, 22]
   "§9.4.2#r17": [3, 5, 7, 9, 11, 12, 17, 22]
 ---
@@ -66,3 +66,9 @@ trace:
 20. Verifikasi akun `DCA-{runId}` terhapus dengan tepat satu entri log `Delete` pada ketiga surface, dan akun `DCI-{runId}`, nilai default yang baru, masih ada
 21. Admin A mengirim Delete atas akun `DCI-{runId}`, yang kini menjadi nilai default company
 22. Verifikasi Delete ditolak dan akun `DCI-{runId}` masih ada
+
+### Akun default company tetap dapat dinonaktifkan dan Account Function-nya tetap dapat diubah
+23. Admin A mengirim Deactivate atas akun `DCB-{runId}`, yang menjadi nilai Default Loss on Disposal (SET-06) di Settings > Accounting > Preferences dan Used By-nya 0
+24. Verifikasi Deactivate tidak ditolak oleh guard Deactivate modul ini dan akun `DCB-{runId}` berstatus `Inactive`
+25. Admin A mengirim Edit akun `DCD-{runId}` dengan Account Function `Loss on Disposal`, padahal akun itu menjadi nilai Found Asset Credit Account (SET-09) di Settings > Accounting > Preferences dan Used By-nya 0
+26. Verifikasi Edit tidak ditolak oleh kunci Account Function modul ini dan akun `DCD-{runId}` kini ber-Account Function `Loss on Disposal`

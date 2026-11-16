@@ -4,7 +4,7 @@ title: "Deactivate satu akun yang lolos guard lewat Switch Status"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-01", "F-FACO-04", "§4.2f#b1", "§[F-FACO-04] Deactivate Account#b3", "L-03", "T-05"]
 smoke: ["L-03", "T-05"]
 dependsOn: []

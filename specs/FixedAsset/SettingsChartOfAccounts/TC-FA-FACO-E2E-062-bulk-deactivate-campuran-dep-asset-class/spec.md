@@ -4,7 +4,7 @@ title: "Bulk Deactivate campuran menonaktifkan akun yang lolos dan melewati akun
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [D-03, FACO-LOGIC-02d, "§4.2f#b2", "§[F-FACO-04] Deactivate Account#r9", "§[F-FACO-04] Deactivate Account#r10", "§[F-FACO-04] Deactivate Account#r11", "§9.4.2#r14", "§9.4.2#r36", T-05]
 smoke: [T-05]
 dependsOn: ["Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]

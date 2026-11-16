@@ -4,7 +4,7 @@ title: "Bulk Delete campuran menghapus akun yang lolos dan melewati akun yang di
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [D-09, "§4.2f#b2", "§[F-FACO-05] Delete Account#r11", "§[F-FACO-05] Delete Account#r12", "§[F-FACO-05] Delete Account#r13", "§9.4.2#r20", "§9.4.2#r36", EB-BLK-3, T-06]
 smoke: [T-06]
 dependsOn: ["Asset Class: pemakaian akun pada field akun Asset Class (Used By)"]

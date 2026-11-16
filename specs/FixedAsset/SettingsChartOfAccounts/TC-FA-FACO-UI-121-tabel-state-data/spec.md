@@ -4,7 +4,7 @@ title: "Tab Chart of Accounts: loading, kosong, kosong tersaring, dan gagal muat
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [ST-11, ST-12, ST-13, ST-16, "§7.1#p1", "EB-TBL-1@tabel-account-list"]
 smoke: []
 dependsOn: []

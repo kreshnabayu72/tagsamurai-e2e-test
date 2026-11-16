@@ -4,13 +4,13 @@ title: "Paginasi, Select All, dan opsi filter atas seluruh daftar akun"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["N-11", "§5#b6", "§9.5#r11", "EB-TBL-7@tabel-account-list", "EB-BLK-2@tabel-account-list", "EB-FLT-1@tabel-account-list"]
+status: ready-for-automation
+sourceRules: ["N-11", "§5#b7", "§9.5#r11", "EB-TBL-7@tabel-account-list", "EB-BLK-2@tabel-account-list", "EB-FLT-1@tabel-account-list"]
 smoke: []
 dependsOn: []
 trace:
   "N-11": [5, 9]
-  "§5#b6": [18, 26]
+  "§5#b7": [18, 26]
   "§9.5#r11": [3, 8, 62]
   "EB-TBL-7@tabel-account-list": [53, 54]
   "EB-BLK-2@tabel-account-list": [14, 16, 21, 24]

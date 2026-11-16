@@ -4,7 +4,7 @@ title: "Bulk Delete campuran melewati akun default company"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [D-09, T-06]
 smoke: [T-06]
 dependsOn: ["Settings > Accounting > Preferences: akun default company"]

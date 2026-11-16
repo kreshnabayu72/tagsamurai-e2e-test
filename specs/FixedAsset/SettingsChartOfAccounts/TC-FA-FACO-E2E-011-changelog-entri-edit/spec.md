@@ -4,7 +4,7 @@ title: "Edit beruntun menulis entri Changelog per field tanpa mengubah entri lam
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§8.1#p3", "EB-LOG-1", "EB-LOG-2", "L-02"]
 smoke: ["L-02"]
 dependsOn: []

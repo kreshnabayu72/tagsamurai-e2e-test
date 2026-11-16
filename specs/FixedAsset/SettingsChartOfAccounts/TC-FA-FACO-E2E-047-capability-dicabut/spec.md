@@ -4,7 +4,7 @@ title: "Capability Update dicabut saat halaman terbuka"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-AKS-6"]
 smoke: []
 dependsOn: []

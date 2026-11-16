@@ -4,7 +4,7 @@ title: "Guided Tooltip muncul sekali per akun pengguna dan tidak muncul lagi ses
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.7#b1", "EB-TBL-10"]
 smoke: []
 dependsOn: []

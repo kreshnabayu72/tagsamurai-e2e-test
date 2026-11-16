@@ -4,8 +4,8 @@ title: "Sort Account List mengurutkan baris per kolom dan kembali ke urutan defa
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r7", "§4.1.1#r8", "§5#b4", "§9.5#r1", "EB-SRT-3@tabel-account-list", "EB-SRT-1"]
+status: ready-for-automation
+sourceRules: ["§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r7", "§4.1.1#r8", "§5#b5", "§9.5#r1", "EB-SRT-3@tabel-account-list", "EB-SRT-1"]
 smoke: ["EB-SRT-1"]
 dependsOn: []
 trace:
@@ -13,9 +13,9 @@ trace:
   "§4.1.1#r2": [4, 6]
   "§4.1.1#r3": [10, 12]
   "§4.1.1#r4": [14, 16]
-  "§4.1.1#r7": [31, 33, 59, 60, 62]
+  "§4.1.1#r7": [31, 33, 59, 60, 62, 68, 69, 70, 72]
   "§4.1.1#r8": [35, 37, 44, 47]
-  "§5#b4": [2, 39, 53]
+  "§5#b5": [2, 39, 53]
   "§9.5#r1": [2, 12, 33]
   "EB-SRT-3@tabel-account-list": [8, 18, 21]
   "EB-SRT-1": [10, 14, 23, 35]
@@ -27,15 +27,15 @@ coverage:
 # Sort Account List mengurutkan baris per kolom dan kembali ke urutan default
 
 ## Prerequisites
-- Aktor: pengguna Total Control. Aktor lain pemicu: Admin B (DU-003-14).
+- Aktor: pengguna Total Control. Aktor lain pemicu: Admin B (DU-003-14), `Sinta Wiratna` (DU-003-15), dan `Sinta Wirawan` (DU-003-16).
 - Layar awal: Settings > Accounting > Chart of Accounts.
 - Data:
   - DU-003-1: akun `K5-{runId}`, Account Name `Élan SRT {runId}`, Account Function `Loss on Disposal`, Status `Inactive`.
   - DU-003-2: akun `K3-{runId}`, Account Name `anggur SRT {runId}`, Account Function `Accumulated Depreciation`, Status `Active`.
   - DU-003-3: akun `K9-{runId}`, Account Name `3D Printer SRT {runId}`, Account Function `Depreciation Expense`, Status `Active`.
   - DU-003-4: akun `K1-{runId}`, Account Name `Melati SRT {runId}`, Account Function `Asset Cost`, Status `Active`.
-  - DU-003-5: akun `K7-{runId}`, Account Name `Ezra SRT {runId}`, Account Function `Disposal Proceeds`, Status `Active`.
-  - DU-003-6: akun `K2-{runId}`, Account Name `Zaitun SRT {runId}`, Account Function `Depreciation Expense`, Status `Inactive`.
+  - DU-003-5: akun `K7-{runId}`, Account Name `Ezra SRT {runId}`, Account Function `Disposal Proceeds`, Status `Active`. Account Name sesudah diubah `Sinta Wiratna`: `Ezra Baru SRT {runId}`.
+  - DU-003-6: akun `K2-{runId}`, Account Name `Zaitun SRT {runId}`, Account Function `Depreciation Expense`, Status `Inactive`. Account Name sesudah diubah `Sinta Wirawan`: `Zaitun Baru SRT {runId}`.
   - DU-003-7: akun `K8-{runId}`, Account Name `#Gudang SRT {runId}`, Account Function `Asset Cost`, Status `Inactive`.
   - DU-003-8: akun `K4-{runId}`, Account Name `Apel SRT {runId}`, Account Function `Gain on Disposal`, Status `Active`. Account Name sesudah diubah Admin B: `Apel Baru SRT {runId}`.
   - DU-003-9: akun `K6-{runId}`, Account Name `Elan SRT {runId}`, Account Function `Capitalization Offset`, Status `Active`.
@@ -44,6 +44,8 @@ coverage:
   - DU-003-11: 12 akun, Account Code `V{n}-{runId}`, Account Name `Kas {n} Volume {runId}`, Account Function `Asset Cost`, Status `Active`, untuk n 1 sampai 12. Dibuat berurutan menurut n sesudah DU-003-10.
   - Seluruh baris DU-003-1 sampai DU-003-10 tanpa entri Changelog sama sekali (belum pernah diubah oleh siapa pun), sehingga Modified By-nya `System`, sampai Admin B mengubah DU-003-8 pada kelompok langkah terakhir.
   - DU-003-14: Admin B, nama lengkap `Rani Pratama` (tampil `Rani P` di kolom Modified By), role Total Control, cakupan seluruh client, akun aktif dan kredensialnya disediakan fase 2.
+  - DU-003-15: nama lengkap `Sinta Wiratna` (tampil `Sinta W` di kolom Modified By), role Total Control, cakupan seluruh client, akun aktif dan kredensialnya disediakan fase 2.
+  - DU-003-16: nama lengkap `Sinta Wirawan` (tampil `Sinta W` di kolom Modified By), role Total Control, cakupan seluruh client, akun aktif dan kredensialnya disediakan fase 2.
 - Kondisi:
   - Ukuran halaman tabel adalah 10 baris (nilai bawaan).
 
@@ -129,7 +131,19 @@ coverage:
 57. Admin B mengubah Account Name `K4-{runId}` menjadi `Apel Baru SRT {runId}`
 58. Klik header kolom Modified By (klik pertama)
 59. Verifikasi Modified By baris `K4-{runId}` bernilai `Rani P`, nama depan Admin B diikuti inisial nama belakangnya
-60. Verifikasi urutan baris menaik menurut Modified By dengan nama lengkap sebagai kunci, `Rani Pratama` sebelum `System`, dan baris bernilai `System` mengikuti default sort: `K4-{runId}`, `K1-{runId}`, `K2-{runId}`, `K3-{runId}`, `K5-{runId}`, `K6-{runId}`, `K7-{runId}`, `K8-{runId}`, `K9-{runId}`, `KA-{runId}`
+60. Verifikasi urutan baris menaik menurut Modified By, `Rani Pratama` sebelum `System`, dan baris bernilai `System` mengikuti default sort: `K4-{runId}`, `K1-{runId}`, `K2-{runId}`, `K3-{runId}`, `K5-{runId}`, `K6-{runId}`, `K7-{runId}`, `K8-{runId}`, `K9-{runId}`, `KA-{runId}`
 61. Klik header kolom Modified By (klik kedua)
-62. Verifikasi urutan baris menurun menurut Modified By dengan nama lengkap sebagai kunci, baris bernilai `System` lebih dulu menurut default sort dan `K4-{runId}` terakhir: `K1-{runId}`, `K2-{runId}`, `K3-{runId}`, `K5-{runId}`, `K6-{runId}`, `K7-{runId}`, `K8-{runId}`, `K9-{runId}`, `KA-{runId}`, `K4-{runId}`
+62. Verifikasi urutan baris menurun menurut Modified By, baris bernilai `System` lebih dulu menurut default sort dan `K4-{runId}` terakhir: `K1-{runId}`, `K2-{runId}`, `K3-{runId}`, `K5-{runId}`, `K6-{runId}`, `K7-{runId}`, `K8-{runId}`, `K9-{runId}`, `KA-{runId}`, `K4-{runId}`
 63. Klik header kolom Modified By (klik ketiga)
+
+### Sort Modified By dengan nama tampil sama menurut nama lengkap
+64. `Sinta Wiratna` mengubah Account Name `K7-{runId}` menjadi `Ezra Baru SRT {runId}`
+65. `Sinta Wirawan` mengubah Account Name `K2-{runId}` menjadi `Zaitun Baru SRT {runId}`
+66. Ganti isi kotak Search dengan `SRT {runId}`, tekan Enter
+67. Klik header kolom Modified By (klik pertama)
+68. Verifikasi Modified By baris `K7-{runId}` bernilai `Sinta W`, nama depan `Sinta Wiratna` diikuti inisial nama belakangnya
+69. Verifikasi Modified By baris `K2-{runId}` bernilai `Sinta W`, nama depan `Sinta Wirawan` diikuti inisial nama belakangnya
+70. Verifikasi urutan baris menaik menurut Modified By dengan nama lengkap sebagai kunci, bukan nama tampil: `Rani Pratama`, `Sinta Wiratna`, `Sinta Wirawan`, lalu `System` dengan baris `System` mengikuti default sort: `K4-{runId}`, `K7-{runId}`, `K2-{runId}`, `K1-{runId}`, `K3-{runId}`, `K5-{runId}`, `K6-{runId}`, `K8-{runId}`, `K9-{runId}`, `KA-{runId}`
+71. Klik header kolom Modified By (klik kedua)
+72. Verifikasi urutan baris menurun menurut Modified By dengan nama lengkap sebagai kunci, bukan nama tampil: baris `System` lebih dulu menurut default sort, lalu `Sinta Wirawan`, `Sinta Wiratna`, dan `Rani Pratama` terakhir: `K1-{runId}`, `K3-{runId}`, `K5-{runId}`, `K6-{runId}`, `K8-{runId}`, `K9-{runId}`, `KA-{runId}`, `K2-{runId}`, `K7-{runId}`, `K4-{runId}`
+73. Klik header kolom Modified By (klik ketiga)

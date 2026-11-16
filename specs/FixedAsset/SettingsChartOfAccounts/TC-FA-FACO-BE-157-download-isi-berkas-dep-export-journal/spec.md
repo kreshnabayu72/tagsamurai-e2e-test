@@ -1,17 +1,17 @@
 ---
-id: TC-FA-FACO-BE-157-download-isi-berkas
+id: TC-FA-FACO-BE-157-download-isi-berkas-dep-export-journal
 title: "Isi berkas Download Account List"
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
-sourceRules: ["§5#b7", "§[F-FACO-11] Download Account List#p1", "§[F-FACO-11] Download Account List#r2", "§9.4.2#r27", EB-DL-4, EB-DL-5]
+sourceRules: ["§5#b8", "§[F-FACO-11] Download Account List#p1", "§[F-FACO-11] Download Account List#r2", "§9.4.2#r27", EB-DL-4, EB-DL-5]
 smoke: []
-dependsOn: []
+dependsOn: ["Export Journal: export jurnal yang mengisi Last Used in Journal"]
 trace:
-  "§5#b7": [2, 3, 4, 8, 9, 11, 13, 16]
-  "§[F-FACO-11] Download Account List#p1": [2, 11, 22, 24]
+  "§5#b8": [2, 3, 4, 8, 9, 11, 13, 16]
+  "§[F-FACO-11] Download Account List#p1": [2, 11, 22, 24, 26]
   "§[F-FACO-11] Download Account List#r2": [22]
   "§9.4.2#r27": [22]
   EB-DL-4: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 16, 18, 20]
@@ -21,7 +21,7 @@ trace:
 # Isi berkas Download Account List
 
 ## Prerequisites
-- Aktor: Admin A (DU-157-1), Total Control dengan cakupan seluruh client.
+- Aktor: Admin A (DU-157-1), Total Control dengan cakupan seluruh client, bekerja di entitas khusus DU-157-13 yang tidak dipakai spec lain.
 - Data:
   - DU-157-1: User `Maya Pengelola {runId}`, Access Level `Total Control`, cakupan seluruh client.
   - DU-157-2: User `Siti Nur Rahmawati {runId}`, Access Level `Total Control`, cakupan seluruh client, nama dengan last name dua kata.
@@ -33,10 +33,11 @@ trace:
   - DU-157-8: Account Code `DLF-{runId}`, Account Name `Lawan Kapitalisasi Unduh {runId}`, Account Function `Capitalization Offset`, Status `Active`, Used By 0.
   - DU-157-10: Account Code `DLG-{runId}`, Account Name `Hasil Pelepasan Unduh {runId}`, Account Function `Disposal Proceeds`, Status `Inactive`, Used By 0.
   - DU-157-12: 5001 akun volume dengan Account Code `W{n}-{runId}` dan Account Name `Volume Besar {runId} nomor {n}` (n dari 1 sampai 5001), Account Function `Asset Cost`, Status `Active`.
+  - DU-157-13: entitas khusus `Entitas Unduh Berkas {runId}` dengan Date Format `dd MMM yy` dan Time Format `12h`, tidak dipakai spec lain; seluruh data DU-157-1 sampai DU-157-12 ada di entitas ini.
 - Kondisi:
   - Akun `DLA-{runId}` sudah pernah diekspor pada periode `Oct 2026`; akun lain belum pernah diekspor.
   - Batas jumlah akun client mencukupi untuk 5001 akun volume tambahan.
-  - Date Format `dd/MM/yy` dan Time Format `24h`.
+  - Date Format entitas khusus DU-157-13 bernilai `dd MMM yy` dan Time Format bernilai `12h`.
 
 ## Test Steps
 
@@ -76,4 +77,8 @@ trace:
 
 ### Last Updated mengikuti Date Format dan Time Format client
 23. Admin A mengirim Download as CSV dengan Search `Unduh {runId}` dan kolom visible Account Code dan Last Updated
-24. Verifikasi sel Last Updated setiap baris data berisi tanggal berformat Date Format `dd/MM/yy` diikuti waktu berformat Time Format `24h` yang berlaku di client
+24. Verifikasi sel Last Updated setiap baris data berisi tanggal berformat Date Format `dd MMM yy` diikuti waktu berformat Time Format `12h` yang berlaku di client
+
+### Sel Last Updated di berkas XLSX mengikuti Date Format dan Time Format non-bawaan
+25. Admin A mengirim Download as XLSX dengan Search `Unduh {runId}` dan kolom visible Account Code dan Last Updated
+26. Verifikasi sel Last Updated setiap baris data berisi tanggal berformat Date Format `dd MMM yy` diikuti waktu berformat Time Format `12h`, bukan pola bawaan `dd/MM/yy` dengan `24h`

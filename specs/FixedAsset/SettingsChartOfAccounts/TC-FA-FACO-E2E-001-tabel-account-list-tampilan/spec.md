@@ -4,8 +4,8 @@ title: "Tabel Account List menampilkan nilai akun dari data tersimpan"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r7", "§4.1.1#r8", "§5#b12", "EB-FRM-6@form-add-account"]
+status: ready-for-automation
+sourceRules: ["§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r7", "§4.1.1#r8", "§5#b13", "EB-FRM-6@form-add-account"]
 smoke: []
 dependsOn: []
 trace:
@@ -15,9 +15,8 @@ trace:
   "§4.1.1#r4": [4, 8]
   "§4.1.1#r7": [13, 18]
   "§4.1.1#r8": 14
-  "§5#b12": [18, 23, 24, 28]
-  "EB-FRM-6@form-add-account": 25
-anchor: [22]
+  "§5#b13": [18, 23, 24, 29]
+  "EB-FRM-6@form-add-account": 26
 coverage:
   web: automated
 ---
@@ -25,16 +24,18 @@ coverage:
 # Tabel Account List menampilkan nilai akun dari data tersimpan
 
 ## Prerequisites
-- Aktor: pengguna Total Control (nama lengkap terdiri dari nama depan dan nama belakang).
+- Aktor: pengguna Total Control (nama lengkap terdiri dari nama depan dan nama belakang). Aktor lain pemicu: Admin B (DU-001-5).
 - Layar awal: Settings > Accounting > Chart of Accounts.
 - Data:
   - DU-001-1: akun `A1-{runId}`, Account Name `Fixed Assets – Equipment {runId}`, Account Function `Asset Cost`, Status `Active`, tanpa entri Changelog sama sekali.
   - DU-001-2: akun `A2-{runId}`, Account Name `Fixed Assets – Equipment {runId}` (sama dengan DU-001-1), Account Function `Accumulated Depreciation`, Status `Inactive`.
   - DU-001-3: akun `A3-{runId}`, Account Name `Depreciation Expense – Admin {runId}`, Account Function `Depreciation Expense`, Status `Active`. Account Name sesudah Edit: `Depreciation Expense – Admin Pusat {runId}`.
   - DU-001-4: akun `A4-{runId}`, Account Name `<b>Finance</b> {runId}` (tersimpan sebagai teks ber-markup), Account Function `Gain on Disposal`, Status `Active`.
+  - DU-001-5: Admin B, nama `Admin B {runId}`, role Total Control, cakupan seluruh client, nama tampilnya berbeda dari nama tampil aktor, akun aktif dan kredensialnya disediakan fase 2.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.
   - Time Format bernilai `24h`.
+  - DU-001-3 dibuat lebih dari satu menit sebelum langkah 17 dijalankan, sehingga waktu dibuatnya berbeda menit dari waktu entri Changelog hasil Edit.
 
 ## Test Steps
 
@@ -62,17 +63,18 @@ coverage:
 17. Klik `[Save]`
 18. Verifikasi Modified By baris `A3-{runId}` menampilkan nama depan aktor diikuti inisial nama belakangnya, format `[First Name] [Last Initial]`
 19. Catat nilai Last Updated baris `A3-{runId}`
-20. Klik `⋯` pada baris `A3-{runId}` > `Edit`
-21. Klik `[Save]` tanpa mengubah nilai apa pun
-22. Verifikasi toast `No changes to save.` tampil
-23. Verifikasi Modified By baris `A3-{runId}` tetap sama dengan nilai pada langkah 18
+20. Waktu berlalu sampai menit berganti sejak langkah 17
+21. Admin B menyimpan akun `A3-{runId}` lewat Edit tanpa mengubah nilai apa pun
+22. Ganti isi kotak Search dengan `A3-{runId}`, tekan Enter
+23. Verifikasi Modified By baris `A3-{runId}` tetap sama dengan nilai pada langkah 18, bukan nama Admin B
 24. Verifikasi Last Updated baris `A3-{runId}` tetap sama dengan nilai yang dicatat pada langkah 19
 
 ### Markup tersimpan tampil sebagai teks
-25. Verifikasi sel Account Name baris `A4-{runId}` menampilkan teks `<b>Finance</b> {runId}` apa adanya sebagai teks, bukan sebagai huruf tebal
+25. Ganti isi kotak Search dengan `A4-{runId}`, tekan Enter
+26. Verifikasi sel Account Name baris `A4-{runId}` menampilkan teks `<b>Finance</b> {runId}` apa adanya sebagai teks, bukan sebagai huruf tebal
 
 ### Last Updated sama dengan waktu entri Changelog terbaru
-26. Klik ikon Changelog
-27. Ketik Search `A3-{runId}` pada modal Changelog, tekan Enter
-28. Verifikasi Date entri Changelog baris Field `Account Name` untuk Account Code `A3-{runId}` sama dengan nilai Last Updated yang dicatat pada langkah 19
-29. Tutup modal Changelog
+27. Klik ikon Changelog
+28. Ketik Search `A3-{runId}` pada modal Changelog, tekan Enter
+29. Verifikasi Date entri Changelog baris Field `Account Name` untuk Account Code `A3-{runId}` sama dengan nilai Last Updated yang dicatat pada langkah 19
+30. Tutup modal Changelog

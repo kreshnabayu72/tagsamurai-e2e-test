@@ -4,19 +4,19 @@ title: "Search Account List menyaring baris menurut kolom yang dicari"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
-sourceRules: ["§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§5#b2", "EB-SRC-2@tabel-account-list", "EB-SRC-3@tabel-account-list", "EB-SRC-1"]
+status: ready-for-automation
+sourceRules: ["§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§5#b3", "EB-SRC-2@tabel-account-list", "EB-SRC-3@tabel-account-list", "EB-SRC-1"]
 smoke: ["EB-SRC-1"]
 dependsOn: []
 trace:
   "§4.1.1#r2": 2
   "§4.1.1#r3": [4, 6, 8, 29, 35, 36]
   "§4.1.1#r4": [12, 13]
-  "§5#b2": [23, 62, 67, 72, 76]
+  "§5#b3": [23, 62, 67, 71, 76, 81]
   "EB-SRC-2@tabel-account-list": [12, 15, 16, 23]
   "EB-SRC-3@tabel-account-list": [25, 27, 31, 33, 38, 39, 41, 42, 44, 45, 47, 50, 53]
   "EB-SRC-1": [6, 8, 56]
-anchor: [21, 74]
+anchor: [21, 69, 74]
 coverage:
   web: automated
 ---
@@ -24,9 +24,10 @@ coverage:
 # Search Account List menyaring baris menurut kolom yang dicari
 
 ## Prerequisites
-- Aktor: pengguna Total Control.
+- Aktor: pengguna Total Control di entitas khusus spec ini.
 - Layar awal: Settings > Accounting > Chart of Accounts.
 - Data:
+  - DU-002-23: entitas khusus `Entitas Uji Search {runId}`, hanya dipakai spec ini, dan tidak berisi akun selain DU-002-1 sampai DU-002-13 dan DU-002-22. Tidak ada nama akun di entitas ini yang memuat `System`.
   - DU-002-1: akun `S1-{runId}`, Account Name `Procurement Cabang {runId}`, Account Function `Asset Cost`, Status `Active`, tanpa entri Changelog sama sekali.
   - DU-002-2: akun `S2-{runId}`, Account Name `Biaya Pemeliharaan {runId}`, Account Function `Depreciation Expense`, Status `Active`.
   - DU-002-3: akun `LK9-{runId}`, Account Name `Akun Utama {runId}`, Account Function `Capitalization Offset`, Status `Active`.
@@ -63,8 +64,8 @@ coverage:
 9. Klik dropdown `Rows per page`
 10. Pilih ukuran halaman `100`
 11. Ganti isi kotak Search dengan `Asset Cost`, tekan Enter
-12. Verifikasi baris `S1-{runId}` tampil
-13. Verifikasi baris `S2-{runId}` tidak tampil
+12. Verifikasi tabel memuat baris dengan Function `Asset Cost`
+13. Verifikasi setiap baris yang tampil memuat `Asset Cost` di kolom Account Code, Account Name, atau Function
 
 ### Kata kunci yang cocok di dua kolom berbeda
 14. Ganti isi kotak Search dengan `LK9-{runId}`, tekan Enter
@@ -136,16 +137,20 @@ coverage:
 66. Tekan Enter pada kotak Search
 67. Verifikasi baris `S1-{runId}` tampil
 
-### Kolom Modified By ikut dicari
-68. Klik header kolom Actions `⋯`
-69. Centang `Modified By` pada panel Column Visibility
-70. Klik header kolom Actions `⋯` untuk menutup panel
-71. Ganti isi kotak Search dengan `System`, tekan Enter
-72. Verifikasi baris `S1-{runId}` tampil dengan Modified By `System`
-
 ### Switch Status tidak ikut dicari
-73. Ganti isi kotak Search dengan `S14-{runId}`, tekan Enter
-74. Verifikasi switch Status baris `S14-{runId}` dalam keadaan `Inactive`
-75. Ganti isi kotak Search dengan `Inactive`, tekan Enter
-76. Verifikasi baris `S14-{runId}` tidak tampil
-77. Klik `(←)` pada kotak Search
+68. Ganti isi kotak Search dengan `S14-{runId}`, tekan Enter
+69. Verifikasi switch Status baris `S14-{runId}` dalam keadaan `Inactive`
+70. Ganti isi kotak Search dengan `Inactive`, tekan Enter
+71. Verifikasi baris `S14-{runId}` tidak tampil
+72. Klik `(←)` pada kotak Search
+
+### Kolom Modified By yang di-hide tidak ikut dicari
+73. Ketik Search `S1-{runId}`, tekan Enter
+74. Verifikasi baris `S1-{runId}` tampil
+75. Ganti isi kotak Search dengan `System`, tekan Enter
+76. Verifikasi `No results found` tampil karena kolom Modified By masih di-hide
+77. Klik header kolom Actions `⋯`
+78. Centang `Modified By` pada panel Column Visibility
+79. Klik header kolom Actions `⋯` untuk menutup panel
+80. Tekan Enter pada kotak Search
+81. Verifikasi baris `S1-{runId}` tampil karena kolom Modified By yang visible berisi `System` untuk akun tanpa entri Changelog

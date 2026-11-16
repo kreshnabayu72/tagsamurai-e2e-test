@@ -4,7 +4,7 @@ title: "Perubahan Date Format dan Time Format tercermin di Last Updated dan Chan
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [EB-XM-1]
 smoke: []
 dependsOn: ["Global Settings > General Settings: Date Format dan Time Format"]
@@ -19,7 +19,7 @@ coverage:
 - Aktor: Admin dengan role Total Control pada entitas khusus DU-095-1, yang hanya dipakai spec ini dan tidak dipakai spec lain.
 - Layar awal: Settings > Accounting > Chart of Accounts.
 - Data:
-  - DU-095-1: entitas khusus `Entitas Format Tanggal {runId}` dengan Date Format `dd/MM/yy`, Time Format `24h`, dan Time Zone bawaan General Settings; seluruh data dan setting di dalamnya hanya dipakai spec ini.
+  - DU-095-1: entitas khusus `Entitas Format Tanggal {runId}` dengan Date Format `dd/MM/yy`, Time Format `24h`, dan Time Zone `Asia/Jakarta`; seluruh data dan setting di dalamnya hanya dipakai spec ini.
   - DU-095-2: Account Code `FMT1-{runId}`, Account Name `Format Probe Cost {runId}`, Account Function `Asset Cost`, dibuat oleh spec ini lewat `[+ Account]` di entitas DU-095-1.
   - DU-095-3: Date Format `M/d/yy`.
   - DU-095-4: Date Format `dd MMM yy`.
@@ -117,7 +117,7 @@ coverage:
 72. Buka Settings > Accounting > Chart of Accounts
 73. Muat ulang halaman
 74. Ketik Search `FMT1-{runId}`, tekan Enter
-75. Verifikasi jam pada Last Updated baris `FMT1-{runId}` bergeser sebesar selisih UTC offset antara Time Zone `Asia/Tokyo` dan Time Zone sebelumnya, dengan menit yang sama seperti yang dicatat
+75. Verifikasi jam pada Last Updated baris `FMT1-{runId}` bergeser maju 2 jam dari jam yang dicatat, yaitu selisih UTC offset antara Time Zone `Asia/Jakarta` dan Time Zone `Asia/Tokyo`, dengan menit yang sama seperti yang dicatat
 76. Klik ikon `Changelog` di toolbar
-77. Verifikasi jam pada Date baris Create akun `FMT1-{runId}` di modal Changelog bergeser sebesar selisih UTC offset yang sama, dengan menit yang sama seperti yang dicatat
+77. Verifikasi jam pada Date baris Create akun `FMT1-{runId}` di modal Changelog bergeser maju 2 jam dari jam yang dicatat, yaitu selisih UTC offset yang sama, dengan menit yang sama seperti yang dicatat
 78. Klik `✕` pada modal Changelog

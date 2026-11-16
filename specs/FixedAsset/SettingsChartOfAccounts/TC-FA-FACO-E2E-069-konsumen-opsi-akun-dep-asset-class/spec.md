@@ -4,13 +4,13 @@ title: "Create, Edit, Activate, Deactivate, dan Delete akun tercermin di opsi ak
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FACO-LOGIC-01b, S-12, S-14, "§9.7#p4", "§9.7#r16", "§9.7#r18", "§9.7#r21", "§9.7#r23", "§9.7#r26", "EB-XM-2@asset-class"]
 smoke: []
 dependsOn: ["Asset Class: opsi akun pada form Asset Class"]
 trace:
   FACO-LOGIC-01b: [20, 22]
-  S-12: [49, 50, 52, 55, 58, 62]
+  S-12: [49, 50, 52, 55, 58, 62, 78, 80, 81]
   S-14: [18, 38, 41, 44]
   "§9.7#p4": [18, 19, 72, 73]
   "§9.7#r16": 18
@@ -41,6 +41,10 @@ coverage:
   - Akun yang dibuat spec ini: Account Code `KSC-{runId}`, Account Name `Laba Pelepasan Aset {runId}`, Account Function `Gain on Disposal` (DU-069-9).
   - Account Code `KSC-{runId}` diubah menjadi `KSI-{runId}` (DU-069-10), dan Account Name `Mesin Produksi {runId}` pada DU-069-1 diubah menjadi `Mesin Produksi Baru {runId}` (DU-069-11).
   - Account Code `KSA-{runId}` pada DU-069-1 diubah menjadi `KSJ-{runId}` (DU-069-12), selagi akun itu dipakai Asset Class `Konsumen Utama {runId}` dan belum pernah diekspor.
+  - DU-069-13: Account Code `KSK-{runId}`, Account Name `Laba Bersama {runId}`, Account Function `Gain on Disposal`, Status Active, Last Used in Journal `—`, dipakai 2 Asset Class (DU-069-14, DU-069-15).
+  - DU-069-14: Asset Class `Konsumen Pelepas {runId}` dengan Gain on Disposal `KSK-{runId}`.
+  - DU-069-15: Asset Class `Konsumen Tetap {runId}` dengan Gain on Disposal `KSK-{runId}`.
+  - Asset Class `Konsumen Pelepas {runId}` mengganti akun Gain on Disposal dari `KSK-{runId}` menjadi `KSL-{runId}` (DU-069-6), sehingga Used By `KSK-{runId}` turun dari 2 menjadi 1.
 
 ## Test Steps
 
@@ -127,3 +131,13 @@ coverage:
 72. Verifikasi akun terpilih pada field Asset Cost menampilkan Account Code `KSJ-{runId}`
 73. Verifikasi opsi dengan Account Code `KSJ-{runId}` tampil
 74. Tutup form Asset Class, form belum diubah
+
+### Asset Class melepas akun yang masih dipakai Asset Class lain menghitung ulang Used By dan popup Used By
+75. Asset Class `Konsumen Pelepas {runId}` mengganti akun Gain on Disposal dari `KSK-{runId}` menjadi `KSL-{runId}`
+76. Buka tab Chart of Accounts
+77. Ketik Search `{runId}`, tekan Enter
+78. Verifikasi Used By baris `KSK-{runId}` bernilai `1`
+79. Klik angka Used By `1` pada baris `KSK-{runId}`
+80. Verifikasi popup `Used By` memuat Asset Class `Konsumen Tetap {runId}`
+81. Verifikasi popup `Used By` tidak memuat Asset Class `Konsumen Pelepas {runId}`
+82. Klik `✕` pada popup Used By

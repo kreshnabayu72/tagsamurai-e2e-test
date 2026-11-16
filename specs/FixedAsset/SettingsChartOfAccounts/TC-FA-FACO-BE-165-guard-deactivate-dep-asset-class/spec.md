@@ -4,7 +4,7 @@ title: "Guard Deactivate untuk akun yang dipakai Asset Class"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [FACO-LOGIC-02c, N-02, R-05, "§[F-FACO-04] Deactivate Account#b2", "§[F-FACO-04] Deactivate Account#r1", "§[F-FACO-04] Deactivate Account#r6", "§9.4.2#r11", "§9.4.2#r12", "§9.4.2#r34"]
 smoke: []

@@ -4,7 +4,7 @@ title: "Menghapus akun terakhir menampilkan empty state Account List"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["ST-16", "EB-EDG-2"]
 smoke: []
 dependsOn: []

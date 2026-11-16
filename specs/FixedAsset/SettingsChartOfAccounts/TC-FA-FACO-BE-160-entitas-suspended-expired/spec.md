@@ -4,7 +4,7 @@ title: "Server menolak aksi tulis saat entitas Suspended atau Expired"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["§9.4.2#r28", EB-AKS-7]
 smoke: []

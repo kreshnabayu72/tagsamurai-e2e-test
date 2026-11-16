@@ -4,7 +4,7 @@ title: "Create Account dari shortcut `+ Create account` pada Select akun Prefere
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FACO-LOGIC-12a, FACO-LOGIC-12b, FACO-LOGIC-12c, FACO-LOGIC-12d, FACO-LOGIC-12e, "§9.5#r6"]
 smoke: []
 dependsOn: ["Settings > Accounting > Preferences: Select akun dengan shortcut `+ Create account`"]
@@ -36,7 +36,7 @@ coverage:
 ### Tab Chart of Accounts disiapkan dengan Search, Filter, dan Sort aktif sebelum shortcut dipakai
 1. Ketik Search `{runId}`, tekan Enter
 2. Klik ikon `Filter` di toolbar
-3. Pilih `Capitalization Offset` pada filter `Account Function`
+3. Pilih Function `Capitalization Offset` pada Filter Panel
 4. Klik `[Apply]`
 5. Klik header kolom `Account Name`
 6. Verifikasi urutan baris dari atas ke bawah `SCA2-{runId}`, `SCA1-{runId}` menurut Account Name dari A ke Z

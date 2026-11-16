@@ -4,7 +4,7 @@ title: "Popup Used By: identitas akun, daftar bullet, dan teks jumlah Asset Name
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
   - ST-12
   - §4.1#r3

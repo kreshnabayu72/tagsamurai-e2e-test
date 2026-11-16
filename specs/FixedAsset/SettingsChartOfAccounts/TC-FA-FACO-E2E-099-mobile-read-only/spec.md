@@ -4,14 +4,15 @@ title: "Elemen tulis tersembunyi dan alasan Disabled tampil lewat tap di aplikas
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
-sourceRules: ["§4.6#b5", "§4.6#b7"]
+status: ready-for-automation
+sourceRules: ["§4.6#b5", "§4.6#b7", "§4.6#b6"]
 smoke: []
 dependsOn: []
 trace:
   "§4.6#b5": [4, 5, 6, 10]
   "§4.6#b7": [8, 9, 11, 13]
-anchor: [3]
+  "§4.6#b6": 17
+anchor: [3, 16]
 coverage:
   android: automated
 ---
@@ -46,3 +47,8 @@ coverage:
 12. Klik ikon Changelog di header halaman
 13. Verifikasi modal `Changelog: Chart of Accounts` terbuka
 14. Klik ikon close pada modal `Changelog: Chart of Accounts`
+
+### Aktor Read Only tidak mendapat selection mode
+15. Long-press card dengan Account Code `5-6001-{runId}`
+16. Verifikasi card dengan Account Code `5-6001-{runId}` tampil
+17. Verifikasi card tidak menampilkan checkbox dan Floating Bottom Bulk Action Bar tidak tampil

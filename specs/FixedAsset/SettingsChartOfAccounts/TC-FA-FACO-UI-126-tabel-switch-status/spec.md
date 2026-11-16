@@ -4,23 +4,23 @@ title: "Tab Chart of Accounts: Switch Status per state"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["R-04", "ST-01", "ST-02", "ST-03", "§4.1.1#r1", "§4.5#b1", "§4.5#b3", "§4.5#b5", "§4.8#b2", "§7.2#p2", "EB-TBL-5@switch-status"]
 smoke: []
 dependsOn: []
 trace:
-  "R-04": [50, 51, 55, 56]
-  "ST-01": [3, 4, 46]
-  "ST-02": [42, 43, 45]
+  "R-04": [46, 47, 51, 52]
+  "ST-01": [3, 4, 42]
+  "ST-02": [38, 39, 41]
   "ST-03": [13, 14, 16, 18, 20, 21, 23, 24, 26]
   "§4.1.1#r1": [2, 5, 6, 13, 14, 23, 24, 28, 29]
-  "§4.5#b1": [32, 34, 38]
+  "§4.5#b1": [32, 34]
   "§4.5#b3": [8, 9, 10, 11]
-  "§4.5#b5": [16, 18]
+  "§4.5#b5": [16, 18, 62, 63, 66, 68, 70, 72]
   "§4.8#b2": [16, 18, 26]
-  "§7.2#p2": [50, 51, 55, 56, 60, 61]
+  "§7.2#p2": [46, 47, 51, 52, 56, 57]
   "EB-TBL-5@switch-status": [16, 18, 26]
-anchor: []
+anchor: [60]
 coverage:
   web: automated
 ---
@@ -66,9 +66,9 @@ coverage:
 13. Verifikasi switch baris `1-1001` disabled
 14. Verifikasi switch baris `1-2001` disabled
 15. Arahkan kursor ke switch baris `1-1001`
-16. Verifikasi `You don't have permission to edit.` tersampaikan pada switch baris `1-1001`[^drift-1]
+16. Verifikasi `You don't have permission to edit.` tersampaikan pada switch baris `1-1001`
 17. Arahkan kursor ke switch baris `1-2001`
-18. Verifikasi `You don't have permission to edit.` tersampaikan pada switch baris `1-2001`[^drift-1]
+18. Verifikasi `You don't have permission to edit.` tersampaikan pada switch baris `1-2001`
 19. Klik switch baris `1-2001`
 20. Verifikasi dialog `Activate Account` tidak tampil
 21. Verifikasi switch baris `1-2001` berstatus Off
@@ -78,7 +78,7 @@ coverage:
 23. Verifikasi switch baris `1-1001` disabled
 24. Verifikasi switch baris `1-2001` disabled
 25. Arahkan kursor ke switch baris `1-1001`
-26. Verifikasi `You don't have permission to edit.` tersampaikan pada switch baris `1-1001`[^drift-1]
+26. Verifikasi `You don't have permission to edit.` tersampaikan pada switch baris `1-1001`
 
 ### Switch enabled bagi aktor yang memegang huruf Update
 27. Tampilkan Tab Chart of Accounts dengan kondisi K3
@@ -91,40 +91,53 @@ coverage:
 32. Verifikasi switch baris `1-2001` menerima fokus
 33. Tekan Space
 34. Verifikasi dialog `Activate Account` tampil
-35. Klik `[Cancel]`
-36. Tekan Tab sampai fokus berada pada switch baris `1-2001`
-37. Tekan Enter
-38. Verifikasi dialog `Activate Account` tampil
 
 ### Switch Loading saat request dikirim
-39. Tampilkan Tab Chart of Accounts dengan kondisi K8
-40. Klik switch baris `1-2001`
-41. Klik `[Activate]` pada dialog `Activate Account`
-42. Verifikasi switch baris `1-2001` menampilkan spinner
-43. Verifikasi switch baris `1-2001` non-interaktif
-44. Lepaskan respons server atas Activate
-45. Verifikasi switch baris `1-2001` tidak menampilkan spinner
-46. Verifikasi switch baris `1-2001` berstatus On
+35. Tampilkan Tab Chart of Accounts dengan kondisi K8
+36. Klik switch baris `1-2001`
+37. Klik `[Activate]` pada dialog `Activate Account`
+38. Verifikasi switch baris `1-2001` menampilkan spinner
+39. Verifikasi switch baris `1-2001` non-interaktif
+40. Lepaskan respons server atas Activate
+41. Verifikasi switch baris `1-2001` tidak menampilkan spinner
+42. Verifikasi switch baris `1-2001` berstatus On
 
 ### Activate gagal karena error server
-47. Tampilkan Tab Chart of Accounts dengan kondisi K5
-48. Klik switch baris `1-2001`
-49. Klik `[Activate]` pada dialog `Activate Account`
-50. Verifikasi toast `Error, failed to activate account.` tampil
-51. Verifikasi switch baris `1-2001` kembali berstatus Off
+43. Tampilkan Tab Chart of Accounts dengan kondisi K5
+44. Klik switch baris `1-2001`
+45. Klik `[Activate]` pada dialog `Activate Account`
+46. Verifikasi toast `Error, failed to activate account.` tampil
+47. Verifikasi switch baris `1-2001` kembali berstatus Off
 
 ### Activate gagal karena timeout
-52. Tampilkan Tab Chart of Accounts dengan kondisi K6
-53. Klik switch baris `1-2001`
-54. Klik `[Activate]` pada dialog `Activate Account`
-55. Verifikasi toast `Connection problem. Please try again.` tampil
-56. Verifikasi switch baris `1-2001` kembali berstatus Off
+48. Tampilkan Tab Chart of Accounts dengan kondisi K6
+49. Klik switch baris `1-2001`
+50. Klik `[Activate]` pada dialog `Activate Account`
+51. Verifikasi toast `Connection problem. Please try again.` tampil
+52. Verifikasi switch baris `1-2001` kembali berstatus Off
 
 ### Deactivate gagal karena error server
-57. Tampilkan Tab Chart of Accounts dengan kondisi K7
-58. Klik switch baris `1-1001`
-59. Klik `[Deactivate]` pada dialog `Deactivate Account`
-60. Verifikasi toast `Error, failed to deactivate account.` tampil
-61. Verifikasi switch baris `1-1001` kembali berstatus On
+53. Tampilkan Tab Chart of Accounts dengan kondisi K7
+54. Klik switch baris `1-1001`
+55. Klik `[Deactivate]` pada dialog `Deactivate Account`
+56. Verifikasi toast `Error, failed to deactivate account.` tampil
+57. Verifikasi switch baris `1-1001` kembali berstatus On
 
-[^drift-1]: Drift PRD vs kontrak komponen. PRD `§4.5#b5`: «Tooltip 🔖 dapat diakses lewat keyboard focus.» Kontrak `Tooltip#38`: «A disabled control cannot be focused, so its tooltip opens on hover only.» dan `Switch#37`: «A disabled or loading switch is skipped by Tab (the native input is disabled).» Diasersi: kontrak (tooltip switch Disabled hanya lewat hover), karena fokus pada kontrol disabled adalah mekanik komponen (SB-7); akses keyboard untuk tooltip kontrol yang dapat difokus dimiliki spec lain.
+### Switch Disabled tidak dapat difokus keyboard
+58. Tampilkan Tab Chart of Accounts dengan kondisi K2
+59. Tekan Tab sampai fokus berada pada ikon Filter
+60. Verifikasi ikon Filter menerima fokus
+61. Tekan Tab berulang kali sampai fokus melewati baris `1-2001`
+62. Verifikasi switch baris `1-1001` yang Disabled tidak menerima fokus selama Tab berjalan sehingga alasannya hanya tersampaikan lewat hover
+63. Verifikasi switch baris `1-2001` yang Disabled tidak menerima fokus selama Tab berjalan sehingga alasannya hanya tersampaikan lewat hover
+
+### Tooltip pada elemen yang dapat difokus terbuka lewat fokus keyboard
+64. Tampilkan Tab Chart of Accounts dengan kondisi K1
+65. Tekan Tab sampai fokus berada pada ikon Search
+66. Verifikasi `Search` tersampaikan pada ikon Search
+67. Tekan Tab sampai fokus berada pada ikon Filter
+68. Verifikasi `Filter` tersampaikan pada ikon Filter
+69. Tekan Tab sampai fokus berada pada ikon Download
+70. Verifikasi `Download` tersampaikan pada ikon Download
+71. Tekan Tab sampai fokus berada pada ikon Changelog
+72. Verifikasi `Changelog` tersampaikan pada ikon Changelog
